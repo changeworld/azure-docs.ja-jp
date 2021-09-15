@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/27/2021
+ms.date: 09/06/2021
 ms.custom: project-no-code, b2c-support
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: cf4e674e1aca47b0f1ea4fa05aae110f8270b721
-ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
+ms.openlocfilehash: f227c63ef837b0de60ee72e2f33084e744f2f96f
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114688882"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123535601"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 内のユーザー インターフェイスをカスタマイズする
 
@@ -210,10 +210,9 @@ Azure AD B2C で会社のブランドを構成する際は、次の点に注意�
 * バナー ロゴは、ユーザーがサインアップ ユーザー フローを開始するときに、ユーザーに送信された確認メールに表示されます。
 
 
+::: zone pivot="b2c-user-flow"
 
 ## <a name="enable-company-branding-in-user-flow-pages"></a>ユーザー フロー ページでの会社のブランド化の有効化
-
-::: zone pivot="b2c-user-flow"
 
 会社のブランドを構成したら、それをユーザー フローで有効にします。
 
@@ -231,6 +230,8 @@ Azure AD B2C で会社のブランドを構成する際は、次の点に注意�
 ::: zone-end
 
 ::: zone pivot="b2c-custom-policy"
+
+## <a name="enable-company-branding-in-custom-policy-pages"></a>カスタム ポリシー ページで会社のブランド化を有効にする
 
 会社のブランドを構成したら、それをカスタム ポリシーで有効にします。 カスタム ポリシーのコンテンツ定義の "*すべて*" に対して、ページ `contract` バージョンを使用して [ページ レイアウト バージョン](contentdefinitions.md#migrating-to-page-layout)を構成します。 値の形式には、次のように `contract` という語が含まれている必要があります: _urn:com:microsoft:aad:b2c:elements:**contract**:page-name:version_。 古い **DataUri** 値を使用するカスタム ポリシーでページ レイアウトを指定するには、次の操作を行います。 詳細については、ページ バージョンで[ページ レイアウトに移行する](contentdefinitions.md#migrating-to-page-layout)方法について説明します。
 

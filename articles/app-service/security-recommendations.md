@@ -4,15 +4,15 @@ description: セキュリティに関する推奨事項を実装することに�
 author: msmbaldwin
 manager: barbkess
 ms.topic: conceptual
-ms.date: 06/17/2019
+ms.date: 09/02/2021
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: 09dbe0fbefb8b90b4c4e1ddef57abf3b13856183
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 452c0479834ab7929696af2c95454662adfecfab
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92148079"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123538329"
 ---
 # <a name="security-recommendations-for-app-service"></a>App Service のセキュリティに関する推奨事項
 
@@ -56,7 +56,7 @@ ms.locfileid: "92148079"
 
 | 推奨 | 説明 |
 |-|-|
-|Azure Security Center Standard レベルを使用する | [Azure Security Center](../security-center/defender-for-app-service-introduction.md) は、Azure App Service とネイティブに統合されています。 これにより、評価が実行され、セキュリティに関する推奨事項が提供されます。 |
+|Azure Security Center の Azure Defender for App Service を使用する | [Azure Defender for App Service](../security-center/defender-for-app-service-introduction.md) は Azure App Service にネイティブ統合されています。 App Service プランの対象となるリソースが Security Center によって評価され、その結果に基づき、セキュリティ上の推奨事項が生成されます。 [こちらの推奨事項]()../security-center/recommendations-reference.md#appservices-recommendations) にある詳しい手順を利用し、App Service リソースを強化してください。 Azure Defender からは脅威防止機能も提供され、事前攻撃からコマンド & コントロールまで、ほぼすべての MITRE ATT&CK 作戦をカバーする無数の脅威を検出できます。 Azure App Service アラートの完全な一覧については、[Azure Defender for App Service のアラート](../security-center/alerts-reference.md#alerts-azureappserv)に関するページを参照してください。|
 
 ## <a name="next-steps"></a>次のステップ
 

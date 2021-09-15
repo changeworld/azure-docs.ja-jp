@@ -11,12 +11,12 @@ author: jhirono
 ms.date: 08/04/2021
 ms.topic: how-to
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1, security
-ms.openlocfilehash: 6d7faa793b296259968eb54980fe8ff8e32514f2
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 2ed3e7d1525c750c698e853921900e6d39feb83e
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123105506"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123480356"
 ---
 # <a name="secure-an-azure-machine-learning-workspace-with-virtual-networks"></a>仮想ネットワークを使用して Azure Machine Learning ワークスペースをセキュリティで保護する
 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: d0280b8af673ebcf994ca537cbc929f9035a8d6d
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: ed3f02f6bf4c9a7b53a63f31163663c59c0edc88
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111556498"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123451027"
 ---
 # <a name="import-data-wizard-for-azure-cognitive-search"></a>Azure Cognitive Search のデータのインポート ウィザード
 
@@ -82,16 +82,15 @@ Azure portal では、インデックスのプロトタイプ作成および読�
 | [スキルセット](/rest/api/searchservice/create-skillset) | 画像ファイルからの情報の分析と抽出を含む、コンテンツの操作、変換、および整形を行うための手順の完全なセットです。 非常に単純で限定されている構造の場合を除き、エンリッチメントを提供する Cognitive Services リソースへの参照が含まれます。 オプションで、ナレッジ ストアの定義が含まれる場合もあります。  | 
 | [Indexer](/rest/api/searchservice/create-indexer)  | データ ソース、ターゲット インデックス、オプションのスキルセット、オプションのスケジュール、およびエラー処理と Base-64 エンコード用のオプションの構成設定を指定する構成オブジェクトです。 |
 
-
 ## <a name="how-to-start-the-wizard"></a>ウィザードの起動方法
 
 データのインポート ウィザードは、サービスの [概要] ページのコマンド バーから起動されます。
 
 1. [Azure portal](https://portal.azure.com) でダッシュボードから検索サービス ページを開くか、サービスの一覧で[ご自分のサービスを見つけ](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)ます。
 
-2. 上部にあるサービスの概要ページで、 **[データのインポート]** をクリックします。
+1. 上部にあるサービスの概要ページで、 **[データのインポート]** をクリックします。
 
-   ![ポータルの [データのインポート] コマンド](./media/search-import-data-portal/import-data-cmd2.png "データのインポート ウィザードを開始する")
+   :::image type="content" source="media/search-import-data-portal/import-data-cmd.png" alt-text="[データのインポート] コマンドのスクリーンショット" border="true":::
 
 **[Import data (データのインポート)]** は、Azure Cosmos DB、Azure SQL Database、SQL Managed Instance、Azure Blob Storage を含む、他の Azure サービスから起動することもできます。 サービスの概要ページの左側にあるナビゲーション ウィンドウで、 **[Add Azure Cognitive Search]\(Azure Cognitive Search の追加\)** を見つけます。
 

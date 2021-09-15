@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 1/26/2021
-ms.openlocfilehash: 709732e996e0ffda7c3ae7f2f1199522c0b22e51
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 0aeaf068de0bdcc06deb3e28575047b459b56b27
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123256631"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123426114"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>Azure Database for MySQL でのサーバー パラメーター
 
@@ -85,7 +85,7 @@ Azure Database for MySQL の場合、バイナリ ログは常に有効になっ
 |メモリ最適化|16|65498251264|134217728|65498251264|
 |メモリ最適化|32|132070244352|134217728|132070244352|
 
-#### <a name="servers-on-general-purpose-storage-v1-supporting-up-to-16-tb"></a>[汎用ストレージ v1 (最大 16 TB をサポート)](concepts-pricing-tiers.md#general-purpose-storage-v2-supports-up-to-16-tb-storage) 上のサーバー
+#### <a name="servers-on-general-purpose-storage-v2-supporting-up-to-16-tb"></a>[汎用ストレージ v2 (最大 16 TB をサポート)](concepts-pricing-tiers.md#general-purpose-storage-v2-supports-up-to-16-tb-storage) 上のサーバー
 
 |**価格レベル**|**仮想コア数**|**既定値 (バイト)**|**最小値 (バイト)**|**最大値 (バイト)**|
 |---|---|---|---|---|

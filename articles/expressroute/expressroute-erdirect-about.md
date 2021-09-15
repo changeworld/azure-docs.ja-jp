@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 03/17/2021
+ms.date: 08/31/2021
 ms.author: duau
-ms.openlocfilehash: c6f06df11e0e17f37d7cfcbba6ed4fb8c224f824
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 01de2c75cbb6c1f8b2e153e18add612608e75ac7
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123029863"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123433983"
 ---
 # <a name="about-expressroute-direct"></a>ExpressRoute Direct について
 
@@ -37,7 +37,7 @@ ExpressRoute Direct を利用する前に、まず、サブスクリプション
     ```
 
 1. 次のコマンドを使用して、サブスクリプションをパブリック プレビューに登録します。
-1. 
+
     ```azurepowershell-interactive
     Register-AzProviderFeature -FeatureName AllowExpressRoutePorts -ProviderNamespace Microsoft.Network
     ```
@@ -100,14 +100,24 @@ ExpressRoute Direct では、QinQ と Dot1Q の両方の VLAN タグ付けがサ
 
 * **Dot1Q VLAN タグ付け** では、ExpressRoute Direct ポート ペアごとに 1 つの VLAN タグ付けが可能です。 ピアリングで使用される C-Tag は、ExpressRoute Direct ポート ペアのすべての回線とピアリング全体で一意である必要があります。
 
-## <a name="workflow"></a>ワークフロー
+## <a name="workflows"></a>Workflows
 
-[![ワークフロー](./media/expressroute-erdirect-about/workflow1.png)](./media/expressroute-erdirect-about/workflow1.png#lightbox)
+### <a name="set-up-expressroute-direct"></a>ExpressRoute Direct をセットアップする
+
+:::image type="content" source="./media/expressroute-erdirect-about/set-up-workflow.png" alt-text="ExpressRoute Direct セットアップ ワークフローの図。" lightbox="./media/expressroute-erdirect-about/set-up-workflow-expanded.png":::
+
+### <a name="delete-expressroute-direct"></a>ExpressRoute Direct を削除する
+
+:::image type="content" source="./media/expressroute-erdirect-about/delete-workflow.png" alt-text="ExpressRoute Direct 削除ワークフローの図。" lightbox="./media/expressroute-erdirect-about/delete-workflow-expanded.png":::
 
 ## <a name="sla"></a>SLA
 
-ExpressRoute Direct では、Microsoft グローバル ネットワークへのアクティブ/アクティブ冗長接続でも同じエンタープライズ レベルの SLA が提供されます。 ExpressRoute インフラストラクチャは冗長です。Microsoft グローバル ネットワークへの接続は冗長かつ多様であり、顧客要件のとおりにスケーリングされます。 
+ExpressRoute Direct では、Microsoft グローバル ネットワークへのアクティブ/アクティブ冗長接続でも同じエンタープライズ レベルの SLA が提供されます。 ExpressRoute インフラストラクチャは冗長です。Microsoft グローバル ネットワークへの接続は冗長かつ多様であり、顧客要件のとおりにスケーリングされます。
+
+## <a name="pricing"></a>価格
+
+ExpressRoute Direct の課金方法については、「[ExpressRoute の FAQ](expressroute-faqs.md#when-does-billing-start-and-stop-for-the-expressroute-direct-port-pairs)」を参照してください。 価格の詳細については、[ExpressRoute の価格](https://azure.microsoft.com/pricing/details/expressroute/)ページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-[ExpressRoute Direct を構成する](expressroute-howto-erdirect.md)
+[ExpressRoute Direct を構成する](expressroute-howto-erdirect.md)方法について学習します。

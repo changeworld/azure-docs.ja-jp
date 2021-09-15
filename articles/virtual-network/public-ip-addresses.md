@@ -9,12 +9,12 @@ ms.subservice: ip-services
 ms.topic: conceptual
 ms.date: 04/29/2021
 ms.author: allensu
-ms.openlocfilehash: 4497b58e40ccc280661d45932586c14bb8a21108
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 383c1c0419224a568e32dd41f50d49dc448dbb3c
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122179878"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123538149"
 ---
 # <a name="public-ip-addresses"></a>パブリック IP アドレス
 
@@ -38,8 +38,8 @@ Virtual Machine Scale Sets の場合は、[パブリック IP プレフィック
 
 | 最上位リソース | IP アドレスの関連付け | 動的 IPv4 | 静的 IPv4 | 動的 IPv6 | 静的 IPv6 |
 | --- | --- | --- | --- | --- | --- |
-| 仮想マシン |ネットワーク インターフェイス |はい | はい | はい | はい |
-| インターネットに接続するロード バランサー |フロント エンド構成 |はい | はい | はい |はい |
+| 仮想マシン |ネットワーク インターフェイス |はい | Yes | Yes | はい |
+| インターネットに接続するロード バランサー |フロント エンド構成 |はい | Yes | Yes |はい |
 | Virtual Network ゲートウェイ (VPN) |ゲートウェイ IP の構成 |はい (AZ 以外のみ) |はい (AZ のみ) | いいえ |いいえ |
 | Virtual Network ゲートウェイ (ER) |ゲートウェイ IP の構成 |はい | いいえ | はい (プレビュー) |いいえ |
 | NAT Gateway |ゲートウェイ IP の構成 |いいえ |はい | いいえ |いいえ |
@@ -61,20 +61,13 @@ Standard SKU のパブリック IP アドレス:
 
 - 必ず静的割り当て方法を使用してください。
 - インバウンドから発生するフローの調整可能なアイドル タイムアウトとして4分から30 分 (既定値は 4 分) が、またアウトバウンドから発生するフローの固定アイドル タイムアウトとして 4 分が割り当てられます。
-- 既定でセキュリティ保護され、受信トラフィックに対して閉じられています。 [ネットワーク セキュリティ グループ](./network-security-groups-overview.md#network-security-groups)を使用した受信トラフィックを許可リストに載せます。
-- ネットワーク インターフェイス、Standard パブリック ロード バランサー、またはアプリケーション ゲートウェイに割り当てられます。 Azure ロード バランサーの詳細については、[Azure Standard Load Balancer](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) に関するページを参照してください。
+- "既定でのセキュリティ保護" モデルと足並みを揃えるように設計されており、フロントエンドとして使用されるときはインバウンド トラフィックに対して閉じられます。  データ プレーン トラフィックと[ネットワーク セキュリティ グループ](./network-security-groups-overview.md#network-security-groups) (NSG) を許可リストに載せることが必要になります (たとえば、Standard SKU パブリック IP がアタッチされた仮想マシンの NIC で)。
 - ゾーン冗長 (3 つすべてのゾーンからアドバタイズ)、ゾーン ベース (特定の事前に選択された可用性ゾーンで保証)、または "ゾーンなし" (特定の事前に選択された可用性ゾーンに関連付けられていない) にすることができます。 可用性ゾーンに関する詳細については、[可用性ゾーンの概要](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページと「[Standard Load Balancer と可用性ゾーン](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。 **ゾーン冗長 IP は、[3 つの可用性ゾーン](../availability-zones/az-region.md)が有効になっているリージョンでのみ作成できます。** ゾーンが有効になる前に作成された IP は、ゾーン冗長にはなりません。
 - [ルーティング設定](routing-preference-overview.md)を使用して、Azure とインターネット間のトラフィックのルーティング方法をより細かく制御できるようにすることができます。
 - [リージョン間ロード バランサー ](../load-balancer/cross-region-overview.md)(プレビュー機能) のためのエニーキャスト フロントエンド IP として使用できます。
  
 > [!NOTE]
 > [ネットワーク セキュリティ グループ](./network-security-groups-overview.md#network-security-groups)を作成して関連付け、目的のインバウンド トラフィックを明示的に許可するまで、Standard SKU リソースとのインバウンド通信は失敗します。
-
-> [!NOTE]
-> [インスタンス メタデータ サービス (IMDS)](../virtual-machines/windows/instance-metadata-service.md) を使用している場合は、Basic SKU のパブリック IP アドレスのみを使用できます。 Standard SKU はサポートされていません。
-
-> [!NOTE]
-> Standard SKU のパブリック IP アドレスを使用している場合、診断設定は [リソース] ブレードに表示されません。 Standard パブリック IP アドレス リソースのログ記録を有効にするには、[Azure Monitor] ブレードの [診断設定] に移動し、IP アドレス リソースを選択します。
 
 ### <a name="basic"></a>基本
 
@@ -115,11 +108,7 @@ Basic パブリック IPv4 および IPv6 アドレスでは、**動的** な割
 
 ## <a name="dns-name-label"></a>DNS 名ラベル
 
-このオプションを選択して、パブリック IP リソースの DNS ラベルを指定します。 この機能は、IPv4 アドレス (32 ビット A レコード) と IPv6 アドレス (128 ビット AAAA レコード) の両方で機能します。
-
-### <a name="dns-hostname-resolution"></a>DNS ホスト名の解決
-
-この選択により、**domainnamelabel**.**location**.cloudapp.azure.com から Azure で管理される DNS のパブリック IP へのマッピングが作成されます。 
+このオプションを選択して、パブリック IP リソースの DNS ラベルを指定します。 この機能は、IPv4 アドレス (32 ビット A レコード) と IPv6 アドレス (128 ビット AAAA レコード) の両方で機能します。  この選択により、**domainnamelabel**.**location**.cloudapp.azure.com から Azure で管理される DNS のパブリック IP へのマッピングが作成されます。 
 
 たとえば、次のようなパブリック IP を作成します。
 
@@ -131,11 +120,7 @@ Basic パブリック IPv4 および IPv6 アドレスでは、**動的** な割
 > [!IMPORTANT]
 > 作成された各ドメイン名ラベルは、Azure の location 内で一意である必要があります。  
 
-### <a name="dns-recommendations"></a>DNS に関する推奨事項
-
-パブリック IP の FQDN をリージョン間で移行することはできません。 パブリック IP アドレスをポイントするカスタム CNAME レコードを作成するには、この FQDN を使用します。 別のパブリック IP への移動が必要な場合は、CNAME レコードを更新します。
-
-DNS レコードには [Azure DNS](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address) または外部の DNS プロバイダーを使用できます。
+パブリック IP を使用するサービスにカスタム ドメインが望まれる場合、DNS レコードに [Azure DNS](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address) または外部 DNS プロバイダーを使用できます。
 
 ## <a name="other-public-ip-address-features"></a>パブリック IP アドレスのその他の機能
 

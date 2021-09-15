@@ -1,18 +1,18 @@
 ---
-title: 概念 - Azure VMware Solution の実行コマンド
+title: 概念 - Azure VMware Solution の実行コマンド (プレビュー)
 description: Azure VMware Solution での実行コマンドの使用について学習します。
 ms.topic: conceptual
 ms.date: 08/31/2021
-ms.openlocfilehash: 28cbf76dd035ce9b04909a61e3001063aa151162
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 1e2889254c8711c92efdc53ab181e26d3ac06b43
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123310679"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123541641"
 ---
-# <a name="run-commands-in-azure-vmware-solution"></a>Azure VMware Solution の実行コマンド
+# <a name="run-command-in-azure-vmware-solution-preview"></a>Azure VMware Solution の実行コマンド (プレビュー)
 
-Azure VMware Solution では、CloudAdmin ロールによる vCenter へのアクセス権が得られます。 Azure VMware Solution の CloudAdmin ロールに[付与されている特権](concepts-identity.md#view-the-vcenter-privileges)は、Azure VMware Solution プライベート クラウドの vCenter で確認できます。 実行コマンドは、vCenter を対象として昇格された特権を必要とする特定の操作を実行する PowerShell コマンドレットのコレクションです。 
+Azure VMware Solution では、vCenter に *cloudadmin* という組み込みのローカル ユーザーがあり、CloudAdmin ロールに割り当てられています。 CloudAdmin ロールには、他の VMware クラウド ソリューションやオンプレミスのデプロイとは異なる vCenter [特権](concepts-identity.md#view-the-vcenter-privileges)があります。 実行コマンド (プレビュー) 機能を使用すると、PowerShell コマンドレットのコレクションによって昇格された特権を通常ならば必要とする操作を実行できます。 
 
 Azure VMware Solution では、次の操作をサポートしています。
 
@@ -20,7 +20,7 @@ Azure VMware Solution では、次の操作をサポートしています。
 
 - [外部 ID ソースを構成する](configure-identity-source-vcenter.md)
 
-- [ストレージ ポリシーを表示および編集する](configure-storage-policy.md) 
+- [ストレージ ポリシーを表示および設定する](configure-storage-policy.md) 
 
 
 >[!NOTE]
@@ -28,37 +28,37 @@ Azure VMware Solution では、次の操作をサポートしています。
 
 ## <a name="view-the-status-of-an-execution"></a>実行の状態を表示する
 
-実行されたすべての実行コマンドの状態 (出力、エラー、警告、情報など) を表示できます。
+実行されたすべての実行コマンドの状態 (コマンドレットの出力、エラー、警告、情報ログなど) を表示できます。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 
 1. **[実行コマンド]**  >  **[Run execution status]\(実行の実行状態\)** を選択します。
 
-   実行名、パッケージ名、パッケージ バージョン、コマンド名、開始時刻、終了時刻、および状態で並べ替えることができます。  
+   列を選択すると、さまざまな列の並べ替えを行うことができます。  
 
    :::image type="content" source="media/run-command/run-execution-status.png" alt-text="[Run execution status]\(実行の実行状態\) タブを示すスクリーンショット。" lightbox="media/run-command/run-execution-status.png":::
 
-1. 表示する実行を選択します。
+1. 表示する実行を選択します。 ペインが開いて、実行の詳細に加えて、コマンドレットによって生成されたさまざまな種類の出力に関するタブも表示されます。
 
    :::image type="content" source="media/run-command/run-execution-status-example.png" alt-text="実行の実行例を示すスクリーンショット。":::
 
    実行の詳細 (出力、エラー、警告、情報など) を表示できます。
 
-   - **[詳細]** - 実行の詳細 (名前、状態、パッケージ、実行されたコマンドの名前など) の概要。 
+   - **[詳細]** - 実行の詳細 (名前、状態、パッケージ、コマンドレット名、コマンドが失敗した場合のエラーなど) の概要。 
 
-   - **[出力]** - コマンドレットの実行が正常に終了したときに出力されるメッセージ。 すべてのコマンドレットに出力があるわけではありません。
+   - **[出力]** - コマンドレットによって出力されるメッセージ。 進行状況または操作の結果を含めることができます。 すべてのコマンドレットに出力があるわけではありません。
 
       :::image type="content" source="media/run-command/run-execution-status-example-output.png" alt-text="実行の実行の出力を示すスクリーンショット。":::
 
-   - **[エラー]** - コマンドレットの実行が停止する原因となった例外。    
+   - **[エラー]** - コマンドレットの実行中に生成されるエラー メッセージ。 これは、詳細ペインの終了エラーメッセージに追加されます。    
 
       :::image type="content" source="media/run-command/run-execution-status-example-error.png" alt-text="実行の実行中に検出されたエラーを示すスクリーンショット。":::
 
-   - **[警告]** - コマンドレットの実行中に発生した例外のうち、コマンドレットの終了に至らなかったもの。 
+   - **[警告]** - 実行中に生成された警告メッセージ。 
 
       :::image type="content" source="media/run-command/run-execution-status-example-warning.png" alt-text="実行の実行中に検出された警告を示すスクリーンショット。":::
 
-   - **[情報]** - コマンドレットの実行中に出力される進行状況メッセージ。 
+   - **[情報]** - コマンドレットの実行中の進行状況と診断によって生成されたメッセージ。 
 
       :::image type="content" source="media/run-command/run-execution-status-example-information.png" alt-text="実行されたコマンドレットについてリアルタイムの進行状況の全体を示したスクリーンショット。":::
 
@@ -70,7 +70,9 @@ Azure VMware Solution では、次の操作をサポートしています。
 
 ### <a name="method-1"></a>方法 1
 
->[!NOTE]
+この方法では、実行の取り消しを試行し、完了時にそれを削除します。
+
+>[!IMPORTANT]
 >方法 1 は、元に戻すことのできない操作です。
 
 1. **[実行コマンド]**  >  **[Run execution status]\(実行の実行状態\)** を選択し、取り消すジョブを選択します。
@@ -97,8 +99,8 @@ Azure VMware Solution では、次の操作をサポートしています。
 
 実行コマンドの概念について学習した後は、実行コマンド機能を使用して次のことを行うことができます。
 
-- [ストレージ ポリシーを構成する](configure-storage-policy.md) - vSAN データストアにデプロイされた各 VM には、少なくとも 1 つの VM ストレージ ポリシーが割り当てられます。 VM ストレージ ポリシーは、VM の初期デプロイ時に割り当てることも、複製や移行などの他の VM 操作を実行するときに割り当てることもできます。
+- [ストレージ ポリシーを構成する](configure-storage-policy.md) - vSAN データストアにデプロイされた各 VM には、vSAN ストレージ ポリシーが割り当てられます。 vSAN ストレージ ポリシーは、VM の初期デプロイで割り当てることも、複製や移行などの他の VM 操作を実行するときに割り当てることもできます。
 
-- [vCenter の外部 ID ソースを構成する](configure-identity-source-vcenter.md) - vCenter には cloudadmin という組み込みのローカル ユーザーがあり、CloudAdmin ロールに割り当てられています。 このローカルの cloudadmin ユーザーを使用して、Active Directory (AD) にユーザーが設定されます。 実行コマンド機能を使用すると、Active Directory over LDAP または LDAPS for vCenter を外部 ID ソースとして構成できます。
+- [vCenter に対して外部 ID ソースを構成する (実行コマンド)](configure-identity-source-vcenter.md) - vCenter に対して LDAP または LDAPS を介して Active Directory を構成します。これにより、外部 ID ソースを Active Directory として使用できるようになります。 これで、外部 ID ソースから CloudAdmin ロールにグループを追加できます。
 
 - [JetStream を使用してディザスター リカバリーをデプロイする](deploy-disaster-recovery-using-jetstream.md) - vSAN の復旧クラスターにデータを直接格納します。 データは、vSphere 内で実行される I/O フィルターを介してキャプチャされます。 基になるデータ ストアには、VMFS、VSAN、vVol、または任意の HCI プラットフォームを使用できます。 

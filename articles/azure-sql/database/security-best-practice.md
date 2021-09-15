@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 09/21/2020
 ms.reviewer: ''
-ms.openlocfilehash: ef8c2756d6e11dc38ac488abb0ed6d8ae8e9a78b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2a0a104b4ad76c94d467c01fe8be421e5b96c435
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121745852"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123541663"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL Database と Azure SQL Managed Instance で一般的なセキュリティ要件を解決するためのプレイブック
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -112,7 +112,7 @@ ID の中央管理には、次のような利点があります。
 > - Azure AD アクセス トークンはクライアント側にキャッシュされ、その有効期間はトークンの構成によって異なります。 「[Azure Active Directory における構成可能なトークンの有効期間](../../active-directory/develop/active-directory-configurable-token-lifetimes.md)」という記事を参照してください。
 > - Azure AD Authentication の問題のトラブルシューティングのガイダンスについては、次のブログを参照してください。[Azure AD のトラブルシューティング](https://techcommunity.microsoft.com/t5/azure-sql-database/troubleshooting-problems-related-to-azure-ad-authentication-with/ba-p/1062991)。
 
-### <a name="azure-ad-multi-factor-authentication"></a>Azure AD Multi-Factor Authentication
+### <a name="azure-ad-multi-factor-authentication"></a>Azure AD の Multi-Factor Authentication
 
 > 次で言及されています: OSA プラクティス #2、ISO アクセス制御 (AC)
 
@@ -647,7 +647,7 @@ Advanced Threat Protection を使用すると、異常なアクティビティ�
 
 **ベスト プラクティス**:
 
-- 特定のサーバーまたはマネージド インスタンス用に [Azure Defender for SQL](azure-defender-for-sql.md)  を構成します。 [Azure Security Center の Standard レベル](../../security-center/security-center-pricing.md)に切り替えて、サブスクリプション内のすべてのサーバーおよびマネージド インスタンス用に Azure Defender for SQL を構成することもできます。
+- 特定のサーバーまたはマネージド インスタンス用に [Azure Defender for SQL](azure-defender-for-sql.md)  を構成します。 [[Azure Defender]](../../security-center/security-center-pricing.md) を有効にすることで、サブスクリプションのすべてのサーバーとマネージド インスタンスに対して Azure Defender for SQL を構成することもできます。
 
 - 完全な調査エクスペリエンスを実現するには、 [SQL Database Auditing](../../azure-sql/database/auditing-overview.md) を有効にすることをお勧めします。 監査を使用すると、データベース イベントを追跡し、Azure Storage アカウントまたは Azure Log Analytics ワークスペースの監査ログに書き込むことができます。
 

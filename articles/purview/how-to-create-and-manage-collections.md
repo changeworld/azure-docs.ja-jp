@@ -8,19 +8,19 @@ ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 08/18/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 6b4f0913813372f6f69f30f98f6969b4f6d66418
-ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
+ms.openlocfilehash: 824f1f06171e83381b46a6df99d70e3003f08f7d
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122835699"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123473048"
 ---
 # <a name="create-and-manage-collections-in-azure-purview"></a>Azure Purview でコレクションを作成および管理する
 
 > [!NOTE]
 > 現時点では、このガイドは **2021年8月18日以降** に作成された Purview インスタンスにのみ適用されます。 8 月 18 日より前に作成されたインスタンスでもコレクションを作成できますが、これらのコレクションでアクセス許可を管理することはできません。 8 月 18 日より前に作成された Purview インスタンスのコレクションの作成については、ページの下部にある [**レガシ コレクション ガイド**](#legacy-collection-guide)を参照してください。
 >
-> すべてのレガシ アカウントは、今後数週間以内に自動的にアップグレードされます。 Purview アカウントがアップグレードされると、メールで通知が届きます。 アカウントがアップグレードされた場合、割り当てられたすべてのアクセス許可が自動的にルート コレクションに再デプロイされます。
+> すべてのレガシ アカウントは、今後数週間以内に自動的にアップグレードされます。 Purview アカウントがアップグレードされると、メールで通知が届きます。 アカウントがアップグレードされたときの変更内容については、[アップグレードされたアカウントに関するガイド](concept-account-upgrade.md)を参照してください。
 
 Purview のコレクションは、ビジネスのフローによる資産とソースの整理に使用できますが、Purview 間のアクセスを管理するために使用されるツールでもあります。 このガイドでは、これらのコレクションの作成と管理に加えて、ソースを登録して資産をコレクションに追加する方法の手順について説明します。
 
@@ -285,7 +285,7 @@ Purview でコレクションを作成および管理するには、Purview 内�
 
     :::image type="content" source="./media/how-to-create-and-manage-collections/legacy-collection-name.png" alt-text="新しいコレクション ウィンドウが表示されている Purview Studio ウィンドウのスクリーンショット。" border="true":::
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 コレクションが作成されたので、以下のガイドに従ってリソースの追加やスキャンを行います。
 

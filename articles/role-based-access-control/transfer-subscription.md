@@ -8,14 +8,14 @@ ms.service: role-based-access-control
 ms.devlang: na
 ms.topic: how-to
 ms.workload: identity
-ms.date: 07/14/2021
+ms.date: 09/04/2021
 ms.author: rolyon
-ms.openlocfilehash: 64f164c7d5e60e92e30986f8a39b34e92b1fdce4
-ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
+ms.openlocfilehash: 19e9d6c76e30828b0aac0fba139963ff25ae2cba
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114202481"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123542316"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>Azure サブスクリプションを別の Azure AD ディレクトリに移転する
 
@@ -89,6 +89,8 @@ ms.locfileid: "114202481"
 
 > [!WARNING]
 > ストレージ アカウントや SQL データベースなどのリソースに対して保存時の暗号化を使用していて、それが移転されるの **ではない** サブスクリプションのキー コンテナーに依存している場合、復旧不可能なシナリオが発生する可能性があります。 このような状況が発生した場合は、別のキー コンテナーを使用するか、ユーザーが管理するキーを一時的に無効にして、この復旧不可能なシナリオを回避する必要があります。
+
+サブスクリプションを譲渡するとき、影響を受ける一部の Azure リソースの一覧を取得するには、[Azure Resource Graph](../governance/resource-graph/overview.md) でクエリを実行することもできます。 サンプル クエリについては、[Azure サブスクリプションの譲渡時に影響を受けるリソースの一覧](../governance/resource-graph/samples/samples-by-category.md#list-impacted-resources-when-transferring-an-azure-subscription)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 

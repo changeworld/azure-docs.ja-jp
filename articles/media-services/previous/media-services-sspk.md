@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/10/2021
 ms.author: xpouyat
-ms.openlocfilehash: 5ad7cd598e3970532e3a14795b78edcf1f9f61c4
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: f931d5c21de4c91acc24af68992e4b3b64931e21
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123226134"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123450586"
 ---
 # <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>Microsoft&reg; Smooth Streaming Client Porting Kit のライセンス
 
@@ -90,6 +90,7 @@ Smooth Streaming Client Porting Kit の利用には、1 回限りのライセン
 * MediaTek Inc.
 * Montage LZ Technologies Hong Kong Limited
 * Panasonic Corporation
+* Socionext Inc.
 * Synamedia Limited
 * Tatung Technology Inc.
 * Top Victory Investments, Ltd.

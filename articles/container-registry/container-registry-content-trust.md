@@ -2,14 +2,14 @@
 title: 署名済みのイメージの管理
 description: Azure Container Registry でコンテンツの信頼を有効にし、署名済みのイメージをプッシュしたりプルしたりする方法について説明します。 コンテンツの信頼は Docker コンテンツの信頼を実装する、Premium サービス レベルの機能です。
 ms.topic: how-to
-ms.date: 06/25/2021
+ms.date: 07/26/2021
 ms.custom: subject-rbac-steps
-ms.openlocfilehash: ddaded0ff733ea717a48bfe2bcaac4a84e102ad8
-ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
+ms.openlocfilehash: e6f4eb302d2ac5f6fc711e438a48a064efef0d27
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2021
-ms.locfileid: "112983619"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123450955"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Azure Container Registry におけるコンテンツの信頼
 
@@ -76,6 +76,9 @@ docker build --disable-content-trust -t myacr.azurecr.io/myimage:v1 .
 > 信頼されたイメージのプッシュ アクセス許可を次の管理者アカウントに付与することはできません。 
 > * Azure Container Registry の[管理者アカウント](container-registry-authentication.md#admin-account)
 > * [従来のシステム管理者ロール](../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)を持つ Azure Active Directory 内のユーザー アカウント。
+
+> [!NOTE]
+> 2021 年 7 月から、`AcrImageSigner` ロールには `Microsoft.ContainerRegistry/registries/sign/write` アクションと `Microsoft.ContainerRegistry/registries/trustedCollections/write` データ アクションの両方が含まれます。
 
 以降、Azure portal と Azure CLI から `AcrImageSigner` ロールを付与する方法について詳しく説明します。
 

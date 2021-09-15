@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/26/2021
 author: gahl-levy
 ms.author: gahllevy
-ms.openlocfilehash: a90a5d7ad7696844f735a1bed2f618846758fff3
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 2880bc5fc9c367a5ab3cb02db3e3d5901861d789
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123035812"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123439382"
 ---
 # <a name="upgrade-the-api-version-of-your-azure-cosmos-db-api-for-mongodb-account"></a>MongoDB 用 Azure Cosmos DB API アカウントの API バージョンをアップグレードする
 [!INCLUDE[appliesto-mongodb-api](../includes/appliesto-mongodb-api.md)]
@@ -62,6 +62,8 @@ ms.locfileid: "123035812"
 
 バージョン 3.2 からアップグレードする場合は、このデータベース アカウントで接続するアプリケーションとドライバーの既存のエンドポイントを置き換える必要があります。 **新しいエンドポイントを使用している接続のみが、新しい API バージョンの機能にアクセスできます**。 以前の 3.2 エンドポイントには `.documents.azure.com` というサフィックスが付いているはずです。
 
+3\.2 から新しいバージョンにアップグレードする場合、複数のフィールドを並べ替え、これらのクエリの安定した高パフォーマンスを実現するために[複合インデックス](mongodb-indexing.md)が必要になりました。 複数フィールドの並べ替えを成功させるため、このような複合インデックスを作成するようにします。 
+
 >[!Note]
 > このエンドポイントは、お使いのアカウントがソブリン、政府、または制限された Azure クラウドに作成されたときは少し異なる場合があります。
 
@@ -103,5 +105,5 @@ ms.locfileid: "123035812"
 - サポート対象およびサポート対象外の [MongoDB バージョン 3.6 の機能](feature-support-36.md)について確認します。
 - 詳細については、[Mongo 3.6 バージョンの機能](https://devblogs.microsoft.com/cosmosdb/azure-cosmos-dbs-api-for-mongodb-now-supports-server-version-3-6/)を参照してください。
 - Azure Cosmos DB への移行のための容量計画を実行しようとしていますか? 容量計画のために、既存のデータベース クラスターに関する情報を使用できます。
-    - 既存のデータベース クラスター内の仮想コアとサーバーの数のみがわかっている場合は、[仮想コアまたは仮想 CPU の数を使用した要求ユニットの見積り](../convert-vcore-to-request-unit.md)に関するページを参照してください 
-    - 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB Capacity Planner を使用した要求ユニットの見積もり](estimate-ru-capacity-planner.md)に関するページを参照してください
+    - 知っていることが既存のデータベース クラスター内の仮想コアとサーバーの数のみである場合は、[仮想コアまたは仮想 CPU の数を使用した要求ユニットの見積もり](../convert-vcore-to-request-unit.md)に関するページを参照してください 
+    - 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB 容量計画ツールを使用した要求ユニットに見積もり](estimate-ru-capacity-planner.md)に関するページを参照してください

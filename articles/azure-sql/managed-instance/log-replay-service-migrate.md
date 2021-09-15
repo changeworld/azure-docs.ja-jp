@@ -9,13 +9,13 @@ ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: mathoma
-ms.date: 03/31/2021
-ms.openlocfilehash: e76493aa83383e4ce59da77cfb0ce050475ad303
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/07/2021
+ms.openlocfilehash: 85bf8c07da9d283011d17f1f96ad76e0fa411213
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121751262"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123535313"
 ---
 # <a name="migrate-databases-from-sql-server-to-sql-managed-instance-by-using-log-replay-service-preview"></a>Log Replay Service (プレビュー) を使用して SQL Server から SQL Managed Instance にデータベースを移行する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -393,6 +393,7 @@ LRS の機能制限は次のとおりです。
 - LRS では、SQL Server のデータベースを `CHECKSUM` オプションを有効にしてバックアップする必要があります。
 - LRS によって使用される SAS トークンは Azure Blob Storage コンテナー全体に対して生成される必要があり、読み取りとリストのアクセス許可のみ付与されている必要があります。
 - 異なるデータベースのバックアップ ファイルは、Blob Storage 上の個別のフォルダーに配置する必要があります。
+- ファイル名に % 文字と $ 文字が含まれるバックアップ ファイルは LRS で使用できません。 そのようなファイル名は変更を検討してください。
 - LRS は、Blob Storage 上のバックアップ ファイルがある個別のフォルダーを指すデータベースごとに個別に開始する必要があります。
 - LRS は、1 つのマネージド インスタンスごとに最大 100 個の同時復元プロセスをサポートできます。
 

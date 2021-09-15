@@ -9,13 +9,13 @@ ms.topic: how-to
 author: markjones-msft
 ms.author: markjon
 ms.reviewer: chadam
-ms.date: 11/06/2020
-ms.openlocfilehash: bf7cf597d97f1316d43546382cbac140c3ba6fff
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/07/2021
+ms.openlocfilehash: afca22d3a0775e470becfbd31a2f67d99552938d
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121746608"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123541702"
 ---
 # <a name="migration-overview-sql-server-to-sql-server-on-azure-vms"></a>移行の概要: SQL Server から Azure VM 上の SQL Server
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -65,7 +65,7 @@ VM 上の SQL Server の適切なインストールと構成にも考慮する�
 | **移行戦略** | **説明** | **いつ使用するか** |
 | --- | --- | --- |
 | **リフト アンド シフト** | リフト アンド シフト戦略を使用して、物理または仮想の SQL Server 全体を、現在の場所から Azure VM 上の SQL Server のインスタンスに移動します。その際、オペレーティング システムや SQL Server バージョンに対する変更は行いません。 リフト アンド シフト移行を遂行するには、[Azure Migrate](../../../migrate/migrate-services-overview.md) に関するページを参照してください。 <br /><br /> ソースと宛先のサーバーでデータを同期している間、ソース サーバーはオンラインのままで要求に対応します。そのため、ほぼシームレスな移行が可能です。 | 単一から非常に大規模な移行まで使用でき、データ センターの終了などのシナリオにも適用可能です。 <br /><br /> ユーザーの SQL データベースまたはアプリケーションへのコード変更は最小限または不要で、移行全体を速やかに進められます。 <br /><br />[SSIS](/sql/integration-services/sql-server-integration-services)、[SSRS](/sql/reporting-services/create-deploy-and-manage-mobile-and-paginated-reports)、[SSAS](/analysis-services/analysis-services-overview) など、ビジネス インテリジェンス サービスを移行するために追加の手順が必要となることはありません。 |
-|**移行** | ターゲット SQL Server やオペレーティング システムのバージョンをアップグレードしたい場合は、移行戦略を使用します。 <br /> <br /> Azure Marketplace の Azure VM、またはソース SQL Server のバージョンに一致する準備済み SQL Server イメージを選択します。 | より新しいバージョンの SQL Server で利用可能な機能の使用が必要になったり望まれたりする場合、または、サポートされなくなったレガシ バージョンの SQL Server や OS をアップグレードする必要がある場合に使用します。  <br /> <br /> SQL Server のアップグレードをサポートするために、アプリケーションまたはユーザー データベースへの変更が必要な場合があります。 <br /><br />[ビジネス インテリジェンス](#business-intelligence) サービスが移行の対象になっている場合、その移行に関する追加の考慮事項がある可能性があります。 |
+|**移行** | ターゲット SQL Server やオペレーティング システムのバージョンをアップグレードしたい場合は、移行戦略を使用します。 <br /> <br /> Azure Marketplace の Azure VM、またはソース SQL Server のバージョンに一致する準備済み SQL Server イメージを選択します。 <br/> <br/> [Azure Data Studio 向け Azure SQL Migration 拡張機能](../../../dms/migration-using-azure-data-studio.md)を使用し、Azure 仮想マシンの SQL Server に SQL Server データベースを最小のダウンタイムで移行します。 | より新しいバージョンの SQL Server で利用可能な機能の使用が必要になったり望まれたりする場合、または、サポートされなくなったレガシ バージョンの SQL Server や OS をアップグレードする必要がある場合に使用します。  <br /> <br /> SQL Server のアップグレードをサポートするために、アプリケーションまたはユーザー データベースへの変更が必要な場合があります。 <br /><br />[ビジネス インテリジェンス](#business-intelligence) サービスが移行の対象になっている場合、その移行に関する追加の考慮事項がある可能性があります。 |
 
 
 ## <a name="lift-and-shift"></a>リフト アンド シフト  
@@ -73,7 +73,7 @@ VM 上の SQL Server の適切なインストールと構成にも考慮する�
 次の表では、SQL Server データベースを Azure VM 上の SQL Server に移行する **リフト アンド シフト** 移行戦略で使用できる方法について詳しく説明します。
 <br />
 
-|**方法** | **最小ソース バージョン** | **最小ターゲット バージョン** | **ソースのバックアップ サイズ制限** |  **ノート** |
+|**方法** | **最小ソース バージョン** | **最小ターゲット バージョン** | **ソースのバックアップ サイズ制限** |  **メモ** |
 | --- | --- | --- | --- | --- |
 | [Azure Migrate](../../../migrate/index.yml) | SQL Server 2008 SP4| SQL Server 2008 SP4| [Azure VM ストレージの制限](../../../index.yml) |  既存の SQL Server がそのまま、Azure VM 上の SQL Server のインスタンスに移動されます。 移行のワークロードは最大 35,000 VM にスケーリングできます。 <br /><br /> サーバー データの同期中、ソース サーバーがオンラインのままで要求に対応するので、ダウンタイムが最小限に抑えられます。 <br /><br /> **自動化とスクリプト**:[Azure Site Recovery のスクリプト](../../../migrate/how-to-migrate-at-scale.md)と [ Azure のスケーリングされた移行と計画の例](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)|
 
@@ -89,8 +89,9 @@ SQL Server データベースを Azure VM 上の SQL Server のインスタン�
 次の表では、SQL Server データベースを Azure VM 上の SQL Server に移行するために使用できるすべての方法について詳しく説明します。
 <br />
 
-|**方法** | **最小ソース バージョン** | **最小ターゲット バージョン** | **ソースのバックアップ サイズ制限** | **ノート** |
+|**方法** | **最小ソース バージョン** | **最小ターゲット バージョン** | **ソースのバックアップ サイズ制限** | **メモ** |
 | --- | --- | --- | --- | --- |
+| **[Azure Data Studio 用の Azure SQL Migration 拡張機能](../../../dms/migration-using-azure-data-studio.md)** | SQL Server 2005 | SQL Server 2008 | [Azure VM ストレージの制限](../../../index.yml) |  Azure 仮想マシンの SQL Server に SQL Server データベースを移行するには、Azure Data Studio でウィザード ベースの拡張機能を使用すると簡単です。 圧縮を使用して、転送するバックアップのサイズを最小限に抑えます。 <br /><br /> Azure Data Studio 向け Azure SQL Migration 拡張機能からは、簡単なユーザー インターフェイスで評価機能と移行機能の両方が提供されます。  |
 | **[ファイルへのバックアップ](sql-server-to-sql-on-azure-vm-individual-databases-guide.md#migrate)** | SQL Server 2008 SP4 | SQL Server 2008 SP4| [Azure VM ストレージの制限](../../../index.yml) |  これは、マシン間でデータベースを移動する際の、十分にテストされたシンプルな手法です。 圧縮を使用して、転送するバックアップのサイズを最小限に抑えます。 <br /><br /> **自動化とスクリプト**:[Transact-SQL (T-SQL)](/sql/t-sql/statements/backup-transact-sql) と [BLOB ストレージへの AzCopy](../../../storage/common/storage-use-azcopy-v10.md)  |
 | **[URL へのバックアップ](/sql/relational-databases/backup-restore/sql-server-backup-to-url)** | SQL Server 2012 SP1 CU2 | SQL Server 2012 SP1 CU2| SQL Server 2016 の場合は 12.8 TB、それ以外の場合は 1 TB | Azure Storage を使用してバックアップ ファイルを VM に移動するもう 1 つの方法です。 圧縮を使用して、転送するバックアップのサイズを最小限に抑えます。 <br /><br /> **自動化とスクリプト**:[T-SQL またはメンテナンス プラン](/sql/relational-databases/backup-restore/sql-server-backup-to-url) |
 | **[Database Migration Assistant (DMA)](/sql/dma/dma-overview)** | SQL Server 2005| SQL Server 2008 SP4| [Azure VM ストレージの制限](../../../index.yml) |  [DMA](/sql/dma/dma-overview) では、オンプレミスの SQL Server を評価してから、SQL Server の最新バージョンにシームレスにアップグレードするか、Azure VM 上の SQL Server、Azure SQL Database、または Azure SQL Managed Instance に移行します。 <br /><br /> Filestream が有効なユーザー データベースでは使用しないようにしてください。<br /><br /> DMA は、[SQL と Windows ログイン](/sql/dma/dma-migrateserverlogins)を移行したり、[SSIS パッケージ](/sql/dma/dma-assess-ssis)を評価したりする機能も備えています。 <br /><br /> **自動化とスクリプト**:[コマンド ライン インターフェイス](/sql/dma/dma-commandline) |

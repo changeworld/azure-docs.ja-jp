@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 03/02/2021
 ms.author: duau
-ms.openlocfilehash: f1af7fd0dc4b1e790a120c8fb9086d886487c34d
-ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
+ms.openlocfilehash: 67010d698c51e0eb66abcfa35fc629ec58d28789
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2021
-ms.locfileid: "113302790"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123424224"
 ---
 # <a name="add-ipv6-support-for-private-peering-using-azure-powershell-preview"></a>Azure PowerShell を使用してプライベート ピアリングに対する IPv6 サポートを追加する (プレビュー)
 
@@ -136,6 +136,8 @@ IPv6 プライベート ピアリングを使用する Azure リソースの既�
     $gw = Get-AzVirtualNetworkGateway -Name "GatewayName" -ResourceGroupName "ExpressRouteResourceGroup"
     Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw
     ```
+>[!NOTE]
+> 既存のゲートウェイがゾーン冗長ではない場合 (つまり、Standard、High Performance、Ultra Performance SKU である)、任意の SKU と、Standard、Static パブリック IP アドレスを使用してゲートウェイを削除して[再作成](./expressroute-howto-add-gateway-resource-manager.md#add-a-gateway)する必要があります。
 
 ## <a name="create-a-connection-to-a-new-virtual-network"></a>新しい仮想ネットワークへの接続を作成する
 

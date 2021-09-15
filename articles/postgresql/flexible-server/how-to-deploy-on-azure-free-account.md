@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 08/23/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 5645a872c0dbb5d1b80e6856b173b75d758a23ab
-ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+ms.openlocfilehash: 38a1e264d3febfc114df253a24479d9580c86bb5
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122868696"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123538365"
 ---
 # <a name="use-an-azure-free-account-to-try-azure-database-for-postgresql---flexible-server-for-free"></a>Azure 無料アカウントを使用して Azure Database for PostgreSQL - フレキシブル サーバーを無料で試す
 
@@ -108,7 +108,7 @@ Azure Database for PostgreSQL - フレキシブル サーバー (プレビュー
     :::image type="content" source="media/how-to-deploy-on-azure-free-account/review-create-postgresql.png" alt-text="[確認と作成] ブレードを示すスクリーンショット。":::
 
     >[!IMPORTANT]
-    >Azure 無料アカウントを使用していて、なおかつ無料サービス使用量が月間上限内 (使用量情報を確認するには、以下の「[**無料サービス使用量を監視および追跡する**](#monitor-and-track-free-services-usage)」セクションを参照してください) である限り、サービスの料金が課金されることはありません。 Microsoft は現在、無料サービスの **[コストの概要]** のエクスペリエンス向上に向けて取り組んでいます。 
+    >Azure の無料アカウントからフレキシブル サーバー インスタンスを作成するとき、 **[コンピューティング + ストレージ : コストの概要]** ブレードと **[確認および作成]** タブに **[月ごとの推定コスト]** が表示されます。ただし、Azure の無料アカウントを使用しているとき、無料のサービス使用料が月あたりの上限内である限り (使用量情報を見るには、「[**無料サービス使用量を監視、追跡する**](#monitor-and-track-free-services-usage)」を参照)、サービスの料金は請求されません。 Microsoft は現在、無料サービスの **[コストの概要]** のエクスペリエンス向上に向けて取り組んでいます。 
 
 1. **[作成]** を選択して、サーバーをプロビジョニングします。
 

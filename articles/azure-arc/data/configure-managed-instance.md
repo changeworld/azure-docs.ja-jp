@@ -7,21 +7,22 @@ ms.subservice: azure-arc-data
 author: dnethi
 ms.author: dinethi
 ms.reviewer: mikeray
-ms.date: 07/30/2021
+ms.date: 09/1/2021
 ms.topic: how-to
-ms.openlocfilehash: e84d5be7252f81c4e80d6070ada2151fcc3960f1
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b95688eca33400956997b44bda43565454f82479
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121743886"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123481220"
 ---
 # <a name="configure-azure-arc-enabled-sql-managed-instance"></a>Azure Arc 対応 SQL Managed Instance を構成する
 
 この記事では、Azure Arc 対応 SQL Managed Instance を構成する方法について説明します。
 
 
-## <a name="configure-resources"></a>Configure resources
+## <a name="configure-resources-such-as-cores-memory"></a>コア、メモリなどのリソースを構成する
+
 
 ### <a name="configure-using-cli"></a>CLI を使用した構成
 
@@ -31,13 +32,19 @@ Azure Arc 対応 SQL Managed Instance の構成を CLI を使用して編集で�
 az sql mi-arc edit --help
 ```
 
-次の例では、CPU コアとメモリの要求と制限を設定します。
+次のコマンドを使用して、Azure Arc 対応の SQL Managed Instance に利用できるメモリとコアを更新できます。
 
 ```azurecli
 az sql mi-arc edit --cores-limit 4 --cores-request 2 --memory-limit 4Gi --memory-request 2Gi -n <NAME_OF_SQL_MI> --k8s-namespace <namespace> --use-k8s
 ```
 
-SQL Managed Instance に対して行われた変更を確認するには、次のコマンドを使用して、構成 yaml ファイルを表示できます。
+次の例では、CPU コアとメモリの要求と制限を設定します。
+
+```azurecli
+az sql mi-arc edit --cores-limit 4 --cores-request 2 --memory-limit 4Gi --memory-request 2Gi -n sqlinstance1 --k8s-namespace arc --use-k8s
+```
+
+Azure Arc 対応の SQL Managed Instance に対して行われた変更を確認するには、次のコマンドを使用して、構成 yaml ファイルを表示できます。
 
 ```azurecli
 az sql mi-arc show -n <NAME_OF_SQL_MI> --k8s-namespace <namespace> --use-k8s
@@ -47,32 +54,23 @@ az sql mi-arc show -n <NAME_OF_SQL_MI> --k8s-namespace <namespace> --use-k8s
 
 作成後に、Azure Arc 対応 SQL Managed Instance のサーバー構成設定を構成できます。 この記事では、mssql エージェントの有効化/無効化などの設定を構成する方法、およびトラブルシューティングのシナリオで特定のトレース フラグを有効にする方法について説明します。
 
-これらのいずれかの設定を変更するには、次の手順に従います。
 
-1. ターゲット設定を含むカスタム `mssql-custom.conf` ファイルを作成します。 次の例では、SQL エージェントを有効にし、トレース フラグ 1204 を有効にします。
+### <a name="enable-sql-server-agent"></a>SQL Server エージェントを有効にする
 
-   ```
-   [sqlagent]
-   enabled=true
-   
-   [traceflag]
-   traceflag0 = 1204
-   ```
+既定では、SQL Server エージェントは無効になっています。 次のコマンドを実行して有効にできます。
 
-1. `mssql-custom.conf` ファイルを `master-0` ポッドの `mssql-miaa` コンテナー内の `/var/opt/mssql` にコピーします。 `<namespaceName>` を Arc 名前空間の名前に置換します。
+```azurecli
+az sql mi-arc edit -n <NAME_OF_SQL_MI> --k8s-namespace <namespace> --use-k8s --agent-enabled true
+```
+例
+```azurecli
+az sql mi-arc edit -n sqlinstance1 --k8s-namespace arc --use-k8s --agent-enabled true
+```
 
-   ```bash
-   kubectl cp mssql-custom.conf master-0:/var/opt/mssql/mssql-custom.conf -c mssql-server -n <namespaceName>
-   ```
+### <a name="enable-trace-flags"></a>トレース フラグを有効にする
 
-1. SQL Server インスタンスを再起動します。  `<namespaceName>` を Arc 名前空間の名前に置換します。
+トレース フラグは次のように有効にできます。
+```azurecli
+az sql mi-arc edit -n <NAME_OF_SQL_MI> --k8s-namespace <namespace> --use-k8s --trace-flags "3614,1234" 
+```
 
-   ```bash
-   kubectl exec -it master-0  -c mssql-server -n <namespaceName> -- /bin/bash
-   supervisorctl restart mssql-server
-   exit
-   ```
-
-
-**既知の制限事項**
-- 上記の手順では、Kubernetes クラスター管理者のアクセス許可が必要です
