@@ -8,19 +8,19 @@ ms.subservice: purview-data-map
 ms.topic: quickstart
 ms.date: 08/18/2021
 ms.custom: template-quickstart
-ms.openlocfilehash: a1a62bb6253aa2788d8dad41d506ca898a049283
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: ba3265ff435bc0e8a34048b07aeee3ef82b24b6c
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123475694"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122609141"
 ---
 # <a name="quickstart-create-a-collection-and-assign-permissions-in-purview"></a>クイック スタート: Purview でコレクションを作成してアクセス許可を割り当てる
 
 > [!NOTE]
 > 現時点では、このクイックスタートは、2021 年 8 月 18 日以降に作成された Purview インスタンスのみに適用されます。 8 月 18 日より前に作成されたインスタンスでもコレクションを作成できますが、これらのコレクションでアクセス許可を管理することはできません。 8 月 18 日より前に作成された Purview インスタンスのコレクションの作成については、ページの下部にある [**レガシ コレクション ガイド**](#legacy-collection-guide)を参照してください。
 > 
-> すべてのレガシ アカウントは、今後数週間以内に自動的にアップグレードされます。 Purview アカウントがアップグレードされると、メールで通知が届きます。 アカウントがアップグレードされたときの変更内容については、[アップグレードされたアカウントに関するガイド](concept-account-upgrade.md)を参照してください。
+> すべてのレガシ アカウントは、今後数週間以内に自動的にアップグレードされます。 Purview アカウントがアップグレードされると、メールで通知が届きます。 アカウントがアップグレードされた場合、割り当てられたすべてのアクセス許可が自動的にルート コレクションに再デプロイされます。
 
 コレクションは、資産、ソース、および情報全体の所有権とアクセス制御を管理するための Purview のツールです。 これにより、ソースと資産は、管理エクスペリエンスとデータを調和させるためにカスタマイズされたカテゴリに整理されます。 このガイドでは、組織の Purview 環境を準備するために最初のコレクションとコレクション管理者を設定する方法について説明します。
 
@@ -36,29 +36,29 @@ ms.locfileid: "123475694"
 
 Purview でコレクションを作成および管理するには、Purview 内で **コレクション管理者** である必要があります。 これらのアクセス許可は [Purview Studio](use-purview-studio.md) で確認できます。 Studio を見つけるには、[Azure portal](https://portal.azure.com) で Purview リソースに移動し、概要ページで **[Purview Studio を開く]** タイルを選択します。
 
-1. 左ペインから [データ マップ] > [コレクション] を選択し、コレクション管理ページを開きます。
+1. 左側ペインから [データ マップ] > [コレクション] を選択し、コレクション管理ページを開きます。
 
-    :::image type="content" source="./media/quickstart-create-collection/find-collections.png" alt-text="Purview Studio ウィンドウのスクリーンショット。データ マップが開かれ、[コレクション] タブが選択されています。" border="true":::
+    :::image type="content" source="./media/quickstart-create-collection/find-collections.png" alt-text="Purview Studio ウィンドウのスクリーンショット。Data Map が開かれ、[コレクション] タブが選択されています。" border="true":::
 
 1. ルート コレクションを選択します。 これはコレクション リストの一番上のコレクションであり、Purview リソースと同じ名前になります。 次の例では、Contoso Purview という名前になっています。
 
-    :::image type="content" source="./media/quickstart-create-collection/select-root-collection.png" alt-text="Purview Studio ウィンドウのスクリーンショット。データ マップが開かれ、ルート コレクションが強調表示されています。" border="true":::
+    :::image type="content" source="./media/quickstart-create-collection/select-root-collection.png" alt-text="Purview Studio ウィンドウのスクリーンショット。Data Map が開かれ、ルート コレクションが強調表示されています。" border="true":::
 
 1. コレクション ウィンドウでロールの割り当てを選択します。
 
-    :::image type="content" source="./media/quickstart-create-collection/role-assignments.png" alt-text="Purview Studio ウィンドウのスクリーンショット。データ マップが開かれ、[ロールの割り当て] タブが強調表示されています。" border="true":::
+    :::image type="content" source="./media/quickstart-create-collection/role-assignments.png" alt-text="Purview Studio ウィンドウのスクリーンショット。Data Map が開かれ、[ロールの割り当て] タブが強調表示されています。" border="true":::
 
-1. コレクションを作成するには、ロールの割り当ての下のコレクション管理者リストに含まれている必要があります。 Purview リソースを作成した場合は、ルート コレクションの下にコレクション管理者として既に一覧表示されている必要があります。 それ以外の場合は、コレクション管理者に連絡してアクセス許可を付与してもらう必要があります。
+1. コレクションを作成するには、ロールの割り当ての下のコレクション管理者リストに含まれている必要があります。 Purview リソースを作成した場合は、ルート コレクションの下にコレクション管理者として既に一覧表示されているはずです。 それ以外の場合は、コレクション管理者に連絡してアクセス許可を付与してもらう必要があります。
 
-    :::image type="content" source="./media/quickstart-create-collection/collection-admins.png" alt-text="Purview Studio ウィンドウのスクリーンショット。データ マップが開かれ、コレクション管理者のセクションが強調表示されています。" border="true":::
+    :::image type="content" source="./media/quickstart-create-collection/collection-admins.png" alt-text="Purview Studio ウィンドウのスクリーンショット。Data Map が開かれ、コレクション管理者のセクションが強調表示されています。" border="true":::
 
 ## <a name="create-a-collection-in-the-portal"></a>ポータルでコレクションを作成する
 
 コレクションを作成するには、[Purview Studio](use-purview-studio.md) から開始します。 Studio を見つけるには、Azure portal で Purview リソースに移動し、概要ページで **[Purview Studio を開く]** タイルを選択します。
 
-1. 左ペインから [データ マップ] > [コレクション] を選択し、コレクション管理ページを開きます。
+1. 左側ペインから [データ マップ] > [コレクション] を選択し、コレクション管理ページを開きます。
 
-    :::image type="content" source="./media/quickstart-create-collection/find-collections.png" alt-text="Purview Studio ウィンドウのスクリーンショット。データ マップが開かれ、[コレクション] タブが選択されています。" border="true":::
+    :::image type="content" source="./media/quickstart-create-collection/find-collections.png" alt-text="Purview Studio ウィンドウのスクリーンショット。Data Map が開かれ、[コレクション] タブが選択されています。" border="true":::
 
 1. **[+ コレクションの追加]** を選択します。
 1. 右側のパネルで、コレクション名、説明を入力し、ユーザーを検索してコレクション管理者として追加します。
@@ -90,7 +90,7 @@ Purview でコレクションを作成および管理するには、Purview 内�
 
 1. **[ロール割り当ての編集]** または人アイコンを選択して、各ロールメンバーを編集します。
 
-    :::image type="content" source="./media/quickstart-create-collection/edit-role-assignments.png" alt-text="[ロールの割り当ての編集] ドロップダウン リストが選択されている Purview Studio コレクション ウィンドウのスクリーンショット。" border="true":::
+    :::image type="content" source="./media/quickstart-create-collection/edit-role-assignments.png" alt-text="[ロール割り当ての編集] ドロップダウン リストが選択されている Purview Studio コレクション ウィンドウのスクリーンショット。" border="true":::
 
 1. テキスト ボックスに入力し、ロール メンバーに追加するユーザーを検索します。 **[OK]** を選択して変更を保存します。
 
@@ -101,13 +101,13 @@ Purview でコレクションを作成および管理するには、Purview 内�
 
 ### <a name="create-a-legacy-collection"></a>レガシ コレクションを作成する
 
-1. 左側ペインから [データ マップ] を選択し、データ マップを開きます。 マップ ビューを使用すると、コレクションと、その下に一覧表示されているソースを確認できます。
+1. 左側ペインから [Data Map] を選択し、データ マップを開きます。 マップ ビューを使用すると、コレクションと、その下に一覧表示されているソースを確認できます。
 
-    :::image type="content" source="./media/quickstart-create-collection/legacy-collection-view.png" alt-text="データ マップが開かれている Purview Studio ウィンドウのスクリーンショット。" border="true":::
+    :::image type="content" source="./media/quickstart-create-collection/legacy-collection-view.png" alt-text="Data Map が開かれている Purview Studio ウィンドウのスクリーンショット。" border="true":::
 
 1. **[+ 新しいコレクション]** を選択します。
 
-    :::image type="content" source="./media/quickstart-create-collection/legacy-collection-create.png" alt-text="Purview Studio ウィンドウのスクリーンショット。データ マップが開かれ、[+ 新しいコレクション] が強調表示されています。" border="true":::
+    :::image type="content" source="./media/quickstart-create-collection/legacy-collection-create.png" alt-text="Purview Studio ウィンドウのスクリーンショット。Data Map が開かれ、[+ 新しいコレクション] が強調表示されています。" border="true":::
 
 1. コレクションに名前を付け、親または [なし] を選択します。 **［作成］** を選択します コレクション情報はデータ マップに反映されます。
 

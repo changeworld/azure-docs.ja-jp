@@ -10,12 +10,12 @@ ms.author: gopalv
 author: gvashishtha
 ms.date: 07/31/2020
 ms.custom: deploy
-ms.openlocfilehash: 7d080297dd32ad137e11cb692b820f4b9f6b3521
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: ed3b0512a7f73ae9e387b41871e2ee59607e731d
+ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123428454"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122597500"
 ---
 # <a name="update-a-deployed-web-service"></a>デプロイされた Web サービスを更新する
 
@@ -94,7 +94,7 @@ az ml service update -n myservice --model-metadata-file modelinfo.json
 >
 > 新しいエントリ スクリプトまたは環境を使用するようにサービスを更新するには、[推論構成ファイル](./reference-azure-machine-learning-cli.md#inference-configuration-schema)を作成し、それを `ic` パラメーターで指定します。
 
-詳細については、[az ml service update](/cli/azure/ml(v1)/service?view=azure-cli-latest#az_ml_v1__service_update&preserve-view=true) のドキュメントを参照してください。
+詳細については、[az ml service update](/cli/azure/ml(v1)/service?view=azure-cli-latest#az_ml_v1__service_update) のドキュメントを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

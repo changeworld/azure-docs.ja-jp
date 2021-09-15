@@ -5,25 +5,20 @@ services: route-server
 author: duongau
 ms.service: route-server
 ms.topic: quickstart
-ms.date: 08/17/2021
+ms.date: 09/01/2021
 ms.author: duau
-ms.openlocfilehash: b5d4017c60a831b90b21527bbf8ecca4282bdd73
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 36be075345dcacdf8246f46462a2665718f27e7e
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122322954"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123424800"
 ---
 # <a name="quickstart-create-and-configure-route-server-using-the-azure-portal"></a>クイックスタート: Azure portal を使用してルート サーバーを作成および構成する
 
 この記事は、Azure portal を使用して、仮想ネットワーク内のネットワーク仮想アプライアンス (NVA) とピアリングするように Azure Route Server を構成するのに役立ちます。 Azure Route Server では、NVA からルートを学習し、仮想ネットワーク内の仮想マシン上でそれらをプログラムします。 また、Azure Route Server は NVA に仮想ネットワーク ルートをアドバタイズします。 詳細については、[Azure Route Server](overview.md) に関するページを参照してください。
 
 :::image type="content" source="media/quickstart-configure-route-server-portal/environment-diagram.png" alt-text="Azure portal を使用した Route Server デプロイ環境の図。" border="false":::
-
-> [!IMPORTANT]
-> Azure Route Server (プレビュー) は現在、パブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
