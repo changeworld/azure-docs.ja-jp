@@ -9,14 +9,15 @@ ms.workload: infrastructure
 ms.date: 05/01/2020
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: d323fd5a3faf5811e88fd924ab767ec20568b917
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: fe7698a0a2a7c0059db6e5f96e3f86445bc5871f
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113435472"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123449454"
 ---
 # <a name="tutorial-create-windows-vm-images-with-azure-powershell"></a>チュートリアル:Azure PowerShell を使用して Windows VM イメージを作成する
+**適用対象:** :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット 
 
 イメージを使用してデプロイのブートストラップを実行し、複数の VM で一貫性を確保することができます。 このチュートリアルでは、PowerShell を使用して Azure 仮想マシンの独自の特殊化されたイメージを作成し、共有イメージ ギャラリーに格納します。 学習内容は次のとおりです。
 
@@ -43,7 +44,7 @@ ms.locfileid: "113435472"
 
 共有イメージ ギャラリー機能には、次のような複数のリソースの種類があります。
 
-[!INCLUDE [virtual-machines-shared-image-gallery-resources](../../../includes/virtual-machines-shared-image-gallery-resources.md)]
+[!INCLUDE [virtual-machines-shared-image-gallery-resources](../includes/virtual-machines-shared-image-gallery-resources.md)]
 
 
 ## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell を起動する

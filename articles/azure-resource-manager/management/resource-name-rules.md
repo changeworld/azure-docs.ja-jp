@@ -3,12 +3,12 @@ title: リソースの名前付けに関する制限事項
 description: Azure リソースの名前付けに関する規則と制限事項を示します。
 ms.topic: conceptual
 ms.date: 07/08/2021
-ms.openlocfilehash: a068f28ada85f73aed339956e242c959d6dcb4d3
-ms.sourcegitcommit: 6f4378f2afa31eddab91d84f7b33a58e3e7e78c1
+ms.openlocfilehash: 4beb484a6f3e81fe6baa7cbeba33c0f18639fb18
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113688309"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444655"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure リソースの名前付け規則と制限事項
 
@@ -40,38 +40,38 @@ ms.locfileid: "113688309"
 > | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | サービス (service) | グローバル | 1-50 | 英数字とハイフン。<br><br>先頭は文字、末尾は英数字にします。 |
-> | service/apis | サービス (service) | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
-> | service/apis/issues | api | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
-> | service/apis/issues/attachments | イシュー | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
-> | service/apis/issues/comments | イシュー | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
-> | service/apis/operations | api | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
-> | service/apis/operations/tags | operation | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
+> | service/apis | サービス (service) | 1 ～ 80 | 英数字とハイフン。<br><br>先頭は文字、末尾は英数字にします。 |
+> | service/apis/issues | api | 1 ～ 80 | 英数字とハイフン。<br><br>先頭は文字、末尾は英数字にします。 |
+> | service/apis/issues/attachments | イシュー | 1 ～ 80 | 英数字とハイフン。<br><br>先頭は文字、末尾は英数字にします。 |
+> | service/apis/issues/comments | イシュー | 1 ～ 80 | 英数字とハイフン。<br><br>先頭は文字、末尾は英数字にします。 |
+> | service/apis/operations | api | 1 ～ 80 | 英数字とハイフン。<br><br>先頭は文字、末尾は英数字にします。 |
+> | service/apis/operations/tags | operation | 1 ～ 80 | 英数字とハイフン。<br><br>先頭は文字、末尾は英数字にします。 |
 > | service/apis/releases | api | 1 ～ 80 | 英数字、アンダースコア、およびハイフン。<br><br>先頭と末尾には、英数字またはアンダースコアを使用します。 |
-> | service/apis/schemas | api | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
-> | service/apis/tagDescriptions | api | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
-> | service / apis / tags | api | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
-> | service/api-version-sets | サービス (service) | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
-> | service/authorizationServers | サービス (service) | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
-> | service/backends | サービス (service) | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
-> | service/certificates | サービス (service) | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
-> | service / diagnostics | サービス (service) | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
-> | service/groups | サービス (service) | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
-> | service/groups/users | group | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
-> | service/identityProviders | サービス (service) | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
-> | service/loggers | サービス (service) | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
-> | service/notifications | サービス (service) | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
-> | service/notifications/recipientEmails | 通知 (notification) | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
-> | service/openidConnectProviders | サービス (service) | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
-> | service/policies | サービス (service) | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
-> | service/products | サービス (service) | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
-> | service / products / apis | product | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
-> | service/products/groups | product | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
-> | service/products/tags | product | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
-> | service / properties | サービス (service) | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
-> | service/subscriptions | サービス (service) | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
-> | service / tags | サービス (service) | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
-> | service/templates | サービス (service) | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
-> | service/users | サービス (service) | 1-256 | 次は使用できません:<br> `*#&+:<>?` |
+> | service/apis/schemas | api | 1 ～ 80 | 英数字とハイフン。<br><br>先頭は文字、末尾は英数字にします。 |
+> | service/apis/tagDescriptions | api | 1 ～ 80 | 英数字とハイフン。<br><br>先頭は文字、末尾は英数字にします。 |
+> | service / apis / tags | api | 1 ～ 80 | 英数字とハイフン。<br><br>先頭は文字、末尾は英数字にします。 |
+> | service/api-version-sets | サービス (service) | 1 ～ 80 | 英数字とハイフン。<br><br>先頭は文字、末尾は英数字にします。 |
+> | service/authorizationServers | サービス (service) | 1 ～ 80 | 英数字とハイフン。<br><br>先頭は文字、末尾は英数字にします。 |
+> | service/backends | サービス (service) | 1 ～ 80 | 英数字とハイフン。<br><br>先頭は文字、末尾は英数字にします。 |
+> | service/certificates | サービス (service) | 1 ～ 80 | 英数字とハイフン。<br><br>先頭は文字、末尾は英数字にします。 |
+> | service / diagnostics | サービス (service) | 1 ～ 80 | 英数字とハイフン。<br><br>先頭は文字、末尾は英数字にします。 |
+> | service/groups | サービス (service) | 1 ～ 80 | 英数字とハイフン。<br><br>先頭は文字、末尾は英数字にします。 |
+> | service/groups/users | group | 1 ～ 80 | 英数字とハイフン。<br><br>先頭は文字、末尾は英数字にします。 |
+> | service/identityProviders | サービス (service) | 1 ～ 80 | 英数字とハイフン。<br><br>先頭は文字、末尾は英数字にします。 |
+> | service/loggers | サービス (service) | 1 ～ 80 | 英数字とハイフン。<br><br>先頭は文字、末尾は英数字にします。 |
+> | service/notifications | サービス (service) | 1 ～ 80 | 英数字とハイフン。<br><br>先頭は文字、末尾は英数字にします。 |
+> | service/notifications/recipientEmails | 通知 (notification) | 1 ～ 80 | 英数字とハイフン。<br><br>先頭は文字、末尾は英数字にします。 |
+> | service/openidConnectProviders | サービス (service) | 1 ～ 80 | 英数字とハイフン。<br><br>先頭は文字、末尾は英数字にします。 |
+> | service/policies | サービス (service) | 1 ～ 80 | 英数字とハイフン。<br><br>先頭は文字、末尾は英数字にします。 |
+> | service/products | サービス (service) | 1 ～ 80 | 英数字とハイフン。<br><br>先頭は文字、末尾は英数字にします。 |
+> | service / products / apis | product | 1 ～ 80 | 英数字とハイフン。<br><br>先頭は文字、末尾は英数字にします。 |
+> | service/products/groups | product | 1 ～ 80 | 英数字とハイフン。<br><br>先頭は文字、末尾は英数字にします。 |
+> | service/products/tags | product | 1 ～ 80 | 英数字とハイフン。<br><br>先頭は文字、末尾は英数字にします。 |
+> | service / properties | サービス (service) | 1 ～ 80 | 英数字とハイフン。<br><br>先頭は文字、末尾は英数字にします。 |
+> | service/subscriptions | サービス (service) | 1 ～ 80 | 英数字とハイフン。<br><br>先頭は文字、末尾は英数字にします。 |
+> | service / tags | サービス (service) | 1 ～ 80 | 英数字とハイフン。<br><br>先頭は文字、末尾は英数字にします。 |
+> | service/templates | サービス (service) | 1 ～ 80 | 英数字とハイフン。<br><br>先頭は文字、末尾は英数字にします。 |
+> | service/users | サービス (service) | 1 ～ 80 | 英数字とハイフン。<br><br>先頭は文字、末尾は英数字にします。 |
 
 ## <a name="microsoftappconfiguration"></a>Microsoft.AppConfiguration
 

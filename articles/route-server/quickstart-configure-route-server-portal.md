@@ -5,14 +5,14 @@ services: route-server
 author: duongau
 ms.service: route-server
 ms.topic: quickstart
-ms.date: 03/03/2021
+ms.date: 08/17/2021
 ms.author: duau
-ms.openlocfilehash: 8e7572f5f39655cd6fae8a6528cacd2e074a002b
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: b5d4017c60a831b90b21527bbf8ecca4282bdd73
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107950408"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322954"
 ---
 # <a name="quickstart-create-and-configure-route-server-using-the-azure-portal"></a>クイックスタート: Azure portal を使用してルート サーバーを作成および構成する
 
@@ -56,6 +56,7 @@ ms.locfileid: "107950408"
     | リージョン | ルート サーバーを作成するリージョンを選択します。 以前に作成した仮想ネットワークと同じリージョンを選択すると、ドロップダウンにその仮想ネットワークが表示されます。 |
     | Virtual Network | ルート サーバーを作成する仮想ネットワークを選択します。 新しい仮想ネットワークを作成することも、既存の仮想ネットワークを使用することもできます。 既存の仮想ネットワークを使用する場合は、ルート サーバーのサブネット要件に対応するために、既存の仮想ネットワークに少なくとも /27 サブネットの十分な空間があることを確認してください。 ドロップダウンにお使いの仮想ネットワークが表示されない場合は、適切なリソース グループまたはリージョンを選択していることを確認してください。 |
     | Subnet | 仮想ネットワークを作成または選択すると、[サブネット] フィールドが表示されます。 このサブネットは、ルート サーバー専用です。 **[Manage subnet configuration]\(サブネット構成の管理\)** を選択し、Azure Route Server のサブネットを作成します。 **[+ サブネット]** を選択し、これらのガイドラインに従ってサブネットを作成します。</br><br>- サブネットの名前は *RouteServerSubnet* にする必要があります。</br><br>- サブネットは、少なくとも /27 以上である必要があります。</br> |
+    | パブリック IP アドレス | ルート サーバーに割り当てる既存の Standard パブリック IP リソースを選択するか、新規に作成します。 ルート サーバーの構成が管理されるバックエンド サービスへの接続を確保するために、パブリック IP アドレスが必要です。 |
 
 1. **[Review + create]\(確認と作成\)** を選択し、概要を確認して、 **[作成]** を選択します。 
 

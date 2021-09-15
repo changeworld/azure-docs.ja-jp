@@ -1,0 +1,262 @@
+---
+title: Azure Sentinel 情報モデル (ASIM) スキーマ | Microsoft Docs
+description: この記事では、Azure Sentinel 情報モデル (ASIM) スキーマについてと、ASIM がさまざまなソースから統一されたプレゼンテーションにデータを正規化する上で、それがどう役立つのかについて説明します
+services: sentinel
+cloud: na
+documentationcenter: na
+author: oshezaf
+manager: rkarlin
+ms.assetid: ''
+ms.service: azure-sentinel
+ms.subservice: azure-sentinel
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: conceptual
+ms.date: 08/11/2021
+ms.author: ofshezaf
+ms.openlocfilehash: bb58fcd9f7ddc9f9ef17d031f5a4139f98ae8925
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122515783"
+---
+# <a name="azure-sentinel-information-model-asim-schemas-public-preview"></a>Azure Sentinel 情報モデル (ASIM) スキーマ (パブリック プレビュー)
+
+[ASIM](normalization.md) スキーマは、アクティビティを表すフィールドのセットです。 正規化されたスキーマのフィールドをクエリで使用すると、すべての正規化されたソースでクエリが確実に動作するようになります。
+
+スキーマ リファレンスでは、各スキーマを構成するフィールドの概要が示されています。 現在、ASIM では次のスキーマが定義されています。
+
+ - [ネットワーク セッション](normalization-schema.md)
+ - [DNS アクティビティ](dns-normalization-schema.md)
+ - [プロセス イベント](process-events-normalization-schema.md)
+ - [認証イベント](authentication-normalization-schema.md)
+ - [レジストリ イベント](registry-event-normalization-schema.md)
+ - [ファイル アクティビティ](file-event-normalization-schema.md)
+
+> [!IMPORTANT]
+> ASIM は現在、プレビューの段階です。 [Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)には、ベータ版、プレビュー版、またはまだ一般提供されていない Azure 機能に適用される追加の法律条項が含まれています。
+>
+
+## <a name="schema-concepts"></a>スキーマの概念
+
+次の概念は、スキーマのリファレンス ドキュメントを理解し、スキーマがカバーしていない情報がデータに含まれる場合に、正規化された方法でスキーマを拡張するのに役立ちます。
+
+
+|概念  |説明  |
+|---------|---------|
+|**フィールド名**     |   各スキーマの中核となるのは、そのフィールド名です。 フィールド名は次のグループに属します。 <br><br>- すべてのスキーマに共通のフィールド <br>- あるスキーマに固有のフィールド <br>- スキーマに含まれるエンティティ (ユーザーなど) を表すフィールド。 エンティティを表すフィールドは、[スキーマ間で類似しています](#entities)。 <br><br>ドキュメント化されたスキーマに存在しないフィールドがソースにある場合、一貫性を維持するために正規化されます。 追加のフィールドがエンティティを表す場合は、エンティティ フィールドのガイドラインに基づいて正規化されます。 それ以外の場合、スキーマはすべてのスキーマ間で一貫性を保つように努めます。<br><br> たとえば、DNS サーバーのアクティビティ ログではユーザー情報が提供されない一方で、エンドポイントからの DNS アクティビティ ログにはユーザー情報が含まれる場合があります。これは、ユーザー エンティティのガイドラインに従って正規化できます。      |
+|**フィールドの型**     |  スキーマの各フィールドには型があります。 Log Analytics ワークスペースにあるデータ型のセットは限られています。 そのため、Azure Sentinel は多くのスキーマ フィールドで論理型を使用します。Log Analytics ではこれを強制していませんが、スキーマの互換性のためには必要です。 論理フィールド型を使用すると、ソース間で値とフィールド名の両方の一貫性が保たれます。  <br><br>詳細については、「[論理型](#logical-types)」をご覧ください。     |
+|**フィールド クラス**     |フィールドはいくつかのクラスを持つことができ、そのフィールドがいつパーサーによって実装される必要があるのかを規定します。 <br><br>-    **必須** フィールドは、すべてのパーサーで表示されなければなりません。 ソースでこの値の情報が提供されない場合、またはデータを別の方法で追加できない場合、正規化されたスキーマを参照するほとんどのコンテンツ項目ではサポートされません。<br>-  **推奨** フィールドは、利用可能な場合には正規化すべきです。 ただし、すべてのソースで利用できるとは限らないため、正規化されたスキーマを参照するコンテンツ項目では利用可能性を考慮する必要があります。 <br>-  **省略可能な** フィールドは、利用可能な場合には正規化できますし、元の形式で残すこともできます。 通常、最小限のパーサーでは、パフォーマンス上の理由から正規化されません。    |
+|**エンティティ**     | イベントは、ユーザー、ホスト、プロセス、ファイルなどのエンティティを中心に発展します。各エンティティでは、それを記述するために複数のフィールドが必要になる場合があります。 たとえば、ホストは名前と IP アドレスを持つことができます。 <br><br>1 つのレコードに、ソース ホストと宛先ホストの両方のような、同じ種類の複数のエンティティが含まれる場合があります。 <br><br>Azure Sentinel 情報モデルはエンティティを一貫して記述する方法を定義し、エンティティではスキーマの拡張が考慮されます。 <br><br>たとえば、ネットワーク セッション スキーマにはプロセス情報は含まれませんが、一部のイベント ソースによって追加できるプロセス情報が提供されます。 詳しくは、「[エンティティ](#entities)」をご覧ください。 |
+|**エイリアス**     |  場合によっては、あるフィールドに対して予想される名前がユーザーによって異なるケースがあります。 たとえば、DNS の用語では `query` という名前のフィールドが想定されますが、より一般的には、これにはドメイン名が保持されます。 エイリアスは、指定された値に対して複数の名前を許可することで、あいまいさの問題を解決します。 エイリアス クラスは、エイリアス対象のフィールドと同じクラスです。       |
+| | |
+
+## <a name="logical-types"></a>論理型
+
+スキーマの各フィールドには型があります。 いくつかは `string`、`int`、`datetime`、`dynamic` などの、組み込みの Azure Log Analytics 型を持っています。 他には、論理型を持つフィールドもあります。これは、フィールド値を正規化すべき方法を表します。
+
+|データ型  |物理型  |形式と値  |
+|---------|---------|---------|
+|**Boolean**     |   Bool      |    ブール値を表す数値または文字列形式ではなく、ネイティブの KQL ブール データ型を使用します。     |
+|**列挙**     |  String       |   フィールドに対して明示的に定義された値のリストです。 スキーマ定義には、受け入れ可能な値が一覧表示されます。      |
+|**日付/時刻**     |  インジェスト メソッドの機能に応じて、次の物理表現のいずれかを降順の優先順位で使用します。 <br><br>- Log Analytics 組み込みの datetime 型 <br>- Log Analytics の datetime の数値表現を使用した整数フィールド。 <br>- Log Analytics の datetime の数値表現を使用した文字列フィールド <br>- サポートされている [Log Analytics の日付/時刻形式](/azure/data-explorer/kusto/query/scalar-data-types/datetime)を格納する文字列フィールド。       |  [Log Analytics の日付と時刻の表現](/azure/kusto/query/scalar-data-types/datetime)は、Unix の時刻表現と似ていますが異なります。 詳細については、[変換ガイドライン](/azure/kusto/query/datetime-timespan-arithmetic)に関するページをご覧ください。 <br><br>**注**: 該当する場合は、時刻のタイム ゾーンを調整する必要があります。 |
+|**MAC アドレス**     |  String       | コロン 16 進表記        |
+|**IP アドレス**     |String         |    Azure Sentinel スキーマは、IPv4 アドレスと IPv6 アドレスを別々に保持しません。 すべての IP アドレス フィールドには、IPv4 アドレスか IPv6 アドレスのいずれか一方を次の形式で含めることができます。 <br><br>- **IPv4** はドット付き 10 進数で表記します  <br>- **IPv6** は 8 ヘクステットで表記します。短い形式が許容されます<br><br>例:<br>`192.168.10.10` (IPv4)<br>`FEDC:BA98:7654:3210:FEDC:BA98:7654:3210` (IPv6)<br>`1080::8:800:200C:417A` (IPv6 短い形式)     |
+|**FQDN**        |   string      |    ドット表記を使用した完全修飾ドメイン名 (例: `docs.microsoft.com`) |
+|**Country (国)**     |   String      |    [ISO 3166-1](https://www.iso.org/iso-3166-country-codes.html) を使用した文字列で、次の優先順位に従う: <br><br> - Alpha-2 コード (例: 米国は `US`) <br> - Alpha-3 コード (例: 米国は `USA`) <br>- 短い名前<br><br>コードの一覧は、[国際標準化機構 (ISO) の Web サイト](https://www.iso.org/obp/ui/#search)で確認できます|
+|**リージョン**     | String        |   ISO 3166-2 を使用した、国の下位区分名<br><br>コードの一覧は、[国際標準化機構 (ISO) の Web サイト](https://www.iso.org/obp/ui/#search)で確認できます|
+|**City (市)**     |  String       |         |
+|**Longitude (経度)**     | Double        |  ISO 6709 座標表現 (符号付き 10 進数)       |
+|**Latitude (緯度)**     | Double        |    ISO 6709 座標表現 (符号付き 10 進数)     |
+|**MD5**     |    String     |  32 桁の 16 進数文字       |
+|**SHA1**     |   String      | 40 桁の 16 進数文字        |
+|**SHA256**     | String        |  64 桁の 16 進数文字       |
+|**SHA512**     |   String      |  128 桁の 16 進数文字       |
+| | |
+
+## <a name="common-fields"></a>共通フィールド
+
+次のフィールドは、すべての ASIM スキーマに共通です。 共通フィールドはここに一覧表示されているとともに、スキーマごとに詳細が異なる状況に対応するために、各スキーマに対しても記載されています。 たとえば、**EventType** フィールドの値はスキーマごとに異なる可能性があり、**EventSchemaVersion** フィールドの値も同様に異なる可能性があります。 
+
+| フィールド               | クラス       | Type       |  説明        |
+|---------------------|-------------|------------|--------------------|
+| <a name="timegenerated"></a>**TimeGenerated** | 組み込み | DATETIME | イベントがレポート デバイスによって生成された時刻。|
+| **_ResourceId**   | 組み込み |  guid     | レポート デバイスもしくはサービスの Azure リソース ID、または Syslog、CEF、WEF を使用して転送されたイベントの場合はログ フォワーダー リソース ID。 |
+| **EventMessage**        | オプション    | String     |     レコードに含まれるか、レコードから生成された一般的なメッセージまたは説明です。   |
+| **EventCount**          | Mandatory   | Integer    |     レコードによって記述されるイベントの数。 <br><br>この値は、ソースが集計に対応しており、1 つのレコードが複数のイベントを表す可能性があるときに使用されます。 <br><br>その他のソースの場合は、`1` に設定します。   |
+| **EventStartTime**      | Mandatory   | 日付/時刻  |      ソースが集計に対応していて、レコードが複数のイベントを表す場合、このフィールドは最初のイベントが生成された時間を規定します。 <br><br>それ以外の場合、このフィールドは [TimeGenerated](#timegenerated) フィールドのエイリアスとなります。 |
+| **EventEndTime**        | Mandatory   | エイリアス      |      [TimeGenerated](#timegenerated) フィールドのエイリアス。    |
+|  <a name=eventtype></a>**EventType**           | Mandatory   | Enumerated |    レコードによってレポートされる操作を記述します。 各スキーマには、このフィールドに対して有効な値の一覧が文書化されています。 |
+| **EventSubType** | オプション | Enumerated | [EventType](#eventtype) フィールドでレポートされた操作を細分化して記述します。 各スキーマには、このフィールドに対して有効な値の一覧が文書化されています。 |
+| <a name="eventresult"></a>**EventResult** | Mandatory | Enumerated | 次の値のいずれかです: **Success**、**Partial**、**Failure**、**NA** (該当なし)。<br> <br>ソース レコードでは、異なる用語を使用して値が指定されている場合がありますので、これらの値に正規化する必要があります。 また、ソースで [EventResultDetails](#eventresultdetails) フィールドのみが提供される場合もあり、これを分析して EventResult 値を導き出す必要があります。<br><br>例: `Success`|
+| <a name=eventresultdetails></a>**EventResultDetails** | Mandatory | エイリアス | [**EventResult**](#eventresult) フィールドでレポートされた結果の理由または詳細。 各スキーマには、このフィールドに対して有効な値の一覧が文書化されています。<br><br>例: `NXDOMAIN`|
+| **EventOriginalUid**    | オプション    | String     |   元のレコードの一意の ID (ソースによって提供されている場合)。<br><br>例: `69f37748-ddcd-4331-bf0f-b137f1ea83b`|
+| **EventOriginalType**   | オプション    | String     |   元のイベントの種類または ID (ソースによって提供されている場合)。 たとえば、このフィールドは元の Windows イベント ID を格納するために使用されます。<br><br>例: `4624`|
+| <a name ="eventproduct"></a>**EventProduct**        | Mandatory   | String     |             イベントを生成している製品。 <br><br>例: `Sysmon`<br><br>**注**: このフィールドは、ソース レコード内で使用できない場合があります。 その場合、このフィールドはパーサーによって設定される必要があります。           |
+| **EventProductVersion** | オプション    | String     | イベントを生成している製品のバージョン。 <br><br>例: `12.1`      |
+| **EventVendor**         | Mandatory   | String     |           イベントを生成している製品のベンダー。 <br><br>例: `Microsoft`  <br><br>**注**: このフィールドは、ソース レコード内で使用できない場合があります。 その場合、このフィールドはパーサーによって設定される必要があります。  |
+| **EventSchemaVersion**  | Mandatory   | String     |    スキーマのバージョン。 各スキーマは、その現在のバージョンを文書化します。         |
+| **EventReportUrl**      | オプション    | String     | あるリソースのイベントで指定された、そのイベントに関する追加情報を提供する URL。|
+| **Dvc** | Mandatory       | String     |               イベントが発生したデバイスの一意の識別子。 <br><br>このフィールドは、[DvcId](#dvcid)、[DvcHostname](#dvchostname)、または [DvcIpAddr](#dvcipaddr) フィールドのエイリアスになる可能性があります。 明確なデバイスがないクラウド リソースの場合は、[Event Product](#eventproduct) フィールドと同じ値を使用します。           |
+| <a name ="dvcipaddr"></a>**DvcIpAddr**           | 推奨 | IP アドレス |         イベントが発生したデバイスの IP アドレス。  <br><br>例: `45.21.42.12`    |
+| <a name ="dvchostname"></a>**DvcHostname**         | 推奨 | Hostname (ホスト名)   |               イベントが発生したデバイスのホスト名。 <br><br>例: `ContosoDc.Contoso.Azure`               |
+| <a name ="dvcid"></a>**DvcId**               | オプション    | String     |  イベントが発生したデバイスの一意の ID。 <br><br>例: `41502da5-21b7-48ec-81c9-baeea8d7d669`   |
+| **DvcMacAddr**          | オプション    | MAC        |   イベントが発生したデバイスの MAC アドレス。  <br><br>例: `00:1B:44:11:3A:B7`       |
+| **DvcOs**               | オプション    | String     |         イベントが発生したデバイスで実行されているオペレーティング システム。    <br><br>例: `Windows`    |
+| **DvcOsVersion**        | オプション    | String     |   イベントが発生したデバイスのオペレーティング システムのバージョン。 <br><br>例: `10` |
+| **AdditionalFields**    | Optional    | 動的    | ソースから保持する必要のある追加情報が提供される場合は、元のフィールド名そのままで保持するか、動的な **AdditionalFields** フィールドを作成し、それに追加情報をキーと値のペアとして追加します。    |
+| | | | |
+
+> [!NOTE]
+> Log Analytics では、セキュリティのユース ケースとあまり関連しない他のフィールドも追加します。 詳細については、「[Azure Monitor ログ内の標準列](/azure/azure-monitor/logs/log-standard-columns)」をご覧ください。
+>
+
+
+## <a name="entities"></a>エンティティ
+
+イベントは、ユーザー、ホスト、プロセス、ファイルなどのエンティティを中心に発展します。 エンティティ表現を使用すると、同じ種類の複数のエンティティを 1 つのレコードに含めることができ、同じエンティティに対して複数の属性をサポートできます。
+
+エンティティの機能を有効にするために、エンティティ表現には次のガイドラインがあります。
+
+|ガイドライン  |説明  |
+|---------|---------|
+|**記述子とエイリアス**     | 1 つのイベントには、ソースと宛先のホストなど、同じ種類の複数のエンティティが含まれることが多いため、特定のエンティティに関連付けられているすべてのフィールドを識別するためのプレフィックスとして *記述子* が使用されます。 <br><br>正規化を維持するために、Azure Sentinel 情報モデルでは少数の標準記述子を使用しており、エンティティの特定のロールに最適なものを選択します。  <br><br>ある種類の 1 つのエンティティがイベントに関連している場合は、記述子を使用する必要はありません。 また、記述子のない一連のフィールドは、それぞれの種類で最も使用されているエンティティのエイリアスとなります。  |
+|**識別子と型**     | 正規化されたスキーマでは、各エンティティに対して複数の識別子を使用できます。これは、イベントに共存させることを想定しています。 ソース イベントに、正規化されたスキーマにマップできない他のエンティティ識別子がある場合は、ソースの形式で保持するか、`AdditionalFields` 動的フィールドを使用します。 <br><br>識別子の型情報を保持するには、必要に応じて、同じ名前に加えて `Type` のサフィックスを持つフィールドに型を保存します。 たとえば、「 `UserIdType` 」のように入力します。         |
+|**属性**     |   エンティティには多くの場合、識別子として機能しない他の属性があり、記述子で修飾することもできます。 たとえば、ソース ユーザーがドメイン情報を持っている場合、正規化されたフィールドは `SrcUserDomain` になります。      |
+| | |
+
+各スキーマは、中央エンティティとエンティティ フィールドを明示的に定義します。 以下のガイドラインでは、中央スキーマ フィールドについてと、スキーマで明示的に定義されていない他のエンティティやエンティティ フィールドを使用して、正規化された方法でスキーマを拡張する方法について説明します。
+
+### <a name="the-user-entity"></a>ユーザー エンティティ
+
+ユーザーに使用される記述子は、以下のシナリオで説明するように、**Actor**、**Target User**、**Updated User** です。
+
+|アクティビティ  |完全なシナリオ  |エイリアスに使用される単一のエンティティ シナリオ  |
+|---------|---------|---------|
+|**ユーザーの作成**     |  **Actor** が作成されたか、**Target User** が変更されました       |  (対象となる) **User** が作成されました。       |
+|**ユーザーの変更**     |   **Actor** が **Target User** の名前を **Updated User** に変更しました。 **Updated User** は通常、ユーザーに関連するすべての情報を保持しているわけではなく、**Target User** と重なる部分があります。      |         |
+|**ネットワーク接続**     |    送信元ホストで **Actor** として動作しているプロセスが、送信先ホストで **Target User** として動作しているプロセスと通信しています     |         |
+|**DNS 要求**     | **Actor** が DNS クエリを開始しました        |         |
+|**サインイン**     |    **Actor** が **Target User** としてシステムにサインインしました。     |(対象となる) ユーザーがサインインしました         |
+|**プロセス作成**     |   **Actor** (開始中のプロセスに関連するユーザー) がプロセス作成を開始しました。 作成されたプロセスは、**Target User** (対象プロセスに関連するユーザー) の資格情報で実行されます。      |  作成されたプロセスは、(対象となる) **User** の資格情報で実行されます。       |
+|**電子メール**     |     **Actor** が **Target User** にメールを送信します    |         |
+| | | |
+
+次の表では、ユーザーに対してサポートされている識別子について説明します。
+
+|正規化されたフィールド  |Type  |形式とサポートされる型  |
+|---------|---------|---------|
+|**UserId**     |    String     |   システム内のユーザーを、コンピューターが判読できるように英数字で一意に表現したものです。 <br><br>形式とサポートされる型は次のとおりです。<br>    - **SID** (Windows): `S-1-5-21-1377283216-344919071-3415362939-500`<br>    -  **UID** (Linux): `4578`<br>    -    **AADID** (Azure Active Directory): `9267d02c-5f76-40a9-a9eb-b686f3ca47aa`<br>    - **OktaId**: `00urjk4znu3BcncfY0h7`<br>    - **AWSId**: `72643944673`<br><br>    ID の型は `UserIdType` フィールドに格納します。 他の ID がある場合は、フィールド名をそれぞれ `UserSid`、`UserUid`、`UserAADID`、`UserOktaId`、`UserAwsId` に正規化することをお勧めします。       |
+|**ユーザー名**     |  String       |   ユーザー名 (可能な場合はドメイン情報を含む) を、以下のいずれかの形式で、以下の優先順位で記載したものです。 <br> -   **Upn/Email**: `johndow@contoso.com` <br>  -    **Windows**: `Contoso\johndow` <br> -   **DN**: `CN=Jeff Smith,OU=Sales,DC=Fabrikam,DC=COM` <br>  - **Simple**: `johndow`。 この形式は、ドメイン情報が利用できない場合にのみ使用してください。 <br><br> ユーザー名の型は `UsernameType` フィールドに格納します。    |
+| | | |
+
+
+### <a name="the-process-entity"></a>プロセス エンティティ
+
+ユーザーに使用される記述子は、以下のシナリオで説明されているように、`Acting Process`、`Target Process`、`Parent Process` です。
+
+- **ネットワーク接続**。 **Acting Process** が、リモート システム上の **Target Process** と通信するためにネットワーク接続を開始しました。
+- **DNS 要求**。  **Acting Process** が DNS クエリを開始しました。
+- **サインイン**。  **Acting Process** が、代理の **Target Process** を実行するリモート システムへのサインインを開始しました。
+- **プロセス作成**。 **Acting Process** が **Target Process** の作成を開始しました。 **Parent Process** は、Acting Process の親です。
+
+次の表では、プロセスに対してサポートされている識別子について説明します。
+
+|正規化されたフィールド  |Type  |形式とサポートされる型  |
+|---------|---------|---------|
+|**Id**     |    String     |   OS によって割り当てられたプロセス ID。      |
+|**Guid**     |  String       |   OS によって割り当てられたプロセス GUID。 GUID は一般的にシステムが再起動されるまでの間、一意ですが、ID は再利用される場合が多いです。   |
+|**Path**     |    String     |   ディレクトリとファイル名を含む、プロセスの完全なパス名。       |
+|**名前**     |  エイリアス       |  プロセス名はパスのエイリアスです。   |
+| | | |
+
+
+詳細は、「[Azure Sentinel プロセス イベント正規化スキーマ リファレンス (パブリック プレビュー)](process-events-normalization-schema.md)」をご覧ください。
+
+### <a name="the-device-entity"></a>デバイス エンティティ
+
+正規化スキーマは、可能な限りユーザーの直感に従うので、シナリオに応じてさまざまな方法でデバイスを処理します。
+
+- イベント コンテキストがソース デバイスとターゲット デバイスを意味する場合、`Src` と `Target` の記述子が使用されます。 この場合、`Dvc` 記述子はレポート デバイスに使用されます。
+
+- ローカル OS イベントなどの単一のデバイス イベントの場合、`Dvc` 記述子が使用されます。
+
+- イベントで別のゲートウェイ デバイスが参照され、値がレポート デバイスと異なる場合は、`Gateway` 記述子が使用されます。
+
+デバイスの処理ガイドラインでは、次のようにさらに明確にされています。
+
+- **ネットワーク接続**。 **ソース デバイス** (`Src`) から **ターゲット デバイス** (`Target`) への接続が確立されました。 接続は、(レポート) **デバイス** (`Dvc`) によってレポートされました。
+- **プロキシ処理されたネットワーク接続**。 **ソース デバイス** (`Src`) から **ターゲット デバイス** (`Target`) への接続が、**ゲートウェイ デバイス** (`Gateway`) を介して確立されました。 接続は、(レポート) **デバイス** によってレポートされました。
+- **DNS 要求**。  **ソース デバイス** (`Src`) から DNS クエリが開始されました。
+- **サインイン**   **ソース デバイス** (`Src`) から **ターゲット デバイス** (`Target`) 上のリモート システムへのサインインが開始されました。
+- **プロセス**   **デバイス** (`Dvc`) でプロセスが開始されました。
+
+次の表では、デバイスに対してサポートされている識別子について説明します。
+
+|正規化されたフィールド  |Type  |形式とサポートされる型  |
+|---------|---------|---------|
+|**hostname**     |    String     |        |
+|**FQDN**     |  String       |   完全修飾ドメイン名   |
+|**IpAddr**     |    IP アドレス     |   デバイスは複数の IP アドレスを持つことができますが、イベントには通常 1 つの識別 IP アドレスがあります。 例外は、関連する 2 つの IP アドレスを持つことのできるゲートウェイ デバイスです。 ゲートウェイ デバイスの場合は、`UpstreamIpAddr` と `DownstreamIpAddr` を使用します。      |
+|**HostId**     |  String       |     |
+| | | |
+
+
+> [!NOTE]
+> `Domain` はデバイスの一般的な属性ですが、完全な識別子ではありません。
+>
+
+詳細は、「[Azure Sentinel 認証正規化スキーマ リファレンス (パブリック プレビュー)](authentication-normalization-schema.md)」をご覧ください。
+
+### <a name="sample-entity-mapping"></a>エンティティ マッピングの例
+
+このセクションでは [Windows イベント 4624](/windows/security/threat-protection/auditing/event-4624) を例として、Azure Sentinel でイベント データがどのように正規化されるかを説明します。
+
+このイベントには、次のエンティティがあります。
+
+|Microsoft の用語  |元のイベント フィールド プレフィックス |ASIM フィールド プレフィックス  |説明  |
+|---------|---------|---------|---------|
+|**件名**     | `Subject`        |   `Actor`      |  サインインの成功に関する情報をレポートしたユーザー。      |
+|**新しいログオン**     |    `Target`     |  `TargetUser`       |  サインインが実行された対象のユーザー。       |
+|**Process**     |    -     |     `ActingProcess`    |   サインインを試行したプロセス。      |
+|**ネットワーク情報**     |   -      |   `Src`      |     サインインの試行が実行されたマシン。    |
+| | | | |
+
+
+これらのエンティティに基づいて [Windows イベント 4624](/windows/security/threat-protection/auditing/event-4624) は次のように正規化されます (一部のフィールドは省略可能です)。
+
+|正規化されたフィールド  |元のフィールド  |例における値  |メモ  |
+|---------|---------|---------|---------|
+|**ActorUserId**     |  SubjectUserSid       |  S-1-5-18        |        |
+|**ActorUserIdType**     |  -       | SID        |         |
+|**ActorUserName**     |   SubjectDomainName\ SubjectUserName      |  WORKGROUP\WIN-GG82ULGC9GO$       |  2 つのフィールドを連結して構築       |
+|**ActorUserNameType**     |   -      |   Windows      |         |
+|**ActorSessionId**     | SubjectLogonId        |  0x3e7       |         |
+|**TargetUserId**     |   TargetUserSid      |    S-1-5-21-1377283216-344919071-3415362939-500     |         |
+|**UserId**     |    TargetUserSid     |   alias      |         |
+|**TargetUserIdType**     |   -      |    SID     |         |
+|**TargetUserName**     | TargetDomainName\ TargerUserName        |   Administrator\WIN-GG82ULGC9GO$      |   2 つのフィールドを連結して構築      |
+|**ユーザー名**     |  TargetDomainName\ TargerUserName       |  alias       |         |
+|**TargetUserNameType**     | -        |  Windows       |         |
+|**TargetSessionId**     |   TargetLogonId      |  0x8dcdc       |         |
+|**ActingProcessName**     |  ProcessName       |  C:\\Windows\\System32\\svchost.exe       |         |
+|**ActingProcessId**     |    ProcessId     |     0x44c    |         |
+|**SrcHostname**     |    WorkstationName     | Windows        |         |
+|**SrcIpAddr**     |  IpAddress       |     127.0.0.1    |         |
+|**SrcPortNumber**     |  IpPort       |  0       |         |
+|**TargetHostname**     |   Computer      |  WIN-GG82ULGC9GO           |         |
+|**hostname**     |     Computer    |     エイリアス    |         |
+| | | | |
+
+
+## <a name="next-steps"></a>次の手順
+
+この記事では、Azure Sentinel での正規化の概要と、Azure Sentinel 情報モデルについて説明しています。
+
+詳細については、次を参照してください。
+
+- [Azure Sentinel 情報モデルの概要](normalization.md)
+- [Azure Sentinel 情報モデル パーサー](normalization-about-parsers.md)
+- [Azure Sentinel 情報モデル コンテンツ](normalization-content.md)

@@ -3,20 +3,20 @@ title: 言語サポート - 音声サービス
 titleSuffix: Azure Cognitive Services
 description: 音声サービスでは、音声翻訳に加え、音声からテキストへの変換とテキストから音声への変換のためのさまざまな言語がサポートされます。 この記事では、サービス機能によってサポートされている言語の包括的な一覧を示します。
 services: cognitive-services
-author: laujan
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.author: lajanuar
+ms.author: pafarley
 ms.custom: references_regions
-ms.openlocfilehash: f718ba81cf122b747652bf66d840dd8935897019
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 0df6b9575c562ba6b469191efdefd5d5d8226ca9
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122253819"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123544026"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>音声サービスの言語と音声のサポート
 
@@ -58,15 +58,15 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | アラビア語 (イエメン)                     | `ar-YE` | テキスト                                   |                           |                          |
 | ブルガリア語 (ブルガリア)               | `bg-BG` | テキスト                                   |                           |                          |
 | カタルニア語 (スペイン)                    | `ca-ES` | Text                                   | はい                          |                          |
-| 中国語 (繁体字)   | `zh-HK` | オーディオ (20201015)<br>テキスト                 |        はい                   |                          |
+| 中国語 (繁体字)   | `zh-HK` | オーディオ (20201015)<br>Text                 |        はい                   |                          |
 | 中国語 (標準、簡体字)     | `zh-CN` | オーディオ (20200910)<br>Text                 |     はい                      | はい                         |
 | 中国語 (台湾標準中国語)       | `zh-TW` | オーディオ (20190701、20201015)<br>Text                 |           はい                |                          |
 | クロアチア語 (クロアチア)                 | `hr-HR` | テキスト                                   |                           |                          |
 | チェコ語 (チェコ共和国)             | `cs-CZ` | テキスト                                   |                           |                          |
 | デンマーク語 (デンマーク)                   | `da-DK` | Text                                   | はい                          |                          |
 | オランダ語 (オランダ)                | `nl-NL` | オーディオ (20201015)<br>テキスト<br>発音|    はい                       |                          |
-| 英語 (オーストラリア)                | `en-AU` | オーディオ (20201019)<br>テキスト                 | はい                          |                          |
-| 英語 (カナダ)                   | `en-CA` | オーディオ (20201019)<br>テキスト                 | はい                          |                          |
+| 英語 (オーストラリア)                | `en-AU` | オーディオ (20201019)<br>Text                 | はい                          |                          |
+| 英語 (カナダ)                   | `en-CA` | オーディオ (20201019)<br>Text                 | はい                          |                          |
 | 英語 (ガーナ)                    | `en-GH` | テキスト                                   |                           |                          |
 | 英語 (香港)                | `en-HK` | テキスト                                   |                           |                          |
 | 英語 (インド)                    | `en-IN` | オーディオ (20200923)<br>Text                 |                          |                          |
@@ -97,19 +97,19 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | アイルランド語 (アイルランド)                     | `ga-IE` | テキスト                                   |                           |                          |
 | イタリア語 (イタリア)                    | `it-IT` | オーディオ (20201016)<br>テキスト<br>発音|      はい                     |                          |
 | 日本語 (日本)                   | `ja-JP` | Text                                   |      はい                     |                          |
-| 韓国語 (韓国)                     | `ko-KR` | オーディオ (20201015)<br>テキスト                 |      はい                     |                          |
+| 韓国語 (韓国)                     | `ko-KR` | オーディオ (20201015)<br>Text                 |      はい                     |                          |
 | ラトビア語 (ラトビア)                   | `lv-LV` | テキスト                                   |                           |                          |
 | リトアニア語 (リトアニア)             | `lt-LT` | テキスト                                   |                           |                          |
 | マレー語 (マレーシア)                   | `ms-MY` | テキスト                                   |                           |                          |
 | マルタ語 (マルタ)                    | `mt-MT` | テキスト                                   |                           |                          |
 | マラーティー語 (インド)                    | `mr-IN` | テキスト                                   |                           |                          |
 | ノルウェー語 (ブークモール、ノルウェー)         | `nb-NO` | Text                                   |     はい                      |                          |
-| ペルシア語 (イラン)                     | `fa-IR` | テキスト                                   |                           |                          |
+| ペルシア語 (イラン)                     | `fa-IR` | Text                                   |                           |                          |
 | ポーランド語 (ポーランド)                    | `pl-PL` | Text                                   |       はい                    |                          |
 | ポルトガル語 (ブラジル)                | `pt-BR` | オーディオ (20190620、20201015)<br>テキスト<br>発音|          はい                 |                          |
 | ポルトガル語 (ポルトガル)              | `pt-PT` | テキスト<br>発音                  |             はい              |                          |
 | ルーマニア語 (ルーマニア)                 | `ro-RO` | テキスト                                   |  はい                         |                          |
-| ロシア語 (ロシア)                   | `ru-RU` | オーディオ (20200907)<br>テキスト                 |                はい           |                          |
+| ロシア語 (ロシア)                   | `ru-RU` | オーディオ (20200907)<br>Text                 |                はい           |                          |
 | スロバキア語 (スロバキア)                  | `sk-SK` | テキスト                                   |                           |                          |
 | スロベニア語 (スロベニア)               | `sl-SI` | テキスト                                   |                           |                          |
 | スペイン語 (アルゼンチン)                | `es-AR` | テキスト<br>発音                  |                           |                          |
@@ -358,7 +358,7 @@ Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポ�
 > `en-US-JessaNeural` 音声が `en-US-AriaNeural` に変更されました。 前に "Jessa" を使用していた場合は、"Aria" に変換します。
 
 > [!TIP]
-> 音声合成要求では、"Microsoft Server Speech Text to Speech Voice (en-US, AriaNeural)" のような完全なサービス名マッピングを引き続き使用できます。
+> 音声合成要求では、"Microsoft Server Speech Text to Speech Voice (en-US, ChristopherNeural)" のような完全なサービス名マッピングを引き続き使用できます。
 
 ### <a name="standard-voices"></a>標準音声
 
@@ -575,7 +575,7 @@ Custom Voice は、ニューラル レベル (カスタム ニューラル音声
 
 | Language | ロケール (BCP-47) | テキスト依存の認証 | テキストに依存しない認証 | テキストに依存しない識別 |
 |----|----|----|----|----|
-|英語 (米国)  |  ja-JP  |  はい  |  はい  |  はい |
+|英語 (米国)  |  ja-JP  |  はい  |  ○  |  はい |
 |中国語 (標準、簡体字) | zh-CN     |     該当なし |     はい |     はい|
 |英語 (オーストラリア)     | en-AU     | 該当なし     | はい     | はい|
 |英語 (カナダ)     | en-CA     | 該当なし |     はい |     はい|

@@ -9,12 +9,12 @@ ms.reviewer: dineshm
 ms.date: 09/04/2020
 ms.subservice: blobs
 ms.custom: devx-track-js
-ms.openlocfilehash: 3b64b77d4e9061e122c627154c4623fcebfce631
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 53153c7ea154b77ee4d0d348818c891ce22bc5f8
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122178952"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123470960"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Azure Storage での静的 Web サイト ホスティング
 
@@ -46,24 +46,18 @@ Web サーバーでコンテンツのレンダリングが必要な場合は、[
 > * [AzCopy](../common/storage-use-azcopy-v10.md)
 > * [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)
 > * [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/)
-> * [Visual Studio Code 拡張機能](/azure/developer/javascript/tutorial-vscode-static-website-node-01)
+> * [Visual Studio Code 拡張機能](- https://channel9.msdn.com/Shows/Docs-Azure/Deploy-static-website-to-Azure-from-Visual-Studio-Code/player)
 
 ## <a name="viewing-content"></a>コンテンツの表示
 
 ユーザーは、Web サイトのパブリック URL を使用して、ブラウザーからサイトのコンテンツを表示できます。 URL を見つけるには、Azure portal、Azure CLI、または PowerShell を使用します。 「[Web サイトの URL を検索する](storage-blob-static-website-how-to.md#portal-find-url)」を参照してください。
 
+ユーザーがサイトを開き、特定のファイル (例: `https://contosoblobaccount.z22.web.core.windows.net`) を指定しない場合、静的 Web サイトのホスティングを有効にしたときに指定したインデックス ドキュメントが表示されます。
+
 サーバーが 404 エラーを返し、Web サイトを有効にしたときに、エラー ドキュメントを指定していない場合、既定の 404 ページがユーザーに返されます。
 
 > [!NOTE]
 > [Azure Storage でのクロス オリジン リソース共有 (CORS) のサポート](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services)は、静的な Web サイトではサポートされていません。
-
-### <a name="regional-codes"></a>リージョン コード
-
-サイトの URL には、リージョン コードが含まれます。 たとえば、URL `https://contosoblobaccount.z22.web.core.windows.net/` にはリージョン コード `z22` が含まれています。
-
-そのコードは URL に残しておく必要がありますが、内部的に使用されるだけであり、他にそのコードを使用する必要はありません。
-
-ユーザーがサイトを開き、特定のファイル (例: `https://contosoblobaccount.z22.web.core.windows.net`) を指定しない場合、静的 Web サイトのホスティングを有効にしたときに指定したインデックス ドキュメントが表示されます。
 
 ### <a name="secondary-endpoints"></a>セカンダリ エンドポイント
 
@@ -120,15 +114,26 @@ Web サーバーでコンテンツのレンダリングが必要な場合は、[
 
 静的 Web サイトのページでメトリックを有効にするには、「[Enable metrics on static website pages](storage-blob-static-website-how-to.md#metrics)」 (静的 Web サイト ページでメトリックを有効にする) を参照してください。
 
+## <a name="feature-support"></a>機能サポート
+
+この表は、アカウントでのこの機能のサポート状況と、特定の機能を有効にした場合のサポートへの影響を示しています。 
+
+| ストレージ アカウントの種類                | Blob Storage (既定のサポート)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+|-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
+| Standard 汎用 v2 | ![はい](../media/icons/yes-icon.png) |![はい](../media/icons/yes-icon.png)              | ![はい](../media/icons/yes-icon.png) | 
+| Premium ブロック BLOB          | ![はい](../media/icons/yes-icon.png)|![はい](../media/icons/yes-icon.png) | ![はい](../media/icons/yes-icon.png) |
+
+<sup>1</sup>    Data Lake Storage Gen2 とネットワーク ファイル システム (NFS) 3.0 プロトコルの両方で、階層型名前空間が有効になっているストレージ アカウントが必要です。
+
 ## <a name="faq"></a>よく寄せられる質問
 
 ##### <a name="does-the-azure-storage-firewall-work-with-a-static-website"></a>Azure Storage のファイアウォールは静的 Web サイトで動作しますか?
 
-ストレージ アカウントには組み込みの[ファイアウォール機能](../common/storage-network-security.md)がありますが、このファイアウォールは静的 Web サイトのエンドポイントには作用しません。 これは、BLOB、ファイル、テーブル、キュー サービスのエンドポイントなど、他のストレージ エンドポイントを保護するためにのみ使用できます。 
+はい。 ストレージ アカウントの[ネットワーク セキュリティ規則](../common/storage-network-security.md) (IP ベースおよび VNET ファイアウォールを含む) は、静的 Web サイトのエンドポイントでサポートされており、Web サイトを保護するために使用できます。
 
 ##### <a name="do-static-websites-support-azure-active-directory-azure-ad"></a>静的 Web サイトでは、Azure Active Directory (Azure AD) はサポートされますか?
 
-はい。 ただし、OpenID を使用して Google 認証や Facebook などのソーシャル ID プロバイダーを使用するオプションはありません。
+いいえ。 静的 Web サイトでサポートされるのは、 **$web** コンテナー内のファイルに対する匿名パブリック読み取りアクセスのみです。
 
 ##### <a name="how-do-i-use-a-custom-domain-with-a-static-website"></a>静的 Web サイトでのカスタム ドメインの使用方法を教えてください
 

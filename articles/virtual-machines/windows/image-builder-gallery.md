@@ -10,14 +10,16 @@ ms.service: virtual-machines
 ms.subervice: image-builder
 ms.colletion: windows
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 03ae984a5950a026fc9bc5c30ee1951e1c17b909
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 6206401d41662724e2c44851e930373b7f90030d
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121734579"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123436430"
 ---
 # <a name="create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>Windows イメージを作成して共有イメージ ギャラリーに配布する 
+
+**適用対象:** :heavy_check_mark: Windows VM 
 
 この記事では、Azure Image Builder と Azure PowerShell を使用して [Shared Image Gallery](../shared-image-galleries.md) にイメージ バージョンを作成し、そのイメージをグローバルに配布する方法について説明します。 この操作は [Azure CLI](../linux/image-builder-gallery.md) で実行することもできます。
 
@@ -214,7 +216,7 @@ Invoke-WebRequest `
 New-AzResourceGroupDeployment `
    -ResourceGroupName $imageResourceGroup `
    -TemplateFile $templateFilePath `
-   -apiversion "2020-02-14" `
+   -ApiVersion "2020-02-14" `
    -imageTemplateName $imageTemplateName `
    -svclocation $location
 ```

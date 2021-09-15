@@ -10,12 +10,12 @@ ms.author: gopalv
 author: gvashishtha
 ms.date: 07/31/2020
 ms.custom: deploy
-ms.openlocfilehash: 1bb38c45203b0356444d0eb115a8c75e0f1c465d
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 7d080297dd32ad137e11cb692b820f4b9f6b3521
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122324346"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123428454"
 ---
 # <a name="update-a-deployed-web-service"></a>デプロイされた Web サービスを更新する
 
@@ -37,6 +37,14 @@ Web サービスを更新するには、`update` メソッドを使用します�
 > 新しいバージョンのモデルを作成するときは、それを使用したい各サービスを手動で更新する必要があります。
 >
 > Azure Machine Learning デザイナーから発行された Web サービスを、SDK を使用して更新することはできません。
+
+> [!IMPORTANT]
+> Azure Kubernetes Service では、[Blobfuse FlexVolume ドライバー](https://github.com/Azure/kubernetes-volume-drivers/blob/master/flexvolume/blobfuse/README.md) (バージョン 1.16 以下の場合) および [Blob CSI ドライバー](https://github.com/kubernetes-sigs/blob-csi-driver/blob/master/README.md) (バージョン 1.17 以上の場合) が使用されます。 
+>
+> そのため、クラスターのバージョンに合った正しい blobfuse 方式にデプロイするためには、クラスターのアップグレード後、Web サービスを再デプロイまたは更新することが重要です。
+
+> [!NOTE]
+> 操作が既に進行中の場合、同じ Web サービスでの新しい操作は、409 競合エラーで応答します。 たとえば、Web サービスの作成または更新操作の進行中に、新しい削除操作がトリガーされた場合、エラーがスローされます。
 
 **SDK を使用する**
 
@@ -86,7 +94,7 @@ az ml service update -n myservice --model-metadata-file modelinfo.json
 >
 > 新しいエントリ スクリプトまたは環境を使用するようにサービスを更新するには、[推論構成ファイル](./reference-azure-machine-learning-cli.md#inference-configuration-schema)を作成し、それを `ic` パラメーターで指定します。
 
-詳細については、[az ml service update](/cli/azure/ml(v1)/service?view=azure-cli-latest#az_ml_v1__service_update) のドキュメントを参照してください。
+詳細については、[az ml service update](/cli/azure/ml(v1)/service?view=azure-cli-latest#az_ml_v1__service_update&preserve-view=true) のドキュメントを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -3,12 +3,12 @@ title: 'クイックスタート: 概要'
 description: このクイックスタートでは、Defender for IoT のデプロイに関する基本的なワークフローを理解して作業を開始する方法について学習します。
 ms.topic: quickstart
 ms.date: 06/06/2021
-ms.openlocfilehash: c0d8406f842e182c6c129ba32f38dd11fdfbd46c
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: bb67cb5788e891861eb0c1f5fe2533d62b4ee520
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113011449"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122254083"
 ---
 # <a name="quickstart-get-started-with-defender-for-iot"></a>クイックスタート: Defender for IoT での作業を開始する
 
@@ -33,7 +33,7 @@ Azure Defender for IoT ポータル ツールに対するユーザー アクセ�
 |--|--|--|--|--|
 | ソフトウェア、アクティブ化ファイル、および脅威インテリジェンス パッケージの詳細を表示してアクセスする  | ✓ | ✓ | ✓ | ✓ |
 | センサーをオンボードする  |  |  ✓ | ✓ | ✓ |
-| 料金を更新する  |  |  ✓ | ✓ | ✓ |
+| サブスクリプションをオンボードし、コミットされたデバイスを更新する  |  |  | ✓ | ✓ |
 | パスワードを回復する  | ✓  |  ✓ | ✓ | ✓ |
 
 ## <a name="identify-the-solution-infrastructure"></a>ソリューション インフラストラクチャを特定する
@@ -46,7 +46,7 @@ Azure Defender for IoT ポータル ツールに対するユーザー アクセ�
 
 Azure Defender for IoT では、物理的な配置と仮想デプロイの両方をサポートしています。 物理的な配置では、さまざまな認定アプライアンスを購入できます。 詳細については、「[必要なアプライアンスを特定する](how-to-identify-required-appliances.md)」を参照してください。
 
-監視するデバイスのおおよその数を計算することをお勧めします。 後で Azure サブスクリプションをポータルに登録するときに、この番号を入力するように求められます。 数値は 1,000 秒間隔で追加できます。 監視対象デバイスの数は、"*コミット済みデバイス*" と呼ばれます。
+監視するデバイスのおおよその数を計算することをお勧めします。 後で Azure サブスクリプションをポータルに登録するときに、この番号を入力するように求められます。 数値は 1,000 間隔 (たとえば 1000、2000、3000) で追加できます。 監視対象デバイスの数は、"*コミット済みデバイス*" と呼ばれます。
 
 ## <a name="register-with-azure-defender-for-iot"></a>Azure Defender for IoT に登録する
 

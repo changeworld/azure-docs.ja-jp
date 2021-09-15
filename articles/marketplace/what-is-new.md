@@ -6,12 +6,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/06/2021
-ms.openlocfilehash: a1efbf3cdd90b26b8abdfe9dfa7b380d5dd4badb
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: bab6b3afccb16f49384ec6fd90410e44a4edf268
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121746335"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122634177"
 ---
 # <a name="whats-new-in-the-microsoft-commercial-marketplace"></a>Microsoft コマーシャル マーケットプレースの新機能
 
@@ -43,6 +43,7 @@ ms.locfileid: "121746335"
 
 | カテゴリ | 説明 | Date |
 | ------------ | ------------- | ------------- |
+| オファー | 「[コマーシャル マーケットプレースの販売機能](/azure/marketplace/marketplace-commercial-transaction-capabilities-and-considerations)」トピックに、コマーシャル マーケット プレースでソフトウェアを販売するための適切な取引可能なオファーの種類と価格設定プランを決定するのに役立つフローチャートが含まれるようになりました。 | 2021-08-18 |
 | ポリシー | [認定](/legal/marketplace/certification-policies?context=/azure/marketplace/context/context)ポリシーが更新されました。[変更履歴](/legal/marketplace/offer-policies-change-history)のページを参照してください。 | 2021-08-06 |
 | 共同販売 | 要件、MACC ステータスを更新する頻度、登録および未登録の定義などを含む、MACC プログラムに関する情報が追加されました。 詳細については、「[Azure Consumption Commitment の登録](./azure-consumption-commitment-enrollment.md)」または「[Microsoft のセールス チームとパートナーによる共同販売の概要](./co-sell-overview.md)」を参照してください。 | 2021-06-03 |
 | オファー | VM の価格オプションと説明に関する追加情報。 「[コマーシャル マーケットプレースの SaaS オファーを計画する方法](./plan-saas-offer.md)」を参照してください。 | 2021-05-25|

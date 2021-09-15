@@ -3,16 +3,16 @@ title: Azure Defender for Resource Manager - 利点と機能
 description: Azure Defender for Resource Manager の利点と機能について学習します。
 author: memildin
 ms.author: memildin
-ms.date: 05/12/2021
+ms.date: 07/14/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 7d564d3d3a27d4ddba50ab05644d612e9bb63645
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 38eeaa02bf34f27580b29662f75455358c83ccb7
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113002578"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732562"
 ---
 # <a name="introduction-to-azure-defender-for-resource-manager"></a>Azure Defender for Resource Manager の概要
 
@@ -26,9 +26,9 @@ ms.locfileid: "113002578"
 
 |側面|詳細|
 |----|:----|
-|リリース状態:|一般提供 (GA)|
+|リリース状態:|一般公開 (GA)|
 |価格:|**Azure Defender for Resource Manager** の課金については、「[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)」をご覧ください|
-|クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![Yes](./media/icons/yes-icon.png) US Gov、その他の Gov<br>![いいえ](./media/icons/no-icon.png) Azure 中国|
+|クラウド:|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用クラウド<br>:::image type="icon" source="./media/icons/yes-icon.png"::: Azure Government<br>:::image type="icon" source="./media/icons/yes-icon.png"::: Azure China 21Vianet|
 |||
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-resource-manager"></a>Azure Defender for Resource Manager の利点
@@ -70,9 +70,11 @@ Azure Defender for Resource Manager からのセキュリティ アラートを�
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、Azure Defender for Resource Manager について学習しました。 関連資料については、次の記事をご覧ください。 
+この記事では、Azure Defender for Resource Manager について学習しました。 
+
+> [!div class="nextstepaction"]
+> [Azure Defender を有効にする](enable-azure-defender.md)
+
+関連資料については、次の記事をご覧ください。 
 
 - セキュリティ アラートは、Security Center によって生成される場合もあれば、Security Center がさまざまなセキュリティ製品から受信する場合もあります。 それらすべてのアラートを Azure Sentinel、サードパーティの SIEM、またはその他の外部ツールにエクスポートする場合は、[SIEM へのアラートのエクスポート](continuous-export.md)に関するページの手順に従ってください。
-
-- > [!div class="nextstepaction"]
-    > [Azure Defender を有効にする](enable-azure-defender.md)

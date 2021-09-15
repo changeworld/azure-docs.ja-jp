@@ -3,23 +3,18 @@ title: API Management でバックアップと復元を使用してディザス�
 titleSuffix: Azure API Management
 description: Azure API Management でバックアップと復元を使用してディザスター リカバリーを行う方法について説明します。
 services: api-management
-documentationcenter: ''
 author: mikebudzynski
-manager: erikre
-editor: ''
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 12/05/2020
+ms.date: 08/20/2021
 ms.author: apimpm
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8148cbd1fa4e34610c4b27609910821323a2acea
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9d0845d2b54f2ce9d69772b6f1fcfe6fd3704a78
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121732213"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123538671"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Azure API Management でサービスのバックアップと復元を使用してディザスター リカバリーを実装する方法
 
@@ -57,38 +52,32 @@ Azure Resource Manager を使用してリソースに実行するすべてのタ
 ### <a name="create-an-azure-active-directory-application"></a>Azure Active Directory アプリケーションを作成する
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-2. API Management サービス インスタンスを含むサブスクリプションを使用して、**Azure Active Directory** の **[アプリの登録]** タブ (Azure Active Directory > [登録の管理/アプリの登録]) に移動します。
-
+1. API Management サービス インスタンスが含まれているサブスクリプションを使用して、[Azure portal の [アプリの登録]](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) に移動し、Active Directory にアプリを登録します。
     > [!NOTE]
     > Azure Active Directory の既定のディレクトリがアカウントに表示されない場合は、必要なアクセス許可をアカウントに付与するよう Azure サブスクリプションの管理者に連絡してください。
+1. **[+ 新規登録]** を選択します。
+1. **[アプリケーションの登録]** ページで、次のように値を設定します。
+    
+    * **[名前]** をわかりやすい名前に設定します。
+    * **[サポートされているアカウントの種類]** を **[この組織のディレクトリ内のアカウントのみ]** に設定します。 
+    * **[リダイレクト URI]** に、`https://resources` などのプレースホルダー URL を入力します。 これは必須フィールドですが、値が後で使用されることはありません。 
+    * **[登録]** を選択します。
 
-3. **[新しいアプリケーションの登録]** をクリックします。
+### <a name="add-permissions"></a>Add permissions
 
-    **[作成]** ウィンドウが右側に表示されます。 ここに AAD アプリの関連情報を入力します。
-
-4. アプリケーションの名前を入力します。
-5. アプリケーションの種類で **[ネイティブ]** を選択します。
-6. **[リダイレクト URI]** に`http://resources` などのプレース ホルダー URL を入力します。これは必須フィールドですが、値を後で使用することはありません。 チェック ボックスをオンにして、アプリケーションを保存します。
-7. **Create** をクリックしてください。
-
-### <a name="add-an-application"></a>アプリケーションを追加する
-
-1. アプリケーションが作成されたら、 **[API のアクセス許可]** をクリックします。
-2. **[+アクセス許可の追加]** をクリックします。
-4. **[Select Microsoft APIs]\(Microsoft API を選択する\)** を押します。
-5. **[Azure Service Management]\(Azure サービス管理\)** を選択します。
-6. **[選択]** を選択します。
+1. アプリケーションが作成されたら、 **[API のアクセス許可]**  >  **[+ アクセス許可の追加]** を選択します。
+1. **[Microsoft API]** を選択します。
+1. **[Azure Service Management]** を選択します。
 
     :::image type="content" source="./media/api-management-howto-disaster-recovery-backup-restore/add-app-permission.png" alt-text="アプリのアクセス許可を追加する方法を示すスクリーンショット。"::: 
 
-7. 新しく追加されたアプリケーションの横にある **[委任されたアクセス許可]** をクリックし、 **[Azure Service 管理へのアクセス (プレビュー)]** のチェック ボックスをオンにします。
+1. 新しく追加されたアプリケーションの横にある **[委任されたアクセス許可]** をクリックし、 **[組織ユーザーとして Azure Service Management にアクセスする (プレビュー)]** のチェック ボックスをオンにします。
 
     :::image type="content" source="./media/api-management-howto-disaster-recovery-backup-restore/delegated-app-permission.png" alt-text="委任されたアプリのアクセス許可の追加を示すスクリーンショット。":::
 
-8. **[選択]** を選択します。
-9. **[アクセス許可の追加]** をクリックします。
+1. **[アクセス許可の追加]** を選択します.
 
-### <a name="configuring-your-app"></a>アプリの構成
+### <a name="configure-your-app"></a>アプリの構成
 
 サービス インスタンスをバックアップおよび復元する API を呼び出す前に、トークンを取得する必要があります。 次の例では、[Microsoft.IdentityModel.Clients.ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory) NuGet パッケージを使用して、トークンを取得します。
 
@@ -137,6 +126,9 @@ namespace GetTokenResourceManagerRequests
 
 REST API は [API Management Service - Backup](/rest/api/apimanagement/2020-12-01/api-management-service/backup) と [API Management Service - Restore](/rest/api/apimanagement/2020-12-01/api-management-service/restore) です。
 
+> [!NOTE]
+> バックアップと復元の操作は、それぞれ PowerShell の [_Backup-AzApiManagement_](/powershell/module/az.apimanagement/backup-azapimanagement) コマンドと [_Restore-AzApiManagement_](/powershell/module/az.apimanagement/restore-azapimanagement) コマンドでも実行できます。
+
 以降のセクションで説明されている "バックアップおよび復元" の操作を呼び出す前に、REST 呼び出しに承認要求ヘッダーを設定します。
 
 ```csharp
@@ -156,7 +148,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 -   `subscriptionId` - バックアップ対象の API Management サービスを保持するサブスクリプションの ID
 -   `resourceGroupName` - Azure API Management サービスのリソース グループの名前
 -   `serviceName` - バックアップを作成する API Management サービスの、作成時に指定された名前
--   `api-version` - `2020-12-01` に置き換えます
+-   `api-version` - `2020-12-01` などの、サポートされている REST API のバージョンに置き換えます
 
 要求の本文に、ターゲットの Azure ストレージ アカウント名、アクセス キー、BLOB コンテナー名、バックアップ名を指定します。
 
@@ -208,14 +200,8 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 >
 > 復元処理の進行中にサービス構成 (API、ポリシー、開発者ポータルの外観など) に対して行われる **変更** は、**上書きされることがあります**。
 
-<!-- Dummy comment added to suppress markdown lint warning -->
-
-> [!NOTE]
-> バックアップと復元の操作は、それぞれ PowerShell の [_Backup-AzApiManagement_](/powershell/module/az.apimanagement/backup-azapimanagement) コマンドと [_Restore-AzApiManagement_](/powershell/module/az.apimanagement/restore-azapimanagement) コマンドでも実行できます。
-
 ## <a name="constraints-when-making-backup-or-restore-request"></a>バックアップまたは復元要求を行う際の制約
 
--   要求の本文に指定された **コンテナー** は、**存在する必要があります**。
 -   バックアップの進行中は、**サービスでの管理の変更は避けてください** (SKU のアップグレードやダウングレード、ドメイン名の変更など)。
 -   バックアップの復元は、作成されたときから **30 日間だけ保証されます**。
 -   バックアップ処理の進行中にサービス構成 (API、ポリシー、開発者ポータルの外観など) に対して行われた **変更** は、**バックアップ対象から除外され、その結果失われる可能性があります**。
@@ -255,5 +241,5 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 [api-management-aad-resources]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-aad-resources.png
 [api-management-arm-token]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-arm-token.png
 [api-management-endpoint]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-endpoint.png
-[control-plane-ip-address]: api-management-using-with-vnet.md#control-plane-ips
+[control-plane-ip-address]: api-management-using-with-vnet.md#control-plane-ip-addresses
 [azure-storage-ip-firewall]: ../storage/common/storage-network-security.md#grant-access-from-an-internet-ip-range

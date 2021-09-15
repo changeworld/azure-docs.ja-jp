@@ -2,7 +2,6 @@
 title: ポータルを使用して共有 Azure Linux VM イメージを作成する
 description: Azure portal を使用して、Linux 仮想マシン イメージを作成して共有する方法について説明します。
 author: cynthn
-tags: azure-resource-manager
 ms.service: virtual-machines
 ms.subservice: shared-image-gallery
 ms.collection: linux
@@ -10,15 +9,16 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 06/21/2021
 ms.author: cynthn
-ms.reviewer: akjosh
-ms.openlocfilehash: 254fb1b4c21f8dd956c271e75ddf29f25c2bce15
-ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
+ms.openlocfilehash: 908d4ae4a18ac75577ea567f6aba37c9ea2e49fe
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114204450"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123450496"
 ---
 # <a name="create-a-shared-image-gallery-using-the-portal"></a>ポータルを使用して共有イメージ ギャラリーを作成する
+
+**適用対象:** :heavy_check_mark: Linux VMs :heavy_check_mark: フレキシブル スケール セット **適用対象:** :heavy_check_mark: :heavy_check_mark: ユニフォーム スケール セット 
 
 [共有イメージ ギャラリー](../shared-image-galleries.md)により、組織全体でのカスタム イメージの共有が簡素化されます。 カスタム イメージは Marketplace のイメージに似ていますが、カスタム イメージは自分で作成します。 カスタム イメージは、デプロイ タスク (アプリケーションのプリロード、アプリケーションの構成、その他の OS 構成など) のブートストラップを実行するために使用できます。 
 
@@ -29,7 +29,7 @@ ms.locfileid: "114204450"
 共有イメージ ギャラリー機能には、リソースの種類が複数あります。 それらを、この記事の中で使用または作成していきます。
 
 
-[!INCLUDE [virtual-machines-shared-image-gallery-resources](../../../includes/virtual-machines-shared-image-gallery-resources.md)]
+[!INCLUDE [virtual-machines-shared-image-gallery-resources](../includes/virtual-machines-shared-image-gallery-resources.md)]
 
 <br>
 

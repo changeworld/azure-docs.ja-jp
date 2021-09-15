@@ -9,14 +9,16 @@ ms.topic: reference
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d9ac06d7863ae08e380532f0b737dafc57ab666e
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 703c2023103d9225e5dfad5bd0d288164350122f
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114469157"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123450343"
 ---
 # <a name="create-an-azure-image-builder-template"></a>Azure Image Builder テンプレートを作成する 
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブル スケール セット 
 
 Azure Image Builder では、.json ファイルを使って Image Builder サービスに情報を渡します。 この記事では、独自のテンプレートを作成できるように、json ファイルの各セクションについて説明します。 完全な .json ファイルの例を確認するには、[Azure Image Builder の GitHub](https://github.com/Azure/azvmimagebuilder/tree/main/quickquickstarts) をご覧ください。
 
@@ -88,7 +90,7 @@ location は、カスタム イメージを作成するリージョンです。 
 Azure VM Image Builder サービスでは、顧客が単一リージョンのデータ所在地の要件が厳しいリージョンでの構築を要求した場合に、そのリージョンの外部に顧客のデータが保存されたり、外部で処理されたりすることはありません。 データ所在地の要件が設けられているリージョンでサービスが停止した場合は、別のリージョンや地域にテンプレートを作成する必要があります。
 
 ### <a name="zone-redundancy"></a>ゾーン冗長
-配布ではゾーン冗長がサポートされており、VHD は既定でゾーン冗長ストレージ アカウントに配布されます。Shared Image Gallery バージョンでは、[ZRS ストレージ](../disks-redundancy.md#zone-redundant-storage-for-managed-disks-preview) がサポートされます (指定されている場合)。
+配布ではゾーン冗長がサポートされており、VHD は既定でゾーン冗長ストレージ アカウントに配布されます。Shared Image Gallery バージョンでは、[ZRS ストレージ](../disks-redundancy.md#zone-redundant-storage-for-managed-disks) がサポートされます (指定されている場合)。
  
 ## <a name="vmprofile"></a>vmProfile
 ## <a name="buildvm"></a>buildVM
@@ -253,6 +255,8 @@ buildTimeoutInMinutes の値を指定しなかった場合、または 0 に設�
 
 カスタマイズを完了するためにより多くの時間が必要な場合は、オーバーヘッドが小さい必要と思われるものに設定します。 ただし、エラーが表示される前にタイムアウトするまで待機する必要があるため、設定値を大きくしすぎないでください。 
 
+> [!NOTE]
+> 値を 0 に設定しない場合、サポートされる最小値は 6 分です。 1 から 5 までの値を使用すると失敗します。
 
 ## <a name="properties-customize"></a>プロパティ: customize
 
@@ -603,7 +607,7 @@ Azure 共有イメージ ギャラリーは新しいイメージ管理サービ�
 - イメージ定義 - イメージの概念的なグループ化。 
 - イメージ バージョン - VM またはスケール セットのデプロイに使われるイメージの種類。 イメージ バージョンは、VM をデプロイする必要がある他のリージョンにレプリケートできます。
  
-イメージ ギャラリーに配布するには、その前にギャラリーとイメージの定義を作成しておく必要があります。[共有イメージ](../shared-images-cli.md)に関する記事をご覧ください。 
+イメージ ギャラリーに配布するには、その前にギャラリーとイメージの定義を作成しておく必要があります。[共有イメージ](../create-gallery.md)に関する記事をご覧ください。 
 
 ```json
 {

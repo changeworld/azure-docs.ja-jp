@@ -1,21 +1,28 @@
 ---
-title: Azure Web PubSub サービス サーバーレス クイックスタート
-description: Azure Web PubSub サービスと Azure Functions を使用したサーバーレス アプリケーションのためのクイックスタート。
+title: チュートリアル - Azure Web PubSub サービスと Azure Functions を使用してサーバーレス チャットを作成する
+description: Azure Web PubSub サービスと Azure Functions を使用して、サーバーレス アプリケーションを作成する方法を説明するチュートリアルです。
 author: yjin81
 ms.author: yajin1
 ms.service: azure-web-pubsub
-ms.topic: overview
+ms.topic: tutorial
 ms.date: 03/11/2021
-ms.openlocfilehash: 43d702f3294d728b196de69790f543dc67491400
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: 466da06b470774c67fb93eca5cc027edb16bcbc7
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113433946"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122446168"
 ---
-# <a name="quickstart-create-a-serverless-simple-chat-application-with-azure-functions-and-azure-web-pubsub-service"></a>クイックスタート: Azure Functions と Azure Web PubSub サービスを使用してシンプルなサーバーレス チャット アプリケーションを作成する 
+# <a name="tutorial-create-a-serverless-chat-with-azure-functions-and-azure-web-pubsub-service"></a>チュートリアル: Azure Functions と Azure Web PubSub サービスを使用してサーバーレス チャットを作成する
 
-Azure Web PubSub サービスは、WebSocket とパブリッシュ-サブスクライブ パターンを使用して、リアルタイム メッセージング Web アプリケーションを作成するのに役立ちます。 Azure Functions は、インフラストラクチャを管理することなくコードを実行できるサーバーレス プラットフォームです。 このクイックスタートでは、Azure Web PubSub サービスと Azure Functions を使用して、リアルタイム メッセージングとパブリッシュ-サブスクライブ パターンによるサーバーレス アプリケーションを作成する方法について説明します。
+Azure Web PubSub サービスは、WebSocket とパブリッシュ-サブスクライブ パターンを使用して、リアルタイム メッセージング Web アプリケーションを作成するのに役立ちます。 Azure Functions は、インフラストラクチャを管理することなくコードを実行できるサーバーレス プラットフォームです。 このチュートリアルでは、Azure Web PubSub サービスと Azure Functions を使用して、リアルタイム メッセージングとパブリッシュ-サブスクライブ パターンによるサーバーレス アプリケーションを作成する方法について説明します。
+
+このチュートリアルでは、次の作業を行う方法について説明します。
+
+> [!div class="checklist"]
+> * Web PubSub サービス インスタンスを作成する
+> * サンプル関数をローカルで実行する
+> * イベントとメッセージをアプリケーションにルーティングするように Web PubSub イベント ハンドラーを構成する
 
 ## <a name="prerequisites"></a>必須コンポーネント
 
@@ -65,16 +72,16 @@ Azure Function アプリをローカルで実行するために、[Azure Functio
 
   クローンしたリポジトリの */samples/functions/js/simplechat* フォルダーを開きます。 *local.settings.json* を編集して、サービスの接続文字列を追加します。
   これらの変更を *local.settings.json* に加えたら、ファイルを保存します。
-    - プレース ホルダー *<connection-string>* は、**Azure portal** の **`WebPubSubConnectionString`** 設定からコピーした実際の文字列に置き換えます。 
-    - **`AzureWebJobsStorage`** の設定には、これが必須となります。[Azure Functions には Azure ストレージ アカウントが必要](../azure-functions/storage-considerations.md)であるためです。
+    - プレース ホルダー `<connection-string>` は、**Azure portal** の **`WebPubSubConnectionString`** 設定からコピーした実際の文字列に置き換えます。 
+    - [Azure Functions には Azure Storage アカウントが必須](../azure-functions/storage-considerations.md)であるため、 **`AzureWebJobsStorage`** の設定が必要になります。
         - [Azure ストレージ エミュレーター](https://go.microsoft.com/fwlink/?linkid=717179&clcid=0x409)がローカルで実行されている場合、"UseDevelopmentStorage=true" という元の設定を維持します。
         - Azure ストレージの接続文字列がある場合は、その値に置き換えます。
  
 - フォルダーに JavaScript 関数が編成されます。 各フォルダーには、関数で使用されるバインディングを定義する `function.json` と、関数の本体である `index.js` という 2 つのファイルがあります。 この関数アプリには、トリガーによって作動する関数がいくつかあります。
 
-    - **login** - これは HTTP によってトリガーされる関数です。 *webPubSubConnection* 入力バインディングを使用して、有効なサービス接続情報を生成して返します。
-    - **messages** - これは `WebPubSubTrigger` によってトリガーされる関数です。 要求本文でチャット メッセージを受信し、`WebPubSub` 出力バインディングを使用して、接続されているすべてのクライアント アプリケーションにメッセージをブロードキャストします。
-    - **connect** および **connected** - これらは `WebPubSubTrigger` によってトリガーされる関数です。 connect と connected のイベントを処理します。
+    - **login** - この関数は HTTP によってトリガーされる関数です。 *webPubSubConnection* 入力バインディングを使用して、有効なサービス接続情報を生成して返します。
+    - **messages** - この関数は `WebPubSubTrigger` によってトリガーされる関数です。 要求本文でチャット メッセージを受信し、`WebPubSub` 出力バインディングを使用して、接続されているすべてのクライアント アプリケーションにメッセージをブロードキャストします。
+    - **connect** および **connected** - これらの関数は `WebPubSubTrigger` によってトリガーされる関数です。 connect と connected のイベントを処理します。
 
 - ターミナルで、現在のフォルダーが */samples/functions/js/simplechat* であることを確認します。 拡張機能をインストールし、関数アプリを実行します。
 
@@ -90,17 +97,17 @@ Azure Function アプリをローカルで実行するために、[Azure Functio
 
   クローンしたリポジトリで */samples/functions/csharp/simplechat* フォルダーを開きます。 *local.settings.json* を編集して、サービスの接続文字列を追加します。
   これらの変更を *local.settings.json* に加えたら、ファイルを保存します。
-    - プレース ホルダー *<connection-string>* は、**Azure portal** の **`WebPubSubConnectionString`** 設定からコピーした実際の文字列に置き換えます。 
-    - **`AzureWebJobsStorage`** の設定には、これが必須となります。[Azure Functions には Azure ストレージ アカウントが必要](../azure-functions/storage-considerations.md)であるためです。
+    - プレース ホルダー `<connection-string>` は、**Azure portal** の **`WebPubSubConnectionString`** 設定からコピーした実際の文字列に置き換えます。 
+    - [Azure Functions には Azure Storage アカウントが必須](../azure-functions/storage-considerations.md)であるため、 **`AzureWebJobsStorage`** の設定が必要になります。
         - [Azure ストレージ エミュレーター](https://go.microsoft.com/fwlink/?linkid=717179&clcid=0x409)がローカルで実行されている場合、"UseDevelopmentStorage=true" という元の設定を維持します。
         - Azure ストレージの接続文字列がある場合は、その値に置き換えます。
 
 - C# 関数はファイル Functions.cs で整理されます。 この関数アプリには、トリガーによって作動する関数がいくつかあります。
 
-    - **login** - これは HTTP によってトリガーされる関数です。 *webPubSubConnection* 入力バインディングを使用して、有効なサービス接続情報を生成して返します。
-    - **connected** - これは `WebPubSubTrigger` によってトリガーされる関数です。 要求本文でチャット メッセージを受信し、接続されているすべてのクライアント アプリケーションにメッセージを、複数のタスクでブロードキャストします。
-    - **broadcast** - これは `WebPubSubTrigger` によってトリガーされる関数です。 要求本文でチャット メッセージを受信し、接続されているすべてのクライアント アプリケーションにメッセージを、1 つのタスクでブロードキャストします。
-    - **connect** と **disconnect** - これらは `WebPubSubTrigger` によってトリガーされる関数です。 接続を処理し、イベントを切断します。
+    - **login** - この関数は HTTP によってトリガーされる関数です。 *webPubSubConnection* 入力バインディングを使用して、有効なサービス接続情報を生成して返します。
+    - **connected** - この関数は `WebPubSubTrigger` によってトリガーされる関数です。 要求本文でチャット メッセージを受信し、接続されているすべてのクライアント アプリケーションにメッセージを、複数のタスクでブロードキャストします。
+    - **broadcast** - この関数は `WebPubSubTrigger` によってトリガーされる関数です。 要求本文でチャット メッセージを受信し、接続されているすべてのクライアント アプリケーションにメッセージを、1 つのタスクでブロードキャストします。
+    - **connect** と **disconnect** - これらの関数は `WebPubSubTrigger` によってトリガーされる関数です。 接続を処理し、イベントを切断します。
 
 - ターミナルで、現在のフォルダーが */samples/functions/csharp/simplechat* であることを確認します。 拡張機能をインストールし、関数アプリを実行します。
 
@@ -120,12 +127,12 @@ Azure Function アプリをローカルで実行するために、[Azure Functio
 
 - Azure Web PubSub サービスに `Event Handler` を設定します。 **Azure portal** に移動して、自分の Web PubSub リソースを見つけ、 **[設定]** に移動します。 次のように、新しいハブ設定と使用中の 1 つの関数とのマッピングを追加します。 {ngrok-id} は、実際の文字列に置き換えてください。
 
-   - ハブ名: simplechat
+   - ハブ名: `simplechat`
    - URL テンプレート: **http://{ngrok-id}.ngrok.io/runtime/webhooks/webpubsub**
    - ユーザー イベント パターン: *
    - システム イベント: connect、connected、disconnected
 
-:::image type="content" source="media/quickstart-serverless/set-event-hanlder.png" alt-text="イベント ハンドラーの設定のスクリーンショット。":::
+:::image type="content" source="media/quickstart-serverless/set-event-handler.png" alt-text="イベント ハンドラーの設定のスクリーンショット。":::
 
 ## <a name="run-the-web-application"></a>Web アプリケーションの実行
 
@@ -139,7 +146,7 @@ Azure Function アプリをローカルで実行するために、[Azure Functio
 
 1. メッセージを入力して Enter キーを押します。 アプリケーションは Azure Function アプリで *messages* 関数にメッセージを送信します。次に、Web PubSub 出力バインディングを使用して、接続されているすべてのクライアントにメッセージをブロードキャストします。 すべてが正しく動作している場合、アプリケーションでメッセージが表示されます。
 
-1. Web アプリケーションの別のインスタンスを、別のブラウザー ウィンドウで開きます。 送信したメッセージがアプリケーションのすべてのインスタンスで表示されることを確認します。
+1. Web アプリケーションの別のインスタンスを、別のブラウザー ウィンドウで開きます。 送信したメッセージが、アプリケーションのすべてのインスタンスで表示されることを確認します。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -153,7 +160,7 @@ Azure Function アプリをローカルで実行するために、[Azure Functio
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイックスタートでは、サーバーレスのシンプルなチャット アプリケーションを実行する方法について説明しました。 これで、独自のアプリケーションの作成を始められます。 
+このクイックスタートでは、サーバーレス チャット アプリケーションを実行する方法について説明しました。 これで、独自のアプリケーションの作成を始められます。 
 
 > [!div class="nextstepaction"]
 > [クイックスタート: Azure Web PubSub で簡単なチャットルームを作成する](https://azure.github.io/azure-webpubsub/getting-started/create-a-chat-app/js-handle-events)

@@ -3,19 +3,19 @@ title: Azure IoT Central 用デバイスの開発 | Microsoft Docs
 description: Azure IoT Central は、IoT ソリューションの作成を簡単にする IoT アプリケーション プラットフォームです。 この記事では、IoT Central アプリケーションに接続するデバイスの開発について概要を説明します。 デバイスは、テレメトリを使用してストリーミング データとプロパティを送信することにより、その状態をレポートします。 IoT Central は、書き込み可能なプロパティを使用してデバイスの状態を設定したり、デバイスに対するコマンドを呼び出したりすることができます。
 author: dominicbetts
 ms.author: dobett
-ms.date: 05/05/2020
+ms.date: 08/30/2021
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom:
 - mvc
 - device-developer
-ms.openlocfilehash: e7ec54a85c2b5f964327d7d60c9f856e70320225
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: f2131ec5a0b939172097494dcd457b9d661614ad
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114467864"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123473498"
 ---
 # <a name="iot-central-device-development-guide"></a>IoT Central デバイスの開発ガイド
 
@@ -85,7 +85,7 @@ IoT Central デバイス テンプレートには、その種類のデバイス�
 
 各モデルには、一意の "_デバイス ツイン モデル識別子_" (DTMI) があります (例: `dtmi:com:example:Thermostat;1`)。 デバイスは、IoT Central に接続するときに、実装するモデルの DTMI を送信します。 これにより、IoT Central で正しいデバイス テンプレートをデバイスに関連付けることができます。
 
-[IoT プラグ アンド プレイ](../../iot-develop/overview-iot-plug-and-play.md)では、DTDL モデルの実装時にデバイスで遵守されるべき一連の規則を定義しています。
+[IoT プラグ アンド プレイ](../../iot-develop/overview-iot-plug-and-play.md)では、DTDL モデルの実装時にデバイスで遵守されるべき一連の[規則](../../iot-develop/concepts-convention.md)を定義しています。
 
 [Azure IoT device SDK](#languages-and-sdks) では、IoT プラグ アンド プレイ規則がサポートされています。
 

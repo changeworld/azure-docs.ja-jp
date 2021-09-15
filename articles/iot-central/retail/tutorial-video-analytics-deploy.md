@@ -1,23 +1,43 @@
 ---
-title: チュートリアル:ビデオ分析 - 物体とモーションの検出 Azure IoT Central アプリケーション テンプレートをデプロイする方法
-description: チュートリアル - このガイドでは、ビデオ分析 - 物体とモーションの検出アプリケーション テンプレートを使用して Azure IoT Central アプリケーションをデプロイする手順をまとめています。
+title: チュートリアル - Azure IoT ビデオ分析 - オブジェクトとモーションの検出 | Microsoft Docs
+description: このチュートリアルでは、IoT Central のビデオ分析 - オブジェクトとモーションの検出アプリケーション テンプレートをデプロイして使用する方法について説明します。
 services: iot-central
 ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
-ms.date: 07/31/2020
-ms.openlocfilehash: c578da7e83a39f84e72b550038bd87dde3c61d28
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/02/2021
+ms.openlocfilehash: 026c1794f678c5d194b0e5174986f9f962508647
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101727466"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123473750"
 ---
-# <a name="tutorial-how-to-deploy-an-iot-central-application-using-the-video-analytics---object-and-motion-detection-application-template"></a>チュートリアル:ビデオ分析 - 物体とモーションの検出アプリケーション テンプレートを使用して IoT Central アプリケーションをデプロイする方法
+# <a name="tutorial-deploy-and-walk-through-the-video-analytics---object-and-motion-detection-application-template"></a>チュートリアル: ビデオ分析 - オブジェクトとモーションの検出アプリケーション テンプレートをデプロイして調べる
 
-*ビデオ分析 - 物体とモーションの検出* アプリケーションの主要なコンポーネントの概要については、[物体とモーションの検出ビデオ分析アプリケーション アーキテクチャ](architecture-video-analytics.md)に関するページを参照してください。
+"*ビデオ分析 - オブジェクトとモーション検出*" アプリケーションの主な概要として、**ビデオ分析 - オブジェクトとモーション検出** アプリケーション テンプレートにより、ライブ ビデオ分析機能を含む IoT ソリューションを構築できます。
+
+:::image type="content" source="media/architecture-video-analytics/architecture.png" alt-text="ビデオ分析オブジェクトとモーション検出コンポーネントの概要の図。":::
+
+ビデオ分析ソリューションの主要なコンポーネントは次のとおりです。
+
+### <a name="live-video-analytics-lva"></a>ライブ ビデオ分析 (LVA)
+
+LVA では、エッジとクラウドにまたがるインテリジェントなビデオ アプリケーションを構築するためのプラットフォームを提供します。 このプラットフォームにより、エッジとクラウドにまたがるインテリジェントなビデオ アプリケーションを構築できます。 このプラットフォームは、ライブ ビデオをキャプチャ、録画、分析し、その結果 (ビデオやビデオ分析など) を Azure サービスに発行する機能を備えています。 Azure サービスは、クラウドやエッジで実行されている場合があります。 このプラットフォームは、ビデオ分析を使用して IoT ソリューションを強化するために使用できます。
+
+詳細については、GitHub の「[Live Video Analytics](https://github.com/Azure/live-video-analytics)」を参照してください。
+
+### <a name="iot-edge-lva-gateway-module"></a>IoT Edge LVA ゲートウェイ モジュール
+
+IoT Edge LVA ゲートウェイ モジュールでは、カメラを新しいデバイスとしてインスタンス化し、IoT デバイス クライアント SDK を使用して、それらを直接 IoT Central に接続します。
+
+この参照実装では、デバイスはエッジからの対称キーを使用してソリューションに接続します。 デバイスの接続の詳細については、「[Azure IoT Central に接続する](../core/concepts-get-connected.md)」を参照してください
+
+### <a name="media-graph"></a>メディア グラフ
+
+メディア グラフでは、メディアのキャプチャ元、処理方法、および結果の配信場所を定義できます。 メディア グラフを構成するには、必要な方法でコンポーネントまたはノードを接続します。 詳細については、GitHub の「[メディア グラフ](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph)」を参照してください。
 
 次のビデオでは、"_ビデオ分析 - 物体とモーションの検出アプリケーション テンプレート_" を使用して IoT Central ソリューションをデプロイする方法を段階的に説明しています。
 
@@ -32,7 +52,8 @@ ms.locfileid: "101727466"
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure サブスクリプションをお勧めします。 また、7 日間無料の試用版を使用することもできます。 Azure サブスクリプションがない場合は、[Azure サインアップ ページ](https://aka.ms/createazuresubscription)で作成できます。
+* このアプリをデプロイするために必要な前提条件は特にありません。
+* 無料価格プランを使用するか、Azure サブスクリプションを使用することができます。
 
 ## <a name="deploy-the-application"></a>アプリケーションをデプロイする
 

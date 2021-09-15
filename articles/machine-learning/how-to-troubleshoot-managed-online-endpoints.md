@@ -11,12 +11,12 @@ ms.reviewer: laobri
 ms.date: 05/13/2021
 ms.topic: troubleshooting
 ms.custom: devplatv2
-ms.openlocfilehash: 9f50fd0ff60f819717dbcb1e3878b4caf56c563b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 71570e00f77626edc82db0e45e7815d1c40bd06d
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121729786"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123430146"
 ---
 # <a name="troubleshooting-managed-online-endpoints-deployment-and-scoring-preview"></a>マネージド オンライン エンドポイントのデプロイとスコアリングのトラブルシューティング (プレビュー)
 
@@ -36,7 +36,7 @@ Azure Machine Learning のマネージド オンライン エンドポイント�
 
 * **Azure サブスクリプション**。 [無料版または有料版の Azure Machine Learning](https://azure.microsoft.com/free/) をお試しください。
 * [Azure CLI](/cli/azure/install-azure-cli)。
-* [2.0 CLI (プレビュー) のインストール、設定、および使用](how-to-configure-cli.md)。
+* [CLI (v2) (プレビュー) のインストール、設定、および使用](how-to-configure-cli.md)。
 
 ## <a name="deploy-locally"></a>ローカルでのデプロイ
 
@@ -175,7 +175,7 @@ az ml endpoint get-logs
 
 デプロイの一部として提供される `score.py` を実行するために、Azure では `score.py` に必要なすべてのリソースを含むコンテナーを作成し、そのコンテナーでスコアリング スクリプトを実行します。  このシナリオのエラーは、実行中にこのコンテナーがクラッシュしたため、スコアリングを実行できなかったことを意味します。 このエラーは、次の場合に発生します。
 
-- `score.py` にエラーがある。 `get--logs` を使用すると、一般的な問題を診断できます。
+- `score.py` にエラーがある。 `get-logs` を使用すると、一般的な問題を診断できます。
     - インポートされたパッケージは、conda 環境には存在しません
     - 構文エラー
     - `init()` メソッドのエラー

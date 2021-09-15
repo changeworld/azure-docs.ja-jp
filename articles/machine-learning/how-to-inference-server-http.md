@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: how-to
 ms.custom: inference server, local development, local debugging, devplatv2
 ms.date: 05/14/2021
-ms.openlocfilehash: 924995fe9330a44b52a40a8e3eb651efdeb24398
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 4d8c2dbbfe313d480fce953af0b39ee01cd32230
+ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121751949"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122597788"
 ---
 # <a name="azure-machine-learning-inference-http-server-preview"></a>Azure Machine Learning 推論 HTTP サーバー (プレビュー)
 
@@ -132,6 +132,15 @@ python -m pip install azureml-inference-server-http
 1. 最後に、要求は入力スクリプトに送信されます。 次に、エントリ スクリプトは、読み込まれたモデルへの推論の呼び出しを行い、応答を返します。
 
 :::image type="content" source="./media/how-to-inference-server-http/inference-server-architecture.png" alt-text="HTTP サーバー プロセスの図":::
+
+## <a name="how-to-integrate-with-visual-studio-code"></a>Visual Studio Code と統合する方法
+
+Visual Studio Code (VSCode) と [Python Extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python) を使用し、[azureml-inference-server-http](https://pypi.org/project/azureml-inference-server-http/) パッケージを使用してデバッグするには 2 つの方法があります。 
+
+1. コマンドラインで AzureML Inference Server を起動し、VSCode + Python Extension を使用してプロセスにアタッチします。
+1. VSCode で `launch.json` を設定し、VSCode 内で AzureML Inference Server を起動します。
+
+どちらの方法でも、ブレークポイントを設定し、ステップごとにデバッグすることができます。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 

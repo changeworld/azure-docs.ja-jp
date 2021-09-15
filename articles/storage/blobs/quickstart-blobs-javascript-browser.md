@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: bc02f9c526ec9b0826bbe640efc4b474794f30ae
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: f253be6bbcea46baa6c86f33223504bfba3ab198
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106278492"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123475982"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -38,9 +38,6 @@ Azure Blob Storage は、大量の非構造化データを格納するために�
     * [Debugger for Microsoft Edge](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-edge)
     * [Debugger for Chrome](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome)
     * [Debugger for Firefox](https://marketplace.visualstudio.com/items?itemName=firefox-devtools.vscode-firefox-debug)
-
-
-[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="object-model"></a>オブジェクト モデル
 
@@ -94,7 +91,7 @@ Shared Access Signature (SAS) は、Azure Blob Storage への要求を承認す�
 Blob service の SAS URL を取得するには、次の手順に従います。
 
 1. Azure portal で、自分のストレージ アカウントを選択します。
-2. **[設定]** セクションに移動し、 **[Shared Access Signature]** を選択します。
+2. **[セキュリティとネットワーク]** セクションに移動し、 **[Shared Access Signature]** を選択します。
 3. 下へスクロールし、 **[SAS と接続文字列を生成する]** ボタンをクリックします。
 4. さらに下へスクロールし、 **[Blob service の SAS URL]** フィールドを見つけます。
 5. **[Blob service の SAS URL]** フィールドの右端にある **[クリップボードにコピー]** ボタンをクリックします。

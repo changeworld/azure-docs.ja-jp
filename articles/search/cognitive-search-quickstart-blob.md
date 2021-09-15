@@ -1,21 +1,21 @@
 ---
-title: Azure portal でコグニティブ スキルセットを作成する
+title: 'クイック スタート: Azure portal でスキルセットを作成する'
 titleSuffix: Azure Cognitive Search
-description: このポータル クイックスタートでは、データ インポート ウィザードを使用して、コグニティブ スキルを Azure Cognitive Search のインデックス作成パイプラインに追加する方法について説明します。 スキルには、光学式文字認識 (OCR) と自然言語処理が含まれます。
+description: このポータル クイックスタートでは、データ インポート ウィザードを使用して、コグニティブ スキルを Azure Cognitive Search のインデックス作成パイプラインに追加します。 スキルには、光学式文字認識 (OCR) と自然言語処理が含まれます。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 03/21/2021
-ms.openlocfilehash: 6a0ce57af076644072545356c0b225c4d639b9d5
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.date: 08/17/2021
+ms.openlocfilehash: d29f434e1ac8b5fa8b96dcf4ad4f1125c20eb4db
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111559216"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123451765"
 ---
-# <a name="quickstart-create-an-azure-cognitive-search-cognitive-skillset-in-the-azure-portal"></a>クイック スタート:Azure Cognitive Search コグニティブ スキルセットを Azure portal で作成する
+# <a name="quickstart-create-an-azure-cognitive-search-skillset-in-the-azure-portal"></a>クイック スタート: Azure Cognitive Search スキルセットを Azure portal で作成する
 
 このクイックスタートでは、ポータルでのスキルセットのサポートについて説明します。ここでは、光学式文字認識 (OCR) とエンティティ認識を使用して、画像やアプリケーション ファイルから検索可能なテキスト コンテンツを作成する方法を示します。
 
@@ -31,10 +31,10 @@ ms.locfileid: "111559216"
 
 + Azure Cognitive Search サービス。 [サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを検索](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)します。 このクイック スタート用には、無料のサービスを使用できます。 
 
-+ [Blob Storage](../storage/blobs/index.yml) を持つ Azure ストレージ アカウント。
++ [Blob Storage](../storage/blobs/index.yml) を持つ Azure Storage アカウント。
 
 > [!NOTE]
-> また、このクイックスタートでは [Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) を AI に使用します。 ワークロードは非常に小さいので、最大 20 トランザクションの処理を無料で使用するために Cognitive Services を内部で利用しています。 つまり、追加の Cognitive Services リソースを作成しなくても、この演習を完了できるということです。
+> また、このクイックスタートでは [Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) を AI に使用します。 ワークロードは非常に小さいので、最大 20 トランザクションの処理を無料で使用するために Cognitive Services を内部で利用しています。 つまり、追加の Cognitive Services リソースを作成しなくても、この演習を完了できるということです。
 
 ## <a name="set-up-your-data"></a>自分のデータを設定する
 
@@ -62,7 +62,7 @@ ms.locfileid: "111559216"
 
 1. [使用する検索サービスを探し](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/)、[概要] ページにあるコマンド バーの **[データのインポート]** をクリックして、4 つの手順でコグニティブ エンリッチメントを設定します。
 
-   :::image type="content" source="media/cognitive-search-quickstart-blob/import-data-cmd2.png" alt-text="[データのインポート] コマンド" border="false":::
+   :::image type="content" source="media/search-import-data-portal/import-data-cmd.png" alt-text="[データのインポート] コマンドのスクリーンショット" border="true":::
 
 ### <a name="step-1---create-a-data-source"></a>手順 1 - データ ソースを作成する
 
@@ -108,9 +108,9 @@ ms.locfileid: "111559216"
 
 `content` フィールドの近くにある **[取得可能]** 属性の取り消し線と疑問符に注目してください。 テキスト量の多い BLOB ドキュメントでは、`content` フィールドにファイルの大部分が格納され、それは数千行にも及ぶ可能性があります。 このようなフィールドは、検索結果では扱いにくく、このデモでは除外する必要があります。 
 
-ただし、ファイルの内容をクライアント コードに渡す必要がある場合は必ず、 **[取得可能]** をオンにしておいてください。 それ以外の場合、抽出された要素 (`people`、`organizations`、`locations` など) だけで問題がなければ、この `content` の属性はオフにすることを検討してください。
+ただし、ファイルの内容をクライアント コードに渡す必要がある場合は、必ず **[取得可能]** をオンにしておいて、検索エンジンでそのフィールドを返すことができるようにしてください。
 
-フィールドを **[取得可能]** としてマークしたからといって、このフィールドが検索結果に "*必ず*" 存在するという意味ではありません。 検索結果の構成は、対象となるフィールドを **$select** クエリ パラメーターを使用して指定することにより、厳密に制御することができます。 テキスト量の多いフィールド (`content` など) には、 **$select** パラメーターが役立ちます。アプリケーションのユーザーには扱いやすい検索結果を提供しつつ、クライアント コードからは必要なすべての情報にアクセスできる状態を **[取得可能]** 属性で確保できます。
+フィールドを **[取得可能]** としてマークしたからといって、このフィールドが検索結果に "*必ず*" 存在するという意味ではありません。 検索結果の構成は、対象となるフィールドを **$select** クエリ パラメーターを使用して指定することにより、厳密に制御することができます。 テキスト量の多いフィールド (`content` など) には、 **$select** パラメーターが役立ちます。アプリケーションのユーザーには扱いやすい検索結果を提供しつつ、クライアント コードでは必要なすべての情報に **[取得可能]** 属性からアクセスできます。
   
 次のページに進みます。
 

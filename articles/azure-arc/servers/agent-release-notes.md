@@ -3,12 +3,12 @@ title: Azure Arc 対応サーバー エージェントの新機能
 description: この記事には、Azure Arc 対応サーバー エージェントのリリース ノートが含まれています。 まとめられている問題の多くについては、追加詳細のリンクがあります。
 ms.topic: conceptual
 ms.date: 07/16/2021
-ms.openlocfilehash: d53ebd32c870ce8ec26bca7bcb811fbdd45c58b2
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: 54e7bc72884cc7bc9116c88e7cdb72e5af5f71cd
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114392376"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122770961"
 ---
 # <a name="whats-new-with-azure-arc-enabled-servers-agent"></a>Azure Arc 対応サーバー エージェントの新機能
 

@@ -5,21 +5,22 @@ services: storsimple
 author: alkohli
 ms.service: storsimple
 ms.topic: how-to
-ms.date: 07/14/2021
+ms.date: 08/17/2021
 ms.author: alkohli
-ms.openlocfilehash: 715af9d5bb67c74c91dc89a667cd9b4187b86f0d
-ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
+ms.openlocfilehash: 11cb0bda5fbedb9dfeef2cc4acc34159a1faf64f
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114221373"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122446519"
 ---
 # <a name="options-to-migrate-data-from-storsimple-8000-series"></a>StorSimple 8000 シリーズからデータを移行するためのオプション
 
 > [!IMPORTANT]
-> 2022 年 12 月 31 日に、StorSimple 8000 シリーズはサポート終了 (EOS) 状態になります。 StorSimple 8000 シリーズをご利用のお客様には、このドキュメントで説明する他のいずれかのシリーズへの移行をお勧めします。
+> 2022 年 12 月に、StorSimple 8000 シリーズはサポート終了 (EOS) 状態になります。 これらのデバイスのハードウェアとソフトウェアは Microsoft によりサポートされなくなり、サービスは停止される予定です。</br></br>
+> StorSimple 8000 シリーズをご利用のお客様には、このドキュメントで説明する他のいずれかのシリーズへの移行を強くお勧めします。
 
-2022 年 12 月に StorSimple 8000 シリーズの[サポートは終了](https://support.microsoft.com/lifecycle/search?alpha=Azure%20StorSimple%208000%20Series)します。 StorSimple 8000 シリーズを実行しているお客様は、他の Azure ファースト パーティのハイブリッド サービスにアップグレードできます。 この記事では、データの移行に使用できる Azure ハイブリッド オプションについて説明します。
+StorSimple 8000 シリーズは 2022 年 12 月に[サポート終了](https://support.microsoft.com/lifecycle/search?alpha=Azure%20StorSimple%208000%20Series)となります。 StorSimple 8000 シリーズを実行しているお客様は、他の Azure ファースト パーティのハイブリッド サービスにアップグレードできます。 この記事では、データの移行に使用できる Azure ハイブリッド オプションについて説明します。
 
 ## <a name="migration-options"></a>移行オプション
 
@@ -43,7 +44,7 @@ StorSimple 5000-7000 シリーズおよび StorSimple 8000 シリーズをご使
 
 #### <a name="migrate-to-nasuni"></a>Nasuni への移行
 
-Nasuni を使用すると、StorSimple 環境全体を、安定した安全なハイ パフォーマンスのファイル サービス プラットフォームに簡単に移行できます。 Nasuni は、オンプレミスのファイル ストレージのセキュリティとパフォーマンスを提供しながら、Azure のスケーラビリティおよび持続性と それを融合させます。 Nasuni は、有力な Azure 独立系ソフトウェア ベンダー (ISV) として、StorSimple データを最新のプラットフォームに移行するために必要なツールをすべて提供します。これにより、ファイルを複数の場所で共有し、共同作業を行うことができます。
+Nasuni を使用すると、StorSimple 環境全体を、安定した安全な高パフォーマンスのファイル サービス プラットフォームに簡単に移行できます。 Nasuni は、オンプレミスのファイル ストレージのセキュリティとパフォーマンスを提供しながら、Azure のスケーラビリティおよび持続性と それを融合させます。 Nasuni は、有力な Azure 独立系ソフトウェア ベンダー (ISV) として、StorSimple データを最新のプラットフォームに移行するために必要なツールをすべて提供します。これにより、ファイルを複数の場所で共有し、共同作業を行うことができます。
 
 今すぐお試しください。[Nasuni の Web サイト](https://info.nasuni.com/storsimple8000-webinar)。
 
@@ -78,7 +79,7 @@ Learn more about how to evolve to a cloud-consolidated enterprise at https://www
 
 ### <a name="q-when-do-the-storsimple-8000-series-devices-reach-end-of-service"></a>Q. StorSimple 8000 シリーズのデバイスのサービスはいつ終了しますか。
 
-A. StorSimple 8000 シリーズは 2022 年 12 月に[サービスが終了](https://support.microsoft.com/[lifecycle/search?alpha=Azure%20StorSimple%208000%20Series)になります。 2022 年 12 月のサポート終了後、これらのデバイスのソフトウェアとハードウェア両方について、Microsoft ではサポートを提供できなくなります。 お使いのデバイスのデータを移行する計画を今すぐ立て始めることを強くお勧めします。
+A. StorSimple 8000 シリーズは 2022 年 12 月に[サポート終了](https://support.microsoft.com/[lifecycle/search?alpha=Azure%20StorSimple%208000%20Series)となります。 サポート終了後、これらのデバイスのハードウェアとソフトウェアの両方について、Microsoft によるサポートが提供されなくなります。 これには、サービスのサポート、ソフトウェア パッチとセキュリティ パッチが含まれ、サービス自体は停止されます。 お使いのデバイスのデータを移行する計画を今すぐ立て始めることを強くお勧めします。
 
 ### <a name="q-what-happens-to-the-data-i-have-stored-in-azure"></a>Q. Azure に格納したデータはどうなりますか。  
 
@@ -90,7 +91,7 @@ A. ローカル デバイスのデータを新しいサービスにコピーす�
 
 ### <a name="q-what-happens-if-i-want-to-keep-my-storsimple-8000-series-appliance"></a>Q. StorSimple 8000 シリーズ アプライアンスをそのまま使い続けたい場合は、どうなりますか。
 
-A. サービスは動作し続ける可能性がありますが、Microsoft では、ハードウェアとソフトウェアのサポートを提供できなくなります。 ビジネス継続性を実現するめに移行することを強くお勧めします。
+A. ハードウェアとソフトウェアについて、Microsoft によるサポートが提供されなくなります。 StorSimple サービスは機能しません。 ビジネス継続性を実現するめに移行することを強くお勧めします。
 
 ### <a name="q-what-options-are-available-to-migrate-data-from-storsimple-8000-series-devices"></a>Q. StorSimple 8000 シリーズのデバイスからのデータ移行オプションには、どのようなものがありますか。
 

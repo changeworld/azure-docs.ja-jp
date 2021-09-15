@@ -1,25 +1,22 @@
 ---
 title: Connected Machine エージェントの概要
 description: この記事では、ハイブリッド環境でホストされている仮想マシンの監視をサポートする、使用可能な Azure Arc 対応サーバー エージェントの詳細な概要を提供します。
-ms.date: 06/04/2021
+ms.date: 08/18/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3d5c3640147a9c23fb05c0156edf012815466189
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: fa3b934d6909a3975bf9d01b6cd2f8f2fd2428e4
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111538216"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122771006"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Azure Arc 対応サーバー エージェントの概要
 
 Azure Arc 対応サーバーの Connected Machine エージェントを使用すると、企業ネットワークまたは他のクラウド プロバイダー上の Azure の外部でホストされている Windows および Linux マシンを管理できます。 この記事では、エージェント、システムとネットワークの要件、およびさまざまなデプロイ方法の概要の詳細を示します。
 
 >[!NOTE]
->2020 年 9 月の Azure Arc 対応サーバーの一般リリース以降では、Azure Connected Machine エージェント (バージョン 1.0 以前のエージェント) のプレリリース バージョンはすべて、**2021 年 2 月 2 日** までに **非推奨** となります。  プレリリースされたエージェントが Azure Arc 対応サーバー サービスと通信できなくなる前に、この期間にバージョン 1.0 以降にアップグレードすることができます。
-
->[!NOTE]
-> 現在プレビュー段階にある [Azure Monitor エージェント](../../azure-monitor/agents/azure-monitor-agent-overview.md) (AMA) は、Connected Machine エージェントに代わるものではありません。 Azure Monitor エージェントは、Windows と Linux の両方のマシンで、Log Analytics エージェント、診断拡張機能、および Telegraf エージェントの後継となります。 新しいエージェントの詳細については、Azure Monitor に関するドキュメントを参照してください。
+> [Azure Monitor エージェント](../../azure-monitor/agents/azure-monitor-agent-overview.md) (AMA) は、Connected Machine エージェントに代わるものではありません。 Azure Monitor エージェントは、Windows と Linux の両方のマシンで、Log Analytics エージェント、診断拡張機能、および Telegraf エージェントの後継となります。 新しいエージェントの詳細については、Azure Monitor に関するドキュメントを参照してください。
 
 ## <a name="agent-component-details"></a>エージェント コンポーネントの詳細
 
@@ -29,11 +26,11 @@ Azure Connected Machine エージェント パッケージには、まとめて�
 
 * Hybrid Instance Metadata Service (HIMDS) は、Azure への接続と接続されたマシンの Azure ID を管理します。
 
-* ゲスト構成エージェントは、ゲスト内ポリシーとゲスト構成機能 (そのマシンが必要なポリシーに準拠しているかどうかの評価など) を提供します。
+* ゲスト構成エージェントでは、マシンが必要なポリシーに準拠しているかどうかの評価やコンプライアンスの適用といった機能が提供されます。
 
     切断されたマシンに対する Azure Policy の[ゲスト構成](../../governance/policy/concepts/guest-configuration.md)での次の動作に注意してください。
 
-    * 切断されたマシンを対象とするゲスト構成ポリシー割り当てには影響を与えません。
+    * 切断されたマシンを対象とする Azure Policy 割り当ては影響を受けません。
     * ゲスト割り当ては 14 日間ローカルに格納されます。 14 日の期間内に Connected Machine エージェントがサービスに再接続した場合は、ポリシー割り当てが再適用されます。
     * 割り当ては 14 日後に削除され、14 日の期間の後にマシンに再割り当てされることはありません。
 
@@ -41,19 +38,20 @@ Azure Connected Machine エージェント パッケージには、まとめて�
 
 ## <a name="instance-metadata"></a>インスタンス メタデータ
 
-接続されたコンピューターに関するメタデータ情報は、Connected Machine エージェントが Arc 対応サーバーに登録された後に収集されます。 具体的な内容は次のとおりです。
+接続されたマシンに関するメタデータ情報は、Connected Machine エージェントが Arc 対応サーバーに登録された後に収集されます。 具体的な内容は次のとおりです。
 
 * オペレーティング システムの名前、種類、バージョン
 * コンピューター名
 * コンピューターの製造元および型番
 * コンピューターの完全修飾ドメイン名 (FQDN)
+* ドメイン名 (Active Directory ドメインに参加している場合)
 * Connected Machine エージェントのバージョン
 * Active Directory と DNS の完全修飾ドメイン名 (FQDN)
 * UUID (BIOS ID)
 * Connected Machine エージェントのハートビート
 * Connected Machine エージェントのバージョン
 * マネージド ID の公開キー
-* ポリシーのコンプライアンスの状態と詳細 (Azure Policy のゲスト構成ポリシーを使用している場合)
+* ポリシーのコンプライアンスの状態と詳細 (ゲスト構成ポリシーを使用している場合)
 * SQL Server のインストール状況 (ブール値)
 * クラスター リソース ID (Azure Stack HCI ノード用) 
 
@@ -80,7 +78,7 @@ Windows および Linux 用の Azure Connected Machine エージェントは、�
 
 ### <a name="supported-environments"></a>サポートされている環境
 
-Arc 対応サーバーでは、Azure の *外部* でホストされている任意の物理サーバーと仮想マシンに対する Connected Machine エージェントのインストールがサポートされています。 これには、VMware、Azure Stack HCI、その他のクラウド環境などのプラットフォームで実行されている仮想マシンが含まれます。 Arc 対応サーバーは Azure VM として既にモデル化されているため、Azure 内で実行されている仮想マシン、または Azure Stack Hub または Azure Stack Edge 上で実行されている仮想マシンへの、エージェントのインストールはサポートされていません。
+Arc 対応サーバーでは、Azure の "*外部*" でホストされている任意の物理サーバーと仮想マシンに対する Connected Machine エージェントのインストールがサポートされています。 これには、VMware、Azure Stack HCI、その他のクラウド環境などのプラットフォームで実行されている仮想マシンが含まれます。 Arc 対応サーバーは、Azure VM として既にモデル化されているため、Azure 内で実行されている仮想マシン、または Azure Stack Hub または Azure Stack Edge 上で実行されている仮想マシンへのエージェントのインストールをサポートしていません。
 
 ### <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
 
@@ -118,9 +116,9 @@ Azure Connected Machine エージェントでは、次のバージョンの Wind
 
 ### <a name="azure-subscription-and-service-limits"></a>Azure サブスクリプションとサービスの制限
 
-Azure Arc 対応サーバーでコンピューターを構成する前に、Azure Resource Manager の[サブスクリプションの制限](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits)と[リソース グループの制限](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits)を確認して、接続されるコンピューターの数を計画してください。
+Azure Arc 対応サーバーでお使いのマシンを構成する前に、Azure Resource Manager の[サブスクリプションの制限](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits)と[リソース グループの制限](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits)を確認して、接続するマシンの数を計画してください。
 
-Azure Arc 対応サーバーでは、1 つのリソース グループで最大 5, 000 個のマシン インスタンスがサポートされます。
+Azure Arc 対応サーバーでは、1 つのリソース グループで最大 5,000 個のマシン インスタンスがサポートされます。
 
 ### <a name="transport-layer-security-12-protocol"></a>トランスポート層セキュリティ 1.2 プロトコル
 
@@ -133,7 +131,7 @@ Azure に転送中のデータのセキュリティを確保するには、ト�
 
 ### <a name="networking-configuration"></a>ネットワーク構成
 
-Linux と Windows 用の Connected Machine エージェントは、TCP ポート 443 を介して安全に Azure Arc へのアウトバウンド通信を行います。 インターネット経由で通信するためにマシンがファイアウォールやプロキシ サーバーを介して接続されている場合は、次を確認してネットワーク構成の要件を把握してください。
+Linux と Windows 用の Connected Machine エージェントは、TCP ポート 443 を介して安全に Azure Arc へのアウトバウンド通信を行います。 マシンがインターネットで通信するためにファイアウォールまたはプロキシ サーバー経由で接続する必要がある場合、エージェントは代わりに HTTP プロトコルをアウトバウンドの通信を行います。 トラフィックは既に暗号化されているため、プロキシ サーバーによって Connected Machine Agent のセキュリティが強化されることはありません。
 
 > [!NOTE]
 > Arc 対応サーバーでは、Connected Machine エージェントのプロキシとして [Log Analytics ゲートウェイ](../../azure-monitor/agents/gateway.md)を使用することはサポートされていません。
@@ -174,7 +172,7 @@ URL:
 
 ### <a name="register-azure-resource-providers"></a>Azure リソースプロバイダーを登録する
 
-Azure Arc 対応サーバーは、このサービスを使用するために、サブスクリプション内の次の Azure リソース プロバイダーに依存しています。
+Azure Arc 対応サーバーは、このサービスを使用するために、お使いのサブスクリプション内の次の Azure リソース プロバイダーに依存しています。
 
 * **Microsoft.HybridCompute**
 * **Microsoft.GuestConfiguration**
@@ -320,8 +318,20 @@ Linux 用 Connected Machine エージェントをインストールした後、�
     * /var/opt/azcmagent
     * /opt/logs
 
-## <a name="next-steps"></a>次のステップ
+### <a name="agent-resource-governance"></a>エージェント リソース ガバナンス
 
-* Azure Arc 対応サーバーの評価を開始するには、「[Azure portal からハイブリッド マシンを Azure に接続する](onboard-portal.md)」の記事に従ってください。
+Arc 対応サーバーの Connected Machine エージェントは、エージェントとシステム リソースの使用を管理するように設計されています。 エージェントは、次の条件下でリソース ガバナンスにアプローチします。
+
+- ゲスト構成エージェントは、ポリシーを評価するために、CPU の使用量を最大で 5% に制限します。
+- 拡張機能サービス エージェントは、CPU の使用量を最大で 5% に制限されます。
+
+   - これは、インストール、アンインストール、およびアップグレード操作にのみ適用されます。 インストールが完了した拡張機能は、自身のリソース使用率について責任を負います。5% の CPU 制限は適用されません。
+   - Log Analytics エージェントと Azure Monitor エージェントは、Red Hat Linux、CentOS、およびその他のエンタープライズ Linux のバリアントでのインストール、アップグレード、およびアンインストール操作中に、最大で CPU の 60% を使用することができます。 これらのシステムでの [SELinux](https://www.redhat.com/en/topics/linux/what-is-selinux) のパフォーマンスへの影響に対応するために、この制限はこの拡張機能とオペレーティング システムの組み合わせに対しては高くなっています。
+
+## <a name="next-steps"></a>次の手順
+
+* Azure Arc 対応サーバーの評価を開始するには、[Azure Arc 対応サーバーにハイブリッド マシンを接続する](learn/quick-enable-hybrid-vm.md)方法に関する記事を参照してください。
+
+* Arc 対応サーバー エージェントをデプロイし、他の Azure 管理および監視サービスと統合する前に、[計画とデプロイに関するガイド](plan-at-scale-deployment.md)を参照してください。
 
 * トラブルシューティング情報は、[Connected Machine エージェントのトラブルシューティング ガイド](troubleshoot-agent-onboard.md)に関する記事を参照してください。

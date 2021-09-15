@@ -1,21 +1,21 @@
 ---
-title: クライアント アプリからコマンドを更新する
+title: クライアント アプリからコマンド パラメーターを更新する
 titleSuffix: Azure Cognitive Services
 description: クライアント アプリケーションからコマンドを更新する方法について説明します。
 services: cognitive-services
-author: laujan
+author: PatrickFarley
 manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/20/2020
-ms.author: lajanuar
-ms.openlocfilehash: 1f8607ec7094ecafe69f60e8f8972e04ec813adb
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.author: pafarley
+ms.openlocfilehash: c5314e659379fb56aca1eea0f1834985fc303c86
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122067522"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123541029"
 ---
 # <a name="update-a-command-from-a-client-app"></a>クライアント アプリからコマンドを更新する
 
@@ -53,7 +53,8 @@ ms.locfileid: "122067522"
 
 | 属性 | 説明 |
 | ---------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| **type** | アクティビティの種類は `"event"` で、イベントの名前は `"RemoteUpdate"` である必要があります。 |
+| **type** | アクティビティは `"event"` 型です。 |
+| **name** | イベントの名前は `"RemoteUpdate"` にする必要があります。 |
 | **value** | 属性 `"value"` には、現在のコマンドを更新するために必要な属性が含まれています。 |
 | **updatedCommand** | 属性 `"updatedCommand"` には、コマンドの名前が含まれています。 この属性の中で `"updatedParameters"` は、パラメーターの名前と更新後の値を含むマップです。 |
 | **cancel** | 実行中のコマンドを取り消す必要がある場合は、属性 `"cancel"` を `true` に設定します。 |
