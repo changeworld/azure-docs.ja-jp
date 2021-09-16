@@ -42,7 +42,7 @@ ms.locfileid: "104781536"
 
 このセクションでは各状態ボックスについて説明します。
 
-| 状態ボックスとゲージ | [説明] |
+| 状態ボックスとゲージ | 説明 |
 | -------------- | -------------- |
 | :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/critical-alert-status-box-v2.png" alt-text="重大なアラート"::: | **重大なアラート** - ページの上部中央にあるボックスに、重大なアラートの数が示されます。 このボックスを選択すると、タイムライン上とゲージの下の一覧にアラートの説明が表示されます (存在する場合)。                              |
 | :::image type="content" source="media/how-to-work with-the-sensor-console-dashboard/major-alert-status-box-v2.png" alt-text="メジャー アラート"::: | **メジャー アラート** - ページの右上にあるボックスに、メジャー アラートの数が表示されます。 このボックスを選択すると、タイムライン上とゲージの下の一覧にアラートの説明が表示されます (存在する場合)。                                     |
