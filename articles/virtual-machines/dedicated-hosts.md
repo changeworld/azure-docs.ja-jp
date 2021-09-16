@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 12/07/2020
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: bbc2cda053a2a9fafd88f974eaf10be4ae0c1784
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 957bc2f34ddbc1af019afe0154d3a27ca6e3e368
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122687526"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123451567"
 ---
 # <a name="azure-dedicated-hosts"></a>Azure 専用ホスト
 
@@ -176,7 +176,7 @@ Azure では、ホストの正常性状態が監視および管理されます�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure PowerShell](./windows/dedicated-hosts-powershell.md)、[ポータル](./dedicated-hosts-portal.md)、[Azure CLI](./linux/dedicated-hosts-cli.md) を使用して専用ホストをデプロイできます。
+- 専用ホストをデプロイするには、「[VM とスケール セットを専用ホストにデプロイする](./dedicated-hosts-how-to.md)」を参照してください。
 
 - リージョン内の回復性を最大にするためにゾーンと障害ドメインの両方を使用する[サンプル テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.compute/vm-dedicated-hosts/README.md)があります。
 

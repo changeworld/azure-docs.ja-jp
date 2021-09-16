@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 05/29/2018
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: f04ff9d68297c34adbdaa6e6c326b940e6c496bc
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: a66eeec561b422cb7ce644facd7f273ab055e871
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122697480"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123423666"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-in-the-azure-portal"></a>Azure Portal で仮想マシン スケール セットを自動的にスケーリングする
 
@@ -57,8 +57,11 @@ ms.locfileid: "122697480"
     | *クール ダウン (分)*  | 自動スケール アクションを有効にする時間を稼ぐため、ルールを再度適用する前に待機する時間。 | 5 分      |
 
     次の例は、これらの設定に一致する、Azure Portal で作成したルールを示しています。
-
+    
     ![VM インスタンスの数を増やす自動スケール ルールを作成する](media/virtual-machine-scale-sets-autoscale-portal/rule-increase.png)
+
+    > [!NOTE]
+    > インスタンス内で実行されているタスクは突然停止し、インスタンスはクーリング期間が完了するとスケールダウンされます。
 
 6. ルールを作成するには、 **[追加]** を選択します。
 

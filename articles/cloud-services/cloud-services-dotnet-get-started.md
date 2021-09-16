@@ -79,7 +79,7 @@ Azure サブスクリプションがなくてもアプリケーションをロ�
 6. Visual Studio 2015 以上を使用している場合は、ContosoAdsWeb プロジェクトのアプリケーションの *Web.config* ファイルと ContosoAdsCloudService プロジェクトの *ServiceConfiguration.Local.cscfg* ファイルで SQL Server 接続文字列を変更します。 いずれの場合も、"(localdb)\v11.0" を "(localdb)\MSSQLLocalDB" に変更します。
 7. Ctrl キーを押しながら F5 キーを押してアプリケーションを実行します。
 
-    クラウド サービス プロジェクトをローカルで実行すると、Visual Studio によって Azure "*コンピューティング エミュレーター*" と Azure "*ストレージ エミュレーター*" が自動的に起動されます。 コンピューティング エミュレーターは、コンピューターのリソースを使用して、Web ロール環境と worker ロール環境をシミュレートします。 ストレージ エミュレーターは、 [SQL Server Express LocalDB](/sql/database-engine/configure-windows/sql-server-2016-express-localdb) を使用して、Azure クラウド ストレージをシミュレートします。
+    クラウド サービス プロジェクトをローカルで実行すると、Visual Studio によって Azure "*Compute Emulator*" と Azure "*Storage Emulator*" が自動的に起動されます。 Compute Emulator は、コンピューターのリソースを使用して、Web ロール環境と worker ロール環境をシミュレートします。 ストレージ エミュレーターは、 [SQL Server Express LocalDB](/sql/database-engine/configure-windows/sql-server-2016-express-localdb) を使用して、Azure クラウド ストレージをシミュレートします。
 
     クラウド サービス プロジェクトを初めて実行するときは、エミュレーターが起動されるまで 1 分程度かかります。 エミュレーターの起動が完了すると、既定のブラウザーが開き、アプリケーションのホーム ページが表示されます。
 

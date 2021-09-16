@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 6/8/2021
 ms.author: olayemio
 ms.reviewer: cynthn
-ms.openlocfilehash: c94e040d5047b25b8d260792fd362e50a29b9601
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 3e20029511ee6a9a0e6f8482e0d05d7217ec21f9
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122696292"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123451981"
 ---
 # <a name="shared-image-galleries-overview"></a>共有イメージ ギャラリーの概要
 
@@ -238,13 +238,13 @@ Shared Image Gallery は、イメージに関連する構造および組織を�
    az account list -otsv --query "[].id" | xargs -n 1 az sig list --subscription
 ```
 
-詳細については、[Azure CLI](update-image-resources-cli.md) または [PowerShell](update-image-resources-powershell.md) を使用した **ギャラリー リソースの管理** に関する記事を参照してください。
+詳細については、「[イメージ リソースの一覧表示、更新、削除](update-image-resources.md)」を参照してください。
 
 ### <a name="can-i-move-my-existing-image-to-the-shared-image-gallery"></a>共有イメージ ギャラリーに既存のイメージを移動できますか?
  
 はい。 イメージの種類に基づいて、次の 3 つのシナリオが考えられます。
 
- シナリオ 1:マネージド イメージがある場合は、イメージ定義を作成して、その定義からイメージ バージョンを作成できる。 詳細については、[Azure CLI](image-version-managed-image-cli.md) または [PowerShell](image-version-managed-image-powershell.md) を使用した **マネージド イメージからイメージ バージョンへの移行** に関する記事を参照してください。
+ シナリオ 1:マネージド イメージがある場合は、イメージ定義を作成して、その定義からイメージ バージョンを作成できる。 詳細については、「[イメージ定義とイメージ バージョンを作成する](image-version.md)」を参照してください。
 
  シナリオ 2: アンマネージド イメージがある場合、そこからマネージド イメージを作成した後、イメージ定義とイメージ バージョンを作成できる。 
 
@@ -255,11 +255,11 @@ Shared Image Gallery は、イメージに関連する構造および組織を�
 
 ### <a name="can-i-create-an-image-version-from-a-specialized-disk"></a>特殊なディスクからイメージ バージョンを作成できますか?
 
-特殊化されたイメージからの VM の作成は、[CLI](vm-specialized-image-version-cli.md)、[PowerShell](vm-specialized-image-version-powershell.md)、または API を使用して実行できます。 
+はい、[特殊化されたイメージ](windows/create-vm-specialized.md)から VM を作成できます。 
 
 ### <a name="can-i-move-the-shared-image-gallery-resource-to-a-different-subscription-after-it-has-been-created"></a>Shared Image Gallery リソースが作成された後に、それを別のサブスクリプションに移動することはできますか?
 
-いいえ、別のサブスクリプションに共有イメージ ギャラリー リソースを移動することはできません。 [Azure CLI](image-version-another-gallery-cli.md) または [PowerShell](image-version-another-gallery-powershell.md) を使用して、ギャラリー内のイメージ バージョンを他のリージョンにレプリケートしたり、別のギャラリーからイメージをコピーしたりすることはできます。
+いいえ、別のサブスクリプションに共有イメージ ギャラリー リソースを移動することはできません。 ギャラリー内のイメージ バージョンを他のリージョンにレプリケートしたり、[別のギャラリーからイメージ](image-version.md)をコピーしたりすることはできます。
 
 ### <a name="can-i-replicate-my-image-versions-across-clouds-such-as-azure-china-21vianet-or-azure-germany-or-azure-government-cloud"></a>Azure China 21Vianet、Azure Germany、または Azure Government クラウドなどの複数のクラウドとの間で、自分のイメージ バージョンをレプリケートできますか?
 
@@ -325,4 +325,4 @@ CLI で共通レプリカ数を指定するには、`az sig image-version create
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure CLI](shared-images-cli.md) または [PowerShell](shared-images-powershell.md) を使用して共有イメージをデプロイする方法について学習します。
+[Azure CLI](create-gallery.md) または [PowerShell](create-gallery.md) を使用して共有イメージをデプロイする方法について学習します。

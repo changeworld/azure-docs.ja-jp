@@ -1,15 +1,15 @@
 ---
 title: Connected Machine エージェントの概要
 description: この記事では、ハイブリッド環境でホストされている仮想マシンの監視をサポートする、使用可能な Azure Arc 対応サーバー エージェントの詳細な概要を提供します。
-ms.date: 08/18/2021
+ms.date: 09/01/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: fa3b934d6909a3975bf9d01b6cd2f8f2fd2428e4
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 1c6bb66fecb8fe90aa2384a52034b6687c691af0
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122771006"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123439670"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Azure Arc 対応サーバー エージェントの概要
 
@@ -78,13 +78,13 @@ Windows および Linux 用の Azure Connected Machine エージェントは、�
 
 ### <a name="supported-environments"></a>サポートされている環境
 
-Arc 対応サーバーでは、Azure の "*外部*" でホストされている任意の物理サーバーと仮想マシンに対する Connected Machine エージェントのインストールがサポートされています。 これには、VMware、Azure Stack HCI、その他のクラウド環境などのプラットフォームで実行されている仮想マシンが含まれます。 Arc 対応サーバーは、Azure VM として既にモデル化されているため、Azure 内で実行されている仮想マシン、または Azure Stack Hub または Azure Stack Edge 上で実行されている仮想マシンへのエージェントのインストールをサポートしていません。
+Arc 対応サーバーでは、Azure の "*外部*" でホストされている任意の物理サーバーと仮想マシンに対する Connected Machine エージェントのインストールがサポートされています。 VMware、Azure Stack HCI、その他のクラウド環境などのプラットフォームで実行されている仮想マシンが含まれます。 Arc 対応サーバーは、Azure VM として既にモデル化されているため、Azure 内で実行されている仮想マシン、または Azure Stack Hub または Azure Stack Edge 上で実行されている仮想マシンへのエージェントのインストールをサポートしていません。
 
 ### <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
 
 Azure Connected Machine エージェントでは、次のバージョンの Windows および Linux オペレーティング システムが正式にサポートされています。
 
-- Windows Server 2008 R2 SP1、Windows Server 2012 R2 以上 (Server Core を含む)
+- Windows Server 2008 R2 SP1、Windows Server 2012 R2、2016、2019、2022 以上 (Server Core を含む)
 - Ubuntu 16.04、18.04、および 20.04 LTS (x64)
 - CentOS Linux 7 および 8 (x64)
 - SUSE Linux Enterprise Server (SLES) 12 および 15 (x64)
@@ -328,7 +328,7 @@ Arc 対応サーバーの Connected Machine エージェントは、エージェ
    - これは、インストール、アンインストール、およびアップグレード操作にのみ適用されます。 インストールが完了した拡張機能は、自身のリソース使用率について責任を負います。5% の CPU 制限は適用されません。
    - Log Analytics エージェントと Azure Monitor エージェントは、Red Hat Linux、CentOS、およびその他のエンタープライズ Linux のバリアントでのインストール、アップグレード、およびアンインストール操作中に、最大で CPU の 60% を使用することができます。 これらのシステムでの [SELinux](https://www.redhat.com/en/topics/linux/what-is-selinux) のパフォーマンスへの影響に対応するために、この制限はこの拡張機能とオペレーティング システムの組み合わせに対しては高くなっています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Azure Arc 対応サーバーの評価を開始するには、[Azure Arc 対応サーバーにハイブリッド マシンを接続する](learn/quick-enable-hybrid-vm.md)方法に関する記事を参照してください。
 

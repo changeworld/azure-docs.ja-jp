@@ -3,16 +3,16 @@ title: Azure IoT Central ダッシュボードの作成および管理 | Microso
 description: Azure IoT Central 内でアプリケーションおよび個人用ダッシュボードを作成および管理する方法について学習します。
 author: dominicbetts
 ms.author: dobett
-ms.date: 10/17/2019
+ms.date: 08/19/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 723af65800674fcb539c5f3003b9504b02969e6f
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: d262f102b12105ece2b5d0d076a7c8c108e7b4e7
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122696726"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123424242"
 ---
 # <a name="create-and-manage-dashboards"></a>ダッシュボードを作成および管理する
 
@@ -136,6 +136,6 @@ ms.locfileid: "122696726"
 
 :::image type="content" source="media/howto-manage-dashboards/tile-format.png" alt-text="タイルの書式設定のダイアログ ボックスを示すスクリーンショット。":::
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 個人用ダッシュボードを作成および管理する方法を学習したので、次は[アプリケーションの設定を管理する方法を学習](howto-manage-preferences.md)します。

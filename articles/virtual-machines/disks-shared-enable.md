@@ -4,16 +4,16 @@ description: 複数の VM 間で共有できるように、共有ディスクを
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/16/2021
+ms.date: 09/01/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 594800dcd75de3e5539873f327b5b64b81a8cb1f
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: bdf012d1ee6c1230e458b7b40e3130d8fa25e4a1
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122698188"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123424781"
 ---
 # <a name="enable-shared-disk"></a>共有ディスクを有効にする
 
@@ -62,9 +62,9 @@ ms.locfileid: "122698188"
 
     :::image type="content" source="media/disks-shared-enable/create-shared-disk-basics-pane.png" alt-text="[マネージド ディスクの作成] ウィンドウのスクリーンショット。[サイズの変更] が強調表示されています。" lightbox="media/disks-shared-enable/create-shared-disk-basics-pane.png":::
 
-1. 必要な Premium SSD サイズを選択し、 **[OK]** を選択します。
+1. 必要な Premium SSD のサイズと SKU を選択し、 **[OK]** を選択します。
 
-    :::image type="content" source="media/disks-shared-enable/select-premium-shared-disk.png" alt-text="ディスク SKU のスクリーンショット。[Premium SSD] が強調表示されています。" lightbox="media/disks-shared-enable/select-premium-shared-disk.png":::
+    :::image type="content" source="media/disks-shared-enable/select-premium-shared-disk.png" alt-text="ディスク SKU のスクリーンショット。Premium LRS および ZRS SSD SKU が強調表示されています。" lightbox="media/disks-shared-enable/select-premium-shared-disk.png":::
 
 1. **[詳細設定]** ウィンドウまでデプロイを進めます。
 1. **[共有ディスクを有効にする]** で **[はい]** を選択し、 **[最大共有数]** で必要な数を選択します。
@@ -105,7 +105,23 @@ New-AzDisk -ResourceGroupName 'myResourceGroup' -DiskName 'mySharedDisk' -Disk $
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 
-現時点では、Azure portal 経由で共有 Standard SSD をデプロイすることはできません。 Azure CLI、Azure PowerShell モジュール、または Azure Resource Manager テンプレートのいずれかを使用してください。
+1. Azure portal にサインインします。 
+1. **[ディスク]** を探して選択します。
+1. **[+ 作成]** を選択して新しいディスクを作成します。
+1. 詳細を入力し、適切なリージョンを選択して、 **[サイズの変更]** を選択します。
+
+    :::image type="content" source="media/disks-shared-enable/create-shared-disk-basics-pane.png" alt-text="[マネージド ディスクの作成] ウィンドウのスクリーンショット。[サイズの変更] が強調表示されています。" lightbox="media/disks-shared-enable/create-shared-disk-basics-pane.png":::
+
+1. 必要な Standard SSD のサイズと SKU を選択し、 **[OK]** を選択します。
+
+    :::image type="content" source="media/disks-shared-enable/select-standard-ssd-shared-disk.png" alt-text="ディスク SKU のスクリーンショット。Standard SSD LRS および ZRS SKU が強調表示されています。" lightbox="media/disks-shared-enable/select-premium-shared-disk.png":::
+
+1. **[詳細設定]** ウィンドウまでデプロイを進めます。
+1. **[共有ディスクを有効にする]** で **[はい]** を選択し、 **[最大共有数]** で必要な数を選択します。
+
+    :::image type="content" source="media/disks-shared-enable/enable-premium-shared-disk.png" alt-text="[詳細設定] ウィンドウのスクリーンショット。[共有ディスクを有効にする] が強調表示され、[はい] に設定されています。" lightbox="media/disks-shared-enable/enable-premium-shared-disk.png":::
+
+1. **[確認および作成]** を選択します。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

@@ -6,12 +6,12 @@ ms.author: lianwei
 ms.service: azure-web-pubsub
 ms.topic: conceptual
 ms.date: 08/16/2021
-ms.openlocfilehash: a132fdf16fa62360827a516f034bcd37c38b2928
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: 6503433f164e0b8153aa8832473fd06ad3959bae
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122446665"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123434864"
 ---
 #  <a name="cloudevents-extension-for-azure-web-pubsub"></a>Azure Web PubSub の CloudEvents 拡張機能
 
@@ -62,9 +62,10 @@ Webhook の検証は、[CloudEvents](https://github.com/cloudevents/spec/blob/v1
 | `connectionId` | `string` | connectionId はクライアント接続に対して一意です | |
 | `eventName` | `string` | プレフィックスのないイベントの名前 | |
 | `subprotocol` | `string` | クライアントで使用されているサブプロトコル (ある場合) | |
+| `connectionState` | `string` | 接続の状態を定義します。 同じ応答ヘッダーを使用して、状態の値をリセットできます。 複数の `connectionState` ヘッダーは使用できません。 内部に複雑な文字が含まれている場合は、base64 で文字列値をエンコードします。たとえば、この属性を使用して `base64(jsonString)` で複合オブジェクトを渡せます。| |
 | `signature` | `string` | 受信要求が予期される配信元からのものであるかどうかを検証するための、アップストリーム Webhook の署名。 サービスによって、プライマリ アクセス キーとセカンダリ アクセス キーの両方を HMAC キーとして使用して、値が計算されます: `Hex_encoded(HMAC_SHA256(accessKey, connectionId))`。 上流では、要求を処理する前に、それが有効かどうかを確認する必要があります。 | |
 
-## <a name="events"></a>イベント
+## <a name="events"></a>events
 
 イベントには 2 つの種類があります。1 つは、サービスがイベントの応答を待ってから続行する "*ブロック*" イベントです。 もう 1 つは、サービスが次のメッセージを処理する前にイベントの応答を待たない "*非ブロック*" イベントです。
 
@@ -115,12 +116,14 @@ ce-eventName: connect
 ```
 
 #### <a name="success-response-format"></a>成功応答の形式:
-
-* `204`: 成功。コンテンツはありません。
-* `200`: 成功。コンテンツは JSON 形式である必要があり、次のプロパティが許可されます。
-
+* 状態コード:
+    * `204`: 成功。コンテンツはありません。
+    * `200`: 成功。コンテンツは JSON 形式である必要があり、次のプロパティが許可されます。
+* ヘッダー `ce-connectionState`: このヘッダーが存在する場合、この接続の接続状態はヘッダーの値に更新されます。 接続状態を更新できるのは *ブロック* イベントのみである点に注意してください。 次の例では、base64 でエンコードされた JSON 文字列を使用して、接続の複雑な状態を格納します。
+* 
 ```HTTP
 HTTP/1.1 200 OK
+ce-connectionState: eyJrZXkiOiJhIn0=
 
 {
     "groups": [],
@@ -164,6 +167,7 @@ HTTP/1.1 401 Unauthorized
 
 * `ce-type`: `azure.webpubsub.sys.connected`
 * `Content-Type`: `application/json`
+* `ce-connectionState`: `eyJrZXkiOiJhIn0=`
 
 要求本文は空の JSON です。
 
@@ -186,6 +190,7 @@ ce-connectionId: {connectionId}
 ce-hub: {hub}
 ce-eventName: connect
 ce-subprotocol: abc
+ce-connectionState: eyJrZXkiOiJhIn0=
 
 {}
 
@@ -228,6 +233,7 @@ ce-connectionId: {connectionId}
 ce-hub: {hub}
 ce-eventName: disconnect
 ce-subprotocol: abc
+ce-connectionState: eyJrZXkiOiJhIn0=
 
 {
     "reason": "{Reason}"
@@ -277,6 +283,7 @@ ce-userId: {userId}
 ce-connectionId: {connectionId}
 ce-hub: {hub}
 ce-eventName: message
+ce-connectionState: eyJrZXkiOiJhIn0=
 
 UserPayload
 
@@ -288,6 +295,8 @@ UserPayload
     * `204`: 成功。コンテンツはありません。
     * `200`: 成功。`UserResponsePayload` の形式は、応答の `Content-Type` によって異なります。
 * `Content-Type`: バイナリ フレームの場合は `application/octet-stream`。テキスト フレームの場合は `text/plain`。 
+* ヘッダー `Content-Type`: バイナリ フレームの場合は `application/octet-stream`。テキスト フレームの場合は `text/plain`。 
+* ヘッダー `ce-connectionState`: このヘッダーが存在する場合、この接続の接続状態はヘッダーの値に更新されます。 接続状態を更新できるのは *ブロック* イベントのみである点に注意してください。 次の例では、base64 でエンコードされた JSON 文字列を使用して、接続の複雑な状態を格納します。
 
 `Content-Type` が `application/octet-stream` の場合、サービスからクライアントに `binary` WebSocket フレームを使用して `UserResponsePayload` が送信されます。 `Content-Type` が `text/plain` の場合、サービスからクライアントに `text` WebSocket フレームを使用して `UserResponsePayload` が送信されます。 
 
@@ -295,6 +304,7 @@ UserPayload
 HTTP/1.1 200 OK
 Content-Type: application/octet-stream (for binary frame) or text/plain (for text frame)
 Content-Length: nnnn
+ce-connectionState: eyJrZXkiOiJhIn0=
 
 UserResponsePayload
 ```
@@ -336,6 +346,7 @@ ce-connectionId: {connectionId}
 ce-hub: {hub_name}
 ce-eventName: <event_name>
 ce-subprotocol: json.webpubsub.azure.v1
+ce-connectionState: eyJrZXkiOiJhIn0=
 
 text data
 
@@ -372,6 +383,7 @@ ce-connectionId: {connectionId}
 ce-hub: {hub_name}
 ce-eventName: <event_name>
 ce-subprotocol: json.webpubsub.azure.v1
+ce-connectionState: eyJrZXkiOiJhIn0=
 
 {
     "hello": "world"
@@ -379,7 +391,7 @@ ce-subprotocol: json.webpubsub.azure.v1
 
 ```
 
-#### <a name="case-3-send-event-with-binary-data"></a>ケース 3: バイナリ データを含むイベントを送信する:
+#### <a name="case-3-send-event-with-binary-data"></a>ケース 3: バイナリ データでイベントを送信する:
 ```json
 {
     "type": "event",
@@ -425,8 +437,8 @@ UserResponsePayload
 * status code
     * `204`: 成功。コンテンツはありません。
     * `200`: 成功。PubSub WebSocket クライアントに送信されるデータは、`Content-Type` に依存します。 
-
-* `Content-Type` が `application/octet-stream` の場合、サービスからクライアントに `dataType` として `binary` を使用して `UserResponsePayload` が返送されます。ペイロードは base64 でエンコードされています。 応答のサンプル:
+* ヘッダー `ce-connectionState`: このヘッダーが存在する場合、この接続の接続状態はヘッダーの値に更新されます。 接続状態を更新できるのは *ブロック* イベントのみである点に注意してください。 次の例では、base64 でエンコードされた JSON 文字列を使用して、接続の複雑な状態を格納します。
+* ヘッダー `Content-Type` が `application/octet-stream` の場合、サービスからクライアントに `binary` として `dataType` を使用して `UserResponsePayload` が返送されます。ペイロードは base64 でエンコードされています。 応答のサンプル:
     ```json
     {
         "type": "message",
@@ -442,6 +454,6 @@ UserResponsePayload
 #### <a name="error-response-format"></a>エラー応答の形式
 状態コードが成功でない場合は、エラー応答と見なされます。 `{custom_event}` 応答状態コードが成功でない場合、接続は **切断** されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [!INCLUDE [next step](includes/include-next-step.md)]

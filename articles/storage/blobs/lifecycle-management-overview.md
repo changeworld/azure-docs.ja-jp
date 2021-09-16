@@ -10,12 +10,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell, references_regions
-ms.openlocfilehash: 94d90a173ef935bc6ac029707e4c3f78495ca0df
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: 1f7b4152bee090e39c598b559ffa9d2e8aea8e88
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122515851"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123477746"
 ---
 # <a name="optimize-costs-by-automatically-managing-the-data-lifecycle"></a>データ ライフサイクルを自動管理してコストを最適化する
 
@@ -32,8 +32,6 @@ ms.locfileid: "122515851"
 データがライフサイクルの初期段階には頻繁にアクセスされるものの、2 週間後にはたまにしかアクセスされなくなるというシナリオについて考えてみましょう。 1 か月を超えると、そのデータ セットにはほとんどアクセスされなくなります。 このシナリオの初期段階ではホット ストレージが最適です。 ときどきアクセスされるデータにはクール ストレージが適しています。 1 か月以上が経過したデータに最も適しているのは、アーカイブ ストレージです。 ライフサイクル管理ポリシー ルールを使用して、経過時間に基づいてデータを適切なストレージ層に移動することで、ニーズに合う最もコストのかからないソリューションを設計できます。
 
 汎用 v2、Premium ブロック BLOB、Blob Storage のアカウントでは、ブロック BLOB と追加 BLOB でライフサイクル管理ポリシーがサポートされています。 ライフサイクル管理は、 *$logs* コンテナーや *$web* コンテナーなどのシステム コンテナーには影響を与えません。
-
-[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 > [!IMPORTANT]
 > データ セットが読み取り可能である必要がある場合は、BLOB をアーカイブ層に移動するポリシーを設定しないでください。 アーカイブ層の BLOB は、最初にリハイドレートされていない限り読み取ることができません。これは時間とコストがかかる場合があるプロセスです。 詳細については、「[アーカイブ層からの BLOB のリハイドレートの概要](archive-rehydrate-overview.md)」を参照してください。
@@ -364,9 +362,20 @@ BLOB インデックス機能と、既知の問題および制限事項の詳細
 }
 ```
 
-## <a name="availability-and-pricing"></a>可用性と料金
+## <a name="feature-support"></a>機能サポート
 
-ライフサイクル管理機能は、汎用 v2 (GPv2) アカウント、Blob Storage アカウント、Premium ブロック BLOB ストレージ アカウントのすべての Azure リージョンで利用できます。 階層型名前空間を持つアカウントがサポートされています。 ストレージ アカウントの種類の詳細については、「[ストレージ アカウントの概要](../common/storage-account-overview.md)」を参照してください。
+この表は、アカウントでのこの機能のサポート状況と、特定の機能を有効にした場合のサポートへの影響を示しています。 
+
+| ストレージ アカウントの種類                | Blob Storage (既定のサポート)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+|-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
+| Standard 汎用 v2 | ![はい](../media/icons/yes-icon.png) |![はい](../media/icons/yes-icon.png)              | ![はい](../media/icons/yes-icon.png) | 
+| Premium ブロック BLOB          | ![はい](../media/icons/yes-icon.png)|![はい](../media/icons/yes-icon.png) | ![はい](../media/icons/yes-icon.png) |
+
+<sup>1</sup>    Data Lake Storage Gen2 とネットワーク ファイル システム (NFS) 3.0 プロトコルの両方で、階層型名前空間が有効になっているストレージ アカウントが必要です。
+
+## <a name="regional-availability-and-pricing"></a>リージョン別の可用性と料金
+
+ライフサイクル管理機能は、すべての Azure リージョンで使用できます。
 
 ライフサイクル管理ポリシーは無料です。 お客様に課金されるのは、[Set Blob Tier](/rest/api/storageservices/set-blob-tier) API 呼び出しの標準的な操作のコストに対してです。 削除操作は無料です。
 
@@ -382,7 +391,7 @@ BLOB の最終アクセス時刻が更新されるたびに、[その他の操�
 
 **既存のポリシーを更新した場合、アクションの実行にはどのくらいの時間がかかりますか。**
 
-更新されたポリシーは、有効になるまで最大 24 時間かかります。 ポリシーが有効になると、アクションが実行されるまでに最大で 24 時間かかることがあります。 このため、ポリシーのアクションが完了するまでに最大 48 時間かかる可能性があります。 更新によってルールが無効化または削除されるとき、enableAutoTierToHotFromCool が使用されていた場合は、引き続きホット層への自動階層化が行われます。 たとえば、最終アクセスに基づく、enableAutoTierToHotFromCool を含むルールを設定したとします。 このルールが無効化または削除された場合、BLOB が現在クール層にあり、その後アクセスされると、BLOB はホット層に戻されます。そのルールがライフサイクル管理外のアクセスに対して適用されるためです。 その後は、ライフサイクル管理ルールが無効化または削除されていれば、BLOB はホット層からクール層に移動しません。  autoTierToHotFromCool を回避する唯一の方法は、最終アクセス時刻の追跡をオフにすることです。
+更新されたポリシーは、有効になるまで最大 24 時間かかります。 ポリシーが有効になると、アクションが実行されるまでに最大で 24 時間かかることがあります。 このため、ポリシーのアクションが完了するまでに最大 48 時間かかる可能性があります。 更新によってルールが無効になるか、削除されるとき、enableAutoTierToHotFromCool が使用された場合でも、ホット層に自動的に階層化されます。 たとえば、最後のアクセスに基づき、enableAutoTierToHotFromCool を含むルールが設定されます。 ルールが無効になるか、削除されるとき、BLOB が現在クール層にあり、その後アクセスされる場合、ホット層に戻ります。それがライフサイクル管理外のアクセスで適用されるためです。 ライフサイクル管理ルールが無効になっているか、削除されているため、BLOB がホット層からクール層に移動することはありません。  autoTierToHotFromCool を回避する唯一の方法は、最終アクセス時刻の追跡をオフにすることです。
 
 **アーカイブ済み BLOB を手動でリハイドレートしました。これが一時的にアーカイブ層に戻されないようにするにはどうすればよいですか。**
 
