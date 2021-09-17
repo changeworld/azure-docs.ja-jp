@@ -10,15 +10,16 @@ ms.date: 11/13/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
 ms.reviewer: cynthn
-ms.openlocfilehash: 622ebfed8294dbcb441aa509fc4f6ba75114f28d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 167d46b96853c372790002bdb0d9609581970426
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102499358"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122690200"
 ---
 # <a name="security-recommendations-for-virtual-machines-in-azure"></a>Azure の仮想マシンについてのセキュリティに関する推奨事項
 
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブルなスケール セット :heavy_check_mark: 均一スケール セット
 
 この記事には、Azure Virtual Machines のセキュリティに関する推奨事項が含まれています。 次の推奨事項に従うことで、このモデルで説明されている共有責任のセキュリティ義務を果たすことができます。 これらの推奨事項は、Web アプリ ソリューションの全体的なセキュリティの向上にも役立ちます。 サービス プロバイダーとしての責任を果たすための Microsoft の取り組みの詳細については、「[クラウド コンピューティングについての共有責任](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91)」を参照してください。
 

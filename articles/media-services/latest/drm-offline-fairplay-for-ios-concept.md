@@ -8,12 +8,12 @@ ms.service: media-services
 ms.topic: how-to
 ms.date: 05/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 516feb728368bfc57ce48bad8275419c726c7701
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: fec32eda9d82a7526a14befeab833d58b7792ccf
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110793408"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122633743"
 ---
 # <a name="offline-fairplay-streaming-for-ios-with-media-services-v3"></a>Media Services v3 を使用した iOS 用のオフラインの FairPlay ストリーミング
 
@@ -199,4 +199,4 @@ FPS Server SDK のバージョン 3 またはバージョン 4 サンプルで�
 
 ## <a name="offline-fairplay-questions"></a>オフラインの FairPlay の質問
 
-[オフラインの FairPlay の質問](questions-collection.md#why-does-only-audio-play-but-not-video-during-offline-mode)に関する記事を参照してください。
+[FAQ のオフラインの FairPlay の質問](frequently-asked-questions.yml)に関するページを参照してください。

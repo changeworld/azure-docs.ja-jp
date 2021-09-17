@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 11/12/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 96d9e64a7b3443b4c2e835bfe824bd7d9197cb1c
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 0af9aeb9efe3b652f52b01e3b45307253e810742
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109752159"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122418652"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>Log Analytics ワークスペースを別のサブスクリプションまたはリソース グループに移動する
 
@@ -44,7 +44,7 @@ ms.locfileid: "109752159"
 > - ワークスペースを既に移動している場合は、 **[Analytics]** の下のアクティブなルールをすべて無効にし、5 分後に再び有効にします。 これは、ほとんどの場合に効果的な解決策です。ただし、繰り返しますがこれはサポートされていないため、ご自身の責任で行ってください。
 > 
 > **アラートを再作成する**
-> - すべてのアラートは、ワークスペースの移動または名前の変更操作の後に再作成する必要があります。これは、権限がワークスペースの Azure リソース ID に基づいており、これはワークスペースの移動またはリソース名の変更時に変更されるためです。
+> - 権限が、ワークスペースの移動またはリソース名の変更によって変わるワークスペースのリソース ID に基づいて設定されているため、すべてのアラートを再作成する必要があります。 2019 年 6 月 1 日より後に作成されたワークスペース、または[従来の Log Analytics アラート API から scheduledQueryRules API にアップグレードされた](../alerts/alerts-log-api-switch.md)ワークスペースのアラートは、テンプレートにエクスポートして移動後にデプロイできます。 [scheduledQueryRules API がワークスペースのアラートに使用されているかどうかを確認](../alerts/alerts-log-api-switch.md#check-switching-status-of-workspace)することができます。 または、ターゲット ワークスペースでアラートを手動で構成することもできます
 >
 > **リソース パスの更新**
 > - ワークスペースの移動後、このワークスペースにポイントしているすべての Azure または外部リソースを確認し、新しいリソース ターゲット パスを指すように更新する必要があります。

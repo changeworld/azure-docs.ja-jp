@@ -1,28 +1,28 @@
 ---
-title: Azure Synapse Runtime for Apache Spark 3.0 (プレビュー)
-description: Apache Spark 3.0 (プレビュー) でサポートされている Spark、Scala、 Python、.NET の各バージョン。
+title: Azure Synapse Runtime for Apache Spark 3.1 (プレビュー)
+description: Apache Spark 3.1 (プレビュー) でサポートされている Spark、Scala、 Python、.NET の各バージョン。
 services: synapse-analytics
 author: midesa
 ms.service: synapse-analytics
 ms.topic: reference
 ms.subservice: spark
-ms.date: 05/26/2021
+ms.date: 08/23/2021
 ms.author: midesa
-ms.openlocfilehash: 1a129b7db413f7b4104f2d3f21e11f638ef6ee23
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.custom: has-adal-ref
+ms.openlocfilehash: 4ee561e5be8d24136210cd755865973d9aafd62f
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110579414"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122695677"
 ---
-# <a name="azure-synapse-runtime-for-apache-spark-30-preview"></a>Azure Synapse Runtime for Apache Spark 3.0 (プレビュー)
+# <a name="azure-synapse-runtime-for-apache-spark-31-preview"></a>Azure Synapse Runtime for Apache Spark 3.1 (プレビュー)
 
-Azure Synapse Analytics は、Apache Spark の複数のランタイムをサポートしています。 このドキュメントでは、Azure Synapse Runtime for Apache Spark 3.0 (プレビュー) のランタイム コンポーネントとバージョンについて説明します。  ランタイム エンジンは、プレビュー期間中に最新の機能とライブラリで定期的に更新されます。  ライブラリに対する最新の更新プログラムとそのバージョンについては、こちらを確認してください。
+Azure Synapse Analytics は、Apache Spark の複数のランタイムをサポートしています。 このドキュメントでは、Azure Synapse Runtime for Apache Spark 3.1 (プレビュー) のランタイム コンポーネントとバージョンについて説明します。  ランタイム エンジンは、プレビュー期間中に最新の機能とライブラリで定期的に更新されます。  ライブラリに対する最新の更新プログラムとそのバージョンについては、こちらを確認してください。
 
 ## <a name="known-issues-in-preview"></a>プレビューでの既知の問題
 * Synapse Pipeline と Dataflows のサポートは間もなく開始されます。
-* ライブラリを追加するためのライブラリ管理は間もなく公開予定です。
-* コネクタ: 次のコネクタのサポートは間もなく開始されます。
+* 次のコネクタのサポートは間もなく開始されます。
   * Azure Data Explorer コネクタ
   * Cosmos DB
   * SQL Server
@@ -31,14 +31,14 @@ Azure Synapse Analytics は、Apache Spark の複数のランタイムをサポ�
 ## <a name="component-versions"></a>コンポーネントのバージョン
 |  コンポーネント   | Version   |  
 | ----- | ----- |
-| Apache Spark | 3.0 |
+| Apache Spark | 3.1 |
 | オペレーティング システム | Ubuntu 18.04 |
 | Java | 1.8.0_282 |
 | Scala | 2.12  |
 | .NET Core | 3.1 |
-| .NET | 1.0.0 |
-| Delta Lake | 0.8 |
-| Python | 3.6 |
+| .NET | 2.0.0 |
+| Delta Lake | 1.0 |
+| Python | 3.8 |
 
 ## <a name="scala-and-java-libraries"></a>Scala および Java ライブラリ
 
@@ -1277,5 +1277,5 @@ zipp=0.6.0
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Synapse Analytics](../overview-what-is.md)
-- [Apache Spark ドキュメント](https://spark.apache.org/docs/2.4.4/)
+- [Apache Spark ドキュメント](https://spark.apache.org/docs/3.0.2/)
 - [Apache Spark の概念](apache-spark-concepts.md)

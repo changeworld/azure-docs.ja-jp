@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: overview
-ms.date: 02/18/2021
+ms.date: 08/06/2021
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d93acbfa8ae89b459fafb69411d35706b18fcbb
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: 9551906dc3a80a07597fc8406228a5869688d317
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111982990"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750564"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory の動的グループ メンバーシップ ルール
 
@@ -176,25 +176,25 @@ David は true と評価され、Da は false と評価されます。
 
 式内で使用される値は、次に挙げるいくつかの型で構成できます。
 
-* 文字列
-* ブール値 – true、false
-* 数値
-* 配列 – 数値配列、文字列配列
+- 文字列
+- ブール値 – true、false
+- 数値
+- 配列 – 数値配列、文字列配列
 
 式内で値を指定するとき、エラーを回避するために、正しい構文を使用することが重要です。 構文のヒント:
 
-* 値が文字列でなければ、二重引用符は任意です。
-* 文字列演算と正規表現演算は、大文字と小文字が区別されません。
-* 文字列値に二重引用符が含まれているとき、両方の引用符を \` 文字でエスケープしてください。たとえば、"Sales" が値のとき、user.department -eq \`"Sales\`" が正しい構文です。
-* null を値として使用し、Null チェックを実行することもできます。たとえば、`user.department -eq null` のようになります。
+- 値が文字列でなければ、二重引用符は任意です。
+- 文字列演算と正規表現演算は、大文字と小文字が区別されません。
+- 文字列値に二重引用符が含まれているとき、両方の引用符を \` 文字でエスケープしてください。たとえば、"Sales" が値のとき、user.department -eq \`"Sales\`" が正しい構文です。 単一引用符をエスケープするには、毎回 1 つではなく 2 つの単一引用符を使用する必要があります。
+- null を値として使用し、Null チェックを実行することもできます。たとえば、`user.department -eq null` のようになります。
 
 ### <a name="use-of-null-values"></a>Null 値の使用
 
 ルールで null 値を指定するには、*null* 値を使用します。 
 
-* 式で *null* 値を比較するとき、-eq または -ne を使用します。
-* リテラル文字列値として解釈する場合にのみ、*null* という語を引用符で囲みます。
-* -not 演算子は、null の比較演算子として使用できません。 使うと、null または $null のどちらを使ってもエラーになります。
+- 式で *null* 値を比較するとき、-eq または -ne を使用します。
+- リテラル文字列値として解釈する場合にのみ、*null* という語を引用符で囲みます。
+- -not 演算子は、null の比較演算子として使用できません。 使うと、null または $null のどちらを使ってもエラーになります。
 
 null 値を参照する正しい方法は次のとおりです。
 
@@ -241,9 +241,9 @@ null 値を参照する正しい方法は次のとおりです。
 
 メンバーシップ ルールは、プロパティ、演算子、値がより複雑な形式をとる複雑な式で構成できます。 次のいずれかが当てはまるとき、式が複雑であると見なされます。
 
-* プロパティが値の集まりで、具体的には複数値プロパティで構成される
-* 式で -any 演算子と -all 演算子が使用される
-* 式の値自体が 1 つまたは複数の式になる
+- プロパティが値の集まりで、具体的には複数値プロパティで構成される
+- 式で -any 演算子と -all 演算子が使用される
+- 式の値自体が 1 つまたは複数の式になる
 
 ## <a name="multi-value-properties"></a>複数値プロパティ
 
@@ -258,8 +258,8 @@ null 値を参照する正しい方法は次のとおりです。
 
 コレクション内の 1 つの項目またはすべての項目に条件を適用するには、それぞれ -any および -all 演算子を使用できます。
 
-* -any (コレクション内の少なくとも 1 つの項目が条件に一致するときに満たされる)
-* -all (コレクション内のすべての項目が条件に一致するときに満たされる)
+- -any (コレクション内の少なくとも 1 つの項目が条件に一致するときに満たされる)
+- -all (コレクション内のすべての項目が条件に一致するときに満たされる)
 
 #### <a name="example-1"></a>例 1
 
@@ -357,8 +357,8 @@ device.objectId -ne null
 
 [カスタム拡張機能プロパティ](../hybrid/how-to-connect-sync-feature-directory-extensions.md)はオンプレミス Windows Server AD または接続されている SaaS アプリケーションから同期され、形式は `user.extension_[GUID]_[Attribute]` になります。
 
-* [GUID] は Azure AD でプロパティを作成したアプリケーションの Azure AD における一意の識別子です
-* [Attribute] は作成されたプロパティの名前です
+- [GUID] は Azure AD でプロパティを作成したアプリケーションの Azure AD における一意の識別子です
+- [Attribute] は作成されたプロパティの名前です
 
 カスタム拡張機能プロパティを使用するルールの例を次に示します。
 

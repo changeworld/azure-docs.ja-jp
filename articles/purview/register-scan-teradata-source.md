@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
-ms.openlocfilehash: 7dae716944426ce21cb81bdbb36992238e4bb227
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 3d6f30e3d50fa79ac394460f9b13e1127cf16168
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112298441"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740271"
 ---
 # <a name="register-and-scan-teradata-source"></a>Teradata ソースを登録してスキャンする
 
@@ -48,7 +48,7 @@ Teradata ソースでサポートされている認証は **基本認証** の�
 新しい Teradata ソースをデータ カタログに登録するには、次の手順を実行します。
 
 1.  ご自分の Purview アカウントに移動します。
-2.  左側のナビゲーションで **[ソース]** を選択します。
+2.  左側のナビゲーションで **[Data Map]** を選択します。
 3.  **[登録]** を選択します
 4.  [Register sources]\(ソースの登録\) で、 **[Teradata]** を選択します **[続行]** を選択します。
 

@@ -1,25 +1,28 @@
 ---
-title: Azure Data Factory のリンクされたサービスのパラメーター化
-description: Azure Data Factory のリンクされたサービスをパラメーター化し、実行時に動的な値を渡す方法について説明します。
+title: リンクされたサービスをパラメーター化する
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Azure Data Factory パイプラインおよび Azure Synapse Analytics パイプラインのリンクされたサービスをパラメーター化し、実行時に動的な値を渡す方法について説明します。
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 06/01/2021
+ms.date: 08/24/2021
 author: chez-charlie
 ms.author: chez
-ms.openlocfilehash: 277f3d9e9d82edf9e93d41808a351528a94f85d7
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 563ca47dc79b9ff9a31accb0d5c8a35477d32055
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110793697"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122825168"
 ---
-# <a name="parameterize-linked-services-in-azure-data-factory"></a>Azure Data Factory のリンクされたサービスのパラメーター化
+# <a name="parameterize-linked-services-in-azure-data-factory-and-azure-synapse-analytics"></a>Azure Data Factory および Azure Synapse Analytics のリンクされたサービスをパラメーター化する
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 リンクされたサービスをパラメーター化し、実行時に動的な値を渡せるようになりました。 たとえば、同じ論理 SQL サーバー上の異なるデータベースに接続する場合に、リンクされたサービスの定義内でデータベース名をパラメーター化することができるようになりました。 これにより、論理 SQL サーバー上のデータベースごとに、リンクされたサービスを作成する必要がなくなります。 リンクされたサービスの定義内で、他のプロパティをパラメーター化することもできます (たとえば、*ユーザー名* など)。
 
-リンクされたサービスをパラメーター化するには、Azure portal の Data Factory UI か、プログラミング インターフェイスを使用できます。
+リンクされたサービスをパラメーター化するには、Azure portal の UI か、プログラミング インターフェイスを使用できます。
 
 > [!TIP]
 > パスワードやシークレットはパラメーター化しないようにすることをお勧めします。 シークレットはすべて Azure Key Vault 内に格納し、*シークレット名* をパラメーター化するようにしてください。
@@ -35,7 +38,7 @@ ms.locfileid: "110793697"
 
 すべてのリンクされたサービスの種類は、パラメーター化でサポートされています。
 
-**ADF UI 上でネイティブにサポートされる:** リンクされたサービスを UI で作成する場合、Data Factory は、次の種類のリンクされたサービスに対して組み込みのパラメーター化エクスペリエンスを提供します。 リンクされたサービスの作成/編集ブレードで、新しいパラメーターのオプションを検索し、動的なコンテンツを追加できます。 [Data Factory の UI エクスペリエンス](#data-factory-ui)を参照してください。
+**UI でネイティブにサポートされる:** リンクされたサービスを UI で作成する場合、このサービスは、次の種類のリンクされたサービスに対して組み込みのパラメーター化エクスペリエンスを提供します。 リンクされたサービスの作成/編集ブレードで、新しいパラメーターのオプションを検索し、動的なコンテンツを追加できます。 「[UI エクスペリエンス](#ui-experience)」を参照してください。
 
 - Amazon Redshift
 - Amazon S3
@@ -62,13 +65,23 @@ ms.locfileid: "110793697"
 - リンクされたサービスの作成/編集ブレードで > 下部にある "詳細" を展開し > "JSON 形式で動的な内容を指定する" ためのチェックボックスをオンにして > リンクされたサービスの JSON ペイロードを指定します。 
 - または、パラメーター化せずにリンクされたサービスを作成した後で、[管理ハブ](author-visually.md#management-hub) > リンクされたサービス > 特定のリンクされたサービスを検索 > "コード" (ボタン {}) をクリックして JSON を編集します。 
 
-` parameters` セクションを追加してパラメーターを定義し、` @{linkedService().paraName} ` を使用してパラメーターを参照するには、[JSON サンプル](#json)を参照してください。
+` parameters` セクションを追加してパラメーターを定義し、` @{linkedService().paramName} ` を使用してパラメーターを参照するには、[JSON サンプル](#json)を参照してください。
 
-## <a name="data-factory-ui"></a>Data Factory UI
+## <a name="ui-experience"></a>UI エクスペリエンス
 
-![リンクされたサービスの定義に動的なコンテンツを追加する](media/parameterize-linked-services/parameterize-linked-services-image1.png)
+# <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
 
-![新しいパラメーターを作成する](media/parameterize-linked-services/parameterize-linked-services-image2.png)
+![リンクされたサービスの定義に動的なコンテンツを追加する](media/parameterize-linked-services/parameterize-linked-services-image-1.png)
+
+![新しいパラメーターを作成する](media/parameterize-linked-services/parameterize-linked-services-image-2.png)
+
+# <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+![リンクされたサービスの定義に動的なコンテンツを追加する](media/parameterize-linked-services/parameterize-linked-services-image-1-synapse.png)
+
+![新しいパラメーターを作成する](media/parameterize-linked-services/parameterize-linked-services-image-2-synapse.png)
+
+---
 
 ## <a name="json"></a>JSON
 

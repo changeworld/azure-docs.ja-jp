@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: reference
 ms.date: 08/03/2021
 ms.author: memildin
-ms.openlocfilehash: b826ed1ab9fbe2c55e8fd4737cb3a1c83bae1766
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5b2eb0cd1f96ce52a7f27ec961bd08248442827a
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121734987"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122606859"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Azure Security Center の最新情報のアーカイブ
 
@@ -1283,7 +1283,7 @@ Azure Security Center でエージェントを使用する方法の詳細につ�
 
 組織全体に自動化の構成をデプロイするには、次の組み込みの "DeployIfdNotExist" Azure ポリシーを使用して、[連続エクスポート](continuous-export.md)および[ワークフローの自動化](workflow-automation.md)手順を作成して構成します。
 
-ポリシーは Azure ポリシーで確認できます。
+ポリシー定義は Azure Policy で確認できます。
 
 
 |目標  |ポリシー  |ポリシー ID  |
@@ -1314,9 +1314,9 @@ Azure Security Center でエージェントを使用する方法の詳細につ�
 
 ### <a name="new-policies-for-enabling-threat-protection-and-advanced-data-security"></a>脅威の防止と Advanced Data Security を有効にするための新しいポリシー
 
-次の新しいポリシーが、ASC の既定のイニシアティブに追加されました。これらは関連するリソースの種類に対して、脅威の防止または Advanced Data Security の有効化を促進するよう設計されています。
+次の新しいポリシー定義が、ASC の既定のイニシアティブに追加されました。これらは関連するリソースの種類に対して、脅威の防止または Advanced Data Security の有効化を促進するよう設計されています。
 
-ポリシーは Azure ポリシーで確認できます。
+ポリシー定義は Azure Policy で確認できます。
 
 
 | ポリシー                                                                                                                                                                                                                                                                | ポリシー ID                            |

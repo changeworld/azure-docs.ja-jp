@@ -9,14 +9,14 @@ ms.topic: tutorial
 author: aminsaied
 ms.author: amsaied
 ms.reviewer: sgilley
-ms.date: 04/27/2021
+ms.date: 08/18/2021
 ms.custom: devx-track-python, contperf-fy21q3, FY21Q4-aml-seo-hack, contperf-fy21q
-ms.openlocfilehash: c96936635898f9173b7eb8e60502ea059420cf0b
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: f8ff5e9d5a7b35bcc4ada9fd600d28b54ead57a9
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113758862"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122634352"
 ---
 # <a name="tutorial-train-your-first-machine-learning-model-part-2-of-3"></a>チュートリアル: 初めての機械学習モデルをトレーニングする (パート 2/3)
 
@@ -77,7 +77,7 @@ ms.locfileid: "113758862"
 
     **src** サブフォルダーに *train.py* スクリプトを作成します。
 
-     ```python
+    ```python
     import torch
     import torch.optim as optim
     import torchvision
@@ -200,16 +200,18 @@ if __name__ == "__main__":
 
 ## <a name="submit-the-run-to-azure-machine-learning"></a><a name="submit"></a> Azure Machine Learning に実行を送信する
 
-**[Save and run script in terminal]\(スクリプトを保存してターミナルで実行する\)** を選択して *run-pytorch.py* スクリプトを実行します。
+1. **[Save and run script in terminal]\(スクリプトを保存してターミナルで実行する\)** を選択して *run-pytorch.py* スクリプトを実行します。
 
->[!NOTE] 
-> このスクリプトを初めて実行すると、Azure Machine Learning によって PyTorch 環境から新しい Docker イメージが構築されます。 実行全体が完了するまでに 3 分から 4 分かかることがあります。 
->
-> Docker ビルド ログは、Azure Machine Learning スタジオで確認できます。 リンクをたどってスタジオにアクセスし、 **[出力 + ログ]** タブを選択して、`20_image_build_log.txt` を選択します。
->
-> このイメージは、今後の実行で再利用され、実行がさらに高速化されます。
+1. 開いたターミナル ウィンドウにリンクが表示されます。 リンクを選択して、実行を表示します。
 
-イメージがビルドされたら、`70_driver_log.txt` を選択してトレーニング スクリプトの出力を表示します。
+    [!INCLUDE [amlinclude-info](../../includes/machine-learning-py38-ignore.md)]
+
+### <a name="view-the-output"></a>出力を表示する
+
+1. 開いたページに、実行の状態が表示されます。 このスクリプトを初めて実行すると、Azure Machine Learning によって PyTorch 環境から新しい Docker イメージが構築されます。 実行全体が完了するまでに 3 分から 4 分かかることがあります。  このイメージは、今後の実行で再利用され、実行がさらに高速化されます。
+1. Docker ビルド ログは、Azure Machine Learning スタジオで確認できます。 **[出力 + ログ]** タブを選択し、**20_image_build_log.txt** を選択します。
+1. 実行の状態が **[完了]** の場合、 **[出力 + ログ]** を選択します。
+1. **70_driver_log.txt** を選択して、実行の出力を表示します。
 
 ```txt
 Downloading https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz to ./data/cifar-10-python.tar.gz
@@ -230,10 +232,11 @@ epoch=2, batch=12000: loss 1.27
 Finished Training
 ```
 
-> [!WARNING]
-> "`Your total snapshot size exceeds the limit` (合計スナップショット サイズが上限を超えました)" というエラーが表示された場合、`ScriptRunConfig` で使用されている値 `source_directory` に **data** フォルダーが存在します。
->
-> フォルダーの末尾にある **[...]** を選択し、 **[移動]** を選択して、**data** を **get-started** フォルダーに移動します。  
+"`Your total snapshot size exceeds the limit` (合計スナップショット サイズが上限を超えました)" というエラーが表示された場合、`ScriptRunConfig` で使用されている値 `source_directory` に **data** フォルダーが存在します。
+
+フォルダーの末尾にある **[...]** を選択し、 **[移動]** を選択して、**data** を **get-started** フォルダーに移動します。  
+
+
 
 ## <a name="log-training-metrics"></a><a name="log"></a> トレーニング メトリックをログする
 

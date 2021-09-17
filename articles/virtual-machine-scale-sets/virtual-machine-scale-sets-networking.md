@@ -9,14 +9,16 @@ ms.subservice: networking
 ms.date: 06/25/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurepowershell
-ms.openlocfilehash: 452d24d95fc0c43d8301e29b2304b9f0baa3cb25
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 85a4305abf1708d45627f775a583ae219db22b8e
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110673927"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122693989"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Azure 仮想マシン スケール セットのネットワーク
+
+**適用対象:** :heavy_check_mark: ユニフォーム スケール セット
 
 ポータルを通じて Azure 仮想マシン スケール セットをデプロイすると、特定のネットワーク プロパティには既定値が設定されます。たとえば、受信 NAT 規則付きの Azure ロード バランサーです。 この記事では、スケール セットで構成できる、いくつかのより高度なネットワーク機能の使用方法について説明します。
 
@@ -516,6 +518,24 @@ PUT https://management.azure.com/subscriptions/.../resourceGroups/vmssnic/provid
     }
     ```
 
+
+## <a name="explicit-network-outbound-connectivity-for-flexible-scale-sets"></a>フレキシブル スケール セットの明示的なネットワーク送信接続 
+
+既定のネットワーク セキュリティを強化するために、[フレキシブル オーケストレーションを使用した仮想マシン スケール セット](..\virtual-machines\flexible-virtual-machine-scale-sets.md)では、自動スケール プロファイルを使用して暗黙的に作成されたインスタンスで、次のいずれかの方法を使用して送信接続を明示的に定義する必要があります。 
+
+- ほとんどのシナリオでは、[NAT Gateway をサブネットに接続する](../virtual-network/nat-gateway/tutorial-create-nat-gateway-portal.md)ことをお勧めします。
+- 高度なセキュリティ要件を持つシナリオの場合や、Azure Firewall またはネットワーク仮想アプライアンス (NVA) を使用する場合は、カスタムのユーザー定義ルートをファイアウォール経由のネクスト ホップとして指定できます。 
+- インスタンスは、Standard SKU Azure Load Balancer のバックエンド プールにあります。 
+- インスタンス ネットワーク インターフェイスにパブリック IP アドレスを接続します。 
+
+単一インスタンス VM と仮想マシン スケール セットを均一オーケストレーションで使用すると、送信接続が自動的に提供されます。 
+
+明示的な送信接続を必要とする一般的なシナリオには、次のものがあります。 
+
+- Windows VM のアクティブ化では、VM インスタンスから Windows アクティブ化キー管理サービス (KMS) への送信接続が定義されている必要がある。 詳細については、[Windows VM のアクティブ化に関する問題のトラブルシューティング](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-activation-problems)に関する記事を参照してください。  
+- ストレージ アカウントまたは Key Vault にアクセスする。 Azure サービスへの接続は、[プライベート リンク](../private-link/private-link-overview.md)を使用して確立することもできます。 
+
+セキュリティで保護された送信接続の定義の詳細については、「[Azure での既定の送信アクセス](https://aka.ms/defaultoutboundaccess)」を参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ

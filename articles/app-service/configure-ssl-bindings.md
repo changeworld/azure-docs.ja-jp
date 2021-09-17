@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 05/13/2021
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: c67dfe6295a62a464d1a7a5eeb7a9ba7afd88ced
-ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
+ms.openlocfilehash: 717c9595a9fbda39583be0be5bc6565d2938dc63
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113128770"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122823370"
 ---
 # <a name="secure-a-custom-dns-name-with-a-tlsssl-binding-in-azure-app-service"></a>Azure App Service で TLS/SSL バインドを使用してカスタム DNS 名をセキュリティで保護する
 
@@ -154,6 +154,17 @@ ms.locfileid: "113128770"
 App Service では、[TLS 終了](https://wikipedia.org/wiki/TLS_termination_proxy)がネットワーク ロード バランサーで発生するため、すべての HTTPS 要求は暗号化されていない HTTP 要求としてアプリに到達します。 ユーザー要求が暗号化されているかどうかをアプリ ロジックが確認する必要がある場合は、`X-Forwarded-Proto` ヘッダーを調べます。
 
 [Linux Node.js 構成](configure-language-nodejs.md#detect-https-session)ガイドなどの言語固有の構成ガイドでは、アプリケーション コード内の HTTPS セッションを検出する方法について説明しています。
+
+## <a name="renew-certificate-binding"></a>証明書バインディングの更新
+
+> [!NOTE]
+> [購入した App Service 証明書](configure-ssl-certificate.md#import-an-app-service-certificate)を更新するには、[(App Service) 証明書のエクスポート](configure-ssl-certificate.md#export-certificate)に関する記事を参照してください。 App Service 証明書を自動的に更新し、バインディングを自動的に同期できます。
+
+期限切れの証明書を更新する場合、新しい証明書で証明書のバインディングを更新する方法によっては、ユーザー エクスペリエンスに悪影響を及ぼす可能性があります。 たとえば、バインディングを削除すると、そのバインディングが IP ベースであっても、インバウンド IP アドレスが変化する場合があります。 IP ベースのバインディングに既に存在する証明書を更新するときには、このことが特に重要となります。 アプリの IP アドレスに変更が生じないようにし、アプリのダウンタイムを回避するには、次の手順に従います。
+
+1. 新しい証明書をアップロードします。
+2. 既存の (期限切れ) 証明書を削除せずに、新しい証明書を同じカスタム ドメインにバインドします。 この操作により、既存の証明書が削除されることなく、バインディングが置き換えられます。
+3. 既存の証明書を削除します。
 
 ## <a name="automate-with-scripts"></a>スクリプトで自動化する
 

@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 1bfe50bc80e3aa2a8c924002efdba2a020dbe9ef
-ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
+ms.openlocfilehash: 71784aa5e40cc7af96faa60d0779a779e99f3425
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112198766"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122777848"
 ---
 # <a name="set-up-a-sign-in-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でサインイン フローを設定する
 
@@ -46,7 +46,8 @@ ms.locfileid: "112198766"
 サインイン ポリシーを追加するには:
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-1. ポータル ツール バーにある **[ディレクトリ + サブスクリプション]** アイコンを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
+1. ポータルのツール バーで **[Directories + Subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページの **[ディレクトリ名]** の一覧で自分の Azure AD B2C ディレクトリを見つけて、 **[切り替え]** を選択します。
 1. Azure portal で、 **[Azure AD B2C]** を検索して選択します。
 1. **[ポリシー]** で、 **[ユーザー フロー]** を選択し、 **[新しいユーザー フロー]** を選択します。
 1. **[ユーザー フローを作成する]** ページで、 **[サインイン]** ユーザー フローを選択します。
@@ -116,7 +117,8 @@ ms.locfileid: "112198766"
 ## <a name="update-and-test-your-policy"></a>ポリシーを更新してテストする
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-1. ご利用の Azure AD テナントを含むディレクトリを使用していることを確認してください。そのためには、トップ メニューにある **[ディレクトリ + サブスクリプション]** フィルターをクリックして、ご利用の Azure AD テナントを含むディレクトリを選択します。
+1. ポータルのツール バーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択して、自分の Azure AD B2C テナントが含まれるディレクトリを使用していることを確認します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページの **[ディレクトリ名]** の一覧で自分の Azure AD ディレクトリを見つけて、 **[切り替え]** を選択します。
 1. Azure portal の左上隅にある **[すべてのサービス]** を選択し、 **[アプリの登録]** を検索して選択します。
 1. **[Identity Experience Framework]** を選択します。
 1. **[カスタム ポリシーのアップロード]** を選択し、変更したポリシー ファイルである *TrustFrameworkExtensions.xml* をアップロードします。

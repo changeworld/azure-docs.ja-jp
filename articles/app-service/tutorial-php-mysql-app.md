@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 06/15/2020
 ms.custom: mvc, cli-validate, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 0810f023f4e2e192f2cb0d83f2a028cdded9e275
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 832f685bd53f19d4295863b922789b0c4ee85f62
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107779472"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746859"
 ---
 # <a name="tutorial-build-a-php-and-mysql-app-in-azure-app-service"></a>チュートリアル:Azure App Service で PHP および MySQL アプリを構築する
 
@@ -71,17 +71,17 @@ mysql -u root -p
 
 ### <a name="create-a-database-locally"></a>ローカルにデータベースを作成する
 
-`mysql` プロンプトで、データベースを作成します。
+1. `mysql` プロンプトで、データベースを作成します。
 
-```sql 
-CREATE DATABASE sampledb;
-```
+    ```sql 
+    CREATE DATABASE sampledb;
+    ```
 
-「`quit`」と入力して、サーバー接続を終了します。
+1. 「`quit`」と入力して、サーバー接続を終了します。
 
-```sql
-quit
-```
+    ```sql
+    quit
+    ```
 
 <a name="step2"></a>
 
@@ -92,19 +92,27 @@ quit
 
 ターミナル ウィンドウから、`cd` コマンドで作業ディレクトリに移動します。
 
-次のコマンドを実行して、サンプル レポジトリを複製します。
+1. サンプル リポジトリを複製し、リポジトリ ルートに変更します。
 
-```bash
-git clone https://github.com/Azure-Samples/laravel-tasks
-```
+    ```bash
+    git clone https://github.com/Azure-Samples/laravel-tasks
+    cd laravel-tasks
+    ```
 
-`cd` コマンドで複製したディレクトリに移動します。
-必要なパッケージをインストールします。
+1. 既定のブランチが `main` であることを確認します。
 
-```bash
-cd laravel-tasks
-composer install
-```
+    ```bash
+    git branch -m main
+    ```
+    
+    > [!TIP]
+    > App Service では、ブランチ名の変更は必要ありません。 ただし、多くのリポジトリで既定のブランチが `main` に変更されているため、このチュートリアルでは、`main` からリポジトリをデプロイする方法も示します。 詳細については、「[デプロイ ブランチを変更する](deploy-local-git.md#change-deployment-branch)」を参照してください。
+
+1. 必要なパッケージをインストールします。
+
+    ```bash
+    composer install
+    ```
 
 ### <a name="configure-mysql-connection"></a>MySQL 接続を構成する
 
@@ -126,29 +134,29 @@ DB_PASSWORD=<root_password>
 
 ### <a name="run-the-sample-locally"></a>ローカルでサンプルを実行する
 
-[Laravel データベースの移行](https://laravel.com/docs/5.4/migrations)を実行して、アプリケーションで必要なテーブルを作成します。 移行で作成されるテーブルを確認するには、Git レポジトリの _database/migrations_ ディレクトリを調べます。
+1. [Laravel データベースの移行](https://laravel.com/docs/5.4/migrations)を実行して、アプリケーションで必要なテーブルを作成します。 移行で作成されるテーブルを確認するには、Git レポジトリの _database/migrations_ ディレクトリを調べます。
 
-```bash
-php artisan migrate
-```
+    ```bash
+    php artisan migrate
+    ```
 
-新しい Laravel アプリケーション キーを生成します。
+1. 新しい Laravel アプリケーション キーを生成します。
 
-```bash
-php artisan key:generate
-```
+    ```bash
+    php artisan key:generate
+    ```
 
-アプリケーションを実行します。
+1. アプリケーションを実行します。
 
-```bash
-php artisan serve
-```
+    ```bash
+    php artisan serve
+    ```
 
-ブラウザーで `http://localhost:8000` にアクセスします。 ページで、いくつかのタスクを追加します。
+1. ブラウザーで `http://localhost:8000` にアクセスします。 ページで、いくつかのタスクを追加します。
 
-![MySQL に正常に接続されている PHP](./media/tutorial-php-mysql-app/mysql-connect-success.png)
+    ![MySQL に正常に接続されている PHP](./media/tutorial-php-mysql-app/mysql-connect-success.png)
 
-PHP を停止するには、ターミナルで `Ctrl + C` キーを押します。
+1. PHP を停止するには、ターミナルで `Ctrl + C` キーを押します。
 
 ## <a name="create-mysql-in-azure"></a>Azure に MySQL を作成する
 
@@ -186,52 +194,48 @@ MySQL サーバーが作成されると、Azure CLI によって、次の例の�
 
 ### <a name="configure-server-firewall"></a>サーバーのファイアウォールを構成する
 
-Cloud Shell で [`az mysql server firewall-rule create`](/cli/azure/mysql/server/firewall-rule#az_mysql_server_firewall_rule_create) コマンドを使用して、MySQL サーバーでクライアント接続を許可するためのファイアウォール規則を作成します。 開始 IP と終了 IP の両方が 0.0.0.0 に設定されている場合、ファイアウォールは他の Azure リソースに対してのみ開かれます。 
+1. Cloud Shell で [`az mysql server firewall-rule create`](/cli/azure/mysql/server/firewall-rule#az_mysql_server_firewall_rule_create) コマンドを使用して、MySQL サーバーでクライアント接続を許可するためのファイアウォール規則を作成します。 開始 IP と終了 IP の両方が 0.0.0.0 に設定されている場合、ファイアウォールは他の Azure リソースに対してのみ開かれます。 
 
-```azurecli-interactive
-az mysql server firewall-rule create --name allAzureIPs --server <mysql-server-name> --resource-group myResourceGroup --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
-```
+    ```azurecli-interactive
+    az mysql server firewall-rule create --name allAzureIPs --server <mysql-server-name> --resource-group myResourceGroup --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
+    ```
 
-> [!TIP] 
-> [アプリで使用する送信 IP アドレスのみを使用する](overview-inbound-outbound-ips.md#find-outbound-ips)ことで、ファイアウォール規則による制限をさらに厳しくすることができます。
->
+    > [!TIP] 
+    > [アプリで使用する送信 IP アドレスのみを使用する](overview-inbound-outbound-ips.md#find-outbound-ips)ことで、ファイアウォール規則による制限をさらに厳しくすることができます。
+    >
 
-Cloud Shell 内で *\<your-ip-address>* を [ローカル IPv4 IP アドレス](https://www.whatsmyip.org/)に置き換えてコマンドを再び実行し、ローカル コンピューターからアクセスできるようにします。
+1. Cloud Shell 内で *\<your-ip-address>* を [ローカル IPv4 IP アドレス](https://www.whatsmyip.org/)に置き換えてコマンドを再び実行し、ローカル コンピューターからアクセスできるようにします。
 
-```azurecli-interactive
-az mysql server firewall-rule create --name AllowLocalClient --server <mysql-server-name> --resource-group myResourceGroup --start-ip-address=<your-ip-address> --end-ip-address=<your-ip-address>
-```
-
-### <a name="connect-to-production-mysql-server-locally"></a>ローカルに運用 MySQL サーバーに接続する
-
-ローカルのターミナル ウィンドウで、Azure の MySQL サーバーに接続します。 _&lt;admin-user>_ と _&lt;mysql-server-name>_ に指定した値を使用します。 パスワードの入力を求められたら、Azure でデータベースの作成時に指定したパスワードを使用します。
-
-```bash
-mysql -u <admin-user>@<mysql-server-name> -h <mysql-server-name>.mysql.database.azure.com -P 3306 -p
-```
+    ```azurecli-interactive
+    az mysql server firewall-rule create --name AllowLocalClient --server <mysql-server-name> --resource-group myResourceGroup --start-ip-address=<your-ip-address> --end-ip-address=<your-ip-address>
+    ```
 
 ### <a name="create-a-production-database"></a>運用データベースを作成する
 
-`mysql` プロンプトで、データベースを作成します。
+1. ローカルのターミナル ウィンドウで、Azure の MySQL サーバーに接続します。 _&lt;admin-user>_ と _&lt;mysql-server-name>_ に指定した値を使用します。 パスワードの入力を求められたら、Azure でデータベースの作成時に指定したパスワードを使用します。
 
-```sql
-CREATE DATABASE sampledb;
-```
+    ```bash
+    mysql -u <admin-user>@<mysql-server-name> -h <mysql-server-name>.mysql.database.azure.com -P 3306 -p
+    ```
 
-### <a name="create-a-user-with-permissions"></a>アクセス許可を持つユーザーを作成する
+1. `mysql` プロンプトで、データベースを作成します。
 
-_phpappuser_ というデータベース ユーザーを作成し、このユーザーに `sampledb` データベースのすべての特権を付与します。 パスワードには _MySQLAzure2017_ を使用します。このチュートリアルのために単純なパスワードを選択しています。
+    ```sql
+    CREATE DATABASE sampledb;
+    ```
 
-```sql
-CREATE USER 'phpappuser' IDENTIFIED BY 'MySQLAzure2017'; 
-GRANT ALL PRIVILEGES ON sampledb.* TO 'phpappuser';
-```
+1. _phpappuser_ というデータベース ユーザーを作成し、このユーザーに `sampledb` データベースのすべての特権を付与します。 パスワードには _MySQLAzure2017_ を使用します。このチュートリアルのために単純なパスワードを選択しています。
 
-「`quit`」と入力して、サーバー接続を終了します。
+    ```sql
+    CREATE USER 'phpappuser' IDENTIFIED BY 'MySQLAzure2017'; 
+    GRANT ALL PRIVILEGES ON sampledb.* TO 'phpappuser';
+    ```
 
-```sql
-quit
-```
+1. 「`quit`」と入力して、サーバー接続を終了します。
+
+    ```sql
+    quit
+    ```
 
 ## <a name="connect-app-to-azure-mysql"></a>アプリを Azure MySQL に接続する
 
@@ -300,31 +304,31 @@ _config/database.php_ を開き、次のコードに示すように `sslmode` �
 
 ### <a name="test-the-application-locally"></a>ローカルでアプリケーションをテストする
 
-環境ファイルとして _.env.production_ を使用して Laravel データベースの移行を実行して、Azure Database for MySQL の MySQL データベース内にテーブルを作成します。 _.env.production_ には Azure の MySQL データベースへの接続情報が含まれていることに注意してください。
+1. 環境ファイルとして _.env.production_ を使用して Laravel データベースの移行を実行して、Azure Database for MySQL の MySQL データベース内にテーブルを作成します。 _.env.production_ には Azure の MySQL データベースへの接続情報が含まれていることに注意してください。
 
-```bash
-php artisan migrate --env=production --force
-```
+    ```bash
+    php artisan migrate --env=production --force
+    ```
 
-この時点では、 _.env.production_ には有効なアプリケーション キーはありません。 ターミナルで、新しいものを生成します。
+1. この時点では、 _.env.production_ には有効なアプリケーション キーはありません。 ターミナルで、新しいものを生成します。
 
-```bash
-php artisan key:generate --env=production --force
-```
+    ```bash
+    php artisan key:generate --env=production --force
+    ```
 
-環境ファイルとして _.env.production_ を使用してサンプル アプリケーションを実行します。
+1. 環境ファイルとして _.env.production_ を使用してサンプル アプリケーションを実行します。
 
-```bash
-php artisan serve --env=production
-```
+    ```bash
+    php artisan serve --env=production
+    ```
 
-`http://localhost:8000` に移動します。 エラーなしでページが読み込まれれば、PHP アプリケーションは Azure の MySQL データベースに接続しています。
+1. `http://localhost:8000` に移動します。 エラーなしでページが読み込まれれば、PHP アプリケーションは Azure の MySQL データベースに接続しています。
 
-ページで、いくつかのタスクを追加します。
+1. ページで、いくつかのタスクを追加します。
 
-![PHP が Azure Database for MySQL に正常にデータベースに接続されている](./media/tutorial-php-mysql-app/mysql-connect-success.png)
+    ![PHP が Azure Database for MySQL に正常にデータベースに接続されている](./media/tutorial-php-mysql-app/mysql-connect-success.png)
 
-PHP を停止するには、ターミナルで `Ctrl + C` キーを押します。
+1. PHP を停止するには、ターミナルで `Ctrl + C` キーを押します。
 
 ### <a name="commit-your-changes"></a>変更をコミットする
 
@@ -401,19 +405,19 @@ PHP [getenv](https://www.php.net/manual/en/function.getenv.php) メソッドを�
 
 Laravel には App Service のアプリケーション キーが必要です。 これはアプリ設定で構成できます。
 
-ローカル ターミナル ウィンドウで、`php artisan` を使用して新しいアプリケーションキーを生成します ( _.env_ には保存されません)。
+1. ローカル ターミナル ウィンドウで、`php artisan` を使用して新しいアプリケーションキーを生成します ( _.env_ には保存されません)。
 
-```bash
-php artisan key:generate --show
-```
+    ```bash
+    php artisan key:generate --show
+    ```
 
-Cloud Shell で [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) コマンドを使用して、App Service アプリにアプリケーション キーを設定します。 プレースホルダーの _&lt;app-name>_ と _&lt;outputofphpartisankey:generate>_ を置き換えます。
+1. Cloud Shell で [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) コマンドを使用して、App Service アプリにアプリケーション キーを設定します。 プレースホルダーの _&lt;app-name>_ と _&lt;outputofphpartisankey:generate>_ を置き換えます。
 
-```azurecli-interactive
-az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings APP_KEY="<output_of_php_artisan_key:generate>" APP_DEBUG="true"
-```
+    ```azurecli-interactive
+    az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings APP_KEY="<output_of_php_artisan_key:generate>" APP_DEBUG="true"
+    ```
 
-`APP_DEBUG="true"` は、デプロイしたアプリでエラーが発生した場合にデバッグ情報を返すように Laravel に指示します。 運用アプリケーションを実行するときは、`false` に設定してセキュリティを強化します。
+    `APP_DEBUG="true"` は、デプロイしたアプリでエラーが発生した場合にデバッグ情報を返すように Laravel に指示します。 運用アプリケーションを実行するときは、`false` に設定してセキュリティを強化します。
 
 ### <a name="set-the-virtual-application-path"></a>仮想アプリケーション パスを設定する
 
@@ -445,30 +449,30 @@ az resource update --name web --resource-group myResourceGroup --namespace Micro
 
 [!INCLUDE [app-service-plan-no-h](../../includes/app-service-web-git-push-to-azure-no-h.md)]
 
-<pre>
-Counting objects: 3, done.
-Delta compression using up to 8 threads.
-Compressing objects: 100% (3/3), done.
-Writing objects: 100% (3/3), 291 bytes | 0 bytes/s, done.
-Total 3 (delta 2), reused 0 (delta 0)
-remote: Updating branch 'main'.
-remote: Updating submodules.
-remote: Preparing deployment for commit id 'a5e076db9c'.
-remote: Running custom deployment command...
-remote: Running deployment command...
-...
-&lt; Output has been truncated for readability &gt;
-</pre>
-
-> [!NOTE]
-> デプロイ プロセスの最後に [Composer](https://getcomposer.org/) パッケージがインストールされることに気付くかもしれません。 App Service では既定のデプロイ中にこれらの自動化が実行されないため、このサンプル レポジトリには、有効化するための3 つのファイルがルート ディレクトリに追加されます。
->
-> - `.deployment` - このファイルは、`bash deploy.sh` をカスタム デプロイ スクリプトとして実行するよう App Service に指示します。
-> - `deploy.sh` - カスタム デプロイ スクリプト。 このファイルを確認すると、`npm install` の後で `php composer.phar install` が実行されることがわかります。
-> - `composer.phar` - Composer パッケージ マネージャー。
->
-> この方法を使用して、App Service に対する Git ベースのデプロイに対して任意の手順を追加できます。 詳細については、「[Custom Deployment Script (カスタム デプロイ スクリプト)](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)」を参照してください。
->
+   <pre>
+   Counting objects: 3, done.
+   Delta compression using up to 8 threads.
+   Compressing objects: 100% (3/3), done.
+   Writing objects: 100% (3/3), 291 bytes | 0 bytes/s, done.
+   Total 3 (delta 2), reused 0 (delta 0)
+   remote: Updating branch 'main'.
+   remote: Updating submodules.
+   remote: Preparing deployment for commit id 'a5e076db9c'.
+   remote: Running custom deployment command...
+   remote: Running deployment command...
+   ...
+   &lt; Output has been truncated for readability &gt;
+   </pre>
+    
+   > [!NOTE]
+   > デプロイ プロセスの最後に [Composer](https://getcomposer.org/) パッケージがインストールされることに気付くかもしれません。 App Service では既定のデプロイ中にこれらの自動化が実行されないため、このサンプル レポジトリには、有効化するための3 つのファイルがルート ディレクトリに追加されます。
+   >
+   > - `.deployment` - このファイルは、`bash deploy.sh` をカスタム デプロイ スクリプトとして実行するよう App Service に指示します。
+   > - `deploy.sh` - カスタム デプロイ スクリプト。 このファイルを確認すると、`npm install` の後で `php composer.phar install` が実行されることがわかります。
+   > - `composer.phar` - Composer パッケージ マネージャー。
+   >
+   > この方法を使用して、App Service に対する Git ベースのデプロイに対して任意の手順を追加できます。 詳細については、「[Custom Deployment Script (カスタム デプロイ スクリプト)](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)」を参照してください。
+   >
 
 ::: zone-end
 
@@ -476,21 +480,21 @@ remote: Running deployment command...
 
 [!INCLUDE [app-service-plan-no-h](../../includes/app-service-web-git-push-to-azure-no-h.md)]
 
-<pre>
-Counting objects: 3, done.
-Delta compression using up to 8 threads.
-Compressing objects: 100% (3/3), done.
-Writing objects: 100% (3/3), 291 bytes | 0 bytes/s, done.
-Total 3 (delta 2), reused 0 (delta 0)
-remote: Updating branch 'main'.
-remote: Updating submodules.
-remote: Preparing deployment for commit id 'a5e076db9c'.
-remote: Running custom deployment command...
-remote: Running deployment command...
-...
-&lt; Output has been truncated for readability &gt;
-</pre>
-
+   <pre>
+   Counting objects: 3, done.
+   Delta compression using up to 8 threads.
+   Compressing objects: 100% (3/3), done.
+   Writing objects: 100% (3/3), 291 bytes | 0 bytes/s, done.
+   Total 3 (delta 2), reused 0 (delta 0)
+   remote: Updating branch 'main'.
+   remote: Updating submodules.
+   remote: Preparing deployment for commit id 'a5e076db9c'.
+   remote: Running custom deployment command...
+   remote: Running deployment command...
+   ...
+   &lt; Output has been truncated for readability &gt;
+   </pre>
+    
 ::: zone-end
 
 ### <a name="browse-to-the-azure-app"></a>Azure アプリを参照する
@@ -509,137 +513,137 @@ remote: Running deployment command...
 
 ### <a name="add-a-column"></a>列を追加する
 
-ローカル ターミナル ウィンドウで、Git リポジトリのルートに移動します。
+1. ローカル ターミナル ウィンドウで、Git リポジトリのルートに移動します。
 
-`tasks` テーブル用の新しいデータベースの移行を生成します。
+1. `tasks` テーブル用の新しいデータベースの移行を生成します。
 
-```bash
-php artisan make:migration add_complete_column --table=tasks
-```
+    ```bash
+    php artisan make:migration add_complete_column --table=tasks
+    ```
 
-このコマンドは、生成される移行ファイルの名前を表示します。 このファイルを _database/migrations_ で探して開きます。
+1. このコマンドは、生成される移行ファイルの名前を表示します。 このファイルを _database/migrations_ で探して開きます。
 
-`up` メソッドを次のコードに置き換えます。
+1. `up` メソッドを次のコードに置き換えます。
 
-```php
-public function up()
-{
-    Schema::table('tasks', function (Blueprint $table) {
-        $table->boolean('complete')->default(False);
-    });
-}
-```
+    ```php
+    public function up()
+    {
+        Schema::table('tasks', function (Blueprint $table) {
+            $table->boolean('complete')->default(False);
+        });
+    }
+    ```
 
-上のコードは、`tasks` テーブルに `complete` と呼ばれるブール値の列を追加します。
+    上のコードは、`tasks` テーブルに `complete` と呼ばれるブール値の列を追加します。
 
-`down` メソッドを、ロールバック アクション用の次のコードに置き換えます。
+1. `down` メソッドを、ロールバック アクション用の次のコードに置き換えます。
 
-```php
-public function down()
-{
-    Schema::table('tasks', function (Blueprint $table) {
-        $table->dropColumn('complete');
-    });
-}
-```
+    ```php
+    public function down()
+    {
+        Schema::table('tasks', function (Blueprint $table) {
+            $table->dropColumn('complete');
+        });
+    }
+    ```
 
-ローカル ターミナル ウィンドウで、Laravel データベースの移行を実行して、ローカル データベースを変更します。
+1. ローカル ターミナル ウィンドウで、Laravel データベースの移行を実行して、ローカル データベースを変更します。
 
-```bash
-php artisan migrate
-```
+    ```bash
+    php artisan migrate
+    ```
 
-[Laravel の名前付け規則](https://laravel.com/docs/5.4/eloquent#defining-models)に基づいて、モデル `Task` (_app/Task.php_ 参照) を `tasks` テーブルに既定でマップします。
+    [Laravel の名前付け規則](https://laravel.com/docs/5.4/eloquent#defining-models)に基づいて、モデル `Task` (_app/Task.php_ 参照) を `tasks` テーブルに既定でマップします。
 
 ### <a name="update-application-logic"></a>アプリケーション ロジックを更新する
 
-*routes/web.php* ファイルを開きます。 アプリケーションは、そのルートとビジネス ロジックをここに定義します。
+1. *routes/web.php* ファイルを開きます。 アプリケーションは、そのルートとビジネス ロジックをここに定義します。
 
-ファイルの末尾に、次のコードを使用してルートを追加します。
+1. ファイルの末尾に、次のコードを使用してルートを追加します。
 
-```php
-/**
- * Toggle Task completeness
- */
-Route::post('/task/{id}', function ($id) {
-    error_log('INFO: post /task/'.$id);
-    $task = Task::findOrFail($id);
+    ```php
+    /**
+     * Toggle Task completeness
+     */
+    Route::post('/task/{id}', function ($id) {
+        error_log('INFO: post /task/'.$id);
+        $task = Task::findOrFail($id);
+    
+        $task->complete = !$task->complete;
+        $task->save();
+    
+        return redirect('/');
+    });
+    ```
 
-    $task->complete = !$task->complete;
-    $task->save();
-
-    return redirect('/');
-});
-```
-
-上のコードは、データ モデルに対して `complete` 値の切り替えによる単純な更新を行います。
+    上のコードは、データ モデルに対して `complete` 値の切り替えによる単純な更新を行います。
 
 ### <a name="update-the-view"></a>ビューを更新する
 
-*resources/views/tasks.blade.php* ファイルを開きます。 `<tr>` 開始タグを探し、次のコードに置き換えます。
+1. *resources/views/tasks.blade.php* ファイルを開きます。 `<tr>` 開始タグを探し、次のコードに置き換えます。
 
-```html
-<tr class="{{ $task->complete ? 'success' : 'active' }}" >
-```
+    ```html
+    <tr class="{{ $task->complete ? 'success' : 'active' }}" >
+    ```
 
-上のコードは、タスクが完了しているかどうかに応じて行の色を変更します。
+    上のコードは、タスクが完了しているかどうかに応じて行の色を変更します。
 
-次の行には、次のコードがあります。
+1. 次の行には、次のコードがあります。
 
-```html
-<td class="table-text"><div>{{ $task->name }}</div></td>
-```
+    ```html
+    <td class="table-text"><div>{{ $task->name }}</div></td>
+    ```
 
-この行全体を次のコードに置き換えます。
+    この行全体を次のコードに置き換えます。
 
-```html
-<td>
-    <form action="{{ url('task/'.$task->id) }}" method="POST">
-        {{ csrf_field() }}
+    ```html
+    <td>
+        <form action="{{ url('task/'.$task->id) }}" method="POST">
+            {{ csrf_field() }}
+    
+            <button type="submit" class="btn btn-xs">
+                <i class="fa {{$task->complete ? 'fa-check-square-o' : 'fa-square-o'}}"></i>
+            </button>
+            {{ $task->name }}
+        </form>
+    </td>
+    ```
 
-        <button type="submit" class="btn btn-xs">
-            <i class="fa {{$task->complete ? 'fa-check-square-o' : 'fa-square-o'}}"></i>
-        </button>
-        {{ $task->name }}
-    </form>
-</td>
-```
-
-上のコードは、前に定義したルートを参照する送信ボタンを追加します。
+    上のコードは、前に定義したルートを参照する送信ボタンを追加します。
 
 ### <a name="test-the-changes-locally"></a>変更をローカルでテストする
 
-ローカル ターミナル ウィンドウで、Git リポジトリのルート ディレクトリから開発サーバーを実行します。
+1. ローカル ターミナル ウィンドウで、Git リポジトリのルート ディレクトリから開発サーバーを実行します。
 
-```bash
-php artisan serve
-```
+    ```bash
+    php artisan serve
+    ```
 
-タスクの状態の変更を確認するには、ブラウザーで `http://localhost:8000` に移動し、チェック ボックスをオンにします。
+1. タスクの状態の変更を確認するには、ブラウザーで `http://localhost:8000` に移動し、チェック ボックスをオンにします。
 
-![タスクに追加されたチェック ボックス](./media/tutorial-php-mysql-app/complete-checkbox.png)
+    ![タスクに追加されたチェック ボックス](./media/tutorial-php-mysql-app/complete-checkbox.png)
 
-PHP を停止するには、ターミナルで `Ctrl + C` キーを押します。
+1. PHP を停止するには、ターミナルで `Ctrl + C` キーを押します。
 
 ### <a name="publish-changes-to-azure"></a>Azure に変更を発行する
 
-ローカル ターミナル ウィンドウで、運用環境の接続文字列を使用して Laravel データベースの移行を実行して、Azure の運用データベースを変更します。
+1. ローカル ターミナル ウィンドウで、運用環境の接続文字列を使用して Laravel データベースの移行を実行して、Azure の運用データベースを変更します。
 
-```bash
-php artisan migrate --env=production --force
-```
+    ```bash
+    php artisan migrate --env=production --force
+    ```
 
-すべての変更を Git にコミットした後、コードの変更を Azure にプッシュします。
+1. すべての変更を Git にコミットした後、コードの変更を Azure にプッシュします。
 
-```bash
-git add .
-git commit -m "added complete checkbox"
-git push azure main
-```
+    ```bash
+    git add .
+    git commit -m "added complete checkbox"
+    git push azure main
+    ```
 
-`git push` が完了したら、Azure アプリに移動し、新機能を試します。
+1. `git push` が完了したら、Azure アプリに移動し、新機能を試します。
 
-![Azure に発行されたモデルとデータベースの変更](media/tutorial-php-mysql-app/complete-checkbox-published.png)
+    ![Azure に発行されたモデルとデータベースの変更](media/tutorial-php-mysql-app/complete-checkbox-published.png)
 
 タスクを追加した場合は、そのタスクがデータベースに保持されます。 データ スキーマに対する更新では、既存のデータはそのまま残ります。
 
@@ -676,17 +680,17 @@ az webapp log tail --name <app_name> --resource-group myResourceGroup
 
 ## <a name="manage-the-azure-app"></a>Azure アプリの管理
 
-[Azure portal](https://portal.azure.com) に移動し、お客様が作成したアプリを管理します。
+1. [Azure portal](https://portal.azure.com) に移動し、お客様が作成したアプリを管理します。
 
-左側のメニューで **[App Services]** をクリックしてから、お客様の Azure アプリの名前をクリックします。
+1. 左側のメニューで **[App Services]** をクリックしてから、お客様の Azure アプリの名前をクリックします。
 
-![Azure アプリへのポータル ナビゲーション](./media/tutorial-php-mysql-app/access-portal.png)
+    ![Azure アプリへのポータル ナビゲーション](./media/tutorial-php-mysql-app/access-portal.png)
 
-お客様のアプリの [概要] ページを確認します。 ここでは、停止、開始、再開、参照、削除のような基本的な管理タスクを行うことができます。
+    お客様のアプリの [概要] ページを確認します。 ここでは、停止、開始、再開、参照、削除のような基本的な管理タスクを行うことができます。
 
-左側のメニューは、アプリを構成するためのページを示しています。
+    左側のメニューは、アプリを構成するためのページを示しています。
 
-![Azure Portal の [App Service] ページ](./media/tutorial-php-mysql-app/web-app-blade.png)
+    ![Azure Portal の [App Service] ページ](./media/tutorial-php-mysql-app/web-app-blade.png)
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 

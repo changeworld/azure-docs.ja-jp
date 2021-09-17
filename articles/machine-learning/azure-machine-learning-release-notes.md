@@ -8,19 +8,28 @@ ms.subservice: core
 ms.topic: reference
 ms.author: larryfr
 author: BlackMist
-ms.date: 02/18/2021
-ms.openlocfilehash: 354bc77283949f46ce5f1f1e972e7917855634b1
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 08/18/2021
+ms.openlocfilehash: 1f3ed6e3c661e0238b6a29284a2da7254edab6c4
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121742136"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122824841"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning のリリース ノート
 
 この記事では、Azure Machine Learning の各リリースについて説明します。  SDK リファレンス コンテンツの詳細については、Azure Machine Learning の [**メインの SDK for Python**](/python/api/overview/azure/ml/intro) のリファレンス ページを参照してください。
 
 __RSS フィード__:ご自身のフィード リーダーに次の URL をコピーして貼り付けることで、このページの更新時に通知を受け取ることができます。`https://docs.microsoft.com/api/search/rss?search=%22Azure+machine+learning+release+notes%22&locale=en-us`
+
+## <a name="2021-08-18"></a>2021-08-18
+
+### <a name="azure-machine-learning-experimentation-user-interface"></a>Azure Machine Learning 実験ユーザー インターフェイス
+  + **実行の表示名**
+    + 実行の表示名は、新しい編集可能な、実行に割り当てることができるオプションの表示名です。 
+    + この名前は、実行をより効率的に追跡、整理、検出するのに役立ちます。 
+    + 実行の表示名は、既定で adjective_noun_guid 形式に設定されます (例: awesome_watch_2i3uns)。 
+    + この既定の名前を、よりカスタマイズ可能な名前に編集できます。 これは、Azure Machine Learning スタジオ ユーザー インターフェイスの [実行の詳細] ページから編集できます。   
 
 ## <a name="2021-08-02"></a>2021-08-02
 
@@ -120,7 +129,7 @@ __RSS フィード__:ご自身のフィード リーダーに次の URL をコ�
 
 ## <a name="2021-05-25"></a>2021-05-25
 
-### <a name="announcing-the-20-cli-preview-for-azure-machine-learning"></a>Azure Machine Learning の 2.0 CLI (プレビュー) を発表
+### <a name="announcing-the-cli-v2-preview-for-azure-machine-learning"></a>Azure Machine Learning の CLI (v2) (プレビュー) の発表
 
 Azure CLI に対する `ml` 拡張機能は、Azure Machine Learning の次世代インターフェイスです。 これにより、コマンド ラインからモデルをトレーニングおよびデプロイできます。また、モデルのライフサイクルを追跡しながらデータ サイエンスのスケールアップとスケールアウトを加速する機能もあります。 [インストールして開始する](how-to-configure-cli.md)。
 

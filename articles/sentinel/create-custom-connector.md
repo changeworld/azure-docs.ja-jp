@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/09/2021
 ms.author: bagol
-ms.openlocfilehash: b2e2e1dad8d8fca6ce809e7e76a7ba8021420561
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: b0a0b8cb4d3ff5ce10348608d66a451517b60016
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122182522"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122514738"
 ---
 # <a name="resources-for-creating-azure-sentinel-custom-connectors"></a>Azure Sentinel カスタム コネクタを作成するためのリソース
 
@@ -198,11 +198,13 @@ Azure Functions と RESTful API および [PowerShell](../azure-functions/functi
 次に例を示します。
 
 - **Logstash を使用した場合** は、[Grok](https://www.elastic.co/guide/en/logstash/current/plugins-filters-grok.html) フィルター プラグインを使用してデータを解析します。
-- **Azure 関数を使用した場合** は、コードを使用してデータを解析します。 詳細については、「[パーサー](normalization.md#parsers)」を参照してください。
+- **Azure 関数を使用した場合** は、コードを使用してデータを解析します。
 
-Azure Sentinel は、クエリ時の解析に対応しています。 クエリ時の解析を使用すると、データを元の形式でプッシュし、必要に応じてオンデマンドで解析することができます。
+Azure Sentinel は、クエリ時の解析に対応しています。 クエリ時の解析を使用すると、データを元の形式でプッシュし、必要に応じてオンデマンドで解析することができます。 
 
 また、クエリ時の解析を使用すると、カスタム コネクタを作成するときにデータの正確な構造を事前に、または抽出する必要のある情報さえ、把握しておく必要がありません。 代わりに、調査中であっても、いつでもデータを解析できます。
+
+クエリ時の解析の詳細については、[パーサー](normalization-about-parsers.md)に関するページを参照してください。
 
 > [!NOTE]
 > パーサーの更新は、Azure Sentinel に既に取り込んだデータにも適用されます。

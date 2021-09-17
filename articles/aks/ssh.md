@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 05/17/2021
 ms.custom: contperf-fy21q4
-ms.openlocfilehash: 8deba37750c6e498e87b87ab2c49e4aa54561475
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 87e548cd39c7c064b11131c28790d8335bd942fb
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121743962"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122418412"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>メンテナンスまたはトラブルシューティングのために SSH を使用して Azure Kubernetes Service (AKS) クラスター ノードに接続する
 
@@ -75,13 +75,17 @@ node-debugger-aks-nodepool1-12345678-vmss000000-bkmmx   1/1     Running   0     
 
 上の例では、*node-debugger-aks-nodepool1-12345678-vmss000000-bkmmx* が、`kubectl debug` によって起動されたポッドの名前です。
 
-`kubectl debug` によって作成されたポッドに SSH 秘密キーをコピーします。 この秘密キーは、Windows Server AKS ノードへの SSH の作成に使用されます。 必要に応じて、 `~/.ssh/id_rsa` をお使いの SSH 秘密キーの場所に変更します。
+`kubectl port-forward` を使用すると、デプロイされているポッドへの接続を開くことができます。
 
-```azurecli-interactive
-kubectl cp ~/.ssh/id_rsa node-debugger-aks-nodepool1-12345678-vmss000000-bkmmx:/id_rsa
+```
+$ kubectl port-forward node-debugger-aks-nodepool1-12345678-vmss000000-bkmmx 2022:22
+Forwarding from 127.0.0.1:2022 -> 22
+Forwarding from [::1]:2022 -> 22
 ```
 
-`kubectl get nodes` を使用して、Windows Server ノードの内部 IP アドレスを表示します。
+上記の例では、お使いの開発用コンピューターのポート 2022 から、デプロイされているポッドのポート 22 にネットワーク トラフィックの転送を開始します。 `kubectl port-forward` を使用して接続を開き、ネットワーク トラフィックを転送する場合、接続は `kubectl port-forward` コマンドを停止するまで開いたままです。
+
+新しいターミナルを開き、次のように `kubectl get nodes` を使用して、Windows Server ノードの内部 IP アドレスを表示します。
 
 ```output
 $ kubectl get nodes -o wide
@@ -94,16 +98,10 @@ aksnpwin000000                      Ready    agent   87s     v1.19.9   10.240.0.
 
 上の例では、*10.240.0.67* が、Windows Server ノードの内部 IP アドレスです。
 
-`kubectl debug` によって起動されたターミナルに戻り、ポッドにコピーした SSH 秘密キーのアクセス許可を更新します。
-
-```azurecli-interactive
-chmod 0400 id_rsa
-```
-
 内部 IP アドレスを使用して、Windows Server ノードへの SSH 接続を作成します。 AKS ノードの既定のユーザー名は、*azureuser* です。 接続を続行するプロンプトを受け入れます。 次に、Windows Server ノードの bash プロンプトが提供されます。
 
 ```output
-$ ssh -i id_rsa azureuser@10.240.0.67
+$ ssh -o 'ProxyCommand ssh -p 2022 -W %h:%p azureuser@127.0.0.1' azureuser@10.240.0.67
 
 The authenticity of host '10.240.0.67 (10.240.0.67)' can't be established.
 ECDSA key fingerprint is SHA256:1234567890abcdefghijklmnopqrstuvwxyzABCDEFG.
@@ -117,9 +115,18 @@ Microsoft Windows [Version 10.0.17763.1935]
 azureuser@aksnpwin000000 C:\Users\azureuser>
 ```
 
+上の例では、お使いの開発用コンピューターのポート 2022 を Windows サーバー ノードのポート 22 に接続します。
+
+> [!NOTE]
+> パスワード認証を使用する場合は、`-o PreferredAuthentications=password` を使用します。 例:
+>
+> ```console
+>  ssh -o 'ProxyCommand ssh -p 2022 -W %h:%p azureuser@127.0.0.1' -o PreferredAuthentications=password azureuser@10.240.0.67
+> ```
+
 ## <a name="remove-ssh-access"></a>SSH アクセスの削除
 
-終了したら、SSH セッションを `exit` し、対話型のコンテナー セッションを `exit` します。 このコンテナー セッションを終了すると、AKS クラスターからの SSH アクセスに使用されたポッドが削除されます。
+終了したら、SSH セッションを `exit` し、ポートからの転送をすべて停止し、対話型のコンテナー セッションを `exit` します。 対話型のコンテナー セッションを終了すると、AKS クラスターからの SSH アクセスに使用されたポッドが削除されます。
 
 ## <a name="next-steps"></a>次のステップ
 

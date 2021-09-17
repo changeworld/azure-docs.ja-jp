@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 07/13/2021
 ms.custom: mvc, cli-validate, seodec18, devx-track-js, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: ee40828bcb83d81aee7f1ece06971decf8143370
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 7338e5c8ef1e3f1fce6242b62153dd492de9e3a2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113767444"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746023"
 ---
 # <a name="tutorial-build-a-nodejs-and-mongodb-app-in-azure"></a>チュートリアル:Azure で Node.js と MongoDB のアプリを構築する
 
@@ -101,7 +101,7 @@ MEAN サンプル アプリケーションでは、ユーザー データをデ�
 
 この手順では、Azure で MongoDB データベースを作成します。 アプリを Azure にデプロイすると、このクラウド データベースがアプリで使用されます。
 
-このチュートリアルでは、MongoDB に [Azure Cosmos DB](/azure/cosmos-db/) を使用します。 Cosmos DB は MongoDB のクライアント接続をサポートします。
+このチュートリアルでは、MongoDB に [Azure Cosmos DB](../cosmos-db/index.yml) を使用します。 Cosmos DB は MongoDB のクライアント接続をサポートします。
 
 ### <a name="create-a-resource-group"></a>リソース グループを作成する
 
@@ -579,5 +579,5 @@ az webapp log tail --name <app-name> --resource-group myResourceGroup
 
 または、他のリソースを参照してください。
 
-> [!div class="nextstepaction"]
-> [Node.js アプリの構成](configure-language-nodejs.md)
+- [Node.js アプリの構成](configure-language-nodejs.md)
+- [環境変数とアプリ設定のリファレンス](reference-app-settings.md)

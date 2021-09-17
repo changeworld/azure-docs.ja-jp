@@ -1,15 +1,14 @@
 ---
 title: Azure portal でダッシュボードを作成する
 description: この記事では、Azure portal でダッシュボードを作成およびカスタマイズする方法について説明します。
-ms.assetid: ff422f36-47d2-409b-8a19-02e24b03ffe7
 ms.topic: how-to
-ms.date: 05/12/2021
-ms.openlocfilehash: 0de3e30d2a27d131c13b2df94b1462b6e89b48e3
-ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
+ms.date: 08/19/2021
+ms.openlocfilehash: af26cc36f73088c9a4231e59f3414efaa828d452
+ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/13/2021
-ms.locfileid: "109846203"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122597722"
 ---
 # <a name="create-a-dashboard-in-the-azure-portal"></a>Azure portal でダッシュボードを作成する
 
@@ -30,11 +29,11 @@ Azure portal には、出発点として既定のダッシュボードが用意�
 
 1. Azure portal メニューから、 **[ダッシュボード]** を選択します。 既定のビューがダッシュボードに既に設定されています。
 
-    ![[ダッシュボード] が選択されている Azure portal のスクリーンショット。](./media/azure-portal-dashboards/portal-menu-dashboard.png)
+    :::image type="content" source="media/azure-portal-dashboards/portal-menu-dashboard.png" alt-text="[ダッシュボード] が選択されている Azure portal のスクリーンショット。":::
 
 1. **[新しいダッシュボード ]** 、 **[空のダッシュボード]** の順に選択します。
 
-    ![[新しいダッシュボード] オプションのスクリーンショット。](./media/azure-portal-dashboards/create-new-dashboard.png)
+    :::image type="content" source="media/azure-portal-dashboards/create-new-dashboard.png" alt-text="[新しいダッシュボード] オプションのスクリーンショット。":::
 
     この操作により、タイルを選択できる **[タイル ギャラリー]** と、タイルを配置する空のグリッドが開きます。
 
@@ -56,7 +55,7 @@ Azure portal には、出発点として既定のダッシュボードが用意�
 
 1. ダッシュボードのページ ヘッダーの ![編集アイコン](./media/azure-portal-dashboards/dashboard-edit-icon.png) **[編集]** を選択します。
 
-    ![[編集] オプションが強調表示されたダッシュボードのスクリーンショット。](./media/azure-portal-dashboards/dashboard-edit.png)
+    :::image type="content" source="media/azure-portal-dashboards/dashboard-edit.png" alt-text="[編集] オプションが強調表示されたダッシュボードのスクリーンショット。":::
 
 1. **[タイル ギャラリー]** を参照するか、検索フィールドを使用して特定のタイルを見つけます。 ダッシュボードに追加するタイルを選択します。
 
@@ -131,7 +130,7 @@ Azure portal には、出発点として既定のダッシュボードが用意�
 
 一部のタイルには必要な情報を表示するため詳細な構成が必要となる場合があります。 たとえば、 **[メトリックのグラフ]** タイルは、Azure Monitor のメトリックを表示するように設定する必要があります。 また、タイル データをカスタマイズして、ダッシュボードの既定である時刻の設定とフィルターをオーバーライドすることもできます。
 
-## <a name="complete-tile-configuration"></a>タイルの構成を完了する
+### <a name="complete-tile-configuration"></a>タイルの構成を完了する
 
 設定が必要なタイルには、タイルをカスタマイズするまでバナーが表示されます。 たとえば、**メトリック グラフ** では、バナーに **[メトリックで編集]** と表示されます。 他のバナーでは、 **[タイルの構成]** などの異なるテキストが使用される場合があります。
 
@@ -141,7 +140,7 @@ Azure portal には、出発点として既定のダッシュボードが用意�
 
 1. バナーを選択し、必要な設定を行います。
 
-    ![構成が必要なタイルのスクリーンショット。](./media/azure-portal-dashboards/dashboard-configure-tile.png)
+    :::image type="content" source="media/azure-portal-dashboards/dashboard-configure-tile.png" alt-text="構成が必要なタイルのスクリーンショット。":::
 
 ### <a name="customize-time-span-for-a-tile"></a>タイルの期間をカスタマイズする
 
@@ -149,11 +148,11 @@ Azure portal には、出発点として既定のダッシュボードが用意�
 
 1. コンテキスト メニューから **[タイル データのカスタマイズ]** を選択するか、タイルの左上隅の![フィルター アイコン](./media/azure-portal-dashboards/dashboard-filter.png)を選択します。
 
-    ![タイルのコンテキスト メニューのスクリーンショット。](./media/azure-portal-dashboards/dashboard-customize-tile-data.png)
+    :::image type="content" source="media/azure-portal-dashboards/dashboard-customize-tile-data.png" alt-text="タイルのコンテキスト メニューのスクリーンショット。":::
 
 1. **[タイル レベルでのダッシュボード時刻の設定を上書きします]** チェックボックスをオンにします。
 
-    ![タイルの時間設定を構成するためのダイアログのスクリーンショット。](./media/azure-portal-dashboards/dashboard-override-time-settings.png)
+    :::image type="content" source="media/azure-portal-dashboards/dashboard-override-time-settings.png" alt-text="タイルの時間設定を構成するためのダイアログのスクリーンショット。":::
 
 1. このタイルに表示する期間を選択します。 過去 30 分から過去 30 日までの範囲の中から選択することも、カスタム範囲を定義することもできます。
 
@@ -161,6 +160,16 @@ Azure portal には、出発点として既定のダッシュボードが用意�
 
 1. **[適用]** を選択します。
 
+### <a name="change-the-title-and-subtitle-of-a-tile"></a>タイルのタイトルとサブタイトルを変更する
+
+タイルによっては、タイトルとサブタイトルを編集できます。 これを行うには、コンテキストメニューから **[タイル設定の構成]** を選択します。
+
+:::image type="content" source="media/azure-portal-dashboards/dashboard-tile-rename.png" alt-text="[タイル設定の構成]"::: オプションを示すスクリーンショット。
+
+タイルのタイトルやサブタイトルに変更を加え、 **[適用]** を選択します。
+
+:::image type="content" source="media/azure-portal-dashboards/dashboard-title-subtitle.png" alt-text="タイルのタイトルとサブタイトルを変更する方法を示すスクリーンショット。":::
+ 
 ## <a name="delete-a-tile"></a>タイルを削除する
 
 ダッシュボードからタイルを削除するには、次のいずれかの操作を行います。
@@ -169,7 +178,7 @@ Azure portal には、出発点として既定のダッシュボードが用意�
 
 - ![編集アイコン](./media/azure-portal-dashboards/dashboard-edit-icon.png) **[編集]** を選択して、カスタマイズ モードに切り替えます。 タイルの右上隅にマウス ポインターを移動し、![削除アイコン](./media/azure-portal-dashboards/dashboard-delete-icon.png) 削除アイコンを選択してダッシュボードからタイルを削除します。
 
-   ![ダッシュボードからタイルを削除する方法を示すスクリーンショット。](./media/azure-portal-dashboards/dashboard-delete-tile.png)
+    :::image type="content" source="media/azure-portal-dashboards/dashboard-delete-tile.png" alt-text="ダッシュボードからタイルを削除する方法を示すスクリーンショット。":::
 
 ## <a name="clone-a-dashboard"></a>ダッシュボードを複製する
 
@@ -195,11 +204,11 @@ Azure portal には、出発点として既定のダッシュボードが用意�
 
     1. **[すべてのダッシュボードを参照]** を選択します。
 
-        ![ダッシュボード選択メニューのスクリーンショット](./media/azure-portal-dashboards/dashboard-browse.png)
+        :::image type="content" source="media/azure-portal-dashboards/dashboard-browse.png" alt-text="ダッシュボード選択メニューのスクリーンショット。":::
 
     1. **[種類]** フィールドで、 **[共有ダッシュボード]** を選択します。
 
-        ![すべてのダッシュボード選択メニューのスクリーンショット](./media/azure-portal-dashboards/dashboard-browse-all.png)
+        :::image type="content" source="media/azure-portal-dashboards/dashboard-browse-all.png" alt-text="すべてのダッシュボード選択メニューのスクリーンショット。":::
 
     1. 1 つ以上のサブスクリプションを選択します。 テキストを入力して、ダッシュボードを名前でフィルター処理することもできます。
 
@@ -215,7 +224,7 @@ Azure portal には、出発点として既定のダッシュボードが用意�
 
 1. プライベート ダッシュボードの場合は、確認ダイアログで **[OK]** をクリックしてダッシュボードを削除します。 共有ダッシュボードの場合は、確認ダイアログで、この発行済みのダッシュボードが他のユーザーに表示されなくなることを確認するチェックボックスをオンにします。 **[OK]** をクリックします。
 
-    ![削除の確認のスクリーンショット。](./media/azure-portal-dashboards/dashboard-delete-dash.png)
+    :::image type="content" source="media/azure-portal-dashboards/dashboard-delete-dash.png" alt-text="削除の確認のスクリーンショット。":::
 
 ## <a name="recover-a-deleted-dashboard"></a>削除されたダッシュボードの復旧
 

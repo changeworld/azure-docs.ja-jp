@@ -1,45 +1,47 @@
 ---
-title: Azure Logic Apps の組み込みのトリガーとアクション
+title: 組み込みのトリガーとアクション
 description: 組み込みのトリガーとアクションを使用することで、Azure Logic Apps を使用して、アプリ、データ、サービス、システムを統合する自動ワークフローを作成し、ワークフローを制御し、データを管理します。
 services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: conceptual
-ms.date: 06/16/2021
-ms.openlocfilehash: c98263500651447ddc4a9962f2e1ac10d9927502
-ms.sourcegitcommit: aaaa6ee55f5843ed69944f5c3869368e54793b48
+ms.date: 08/16/2021
+ms.openlocfilehash: 83800e088599bca0023d734bba52b6ed3207f0a3
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113664937"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122515341"
 ---
-# <a name="built-in-triggers-and-actions-for-logic-apps"></a>Logic Apps の組み込みのトリガーとアクション
+# <a name="built-in-triggers-and-actions-in-azure-logic-apps"></a>Azure Logic Apps の組み込みのトリガーとアクション
 
-[組み込みのトリガーとアクション](apis-list.md)により、[ワークフローのスケジュールと構造の制御](#control-workflow)、[独自のコードの実行](#run-code-from-workflows)、[データの管理または操作](#manage-or-manipulate-data)、ワークフロー内の他のタスクの実行を行う手段が提供されます。 [マネージド コネクタ](managed.md)とは異なり、多くの組み込み操作は、特定のサービス、システム、またはプロトコルに関連付けられていません。 たとえば、繰り返しトリガーを使用すると、ほぼどのようなワークフローでもスケジュールに従って開始できます。 または、要求トリガーを使用することで、呼び出されるまでワークフローを待機させることもできます。 すべての組み込み操作は Logic Apps サービスでネイティブに実行され、ほとんどの場合、その使用前に接続を作成する必要はありません。
+[組み込みのトリガーとアクション](apis-list.md)により、[ワークフローのスケジュールと構造の制御](#control-workflow)、[独自のコードの実行](#run-code-from-workflows)、[データの管理または操作](#manage-or-manipulate-data)、ワークフロー内の他のタスクの実行を行う手段が提供されます。 [マネージド コネクタ](managed.md)とは異なり、多くの組み込み操作は、特定のサービス、システム、またはプロトコルに関連付けられていません。 たとえば、繰り返しトリガーを使用すると、ほぼどのようなワークフローでもスケジュールに従って開始できます。 または、要求トリガーを使用することで、呼び出されるまでワークフローを待機させることもできます。 すべての組み込み操作は Azure Logic Apps でネイティブに実行され、ほとんどの場合、その使用前に接続を作成する必要はありません。
 
-また、Logic Apps には、Azure Service Bus、Azure Functions、Azure Blob、Azure App Services、Azure API Management、SQL、AS2 など、少数のサービス、システム、プロトコルの場合、組み込み操作も用意されています。 数と範囲は、マルチテナント ロジック アプリとシングルテナント ロジック アプリのどちらを作成するかによって異なります。 一部のケースでは、組み込みバージョンとマネージド コネクタ バージョンの両方を使用できます。 ほとんどの場合、組み込みのバージョンの方がパフォーマンス、機能、価格などに優れています。 たとえば、[AS2 プロトコルを使用して B2B メッセージを交換](../logic-apps/logic-apps-enterprise-integration-as2.md)する場合、(非推奨の) マネージド コネクタ バージョンでのみ使用できる追跡機能が必要でなければ、組み込みバージョンを選択してください。
+より少数のサービス、システム、プロトコルの場合、Azure Logic Apps には、Azure App Services、Azure Functions、Azure API Management と、他の Azure Logic Apps ロジック アプリ ワークフローの呼び出し用などの組み込みの操作が用意されています。 使用できる数と範囲は、マルチテナントの Azure Logic Apps で実行される従量課金プランベースのロジック アプリ リソースを作成するか、シングル テナントの Azure Logic Apps で実行する Standard プランベースのロジック アプリ リソースを作成するかによって異なります。 詳細については、[シングルテナントとマルチテナント、および統合サービス環境 (ISE)](../logic-apps/single-tenant-overview-compare.md) に関するページを参照してください。 ほとんどの場合、組み込みのバージョンの方がパフォーマンス、機能、価格などに優れています。
 
-数と範囲は、マルチテナント ロジック アプリとシングルテナント ロジック アプリのどちらを作成するかによって異なります。 一部のケースでは、組み込みバージョンとマネージド コネクタ バージョンの両方を使用できます。 ほとんどの場合、組み込みのバージョンの方がパフォーマンス、機能、価格などに優れています。 たとえば、[AS2 プロトコルを使用して B2B メッセージを交換](../logic-apps/logic-apps-enterprise-integration-as2.md)する場合、(非推奨の) マネージド コネクタ バージョンでのみ使用できる追跡機能が必要でなければ、組み込みバージョンを選択してください。
+たとえば、シングル テナント ロジック アプリを作成する場合、少数のサービス (具体的には Azure Service Bus、Azure Event Hubs、SQL Server、DB2、MQ) には、組み込みの操作と[マネージド コネクタ操作](managed.md)の両方を使用できます。 まれに、組み込みの操作を 1 つの環境でのみ使用できる場合があります。たとえば、現在、フラット ファイルはマルチテナントでのみ使用できますが、IBM ホスト ファイルはシングルテナントでのみ使用できます。 ほとんどの場合、組み込みのバージョンの方がパフォーマンス、機能、価格などに優れています。
 
+次の一覧では、[組み込みのトリガーとアクション](#general-built-in-triggers-and-actions)で実行できるタスクの一部についてのみ説明します。
 
-たとえば、シングルテナントのロジックアプリを作成する場合は、Azure Service Bus、Azure Event Hubs、SQL Server、MQ で組み込みの操作を使用できます。 一部のケースでは、組み込みバージョンとマネージド コネクタ バージョンの両方を使用できます。 ほとんどの場合、組み込みのバージョンの方がパフォーマンス、機能、価格などに優れています。 たとえば、[AS2 プロトコルを使用して B2B メッセージを交換](../logic-apps/logic-apps-enterprise-integration-as2.md)する場合、(非推奨の) マネージド コネクタ バージョンでのみ使用できる追跡機能が必要でなければ、組み込みバージョンを選択してください。
+- カスタムおよび詳細なスケジュールを使用してワークフローを実行します。 スケジュール設定の詳細については、[Azure Logic Apps のコネクタの概要にある「繰り返しの動作」セクション](apis-list.md#recurrence-behavior)を参照してください。
 
-次の一覧では、[組み込みのトリガーとアクション](#understand-triggers-and-actions)で実行できるタスクの一部についてのみ説明します。
-
-- カスタムおよび詳細なスケジュールを使用してワークフローを実行します。 スケジュール設定の詳細については、[Logic Apps コネクタの概要にある「繰り返しの動作」セクション](apis-list.md#recurrence-behavior)を参照してください。
 - ワークフローの構造を、たとえばループと条件を使用して、整理および制御します。
+
 - 変数、日付、データ操作、コンテンツ変換、バッチ操作を処理します。
+
 - HTTP トリガーとアクションを使用して、他のエンドポイントと通信します。
+
 - 要求を受信して応答します。
-- 独自の関数 (Azure Functions)、Web アプリ (Azure App Services)、API (Azure API Management)、要求を受け取ることができる他の Logic Apps ワークフローなどを呼び出します。
 
-## <a name="understand-triggers-and-actions"></a>トリガーとアクションを理解する
+- 独自の関数 (Azure Functions)、Web アプリ (Azure App Services)、API (Azure API Management)、要求を受け取ることができる他の Azure Logic Apps ワークフローなどを呼び出します。
 
-Logic Apps には、次の組み込みのトリガーとアクションが用意されています。
+## <a name="general-built-in-triggers-and-actions"></a>汎用の組み込みのトリガーとアクション
+
+Azure Logic Apps には、次の組み込みのトリガーとアクションが用意されています。
 
 :::row:::
     :::column:::
-        [![Logic Apps 内のスケジュールのアイコン][schedule-icon]][schedule-doc]
+        [![スケジュール アイコン][schedule-icon]][schedule-doc]
         \
         \
         [**スケジュール**][schedule-doc]
@@ -57,21 +59,21 @@ Logic Apps には、次の組み込みのトリガーとアクションが用意
         [**延期期限**][schedule-delay-until-doc]: 指定された日時までワークフローを一時停止します。
     :::column-end:::
     :::column:::
-        [![Logic Apps 内の HTTP のアイコン][http-icon]][http-doc]
+        [![HTTP トリガーとアクション アイコン][http-icon]][http-doc]
         \
         \
         [**HTTP**][http-doc]
         \
         \
-        HTTP トリガーまたはアクションを使用して、HTTP または HTTPS エンドポイントを呼び出します。 
+        HTTP トリガーまたはアクションを使用して、HTTP または HTTPS エンドポイントを呼び出します。
         \
         \
-        こちらの他の組み込みの HTTP トリガーとアクションを使用することもできます。 
+        こちらの他の組み込みの HTTP トリガーとアクションを使用することもできます。
         - [HTTP + Swagger][http-swagger-doc]
         - [HTTP および Webhook][http-webhook-doc]
     :::column-end:::
     :::column:::
-        [![要求のアイコン][http-request-icon]][http-request-doc]
+        [![要求トリガー アイコン][http-request-icon]][http-request-doc]
         \
         \
         [**要求**][http-request-doc]
@@ -83,7 +85,7 @@ Logic Apps には、次の組み込みのトリガーとアクションが用意
         [**応答**][http-request-doc]: 同じワークフローで **[HTTP 要求の受信時]** トリガーによって受信された要求に応答します。
     :::column-end:::
     :::column:::
-        [![Logic Apps 内のバッチのアイコン][batch-icon]][batch-doc]
+        [![バッチ アイコン][batch-icon]][batch-doc]
         \
         \
         [**バッチ**][batch-doc]
@@ -95,9 +97,14 @@ Logic Apps には、次の組み込みのトリガーとアクションが用意
         [**バッチ処理するメッセージの送信**][batch-doc]: **[メッセージのバッチ処理]** トリガーで現在開始されている既存のワークフローを呼び出します。
     :::column-end:::
 :::row-end:::
+
+## <a name="service-based-built-in-trigger-and-actions"></a>サービスベースの組み込みのトリガーとアクション
+
+Azure Logic Apps には、次のサービス用の組み込みアクションが用意されています。
+
 :::row:::
     :::column:::
-        [![Logic Apps 内の Azure API Management のアイコン][azure-api-management-icon]][azure-api-management-doc]
+        [![Azure API Management アイコン][azure-api-management-icon]][azure-api-management-doc]
         \
         \
         [**Azure API Management**][azure-api-management-doc]
@@ -106,7 +113,7 @@ Logic Apps には、次の組み込みのトリガーとアクションが用意
         [Azure API Management](../api-management/api-management-key-concepts.md) を使用して、定義、管理、発行する API で独自のトリガーとアクションを呼び出します。 <p><p>**注**: [API Management で従量課金レベル](../api-management/api-management-features.md)を使用している場合はサポートされません。
     :::column-end:::
     :::column:::
-        [![Logic Apps 内の Azure App Service のアイコン][azure-app-services-icon]][azure-app-services-doc]
+        [![Azure App Services アイコン][azure-app-services-icon]][azure-app-services-doc]
         \
         \
         [**Azure App Services**][azure-app-services-doc]
@@ -118,7 +125,7 @@ Logic Apps には、次の組み込みのトリガーとアクションが用意
         Swagger が含まれている場合、Azure Logic Apps では、これらのアプリで定義されているトリガーとアクションは、他のファースト クラスのトリガーとアクションのように表示されます。
     :::column-end:::
     :::column:::
-        [![Logic Apps 内の Azure Logic Apps のアイコン][azure-logic-apps-icon]][nested-logic-app-doc]
+        [![Azure Logic Apps アイコン][azure-logic-apps-icon]][nested-logic-app-doc]
         \
         \
         [**Azure Logic Apps**][nested-logic-app-doc]
@@ -127,7 +134,7 @@ Logic Apps には、次の組み込みのトリガーとアクションが用意
         **[HTTP 要求の受信時]** という名前の要求トリガーで始まる他のワークフローを呼び出します。
     :::column-end:::
     :::column:::
-        [![Logic Apps の SQL Server アイコン][sql-server-icon]][sql-server-doc]
+        [![SQL Server アイコン][sql-server-icon]][sql-server-doc]
         \
         \
         [**SQL Server**][sql-server-doc] <br>(*シングルテナントのみ*)     \
@@ -138,11 +145,11 @@ Logic Apps には、次の組み込みのトリガーとアクションが用意
 
 ## <a name="run-code-from-workflows"></a>ワークフローからコードを実行する
 
-Logic Apps には、ワークフローで独自のコードを実行するための組み込みアクションが用意されています。
+Azure Logic Apps には、ワークフローで独自のコードを実行するために次の組み込みアクションが用意されています。
 
 :::row:::
     :::column:::
-        [![Logic Apps 内の Azure Functions のアイコン][azure-functions-icon]][azure-functions-doc]
+        [![Azure Functions アイコン][azure-functions-icon]][azure-functions-doc]
         \
         \
         [**Azure 関数**][azure-functions-doc]
@@ -151,7 +158,7 @@ Logic Apps には、ワークフローで独自のコードを実行するため
         [Azure でホストされている関数](../azure-functions/functions-overview.md)を呼び出して、ワークフロー内で独自の "*コード スニペット*" (C# または Node.js) を実行します。
     :::column-end:::
     :::column:::
-        [![Logic Apps 内のインライン コードのアイコン][inline-code-icon]][inline-code-doc]
+        [![インライン コード アクション アイコン][inline-code-icon]][inline-code-doc]
         \
         \
         [**インライン コード**][inline-code-doc]
@@ -167,11 +174,11 @@ Logic Apps には、ワークフローで独自のコードを実行するため
 
 ## <a name="control-workflow"></a>ワークフローを制御する
 
-Logic Apps では、ワークフローでアクションを構成および制御するための組み込みアクションが提供されています。
+Azure Logic Apps には、ワークフローでアクションを構成および制御するための次の組み込みアクションが用意されています。
 
 :::row:::
     :::column:::
-        [![Logic Apps 内の Condition アクションのアイコン][condition-icon]][condition-doc]
+        [![条件アクション アイコン][condition-icon]][condition-doc]
         \
         \
         [**Condition**][condition-doc]
@@ -180,7 +187,7 @@ Logic Apps では、ワークフローでアクションを構成および制御
         条件を評価し、条件が true と false のいずれであるかに基づいて、さまざまなアクションを実行します。
     :::column-end:::
     :::column:::
-        [![Logic Apps 内の For Each アクションのアイコン][for-each-icon]][for-each-doc]
+        [![For Each アクション アイコン][for-each-icon]][for-each-doc]
         \
         \
         [**For Each**][for-each-doc]
@@ -189,7 +196,7 @@ Logic Apps では、ワークフローでアクションを構成および制御
         配列内のすべての項目に対して同じアクションを実行します。
     :::column-end:::
     :::column:::
-        [![Logic Apps 内の Scope アクションのアイコン][scope-icon]][scope-doc]
+        [![スコープ アクション アイコン][scope-icon]][scope-doc]
         \
         \
         [**Name**][scope-doc]
@@ -198,7 +205,7 @@ Logic Apps では、ワークフローでアクションを構成および制御
         アクションを *スコープ* にグループ化します。スコープ内のアクションが実行を完了すると、スコープ独自のステータスが取得されます。
     :::column-end:::
     :::column:::
-        [![Logic Apps 内の Switch アクションのアイコン][switch-icon]][switch-doc]
+        [![switch アクション アイコン][switch-icon]][switch-doc]
         \
         \
         [**Switch**][switch-doc]
@@ -209,16 +216,16 @@ Logic Apps では、ワークフローでアクションを構成および制御
 :::row-end:::
 :::row:::
     :::column:::
-        [![Logic Apps 内の Terminate アクションのアイコン][terminate-icon]][terminate-doc]
+        [![終了アクション アイコン][terminate-icon]][terminate-doc]
         \
         \
         [**Terminate**][terminate-doc]
         \
         \
-        アクティブに実行中のロジック アプリ ワークフローを停止します。 
+        アクティブに実行中のロジック アプリ ワークフローを停止します。
     :::column-end:::
     :::column:::
-        [![Logic Apps 内の Until アクションのアイコン][until-icon]][until-doc]
+        [![Until アクション アイコン][until-icon]][until-doc]
         \
         \
         [**Until**][until-doc]
@@ -234,41 +241,41 @@ Logic Apps では、ワークフローでアクションを構成および制御
 
 ## <a name="manage-or-manipulate-data"></a>データを管理または操作する
 
-Logic Apps では、データ出力とその形式を操作するための組み込みアクションが提供されています。
+Azure Logic Apps には、データ出力とその形式を操作するための次の組み込みアクションが用意されています。
 
 :::row:::
     :::column:::
-        [![Logic Apps 内のデータ操作アクションのアイコン][data-operations-icon]][data-operations-doc]
+        [![データ操作アイコン][data-operations-icon]][data-operations-doc]
         \
         \
         [**データ操作**][data-operations-doc]
         \
         \
-        データの操作を実行します。 
+        データの操作を実行します。
         \
         \
-        **作成**: さまざまな型の複数の入力から単一の出力を作成します。 
+        **作成**: さまざまな型の複数の入力から単一の出力を作成します。
         \
         \
-        **CSV テーブルの作成**: JSON オブジェクトの配列からコンマ区切り値 (CSV) テーブルを作成します。 
+        **CSV テーブルの作成**: JSON オブジェクトの配列からコンマ区切り値 (CSV) テーブルを作成します。
         \
         \
-        **HTML テーブルの作成**: JSON オブジェクトの配列から HTML テーブルを作成します。 
+        **HTML テーブルの作成**: JSON オブジェクトの配列から HTML テーブルを作成します。
         \
         \
-        **アレイのフィルター処理**: 別の配列内にある、条件を満たす項目から配列を作成します。 
+        **アレイのフィルター処理**: 別の配列内にある、条件を満たす項目から配列を作成します。
         \
         \
-        **結合**: 配列内のすべての項目から 1 つの文字列を作成し、それらの項目を指定の区切り記号で区切ります。 
+        **結合**: 配列内のすべての項目から 1 つの文字列を作成し、それらの項目を指定の区切り記号で区切ります。
         \
         \
-        **JSON の解析**: JSON コンテンツ内のプロパティとその値からわかりやすいトークンを作成して、ユーザーがそれらのプロパティをワークフロー内で使用できるようにします。 
+        **JSON の解析**: JSON コンテンツ内のプロパティとその値からわかりやすいトークンを作成して、ユーザーがそれらのプロパティをワークフロー内で使用できるようにします。
         \
         \
         **Select**:別の配列内の項目または値を変換し、それらの項目を指定のプロパティにマッピングすることにより、JSON オブジェクトで配列を作成します。
     :::column-end:::
     :::column:::
-        ![Logic Apps 内の日付と時刻アクションのアイコン][date-time-icon]
+        ![日時日付/時刻アクション アイコン][date-time-icon]
         \
         \
         **日付と時刻**
@@ -277,25 +284,25 @@ Logic Apps では、データ出力とその形式を操作するための組み
         タイムスタンプの操作を実行します。
         \
         \
-        **時間への追加**: 指定した数の単位をタイムスタンプに追加します。 
+        **時間への追加**: 指定した数の単位をタイムスタンプに追加します。
         \
         \
-        **タイム ゾーンの変換**: タイムスタンプをソース タイム ゾーンからターゲット タイム ゾーンに変換します。 
+        **タイム ゾーンの変換**: タイムスタンプをソース タイム ゾーンからターゲット タイム ゾーンに変換します。
         \
         \
-        **現在の時刻**: 現在のタイムスタンプを文字列として返します。 
+        **現在の時刻**: 現在のタイムスタンプを文字列として返します。
         \
         \
-        **未来の時間の取得**: 現在のタイムスタンプに指定した時刻単位を加えて返します。 
+        **未来の時間の取得**: 現在のタイムスタンプに指定した時刻単位を加えて返します。
         \
         \
-        **過去の時間の取得**: 現在のタイムスタンプから指定した時刻単位を引いて返します。 
+        **過去の時間の取得**: 現在のタイムスタンプから指定した時刻単位を引いて返します。
         \
         \
         **時間からの減算**: タイムスタンプから時間単位数を減算します。
     :::column-end:::
     :::column:::
-        [![Logic Apps 内の変数アクションのアイコン][variables-icon]][variables-doc]
+        [![変数アクション アイコン][variables-icon]][variables-doc]
         \
         \
         [**変数**][variables-doc]
@@ -304,7 +311,7 @@ Logic Apps では、データ出力とその形式を操作するための組み
         変数の操作を実行します。
         \
         \
-        **配列変数に追加**: 変数によって保管される配列内に、値を最後の項目として挿入します。 
+        **配列変数に追加**: 変数によって保管される配列内に、値を最後の項目として挿入します。
         \
         \
         **文字列変数に追加**: 変数によって保管される文字列内に、値を最後の文字として挿入します。
@@ -313,22 +320,90 @@ Logic Apps では、データ出力とその形式を操作するための組み
         **変数の値を減らす**: 変数の値を一定値だけ減らします。
         \
         \
-        **変数の値を増やす**: 変数の値を一定値だけ増やします。 
+        **変数の値を増やす**: 変数の値を一定値だけ増やします。
         \
         \
-        **変数を初期化する**: 変数を作成し、そのデータ型と初期値を宣言します。 
+        **変数を初期化する**: 変数を作成し、そのデータ型と初期値を宣言します。
         \
         \
-        **変数の設定**: 既存の変数に異なる値を代入します。 
+        **変数の設定**: 既存の変数に異なる値を代入します。
     :::column-end:::
     :::column:::
     :::column-end:::
 :::row-end:::
 
-## <a name="next-steps"></a>次のステップ
+## <a name="integration-account-built-in-actions"></a>統合アカウントの組み込みアクション
+
+Azure Logic Apps には、次の組み込みアクションが用意されています。これらは、マルチテナント、従量課金プランベースの Azure Logic Apps を使用する場合に統合アカウントが必要なものと、シングルテナント、Standard プランベースの Azure Logic Apps を使用する場合は統合アカウントが不要なものがあります。
+
+> [!NOTE]
+> マルチテナント、従量課金プランベースの Azure Logic Apps で統合アカウント アクションを使用する前に、[ロジック アプリ リソースを統合アカウントにリンクする](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)必要があります。 ただし、シングルテナント、Standard プランベースの Azure Logic Apps の場合、Liquid 操作や XML 操作など、一部の統合アカウント操作では、ロジック アプリ リソースを統合アカウントにリンクする必要はありません。 これらのアクションを使用するには、Liquid マップ、XML マップ、または XML スキーマが必要です。これらは、Azure portal でのそれぞれのアクションを通じてアップロードすることも、Visual Studio Code プロジェクトの **Artifacts** フォルダーに、それぞれの **Maps** および **Schemas** フォルダーを使用して追加することもできます。
+
+:::row:::
+    :::column:::
+        [![フラット ファイルのデコード アイコン][flat-file-decode-icon]][flat-file-decode-doc]
+        \
+        \
+        [**フラット ファイルのデコード**<br>(*マルチテナントのみ*)][flat-file-decode-doc]
+        \
+        \
+        取引先にコンテンツを送信する前に XML をエンコードします。
+    :::column-end:::
+    :::column:::
+        [![フラット ファイルのエンコード アイコン][flat-file-encode-icon]][flat-file-encode-doc]
+        \
+        \
+        [**フラット ファイルのエンコード**<br>(*マルチテナントのみ*)][flat-file-encode-doc]
+        \
+        \
+        取引先からコンテンツを受け取った後、XML をデコードします。
+    :::column-end:::
+    :::column:::
+        [![統合アカウント アイコン][integration-account-icon]][integration-account-doc]
+        \
+        \
+        [**統合アカウント成果物の検索**<br>(*マルチテナントのみ*)][integration-account-doc]
+        \
+        \
+        統合アカウントの取引先、契約、スキーマなどの成果物のカスタム メタデータを取得します。
+    :::column-end:::
+    :::column:::
+        [![Liquid 操作アイコン][liquid-icon]][json-liquid-transform-doc]
+        \
+        \
+        [**Liquid 操作**][json-liquid-transform-doc]
+        \
+        \
+        Liquid のテンプレートを使用して次の形式を変換します。 <p><p>- JSON から JSON へ <br>- JSON からテキストへ <br>- XML から JSON へ <br>- XML からテキストへ
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![XML の変換アイコン][xml-transform-icon]][xml-transform-doc]
+        \
+        \
+        [**XML の変換**][xml-transform-doc]
+        \
+        \
+        ソースの XML 形式を別の XML 形式に変換します。
+    :::column-end:::
+    :::column:::
+        [![XML 検証アイコン][xml-validate-icon]][xml-validate-doc]
+        \
+        \
+        [**XML 検証**][xml-validate-doc]
+        \
+        \
+        指定されたスキーマに対して XML ドキュメントを検証します。
+    :::column-end:::
+    :::column:::
+    :::column-end:::
+:::row-end:::
+
+## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Logic Apps から呼び出しできるカスタム API の作成](../logic-apps/logic-apps-create-api-app.md)
+> [Azure Logic Apps から呼び出しできるカスタム API を作成する](../logic-apps/logic-apps-create-api-app.md)
 
 <!-- Built-in icons -->
 [azure-api-management-icon]: ./media/apis-list/azure-api-management.png
@@ -354,6 +429,14 @@ Logic Apps では、データ出力とその形式を操作するための組み
 [terminate-icon]: ./media/apis-list/terminate.png
 [until-icon]: ./media/apis-list/until.png
 [variables-icon]: ./media/apis-list/variables.png
+
+<!--Built-in integration account connector icons -->
+[flat-file-encode-icon]: ./media/apis-list/flat-file-encoding.png
+[flat-file-decode-icon]: ./media/apis-list/flat-file-decoding.png
+[integration-account-icon]: ./media/apis-list/integration-account.png
+[liquid-icon]: ./media/apis-list/liquid-transform.png
+[xml-transform-icon]: ./media/apis-list/xml-transform.png
+[xml-validate-icon]: ./media/apis-list/xml-validation.png
 
 <!--Built-in doc links-->
 [azure-api-management-doc]: ../api-management/get-started-create-service-instance.md "API を管理および発行するための Azure API Management サービス インスタンスを作成します。"
@@ -383,3 +466,11 @@ Logic Apps では、データ出力とその形式を操作するための組み
 [terminate-doc]: ../logic-apps/logic-apps-workflow-actions-triggers.md#terminate-action "アクティブに実行中のロジック アプリのワークフローを停止またはキャンセルします。"
 [until-doc]: ../logic-apps/logic-apps-control-flow-loops.md#until-loop "指定された条件が true になるまで、または特定の状態が変化するまで、アクションを繰り返します。"
 [variables-doc]: ../logic-apps/logic-apps-create-variables-store-values.md "変数に対する操作を実行します。たとえば、文字列または配列の変数に対する初期化、設定、増分、減分、追加などです。"
+
+<!--Built-in integration account doc links-->
+[flat-file-decode-doc]:../logic-apps/logic-apps-enterprise-integration-flatfile.md "エンタープライズ統合フラット ファイルについて説明します"
+[flat-file-encode-doc]:../logic-apps/logic-apps-enterprise-integration-flatfile.md "エンタープライズ統合フラット ファイルについて説明します"
+[integration-account-doc]: ../logic-apps/logic-apps-enterprise-integration-metadata.md "統合アカウント アーティファクトのメタデータを管理します"
+[json-liquid-transform-doc]: ../logic-apps/logic-apps-enterprise-integration-liquid-transform.md "Liquid テンプレートを使用して JSON を変換します"
+[xml-transform-doc]: ../logic-apps/logic-apps-enterprise-integration-transform.md "XML メッセージ変換します"
+[xml-validate-doc]: ../logic-apps/logic-apps-enterprise-integration-xml-validation.md "XML メッセージを検証します"

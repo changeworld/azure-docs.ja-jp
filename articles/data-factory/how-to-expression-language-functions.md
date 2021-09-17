@@ -5,14 +5,15 @@ author: ssabat
 ms.author: susabat
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: orchestration
 ms.topic: conceptual
 ms.date: 03/08/2020
-ms.openlocfilehash: c9e1abc5fb6f66981f56bc262319587d9fc4265e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 41689a842bff067fb36dd97f980c10b71e533f8d
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105566661"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122446213"
 ---
 # <a name="how-to-use-parameters-expressions-and-functions-in-azure-data-factory"></a>Azure Data Factory でパラメーター、式、関数を使用する方法
 
@@ -25,7 +26,7 @@ ms.locfileid: "105566661"
 
 ## <a name="azure-data-factory-ui-and-parameters"></a>Azure Data Factory UI とパラメーター
 
-ADF ユーザー インターフェイスで Azure Data Factory パラメーターを初めて使用する場合は、視覚的な説明として[リンクされたサービス用の Data Factory UI](./parameterize-linked-services.md#data-factory-ui) と[パラメーターを備えたメタデータ ドリブン パイプライン用の Data Factory UI](./how-to-use-trigger-parameterization.md#data-factory-ui) に関するページをご覧ください。
+ADF ユーザー インターフェイスで Azure Data Factory パラメーターを初めて使用する場合は、視覚的な説明として[リンクされたサービス用の Data Factory UI](./parameterize-linked-services.md#ui-experience) と[パラメーターを備えたメタデータ ドリブン パイプライン用の Data Factory UI](./how-to-use-trigger-parameterization.md#data-factory-ui) に関するページをご覧ください。
 
 ## <a name="parameter-and-expression-concepts"></a>パラメーターと式の概念 
 

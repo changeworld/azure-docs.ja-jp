@@ -9,21 +9,20 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: ee861896020f41dd841f538f546242a65992b8d3
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: 5d795debd6701c2d2d579a5558fc0631b732e66a
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113364747"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122442449"
 ---
 .NET 用 Face クライアント ライブラリを使用して顔認識を開始します。 以下の手順に従って、パッケージをインストールし、基本タスクのコード例を試してみましょう。 Face サービスは、画像内の人間の顔を検出および認識するための高度なアルゴリズムへのアクセスを提供します。
 
 .NET 用 Face クライアント ライブラリは、次の目的で使用します。
 
-* [画像内の顔を検出する](#detect-faces-in-an-image)
-* [似た顔を探す](#find-similar-faces)
-* [PersonGroup を作成する](#create-a-persongroup)
+* [顔を検出して分析する](#detect-and-analyze-faces)
 * [顔を識別する](#identify-a-face)
+* [似た顔を探す](#find-similar-faces)
 
 [リファレンスのドキュメント](/dotnet/api/overview/azure/cognitiveservices/face-readme) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.Face) | [パッケージ (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.7.0-preview.1) | [サンプル](/samples/browse/?products=azure&term=face)
 
@@ -32,6 +31,7 @@ ms.locfileid: "113364747"
 
 * Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services/)
 * [Visual Studio IDE](https://visualstudio.microsoft.com/vs/) または現在のバージョンの [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)。
+* [!INCLUDE [contributor-requirement](../../../includes/quickstarts/contributor-requirement.md)]
 * Azure サブスクリプションを入手したら、Azure portal で <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title="Face リソースを作成"  target="_blank">Face リソースを作成</a>し、キーとエンドポイントを取得します。 デプロイされたら、 **[リソースに移動]** をクリックします。
     * 対象のアプリケーションを Face API に接続するには、作成したリソースのキーとエンドポイントが必要です。 このクイックスタートで後に示すコードに、自分のキーとエンドポイントを貼り付けます。
     * Free 価格レベル (`F0`) を使用してサービスを試用し、後から運用環境用の有料レベルにアップグレードすることができます。
@@ -122,10 +122,9 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.Face --version 2.7.0
 以下のコード スニペットでは、.NET 用 Face クライアント ライブラリを使用して次のタスクを実行する方法を示しています。
 
 * [クライアントを認証する](#authenticate-the-client)
-* [画像内の顔を検出する](#detect-faces-in-an-image)
-* [似た顔を探す](#find-similar-faces)
-* [PersonGroup を作成する](#create-a-persongroup)
+* [顔を検出して分析する](#detect-and-analyze-faces)
 * [顔を識別する](#identify-a-face)
+* [似た顔を探す](#find-similar-faces)
 
 ## <a name="authenticate-the-client"></a>クライアントを認証する
 
@@ -143,7 +142,8 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.Face --version 2.7.0
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_detect_models)]
 
-## <a name="detect-faces-in-an-image"></a>画像内の顔を検出する
+## <a name="detect-and-analyze-faces"></a>顔を検出して分析する
+顔検出は、その他すべてのシナリオの最初の手順として必要です。 このセクションでは、追加の顔属性データを返す方法について説明します。 顔の識別または検証のためにのみ顔を検出する場合は、後のセクションまでスキップしてください。
 
 ### <a name="get-detected-face-objects"></a>検出された顔オブジェクトを取得する
 
@@ -160,31 +160,11 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.Face --version 2.7.0
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_detect_parse)]
 
-## <a name="find-similar-faces"></a>似た顔の検索
 
-以下のコードでは、検出された顔 (ソース) を 1 つ受け取って、他の顔のセット (ターゲット) から一致するものを見つけます (画像による顔検索)。 一致するものが見つかると、一致した顔の ID がコンソールに出力されます。
-
-### <a name="detect-faces-for-comparison"></a>比較の対象となる顔を検出する
-
-まず、2 つ目の顔検出メソッドを定義します。 顔を比較するためにはまず、画像で顔を検出する必要があります。また、この検出メソッドは比較操作向けに最適化されています。 前のセクションほど詳細には顔の属性を抽出せず、また、別の認識モデルを使用しています。
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_face_detect_recognize)]
-
-### <a name="find-matches"></a>一致するものを探す
-
-次のメソッドでは、一連のターゲット画像と単一のソース画像から顔を検出します。 その後、それらを比較し、ソース画像と似ているターゲット画像をすべて見つけます。
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_find_similar)]
-
-### <a name="print-matches"></a>一致するものを出力する
-
-次のコードは、一致の詳細をコンソールに出力します。
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_find_similar_print)]
 
 ## <a name="identify-a-face"></a>顔を識別する
 
-識別操作では、人物 (1人または複数人) の画像を受け取り、その画像に含まれるそれぞれの顔の同一性を見つけます (顔認識検索)。 検出された顔はそれぞれ、顔の特徴が確認されているさまざまな **Person** オブジェクトのデータベース、つまり **PersonGroup** と比較されます。 識別操作を行うには、最初に **PersonGroup** を作成してトレーニングする必要があります
+識別操作では、1 人の人物 (または複数人) の画像を受け取り、格納されている人物オブジェクトで、画像内のそれぞれの顔に関連付けられているものを見つけ出します (顔認識検索)。 検出された顔はそれぞれ、顔データが確認されているさまざまな **Person** オブジェクトのデータベースである **PersonGroup** と比較されます。 識別操作を行うには、最初に **PersonGroup** を作成してトレーニングする必要があります
 
 ### <a name="create-a-persongroup"></a>PersonGroup を作成する
 
@@ -227,6 +207,30 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.Face --version 2.7.0
 次のコード スニペットは、**IdentifyAsync** 操作を呼び出してその結果をコンソールに出力します。 ここでは、このサービスによって、ソース画像に含まれるそれぞれの顔が、指定された **PersonGroup** 内の **Person** と照合されます。 これにより、識別メソッドが終了します。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_identify)]
+
+
+## <a name="find-similar-faces"></a>似た顔の検索
+
+以下のコードでは、検出された顔 (ソース) を 1 つ受け取って、他の顔のセット (ターゲット) から一致するものを見つけます (画像による顔検索)。 一致するものが見つかると、一致した顔の ID がコンソールに出力されます。
+
+### <a name="detect-faces-for-comparison"></a>比較の対象となる顔を検出する
+
+まず、2 つ目の顔検出メソッドを定義します。 顔を比較するためにはまず、画像で顔を検出する必要があります。また、この検出メソッドは比較操作向けに最適化されています。 前のセクションほど詳細には顔の属性を抽出せず、また、別の認識モデルを使用しています。
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_face_detect_recognize)]
+
+### <a name="find-matches"></a>一致するものを探す
+
+次のメソッドでは、一連のターゲット画像と単一のソース画像から顔を検出します。 その後、それらを比較し、ソース画像と似ているターゲット画像をすべて見つけます。
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_find_similar)]
+
+### <a name="print-matches"></a>一致するものを出力する
+
+次のコードは、一致の詳細をコンソールに出力します。
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_find_similar_print)]
+
 
 ## <a name="run-the-application"></a>アプリケーションの実行
 

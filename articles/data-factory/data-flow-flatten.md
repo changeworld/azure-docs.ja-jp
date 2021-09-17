@@ -1,18 +1,21 @@
 ---
 title: マッピング データ フローのフラット化変換
+titleSuffix: Azure Data Factory & Azure Synapse
 description: フラット化変換を使用して階層データを非正規化します
 author: kromerm
 ms.author: makromer
 ms.review: daperlov
 ms.service: data-factory
+ms.subservice: data-flows
+ms.custom: synapse
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: a0e75957a0ab49394dab56f2b7fb847dee4b43cb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e632260e8af6e4bac9fac9ec43f25bf636b98b4d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "81413675"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638356"
 ---
 # <a name="flatten-transformation-in-mapping-data-flow"></a>マッピング データ フローのフラット化変換
 
@@ -39,6 +42,28 @@ ms.locfileid: "81413675"
 選択変換と同様に、入力フィールドと正規化されていない配列から新しい構造のプロジェクションを選択します。 正規化されていない配列がマップされている場合、出力列は配列と同じデータ型になります。 アンロール配列が、サブ配列を含む複合オブジェクトの配列である場合、そのサブ配列の項目をマッピングすると、配列が出力されます。
 
 マッピングの出力を確認するには、検査タブとデータのプレビューを参照してください。
+
+## <a name="rule-based-mapping"></a>ルールベースのマッピング
+
+フラット化変換では、ルールベースのマッピングがサポートされており、ルールに基づいて配列をフラット化し、階層レベルに基づいて構造体をフラット化する、動的で柔軟な変換を作成できます。
+
+![パターンのフラット化](media/data-flow/flatten-pattern.png "フラット化のパターン")
+
+### <a name="matching-condition"></a>Matching condition (一致条件)
+
+完全一致またはパターンを使用してフラット化する列に対するパターン マッチング条件を入力します。 例: ```like(name,'cust%')```
+
+### <a name="deep-column-traversal"></a>Deep column traversal (ディープ列トラバーサル)
+
+複合オブジェクト全体を列として処理するのではなく、複合オブジェクトのすべてのサブ列を個別に処理するよう ADF に指示するオプションの設定。
+
+### <a name="hierarchy-level"></a>階層レベル
+
+展開する階層のレベルを選択します。
+
+### <a name="name-matches-regex"></a>Name matches (名前一致) (正規表現)
+
+必要に応じて、上の一致条件を使用するのではなく、正規表現として名前の一致を表すには、このボックスを使用します。
 
 ## <a name="examples"></a>例
 

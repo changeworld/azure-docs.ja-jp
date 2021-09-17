@@ -9,39 +9,38 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/28/2020
+ms.date: 08/12/2021
 ms.author: jeedes
-ms.openlocfilehash: 45d7939840f1fd3055f29d3aee677e105890a94d
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: 88336401fa7e351791ecddbaf0b9caf5b3a54bd3
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108802092"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122272187"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-andromeda"></a>チュートリアル: Azure Active Directory と Andromeda の統合
 
-このチュートリアルでは、Andromeda と Azure Active Directory (Azure AD) を統合する方法について説明します。
-Andromeda と Azure AD の統合には、次の利点があります。
+このチュートリアルでは、Andromeda と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と Andromeda を統合すると、次のことができます。
 
-- Andromeda にアクセスするユーザーを Azure AD で管理できます。
-- ユーザーが自分の Azure AD アカウントを使用して Andromeda に自動的にサインイン (シングル サインオン) するように設定できます。
-- 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
+* Andromeda にアクセスできるユーザーを Azure AD で管理します。
+* ユーザーが自分の Azure AD アカウントを使用して Andromeda に自動的にサインインできるようにします。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 ## <a name="prerequisites"></a>前提条件
 
 Andromeda と Azure AD の統合を構成するには、次のものが必要です。
 
-- Azure AD サブスクリプション。 Azure AD の環境がない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます
-- Andromeda でのシングル サインオンが有効なサブスクリプション
+* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
+* Andromeda でのシングル サインオンが有効なサブスクリプション。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-- Andromeda では、**SP と IDP** によって開始される SSO がサポートされます
-- Andromeda では、**Just In Time** ユーザー プロビジョニングがサポートされます
+* Andromeda では、**SP と IDP** によって開始される SSO がサポートされます。
+* Andromeda では、**Just In Time** ユーザー プロビジョニングがサポートされます。
 
-## <a name="adding-andromeda-from-the-gallery"></a>ギャラリーからの Andromeda の追加
+## <a name="add-andromeda-from-the-gallery"></a>ギャラリーからの Andromeda の追加
 
 Azure AD への Andromeda の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Andromeda を追加する必要があります。
 
@@ -75,15 +74,13 @@ Andromeda に対して Azure AD SSO を構成してテストするには、次�
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次のフィールドの値を入力します。
+1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。 
 
    a. **[識別子]** ボックスに、`https://<tenantURL>.ngcxpress.com/` の形式で URL を入力します。
 
    b. **[応答 URL]** ボックスに、`https://<tenantURL>.ngcxpress.com/SAMLConsumer.aspx` のパターンを使用して URL を入力します
 
 1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
-
-   ![このスクリーンショットは、[追加の U R L を設定します] を示しています。ここで、サインオン U R L を入力できます。](common/metadata-upload-additional-signon.png)
 
    **[サインオン URL]** ボックスに、`https://<tenantURL>.ngcxpress.com/SAMLLogon.aspx` という形式で URL を入力します。
 
@@ -92,9 +89,9 @@ Andromeda に対して Azure AD SSO を構成してテストするには、次�
 
 1. Andromeda アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 これらの属性の値は、アプリケーション統合ページの **[ユーザー属性]** セクションで管理できます。 **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** ボタンをクリックして **[ユーザー属性]** ダイアログを開きます。
 
-   ![スクリーンショットは、[Givenname]\(名\) の user.givenname や [Emailaddress]\(メール アドレス\) の user.mail などの [ユーザー属性] を示しています。](common/edit-attribute.png)
+   ![スクリーンショットは [ユーザー属性] を示しています。](common/edit-attribute.png)
 
-   > [!Important]
+   > [!NOTE]
    > これらの設定中に名前空間の定義をクリアします。
 
 1. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、**編集アイコン** を使用して要求を編集するか、 **[新しい要求の追加]** を使用して要求を追加することで、上の図のように SAML トークン属性を構成し、次の手順を実行します。
@@ -164,15 +161,15 @@ Andromeda に対して Azure AD SSO を構成してテストするには、次�
 
 2. メニュー バーの上部にある **[Admin]\(管理者\)** をクリックし、 **[Administration]\(管理\)** に移動します。
 
-   ![Andromeda 管理者](./media/andromedascm-tutorial/tutorial_andromedascm_admin.png)
+   ![Andromeda 管理者。](./media/andromedascm-tutorial/admin.png)
 
 3. ツール バーの左側の **[Interfaces]\(インターフェイス\)** セクションで、 **[SAML Configuration]\(SAML の構成\)** をクリックします。
 
-   ![Andromeda SAML](./media/andromedascm-tutorial/tutorial_andromedascm_saml.png)
+   ![Andromeda SAML。](./media/andromedascm-tutorial/interface.png)
 
 4. **[SAML Configuration]\(SAML の構成\)** セクション ページで、次の手順を実行します。
 
-   ![Andromeda の構成](./media/andromedascm-tutorial/tutorial_andromedascm_config.png)
+   ![Andromeda の構成。](./media/andromedascm-tutorial/configure.png)
 
    a. **[Enable SSO with SAML]\(SAML で SSO を有効にする\)** をオンにします。
 
@@ -188,9 +185,9 @@ Andromeda に対して Azure AD SSO を構成してテストするには、次�
 
    g. Azure Portal からダウンロードした **Base64 でエンコードされた証明書** をメモ帳で開き、 **[X.509 証明書]** ボックスに貼り付けます。
 
-   h. 以下の属性を対応する値にマップし、Azure AD からの SSO ログインを容易にします。 **ユーザー ID** 属性はログインに必要です。 プロビジョニングの場合は、**電子メール**、**会社**、**ユーザーの種類**、**ロール** が必要です。 このセクションでは、Azure Portal 内で定義されている値に関連付ける属性マッピング (名前と値) を定義します。
+   h. 以下の属性を対応する値にマップし、Azure AD からの SSO ログインを容易にします。 **ユーザー ID** 属性はログインに必要です。 プロビジョニングの場合は、**電子メール**、**会社**、**ユーザーの種類**、**ロール** が必要です。 このセクションでは、Azure portal 内で定義されている値に関連付ける属性マッピング (名前と値) を定義します。
 
-   ![Andromeda 属性マップ](./media/andromedascm-tutorial/tutorial_andromedascm_attbmap.png)
+   ![Andromeda の属性。](./media/andromedascm-tutorial/mapping.png)
 
    i. **[保存]** をクリックします。
 
@@ -204,15 +201,15 @@ Andromeda に対して Azure AD SSO を構成してテストするには、次�
 
 #### <a name="sp-initiated"></a>SP Initiated:
 
-- Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Andromeda のサインオン URL にリダイレクトされます。
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Andromeda のサインオン URL にリダイレクトされます。
 
-- Andromeda のサインオン URL に直接移動し、そこからログイン フローを開始します。
+* Andromeda のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
 #### <a name="idp-initiated"></a>IDP Initiated:
 
-- Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した Andromeda に自動的にサインインされます
+* Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した Andromeda に自動的にサインインされます
 
-また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [Andromeda] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Andromeda に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [Andromeda] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Andromeda に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

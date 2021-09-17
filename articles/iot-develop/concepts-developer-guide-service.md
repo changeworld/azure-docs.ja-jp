@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: iot-develop
 services: iot-develop
 zone_pivot_groups: programming-languages-set-ten
-ms.openlocfilehash: 156f2228800ba433012ef95a8ea410ea1ff1223a
-ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.openlocfilehash: 15a381f847082e0853db307cc60893eaeeb43e96
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2021
-ms.locfileid: "114406690"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122604161"
 ---
 # <a name="iot-plug-and-play-service-developer-guide"></a>IoT プラグ アンド プレイ サービス開発者ガイド
 
-IoT プラグ アンド プレイを使用すると、Azure IoT アプリケーションに機能を宣伝するスマート デバイスをビルドできます。 IoT プラグ アンド プレイ デバイスでは、ユーザーが IoT プラグ アンド プレイ対応アプリケーションに接続するときに、手動で構成する必要がありません。
+IoT プラグ アンド プレイを使用すると、Azure IoT アプリケーションに機能を公開する IoT デバイスをビルドできます。 IoT プラグ アンド プレイ デバイスでは、ユーザーが IoT プラグ アンド プレイ対応アプリケーションに接続するときに、手動で構成する必要がありません。
 
 IoT プラグ アンド プレイでは、モデル ID をアナウンスしたデバイスを IoT ハブで使用できます。 たとえば、デバイスのプロパティとコマンドに直接アクセスできます。
 

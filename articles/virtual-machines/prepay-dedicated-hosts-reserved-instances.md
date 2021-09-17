@@ -9,14 +9,16 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/28/2020
 ms.author: banders
-ms.openlocfilehash: 2f90d3698156e27780bc57e0ac9355b6811d20d3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 464ffc8b5d4d04aeb7e4013f5b25d240d5ee9b06
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104607417"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122688965"
 ---
 # <a name="save-costs-with-azure-dedicated-host-reservations"></a>Azure Dedicated Host 予約によるコスト削減
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 Azure Dedicated Host の予約インスタンスにコミットすると、コストを削減することができます。 予約割引は、予約スコープと属性に一致する実行中の専用ホストの数に対して自動的に適用されます。 割引を取得するために、専用ホストに予約を割り当てる必要はありません。 予約インスタンスの購入では、使用量のコンピューティング部分のみが対象となり、ソフトウェア ライセンスのコストも含まれます。 [仮想マシン用 Azure 専用ホストに関する概要](./dedicated-hosts.md)を参照してください。
 

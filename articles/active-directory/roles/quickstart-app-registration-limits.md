@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, devx-track-azurepowershell
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6710273438b291c1547688b2213b0c57ac766b99
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: b018dead90b593276a9cb92696dd964473057407
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110796377"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732317"
 ---
 # <a name="quickstart-grant-permission-to-create-unlimited-app-registrations"></a>クイック スタート:無制限のアプリの登録を作成するアクセス許可を付与する
 
@@ -29,18 +29,19 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="prerequisites"></a>前提条件
 
 - Azure AD Premium P1 または P2 ライセンス
-- 特権ロール管理者または全体管理者
+- 特権ロール管理者またはグローバル管理者
 - PowerShell を使用する場合の AzureADPreview モジュール
 - Microsoft Graph API の Graph エクスプローラーを使用する場合の管理者の同意
 
-詳細については、[PowerShell または Graph エクスプローラーを使用するための前提条件](prerequisites.md)に関するページを参照してください。
+詳細については、「[PowerShell または Graph エクスプローラーを使用するための前提条件](prerequisites.md)」をご覧ください。
 
 ## <a name="azure-portal"></a>Azure portal
 
 ### <a name="create-a-custom-role"></a>カスタム ロールを作成する
 
-1. [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
-1. **[Azure Active Directory]** を選択し、**[ロールと管理者]** を選択してから、**[新しいカスタム ロール]** を選択します。
+1. [Azure portal](https://portal.azure.com) または [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
+
+1. **[Azure Active Directory]**  >  **[ロールと管理者]** を選択してから、 **[新しいカスタム ロール]** を選択します。
 
     ![[ロールと管理者] ページでロールを作成または編集する](./media/quickstart-app-registration-limits/new-custom-role.png)
 
@@ -56,9 +57,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="assign-the-role"></a>ロールを割り当てる
 
-1. [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
-1. **[Azure Active Directory]** を選択し、次に **[ロールと管理者]** を選択します。
+1. [Azure portal](https://portal.azure.com) または [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
+
+1. **[Azure Active Directory]**  >  **[ロールと管理者]** を選択します。
+
 1. [アプリケーション登録作成者] ロールを選択し、**[割り当ての追加]** を選択します。
+
 1. 目的のユーザーを選択し、**[選択]** をクリックして、ユーザーをロールに追加します。
 
 これで完了です。 このクイックスタートでは、無制限の数のアプリの登録を作成するアクセス許可を持つカスタム ロールを作成した後、そのロールをユーザーに割り当てることに成功しました。

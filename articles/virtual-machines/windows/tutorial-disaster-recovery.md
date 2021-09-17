@@ -9,14 +9,15 @@ ms.topic: tutorial
 ms.date: 05/18/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: e76245c9ad08a9a826e1d0431c2dd01b61a6b860
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: a79a3d87fb7937c01896a30076385e86c65ad4bc
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110077574"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122691725"
 ---
 # <a name="tutorial-enable-disaster-recovery-for-windows-vms"></a>チュートリアル:Windows VM のディザスター リカバリーを有効にする
+**適用対象:** :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット 
 
 このチュートリアルでは、Windows を実行する Azure VM のディザスター リカバリーを設定する方法について説明します。 この記事では、次のことについて説明します:
 

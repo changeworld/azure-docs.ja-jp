@@ -8,14 +8,16 @@ ms.collection: linux
 ms.topic: article
 ms.date: 06/10/2020
 ms.author: alsin
-ms.openlocfilehash: 77b55315256de8b2170a40c76006f05431aac267
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 93557e5fb32a6f5100bdc99cdfbeed3375fcc379
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112454998"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122691963"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Azure での Red Hat Enterprise Linux のサブスクリプション持ち込み Gold Image
+
+**適用対象:** :heavy_check_mark: Linux VM 
 
 Red Hat Enterprise Linux (RHEL) イメージは、従量課金制またはサブスクリプション持ち込み (BYOS) (Red Hat Gold Image) モデルを使用して Azure で利用できます。 この記事では、Azure の Red Hat Gold Image の概要について説明します。
 

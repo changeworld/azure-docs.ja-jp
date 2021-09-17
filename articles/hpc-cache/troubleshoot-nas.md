@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: troubleshooting
 ms.date: 03/18/2020
 ms.author: v-erkel
-ms.openlocfilehash: ed31a2202a0eacbdc257e127e111d21215c27de4
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: a8fb169db79281240e2aab854bc6079a60054625
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107258199"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122771447"
 ---
 # <a name="troubleshoot-nas-configuration-and-nfs-storage-target-issues"></a>NAS 構成および NFS ストレージ ターゲットに関する問題のトラブルシューティング
 
@@ -146,4 +146,4 @@ ACL が使用されたシステムの場合、Azure HPC Cache では、ファイ
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事で説明されていない問題が発生した場合は、[サポート チケットを開いて](hpc-cache-support-ticket.md)、専門家の支援を受けてください。
+この記事で説明されていない問題が発生した場合は、[サポートに問い合わせ](hpc-cache-support-ticket.md)、専門家の支援を受けてください。

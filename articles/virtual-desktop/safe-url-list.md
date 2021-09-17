@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/04/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: da8cc0ea77de3b544b4bcb97d2ed699c74329e68
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 95081b661d4f33577df07420ab194ec48488221a
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113757644"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122768087"
 ---
 # <a name="required-url-list"></a>必要な URL リスト
 
@@ -29,7 +29,7 @@ Azure Virtual Desktop をデプロイし、使用するには、仮想マシン 
 - 必要な URL チェック ツールは、商用クラウドでのデプロイにのみ使用できます。
 - 必要な URL チェック ツールでは、ワイルドカードを含む URL をチェックできないため、必ず最初にそれらの URL のブロックを解除してください。
 
-### <a name="requirements"></a>要件
+### <a name="requirements"></a>必要条件
 
 必要な URL チェック ツールを使用するには、次のものが必要です。
 
@@ -42,7 +42,7 @@ Azure Virtual Desktop をデプロイし、使用するには、仮想マシン 
 必要な URL チェック ツールを使用するには、次のようにします。
 
 1. VM 上で管理者としてコマンド プロンプトを開きます。
-2. 次のコマンドを実行して、ビルド エージェントと同じフォルダーにディレクトリを変更します。
+2. 次のコマンドを実行して、ディレクトリを現在のビルド エージェントと同じフォルダーに変更します (この例では RDAgent_1.0.2944.1200)。
 
     ```console
     cd C:\Program Files\Microsoft RDInfra\RDAgent_1.0.2944.1200

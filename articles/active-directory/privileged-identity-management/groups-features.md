@@ -1,5 +1,5 @@
 ---
-title: Privileged Identity Management (PIM) での特権 Azure AD グループの管理 | Microsoft Docs
+title: Privileged Identity Management (PIM) での特権アクセス グループの管理 | Microsoft Docs
 description: Privileged Identity Management (PIM) で特権アクセス グループのメンバーと所有者を管理する方法
 services: active-directory
 documentationcenter: ''
@@ -16,16 +16,16 @@ ms.date: 12/01/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83aa5f4527885fbb0a02c70857cdd8409f0fa554
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: f2b68492dfd5c25199b00f6b5f68dc154ae767c8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111892726"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736140"
 ---
-# <a name="management-capabilities-for-privileged-access-azure-ad-groups-preview"></a>特権アクセス Azure AD グループの管理機能 (プレビュー)
+# <a name="management-capabilities-for-privileged-access-groups-preview"></a>特権アクセス グループの管理機能 (プレビュー)
 
-Privileged Identity Management (PIM) では、特権アクセス グループのメンバーシップまたは所有権の資格を割り当てることができるようになりました。 このプレビュー以降、Azure Active Directory (Azure AD) の組み込みロールをクラウド グループに割り当て、PIM を使用してグループのメンバーと所有者の資格とアクティブ化を管理できます。 Azure AD でのロール割り当て可能グループの詳細については、「[Azure Active Directory でクラウド グループを使用してロールの割り当てを管理する (プレビュー)](../roles/groups-concept.md)」を参照してください。
+Privileged Identity Management (PIM) では、特権アクセス グループのメンバーシップまたは所有権の資格を割り当てることができるようになりました。 このプレビュー以降、Azure Active Directory (Azure AD) の組み込みロールをクラウド グループに割り当て、PIM を使用してグループのメンバーと所有者の資格とアクティブ化を管理できます。 Azure AD でのロール割り当て可能グループの詳細については、「[Azure AD グループを使用してロールの割り当てを管理する](../roles/groups-concept.md)」を参照してください。
 
 >[!Important]
 > Exchange、セキュリティ/コンプライアンス センター、または SharePoint への管理アクセス用のロールに特権アクセス グループを割り当てるには、[特権アクセス グループ] エクスペリエンスではなく、Azure AD ポータルの **[ロールと管理者]** エクスペリエンスを使用して、そのグループに、アクティブ化の候補となるユーザーまたはグループを含めるようにします。

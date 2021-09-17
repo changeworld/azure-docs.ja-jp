@@ -9,20 +9,20 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 05/20/2021
-ms.openlocfilehash: d7cb7bb22b1102f0e0ad5c8189bb285596a377e9
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: e1e1ec9687890b43a6ce0c8f8bc361cfb91b61e2
+ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110462727"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122597822"
 ---
 モデルをホストするために使用するコンピューティング先は、デプロイされているエンドポイントのコストと可用性に影響を及ぼします。 次のテーブルを使用して、適切なコンピューティング先を選択します。
 
 | コンピューティング ターゲット | 使用目的 | GPU のサポート | FPGA のサポート | 説明 |
 | ----- | ----- | ----- | ----- | ----- |
 | [ローカル &nbsp;Web&nbsp; サービス](../articles/machine-learning/how-to-deploy-local-container-notebook-vm.md) | テスト/デバッグ | &nbsp; | &nbsp; | 制限付きのテストとトラブルシューティングに使用。 ハードウェア アクセラレーションは、ローカル システムでのライブラリの使用に依存します。
-| [Azure Kubernetes Service (AKS)](../articles/machine-learning/how-to-deploy-azure-kubernetes-service.md) | リアルタイムの推論 |  [はい](../articles/machine-learning/how-to-deploy-with-triton.md) (Web サービスのデプロイ) | [はい](../articles/machine-learning/how-to-deploy-fpga-web-service.md)   |高スケールの運用デプロイに使用。 高速な応答時間と、デプロイされたサービスの自動スケールを提供します。 Azure Machine Learning SDK では、クラスターの自動スケールはサポートされていません。 AKS クラスター内のノードを変更するには、Azure portal でお使いの AKS クラスター用の UI を使用します。 <br/><br/> デザイナーでサポートされています。 |
-| [Azure Container Instances](../articles/machine-learning/how-to-deploy-azure-container-instance.md) | リアルタイムの推論 | &nbsp;  | &nbsp; | 必要な RAM が 48 GB より少ない低スケール CPU ベース ワークロードに使用。 クラスターを管理する必要はありません。 <br/><br/> デザイナーでサポートされています。 |
+| [Azure Kubernetes Service (AKS)](../articles/machine-learning/how-to-deploy-azure-kubernetes-service.md) | リアルタイムの推論 <br/><br/> 運用環境のワークロードに勧めします。 |  [はい](../articles/machine-learning/how-to-deploy-with-triton.md) (Web サービスのデプロイ) | [はい](../articles/machine-learning/how-to-deploy-fpga-web-service.md)   |高スケールの運用デプロイに使用。 高速な応答時間と、デプロイされたサービスの自動スケールを提供します。 Azure Machine Learning SDK では、クラスターの自動スケールはサポートされていません。 AKS クラスター内のノードを変更するには、Azure portal でお使いの AKS クラスター用の UI を使用します。 <br/><br/> デザイナーでサポートされています。 |
+| [Azure Container Instances](../articles/machine-learning/how-to-deploy-azure-container-instance.md) | リアルタイムの推論 <br/><br/> 開発/テスト目的でのみ推奨されます。| &nbsp;  | &nbsp; | 必要な RAM が 48 GB より少ない低スケール CPU ベース ワークロードに使用。 クラスターを管理する必要はありません。 <br/><br/> デザイナーでサポートされています。 |
 | [Azure Machine Learning コンピューティング クラスター](../articles/machine-learning/tutorial-pipeline-batch-scoring-classification.md) | バッチ推論&nbsp; | [はい](../articles/machine-learning/tutorial-pipeline-batch-scoring-classification.md) (機械学習パイプライン) | &nbsp;  | サーバーレス コンピューティングでバッチ スコアリングを実行します。 優先順位が中程度または低い VM をサポートします。 リアルタイムの推論はサポートされていません。|
 
 > [!NOTE]

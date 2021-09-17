@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/03/2021
+ms.date: 08/11/2021
 ms.author: jeedes
-ms.openlocfilehash: 25bea4a80a33d520683ec56ee4b40dd54b9652c9
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.openlocfilehash: bcb919a12590c7cb97ba220da8fb44dc59782331
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111527030"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122271696"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-agiloft-contract-management-suite"></a>チュートリアル: Azure Active Directory と Agiloft Contract Management Suite の統合
 
@@ -123,15 +123,20 @@ Agiloft Contract Management Suite に対する Azure AD SSO を構成してテ�
 
 1. 別の Web ブラウザー ウィンドウで、Agiloft Contract Management Suite 企業サイトに管理者としてログインします。
 
-2. **[Setup]\(設定\)** (左側のウィンドウ) をクリックし、 **[Access]\(アクセス\)** を選択します。
+2. ページの右上隅の **設定** アイコンをクリックします。
 
-    ![[Access]\(アクセス\) セクションが強調表示されているスクリーンショット。](./media/agiloft-tutorial/access.png)
+    ![設定アイコンが強調表示されたスクリーンショット。](./media/agiloft-tutorial/settings.png)
 
-3. **[Configure SAML 2.0 Single Sign-On]\(SAML 2.0 シングル サインオンの構成\)** ボタンをクリックします。
+3. **[アクセス]** を選択します。
+
+    ![[アクセス] 領域が強調表示されたスクリーンショット](./media/agiloft-tutorial/access.png)
+
+
+4. **[Configure SAML 2.0 Single Sign-On]\(SAML 2.0 シングル サインオンの構成\)** ボタンをクリックします。
 
     ![[Configure SAML 2.0 Single Sign-On]\(SAML 2.0 シングル サインオンの構成\) ボタンが強調表示されているスクリーンショット。](./media/agiloft-tutorial/setup.png)
 
-4. ウィザード ダイアログが表示されます。 ダイアログで、 **[Identity Provider Details]\(ID プロバイダーの詳細\)** をクリックし、次のフィールドを入力します。  
+5. ウィザード ダイアログが表示されます。 ダイアログで、 **[Identity Provider Details]\(ID プロバイダーの詳細\)** をクリックし、次のフィールドを入力します。  
 
     ![Agiloft Contract Management Suite の構成](./media/agiloft-tutorial/details.png)
 

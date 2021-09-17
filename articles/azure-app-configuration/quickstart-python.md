@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: devx-track-python
 ms.date: 9/17/2020
 ms.author: drewbat
-ms.openlocfilehash: 1be74ceeb1f4808a8df8f56b71b66aa870cdd91d
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: 36b840cb851ef544d0956ff0dec969ce251855d4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104800875"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748760"
 ---
 # <a name="quickstart-create-a-python-app-with-azure-app-configuration"></a>クイックスタート: Azure App Configuration を使用した Python アプリの作成
 

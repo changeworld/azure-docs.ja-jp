@@ -8,14 +8,16 @@ ms.topic: article
 ms.date: 06/02/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 0ef3b00fe3ae68ddecc7ab93ee612e0698329c43
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: cd040ef394163113b46f9af46aef0aead9cb37ca
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114460498"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122689279"
 ---
 # <a name="configure-and-optimize-vms"></a>VM の構成と最適化
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 この記事では、InfiniBand 対応の [H シリーズ](../../sizes-hpc.md) と [N シリーズ](../../sizes-gpu.md) VM を HPC 用に構成および最適化するためのガイダンスを紹介します。
 

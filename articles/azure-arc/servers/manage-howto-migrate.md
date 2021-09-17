@@ -3,12 +3,12 @@ title: Azure Arc 対応サーバーをリージョン間で移行する方法
 description: Azure Arc 対応サーバーをリージョン間で移行する方法について説明します。
 ms.date: 07/16/2021
 ms.topic: conceptual
-ms.openlocfilehash: 9635bcf4f2f557c1f4b32a15c9cd936e5b5f02fe
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: d0e909b789e3e0dcee4d39e22067de26daace548
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114387116"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122609650"
 ---
 # <a name="how-to-migrate-azure-arc-enabled-servers-across-regions"></a>Azure Arc 対応サーバーをリージョン間で移行する方法
 
@@ -30,7 +30,7 @@ Azure Arc 対応サーバーをある Azure リージョンから別のものに
 
 3. もう一方のリージョンで Arc 対応サーバーに Connected Machine エージェントを再登録します。 [Connect](manage-agent.md#connect) パラメーターを指定して `azcmagent` ツールを実行し、この手順を完了します。
 
-4. Arc 対応サーバーからマシンに最初にデプロイされた VM 拡張機能を再デプロイします。 Azure ポリシーを使用して Azure Monitor for VMs (分析情報) エージェントまたは Log Analytics エージェントをデプロイした場合、それらのエージェントは、次の[評価サイクル](../../governance/policy/how-to/get-compliance-data.md#evaluation-triggers)の後に再デプロイされます。
+4. Arc 対応サーバーからマシンに最初にデプロイされた VM 拡張機能を再デプロイします。 Azure Policy 定義を使用して Azure Monitor for VMs (分析情報) エージェントまたは Log Analytics エージェントをデプロイした場合、それらのエージェントは、次の[評価サイクル](../../governance/policy/how-to/get-compliance-data.md#evaluation-triggers)の後に再デプロイされます。
 
 ## <a name="next-steps"></a>次のステップ
 

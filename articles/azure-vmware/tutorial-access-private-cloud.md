@@ -2,29 +2,29 @@
 title: チュートリアル - プライベート クラウドにアクセスする
 description: Azure VMware Solution プライベート クラウドにアクセスする方法を学習する
 ms.topic: tutorial
-ms.date: 03/13/2021
-ms.openlocfilehash: 81927e9ad0362ba340bb704d2d7e8b9c0927efbe
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.date: 08/13/2021
+ms.openlocfilehash: 6b4798bf5257be82475986c040b04b63ff5a483b
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114605398"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122070792"
 ---
 # <a name="tutorial-access-an-azure-vmware-solution-private-cloud"></a>チュートリアル:Azure VMware Solution プライベート クラウドにアクセスする
 
-Azure VMware Solution では、オンプレミスの vCenter でプライベート クラウドを管理することはできません。 ジャンプ ボックスを通して Azure VMware Solution vCenter インスタンスに接続する必要があります。 
+Azure VMware Solution では、オンプレミスの vCenter でプライベート クラウドを管理することはできません。 代わりに、ジャンプ ボックス経由で Azure VMware Solution vCenter インスタンスに接続する必要があります。 
 
 このチュートリアルでは、[前のチュートリアル](tutorial-configure-networking.md)で作成したリソース グループにジャンプ ボックスを作成し、Azure VMware Solution vCenter にサインインします。 このジャンプ ボックスは、作成したのと同じ仮想ネットワーク上にある Windows 仮想マシン (VM) です。  これにより、vCenter と NSX Manager の両方へのアクセスが提供されます。 
 
 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
-> * Azure VMware Solution vCenter へアクセスするための Windows 仮想マシンを作成する
-> * この仮想マシンから vCenter にサインインする
+> * Azure VMware Solution vCenter へアクセスするための Windows VM を作成する
+> * この VM から vCenter にサインインする
 
 ## <a name="create-a-new-windows-virtual-machine"></a>新しい Windows 仮想マシンを作成する
 
-1. リソース グループで、 **[+ 追加]** を選択します。次に、**Microsoft Windows 10** を検索して選択し、 **[作成]** を選択します。
+1. リソース グループで、 **[追加]** を選択し、**Microsoft Windows 10** を検索して選択します。 **[作成]** を選択します。
 
    :::image type="content" source="media/tutorial-access-private-cloud/ss8-azure-w10vm-create.png" alt-text="ジャンプ ボックス用に新しい Windows 10 VM を追加する方法を示すスクリーンショット。":::
 
@@ -45,7 +45,7 @@ Azure VMware Solution では、オンプレミスの vCenter でプライベー�
    | **ユーザー名** | VM にログオンするためのユーザー名を入力します。 |
    | **パスワード** | VM にログオンするためのパスワードを入力します。 |
    | **[パスワードの確認入力]** | VM にログオンするためのパスワードを入力します。 |
-   | **パブリック インバウンド ポート** | **[なし]** を選択します。 [なし] を選択した場合は、[JIT アクセス](../security-center/security-center-just-in-time.md#jit-configure)を使用して、VM にアクセスする必要があるときにのみ VM へのアクセスを制御できます。 あるいは、ネットワーク ポートを公開せずにインターネットから安全にジャンプ ボックス サーバーにアクセスするようにする場合は、[Azure Bastion](../bastion/tutorial-create-host-portal.md) を使用することもできます。  |
+   | **パブリック インバウンド ポート** | **[なし]** を選択します。 <ul><li>VM にアクセスする必要があるときにのみ VM へのアクセスを制御するには、[JIT アクセス](../security-center/security-center-just-in-time.md#jit-configure)を使用します。</li><li>ネットワーク ポートを公開せずにインターネットからジャンプ ボックス サーバーに安全にアクセスするようにするには、[Azure Bastion](../bastion/tutorial-create-host-portal.md) を使用します。</li></ul>  |
 
 
 1. 検証に合格したら、 **[作成]** を選択して仮想マシンの作成プロセスを開始します。
@@ -64,9 +64,9 @@ Azure VMware Solution では、オンプレミスの vCenter でプライベー�
 
    VM への接続について助けが必要な場合は、[仮想マシンへの接続](../virtual-machines/windows/connect-logon.md#connect-to-the-virtual-machine)に関するページで詳細を参照してください。
 
-1. Windows VM でブラウザーを開き、2 つのタブを使用して vCenter と NSX-T Manger の URL に移動します。 
+1. Windows VM でブラウザーを開き、2 つのタブを使用して vCenter と NSX-T Manager の URL に移動します。 
 
-1. vCenter タブで、前の手順の `cloudadmin@vmcp.local` ユーザー資格情報を入力します。
+1. vCenter タブで、前の手順の `cloudadmin@vsphere.local` ユーザー資格情報を入力します。
 
    :::image type="content" source="media/tutorial-access-private-cloud/ss5-vcenter-login.png" alt-text="VMware vSphere サインイン ページを示すスクリーンショット。" border="true":::
 
@@ -80,11 +80,11 @@ Azure VMware Solution では、オンプレミスの vCenter でプライベー�
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルで学習した内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
-> * vCenter への接続に使用する Windows 仮想マシンを作成する
-> * 仮想マシンから vCenter にログインする
+> * vCenter への接続に使用する Windows VM を作成する
+> * VM から vCenter にログインする
 
 次のチュートリアルに進み、プライベート クラウド クラスターのローカル管理を設定するために仮想ネットワークを作成する方法を学習します。
 

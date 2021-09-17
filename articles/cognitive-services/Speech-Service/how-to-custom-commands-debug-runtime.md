@@ -1,5 +1,5 @@
 ---
-title: カスタム コマンド アプリケーションの実行時にエラーをデバッグする
+title: 実行時の Custom Commands アプリケーションのトラブルシューティング ガイド
 titleSuffix: Azure Cognitive Services
 description: この記事では、カスタム コマンド アプリケーションの実行時エラーをデバッグする方法について説明します。
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: b41bcda7381e5811ef1e1f91c102d8c85f50b3b5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7577a1c2666c8b5d34920e3827a9f4549b69edd2
+ms.sourcegitcommit: d01c2b2719e363178720003b67b968ac2a640204
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103196909"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122455807"
 ---
-# <a name="debug-errors-when-running-a-custom-commands-application"></a>カスタム コマンド アプリケーションの実行時にエラーをデバッグする
+# <a name="troubleshoot-a-custom-commands-application-at-runtime"></a>実行時の Custom Commands アプリケーションのトラブルシューティング
 
 この記事では、カスタム コマンド アプリケーションの実行中にエラーが発生した場合のデバッグ方法について説明します。 
 

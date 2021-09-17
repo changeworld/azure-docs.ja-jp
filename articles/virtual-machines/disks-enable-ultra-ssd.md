@@ -8,14 +8,16 @@ ms.date: 08/17/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: fb6180754be5e94091e5ff1ca21823b85c8a6e6d
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 5ea12e47b67f79ab2d5aa559f3afc1db587e1a55
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122322012"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122695915"
 ---
 # <a name="using-azure-ultra-disks"></a>Azure Ultra ディスクの使用
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブルなスケール セット :heavy_check_mark: 均一スケール セット
 
 この記事では、Ultra ディスクをデプロイして使用する方法を説明します。Ultra ディスクに関する概念的な情報については、「[Azure で使用できるディスクの種類](disks-types.md#ultra-disk)」を参照してください。
 

@@ -4,15 +4,15 @@ description: App Service Environment でアプリを作成、発行、スケー�
 author: ccompy
 ms.assetid: a22450c4-9b8b-41d4-9568-c4646f4cf66b
 ms.topic: article
-ms.date: 9/22/2020
+ms.date: 8/5/2021
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 6f49bcba81594fa2992c07cad1efb2d6235b0270
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: da32a2bbd4824e589a6673b043551dce67c32e70
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113432934"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122446319"
 ---
 # <a name="use-an-app-service-environment"></a>App Service 環境の使用
 > [!NOTE]
@@ -210,22 +210,15 @@ Log Analytics と統合している場合は、ASE ポータルから **[ログ]
 
 ## <a name="upgrade-preference"></a>アップグレードの優先順位
 
-複数の ASE を使用している場合は、一部の ASE を他のものよりも先にアップグレードする必要が生じることがあります。 ASE **HostingEnvironment Resource Manager** オブジェクト内で、**upgradePreference** の値を設定できます。 **upgradePreference** の設定は、テンプレート、ARMClient、または https://resources.azure.com を使用して構成できます。 指定可能な 3 つの値は次のとおりです。
+複数の ASE を使用している場合は、一部の ASE を他のものよりも先にアップグレードする必要が生じることがあります。 この動作は、ASE ポータルを使用して有効にできます。  **構成** の下に、**アップグレードの優先順位** を設定するオプションがあります。 指定可能な 3 つの値は次のとおりです。
 
 - **なし**: Azure では、特定のバッチなしに ASE がアップグレードされます。 この値は既定値です。
 - **Early**:ASE は App Service アップグレードの前半でアップグレードされます。
 - **Late**:ASE は App Service アップグレードの後半でアップグレードされます。
 
-https://resources.azure.com を使用している場合は、次の手順に従って **upgradePreferences** 値を設定します。
+目的の値を選択し、 **[保存]** を選択します。  あらゆる ASE の既定値は **[なし]** です。
 
-1. resources.azure.com にアクセスし、お使いの Azure アカウントでサインインします。
-1. サブスクリプション\/\[サブスクリプション名\]\/resourceGroups\/\[リソースグループ名\]\/プロバイダー\/Microsoft.Web\/hostingEnvironments\/\[ASE 名\]とリソースを移動します。
-1. 上部にある **[読み取り/書き込み]** を選択します。
-1. **[編集]** を選択します。
-1. **upgradePreference** を 3 つの値のいずれかに設定します。
-1. **[Patch]\(パッチ\)** を選択します。
-
-![リソース azure com の表示][5]
+![ASE 構成ポータル][5]
 
 **upgradePreferences** 機能は、複数の ASE がある場合に非常に便利です。"Early" の ASE が "Late" の ASE よりも先にアップグレードされるためです。 複数の ASE がある場合は、開発およびテストの ASE を "Early" に、実稼働の ASE を "Late" に設定します。
 

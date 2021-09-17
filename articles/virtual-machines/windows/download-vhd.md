@@ -9,14 +9,16 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 01/13/2019
 ms.author: cynthn
-ms.openlocfilehash: 32b9753b79273ce747d00cba077dd8a5ee6d724d
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: de96ea4b32b9a2fc6baefd4cd6b14d31dea98165
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107565289"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122690808"
 ---
 # <a name="download-a-windows-vhd-from-azure"></a>Azure から Windows VHD をダウンロードする
+
+**適用対象:** :heavy_check_mark: Windows VM 
 
 この記事では、Azure portal を使用して Azure から Windows 仮想ハード ディスク (VHD) ファイルをダウンロードする方法を説明します。
 

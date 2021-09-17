@@ -7,12 +7,12 @@ ms.author: aymarqui
 ms.date: 02/12/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: fcf3167e4f407a64d474275e495b73f511feabdf
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 8690f69bace02e73f144b563a5541073cb976f22
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121748527"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122770610"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>Azure Digital Twins を Azure SignalR Service と統合する
 
@@ -33,7 +33,7 @@ ms.locfileid: "121748527"
     
 * お使いのコンピューターに [Node.js](https://nodejs.org/) がインストールされている必要があります。
 
-[Azure portal](https://portal.azure.com/) に移動し、Azure アカウントでサインインすることも必要です。
+このガイドで使用する必要があるため、自分の Azure アカウントを使用して [Azure portal](https://portal.azure.com/) にサインインしてください。
 
 ## <a name="solution-architecture"></a>ソリューションのアーキテクチャ
 
@@ -43,14 +43,14 @@ ms.locfileid: "121748527"
 
 ## <a name="download-the-sample-applications"></a>サンプル アプリケーションのダウンロード
 
-最初に、必要なサンプル アプリをダウンロードします。 次の両方が必要になります。
+最初に、必要なサンプル アプリをダウンロードします。 次の両方のサンプルが必要です。
 * [Azure Digital Twins のエンドツーエンド サンプル](/samples/azure-samples/digital-twins-samples/digital-twins-samples/): このサンプルには、Azure Digital Twins インスタンス内でデータを移動するための 2 つの Azure 関数を保持する *AdtSampleApp* が含まれています (このシナリオの詳細については、[エンドツーエンドのソリューションの接続](tutorial-end-to-end.md)に関するチュートリアルで学習できます)。 また、IoT デバイスをシミュレートし、1 秒ごとに新しい温度値を生成する *DeviceSimulator* サンプル アプリケーションも含まれています。
     - 「[前提条件](#prerequisites)」にあるチュートリアルの一部としてサンプルをまだダウンロードしていない場合は、[サンプルにアクセス](/samples/azure-samples/digital-twins-samples/digital-twins-samples/)し、タイトルの下にある *[コードの参照]* ボタンを選択してください。 これにより、サンプル用の GitHub リポジトリに移動します。 *[Code]\(コード\)* ボタンと、 *[Download ZIP]\(ZIP のダウンロード\)* を選択することによって、.zip 形式でこれをダウンロードできます。
 
         :::image type="content" source="media/includes/download-repo-zip.png" alt-text="GitHub のデジタル ツインのサンプル リポジトリと、それを zip としてダウンロードする手順を示すスクリーンショット。" lightbox="media/includes/download-repo-zip.png":::
 
-    これにより、お使いのマシンにサンプル リポジトリのコピーが **digital-twins-samples-master.zip** としてダウンロードされます。 フォルダーを解凍します。
-* [SignalR 統合 Web アプリのサンプル](/samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/):これは、Azure SignalR Service からの Azure Digital Twins テレメトリ データを使用する React の Web アプリのサンプルです。
+    このボタンにより、お使いのマシンにサンプル リポジトリのコピーが **digital-twins-samples-master.zip** としてダウンロードされます。 フォルダーを解凍します。
+* [SignalR 統合 Web アプリのサンプル](/samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/): このサンプルの React Web アプリでは、Azure SignalR Service からの Azure Digital Twins テレメトリ データが使用されます。
     -  サンプル リンクに移動し、同じダウンロード プロセスを使用してサンプルのコピーをお使いのコンピューターに _**digitaltwins-signalr-webapp-sample-main.zip**_ としてダウンロードします。 フォルダーを解凍します。
 
 [!INCLUDE [Create instance](../azure-signalr/includes/signalr-quickstart-create-instance.md)]
@@ -65,7 +65,7 @@ ms.locfileid: "121748527"
 
 Visual Studio (または任意の別のコード エディター) を起動し、*digital-twins-samples-master > ADTSampleApp* フォルダー内のコード ソリューションを開きます。 その後、次の手順を実行して関数を作成します。
 
-1. *SampleFunctionsApp* プロジェクトに **SignalRFunctions.cs** と呼ばれる新しい C# クラスを作成します。 これを行う方法については、「[Visual Studio を使用する Azure Functions の開発](../azure-functions/functions-develop-vs.md#add-a-function-to-your-project)」を参照してください。
+1. *SampleFunctionsApp* プロジェクトに **SignalRFunctions.cs** と呼ばれる新しい C# クラスを作成します。 新しいクラスを作成する方法については、「[Visual Studio を使用する Azure Functions の開発](../azure-functions/functions-develop-vs.md#add-a-function-to-your-project)」を参照してください。
 
 1. このクラス ファイルの内容を次のコードに置き換えます。
     
@@ -76,7 +76,7 @@ Visual Studio (または任意の別のコード エディター) を起動し�
     dotnet add package Microsoft.Azure.WebJobs.Extensions.SignalRService --version 1.2.0
     ```
 
-    これにより、そのクラスに含まれる依存関係の問題が解決されます。
+    このコマンドを実行すると、そのクラスに含まれる依存関係の問題が解決されます。
 
 1. 関数を Azure に発行します。 エンド ツー エンドのチュートリアルの[前提条件](#prerequisites)で使用したものと同じ App Service や関数アプリにそれを発行することも、新しいものを作成することもできます。ただし、重複を最小限に抑えるために同じものを使用することをお勧めします。 Visual Studio を使用して関数を発行する方法については、「[Visual Studio を使用する Azure Functions の開発](../azure-functions/functions-develop-vs.md#publish-to-azure)」を参照してください。
 
@@ -102,9 +102,9 @@ Visual Studio (または任意の別のコード エディター) を起動し�
 
 ## <a name="connect-the-function-to-event-grid"></a>Event Grid に関数を接続する
 
-次に、*broadcast* Azure 関数を **Event Grid トピック** ([チュートリアルの前提条件](how-to-integrate-azure-signalr.md#prerequisites)で作成) でサブスクライブします。 これにより、テレメトリ データは thermostat67 ツインから Event Grid トピックを経て関数へと流れることができます。 ここから、この関数によってすべてのクライアントにそのデータをブロードキャストできます。
+次に、*broadcast* Azure 関数を **Event Grid トピック** ([チュートリアルの前提条件](how-to-integrate-azure-signalr.md#prerequisites)で作成) でサブスクライブします。 このアクションにより、テレメトリ データは thermostat67 ツインから Event Grid トピックを経て関数へと流れることができます。 ここから、この関数によってすべてのクライアントにそのデータをブロードキャストできます。
 
-そのためには、Event Grid トピックからエンドポイントとしての *broadcast* Azure 関数への **イベント サブスクリプション** を作成します。
+データをブロードキャストするには、Event Grid トピックからエンドポイントとしての *broadcast* Azure 関数への **イベント サブスクリプション** を作成します。
 
 [Azure portal](https://portal.azure.com/) の上部の検索バーで、Event Grid トピックの名前を検索してそのトピックに移動します。 *[+ イベント サブスクリプション]* を選択します。
 
@@ -113,8 +113,8 @@ Visual Studio (または任意の別のコード エディター) を起動し�
 *[イベント サブスクリプションの作成]* ページで、各フィールドに次のように入力します (既定値が入力されるフィールドは省略しています)。
 * *[イベント サブスクリプションの詳細]*  >  **[名前]** : イベント サブスクリプションに名前を付けます。
 * *[エンドポイントの詳細]*  >  **[エンドポイントのタイプ]** : メニュー オプションから *[Azure 関数]* を選択します。
-* *[エンドポイントの詳細]*  >  **[エンドポイント]** : *[Select an endpoint]\(エンドポイントを選択する\)* リンクを選択します。 *[Azure 関数の選択]* ウィンドウが開きます。
-    - **サブスクリプション**、**リソース グループ**、**関数アプリ**、**関数** (*broadcast*) を入力します。 そのいくつかは、サブスクリプションの選択後に自動的に入力されます。
+* *[エンドポイントの詳細]*  >  **[エンドポイント]** : *[エンドポイントの選択]* リンクを選択して、 *[Azure 関数の選択]* ウィンドウを開きます。
+    - **[サブスクリプション]** 、 **[リソース グループ]** 、 **[関数アプリ]** 、 **[関数]** (*broadcast*) を入力します。 これらのフィールドの一部は、サブスクリプションの選択後に自動的に設定される場合があります。
     - **[選択の確認]** を選択します。
 
 :::image type="content" source="media/how-to-integrate-azure-signalr/create-event-subscription.png" alt-text="Azure portal でのイベント サブスクリプションを作成するためのフォームのスクリーンショット。":::
@@ -137,7 +137,7 @@ Visual Studio (または任意の別のコード エディター) を起動し�
 
     :::image type="content" source="media/how-to-integrate-azure-signalr/functions-negotiate.png" alt-text="Azure portal の関数アプリのスクリーンショット。メニューで 'Functions' が強調表示され、関数の一覧で 'negotiate' が強調表示されています。":::
 
-1. *[関数の URL の取得]* を選択し、**_/api_ までの値 (最後の _/negotiate?_ は含めないでください)** をコピーします。 これは次の手順で使用します。
+1. *[関数の URL の取得]* を選択し、**_/api_ までの値 (最後の _/negotiate?_ は含めないでください)** をコピーします。 次の手順でこの値を使用します。
 
     :::image type="content" source="media/how-to-integrate-azure-signalr/get-function-url.png" alt-text="[関数の URL の取得] ボタンと関数の URL が強調表示されている 'negotiate' 関数が表示された Azure portal のスクリーンショット。":::
 
@@ -171,7 +171,7 @@ Visual Studio (または任意の別のコード エディター) を起動し�
 
 :::image type="content" source="media/how-to-integrate-azure-signalr/start-button-simulator.png" alt-text="DeviceSimulator プロジェクトが開いた、Visual Studio のスタート ボタンのスクリーンショット。":::
 
-コンソール ウィンドウが開いて、シミュレートされた温度のテレメトリ メッセージが表示されます。 これらは Azure Digital Twins インスタンスを介して送信され、そこでその後、Azure 関数と SignalR によって取得されます。
+コンソール ウィンドウが開いて、シミュレートされた温度のテレメトリ メッセージが表示されます。 これらのメッセージは Azure Digital Twins インスタンスを介して送信され、そこでその後、Azure 関数と SignalR によって取得されます。
 
 このコンソールで行うべき作業は他にありませんが、次のステップに取り組む間、コンソールは実行したままにしておいてください。
 
@@ -183,7 +183,7 @@ Visual Studio (または任意の別のコード エディター) を起動し�
 npm start
 ```
 
-これにより、サンプル アプリが実行されているブラウザー ウィンドウが開き、ビジュアル温度計が表示されます。 アプリが実行されると、Azure Digital Twins を介して伝達されるデバイス シミュレーターからの温度テレメトリの値が、Web アプリによってリアルタイムで反映されるのを確認できるようになります。
+このコマンドを実行すると、サンプル アプリが実行されているブラウザー ウィンドウが開き、ビジュアル温度計が表示されます。 アプリが実行されると、Azure Digital Twins を介して伝達されるデバイス シミュレーターからの温度テレメトリの値が、Web アプリによってリアルタイムで反映されるのを確認できるようになります。
 
 :::image type="content" source="media/how-to-integrate-azure-signalr/signalr-webapp-output.png" alt-text="ビジュアル温度計が表示されている、サンプル クライアント Web アプリのスクリーンショット。反映されている温度は 67.52 です。":::
 

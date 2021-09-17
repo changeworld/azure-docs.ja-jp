@@ -9,14 +9,16 @@ ms.topic: tutorial
 ms.workload: infrastructure
 ms.date: 08/20/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 1c4a006a12e9708b35ea15ff68728569822ae26d
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: 37f5e0163d7c2ed57866f8c4eda49458a969ad87
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114390754"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122687763"
 ---
 # <a name="tutorial---manage-azure-disks-with-the-azure-cli"></a>チュートリアル - Azure CLI を使用した Azure ディスクの管理
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブル スケール セット 
 
 Azure Virtual Machines (VM) では、オペレーティング システム、アプリケーション、およびデータを格納するためにディスクを使用します。 VM を作成するときは、予測されるワークロードに適したディスクのサイズと構成を選択する必要があります。 このチュートリアルでは、VM ディスクのデプロイと管理方法を示します。 内容は次のとおりです。
 
@@ -111,7 +113,7 @@ az vm disk attach \
 仮想マシンとの SSH 接続を作成します。 この例の IP アドレスは、仮想マシンのパブリック IP で置き換えてください。
 
 ```console
-ssh 10.101.10.10
+ssh azureuser@10.101.10.10
 ```
 
 `parted` を使用してディスクをパーティション分割します。

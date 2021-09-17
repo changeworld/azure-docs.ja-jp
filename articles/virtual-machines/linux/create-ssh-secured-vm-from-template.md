@@ -7,14 +7,16 @@ ms.collection: linux
 ms.topic: how-to
 ms.date: 03/22/2019
 ms.author: cynthn
-ms.openlocfilehash: 73b21947410ac275a568e20208c062f0da7a1b2e
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: ae954f1a461f2a5fd98b0f0374f6583fed34ce05
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108769959"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122689882"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-with-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Linux 仮想マシンを作成する方法
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブルなスケール セット 
 
 Azure Resource Manager テンプレートと、Azure Cloud シェルの Azure CLI を使用して、Linux 仮想マシン (VM) を作成する方法を説明します。 Windows 仮想マシンを作成するには、「[Resource Manager テンプレートから Windows 仮想マシンを作成する](../windows/ps-template.md)」を参照してください。
 

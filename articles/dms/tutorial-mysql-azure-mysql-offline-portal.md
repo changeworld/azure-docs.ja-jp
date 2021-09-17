@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 04/11/2021
-ms.openlocfilehash: 45d9104c5669b3b0adef2c32757076097656ae87
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: cafe928ad8baed2a597bfef9bbedca8ca72e1d76
+ms.sourcegitcommit: 47491ce44b91e546b608de58e6fa5bbd67315119
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111967898"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122201999"
 ---
 # <a name="tutorial-migrate-mysql-to-azure-database-for-mysql-offline-using-dms"></a>チュートリアル: DMS を使用して MySQL を Azure Database for MySQL にオフラインで移行する
 
@@ -25,8 +25,6 @@ Azure Database Migration Service を使用すると、高速データ移行機�
 
 > [!IMPORTANT]
 > オンライン移行では、[データイン レプリケーション](../mysql/concepts-data-in-replication.md)と共に、[MyDumper/MyLoader](https://centminmod.com/mydumper.html) などのオープンソース ツールを使用できます。 
-
-[!INCLUDE [preview features callout](../../includes/dms-boilerplate-preview.md)]
 
 > [!NOTE]
 > この移行エクスペリエンスを PowerShell スクリプトで実現したバージョンについては、[Azure Database for MySQL へのオフライン移行のスクリプト制御](./migrate-mysql-to-azure-mysql-powershell.md)に関するページを参照してください。
@@ -76,6 +74,24 @@ Azure Database Migration Service を使用すると、高速データ移行機�
 * Azure Database for MySQL は、InnoDB テーブルのみをサポートします。 MyISAM テーブルを InnoDB に変換するには、[MyISAM から InnoDB へのテーブルの変換](https://dev.mysql.com/doc/refman/5.7/en/converting-tables-to-innodb.html)に関する記事を参照してください。
 * ユーザーには、ソース データベースにあるデータの読み取り権限が必要です。
 
+## <a name="sizing-the-target-azure-database-for-mysql-instance"></a>ターゲットの Azure Database for MySQL インスタンスをサイズ設定する
+
+Azure Database Migration Service を使用してデータ読み込みを高速化するようにターゲットの Azure Database for MySQL サーバーを準備するには、次のサーバー パラメーターと構成の変更をお勧めします。 
+
+* max_allowed_packet – 1073741824 (1GB) に設定して、行が大きいために発生する接続の問題を防ぎます。 
+* slow_query_log – OFF に設定して、低速のクエリ ログを無効にします。 これにより、データの読み込み中の低速クエリ ログによって発生するオーバーヘッドがなくなります。
+* query_store_capture_mode – NONE に設定し、クエリ ストアを無効にします。 これにより、クエリ ストアによるサンプリング アクティビティで発生するオーバーヘッドがなくなります。
+* innodb_buffer_pool_size – Innodb_buffer_pool_size は、Azure Database for MySQL サーバーのコンピューティングをスケールアップしないと増やすことができません。 移行中にサーバーをポータルの [価格レベル] から 64 仮想コア General Purpose SKU にスケールアップし、innodb_buffer_pool_size を増やします。 
+* innodb_io_capacity & innodb_io_capacity_max - IO 使用率を向上させて移行速度を最適化するために、Azure portal のサーバー パラメーターから 9000 に変更します。
+* innodb_write_io_threads および innodb_write_io_threads - Azure portal のサーバー パラメーターで 4 に変更し、移行の速度を向上させます。
+* ストレージ層のスケールアップ – Azure Database for MySQL サーバーの IOP は、ストレージ層の増加に合せて徐々に増加します。 
+    * 単一サーバーのデプロイ オプションでは、読み込みを高速化するために、ストレージ層を増やしてプロビジョニングされる IOP を増やすことをお勧めします。 
+    * フレキシブル サーバーのデプロイ オプションでは、ストレージ サイズに関係なく IOPS をスケーリング (増減) することができます。 
+    * ストレージ サイズはスケールアップのみ可能で、スケールダウンはできません。
+
+移行が完了したら、サーバー パラメーターと構成を、ワークロードで必要な値に戻すことができます。 
+
+
 ## <a name="migrate-database-schema"></a>データベース スキーマを移行する
 
 テーブル スキーマ、インデックス、ストアド プロシージャなどのすべてのデータベース オブジェクトを転送するには、ソース データベースからスキーマを抽出し、ターゲット データベースに適用する必要があります。 スキーマを抽出するには、mysqldump と `--no-data` パラメーターを使用できます。 そのためには、ソースの MySQL データベースとターゲットの Azure Database for MySQL の両方に接続できるマシンが必要です。
@@ -104,47 +120,9 @@ mysql.exe -h [servername] -u [username] -p[password] [database]< [schema file pa
 mysql.exe -h mysqlsstrgt.mysql.database.azure.com -u docadmin@mysqlsstrgt -p migtestdb < d:\migtestdb.sql
  ```
 
-スキーマに外部キーが含まれている場合、移行中の並列データ読み込みが移行タスクによって処理されます。 スキーマの移行中に外部キーを削除する必要はありません。
+スキーマに外部キーまたはトリガーが含まれている場合、移行中の並列データ読み込みが移行タスクによって処理されます。 スキーマの移行中に外部キーまたはトリガーをドロップする必要はありません。
 
-データベースにトリガーが含まれている場合、ソースからのフル データ移行の前に、ターゲットにデータ整合性が適用されます。 移行時はターゲットのすべてのテーブルのトリガーを無効にし、移行の完了後にそれらのトリガーを有効にすることをお勧めします。
-
-MySQL Workbench から、ターゲット データベースに対して次のスクリプトを実行し、drop trigger スクリプトと add trigger スクリプトを抽出します。
-
-```sql
-SELECT
-    SchemaName,
-    GROUP_CONCAT(DropQuery SEPARATOR ';\n') as DropQuery,
-    Concat('DELIMITER $$ \n\n', GROUP_CONCAT(AddQuery SEPARATOR '$$\n'), '$$\n\nDELIMITER ;') as AddQuery
-FROM
-(
-SELECT 
-    TRIGGER_SCHEMA as SchemaName,
-    Concat('DROP TRIGGER `', TRIGGER_NAME, "`") as DropQuery,
-    Concat('CREATE TRIGGER `', TRIGGER_NAME, '` ', ACTION_TIMING, ' ', EVENT_MANIPULATION, 
-            '\nON `', EVENT_OBJECT_TABLE, '`\n' , 'FOR EACH ', ACTION_ORIENTATION, ' ',
-            ACTION_STATEMENT) as AddQuery
-FROM  
-    INFORMATION_SCHEMA.TRIGGERS
-ORDER BY EVENT_OBJECT_SCHEMA, EVENT_OBJECT_TABLE, ACTION_TIMING, EVENT_MANIPULATION, ACTION_ORDER ASC
-) AS Queries
-GROUP BY SchemaName
-```
-
-その結果に含まれる生成された drop trigger クエリ (DropQuery 列) を実行して、ターゲット データベースからトリガーを削除します。 add trigger クエリは保存できます。データ移行の完了後に使用します。
-
-## <a name="register-the-microsoftdatamigration-resource-provider"></a>Microsoft.DataMigration リソース プロバイダーを登録する
-
-リソース プロバイダーの登録は、Azure サブスクリプションごとに 1 回だけ行う必要があります。 この登録なしに、**Azure Database Migration Service** のインスタンスを作成することはできません。
-
-1. Azure portal にサインインし、 **[すべてのサービス]** を選択し、 **[サブスクリプション]** を選択します。
-
-   ![ポータルのサブスクリプションの表示](media/tutorial-mysql-to-azure-mysql-offline-portal/01-dms-portal-select-subscription.png)
-
-2. Azure Database Migration Service のインスタンスを作成するサブスクリプションを選択してから、 **[リソース プロバイダー]** を選びます。
-
-3. 移行を検索し、**Microsoft.DataMigration** の右側にある **[登録]** を選択します。
-
-    ![リソース プロバイダーの登録](media/tutorial-mysql-to-azure-mysql-offline-portal/02-dms-portal-register-rp.png)
+[!INCLUDE [resource-provider-register](../../includes/database-migration-service-resource-provider-register.md)]
 
 ## <a name="create-a-database-migration-service-instance"></a>Database Migration Service インスタンスを作成する
 
@@ -188,7 +166,7 @@ GROUP BY SchemaName
     
     ![新しい移行プロジェクトを作成する](media/tutorial-mysql-to-azure-mysql-offline-portal/08-02-dms-portal-new-project.png)
 
-3. **[新しい移行プロジェクト]** 画面でプロジェクトの名前を指定し、 **[ソース サーバーの種類]** 選択ボックスで **[MySQL]** を、 **[ターゲット サーバーの種類]** 選択ボックスで **[Azure Database for MySQL]** を選択して、 **[Migration activity type]\(移行アクティビティの種類\)** 選択ボックスで **[Data migration \[preview\]]\(データの移行 [プレビュー]\)** を選択します。 **[アクティビティの作成と実行]** を選択します。
+3. **[新しい移行プロジェクト]** 画面でプロジェクトの名前を指定し、 **[ソース サーバーの種類]** 選択ボックスで **[MySQL]** を、 **[ターゲット サーバーの種類]** 選択ボックスで **[Azure Database for MySQL]** を選択して、 **[Migration activity type]\(移行アクティビティの種類\)** 選択ボックスで **[Data migration]\(データの移行\)** を選択します。 **[アクティビティの作成と実行]** を選択します。
 
     ![Database Migration Service プロジェクトを作成する](media/tutorial-mysql-to-azure-mysql-offline-portal/09-dms-portal-project-mysql-create.png)
 
@@ -205,7 +183,7 @@ GROUP BY SchemaName
 
     ![[ターゲットの追加に関する詳細] 画面](media/tutorial-mysql-to-azure-mysql-offline-portal/11-dms-portal-project-mysql-target.png)
 
-3. **[データベースの選択]** 画面で、移行のソース データベースとターゲット データベースをマッピングし、 **[次へ: 移行の設定の構成>>]** を選択します。 **[Make Source Server Readonly]\(ソース サーバーを読み取り専用にする\)** オプションを選択することでソースを読み取り専用にできますが、これはサーバー レベルの設定であることに注意してください。 選択した場合、選択したデータベースだけでなく、サーバー全体が読み取り専用に設定されます。
+3. **[データベースの選択]** 画面で、移行のソース データベースとターゲット データベースをマッピングし、 **[次へ: 移行の設定の構成>>]** を選択します。 **[Make Source Server Read Only]\(ソース サーバーを読み取り専用にする\)** オプションを選択することでソースを読み取り専用にできますが、これはサーバー レベルの設定であることに注意してください。 選択した場合、選択したデータベースだけでなく、サーバー全体が読み取り専用に設定されます。
     
     ターゲット データベースにソース データベースと同じデータベース名が含まれている場合、Azure Database Migration Service では、既定でターゲット データベースが選択されます。
     ![データベースの選択の詳細画面](media/tutorial-mysql-to-azure-mysql-offline-portal/12-dms-portal-project-mysql-select-db.png)

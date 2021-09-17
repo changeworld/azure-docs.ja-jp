@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/08/2021
 ms.author: jeedes
-ms.openlocfilehash: 06f4ddff9c897858eec27f97f8e45a3d656e951d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d317adf207360c7e513bbd5239f45e4955b50782
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101650789"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122182959"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mondaycom"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と monday.com の統合
 
@@ -38,6 +38,7 @@ ms.locfileid: "101650789"
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 * monday.com では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* monday.com では、[**自動化された** ユーザー プロビジョニングとプロビジョニング解除](mondaycom-provisioning-tutorial.md) (推奨) がサポートされます。
 * monday.com では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="add-mondaycom-from-the-gallery"></a>ギャラリーからの monday.com の追加

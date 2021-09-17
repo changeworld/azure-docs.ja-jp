@@ -2,13 +2,14 @@
 title: Azure Lab Services でラボ アカウントを設定する | Microsoft Docs
 description: Azure Lab Services にラボ アカウントを設定する方法と、ラボの作成者を追加する方法、ラボ アカウント内のラボで使用する Marketplace イメージを指定する方法について説明します。
 ms.topic: tutorial
-ms.date: 06/26/2020
-ms.openlocfilehash: fba4dbc5386407bd796606d86a5b7bdc7c10fd61
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 07/26/2021
+ms.custom: subject-rbac-steps
+ms.openlocfilehash: d6107c1a70b22682636b63c0fb0f7374a0d96873
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85445068"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122634016"
 ---
 # <a name="tutorial-set-up-a-lab-account-with-azure-lab-services"></a>チュートリアル:Azure Lab Services でラボ アカウントを設定する
 Azure Lab Services では、ラボ アカウントは、それによって組織のラボが管理される中心的なアカウントとして機能します。 ラボ アカウントでは、ラボを作成する権限を他のユーザーに付与し、ラボ アカウントの管理下にあるすべてのラボに適用されるポリシーを設定します。 このチュートリアルでは、ラボ アカウントを作成する方法について説明します。 
@@ -50,17 +51,25 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ![[Lab account]\(ラボ アカウント\) ページ](./media/tutorial-setup-lab-account/lab-account-page.png)
 
 ## <a name="add-a-user-to-the-lab-creator-role"></a>ユーザーをラボの作成者ロールに追加する
-ラボ アカウントでクラスルーム ラボを設定するには、ユーザーがラボ アカウントにおける **ラボの作成者** ロールのメンバーであることが必要です。 クラスのラボを作成するアクセス許可を教師に与えるには、教師を **ラボの作成者** ロールに追加します。
+ラボ アカウントでクラスルーム ラボを設定するには、ユーザーがラボ アカウントにおける **ラボの作成者** ロールのメンバーであることが必要です。 クラスのラボを作成するアクセス許可を教師に与えるには、教師を **ラボの作成者** ロールに追加します。詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 > [!NOTE]
 > ラボ アカウントを作成するために使用したアカウントは、このロールに自動的に追加されます。 このチュートリアルでクラスルーム ラボの作成に同じユーザー アカウントを使用する場合、この手順はスキップしてください。 
 
-1. **[ラボ アカウント]** ページで、 **[アクセス制御 (IAM)]** を選択し、ツール バーの **[+ 追加]** を選択してから、ツール バーの **[+ ロール割り当ての追加]** を選択します。 
 
-    ![[アクセス制御] -> [ロールの割り当ての追加] ボタン](./media/tutorial-setup-lab-account/add-role-assignment-button.png)
-1. **[ロールの割り当ての追加]** ページで、 **[ロール]** から **[ラボの作成者]** を選択し、ラボの作成者ロールに追加するユーザーを選択した後、 **[保存]** を選択します。 
+1. **[ラボ アカウント]** ページで、 **[アクセス制御 (IAM)]** を選択します。
 
-    ![ラボ作成者の追加](./media/tutorial-setup-lab-account/add-lab-creator.png)
+1. **[追加]**  >  **[ロールの割り当ての追加 (プレビュー)]** を選択します。
+
+    ![[ロールの割り当ての追加] メニューが開いている [アクセス制御 (IAM)] ページ。](../../includes/role-based-access-control/media/add-role-assignment-menu-generic.png)
+
+1. **[ロール]** タブで、 **[ラボ作成者]** ロールを選択します。
+
+    ![[ロール] タブが選択された [ロールの割り当ての追加] ページ。](../../includes/role-based-access-control/media/add-role-assignment-role-generic.png)
+
+1. **[メンバー]** タブで、ラボ作成者ロールに追加したいユーザーを選択します。
+
+1. **[確認と 割り当て]** タブで、 **[確認と割り当て]** を選択して ロールを割り当てます。
 
 
 ## <a name="next-steps"></a>次のステップ

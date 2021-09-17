@@ -8,12 +8,12 @@ ms.service: media-services
 ms.topic: conceptual
 ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: f480f7821ea3443c76c551f45ac74d136f417060
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 7c4db2326ab8e325dfdfa759ec7f5fdc71f17df1
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106277302"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122633723"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Azure Media Services v3 を使用したライブ ストリーミング
 
@@ -118,6 +118,6 @@ Media Services v3 のライブ ストリーミング ワークフローを理解
 - [状態と課金](live-event-states-billing-concept.md)
 - [待機時間](live-event-latency-reference.md)
 
-## <a name="live-streaming-questions"></a>ライブ ストリーミングの質問
+## <a name="live-streaming-faq"></a>ライブ ストリーミングの FAQ
 
-[ライブ ストリーミングの質問](questions-collection.md#live-streaming)に関する記事を参照してください。
+[FAQ のライブ ストリーミングの質問](frequently-asked-questions.yml)に関するページを参照してください。

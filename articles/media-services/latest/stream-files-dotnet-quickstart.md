@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 07/23/2021
 ms.author: inhenkel
-ms.openlocfilehash: 9b45671496f114eaf708aad92def220a3b81349e
-ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
+ms.openlocfilehash: 079575148585c508224b6767b2eba61a16463fa0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114690209"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732745"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---net"></a>チュートリアル:リモート ファイルを URL に基づいてエンコードし、ビデオをストリーム配信する - .NET
 
@@ -38,7 +38,7 @@ ms.locfileid: "114690209"
 - [Visual Studio Code for Windows/macOS/Linux](https://code.visualstudio.com/)、または [Visual Studio 2019 for Windows/Mac](https://visualstudio.microsoft.com/) をインストールします。
 - [.NET 5.0 SDK](https://dotnet.microsoft.com/download) をインストールします。
 - [Media Services アカウントを作成する](./account-create-how-to.md) **API アクセス** の詳細情報 (JSON 形式) をコピーするか、Media Services アカウントに接続するうえで必要な値をこのサンプルで使用する *.env* ファイルの書式に保存しておくようにしてください。
-- [Azure CLI を使用した Azure Media Services API へのアクセス](./access-api-howto.md)に関するページの手順に従い、資格情報を保存します。 これらは、このサンプルで API にアクセスする際や、 *.env* ファイルの書式に入力する際に必要になります。
+- [Azure CLI を使用した Azure Media Services API へのアクセス](./access-api-howto.md)に関するページの手順に従います。 必ず "*資格情報を保存*" してください。 これらは、このサンプルで API にアクセスする際や、 *.env* ファイルの書式に入力する際に必要になります。
 
 ## <a name="download-and-configure-the-sample"></a>サンプルをダウンロードして構成する
 
@@ -48,7 +48,7 @@ ms.locfileid: "114690209"
  git clone https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts.git
  ```
 
-サンプルは、[EncodeAndStreamFiles](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/tree/master/AMSV3Quickstarts/EncodeAndStreamFiles) フォルダーにあります。
+このサンプルは、AMSV3Quickstarts の下の [EncodeAndStreamFiles](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/tree/master/AMSV3Quickstarts/EncodeAndStreamFiles) フォルダー内にあります。
 
 [!INCLUDE [appsettings or .env file](./includes/note-appsettings-or-env-file.md)]
 
@@ -68,8 +68,9 @@ ms.locfileid: "114690209"
 
 アプリを実行すると、別のプロトコルでビデオを再生するために使用できる URL が表示されます。 
 
-1. Ctrl + F5 キーを押して、*EncodeAndStreamFiles* アプリケーションを実行します。
-2. Apple の **HLS** プロトコル (末尾が *manifest(format=m3u8-aapl)* ) を選び、コンソールからストリーム配信 URL をコピーします。
+1. VSCode で AMSV3Quickstarts を開きます。
+2. Ctrl + F5 キーを押して、.NET で *EncodeAndStreamFiles* アプリケーションを実行します。 これには数分かかることがあります。
+3. このアプリによって 3 つの URL が出力されます。 これらの URL を使用して、次の手順でストリームをテストします。
 
 ![Visual Studio の EncodeAndStreamFiles アプリからの出力のスクリーンショット。Azure Media Player で使用するための 3 つのストリーミング URL が表示されています。](./media/stream-files-tutorial-with-api/output.png)
 
@@ -86,7 +87,7 @@ ms.locfileid: "114690209"
 2. **[URL:]** ボックスに、アプリケーションを実行したときに取得したストリーム配信 URL 値のいずれかを貼り付けます。 
  
      URL は、HLS、Dash、または Smooth 形式で貼り付けることができます。Azure Media Player によって、デバイスでの再生に適切なストリーミング プロトコルに自動的に切り替えられます。
-3. **[Update Player]\(プレーヤーの更新\)** をクリックします。
+3. **[Update Player]\(プレーヤーの更新\)** をクリックします。 これにより、リポジトリ内のビデオ ファイルの再生が開始されます。
 
 Azure Media Player はテストには使用できますが、運用環境では使わないでください。 
 

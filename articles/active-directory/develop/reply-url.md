@@ -5,32 +5,42 @@ description: Microsoft の ID プラットフォームによって適用され�
 author: SureshJa
 ms.author: sureshja
 manager: CelesteDG
-ms.date: 06/23/2021
+ms.date: 08/06/2021
 ms.topic: conceptual
 ms.subservice: develop
 ms.custom: contperf-fy21q4-portal, aaddev
 ms.service: active-directory
 ms.reviewer: marsma, lenalepa, manrath
-ms.openlocfilehash: b9484973e724246db76ccc927437fccf2c4c7be1
-ms.sourcegitcommit: cd8e78a9e64736e1a03fb1861d19b51c540444ad
+ms.openlocfilehash: 96fe21b4f1df662e72ec88abc68d74db25257de1
+ms.sourcegitcommit: c2f0d789f971e11205df9b4b4647816da6856f5b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112966466"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122662039"
 ---
 # <a name="redirect-uri-reply-url-restrictions-and-limitations"></a>リダイレクト URI (応答 URL) に関する制約と制限
 
 リダイレクト URI、すなわち応答 URL は、アプリが正しく承認され、認証コードまたはアクセス トークンが付与されると、承認サーバーがユーザーを送り出す場所です。 承認サーバーは、リダイレクト URI にこのコードまたはトークンを送信するため、アプリ登録プロセスの一環として正しい場所を登録することが重要です。
 
- リダイレクト URI には、次の制限があります。
+Azure Active Directory (Azure AD) アプリケーション モデルでは、URI のリダイレクトに次の制限が指定されます。
 
 * リダイレクト URL は、スキーム `https` で始まる必要があります。 [localhost リダイレクト URI には例外](#localhost-exceptions)がいくつかあります。
 
-* リダイレクト URI では大文字と小文字が区別されます。 大文字と小文字の区別は、実行中のアプリケーションの URL パスの場合と一致している必要があります。 たとえば、そのパス `.../abc/response-oidc` の一部としてアプリケーションが含まれている場合に、リダイレクト URL 内で `.../ABC/response-oidc` と指定しないでください。 Web ブラウザーでは大文字と小文字を区別を区別するものとしてパスが処理されるため、`.../abc/response-oidc` に関連付けられている cookie は、大文字と小文字が一致しない `.../ABC/response-oidc` URL にリダイレクトされた場合に除外される可能性があります。
+* リダイレクト URI では大文字と小文字が区別され、実行中のアプリケーションの URL パスの大文字と小文字が一致する必要があります。 たとえば、そのパス `.../abc/response-oidc` の一部としてアプリケーションが含まれている場合に、リダイレクト URL 内で `.../ABC/response-oidc` と指定しないでください。 Web ブラウザーでは大文字と小文字を区別を区別するものとしてパスが処理されるため、`.../abc/response-oidc` に関連付けられている cookie は、大文字と小文字が一致しない `.../ABC/response-oidc` URL にリダイレクトされた場合に除外される可能性があります。
 
-* パス セグメントのないリダイレクト URI により、応答内の URI の末尾にスラッシュが追加されます。 https://contoso.com 、 http://localhost:7071 などの URI については、 https://contoso.com/ 、 http://localhost:7071/ がそれぞれ返されます。 これは、応答モードがクエリまたはフラグメントの場合にのみ適用されます。
+* パス セグメントで構成 "*されていない*" リダイレクト URI は、応答に末尾のスラッシュ ('`/`') が付加されて返されます。 これは、応答モードが `query` または `fragment` の場合にのみ適用されます。
 
-* パス セグメントを含むリダイレクト URI の場合は、末尾のスラッシュは追加されません。 (例: https://contoso.com/abc 、 https://contoso.com/abc/response-oidc が応答内で使用されます)
+    例 :
+
+    * `https://contoso.com` は `https://contoso.com/` として返されます
+    * `http://localhost:7071` は `http://localhost:7071/` として返されます
+
+* パス セグメントを含むリダイレクト URI は、応答に末尾のスラッシュが付加 "*されません*"。
+
+    例 :
+
+    * `https://contoso.com/abc` は `https://contoso.com/abc` として返されます
+    * `https://contoso.com/abc/response-oidc` は `https://contoso.com/abc/response-oidc` として返されます
 
 ## <a name="maximum-number-of-redirect-uris"></a>リダイレクト URI の最大数
 
@@ -47,11 +57,20 @@ ms.locfileid: "112966466"
 
 ## <a name="supported-schemes"></a>サポートされているスキーム
 
-現在、Azure Active Directory (Azure AD) アプリケーション モデルでは、任意の組織の Azure AD テナントで Microsoft の職場または学校アカウントにサインインするアプリに対して、HTTP と HTTPS の両方のスキームがサポートされています。 これらのアカウントの種類は、アプリケーション マニフェストの `signInAudience` フィールドの `AzureADMyOrg` および `AzureADMultipleOrgs` の値によって指定されます。 個人用の Microsoft アカウント (MSA) *に加えて* 職場と学校のアカウントにサインインするアプリ (つまり、`signInAudience` が `AzureADandPersonalMicrosoftAccount` に設定されている) の場合、HTTPS スキームのみが許可されます。
+**HTTPS:** HTTPS スキーム (`https://`) は、すべての HTTP ベースのリダイレクト URI でサポートされています。
 
-職場または学校のアカウントにサインインするアプリの登録に、HTTP スキームを使用するリダイレクト URI を追加するには、Azure portal の [[アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) で、アプリケーション マニフェスト エディターを使用します。 ただし、マニフェスト エディターを使用して HTTP ベースのリダイレクト URI を設定することは可能ですが、リダイレクト URI には HTTPS スキームを使用することが *強く* 推奨されます。
+**HTTP:** HTTP スキーム (`http://`) は *localhost* URI で "*のみ*" サポートされ、アクティブなローカル アプリケーションの開発およびテスト中にのみ使用する必要があります。
 
-## <a name="localhost-exceptions"></a>Localhost の例外
+| リダイレクト URI の例                    | 有効期限までの日数 |
+|-----------------------------------------|----------|
+| `https://contoso.com`                   | 有効    |
+| `https://contoso.com/abc/response-oidc` | 有効    |
+| `https://localhost`                     | 有効    |
+| `http://contoso.com/abc/response-oidc`  | 無効  |
+| `http://localhost`                      | 有効    |
+| `http://localhost/abc`                  | 有効    |
+
+### <a name="localhost-exceptions"></a>Localhost の例外
 
 [RFC 8252 のセクション 8.3](https://tools.ietf.org/html/rfc8252#section-8.3) と [7.3](https://tools.ietf.org/html/rfc8252#section-7.3) に従って、"loopback" または "localhost" リダイレクト URI には、次の 2 つの特別な考慮事項があります。
 
@@ -107,6 +126,6 @@ ms.locfileid: "112966466"
 > [!WARNING]
 > この手法では、セキュリティを侵害されたクライアントが状態パラメーターで送信された追加パラメーターを変更し、ユーザーを別の URL にリダイレクトすることを許します。これは RFC 6819 に説明がある[オープン リダイレクターの脅威](https://tools.ietf.org/html/rfc6819#section-4.2.4)です。 そのため、クライアントは状態を暗号化するか、リダイレクト URI に含まれるドメイン名をトークンと比べて検証するなど、何か他の手段で状態を検証することによって、これらのパラメーターを保護する必要があります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 アプリの登録の[アプリケーション マニフェスト](reference-app-manifest.md)について学習します。

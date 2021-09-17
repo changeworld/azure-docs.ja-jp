@@ -10,12 +10,12 @@ ms.subservice: core
 ms.date: 05/25/2021
 ms.topic: how-to
 ms.custom: devplatv2
-ms.openlocfilehash: 30b378f0ba25579d78118ff82a17689f4bdf56a5
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 6e0975a61ff5b36eb5ffbe5737be614a70150796
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114457783"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122419482"
 ---
 # <a name="set-up-the-visual-studio-code-azure-machine-learning-extension-preview"></a>Visual Studio Code Azure Machine Learning 拡張機能をセットアップする (プレビュー)
 
@@ -38,7 +38,7 @@ VS Code 用の Azure Machine Learning 拡張機能には、次の作業を行う
 - Azure のサブスクリプション。 お持ちでない場合は、[無料版または有料版の Azure Machine Learning](https://azure.microsoft.com/free/) にサインアップしてお試しください。
 - Visual Studio Code。 インストールしていない場合は、[インストール](https://code.visualstudio.com/docs/setup/setup-overview)します。
 - [Python](https://www.python.org/downloads/)
-- (省略可) 拡張機能を使用してリソースを作成するには、2.0 CLI をインストールする必要があります。 セットアップ手順については、[2.0 CLI (プレビュー) のインストール、設定、および使用](how-to-configure-cli.md)に関する記事を参照してください。
+- (省略可) 拡張機能を使用してリソースを作成するには、CLI (v2) をインストールする必要があります。 設定手順については、[CLI (v2) (プレビュー) のインストール、設定、および使用](how-to-configure-cli.md)に関する記事を参照してください。
 
 ## <a name="install-the-extension"></a>拡張機能をインストールする
 
@@ -56,7 +56,7 @@ VS Code 用の Azure Machine Learning 拡張機能には、次の作業を行う
 このチュートリアルの残りの手順は、拡張機能の最新バージョンを使用してテストされています。
 
 > [!NOTE]
-> Azure Machine Learning VS Code 拡張機能では、既定で 2.0 CLI が使用されます。 1\.0 CLI に切り替えるには、Visual Studio Code の `azureML.CLI Compatibility Mode` 設定を `1.0` に設定します。 Visual Studio の設定の変更について詳しくは、[ユーザーとワークスペースの設定に関するドキュメント](https://code.visualstudio.com/docs/getstarted/settings)を参照してください。
+> Azure Machine Learning VS Code 拡張機能では、既定で CLI (v2) を使用しています。 1\.0 CLI に切り替えるには、Visual Studio Code の `azureML.CLI Compatibility Mode` 設定を `1.0` に設定します。 Visual Studio の設定の変更について詳しくは、[ユーザーとワークスペースの設定に関するドキュメント](https://code.visualstudio.com/docs/getstarted/settings)を参照してください。
 
 ## <a name="sign-in-to-your-azure-account"></a>Azure アカウントにサインインする
 
@@ -71,7 +71,7 @@ Azure アカウントにサインインするには、Visual Studio Code のス�
 
 ## <a name="choose-your-default-workspace"></a>既定のワークスペースを選択する
 
-既定の Azure Machine Learning ワークスペースを選択すると、2.0 CLI YAML 仕様ファイルの作成時に次の機能が有効になります。
+既定の Azure Machine Learning ワークスペースを選択すると、CLI (v2) YAML 仕様ファイルの作成時に次の機能が有効になります。
 
 - スキーマの検証
 - オート コンプリート

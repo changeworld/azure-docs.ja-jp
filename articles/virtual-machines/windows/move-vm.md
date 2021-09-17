@@ -9,14 +9,17 @@ ms.topic: how-to
 ms.date: 07/03/2019
 ms.author: cynthn
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8f07d11e1760cb7f2a3535a15a5fccf166b8536c
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 855045625467963d03e2aca57317b51ff20cc1aa
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110677772"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122697914"
 ---
 # <a name="move-a-windows-vm-to-another-azure-subscription-or-resource-group"></a>他の Azure サブスクリプションまたはリソース グループへの Windows VM の移動
+
+**適用対象:** :heavy_check_mark: Windows VM
+
 この記事では、リソース グループまたはサブスクリプション間で Windows 仮想マシン (VM) を移動する方法について説明します。 サブスクリプション間での移動は、個人のサブスクリプションで作成した VM を、会社のサブスクリプションに移動して作業を続ける場合に便利です。 移動するために VM を停止する必要はありません。移動の間も、継続して実行される必要があります。
 
 > [!IMPORTANT]

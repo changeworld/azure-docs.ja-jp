@@ -3,13 +3,13 @@ title: 仮想ファイル システムをプールにマウントする
 description: 仮想ファイル システムを Batch プールにマウントする方法について説明します。
 ms.topic: how-to
 ms.custom: devx-track-csharp
-ms.date: 03/26/2021
-ms.openlocfilehash: 460501e30b5afd2eb7a1f67b1162b9820830454a
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 08/18/2021
+ms.openlocfilehash: 7057a982fb3a4b59b8716a373c2ed5172e392cb2
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111968141"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444064"
 ---
 # <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>仮想ファイル システムを Batch プールにマウントする
 
@@ -78,11 +78,16 @@ new PoolAddParameter
 
 ### <a name="azure-blob-container"></a>Azure BLOB コンテナー
 
-もう 1 つの選択肢は、[blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md) を介して Azure Blob ストレージを使用することです。 BLOB ファイル システムをマウントするには、ストレージ アカウントに `AccountKey` または `SasKey` が必要です。 これらのキーの取得については、「[ストレージ アカウント アクセス キーを管理する](../storage/common/storage-account-keys-manage.md)」または「[Shared Access Signatures (SAS) を使用して Azure Storage リソースへの制限付きアクセスを許可する](../storage/common/storage-sas-overview.md)」を参照してください。 blobfuse の使用に関する詳細とヒントについては、「blobfuse」を参照してください。
+もう 1 つの選択肢は、[blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md) を介して Azure Blob ストレージを使用することです。 BLOB ファイル システムをマウントするには、お使いのストレージ アカウントにアクセスできる、`AccountKey`、`SasKey` または `Managed Identity` が必要です。
+
+これらのキーの取得については、「[ストレージ アカウント アクセス キーを管理する](../storage/common/storage-account-keys-manage.md)」、「[Shared Access Signatures (SAS) を使用して Azure Storage リソースへの制限付きアクセスを許可する](../storage/common/storage-sas-overview.md)」および「[Batch プールでマネージド ID を構成する](managed-identity-pools.md)」を参照してください。 blobfuse の使用に関する詳細とヒントについては、[blobfuse プロジェクト](https://github.com/Azure/azure-storage-fuse)に関するページを参照してください。
 
 blobfuse でマウントされたディレクトリへの既定のアクセスを取得するには、**Administrator** としてタスクを実行します。 blobfuse によってディレクトリはユーザー空間にマウントされ、プールの作成時にルートとしてマウントされます。 Linux では、すべての **Administrator** タスクがルートになります。 FUSE モジュールのすべてのオプションについては、[FUSE のリファレンス ページ](https://manpages.ubuntu.com/manpages/xenial/man8/mount.fuse.8.html)で説明されています。
 
 [トラブルシューティングの FAQ](https://github.com/Azure/azure-storage-fuse/wiki/3.-Troubleshoot-FAQ)に関する記事で、blobfuse の使用に関する詳細とヒントについて確認してください。 また、[blobfuse リポジトリの GitHub の問題](https://github.com/Azure/azure-storage-fuse/issues)に関する記事を参照して、現在の blobfuse の問題と解決策を確認することもできます。
+
+> [!NOTE]
+> 次の例では、`AccountKey`、`SasKey` および `IdentityReference` が示されていますが、これらは相互に排他的で、1 つしか指定できません。
 
 ```csharp
 new PoolAddParameter
@@ -98,6 +103,7 @@ new PoolAddParameter
                 ContainerName = "containerName",
                 AccountKey = "StorageAccountKey",
                 SasKey = "SasKey",
+                IdentityReference = new ComputeNodeIdentityReference("/subscriptions/SUB/resourceGroups/RG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity-name"),
                 RelativeMountPath = "RelativeMountPath",
                 BlobfuseOptions = "-o attr_timeout=240 -o entry_timeout=240 -o negative_timeout=120 "
             },
@@ -105,6 +111,9 @@ new PoolAddParameter
     }
 }
 ```
+
+> [!TIP]
+>マネージド ID を使用する場合は、マウントを実行する VM で使用できるように、ID が確実に[プールに割り当てられている](managed-identity-pools.md)ようにします。 ID が正常に機能するには、`Storage Blob Data Contributor` ロールを持っている必要があります。
 
 ### <a name="network-file-system"></a>ネットワーク ファイル システム
 

@@ -6,12 +6,12 @@ ms.author: lle
 ms.service: data-factory
 ms.topic: tutorial
 ms.date: 05/06/2021
-ms.openlocfilehash: 5c9396cdfe8296b4869f6713ff0022bc896dc733
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: faa08121bde07f82a24fad24ca49b2fe2d0ea618
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111957235"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121731454"
 ---
 # <a name="tutorial-how-to-access-sql-managed-instance-from-data-factory-managed-vnet-using-private-endpoint"></a>チュートリアル: プライベート エンドポイントを使用して、Data Factory マネージド VNET から SQL Managed Instance にアクセスする方法
 
@@ -235,13 +235,12 @@ ms.locfileid: "111957235"
 4. **[Managed private endpoints]\(マネージド プライベート エンドポイント\)** で、 **[+ 新規]** を選択します。
 5. 一覧から **[Private Link サービス]** タイルを選択し、 **[続行]** を選択します。
 6. プライベート エンドポイントの名前を入力して、Private Link サービスの一覧で **myPrivateLinkService** を選択します。
-7. ターゲットとなる SQL マネージド インスタンスの FQDN と自分の Private Link サービスの NAT IP を追加します。
+7. 実際のターゲット SQL Managed Instance の FQDN を追加します。
     
     :::image type="content" source="./media/tutorial-managed-virtual-network/sql-mi-host.png" alt-text="SQL MI ホストを示すスクリーンショット。" lightbox="./media/tutorial-managed-virtual-network/sql-mi-host-expanded.png":::
 
-    :::image type="content" source="./media/tutorial-managed-virtual-network/link-service-nat-ip.png" alt-text="リンク サービスの NAT IP を示すスクリーンショット。" lightbox="./media/tutorial-managed-virtual-network/link-service-nat-ip-expanded.png":::
 
-    :::image type="content" source="./media/tutorial-managed-virtual-network/private-endpoint-2.png" alt-text="プライベート エンドポイントの設定を示すスクリーンショット。":::
+    :::image type="content" source="./media/tutorial-managed-virtual-network/private-endpoint-5.png" alt-text="プライベート エンドポイントの設定を示すスクリーンショット。":::
 
 8. プライベート エンドポイントを作成します。
 

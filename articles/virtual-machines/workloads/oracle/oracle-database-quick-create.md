@@ -8,14 +8,16 @@ ms.collection: linux
 ms.topic: quickstart
 ms.date: 10/05/2020
 ms.author: kegorman
-ms.openlocfilehash: 4b15d683a54f665e948dc31b51df039d20c58f7a
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 2854cb45f83e46fc556f57247ab4aa28bd7f74c0
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110081373"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122696914"
 ---
 # <a name="create-an-oracle-database-in-an-azure-vm"></a>Azure VM での Oracle データベースの作成
+
+**適用対象:** :heavy_check_mark: Linux VM 
 
 このガイドでは、Oracle 19c データベースを作成するために、Azure CLI を使用して [Oracle Marketplace ギャラリー イメージ](https://azuremarketplace.microsoft.com/marketplace/apps/Oracle.OracleDatabase12102EnterpriseEdition?tab=Overview)から Azure 仮想マシンをデプロイする方法について説明します。 サーバーをデプロイすると、Oracle データベースを構成するために SSH 経由で接続します。 
 
@@ -270,8 +272,8 @@ Oracle ソフトウェアは、既に Marketplace イメージにインストー
     dbca -silent \
        -createDatabase \
        -templateName General_Purpose.dbc \
-       -gdbname test \
-       -sid test \
+       -gdbname oratest1 \
+       -sid oratest1 \
        -responseFile NO_VALUE \
        -characterSet AL32UTF8 \
        -sysPassword OraPasswd1 \
@@ -305,11 +307,11 @@ Oracle ソフトウェアは、既に Marketplace イメージにインストー
        70% complete
        Executing Post Configuration Actions
        100% complete
-       Database creation complete. For details check the logfiles at: /u01/app/oracle/cfgtoollogs/dbca/test.
+       Database creation complete. For details check the logfiles at: /u01/app/oracle/cfgtoollogs/dbca/oratest1.
        Database Information:
-       Global Database Name:test
-       System Identifier(SID):test
-       Look at the log file "/u01/app/oracle/cfgtoollogs/dbca/test/test.log" for further details.
+       Global Database Name:oratest1
+       System Identifier(SID):oratest1
+       Look at the log file "/u01/app/oracle/cfgtoollogs/dbca/oratest1/oratest1.log" for further details.
     ```
 
 4. Oracle 変数の設定
@@ -317,13 +319,13 @@ Oracle ソフトウェアは、既に Marketplace イメージにインストー
     接続する前に、環境変数 *ORACLE_SID* を設定する必要があります。
 
     ```bash
-        export ORACLE_SID=test
+        export ORACLE_SID=oratest1
     ```
 
     また、次のコマンドを使用して、今後のサインインのために `oracle` ユーザーの `.bashrc` ファイルに ORACLE_SID 変数を追加する必要があります。
 
     ```bash
-    echo "export ORACLE_SID=test" >> ~oracle/.bashrc
+    echo "export ORACLE_SID=oratest1" >> ~oracle/.bashrc
     ```
 
 ## <a name="oracle-em-express-connectivity"></a>Oracle EM Express への接続

@@ -5,24 +5,22 @@ services: notification-hubs
 documentationcenter: windows
 author: sethmanheim
 manager: femila
-editor: jwargo
-ms.assetid: c454f5a3-a06b-45ac-91c7-f91210889b25
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc, devx-track-csharp
-ms.date: 03/22/2019
+ms.date: 08/23/2021
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 03/22/2019
-ms.openlocfilehash: d91320d8f78942ca916084cbf29a88818d95f531
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9cd34c85f938a6deade8316577714d836fd021df
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92314634"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122769130"
 ---
 # <a name="tutorial-send-localized-push-notifications-to-windows-apps-using-azure-notification-hubs"></a>チュートリアル: Azure Notification Hubs を使用して Windows アプリにローカライズしたプッシュ通知を送信する
 
@@ -31,6 +29,9 @@ ms.locfileid: "92314634"
 > * [iOS](notification-hubs-ios-xplat-localized-apns-push-notification.md)
 
 ## <a name="overview"></a>概要
+
+> [!NOTE]
+> Microsoft プッシュ通知サービス (MPNS) は非推奨となり、サポートされなくなりました。
 
 このチュートリアルでは、Notification Hubs サービスに登録されているモバイル デバイスにローカライズしたプッシュ通知を送信する方法を示します。 このチュートリアルでは、「[チュートリアル: 特定のデバイスに通知を送信する (ユニバーサル Windows プラットフォーム)](notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md)」で作成されたアプリケーションを、次のシナリオをサポートするように更新します。
 

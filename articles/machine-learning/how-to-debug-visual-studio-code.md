@@ -9,12 +9,12 @@ ms.topic: how-to
 author: luisquintanilla
 ms.author: luquinta
 ms.date: 08/11/2021
-ms.openlocfilehash: 517577fd7a9383ede62df5403c52ccfa219ba5eb
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 4488670a5dfbedf22fa2880d6e4093c4fbfa52b9
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121751975"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122419156"
 ---
 # <a name="interactive-debugging-with-visual-studio-code"></a>Visual Studio Code を使用した対話型デバッグ
 
@@ -29,7 +29,7 @@ Azure Machine Learning 拡張機能を使用して、クラウドに送信する
 * Azure Machine Learning VS Code 拡張機能 (プレビュー)。 詳しくは、[Azure Machine Learning VS Code 拡張機能の設定](how-to-setup-vs-code.md)に関するページを参照してください。
 
     > [!IMPORTANT]
-    > Azure Machine Learning VS Code 拡張機能では、既定で 2.0 CLI が使用されます。 このガイドの手順では、1.0 CLI を使用します。 1\.0 CLI に切り替えるには、Visual Studio Code の `azureML.CLI Compatibility Mode` 設定を `1.0` に設定します。 Visual Studio の設定の変更について詳しくは、[ユーザーとワークスペースの設定に関するドキュメント](https://code.visualstudio.com/docs/getstarted/settings)を参照してください。
+    > Azure Machine Learning VS Code 拡張機能では、既定で CLI (v2) を使用しています。 このガイドの手順では、1.0 CLI を使用します。 1\.0 CLI に切り替えるには、Visual Studio Code の `azureML.CLI Compatibility Mode` 設定を `1.0` に設定します。 Visual Studio の設定の変更について詳しくは、[ユーザーとワークスペースの設定に関するドキュメント](https://code.visualstudio.com/docs/getstarted/settings)を参照してください。
 
 * [Docker](https://www.docker.com/get-started)
   * Mac および Windows 用の Docker デスクトップ

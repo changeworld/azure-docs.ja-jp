@@ -1,18 +1,20 @@
 ---
 title: SAP Business Warehouse からデータを読み込む
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Azure Data Factory を使用して SAP Business Warehouse (BW) からデータをコピーする
 author: linda33wj
 ms.author: jingwang
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 05/22/2019
-ms.openlocfilehash: 3dabb6d5df0a74cc7ae2fb8b381ad9e0dfe04e63
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/04/2021
+ms.openlocfilehash: 7f6a17d6596ce07c593ee83ad54cc856b2b1b592
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100370701"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638559"
 ---
 # <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>Azure Data Factory を使用して SAP Business Warehouse からデータをコピーする
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -43,17 +45,15 @@ ms.locfileid: "100370701"
 
 ## <a name="do-a-full-copy-from-sap-bw-open-hub"></a>SAP BW オープン ハブからの完全コピーを行う
 
-Azure portal でデータ ファクトリに移動します。 **[作成と監視]** を選択して、別のタブで Data Factory の UI を開きます。
+Azure portal でデータ ファクトリに移動します。 **[Open Azure Data Factory Studio]\(Azure Data Factory Studio を開く\)** タイルで **[開く]** を選択して、別のタブで Data Factory UI を開きます。
 
-1. **[Let's get started]\(始めましょう\)** ページで、 **[データ コピー]** を選択してデータ コピー ツールを開きます。
+1. ホーム ページで、 **[取り込み]** を選択し、データ コピー ツールを開きます。
 
-2. **[プロパティ]** ページで、 **[タスク名]** を指定し、 **[次へ]** を選択します。
+2. **[プロパティ]** ページで、 **[タスクの種類]** の **[組み込みコピー タスク]** を選択して、 **[Task cadence or task schedule]\(タスクの周期またはタスクのスケジュール\)** の **[Run once now]\(今すぐ 1 度だけ実行する\)** を選択し、 **[次へ]** を選択します。
 
-3. **[ソース データ ストア]** ページで、 **[+ 新しい接続の作成]** を選択します。 コネクタ ギャラリーから **[SAP BW Open Hub]\(SAP BW オープン ハブ\)** を選択し、 **[続行]** を選択します。 コネクタをフィルター処理するには、検索ボックスに「**SAP**」と入力します。
+3. **[ソース データ ストア]** ページで、 **[+ 新しい接続]** を選択します。 コネクタ ギャラリーから **[SAP BW Open Hub]\(SAP BW オープン ハブ\)** を選択し、 **[続行]** を選択します。 コネクタをフィルター処理するには、検索ボックスに「**SAP**」と入力します。
 
-4. **[Specify SAP BW Open Hub connection]\(SAP BW オープン ハブ接続の指定\)** ページで、以下の手順に従って新しい接続を作成します。
-
-   ![SAP BW オープン ハブのリンクされたサービス ページを作成する](media/load-sap-bw-data/create-sap-bw-open-hub-linked-service.png)
+4. **[New connection (SAP BW Open Hub)]\(新しい接続 (SAP BW オープン ハブ)\)** ページで、以下の手順に従って新しい接続を作成します。
 
    1. **[Connect via integration runtime]\(統合ランタイム経由で接続\)** の一覧から、既存のセルフホステッド IR を選択します。 または、まだない場合は作成を選択します。
 
@@ -63,60 +63,59 @@ Azure portal でデータ ファクトリに移動します。 **[作成と監�
 
    2. SAP BW の **[サーバー名]** 、 **[システム番号]** 、 **[クライアント ID]** 、 **[言語]** (**EN** 以外の場合)、 **[ユーザー名]** 、および **[パスワード]** を入力します。
 
-   3. **[接続のテスト]** を選択して設定を検証し、 **[完了]** を選択します。
+   3. **[テスト接続]** を選択して設定を検証し、 **[作成]** を選択します。
 
-   4. 新しい接続が作成されます。 **[次へ]** を選択します。
+   ![SAP BW オープン ハブのリンクされたサービス ページを作成する](media/load-sap-bw-data/create-sap-bw-open-hub-linked-service.png)
 
-5. **[Select Open Hub Destinations]\(オープン ハブ宛先の選択\)** ページで、SAP BW で利用できるオープン ハブ宛先を参照します。 データ コピー元の OHD を選択し、 **[次へ]** を選択します。
+   4. **[ソース データ ストア]** ページで、 **[接続]** ブロックで新しく作成した接続を選択します。
 
-   ![SAP BW オープン ハブ宛先の選択のテーブル](media/load-sap-bw-data/select-sap-bw-open-hub-table.png)
+   5. オープン ハブ宛先の選択のセクションで、SAP BW で利用できるオープン ハブ宛先を参照します。 各行の末尾にある [プレビュー] ボタンを選択すると、各宛先のデータをプレビューできます。 データ コピー元の OHD を選択し、 **[次へ]** を選択します。
+   
+   :::image type="content" source="./media/load-sap-bw-data/source-data-store-page.png" alt-text="[ソース データ ストア] ページを示すスクリーンショット。":::
 
-6. 必要がある場合は、フィルターを指定します。 OHD に、1 つの要求 ID を使用した 1 回のデータ転送プロセス (DTP) 実行からのデータのみが含まれている場合、または DTP が確実に完了していてそのデータをコピーする場合は、 **[Exclude Last Request]\(最後の要求を除外する\)** チェック ボックスをオフにします。
+5. 必要がある場合は、フィルターを指定します。 OHD に、1 つの要求 ID を使用した 1 回のデータ転送プロセス (DTP) 実行からのデータのみが含まれている場合、または DTP が確実に完了していてそのデータをコピーする場合は、 **[詳細]** セクションの **[Exclude Last Request]\(最後の要求を除外する\)** チェック ボックスをオフにします。 **[Preview data]\(データのプレビュー\)** ボタンを選択すると、データをプレビューできます。
 
-   これらの設定について詳しくは、この記事の「[SAP BW オープン ハブ宛先の構成](#sap-bw-open-hub-destination-configurations)」をご覧ください。 **[検証]** を選択して、返されるデータを再確認します。 **[次へ]** を選択します。
+   これらの設定について詳しくは、この記事の「[SAP BW オープン ハブ宛先の構成](#sap-bw-open-hub-destination-configurations)」をご覧ください。 **[次へ]** を選択します。
 
    ![SAP BW オープン ハブ フィルターの構成](media/load-sap-bw-data/configure-sap-bw-open-hub-filter.png)
 
-7. **[Destination data store]\(コピー先データ ストア\)** ページで **[+ 新しい接続の作成]**  >  **[Azure Data Lake Storage Gen2]**  >  **[続行]** の順に選択します。
+6. **[Destination data store]\(コピー先データ ストア\)** ページで **[+ 新しい接続]**  >  **[Azure Data Lake Storage Gen2]**  >  **[続行]** の順に選択します。
 
-8. **[Specify Azure Data Lake Storage connection]\(Azure Data Lake Storage 接続の指定\)** ページで、以下の手順に従って接続を作成します。
+7. **[New connection (Azure Data Lake Storage Gen2)]\(新しい接続 (Azure Data Lake Storage Gen2)\)** ページで、以下の手順に従って接続を作成します。
+   1. **[名前]** ドロップダウン リストから、Data Lake Storage Gen2 対応のアカウントを選択します。
+   2. **[作成]** を選択して接続を作成します。
 
    ![ADLS Gen2 のリンクされたサービス ページを作成する](media/load-sap-bw-data/create-adls-gen2-linked-service.png)
 
-   1. **[名前]** ドロップダウン リストから、Data Lake Storage Gen2 対応のアカウントを選択します。
-   2. **[完了]** を選択して、接続を作成します。 **[次へ]** を選択します。
+8. **[Destination data store]\(コピー先データ ストア\)** ページの **[接続]** セクションで新しく作成された接続を選択して、出力フォルダー名として「**copyfromopenhub**」と入力します。 **[次へ]** を選択します。
 
-9. **[Choose the output file or folder]\(出力ファイルまたはフォルダーの選択\)** ページで、出力フォルダー名として「**copyfromopenhub**」と入力します。 **[次へ]** を選択します。
+   :::image type="content" source="./media/load-sap-bw-data/destination-data-store-page.png" alt-text="[Destination data store]\(コピー先データ ストア\) ページを示すスクリーンショット。":::
 
-   ![出力フォルダーの選択ページ](media/load-sap-bw-data/choose-output-folder.png)
-
-10. **[File format setting]\(ファイル形式設定\)** ページで、 **[次へ]** を選択して、既定の設定を使用します。
+9. **[File format setting]\(ファイル形式設定\)** ページで、 **[次へ]** を選択して、既定の設定を使用します。
 
     ![シンク形式の指定ページ](media/load-sap-bw-data/specify-sink-format.png)
 
-11. **[Settings]\(設定\)** ページで、 **[Performance settings]\(パフォーマンスの設定\)** を展開します。 **[Degree of copy parallelism]\(コピーの並列度\)** に値を入力し (5 など)、SAP BW から並列で読み込みます。 **[次へ]** を選択します。
+10. **[設定]** ページで、 **[タスク名]** を指定し、 **[詳細]** を展開します。 **[Degree of copy parallelism]\(コピーの並列度\)** に値を入力し (5 など)、SAP BW から並列で読み込みます。 **[次へ]** を選択します。
 
     ![コピー設定の構成](media/load-sap-bw-data/configure-copy-settings.png)
 
-12. **[Summary]\(概要\)** ページで設定を確認します。 **[次へ]** を選択します。
+11. **[Summary]\(概要\)** ページで設定を確認します。 **[次へ]** を選択します。
 
-13. **[Deployment]\(デプロイ\)** ページで **[Monitor]\(監視\)** を選択してパイプラインを監視します。
+    :::image type="content" source="./media/load-sap-bw-data/summary-page.png" alt-text="[Summary]\(概要\) ページを示すスクリーンショット。":::
 
-    ![[Deployment]\(デプロイ\) ページ](media/load-sap-bw-data/deployment.png)
+12. **[Deployment]\(デプロイ\)** ページで **[Monitor]\(監視\)** を選択してパイプラインを監視します。
 
-14. ページの左側の **[Monitor]\(監視\)** タブが自動的に選択されることに注意してください。 **[Actions]\(アクション\)** 列には、アクティビティの実行の詳細を表示するリンクとパイプラインを再実行するリンクが表示されます。
+13. ページの左側の **[Monitor]\(監視\)** タブが自動的に選択されることに注意してください。 **[パイプライン実行]** ページの **[パイプライン名]** 列のリンクを使用して、アクティビティの詳細を表示したりパイプラインを再実行したりできます。
 
-    ![パイプラインの監視ビュー](media/load-sap-bw-data/pipeline-monitoring.png)
-
-15. パイプラインの実行に関連付けられているアクティビティの実行を表示するには、 **[Actions]\(アクション\)** 列の **[View Activity Runs]\(アクティビティの実行の表示\)** を選択します。 パイプライン内のアクティビティ (コピー アクティビティ) は 1 つだけなので、エントリは 1 つのみです。 パイプラインの実行ビューに戻るには、上部の **[Pipelines]\(パイプライン\)** リンクを選択します。 **[最新の情報に更新]** を選択して、一覧を更新します。
+14. パイプラインの実行に関連付けられているアクティビティの実行を表示するには、 **[パイプライン名]** 列にあるリンクを選択します。 パイプライン内のアクティビティ (コピー アクティビティ) は 1 つだけなので、エントリは 1 つのみです。 パイプラインの実行ビューに戻るには、上部の **[すべてのパイプラインの実行]** リンクを選択します。 **[最新の情報に更新]** を選択して、一覧を更新します。
 
     ![アクティビティ監視画面](media/load-sap-bw-data/activity-monitoring.png)
 
-16. 各コピー アクティビティの実行状況の詳細を監視するには、 **[Details]\(詳細\)** リンク (アクティビティ監視ビューの **[Actions]\(アクション\)** の下にある眼鏡アイコン) を選択します。 使用可能な詳細には、ソースからシンクにコピーされたデータ量、データのスループット、実行ステップと期間、使用された構成が含まれます。
+15. 各コピー アクティビティの実行状況の詳細を監視するには、 **[Details]\(詳細\)** リンク (アクティビティ監視ビューの各コピー アクティビティと同じ行にある眼鏡アイコン) を選択します。 使用可能な詳細には、ソースからシンクにコピーされたデータ量、データのスループット、実行ステップと期間、使用された構成が含まれます。
 
     ![アクティビティの監視の詳細](media/load-sap-bw-data/activity-monitoring-details.png)
 
-17. **最大要求 ID** を表示するには、アクティビティ監視ビューに戻り、 **[Actions]\(アクション\)** の **[Output]\(出力\)** を選択します。
+16. 各コピー アクティビティの **最大要求 ID** を表示するには、アクティビティ監視ビューに戻り、各コピー アクティビティと同じ行にある **[出力]** を選択します。
 
     ![アクティビティ出力画面](media/load-sap-bw-data/activity-output.png)
 
@@ -133,7 +132,7 @@ Azure portal でデータ ファクトリに移動します。 **[作成と監�
 
 ![増分コピーのワークフローのフロー チャート](media/load-sap-bw-data/incremental-copy-workflow.png)
 
-データ ファクトリの **[Let's get started]\(始めましょう\)** ページで、 **[Create pipeline from template]\(テンプレートからパイプラインを作成\)** を選択して組み込みテンプレートを使用します。
+データ ファクトリのホーム ページの **[その他を参照]** セクションで、 **[パイプラインのテンプレート]** を選択して、組み込みのテンプレートを使用します。
 
 1. **SAP BW** を検索して、**Incremental copy from SAP BW to Azure Data Lake Storage Gen2 (SAP BW から Azure Data Lake Storage Gen2 への増分コピー)** テンプレートを選択します。 このテンプレートでは、データが Azure Data Lake Storage Gen2 にコピーされます。 他のシンクの種類のコピーにも、同様のワークフローを使用できます。
 

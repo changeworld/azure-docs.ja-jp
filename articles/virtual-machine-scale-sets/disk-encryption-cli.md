@@ -9,14 +9,16 @@ ms.subservice: disks
 ms.date: 10/15/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: af870b3be9c2ab7022a05c9cf9e3a662c5850214
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 2d711c646fc4b1783ed9f6c609a4094ddfc605d7
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107875073"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122691409"
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-the-azure-cli"></a>Azure CLI による仮想マシン スケール セットの OS および接続されているデータ ディスクの暗号化
+
+**適用対象:** :heavy_check_mark: Windows VM :heavy_check_mark: ユニフォーム スケール セット
 
 Azure CLI は、コマンドラインやスクリプトで Azure リソースを作成および管理するために使用します。 このクイック スタートでは、Azure CLI を使用して仮想マシン スケール セットを作成、暗号化する方法を示します。 仮想マシン スケール セットへの Azure Disk Encryption の適用の詳細については、「[仮想マシン スケール セットの Azure Disk Encryption](disk-encryption-overview.md)」を参照してください。
 

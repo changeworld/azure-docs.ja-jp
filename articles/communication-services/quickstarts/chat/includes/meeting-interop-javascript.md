@@ -5,12 +5,12 @@ ms.author: askaur
 ms.date: 06/30/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 04ee9f19f23d16af9070d3366981b0690ba9ef27
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 4aad194e1bfbd31cb31795ec4b6d21737800e06d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113113114"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722547"
 ---
 このクイックスタートでは、JavaScript 用 Azure Communication Services Chat SDK を使用して Teams 会議でチャットする方法について説明します。
 
@@ -22,15 +22,9 @@ ms.locfileid: "113113114"
 *  [Teams のデプロイ](/deployoffice/teams-install)。 
 * 実際に動作する[チャット アプリ](../get-started.md)。 
 
-## <a name="enable-teams-interoperability"></a>Teams の相互運用性を有効にする 
-
-ゲスト ユーザーとして Teams に参加している Communication Services ユーザーは、Teams の会議通話に参加したときにのみ会議のチャットにアクセスできます。 Communication Services ユーザーを Teams の会議通話に追加する方法については、[Teams の相互運用性](../../voice-video-calling/get-started-teams-interop.md)に関するドキュメントを参照してください。
-
-この機能を使用するには、両方のエンティティの所有組織のメンバーである必要があります。
-
 ## <a name="joining-the-meeting-chat"></a>会議チャットへの参加 
 
-Teams の相互運用性が有効になると、Communication Services ユーザーは、Calling SDK を使用して外部ユーザーとして Teams の通話に参加できます。 通話に参加すると、会議チャットにも参加者として追加されます。会議チャットでは、通話の他のユーザーとメッセージを送受信できます。 ユーザーは、通話に参加する前に送信されたチャット メッセージにはアクセスできません。 会議に参加してチャットを開始するには、次の手順に従います。
+Communication Services ユーザーは、Calling SDK を使用して、匿名ユーザーとして Teams 会議に参加できます。 会議に参加すると、会議チャットにも参加者として追加されます。会議チャットでは、会議に参加している他のユーザーとメッセージを送受信できます。 ユーザーは、会議に参加する前に送信されたチャット メッセージにアクセスすることはできず、会議の終了後はメッセージを送受信することはできなくなります。 会議に参加してチャットを開始するには、次の手順に従います。
 
 ## <a name="create-a-new-nodejs-application"></a>新しい Node.js アプリケーションを作成する
 

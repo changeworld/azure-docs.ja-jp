@@ -1,25 +1,29 @@
 ---
-title: Azure Data Box、Azure Data Box Heavy に関する問題のトラブルシューティング
-description: Azure Data Box と Azure Data Box Heavy にデータをアップロードするときにこれらのデバイスで見られる問題のトラブルシューティングを行う方法について説明します。
+title: Azure Data Box、Azure Data Box Heavy へのデータ コピー中の問題のトラブルシューティング
+description: Azure Data Box と Azure Data Box Heavy デバイスにデータをコピーするときの問題のトラブルシューティングを行う方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: troubleshooting
-ms.date: 07/14/2021
+ms.date: 08/11/2021
 ms.author: alkohli
-ms.openlocfilehash: 06f0408587cc7c5533bdb852f7ad4f59094a33da
-ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
+ms.openlocfilehash: e3921e8b326be2163981eacc089e16e6fcf6f1bc
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114220261"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122772413"
 ---
-# <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>Azure Data Box と Azure Data Box Heavy に関連する問題のトラブルシューティング
+# <a name="troubleshoot-data-copy-issues-on-azure-data-box-and-azure-data-box-heavy"></a>Azure Data Box と Azure Data Box Heavy でのデータ コピーの問題のトラブルシューティング
 
-この記事では、Azure Data Box または Azure Data Box Heavy の使用時にインポート注文に関して発生する問題をトラブルシューティングする方法について説明します。 Data Box にデータがコピーされるとき、または Data Box からデータがアップロードされるときに、インポート注文に関して発生する可能性があるエラーの一覧が含まれます。
+この記事では、Azure Data Box または Azure Data Box Heavy のインポート注文でデータ コピーやデータ アップロードを実行するときの問題のトラブルシューティングを行う方法について説明します。 記事には、データが Data Box にコピーされるとき、または Data Box からアップロードされるときに、発生する可能性があるエラーの一覧が含まれます。
 
-この記事の情報は、Data Box に対して作成されるエクスポート注文には当てはまりません。
+デバイス上の共有へのアクセスに関する問題のトラブルシューティングについては、[データ コピー中の共有接続エラーのトラブルシューティング](data-box-troubleshoot-share-access.md)に関する記事を参照してください。
+
+
+> [!NOTE]
+> この記事の情報はインポート注文にのみ適用されます。
 
 ## <a name="error-classes"></a>エラーのクラス
 

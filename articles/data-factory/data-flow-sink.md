@@ -9,13 +9,13 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 07/27/2021
-ms.openlocfilehash: ce189e0a24bb666e040268fc310b7e475c05a9c5
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.date: 08/24/2021
+ms.openlocfilehash: 39c8ed3f8d8b11839964ac376ac35badd6546411
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122014997"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122824625"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>マッピング データ フローでのシンク変換
 

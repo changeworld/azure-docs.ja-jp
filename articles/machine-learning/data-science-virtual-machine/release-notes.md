@@ -7,18 +7,35 @@ ms.service: data-science-vm
 ms.author: mimarusa
 ms.date: 07/16/2021
 ms.topic: reference
-ms.openlocfilehash: b74b535a6d6e00f83dd659728bb1ed930e1fb7dd
-ms.sourcegitcommit: b59e0afdd98204d11b7f9b6a3e55f5a85d8afdec
+ms.openlocfilehash: e256382b4d1e397be6d11a3660a4c4fe73eafb23
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114371373"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122778325"
 ---
 # <a name="azure-data-science-virtual-machine-release-notes"></a>Azure Data Science Virtual Machine リリース ノート
 
 この記事では、Azure Data Science Virtual Machine リリースについて説明します。 含まれるツールの完全一覧とバージョン番号については、[こちらのページ](./tools-included.md)をご覧ください。
 
 バグおよび対処法については、[既知の問題のリスト](reference-known-issues.md)を参照してください。
+
+
+## <a name="2021-08-11"></a>2021-08-11
+
+[Windows Server 2019](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019?tab=Overview) の新しいイメージ。
+
+バージョン: 21.08.11
+
+主な変更点:
+
+- Windows セキュリティに関する更新
+- Nvidia CuDNN の 8.1.0 への更新
+- Jupyter Lab の 3.0.16 への更新
+- 実験追跡用の MLFLow の追加
+- 安定性の向上と軽微なバグ修正 
+
+
 
 ## <a name="2021-07-12"></a>2021-07-12
 
@@ -28,7 +45,7 @@ ms.locfileid: "114371373"
 
 - PyTorch 1.9.0 に更新されました
 - Azure CLI が 2.26.1 に更新されました
-- Azure CLI Azure Machine Learnign 拡張機能が 1.29.0 に更新されました
+- Azure CLI Azure Machine Learning 拡張機能が 1.29.0 に更新されました
 - VS Code バージョン 1.58.1 の更新
 - 安定性の向上と軽微なバグ修正 
 

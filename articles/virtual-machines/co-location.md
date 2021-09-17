@@ -8,14 +8,16 @@ ms.subservice: proximity-placement-groups
 ms.topic: conceptual
 ms.date: 3/07/2021
 ms.reviewer: zivr
-ms.openlocfilehash: 15da7300018d563ed9919c145ca3e7f08a07f619
-ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
+ms.openlocfilehash: 7693bc23e68880346c09d3c55c84858283c735ba
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110190641"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122696599"
 ---
 # <a name="proximity-placement-groups"></a>近接通信配置グループ
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 VM を単一リージョンに配置すると、インスタンス間の物理的な距離が短縮されます。 また、単一可用性ゾーンに配置した場合も、それらの物理的な位置は近くなります。 ただし、Azure の占有領域が拡大するにつれ、単一可用性ゾーンが複数の物理的なデータ センターにまたがる可能性があるため、ネットワーク待ち時間がアプリケーションに影響を与えることがあります。 
 

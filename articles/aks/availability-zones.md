@@ -5,12 +5,12 @@ services: container-service
 ms.custom: fasttrack-edit, references_regions, devx-track-azurecli
 ms.topic: article
 ms.date: 03/16/2021
-ms.openlocfilehash: 13a14854f373ca7297e454ddbdc9f475849dc0b8
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 1fe59e3541760eb00c1c520004a2076cfc9a2c97
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110100542"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122779360"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>可用性ゾーンを使用する Azure Kubernetes Service (AKS) クラスターを作成する
 
@@ -44,6 +44,7 @@ Azure CLI バージョン 2.0.76 以降がインストールされて構成さ�
 * US Gov バージニア州
 * 西ヨーロッパ
 * 米国西部 2
+* 米国西部 3
 
 可用性ゾーンを使用して AKS クラスターを作成する場合、次の制限事項が適用されます。
 
@@ -60,7 +61,7 @@ Kubernetes では、バージョン 1.12 以降で、Azure 可用性ゾーンが
 
 ### <a name="azure-resource-manager-templates-and-availability-zones"></a>Azure Resource Manager テンプレートと可用性ゾーン
 
-AKS クラスターを *作成* するときに、`"availabilityZones": null` などの構文を使用して[テンプレート内に null 値][arm-template-null]を明示的に定義すると、Resource Manager テンプレートでは、そのプロパティが存在しないかのように処理されます。これは、クラスターで可用性ゾーンが有効にならないことを意味します。 また、可用性ゾーン プロパティを省略した Resource Manager テンプレートを使用してクラスターを作成すると、可用性ゾーンは無効になります。
+AKS クラスターを *作成* するときに、`"availabilityZones": null` などの構文を使用して [テンプレート内に null 値][arm-template-null]を明示的に定義すると、Resource Manager テンプレートでは、そのプロパティが存在しないかのように処理されます。これは、クラスターで可用性ゾーンが有効にならないことを意味します。 また、可用性ゾーン プロパティを省略した Resource Manager テンプレートを使用してクラスターを作成すると、可用性ゾーンは無効になります。
 
 既存のクラスターで可用性ゾーンの設定を更新することはできないため、Resource Manager テンプレートを使用して AKS クラスターを更新するときは動作が異なります。  テンプレートで可用性ゾーンに対して null 値を明示的に設定し、クラスターを *更新* した場合、クラスターに対して可用性ゾーンの変更は加えられません。 ただし、`"availabilityZones": []` のような構文で可用性ゾーン プロパティを省略した場合、デプロイでは既存の AKS クラスターで可用性ゾーンを無効にしようとして、**失敗** します。
 

@@ -11,14 +11,16 @@ ms.date: 06/01/2020
 ms.author: ericrad
 ms.reviwer: mimckitt
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 08b6e72d6b4cb1352a203008e3f20ae39333ec02
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: f39cefa300b334c3df433461fa5ea1bb2c84eb8a
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111592288"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122698655"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure Metadata Service: Windows VM のスケジュールされたイベント
+
+**適用対象:** :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 スケジュールされたイベントとは、仮想マシン (VM) のメンテナンスに備えるための時間をアプリケーションに与える Azure Metadata Service です。 今後のメンテナンス イベント (再起動など) に関する情報を提供することで、アプリケーションがイベントの準備を行い、中断を制限できるようにします。 このサービスは、Windows および Linux の、PaaS と IaaS を含むすべての Azure Virtual Machine の種類で利用できます。 
 
@@ -77,7 +79,7 @@ VM が仮想ネットワーク内で作成されていない場合 (クラウド
 
 | Version | リリースの種類 | リージョン | リリース ノート | 
 | - | - | - | - | 
-| 2020-07-01 | 一般公開 | All | <li> イベント期間のサポートを追加しました |
+| 2020-07-01 | 一般公開 | All | <li> イベントの期間のサポートを追加しました |
 | 2019-08-01 | 一般公開 | All | <li> EventSource のサポートを追加しました |
 | 2019-04-01 | 一般公開 | All | <li> イベントの説明のサポートを追加しました |
 | 2019-01-01 | 一般公開 | All | <li> 仮想マシン スケール セットの EventType "Terminate" のサポートが追加されました |

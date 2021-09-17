@@ -3,12 +3,12 @@ title: ガイダンスとベスト プラクティス
 description: クラウドとオンプレミスのワークロードをクラウドにバックアップするためのベストプラクティスとガイダンスについて説明します
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 7b507fec6c3f9cd53dd5b775dff2ca43c4dcfd1f
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: e2d65f256a69b397486675dc71efb71ce3e4263d
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111965480"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122605035"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>クラウドとオンプレミスのワークロードをクラウドにバックアップする
 
@@ -73,7 +73,7 @@ Azure Backup では、コンテナー (Recovery Services コンテナーとバ�
 * ワークロードが複数のサブスクリプションに分散している場合は、複数のコンテナー (サブスクリプションごとに 1 つまたは複数) を作成できます。
   * バックアップ センターでは、Backup に関連するすべてのタスクを 1 つのウィンドウで管理できます。 [こちら]()を参照してください。
   * ブック テンプレートを使用して、ビューをカスタマイズできます。 バックアップ エクスプローラーは、Azure VM 用のそのようなテンプレートの 1 つです。 [こちら](monitor-azure-backup-with-backup-explorer.md)を参照してください。
-  * コンテナー間で一貫したポリシーが必要な場合は、Azure policy を使用して、複数のコンテナーにバックアップ ポリシーを伝達できます。 ['deployifnotexists'](../governance/policy/concepts/effects.md#deployifnotexists) 効果を使用して複数のコンテナーにバックアップ ポリシーを伝達するカスタムの [Azure Policy 定義](../governance/policy/concepts/definition-structure.md)を作成できます。 この Azure Policy 定義を特定のスコープ (サブスクリプションまたは RG) に[割り当てる](../governance/policy/assign-policy-portal.md)こともでき、それによって Azure Policy 割り当てのスコープ内にあるすべての Recovery Services コンテナーに "バックアップ ポリシー" リソースがデプロイされます。 バックアップ ポリシーの設定 (バックアップ頻度、保有期間など) は、Azure Policy 割り当てのパラメーターとしてユーザーが指定する必要があります。
+  * コンテナー間で一貫したポリシーが必要な場合は、Azure Policy を使用して、複数のコンテナーにバックアップ ポリシーを伝達できます。 ['deployifnotexists'](../governance/policy/concepts/effects.md#deployifnotexists) 効果を使用して複数のコンテナーにバックアップ ポリシーを伝達するカスタムの [Azure Policy 定義](../governance/policy/concepts/definition-structure.md)を作成できます。 この Azure Policy 定義を特定のスコープ (サブスクリプションまたは RG) に[割り当てる](../governance/policy/assign-policy-portal.md)こともでき、それによって Azure Policy 割り当てのスコープ内にあるすべての Recovery Services コンテナーに "バックアップ ポリシー" リソースがデプロイされます。 バックアップ ポリシーの設定 (バックアップ頻度、保有期間など) は、Azure Policy 割り当てのパラメーターとしてユーザーが指定する必要があります。
 
 * 組織のフットプリントが増加するにつれ、次のような理由により、サブスクリプション間でワークロードを移動することが必要になる場合があります。バックアップ ポリシー別の配置、コンテナーの統合、コスト削減のための低い冗長性に基づいたトレードオフ (GRS から LRS への移行) です。  Azure Backup では、Recovery Services コンテナーを Azure のサブスクリプション間で移動することも、同じサブスクリプション内の別のリソース グループに移動することもできます。 [こちら](backup-azure-move-recovery-services-vault.md)を参照してください。
 
@@ -184,7 +184,7 @@ Azure Backup では、ワークロードのデータを Recovery Services コン
 
 Azure [プライベート エンドポイント](../private-link/private-endpoint-overview.md)は、Azure Private Link を使用するサービスにプライベートかつ安全に接続するネットワーク インターフェイスです。 Azure Backup でプライベート エンドポイントを使用して、Recovery Services コンテナーから安全にデータをバックアップおよび復元できます。
 
-* プライベート エンドポイントは、コンテナーに対して有効にした場合、Azure VM と MARS エージェントのバックアップにおける SQL および SAP HANA ワークロードのバックアップと復元にのみ使用されます。  コンテナーは、他のワークロードのバックアップにも使用できます (ただし、プライベート エンドポイントは必要ありません)。 SQL および SAP HANA ワークロードのバックアップと、MARS エージェントを使用したバックアップに加えて、Azure VM バックアップの場合に、プライベート エンドポイントを使用してファイルの復旧を実行することもできます。 [こちら](private-endpoints.md#recommended-and-supported-scenarios)を参照してください。
+* プライベート エンドポイントは、コンテナーに対して有効にした場合、Azure VM と MARS エージェントのバックアップにおける SQL および SAP HANA ワークロードのバックアップと復元にのみ使用されます。  コンテナーは、他のワークロードのバックアップにも使用できます (ただし、プライベート エンドポイントは必要ありません)。 SQL および SAP HANA ワークロードのバックアップと、MARS エージェントを使用したバックアップに加えて、Azure VM バックアップの場合に、プライベート エンドポイントを使用してファイルの復旧を実行することもできます。 [こちら](private-endpoints-overview.md#recommended-and-supported-scenarios)を参照してください。
 
 * Azure Active Directory では、現在、プライベート エンドポイントがサポートされていません。 したがって、Azure Active Directory に必要な IP と FQDN には、Azure VM でのデータベースのバックアップおよび MARS エージェントを使用したバックアップを実行するときに、セキュリティで保護されたネットワークからの発信アクセスが許可される必要があります。 また、必要に応じて、NSG タグと Azure Firewall タグを使用して、Azure AD へのアクセスを許可することもできます。 前提条件の詳細については[こちら](./private-endpoints.md#before-you-start)を参照してください。
 

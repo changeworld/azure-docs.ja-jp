@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 81a7efea268600e661981b35f79149fe814ef084
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3de204c960a6369589ee0c52bb6f5770a2cee407
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96180678"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122179951"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-8x8"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と 8x8 の統合
 
@@ -41,6 +41,7 @@ ms.locfileid: "96180678"
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 * 8x8 では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* 8x8 では、[**自動化された** ユーザー プロビジョニングとプロビジョニング解除](8x8-provisioning-tutorial.md) (推奨) がサポートされます。
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。

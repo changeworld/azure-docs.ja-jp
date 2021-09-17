@@ -12,18 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 06/14/2021
+ms.date: 08/17/2021
 ms.author: b-juche
-ms.openlocfilehash: dab6415e27239e9140cce7c03bae9a2e3a95ca7d
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.openlocfilehash: bf38602fdbc2c6fb1f7beba5a374c641963651a0
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112072129"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122429549"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files の SMB ボリュームを作成する
 
-Azure NetApp Files では、NFS (NFSv3 と NFSv4.1)、SMB3、またはデュアル プロトコル (NFSv3 and SMB) を使用したボリュームの作成がサポートされています。 ボリュームの容量消費は、そのプールのプロビジョニング容量を前提としてカウントされます。 
+Azure NetApp Files では、NFS (NFSv3 または NFSv4.1)、SMB3、またはデュアル プロトコル (NFSv3 と SMB、または NFSv4.1 と SMB) を使用したボリュームの作成がサポートされています。 ボリュームの容量消費は、そのプールのプロビジョニング容量を前提としてカウントされます。 
 
 この記事では、SMB3 ボリュームを作成する方法について説明します。 NFS ボリュームについては、[NFS ボリュームの作成](azure-netapp-files-create-volumes.md)に関する記事を参照してください。 デュアルプロトコル ボリュームについては、[デュアルプロトコル ボリュームの作成](create-volumes-dual-protocol.md)に関する記事を参照してください。
 
@@ -49,7 +49,7 @@ SMB ボリュームを作成する前に Active Directory Domain Services の接
     * **ボリューム名**      
         作成するボリュームの名前を指定します。   
 
-        ボリューム名は、各容量プール内で一意である必要があります。 3 文字以上になるようにしてください。 任意の英数字を使用できます。   
+        ボリューム名は、各容量プール内で一意である必要があります。 3 文字以上になるようにしてください。 名前は英字で始まる必要があります。 使用できるのは、文字、数字、アンダースコア ('_')、ハイフン ('-') のみです。 
 
         `default` または `bin` をボリューム名として使用することはできません。
 
@@ -98,9 +98,9 @@ SMB ボリュームを作成する前に Active Directory Domain Services の接
         - 文字、数字、ダッシュ (`-`) だけで構成する必要があります。 
         - 長さが 80 文字以内である必要があります。   
         
-    * SMB3 の暗号化を有効にする場合は、 **[SMB3 プロトコルの暗号化を有効にする]\(Enable SMB3 Protocol Encryption\)** を選択します。   
+    * <a name="smb3-encryption"></a>SMB3 の暗号化を有効にする場合は、 **[SMB3 プロトコルの暗号化を有効にする]** を選択します。   
         この機能により、移動中の SMB3 データの暗号化が有効になります。 SMB3 暗号化を使用していない SMB クライアントは、このボリュームにアクセスできません。  保存データは、この設定に関係なく暗号化されます。  
-        詳しくは、[SMB 暗号化](azure-netapp-files-smb-performance.md#smb-encryption)に関するセクションをご覧ください。 
+        詳細については、「[SMB 暗号化](azure-netapp-files-smb-performance.md#smb-encryption)」を参照してください。 
 
         **SMB3 の暗号化** 機能は現在、プレビューの段階です。 この機能を初めて使用する場合は、使用する前に機能を登録してください。 
 
@@ -118,7 +118,7 @@ SMB ボリュームを作成する前に Active Directory Domain Services の接
         ```
         
         また、[Azure CLI のコマンド](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) `az feature register` と `az feature show` を使用して、機能を登録し、登録状態を表示することもできます。  
-    * SMB ボリュームの継続的な可用性を有効にする場合は、 **[継続的可用性を有効にする]** を選択します。    
+    * <a name="continuous-availability"></a>SMB ボリュームの継続的な可用性を有効にする場合は、 **[継続的可用性を有効にする]** を選択します。    
 
         > [!IMPORTANT]   
         > SMB の継続的な可用性機能は、現在パブリック プレビュー段階です。 **[[Azure NetApp Files SMB Continuous Availability Shares Public Preview]\(Azure NetApp Files の SMB の継続的な可用性の共有パブリック プレビュー\) 順番待ち送信ページ](https://aka.ms/anfsmbcasharespreviewsignup)** から、機能にアクセスするための順番待ち要求を送信する必要があります。 Azure NetApp Files チームからの正式な確認メールを待ってから、継続的な可用性機能を使用してください。   
@@ -153,16 +153,7 @@ SMB ボリュームを作成する前に Active Directory Domain Services の接
 
 ## <a name="control-access-to-an-smb-volume"></a>SMB ボリュームへのアクセスを制御する  
 
-SMB ボリュームへのアクセスはアクセス許可によって管理されます。  
-
-### <a name="share-permissions"></a>共有アクセス許可  
-
-既定では、新しいボリュームには **Everyone でフル コントロール** の共有アクセス許可が与えられます。 Domain Admins グループのメンバーは、次のように共有アクセス許可を変更できます。  
-
-1. 共有とドライブをマッピングします。  
-2. ドライブを右クリックし、 **[プロパティ]** を選択して、 **[セキュリティ]** タブにアクセスします。
-
-[ ![共有アクセス許可を設定する](../media/azure-netapp-files/set-share-permissions.png)](../media/azure-netapp-files/set-share-permissions.png#lightbox)
+SMB ボリュームへのアクセスはアクセス許可によって管理されます。 
 
 ### <a name="ntfs-file-and-folder-permissions"></a>NTFS ファイルおよびフォルダーの権限  
 
@@ -175,7 +166,7 @@ Windows SMB クライアントで、オブジェクトのプロパティの **[�
 * [Windows または Linux 仮想マシンのボリュームをマウント/マウント解除する](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [Azure NetApp Files のリソース制限](azure-netapp-files-resource-limits.md)
 * [Azure NetApp Files 用に ADDS LDAP over TLS を構成する](configure-ldap-over-tls.md) 
-* [既存の SMB ボリュームを変換して継続的な可用性を使用する](convert-smb-continuous-availability.md)
+* [既存の SMB ボリュームで継続的可用性を有効にする](enable-continuous-availability-existing-SMB.md)
 * [SMB 暗号化](azure-netapp-files-smb-performance.md#smb-encryption)
 * [SMB またはデュアルプロトコル ボリュームのトラブルシューティング](troubleshoot-dual-protocol-volumes.md)
 * [Azure サービスの仮想ネットワーク統合について理解する](../virtual-network/virtual-network-for-azure-services.md)

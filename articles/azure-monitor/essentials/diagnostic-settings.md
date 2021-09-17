@@ -6,12 +6,12 @@ ms.author: bwren
 services: azure-monitor
 ms.topic: conceptual
 ms.date: 06/09/2021
-ms.openlocfilehash: 90b9ee4be63bc1773751ae505701ea196cf1f483
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0a161c2341137abc047d81b408058ca56e192526
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121742612"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444834"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>プラットフォーム ログとメトリックを異なる宛先に送信するための診断設定を作成する
 Azure のアクティビティ ログとリソース ログを含む Azure の[プラットフォーム ログ](./platform-logs-overview.md)では、Azure リソースとそれらが依存している Azure プラットフォームの詳細な診断情報と監査情報が提供されます。 [プラットフォーム メトリック](./data-platform-metrics.md)は、既定で収集され、通常は Azure Monitor メトリック データベースに格納されます。 この記事では、プラットフォーム メトリックとプラットフォーム ログをさまざまな送信先に送信するための診断設定を作成して構成する方法について詳しく説明します。
@@ -51,7 +51,7 @@ Azure のアクティビティ ログとリソース ログを含む Azure の[�
 
 ### <a name="destination-requirements"></a>送信先の要件
 
-診断設定の送信先は、診断設定の作成前に作成する必要があります。 設定を構成するユーザーが両方のサブスクリプションに対して適切な Azure RBAC アクセスを持っている限り、送信先はログを送信するリソースと同じサブスクリプションに属している必要はありません。 次の表では、リージョン制限など、送信先別の固有要件をまとめてあります。
+診断設定の送信先は、診断設定の作成前に作成する必要があります。 設定を構成するユーザーが両方のサブスクリプションに対して適切な Azure RBAC アクセスを持っている限り、送信先はログを送信するリソースと同じサブスクリプションに属している必要はありません。 Azure Lighthouse を使用すると、別の Azure Active Directory テナントのワークスペースに診断設定を送信することもできます。 次の表では、リージョン制限など、送信先別の固有要件をまとめてあります。
 
 | 到着地 | 要件 |
 |:---|:---|

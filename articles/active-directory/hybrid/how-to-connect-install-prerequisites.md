@@ -16,12 +16,12 @@ ms.date: 06/21/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e01dd7c32c822f03b8f47147826e085321eeacf
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: a2ff57c06fba085fd28e7e0b13ec6e503517cab7
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114472402"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122768681"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect の前提条件
 この記事では、Azure Active Directory (Azure AD) Connect を使用するための前提条件とハードウェア要件について説明します。
@@ -88,7 +88,6 @@ Azure AD Connect サーバーを強化して、お客様の IT 環境に含ま�
 - Active Directory 環境の攻撃面を減らすには、これらの[追加のガイドライン](/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface)に従います。
 - [フェデレーション構成の変更の監視](how-to-connect-monitor-federation-changes.md)に関するページに従って、Idp と Azure AD の間で確立された信頼に対する変更を監視するためのアラートを設定します。 
 
-
 ### <a name="sql-server-used-by-azure-ad-connect"></a>Azure AD Connect で使用される SQL Server
 * Azure AD Connect には、ID データを格納する SQL Server データベースが必要です。 既定では、SQL Server 2019 Express LocalDB (SQL Server Express の簡易バージョン) がインストールされます。 SQL Server Express のサイズ制限は 10 GB で、約 100,000 オブジェクトを管理できます。 さらに多くのディレクトリ オブジェクトを管理する必要がある場合は、インストール ウィザードで別の SQL Server インストール済み環境を指定します。 SQL Server のインストールの種類により、[Azure AD Connect のパフォーマンス](./plan-connect-performance-factors.md#sql-database-factors)に影響することがあります。
 * SQL Server の別のインストールを使用する場合は、次の要件が適用されます。
@@ -107,7 +106,7 @@ Azure AD Connect サーバーを強化して、お客様の IT 環境に含ま�
 * お使いのイントラネット環境でファイアウォールを使用していて、Azure AD Connect サーバーとドメイン コントローラーの間でポートを開く必要がある場合の詳細については、[Azure AD Connect のポート](reference-connect-ports.md)に関する記事を参照してください。
 * プロキシまたはファイアウォールによってアクセスできる URL が制限されている場合は、「[Office 365 URL および IP アドレス範囲](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)」に記載されている URL を開く必要があります。 「[ファイアウォールまたはプロキシ サーバーのセーフリストに Azure portal の URL を追加する](../../azure-portal/azure-portal-safelist-urls.md?tabs=public-cloud)」も参照してください。
   * ドイツで Microsoft Cloud を使用する場合、または Microsoft Azure Government クラウドを使用する場合は、[Azure AD Connect 同期サービス インスタンスの考慮事項](reference-connect-instances.md)に関するページで URL を確認してください。
-* Azure AD Connect (バージョン 1.1.614.0 以降) では、同期エンジンと Azure AD との間の通信の暗号化に既定で TLS 1.2 が使用されます。 基盤となるオペレーティング システムで TLS 1.2 が使用できない場合は、1 つ前のプロトコル (TLS 1.1 と TLS 1.0) に段階的にフォールバックされます。 Azure AD Connect バージョン 2.0 以降。 TLS 1.0 および 1.1 はサポートされません。TLS 1.2 を使用できない場合、インストールは失敗します。
+* Azure AD Connect (バージョン 1.1.614.0 以降) では、同期エンジンと Azure AD との間の通信の暗号化に既定で TLS 1.2 が使用されます。 基盤となるオペレーティング システムで TLS 1.2 が使用できない場合は、1 つ前のプロトコル (TLS 1.1 と TLS 1.0) に段階的にフォールバックされます。 Azure AD Connect バージョン 2.0 以降。 TLS 1.0 と 1.1 はサポートされなくなっており、TLS 1.2 が有効になっていないと、インストールは失敗します。
 * バージョン 1.1.614.0 未満の Azure AD Connect では、同期エンジンと Azure AD との間の通信の暗号化に既定で TLS 1.0 が使用されます。 TLS 1.2 に変更するには、「[Azure AD Connect 用に TLS 1.2 を有効にする](#enable-tls-12-for-azure-ad-connect)」の手順に従います。
 * 送信プロキシを使用してインターネットに接続する場合は、**C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config** ファイルに次の設定を追加して、インストール ウィザードと Azure AD Connect 同期がインターネットと Azure AD に接続できるようにする必要があります。 このテキストは、ファイルの末尾に入力する必要があります。 このコードの *&lt;PROXYADDRESS&gt;* は実際のプロキシ IP アドレスまたはホスト名を表します。
 

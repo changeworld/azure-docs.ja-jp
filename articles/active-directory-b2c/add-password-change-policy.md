@@ -12,12 +12,12 @@ ms.date: 05/03/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: f359595a136a356938194f2df728935c80059008
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: a0f5376574dd0329641ebc68b906bc5342437be8
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108742879"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122777704"
 ---
 # <a name="configure-password-change-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用してパスワードの変更を構成する
 
@@ -148,13 +148,14 @@ Azure Active Directory B2C (Azure AD B2C) では、ローカル アカウント�
 ## <a name="upload-and-test-the-policy"></a>ポリシーをアップロードしてテストします。
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
-2. ご利用の Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。そのためには、トップ メニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択して、ご利用のテナントを含むディレクトリを選択します。
-3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
-4. **[Identity Experience Framework]** を選択します。
-5. [カスタム ポリシー] ページで、 **[ポリシーのアップロード]** をクリックします。
-6. **[ポリシーが存在する場合は上書きする]** を選択し、*TrustframeworkExtensions.xml* ファイルを検索して選択します。
-7. **[アップロード]** をクリックします。
-8. その証明書利用者ファイル (*ProfileEditPasswordChange.xml* など) で、手順 5 から 7 を繰り返します。
+1. ポータルのツールバーにある **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択して、Azure AD B2C テナントを含むディレクトリを使っていることを確認します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
+1. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
+1. **[Identity Experience Framework]** を選択します。
+1. [カスタム ポリシー] ページで、 **[ポリシーのアップロード]** をクリックします。
+1. **[ポリシーが存在する場合は上書きする]** を選択し、*TrustframeworkExtensions.xml* ファイルを検索して選択します。
+1. **[アップロード]** をクリックします。
+1. その証明書利用者ファイル (*ProfileEditPasswordChange.xml* など) で、手順 5 から 7 を繰り返します。
 
 ### <a name="run-the-policy"></a>ポリシーを実行する
 

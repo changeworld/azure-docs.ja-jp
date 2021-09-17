@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/08/2021
 ms.author: jeedes
-ms.openlocfilehash: 62cd714fc20cb7620def8a1aaa3cbccba0b13d57
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 6ca4bda03a5696406682898eef62da9825c65214
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108144091"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122181674"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clarizen-one"></a>チュートリアル: Azure Active Directory と Clarizen One の統合
 
@@ -38,6 +38,7 @@ ms.locfileid: "108144091"
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
 * Clarizen One では、**IDP** Initiated SSO がサポートされます。
+* Clarizen One では、[**自動化された** ユーザー プロビジョニングとプロビジョニング解除](clarizen-one-provisioning-tutorial.md) (推奨) がサポートされます。
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。

@@ -1,15 +1,15 @@
 ---
 title: Azure Video Analyzer とは
-description: このトピックでは、Azure Video Analyzer の概要を示します。
+description: このトピックでは、Azure Video Analyzer の概要を示します
 ms.service: azure-video-analyzer
 ms.topic: overview
 ms.date: 06/01/2021
-ms.openlocfilehash: 35f13e8cd87e7e633b6836105f2d4c16911be663
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: c32ccdbbf73d9e2dd4ee6812e49ca82eac150a31
+ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114604804"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122397721"
 ---
 # <a name="what-is-azure-video-analyzer-preview"></a>Azure Video Analyzer とは (プレビュー)
  
@@ -44,4 +44,4 @@ Video Analyzer のコンプライアンス、プライバシー、およびセ�
 ## <a name="next-steps"></a>次の手順
 
 * 「[クイックスタート: Azure Video Analyzer で作業を開始する](get-started-detect-motion-emit-events.md)」の記事に従って、ライブ ビデオ フィードでモーション検出を実行する方法を確認してください。
-* [用語](terminology.md)を確認します
+* [用語](terminology.md)を確認します。

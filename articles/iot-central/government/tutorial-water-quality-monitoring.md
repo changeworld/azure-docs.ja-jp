@@ -1,27 +1,55 @@
 ---
-title: チュートリアル:Azure IoT Central で水質のモニタリング アプリを作成する
-description: チュートリアル:Azure IoT Central アプリケーション テンプレートを使用して水質のモニタリング アプリケーションを作成する方法について説明します。
+title: チュートリアル - Azure IoT 水質の監視 | Microsoft Docs
+description: このチュートリアルでは、IoT Central 用の水質の監視アプリケーションのアプリケーション テンプレートを展開して使用する方法について説明します。
 author: miriambrus
 ms.author: miriamb
-ms.date: 12/11/2020
+ms.date: 08/02/2021
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: fdab861cc122fe738cce4da049154ecb4039ca65
-ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
+ms.openlocfilehash: 481a085b1fd5fec55cd34f885dfcda40fec6f5e7
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113588977"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122179139"
 ---
-# <a name="tutorial-create-a-water-quality-monitoring-application-in-azure-iot-central"></a>チュートリアル:Azure IoT Central で水質のモニタリング アプリケーションを作成する
+# <a name="tutorial-deploy-and-walk-through-the-water-quality-monitoring-application"></a>チュートリアル: 水質の監視アプリケーションをデプロイして調べる
 
-このチュートリアルでは、Azure IoT Central で水質のモニタリング アプリケーションを作成する手順を説明します。 Azure IoT Central の **水質のモニタリング** アプリケーション テンプレートからアプリケーションを作成します。
+IoT Central の "*水質の監視*" アプリケーション テンプレートとこの記事のガイダンスを使用して、エンドツーエンドの水質監視ソリューションを開発します。
+
+
+![水質監視アーキテクチャ](./media/tutorial-waterqualitymonitoring/concepts-water-quality-monitoring-architecture1.png)
+
+### <a name="devices-and-connectivity"></a>デバイスと接続
+
+水管理ソリューションでは、流量計、水質モニター、スマート バルブ、漏れ検知器などのスマートウォーター デバイスを使用します。
+
+スマート ウォーター ソリューションのデバイスは、省電力広域ネットワーク (LPWAN) またはサードパーティのネットワーク オペレーターを介して接続できます。 これらの種類のデバイスでは、[Azure IoT Central デバイス ブリッジ](../core/howto-build-iotc-device-bridge.md)を使用して、Azure IoT Central の IoT アプリケーションに自分のデバイス データを送信します。 または、IP 対応で IoT Central に直接接続可能なデバイス ゲートウェイを使用することもできます。
+
+### <a name="iot-central"></a>IoT Central
+
+Azure IoT Central は、IoT ソリューションを迅速に構築してデプロイするのに役立つ IoT アプリケーション プラットフォームです。 サードパーティのサービスを使用して、ソリューションをブランド化、カスタマイズ、統合することができます。
+
+スマート ウォーター デバイスを IoT Central に接続すると、アプリケーションによって、デバイス コマンドと制御、監視とアラート、RBAC が組み込まれたユーザー インターフェイス、構成可能な分析情報ダッシュボード、拡張オプションが提供されます。
+
+### <a name="extensibility-and-integrations"></a>拡張性と統合
+
+IoT Central で IoT アプリケーションを拡張し、必要に応じて次のことを行うことができます。
+
+* 高度な分析 (たとえば、IoT Central アプリケーションからの継続的なデータ エクスポートを使用した機械学習モデルのトレーニングなど) のために IoT データを変換して統合します。
+* Power Automate または IoT Central アプリケーションの Webhook を使用してアクションをトリガーし、他のシステムのワークフローを自動化します。
+* IoT Central API を使用して IoT Central で IoT アプリケーションにプログラムでアクセスします。
+
+### <a name="business-applications"></a>ビジネス アプリケーション
+
+IoT データを使用して、水道施設内でさまざまなビジネス アプリケーションを強化することができます。 [IoT Central 水消費量のモニタリング アプリケーション](tutorial-water-consumption-monitoring.md)では、ルールやアクションを設定し、[Connected Field Service](/dynamics365/field-service/connected-field-service) でアラートを作成するように設定できます。 IoT Central のルールで Power Automate を構成し、アプリケーションやサービス間のワークフローを自動化します。 また、Connected Field Service のサービス アクティビティに基づいて、情報を Azure IoT Central に送り返すことができます。
 
 このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
+
 > * **水質のモニタリング** テンプレートを使用して、水質のモニタリング アプリケーションを作成します。
 > * ダッシュボードを調べてカスタマイズします。
 > * 水質のモニタリング デバイス テンプレートを探索します。
@@ -32,55 +60,28 @@ ms.locfileid: "113588977"
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを完了するには、Azure サブスクリプションを用意しておくことをお勧めします。 Azure サブスクリプションがない場合は、[Azure サインアップ ページ](https://aka.ms/createazuresubscription)で作成できます。
+* このアプリをデプロイするために必要な前提条件は特にありません。
+* 無料価格プランを使用するか、Azure サブスクリプションを使用することができます。
 
-## <a name="create-a-water-quality-monitoring-application-in-azure-iot-central"></a>Azure IoT Central で水質のモニタリング アプリケーションを作成する
+## <a name="create-water-quality-monitoring-application"></a>水質の監視アプリケーションを作成する
 
-このセクションでは、Azure IoT Central の **水質のモニタリング** テンプレートを使用して、水質のモニタリング アプリケーションを作成します。
+次の手順に従ってアプリケーションを作成します。
 
-1. [Azure IoT Central ホームページ](https://aka.ms/iotcentral)に移動します。
+1. [Azure IoT Central ビルド](https://aka.ms/iotcentral) Web サイトに移動します。 次に、Microsoft 個人アカウントか、職場または学校アカウントを使用してサインインします。 左側のナビゲーションバーから **[ビルド]** を選択し、 **[政府機関]** タブを選択します。:::image type="content" source="media/tutorial-waterqualitymonitoring/iot-central-government-tab-overview1.png" alt-text="アプリケーション テンプレート":::
 
-    Azure サブスクリプションを持っている場合は、そのサブスクリプションへのアクセス用の資格情報を使用してサインインします。 持っていない場合は、Microsoft アカウントを使用してサインインします。
+1. **[水質の監視]** で **[アプリの作成]** を選択します。
 
-    ![組織のアカウントにサインインする](./media/tutorial-waterqualitymonitoring/sign-in.png)
+詳細については、「[IoT Central アプリケーションを作成する](../core/howto-create-iot-central-application.md)」を参照してください。
 
-1. Azure IoT Central の一番左のペインで **[Build]\(構築\)** を選択し、 **[Government]\(政府\)** タブを選択します。政府機関ペインに、いくつかの政府機関のアプリケーション テンプレートが表示されます。
+## <a name="walk-through-the-application"></a>アプリケーションを調べる
 
-    ![政府機関のアプリケーション テンプレート](./media/tutorial-waterqualitymonitoring/iotcentral-government-tab-overview1.png)
+以降のセクションでは、アプリケーションの主な機能について見ていきます。
 
-1. **[Water quality monitoring]\(水質のモニタリング\)** アプリケーション テンプレートを選択します。 このアプリケーション テンプレートには、水質モニタリング デバイス テンプレート、シミュレートされたデバイス、ダッシュボード、事前構成済みのモニタリング ルールが含まれています。
-
-1. **[Create app]\(アプリの作成\)** を選択します。 **[新規アプリケーション]** ペインが開き、次の要素が表示されます。
-
-    * **アプリケーション名**:既定では、アプリケーション名は、**Water quality monitoring** の後に IoT Central が生成する一意の ID 文字列が続く形式です。 必要に応じて、表示名を入力したり、後でアプリケーション名を変更したりできます。
-    * **URL**: 必要な URL を入力したり、後で URL 値を変更したりできます。
-    * Azure サブスクリプションをお持ちの場合は、 **[ディレクトリ]** 、 **[Azure サブスクリプション]** 、 **[場所]** の値を入力します。 サブスクリプションをお持ちでない場合は、 **[7-day free trial]\(7 日間の無料試用版\)** を有効にし、必須の連絡先情報を入力できます。
-
-1. ページの左下にある **[作成]** ボタンを選択します。
-
-    ![Azure IoT Central の [新規アプリケーション] ページ](./media/tutorial-waterqualitymonitoring/new-application-waterqualitymonitoring1.png)
-
-    ![Azure IoT Central の [新規アプリケーション] の課金情報](./media/tutorial-waterqualitymonitoring/new-application-waterqualitymonitoring1-billinginfo.png)
-
-これで、Azure IoT Central の **水質のモニタリング** テンプレートを使用して、水質のモニタリング アプリケーションが作成されました。
-
-新しいアプリケーションには、次の構成済みコンポーネントが用意されています。
-
-* ダッシュボード
-* 水質のモニタリング デバイス テンプレート
-* シミュレートされた水質のモニタリング デバイス
-* ルールおよびジョブ
-* ホワイト ラベルを使用したブランド化
-
-アプリケーションは、いつでも変更できます。
-
-次に、アプリケーションを探索して、いくつかのカスタマイズを行います。
-
-## <a name="explore-and-customize-the-dashboard"></a>ダッシュボードを調べてカスタマイズする
+### <a name="dashboard"></a>ダッシュボード
 
 アプリケーションを作成した後、 **[Wide World water quality dashboard]\(Wide World の水質ダッシュボード\)** ペインが開きます。
 
-   ![水質のモニタリング ダッシュボード](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-dashboard1.png)
+:::image type="content" source="media/tutorial-waterqualitymonitoring/water-quality-monitoring-dashboard1.png" alt-text="水質の監視ダッシュボード。":::
 
 ビルダーは、オペレーターが使用するダッシュボードのビューを作成したりカスタマイズしたりすることができます。 カスタマイズしてみる前に、ダッシュボードを探索します。
 
@@ -92,7 +93,7 @@ ms.locfileid: "113588977"
 
 * **平均 pH KPI タイル**:**過去 30 分間の平均 pH** などの KPI タイルがダッシュボード ペインの上部に表示されます。 KPI タイルをカスタマイズし、別の種類や時間の範囲に設定できます。
 
-* **[Water monitoring area map]\(水質モニタリング エリア マップ\)** : Azure IoT Central では Azure Maps が使用されています。これをアプリケーション内で直接設定して、デバイスの[場所](../core/howto-use-location-data.md)を表示できます。 また、アプリケーションからの位置情報をデバイスにマップし、Azure Maps を使用して、その情報をマップに表示することもできます。 マップの上にカーソルを移動し、コントロールを試してみてください。
+* **[Water monitoring area map]\(水質モニタリング エリア マップ\)** : Azure IoT Central では Azure Maps が使用されています。これをアプリケーション内で直接設定して、デバイスの [場所](../core/howto-use-location-data.md)を表示できます。 また、アプリケーションからの位置情報をデバイスにマップし、Azure Maps を使用して、その情報をマップに表示することもできます。 マップの上にカーソルを移動し、コントロールを試してみてください。
 
 * **平均 pH 分布のヒートマップ グラフ**:さまざまな視覚化グラフを選択して、アプリケーションに最適な方法でデバイス テレメトリを表示できます。
 
@@ -110,7 +111,7 @@ ms.locfileid: "113588977"
 
 1. **[編集]** を選択して、 **[Wide World water quality dashboard]\(Wide World の水質ダッシュボード\)** ペインをカスタマイズします。 ダッシュボードは、 **[編集]** メニューでコマンドを選択することによってカスタマイズできます。 ダッシュボードが編集モードになったら、新しいタイルを追加したり既存のファイルを構成したりできます。
 
-    ![ダッシュボードを編集する](./media/tutorial-waterqualitymonitoring/edit-dashboard.png)
+    :::image type="content" source="media/tutorial-waterqualitymonitoring/edit-dashboard.png" alt-text="ダッシュボードを編集する。":::
 
 1. **[+ 新規]** を選択して、構成可能な新しいダッシュボードを作成します。 複数のダッシュボードを作成し、ダッシュボード メニューからダッシュボード間を移動できます。
 
@@ -125,7 +126,7 @@ Azure IoT Central のデバイス テンプレートには、デバイスの機�
 1. Azure IoT Central でアプリケーションの一番左のペインにある **[Device templates]\(デバイス テンプレート\)** を選択します。
 1. デバイス テンプレートの一覧から **[Water Quality Monitor]\(水質のモニタリング\)** を選択して、そのデバイス テンプレートを開きます。
 
-    ![デバイス テンプレート](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-devicetemplate.png)
+:::image type="content" source="media/tutorial-waterqualitymonitoring/water-quality-monitoring-device-template.png" alt-text="デバイス テンプレート。":::
 
 ### <a name="customize-the-device-template"></a>デバイス テンプレートをカスタマイズする
 
@@ -148,7 +149,7 @@ Azure IoT Central のデバイス テンプレートには、デバイスの機�
 
 水質モニタリング デバイス テンプレートには、定義済みのビューが用意されています。 このビューには、オペレーターにデバイス データがどのように表示されるか、およびオペレーターによってクラウドのプロパティがどのように設定されるかが定義されています。 ビューを探索し、変更を行ってみます。
 
-  ![デバイス テンプレートのビュー](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-devicetemplate-views.png)
+:::image type="content" source="media/tutorial-waterqualitymonitoring/water-quality-monitoring-device-template-views.png" alt-text="デバイス テンプレートのビュー。":::
 
 ### <a name="publish-the-device-template"></a>デバイス テンプレートを公開する
 
@@ -167,11 +168,11 @@ Azure IoT Central のデバイス テンプレートには、デバイスの機�
 
 1. アプリケーションの一番左のペインで **[Devices]\(デバイス\)** を選択します。
 
-   ![デバイス](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-devices.png)
+    :::image type="content" source="media/tutorial-waterqualitymonitoring/water-quality-monitoring-devices.png" alt-text="デバイス":::
 
 1. シミュレートされたデバイスを 1 つ選択します。
 
-    ![デバイス 1 を選択する](./media/tutorial-waterqualitymonitoring/waterqualitymonitor-device1.png)
+    :::image type="content" source="media/tutorial-waterqualitymonitoring/water-quality-monitor-device1.png" alt-text="デバイス 1 を選択する":::
 
 1. **[クラウドのプロパティ]** タブで、 **[Acidity (pH) threshold]\(酸性度 (pH) のしきい値\)** の値を **8** から **9** に変更し、 **[保存]** を選択します。
 1. **[デバイスのプロパティ]** タブと **[Device Dashboard]\(デバイス ダッシュボード\)** タブを調べます。
@@ -197,11 +198,11 @@ Azure IoT Central では、デバイス テレメトリを自動的に監視す�
 
 1. アプリケーションの一番左のペインで **[ルール]** を選択します。
 
-   ![ルール](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-rules.png)
+    :::image type="content" source="media/tutorial-waterqualitymonitoring/water-quality-monitoring-rules.png" alt-text="ルール":::
 
 1. **[High pH alert]\(高 pH アラート\)** を選択します。これは、アプリケーションに事前構成されたルールの 1 つです。
 
-   ![高 pH アラート ルール](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-highphalert.png)
+    :::image type="content" source="media/tutorial-waterqualitymonitoring/water-quality-monitoring-high-ph-alert.png" alt-text="高 pH アラート ルール。":::
 
    **[High pH alert]\(高 pH アラート\)** ルールは、酸性度 (pH) の条件が 8 を超えていることを確認するために構成されています。
 
@@ -237,7 +238,7 @@ Azure IoT Central のジョブを使用すると、デバイスに対する、�
 1. **[Browser icon]\(ブラウザー アイコン\)** で **[変更]** を選択し、ブラウザーのタブに表示される画像を選択します。
 1. **[ブラウザーの色]** で、既定値を HTML 16 進数のカラー コードで置き換えることができます。
 
-   ![アプリケーションのカスタマイズ](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-customize-your-application1.png)
+    :::image type="content" source="media/tutorial-waterqualitymonitoring/water-quality-monitoring-customize-your-application1.png" alt-text="アプリケーションのカスタマイズ":::
 
 ### <a name="update-the-application-image"></a>アプリケーション イメージを更新する
 
@@ -252,11 +253,4 @@ Azure IoT Central のジョブを使用すると、デバイスに対する、�
 1. アプリケーションの一番左のペインで **[Administration]\(管理\)** タブを開きます。
 1. **[お客様のアプリケーション]** を選択し、 **[削除]** ボタンを選択します。
 
-    ![アプリケーションを削除する](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-application-settings-delete-app1.png)
-
-## <a name="next-steps"></a>次のステップ
-
-* 項目ごとに詳しい情報を確認できます。 
-
-> [!div class="nextstepaction"]
-> [水質のモニタリングの概念](./concepts-waterqualitymonitoring-architecture.md)
+    :::image type="content" source="media/tutorial-waterqualitymonitoring/water-quality-monitoring-application-settings-delete-app1.png" alt-text="アプリケーションを削除する。":::

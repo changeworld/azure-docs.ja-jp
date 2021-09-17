@@ -3,16 +3,17 @@ metadata:
   title: Azure Monitor に関する FAQ | Microsoft Docs
   description: Azure Monitor についてよくあるご質問とその回答です。
   services: azure-monitor
-  ms.topic: conceptual
+  ms.topic: article
+  ms.service: azure-monitor
   author: bwren
   ms.author: bwren
   ms.date: 10/08/2020
-  ms.openlocfilehash: 8493312bcb15e2358191fb0aa6f0c0236961a446
-  ms.sourcegitcommit: 8154d7f8642d783f637cf6d857b4abbe28033f53
+  ms.openlocfilehash: 280a020b66ce20f8efdf124b92afa24bab0c9c13
+  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/12/2021
-  ms.locfileid: "113616367"
+  ms.lasthandoff: 08/17/2021
+  ms.locfileid: "122252829"
 title: Azure Monitor についてよくあるご質問
 summary: >
   この Microsoft FAQ では、Azure Monitor についてよくあるご質問を紹介します。 他に何かご質問がある場合は、[ディスカッション フォーラム](/answers/questions/topics/single/24223.html)にアクセスして質問を投稿してください。 よく寄せられる質問については、すばやく簡単に見つけることができるように、この記事に追加していきます。
@@ -106,7 +107,7 @@ sections:
   - question: >
       Log Analytics ストレージは不変ですか?
     answer: >
-      データベース ストレージのデータは、取り込んだ後に変更することはできませんが、プライベート データを削除するための [*purge* API パス](./logs/personal-data-mgmt.md#delete)で削除することはできます。 データを変更することはできませんが、一部の認証では、データを不変の状態に保ち、ストレージ内で変更や削除ができないようにする必要があります。 データの不変性は、[不変ストレージ](../storage/blobs/storage-blob-immutability-policies-manage.md)として構成されているストレージ アカウントへの[データ エクスポート](./logs/logs-data-export.md)を使用して実現することができます。
+      データベース ストレージのデータは、取り込んだ後に変更することはできませんが、プライベート データを削除するための [*purge* API パス](./logs/personal-data-mgmt.md#delete)で削除することはできます。 データを変更することはできませんが、一部の認証では、データを不変の状態に保ち、ストレージ内で変更や削除ができないようにする必要があります。 データの不変性は、[不変ストレージ](../storage/blobs/immutable-policy-configure-version-scope.md)として構成されているストレージ アカウントへの[データ エクスポート](./logs/logs-data-export.md)を使用して実現することができます。
   - question: >
       Log Analytics ワークスペースとはどのようなものですか?
     answer: >
@@ -207,20 +208,21 @@ sections:
 
       既存または新規の[アクション グループ](alerts/action-groups.md)を指定して、ログ アラートが条件に一致する場合に、ハートビートが 15 分以上なければ通知が送られるようにします。
   - question: >
-      Azure Monitor エージェントにはファイアウォールに関するどのような要件がありますか?
+      Log Analytics エージェントにはファイアウォールに関するどのような要件がありますか?
     answer: >
       ファイアウォールの要件について詳しくは、「[ネットワーク ファイアウォールの要件](agents/log-analytics-agent.md#network-requirements)」をご覧ください。
 - name: Azure Monitor エージェント
   questions:
   - question: >
       Log Analytics エージェントから Azure Monitor エージェントへのアップグレード パスを教えてください。 移行するにはどうすればよいですか?
-    answer: "お使いのマシンにある既存のエージェントを完全にアンインストールしてから新しいエージェントをインストールする必要があるため、現時点では \"自動更新\" のパスはありません。 したがってお客様には、機能パリティに基づいて最適な時期に移行するよう計画を立てていただければと考えております。\n何よりも、新しいエージェントの方がデータ収集のセットアップがはるかに簡単で一元化されているうえ、同じ移行先や複数の移行先に接続されたマシンのサブセットに対して構成可能であるのが、その理由です。新しいエージェントで使用される **データ収集ルールでは、既存の Log Analytics エージェントのセットアップにあった制限の多くが解消されています**。\n\n**そのような事情から、データ収集のニーズ全体に着目し、適切な DCR をまず作成したうえでエージェントの更新を実行し、その新しいセットアップに従うことをお勧めします**。 そのためには、大規模なデプロイ方法に関するガイダンスに従ってください。 \n"
+    answer: >
+      「[Log Analytics エージェントからの移行](./agents/azure-monitor-agent-migration.md)」を参照してください
   - question: >
-      SCOM を監視するにあたり、Log Analytics エージェント (MMA) から Azure Monitor エージェント (AMA) へのアップグレード パスを教えてください。 SCOM のシナリオに AMA を使用できますか?
-    answer: "SCOM に関連した 2 つの監視シナリオに、AMA がどのように影響するかを次に示します。\n- **シナリオ 1**: 監視の対象が SCOM の Windows オペレーティング システムである場合、アップグレード パスは、他のマシンと同じです。この場合は、必要な機能パリティが AMA で満たされた時点ですぐに、MMA (バージョン 2016、2019) から AMA に移行することができます。\n- **シナリオ 2**: SCOM を Log Analytics ワークスペースにオンボーディングまたは接続する場合、Log Analytics または Azure Monitor の SCOM コネクタによって実現されるため、SCOM 管理サーバーには MMA も AMA もインストールする必要はありません。 そのため、AMA の観点から見れば、このユース ケースへの影響はありません。  \n\n> [!NOTE] \n> MMA と AMA がサイド バイ サイドで実行されていても、上記の 2 つのシナリオには一切影響しません。\n"
+      System Center Operations Manager (SCOM) を監視するにあたり、Log Analytics エージェント (MMA) から Azure Monitor エージェント (AMA) へのアップグレード パスを教えてください。 SCOM のシナリオに AMA を使用できますか?
+    answer: "AMA が 2 つの System Center Operations Manager (SCOM) 関連の監視シナリオに与える影響をこちらに示します。\n- **シナリオ 1**: 監視の対象が SCOM の Windows オペレーティング システムである場合、アップグレード パスは、他のマシンと同じです。この場合は、必要な機能パリティが AMA で満たされた時点ですぐに、MMA (バージョン 2016、2019) から AMA に移行することができます。\n- **シナリオ 2**: SCOM を Log Analytics ワークスペースにオンボーディングまたは接続する場合、Log Analytics または Azure Monitor の SCOM コネクタによって実現されるため、SCOM 管理サーバーには MMA も AMA もインストールする必要はありません。 そのため、AMA の観点から見れば、このユース ケースへの影響はありません。  \n\n> [!NOTE] \n> MMA と AMA がサイド バイ サイドで実行されていても、上記の 2 つのシナリオには一切影響しません。\n"
   - question: >
-      新しい Azure Monitor エージェントは、各種 Log Analytics ソリューションのデータ収集をサポートしますか?
-    answer: "おなじみのソリューションや管理パックは、今後は VM の拡張機能として、Azure Monitor エージェント拡張機能を使用して Azure Monitor にデータを送信することになります。 そのため AMA のソリューションを有効にすると、VM の拡張機能が適宜追加でインストールされます。\nいずれは AMA が、Azure Monitor (またはその他サポートされる宛先) にデータをアップロードする唯一のエージェントになります。 ソリューション固有の VM 拡張機能は、シナリオ固有のデータを収集したり、必要に応じて変換や処理を実行したりした後、AMA を使用して最終的なデータを Azure Monitor にルーティングする目的で存在します。 \n\n以下の図は、**新しい拡張アーキテクチャ** を説明したものです。\n\n![拡張機能アーキテクチャ](agents/media/azure-monitor-agent/extensibility-arch-new.png)\n"
+      新しい Azure Monitor エージェントは各種の Log Analytics ソリューションと Azure サービス (Security Center、Sentinel など) のデータ収集をサポートしますか?
+    answer: "[プレビューで現在利用可能な AMA 拡張機能](./agents/azure-monitor-agent-overview.md#supported-services-and-features)の一覧をご確認ください。 こちらは、新しい Azure Monitor エージェントを代わりに使用した場合に現在利用できるのと同じソリューションとサービスです。 追加の拡張機能がソリューション/サービス用にインストールされる場合があります。これは、ソリューション/サービスで必要とされる追加のデータ収集または変換/処理を実行してから、AMA を使用して最終的なデータを Azure Monitor にルーティングするためです。 \n\n以下の図は、**新しい拡張アーキテクチャ** を説明したものです。\n\n![拡張機能アーキテクチャ](agents/media/azure-monitor-agent/extensibility-arch-new.png)\n"
   - question: >
       新しい Azure Monitor エージェントでは、どの Log Analytics ソリューションがサポートされますか?
     answer: >
@@ -239,11 +241,11 @@ sections:
       はい、できます。ただしいくつかの考慮事項があります。 詳細については、[こちら](agents/azure-monitor-agent-overview.md#coexistence-with-other-agents)をご覧ください。
   - question: >
       新しい Azure Monitor エージェントは、既存のエージェントと同等のものですか?
-    answer: "既存のエージェントと完全に同等というわけではありません。 以下に、両者の違いを大まかに示します。\n\n- **Log Analytics エージェント (MMA と OMS) との比較**\n    -   一部の Log Analytics ソリューションは現在サポートされていません。 上記の表を参照してください。\n    -   Private Link はサポートされません \n    -   プロキシ サーバーや Log Analytics (OMS) ゲートウェイはサポートされません\n    -   カスタム ログや IIS ログの収集はサポートされません\n    -   Hybrid Runbook Worker はサポートされません\n\n- **Azure Diagnostics の拡張機能 (WAD と LAD) との比較**\n    -   Event Hubs とストレージ アカウントは、送信先としてサポートされません\n"
+    answer: "既存のエージェントと完全に同等というわけではありません。 以下に、両者の違いを大まかに示します。\n\n- **Log Analytics エージェント (MMA と OMS) との比較**\n    -   一部の Log Analytics ソリューションは現在サポートされていません。 [サポート対象](agents/azure-monitor-agent-overview.md#supported-services-and-features)を確認\n    -   Private Link はサポートされません \n    -   カスタム ログや IIS ログの収集はサポートされません\n\n- **Azure Diagnostics の拡張機能 (WAD と LAD) との比較**\n    -   Event Hubs とストレージ アカウントは、送信先としてサポートされません\n"
   - question: >
       新しい Azure Monitor エージェントは Azure 以外の環境 (他のクラウド、オンプレミスなど) をサポートしますか?
     answer: >
-      今日サーバーには、Azure Arc エージェントがインストールされていれば、オンプレミス マシンと他のクラウドに接続されたマシンの両方がサポートされます。 AMA と DCR を実行するという目的において、ARC の要件に、**追加のコストやリソース消費** は伴いません。インストール メカニズムとして使用されるのは ARC エージェントのみであり、それらを有効にしない限り、どのような操作も実行されないためです。
+      現在のサーバーに Azure Arc エージェントがインストールされていれば、オンプレミス マシンと他のクラウドに接続されたマシンの両方がサポートされます。 AMA と DCR を実行するという目的において、ARC の要件に、**追加のコストやリソース消費** は伴いません。インストール メカニズムとして使用されるのは ARC エージェントのみであり、それらを有効にしない限り、どのような操作も実行されないためです。
   - question: >
       新しい Azure Monitor エージェントでは、どのような種類のマシンがサポートされますか?
     answer: "それらを直接インストールできるのは、Virtual Machines、Virtual Machines Scale Sets、Arc 対応サーバーのみです。 \n"

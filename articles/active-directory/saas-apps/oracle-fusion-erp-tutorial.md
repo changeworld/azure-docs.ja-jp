@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/09/2021
 ms.author: jeedes
-ms.openlocfilehash: 3a950727034d4be822e0b9554424074a1aaebf33
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 44286f0f5a0d5f367cd3934ff61653eb4772c1fd
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101649913"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122182467"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-oracle-fusion-erp"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Oracle Fusion ERP の統合
 
@@ -38,6 +38,7 @@ ms.locfileid: "101649913"
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 * Oracle Fusion ERP では、**SP** Initiated SSO がサポートされます。
+* Oracle Fusion ERP では、[**自動化された** ユーザー プロビジョニングとプロビジョニング解除](oracle-fusion-erp-provisioning-tutorial.md) (推奨) がサポートされます。
 
 ## <a name="add-oracle-fusion-erp-from-the-gallery"></a>ギャラリーからの Oracle Fusion ERP の追加
 

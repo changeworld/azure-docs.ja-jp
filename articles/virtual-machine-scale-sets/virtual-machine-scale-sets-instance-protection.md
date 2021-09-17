@@ -9,14 +9,15 @@ ms.subservice: instance-protection
 ms.date: 02/26/2020
 ms.reviewer: jushiman
 ms.custom: avverma, devx-track-azurepowershell
-ms.openlocfilehash: 1b54a1be03aca62cacf6afe7361028a42ea7f84c
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 60d7b1c2a869d22e3d8220e0f3537b2882ea0db4
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110673903"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122690425"
 ---
 # <a name="instance-protection-for-azure-virtual-machine-scale-set-instances"></a>Azure 仮想マシン スケール セット インスタンスのインスタンス保護
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブルなスケール セット :heavy_check_mark: 均一スケール セット
 
 Azure 仮想マシン スケール セットを使用すると、[自動スケーリング](virtual-machine-scale-sets-autoscale-overview.md)によるワークロードの弾力性が向上するので、インフラストラクチャのスケールアウトとスケールインのタイミングを構成できます。 また、スケール セットを使用すると、さまざまな[アップグレード ポリシー](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)設定を介して多数の VM の管理、構成、および更新を一元的に行うこともできます。 アップグレード ポリシーを [自動] または [ローリング] に設定すると、スケール セット モデル上で更新プログラムを構成して、新しい構成がすべてのスケール セット インスタンスに自動的に適用されるようにすることができます。
 

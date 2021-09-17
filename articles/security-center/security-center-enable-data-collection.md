@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: quickstart
-ms.date: 03/04/2021
+ms.date: 08/18/2021
 ms.author: memildin
-ms.openlocfilehash: 3f7663c62b514cb002b4de3df59d2185cfa815d3
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 96b5becdda011243cdcc9e510450683c255e7c1c
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114284224"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122607950"
 ---
 # <a name="configure-auto-provisioning-for-agents-and-extensions-from-azure-security-center"></a>Azure Security Center からのエージェントと拡張機能の自動プロビジョニングを構成する
 
@@ -25,10 +25,10 @@ Azure Security Center では、リソースに関連するエージェントま�
 
 | 側面                  | 詳細                                                                                                                                                                                                                      |
 |-------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| リリース状態:          | **機能**:自動プロビジョニングが一般提供 (GA)<br>**エージェントと拡張機能**: Azure VM 用の Log Analytics エージェントは GA です。Microsoft Dependency エージェントはプレビュー段階です。Kubernetes 用のポリシー アドオンは GA です                |
+| リリース状態:          | **機能**:自動プロビジョニングが一般提供 (GA)<br>**エージェントと拡張機能**: Azure VM 用 Log Analytics エージェントは GA、Microsoft Dependency エージェントはプレビュー、Kubernetes 用のポリシー アドオンは GA、ゲスト構成エージェントはプレビューです  |
 | 価格:                | Free                                                                                                                                                                                                                         |
 | サポートされる宛先: | :::image type="icon" source="./media/icons/yes-icon.png"::: Azure マシン<br>:::image type="icon" source="./media/icons/no-icon.png"::: Azure Arc マシン<br>:::image type="icon" source="./media/icons/no-icon.png"::: Kubernetes ノード<br>:::image type="icon" source="./media/icons/no-icon.png"::: Virtual Machine Scale Sets |
-| クラウド:                 | :::image type="icon" source="./media/icons/yes-icon.png"::: 商用クラウド<br>:::image type="icon" source="./media/icons/yes-icon.png"::: US Gov、Azure China                                                                                                      |
+| クラウド:                 | **機能**:<br>:::image type="icon" source="./media/icons/yes-icon.png"::: 商用クラウド<br>:::image type="icon" source="./media/icons/yes-icon.png"::: Azure Government、Azure China 21Vianet<br>**エージェントと拡張機能**:<br>Azure VM 用 Log Analytics エージェントはすべてのクラウドで利用でき、 Kubernetes 用のポリシー アドオンはすべてのクラウドで利用でき、ゲスト構成エージェントは商用クラウドでのみ利用できます  |
 |                         |                                                                                                                                                                                                                              |
 
 ## <a name="how-does-security-center-collect-data"></a>Security Center でのデータの収集方法
@@ -67,9 +67,9 @@ Log Analytics エージェントの自動プロビジョニングを有効にす
 
 1. Security Center のメニューから、 **[価格と設定]** を選択します。
 1. 関連するサブスクリプションを選択します。
-1. **[自動プロビジョニング]** ページで、Log Analytics エージェントの状態を **[オン]** に設定します。
+1. **[自動プロビジョニング]** ページで、Log Analytics エージェントの自動プロビジョニングの状態を **[オン]** に設定します。
 
-    :::image type="content" source="./media/security-center-enable-data-collection/enable-automatic-provisioning.png" alt-text="Log Analytics エージェントの自動プロビジョニングの有効化。":::
+    :::image type="content" source="./media/security-center-enable-data-collection/enable-automatic-provisioning.png" alt-text="Log Analytics エージェントの自動プロビジョニングの有効化。" lightbox="./media/security-center-enable-data-collection/enable-automatic-provisioning.png":::
 
 1. 構成オプション ペインで、使用するワークスペースを定義します。
 
@@ -120,13 +120,14 @@ Log Analytics エージェントの自動プロビジョニングを有効にす
 
         :::image type="content" source="./media/security-center-enable-data-collection/toggle-kubernetes-add-on.png" alt-text="K8s ポリシー アドオンの自動プロビジョニングを有効に切り替える。":::
 
-    1. **[保存]** を選択します。 Azure ポリシーが割り当てられ、修復タスクが作成されます。
+    1. **[保存]** を選択します。 Azure Policy 定義が割り当てられ、修復タスクが作成されます。
 
         |拡張機能  |ポリシー  |
         |---------|---------|
-        |Kubernetes 用の Policy アドオン|[Azure Policy アドオンを Azure Kubernetes Service クラスターにデプロイする](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fa8eff44f-8c92-45c3-a3fb-9880802d67a7)|
+        |Kubernetes 用の Policy アドオン                      |[Azure Policy アドオンを Azure Kubernetes Service クラスターにデプロイする](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fa8eff44f-8c92-45c3-a3fb-9880802d67a7)|
         |Microsoft Dependency Agent (プレビュー) (Windows VM)|[Windows 仮想マシン用の Dependency Agent のデプロイ](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f1c210e94-a481-4beb-95fa-1571b434fb04)         |
-        |Microsoft Dependency Agent (プレビュー) (Linux VM)|[Linux 仮想マシン用の Dependency Agent のデプロイ](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f4da21710-ce6f-4e06-8cdb-5cc4c93ffbee)|
+        |Microsoft Dependency Agent (プレビュー) (Linux VM)  |[Linux 仮想マシン用の Dependency Agent のデプロイ](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f4da21710-ce6f-4e06-8cdb-5cc4c93ffbee)|
+        |ゲスト構成エージェント (プレビュー)               |[仮想マシンでゲスト構成ポリシーを有効にするための前提条件をデプロイする](https://github.com/Azure/azure-policy/blob/64dcfa3033a3ff231ec4e73d2c1dad4db4e3b5dd/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_Prerequisites.json)|
         |||
 
 1. **[保存]** を選択します。 ワークスペースをプロビジョニングする必要がある場合は、エージェントのインストールに最大で 25 分かかることがあります。
@@ -221,7 +222,7 @@ Log Analytics エージェントを手動でインストールするには:
    - [Windows 用 Log Analytics エージェントをインストールする](../virtual-machines/extensions/oms-windows.md)
    - [Linux 用 Log Analytics エージェントをインストールする](../virtual-machines/extensions/oms-linux.md)
 
-1. 既存の VM にエージェントをデプロイするには、[Azure 仮想マシンに関するデータの収集](../azure-monitor/vm/quick-collect-azurevm.md)に関する記事の手順に従います (「**イベントとパフォーマンス データを収集する**」のセクションは省略可能です)。
+1. 既存の VM にエージェントをデプロイするには、[Azure 仮想マシンに関するデータの収集](../azure-monitor/vm/monitor-virtual-machine.md)に関する記事の手順に従います (「**イベントとパフォーマンス データを収集する**」のセクションは省略可能です)。
 
 1. PowerShell を使用してエージェントをデプロイするには、仮想マシンのドキュメントの手順を使用します。
 

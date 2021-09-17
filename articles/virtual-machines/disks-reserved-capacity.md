@@ -7,14 +7,16 @@ ms.date: 06/29/2021
 ms.topic: how-to
 ms.service: storage
 ms.subservice: disks
-ms.openlocfilehash: 60ccfe222b06e9c250eab3b8fa568cc4e5a925b2
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: 4ec7c3640a242212010de68a9f08c4d6e3e27300
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113356183"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122694321"
 ---
 # <a name="reduce-costs-with-azure-disks-reservation"></a>Azure ディスク予約によるコストの削減
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 予約容量によって Azure Disk Storage の使用量を節約します。 Azure Disk Storage の予約を Azure Reserved Virtual Machine Instances と組み合わせると、仮想マシン (VM) の総コストを削減できます。 予約割引は、選択した予約スコープ内の一致するディスクに自動的に適用されます。 こうした自動適用により、割引を受けるためにマネージド ディスクに予約を割り当てる必要はありません。
 

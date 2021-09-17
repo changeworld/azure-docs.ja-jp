@@ -1,39 +1,50 @@
 ---
 title: コピー アクティビティを監視する
-description: Azure Data Factory でのコピー アクティビティの実行を監視する方法について説明します。
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Azure Data Factory と Azure Synapse Analytics でのコピー アクティビティの実行を監視する方法について説明します。
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 03/22/2021
+ms.date: 08/24/2021
 ms.author: jianleishen
-ms.openlocfilehash: 1382d92b09bef59a7b9e79a758c41c6bbaec7343
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: b8f3de9a986c491de6bfd2b507755abe4face534
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109482635"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122822402"
 ---
-# <a name="monitor-copy-activity"></a>コピー アクティビティを監視する
+# <a name="monitor-copy-activity"></a>コピー アクティビティの監視
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-この記事では、Azure Data Factory でのコピー アクティビティの実行を監視する方法の概要について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
+この記事では、Azure Data Factory と Synapse パイプラインでのコピー アクティビティの実行を監視する方法の概要について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
 
 ## <a name="monitor-visually"></a>視覚的な監視
 
-Azure Data Factory でパイプラインを作成して公開した後、それをトリガーに関連付けたり、アドホック実行を手動で開始したりできます。 Azure Data Factory ユーザー エクスペリエンスで、すべてのパイプラインの実行をネイティブに監視できます。 Azure Data Factory の監視の全般については、「[Azure Data Factory を視覚的に監視する](monitor-visually.md)」を参照してください。
+パイプラインを作成して公開した後、それをトリガーに関連付けたり、アドホック実行を手動で開始したりできます。 ユーザー エクスペリエンスで、すべてのパイプラインの実行をネイティブに監視できます。 監視の全般については、「[Azure Data Factory と Synapse パイプラインを視覚的に監視する](monitor-visually.md)」を参照してください。
 
-コピー アクティビティの実行を監視するには、お使いのデータ ファクトリの **[作成と監視]** UI に移動します。 **[監視]** タブに表示されるパイプライン実行の一覧で、**パイプライン名** のリンクをクリックして、パイプライン実行でのアクティビティの実行の一覧にアクセスします。
+コピー アクティビティの実行を監視するには、ご利用のサービス インスタンスの **Data Factory Studio** または **Azure Synapse Studio** のUI に移動します。 **[監視]** タブに表示されるパイプライン実行の一覧で、**パイプライン名** のリンクをクリックして、パイプライン実行でのアクティビティの実行の一覧にアクセスします。
+
+# <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
 
 ![パイプラインの実行の監視](./media/copy-activity-overview/monitor-pipeline-run.png)
+
+# <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+![パイプラインの実行の監視](./media/copy-activity-overview/monitor-pipeline-run-synapse.png)
+
+---
 
 このレベルでは、コピー アクティビティの入力、出力、エラー (コピー アクティビティの実行が失敗した場合) と、実行時間や状態などの統計情報へのリンクが表示されます。 コピー アクティビティ名の横にある **[詳細]** ボタン (眼鏡) をクリックすると、コピー アクティビティの実行に関する詳細が表示されます。 
 
 ![コピー アクティビティの実行を監視する](./media/copy-activity-overview/monitor-copy-activity-run.png)
 
-このグラフィカルな監視ビューでは、Azure Data Factory によってコピー アクティビティの実行の情報が表示されます。これには、データの読み取りと書き込みの量、ソースからシンクにコピーされたデータのファイルと行の数、スループット、コピー シナリオに適用された構成、コピー アクティビティで行われた手順および対応する実行時間と詳細などが含まれます。 各メトリックとその詳細な説明については、[こちらの表](#monitor-programmatically)を参照してください。 
+このグラフィカルな監視ビューでは、サービスによってコピー アクティビティの実行の情報が表示されます。これには、データの読み取りと書き込みの量、ソースからシンクにコピーされたデータのファイルと行の数、スループット、コピー シナリオに適用された構成、コピー アクティビティで行われた手順および対応する実行時間と詳細などが含まれます。 各メトリックとその詳細な説明については、[こちらの表](#monitor-programmatically)を参照してください。 
 
-シナリオによっては、Data Factory でコピー アクティビティを実行すると、例に示すように、コピー アクティビティ監視ページの上部に **[Performance tuning tips]\(パフォーマンス チューニングのヒント\)** が表示されます。 このヒントでは、この特定のコピーの実行について ADF によって特定されたボトルネックと、コピーのスループットを向上させるために変更するものの指摘が示されます。 詳しくは、[自動パフォーマンス チューニングのヒント](copy-activity-performance-troubleshooting.md#performance-tuning-tips)に関する記事を参照してください。
+シナリオによっては、コピー アクティビティを実行すると、例に示すように、コピー アクティビティ監視ページの上部に **[Performance tuning tips]\(パフォーマンス チューニングのヒント\)** が表示されます。 このヒントでは、この特定のコピーの実行について、サービスによって特定されたボトルネックと、何を変更するとコピーのスループットが向上するかについての提案が示されます。 詳しくは、[自動パフォーマンス チューニングのヒント](copy-activity-performance-troubleshooting.md#performance-tuning-tips)に関する記事を参照してください。
 
 下部の **実行の詳細と実行時間** では、コピー アクティビティで行われた主要な手順が示されます。これは、コピーのパフォーマンスのトラブルシューティングに特に役立ちます。 コピー実行のボトルネックは、実行時間が最も長いものです。 各ステージの内容と詳細なトラブルシューティングのガイダンスについては、[「コピー アクティビティのパフォーマンスのトラブルシューティング](copy-activity-performance-troubleshooting.md)」を参照してください。
 
@@ -43,7 +54,7 @@ Azure Data Factory でパイプラインを作成して公開した後、それ�
 
 ## <a name="monitor-programmatically"></a>プログラムで監視する
 
-コピー アクティビティの実行の詳細とパフォーマンス特性は、 **[Copy Activity run result]\(コピー アクティビティの実行結果\)**  >  **[出力]** セクションでも返されます。それを使用して、UI 監視ビューが表示されます。 返される可能性があるプロパティの詳細な一覧を次に示します。 コピー シナリオに適用できるプロパティのみが表示されます。 プログラムでアクティビティの実行を監視する方法の概要については、「[Azure Data Factory をプログラムで監視する](monitor-programmatically.md)」を参照してください。
+コピー アクティビティの実行の詳細とパフォーマンス特性は、 **[Copy Activity run result]\(コピー アクティビティの実行結果\)**  >  **[出力]** セクションでも返されます。それを使用して、UI 監視ビューが表示されます。 返される可能性があるプロパティの詳細な一覧を次に示します。 コピー シナリオに適用できるプロパティのみが表示されます。 プログラムでアクティビティの実行を監視する方法の概要については、「[Azure Data Factory または Synapse パイプラインをプログラムで監視する](monitor-programmatically.md)」を参照してください。
 
 | プロパティ名  | 説明 | 出力の単位 |
 |:--- |:--- |:--- |

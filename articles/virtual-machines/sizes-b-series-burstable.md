@@ -8,14 +8,16 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: risverma
-ms.openlocfilehash: cdfb44518c75dbb57d184fa72eb7639fd56f738c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e0fbe4b02ac0cf2978bba69a9e7e6eafb36b0f84
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121729670"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122697950"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>負荷の急増に対応できる B シリーズ仮想マシンのサイズ
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 B シリーズ VM は、さまざまなハードウェアの種類とプロセッサにデプロイできるため、競争力のある帯域幅割り当てが提供されます。 Web サーバー、概念実証、小規模なデータベース、開発ビルド環境など、CPU が常時最大限のパフォーマンスを発揮する必要のないワークロードでは、B シリーズ VM が最適です。 このようなワークロードでは通常、負荷の急増に対応できることがパフォーマンスの要件となります。 このサイズがデプロイされる物理ハードウェアを判断するには、仮想マシン内から仮想ハードウェアをクエリします。 B シリーズでは、購入する VM サイズに一定のベースライン パフォーマンスが約束されており、使用量がベースラインを下回る場合にはクレジットが蓄積されていきます。 VM にクレジットが蓄積されていると、アプリケーションで必要な CPU パフォーマンスが高まった場合にベースライン以上のパフォーマンス (上限: vCPU のパフォーマンスの 100%) を実現できます。
 

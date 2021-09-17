@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 01/19/2021
 ms.custom: references_region
-ms.openlocfilehash: 83ad2245ec010bd91907ae27e077f86b4d6b1d5e
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: 7dca96e05860bb399435ac95ed81107c268ebc5c
+ms.sourcegitcommit: c2f0d789f971e11205df9b4b4647816da6856f5b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112122406"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122662229"
 ---
 # <a name="data-collection-rules-in-azure-monitor"></a>Azure Monitor のデータ収集ルール
 データ収集ルール (DCR) では、Azure Monitor に入ってくるデータを定義し、そのデータを送信または格納する場所を指定します。 この記事では、データ収集ルールの概要 (その内容と構造、それらを作成して使用する方法など) について説明します。
@@ -53,8 +53,10 @@ ms.locfileid: "112122406"
 ## <a name="limits"></a>制限
 各データ収集ルールに適用される制限については、「[Azure Monitor サービスの制限](../service-limits.md#data-collection-rules)」を参照してください。
 
-## <a name="data-residency"></a>データの保存場所 
+## <a name="data-resiliency-and-high-availability"></a>データの回復性と高可用性
 サービスとしてのデータ収集ルールは、伴いにデプロイされます。 ルールは、指定したリージョンに作成されて格納され、同じ Geo 内の [ペアリージョン](../../best-practices-availability-paired-regions.md#azure-regional-pairs) にバックアップされます。  
+さらに、サービスはリージョン内の 3 つの [可用性ゾーン](../../availability-zones/az-overview.md#availability-zones)すべてにデプロイされて、高可用性がさらに向上する **ゾーン冗長サービス** になります。
+
 
 **単一リージョン データ保存場所**: 現在、顧客データを 1 つのリージョンに格納できるようにするプレビュー機能は、アジア太平洋地域の東南アジア リージョン (シンガポール) と、ブラジル地域のブラジル南部リージョン (サンパウロ州) でのみ使用できます。 単一リージョン保存場所は、これらのリージョンでは既定で有効になっています。
 

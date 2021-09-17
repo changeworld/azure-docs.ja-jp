@@ -11,12 +11,12 @@ ms.author: tracych
 ms.reviewer: laobri
 ms.date: 8/11/2021
 ms.custom: how-to, devplatv2
-ms.openlocfilehash: bd5d5eba2d5da4cd0f920d4c6287e779d83ac293
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b68ba3f0221aa97307e746d192de65b2915d2e4b
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121739119"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122419552"
 ---
 # <a name="use-batch-endpoints-preview-for-batch-scoring"></a>バッチ エンドポイント (プレビュー) を使用したバッチ スコアリング
 
@@ -64,7 +64,7 @@ Azure ML 拡張機能を追加して構成します。
 az extension add -n ml
 ```
 
-ML 拡張機能の構成について詳しくは、[2.0 CLI (プレビュー) のインストール、セットアップ、使用](how-to-configure-cli.md)に関するページを参照してください。
+ML 拡張機能の構成について詳しくは、[CLI (v2) (プレビュー) のインストール、セットアップ、使用](how-to-configure-cli.md)に関するページを参照してください。
 
 * リポジトリの例
 

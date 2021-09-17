@@ -3,18 +3,20 @@ title: Azure Service Bus キューの概要 (Azure.Messaging.ServiceBus)
 description: このチュートリアルでは、.NET Core C# アプリケーションを作成して、Service Bus キューとの間でメッセージを送受信します。
 ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
-ms.date: 06/29/2021
+ms.date: 08/16/2021
 ms.custom: contperf-fy21q4
-ms.openlocfilehash: b2b2fc806020c665e7658226cb11c086aa816127
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: e315542d8d58a58fa4e2cea8bbab4768af0596eb
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113433433"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122252392"
 ---
 # <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-net"></a>Azure Service Bus キューとの間でメッセージを送受信する (.NET)
 このクイックスタートでは、[Azure.Messaging.ServiceBus](https://www.nuget.org/packages/Azure.Messaging.ServiceBus/) .NET ライブラリを使用して、Service Bus キューとの間でメッセージを送受信する方法について説明します。
 
+> [!NOTE]
+> [GitHub の Azure SDK for .NET リポジトリ](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/servicebus/Azure.Messaging.ServiceBus/samples)には、Azure Service Bus の .NET サンプルが他にもあります。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -58,10 +60,10 @@ ms.locfileid: "113433433"
 
 1. **Program.cs** のコードを次のコードに置き換えます。 コードの重要な手順を次に示します。  
     1. 名前空間への接続文字列を使用して [ServiceBusClient](/dotnet/api/azure.messaging.servicebus.servicebusclient) オブジェクトを作成します。 
-    1. `ServiceBusClient` オブジェクトで `CreateSender` メソッドを呼び出して、特定の Service Bus キューに対して `ServiceBusSender` オブジェクトを作成します。     
-    1. `ServiceBusSender.CreateMessageBatchAsync` メソッドを使用して `ServiceBusMessageBatch` オブジェクトを作成します。
-    1. `ServiceBusMessageBatch.TryAddMessage` を使用して、メッセージをバッチに追加します。 
-    1. `ServiceBusSender.SendMessagesAsync` メソッドを使用してメッセージのバッチを Service Bus キューに送信します。
+    1. [ServiceBusClient](/dotnet/api/azure.messaging.servicebus.servicebusclient) オブジェクトの [CreateSender](/dotnet/api/azure.messaging.servicebus.servicebusclient.createsender) メソッドを呼び出して、特定の Service Bus キュー用の [ServiceBusSender](/dotnet/api/azure.messaging.servicebus.servicebussender) オブジェクトを作成します。     
+    1. [ServiceBusSender.CreateMessageBatchAsync](/dotnet/api/azure.messaging.servicebus.servicebussender.createmessagebatchasync) メソッドを使用して [ServiceBusMessageBatch](/dotnet/api/azure.messaging.servicebus.servicebusmessagebatch) オブジェクトを作成します。
+    1. [ServiceBusMessageBatch.TryAddMessage](/dotnet/api/azure.messaging.servicebus.servicebusmessagebatch.tryaddmessage) を使用して、メッセージをバッチに追加します。 
+    1. [ServiceBusSender.SendMessagesAsync](/dotnet/api/azure.messaging.servicebus.servicebussender.sendmessagesasync) メソッドを使用してメッセージのバッチを Service Bus キューに送信します。
     
         詳細については、コードのコメントを参照してください。
     
@@ -102,7 +104,7 @@ ms.locfileid: "113433433"
                     // create a batch 
                     using ServiceBusMessageBatch messageBatch = await sender.CreateMessageBatchAsync();
         
-                    for (int i = 1; i <= 3; i++)
+                    for (int i = 1; i <= numOfMessages; i++)
                     {
                         // try adding a message to the batch
                         if (!messageBatch.TryAddMessage(new ServiceBusMessage($"Message {i}")))
@@ -181,10 +183,10 @@ ms.locfileid: "113433433"
 1. **Program.cs** のコードを次のコードに置き換えます。 コードの重要な手順を次に示します。
     コードの重要な手順を次に示します。
     1. 名前空間への接続文字列を使用して [ServiceBusClient](/dotnet/api/azure.messaging.servicebus.servicebusclient) オブジェクトを作成します。 
-    1. `ServiceBusClient` オブジェクトで `CreateProcessor` メソッドを呼び出し、指定した Service Bus キューに対して `ServiceBusProcessor` オブジェクトを作成します。 
-    1. `ServiceBusProcessor` オブジェクトの `ProcessMessageAsync` および `ProcessErrorAsync` イベントのハンドラーを指定します。 
-    1. `ServiceBusProcessor` オブジェクトで `StartProcessingAsync` を呼び出して、メッセージの処理を開始します。 
-    1. ユーザーがキーを押して処理を終了すると、`ServiceBusProcessor` オブジェクトで `StopProcessingAsync` が呼び出されます。 
+    1. [ServiceBusClient](/dotnet/api/azure.messaging.servicebus.servicebusclient) オブジェクトの [CreateProcessor](/dotnet/api/azure.messaging.servicebus.servicebusclient.createprocessor) メソッドを呼び出し、指定した Service Bus キュー用の [ServiceBusProcessor](/dotnet/api/azure.messaging.servicebus.servicebusprocessor) オブジェクトを作成します。 
+    1. [ServiceBusProcessor](/dotnet/api/azure.messaging.servicebus.servicebusprocessor) オブジェクトの [ProcessMessageAsync](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.processmessageasync) および [ProcessErrorAsync](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.processerrorasync) の各イベントのハンドラーを指定します。 
+    1. [ServiceBusProcessor](/dotnet/api/azure.messaging.servicebus.servicebusprocessor) オブジェクトの [StartProcessingAsync](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.startprocessingasync) を呼び出して、メッセージの処理を開始します。 
+    1. ユーザーが任意のキーを押して処理を終了すると、[ServiceBusProcessor](/dotnet/api/azure.messaging.servicebus.servicebusprocessor) オブジェクトの [StopProcessingAsync](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.stopprocessingasync) が呼び出されます。 
 
         詳細については、コードのコメントを参照してください。
 
@@ -291,7 +293,7 @@ ms.locfileid: "113433433"
         :::image type="content" source="./media/service-bus-dotnet-get-started-with-queues/queue-messages-size-final.png" alt-text="受信後のアクティブなメッセージとサイズ" lightbox="./media/service-bus-dotnet-get-started-with-queues/queue-messages-size-final.png":::
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 次のドキュメントおよびサンプルを参照してください。
 
 - [.NET 用の Azure Service Bus クライアント ライブラリ - Readme](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/servicebus/Azure.Messaging.ServiceBus)

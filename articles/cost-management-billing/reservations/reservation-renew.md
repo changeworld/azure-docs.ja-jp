@@ -6,14 +6,14 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 08/05/2020
+ms.date: 08/20/2021
 ms.author: banders
-ms.openlocfilehash: b038ab5a937105d3fb625f6b17dd71b0073b7080
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3b6f6a0700915263187f4f31b60a4d2d8b72d9fd
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121726984"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122634204"
 ---
 # <a name="automatically-renew-reservations"></a>予約を自動的に更新する
 
@@ -36,7 +36,7 @@ Azure portal > **[予約]** に移動します。
 
 ## <a name="if-you-dont-renew"></a>更新しない場合
 
-サービスは引き続き正常に実行されます。 予約の有効期限が切れると、従量課金制の料金が課金されます。
+サービスは引き続き正常に実行されます。 予約の有効期限が切れると、従量課金制の料金が課金されます。 有効期限が切れる前に予約の自動更新が設定されていなかった場合、期限切れの予約を更新することはできません。 引き続きコスト削減するには、新しい予約を購入してください。
 
 ## <a name="required-renewal-permissions"></a>更新に必要なアクセス許可
 
@@ -61,7 +61,7 @@ Azure portal > **[予約]** に移動します。
 期限切れになる予約に次のいずれかの変更を加えると、予約の更新が取り消されます。
 
 - Split
-- マージする
+- Merge
 - 1 つのアカウントから別のアカウントに予約を譲渡する
 - WebDirect サブスクリプションからエンタープライズ契約 (EA) サブスクリプションまたはその他の購入方法に予約を譲渡する
 - 登録を更新する
@@ -93,5 +93,5 @@ Azure では、次の場合に更新が処理されない可能性がありま�
 - 従量課金制料金を使用した個々のサブスクリプションのお客様 - 電子メールは、アカウント管理者として設定されたユーザーに送信されます。
 - クラウド ソリューション プロバイダーのお客様 - 電子メールは、パートナー通知の連絡先に送信されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - Azure の予約の詳細については、「[Azure の予約とは](save-compute-costs-reservations.md)」を参照してください。

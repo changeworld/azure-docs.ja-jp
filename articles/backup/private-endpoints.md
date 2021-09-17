@@ -1,46 +1,25 @@
 ---
-title: プライベート エンドポイント
-description: Azure Backup のプライベート エンドポイントを作成するプロセスと、プライベート エンドポイントを使用することでリソースのセキュリティが維持しやすくなるシナリオについて説明します。
+title: Azure Backup のプライベート エンドポイントの作成と使用
+description: Azure Backup のプライベート エンドポイントを作成するプロセスについて説明します。プライベート エンドポイントを使用することで、リソースのセキュリティが維持しやすくなります。
 ms.topic: conceptual
-ms.date: 07/06/2021
+ms.date: 08/19/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: aac0fc7b25a43130a157540825395e9eb8c9e4c5
-ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
+ms.openlocfilehash: df65aad1247f21c4deda3f7ee71f657a3b288168
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2021
-ms.locfileid: "113301152"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444240"
 ---
-# <a name="private-endpoints-for-azure-backup"></a>Azure Backup のプライベート エンドポイント
+# <a name="create-and-use-private-endpoints-for-azure-backup"></a>Azure Backup のプライベート エンドポイントの作成と使用
 
-Azure Backup で[プライベート エンドポイント](../private-link/private-endpoint-overview.md)を使用して、Recovery Services コンテナーから安全にデータをバックアップおよび復元できます。 プライベート エンドポイントによって、ご自分の VNet からの 1 つ以上のプライベート IP アドレスを使用して、サービスを実質的に VNet に取り込みます。
-
-この記事は、Azure Backup のプライベート エンドポイントを作成するプロセスと、プライベート エンドポイントを使用することでリソースのセキュリティが維持しやすくなるシナリオについて理解するのに役立ちます。
+この記事では、[Azure Backup のプライベート エンドポイント](private-endpoints-overview.md)を作成するプロセスと、プライベート エンドポイントによってリソースのセキュリティが維持しやすくなるシナリオに関する情報を提供します。
 
 ## <a name="before-you-start"></a>開始する前に
 
-- プライベート エンドポイントは、新しい Recovery Services コンテナー (そのコンテナーに登録されている項目がない) に対してのみ作成できます。 そのため、コンテナーに項目を保護する前に、プライベート エンドポイントを作成する必要があります。
-- 1 つの仮想ネットワークに複数の Recovery Services コンテナーのプライベート エンドポイントを含めることができます。 また、1 つの Recovery Services コンテナーに対して複数の仮想ネットワークにプライベート エンドポイントを含めることができます。 ただし、1 つのコンテナーに対して作成できるプライベート エンドポイントの最大数は 12 です。
-- コンテナーに対してプライベート エンドポイントが作成されると、コンテナーはロックダウンされます。 そのコンテナーのプライベート エンドポイントを含むネットワーク以外のネットワークからは、そのコンテナーに (バックアップと復元のために) アクセスできません。 コンテナーのすべてのプライベート エンドポイントが削除されると、そのコンテナーはすべてのネットワークからアクセスできるようになります。
-- Backup 用のプライベート エンドポイント接続には、ストレージ用に Azure Backup で使用されるものなど、サブネットで合計 11 個のプライベート IP が使用されます。 一部の Azure リージョンでは、この数がさらに多い場合があります (最大 25)。 そのため、Backup 用のプライベート エンドポイントを作成する場合は、十分な数のプライベート IP を用意することをお勧めします。
-- Recovery Services コンテナーは Azure Backup と Azure Site Recovery (の両方) に使用されますが、この記事では、Azure Backup だけのためにプライベート エンドポイントを使用する場合について説明します。
-- Backup のプライベート エンドポイントには、Azure Active Directory (Azure AD) へのアクセスは含めません。また、同様のことを個別に確認する必要があります。 したがって、Azure AD がリージョンで機能するために必要な IP と FQDN には、Azure VM でのデータベースのバックアップおよび MARS エージェントを使用したバックアップを実行するときに、セキュリティで保護されたネットワークからの発信アクセスが許可される必要があります。 また、必要に応じて、NSG タグと Azure Firewall タグを使用して、Azure AD へのアクセスを許可することもできます。
-- ネットワーク ポリシーが適用されている仮想ネットワークは、プライベート エンドポイント用にサポートされません。 続行する前に、[ネットワーク ポリシーを無効にする](../private-link/disable-private-endpoint-network-policy.md)必要があります。
-- Recovery Services リソース プロバイダーをサブスクリプションに 2020 年 5 月 1 日より前に登録した場合は、再登録する必要があります。 プロバイダーを再登録するには、Azure portal のサブスクリプションに移動し、左側のナビゲーションバーで **[リソース プロバイダー]** に移動し、 **[Microsoft.RecoveryServices]** を選択し、 **[再登録]** を選択します。
-- コンテナーでプライベート エンドポイントが有効になっている場合、SQL および SAP HANA データベース バックアップの[リージョンをまたがる復元](backup-create-rs-vault.md#set-cross-region-restore)はサポートされていません。
-- 既にプライベート エンドポイントを使用している Recovery Services コンテナーを新しいテナントに移動する場合、Recovery Services コンテナーを更新して、コンテナーのマネージド ID を再作成および再構成し、新しいプライベート エンドポイント (新しいテナント内にあるはずです) を作成する必要があります。 これを実行しないと、バックアップおよび復元操作が失敗するようになります。 また、サブスクリプション内に設定されているすべてのロールベースのアクセス制御 (RBAC) アクセス許可も再構成する必要があります。
+プライベート エンドポイントの作成に進む前に、[前提条件](private-endpoints-overview.md#before-you-start)と[サポートされるシナリオ](private-endpoints-overview.md#recommended-and-supported-scenarios)を確認してください。
 
-## <a name="recommended-and-supported-scenarios"></a>推奨されるシナリオとサポートされるシナリオ
-
-プライベート エンドポイントは、コンテナーに対して有効になっている間、Azure VM と MARS エージェントのバックアップにおいてのみ、SQL および SAP HANA のワークロードのバックアップと復元に使用されます。 コンテナーは、他のワークロードのバックアップにも使用できます (ただし、プライベート エンドポイントは必要ありません)。 SQL および SAP HANA のワークロードのバックアップと、MARS エージェントを使用したバックアップに加えて、プライベート エンドポイントを使用して Azure VM バックアップ用のファイルの復旧を実行することもできます。 詳細については、後の表を参照してください。
-
-| Azure VM でのワークロードのバックアップ (SQL、SAP HANA)、MARS エージェントを使用したバックアップ | プライベート エンドポイントの使用をお勧めします。これにより、ご自身の仮想ネットワークから、Azure Backup または Azure Storage の IP と FQDN を許可リストに追加する必要なくバックアップと復元ができます。 このシナリオでは、SQL データベースをホストする VM から Azure AD の IP または FQDN に接続できることを確認します。 |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| **Azure VM バックアップ**                                         | VM バックアップでは、どの IP または FQDN へのアクセスも許可する必要はありません。 そのため、ディスクのバックアップと復元のためにプライベート エンドポイントは必要ありません。  <br><br>   ただし、プライベート エンドポイントを含むコンテナーからのファイルの復旧は、コンテナーのプライベート エンドポイントを含む仮想ネットワークに制限されます。 <br><br>    ACL に記載されたアンマネージド ディスクを使用する場合は、ディスクが格納されているストレージ アカウントで、**信頼された Microsoft サービス** へのアクセスが許可されていることを確認してください。 |
-| **Azure Files バックアップ**                                      | Azure Files バックアップは、ローカル ストレージ アカウントに格納されます。 そのため、バックアップと復元にプライベート エンドポイントは必要ありません。 |
-
->[!Note]
->プライベート エンドポイントは、DPM および MABS サーバーではサポートされていません。 
+これらの詳細は、コンテナーのプライベート エンドポイントを作成する前に満たす必要がある制限事項と条件を理解するのに役立ちます。
 
 ## <a name="get-started-with-creating-private-endpoints-for-backup"></a>Backup 用のプライベート エンドポイントの作成の概要
 
@@ -138,6 +117,8 @@ Azure Resource Manager クライアントを使用してプライベート エ�
 ## <a name="manage-dns-records"></a>DNS レコードの管理
 
 前述のように、プライベートに接続するには、プライベート DNS ゾーンまたはサーバーに目的の DNS レコードが必要です。 プライベート エンドポイントを Azure プライベート DNS ゾーンと直接統合することも、カスタム DNS サーバーを使用してネットワークの設定に基づいてこれを実現することもできます。 これは、次の 3 つのサービスすべてで行う必要があります: Backup、BLOB、キュー。
+
+また、DNS ゾーンまたはサーバーが、プライベート エンドポイントを含むものとは異なるサブスクリプションに存在する場合は、「[DNS サーバーまたは DNS ゾーンが別のサブスクリプションに存在する場合に DNS エントリを作成する](#create-dns-entries-when-the-dns-serverdns-zone-is-present-in-another-subscription)」も参照してください。 
 
 ### <a name="when-integrating-private-endpoints-with-azure-private-dns-zones"></a>プライベート エンドポイントを Azure プライベート DNS ゾーンと統合する場合
 
@@ -536,6 +517,93 @@ $privateEndpoint = New-AzPrivateEndpoint `
     }
     }
     ```
+
+### <a name="set-up-proxy-server-for-recovery-services-vault-with-private-endpoint"></a>プライベート エンドポイントを使用して Recovery Services コンテナー用のプロキシ サーバーを設定する
+
+Azure VM またはオンプレミスのマシン用のプロキシ サーバーを構成するには、次の手順を実行します。
+
+1. 例外に次のドメインを追加し、プロキシ サーバーをバイパスします。
+   
+   | サービス | ドメイン名 | Port |
+   | ------- | ------ | ---- |
+   | Azure Backup | *.backup.windowsazure.com | 443 |
+   | Azure Storage | *.blob.core.windows.net <br><br> *.queue.core.windows.net <br><br> *.blob.storage.azure.net | 443 |
+   | Azure Active Directory <br><br> 「[Microsoft 365 Common および Office Online](/microsoft-365/enterprise/urls-and-ip-address-ranges?view=o365-worldwide&preserve-view=true#microsoft-365-common-and-office-online)」のセクション 56 および 59 に記載されている更新されたドメイン URL。 | *.msftidentity.com、*.msidentity.com、account.activedirectory.windowsazure.com、accounts.accesscontrol.windows.net、adminwebservice.microsoftonline.com、api.passwordreset.microsoftonline.com、autologon.microsoftazuread-sso.com、becws.microsoftonline.com、clientconfig.microsoftonline-p.net、companymanager.microsoftonline.com、device.login.microsoftonline.com、graph.microsoft.com、graph.windows.net、login.microsoft.com、login.microsoftonline.com、login.microsoftonline-p.com、login.windows.net、logincert.microsoftonline.com、loginex.microsoftonline.com、login-us.microsoftonline.com、nexus.microsoftonline-p.com、passwordreset.microsoftonline.com、provisioningapi.microsoftonline.com <br><br> 20.190.128.0/18、40.126.0.0/18、2603:1006:2000::/48、2603:1007:200::/48、2603:1016:1400::/48、2603:1017::/48、2603:1026:3000::/48、2603:1027:1::/48、2603:1036:3000::/48、2603:1037:1::/48、2603:1046:2000::/48、2603:1047:1::/48、2603:1056:2000::/48、2603:1057:2::/48 <br><br> *.hip.live.com、*.microsoftonline.com、*.microsoftonline-p.com、*.msauth.net、*.msauthimages.net、*.msecnd.net、*.msftauth.net、*.msftauthimages.net、*.phonefactor.net、enterpriseregistration.windows.net、management.azure.com、policykeyservice.dc.ad.msft.net | 該当する場合。 |
+
+1. プロキシ サーバー内でこれらのドメインへのアクセスを許可し、プロキシ サーバーが作成された VNET にプライベート DNS ゾーン (`*.privatelink.<geo>.backup.windowsazure.com`、`*.privatelink.blob.core.windows.net`、`*.privatelink.queue.core.windows.net`) をリンクするか、それぞれの DNS エントリと共にカスタム DNS サーバーを使用します。 <br><br> プロキシ サーバーが実行されている VNET と、プライベート エンドポイント NIC が作成された VNET をピアリングする必要があります。これにより、プロキシ サーバーがプライベート IP に要求をリダイレクトできるようになります。 
+
+次の図は、必須の DNS エントリを含むプライベート DNS ゾーンに VNet がリンクされているプロキシ サーバーがあるセットアップを示しています。 プロキシ サーバーには独自のカスタム DNS サーバーを含めることもでき、上記のドメインは条件付きで 169.63.129.16 に転送できます。
+
+:::image type="content" source="./media/private-endpoints/setup-with-proxy-server-inline.png" alt-text="プロキシ サーバーがあるセットアップを示す図。" lightbox="./media/private-endpoints/setup-with-proxy-server-expanded.png":::
+
+### <a name="create-dns-entries-when-the-dns-serverdns-zone-is-present-in-another-subscription"></a>DNS サーバーまたは DNS ゾーンが別のサブスクリプションに存在する場合に DNS エントリを作成する
+
+このセクションでは、サブスクリプションに存在する DNS ゾーン、またはハブ アンド スポーク トポロジなど、Recovery Services コンテナーのプライベート エンドポイントを含むものとは異なるリソース グループを使用するケースについて説明します。 プライベート エンドポイント (および DNS エントリ) の作成に使用されるマネージド ID には、プライベート エンドポイントが作成されるリソース グループに対してのみアクセス許可があるため、必須の DNS エントリも追加で必要になります。 DNS エントリを作成するには、次の PowerShell スクリプトを使用します。
+  
+>[!Note]
+>必要な結果を得るには、以下で説明するプロセス全体を参照してください。 プロセスは、2 回繰り返す必要があります (初回検出中に 1 回 (通信ストレージ アカウントに必要な DNS エントリを作成するため) と、初回バックアップ中に 1 回 (バックエンド ストレージ アカウントに必要な DNS エントリを作成するため))。
+
+#### <a name="step-1-get-required-dns-entries"></a>手順 1: 必須の DNS エントリを取得する
+
+[PrivateIP.ps1](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/PrivateIP.ps1) スクリプトを使用して、作成する必要があるすべての DNS エントリを一覧表示します。
+
+>[!Note]
+>構文内の `subscription` は、コンテナーのプライベート エンドポイントが作成されるサブスクリプションを示しています。
+
+**スクリプトを使用するための構文**
+
+```azurepowershell
+./PrivateIP.ps1 -Subscription "<VaultPrivateEndpointSubscriptionId>" -VaultPrivateEndpointName "<vaultPrivateEndpointName>" -VaultPrivateEndpointRGName <vaultPrivateEndpointRGName> -DNSRecordListFile dnsentries.txt
+```
+
+**サンプル出力**
+
+```
+ResourceName                                                                 DNS                                                                       PrivateIP
+<vaultId>-ab-pod01-fc1         privatelink.eus.backup.windowsazure.com         10.12.0.15
+<vaultId>-ab-pod01-fab1        privatelink.eus.backup.windowsazure.com         10.12.0.16
+<vaultId>-ab-pod01-prot1       privatelink.eus.backup.windowsazure.com         10.12.0.17
+<vaultId>-ab-pod01-rec2        privatelink.eus.backup.windowsazure.com         10.12.0.18
+<vaultId>-ab-pod01-ecs1        privatelink.eus.backup.windowsazure.com         10.12.0.19
+<vaultId>-ab-pod01-id1         privatelink.eus.backup.windowsazure.com         10.12.0.20
+<vaultId>-ab-pod01-tel1        privatelink.eus.backup.windowsazure.com         10.12.0.21
+<vaultId>-ab-pod01-wbcm1       privatelink.eus.backup.windowsazure.com         10.12.0.22
+abcdeypod01ecs114        privatelink.blob.core.windows.net       10.12.0.23
+abcdeypod01ecs114        privatelink.queue.core.windows.net      10.12.0.24
+abcdeypod01prot120       privatelink.blob.core.windows.net       10.12.0.28
+abcdeypod01prot121       privatelink.blob.core.windows.net       10.12.0.32
+abcdepod01prot110       privatelink.blob.core.windows.net       10.12.0.36
+abcdeypod01prot121       privatelink.blob.core.windows.net       10.12.0.30
+abcdeypod01prot122       privatelink.blob.core.windows.net       10.12.0.34
+abcdepod01prot120       privatelink.blob.core.windows.net       10.12.0.26
+
+```
+
+#### <a name="step-2-create--dns-entries"></a>手順 2: DNS エントリを作成する
+
+上記に対応する DNS エントリを作成します。 使用している DNS の種類に基づいて、DNS エントリを作成するための代替手段が 2 つあります。
+
+**ケース 1**: カスタム DNS サーバーを使用している場合は、上記のスクリプトからレコードごとにエントリを手動で作成し、FQDN (ResourceName.DNS) が VNET 内のプライベート IP に解決されることを確認する必要があります。
+
+**ケース 2**: Azure プライベート DNS ゾーンを使用している場合は、[CreateDNSEntries.ps1](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/CreateDNSEntries.ps1) スクリプトを使用してプライベート DNS ゾーンに DNS エントリを自動的に作成できます。 次の構文では、`subscription` にプライベート DNS ゾーンが存在します。
+
+**スクリプトを使用するための構文**
+
+```azurepowershell
+/CreateDNSEntries.ps1 -Subscription <PrivateDNSZoneSubId> -DNSResourceGroup <PrivateDNSZoneRG> -DNSRecordListFile dnsentries.txt
+```
+
+#### <a name="summary-of-the-entire-process"></a>プロセス全体の概要
+
+この回避策を使用して RSV のプライベート エンドポイントを正しく設定するには、以下が必要です。
+
+1. コンテナーのプライベート エンドポイントを作成します (この記事で既に説明したとおり)。
+1. 検出をトリガーします。 通信ストレージ アカウントの DNS エントリが存在しないため、SQL/HANA の検出は _UserErrorVMInternetConnectivityIssue_ で失敗します。
+1. スクリプトを実行して DNS エントリを取得し、このセクションで前述した通信ストレージ アカウントの対応する DNS エントリを作成します。
+1. 検出を再びトリガーします。 今回は、検出に成功します。
+1. バックアップをトリガーします。 このセクションで前述したように、バックエンド ストレージ アカウントの DNS エントリが存在しないため、SQL/HANA と MARS のバックアップが失敗する可能性があります。
+1. スクリプトを実行して、バックエンド ストレージ アカウントの DNS エントリを作成します。
+1. バックアップを再びトリガーします。 今回は、バックアップが成功します。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 

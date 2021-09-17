@@ -9,14 +9,16 @@ ms.topic: how-to
 ms.date: 07/17/2017
 ms.custom: devx-track-java
 ms.author: cynthn
-ms.openlocfilehash: 4f1523c58a8ca26bbab516383d59e7e8dd009466
-ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
+ms.openlocfilehash: ec738d2f2765cd97c518b79081675c197ead6466
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/04/2021
-ms.locfileid: "113288305"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122697206"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Java を使用して Azure で Windows VM を作成および管理する
+
+**適用対象:** :heavy_check_mark: Windows VM 
 
 [Azure 仮想マシン](overview.md) (VM) には、いくつかのサポート Azure リソースが必要です。 この記事では、Java を使って VM リソースを作成、管理、削除する方法について説明します。 学習内容は次のとおりです。
 

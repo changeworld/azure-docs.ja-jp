@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/03/2021
-ms.openlocfilehash: 713d2216029fb88716d157d9db7b2010d3f32720
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.date: 08/24/2021
+ms.openlocfilehash: 4a77ca4a3318e9ea583bd113d373815860e8d591
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111526274"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122767835"
 ---
 # <a name="create-an-azure-cognitive-search-service-in-the-portal"></a>ポータルで Azure Cognitive Search サービスを作成する
 
@@ -28,16 +28,20 @@ ms.locfileid: "111526274"
 次のサービス プロパティは、サービスの有効期間にわたって固定されます。これらのいずれかを変更するには、新しいサービスが必要です。 これらは固定されているため、各プロパティを入力するときに使用の影響を考慮してください。
 
 + サービス名は URL エンドポイントの一部になります (有用なサービス名については、[ヒントを再確認](#name-the-service)してください)。
-+ [サービス レベル](search-sku-tier.md)によって料金が変わり、容量の上限が設定されます。 一部の機能は、Free レベルでは使用できません。
++ [サービス レベル](search-sku-tier.md) (Basic、Standard など) によって、基になる物理ハードウェアの特性が決まります。 そのため、レベルの選択によって料金が変わり、容量の上限が設定されます。 一部の機能は、Free レベルでは使用できません。
 + サービス リージョンによって、特定のシナリオの可用性が決まる場合があります。 [高セキュリティ機能](search-security-overview.md)または [AI エンリッチメント](cognitive-search-concept-intro.md)が必要な場合は、Azure Cognitive Search を他のサービスと同じリージョンに作成するか、対象の機能が提供されているリージョンに作成する必要があります。 
 
 ## <a name="subscribe-free-or-paid"></a>サブスクリプション (無料または有料)
 
-[無料の Azure アカウントを開き](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)、無料クレジットを使って有料の Azure サービスを試用できます。 このクレジットを使い切った後は、アカウントを保持したまま、Websites などの無料の Azure サービスを使用できます。 明示的に設定を変更して課金を了承しない限り、クレジット カードに課金されることはありません。
+無料で検索を試してみるには、次の 2 つのオプションがあります。
 
-[MSDN サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)こともできます。 MSDN サブスクリプションにより、有料の Azure サービスを利用できるクレジットが毎月与えられます。 
++ [無料の Azure アカウントを開き](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)、無料クレジットを使って有料の Azure サービスを試用できます。 このクレジットを使い切った後は、アカウントを保持したまま、Websites などの無料の Azure サービスを使用できます。 明示的に設定を変更して課金を了承しない限り、クレジット カードに課金されることはありません。
 
-## <a name="find-azure-cognitive-search"></a>Azure Cognitive Search を検索する
++ または、[Visual Studio サブスクリプションで Azure クレジットをアクティブにします](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)。 Visual Studio サブスクリプションにより、有料の Azure サービスで使用できるクレジットが毎月提供されます。 
+
+課金対象レベル (Basic 以上) を選択してリソースを作成すると、有料 (つまり課金対象) の検索が有効になります。
+
+## <a name="find-the-azure-cognitive-search-offering"></a>Azure Cognitive Search オファリングを見つける
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
 
@@ -121,7 +125,7 @@ Azure Cognitive Search は現在、[複数の価格レベル](https://azure.micr
 
 1. **[概要]** ページの右側から、URL エンドポイントを探してコピーします。
 
-1. **[キー]** のページで、いずれかの管理者キー (同等) をコピーします。 ご利用のサービスのオブジェクトを作成、更新、削除するためには、管理者の API キーが必要です。 これに対し、クエリ キーはインデックス コンテンツへの読み取りアクセスを提供します。
+1. **[キー]** のページで、いずれかの管理者キー (同等) をコピーします。 サービスのオブジェクトを作成、更新、削除するには、管理者の API キーが必要です。 これに対し、クエリ キーはインデックス コンテンツへの読み取りアクセスを提供します。
 
    :::image type="content" source="media/search-create-service-portal/get-url-key.png" alt-text="URL エンドポイントを含むサービスの概要ページ" border="false":::
 

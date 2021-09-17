@@ -5,43 +5,63 @@ ms.topic: overview
 author: anvar-ms
 ms.author: anvar
 ms.manager: bsiva
-ms.date: 04/19/2020
+ms.date: 08/04/2021
 ms.custom: mvc
-ms.openlocfilehash: 3e6644f8d1956b69390e8bb3bb49bfbc3c7b0621
-ms.sourcegitcommit: 1c12bbaba1842214c6578d914fa758f521d7d485
+ms.openlocfilehash: 720b19ff16e72fade8bcdbd1b41304b2d87d1f2d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2021
-ms.locfileid: "112988771"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737655"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Azure Migrate の新着情報
 
 [Azure Migrate](migrate-services-overview.md) を使用すると、オンプレミスのサーバー、アプリ、データを検出して評価し、Microsoft Azure クラウドに移行するのに役立ちます。 この記事では、Azure Migrate の新しいリリースと機能について概要を説明します。
 
+## <a name="update-august-2021"></a>更新 (2021 年 8 月)
+
+- VMware 環境 の IIS サーバーで実行されている ASP.NET Web アプリの大規模な検出と評価は、現在プレビュー段階です。 [詳細については、こちらを参照してください](concepts-azure-webapps-assessment-calculation.md)。 始めるには、[検出](tutorial-discover-vmware.md)と[評価](tutorial-assess-webapps.md)に関するチュートリアルを参照してください。
+- Azure VM 評価の推奨事項での Azure [Ultra Disks](https://docs.microsoft.com/azure/virtual-machines/disks-types#ultra-disk) のサポート。
+- VMware 仮想マシンの大規模なソフトウェア インベントリおよびエージェントレスの依存関係の分析の一般提供。
+- Azure Migrate アプライアンスの更新:
+    - ユーザーがアプライアンスの問題を特定して自己評価できるようにするアプライアンスの "診断と解決"。
+    - 統合インストーラー スクリプト - ユーザーがシナリオ、クラウド、および接続のオプションから選択して、必要な構成でアプライアンスをデプロイする必要がある共通スクリプト。
+    - Linux サーバーの検出を実行するためにアプライアンス構成マネージャーに、(ルート アカウントを指定したり、setcap アクセス許可を有効にしたりする代わりに) "sudo" アクセス権を持つユーザー アカウントを追加するためのサポート。
+    - アプライアンス構成マネージャーでの SQL Server 接続プロパティの編集のサポート。
+
+## <a name="update-july-2021"></a>更新 (2021 年 7 月)
+
+- Azure Migrate: アプリ コンテナ化ツールを使用して、サーバー上で実行されているアプリケーションをパッケージ化してコンテナー イメージを作成したり、コンテナ化されたアプリケーションを Azure Kubernetes Service に加えて Azure App Service コンテナーにデプロイしたりできるようになりました。 また、Java アプリのアプリケーション監視を Azure Application Insights と自動的に統合し、Azure Key Vault を使用して、証明書やパラメーター化された構成などのアプリケーション シークレットを管理することもできます。 詳細については、入門編チュートリアルの「[ASP.NET アプリのコンテナ化と Azure App Service への移行](tutorial-app-containerization-aspnet-app-service.md)」と「[Java Web アプリのコンテナ化と Azure App Service への移行](tutorial-app-containerization-java-app-service.md)」を参照してください。
+
 ## <a name="update-june-2021"></a>更新 (2021 年 6 月)
+
 - Azure Migrate では、パブリック クラウドの新しい地域とリージョンがサポートされるようになりました。 [詳細情報](migrate-support-matrix.md#supported-geographies-public-cloud)
 - Azure Migrate を使用すると、SQL Server を実行するサーバーをレプリケーション時に SQL VM RP に登録して、SQL IaaS Agent 拡張機能を自動的にインストールできます。 この機能は、エージェントレス VMware、エージェントレス Hyper-V、エージェントベースの移行で使用できます。
 - CSV ファイルをインポートして評価するとき、最大 20 個のディスクがサポートされるようになりました。 以前は、サーバーあたり 8 個のディスクに制限されていました。
 
 ## <a name="update-may-2021"></a>更新 (2021 年 5 月)
+
 - OS ディスクが 4 TB までの VM と物理サーバーの移行が、エージェントベースの移行方法を使用してサポートされるようになりました。
 
 ## <a name="update-march-2021"></a>更新 (2021 年 3 月)
+
 - Azure Migrate アプライアンスでの複数のサーバー資格情報の指定によるインストールされているアプリケーション (ソフトウェア インベントリ) の検出、エージェントレスの依存関係分析、および VMware 環境の SQL Server インスタンスおよびデータベースの検出のサポート。 [詳細情報](tutorial-discover-vmware.md#provide-server-credentials)
 - VMware 環境で実行されている SQL Server インスタンスおよびデータベースの検出と評価は、現在プレビュー段階にあります。 詳細は[こちら](concepts-azure-sql-assessment-calculation.md)をご覧ください。始めるには、[検出](tutorial-discover-vmware.md)と[評価](tutorial-assess-sql.md)に関するチュートリアルを参照してください。
 - エージェントレスの VMware 移行では、vCenter あたり 500 台の VM を同時にレプリケートできるようになりました。
 - Azure Migrate: アプリのコンテナ化ツールを利用すると、サーバー上で実行されているアプリケーションをパッケージ化してコンテナー イメージを作成したり、コンテナ化されたアプリケーションを Azure Kubernetes Service にデプロイしたりできます。  
 詳細については、入門編チュートリアルの「[ASP.NET アプリのコンテナ化と Azure Kubernetes Service への移行](tutorial-app-containerization-aspnet-kubernetes.md)」と「[Java Web アプリのコンテナ化と Azure Kubernetes Service への移行](tutorial-app-containerization-java-kubernetes.md)」を参照してください。
 
-
 ## <a name="update-january-2021"></a>更新 (2021 年 1 月)
--  Azure Migrate: カスタマー マネージド キー (CMK) によるサーバー側暗号化でディスクが暗号化された Azure 仮想マシンに、Server Migration ツールを使用して、VMware 仮想マシンや物理サーバー、さらに他のクラウドの仮想マシンを移行できるようになりました。
+
+- Azure Migrate: カスタマー マネージド キー (CMK) によるサーバー側暗号化でディスクが暗号化された Azure 仮想マシンに、Server Migration ツールを使用して、VMware 仮想マシンや物理サーバー、さらに他のクラウドの仮想マシンを移行できるようになりました。
 
 ## <a name="update-december-2020"></a>更新 (2020 年 12 月)
+
 - Azure Migrate で、エージェントレスの移行手法を使用して VMware VM を Azure に移行する間、VMware VM に Azure VM エージェントが自動的にインストールされるようになりました。 (Windows Server 2008 R2 以降)
 - サーバー側暗号化 (SSE) とカスタマー マネージド キー (CMK) によってディスクが暗号化された Azure 仮想マシンに対し、Azure Migrate Server Migration (エージェントレス レプリケーション) を使用して VMware VM を移行する方法が Azure portal から利用できるようになりました。
 
 ## <a name="update-september-2020"></a>更新 (2020 年 9 月)
+
 - サーバーを Availability Zones に移行できるようになりました。
 - UEFI ベースの VM と物理サーバーを Azure 第 2 世代 VM に移行できるようになりました。 今回のリリースでは、Azure Migrate: Server Migration ツールは、移行中に Gen 2 VM から Gen 1 VM への変換は実行しません。
 - 新しい Azure Migrate Power BI 評価ダッシュボードを使用して、さまざまな評価設定の間でコストを比較することができます。 ダッシュボードには、評価を自動的に作成する PowerShell ユーティリティが付属し、評価は Power BI ダッシュボードにプラグインされます。 [詳細情報。](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/assessment-utility)
@@ -67,7 +87,6 @@ ms.locfileid: "112988771"
 - 物理サーバーを検出するための、アプライアンスでの複数の資格情報のサポート。
 - テナント制限が構成されているテナントのアプライアンスからの Azure ログインを許可するためのサポート。
 
-
 ## <a name="update-april-2020"></a>更新 (2020 年 4 月)
 
 Azure Migrate では、Azure Government へのデプロイがサポートされます。
@@ -78,7 +97,6 @@ Azure Migrate では、Azure Government へのデプロイがサポートされ�
 - Azure Government でサポートされている地域やリージョンを[確認](migrate-support-matrix.md#supported-geographies-azure-government)します。
 - [エージェントベースの依存関係の分析](concepts-dependency-visualization.md#agent-based-analysis)は、Azure Government ではサポートされません。
 - Azure Government でプレビュー段階の機能 ([エージェントレスの依存関係の分析](concepts-dependency-visualization.md#agentless-analysis)と[アプリケーション検出](how-to-discover-applications.md)) がサポートされます。
-
 
 ## <a name="update-march-2020"></a>更新 (2020 年 3 月)
 
@@ -124,8 +142,6 @@ Azure Migrate の現在のバージョン (2019 年 7 月リリース) には、
 ## <a name="azure-migrate-previous-version"></a>Azure Migrate の以前のバージョン
 
 旧バージョンの Azure Migrate (オンプレミスの VMware VM の評価のみサポート) を使用している場合、今後は最新バージョンを使用してください。 前のバージョンでは、新しい Azure Migrate プロジェクトを作成したり、新しい検出を実行したりできなくなりました。 既存のプロジェクトには引き続きアクセスできます。 それを行うには、Azure portal の **[すべてのサービス]** で、**Azure Migrate** を検索します。 Azure Migrate の通知には、古い Azure Migrate プロジェクトにアクセスするためのリンクがあります。
-
-
 
 ## <a name="next-steps"></a>次のステップ
 

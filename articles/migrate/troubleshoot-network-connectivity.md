@@ -6,13 +6,13 @@ ms.author: v-ssudhir
 ms.manager: deseelam
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 06/15/2021
-ms.openlocfilehash: 1b2dd711fb44b1b6b684257e5e5f6abefb5eda50
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.date: 08/19/2021
+ms.openlocfilehash: f6f63c24f98cd362619823ca4ebe1d66d35e6ced
+ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114291144"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122598035"
 ---
 # <a name="troubleshoot-network-connectivity"></a>ネットワーク接続のトラブルシューティング
 このアーティクルは、プライベート エンドポイントで Azure Migrate を使用する際のネットワーク接続のトラブルシューティングを行う際に役立ちます。
@@ -49,7 +49,7 @@ ms.locfileid: "114291144"
 
 ストレージ アカウントのプライベート リンク FQDN を DNS 解決する具体的な例  
 
-- 「_nslookup<storage-account-name>_ .blob.core.windows.net」と入力します。  <storage-account-name> は、Azure Migrate で使用するストレージ アカウントの名前に置き換えてください。  
+- 「_nslookup ```<storage-account-name>_.blob.core.windows.net.```」を入力します。```<storage-account-name>``` は、Azure Migrate で使用するストレージ アカウントの名前に置き換えてください。  
 
     このようなメッセージが返されます。  
 
@@ -231,7 +231,7 @@ DNS 解決が正しくない場合は、これらの手順を実行します。
 |*.portal.azure.com | Azure portal に移動します
 |*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com <br/> *.office.com <br/> *.microsoftonline.com <br/> *.microsoftonline-p.com <br/> | Azure Active Directory によるアクセス制御と ID 管理に使用されます
 |management.azure.com | Azure Resource Manager のデプロイのトリガー用です
-|*.services.visualstudio.com (省略可能) | 内部監視に使用するアプライアンス ログをアップロードします
+|*.services.visualstudio.com (省略可能) | 内部監視に使用するアプライアンス ログをアップロードします。
 |aka.ms/* (省略可能) | アプライアンス サービスの最新の更新プログラムをダウンロードしてインストールするために使用される、aka リンクへのアクセスを許可します
 |download.microsoft.com/download | Microsoft ダウンロード センターからのダウンロードを許可します    
 
@@ -265,3 +265,33 @@ DNS 解決が正しくない場合は、これらの手順を実行します。
 3. それでも問題が解決しない場合は、[こちらのセクションを参照して](#validate-the-private-dns-zone)、さらにトラブルシューティングを行ってください。
 
 接続を確認したら、検出プロセスを再試行します。
+
+### <a name="importexport-request-fails-with-the-error-403-this-request-is-not-authorized-to-perform-this-operation"></a>インポートまたはエクスポートの要求がエラー "403: This request is not authorized to perform this operation" (403: この要求にはこの操作を実行する権限がありません) で失敗する 
+
+プライベート エンドポイント接続を使用するプロジェクトの場合、レポートのエクスポート、インポート、またはダウンロード要求がエラー *"403: This request is not authorized to perform this operation" (403: この要求にはこの操作を実行する権限がありません)* で失敗します。
+
+#### <a name="possible-causes"></a>考えられる原因: 
+このエラーは、エクスポート、インポート、またはダウンロード要求が承認されたネットワークから開始されなかった場合に発生する可能性があります。 これは、インポート、エクスポート、またはダウンロード要求が、プライベート ネットワーク経由で Azure Migrate サービス (Azure 仮想ネットワーク) に接続されていないクライアントから開始された場合に発生します。 
+
+#### <a name="remediation"></a>Remediation
+**オプション 1** *(推奨)* ：
+  
+このエラーを解決するには、プライベート リンク経由で Azure に接続されている仮想ネットワークに存在するクライアントから、インポート、エクスポート、またはダウンロード操作を再試行します。 オンプレミス ネットワークまたはアプライアンス VM で Azure portal を開き、操作を再試行することができます。 
+
+**オプション 2**:
+
+インポート、エクスポート、またはダウンロード要求により、レポートをアップロードまたはダウンロードするためにストレージ アカウントへの接続が行われます。 また、インポート、エクスポート、またはダウンロード操作に使用されるストレージ アカウントのネットワーク設定を変更して、他のネットワーク (パブリック ネットワーク) 経由でのストレージ アカウントへのアクセスを許可することもできます。  
+
+パブリック エンドポイント接続用のストレージ アカウントを設定するには、
+
+1. **ストレージ アカウントを見つける**: ストレージ アカウント名は、[Azure Migrate: Discovery and Assessment properties]\(Azure Migrate: 検出と評価のプロパティ\) ページで確認できます。 ストレージ アカウント名には、*usa* というサフィックスが付きます。 
+
+   :::image type="content" source="./media/how-to-use-azure-migrate-with-private-endpoints/server-assessment-properties.png" alt-text="DNS 設定のダウンロードのスナップショット。"::: 
+
+2. ストレージ アカウントに移動し、ストレージ アカウントのネットワーク プロパティを編集して、すべての、または他のネットワークからのアクセスを許可します。 
+
+    :::image type="content" source="./media/how-to-use-azure-migrate-with-private-endpoints/networking-firewall-virtual-networks.png" alt-text="ストレージ アカウントのネットワーク プロパティのスナップショット。":::
+
+3. また、選択したネットワークにアクセスを制限し、Azure portal にアクセスしようとしている場所からクライアントのパブリック IP アドレスを追加することもできます。  
+
+    :::image type="content" source="./media/how-to-use-azure-migrate-with-private-endpoints/networking-firewall.png" alt-text="クライアントのパブリック IP アドレスの追加のスナップショット。":::

@@ -5,24 +5,22 @@ services: notification-hubs
 documentationcenter: .net
 author: sethmanheim
 manager: femila
-editor: jwargo
-ms.assetid: fd0ee230-132c-4143-b4f9-65cef7f463a1
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 07/07/2020
+ms.date: 08/23/2021
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 04/08/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7807d28da459656938acb399eb8c621e4c292372
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7a2e9d19c3847c5f2c7153580e463ce1e4d1d657
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89001571"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122768771"
 ---
 # <a name="registration-management"></a>登録管理
 
@@ -96,6 +94,9 @@ Notification Hub にデバイスを登録するには、**登録** または **�
 > インストール API では Baidu サービスはサポートされていません (Registrations API ではサポートされています)。 
 
 ### <a name="templates"></a>テンプレート
+
+> [!NOTE]
+> Microsoft プッシュ通知サービス (MPNS) は非推奨とされ、サポートされなくなりました。
 
 [テンプレート](notification-hubs-templates-cross-platform-push-messages.md)を使用する場合、デバイスのインストールでは、そのデバイスに関連付けられたすべてのテンプレートも JSON 形式で保持されます (上のサンプルを参照)。 テンプレート名は、1 つのデバイスに複数のテンプレートを対象にすることができます。
 

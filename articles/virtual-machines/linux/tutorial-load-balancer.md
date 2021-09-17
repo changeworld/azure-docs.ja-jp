@@ -11,14 +11,16 @@ ms.workload: infrastructure
 ms.date: 04/20/2021
 ms.author: cynthn
 ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 191eb1338533cf1a5f81f4d04c5dfc6fd5cc569c
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 33be1136005d6a8e54906372056bed0a96978453
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107818748"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122698981"
 ---
 # <a name="tutorial-load-balance-vms-for-high-availability"></a>チュートリアル: 高可用性のために VM の負荷を分散する
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブル スケール セット 
 
 負荷分散では、着信要求を複数の仮想マシンに分散させることで高可用性を提供します。 このチュートリアルでは、トラフィックを分散し高可用性を提供する、Azure Load Balancer のさまざまなコンポーネントについて説明します。 学習内容は次のとおりです。
 

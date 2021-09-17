@@ -1,19 +1,21 @@
 ---
-title: Azure Data Factory でのスケジュール トリガーの作成
-description: スケジュールでパイプラインを実行するトリガーを Azure Data Factory で作成する方法について説明します。
+title: スケジュール トリガーを作成する
+titleSuffix: Azure Data Factory & Azure Synapse
+description: スケジュールでパイプラインを実行するトリガーを Azure Data Factory または Azure Synapse Analytics で作成する方法について説明します。
 author: chez-charlie
 ms.author: chez
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: orchestration
 ms.topic: conceptual
-ms.date: 10/30/2020
-ms.custom: devx-track-python, devx-track-azurepowershell
-ms.openlocfilehash: 96a6b82afb7d3d71b0dd8ce392fa308a3611aa94
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.date: 08/24/2021
+ms.custom: devx-track-python, devx-track-azurepowershell, synapse
+ms.openlocfilehash: 833800da17302d2f28619cd1f66acfc476175a7f
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110675024"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122824616"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>スケジュールどおりにパイプラインを実行するトリガーの作成
 
@@ -25,18 +27,24 @@ ms.locfileid: "110675024"
 
 以下のセクションでは、さまざまな方法でスケジュール トリガーを作成する手順を説明します。 
 
-## <a name="data-factory-ui"></a>Data Factory UI
+## <a name="ui-experience"></a>UI エクスペリエンス
 
 **スケジュール トリガー** を作成して、パイプラインを定期的 (毎時、毎日など) に実行するようにスケジュールできます。 
 
 > [!NOTE]
 > パイプラインとスケジュール トリガーの作成に関する完全なチュートリアル (トリガーをパイプラインに関連付けて、パイプラインを実行および監視する) については、[Data Factory UI を使用したデータ ファクトリの作成に関するクイック スタート](quickstart-create-data-factory-portal.md)をご覧ください。
 
-1. 鉛筆のシンボルを使用して表示された **[編集]** タブに切り替えます。 
+1. Azure Data Factory の **[編集]** タブまたは Azure Synapse Analytics の [統合] タブに切り替えます。 
 
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
     ![[編集] タブに切り替える](./media/how-to-create-schedule-trigger/switch-edit-tab.png)
 
-1. メニューの **[トリガー]** を選択して、 **[New/Edit]\(新規作成/編集\)** を選択します。 
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+    ![[編集] タブに切り替える](./media/how-to-create-schedule-trigger/switch-edit-tab-synapse.png)
+
+---
+    
+2. メニューの **[トリガー]** を選択して、 **[New/Edit]\(新規作成/編集\)** を選択します。 
 
     ![新しいトリガーのメニュー](./media/how-to-create-schedule-trigger/new-trigger-menu.png)
 
@@ -54,7 +62,9 @@ ms.locfileid: "110675024"
         > 夏時間を観測するタイム ゾーンの場合、年 2 回の変更に対して、トリガー時間が自動的に調整されます。 夏時間の変更を無効にするには、UTC など、夏時間を観測しないタイムゾーンを選択してください
 
     1. トリガーの **繰り返し** を指定します。 ドロップダウン リストから値のいずれか (分単位、時間単位、日単位、週単位、月単位) を選択します。 テキスト ボックスに乗数を入力します。 たとえば、15 分に 1 回トリガーを実行する場合は、 **[1 分ごと]** を選択し、テキスト ボックスに「**15**」と入力します。 
-    1. 終了日時を指定するには、 **[Specify an End Date]\(終了日の指定\)** を選択し、 _[終了日]_ を指定して、 **[OK]** を選択します。 各パイプライン実行に関連したコストがかかります。 テストする場合は、パイプラインが数回だけトリガーされるように設定してください。 ただし、発行時から終了時刻までにパイプラインを実行できる十分な時間があるようにします。 トリガーは、UI でトリガーを保存したときではなく、Data Factory にソリューションを発行した後で有効になります。
+    1. **[繰り返し]** で、ドロップダウンから [日]、[週]、または [月] を選択した場合は、[高度な繰り返しのオプション] が表示されます。
+    :::image type="content" source="./media/how-to-create-schedule-trigger/advanced.png" alt-text="[日]、[週]、または [月] の [高度な繰り返しのオプション]":::
+    1. 終了日時を指定するには、 **[Specify an End Date]\(終了日の指定\)** を選択し、 _[終了日]_ を指定して、 **[OK]** を選択します。 各パイプライン実行に関連したコストがかかります。 テストする場合は、パイプラインが数回だけトリガーされるように設定してください。 ただし、発行時から終了時刻までにパイプラインを実行できる十分な時間があるようにします。 トリガーは、UI にトリガーを保存したときではなく、ソリューションを発行した後で有効になります。
 
         ![トリガー設定](./media/how-to-create-schedule-trigger/trigger-settings-01.png)
 
@@ -68,17 +78,31 @@ ms.locfileid: "110675024"
 
     ![トリガーの設定 - [完了] ボタン](./media/how-to-create-schedule-trigger/new-trigger-finish.png)
 
-1. **[すべて発行]** を選択して、変更を Data Factory に発行します。 変更を Data Factory に発行するまで、そのトリガーによって、パイプライン実行のトリガーは開始されません。 
+1. **[すべて発行]** を選択して、変更を発行します。 変更を発行するまで、そのトリガーによって、パイプライン実行のトリガーは開始されません。 
 
     ![[発行] ボタン](./media/how-to-create-schedule-trigger/publish-2.png)
 
 1. 左側の **[パイプラインの実行]** タブに切り替えてから、 **[更新]** を選択して一覧を更新します。 スケジュールされたトリガーによってトリガーされたパイプライン実行が表示されます。 **[トリガー元]** 列の値に注意してください。 **[Trigger Now]\(今すぐトリガー\)** を使用すると、一覧に手動のトリガー実行が表示されます。 
 
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
     ![トリガーされた実行を監視する](./media/how-to-create-schedule-trigger/monitor-triggered-runs.png)
 
-1. **[Trigger Runs]\(トリガーの実行\)**  \  **[スケジュール]** ビューに切り替えます。 
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+    ![トリガーされた実行を監視する](./media/how-to-create-schedule-trigger/monitor-triggered-runs-synapse.png)
+    
+---
+
+9. **[Trigger Runs]\(トリガーの実行\)**  \  **[スケジュール]** ビューに切り替えます。 
+
+    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
 
     ![トリガーの実行を監視する](./media/how-to-create-schedule-trigger/monitor-trigger-runs.png)
+
+    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+    ![トリガーの実行を監視する](./media/how-to-create-schedule-trigger/monitor-trigger-runs-synapse.png)
+    
+---
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -286,7 +310,7 @@ Azure Resource Manager テンプレートを使用してトリガーを作成で
 
 ## <a name="pass-the-trigger-start-time-to-a-pipeline"></a>トリガーの開始時刻をパイプラインに渡す
 
-Azure Data Factory バージョン 1 では、次の各システム変数を使用することによって、パーティション分割されたデータの読み取りと書き込みをサポートします:**SliceStart**、**SliceEnd**、**WindowStart**、**WindowEnd**。 現在のバージョンの Azure Data Factory では、パイプライン パラメーターを使用してこの動作を実現できます。 トリガーの開始時刻とスケジュールされた時刻を、パイプライン パラメーターの値として設定します。 次の例では、トリガーのスケジュールされた時刻が、**scheduledRunTime** パイプライン パラメーターに値として渡されます。
+Azure Data Factory バージョン 1 では、次の各システム変数を使用することによって、パーティション分割されたデータの読み取りと書き込みをサポートします:**SliceStart**、**SliceEnd**、**WindowStart**、**WindowEnd**。 現在のバージョンの Azure Data Factory パイプラインおよび Azure Synapse Analytics パイプラインでは、パイプライン パラメーターを使用してこの動作を実現できます。 トリガーの開始時刻とスケジュールされた時刻を、パイプライン パラメーターの値として設定します。 次の例では、トリガーのスケジュールされた時刻が、**scheduledRunTime** パイプライン パラメーターに値として渡されます。
 
 ```json
 "parameters": {
@@ -391,7 +415,7 @@ Azure Data Factory バージョン 1 では、次の各システム変数を使�
 | インド標準時 (IST) | +5:30 | `India Standard Time` | いいえ | `'yyyy-MM-ddTHH:mm:ss'` |
 | 中国標準時 | +8 | `China Standard Time` | いいえ | `'yyyy-MM-ddTHH:mm:ss'` |
 
-この一覧は完全なものではありません。 タイム ゾーン オプションの完全な一覧については、Data Factory ポータルの[トリガー作成ページ](#data-factory-ui)を閲覧してください
+この一覧は完全なものではありません。 タイム ゾーン オプションの完全な一覧については、ポータルの[トリガー作成ページ](#ui-experience)を閲覧してください
 
 ### <a name="starttime-property"></a>startTime プロパティ
 次の表に、**startTime** プロパティでトリガー実行を制御する方法を示します。

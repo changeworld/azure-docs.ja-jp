@@ -1,15 +1,15 @@
 ---
 title: Bicep ファイルを作成する - Visual Studio Code
 description: Visual Studio Code と Bicep 拡張機能を使用して、Azure リソースをデプロイするための Bicepファイルを作成します
-ms.date: 06/25/2021
+ms.date: 07/30/2021
 ms.topic: quickstart
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8167516a41943ea17fdeb47bce84767178593e85
-ms.sourcegitcommit: cd8e78a9e64736e1a03fb1861d19b51c540444ad
+ms.openlocfilehash: 4f76d18c756855798651e0c129fd4f0caec15984
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112970105"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750150"
 ---
 # <a name="quickstart-create-bicep-files-with-visual-studio-code"></a>クイックスタート: Visual Studio Code を使用して Bicep ファイルを作成する
 
@@ -118,13 +118,13 @@ param storageName string
 
 ここでは、スニペットを使用してストレージ アカウントを定義するのではなく、IntelliSense を使用して値を設定します。 IntelliSense を使用すると、手動で値を入力するよりもはるかに簡単にこの手順を行うことができます。
 
-リソースの定義には `resource` キーワードを使用します。  仮想ネットワークの下に「**resource exampleStorage**」と入力します。
+リソースを定義するには、`resource` キーワードを使用します。  仮想ネットワークの下に「**resource exampleStorage**」と入力します。
 
 ```bicep
 resource exampleStorage
 ```
 
-**exampleStorage** は、デプロイするリソースのシンボリック名です。 これにより、Bicep ファイルの他の部分でリソースを簡単に参照できるようになります。
+**exampleStorage** は、デプロイするリソースのシンボリック名です。 この名前は、Bicep ファイルの他の部分にあるリソースを参照するために使用できます。
 
 シンボリック名の後にスペースを追加すると、リソースの種類の一覧が表示されます。 続けて「**storage**」と入力すると、使用できるオプションから選択できるようになります。
 
@@ -154,7 +154,7 @@ resource exampleStorage 'Microsoft.Storage/storageAccounts@2021-02-01' = {
 
 完了までもう少しです。 これらのプロパティに値を指定するだけです。
 
-ここでも IntelliSense が役立ちます。 `name` の場合は、ストレージ アカウントの名前を含むパラメーターを指定します。 `location` の場合は、`eastus` に設定します。 SKU の名前と種類を追加すると、IntelliSense によって有効なオプションが表示されます。
+ここでも IntelliSense が役立ちます。 `name` を `storageName` に設定します。これは、ストレージ アカウントの名前を含むパラメーターです。 `location` の場合は、`eastus` に設定します。 SKU の名前と種類を追加すると、IntelliSense によって有効なオプションが表示されます。
 
 完了すると、次のようになります。
 

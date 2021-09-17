@@ -12,12 +12,12 @@ ms.date: 04/21/2021
 ms.topic: how-to
 ms.custom: devx-track-python, deploy, devx-track-azurecli, contperf-fy21q2, contperf-fy21q4
 adobe-target: true
-ms.openlocfilehash: 6fc1fbb6a665d03e250beec85c66178feaa55189
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 22161ee49c2527b92b11b4c1fe197fa06d48fcb9
+ms.sourcegitcommit: c2f0d789f971e11205df9b4b4647816da6856f5b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121862260"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122661983"
 ---
 # <a name="deploy-machine-learning-models-to-azure"></a>機械学習モデルを Azure にデプロイする 
 
@@ -180,7 +180,10 @@ az ml model register -n bidaf_onnx --asset-path outputs/model.onnx --experiment-
 
 下の推論構成では、展開する機械学習サービスで、`./source_dir` ディレクトリの `echo_score.py` ファイルによって受信要求を処理することと、`project_environment` 環境で指定した Python パッケージを Docker イメージで使用することを指定しています。
 
-プロジェクトの環境を作成するときは、任意の [Azure Machine Learning でキュレーションされた環境](./resource-curated-environments.md)を、ベースの Docker イメージとして使用できます。 必要な依存関係がそこにインストールされ、作成された Docker イメージが、皆さまのワークスペースに紐付いたレポジトリに保存されます。
+プロジェクトの環境を作成するときは、任意の [Azure Machine Learning 推論でキュレーションされた環境](concept-prebuilt-docker-images-inference.md#list-of-prebuilt-docker-images-for-inference)を、ベースの Docker イメージとして使用できます。 必要な依存関係がそこにインストールされ、作成された Docker イメージが、皆さまのワークスペースに紐付いたレポジトリに保存されます。
+
+> [!NOTE]
+> Azure Machine Learning の [推論ソース ディレクトリ](/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py#constructor&preserve-view=true)のアップロードでは、 **.gitignore** または **.amlignore** が考慮されません
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 

@@ -9,14 +9,16 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.reviewer: cynthn
-ms.openlocfilehash: b85855238beb9887a35369011ff8daaaf58bef9e
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: ce20b7815c89a45a2677029a28fd205499751e30
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109787241"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122695401"
 ---
 # <a name="use-azure-spot-virtual-machines"></a>Azure Spot Virtual Machines を使用する 
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 Azure Spot Virtual Machines を使用すると、大幅にコストを削減して未使用の容量を利用できます。 Azure で容量の回復が必要になると、Azure インフラストラクチャによって Azure Spot Virtual Machines が削除されます。 そのため、Azure Spot Virtual Machines は、バッチ処理ジョブ、開発/テスト環境、大規模なコンピューティング ワークロードなど、中断に対応できるワークロードに最適です。
 

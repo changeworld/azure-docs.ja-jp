@@ -8,14 +8,16 @@ ms.collection: linux
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: kegorman
-ms.openlocfilehash: 862bb886c7ec5dfd40c7acdbae2f70f6698a711b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ac9c699addf996178b1d6aabdf010267bda75964
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101669939"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122690070"
 ---
 # <a name="architectures-to-deploy-oracle-applications-on-azure"></a>Azure に Oracle アプリケーションをデプロイするアーキテクチャ
+
+**適用対象:** :heavy_check_mark: Linux VM 
 
 Microsoft と Oracle は、お客様が Oracle E-Business Suite、JD Edwards EnterpriseOne、PeopleSoft などの Oracle アプリケーションをクラウドにデプロイできるように協力しています。 Microsoft Azure と Oracle Cloud Infrastructure (OCI) 間にプレビューの[プライベート ネットワーク相互接続性](configure-azure-oci-networking.md)が導入され、Oracle アプリケーションを Azure または OCI のバックエンド データベースと共に Azure にデプロイできるようになりました。 Oracle アプリケーションは Azure Active Directory と統合することもできるので、ユーザーが自分の Azure Active Directory (Azure AD) の資格情報を使用して Oracle アプリケーションにサインインできるようにシングル サインオンを設定できます。
 

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 06/21/2021
 ms.author: alkohli
-ms.openlocfilehash: 1d84d6b8bd2978f58f5fb44c0ee1d003db89b7da
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 46a7d0ed41b8f10874c19c8d70ddc5d8c5d7f197
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121746525"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122608287"
 ---
 # <a name="troubleshoot-your-azure-stack-edge-ordering-issues"></a>Azure Stack Edge の順序の問題をトラブルシューティングする
 
@@ -74,7 +74,7 @@ Microsoft では、サブスクリプションの種類のアップグレード�
 
 *リソース &lt;リソース名&gt; はポリシーにより許可されませんでした。(コード:RequestDisallowedByPolicy)。イニシアティブ: 一般に不要なリソースの種類を拒否します。ポリシー:許可されていないリソースの種類。*
 
-**推奨されている解決方法:** このエラーは、リソースの作成をブロックする既存の Azure ポリシーのために発生します。 Azure ポリシーは、Azure リソースの使用または作成中のコンプライアンスを確保するために組織のシステム管理者によって設定されます。 このようなポリシーのいずれかが Azure Stack Edge リソースの作成をブロックしている場合は、システム管理者に連絡して Azure ポリシーを編集してください。
+**推奨される解決策:** このエラーは、既存の Azure Policy の割り当てによってリソースの作成がブロックされるために発生します。 Azure Policy の定義と割り当ては、Azure リソースの使用または作成中のコンプライアンスを確保するために組織のシステム管理者によって設定されます。 このようなポリシーの割り当てのいずれかが Azure Stack Edge リソースの作成をブロックしている場合は、システム管理者に連絡して Azure Policy の定義を編集してください。
 
 ## <a name="next-steps"></a>次の手順
 

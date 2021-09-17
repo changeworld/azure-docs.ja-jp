@@ -7,12 +7,12 @@ ms.date: 07/23/2021
 ms.topic: article
 author: mayurigupta13
 ms.author: mayg
-ms.openlocfilehash: ebf73d6a79048a7cd08b0995e98da229f9df46ca
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: c8a10873f420b5aba75596a4377bfa4f0b37d4f7
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122068222"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122606895"
 ---
 # <a name="azure-arc-enabled-open-service-mesh-preview"></a>Azure Arc 対応 Open Service Mesh (プレビュー)
 
@@ -23,9 +23,10 @@ OSM では、Kubernetes 上でエンボイベースのコントロール プレ�
 ### <a name="support-limitations-for-arc-enabled-open-service-mesh"></a>Arc 対応 Open Service Mesh のサポートの制約
 
 - Open Service Mesh のインスタンスは、Arc に接続した Kubernetes クラスター 1 つにつき、1 つしかデプロイできません。
-- v0.8.4 以上のバージョンの Open Service Mesh で利用できるのは、パブリック プレビュー版です。 最新のバージョンは[こちら](https://github.com/Azure/osm-azure/releases)で確認できます。
+- v0.8.4 以上のバージョンの Open Service Mesh で利用できるのは、パブリック プレビュー版です。 最新のバージョンは[こちら](https://github.com/Azure/osm-azure/releases)で確認できます。 サポートされているリリース バージョンには注釈があります。 中間リリースに関連付けられているタグは無視してください。 
 - 現在、次の Kubernetes ディストリビューションをサポートしています
     - AKS Engine
+    - HCI 上の AKS
     - Cluster API Azure
     - Google Kubernetes Engine
     - Canonical Kubernetes Distribution
@@ -393,24 +394,23 @@ Azure Monitor と Azure Application Insights の両方では、クラウドお�
 
 今後、Arc 対応 Open Service Mesh とこれらの Azure サービスの高度な連携を実装する予定であり、OSM のメトリクスに基づく重要な KPI の確認と対応を、Azure でシームレスに実行できるようになります。 下の手順に従って、Azure Monitor でprometheus エンドポイントのスクレイピングを有効にし、アプリケーションのメトリクスを収集できるようにします。 
 
-1. `osm-mesh-config` で prometheus_scraping が true になっていることを確認します。
+1. 監視するアプリケーションの名前空間がメッシュにオンボードされていることを確認します。 [こちら](#onboard-namespaces-to-the-service-mesh)に記載された説明に従います。
 
-2. 監視するアプリケーションの名前空間がメッシュにオンボードされていることを確認します。 [こちら](#onboard-namespaces-to-the-service-mesh)に記載された説明に従います。
-
-3. アプリケーションの名前空間の prometheus エンドポイントをデータ収集対象に設定します。
+2. アプリケーションの名前空間の prometheus エンドポイントをデータ収集対象に設定します。
     ```azurecli-interactive
     osm metrics enable --namespace <namespace1>
     osm metrics enable --namespace <namespace2>
     ```
+    v0.8.4 の場合は、`osm-config` ConfigMap で `prometheus_scraping` が `true` に設定されています。
 
-4. [こちら](../../azure-monitor/containers/container-insights-enable-arc-enabled-clusters.md?toc=/azure/azure-arc/kubernetes/toc.json)の説明に従って Azure Monitor 拡張機能をインストールします。
+3. [こちら](../../azure-monitor/containers/container-insights-enable-arc-enabled-clusters.md?toc=/azure/azure-arc/kubernetes/toc.json)の説明に従って Azure Monitor 拡張機能をインストールします。
 
-5. 監視する名前空間を container-azm-ms-osmconfig ConfigMap に追加します。 [こちら](https://github.com/microsoft/Docker-Provider/blob/ci_prod/kubernetes/container-azm-ms-osmconfig.yaml)で ConfigMap をダウンロードします。
+4. 監視する名前空間を container-azm-ms-osmconfig ConfigMap に追加します。 [こちら](https://github.com/microsoft/Docker-Provider/blob/ci_prod/kubernetes/container-azm-ms-osmconfig.yaml)で ConfigMap をダウンロードします。
     ```azurecli-interactive
     monitor_namespaces = ["namespace1", "namespace2"]
     ```
 
-6. 次の kubectl コマンドを実行します。
+5. 次の kubectl コマンドを実行します。
     ```azurecli-interactive
     kubectl apply -f container-azm-ms-osmconfig.yaml
     ```

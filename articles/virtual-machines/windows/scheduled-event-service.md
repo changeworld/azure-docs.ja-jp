@@ -7,14 +7,16 @@ ms.subservice: scheduled-events
 ms.date: 08/20/2019
 ms.author: sarn
 ms.topic: how-to
-ms.openlocfilehash: 866522da162d22621bd37bf9d2f2fa6838206e17
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b8e13f8a8bd577e3e872d3fc59b099e34fd495d1
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101674687"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122694213"
 ---
 # <a name="monitor-scheduled-events-for-your-azure-vms"></a>Azure VM のスケジュールされたイベントを監視する
+
+**適用対象:** VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 更新プログラムは Azure のさまざまな部分に毎日適用され、そこで実行されているサービスをセキュリティで保護された最新の状態に保ちます。 計画された更新に加えて、計画外のイベントが発生することもあります。 たとえば、ハードウェアの性能低下や障害が検出された場合、Azure サービスでは計画外メンテナンスの実行が必要になることがあります。 ライブ マイグレーションとメモリ保持更新を使用し、通常は更新の影響を厳密にチェックするため、ほとんどの場合、これらのイベントは顧客に対してほぼ透過的に行われ、影響を与えることはなく、仮想マシンがせいぜい数秒凍結するくらいです。 ただし、アプリケーションによっては、仮想マシンが数秒凍結しただけで影響を受ける可能性があります。 こうしたアプリケーションの最適なエクスペリエンスを確保するためにも、今後の Azure メンテナンスについて事前に把握しておくことが重要です。 [Scheduled Events サービス](scheduled-events.md)には、今後のメンテナンスに関する通知を受けるためのプログラマティック インターフェイスが用意されているため、メンテナンスに適切に対応できます。 
 

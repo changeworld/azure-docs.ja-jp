@@ -9,14 +9,16 @@ ms.topic: how-to
 ms.date: 11/17/2020
 ms.author: tibasham
 ms.collection: linux
-ms.openlocfilehash: bc6c6273ab3d1a4403763e4ed0a8c491995fb2df
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ca606d2c73952316a269d5ac8663823ffb249bf4
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102556725"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692241"
 ---
 # <a name="how-to-map-azure-disks-to-linux-vm-guest-disks"></a>Azure ディスクを Linux VM のゲスト ディスクにマップする方法
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブル スケール セット 
 
 VM のゲスト ディスクをバックアップする Azure ディスクの特定が必要になる場合があります。 場合によっては、ディスクまたはボリュームのサイズを、接続されている Azure ディスクのサイズと比較することができます。 同じサイズの複数の Azure ディスクが VM に接続されているシナリオでは、データ ディスクの論理ユニット番号 (LUN) を使用する必要があります。 
 

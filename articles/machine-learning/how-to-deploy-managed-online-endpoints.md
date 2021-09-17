@@ -11,12 +11,12 @@ author: rsethur
 ms.date: 08/05/2021
 ms.topic: how-to
 ms.custom: how-to, devplatv2
-ms.openlocfilehash: 0a4117e17ddddbb1fcb083a927fc35abae8b2eb6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0c421148571b99bb182de6841586caafb116df42
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121751959"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122418429"
 ---
 # <a name="deploy-and-score-a-machine-learning-model-by-using-a-managed-online-endpoint-preview"></a>マネージド オンライン エンドポイントを使用して機械学習モデルをデプロイおよびスコアリングする (プレビュー)
 
@@ -32,11 +32,11 @@ ms.locfileid: "121751959"
 
 * Azure Machine Learning を使用するには、Azure サブスクリプションが必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://azure.microsoft.com/free/) をお試しください。
 
-* Azure CLI と Azure CLI の `ml` 拡張機能をインストールして構成します。 詳細については、[2.0 CLI (プレビュー) のインストール、セットアップ、使用](how-to-configure-cli.md)に関するページを参照してください。 
+* Azure CLI と Azure CLI の `ml` 拡張機能をインストールして構成します。 詳細については、[CLI (v2) (プレビュー) のインストール、セットアップ、使用](how-to-configure-cli.md)に関するページを参照してください。 
 
-* Azure リソース グループがあり、それへの共同作成者アクセス権を自分 (または使用するサービス プリンシパル) が所持している必要があります。 リソース グループは、[2.0 CLI (プリビュー) のインストール、設定、使用](how-to-configure-cli.md)に関するページで作成されます。 
+* Azure リソース グループがあり、それへの共同作成者アクセス権を自分 (または使用するサービス プリンシパル) が所持している必要があります。 リソース グループは、[CLI (v2) (プレビュー) のインストール、設定、使用](how-to-configure-cli.md)に関するページで作成されます。 
 
-* Azure Machine Learning ワークスペースが必要です。 ワークスペースは、[2.0 CLI (プリビュー) のインストール、設定、使用](how-to-configure-cli.md)に関するページで作成されます。
+* Azure Machine Learning ワークスペースが必要です。 ワークスペースは、[CLI (v2) (プレビュー) のインストール、設定、使用](how-to-configure-cli.md)に関するページで作成されます。
 
 * まだ Azure CLI の既定値を設定していない場合は、既定の設定を保存する必要があります。 サブスクリプション、ワークスペース、およびリソース グループの値を複数回渡さないようにするには、次のコードを実行します。
 
@@ -201,7 +201,7 @@ az ml endpoint get-logs --local -n $ENDPOINT_NAME --deployment blue
 
 次に、マネージド オンライン エンドポイントを Azure にデプロイします。
 
-### <a name="deploy-to-azure"></a>Azure にデプロイする
+### <a name="deploy-to-azure"></a>Azure にデプロイ
 
 YAML 構成をクラウドにデプロイするには、次のコードを実行します。
 
@@ -266,7 +266,7 @@ az ml endpoint get-credentials -n $ENDPOINT_NAME
 1. ファイル *online/model-1/onlinescoring/score.py* を開きます。
 1. `init()` 関数の最後の行を変更します。`logging.info("Init complete")` の後に、`logging.info("Updated successfully")` を追加してください。 
 1. ファイルを保存します。
-1. このコマンドを実行します。
+1. 次のコマンドを実行します。
 
     ```azurecli
     az ml endpoint update -n $ENDPOINT_NAME -f endpoints/online/managed/simple-flow/1-create-endpoint-with-blue.yml

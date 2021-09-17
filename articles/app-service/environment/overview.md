@@ -4,15 +4,15 @@ description: App Service Environment の概要
 author: ccompy
 ms.assetid: 3d37f007-d6f2-4e47-8e26-b844e47ee919
 ms.topic: article
-ms.date: 07/05/2021
+ms.date: 08/05/2021
 ms.author: ccompy
 ms.custom: references_regions
-ms.openlocfilehash: d08645c3250490935c11fb983208a30d426dcce0
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 848b7ce830c91cffaaaa39ed2102255f0adc3b7f
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121723034"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122445682"
 ---
 # <a name="app-service-environment-overview"></a>App Service Environment の概要 
 > [!NOTE]
@@ -61,7 +61,7 @@ ASE 機能は、お客様の Azure Resource Manager 仮想ネットワーク (VN
 
 ASE 内のアプリは、特に何か機能を有効にしておかなくても、その ASE がデプロイされている VNet 内のリソースにアクセスすることができます。 ASE の VNet が別のネットワークに接続されている場合には、その ASE 内のアプリがそのネットワーク内のリソースにアクセスできます。 トラフィックのブロックは、ネットワークのユーザー構成で行うことができます。 
 
-マルチテナント バージョンの Azure App Service には、アプリをさまざまなネットワークに接続できる機能が多数用意されています。 これらのネットワーク機能を使用すると、あたかも単体の VNet にデプロイしたかのような動作をアプリに実現できます。 ASEv3 内にデプロイしたアプリの場合には、VNet にデプロイするための構成が一切必要ありません。 マルチテナント サービスではなく ASE を使用する利点は、ASE ではホストするアプリに対するネットワーク アクセス制御が、アプリケーション構成の完全な外部に置かれるという点です。 マルチテナント サービス内のアプリでは、アプリ単位で機能を有効にし、RBAC またはポリシーを使用して構成の変更を防ぐ必要があります。 
+マルチテナント バージョンの Azure App Service には、アプリをさまざまなネットワークに接続できる機能が多数用意されています。 これらのネットワーク機能を使用すると、あたかも単体の VNet にデプロイしたかのような動作をアプリに実現できます。 ASEv3 内にデプロイしたアプリの場合には、VNet にデプロイするための構成が一切必要ありません。 マルチテナント サービスではなく ASE を使用する利点は、ASE ではホストするアプリに対するネットワーク アクセス制御が、アプリケーション構成の外部に置かれるという点です。 マルチテナント サービス内のアプリでは、アプリ単位で機能を有効にし、RBAC またはポリシーを使用して構成の変更を防ぐ必要があります。 
 
 ## <a name="feature-differences"></a>機能の違い
 
@@ -88,15 +88,15 @@ ASEv3 では、以前のバージョンの ASE で利用できた機能のいく
 
 ASEv3 では、ASE のデプロイの種類に応じて価格モデルが異なります。 価格モデルには次の 3 つがあります。 
 
-- **ASEv3**: ASE が空の場合には、1 つの ASP に Windows I1v2 のインスタンスが 1 件あるものとして料金が発生します。 このインスタンス 1 件分の料金は、ASE が空の場合にのみ適用されるものであって、そうでない場合にまで追加で発生することはありません。
-- **可用性ゾーン ASEv3**: Windows I1v2 インスタンス 9 件分の料金が最低限発生します。 App Service プランのインスタンスが 9 件以上ある場合でも、可用性ゾーンのサポートのための追加料金は発生しません。 
+- **ASEv3**: ASE が空の場合には、1 つの ASP に Windows I1v2 のインスタンスが 1 件あるものとして料金が発生します。 このインスタンス 1 件分の料金は、ASE が空の場合にのみ適用されるもので、そうでない場合に追加で発生することはありません。
+- **可用性ゾーン ASEv3**: Windows I1v2 インスタンス 9 件分の料金が最低限発生します。 App Service プランのインスタンスが 9 件以上ある場合でも、可用性ゾーンのサポートのための追加料金は発生しません。 また、AZ ASEv3 のすべての App Service プランでは、各可用性ゾーンにインスタンスが存在するように、最小インスタンス数が 3 になっています。 プランがスケールアウトされると、可用性ゾーン全体に分散されます。 
 - **専用ホスト ASEv3**: 専用ホストのデプロイでは、ASEv3 の作成時に Microsoft の価格設定に従って専用ホスト 2 つ分の料金が発生したうえで、その後はスケーリング時に Isolated V2 の 1 コアあたりの料金の数 % が発生します。
 
-Isolated v2 の予約インスタンスの価格は、GA の後に発表予定です。  
+Isolated v2 の予約インスタンスの料金が利用可能です。詳細は、[Azure App Service に予約割引を適用する方法][reservedinstances]に関するページで説明されています。 料金については、予約インスタンスの料金と共に、「[App Service の料金][pricing]」の **Isolated v2 プラン** で確認できます。 
 
 ## <a name="regions"></a>リージョン
 
-ASEv3 は、次のリージョンで使用できます。
+ASEv3 は、次のリージョンで使用できます。 
 
 |通常および専用ホスト ASEv3 のリージョン|   AZ ASEv3 のリージョン|
 |---------------------------------------|------------------|
@@ -114,7 +114,6 @@ ASEv3 は、次のリージョンで使用できます。
 |韓国中部  | 英国南部|
 |北ヨーロッパ   | 西ヨーロッパ|
 |ノルウェー東部    | 米国西部 2 |
-|南アフリカ北部| |  
 |米国中南部   | |
 |東南アジア| |
 |スイス北部  | | 
@@ -124,3 +123,7 @@ ASEv3 は、次のリージョンで使用できます。
 |西ヨーロッパ    | |
 |米国西部    | | 
 |米国西部 2| |
+
+<!--Links-->
+[reservedinstances]: https://docs.microsoft.com/azure/cost-management-billing/reservations/reservation-discount-app-service#how-reservation-discounts-apply-to-isolated-v2-instances
+[pricing]: https://azure.microsoft.com/pricing/details/app-service/windows/

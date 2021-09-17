@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/11/2021
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 0d39961e1c56bdd6159fdb0d14cc0901aab6bc0e
-ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
+ms.openlocfilehash: ad25ce992dec7165e2b936e5642e8c3a209ce6a5
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2021
-ms.locfileid: "112413462"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122516320"
 ---
 Event Hubs では、次のカテゴリの診断ログをキャプチャします。
 
@@ -182,7 +182,7 @@ Event Hubs 仮想ネットワーク (VNet) 接続イベントの JSON には、�
 | `Count` | 指定されたアクションの発生回数 |
 | `ResourceId` | Azure Resource Manager リソース ID。 |
 
-仮想ネットワーク ログが生成されるのは、名前空間で **選択されたネットワーク** から、または **特定の IP アドレス** (IP フィルター規則) からのアクセスが許可されている場合のみです。 これらの機能を使用して名前空間へのアクセスを制限することを望まず、Event Hubs 名前空間に接続しているクライアントの IP アドレスを追跡するために引き続き仮想ネットワーク ログを取得したい場合は、次の回避策を使用できます。 [IP フィルター処理を有効](../event-hubs-ip-filtering.md)にし、アドレス指定可能な IPv4 の範囲の合計 (1.0.0.0/1 - 255.0.0.0/1) を追加します。 Event Hubs の IP フィルターでは IPv6 範囲はサポートされていません。 ログには、IPv6 形式のプライベート エンドポイント アドレスが表示される場合があることに注意してください。 
+仮想ネットワーク ログが生成されるのは、名前空間で **選択されたネットワーク** から、または **特定の IP アドレス** (IP フィルター規則) からのアクセスが許可されている場合のみです。 これらの機能を使用して名前空間へのアクセスを制限することを望まず、Event Hubs 名前空間に接続しているクライアントの IP アドレスを追跡するために引き続き仮想ネットワーク ログを取得したい場合は、次の回避策を使用できます。 [IP フィルター処理を有効](../event-hubs-ip-filtering.md)にし、アドレス指定可能な IPv4 の範囲の合計 (1.0.0.0/1 - 255.0.0.0/1) を追加します。 Event Hubs の IP フィルターでは IPv6 範囲はサポートされていません。 ログには、IPv6 形式のプライベート エンドポイント アドレスが表示される場合があります。 
 
 #### <a name="example"></a>例
 
@@ -204,11 +204,58 @@ Event Hubs 仮想ネットワーク (VNet) 接続イベントの JSON には、�
 
 | 名前 | 説明 |
 | ---- | ----------- | 
-| `Category` | メッセージのカテゴリの種類。 **error** と **info** のどちらかの値です |
+| `Category` | メッセージのカテゴリの種類。 **error** と **info** のどちらかの値です。 たとえば、キー コンテナーのキーが無効になっている場合は、情報カテゴリになります。または、キーをラップ解除できない場合は、エラーが発生する可能性があります。|
 | `ResourceId` | 内部リソース ID。Azure サブスクリプション ID と名前空間名が含まれます |
 | `KeyVault` | Key Vault リソースの名前 |
-| `Key` | Key Vault キーの名前。 |
-| `Version` | Key Vault キーのバージョン |
-| `Operation` | 要求を処理するために実行された操作の名前 |
-| `Code` | status code |
+| `Key` | Event Hubs 名前空間の暗号化に使用される Azure Key Vault キー名。 |
+| `Version` | Azure Key Vault キーのバージョン。|
+| `Operation` | キー コンテナー内のキーに対して実行される操作。 たとえば、キーの無効化/有効化、ラップ、またはラップ解除。 |
+| `Code` | 操作に関連付けられたコード。 例:エラー コード 404 は、キーが見つからなかったことを示します。 |
 | `Message` | メッセージ。エラーまたは情報メッセージに関する詳細情報を提供します |
+
+カスタマー マネージド キーのログの例を次に示します。
+
+```json
+{
+   "TaskName": "CustomerManagedKeyUserLog",
+   "ActivityId": "11111111-1111-1111-1111-111111111111",
+   "category": "error"
+   "resourceId": "/SUBSCRIPTIONS/11111111-1111-1111-1111-11111111111/RESOURCEGROUPS/DEFAULT-EVENTHUB-CENTRALUS/PROVIDERS/MICROSOFT.EVENTHUB/NAMESPACES/FBETTATI-OPERA-EVENTHUB",
+   "keyVault": "https://mykeyvault.vault-int.azure-int.net",
+   "key": "mykey",
+   "version": "1111111111111111111111111111111",
+   "operation": "wrapKey",
+   "code": "404",
+   "message": "Key not found: ehbyok0/111111111111111111111111111111",
+}
+
+
+
+{
+   "TaskName": "CustomerManagedKeyUserLog",
+   "ActivityId": "11111111111111-1111-1111-1111111111111",
+   "category": "info"
+   "resourceId": "/SUBSCRIPTIONS/111111111-1111-1111-1111-11111111111/RESOURCEGROUPS/DEFAULT-EVENTHUB-CENTRALUS/PROVIDERS/MICROSOFT.EVENTHUB/NAMESPACES/FBETTATI-OPERA-EVENTHUB",
+   "keyVault": "https://mykeyvault.vault-int.azure-int.net",
+   "key": "mykey",
+   "version": "111111111111111111111111111111",
+   "operation": "disable" | "restore",
+   "code": "",
+   "message": "",
+}
+```
+
+BYOK 暗号化が有効になっている場合に調べる一般的なエラー コードを次に示します。
+
+| アクション | エラー コード | 結果のデータの状態 |
+| ------ | ---------- | ----------------------- | 
+| キー コンテナーからラップ/ラップ解除のアクセス許可を削除する | 403 |    Inaccessible |
+| ラップ/ラップ解除のアクセス許可を付与された AAD プリンシパルから AAD ロールのメンバーシップを削除する | 403 |  Inaccessible |
+| キー コンテナーから暗号化キーを削除する | 404 | Inaccessible |
+| キー コンテナーを削除する | 404 | アクセス不可 (必須の設定である、論理的な削除が有効になっていることが前提) |
+| 暗号化キーの有効期限を既に経過した期限に変更する | 403 |   Inaccessible  |
+| キー暗号化キーがアクティブでなくなるように NBF (期間の開始時刻) を変更する | 403 | Inaccessible  |
+| キー コンテナー ファイアウォールに対して **[Allow MSFT Services]\(MSFT サービスを許可する\)** オプションを選択するか、暗号化キーを使用しているキー コンテナーへのネットワーク アクセスをブロックする | 403 | Inaccessible |
+| キーコンテナーを別のテナントに移動する | 404 | Inaccessible |  
+| 断続的なネットワークの問題または DNS/AAD/MSI の停止 |  | キャッシュされたデータ暗号化キーを使用してアクセス可能 |
+

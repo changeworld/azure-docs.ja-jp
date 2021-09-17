@@ -3,12 +3,15 @@ title: Azure VMware Solution を使用して NSX-T ネットワーク セグメ�
 description: Azure portal の Azure VMware Solution 用の NSX-T ネットワーク セグメントを追加する手順。
 ms.topic: include
 ms.date: 07/16/2021
-ms.openlocfilehash: 7744884da7e1e6d46428bb00b52f88772c866760
-ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
+author: shortpatti
+ms.author: v-patsho
+ms.service: azure-vmware
+ms.openlocfilehash: 4b153d95ad339d3a71d5b227e0f794675014a28c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114229337"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734203"
 ---
 <!-- Used in configure-dhcp-azure-vmware-solution.md and tutorial-nsx-t-network-segment.md -->
 
@@ -26,7 +29,7 @@ ms.locfileid: "114229337"
 
    - **[サブネット ゲートウェイ]** - セグメントのサブネットのゲートウェイ IP アドレスとサブネット マスク。 VM は論理セグメントに接続され、このセグメントに接続されているすべての VM は同じサブネットに属しています。  また、この論理セグメントに接続されているすべての VM は、同じセグメントの IP アドレスを持つ必要があります。
 
-   - **[DHCP]** (省略可能) - 論理セグメントの DHCP 範囲。 [DHCP サーバーまたは DHCP リレー](../configure-dhcp-azure-vmware-solution.md)は、セグメントで DHCP を使用するように構成されている必要があります。  
+   - **[DHCP]** (省略可能) - 論理セグメントの DHCP 範囲。 セグメントで DHCP を使用するように [DHCP サーバーまたは DHCP リレー](../configure-dhcp-azure-vmware-solution.md)を構成する必要があります。    
 
    >[!NOTE]
    >**[接続されているゲートウェイ]** は既定で選択され、読み取り専用です。  Tier-1 ゲートウェイとセグメント情報の種類を示しています。 

@@ -8,12 +8,12 @@ ms.topic: reference
 ms.custom: mvc
 ms.date: 07/28/2021
 ms.subservice: azure-sentinel
-ms.openlocfilehash: bec0a6c872077d3982ddaf6e0ffc7e96ec7f54ee
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 234de4f2f93a9c35126c0f7be7d8feeb3a244044
+ms.sourcegitcommit: deb5717df5a3c952115e452f206052737366df46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122183495"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122681497"
 ---
 # <a name="azure-sentinel-sap-solution-security-content-reference-public-preview"></a>Azure Sentinel SAP ソリューション: セキュリティ コンテンツ リファレンス (パブリック プレビュー)
 
@@ -116,7 +116,7 @@ ms.locfileid: "122183495"
 |**SAP - 高 - ログインした機密性の高い特権ユーザー**     |    機密性の高い特権ユーザーのダイアログ サインインを特定します。 <br><br>[SAP - 特権ユーザー](#users) ウォッチリストで特権ユーザーを管理します。    |  `SAP*` または別の特権ユーザーを使用してバックエンド システムにサインインします。  <br><br>**データ ソース**: SAPcon - 監査ログ     |   初期アクセス、資格情報アクセス      |
 |  **SAP - 高 - 機密性の高い特権ユーザーが他のユーザーに変更を行っている**   |   機密性の高い特権ユーザーによる他のユーザーへの変更を特定します。       | SU01 を使用して、ユーザーの詳細/認可を変更します。  <br><br>**データ ソース**: SAPcon - 監査ログ     |   特権エスカレーション、資格情報アクセス       |
 |**SAP - 高 - 機密性の高いユーザーのパスワード変更とログイン**     | 特権ユーザーのパスワード変更を特定します。      |  特権ユーザーのパスワードを変更し、システムにサインインします。 <br>[SAP - 特権ユーザー](#users) ウォッチリストで特権ユーザーを管理します。<br><br>**データ ソース**: SAPcon - 監査ログ | 影響、コマンドと制御、特権エスカレーション |
-|**SAP - 高 - ユーザーが新しいユーザーを作成して使用する**     | 他のユーザーを作成して使用しているユーザーを特定します。  <br><br>**サブユース ケース**: [永続性](#built-in-sap-analytics-rules-for-persistency)      |  SU01 を使用してユーザーを作成し、その新しく作成したユーザーおよび同じ IP アドレスを使用してサインインします。<br><br>**データ ソース**: SAPcon - 監査ログ | 探索、攻撃前、初期アクセス  |
+|**SAP - 高 - ユーザーが新しいユーザーを作成して使用する**     | 他のユーザーを作成して使用しているユーザーを特定します。  <br><br>**サブユース ケース**: [永続性](#built-in-sap-analytics-rules-for-persistency)      |  SU01 を使用してユーザーを作成し、その新しく作成したユーザーと同じ IP アドレスを使用してサインインします。<br><br>**データ ソース**: SAPcon - 監査ログ | 探索、攻撃前、初期アクセス  |
 |**SAP - 高 - ユーザーが他のユーザーをロック解除して使用する**     |他のユーザーによってロック解除され使用されているユーザーを特定します。   <br><br>**サブユース ケース**: [永続性](#built-in-sap-analytics-rules-for-persistency)    |  SU01 を使用してユーザーをロック解除し、そのロック解除されたユーザーおよび同じ IP アドレスを使用してサインインします。<br><br>**データ ソース**: SAPcon - 監査ログ、SAPcon - ドキュメント変更ログ | 探索、攻撃前、初期アクセス、横移動  |
 |**SAP - 中 - 機密性の高いプロファイルの割り当て**     |  ユーザーに対する機密性の高いプロファイルの新たな割り当てを特定します。 <br><br>[SAP - 機密性の高いプロファイル](#profiles) ウォッチリストで、機密性の高いプロファイルを管理します。      |    `SU01` を使用してユーザーにプロファイルを割り当てます。 <br><br>**データ ソース**: SAPcon - ドキュメント変更ログ    |  Privilege Escalation (特権昇格)       |
 |**SAP - 中 - 機密性の高いロールの割り当て**     |    ユーザーに対する機密性の高いロールの新たな割り当てを特定します。     <br><br>[SAP - 機密性の高いロール](#roles) ウォッチリストで機密性の高いロールを管理します。|  `SU01` / `PFCG` を使用してユーザーにロールを割り当てます。 <br><br>**データ ソース**: SAPcon - ドキュメント変更ログ、監査ログ     |   Privilege Escalation (特権昇格)      |
@@ -162,6 +162,7 @@ ms.locfileid: "122183495"
 
 - [SAP 用 Azure Sentinel ソリューションをデプロイする](sap-deploy-solution.md)
 - [Azure Sentinel SAP ソリューション ログ リファレンス](sap-solution-log-reference.md)
-- [エキスパートの構成オプション、オンプレミスへの展開、SAPControl のログ ソース](sap-solution-deploy-alternate.md)
+- [SNC を使用して Azure Sentinel SAP データ コネクタをデプロイする](sap-solution-deploy-snc.md)
+- [エキスパートの構成オプション、オンプレミス デプロイ、SAPControl のログ ソース](sap-solution-deploy-alternate.md)
 - [Azure Sentinel SAP ソリューションの詳細な SAP 要件](sap-solution-detailed-requirements.md)
 - [Azure Sentinel SAP ソリューションのデプロイのトラブルシューティング](sap-deploy-troubleshoot.md)

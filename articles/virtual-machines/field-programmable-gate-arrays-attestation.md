@@ -7,14 +7,16 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 04/01/2021
 ms.author: vikancha
-ms.openlocfilehash: a0c0c04d33c994279fe15a8fe7f677b2c25a55de
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 034acde1f99409ef7d541d7705bb995e0db00d3b
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108166039"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122689104"
 ---
 # <a name="fpga-attestation-for-azure-np-series-vms-preview"></a>Azure NP シリーズ VM の FPGA 構成証明 (プレビュー)
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 FPGA 構成証明サービスは、Xilinx ツールセットによって生成されるデザイン チェックポイント ファイル (“netlist” と呼ばれます) に対して一連の検証を実行し、NP シリーズ VM の Xilinx U250 FPGA カードに読み込むことができる検証済みのイメージ (“ビットストリーム” と呼ばれます) を含むファイルを生成します。  
 

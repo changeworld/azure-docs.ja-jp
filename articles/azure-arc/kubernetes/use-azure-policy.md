@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Azure Policy を使用してクラスター構成を大規模に適用する
 keywords: Kubernetes, Arc, Azure, K8s, コンテナー
-ms.openlocfilehash: 4619c84f88ee87b0b63e8c0cbe36b85a25f2dfb9
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 7a6892c4b89128abe698573960b61d08c2ac2f35
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110463062"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122609630"
 ---
 # <a name="use-azure-policy-to-apply-gitops-configurations-at-scale"></a>Azure Policy を使用して GitOps 構成を大規模に適用する
 
@@ -28,8 +28,8 @@ Azure Policy を使用するには、組み込みの GitOps ポリシー定義�
 
 懸念事項を分離できるようにするために、複数のポリシー割り当てを作成し、それぞれに異なる GitOps 構成を使用して、異なる Git リポジトリを指すことができます。 たとえば、1 つのリポジトリがクラスター管理者によって使用され、他のリポジトリはアプリケーション チームによって使用される場合があります。
 
->[!TIP]
-> このようなシナリオ用に、組み込みのポリシーがあります。
+> [!TIP]
+> このようなシナリオ用に、組み込みのポリシー定義があります。
 > * Flux によって作成された SSH キーがあるパブリック リポジトリまたはプライベート リポジトリ: `Configure Kubernetes clusters with specified GitOps configuration using no secrets`
 > * ユーザー指定の SSH キーがあるプライベート リポジトリ: `Configure Kubernetes clusters with specified GitOps configuration using SSH secrets`
 > * ユーザー指定の HTTPS キーがあるプライベート リポジトリ: `Configure Kubernetes clusters with specified GitOps configuration using HTTPS secrets`
@@ -42,10 +42,10 @@ Azure Policy を使用するには、組み込みの GitOps ポリシー定義�
 
 1. Azure portal で **[ポリシー]** に移動します。
 1. サイドバーの **[作成]** セクションで **[定義]** を選択します。
-1. "Kubernetes" カテゴリで、"シークレットを使用しないで、指定した GitOps 構成で Kubernetes クラスターを構成する" 組み込みポリシーを選択します。 
+1. "Kubernetes" カテゴリで、"シークレットを使用しないで、指定した GitOps 構成で Kubernetes クラスターを構成する" 組み込みポリシー定義を選択します。 
 1. **[割り当て]** をクリックします。
 1. **[スコープ]** を、ポリシー割り当てを適用する管理グループ、サブスクリプション、またはリソース グループに設定します。
-    * ポリシーのスコープからリソースを除外する場合は、 **[除外]** を設定します。
+    * ポリシー割り当てのスコープからリソースを除外する場合は、 **[除外]** を設定します。
 1. ポリシー割り当てにわかりやすい **[名前]** と **[説明]** を指定します。
 1. **[ポリシーの適用]** が "**有効**" に設定されていることを確認します。
 1. **[次へ]** を選択します。
@@ -65,7 +65,7 @@ Azure Policy を使用するには、組み込みの GitOps ポリシー定義�
 
 1. Azure portal で、Azure Arc 対応 Kubernetes クラスターのいずれかに移動します。
 1. サイドバーの **[設定]** セクションで、 **[ポリシー]** を選択します。 
-    * ポリシー一覧に、前に作成した、 **[コンプライアンスの状態]** が *[準拠している]* に設定されているポリシーの割り当てが表示されます。
+    * 一覧に、前に作成した、 **[コンプライアンスの状態]** が *[準拠している]* に設定されているポリシーの割り当てが表示されます。
 1. サイドバーの **[設定]** セクションで、 **[GitOps]** を選択します。
     * 構成の一覧に、ポリシー割り当てによって作成された構成が表示されます。
 1. `kubectl` を使用してクラスターを問い合わせます。 

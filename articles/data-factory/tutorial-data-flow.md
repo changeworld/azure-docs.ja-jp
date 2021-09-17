@@ -1,19 +1,20 @@
 ---
 title: マッピング データ フローを使用してデータを変換する
 description: このチュートリアルでは、Azure Data Factory で マッピング データ フローを使用してデータを変換するための詳細な手順を説明します
-author: dcstwh
-ms.author: weetok
+author: kromerm
+ms.author: makromer
 ms.reviewer: makromer
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 04/16/2021
-ms.openlocfilehash: f8570c8b252fae91986508abd3725cbbedd361a0
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.date: 06/04/2021
+ms.openlocfilehash: b5d28b5e625bc7822469511ae83d5dabd5824fa0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107565425"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638816"
 ---
 # <a name="transform-data-using-mapping-data-flows"></a>マッピング データ フローを使用してデータを変換する
 
@@ -73,9 +74,9 @@ Azure Data Factory を初めて使用する場合は、「[Azure Data Factory �
 
 この手順では、Data Flow アクティビティを含むパイプラインを作成します。
 
-1. **[Let's get started]\(始めましょう\)** ページで **[Create pipeline]\(パイプラインの作成\)** を選択します。
+1. Azure Data Factory のホーム ページで、 **[Orchestrate]\(調整\)** を選択します。
 
-   ![パイプラインの作成](./media/doc-common-process/get-started-page.png)
+   ![ADF のホーム ページを示すスクリーンショット。](./media/doc-common-process/get-started-page.png)
 
 1. パイプラインの **[全般]** タブで、パイプラインの **名前** として「**TransformMovies**」と入力します。
 1. **[アクティビティ]** ウィンドウで、 **[移動と変換]** アコーディオンを展開します。 ウィンドウから **Data Flow** アクティビティをパイプライン キャンバスにドラッグ アンド ドロップします。

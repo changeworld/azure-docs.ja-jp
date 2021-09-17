@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: allensu
-ms.openlocfilehash: 9bf08b3af208fe584176033c5b1c524f8249c1d5
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a01687cc518659e7efedd51749b305fc3ce50de3
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121740302"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444111"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>Azure プライベート エンドポイントの DNS 構成
 
@@ -47,6 +47,7 @@ Azure サービスについては、次の表に示すように、推奨され�
 | Azure Synapse Analytics (Microsoft.Synapse/workspaces) / Sql  | privatelink.sql.azuresynapse.net | sql.azuresynapse.net |
 | Azure Synapse Analytics (Microsoft.Synapse/workspaces)/SqlOnDemand  | privatelink.sql.azuresynapse.net | sqlondemand.azuresynapse.net |
 | Azure Synapse Analytics (Microsoft.Synapse/workspaces)/Dev  | privatelink.dev.azuresynapse.net | dev.azuresynapse.net |
+| Azure Synapse Studio (Microsoft.Synapse/privateLinkHubs) / Web | privatelink.azuresynapse.net | azuresynapse.net |
 | ストレージ アカウント (Microsoft.Storage/storageAccounts)/BLOB (blob、blob_secondary) | privatelink.blob.core.windows.net | blob.core.windows.net |
 | ストレージ アカウント (Microsoft.Storage/storageAccounts)/テーブル (table、table_secondary) | privatelink.table.core.windows.net | table.core.windows.net |
 | ストレージ アカウント (Microsoft.Storage/storageAccounts)/キュー (queue、queue_secondary) | privatelink.queue.core.windows.net | queue.core.windows.net |
@@ -86,6 +87,7 @@ Azure サービスについては、次の表に示すように、推奨され�
 | Azure Cache for Redis (Microsoft.Cache/Redis) / redisCache | privatelink.redis.cache.windows.net | redis.cache.windows.net |
 | Azure Cache for Redis Enterprise (Microsoft.Cache/RedisEnterprise)/redisCache | privatelink.redisenterprise.cache.azure.net | redisenterprise.cache.azure.net |
 | Azure Purview (Microsoft.Purview)| privatelink.purview.azure.com | purview.azure.com |
+| Azure Digital Twins (Microsoft.DigitalTwins) / digitalTwinsInstances | privatelink.digitaltwins.azure.net | digitaltwins.azure.net |
 
 
 <sup>1</sup>IoT Hub の組み込みのイベント ハブ互換エンドポイントで使用します。 詳細については、[IoT Hub の組み込みエンドポイントに対するプライベート リンクのサポート](../iot-hub/virtual-network-support.md#built-in-event-hub-compatible-endpoint)に関するページを参照してください。

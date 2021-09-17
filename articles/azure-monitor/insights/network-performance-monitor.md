@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: fab7a613a040a57b65ecb8cb2372fff37f35c84a
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: bd0fb0720218b938b8c10454afeafba85887fa2c
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114392563"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122779126"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure の Network Performance Monitor ソリューション
 
@@ -123,7 +123,7 @@ Linux マシンの場合、使用する portNumber を手動で変更する必�
 
 ### <a name="configure-the-solution"></a>ソリューションの構成 
 
-1. [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/solarwinds.solarwinds-orion-network-performance-monitor?tab=Overview) から Network Performance Monitor ソリューションをワークスペースに追加します。 [Solutions Gallery からの Azure Monitor ソリューションの追加](./solutions.md)に関するページで説明されている手順も使用できます。 
+1. [Solutions Gallery からの Azure Monitor ソリューションの追加](./solutions.md#install-a-monitoring-solution)に関する記事で説明されている手順に従って Network Performance Monitor ソリューションをワークスペースに追加します。 これは、接続モニター内で Azure 以外のエンドポイントを使用する場合に必要です。
 2. Log Analytics ワークスペースを開いて、 **[概要]** タイルを選びます。 
 3. "*このソリューションにはさらに構成が必要です*" というメッセージが表示されている **[Network Performance Monitor]** タイルを選択します。
 

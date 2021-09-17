@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/04/2020
 ms.author: thwimmer
-ms.openlocfilehash: d3172f571afbcdbac83a527ef1de5e56283b7438
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: d8fbdff34ea84685366c04ee956473b4165a4cd2
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113766954"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444585"
 ---
 # <a name="tutorial-configure-insight4grc-for-automatic-user-provisioning"></a>チュートリアル: Insight4GRC を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -100,11 +100,12 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 9. **[属性マッピング]** セクションで、Azure AD から Insight4GRC に同期されるユーザー属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で Insight4GRC のユーザー アカウントとの照合に使用されます。 [一致する対象の属性](../app-provisioning/customize-application-attributes.md)を変更する場合は、その属性に基づいたユーザーのフィルター処理が確実に Insight4GRC API でサポートされているようにする必要があります。 **[保存]** ボタンをクリックして変更をコミットします。
 
-   |属性|Type|
-   |---|---|
-   |userName|String|
-   |externalId|String|
+   |属性|Type|フィルター処理のサポート|
+   |---|---|--|
+   |userName|String|&check;
+   |externalId|String|&check;
    |active|Boolean|
+   urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|String|
    |title|String|
    |name.givenName|String|
    |name.familyName|String|
@@ -143,6 +144,10 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 * [プロビジョニング ログ](../reports-monitoring/concept-provisioning-logs.md)を使用して、正常にプロビジョニングされたユーザーと失敗したユーザーを特定します。
 * [進行状況バー](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)を確認して、プロビジョニング サイクルの状態と完了までの時間を確認します。
 * プロビジョニング構成が異常な状態になったと考えられる場合、アプリケーションは検疫されます。 検疫状態の詳細については、[こちら](../app-provisioning/application-provisioning-quarantine-status.md)を参照してください。
+
+## <a name="change-log"></a>ログの変更
+
+* 2021/08/19 - エンタープライズ拡張ユーザー属性 **manager** が追加されました。
 
 ## <a name="additional-resources"></a>その他のリソース
 

@@ -6,12 +6,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 06/19/2021
 ms.author: yexu
-ms.openlocfilehash: ab17ad8c47f7cc49588e5caf556282c40a9c0a76
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.openlocfilehash: e2263db67214fb6fea91c8a8cefa65a981475ec3
+ms.sourcegitcommit: deb5717df5a3c952115e452f206052737366df46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122271985"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122681599"
 ---
 # <a name="build-large-scale-data-copy-pipelines-with-metadata-driven-approach-in-copy-data-tool-preview"></a>データのコピー ツール (プレビュー) でメタデータ駆動型の方法を使用して大規模なデータ コピー パイプラインを作成する
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -132,7 +132,7 @@ ADF のデータのコピー ツールによって、このようなメタデー
 
 | 列名 | 説明 | 
 |:--- |:--- |
-| 名前 | メインの制御テーブル内のパラメーター化された接続の名前。 |
+| Name | メインの制御テーブル内のパラメーター化された接続の名前。 |
 | ConnectionSettings | 接続設定。 DB 名、サーバー名などにできます。 |
 
 ## <a name="pipelines"></a>パイプライン
@@ -150,7 +150,7 @@ ADF のデータのコピー ツールによって、このようなメタデー
 | MaxNumberOfObjectsReturnedFromLookupActivity | 出力検索アクティビティの制限に到達しないようにするために、検索アクティビティによって返されるオブジェクトの最大数を定義する方法があります。 ほとんどの場合、既定値を変更する必要はありません。  |
 | windowStart | フォルダー パスとして動的な値 (yyyy/mm/dd など) を入力すると、このパラメーターを使用して、動的フォルダー パスを埋めるために現在のトリガー時間をパイプラインに渡すことができます。 パイプラインがスケジュール トリガーまたはタンブリング ウィンドウ トリガーによってトリガーされる場合、ユーザーはこのパラメーターの値を入力する必要はありません。 サンプル値: 2021-01-25T01:49:28Z |
 
-#### <a name="activities"></a>Activities
+#### <a name="activities"></a>アクティビティ
 | アクティビティ名 | アクティビティの種類 | 説明 |
 |:--- |:--- |:--- |
 | GetSumOfObjectsToCopy  | 参照 | この実行でコピーする必要があるオブジェクト (テーブルなど) の総数を計算します。 |
@@ -173,7 +173,7 @@ ADF のデータのコピー ツールによって、このようなメタデー
 | MainControlTableName | メインの制御テーブルの名前。 |
 | ConnectionControlTableName | 接続制御テーブルの名前。 |
 
-#### <a name="activities"></a>Activities
+#### <a name="activities"></a>アクティビティ
 | アクティビティ名 | アクティビティの種類 | 説明 |
 |:--- |:--- |:--- |
 | DivideOneBatchIntoMultipleGroups | ForEach  | 検索アクティビティの出力制限に達しないように、オブジェクトを 1 つのバッチから複数の並列グループに分割します。 |
@@ -191,7 +191,7 @@ ADF のデータのコピー ツールによって、このようなメタデー
 | ConnectionControlTableName | 接続制御テーブルの名前。 | 
 | windowStart | ユーザーによって構成されている場合、動的フォルダー パスを埋める目的で、現在のトリガー時間をパイプラインに渡すために使用されます。 | 
 
-#### <a name="activities"></a>Activities
+#### <a name="activities"></a>アクティビティ
 | アクティビティ名 | アクティビティの種類 | 説明 |
 |:--- |:--- |:--- |
 | ListObjectsFromOneGroup | ForEach | 1 つのグループからオブジェクトを一覧表示し、各オブジェクトにつき、ダウンストリーム アクティビティに反復処理します。 |
@@ -204,7 +204,7 @@ ADF のデータのコピー ツールによって、このようなメタデー
 ### <a name="known-limitations"></a>既知の制限事項
 - データのコピー ツールでは、現在、新しいファイルだけを増分コピーするためのメタデータ駆動型の取り込みはサポートされていません。 ただし、独自のパラメーター化されたパイプラインを使用して実現できます。
 - ADF では、IR 名、データベースの種類、ファイル形式の種類をパラメーター化できません。 たとえば、Oracle Server と SQL Server の両方からデータを取り込む場合は、2 つの異なるパラメーター化されたパイプラインが必要です。 ただし、1 つの制御テーブルは、2 つのパイプライン セットで共有できます。 
-
+- OPENJSON は、データ コピー ツールによって生成される SQL スクリプトで使用されます。 SQL Server を使用して制御テーブルをホストする場合、OPENJSON 関数をサポートするには、SQL Server 2016 (13.x) 以降である必要があります。
 
 
 ## <a name="next-steps"></a>次のステップ

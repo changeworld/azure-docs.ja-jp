@@ -10,14 +10,15 @@ ms.workload: infrastructure
 ms.date: 09/27/2018
 ms.author: magoedte
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: cf30282ee37beaa99e83b78b8b7455f2060d8023
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 0834fa6fd7eff41f37eb8f16dc3429189be284cb
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110668006"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122688678"
 ---
 # <a name="tutorial-monitor-a-windows-virtual-machine-in-azure"></a>チュートリアル:Azure で Windows 仮想マシンを監視する
+**適用対象:** :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット
 
 Azure Monitoring は、エージェントを使用して Azure VM からブート データとパフォーマンス データを収集します。そのデータは、Azure Storage に格納され、ポータルや Azure PowerShell モジュール、Azure CLI からアクセスできるようになります。 Azure Monitor for VMs でパフォーマンス メトリックを収集し、VM にインストールされているアプリケーション コンポーネントを検出すると共に、パフォーマンス グラフと依存関係マップを追加することによって、先進の監視機能が実現されます。
 

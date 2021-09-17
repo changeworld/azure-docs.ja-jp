@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
-ms.openlocfilehash: 1ef7bb79257387526720dd80e86e296280632c82
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 336f7ff589cdc9b2df3f8e447294719869ca0c2f
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111410155"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122445232"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>Linux VM のカスタム メトリックを InfluxData Telegraf エージェントを使用して収集する
 
@@ -28,7 +28,7 @@ Azure Monitor を使用すると、アプリケーション テレメトリ、Az
 
 ## <a name="send-custom-metrics"></a>カスタム メトリックを送信する 
 
-このチュートリアルでは、Ubuntu 16.04 LTS オペレーティング システムを実行する Linux VM をデプロイします。 Telegraf エージェントは、ほとんどの Linux オペレーティング システムでサポートされます。 [InfluxData ダウンロード ポータル](https://portal.influxdata.com/downloads)で、Debian パッケージと RPM パッケージの両方と、パッケージ化されていない Linux バイナリを入手できます。 詳細なインストール手順とオプションについては、この[Telegraf インストール ガイド](https://docs.influxdata.com/telegraf/v1.8/introduction/installation/)を参照してください。 
+このチュートリアルでは、Ubuntu 18.04 LTS オペレーティング システムを実行する Linux VM をデプロイします。 Telegraf エージェントは、ほとんどの Linux オペレーティング システムでサポートされます。 [InfluxData ダウンロード ポータル](https://portal.influxdata.com/downloads)で、Debian パッケージと RPM パッケージの両方と、パッケージ化されていない Linux バイナリを入手できます。 詳細なインストール手順とオプションについては、この[Telegraf インストール ガイド](https://docs.influxdata.com/telegraf/v1.8/introduction/installation/)を参照してください。 
 
 [Azure portal](https://portal.azure.com) にサインインします。
 
@@ -39,7 +39,7 @@ Azure Monitor を使用すると、アプリケーション テレメトリ、Az
 
 1. 左側のナビゲーション ウィンドウの **[リソースの作成]** オプションを選択します。 
 1. 「**仮想マシン**」を検索します。  
-1. **[Ubuntu 16.04 LTS]** を選択し、 **[作成]** を選択します。 
+1. **[Ubuntu 18.04 LTS]** を選択し、 **[作成]** を選択します。 
 1. VM 名 (**MyTelegrafVM** など) を指定します。  
 1. ディスクの種類を **SSD** のままにしておきます。 次に、**azureuser** のように、**ユーザー名** を指定します。 
 1. **[認証の種類]** で、 **[パスワード]** を選択します。 次に、この VM への SSH に後から使用する予定のパスワードを入力します。 
@@ -79,15 +79,16 @@ Azure Cloud Shell や Bash on Ubuntu on Windows などのシェルに SSH 接続
 
 VM に Telegraf Debian パッケージをインストールするには、SSH セッションから次のコマンドを実行します。 
 
-```cmd
+```bash
 # download the package to the VM 
-wget https://dl.influxdata.com/telegraf/releases/telegraf_1.8.0~rc1-1_amd64.deb 
-# install the package 
-sudo dpkg -i telegraf_1.8.0~rc1-1_amd64.deb
+curl -s https://repos.influxdata.com/influxdb.key | sudo apt-key add -
+source /etc/lsb-release
+echo "deb https://repos.influxdata.com/${DISTRIB_ID,,} ${DISTRIB_CODENAME} stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
 ```
+
 Telegraf の構成ファイルは、Telegraf の動作を定義します。 既定では、パス **/etc/telegraf/telegraf.conf** にサンプル構成ファイルがインストールされます。 このサンプル構成ファイルには、すべての可能な入力プラグインと出力プラグインが一覧表示されています。ただし、これからカスタム構成ファイルを作成し、次のコマンドを実行することで、エージェントがそのファイルを使用するようにします。 
 
-```cmd
+```bash
 # generate the new Telegraf config file in the current directory 
 telegraf --input-filter cpu:mem --output-filter azure_monitor config > azm-telegraf.conf 
 
@@ -100,7 +101,7 @@ sudo cp azm-telegraf.conf /etc/telegraf/telegraf.conf
 
 最後に、エージェントが新しい構成を使用して開始するように、次のコマンドを実行してエージェントを強制的に停止し、再び開始します。 
 
-```cmd
+```bash
 # stop the telegraf agent on the VM 
 sudo systemctl stop telegraf 
 # start the telegraf agent on the VM to ensure it picks up the latest configuration 

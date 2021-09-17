@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/09/2021
+ms.date: 08/20/2021
 ms.author: jeedes
-ms.openlocfilehash: ee9b326a43adb9c96fe6013eeecaabf955c78d45
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: 98b8b3c1de7879301d82356bbb23e2d2d19ff9cc
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111986392"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122768434"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-4me"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と 4me の統合
 
@@ -42,6 +42,7 @@ ms.locfileid: "111986392"
 
 * 4me では、**SP** Initiated SSO がサポートされます。
 * 4me では、**Just In Time** ユーザー プロビジョニングがサポートされます。
+* 4me では、[自動化されたユーザー プロビジョニング](4me-provisioning-tutorial.md)がサポートされます。
 
 ## <a name="add-4me-from-the-gallery"></a>ギャラリーから 4me を追加する
 

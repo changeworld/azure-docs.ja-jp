@@ -7,15 +7,15 @@ ms.subservice: core
 ms.author: seramasu
 ms.reviewer: laobri
 author: rsethur
-ms.date: 05/25/2021
+ms.date: 08/05/2021
 ms.topic: tutorial
 ms.custom: tutorial, devplatv2
-ms.openlocfilehash: 78cbec0c8f4805794062b6fd525567f8aebcb2b6
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 681d78d07ac27cb8796f4dad5920d91d9efcb94a
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114448838"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122418882"
 ---
 # <a name="tutorial-access-resources-with-managed-online-endpoints-and-identity-preview"></a>チュートリアル: マネージド オンライン エンドポイントと ID を使用してリソースにアクセスする (プレビュー)
 
@@ -37,7 +37,7 @@ ms.locfileid: "114448838"
 
 * Azure Machine Learning を使用するためには、Azure サブスクリプションが必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://azure.microsoft.com/free/) を今すぐお試しください。
 
-* Azure CLI と ML 拡張機能をインストールして構成する必要があります。 詳細については、[2.0 CLI (プレビュー) のインストール、セットアップ、使用](how-to-configure-cli.md)に関するページを参照してください。 
+* Azure CLI と ML 拡張機能をインストールして構成する必要があります。 詳細については、[CLI (v2) (プレビュー) のインストール、設定、使用](how-to-configure-cli.md)に関するページを参照してください。 
 
 * Azure リソース グループがあること、また、そのリソース グループにおける `Contributor` アクセス権がご自身 (またはご使用のサービス プリンシパル) に割り当てられていることが必要です。 上記の記事に従って ML 拡張機能を構成していれば、そのようなリソース グループが得られます。 
 
@@ -72,7 +72,7 @@ az configure --defaults workspace=<azureml workspace name> group=<resource group
 
 :::code language="yaml" source="~/azureml-examples-main/cli/endpoints/online/managed/managed-identities/2-sai-deployment.yml":::
 
-YAML のリファレンスについては、[マネージド オンライン エンドポイント (プレビュー) YAML リファレンス](reference-online-endpoint-yaml.md)に関するページを参照してください。
+YAML のリファレンスについては、[マネージド オンライン エンドポイント (プレビュー) YAML リファレンス](reference-yaml-endpoint-managed-online.md)に関するページを参照してください。
 
 ## <a name="configure-variables-for-your-deployment"></a>デプロイ用の変数を構成する
 
@@ -193,7 +193,7 @@ init メソッドの出力をチェックするには、次のコードでデプ
 
 * CLI の使用について詳しくは、「[Azure Machine Learning 用の CLI 拡張機能を使用する](reference-azure-machine-learning-cli.md)」を参照してください。
 * 特定のデータのみを返すように JSON クエリを調整する方法については、[Azure CLI コマンドの出力の照会](/cli/azure/query-azure-cli)に関するページを参照してください。
-* YAML スキーマの詳細については、[オンライン エンドポイント YAML リファレンス](reference-online-endpoint-yaml.md)に関するドキュメントを参照してください。
+* YAML スキーマの詳細については、[オンライン エンドポイント YAML リファレンス](reference-yaml-endpoint-managed-online.md)に関するドキュメントを参照してください。
 * 使用できるコンピューティング リソースを確認するには、「[マネージド オンライン エンドポイント SKU の一覧 (プレビュー)](reference-managed-online-endpoints-vm-sku-list.md)」を参照してください。
 * コストの詳細については、「[Azure Machine Learning のマネージド オンライン エンドポイント (プレビュー) のコストを表示する](how-to-view-online-endpoints-costs.md)」を参照してください。
 * デプロイの詳細については、[オンライン エンドポイントの安全なロールアウト (プレビュー)](how-to-safely-rollout-managed-endpoints.md) に関するページを参照してください。

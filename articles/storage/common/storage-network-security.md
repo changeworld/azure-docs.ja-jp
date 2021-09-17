@@ -10,12 +10,12 @@ ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: dacf5814ee487c008e343347f7ab1319fd578597
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: d4f48f8a8c573ac03f5637b74b740c5710af92b3
+ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113729004"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122597683"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Storage ファイアウォールおよび仮想ネットワークを構成する
 
@@ -49,9 +49,6 @@ Azure Storage では、多層型セキュリティ モデルが提供されて�
 従来のストレージ アカウントでは、ファイアウォールと仮想ネットワークはサポートされていません。
 
 ネットワーク ルールが適用されたストレージ アカウントでアンマネージド ディスクを使用し、例外を作成することにより、VM をバックアップおよび復元できます。 このプロセスについては、この記事の「[例外を管理する](#manage-exceptions)」セクションをご覧ください。 ファイアウォールの例外は Azure によって既に管理されているので、マネージド ディスクには適用されません。
-
-> [!IMPORTANT] 
-> ネットワーク規則に含まれているサブネットを削除する場合は、必ずそのサブネットをネットワーク規則から削除してください。 そうしないと、同じ名前でサブネットを作成した場合、そのサブネットをどのストレージ アカウントのネットワーク規則でも使用できなくなります。 
 
 ## <a name="change-the-default-network-access-rule"></a>既定のネットワーク アクセス ルールの変更
 
@@ -128,6 +125,9 @@ Azure portal、PowerShell、または CLIv2 を使用して、ストレージ �
 VNet 内の Azure Storage に対する[サービス エンドポイント](../../virtual-network/virtual-network-service-endpoints-overview.md)を有効にします。 サービス エンドポイントでは、VNet からのトラフィックが、最適なパスを経由して、Azure Storage サービスにルーティングされます。 サブネットと仮想ネットワークの ID も、各要求と一緒に転送されます。 管理者は、その後、VNet 内の特定のサブネットからの要求の受信を許可するネットワーク ルールを、ストレージ アカウントに対して構成できます。 これらのネットワーク ルールによってアクセスを許可されたクライアントがデータにアクセスするには、ストレージ アカウントの認可要件を引き続き満たす必要があります。
 
 各ストレージ アカウントでは最大 200 個の仮想ネットワーク規則がサポートされ、それを [IP ネットワーク ルール](#grant-access-from-an-internet-ip-range)と組み合わせることができます。
+
+> [!IMPORTANT] 
+> ネットワーク ルールに含まれているサブネットを削除すると、そのサブネットはストレージ アカウントのネットワーク ルールから削除されます。 同じ名前で新しいサブネットを作成しても、ストレージ アカウントにアクセスできません。 アクセスを許可するには、ストレージ アカウントのネットワーク ルールで新しいサブネットを明示的に承認する必要があります。
 
 ### <a name="available-virtual-network-regions"></a>使用可能な仮想ネットワークのリージョン
 

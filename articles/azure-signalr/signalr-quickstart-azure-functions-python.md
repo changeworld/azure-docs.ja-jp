@@ -10,12 +10,12 @@ ms.devlang: python
 ms.custom:
 - devx-track-python
 - mode-api
-ms.openlocfilehash: 46c15f932f55883be66745d415820767089ae0f1
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 99d2f7a67ede762f84e5f6d9abf5af78c5751d22
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112462003"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444970"
 ---
 # <a name="quickstart-create-an-app-showing-github-star-count-with-azure-functions-and-signalr-service-using-python"></a>クイック スタート: Azure Functions と SignalR Service で Python を使用して、GitHub のスターの数を表示するアプリを作成する
 
@@ -65,7 +65,30 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
         ```bash
         func new -n index -t HttpTrigger
         ```
-        
+        `index/function.json` を開いて次の JSON コードをコピーします。
+
+        ```json
+        {
+          "bindings": [
+            {
+              "authLevel": "anonymous",
+              "type": "httpTrigger",
+              "direction": "in",
+              "name": "req",
+              "methods": [
+                "get",
+                "post"
+              ]
+            },
+            {
+              "type": "http",
+              "direction": "out",
+              "name": "res"
+            }
+          ]
+        }
+        ```
+
         `index/__init__.py` を開いて次のコードをコピーします。
 
         ```javascript
@@ -92,7 +115,7 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
           "scriptFile": "__init__.py",
           "bindings": [
             {
-              "authLevel": "function",
+              "authLevel": "anonymous",
               "type": "httpTrigger",
               "direction": "in",
               "name": "req",
@@ -133,9 +156,9 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
         # install requests
         pip install requests
         ```
-    
+
         `broadcast/function.json` を開いて次のコードをコピーします。
-    
+
         ```json
         {
           "scriptFile": "__init__.py",
@@ -177,7 +200,7 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
             }))
         ```
 
-3. このサンプルのクライアント インターフェイスは Web ページです。 `index` 関数の `content/index.html` から HTML コンテンツを読み込むと考え、`content` ディレクトリに `index.html` というファイルを新規に作成します。 そして、次の内容をコピーします。
+3. このサンプルのクライアント インターフェイスは Web ページです。 `index` 関数で `content/index.html` から HTML コンテンツを読み込むと考え、プロジェクト ルート フォルダーの下の `content` ディレクトリに新たに `index.html` ファイルを作成します。 そして、次の内容をコピーします。
 
     ```html
     <html>
@@ -211,14 +234,14 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
 
         ![SignalR Service インスタンスの検索](media/signalr-quickstart-azure-functions-csharp/signalr-quickstart-search-instance.png)
 
-    1. **[Key]\(キー\)** を選択し、SignalR Service インスタンスの接続文字列を表示します。
+    2. **[Key]\(キー\)** を選択し、SignalR Service インスタンスの接続文字列を表示します。
     
         ![プライマリ接続文字列が強調表示されているスクリーンショット。](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-keys.png)
 
-    1. プライマリ接続文字列をコピーします。 そして、以下のコマンドを実行します。
+    3. プライマリ接続文字列をコピーします。 そして、以下のコマンドを実行します。
     
         ```bash
-        func settings add AzureSignalRConnectionString '<signalr-connection-string>'
+        func settings add AzureSignalRConnectionString "<signalr-connection-string>"
         ```
     
 5. Azure Functions をローカルで実行します:
@@ -227,7 +250,7 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
     func start
     ```
 
-    その後、Azure Functions がローカルで実行されます。 ブラウザーから `http://localhost:7071/api/index` にアクセスすると、現在の開始カウントを確認できます。 また、GitHub でスターを付けたり外したりすると、数秒ごとにスターのカウントが更新されます。
+    その後、Azure Functions がローカルで実行されます。 ブラウザーを使用して `http://localhost:7071/api/index` にアクセスすると、現在の星の数を確認できます。 また、GitHub で星を付けたり外したりすると、数秒ごとに星の数が更新されます。
 
     > [!NOTE]
     > SignalR のバインディングには Azure Storage が必要ですが、Function がローカルで動作している場合は、ローカル ストレージ エミュレーターを使用することができます。

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/29/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: e57202fbbfcf40ed38cb9bed51a78c6a66a19bba
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0ba2fcbc404a17b4b31d48b4e7d2e540a875f4f1
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121728462"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444070"
 ---
 # <a name="start-vm-on-connect-faq"></a>Start VM on Connect のよくあるご質問
 
@@ -34,11 +34,11 @@ ms.locfileid: "121728462"
 >[!NOTE]
 >[切断されたセッションを終了する] ポリシーの制限時間は、5 分を超える値に設定してください。 制限時間を短くすると、ネットワークの接続が長時間失われた場合にユーザーのセッションが終了し、作業が失われる可能性があります。
 
-ユーザーのサインアウトによって VM の割り当てが解除されることはありません。 VM の割り当てを解除する方法については、「[勤務時間外の VM の起動/停止](../automation/automation-solution-vm-management.md)」をご覧ください。
+ユーザーのサインアウトによって VM の割り当てが解除されることはありません。 VM の割り当てを解除する方法については、個人用ホスト プールの場合は[オフ時間中の VM の開始または停止](../automation/automation-solution-vm-management.md)に関する記事を、プールされたホスト プールの場合は「[Azure Automation を使用してセッション ホストをスケーリングする](set-up-scaling-script.md)」を参照してください。
 
 ## <a name="can-users-turn-off-the-vm-from-their-clients"></a>ユーザーは、クライアントから VM をオフにできますか?
 
-はい。 ユーザーは、物理マシンの場合と同様に、セッション内の [スタート] メニューを使用して VM をシャットダウンできます。 ただし、VM をシャットダウンしても VM の割り当ては解除されません。 VM の割り当てを解除する方法については、「[勤務時間外の VM の起動/停止](../automation/automation-solution-vm-management.md)」をご覧ください。
+はい。 ユーザーは、物理マシンの場合と同様に、セッション内の [スタート] メニューを使用して VM をシャットダウンできます。 ただし、VM をシャットダウンしても VM の割り当ては解除されません。 VM の割り当てを解除する方法については、個人用ホスト プールの場合は[オフ時間中の VM の開始または停止](../automation/automation-solution-vm-management.md)に関する記事を、プールされたホスト プールの場合は「[Azure Automation を使用してセッション ホストをスケーリングする](set-up-scaling-script.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

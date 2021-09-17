@@ -8,14 +8,16 @@ ms.collection: linux
 ms.topic: article
 ms.date: 04/16/2020
 ms.author: alsin
-ms.openlocfilehash: 1be0904cc640eff5af7a77bba3abd6aa062991a8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ccd3e58babc6627a384636dbea28ef82969be9fc
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101676069"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122696746"
 ---
 # <a name="red-hat-enterprise-linux-in-place-upgrades"></a>インプレース アップグレードの Red Hat Enterprise Linux
+
+**適用対象:** :heavy_check_mark: Linux VM 
 
 この記事では、Red Hat Enterprise Linux (RHEL) 7 から Red Hat Enterprise Linux 8 へのインプレース アップグレードを実行する手順を説明します。 この手順では Azure の `leapp` ツールを使用します。 インプレース アップグレード中に、既存の RHEL 7 オペレーティング システムが RHEL 8 バージョンに置き換えられます。
 

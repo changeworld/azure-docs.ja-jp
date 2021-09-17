@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/26/2021
 ms.author: jeedes
-ms.openlocfilehash: 6066dc8709fe376f99babcc3dd1360e4bf571ef2
-ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
+ms.openlocfilehash: d5731c8ae901edc57e17b050a8078f511759d772
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110655355"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122178853"
 ---
 # <a name="tutorial-integrate-miro-with-azure-active-directory"></a>チュートリアル:Miro と Azure Active Directory の統合
 
@@ -37,6 +37,7 @@ ms.locfileid: "110655355"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 
 * Miro では、**SP Initiated SSO と IDP Initiated SSO** のほか、**Just In Time** ユーザー プロビジョニングがサポートされます。
+* Miro では、[**自動化された** ユーザー プロビジョニングとプロビジョニング解除](miro-provisioning-tutorial.md) (推奨) がサポートされます。
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。

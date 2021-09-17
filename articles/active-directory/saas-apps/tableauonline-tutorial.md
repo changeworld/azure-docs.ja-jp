@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 5318570ed77e3352f37c2306ecd003195992d010
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5d3d74c0e29de6ee75f80ab26c982c92501dafa2
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98732003"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122181685"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tableau-online"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Tableau Online の統合
 
@@ -38,6 +38,7 @@ ms.locfileid: "98732003"
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
 * Tableau Online では、**SP** Initiated SSO がサポートされます
+* Tableau Online では、[**自動化されたユーザー プロビジョニングとプロビジョニング解除**](tableau-online-provisioning-tutorial.md) (推奨) がサポートされます。
 
 ## <a name="adding-tableau-online-from-the-gallery"></a>ギャラリーからの Tableau Online の追加
 

@@ -9,14 +9,16 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 10/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2d7e096a0dbd730b2ec5f64589a5924340e32f66
-ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
+ms.openlocfilehash: fc3c40e9f4bad9a15b94ee7aa529438f45b97498
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122195543"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692611"
 ---
 # <a name="azure-disk-encryption-for-windows-vms"></a>Windows VM 用の Azure Disk Encryption
+
+**適用対象:** :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット 
 
 Azure Disk Encryption は、データを保護して、組織のセキュリティおよびコンプライアンス コミットメントを満たすのに役立ちます。 Windows の [BitLocker](https://en.wikipedia.org/wiki/BitLocker) 機能を使用して、Azure 仮想マシン (VM) の OS とデータ ディスクにボリューム暗号化が提供されます。これは、ディスク暗号化キーとシークレットを制御および管理できるように、[Azure Key Vault](../../key-vault/index.yml) に統合されています。
 
@@ -38,7 +40,7 @@ Azure Disk Encryption は、Virtual Machines と同じように、ゾーン回�
 
 Windows VM は、[さまざまなサイズ](../sizes-general.md)で利用できます。 Azure Disk Encryption は、第 1 世代と第 2 世代の VM でサポートされています。 Azure Disk Encryption は、Premium Storage を使用した VM でも利用できます。
 
-Azure Disk Encryption は、[Basic、A シリーズ VM](https://azure.microsoft.com/pricing/details/virtual-machines/series/)、またはメモリが 2 GB 未満の仮想マシンでは利用できません。  Azure Disk Encryption は、一時ディスクのない VM イメージ (Dv4、Dsv4、Ev4、および Esv4) でも使用できません。  「[ローカル一時ディスクを持たない Azure VM のサイズ](../azure-vms-no-temp-disk.yml)」を参照してください。  例外の詳細については、「[Azure Disk Encryption:サポートされていないシナリオ](disk-encryption-windows.md#unsupported-scenarios)に関する記事を参照してください。
+Azure Disk Encryption は、[Basic、A シリーズ VM](https://azure.microsoft.com/pricing/details/virtual-machines/series/)、またはメモリが 2 GB 未満の仮想マシンでは利用できません。  例外の詳細については、「[Azure Disk Encryption:サポートされていないシナリオ](disk-encryption-windows.md#unsupported-scenarios)に関する記事を参照してください。
 
 ### <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
 
@@ -58,7 +60,6 @@ Azure Disk Encryption を有効にするには、VM が次のネットワーク 
   - 暗号化キーをご利用のキー コンテナーに書き込むには、Windows VM がキー コンテナー エンドポイントに接続できる必要があります。
   - Windows VM は、Azure 拡張リポジトリをホストする Azure ストレージ エンドポイントと、VHD ファイルをホストする Azure ストレージ アカウントに接続できる必要があります。
   -  セキュリティ ポリシーで Azure VM からインターネットへのアクセスが制限されている場合は、上記の URI を解決し、IP への送信接続を許可するための特定のルールを構成することができます。 詳細については、「[ファイアウォールの内側にある Azure Key Vault へのアクセス](../../key-vault/general/access-behind-firewall.md)」を参照してください。    
-
 
 ## <a name="group-policy-requirements"></a>グループ ポリシーの要件
 

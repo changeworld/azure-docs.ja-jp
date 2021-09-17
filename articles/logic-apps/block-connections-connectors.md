@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: deli, logicappspm
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 02d9852f6615c3926a02294e0e7eca50f2fbe9a5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f13ffe10ed9ade4e6fe8767ef61b6709747b7d2a
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92310035"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122606250"
 ---
 # <a name="block-connections-created-by-connectors-in-azure-logic-apps"></a>Azure Logic Apps でコネクタによって作成された接続をブロックする
 
@@ -222,7 +222,7 @@ Azure Logic Apps で、制限されたリソースまたは未承認のリソー
 
 Azure Policy 定義の詳細については、次のトピックを参照してください。
 
-* [Policy の定義の構造](../governance/policy/concepts/definition-structure.md)
+* [Azure Policy の定義の構造](../governance/policy/concepts/definition-structure.md)
 * [チュートリアル:コンプライアンスを強制するポリシーの作成と管理](../governance/policy/tutorials/create-and-manage.md)
 * [Azure Logic Apps 用の Azure Policy 組み込みポリシー定義](./policy-reference.md)
 
@@ -309,7 +309,7 @@ Azure Policy 定義の詳細については、次のトピックを参照して�
 
 Azure Policy 定義の詳細については、次のトピックを参照してください。
 
-* [Policy の定義の構造](../governance/policy/concepts/definition-structure.md)
+* [Azure Policy の定義の構造](../governance/policy/concepts/definition-structure.md)
 * [チュートリアル:コンプライアンスを強制するポリシーの作成と管理](../governance/policy/tutorials/create-and-manage.md)
 * [Azure Logic Apps 用の Azure Policy 組み込みポリシー定義](./policy-reference.md)
 

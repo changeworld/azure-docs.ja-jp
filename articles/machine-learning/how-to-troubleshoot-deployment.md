@@ -10,12 +10,12 @@ ms.author: gopalv
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: contperf-fy20q4, devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: cef99e06eaafda41022d4c8937a4a624267b1e1d
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 2fddb83123f22a99e0b65363f52c2b8c3bbfbfc3
+ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112454422"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122597996"
 ---
 # <a name="troubleshooting-remote-model-deployment"></a>リモートでのモデル デプロイのトラブルシューティング 
 
@@ -211,11 +211,13 @@ Azure Kubernetes Service のデプロイでは、自動スケールがサポー�
 
 次のエラーに対して、これらのアクションを実行します。
 
-|エラー  | 解決方法  |
+|エラー  | 解像度  |
 |---------|---------|
+| 409 競合エラー| 操作が既に進行中の場合、同じ Web サービスでの新しい操作は、409 競合エラーで応答します。 たとえば、Web サービスの作成または更新操作の進行中に、新しい削除操作がトリガーされた場合、エラーがスローされます。 |
 |Web サービスのデプロイ時のイメージ構築エラー     |  イメージ構成用の pip の依存関係として "pynacl==1.2.1" を Conda ファイルに追加します。       |
 |`['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>`     |   デプロイで使用される VM の SKU を、メモリがより多い SKU に変更します。 |
 |FPGA エラー     |  FPGA クォータを要求して承認されるまでは、FPGA にモデルをデプロイできません。 アクセスを要求するには、クォータ要求フォーム https://aka.ms/aml-real-time-ai に入力します。       |
+
 
 ## <a name="advanced-debugging"></a>高度なデバッグ
 

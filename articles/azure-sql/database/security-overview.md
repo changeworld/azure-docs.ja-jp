@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto, emlisa
-ms.date: 10/26/2020
-ms.openlocfilehash: 084f9aae16cfbf495f05c90c8244b2b9b71cf624
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.date: 08/23/2021
+ms.openlocfilehash: 9326797e16190b3570ed6faca4d724bec432bc86
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107812986"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122767916"
 ---
 # <a name="an-overview-of-azure-sql-database-and-sql-managed-instance-security-capabilities"></a>Azure SQL Database と SQL Managed Instance のセキュリティ機能の概要
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -69,9 +69,9 @@ IP ファイアウォール規則では、各要求の送信元 IP アドレス�
 
 ## <a name="authorization"></a>承認
 
-承認は、Azure SQL Database のデータベースまたは Azure SQL Managed Instance 内のユーザーに割り当てられるアクセス許可を指し、ユーザーが実行できる操作を決定するものです。 アクセス許可を制御するには、[データベース ロール](/sql/relational-databases/security/authentication-access/database-level-roles)にユーザー アカウントを追加してデータベース レベルのアクセス許可をこれらのロールに割り当てるか、特定の[オブジェクト レベルのアクセス許可](/sql/relational-databases/security/permissions-database-engine)をユーザーに付与することができます。 詳細については、[ログインとユーザー](logins-create-manage.md)に関するページを参照してください
+承認とは、データベース内のリソースとコマンドに対するアクセスを制御することを意味します。 これを行うには、Azure SQL Database または Azure SQL Managed Instance のデータベース内でユーザーにアクセス許可を割り当てます。 アクセス許可の理想的な管理方法は、[データベース ロール](/sql/relational-databases/security/authentication-access/database-level-roles)にユーザー アカウントを追加し、データベース レベルのアクセス許可をこれらのロールに割り当てることです。 または、個々のユーザーに特定の[オブジェクト レベルのアクセス許可](/sql/relational-databases/security/permissions-database-engine)を付与することもできます。 詳細については、[ログインとユーザー](logins-create-manage.md)に関するページを参照してください
 
-ベスト プラクティスとして、必要なときにカスタム ロールを作成することをお勧めします。 職務に必要な最小限の特権を持つロールにユーザーを追加してください。 ユーザーにアクセス許可を直接割り当てないでください。 サーバー管理者アカウントは、広範なアクセス許可を持つ組み込み db_owner ロールのメンバーです。管理業務を行うごく少数のユーザーにのみ、これを付与してください。 アプリケーションでは、呼び出されるモジュールの実行コンテキストを指定するために [EXECUTE AS](/sql/t-sql/statements/execute-as-clause-transact-sql) を使用するか、限定的なアクセス許可を持つ[アプリケーション ロール](/sql/relational-databases/security/authentication-access/application-roles)を使用します。 こうすると、データベースに接続するアプリケーションに、そのアプリケーションで必要な最小限の特権が確実に付与されます。 また、このようなベスト プラクティスに従うことで、職務の分離も促進されます。
+ベスト プラクティスとして、必要なときにカスタム ロールを作成することをお勧めします。 職務に必要な最小限の特権を持つロールにユーザーを追加してください。 ユーザーにアクセス許可を直接割り当てないでください。 サーバー管理者アカウントは、広範なアクセス許可を持つ組み込み db_owner ロールのメンバーです。管理業務を行うごく少数のユーザーにのみ、これを付与してください。 ユーザーが実行できる処理の範囲をさらに制限するには、[EXECUTE AS](/sql/t-sql/statements/execute-as-clause-transact-sql) を使用して、呼び出されるモジュールの実行コンテキストを指定できます。 これらのベスト プラクティスに従うことは、職務を分離するための基本的な手順でもあります。
 
 ### <a name="row-level-security"></a>行レベルのセキュリティ
 
@@ -140,7 +140,7 @@ Azure では、新しく作成されたすべてのデータベースが既定�
 
 ### <a name="data-discovery-and-classification"></a>データの検出と分類
 
-データの検出と分類 (現在プレビュー段階) には、データベース内の機密データの検出、分類、ラベル付け、および保護を行うための、Azure SQL Database と SQL Managed Instance に組み込まれた高度な機能が用意されています。 最も機微なデータ (ビジネス/金融、医療、個人データなど) の検出と分類は、組織の情報保護水準において極めて重要な役割を果たします。 次のような場合にインフラストラクチャとして使用できます。
+データの検出と分類 (現在プレビュー段階) には、データベース内の機密データの検出、分類、ラベル付けを行うための、Azure SQL Database と SQL Managed Instance に組み込まれた基本的な機能が用意されています。 最も機微なデータ (ビジネス/金融、医療、個人データなど) の検出と分類は、組織の情報保護水準において極めて重要な役割を果たします。 次のような場合にインフラストラクチャとして使用できます。
 
 - さまざまなセキュリティ シナリオ (機微なデータに対する異常なアクセスの監視 (監査) とアラートなど)。
 - 非常に機微なデータを含むデータベースへのアクセスの制御と、セキュリティの強化。

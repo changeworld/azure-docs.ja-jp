@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 7/16/2021
-ms.openlocfilehash: 903435ff45249d0c066b386d84ce060057bac666
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.openlocfilehash: ed524382bf1fcc0c93fc61dd1c0450d69a16b74c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114666580"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749411"
 ---
 # <a name="register-and-scan-lookerpreview"></a>Looker の登録とスキャン (プレビュー)
 
@@ -45,7 +45,7 @@ Looker サーバーに接続するには、API3 キーが必要です。 API3 �
 新しい Looker サーバーをデータ カタログに登録するには、次のようにします。
 
 1. ご自分の Purview アカウントに移動します。
-2. 左側のナビゲーションで **[ソース]** を選択します。
+2. 左側のナビゲーションで **[Data Map]** を選択します。
 3. **[登録]** を選択します。
 4. [ソースの登録] で、 **[Looker]** を選択します。 **[続行]** を選択します。
     :::image type="content" source="media/register-scan-looker-source/register-sources.png" alt-text="looker ソースの登録" border="true":::
@@ -97,7 +97,7 @@ Looker サーバーに接続するには、API3 キーが必要です。 API3 �
 
     e.  **プロジェクト フィルター** -- セミコロンで区切られた Looker プロジェクトの一覧を提供することによって、スキャンの範囲を指定します。 このオプションは、親プロジェクトによって look とダッシュボードを選択するために使用されます。
 
-    f.  **[Maximum memory available]\(使用可能な最大メモリ\):** スキャン プロセスで使用される、顧客の VM で使用可能な最大メモリ (GB 単位)。 これは、スキャンする erwin Mart ソースのサイズによって異なります。
+    f.  **[Maximum memory available]\(使用可能な最大メモリ\):** スキャン プロセスで使用される、顧客の VM で使用可能な最大メモリ (GB 単位)。 これは、スキャンする erwin Mart のサイズによって異なります。
 
     :::image type="content" source="media/register-scan-looker-source/setup-scan.png" alt-text="スキャンのトリガー" border="true":::
 

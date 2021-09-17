@@ -3,16 +3,16 @@ title: チュートリアル - Azure portal を使用した新しいポリシー
 description: このチュートリアルでは、Azure portal を使用して、Azure Policy の割り当てを作成し、準拠していないリソースを特定します。
 ms.topic: tutorial
 ms.date: 04/21/2021
-ms.openlocfilehash: 20cb8125a157a3ce97c88278c99f90936b449b65
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: be7752b5ccf73269b1e4715fc05c85162b4ea546
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107831656"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122770345"
 ---
 # <a name="tutorial-create-a-policy-assignment-to-identify-non-compliant-resources"></a>チュートリアル:準拠していないリソースを識別するためのポリシー割り当てを作成する
 
-Azure のコンプライアンスを理解する第一歩は、リソースの状態を特定することです。 Azure Policy では、ゲスト構成ポリシーを使用した、Arc 対応サーバーの状態の監査がサポートされています。 ゲスト構成ポリシーでは、構成は適用されず、マシン内の設定の監査のみが行われます。 このチュートリアルでは、ポリシーの作成と割り当て、およびどの Arc 対応サーバーで Log Analytics エージェントがインストールされていないかの特定のプロセスの手順を説明します。
+Azure のコンプライアンスを理解する第一歩は、リソースの状態を特定することです。 Azure Policy では、ゲスト構成ポリシーを使用した、Arc 対応サーバーの状態の監査がサポートされています。 Azure Policy のゲスト構成定義により、マシン内の設定を監査または適用できます。 このチュートリアルでは、ポリシーの作成と割り当て、およびどの Arc 対応サーバーで Log Analytics エージェントがインストールされていないかを特定するプロセスの手順を説明します。
 
 この手順を終えると、Windows 用または Linux 用の Log Analytics エージェントがインストールされていないマシンが正しく特定されます。 これらはポリシーの割り当てに "_準拠していません_"。
 
@@ -50,7 +50,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    使用できる組み込みポリシーの部分的な一覧については、[Azure Policy サンプル](../../../governance/policy/samples/index.md)に関する記事をご覧ください。
 
-1. Windows ベースのマシンで Arc 対応サーバー エージェントを有効にしている場合、ポリシー定義の一覧から、" _\[プレビュー]: Log Analytics エージェントは Windows Azure Arc マシンにインストールされる必要がある_" という定義を見つけます。 Linux ベースのマシンの場合、対応するポリシー定義 " _\[プレビュー]: Log Analytics エージェントは Linux Azure Arc マシンにインストールする必要がある_" を見つけます。 そのポリシーをクリックし、**[選択]** をクリックします。
+1. Windows ベースのマシンで Arc 対応サーバー エージェントを有効にしている場合、ポリシー定義の一覧から、" _\[プレビュー]: Log Analytics エージェントは Windows Azure Arc マシンにインストールする必要がある_" という定義を見つけます。 Linux ベースのマシンの場合、対応するポリシー定義 " _\[プレビュー]: Log Analytics エージェントは Linux Azure Arc マシンにインストールする必要がある_" を見つけます。 そのポリシーをクリックし、**[選択]** をクリックします。
 
    :::image type="content" source="./media/tutorial-assign-policy-portal/select-available-definition.png" alt-text="適切なポリシー定義を見つける" border="false":::
 

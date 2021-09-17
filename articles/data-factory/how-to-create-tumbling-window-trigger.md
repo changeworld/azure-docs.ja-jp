@@ -1,18 +1,21 @@
 ---
-title: Azure Data Factory でのタンブリング ウィンドウ トリガーの作成
-description: タンブリング ウィンドウでパイプラインを実行するトリガーを Azure Data Factory で作成する方法について説明します。
+title: タンブリング ウィンドウ トリガーを作成する
+titleSuffix: Azure Data Factory & Azure Synapse
+description: タンブリング ウィンドウでパイプラインを実行するトリガーを Azure Data Factory または Azure Synapse Analytics で作成する方法について説明します。
 author: chez-charlie
 ms.author: chez
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: orchestration
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 10/25/2020
-ms.openlocfilehash: ad397b62adcbcf6a0e117950c0dc3be33e6522db
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/24/2021
+ms.openlocfilehash: b4a2e86c66584f555dd88dfd8e3d3b8b0fac5858
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104779819"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122822744"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>タンブリング ウィンドウでパイプラインを実行するトリガーの作成
 
@@ -22,13 +25,19 @@ ms.locfileid: "104779819"
 
 タンブリング ウィンドウ トリガーは、状態を維持しながら、指定した開始時刻から定期的に実行される種類のトリガーです。 タンブリング ウィンドウとは、固定サイズで重複しない一連の連続する時間間隔です。 タンブリング ウィンドウ トリガーはパイプラインと 1 対 1 の関係を持ち、単一のパイプラインのみを参照できます。 タンブリング ウィンドウ トリガーはスケジュール トリガーの代替として適しており、複雑なシナリオ ([他のタンブリング ウィンドウ トリガーに対する依存関係](#tumbling-window-trigger-dependency)、[失敗したジョブの再実行](tumbling-window-trigger-dependency.md#monitor-dependencies)、および[パイプラインに対するユーザー再試行の設定](#user-assigned-retries-of-pipelines)) のための一連の機能を提供します。 スケジュール トリガーとタンブリング ウィンドウ トリガーの違いについて詳しく理解するには、[こちら](concepts-pipeline-execution-triggers.md#trigger-type-comparison)をご覧ください。
 
-## <a name="data-factory-ui"></a>Data Factory UI
+## <a name="ui-experience"></a>UI エクスペリエンス
 
-1. Data Factory UI でタンブリング ウィンドウ トリガーを作成するには、 **[トリガー]** タブを選択し、 **[新規]** を選択します。 
+1. UI でタンブリング ウィンドウ トリガーを作成するには、 **[トリガー]** タブを選択し、 **[新規]** を選択します。 
 1. [トリガーの構成] ウィンドウが開いたら、 **[タンブリング ウィンドウ]** を選択し、タンブリング ウィンドウ トリガーのプロパティを定義します。 
 1. 終了したら、 **[保存]** を選択します。
 
-![タンブリング ウィンドウ トリガーを Azure Portal で作成する](media/how-to-create-tumbling-window-trigger/create-tumbling-window-trigger.png)
+# <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+:::image type="content" source="media/how-to-create-tumbling-window-trigger/create-tumbling-window-trigger.png" alt-text="タンブリング ウィンドウ トリガーを Azure Portal で作成する":::
+
+# <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+:::image type="content" source="media/how-to-create-tumbling-window-trigger/create-tumbling-window-trigger-synapse.png" alt-text="タンブリング ウィンドウ トリガーを Azure Portal で作成する":::
+
+---
 
 ## <a name="tumbling-window-trigger-type-properties"></a>タンブリング ウィンドウのトリガーの種類のプロパティ
 
@@ -168,11 +177,27 @@ ms.locfileid: "104779819"
 * ウィンドウが **実行中** 状態である場合は、関連付けられている _パイプラインの実行_ をキャンセルすると、その後のトリガーの実行が _キャンセル済み_ とマークされます
 * ウィンドウが **待機中** または **依存関係の待機中** 状態の場合は、ウィンドウの監視をキャンセルできます。
 
-![[監視] ページからタンブリング ウィンドウ トリガーをキャンセルする](media/how-to-create-tumbling-window-trigger/cancel-tumbling-window-trigger.png)
+# <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+:::image type="content" source="media/how-to-create-tumbling-window-trigger/cancel-tumbling-window-trigger.png" alt-text="[監視] ページからタンブリング ウィンドウ トリガーをキャンセルする":::
+
+# <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+:::image type="content" source="media/how-to-create-tumbling-window-trigger/cancel-tumbling-window-trigger-synapse.png" alt-text="[監視] ページからタンブリング ウィンドウ トリガーをキャンセルする":::
+
+---
 
 キャンセルされたウィンドウを再実行することもできます。 再実行すると _最新の_ パブリッシュされたトリガーの定義が取得され、指定したウィンドウの依存関係が再実行時に _再評価されます_
 
-![以前にキャンセルされた実行に対してタンブリング ウィンドウ トリガーを再実行する](media/how-to-create-tumbling-window-trigger/rerun-tumbling-window-trigger.png)
+# <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
+
+:::image type="content" source="media/how-to-create-tumbling-window-trigger/rerun-tumbling-window-trigger.png" alt-text="以前にキャンセルされた実行に対してタンブリング ウィンドウ トリガーを再実行する":::
+
+# <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
+
+:::image type="content" source="media/how-to-create-tumbling-window-trigger/rerun-tumbling-window-trigger-synapse.png" alt-text="以前にキャンセルされた実行に対してタンブリング ウィンドウ トリガーを再実行する":::
+
+---
 
 ## <a name="sample-for-azure-powershell"></a>Azure PowerShell のサンプル
 

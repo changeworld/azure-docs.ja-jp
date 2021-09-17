@@ -10,14 +10,16 @@ ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 048afc8997f4e2b3f1d9a9cf6aea67be63c659ee
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 4da68df884eae4e0ae0f8e929d5ee58d4e782db8
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112027145"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122691745"
 ---
 # <a name="bringing-and-creating-linux-images-in-azure"></a>Azure での Linux イメージの取り込みと作成
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット 
 
 この概要では、イメージングに関する基本的な概念と、Azure で Linux イメージを正常にビルドして使用する方法について説明します。 カスタム イメージを Azure に取り込む前に、使用できる種類とオプションに注意する必要があります。
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/28/2018
 ms.author: allensu
-ms.openlocfilehash: 11a2dbfc9c6da60e4dd96f65d2a20165a3663e8c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 545125877f8ef8e3b01aa24f6d65dbff6756c391
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103601544"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122445115"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>Azure CDN でのファイル圧縮によるパフォーマンスの向上
 ファイル圧縮は、サーバーからファイルを送信する前にファイル サイズを減らすことができるため、ファイルの転送速度とページ読み込みのパフォーマンスを向上させることができる簡単で効率的な方法です。 ファイル圧縮により、帯域幅のコストを軽減し、ユーザーへの応答を改善することができます。
@@ -121,11 +121,8 @@ Standard および Premium CDN レベルでは同じ圧縮機能が提供され�
 - gzip (GNU zip)
 - DEFLATE
 - bzip2
-- brotli 
 
-要求で複数の圧縮の種類がサポートされている場合、それらの圧縮の種類は brotli 圧縮よりも優先されます。
-
-アセットの要求で brotli 圧縮が指定され (HTTP ヘッダーは `Accept-Encoding: br`)、要求がキャッシュ ミスになった場合、Azure CDN は POP サーバー上で直接アセットの brotli 圧縮を行います。 その後、圧縮ファイルがキャッシュから提供されます。
+Verizon の Azure CDN は brotli 圧縮に対応していません。 HTTP 要求にヘッダー `Accept-Encoding: br` がある場合、CDN の応答は圧縮されません。
 
 ### <a name="azure-cdn-standard-from-akamai-profiles"></a>Azure CDN Standard from Akamai プロファイル
 

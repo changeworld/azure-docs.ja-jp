@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/09/2020
+ms.date: 08/11/2021
 ms.author: jeedes
-ms.openlocfilehash: 36740e7b135309524b70a74e0f92ceb7e2ac1238
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 5e655177f37ecafea407899c4512d803ba2295ad
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112461805"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122252804"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-anyconnect"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Cisco AnyConnect の統合
 
@@ -37,7 +37,7 @@ ms.locfileid: "112461805"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Cisco AnyConnect では、**IDP** Initiated SSO がサポートされます
+* Cisco AnyConnect では、**IDP** Initiated SSO がサポートされます。
 
 ## <a name="adding-cisco-anyconnect-from-the-gallery"></a>ギャラリーからの Cisco AnyConnect の追加
 
@@ -76,10 +76,10 @@ Cisco AnyConnect に対して Azure AD SSO を構成してテストするには�
 1. **[SAML でシングル サインオンをセットアップします]** ページで、次のフィールドの値を入力します (値は大文字と小文字の区別があることに注意してください)。
 
    1. **[識別子]** ボックスに、次の形式で URL を入力します。  
-      `https://*.YourCiscoServer.com/saml/sp/metadata/TGTGroup`
+      `https://<SUBDOMAIN>.YourCiscoServer.com/saml/sp/metadata/<Tunnel_Group_Name>`
 
    1. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。  
-      `https://YOUR_CISCO_ANYCONNECT_FQDN/+CSCOE+/saml/sp/acs?tgname=TGTGroup`
+      `https://<YOUR_CISCO_ANYCONNECT_FQDN>/+CSCOE+/saml/sp/acs?tgname=<Tunnel_Group_Name>`
 
     > [!NOTE]
     > これらの値の詳細については、Cisco TAC のサポートに問い合わせてください。 これらの値を実際の識別子と、Cisco TAC から提供された応答 URL の値で更新します。 これらの値を取得するには、[Cisco AnyConnect クライアント サポート チーム](https://www.cisco.com/c/en/us/support/index.html)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -93,7 +93,7 @@ Cisco AnyConnect に対して Azure AD SSO を構成してテストするには�
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
 > [!NOTE]
-> サーバーの複数の TGT をオンボードする場合は、ギャラリーから Cisco AnyConnect アプリケーションの複数のインスタンスを追加する必要があります。 また、これらすべてのアプリケーション インスタンスについて、Azure AD に独自の証明書をアップロードすることもできます。 このようにアプリケーションに同じ証明書を使用できる一方で、アプリケーションごとに異なる識別子と応答 URL を構成することができます。
+> サーバーの複数の TGT をオンボードする場合は、ギャラリーから Cisco AnyConnect アプリケーションの複数のインスタンスを追加する必要があります。 これらすべてのアプリケーション インスタンスについて、Azure AD に独自の証明書をアップロードすることもできます。 このようにアプリケーションに同じ証明書を使用できる一方で、アプリケーションごとに異なる識別子と応答 URL を構成することができます。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -170,7 +170,7 @@ Cisco AnyConnect に対して Azure AD SSO を構成してテストするには�
     ```
 
     > [!NOTE]
-    > SAML IdP の構成を伴う機能があります。IdP の構成に変更を加えた場合は、変更を有効にするために、トンネル グループから SAML ID プロバイダーの構成を削除し、再度適用する必要があります。
+    > SAML IdP の構成には回避策があります。 IdP の構成に変更を加えた場合は、変更を有効にするために、トンネル グループから SAML ID プロバイダーの構成を削除し、再度適用する必要があります。
 
 ### <a name="create-cisco-anyconnect-test-user"></a>Cisco AnyConnect テスト ユーザーの作成
 

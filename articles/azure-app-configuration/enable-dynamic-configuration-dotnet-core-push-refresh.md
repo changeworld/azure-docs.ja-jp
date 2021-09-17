@@ -14,12 +14,12 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 07/25/2020
 ms.author: jken
-ms.openlocfilehash: f330e69d37ac36e2a374e81fbffc6235c86feedd
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4ad0f2c20c0d704b2c101f975d1b62fc7dc71aca
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105625723"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121750348"
 ---
 # <a name="tutorial-use-dynamic-configuration-using-push-refresh-in-a-net-core-app"></a>チュートリアル:.NET Core アプリでプッシュ更新による動的な構成を使用する
 

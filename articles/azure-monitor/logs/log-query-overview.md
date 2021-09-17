@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/09/2020
-ms.openlocfilehash: cb4f074cb9487c22fc340b2e7b2941cd7b69ca98
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 272c146c71e9caf6d7ba6a1ba165a6157f5b6de0
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110459055"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122445847"
 ---
 # <a name="log-queries-in-azure-monitor"></a>Azure Monitor でのログ クエリ
 Azure Monitor ログは Azure Data Explorer を基盤としており、ログ クエリは同じ Kusto クエリ言語 (KQL) を使用して作成します。 これは、読みやすく、簡単に作成できるよう設計されたリッチ言語であるため、いくつかの基本的なガイダンスを使用してクエリの作成を開始できます。
@@ -22,7 +22,7 @@ Azure Monitor ログは Azure Data Explorer を基盤としており、ログ �
 - [Workbooks](../visualize/workbooks-overview.md)。 さまざまな視覚化を使用したログ クエリの結果を、Azure portal の対話形式のビジュアル レポートに含めます。
 - [Azure ダッシュボード](../visualize/tutorial-logs-dashboards.md)。 クエリの結果を Azure ダッシュボードにピン留めすることで、ログとメトリックのデータをまとめて視覚化し、必要に応じて、他の Azure ユーザーと共有することができます。
 - [Logic Apps](../logs/logicapp-flow-connector.md)。  Logic Apps を使用して、自動ワークフローでログ クエリの結果を使用します。
-- [PowerShell](/powershell/module/az.operationalinsights/get-azoperationalinsightssearchresult)。 コマンド ラインまたは Get-AzOperationalInsightsSearchResults を使用する Azure Automation Runbook からのログ クエリの結果を、PowerShell スクリプトで使用します。
+- [PowerShell](/powershell/module/az.operationalinsights/invoke-azoperationalinsightsquery)。 コマンド ラインまたは Invoke-AzOperationalInsightsQuery を使用する Azure Automation Runbook からのログ クエリの結果を、PowerShell スクリプトで使用します。
 - [Azure Monitor Logs API](https://dev.loganalytics.io)。 任意の REST API クライアントのワークスペースからログ データを取得します。  API 要求には Azure Monitor に対して実行するクエリが含まれており、これにより取得するデータを決定します。
 
 ## <a name="getting-started"></a>作業の開始

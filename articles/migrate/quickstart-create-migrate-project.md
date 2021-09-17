@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom:
 - subject-armqs
 - mode-arm
-ms.openlocfilehash: 29bd42bedb9c7aa70769236d95339a510ae9dfe9
-ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
+ms.openlocfilehash: 4380b52489a483faf8063516cf2d3fd6af6b061d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113487491"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121726241"
 ---
 # <a name="quickstart-create-an-azure-migrate-project-using-an-arm-template"></a>クイックスタート: ARM テンプレートを使用して Azure Migrate プロジェクトを作成する
 
@@ -37,8 +37,6 @@ ms.locfileid: "113487491"
 このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/migrate-project-create/)からのものです。
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.migrate/migrate-project-create/azuredeploy.json":::
-
-
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
@@ -66,7 +64,7 @@ Azure Migrate プロジェクトが作成されたことを確認するには、
 
 
 1. Azure portal の検索バーで「**Azure Migrate**」を検索して Azure Migrate に移動します。
-2. [Windows, Linux, and SQL Server]\(Windows、Linux、SQL Server\) タイルの **[検出、評価、移行]** ボタンをクリックします。
+2. [Servers, databases and web apps]\(サーバー、データベース、および Web アプリ\) タイルで、[**検出**、**評価**、**移行**] ボタンをクリックします。
 3. デプロイに指定した値に従って、 **[Azure サブスクリプション]** と **[プロジェクト]** を選択します。
 
 

@@ -3,15 +3,17 @@ title: Service Fabric アプリケーションの StartupServices.xml でサー�
 description: StartupServices.xml を使用して、サービス レベルの構成を ApplicationManifest.xml から分離する方法について説明します。
 ms.topic: conceptual
 ms.date: 05/05/2021
-ms.openlocfilehash: 2b11e1dfdfec357d48ee95cabb35c87e71123bc8
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 69ec795bab910f8f2b030ab5758698d3fdbae824
+ms.sourcegitcommit: deb5717df5a3c952115e452f206052737366df46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110483064"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122681379"
 ---
 # <a name="introducing-startupservicesxml-in-service-fabric-application"></a>Service Fabric アプリケーションの StartupServices.xml について
 この機能により、Service Fabric アプリケーション設計で StartupServices.xml が導入されます。 このファイルは、ApplicationManifest.xml の DefaultServices セクションをホストします。 この実装により、DefaultServices とサービス定義関連のパラメータは、既存の ApplicationManifest.xml から StartupServices.xml という新しいファイルに移動します。 このファイルは、Visual Studio の各機能 (ビルド/リビルド/F5/Ctrl+F5/発行) で使用されます。
+
+注 - StartupServices.xml は Visual Studio のデプロイのみを目的としています。この配置により、Visual Studio (StartupServices.xml) でデプロイされるパッケージが、ARM によってデプロイされるサービスと競合しないようになります。 StartupServices.xml は、アプリケーション パッケージの一部としてパッケージ化されていません。 DevOps パイプラインではサポートされておらず、お客様が、ARM または必要な構成のコマンドレットを使用して、個々のサービスをアプリケーションにデプロイする必要があります。
 
 ## <a name="existing-service-fabric-application-design"></a>既存の Service Fabric アプリケーション設計
 各サービス ファブリック アプリケーションでは、ApplicationManifest.xml が、そのアプリケーションのすべてのサービス関連情報のソースとなります。 ApplicationManifest.xml は、すべての Parameters、ServiceManifestImport、および DefaultServices で構成されています。 構成パラメーターは、ApplicationParameters の下にある Cloud.xml/Local1Node.xml/Local5Node.xml ファイルに記載されています。

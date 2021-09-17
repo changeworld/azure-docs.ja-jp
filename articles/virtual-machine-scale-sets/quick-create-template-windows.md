@@ -9,14 +9,16 @@ ms.collection: linux
 ms.date: 03/27/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt, subject-armqs, devx-track-azurepowershell
-ms.openlocfilehash: 42d3c95f722746044df620448a8d74ae75e25838
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: 6842c352a1dd4859ca3722d893540db7864ac56f
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111901783"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122693215"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-scale-set-with-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Windows 仮想マシン スケール セットを作成する
+
+**適用対象:** :heavy_check_mark: Windows VM :heavy_check_mark: ユニフォーム スケール セット
 
 仮想マシン スケール セットを使用すると、自動スケールの仮想マシンのセットをデプロイおよび管理できます。 スケール セット内の VM の数を手動で拡張したり、CPU などのリソースの使用率、メモリの需要、またはネットワーク トラフィックに基づいて自動的にスケールする規則を定義したりすることができます。 その後、Azure ロード バランサーがトラフィックをスケール セット内の VM インスタンスに分散します。 このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して、仮想マシン スケール セットを作成し、サンプル アプリケーションをデプロイします。
 

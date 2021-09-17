@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 06/01/2021
-ms.openlocfilehash: 666dfb22036c3d7f1d88515f4b8118eaf133db8c
-ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
+ms.openlocfilehash: cba8ba5c8c5ff300fe585d75aab98fd4003a475d
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2021
-ms.locfileid: "113594961"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122608233"
 ---
 # <a name="configure-a-managed-application-plan"></a>マネージド アプリケーション プランを構成する
 
@@ -178,7 +178,7 @@ USD (USD = 米国ドル) で設定された価格は、保存時の最新の為�
 
 1. **[ポリシー設定]** で **[+ Add policy (max 5)]\(+ ポリシーの追加 (最大 5)\)** を選択します。
 1. **[名前]** ボックスに、ポリシーの割り当て名 (50 文字以内) を入力します。
-1. **[ポリシー]** リスト ボックスで、顧客サブスクリプションのマネージド アプリケーションによって作成されたリソースに適用される Azure ポリシーを選択します。
+1. **[ポリシー]** リスト ボックスで、顧客サブスクリプションのマネージド アプリケーションによって作成されたリソースに適用される Azure Policy の定義を選択します。
 1. **[ポリシー パラメーター]** ボックスで、監査と診断設定のポリシーを適用するパラメーターを指定します。
 1. **[ポリシー SKU]** リスト ボックスから、ポリシー SKU の種類を選択します。
 

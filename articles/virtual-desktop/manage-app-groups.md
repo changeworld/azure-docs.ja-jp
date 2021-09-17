@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/20/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 80a066aab79e3ca6ca541a82fe6b7fe023653a81
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: c020e239c566accfe10f0ad298bf76f2c749309b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114448792"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740144"
 ---
 # <a name="tutorial-manage-app-groups-with-the-azure-portal"></a>チュートリアル:Azure portal を使用してアプリ グループを管理する
 
@@ -21,7 +21,7 @@ ms.locfileid: "114448792"
 Azure Virtual Desktop の新しいホスト プール向けに作成される既定のアプリ グループには、完全なデスクトップも公開されています。 加えて、ホスト プールには RemoteApp アプリケーション グループ (複数可) を作成することができます。 このチュートリアルに沿って作業すれば、RemoteApp アプリ グループを作成して、独自のスタート メニュー アプリを公開することができます。
 
 >[!NOTE]
->MISX アプリをユーザー セッションに動的にアタッチすることや、アプリ パッケージをカスタム仮想マシン (VM) イメージに追加して、組織のアプリを発行することができます。 詳細については、「[Azure Virtual Desktop を使用してカスタム アプリをホストする方法](./remote-app-streaming/custom-apps.md)」を参照してください。
+>MSIX アプリをユーザー セッションに動的にアタッチすることや、アプリ パッケージをカスタム仮想マシン (VM) イメージに追加して、組織のアプリを発行することができます。 詳細については、「[Azure Virtual Desktop を使用してカスタム アプリをホストする方法](./remote-app-streaming/custom-apps.md)」を参照してください。
 
 このチュートリアルで学習する内容は次のとおりです。
 

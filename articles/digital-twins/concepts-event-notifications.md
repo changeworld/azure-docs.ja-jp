@@ -8,16 +8,16 @@ ms.date: 4/8/2021
 ms.topic: conceptual
 ms.service: digital-twins
 ms.custom: contperf-fy21q4
-ms.openlocfilehash: e403ed4778e87e42ad4abb2e6d45923e420ca0c4
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: d008888968f05641786cdfcb73afac1d540b7596
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114438635"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122769869"
 ---
 # <a name="event-notifications"></a>イベント通知
 
-Azure Digital Twins のさまざまなイベントでは **通知** が生成されます。これにより、さまざまなアクションが発生したときにソリューション バックエンドが認識されるようになります。 これらは、この情報を基に操作が実行される Azure Digital Twins 内外のさまざまな場所に[ルーティング](concepts-route-events.md)されます。
+Azure Digital Twins のさまざまなイベントでは **通知** が生成されます。これにより、さまざまなアクションが発生したときにソリューション バックエンドが認識されるようになります。 これらの通知は、この情報を基に操作が実行される Azure Digital Twins 内外のさまざまな場所に[ルーティング](concepts-route-events.md)されます。
 
 生成される通知にはいくつかの種類があり、通知メッセージの表示は、その通知の生成元のイベントの種類によって異なる場合があります。 この記事では、さまざまな種類のメッセージについての詳細と、表示される内容について説明します。
 
@@ -47,7 +47,7 @@ Azure Digital Twins から Event Grid に出力される通知は、Event Grid �
 
 ### <a name="event-notification-bodies"></a>イベント通知本文
 
-ここでは、通知メッセージの本文を JSON で説明します。 メッセージ本文に必要なシリアル化 (JSON、CBOR、Protobuf など) に応じて、メッセージ本文をシリアル化する方法は異なる場合があります。
+ここでは、通知メッセージの本文を JSON で説明します。 メッセージ本文に必要なシリアル化の種類 (JSON、CBOR、Protobuf など) に応じて、メッセージ本文をシリアル化する方法は異なる場合があります。
 
 本文に含まれる一連のフィールドは、通知の種類によって異なります。
 
@@ -103,11 +103,11 @@ Azure Digital Twins から Event Grid に出力される通知は、Event Grid �
   }
 ```
 
-これは、ライフサイクル通知メッセージの `data` フィールドに表示される情報です。
+このデータは、ライフサイクル通知メッセージの `data` フィールドに表示される情報です。
 
 ## <a name="digital-twin-lifecycle-notifications"></a>デジタル ツインのライフサイクル通知
 
-すべての[デジタル ツイン](concepts-twins-graph.md)は、[Azure Digital Twins 内の IoT Hub デバイス](how-to-ingest-iot-hub-data.md)を表すかどうかにかかわらず、通知を出力します。 これは、デジタル ツイン自体に関する **ライフサイクル通知** であるためです。
+[デジタル ツイン](concepts-twins-graph.md)は、[Azure Digital Twins 内の IoT Hub デバイス](how-to-ingest-iot-hub-data.md)を表すかどうかにかかわらず、すべて通知を出力します。 これは、デジタル ツイン自体に関する **ライフサイクル通知** であるためです。
 
 ライフサイクル通知は、次の場合にトリガーされます。
 * デジタル ツインの作成
@@ -117,7 +117,7 @@ Azure Digital Twins から Event Grid に出力される通知は、Event Grid �
 
 ライフサイクル通知の本文に含まれるフィールドを次に示します。
 
-| 名前 | 値 |
+| Name | 値 |
 | --- | --- |
 | `id` | サービスによって管理される UUID やカウンターなどの、通知の識別子。 `source` + `id` は、個別のイベントごとに一意です。 |
 | `source` | IoT ハブや Azure Digital Twins インスタンスの名前 (*myhub.azure-devices.net* や *mydigitaltwins.westus2.azuredigitaltwins.net など)* |
@@ -153,11 +153,11 @@ Azure Digital Twins から Event Grid に出力される通知は、Event Grid �
 }
 ```
 
-メッセージ内の `data` フィールドには、影響を受けたデジタル ツインのデータが含まれており、JSON 形式で表されます。 このスキーマは、*Digital Twins リソース 7.1* です。
+メッセージ内の `data` フィールドには、影響を受けたデジタル ツインのデータが含まれており、JSON 形式で表されます。 この`data` フィールドのスキーマは、"*Digital Twins リソース 7.1*" です。
 
 作成イベントの場合、`data` ペイロードには、リソースが作成された後のツインの状態が反映されます。したがって、`GET` 呼び出しと同様に、システムによって生成されたすべての要素が含まれているはずです。
 
-コンポーネントはあるが最上位プロパティがない、[IoT プラグ アンド プレイ (PnP)](../iot-develop/overview-iot-plug-and-play.md) デバイスのデータの例を次に示します。 デバイスにとって意味のないプロパティ (報告されたプロパティなど) は、省略する必要があります。 これは、ライフサイクル通知メッセージの `data` フィールドに表示される情報です。
+コンポーネントはあるが最上位プロパティがない、[IoT プラグ アンド プレイ](../iot-develop/overview-iot-plug-and-play.md) デバイスのデータの例を次に示します。 デバイスにとって意味のないプロパティ (報告されたプロパティなど) は、省略する必要があります。 次の JSON オブジェクトは、ライフサイクル通知メッセージの `data` フィールドに表示される情報です。
 
 ```json
 {
@@ -242,7 +242,7 @@ Azure Digital Twins から Event Grid に出力される通知は、Event Grid �
 
 メッセージ内の `data` フィールドには、リレーションシップのペイロードが JSON 形式で格納されます。 これは、[DigitalTwins API](/rest/api/digital-twins/dataplane/twins) を介して、リレーションシップの `GET` 要求と同じ形式を使用します。 
 
-リレーションシップの更新通知のデータ例を次に示します。 "リレーションシップの更新" とは、リレーションシップのプロパティが変更されたことを意味します。したがって、このデータには、更新されたプロパティとその新しい値が表示されます。 これは、デジタル ツインのリレーションシップ通知メッセージの `data` フィールドに表示される情報です。
+リレーションシップの更新通知のデータ例を次に示します。 "リレーションシップの更新" とは、リレーションシップのプロパティが変更されたことを意味します。したがって、このデータには、更新されたプロパティとその新しい値が表示されます。 次の JSON オブジェクトは、デジタル ツインのリレーションシップ通知メッセージの `data` フィールドに表示される情報です。
 
 ```json
 {

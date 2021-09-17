@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 07/22/2021
 ms.custom: references_regions
-ms.openlocfilehash: b037f82b0d56f09000c5fb9e2814ff80aa6f1a82
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.openlocfilehash: ccd194df39f0fff4bdabe4ae91e911dd030673e6
+ms.sourcegitcommit: c2f0d789f971e11205df9b4b4647816da6856f5b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122272085"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122662173"
 ---
 # <a name="azure-monitor-agent-overview"></a>Azure Monitor エージェントの概要
 Azure Monitor エージェント (AMA) によって、Azure 仮想マシンのゲスト オペレーティング システムから監視データが収集され、それが Azure Monitor に配信されます。 この記事では、Azure Monitor エージェントの概要について説明します。また、そのインストール方法やデータ収集の構成方法などの情報が含まれます。
@@ -35,9 +35,10 @@ Azure Monitor エージェントでは、この機能が 1 つのエージェン
 - **Log Analytics エージェント (MMA/OMS) との比較**
     - 一部の Log Analytics ソリューションは現在サポートされていません。 [サポート対象](#supported-services-and-features)を確認してください。
     - Azure Private Link はサポートされません。
-    - カスタム ログや IIS ログの収集はサポートされません。
+    - ファイル ベースのログや IIS ログの収集はサポートされません。
 - **Azure Diagnostics の拡張機能 (WAD/LAD) との比較:**
     - Event Hubs とストレージ アカウントは、送信先としてサポートされません。
+    - ファイル ベースのログ、IIS ログ、ETW イベント、.NET イベント、クラッシュ ダンプの収集はサポートされていません。
 
 ### <a name="changes-in-data-collection"></a>データ収集の変更
 既存のエージェントのデータ収集を定義する方法は、それぞれ明確に異なります。 各方法には、Azure Monitor エージェントによって対処される課題があります。
@@ -66,7 +67,11 @@ Azure Monitor エージェントは [Azure Monitor のレガシ エージェン�
 現在、Azure 仮想マシン、仮想マシン スケール セット、Azure Arc 対応サーバーがサポートされています。 Azure Kubernetes Service と他のコンピューティング リソースの種類は、現在サポートされていません。
 
 ## <a name="supported-regions"></a>サポートされているリージョン
-Azure Monitor エージェントは、Log Analytics がサポートされているすべてのパブリック リージョンで使用できます。 政府機関向けのリージョンとクラウドは現在サポートされていません。
+Azure Monitor エージェントは、Log Analytics がサポートされているすべてのパブリック リージョンと、Azure Government および China クラウドで利用できます。 エアギャップ クラウドはまだサポートされていません。
+
+## <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
+Azure Monitor エージェントで現在サポートされている Windows と Linux のオペレーティング システムのバージョンの一覧については、「[サポートされるオペレーティング システム](agents-overview.md#supported-operating-systems)」を参照してください。
+
 ## <a name="supported-services-and-features"></a>サポートされているサービスと機能
 次の表に、他の Azure サービスに対する Azure Monitor エージェントの現在のサポートを示します。
 
@@ -113,9 +118,6 @@ Azure Monitor エージェントでは、Azure Monitor メトリック、また�
 
 <sup>1</sup> 現在 Azure Monitor Agent for Linux には制限があります。 Azure Monitor メトリックを "*唯一の*" 収集先として使用する方法はサポートされていません。 Azure Monitor ログと一緒に使用すると、うまくいきます。 この制限は、次の拡張機能の更新プログラムで対処されます。
 
-## <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
-Azure Monitor エージェントで現在サポートされている Windows と Linux のオペレーティング システムのバージョンの一覧については、「[サポートされるオペレーティング システム](agents-overview.md#supported-operating-systems)」を参照してください。
-
 ## <a name="security"></a>セキュリティ
 Azure Monitor エージェントにはキーは必要ありませんが、代わりに[システム割り当てマネージド ID](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#system-assigned-managed-identity) が必要です。 エージェントをデプロイする前に、各仮想マシンで、システム割り当てマネージド ID を有効にしておく必要があります。
 
@@ -131,7 +133,7 @@ Windows や Linux 用の Azure Monitor エージェント拡張機能では、HT
    ![拡張機能を有効にするときに setting パラメーターと protectedSetting パラメーターの値を決定するためのフローチャート。](media/azure-monitor-agent-overview/proxy-flowchart.png)
 
 
-1. *setting* パラメーターと *protectedSetting* パラメーターの値が決定したら、PowerShell コマンドを使用して Azure Monitor エージェントをデプロイするときに、これらの追加パラメーターを指定します。 次の例は、Azure 仮想マシンの場合です。
+2. *setting* パラメーターと *protectedSetting* パラメーターの値が決定したら、PowerShell コマンドを使用して Azure Monitor エージェントをデプロイするときに、これらの追加パラメーターを指定します。 次の例は、Azure 仮想マシンの場合です。
 
     | パラメーター | 値 |
     |:---|:---|

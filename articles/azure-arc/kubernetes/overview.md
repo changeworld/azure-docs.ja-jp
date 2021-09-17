@@ -8,13 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: この記事では、Azure Arc 対応 Kubernetes の概要を示します。
 keywords: Kubernetes, Arc, Azure, コンテナー
-ms.custom: references_regions
-ms.openlocfilehash: d2e71b61210baf93950cb9e8fb2270320f882404
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 80d1b741c4a3a1d60cc44e3afdeac22a61a7db4b
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111967147"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122768290"
 ---
 # <a name="what-is-azure-arc-enabled-kubernetes"></a>Azure Arc 対応 Kubernetes とは
 
@@ -47,26 +46,11 @@ Azure Arc 対応 Kubernetes は、次のシナリオをサポートします。
 
 * Azure Defender for Kubernetes を使用して脅威保護を適用する。
 
-* Kubernetes 用の Azure Policy を使用してポリシーを適用する。
+* Kubernetes 用の Azure Policy を使用してポリシー定義を適用する。
 
 * Azure Arc 対応 Data Services、[Azure Arc 上の App Services](../../app-service/overview-arc-integration.md) (Web、関数、ロジック アプリを含む) および [Kubernetes 上の Event Grid](../../event-grid/kubernetes/overview.md) をデプロイするターゲットの場所として、[カスタムの場所](./custom-locations.md)を作成します。
 
 [!INCLUDE [azure-lighthouse-supported-service](../../../includes/azure-lighthouse-supported-service.md)]
-
-## <a name="supported-regions"></a>サポートされているリージョン 
-
-Azure Arc 対応 Kubernetes は、現在、以下のリージョンでサポートされています。 
-
-* 米国東部
-* 西ヨーロッパ
-* 米国中西部
-* 米国中南部
-* 東南アジア
-* 英国南部
-* 米国西部 2
-* オーストラリア東部
-* 米国東部 2
-* 北ヨーロッパ
 
 ## <a name="next-steps"></a>次のステップ
 

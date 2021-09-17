@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 07/29/2021
+ms.date: 08/23/2021
 ms.author: bwren
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a334e537c306071c8ee48e7369566a490e504f30
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9967eaa374116ac28bd0db830eed6a4fc2becfa0
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121727250"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122771792"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Azure Monitor ログで使用量とコストを管理する    
 
@@ -34,17 +34,16 @@ Azure Monitor ログは、企業内のソースまたは Azure に展開され�
 
 Log Analytics の既定の料金は、取り込まれたデータの量に基づく **従量課金制** であり、必要に応じてデータの保持期間を長くすることができます。 データ量は、GB (10^9 バイト) 単位で格納されるデータのサイズとして測定されます。 各 Log Analytics ワークスペースは個々のサービスとして課金され、Azure サブスクリプションの課金内容に加えられます。 データ インジェストの量は、次の要因に大きく依存する可能性があります。 
 
-  - 有効にされている管理ソリューションの数とその構成
-  - 監視対象の仮想マシン (VM) の数
-  - 各監視対象 VM から収集されるデータの種類 
+  - 有効にされている管理ソリューションのセットとその構成
+  - 監視対象のリソースの数と種類
+  - 各監視対象リソースから収集されたデータの種類
   
 従量課金制モデルに加えて、Log Analytics には **コミットメント レベル** があります。これにより、従量課金制の料金と比較して 30% も節約できます。 コミットメント レベルの価格を使用すると、従量課金制の価格より低い価格でデータ インジェストを 100 GB/日から購入することを確約できます。 コミットメント レベルを超える使用量 (超過分) については、現在のコミットメント レベルで提供されている同じ GB あたりの価格で請求されます。 コミットメント レベルには、31 日間のコミットメント期間があります。 コミットメント期間中、より高いコミットメント レベルに変更できます (これにより 31 日間のコミットメント期間が再スタートされます) が、コミットメント期間が終了するまでは、従量課金制または低いコミットメント レベルに戻ることはできません。 コミットメント レベルの課金は 1 日単位で行われます。 Log Analytics の従量課金制とコミットメント レベルの価格については、[こちら](https://azure.microsoft.com/pricing/details/monitor/)をご覧ください。 
 
 > [!NOTE]
-> 2021 年 6 月 2 日以降、**容量予約** は **コミットメント レベル** に呼称が変更されました。 コミットメント レベルを超えて収集されたデータ (超過分) は、現在のコミットメント レベルと同じ GB あたりの料金で課金されるようになり、以前の従量課金制料金での課金方法と比較してコストが下がりました。また、大きなデータ ボリュームを持つユーザーがコミットメント レベルを微調整する必要性も低下しました。 新しく、より大きい 1000 GB/日、2000 GB/日、5000 GB/日の 3 つのコミットメント レベルもあります。 
+> 2021 年 6 月 2 日以降、**容量予約** は **コミットメント レベル** に呼称が変更されました。 コミットメント レベルを超えて収集されたデータ (超過分) は、現在のコミットメント レベルと同じ GB あたりの料金で課金されるようになり、以前の従量課金制料金での課金方法と比較してコストが下がりました。また、大きなデータ ボリュームを持つユーザーがコミットメント レベルを微調整する必要性も低下しました。 1000、2000、および 5000 GB/日という 3 つの新しいコミットメント レベルも追加されました。 
 
-すべての価格レベルにおいて、イベントのデータ サイズは、データがエージェントから送信されるか、インジェスト プロセス中に追加されるかに関係なく、Log Analytics に格納されているこのイベントのプロパティの文字列表記から計算されます。 これには、データが収集されて Log Analytics に格納されるときに追加されるすべての[カスタム フィールド](custom-fields.md)が含まれます。 一部の [Log Analytics 標準プロパティ](./log-standard-columns.md)を含む、すべてのデータ型に共通するいくつかのプロパティは、イベント サイズの計算から除外されます。 これには、`_ResourceId`、`_SubscriptionId`、`_ItemId`、`_IsBillable`、`_BilledSize`、および `Type` が含まれます。 Log Analytics に格納されている他のすべてのプロパティは、イベント サイズの計算に含まれます。 [AzureActivity](/azure/azure-monitor/reference/tables/azureactivity)、[Heartbeat](/azure/azure-monitor/reference/tables/heartbeat)、[Usage](/azure/azure-monitor/reference/tables/usage)、[Operation](/azure/azure-monitor/reference/tables/operation) 型などの一部のデータ型に対しては、データ インジェスト料金は一切かかりません。 イベントがデータ インジェストの課金から除外されたかどうかを確認するには、[以下](#data-volume-for-specific-events)に示すように [_IsBillable](log-standard-columns.md#_isbillable) プロパティを使用できます。 使用量は GB (1.0E9 バイト) 単位でレポートされます。 
-
+すべての価格レベルにおいて、イベントのデータ サイズは、データがエージェントから送信されるか、インジェスト プロセス中に追加されるかに関係なく、Log Analytics に格納されているこのイベントのプロパティの文字列表記から計算されます。 これには、データが収集されて Log Analytics に格納されるときに追加されるすべての[カスタム フィールド](custom-fields.md)が含まれます。 一部の [Log Analytics 標準プロパティ](./log-standard-columns.md)を含む、すべてのデータ型に共通するいくつかのプロパティは、イベント サイズの計算から除外されます。 これには、`_ResourceId`、`_SubscriptionId`、`_ItemId`、`_IsBillable`、`_BilledSize`、および `Type` が含まれます。 Log Analytics に格納されている他のすべてのプロパティは、イベント サイズの計算に含まれます。 [AzureActivity](/azure/azure-monitor/reference/tables/azureactivity)、[Heartbeat](/azure/azure-monitor/reference/tables/heartbeat)、[Usage](/azure/azure-monitor/reference/tables/usage)、[Operation](/azure/azure-monitor/reference/tables/operation) 型などの一部のデータ型に対しては、データ インジェスト料金は一切かかりません。 一部のソリューションでは、無料のデータ インジェストに関するソリューション固有のポリシーが他のソリューションより多くなっています。たとえば、[Azure Migrate](https://azure.microsoft.com/pricing/details/azure-migrate/) の場合、サーバー評価の最初の 180 日間、依存関係視覚化データが無料になります。 イベントがデータ インジェストの課金から除外されたかどうかを確認するには、[以下](#data-volume-for-specific-events)に示すように [_IsBillable](log-standard-columns.md#_isbillable) プロパティを使用できます。 使用量は GB (10^9 バイト) 単位で報告されます。 
 
 また、[Azure Defender (Security Center)](https://azure.microsoft.com/pricing/details/azure-defender/)、[Azure Sentinel](https://azure.microsoft.com/pricing/details/azure-sentinel/)、[構成管理](https://azure.microsoft.com/pricing/details/automation/)などの一部のソリューションには、独自の価格モデルがあります。 
 
@@ -54,7 +53,7 @@ Log Analytics の既定の料金は、取り込まれたデータの量に基づ
 
 クラスターのコミットメント レベルは、`Sku` の下にある `Capacity` パラメーターを使用して、Azure Resource Manager でプログラムによって構成されます。 `Capacity` は GB 単位で指定され、1 日あたり 500 GB、1,000 GB、2,000 GB、5,000 GB の値を設定できます。 コミットメント レベルを超える使用量 (超過分) については、現在のコミットメント レベルで提供されている同じ GB あたりの価格で請求されます。  詳細については、「[Azure Monitor のカスタマー マネージド キー](customer-managed-keys.md)」を参照してください。
 
-クラスターでの使用については、2 つの課金モードがあります。 これらは、[クラスターの作成](logs-dedicated-clusters.md#creating-a-cluster)時に `billingType` パラメーターによって指定することも、作成後に設定することもできます。 次の 2 つのモードがあります。 
+クラスターでの使用については、2 つの課金モードがあります。 これらは、[クラスターの作成](logs-dedicated-clusters.md#create-a-dedicated-cluster)時に `billingType` パラメーターによって指定することも、作成後に設定することもできます。 次の 2 つのモードがあります。 
 
 - **クラスター**: この場合 (既定)、取り込まれたデータに対してクラスター レベルで課金されます。 クラスターに関連付けられている各ワークスペースが取り込んだデータ量が集計され、クラスターの日次請求が計算されます。 [Azure Defender (Security Center)](../../security-center/index.yml) からのノードごとの割り当ては、クラスター内のすべてのワークスペースで行われるこのデータ集計の前にワークスペース レベルで適用されます。 
 
@@ -64,9 +63,7 @@ Log Analytics の既定の料金は、取り込まれたデータの量に基づ
 
 ## <a name="estimating-the-costs-to-manage-your-environment"></a>ご利用の環境を管理するためのコストの見積もり 
 
-Azure Monitor ログをまだ使用していない場合は、[Azure Monitor 料金計算ツール](https://azure.microsoft.com/pricing/calculator/?service=monitor)を使用して、Log Analytics を使用する場合のコストを見積もることができます。 **[検索]** ボックスに「Azure Monitor」と入力し、表示された結果から Azure Monitor タイルを選択します。 ページを下にスクロールして **Azure Monitor** に移動し、 **[種類]** ドロップダウンから **[Log Analytics]** を選択します。 ここでは、仮想マシンの数と、各 VM から収集しようとしているデータのギガバイト数を入力できます。 通常、1 か月あたり 1 GB から 3 GB のデータが一般的な Azure Virtual Machine から取り込まれます。 Azure Monitor ログを評価している場合は、独自の環境からのデータ統計を使用することができます。 [監視対象の VM の数](#understanding-nodes-sending-data)と[ご利用のワークスペースによって取り込まれているデータ量](#understanding-ingested-data-volume)を特定する方法については、以下を参照してください。 
-
-Log Analytics をまだ実行していない場合は、データ ボリュームを推定するためのガイダンスを次に示します。
+Azure Monitor ログをまだ使用していない場合は、[Azure Monitor 料金計算ツール](https://azure.microsoft.com/pricing/calculator/?service=monitor)を使用して、Log Analytics を使用する場合のコストを見積もることができます。 **[検索]** ボックスに「Azure Monitor」と入力し、表示された結果から Azure Monitor タイルを選択します。 ページを下にスクロールして **Azure Monitor** に移動し、 **[Log Analytics]** セクションを展開します。 ここで収集するデータを GB 単位で入力できます。 Azure Monitor ログを評価している場合は、独自の環境からのデータ統計を使用することができます。 [監視対象の VM の数](#understanding-nodes-sending-data)と[ご利用のワークスペースによって取り込まれているデータ量](#understanding-ingested-data-volume)を特定する方法については、以下を参照してください。 Log Analytics をまだ実行していない場合は、データ ボリュームを推定するためのガイダンスを次に示します。
 
 1. **VM の監視:** 一般的な監視を有効にすると、監視対象の VM ごとに 1 GB から 3 GB のデータが毎月取り込まれます。 
 2. **Azure Kubernetes Service (AKS) クラスターの監視:** 一般的な AKS クラスターを監視する必要があるデータ ボリュームの詳細については、[こちら](../containers/container-insights-cost.md#estimating-costs-to-monitor-your-aks-cluster)を参照してください。 次の[ベスト プラクティス](../containers/container-insights-cost.md#controlling-ingestion-to-reduce-cost)に従って、AKS クラスターの監視コストを制御します。 
@@ -152,7 +149,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "YourResourceGroupName" -Templa
 > [!TIP]
 > ワークスペースで **ノードごとの** 価格レベルにアクセスできるが、従量課金制レベルよりもコストが低いかどうか知りたい場合は、[次のクエリを使用](#evaluating-the-legacy-per-node-pricing-tier)して、推奨事項を簡単に取得できます。 
 
-2016 年 4 月より前に作成されたワークスペースの場合、元の **Standard** と **Premium** の価格レベルにもアクセスできます。これらのデータ保有は、それぞれ 30 日と 365 日に固定されています。 **Standard** または **Premium** の価格レベルに新しいワークスペースを作成することはできません。ワークスペースをこれらのレベルから移動した場合、元に戻すことはできません。 これらの従来のレベルでのデータ インジェストのメーターは、"分析対象データ" と呼ばれています。
+2016 年 4 月より前に作成されたワークスペースの場合、**Standard** と **Premium** の価格レベルを引き続き利用できます。これらのデータ保有は、それぞれ 30 日と 365 日に固定されています。 **Standard** または **Premium** の価格レベルに新しいワークスペースを作成することはできません。ワークスペースをこれらのレベルから移動した場合、元に戻すことはできません。 これらの従来のレベルでの Azure 請求書のデータ インジェストのメーターは、"分析対象データ" と呼ばれています。
 
 また、従来の Log Analytics レベルの使用と [Azure Defender (Security Center)](../../security-center/index.yml) に対する使用量の請求方法の間にもいくつかの動作があります。 
 

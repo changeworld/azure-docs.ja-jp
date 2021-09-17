@@ -8,14 +8,16 @@ ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
 ms.subservice: cloud-init
-ms.openlocfilehash: fa4381aa21b1565e29db026b43dbc70b457daf5d
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: b9a113c4c7f54bfb47d10795325f163cd6f35429
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109783209"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122687929"
 ---
 # <a name="troubleshooting-vm-provisioning-with-cloud-init"></a>cloud-init を使用した VM プロビジョニングのトラブルシューティング
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブルなスケール セット 
 
 cloud-init を使用してプロビジョニングを行って、一般化されたカスタム イメージを作成していたが、VM が正常に作成されなかったことがわかった場合、カスタム イメージのトラブルシューティングを行う必要があります。
 

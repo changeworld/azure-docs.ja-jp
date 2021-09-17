@@ -12,12 +12,12 @@ ms.date: 02/05/2021
 ms.author: davidmu
 ms.reviewer: alamaral
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 365283ebc45c0f85a56d27d4cc90807de9a88fb4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 6f8ee443f12ce4c28e5bb883be686a4610eeec38
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121742878"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122768906"
 ---
 # <a name="migrate-application-authentication-to-azure-active-directory"></a>アプリケーション認証を Azure Active Directory に移行する
 
@@ -575,7 +575,7 @@ Azure AD でサポートされているアプリとリソースのユーザー�
 
 **ユーザーがブラウザー拡張機能からアプリを開けるようにします。**
 
-ユーザーは、[Chrome](https://chrome.google.com/webstore/detail/my-apps-secure-sign-in-ex/ggjhpefgjjfobnfoldnjipclpcfbgbhl)、[FireFox](https://addons.mozilla.org/firefox/addon/access-panel-extension/)、または [Microsoft Edge](https://www.microsoft.com/p/my-apps-secure-sign-in-extension/9pc9sckkzk84?rtc=1&activetab=pivot%3Aoverviewtab) で[マイ アプリによるセキュリティで保護されたサインイン拡張機能をダウンロード](https://www.microsoft.com/p/my-apps-secure-sign-in-extension/9pc9sckkzk84?rtc=1&activetab=pivot%3Aoverviewtab)でき、ブラウザー バーから直接アプリを起動して、次のことを行うことができます。
+ユーザーは、[Chrome](https://chrome.google.com/webstore/detail/my-apps-secure-sign-in-ex/ggjhpefgjjfobnfoldnjipclpcfbgbhl) または [Microsoft Edge](https://www.microsoft.com/p/my-apps-secure-sign-in-extension/9pc9sckkzk84?rtc=1&activetab=pivot%3Aoverviewtab) で[マイ アプリによるセキュリティで保護されたサインイン拡張機能をダウンロード](https://www.microsoft.com/p/my-apps-secure-sign-in-extension/9pc9sckkzk84?rtc=1&activetab=pivot%3Aoverviewtab)でき、ブラウザー バーから直接アプリを起動して、次のことを行うことができます。
 
 - **アプリを検索して、最近使用したアプリを表示する**
 

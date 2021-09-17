@@ -8,12 +8,12 @@ ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/06/2021
-ms.openlocfilehash: 5538000573a70340b576e79b3e1dcab9367e7d89
-ms.sourcegitcommit: 47491ce44b91e546b608de58e6fa5bbd67315119
+ms.openlocfilehash: 0b927f945dc7e891e93df6cd455840e6ff19a2fd
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122201913"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122772447"
 ---
 # <a name="copy-data-from-azure-data-lake-storage-gen1-to-gen2-with-azure-data-factory"></a>Azure Data Factory を使用して Azure Data Lake Storage Gen1 から Gen2 にデータをコピーする
 
@@ -54,7 +54,7 @@ Azure Data Factory では、スケール アウトしたマネージド デー�
 3. **［作成］** を選択します
 4. 作成が完了したら、データ ファクトリに移動します。 次の画像のように **[データ ファクトリ]** ホーム ページが表示されます。 
    
-   :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="[Open Azure Data Factory Studio](Azure Data Factory Studio を開く) タイルを含む、Azure Data Factory のホーム ページ。":::
+   :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="[Open Azure Data Factory Studio] タイルを含む、Azure Data Factory のホーム ページ。":::
 
 5. **[Open Azure Data Factory Studio](Azure Data Factory Studio を開く)** タイルで **[開く]** を選択して、別のタブでデータ統合アプリケーションを起動します。
 
@@ -84,7 +84,7 @@ Azure Data Factory では、スケール アウトしたマネージド デー�
 6. **[ソース データ ストア]** ページで、次の手順を実行します。 
     1. **[接続]** セクションで新しく作成した接続を選択します。
     1. **[ファイルまたはフォルダー]** で、コピーするフォルダーとファイルを参照します。 フォルダーまたはファイルを選択し、 **[OK]** を選択します。
-    1. **[再帰的]** オプションと **[バイナリ コピー]** オプションを選択することで、コピーの動作を指定します。 **[次へ]** を選択します。
+    1. **[再帰的]** オプションと **[バイナリ コピー]** オプションを選択することで、コピーの動作を指定します。 **[次へ]** を選びます。
     
     :::image type="content" source="./media/load-azure-data-lake-storage-gen2-from-gen1/source-data-store-page.png" alt-text="[ソース データ ストア] ページを示すスクリーンショット。":::
     
@@ -133,25 +133,41 @@ Azure Data Factory では、スケール アウトしたマネージド デー�
 
 Azure Data Lake Storage Gen1 から Azure Data Lake Storage Gen2 からへのアップグレードの評価の概要については、「[ビッグ データ分析ソリューションを Azure Data Lake Storage Gen1 から Azure Data Lake Storage Gen2 にアップグレードする](../storage/blobs/data-lake-storage-migrate-gen1-to-gen2.md)」をご覧ください。 後続のセクションでは、データ ファクトリを使用して Data Lake Storage Gen1 から Data Lake Storage Gen2 にデータをアップグレードする際のベスト プラクティスについて紹介しています。
 
-### <a name="historical-data-copy"></a>履歴データのコピー
+### <a name="initial-snapshot-data-migration"></a>初回のスナップショット データ移行
 
-#### <a name="performance-tuning-by-proof-of-concept"></a>概念実証によるパフォーマンス チューニング
+#### <a name="performance"></a>パフォーマンス
 
-概念実証を使用し、エンドツーエンド ソリューションを検証し、環境のコピー スループットをテストします。 概念実証の主要な手順: 
+ADF には、さまざまなレベルで並列処理を可能にするサーバーレス アーキテクチャが用意されています。そのため、開発者は、ネットワーク帯域幅だけでなくストレージの IOPS と帯域幅を利用して、データ移動のスループットが環境に合わせて最大限になるパイプラインを構築できます。 
 
-1. Data Lake Storage Gen1 から Data Lake Storage Gen2 に数 TB のデータをコピーする 1 回のコピー アクティビティでデータ ファクトリ パイプラインを作成し、コピー パフォーマンスのベースラインを取得します。 最初は[データ統合ユニット (DIU)](copy-activity-performance-features.md#data-integration-units) を 128 にします。 [並列コピー](copy-activity-performance-features.md#parallel-copy)を **空 (既定)** .として設定することをお勧めします。
-2. ステップ 1 で取得したコピー スループットに基づいて、データ移行全体に必要な推定時間を計算します。 コピーのスループットが適切ではない場合、[パフォーマンス チューニングの手順](copy-activity-performance.md#performance-tuning-steps)に従って、パフォーマンスのボトルネックを特定して解決します。
-3. 1 回のコピー アクティビティのパフォーマンスを最大化したが、お使いの環境のスループットの上限にまだ達していない場合、複数のコピー アクティビティを並行して実行できます。 各コピー アクティビティは、一度に 1 つのパーティションをコピーするように構成できます。そのため、複数のコピー アクティビティで 1 つの Data Lake Storage Gen1 アカウントから同時にデータをコピーできます。 ファイルをパーティション化する方法は、[コピー アクティビティのプロパティ](connector-azure-data-lake-store.md#copy-activity-properties)で **name range- listAfter/listBefore** を使用することです。
+複数のお客様が、スループットを 2 GBps 以上に維持したまま、Data Lake Storage Gen1 から Gen2 に数百万個単位のファイルで構成されるペタバイト単位のデータを移行することに成功しています。
 
-Data Lake Storage Gen1 の合計データ サイズが 30 TB より小さく、ファイルの数が 100 万個より少ない場合は、1 回のコピー アクティビティの実行ですべてのデータをコピーできます。 コピーするデータの量が多い場合、あるいはバッチでデータ移行を管理し、それぞれのバッチを特定の概算時間内に完了させたい場合は、データをパーティション分割します。 パーティション分割ではまた、予想外の問題が発生するリスクが減ります。 
+さまざまなレベルの並列処理で優れたデータ移動速度を実現できます。
+
+- 1 回のコピー アクティビティで、スケーラブルなコンピューティング リソースを利用できます。Azure Integration Runtime を使用する場合は、サーバーレス方式で各コピー アクティビティに対して最大 256 [データ統合単位 (DIU)](copy-activity-performance-features.md#data-integration-units) を指定できます。セルフホステッド統合ランタイムを使用する場合は、手動でマシンをスケールアップするか、複数のマシン (最大 4 ノード) にスケールアウトすることができます。また、1 回のコピー アクティビティによって、すべてのノードでファイル セットがパーティション分割されます。
+- 1 回のコピー アクティビティで、複数のスレッドを使用したデータ ストアの読み取りと書き込みが行われます。
+- ADF 制御フローでは、複数のコピー アクティビティを並列して開始できます。たとえば、For Each ループを使用します。
+
+#### <a name="data-partitions"></a>データ パーティション
+
+Data Lake Storage Gen1 の合計データ サイズが 10 TB より小さく、ファイルの数が 100 万個より少ない場合は、1 回のコピー アクティビティの実行ですべてのデータをコピーできます。 コピーするデータの量が多い場合、あるいはバッチでデータ移行を管理し、それぞれのバッチを特定の概算時間内に完了させたい場合は、データをパーティション分割します。 パーティション分割ではまた、予想外の問題が発生するリスクが減ります。 
+
+ファイルをパーティション化する方法は、[コピー アクティビティのプロパティ](connector-azure-data-lake-store.md#copy-activity-properties)で **name range- listAfter/listBefore** を使用することです。 各コピー アクティビティは、一度に 1 つのパーティションをコピーするように構成できます。そのため、複数のコピー アクティビティで 1 つの Data Lake Storage Gen1 アカウントから同時にデータをコピーできます。
 
 
-#### <a name="network-bandwidth-and-storage-io"></a>ネットワーク帯域幅とストレージ I/O 
+#### <a name="rate-limiting"></a>レート制限 
 
-[コピー アクティビティの監視](copy-activity-monitoring.md#monitor-visually)で多数の調整エラーが発生した場合、ストレージ アカウントの容量制限に達したと示されます。 ADF は、各調整エラーを克服するために自動的に再試行して、データが失われず、再試行回数が多すぎるとコピーのスループットにも影響します。 このような場合、大量の調整エラーを回避するために、現在実行中のコピー アクティビティの数を減らすことをお勧めしています。 1 つのコピー アクティビティを使用してデータをコピーしている場合、[データ統合ユニット (DIU)](copy-activity-performance-features.md#data-integration-units) の数を減らすことをお勧めしています。
+ベスト プラクティスとして、代表的なサンプル データセットを使用してパフォーマンス POC を実施し、適切なパーティションのサイズを決定できるようにします。
+
+1. 既定の DIU 設定を使用して、1 つのパーティションと 1 回のコピー アクティビティから始めます。 常に、[並列コピー](copy-activity-performance-features.md#parallel-copy)を **空 (既定)** .として設定することをお勧めします。 コピーのスループットが適切ではない場合、[パフォーマンス チューニングの手順](copy-activity-performance.md#performance-tuning-steps)に従って、パフォーマンスのボトルネックを特定して解決します。 
+
+2. ネットワークの帯域幅制限またはデータ ストアの IOPS/帯域幅制限に達するまで、または1 回のコピー アクティビティで許可される最大 256 DIU に達するまで、DIU 設定を徐々に増やします。 
+
+3. 1 回のコピー アクティビティのパフォーマンスを最大化したが、お使いの環境のスループットの上限にまだ達していない場合、複数のコピー アクティビティを並行して実行できます。  
+
+[コピー アクティビティの監視](copy-activity-monitoring.md#monitor-visually)で多数の調整エラーが発生した場合、ストレージ アカウントの容量制限に達したと示されます。 ADF は、各調整エラーを克服するために自動的に再試行して、データが失われず、再試行回数が多すぎるとコピーのスループットにも影響します。 このような場合、大量の調整エラーを回避するために、現在実行中のコピー アクティビティの数を減らすことをお勧めしています。 1 つのコピー アクティビティを使用してデータをコピーしている場合、DIU を減らすことをお勧めします。
 
 
-### <a name="incremental-copy"></a>増分コピー 
+### <a name="delta-data-migration"></a>差分のデータ移行
 
 Data Lake Storage Gen1 から新規ファイルまたは更新されたファイルのみを読み込むには、いくつかの方法があります。
 
@@ -161,10 +177,22 @@ Data Lake Storage Gen1 から新規ファイルまたは更新されたファイ
 
 増分読み込みを行う適切な頻度は、Azure Data Lake Storage Gen1 内のファイルの合計数と、毎回読み込まれる新しいファイルまたは更新されたファイルのボリュームに依存します。 
 
+### <a name="network-security"></a>ネットワークのセキュリティ
+
+ADF の既定では、HTTPS プロトコル経由の暗号化された接続を使用して、Azure Data Lake Storage Gen1 から Gen2 へデータを転送します。 HTTPS によって転送中のデータが暗号化され、盗聴や中間者攻撃が防止されます。
+
+また、パブリック インターネット経由でデータを転送しない場合は、プライベート ネットワーク経由でデータを転送することで、より高いセキュリティを実現できます。
 
 ### <a name="preserve-acls"></a>ACL の保持
 
 Data Lake Storage Gen1 から Data Lake Storage Gen2 にアップグレードするときに、ACL をデータ ファイルと共にレプリケートする必要がある場合は、「[Data Lake Storage Gen1 の ACL を保持する](connector-azure-data-lake-storage.md#preserve-acls)」をご覧ください。 
+
+### <a name="resilience"></a>回復力
+
+ADF には、1 回のコピー アクティビティの実行で、データ ストアまたは基になるネットワークの特定のレベルの一時的なエラーを処理できる組み込みの再試行メカニズムがあります。 10 TB を超えるデータを移行する場合は、データをパーティション分割して、予期しない問題が発生するリスクを軽減することをお勧めします。
+
+また、コピー アクティビティで[フォールト トレランス](copy-activity-fault-tolerance.md)を有効にして、定義済みのエラーをスキップすることもできます。 また、コピー アクティビティで[データ整合性検証](copy-activity-data-consistency.md)を有効にして、追加の検証を行い、データがコピー元ストアからコピー先ストアに正常にコピーされたことを確認するだけでなく、コピー元ストアとコピー先ストアの間でデータに整合性があることも検証できます。
+
 
 ### <a name="permissions"></a>アクセス許可 
 

@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 8/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 75a6064ba44f803837719e0cb1f574d4295f8ac4
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: 88ac65c35b29c2113576594788f820973331d64b
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113732892"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122515010"
 ---
 # <a name="migrate-from-vault-access-policy-to-an-azure-role-based-access-control-permission-model"></a>コンテナー アクセス ポリシーから Azure ロールベースのアクセス制御のアクセス許可モデルへの移行
 
@@ -76,7 +76,7 @@ Azure RBAC には、ユーザー、グループ、サービス プリンシパ�
 | 証明書管理 | 証明書: すべての操作 | Key Vault Certificates Officer|
 | SQL Server コネクタ | キー: 取得、一覧表示、キーを折り返す、キーの折り返しを解除 | Key Vault Crypto Service Encryption User|
 | Azure Data Lake Storage または Azure Storage | キー: 取得、一覧表示、キーの折り返しを解除 | N/A<br> カスタム ロールが必要|
-| Azure Backup | キー: 取得、一覧表示、バックアップ<br> 証明書: 取得、一覧表示、バックアップ | N/A<br> カスタム ロールが必要|
+| Azure Backup | キー: 取得、一覧表示、バックアップ<br> シークレット: 取得、一覧表示、バックアップ | N/A<br> カスタム ロールが必要|
 | Exchange Online カスタマー キー | キー: 取得、一覧表示、キーを折り返す、キーの折り返しを解除 | Key Vault Crypto Service Encryption User|
 | Exchange Online カスタマー キー | キー: 取得、一覧表示、キーを折り返す、キーの折り返しを解除 | Key Vault Crypto Service Encryption User|
 | Azure Information BYOK | キー: 取得、復号化、署名 | N/A<br>カスタム ロールが必要|

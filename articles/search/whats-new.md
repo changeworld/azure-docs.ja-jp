@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 07/20/2021
 ms.custom: references_regions
-ms.openlocfilehash: 3c44db5c17d1179df03985515acc9133feca198e
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: b3c84a46e19e4cf24459424458340233869ea683
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114711053"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736301"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure Cognitive Search の新機能
 
@@ -111,7 +111,7 @@ ms.locfileid: "114711053"
 |November | [ドキュメント抽出スキル (プレビュー)](cognitive-search-skill-document-extraction.md) | スキルセット内からファイルの内容を抽出するコグニティブ スキル。|
 |November | [テキスト翻訳スキル](cognitive-search-skill-text-translation.md) | テキストを評価し、翻訳するコグニティブ スキル。インデックス作成中に使用されます。 一般提供されています。|
 |November | [Power BI テンプレート](https://github.com/Azure-Samples/cognitive-search-templates/blob/master/README.md) | ナレッジ ストアのコンテンツを視覚化するためのテンプレート。 |
-|November | [Azure Data Lake Storage Gen2 (プレビュー)](search-howto-index-azure-data-lake-storage.md)、[Cosmos DB Gremlin API (プレビュー)](search-howto-index-cosmosdb.md)、[Cosmos DB Cassandra API (プレビュー)](search-howto-index-cosmosdb.md) | パブリック プレビュー段階にある新しいインデクサー データ ソース。 |
+|November | [Azure Data Lake Storage Gen2 (プレビュー)](search-howto-index-azure-data-lake-storage.md) および [Cosmos DB Gremlin API (プレビュー)](search-howto-index-cosmosdb.md) | パブリック プレビュー段階にある新しいインデクサー データ ソース。 |
 |7 月 | [Azure Government クラウドのサポート](https://azure.microsoft.com/global-infrastructure/services/?regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-texas,usgov-virginia&products=search) | 一般提供されています。|
 
 <a name="new-service-name"></a>

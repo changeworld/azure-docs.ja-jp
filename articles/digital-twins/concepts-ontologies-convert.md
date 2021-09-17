@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 2/12/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d432ff03290c3ce26346b99c428cd89c853ed6b7
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: d95e9e6ed85e170efeb570fa46f634a9071c687c
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114472147"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122772395"
 ---
 # <a name="convert-industry-standard-ontologies-to-dtdl-for-azure-digital-twins"></a>業界標準オントロジを Azure Digital Twins 用の DTDL に変換する
 
@@ -37,7 +37,7 @@ RDF ベースのモデルを DTDL に変換するときに使用できるサー�
 
 次の C# コード スニペットは、[dotNetRDF](https://www.dotnetrdf.org/) ライブラリを使用して、RDF モデル ファイルがどのようにグラフに読み込まれ、DTDL に変換されるかを示しています。 
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/convertRDF.cs":::
+:::code language="csharp" source="~/digital-twins-docs-samples/other/csharp/convertRDF.cs":::
 
 ## <a name="converter-samples"></a>コンバーターのサンプル
 

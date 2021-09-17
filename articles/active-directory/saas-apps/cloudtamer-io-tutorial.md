@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/21/2021
+ms.date: 07/26/2021
 ms.author: jeedes
-ms.openlocfilehash: 407a6284c46eb6eef4057d98cef0f5e86a38bcea
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: 6e19b051378bb068172d6356397ee16761611bae
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114601829"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732237"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cloudtamerio"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と cloudtamer.io の統合
 
@@ -74,6 +74,8 @@ cloudtamer.io に対して Azure AD SSO を構成してテストするには、�
 
     ![IDMS の作成のスクリーンショット。](./media/cloudtamer-io-tutorial/idms-creation.png)
 
+1. IDMS の種類として **[SAML 2.0]** を選択します。
+
 1. この画面を開いたままにして、この画面の値を Azure AD 構成にコピーします。
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
@@ -88,16 +90,13 @@ cloudtamer.io に対して Azure AD SSO を構成してテストするには、�
 
 1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次のフィールドの値を入力します。
 
-    a. **[識別子]** テキスト ボックスで、cloudtamer.io からの **[IDENTITY PROVIDER ISSUER (ENTITY ID)]\(ID プロバイダー発行者 (エンティティ ID)\)** をこのボックスに貼り付けます。
+    a. **[識別子]** テキスト ボックスで、cloudtamer.io からの **[SERVICE PROVIDER ISSUER (ENTITY ID)]\(サービス プロバイダー発行者 (エンティティ ID)\)** をこのボックスに貼り付けます。
 
     b. **[応答 URL]** テキスト ボックスで、cloudtamer.io からの **[SERVICE PROVIDER ACS URL]\(サービス プロバイダー ACS URL\)** をこのボックスに貼り付けます。
 
 1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    **[サインオン URL]** ボックスに、`https://<CUSTOMERDOMAIN>.<EXTENSION>/login` という形式で URL を入力します。
-
-    > [!NOTE]
-    > この値は実際のものではありません。 実際のサインオン URL でこの値を更新してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することができます。
+    **[サインオン URL]** テキスト ボックスで、cloudtamer.io からの **[SERVICE PROVIDER ACS URL]\(サービス プロバイダー ACS URL\)** をこのボックスに貼り付けます。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -137,19 +136,17 @@ cloudtamer.io に対して Azure AD SSO を構成してテストするには、�
 
     ![IDMS の追加を示すスクリーンショット。](./media/cloudtamer-io-tutorial/configuration.png)
 
-    a。 **[IDMS TYPE]\(IDMS の種類\)** で、ドロップダウンから **[SAML2.0]** を選択します。
+    a。 **[IDMS Name]\(IDMS 名\)** に、ユーザーがログイン画面から認識する名前を指定します。
 
-    b. **[IDMS Name]\(IDMS 名\)** に、ユーザーがログイン画面から認識する名前を指定します。
+    b. **[IDENTITY PROVIDER ISSUER (ENTITY ID)]\(ID プロバイダー発行者 (エンティティ ID)\)** テキストボックスに、Azure portal からコピーした **識別子** を貼り付けます。
 
-    c. **[IDENTITY PROVIDER ISSUER (ENTITY ID)]\(ID プロバイダー発行者 (エンティティ ID)\)** テキストボックスに、Azure portal からコピーした **識別子** を貼り付けます。
+    c. Azure portal からダウンロードした **フェデレーション メタデータ XML** をメモ帳で開き、その内容を **[IDENTITY PROVIDER METADATA]\(ID プロバイダーのメタデータ\)** テキストボックスに貼り付けます。
 
-    d. Azure portal からダウンロードした **フェデレーション メタデータ XML** をメモ帳で開き、その内容を **[IDENTITY PROVIDER METADATA]\(ID プロバイダーのメタデータ\)** テキストボックスに貼り付けます。
+    d. **[SERVICE PROVIDER ISSUER (ENTITY ID)]\(サービス プロバイダー発行者 (エンティティ ID)\)** の値をコピーし、この値を Azure portal の [基本的な SAML 構成] セクションの **[識別子]** テキスト ボックスに貼り付けます。
 
-    e. **[SERVICE PROVIDER ISSUER (ENTITY ID)]\(サービス プロバイダー発行者 (エンティティ ID)\)** の値をコピーし、この値を Azure portal の [基本的な SAML 構成] セクションの **[識別子]** テキスト ボックスに貼り付けます。
+    e. **[SERVICE PROVIDER ACS URL]\(サービス プロバイダー ACS URL\)** の値をコピーし、その値を Azure portal の [基本的な SAML 構成] セクションにある **[応答 URL]** ボックスに貼り付けます。
 
-    f. **[SERVICE PROVIDER ACS URL]\(サービス プロバイダー ACS URL\)** の値をコピーし、その値を Azure portal の [基本的な SAML 構成] セクションにある **[応答 URL]** ボックスに貼り付けます。
-
-    g. [Assertion Mapping]\(アサーション マッピング\) で、次の値を入力します。
+    f. [Assertion Mapping]\(アサーション マッピング\) で、次の値を入力します。
 
     | フィールド | 値 |
     |-----------|-------|

@@ -11,12 +11,12 @@ ms.date: 04/13/2021
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: ab94a83a64ca9770f0c216ddf42145b262629c6d
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: 8a05599efd58acb71534bef41a881de9170811af
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107598994"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122428809"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>順序指定クラスター化列ストア インデックスを使用したパフォーマンス チューニング  
 
@@ -59,7 +59,6 @@ ORDER BY o.name, pnp.distribution_id, cls.min_data_id;
 次のすべてのパターンを持つクエリは、通常、順序指定 CCI でより速く実行されます。  
 1. クエリに、等値、非等値、または範囲の述語がある
 1. 述語列と順序指定 CCI 列が同じである。  
-1. 述語列が、順序指定 CCI 列の列序数と同じ順序で使用されている。  
  
 この例で、テーブル T1 には、Col_C、Col_B、および Col_A のシーケンスで順序指定されたクラスター化列ストア インデックスがあります。
 
@@ -70,7 +69,7 @@ ORDER (Col_C, Col_B, Col_A);
 
 ```
 
-クエリ 1 のパフォーマンスは、他の 3 つのクエリよりも、順序指定 CCI の恩恵をより多く受けることができます。 
+クエリ 1 とクエリ 2 のパフォーマンスは、順序指定された CCI 列をすべて参照するので、他のクエリよりも順序指定 CCI の恩恵を受けられます。 
 
 ```sql
 -- Query #1: 

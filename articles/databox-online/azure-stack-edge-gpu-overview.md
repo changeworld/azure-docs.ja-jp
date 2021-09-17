@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 07/14/2021
+ms.date: 08/12/2021
 ms.author: alkohli
-ms.openlocfilehash: a307fd2e2504e3c11c96fb56c7ab4f55db9508ff
-ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
+ms.openlocfilehash: a61178917214e53f6a2d01183a3d35a1ba93eff3
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114221266"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122429665"
 ---
 # <a name="what-is-azure-stack-edge-pro-with-gpu"></a>GPU 搭載の Azure Stack Edge Pro とは
 
@@ -51,6 +51,7 @@ Azure Stack Edge Pro GPU には、次の機能があります。
 |データ更新     | ローカル ファイルをクラウドから最新の情報に更新する機能。|
 |暗号化    | ローカルでデータを暗号化し、クラウドへのデータ転送を *https* 経由で保護する BitLocker のサポート。|
 |帯域幅調整| ピーク時の帯域幅の使用量を制限するように調整します。|
+|簡単な発注| Azure Edge Hardware Center によるデバイスの一括発注と追跡 (プレビュー)。|
 |特殊なネットワーク機能|Azure Network Function Manager の Azure Marketplace エクスペリエンスを利用することで、モバイル パケット コア、SD-WAN エッジ、VPN サービスなどのネットワーク機能を、オンプレミス環境で実行されている Azure Stack Edge デバイスに迅速にデプロイします。 詳細については、[Azure Network Function Manager とは (プレビュー)](../network-function-manager/overview.md) に関するページを参照してください。|
 
 <!--|ExpressRoute | Added security through ExpressRoute. Use peering configuration where traffic from local devices to the cloud storage endpoints travels over the ExpressRoute. For more information, see [ExpressRoute overview](../expressroute/expressroute-introduction.md).|-->
@@ -60,10 +61,13 @@ Azure Stack Edge Pro GPU には、次の機能があります。
 Azure Stack Edge Pro GPU ソリューションは、Azure Stack Edge リソース、Azure Stack Edge Pro GPU 物理デバイス、およびローカル Web UI で構成されています。
 
 * **Azure Stack Edge Pro GPU 物理デバイス** - Azure にデータを送信するように構成できる、Microsoft によって提供される 1U ラックマウント型サーバー。
-    
-* **Azure Stack Edge リソース** - さまざまな地理的な場所からアクセスできる Web インターフェイスから Azure Stack Edge Pro GPU デバイスを管理できるようにする Azure portal のリソース。 Azure Stack Edge リソースを使用して、リソースの作成と管理、デバイスとアラートの表示と管理、および共有の管理を行います。  
+
+    [!INCLUDE [azure-stack-edge-gateway-edge-hardware-center-overview](../../includes/azure-stack-edge-gateway-edge-hardware-center-overview.md)]    
 
     詳細については、[Azure Stack Edge Pro GPU デバイスの注文の作成](azure-stack-edge-gpu-deploy-prep.md#create-a-new-resource)に関する記事を参照してください。
+    
+* **Azure Stack Edge リソース** - さまざまな地理的な場所からアクセスできる Web インターフェイスから Azure Stack Edge Pro GPU デバイスを管理できるようにする Azure portal のリソース。 Azure Stack Edge リソースを使用して、リソースの作成と管理、デバイスとアラートの表示と管理、および共有の管理を行います。  
+   
 
 * **Azure Stack Edge Pro GPU のローカル Web UI** - Azure Stack Edge Pro GPU デバイス上のブラウザーベースのローカル ユーザー インターフェイス。主にデバイスの初期構成を想定しています。 他にも、ローカル Web UI を使用して、診断の実行、Azure Stack Edge Pro GPU デバイスのシャットダウンと再起動し、コピー ログの表示、Microsoft サポートへの連絡とサービス要求の提出を行います。
 
@@ -82,6 +86,8 @@ Azure Stack Edge Pro GPU 物理デバイス、Azure リソース、データ転�
 - **転送先ストレージ アカウント** - データを格納するストレージ アカウントは、すべての Azure 地域で利用できます。 パフォーマンスを最適にするには、ストレージ アカウントによって Azure Stack Edge Pro GPU のデータが格納されるリージョンと、デバイスが配置されている場所を、近くにする必要があります。 デバイスから離れた場所にあるストレージ アカウントは、待ち時間が長くなり、パフォーマンスが低下します。
 
 Azure Stack Edge サービスは、非リージョン サービスです。 詳細については、「[Azure のリージョンと Availability Zones](../availability-zones/az-overview.md)」をご覧ください。 Azure Stack Edge サービスは、特定の Azure リージョンに依存しません。そのため、ゾーン全体の障害やリージョン全体の障害に対する回復性があります。
+
+Azure Stack Edge サービス、デバイス、およびデータ ストレージのリージョンの選択に関する考慮事項については、「[Azure Stack Edge に対するリージョンの選択](azure-stack-edge-gpu-regions.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

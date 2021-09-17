@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2021
 ms.author: allensu
-ms.openlocfilehash: d66b9cb314ee9cf200a18949f774ff8a8b4a1f6b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d044ddbde293721e26ed491e237aa5b89075f72a
+ms.sourcegitcommit: d01c2b2719e363178720003b67b968ac2a640204
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121725301"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122455837"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>メトリック、アラート、およびリソース正常性を使用した Standard Load Balancer の診断
 
@@ -65,6 +65,8 @@ Standard Load Balancer リソースのメトリックを表示するには:
 
   >[!NOTE] 
   >データは 1 分間に 1 回サンプリングされるため、時間の集計は、特定のメトリックを解釈する場合に重要になります。 時間の集計が 5 分に設定されていて、メトリック集計の種類である合計 (Sum) が SNAT 割り当てなどのメトリックに使用されている場合、グラフには、割り当て済みの SNAT ポートの合計数が 5 回表示されます。 
+  >
+  >推奨事項: メトリック集計の種類として Sum と Count を分析する場合、1 分を超える時間集計値を使用することをお勧めします。
 
 ![Standard Load Balancer のメトリック](./media/load-balancer-standard-diagnostics/lbmetrics1anew.png)
 

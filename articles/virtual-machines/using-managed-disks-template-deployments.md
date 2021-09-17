@@ -10,16 +10,19 @@ ms.workload: storage
 ms.date: 06/01/2017
 ms.author: jaboes
 ms.subservice: disks
-ms.openlocfilehash: 38ac40f8d6d56bce4862f2e861a6568b3eefd15a
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 68f8e78f2c08c86a176d3254de5e32fe2534cc1f
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110087510"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122690848"
 ---
 # <a name="using-disks-in-azure-resource-manager-templates"></a>Azure Resource Manager テンプレート内でのディスクの使用
 
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
+
 このドキュメントでは、Azure Resource Manager テンプレートを使って仮想マシンをプロビジョニングする際のマネージド ディスクと非管理対象ディスクの違いについて説明します。 以下の例は、非管理対象ディスクが使用されている既存のテンプレートを管理ディスクに更新する際にお役立てください。 ここでは参考として [vm-simple-windows](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-simple-windows) テンプレートを使用しています。 [マネージド ディスク](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/vm-simple-windows/azuredeploy.json)を使用したテンプレートと[非管理対象ディスク](https://github.com/Azure/azure-quickstart-templates/tree/93b5f72a9857ea9ea43e87d2373bf1b4f724c6aa/101-vm-simple-windows/azuredeploy.json)を使用した以前のバージョンを見て直接比較することもできます。
+
 
 ## <a name="unmanaged-disks-template-formatting"></a>非管理対象ディスクのテンプレートの書式
 

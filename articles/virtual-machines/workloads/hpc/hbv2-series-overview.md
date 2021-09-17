@@ -11,16 +11,17 @@ ms.topic: article
 ms.date: 09/28/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: ee09191069c05ae67eb84ee15d739cd101de8ef0
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: d695f01daa4b30a6e88607929f67a0453b06edf0
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114460472"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122691458"
 ---
 # <a name="hbv2-series-virtual-machine-overview"></a>HBv2 シリーズの仮想マシンの概要 
 
- 
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
+
 AMD EPYC でハイパフォーマンス コンピューティング (HPC) アプリケーションのパフォーマンスを最大化するには、綿密なアプローチによるメモリの局所性とプロセスの配置が必要です。 以下、AMD EPYC アーキテクチャと、Azure での HPC アプリケーション向けのその実装について概説します。 物理 NUMA ドメインを指して **pNUMA** という用語を、また仮想化 NUMA ドメインを指して **vNUMA** を使用します。 
 
 物理的には、[HBv2 シリーズ](../../hbv2-series.md) サーバーは 2 * 64 コアの EPYC 7742 CPU であり、物理コアは合計 128 個です。 これらの 128 コアは 32 の pNUMA ドメイン (ソケットあたり 16) に分割されます。それぞれは 4 コアであり、AMD によって **コア コンプレックス** (または **CCX**) という名前が付けられています。 各 CCX には独自の L 3 キャッシュがあり、OS はこれによって pNUMA/vNUMA 境界を認識します。 4 つの隣接する CCX によって、2 チャンネルの物理的な DRAM へのアクセスが共有されます。 

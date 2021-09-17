@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/20/2021
+ms.date: 08/09/2021
 ms.author: jeedes
-ms.openlocfilehash: d4762aff046c6820a3e3a208aa9be5c4f6e23cb0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a3f765062895fc31ea3e8e768a025b35ca88d4a0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101643885"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746071"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zoho-one-china"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Zoho One China の統合
 
@@ -33,14 +33,14 @@ ms.locfileid: "101643885"
 * Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
 * Zoho One China でのシングル サインオン (SSO) が有効なサブスクリプション。
 
-> [!NOTE]
-> このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
-
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Zoho One China では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* Zoho One China では、**SP と IDP** によって開始される SSO がサポートされます。
+
+> [!NOTE]
+> このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
 
 ## <a name="add-zoho-one-china-from-the-gallery"></a>ギャラリーからの Zoho One China の追加
 
@@ -76,7 +76,7 @@ Zoho One China に対して Azure AD SSO を構成してテストするには、
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次のフィールドの値を入力します。
+1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
     **[応答 URL]** ボックスに、`https://accounts.zoho.com.cn/signin/samlsp/<zoid>` のパターンを使用して URL を入力します
 

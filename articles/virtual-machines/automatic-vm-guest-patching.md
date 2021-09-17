@@ -9,14 +9,16 @@ ms.topic: how-to
 ms.date: 07/29/2021
 ms.author: manayar
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f3ff46312c7836d90aeb8e3281e760d2ab163186
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0043935f46698f694aa76aec816c8bf72a9ee098
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121724928"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122698170"
 ---
 # <a name="preview-automatic-vm-guest-patching-for-azure-vms"></a>プレビュー: Azure VM での VM ゲストの自動パッチ適用
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 Azure VM での VM ゲストの自動パッチ適用を有効にすると、安全かつ自動的に仮想マシンにパッチを適用することで、容易に更新を管理し、セキュリティ コンプライアンスを維持することができます。
 

@@ -1,15 +1,15 @@
 ---
 title: 'クイックスタート: Bicep (プレビュー) ファイルを使用した新しいポリシーの割り当て'
 description: このクイックスタートでは、Bicep (プレビュー) ファイルを使用して、ポリシー割り当てを作成し、準拠していないリソースを特定します。
-ms.date: 05/20/2021
+ms.date: 08/17/2021
 ms.topic: quickstart
 ms.custom: subject-bicepqs
-ms.openlocfilehash: 0f48804fd73b073479617aa3359e6d338056fb39
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: 116058395d556d4e5f7d8a9c67867376e703a7cc
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112007177"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323753"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-a-bicep-file"></a>クイックスタート: Bicep ファイルを使用して、準拠していないリソースを特定するためのポリシー割り当てを作成する
 
@@ -37,7 +37,7 @@ Azure のコンプライアンスを理解する第一歩は、リソースの�
 param policyAssignmentName string = 'audit-vm-manageddisks'
 param policyDefinitionID string = '/providers/Microsoft.Authorization/policyDefinitions/06a78e20-9358-41c9-923c-fb736d382a4d'
 
-resource assignment 'Microsoft.Authorization/policyAssignments@2019-09-01' = {
+resource assignment 'Microsoft.Authorization/policyAssignments@2021-09-01' = {
     name: policyAssignmentName
     scope: subscriptionResourceId('Microsoft.Resources/resourceGroups', resourceGroup().name)
     properties: {
@@ -79,7 +79,7 @@ az deployment group create \
 
 ---
 
-いくつかのその他のリソース:
+その他のリソース:
 
 - その他のサンプル テンプレートについては、「[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Authorization&pageNumber=1&sort=Popular)」を参照してください。
 - テンプレート リファレンスを確認するには、[Azure テンプレート リファレンス](/azure/templates/microsoft.authorization/allversions)に関するページを参照してください。

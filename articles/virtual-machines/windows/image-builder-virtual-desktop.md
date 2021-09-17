@@ -10,14 +10,16 @@ ms.service: virtual-machines
 ms.collection: windows
 ms.subservice: image-builder
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 45748ac5c21993e6df69950e03de9e90180c4ab0
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: fdda25ecc9d111d626b7c9836757c31d4972c25f
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114472079"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692451"
 ---
 # <a name="create-a-windows-virtual-desktop-image-using-azure-vm-image-builder-and-powershell"></a>Azure VM Image Builder と PowerShell を使用して Windows Virtual Desktop イメージを作成する
+
+**適用対象:** :heavy_check_mark: Windows VM 
 
 この記事では、次のようなカスタマイズを行って Windows Virtual Desktop イメージを作成する方法について説明します。
 
@@ -274,7 +276,7 @@ $getStatus.LastRunStatusRunSubState
 ## <a name="create-a-vm"></a>VM の作成
 これでビルドが完了したしたので、イメージから VM を作成できます。[New-AzVM (Az.Compute)](/powershell/module/az.compute/new-azvm#examples) の例を使用してください。
 
-## <a name="clean-up"></a>クリーンアップ
+## <a name="clean-up"></a>クリーンアップする
 
 まず、リソース グループ テンプレートを削除します (リソース グループ全体は削除しないでください)。そうしないと、AIB で使用されているステージング リソース グループ (*IT_* ) が消去されません。
 

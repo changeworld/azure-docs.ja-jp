@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 3/15/2021
 ms.custom: template-concept,references_regions
-ms.openlocfilehash: ec1911911653b8c176d92ad3216c64f7fd1a836e
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 052a59ede2acc751d6847646ca1b103de0c1b78a
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112295581"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122446456"
 ---
 # <a name="azure-private-link-availability"></a>Azure Private Link の可用性
 
@@ -94,11 +94,11 @@ Azure Private Link を使用すると、お使いの仮想ネットワーク内�
 ### <a name="storage"></a>ストレージ
 |サポートされているサービス  |対応リージョン | その他の考慮事項 | Status  |
 |:-------------------|:-----------------|:----------------|:--------|
-| Azure Blob storage (Data Lake Storage Gen2 を含む)       |  すべてのパブリック リージョン<br/> すべての Government リージョン       |  アカウントの種類 General Purpose V2 でサポートされます | GA <br/> [Blob Storage のプライベート エンドポイントを作成する方法を確認します。](tutorial-private-endpoint-storage-portal.md)  |
+| Azure Blob storage (Data Lake Storage Gen2 を含む)       |  すべてのパブリック リージョン<br/> すべての Government リージョン       |  アカウントの種類 General Purpose V2 のみでサポートされます | GA <br/> [Blob Storage のプライベート エンドポイントを作成する方法を確認します。](tutorial-private-endpoint-storage-portal.md)  |
 | Azure Files | すべてのパブリック リージョン<br/> すべての Government リージョン      | |   GA <br/> [Azure Files ネットワーク エンドポイントを作成する方法を確認します。](../storage/files/storage-files-networking-endpoints.md)   |
 | Azure File Sync | すべてのパブリック リージョン      | |   GA <br/> [Azure Files ネットワーク エンドポイントを作成する方法を確認します。](../storage/file-sync/file-sync-networking-endpoints.md)   |
-| Azure Queue Storage       |  すべてのパブリック リージョン<br/> すべての Government リージョン       |  アカウントの種類 General Purpose V2 でサポートされます | GA <br/> [Queue storage のプライベート エンドポイントを作成する方法を確認します。](tutorial-private-endpoint-storage-portal.md) |
-| Azure Table Storage       |  すべてのパブリック リージョン<br/> すべての Government リージョン       |  アカウントの種類 General Purpose V2 でサポートされます | GA <br/> [Table Storage のプライベート エンドポイントを作成する方法を確認します。](tutorial-private-endpoint-storage-portal.md)  |
+| Azure Queue Storage       |  すべてのパブリック リージョン<br/> すべての Government リージョン       |  アカウントの種類 General Purpose V2 のみでサポートされます | GA <br/> [Queue storage のプライベート エンドポイントを作成する方法を確認します。](tutorial-private-endpoint-storage-portal.md) |
+| Azure Table Storage       |  すべてのパブリック リージョン<br/> すべての Government リージョン       |  アカウントの種類 General Purpose V2 のみでサポートされます | GA <br/> [Table Storage のプライベート エンドポイントを作成する方法を確認します。](tutorial-private-endpoint-storage-portal.md)  |
 | Azure Batch | 以下を除くすべてのパブリック リージョン:ドイツ中部、ドイツ北東部 <br/> すべての Government リージョン  | | GA <br/> [Azure Batch のプライベート エンドポイントを作成する方法を確認します。](../batch/private-connectivity.md) |
 
 ### <a name="web"></a>Web

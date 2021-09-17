@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 4/23/2021
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: a06a488473264a992d947ef78ad69c61776d34ae
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.openlocfilehash: 11f8c7ddd7e06e9cc4c27173d5bb8f9dd14cbd42
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122271209"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122768474"
 ---
 # <a name="virtual-network-service-tags"></a>仮想ネットワーク サービス タグ
 <a name="network-service-tags"></a>
@@ -87,6 +87,7 @@ ms.locfileid: "122271209"
 | **AzureSignalR** | Azure SignalR。 | 送信 | いいえ | いいえ |
 | **AzureSiteRecovery** | Azure Site Recovery。<br/><br/>*注:* このタグは、**AzureActiveDirectory**、**AzureKeyVault**、**EventHub**、**GuestAndHybridManagement**、および **Storage** タグに依存します。 | 送信 | いいえ | いいえ |
 | **AzureTrafficManager** | Azure Traffic Manager プローブ IP アドレス。<br/><br/>Traffic Manager プローブ IP アドレスについて詳しくは、「[Traffic Manager についてよく寄せられる質問 (FAQ)](../traffic-manager/traffic-manager-faqs.md)」をご覧ください。 | 受信 | いいえ | はい |  
+| **AzureUpdateDelivery** | Windows Update へのアクセス用。 <br/><br/>*注:* このタグにより、Windows Update メタデータ サービスへのアクセスが提供されます。 更新プログラムを正常にダウンロードするには、**AzureFrontDoor.FirstParty** サービス タグも有効にして、次のように定義されたプロトコルとポートを使用してアウトバウンド セキュリティ規則を構成する必要があります。 <ul><li>AzureUpdateDelivery: TCP、ポート 443</li><li>AzureFrontDoor.FirstParty: TCP、ポート 80</li></ul>*現在、このタグは Azure portal 経由で構成できません。*| 送信 | いいえ | いいえ |  
 | **BatchNodeManagement** | Azure Batch 専用デプロイのための管理トラフィック。 | 両方 | いいえ | はい |
 | **CognitiveServicesManagement** | Azure Cognitive Services のトラフィックのアドレス範囲。 | 両方 | いいえ | いいえ |
 | **DataFactory**  | Azure Data Factory | 両方 | いいえ | いいえ |
@@ -110,6 +111,7 @@ ms.locfileid: "122271209"
 | **SqlManagement** | SQL 専用デプロイのための管理トラフィック。 | 両方 | いいえ | はい |
 | **Storage** | Azure Storage です。 <br/><br/>*注:* このタグはサービスだけを表し、サービスの特定のインスタンスは表しません。 たとえば、このタグは Azure Storage サービスを表しますが、特定の Azure Storage アカウントは表しません。 | 送信 | はい | はい |
 | **StorageSyncService** | ストレージ同期サービス。 | 両方 | いいえ | いいえ |
+| **WindowsAdminCenter** | Windows Admin Center バックエンド サービスが Windows Admin Center のお客様のインストールと通信できるようにします。 *注: 現在、このタグは Azure portal で構成することはできません。* | 送信 | いいえ | はい |
 | **WindowsVirtualDesktop** | Windows Virtual Desktop。 | 両方 | いいえ | はい |
 | **VirtualNetwork** | 仮想ネットワーク アドレス空間 (仮想ネットワークに対して定義されているすべての IP アドレスの範囲)、すべての接続されたオンプレミスのアドレス空間、[ピアリング](virtual-network-peering-overview.md)された仮想ネットワーク、[仮想ネットワーク ゲートウェイ](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%3ftoc.json)に接続された仮想ネットワーク、[ホストの仮想 IP アドレス](./network-security-groups-overview.md#azure-platform-considerations)、および[ユーザーが定義したルート](virtual-networks-udr-overview.md)で使用されるアドレス プレフィックス。 このタグには、既定のルートも含まれる場合もあります。 | 両方 | いいえ | いいえ |
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: jushiman
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 2f7af8ebc054b49df03a7f03c512db08a5098f2b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5de4c52015a8282591edeee6de9fd27aae042324
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121723019"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122770664"
 ---
 # <a name="hotpatch-for-new-virtual-machines-preview"></a>新しい仮想マシンのホットパッチ (プレビュー)
 
@@ -24,7 +24,7 @@ ms.locfileid: "121723019"
 > 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 > [!NOTE]
-> ホットパッチ機能は、次の _Windows Server Azure Edition_ イメージのいずれかにあります: Windows Server 2019 Datacenter: Azure Edition (Core)、Windows Server 2022 Datacenter: Azure Edition (Core)
+> ホットパッチは、"_Windows Server 2022 Datacenter: Azure Edition (コア) プレビュー_" で評価できます。  "_Windows Server 2019 Datacenter: Azure Edition プレビュー_" でのホットパッチは、評価できなくなりました。
 
 ホット パッチの適用は、サポートされている _Windows Server Azure Edition_ の仮想マシン (VM) に更新プログラムをインストールするための新しい方法であり、インストール後に再起動を必要としません。 この記事では、サポートされている _Windows Server Azure Edition_ の VM を対象にしたホットパッチについて説明します。これの利点は次のとおりです。
 * 再起動の回数が減り、ワークロードへの影響が少ない
@@ -218,7 +218,7 @@ VM ゲストの自動パッチ適用を使用すると、VM は利用可能な�
 
 ### <a name="can-i-upgrade-from-my-existing-windows-server-os"></a>既存の Windows Server OS からアップグレードできますか?
 
-* Windows Server の既存バージョン (Windows Server 2016 または 2019 の Azure でないエディション) から _Windows Server 2022 Datacenter: Azure Edition_ へのアップグレードはサポートされています。 _Windows Server 2019 Datacenter: Azure Edition_ へのアップグレードはサポートされていません。
+* はい、Windows Server の既存バージョン (Windows Server 2016 や Windows Server 2019 など) から _Windows Server 2022 Datacenter: Azure Edition_ へのアップグレードはサポートされています。 
 
 ### <a name="can-i-use-hotpatch-for-production-workloads-during-the-preview"></a>プレビュー期間中に、ホットパッチを実稼働ワークロードに使用できますか?
 

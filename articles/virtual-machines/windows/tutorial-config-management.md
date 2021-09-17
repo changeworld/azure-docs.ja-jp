@@ -9,14 +9,15 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 2b624f43a892c3b3fc07a7128a18dc9cc66736f8
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: c31c77fee8f4a9706f4c7d2ad0c39d89d1327d78
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110668113"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122689290"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-windows-virtual-machine-in-azure"></a>チュートリアル:Azure で変更を監視し、Windows 仮想マシンを更新する
+**適用対象:** :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット 
 
 Azure [Change Tracking](../../automation/change-tracking/overview.md) と [Update Management](../../automation/update-management/overview.md) を使用すると、Azure の Windows 仮想マシンの変更を簡単に識別し、それらの VM のオペレーティング システムの更新を管理できます。
 

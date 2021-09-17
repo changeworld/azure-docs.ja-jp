@@ -9,14 +9,16 @@ ms.subservice: trusted-launch
 ms.topic: how-to
 ms.date: 04/06/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 15386baa369b18678ef84ebed8144d358fa8177f
-ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
+ms.openlocfilehash: bcc91283c29aaef251c2a18422e90090c56a6298
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109839367"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122688920"
 ---
 # <a name="deploy-a-vm-with-trusted-launch-enabled-preview"></a>トラステッド起動を有効にして VM をデプロイする (プレビュー)
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット
 
 [トラステッド起動](trusted-launch.md)は、[第 2 世代](generation-2.md)の VM のセキュリティを向上させる手段です。 トラステッド起動を使用すると、vTPM やセキュア ブートのようなインフラストラクチャ テクノロジを組み合わせることによって、高度で永続的な攻撃手法から保護されます。
 

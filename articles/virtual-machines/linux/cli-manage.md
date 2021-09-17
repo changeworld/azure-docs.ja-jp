@@ -1,19 +1,21 @@
 ---
 title: 一般的な Azure CLI コマンド
 description: Azure Resource Manager モードで VM を管理する際に使用する一般的な Azure CLI コマンドについて説明します
-author: RicksterCDN
+author: cynthn
 ms.service: virtual-machines
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/12/2017
-ms.author: rclaus
-ms.openlocfilehash: 2084d79ecbbc53ef9e3c75bae0664eae7de0eccb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: cynthn
+ms.openlocfilehash: 64f028059504d7d4ff7905653146add0649ecd2f
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102559632"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122697005"
 ---
 # <a name="common-azure-cli-commands-for-managing-azure-resources"></a>Azure リソースを管理するための一般的な Azure CLI コマンド
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット 
 
 Azure CLI を使用すると、macOS、Linux、Windows 上の Azure リソースを作成および管理できます。 この記事では、仮想マシン (VM) の作成および管理に使用する最も一般的なコマンドの一部について詳しく説明します。
 
@@ -58,5 +60,5 @@ Azure CLI を使用すると、macOS、Linux、Windows 上の Azure リソース
 | イメージからの VM の作成 | `az vm create --resource-group myResourceGroup --name myNewVM --image myImage` |
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 CLI コマンドの他の例については、チュートリアル「[Azure CLI を使用した Linux VM の作成と管理](tutorial-manage-vm.md)」を参照してください。

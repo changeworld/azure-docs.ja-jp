@@ -1,7 +1,7 @@
 ---
 title: ONNX を使用してデプロイと予測を行う
 titleSuffix: SQL machine learning
-description: モデルをトレーニングし、ONNX に変換して、Azure SQL Edge または Azure SQL Managed Instance にデプロイし、アップロードされた ONNX モデルを使用してネイティブ PREDICT をデータに対して実行する方法について説明します。
+description: モデルをトレーニングし、ONNX に変換して、Azure SQL Edge にデプロイした後、アップロードされた ONNX モデルを使用してデータに対してネイティブ PREDICT を実行する方法について説明します。
 keywords: SQL Edge をデプロイする
 ms.prod: sql
 ms.technology: machine-learning
@@ -9,16 +9,16 @@ ms.topic: quickstart
 author: dphansen
 ms.author: davidph
 ms.date: 05/06/2021
-ms.openlocfilehash: bd85ab065e7b3e2500cbbee262c5f7f4ddfb5c39
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: 91732c44833b23f01295e2f5ca1718bbcb5dd2aa
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109634007"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739746"
 ---
 # <a name="deploy-and-make-predictions-with-an-onnx-model-and-sql-machine-learning"></a>ONNX モデルおよび SQL 機械学習を使用したデプロイと予測
 
-このクイックスタートでは、モデルをトレーニングし、ONNX に変換して、[Azure SQL Edge](onnx-overview.md) または [Azure SQL Managed Instance](../azure-sql/managed-instance/machine-learning-services-overview.md) にデプロイし、アップロードされた ONNX モデルを使用してネイティブ PREDICT をデータに対して実行する方法について説明します。
+このクイックスタートでは、モデルをトレーニングし、ONNX に変換して、[Azure SQL Edge](onnx-overview.md) にデプロイした後、アップロードされた ONNX モデルを使用してデータに対してネイティブ PREDICT を実行する方法について説明します。
 
 このクイックスタートは **scikit-learn** に基づいており、[Boston Housing データセット](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_boston.html)を使用します。
 
@@ -227,7 +227,7 @@ MSE are equal
 
 ## <a name="insert-the-onnx-model"></a>ONNX モデルを挿入する
 
-Azure SQL Edge または Azure SQL Managed Instance で、`onnx` データベースの `models` テーブルにモデルを格納します。 接続文字列に、**サーバー アドレス**、**ユーザー名**、**パスワード** を指定します。
+Azure SQL Edge の `onnx` データベースの `models` テーブルにモデルを格納します。 接続文字列に、**サーバー アドレス**、**ユーザー名**、**パスワード** を指定します。
 
 ```python
 import pyodbc
@@ -398,4 +398,3 @@ FROM PREDICT(MODEL = @model, DATA = predict_input, RUNTIME=ONNX) WITH (variable1
 ## <a name="next-steps"></a>次の手順
 
 * [SQL Edge での ONNX を使用した機械学習と AI](onnx-overview.md)
-* [Azure SQL Managed Instance の Machine Learning Services](../azure-sql/managed-instance/machine-learning-services-overview.md)

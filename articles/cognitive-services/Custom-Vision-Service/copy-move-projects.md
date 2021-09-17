@@ -9,12 +9,12 @@ ms.subservice: custom-vision
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: pafarley
-ms.openlocfilehash: 3938f7f5dae00a3628e2c9e2fec21a364efac95d
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: d546726e03420b41b4ff445418e30274904c6e5c
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110084702"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122635060"
 ---
 # <a name="copy-and-move-your-custom-vision-projects"></a>Custom Vision プロジェクトをコピーして移動する
 
@@ -103,6 +103,9 @@ curl -v -X GET "{endpoint}/customvision/v3.3/Training/projects/{projectId}/expor
   "token": "string"
 }
 ```
+
+> [!TIP]
+> プロジェクトをインポートするときに "無効なトークン" エラーが発生する場合は、トークンの URL 文字列が Web エンコードされていない可能性があります。 [URL Encoder](https://meyerweb.com/eric/tools/dencoder/) を使用してトークンをエンコードできます。
 
 ## <a name="import-the-project"></a>プロジェクトをインポートする
 

@@ -8,14 +8,14 @@ ms.topic: how-to
 ms.custom: mvc
 ms.date: 05/19/2021
 ms.subservice: azure-sentinel
-ms.openlocfilehash: ba0457bef8ad4e732cffe229e850272f68a6d30f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0dbdc6be4eb5dd61545bbf761d1805824690ebc7
+ms.sourcegitcommit: deb5717df5a3c952115e452f206052737366df46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121723438"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122681370"
 ---
-# <a name="expert-configuration-options-on-premises-deployment-and-sapcontrol-log-sources"></a>エキスパートの構成オプション、オンプレミスのデプロイ、SAPControl のログ ソース
+# <a name="expert-configuration-options-on-premises-deployment-and-sapcontrol-log-sources"></a>エキスパートの構成オプション、オンプレミス デプロイ、SAPControl のログ ソース
 
 この記事では、Azure Sentinel SAP データ コネクタをエキスパートまたはカスタム プロセスに展開する方法について説明します。これには、オンプレミスのマシンと Azure Key Vault を使用して資格情報を格納する方法などが含まれます。
 
@@ -30,7 +30,7 @@ ms.locfileid: "121723438"
 
 Azure Sentinel SAP データ コネクタを展開するための基本的な前提条件は、展開方法に関係なく同じです。
 
-開始する前に、メインの [SAP データ コネクタの展開チュートリアル](sap-deploy-solution.md#prerequisites)に記載されている前提条件にシステムが準拠していることを確認してください。
+始める前に、メインの [SAP データ コネクタ展開手順](sap-deploy-solution.md#prerequisites)に記載されている前提条件にシステムが準拠していることを確認してください。
 
 詳細については、[Azure Sentinel SAP ソリューションの SAP 要件 (パブリック プレビュー)](sap-solution-detailed-requirements.md) に関するページを参照してください。
 
@@ -362,6 +362,7 @@ SAP データ コネクタをインストールしたら、SAP 関連のセキ�
 
 詳細については、次を参照してください。
 
+- [SNC を使用して Azure Sentinel SAP データ コネクタをデプロイする](sap-solution-deploy-snc.md)
 - [Azure Sentinel SAP ソリューションの詳細な SAP 要件](sap-solution-detailed-requirements.md)
 - [Azure Sentinel SAP ソリューション ログ リファレンス](sap-solution-log-reference.md)
 - [Azure Sentinel SAP ソリューション: セキュリティ コンテンツ リファレンス](sap-solution-security-content.md)

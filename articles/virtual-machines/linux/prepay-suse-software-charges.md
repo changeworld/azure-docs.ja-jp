@@ -8,14 +8,16 @@ ms.subservice: reserved-instances
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: banders
-ms.openlocfilehash: 136207afef3fef9266fadcea1e67bb0aa6a38a32
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6321058c863b6db190ec987887e61cf20ed8be50
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102549755"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692685"
 ---
 # <a name="prepay-for-azure-software-plans"></a>Azure ソフトウェア プランへの前払い
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブルなスケール セット 
 
 Azure での SUSE および RedHat ソフトウェアの使用に対して前払いすると、従量課金制のコストより費用を節約できます。 この割引は SUSE および RedHat の測定にのみ適用され、仮想マシンの使用には適用されません。 仮想マシンの予約を別に購入することで、さらに節約できます。
 

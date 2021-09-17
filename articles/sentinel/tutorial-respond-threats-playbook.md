@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Sentinel でオートメーション ルールとプレイブックを使用する'
+title: Azure Sentinel でオートメーション ルールとプレイブックを使用する
 description: このチュートリアルは、Azure Sentinel でオートメーション ルールとプレイブックを組み合わせてインシデント対応を自動化し、セキュリティ上の脅威を修復する際の参考としてご使用ください。
 services: sentinel
 documentationcenter: na
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/17/2021
 ms.author: yelevin
-ms.openlocfilehash: a9411d044a8c176387d8b9900ca56a7512c4a0de
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 152b034fe5fd5571ec58c001a8befc98c84f4107
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112458328"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737549"
 ---
 # <a name="tutorial-use-playbooks-with-automation-rules-in-azure-sentinel"></a>チュートリアル: Azure Sentinel でオートメーション ルールとプレイブックを使用する
 
@@ -33,6 +33,10 @@ ms.locfileid: "112458328"
 > * プレイブックを作成する
 > * プレイブックにアクションを追加する
 > * オートメーション ルールまたは分析ルールにプレイブックをアタッチして脅威への対応を自動化する
+
+> [!NOTE]
+> このチュートリアルでは、お客様の主なタスク (インシデントをトリアージするための自動化の作成) に関する基本的なガイダンスを提供します。 詳細については、「[Azure Sentinel のプレイブックを使用して脅威への対応を自動化する](automate-responses-with-playbooks.md)」や「[Azure Sentinel のプレイブックでトリガーとアクションを使用する](playbook-triggers-actions.md)」などの **操作方法** のセクションを参照してください。
+>
 
 ## <a name="what-are-automation-rules-and-playbooks"></a>オートメーション ルールとプレイブックとは
 
@@ -124,7 +128,7 @@ Azure Sentinel に新しいプレイブックを作成するには、これら�
    作成するプレイブックの種類に一致するトリガーを選択します。
 
     > [!NOTE]
-    > オートメーション ルールで呼び出すことができるのは、**インシデント トリガー** に基づくプレイブックだけであることに注意してください。 **アラート トリガー** に基づくプレイブックは、[分析ルール](tutorial-detect-threats-custom.md#set-automated-responses-and-create-the-rule)で直接実行されるように定義する必要があります。また、手動で実行することもできます。
+    > オートメーション ルールで呼び出すことができるのは、**インシデント トリガー** に基づくプレイブックだけであることに注意してください。 **アラート トリガー** に基づくプレイブックは、[分析ルール](detect-threats-custom.md#set-automated-responses-and-create-the-rule)で直接実行されるように定義する必要があります。また、手動で実行することもできます。
     > 
     > 使用するトリガーの詳細については、[**Azure Sentinel プレイブックでのトリガーとアクションの使用**](playbook-triggers-actions.md)に関するページを参照してください
 
@@ -205,7 +209,7 @@ Azure Sentinel に新しいプレイブックを作成するには、これら�
 
 ### <a name="respond-to-alerts"></a>アラートに応答する
 
-プレイブックを使用して **アラート** に対応するには、アラートが生成されたときに実行される **分析ルール** を作成 (または既存のものを編集) し、[分析ルール ウィザード](tutorial-detect-threats-custom.md)で、自動化された対応として自分のプレイブックを選択します。
+プレイブックを使用して **アラート** に対応するには、アラートが生成されたときに実行される **分析ルール** を作成 (または既存のものを編集) し、[分析ルール ウィザード](detect-threats-custom.md)で、自動化された対応として自分のプレイブックを選択します。
 
 1. Azure Sentinel のナビゲーション メニューの **[Analytics]** ブレードから、対応を自動化したい分析ルールを選択し、詳細ペインの **[編集]** をクリックします。
 

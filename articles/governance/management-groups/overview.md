@@ -1,15 +1,14 @@
 ---
 title: 管理グループを使用してリソースを整理する - Azure Governance
 description: 管理グループ、そのアクセス許可のしくみ、その使用方法について説明します。
-ms.date: 04/28/2021
+ms.date: 08/17/2021
 ms.topic: overview
-ms.custom: contperf-fy21q1
-ms.openlocfilehash: b3624500632d0f02d4b255aef6b836ee0491ff83
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 541ac526ba7105322cb00a7fd26f1c7075af0a60
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108733622"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323004"
 ---
 # <a name="what-are-azure-management-groups"></a>Azure 管理グループとは
 
@@ -190,6 +189,10 @@ Marketing 管理グループに定義されたカスタム ロールがあると
 **例外**: ターゲットまたは既存の親管理グループがルート管理グループである場合、この管理の要件は必要ありません。 すべての新しい管理グループとサブスクリプションは既定でルート管理グループに追加されるため、項目を移動するためにこのグループに対するアクセス許可は不要です。
 
 サブスクリプションの所有者ロールが現在の管理グループから継承される場合、移動先は制限されます。 サブスクリプションは、所有者ロールを持つ別の管理グループにのみ移動できます。 サブスクリプションの所有者ではなくなってしまうので、ご自分が共同作成者である管理グループには移動できません。 サブスクリプションの所有者ロールに (管理グループから継承しているのではなく) 直接割り当てられている場合、ご自分が共同作成者である任意の管理グループに移動できます。
+
+> [!IMPORTANT]
+> Azure Resource Manager では、管理グループの階層の詳細が最大 30 分間キャッシュされます。
+> そのため、管理グループの移動が Azure portal にすぐに反映されない場合があります。 
 
 ## <a name="audit-management-groups-using-activity-logs"></a>アクティビティ ログを使用した監査管理グループ
 

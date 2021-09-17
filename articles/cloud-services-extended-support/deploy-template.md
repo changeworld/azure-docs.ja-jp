@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 10ebb60caed4bb42bb8e8d8351b465d692eaaf0a
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: de46eb9fca550d95caa8aa5d42449ab10d1bb9a2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114445095"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741123"
 ---
 # <a name="deploy-a-cloud-service-extended-support-using-arm-templates"></a>ARM テンプレートを使用してクラウド サービス (延長サポート) をデプロイする
 
@@ -109,7 +109,30 @@ ms.locfileid: "114445095"
           ] 
     ```
  
-3. ネットワーク プロファイル オブジェクトを作成し、ロード バランサーのフロントエンドにパブリック IP アドレスを関連付けます。 ロード バランサーは、プラットフォームによって自動的に作成されます。
+3. テンプレート内に仮想ネットワークまたはパブリック IP をデプロイする場合は、適切な `dependsOn` 参照を追加して、クラウド サービス (拡張サポート) オブジェクトを作成します。 
+
+    ```json
+    {
+      "apiVersion": "2021-03-01",
+      "type": "Microsoft.Compute/cloudServices",
+      "name": "[variables('cloudServiceName')]",
+      "location": "[parameters('location')]",
+      "tags": {
+        "DeploymentLabel": "[parameters('deploymentLabel')]",
+        "DeployFromVisualStudio": "true"
+      },
+      "dependsOn": [
+        "[concat('Microsoft.Network/virtualNetworks/', parameters('vnetName'))]",
+        "[concat('Microsoft.Network/publicIPAddresses/', parameters('publicIPName'))]"
+      ],
+      "properties": {
+        "packageUrl": "[parameters('packageSasUri')]",
+        "configurationUrl": "[parameters('configurationSasUri')]",
+        "upgradeMode": "[parameters('upgradeMode')]"
+      }
+    }
+    ```
+4. このクラウド サービスにネットワーク プロファイル オブジェクトを作成し、ロード バランサーのフロントエンドにパブリック IP アドレスを関連付けます。 ロード バランサーは、プラットフォームによって自動的に作成されます。 
 
     ```json
     "networkProfile": { 
@@ -135,7 +158,7 @@ ms.locfileid: "114445095"
     ```
  
 
-4. ARM テンプレートの  `OsProfile` セクションに、キー コンテナーの参照を追加します。 キー コンテナーは、クラウド サービス (延長サポート) に関連付けられている証明書を格納するために使用します。 証明書をキー コンテナーに追加してから、サービス構成 (.cscfg) ファイル内でその証明書の拇印を参照します。 また、Cloud Services (延長サポート) リソースがキー コンテナーからシークレットとして格納されている証明書を取得できるようにするために、キー コンテナーで "[Azure Virtual Machines (展開用)]" に対する "アクセス ポリシー" を (ポータル上で) 有効にする必要があります。 このキー コンテナーは、一意の名前を使用したうえで、クラウド サービスと同じリージョンおよびサブスクリプションに配置する必要があります。 詳細については、[Cloud Services (延長サポート) で証明書を使用する方法](certificates-and-key-vault.md)に関するページを参照してください。
+5. ARM テンプレートの  `OsProfile` セクションに、キー コンテナーの参照を追加します。 キー コンテナーは、クラウド サービス (延長サポート) に関連付けられている証明書を格納するために使用します。 証明書をキー コンテナーに追加してから、サービス構成 (.cscfg) ファイル内でその証明書の拇印を参照します。 また、Cloud Services (延長サポート) リソースがキー コンテナーからシークレットとして格納されている証明書を取得できるようにするために、キー コンテナーで "[Azure Virtual Machines (展開用)]" に対する "アクセス ポリシー" を (ポータル上で) 有効にする必要があります。 このキー コンテナーは、一意の名前を使用したうえで、クラウド サービスと同じリージョンおよびサブスクリプションに配置する必要があります。 詳細については、[Cloud Services (延長サポート) で証明書を使用する方法](certificates-and-key-vault.md)に関するページを参照してください。
      
     ```json
     "osProfile": { 
@@ -159,7 +182,7 @@ ms.locfileid: "114445095"
     > - certificateUrl は、キー コンテナー内の証明書に移動し、 **[シークレット識別子]** というラベルの箇所を見ると確認できます。  
    >  - certificateUrl は、 https://{keyvault-endpoin}/secrets/{secretname}/{secret-id} の形式です。
 
-5. ロール プロファイルを作成します。 ロールの数、ロールの名前、各ロールのインスタンス数、およびサイズが、サービス構成 (.cscfg)、サービス定義 (.csdef)、および ARM テンプレートのロール プロファイル セクションのいずれにおいても同じになっていることを確認します。
+6. ロール プロファイルを作成します。 ロールの数、ロールの名前、各ロールのインスタンス数、およびサイズが、サービス構成 (.cscfg)、サービス定義 (.csdef)、および ARM テンプレートのロール プロファイル セクションのいずれにおいても同じになっていることを確認します。
     
     ```json
     "roleProfile": {
@@ -184,7 +207,7 @@ ms.locfileid: "114445095"
     }   
     ```
 
-6. (省略可能) クラウド サービスに拡張機能を追加する拡張機能プロファイルを作成します。 この例では、リモート デスクトップ拡張機能と Microsoft Azure Diagnostics 拡張機能を追加します。
+7. (省略可能) クラウド サービスに拡張機能を追加する拡張機能プロファイルを作成します。 この例では、リモート デスクトップ拡張機能と Microsoft Azure Diagnostics 拡張機能を追加します。
    > [!Note] 
    > リモート デスクトップのパスワードは、長さが 8 から 123 文字であり、パスワードの複雑さに関する次の要件のうち 3 つ以上を満たしている必要があります。1) 大文字が含まれている 2) 小文字が含まれている 3) 数字が含まれている 4) 特殊文字が含まれている 5) 制御文字は使用できない
 
@@ -220,7 +243,7 @@ ms.locfileid: "114445095"
         }
     ```
 
-7. テンプレート全体を確認します。
+8. テンプレート全体を確認します。
 
     ```json
     {
@@ -448,7 +471,7 @@ ms.locfileid: "114445095"
     }
     ```
 
-8. テンプレートとパラメーター ファイル (テンプレート ファイルでパラメーターを定義) をデプロイして、クラウド サービス (延長サポート) デプロイを作成します。 必要に応じて、こちらの[サンプル テンプレート](https://github.com/Azure-Samples/cloud-services-extended-support)を参照してください。
+9. テンプレートとパラメーター ファイル (テンプレート ファイルでパラメーターを定義) をデプロイして、クラウド サービス (延長サポート) デプロイを作成します。 必要に応じて、こちらの[サンプル テンプレート](https://github.com/Azure-Samples/cloud-services-extended-support)を参照してください。
 
     ```powershell
     New-AzResourceGroupDeployment -ResourceGroupName "ContosOrg" -TemplateFile "file path to your template file" -TemplateParameterFile "file path to your parameter file"

@@ -1,22 +1,25 @@
 ---
-title: Azure Data Factory の Azure Functions アクティビティ
-description: Azure Functions アクティビティを使用して、Data Factory パイプライン内で Azure Functions を実行する方法について説明します
+title: Azure 関数アクティビティ
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Azure 関数アクティビティを使用して、Azure Data Factory または Azure Synapse Analytics パイプライン内で Azure 関数を実行する方法について説明します
 author: nabhishek
 ms.author: abnarain
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: orchestration
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 01/09/2019
-ms.openlocfilehash: 202cf30ae0f620789f300404b26ba04582ea3300
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.date: 08/24/2021
+ms.openlocfilehash: 4e62ea4c57e00695b2a2f969b9fd4f80f8298681
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107906730"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122824085"
 ---
 # <a name="azure-function-activity-in-azure-data-factory"></a>Azure Data Factory の Azure Functions アクティビティ
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
-Azure Functions アクティビティを使用すると、Data Factory パイプライン内で [Azure Functions](../azure-functions/functions-overview.md) を実行できます。 Azure Functions を実行するには、リンクされたサービスの接続と、実行する Azure Functions を指定するアクティビティを作成する必要があります。
+Azure 関数アクティビティを使用すると、Azure Data Factory または Azure Synapse Analytics パイプライン内で [Azure Functions](../azure-functions/functions-overview.md) を実行できます。 Azure Functions を実行するには、リンクされたサービスの接続と、実行する Azure Functions を指定するアクティビティを作成する必要があります。
 
 この機能の概要とデモンストレーションについては、以下の 8 分間の動画を視聴してください。
 
@@ -24,7 +27,11 @@ Azure Functions アクティビティを使用すると、Data Factory パイプ
 
 ## <a name="azure-function-linked-service"></a>Azure Functions のリンクされたサービス
 
+
 Azure Functions の戻り値の型は、有効な `JObject` である必要があります。 ([JArray](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JArray.htm) は `JObject` では "*ない*" ことに留意してください。)`JObject`以外の戻り値の型が失敗し、ユーザー エラー *応答コンテンツは有効な JObject ではない* が発生します。
+
+関数キーを使用すると、関数アプリ内で個別の一意のキーまたはマスター キーを持つ関数名に安全にアクセスできます。 マネージド ID は、関数アプリ全体への安全なアクセスを提供します。 ユーザーは、関数名にアクセスするためにキーを指定する必要があります。 [関数アクセス キー](../azure-functions/functions-bindings-http-webhook-trigger.md?tabs=csharp#configuration)の詳細については、関数のドキュメントを参照してください
+
 
 | **プロパティ** | **説明** | **必須** |
 | --- | --- | --- |
@@ -63,8 +70,8 @@ Azure Functions は、設定で構成した`functionTimeout`設定に関係無�
 
 ## <a name="sample"></a>サンプル
 
-Azure Functions を使用して tar ファイルのコンテンツを抽出する Data Factory のサンプルについては、[こちら](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV2/UntarAzureFilesWithAzureFunction)を参照してください。
+Azure Functions を使用して tar ファイルのコンテンツを抽出するサンプルについては、[こちら](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV2/UntarAzureFilesWithAzureFunction)を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-[Azure Data Factory のパイプラインとアクティビティ](concepts-pipelines-activities.md)について学習する。
+サポートされているアクティビティの詳細については、「[パイプラインとアクティビティ](concepts-pipelines-activities.md)」を参照してください。

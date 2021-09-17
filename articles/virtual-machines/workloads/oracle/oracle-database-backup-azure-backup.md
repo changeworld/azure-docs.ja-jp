@@ -9,14 +9,16 @@ ms.topic: article
 ms.date: 01/28/2021
 ms.author: cholse
 ms.reviewer: dbakevlar
-ms.openlocfilehash: 31bb35a096845c489b0f141a601ee604253e6ef9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fd6826370a0292190fc2534585fdb08f7982f447
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121738986"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122698700"
 ---
 # <a name="back-up-and-recover-an-oracle-database-19c-database-on-an-azure-linux-vm-using-azure-backup"></a>Azure Backup を使用して Azure Linux VM で Oracle Database 19c データベースをバックアップおよび回復する
+
+**適用対象:** :heavy_check_mark: Linux VM 
 
 この記事では、Azure Backup を使用して、データベース ファイルと高速回復領域が含まれている、VM ディスクのディスク スナップショットを作成する方法について説明します。 Azure Backup を使用すると、バックアップとして適した完全なディスク スナップショットを作成できます。これらは [Recovery Services コンテナー](../../../backup/backup-azure-recovery-services-vault-overview.md)に格納されます。  また、Azure Backup は、アプリケーション整合性バックアップを提供することで、追加の修正なしでデータを復元できるようにもします。 アプリケーション整合性データの復元により復元時間が短縮され、迅速に実行状態に戻ることができます。
 

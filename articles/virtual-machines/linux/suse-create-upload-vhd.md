@@ -9,15 +9,16 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: danis
-ms.openlocfilehash: 7788d7e7a8aa92d4c06b0895c5bea000e13e2d85
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: 30246166650cddc1c89fa3a2ca377c163fb5847b
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109713128"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122697752"
 ---
 # <a name="prepare-a-sles-or-opensuse-leap-virtual-machine-for-azure"></a>Azure 用の SLES または openSUSE Leap 仮想マシンの準備を行う
 
+**適用対象:** :heavy_check_mark: Linux VMs :heavy_check_mark: フレキシブル スケール セット **適用対象:** :heavy_check_mark: ユニフォーム スケール セット
 
 この記事は、SUSE または openSUSE Leap Linux オペレーティング システムが既に仮想ハード ディスクにインストールしてある前提で書かれています。 .vhd ファイルを作成するツールは、Hyper-V のような仮想化ソリューションなど複数あります。 詳細については、「 [Hyper-V の役割のインストールと仮想マシンの構成](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh846766(v=ws.11))」を参照してください。
 

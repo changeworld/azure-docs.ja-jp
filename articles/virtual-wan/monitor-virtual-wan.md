@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 06/30/2021
 ms.author: cherylmc
-ms.openlocfilehash: 25e12ce4fd361cb053eae8b0d9992031a91d4616
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: d3cffbe9ebaa71ca5c4dfd8681159f83ff06eb38
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114469018"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122821466"
 ---
 # <a name="monitoring-virtual-wan"></a>Virtual WAN の監視
 
@@ -34,16 +34,42 @@ Azure Monitor において、メトリックは特定の時点におけるシス
 
 Azure サイト間 VPN ゲートウェイでは、次のメトリックを利用できます。
 
+#### <a name="tunnel-packet-drop-metrics"></a>トンネル パケット破棄メトリック
+| メトリック | 説明|
+| --- | --- |
+| **トンネル エグレス パケット破棄数** | トンネルによって破棄された送信パケットの数。|
+| **トンネル イングレス パケット破棄数** | トンネルによって破棄された受信パケットの数。|
+| **トンネルでの NAT パケットの切断** | 破棄の種類と NAT 規則別のトンネルで破棄された NAT 処理パケットの数。|
+| **Tunnel Egress TS Mismatch Packet Drop (トンネル エグレス TS 不一致パケット破棄数)** | トンネルのトラフィック セレクター不一致からの送信パケット破棄数。|
+| **Tunnel Ingress TS Mismatch Packet Drop (トンネル イングレス TS 不一致パケット破棄数)** | トンネルのトラフィック セレクター不一致からの受信パケット破棄数。|
+
+#### <a name="ipsec-metrics"></a>IPSEC メトリック
+| メトリック | 説明|
+| --- | --- |
+| **トンネル MMSA 数** | 作成または削除された MMSA の数。|
+| **トンネル QMSA 数** | 作成または削除された IPSEC QMSA の数。|
+
+#### <a name="routing-metrics"></a>ルーティング メトリック
+| メトリック | 説明|
+| --- | --- |
+| **BGP ピアの状態** | ピアごとおよびインスタンスごとの BGP 接続状態。|
+| **アドバタイズされた BGP ルート** | ピアごとおよびインスタンスごとのアドバタイズされたルートの数。|
+| **学習された BGP ルート** | ピアごとおよびインスタンスごとの学習されたルートの数。|
+| **VNET アドレス プレフィックス数** | ゲートウェイによって使用またはアドバタイズされた VNET アドレス プレフィックスの数。|
+
+**[分割の適用]** を選択し、推奨値を選択することで、ピアとインスタンスごとのメトリックを確認できます。 
+
+#### <a name="traffic-flow-metrics"></a>トラフィック フロー メトリック
 | メトリック | 説明|
 | --- | --- |
 | **ゲートウェイの帯域幅** | ゲートウェイのサイト間での平均総帯域幅 (バイト/秒)。|
 | **Tunnel Bandwidth (トンネル帯域幅)** | 平均トンネル帯域幅 (バイト/秒)。|
 | **Tunnel Egress Bytes (トンネル エグレス バイト数)** | トンネルの送信バイト数。 |
 | **Tunnel Egress Packets (トンネル エグレス パケット数)** | トンネルの送信パケット数。 |
-| **Tunnel Egress TS Mismatch Packet Drop (トンネル エグレス TS 不一致パケット破棄数)** | トンネルのトラフィック セレクター不一致からの送信パケット破棄数。|
 | **Tunnel Ingress Bytes (トンネル イングレス バイト数)** | トンネルの受信バイト数。|
 | **Tunnel Ingress Packet (トンネル イングレス パケット数)** | トンネルの受信パケット数。|
-| **Tunnel Ingress TS Mismatch Packet Drop (トンネル イングレス TS 不一致パケット破棄数)** | トンネルのトラフィック セレクター不一致からの受信パケット破棄数。|
+| **トンネル ピーク PPS** | 最後の 1 分間のリンク接続あたりの 1 秒あたりのパケット数。|
+| **トンネル フロー数** | リンク接続ごとに作成された個別のフローの数。|
 
 ### <a name="point-to-site-vpn-gateways"></a>ポイント対サイト VPN ゲートウェイ
 
@@ -53,6 +79,7 @@ Azure ポイント対サイト VPN ゲートウェイでは、次のメトリッ
 | --- | --- |
 | **ゲートウェイの P2S 帯域幅** | ゲートウェイのポイント対サイトでの平均総帯域幅 (バイト/秒)。 |
 | **P2S 接続数** |ゲートウェイのポイント対サイト接続の数。 ゲートウェイのポイント対サイト接続の数。 Azure Monitor で正確なメトリックを表示していることを確認するには、 **[P2S 接続数]** の **[集計の種類]** として **[合計]** を選択してください。 また、 **[インスタンス]** ごとにも分割する場合は、 **[最大]** を選択することもできます。 |
+| **ユーザー VPN ルート数** | VPN ゲートウェイに構成されているユーザー VPN ルートの数。 このメトリックは、**静的** ルートと **動的** ルートに分けることができます。
 
 ### <a name="azure-expressroute-gateways"></a>Azure ExpressRoute ゲートウェイ
 

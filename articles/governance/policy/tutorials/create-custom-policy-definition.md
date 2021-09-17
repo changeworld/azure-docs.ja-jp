@@ -1,14 +1,14 @@
 ---
 title: チュートリアル:カスタム ポリシー定義の作成
 description: このチュートリアルでは、Azure リソースに対してカスタム ビジネス ルールを適用するための Azure Policy のカスタム ポリシー定義を作成します。
-ms.date: 03/31/2021
+ms.date: 08/17/2021
 ms.topic: tutorial
-ms.openlocfilehash: 51b1f71985bde3a405b56514078e905042340321
-ms.sourcegitcommit: 47ac63339ca645096bd3a1ac96b5192852fc7fb7
+ms.openlocfilehash: ee7939461c6d655447ebbd32079ec2e1345a89ad
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114362154"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323619"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>チュートリアル:カスタム ポリシー定義の作成
 
@@ -44,7 +44,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ご自分の要件では、リソースの "適切な状態" と "不適切な状態" の両方を明確に特定する必要があります。
 
-リソースの想定される状態は定義してありますが、非準拠リソースをどうするかはまだ定義していません。 Azure Policy ではさまざまな[効果](../concepts/effects.md)がサポートされます。 このチュートリアルで定義するビジネス要件では、ビジネス ルールに準拠しないリソースが作成されないようにします。 この目標を達成するには、[Deny](../concepts/effects.md#deny) 効果を使用します。 また、特定の割り当てに対するポリシーを一時停止するオプションも必要です。 そのため、[Disabled](../concepts/effects.md#disabled) 効果を使用し、その効果をポリシー定義の[パラメーター](../concepts/definition-structure.md#parameters)にします。
+リソースの想定される状態は定義してありますが、非準拠リソースをどうするかはまだ定義していません。 Azure Policy では多くの[効果](../concepts/effects.md)がサポートされます。 このチュートリアルで定義するビジネス要件では、ビジネス ルールに準拠しないリソースが作成されないようにします。 この目標を達成するには、[Deny](../concepts/effects.md#deny) 効果を使用します。 また、特定の割り当てに対するポリシーを一時停止するオプションも必要です。 そのため、[Disabled](../concepts/effects.md#disabled) 効果を使用し、その効果をポリシー定義の[パラメーター](../concepts/definition-structure.md#parameters)にします。
 
 ## <a name="determine-resource-properties"></a>リソースのプロパティを判別する
 

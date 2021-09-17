@@ -8,14 +8,16 @@ ms.topic: how-to
 ms.date: 08/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 749ad687f77b497c66a96de883c6f5566054112e
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: b3226dbaa180c2d7d09b3172cecac18e2f1e7389
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113360435"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122694240"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Azure Site Recovery を使用した Premium Storage への移行
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM 
 
 [Azure Premium SSD](../disks-types.md) は、高負荷の I/O ワークロードを実行する仮想マシン (VM) に対して高パフォーマンスで待ち時間の少ないディスクのサポートを実現するサービスです。 このガイドでは、[Azure Site Recovery](../../site-recovery/site-recovery-overview.md) を使用して、ユーザーが Standard Storage アカウントから Premium Storage アカウントに VM ディスクを移行する方法について説明します。
 

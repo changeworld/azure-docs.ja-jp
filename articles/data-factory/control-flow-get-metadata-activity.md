@@ -1,23 +1,26 @@
 ---
-title: Azure Data Factory のメタデータの取得アクティビティ
-description: Data Factory パイプライン内でメタデータの取得アクティビティを使用する方法を説明します。
+title: Get Metadata アクティビティ
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Azure Data Factory または Azure Synapse Analytics パイプラインでメタデータの取得アクティビティを使用する方法について説明します。
 author: jianleishen
 ms.service: data-factory
+ms.subservice: orchestration
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 02/25/2021
+ms.date: 08/24/2021
 ms.author: jianleishen
-ms.openlocfilehash: 6c375143217379b7ec795778f8947d88b70aa4bc
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 4f619266d225e4dd36bb68ca9ebcaaae366891cb
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110062814"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122821889"
 ---
-# <a name="get-metadata-activity-in-azure-data-factory"></a>Azure Data Factory のメタデータの取得アクティビティ
+# <a name="get-metadata-activity-in-azure-data-factory-or-azure-synapse-analytics"></a>Azure Data Factory または Azure Synapse Analytics でメタデータ アクティビティを取得する
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-メタデータの取得アクティビティを使用すると、Azure Data Factory で任意のデータのメタデータを取得できます。 条件式でメタデータの取得アクティビティからの出力を使用して検証を実行することや、後続のアクティビティでメタデータを使用することができます。
+メタデータの取得アクティビティを使用すると、Azure Data Factory または Azure Synapse Analytics パイプライン内で任意のデータのメタデータを取得できます。 条件式でメタデータの取得アクティビティからの出力を使用して検証を実行することや、後続のアクティビティでメタデータを使用することができます。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -224,7 +227,7 @@ storeSettings | 書式の種類のデータセットを使用するときに適�
 ```
 
 ## <a name="next-steps"></a>次のステップ
-Data Factory でサポートされている他の制御フロー アクティビティについて学習します。
+サポートされている他の制御フロー アクティビティについて学習します。
 
 - [パイプラインの実行アクティビティ](control-flow-execute-pipeline-activity.md)
 - [ForEach アクティビティ](control-flow-for-each-activity.md)

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: e26522130d98d5e2f706a6c48002ad75b537d32a
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: a9b12750ec16ee5fe79c91e4ed931426f8dbaa36
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111964761"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122445086"
 ---
 # <a name="optimize-traffic-flow-with-azure-active-directory-application-proxy"></a>Azure Active Directory アプリケーション プロキシを使用してトラフィック フローを最適化する
 
@@ -27,7 +27,7 @@ ms.locfileid: "111964761"
 アプリケーションが Azure AD アプリケーション プロキシを通じて発行される場合、ユーザーからアプリケーションへのトラフィックはすべて、次の 3 つの接続を経由して送信されます。
 
 1. ユーザーから Azure AD アプリケーション プロキシ サービスのパブリック エンドポイントへの接続
-1. アプリケーション プロキシ サービスからアプリケーション プロキシ コネクタへの接続
+1. アプリケーション プロキシ コネクタからアプリケーション プロキシ サービスへの接続 (アウトバウンド)
 1. アプリケーション プロキシ コネクタから対象アプリケーションへの接続
 
 :::image type="content" source="./media/application-proxy-network-topology/application-proxy-three-hops.png" alt-text="ユーザーから対象アプリケーションへのトラフィック フローを示す図。" lightbox="./media/application-proxy-network-topology/application-proxy-three-hops.png":::

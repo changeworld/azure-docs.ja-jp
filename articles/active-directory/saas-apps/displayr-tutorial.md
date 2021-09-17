@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/20/2019
+ms.date: 08/12/2021
 ms.author: jeedes
-ms.openlocfilehash: 7d561f9c99641beba8a5092df447f3d18da050e9
-ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
+ms.openlocfilehash: 5f5ffb3303d60ebe080514099822ea4743e9a31f
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110190077"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122271820"
 ---
 # <a name="tutorial-integrate-displayr-with-azure-active-directory"></a>チュートリアル:Displayr と Azure Active Directory との統合
 
@@ -25,8 +25,6 @@ ms.locfileid: "110190077"
 * Displayr にアクセスできるユーザーを Azure AD で制御する。
 * ユーザーが自分の Azure AD アカウントを使用して Displayr に自動的にサインインできるようにする。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
-
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -37,50 +35,52 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 ## <a name="scenario-description"></a>シナリオの説明
 
-このチュートリアルでは、Displayr 社で Azure AD SSO を構成する方法について説明します。 Displayr では、**SP** によって開始される SSO がサポートされます
+このチュートリアルでは、Displayr 社で Azure AD SSO を構成する方法について説明します。
 
-## <a name="adding-displayr-from-the-gallery"></a>ギャラリーからの Displayr の追加
+* Displayr では、**SP** によって開始される SSO がサポートされます
+
+## <a name="add-displayr-from-the-gallery"></a>ギャラリーからの Displayr の追加
 
 Azure AD への Displayr の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Displayr を追加する必要があります。
 
-1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、Azure portal にサインインします。
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに "**Displayr**" と入力します。
 1. 結果のパネルから **[Displayr]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-## <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
+## <a name="configure-azure-ad-sso-for-displayr"></a>Displayr 用に Azure AD SSO を構成する
 
-Displayr で Azure AD SSO を構成するには、次の構成要素を完了する必要があります。
+Displayr で Azure AD SSO を構成するには、次の手順を実行します。
 
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
-2. **[Displayr の構成](#configure-displayr)** - アプリケーション側で SSO 設定を構成します。
-4. **[特定のユーザーへのアクセスを](#restrict-access-to-specific-users)** 制限して、Displayr にサインインできる Azure AD ユーザーを制限します。
-6. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
+1. **[Displayr SSO の構成](#configure-displayr-sso)** - アプリケーション側で SSO 設定を構成します。
+1. **[特定のユーザーへのアクセスを](#restrict-access-to-specific-users)** 制限して、Displayr にサインインできる Azure AD ユーザーを制限します。
+1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **Displayr** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+1. Azure portal の **Displayr** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集/ペン アイコンをクリックして設定を編集します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
 1. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
-    a. **[サインオン URL]** ボックスに、`https://<YOURDOMAIN>.displayr.com` という形式で URL を入力します。
+    a. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して値を入力します。`<YOURDOMAIN>.displayr.com`
+    
+    b. **[応答 URL]** テキスト ボックスに、URL `https://app.displayr.com/Login/ProcessSamlResponse` を入力します。
+    
+    c. **[サインオン URL]** ボックスに、`https://<YOURDOMAIN>.displayr.com` という形式で URL を入力します。
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`<YOURDOMAIN>.displayr.com`
-    
-    c. **[応答 URL]** ボックスに、「`https://app.displayr.com/Login/ProcessSamlResponse`」と入力します。
-    
     d. **[保存]** をクリックします。
 
     >[!NOTE]
-    >これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[Displayr クライアント サポート チーム](mailto:support@displayr.com)に問い合わせてください。 Azure portal の [基本的な SAML 構成] セクションに示されているパターンを参照することもできます。
+    >これらは実際の値ではありません。 これらの値を実際の識別子とサインオン URL で更新してください。 これらの値を取得するには、[Displayr クライアント サポート チーム](mailto:support@displayr.com)に問い合わせてください。 Azure portal の [基本的な SAML 構成] セクションに示されているパターンを参照することもできます。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして **証明書 (Base64)** をダウンロードし、コンピューターに保存します。
 
@@ -94,7 +94,7 @@ Displayr で Azure AD SSO を構成するには、次の構成要素を完了す
 
    a. **[グループ要求を追加する]** をクリックします。
 
-      ![各設定が選択されている [グループ要求 (プレビュー)] ウィンドウを示すスクリーンショット。](./media/displayr-tutorial/config05.png)
+      ![各設定が選択されている [グループ要求 (プレビュー)] ウィンドウを示すスクリーンショット。](./media/displayr-tutorial/claims.png)
 
    b. ラジオ ボタンのリストから **[すべてのグループ]** を選択します。
 
@@ -106,7 +106,7 @@ Displayr で Azure AD SSO を構成するには、次の構成要素を完了す
 
    ![構成 URL のコピー](common/copy-configuration-urls.png)
 
-### <a name="configure-displayr"></a>Displayr の構成
+## <a name="configure-displayr-sso"></a>Displayr SSO の構成
 
 1. Displayr 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **マイアプリによるセキュリティで保護されたサインイン拡張機能** をインストールする必要があります。
 
@@ -120,15 +120,15 @@ Displayr で Azure AD SSO を構成するには、次の構成要素を完了す
 
 4. **[User]\(ユーザー\)** アイコンをクリックし、 **[Account settings]\(アカウント設定\)** に移動します。
 
-    ![[設定] アイコンと [アカウント] が選択されていることを示すスクリーンショット。](./media/displayr-tutorial/config01.png)
+    ![[設定] アイコンと [アカウント] が選択されていることを示すスクリーンショット。](./media/displayr-tutorial/account.png)
 
 5. 上部のメニューから **[設定]** に切り替え、ページを下へスクロールして **[Configure Single Sign On (SAML)]\(シングル サインオンの構成 (SAML)\)** をクリックします。
 
-    ![[設定] タブが選択され、[Configure Single Sign On (S A M L)]\(シングル サインオンの構成 (S A M L)\) アクションが選択されていることを示すスクリーンショット。](./media/displayr-tutorial/config02.png)
+    ![[設定] タブが選択され、[Configure Single Sign On (S A M L)]\(シングル サインオンの構成 (S A M L)\) アクションが選択されていることを示すスクリーンショット。](./media/displayr-tutorial/settings.png)
 
 6. **[Single sign-on (SAML)]\(シングル サインオン (SAML)\)** ページで、次の手順に従います。
 
-    ![構成](./media/displayr-tutorial/config03.png)
+    ![構成を示すスクリーンショット。](./media/displayr-tutorial/configure.png)
 
     a. **[Enable Single Sign On (SAML)]\(シングル サインオン (SAML) を有効にする\)** ボックスをオンにします。
 
@@ -148,14 +148,16 @@ Displayr で Azure AD SSO を構成するには、次の構成要素を完了す
 
 既定では、Displayr アプリケーションを追加したテナント内のすべてのユーザーは、SSO を使用して Displayr にログインできます。 特定のユーザーまたはグループにアクセスを制限する場合、「[Azure AD アプリを Azure AD テナントの一連のユーザーに制限する](../develop/howto-restrict-your-app-to-a-set-of-users.md)」を参照してください。
 
-### <a name="test-sso"></a>SSO のテスト
+## <a name="test-sso"></a>SSO のテスト
 
-アクセス パネル上で [Displayr] タイルを選択すると、SSO を設定した Displayr 社に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-## <a name="additional-resources"></a>その他のリソース
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Displayr のサインオン URL にリダイレクトされます。 
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
+* Displayr のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
+* Microsoft マイ アプリを使用することができます。 マイ アプリの [Displayr] タイルをクリックすると、Displayr のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
-- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
+## <a name="next-steps"></a>次のステップ
+
+Displayr を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

@@ -3,12 +3,15 @@ title: ExpressRoute を仮想ネットワーク ゲートウェイに接続す�
 description: ExpressRoute を仮想ネットワーク ゲートウェイに接続する手順。
 ms.topic: include
 ms.date: 12/08/2020
-ms.openlocfilehash: a3e759c12496613848f6f0bc8de596a5099b904b
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+author: shortpatti
+ms.author: v-patsho
+ms.service: azure-vmware
+ms.openlocfilehash: 6dc579579e315ca24c940a0ed46bc51838aaed77
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114438215"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122069558"
 ---
 <!-- Used in deploy-azure-vmware-solution.md and tutorial-configure-networking.md -->
 

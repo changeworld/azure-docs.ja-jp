@@ -9,15 +9,16 @@ ms.subservice: maintenance-control
 ms.date: 04/26/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurepowershell
-ms.openlocfilehash: e23630fb0d102c10194d85d3beff1ce626fbf898
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 1f20b83d89258de2d557fc230edd57810fc13806
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110673904"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122697413"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>仮想マシン スケール セットに対する計画メンテナンスの通知
 
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: ユニフォーム スケール セット
 
 Azure は、定期的に更新を行い、仮想マシン (VM) のホスト インフラストラクチャの信頼性、パフォーマンス、セキュリティの向上に努めています。 更新には、ホスティング環境の修正や、ハードウェアのアップグレードおよび使用停止が含まれる場合があります。 更新の多くは、ホストされている VM には影響しません。 ただし、次のシナリオでは、更新によって VM に影響が及びます。
 

@@ -4,12 +4,12 @@ description: このクイックスタートでは、Azure Video Analyzer の Vis
 ms.service: azure-video-analyzer
 ms.topic: quickstart
 ms.date: 06/01/2021
-ms.openlocfilehash: dd342d1aaf8cf93bfcf518342315ad022e52f4f9
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: e3d118f2651e7b680b85bbb41bb6ecc3d7106bba
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114604010"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121745681"
 ---
 # <a name="quickstart-azure-video-analyzer-visual-studio-code-extension"></a>クイックスタート: Azure Video Analyzer の Visual Studio Code 拡張機能
 
@@ -25,7 +25,7 @@ ms.locfileid: "114604010"
 * アクティブなサブスクリプションが含まれる Azure アカウント。 まだお持ちでない場合は、無料の[アカウントを作成してください](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 * [Visual Studio Code](https://code.visualstudio.com/) と次の拡張機能。
-    * [Video Analyzer](https://go.microsoft.com/fwlink/?linkid=2163332)
+    * [Video Analyzer](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.azure-video-analyzer)
 
 * [Azure Video Analyzer の概要](./get-started-detect-motion-emit-events.md)に関するクイックスタートを完了していない場合は、[Azure リソースを設定](#set-up-azure-resources)してください。    
 
@@ -58,7 +58,7 @@ ms.locfileid: "114604010"
 
 パイプライン トポロジは、Video Analyzer で動作を定義するために使用する基本的な構成要素です。  パイプライン トポロジについては、[こちら](./pipeline.md)で詳しく確認できます。  このセクションでは、テンプレートのパイプライン トポロジをデプロイしてから、トポロジのインスタンス (ライブ パイプライン) を作成します。 ライブ パイプラインは実際のビデオ ストリームに接続されます。
 
-1.  [`Modules`] の左側で、[`Pipeline topologies`] を右クリックし、[Create pipeline topology]\(パイプライン トポロジの作成\) を選択します。
+1.  左側の `Modules` で `Pipeline topologies` を右クリックし、[`Create pipeline topology`] を選択します。
 1.  上部にある [`Try sample topologies`]、[`Motion Detection`]、[`Publish motion events to IoT Hub`] の順に選択します。  メッセージが表示されたら、`Proceed` をクリックします。
 1.  右上にある [`Save`] をクリックします。
 
@@ -67,9 +67,9 @@ ms.locfileid: "114604010"
 1.  左側の `Pipeline topologies` で `MotionDetection` を右クリックし、[`Create live pipeline`] を選択します。
 1.  [`Live pipeline name`] に「`mdpipeline1`」と入力します。
 1.  `Parameters` セクションで、次の操作を行います。
-    - [rtspPassword] には「testuser」と入力します。
+    - [rtspPassword] には「testpassword」と入力します。
     - [rtspUrl] には「rtsp://rtspsim:554/media/camera-300s.mkv」と入力します。
-    - [rtspUserName] には「testpassword」と入力します。
+    - [rtspUserName] には「testuser」と入力します。
 1.  右上にある [Save and activate]\(保存してアクティブにする\) をクリックします。
 
 これにより、トポロジのデプロイが開始され、自分のエッジ デバイスでライブ パイプラインが稼働します。  概要クイックスタートで Azure IoT Hub 拡張機能をインストールしている場合、Azure IoT Hub の Visual Studio Code 拡張機能で組み込みのイベント エンドポイントを監視して、「[結果を観察する](./get-started-detect-motion-emit-events.md#observe-results)」セクションで説明されているとおりにそれを監視できます。

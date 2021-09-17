@@ -9,14 +9,16 @@ ms.subservice: automatic-os-upgrade
 ms.date: 07/29/2021
 ms.reviewer: jushiman
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b080c741276233e671d5724b3ee72cc7b4738446
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e9e814ad43d157d69fee2b70eaaccbadf23f4fa2
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121751731"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122690517"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Azure 仮想マシン スケール セットによる OS イメージの自動アップグレード
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: ユニフォーム スケール セット
 
 スケール セットでの自動 OS イメージ アップグレードを有効にすると、スケール セット内のすべてのインスタンスの OS ディスクが安全かつ自動的にアップグレードされるようになり、更新プログラムの管理が簡素化されます。
 

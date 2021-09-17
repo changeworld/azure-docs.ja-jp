@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: overview
-ms.date: 07/25/2021
+ms.date: 08/19/2021
 ms.author: memildin
-ms.openlocfilehash: 2770c3532dd83051f9c2c7dcc770850e85aeae4b
-ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
+ms.openlocfilehash: 0e9988aa7779d85714d6e1562af78c3a5bf0e1ff
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114689577"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444693"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Azure Security Center に対する今後の重要な変更
 
@@ -26,111 +26,78 @@ ms.locfileid: "114689577"
 
 ## <a name="planned-changes"></a>計画されている変更
 
-| 計画されている変更                                                                                                                                                                                          | 変更予定日 |
-|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------|
-| [ISO 27001 のレガシ実装を新しい ISO 27001:2013 で置き換え予定](#legacy-implementation-of-iso-27001-is-being-replaced-with-new-iso-270012013)                                            | 2021 年 7 月                 |
-| [ "お使いのマシンで Log Analytics エージェントの正常性の問題を解決する必要がある" という推奨事項の廃止](#deprecating-recommendation-log-analytics-agent-health-issues-should-be-resolved-on-your-machines) | 2021 年 7 月                 |
-| [Azure Resource Manager アラート用の Azure Defender の論理的な再編成](#logical-reorganization-of-azure-defender-for-resource-manager-alerts)                                                           | 2021 年 8 月               |
-| [CSV エクスポートが 20 MB に制限される](#csv-exports-to-be-limited-to-20-mb)                                                                                                                               | 2021 年 8 月               |
-| [[Azure Defender を有効にする] セキュリティ コントロールをセキュア スコアに含める](#enable-azure-defender-security-control-to-be-included-in-secure-score)                                                         | 2021 年第 3 四半期                   |
-| [SQL データベースで機密データを分類するための推奨事項の強化](#enhancements-to-recommendation-to-classify-sensitive-data-in-sql-databases)                                               | Q1 2022                   ||                                                                                                                                                                                                         |                           |
+| 計画されている変更       | 変更予定日 |
+|----------------------|---------------------------|
+| [ISO 27001 のレガシ実装を新しい ISO 27001:2013 で置き換え予定](#legacy-implementation-of-iso-27001-is-being-replaced-with-new-iso-270012013)| 2021 年 8 月|
+| [一部のアラートの種類のプレフィックスを "ARM_" から "VM_" に変更](#changing-prefix-of-some-alert-types-from-arm_-to-vm_)                                          | 2021 年 10 月|
+| [エンドポイント保護ソリューションを管理するための推奨事項の変更](#changes-to-recommendations-for-managing-endpoint-protection-solutions)             | Q4 2021    |
+| [SQL データベースで機密データを分類するための推奨事項の強化](#enhancements-to-recommendation-to-classify-sensitive-data-in-sql-databases)   | Q1 2022    |
 
 
 ### <a name="legacy-implementation-of-iso-27001-is-being-replaced-with-new-iso-270012013"></a>ISO 27001 のレガシ実装を新しい ISO 27001:2013 で置き換え予定
 
-**変更予定日:** 2021 年 7 月
+**変更予定日:** 2021 年 8 月
 
 ISO 27001 のレガシ実装は Security Center の規制コンプライアンス ダッシュボードから削除されます。 Security Center で ISO 27001 へのコンプライアンスを追跡している場合は、関連するすべての管理グループまたはサブスクリプションに対して新しい ISO 27001:2013 標準をオンボードすると、現在のレガシ ISO 27001 が間もなくダッシュボードから削除されます。
 
 :::image type="content" source="media/upcoming-changes/removing-iso-27001-legacy-implementation.png" alt-text="ISO 27001 のレガシ実装の削除に関するメッセージが表示されている Security Center の規制コンプライアンス ダッシュボード。" lightbox="media/upcoming-changes/removing-iso-27001-legacy-implementation.png":::
 
-### <a name="deprecating-recommendation-log-analytics-agent-health-issues-should-be-resolved-on-your-machines"></a>"お使いのマシンで Log Analytics エージェントの正常性の問題を解決する必要がある" という推奨事項の廃止
+### <a name="changing-prefix-of-some-alert-types-from-arm_-to-vm_"></a>一部のアラートの種類のプレフィックスを "ARM_" から "VM_" に変更 
 
-**変更予定日:** 2021 年 7 月
+**変更予定日:** 2021 年 10 月
 
-**お使いのマシンで Log Analytics エージェントの正常性の問題を解決する必要がある** という推奨事項は、Security Center のクラウド セキュリティ態勢管理 (CSPM) の取り組みと整合性がないという点で、セキュリティ スコアに影響することがわかりました。 通常、CSPM はセキュリティ構成の誤りを特定する方法に関連するものです。 エージェントの正常性の問題は、このカテゴリの問題には該当しません。
+2021 年 7 月に、[Azure Resource Manager アラート用の Azure Defender の論理的な再編成](release-notes.md#logical-reorganization-of-azure-defender-for-resource-manager-alerts)について発表しました。 
 
-また、この推奨事項は、Security Center に関連する他のエージェントと比較した場合、特異なものです。これは、正常性の問題に関する推奨事項を持つ唯一のエージェントだからです。
+Azure Defender プランの論理的な再編成の一環として、21 個のアラートが [Azure Defender for Resource Manager](defender-for-resource-manager-introduction.md) から [Azure Defender for servers](defender-for-servers-introduction.md) に移動されました。
 
-この推奨事項は廃止になります。
+この再割り当てに合わせて、これらのアラートのプレフィックスの更新を計画しています。 次の表に示すように、"ARM_" を "VM_" に置き換える予定です。
 
-この廃止を受けて、Log Analytics エージェントのインストールに関する推奨事項についても少し変更します (**Log Analytics エージェントを ... にインストールする必要があります**)。
+| 現在の名前                                   | 変更後の名前                             |
+|------------------------------------------------|-----------------------------------------------|
+| ARM_AmBroadFilesExclusion                      | VM_AmBroadFilesExclusion                      |
+| ARM_AmDisablementAndCodeExecution              | VM_AmDisablementAndCodeExecution              |
+| ARM_AmDisablement                              | VM_AmDisablement                              |
+| ARM_AmFileExclusionAndCodeExecution            | VM_AmFileExclusionAndCodeExecution            |
+| ARM_AmTempFileExclusionAndCodeExecution        | VM_AmTempFileExclusionAndCodeExecution        |
+| ARM_AmTempFileExclusion                        | VM_AmTempFileExclusion                        |
+| ARM_AmRealtimeProtectionDisabled               | VM_AmRealtimeProtectionDisabled               |
+| ARM_AmTempRealtimeProtectionDisablement        | VM_AmTempRealtimeProtectionDisablement        |
+| ARM_AmRealtimeProtectionDisablementAndCodeExec | VM_AmRealtimeProtectionDisablementAndCodeExec |
+| ARM_AmMalwareCampaignRelatedExclusion          | VM_AmMalwareCampaignRelatedExclusion          |
+| ARM_AmTemporarilyDisablement                   | VM_AmTemporarilyDisablement                   |
+| ARM_UnusualAmFileExclusion                     | VM_UnusualAmFileExclusion                     |
+| ARM_CustomScriptExtensionSuspiciousCmd         | VM_CustomScriptExtensionSuspiciousCmd         |
+| ARM_CustomScriptExtensionSuspiciousEntryPoint  | VM_CustomScriptExtensionSuspiciousEntryPoint  |
+| ARM_CustomScriptExtensionSuspiciousPayload     | VM_CustomScriptExtensionSuspiciousPayload     |
+| ARM_CustomScriptExtensionSuspiciousFailure     | VM_CustomScriptExtensionSuspiciousFailure     |
+| ARM_CustomScriptExtensionUnusualDeletion       | VM_CustomScriptExtensionUnusualDeletion       |
+| ARM_CustomScriptExtensionUnusualExecution      | VM_CustomScriptExtensionUnusualExecution      |
+| ARM_VMAccessUnusualConfigReset                 | VM_VMAccessUnusualConfigReset                 |
+| ARM_VMAccessUnusualPasswordReset               | VM_VMAccessUnusualPasswordReset               |
+| ARM_VMAccessUnusualSSHReset                    | VM_VMAccessUnusualSSHReset                    |
 
-この変更は、セキュリティ スコアに影響を与える可能性があります。 ほとんどのサブスクリプションでは、変更によってスコアが上がることが期待できますが、インストールの推奨事項を更新すると、場合によってはスコアが下がる可能性があります。
-
-> [!TIP]
-> また、[[資産インベントリ]](asset-inventory.md) ページも、この変更の影響も受けます。マシンが監視されているか、監視されていないか、または部分的に監視されているかどうかに関する情報も表示されるためです (正常性の問題があるエージェントに言及する状態)。 
-
-
-### <a name="logical-reorganization-of-azure-defender-for-resource-manager-alerts"></a>Azure Resource Manager アラート用の Azure Defender の論理的な再編成
-
-**変更予定日:** 2021 年 8 月
-
-次に示すアラートは、現在、[Azure Defender For Resource Manager](defender-for-resource-manager-introduction.md) プランの一部として提供されています。
-
-Azure Defender プランの論理的な再編成の一環として、一部のアラートは **Azure Defender for Resource Manager** から **サーバー用 Azure Defender** に移動されます。
-
-アラートは、次の 2 つの主要原則に従って編成されます。
-
-- さまざまな種類の Azure リソースにわたるコントロールプレーンの保護を提供するアラートは、Azure Defender for Resource Manager の一部になります。
-- 特定のワークロードを保護するアラートは、そのワークロードに関連する対応する Azure Defender プランに移動されます。
-
-これらは現在、Azure Defender for Resource Manager に属するアラートであり、この変更の結果として、サーバー用 Azure Defender に移動されます。
-
-- ARM_AmBroadFilesExclusion
-- ARM_AmDisablementAndCodeExecution
-- ARM_AmDisablement
-- ARM_AmFileExclusionAndCodeExecution
-- ARM_AmTempFileExclusionAndCodeExecution
-- ARM_AmTempFileExclusion
-- ARM_AmRealtimeProtectionDisabled
-- ARM_AmTempRealtimeProtectionDisablement
-- ARM_AmRealtimeProtectionDisablementAndCodeExec
-- ARM_AmMalwareCampaignRelatedExclusion
-- ARM_AmTemporarilyDisablement
-- ARM_UnusualAmFileExclusion
-- ARM_CustomScriptExtensionSuspiciousCmd
-- ARM_CustomScriptExtensionSuspiciousEntryPoint
-- ARM_CustomScriptExtensionSuspiciousPayload
-- ARM_CustomScriptExtensionSuspiciousFailure
-- ARM_CustomScriptExtensionUnusualDeletion
-- ARM_CustomScriptExtensionUnusualExecution
-- ARM_VMAccessUnusualConfigReset
-- ARM_VMAccessUnusualPasswordReset
-- ARM_VMAccessUnusualSSHReset
-
-[Azure Defender for Resource Manager](defender-for-resource-manager-introduction.md) と[サーバー用 Azure Defender](defender-for-servers-introduction.md) の詳細を参照してください。
+[Azure Defender for Resource Manager](defender-for-resource-manager-introduction.md) プランと [Azure Defender for servers](defender-for-servers-introduction.md) プランの詳細を参照してください。
 
 
-### <a name="csv-exports-to-be-limited-to-20-mb"></a>CSV エクスポートが 20 MB に制限される
+### <a name="changes-to-recommendations-for-managing-endpoint-protection-solutions"></a>エンドポイント保護ソリューションを管理するための推奨事項の変更
 
-**変更予定日:** 2021 年 8 月
+**変更予定日:** 2021 年第 4 四半期
 
-Security Center の推奨事項に関するデータをエクスポートする場合、現在ダウンロードできるデータの量に制限はありません。
+2021 年 8 月に、お使いのマシンにエンドポイント保護ソリューションをデプロイして維持するための 2 つの新しい **プレビュー** 推奨事項が追加されました。 詳細については、[リリース ノート](release-notes.md#two-new-recommendations-for-managing-endpoint-protection-solutions-in-preview)を参照してください。
 
-:::image type="content" source="media/upcoming-changes/download-csv-report.png" alt-text="推奨事項に関するデータをエクスポートするための Security Center の [CSV レポートのダウンロード] ボタン。":::
+これらの推奨事項が一般提供されると、次の既存の推奨事項が置き換えられます。
 
-この変更により、20 MB の制限を設けます。
+- "**エンドポイント保護をお使いのマシンにインストールする必要がある**" は、次を置き換えます。
+    - [仮想マシンにエンドポイント保護ソリューションをインストールする](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/83f577bd-a1b6-b7e1-0891-12ca19d1e6df)
+    - [マシンにエンドポイント保護ソリューションをインストールする](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/383cf3bc-fdf9-4a02-120a-3e7e36c6bfee) 
 
-大量のデータをエクスポートする必要がある場合は、選択する前に使用可能なフィルターを使用するか、またはサブスクリプションのサブセットを選択してデータをバッチでダウンロードします。
+- "**Endpoint Protection の正常性の問題を、お使いのコンピューターで解決する必要があります**" は、同じ名前を持つ既存の推奨事項を置き換えます。 2 つの推奨事項には、異なる評価キーがあります。
+    - **プレビュー** 推奨事項の評価キー: 37a3689a-818e-4a0e-82ac-b1392b9bb000
+    - **GA** 推奨事項の評価キー: 3bcd234d-c9c7-c2a2-89e0-c01f419c1a8a
 
-:::image type="content" source="media/upcoming-changes/filter-subscriptions.png" alt-text="Azure portal でサブスクリプションをフィルター処理する":::
-
-詳細については、[セキュリティに関する推奨事項の CSV エクスポートの実行](continuous-export.md#manual-one-time-export-of-alerts-and-recommendations)に関するページを参照してください。
-
-### <a name="enable-azure-defender-security-control-to-be-included-in-secure-score"></a>[Azure Defender を有効にする] セキュリティ コントロールをセキュア スコアに含める
-
-**変更予定日:** 2021 年第 3 四半期
-
-Security Center のセキュリティ強化に関する推奨事項は、セキュリティ コントロールにグループ化されています。 各コントロールは、関連するセキュリティの推奨事項の論理グループであり、脆弱な攻撃対象領域を反映しています。 総合的なセキュア スコアに対する各セキュリティ コントロールの影響は、推奨事項に関するページと、「[セキュリティ コントロールとその推奨事項](secure-score-security-controls.md#security-controls-and-their-recommendations)」のコントロール リストで明確に示されています。
-
-その導入以降、 **[Azure Defender を有効にする]** コントロールの考えられる最大スコアは 0 ポイントとなりました。 **この変更により、コントロールはセキュア スコアに影響するようになります**。
-
-Azure Defender を有効にすると、Security Center の無料モードの機能を、プライベートおよび他のパブリック クラウドで実行されているワークロードまで拡張し、ハイブリッド クラウド ワークロード全体に統合されたセキュリティ管理と脅威防止機能を提供することになります。 Azure Defender の主な機能には、サーバーの統合された Microsoft Defender for Endpoint ライセンス、仮想マシンとコンテナー レジストリの脆弱性スキャン、高度な行動分析と機械学習に基づくセキュリティ アラート、およびコンテナーのセキュリティ機能などがあります。 完全なリストについては、「[Azure Security Center (無料) と有効化された Azure Defender](security-center-pricing.md)」を参照してください。
-
-この変更により、Azure Defender で保護されていないサブスクリプションのセキュア スコアに影響があります。 スコアに影響しないようにするため、この変更が発生する前に Azure Defender を有効にすることをお勧めします。 
-
-詳細については、「[クイックスタート: Azure Defender を有効にする](enable-azure-defender.md)」を参照してください。
+詳細情報:
+- [Security Center でサポートされているエンドポイント保護ソリューション](security-center-services.md#endpoint-supported)
+- [これらの推奨事項で、デプロイされたソリューションの状態を評価する方法](security-center-endpoint-protection.md)
 
 ### <a name="enhancements-to-recommendation-to-classify-sensitive-data-in-sql-databases"></a>SQL データベースで機密データを分類するための推奨事項の強化
 
@@ -141,4 +108,4 @@ Azure Defender を有効にすると、Security Center の無料モードの機�
 
 ## <a name="next-steps"></a>次のステップ
 
-製品に対する最近のすべての変更については、「[Azure Security Center の最新情報](release-notes.md)」を参照してください。
+Security Center に対する最近のすべての変更については、「[Azure Security Center の最新情報](release-notes.md)」を参照してください。

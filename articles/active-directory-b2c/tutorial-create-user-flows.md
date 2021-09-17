@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/07/2021
+ms.date: 08/17/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 26bd2a4e39f2698f47a27a08716dc3049c7b70f8
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: ce49a0a6fc249f3cea6bfdac613beade5322142f
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113106823"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323893"
 ---
 # <a name="tutorial-create-user-flows-and-custom-policies-in-azure-active-directory-b2c"></a>チュートリアル: Azure Active Directory B2C でユーザー フローとカスタム ポリシーを作成する
 
@@ -39,7 +39,7 @@ ms.locfileid: "113106823"
 
 ::: zone pivot="b2c-user-flow"
 > [!IMPORTANT]
-> ユーザー フローのバージョンを参照する方法が変更されました。 これまでは、V1 (運用対応) バージョンと V1.1 および V2 (プレビュー) バージョンが提供されていました。 今回、ユーザー フローが 2 つのバージョンに統合されました。最新の機能を備えた **推奨** ユーザー フローと **標準 (レガシ)** ユーザー フローです。 パブリック クラウドでは、すべてのレガシ プレビュー ユーザー フロー (V1.1 および V2) が、**2021 年 8 月 1 日** までに非推奨となる予定です。 詳細については、[Azure AD B2C のユーザー フローのバージョン](user-flow-versions.md)に関するページを参照してください。 *これらの変更は、Azure パブリック クラウドにのみ適用されます。その他の環境では、[レガシ ユーザー フローのバージョンの管理](user-flow-versions-legacy.md)が引き続き使用されます。* 
+> ユーザー フローのバージョンを参照する方法が変更されました。 これまでは、V1 (運用対応) バージョンと V1.1 および V2 (プレビュー) バージョンが提供されていました。 今回、ユーザー フローが 2 つのバージョンに統合されました。最新の機能を備えた **推奨** ユーザー フローと **標準 (レガシ)** ユーザー フローです。 レガシ プレビュー ユーザー フロー (V1.1 および V2) はすべて非推奨です。 詳細については、[Azure AD B2C のユーザー フローのバージョン](user-flow-versions.md)に関するページを参照してください。 *これらの変更は、Azure パブリック クラウドにのみ適用されます。その他の環境では、[レガシ ユーザー フローのバージョンの管理](user-flow-versions-legacy.md)が引き続き使用されます。* 
 ::: zone-end
 
 ## <a name="prerequisites"></a>前提条件
@@ -70,7 +70,7 @@ ms.locfileid: "113106823"
 1. Azure portal で、 **[Azure AD B2C]** を検索して選択します。
 1. **[ポリシー]** で、 **[ユーザー フロー]** を選択し、 **[新しいユーザー フロー]** を選択します。
 
-    ![[新しいユーザー フロー] ボタンが強調表示されているポータル内の [ユーザー フロー] ページ](./media/tutorial-create-user-flows/signup-signin-user-flow.png)
+    ![[新しいユーザー フロー] ボタンが強調表示されているポータル内の [ユーザー フロー] ページ](./media/tutorial-create-user-flows/sign-up-sign-in-user-flow.png)
 
 1. **[ユーザー フローを作成する]** ページで、 **[サインアップとサインイン]** ユーザー フローを選択します。
 
@@ -339,9 +339,17 @@ GitHub からカスタム ポリシー スターター パックを取得し、S
 > * プロファイル編集ユーザー フローを作成する
 > * パスワードのリセット ユーザー フローを作成する
 
-次に、Azure AD B2C を使用して、アプリケーションでユーザーをサインインおよびサインアップする方法を学習します。 下記のリンクを使用して ASP.NET Web アプリケーションに移動するか、目次の「**ユーザーを認証する**」の下にある別のアプリケーションに移動してください。
+次に、Azure AD B2C を使用して、アプリケーションでユーザーをサインインおよびサインアップする方法を学習します。 下記のリンクされたサンプル アプリに従ってください。
 
-> [!div class="nextstepaction"]
-> [チュートリアル: Azure AD B2C を使用して Web アプリケーションで認証を有効にする >](tutorial-web-app-dotnet.md)
+- [サンプル ASP.NET Core Web アプリを構成する](configure-authentication-sample-web-app.md)
+- [Web API を呼び出すサンプル ASP.NET Core Web アプリを構成する](configure-authentication-sample-web-app-with-api.md)
+- [サンプル Python Web アプリケーションで認証を構成する](configure-authentication-sample-python-web-app.md)
+- [サンプルのシングルページ アプリケーション (SPA) を構成する](configure-authentication-sample-spa-app.md)
+- [サンプル Angular シンプルページ アプリを構成する](configure-authentication-sample-angular-spa-app.md)
+- [サンプル Android モバイル アプリを構成する](configure-authentication-sample-android-app.md)
+- [サンプル iOS モバイル アプリを構成する](configure-authentication-sample-ios-app.md)
+- [サンプル WPF デスクトップ アプリケーションで認証を構成する](configure-authentication-sample-wpf-desktop-app.md)
+- [Web API で認証を有効にする](enable-authentication-web-api.md)
+- [SAML アプリケーションを構成する](saml-service-provider.md) 
 
 「[Azure AD B2C アーキテクチャ詳細情報シリーズ](https://www.youtube.com/playlist?list=PLOPotgzC07IKXXCTZcrpuLWbVe3y51kfm)」の詳細情報もご覧ください。

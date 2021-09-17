@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/04/2021
+ms.date: 07/30/2021
 ms.author: jeedes
-ms.openlocfilehash: 91f6db79b7d18dc8b34ba1712d74a92000d63528
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 362b2108fb76716b0ad8f81aa2cca4215a97a570
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104953682"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746971"
 ---
 # <a name="tutorial-azure-active-directory-sso-integration-with-kemp-loadmaster-azure-ad-integration"></a>チュートリアル:Azure Active Directory SSO と Kemp LoadMaster Azure AD integration の統合
 
@@ -33,11 +33,14 @@ ms.locfileid: "104953682"
 * Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
 * Kemp LoadMaster Azure AD integration でのシングル サインオン (SSO) が有効なサブスクリプション
 
+> [!NOTE]
+> この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
+
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Kemp LoadMaster Azure AD integration では、**IDP** Initiated SSO がサポートされます
+* Kemp LoadMaster Azure AD integration では、**IDP** Initiated SSO がサポートされます。
 
 ## <a name="add-kemp-loadmaster-azure-ad-integration-from-the-gallery"></a>ギャラリーからの Kemp LoadMaster Azure AD integration の追加
 
@@ -209,7 +212,7 @@ Kemp LoadMaster Azure AD integration に対して Azure AD SSO を構成して�
  
 ### <a name="import-idp-certificate"></a>IdP 証明書をインポートする
 
-Kemp LoadMaster Azure AD integration Web Console に移動する 
+Kemp LoadMaster Azure AD integration Web Console に移動します。 
 
 1. [Certificates and Authority]\(証明書と機関\) の [Intermediate Certificates]\(中間証明書\) をクリックします。
 
@@ -251,7 +254,7 @@ Kemp LoadMaster Azure AD integration Web Console に移動する
 
 ### <a name="set-authentication"></a>認証を設定する  
  
-Kemp LoadMaster Azure AD integration Web Console で次の手順を実行します
+Kemp LoadMaster Azure AD integration Web Console で次の手順を実行します。
 
 1. [Virtual Services]\(仮想サービス\) をクリックします。
 
@@ -273,7 +276,7 @@ Kemp LoadMaster Azure AD integration Web Console で次の手順を実行しま�
 
 ### <a name="verify-the-changes"></a>変更を確認する 
  
-アプリケーションの URL にアクセスします 
+アプリケーションの URL にアクセスします。 
 
 以前の認証されていないアクセスではなく、テナントのログイン ページが表示されます。 
 

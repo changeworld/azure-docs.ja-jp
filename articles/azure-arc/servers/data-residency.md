@@ -4,12 +4,12 @@ description: データ所在地と Azure Arc 対応サーバーに関する情�
 ms.topic: reference
 ms.date: 08/05/2021
 ms.custom: references_regions
-ms.openlocfilehash: 1b32cb56658020f4464522db621155ebe03c5583
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 05dbea8ce3d91e46bbb566f9d9989dec648c9853
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121734410"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122770970"
 ---
 # <a name="azure-arc-enabled-servers-data-residency"></a>Azure Arc 対応サーバー: データ所在地
 
@@ -32,7 +32,7 @@ Azure Arc 対応サーバーでは、[Azure VM 拡張機能](manage-vm-extension
 * Connected Machine エージェントのハートビート
 * Connected Machine エージェントのバージョン
 * マネージド ID の公開キー
-* ポリシーのコンプライアンスの状態と詳細 (Azure Policy のゲスト構成ポリシーを使用している場合)
+* ポリシーのコンプライアンスの状態と詳細 (ゲスト構成ポリシーを使用している場合)
 
 Arc 対応サーバーでは、データが格納されるリージョンを指定できます。 Microsoft は、データの回復性を確保するために他のリージョンにレプリケートを行う場合がありますが、地理的外部のデータのレプリケートまたは移動が Microsoft によって行われることはありません。 このデータは、Azure Arc マシン リソースが構成されているリージョンに格納されます。 たとえば、マシンが米国東部リージョンの Arc に登録されている場合、このデータは米国リージョンに格納されます。
 

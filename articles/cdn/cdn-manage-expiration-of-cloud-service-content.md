@@ -15,12 +15,12 @@ ms.custom: devx-track-csharp
 ms.topic: how-to
 ms.date: 02/15/2018
 ms.author: allensu
-ms.openlocfilehash: d8eb450d2010bf2a525a26f1c5ff48f59732ce43
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 78716b77492b146b076bfc31a71d12954f482114
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93240972"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122445103"
 ---
 # <a name="manage-expiration-of-web-content-in-azure-cdn"></a>Azure CDN で Web コンテンツ有効期限を管理する
 > [!div class="op_single_selector"]
@@ -79,7 +79,7 @@ Web サーバーの `Cache-Control` ヘッダーを設定するための推奨�
 
     ![CDN カスタム キャッシュ規則の例](./media/cdn-manage-expiration-of-cloud-service-content/cdn-custom-caching-rules-example.png)
 
-    最初のカスタム キャッシュ規則は、エンドポイントで指定された配信元サーバー上の `/webfolder1` フォルダー内のすべてのファイルに対して 4 時間のキャッシュ有効期間を設定します。 2 番目の規則は `file1.txt` ファイルについてのみ最初の規則をオーバーライドし、そのファイルに対して 2 時間のキャッシュ有効期間を設定します。
+    最初のカスタム キャッシュ規則は、エンドポイントで指定された配信元サーバー上の `/webfolder1` フォルダー内のすべてのファイルに対して 4 日間のキャッシュ有効期間を設定します。 2 番目の規則は `file1.txt` ファイルについてのみ最初の規則をオーバーライドし、そのファイルに対して 2 日間のキャッシュ有効期間を設定します。
 
 1. **[保存]** を選択します。
 

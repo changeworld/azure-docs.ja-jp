@@ -1,19 +1,21 @@
 ---
 title: マッピング データ フローでの行の変更変換
-description: マッピング データ フローで行の変更変換を使用してデータベースのターゲットを更新する方法
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Azure Data Factory と Azure Synapse Analytics のパイプラインで、マッピング データ フローでの行の変更変換を使用してデータベース ターゲットを更新する方法。
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 05/06/2020
-ms.openlocfilehash: c3858756a0140481c0ab249e29c95f76c4b90da5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: synapse
+ms.date: 08/24/2021
+ms.openlocfilehash: 7fe220315f7cccb749fe0974e822f157cf54ca36
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "82982651"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122821718"
 ---
 # <a name="alter-row-transformation-in-mapping-data-flow"></a>マッピング データ フローでの行の変更変換
 
@@ -23,7 +25,7 @@ ms.locfileid: "82982651"
 
 ![行の変更の設定](media/data-flow/alter-row1.png "行の変更の設定")
 
-行の変更変換は、自分のデータ フローのデータベース シンクまたは Cosmos DB シンクでのみ動作します。 行に割り当てるアクション (挿入、更新、削除、upsert) は、デバッグ セッション中に発生することはありません。 データ フローの実行アクティビティをパイプラインで実行し、データベース テーブルに行の変更ポリシーを適用します。
+行の変更変換は、自分のデータ フローのデータベース、REST、または Cosmos DB シンクでのみ動作します。 行に割り当てるアクション (挿入、更新、削除、upsert) は、デバッグ セッション中に発生することはありません。 データ フローの実行アクティビティをパイプラインで実行し、データベース テーブルに行の変更ポリシーを適用します。
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4vJYc]
 
@@ -57,15 +59,15 @@ ms.locfileid: "82982651"
 
 シンク変換では、一意の行 ID を表す 1 つのキーまたは一連のキーがターゲット データベースに必要です。 SQL シンクの場合、それらのキーの設定は、シンク設定タブで行います。CosmosDB の場合は、それらの設定にパーティション キーを設定したうえで、CosmosDB のシステム フィールド "id" をシンクのマッピングで設定します。 CosmosDB で update、upsert、delete を行う場合は、システム列である "id" を含める必要があります。
 
-## <a name="merges-and-upserts-with-azure-sql-database-and-synapse"></a>Azure SQL Database と Synapse を使用したマージと upsert
+## <a name="merges-and-upserts-with-azure-sql-database-and-azure-synapse"></a>Azure SQL Database と Azure Synapse を使用したマージと upsert
 
-ADF データフローでは、upsert オプションを使用して、Azure SQL Database と Synapse データベース プール (データ ウェアハウス) に対するマージをサポートしています。
+データ フローでは、upsert オプションを使用した Azure SQL Database と Azure Synapse データベース プール (データ ウェアハウス) に対するマージがサポートされています。
 
-しかし、ターゲット データベース スキーマでキー列の ID プロパティが使用されているシナリオが発生する場合があります。 ADF では、更新と upsert の行の値を一致させるために使用するキーを識別する必要があります。 しかし、ターゲット列に ID プロパティが設定されていて、upsert ポリシーを使用している場合、ターゲット データベースでは列への書き込みが許可されません。 分散テーブルのディストリビューション列に対して upsert を実行しようとすると、エラーが発生する場合もあります。
+しかし、ターゲット データベース スキーマでキー列の ID プロパティが使用されているシナリオが発生する場合があります。 サービスでは、更新と upsert の行の値を一致させるために使用するキーを識別する必要があります。 しかし、ターゲット列に ID プロパティが設定されていて、upsert ポリシーを使用している場合、ターゲット データベースでは列への書き込みが許可されません。 分散テーブルのディストリビューション列に対して upsert を実行しようとすると、エラーが発生する場合もあります。
 
 これを修正する方法を次に示します。
 
-1. シンク変換の設定に移動し、"キー列の書き込みのスキップ" を設定します。 これにより、ADF によってマッピングのキー値として選択した列が書き込まれないように指示されます。
+1. シンク変換の設定に移動し、"キー列の書き込みのスキップ" を設定します。 これにより、マッピングのキー値として選択された列を書き込まないようにサービスに通知します。
 
 2. このキー列が ID 列の問題の原因となっている列でない場合は、シンク変換の前処理の SQL オプション ```SET IDENTITY_INSERT tbl_content ON``` を使用できます。 次に、後処理の SQL プロパティ ```SET IDENTITY_INSERT tbl_content OFF``` を指定してこれをオフにします。
 
@@ -89,7 +91,7 @@ ADF データフローでは、upsert オプションを使用して、Azure SQL
 
 以下の例は、受信ストリーム `SpecifyUpsertConditions` を受け取り、行の変更条件を 3 つ作成する、`CleanData` という行の変更変換です。 前の変換では、データベース内で行の挿入、更新、削除を実行するかどうかを決定する `alterRowCondition` という列が計算されます。 列の値に、行の変更ルールと一致する文字列値が含まれている場合、そのポリシーが割り当てられています。
 
-Data Factory UX では、この変換は次の図のようになります。
+UI では、この変換は次の図のようになります。
 
 ![行の変更の例](media/data-flow/alter-row4.png "行の変更の例")
 

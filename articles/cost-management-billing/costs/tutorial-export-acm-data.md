@@ -3,18 +3,18 @@ title: チュートリアル - Azure Cost Management からデータをエクス
 description: この記事では、外部システムで使用できるように Azure Cost Management データをエクスポートし、管理する方法を紹介します。
 author: bandersmsft
 ms.author: banders
-ms.date: 07/26/2021
+ms.date: 08/05/2021
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18, devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 592ef54b359c84309da350bf53da6bb0a4152374
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: f6d640d40b586e435e1484fce8d6560a961ba6ac
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114708640"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121731953"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>チュートリアル:データをエクスポートし、管理する
 
@@ -259,11 +259,11 @@ Remove-AzCostManagementExport -Name DemoExport -Scope 'subscriptions/00000000-00
 
 ### <a name="file-partitioning-for-large-datasets"></a>大規模なデータセットのファイルのパーティション分割
 
-Microsoft 顧客契約または Microsoft Partner Agreement を結んでいる場合は、エクスポートを使用して、ファイルを複数の小さなファイル パーティションに分割し、データ インジェストに役立てることができます。 最初にエクスポートを構成するときに、 **[File Partitioning]\(ファイルのパーティション分割\)** 設定を **[オン]** に設定します。 既定では、この設定は **[オフ]** です。
+Microsoft 顧客契約、Microsoft Partner Agreement、Enterprise Agreement のいずれかを結んでいる場合は、エクスポートを使用して、ファイルを複数の小さなファイル パーティションに分割し、データ インジェストに役立てることができます。 最初にエクスポートを構成するときに、 **[File Partitioning]\(ファイルのパーティション分割\)** 設定を **[オン]** に設定します。 既定では、この設定は **[オフ]** です。
 
 :::image type="content" source="./media/tutorial-export-acm-data/file-partition.png" alt-text="[File Partitioning]\(ファイルのパーティション分割\) オプションを示すスクリーンショット。" lightbox="./media/tutorial-export-acm-data/file-partition.png" :::
 
-Microsoft 顧客契約または Microsoft Partner Agreement がない場合、 **[File Partitioning]\(ファイルのパーティション分割\)** オプションは表示されません。
+Microsoft 顧客契約、Microsoft Partner Agreement、Enterprise Agreement のいずれも結んでいない場合、 **[File Partitioning]\(ファイルのパーティション分割\)** オプションは表示されません。
 
 #### <a name="update-existing-exports-to-use-file-partitioning"></a>ファイルのパーティション分割を使用するよう既存のエクスポートを更新する
 

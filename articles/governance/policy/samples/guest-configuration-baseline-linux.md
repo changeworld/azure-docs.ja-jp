@@ -1,21 +1,21 @@
 ---
 title: 参考資料 - Azure Policy ゲスト構成の Linux 向けベースライン
 description: Azure Policy ゲスト構成で実装する Azure の Linux 向けベースラインの詳細。
-ms.date: 08/03/2021
+ms.date: 08/24/2021
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: 4fe3e374b39c880940fa61b84342d2d8cbf94d12
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5d3b360a3a87c08e457e02829d1938193631e74f
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121731350"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122779324"
 ---
 # <a name="linux-security-baseline"></a>Linux セキュリティ ベースライン
 
 この記事では、次の実装で適用できる Linux ゲストの構成設定について詳しく説明します。
 
-- **\[プレビュー\] Linux マシンは Azure のコンピューティング セキュリティ ベースラインの要件を満たしている必要がある** Azure Policy ゲスト構成定義
+- **\[プレビュー\]: Linux マシンは Azure のコンピューティング セキュリティ ベースラインの要件を満たしている必要がある**  (Azure Policy ゲスト構成定義)
 - **マシンのセキュリティ構成の脆弱性が修復されている必要がある** (Azure Security Center で)
 
 詳しくは [Azure Policy ゲスト構成](../concepts/guest-configuration.md)に関するページ、および「[Azure Security Benchmark (V2) の概要](../../../security/benchmarks/overview.md)」をご覧ください。
@@ -202,7 +202,7 @@ ms.locfileid: "121731350"
 > [!NOTE]
 > 特定の Azure Policy ゲスト構成設定を利用できるかどうかは、Azure Government とその他の各国のクラウドで異なる場合があります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure Policy とゲスト構成に関するその他の記事:
 

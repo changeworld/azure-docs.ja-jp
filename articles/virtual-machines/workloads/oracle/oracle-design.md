@@ -9,14 +9,16 @@ ms.topic: article
 ms.date: 12/17/2020
 ms.author: kegorman
 ms.reviewer: tigorman
-ms.openlocfilehash: 28c4e7ce7b6910ec1950350ee301e16fa54d4c02
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: f6f7312590b98474d5edab02ea8e73725aded229
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114461608"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122690079"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Azure での Oracle データベースの設計と実装
+
+**適用対象:** :heavy_check_mark: Linux VM 
 
 ## <a name="assumptions"></a>前提条件
 

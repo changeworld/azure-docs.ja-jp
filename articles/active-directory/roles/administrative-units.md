@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0cdaefcc92a1a690ae3e3e222053976c3aa3178
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: 26b91b216c6a813270cf3b30cde0d8450f964668
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113730804"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734476"
 ---
 # <a name="administrative-units-in-azure-active-directory"></a>Azure Active Directory の管理単位
 
@@ -33,9 +33,9 @@ ms.locfileid: "113730804"
 
 全体管理者は、以下を行うことができます。
 
-- 経営学部管理単位内の Azure AD ユーザーのみを対象とする管理アクセス許可を含むロールを作成する。
 - 経営学部の管理単位を作成する。
-- この管理単位に経営学部の学生とスタッフのみを設定する。
+- 管理単位に経営学部内の学生とスタッフのみを設定する。
+- 経営学部管理単位内の Azure AD ユーザーのみを対象とする管理アクセス許可を含むロールを作成する。
 - 経営学部の IT チームを、スコープと共にロールに追加する。
 
 ## <a name="license-requirements"></a>ライセンスの要件

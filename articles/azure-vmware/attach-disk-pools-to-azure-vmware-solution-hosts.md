@@ -2,13 +2,13 @@
 title: ディスク プールを Azure VMware Solution ホストにアタッチする (プレビュー)
 description: iSCSI ターゲットを通じて表示されたディスク プールを、Azure VMware Solution プライベート クラウドの VMware データストアとしてアタッチする方法について説明します。 データストアが構成されたら、そこにボリュームを作成し、VMware インスタンスにアタッチすることができます。
 ms.topic: how-to
-ms.date: 07/13/2021
-ms.openlocfilehash: fefb014f221a121259c0b8d6411de362e11a63c0
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 08/20/2021
+ms.openlocfilehash: 2487e26d887935f0d66f13d51ce7894edb2b2b6e
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121745648"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122769302"
 ---
 # <a name="attach-disk-pools-to-azure-vmware-solution-hosts-preview"></a>ディスク プールを Azure VMware Solution ホストにアタッチする (プレビュー)
 
@@ -65,7 +65,7 @@ iSCSI ターゲットを通じて表示されたディスク プールを、Azur
    az provider register -n "Microsoft.AVS"
    ```
 
-1. サブスクリプションが Microsoft.AVS 内の `CloudSanExperience` AFEC に登録されているかどうかを確認します。
+2. サブスクリプションが Microsoft.AVS 内の `CloudSanExperience` AFEC に登録されているかどうかを確認します。
 
    ```azurecli
    az feature show --name "CloudSanExperience" --namespace "Microsoft.AVS"
@@ -91,7 +91,7 @@ iSCSI ターゲットを通じて表示されたディスク プールを、Azur
       >az feature register --name "CloudSanExperience" --namespace "Microsoft.AVS"
       >```
 
-1. `vmware ` 拡張機能がインストールされているかどうか確認します。 
+3. `vmware ` 拡張機能がインストールされているかどうか確認します。 
 
    ```azurecli
    az extension show --name vmware
@@ -109,7 +109,7 @@ iSCSI ターゲットを通じて表示されたディスク プールを、Azur
       az extension add --name vmware
       ```
 
-3. iSCSI ターゲットによって指定された `Microsoft.StoragePool` を使用して、Azure VMware Solution プライベート クラウド クラスターに iSCSI データストアを作成してアタッチします。
+4. iSCSI ターゲットによって指定された `Microsoft.StoragePool` を使用して、Azure VMware Solution プライベート クラウド クラスターに iSCSI データストアを作成してアタッチします。 ディスク プールは委任されたサブネットを介して vNet にアタッチされ、これは Microsoft.StoragePool/diskPools リソース プロバイダーで行われます。  サブネットが委任されていない場合、デプロイは失敗します。
 
    ```bash
    az vmware datastore disk-pool-volume create --name iSCSIDatastore1 --resource-group MyResourceGroup --cluster Cluster-1 --private-cloud MyPrivateCloud --target-id /subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/ResourceGroup1/providers/Microsoft.StoragePool/diskPools/mpio-diskpool/iscsiTargets/mpio-iscsi-target --lun-name lun0
@@ -123,13 +123,13 @@ iSCSI ターゲットを通じて表示されたディスク プールを、Azur
    >   ```
    
 
-4. プライベート クラウド クラスター内の iSCSI データストアの詳細を表示します。
+5. プライベート クラウド クラスター内の iSCSI データストアの詳細を表示します。
    
    ```azurecli
    az vmware datastore show --name MyCloudSANDatastore1 --resource-group MyResourceGroup --cluster -Cluster-1 --private-cloud MyPrivateCloud
    ```
 
-5. プライベート クラウド クラスター内のすべてのデータストアの一覧を表示します。
+6. プライベート クラウド クラスター内のすべてのデータストアの一覧を表示します。
 
    ```azurecli
    az vmware datastore list --resource-group MyResourceGroup --cluster Cluster-1 --private-cloud MyPrivateCloud
@@ -153,11 +153,11 @@ iSCSI ターゲットを通じて表示されたディスク プールを、Azur
    az vmware datastore delete --name MyCloudSANDatastore1 --resource-group MyResourceGroup --cluster Cluster-1 --private-cloud MyPrivateCloud
    ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure VMware Solution ホストにディスク プールをアタッチできましたので、次のことについて学習します。
 
-- [Azure ディスク プールの管理](../virtual-machines/disks-pools-manage.md )。  ディスク プールをデプロイした後は、さまざまな管理操作を実行できます。 ディスク プールに対するディスクの追加または削除、iSCSI LUN マッピングの更新、ACL の追加を行うことができます。
+- [Azure ディスク プールの管理](../virtual-machines/disks-pools-manage.md)。  ディスク プールをデプロイした後は、さまざまな管理操作を実行できます。 ディスク プールに対するディスクの追加または削除、iSCSI LUN マッピングの更新、ACL の追加を行うことができます。
 
 - [ディスク プールの削除](../virtual-machines/disks-pools-deprovision.md#delete-a-disk-pool)。 ディスク プールを削除すると、マネージド リソース グループ内のすべてのリソースも削除されます。
 

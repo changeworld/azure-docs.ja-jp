@@ -1,24 +1,27 @@
 ---
 title: マッピング データ フローをパラメーター化する
-description: データ ファクトリのパイプラインからマッピング データ フローをパラメーター化する方法について学習します
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Azure Data Factory パイプラインおよび Azure Synapse Analytics パイプラインからのマッピング データ フローをパラメーター化する方法を説明します。
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
+ms.subservice: data-flows
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 04/19/2021
-ms.openlocfilehash: 22c4fc0680d8666d8c2dfafb8829436e27cf1ebd
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.date: 08/24/2021
+ms.openlocfilehash: 5d06d55e199e0c5f2f1fcda9f1a9d121ed1726e5
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107725712"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122821601"
 ---
 # <a name="parameterizing-mapping-data-flows"></a>マッピング データ フローをパラメーター化する
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)] 
 
-Azure Data Factory および Azure Synapse Analytics のマッピング データ フローでは、パラメーターの使用がサポートされます。 データ フロー定義内でパラメーターを定義し、式全体で使用します。 パラメーター値を設定するには、データ フローの実行アクティブティ経由でパイプラインを呼び出します。 データ フロー アクティビティの式で値を設定するには、次の 3 つのオプションがあります。
+Azure Data Factory パイプラインおよび Azure Synapse Analytics パイプラインのマッピング データ フローでは、パラメーターの使用がサポートされます。 データ フロー定義内でパラメーターを定義し、式全体で使用します。 パラメーター値を設定するには、データ フローの実行アクティブティ経由でパイプラインを呼び出します。 データ フロー アクティビティの式で値を設定するには、次の 3 つのオプションがあります。
 
 * パイプラインの制御フローの式を使用して動的な値を設定する
 * データ フロー式の言語を使用して動的な値を設定する

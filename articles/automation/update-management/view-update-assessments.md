@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 06/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: 270a48181e8eceb7b5e851f9bc69bb5a41428573
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 20df340df025ceada8a4b254f317fe2f5d8eecbc
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111964458"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122768897"
 ---
 # <a name="view-update-assessments-in-update-management"></a>Update Management で更新プログラムの評価を表示する
 

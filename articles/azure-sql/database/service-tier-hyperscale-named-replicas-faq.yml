@@ -1,77 +1,79 @@
 ### YamlMime:FAQ
 metadata:
   title: Azure SQL Database Hyperscale 名前付きレプリカに関する FAQ
-  description: Hyperscale サービス レベルの名前付きレプリカでの SQL Database のデータベースに関してお客様からよくある質問への回答
+  description: Hyperscale 名前付きレプリカについてよく寄せられる質問への回答
   services: sql-database
   ms.service: sql-database
-  ms.subservice: 
+  ms.subservice: service-overview
   ms.custom: 
   ms.devlang: 
   ms.topic: conceptual
   author: yorek
   ms.author: damauri
   ms.reviewer: 
-  ms.date: 06/09/2021
-  ms.openlocfilehash: 53dd0035a9ee973b68b7a1f795e500775e226e3f
-  ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
+  ms.date: 07/27/2021
+  ms.openlocfilehash: 223873b80235c9a8734d0b7d6c3a04781e202a4d
+  ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/02/2021
-  ms.locfileid: "113233444"
+  ms.lasthandoff: 08/13/2021
+  ms.locfileid: "121722914"
 title: Azure SQL Database Hyperscale 名前付きレプリカに関する FAQ
-summary: "[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]\n\nこの記事では、Azure SQL Database ハイパースケール サービス レベル (以降、この FAQ ではハイパースケールと呼びます) のデータベースをご検討中のお客様向けに、よく寄せられる質問の回答を紹介します。 この記事では、ハイパースケールでサポートするシナリオと、ハイパースケールと互換性がある機能について説明します。\n\n- この FAQ は、Hyperscale サービス レベルの名前付きレプリカの概要を理解し、具体的な質問や懸案事項の回答を求める読者を対象としています。\n- Hyperscale 名前付きレプリカの詳細については、[Hyperscale レプリカの名前付きレプリカ](service-tier-hyperscale-replicas.md#named-replica-in-preview)に関するセクションを参照してください。 \n"
+summary: >
+  [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
+
+
+  この FAQ は、Hyperscale [名前付きレプリカ](service-tier-hyperscale-replicas.md#named-replica-in-preview)に関する一般的な理解を持ち、具体的な質問や懸案事項の回答を求める読者を対象としています。
 sections:
 - name: 一般的な質問
   questions:
   - question: >
-      名前付きレプリカをフェールオーバー ターゲットとして使用できますか?
+      Can a named replica be used as a failover target?
     answer: >
-      いいえ。名前付きレプリカをフェールオーバー ターゲットとして使用することはできません。 その目的には HA レプリカを使用します。
+      No, named replicas cannot be used as failover targets for the primary replica. Add HA replicas for that purpose.
   - question: >
-      どうすれば、名前付きレプリカ間に読み取り専用ワークロードを分散させることができますか?
+      How can I distribute a read-only workload across my named replicas?
     answer: >
-      すべての名前付きレプリカは、異なるサービス レベル目標を持つ場合があり、したがって異なるユース ケースに使用される可能性があるため、プライマリに送信された読み取り専用トラフィックを関連する名前付きレプリカに転送する組み込みの方法はありません。 たとえば、8 個の名前付きレプリカがある場合、OLTP ワークロードは名前付きレプリカ 1 から 4 にのみ転送し、すべての Power BI 分析ワークロードでは名前付きレプリカ 5 と 6 を使用し、データ サイエンス ワークロードにはレプリカ 7 と 8 を使用することができます。 そのようなワークロードを分散する戦略は、使用するツールまたはプログラミング言語によって異なる場合があります。 REST バックエンドがスケールアウトできるようにワークロード ルーティング ソリューションを作成する例の 1 つについては、こちらの [OLTP スケールアウト サンプル](https://github.com/Azure-Samples/azure-sql-db-named-replica-oltp-scaleout)を参照してください。
+      Since every named replica may have a different service level objective and thus be used for different use cases, there is no built-in way to direct read-only traffic sent to the primary to a set of named replicas. For example, you may have eight named replicas, and you may want to direct OLTP workload only to named replicas 1 to 4, while all the Power BI analytical workloads will use named replicas 5 and 6 and the data science workload will use replicas 7 and 8. Depending on which tool or programming language you use, strategies to distribute such workload may vary. One example of creating a workload routing solution to allow a REST backend to scale out is here: [OLTP scale-out sample](https://github.com/Azure-Samples/azure-sql-db-named-replica-oltp-scaleout).
   - question: >
-      プライマリ レプリカのリージョンとは異なるリージョンに名前付きレプリカを作成できますか?
+      Can a named replica be in a region different from the region of the primary replica?
     answer: >
-      いいえ。名前付きレプリカではプライマリ レプリカと同じページ サーバーが使用されるため、それらは同じリージョンに存在する必要があります。
+      No, as named replicas use the same page servers of the primary replica, they must be in the same region.
   - question: >
-      名前付きレプリカにより、プライマリ レプリカの可用性またはパフォーマンスが影響を受けることはありますか?
+      Can a named replica impact availability or performance of the primary replica?
     answer: >
-      名前付きレプリカによってプライマリ レプリカの可用性が影響を受けることはありません。 通常の状況では、名前付きレプリカがプライマリのパフォーマンスに影響を与える可能性はほとんどありませんが、負荷の高いワークロードが実行されている場合は発生する可能性があります。 HA レプリカと同様に、名前付きレプリカはトランザクション ログ サービスを介してプライマリと同期されます。 何らかの理由で名前付きレプリカがトランザクション ログを十分高速に使用できない場合、追い付くことができるよう、ログの生成を遅くする (スロットル) ようプライマリ レプリカに要求し始めます。 この動作は、プライマリの可用性には影響しませんが、パフォーマンスに影響します。 この状況を回避するには、遅延なくトランザクション ログを処理できるよう、名前付きレプリカに十分な空きリソース (主に CPU) があることを確認します。 たとえば、プライマリで多数のデータ変更が処理されている場合は、レプリカで CPU のボトルネックが発生して、プライマリの速度が低下しないように、名前付きレプリカのサービス レベル目標をプライマリ以上にすることをお勧めします。
+      A named replica cannot impact the availability of the primary replica. Named replicas, under normal circumstances, are unlikely to impact the primary's performance, but it can happen if there are intensive workloads running. Just like an HA replica, a named replica is kept in sync with the primary via the transaction log service. If a named replica, for any reason, is not able to consume the transaction log fast enough, it will start asking the primary replica to slow down (throttle) its log generation, so that it can catch up. While this behavior will not impact the primary's availability, it may impact performance of write workloads on the primary. To avoid this situation, make sure that your named replicas have enough resource headroom – mainly CPU – to process transaction log without delay. For example, if the primary is processing numerous data changes, it is recommended to have named replicas with at least the same Service Level Objective as the primary, to avoid saturating CPU on the replicas and thus forcing the primary to slow down.
   - question: >
-      計画メンテナンスのためなどで、プライマリ レプリカが使用できない場合、名前付きレプリカはどうなりますか?
+      What happens to named replicas if the primary replica is unavailable, for example because of planned maintenance?
     answer: >
-      名前付きレプリカは、通常どおり、読み取り専用アクセスに引き続き使用できます。
+      Named replicas will still be available for read-only access, as usual.
   - question: >
-      SQL Server Management Studio (SSMS) や他のクライアント ツールを使用してセカンダリ計算レプリカに正常に接続したかどうかを確認するには、どうすればよいですか?
+      How do I validate if I have successfully connected to secondary compute replica using SQL Server Management Studio (SSMS) or other client tools?
     answer: >
-      次の T-SQL クエリを実行できます。
+      You can execute the following T-SQL query. The database context must be set to the name of the Hyperscale database, not to the `master` database.
 
 
       ```sql
 
-      SELECT @@SERVERNAME, DB_NAME(), DATABASEPROPERTYEX(DB_NAME(), 'Updateability');
+      SELECT @@SERVERNAME AS logical_server_name, DB_NAME() AS database_name, DATABASEPROPERTYEX(DB_NAME(), 'Updateability') AS replica_updateability;
 
       ```
 
 
-      結果は、読み取り専用セカンダリ レプリカに接続されている場合は `READ_ONLY`、プライマリ レプリカに接続されている場合は `READ_WRITE` になります。 データベース コンテキストは、`master` データベースではなく、Hyperscale データベースの名前に設定する必要があります。
+      `replica_updateability` will be `READ_ONLY` if you are connected to a read-only secondary replica, and `READ_WRITE` if you are connected to the primary replica.
   - question: >
-      セカンダリ計算レプリカにオブジェクトまたはインデックスを作成できますか?
+      Can I create any objects or indexes on my secondary compute replicas?
     answer: >
-      いいえ。 ハイパースケール データベースではストレージが共有されます。つまり、すべての計算レプリカは同じテーブル、インデックス、ビューを見ることができます。 読み取りに対して最適化したインデックスをセカンダリに追加したい場合は、プライマリに追加する必要があります。
+      No. Hyperscale databases have shared storage, meaning that all compute replicas see the same tables, indexes, views, etc. If you want additional indexes optimized for reads on secondary, you must add them on the primary.
 
 
-      それでも、一時テーブルを作成して使用し、一時データを格納することはできます。
+      You can still create temporary tables (table names prefixed with # or ##) on each secondary replica to store temporary data. Temporary tables are read-write.
   - question: >
-      プライマリ計算レプリカとセカンダリ計算レプリカの間の遅延はどれくらいですか?
+      How much delay is there between the primary and secondary compute replicas?
     answer: >
-      トランザクションがプライマリ上でコミットされてからセカンダリで読み取り可能になるまでのデータ待機時間は、現在のログ生成速度、トランザクション サイズ、レプリカへの負荷、およびその他の要因によって異なります。 小規模なトランザクションの一般的なデータ待機時間は数十ミリ秒ですが、データ待機時間に上限はありません。 特定のセカンダリ レプリカのデータは、トランザクションに対して常に一貫性があります。 ただし、特定の時点でのデータの待機時間は、セカンダリ レプリカによって異なる場合があります。 コミットされたデータの読み取りが直ちに必要なワークロードは、プライマリ レプリカで実行される必要があります。
+      Data latency from the time a transaction is committed on the primary to the time it is readable on a secondary depends on current log generation rate, transaction size, load on the replica, and other factors. Typical data latency for small transactions is in tens of milliseconds, however there is no upper bound on data latency. Data on a given secondary replica is always transactionally consistent. However, at a given point in time data latency may be different for different secondary replicas. Workloads that need to read committed data immediately should run on the primary replica.
   - question: >
-      どうすれば、名前付きレプリカの可用性を向上させることができますか?
+      How can I improve availability of named replicas?
     answer: >
-      既定では、名前付きレプリカには HA レプリカはありません。 ただし、それらは通常の (読み取り専用の) Azure SQL データベースのように動作するので、HA レプリカによって提供される[より高い SLA](https://azure.microsoft.com/support/legal/sla/azure-sql-database/) のベネフィットを受けることができます。 HA レプリカの数を設定するには、[AZ CLI](/cli/azure/sql/db/replica?view=azure-cli-latest#az_sql_db_replica_create) の `--ha-replicas` パラメーター、[PowerShell](/powershell/module/az.sql/set-azsqldatabase) の `--HighAvailabilityReplicaCount` パラメーター、または [REST API](/rest/api/sql/2021-02-01-preview/databases/create-or-update) の `highAvailabilityReplicaCount` プロパティを使用できます。
-
-      HA レプリカの数は、名前付きレプリカの作成時に設定でき、名前付きレプリカの作成後にいつでも変更できます (AZ CLI、PowerShell、または REST API のみを使用)。 名前付きレプリカの HA レプリカの価格は、通常のデータベースの HA レプリカと同じです。
-additionalContent: "\n## <a name=\"next-steps\"></a>次のステップ\n\nハイパースケール サービス レベルについて詳しくは、[ハイパースケール サービス レベル](service-tier-hyperscale.md)に関するページをご覧ください。\nHyperscale レプリカの詳細については、[Hyperscale レプリカ](service-tier-hyperscale-replicas.md)に関する記事を参照してください。"
+      By default, named replicas do not have any HA replicas of their own. A failover of a named replica requires creating a new replica first, which typically takes about 1-2 minutes. However, named replicas can also benefit from higher availability and shorter failovers provided by HA replicas. To add HA replicas for a named replica, you can use the parameter `ha-replicas` with [AZ CLI](/cli/azure/sql/db/replica?view=azure-cli-latest#az_sql_db_replica_create), or the parameter `HighAvailabilityReplicaCount` with [PowerShell](/powershell/module/az.sql/set-azsqldatabase), or the `highAvailabilityReplicaCount` property with [REST API](/rest/api/sql/2021-02-01-preview/databases/create-or-update). The number of HA replicas can be set during the creation of a named replica and can be changed – only via AZ CLI, PowerShell or REST API – anytime after the named replica has been created. Pricing of HA replicas for named replicas is the same of HA replicas for regular Hyperscale databases.
+additionalContent: "\n## Next steps\n\nFor more information about the Hyperscale service tier, see [Hyperscale service tier](service-tier-hyperscale.md).\nFor more information about the Hyperscale replicas, see [Hyperscale Replicas](service-tier-hyperscale-replicas.md)."

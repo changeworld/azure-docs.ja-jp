@@ -5,15 +5,15 @@ services: service-bus-messaging
 author: spelluru
 ms.service: service-bus-messaging
 ms.topic: include
-ms.date: 10/15/2020
+ms.date: 08/13/2021
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 43f81d1fb7b38649bd9498782abe44cff9e37965
-ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
+ms.openlocfilehash: 7bcfa8993cdfa0ab8efcbe35881921c5cf5a92cd
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2021
-ms.locfileid: "114719887"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122182590"
 ---
 ## <a name="prerequisites"></a>前提条件
 [Azure サブスクリプション](../../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing)をお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)を作成してください。
@@ -30,7 +30,7 @@ ms.locfileid: "114719887"
 この手順では、サンプル アプリケーションを使用して、前の手順で作成した Service Bus トピックにメッセージを送信します。 
 
 1. [GitHub の azure-service-bus リポジトリ](https://github.com/Azure/azure-service-bus/)を複製します。
-2. Visual Studio で *\samples\DotNet\Azure.Messaging.ServiceBus\ServiceBusEventGridIntegration* フォルダーに移動し、*SBEventGridIntegration.sln* ファイルを開きます。
+2. Visual Studio で *\samples\DotNet\Azure.Messaging.ServiceBus\ServiceBusEventGridIntegrationV2* フォルダーに移動し、*SBEventGridIntegration.sln* ファイルを開きます。
 3. ソリューション エクスプローラー ウィンドウで、 **[MessageSender]** プロジェクトを展開し、 **[Program.cs]** を選択します。
 4. `<SERVICE BUS NAMESPACE - CONNECTION STRING>` を Service Bus 名前空間への接続文字列で置き換え、`<TOPIC NAME>` をトピックの名前で置き換えます。 
 

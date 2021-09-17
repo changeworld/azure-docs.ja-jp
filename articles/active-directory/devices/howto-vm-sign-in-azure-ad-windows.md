@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: how-to
-ms.date: 06/30/2021
+ms.date: 08/19/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions, devx-track-azurecli, subject-rbac-steps
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e29ee77aa3fb9f33c5c923a49de07ffea1642a77
-ms.sourcegitcommit: a2540262e05ffd4a4b059df0976940d60fabd125
+ms.openlocfilehash: ea5ad0ed61ac0d2b9603752efc6bbc998cf189a6
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113138451"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122608114"
 ---
 # <a name="login-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Azure Active Directory 認証を使用して Azure 内の Windows 仮想マシンにログインする
 
@@ -211,7 +211,7 @@ Azure RBAC を使用して、Azure サブスクリプション リソースへ�
 
 ## <a name="using-conditional-access"></a>条件付きアクセスの使用
 
-Azure AD サインインで有効になる Azure 上の Windows VM へのアクセスを承認する前に、多要素認証やユーザー サインイン リスク チェックなどの条件付きアクセス ポリシーを適用できます。 条件付きアクセス ポリシーを適用するには、クラウド アプリまたはアクションの割り当てオプションから "Azure Windows VM サインイン" アプリを選択し、条件としてサインイン リスクを使用するか、アクセス制御付与として多要素認証を要求する、あるいはその両方を実行します。 
+Azure AD サインインで有効になる Azure 上の Windows VM へのアクセスを承認する前に、多要素認証やユーザー サインイン リスク チェックなどの条件付きアクセス ポリシーを適用できます。 条件付きアクセス ポリシーを適用するには、クラウド アプリまたはアクションの割り当てオプションから "**Azure Windows VM サインイン**" アプリを選択し、条件としてサインイン リスクを使用するか、アクセス制御付与として多要素認証を要求する、あるいはその両方を実行します。 
 
 > [!NOTE]
 > "Azure Windows VM サインイン" アプリへのアクセス要求に対して、"Azure Windows VM サインイン" をアクセス制御付与として使用する場合は、Azure上のターゲット Windows VM に対して RDP セッションを開始するクライアントの一部として、多要素認証要求を提供する必要があります。 Windows 10 クライアントでこれを実現する唯一の方法は、RDP クライアントで Windows Hello for Business の PIN または生体認証を使用することです。 生体認証のサポートは、Windows 10 バージョン 1809 で RDP クライアントに追加されています。 Windows Hello for Business 認証を使用するリモート デスクトップは、証明書信頼モデルを使用するデプロイでのみ利用でき、現時点ではキー信頼モデルでは利用できません。
@@ -240,7 +240,7 @@ Azure AD を使用して Windows Server 2019 仮想マシンにログインす�
 
 ## <a name="using-azure-policy-to-ensure-standards-and-assess-compliance"></a>標準の確保およびコンプライアンスの評価に Azure Policy を使用する
 
-Azure AD ログインを確保するための Azure Policy の使用が新規および既存のWindows 仮想マシンのために有効にされており、Azure Policy コンプライアンス ダッシュボード上で大規模に環境のコンプライアンスを評価します。 この機能を使用すると、多くのレベルの適用を使用できます。Azure AD ログインが有効になっていない環境における新規および既存の Windows VM にフラグを設定できます。 Azure Policy を使用して、Azure AD ログインが有効になっていない新しい Windows VM に Azure AD 拡張機能をデプロイしたり、既存の Windows VM を同じ標準に修復したりすることもできます。 これらの機能に加えて、ポリシーを使用して、承認されていないローカル アカウントがマシン上に作成されている Windows VM を検出してフラグを設定することもできます。 詳細については、[Azure Policy ](https://www.aka.ms/AzurePolicy)に関するページを参照してください。
+Azure AD ログインを確保するための Azure Policy の使用が新規および既存の Windows 仮想マシンのために有効にされており、Azure Policy コンプライアンス ダッシュボード上で大規模に環境のコンプライアンスを評価します。 この機能を使用すると、多くのレベルの適用を使用できます。Azure AD ログインが有効になっていない環境における新規および既存の Windows VM にフラグを設定できます。 Azure Policy を使用して、Azure AD ログインが有効になっていない新しい Windows VM に Azure AD 拡張機能をデプロイしたり、既存の Windows VM を同じ標準に修復したりすることもできます。 これらの機能に加えて、Azure Policy を使用して、承認されていないローカル アカウントがマシン上に作成されている Windows VM を検出してフラグを設定することもできます。 詳細については、[Azure Policy](../../governance/policy/overview.md) に関するページを確認してください。
 
 ## <a name="troubleshoot"></a>トラブルシューティング
 
@@ -377,7 +377,30 @@ VM へのリモート デスクトップ接続を開始したときに次のエ�
 
 リソースにアクセスする前に多要素認証 (MFA) を要求する条件付きアクセス ポリシーを構成している場合は、VM へのリモート デスクトップ接続を開始する Windows 10 PC で、Windows Hello などの強力な認証方法を使用したサインインが行われるようにする必要があります。 リモート デスクトップ接続で強力な認証方法が使用されていない場合は、前述のエラーが表示されます。
 
-Windows Hello for Business のデプロイがなく、それが当面は選択肢にならない場合は、MFA を要求するクラウド アプリの一覧から "Azure Windows VM サインイン" アプリを除外する条件付きアクセス ポリシーを構成することで、MFA 要件を除外できます。 Windows Hello for Business の詳細については、[Windows Hello for Business の概要](/windows/security/identity-protection/hello-for-business/hello-identity-verification)に関するページを参照してください。
+- 資格情報が正しくありません。
+
+![お使いの資格情報は機能しませんでした](./media/howto-vm-sign-in-azure-ad-windows/your-credentials-did-not-work.png)
+
+> [!WARNING]
+> ユーザー単位で有効化または適用された Azure AD Multi-Factor Authentication は、VM のサインインではサポートされていません。 この設定を行うと、サインインに失敗して "Your credentials do not work." (この資格情報は機能していません。) エラー メッセージを受け取ります。
+
+上記の問題を解決するには、次の手順でユーザーごとの MFA 設定を削除します。
+
+```
+
+# Get StrongAuthenticationRequirements configure on a user
+(Get-MsolUser -UserPrincipalName username@contoso.com).StrongAuthenticationRequirements
+ 
+# Clear StrongAuthenticationRequirements from a user
+$mfa = @()
+Set-MsolUser -UserPrincipalName username@contoso.com -StrongAuthenticationRequirements $mfa
+ 
+# Verify StrongAuthenticationRequirements are cleared from the user
+(Get-MsolUser -UserPrincipalName username@contoso.com).StrongAuthenticationRequirements
+
+```
+
+Windows Hello for Business のデプロイがなく、それが当面は選択肢にならない場合は、MFA を要求するクラウド アプリの一覧から "**Azure Windows VM サインイン**" アプリを除外する条件付きアクセス ポリシーを構成することで、MFA 要件を除外できます。 Windows Hello for Business の詳細については、[Windows Hello for Business の概要](/windows/security/identity-protection/hello-for-business/hello-identity-verification)に関するページを参照してください。
 
 > [!NOTE]
 > RDP での Windows Hello for Business PIN 認証は Windows 10 のいくつかのバージョンでサポートされています。ただし、RDP での生体認証のサポートは Windows 10 バージョン 1809 で追加されています。 RDP での Windows Hello for Business 認証の使用は、証明書信頼モデルを使用するデプロイでのみ利用できます。現時点ではキー信頼モデルでは利用できません。

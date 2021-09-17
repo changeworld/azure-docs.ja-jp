@@ -2,14 +2,14 @@
 title: Azure VM バックアップのサポート マトリックス
 description: Azure Backup サービスを使用して Azure VM をバックアップする場合のサポート設定と制限事項について概説します。
 ms.topic: conceptual
-ms.date: 08/06/2021
+ms.date: 08/23/2021
 ms.custom: references_regions
-ms.openlocfilehash: af008e8f14e3df60f0ce48a23cb32d45716645d0
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9244b7c5a62be57b1f8ec9ea0f27918c7aa62457
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121728915"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122770979"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM バックアップのサポート マトリックス
 
@@ -174,6 +174,7 @@ Azure VM のデータ ディスク数 | 最大 32 のディスクを使用した
 Ultra SSD ディスク | サポートされていません。 詳細については、[制限](selective-disk-backup-restore.md#limitations)に関するページを参照してください。
 [一時ディスク](../virtual-machines/managed-disks-overview.md#temporary-disk) | 一時ディスクは Azure Backup ではバックアップされません。
 NVMe/[エフェメラル ディスク](../virtual-machines/ephemeral-os-disks.md) | サポートされていません。
+[ReFS](/windows-server/storage/refs/refs-overview) リストア | サポートされています。 VSS では、NFS など、ReFS でのアプリ整合性バックアップもサポートされています。
 
 ## <a name="vm-network-support"></a>VM ネットワークのサポート
 

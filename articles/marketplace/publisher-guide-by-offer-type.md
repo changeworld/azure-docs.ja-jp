@@ -1,18 +1,18 @@
 ---
 title: オファーの種類別の公開ガイド - Microsoft 商業マーケットプレース
-description: この記事では、Microsoft 商業マーケットプレースで利用できるオファーの種類について説明します。
+description: この記事では、Microsoft 商業マーケットプレース (Azure Marketplace) で利用できるプランの種類について説明します。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
-ms.date: 04/06/2021
-ms.openlocfilehash: 72cae8aee9b1bcca286696b5685ef69b84167a8e
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.date: 08/20/2021
+ms.openlocfilehash: b5b969a5e390b59e60fb0dee47e2335541532730
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110537856"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122633770"
 ---
 # <a name="publishing-guide-by-offer-type"></a>プランの種類別の公開ガイド
 
@@ -42,6 +42,9 @@ ms.locfileid: "110537856"
 | [**管理されたサービス**](./plan-managed-service-offer.md) | 管理サービス プランを作成し、[Azure Lighthouse](../lighthouse/overview.md) を使用して顧客が委任したサブスクリプションまたはリソース グループを管理します。|
 | [**Power BI アプリ**<br/>**Microsoft 365**](marketplace-dynamics-365.md) | Power BI と Microsoft 365 上に構築または拡張される AppSource のプランを公開します。|
 | [**サービスとしてのソフトウェア**](plan-saas-offer.md) | サービスとしてのソフトウェア (SaaS) ベースの技術的ソリューションをサブスクリプションとして顧客が購入できるようにするには、オファーの種類として SaaS を使用します。 SaaS オファーのシングル サインオン要件については、「[コマーシャル マーケットプレースにおける Azure AD と取引可能な SaaS オファー](azure-ad-saas.md)」を参照してください。 |
+
+> [!IMPORTANT]
+> **SaaS プランと Microsoft 365 アドイン**: マーケットプレースの顧客がプランを表示および購入する方法にトランザクション機能がどのように影響するかについての詳細は、「[コマーシャル マーケットプレースの販売機能](marketplace-commercial-transaction-capabilities-and-considerations.md)」を参照してください。 SaaS オファーでは、オファーのトランザクション機能だけでなく、選択するカテゴリによって、オファーが発行されるオンライン ストアが決まります。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/23/2021
 ms.author: alkohli
 ms.custom: subject-rbac-steps
-ms.openlocfilehash: eecdead171e68915430aefe9aebeb24833485789
-ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
+ms.openlocfilehash: d215c1cc8650eb23d1702f7ef0fd782278cfb6d8
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114688977"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122605207"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-fpga"></a>チュートリアル: Azure Stack Edge Pro FPGA の配置を準備する  
 
@@ -79,7 +79,7 @@ Azure Stack Edge Pro FPGA を配置するには、次の順序どおりにチュ
 
 * アクセスの資格情報を持つ Microsoft Azure のストレージ アカウントがあること。
 
-* システム管理者が設定した Azure ポリシーによってブロックされていない。 ポリシーの詳細については、「[クイックスタート: 準拠していないリソースを識別するためのポリシー割り当てを作成する](../governance/policy/assign-policy-portal.md)」を参照してください。
+* システム管理者が設定した Azure Policy 割り当てによってブロックされていない。 Azure Policy の詳細については、「[クイックスタート: 準拠していないリソースを識別するためのポリシー割り当てを作成する](../governance/policy/assign-policy-portal.md)」を参照してください。
 
 
 ### <a name="for-the-azure-stack-edge-pro-fpga-device"></a>Azure Stack Edge Pro FPGA デバイスの場合

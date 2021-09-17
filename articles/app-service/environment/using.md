@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/06/2021
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 1d51fff9739ecb928ff2f11f53b58b190122d69d
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: 131c8d2abc21e046a96488a602b831361f64dcf4
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113432826"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122446224"
 ---
 # <a name="using-an-app-service-environment"></a>App Service Environment の使用
 
@@ -163,13 +163,17 @@ App Service Environment は、内部コンポーネントまたはシステム�
 
 ## <a name="upgrade-preference"></a>アップグレードの優先順位
 
-複数の ASE を使用している場合は、一部の ASE を他のものよりも先にアップグレードする必要が生じることがあります。 ASE **HostingEnvironment Resource Manager** オブジェクト内で、**upgradePreference** の値を設定できます。 **upgradePreference** の設定は、テンプレート、ARMClient、または https://resources.azure.com を使用して構成できます。 指定可能な 3 つの値は次のとおりです。
+複数の ASE を使用している場合は、一部の ASE を他のものよりも先にアップグレードする必要が生じることがあります。 この動作は、ASE ポータルを使用して有効にできます。  **構成** の下に、**アップグレードの優先順位** を設定するオプションがあります。 指定可能な 3 つの値は次のとおりです。
 
 - **なし**: Azure では、特定のバッチなしに ASE がアップグレードされます。 この値は既定値です。
 - **Early**:ASE は App Service アップグレードの前半でアップグレードされます。
 - **Late**:ASE は App Service アップグレードの後半でアップグレードされます。
 
-アップグレード設定を構成するには、ASE の **[構成]** UI にアクセスします。 **upgradePreferences** 機能は、複数の ASE がある場合に非常に便利です。"Early" の ASE が "Late" の ASE よりも先にアップグレードされるためです。 複数の ASE がある場合は、開発およびテストの ASE を "Early" に、実稼働の ASE を "Late" に設定します。
+目的の値を選択し、 **[保存]** を選択します。  あらゆる ASE の既定値は **[なし]** です。
+
+![ASE 構成ポータル][5]
+
+**upgradePreferences** 機能は、複数の ASE がある場合に非常に便利です。"Early" の ASE が "Late" の ASE よりも先にアップグレードされるためです。 複数の ASE がある場合は、開発およびテストの ASE を "Early" に、実稼働の ASE を "Late" に設定します。
 
 ## <a name="delete-an-ase"></a>ASE の削除
 
@@ -179,6 +183,16 @@ ASE を削除するには、次の手順に従います。
 1. ASE の名前を入力して削除を確定します。 ASE を削除すると、その内部のコンテンツもすべて削除されます。
 ![ASE の削除][3]
 1. **[OK]** を選択します。
+
+## <a name="pricing"></a>価格 
+
+ASEv3 では、ASE のデプロイの種類に応じて価格モデルが異なります。 価格モデルには次の 3 つがあります。 
+
+- **ASEv3**: ASE が空の場合には、1 つの ASP に Windows I1v2 のインスタンスが 1 件あるものとして料金が発生します。 このインスタンス 1 件分の料金は、ASE が空の場合にのみ適用されるもので、そうでない場合に追加で発生することはありません。
+- **可用性ゾーン ASEv3**: Windows I1v2 インスタンス 9 件分の料金が最低限発生します。 App Service プランのインスタンスが 9 件以上ある場合でも、可用性ゾーンのサポートのための追加料金は発生しません。 また、AZ ASEv3 のすべての App Service プランでは、各可用性ゾーンにインスタンスが存在するように、最小インスタンス数が 3 になっています。 プランがスケールアウトされると、可用性ゾーン全体に分散されます。 
+- **専用ホスト ASEv3**: 専用ホストのデプロイでは、ASEv3 の作成時に Microsoft の価格設定に従って専用ホスト 2 つ分の料金が発生したうえで、その後はスケーリング時に Isolated V2 の 1 コアあたりの料金の数 % が発生します。
+
+Isolated v2 の予約インスタンスの料金が利用可能です。詳細は、[Azure App Service に予約割引を適用する方法][reservedinstances]に関するページで説明されています。 料金については、予約インスタンスの料金と共に、「[App Service の料金][pricing]」の **Isolated v2 プラン** で確認できます。 
 
 <!--Image references-->
 
@@ -206,3 +220,5 @@ ASE を削除するには、次の手順に従います。
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../web-application-firewall/ag/ag-overview.md
 [logalerts]: ../../azure-monitor/alerts/alerts-log.md
+[reservedinstances]: https://docs.microsoft.com/azure/cost-management-billing/reservations/reservation-discount-app-service#how-reservation-discounts-apply-to-isolated-v2-instances
+[pricing]: https://azure.microsoft.com/pricing/details/app-service/windows/

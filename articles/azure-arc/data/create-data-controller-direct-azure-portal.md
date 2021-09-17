@@ -7,18 +7,16 @@ ms.reviewer: mikeray
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.date: 07/13/2021
+ms.date: 07/30/2021
 ms.topic: overview
-ms.openlocfilehash: c1c72ea44dc392e169f505c4820f99affdc82615
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: 6ac96cb0420ecdba934b364c185bedf01f9f4321
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114602528"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122822650"
 ---
 #  <a name="create-azure-arc-data-controller-from-azure-portal---direct-connectivity-mode"></a>Azure portal から Azure Arc データ コントローラーを作成する - 直接接続モード
-
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 この記事では、Azure Arc データ コントローラーを直接接続モードでデプロイする方法について説明します (この機能は現在プレビュー段階です)。 
 
@@ -26,21 +24,13 @@ ms.locfileid: "114602528"
 
 開始する前に、[直接接続モードでデータ コントローラーのデプロイするための前提条件](create-data-controller-direct-prerequisites.md)に関するページに記載されている前提条件を満たしていることを確認してください。
 
->[!NOTE]
->最初に、Azure CLI を使用して Arc 対応 Kubernetes データ サービス拡張機能をデプロイする必要があります。
->
->```azurecli
->az k8s-extension create -c "{connected_cluster_name}" -g "{resource_group_name}" --name "arcdataservices" --cluster-type "connectedClusters" --extension-type "microsoft.arcdataservices" --scope "cluster" --release-namespace {namespace} --config "Microsoft.CustomLocation.ServiceAccount=sa-bootstrapper"
->```
-
-
 ## <a name="deploy-azure-arc-data-controller"></a>Azure Arc データ コントローラーをデプロイする
 
 Azure Arc データ コントローラーの作成フローは、次のいずれかの方法で Azure portal から開始できます。
 
 - Azure portal の検索バーで、「Azure Arc data controllers」を検索し、[+ 作成] を選択します
 - Azure Arc 対応 Kubernetes クラスターの [概要] ページから、
-  - [設定] で、[拡張機能 (プレビュー)] を選択します。
+  - [設定] で [拡張機能] を選択します。
   - [拡張機能] 概要ページから [追加] を選択し、[Azure Arc data controller]\(Azure Arc データ コントローラー\) を選択します
   - Azure Arc データ コントローラー マーケットプレース ギャラリー から [作成] を選択します
   

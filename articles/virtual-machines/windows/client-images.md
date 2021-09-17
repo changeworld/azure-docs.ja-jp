@@ -8,14 +8,17 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: mimckitt
-ms.openlocfilehash: 7879e355573d2b9952728828bd3780094a919fe3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1fc0b3b628256f5ecbc0361ee2294e70e1619160
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104869057"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122698349"
 ---
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>Azure で Windows クライアントを開発/テスト シナリオに使用する
+
+**適用対象:** :heavy_check_mark: Windows VM 
+
 適切な Visual Studio (以前は MSDN) サブスクリプションがある場合は、Azure で Windows 7、Windows 8、または Windows 10 Enterprise (x64) を開発/テストのシナリオに使用できます。 
 
 運用環境で Windows 10 を実行する場合は、「[マルチテナント ホスティング権限を使用して Azure 上で Windows 10 をデプロイする方法](windows-desktop-multitenant-hosting-deployment.md)」を参照してください。

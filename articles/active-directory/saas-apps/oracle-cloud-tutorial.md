@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/04/2020
 ms.author: jeedes
-ms.openlocfilehash: 914858471432979e5516a1f075ed4fcbb8061a5d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 02ba974aa430bd75848c3fcf2b762453d99e27fe
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96181854"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122183608"
 ---
 # <a name="tutorial-integrate-oracle-cloud-infrastructure-console-with-azure-active-directory"></a>チュートリアル:Oracle Cloud Infrastructure Console と Azure Active Directory を統合する
 
@@ -38,6 +38,7 @@ ms.locfileid: "96181854"
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 * Oracle Cloud Infrastructure Console では、**SP** Initiated SSO がサポートされます。
+* Oracle Cloud Infrastructure Console では、[**自動化された** ユーザー プロビジョニングとプロビジョニング解除](oracle-cloud-infrastructure-console-provisioning-tutorial.md) (推奨) がサポートされます。
 
 ## <a name="adding-oracle-cloud-infrastructure-console-from-the-gallery"></a>ギャラリーからの Oracle Cloud Infrastructure Console の追加
 

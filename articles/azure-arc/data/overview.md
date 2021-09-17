@@ -8,25 +8,27 @@ ms.reviewer: mikeray
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.date: 07/13/2021
+ms.date: 07/30/2021
 ms.topic: overview
-ms.openlocfilehash: cb905bd3e8ceb7012415a65bda1928b25da3037b
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 5a2bd61c2e59e5933361cc5d64462ba50a12d836
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113760995"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737124"
 ---
-# <a name="what-are-azure-arc-enabled-data-services-preview"></a>Azure Arc 対応データ サービス (プレビュー) とは
+# <a name="what-are-azure-arc-enabled-data-services"></a>Azure Arc 対応データ サービスとは
 
 Azure Arc を使用すると、Kubernetes と選択したインフラストラクチャを使用して、オンプレミス、エッジ、パブリック クラウドで Azure データ サービスを実行できます。
 
-現在、次の Azure Arc 対応データ サービスのプレビュー版を利用できます。
+現在、次の Azure Arc 対応データ サービスを利用できます。 
 
 - SQL Managed Instance
-- PostgreSQL Hyperscale
+- PostgreSQL Hyperscale (プレビュー)
 
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
+Azure Arc 対応データ サービスでハイブリッド作業環境がどのようにサポートされているかの概要については、こちらの入門ビデオをご覧ください。
+
+> [!VIDEO https://channel9.msdn.com/Shows//Inside-Azure-for-IT/Choose-the-right-data-solution-for-your-hybrid-environment/player?format=ny]
 
 ## <a name="always-current"></a>常に最新
 
@@ -43,6 +45,8 @@ Azure Arc には、高速デプロイや大規模な自動化など、クラウ�
 ## <a name="unified-management"></a>統合された管理
 
 Azure portal、Azure Data Studio、`arcdata` 拡張子が付いた Azure CLI (`az`) などの使い慣れたツールを使用して、Azure Arc によってデプロイされたすべてのデータ資産の統合ビューを取得できるようになりました。お使いの環境と Azure でさまざまなリレーショナル データベースを表示および管理できるだけでなく、Kubernetes API からログとテレメトリを取得して、基盤となるインフラストラクチャの容量と正常性を分析することもできます。 ローカライズされたログ分析とパフォーマンスの監視に加えて、Azure Monitor を利用して、資産全体にわたる総合的なオペレーション インサイトを実現できるようになりました。
+
+[!INCLUDE [use-insider-azure-data-studio](includes/use-insider-azure-data-studio.md)]
 
 ## <a name="disconnected-scenario-support"></a>切断されたシナリオのサポート
 

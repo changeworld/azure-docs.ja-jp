@@ -8,14 +8,16 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 6af3d66afe107bae470f4081407f2293fe04f0fb
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: 7cd3c1d4a0da5ca0741f6d7f05a1cf082d2e922e
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113356968"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122696541"
 ---
 # <a name="managed-disk-bursting"></a>マネージド ディスクのバースト
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 Azure には、ディスク記憶域の IOPS と帯域幅 (MB/秒) パフォーマンスを高めるバーストと呼ばれる機能が、仮想マシン (VM) とディスクの両方に用意されています。 VM とディスクのバーストを効果的に活用すれば、VM とディスクの両方でバースト パフォーマンスを高めることができます。
 

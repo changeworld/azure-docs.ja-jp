@@ -8,14 +8,16 @@ ms.topic: conceptual
 ms.date: 7/22/2020
 ms.author: mimckitt
 ms.custom: sttsinar
-ms.openlocfilehash: 9c0fcd7923d03ed4086e424e3a8ec86fc74df4af
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.openlocfilehash: 931a80078c4e808ac394bdd226fb972807ed4563
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111526958"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122697242"
 ---
 # <a name="azure-virtual-machine-sizes-naming-conventions"></a>Azure 仮想マシンのサイズの名前付け規則
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 このページでは、Azure VM に使用される名前付け規則の概要について説明します。 VM では、これらの名前付け規則を使用して、さまざまな機能と仕様が示されます。
 

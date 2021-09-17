@@ -8,14 +8,16 @@ ms.author: rogarana
 ms.service: storage
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 48b7fb11f3f0127358ee92ddea9262b805264500
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7f4ae0dfb8e03add64f450d98c15f85da33eaef3
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121738999"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122696467"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Azure Disk Storage のサーバー側暗号化
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 ほとんどの Azure マネージド ディスクは Azure Storage 暗号化によって暗号化されています。暗号化では、サーバー側暗号化 (SSE) を使用してデータを保護し、組織のセキュリティとコンプライアンスのコミットメントを満たすことができます。 Azure Storage 暗号化では、Azure マネージド ディスク (OS およびデータ ディスク) に格納されているお使いのデータをクラウドに永続化するときに、既定で保存時に自動的に暗号化されます。 ただし、ホストでの暗号化が有効になっているディスクは、Azure Storage によって暗号化されません。 ホストでの暗号化が有効になっているディスクの場合、VM をホストしているサーバーがデータの暗号化を提供し、暗号化されたデータは Azure Storage に送信されます。
 
@@ -55,7 +57,7 @@ Azure Storage の暗号化は、マネージド ディスクのパフォーマ�
 > [!IMPORTANT]
 > カスタマー マネージド キーは、Azure Active Directory (Azure AD) の 1 つの機能である Azure リソース用マネージド ID に依存します。 カスタマー マネージド キーを構成すると、内部でマネージド ID がリソースに自動的に割り当てられます。 その後、サブスクリプション、リソース グループ、またはマネージド ディスクを 1 つの Azure AD ディレクトリから別のディレクトリに移動した場合、そのマネージド ディスクに関連付けられているマネージド ID は新しいテナントに転送されないため、カスタマー マネージド キーが機能しなくなることがあります。 詳細については、「[Azure AD ディレクトリ間のサブスクリプションの転送](../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)」を参照してください。
 
-マネージド ディスクのカスタマー マネージド キーを有効にするには、[Azure PowerShell モジュール](windows/disks-enable-customer-managed-keys-powershell.md)、[Azure CLI](linux/disks-enable-customer-managed-keys-cli.md)、または [Azure portal](disks-enable-customer-managed-keys-portal.md) のいずれかを使用して有効にする方法について説明している記事を参照してください。 自動キー ローテーションを使用してカスタマー マネージド キーを有効にする方法については、「[自動キー ローテーションを使用して Azure Key Vault と DiskEncryptionSet を設定する (プレビュー)](windows/disks-enable-customer-managed-keys-powershell.md#set-up-an-azure-key-vault-and-diskencryptionset-with-automatic-key-rotation-preview)」を参照してください。
+マネージド ディスクのカスタマー マネージド キーを有効にするには、[Azure PowerShell モジュール](windows/disks-enable-customer-managed-keys-powershell.md)、[Azure CLI](linux/disks-enable-customer-managed-keys-cli.md)、または [Azure portal](disks-enable-customer-managed-keys-portal.md) のいずれかを使用して有効にする方法について説明している記事を参照してください。 
 
 ## <a name="encryption-at-host---end-to-end-encryption-for-your-vm-data"></a>ホストでの暗号化 - ご利用の VM データのエンドツーエンド暗号化
 

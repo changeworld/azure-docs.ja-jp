@@ -9,14 +9,16 @@ ms.date: 03/22/2021
 ms.author: cynthn
 ms.collection: linux
 ms.custom: contperf-fy21q3-portal, devx-track-azurecli
-ms.openlocfilehash: f440518e0d7b4fc347da6455e7f6c06e18633598
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b0df8d446716363f21c468838523ffe4804f2e9c
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121740073"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122691907"
 ---
 # <a name="find-azure-marketplace-image-information-using-the-azure-cli"></a>Azure CLI を使用して Azure Marketplace イメージ情報を検索する
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: 柔軟なスケール セット 
 
 このトピックでは、Azure CLI を使用して Azure Marketplace で VM イメージを見つける方法を説明します。 これらの情報は、CLI、Resource Manager テンプレート、またはその他のツールを使用して、VM をプログラムによって作成する際、Marketplace イメージを指定するために使用できます。
 

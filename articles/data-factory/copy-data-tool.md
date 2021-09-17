@@ -1,17 +1,20 @@
 ---
 title: Azure Data Factory のデータのコピー ツール
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Azure Data Factory の UI にあるデータのコピー ツールについて説明します
 author: dearandyxu
 ms.service: data-factory
+ms.subservice: data-movement
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 06/01/2021
+ms.date: 06/04/2021
 ms.author: yexu
-ms.openlocfilehash: 68bfa62817d971ce8c8127f44f43576431a499fc
-ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
+ms.openlocfilehash: 165d799e6bc2cc6a5f7e064b909ca7e80f819c42
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2021
-ms.locfileid: "111372014"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122637804"
 ---
 # <a name="copy-data-tool-in-azure-data-factory"></a>Azure Data Factory のデータのコピー ツール
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -30,10 +33,11 @@ Azure Data Factory のデータのコピー ツールを使うと、通常はエ
 | Azure Data Factory のエンティティ (リンクされたサービス、データセット、パイプラインなど) について理解することなく、データ読み込みタスクを簡単に作成したい場合。 | Lake にデータを読み込むための複雑で柔軟性の高いロジックを実装したい場合。 |
 | 大量のデータ アーティファクトを Data lake にすばやく読み込みたい場合。 | データのクレンジングや処理のためにコピー アクティビティを後続のアクティビティと連鎖させたい場合。 |
 
-データのコピー ツールを起動するには、Data Factory のホーム ページで **[データのコピー]** タイルをクリックします。
+データのコピー ツールを起動するには、お使いのデータ ファクトリのホーム ページで **[取り込み]** タイルをクリックします。
 
-![開始ページ - データのコピー ツールへのリンク](./media/doc-common-process/get-started-page.png)
+![ホーム ページを示すスクリーンショット - データのコピー ツールへのリンク。](./media/doc-common-process/get-started-page.png)
 
+データのコピー ツールを起動すると、2 種類のタスクが表示されます。1 つは **組み込みのコピー タスク** で、もう 1 つは **メタデータ駆動のコピー タスク** です。 組み込みのコピー タスクを使用すると、5 分以内にパイプラインが作成され、Azure Data Factory のエンティティについて学習しなくてもデータをレプリケートできます。  大量のオブジェクト (数千のテーブルなど) の大規模なコピーを管理するための、パラメーター化されたパイプラインと外部制御テーブルを簡単に作成できる、メタデータ駆動のコピー タスク。 詳細については、[メタデータ駆動のデータのコピー](copy-data-tool-metadata-driven.md)に関する記事を参照してください。
 
 ## <a name="intuitive-flow-for-loading-data-into-a-data-lake"></a>Data lake にデータを読み込むための直感的なフロー
 このツールを使うと、直感的なフローに従って、さまざまなコピー元からコピー先にデータを数分以内で簡単に移動することができます。  

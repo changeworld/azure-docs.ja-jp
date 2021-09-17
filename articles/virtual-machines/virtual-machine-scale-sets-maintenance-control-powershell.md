@@ -8,14 +8,16 @@ ms.workload: infrastructure-services
 ms.date: 09/11/2020
 ms.author: jushiman
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b804536c54cce64ace2605999c7cc28cef357a4d
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.openlocfilehash: 312acb2715e76587ac213f73c86e785afe2eadcb
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112072327"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122695273"
 ---
 # <a name="maintenance-control-for-os-image-upgrades-on-azure-virtual-machine-scale-sets-using-powershell"></a>PowerShell を使用して Azure 仮想マシン スケール セットで OS イメージをアップグレードするためのメンテナンス コントロール
+
+**適用対象:** :heavy_check_mark: ユニフォーム スケール セット
 
 メンテナンス コントロールを使用すると、ゲスト OS イメージの自動アップグレードを仮想マシン スケール セットに適用するタイミングを決定できます。 このトピックでは、メンテナンス コントロール用の Azure PowerShell オプションについて説明します。 メンテナンス コントロールの使用方法の詳細については、「[Azure 仮想マシン スケール セットのメンテナンス コントロール](virtual-machine-scale-sets-maintenance-control.md)」を参照してください。
 

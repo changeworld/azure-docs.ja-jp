@@ -8,26 +8,28 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 11/19/2020
+ms.date: 04/07/2021
 ms.author: aahi
 ms.reviewer: chtufts
-ms.openlocfilehash: 9ba9fe7ca73e874fb55c228e22b884a86de736cf
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: b583caa4fdb2a1e72833d4e24c317282be041513
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98661461"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122822137"
 ---
 # <a name="data-and-rate-limits-for-the-text-analytics-api"></a>Text Analytics API のデータとレートの制限
 <a name="data-limits"></a>
 
-この記事では、サイズの制限と、Text Analytics API にデータを送信できるレートの制限について説明します。 価格は、データ制限またはレート制限による影響を受けないことに注意してください。 価格は、Text Analytics リソースの「[価格の詳細](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)」に従います。
+この記事では、サイズの制限と、Text Analytics API にデータを送信できるレートの制限について説明します。
 
 ## <a name="data-limits"></a>データ制限
 
 > [!NOTE]
-> * 制限を超えるドキュメントを分析する必要がある場合は、テキストを小さなチャンクに分割してから API に送信することができます。 
-> * ドキュメントとは、テキスト文字の 1 つの文字列です。  
+> * 価格はデータやレートの制限の影響を受けません。 料金は、API に送信するテキスト レコードの数に基づいており、Text Analytics リソースの[料金の詳細](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)が適用されます。
+>   * 1 テキスト レコードは 1,000 文字として測定されます。 
+> * データとレートの制限は、API に送信するドキュメントの数に基づいています。 制限を超えるドキュメントを分析する必要がある場合は、テキストを小さなチャンクに分割してから API に送信することができます。 
+>   * ドキュメントとは、テキスト文字の 1 つの文字列です。  
 
 | 制限 | 値 |
 |------------------------|---------------|
@@ -88,6 +90,8 @@ ms.locfileid: "98661461"
 
 要求レートは、Text Analytics の機能ごとに個別に測定されます。 各機能に対して、利用中の価格レベルで最大数の要求を同時に送信できます。 たとえば、`S` レベルを利用中で、1000 の要求を一度に送信した場合、59 秒間は別の要求を送信できなくなります。
 
+
+S0 から S4 のサービス レベルは非推奨とされており、S サービス レベルに切り替えることをお勧めします。
 
 ## <a name="see-also"></a>関連項目
 

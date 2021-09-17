@@ -3,16 +3,16 @@ title: Azure Defender for DNS - 利点と機能
 description: Azure Defender for DNS の利点と機能について説明します。
 author: memildin
 ms.author: memildin
-ms.date: 05/12/2021
+ms.date: 08/18/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 976ffc86fd82bb85fefb16b4f442111a07d1f652
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: cffe4947e321cbd1f2cbb8a4d22141039129c1e1
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113003604"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122419597"
 ---
 # <a name="introduction-to-azure-defender-for-dns"></a>Azure Defender for DNS の概要
 
@@ -27,9 +27,9 @@ Azure Defender for DNS により、次の方法によって Azure DNS に接続�
 
 |側面|詳細|
 |----|:----|
-|リリース状態:|一般提供 (GA)|
+|リリース状態:|一般公開 (GA)|
 |価格:|**Azure Defender for DNS** の課金については、「[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)」をご覧ください|
-|クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![No](./media/icons/no-icon.png) National/Sovereign (US Gov、Azure China)|
+|クラウド:|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用クラウド<br>:::image type="icon" source="./media/icons/yes-icon.png"::: Azure China 21Vianet<br>:::image type="icon" source="./media/icons/yes-icon.png"::: Azure Government|
 |||
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-dns"></a>Azure Defender for DNS の利点
@@ -52,9 +52,11 @@ DNS レイヤーを保護するためには、各サブスクリプションに�
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、Azure Defender for DNS について説明しました。 関連資料については、次の記事をご覧ください。 
+この記事では、Azure Defender for DNS について説明しました。 
+
+> [!div class="nextstepaction"]
+> [Azure Defender を有効にする](enable-azure-defender.md)
+
+関連資料については、次の記事をご覧ください。 
 
 - セキュリティ アラートは、Security Center によって生成される場合もあれば、Security Center がさまざまなセキュリティ製品から受信する場合もあります。 それらすべてのアラートを Azure Sentinel、サードパーティの SIEM、またはその他の外部ツールにエクスポートする場合は、[SIEM へのアラートのエクスポート](continuous-export.md)に関するページの手順に従ってください。
-
-- > [!div class="nextstepaction"]
-    > [Azure Defender を有効にする](enable-azure-defender.md)

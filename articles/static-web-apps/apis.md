@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/18/2020
 ms.author: cshoe
-ms.openlocfilehash: 8d9654ce534bea9a6f1a10ffc9605278b1c598e9
-ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
+ms.openlocfilehash: 168c187c4e573193b439e790fb94290aadec046a
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2021
-ms.locfileid: "111372523"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122778874"
 ---
 # <a name="api-support-in-azure-static-web-apps-with-azure-functions"></a>Azure Functions による Azure Static Web Apps での API のサポート
 
@@ -26,7 +26,7 @@ Azure Static Web Apps API は、次の使用できる 2 つの構成でサポー
 
 - **マネージド関数**: 既定では、静的 Web アプリの API は、いくつかの制限が関連付けられた、Azure Static Web Apps によって管理およびデプロイされる Azure Functions アプリです。
 
-- **独自の関数の持ち込み**: 必要に応じて、任意のプランの種類の[既存のAzure Functionsアプリケーションを用意する](functions-bring-your-own.md)ことができます (Azure Functions のすべての機能に付いています)。 この構成の場合、Functions アプリの個別のデプロイを処理する必要があります。
+- **独自の関数の持ち込み**: 必要に応じて、任意のプランの種類の [既存のAzure Functionsアプリケーションを用意する](functions-bring-your-own.md)ことができます (Azure Functions のすべての機能に付いています)。 この構成の場合、Functions アプリの個別のデプロイを処理する必要があります。
 
 次の表では、マネージド関数と既存の関数の使用の違いを対比したものです。
 
@@ -36,11 +36,12 @@ Azure Static Web Apps API は、次の使用できる 2 つの構成でサポー
 | サポートされている Azure Functions [ランタイム](../azure-functions/supported-languages.md#languages-by-runtime-version) | Node.js 12<br>.NET Core 3.1<br>Python 3.8 | All |
 | サポートされている Azure Functions の[ホスティング プラン](../azure-functions/functions-scale.md) | 従量課金 | 従量課金<br>Premium<br>専用 |
 | ユーザー認証とロールベースの承認データに直接アクセスできる[統合セキュリティ](user-information.md)。 | ✔ | ✔ |
-| カスタム CORS ルールを必要とせずに、Web アプリで安全に _api_ ルートを使用できるようにする[ルーティングの統合](./configuration.md?#routes)。 | ✔ | ✔ |
-| [Durable Functions](../azure-functions/durable/durable-functions-overview.md) プログラミング モデル | | ✔ |
-| [管理対象 ID](../app-service/overview-managed-identity.md) | | ✔ |
-| [Azure App Service の認証と承認](../app-service/configure-authentication-provider-aad.md)のトークン管理 | | ✔ |
-| Azure Static Web Apps の外部で使用できる API 関数 |  | ✔ |
+| カスタム CORS ルールを必要とせずに、Web アプリで安全に _api_ ルートを使用できるようにする [ルーティングの統合](./configuration.md?#routes)。 | ✔ | ✔ |
+| [Durable Functions](../azure-functions/durable/durable-functions-overview.md) プログラミング モデル | ✕ | ✔ |
+| [管理対象 ID](../app-service/overview-managed-identity.md) | ✕ | ✔ |
+| [Azure App Service の認証と承認](../app-service/configure-authentication-provider-aad.md)のトークン管理 | ✕ | ✔ |
+| Azure Static Web Apps の外部で使用できる API 関数 | ✕ | ✔ |
+| Azure Key Vault に格納されるアプリケーション設定 | ✕ | ✔ |
 
 ## <a name="configuration"></a>構成
 

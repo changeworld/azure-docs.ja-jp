@@ -11,17 +11,17 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: multiple
 ms.topic: article
-ms.date: 09/14/2020
+ms.date: 08/23/2021
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 10/02/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3f8f9357fff4773467dd93046ece8533514eb444
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 01d6d1cffaa0ae9928c24015570f882036b1e783
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92313900"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122771438"
 ---
 # <a name="send-cross-platform-notifications-with-azure-notification-hubs"></a>Azure Notification Hubs を使用してクロスプラットフォーム通知を送信する
 
@@ -36,6 +36,9 @@ ms.locfileid: "92313900"
 > Notification Hubs では、デバイスが同じタグを使用して複数のテンプレートを登録できます。 この場合、そのタグをターゲットとするメッセージが受信されると複数の通知がデバイスに配信されます (テンプレートごとに 1 つずつ)。 このプロセスにより、複数のビジュアル通知に同じメッセージを表示することが可能になります (Windows ストア アプリでバッジとトースト通知の両方として表示するなど)。により、複数のビジュアル通知に同じメッセージを表示することが可能になります (Windows ストア アプリでバッジとトースト通知の両方として表示するなど)。
 
 ## <a name="send-cross-platform-notifications-using-templates"></a>テンプレートを使用したクロスプラットフォーム通知の送信
+
+> [!NOTE]
+> Microsoft プッシュ通知サービス (MPNS) は非推奨とされ、サポートされなくなりました。
 
 このセクションでは、「[Azure Notification Hubs を使用して特定のユーザーに通知を送信する]」で作成したサンプル コードを使用します。 [GitHub から完全なサンプルをダウンロード](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/NotifyUsers)することができます。
 

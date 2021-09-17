@@ -1,24 +1,27 @@
 ---
-title: Azure Data Factory のシステム変数
-description: この記事では、Azure Data Factory でサポートされているシステム変数について説明します。 Data Factory エンティティを定義するときに、式でこれらの変数を使用できます。
+title: システム変数
+titleSuffix: Azure Data Factory & Azure Synapse
+description: この記事では、Azure Data Factory と Azure Synapse Analytics でサポートされているシステム変数について説明します。 これらの変数は、いずれかのサービス内でエンティティを定義するときに式で使用できます。
 author: chez-charlie
 ms.author: chez
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: orchestration
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 06/12/2018
-ms.openlocfilehash: 7e29bd82f9f72651ca0383c680c0b05860fe29b4
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.date: 08/24/2021
+ms.openlocfilehash: f0fa5503b52481afafe2a0a6be8e28f8a964464b
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110062238"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122821620"
 ---
-# <a name="system-variables-supported-by-azure-data-factory"></a>Azure Data Factory でサポートされているシステム変数
+# <a name="system-variables-supported-by-azure-data-factory-and-azure-synapse-analytics"></a>Azure Data Factory と Azure Synapse Analytics でサポートされているシステム変数
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-この記事では、Azure Data Factory でサポートされているシステム変数について説明します。 Data Factory エンティティを定義するときに、式でこれらの変数を使用できます。
+この記事では、Azure Data Factory と Azure Synapse でサポートされているシステム変数について説明します。 これらの変数は、いずれかのサービス内でエンティティを定義するときに式で使用できます。
 
 ## <a name="pipeline-scope"></a>パイプラインのスコープ
 
@@ -26,16 +29,16 @@ ms.locfileid: "110062238"
 
 | 変数名 | 説明 |
 | --- | --- |
-| @pipeline().DataFactory |パイプライン実行が実行されているデータ ファクトリの名前 |
+| @pipeline().DataFactory |パイプライン実行が実行されているデータまたは Synapse ワークスペースの名前 |
 | @pipeline().Pipeline |パイプラインの名前 |
 | @pipeline().RunId |特定のパイプライン実行の ID |
-| @pipeline().TriggerType |パイプラインを呼び出したトリガーの種類 (例: `ScheduleTrigger`、`BlobEventsTrigger`)。 サポートされているトリガーの種類の一覧については、「[Azure Data Factory でのパイプラインの実行とトリガー](concepts-pipeline-execution-triggers.md)」を参照してください。 `Manual` のトリガーの種類は、パイプラインが手動でトリガーされたことを示します。 |
+| @pipeline().TriggerType |パイプラインを呼び出したトリガーの種類 (例: `ScheduleTrigger`、`BlobEventsTrigger`)。 サポートされているトリガーの種類の一覧については、「[パイプラインの実行とトリガー](concepts-pipeline-execution-triggers.md)」を参照してください。 `Manual` のトリガーの種類は、パイプラインが手動でトリガーされたことを示します。 |
 | @pipeline（）.TriggerId|パイプラインを呼び出したトリガーの ID |
 | @pipeline（）.TriggerName|パイプラインを呼び出したトリガーの名前 |
 | @pipeline（）.TriggerTime|パイプラインを呼び出したトリガーの実行時刻。 これは、トリガーがパイプライン実行を呼び出すために **実際に** 起動した時刻であり、トリガーのスケジュールされた時刻とはやや異なる場合があります。  |
 | @pipeline().GroupId | パイプラインの実行が属するグループの ID。 |
-| @pipeline() __?__ .TriggeredByPipelineName | パイプラインの実行をトリガーするパイプラインの名前。 ExecutePipeline アクティビティによってパイプラインの実行がトリガーされる場合に関係します。 その他の状況で使用された場合は、_Null_ に評価されます。 @pipeline() の後の疑問符に注意してください。 |
-| @pipeline() __?__ .TriggeredByPipelineRunId | パイプラインの実行をトリガーするパイプラインの実行 ID。 ExecutePipeline アクティビティによってパイプラインの実行がトリガーされる場合に関係します。 その他の状況で使用された場合は、_Null_ に評価されます。 @pipeline() の後の疑問符に注意してください。 |
+| @pipeline()?TriggeredByPipelineName | パイプラインの実行をトリガーするパイプラインの名前。 ExecutePipeline アクティビティによってパイプラインの実行がトリガーされる場合に関係します。 その他の状況で使用された場合は、_Null_ に評価されます。 @pipeline() の後の疑問符に注意してください。 |
+| @pipeline()?TriggeredByPipelineRunId | パイプラインの実行をトリガーするパイプラインの実行 ID。 ExecutePipeline アクティビティによってパイプラインの実行がトリガーされる場合に関係します。 その他の状況で使用された場合は、_Null_ に評価されます。 @pipeline() の後の疑問符に注意してください。 |
 
 >[!NOTE]
 >トリガー関連の日付/時刻のシステム変数 (パイプラインとトリガーの両方のスコープ) は、ISO 8601 形式で UTC 日付を返します (例: `2017-06-01T22:20:00.4061448Z`)。
@@ -67,7 +70,7 @@ ms.locfileid: "110062238"
 | 変数名 | 説明 |
 | --- | --- |
 | @triggerBody().fileName  |作成または削除によってトリガーが起動されたファイルの名前。   |
-| @triggerBody().folderName  |`@triggerBody().fileName` で指定されたファイルを含むフォルダーへのパス。 フォルダー パスの最初のセグメントは、Azure Blob Storage コンテナーの名前です。  |
+| @triggerBody().folderPath  |`@triggerBody().fileName` で指定されたファイルを含むフォルダーへのパス。 フォルダー パスの最初のセグメントは、Azure Blob Storage コンテナーの名前です。  |
 | @trigger().startTime |パイプライン実行を呼び出すためにトリガーが起動した時刻。 |
 
 ## <a name="custom-event-trigger-scope"></a>カスタム イベント トリガーのスコープ
@@ -75,7 +78,7 @@ ms.locfileid: "110062238"
 トリガーの種類が [CustomEventsTrigger](concepts-pipeline-execution-triggers.md#event-based-trigger) の場合、これらのシステム変数は、トリガー JSON 内の任意の場所で参照できます。
 
 >[!NOTE]
->Azure Data Factory では、 [Azure Event Grid イベント スキーマ](../event-grid/event-schema.md)を使用してカスタム イベントを書式設定する必要があります。
+>サービスでは、[Azure Event Grid イベント スキーマ](../event-grid/event-schema.md)を使用してカスタム イベントを書式設定する必要があります。
 
 | 変数名 | 説明
 | --- | --- |

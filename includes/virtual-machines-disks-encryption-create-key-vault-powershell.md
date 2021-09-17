@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 06/15/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: ebeca5ec1e3a478fdf1a62e2478cad9754c6ccd2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9ad82e65258dd985ce351b5fa11156ccdd2ef977
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "99808501"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122771996"
 ---
 1. 最新の [Azure PowerShell バージョン](/powershell/azure/install-az-ps)がインストールされており、Connect-AzAccount を使用して Azure アカウントにサインインしていることを確認します。
 
 1. Azure Key Vault と暗号化キーのインスタンスを作成します。
 
-    Key Vault インスタンスを作成する場合、論理的な削除と消去保護を有効にする必要があります。 論理的な削除では、Key Vault は削除されたキーを特定の保持期間 (既定では90日) にわたって保持します。 消去保護では、保持期間が経過するまで、削除されたキーを完全に削除できないようになります。 これらの設定は、誤って削除したためにデータが失われるのを防ぎます。 これらの設定は、Key Vault を使用してマネージド ディスクを暗号化する場合は必須です。
+    Key Vault インスタンスを作成する場合、消去保護を有効にする必要があります。 消去保護では、保持期間が経過するまで、削除されたキーを完全に削除できないようになります。 これらの設定は、誤って削除したためにデータが失われるのを防ぎます。 これらの設定は、Key Vault を使用してマネージド ディスクを暗号化する場合は必須です。
     
     ```powershell
     $ResourceGroupName="yourResourceGroupName"
@@ -29,17 +29,28 @@ ms.locfileid: "99808501"
     $keyDestination="Software"
     $diskEncryptionSetName="yourDiskEncryptionSetName"
 
-    $keyVault = New-AzKeyVault -Name $keyVaultName -ResourceGroupName $ResourceGroupName -Location $LocationName -EnablePurgeProtection
+    $keyVault = New-AzKeyVault -Name $keyVaultName `
+    -ResourceGroupName $ResourceGroupName `
+    -Location $LocationName `
+    -EnablePurgeProtection
 
-    $key = Add-AzKeyVaultKey -VaultName $keyVaultName -Name $keyName -Destination $keyDestination  
+    $key = Add-AzKeyVaultKey -VaultName $keyVaultName `
+          -Name $keyName `
+          -Destination $keyDestination 
     ```
 
-1.    DiskEncryptionSet のインスタンスを作成します。 
+1.    DiskEncryptionSet のインスタンスを作成します。 RotationToLatestKeyVersionEnabled を $true に設定すると、キーの自動ローテーションを有効にできます。 自動ローテーションを有効にすると、ディスク暗号化セットを参照するすべてのマネージド ディスク、スナップショット、およびイメージがシステムによって自動的に更新され、1 時間以内に新しいバージョンのキーが使用されます。  
     
         ```powershell
-        $desConfig=New-AzDiskEncryptionSetConfig -Location $LocationName -SourceVaultId $keyVault.ResourceId -KeyUrl $key.Key.Kid -IdentityType SystemAssigned
-        
-        $des=New-AzDiskEncryptionSet -Name $diskEncryptionSetName -ResourceGroupName $ResourceGroupName -InputObject $desConfig 
+      $desConfig=New-AzDiskEncryptionSetConfig -Location $LocationName `
+            -SourceVaultId $keyVault.ResourceId `
+            -KeyUrl $key.Key.Kid `
+            -IdentityType SystemAssigned `
+            -RotationToLatestKeyVersionEnabled $false
+
+       $des=New-AzDiskEncryptionSet -Name $diskEncryptionSetName `
+               -ResourceGroupName $ResourceGroupName `
+               -InputObject $desConfig
         ```
 
 1.    DiskEncryptionSet リソースに Key Vault へのアクセス権を付与します。

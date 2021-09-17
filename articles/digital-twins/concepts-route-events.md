@@ -7,22 +7,22 @@ ms.author: baanders
 ms.date: 6/1/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: b9038840142be64918b22f1aefc32d505252d71d
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 2718dd070cc12cb58f8033d5a2757d8aedf05e05
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122254239"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122771204"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Azure Digital Twins の内外でイベントをルーティングする
 
 Azure Digital Twins は、**イベント ルート** を使用して、サービスの外部のコンシューマーにデータを送信します。 
 
 Azure Digital Twins データを送信する主なケースが 2 つあります。
-* Azure Digital Twins グラフの 1 つのツインから別のツインにデータを送信する。 たとえば、あるデジタル ツインのプロパティが変更された際、それに応じて別のデジタル ツインに通知し、更新する必要がある場合があります。
-* データを下流のデータ サービスに送信して、追加のストレージまたは処理 (*データ エグレス* とも呼ばれます) を行います。 たとえば、
+* Azure Digital Twins グラフの 1 つのツインから別のツインにデータを送信する。 たとえば、あるデジタル ツインのプロパティが変更されたとき、別のデジタル ツインに通知し、更新されたデータに基づいて更新することが必要な場合があります。
+* さらに保存または処理するために、データを下流のデータ サービスに送信する ("*データ エグレス*" とも呼ばれます)。 たとえば、
   - 病院は、Azure Digital Twins イベント データを [Time Series Insights (TSI)](../time-series-insights/overview-what-is-tsi.md) に送信して、一括分析に関連するイベントの時系列データを記録することができます。
-  - [Azure Maps](../azure-maps/about-azure-maps.md) を既に使用している企業は、Azure Digital Twins を使用してソリューションを強化することが必要になる場合があります。 Azure Digital Twins を設定した後、Azure Map を迅速に有効にしたり、ツイン グラフの[デジタル ツイン](concepts-twins-graph.md)として Azure Map エンティティを Azure Digital Twins に配置したり、Azure Maps と Azure Digital Twins データを組み合わせて活用して強力なクエリを実行したりすることができます。
+  - [Azure Maps](../azure-maps/about-azure-maps.md) を既に使用している企業は、Azure Digital Twins を使用してソリューションを強化することが必要になる場合があります。 Azure Digital Twins を設定した後、Azure Map を迅速に有効にしたり、ツイン グラフの[デジタル ツイン](concepts-twins-graph.md)として Azure Map エンティティを Azure Digital Twins に配置したり、Azure Maps と Azure Digital Twins データを組み合わせて使用して強力なクエリを実行したりすることができます。
 
 イベント ルートは、これらの両方のシナリオで使用されます。
 
@@ -38,11 +38,11 @@ Azure Digital Twins データを送信する主なケースが 2 つあります
 
 ### <a name="event-routes-for-internal-digital-twin-events"></a>内部デジタル ツイン イベントのイベント ルート
 
-イベント ルートはツイン グラフ内のイベントを処理し、デジタル ツインからデジタル ツインにデータを送信するためにも使用されます。 これは、Event Grid 経由でイベント ルートを [Azure Functions](../azure-functions/functions-overview.md) などのコンピューティング リソースに接続して行われます。 これらの関数は、ツインがイベントを受信して応答する方法を定義します。 
+イベント ルートはツイン グラフ内のイベントを処理し、デジタル ツインからデジタル ツインにデータを送信するためにも使用されます。 この種のイベント処理は、イベント ルートを Event Grid 経由で [Azure Functions](../azure-functions/functions-overview.md) などのコンピューティング リソースに接続することによって行われます。 これらの関数は、ツインがイベントを受信して応答する方法を定義します。 
 
-イベント ルート経由で受信したイベントに基づいて、コンピューティング リソースがツイン グラフを変更する場合は、事前に変更するツインを把握しておくことをお勧めします。 
+イベント ルート経由で受信したイベントに基づき、コンピューティング リソースによってツイン グラフが変更される場合は、事前に変更するツインを把握しておくことをお勧めします。 
 
-また、イベント メッセージには、メッセージを送信したソース ツインの ID も含まれているので、コンピューティング リソースはクエリまたはリレーションシップをスキャンして目的の操作のターゲット ツインを見つけることができます。 
+イベント メッセージには、メッセージを送信したソース ツインの ID も含まれているので、コンピューティング リソースはクエリまたはリレーションシップをスキャンして目的の操作のターゲット ツインを見つけることができます。 
 
 コンピューティング リソースは、セキュリティとアクセス許可を個別に確立する必要もあります。
 

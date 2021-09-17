@@ -1,18 +1,20 @@
 ---
 title: マッピング データ フローの派生列変換
-description: Azure Data Factory で、マッピング データ フローの派生列変換を使用して、大規模にデータを変換する方法について説明します。
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Azure Data Factory および Azure Synapse Analytics で、マッピング データ フローの派生列変換を使用して、大規模にデータを変換する方法について説明します。
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 09/14/2020
-ms.openlocfilehash: 2e90a8779322cf8967ca9a194c6cc760f7c8b8f5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: synapse
+ms.date: 08/24/2021
+ms.openlocfilehash: 815410030ffbfece39f5f92a4d6783abb8991eb6
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90532028"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122822843"
 ---
 # <a name="derived-column-transformation-in-mapping-data-flow"></a>マッピング データ フローの派生列変換
 
@@ -85,7 +87,7 @@ ms.locfileid: "90532028"
 
 次の例は、受信ストリーム `MoviesYear` を受け取り 2 つの派生列を作成する、`CleanData` という名前の派生列です。 最初の派生列は、列 `Rating` を整数型の Rating の値で置き換えます。 2 番目の派生列は、名前が 'movies' で始まる各列に一致するパターンです。 一致した列ごとに、一致する列の値と等しい列 `movie` を、'movie_' というプレフィックスを付けて作成します。 
 
-Data Factory UX では、この変換は次の図のようになります。
+この UI では、この変換は次の図のようになります。
 
 ![派生の例](media/data-flow/derive-script.png "派生の例")
 

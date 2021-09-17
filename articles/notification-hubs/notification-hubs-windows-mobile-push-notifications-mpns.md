@@ -6,26 +6,27 @@ documentationcenter: windows
 keywords: プッシュ通知,プッシュ通知,Windows Phone プッシュ通知
 author: sethmanheim
 manager: femila
-editor: jwargo
-ms.assetid: d872d8dc-4658-4d65-9e71-fa8e34fae96e
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows-phone
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc, devx-track-csharp
-ms.date: 01/04/2019
+ms.date: 08/23/2021
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: e91d250b8cc9b80f2c97910c7fa972af32fa9104
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ac1fdc7669278de05408ca441a8a99eedc82b253
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88998341"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122771470"
 ---
 # <a name="tutorial-send-push-notifications-to-windows-phone-apps-using-notification-hubs"></a>チュートリアル: Notification Hubs を使用して Windows Phone アプリにプッシュ通知を送信する
+
+> [!NOTE]
+> Microsoft プッシュ通知サービス (MPNS) は非推奨となり、サポートされなくなりました。
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 

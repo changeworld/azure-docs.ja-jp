@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: how-to
-ms.date: 05/25/2021
-ms.openlocfilehash: cf1361a531511daf7f249f4e7c7d2acf9207c457
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 08/18/2021
+ms.openlocfilehash: 731fe8f29fc4e67e2d74d46702768e642928ae09
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121743246"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122514569"
 ---
 # <a name="edit-host-and-app-settings-for-logic-apps-in-single-tenant-azure-logic-apps"></a>シングルテナントの Azure Logic Apps でロジック アプリのホストとアプリの設定を編集する
 
@@ -295,6 +295,7 @@ Visual Studio Code で、ロジック アプリ プロジェクトのルート �
 
 | 設定 | 既定値 | 説明 |
 |---------|---------------|-------------|
+| `ServiceProviders.ServiceBus.MessageSenderOperationTimeout` | `00:01:00` <br>(1 分) | 組み込みの Service Bus 操作でメッセージを送信するときのタイムアウトを設定します。 |
 | `Runtime.ServiceProviders.ServiceBus.MessageSenderPoolSizePerProcessorCount` | `64` 個のメッセージ送信元 | メッセージ送信側プール内で使用するプロセッサ コアあたりの Azure Service Bus メッセージ送信元の数を設定します。 |
 ||||
 

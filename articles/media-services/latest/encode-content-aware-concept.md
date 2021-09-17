@@ -1,25 +1,25 @@
 ---
-title: コンテンツに対応したエンコードのプリセット
+title: コンテンツに対応したエンコード プリセット
 description: この記事では、Microsoft Azure Media Services v3 でのコンテンツに対応したエンコードについて説明します。
 services: media-services
 documentationcenter: ''
-author: IngridAtMicrosoft
+author: jiayali-ms
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 08/17/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0b87b37b98ada136597faa3ac5d990d6e08e9865
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 5f333b4ca86e24c845a8a91c621a2b3f7c8c984e
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122179422"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122429759"
 ---
-# <a name="use-the-content-aware-encoding-preset-to-find-the-optimal-bitrate-value-for-a-given-resolution"></a>コンテンツに対応したエンコードのプリセットを使用して、特定の解像度に最適なビットレートの値を検索する
+# <a name="content-aware-encoding-preset"></a>コンテンツに対応したエンコード プリセット
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
@@ -58,34 +58,6 @@ Microsoft の[アダプティブ ストリーミング](encode-autogen-bitrate-l
 Azure Media Services の Standard Encoder で、8 ビットの HEVC (H.265) エンコードがサポートされるようになりました。 HEVC コンテンツは、'hev1' 形式を使用して、Dynamic Packager を通じて配信およびパッケージ化できます。
 
 HEVC サンプルを含む新しい .NET カスタム エンコードは、[media-services-v3-dotnet Git Hub リポジトリ](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/Encoding_HEVC)で入手できます。 カスタム エンコードに加えて、AMS では、[2021 年 2 月のリリース ノート](https://docs.microsoft.com/azure/media-services/latest/release-notes#february-2021)で確認できる他の新しい組み込み HEVC エンコード プリセットもサポートされています。
-
-## <a name="how-to-use-the-content-aware-encoding-preset"></a>コンテンツに対応したエンコード プリセットの使用方法 
-
-次のようにこのプリセットを使用する変換を作成することができます。 
-
-変換の出力を使用するチュートリアルについては、「[次のステップ](#next-steps)」セクションを参照してください。 (チュートリアルに示されているように) 出力アセットは、MPEG-DASH や HLS などのプロトコルで Media Services ストリーミング エンドポイントから配信することができます。
-
-> [!NOTE]
-> ContentAwareEncodingExperimental ではなく、必ず **ContentAwareEncoding** プリセットを使用してください。 または、HEVC でエンコードする場合は **H265ContentAwareEncoding** を使用できます。
-
-```csharp
-TransformOutput[] output = new TransformOutput[]
-{
-   new TransformOutput
-   {
-      // The preset for the Transform is set to one of Media Services built-in sample presets.
-      // You can customize the encoding settings by changing this to use "StandardEncoderPreset" class.
-      Preset = new BuiltInStandardEncoderPreset()
-      {
-         // This sample uses the new preset for content-aware encoding
-         PresetName = EncoderNamedPreset.ContentAwareEncoding
-      }
-   }
-};
-```
-
-> [!NOTE]
-> `ContentAwareEncoding` プリセットを使用したエンコード ジョブは、出力時間 (分) のみに基づいて課金されます。 AMS では 2 パス エンコードが使用され、[価格ページ](https://azure.microsoft.com/pricing/details/media-services/#overview)に記載されているもの以外のプリセットの使用に関連する追加料金は発生しません。
   
 ## <a name="next-steps"></a>次のステップ
 

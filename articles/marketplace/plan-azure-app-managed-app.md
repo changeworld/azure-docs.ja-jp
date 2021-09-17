@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 11/06/2020
-ms.openlocfilehash: 4b06a8808826c5b11ecc2c54824db65f37d3b50f
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.date: 08/13/2021
+ms.openlocfilehash: 082b943aef3f82898b80d23d33a90d3f5ec3ebc6
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113431404"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122515128"
 ---
 # <a name="plan-an-azure-managed-application-for-an-azure-application-offer"></a>Azure アプリケーション オファーの Azure マネージド アプリケーションを計画する
 
@@ -39,6 +39,28 @@ Azure アプリケーションのマネージド アプリケーション プラ
 
 > [!NOTE]
 > 管理対象アプリケーションは、Azure Marketplace から展開できる必要があります。 顧客の通信に懸念がある場合、リード共有を有効にした後、興味を持つ顧客に連絡してください。
+
+## <a name="usage-of-azure-kubernetes-service-aks-and-containers-in-managed-application"></a>マネージド アプリケーションにおける Azure Kubernetes Service (AKS) とコンテナーの使用
+
+### <a name="azure-application-offers-fall-into-two-categories"></a>Azure アプリケーションのオファーは 2 つのカテゴリに分類されます
+
+- ソリューション テンプレート - 発行元がアクセスできないもの
+- マネージドアプリケーション - デプロイ時に顧客が付与した事前定義の権限により、発行元がアクセス可能なもの
+
+**ソリューション テンプレート:** 顧客によるデプロイが完了した後に、発行元がソリューション テンプレート オファーを変更ですることはできません。 そのため、現在このオファー カテゴリでは、コンテナーと Azure Kubernetes Service (AKS) リソースは許可されていません。
+
+**マネージド アプリケーション:** マネージド アプリケーション オファーを使用すると、発行元は、顧客のサブスクリプションへのデプロイ時に作成されたリソースにアクセスして制御することができます。 そのため、このオファー カテゴリーでは、コンテナーと Azure Kubernetes Service (AKS) リソースが *<u>暫定的に許可</u>* されています。
+
+### <a name="rules-and-known-issues-for-aks-and-containers-in-managed-applications"></a>マネージド アプリケーションでの AKS とコンテナーに関する規則と既知の問題
+
+- AKS ノード リソース グループに、Azure マネージド アプリケーションの一部として拒否割り当てが継承されることはありません。 つまり、顧客は AKS リソースがマネージド アプリケーションに含まれた際に、それによって作成された AKS ノード リソース グループには完全にアクセスできる一方で、管理対象リソース グループには適切な拒否割り当てが付与されていることになります。
+ 
+- 発行元は、Azure マネージド アプリケーションの一部として Helm グラフや他のスクリプトを含めることができます。 ただし、オファーは通常のマネージド アプリケーションデプロイのように扱われ、デプロイ時にコンテナー固有の処理や Helm グラフのインストールが自動的に行われることはありません。 デプロイ時、またはデプロイ後に、VM のカスタム スクリプト拡張機能や Azure のデプロイ スクリプトなどの通常の手法を用いて、関連するスクリプトを実行することは、発行者の責任です。
+ 
+- 通常の Azure マネージド アプリケーションと同様に、発行者は、ソリューションが正常にデプロイされ、すべてのコンポーネントが適切に構成され、セキュリティで保護され、稼働していることを責任をもって確認する必要があります。 例えば、発行者はイメージのソースとして独自のコンテナー レジストリを使用することができますが、そのコンテナーのセキュリティと継続的な脆弱性スキャンについては全面的に責任を負います。
+
+> [!NOTE]
+> Azure マネージド アプリケーション オファーでのコンテナーと AKS のサポートは、公式のコンテナー アプリケーションのオファーの種類が Marketplace で利用可能になった時点で廃止される可能性があります。 その場合、今後オファーを公開する際は、新しいオファーの種類を使用して公開する必要があるかもしれません。また、既存のオファーを新しいオファーの種類に移行して廃止する必要がある場合があります。
 
 ## <a name="deployment-package"></a>展開パッケージ
 

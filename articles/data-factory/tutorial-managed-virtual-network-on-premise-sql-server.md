@@ -6,12 +6,12 @@ ms.author: lle
 ms.service: data-factory
 ms.topic: tutorial
 ms.date: 05/06/2021
-ms.openlocfilehash: bb29c7712bdbe629ff3aa8704c0c4654404f0da3
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: a04371fcba573be41fd5c2275371e0c590b82c08
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111971832"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736871"
 ---
 # <a name="tutorial-how-to-access-on-premises-sql-server-from-data-factory-managed-vnet-using-private-endpoint"></a>チュートリアル: プライベート エンドポイントを使用して Data Factory マネージド VNet からオンプレミスの SQL Server にアクセスする方法
 
@@ -239,11 +239,9 @@ ms.locfileid: "111971832"
 4. **[Managed private endpoints]\(マネージド プライベート エンドポイント\)** で、 **[+ 新規]** を選択します。
 5. 一覧から **[Private Link サービス]** タイルを選択し、 **[続行]** を選択します。
 6. プライベート エンドポイントの名前を入力して、Private Link サービスの一覧で **myPrivateLinkService** を選択します。
-7. ターゲットのオンプレミス SQL Server の FQDN と、プライベート リンク サービスの NAT IP を追加します。
-    
-    :::image type="content" source="./media/tutorial-managed-virtual-network/link-service-nat-ip.png" alt-text="リンク サービスの NAT IP を示すスクリーンショット。" lightbox="./media/tutorial-managed-virtual-network/link-service-nat-ip-expanded.png":::
+7. ターゲットのオンプレミス SQL Server の FQDN を追加します。
 
-    :::image type="content" source="./media/tutorial-managed-virtual-network/private-endpoint.png" alt-text="プライベート エンドポイントの設定を示すスクリーンショット。":::
+    :::image type="content" source="./media/tutorial-managed-virtual-network/private-endpoint-6.png" alt-text="プライベート エンドポイントの設定を示すスクリーンショット。":::
 
 8. プライベート エンドポイントを作成します。
 

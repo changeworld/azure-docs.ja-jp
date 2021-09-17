@@ -4,15 +4,16 @@ description: このチュートリアルは、データ フローを使用した
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: seo-lt-2021
-ms.date: 04/01/2021
-ms.openlocfilehash: 8010f3f95c9358714b659df5821a375bd8488ad8
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.date: 06/04/2021
+ms.openlocfilehash: 91eb5d1072f1385c025d9d93b89466aaa9320ecd
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106582031"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638534"
 ---
 # <a name="best-practices-for-writing-to-files-to-data-lake-with-data-flows"></a>データ フローを使用したデータ レイクへのファイル書き込みのベスト プラクティス
 
@@ -52,9 +53,9 @@ Azure Data Factory を初めて使用する場合は、「[Azure Data Factory �
 
 この手順では、データ フロー アクティビティが含まれるパイプラインを作成します。
 
-1. **[Let's get started]\(始めましょう\)** ページで **[Create pipeline]\(パイプラインの作成\)** を選択します。
+1. Azure Data Factory のホーム ページで、 **[Orchestrate]\(調整\)** を選択します。
 
-   ![パイプラインの作成](./media/doc-common-process/get-started-page.png)
+   ![ADF のホーム ページを示すスクリーンショット。](./media/doc-common-process/get-started-page.png)
 
 1. パイプラインの **[全般]** タブで、パイプラインの **名前** として「**DeltaLake**」と入力します。
 1. ファクトリの上部のバーで、 **[Data Flow のデバッグ]** スライダーをオンにスライドします。 デバッグ モードを使用すると、ライブ Spark クラスターに対する変換ロジックの対話型テストが可能になります。 Data Flow クラスターのウォームアップには 5 から 7 分かかるため、ユーザーが Data Flow の開発を計画している場合は、最初にデバッグを有効にすることをお勧めします。 詳細については、[デバッグ モード](concepts-data-flow-debug-mode.md)に関するページを参照してください。

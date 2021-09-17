@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/11/2021
 ms.topic: overview
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 69bc44fcffd760b0c98264c43c02f8dfffd8b853
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 3a7ed9fbb30ab770cd7069ebbd97faa41b12cd34
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114448462"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122606839"
 ---
 # <a name="device-update-for-iot-hub-preview-overview"></a>Device Update for IoT Hub (プレビュー) の概要
 
@@ -24,12 +24,12 @@ IoT に対応したデジタル トランスフォーメーションのベネフ
 ## <a name="support-for-a-wide-range-of-iot-devices"></a>広範な IoT デバイスのサポート
 
 
-Device Update for IoT Hub は、[Azure IoT Hub](https://azure.microsoft.com/en-us/services/iot-hub/) との統合を通じて、更新のデプロイを最適化し、運用を能率化するために設計されています。 この統合により、既存のどのソリューションでも Device Update を容易に導入できます。 これにより、ほとんどすべてのデバイスを接続するためのクラウドでホストされたソリューションが提供されます。 Device Update は、Linux や [Azure RTOS](https://azure.microsoft.com/en-us/services/rtos/) (リアルタイム オペレーティング システム) を含む広範な IoT オペレーティング システムをサポートしており、オープンソースを通じて拡張できます。 Device Update for IoT Hub オファリングを、STMicroelectronics、NXP、Renesas、Microchip などの半導体パートナーと共同で開発しています。 主要な半導体評価ボードの[サンプル](https://github.com/azure-rtos/samples/tree/PublicPreview/ADU)をご覧ください。MCU クラスのデバイスへの無線 (OTA) での更新を構成、構築、デプロイする方法のファースト ステップ ガイドが含まれています。 
+Device Update for IoT Hub は、[Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) との統合を通じて、更新のデプロイを最適化し、運用を能率化するために設計されています。 この統合により、既存のどのソリューションでも Device Update を容易に導入できます。 これにより、ほとんどすべてのデバイスを接続するためのクラウドでホストされたソリューションが提供されます。 Device Update は、Linux や [Azure RTOS](https://azure.microsoft.com/services/rtos/) (リアルタイム オペレーティング システム) を含む広範な IoT オペレーティング システムをサポートしており、オープンソースを通じて拡張できます。 Device Update for IoT Hub オファリングを、STMicroelectronics、NXP、Renesas、Microchip などの半導体パートナーと共同で開発しています。 主要な半導体評価ボードの[サンプル](https://github.com/azure-rtos/samples/tree/PublicPreview/ADU)をご覧ください。MCU クラスのデバイスへの無線 (OTA) での更新を構成、構築、デプロイする方法のファースト ステップ ガイドが含まれています。 
 
 Device Update Agent Simulator バイナリと Raspberry Pi リファレンス Yocto イメージの両方が提供されます。
 Device Update for IoT Hub では、Azure IoT Edge デバイスの更新もサポートしています。 Device Update Agent は、Ubuntu Server 18.04 amd64 プラットフォーム用に提供されます。 上記のどのプラットフォームも実行していない場合、Device Update for IoT Hub では、オープンソースのコードも提供しています。 実行中のディストリビューションにエージェントを移植することができます。
 
-Device Update は IoT プラグ アンド プレイ (PnP) と連携し、必要な PnP インターフェイスをサポートする任意のデバイスを管理できます。 詳細については、[Device Update for IoT Hub と IoT プラグ アンド プレイ](device-update-plug-and-play.md)に関するページを参照してください。
+Device Update は IoT プラグ アンド プレイと連携し、必要な IoT プラグ アンド プレイ インターフェイスをサポートする任意のデバイスを管理できます。 詳細については、[Device Update for IoT Hub と IoT プラグ アンド プレイ](device-update-plug-and-play.md)に関するページを参照してください。
 
 ## <a name="support-for-a-wide-range-of-update-artifacts"></a>広範な更新成果物のサポート
 

@@ -9,14 +9,16 @@ ms.subservice: networking
 ms.date: 03/30/2021
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: f15fddc54f4b7c5a03843da1bcc11d1991b70d02
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 13e8cf6b95394cd879c1e86e1e0b6dd7dfac7ccd
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106076668"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692890"
 ---
 # <a name="reference-an-existing-virtual-network-in-an-azure-scale-set-template"></a>既成の仮想ネットワークを Azure スケール セット テンプレートで参照する
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 均一のスケール セット
 
 この記事では、[基本のスケール セット テンプレート](virtual-machine-scale-sets-mvss-start.md)を変更して、新しい仮想ネットワークを作成するのではなく、既存の仮想ネットワークにデプロイする方法について説明します。
 

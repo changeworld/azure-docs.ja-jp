@@ -5,20 +5,20 @@ services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, logicappspm
+ms.reviewer: estfan, azla
 ms.topic: article
 ms.date: 10/08/2020
-ms.openlocfilehash: 39109292b29c526b036774bb757158f317c932d9
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 699bc3b15c47e1dc80dbb8a4defd27adad298ba0
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112456618"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122514685"
 ---
 # <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack で B2B エンタープライズ統合用の AS2 メッセージを交換する
 
 > [!IMPORTANT]
-> 元の AS2 コネクタは非推奨になっているため、追跡機能が必要な場合を除き、代わりに **AS2 (v2)** コネクタを使用するようにしてください。 v2 コネクタでは追跡機能を除き、元のバージョンと同じ機能を提供します。このコネクタは、Logic Apps ランタイムにとってネイティブであり、メッセージ サイズ、スループット、および待ち時間について大幅なパフォーマンスの向上を実現します。 また、v2 コネクタでは、統合アカウントへの接続を作成する必要はありません。 代わりに、前提条件で説明されているように、コネクタを使用する予定のロジック アプリに統合アカウントがリンクされていることを確認してください。
+> 元の AS2 コネクタは非推奨になっているため、追跡機能が必要な場合を除き、代わりに **AS2 (v2)** コネクタを使用するようにしてください。 v2 コネクタでは追跡機能を除き、パフォーマンスを向上しつつ、元のバージョンと同じ機能を提供します。このコネクタは、Azure Logic Apps ランタイムにとってネイティブであり、メッセージ サイズ、スループット、待ち時間について大幅なパフォーマンスの向上を実現します。 また、v2 コネクタでは、統合アカウントへの接続を作成する必要はありません。 代わりに、前提条件で説明されているように、コネクタを使用する予定のロジック アプリに統合アカウントがリンクされていることを確認してください。
 
 Azure Logic Apps で AS2 メッセージを操作するには、AS2 コネクタを使用できます。これには、AS2 (バージョン 1.2) 通信をサポートして管理するためのトリガーとアクションが用意されています。 たとえば、メッセージの送信時にセキュリティと信頼性を確立するには、以下のアクションを使用できます。
 

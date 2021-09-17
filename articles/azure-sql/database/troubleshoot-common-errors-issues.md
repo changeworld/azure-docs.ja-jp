@@ -9,13 +9,13 @@ ms.custom: seo-lt-2019, OKR 11/2019, sqldbrb=1
 author: ramakoni1
 ms.author: ramakoni
 ms.reviewer: mathoma,vanto
-ms.date: 01/14/2021
-ms.openlocfilehash: 804c59409ec1acea44cf650e6ccc032b50fcd26c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 08/20/2021
+ms.openlocfilehash: 1e656227387bebc9806ad06574084bd01fcc0b35
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121743706"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122603799"
 ---
 # <a name="troubleshooting-connectivity-issues-and-other-errors-with-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL Database および Azure SQL Managed Instance の接続に関する問題とその他のエラーのトラブルシューティング
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -30,6 +30,7 @@ Azure インフラストラクチャには、SQL Database サービス内で負�
 
 | エラー コード | 重大度 | 説明 |
 | ---:| ---:|:--- |
+| 926 |14 |データベース 'replicatedmaster' を開くことができません。 このデータベースは、復旧により問題ありと設定されています。 詳細については、SQL Server のエラー ログを参照してください。<br/><br/>このエラーは、以前のプライマリによってログがシャットダウンされている間に、再構成の最終段階の短期間に SQL Managed Instance のエラー ログに記録されることがあります。<br/>このエラー メッセージを含むその他の一時的ではないシナリオについては、[MSSQL エラーのドキュメント](/sql/relational-databases/errors-events/mssqlserver-926-database-engine-error)を参照してください。|
 | 4060 |16 |ログインで要求されたデータベース "%.&#x2a;ls" を開くことができません。 ログインに失敗しました。 詳細については、[エラー 4000 から 4999](/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-4000-to-4999) を参照してください。|
 | 40197 |17 |要求の処理中にサービスでエラーが発生しました。 再試行してください。 エラー コード %d。<br/><br/>ソフトウェアやハードウェアのアップグレード、ハードウェアの障害、その他フェールオーバーに関する問題によってサービスがダウンしたときに、このエラーが発生します。 障害の種類や発生したフェールオーバーに関する詳細な情報は、エラー 40197 のメッセージに埋め込まれたエラー コード (%d) から得られます。 エラー 40197 のメッセージ内に埋め込まれているエラー コードは、40020、40143、40166、40540 などです。<br/><br/>再接続すると、自動的にデータベースの正常なコピーに接続されます。 アプリケーションでエラー 40197 をキャッチし、メッセージに埋め込まれているエラー コード (%d) をログに記録してトラブルシューティングに備えたうえで、リソースが復旧して接続が再度確立されるまで SQL Database への再接続を試みる必要があります。 詳細については、「[一時エラー](troubleshoot-common-connectivity-issues.md#transient-errors-transient-faults)」を参照してください。|
 | 40501 |20 |サービスは現在ビジー状態です。 10 秒後に要求を再試行してください。 インシデント ID: %ls。 コード: %d。 詳細については、次を参照してください。 <br/>&bull; &nbsp;[論理 SQL サーバー リソースの制限](resource-limits-logical-server.md)<br/>&bull; &nbsp;[単一データベースに関する DTU ベースの制限](service-tiers-dtu.md)<br/>&bull; &nbsp;[エラスティック プールに関する DTU ベースの制限](resource-limits-dtu-elastic-pools.md)<br/>&bull; &nbsp;[単一データベースに関する仮想コアベースの制限](resource-limits-vcore-single-databases.md)<br/>&bull; &nbsp;[エラスティック プールに関する仮想コアベースの制限](resource-limits-vcore-elastic-pools.md)<br/>&bull; &nbsp;[Azure SQL Managed Instance のリソースの制限](../managed-instance/resource-limits.md)。|
@@ -43,7 +44,7 @@ Azure インフラストラクチャには、SQL Database サービス内で負�
 
 1. アプリケーションによって報告されたエラーで発生している既知の障害については、 [Microsoft Azure サービス ダッシュボード](https://azure.microsoft.com/status) を参照してください。
 2. Azure SQL Database など、クラウド サービスに接続するアプリケーションは、定期的な再構成イベントを想定し、アプリケーション エラーをユーザーに示すのではなく、再試行ロジックを実装してこれらのエラーを処理します。
-3. データベースがリソースの制限に近づくと、一時的な接続の問題に見える場合があります。 [リソース制限](resource-limits-logical-server.md#what-happens-when-database-resource-limits-are-reached)に関するページを参照してください。
+3. データベースがリソースの制限に近づくと、一時的な接続の問題に見える場合があります。 [リソース制限](resource-limits-logical-server.md#what-happens-when-resource-limits-are-reached)に関するページを参照してください。
 4. 接続の問題が解消されない場合、アプリケーションでのエラーの継続時間が 60 秒を超えた場合、または 1 日にエラーが複数回発生した場合は、 **Azure サポート** サイトの [[サポートの要求]](https://azure.microsoft.com/support/options) を選択して、サポート要求を送信してください。
 
 #### <a name="implementing-retry-logic"></a>再試行ロジックの実装

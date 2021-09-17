@@ -3,12 +3,12 @@ title: スタンドアロン Azure Service Fabric での定期的なバックア
 description: アプリケーションデータの定期バックアップを可能にするには、スタンドアロン Service Fabric の定期バックアップと復元機能を使用します。
 ms.topic: conceptual
 ms.date: 5/24/2019
-ms.openlocfilehash: d78a627c0c50a3e2ec57138e40cb5bc97486d6f7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 78a906e1e2261b0d117c7042b1ac387e2e98f045
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103198701"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444569"
 ---
 # <a name="periodic-backup-and-restore-in-a-standalone-service-fabric"></a>標準的な Service Fabric での定期的なバックアップと復元
 > [!div class="op_single_selector"]
@@ -112,7 +112,9 @@ Service Fabric には、定期的なバックアップと復元機能に関連�
         ...
     }
     ```
-
+    > [!NOTE]
+    > \[Thumbprint\] は、暗号化に使用する有効な証明書の拇印に置き換える必要があります。
+    >
 4. 上記の変更でクラスター構成ファイルを更新したら、その変更を適用してデプロイおよびアップグレードを完了します。 完了すると、"_バックアップと復元サービス_" がクラスターで実行されます。 このサービスの URI は `fabric:/System/BackupRestoreService` です。サービスは、Service Fabric エクスプローラーでシステム サービス セクションの下に置くことができます。 
 
 

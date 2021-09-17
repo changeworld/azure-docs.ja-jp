@@ -1,141 +1,154 @@
 ---
-title: Windows のグループ ポリシー ベースラインからゲスト構成ポリシー定義を作成する方法
-description: Windows Server 2019 セキュリティ ベースラインからグループ ポリシーをポリシー定義に変換する方法について説明します。
+title: グループ ポリシーからゲスト構成ポリシーを作成する方法
+description: グループ ポリシーをポリシー定義に変換する方法について説明します。
 ms.date: 03/31/2021
 ms.topic: how-to
-ms.openlocfilehash: fa6012702bf00ee062b4d9d46f47bb673bb460ef
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 12bd1c905c254f16da170cde4a4426a2aa0cb263
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108763003"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122772296"
 ---
-# <a name="how-to-create-guest-configuration-policy-definitions-from-group-policy-baseline-for-windows"></a>Windows のグループ ポリシー ベースラインからゲスト構成ポリシー定義を作成する方法
+# <a name="how-to-create-a-guest-configuration-policy-from-group-policy"></a>グループ ポリシーからゲスト構成ポリシーを作成する方法
 
-カスタム ポリシー定義を作成する前に、[Azure Policy ゲスト構成](../concepts/guest-configuration.md)に関するページで、概念上の概要情報を読むことをお勧めします。 Linux のカスタムのゲスト構成ポリシー定義を作成する方法の詳細については、「[Linux 用のゲスト構成ポリシーを作成する方法](./guest-configuration-create-linux.md)」を参照してください。 Windows のカスタムのゲスト構成ポリシー定義を作成する方法の詳細については、「[Windows 用のゲスト構成ポリシーを作成する方法](./guest-configuration-create.md)」を参照してください。
-
-Windows の監査時に、ゲスト構成では [Desired State Configuration](/powershell/scripting/dsc/overview/overview) (DSC) リソース モジュールを使用して構成ファイルが作成されます。 DSC 構成では、マシンが満たす必要のある条件を定義します。 構成の評価が **準拠していない** 場合、ポリシー効果 *auditIfNotExists* がトリガーされます。
-[Azure Policy ゲスト構成](../concepts/guest-configuration.md)では、マシン内の設定の監査のみが行われます。
+始める前に、[ゲスト構成](../concepts/guest-configuration.md)の概要を記したページと、ゲスト構成ポリシーの効果について詳しく記されている[ゲスト構成の修復オプションの構成方法](../concepts/guest-configuration-policy-effects.md)に関するページを読むことをお勧めします。
 
 > [!IMPORTANT]
-> Azure の仮想マシンで監査を実行するには、ゲスト構成拡張機能が必要です。 すべての Windows マシンに拡張機能を大規模にデプロイするには、次のポリシー定義を割り当てます。
-> - [Windows VM でゲスト構成ポリシーを有効にするための前提条件をデプロイする。](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0ecd903d-91e7-4726-83d3-a229d7f2e293)
+> グループ ポリシーからゲスト構成への変換は、**プレビュー段階** です。 グループ ポリシー設定のすべての種類について、PowerShell 7 で対応する DSC リソースを使用できるわけではありません。
+>
+> このページのすべてのコマンドは、**Windows PowerShell 5.1** で実行する必要があります。
+> 結果の出力 MOF ファイルを、PowerShell 7.1.3 以降の `GuestConfiguration` モジュールを使用してパッケージ化する必要があります。
+> 
+> **AuditIfNotExists** を使用するカスタム ゲスト構成ポリシー定義は一般提供されていますが、ゲスト構成で **DeployIfNotExists** を使用する定義は **プレビュー段階** です。
+> 
+> Azure の仮想マシンには、ゲスト構成拡張機能が必要となります。 すべてのマシンに拡張機能を大規模にデプロイするためには、次のようなポリシー イニシアティブを割り当ててください: `Deploy prerequisites to enable guest configuration policies on
+> virtual machines`
 >
 > カスタム コンテンツ パッケージでは、秘密や機密情報を使用しないでください。
 
-DSC コミュニティでは、エクスポートされたグループ ポリシー テンプレートを DSC 形式に変換できる [BaselineManagement モジュール](https://github.com/microsoft/BaselineManagement)を公開しています。 BaselineManagement モジュールと GuestConfiguration コマンドレットを組み合わせて使用すると、グループ ポリシー コンテンツから Windows 用の Azure Policy ゲスト構成パッケージを作成できます。 BaselineManagement モジュールの使用方法の詳細については、「[クイックスタート: グループ ポリシーを DSC に変換する](/powershell/scripting/dsc/quickstarts/gpo-quickstart)」という記事を参照してください。
+オープンソース コミュニティから、エクスポートされた[グループ ポリシー](/support/windows-server/group-policy/group-policy-overview) テンプレートを PowerShell DSC 形式に変換するための [BaselineManagement](https://github.com/microsoft/BaselineManagement) モジュールが公開されています。 `GuestConfiguration` モジュールと共に、エクスポートされたグループ ポリシー オブジェクトから Windows 用のゲスト構成パッケージを作成できます。 その後、そのゲスト構成パッケージを使用すると、ドメインに参加していない場合でも、ローカル ポリシーを使用してサーバーを監査または構成できます。
 
-このガイドでは、グループ ポリシー オブジェクト (GPO) から Azure Policy ゲスト構成パッケージを作成するプロセスについて説明します。 このチュートリアルでは、Windows Server 2019 セキュリティ ベースラインの変換の概要を説明していますが、同じプロセスを他の GPO に適用することもできます。
+このガイドでは、グループ ポリシー オブジェクト (GPO) から Azure Policy ゲスト構成パッケージを作成するプロセスについて説明します。
 
-## <a name="download-windows-server-2019-security-baseline-and-install-related-powershell-modules"></a>Windows Server 2019 セキュリティ ベースラインをダウンロードし、関連する PowerShell モジュールをインストールする
+## <a name="download-required-powershell-modules"></a>必要な PowerShell モジュールをダウンロードする
 
-PowerShell で **DSC**、**GuestConfiguration**、**Baseline Management**、および関連する Azure モジュールをインストールするには:
+PowerShell で必要なすべてのモジュールをインストールするには:
 
-1. PowerShell プロンプトから、次のコマンドを実行します。
+```powershell
+Install-Module guestconfiguration
+Install-Module baselinemanagement
+```
 
-   ```azurepowershell-interactive
-   # Install the BaselineManagement module, Guest Configuration DSC resource module, and relevant Azure modules from PowerShell Gallery
-   Install-Module az.resources, az.policyinsights, az.storage, guestconfiguration, gpregistrypolicyparser, securitypolicydsc, auditpolicydsc, baselinemanagement -scope currentuser -Repository psgallery -AllowClobber
-   ```
+Active Directory 環境からグループ ポリシー オブジェクト (GPO) をバックアップするには、リモート サーバー管理ツールキット (RSAT) で PowerShell コマンドを使用できる必要があります。
 
-1. Windows Security Compliance ツールキットから Windows Server 2019 セキュリティ ベースラインのディレクトリを作成してダウンロードします。
+Windows 10 のグループポリシー管理コンソールで RSAT を有効にするには:
 
-   ```azurepowershell-interactive
-   # Download the 2019 Baseline files from https://docs.microsoft.com/windows/security/threat-protection/security-compliance-toolkit-10
-   New-Item -Path 'C:\git\policyfiles\downloads' -Type Directory
-   Invoke-WebRequest -Uri 'https://download.microsoft.com/download/8/5/C/85C25433-A1B0-4FFA-9429-7E023E7DA8D8/Windows%2010%20Version%201909%20and%20Windows%20Server%20Version%201909%20Security%20Baseline.zip' -Out C:\git\policyfiles\downloads\Server2019Baseline.zip
-   ```
+```powerShell
+Add-WindowsCapability -Online -Name 'Rsat.GroupPolicy.Management.Tools~~~~0.0.1.0'
+Add-WindowsCapability -Online -Name 'Rsat.ActiveDirectory.DS-LDS.Tools~~~~0.0.1.0'
+```
 
-1. ダウンロードした Server 2019 ベースラインのブロックを解除して展開します。
+## <a name="export-and-convert-group-policy-to-guest-configuration"></a>グループ ポリシーをエクスポートしてゲスト構成に変換する
 
-   ```azurepowershell-interactive
-   Unblock-File C:\git\policyfiles\downloads\Server2019Baseline.zip
-   Expand-Archive -Path C:\git\policyfiles\downloads\Server2019Baseline.zip -DestinationPath C:\git\policyfiles\downloads\
-   ```
+グループ ポリシー ファイルをエクスポートし、ゲスト構成で使用するために DSC に変換するには、3 つのオプションがあります。
 
-1. **MapGuidsToGpoNames.ps1** を使用して、Server 2019 ベースラインの内容を検証します。
+- 1 つのグループ ポリシー オブジェクトをエクスポートします
+- OU についてマージされたグループ ポリシー オブジェクトをエクスポートします
+- マシン内からマージされたグループ ポリシー オブジェクトをエクスポートします
 
-   ```azurepowershell-interactive
-   # Show content details of downloaded GPOs
-   C:\git\policyfiles\downloads\Scripts\Tools\MapGuidsToGpoNames.ps1 -rootdir C:\git\policyfiles\downloads\GPOs\ -Verbose
-   ```
+### <a name="single-group-policy-object"></a>1 つのグループ ポリシー オブジェクト
 
-## <a name="convert-from-group-policy-to-azure-policy-guest-configuration"></a>グループ ポリシーから Azure Policy ゲスト構成に変換する
+`Group Policy` モジュールのコマンドを使用して、エクスポートするグループ ポリシー オブジェクトの GUID を特定します。 大規模な環境では、出力を `where-object` にパイプして、名前でフィルター処理することを検討します。
 
-次に、ゲスト構成モジュールとベースライン管理モジュールを使用して、ダウンロードした Server 2019 ベースラインをゲスト構成パッケージに変換します。
+**ドメイン参加済み** Windows マシン上の **Windows PowerShell 5.1** 環境で、次のものを実行します。
 
-1. ベースライン管理モジュールを使用して、グループ ポリシーを Desired State Configuration に変換します。
+```powershell
+# List all Group Policy Objects
+Get-GPO -all
+```
 
-   ```azurepowershell-interactive
-   ConvertFrom-GPO -Path 'C:\git\policyfiles\downloads\GPOs\{3657C7A2-3FF3-4C21-9439-8FDF549F1D68}\' -OutputPath 'C:\git\policyfiles\' -OutputConfigurationScript -Verbose
-   ```
+グループ ポリシーをファイルにバックアップします。 コマンドは "Name" パラメーターも受け取りますが、ポリシーの GUID を使用するとエラーが発生しにくくなります。
 
-1. ポリシー コンテンツ パッケージを作成する前に、変換されたスクリプトの名前を変更し、再フォーマットし、実行します。
+```powershell
+Backup-GPO -Guid 'f0cf623e-ae29-4768-9bb4-406cce1f3cff' -Path C:\gpobackup\
+```
 
-   ```azurepowershell-interactive
-   Rename-Item -Path C:\git\policyfiles\DSCFromGPO.ps1 -NewName C:\git\policyfiles\Server2019Baseline.ps1
-   (Get-Content -Path C:\git\policyfiles\Server2019Baseline.ps1).Replace('DSCFromGPO', 'Server2019Baseline') | Set-Content -Path C:\git\policyfiles\Server2019Baseline.ps1
-   (Get-Content -Path C:\git\policyfiles\Server2019Baseline.ps1).Replace('PSDesiredStateConfiguration', 'PSDscResources') | Set-Content -Path C:\git\policyfiles\Server2019Baseline.ps1
-   C:\git\policyfiles\Server2019Baseline.ps1
-   ```
+```
 
-1. Azure Policy ゲスト構成コンテンツ パッケージを作成します。
+The output of the command returns the details of the files.
 
-   ```azurepowershell-interactive
-   New-GuestConfigurationPackage -Name Server2019Baseline -Configuration c:\git\policyfiles\localhost.mof -Verbose
-   ```
+ConfigurationScript                   Configuration                   Name
+-------------------                   -------------                   ----
+C:\convertfromgpo\myCustomPolicy1.ps1 C:\convertfromgpo\localhost.mof myCustomPolicy1
+```
 
-## <a name="create-azure-policy-guest-configuration"></a>Azure Policy ゲスト構成を作成する
+エクスポートした PowerShell スクリプトを調べて、すべての設定が指定されていることと、エラー メッセージが書き込まれていないことを確認します。 「[カスタム ゲスト構成パッケージの成果物の作成方法](./guest-configuration-create.md)」ページのガイダンスに従い、MOF ファイルを使用して新しい構成パッケージを作成します。
+ゲスト構成パッケージを作成してテストする手順は、PowerShell 7 環境で実行する必要があります。
 
-1. 次の手順はファイルを Azure Blob Storage に発行することです。 コマンド `Publish-GuestConfigurationPackage` には `Az.Storage` モジュールが必要です。
+### <a name="merged-group-policy-objects-for-an-ou"></a>OU についてマージされたグループ ポリシー オブジェクト
 
-   ```azurepowershell-interactive
-   Publish-GuestConfigurationPackage -Path ./AuditBitlocker.zip -ResourceGroupName  myResourceGroupName -StorageAccountName myStorageAccountName
-   ```
+指定した組織単位でマージしたグループ ポリシー オブジェクトの組み合わせ (ポリシーの結果セットに似たもの) をエクスポートします。 マージ操作では、リンクの状態、強制、アクセスが考慮されますが、WMI フィルターは考慮されません。
 
-1. ゲスト構成のカスタム ポリシー パッケージを作成してアップロードした後、ゲスト構成ポリシー定義を作成します。 `New-GuestConfigurationPolicy` コマンドレットを使用してゲスト構成を作成します。
+```powershell
+Merge-GPOsFromOU -Path C:\mergedfromou\ -OUDistinguishedName 'OU=mySubOU,OU=myOU,DC=mydomain,DC=local' -OutputConfigurationScript
+```
 
-   ```azurepowershell-interactive
-   $NewGuestConfigurationPolicySplat = @{
-        ContentUri = $Uri
-        DisplayName = 'Server 2019 Configuration Baseline'
-        Description 'Validation of using a completely custom baseline configuration for Windows VMs'
-        Path = 'C:\git\policyfiles\policy'  
-        Platform = Windows
-   }
-   New-GuestConfigurationPolicy @NewGuestConfigurationPolicySplat
-   ```
+コマンドの出力からは、ファイルの詳細が返されます。
 
-1. `Publish-GuestConfigurationPolicy` コマンドレットを使用してポリシー定義を発行します。 コマンドレットのパラメーターは、`New-GuestConfigurationPolicy` によって作成される JSON ファイルの場所を指し示す **Path** だけです。 Publish コマンドを実行するには、Azure でポリシー定義を作成できるアクセス権が必要です。 特定の承認要件については、[Azure Policy の概要](../overview.md#getting-started)に関するページに記載されています。 最適な組み込みロールは、**リソース ポリシーの共同作成者** です。
+```powershell
+Configuration                                Name    ConfigurationScript
+-------------                                ----    -------------------
+C:\mergedfromou\mySubOU\output\localhost.mof mySubOU C:\mergedfromou\mySubOU\output\mySubOU.ps1
+```
 
-   ```azurepowershell-interactive
-   Publish-GuestConfigurationPolicy -Path C:\git\policyfiles\policy\ -Verbose
-   ```
+### <a name="merged-group-policy-objects-from-within-a-machine"></a>マシン内からマージされたグループ ポリシー オブジェクト
 
-## <a name="assign-guest-configuration-policy-definition"></a>ゲスト構成ポリシー定義を割り当てる
+Windows PowerShell から `Merge-GPOs` コマンドを実行して、特定のマシンに適用されているポリシーをマージすることもできます。 WMI フィルターは、マシン内からマージする場合にのみ評価されます。
 
-Azure で作成されるポリシーに関する最後のステップでは、イニシアティブを割り当てます。 [ポータル](../assign-policy-portal.md)、[Azure CLI](../assign-policy-azurecli.md)、および [Azure PowerShell](../assign-policy-powershell.md) でイニシアティブを割り当てる方法について確認できます。
+```powershell
+Merge-GPOs -OutputConfigurationScript -Path c:\mergedgpo
+```
 
-> [!IMPORTANT]
-> ゲスト構成ポリシー定義は **常に**、"_AuditIfNotExists_" ポリシーと "_DeployIfNotExists_" ポリシーを組み合わせたイニシアティブを使って割り当てる必要があります。 "_AuditIfNotExists_" ポリシーのみを割り当てた場合は、前提条件がデプロイされず、ポリシーでは、準拠しているサーバーが常に "0" と示されます。
+コマンドの出力では、ファイルの詳細が返されます。
 
-_DeployIfNotExists_ 効果でポリシー定義を割り当てるには、追加のレベルのアクセス権が必要です。 最小限の権限を付与するために、**リソース ポリシーの共同作成者** を拡張するカスタム ロール定義を作成できます。 以下の例では、追加のアクセス許可 _Microsoft.Authorization/roleAssignments/write_ を持つ **リソース ポリシーの共同作成者 DINE** という名前のロールを作成します。
+```powershell
+Configuration              Name                  ConfigurationScript                    PolicyDetails
+-------------              ----                  -------------------                    -------------
+C:\mergedgpo\localhost.mof MergedGroupPolicy_ws1 C:\mergedgpo\MergedGroupPolicy_ws1.ps1 {@{Name=myEnforcedPolicy; Ap...
+```
 
-   ```azurepowershell-interactive
-   $subscriptionid = '00000000-0000-0000-0000-000000000000'
-   $role = Get-AzRoleDefinition "Resource Policy Contributor"
-   $role.Id = $null
-   $role.Name = "Resource Policy Contributor DINE"
-   $role.Description = "Can assign Policies that require remediation."
-   $role.Actions.Clear()
-   $role.Actions.Add("Microsoft.Authorization/roleAssignments/write")
-   $role.AssignableScopes.Clear()
-   $role.AssignableScopes.Add("/subscriptions/$subscriptionid")
-   New-AzRoleDefinition -Role $role
-   ```
+## <a name="optional-download-sample-group-policy-files-for-testing"></a>省略可能: テスト用にサンプル グループ ポリシー ファイルをダウンロードする
 
-## <a name="next-steps"></a>次のステップ
+Active Directory 環境からグループ ポリシー ファイルをエクスポートする準備ができていない場合は、Windows セキュリティ コンプライアンス ツールキットから Windows Server セキュリティ ベースラインをダウンロードできます。
 
-- [ゲスト構成](../concepts/guest-configuration.md)による VM の監査について学習します。
-- [プログラムによってポリシーを作成する](./programmatically-create.md)方法を理解します。
-- [コンプライアンス データを取得する](./get-compliance-data.md)方法を学習します。
+Windows Security Compliance ツールキットから Windows Server 2019 セキュリティ ベースラインのディレクトリを作成してダウンロードします。
+
+```azurepowershell-interactive
+# Download the 2019 Baseline files from https://docs.microsoft.com/windows/security/threat-protection/security-compliance-toolkit-10
+New-Item -Path 'C:\git\policyfiles\downloads' -Type Directory
+Invoke-WebRequest -Uri 'https://download.microsoft.com/download/8/5/C/85C25433-A1B0-4FFA-9429-7E023E7DA8D8/Windows%2010%20Version%201909%20and%20Windows%20Server%20Version%201909%20Security%20Baseline.zip' -Out C:\git\policyfiles\downloads\Server2019Baseline.zip
+```
+
+ダウンロードした Server 2019 ベースラインのブロックを解除して展開します。
+
+```azurepowershell-interactive
+Unblock-File C:\git\policyfiles\downloads\Server2019Baseline.zip
+Expand-Archive -Path C:\git\policyfiles\downloads\Server2019Baseline.zip -DestinationPath C:\git\policyfiles\downloads\
+```
+
+**MapGuidsToGpoNames.ps1** を使用して、Server 2019 ベースラインの内容を検証します。
+
+```azurepowershell-interactive
+# Show content details of downloaded GPOs
+C:\git\policyfiles\downloads\Scripts\Tools\MapGuidsToGpoNames.ps1 -rootdir C:\git\policyfiles\downloads\GPOs\ -Verbose
+```
+
+## <a name="next-steps"></a>次の手順
+
+- ゲスト構成用の[パッケージ成果物を作成する](./guest-configuration-create.md)。
+- 開発環境から[パッケージ成果物をテストする](./guest-configuration-create-test.md)。
+- マシンからアクセス可能になるように、[パッケージ成果物を発行](./guest-configuration-create-publish.md)する。
+- `GuestConfiguration` モジュールを使用して、環境を大規模に管理するための [Azure Policy の定義を作成する](./guest-configuration-create-definition.md)。
+- Azure portal を使用して[カスタム ポリシー定義を割り当てる](../assign-policy-portal.md)。
+- [ゲスト構成ポリシーの割り当てに関するコンプライアンスの詳細](./determine-non-compliance.md#compliance-details-for-guest-configuration)を見る方法を学習する。

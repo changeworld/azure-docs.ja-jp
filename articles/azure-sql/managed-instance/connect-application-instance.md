@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: mathoma, bonova, vanto
-ms.date: 07/08/2021
-ms.openlocfilehash: fd2616b6de5c1c3955139ec7869c1903d68729f6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 08/20/2021
+ms.openlocfilehash: 3acd77d986d22af08ac7042da751a6aa8c7fc24b
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121751267"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122607581"
 ---
 # <a name="connect-your-application-to-azure-sql-managed-instance"></a>Azure SQL Managed Instance にアプリケーションを接続する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -28,9 +28,13 @@ Azure App Service か、または Azure の仮想ネットワーク統合オプ�
 
 どの方法を選択した場合でも、Azure SQL Managed Instance に接続することが可能です。 
 
+この記事では、さまざまなアプリケーション シナリオで仮想ネットワーク内からアプリケーションを Azure SQL Managed Instance に接続する方法について説明します。 
+
+> [!IMPORTANT]
+> また、仮想ネットワークの外部からのマネージド インスタンスへのデータ アクセスを有効にすることもできます。 Power BI、Azure App Service などのマルチテナント Azure サービスや、VPN に接続されていないオンプレミス ネットワークから、マネージド インスタンスのパブリック エンドポイントを使用して、マネージド インスタンスにアクセスすることができます。 マネージド インスタンス上でパブリック エンドポイントを有効にし、マネージド インスタンス サブネットに関連付けられたネットワーク セキュリティ グループ上でパブリック エンドポイントのトラフィックを許可する必要があります。 その他の重要な詳細情報については、「[Azure SQL Managed Instance のパブリック エンドポイントを構成する](./public-endpoint-configure.md)」を参照してください。 
+
 ![高可用性](./media/connect-application-instance/application-deployment-topologies.png)
 
-この記事では、さまざまなアプリケーション シナリオを用いて、アプリケーションを Azure SQL Managed Instance に接続する方法について説明します。 
 
 ## <a name="connect-inside-the-same-vnet"></a>同じ VNet 内の接続
 
@@ -52,7 +56,7 @@ SQL Managed Instance と同じ仮想ネットワーク内のアプリケーシ�
 
 ## <a name="connect-from-on-premises"></a>オンプレミスからの接続 
 
-オンプレミスのアプリケーションを SQL Managed Instance に接続することもできます。 SQL Managed Instance には、プライベート IP アドレスを介してのみアクセスできます。 オンプレミスからアクセスするには、アプリケーションと SQL Managed Instance 仮想ネットワークの間にサイト間接続を確立する必要があります。
+オンプレミスのアプリケーションを仮想ネットワーク (プライベート IP アドレス) 経由で SQL Managed Instance に接続することもできます。 オンプレミスからアクセスするには、アプリケーションと SQL Managed Instance 仮想ネットワークの間にサイト間接続を確立する必要があります。 仮想ネットワークの外部からマネージド インスタンスにデータ アクセスするには、「[Azure SQL Managed Instance のパブリック エンドポイントを構成する](./public-endpoint-configure.md)」を参照してください。
 
 オンプレミスを Azure 仮想ネットワークに接続する方法には、次の 2 つのオプションがあります。
 
@@ -63,7 +67,9 @@ SQL Managed Instance と同じ仮想ネットワーク内のアプリケーシ�
 
 ## <a name="connect-the-developer-box"></a>開発者ボックスの接続
 
-また、開発者ボックスを SQL Managed Instance に接続することもできます。 SQL Managed Instance はプライベート IP アドレスを介してのみアクセスできるため、開発者ボックスからアクセスするには、まず開発者ボックスと SQL Managed Instance 仮想ネットワークの間の接続を確立する必要があります。 これを行うには、ネイティブ Azure 証明書認証を使用した仮想ネットワークへのポイント対サイト接続を構成します。 詳細については、「[オンプレミス コンピューターから Azure SQL Managed Instance に接続するようにポイント対サイト接続を構成する](point-to-site-p2s-configure.md)」を参照してください。
+また、開発者ボックスを SQL Managed Instance に接続することもできます。 開発者ボックスから仮想ネットワーク経由でアクセスするには、まず開発者ボックスと SQL Managed Instance 仮想ネットワーク間を接続する必要があります。 これを行うには、ネイティブ Azure 証明書認証を使用した仮想ネットワークへのポイント対サイト接続を構成します。 詳細については、「[オンプレミス コンピューターから Azure SQL Managed Instance に接続するようにポイント対サイト接続を構成する](point-to-site-p2s-configure.md)」を参照してください。
+
+仮想ネットワークの外部からマネージド インスタンスにデータ アクセスするには、「[Azure SQL Managed Instance のパブリック エンドポイントを構成する](./public-endpoint-configure.md)」を参照してください。
 
 ## <a name="connect-with-vnet-peering"></a>VNet ピアリングを使用しての接続
 
@@ -78,9 +84,9 @@ SQL Managed Instance と同じ仮想ネットワーク内のアプリケーシ�
 
 ## <a name="connect-azure-app-service"></a>Azure App Service の接続 
 
-Azure App Service によってホストされているアプリケーションを接続することもできます。 SQL Managed Instance はプライベート IP アドレスを介してのみアクセスできるため、Azure App Service からアクセスするには、まずアプリケーションと SQL Managed Instance 仮想ネットワークの間の接続を確立する必要があります。 「[アプリを Azure 仮想ネットワークに統合する](../../app-service/web-sites-integrate-with-vnet.md)」を参照してください。  
+Azure App Service によってホストされているアプリケーションを接続することもできます。 Azure App Service から仮想ネットワーク経由でアクセスするには、まずそのアプリケーションと SQL Managed Instance 仮想ネットワーク間を接続する必要があります。 「[アプリを Azure 仮想ネットワークに統合する](../../app-service/web-sites-integrate-with-vnet.md)」を参照してください。 仮想ネットワークの外部からマネージド インスタンスにデータ アクセスするには、「[Azure SQL Managed Instance のパブリック エンドポイントを構成する](./public-endpoint-configure.md)」を参照してください。 
 
-トラブルシューティングについては、[仮想ネットワークとアプリケーションのトラブルシューティング](../../app-service/web-sites-integrate-with-vnet.md#troubleshooting)に関する記事を参照してください。 接続を確立できない場合は、[ネットワーク構成の同期](azure-app-sync-network-configuration.md)を試してください。
+仮想ネットワーク経由の Azure App Service アクセスのトラブルシューティングについては、[仮想ネットワークとアプリケーションのトラブルシューティング](../../app-service/web-sites-integrate-with-vnet.md#troubleshooting)に関するセクションを参照してください。 接続を確立できない場合は、[ネットワーク構成の同期](azure-app-sync-network-configuration.md)を試してください。
 
 Azure App Service を SQL Managed Instance に接続する場合の特殊なケースとして、SQL Managed Instance 仮想ネットワークにピアリングされたネットワークに Azure App Service を統合しているケースが考えられます。 その場合は、次の構成をセットアップする必要があります。
 

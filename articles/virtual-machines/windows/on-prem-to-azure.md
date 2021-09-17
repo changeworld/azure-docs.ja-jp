@@ -11,14 +11,16 @@ ms.topic: conceptual
 ms.date: 10/07/2017
 ms.author: rogarana
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 77d2e23b202957018ee80186dd28b6b2360698fc
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 68aaf58230ebadd7283e62baf232b84743bba535
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121740070"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692416"
 ---
 # <a name="migrate-from-amazon-web-services-aws-and-other-platforms-to-managed-disks-in-azure"></a>アマゾン ウェブ サービス (AWS) やその他のプラットフォームから Azure のマネージド ディスクに移行する
+
+**適用対象:** :heavy_check_mark: Windows VM 
 
 AWS やオンプレミスの仮想化ソリューションから Azure に VHD ファイルをアップロードして、マネージド ディスクを使用する仮想マシン (VM) を作成できます。 Azure マネージド ディスクを使用すると、Azure IaaS VM のストレージ アカウントを管理する必要がなくなります。 ユーザーは必要なディスクの種類とサイズを指定するだけでよく、ディスクの作成と管理は Azure によって行われます。 
 

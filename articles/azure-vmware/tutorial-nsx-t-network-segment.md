@@ -4,16 +4,16 @@ description: 仮想マシン (VM) に使用するネットワーク セグメン
 ms.topic: tutorial
 ms.custom: contperf-fy22q1
 ms.date: 07/16/2021
-ms.openlocfilehash: 04681c5d55536e3ee1cc0b12d2ebc94f19b3873f
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: a678e29591bc3ca17a1ec6638e111ffeb8c264b0
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114464445"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734202"
 ---
 # <a name="tutorial-add-a-network-segment-in-azure-vmware-solution"></a>チュートリアル:Azure VMware Solution にネットワーク セグメントを追加する 
 
-Azure VMware Solution をデプロイした後、NSX-T Manager または Azure portal から NSX-T ネットワーク セグメントを構成することができます。  構成が完了すると、Azure VMware Solution、NSX-T Manager、vCenter でセグメントを確認できます。  NSX-T には、**アクティブ/アクティブ** モードの NSX-T Tier-0 ゲートウェイと、**アクティブ/スタンバイ** モードの既定の NSX-T Tier-1 ゲートウェイが既定で事前プロビジョニングされています。  これらのゲートウェイを使用すると、セグメント (論理スイッチ) に接続し、East-West および North-South 接続を提供できます。 
+Azure VMware Solution をデプロイすると、NSX-T Manager または Azure portal から NSX-T ネットワーク セグメントを構成することができます。 構成が完了すると、Azure VMware Solution、NSX-T Manager、vCenter でセグメントを確認できます。 NSX-T には、**アクティブ/アクティブ** モードの NSX-T Tier-0 ゲートウェイと、**アクティブ/スタンバイ** モードの既定の NSX-T Tier-1 ゲートウェイが既定で事前プロビジョニングされています。  これらのゲートウェイを使用すると、セグメント (論理スイッチ) に接続し、East-West および North-South 接続を提供できます。 
 
 >[!TIP]
 >Azure portal には、VMware 管理者が日常的に必要とする NSX-T 操作のうち、NSX-T Manager に慣れていないユーザーを対象とするものを簡略化したビューが表示されます。 

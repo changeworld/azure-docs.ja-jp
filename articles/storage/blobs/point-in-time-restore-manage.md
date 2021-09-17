@@ -10,12 +10,12 @@ ms.date: 01/29/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 904def8328fbd7e23812b7ca325beda7722c5189
-ms.sourcegitcommit: 0ab53a984dcd23b0a264e9148f837c12bb27dac0
+ms.openlocfilehash: 7e2d71c1f388786c05052e773ea621caab92185e
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2021
-ms.locfileid: "113504695"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122445876"
 ---
 # <a name="perform-a-point-in-time-restore-on-block-blob-data"></a>ブロック BLOB データに対してポイントインタイム リストアを実行する
 
@@ -128,7 +128,7 @@ PowerShell または Azure CLI で復元操作を実行する場合は、復元�
 >
 > ストレージ アカウントが geo レプリケートされている場合は、復元操作中にセカンダリ ロケーションからの読み取り操作を続行できます。
 >
-> 一連のデータの復元にかかる時間は、復元期間中に行われた書き込み操作と削除操作の数に基づきます。 たとえば、100 万オブジェクトを持つアカウントで毎日 3,000 オブジェクトが追加され、毎日 1,000 オブジェクトが削除される場合、過去 30 日間のポイントまで復元するのに約 2 時間必要になります。 1 保有期間と過去 90 日間の復元は、この変更率のアカウントには推奨されません。
+> 一連のデータの復元にかかる時間は、復元ジョブが取得されるまでの最大 1 時間後の復元期間中に行われた書き込み操作と削除操作の数に基づきます。 たとえば、100 万オブジェクトを持つアカウントで毎日 3,000 オブジェクトが追加され、毎日 1,000 オブジェクトが削除される場合、30 日前の時点まで復元するのに約 2 ～ 3 時間必要になります。 変更回数が少ない復元では、復元に最大 1 時間が必要になります。 1 保有期間と過去 90 日間の復元は、この変更率のアカウントには推奨されません。
 
 ### <a name="restore-all-containers-in-the-account"></a>アカウント内のすべてのコンテナーを復元する
 

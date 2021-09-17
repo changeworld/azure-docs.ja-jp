@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 92bf7b7c1d2f24b7a858f6e9b786b84943651239
-ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
+ms.openlocfilehash: 6f9fd7f2827e298f3273ad11ab104b75a7e81582
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109810734"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121744837"
 ---
 # <a name="example-how-to-analyze-videos-in-real-time"></a>例:リアルタイムでビデオを分析する方法
 
@@ -176,4 +176,4 @@ while (true)
 [GitHub リポジトリ](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/)で、気軽にフィードバックや提案を提供してください。API に関するより幅広いフィードバックについては、[UserVoice](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395743) サイトを利用してください。
 
 ## <a name="related-topics"></a>関連トピック
-- [画像内の顔を検出する方法](HowtoDetectFacesinImage.md)
+- [検出 API を呼び出す](HowtoDetectFacesinImage.md)

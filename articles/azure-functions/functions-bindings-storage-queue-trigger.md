@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
-ms.openlocfilehash: 8f9f6c18e75b0c8238583742a2a99d0e365edbd0
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 85422b8bc587c858fc219379e553d1705e5aaabe
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108166363"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122429227"
 ---
 # <a name="azure-queue-storage-trigger-for-azure-functions"></a>Azure Functions の Azure Queue storage トリガー
 
@@ -439,9 +439,21 @@ public class QueueTriggerDemo {
 
 ## <a name="poison-messages"></a>有害メッセージ
 
-キュー トリガー関数が失敗すると、Azure Functions は、その関数を特定のキュー メッセージに対して (最初の試行を含め) 最大 5 回再試行します。 試行が 5 回とも失敗した場合、Functions ランタイム は、 *&lt;originalqueuename>-poison* という名前のキューにメッセージを追加します。 メッセージのログを取得するか、手動での対処が必要であるという通知を送信することにより有害キューからのメッセージを処理する関数が記述できます。
+キュー トリガー関数が失敗すると、Azure Functions は、その関数を特定のキュー メッセージに対して (最初の試行を含め) 最大 5 回再試行します。 5 回の試行すべてで失敗した場合、Functions ランタイムは、 *&lt;originalqueuename&gt;-poison* という名前のキューにメッセージを追加します。 メッセージのログを取得するか、手動での対処が必要であるという通知を送信することにより有害キューからのメッセージを処理する関数が記述できます。
 
 有害メッセージを手動で処理するには、キュー メッセージの [dequeueCount](#message-metadata) を確認します。
+
+
+## <a name="peek-lock"></a>ピーク ロック
+ピーク ロック パターンは、キュー トリガーに対して自動的に行われます。 デキューされたメッセージは、非表示とマークされ、Storage サービスが管理するタイムアウトと関連付けられます。
+
+その関数が開始されると、次の条件下でメッセージの処理が開始されます。
+
+- 関数が成功すると、関数の実行が完了し、メッセージが削除されます。
+- 関数が失敗すると、メッセージの可視性がリセットされます。 リセットされると、関数が次に新しいメッセージを要求するときにメッセージが再処理されます。
+- クラッシュが原因で関数が完了しない場合は、メッセージの可視性の有効期限が切れ、メッセージはキューに再表示されます。
+
+可視性のメカニズムは、Functions ランタイムではなく、Storage サービスによりすべて処理されます。
 
 ## <a name="polling-algorithm"></a>ポーリング アルゴリズム
 
@@ -449,14 +461,15 @@ public class QueueTriggerDemo {
 
 アルゴリズムでは次のロジックが使用されます。
 
-- メッセージが見つかると、ランタイムは 2 秒間待機してから、別のメッセージを確認します
-- メッセージが見つからない場合は、約 4 秒間待機してから再試行します。
+- メッセージが見つかると、ランタイムにより 100 ミリ秒間待機してから、別のメッセージが確認されます
+- メッセージが見つからない場合は、約 200 ミリ秒間待機してからもう一度お試しください。
 - 再試行後もキュー メッセージが取得できなかった場合、待ち時間が最大になるまで再試行が続けられます。既定の最大待ち時間は 1 分間です。
 - 最大待ち時間は、[host.json ファイル](functions-host-json-v1.md#queues)内の `maxPollingInterval` プロパティで構成できます。
 
 ローカル開発の場合、最大ポーリング間隔は既定で 2 秒に設定されます。
 
-課金に関しては、ランタイムによるポーリングに費やされた時間は "無料" であり、お使いのアカウントに対してカウントされません。
+> [!NOTE]
+> 従量課金プランで関数アプリをホストする場合の課金については、ランタイムがポーリングに費やした時間は課金されません。
 
 ## <a name="concurrency"></a>コンカレンシー
 

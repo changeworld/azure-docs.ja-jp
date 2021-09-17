@@ -1,5 +1,5 @@
 ---
-title: Amazon S3 バケットをスキャンする方法
+title: Azure Purview 用 Amazon S3 Multi-Cloud Scanning Connector
 description: この攻略ガイドでは、Amazon S3 バケットをスキャンする方法の詳細について説明します。
 author: batamig
 ms.author: bagol
@@ -8,20 +8,24 @@ ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 06/17/2021
 ms.custom: references_regions
-ms.openlocfilehash: 181e0ae76dccf763d23fb648a5e6553ed352655a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ad62ff0c7d3e6249ecb8497953501466b5152265
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121748138"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122445733"
 ---
-# <a name="azure-purview-connector-for-amazon-s3"></a>Amazon S3 用 Azure Purview コネクタ
+# <a name="amazon-s3-multi-cloud-scanning-connector-for-azure-purview"></a>Azure Purview 用 Amazon S3 Multi-Cloud Scanning Connector
 
-この攻略ガイドでは、Azure Purview を使用して、Amazon S3 標準バケットに現在格納されている非構造化データをスキャンし、データ内に存在する機密情報の種類を検出する方法について説明します。 また、この攻略ガイドでは、情報保護とデータ コンプライアンスを容易にするためにデータが現在格納されている Amazon S3 バケットを識別する方法についても説明します。
+Azure Purview 用 Multi-Cloud Scanning Connector を使用すると、Azure ストレージ サービスに加えてアマゾン ウェブ サービスなど、クラウド プロバイダー全体の組織データを探索できます。
 
-このサービスでは、Purview を使用して AWS に安全にアクセスできる Microsoft アカウントを提供し、そこで Purview スキャナーが実行されるようにします。 Amazon S3 バケットへのこのアクセスは、Purview スキャナーによりデータを読み取るために使用され、メタデータと分類のみを含むスキャン結果が Azure に報告されます。 Purview の分類およびラベル付けレポートを使用して、データ スキャンの結果を分析して確認します。
+この記事では、Azure Purview を使用して、Amazon S3 標準バケットに現在格納されている非構造化データをスキャンし、データ内に存在する機密情報の種類を検出する方法について説明します。 また、この攻略ガイドでは、情報保護とデータ コンプライアンスを容易にするためにデータが現在格納されている Amazon S3 バケットを識別する方法についても説明します。
 
-この攻略ガイドでは、Amazon S3 バケットを Purview リソースとして追加し、Amazon S3 データのスキャンを作成する方法について説明します。
+このサービスでは、Purview を使用して AWS に安全にアクセスできる Microsoft アカウントを提供し、そこで Azure Purview 用 Multi-Cloud Scanning Connector が実行されるようにします。 Amazon S3 バケットへのこのアクセスは、Azure Purview 用 Multi-Cloud Scanning Connector によりデータを読み取るために使用され、メタデータと分類のみを含むスキャン結果が Azure に報告されます。 Purview の分類およびラベル付けレポートを使用して、データ スキャンの結果を分析して確認します。
+
+> [!IMPORTANT]
+> Azure Purview 用 Multi-Cloud Scanning Connector は、Azure Purview への個別のアドオンです。 Azure Purview 用 Multi-Cloud Scanning Connector のご契約条件は、お客様が締結した Microsoft Azure サービスの契約に含まれています。 詳細については、 https://azure.microsoft.com/support/legal/ の「Microsoft Azure の法的情報」を参照してください。
+>
 
 ## <a name="purview-scope-for-amazon-s3"></a>Purview の Amazon S3 のスコープ
 
@@ -443,7 +447,7 @@ S3 バケットをスキャンするときに使用する、[Purview 用の AWS 
 - `GetObject`
 - `ListBucket`
 
-必ず特定のバケット名を使用してリソースを定義してください。 次に例を示します。
+必ず特定のバケット名を使用してリソースを定義してください。 例:
 
 ```json
 {

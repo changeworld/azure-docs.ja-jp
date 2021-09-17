@@ -9,14 +9,17 @@ ms.subservice: management
 ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: ffa2a3a921e988b92ad90831041a6fb4d321bc42
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c3171b9ffd15fe7dd9e13b3fdde1a3394efb6327
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92747820"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122697377"
 ---
 # <a name="working-with-large-virtual-machine-scale-sets"></a>大規模な仮想マシン スケール セットの使用
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: ユニフォーム スケール セット
+
 現在、最大 1,000 個の VM を容量とした Azure [仮想マシン スケール セット](./index.yml)を作成できるようになりました。 このドキュメントの "_大規模な仮想マシン スケール セット_" は、100 個を超える VM にスケーリングできるスケール セットとして定義されています。 この機能はスケール セット プロパティで設定されています (_singlePlacementGroup=False_)。 
 
 大規模なスケール セットのある部分 (負荷分散や障害ドメインなど) の動作は、標準的なスケール セットとは異なります。 このドキュメントでは、大規模なスケール セットの特性を説明するほか、アプリケーションでこれらをうまく使用するために知っておくべきことについても説明します。 

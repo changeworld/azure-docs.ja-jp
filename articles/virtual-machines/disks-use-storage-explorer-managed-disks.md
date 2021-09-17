@@ -7,14 +7,16 @@ ms.date: 09/25/2019
 ms.topic: how-to
 ms.service: storage
 ms.subservice: disks
-ms.openlocfilehash: aba38411be9502fd8592e293580a3c816fc9b55b
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: 1ef24210e033c5e0af623dfa6f3cd79146732640
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113362271"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692295"
 ---
 # <a name="use-azure-storage-explorer-to-manage-azure-managed-disks"></a>Azure Storage Explorer を使用して Azure マネージド ディスクを管理する
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 Storage Explorer 1.10.0 を使用すると、ユーザーは、マネージド ディスクのアップロード、ダウンロード、コピー、およびスナップショットの作成を行うことができます。 これらの追加機能により、Storage Explorer を使用して、オンプレミスから Azure にデータを移行したり、Azure リージョン間でデータを移行したりすることができます。
 
@@ -129,7 +131,7 @@ Storage Explorer を使うと、リージョン内またはリージョン間で
 
     ![ポータルでスナップショットを開く](media/disks-upload-vhd-to-managed-disk-storage-explorer/open-in-portal.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 
 [Azure portal を使用して VHD から VM を作成する](windows/create-vm-specialized-portal.md)方法について説明します。

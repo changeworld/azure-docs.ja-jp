@@ -6,14 +6,14 @@ documentationcenter: ''
 author: vladvino
 ms.service: api-management
 ms.topic: article
-ms.date: 06/22/2021
+ms.date: 08/20/2021
 ms.author: apimpm
-ms.openlocfilehash: be920fa3cd35d2b1e92891d5595dfbe27a258447
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 8d3370558e8dde2227834fa8f67577ca393b9564
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121741606"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122687725"
 ---
 # <a name="api-management-access-restriction-policies"></a>API Management のアクセス制限ポリシー
 
@@ -138,7 +138,7 @@ ms.locfileid: "121741606"
 | -------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
 | name           | レート制限の適用対象になる API の名前。                                                | はい      | 該当なし     |
 | calls          | `renewal-period` で指定された期間中に許可される最大の呼び出し合計数。 | はい      | 該当なし     |
-| renewal-period | 許可された要求の数が、`calls` で指定された値を超えてはならないスライディング ウィンドウの長さ (秒単位)。                                              | はい      | 該当なし     |
+| renewal-period | 許可された要求の数が、`calls` で指定された値を超えてはならないスライディング ウィンドウの長さ (秒単位)。 許可される最大値: 300 秒。                                            | はい      | 該当なし     |
 | retry-after-header-name    | 値が指定された呼び出しレートを超えた後の推奨される再試行間隔 (秒単位) である応答ヘッダーの名前。 |  いいえ | N/A  |
 | retry-after-variable-name    | 指定した呼び出しレートを超えた後の推奨される再試行間隔 (秒単位) を格納するポリシー式変数の名前。 |  いいえ | N/A  |
 | remaining-calls-header-name    | 各ポリシーの実行後の値が、`renewal-period` で指定された時間間隔に対して許可されている残りの呼び出しの数である応答ヘッダーの名前。 |  いいえ | 該当なし  |
@@ -211,10 +211,10 @@ ms.locfileid: "121741606"
 
 | 名前                | 説明                                                                                           | 必須 | Default |
 | ------------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
-| calls               | `renewal-period` で指定した期間中に許容する最大呼び出し総数。 | はい      | 該当なし     |
+| calls               | `renewal-period` で指定した期間中に許容する最大呼び出し総数。 ポリシー式は許可されます。 | はい      | 該当なし     |
 | counter-key         | レート制限ポリシーに使用するキー。                                                             | はい      | 該当なし     |
 | increment-condition | レートに対して要求の件数をカウントするかどうかを指定するブール式 (`true`)。        | いいえ       | 該当なし     |
-| renewal-period      | 許可された要求の数が、`calls` で指定された値を超えてはならないスライディング ウィンドウの長さ (秒単位)。                                           | はい      | 該当なし     |
+| renewal-period      | 許可された要求の数が、`calls` で指定された値を超えてはならないスライディング ウィンドウの長さ (秒単位)。 ポリシー式は許可されます。 許可される最大値: 300 秒。                 | はい      | 該当なし     |
 | retry-after-header-name    | 値が指定された呼び出しレートを超えた後の推奨される再試行間隔 (秒単位) である応答ヘッダーの名前。 |  いいえ | N/A  |
 | retry-after-variable-name    | 指定した呼び出しレートを超えた後の推奨される再試行間隔 (秒単位) を格納するポリシー式変数の名前。 |  いいえ | N/A  |
 | remaining-calls-header-name    | 各ポリシーの実行後の値が、`renewal-period` で指定された時間間隔に対して許可されている残りの呼び出しの数である応答ヘッダーの名前。 |  いいえ | 該当なし  |

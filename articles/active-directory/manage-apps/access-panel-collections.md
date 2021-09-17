@@ -12,12 +12,12 @@ ms.date: 02/10/2020
 ms.author: davidmu
 ms.reviewer: lenalepa
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e47e7900fd6d678e07b4fb4ccfe02b17f734c67f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 454f1d5513e7cee0535251ac6f6b02fd3b699643
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121727633"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122771402"
 ---
 # <a name="create-collections-on-the-my-apps-portal"></a>マイ アプリ ポータルでコレクションを作成する
 
@@ -68,6 +68,9 @@ ms.locfileid: "121727633"
    ![ユーザーとグループを追加する](media/acces-panel-collections/add-users-and-groups.png)
 
 11. **[確認および作成]** を選択します。 新しいコレクションのプロパティが表示されます。
+
+> [!NOTE]
+> 管理者コレクションは、[My Apps ポータル](https://myapps.microsoft.com)からではなく、[Azure portal](https://portal.azure.com) 経由で管理されます。 たとえば、ユーザーまたはグループを所有者として割り当てた場合、そのユーザーまたはグループは Azure portal 経由でのみコレクションを管理できます。
 
 ## <a name="view-audit-logs"></a>監査ログの表示
 

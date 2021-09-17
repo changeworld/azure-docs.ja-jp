@@ -7,15 +7,16 @@ ms.subservice: vm-sizes-general
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: jushiman
-ms.openlocfilehash: 474478c03586866f28d02c4e1cb219bd6df65dea
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 0d37e8308afd75b310893272f338fb5a3245a8ce
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122183466"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122696523"
 ---
 # <a name="dcsv2-series"></a>DCsv2 シリーズ
 
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 DCsv2 シリーズの仮想マシンは、パブリック クラウドで処理中のデータおよびコードの機密性と整合性を保護するために役立ちます。 DCsv2 シリーズでは、Intel® Software Guard Extensions を利用します。これにより、顧客は Secure Enclave をデータ保護に使用できます。
 

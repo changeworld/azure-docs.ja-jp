@@ -3,12 +3,12 @@ title: Bicep リンターの使用方法
 description: Bicep linter の使用方法について説明します。
 ms.topic: conceptual
 ms.date: 07/01/2021
-ms.openlocfilehash: 82ab1462ca55a4329370d185aed626ae631e2f2b
-ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
+ms.openlocfilehash: 6b270a87a67235a6663a697b1329c5f86d570fdf
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113649439"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122779729"
 ---
 # <a name="use-bicep-linter"></a>Bicep リンターの使用方法
 
@@ -16,7 +16,7 @@ Bicep リンターを使用して、Bicep ファイルを分析できます。 B
 
 ## <a name="install-linter"></a>リンターのインストール
 
-リンターは Visual Studio コードと Bicep CLI で使用できます。 次のようにする必要があります。
+リンターは Visual Studio Code と Bicep CLI で使用できます。 次のようにする必要があります。
 
 - Bicep CLI バージョン 0.4 以降。
 - Visual Studio Code バージョン 0.4 以降の Bicep 拡張機能。

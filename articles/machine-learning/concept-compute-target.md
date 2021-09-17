@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2021
-ms.openlocfilehash: a3c52783cf88e9890ffa1a96feb3a332e43c5e1c
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: bb7baa20b5bc7e47e231e3e15937dde941ac0e03
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121860825"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122608260"
 ---
 # <a name="what-are-compute-targets-in-azure-machine-learning"></a>Azure Machine Learning でのコンピューティング ターゲットとは
 
@@ -23,14 +23,14 @@ ms.locfileid: "121860825"
 一般的なモデル開発ライフサイクルでは、次のことを行う可能性があります。
 
 1. 最初に、少量のデータを開発して実験します。 この段階では、コンピューティング ターゲットとしてローカル環境 (ローカル コンピューターやクラウド ベースの仮想マシン (VM) など) を使用します。
-1. より大きなデータにスケールアップするか、またはこれらの[トレーニング コンピューティング ターゲット](#train)のいずれかを使用して分散トレーニングを実行します。
+1. より大きなデータにスケールアップするか、またはこれらの[トレーニング コンピューティング ターゲット](#train)のいずれかを使用して[分散トレーニング](how-to-train-distributed-gpu.md)を実行します。
 1. モデルの準備ができたら、これらの[デプロイ コンピューティング ターゲット](#deploy)のいずれかを使用して、そのモデルを Web ホスティング環境にデプロイします。
 
 コンピューティング ターゲットに使用するコンピューティング リソースは[ワークスペース](concept-workspace.md)にアタッチされています。 ローカル コンピューター以外のコンピューティング リソースは、ワークスペースのユーザーによって共有されます。
 
 ## <a name="training-compute-targets"></a><a name="train"></a> トレーニング コンピューティング ターゲット
 
-Azure Machine Learning では、異なるコンピューティング先に対してさまざまなサポートが提供されています。 典型的なモデル開発ライフサイクルは、少量のデータを用いた開発または実験から始まります。 このステージでは、ローカル コンピューターなどのローカル環境またはクラウド ベースの VM を使用します。 より大規模なデータ セットにトレーニングをスケールアップする、または分散トレーニングを実行する段階で、Azure Machine Learning コンピューティングを使用して、実行を送信するたびに自動スケーリングするシングルノードまたはマルチノード クラスターを作成します。 また、独自のコンピューティング リソースを接続することもできますが、シナリオごとにサポートは異なることがあります。
+Azure Machine Learning では、異なるコンピューティング先に対してさまざまなサポートが提供されています。 典型的なモデル開発ライフサイクルは、少量のデータを用いた開発または実験から始まります。 このステージでは、ローカル コンピューターなどのローカル環境またはクラウド ベースの VM を使用します。 より大規模なデータ セットにトレーニングをスケールアップする、または[分散トレーニング](how-to-train-distributed-gpu.md)を実行する段階で、Azure Machine Learning コンピューティングを使用して、実行を送信するたびに自動スケーリングするシングルノードまたはマルチノード クラスターを作成します。 また、独自のコンピューティング リソースを接続することもできますが、シナリオごとにサポートは異なることがあります。
 
 [!INCLUDE [aml-compute-target-train](../../includes/aml-compute-target-train.md)]
 

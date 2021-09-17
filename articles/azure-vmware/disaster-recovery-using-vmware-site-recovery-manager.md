@@ -2,13 +2,13 @@
 title: VMware Site Recovery Manager を使用してディザスター リカバリーをデプロイする
 description: Azure VMware Solution のプライベート クラウドで VMware Site Recovery Manager (SRM) を使用してディザスター リカバリーをデプロイします。
 ms.topic: how-to
-ms.date: 07/22/2021
-ms.openlocfilehash: e026083a14dc9ae5b84b03943224b687f34cfab5
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.date: 08/18/2021
+ms.openlocfilehash: 7c4f518623801e8cb489452dbeb3be76e1104e62
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114604645"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122608067"
 ---
 # <a name="deploy-disaster-recovery-with-vmware-site-recovery-manager"></a>VMware Site Recovery Manager を使用してディザスター リカバリーをデプロイする
 
@@ -49,6 +49,7 @@ SRM を使用すると、次のようなさまざまな種類の回復を実装�
 >- VVOL の保護グループ 
 >- SRM コマンド ライン ツールを使用した SRM IP のカスタマイズ
 >- 一対多および多対一のトポロジ 
+>- カスタムの SRM プラグイン識別子または拡張 ID
 
 
 ## <a name="deployment-workflow"></a>デプロイのワークフロー
@@ -218,19 +219,19 @@ Microsoft は、Azure VMware Solution プライベート クラウドでの VMwa
 
 ## <a name="scale-limitations"></a>スケールの制限
 
+スケールの制限はプライベート クラウドごとにあります。
+
 | 構成 | 制限 |
 | --- | --- |
 | 保護対象の仮想マシンの数  | 1000  |
 | 復旧計画あたりの仮想マシンの数  | 1000  |
 | 復旧計画あたりの保護グループの数  | 250  |
-| RPO の値  | 5 分、30 分、60 分、90 分、120 分  |
-| 保護グループあたりの仮想マシンの合計数  | 4  |
+| RPO の値  | 5 分以上*  |
+| 保護グループあたりの仮想マシンの合計数  | 500  |
 | 復旧計画の合計数  | 250  |
-| RPO が 5 分の場合の VM の数  | 100  |
-| RPO が 30 分の場合の VM の数  | 300  |
-| RPO が 60 分の場合の VM の数  | 300  |
-| RPO が 90 分の場合の VM の数  | 200  |
-| RPO が 120 分の場合の VM の数  | 100  |
+
+\* 15 分未満の回復ポイントの目標 (RPO) の詳細については、"[vSphere レプリケーション管理ガイド](https://docs.vmware.com/en/vSphere-Replication/8.3/com.vmware.vsphere.replication-admin.doc/GUID-9E17D567-A947-49CD-8A84-8EA2D676B55A.html)" の _5 分の回復ポイントの目標のしくみ_ に関するページを参照してください。
+
 
 
 ## <a name="srm-licenses"></a>SRM のライセンス

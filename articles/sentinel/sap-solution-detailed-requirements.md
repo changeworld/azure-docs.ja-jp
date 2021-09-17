@@ -8,12 +8,12 @@ ms.topic: reference
 ms.custom: mvc
 ms.date: 06/09/2021
 ms.subservice: azure-sentinel
-ms.openlocfilehash: a03031640bd116e2901ff123b5fec13d36151fd4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 63ca9c2a76b5daaf576992f715a7ec112ac98b25
+ms.sourcegitcommit: deb5717df5a3c952115e452f206052737366df46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121723429"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122681526"
 ---
 # <a name="azure-sentinel-sap-solution-detailed-sap-requirements-public-preview"></a>Azure Sentinel SAP ソリューションの詳細な SAP 要件 (パブリック プレビュー)
 
@@ -28,6 +28,9 @@ ms.locfileid: "121723429"
 > Azure Sentinel SAP ソリューションは、現在プレビュー段階です。 [Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)には、ベータ版、プレビュー版、またはまだ一般提供されていない Azure 機能に適用される追加の法律条項が含まれています。
 >
 
+> [!NOTE]
+> セキュリティ保護された SNC 接続を使用して SAP データ コネクタをデプロイしている場合は、追加の要件が示されます。 詳細については、「[SNC を使用して Azure Sentinel SAP データ コネクタを展開する](sap-solution-deploy-snc.md)」を参照してください。
+>
 ## <a name="recommended-virtual-machine-sizing"></a>仮想マシンの推奨されるサイズ設定
 
 次の表では、使用目的に応じた、仮想マシンの推奨されるサイズ設定について説明します。
@@ -139,7 +142,8 @@ SAP Basis バージョンが 7.50 以前の場合は、次の SAP ノートを�
 詳細については、次を参照してください。
 
 - [SAP 用 Azure Sentinel ソリューションをデプロイする](sap-deploy-solution.md)
-- [エキスパートの構成オプション、オンプレミスのデプロイ、SAPControl のログ ソース](sap-solution-deploy-alternate.md)
+- [SNC を使用して Azure Sentinel SAP データ コネクタをデプロイする](sap-solution-deploy-snc.md)
+- [エキスパートの構成オプション、オンプレミス デプロイ、SAPControl のログ ソース](sap-solution-deploy-alternate.md)
 - [Azure Sentinel SAP ソリューション ログ リファレンス](sap-solution-log-reference.md)
 - [Azure Sentinel SAP ソリューション: 利用できるセキュリティ コンテンツ](sap-solution-security-content.md)
 - [Azure Sentinel SAP ソリューションのデプロイのトラブルシューティング](sap-deploy-troubleshoot.md)

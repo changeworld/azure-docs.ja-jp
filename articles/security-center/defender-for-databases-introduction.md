@@ -7,12 +7,12 @@ ms.date: 05/25/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: aa02c405a3d94426e54ed7e3499f6ae79ec635e5
-ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
+ms.openlocfilehash: 209fdfd71b4e2c0a5d1d5ede3f411b6476c19570
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113487329"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732575"
 ---
 # <a name="introduction-to-azure-defender-for-open-source-relational-databases"></a>オープンソース リレーショナル データベース用 Azure Defender の概要
 
@@ -28,12 +28,12 @@ Azure Defender により、データベースへのアクセスやその悪用�
 
 | 側面                             | 詳細                                                                                                                                    |
 |------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------|
-| リリース状態:                     | 一般提供 (GA)                                                     |
+| リリース状態:                     | 一般公開 (GA)                                                     |
 | 価格:                           | **オープンソース リレーショナル データベース用 Azure Defender** は、[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)で示されているように課金されます   |
 | PostgreSQL の保護されたバージョン:  | 単一サーバー - 汎用とメモリ最適化。 詳細については、[PostgreSQL の価格レベル](../postgresql/concepts-pricing-tiers.md)に関する記事を参照してください。   |
 | MySQL の保護されたバージョン:       | 単一サーバー - 汎用とメモリ最適化。 詳細については、[MySQL の価格レベル](../mysql/concepts-pricing-tiers.md)に関する記事を参照してください。                        |
 | MariaDB の保護されたバージョン:     | 汎用とメモリ最適化。 詳細については、[MariaDB の価格レベル](../mariadb/concepts-pricing-tiers.md)に関する記事を参照してください。                      |
-| クラウド:                            | :::image type="icon" source="./media/icons/yes-icon.png"::: 商用クラウド<br>:::image type="icon" source="./media/icons/no-icon.png":::National/Sovereign (US Gov、Azure China) |
+| クラウド:                            | :::image type="icon" source="./media/icons/yes-icon.png"::: 商用クラウド<br>:::image type="icon" source="./media/icons/no-icon.png"::: 国/ソブリン (Azure Government、Azure China 21Vianet) |
 |                                    |                                                                                                                                            |
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-open-source-relational-databases"></a>オープンソース リレーショナル データベース用 Azure Defender の利点

@@ -4,13 +4,13 @@ description: Azure Monitor ログ内の複数のデータ型に共通する列�
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 02/25/2021
-ms.openlocfilehash: 5b906bdbd07d59d2acc88f6b30f0db6b6cbc961a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 08/16/2021
+ms.openlocfilehash: 909c02c53f753579d6788933277bca8f75f53859
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103562248"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122514867"
 ---
 # <a name="standard-columns-in-azure-monitor-logs"></a>Azure Monitor ログ内の標準列
 Azure Monitor ログ内のデータは、[Log Analytics ワークスペースまたは Application Insights アプリケーションのどちらかに一連のレコードとして格納され](../logs/data-platform-logs.md)、各レコードが固有の列のセットを備えた特定のデータ型を持っています。 多くのデータ型には、複数の型にわたって共通の標準列があります。 この記事では、これらの列について説明し、それらの列をクエリで使用する方法の例を示します。
@@ -24,10 +24,13 @@ Application Insights のワークスペース ベースのアプリケーショ�
 ## <a name="tenantid"></a>TenantId
 **TenantId** 列には、Log Analytics ワークスペースのワークスペース ID が保持されます。
 
-## <a name="timegenerated-and-timestamp"></a>TimeGenerated と timestamp
-**TimeGenerated** (Log Analytics ワークスペース) および **timestamp** (Application Insights アプリケーション) 列には、そのレコードがデータ ソースによって作成された日付と時刻が含まれています。 詳細については、「[Azure Monitor でのログ データ インジェスト時間](../logs/data-ingestion-time.md)」を参照してください。
+## <a name="timegenerated"></a>TimeGenerated
+**TimeGenerated** 列には、レコードがデータ ソースにより作成された日付と時刻が含まれています。 詳細については、「[Azure Monitor でのログ データ インジェスト時間](../logs/data-ingestion-time.md)」を参照してください。
 
-**TimeGenerated** と **timestamp** は、時間でフィルター処理または集計するために使用する共通の列を提供します。 Azure portal でビューまたはダッシュボードの時間範囲を選択した場合は、TimeGenerated または timestamp を使用して結果がフィルター処理されます。 
+**TimeGenerated** は、時間でフィルター処理または集計するために使用する共通の列を示します。 Azure portal でビューまたはダッシュボードの時間範囲を選択した場合は、結果をフィルター処理するために **TimeGenerated** が使用されます。 
+
+> [!NOTE]
+> クラシック Application Insights リソースをサポートするテーブルでは、**TimeGenerated** 列ではなく **timestamp** 列が使用されます。
 
 ### <a name="examples"></a>例
 
@@ -40,16 +43,6 @@ Event
 | summarize count() by bin(TimeGenerated, 1day) 
 | sort by TimeGenerated asc 
 ```
-
-次のクエリでは、前の週の各日に作成された例外の数が返されます。
-
-```Kusto
-exceptions
-| where timestamp between(startofweek(ago(7days))..endofweek(ago(7days))) 
-| summarize count() by bin(TimeGenerated, 1day) 
-| sort by timestamp asc 
-```
-
 ## <a name="_timereceived"></a>\_TimeReceived
 **\_TimeReceived** 列には、そのレコードが Azure クラウド内の Azure Monitor インジェスト ポイントによって受信された日付と時刻が含まれています。 データ ソースとクラウドとの間における待ち時間の問題の特定に役立てることができます。 たとえば、エージェントから送信されているデータの遅延を引き起こしているネットワークの問題が考えられます。 詳細については、「[Azure Monitor でのログ データ インジェスト時間](../logs/data-ingestion-time.md)」を参照してください。
 
@@ -68,8 +61,11 @@ Event
 | summarize avg(AgentLatency), avg(TotalLatency) by bin(TimeGenerated,1hr)
 ``` 
 
-## <a name="type-and-itemtype"></a>Type と itemType
-**Type** (Log Analytics ワークスペース) および **itemType** (Application Insights アプリケーション) 列には、そのレコードの取得元のテーブルの名前が保持されます。これは、レコードの種類と考えることもできます。 この列は、複数のテーブルからのレコードを結合するクエリ (`search` 演算子を使用するクエリなど) で、異なる種類のレコードを区別するために役立ちます。 場所によっては、**Type** の代わりに **$table** を使用できます。
+## <a name="type"></a>Type
+**Type** 列は、そのレコードの取得元のテーブルの名前を保持します。これは、レコードの種類と考えることもできます。 この列は、複数のテーブルからのレコードを結合するクエリ (`search` 演算子を使用するクエリなど) で、異なる種類のレコードを区別するために役立ちます。 クエリによっては、**Type** の代わりに **$table** を使用できます。
+
+> [!NOTE]
+> クラシック Application Insights リソースをサポートするテーブルでは、**Type** 列ではなく **itemType** 列が使用されます。
 
 ### <a name="examples"></a>例
 次のクエリは、過去 1 時間に収集された種類ごとのレコード数を返します。
@@ -145,7 +141,7 @@ Azure リソースの場合、 **__SubscriptionId** の値は [Azure リソー�
 ```Kusto
 Perf 
 | where TimeGenerated > ago(24h) and CounterName == "memoryAllocatableBytes"
-| where _SubscriptionId == "57366bcb3-7fde-4caf-8629-41dc15e3b352"
+| where _SubscriptionId == "ebb79bc0-aa86-44a7-8111-cabbe0c43993"
 | summarize avgMemoryAllocatableBytes = avg(CounterValue) by Computer
 ```
 

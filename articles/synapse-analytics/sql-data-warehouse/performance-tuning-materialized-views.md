@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 08/17/2021
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick; azure-synapse
-ms.openlocfilehash: 1eb42cc923ea5acd23165e9dfa778e35748e4d2e
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: ce3f7b923cec3dec28043f43babbaa86a0c6d92e
+ms.sourcegitcommit: c2f0d789f971e11205df9b4b4647816da6856f5b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122323593"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122662070"
 ---
 # <a name="performance-tune-with-materialized-views"></a>マテリアライズドビューを使用したパフォーマンスのチューニング
 
@@ -54,10 +54,13 @@ Azure Synapse の専用 SQL プールでは、標準ビューと具体化され�
 
 他のデータ ウェアハウス プロバイダーと比較して、専用 SQL プールに実装されている具体化されたビューには次の利点もあります。
 
+- 幅広い集計関数がサポートされます。 [CREATE MATERIALIZED VIEW AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql) に関するページを参照してください。
+- クエリに固有のマテリアライズドビューに関する推奨情報が得られます。  「[EXPLAIN (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql)」を参照してください。
 - ベース テーブル内のデータ変更で自動的かつ同期的にデータが更新されます。 ユーザーによる操作は不要です。
-- 幅広い集計関数がサポートされます。 [CREATE MATERIALIZED VIEW AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest) に関するページを参照してください。
-- クエリに固有のマテリアライズドビューに関する推奨情報が得られます。  「[EXPLAIN (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql?view=azure-sqldw-latest)」を参照してください。
+>[!note] 
+> CASE 式を使用して作成された具体化されたビューには、ビュー作成時の CASE 式を満たす値のみが保存されます。  具体化されたビューには、ビューの生成後に生じた CASE 式によるデータの増分変更は反映されません。   
 
+ 
 ## <a name="common-scenarios"></a>一般的なシナリオ  
 
 一般に、具体化されたビューは次のシナリオで使用されます。

@@ -10,12 +10,12 @@ author: luisquintanilla
 ms.author: luquinta
 ms.date: 05/25/2021
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 098f2d63f7bfd87aed8c7c88d1ec13be684983c1
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 195ea650e15024366d3d9d9426b466cf73951bb1
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112459354"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122418871"
 ---
 # <a name="train-an-image-classification-tensorflow-model-using-the-azure-machine-learning-visual-studio-code-extension-preview"></a>Azure Machine Learning Visual Studio Code 拡張機能 (プレビュー) を使用して画像分類 TensorFlow モデルをトレーニングする
 
@@ -34,7 +34,7 @@ TensorFlow と Azure Machine Learning Visual Studio Code 拡張機能を使用�
 - Azure のサブスクリプション。 お持ちでない場合は、[無料版または有料版の Azure Machine Learning](https://azure.microsoft.com/free/t.com/free/) にサインアップしてお試しください。
 - 軽量なクロスプラットフォーム コード エディターである [Visual Studio Code](https://code.visualstudio.com/docs/setup/setup-overview) をインストールします。
 - Azure Machine Learning Studio Visual Studio Code 拡張機能。 インストール手順については、[Azure Machine Learning Visual Studio Code 拡張機能の設定に関するガイド](./how-to-setup-vs-code.md)を参照してください
-- 2.0 CLI (プレビュー)。 インストール手順については、[2.0 CLI (プレビュー) のインストール、設定、および使用](how-to-configure-cli.md)に関する記事を参照してください
+- CLI (v2) (プレビュー)。 インストール手順については、[CLI (v2) (プレビュー) のインストール、設定、および使用](how-to-configure-cli.md)に関する記事を参照してください
 
 ## <a name="understand-the-code"></a>コードの理解
 
@@ -70,7 +70,7 @@ Azure Machine Learning でアプリケーションを作成する際に最初に
 
     この仕様ファイルによって、`WestUS2` リージョン内に `TeamWorkspace` という名前のワークスペースが作成されます。 仕様ファイルに定義されている残りのオプションによって、ワークスペースのフレンドリ名、説明、およびタグが指定されます。
 
-1. 仕様ファイルを右クリックし、 **[Azure ML: Create Resource]\(Azure ML: リソースの作成\)** を選択します。 リソースを作成するには、YAML 仕様ファイルで定義されている構成オプションを使用し、2.0 CLI を使用してジョブを送信します。 この時点で、Azure に対して、新しいワークスペースと依存リソースをアカウントに作成するように要求が行われます。 数分後、ご利用のサブスクリプションのノードに新しいワークスペースが表示されます。
+1. 仕様ファイルを右クリックし、 **[Azure ML: Create Resource]\(Azure ML: リソースの作成\)** を選択します。 リソースを作成するには、YAML 仕様ファイルで定義されている構成オプションを使用し、CLI (v2) を使用してジョブを送信します。 この時点で、Azure に対して、新しいワークスペースと依存リソースをアカウントに作成するように要求が行われます。 数分後、ご利用のサブスクリプションのノードに新しいワークスペースが表示されます。
 1. `TeamWorkspace` を既定のワークスペースとして設定します。 これにより、作成したリソースとジョブが既定でこのワークスペースに配置されます。 Visual Studio Code ステータス バーの **[Set Azure ML Workspace]\(Azure ML ワークスペースの設定\)** ボタンを選択し、画面の指示に従って `TeamWorkspace` を既定のワークスペースとして設定します。
 
 ワークスペースの詳細については、[VS Code でリソースを管理する方法](how-to-manage-resources-vscode.md)に関する記事を参照してください。

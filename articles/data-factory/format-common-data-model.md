@@ -1,17 +1,20 @@
 ---
 title: Common Data Model 形式
+titleSuffix: Azure Data Factory & Azure Synapse
 description: Common Data Model メタデータ システムを使用してデータを変換します
 author: kromerm
 ms.service: data-factory
+ms.subservice: data-flows
+ms.custom: synapse
 ms.topic: conceptual
 ms.date: 02/04/2021
 ms.author: makromer
-ms.openlocfilehash: 45f5334ebee3365c17bfa52c8d47ed75b82bdfa1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 612faa714f6a31bb464d30cc5b30766734782d41
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100387701"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122637753"
 ---
 # <a name="common-data-model-format-in-azure-data-factory"></a>Azure Data Factory での Common Data Model 形式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -84,7 +87,7 @@ CDM はインライン データセットとしてのみ利用でき、既定で
 2. partitions.Location プロパティを検索する 
 3. "blob.core.windows.net" を "dfs.core.windows.net" に変更する
 4. URL の "% 2F" エンコードを "/" に修正する
-5. ADF データ フローを使用する場合は、パーティション ファイル パス内の特殊文字を英数字に置き換えるか、Synapse データ フローに切り替える必要があります
+5. ADF データ フローを使用する場合は、パーティション ファイル パス内の特殊文字を英数字に置き換えるか、Azure Synapse データ フローに切り替える必要があります
 
 ### <a name="cdm-source-data-flow-script-example"></a>CDM ソース データ フロー スクリプトの例
 

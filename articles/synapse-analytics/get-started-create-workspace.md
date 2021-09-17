@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 03/17/2021
-ms.openlocfilehash: cb00337446df3062fe640127a37adfb522e45345
-ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
+ms.openlocfilehash: c99d981c6abf6d7a43a5180360712b665c57f6fe
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2021
-ms.locfileid: "113300990"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122324355"
 ---
 # <a name="creating-a-synapse-workspace"></a>Synapse ワークスペースの作成
 

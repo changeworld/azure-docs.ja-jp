@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/19/2021
+ms.date: 07/30/2021
 ms.author: jeedes
-ms.openlocfilehash: ac70d5ae65e07673ffdd68c1659ca3c342f1f29c
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 13211d4b22470291fcee84a075a0305ba1e29718
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114479691"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739921"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-directprintio-cloud-print-administration"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と directprint.io Cloud Print Administration との統合
 
@@ -38,6 +38,8 @@ ms.locfileid: "114479691"
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 * directprint.io Cloud Print Administration は、**IDP** によって開始される SSO をサポートしています。
+
+* directprint.io Cloud Print Administration では、**Just In Time** ユーザー プロビジョニングがサポートされています。
 
 ## <a name="add-directprintio-cloud-print-administration-from-the-gallery"></a>ギャラリーからの directprint.io Cloud Print Administration の追加
 
@@ -75,9 +77,9 @@ directprint.io Cloud Print Administration に対して Azure AD SSO を構成し
 
 1. **[基本的な SAML 構成]** セクションでは、アプリケーションは IDP 開始モードで事前に構成されており、必要な URL は既に Azure で事前に設定されています。 構成を保存するには、 **[保存]** ボタンをクリックします。
 
-1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
+1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、[コピー] ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーして、お使いのコンピューターに保存します。
 
-    ![証明書のダウンロードのリンク](common/certificatebase64.png)
+    ![証明書のダウンロードのリンク](common/copy-metadataurl.png)
 
 1. **[directprint.io Cloud Print Administration のセットアップ]** セクションで、要件に基づいて適切な URL をコピーします。
 
@@ -109,11 +111,11 @@ directprint.io Cloud Print Administration に対して Azure AD SSO を構成し
 
 ## <a name="configure-directprintio-cloud-print-administration-sso"></a>directprint.io Cloud Print Administration SSO の構成
 
-**directprint.io Cloud Print Administration** 側でシングル サインオンを構成するには、ダウンロードした **証明書 (Base64)** と Azure portal からコピーした適切な URL を [directprint.io Cloud Print Administration サポート チーム](mailto:support@directprint.io)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**directprint.io Cloud Print Administration** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [directprint.io Cloud Print Administration サポート チーム](mailto:support@directprint.io)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-directprintio-cloud-print-administration-test-user"></a>directprint.io Cloud Print Administration テスト ユーザーの作成
 
-このセクションでは、directprint.io Cloud Print Administration で Britta Simon という名前のユーザーを作成します。 [directprint.io Cloud Print Administration サポート チーム](mailto:support@directprint.io)と協力して、directprint.io Cloud Print Administration プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、B. Simon というユーザーを directprint.io Cloud Print Administration に作成します。 directprint.io Cloud Print Administration では、Just-In-Time ユーザー プロビジョニングがサポートされています。これは既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 directprint.io Cloud Print Administration にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
 
 ## <a name="test-sso"></a>SSO のテスト 
 

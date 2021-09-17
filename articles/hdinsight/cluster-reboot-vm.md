@@ -5,12 +5,12 @@ ms.custom: hdinsightactive, devx-track-azurepowershell
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 06/22/2020
-ms.openlocfilehash: b3f356d5a7b0919b6aa44cbe6653625c9e96f3f1
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: f2bb1ebd6e8db80a071dc3f82e1eedded26f6116
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110688608"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122634487"
 ---
 # <a name="reboot-vms-for-hdinsight-clusters"></a>HDInsight クラスターの VM を再起動する
 
@@ -57,7 +57,7 @@ API ドキュメントの **使ってみる** 機能を使用して、HDInsight 
     POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/listHosts?api-version=2018-06-01-preview
     ```
 
-1. ホストを再起動します。 再起動するノードの名前を取得したら、ノードを再起動する REST API を使用して、ノードを再起動します。 ノード名は、*NodeType(wn/hn/zk/gw)*  + *x* + *クラスター名の最初の 6 文字* のパターンに従います。 詳細については、[HDInsight restart hosts REST API の操作](/rest/api/hdinsight/virtualmachines/restarthosts)に関するページを参照してください。
+1. ホストを再起動します。 再起動するノードの名前を取得したら、ノードを再起動する REST API を使用して、ノードを再起動します。 ノード名は、*NodeType(wn/hn/zk)*  + *x* + <*クラスター名の最初の 6 文字*> のパターンに従います。 詳細については、[HDInsight restart hosts REST API の操作](/rest/api/hdinsight/virtualmachines/restarthosts)に関するページを参照してください。
 
     ```
     POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/restartHosts?api-version=2018-06-01-preview

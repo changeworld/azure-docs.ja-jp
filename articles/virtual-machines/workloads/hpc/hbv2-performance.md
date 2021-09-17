@@ -10,14 +10,16 @@ ms.topic: article
 ms.date: 09/28/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 6edaed1011b867cac9920a19be6bb5fb7157e16f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a15aaece5916ac9e9ff6129754b4f932878ac707
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104721224"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122698637"
 ---
 # <a name="hbv2-series-virtual-machine-sizes"></a>HBv2 シリーズの仮想マシンのサイズ
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 [HBv2 シリーズ](../../hbv2-series.md)のサイズの VM については、いくつかのパフォーマンス テストが実行されています。 このパフォーマンス テストの結果の一部を次に示します。
 
@@ -65,7 +67,7 @@ numactl --physcpubind=[INSERT CORE #]  ib_send_lat -a
 ```
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [Azure Compute Tech Community のブログ](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)で、最新の発表、HPC ワークロードの例、およびパフォーマンスの結果について参照します。
 - アーキテクチャの面から見た HPC ワークロードの実行の概要については、「[Azure でのハイ パフォーマンス コンピューティング (HPC)](/azure/architecture/topics/high-performance-computing/)」を参照してください。

@@ -10,14 +10,16 @@ ms.subservice: scale-in-policy
 ms.date: 02/26/2020
 ms.reviewer: avverma
 ms.custom: avverma, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: af2293e9a9c5d3dcbed5dc737ad7785be9221913
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: af1aa7ceb0784b58f9878befeae7c6ee26742061
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110673841"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122696637"
 ---
 # <a name="use-custom-scale-in-policies-with-azure-virtual-machine-scale-sets"></a>Azure 仮想マシン スケール セットでカスタム スケールイン ポリシーを使用する
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: ユニフォーム スケール セット
 
 仮想マシン スケール セットのデプロイは、プラットフォームのメトリックやユーザー定義のカスタム メトリックなど、メトリックの配列に基づいて、スケールアウトまたはスケールインできます。 スケールアウトではスケール セット モデルに基づいて新しい仮想マシンが作成されるのに対し、スケールインでは、スケール セットのワークロードの変化に応じて、構成や機能が異なる可能性のある実行中の仮想マシンが調整されます。 
 

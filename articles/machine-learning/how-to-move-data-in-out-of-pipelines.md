@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 02/26/2021
 ms.topic: how-to
 ms.custom: contperf-fy20q4, devx-track-python, data4ml
-ms.openlocfilehash: ddac4588009d495ac64c607e97780eca5aceb54b
-ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
+ms.openlocfilehash: 5b6a4186fed994057ab6c44930c5ec68ba85ad05
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112515458"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122607131"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>ML パイプラインのステップ間でのデータの移動 (Python)
 
@@ -172,7 +172,7 @@ dataprep_step = PythonScriptStep(
 ```
 
 > [!NOTE]
-> `OutputFileDatasetConfig` への同時書き込みは失敗します。 1 つの `OutputFileDatasetConfig` を同時に使用しないようにしてください。 分散トレーニングを使用する場合など、マルチプロセッシングの状況では、1 つの `OutputFileDatasetConfig` を共有しないでください。 
+> `OutputFileDatasetConfig` への同時書き込みは失敗します。 1 つの `OutputFileDatasetConfig` を同時に使用しないようにしてください。 [分散トレーニング](how-to-train-distributed-gpu.md)を使用する場合など、マルチプロセッシングの状況では、1 つの `OutputFileDatasetConfig` を共有しないでください。 
 
 ### <a name="use-outputfiledatasetconfig-as-outputs-of-a-training-step"></a>トレーニング ステップの出力として `OutputFileDatasetConfig` を使用する
 

@@ -3,12 +3,12 @@ title: Azure Service Fabric での定期的なバックアップと復元
 description: アプリケーションデータの定期バックアップを可能にする Service Fabric の定期バックアップと復元機能を使用します。
 ms.topic: conceptual
 ms.date: 5/24/2019
-ms.openlocfilehash: dbbeac5e5efad4e19561ba5f812e29d029de8317
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 6a9eef80b78f95a4941b3795f86b44511ee8a50b
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110059772"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444960"
 ---
 # <a name="periodic-backup-and-restore-in-an-azure-service-fabric-cluster"></a>Azure Service Fabric クラスターでの定期的なバックアップと復元
 > [!div class="op_single_selector"]
@@ -119,7 +119,12 @@ Service Fabric には、定期的なバックアップと復元機能に関連�
     }
     ```
 
-4. 上記の変更でクラスター テンプレートを更新したら、その変更を適用して、デプロイ/アップグレードを完了します。 完了すると、"_バックアップと復元サービス_" がクラスターで実行されます。 このサービスの URI は `fabric:/System/BackupRestoreService` です。サービスは、Service Fabric エクスプローラーでシステム サービス セクションの下に置くことができます。
+    > [!NOTE]
+    > \[Thumbprint\] は、暗号化に使用する有効な証明書の拇印に置き換える必要があります。
+    >
+    
+4. 上記の変更でクラスター テンプレートを更新したら、その変更を適用して、デプロイ/アップグレードを完了します。 完了すると、"_バックアップと復元サービス_" がクラスターで実行されます。 このサービスの URI は `fabric:/System/BackupRestoreService` です。サービスは、Service Fabric エクスプローラーでシステム サービス セクションの下に置くことができます。 
+
 
 ## <a name="enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors"></a>Reliable Stateful サービスと Reliable Actors の定期バックアップの有効化
 Reliable Stateful サービスと Reliable Actors の定期バックアップを有効にする手順について説明します。 これらの手順は、以下を前提としています。

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/24/2020
+ms.date: 07/29/2021
 ms.author: jeedes
-ms.openlocfilehash: 3cca568245dfce01fb96d7a46590cb72349213ac
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 36ae87796210390e8e23596f6ee96758df85eacc
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97591924"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121727462"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-web-cargo-air"></a>チュートリアル:Web Cargo Air との Azure Active Directory シングル サインオン (SSO) 統合
 
@@ -37,10 +37,9 @@ ms.locfileid: "97591924"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Web Cargo Air では、**SP** Initiated SSO がサポートされます
+* Web Cargo Air では、**SP** によって開始される SSO がサポートされます。
 
-
-## <a name="adding-web-cargo-air-from-the-gallery"></a>ギャラリーから Web Cargo Air を追加する
+## <a name="add-web-cargo-air-from-the-gallery"></a>ギャラリーからの Web Cargo Air の追加
 
 Azure AD への Web Cargo Air の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に Web Cargo Air を追加する必要があります。
 
@@ -50,7 +49,6 @@ Azure AD への Web Cargo Air の統合を構成するには、ギャラリー�
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Web Cargo Air**」と入力します。
 1. 結果パネルから **[Web Cargo Air]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-web-cargo-air"></a>Web Cargo Air の Azure AD SSO の構成とテスト
 
@@ -71,20 +69,20 @@ Web Cargo Air に対して Azure AD SSO を構成してテストするには、�
 
 1. Azure portal の **Web Cargo Air** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
+1. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<SUBDOMAIN>.webcargonet.com`
+    a. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<SUBDOMAIN>.webcargonet.com`
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<SUBDOMAIN>.webcargonet.com`
+    b. **[応答 URL]** ボックスに、`https://<SUBDOMAIN>.webcargonet.com/saml-sso` のパターンを使用して URL を入力します
 
-    c. **[応答 URL]** ボックスに、`https://<SUBDOMAIN>.webcargonet.com/saml-sso` のパターンを使用して URL を入力します
+    c. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<SUBDOMAIN>.webcargonet.com`
 
     > [!NOTE]
-    > これらは実際の値ではありません。 これらの値を実際のサインオン URL、識別子、および応答 URL で更新してください。 これらの値を取得するには、[Web Cargo Air クライアント サポート チーム](mailto:support@webcargonet.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[Web Cargo Air クライアント サポート チーム](mailto:support@webcargonet.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -130,12 +128,12 @@ Web Cargo Air に対して Azure AD SSO を構成してテストするには、�
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-1. Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Web Cargo Air のサインオン URL にリダイレクトされます。 
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Web Cargo Air のサインオン URL にリダイレクトされます。 
 
-2. Web Cargo Air のサインオン URL に直接移動し、そこからログイン フローを開始します。
+* Web Cargo Air のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-3. Microsoft アクセス パネルを使用することができます。 アクセス パネルで [Web Cargo Air] タイルをクリックすると、Web Cargo Air サインオン URL にリダイレクトされます。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Web Cargo Air] タイルをクリックすると、Web Cargo Air サインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Web Cargo Air を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Web Cargo Air を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

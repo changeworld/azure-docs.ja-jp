@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/05/2021
 ms.author: jeedes
-ms.openlocfilehash: f7df0bcedc5601001ba92326d95db2fa12a76d60
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9933a11f9d358380dafbf4f1573ab53d4ff189dc
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101649362"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122179635"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infor-cloudsuite"></a>チュートリアル:Azure Active Directory と Infor CloudSuite の統合
 
@@ -38,6 +38,7 @@ Infor CloudSuite と Azure AD の統合を構成するには、次のものが�
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
 * Infor CloudSuite では、**SP と IDP** によって開始される SSO がサポートされます
+* Infor CloudSuite では、[**自動化された** ユーザー プロビジョニングとプロビジョニング解除](infor-cloudsuite-provisioning-tutorial.md) (推奨) がサポートされます。
 * Infor CloudSuite では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="add-infor-cloudsuite-from-the-gallery"></a>ギャラリーから Infor CloudSuite を追加する

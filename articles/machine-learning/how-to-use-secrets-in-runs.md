@@ -8,14 +8,14 @@ ms.author: roastala
 ms.reviewer: larryfr
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 03/09/2020
+ms.date: 08/24/2021
 ms.topic: how-to
-ms.openlocfilehash: b934a5b5d7781465d01b0e16927bf213f9fa23df
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.openlocfilehash: 397f22711eadc38c82625a8b6a899f6485d798cf
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107897038"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122778235"
 ---
 # <a name="use-authentication-credential-secrets-in-azure-machine-learning-training-runs"></a>Azure Machine Learning トレーニングの実行で認証資格情報シークレットを使用する
 
@@ -49,6 +49,11 @@ keyvault.set_secret(name="mysecret", value = my_secret)
 シークレット値をクリアテキストとしてファイルに格納するのは安全ではないため、その値を Python コードには含めないでください。 代わりに、Azure DevOps のビルド シークレットなどの環境変数から、または対話型ユーザー入力からシークレット値を取得してください。
 
 [`list_secrets()`](/python/api/azureml-core/azureml.core.keyvault.keyvault#list-secrets--) メソッドを利用してシークレット名を一覧表示できます。バッチ バージョンの [set_secrets()](/python/api/azureml-core/azureml.core.keyvault.keyvault#set-secrets-secrets-batch-) もありますが、これを利用すると、複数シークレットを一度に設定できます。
+
+> [!IMPORTANT]
+> `list_secrets()` を使用すると、Azure ML SDK を使用して `set_secret()` または `set_secrets()` を介して作成されたシークレットのみが表示されます。 SDK 以外によって作成されたシークレットは一覧に表示されません。 たとえば、Azure portal または Azure PowerShell を使用して作成されたシークレットは一覧に表示されません。
+> 
+> [`get_secret()`](#get-secrets) を使用すると、作成方法に関係なく、キー コンテナーからシークレット値を取得できます。 そのため、`list_secrets()` によって一覧表示されないシークレットを取得できます。
 
 ## <a name="get-secrets"></a>シークレットの取得
 

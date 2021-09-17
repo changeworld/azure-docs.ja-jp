@@ -9,14 +9,16 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 04/06/2021
 ms.author: guybo
-ms.openlocfilehash: e602909467ca155beb010c5bdd61e6f6408dd12a
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: b9262d512ed27419bab38b3ad26e1bae8cddee0d
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106553789"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122696191"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Azure で動作保証済みの Linux ディストリビューション
+
+**適用対象:** :heavy_check_mark: Linuｘ VM :heavy_check_mark: フレキシブルなスケール セット :heavy_check_mark: 均一のスケール セット 
 
 パートナーが Azure Marketplace で Linux イメージを提供しています。 Microsoft では、さまざまな Linux コミュニティと連携して動作保証済みディストリビューション リストを拡充しています。 Marketplace から入手できないディストリビューションについては、「[Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード](./create-upload-generic.md)」のガイドラインに従って、お使いの Linux をいつでも持ち込んで使用できます。
 

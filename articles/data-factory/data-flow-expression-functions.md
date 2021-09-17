@@ -1,18 +1,20 @@
 ---
 title: マッピング データ フローでの式関数
+titleSuffix: Azure Data Factory & Azure Synapse
 description: マッピング データ フローでの式関数について説明します。
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
+ms.subservice: data-flows
+ms.custom: synapse
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 04/01/2021
-ms.openlocfilehash: deabcc9170e8b025e91dace47ce9e6a70bd385bb
-ms.sourcegitcommit: ce9178647b9668bd7e7a6b8d3aeffa827f854151
+ms.date: 08/24/2021
+ms.openlocfilehash: c0f0f36694e4eadccc4f7b2e9298e2a5ef27d31f
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109809258"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122825183"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>マッピング データ フローでのデータ変換式
 
@@ -20,7 +22,7 @@ ms.locfileid: "109809258"
 
 ## <a name="expression-functions"></a>式関数
 
-Data Factory では、マッピング データ フロー機能の式言語を使用して、データ変換が構成されます。
+Data Factory および Synapse パイプラインでは、マッピング データ フロー機能の式言語を使用して、データ変換が構成されます。
 ___
 ### <code>abs</code>
 <code><b>abs(<i>&lt;value1&gt;</i> : number) => number</b></code><br/><br/>
@@ -238,8 +240,16 @@ ___
 <code><b>divide(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => any</b></code><br/><br/>
 数値のペアを除算します。 `/` 演算子と同じです。  
 * ``divide(20, 10) -> 2``  
-* ``20 / 10 -> 2``  
+* ``20 / 10 -> 2``
 ___
+### <code>dropLeft</code>
+<code><b>dropLeft(<i>&lt;value1&gt;</i> : string, <i>&lt;value2&gt;</i> : integer) => string</b></code><br/><br/>
+文字列の左側から任意の文字数の文字を削除します。 要求されたドロップが文字列の長さを超える場合は、空の文字列が返されます。
+*   dropLeft('bojjus', 2) => 'jjus' *   dropLeft('cake', 10) => '' ___
+### <code>dropRight</code>
+<code><b>dropRight(<i>&lt;value1&gt;</i> : string, <i>&lt;value2&gt;</i> : integer) => string</b></code><br/><br/>
+文字列の右側から任意の文字数の文字を削除します。 要求されたドロップが文字列の長さを超える場合は、空の文字列が返されます。
+*   dropRight('bojjus', 2) => 'bojj' *   dropRight('cake', 10) => '' ___
 ### <code>endsWith</code>
 <code><b>endsWith(<i>&lt;string&gt;</i> : string, <i>&lt;substring to check&gt;</i> : string) => boolean</b></code><br/><br/>
 文字列が指定した文字列で終了しているかをチェックします。  
@@ -286,7 +296,7 @@ ___
 ___
 ### <code>fromBase64</code>
 <code><b>fromBase64(<i>&lt;value1&gt;</i> : string) => string</b></code><br/><br/>
-指定された文字列を base64 でエンコードします。  
+指定した base64 エンコード文字列をデコードします。
 * ``fromBase64('Z3VuY2h1cw==') -> 'gunchus'``  
 ___
 ### <code>fromUTC</code>
@@ -405,6 +415,11 @@ ___
 行が挿入用にマークされているかどうかをチェックします。 1 つ以上の入力ストリームを取る変換は、ストリームの (1 から始まる) インデックスを渡すことができます。 ストリーム インデックスは 1 または 2 のいずれかである必要があり、既定値は 1 です。  
 * ``isUpsert()``  
 * ``isUpsert(1)``  
+___
+### <code>jaroWinkler</code>
+<code><b>jaroWinkler(<i>&lt;value1&gt;</i> : string, <i>&lt;value2&gt;</i> : string) => double</b></code><br/><br/>
+2 つの文字列の間の JaroWinkler 距離を取得します。 
+* ``jaroWinkler('frog', 'frog') => 1.0``  
 ___
 ### <code>lastDayOfMonth</code>
 <code><b>lastDayOfMonth(<i>&lt;value1&gt;</i> : datetime) => date</b></code><br/><br/>
@@ -607,6 +622,10 @@ ___
 <code><b>power(<i>&lt;value1&gt;</i> : number, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/>
 数値を別の数値でべき乗します。  
 * ``power(10, 2) -> 100``  
+___
+### <code>radians</code>
+<code><b>radians(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
+角度をラジアン * ``radians(180) => 3.141592653589793`` に変換します。  
 ___
 ### <code>random</code>
 <code><b>random(<i>&lt;value1&gt;</i> : integral) => long</b></code><br/><br/>
@@ -830,6 +849,12 @@ ___
 
 ## <a name="aggregate-functions"></a>集計関数
 次の関数は、集計、ピボット、ピボット解除、ウィンドウ変換でのみ使用できます。
+
+___
+### <code>approxDistinctCount</code>
+<code><b>approxDistinctCount(<i>&lt;value1&gt;</i> : any, [ <i>&lt;value2&gt;</i> : double ]) => long</b></code><br/><br/>
+列の個別の値のおおよその集計数を取得します。 省略可能な 2 番目のパラメーターは、推定誤差を制御するためのものです。
+* ``approxDistinctCount(ProductID, .05) => long``  
 ___
 ### <code>avg</code>
 <code><b>avg(<i>&lt;value1&gt;</i> : number) => number</b></code><br/><br/>
@@ -1052,11 +1077,27 @@ ___
 * ``['Seattle', 'Washington'][1]``
 * ``'Washington'``
 ___
+### <code>at</code>
+<code><b>at(<i>&lt;value1&gt;</i> : array/map, <i>&lt;value2&gt;</i> : integer/key type) => array</b></code><br/><br/>
+配列インデックスにある要素を検索します。 インデックスは 1 から始まっています。 境界外インデックスは、null 値の結果になります。 キーを指定してマップ内の値を検索します。 キーが見つからない場合は、null が返されます。
+*   ``at(['apples', 'pears'], 1) => 'apples'``
+*   ``at(['fruit' -> 'apples', 'vegetable' -> 'carrot'], 'fruit') => 'apples'``
+___
 ### <code>contains</code>
 <code><b>contains(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : unaryfunction) => boolean</b></code><br/><br/>
 指定された配列内のいずれかの要素が、指定された述語で true と評価される場合に true を返します。 contains は、述語関数の 1 つの要素への参照を #item として予期します。  
 * ``contains([1, 2, 3, 4], #item == 3) -> true``  
 * ``contains([1, 2, 3, 4], #item > 5) -> false``  
+___
+### <code>distinct</code>
+<code><b>distinct(<i>&lt;value1&gt;</i> : array) => array</b></code><br/><br/>
+配列から個別の項目セットを返します。
+* ``distinct([10, 20, 30, 10]) => [10, 20, 30]``
+___
+### <code>except</code>
+<code><b>except(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : array) => array</b></code><br/><br/>
+重複をドロップした 1 つの配列の差分セットを返します。
+* ``except([10, 20, 30], [20, 40]) => [10, 30]``  
 ___
 ### <code>filter</code>
 <code><b>filter(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : unaryfunction) => array</b></code><br/><br/>
@@ -1097,10 +1138,19 @@ ___
       )
     ``  
 ___
+### <code>flatten</code>
+<code><b>flatten(<i>&lt;array&gt;</i> : array, <i>&lt;value2&gt;</i> : array ..., <i>&lt;value2&gt;</i> : boolean) => array</b></code><br/><br/> 1 つの配列または複数の配列を単一の配列にフラット化します。 アトミック項目の配列は、変更されずに返されます。 最後の引数は省略可能であり、既定値は 1 レベルを超える深さで再帰的にフラット化されます。one level deep.
+*   ``flatten([['bojjus', 'girl'], ['gunchus', 'boy']]) => ['bojjus', 'girl', 'gunchus', 'boy']``
+*   ``flatten([[['bojjus', 'gunchus']]] , true) => ['bojjus', 'gunchus']``
+___
 ### <code>in</code>
 <code><b>in(<i>&lt;array of items&gt;</i> : array, <i>&lt;item to find&gt;</i> : any) => boolean</b></code><br/><br/> 項目が配列内にあるかどうかをチェックします。is in the array.  
 * ``in([10, 20, 30], 10) -> true``  
 * ``in(['good', 'kid'], 'bad') -> false``  
+___
+### <code>intersect</code>
+<code><b>intersect(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : array) => array</b></code><br/><br/> 個別の項目の交差セットを返します。s from 2 arrays.
+* ``intersect([10, 20, 30], [20, 40]) => [20]``  
 ___
 ### <code>map</code>
 <code><b>map(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : unaryfunction) => any</b></code><br/><br/> 指定された式を使用して、配列の各要素を新しい要素にマップします。 map は、式関数の 1 つの要素への参照を #item として予期します。nction as #item.  
@@ -1141,7 +1191,17 @@ ___
 ### <code>sort</code>
 <code><b>sort(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : binaryfunction) => array</b></code><br/><br/> 指定された述語関数を使用して配列を並べ替えます。 sort は、式関数の 2 つの連続する要素への参照を #item1 および #item2 として予期します。tem1 and #item2.  
 * ``sort([4, 8, 2, 3], compare(#item1, #item2)) -> [2, 3, 4, 8]``  
-* ``sort(['a3', 'b2', 'c1'], iif(right(#item1, 1) >= right(#item2, 1), 1, -1)) -> ['c1', 'b2', 'a3']``* ``
+* ``sort(['a3', 'b2', 'c1'], iif(right(#item1, 1) >= right(#item2, 1), 1, -1)) -> ['c1', 'b2', 'a3']``  
+___
+### <code>unfold</code>
+<code><b>unfold (<i>&lt;value1&gt;</i>: array) => any</b></code><br/><br/> 配列を一連の行に展開し、残りの列の値を繰り返しますns in every row.
+*   ``unfold(addresses) => any``
+*   ``unfold( @(name = salesPerson, sales = salesAmount) ) => any``
+___  
+### <code>union</code>
+<code><b>union(<i>&lt;value1&gt;</i>: array, <i>&lt;value2&gt;</i> : array) => array</b></code><br/><br/> 個別の項目の和集合を返しますs from 2 arrays.
+* ``union([10, 20, 30], [20, 40]) => [10, 20, 30, 40]``
+___* ``
  @(
        name = 'Mark',
        types = [
@@ -1151,11 +1211,22 @@ ___
   )
 ``  
 ___
+### <code>flatten</code>
+<code><b>flatten(<i>&lt;array&gt;</i> : array, <i>&lt;value2&gt;</i> : array ..., <i>&lt;value2&gt;</i> : boolean) => array</b></code><br/><br/>
+Flattens array or arrays into a single array. Arrays of atomic items are returned unaltered. The last argument is optional and is defaulted to false to flatten recursively more than one level deep.
+*   ``flatten([['bojjus', 'girl'], ['gunchus', 'boy']]) => ['bojjus', 'girl', 'gunchus', 'boy']``
+*   ``flatten([[['bojjus', 'gunchus']]] , true) => ['bojjus', 'gunchus']``
+___
 ### <code>in</code>
 <code><b>in(<i>&lt;array of items&gt;</i> : array, <i>&lt;item to find&gt;</i> : any) => boolean</b></code><br/><br/>
 Checks if an item is in the array.  
 * ``in([10, 20, 30], 10) -> true``  
 * ``in(['good', 'kid'], 'bad') -> false``  
+___
+### <code>intersect</code>
+<code><b>intersect(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : array) => array</b></code><br/><br/>
+Returns an intersection set of distinct items from 2 arrays.
+* ``intersect([10, 20, 30], [20, 40]) => [20]``  
 ___
 ### <code>map</code>
 <code><b>map(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : unaryfunction) => any</b></code><br/><br/>
@@ -1205,7 +1276,19 @@ ___
 Sorts the array using the provided predicate function. Sort expects a reference to two consecutive elements in the expression function as #item1 and #item2.  
 * ``sort([4, 8, 2, 3], compare(#item1, #item2)) -> [2, 3, 4, 8]``  
 * ``sort(['a3', 'b2', 'c1'], iif(right(#item1, 1) >= right(#item2, 1), 1, -1)) -> ['c1', 'b2', 'a3']``  
-
+___
+### <code>unfold</code>
+<code><b>unfold (<i>&lt;value1&gt;</i>: array) => any</b></code><br/><br/>
+Unfolds an array into a set of rows and repeats the values for the remaining columns in every row.
+*   ``unfold(addresses) => any``
+*   ``unfold( @(name = salesPerson, sales = salesAmount) ) => any``
+___  
+### <code>union</code>
+<code><b>union(<i>&lt;value1&gt;</i>: array, <i>&lt;value2&gt;</i> : array) => array</b></code><br/><br/>
+Returns a union set of distinct items from 2 arrays.
+* ``union([10, 20, 30], [20, 40]) => [10, 20, 30, 40]``
+___  
+  
 ## <a name="cached-lookup-functions"></a>キャッシュされた Lookup 関数
 次の関数は、キャッシュされたシンクを含めているときに、キャッシュされた検索を使用する場合にのみ使用できます。
 ___
@@ -1227,7 +1310,6 @@ ___
 <code><b>output() => any</b></code><br/><br/>
 キャッシュ シンクの結果の出力行セット全体を返します。* ``cacheSink#outputs()``
 ___
-
 
 ## <a name="conversion-functions"></a>変換関数
 
@@ -1255,41 +1337,46 @@ ___
 * ``isByte('chocolate') -> false``
 ___
 ### <code>isDate</code>
-<code><b>isDate (<i>\<value1\></i> : string, [<format>: string]) => boolean</b></code><br/><br/>
+<code><b>isDate (<i>\<value1\></i> : string, [&lt;format&gt;: string]) => boolean</b></code><br/><br/>
 入力日付文字列が、省略可能な入力日付形式を使用した日付であるかどうかを確認します。 使用可能な形式については、Java の SimpleDateFormat を参照してください。 入力日付形式が省略されている場合、既定の形式は ``yyyy-[M]M-[d]d`` になります。 許容される形式は ``[ yyyy, yyyy-[M]M, yyyy-[M]M-[d]d, yyyy-[M]M-[d]dT* ]`` です 
 * ``isDate('2012-8-18') -> true``
 * ``isDate('12/18--234234' -> 'MM/dd/yyyy') -> false``
 ___
 ### <code>isShort</code>
-<code><b>isShort (<i>\<value1\></i> : string, [<format>: string]) => boolean</b></code><br/><br/>
+<code><b>isShort (<i>\<value1\></i> : string, [&lt;format&gt;: string]) => boolean</b></code><br/><br/>
 文字列値が ``toShort()`` の規則に従った省略可能な形式が指定された 短整数型値であることを確認します 
 * ``isShort('123') -> true``
 * ``isShort('$123' -> '$###') -> true``
 * ``isShort('microsoft') -> false``
 ___
 ### <code>isInteger</code>
-<code><b>isInteger (<i>\<value1\></i> : string, [<format>: string]) => boolean</b></code><br/><br/>
+<code><b>isInteger (<i>\<value1\></i> : string, [&lt;format&gt;: string]) => boolean</b></code><br/><br/>
 文字列値が ``toInteger()`` の規則に従った省略可能な形式が指定された整数値であることを確認します 
 * ``isInteger('123') -> true``
 * ``isInteger('$123' -> '$###') -> true``
 * ``isInteger('microsoft') -> false``
 ___
 ### <code>isLong</code>
-<code><b>isLong (<i>\<value1\></i> : string, [<format>: string]) => boolean</b></code><br/><br/>
+<code><b>isLong (<i>\<value1\></i> : string, [&lt;format&gt;: string]) => boolean</b></code><br/><br/>
 文字列値が ``toLong()`` の規則に従った省略可能な形式が指定された 長整数型値であることを確認します 
 * ``isLong('123') -> true``
 * ``isLong('$123' -> '$###') -> true``
 * ``isLong('gunchus') -> false``
 ___
+### <code>isNan</code>
+<code><b>isNan (<i>\<value1\></i> : integral) => boolean</b></code><br/><br/>
+これが数値でないことを確認します。
+* ``isNan(10.2) => false``
+___
 ### <code>isFloat</code>
-<code><b>isFloat (<i>\<value1\></i> : string, [<format>: string]) => boolean</b></code><br/><br/>
+<code><b>isFloat (<i>\<value1\></i> : string, [&lt;format&gt;: string]) => boolean</b></code><br/><br/>
 文字列値が ``toFloat()`` の規則に従った省略可能な形式が指定された浮動小数点値であることを確認します 
 * ``isFloat('123') -> true``
 * ``isFloat('$123.45' -> '$###.00') -> true``
 * ``isFloat('icecream') -> false``
 ___
 ### <code>isDouble</code>
-<code><b>isDouble (<i>\<value1\></i> : string, [<format>: string]) => boolean</b></code><br/><br/>
+<code><b>isDouble (<i>\<value1\></i> : string, [&lt;format&gt;: string]) => boolean</b></code><br/><br/>
 文字列値が ``toDouble()`` の規則に従った省略可能な形式が指定された倍精度値であることを確認します 
 * ``isDouble('123') -> true``
 * ``isDouble('$123.45' -> '$###.00') -> true``
@@ -1302,7 +1389,7 @@ ___
 * ``isDecimal('12/12/2000') -> false``
 ___
 ### <code>isTimestamp</code>
-<code><b>isTimestamp (<i>\<value1\></i> : string, [<format>: string]) => boolean</b></code><br/><br/>
+<code><b>isTimestamp (<i>\<value1\></i> : string, [&lt;format&gt;: string]) => boolean</b></code><br/><br/>
 入力日付文字列が、省略可能な入力タイムスタンプ形式を使用したタイムスタンプであるかどうかを確認します。 使用可能な形式については、Java の SimpleDateFormat を参照してください。 タイムスタンプを省略すると、既定のパターンの ``yyyy-[M]M-[d]d hh:mm:ss[.f...]`` が使用されます。 省略可能なタイムゾーンを 'GMT'、'PST'、'UTC'、'America/Cayman' の形式で渡せます。 タイムスタンプはミリ秒の精度で 999 の値までサポートされます。使用可能な形式については、Java の SimpleDateFormat を参照してください。
 * ``isTimestamp('2016-12-31 00:12:00') -> true``
 * ``isTimestamp('2016-12-31T00:12:00' -> 'yyyy-MM-dd\\'T\\'HH:mm:ss' -> 'PST') -> true``
@@ -1411,6 +1498,31 @@ ___
 * ``toUTC(currentTimestamp()) == toTimestamp('2050-12-12 19:18:12') -> false``  
 * ``toUTC(currentTimestamp(), 'Asia/Seoul') != toTimestamp('2050-12-12 19:18:12') -> true``  
 
+## <a name="map-functions"></a>マップ関数
+  
+マップ関数は、マップ データ型に対して操作を実行します
+
+### <code>associate</code>
+<code><b>reassociate(<i>&lt;value1&gt;</i> : map, <i>&lt;value2&gt;</i> : binaryFunction) => map</b></code><br/><br/>
+キーと値のマップを作成します。 すべてのキーと値の組み合わせは同じ型である必要があります。 項目が指定されていない場合、既定では文字列型へのマップが使用されます。```[ -> ]``` 作成演算子と同じです。 キーと値は互いに交互である必要があります。
+*   ``associate('fruit', 'apple', 'vegetable', 'carrot' )=> ['fruit' -> 'apple', 'vegetable' -> 'carrot']``
+___
+### <code>keyValues</code>
+<code><b>keyValues(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : array) => map</b></code><br/><br/>
+キーと値のマップを作成します。 最初のパラメーターはキーの配列、2 番目のパラメーターは値の配列です。 両方の配列の長さは等しい必要があります。
+*   ``keyValues(['bojjus', 'appa'], ['gunchus', 'ammi']) => ['bojjus' -> 'gunchus', 'appa' -> 'ammi']``
+___ 
+### <code>mapAssociation</code>
+<code><b>mapAssociation(<i>&lt;value1&gt;</i> : map, <i>&lt;value2&gt;</i> : binaryFunction) => array</b></code><br/><br/>
+キーを新しい値に関連付け、マップを変換します。 配列を返します。 項目を #key として、現在の値を #value としてアドレス指定できるマッピング関数を取得します。 
+*   ``mapAssociation(['bojjus' -> 'gunchus', 'appa' -> 'ammi'], @(key = #key, value = #value)) => [@(key = 'bojjus', value = 'gunchus'), @(key = 'appa', value = 'ammi')]``
+___ 
+### <code>reassociate</code>
+<code><b>reassociate(<i>&lt;value1&gt;</i> : map, <i>&lt;value2&gt;</i> : binaryFunction) => map</b></code><br/><br/>
+キーを新しい値に関連付け、マップを変換します。 項目を #key として、現在の値を #value としてアドレス指定できるマッピング関数を取得します。  
+* ``reassociate(['fruit' -> 'apple', 'vegetable' -> 'tomato'], substring(#key, 1, 1) + substring(#value, 1, 1)) => ['fruit' -> 'fa', 'vegetable' -> 'vt']``
+___
+  
 ## <a name="metafunctions"></a>メタ関数
 
 メタ関数は、主にデータ フロー内のメタデータに対して機能します。
@@ -1473,7 +1585,12 @@ ___
 <code><b>hasPath(<i>&lt;value1&gt;</i> : string, [<i>&lt;streamName&gt;</i> : string]) => boolean</b></code><br/><br/>
 ストリームでの名前で特定の階層パスが存在するかどうかを確認します。 省略可能なストリーム名を 2 番目の引数として渡すことができます。 設計時に判明している列名やパスは、その名前またはドット表記パスだけで扱う必要があります。 計算入力はサポートされていませんが、パラメーター置換を使用することができます。  
 * ``hasPath('grandpa.parent.child') => boolean``
-___
+___  
+### <code>originColumns</code>
+<code><b>originColumns(<i>&lt;streamName&gt;</i> : string) => any</b></code><br/><br/>
+列が作成された配信元ストリームのすべての出力列を取得します。 別の関数内で囲む必要があります。
+* ``array(toString(originColumns('source1')))``
+___  
 ### <code>hex</code>
 <code><b>hex(<i>\<value1\></i>: binary) => string</b></code><br/><br/>
 バイナリ値の 16 進数文字列表記を返します * ``hex(toBinary([toByte(0x1f), toByte(0xad), toByte(0xbe)])) -> '1fadbe'``

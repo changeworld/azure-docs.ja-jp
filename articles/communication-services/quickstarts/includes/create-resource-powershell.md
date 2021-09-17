@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: a04d7dde8b6f2a492538d2012de5222686fd7fcf
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 6f7a0d8169fed92564437166c74255743ea61a7f
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113762379"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122820885"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -13,7 +13,15 @@ ms.locfileid: "113762379"
 
 ## <a name="create-azure-communication-services-resource"></a>Azure Communication Services のリソースを作成する
 
-Azure Communication Services のリソースを作成するには、[Azure CLI にサインイン](/cli/azure/authenticate-azure-cli)します。 そのためにはターミナルから ```Connect-AzAccount``` コマンドを使用し、資格情報を入力します。 リソースを作成するには、次のコマンドを実行します。
+Azure Communication Services のリソースを作成するには、[Azure CLI にサインイン](/cli/azure/authenticate-azure-cli)します。 そのためにはターミナルから ```Connect-AzAccount``` コマンドを使用し、資格情報を入力します。
+
+まず、次のコマンドを使用して、Azure Communication Services モジュール ```Az.Communication``` をインストールします。
+
+```PowerShell
+PS C:\> Install-Module Az.Communication
+```
+
+リソースを作成するには、次のコマンドを実行します。
 
 ```PowerShell
 PS C:\> New-AzCommunicationService -ResourceGroupName ContosoResourceProvider1 -Name ContosoAcsResource1 -DataLocation UnitedStates -Location Global

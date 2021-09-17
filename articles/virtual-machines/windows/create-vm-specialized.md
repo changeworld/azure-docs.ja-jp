@@ -10,14 +10,16 @@ ms.topic: how-to
 ms.date: 10/10/2019
 ms.author: cynthn
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ccd1383349f4e009cc5ce5728eda25587e95a831
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 2a10d58dc36304afdbd37c3fd1c3c41dd819d022
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110669224"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122693456"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>PowerShell を使用して特殊化されたディスクから Windows VM を作成する
+
+**適用対象:** :heavy_check_mark: Windows VM 
 
 OS ディスクとして特殊化されたマネージド ディスクを接続することにより新しい VM を作成します。 特殊化されたディスクは、元の VM のユーザーアカウント、アプリケーション、その他の状態データが保存される、既存の VM の仮想ハードディスク (VHD) のコピーです。 
 

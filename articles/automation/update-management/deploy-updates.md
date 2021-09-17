@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 06/24/2021
 ms.topic: conceptual
-ms.openlocfilehash: 2e9b10206a28072d37668207993007dc29320f04
-ms.sourcegitcommit: 16580bb4fbd8f68d14db0387a3eee1de85144367
+ms.openlocfilehash: de148858ba5c88e8dbbf2693dadc818b8c66e833
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112679024"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122768330"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>更新プログラムを展開して結果を確認する方法
 
@@ -36,7 +36,7 @@ ms.locfileid: "112679024"
 >[!NOTE]
 >展開の作成後に Azure portal または PowerShell を使用してこのスケジュール リソースを削除した場合、スケジュールされた更新プログラムの展開が破棄され、ポータルからスケジュール リソースを再構成しようとするとエラーが表示されます。 スケジュール リソースは、対応するデプロイ スケジュールを削除することによってのみ削除することができます。  
 
-新しい更新プログラムの展開をスケジュールするには、次の手順を実行します。 選択されたリソース (つまり、Automation アカウント、Arc 対応サーバー、Azure VM) によって軽微な違いはありますが、いずれの場合にも、展開スケジュールの構成時には次の手順が適用されます。
+新しい更新プログラムの展開をスケジュールするには、次の手順を実行します。 選択されたリソース (つまり、Automation アカウント、Arc 対応サーバー、Azure VM) によって若干の違いはありますが、いずれの場合も、展開スケジュールの構成時には次の手順が適用されます。
 
 1. ポータルで、次を対象とする展開をスケジュールします。
 
@@ -135,7 +135,7 @@ ms.locfileid: "112679024"
     ![更新プログラムのスケジュール設定ウィンドウ](./media/deploy-updates/manageupdates-schedule-win.png)
 
     > [!NOTE]
-    > 選択した Arc 対応サーバーの展開スケジュールの構成が完了したら、 **[レビューと作成]** を選択します。
+    > 選択した Arc 対応サーバーの展開スケジュールの構成が完了したら、 **[確認と作成]** を選択します。
 
 15. 状態ダッシュボードに戻ります。 **[展開スケジュール]** を選択して、作成した展開スケジュールを表示します。 最大 500 個のスケジュールが一覧表示されます。 500 個を超えるスケジュールがあり、完全な一覧を確認したい場合は、[ソフトウェア更新プログラムの構成 - 一覧](/rest/api/automation/softwareupdateconfigurations/list) REST API メソッドを参照してください。 API バージョン 2019-06-01 以降を指定します。
 

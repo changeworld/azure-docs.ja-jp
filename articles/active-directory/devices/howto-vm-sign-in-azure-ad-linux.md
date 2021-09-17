@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions, devx-track-azurecli, subject-rbac-steps
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 972929f93737342942ed22f103598bc55dbb57fc
-ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
+ms.openlocfilehash: 1cac67a60f5ebcd0b7075d9caa6c453209ce0121
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114688609"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122606011"
 ---
 # <a name="preview-login-to-a-linux-virtual-machine-in-azure-with-azure-active-directory-using-ssh-certificate-based-authentication"></a>プレビュー: SSH 証明書ベースの認証を使用した Azure Active Directory で Azure の Linux 仮想マシンにログインする
 
@@ -380,7 +380,7 @@ az ssh vm --ip 10.11.123.456
       ```
 ## <a name="using-azure-policy-to-ensure-standards-and-assess-compliance"></a>Azure Policy を使用して、標準および評価コンプライアンスを確保する
 
-Azure Policy を使用して、新規および既存の Linux 仮想マシンに対して Azure AD ログインが確実に有効にされるようにし、Azure Policy コンプライアンス ダッシュボードで大規模に環境のコンプライアンスを評価します。 この機能により、さまざまな適用のレベルを使用できます。Azure AD ログインが有効になっていない環境内の新規および既存の Linux VM にフラグを設定できます。 さらに、Azure Policy を使用して、Azure AD ログインが有効になっていない新しい Linux VM に Azure AD 拡張機能をデプロイするほか、既存の Linux VM を同じ標準に修復することもできます。 これらの機能に加えて、ポリシーを使用して、マシン上に承認されていないローカル アカウントが作成されている Linux VM を検出してフラグを設定することもできます。 詳細については、[Azure Policy](https://www.aka.ms/AzurePolicy) に関するページを確認してください。
+Azure Policy を使用して、新規および既存の Linux 仮想マシンに対して Azure AD ログインが確実に有効にされるようにし、Azure Policy コンプライアンス ダッシュボードで大規模に環境のコンプライアンスを評価します。 この機能により、さまざまな適用のレベルを使用できます。Azure AD ログインが有効になっていない環境内の新規および既存の Linux VM にフラグを設定できます。 さらに、Azure Policy を使用して、Azure AD ログインが有効になっていない新しい Linux VM に Azure AD 拡張機能をデプロイするほか、既存の Linux VM を同じ標準に修復することもできます。 これらの機能に加えて、Azure Policy を使用して、マシン上に承認されていないローカル アカウントが作成されている Linux VM を検出してフラグを設定することもできます。 詳細については、[Azure Policy](../../governance/policy/overview.md) に関するページを確認してください。
 
 ## <a name="troubleshoot-sign-in-issues"></a>サインアップに関する問題のトラブルシューティング
 

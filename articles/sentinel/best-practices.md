@@ -8,12 +8,12 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 07/21/2021
-ms.openlocfilehash: 570dccac5b7ddae323ce37dfbfbf850a54d576d6
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 4a47a13405402b381c1a1b3682f5d42038218959
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122181455"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122689151"
 ---
 # <a name="best-practices-for-azure-sentinel"></a>Azure Sentinel のベスト プラクティス
 
@@ -160,7 +160,9 @@ Azure Sentinel ドキュメントには、記事全体にわたってベスト �
     - [脅威を検出するためのカスタム分析規則を作成する](detect-threats-custom.md)
     - [Jupyter Notebook を使用してセキュリティの脅威を検出する](notebooks.md)
 
-## <a name="next-steps"></a>次のステップ
+詳細については、「[Architecting SecOps for Success: Best Practices for Deploying Azure Sentinel (成功するための SecOps の設計: Azure Sentinel のデプロイに関するベスト プラクティス)](https://youtu.be/DyL9MEMhqmI)」という動画をご覧ください
+
+## <a name="next-steps"></a>次の手順
 
 Azure Sentinel の概要は、以下を参照してください。
 

@@ -4,15 +4,16 @@ description: Data Factory のデータ フロー スクリプトのコードビ�
 author: kromerm
 ms.author: nimoolen
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/15/2021
-ms.openlocfilehash: 7dd58a7d4a94b832e52930f8ac6507cdd8f7a20e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0860d59d7d04354b6236d02126492468dec5921b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100534823"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638818"
 ---
 # <a name="data-flow-script-dfs"></a>データ フロー スクリプト (DFS)
 
@@ -269,6 +270,13 @@ window(over(stocksymbol),
     startRowOffset: -7L,
     endRowOffset: 7L,
     FifteenDayMovingAvg = round(avg(Close),2)) ~> Window1
+```
+
+### <a name="distinct-count-of-all-column-values"></a>すべての列の値の個別のカウント
+このスクリプトを使用すると、1 つのスクリプト スニペットを使用してストリーム内で、キー列を識別し、すべての列のカーディナリティを表示できます。 このスクリプトをデータ フローに集計変換として追加すると、すべての列の個別のカウントが自動的に提供されます。
+
+```
+aggregate(each(match(true()), $$ = countDistinct($$))) ~> KeyPattern
 ```
 
 ## <a name="next-steps"></a>次のステップ

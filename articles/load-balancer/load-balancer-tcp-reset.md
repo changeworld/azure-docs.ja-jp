@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/07/2020
 ms.author: allensu
-ms.openlocfilehash: 9b555d7972e88df85e08dbcb1737231755c21361
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 9d18f5e674a5d30049b93a4273df1ecc8a37595c
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448850"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122634867"
 ---
 # <a name="load-balancer-tcp-reset-and-idle-timeout"></a>Load Balancer の TCP リセットおよびアイドルのタイムアウト
 
@@ -59,6 +59,7 @@ TCP keep-alive は、バッテリーの寿命に制約がないシナリオに�
 
 - TCP リセットが送信されるのは、ESTABLISHED 状態の TCP 接続時のみです。
 - TCP アイドル タイムアウトは、UDP プロトコルの負荷分散規則には影響しません。
+- ネットワーク仮想アプライアンスがパス内にある場合、ILB HA ポートでは TCP のリセットはサポートされません。 これは、NVA からの TCP リセットでアウトバウンド規則を使用することで回避できます。
 
 ## <a name="next-steps"></a>次の手順
 

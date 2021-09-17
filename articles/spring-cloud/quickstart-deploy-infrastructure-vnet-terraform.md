@@ -1,18 +1,18 @@
 ---
 title: クイックスタート - Terraform を使用して Azure Spring Cloud をプロビジョニングする
 description: このクイックスタートでは、Terraform を使用して Spring Cloud クラスターを既存の仮想ネットワークにデプロイする方法について説明します。
-author: aluna033
+author: karlerickson
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.custom: devx-track-java
 ms.author: ariel
 ms.date: 06/15/2021
-ms.openlocfilehash: d099e86f5a28aae145723b728e79ce3ee55f8250
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: f3459ef8fe7f3d1dcc491c0c7dcc8863df0b2cb1
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114287576"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122271512"
 ---
 # <a name="quickstart-provision-azure-spring-cloud-using-terraform"></a>クイックスタート: Terraform を使用して Azure Spring Cloud をプロビジョニングする
 
@@ -38,7 +38,7 @@ Azure Spring Cloud では、コードを変更せずに、Spring Boot マイク�
 
 ```hcl
 provider "azurerm" {
-    features {} 
+    features {}
 }
 
 resource "azurerm_resource_group" "sc_corp_rg" {
@@ -55,24 +55,24 @@ resource "azurerm_application_insights" "sc_app_insights" {
 }
 
 resource "azurerm_spring_cloud_service" "sc" {
-  name                = var.sc_service_name 
+  name                = var.sc_service_name
   resource_group_name = var.resource_group_name
   location            = var.location
-  
+
   network {
     app_subnet_id                   = "/subscriptions/${var.subscription}/resourceGroups/${var.azurespringcloudvnetrg}/providers/Microsoft.Network/virtualNetworks/${var.vnet_spoke_name}/subnets/${var.app_subnet_id}"
     service_runtime_subnet_id       = "/subscriptions/${var.subscription}/resourceGroups/${var.azurespringcloudvnetrg}/providers/Microsoft.Network/virtualNetworks/${var.vnet_spoke_name}/subnets/${var.service_runtime_subnet_id}"
     cidr_ranges                     = var.sc_cidr
   }
-  
+
   timeouts {
       create = "60m"
       delete = "2h"
   }
-  
+
   depends_on = [azurerm_resource_group.sc_corp_rg]
   tags = var.tags
-  
+
 }
 
 resource "azurerm_monitor_diagnostic_setting" "sc_diag" {
@@ -111,27 +111,19 @@ resource "azurerm_monitor_diagnostic_setting" "sc_diag" {
 
    - 「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=spring-cloud&regions=all)」で示されている、Azure Spring Cloud が利用可能なリージョンからのデプロイの場所。 場所名の短い形式が必要です。 この値を取得するには、次のコマンドを使用して Azure の場所の一覧を生成し、選択したリージョンの **[名前]** の値を検索します。
 
-      ```azurecli
-      az account list-locations --output table
-      ```
+   ```azurecli
+   az account list-locations --output table
+   ```
 
    - デプロイ先のリソース グループの名前。
-
    - Spring Cloud のデプロイで選択した名前。
-
    - リソースをデプロイする仮想ネットワーク リソース グループの名前。
-
    - スポーク仮想ネットワークの名前 (*vnet-spoke* など)。
-
    - Spring Cloud App Service で使用するサブネットの名前 (*snet-app* など)。
-
    - Spring Cloud ランタイム サービスで使用するサブネットの名前 (*snet-runtime* など)。
-
    - Azure Log Analytics ワークスペースの名前。
-
    - Azure Spring Cloud で使用する仮想ネットワークからの CIDR 範囲 (*XX.X.X.X/16,XX.X.X.X/16,XX.X.X.X/16* など)。
-
-   - タグをサポートするすべてのリソースにタグとして適用されるキーと値のペア。 詳細については、「[タグを使用して Azure リソースと整理階層を整理する](../azure-resource-manager/management/tag-resources.md)」を参照してください。 
+   - タグをサポートするすべてのリソースにタグとして適用されるキーと値のペア。 詳細については、「[タグを使用して Azure リソースと整理階層を整理する](../azure-resource-manager/management/tag-resources.md)」を参照してください。
 
 1. 次のコマンドを実行して、Terraform モジュールを初期化します。
 

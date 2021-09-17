@@ -9,14 +9,16 @@ ms.workload: infrastructure
 ms.date: 03/15/2021
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: c37017269eb8989102353b079f61c104f5061749
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 87d3518b59bd5297bed4af25b11d7a47b7021a58
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112074928"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692463"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-in-the-azure-portal"></a>クイック スタート:Azure Portal で Windows 仮想マシンを作成する
+
+**適用対象:** :heavy_check_mark: Windows VM 
 
 Azure 仮想マシン (VM) は、Azure Portal で作成できます。 この方法では、ブラウザー ベースのユーザー インターフェイスを使用して、VM とその関連リソースを作成できます。 このクイック スタートでは、Azure Portal を使用して、Windows Server 2019 を実行する仮想マシン (VM) を Azure にデプロイする方法を示します。 次に、VM の動作を確認するために、VM に RDP 接続し、IIS Web サーバーをインストールします。
 
@@ -30,7 +32,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 1. 検索に「**virtual machines**」と入力します。
 1. **[サービス]** で、 **[仮想マシン]** を選択します。
-1. **[仮想マシン]** ページで、 **[追加]** を選択してから **[仮想マシン]** を選択します。 
+1. **[仮想マシン]** ページで、 **[作成]** を選択してから **[仮想マシン]** を選択します。 
 1. **[基本]** タブの **[Project details] (プロジェクトの詳細)** で、正しいサブスクリプションが選択されていることを確認し、リソース グループの **[新規作成]** を選択します。 名前として「*myResourceGroup*」と入力します。 
 
     ![仮想マシンの Azure サブスクリプションとリソース グループを選択する場所が示されている [プロジェクトの詳細] セクションのスクリーンショット](./media/quick-create-portal/project-details.png)

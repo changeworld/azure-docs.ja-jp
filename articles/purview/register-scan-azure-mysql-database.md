@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 06/30/2021
-ms.openlocfilehash: a5edf1b85d97798e5ed159433961c4c0d76cfcca
-ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
+ms.openlocfilehash: ed3a0abc6bdd99e5c86e67a410d7c9ecadf7a718
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114208255"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737643"
 ---
 # <a name="register-and-scan-an-azure-mysql-database"></a>Azure Database for MySQL の登録とスキャン
 
@@ -45,7 +45,7 @@ Purview は、Azure Database for MySQL の SQL 認証のみをサポートして
 1. **[+ Generate/Import]\(+ 生成/インポート\)** を選択し、**名前** と **値** を Azure SQL Database の "*パスワード*" として入力します
 1. **[作成]** を選択して完了します
 1. キー コンテナーが Purview にまだ接続されていない場合は、[新しいキー コンテナーの接続を作成](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account)する必要があります。
-1. 最後に、**ユーザー名** と **パスワード** を使用して、SQL 認証型の[新しい資格情報を作成](manage-credentials.md#create-a-new-credential)し、ご自分のスキャンを設定します。
+1. 最後に、**ユーザー名** と **パスワード** を使用して、SQL 認証型の [新しい資格情報を作成](manage-credentials.md#create-a-new-credential)し、ご自分のスキャンを設定します。
 
 ## <a name="register-an-azure-mysql-database-data-source"></a>Azure Database for MySQL のデータ ソースの登録
 
@@ -53,7 +53,7 @@ Purview は、Azure Database for MySQL の SQL 認証のみをサポートして
 
 1. ご自分の Purview アカウントに移動します。
 
-1. 左側のナビゲーションで **[ソース]** を選択します。
+1. 左側のナビゲーションで **[Data Map]** を選択します。
 
 1. **[登録]** を選択します。
 

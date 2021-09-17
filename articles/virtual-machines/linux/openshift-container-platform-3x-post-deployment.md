@@ -11,14 +11,16 @@ ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
 ms.custom: devx-track-ansible, devx-track-azurecli
-ms.openlocfilehash: c3f9aaa15a697202aa76c563ed62bf37443d69ec
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9370fcbe4955c1163d8f533dac43039bff9f5989
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101669386"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122688264"
 ---
 # <a name="post-deployment-tasks"></a>デプロイ後タスク
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブルなスケール セット 
 
 OpenShift クラスターをデプロイした後に、追加の項目を構成することができます。 この記事には、次の内容が含まれます。
 

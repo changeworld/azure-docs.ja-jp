@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 769fae5791575d8f361aaee13347bb00f3fbe749
-ms.sourcegitcommit: 8154d7f8642d783f637cf6d857b4abbe28033f53
+ms.openlocfilehash: 151caf0aadba66eafac464c55b073968ea4022e7
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2021
-ms.locfileid: "113616435"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122609487"
 ---
 # <a name="deploy-azure-monitor"></a>Azure Monitor をデプロイする
 Azure Monitor ですべての Azure リソースを監視できるようにするには、Azure Monitor コンポーネントの構成と、Azure Monitor で収集される監視データを生成するための Azure リソースの構成を、組み合わせて行います。 この記事では、一般的な構成を使用して Azure Monitor を完全に実装して Azure サブスクリプション内のすべてのリソースを監視するために必要なさまざまなステップについて説明します。 各ステップの基本的な説明は、詳細な構成要件に関する他のドキュメントへのリンクで提供されます。
@@ -65,7 +65,7 @@ Azure のリソースでは、リソース内で実行された操作の詳細�
 
 この収集にはコストがかかるので、多くのリソースに実装する前に、「[Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)」を参照してください。 また、ログ収集のコストの最適化の詳細については、「[Azure Monitor ログで使用量とコストを管理する](logs/manage-cost-storage.md)」を参照してください。
 
-Azure リソース用の診断設定の作成については、「[Azure でリソース ログとメトリックを収集するための診断設定を作成する](essentials/diagnostic-settings.md#create-in-azure-portal)」を参照してください。 診断設定は Azure リソースごとに作成する必要があるため、[Azure policy](../governance/policy/overview.md) を使用して Azure リソースが作成されるたびに設定を自動的に作成する方法の詳細については、[大規模な Azure Monitor のデプロイ](deploy-scale.md)に関するページを参照してください。
+Azure リソース用の診断設定の作成については、「[Azure でリソース ログとメトリックを収集するための診断設定を作成する](essentials/diagnostic-settings.md#create-in-azure-portal)」を参照してください。 診断設定は Azure リソースごとに作成する必要があるため、[Azure Policy](../governance/policy/overview.md) を使用して Azure リソースが作成されるたびに設定を自動的に作成する方法の詳細については、[大規模な Azure Monitor のデプロイ](deploy-scale.md)に関するページを参照してください。
 
 ### <a name="enable-insights-and-solutions"></a>分析情報とソリューションを有効にする
 分析情報とソリューションでは、特定のサービスまたはソリューションに特化した監視が提供されます。 分析情報では、ブックなどの Azure Monitor の最新機能が使用されているため、分析情報はサービスで利用可能な場合に使用する必要があります。 すべての Azure サブスクリプションでそれを自動的に使用できますが、完全な機能のためには構成が必要になる場合があります。 通常は、前に構成したプラットフォーム メトリックとリソース ログが使用され、追加のデータを収集することができます。

@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: deanwe
-ms.openlocfilehash: ebcd3d38b929b7643a730a445531e7897990a5af
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: d30aa61b172188a44eb462bee05fb894f7e68b31
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113004288"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122772179"
 ---
 # <a name="azure-automanage-for-machines-best-practices---linux"></a>Azure Automanage for Machines Best Practices - Linux
 
@@ -43,7 +43,7 @@ Automanage によって、次の Linux ディストリビューションとバ�
 |[Azure Security Center](../security-center/security-center-introduction.md)    |Azure Security Center は統合されたインフラストラクチャ セキュリティ管理システムであり、データ センターのセキュリティ体制を強化し、クラウド内のハイブリッド ワークロード全体にわたる高度な脅威保護が提供されます。 [詳細情報](../security-center/security-center-introduction.md)。  VM が存在するサブスクリプションは、Automanage によって、Azure Security Center の Free レベルのオファリングに構成されます。 ご利用のサブスクリプションが Azure Security Center に既にオンボードされている場合、Automanage によって再構成されることはありません。    |運用、Dev/Test    |いいえ    |
 |[更新管理](../automation/update-management/overview.md)    |Azure Automation の Update Management を使用して、マシンのオペレーティング システムの更新プログラムを管理することができます。 すべてのエージェント マシンで利用可能な更新プログラムの状態をすばやく評価し、サーバーに必要な更新プログラムをインストールするプロセスを管理できます。 [詳細情報](../automation/update-management/overview.md)。    |運用、Dev/Test    |いいえ    |
 |[変更履歴とインベントリ](../automation/change-tracking/overview.md) |変更履歴とインベントリでは、変更履歴とインベントリの機能を組み合わせて、仮想マシンとサーバー インフラストラクチャの変更を追跡できます。 このサービスを利用すれば、環境内のサービス、デーモン、ソフトウェア、レジストリ、ファイル全体にわたって変更を追跡し、不要な変更を診断したりアラートを生成したりすることができます。 インベントリのサポートにより、ゲスト リソースでクエリを実行して、インストール済みのアプリケーションやその他の構成アイテムを可視化できます。  [詳細情報](../automation/change-tracking/overview.md)。    |運用、Dev/Test    |いいえ    |
-|[Azure ゲスト構成](../governance/policy/concepts/guest-configuration.md)  | ゲスト構成ポリシーは、マシンのコンプライアンスに関するレポートを作成し、構成を監視するために使用されます。 ゲスト構成拡張機能を使用して、Automanage サービスによって Azure Linux ベースラインがインストールされます。 Linux マシンの場合は、ゲスト構成サービスによって、ベースラインが監査専用モードでインストールされます。 ご利用の VM がベースラインに準拠していない場所を確認することはできますが、非準拠が自動的に修復されることはありません。 [詳細情報](../governance/policy/concepts/guest-configuration.md)。    |運用、Dev/Test    |いいえ    |
+|[ゲスト構成](../governance/policy/concepts/guest-configuration.md)  | ゲスト構成は、マシンのコンプライアンスに関するレポートを作成し、構成を監視するために使用されます。 ゲスト構成拡張機能を使用して、Automanage サービスによって Azure Linux ベースラインがインストールされます。 Linux マシンの場合は、ゲスト構成サービスによって、ベースラインが監査専用モードでインストールされます。 ご利用の VM がベースラインに準拠していない場所を確認することはできますが、非準拠が自動的に修復されることはありません。 [詳細情報](../governance/policy/concepts/guest-configuration.md)。    |運用、Dev/Test    |いいえ    |
 |[ブート診断](../virtual-machines/boot-diagnostics.md)  | ブート診断は、VM ブート エラーの診断を可能にする、Azure の仮想マシン (VM) のデバッグ機能です。 ブート診断を使用すると、ユーザーは、シリアル ログ情報とスクリーンショットを収集して、起動中の VM の状態を確認できます。 これは、マネージド ディスクを使用しているマシンに対してのみ有効になります。 |運用、Dev/Test    |いいえ    |
 |[Azure Automation アカウント](../automation/automation-create-standalone-account.md)    |Azure Automation は、インフラストラクチャとアプリケーションのライフサイクル全体にわたる管理をサポートします。 [詳細情報](../automation/automation-intro.md)。    |運用、Dev/Test    |いいえ    |
 |[Log Analytics ワークスペース](../azure-monitor/logs/log-analytics-overview.md) |Azure Monitor では、ログ データが Log Analytics ワークスペースに格納されます。Log Analytics ワークスペースは Azure リソースであり、データが収集、集計され、管理境界として機能するコンテナーです。 [詳細情報](../azure-monitor/logs/design-logs-deployment.md)。    |運用、Dev/Test    |いいえ    |

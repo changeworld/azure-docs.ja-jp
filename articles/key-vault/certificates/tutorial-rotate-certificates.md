@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: 50cc8f2454aa18dd9a0f1365490fadedcbb623b7
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: a0ae17c5108a4af15245d833f4f2636f9a330138
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108140679"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121862252"
 ---
 # <a name="tutorial-configure-certificate-auto-rotation-in-key-vault"></a>チュートリアル:Key Vault における証明書の自動ローテーションを構成する
 
@@ -46,7 +46,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 ## <a name="create-a-certificate-in-key-vault"></a>Key Vault に証明書を作成する
 
-証明書を作成するか、証明書をキー コンテナーにインポートします ([Key Vault で証明書を作成する手順](../secrets/quick-create-portal.md)に関するページを参照してください)。 この例では、**ExampleCertificate** という証明書を操作します。
+証明書を作成するか、証明書をキー コンテナーにインポートします ([Key Vault で証明書を作成する手順](../certificates/quick-create-portal.md)に関するページを参照してください)。 この例では、**ExampleCertificate** という証明書を操作します。
 
 ## <a name="update-certificate-lifecycle-attributes"></a>証明書のライフサイクル属性を更新する
 

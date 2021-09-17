@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: tutorial
 ms.date: 04/28/2021
 ms.author: memildin
-ms.openlocfilehash: fcadb8879f718913d93e33f81f6ec544ce9edb80
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: cb6f81fc02245e7932222d8555774e398944f1f4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108277986"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751828"
 ---
 # <a name="tutorial-investigate-the-health-of-your-resources"></a>チュートリアル: リソースの正常性を調査する
 

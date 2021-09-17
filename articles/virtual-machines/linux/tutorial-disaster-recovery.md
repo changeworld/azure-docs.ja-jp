@@ -9,14 +9,16 @@ ms.topic: tutorial
 ms.date: 11/05/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: b5e83f883b5e1e35842ab128e4732e993fb937a0
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: ff3c4dc893a6760c317b39b4a76f4de2e24da96e
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106383695"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122690906"
 ---
 # <a name="tutorial-set-up-disaster-recovery-for-linux-virtual-machines"></a>チュートリアル:Linux 仮想マシンのディザスター リカバリーを設定する
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブル スケール セット 
 
 このチュートリアルでは、Linux を実行する Azure VM のディザスター リカバリーを設定する方法について説明します。 この記事では、次のことについて説明します:
 

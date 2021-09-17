@@ -4,12 +4,12 @@ description: Azure Container Registry タスクを実行するための専用コ
 ms.topic: article
 ms.date: 10/12/2020
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: a303155b82cc35461cd6080b3cce694ffe7a1fc4
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: c8c790e551cd6e31df515a3af9fc0ea835be1ce4
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112122841"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122769671"
 ---
 # <a name="run-an-acr-task-on-a-dedicated-agent-pool"></a>専用エージェント プールで ACR タスクを実行する
 
@@ -31,7 +31,7 @@ ms.locfileid: "112122841"
 ## <a name="preview-limitations"></a>プレビューの制限事項
 
 - タスク エージェント プールでは現在、Linux ノードがサポートされています。 Windows ノードは現在、サポートされていません。
-- 次のリージョンでは、タスク エージェント プールをプレビューでご利用いただけます。米国西部 2、米国中南部、米国東部 2、米国東部、米国中部、西ヨーロッパ、北ヨーロッパ、カナダ中部、USGov アリゾナ、USGov テキサス、USGov バージニア。
+- 次のリージョンでは、タスク エージェント プールをプレビューでご利用いただけます。米国西部 2、米国中南部、米国東部 2、米国東部、米国中部、西ヨーロッパ、北ヨーロッパ、カナダ中部、東アジア、USGov アリゾナ、USGov テキサス、USGov バージニア。
 - 各レジストリについて、既定の合計 vCPU (コア) クォータは、Standard エージェント プールの場合はすべて 16 で、分離エージェント プールの場合は 0 です。 追加で割り当てる場合、[サポート リクエスト][open-support-ticket]を開始します。
 - 現在、エージェント プールで実行されるタスクを取り消すことはできません。
 

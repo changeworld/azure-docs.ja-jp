@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 07/21/2021
+ms.date: 08/19/2021
 ms.author: cherylmc
-ms.openlocfilehash: 2589c96e6b1de95ef93e942f382eb57f2eb4b53c
-ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
+ms.openlocfilehash: 7986b592496ee558b76202ecf32f5121f6b30e37
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114722469"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122514616"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-using-azure-certificate-authentication-azure-portal"></a>Azure 証明書認証を使用したポイント対サイト VPN 接続を構成する: Azure portal
 
@@ -168,11 +168,11 @@ VPN クライアント構成ファイルの生成とインストールに関す�
 
 ### <a name="to-connect-from-a-mac-vpn-client"></a>Mac の VPN クライアントから接続するには
 
-[ネットワーク] ダイアログ ボックスで、使用するクライアント プロファイルを検索し、[VpnSettings.xml](point-to-site-vpn-client-configuration-azure-cert.md#installmac) の設定を指定して、 **[接続]** を選択します。
+[ネットワーク] ダイアログ ボックスで、使用するクライアント プロファイルを検索し、[VpnSettings.xml](point-to-site-vpn-client-configuration-azure-cert.md#installmac) の設定を指定して、 **[接続]** を選択します。 詳細な手順については、[VPN クライアント構成ファイルを生成してインストールする - macOS](./point-to-site-vpn-client-configuration-azure-cert.md#installmac) に関するページを参照してください。 
 
-手順の詳細については、[インストール - macOS](./point-to-site-vpn-client-configuration-azure-cert.md#installmac) に関するセクションを参照してください。 接続に問題がある場合は、仮想ネットワーク ゲートウェイが Basic SKU を使用していないことを確認します。 Basic SKU は Mac クライアントではサポートされていません。
+接続に問題がある場合は、仮想ネットワーク ゲートウェイが Basic SKU を使用していないことを確認します。 Basic SKU は Mac クライアントではサポートされていません。
 
-:::image type="content" source="./media/vpn-gateway-howto-point-to-site-rm-ps/applyconnect.png" alt-text="Mac VPN クライアント接続。" border="false":::
+   :::image type="content" source="./media/point-to-site-vpn-client-configuration-azure-cert/select-connect.png" alt-text="[接続] ボタンを示すスクリーンショット。" lightbox="./media/point-to-site-vpn-client-configuration-azure-cert/expanded/select-connect.png":::
 
 ## <a name="to-verify-your-connection"></a><a name="verify"></a>接続を確認するには
 

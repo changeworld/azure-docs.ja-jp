@@ -9,12 +9,12 @@ metadata:
   ms.date: 06/08/2021
   ms.author: victorh
   ms.custom: references_regions
-  ms.openlocfilehash: 7bef7a0cbc81f4d72a28d74feb5a526789c0ff59
-  ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+  ms.openlocfilehash: 87780dbc3a7d492f0fd0fec8839ef26bb092b2eb
+  ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/22/2021
-  ms.locfileid: "114469718"
+  ms.lasthandoff: 08/24/2021
+  ms.locfileid: "122777556"
 title: Application Gateway に関してよく寄せられる質問
 summary: >
   [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -64,7 +64,7 @@ sections:
   - question: アプリケーション ゲートウェイの有効期間内に IP や DNS 名が変わることはありますか?
     answer: Application Gateway V1 SKU では、アプリケーション ゲートウェイを停止して起動すると、VIP が変わることがあります。 これに対して、アプリケーション ゲートウェイに関連付けられている DNS 名は、そのゲートウェイの有効期間全体を通して変わりません。 DNS 名が変わることはないので、CNAME エイリアスを使用し、その参照先をアプリケーション ゲートウェイの DNS アドレスにするようにしてください。 Application Gateway V2 SKU では、IP アドレスを静的として設定できるため、アプリケーション ゲートウェイの有効期間中、IP および DNS 名が変更されることはありません。
   - question: Application Gateway は静的 IP をサポートしますか?
-    answer: はい、Application Gateway v2 SKU は、静的パブリック IP アドレスをサポートしています。 v1 SKU では、静的内部 IP アドレスがサポートされます。
+    answer: はい。Application Gateway v2 SKU では、静的パブリック IP アドレスと静的内部 IP がサポートされています。 v1 SKU では、静的内部 IP アドレスがサポートされます。
   - question: Application Gateway は複数のパブリック IP をサポートしますか?
     answer: 1 つのアプリケーション ゲートウェイでサポートされるパブリック IP アドレスは 1 つだけです。
   - question: Application Gateway のサブネットはどのくらい大きくする必要がありますか?

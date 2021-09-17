@@ -1,19 +1,19 @@
 ---
-title: Azure portal でデモ アプリを作成する
+title: 'クイック スタート: Azure portal でデモ アプリを作成する'
 titleSuffix: Azure Cognitive Search
-description: デモ アプリの作成 (プレビュー) ウィザードを実行して、運用 Web アプリ用の HTML ページとスクリプトを生成します。 このページは、検索バー、結果領域、サイド バーを備えているほか、先行入力に対応しています。
+description: デモ アプリの作成ウィザードを実行して、運用 Web アプリ用の HTML ページとスクリプトを生成します。 このページは、検索バー、結果領域、サイド バーを備えているほか、先行入力に対応しています。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 01/23/2021
-ms.openlocfilehash: 590afe4c396942c5179826cd831908e37f48c3e4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/24/2021
+ms.openlocfilehash: f9ce6f3c7898a492400f6a8cec62e65ab8777e15
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98745752"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122770867"
 ---
 # <a name="quickstart-create-a-demo-app-in-the-portal-azure-cognitive-search"></a>クイック スタート:ポータルでデモ アプリを作成する (Azure Cognitive Search)
 
@@ -127,7 +127,7 @@ Azure Cognitive Search のファセット ナビゲーションは、累積的�
 
 独自のサブスクリプションを使用している場合は、プロジェクトの最後に、作成したリソースがまだ必要かどうかを確認してください。 リソースを実行したままにすると、お金がかかる場合があります。 リソースは個別に削除することも、リソース グループを削除してリソースのセット全体を削除することもできます。
 
-ポータルの左側のナビゲーション ウィンドウにある **[すべてのリソース]** または **[リソース グループ]** リンクを使って、リソースを検索および管理できます。
+ポータルの左側のナビゲーション ウィンドウにある **[All resources]\(すべてのリソース\)** または **[Resource groups]\(リソース グループ\)** リンクを使って、リソースを検索および管理できます。
 
 無料サービスを使っている場合は、3 つのインデックス、インデクサー、およびデータソースに制限されることに注意してください。 ポータルで個別の項目を削除して、制限を超えないようにすることができます。 
 

@@ -8,12 +8,12 @@ ms.service: frontdoor
 ms.topic: how-to
 ms.date: 03/16/2021
 ms.author: duau
-ms.openlocfilehash: 80013ca5d4d20366672eda417862ff7bb1309b0c
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: e902c8d3a1662f83328ab39a85a11009c58da24b
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109633161"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122606579"
 ---
 # <a name="connect-azure-front-door-premium-to-an-internal-load-balancer-origin-with-private-link"></a>プライベート リンクを使用して Azure Front Door Premium を配信元に接続する
 
@@ -51,7 +51,7 @@ ms.locfileid: "109633161"
 
 1. 次に、 **[追加]** 、 **[更新]** の順に選択して、構成を保存します。
 
-## <a name="approve-private-endpoint-connection-from-the-storage-account"></a>ストレージ アカウントからプライベート エンドポイント接続を承認する
+## <a name="approve-azure-front-door-premium-private-endpoint-connection-from-private-link-service"></a>Private Link サービスからの Azure Front Door Premium プライベート エンドポイント接続を承認する
 
 1. Private Link センターにアクセスし、 **[プライベート リンク サービス]** を選択します。 次に、プライベート リンク名を選択します。
 

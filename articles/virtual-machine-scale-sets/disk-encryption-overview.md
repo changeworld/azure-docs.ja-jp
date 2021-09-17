@@ -8,14 +8,16 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: disks
 ms.date: 10/10/2019
 ms.reviewer: mimckitt
-ms.openlocfilehash: 9e9a0a8b07c300282f26ce12b989a8510ccd1e98
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 579315379923b5ba8a16f94cff5984e6e904a5ec
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108738353"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122691302"
 ---
 # <a name="azure-disk-encryption-for-virtual-machine-scale-sets"></a>仮想マシン スケール セットの Azure Disk Encryption
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 均一のスケール セット
 
 Azure Disk Encryption は、仮想マシンの OS とデータ ディスクのボリューム暗号化を提供し、データを保護して、組織のセキュリティおよびコンプライアンス コミットメントを満たすのに役立ちます。 詳細については、[Azure Disk Encryption: Linux VM](../virtual-machines/linux/disk-encryption-overview.md) および [Azure Disk Encryption: Windows VM](../virtual-machines/windows/disk-encryption-overview.md) に関するページを参照してください。  
 

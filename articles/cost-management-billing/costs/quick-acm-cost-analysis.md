@@ -3,18 +3,18 @@ title: クイックスタート - コスト分析を使用して Azure のコス
 description: このクイック スタートは、コスト分析を使用して Azure 組織のコストを調査および分析するために役立ちます。
 author: bandersmsft
 ms.author: banders
-ms.date: 03/10/2021
+ms.date: 07/28/2021
 ms.topic: quickstart
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
-ms.custom: contperf-fy21q2, devx-track-azurecli
-ms.openlocfilehash: 9769b6ecb04ca513c4b48ec3d0ca32bdd3c64b5f
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.custom: contperf-fy22q1
+ms.openlocfilehash: 2391fbdf586c652f7567b5c4b08757a68546314a
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107887113"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121731969"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>クイック スタート:コスト分析を使用してコストを調査および分析する
 
@@ -151,64 +151,9 @@ Azure タグ ポリシーを使用してコスト データの可視性を向上
 
 >[!VIDEO https://www.youtube.com/embed/kQkXXj-SmvQ]
 
-コスト分析をピン留めするには、右上隅または "<Subscription Name> | コスト分析" のすぐ後ろにあるピン アイコンを選択します。 コスト分析をピン留めすると、メイン グラフまたはテーブル ビューだけが保存されます。 他のユーザーがタイルにアクセスできるようにするには、ダッシュボードを共有します。 共有ではダッシュボードの構成だけが共有され、基になるデータへのアクセス権は他のユーザーに付与されません。 コストへのアクセス権がないのに、共有ダッシュボードにアクセスすると、"アクセス拒否" メッセージが表示されます。
+コスト分析をピン留めするには、右上隅または * **["サブスクリプション名"** _ | _*コスト分析]** のすぐ後ろにあるピン アイコンを選択します。 コスト分析をピン留めすると、メイン グラフまたはテーブル ビューだけが保存されます。 他のユーザーがタイルにアクセスできるようにするには、ダッシュボードを共有します。 共有ではダッシュボードの構成だけが共有され、基になるデータへのアクセス権は他のユーザーに付与されません。 コストへのアクセス権がないのに、共有ダッシュボードにアクセスすると、"アクセス拒否" メッセージが表示されます。
 
 コスト分析へのリンクを共有するには、ウィンドウの上部にある **[共有]** を選択します。 カスタム URL が表示され、この特定のスコープに対するこの特定のビューが開かれます。 コストへのアクセス権がない場合にこの URL を受け取ると、"アクセス拒否" メッセージが表示されます。
-
-## <a name="download-usage-data"></a>使用状況データのダウンロード
-
-### <a name="portal"></a>[ポータル](#tab/azure-portal)
-
-詳細な分析、独自のデータとの結合、独自のシステムへの統合などのために、データをダウンロードすることが必要になる場合があります。 Cost Management では、いくつかのオプションが提供されています。 まず、コスト分析で得られるような簡単な概要が必要な場合は、必要とするビューを作成します。 次に、 **[エクスポート]** を選択し、 **[データを CSV にダウンロード]** または **[データを Excel にダウンロード]** を選択してダウンロードします。 Excel のダウンロードでは、スコープ、クエリ構成、合計、生成日など、ダウンロードの生成に使用したビューに関するより多くのコンテキストが提供されます。
-
-完全な未集計のデータセットが必要な場合は、課金アカウントからダウンロードします。 次に、ポータルの左側のナビゲーション ウィンドウにあるサービスの一覧から、 **[コストの管理と請求]** に移動します。 該当する場合は、課金アカウントを選択します。 **[使用量 + 請求金額]** に移動し、請求期間の **[ダウンロード]** アイコンを選択します。
-
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-まず、Azure CLI の環境を準備します。
-
-[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
-
-サブスクリプションの月度累計使用量情報を照会するには、サインイン後、[az costmanagement query](/cli/azure/costmanagement#az_costmanagement_query) コマンドを使用します。
-
-```azurecli
-az costmanagement query --timeframe MonthToDate --type Usage \
-   --scope "subscriptions/00000000-0000-0000-0000-000000000000"
-```
-
-**--dataset-filter** などのパラメーターを使用してクエリを絞り込むこともできます。
-
-```azurecli
-az costmanagement query --timeframe MonthToDate --type Usage \
-   --scope "subscriptions/00000000-0000-0000-0000-000000000000" \
-   --dataset-filter "{\"and\":[{\"or\":[{\"dimension\":{\"name\":\"ResourceLocation\",\"operator\":\"In\",\"values\":[\"East US\",\"West Europe\"]}},{\"tag\":{\"name\":\"Environment\",\"operator\":\"In\",\"values\":[\"UAT\",\"Prod\"]}}]},{\"dimension\":{\"name\":\"ResourceGroup\",\"operator\":\"In\",\"values\":[\"API\"]}}]}"
-```
-
-**--dataset-filter** パラメーターには、JSON 文字列または `@json-file` を指定します。
-
-[az costmanagement export](/cli/azure/costmanagement/export) コマンドを使用して、利用状況データを Azure ストレージ アカウントにエクスポートすることもできます。 そこからデータをダウンロードすることができます。
-
-1. リソース グループを作成するか、または既存のリソース グループを使用します。 リソース グループを作成するには、[az group create](/cli/azure/group#az_group_create) コマンドを実行します。
-
-   ```azurecli
-   az group create --name TreyNetwork --location "East US"
-   ```
-
-1. エクスポートを受信するためのストレージ アカウントを作成するか、既存のストレージ アカウントを使用します。 アカウントを作成するには、[az storage account create](/cli/azure/storage/account#az_storage_account_create) コマンドを使用します。
-
-   ```azurecli
-   az storage account create --resource-group TreyNetwork --name cmdemo
-   ```
-
-1. [az costmanagement export create](/cli/azure/costmanagement/export#az_costmanagement_export_create) コマンドを実行して、エクスポートを作成します。
-
-   ```azurecli
-   az costmanagement export create --name DemoExport --type Usage \
-   --scope "subscriptions/00000000-0000-0000-0000-000000000000" --storage-account-id cmdemo \
-   --storage-container democontainer --timeframe MonthToDate --storage-directory demodirectory
-   ```
-
----
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

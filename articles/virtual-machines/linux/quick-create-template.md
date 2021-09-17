@@ -9,14 +9,16 @@ ms.workload: infrastructure
 ms.date: 06/04/2020
 ms.author: cynthn
 ms.custom: subject-armqs
-ms.openlocfilehash: 4a7bd76a6b7536a6bbc117d52fb2c0770145ab9d
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 173adbaa32444a2eb28c050266a503c9f448f927
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112078710"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122693933"
 ---
 # <a name="quickstart-create-an-ubuntu-linux-virtual-machine-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Ubuntu Linux 仮想マシンを作成する
+
+**適用対象:** :heavy_check_mark: Linux VM 
 
 このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して Azure に Ubuntu Linux 仮想マシン (VM) を Azure にデプロイする方法を示します。
 

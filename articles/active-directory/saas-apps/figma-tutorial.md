@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/23/2021
 ms.author: jeedes
-ms.openlocfilehash: 4dc5cf7b6a583f63e75c366c5fb2bc7857bd45dc
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: ef637225d516ccaf2eaf06ace1803874299d3312
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111896056"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122178495"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-figma"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Figma の統合
 
@@ -38,6 +38,7 @@ ms.locfileid: "111896056"
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 * Figma では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます。
+* Figma では、[**自動化された** ユーザー プロビジョニングとプロビジョニング解除](figma-provisioning-tutorial.md) (推奨) がサポートされます。
 * Figma では、**Just In Time** ユーザー プロビジョニングがサポートされます。
 
 ## <a name="add-figma-from-the-gallery"></a>ギャラリーから Figma を追加する

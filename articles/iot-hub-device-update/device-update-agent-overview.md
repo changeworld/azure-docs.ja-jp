@@ -6,18 +6,18 @@ ms.author: valls
 ms.date: 2/12/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 14bc02c81e28e98d6d094cdfbde6095b7cd2d885
-ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.openlocfilehash: 6502779c4d301e760e10be8cf1a1766834ec2038
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2021
-ms.locfileid: "114403452"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122604152"
 ---
 # <a name="device-update-for-iot-hub-agent-overview"></a>IoT Hub 用のデバイス更新のエージェントの概要
 
 デバイス更新エージェントは、2 つの概念レイヤーで構成されています。
 
-* インターフェイス レイヤーは、[Azure IoT プラグ アンド プレイ (PnP)](../iot-develop/overview-iot-plug-and-play.md) 上に構築されており、デバイス更新エージェントと デバイス更新サービスの間のメッセージ フローを可能にします。
+* インターフェイス レイヤーは、[Azure IoT プラグ アンド プレイ](../iot-develop/overview-iot-plug-and-play.md)上に構築されており、デバイス更新エージェントと デバイス更新サービスの間のメッセージ フローを可能にします。
 * プラットフォーム レイヤーは、プラットフォームまたはデバイスに固有である可能性があるダウンロード、インストール、適用の高レベルの更新アクションを処理します。
 
 :::image type="content" source="media/understand-device-update/client-agent-reference-implementations.png" alt-text="エージェントの実装。" lightbox="media/understand-device-update/client-agent-reference-implementations.png":::

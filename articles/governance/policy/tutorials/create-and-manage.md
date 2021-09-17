@@ -1,14 +1,14 @@
 ---
 title: チュートリアル:コンプライアンスを強制するポリシーを作成する
 description: このチュートリアルでは、標準の強制、コストの制御、セキュリティの維持、および企業全体の設計原則の適用を行うポリシーを使用します。
-ms.date: 05/01/2021
+ms.date: 08/17/2021
 ms.topic: tutorial
-ms.openlocfilehash: 8f5b68190691651855bae31bae2885f80a16111f
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: f7c8b2c84f2aa0c4186fbdf69d5a579033904bca
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108752239"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122324723"
 ---
 # <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>チュートリアル:コンプライアンスを強制するポリシーの作成と管理
 

@@ -8,14 +8,16 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: bc87b0ec9cf41b2ddc5746a9734463f544b0cc2a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c785bec3fc403a1090d5604d0954271992aea1f3
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102550690"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122689648"
 ---
 # <a name="create-a-vm-from-a-managed-image"></a>管理イメージから VM を作成する
+
+**適用対象:** :heavy_check_mark: Windows VM 
 
 Azure portal または PowerShell を使用して、Azure 管理 VM イメージから複数の仮想マシン (VM) を作成できます。 管理 VM イメージには、OS や データ ディスクなど、VM の作成に必要な情報が含まれています。 OS ディスクやデータ ディスクなど、イメージを構成する仮想ハード ディスク (VHD) は、マネージド ディスクとして保管されます。 
 

@@ -8,14 +8,18 @@ ms.topic: tutorial
 ms.date: 04/20/2021
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 4b2290d29d1f6fbf8acd2e2652cd47a321fe674f
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: fbe2aabbcf9595cbb7520d160f72d17b58872293
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107813166"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122698970"
 ---
 # <a name="tutorial-use-tlsssl-certificates-to-secure-a-web-server"></a>チュートリアル: TLS/SSL 証明書を使用して Web サーバーをセキュリティで保護する
+
+
+**適用対象:** :heavy_check_mark: Linux VM 
+
 Web サーバーをセキュリティ保護するには、従来より SSL (Secure Sockets Layer) として知られていたトランスポート層セキュリティ (TLS) 証明書を使用した Web トラフィックの暗号化が利用できます。 これらの TLS/SSL 証明書は Azure Key Vault に格納できるため、Azure 上の仮想マシン (VM) に、セキュリティで保護された証明書のデプロイが可能になります。 このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]

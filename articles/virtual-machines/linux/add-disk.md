@@ -8,14 +8,16 @@ ms.collection: linux
 ms.topic: how-to
 ms.date: 05/12/2021
 ms.author: cynthn
-ms.openlocfilehash: eb207b5ece190a4398c7b9ef15472db409ac4d71
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 8d518bde3dc86c871f66f64dec8f39fc8b68e763
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110087798"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692268"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Linux VM へのディスクの追加
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブル スケール セット 
 
 この記事では、メンテナンスやサイズ変更により VM が再プロビジョニングされる場合でもデータを保持できるように、永続ディスクを VM に接続する方法について説明します。
 

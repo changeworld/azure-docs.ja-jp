@@ -5,14 +5,14 @@ services: static-web-apps
 author: scubaninja
 ms.service: static-web-apps
 ms.topic: tutorial
-ms.date: 03/23/2021
+ms.date: 08/17/2021
 ms.author: apedward
-ms.openlocfilehash: 17a41bd64f1bba4a5ae4d6d9d497c03afae037e7
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 9df037177aac3dd909795f18c6e903eedd1c98a6
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114444228"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122608873"
 ---
 # <a name="tutorial-publish-azure-static-web-apps-with-azure-devops"></a>チュートリアル: Azure DevOps を使用して Azure Static Web Apps を発行する
 
@@ -34,6 +34,9 @@ ms.locfileid: "114444228"
 
   > [!NOTE]
   > リポジトリに既存のアプリがある場合は、このセクションをスキップして次のセクションにお進みください。
+  
+  > [!NOTE]
+  > パイプラインを成功させるには、アプリケーションのターゲットを .NET Core 3.1 にする必要があります。
 
 1. Azure Repos でリポジトリに移動します。
 
@@ -57,15 +60,28 @@ ms.locfileid: "114444228"
 
 1. **［作成］** を選択します
 
-1. _[デプロイの詳細]_ で、 **[その他]** が選択されていることを確認します。 これで、Azure Repos 内のコードを使用できるようになります。
+1. 次の値を使用して、新しい静的 Web アプリを作成します。
 
-    :::image type="content" source="media/publish-devops/create-resource.png" alt-text="[デプロイの詳細] - [その他]":::
+    :::image type="content" source="media/publish-devops/azure-portal-static-web-apps-devops.png" alt-text="[デプロイの詳細] - [その他]":::
 
-1. デプロイが成功したら、新しい静的 Web アプリ リソースに移動します。
+    | 設定 | 値 |
+    |---|---|
+    | サブスクリプション | Azure サブスクリプション名。 |
+    | リソース グループ | 既存のグループ名を選択するか、新規作成します。 |
+    | Name | 「**myDevOpsApp**」と入力します。 |
+    | ホスティング プランの種類 | **[無料]** を選択します。 |
+    | リージョン | 最も近いリージョンを選択します。 |
+    | source | **[その他]** を選択します。 |
+
+1. **[確認と作成]** を選択します
+
+1. **［作成］** を選択します
+
+1. デプロイが正常に完了したら、 **[リソースに移動]** を選択します。
 
 1. **[Manage deployment token]\(デプロイトークンの管理\)** を選択します。
 
-1. **デプロイ トークン** をコピーし、他の画面で使用できるようテキスト エディターに貼り付けます。
+1. **デプロイ トークン** をコピーし、デプロイ トークンの値を他の画面で使用できるようテキスト エディターに貼り付けます。
 
     > [!NOTE]
     > 以降の手順でコピーして貼り付ける値が他にもあるため、ひとまず、この値は保存しておいてください。
@@ -76,15 +92,15 @@ ms.locfileid: "114444228"
 
 1. 先ほど作成した Azure Repos リポジトリに移動します。
 
-1. **[ビルドのセットアップ]** を選択します。
+2. **[ビルドのセットアップ]** を選択します。
 
     :::image type="content" source="media/publish-devops/azdo-build.png" alt-text="ビルド パイプライン":::
 
-1. *[パイプラインの構成]* セクションで、 **[スタート パイプライン]** を選択します。
+3. *[パイプラインの構成]* セクションで、 **[スタート パイプライン]** を選択します。
 
     :::image type="content" source="media/publish-devops/configure-pipeline.png" alt-text="パイプラインの構成":::
 
-1. 次の YAML をコピーしてパイプラインに貼り付けます。
+4. 次の YAML をコピーし、パイプラインで生成された構成をこのコードに置き換えます。
 
     ```yaml
     trigger:
@@ -98,9 +114,9 @@ ms.locfileid: "114444228"
         submodules: true
       - task: AzureStaticWebApp@0
         inputs:
-          app_location: '/'
+          app_location: '/src'
           api_location: 'api'
-          output_location: ''
+          output_location: '/src'
           azure_static_web_apps_api_token: $(deployment_token)
     ```
 
@@ -111,35 +127,44 @@ ms.locfileid: "114444228"
 
     `azure_static_web_apps_api_token` の値は自己管理となるため、手動で構成します。
 
-2. **[変数]** を選択します。
+5. **[変数]** を選択します。
 
-3. 新しい変数を作成します。
+6. **[New variable]** を選択します。
 
-4. この変数に **deployment_token** という名前を付けます (ワークフローでの名前と一致させます)。
+7. この変数に **deployment_token** という名前を付けます (ワークフローでの名前と一致させます)。
 
-5. 先ほどテキスト エディターに貼り付けたデプロイ トークンをコピーします。
+8. 先ほどテキスト エディターに貼り付けたデプロイ トークンをコピーします。
 
-6. _[値]_ ボックスにデプロイ トークンを貼り付けます。
+9. _[値]_ ボックスにデプロイ トークンを貼り付けます。
 
     :::image type="content" source="media/publish-devops/variable-token.png" alt-text="変数トークン":::
 
-7. **[この値を誰にも教えないようにします]** をオンにします。
+10. **[この値を誰にも教えないようにします]** をオンにします。
 
-8. **[OK]** を選択します。
+11. **[OK]** を選択します。
 
-9. **[保存]** を選択して、パイプラインの YAML に戻ります。
+12. **[保存]** を選択して、パイプラインの YAML に戻ります。
 
-10. **[保存および実行]** を選択して _[保存および実行]_ ダイアログを開きます。
+13. **[保存および実行]** を選択して _[保存および実行]_ ダイアログを開きます。
 
     :::image type="content" source="media/publish-devops/save-and-run.png" alt-text="パイプライン":::
 
-11. **[保存および実行]** を選択してパイプラインを実行します。
+14. **[保存および実行]** を選択してパイプラインを実行します。
 
-12. デプロイが成功したら、デプロイ構成へのリンクが記載されている、Azure Static Web Apps の **[概要]** に移動します。 _[Source]\(ソース\)_ のリンク先が、Azure DevOps リポジトリのブランチと場所になっていることに注目してください。
+15. デプロイが成功したら、デプロイ構成へのリンクが記載されている、Azure Static Web Apps の **[概要]** に移動します。 _[Source]\(ソース\)_ のリンク先が、Azure DevOps リポジトリのブランチと場所になっていることに注目してください。
 
-13. **[URL]** を選択すると、新しくデプロイした Web サイトが表示されます。
+16. **[URL]** を選択すると、新しくデプロイした Web サイトが表示されます。
 
     :::image type="content" source="media/publish-devops/deployment-location.png" alt-text="配置場所":::
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+リソース グループを削除して、デプロイしたリソースをクリーンアップします。
+
+1. Azure portal で、左側のメニューから **[リソース グループ]** を選択します。
+2. **[名前でフィルター]** フィールドに、リソース グループ名を入力します。
+3. このチュートリアルで使用したリソース グループ名を選択します。
+4. トップ メニューから **[リソース グループの削除]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 

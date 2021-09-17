@@ -10,12 +10,13 @@ ms.topic: tutorial
 ms.date: 12/03/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 56a306e56991500a6b1d5acab1ab38a3b4fa457f
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.custom: b2c-support
+ms.openlocfilehash: e8f5405e55c3443b020265e68d68737f6d266a17
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110613301"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122179307"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>チュートリアル:Azure Active Directory B2C テナントの作成
 
@@ -49,6 +50,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     Azure portal のツール バーで、 **[Directory + Subscription]\(ディレクトリ + サブスクリプション\)** アイコンを選択し、ご利用のサブスクリプションが含まれているディレクトリを選択します。 このディレクトリは、Azure AD B2C テナントを含むディレクトリと異なります。
 
     ![サブスクリプション テナント、サブスクリプション テナントが選択された状態のディレクトリ + サブスクリプションのフィルター](media/tutorial-create-tenant/portal-01-pick-directory.png)
+
+1. 使用している Azure サブスクリプションのリソース プロバイダーとして **Microsoft.AzureActiveDirectory** を追加します ([詳細](../azure-resource-manager/management/resource-providers-and-types.md?WT.mc_id=Portal-Microsoft_Azure_Support#register-resource-provider-1))。
+
+    1. Azure portal メニュー上または **[ホーム]** ページから、 **[サブスクリプション]** を選択します。
+    2. 自分のサブスクリプションを選択し、 **[リソース プロバイダー]** を選択します。
+    3. **Microsoft AzureActiveDirectory** 行に **[登録済み]** の状態が表示されていることを確認します。 そうでない場合は、行を選択して **[登録]** を選択します。
 
 1. Azure portal メニュー上または **[ホーム]** ページから **[リソースの作成]** を選択します。
 

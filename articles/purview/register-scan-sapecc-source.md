@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
-ms.openlocfilehash: 62015554f7e8e17e1443cc85812b3f37ee64f0a4
-ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
+ms.openlocfilehash: f9cd8601ef3e59de3c11073d7ac73176367f4fc9
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113551706"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121724255"
 ---
 # <a name="register-and-scan-sap-ecc-source"></a>SAP ECC ソースを登録してスキャンする
 
@@ -55,7 +55,7 @@ SAP ECC ソースでサポートされている認証は **基本認証** のみ
 新しい SAP ECC ソースをデータ カタログに登録するには、次のようにします。
 
 1.  ご自分の Purview アカウントに移動します。
-2.  左側のナビゲーションで **[ソース]** を選択します。
+2.  左側のナビゲーションで **[Data Map]** を選択します。
 3.  **[登録]** を選択します
 4.  [Register sources]\(ソースの登録\) で、 **[SAP ECC]** を選択します。 **[続行]** を選択します。
 

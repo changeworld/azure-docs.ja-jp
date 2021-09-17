@@ -9,14 +9,16 @@ ms.date: 10/31/2020
 ms.topic: how-to
 ms.author: cynthn
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 485968e6fa9a68781de85648f0ad008586c2c15b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 49357c5098a4e9a9dc35e3abd910a33efe6411ca
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121734587"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122691040"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>Azure 上の Windows で SSH キーを使用する方法
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブル スケール セット
 
 この記事は、*secure shell* (SSH) キーを [作成](#create-an-ssh-key-pair)し、それを使用して Azure の Linux 仮想マシン (VM) に [接続](#connect-to-your-vm)する Windows ユーザーを対象としています。 また、[Azure portal で SSH キーを生成および保存](../ssh-keys-portal.md)して、このポータルで VM を作成するときに使用することもできます。
 

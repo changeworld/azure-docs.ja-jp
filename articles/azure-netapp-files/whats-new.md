@@ -12,20 +12,44 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 07/12/2021
+ms.date: 08/18/2021
 ms.author: b-juche
-ms.openlocfilehash: a50b8eee5a45fdd496aa0e063272c1c32cf0e5a7
-ms.sourcegitcommit: aaaa6ee55f5843ed69944f5c3869368e54793b48
+ms.openlocfilehash: 0bf972cd5b597d4cf0fb608eee8481cb72080425
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113664451"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122769343"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Azure NetApp Files の新機能
 
 Azure NetApp Files は定期的に更新されています。 この記事では、最新の新機能と機能強化の概要について説明します。 
 
-## <a name="june-2021"></a>2021 年 6 月
+## <a name="august-2021"></a>2021 年 8 月
+
+* [既存の SMB ボリュームでの継続的可用性の有効化](enable-continuous-availability-existing-SMB.md)のサポート
+
+    [新しい SMB ボリュームを作成する](azure-netapp-files-create-volumes-smb.md#continuous-availability)ときに、既に SMB 継続的可用性 (CA) 機能を有効にすることができます。 既存の SMB ボリュームでも SMB CA を有効にできるようになりました。 「[既存の SMB ボリュームで継続的可用性を有効にする](enable-continuous-availability-existing-SMB.md)」をご覧ください。
+
+* [スナップショット ポリシー](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies)が一般提供 (GA) になりました  
+
+    スナップショット ポリシー機能が一般提供になりました。 この機能を使用する前に登録する必要がなくなりました。
+
+* [NFS `Chown Mode` エクスポート ポリシーと UNIX エクスポート アクセス許可](configure-unix-permissions-change-ownership-mode.md) (プレビュー)   
+
+    Azure NetApp Files の NFS ボリュームまたはデュアル プロトコル ボリュームで、Unix のセキュリティ スタイルを使用して Unix のアクセス許可と所有権モードの変更 (`Chown Mode`) のオプションを設定できるようになりました。 これらの設定は、ボリュームの作成時またはボリュームの作成後に指定できます。   
+
+    所有権モードの変更 (`Chown Mode`) 機能を使用すると、ファイルとディレクトリの所有権管理機能を設定できます。 ボリュームのエクスポート ポリシーで設定を指定または変更できます。 `Chown Mode` には 2 つのオプションがあります。*Restricted* (既定) の場合、ルート ユーザーだけがファイルとディレクトリの所有権を変更でき、*Unrestricted* の場合、ルート以外のユーザーは所有するファイルとディレクトリの所有権を変更できます。   
+
+    Azure NetApp Files の Unix のアクセス許可機能を使用すると、マウント パスの変更アクセス許可を指定できます。 
+
+    これらの新機能により、特定のファイルやディレクトリのアクセス制御を、サービス オペレーターではなくデータ ユーザーに移管することができます。   
+
+* [デュアルプロトコル (NFSv4.1 と SMB) ボリューム](create-volumes-dual-protocol.md) (プレビュー)   
+
+    Azure NetApp Files では、[2020 年 7 月](#july-2020)の時点で NFSv3 および SMB ボリュームへのデュアルプロトコル アクセスが既にサポートされています。 デュアルプロトコル (NFSv4.1 と SMB) での同時アクセスを可能にし、LDAP ユーザー マッピングをサポートする、Azure NetApp Files ボリュームを作成できるようになりました。 この機能を使用すると、アクセスに NFSv4.1 を使用する Linux ベースのワークロードがあり、ワークロードによって生成されるデータが Azure NetApp Files ボリュームに格納されるようなユース ケースが可能になります。 それと同時に、担当者が Windows ベースのクライアントとソフトウェアを使用して、同じ Azure NetApp Files ボリュームの新しく生成されたデータを分析する必要がある場合があります。 デュアルプロトコルでの同時アクセス機能を利用すると、ワークロードによって生成されたデータを事後分析のために別のプロトコルを使用して別のボリュームにコピーする必要がなくなるため、ストレージのコストと運用時間を節約できます。 この機能は無料で (通常の Azure NetApp Files のストレージ コストは適用されます)、一般提供になっています。 詳細については、[デュアルプロトコル (NFSv4.1/SMB) での同時アクセス](create-volumes-dual-protocol.md)に関するドキュメントを参照してください。
+
+## <a name="june-2021"></a>2021 年 6 月  
 
 * [Azure NetApp Files ストレージ サービス アドオン](storage-service-add-ons.md)
 
@@ -86,11 +110,11 @@ Azure NetApp Files は定期的に更新されています。 この記事では
 
     ユーザーは、プロビジョニングされる容量を直接制御することを求めていました。 ユーザーは、ストレージの容量と使用率を制御し、バランスを取ることを望んでいます。 また、アプリケーション ボリュームの使用可能な容量、使用済みの容量、プロビジョニングされた容量とパフォーマンスをアプリケーション側およびクライアント側で可視化するだけでなく、コストを管理することも望んでいます。 この新しい動作により、この機能がすべて有効になりました。
 
-* [SMB 継続的可用性 (CA) 共有による FSLogix ユーザー プロファイル コンテナーのサポート](azure-netapp-files-create-volumes-smb.md#add-an-smb-volume) (プレビュー)  
+* [SMB 継続的可用性 (CA) 共有による FSLogix ユーザー プロファイル コンテナーのサポート](azure-netapp-files-create-volumes-smb.md#continuous-availability) (プレビュー)  
 
-    [FSLogix](/fslogix/overview) は、非永続的な Windows コンピューティング環境を強化、有効化、簡素化するソリューションのセットです。 FSLogix ソリューションは、パブリック クラウドとプライベート クラウド両方の仮想環境に適しています。 物理デバイスを使用するときに、FSLogix ソリューションを使用して、より移植性の高いコンピューティング セッションを作成することもできます。 FSLogix を使用すると、Azure NetApp Files を含む SMB 共有ネットワーク ストレージに格納されている永続的なユーザー プロファイル コンテナーに動的にアクセスできます。 Azure NetApp Files では、ストレージ サービスのメンテナンス イベントに対する FSLogix の回復性をさらに強化するために、ユーザー プロファイル コンテナーに対する [Azure NetApp Files の SMB 継続的可用性 (CA) 共有](azure-netapp-files-create-volumes-smb.md#add-an-smb-volume)を介して SMB 透過フェールオーバーのサポートが拡張されています。 詳細については、Azure NetApp Files の [Windows Virtual Desktop ソリューション](azure-netapp-files-solution-architectures.md#windows-virtual-desktop)に関するセクションを参照してください。  
+    [FSLogix](/fslogix/overview) は、非永続的な Windows コンピューティング環境を強化、有効化、簡素化するソリューションのセットです。 FSLogix ソリューションは、パブリック クラウドとプライベート クラウド両方の仮想環境に適しています。 物理デバイスを使用するときに、FSLogix ソリューションを使用して、より移植性の高いコンピューティング セッションを作成することもできます。 FSLogix を使用すると、Azure NetApp Files を含む SMB 共有ネットワーク ストレージに格納されている永続的なユーザー プロファイル コンテナーに動的にアクセスできます。 Azure NetApp Files では、ストレージ サービスのメンテナンス イベントに対する FSLogix の回復性をさらに強化するために、ユーザー プロファイル コンテナーに対する [Azure NetApp Files の SMB 継続的可用性 (CA) 共有](azure-netapp-files-create-volumes-smb.md#continuous-availability)を介して SMB 透過フェールオーバーのサポートが拡張されています。 詳細については、Azure NetApp Files の [Azure Virtual Desktop ソリューション](azure-netapp-files-solution-architectures.md#windows-virtual-desktop)に関するセクションを参照してください。  
 
-* [SMB3 プロトコル暗号化](azure-netapp-files-create-volumes-smb.md#add-an-smb-volume) (プレビュー) 
+* [SMB3 プロトコル暗号化](azure-netapp-files-create-volumes-smb.md#smb3-encryption) (プレビュー) 
 
     Azure NetApp Files SMB およびデュアルプロトコル ボリュームで SMB3 プロトコル暗号化を有効にできるようになりました。 この機能では、[SMB 3.0 接続では AES CCM アルゴリズムを使用し、SMB 3.1.1 接続では AES GCM アルゴリズム](/windows-server/storage/file-server/file-server-smb-overview#features-added-in-smb-311-with-windows-server-2016-and-windows-10-version-1607)を使用して、移動中の SMB3 データの暗号化を有効にします。 SMB3 暗号化を使用していない SMB クライアントは、このボリュームにアクセスできません。 保存データは、この設定に関係なく暗号化されます。 SMB 暗号化により、さらにセキュリティが強化されます。 ただし、クライアントに影響を与える可能性があります (メッセージの暗号化と暗号化解除のための CPU オーバーヘッド)。 また、ストレージ リソースの使用率にも影響する可能性があります (スループットの低下)。 ワークロードを運用環境にデプロイする前に、アプリケーションのパフォーマンスに対する暗号化の影響をテストする必要があります。
 
@@ -138,7 +162,7 @@ Azure NetApp Files は定期的に更新されています。 この記事では
 
     手動 QoS 容量プールでは、ボリュームの容量とスループットを個別に割り当てることができます。 手動 QoS 容量プールで作成されたすべてのボリュームの合計スループットは、プールの合計スループットによって制限されます。 これは、プール サイズとサービスレベルのスループットの組み合わせによって決まります。 または、容量プールの [[QoS type]\(QoS の種類\)](azure-netapp-files-understand-storage-hierarchy.md#qos_types) を既定の設定である [auto]\(自動\) にすることもできます。 自動 QoS 容量プールでは、ボリュームに割り当てられたサイズ クォータに比例して、スループットがプール内のボリュームに自動的に割り当てられます。
 
-* [LDAP 署名](azure-netapp-files-create-volumes-smb.md) (プレビュー)   
+* [LDAP 署名](create-active-directory-connections.md#create-an-active-directory-connection) (プレビュー)   
 
     Azure NetApp Files で、Azure NetApp Files サービスとユーザー指定の Active Directory Domain Services ドメイン コントローラーとの間の LDAP 参照をセキュリティで保護する LDAP 署名がサポートされるようになりました。 現在、この機能はプレビュー段階にあります。
 

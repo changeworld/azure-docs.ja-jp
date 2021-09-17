@@ -1,5 +1,5 @@
 ---
-title: テーブルのパーティション分割
+title: 専用 SQL プールでのテーブルのパーティション分割
 description: 専用 SQL プールでのテーブル パーティションの使用に関するレコメンデーションと例
 services: synapse-analytics
 author: XiaoyuMSFT
@@ -7,16 +7,16 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 03/18/2019
+ms.date: 08/19/2021
 ms.author: xiaoyul
-ms.reviewer: igorstan
+ms.reviewer: igorstan, wiassaf
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: ed9a5c63fa86e1fac6abd9ac023bb48abd2f196d
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: ea941ae782e7da33cc07932d4b0c79613790b2e8
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110459650"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122515039"
 ---
 # <a name="partitioning-tables-in-dedicated-sql-pool"></a>専用 SQL プールでのテーブルのパーティション分割
 
@@ -134,6 +134,8 @@ GROUP BY    s.[name]
 専用 SQL プールでは、パーティションの分割、結合、および切り替えがサポートされています。 これらの各機能は、[ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) ステートメントを使用して実行されます。
 
 2 つのテーブル間でパーティションを切り替えるには、それぞれの境界に合わせてパーティションが配置されていることと、テーブル定義が一致していることを確認する必要があります。 テーブルで値の範囲を適用する際に CHECK 制約は使用できないため、ソース テーブルにターゲットテーブルと同じパーティション境界が含まれている必要があります。 パーティション境界が同じでない場合、パーティションのメタデータが同期されないため、パーティションの切り替えは失敗します。
+
+パーティション分割では、テーブルにクラスター化列ストア インデックス (CCI) がある場合、それぞれのパーティション (必ずしもテーブル全体ではなく) が空である必要があります。 同じテーブル内の他のパーティションには、データを含めることができます。 データが含まれるパーティションは分割できず、次のエラーが発生します: `ALTER PARTITION statement failed because the partition is not empty. Only empty partitions can be split in when a columnstore index exists on the table. Consider disabling the columnstore index before issuing the ALTER PARTITION statement, then rebuilding the columnstore index after ALTER PARTITION is complete.`データが含まれるパーティション分割の回避策については、「[データが含まれたパーティションを分割する方法](#how-to-split-a-partition-that-contains-data)」を参照してください。 
 
 ### <a name="how-to-split-a-partition-that-contains-data"></a>データが含まれたパーティションを分割する方法
 
@@ -278,6 +280,11 @@ ALTER TABLE dbo.FactInternetSales_NewSales SWITCH PARTITION 2 TO dbo.FactInterne
 ```
 
 ### <a name="table-partitioning-source-control"></a>テーブル パーティションのソース管理
+
+> [!NOTE]
+> パーティション スキーマを無視するようにソース管理ツールが構成されていない場合、パーティションを更新するようにテーブルのスキーマを変更すると、デプロイの一環としてテーブルがドロップされ、再作成されますが、実行されないことがあります。 次に示すように、このような変更を実装するカスタム ソリューションが必要になる場合があります。 継続的インテグレーション/継続的配置 (CI/CD) ツールを使用できるかどうかを確認します。 SQL Server Data Tools (SSDT) で "パーティション スキームを無視する" 公開詳細設定を探し、テーブルのドロップと再作成を引き起こすスクリプトの生成を回避します。
+
+この例は、空のテーブルのパーティション スキーマを更新する場合に役立ちます。 データが含まれるテーブルでパーティション変更を継続的にデプロイするには、パーティション SPLIT RANGE の適用前に各パーティションの外にデータを一時的に移動するデプロイと並行して、「[データが含まれたパーティションを分割する方法](#how-to-split-a-partition-that-contains-data)」の手順に従います。 これは、CI/CD ツールではデータが含まれるパーティションが認識されないため、必要になります。
 
 ソース管理システムでテーブル定義が **古く** ならないように、次の方法を検討することをお勧めします。
 

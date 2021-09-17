@@ -8,14 +8,16 @@ ms.topic: article
 ms.date: 04/16/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 8012702e9004361c8b19797bf0ca66553d307dce
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: c6396eab9cb7a2224d660e0e034f8592a879510d
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108138195"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122688460"
 ---
 # <a name="scaling-hpc-applications"></a>HPC アプリケーションのスケール
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 Azure 上の HPC アプリケーションの最適なスケールアップとスケールアウトのパフォーマンスには、特定のワークロードに対するパフォーマンスの調整と最適化の実験が必要です。 このセクションと VM シリーズ固有のページでは、アプリケーションをスケールするための一般的なガイダンスについて説明します。
 

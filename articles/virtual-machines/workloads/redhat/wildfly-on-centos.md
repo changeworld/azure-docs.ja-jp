@@ -11,14 +11,16 @@ ms.subservice: redhat
 ms.custom:
 - mode-api
 ms.collection: linux
-ms.openlocfilehash: 1f7bc4bcefe7535e531fcd8288a6dce0e93696e0
-ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
+ms.openlocfilehash: b2903ebbbeee8a33a0acfe37ada7c8f9cc13a85e
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113486123"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122696737"
 ---
 # <a name="quickstart-wildfly-on-centos-8"></a>クイックスタート: CentOS 8 上の WildFly
+
+**適用対象:** :heavy_check_mark: Linux VM 
 
 このクイックスタートでは、CentOS 8 VM に存在するスタンドアロンの WildFly ノードをデプロイする方法を紹介します。 これは、Azure 上でエンタープライズ Java アプリケーションの開発とテストをするうえで最適です。 このクイックスタートをデプロイする際に、アプリケーション サーバー サブスクリプションは必要ありません。
 

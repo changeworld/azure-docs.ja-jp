@@ -8,14 +8,16 @@ ms.collection: linux
 ms.topic: article
 ms.date: 12/13/2019
 ms.author: kegorman
-ms.openlocfilehash: 70d2401545c49bfb8bb1870f4881e51b7134ae59
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: a8171d29dfe88ea34d02d7f48567aeb2df46a8a7
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114450897"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122694137"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Azure 上の Oracle Database Enterprise Edition 用リファレンス アーキテクチャ
+
+**適用対象:** :heavy_check_mark: Linux VM 
 
 このガイドでは、可用性の高い Oracle データベースを Azure にデプロイする方法について詳しく説明します。 また、ディザスター リカバリーの考慮事項についても説明します。 これらのアーキテクチャは、お客様のデプロイに基づいて作成されたものです。 このガイドは Oracle Database Enterprise Edition にのみ適用されます。
 

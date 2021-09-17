@@ -3,12 +3,12 @@ title: Event Hubs - Azure portal を使用してストリーミング イベン�
 description: この記事では、Azure portal を使用し、Azure Event Hubs からストリーム配信されるイベントのキャプチャを有効にする方法について説明します。
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 8c89a6e56c2d0bc7b7ff09d5fd63737009239eb9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b603af17ca4e46b8004b7b2550cddd87164da157
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100653953"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122253639"
 ---
 # <a name="enable-capturing-of-events-streaming-through-azure-event-hubs"></a>Azure Event Hubs からストリーム配信されるイベントのキャプチャを有効にする
 
@@ -34,7 +34,7 @@ Capture は、イベント ハブを作成するときに、**[イベント ハ�
 
 ## <a name="capture-data-to-azure-data-lake-storage-gen-2"></a>Azure Data Lake Storage Gen 2 へのデータのキャプチャ 
 
-1. Azure Storage アカウントを作成するには、「[ストレージ アカウントの作成](../storage/common/storage-account-create.md?tabs=azure-portal#create-a-storage-account)」の記事を参照してください。 **[Advanced]\(詳細\)** タブで **[階層型名前空間]** を **[Enabled]\(有効\)** に設定して、これを Azure Data Lake Storage Gen 2 アカウントにします。
+1. Azure Storage アカウントを作成するには、「[ストレージ アカウントの作成](../storage/common/storage-account-create.md?tabs=azure-portal#create-a-storage-account)」の記事を参照してください。 **[Advanced]\(詳細\)** タブで **[階層型名前空間]** を **[Enabled]\(有効\)** に設定して、これを Azure Data Lake Storage Gen 2 アカウントにします。 Azure Storage アカウントは、イベント ハブと同じサブスクリプション内にある必要があります。
 2. イベント ハブを作成するときは、次の手順に従います。 
 
     1. **[キャプチャ]** で、**[オン]** を選択します。 

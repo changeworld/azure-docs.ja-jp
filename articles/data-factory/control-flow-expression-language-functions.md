@@ -1,27 +1,30 @@
 ---
-title: Azure Data Factory の式と関数
-description: この記事では、Data Factory エンティティの作成で使用できる式と関数に関する情報を提供します。
+title: 式と関数
+titleSuffix: Azure Data Factory & Azure Synapse
+description: この記事では、Azure Data Factory および Azure Synapse Analytics パイプライン エンティティの作成に使用できる式と関数に関する情報を提供します。
 author: minhe-msft
 ms.author: hemin
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: orchestration
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 04/28/2021
-ms.openlocfilehash: 275c77107faf8fd639d714b92828ab8efe623f26
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.date: 08/24/2021
+ms.openlocfilehash: aaca4774f6f56d38624b4811375a6661299161cc
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108164905"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122821772"
 ---
-# <a name="expressions-and-functions-in-azure-data-factory"></a>Azure Data Factory の式と関数
+# <a name="expressions-and-functions-in-azure-data-factory-and-azure-synapse-analytics"></a>Azure Data Factory および Azure Synapse Analytics の式と関数
 
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-functions-variables.md)
-> * [現在のバージョン](control-flow-expression-language-functions.md)
+> * [現在のバージョンまたは Synapse バージョン](control-flow-expression-language-functions.md)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-この記事では、Azure Data Factory によってサポートされている式と関数に関する詳細情報を提供します。 
+この記事では、Azure Data Factory および Azure Synapse Analytics によってサポートされる式と関数に関する詳細情報を提供します。 
 
 ## <a name="expressions"></a>式
 
@@ -60,12 +63,28 @@ ms.locfileid: "108164905"
 |"\@concat('Answer is: ', string(pipeline().parameters.myNumber))"| string `Answer is: 42` が返されます。|  
 |"Answer is: \@\@{pipeline().parameters.myNumber}"| string `Answer is: @{pipeline().parameters.myNumber}` が返されます。|  
 
+ForEach アクティビティなどの制御フロー アクティビティでは、プロパティ項目に対して反復処理する配列を指定し、@item() を使用して ForEach アクティビティの単一の列挙体を反復処理できます。 たとえば、項目が配列: [1, 2, 3] である場合、@item() は、最初の反復処理で 1 を、2 番目の反復処理で 2 を、3 番目の反復処理で 3 を返します。 また、@range(0,10) like 式を使用して、0 から 9 までの 10 回の反復処理を行うこともできます。
+
+@activity('activity name') を使用してアクティビティの出力をキャプチャでき、決定を下します。 Web1 という Web アクティビティについて考えます。 最初のアクティビティの出力を 2 番目のアクティビティの本文に配置する場合、式は通常、@activity('Web1').output または @activity('Web1').output.data、または最初のアクティビティの出力に応じて、これに類似したものになります。 
+
 ## <a name="examples"></a>例
 
 ### <a name="complex-expression-example"></a>複合式の例
-次の例は、アクティビティの出力の詳細サブフィールドを参照する複雑な例を示しています。 サブフィールドと評価されるパイプライン パラメーターを参照するには、ドット (.) 演算子ではなく、[] 構文を使用します (subfield1 と subfield2 の場合と同様)
+次の例は、アクティビティの出力の詳細サブフィールドを参照する複雑な例を示しています。 サブフィールドと評価されるパイプライン パラメーターを参照するには、ドット (.) 演算子ではなく、アクティビティ出力の一部として、[] 構文を使用します (subfield1 と subfield2 の場合と同様)。
 
 `@activity('*activityName*').output.*subfield1*.*subfield2*[pipeline().parameters.*subfield3*].*subfield4*`
+
+ファイルを動的に作成して名前を付けるのが、一般的なパターンです。 動的ファイルの名前付けの例を見てみましょう。
+
+  1. ファイル名に日付を追加します。`@concat('Test_',  formatDateTime(utcnow(), 'yyyy-dd-MM'))` 
+  
+  2. 顧客のタイムゾーンに DateTime を追加します。`@concat('Test_',  convertFromUtc(utcnow(), 'Pacific Standard Time'))`
+  
+  3. トリガー時刻を追加します。` @concat('Test_',  pipeline().TriggerTime)`
+  
+  4. 1 つのファイルを日付付きで出力するときに、Mapping Data Flow 内にカスタム ファイル名を出力します。`'Test_' + toString(currentDate()) + '.csv'`
+
+上記の場合、4 つの動的ファイル名は、先頭に Test_ が付いて作成されます。 
 
 ### <a name="dynamic-content-editor"></a>動的コンテンツ エディター
 
@@ -186,8 +205,7 @@ Baba's book store
 ```
 
 ### <a name="tutorial"></a>チュートリアル
-この[チュートリアル](https://azure.microsoft.com/mediahandler/files/resourcefiles/azure-data-factory-passing-parameters/Azure%20data%20Factory-Whitepaper-PassingParameters.pdf)では、パイプラインとアクティビティ間、およびアクティビティ間でパラメーターを渡す方法について説明します。
-
+この[チュートリアル](https://azure.microsoft.com/mediahandler/files/resourcefiles/azure-data-factory-passing-parameters/Azure%20data%20Factory-Whitepaper-PassingParameters.pdf)では、パイプラインとアクティビティ間、およびアクティビティ間でパラメーターを渡す方法について説明します。  このチュートリアルでは、Azure Data Factory の手順を具体的に示しますが、Azure Synapse Analytics ワークスペースの手順はほぼ同じであり、ユーザー インターフェイスが若干異なります。
   
 ## <a name="functions"></a>関数
 

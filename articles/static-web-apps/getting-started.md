@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 06/16/2021
 ms.author: cshoe
-ms.openlocfilehash: 3ec36a06dafb8622f97ded317f8ab2617e96662a
-ms.sourcegitcommit: d137460f55a38a0e8f8b9e6594e480d5e5f662ed
+ms.openlocfilehash: b543831ceead6d386de0617b02db93a99d9507a6
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112428838"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122609130"
 ---
 # <a name="quickstart-building-your-first-static-site-with-azure-static-web-apps"></a>クイックスタート: Azure Static Web Apps を使用して静的サイトを初めて構築する
 
@@ -46,6 +46,9 @@ Azure サブスクリプションを持っていない場合は、[無料試用�
 1. _[Static Web Apps]_ ラベルで、**プラス記号** を選択します。
 
     :::image type="content" source="media/getting-started/extension-create-button.png" alt-text="アプリケーション名":::
+    
+    > [!NOTE]
+    > Azure Static Web Apps の Visual Studio Code 拡張機能では、一連の既定値を使用して作成プロセスが効率化されます。 作成プロセスをきめ細かく制御する場合は、コマンド パレットを開き、 **[Azure Static Web Apps: Create Static Web App... (Advanced)]\(Azure Static Web Apps: 静的 Web アプリの作成 (詳細)\)** を選択します。
 
 1. エディターの上部にコマンド パレットが開き、サブスクリプションの名前を選択するように求められます。
 
@@ -65,11 +68,11 @@ Azure サブスクリプションを持っていない場合は、[無料試用�
 
     :::image type="content" source="media/getting-started/extension-presets-no-framework.png" alt-text="アプリケーション プリセット: フレームワークなし":::
 
-    アプリケーション ファイルの場所として「 **./** 」を入力し、<kbd>Enter</kbd> キーを押します。
+    アプリケーション ファイルの場所として「 **./src**」を入力し、<kbd>Enter</kbd> キーを押します。
 
     :::image type="content" source="media/getting-started/extension-build-location.png" alt-text="アプリケーション ビルドの出力場所":::
 
-    ビルドの出力場所として「 **./** 」を入力し、<kbd>Enter</kbd> キーを押します。
+    ビルドの出力場所として「 **./src**」を入力し、<kbd>Enter</kbd> キーを押します。
 
     # <a name="angular"></a>[Angular](#tab/angular)
 

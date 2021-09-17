@@ -17,12 +17,12 @@ ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: a0e4bb393e522d54bb259e1a85c645fe7f3f5e48
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: dcbc2f726d4c7c935462743578f863efc8762f79
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109786359"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121749197"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理とは
 
@@ -159,7 +159,7 @@ Azure AD Premium P2 ライセンスは、次のタスクでは必要 **ありま
 
 - 初期カタログ、アクセス パッケージ、ポリシーを設定し、管理タスクを他のユーザーに委任するグローバル管理者ロールを持つユーザーには、ライセンスは必要ありません。
 - カタログ作成者、カタログ所有者、アクセス パッケージ マネージャーなどの管理タスクを委任されたユーザーには、ライセンスは必要ありません。
-- アクセス パッケージを要求 **できる** が、アクセス パッケージを要求 **しない** ゲストには、ライセンスは必要ありません。
+- **アクセス パッケージを要求する権限** を持っていても、それらを要求することを **選択しない** ゲストには、ライセンスは必要ありません。
 
 ライセンスの詳細については、[Azure Active Directory ポータルを使用したライセンスの割り当てと削除](../fundamentals/license-users-groups.md)に関するページを参照してください。
 

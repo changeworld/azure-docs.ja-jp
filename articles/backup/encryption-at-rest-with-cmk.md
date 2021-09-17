@@ -2,14 +2,14 @@
 title: カスタマー マネージド キーを使用したバックアップ データの暗号化
 description: Azure Backup でカスタマー マネージド キー (CMK) を使用してご自分のバックアップ データを暗号化できるようにする方法を説明します。
 ms.topic: conceptual
-ms.date: 05/12/2021
+ms.date: 08/24/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 5a036d7808a365e7f4332d380246bfa17be8e6c8
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f16974d00f4801f288180814daf9ff5ed4558748
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121722659"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122778721"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>カスタマー マネージド キーを使用したバックアップ データの暗号化
 
@@ -37,6 +37,7 @@ Azure Backup を使用すると、既定で有効になっているプラット�
 - Recovery Services コンテナーは、**同じリージョン** にある Azure キー コンテナーに格納されているキーを使用した場合にのみ暗号化できます。 また、キーは **RSA キー** に限定され、**有効** 状態である必要があります。
 
 - 現在、CMK で暗号化された Recovery Services コンテナーをリソース グループとサブスクリプションの間で移動することは、サポートされていません。
+- カスタマーマネージド キーを使用して暗号化された Recovery Services コンテナーでは、バックアップ インスタンスのリージョンをまたがる復元はサポートされません。
 - 既にカスタマー マネージド キーを使用して暗号化された Recovery Services コンテナーを新しいテナントに移動する場合、Recovery Services コンテナーを更新して、コンテナーのマネージド ID および CMK (新しいテナント内にあるはずです) を再作成および再構成する必要があります。 これを実行しないと、バックアップおよび復元操作が失敗するようになります。 また、サブスクリプション内に設定されているすべてのロールベースのアクセス制御 (RBAC) アクセス許可も再構成する必要があります。
 
 - この機能は、Azure portal と PowerShell を使用して構成できます。
@@ -112,7 +113,11 @@ TenantId    : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 Type        : SystemAssigned
 ```
 
-### <a name="assign-user-assigned-managed-identity-to-the-vault"></a>ユーザー割り当てマネージド ID をコンテナーに割り当てる
+### <a name="assign-user-assigned-managed-identity-to-the-vault-in-preview"></a>ユーザー割り当てマネージド ID をコンテナーに割り当てる (プレビュー段階)
+
+>[!Note]
+>- CMK 暗号化のためにユーザーが割り当てたマネージド ID を使用するコンテナーでは、バックアップ用のプライベート エンドポイントの使用はサポートされません。
+>- 特定のネットワークへのアクセスを制限する Azure Key Vault は、CMK 暗号化用のユーザー割り当てマネージド ID と共に、まだサポートされていません。
 
 Recovery Services コンテナーのユーザー割り当てマネージド ID を割り当てるには、次の手順を実行します。
 

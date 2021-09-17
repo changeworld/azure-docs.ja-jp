@@ -4,15 +4,15 @@ description: この記事では、Service Bus のイベントを Event Grid 経�
 documentationcenter: .net
 author: spelluru
 ms.topic: tutorial
-ms.date: 07/26/2021
+ms.date: 08/13/2021
 ms.author: spelluru
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 36690973f441c80f71c1941c63cd40d91c1efd08
-ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
+ms.openlocfilehash: 013468d1b6e5ba6fccb1277f715b5a42a469f4a2
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114719871"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122182603"
 ---
 # <a name="tutorial-respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-logic-apps"></a>チュートリアル:Azure Event Grid 経由で受信した Azure Service Bus のイベントに Azure Logic Apps を使用して応答する
 このチュートリアルでは、Azure Logic Apps を使用して、Azure Event Grid 経由で受信した Azure Service Bus イベントに応答する方法について説明します。 
@@ -44,7 +44,7 @@ ms.locfileid: "114719871"
     2. **[リソースの種類]** で、 **[Microsoft.ServiceBus.Namespaces]** を選択します。 
     3. **[リソース名]** で、Service Bus 名前空間を選択します。 
     4. **[新しいパラメーターの追加]** を選択し、 **[サフィックス フィルター]** を選択します。 
-    5. **[サフィックス フィルター]** で、Service Bus トピックの 2 つ目のサブスクリプションの名前を入力します。 
+    5. **[サフィックス フィルター]** で、Service Bus トピックのサブスクリプションの名前を入力します。 
         ![Logic Apps デザイナー - イベントの構成](./media/service-bus-to-event-grid-integration-example/logic-app-configure-event.png)
 6. デザイナーで **[+ 新しいステップ]** を選択し、次の手順を実行します。
     1. **Service Bus** を検索します。
@@ -102,7 +102,7 @@ ms.locfileid: "114719871"
     1. **[最近使った項目]** 一覧から **[Service Bus]** を選択します。
     2. アクションの一覧から **[トピック サブスクリプション内のメッセージを完了する]** を選択します。 
     3. Service Bus **トピック** を選択します。
-    4. トピックに対する 2 つ目の **サブスクリプション** を選択します。
+    4. トピックに対する **サブスクリプション** を選択します。
     5. **[メッセージのロック トークン]** で、 **[動的なコンテンツ]** から **[ロック トークン]** を選択します。 
 
         ![Logic Apps デザイナー - メッセージを完成させる](./media/service-bus-to-event-grid-integration-example/logic-app-complete-message.png)

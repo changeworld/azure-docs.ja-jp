@@ -3,12 +3,12 @@ title: Azure Arc 対応サーバーを Azure に移行する
 description: オンプレミスまたは他のクラウド環境で実行されている Azure Arc 対応サーバーを Azure に移行する方法について説明します。
 ms.date: 07/16/2021
 ms.topic: conceptual
-ms.openlocfilehash: 9dd7baa2466f4acd3e4106c3cec5a0d7e7afe05c
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: 5433c859389722884df525ab7ac885ae013f9e59
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114390238"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122768276"
 ---
 # <a name="migrate-your-on-premises-or-other-cloud-arc-enabled-server-to-azure"></a>オンプレミスまたは他のクラウドの Arc 対応サーバーを Azure に移行する
 
@@ -42,7 +42,7 @@ Azure CLI では、`--machine-name` と `--resource-group` パラメーターを
 
 Arc 対応サーバーで実行されているアプリケーションまたはプロセスにマネージド ID を使用している場合は、Azure VM にマネージド ID が割り当てられていることを確認する必要があります。 マネージド ID のロールの割り当てを表示するには、Azure PowerShell の `Get-AzADServicePrincipal` コマンドレットを使用できます。 詳細については、「[マネージド ID のロールの割り当ての一覧表示](../../role-based-access-control/role-assignments-list-powershell.md#list-role-assignments-for-a-managed-identity)」を参照してください。 
 
-マシンまたはサーバー内の設定の監査に Azure Policy が使用されている場合は、システム マネージド ID も使用されます。 Arc 対応サーバーでは、ゲスト構成エージェントが含まれており、監査設定の検証を実行します。 移行後は、手動で、またはゲスト構成拡張機能のポリシーを使用して Azure VM を構成する方法について、[Azure 仮想マシンのデプロイ要件](../../governance/policy/concepts/guest-configuration.md#deploy-requirements-for-azure-virtual-machines)に関する記事を参照してください。
+マシンまたはサーバー内の設定の監査または構成に Azure Policy が使用されている場合は、システム マネージド ID も使用されます。 Arc 対応サーバーでは、ゲスト構成エージェント サービスが含まれており、それによって監査設定の検証が実行されます。 移行後は、手動で、またはゲスト構成拡張機能のポリシーを使用して Azure VM を構成する方法について、[Azure 仮想マシンのデプロイ要件](../../governance/policy/concepts/guest-configuration.md#deploy-requirements-for-azure-virtual-machines)に関する記事を参照してください。
 
 マネージド ID でアクセスされるリソースのロールの割り当てを更新し、新しい Azure VM ID でそれらのサービスに対する認証を行えるようにします。 「[Azure リソースのマネージド ID と Azure 仮想マシン (VM) の連携](../../active-directory/managed-identities-azure-resources/how-managed-identities-work-vm.md)」を参照して、その方法を確認してください。
 
@@ -70,7 +70,7 @@ Azure Migration を使用した移行に進む前に、「[Azure への移行に
 
 移行とすべての移行後の構成手順が完了したら、Arc 対応サーバーにもともとインストールされていた VM 拡張機能に基づいて Azure VM 拡張機能をデプロイできます。 「[Azure 仮想マシンの拡張機能とその機能](../../virtual-machines/extensions/overview.md)」を参照して、拡張機能のデプロイを計画します。 
 
-Azure Policy のゲスト構成ポリシー定義を使ってマシン内の監査設定の使用を再開するには、「[ゲスト構成を有効にする](../../governance/policy/concepts/guest-configuration.md#enable-guest-configuration)」を参照してください。
+ゲスト構成ポリシー定義を使ってマシン内の監査設定の使用を再開するには、「[ゲスト構成を有効にする](../../governance/policy/concepts/guest-configuration.md#enable-guest-configuration)」を参照してください。
 
 Log Analytics の VM 拡張機能または Dependency Agent の VM 拡張機能が Azure Policy と [VM insights のイニシアチブ](../../azure-monitor/vm/vminsights-enable-policy.md)を使用してデプロイされていた場合は、前に作成した[除外](../../governance/policy/tutorials/create-and-manage.md#remove-a-non-compliant-or-denied-resource-from-the-scope-with-an-exclusion)を削除します。 Azure Policy を使用して Azure 仮想マシンを有効にするには、「[Azure Policy を使用して大規模に Azure Monitor をデプロイする](../../azure-monitor/deploy-scale.md#vm-insights)」を参照してください。 
 

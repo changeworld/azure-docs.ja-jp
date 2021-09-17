@@ -1,30 +1,25 @@
 ---
 title: Azure で Windows VM の OS ドライブを展開する
 description: Resource Manager デプロイ モデルで Azure PowerShell を使用して仮想マシンの OS ドライブのサイズを拡張します。
-services: virtual-machines
-documentationcenter: ''
 author: kirpasingh
 manager: roshar
-editor: ''
-tags: azure-resource-manager
-ms.assetid: d9edfd9f-482f-4c0b-956c-0d2c2c30026c
 ms.service: virtual-machines
 ms.collection: windows
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure-services
 ms.date: 09/02/2020
 ms.author: kirpas
 ms.subservice: disks
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 74ce4cf27f8a8be8fd86bad3e3f03589cf3640ea
-ms.sourcegitcommit: 9caa850a2b26773e238f8ba6f4ca151c47260915
+ms.openlocfilehash: fbc7a6df9dfdd50315176db343c6c94aaefbba12
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2021
-ms.locfileid: "113600534"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692481"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>仮想マシンの OS ドライブを展開する方法
+
+**適用対象:** :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット 
 
 [Azure Marketplace](https://azure.microsoft.com/marketplace/) からイメージをデプロイしてリソース グループに新しい仮想マシン (VM) を作成するとき、多くの場合、既定の OS ドライブは 127 GB です (一部のイメージでは既定の OS ディスク サイズが小さくなります)。 VM にデータ ディスクを追加することは可能であり (数は、選択されている SKU によって決まります)、また、アプリケーションと、CPU を負荷の高いワークロードはこれらの追加ディスクにインストールすることが推奨されていますが、多くの場合、次のような特定のシナリオをサポートするために OS ドライブの拡張が必要になります。
 

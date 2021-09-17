@@ -4,13 +4,13 @@ description: app 式は、同じリソース グループ、別のリソース �
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 05/09/2019
-ms.openlocfilehash: 9d60857503402554381068fc36121fa3f7b61622
-ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
+ms.date: 08/11/2021
+ms.openlocfilehash: 1c7659d8b566649291e135c68c677b3f3a074d9f
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107283560"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122515470"
 ---
 # <a name="app-expression-in-azure-monitor-query"></a>Azure Monitor クエリでの app() 式
 
@@ -41,7 +41,7 @@ ms.locfileid: "107283560"
 * アプリケーションへの読み取りアクセスが必要です。
 * アプリケーションをその名前で識別することで、アクセス可能なすべてのサブスクリプション全体で一意であるとみなされます。 指定した名前を持つ複数のアプリケーションが存在する場合は、あいまいさのためにクエリが失敗します。 この場合、その他の識別子のいずれかを使用する必要があります。
 * 関連する[ワークスペース](../logs/workspace-expression.md)の式を使用して、Log Analytics ワークスペースにわたってクエリを実行します。
-* Application Insights アプリケーションがアラート ルールのリソースとして使用されていない限り、Azure portal を使用して[カスタム ログ検索アラート ルール](../alerts/alerts-log.md)を作成する場合、現在のところ検索クエリには app() 式を使用できません。
+* Application Insights アプリケーションがアラート ルールのリソースとして使用されていない限り、Azure portal を使用して[カスタム ログ クエリ アラート ルール](../alerts/alerts-log.md)を作成する場合、現在のところ、ログ クエリには app() 式を使用できません。
 
 ## <a name="examples"></a>例
 

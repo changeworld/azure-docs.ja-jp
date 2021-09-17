@@ -1,30 +1,32 @@
 ---
 title: コピー アクティビティ パフォーマンス最適化機能
-description: Azure Data Factory のコピー アクティビティのパフォーマンスを最適化するのに役立つ主な機能について説明します。
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Azure Data Factory と Azure Synapse Analytics のパイプラインでのコピー アクティビティのパフォーマンスを最適化するのに役立つ主な機能について説明します。
 ms.author: jianleishen
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.custom: seo-lt-2019
-ms.date: 09/24/2020
-ms.openlocfilehash: e161ddbeaad0f9e366baa1265622bede93d5b567
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.custom: synapse
+ms.date: 08/24/2021
+ms.openlocfilehash: 9be8ef1772da6259441a8de4c85fa44d54945c7d
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109482617"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122821817"
 ---
 # <a name="copy-activity-performance-optimization-features"></a>コピー アクティビティ パフォーマンス最適化機能
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-この記事では、Azure Data Factory で利用できるコピー アクティビティのパフォーマンス最適化機能について説明します。
+この記事では、Azure Data Factory と Azure Synapse Analytics のパイプラインで利用できるコピー アクティビティのパフォーマンス最適化機能について説明します。
 
 ## <a name="data-integration-units"></a>データ統合単位
 
-データ統合単位は、Azure Data Factory の 1 つの単位の能力 (CPU、メモリ、ネットワーク リソース割り当ての組み合わせ) を表す尺度です。 データ統合単位は [Azure 統合ランタイム](concepts-integration-runtime.md#azure-integration-runtime)にのみ適用され、[セルフホステッド統合ランタイム](concepts-integration-runtime.md#self-hosted-integration-runtime)には適用されません。
+データ統合単位は、サービス内の 1 つの単位の能力 (CPU、メモリ、ネットワーク リソース割り当ての組み合わせ) を表す尺度です。 データ統合単位は [Azure 統合ランタイム](concepts-integration-runtime.md#azure-integration-runtime)にのみ適用され、[セルフホステッド統合ランタイム](concepts-integration-runtime.md#self-hosted-integration-runtime)には適用されません。
 
-コピー アクティビティの実行を支援するために許可される DIU は **2 から 256** です。 指定しなかった場合、または UI で [自動] を選択した場合、ソースとシンクのペアとデータ パターンに基づいて、最適な DIU 設定が Data Factory によって動的に適用されます。 次の表に、さまざまなコピー シナリオでサポートされている DIU 範囲と既定の動作をリストします。
+コピー アクティビティの実行を支援するために許可される DIU は **2 から 256** です。 指定しなかった場合、または UI で [自動] を選択した場合、ソースとシンクのペアとデータ パターンに基づいて、最適な DIU 設定がサービスによって動的に適用されます。 次の表に、さまざまなコピー シナリオでサポートされている DIU 範囲と既定の動作をリストします。
 
 | コピー シナリオ | サポートされている DIU 範囲 | サービスによって決定される既定の DIU |
 |:--- |:--- |---- |
@@ -77,10 +79,10 @@ ms.locfileid: "109482617"
 
 並列コピーは、[データ統合ユニット](#data-integration-units) または [セルフホステッド IR ノード](#self-hosted-integration-runtime-scalability) に直交します。 すべての DIU またはセルフホステッド IR ノードでカウントされます。
 
-コピー アクティビティが実行されるたびに、Azure Data Factory では、既定で、ソースとシンクのペアおよびデータ パターンに基づいて、最適な並列コピー設定が動的に適用されます。 
+コピー アクティビティが実行されるたびに、サービスでは、既定で、ソースとシンクのペアとデータ パターンに基づいて、最適な並列コピー設定が動的に適用されます。 
 
 > [!TIP]
-> 通常、並列コピーの既定の動作では、ソースシンク ペア、データパターン、DIU の数、またはセルフホステッド IR の CPU/メモリ/ノード数に基づいて ADF によって自動決定される最適なスループットが得られます。 並列コピーを調整するタイミングについては、「[コピーアクティビティのパフォーマンスのトラブルシューティング](copy-activity-performance-troubleshooting.md)」を参照してください。
+> 通常、並列コピーの既定の動作では、ソースとシンクのペア、データ パターン、DIU の数、またはセルフホステッド IR の CPU/メモリ/ノード数に基づいて、サービスによって自動決定される最適なスループットが得られます。 並列コピーを調整するタイミングについては、「[コピーアクティビティのパフォーマンスのトラブルシューティング](copy-activity-performance-troubleshooting.md)」を参照してください。
 
 次の表は、並列コピーの動作をリストしています。
 
@@ -131,7 +133,7 @@ ms.locfileid: "109482617"
 
 ### <a name="how-staged-copy-works"></a>ステージング コピーのしくみ
 
-ステージング機能をアクティブにすると、まずデータがソース データ ストアからステージング ストレージにコピーされます (ご自分の Azure Blob または Azure Data Lake Storage Gen2 が使用されます)。 次に、データはステージングからシンクのデータ ストアにコピーされます。 Azure Data Factory のコピー アクティビティを使用すると、2 段階のフローが自動的に管理され、データの移動が完了した後は、ステージング ストレージから一時データがクリーンアップされます。
+ステージング機能をアクティブにすると、まずデータがソース データ ストアからステージング ストレージにコピーされます (ご自分の Azure Blob または Azure Data Lake Storage Gen2 が使用されます)。 次に、データはステージングからシンクのデータ ストアにコピーされます。 コピー アクティビティでは、2 段階のフローが自動的に管理され、データの移動が完了した後、ステージング ストレージから一時データがクリーンアップされます。
 
 ![ステージング コピー](media/copy-activity-performance/staged-copy.png)
 

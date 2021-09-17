@@ -6,12 +6,12 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 03/13/2021
-ms.openlocfilehash: 7dd11143e3852d17787de5e20ebe53290f5af96f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3e7780f2214cd603bbf4bd7955a8be7bc7128b89
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121731184"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122777623"
 ---
 # <a name="set-up-an-appliance-for-physical-servers"></a>物理サーバー用にアプライアンスを設定する
 
@@ -62,7 +62,7 @@ Azure Migrate アプライアンスに関する[詳細を確認](migrate-applian
 
     **ダウンロード** | **ハッシュ値**
     --- | ---
-    [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2140334) | b4668be44c05836bf0f2ac1c8b1f48b7a9538afcf416c5212c7190629e3683b2
+    [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2140334) | CA8CEEE4C7AC13328ECA56AE9EB35137336CD3D73B1F867C4D736286EF61A234
 
 > [!NOTE]
 > 同じスクリプトを使用して、Azure パブリックまたは Azure Government クラウドに物理アプライアンスを設定できます。
@@ -77,7 +77,7 @@ Azure Migrate アプライアンスに関する[詳細を確認](migrate-applian
     
     ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> .\AzureMigrateInstaller.ps1 ```
 
-5. シナリオ、クラウド、接続性の各選択肢から選択して、必要な構成でアプライアンスをデプロイします。 たとえば、以下に示す選択内容の場合、アプライアンスは、**Azure パブリック クラウド** 上の **既定の " _(パブリック エンドポイント)_ " 接続** を使用して、**物理サーバー** " _(または AWS、GCP、Xen などの他のクラウドで実行されているサーバー)_ " を検出し、Azure Migrate プロジェクトに対して評価するように設定されます。
+5. シナリオ、クラウド、接続性からそれぞれオプションを選択して、必要な構成でアプライアンスをデプロイします。 たとえば、以下に示す選択内容の場合は、**Azure パブリック クラウド** 上の **既定の _(パブリック エンドポイント)_ 接続性** を使用して、**物理サーバー** _(または AWS、GCP、Xen などの他のクラウドで実行されているサーバー)_ を検出し、Azure Migrate プロジェクトに評価するようにアプライアンスが設定されます。
 
     :::image type="content" source="./media/tutorial-discover-physical/script-physical-default-1.png" alt-text="必要な構成でアプライアンスを設定する方法を示すスクリーンショット。":::
 

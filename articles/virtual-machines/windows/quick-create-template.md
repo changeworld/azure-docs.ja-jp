@@ -9,14 +9,16 @@ ms.workload: infrastructure
 ms.date: 06/04/2020
 ms.author: cynthn
 ms.custom: subject-armqs
-ms.openlocfilehash: b3ba1aefb02e8cfb139b1afc07e2c57e1d80fe94
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: cb80d5e6bc6d12dfe51420b25560f83376125a13
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112080275"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122693839"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Windows 仮想マシンを作成する
+
+**適用対象:** :heavy_check_mark: Windows VM 
 
 このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して、Azure に Windows 仮想マシン (VM) をデプロイする方法を示します。
 

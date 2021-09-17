@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: azure-redhat-openshift
 ms.date: 10/26/2020
-ms.openlocfilehash: 219ff986e88bca31912cfe8be72e9dba179b9236
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 707ee38ef71a0f3f3f09e142bd4d944bb04cff3d
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112289569"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122446131"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>チュートリアル:Azure Red Hat OpenShift 4 クラスターを作成する
 
@@ -42,7 +42,7 @@ ARO プル シークレットを使用することで、ARO の RH OpenShift ラ
 
 このチュートリアルでは、クラスターの仮想ネットワークを含むリソース グループを作成します。 共同作成者とユーザー アクセス管理者のアクセス許可、または仮想ネットワークに対する直接の所有者アクセス許可、またはそれを含むリソース グループまたはサブスクリプションに対する所有者アクセス許可を取得している必要があります。
 
-また、クラスターのアプリケーションとサービス プリンシパルを作成するために、ツールに対する十分な Azure Active Directory アクセス許可を取得している必要があります。
+また、クラスターのアプリケーションとサービス プリンシパルを作成するために、ツールに対する十分な Azure Active Directory アクセス許可 (テナントのメンバー ユーザー、または **アプリケーション管理者** ロールが割り当てられたゲスト ユーザー) も必要になります。 詳細については、「[メンバーとゲスト ユーザー](/azure/active-directory/fundamentals/users-default-permissions#member-and-guest-users)」および「[Azure Active Directory を使ってユーザーに管理者と管理者以外のロールを割り当てる](/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)」を参照してください。
 
 ### <a name="register-the-resource-providers"></a>リソース プロバイダーを登録する
 
@@ -124,7 +124,7 @@ Red Hat プル シークレットを使用すると、クラスターは追加�
    Azure リソース グループは、Azure リソースが展開され管理される論理グループです。 リソース グループを作成する際は、場所を指定するよう求められます。 この場所は、リソース グループのメタデータが格納される場所です。また、リソースの作成時に別のリージョンを指定しない場合は、Azure でリソースが実行される場所でもあります。 [az group create](/cli/azure/group#az_group_create) コマンドを使用して、リソース グループを作成します。
     
    > [!NOTE] 
-   > Azure Red Hat OpenShift は、Azure リソース グループを作成できるすべてのリージョンで使用可能なわけではありません。 Azure Red Hat OpenShift がサポートされている場所については、「[使用可能なリージョン](https://azure.microsoft.com/en-gb/global-infrastructure/services/?products=openshift)」を参照してください。
+   > Azure Red Hat OpenShift は、Azure リソース グループを作成できるすべてのリージョンで使用可能なわけではありません。 Azure Red Hat OpenShift がサポートされている場所については、「[使用可能なリージョン](https://azure.microsoft.com/global-infrastructure/services/?products=openshift)」を参照してください。
 
    ```azurecli-interactive
    az group create \

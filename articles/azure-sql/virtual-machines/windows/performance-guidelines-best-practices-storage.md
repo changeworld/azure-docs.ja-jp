@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/25/2021
 ms.author: dpless
 ms.reviewer: jroth
-ms.openlocfilehash: d7d33fe4bc94de3d1fdca3d2b2e99d0663e39c97
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 86db0ce090c68f1a610aae6c69ed74dcf303416a
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112289857"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122635204"
 ---
 # <a name="storage-performance-best-practices-for-sql-server-on-azure-vms"></a>ストレージ: Azure VM 上の SQL Server のパフォーマンスに関するベスト プラクティス
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -193,10 +193,12 @@ Premium Storage でキャッシュを有効にすると、仮想マシンは、�
 |---------|---------|
 | **データ ディスク** | SQL Server データ ファイルをホストするディスクの `Read-only` キャッシュを有効にします。 <br/> キャッシュからの読み取りは、データ ディスクからのキャッシュ不使用時の読み取りよりも高速です。 <br/> キャッシュ不使用時の IOPS とスループットに加え、キャッシュが有効な場合の IOPS とスループットによって、VM の制限内で、仮想マシンから利用可能なパフォーマンスの合計が得られますが、実際のパフォーマンスは、ワークロードのキャッシュ使用能力 (キャッシュ ヒット率) によって異なります。 <br/>|
 |**トランザクション ログ ディスク**|トランザクション ログをホストするディスクのキャッシュ ポリシーを `None` に設定します。  トランザクション ログ ディスクのキャッシュを有効にしてもパフォーマンス上の利点はありません。それだけではなく、ログ ドライブで `Read-only` または `Read/Write` のキャッシュを有効にすると、ドライブに対する書き込みのパフォーマンスが低下し、データ ドライブの読み取りに使用できるキャッシュの量が減少することがあります。  |
-|**OS ディスクの運用** | OS ドライブの既定のキャッシュ ポリシーは、`Read-only` または `Read/write` にできます。 <br/> OS ドライブのキャッシュ レベルは変更しないことをお勧めします。  |
+|**OS ディスクの運用** | OS ドライブの既定のキャッシュ ポリシーは `Read/write` です。 <br/> OS ドライブのキャッシュ レベルは変更しないことをお勧めします。  |
 | **tempdb**| 容量の理由により、tempdb を一時ドライブ は `D:\` に配置できない場合、仮想マシンのサイズを変更して、より大きな一時ドライブを取得するか、`Read-only` キャッシュが構成された別のデータドライブに tempdb を配置します。 <br/> 仮想マシンのキャッシュと一時ドライブはどちらもローカル SSD を使用します。そのため、サイズ変更する際には、エフェメラル ドライブでホストされると、tempdb の I/O が、キャッシュが有効な IOPS とスループットの仮想マシン上限に対して不利に作用することに注意してください。| 
 | | | 
 
+> [!IMPORTANT]
+> Azure ディスクのキャッシュ設定を変更すると、対象となるディスクをデタッチして再アタッチします。 SQL Server のデータ、ログ、またはアプリケーション ファイルがホストされているディスクのキャッシュ設定を変更するときは、データが破損しないように、SQL Server サービスと共に他の関連サービスを停止してください。
 
 詳細については、「[ディスク キャッシュ](../../../virtual-machines/premium-storage-performance.md#disk-caching)」を参照してください。 
 

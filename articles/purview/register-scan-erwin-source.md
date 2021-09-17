@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 7/16/2021
-ms.openlocfilehash: 55ec355cf28f08618b1c51670b876f93dee69cc8
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: 2b6c9f621c4c18a172e12bc93387eb75451cb851
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114393655"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121736335"
 ---
 # <a name="register-and-scan-erwin-mart-server-preview"></a>erwin Mart サーバーの登録とスキャン (プレビュー)
 
@@ -54,12 +54,12 @@ erwin Mart ソースでサポートされている認証は、ユーザー名と
 
 新しい erwin Mart をデータ カタログに登録するには、次のようにします。
 
-1.  ご自分の Purview アカウントに移動します。
-2.  左側のナビゲーションで **[ソース]** を選択します。
-3.  **[登録]** を選択します。
-4.  [Register sources]\(ソースの登録\) で、 **[erwin]** を選択します。 **[続行].** を選択します。
+1. ご自分の Purview アカウントに移動します。
+1. 左側のナビゲーションで **[Data Map]** を選択します。
+1. **[登録]** を選択します
+1. [Register sources]\(ソースの登録\) で、 **[erwin]** を選択します。 **[続行]** を選択します。
     :::image type="content" source="media/register-scan-erwin-source/register-sources.png" alt-text="erwin ソースの登録" border="true":::
-    
+
 ソースの登録 (erwin) 画面で、次のようにします。
 
 1.  データ ソースがカタログに一覧表示されるときの **名前** を入力します。

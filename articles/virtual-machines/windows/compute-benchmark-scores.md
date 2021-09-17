@@ -9,14 +9,17 @@ ms.workload: infrastructure-services
 ms.date: 04/08/2021
 ms.author: cynthn
 ms.reviewer: davberg
-ms.openlocfilehash: fd2ab3926cfe8357bdb3a28fd833bfd6e91d5da0
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: f83a2a8aab4f1daf9fe4317491b2ed3591ec227d
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107479561"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122689711"
 ---
 # <a name="compute-benchmark-scores-for-windows-vms"></a>Windows VM のコンピューティング ベンチマーク スコア
+
+**適用対象:** :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット 
+
 以降の CoreMark ベンチマーク スコアは、Windows Server 2019 が実行されている Azure VM の計算性能を示しています。 コンピューティング ベンチマーク スコアは [Linux VM](../linux/compute-benchmark-scores.md)にも利用できます。
 
 | Type | ファミリ |

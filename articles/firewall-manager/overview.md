@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 06/21/2021
+ms.date: 08/03/2021
 ms.author: victorh
-ms.openlocfilehash: c5ba8ed36bc59b9b26dc854a0c1a1757f1c47266
-ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
+ms.openlocfilehash: 9a6e6a0713179295379e758f454617484c75b9a2
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2021
-ms.locfileid: "113595329"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122779158"
 ---
 # <a name="what-is-azure-firewall-manager"></a>Azure Firewall Manager とは
 
@@ -87,6 +87,8 @@ Azure Firewall Manager には、次の既知の問題があります。
 |一括 IP アドレス追加が失敗する|複数のパブリック IP アドレスを追加すると、セキュリティで保護されたハブ ファイアウォールがエラー状態になります。|より少ない増分のパブリック IP アドレスを追加します。 たとえば、一度に 10 個を追加します。|
 |セキュリティ保護付き仮想ハブで DDoS Protection Standard がサポートされていない|DDoS Protection Standard は vWAN と統合されていません。|調査中|
 |アクティビティ ログが完全にはサポートされていない|現在、ファイアウォール ポリシーでは、アクティビティ ログはサポートされていません。|調査中|
+|ルールの説明が完全にサポートされていない|ファイアウォール ポリシーで、ARM エクスポート内のルールの説明が表示されません。|調査中|
+|Azure Firewall Manager で、静的およびカスタムのルートが上書され、仮想 WAN ハブのダウンタイムの原因となっている。|Azure Firewall Manager を使用して、カスタムまたは静的ルートを使用して構成されたデプロイの設定を管理しないでください。 Firewall Manager からの更新によって、静的またはカスタムのルート設定が上書きされる可能性があります。|静的またはカスタムのルートを使用する場合は、[Virtual WAN] ページを使用してセキュリティ設定を管理し、Azure Firewall Manager を使用した構成は避けてください。<br><br>詳細については、「[シナリオ: Azure Firewall - カスタム](../virtual-wan/scenario-route-between-vnets-firewall.md)」をご覧ください。|
 
 ## <a name="next-steps"></a>次のステップ
 

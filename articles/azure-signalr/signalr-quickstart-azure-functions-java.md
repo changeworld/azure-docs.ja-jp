@@ -10,12 +10,12 @@ ms.devlang: java
 ms.custom:
 - devx-track-java
 - mode-api
-ms.openlocfilehash: fdcc8b9355556804b2f13fccd206eb13ac7c0cb6
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: c5f363ce78724ed569ec3ab24cd6c1fa640954e2
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112462057"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444433"
 ---
 # <a name="quickstart-use-java-to-create-an-app-showing-github-star-count-with-azure-functions-and-signalr-service"></a>クイック スタート: Java を使用して Azure Functions と SignalR Service で GitHub の星の数を表示するアプリを作成する
 
@@ -140,7 +140,7 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
             HttpResponse<String> res = client.send(req, BodyHandlers.ofString());
             Gson gson = new Gson();
             GitResult result = gson.fromJson(res.body(), GitResult.class);
-            return new SignalRMessage("newMessage", "Current start count of https://github.com/Azure/azure-signalr is:".concat(result.stargazers_count));
+            return new SignalRMessage("newMessage", "Current star count of https://github.com/Azure/azure-signalr is:".concat(result.stargazers_count));
         }
     
         class GitResult {
@@ -215,7 +215,7 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
     </html>
     ```
 
-5. もう少しで完了です。 最後のステップでは、Azure 関数の設定に SignalR Service の接続文字列を設定します。
+5. もう少しで完了です。 最後の手順では、Azure Functions の設定に SignalR Service の接続文字列を設定します。
 
     1. Azure portal を開いているブラウザーのポータルの上部にある検索ボックスから、以前にデプロイした SignalR Service インスタンスの名前で検索し、インスタンスが正常に作成されたことを確認します。 インスタンスを選択して開きます。
 
@@ -228,23 +228,23 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
     1. プライマリ接続文字列をコピーします。 そして、以下のコマンドを実行します。
     
         ```bash
-        func settings add AzureSignalRConnectionString '<signalr-connection-string>'
+        func settings add AzureSignalRConnectionString "<signalr-connection-string>"
         # Also we need to set AzureWebJobsStorage as Azure Function's requirement
-        func settings add AzureWebJobsStorage 'UseDevelopmentStorage=true'
+        func settings add AzureWebJobsStorage "UseDevelopmentStorage=true"
         ```
     
-6. Azure 関数をローカル環境で実行します。
+6. Azure Functions をローカルで実行します:
 
     ```bash
     mvn clean package
     mvn azure-functions:run
     ```
 
-    ローカル環境で Azure 関数が実行されるようになった後。 ブラウザーから `http://localhost:7071/api/index` にアクセスすると、現在の開始カウントを確認できます。 また、GitHub で星を付けたり外したりすると、数秒ごとに星の数が更新されます。
+    その後、Azure Functions がローカルで実行されます。 ブラウザーを使用して `http://localhost:7071/api/index` にアクセスすると、現在の星の数を確認できます。 また、GitHub で星を付けたり外したりすると、数秒ごとに星の数が更新されます。
 
     > [!NOTE]
-    > SignalR のバインディングには Azure Storage が必要ですが、関数がローカル環境で実行されている場合は、ローカル ストレージ エミュレーターを使用できます。
-    > `There was an error performing a read operation on the Blob Storage Secret Repository. Please ensure the 'AzureWebJobsStorage' connection string is valid.` のようなエラーが発生した場合は、[ストレージ エミュレーター](../storage/common/storage-use-emulator.md)をダウンロードして有効にする必要があります
+    > SignalR のバインディングには Azure Storage が必要ですが、Function がローカルで動作している場合は、ローカル ストレージ エミュレーターを使用することができます。
+    > `There was an error performing a read operation on the Blob Storage Secret Repository. Please ensure the 'AzureWebJobsStorage' connection string is valid.` のようなエラーが発生した場合は、[Storage Emulator](../storage/common/storage-use-emulator.md) をダウンロードして有効にする必要があります
     
 問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qsjava)。
 
@@ -256,7 +256,7 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
 ## <a name="next-steps"></a>次のステップ
 
 このクイックスタートでは、リアルタイムのサーバーレス アプリケーションを構築してローカルで実行しました。 Azure Functions で SignalR Service のバインディングを使用する方法について確認します。
-次に、SignalR Service を使用して、クライアントと Azure 関数の間で双方向通信を行う方法の詳細を確認します。
+次に、SignalR Service を使用して、クライアントと Azure Functions の間で双方向通信を行う方法について詳しく説明します。
 
 > [!div class="nextstepaction"]
 > [Azure Functions における SignalR サービスのバインド](../azure-functions/functions-bindings-signalr-service.md)

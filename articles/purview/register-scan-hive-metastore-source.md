@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 5/17/2021
-ms.openlocfilehash: c289ab60973c0e907deb97c0e8520f8b608099eb
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 0a7d8a22cf8f9dcdaac9d3fe07bd6ab006e61818
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114467083"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751899"
 ---
 # <a name="register-and-scan-hive-metastore-database"></a>Hive メタストア データベースを登録してスキャンする
 
@@ -36,7 +36,7 @@ Hive メタストア ソースでは **Hive メタストア データベース**
     > [!Note]
     > このドライバーは、VM 内のすべてのアカウントからアクセスできる必要があります。 それをユーザー アカウントにインストールしないでください。
 
-5.  サポートされている Hive のバージョンは 2.x から 3.x までです。
+5.  サポートされている Hive のバージョンは 2.x から 3.x までです。 サポートされている Databricks のバージョンは 8.0 以降です。 
 
 ## <a name="setting-up-authentication-for-a-scan"></a>スキャンでの認証の設定
 
@@ -48,9 +48,9 @@ Hive メタストア データベース用にサポートされている認証�
 
 1.  ご自分の Purview アカウントに移動します。
 
-2.  左側のナビゲーションで **[ソース]** を選択します。
+2.  左側のナビゲーションで **[Data Map]** を選択します。
 
-3.  **[登録]** を選択します。
+3.  **[登録]** を選択します
 
 4.  [Register sources]\(ソースの登録\) で、Hive **メタストア** を選択します。 **[続行]** を選択します。
 
