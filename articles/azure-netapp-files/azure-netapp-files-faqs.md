@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/08/2021
+ms.date: 09/01/2021
 ms.author: b-juche
-ms.openlocfilehash: 46db9181657e5271f5aee567365e1f616caddc3f
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: 119cf21f90102f7ebccd8e4e06cd5e5dee3c4bfe
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112061508"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123427986"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Azure NetApp Files についての FAQ
 
@@ -53,6 +53,10 @@ ms.locfileid: "112061508"
 ### <a name="does-azure-netapp-files-support-dual-stack-ipv4-and-ipv6-vnet"></a>Azure NetApp Files はデュアル スタック (IPv4 および IPv6) VNet をサポートしていますか?
 
 いいえ。Azure NetApp Files は現時点ではデュアル スタック (IPv4 および IPv6) VNet をサポートしていません。  
+
+### <a name="is-the-number-of-the-ip-addresses-using-azure-vmware-solutions-for-guest-os-mounts-limited-to-1000"></a>ゲスト OS マウントのために Azure VMWare ソリューションを使用する IP アドレスの数は [1,000 に制限されていますか](azure-netapp-files-resource-limits.md#resource-limits)?
+
+いいえ。 Azure VMWare ソリューションは ER ゲートウェイの内側にあるため、オンプレミスのシステムと同様の動作をします。 AVS の "ホスト" と "ゲスト" の数は Azure NetApp Files には見えないため、IP アドレスの 1,000 件の制限は適用されません。
  
 ## <a name="security-faqs"></a>セキュリティに関する FAQ
 
@@ -101,6 +105,10 @@ API 操作の詳細な一覧については、「[Azure NetApp Files REST API](/
 はい、[カスタム Azure ポリシー](../governance/policy/tutorials/create-custom-policy-definition.md)を作成することができます。 
 
 ただし、Azure NetApp Files インターフェイスに Azure ポリシー (カスタム名前付けポリシー) を作成することはできません。 「[Azure NetApp Files のネットワーク計画のガイドライン](azure-netapp-files-network-topologies.md#considerations)」を参照してください。
+
+### <a name="when-i-delete-an-azure-netapp-files-volume-is-the-data-deleted-safely"></a>Azure NetApp Files のボリュームを削除するとき、データは安全に削除されますか? 
+
+Azure NetApp Files ボリュームの削除は、プログラムによってただちに実行されます。 削除操作には、保存データの暗号化に使用されるキーの削除が含まれます。 削除操作が正常に実行された後では、(Azure portal や API などのインターフェイスを使用して) 削除されたボリュームを回復するためのシナリオはありません。
 
 ## <a name="performance-faqs"></a>パフォーマンスに関する FAQ
 
@@ -227,6 +235,10 @@ Azure NetApp Files では、Windows Server 2008r2SP1-2019 バージョンの Act
 いいえ。 ただし、Azure NetApp Files SMB 共有は、DFS 名前空間 (DFS-N) のフォルダー ターゲットとして使用できます。   
 Azure NetApp Files SMB 共有を DFS-N のフォルダー ターゲットとして使用するには、[DFS のフォルダー ターゲット追加](/windows-server/storage/dfs-namespaces/add-folder-targets#to-add-a-folder-target)に関する記事の手順に従って、Azure NetApp Files SMB 共有のマウント ポイントの汎用名前付け規則 (UNC) パスを設定します。  
 
+### <a name="can-the-smb-share-permissions-be-changed"></a>SMB の共有アクセス許可を変更することはできますか?   
+
+いいえ、共有アクセス許可を変更することはできません。 ただし、`root` ボリュームの NTFS アクセス許可は、[NTFS ファイルとフォルダーのアクセス許可](azure-netapp-files-create-volumes-smb.md#ntfs-file-and-folder-permissions)の手順で変更することができます。 
+
 ## <a name="capacity-management-faqs"></a>容量管理に関する FAQ
 
 ### <a name="how-do-i-monitor-usage-for-capacity-pool-and-volume-of-azure-netapp-files"></a>Azure NetApp Files の容量プールとボリュームの使用状況を監視するには、どうすればよいですか? 
@@ -333,11 +345,17 @@ Azure NetApp Files NFS ボリュームは、AVS Windows VM または Linux VM �
 
 ### <a name="what-regions-are-supported-for-using-azure-netapp-files-nfs-or-smb-volumes-with-azure-vmware-solution-avs"></a>Azure VMware Solution (AVS) で Azure NetApp Files NFS または SMB ボリュームを使用する場合、どのリージョンがサポートされますか?
 
-AVS での Azure NetApp Files NFS または SMB ボリュームの使用は、米国東部、米国西部、西ヨーロッパ、およびオーストラリア東部の各リージョンでサポートされます。
+AVS での Azure NetApp Files の NFS または SMB ボリュームを使用した *ゲスト OS のマウント* は、[AVS および ANF が有効なすべてのリージョン](https://azure.microsoft.com/global-infrastructure/services/?products=azure-vmware,netapp)でサポートされています。
 
 ### <a name="does-azure-netapp-files-work-with-azure-policy"></a>Azure NetApp Files で Azure Policy を使用できますか。
 
 はい。 Azure NetApp Files はファーストパーティーのサービスです。 Azure リソース プロバイダーの標準に完全に準拠しています。 そのため Azure NetApp Files は、*カスタム ポリシー定義* によって Azure Policy に統合できます。 Azure NetApp Files でカスタム ポリシーを使用する方法は、Microsoft Tech Community の [Azure NetApp Files での Azure Policy の使用](https://techcommunity.microsoft.com/t5/azure/azure-policy-now-available-for-azure-netapp-files/m-p/2282258)に関するページをご覧ください。 
+
+### <a name="which-unicode-character-encoding-is-supported-by-azure-netapp-files-for-the-creation-and-display-of-file-and-directory-names"></a>ファイル名とディレクトリ名の作成と表示に、Azure NetApp Files でサポートされている Unicode 文字エンコードは何ですか?   
+
+Azure NetApp Files で、NFS と SMB の両方のボリュームのファイル名とディレクトリ名についてサポートされているのは、UTF-8 Unicode 文字エンコード形式のみです。
+
+UTF-8 によってサポートされていない非標準文字や絵文字などの補助文字やサロゲート ペアを名前に使用して、ファイルまたはディレクトリを作成しようとすると、操作は失敗します。 この場合、Windows クライアントからのエラーは、次のようなものになります: "指定したファイル名が有効ではないか長すぎます。 別のファイル名を指定してください。" 
 
 ## <a name="next-steps"></a>次のステップ  
 

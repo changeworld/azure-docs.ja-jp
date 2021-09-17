@@ -3,12 +3,12 @@ title: 'クイックスタート: 概要'
 description: このクイックスタートでは、Defender for IoT のデプロイに関する基本的なワークフローを理解して作業を開始する方法について学習します。
 ms.topic: quickstart
 ms.date: 06/06/2021
-ms.openlocfilehash: bb67cb5788e891861eb0c1f5fe2533d62b4ee520
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: cae5b1db400cebe341463dbc752fe5559b779380
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122254083"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123437669"
 ---
 # <a name="quickstart-get-started-with-defender-for-iot"></a>クイックスタート: Defender for IoT での作業を開始する
 
@@ -40,7 +40,14 @@ Azure Defender for IoT ポータル ツールに対するユーザー アクセ�
 
 **ネットワーク設定のニーズを明確にする**
 
-ネットワーク アーキテクチャ、監視対象の帯域幅、およびその他のネットワークの詳細を調査します。 詳細については、[Azure Defender for IoT network の設定の概要](how-to-set-up-your-network.md)に関する記事を参照してください。
+以下を調査します。
+
+- ネットワーク アーキテクチャ
+- 監視対象の帯域幅
+- 証明書を作成するための要件
+- その他のネットワークの詳細
+
+詳細については、[Azure Defender for IoT network の設定の概要](how-to-set-up-your-network.md)に関する記事を参照してください。
 
 **ネットワーク負荷を処理するために必要なセンサーと管理コンソール アプライアンスを明確にする**
 

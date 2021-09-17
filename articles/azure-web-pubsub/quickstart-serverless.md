@@ -1,45 +1,55 @@
 ---
-title: チュートリアル - Azure Web PubSub サービスと Azure Functions を使用してサーバーレス チャットを作成する
-description: Azure Web PubSub サービスと Azure Functions を使用して、サーバーレス アプリケーションを作成する方法を説明するチュートリアルです。
+title: チュートリアル - クライアント認証を使用してサーバーレスのリアルタイム チャット アプリを構築する
+description: Azure Web PubSub サービスと Azure Functions を使用して、クライアント認証でサーバーレスのチャット アプリを構築する方法を説明するチュートリアルです。
 author: yjin81
 ms.author: yajin1
 ms.service: azure-web-pubsub
 ms.topic: tutorial
 ms.date: 03/11/2021
-ms.openlocfilehash: 466da06b470774c67fb93eca5cc027edb16bcbc7
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: e4dd54ef01cf93ffa0bb47d4bbdccb1d14695934
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122446168"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123434953"
 ---
-# <a name="tutorial-create-a-serverless-chat-with-azure-functions-and-azure-web-pubsub-service"></a>チュートリアル: Azure Functions と Azure Web PubSub サービスを使用してサーバーレス チャットを作成する
+# <a name="tutorial-create-a-serverless-real-time-chat-app-with-azure-functions-and-azure-web-pubsub-service"></a>チュートリアル: Azure Functions と Azure Web PubSub サービスを使用してサーバーレスのリアルタイム チャット アプリを作成する
 
 Azure Web PubSub サービスは、WebSocket とパブリッシュ-サブスクライブ パターンを使用して、リアルタイム メッセージング Web アプリケーションを作成するのに役立ちます。 Azure Functions は、インフラストラクチャを管理することなくコードを実行できるサーバーレス プラットフォームです。 このチュートリアルでは、Azure Web PubSub サービスと Azure Functions を使用して、リアルタイム メッセージングとパブリッシュ-サブスクライブ パターンによるサーバーレス アプリケーションを作成する方法について説明します。
 
-このチュートリアルでは、次の作業を行う方法について説明します。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
-> * Web PubSub サービス インスタンスを作成する
-> * サンプル関数をローカルで実行する
+> * サーバーレスのリアルタイム チャット アプリを構築する
+> * Web PubSub 関数トリガーのバインドと出力バインドを使用する
+> * 関数を Azure Function App にデプロイする
+> * Azure 認証を構成する
 > * イベントとメッセージをアプリケーションにルーティングするように Web PubSub イベント ハンドラーを構成する
 
 ## <a name="prerequisites"></a>必須コンポーネント
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-[Visual Studio Code](https://code.visualstudio.com/) などのコード エディターをインストールし、さらに [Node.js](https://nodejs.org/en/download/) バージョン 10.x ライブラリをインストールします。
+* コード エディター ([Visual Studio Code](https://code.visualstudio.com/) など)。
 
+* [Node.js](https://nodejs.org/en/download/) (バージョン 10.x)。
    > [!NOTE]
    > サポートされているバージョンの Node.js の詳細については、[Azure Functions ランタイム バージョンのドキュメント](../azure-functions/functions-versions.md#languages)を参照してください。
+* Azure Function アプリをローカルで実行して Azure にデプロイするための [Azure Functions Core Tools](https://github.com/Azure/azure-functions-core-tools#installing) (v3 以上を推奨)。
 
-Azure Function アプリをローカルで実行するために、[Azure Functions Core Tools](https://github.com/Azure/azure-functions-core-tools#installing) (バージョン 2.7.1505 以降) をインストールします。
+* Azure リソースを管理するための [Azure コマンドライン インターフェイス (Azure CLI)](/cli/azure)。
+
+* (省略可能) Web PubSub サービスのイベント ハンドラーとしてローカル関数を公開するための [ngrok](https://ngrok.com/download)。 これを省略できるのは、関数アプリをローカルで実行する場合のみです。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-コード エディター ([Visual Studio Code](https://code.visualstudio.com/) など) をインストールします。
+* コード エディター ([Visual Studio Code](https://code.visualstudio.com/) など)。
 
-Azure Function アプリをローカルで実行するために、[Azure Functions Core Tools](https://github.com/Azure/azure-functions-core-tools#installing) (バージョン 3 以降) をインストールします。
+* Azure Function アプリをローカルで実行して Azure にデプロイするための [Azure Functions Core Tools](https://github.com/Azure/azure-functions-core-tools#installing) (v3 以上を推奨)。
+
+* Azure リソースを管理するための [Azure コマンドライン インターフェイス (Azure CLI)](/cli/azure)。
+
+* (省略可能) Web PubSub サービスのイベント ハンドラーとしてローカル関数を公開するための [ngrok](https://ngrok.com/download)。 これを省略できるのは、関数アプリをローカルで実行する場合のみです。
 
 ---
 
@@ -47,106 +57,372 @@ Azure Function アプリをローカルで実行するために、[Azure Functio
 
 [!INCLUDE [create-instance-portal](includes/create-instance-portal.md)]
 
-## <a name="clone-the-sample-application"></a>サンプル アプリケーションの複製
+## <a name="create-the-functions"></a>関数を作成する
 
-サービスのデプロイ中、コードでの作業に切り替えましょう。 最初の手順として、[GitHub からサンプル アプリ](https://github.com/Azure/azure-webpubsub/tree/main/samples/functions/js/simplechat)をクローンします。
+1. [Azure Functions Core Tools](https://github.com/Azure/azure-functions-core-tools#installing) がインストールされていることを確認します。 次に、プロジェクトの空のディレクトリを作成します。 この作業ディレクトリの下でコマンドを実行します。
 
-1. git ターミナル ウィンドウを開きます。 サンプル プロジェクトのクローン先となるフォルダーに移動します。
-
-1. 次のコマンドを実行して、サンプル レポジトリを複製します。 このコマンドは、コンピューター上にサンプル アプリのコピーを作成します。
-
+    # <a name="javascript"></a>[JavaScript](#tab/javascript)
     ```bash
-    git clone https://github.com/Azure/azure-webpubsub.git
+    func init --worker-runtime javascript
     ```
 
-## <a name="configure-and-run-the-azure-function-app"></a>Azure Function アプリを構成して実行する
-
-- ブラウザーで **Azure portal** を開き、先ほどデプロイした Web PubSub サービス インスタンスが正常に作成されていることを確認します。 そのインスタンスに移動します。
-- **[キー]** を選択し、接続文字列をコピーします。
-
-:::image type="content" source="media/quickstart-serverless/copy-connection-string.png" alt-text="Web PubSub 接続文字列のコピーのスクリーンショット。":::
-
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-- 関数の構成を更新する。
-
-  クローンしたリポジトリの */samples/functions/js/simplechat* フォルダーを開きます。 *local.settings.json* を編集して、サービスの接続文字列を追加します。
-  これらの変更を *local.settings.json* に加えたら、ファイルを保存します。
-    - プレース ホルダー `<connection-string>` は、**Azure portal** の **`WebPubSubConnectionString`** 設定からコピーした実際の文字列に置き換えます。 
-    - [Azure Functions には Azure Storage アカウントが必須](../azure-functions/storage-considerations.md)であるため、 **`AzureWebJobsStorage`** の設定が必要になります。
-        - [Azure ストレージ エミュレーター](https://go.microsoft.com/fwlink/?linkid=717179&clcid=0x409)がローカルで実行されている場合、"UseDevelopmentStorage=true" という元の設定を維持します。
-        - Azure ストレージの接続文字列がある場合は、その値に置き換えます。
- 
-- フォルダーに JavaScript 関数が編成されます。 各フォルダーには、関数で使用されるバインディングを定義する `function.json` と、関数の本体である `index.js` という 2 つのファイルがあります。 この関数アプリには、トリガーによって作動する関数がいくつかあります。
-
-    - **login** - この関数は HTTP によってトリガーされる関数です。 *webPubSubConnection* 入力バインディングを使用して、有効なサービス接続情報を生成して返します。
-    - **messages** - この関数は `WebPubSubTrigger` によってトリガーされる関数です。 要求本文でチャット メッセージを受信し、`WebPubSub` 出力バインディングを使用して、接続されているすべてのクライアント アプリケーションにメッセージをブロードキャストします。
-    - **connect** および **connected** - これらの関数は `WebPubSubTrigger` によってトリガーされる関数です。 connect と connected のイベントを処理します。
-
-- ターミナルで、現在のフォルダーが */samples/functions/js/simplechat* であることを確認します。 拡張機能をインストールし、関数アプリを実行します。
-
+    # <a name="c"></a>[C#](#tab/csharp)
     ```bash
-    func extensions install
-
-    func start
+    func init --worker-runtime dotnet
     ```
 
-# <a name="c"></a>[C#](#tab/csharp)
+1. `Microsoft.Azure.WebJobs.Extensions.WebPubSub` 関数拡張機能パッケージを明示的にインストールします。
 
-- 関数の構成を更新する。
-
-  クローンしたリポジトリで */samples/functions/csharp/simplechat* フォルダーを開きます。 *local.settings.json* を編集して、サービスの接続文字列を追加します。
-  これらの変更を *local.settings.json* に加えたら、ファイルを保存します。
-    - プレース ホルダー `<connection-string>` は、**Azure portal** の **`WebPubSubConnectionString`** 設定からコピーした実際の文字列に置き換えます。 
-    - [Azure Functions には Azure Storage アカウントが必須](../azure-functions/storage-considerations.md)であるため、 **`AzureWebJobsStorage`** の設定が必要になります。
-        - [Azure ストレージ エミュレーター](https://go.microsoft.com/fwlink/?linkid=717179&clcid=0x409)がローカルで実行されている場合、"UseDevelopmentStorage=true" という元の設定を維持します。
-        - Azure ストレージの接続文字列がある場合は、その値に置き換えます。
-
-- C# 関数はファイル Functions.cs で整理されます。 この関数アプリには、トリガーによって作動する関数がいくつかあります。
-
-    - **login** - この関数は HTTP によってトリガーされる関数です。 *webPubSubConnection* 入力バインディングを使用して、有効なサービス接続情報を生成して返します。
-    - **connected** - この関数は `WebPubSubTrigger` によってトリガーされる関数です。 要求本文でチャット メッセージを受信し、接続されているすべてのクライアント アプリケーションにメッセージを、複数のタスクでブロードキャストします。
-    - **broadcast** - この関数は `WebPubSubTrigger` によってトリガーされる関数です。 要求本文でチャット メッセージを受信し、接続されているすべてのクライアント アプリケーションにメッセージを、1 つのタスクでブロードキャストします。
-    - **connect** と **disconnect** - これらの関数は `WebPubSubTrigger` によってトリガーされる関数です。 接続を処理し、イベントを切断します。
-
-- ターミナルで、現在のフォルダーが */samples/functions/csharp/simplechat* であることを確認します。 拡張機能をインストールし、関数アプリを実行します。
-
+   a. `host.json` の `extensionBundle` セクションを削除して、次の手順で特定の拡張機能パッケージをインストールできるようにします。 または、ホスト json を下のように単純にします。
+    ```json
+    {
+        "version": "2.0"
+    }
+    ```
+   b. 特定の関数拡張機能パッケージをインストールするコマンドを実行します。
     ```bash
-    func extensions install
-
-    func start
+    func extensions install --package Microsoft.Azure.WebJobs.Extensions.WebPubSub --version 1.0.0-beta.3
     ```
 
----
+1. クライアントの静的 Web ページを読み取ってホストする `index` 関数を作成します。
+    ```bash
+    func new -n index -t HttpTrigger
+    ```
+   # <a name="javascript"></a>[JavaScript](#tab/javascript)
+   - `index/function.json` を更新して次の json コードをコピーします。
+        ```json
+        {
+            "bindings": [
+                {
+                    "authLevel": "anonymous",
+                    "type": "httpTrigger",
+                    "direction": "in",
+                    "name": "req",
+                    "methods": [
+                      "get",
+                      "post"
+                    ]
+                },
+                {
+                    "type": "http",
+                    "direction": "out",
+                    "name": "res"
+                }
+            ]
+        }
+        ```
+   - `index/index.js` を更新して次のコードをコピーします。
+        ```js
+        var fs = require('fs');
+        module.exports = function (context, req) {
+            fs.readFile('index.html', 'utf8', function (err, data) {
+                if (err) {
+                    console.log(err);
+                    context.done(err);
+                }
+                context.res = {
+                    status: 200,
+                    headers: {
+                        'Content-Type': 'text/html'
+                    },
+                    body: data
+                };
+                context.done();
+            });
+        }
+        ```
 
-- ローカル関数では、`local.settings.json` ファイルに定義されているポートが使用されます。 それを公衆ネットワークから利用できるようにするためには、[ngrok](https://ngrok.com) を使用して、このエンドポイントを公開する必要があります。 次のコマンドを実行すると、転送エンドポイント (例: http://{ngrok-id}.ngrok.io -> http://localhost:7071 ) が返されます。
+   # <a name="c"></a>[C#](#tab/csharp)
+   - `index.cs` を更新して `Run` 関数を次のコードに置き換えます。
+        ```c#
+        [FunctionName("index")]
+        public static IActionResult Run([HttpTrigger(AuthorizationLevel.Anonymous)] HttpRequest req)
+        {
+            return new ContentResult
+            {
+                Content = File.ReadAllText("index.html"),
+                ContentType = "text/html",
+            };
+        }
+        ```
+
+1. クライアントがアクセス トークンを含むサービス接続 URL を取得するのに役立つ `negotiate` 関数を作成します。
+    ```bash
+    func new -n negotiate -t HttpTrigger
+    ```
+    > [!NOTE]
+    > このサンプルでは、[AAD](/azure/app-service/configure-authentication-user-identities) ユーザー ID ヘッダー `x-ms-client-principal-name` を使用して `userId` を取得します。 また、これはローカル関数では機能しません。 ローカルで実行する際には、これを空にするか他の方法に変えることで `userId` を取得または生成できます。 たとえば、`negotiate` 関数を呼び出してサービスの接続 URL を取得する際に、クライアントがユーザー名を入力し、それを `?user={$username}` のようなクエリで渡すようにします。 また、`negotiate` 関数で `userId` を値 `{query.user}` に設定します。
+    
+    # <a name="javascript"></a>[JavaScript](#tab/javascript)
+   - `negotiate/function.json` を更新して次の json コードをコピーします。
+        ```json
+        {
+            "bindings": [
+                {
+                    "authLevel": "anonymous",
+                    "type": "httpTrigger",
+                    "direction": "in",
+                    "name": "req"
+                },
+                {
+                    "type": "http",
+                    "direction": "out",
+                    "name": "res"
+                },
+                {
+                    "type": "webPubSubConnection",
+                    "name": "connection",
+                    "hub": "simplechat",
+                    "userId": "{headers.x-ms-client-principal-name}",
+                    "direction": "in"
+                }
+            ]
+        }
+        ```
+   - `negotiate/index.js` を更新して次のコードをコピーします。
+        ```js
+        module.exports = function (context, req, connection) {
+            context.res = { body: connection };
+            context.done();
+        };
+        ```
+   # <a name="c"></a>[C#](#tab/csharp)
+   - `negotiate.cs` を更新して `Run` 関数を次のコードに置き換えます。
+        ```c#
+        [FunctionName("negotiate")]
+        public static WebPubSubConnection Run(
+            [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,
+            [WebPubSubConnection(Hub = "simplechat", UserId = "{headers.x-ms-client-principal-name}")] WebPubSubConnection connection,
+            ILogger log)
+        {
+            log.LogInformation("Connecting...");
+            return connection;
+        }
+        ```
+
+2. サービスを使用してクライアント メッセージをブロードキャストするための `message` 関数を作成します。
+   ```bash
+   func new -n message -t HttpTrigger
+   ```
+
+   > [!NOTE]
+   > この関数では、実際には `WebPubSubTrigger` が使用されています。 ただし、このサービスはまだプレビュー段階にあり、関数のテンプレートには `WebPubSubTrigger` が組み込まれていません。 `HttpTrigger` を使用して関数テンプレートを初期化し、コードでトリガーの種類を変更します。
+
+   # <a name="javascript"></a>[JavaScript](#tab/javascript)
+   - `message/function.json` を更新して次の json コードをコピーします。
+        ```json
+        {
+            "bindings": [
+                {
+                    "type": "webPubSubTrigger",
+                    "direction": "in",
+                    "name": "message",
+                    "dataType": "binary",
+                    "hub": "simplechat",
+                    "eventName": "message",
+                    "eventType": "user"
+                },
+                {
+                    "type": "webPubSub",
+                    "name": "webPubSubEvent",
+                    "hub": "simplechat",
+                    "direction": "out"
+                }
+            ]
+        }
+        ```
+   - `message/index.js` を更新して次のコードをコピーします。
+        ```js
+        module.exports = async function (context, message) {
+            context.bindings.webPubSubEvent = {
+                "operationKind": "sendToAll",
+                "message": `[${context.bindingData.connectionContext.userId}] ${message}`,
+                "dataType": context.bindingData.dataType
+            };
+            // MessageResponse directly return to caller
+            var response = { 
+                "message": '[SYSTEM] ack.',
+                "dataType" : "text"
+            };
+            return response;
+        };
+        ```
+
+   # <a name="c"></a>[C#](#tab/csharp)
+   - `message.cs` を更新して `Run` 関数を次のコードに置き換えます。
+        ```c#
+        [FunctionName("message")]
+        public static async Task<MessageResponse> Run(
+            [WebPubSubTrigger(WebPubSubEventType.User, "message")] ConnectionContext context,
+            BinaryData message,
+            MessageDataType dataType,
+            [WebPubSub(Hub = "simplechat")] IAsyncCollector<WebPubSubOperation> operations)
+        {
+            await operations.AddAsync(new SendToAll
+            {
+                Message = BinaryData.FromString($"[{context.UserId}] {message.ToString()}"),
+                DataType = dataType
+            });
+            return new MessageResponse
+            {
+                Message = BinaryData.FromString("[SYSTEM] ack"),
+                DataType = MessageDataType.Text
+            };
+        }
+        ```
+
+3. プロジェクトのルート フォルダーにクライアントのシングル ページ `index.html` を追加し、次のようにコンテンツをコピーします。
+    ```html
+    <html>
+        <body>
+            <h1>Azure Web PubSub Serverless Chat App</h1>
+            <div id="login"></div>
+            <p></p>
+            <input id="message" placeholder="Type to chat...">
+            <div id="messages"></div>
+            <script>
+                (async function () {
+                    let authenticated = window.location.href.includes('?authenticated=true');
+                    if (!authenticated) {
+                        // auth
+                        let login = document.querySelector("#login");
+                        let link = document.createElement('a');
+                        link.href = `${window.location.origin}/.auth/login/aad?post_login_redirect_url=/api/index?authenticated=true`;
+                        link.text = "login";
+                        login.appendChild(link);
+                    }
+                    else {
+                        // negotiate
+                        let messages = document.querySelector('#messages');
+                        let res = await fetch(`${window.location.origin}/api/negotiate`, {
+                            credentials: "include"
+                        });
+                        let url = await res.json();
+                        // connect
+                        let ws = new WebSocket(url.url);
+                        ws.onopen = () => console.log('connected');
+                        ws.onmessage = event => {
+                            let m = document.createElement('p');
+                            m.innerText = event.data;
+                            messages.appendChild(m);
+                        };
+                        let message = document.querySelector('#message');
+                        message.addEventListener('keypress', e => {
+                            if (e.charCode !== 13) return;
+                            ws.send(message.value);
+                            message.value = '';
+                        });
+                    }
+                })();
+            </script>
+        </body>
+    </html>
+    ```
+
+    # <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+    # <a name="c"></a>[C#](#tab/csharp)
+    C# プロジェクトではファイルが別の出力フォルダーにコンパイルされるため、コンテンツ ページがそれに対応するように `*.csproj` を更新する必要があります。
+    ```xml
+    <ItemGroup>
+        <None Update="index.html">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
+    ``
+
+## Create and Deploy the Azure Function App
+
+Before you can deploy your function code to Azure, you need to create 3 resources:
+* A resource group, which is a logical container for related resources.
+* A storage account, which is used to maintain state and other information about your functions.
+* A function app, which provides the environment for executing your function code. A function app maps to your local function project and lets you group functions as a logical unit for easier management, deployment and sharing of resources.
+
+Use the following commands to create these items. 
+
+1. If you haven't done so already, sign in to Azure:
 
     ```bash
-    ngrok http 7071
-    ``` 
+    az login
+    ```
 
-- Azure Web PubSub サービスに `Event Handler` を設定します。 **Azure portal** に移動して、自分の Web PubSub リソースを見つけ、 **[設定]** に移動します。 次のように、新しいハブ設定と使用中の 1 つの関数とのマッピングを追加します。 {ngrok-id} は、実際の文字列に置き換えてください。
+1. リソース グループを作成します。または、Azure Web PubSub サービスのいずれかを再利用してスキップできます。
+
+    ```bash
+    az group create -n WebPubSubFunction -l <REGION>
+    ```
+
+1. リソース グループとリージョン内に汎用ストレージ アカウントを作成します。
+
+    ```bash
+    az storage account create -n <STORAGE_NAME> -l <REGION> -g WebPubSubFunction
+    ```
+
+1. Azure に関数アプリを作成します。
+
+    # <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+    ```bash
+    az functionapp create --resource-group WebPubSubFunction --consumption-plan-location <REGION> --runtime node --runtime-version 12 --functions-version 3 --name <FUNCIONAPP_NAME> --storage-account <STORAGE_NAME>
+    ```
+
+    # <a name="c"></a>[C#](#tab/csharp)
+
+    ```bash
+    az functionapp create --resource-group WebPubSubFunction --consumption-plan-location <REGION> --runtime dotnet --functions-version 3 --name <FUNCIONAPP_NAME> --storage-account <STORAGE_NAME>
+    ```
+
+1. Azure に関数プロジェクトをデプロイする:
+
+    Azure への関数アプリの作成に成功したら、[func azure functionapp publish](/azure-functions/functions-run-local) コマンドを使用して、ローカル関数プロジェクトをデプロイすることができます。
+
+    ```bash
+    func azure functionapp publish <FUNCIONAPP_NAME> --publish-local-settings
+    ```
+
+    > [!NOTE]
+    > ここでは、ローカル設定 `local.settings.json` をコマンド パラメーター `--publish-local-settings` と共にデプロイしています。 Microsoft Azure ストレージ エミュレーターを使用している場合は、プロンプト メッセージ `App setting AzureWebJobsStorage is different between azure and local.settings.json, Would you like to overwrite value in azure? [yes/no/show]` に続いて「`no`」と入力して、 Azure でこの値の上書きをスキップできます。 さらに、Function App の設定を **[Azure portal]**  ->  **[設定]**  ->  **[構成]** で更新できます。
+
+## <a name="configure-the-web-pubsub-service-event-handler"></a>Web PubSub サービス `Event Handler` を構成する
+
+このサンプルでは、`WebPubSubTrigger` を使用して、サービスのアップストリーム メッセージ要求をリッスンしています。 そのため、Web PubSub では、ターゲット クライアント要求を送信するために、関数のエンドポイント情報を知る必要があります。 また、Azure Function App には、拡張機能固有の Webhook メソッドに関するセキュリティのためのシステム キーが必要です。 前の手順で `message` 関数を使用して Function App をデプロイした後、システム キーを取得できます。
+
+**Azure portal** に移動して、自分の Function App リソースを見つけ、 **[アプリ キー]**  ->  **[システム キー]**  ->  **`webpubsub_extension`** の順に移動します。 `<APP_KEY>` として、値をコピーします。
+
+:::image type="content" source="media/quickstart-serverless/func-keys.png" alt-text="関数のシステム キーを取得するスクリーンショット。":::
+
+Azure Web PubSub サービスに `Event Handler` を設定します。 **Azure portal** に移動して、自分の Web PubSub リソースを見つけ、 **[設定]** に移動します。 次のように、新しいハブ設定と使用中の 1 つの関数とのマッピングを追加します。 `<FUNCTIONAPP_NAME>` と `<APP_KEY>` を自分のものに置き換えます。
 
    - ハブ名: `simplechat`
-   - URL テンプレート: **http://{ngrok-id}.ngrok.io/runtime/webhooks/webpubsub**
+   - URL テンプレート: **https://<FUNCTIONAPP_NAME>.azurewebsites.net/runtime/webhooks/webpubsub?code=<APP_KEY>**
    - ユーザー イベント パターン: *
-   - システム イベント: connect、connected、disconnected
+   - システム イベント: (このサンプルでは構成する必要はありません)
 
 :::image type="content" source="media/quickstart-serverless/set-event-handler.png" alt-text="イベント ハンドラーの設定のスクリーンショット。":::
 
-## <a name="run-the-web-application"></a>Web アプリケーションの実行
+> [!NOTE]
+> ローカルで関数を実行している場合、 関数の開始後にコマンド `ngrok http 7071` で [ngrok](https://ngrok.com/download) を使用して関数の URL を公開できます。 また、Web PubSub サービス `Event Handler` を `https://<NGROK_ID>.ngrok.io/runtime/webhooks/webpubsub` という URL で設定します。 
 
-1. クライアントのテストを簡素化するには、ブラウザーでサンプルの[シングル ページ Web アプリケーション](http://jialinxin.github.io/webpubsub/)を開きます。 
+## <a name="configure-to-enable-client-authentication"></a>クライアント認証を有効に構成する
 
-1. 関数アプリのベース URL をローカルとして入力します (`http://localhost:7071`)。
+**Azure portal** に移動して、自分の Function App リソースを見つけ、 **[認証]** に移動します。 ページの下部にある **`Add identity provider`** 」の説明に従って、アプリケーションにシングル サインオンできるようになります。 **App Service 認証の設定** を **[認証されていないアクセスを許可する]** に設定すると、認証にリダイレクトされる前に、匿名のユーザーがクライアントのインデックス ページにアクセスできます。 その後、 **[保存]** を選択します。
 
-1. ユーザー名を入力します。
+ここでは、ID プロバイダーとして `Microsoft` を選択します。これにより、`negotiate` 関数で `userId` として `x-ms-client-principal-name` が使用されます。 なお、下のリンクから他の ID プロバイダーを構成することもできます。それに応じて `negotiate` 関数の `userId` 値を忘れずに更新してください。
 
-1. Web アプリケーションは関数アプリで *login* 関数を呼び出して、Azure Web PubSub サービスに接続するための接続情報を取得します。 `Client websocket opened.` と表示されれば、接続が確立されていることになります。 
+* [Microsoft (Azure AD)](/azure/app-service/configure-authentication-provider-aad)
+* [Facebook](/azure/app-service/configure-authentication-provider-facebook)
+* [Google](/azure/app-service/configure-authentication-provider-google)
+* [Twitter](/azure/app-service/configure-authentication-provider-twitter)
 
-1. メッセージを入力して Enter キーを押します。 アプリケーションは Azure Function アプリで *messages* 関数にメッセージを送信します。次に、Web PubSub 出力バインディングを使用して、接続されているすべてのクライアントにメッセージをブロードキャストします。 すべてが正しく動作している場合、アプリケーションでメッセージが表示されます。
+## <a name="try-the-application"></a>アプリケーションを試す
 
-1. Web アプリケーションの別のインスタンスを、別のブラウザー ウィンドウで開きます。 送信したメッセージが、アプリケーションのすべてのインスタンスで表示されることを確認します。
+これで、関数アプリからページをテストできるようになりました (`https://<FUNCTIONAPP_NAME>.azurewebsites.net/api/index`)。 下のスナップショットを参照してください。
+1. `login` をクリックして自分を認証します。
+2. 入力ボックスにメッセージを入力してチャットします。
+
+メッセージ関数では、呼び出し元のメッセージをすべてのクライアントにブロードキャストし、呼び出し元にメッセージ `[SYSTEM] ack` を返します。 そのため、下のサンプルのチャット スナップショットでは、最初の 4 つのメッセージは現在のクライアントからのものであり、最後の 2 つのメッセージは別のクライアントからのものであることがわかります。
+
+:::image type="content" source="media/quickstart-serverless/chat-sample.png" alt-text="チャット サンプルのスクリーンショット。":::
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -163,10 +439,10 @@ Azure Function アプリをローカルで実行するために、[Azure Functio
 このクイックスタートでは、サーバーレス チャット アプリケーションを実行する方法について説明しました。 これで、独自のアプリケーションの作成を始められます。 
 
 > [!div class="nextstepaction"]
-> [クイックスタート: Azure Web PubSub で簡単なチャットルームを作成する](https://azure.github.io/azure-webpubsub/getting-started/create-a-chat-app/js-handle-events)
+> [Azure Functions の Azure Web PubSub バインディング](https://azure.github.io/azure-webpubsub/references/functions-bindings)
 
 > [!div class="nextstepaction"]
-> [Azure Functions の Azure Web PubSub バインディング](https://azure.github.io/azure-webpubsub/references/functions-bindings)
+> [クイックスタート: Azure Web PubSub で簡単なチャットルームを作成する](https://azure.github.io/azure-webpubsub/getting-started/create-a-chat-app/js-handle-events)
 
 > [!div class="nextstepaction"]
 > [Azure Web PubSub のサンプルをさらに確認する](https://github.com/Azure/azure-webpubsub/tree/main/samples)

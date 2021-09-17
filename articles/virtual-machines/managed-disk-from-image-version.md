@@ -10,14 +10,16 @@ ms.date: 10/27/2020
 ms.author: cynthn
 ms.reviewer: olayemio
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d4a3d1e8b1eb1c3a959e9f48e0c46379d6162644
-ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
+ms.openlocfilehash: fd6a1cf2cae56bf2d10fe4075caed019e2e72b7e
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114653046"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123452251"
 ---
 # <a name="export-an-image-version-to-a-managed-disk"></a>イメージ バージョンをマネージド ディスクにエクスポートする
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 イメージ バージョンからの OS または単一のデータ ディスクを、Shared Image Gallery に格納されているイメージ バージョンからのマネージド ディスクとしてエクスポートすることができます。
 
@@ -118,6 +120,6 @@ New-AzDisk -Disk $diskConfig `
 
 ## <a name="next-steps"></a>次の手順
 
-[Azure CLI](image-version-managed-image-cli.md) または [PowerShell](image-version-managed-image-powershell.md) を使用して、マネージド ディスクからイメージ バージョンを作成することもできます。
+また、マネージド ディスクからも[イメージ バージョン](image-version.md)を作成できます。
 
 

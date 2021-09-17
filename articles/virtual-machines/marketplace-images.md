@@ -8,16 +8,17 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 07/07/2020
 ms.author: cynthn
-ms.reviewer: akjosh
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1ba23474034623228cc7c645ffb3d0ec5ae65474
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 52f4152a8f3ec1d2f812de74ed0bd238fb323330
+ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110679049"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123451837"
 ---
 # <a name="supply-azure-marketplace-purchase-plan-information-when-creating-images"></a>イメージ作成時、Azure Marketplace 購入プラン情報を提供する
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 もともと Azure Marketplace イメージから作成されたソースを利用し、共有ギャラリーでイメージを作成するとき、場合によっては、購入プラン情報を追跡する必要があります。 この記事では、VM の購入プラン情報を見つけ、イメージ定義の作成時にその情報を使用する方法について説明します。 あるイメージの VM を作成するとき、イメージ定義からの情報を利用して購入プラン情報入力を簡単にする方法についても触れます。
 
@@ -68,7 +69,7 @@ $gallery = Get-AzGallery `
    -PurchasePlanName  $vm.Plan.Name
 ```
 
-次に、[New-AzGalleryImageVersion](/powershell/module/az.compute/new-azgalleryimageversion) を使用してイメージ バージョンを作成します。 [VM](image-version-vm-powershell.md#create-an-image-version)、[マネージド イメージ](image-version-managed-image-powershell.md#create-an-image-version)、[VHD またはスナップショット](image-version-snapshot-powershell.md#create-an-image-version)、あるいは[別のイメージ バージョン](image-version-another-gallery-powershell.md#create-the-image-version)からイメージ バージョンを作成できます。 
+次に、[New-AzGalleryImageVersion](/powershell/module/az.compute/new-azgalleryimageversion) を使用して[イメージ バージョン](image-version.md)を作成します。  
 
 
 ## <a name="create-the-vm"></a>VM の作成

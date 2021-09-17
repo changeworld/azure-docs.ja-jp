@@ -2,15 +2,14 @@
 title: Azure サポート リクエストを管理する
 description: サポート リクエストの表示、メッセージの送信、リクエストの重大度の変更、Azure サポートとの診断情報の共有、クローズされたサポート リクエストの再開、およびファイルのアップロードの方法について説明します。
 tags: billing
-ms.assetid: 86697fdf-3499-4cab-ab3f-10d40d3c1f70
 ms.topic: how-to
-ms.date: 05/25/2021
-ms.openlocfilehash: bc9edecd918668e76c36308a660c47d3a8fd9e8b
-ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
+ms.date: 09/01/2021
+ms.openlocfilehash: f1930402c0f458962c95f8f4fe0f1011f1dcca49
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110496522"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123426384"
 ---
 # <a name="manage-an-azure-support-request"></a>Azure サポート リクエストを管理する
 
@@ -36,13 +35,10 @@ ms.locfileid: "110496522"
 
 > [!NOTE]
 > 最高重大度は[サポート プラン](https://azure.microsoft.com/support/plans)ごとに異なります。
->
 
 1. **[すべてのサポート リクエスト]** ページで、サポート リクエストを選択します。
 
 1. **[サポート リクエスト]** ページで、 **[変更]** を選択します。
-
-    :::image type="content" source="media/how-to-manage-azure-support-request/change-severity.png" alt-text="サポート リクエストの重大度を変更する":::
 
 1. リクエストが既にサポート エンジニアに割り当てられているかによって、Azure portal に 2 つの画面のいずれかが表示されます。
 
@@ -56,16 +52,16 @@ ms.locfileid: "110496522"
 
 ## <a name="share-diagnostic-information-with-azure-support"></a>Azure サポートと診断情報を共有する
 
-サポート リクエストを作成する場合、既定では、 **[診断情報の共有]** オプションが選択されています。 このオプションを使用すると、Azureサポートは、問題の解決に役立つ可能性のある[診断情報](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/)を Azure リソースから収集できます。
+サポート リクエストを作成する場合、 **[診断情報の共有]** セクションで **[はい]** または **[いいえ]** を選択できます。 このオプションは、Azure サポートが、問題の解決に役立つ可能性のある[診断情報](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/)を Azure リソースから収集できかどうかを決定します。
 
 要求の作成 後に **[診断情報の共有]** の選択を変更するには:
 
 1. **[すべてのサポート リクエスト]** ページで、サポート リクエストを選択します。
-    
+
 1. **[サポート要求]** ページで 、 **[診断情報の共有]** を探し、 **[変更]** を選択します。
-    
-1.  **[はい]** または **[いいえ]** を選択し、 **[OK]** を選択して確定します。
-    
+
+1. **[はい]** または **[いいえ]** を選択し、 **[OK]** を選択して確定します。
+
     :::image type="content" source="media/how-to-manage-azure-support-request/grant-permission-manage.png" alt-text="診断情報に対してアクセス許可を付与する":::
 
 ## <a name="upload-files"></a>ファイルをアップロードする
@@ -82,11 +78,11 @@ ms.locfileid: "110496522"
 
 ファイル アップロード オプションを使用する場合は、以下のガイドラインに従ってください。
 
-* プライバシーを保護するため、アップロードには個人情報を含めないでください。
-* ファイル名は、110 文字以内にする必要があります。
-* 複数のファイルをアップロードすることはできません。
-* ファイルは、4 MB 以下である必要があります。
-* すべてのファイルには、 *.docx* や *.xlsx* などのファイル名拡張子が必要です。 次の表に、アップロードが許可されるファイル名拡張子を示します。
+- プライバシーを保護するため、アップロードには個人情報を含めないでください。
+- ファイル名は、110 文字以内にする必要があります。
+- 複数のファイルをアップロードすることはできません。
+- ファイルは、4 MB 以下である必要があります。
+- すべてのファイルには、 *.docx* や *.xlsx* などのファイル名拡張子が必要です。 次の表に、アップロードが許可されるファイル名拡張子を示します。
 
 | 0 ～ 9、A ～ C    | D ～ G   | H - N         | O - Q   | R ～ T      | U ～ W        | X ～ Z     |
 |-------------|-------|-------------|-------|----------|------------|---------|
@@ -121,18 +117,17 @@ ms.locfileid: "110496522"
 
 ## <a name="close-a-support-request"></a>サポート リクエストをクローズする
 
-サポート リクエストをクローズする必要がある場合は、要求をクローズするように求める[メッセージを送信](#send-a-message)します。
+サポート リクエストをクローズするには、要求をクローズするように求める[メッセージを送信](#send-a-message)します。
 
 ## <a name="reopen-a-closed-request"></a>クローズされたリクエストを再度開く
 
-クローズされたサポート リクエストを再度開く必要がある場合は、[新しいメッセージ](#send-a-message)を作成します。これにより、リクエストが自動的に再度開きます。
+クローズされたサポート リクエストを再度開くには、[新しいメッセージ](#send-a-message)を作成します。これにより、リクエストが自動的に再度開きます。
 
 ## <a name="cancel-a-support-plan"></a>サポート プランを取り消す
 
-サポート プランを取り消す必要がある場合は、[サポート プランの取り消し](../../cost-management-billing/manage/cancel-azure-subscription.md#cancel-a-support-plan)に関する記事を参照してください。
+サポート プランを取り消すには、[サポート プランの取り消し](../../cost-management-billing/manage/cancel-azure-subscription.md#cancel-a-support-plan)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure サポート要求を作成する方法](how-to-create-azure-support-request.md)
-
-[Azure サポート チケット REST API](/rest/api/support)
+- [Azure サポート リクエストを作成する](how-to-create-azure-support-request.md)プロセスを参照してください。
+- [Azure サポート チケット REST API](/rest/api/support) について説明します。

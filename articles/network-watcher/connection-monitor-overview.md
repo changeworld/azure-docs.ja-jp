@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: 41c39a87375b66e9aaf916f927d09a3b6abb3b0e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 4e8f1847459d16f82b029f9719d87b61dd243524
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121748200"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123542380"
 ---
 # <a name="network-connectivity-monitoring-with-connection-monitor"></a>接続モニターによるネットワーク接続の監視
 
@@ -74,7 +74,7 @@ ms.locfileid: "121748200"
 
 ### <a name="agents-for-on-premises-machines"></a>オンプレミス コンピューター用のエージェント
 
-接続モニターで、オンプレミスのコンピューターが監視のソースとして認識されるようにするには、コンピューターに Log Analytics エージェントをインストールします。  その後、Network Performance Monitor ソリューションを有効にします。 これらのエージェントは Log Analytics ワークスペースにリンクされているので、監視を開始するには、ワークスペース ID とプライマリ キーをセットアップする必要があります。
+接続モニターで、オンプレミスのコンピューターが監視のソースとして認識されるようにするには、コンピューターに Log Analytics エージェントをインストールします。  その後、[Network Performance Monitor ソリューション](/azure-monitor/insights/network-performance-monitor.md#configure-the-solution)を有効にします。 これらのエージェントは Log Analytics ワークスペースにリンクされているので、監視を開始するには、ワークスペース ID とプライマリ キーをセットアップする必要があります。
 
 Windows コンピューター用の Log Analytics エージェントをインストールするには、[Windows への Log Analytics エージェントのインストール](../azure-monitor/agents/agent-windows.md)に関する記事を参照してください。
 
@@ -92,6 +92,23 @@ Linux マシンの場合、使用する portNumber を手動で変更する必�
 このスクリプトは、ソリューションで必要なレジストリ キーを作成します。 エージェントが互いに TCP 接続を作成することを許可する Windows ファイアウォール規則も作成されます。 スクリプトによって作成されたレジストリ キーは、デバッグ ログとログ ファイルのパスを記録するかどうかを指定します。 このスクリプトは、また、通信で使われるエージェント TCP ポートを定義します。 これらのキーの値は、スクリプトによって自動的に設定されます。 これらのキーを手動で変更しないでください。 既定で開かれるポートは 8084 です。 パラメーター "portNumber" をスクリプトに指定することでカスタム ポートを使用できます。 スクリプトが実行されるすべてのコンピューターで同じポートを使います。 Log Analytics エージェントのネットワーク要件の[詳細情報](../azure-monitor/agents/log-analytics-agent.md#network-requirements)を参照してください。
 
 このスクリプトでは、Windows ファイアウォールがローカルでのみ構成されます。 ネットワーク ファイアウォールがある場合、ネットワーク パフォーマンス モニターによって使われている TCP ポート宛てのトラフィックを許可する必要があります。
+
+LA Windows エージェントをマルチホーム化すると、複数のワークスペースおよび System Center Operations Manager 管理グループにデータを送信できます。 Linux エージェントでは、ワークスペース、管理グループのどちらか 1 つの宛先にのみ送信できます。
+
+#### <a name="enable-network-performance-monitor-solution-for-on-premise-machines"></a>オンプレミス コンピューター用に Network Performance Monitor ソリューションを有効にする 
+
+オンプレミス コンピューター用に Network Performance Monitor ソリューションを有効にするには、次の手順に従います 
+
+1. Azure portal のホーム ページで、Network Watcher にアクセスします
+2. 左側の [監視] セクションで、[Network Performance Monitor] を選択します 
+3. Portal に、NPM ソリューションが有効になっているワークスペースの一覧 (サブスクリプションでフィルター処理済み) が表示されます 
+4. 新しいワークスペースに NPM ソリューションを追加するには、Portal の左上にある [+ NPM の追加] をクリックします 
+5. ソリューションを有効にするサブスクリプションとワークスペースを選択し、[作成] をクリックします
+6. ソリューションを有効にした後、ワークスペースが Portal に表示されるまで数分かかります。
+
+:::image type="content" source="./media/connection-monitor/network-performance-monitor-solution-enable.png" alt-text="接続モニターで NPM ソリューションを追加する方法を示すスクリーンショット" lightbox="./media/connection-monitor/network-performance-monitor-solution-enable.png":::
+
+LA エージェントとは異なり、NPM ソリューションは 1 つの LA ワークスペースにデータを送信するようにのみ構成できます
 
 ## <a name="enable-network-watcher-on-your-subscription"></a>サブスクリプションで Network Watcher を有効にする
 
@@ -374,7 +391,7 @@ Azure ネットワークの問題は、ネットワーク トポロジで確認�
 * ゲートウェイの接続で BGP が有効になっていない。
 * ロード バランサーで DIP プローブがダウンする。
 
-## <a name="comparision-between-azures-connectivity-monitoring-support"></a>Azure の接続監視サポートの比較 
+## <a name="comparison-between-azures-connectivity-monitoring-support"></a>Azure の接続監視サポートの比較 
 
 Network Performance Monitor と接続モニター (クラシック) から、機能が向上した新しい接続モニターに、1 回のクリックで、ダウンタイムなしにテストを移行できます。
  

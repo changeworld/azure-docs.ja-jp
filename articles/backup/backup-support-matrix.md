@@ -2,14 +2,14 @@
 title: Azure Backup のサポート マトリックス
 description: Azure Backup サービスのサポート設定と制限事項の概要を説明します。
 ms.topic: conceptual
-ms.date: 07/05/2021
+ms.date: 08/23/2021
 ms.custom: references_regions
-ms.openlocfilehash: 8f953cf2bdacaa983061a04168345d1add1842f2
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f6101485f7dfab8d956a552edc2e77d85a6e2d9e
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121728914"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123425865"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup のサポート マトリックス
 
@@ -39,7 +39,7 @@ Azure Backup は Recovery Services コンテナーを使用して、各種のワ
 **コンテナーの移動** | 異なるサブスクリプション間で、または同じサブスクリプション内のリソース グループ間で、[コンテナーを移動](./backup-azure-move-recovery-services-vault.md)できます。 ただし、リージョン間でのコンテナーの移動はサポートされていません。
 **コンテナー間のデータの移動** | コンテナー間でのバックアップ データの移動はサポートされていません。
 **コンテナー ストレージの種類の変更** | コンテナー ストレージのレプリケーションの種類 (geo 冗長ストレージまたはローカル冗長ストレージのいずれか) は、バックアップを格納する前に変更できます。 コンテナーでバックアップが開始された後は、レプリケーションの種類を変更できません。
-**ゾーン冗長ストレージ (ZRS)** | 英国南部、東南アジア、オーストラリア東部、北ヨーロッパ、米国中部、および東日本で、プレビューとしてサポートされています。
+**ゾーン冗長ストレージ (ZRS)** | 英国南部、東南アジア、オーストラリア東部、北ヨーロッパ、米国中部、米国東部 2、ブラジル南部、東日本で、プレビューとしてサポートされています。
 **プライベート エンドポイント** | Recovery Services コンテナーのプライベート エンドポイントを作成するための要件については、[こちらのセクション](./private-endpoints.md#before-you-start)を参照してください。  
 
 ## <a name="on-premises-backup-support"></a>オンプレミス バックアップのサポート
@@ -163,7 +163,7 @@ Azure Backup に、データの可用性と回復性の機能を強化するた�
 |     |     |
 | --- | --- |
 | **サポートされているリソース** | Recovery Services コンテナー |
-| **サポートされているリージョン** | 米国東部 2、東アジア、フランス中部。 |
+| **サポートされているリージョン** | 米国東部 2、米国中部、北ヨーロッパ、フランス中部、東アジア、東日本、西日本、オーストラリア東部、南アフリカ北部。 |
 | **サポートされていないリージョン** | リソースの正常性状態は "不明" と表示されます。 |
 
 

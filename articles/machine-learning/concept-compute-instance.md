@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2021
-ms.openlocfilehash: bba8329075ecb47d367fc04afa1f2df0b4fcf721
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fc7c9bceb32797d620a865d08c8b02cd2ab533c7
+ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121742098"
+ms.lasthandoff: 09/04/2021
+ms.locfileid: "123471662"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Azure Machine Learning コンピューティング インスタンスとは
 
@@ -47,7 +47,7 @@ Azure Machine Learning コンピューティング インスタンスは、デ�
 * コンピューティング インスタンスは、コンピューティング クラスターに似た安全なトレーニング コンピューティング先でもありますが、これは単一ノードです。
 * 自分で [コンピューティング インスタンスを作成する](how-to-create-manage-compute-instance.md?tabs=python#create)ことも、管理者が **[代わりにコンピューティング インスタンスを作成する](how-to-create-manage-compute-instance.md?tabs=python#on-behalf)** こともできます。
 * また、ニーズに応じてコンピューティング インスタンスを自動的にカスタマイズして構成する方法として、 **[セットアップ スクリプト (プレビュー)](how-to-create-manage-compute-instance.md#setup-script)** を使用することもできます。
-* コストを節約するには、コンピューティング インスタンスを自動的に開始および停止 (プレビュー) するために **[スケジュールを作成します (プレビュー)](how-to-create-manage-compute-instance.md#schedule)** 。
+* コストを節約するには、コンピューティング インスタンスを自動的に開始および停止 (プレビュー) するために **[スケジュールを作成します](how-to-create-manage-compute-instance.md#schedule)** 。
 
 ## <a name="tools-and-environments"></a><a name="contents"></a>ツールと環境
 
@@ -109,7 +109,7 @@ Python パッケージはすべて、**Python 3.8 - AzureML** 環境にインス
 
 また、コンピューティング インスタンスを自動的にカスタマイズして構成する方法として、 **[セットアップ スクリプト (プレビュー)](how-to-create-manage-compute-instance.md#setup-script)** を使用することもできます。
 
-自分でコンピューティング インスタンスを作成するには、Azure Machine Learning スタジオのワークスペースを使用して、いずれかのノートブックを実行する準備ができたら、 **[計算]** セクションまたは **[ノートブック]** セクションから [新しいコンピューティング インスタンスを作成](how-to-create-manage-compute-instance.md?tabs=azure-studio#create)します。
+自分でコンピューティング インスタンスを作成するには、Azure Machine Learning スタジオのワークスペースを使用して、いずれかのノートブックを実行する準備ができたら、 **[計算]** セクションまたは **[ノートブック]** セクションから[新しいコンピューティング インスタンスを作成](how-to-create-manage-compute-instance.md?tabs=azure-studio#create)します。
 
 インスタンスを作成することもできます
 * [統合ノートブックのエクスペリエンス](tutorial-train-models-with-aml.md#azure)から直接
@@ -131,7 +131,7 @@ Python パッケージはすべて、**Python 3.8 - AzureML** 環境にインス
 * ジョブ キューがあります。
 * 企業で SSH ポートを開かなくても、仮想ネットワーク環境でジョブを安全に実行できます。 ジョブはコンテナー化された環境で実行され、モデルの依存関係が Docker コンテナーにパッケージ化されます。
 * 複数の小さいジョブを並列で実行できます (プレビュー)。  コアごとに 2 つのジョブを並列で実行できますが、残りのジョブはキューに登録されます。
-* シングルノード マルチ GPU 分散トレーニング ジョブをサポートする
+* シングルノード マルチ GPU [分散トレーニング](how-to-train-distributed-gpu.md) ジョブをサポートする
 
 コンピューティング インスタンスは、テストまたはデバッグのシナリオのためのローカル推論配置ターゲットとして使用できます。
 

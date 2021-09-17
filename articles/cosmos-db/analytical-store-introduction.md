@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/12/2021
 ms.author: rosouz
 ms.custom: seo-nov-2020
-ms.openlocfilehash: 5bcc0fed8413affe6d525f03bd08e8b61751f893
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 80818386ccd47619ccb23323474ac76fa2240db2
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121745518"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123427716"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store"></a>Azure Cosmos DB 分析ストアとは
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -149,7 +149,19 @@ Azure Cosmos DB のトランザクション ストアはスキーマに依存せ
   * コレクション内のすべてのドキュメントを削除しても、分析ストア スキーマはリセットされません。
   * スキーマのバージョン管理はありません。 トランザクション ストアから推定された最新のバージョンが、分析ストアに表示されます。
 
-* 現在、名前に空白 (空白スペース) を含むプロパティを読み取る Azure Synapse Spark はサポートされていません。 データを Spark データフレームに読み込むには、`cast` や `replace` などの Spark 関数を使用する必要があります。
+* 現時点では、Azure Synapse Spark では、名前に次に示す特殊文字が含まれているプロパティを読み取ることはできません。 これに該当する場合は、[Azure Cosmos DB チーム](mailto:cosmosdbsynapselink@microsoft.com)に詳細をお問い合わせください。
+  * : (コロン)
+  * ` (グレーブ アクセント)
+  * , (コンマ)
+  * ; (セミコロン)
+  * {}
+  * ()
+  * \n
+  * \t
+  * = (等号)
+  * " (引用符)
+ 
+* Azure Synapse Spark では、名前に空白を含むプロパティがサポートされるようになりました。
 
 ### <a name="schema-representation"></a>スキーマ表現
 
@@ -298,7 +310,7 @@ salary: 1000000
 
 ## <a name="security"></a>セキュリティ
 
-* 分析ストアでの認証は、特定のデータベースに対するトランザクション ストアと同じです。 認証には主キーまたは読み取り専用キーを使用できます。 Synapse Studio のリンクされたサービスを利用して、Azure Cosmos DB のキーが Spark ノートブックに貼り付けられないようにすることができます。 このリンクされたサービスへのアクセスは、ワークスペースにアクセスできるすべてのユーザーが利用できます。
+* **分析ストアでの認証** は、特定のデータベースに対するトランザクション ストアと同じです。 認証には主キーまたは読み取り専用キーを使用できます。 Synapse Studio のリンクされたサービスを利用して、Azure Cosmos DB のキーが Spark ノートブックに貼り付けられないようにすることができます。 Azure Synapse SQL サーバーレス では、SQL 資格情報を使用して、Azure Cosmos DB キーの SQL ノートブックへの貼り付けを阻止することもできます。 このリンクされたサービスまたはこの資格情報へのアクセスは、ワークスペースにアクセスできるすべてのユーザーが利用できます。
 
 * **プライベート エンドポイントを使用したネットワーク分離** - トランザクション ストアおよび分析ストア内のデータへのネットワーク アクセスを個別に制御できます。 ネットワークの分離は、Azure Synapse ワークスペースのマネージド仮想ネットワーク内で、ストアごとに別個のマネージド プライベート エンドポイントを使用して行われます。 詳細については、[分析ストアのプライベート エンドポイントを構成する](analytical-store-private-endpoints.md)方法に関する記事を参照してください。
 
@@ -325,10 +337,12 @@ salary: 1000000
 
 分析ストアの価格は、トランザクション ストアの価格モデルとは別のものです。 分析ストアには、プロビジョニングされた RU の概念はありません。 分析ストアの価格モデルの詳細については、[Azure Cosmos DB の価格のページ](https://azure.microsoft.com/pricing/details/cosmos-db/)を参照してください。
 
-Azure Cosmos DB コンテナーで分析ストアを有効にするためのだいたいのコストの見積もりを入手するには、[Azure Cosmos DB 容量プランナー](https://cosmos.azure.com/capacitycalculator/)を使用して、分析ストレージと書き込み操作のコストを見積もることができます。 分析の読み取り操作のコストは、分析ワークロードの特性によって異なりますが、大まかな見積もりとして、分析ストアの 1 TB のデータをスキャンすると、通常、13 万回の分析読み取り操作が行われ、結果のコストは $0.065 になります。
+分析ストア内のデータにアクセスできるのは、Azure Synapse Link を使用した場合のみです。 これは、Azure Synapse Analytics ランタイムで、Azure Synapse Apache Spark プールと Azure Synapse サーバーレス SQL プールを使用して行われます。 分析ストアのデータへのアクセスの価格モデルの詳細については、[Azure Synapse Analytics の価格のページ](https://azure.microsoft.com/pricing/details/synapse-analytics/)を参照してください。
+
+Azure Cosmos DB コンテナーで分析ストアを有効にするためのだいたいのコストの見積もりを入手するには、分析ストアの観点からは、[Azure Cosmos DB 容量プランナー](https://cosmos.azure.com/capacitycalculator/)を使用して、分析ストレージと書き込み操作のコストを見積もることができます。 分析の読み取り操作のコストは、分析ワークロードの特性によって異なりますが、大まかな見積もりとして、分析ストアの 1 TB のデータをスキャンすると、通常、13 万回の分析読み取り操作が行われ、結果のコストは $0.065 になります。
 
 > [!NOTE]
-> 分析ストアの読み取り操作の見積もりは、分析ワークロードの機能であるため、Cosmos DB のコスト計算ツールには含まれません。 上記は、分析ストア内で 1 TB のデータをスキャンするための見積もりですが、フィルターを適用することで、スキャンされるデータの量が少なくなりため、従量課金モデルの場合は、これにより分析読み取り操作の正確な数が判断されます。 分析読み取り操作のより詳細な見積もりは、分析ワークロードに関する概念実証によって提供されます。
+> 分析ストアの読み取り操作の見積もりは、分析ワークロードの機能であるため、Cosmos DB のコスト計算ツールには含まれません。 上記は、分析ストア内で 1 TB のデータをスキャンするための見積もりですが、フィルターを適用することで、スキャンされるデータの量が少なくなりため、従量課金モデルの場合は、これにより分析読み取り操作の正確な数が判断されます。 分析読み取り操作のより詳細な見積もりは、分析ワークロードに関する概念実証によって提供されます。 この見積もりには、Azure Synapse Analytics のコストは含まれていません。
 
 
 ## <a name="analytical-time-to-live-ttl"></a><a id="analytical-ttl"></a> 分析の Time to Live (TTL)

@@ -8,14 +8,16 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/26/2021
 ms.author: jushiman
-ms.openlocfilehash: 1fd639d1050490c03d269422d2d6eabad972ce10
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 6135d675f2f719f7fa471a886715bce5d6036eb7
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108738181"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123425605"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure での第 2 世代 VM のサポート
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 第 2 世代仮想マシン (VM) が Azure でサポートされるようになりました。 仮想マシンを作成した後にその世代を変更することはできないため、世代を選択する前に、このページの考慮事項を確認してください。
 
@@ -25,7 +27,7 @@ ms.locfileid: "108738181"
 
 ## <a name="generation-2-vm-sizes"></a>第 2 世代 VM のサイズ
 
-第 1 世代 VM は、Azure のすべての VM サイズでサポートされています (Mv2 シリーズ VM を除く)。 Azure では、次の選択された VM シリーズに対して第 2 世代のサポートが提供されるようになりました。
+第 1 世代の VM は、Azure のすべての VM サイズでサポートされています (Mv2 と Msv2 と Mdsv2 ミディアム メモリ シリーズの VM を除く)。 Azure では、次の選択された VM シリーズに対して第 2 世代のサポートが提供されるようになりました。
 
 
 * [B シリーズ](sizes-b-series-burstable.md)
@@ -47,6 +49,7 @@ ms.locfileid: "108738181"
 * [Lsv2 シリーズ](lsv2-series.md)
 * [M シリーズ](m-series.md)
 * [Mv2 シリーズ](mv2-series.md)<sup>1</sup>
+* [Msv2 および Mdsv2 ミディアム メモリ シリーズ](msv2-mdsv2-series.md)<sup>1</sup>
 * [NCv2 シリーズ](ncv2-series.md) 
 * [NCv3 シリーズ](ncv3-series.md)
 * [ND シリーズ](nd-series.md)
@@ -54,7 +57,7 @@ ms.locfileid: "108738181"
 * [NVv4 シリーズ](nvv4-series.md)
 * [NCasT4_v3 シリーズ](nct4-v3-series.md)
 
-<sup>1</sup> Mv2 シリーズは、第 1 世代 VM のイメージをサポートしておらず、第 2 世代のイメージのサブセットのみをサポートしています。 詳細については、[Mv2 シリーズのドキュメント](mv2-series.md)を参照してください。
+<sup>1</sup> Mv2 シリーズ、Msv2 および Mdsv2 シリーズ ミディアム メモリは、第 1 世代 VM のイメージをサポートしておらず、第 2 世代のイメージのサブセットのみをサポートしています。 詳細については、[Mv2 シリーズのドキュメント](mv2-series.md)と[Msv2 および Mdsv2 ミディアム メモリ シリーズ](msv2-mdsv2-series.md)に関するページを参照してください。
 
 
 ## <a name="generation-2-vm-images-in-azure-marketplace"></a>Azure Marketplace の第 2 世代 VM のイメージ
