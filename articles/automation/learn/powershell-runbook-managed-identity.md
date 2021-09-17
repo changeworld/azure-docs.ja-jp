@@ -1,22 +1,22 @@
 ---
-title: Azure Automation の PowerShell Runbook でマネージド ID を使用する
+title: Azure Automation でマネージド ID を使用して PowerShelll Runbook を作成する
 description: このチュートリアルでは、Azure Automation の PowerShell Runbook でマネージド ID を使用する方法について説明します。
 services: automation
 ms.subservice: process-automation
 ms.date: 08/16/2021
 ms.topic: tutorial
-ms.openlocfilehash: 074789a8af19d8054cbbd51cee1203af17d02af8
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 9f728a8e51dbe310f744d11dd495038b2ff96126
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122327628"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123540273"
 ---
-# <a name="tutorial-use-managed-identities-with-a-powershell-runbook-in-azure-automation"></a>チュートリアル: Azure Automation の PowerShell Runbook でマネージド ID を使用する
+# <a name="tutorial-create-automation-powershell-runbook-using-managed-identity"></a>チュートリアル: マネージド ID を使用して Automation PowerShell Runbook を作成する
 
 このチュートリアルでは、Azure Automation で [PowerShell Runbook](../automation-runbook-types.md#powershell-runbooks) を作成し、リソースの操作に実行アカウントではなく、[マネージド ID](../automation-security-overview.md#managed-identities-preview) を使用する方法を説明します。 PowerShell Runbook は、Windows PowerShell に基づきます。 Azure Active Directory (Azure AD) のマネージド ID を使用すると、Runbook が Azure AD で保護された他のリソースに簡単にアクセスできます。
 
-このチュートリアルでは、次の作業を行う方法について説明します。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * マネージド ID にアクセス許可を割り当てる
@@ -253,9 +253,13 @@ Remove-AzRoleAssignment `
     -RoleDefinitionName $role1
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Azure Automation で [PowerShell Runbook](../automation-runbook-types.md#powershell-runbooks) を作成し、リソースの操作に実行アカウントではなく、[マネージド ID](../automation-security-overview.md#managed-identities-preview) を使用しました。 マネージド ID の詳細については、次を参照してください。
+このチュートリアルでは、Azure Automation で [PowerShell Runbook](../automation-runbook-types.md#powershell-runbooks) を作成し、リソースの操作に実行アカウントではなく、[マネージド ID](../automation-security-overview.md#managed-identities-preview) を使用しました。 PowerShell ワークフロー Runbook については、以下を参照してください。
 
 > [!div class="nextstepaction"]
-> [Azure Automation アカウントのユーザー割り当てマネージド ID を使用する](../add-user-assigned-identity.md)
+> [チュートリアル:PowerShell Workflow Runbook を作成する](automation-tutorial-runbook-textual.md)
+
+
+
+

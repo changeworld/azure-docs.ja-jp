@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: tutorial
 ms.date: 08/18/2021
 ms.author: cherylmc
-ms.openlocfilehash: dbc48719f2897c22717319e1e07b5b3b3146fe84
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: 544275ce4c9ab31fa65fe17351eed495895569e2
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122638268"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123432164"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>チュートリアル:Azure Virtual WAN を使用してサイト間接続を作成する
 
@@ -22,8 +22,8 @@ ms.locfileid: "122638268"
 
 > [!div class="checklist"]
 > * 仮想 WAN を作成する
-> * ハブを作成する
-> * サイト間 VPN ゲートウェイを作成する
+> * ハブの基本設定を構成する
+> * サイト間 VPN ゲートウェイの設定を構成する
 > * サイトを作成する
 > * サイトをハブに接続する
 > * VPN サイトをハブに接続する
@@ -47,7 +47,7 @@ ms.locfileid: "122638268"
 
 [!INCLUDE [Create a virtual WAN](../../includes/virtual-wan-create-vwan-include.md)]
 
-## <a name="create-hub"></a><a name="hub"></a>ハブを作成する
+## <a name="configure-hub-settings"></a><a name="hub"></a>ハブ設定を構成する
 
 ハブは、サイト間、ExpressRoute、またはポイント対サイト機能のためのゲートウェイを含めることができる仮想ネットワークです。 このチュートリアルでは、まず仮想ハブの **[基本]** タブに入力し、次のセクションで [サイト間] タブに入力します。 空のハブ (ゲートウェイを含まないハブ) を作成し、後でゲートウェイ (S2S、P2S、ExpressRoute など) を追加できることに注意してください。 ハブが作成されると、ハブ内にサイトをアタッチしたりゲートウェイを作成したりしていない場合でも、ハブに対して課金されます。
 

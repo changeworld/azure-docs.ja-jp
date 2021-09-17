@@ -10,12 +10,12 @@ ms.subservice: automanage
 ms.workload: infrastructure
 ms.custom:
 - mode-portal
-ms.openlocfilehash: d0c319fa9579f68c7f429283327f43869c4ab2b1
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: faf51735ae6805f0ff7db98416e9b05731c08642
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113006052"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123426456"
 ---
 # <a name="quickstart-enable-azure-automanage-for-virtual-machines-in-the-azure-portal"></a>クイック スタート:Azure portal で仮想マシンに対して Azure Automanage を有効にする
 
@@ -37,21 +37,7 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
 
 [Azure portal](https://aka.ms/AutomanagePortal-Ignite21) にサインインします。
 
-## <a name="enable-automanage-for-a-single-machine"></a>単一のマシンに対して Automanage を有効にする
-
-1. 有効にする仮想マシンを参照します。
-
-2. **[操作]** の下の目次にある **[Automanage (プレビュー)]** エントリをクリックします。
-
-3. **[開始]** を選択します。
-
-    :::image type="content" source="media\quick-create-virtual-machine-portal\vmmanage-getstartedbutton.png" alt-text="単一の VM を使用開始する。":::
-
-4. 目的の Automanage 設定 (環境、ユーザー設定、Automanage アカウント) を選択し、 **[有効化]** をクリックします。
-
-    :::image type="content" source="media\quick-create-virtual-machine-portal\vmmanage-enablepane.png" alt-text="単一の VM を有効にする。":::
-
-## <a name="enable-automanage-for-multiple-machines"></a>複数のマシンに対して Automanage を有効にする
+## <a name="enable-automanage-on-existing-machines"></a>既存のマシンで Automanage を有効にする
 
 1. 検索バーで、 **[Automanage – Azure machine best practices]\(Automanage - Azure マシンのベスト プラクティスの有効化)** を検索して選択します。
 

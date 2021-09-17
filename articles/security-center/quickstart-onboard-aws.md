@@ -7,12 +7,12 @@ ms.date: 01/24/2021
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 6450907ca888a01acaed90abeb6c3cdd02e32834
-ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
+ms.openlocfilehash: 781157c8cf9e3cc749f74aeb7d9d2f582823885a
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113486933"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123426762"
 ---
 #  <a name="connect-your-aws-accounts-to-azure-security-center"></a>Azure Security Center への AWS アカウントの接続
 
@@ -39,10 +39,10 @@ AWS アカウントを Security Center にオンボードすると、AWS Securit
 
 |側面|詳細|
 |----|:----|
-|リリース状態:|一般提供 (GA)|
+|リリース状態:|一般公開 (GA)|
 |価格:|[Azure Defender for servers](defender-for-servers-introduction.md) が必要|
 |必要なロールとアクセス許可:|関連する Azure サブスクリプションの **所有者**<br>所有者がサービス プリンシパルの詳細を提供する場合は、**共同作成者** も AWS アカウントに接続できます|
-|クラウド:|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用クラウド<br>:::image type="icon" source="./media/icons/no-icon.png"::: National/Sovereign (US Gov, Azure China)|
+|クラウド:|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用クラウド<br>:::image type="icon" source="./media/icons/no-icon.png"::: 国/ソブリン (Azure Government、Azure China 21Vianet)|
 |||
 
 
@@ -84,11 +84,11 @@ Security Center が AWS に対して認証を行えるようにするには、2 
     - **外部 ID** - Security Center の AWS コネクタ ページに示されているように、サブスクリプション ID を入力します 
 
 1. **[次へ]** を選択します。
-1. **[Attach permission policies]\(権限ポリシーをアタッチ\)** セクションで、次のポリシーを選択します。
+1. **[Attach permission policies]\(アクセス許可ポリシーをアタッチ\)** セクションで、次の [AWS マネージド ポリシー](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_job-functions.html)を選択します。
 
-    - SecurityAudit
-    - AmazonSSMAutomationRole
-    - AWSSecurityHubReadOnlyAccess
+    - SecurityAudit (`arn:aws:iam::aws:policy/SecurityAudit`)
+    - AmazonSSMAutomationRole (`arn:aws:iam::aws:policy/service-role/AmazonSSMAutomationRole`)
+    - AWSSecurityHubReadOnlyAccess (`arn:aws:iam::aws:policy/AWSSecurityHubReadOnlyAccess`)
 
 1. 必要に応じて、タグを追加します。 ユーザーにタグを追加しても、接続には影響しません。
 1. **[次へ]** を選択します。

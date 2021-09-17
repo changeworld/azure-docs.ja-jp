@@ -4,12 +4,12 @@ ms.service: azure-web-pubsub
 ms.topic: include
 ms.date: 08/06/2021
 ms.author: lianwei
-ms.openlocfilehash: 1f6356ceaa844433e6da3102b8db0fcbd5a61615
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: be837e20579a9236cc634e9518c82f17e2273e6b
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121785566"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123454295"
 ---
 次の情報を指定した Azure CLI の [az webpubsub client](/cli/azure/webpubsub/client) コマンドを使用して、前の手順で作成したサービスへの WebSocket クライアント接続を開始します。
 
@@ -22,13 +22,14 @@ ms.locfileid: "121785566"
 
 - ハブ名: **myHub1**
 - リソース グループ名: **myResourceGroup**
+- ユーザー ID: **user1**
 
 ```azurecli-interactive
-az webpubsub client start --name "<your-unique-resource-name>" --resource-group "myResourceGroup" --hub-name myHub1
+az webpubsub client start --name "<your-unique-resource-name>" --resource-group "myResourceGroup" --hub-name "myHub1" --user-id "user1"
 ```
 
 このコマンドによって Web PubSub サービスへの WebSocket 接続が確立されたこと、および現在正常に接続され、一意の `connectionId` が割り当てられていることを示す JSON メッセージが表示されていることが分かります。
 
 ```json
-{"type":"system","event":"connected","userId":null,"connectionId":"<your_unique_connection_id>"}
+{"type":"system","event":"connected","userId":"user1","connectionId":"<your_unique_connection_id>"}
 ```

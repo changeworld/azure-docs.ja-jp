@@ -3,16 +3,16 @@ title: コンテナー レジストリ用 Azure Defender - 利点と機能
 description: コンテナー レジストリ用 Azure Defender の利点と機能について説明します。
 author: memildin
 ms.author: memildin
-ms.date: 07/05/2021
+ms.date: 09/05/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: d448d0b0a67987ced1caec04557773c2f8ab33d7
-ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
+ms.openlocfilehash: 5c9407e33cefc9c604192252a119db5a42851949
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113651819"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123541407"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>Azure Defender for container registries の概要
 
@@ -20,7 +20,17 @@ Azure Container Registry (ACR) は、Azure デプロイ用のコンテナー イ
 
 サブスクリプション内の Azure Resource Manager ベースのレジストリを保護するには、サブスクリプション レベルで **コンテナー レジストリ用 Azure Defender** を有効にします。 その後、Azure Defender では、レジストリにプッシュされたイメージ、レジストリにインポートされたすべてのイメージ、または過去 30 日以内にプルされたすべてのイメージがスキャンされます。 スキャンされたすべてのイメージについて、イメージごとに 1 回の料金が発生します。
 
-[!INCLUDE [Defender for container registries availability info](../../includes/security-center-availability-defender-for-container-registries.md)]
+## <a name="availability"></a>可用性
+
+|側面|詳細|
+|----|:----|
+|リリース状態:|一般提供 (GA)|
+|価格:|**コンテナー レジストリ用の Azure Defender** の課金については、[価格に関するページ](security-center-pricing.md)をご覧ください。|
+|サポートされているレジストリとイメージ:|シェル アクセスによってパブリック インターネットからアクセス可能な ACR レジストリ内の Linux イメージ<br>[Azure Private Link で保護された ACR レジストリ](../container-registry/container-registry-private-link.md)|
+|サポートされていないレジストリとイメージ:|Windows イメージ<br>"プライベート" レジストリ ([信頼できるサービス](../container-registry/allow-access-trusted-services.md#trusted-services)にアクセスが許可されている場合を除く)<br>[Docker スクラッチ](https://hub.docker.com/_/scratch/)のようなスーパー ミニマリスト イメージ、またはアプリケーションとそのランタイム依存関係のみが含まれ、パッケージ マネージャー、シェル、または OS は含まれない "ディストリビューションレス" イメージ。<br>[Open Container Initiative (OCI) のイメージ形式の仕様](https://github.com/opencontainers/image-spec/blob/master/spec.md)のイメージ|
+|必要なロールとアクセス許可:|**セキュリティ閲覧者** および [Azure Container Registry のロールとアクセス許可](../container-registry/container-registry-roles.md)|
+|クラウド:|:::image type="icon" source="./media/icons/yes-icon.png" border="false"::: 商用クラウド<br>:::image type="icon" source="./media/icons/yes-icon.png" border="false"::: US Gov および China Gov - 現在、プッシュ時のスキャン機能のみがサポートされています。 詳細については、「[イメージはどのような場合にスキャンされますか](#when-are-images-scanned)」を参照|
+|||
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-container-registries"></a>コンテナー レジストリ用 Azure Defender の利点は何ですか?
 

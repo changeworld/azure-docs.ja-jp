@@ -3,16 +3,16 @@ title: Azure Defender for Resource Manager - 利点と機能
 description: Azure Defender for Resource Manager の利点と機能について学習します。
 author: memildin
 ms.author: memildin
-ms.date: 07/14/2021
+ms.date: 09/05/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 38eeaa02bf34f27580b29662f75455358c83ccb7
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fff9c94af2c74612e8c07be1f7e125787265a72d
+ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121732562"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123541371"
 ---
 # <a name="introduction-to-azure-defender-for-resource-manager"></a>Azure Defender for Resource Manager の概要
 
@@ -21,6 +21,15 @@ ms.locfileid: "121732562"
 このクラウド管理レイヤーは、すべてのクラウド リソースに接続される非常に重要なサービスです。 それだけに攻撃者の標的になるリスクもはらんでいます。 したがって、セキュリティ運用チームでリソース管理レイヤーを厳しく監視することをお勧めします。 
 
 組織内のリソース管理操作は、その手段が Azure portal や Azure REST API、Azure CLI であれ、その他 Azure のプログラマティック クライアントであれ、Azure Defender for Resource Manager によって自動的に監視されます。 Azure Defender は高度なセキュリティ分析を実行して脅威を検出し、不審なアクティビティについてのアラートを生成します。
+
+>[!NOTE]
+> これらの分析では、[Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security) が利用されています。 これらの分析を活用するには、Cloud App Security ライセンスをアクティブにする必要があります。 Cloud App Security ライセンスをお持ちの場合、これらのアラートは既定で有効になります。 アラートを無効にするには、次のようにします。
+>
+> 1. Security Center のメニューから、 **[価格と設定]** を選択します。
+> 1. 変更するサブスクリプションを選択します。
+> 1. **[Integrations]\(統合\)** を選択します。
+> 1. **[私のデータに Microsoft Cloud App Security がアクセスすることを許可します]** チェック ボックスをオフにして、 **[保存]** を選択します。
+
 
 ## <a name="availability"></a>可用性
 
