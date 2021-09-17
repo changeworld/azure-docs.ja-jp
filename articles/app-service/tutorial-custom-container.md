@@ -2,17 +2,17 @@
 title: チュートリアル:カスタム イメージを作成して Azure App Service で実行する
 description: Linux または Windows のカスタム イメージを作成して Azure Container Registry にプッシュし、そのイメージを Azure App Service にデプロイするためのステップ バイ ステップ ガイドです。 カスタム ソフトウェアをカスタム コンテナー内の App Service に移行する方法について説明します。
 ms.topic: tutorial
-ms.date: 07/16/2021
+ms.date: 08/04/2021
 ms.author: msangapu
 keywords: Azure App Service, Web アプリ, Linux, Windows, Docker, コンテナー
 ms.custom: devx-track-csharp, mvc, seodec18, devx-track-python, devx-track-azurecli
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 97246083b783fe98b4021a6f9bb882d40e79d449
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: 1574464f4f6f4c4abe8a3fc45247f28b7b97bd96
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114386992"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123428076"
 ---
 # <a name="migrate-custom-software-to-azure-app-service-using-a-custom-container"></a>カスタム コンテナーを使用してカスタム ソフトウェアを Azure App Service に移行する
 
@@ -458,19 +458,19 @@ Azure App Service にコンテナーをデプロイするには、まず App Ser
 1. マネージ ID を使用して Azure Container Registry からプルするようにアプリを構成します。
 
     ```azurecli-interactive
-    az resource update --ids /subscriptions/<subscription-id>/resourceGroups/myResourceGroup/providers/Microsoft.Web/sites/<registry-name>/config/web --set properties.acrUseManagedIdentityCreds=True
+    az resource update --ids /subscriptions/<subscription-id>/resourceGroups/myResourceGroup/providers/Microsoft.Web/sites/<app-name>/config/web --set properties.acrUseManagedIdentityCreds=True
     ```
     
     次の値を置き換えます。
     - `<subscription-id>`: `az account show` コマンドから取得したサブスクリプション ID。
-    - `<registry-name>`: コンテナー レジストリの名前。
+    - `<app-name>`: Web アプリの名前。
 
     > [!TIP]
     > アプリで[ユーザー割り当てマネージド ID](overview-managed-identity.md#add-a-user-assigned-identity) を使用する場合は、追加の `AcrUserManagedIdentityID` プロパティを設定してクライアント ID を指定します。
     >
     > ```azurecli-interactive
     > clientId=$(az identity show --resource-group <group-name> --name <identity-name> --query clientId --output tsv)
-    > az resource update --ids /subscriptions/<subscription-id>/resourceGroups/myResourceGroup/providers/Microsoft.Web/sites/<registry-name>/config/web --set properties.AcrUserManagedIdentityID=$clientId
+    > az resource update --ids /subscriptions/<subscription-id>/resourceGroups/myResourceGroup/providers/Microsoft.Web/sites/<app-name>/config/web --set properties.AcrUserManagedIdentityID=$clientId
     > ```
 
 ## <a name="deploy-the-image-and-test-the-app"></a>イメージをデプロイしてアプリをテストする
@@ -579,7 +579,7 @@ App Service アプリで、プライベート コンテナー レジストリか
 1. イメージのタグにあるバージョン番号を v1.0.1 に更新します。
 
     ```bash
-    docker tag appsvc-tutorial-custom-image <registry-name>.azurecr.io/appsvc-tutorial-custom-image:latest
+    docker tag appsvc-tutorial-custom-image <registry-name>.azurecr.io/appsvc-tutorial-custom-image:v1.0.1
     ```
 
     `<registry-name>` をレジストリの名前に置き換えます。
@@ -587,7 +587,7 @@ App Service アプリで、プライベート コンテナー レジストリか
 1. イメージをレジストリにプッシュします。
 
     ```bash
-    docker push <registry-name>.azurecr.io/appsvc-tutorial-custom-image:latest
+    docker push <registry-name>.azurecr.io/appsvc-tutorial-custom-image:v1.0.1
     ```
 
 1. イメージのプッシュが完了すると、Webhook によって App Service にプッシュが行われたことが通知され、App Service では更新されたイメージのプルが試みられます。 数分待ってから、`https://<app-name>.azurewebsites.net` を参照して更新がデプロイされていることを確認します。
@@ -611,6 +611,7 @@ RUN apt-get update \
 
 > [!NOTE]
 > この構成は、コンテナーへの外部接続を許可しません。 SSH は Kudu/SCM サイトを通してのみ利用できます。 Kudu/SCM サイトは Azure アカウントにより認証されます。
+> root:Docker! では、 SSH を変更することはできません。 SCM または KUDU では、Azure portal の資格情報を使用します。 この値を変更すると、SSH の使用時にエラーが発生します。
 
 また、この *Dockerfile* は *sshd_config* ファイルを */etc/ssh/* フォルダーにコピーし、コンテナーのポート 2222 を公開します。
 
