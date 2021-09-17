@@ -6,14 +6,14 @@ author: asudbring
 manager: KumudD
 ms.service: azure-cdn
 ms.topic: how-to
-ms.date: 9/06/2020
+ms.date: 08/18/2021
 ms.author: allensu
-ms.openlocfilehash: 6e433950c04c4494201b090063b17a10e54a4822
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 06d0e35534db97f1de48c55f9cc6f46f979514fa
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98685773"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444840"
 ---
 # <a name="azure-cdn-endpoint-multi-origin"></a>Azure CDN エンドポイントの複数配信元
 
@@ -83,6 +83,12 @@ Azure CDN エンドポイント内で複数の配信元を選択すると、提�
 3. **[追加]** を選択します。
 
 4. すべての配信元に配信元パスを設定するには、 **[Configure origin]\(配信元の構成\)** を選択します。
+
+    配信元パスは、配信元に転送される要求を構築するときに Microsoft CDN が使用する URL を書き換えるために使用されます。 また、受信要求の残りの部分もすべて含まれています。 既定では、このパスは指定されていません。 そのため、Microsoft CDN は、配信元へは要求内の受信 URL パスを使用します。
+
+    配信元のパス: `/fwd/`
+
+    受信 URL パス: `/foo/a/b/image1.jpg` </br> Microsoft CDN から配信元への URL は、`fwd/foo/a/b/image1.jpg.` です。
 
     :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-7.png" alt-text="配信元のパスを構成する" border="true":::
 

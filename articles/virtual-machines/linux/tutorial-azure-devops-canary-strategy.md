@@ -1,25 +1,26 @@
 ---
-title: チュートリアル - Azure Linux Virtual Machines のカナリア デプロイを構成する
-description: このチュートリアルでは、継続的デプロイ (CD) パイプラインを設定する方法について説明します。 このパイプラインは、カナリア デプロイ戦略を使用して Azure Linux 仮想マシンのグループを更新します。
+title: Azure Linux Virtual Machines のカナリア デプロイを構成する
+description: 継続的デプロイ (CD) パイプラインを設定する方法について説明します。 このパイプラインは、カナリア デプロイ戦略を使用して Azure Linux 仮想マシンのグループを更新します。
 author: moala
 tags: azure-devops-pipelines
-ms.assetid: ''
 ms.service: virtual-machines
 ms.collection: linux
-ms.topic: tutorial
+ms.topic: how-to
 ms.tgt_pltfrm: azure-pipelines
 ms.workload: infrastructure
 ms.date: 4/10/2020
 ms.author: moala
 ms.custom: devops
-ms.openlocfilehash: bbfe6571cf075b2ce4930eea91bfd1e239470c5a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f9ab4712e6419303f010d7cf1a417a8a907f9a05
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102552509"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122690950"
 ---
-# <a name="tutorial---configure-the-canary-deployment-strategy-for-azure-linux-virtual-machines"></a>チュートリアル - Azure Linux Virtual Machines のカナリア デプロイ戦略を構成する
+# <a name="configure-the-canary-deployment-strategy-for-azure-linux-virtual-machines"></a>Azure Linux Virtual Machines のカナリア デプロイ戦略を構成する
+
+**適用対象:** :heavy_check_mark: Linux VM 
 
 ## <a name="infrastructure-as-a-service-iaas---configure-cicd"></a>サービスとしてのインフラストラクチャ (IaaS) - CI/CD を構成する
 

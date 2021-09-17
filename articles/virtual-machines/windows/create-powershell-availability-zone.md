@@ -8,14 +8,16 @@ ms.workload: infrastructure
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 01c4c22dcf806eced40cf6d3aa382dbeb68078aa
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 5e059cd4112b39565ba07b39d80d2db4a53c9d46
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110669258"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122693474"
 ---
 # <a name="create-a-virtual-machine-in-an-availability-zone-using-azure-powershell"></a>Azure PowerShell を使用して可用性ゾーン内に仮想マシンを作成する
+
+**適用対象:** :heavy_check_mark: Windows VM 
 
 この記事では、Azure PowerShell を使用して、Windows Server 2016 を実行する Azure 仮想マシンを Azure 可用性ゾーン内に作成する方法を詳しく説明します。 [可用性ゾーン](../../availability-zones/az-overview.md)とは、1 つの Azure リージョン内で物理的に分離されたゾーンのことです。 可用性ゾーンは、データセンター全体に及ぶ珍しい障害や損失からアプリとデータを保護するために使用します。
 

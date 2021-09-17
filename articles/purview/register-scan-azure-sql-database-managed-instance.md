@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 05/08/2021
-ms.openlocfilehash: 655314720975738ebdbddb009d6d31ad7a322e72
-ms.sourcegitcommit: f0168d80eb396ce27032aa02fe9da5a0c10b5af3
+ms.openlocfilehash: 06f3ee8b820d732c0f605adc3201cff57fa70b42
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112552255"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121739086"
 ---
 # <a name="register-and-scan-an-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance の登録とスキャン
 
@@ -95,9 +95,9 @@ Purview でサービス プリンシパルを使用して Azure SQL Database Man
 1. [Azure portal](https://portal.azure.com) で自分のサービス プリンシパルに移動します
 1. **[概要]** から **[アプリケーション (クライアント) ID]** 、 **[証明書とシークレット]** から **[クライアント シークレット]** の値をコピーします。
 1. お使いのキー コンテナーに移動する
-1. **[設定] > [シークレット]** の順に選択します。
+1. **[設定]、[シークレット]** の順に選択します
 1. **[生成/インポート]** を選択し、サービス プリンシパルの **クライアント シークレット** として任意の **名前** と **値** を入力します
-1. **[作成]** を選択して完了します。
+1. **[作成]** を選択して完了します
 1. キー コンテナーが Purview にまだ接続されていない場合は、[新しいキー コンテナーの接続を作成](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account)する必要があります。
 1. 最後に、サービス プリンシパルを使用して[新しい資格情報を作成](manage-credentials.md#create-a-new-credential)し、スキャンを設定します
 
@@ -105,9 +105,9 @@ Purview でサービス プリンシパルを使用して Azure SQL Database Man
 
 1. ご自分の Purview アカウントに移動します。
 
-1. 左側のナビゲーションで **[ソース]** を選択します。
+1. 左側のナビゲーションで **[Data Map]** を選択します。
 
-1. **[登録]** を選択します。
+1. **[登録]** を選択します
 
 1. **[Azure SQL Database Managed Instance]** 、 **[続行]** の順に選択します。
 

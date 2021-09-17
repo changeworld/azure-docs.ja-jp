@@ -9,12 +9,12 @@ metadata:
   ms.topic: troubleshooting
   ms.date: 02/22/2021
   ms.author: deanwe
-  ms.openlocfilehash: b1cc973af2c4e50ea0f50698f6628bac77c1dfeb
-  ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+  ms.openlocfilehash: dca933c5b86875b50d04a67f482713830437350b
+  ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/22/2021
-  ms.locfileid: "114482015"
+  ms.lasthandoff: 08/20/2021
+  ms.locfileid: "122608105"
 title: Azure Automanage for VMs に関してよく寄せられる質問
 summary: >
   この記事では、[Azure Automanage for virtual machines](automanage-virtual-machines.md) に関してよく寄せられる質問への回答を提供します。

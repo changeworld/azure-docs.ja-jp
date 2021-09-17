@@ -8,17 +8,19 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 11/01/2020
 ms.author: mimckitt
-ms.openlocfilehash: f02c9699dc59db30f2291be1817f564dbc394998
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 6b2a2370f6b98184a48c370c929b948ebc72a84e
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122252224"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122698673"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>旧世代の仮想マシンのサイズ
 
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
+
 > [!TIP]
-> **[仮想マシン セレクター ツール](https://aka.ms/vm-selector)** を使って、ワークロードに最適な他のサイズを見つけてください。
+> **[仮想マシン セレクター ツール](https://aka.ms/vm-selector)** を使用して、ワークロードに最適な他のサイズをご確認いただけます。
 
 このセクションでは、仮想マシンのサイズの前の世代の情報を提供します。 これらのサイズも、使用できますが、より新しい世代が使用可能です。
 

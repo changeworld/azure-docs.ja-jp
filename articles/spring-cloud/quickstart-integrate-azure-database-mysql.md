@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 05/13/2021
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 223a3ba0fdb11824cd7c45218dc72271054db428
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 86795c29f5eaaedb1ea08975a69b6afde9d755c1
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114470679"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122271488"
 ---
 # <a name="quickstart-integrate-azure-spring-cloud-with-azure-database-for-mysql"></a>クイック スタート: Azure Spring Cloud と Azure Database for MySQL との統合
 
@@ -20,7 +20,7 @@ ms.locfileid: "114470679"
 
 ## <a name="variables-preparation"></a>変数の準備
 
-次の値を使用します。 エラーを回避するために、これらをテキスト ファイルまたは環境変数に保存します。
+次の値を使用します。 エラーを回避するために、これらをテキスト ファイルまたは環境変数に保存します。 パスワードは長さが 8 文字以上で、英大文字、英小文字、数字、英数字以外の文字 (!、$、#、% など) を 1 つ以上含んでいる必要があります。
 
 ```bash
 export RESOURCE_GROUP=<resource-group-name> # customize this
@@ -34,7 +34,7 @@ export MYSQL_DATABASE_NAME=petclinic
 
 ## <a name="prepare-an-azure-database-for-mysql-instance"></a>Azure Database for MySQL インスタンスを準備する
 
-1. Azure Database for MySQL サーバーを作成します。
+1. Azure Database for MySQL サーバーを作成します。 
 
     ```azcli
     az mysql server create --resource-group ${RESOURCE_GROUP} \
@@ -79,35 +79,35 @@ export MYSQL_DATABASE_NAME=petclinic
     // SUBSTITUTE values
     mysql -u ${MYSQL_SERVER_ADMIN_LOGIN_NAME} \
      -h ${MYSQL_SERVER_FULL_NAME} -P 3306 -p
-    
+
     Enter password:
     Welcome to the MySQL monitor.  Commands end with ; or \g.
     Your MySQL connection id is 64379
     Server version: 5.6.39.0 MySQL Community Server (GPL)
-    
+
     Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
-    
+
     Oracle is a registered trademark of Oracle Corporation and/or its
     affiliates. Other names may be trademarks of their respective
     owners.
-    
+
     Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
-    
+
     mysql> CREATE DATABASE petclinic;
     Query OK, 1 row affected (0.10 sec)
-    
+
     mysql> CREATE USER 'root' IDENTIFIED BY 'petclinic';
     Query OK, 0 rows affected (0.11 sec)
-    
+
     mysql> GRANT ALL PRIVILEGES ON petclinic.* TO 'root';
     Query OK, 0 rows affected (1.29 sec)
-    
+
     mysql> CALL mysql.az_load_timezone();
     Query OK, 3179 rows affected, 1 warning (6.34 sec)
-    
+
     mysql> SELECT name FROM mysql.time_zone_name;
     ...
-    
+
     mysql> quit
     Bye
     ```
@@ -161,5 +161,6 @@ az spring-cloud app update --name visits-service \
 ```
 
 ## <a name="next-steps"></a>次のステップ
+
 * [Azure Database for MySQL インスタンスを Azure Spring Cloud アプリケーションにバインドする](how-to-bind-mysql.md)
 * [マネージド ID を使用して Azure SQL Database を Azure Spring Cloud アプリに接続する](./connect-managed-identity-to-azure-sql.md)

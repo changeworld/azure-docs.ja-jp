@@ -6,14 +6,14 @@ author: Heidilohr
 manager: lizross
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 08/11/2021
+ms.date: 08/20/2021
 ms.author: helohr
-ms.openlocfilehash: 97c81eadf7091f04b77b094a4622c1731d19c537
-ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
+ms.openlocfilehash: f168c05e5df3421126c94bea7160896fb1b75363
+ms.sourcegitcommit: c2f0d789f971e11205df9b4b4647816da6856f5b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122228883"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122662274"
 ---
 # <a name="connections-to-azure-ad-joined-vms"></a>Azure AD 参加済み VM への接続
 
@@ -41,6 +41,7 @@ Windows セキュリティ資格情報のプロンプトで **ログオン試行
 - セッション ホストと同じ Azure AD テナントに Azure AD 参加またはハイブリッド Azure AD 参加しているデバイスを使用している
 - セッション ホストと同じ Azure AD テナントに Azure AD が登録された、Windows 10 2004 以降を搭載したデバイスを使用している
 - [PKU2U プロトコルがローカル PC とセッション ホストの両方で有効](/windows/security/threat-protection/security-policy-settings/network-security-allow-pku2u-authentication-requests-to-this-computer-to-use-online-identities)になっていること
+- Azure AD 参加済み VM ではサポートされていないので、ユーザー アカウントでの[ユーザーごとの MFA は無効になります](deploy-azure-ad-joined-vm.md#enabling-mfa-for-azure-ad-joined-vms)。
 
 ### <a name="the-sign-in-method-youre-trying-to-use-isnt-allowed"></a>使用しようとしているサインイン方法は許可されていません
 

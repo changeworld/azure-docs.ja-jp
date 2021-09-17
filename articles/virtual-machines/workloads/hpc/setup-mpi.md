@@ -8,14 +8,16 @@ ms.topic: article
 ms.date: 04/16/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 7e468b246534fef1fab4e710d0449e785280e16a
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: c189c850d0db5965823c531d86c243d209c8db34
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114460523"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122694128"
 ---
 # <a name="set-up-message-passing-interface-for-hpc"></a>HPC の Message Passing Interface を設定する
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 [メッセージ パッシング インターフェイス (MPI)](https://en.wikipedia.org/wiki/Message_Passing_Interface) は、分散型メモリ並列化についてのオープン ライブラリであり、事実上の標準です。 多くの HPC ワークロードにわたってよく使用されています。 [RDMA 対応](../../sizes-hpc.md#rdma-capable-instances)の [H シリーズ](../../sizes-hpc.md)および [N シリーズ](../../sizes-gpu.md) VM 上の HPC ワークロードは、MPI を使用し、低待機時間で高帯域幅の InfiniBand ネットワークを介して通信することができます。
 - Azure の SR-IOV 対応 VM サイズでは、ほぼすべてのフレーバーの MPI を Mellanox OFED と一緒に使用できます。

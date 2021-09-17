@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: f1da6ec900176807647819865ba708002bd6e614
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.openlocfilehash: a7022c9de1449d0c4001b1d814eeb9464b98c24a
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122271203"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122769983"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID をサポートするサービス
 
@@ -80,11 +80,11 @@ Azure Arc 対応 Kubernetes では、現在、[システムによって割り当
 | マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
 | システム割り当て済み | ![利用可能][check] | ![利用可能][check] | 使用不可 | 使用不可 |
-| ユーザー割り当て済み | 使用不可 | 使用不可 | 使用不可 | 使用できません |
+| ユーザー割り当て済み | 使用不可 | 使用不可 | 使用不可 | 使用不可 |
 
 すべての Azure Arc 対応サーバーには、システムによって割り当てられた ID があります。 Azure Arc 対応サーバーでは、システムによって割り当てられた ID を無効化または変更することはできません。 Azure Arc 対応サーバーでマネージド ID を使用する方法の詳細については、次のリソースを参照してください。
 
-- [Arc 対応サーバーでの Azure リソースに対する認証](../../azure-arc/servers/managed-identity-authentication.md)
+- [Arc 対応サーバーでの Azure リソースに対して認証を行う](../../azure-arc/servers/managed-identity-authentication.md)
 - [Arc 対応サーバーでのマネージド ID の使用](../../azure-arc/servers/security-overview.md#using-a-managed-identity-with-arc-enabled-servers)
 
 ### <a name="azure-automanage"></a>Azure Automanage
@@ -196,7 +196,7 @@ Azure Digital Twins のために (それが提供されているリージョン�
 マネージド ID の種類 |すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
 | システム割り当て済み | プレビュー | プレビュー | 使用不可 | プレビュー |
-| ユーザー割り当て済み | 使用不可 | 使用不可  | 使用不可  | 使用不可 |
+| ユーザー割り当て済み | プレビュー | プレビュー | 使用不可 | プレビュー |
 
 ### <a name="azure-firewall-policy"></a>Azure ファイアウォール ポリシー
 

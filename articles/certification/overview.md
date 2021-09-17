@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 04/09/2021
 ms.custom: template-overview
 ms.service: certification
-ms.openlocfilehash: e7cd664e9eb61cae4f1888e4c94f02f19301e9e5
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 73b7922e8295f33191f29f6bf7e7bb947764724b
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107502098"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751137"
 ---
 # <a name="what-is-the-azure-certified-device-program"></a>Azure Certified Device プログラムとは
 

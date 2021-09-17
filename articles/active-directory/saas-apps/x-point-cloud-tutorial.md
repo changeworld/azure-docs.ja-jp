@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/15/2021
+ms.date: 08/23/2021
 ms.author: jeedes
-ms.openlocfilehash: 87516b3114e665275c5a3e2ead0caf8c49987d33
-ms.sourcegitcommit: b59e0afdd98204d11b7f9b6a3e55f5a85d8afdec
+ms.openlocfilehash: 77c954d5fd3541b172ec51e237443b00e7e86154
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114373360"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122768551"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-x-point-cloud"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と X-point Cloud の統合
 
@@ -77,14 +77,16 @@ X-point Cloud に対する Azure AD SSO を構成してテストするには、�
 
     a. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<SUBDOMAIN>.atledcloud.jp`
 
-    b. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<SUBDOMAIN>.atledcloud.jp/xpoint`
+    b. **[応答 URL (Assertion Consumer Service URL)]** テキスト ボックスに、`https://<SUBDOMAIN>.atledcloud.jp/xpoint/saml/acs` というパターンを使用して URL を入力します。
+
+    c. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<SUBDOMAIN>.atledcloud.jp/xpoint`
 
     > [!NOTE]
-    > これらは実際の値ではありません。 これらの値を実際の識別子とサインオン URL で更新してください。 これらの値を取得するには、[X-point Cloud クライアント サポート チーム](mailto:x-point@atled.jp)にご連絡ください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 これらの値は、実際の識別子、応答 URL、サインオン URL で更新してください。 これらの値を取得するには、[X-point Cloud クライアント サポート チーム](mailto:x-point@atled.jp)にご連絡ください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
+1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (未加工)]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
-    ![証明書のダウンロードのリンク](common/certificatebase64.png)
+    ![証明書のダウンロードのリンク](common/certificateraw.png)
 
 1. **[X-point Cloud のセットアップ]** セクションで、要件に基づいて適切な URL をコピーします。
 
@@ -116,7 +118,7 @@ X-point Cloud に対する Azure AD SSO を構成してテストするには、�
 
 ## <a name="configure-x-point-cloud-sso"></a>X-point Cloud SSO の構成
 
-**X-point Cloud** 側でシングル サインオンを構成するには、ダウンロードした **証明書 (Base64)** と Azure portal からコピーした適切な URL を [X-point Cloud サポート チーム](mailto:x-point@atled.jp)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**X-point Cloud** 側でシングル サインオンを構成するには、ダウンロードした **証明書 (生)** と Azure portal からコピーした適切な URL を [X-point Cloud サポート チーム](mailto:x-point@atled.jp)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-x-point-cloud-test-user"></a>X-point Cloud のテスト ユーザーの作成
 

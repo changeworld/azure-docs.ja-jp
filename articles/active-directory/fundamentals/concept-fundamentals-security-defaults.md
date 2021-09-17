@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 07/07/2021
+ms.date: 08/20/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
-ms.reviewer: rogoya
+ms.reviewer: lvandenende
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: d240e9bbf657a4336480d1340b8fbd59903a355a
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: a82b2632d5415091986c418ca7cd3871e519b374
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113730300"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122634186"
 ---
 # <a name="what-are-security-defaults"></a>セキュリティの既定値群とは
 
@@ -35,7 +35,7 @@ ms.locfileid: "113730300"
 
 ## <a name="availability"></a>可用性
 
-Microsoft は、誰もがセキュリティの既定値群を利用できるよう努めています。 目標は、すべての組織が追加の費用なしで基本レベルのセキュリティを確実に有効にできるようにすることです。 セキュリティの既定値群は、Azure portal で有効にします。 2019 年 10 月 22 日以降に作成されたテナントの場合、セキュリティの既定値群はテナントで既に有効になっている可能性があります。 すべてのユーザーを保護するために、セキュリティの既定値群は、新しく作成されたすべてのテナントにロールアウトされます。
+Microsoft は、誰もがセキュリティの既定値群を利用できるよう努めています。 目標は、すべての組織が追加の費用なしで基本レベルのセキュリティを確実に有効にできるようにすることです。 セキュリティの既定値群は、Azure portal で有効にします。 2019 年 10 月 22 日以降に作成されたテナントの場合、セキュリティの既定値群はテナントで有効になっている可能性があります。 すべてのユーザーを保護するために、セキュリティの既定値群は、作成時に新しいテナントにロールアウトされます。
 
 ### <a name="whos-it-for"></a>適した組織
 
@@ -77,9 +77,9 @@ Microsoft は、誰もがセキュリティの既定値群を利用できるよ�
 
 認証の追加のレイヤーが必要なアカウントは管理者アカウントだけであると考えがちです。 管理者は、機密情報への広範なアクセス権を持ち、サブスクリプション全体の設定に変更を加えることができます。 しかし、多くの場合、攻撃者はエンド ユーザーをターゲットにします。 
 
-これらの攻撃者は、アクセス権を取得した後、元のアカウント所有者に代わって機密性の高い情報へのアクセスを要求できます。 ディレクトリ全体をダウンロードして、組織全体に対してフィッシング攻撃を実行することさえできます。 
+これらの攻撃者は、アクセス権を取得した後、元のアカウント所有者の代わりに機密性の高い情報へのアクセスを要求できます。 ディレクトリ全体をダウンロードして、組織全体に対してフィッシング攻撃を実行することさえできます。 
 
-すべてのユーザーを対象にした保護を向上させるための一般的な方法の 1 つは、全員に Multi-Factor Authentication を要求するなど、より強力な形式のアカウント検証を要求することです。 ユーザーが Multi-Factor Authentication の登録を完了すると、必要に応じて追加の認証を求められるようになります。 ユーザーは、主に、新しいデバイスまたはアプリケーションを使用して認証するとき、または重要な役割とタスクを実行するときに求められます。 この機能は、SaaS アプリケーションを含めて、Azure AD に登録されているすべてのアプリケーションを保護します。
+すべてのユーザーを対象にした保護を向上させるための一般的な方法の 1 つは、全員に Multi-Factor Authentication を要求するなど、より強力な形式のアカウント検証を要求することです。 ユーザーが Multi-Factor Authentication の登録を完了すると、必要に応じて他の認証を求められるようになります。 ユーザーは、主に、新しいデバイスまたはアプリケーションを使用して認証するとき、または重要な役割とタスクを実行するときに求められます。 この機能は、SaaS アプリケーションを含めて、Azure AD に登録されているすべてのアプリケーションを保護します。
 
 ### <a name="blocking-legacy-authentication"></a>レガシ認証をブロックする
 
@@ -149,13 +149,12 @@ Azure Resource Manager にアクセスして構成を更新しようとするユ
 
 ![セキュリティ既定値と条件付きアクセスは併用不可であるという警告メッセージ](./media/concept-fundamentals-security-defaults/security-defaults-conditional-access.png)
 
-以下は、条件付きアクセスを使用して、セキュリティの既定値群で有効になったこれらのポリシーと同等のポリシーを構成する方法のステップバイステップ ガイドです。
+ここでは、条件付きアクセスを使用して一連のポリシーを構成する方法についての詳細な手順を説明します。これは、ID を保護するための優れた開始点となります。
 
 - [管理者に対して MFA を必須にする](../conditional-access/howto-conditional-access-policy-admin-mfa.md)
 - [Azure 管理のために MFA を必須にする](../conditional-access/howto-conditional-access-policy-azure-management.md)
 - [レガシ認証をブロックする](../conditional-access/howto-conditional-access-policy-block-legacy.md)
 - [すべてのユーザーに対して MFA を必須にする](../conditional-access/howto-conditional-access-policy-all-users-mfa.md)
-- [Azure AD MFA への登録を必須にする](../identity-protection/howto-identity-protection-configure-mfa-policy.md) - Azure AD Premium P2 の Azure AD Identity Protection 部分が必要です。
 
 ## <a name="enabling-security-defaults"></a>セキュリティの既定値群の有効化
 

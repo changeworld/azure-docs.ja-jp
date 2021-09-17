@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 2/12/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 4051f8fe4b338f223b36c3a87ebcc3e3d3e51979
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 30d7282d6f6f30b34b522991d6fd4e79b194d7dd
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114472975"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122771588"
 ---
 # <a name="extending-ontologies"></a>オントロジの拡張 
 
@@ -24,7 +24,7 @@ ms.locfileid: "114472975"
 
 ## <a name="realestatecore-space-hierarchy"></a>RealEstateCore の Space 階層 
 
-DTDL ベースの RealEstateCore オントロジでは、Space 階層を使用して、さまざまな種類のスペースが定義されています。Room、Building、Zone などです。さまざまな種類の Room、Building、Zone を定義するために、これらの各モデルから階層が拡張されます。 
+DTDL ベースの RealEstateCore オントロジでは、Space 階層を使用して、さまざまな種類 (部屋、建物、区域など) のスペースが定義されています。 さまざまな種類の Room、Building、Zone を定義するために、これらの各モデルから階層が拡張されます。 
 
 下の図は、階層の一部を示しています。 
 
@@ -53,7 +53,7 @@ RealEstateCore オントロジの詳細については、[業界標準のオン�
 
 :::image type="content" source="media/concepts-ontologies-extend/real-estate-core-extended-1.png" alt-text="新しい追加を含む、RealEstateCore の Space 階層の一部を示す図。"::: 
 
-### <a name="add-additional-capabilities-to-existing-interfaces"></a>既存のインターフェイスに機能をさらに追加する 
+### <a name="add-extra-capabilities-to-existing-interfaces"></a>既存のインターフェイスに機能をさらに追加する 
 
 このケースでは、業界オントロジに存在するインターフェイスにプロパティ (またはリレーションシップ、コンポーネント、テレメトリ、コマンド) をさらに追加します。
 

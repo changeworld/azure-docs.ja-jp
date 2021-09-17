@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 09/03/2020
 ms.author: karler
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: aca3e1231e2883bb077cb9fb8c2c353b607aa37e
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: a4bfa5687c4b552a99b8d4e5a7e5c8f79807d766
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114473578"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122014918"
 ---
 # <a name="how-to-launch-your-spring-cloud-application-from-source-code"></a>ソース コードから Spring Cloud アプリケーションを起動する方法
 
@@ -32,6 +32,7 @@ Java ソース コードまたはビルド済み JAR からアプリケーショ
 > * アプリケーションのパブリック エンドポイントを割り当てる
 
 ## <a name="prerequisites"></a>前提条件
+
 開始する前に、ご利用の Azure サブスクリプションで、以下の必要な依存関係があることを確認します。
 
 1. [Git をインストールする](https://git-scm.com/)
@@ -53,7 +54,7 @@ az extension add --name spring-cloud
 
 ## <a name="provision-a-service-instance-using-the-azure-cli"></a>Azure CLI を使用してサービス インスタンスをプロビジョニングする
 
-Azure CLI にログインし、アクティブなサブスクリプションを選択します。 
+Azure CLI にサインインし、アクティブなサブスクリプションを選択します。
 
 ```azurecli
 az login
@@ -101,13 +102,13 @@ az spring-cloud app create -n <app-name>
 アクティブなデプロイに fat-JAR をデプロイするには
 
 ```azurecli
-az spring-cloud app deploy -n <app-name> --jar-path <path-to-fat-JAR e.g. "target\hellospring-0.0.1-SNAPSHOT.jar">
+az spring-cloud app deploy -n <app-name> --jar-path <path-to-fat-JAR, for example "target\hellospring-0.0.1-SNAPSHOT.jar">
 ```
 
 特定のデプロイに fat-JAR をデプロイするには
 
 ```azurecli
-az spring-cloud app deployment create --app <app-name> -n <deployment-name> --jar-path <path-to-fat-JAR e.g. "target\hellospring-0.0.1-SNAPSHOT.jar">
+az spring-cloud app deployment create --app <app-name> -n <deployment-name> --jar-path <path-to-fat-JAR, for example "target\hellospring-0.0.1-SNAPSHOT.jar">
 ```
 
 ### <a name="deploy-from-source-code"></a>ソース コードからのデプロイ
@@ -146,7 +147,7 @@ az spring-cloud app show-deploy-log -n <app-name> [-d <deployment-name>]
 
 1. **[アプリケーション ダッシュボード]** ページを開きます。
 2. `gateway` アプリケーションを選択して、**[アプリケーションの詳細]** ページを表示します。
-3. **[Assign Endpoint]\(エンドポイントの割り当て\)** を選択して、ゲートウェイにパブリック エンドポイントを割り当てます。 これには数分かかることがあります。 
+3. **[Assign Endpoint]\(エンドポイントの割り当て\)** を選択して、ゲートウェイにパブリック エンドポイントを割り当てます。 これには数分かかることがあります。
 4. 実行中のアプリケーションを表示するには、割り当てられたパブリック IP をブラウザーに入力します。
 
 > [!div class="nextstepaction"]

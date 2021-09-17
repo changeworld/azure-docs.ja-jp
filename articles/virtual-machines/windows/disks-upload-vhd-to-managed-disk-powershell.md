@@ -9,14 +9,16 @@ ms.service: storage
 ms.tgt_pltfrm: linux
 ms.subservice: disks
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9bec6aaf34691adf03dad9204b93af006008c7a0
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: 2260603ce4b2baa969734d87d91aa4c949e875f2
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113356156"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692490"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-powershell"></a>VHD を Azure にアップロードするか、他のリージョンにマネージド ディスクをコピーする - Azure PowerShell
+
+**適用対象:** :heavy_check_mark: Windows VM 
 
 [!INCLUDE [disks-upload-vhd-to-disk-intro](../../../includes/disks-upload-vhd-to-disk-intro.md)]
 
@@ -104,7 +106,7 @@ Revoke-AzDiskAccess -ResourceGroupName '<yourresourcegroupname>' -DiskName '<you
 `<sourceResourceGroupHere>`、`<sourceDiskNameHere>`、`<targetDiskNameHere>`、`<targetResourceGroupHere>`、`<yourOSTypeHere>`、および `<yourTargetLocationHere>` (場所の値の例: uswest2) を実際の値に置き換えたら、次のスクリプトを実行してマネージド ディスクをコピーします。
 
 > [!TIP]
-> OS ディスクを作成する場合は、-HyperVGeneration '<yourGeneration>' を `New-AzDiskConfig` に追加します。
+> OS ディスクを作成する場合は、`-HyperVGeneration '<yourGeneration>'` を `New-AzDiskConfig` に追加します。
 
 ```powershell
 

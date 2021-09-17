@@ -10,12 +10,13 @@ ms.topic: reference
 ms.date: 04/08/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2a8aabac6960909f2a3d90fcee01cebb0ad7a832
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.custom: b2c-support
+ms.openlocfilehash: 5c27384e58a23501224e279e987115e4981ebf99
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107256941"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122633609"
 ---
 # <a name="azure-ad-b2c-custom-policy-overview"></a>Azure AD B2C カスタム ポリシーの概要
 
@@ -34,6 +35,8 @@ Azure AD B2C カスタム ポリシー [スターター パック](tutorial-crea
 - **SocialAndLocalAccounts** - ローカル アカウントとソーシャル アカウントの両方の使用を可能にします。 ほとんどのサンプルは、このポリシーを参照しています。
 - **SocialAndLocalAccountsWithMFA** - ソーシャル、ローカル、および多要素認証オプションの使用を可能にします。
 
+[Azure AD B2C サンプル GitHub リポジトリ](https://github.com/azure-ad-b2c/samples)には、ローカル アカウント ポリシーの強化、ソーシャル アカウント ポリシーの強化、MFA の強化、ユーザー インターフェイスの強化、汎用の強化、アプリの移行、ユーザーの移行、条件付きアクセス、Web テスト、CI/CD など、いくつかの Azure AD B2C のカスタム CIAM ユーザー体験の強化のためのサンプルがあります。
+ 
 ## <a name="understanding-the-basics"></a>基本情報 
 
 ### <a name="claims"></a>Claims

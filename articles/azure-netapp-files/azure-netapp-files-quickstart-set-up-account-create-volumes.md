@@ -6,14 +6,14 @@ ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: quickstart
-ms.date: 09/22/2020
+ms.date: 08/10/2020
 ms.custom: devx-track-azurecli, subject-armqs
-ms.openlocfilehash: b90b19edd1cf7f22f7396476866208e7e3bd2523
-ms.sourcegitcommit: ca38027e8298c824e624e710e82f7b16f5885951
+ms.openlocfilehash: 3d97c10236391157dbf0a8d32110e3e1d540a3b3
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112574625"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121729271"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>クイック スタート:Azure NetApp Files を設定し、NFS ボリュームを作成する
 
@@ -89,9 +89,7 @@ Azure portal、PowerShell、または Azure CLI を使用して Azure NetApp Fil
 
       ![Azure NetApp Files を選択する](../media/azure-netapp-files/azure-netapp-files-select-azure-netapp-files.png)
 
-2. **[+ 追加]** をクリックして新しい NetApp アカウントを作成します。
-
-     ![新しい NetApp アカウントを作成する](../media/azure-netapp-files/azure-netapp-files-create-new-netapp-account.png)
+2. **[+ 作成]** をクリックし、新しい NetApp アカウントを作成します。
 
 3. [新しい NetApp アカウント] ウィンドウで、次の情報を指定します。
    1. アカウント名に「**myaccount1**」と入力します。
@@ -287,11 +285,9 @@ Azure portal、PowerShell、または Azure CLI を使用して Azure NetApp Fil
 
     ![クイック スタートの NFS プロトコルを指定する](../media/azure-netapp-files/azure-netapp-files-quickstart-protocol-nfs.png)
 
-5. **[Review + create]\(レビュー + 作成\)** をクリックします。
+5. **[確認および作成]** をクリックし、作成するボリュームの情報を表示します。  
 
-    ![[確認と作成] ウィンドウ](../media/azure-netapp-files/azure-netapp-files-review-and-create-window.png)
-
-6. ボリュームの情報を確認し、 **[作成]** をクリックします。
+6. **[作成]** をクリックして、ボリュームを作成します。 
     作成されたボリュームが [ボリューム] ブレードに表示されます。
 
     ![ボリュームが作成されました](../media/azure-netapp-files/azure-netapp-files-create-volume-created.png)

@@ -7,14 +7,16 @@ ms.subservice: vm-sizes-memory
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: jushiman
-ms.openlocfilehash: 696125f75e41d39b4f9aaa1ff852b03eff589fb0
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: e129b596473784c72cab93568be88dd6dcb6fe2a
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108204245"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122697995"
 ---
 # <a name="msv2-and-mdsv2-series-medium-memory"></a>Msv2 および Mdsv2 シリーズのミディアム メモリ
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブルなスケール セット :heavy_check_mark: 均一スケール セット
 
 Msv2 および Mdsv2 ミディアム メモリ VM シリーズには、全コア ベース周波数 2.7 GHz、シングル コア ターボ周波数 4.0 GHz の、Intel® Xeon® Platinum 8280 (Cascade Lake) プロセッサが搭載されています。 これらの VM により、ローカル ディスクありとディスクなしのオプションで柔軟性が向上します。 また、最大で 192 の vCPU、4 TiB のメモリにまで拡張できる、より多くの CPU とメモリを備えた、新しい一連の分離された VM サイズにアクセスできます。 
 

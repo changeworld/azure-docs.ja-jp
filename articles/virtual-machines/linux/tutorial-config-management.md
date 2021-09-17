@@ -1,29 +1,25 @@
 ---
 title: チュートリアル - Linux 仮想マシンの構成を Azure で管理する
 description: このチュートリアルでは、Linux 仮想マシン上の変更を特定したりパッケージの更新プログラムを管理したりする方法について説明します。
-services: virtual-machines
-documentationcenter: virtual-machines
 author: mgoedtel
 manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines
 ms.collection: linux
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/27/2019
 ms.author: magoedte
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: bbc294f006859e30aa891c7aa1b9ad4d1665a21c
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: fae7a6065f04b34ea952dd474919d43dad46d0df
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108139959"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122690957"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-linux-virtual-machine-in-azure"></a>チュートリアル:Azure で変更を監視し、Linux 仮想マシンを更新する
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブル スケール セット 
 
 Azure Linux VM では、Azure [Change Tracking](../../automation/change-tracking/overview.md) を使用して変更を容易に特定したり、[Update Management](../../automation/update-management/overview.md) を使用してオペレーティング システムの更新プログラムを管理したりすることができます。
 
@@ -108,7 +104,7 @@ Log Analytics ワークスペースと Automation アカウントを選択し、
 
 新しい更新プログラムのデプロイを作成するには、 **[更新プログラムの展開のスケジュール]** を選択します。 **[新しい更新プログラムの展開]** ページが開きます。 次の表で説明されているプロパティの値を入力し、 **[作成]** をクリックします。
 
-| プロパティ | Description |
+| プロパティ | 説明 |
 | --- | --- |
 | 名前 |更新プログラムの展開を識別する一意の名前。 |
 |オペレーティング システム| Linux または Windows|

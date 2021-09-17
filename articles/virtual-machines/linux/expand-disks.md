@@ -8,14 +8,16 @@ ms.topic: how-to
 ms.date: 10/15/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: c27b042b78931fd58e43e4bbb06699abe510f385
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: c8c8881de696143be60c9ff61c1649eb31fe59b3
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107762553"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122695612"
 ---
 # <a name="expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Azure CLI を使用して Linux VM の仮想ハード ディスクを拡張する
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブル スケール セット 
 
 この記事では、Azure CLI を使用して、Linux 仮想マシン (VM) 用のマネージド ディスクを拡張する方法について説明します。 [データ ディスクを追加](add-disk.md)して記憶域スペースを追加でき、既存のデータ ディスクを拡張することもできます。 Azure の Linux VM では、通常、オペレーティング システム (OS) の既定の仮想ハード ディスク サイズは 30 GB です。 
 

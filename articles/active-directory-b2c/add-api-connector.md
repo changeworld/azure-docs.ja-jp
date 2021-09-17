@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 62a88350e0bb1fceba635c651f8b831cba30cfce
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 1e0af1080a2d56fc01bdeb4bfb5f6475c477b685
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121732455"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122777740"
 ---
 # <a name="add-an-api-connector-to-a-sign-up-user-flow"></a>API コネクタをサインアップ ユーザー フローに追加する
 
@@ -576,7 +576,8 @@ REST API をデプロイした後、`REST-ValidateProfile` 技術プロファイ
 ## <a name="test-the-custom-policy"></a>カスタム ポリシーをテストする
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-1. ご利用の Azure AD テナントを含むディレクトリを使用していることを確認してください。そのためには、トップ メニューにある **[ディレクトリ + サブスクリプション]** フィルターをクリックして、ご利用の Azure AD テナントを含むディレクトリを選択します。
+1. ポータルのツールバーにある **[ディレクトリ + サブスクリプション]** アイコンを選択して、Azure AD テナントを含むディレクトリを使っていることを確認します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[スイッチ]** を選択します。
 1. Azure portal の左上隅にある **[すべてのサービス]** を選択し、 **[アプリの登録]** を検索して選択します。
 1. **[Identity Experience Framework]** を選択します。
 1. **[カスタム ポリシーのアップロード]** を選択し、変更した次のポリシー ファイルをアップロードします。*TrustFrameworkExtensions.xml*、および *SignUpOrSignin.xml*。 

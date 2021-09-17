@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/03/2020
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: b82e36b798611aad20044592cd3bec60cdf2e871
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 598702dee3c4e5fa712144eaad5aefff564df602
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114469259"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122015501"
 ---
 # <a name="quickstart-build-and-deploy-apps-to-azure-spring-cloud"></a>クイック スタート:アプリをビルドして Azure Spring Cloud にデプロイする
 
@@ -133,7 +133,7 @@ ms.locfileid: "114469259"
    ```console
    az spring-cloud app deploy -n solar-system-weather --runtime-version NetCore_31 --main-entry Microsoft.Azure.SpringCloud.Sample.SolarSystemWeather.dll --artifact-path ./publish-deploy-solar.zip
    ```
-   
+
    このコマンドの実行には数分かかることがあります。
 
 ## <a name="assign-public-endpoint"></a>パブリック エンドポイントを割り当てる
@@ -162,11 +162,7 @@ ms.locfileid: "114469259"
 
 ## <a name="test-the-application"></a>アプリケーションをテストする
 
-`solar-system-weather` アプリに GET 要求を送信します。 ブラウザーで、パブリック URL の末尾に `/weatherforecast` を追加し、そこに移動します。 次に例を示します。
-
-```
-https://servicename-solar-system-weather.azuremicroservices.io/weatherforecast
-```
+`solar-system-weather` アプリに GET 要求を送信します。 ブラウザーで、パブリック URL の末尾に `/weatherforecast` を追加し、そこに移動します。 例: `https://servicename-solar-system-weather.azuremicroservices.io/weatherforecast`
 
 出力は JSON です。
 
@@ -198,13 +194,14 @@ Azure CLI または Maven を使用してデプロイする前に、[Azure Sprin
 
 ## <a name="build-the-microservices-applications-locally"></a>マイクロサービス アプリケーションをローカルにビルドする
 
-1. Azure Cloud アカウントにサンプル アプリ リポジトリを複製します。  ディレクトリを変更し、プロジェクトをビルドします。 
+1. Azure Cloud アカウントにサンプル アプリ リポジトリを複製します。  ディレクトリを変更し、プロジェクトをビルドします。
 
     ```azurecli
     git clone https://github.com/azure-samples/spring-petclinic-microservices
     cd spring-petclinic-microservices
     mvn clean package -DskipTests -Denv=cloud
     ```
+
 プロジェクトのコンパイルには、5 から 10 分かかります。 完了すると、各サービスのそれぞれのフォルダーに、個別の JAR ファイルができているはずです。
 
 ## <a name="create-and-deploy-apps-on-azure-spring-cloud"></a>アプリを作成して Azure Spring Cloud にデプロイする
@@ -212,7 +209,7 @@ Azure CLI または Maven を使用してデプロイする前に、[Azure Sprin
 1. 前のクイックスタートで次のコマンドを実行していない場合は、CLI の既定値を設定します。
 
     ```azurecli
-    az configure --defaults group=<resource group name> spring-cloud=<service name>  
+    az configure --defaults group=<resource group name> spring-cloud=<service name>
     ```
 
 1. PetClinic の 2 つのコア マイクロサービス (API ゲートウェイと顧客サービス) を作成します。
@@ -238,8 +235,8 @@ Azure CLI または Maven を使用してデプロイする前に、[Azure Sprin
     ```azurecli
         Name               Location    ResourceGroup    Production Deployment    Public Url                                           Provisioning Status    CPU    Memory    Running Instance    Registered Instance    Persistent Storage
     -----------------  ----------  ---------------  -----------------------  ---------------------------------------------------  ---------------------  -----  --------  ------------------  ---------------------  --------------------
-    api-gateway        eastus      xxxxxx-sp         default                  https://<service name>-api-gateway.azuremicroservices.io   Succeeded              1      2         1/1                 1/1                    -     
-    customers-service  eastus      <service name>         default                                                                       Succeeded              1      2         1/1                 1/1                    -     
+    api-gateway        eastus      xxxxxx-sp         default                  https://<service name>-api-gateway.azuremicroservices.io   Succeeded              1      2         1/1                 1/1                    -
+    customers-service  eastus      <service name>         default                                                                       Succeeded              1      2         1/1                 1/1                    -
     ```
 
 ## <a name="verify-the-services"></a>サービスを確認する
@@ -263,17 +260,19 @@ az spring-cloud app deploy --name admin-server --jar-path spring-petclinic-admin
 az spring-cloud app deploy --name vets-service --jar-path spring-petclinic-vets-service/target/spring-petclinic-vets-service-2.3.6.jar --jvm-options="-Xms2048m -Xmx2048m"
 az spring-cloud app deploy --name visits-service --jar-path spring-petclinic-visits-service/target/spring-petclinic-visits-service-2.3.6.jar --jvm-options="-Xms2048m -Xmx2048m"
 ```
+
 #### <a name="maven"></a>[Maven](#tab/Maven)
 
 ## <a name="build-the-microservices-applications-locally"></a>マイクロサービス アプリケーションをローカルにビルドする
 
-1. Azure Cloud アカウントにサンプル アプリ リポジトリを複製します。  ディレクトリを変更し、プロジェクトをビルドします。 
+1. Azure Cloud アカウントにサンプル アプリ リポジトリを複製します。  ディレクトリを変更し、プロジェクトをビルドします。
 
     ```azurecli
     git clone https://github.com/azure-samples/spring-petclinic-microservices
     cd spring-petclinic-microservices
     mvn clean package -DskipTests -Denv=cloud
     ```
+
 プロジェクトのコンパイルには、5 から 10 分かかります。 完了すると、各サービスのそれぞれのフォルダーに、個別の JAR ファイルができているはずです。
 
 ## <a name="generate-configurations-and-deploy-to-the-azure-spring-cloud"></a>構成を生成し、Azure Spring Cloud にデプロイする
@@ -283,14 +282,16 @@ az spring-cloud app deploy --name visits-service --jar-path spring-petclinic-vis
     ```azurecli
     mvn com.microsoft.azure:azure-spring-cloud-maven-plugin:1.6.0:config
     ```
-    
+
     選択を求めるメッセージが表示されます。
+
     * **モジュール:** `api-gateway` と `customers-service` を選択します。
     * **サブスクリプション:** これは、Azure Spring Cloud インスタンスを作成するために使用されるサブスクリプションです。
     * **サービス インスタンス:** これは、自分の Azure Spring Cloud インスタンスの名前です。
     * **パブリック エンドポイント:** 提示されるプロジェクトの一覧で、`api-gateway` に対応する番号を入力します。  これで、パブリック アクセスが与えられます。
 
 1. POM ファイル内の `appName` 要素が正しいことを確認します。
+
     ```xml
     <build>
         <plugins>
@@ -302,33 +303,36 @@ az spring-cloud app deploy --name visits-service --jar-path spring-petclinic-vis
                     <subscriptionId>xxxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx</subscriptionId>
                     <clusterName>v-spr-cld</clusterName>
                     <appName>customers-service</appName>
-    
+
     ```
+
     `appName` のテキストが次と一致することを確認し、必要に応じてプレフィックスを削除して、ファイルを保存してください。
     * api-gateway
     * customers-service
 
-1. POM にプラグインの依存関係と構成が含まれるようになりました。 次のコマンドを使用して、アプリをデプロイします。 
+1. POM にプラグインの依存関係と構成が含まれるようになりました。 次のコマンドを使用して、アプリをデプロイします。
 
     ```azurecli
     mvn azure-spring-cloud:deploy
     ```
-    
+
 ## <a name="verify-the-services"></a>サービスを確認する
 
 デプロイ コマンドが成功すると、`https://<service name>-spring-petclinic-api-gateway.azuremicroservices.io` の形式で URL が返されます。 これを使用して、実行中のサービスに移動します。
 
 ![PetClinic にアクセスする](media/build-and-deploy/access-customers-service.png)
 
-また、Azure portal に移動して URL を検索することもできます。 
-1. サービスに移動します
-2. **[アプリ]** を選択します
-3. **api-gateway** を選択します 
-4. **[api-gateway | Overview]\(api-gateway | 概要\)** ページで、URL を見つけます
+また、Azure portal に移動して URL を検索することもできます。
+
+1. サービスに移動します。
+2. **[アプリ]** を選択します。
+3. **api-gateway** を選択します。
+4. **[api-gateway | Overview]\(api-gateway | 概要\)** ページで、URL を見つけます。
 
 ## <a name="deploy-extra-apps"></a>追加のアプリをデプロイする
 
 管理サーバー、訪問、獣医などのすべての機能を使用して PetClinic アプリを機能させるには、他のマイクロサービスをデプロイします。 構成コマンドを再実行し、次のマイクロサービスを選択します。
+
 * admin-server
 * vets-service
 * visits-service
@@ -339,7 +343,7 @@ az spring-cloud app deploy --name visits-service --jar-path spring-petclinic-vis
 
 ## <a name="import-sample-project-in-intellij"></a>IntelliJ でサンプル プロジェクトをインポートする
 
-1. このチュートリアルのソース リポジトリをダウンロードして解凍するか、Git の `git clone https://github.com/azure-samples/spring-petclinic-microservices` を使用して複製します 
+1. このチュートリアルのソース リポジトリをダウンロードして解凍するか、Git の `git clone https://github.com/azure-samples/spring-petclinic-microservices` を使用して複製します
 
 1. IntelliJ の **[Welcome]\(ようこそ\)** ダイアログを開き、 **[Import Project]\(プロジェクトのインポート\)** を選択してインポート ウィザードを開きます。
 
@@ -348,6 +352,7 @@ az spring-cloud app deploy --name visits-service --jar-path spring-petclinic-vis
     ![プロジェクトのインポート](media/spring-cloud-intellij-howto/import-project-1-pet-clinic.png)
 
 ### <a name="deploy-api-gateway-app-to-azure-spring-cloud"></a>api-gateway アプリを Azure Spring Cloud にデプロイする
+
 Azure にデプロイするには、Azure アカウントで Azure Toolkit for IntelliJ にサインインし、自分のサブスクリプションを選択する必要があります。 サインインの詳細については、「[インストールとサインイン](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)」を参照してください。
 
 1. IntelliJ のプロジェクト エクスプローラーでプロジェクトを右クリックし、 **[Azure]**  ->  **[Deploy to Azure Spring Cloud]\(Azure Spring Cloud にデプロイ\)** を選択します。
@@ -360,27 +365,28 @@ Azure にデプロイするには、Azure アカウントで Azure Toolkit for I
 1. **[Spring Cloud]** ボックスで、「[Azure Spring Cloud インスタンスをプロビジョニングする](./quickstart-provision-service-instance.md)」で作成した Azure Spring Cloud のインスタンスを選択します。
 1. **[Public Endpoint]\(パブリック エンドポイント\)** を *[Enable]\(有効化\)* に設定します。
 1. **[App:]\(アプリ:\)** ボックスで、 **[Create app]\(アプリの作成\)** を選択します。
-1. 「*api-gateway*」と入力し、 **[OK]** をクリックします。
+1. 「*api-gateway*」と入力し、 **[OK]** を選択します。
 1. メモリを 2 GB、JVM のオプションを `-Xms2048m -Xmx2048m` に指定します。
 
-     ![メモリと JVM のオプション](media/spring-cloud-intellij-howto/memory-jvm-options.png)
+    ![メモリと JVM のオプション](media/spring-cloud-intellij-howto/memory-jvm-options.png)
 
 1. ダイアログの **[Before launch]\(起動前\)** セクションで、 *[Run Maven Goal]\(Maven 目標の実行\)* をダブルクリックします。
 1. **[Working directory]\(作業ディレクトリ\)** ボックスで、*spring-petclinic-microservices/gateway* フォルダーに移動します。
-1. **[Command line]\(コマンド ライン\)** ボックスに、「*package -DskipTests*」と入力します。 **[OK]** をクリックします。
+1. **[Command line]\(コマンド ライン\)** ボックスに、「*package -DskipTests*」と入力します。 **[OK]** を選択します。
 
     ![Azure へのデプロイ [OK]](media/spring-cloud-intellij-howto/deploy-to-azure-spring-cloud-2-pet-clinic.png)
 
-1. **[Deploy Azure Spring Cloud app]\(Azure Spring Cloud アプリのデプロイ\)** ダイアログの下部にある **[Run]\(実行\)** ボタンをクリックして、デプロイを開始します。 このプラグインは、`api-gateway` アプリに対して `mvn package` コマンドを実行し、`package` コマンドによって生成された jar をデプロイします。
+1. **[Deploy Azure Spring Cloud app]\(Azure Spring Cloud アプリのデプロイ\)** ダイアログの下部にある **[Run]\(実行\)** ボタンを選択して、デプロイを開始します。 このプラグインは、`api-gateway` アプリに対して `mvn package` コマンドを実行し、`package` コマンドによって生成された jar をデプロイします。
 
 ### <a name="deploy-customers-service-and-other-apps-to-azure-spring-cloud"></a>customers-service アプリと他のアプリを Azure Spring Cloud にデプロイする
+
 上記の手順を繰り返して、`customers-service` アプリと他の PetClinic アプリを Azure Spring Cloud にデプロイします。
 
 1. `customers-service` アプリを特定するために、 **[Name]\(名前\)** と **[Artifact]\(成果物\)** を変更します。
 1. **[App:]\(アプリ:\)** ボックスで **[Create app]\(アプリの作成\)** を選択して、`customers-service` アプリを作成します。
 1. **[Public Endpoint]\(パブリック エンドポイント\)** オプションが *[Disabled]\(無効化\)* に設定されていることを確認します。
 1. ダイアログの **[Before launch]\(起動前\)** セクションで、 **[Working directory]\(作業ディレクトリ\)** を *petclinic/customers-service* フォルダーに切り替えます。
-1. **[Deploy Azure Spring Cloud app]\(Azure Spring Cloud アプリのデプロイ\)** ダイアログの下部にある **[Run]\(実行\)** ボタンをクリックして、デプロイを開始します。 
+1. **[Deploy Azure Spring Cloud app]\(Azure Spring Cloud アプリのデプロイ\)** ダイアログの下部にある **[Run]\(実行\)** ボタンを選択して、デプロイを開始します。
 
 ## <a name="verify-the-services"></a>サービスを確認する
 
@@ -388,14 +394,17 @@ Azure にデプロイするには、Azure アカウントで Azure Toolkit for I
 
 ![PetClinic にアクセスする](media/build-and-deploy/access-customers-service.png)
 
-また、Azure portal に移動して URL を検索することもできます。 
+また、Azure portal に移動して URL を検索することもできます。
+
 1. サービスに移動します
 2. **[アプリ]** を選択します
-3. **api-gateway** を選択します 
+3. **api-gateway** を選択します
 4. **[api-gateway | Overview]\(api-gateway | 概要\)** ページで、URL を見つけます
 
 ## <a name="deploy-extra-apps"></a>追加のアプリをデプロイする
-このサンプルに含まれている他のマイクロサービスも同様にデプロイできます。 
+
+このサンプルに含まれている他のマイクロサービスも同様にデプロイできます。
+
 * admin-server
 * vets-service
 * visits-service

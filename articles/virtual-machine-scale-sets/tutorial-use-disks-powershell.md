@@ -9,14 +9,16 @@ ms.subservice: disks
 ms.date: 03/27/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurepowershell
-ms.openlocfilehash: 9e995e88b80bf14f9c7784f465bcd3d89d0bed65
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4a32d9675de9968608da0c7faa70cc31208d666a
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92367960"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122821705"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-azure-powershell"></a>チュートリアル: Azure PowerShell を使用した仮想マシン スケール セットのディスクの作成および使用
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: ユニフォーム スケール セット
 
 仮想マシン スケール セットでは、VM インスタンスのオペレーティング システム、アプリケーション、およびデータを格納するためにディスクを使用します。 スケール セットを作成および管理するときは、予測されるワークロードに適したディスクのサイズと構成を選択する必要があります。 このチュートリアルでは、VM ディスクの作成方法と管理方法について説明します。 このチュートリアルで学習する内容は次のとおりです。
 
@@ -129,7 +131,7 @@ Add-AzVmssDataDisk `
 # Update the scale set to apply the change
 Update-AzVmss `
   -ResourceGroupName "myResourceGroup" `
-  -Name "myScaleSet" `
+  -VMScaleSetName "myScaleSet" `
   -VirtualMachineScaleSet $vmss
 ```
 
@@ -166,7 +168,7 @@ Add-AzVmssExtension -VirtualMachineScaleSet $vmss `
 # Update the scale set and apply the Custom Script Extension to the VM instances
 Update-AzVmss `
   -ResourceGroupName "myResourceGroup" `
-  -Name "myScaleSet" `
+  -VMScaleSetName "myScaleSet" `
   -VirtualMachineScaleSet $vmss
 ```
 
@@ -294,7 +296,7 @@ Remove-AzVmssDataDisk `
 # Update the scale set and detach the disk from the VM instances
 Update-AzVmss `
   -ResourceGroupName "myResourceGroup" `
-  -Name "myScaleSet" `
+  -VMScaleSetName "myScaleSet" `
   -VirtualMachineScaleSet $vmss
 ```
 

@@ -13,14 +13,16 @@ ms.workload: infrastructure
 ms.date: 4/10/2020
 ms.author: moala
 ms.custom: devops
-ms.openlocfilehash: dd47250989be5c31d5f0ade2b602b9d6af535d83
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5212357fe123d722b7dbb853c874190a3ef9dee0
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102564001"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122697723"
 ---
 # <a name="tutorial---configure-the-rolling-deployment-strategy-for-azure-linux-virtual-machines"></a>チュートリアル - Azure Linux 仮想マシンのローリング デプロイ戦略を構成する
+
+**適用対象:** :heavy_check_mark: Linux VM
 
 Azure DevOps は、Azure リソースの DevOps プロセスの各段階を自動化する組み込みの Azure サービスです。 Azure と Azure DevOps を使用すれば、仮想マシン、Web アプリ、Kubernetes など、アプリで使用されるリソースが何であれ、Infrastructure as Code (IaC)、継続的インテグレーション、継続的なテスト、継続的デリバリー、継続的監視を導入することができます。
 

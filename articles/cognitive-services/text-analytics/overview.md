@@ -12,12 +12,12 @@ ms.date: 04/14/2021
 ms.author: aahi
 keywords: テキスト マイニング、感情分析、テキスト分析
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: bf148645ebdd762b65d59c86e5453b83423201e9
-ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
+ms.openlocfilehash: 804af634c7202fdc3f822e32e7cd1fbf827bfab1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113550608"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121733960"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Text Analytics API とは
 
@@ -52,6 +52,10 @@ Text Analytics API は、テキスト マイニングとテキスト分析のた
 ## <a name="named-entity-recognition"></a>名前付きエンティティの認識
 
 名前付きエンティティの認識 (NER) は、テキスト内のエンティティを、人、場所、組織、数量として[識別して分類](how-tos/text-analytics-how-to-entity-linking.md)できます。既知のエンティティも認識され、Web 上の詳細情報にリンクされます。
+
+## <a name="text-summarization"></a>テキストの概要作成
+
+[概要作成](how-tos/extractive-summarization.md) は、元のコンテンツ内で最も重要性または関連性の高い情報をまとめて表す文を抽出することでテキストの概要を生成します。 この機能により、記事、論文、またはドキュメントが重要な文に要約されます。
 
 ## <a name="text-analytics-for-health"></a>Text Analytics for Health
 

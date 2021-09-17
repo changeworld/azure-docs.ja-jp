@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 03/24/2021
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 652f98659f96b36e3185432e50d9d36dc569bd43
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 3d0987e5203288da6c6acd8bec6c478f5762b320
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107537945"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122823730"
 ---
 # <a name="what-is-azure-synapse-analytics"></a>Azure Synapse Analytics とは
 
@@ -27,8 +27,9 @@ ms.locfileid: "107537945"
 **Synapse SQL** は、T-SQL の分散クエリ システムです。データ ウェアハウジングやデータ仮想化のシナリオが可能となるほか、T-SQL を拡張してストリーミングや機械学習のシナリオにも対応することができます。
 
 * Synapse SQL では、**サーバーレス** と **専用** の両方のリソース モデルが提供されます。 予測可能なパフォーマンスとコストに対しては、専用 SQL プールを作成して、SQL テーブルに格納されているデータの処理能力を確保します。 計画外または突発性のワークロードに対しては、常に使用可能なサーバーレスの SQL エンドポイントを使用します。
-* 組み込みの **ストリーミング** 機能を使用して、クラウド データ ソースから SQL テーブルにデータを取り込みます
-* **機械学習** モデルを使用し、[T-SQL PREDICT 関数](/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest&preserve-view=true)を使用してデータをスコア付けすることにより、AI を SQL と統合します
+* 組み込みの **ストリーミング** 機能を使用して、クラウド データ ソースから SQL テーブルにデータを取り込みます。
+* 定期的にインポート タスクを実行してその完了を待つ必要なく、データをマネージド テーブルに読み込んで最適なクエリ パフォーマンスを得たり、[Azure Data Lake Storage](sql/query-data-storage.md) や [Azure Cosmos DB](sql/query-cosmos-db-analytical-store.md) のデータを直接クエリしたりすることができます。
+* **機械学習** モデルを使用し、[T-SQL PREDICT 関数](/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest&preserve-view=true)を使用してデータをスコア付けすることにより、AI を SQL と統合します。
 
 ## <a name="industry-standard-apache-spark"></a>業界標準の Apache Spark
 
@@ -44,8 +45,9 @@ ms.locfileid: "107537945"
 Azure Synapse は、SQL と Spark を組み合わせて使用する場合の従来のテクノロジーの障害を取り除きます。 ニーズと専門知識に基づいて、シームレスにいろいろな組み合わせを使用することができます。
 
 * データ レイク内のファイルで定義されたテーブルを、Spark または Hive でシームレスに使用できます。
-* SQL と Spark を使用して、データ レイクに保存されている Parquet、CSV、TSV、JSON ファイルを直接探索して分析できます。
+* SQL と Spark を使用して、データ レイクに保存されている Parquet、CSV、TSV、Delta Lake、JSON ファイルを直接探索して分析できます。
 * SQL データベースと Spark データベース間の高速かつスケーラブルなデータ読み込み
+
 
 ## <a name="built-in-data-integration"></a>組み込みのデータ統合
 

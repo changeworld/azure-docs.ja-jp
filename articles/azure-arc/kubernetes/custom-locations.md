@@ -8,12 +8,12 @@ author: shashankbarsin
 ms.author: shasb
 ms.custom: references_regions, devx-track-azurecli
 description: カスタムの場所を使用して、Azure Arc 対応 Kubernetes クラスターに Azure PaaS サービスをデプロイします
-ms.openlocfilehash: 5fa255755dd0b78498203624194d081447d70a13
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: a4586f6f527bd98f0f347e51c787f2bcda7c6d8d
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113730858"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122768303"
 ---
 # <a name="create-and-manage-custom-locations-on-azure-arc-enabled-kubernetes"></a>Azure Arc 対応 Kubernetes にカスタムの場所を作成および管理する
 
@@ -57,29 +57,26 @@ Azure の場所と同様に、カスタムの場所にアクセスできるテ�
 - `Microsoft.ExtendedLocation` のプロバイダー登録の完了を確認します。
     1. 次のコマンドを入力します。
     
-    ```azurecli
-    az provider register --namespace Microsoft.ExtendedLocation
-    ```
+        ```azurecli
+        az provider register --namespace Microsoft.ExtendedLocation
+        ```
 
     2. 登録プロセスを監視します。 登録には最大で 10 分かかる場合があります。
     
-    ```azurecli
-    az provider show -n Microsoft.ExtendedLocation -o table
-    ```
+        ```azurecli
+        az provider show -n Microsoft.ExtendedLocation -o table
+        ```
+
+        登録後、`RegistrationState` 状態に `Registered` 値が与えられます。
 
 - [Azure Arc 対応 Kubernetes に接続されたクラスター](quickstart-connect-cluster.md)が既に存在することを確認します。
     - バージョン 1.1.0 以降に[お使いのエージェントをアップグレードします](agent-upgrade.md#manually-upgrade-agents)。
-
->[!NOTE]
->**カスタムの場所でサポートされているリージョン:**
->* 米国東部
->* 西ヨーロッパ
 
 ## <a name="enable-custom-locations-on-cluster"></a>クラスターでカスタムの場所を有効にする
 
 Azure AD ユーザーとして Azure CLI にログインしている場合、クラスターでこの機能を有効にするには、次のコマンドを実行します。
 
-```console
+```azurecli
 az connectedk8s enable-features -n <clusterName> -g <resourceGroupName> --features cluster-connect custom-locations
 ```
 
@@ -87,13 +84,13 @@ az connectedk8s enable-features -n <clusterName> -g <resourceGroupName> --featur
 
 1. Azure Arc サービスで使用される Azure AD アプリケーションのオブジェクト ID をフェッチします。
 
-    ```console
+    ```azurecli
     az ad sp show --id 'bc313c14-388c-4e7d-a58e-70017303ee3b' --query objectId -o tsv
     ```
 
 1. 上記の手順の `<objectId>` 値を使用して、クラスターでカスタムの場所機能を有効にします。
 
-    ```console
+    ```azurecli
     az connectedk8s enable-features -n <cluster-name> -g <resource-group-name> --custom-locations-oid <objectId> --features cluster-connect custom-locations
     ```
 

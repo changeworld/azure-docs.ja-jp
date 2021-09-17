@@ -14,12 +14,12 @@ ms.subservice: roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e45240d9d1a957765dfd362bf612ae2ea93919c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: eeba1c933d049e67e45204ad62d71a0eb52a930d
+ms.sourcegitcommit: c2f0d789f971e11205df9b4b4647816da6856f5b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121744012"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122662433"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Azure AD でのハイブリッドおよびクラウド デプロイ用の特権アクセスをセキュリティで保護する
 
@@ -178,7 +178,7 @@ Azure AD Identity Protection は、アルゴリズムベースの監視および
 
 #### <a name="obtain-your-microsoft-365-secure-score-if-using-microsoft-365"></a>Microsoft 365 のセキュリティ スコアを取得する (Microsoft 365 を使用している場合)
 
-セキュリティ スコアは、使用している Microsoft 365 サービスの設定とアクティビティを参照して、Microsoft によって確立されたベースラインと比較します。 セキュリティ プラクティスにどの程度従っているかに基づいてスコアが算出されます。 Microsoft 365 Business Standard または Enterprise サブスクリプションの管理者アクセス許可を持つユーザーは、[https://securescore.office.com](https://securescore.office.com/) でセキュリティ スコアにアクセスできます。
+セキュリティ スコアは、使用している Microsoft 365 サービスの設定とアクティビティを参照して、Microsoft によって確立されたベースラインと比較します。 セキュリティ プラクティスにどの程度従っているかに基づいてスコアが算出されます。 Microsoft 365 Business Standard または Enterprise サブスクリプションの管理者アクセス許可を持つユーザーは、`https://securescore.office.com` でセキュリティ スコアにアクセスできます。
 
 #### <a name="review-the-microsoft-365-security-and-compliance-guidance-if-using-microsoft-365"></a>Microsoft 365 のセキュリティおよびコンプライアンス ガイダンスを確認する (Microsoft 365 を使用している場合)
 

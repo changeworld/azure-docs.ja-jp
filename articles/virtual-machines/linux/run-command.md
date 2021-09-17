@@ -10,14 +10,16 @@ ms.date: 04/26/2019
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
 manager: carmonm
-ms.openlocfilehash: 67e84ce780f3013917edbce3e66c5a708509c194
-ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
+ms.openlocfilehash: 2d4c640695395963a83629fbeea87c96b4a31aad
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112518138"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122688216"
 ---
 # <a name="run-shell-scripts-in-your-linux-vm-by-using-run-command"></a>実行コマンドを使用して Linux VM でシェル スクリプトを実行する
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブル スケール セット 
 
 実行コマンド機能では、仮想マシン (VM) エージェントを使用して Azure Linux VM 内でシェル スクリプトが実行されます。 これらのスクリプトは、マシンやアプリケーションの一般的な管理に使用できます。 これらを使用すれば、VM のアクセスおよびネットワークの問題を迅速に診断して修正し、VM を良好な状態に戻すことができます。
 

@@ -8,12 +8,12 @@ ms.date: 8/13/2021
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: 52cec60dc771232fcb808184373b82f790f8a759
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 584d4ba9de922cd035a70850f723550b02863e16
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122252756"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122606597"
 ---
 # <a name="parse-and-validate-models-with-the-dtdl-parser-library"></a>DTDL パーサー ライブラリを使用してモデルを解析および検証する
 
@@ -70,7 +70,7 @@ DTDLValidator -i
 * モデルを別のモデルから割り当てることができるかどうかを判断します。
 
 > [!NOTE]
-> [IoT プラグ アンド プレイ (PnP)](../iot-develop/overview-iot-plug-and-play.md) デバイスでは、その機能を記述するために小さな構文バリアントを使用します。 この構文バリアントは、Azure Digital Twins で使用される DTDL の意味的に互換性のあるサブセットです。 パーサー ライブラリを使用する場合は、デジタル ツインの DTDL の作成に使用された構文バリアントを把握している必要はありません。 パーサーは、既定で、常に PnP と Azure Digital Twins の両方の構文に対して同じモデルを返します。
+> [IoT プラグ アンド プレイ](../iot-develop/overview-iot-plug-and-play.md) デバイスでは、その機能を記述するために小さな構文バリアントを使用します。 この構文バリアントは、Azure Digital Twins で使用される DTDL の意味的に互換性のあるサブセットです。 パーサー ライブラリを使用する場合は、デジタル ツインの DTDL の作成に使用された構文バリアントを把握している必要はありません。 パーサーは、既定で、常に IoT プラグ アンド プレイと Azure Digital Twins の両方の構文に対して同じモデルを返します。
 
 ### <a name="code-with-the-parser-library"></a>パーサー ライブラリを使用してコードを書く
 

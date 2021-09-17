@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: quickstart
 ms.date: 04/07/2021
 ms.author: memildin
-ms.openlocfilehash: 736979bf85d75c7ca9e141e7ff04da4c9fe1c9c4
-ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
+ms.openlocfilehash: 4bdfdcc83a920b5b2e7317c4706c470e302cc49f
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113486051"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121731099"
 ---
 # <a name="configure-email-notifications-for-security-alerts"></a>セキュリティ アラートの電子メール通知を構成する 
 
@@ -35,10 +35,10 @@ ms.locfileid: "113486051"
 
 |側面|詳細|
 |----|:----|
-|リリース状態:|一般提供 (GA)|
+|リリース状態:|一般公開 (GA)|
 |価格:|Free|
 |必要なロールとアクセス許可:|**Security Admin**<br>**サブスクリプションの所有者** |
-|クラウド:|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用クラウド<br>:::image type="icon" source="./media/icons/yes-icon.png"::: National/Sovereign (US Gov、Azure China)|
+|クラウド:|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用クラウド<br>:::image type="icon" source="./media/icons/yes-icon.png"::: 国/ソブリン (Azure Government、Azure China 21Vianet)|
 |||
 
 

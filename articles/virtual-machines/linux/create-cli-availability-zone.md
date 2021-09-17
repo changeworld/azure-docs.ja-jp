@@ -6,14 +6,16 @@ ms.service: virtual-machines
 ms.topic: how-to
 ms.date: 04/05/2018
 ms.author: cynthn
-ms.openlocfilehash: 3405468c64a7130bb0d71543403dd4ce5ef9c241
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 646a5a65105912215bc378ae7e7813dfa9ffe31b
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102558374"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692095"
 ---
 # <a name="create-a-virtual-machine-in-an-availability-zone-using-azure-cli"></a>Azure CLI を使用して可用性ゾーン内に仮想マシンを作成する
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブル スケール セット 
 
 この記事では、Azure CLI を使用して Azure 可用性ゾーン内に Linux VM を作成する手順を説明します。 [可用性ゾーン](../../availability-zones/az-overview.md)とは、1 つの Azure リージョン内で物理的に分離されたゾーンのことです。 可用性ゾーンは、データセンター全体に及ぶ珍しい障害や損失からアプリとデータを保護するために使用します。
 

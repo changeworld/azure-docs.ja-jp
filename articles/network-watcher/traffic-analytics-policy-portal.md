@@ -12,20 +12,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2021
 ms.author: moagra
-ms.openlocfilehash: d55a3090e9f7c8af73f854074a5823b7fe6eba1e
-ms.sourcegitcommit: 6f4378f2afa31eddab91d84f7b33a58e3e7e78c1
+ms.openlocfilehash: 3be6d5b30d270c9687b7100c07ee675268cee5c0
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113688559"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122609150"
 ---
 # <a name="deploy-and-manage-traffic-analytics-using-azure-policy"></a>Azure Policy を使用して Traffic Analytics をデプロイして管理する 
 
 Azure Policy は、組織の標準を適用し、コンプライアンスを大規模に評価するのに役立ちます。 Azure Policy の一般的なユースケースには、リソースの整合性、規制コンプライアンス、セキュリティ、コスト、管理のガバナンスの実装が含まれています。 この記事では、セットアップを管理するために [Traffic Analytics](./traffic-analytics.md) で使用できる 3 つの組み込みポリシーについて説明します。
 
-Azure ポリシーを初めて作成する場合は、次を参照してください。 
+Azure Policy 定義を初めて作成する場合は、次を参照してください。 
 - [Azure Policy の概要](../governance/policy/overview.md) 
-- [ポリシーを作成するためのチュートリアル](../governance/policy/assign-policy-portal.md#create-a-policy-assignment)
+- [Azure Policy の割り当てを作成するためのチュートリアル](../governance/policy/assign-policy-portal.md#create-a-policy-assignment)。
 
 
 ## <a name="locate-the-policies"></a>ポリシーを見つける
@@ -137,7 +137,7 @@ Network Watcher はリージョン サービスであるため、このポリシ
 
 ![DINE ポリシーの結果のトラフィック分析](./media/traffic-analytics/policy-two-results.png)  
 
-### <a name="remediation"></a>修復
+### <a name="remediation"></a>Remediation
 
 手動で修復するには、上記の [コンプライアンス] タブで *[修復タスクの作成]* を選択します
 
@@ -153,7 +153,7 @@ Network Watcher はリージョン サービスであるため、このポリシ
 このようなシナリオでは、割り当てのマネージド ID に手動でアクセスを許可する必要があります。 適切なサブスクリプションまたはリソース グループ (ポリシー パラメーターで指定されたリソースを含む) に移動し、ポリシーによって作成されたマネージド ID へのアクセスを共同作成者に許可します。 上の例では、"b67334e8770a4afc92e7a929" は共同作成者である必要があります。
 
 
-## <a name="next-steps"></a>次のステップ 
+## <a name="next-steps"></a>次の手順 
 
 -   [NSG フロー ログの組み込みポリシー](./nsg-flow-logs-policy-portal.md)について学習する
 -   [Traffic Analytics ](./traffic-analytics.md) についてさらに学習する

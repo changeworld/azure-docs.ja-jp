@@ -11,14 +11,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 08/16/2021
+ms.date: 08/24/2021
 tags: azure-synapse
-ms.openlocfilehash: e61660a5c559012cbf4940356bd1a204f3203db6
-ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
+ms.openlocfilehash: bcda86cd166e410bfc546c802466180557a92dc8
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122228774"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122825057"
 ---
 # <a name="data-discovery--classification"></a>データの検出と分類
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -114,7 +114,27 @@ Azure 組織全体の分類法の定義とカスタマイズは 1 か所で行�
 
 分類の重要な点は、機密データへのアクセスを監視できることです。 [Azure SQL Auditing](../../azure-sql/database/auditing-overview.md) は拡張され、`data_sensitivity_information` という新しいフィールドが監査ログに追加されました。 このフィールドには、クエリーによって返されたデータの機密度の分類 (ラベル) が記録されます。 次に例を示します。
 
-![監査ログ](./media/data-discovery-and-classification-overview/11_data_classification_audit_log.png)
+[ ![監査ログ](./media/data-discovery-and-classification-overview/11_data_classification_audit_log.png)](./media/data-discovery-and-classification-overview/11_data_classification_audit_log.png#lightbox)
+
+これらは、実際に感度情報を使用して監査できるアクティビティです。
+- ALTER TABLE ... DROP COLUMN
+- BULK INSERT
+- DELETE
+- INSERT
+- MERGE
+- UPDATE
+- UPDATETEXT
+- WRITETEXT
+- DROP TABLE
+- BACKUP
+- DBCC CloneDatabase
+- SELECT INTO
+- INSERT INTO EXEC
+- TRUNCATE TABLE
+- DBCC SHOW_STATISTICS
+- sys.dm_db_stats_histogram
+
+[sys.fn_get_audit_file](https://docs.microsoft.com/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql) を使用して、Azure Storage アカウントに格納されている監査ファイルから情報を返します。
 
 ## <a name="permissions"></a><a id="permissions"></a>アクセス許可
 
@@ -126,15 +146,25 @@ Azure 組織全体の分類法の定義とカスタマイズは 1 か所で行�
 - SQL Security Manager
 - User Access Administrator
 
+データベースのデータ分類を読み取るには、次の操作を行う必要があります。
+
+- Microsoft.Sql/servers/databases/currentSensitivityLabels/*
+- Microsoft.Sql/servers/databases/recommendedSensitivityLabels/*
+- Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/*
+
 次の組み込みロールでは、データベースのデータ分類を変更できます。
 
 - 所有者
 - Contributor
 - SQL Security Manager
 
+データベースのデータ分類を変更するには、次の操作を行う必要があります。
+
+- Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/*
+
 ロールベースのアクセス許可の詳細については、[Azure RBAC](../../role-based-access-control/overview.md) に関する記事を参照してください。
 
-## <a name="manage-classifications"></a><a id="manage-classification"></a>分類の管理
+## <a name="manage-classifications"></a>分類の管理
 
 分類の管理には、T-SQL、REST API、または PowerShell を使用できます。
 
@@ -184,14 +214,21 @@ REST API を使用して、分類および推奨事項をプログラムで管�
 - [現在の内容をデータベース別に一覧表示](/rest/api/sql/sensitivitylabels/listcurrentbydatabase):指定されたデータベースの現在の機密ラベルを取得します。
 - [推奨される内容をデータベース別に一覧表示](/rest/api/sql/sensitivitylabels/listrecommendedbydatabase):指定されたデータベースの推奨される機密ラベルを取得します。
 
+## <a name="retrieve-classifications-metadata-using-sql-drivers"></a>SQL ドライバーを使用して分類メタデータを取得する
+
+次の SQL ドライバーを使用して、分類メタデータを取得できます。
+
+- [ODBC ドライバー](https://docs.microsoft.com/sql/connect/odbc/data-classification)
+- [OLE DB ドライバー](https://docs.microsoft.com/sql/connect/oledb/features/using-data-classification)
+- [JDBC ドライバー](https://docs.microsoft.com/sql/connect/jdbc/data-discovery-classification-sample)
+- [Microsoft SQL Server 用 Drivers for PHP](https://docs.microsoft.com/sql/connect/php/release-notes-php-sql-driver)
 
 ## <a name="faq---advanced-classification-capabilities"></a>FAQ - 高度な分類機能
 
 **質問**: SQL データの検出と分類は [Azure Purview](../../purview/overview.md) によって置き換えられますか、または SQL データの検出と分類は間もなく廃止されますか?
 **回答**: SQL データ検出と分類は引き続きサポートされます。また、高度な分類機能とデータ ガバナンスを推進するための、より豊富な機能を備えた [Azure Purview](../../purview/overview.md) を導入することをお勧めします。 サービス、機能、API、または SKU の廃止が決定された場合は、移行または切り替えパスを含む事前通知がお客様に送信されます。 Microsoft ライフサイクル ポリシーの詳細については、こちらをご覧ください。
 
-
-## <a name="next-steps"></a><a id="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - 分類済みの機密データへのアクセスを監視および監査するように [Azure SQL Auditing](../../azure-sql/database/auditing-overview.md) を構成することを検討します。
 - データの検出と分類に関するプレゼンテーションについては、「[SQL データの検出、分類、ラベル付け、保護 | | Data Exposed](https://www.youtube.com/watch?v=itVi9bkJUNc)」を参照してください。

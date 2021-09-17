@@ -8,12 +8,12 @@ ms.date: 07/06/2021
 ms.author: karler
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: bd4c1c4a20bbf9f19cffd8dd766642ba484ee4de
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: faa4c57a4fc5e75d0e6262833c27833e9069fb30
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122015340"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122418711"
 ---
 # <a name="prepare-an-application-for-deployment-in-azure-spring-cloud"></a>Azure Spring Cloud にデプロイするアプリケーションを準備する
 
@@ -144,13 +144,14 @@ Azure Spring Cloud は、Java 8 と Java 11 の両方をサポートしていま
 
 既存の Spring Boot アプリケーションを Azure Spring Cloud にデプロイできるよう準備するには、以降のセクションに示したように、アプリケーションの POM ファイルに Spring Boot と Spring Cloud の依存関係を追加します。
 
-Azure Spring Cloud では、Spring Boot バージョン 2.2、2.3、2.4 がサポートされています。 サポートされている Spring Boot と Spring Cloud の組み合わせを次の表に示します。
+Azure Spring Cloud では、リリース後 1 か月以内に最新の Spring Boot または Spring Cloud リリースがサポートされます。 サポートされる Spring Boot のバージョンは [Spring Boot Releases ](https://github.com/spring-projects/spring-boot/wiki/Supported-Versions#releases)から、Spring Cloud のバージョンは [Spring Cloud Releases](https://github.com/spring-projects/spring-boot/wiki/Supported-Versions#releases) から入手できます。 
+
+サポートされている Spring Boot と Spring Cloud の組み合わせを次の表に示します。
 
 Spring Boot のバージョン | Spring Cloud のバージョン
 ---|---
-2.2 | Hoxton.SR8+
-2.3 | Hoxton.SR8+
-2.4.1+ | 2020.0.2+
+2.3.x | Hoxton.SR8+
+2.4.x, 2.5.x | 2020.0 aka Ilford +
 
 > [!NOTE]
 > - CVE レポート「[CVE-2021-22119: Denial-of-Service attack with spring-security-oauth2-client](https://tanzu.vmware.com/security/cve-2021-22119)」に対応するために、Spring Boot を 2.5.2 または 2.4.8 にアップグレードしてください。 Spring Security を使用している場合は、5.5.1、5.4.7、5.3.10、または 5.2.11 にアップグレードしてください。

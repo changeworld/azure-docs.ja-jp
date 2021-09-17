@@ -1,15 +1,15 @@
 ---
 title: テンプレートを使用した新しいポリシーの割り当て
 description: このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して、ポリシー割り当てを作成し、準拠していないリソースを特定します。
-ms.date: 04/22/2021
+ms.date: 08/17/2021
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: c25107bf5701b4e730924417e01c5e2486317c8e
-ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
+ms.openlocfilehash: 52daeb50d1b8eea91b43c07e45682d87e0bc12cb
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2021
-ms.locfileid: "108330946"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122323482"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-an-arm-template"></a>ARM テンプレートを使用して、準拠していないリソースを特定するためのポリシー割り当てを作成する
 
@@ -61,7 +61,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **[購入]** を選択します。
 
-いくつかのその他のリソース:
+その他のリソース:
 
 - その他のサンプル テンプレートについては、「[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Authorization&pageNumber=1&sort=Popular)」を参照してください。
 - テンプレート リファレンスを確認するには、[Azure テンプレート リファレンス](/azure/templates/microsoft.authorization/allversions)に関するページを参照してください。

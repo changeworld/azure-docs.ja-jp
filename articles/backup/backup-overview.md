@@ -2,14 +2,14 @@
 title: Azure Backup とは
 description: Azure Backup サービスの概要を紹介し、このサービスがお客様の事業継続とディザスター リカバリー (BCDR) 戦略にどのように寄与するかについて説明します。
 ms.topic: overview
-ms.date: 04/24/2019
+ms.date: 07/28/2021
 ms.custom: mvc
-ms.openlocfilehash: 07fc6ee0afb29f9d6c701c7eb2c65be988971eaf
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f5e5250860b1388bd679e6167f6f9c9f2920b787
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105612638"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722673"
 ---
 # <a name="what-is-the-azure-backup-service"></a>Azure Backup サービスとは
 
@@ -26,7 +26,7 @@ Azure Backup サービスは、データをバックアップし、それを Mic
 - **Azure VM 内の SQL Server** -  [Azure VM 上で動作する SQL Server データベースをバックアップします](backup-azure-sql-database.md)。
 - **Azure VM 内の SAP HANA データベース** - [Azure VM 上で動作する SAP HANA データベースをバックアップします](backup-azure-sap-hana-database.md)。
 - **Azure Database for PostgreSQL サーバー (プレビュー)**  -  [Azure PostgreSQL データベースをバックアップして最大 10 年保持します。](backup-azure-database-postgresql.md)
-- **Azure BLOB (プレビュー)**  - [Azure BLOB の運用バックアップの概要 (プレビュー)](blob-backup-overview.md)
+- **Azure BLOB** - [Azure BLOB の運用バックアップの概要](blob-backup-overview.md)
 
 ![Azure Backup の概要](./media/backup-overview/azure-backup-overview.png)
 

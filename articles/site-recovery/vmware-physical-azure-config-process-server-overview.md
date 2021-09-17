@@ -2,17 +2,19 @@
 title: Azure Site Recovery の構成、プロセス、マスター ターゲットのサーバーについて
 description: この記事では、Azure Site Recovery を使ってオンプレミスの VMware VM から Azure へのディザスター リカバリーを設定するときに使われる構成サーバー、プロセス サーバー、およびマスター ターゲット サーバーの概要を説明します
 ms.topic: conceptual
-ms.date: 03/17/2020
-ms.openlocfilehash: cd5ded18d1a8f1f5fd96212d37725bb5db13002f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/19/2021
+ms.openlocfilehash: ad8cdbdf9d051ac9b0e5a7fd47660811e4a285e3
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "80062084"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122446427"
 ---
 # <a name="about-site-recovery-components-configuration-process-master-target"></a>Site Recovery のコンポーネント (構成、プロセス、およびマスター ターゲット) について
 
-この記事では、VMware VM と物理サーバーを Azure にレプリケートするために[Site Recovery](site-recovery-overview.md) サービスで使用される構成、プロセス、およびマスター ターゲットの各サーバーについて説明します。
+この記事では、VMware VM と物理サーバーを Azure にレプリケートするために[Site Recovery](site-recovery-overview.md) サービスで使用される構成、プロセス、およびマスター ターゲットの各サーバーについて説明します。 この記事はクラシック リリースに適用されます。
+
+プレビューで、VM をレプリケートするために、Azure Site Recovery レプリケーション サーバーを作成して使用する必要があります。 Azure Site Recovery レプリケーション サーバーとそのコンポーネントの詳細については、[こちらの記事](vmware-azure-architecture-preview.md)を参照してください。
 
 ## <a name="configuration-server"></a>構成サーバー
 

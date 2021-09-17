@@ -8,15 +8,16 @@ author: bobbytreed
 ms.author: robreed
 ms.date: 05/02/2018
 ms.topic: how-to
-manager: carmonm
-ms.openlocfilehash: 34abfb3195f8a3640b1b4797aa430b6250d15b68
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 7c45718726e9037021edc53346d20f26273a92b3
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112452370"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122687490"
 ---
 # <a name="run-scripts-in-your-windows-vm"></a>Windows VM でスクリプトを実行する
+
+**適用対象:** VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブルなスケール セット :heavy_check_mark: 均一のスケール セット
 
 タスクを自動化する、または問題をトラブルシューティングするには、VM でコマンドを実行する必要がある場合があります。 次の記事は、VM 内でスクリプトやコマンドを実行できる機能の概要について簡単に説明します。
 

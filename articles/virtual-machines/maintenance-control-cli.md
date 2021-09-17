@@ -8,14 +8,16 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 11/20/2020
 ms.author: cynthn
-ms.openlocfilehash: a611daf290bda8d6511cb4217e411de2886ce822
-ms.sourcegitcommit: 4f185f97599da236cbed0b5daef27ec95a2bb85f
+ms.openlocfilehash: 95054a4da3bc11e92cc140e7fb6689773b0343ac
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2021
-ms.locfileid: "112370853"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122698828"
 ---
 # <a name="control-updates-with-maintenance-control-and-the-azure-cli"></a>メンテナンス コントロールと Azure CLI を使用して更新を制御する
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 メンテナンス コントロールを使用すると、分離された VM や Azure 専用ホストのホスト インフラストラクチャにプラットフォームの更新プログラムを適用するタイミングを決定できます。 このトピックでは、メンテナンス コントロール用の Azure CLI オプションについて説明します。 メンテナンス コントロールを使用する利点、その制限、およびその他の管理オプションの詳細については、[メンテナンス コントロールを使用したプラットフォーム更新プログラムの管理](maintenance-control.md)に関する記事を参照してください。
 

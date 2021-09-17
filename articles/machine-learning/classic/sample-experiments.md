@@ -9,19 +9,18 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/05/2018
-ms.openlocfilehash: fbb9787ce6641e379c3f43f0725d28dbd51fc962
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: 82b64ff099b2b503e2150d45f952d9c833b64b16
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112579560"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122689601"
 ---
 # <a name="create-machine-learning-studio-classic-experiments-from-working-examples-in-azure-ai-gallery"></a>Azure AI Gallery にある実用的なサンプルから Machine Learning スタジオ (クラシック) の実験を作成する
 
 **適用対象:** ![適用対象: ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![適用対象外: ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
-
-
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
 
 機械学習実験を一から作成する代わりに、[Azure AI ギャラリー](https://gallery.azure.ai/)にあるサンプル実験をベースとして使う方法について説明します。 サンプルを使って独自の機械学習ソリューションを構築することができます。
 

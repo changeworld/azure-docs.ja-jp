@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/13/2021
+ms.date: 08/20/2021
 ms.author: jeedes
-ms.openlocfilehash: 5affe9f8876ef8d69a585119155d6cdd77ab46ac
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 847e80822cffe0a1a1daaf7595062b2e7a522ab5
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110078736"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122772202"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-alertmedia"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と AlertMedia の統合
 
@@ -39,6 +39,7 @@ ms.locfileid: "110078736"
 
 * AlertMedia では、**IDP** Initiated SSO がサポートされます。
 * AlertMedia では、**Just In Time** ユーザー プロビジョニングがサポートされます。
+* AlertMedia では、[自動化されたユーザー プロビジョニング](alertmedia-provisioning-tutorial.md)がサポートされます。
 
 ## <a name="add-alertmedia-from-the-gallery"></a>ギャラリーから AlertMedia を追加する
 

@@ -9,14 +9,16 @@ ms.subservice: availability
 ms.date: 08/08/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: d66c6fada13bf88083a6359f5fa3e7ca826a6266
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 5584f052dc9dcb72f03b923c1a4c666e212b5385
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110673705"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122697359"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>可用性ゾーンを使用する仮想マシン スケール セットを作成する
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: ユニフォーム スケール セット
 
 データセンター レベルの障害から仮想マシン スケール セットを保護するには、複数の可用性ゾーンにまたがるスケール セットを作成できます。 可用性ゾーンをサポートする Azure リージョンには少なくとも 3 つの異なるゾーンがあり、それぞれが独自の独立した電源、ネットワーク、冷却装置を備えています。 詳細については、[可用性ゾーンの概要](../availability-zones/az-overview.md)に関するページをご覧ください。
 

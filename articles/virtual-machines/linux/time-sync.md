@@ -8,14 +8,16 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/30/2021
 ms.author: cynthn
-ms.openlocfilehash: c50e39db804a18d50f4a6fb594209cc015515a8c
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: e5ceb8e4db1d2b94d746303a2185bea2015467a0
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108754741"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122691013"
 ---
 # <a name="time-sync-for-linux-vms-in-azure"></a>Azure での Linux VM の時刻同期
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット 
 
 時刻同期は、セキュリティとイベントの関連付けで重要になります。 場合によっては、分散トランザクションの実装で使用されます。 複数のコンピューター システム間での時刻の精度は、同期によって実現されます。 同期は、再起動や、時刻をフェッチするコンピューターとタイム ソースとの間のネットワーク トラフィックなど、複数の要因に影響を受ける可能性があります。 
 

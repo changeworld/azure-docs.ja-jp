@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 07/09/2021
 ms.author: niwashbu
-ms.openlocfilehash: 475ea083a6412f38093f601ce34da8775357fa3e
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 09b011d76a570aaed1a9ea8c0b9bdc74e80eca53
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114286459"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122772188"
 ---
 # <a name="automanage-for-windows-server-services-preview"></a>Windows Server サービス用 Automanage (プレビュー)
 
@@ -27,9 +27,11 @@ Windows Server サービス用 Automanage によって、_Windows Server Aure Ed
 > このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
 > 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
+> [!NOTE]
+> ホットパッチは、"_Windows Server 2022 Datacenter: Azure Edition (コア) プレビュー_" で評価できます。  "_Windows Server 2019 Datacenter: Azure Edition プレビュー_" でのホットパッチは、評価できなくなりました。
+
 Windows Server サービス用 Automanage の機能は、これらの _Windows Server Azure Edition_ のイメージの 1 つ以上で見つかります。 
 
-- Windows Server 2019 Datacenter: Azure Edition (コア)
 - Windows Server 2022 Datacenter: Azure Edition (デスクトップ エクスペリエンス)
 - Windows Server 2022 Datacenter: Azure Edition (コア)
 
@@ -41,7 +43,6 @@ Windows Server サービス用 Automanage の機能は、これらの _Windows S
 
 パブリック プレビュー段階のホットパッチは、次のイメージで利用できます。
 
-- Windows Server 2019 Datacenter: Azure Edition (コア)
 - Windows Server 2022 Datacenter: Azure Edition (コア)
 
 ホットパッチにより、再起動しなくても、VM にセキュリティ更新プログラムを適用できます。  さらに、Windows Server 用 Automanage によって、ホットパッチのオンボード、構成、オーケストレーションが自動化されます。  詳細については、[ホットパッチ](automanage-hotpatch.md)に関するページを参照してください。  
@@ -71,9 +72,8 @@ Windows Server 用 Automanage のどの機能を使用するかを事前に検�
 
 ### <a name="deciding-which-image-to-use"></a>使用するイメージを決定する 
 
-|画像|機能|
+|イメージ|機能|
 |--|--|
-| Windows Server 2019 Datacenter: Azure Edition (コア) | ホットパッチ | 
 |Windows Server 2022  Datacenter: Azure Edition (デスクトップ エクスペリエンス) | SMB over QUIC、拡張ネットワーク | 
 | Windows Server 2022 Datacenter: Azure Edition (コア) | ホットパッチ、SMB over QUIC、拡張ネットワーク | 
 

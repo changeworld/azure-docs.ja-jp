@@ -5,20 +5,20 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: tutorial
-ms.date: 04/21/2021
+ms.date: 08/09/2021
 ms.author: memildin
-ms.openlocfilehash: 970329753d6dd6c6175c26da4288c304e27e3982
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.openlocfilehash: fae230c3f6dc37a269299fab74400f87198195d2
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112237607"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734921"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>チュートリアル:規制に対するコンプライアンスの向上
 
 Azure Security Center では、**規制コンプライアンス ダッシュボード** を使用して、規制に対するコンプライアンス要件を満たすプロセスを効率化できます。 
 
-Security Center では、ハイブリッド クラウド環境を継続的に評価して、サブスクリプションに適用される標準の制御とベスト プラクティスに従ってリスク要因を分析します。 ダッシュボードには、これらの標準へのコンプライアンスの状態が反映されます。 
+Security Center では、ハイブリッド クラウド環境を継続的に評価して、お客様がご自身のサブスクリプションに適用した標準の制御とベスト プラクティスに従ってリスク要因を分析します。 ダッシュボードには、これらの標準へのコンプライアンスの状態が反映されます。 
 
 Azure サブスクリプションで Security Center を有効にすると、[Azure セキュリティ ベンチマーク](/security/benchmark/azure/introduction)がそのサブスクリプションに自動的に割り当てられます。 この広く遵守されているベンチマークは、クラウド中心のセキュリティに重点を置いた [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) と [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) の統制に基づいています。
 
@@ -29,7 +29,8 @@ Azure サブスクリプションで Security Center を有効にすると、[Az
 > [!div class="checklist"]
 > * 規制コンプライアンス ダッシュボードを使用して規制に対するコンプライアンスを評価する
 > * 推奨事項に基づいてアクションを実行することでコンプライアンス体制を強化する
-> * コンプライアンス体制の変化に関するアラートを設定する
+> * PDF/CSV レポートだけでなく、コンプライアンス状態の証明書レポートもダウンロードする
+> * コンプライアンス状態の変化に関するアラートを設定する
 > * コンプライアンス データを連続したストリームおよび週単位のスナップショットとしてエクスポートする
 
 Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/)を作成してください。
@@ -41,7 +42,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 - [Azure Defender](azure-defender.md) が有効になっている必要があります。 Azure Defender は 30 日間無料でお試しいただけます。
 - ポリシーのコンプライアンス データへの閲覧者アクセス権が付与されたアカウントを使用してサインインする必要があります (**セキュリティ閲覧者** では不十分です)。 サブスクリプションの **グローバル閲覧者** ロールは有効です。 少なくとも、**リソース ポリシーの共同作成者** および **セキュリティ管理者** のロールが割り当てられている必要があります。
 
-##  <a name="assess-your-regulatory-compliance"></a>規制に対するコンプライアンスを評価する
+## <a name="assess-your-regulatory-compliance"></a>規制に対するコンプライアンスを評価する
 
 規制コンプライアンス ダッシュボードには、選択したコンプライアンス標準とそのすべての要件が表示されます。サポートされている要件は、適用されるセキュリティ評価に対応付けられています。 これらの評価の状態には、標準へのコンプライアンスが反映されます。
 
@@ -49,19 +50,13 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 1. Security Center のメニューから、 **[規制コンプライアンス]** を選択します。
 
-    画面の上部に、コンプライアンスの状態の概要と、サポートされる一連のコンプライアンス規制を示すダッシュボードが表示されます。 お客様の全体的なコンプライアンス スコアのほか、それぞれの標準に関連した合否評価の件数を確認できます。
+    画面の上部に、コンプライアンス状態の概要と、サポートされる一連のコンプライアンス規制を示すダッシュボードが表示されます。 お客様の全体的なコンプライアンス スコアのほか、それぞれの標準に関連した合否評価の件数を確認できます。
 
     :::image type="content" source="./media/security-center-compliance-dashboard/compliance-dashboard.png" alt-text="規制コンプライアンス ダッシュボード。" lightbox="./media/security-center-compliance-dashboard/compliance-dashboard.png":::
 
 1. お客様に関連するコンプライアンス標準のタブを選択します (1)。 標準が適用されているサブスクリプション (2) と、その標準に関するすべての制御の一覧 (3) が表示されます。 該当する制御について、その制御に関連付けられた合否評価の詳細 (4) と、影響を受けたリソースの数 (5) を確認できます。 一部の制御は淡色表示されます。それらの制御には、Security Center の評価が関連付けられていません。 それらの要件を確認し、実際の環境でそれらを評価してください。 そうしたものの中には、技術的なものではなくプロセスに関連したものがあります。
 
     :::image type="content" source="./media/security-center-compliance-dashboard/compliance-drilldown.png" alt-text="特定の標準に対するコンプライアンスの詳細を調べる。":::
-
-1. 特定の標準について、現在のコンプライアンスの状態をまとめた PDF レポートを生成するには、 **[レポートのダウンロード]** を選択します。
-
-    このレポートは、Security Center の評価データに基づいて、選択した標準のコンプライアンス状態の概要を提供します。 レポートは、その特定の標準の制御に従って編成されています。 レポートは直接の利害関係者と共有することができ、内部および外部の監査員に対する証拠を提供するために利用できます。
-
-    :::image type="content" source="./media/security-center-compliance-dashboard/download-report.png" alt-text="コンプライアンス レポートのダウンロード。":::
 
 ## <a name="improve-your-compliance-posture"></a>コンプライアンス体制を強化する
 
@@ -84,10 +79,32 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
     > [!NOTE]
     > 評価は約 12 時間おきに実行されます。そのため、お客様のコンプライアンス データに影響が現れるのは、関連する評価を次に実行した後に限られます。
 
+## <a name="generate-compliance-status-reports-and-certificates"></a>コンプライアンス状態レポートと証明書の生成
 
-## <a name="export-your-compliance-status-data"></a>コンプライアンス状態データをエクスポートする
+- 特定の標準について、現在のコンプライアンスの状態をまとめた PDF レポートを生成するには、 **[レポートのダウンロード]** を選択します。
 
-環境内で他の監視ツールを使用してコンプライアンス状態を追跡する場合、Security Center には、これを容易にするためのエクスポート メカニズムが用意されています。 **連続エクスポート** を構成して、選択したデータを Azure イベント ハブまたは Log Analytics ワークスペースに送信できます。
+    このレポートは、Security Center の評価データに基づいて、選択した標準のコンプライアンス状態の概要を提供します。 レポートは、その特定の標準の制御に従って編成されています。 レポートは直接の利害関係者と共有することができ、内部および外部の監査員に対する証拠を提供するために利用できます。
+
+    :::image type="content" source="./media/security-center-compliance-dashboard/download-report.png" alt-text="Security Center の規制コンプライアンス ダッシュボードのツールバーを使用して、コンプライアンス レポートをダウンロードする。":::
+
+- お使いのサブスクリプションに適用されている標準の Azure および Dynamics の **証明書レポート** をダウンロードするには、 **[監査レポート]** オプションを使用します。 
+
+    :::image type="content" source="media/release-notes/audit-reports-regulatory-compliance-dashboard.png" alt-text="Security Center の規制コンプライアンス ダッシュボードのツールバーを使用して、Azure と Dynamics の証明書レポートをダウンロードする。":::
+
+    関連するレポートの種類 (PCI、SOC、ISO など) のタブを選択し、フィルターを使用して、必要な特定のレポートを見つけます。
+
+    :::image type="content" source="media/release-notes/audit-reports-list-regulatory-compliance-dashboard-ga.png" alt-text="タブとフィルターを使用して、使用可能な Azure 監査レポートの一覧をフィルター処理する。":::
+
+    たとえば、[PCI] タブでは、Microsoft Azure、Dynamics 365、およびその他のオンライン サービスが ISO22301 フレームワークに準拠していることを示すデジタル署名された証明書と、その証明書を解釈して提示するために必要な付帯品を含む ZIP ファイルをダウンロードできます。 
+
+    > [!NOTE]
+    > これらのいずれかの証明書レポートをダウンロードすると、次のプライバシーに関する声明が表示されます。
+    > 
+    > "_このファイルをダウンロードすることにより、ダウンロード時に Microsoft が現在のユーザーと選択したサブスクリプションを保存することに同意したことになります。このデータは、ダウンロードした監査レポートが変更または更新された場合に通知するために使用されます。このデータは、認証またはレポートを作成する Microsoft および監査会社によって通知が必要な場合にのみ使用されます。_ "
+
+## <a name="configure-frequent-exports-of-your-compliance-status-data"></a>コンプライアンス状態データの頻繁なエクスポートを構成する
+
+環境内で他の監視ツールを使用してコンプライアンス状態を追跡する場合、Security Center には、これを容易にするためのエクスポート メカニズムが用意されています。 **連続エクスポート** を構成して、選択したデータを Azure イベント ハブまたは Log Analytics ワークスペースに送信できます。 詳細については、「[Security Center のデータを連続的にエクスポートする](continuous-export.md)」を参照してください。
 
 次のように連続エクスポートを使用して、データを Azure イベント ハブまたは Log Analytics ワークスペースにエクスポートします。
 
@@ -99,11 +116,8 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
     :::image type="content" source="media/security-center-compliance-dashboard/export-compliance-data-snapshot.png" alt-text="規制コンプライアンス データの週単位のスナップショットを継続的にエクスポートする。" lightbox="media/security-center-compliance-dashboard/export-compliance-data-snapshot.png":::
 
-コンプライアンス データの **PDF または CSV レポート** を、規制コンプライアンス ダッシュボードから直接エクスポートすることもできます。
-
-:::image type="content" source="media/security-center-compliance-dashboard/export-compliance-data-report.png" alt-text="規制コンプライアンス データを PDF または CSV レポートとしてエクスポートする。" lightbox="media/security-center-compliance-dashboard/export-compliance-data-report.png":::
-
-詳細については、「[Security Center のデータを連続的にエクスポートする](continuous-export.md)」を参照してください。
+> [!TIP]
+> また、規制コンプライアンス ダッシュボードから直接、1 つの時点に関するレポートを手動でエクスポートすることもできます。 **[レポートのダウンロード]** または **[監査レポート]** ツールバー オプションを使用して、これらの **PDF/CSV レポート** または **Azure および Dynamics の証明書レポート** を生成します。 「[規制に対するコンプライアンスを評価する](#assess-your-regulatory-compliance)」を参照してください。 
 
 
 ## <a name="run-workflow-automations-when-there-are-changes-to-your-compliance"></a>コンプライアンスに変更があったときにワークフロー自動化を実行する
@@ -187,11 +201,11 @@ Security Center に組み込まれ、セキュリティ スコアに含まれる
 
 
 ### <a name="what-azure-defender-plans-or-licenses-do-i-need-to-use-the-regulatory-compliance-dashboard"></a>規制コンプライアンス ダッシュボードを使用するには、Azure Defender のプランまたはライセンスが必要ですか?
-ご利用のいずれかの Azure リソースの種類に対していずれかの Azure Defender パッケージが有効になっている場合は、Security Center で規制コンプライアンス ダッシュボードとそのすべてのデータにアクセスできます。
+お使いの Azure リソースの "*いずれか*" で Azure Defender プランの "*いずれか*" を有効にしている場合は、Security Center の規制コンプライアンス ダッシュボードとそのすべてのデータにアクセスできます。
 
 
 ### <a name="how-do-i-know-which-benchmark-or-standard-to-use"></a>使用すべきベンチマークや標準はどうすればわかりますか?
-[Azure セキュリティ ベンチマーク](/security/benchmark/azure/introduction) (ASB) は、Microsoft が定義したセキュリティに関する推奨事項とベスト プラクティスの標準的なセットであり、[CIS Microsoft Azure Foundations Benchmark](https://www.cisecurity.org/benchmark/azure/) や [NIST SP 800-53](https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final) などの一般的なコンプライアンス制御フレームワークに沿っています。 ASB は非常に包括的なベンチマークであり、さまざまな Azure サービスの最新のセキュリティ機能を推奨するように設計されています。 自社のセキュリティ体制を最大限に強化し、コンプライアンスの状態を業界標準に合わせることができるようにしたいお客様には ASB をお勧めします。
+[Azure セキュリティ ベンチマーク](/security/benchmark/azure/introduction) (ASB) は、Microsoft が定義したセキュリティに関する推奨事項とベスト プラクティスの標準的なセットであり、[CIS Microsoft Azure Foundations Benchmark](https://www.cisecurity.org/benchmark/azure/) や [NIST SP 800-53](https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final) などの一般的なコンプライアンス制御フレームワークに沿っています。 ASB は包括的なベンチマークであり、さまざまな Azure サービスの最新のセキュリティ機能を推奨するように設計されています。 自社のセキュリティ体制を最大限に強化し、コンプライアンスの状態を業界標準に合わせたいお客様には ASB をお勧めします。
 
 [CIS ベンチマーク](https://www.cisecurity.org/benchmark/azure/)は、Center for Internet Security (CIS) という独立団体によって作成されたもので、コア Azure サービスのサブセットに関する推奨事項が含まれています。 Microsoft は CIS と協力し、Azure の最新の機能強化に合わせてそれらの推奨事項を更新するよう努めていますが、これが遅れて古くなってしまう場合があります。 それでも、CIS によるこの客観的な第三者評価を、初期の主要なセキュリティ ベースラインとして使用したいと考えているお客様もいます。
 

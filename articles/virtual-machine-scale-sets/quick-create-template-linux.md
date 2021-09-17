@@ -9,14 +9,16 @@ ms.collection: linux
 ms.date: 03/27/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt, subject-armqs
-ms.openlocfilehash: df9721e400f1d7142db2578eceee8dd4fc25f7cc
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: f205354b0a27404adaec83e071934c2cea4d4ba0
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111901765"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122693226"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-scale-set-with-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Linux 仮想マシン スケール セットを作成する
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: ユニフォーム スケール セット
 
 仮想マシン スケール セットを使用すると、自動スケールの仮想マシンのセットをデプロイおよび管理できます。 スケール セット内の VM の数を手動で拡張したり、CPU などのリソースの使用率、メモリの需要、またはネットワーク トラフィックに基づいて自動的にスケールする規則を定義したりすることができます。 その後、Azure ロード バランサーがトラフィックをスケール セット内の VM インスタンスに分散します。 このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して、仮想マシン スケール セットを作成し、サンプル アプリケーションをデプロイします。
 

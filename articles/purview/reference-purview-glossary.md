@@ -6,12 +6,12 @@ ms.author: daperlov
 ms.service: purview
 ms.topic: conceptual
 ms.date: 08/16/2021
-ms.openlocfilehash: 20fdf362524a7a1a801aabd5a307b41216a81f31
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 77c1d203808683d50e0a7648c686f84c7d23b354
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122254153"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122607917"
 ---
 # <a name="azure-purview-product-glossary"></a>Azure Purview 製品用語集
 
@@ -42,7 +42,7 @@ Azure Purview によって自動スキャン中にスキーマが抽出され、
 ## <a name="contact"></a>Contact
 データ カタログ内のエンティティに関連付けられている個人 
 ## <a name="control-plane-operation"></a>コントロール プレーン操作
-ロールベースのアクセス制御や Azure ポリシーなど、Azure Resource Manager エンドポイントに送信される、サブスクリプション内のリソースを管理する操作。 
+ロールベースのアクセス制御や Azure Policy など、Azure Resource Manager エンドポイントに送信される、サブスクリプション内のリソースを管理する操作。 
 ## <a name="credential"></a>資格情報
 アクセス制御システムで使用される本人確認方法またはツール。 資格情報は、データ資産へのアクセスを許可する目的で、個人またはグループを認証するのに使用できます。 
 ## <a name="data-catalog"></a>データ カタログ
@@ -95,7 +95,7 @@ Azure Purview インスタンスに追加され、データ カタログの一�
 組織内の他の用語にリンクされている用語集の用語。  
 ## <a name="resource-set"></a>リソース セット
 ストレージ内の多数のパーティション分割されたファイルまたはオブジェクトを表す単一の資産。 たとえば、Azure Purview では、Apache Spark の分割された出力を、個々のファイルごとに一意のアセットではなく、単一のリソース セットとして格納します。 
-## <a name="role"></a>職務
+## <a name="role"></a>Role
 Azure Purview インスタンス内のユーザーに割り当てられたアクセス許可。 Purview データ キュレーターや Purview データ閲覧者などのロールによって、製品内で実行できる処理が決まります。
 ## <a name="scan"></a>スキャン
 ソースまたはソースのセットを分析し、そのメタデータをデータ カタログに取り込む Azure Purview のプロセス。 スキャンは、手動で実行するか、スキャン トリガーを使用してスケジュールに基づいて実行できます。 
@@ -115,7 +115,7 @@ Azure Purview インスタンス内のユーザーに割り当てられたアク
 データ資産全体に適用される秘密度ラベルの概要。 
 ## <a name="service"></a>サービス
 スタンドアロン機能を提供し、サブスクリプションまたはライセンスによって顧客が利用できる製品。 
-## <a name="source"></a>ソース
+## <a name="source"></a>source
 データが格納されるシステム。 ソースは、クラウドやオンプレミスなどのさまざまな場所にホストできます。 ソースを登録してスキャンすることで、Azure Purview で管理できるようにします。 
 ## <a name="source-type"></a>変換元の型
 Azure Purview インスタンスで使用される登録済みソースの分類 (Azure SQL Database、Azure Blob Storage、Amazon S3、SAP ECC など)。 

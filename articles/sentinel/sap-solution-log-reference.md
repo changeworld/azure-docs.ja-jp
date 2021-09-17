@@ -8,12 +8,12 @@ ms.topic: reference
 ms.custom: mvc
 ms.date: 07/21/2021
 ms.subservice: azure-sentinel
-ms.openlocfilehash: f2a634aa73cf9b9cb2b379887f9a677a79c39b57
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a1511581e3cc80d5f2f71bb82dc1bcb0ba639acb
+ms.sourcegitcommit: deb5717df5a3c952115e452f206052737366df46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121745057"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122681507"
 ---
 # <a name="azure-sentinel-sap-solution-logs-reference-public-preview"></a>Azure Sentinel SAP ソリューションのログ リファレンス (パブリック プレビュー)
 
@@ -620,6 +620,7 @@ ms.locfileid: "121745057"
 
 - [SAP 用 Azure Sentinel ソリューションをデプロイする](sap-deploy-solution.md)
 - [Azure Sentinel SAP ソリューションの詳細な SAP 要件](sap-solution-detailed-requirements.md)
-- [エキスパートの構成オプション、オンプレミスへの展開、SAPControl のログ ソース](sap-solution-deploy-alternate.md)
+- [SNC を使用して Azure Sentinel SAP データ コネクタをデプロイする](sap-solution-deploy-snc.md)
+- [エキスパートの構成オプション、オンプレミス デプロイ、SAPControl のログ ソース](sap-solution-deploy-alternate.md)
 - [Azure Sentinel SAP ソリューション: 組み込みのセキュリティ コンテンツ](sap-solution-security-content.md)
 - [Azure Sentinel SAP ソリューションのデプロイのトラブルシューティング](sap-deploy-troubleshoot.md)

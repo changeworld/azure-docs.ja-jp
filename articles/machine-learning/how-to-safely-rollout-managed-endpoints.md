@@ -11,12 +11,12 @@ author: rsethur
 ms.date: 08/05/2021
 ms.topic: how-to
 ms.custom: how-to, devplatv2
-ms.openlocfilehash: 11fa5a3057f50a354058141ed688d8c55b4345d8
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5fe647fba68150f45c450d71f208cf6a53dd0b98
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121739136"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122419276"
 ---
 # <a name="safe-rollout-for-online-endpoints-preview"></a>オンライン エンドポイントの安全なロールアウト (プレビュー)
 
@@ -39,7 +39,7 @@ ms.locfileid: "121739136"
 
 * Azure Machine Learning を使用するためには、Azure サブスクリプションが必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://azure.microsoft.com/free/) を今すぐお試しください。
 
-* Azure CLI と ML 拡張機能をインストールして構成する必要があります。 詳細については、[2.0 CLI (プレビュー) のインストール、セットアップ、使用](how-to-configure-cli.md)に関するページを参照してください。 
+* Azure CLI と ML 拡張機能をインストールして構成する必要があります。 詳細については、[CLI (v2) (プレビュー) のインストール、セットアップ、使用](how-to-configure-cli.md)に関するページを参照してください。 
 
 * Azure リソース グループがあること、また、そのリソース グループにおける `Contributor` アクセス権がご自身 (またはご使用のサービス プリンシパル) に割り当てられていることが必要です。 上記の記事に従って ML 拡張機能を構成していれば、そのようなリソース グループが得られます。 
 
@@ -147,7 +147,7 @@ az ml endpoint show --name $ENDPOINT_NAME
 :::code language="azurecli" source="~/azureml-examples-main/cli/deploy-declarative-safe-rollout-online-endpoints.sh" ID="delete_endpoint" :::
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - [REST を使用してモデルをデプロイする (プレビュー)](how-to-deploy-with-rest.md)
 - [スタジオでマネージド オンライン エンドポイント (プレビュー) を作成および使用する](how-to-use-managed-online-endpoint-studio.md)
 - [チュートリアル: マネージド オンライン エンドポイントとシステム マネージド ID (プレビュー) を使用して Azure リソースにアクセスする](tutorial-deploy-managed-endpoints-using-system-managed-identity.md)

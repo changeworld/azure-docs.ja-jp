@@ -8,15 +8,16 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 06/07/2018
 ms.author: cynthn
-ms.openlocfilehash: b08e8ebbba3ba91c1c1aa0f135c4cba37ba038b1
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: bb35fd8a8a2cf032e42d8d286707a66fc2a8faed
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107769915"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692649"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>複数のネットワーク インターフェイス カードを使用して Linux 仮想マシンを Azure に作成する方法
 
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブルなスケール セット 
 
 この記事では、Azure CLI を使用して複数の NIC を持つ VM を作成する方法について説明します。
 

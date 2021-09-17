@@ -8,14 +8,17 @@ ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
 ms.subservice: cloud-init
-ms.openlocfilehash: 4ca42c259e10742e61fbd7f36b73f332cba5a8db
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 38e020cc7541c6005fe3bc1209d6a31191e49404
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114445832"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692212"
 ---
 # <a name="diving-deeper-into-cloud-init"></a>cloud-init を深く知る
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブル スケール セット 
+
 [cloud-init](https://cloudinit.readthedocs.io/en/latest/index.html) の詳細を学んだり、深いレベルでトラブルシューティングするには、しくみを理解する必要があります。 このドキュメントでは、重要な部分を示し、Azure 固有の内容について説明します。
 
 一般化されたイメージに cloud-init が含まれ、VM がそのイメージから作成されるとき、cloud-init は構成を処理し、初期ブートの 5 つのステージを実行します。 これらのステージは、cloud-init が構成を適用するポイントを示すため重要です。 

@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と PolicyStat の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory SAML 2.0 と PolicyStat の統合 | Microsoft Docs'
 description: Azure Active Directory と PolicyStat の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 5c2520c8e209ab8319cbc5a369b70d247a52232c
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: 72f62a23c40e005b7cb659aedf52b7eabf81d667
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107601000"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121746117"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-policystat"></a>チュートリアル:Azure Active Directory と PolicyStat の統合
 
@@ -122,7 +122,7 @@ PolicyStat で Azure AD シングル サインオンを構成するには、次�
 
 6. その他に、PolicyStat アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。
 
-    | 名前 | ソース属性 |
+    | Name | ソース属性 |
     |------------------- | -------------------- |
     | uid | ExtractMailPrefix([mail]) |
 

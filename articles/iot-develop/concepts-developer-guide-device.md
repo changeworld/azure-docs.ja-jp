@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: iot-develop
 services: iot-develop
 zone_pivot_groups: programming-languages-set-twenty-six
-ms.openlocfilehash: f21ce89c265bc97d393c1ea2766acfb6fe63d6ee
-ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.openlocfilehash: f30403adf3c981df62a1e5c5122721400ecc060c
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2021
-ms.locfileid: "114406691"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122605946"
 ---
 # <a name="iot-plug-and-play-device-developer-guide"></a>IoT プラグ アンド プレイ デバイス開発者ガイド
 
-IoT プラグ アンド プレイを使用すると、Azure IoT アプリケーションに機能を宣伝するスマート デバイスをビルドできます。 IoT プラグ アンド プレイ デバイスでは、ユーザーが IoT プラグ アンド プレイ対応アプリケーションに接続するときに、手動で構成する必要がありません。
+IoT プラグ アンド プレイを使用すると、Azure IoT アプリケーションに機能を公開する IoT デバイスをビルドできます。 IoT プラグ アンド プレイ デバイスでは、ユーザーが IoT プラグ アンド プレイ対応アプリケーションに接続するときに、手動で構成する必要がありません。
 
-スマート デバイスは、直接実装されているか、[モジュール](../iot-hub/iot-hub-devguide-module-twins.md)を使用しているか、[IoT Edge モジュール](../iot-edge/about-iot-edge.md)を使用している可能性があります。
+IoT デバイスは、直接実装されているか、[モジュール](../iot-hub/iot-hub-devguide-module-twins.md)を使用しているか、[IoT Edge モジュール](../iot-edge/about-iot-edge.md)を使用している可能性があります。
 
 このガイドでは、[IoT プラグ アンド プレイ規則](../iot-develop/concepts-convention.md)に従ってデバイス、モジュール、または IoT Edge モジュールを作成するために必要な基本的な手順について説明します。
 

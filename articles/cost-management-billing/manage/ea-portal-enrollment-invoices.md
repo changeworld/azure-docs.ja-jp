@@ -3,18 +3,18 @@ title: Azure エンタープライズ加入契約の請求書
 description: この記事では、Azure Enterprise の請求書を管理および操作する方法について説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 03/05/2021
+ms.date: 08/19/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: ruturajd
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 8750ad846b832eb4fe037568d3b99f299cfe121b
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 77f463d34ebd05e39876933d65631371acff1707
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109790633"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122515720"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Azure エンタープライズ加入契約の請求書
 
@@ -316,7 +316,7 @@ Azure 前払いは、Azure サービスに対する前払い金額です。 Azur
 
 標準的な請求サイクルの終了時に超過使用がない場合、個別請求の料金は個別に請求されます。 このプロセスは、オーストラリア、日本、シンガポールのお客様に適用されます。
 
-以下のサービスは個別に請求されます。
+次のサービスは、個別に請求される料金の例です。 料金が個別に請求されるサービスの完全な一覧を取得するには、[サポート リクエスト](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)を送信してください。
 
 - Canonical
 - Citrix XenApp Essentials

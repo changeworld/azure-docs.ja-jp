@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: sample
 ms.custom: devx-track-js
-ms.openlocfilehash: c071c1be4a0020788060f3e23b61a155dc6d85d1
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: fa36c399807c92b4c521e5b29c0d465a42462cbe
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106277370"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121740140"
 ---
 # <a name="azure-storage-samples-using-v12-javascript-client-libraries"></a>v12 JavaScript クライアント ライブラリを使用した Azure Storage サンプル
 

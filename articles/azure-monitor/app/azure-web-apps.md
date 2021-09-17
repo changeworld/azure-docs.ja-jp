@@ -4,12 +4,12 @@ description: Azure App Services のアプリケーション パフォーマン�
 ms.topic: conceptual
 ms.date: 08/05/2021
 ms.custom: devx-track-js, devx-track-dotnet, devx-track-azurepowershell
-ms.openlocfilehash: e8197c757de4bf109e12ca3d9171e4244ed3b35b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9fac3e79b62a1f354b4120afc965e331b0185e98
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121741345"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122428626"
 ---
 # <a name="application-monitoring-for-azure-app-service"></a>Azure App Service のアプリケーションの監視
 
@@ -92,7 +92,7 @@ App Service リソースを使用した Application Insights の設定を開始�
 ### <a name="linux"></a>Linux 
 
 > [!IMPORTANT]
-> Linux での自動インストルメンテーションに対してサポートされる ASP.NET Core バージョンは、ASP.NET Core 3.1、5.0、および 6.0 (プレビュー) です。 バージョン 2.0、2.1、2.2、および 3.0 は廃止され、サポートされなくなりました。 自動インストルメンテーションを機能させるには、[サポートされているバージョン](https://dotnet.microsoft.com/platform/support/policy/dotnet-core)の .NET Core にアップグレードしてください。
+> Linux の自動インストルメンテーションでは、ASP.NET Core 6.0 (プレビュー) のみがサポートされています。
 
 > [!NOTE]
 > Linux の自動インストルメンテーション App Services ポータルの有効化は、パブリック プレビュー段階にあります。 これらのプレビュー バージョンは、サービス レベル アグリーメントなしに提供されます。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
@@ -422,7 +422,7 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 
 #### <a name="windows-troubleshooting"></a>Windows のトラブルシューティング 
 1. `ApplicationInsightsAgent_EXTENSION_VERSION` アプリ設定が "2 以下" の値に設定されていることを確認します。
-2. [http://.azurewebsites.net/admin](`https://yoursitename.scm.azurewebsites.net/ApplicationInsights`) を参照します。  
+2. `https://yoursitename.scm.azurewebsites.net/ApplicationInsights` を参照します。  
 
     ![https://yoursitename.scm.azurewebsites/applicationinsights 結果ページのスクリーンショット](./media/azure-web-apps/app-insights-sdk-status.png)
     

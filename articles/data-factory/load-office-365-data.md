@@ -3,15 +3,16 @@ title: Azure Data Factory を使用して Office 365 からデータを読み込
 description: Azure Data Factory を使用して Office 365 からデータをコピーする
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
-ms.date: 02/18/2021
+ms.date: 07/05/2021
 ms.author: jianleishen
-ms.openlocfilehash: eae3a83a5354c61db27f38b7b73a396923427073
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: a7c809803df1e84528cc7cd8eb41574591aab8c1
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109485623"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638541"
 ---
 # <a name="load-data-from-office-365-by-using-azure-data-factory"></a>Azure Data Factory を使用して Office 365 からデータを読み込む
 
@@ -38,15 +39,15 @@ ms.locfileid: "109485623"
 3. **［作成］** を選択します
 4. 作成が完了したら、データ ファクトリに移動します。 次の画像のように **[データ ファクトリ]** ホーム ページが表示されます。
    
-   ![データ ファクトリのホーム ページ](./media/load-office-365-data/data-factory-home-page.png)
+   :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="[Open Azure Data Factory Studio] タイルを含む、Azure Data Factory のホーム ページ。":::
 
-5. **[作成と監視]** タイルを選択して、別のタブでデータ統合アプリケーションを起動します。
+5. **[Open Azure Data Factory Studio](Azure Data Factory Studio を開く)** タイルで **[開く]** を選択して、別のタブでデータ統合アプリケーションを起動します。
 
 ## <a name="create-a-pipeline"></a>パイプラインを作成する
 
-1. [Let's get started]\(始めましょう\) ページで **[Create pipeline]\(パイプラインの作成\)** を選択します。
+1. ホーム ページで **[調整]** を選択します。
  
-    ![パイプラインの作成](./media/load-office-365-data/create-pipeline-entry.png)
+    ![ADF のホーム ページを示すスクリーンショット。](./media/doc-common-process/get-started-page.png)
 
 2. パイプラインの **[全般]** タブで、パイプラインの **名前** として「CopyPipeline」と入力します。
 

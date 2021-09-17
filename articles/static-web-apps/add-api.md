@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/14/2021
 ms.author: wachegha
 ms.custom: devx-track-js
-ms.openlocfilehash: 939c63edba204ff903a8616eef1db5e031397a3f
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 56c8044f1ab36015accb3f951469ee0a0579ca23
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110066180"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122608642"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-with-azure-functions"></a>Azure Functions を使用して Azure Static Web Apps に API を追加する
 
@@ -98,7 +98,7 @@ Visual Studio Code で、アプリのリポジトリのルートを開きます�
 
 # <a name="no-framework"></a>[フレームワークなし](#tab/vanilla-javascript)
 
-以下のコードを使用して _index.html_ ファイルの内容を更新し、API 関数からテキストをフェッチして画面に表示します。
+以下のコードを使用して _src/index.html_ ファイルの内容を更新し、API 関数からテキストをフェッチして画面に表示します。
 
 ```html
 <!DOCTYPE html>

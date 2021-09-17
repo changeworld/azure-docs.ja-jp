@@ -7,14 +7,14 @@ ms.reviewer: mikeray
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.date: 07/30/2021
+ms.date: 08/19/2021
 ms.topic: conceptual
-ms.openlocfilehash: ed916e16392911dd92a98f3199cbb1c422ed2f55
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 5c8918870274cb0ea443dd1f4c93f39c301c6287
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121861477"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122446502"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services"></a>リリース ノート - Azure Arc 対応データ サービス
 
@@ -47,7 +47,7 @@ ms.locfileid: "121861477"
 - AKS HCI へのデプロイには、特別なストレージ クラス構成が必要です。 詳細については、「[ストレージの構成 (Azure Stack HCI と AKS-HCI)](create-data-controller-indirect-cli.md#configure-storage-azure-stack-hci-with-aks-hci)」を参照してください。
 - データをエクスポートするときに SSL 以外の接続を許可するための新しい要件があります。 対話型プロンプトを非表示にするように環境変数を設定します。
 
-### <a name="whats-new"></a>新着情報
+### <a name="whats-new"></a>新機能
 
 #### <a name="data-controller"></a>データ コントローラー
 
@@ -107,6 +107,7 @@ ms.locfileid: "121861477"
 
 #### <a name="azure-arc-enabled-postgresql-hyperscale"></a>Azure Arc 対応 PostgreSQL Hyperscale
 
+- 現時点では、PosgreSQL Hyperscale は Kubernetes バージョン 1.22 以降では使用できません。 
 - 7 月 30 日のリリースでは、バックアップと復元の操作は機能しなくなりました。 これは一時的な制限です。 バックアップまたは復元を行う必要がある場合、当面は 2021 年 6 月のリリースを使用してください。 これは今後のリリースで修正される予定です。
 
 - `pg_cron` 拡張機能を同時に有効にし、構成することはできません。 これには、2 つのコマンドを使用する必要があります。 1 つは有効化のコマンドで、もう 1 つは構成するコマンドです。 次に例を示します。
@@ -209,7 +210,7 @@ OpenDistro セキュリティ パックが削除されました。 Kibana への
 
 自動バックアップ サービスが利用可能になり、既定で有効になっています。 バックアップ ボリュームの空き領域を注意深く監視してください。
 
-### <a name="whats-new"></a>新着情報
+### <a name="whats-new"></a>新機能
 
 このリリースでは、Azure Arc 対応データ サービス用の CLI 拡張機能 `az` が導入されています。 詳細については、上記の「[互換性に影響する変更点](#breaking-change)」を参照してください。
 

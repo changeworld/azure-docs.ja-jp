@@ -8,14 +8,16 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 4b0c9777602eae50de45cb383eff1a05cb8395d8
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 2477820a7b6c30ebad1c676cc9ec31f513eed1de
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108744337"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122690214"
 ---
 # <a name="nvv3-series"></a>NVv3 シリーズ
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブルなスケール セット :heavy_check_mark: 均一スケール セット
 
 NVv3 シリーズの仮想マシンは、Intel E5-2690 v4 (Broadwell) CPU を使用した [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) GPU および NVIDIA GRID テクノロジと Intel ハイパースレッディング テクノロジを搭載しています。 これらの仮想マシンは、お客様がデータを視覚化したり、表示する結果をシミュレートしたり、CAD で作業したり、コンテンツをレンダリングおよびストリーミングしたりしたいと考える、GPU で高速化されたグラフィックス アプリケーションや仮想デスクトップを対象にしています。 さらに、これらの仮想マシンは、エンコーディングやレンダリングなどの単精度のワークロードを実行できます。 NVv3 仮想マシンは Premium Storage をサポートしており、以前の NV シリーズと比較して 2 倍のシステム メモリ (RAM) を備えています。  
 

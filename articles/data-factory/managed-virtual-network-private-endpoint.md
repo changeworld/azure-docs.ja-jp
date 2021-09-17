@@ -4,18 +4,16 @@ description: Azure Data Factory におけるマネージド仮想ネットワー
 ms.author: lle
 author: lrtoyou1223
 ms.service: data-factory
+ms.subservice: integration-runtime
 ms.topic: conceptual
-ms.custom:
-- seo-lt-2019
-- references_regions
-- devx-track-azurepowershell
-ms.date: 07/15/2020
-ms.openlocfilehash: 61b011a7df52b4df29c23a8e443f8bad6d72240a
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.custom: seo-lt-2019, references_regions, devx-track-azurepowershell
+ms.date: 07/20/2021
+ms.openlocfilehash: 29bd9cf165ef8247a4185b17d479b01c4e14fa87
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110677001"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122638347"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Azure Data Factory マネージド仮想ネットワーク (プレビュー)
 
@@ -46,13 +44,13 @@ Azure Data Factory マネージド仮想ネットワーク (VNET) 内に Azure I
 >既存のパブリック Azure 統合ランタイムを、Azure Data Factory マネージド仮想ネットワーク内の Azure 統合ランタイムに切り替えることはできません。また、その逆も同様です。
  
 
-![ADF マネージド仮想ネットワークのアーキテクチャ](./media/managed-vnet/managed-vnet-architecture-diagram.png)
+:::image type="content" source="./media/managed-vnet/managed-vnet-architecture-diagram.png" alt-text="ADF マネージド仮想ネットワークのアーキテクチャ":::
 
 ## <a name="managed-private-endpoints"></a>マネージド プライベート エンドポイント
 
 マネージド プライベート エンドポイントは、Azure Data Factory マネージド仮想ネットワークに作成されるプライベート エンドポイントで、Azure リソースへのプライベート リンクを確立します。 これらのプライベート エンドポイントは、Azure Data Factory によって自動的に管理されます。 
 
-![新しいマネージド プライベート エンドポイント](./media/tutorial-copy-data-portal-private/new-managed-private-endpoint.png)
+:::image type="content" source="./media/tutorial-copy-data-portal-private/new-managed-private-endpoint.png" alt-text="新しいマネージド プライベート エンドポイント":::
 
 Azure Data Factory では、プライベート リンクがサポートされます。 プライベート リンクを使用すると、Azure (PaaS) サービス (Azure Storage、Azure Cosmos DB、Azure Synapse Analytics など) にアクセスできます。
 
@@ -68,18 +66,18 @@ Azure Data Factory では、プライベート リンクがサポートされま
 
 Azure Data Factory にマネージド プライベート エンドポイントを作成すると、プライベート エンドポイント接続は "保留" 状態で作成されます。 承認ワークフローが開始されます。 接続を承認または拒否する役割は、プライベート リンク リソースの所有者が担います。
 
-![マネージド プライベート エンドポイント](./media/tutorial-copy-data-portal-private/manage-private-endpoint.png)
+:::image type="content" source="./media/tutorial-copy-data-portal-private/manage-private-endpoint.png" alt-text="マネージド プライベート エンドポイント":::
 
 所有者が接続を承認した場合、プライベート リンクが確立されます。 それ以外の場合、プライベート リンクは確立されません。 どちらの場合も、マネージド プライベート エンドポイントは接続の状態で更新されます。
 
-![マネージド プライベート エンドポイントを承認する](./media/tutorial-copy-data-portal-private/approve-private-endpoint.png)
+:::image type="content" source="./media/tutorial-copy-data-portal-private/approve-private-endpoint.png" alt-text="マネージド プライベート エンドポイントを承認する":::
 
 承認済み状態のマネージド プライベート エンドポイントのみが、指定されたプライベート リンク リソースにトラフィックを送信できます。
 
 ## <a name="interactive-authoring"></a>インタラクティブな作成
 インタラクティブな作成機能は、テスト接続、フォルダー一覧とテーブル リストの参照、スキーマの取得、データのプレビューなどの機能に使用されます。 ADF で管理されている仮想ネットワーク内の Azure Integration Runtime を作成または編集する際に、インタラクティブな作成を有効にすることができます。 バックエンド サービスでは、インタラクティブな作成機能のためにコンピューティングが事前に割り当てられます。 そうしないと、インタラクティブな操作が実行されるたびにコンピューティングが割り当てられ、時間がかかります。 インタラクティブな作成の Time To Live (TTL) は 60 分です。つまり、前回のインタラクティブな作成操作から 60 分が経過すると、この機能が自動的に無効になります。
 
-![インタラクティブな作成](./media/managed-vnet/interactive-authoring.png)
+:::image type="content" source="./media/managed-vnet/interactive-authoring.png" alt-text="インタラクティブな作成":::
 
 ## <a name="activity-execution-time-using-managed-virtual-network"></a>マネージド仮想ネットワークを使用したアクティビティの実行時間
 設計上、データ ファクトリごとに 1 つの計算ノードを予約していないため、マネージド仮想ネットワーク内の Azure 統合ランタイムは、パブリック Azure 統合ランタイムよりもキュー時間が長く、各アクティビティが開始されるまでにウォームアップがあります。これは、Azure 統合ランタイムではなく、主に仮想ネットワーク参加で発生します。 パイプライン アクティビティや外部アクティビティを含む非 Copy アクティビティの場合、初めてトリガーするときに、60 分の Time To Live (TTL) があります。 TTL 内では、ノードが既にウォームアップされているため、キュー時間が短くなります。 
@@ -101,7 +99,7 @@ $privateEndpointResourceId = "subscriptions/${subscriptionId}/resourceGroups/${r
 $integrationRuntimeResourceId = "subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${factoryName}/integrationRuntimes/${integrationRuntimeName}"
 
 # Create managed Virtual Network resource
-New-AzResource -ApiVersion "${apiVersion}" -ResourceId "${vnetResourceId}"
+New-AzResource -ApiVersion "${apiVersion}" -ResourceId "${vnetResourceId}" -Properties @{}
 
 # Create managed private endpoint resource
 New-AzResource -ApiVersion "${apiVersion}" -ResourceId "${privateEndpointResourceId}" -Properties @{
@@ -165,6 +163,8 @@ New-AzResource -ApiVersion "${apiVersion}" -ResourceId "${integrationRuntimeReso
 - カナダ東部
 - インド中部
 - 米国中部
+- 中国東部 2
+- 中国北部 2
 - 東アジア
 - 米国東部
 - 米国東部 2
@@ -181,6 +181,9 @@ New-AzResource -ApiVersion "${apiVersion}" -ResourceId "${integrationRuntimeReso
 - 東南アジア
 - スイス北部
 - アラブ首長国連邦北部
+- US Gov アリゾナ
+- US Gov テキサス
+- US Gov バージニア州
 - 英国南部
 - 英国西部
 - 米国中西部
@@ -197,7 +200,11 @@ New-AzResource -ApiVersion "${apiVersion}" -ResourceId "${integrationRuntimeReso
 - Azure Key Vault のリンクされたサービスを作成する場合、Azure Integration Runtime の参照はありません。 そのため、Azure Key Vault のリンクされたサービスの作成中にプライベート エンドポイントを作成することはできません。 ただし、Azure Key Vault のリンクされたサービスを参照するデータ ストアに対してリンクされたサービスを作成し、そのリンクされたサービスが、マネージド仮想ネットワークが有効になっている Azure Integration Runtime を参照する場合は、作成中に Azure Key Vault のリンクされたサービスのプライベート エンドポイントを作成できます。 
 - Azure Key Vault のリンクされたサービスの **テスト接続** 操作では、単に URL 形式が検証され、ネットワーク操作は実行されません。
 - **[プライベート エンド ポイントの使用]** 列は、Azure Key Vault 用のプライベート エンドポイントを作成した場合でも、常に空白として表示されます。
-![AKV 用のプライベート エンドポイント](./media/managed-vnet/akv-pe.png)
+
+### <a name="linked-service-creation-of-azure-hdi"></a>Azure HDI のリンク サービスの作成
+- プライベート リンク サービスおよびロード バランサーとポート転送を使用して HDI 用のプライベート エンドポイントを作成した場合でも、 **[Using private endpoint]\(プライベート エンドポイントの使用\)** 列は常に空白として表示されます。
+
+:::image type="content" source="./media/managed-vnet/akv-pe.png" alt-text="AKV 用のプライベート エンドポイント":::
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -10,14 +10,16 @@ ms.workload: infrastructure-services
 ms.date: 06/01/2020
 ms.author: ericrad
 ms.reviewer: mimckitt
-ms.openlocfilehash: 05b51b2edfe7d7abe99835204c8e98197ecdeba0
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: cd80a8a69d4e75ec1be31a849fe00cc3ec708e1c
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111591172"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692676"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure Metadata Service: Linux VM の Scheduled Events
+
+**適用対象:** :heavy_check_mark: Linuｘ VM :heavy_check_mark: フレキシブルなスケール セット :heavy_check_mark: 均一のスケール セット 
 
 スケジュールされたイベントとは、仮想マシン (VM) のメンテナンスに備えるための時間をアプリケーションに与える Azure Metadata Service です。 今後のメンテナンス イベント (再起動など) に関する情報を提供することで、アプリケーションがイベントの準備を行い、中断を制限できるようにします。 このサービスは、Windows および Linux の、PaaS と IaaS を含むすべての Azure Virtual Machine の種類で利用できます。 
 

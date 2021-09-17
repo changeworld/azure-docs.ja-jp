@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: 24e81f9d83212b674b50acdb24042b6d29a9c266
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c9987e82fe64dd30584f3ceb8dbacfc857d27ab8
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121741501"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122779387"
 ---
 # <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure Arc 対応 PostgreSQL Hyperscale サーバー グループを作成する
 
@@ -94,7 +94,7 @@ az postgres arc-server create -n postgres01 --workers 2 --k8s-namespace <namespa
 
  この例は、お使いのサーバー グループが Azure Kubernetes Service (AKS) クラスターでホストされていることを前提としています。 この例では、ストレージ クラス名として azurefile-premium を使用します。 次の例を実際の環境に合わせて調整してもかまいません。 この構成には、**accessModes として ReadWriteMany が必要** であることに注意してください。  
 
-まず、以下のバックアップ PVC の説明を含む YAML ファイルを作成し、たとえば CreateBackupPVC.yml という名前を付けます。
+まず、以下のバックアップ PVC (永続ボリューム要求) の説明を含む YAML ファイルを作成し、たとえば CreateBackupPVC.yml という名前を付けます。
 ```console
 apiVersion: v1
 kind: PersistentVolumeClaim

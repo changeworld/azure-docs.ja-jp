@@ -9,14 +9,16 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: mimckitt
-ms.openlocfilehash: b9910995632cb1e6e32e228a6e68be625117951c
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: d4046887ffe492ec627a7dfb244668a6f72314e1
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122253644"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122695798"
 ---
 # <a name="general-purpose-virtual-machine-sizes"></a>汎用仮想マシンのサイズ
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 > [!TIP]
 > **[仮想マシン セレクター ツール](https://aka.ms/vm-selector)** を使用して、ワークロードに最適な他のサイズをご確認いただけます。

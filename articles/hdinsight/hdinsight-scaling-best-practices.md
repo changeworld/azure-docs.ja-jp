@@ -1,19 +1,19 @@
 ---
-title: クラスター サイズのスケーリング - Azure HDInsight
-description: Azure HDInsight でワークロードに合わせて Apache Hadoop クラスターをエラスティックにスケーリングする
+title: クラスターを手動でスケーリングする - Azure HDInsight
+description: Azure HDInsight でご自分のワークロードに合わせて Apache Hadoop クラスターを手動で柔軟にスケーリングする
 ms.author: ashish
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: 1c388cb070c66fc3a2322c358bc4113ed2106c77
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 86759dacfc4412fff1d100f5f6808aa7269575e1
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107761851"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444411"
 ---
-# <a name="scale-azure-hdinsight-clusters"></a>Azure HDInsight クラスターのスケーリング
+# <a name="manually-scale-azure-hdinsight-clusters"></a>Azure HDInsight クラスターを手動でスケーリングする
 
 HDInsight は柔軟性を備えており、クラスター内のワーカー ノード数をスケールアップおよびスケールダウンするオプションがあります。 この柔軟性により、数時間後や週末にクラスターを縮小することができます。 また、ビジネス需要のピーク時に拡張できます。
 

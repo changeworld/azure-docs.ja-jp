@@ -7,14 +7,14 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 04/18/2021
-ms.openlocfilehash: cf69321045a3c79e2803445964ff7f09a5e522e7
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: b1168833242aa69b8e1bff5d7bd810f2c3db019d
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114732112"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122693588"
 ---
-# <a name="connect-azure-database-for-sql-flexible-server-with-private-access-connectivity-method"></a>プライベート アクセスの接続方法を使用して Azure Database for SQL フレキシブル サーバーに接続する
+# <a name="connect-azure-database-for-mysql-flexible-server-with-private-access-connectivity-method"></a>プライベート アクセスの接続方法を使用して Azure Database for MySQL フレキシブル サーバーに接続する
 
 Azure Database for MySQL フレキシブル サーバーは、高可用性 MySQL サーバーをクラウドで実行、管理、スケーリングするために使用できる管理サービスです。 このクイックスタートでは、Azure portal を使用して仮想ネットワークにフレキシブル サーバーを作成する方法について説明します。
 
@@ -44,7 +44,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 4. **[基本]** タブで、**サブスクリプション**、**リソース グループ**、**リージョン**、**管理者のユーザー名**、**管理者のパスワード** を入力します。  既定値を使用すると、1 つの仮想コア、2GiB のメモリ、32GiB のストレージを使用するバースト可能 SKU を備えたバージョン 5.7 の MySQL サーバーがプロビジョニングされます。 バックアップの保持期間は 7 日間です。 この構成は変更できます。
 
-    > :::image type="content" source="./media/quickstart-create-connect-server-vnet/mysql-flexible-server-create-portal.png" alt-text="フレキシブル サーバー ページの [基本] タブを示すスクリーンショット。" lightbox="/media/quickstart-create-connect-server-vnet/mysql-flexible-server-create-portal.png":::
+    > :::image type="content" source="./media/quickstart-create-connect-server-vnet/mysql-flexible-server-create-portal.png" alt-text="フレキシブル サーバー ページの [基本] タブを示すスクリーンショット。" lightbox="./media/quickstart-create-connect-server-vnet/mysql-flexible-server-create-portal.png":::
 
    > [!TIP]
    > 移行中のデータ読み込みを高速化するために、IOPS をコンピューティング サイズでサポートされている最大サイズまで増やし、後でスケールダウンしてコストを節約することをお勧めします。
@@ -133,7 +133,7 @@ ssh -i .\Downloads\myKey1.pem azureuser@10.111.12.123
 サーバーに接続できるようにするには、mysql-client ツールをインストールする必要があります。
 
 ```bash
-sude apt-getupdate
+sudo apt-getupdate
 sudo apt-get install mysql-client
 ```
 

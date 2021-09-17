@@ -6,19 +6,21 @@ ms.service: virtual-machines
 ms.collection: windows
 ms.topic: quickstart
 ms.workload: infrastructure
-ms.date: 07/02/2019
+ms.date: 08/09/2021
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 651d644070f13933fadf4a2616e770a27c014c92
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: ca4466c307a893ac7058581a5e22aec87b9a71a2
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112074883"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122694686"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-with-the-azure-cli"></a>クイック スタート:Azure CLI で Windows 仮想マシンを作成する
 
-Azure CLI は、コマンドラインやスクリプトで Azure リソースを作成および管理するために使用します。 このクイック スタートでは、Azure CLI を使用して、Windows Server 2016 を実行する仮想マシン (VM) を Azure に展開する方法を示します。 次に、VM の動作を確認するために、VM に RDP 接続し、IIS Web サーバーをインストールします。
+**適用対象:** :heavy_check_mark: Windows VM
+
+Azure CLI は、コマンドラインやスクリプトで Azure リソースを作成および管理するために使用します。 このクイック スタートでは、Azure CLI を使用して、Windows Server 2019 を実行する仮想マシン (VM) を Azure に展開する方法を示します。 次に、VM の動作を確認するために、VM に RDP 接続し、IIS Web サーバーをインストールします。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -41,17 +43,21 @@ az group create --name myResourceGroup --location eastus
 [az vm create](/cli/azure/vm) を使用して VM を作成します。 次の例では、*myVM* という名前の VM を作成します。 この例では、管理ユーザーの名前に *azureuser* を使用します。 
 
 [Azure VM のパスワード要件](./faq.yml#what-are-the-password-requirements-when-creating-a-vm-
-)を満たしているパスワードを指定する必要があります。 以下の例を実行すると、コマンド ラインでパスワードを入力するように求められます。 `--admin-password` パラメーターを追加して、パスワードの値を指定することもできます。 後で VM に接続するときに、このユーザー名とパスワードが使用されます。
+)を満たしているパスワードを指定する必要があります。 
+
+以下の例を実行すると、コマンド ラインでパスワードを入力するように求められます。 `--admin-password` パラメーターを追加して、パスワードの値を指定することもできます。 後で VM に接続するときに、このユーザー名とパスワードが使用されます。
 
 ```azurecli-interactive
 az vm create \
     --resource-group myResourceGroup \
     --name myVM \
-    --image win2016datacenter \
+    --image Win2019Datacenter \
+    --public-ip-sku Standard \
     --admin-username azureuser 
 ```
 
 VM とサポートするリソースを作成するには数分かかります。 次の出力例では、成功した VM 作成操作を示します。
+
 
 ```output
 {
@@ -67,8 +73,6 @@ VM とサポートするリソースを作成するには数分かかります�
 ```
 
 作成した VM からの出力に含まれる実際の `publicIpAddress` を記録しておいてください。 このアドレスは、次の手順で VM にアクセスするために使います。
-
-[!INCLUDE [ephemeral-ip-note.md](../../../includes/ephemeral-ip-note.md)]
 
 ## <a name="open-port-80-for-web-traffic"></a>Web トラフィック用にポート 80 を開く
 

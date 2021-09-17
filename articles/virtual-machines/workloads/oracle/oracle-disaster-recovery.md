@@ -8,14 +8,16 @@ ms.collection: linux
 ms.topic: article
 ms.date: 08/02/2018
 ms.author: kegorman
-ms.openlocfilehash: 68b5b9dfd205628c9d7c430df4c0230267752e01
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b90de3d7f80eb6dcb60d3e44b13aac83e1dec574
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101669953"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122688469"
 ---
 # <a name="disaster-recovery-for-an-oracle-database-12c-database-in-an-azure-environment"></a>Azure 環境内の Oracle Database 12c データベースのディザスター リカバリー
+
+**適用対象:** :heavy_check_mark: Linux VM 
 
 ## <a name="assumptions"></a>前提条件
 

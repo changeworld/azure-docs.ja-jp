@@ -3,14 +3,14 @@ title: 概要
 description: Azure App Service が Web アプリケーションの開発およびホストにどのように役立つかについて説明します
 ms.assetid: 94af2caf-a2ec-4415-a097-f60694b860b3
 ms.topic: overview
-ms.date: 07/06/2020
+ms.date: 07/21/2021
 ms.custom: devx-track-dotnet, mvc, seodec18
-ms.openlocfilehash: 8994edd417f4f9e94ae14e5923dd1a0d7398f584
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 481ef611bb3bd48ae5096abc538bd43a1bac2423
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108209771"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121741533"
 ---
 # <a name="app-service-overview"></a>App Service の概要
 
@@ -54,9 +54,11 @@ App Service on Linux では、さまざまな言語に固有の組み込みイ�
 
 ### <a name="limitations"></a>制限事項
 
+> [!NOTE]
+> Linux および Windows の App Service プランでリソース グループを共有できます。 プラットフォームからこの制限が解除され、既存のリソース グループはこれをサポートするように更新されています。
+>
+
 - App Service on Linux は、[共有](https://azure.microsoft.com/pricing/details/app-service/plans/)価格レベルではサポートされていません。 
-- Windows と Linux のアプリを同じ App Service プランに混在させることはできません。  
-- 従来、同じリソース グループ内に、Windows と Linux のアプリを混在させることはできませんでした。 ただし、2021 年 1 月 21 日以降に作成されたすべてのリソース グループでは、このシナリオがサポートさえます。 2021 年 1 月 21 日より前に作成されたリソース グループについては、混在するプラットフォーム デプロイを追加する機能は、近日中に Azure リージョン (国内クラウド リージョンを含む) 全体にロールアウトされます。
 - Azure portal では、Linux アプリで現在動作している機能のみが表示されます。 機能が有効になると、ポータルでアクティブになります。
 - 組み込みイメージにデプロイされているコードとコンテンツには、Azure Storage によってサポートされる、Web コンテンツ用のストレージ ボリュームが割り当てられます。 このボリュームのディスク待ち時間は、コンテナー ファイルシステムの待ち時間よりも長く、可変です。 コンテンツ ファイルに対する高負荷の読み取り専用アクセスが必要なアプリでは、コンテンツ ボリュームではなく、コンテナー ファイルシステムにファイルを配置するカスタム コンテナー オプションを使用した方が有益な場合があります。
 

@@ -10,14 +10,18 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 01/02/2018
 ms.author: cynthn
-ms.openlocfilehash: 87aa1344b3fbe0d11c1c5cdfa8a56560d67eb54f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 83151da2cff5d4eb7fc626573b3e7719bb3a2444
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102555552"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122688153"
 ---
 # <a name="use-the-d-drive-as-a-data-drive-on-a-windows-vm"></a>Windows VM のデータ ドライブとしての D: ドライブの使用
+
+**適用対象:** :heavy_check_mark: Windows VM 
+
+
 D ドライブを使用してデータを格納する必要があるアプリケーションの場合、次の手順に従って一時ディスク用の別のドライブ文字を使用します。 維持する必要があるデータは、一時ディスクに格納しないでください。
 
 仮想マシンをサイズ変更する、または **停止 (割り当て解除)** する場合、新しいハイパーバイザーに対するその仮想マシンの配置がトリガーされる可能性があります。 計画済みまたは計画外メンテナンス イベントでも、この配置がトリガーされる可能性があります。 このシナリオで、一時ディスクに最初に利用可能なドライブ文字が再割り当てされます。 D: ドライブを使用する必要があるアプリケーションがある場合、次の手順を実行して pagefile.sys を一時的に移動し、新しいデータ ディスクをアタッチし、文字 D を割り当ててから、一時ドライブに pagefile.sys を戻す必要があります。 この手順を完了すると、VM が別のハイパーバイザーに移動した場合に Azure は D: を取り消さなくなります。

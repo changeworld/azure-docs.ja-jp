@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 04/27/2021
 ms.custom: devx-track-python, FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: 40fdfcec5e74c7b86807f5cd1577d12ed4904632
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 472fcf4c7a1cc486db5aded40c87ffec2a9e796a
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113765741"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122634695"
 ---
 # <a name="tutorial-get-started-with-a-python-script-in-azure-machine-learning-part-1-of-3"></a>チュートリアル: Azure Machine Learning で Python スクリプトを使ってみる (パート 1/3)
 
@@ -149,13 +149,19 @@ print(aml_url)
 
 ## <a name="submit-and-run-your-code-in-the-cloud"></a><a name="submit"></a> クラウドでコードを送信して実行する
 
-**[Save and run script in terminal]\(スクリプトを保存してターミナルで実行する\)** を選択してコントロール スクリプトを実行すると、[セットアップ チュートリアル](quickstart-create-resources.md)で作成したコンピューティング クラスターで `hello.py` が実行されます。
+1. **[Save and run script in terminal]\(スクリプトを保存してターミナルで実行する\)** を選択してコントロール スクリプトを実行すると、[セットアップ チュートリアル](quickstart-create-resources.md)で作成したコンピューティング クラスターで `hello.py` が実行されます。
 
-ターミナルで、認証のためにサインインを求められる場合があります。  コードをコピーし、リンクをクリックしてこの手順を完了してください。
+1. ターミナルで、認証のためにサインインを求められる場合があります。  コードをコピーし、リンクをクリックしてこの手順を完了してください。
 
-> [!TIP]
-> コンピューティング クラスターの作成が完了すると、"UserError: Required Docker image not found...(ユーザー エラー: 必要な Docker イメージが見つかりません)" というエラーが表示される場合があります。この場合、5 分ほど待機し、再試行してください。  コンピューティング クラスターでは、ノードを起動する準備が整うまでに、多くの時間が必要になる場合があります。
+1. 認証されると、ターミナルにリンクが表示されます。 リンクを選択して、実行を表示します。
 
+    [!INCLUDE [amlinclude-info](../../includes/machine-learning-py38-ignore.md)]
+
+## <a name="view-the-output"></a>出力を表示する
+
+1. 開いたページに、実行の状態が表示されます。
+1. 実行の状態が **[完了]** の場合、ページの上部にある **[出力 + ログ]** を選択します。
+1. **70_driver_log.txt** を選択して、実行の出力を表示します。
 
 ## <a name="monitor-your-code-in-the-cloud-in-the-studio"></a><a name="monitor"></a>スタジオを使用してクラウドでコードを監視する
 

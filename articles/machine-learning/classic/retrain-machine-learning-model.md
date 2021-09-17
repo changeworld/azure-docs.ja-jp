@@ -1,5 +1,5 @@
 ---
-title: 'ML Studio (classic): Web サービスの再トレーニング - Azure'
+title: 'ML スタジオ (クラシック): Web サービスの再トレーニング - Azure'
 description: Machine Learning スタジオ (クラシック) で新しくトレーニングされた機械学習モデルを使用するように Web サービスを更新する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
@@ -9,17 +9,18 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18, devx-track-csharp, devx-track-azurepowershell
 ms.date: 02/14/2019
-ms.openlocfilehash: 5234611c99a58cefcb98d02c87d257055f603b4c
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: 374359b3b91a19fdeead862a6fb6d2dad2f4260a
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112579632"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122688420"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>機械学習モデルの再トレーニングとデプロイ
 
 **適用対象:** ![適用対象: ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![適用対象外: ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
 
 再トレーニングは、機械学習モデルが正確であり、利用できる最も関連性の高いデータに基づいている状態を確保するための 1 つの方法です。 この記事では、Studio (クラシック) で新しい Web サービスとして機械学習モデルを再トレーニングし、デプロイする方法について説明します。 従来の Web サービスを再トレーニングする方法については、[こちらのハウツー記事を参照](retrain-classic-web-service.md)してください。
 

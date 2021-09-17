@@ -9,14 +9,16 @@ ms.workload: infrastructure
 ms.date: 7/1/2021
 ms.author: olayemio
 ms.reviewer: cynthn
-ms.openlocfilehash: e8cfba3c7dc13f6e32d0dd4141832bab475cc5b8
-ms.sourcegitcommit: a2540262e05ffd4a4b059df0976940d60fabd125
+ms.openlocfilehash: 974dba9d3770d7d5570896f24d31fc2378472ae2
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113138821"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122697905"
 ---
 # <a name="troubleshoot-shared-image-galleries-in-azure"></a>Azure の共有イメージ ギャラリーのトラブルシューティング
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 共有イメージ ギャラリー、イメージ定義、およびイメージ バージョンで何らかの操作を実行しているときに問題が発生した場合は、失敗したコマンドをデバッグ モードで再実行します。 Azure CLI では `--debug` スイッチ、PowerShell では `-Debug` スイッチを渡して、デバッグ モードをアクティブにします。 エラーを特定したら、この記事に従ってトラブルシューティングします。
 

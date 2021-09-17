@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 01/22/2021
+ms.date: 08/06/2021
 ms.author: alkohli
-ms.openlocfilehash: 7ddd3941c3001ba5c12a06d9f8710e2fc6328433
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 4ffc4af491380fe02028848b2abeb53c73d8cd8b
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106059861"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122324461"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-r"></a>チュートリアル:Azure Stack Edge Pro R の配置を準備する
 
@@ -69,8 +69,6 @@ Azure Stack Edge Pro R を配置するには、次の順序どおりにチュー
 - このデバイスの安全性に関する情報を次のページで確認した: [Azure Stack Edge デバイスの安全性に関するガイドライン](azure-stack-edge-pro-r-safety.md)。
 [!INCLUDE [Azure Stack Edge device prerequisites](../../includes/azure-stack-edge-gateway-device-prerequisites.md)] 
 
-
-
 ### <a name="for-the-datacenter-network"></a>データセンター ネットワークの前提条件
 
 開始する前に次の点を確認します。
@@ -86,25 +84,57 @@ Azure Stack Edge Pro R を配置するには、次の順序どおりにチュー
 
 物理デバイスを管理する既存の Azure Stack Edge リソースがある場合は、この手順をスキップして、「[アクティブ化キーの取得](#get-the-activation-key)」に進みます。
 
-### <a name="portal"></a>[ポータル](#tab/azure-portal)
+---
+
+### <a name="azure-edge-hardware-center-preview"></a>[Azure Edge Hardware Center (プレビュー)](#tab/azure-edge-hardware-center)
+
+Azure Edge Hardware Center (プレビュー) は、Azure ハイブリッド ポートフォリオから Azure Stack Edge Pro デバイスなど、さまざまなハードウェアを探索して注文できる新しいサービスです。
+
+Azure Edge Hardware Center を通じて注文を行う場合、複数のデバイスを注文して複数の住所に出荷することができ、他の注文の配送先住所を再利用することもできます。
+
+Azure Edge Hardware Center を通じて注文すると、注文関連のすべての情報を含む Azure リソースが作成されます。 注文されたユニットごとにリソースが 1 つずつ作成されます。 デバイスを受け取ったら、それをアクティブにして管理するために Azure Stack Edge リソースを作成する必要があります。
+
+[!INCLUDE [Create order in Azure Edge Hardware Center](../../includes/azure-edge-hardware-center-new-order.md)]
+
+#### <a name="create-management-resources-for-devices"></a>デバイスの管理リソースを作成する
+
+Azure Edge Hardware Center から注文したデバイスを管理するには、Azure Stack Edge で管理リソースを作成します。 
+
+デバイスがアクティブになると、管理リソースが注文項目に関連付けられます。 管理リソースから注文項目を開き、注文項目から管理リソースを開くことができます。 
+
+デバイスが出荷されると、 **[Configure hardware]\(ハードウェアの構成\)** リンクが注文項目の詳細に追加され、管理リソースを作成するためのウィザードを直接開く手段が提供されます。 また、Azure Stack Edge の **[管理リソースの作成]** オプションを使用することもできます。
+
+[!INCLUDE [Create management resource](../../includes/azure-edge-hardware-center-create-management-resource.md)]
+
+### <a name="portal-classic"></a>[ポータル (クラシック)](#tab/azure-portal)
 
 Azure Stack Edge リソースを作成するには、Azure portal で次の手順を実行します。
 
 1. Microsoft Azure 資格情報を使用し、Azure portal にサインインします。URL は [https://portal.azure.com](https://portal.azure.com) です。
 
-2. 左側のウィンドウで、 **[+ リソースの作成]** を選択します。 **[Azure Stack Edge/Data Box Gateway]** を検索して選択します。 **［作成］** を選択します 
+2. **[Azure サービス]** で、 **[Azure Stack Edge]** を検索して選択します。 次に、 **[+ 作成]** を選択します。 
 
-3. Azure Stack Edge Pro デバイスに使用するサブスクリプションを選択します。 この物理デバイスを発送する先の国を選択します。 **[デバイスの表示]** を選択します。
+3. **[Manage Azure Stack Edge devices]\(Azure Stack Edge デバイスの管理\)** で、 **[Try Azure Hardware Center]\(Azure Hardware Center を試す\)** リンクを選択します。
 
-    ![リソースを作成する 1](media/azure-stack-edge-pro-r-deploy-prep/create-resource-1.png)
+    ![[+ 作成] ボタンによって開かれた [Manage Azure Stack Edge devices]\(Azure Stack Edge デバイスの管理\) 画面のスクリーンショット。 [Try Azure Edge Hardware Center]\(Azure Edge Hardware Center を試す\) リンクが強調表示されています。](media/azure-stack-edge-pro-r-deploy-prep/classic-order-experience-1.png)
+
+    これにより、Azure Edge Hardware Center で注文を作成するための **[Get started]\(作業の開始\)** 画面が開きます。 
+
+4. Hardware Center で注文しない場合は、 **[Get started]\(作業の開始\)** 画面で **[Order using classic ordering experience]\(従来の注文エクスペリエンスを使用して注文する\)** を選択します。
+
+   ![Azure Stack Edge の [Get started]\(作業の開始\) 画面のスクリーンショット。 [Order using classic ordering experience]\(従来の注文エクスペリエンスを使用して注文する\) リンクが強調表示されています。](media/azure-stack-edge-pro-r-deploy-prep/classic-order-experience-2.png)
+
+3. Azure Stack Edge Pro デバイスに使用するサブスクリプションを選択します。 この物理デバイスの配送先の国を選択します。 **[デバイスの表示]** を選択します。
+
+    ![Azure Stack Edge リソースのサブスクリプションと配送先地域を選択するための [デバイスの種類の選択] 画面のスクリーンショット。 [デバイスの表示] ボタンが強調表示されています。](media/azure-stack-edge-pro-r-deploy-prep/create-resource-1.png)
 
 4. デバイスの種類を選択します。 **[Azure Stack Edge]** で、 **[Azure Stack Edge Pro R]** を選択し、 **[選択]** を選択します。 問題が発生した場合、またはデバイスの種類を選択できない場合は、[注文の問題のトラブルシューティング](azure-stack-edge-troubleshoot-ordering.md)に関する記事を参照してください。
 
-    ![リソースを作成する 2](media/azure-stack-edge-pro-r-deploy-prep/create-resource-2.png)
+    ![Azure Stack Edge リソースのデバイスの種類を選択するための [デバイスの種類の選択] 画面のスクリーンショット。 デバイスの種類の [選択] ボタンが強調表示されています。](media/azure-stack-edge-pro-r-deploy-prep/create-resource-2.png#lightbox)
 
 5. ビジネス ニーズに基づいて、 **[Azure Stack Edge Pro R single node]\(Azure Stack Edge Pro R 単一ノード\)** または **[Azure Stack Edge Pro R single node with UPS]\(Azure Stack Edge Pro R 単一ノードと UPS\)** を選択できます。  
 
-    ![リソースを作成する 3](media/azure-stack-edge-pro-r-deploy-prep/create-resource-3.png)
+    ![Azure Stack Edge リソースの Azure Stack Edge Pro R デバイスの構成を選択するための画面のスクリーンショット。 ハードウェア構成と [選択] ボタンが強調表示されています。](media/azure-stack-edge-pro-r-deploy-prep/create-resource-3.png)
 
 6. **[基本]** タブで、次の **プロジェクト情報** を入力または選択します。
     
@@ -120,24 +150,24 @@ Azure Stack Edge リソースを作成するには、Azure portal で次の手�
     |名前   | リソースを識別するわかりやすい名前を入力します。<br>名前は 2 - 50 文字で、英字、数字、ハイフンを使用します。<br> 名前の最初と最後には、英字か数字を使用します。        |
     |リージョン     |Azure Stack Edge リソースを使用できるすべてのリージョンの一覧については、[リージョン別の利用可能な Azure 製品](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)に関するページを参照してください。 Azure Government を使用している場合は、「[Azure リージョン](https://azure.microsoft.com/global-infrastructure/regions/)」に記載されているすべての政府機関向けリージョンを選択できます。<br> デバイスをデプロイする地理的リージョンに最も近い場所を選択します。|
 
-    ![リソースを作成する 4](media/azure-stack-edge-pro-r-deploy-prep/create-resource-4.png)
+    ![Azure Stack Edge の [リソースの作成とデバイスの注文] ウィザードの [基本情報] タブのスクリーンショット。 [基本情報] タブと [次へ: 配送先住所] ボタンが強調表示されています。](media/azure-stack-edge-pro-r-deploy-prep/create-resource-4.png)
 
 
 8. **配送先住所** を選択します。
 
     - 既にデバイスがある場合は、 **[I have a Azure Stack Edge Pro R device]\(Azure Stack Edge Pro R デバイスを持っています\)** のコンボ ボックスを選択します。
 
-        ![リソースを作成する 5](media/azure-stack-edge-pro-r-deploy-prep/create-resource-5.png)
+        ![Azure Stack Edge の [リソースの作成とデバイスの注文] ウィザードで [I already have a device]\(既にデバイスを持っています\) オプションが選択された [配送先住所] タブのスクリーンショット。](media/azure-stack-edge-pro-r-deploy-prep/create-resource-5.png)
 
     - 新しいデバイスを注文する場合は、連絡先名、会社、デバイスの配送先住所、連絡先情報を入力します。
 
-        ![リソースを作成する 6](media/azure-stack-edge-pro-r-deploy-prep/create-resource-6.png)
+        ![新しい Azure Stack Edge リソースを作成する場合の [リソースの作成とデバイスの注文] ウィザードの [配送先住所] タブのスクリーンショット。](media/azure-stack-edge-pro-r-deploy-prep/create-resource-6.png)
 
 9. **タグ** を選択します。 必要に応じて、リソースを分類し、請求を統合するためのタグを指定します。 **確認と作成** をクリックします。
 
 10. **[確認と作成]** タブで、**価格の詳細**、**使用条件**、リソースの詳細を確認します。 **[I have reviewed the privacy terms]\(プライバシー条件を確認しました\)** のコンボ ボックスを選択します。
 
-    ![リソースを作成する 7](media/azure-stack-edge-pro-r-deploy-prep/create-resource-7.png) 
+    ![Azure Stack Edge の注文の [確認と作成] タブのスクリーンショット。](media/azure-stack-edge-pro-r-deploy-prep/create-resource-7.png) 
 
     また、リソースの作成時に、クラウド サービスに対して認証できるようにするマネージド サービス ID (MSI) が有効になっていることも通知されます。 この ID は、リソースが存在する限り存在します。
 
@@ -147,7 +177,7 @@ Azure Stack Edge リソースを作成するには、Azure portal で次の手�
 
     リソースが正常に作成されてデプロイされると通知が表示されます。 **[リソースに移動]** を選択します。
 
-    ![Azure Stack Edge Pro リソースに移動する](media/azure-stack-edge-pro-r-deploy-prep/azure-stack-edge-resource-1.png)
+    ![新しい Azure Stack Edge リソースのデプロイが完了したことを示す表示のスクリーンショット。 [リソースに移動] ボタンが強調表示されています。](media/azure-stack-edge-pro-r-deploy-prep/azure-stack-edge-resource-1.png)
 
 Microsoft は受け取った注文を確認し、発送の詳細と共にお客様に (メールで) 連絡します。
 
@@ -215,9 +245,9 @@ Azure Stack Edge リソースが起動して実行中になったら、アクテ
 
    キー コンテナーの名前を指定したら、 **[Generate activation key]\(アクティブ化キーの生成\)** を選択して、アクティブ化キーを作成します。
 
-   ![アクティブ化キーの取得](media/azure-stack-edge-pro-r-deploy-prep/azure-stack-edge-resource-3.png)
+   ![新しく作成された Azure Stack Edge リソースの [概要] ペインのスクリーンショット。 [アクティブ化キーの生成] ボタンが強調表示されています。](media/azure-stack-edge-pro-r-deploy-prep/azure-stack-edge-resource-3.png)
 
-   キー コンテナーとアクティブ化キーが作成されるまで数分待ちます。 コピー アイコンを選択してキーをコピーし、後で使用できるように保存します。<!--Verify that the new screen has a copy icon.-->
+   キー コンテナーとアクティブ化キーが作成されるまで数分待ちます。 コピー アイコンを選択してキーをコピーし、後で使用できるように保存します。
 
 > [!IMPORTANT]
 > - アクティブ化キーは生成後 3 日間で有効期限が切れます。

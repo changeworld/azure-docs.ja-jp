@@ -6,12 +6,12 @@ ms.subservice: update-management
 ms.date: 06/10/2021
 ms.topic: troubleshooting
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: cc65a1c0cd72d9da9208e7377eaef7a887119f43
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 735677886493bace8bb831eae1c974bb0483b0c1
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121730534"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122771837"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Update Management に関する問題のトラブルシューティング
 
@@ -122,7 +122,7 @@ Error details: Failed to enable the Update solution
 
 * **[コンプライアンス]** に、マシンの状態が `Non-compliant` と表示されている場合もあります。 同時に、**エージェントの Desktop Analytics** でエージェントが `Disconnected` として報告されます。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解像度
 
 * OS に応じて、[Windows](update-agent-issues.md#troubleshoot-offline) 用または [Linux](update-agent-issues-linux.md#troubleshoot-offline) 用のトラブルシューティング ツールを実行します。
 
@@ -180,7 +180,7 @@ Error details: Failed to enable the Update solution
 
 * 自分のワークスペースで定義したクォータに達していて、それ以上のデータの格納が妨げられている可能性があります。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解像度
 
 1. OS に応じて、[Windows](update-agent-issues.md#troubleshoot-offline) 用または [Linux](update-agent-issues-linux.md#troubleshoot-offline) 用のトラブルシューティング ツールを実行します。
 
@@ -223,7 +223,7 @@ Error details: Unable to register Automation Resource Provider for subscriptions
 
 Automation リソース プロバイダーがサブスクリプションに登録されていません。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解像度
 
 Automation リソース プロバイダーを登録するには、Azure portal で次の手順に従います。
 
@@ -372,7 +372,7 @@ The components for the 'Update Management' solution have been enabled, and now t
 
 * デプロイしている VM イメージの複製元が、Windows 用の Log Analytics エージェントがインストールされた状態でシステム準備 (sysprep) を使用して準備されなかった複製マシンである可能性があります。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解像度
 
 VM の問題を正確に特定するには、Automation アカウントにリンクされた Log Analytics ワークスペースで、次のクエリを実行します。
 
@@ -420,7 +420,7 @@ The client has permission to perform action 'Microsoft.Compute/virtualMachines/w
 
 このエラーは、更新プログラムの展開に含まれる別のテナントの Azure VM を持つ更新プログラムの展開を作成するときに発生します。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解像度
 
 次の回避策を使用して、これらの項目をスケジュールします。 スケジュールを作成するには、`ForUpdateConfiguration` パラメーターを指定して [New-AzAutomationSchedule](/powershell/module/az.automation/new-azautomationschedule) コマンドレットを使用します。 次に、[New-AzAutomationSoftwareUpdateConfiguration](/powershell/module/Az.Automation/New-AzAutomationSoftwareUpdateConfiguration) コマンドレットを使用して、他のテナントのマシンを `NonAzureComputer` パラメーターに渡します。 以下の例は、その方法を示しています。
 
@@ -444,7 +444,7 @@ New-AzAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationA
 
 Windows Update はいくつかのレジストリ キーによって変更でき、そのいずれかによって再起動の動作が変更されることがあります。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解像度
 
 「[レジストリを編集して自動更新を構成する](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry)」と、[「再起動の管理に使われるレジストリ キー](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart)」に記載されているレジストリ キーを確認して、マシンが正しく構成されていることを確認します。
 
@@ -487,7 +487,7 @@ Update Management に Windows マシンを登録すると、展開なしで更�
 
 Windows では、更新プログラムは、使用可能になるとすぐに自動的にインストールされます。 この動作が原因で、更新プログラムをマシンに展開するスケジュールを設定しなかった場合、混乱が生じる可能性があります。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解像度
 
 レジストリ キー `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU` の既定値は、4: `auto download and install` に設定されています。
 
@@ -509,7 +509,7 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 マシンが既に Update Management 用の別のワークスペースにデプロイされています。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解像度
 
 1. 「[Update Management のポータルにマシンが表示されない](#nologs)」の手順に従って、マシンのレポート先が正しいワークスペースであることを確認します。
 2. [Hybrid Runbook グループを削除する](../automation-windows-hrw-install.md#remove-a-hybrid-worker-group)ことにより、マシン上のアーティファクトをクリーンアップしてから、再試行します。
@@ -540,7 +540,7 @@ Access is denied. (Exception form HRESULT: 0x80070005(E_ACCESSDENIED))
 
 プロキシ、ゲートウェイ、またはファイアウォールがネットワーク通信をブロックしている可能性があります。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解像度
 
 ネットワークを見直し、適切なポートとアドレスが許可されていることを確認します。 Update Management および Hybrid Runbook Worker で必要なポートとアドレスの一覧については、[ネットワーク要件](../automation-hybrid-runbook-worker.md#network-planning)を参照してください。
 
@@ -558,7 +558,7 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 Hybrid Runbook Worker が自己署名証明書を生成できませんでした。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解像度
 
 **C:\ProgramData\Microsoft\Crypto\RSA** フォルダーへの読み取りアクセスがシステム アカウントにあることを確認してから、再試行します。
 
@@ -589,7 +589,7 @@ REST API を使用することで、プログラミングによりさらに多�
 
 更新エージェント (Windows 上の Windows Update エージェント、Linux ディストリビューション用のパッケージ マネージャー) が正しく構成されていません。 Update Management は、必要な更新プログラム、パッチの状態、展開されたパッチの結果を提供するために、マシンの更新エージェントを利用しています。 この情報がないと、Update Management は必要なパッチやインストール済みのパッチを適切にレポートすることができません。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解像度
 
 マシンで更新プログラムをローカルで実行してみてください。 この操作が失敗する場合は、通常、更新エージェントの構成にエラーがあることを意味します。
 
@@ -639,7 +639,7 @@ HRESULT が表示される場合は、赤で表示された例外をダブルク
 * マシンにアクセスできません。
 * 更新プログラムに、解決されていない依存関係がありました。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解像度
 
 正常に開始した後に更新プログラムの実行中にエラーが発生した場合は、実行で影響を受けたマシンからの[ジョブ出力を確認](../update-management/deploy-updates.md#view-results-of-a-completed-update-deployment)します。 マシンからの特定のエラー メッセージが見つかれば、調査して対処することができます。 Update Management で更新プログラムをデプロイするには、パッケージ マネージャーが正常である必要があります。
 

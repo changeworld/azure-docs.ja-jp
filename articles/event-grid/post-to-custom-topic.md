@@ -2,20 +2,18 @@
 title: Azure Event Grid のカスタム トピックにイベントを投稿する
 description: この記事では、カスタム トピックにイベントを投稿する方法について説明します。 投稿とイベント データの形式を示します。
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 08/19/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b662cd2034fc1035a5da64c19d9aba87b180af8f
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 3c3be5c11341ddd7bb381134a0d0b50ba8745709
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110701152"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122515425"
 ---
-# <a name="post-to-custom-topic-for-azure-event-grid"></a>Azure Event Grid のカスタム トピックに投稿する
+# <a name="post-to-azure-event-grid-custom-topics-using-access-keys"></a>アクセス キーを使用して Azure Event Grid カスタム トピックに投稿する
 
-この記事では、カスタム トピックにイベントを投稿する方法について説明します。 投稿とイベント データの形式を示します。 [サービス レベル アグリーメント (SLA)](https://azure.microsoft.com/support/legal/sla/event-grid/v1_0/) は、予期される形式と一致する投稿に対してのみ適用されます。
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+この記事では、アクセス キーを使用し、カスタム トピックにイベントを投稿する方法について説明します。 投稿とイベント データの形式を示します。 [サービス レベル アグリーメント (SLA)](https://azure.microsoft.com/support/legal/sla/event-grid/v1_0/) は、予期される形式と一致する投稿に対してのみ適用されます。
 
 ## <a name="endpoint"></a>エンドポイント
 

@@ -4,20 +4,22 @@ description: Azure での HBv3 シリーズ VM サイズのパフォーマンス
 services: virtual-machines
 author: vermagit
 ms.service: virtual-machines
-ms.subservice: workloads
+ms.subservice: hpc
 ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 03/25/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: bf64cfc8ad00fc7f761019ed2fa66089434a96ba
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: bb32a407813ba7e85f55fc39790fba81ca452c50
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105604772"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122693400"
 ---
 # <a name="hbv3-series-virtual-machine-performance"></a>HBv3 シリーズの仮想マシンのパフォーマンス
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 一般的な HPC マイクロベンチマークを使用したパフォーマンスの予測は次のとおりです。
 

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.date: 06/09/2021
 ms.author: zhshang
-ms.openlocfilehash: 1856f6e012c2b90e173162f055d64402f0c4c908
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 3a3fa958ac6ad1cb440f30b5c680ae3f9139d29a
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112462111"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444925"
 ---
 # <a name="quickstart-create-an-app-showing-github-star-count-with-azure-functions-and-signalr-service-using-c"></a>クイック スタート: Azure Functions と SignalR Service で C\# を使用して、GitHub のスターの数を表示するアプリを作成する
 
@@ -42,7 +42,7 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
 
 問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qscsharp)。
 
-## <a name="setup-and-run-the-azure-function-locally"></a>Azure Functions の設定とローカルでの実行
+## <a name="setup-and-run-the-azure-function-locally"></a>Azure Functions をローカルで設定して実行する
 
 1. Azure Function Core Tools がインストールされていることを確認します。 空のディレクトリを作成し、コマンド ラインを使用してディレクトリに移動します。
 
@@ -105,7 +105,7 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
                     new SignalRMessage
                     {
                         Target = "newMessage",
-                        Arguments = new[] { $"Current start count of https://github.com/Azure/azure-signalr is: {result.StartCount}" }
+                        Arguments = new[] { $"Current star count of https://github.com/Azure/azure-signalr is: {result.StarCount}" }
                     });
             }
     
@@ -113,14 +113,14 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
             {
                 [JsonRequired]
                 [JsonProperty("stargazers_count")]
-                public string StartCount { get; set; }
+                public string StarCount { get; set; }
             }
         }
     }
     ```
-    これらのコードには 3 つの関数があります。 `Index` は、Web サイトをクライアントとして取得するために使用されます。 `Negotiate` は、クライアントがアクセス トークンを取得するために使用されます。 `Broadcast` は、GitHub から定期的に開始カウントを取得し、すべてのクライアントにメッセージをブロードキャストします。
+    これらのコードには 3 つの関数があります。 `Index` は、Web サイトをクライアントとして取得するために使用されます。 `Negotiate` は、クライアントがアクセス トークンを取得するために使用されます。 `Broadcast` は、GitHub から定期的に星の数を取得し、すべてのクライアントにメッセージをブロードキャストします。
 
-3. このサンプルのクライアント インターフェイスは Web ページです。 `GetHomePage` 関数で `content/index.html` から HTML コンテンツを読み込むと考え、`content` ディレクトリに `index.html` というファイルを新規に作成します。 そして、次の内容をコピーします。
+3. このサンプルのクライアント インターフェイスは Web ページです。 `GetHomePage` 関数で `content/index.html` から HTML コンテンツを読み込むと考え、プロジェクト ルート フォルダーの下の `content` ディレクトリに新たに `index.html` ファイルを作成します。 そして、次の内容をコピーします。
     ```html
     <html>
     
@@ -147,33 +147,43 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
     </html>
     ```
 
-4. もう少しで完了です。 最後の手順では、Azure Functions の設定に SignalR Service の接続文字列を設定します。
+4. `*.csproj` を更新して、ビルド出力フォルダー内にコンテンツ ページを作成します。
+
+    ```html
+    <ItemGroup>
+      <None Update="content/index.html">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+    ```
+
+5. もう少しで完了です。 最後の手順では、Azure Functions の設定に SignalR Service の接続文字列を設定します。
 
     1. Azure portal を開いているブラウザーのポータルの上部にある検索ボックスから、以前にデプロイした SignalR Service インスタンスの名前で検索し、インスタンスが正常に作成されたことを確認します。 インスタンスを選択して開きます。
 
         ![SignalR Service インスタンスの検索](media/signalr-quickstart-azure-functions-csharp/signalr-quickstart-search-instance.png)
 
-    1. **[Key]\(キー\)** を選択し、SignalR Service インスタンスの接続文字列を表示します。
+    2. **[Key]\(キー\)** を選択し、SignalR Service インスタンスの接続文字列を表示します。
     
         ![プライマリ接続文字列が強調表示されているスクリーンショット。](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-keys.png)
 
-    1. プライマリ接続文字列をコピーします。 次に、以下のコマンドを実行します。
+    3. プライマリ接続文字列をコピーします。 そして、以下のコマンドを実行します。
     
         ```bash
-        func settings add AzureSignalRConnectionString '<signalr-connection-string>'
+        func settings add AzureSignalRConnectionString "<signalr-connection-string>"
         ```
     
-5. Azure 関数をローカルで実行します。
+6. Azure Functions をローカルで実行します:
 
     ```bash
     func start
     ```
 
-    その後、Azure 関数がローカルで実行されます。 ブラウザーを使用して `http://localhost:7071/api/index` にアクセスすると、現在の開始カウントを確認できます。 また、GitHub でスターを付けたり外したりすると、数秒ごとに開始カウントが更新されます。
+    その後、Azure Functions がローカルで実行されます。 ブラウザーを使用して `http://localhost:7071/api/index` にアクセスすると、現在の星の数を確認できます。 また、GitHub で星を付けたり外したりすると、数秒ごとに星の数が更新されます。
 
     > [!NOTE]
     > SignalR のバインディングには Azure Storage が必要ですが、Function がローカルで動作している場合は、ローカル ストレージ エミュレーターを使用することができます。
-    > `There was an error performing a read operation on the Blob Storage Secret Repository. Please ensure the 'AzureWebJobsStorage' connection string is valid.` のようなエラーが発生した場合は、[ストレージ エミュレーター](../storage/common/storage-use-emulator.md)をダウンロードして有効にする必要があります
+    > `There was an error performing a read operation on the Blob Storage Secret Repository. Please ensure the 'AzureWebJobsStorage' connection string is valid.` のようなエラーが発生した場合は、[Storage Emulator](../storage/common/storage-use-emulator.md) をダウンロードして有効にする必要があります
 
 問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qscsharp)
 
@@ -183,7 +193,7 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイックスタートでは、ローカルでリアルタイムのサーバーレス アプリケーションを構築して実行しました。 Azure Functions で SignalR Service のバインディングを使用する方法について確認します。
+このクイックスタートでは、リアルタイムのサーバーレス アプリケーションを構築してローカルで実行しました。 Azure Functions で SignalR Service のバインディングを使用する方法について確認します。
 次に、SignalR Service を使用して、クライアントと Azure Functions の間で双方向通信を行う方法について詳しく説明します。
 
 > [!div class="nextstepaction"]
@@ -193,5 +203,5 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
 > [サーバーレスでの双方向通信](https://github.com/aspnet/AzureSignalR-samples/tree/main/samples/BidirectionChat)
 
 > [!div class="nextstepaction"]
-> [Visual Studio を使用する Azure Functions の開発](../azure-functions/functions-develop-vs.md)
+> [Visual Studio を使用して Azure Function App にデプロイする](../azure-functions/functions-develop-vs.md#publish-to-azure)
 

@@ -4,12 +4,12 @@ description: このクイックスタートでは、Azure Video Analyzer の基�
 ms.service: azure-video-analyzer
 ms.topic: quickstart
 ms.date: 06/01/2021
-ms.openlocfilehash: 335890f4bb939123290e5dfe9cccbf9f9aef1242
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: 001b1bd2e1f2f3350ad9e9cef28bb3ec682332ef
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114605177"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748681"
 ---
 # <a name="quickstart-get-started-with-azure-video-analyzer"></a>クイックスタート: Azure Video Analyzer で作業を開始する
 
@@ -91,14 +91,14 @@ ms.locfileid: "114605177"
 
 ## <a name="use-direct-method-calls"></a>ダイレクト メソッドの呼び出しを使用する
 
-これで、Video Analyzer エッジ モジュールによって公開されるダイレクト メソッドを呼び出して、ライブ ビデオ ストリームを分析できます。 [Video Analyzer のダイレクト メソッド](direct-methods.md)に関する記事を読み、このモジュールによって提供されるすべてのダイレクト メソッドを確認してください。 
+これで、Video Analyzer エッジ モジュールによって公開されるダイレクト メソッドを呼び出して、ライブ ビデオ ストリームを分析できます。 [Video Analyzer のダイレクト メソッド](direct-methods.md)に関する記事を読み、このモジュールによって提供されるすべてのダイレクト メソッドを確認してください。 ダイレクト メソッドのスキーマについては、[こちら](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/videoanalyzer/data-plane/VideoAnalyzer.Edge/preview/1.0.0/AzureVideoAnalyzerSdkDefinitions.json)を参照してください。
 
 ### <a name="enumerate-pipeline-topologies"></a>パイプライン トポロジを列挙する
 
 この手順により、モジュール内のすべての[パイプライン トポロジ](pipeline.md)が列挙されます。
 
 1. "avaedge" モジュールを右クリックし、コンテキスト メニューから **[Invoke Module Direct Method]\(モジュールのダイレクト メソッドを呼び出す\)** を選択します。
-1. Visual Studio Code ウィンドウの上部中央にエディット ボックスがポップアップ表示されます。 エディット ボックスに「pipelineTopologyList」と入力して、Enter キーを押します。
+1. Visual Studio Code ウィンドウの上部中央にエディット ボックスがポップアップ表示されます。 編集ボックスに「`pipelineTopologyList`」と入力して、Enter キーを押します。
 1. さらに、次の JSON ペイロードをコピーしてエディット ボックスに貼り付け、Enter キーを押します。
    
 ```json

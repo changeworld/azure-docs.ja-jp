@@ -3,12 +3,12 @@ title: Azure portal を使用した Azure Video Analyzer の概要 - Azure
 description: このクイック スタートでは、Azure portal を使って Azure Video Analyzer の使用を開始するための手順について説明します。
 ms.topic: quickstart
 ms.date: 06/01/2021
-ms.openlocfilehash: 4ff89417a10e50ff404ce22b7c57a2c0e29322e6
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: df63755aa66399a2f457673ba17391d5b42f31a8
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114601102"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734230"
 ---
 # <a name="quickstart-get-started-with-azure-video-analyzer-in-the-azure-portal"></a>クイック スタート: Azure portal で Azure Video Analyzer の使用を開始する
 
@@ -230,7 +230,7 @@ Azure Video Analyzer アカウントを作成する場合は、Azure ストレ�
 
 ## <a name="use-direct-method-calls"></a>ダイレクト メソッドの呼び出しを使用する
 
-この時点で、Video Analyzer エッジ モジュールによって公開されるダイレクト メソッドを呼び出して、ライブ ビデオ ストリームを分析できます。 [Video Analyzer のダイレクト メソッド](direct-methods.md)に関するページを読み、このモジュールによって提供されるすべてのダイレクト メソッドを確認してください。
+この時点で、Video Analyzer エッジ モジュールによって公開されるダイレクト メソッドを呼び出して、ライブ ビデオ ストリームを分析できます。 [Video Analyzer のダイレクト メソッド](direct-methods.md)に関するページを読み、このモジュールによって提供されるすべてのダイレクト メソッドを確認してください。 ダイレクト メソッドのスキーマについては、[こちら](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/videoanalyzer/data-plane/VideoAnalyzer.Edge/preview/1.0.0/AzureVideoAnalyzerSdkDefinitions.json)を参照してください。
 
 ### <a name="enumerate-pipeline-topologies"></a>パイプライン トポロジを列挙する
 

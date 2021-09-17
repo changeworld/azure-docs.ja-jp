@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: wellee
-ms.openlocfilehash: d1aae5620f32b5680badc073d74d360b70b68a3b
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.openlocfilehash: 8c9ab37e46f23d533550ffc535633575a85937a6
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110579874"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122778901"
 ---
 # <a name="connect-cross-tenant-vnets-to-a-virtual-wan-hub"></a>クロステナント Vnet を Virtual WAN に接続する
 
@@ -44,9 +44,9 @@ ms.locfileid: "110579874"
 
 ## <a name="assign-permissions"></a><a name="rights"></a>アクセス許可の割り当て
 
-仮想ハブを持つ親サブスクリプションが、リモート テナント内の仮想ネットワークを変更したりアクセスしたりするには、リモート テナント サブスクリプションから親サブスクリプションに、**共同作成者** のアクセス許可を割り当てる必要があります。
+仮想ハブを持つ親サブスクリプションを管理するユーザーが、リモート テナント内の仮想ネットワークを変更してアクセスできるようにするには、このユーザーに、**共同作成者** のアクセス許可を割り当てる必要があります。 このユーザーに **共同作成者** のアクセス許可を割り当てるには、リモート テナントの VNET のサブスクリプションで行います。
 
-1. 親アカウント (仮想 WAN ハブを持つアカウント) に、**共同作成者** ロールの割り当てを追加します。 PowerShell または Azure portal のいずれかを使用して、このロールを割り当てることができます。 手順については以下の、**ロールの割り当てを追加または削除する** 方法に関する記事を参照してください。
+1. その管理者 (仮想 WAN ハブの管理に使用する管理者) に、**共同作成者** ロールの割り当てを追加します。 PowerShell または Azure portal のいずれかを使用して、このロールを割り当てることができます。 手順については以下の、**ロールの割り当てを追加または削除する** 方法に関する記事を参照してください。
 
    * [PowerShell](../role-based-access-control/role-assignments-powershell.md)
    * [ポータル](../role-based-access-control/role-assignments-portal.md)

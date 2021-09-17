@@ -9,14 +9,17 @@ ms.topic: article
 ms.date: 02/10/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 02ea434b74e92e2bdd126a98d33e9e68adb811d0
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 9e40c1085458140204a1632824e9ac550caae27d
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114468983"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122696755"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Azure のオンデマンド Red Hat Enterprise Linux VM 用 Red Hat Update Infrastructure
+
+**適用対象:** :heavy_check_mark: Linux VM 
+
  クラウド プロバイダー (Azure など) は、[Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) を使用して、Red Hat でホストされているリポジトリのコンテンツのミラーリング、Azure 固有のコンテンツを使用したカスタム リポジトリの作成、およびエンド ユーザーの VM での使用を実行できます。
 
 Red Hat Enterprise Linux (RHEL) 従量課金制 (PAYG) イメージには、Azure RHUI にアクセスするための構成が事前に設定されています。 追加の構成は必要ありません。 最新の更新プログラムを取得するには、RHEL インスタンスの準備ができてから `sudo yum update` を実行します。 このサービスは、RHEL PAYG ソフトウェア料金の一部として含まれています。
@@ -287,16 +290,14 @@ Azure RHEL PAYG VM から Azure RHUI への接続で問題が発生した場合�
 - RHEL 8 の場合:
     1. config ファイルを作成します。
         ```bash
-        vi rhel8.config
-        ```
-    1. 次の内容を構成ファイルに追加します。
-        ```bash
+        cat <<EOF > rhel8.config
         [rhui-microsoft-azure-rhel8]
         name=Microsoft Azure RPMs for Red Hat Enterprise Linux 8
         baseurl=https://rhui-1.microsoft.com/pulp/repos/microsoft-azure-rhel8 https://rhui-2.microsoft.com/pulp/repos/microsoft-azure-rhel8 https://rhui-3.microsoft.com/pulp/repos/microsoft-azure-rhel8
         enabled=1
         gpgcheck=1
         gpgkey=https://rhelimage.blob.core.windows.net/repositories/RPM-GPG-KEY-microsoft-azure-release sslverify=1
+        EOF
         ```
     1. ファイルを保存し、次のコマンドを実行します。
         ```bash

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: 2de0dcd52745ebadb02ab8dbb563e28abf2822dc
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: fbb169924498b30284ea26d172f605596e6a0379
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102046484"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122446363"
 ---
 # <a name="disable-monitoring-of-your-vms-in-vm-insights"></a>VM insights での VM の監視を無効にする
 
@@ -23,7 +23,7 @@ VM insights はそのエクスペリエンスを実現するために、以下�
 * Log Analytics ワークスペース。VM および他のソースからの監視データを保管します。
 * ワークスペースで構成されているパフォーマンス カウンターのコレクション。 このコレクションは、ワークスペースに接続しているすべての VM での監視構成を更新します。
 * `VMInsights`。これは、ワークスペースで構成されている監視ソリューションです。 このソリューションは、ワークスペースに接続しているすべての VM での監視構成を更新します。
-* `MicrosoftMonitoringAgent` および `DependencyAgent`。AzureVM の拡張機能です。 これらの拡張機能はデータを収集してワークスペースに送信します。
+* `MicrosoftMonitoringAgent` (Windows 用) または `OmsAgentForLinux` (Linux 用) と `DependencyAgent`。これは Azure VM 拡張機能です。 これらの拡張機能はデータを収集してワークスペースに送信します。
 
 VM の監視を無効にする準備をするときは、これらの考慮事項に留意してください。
 

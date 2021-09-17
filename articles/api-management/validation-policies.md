@@ -6,14 +6,14 @@ documentationcenter: ''
 author: dlepow
 ms.service: api-management
 ms.topic: article
-ms.date: 07/12/2021
+ms.date: 08/20/2021
 ms.author: apimpm
-ms.openlocfilehash: 26f1f9449a4e02f25e44e55d578f0194615b0be5
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 6946dcaf713bda83e5bce7e823b5f7e26ccd6e92
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114437075"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122694608"
 ---
 # <a name="api-management-policies-to-validate-requests-and-responses"></a>要求と応答を検証するための API Management ポリシー
 
@@ -95,7 +95,7 @@ API スループットに対する検証ポリシーの影響を評価するに�
 | 名前                       | 説明                                                                                                                                                            | 必須 | Default |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
 | unspecified-content-type-action | API スキーマで指定されていないコンテンツ タイプの要求または応答に対して実行する[アクション](#actions)。 |  はい     | なし   |
-| max-size | `Content-Length` ヘッダーに対してチェックされる、要求または応答の本文の最大長 (バイト単位)。 要求本文または応答本文が圧縮されている場合、この値は圧縮解除された長さになります。 許容される最大値: 102,400 バイト (100 KB)。  | はい       | なし   |
+| max-size | `Content-Length` ヘッダーに対してチェックされる、要求または応答の本文の最大長 (バイト単位)。 要求本文または応答本文が圧縮されている場合、この値は圧縮解除された長さになります。 許容される最大値: 102,400 バイト (100 KB)。 (この制限を引き上げる必要がある場合は、[サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。) | はい       | なし   |
 | size-exceeded-action | 本文が `max-size` で指定されたサイズを超えている要求または応答に対して実行する[アクション](#actions)。 |  はい     | なし   |
 | errors-variable-name | 検証エラーをログに記録する `context.Variables` の変数の名前。  |   いいえ    | なし   |
 | type | `Content-Type` ヘッダーに対してチェックされる、本文の検証を実行するコンテンツ　タイプ。 この値は大文字と小文字が区別されません。 空の場合は、API スキーマで指定されているすべてのコンテンツ タイプに適用されます。 |   いいえ    |  なし  |

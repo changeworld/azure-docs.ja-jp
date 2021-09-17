@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/14/2021
 ms.author: duau
-ms.openlocfilehash: 97a96d439773d7332fda3fe545d950dfe0077ad1
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 16b808200c43324a68bf909b3cf5548f34dbdec4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113765422"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121738052"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>チュートリアル:Front Door カスタム ドメインで HTTPS を構成する
 
@@ -87,7 +87,7 @@ Azure Front Door で管理された証明書を使用する場合、HTTPS 機能
 2. Azure Key Vault 証明書: 証明書が既にある場合は、Azure Key Vault アカウントに直接アップロードできます。または、Azure Key Vault と統合されているパートナー CA の 1 つから、Azure Key Vault を使用して新しい証明書を直接作成できます。 証明書は、**シークレット** ではなく **証明書** オブジェクトとしてアップロードします。
 
 > [!NOTE]
-> 独自の TLS/SSL 証明書については、Front Door は EC 暗号化アルゴリズムを使用した証明書をサポートしていません。 証明書にはリーフ証明書と中間証明書を含む完全な証明書チェーンが必要であり、ルート CA は [Microsoft の信頼された CA リスト](https://ccadb-public.secure.force.com/microsoft/IncludedCACertificateReportForMSFT)の一部である必要があります。
+> 独自の TLS/SSL 証明書については、Front Door は EC 暗号化アルゴリズムを使用した証明書をサポートしていません。 証明書には、リーフと中間証明書が存在する完全な証明書チェーンが必要です。ルート CA は、[Microsoft の信頼された CA のリスト](https://ccadb-public.secure.force.com/microsoft/IncludedCACertificateReportForMSFT)に掲載されている必要があります。
 
 #### <a name="register-azure-front-door"></a>Azure Front Door を登録する
 
@@ -136,7 +136,9 @@ Azure Key Vault アカウント内の証明書にアクセスするには、Azur
     - 利用可能なシークレットのバージョン。
 
     > [!NOTE]
-    >  キー コンテナーで新しいバージョンの証明書を利用できるようになったときに、証明書を自動的に最新バージョンにローテーションするには、シークレットのバージョンを "最新" に設定してください。 特定のバージョンが選択されている場合、新しいバージョンを手動で再選択して、証明書をローテーションする必要があります。 新しいバージョンの証明書またはシークレットがデプロイされるまで、最大で 24 時間かかります。 
+    >  キー コンテナーで新しいバージョンの証明書を利用できるようになったときに、証明書を自動的に最新バージョンにローテーションするには、シークレットのバージョンを "最新" に設定してください。 特定のバージョンが選択されている場合、新しいバージョンを手動で再選択して、証明書をローテーションする必要があります。 新しいバージョンの証明書またはシークレットがデプロイされるまで、最大で 24 時間かかります。
+    >
+    > :::image type="content" source="./media/front-door-custom-domain-https/certificate-version.png" alt-text="カスタム ドメインの更新ページでシークレットのバージョンを選択しているスクリーンショット。":::
  
 5. 独自の証明書を使用する場合には、ドメインの検証は必要ありません。 「[伝達を待機する](#wait-for-propagation)」に進んでください。
 

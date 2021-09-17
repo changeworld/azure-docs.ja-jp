@@ -1,6 +1,6 @@
 ---
 title: チュートリアル - Linux VM 用の Azure 仮想ネットワークの作成と管理を行う
-description: このチュートリアルでは、Azure CLI を使用して、Linux 仮想マシン用の Azure ディスクの作成と管理を行う方法について説明します
+description: このチュートリアルでは、Azure CLI を使用して、Linux 仮想マシン用の Azure 仮想ネットワークの作成と管理を行う方法について説明します。
 services: virtual-machines
 author: cynthn
 ms.collection: linux
@@ -10,14 +10,16 @@ ms.topic: tutorial
 ms.date: 05/10/2017
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: cfc76ffd05b6348c9a585a64e3f2868f28f5e5cd
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: e259a835046b24d84fad9ec9fdb6416bc1bd6c90
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107811708"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122698948"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-linux-virtual-machines-with-the-azure-cli"></a>チュートリアル:Azure CLI を使用して Linux 仮想マシン用の Azure 仮想ネットワークの作成と管理を行う
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブル スケール セット 
 
 Azure 仮想マシンでは、内部と外部のネットワーク通信に Azure ネットワークが使用されます。 このチュートリアルでは、2 台の仮想マシンをデプロイし、それらの VM に使用する Azure ネットワークを構成する手順について説明します。 このチュートリアルの例では、これらの VM が、データベース バックエンドを持つ Web アプリケーションのホストになっていることを想定していますが、アプリケーションのデプロイは、このチュートリアルでは行いません。 このチュートリアルでは、以下の内容を学習します。
 

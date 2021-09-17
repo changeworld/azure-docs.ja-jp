@@ -5,20 +5,22 @@ services: virtual-machines
 author: vermagit
 tags: azure-resource-manager
 ms.service: virtual-machines
-ms.subservice: workloads
+ms.subservice: hpc
 ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 03/25/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 7e9cdb80f1423076fb222e1d1521117e65bca9bc
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 1f5442c7ade736c4313812a4cb20e6535492acc3
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114460574"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122693409"
 ---
 # <a name="hbv3-series-virtual-machine-overview"></a>HBv3 シリーズの仮想マシンの概要 
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 [HBv3 シリーズ](../../hbv3-series.md)のサーバーは 64 コア EPYC 7V13 CPU を 2 個搭載しており、合わせて 128 個の物理 "Zen3" コアとなります。 同時マルチスレッド (SMT) は HBv3 では無効になっています。 これらの 128 個のコアは 16 個のセクション (ソケットあたり 8 個) に分けられ、各セクションに含まれる 8 個のプロセッサ コアが 32 MB の L3 キャッシュに一様にアクセスできます。 Azure HBv3 サーバーでは、次の AMD BIOS 設定も実行されます。
 

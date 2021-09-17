@@ -6,14 +6,14 @@ ms.author: bagold
 ms.service: azure-sentinel
 ms.topic: troubleshooting
 ms.custom: mvc
-ms.date: 07/29/2021
+ms.date: 08/09/2021
 ms.subservice: azure-sentinel
-ms.openlocfilehash: e3503b8f7464f66bd404b9b70196a017d9c058b6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 525048346edc184744a69c70c8fd4dc0db1bd554
+ms.sourcegitcommit: deb5717df5a3c952115e452f206052737366df46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121778874"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122681207"
 ---
 # <a name="troubleshooting-your-azure-sentinel-sap-solution-deployment"></a>Azure Sentinel SAP ソリューションのデプロイのトラブルシューティング
 
@@ -33,27 +33,36 @@ SAP データ コネクタのトラブルシューティングを行うときに
 
 ## <a name="review-system-logs"></a>システム ログを確認する
 
-データ コネクタをインストールまたはリセットした後に、システム ログを確認することを強くお勧めします。
+[データ コネクタをインストールまたはリセット](#reset-the-sap-data-connector)した後に、システム ログを確認することを強くお勧めします。
 
 次を実行します。
 
 ```bash
 docker logs -f sapcon-[SID]
 ```
+
 ## <a name="enable-debug-mode-printing"></a>デバッグ モード印刷を有効にする
 
-デバッグ モード印刷を有効にするには:
+**デバッグ モード印刷を有効にするには**:
 
 1. 次のファイルを **sapcon/[SID]** ディレクトリにコピーし、`loggingconfig.yaml` に名前を変更します: https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/Solutions/SAP/template/loggingconfig_DEV.yaml
 
 1. [SAP データ コネクタをリセットします](#reset-the-sap-data-connector)。
 
-たとえば、SID A4H の場合:
+たとえば、SID `A4H` の場合:
 
 ```bash
 wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/Solutions/SAP/template/loggingconfig_DEV.y
               cp loggingconfig.yaml ~/sapcon/A4H
               docker restart sapcon-A4H
+```
+
+**デバッグ モードの印刷を再び無効にするには、以下を実行します。**
+
+```bash
+mv loggingconfig.yaml loggingconfig.old
+ls
+docker restart sapcon-[SID]
 ```
 
 ## <a name="view-all-docker-execution-logs"></a>すべての Docker 実行ログを表示する
@@ -99,7 +108,7 @@ total 508
 docker cp sapcon-[SID]:/sapcon-app/sapcon/logs /directory
 ```
 
-次に例を示します。
+例:
 
 ```bash
 docker cp sapcon-A4H:/sapcon-app/sapcon/logs /tmp/sapcon-logs-extract
@@ -118,7 +127,7 @@ SAP データ コネクタの構成ファイルを確認し、手動で更新す
 
 ## <a name="reset-the-sap-data-connector"></a>SAP データ コネクタをリセットする
 
-次の手順は、コネクタをリセットし、過去 24 時間の SAP ログを再取り込みします。
+次の手順では、コネクタをリセットし、過去 24 時間の SAP ログを再取り込みします。
 
 1.  コネクタを停止します。 次を実行します。
 
@@ -126,7 +135,13 @@ SAP データ コネクタの構成ファイルを確認し、手動で更新す
     docker stop sapcon-[SID]
     ```
 
-1.  **sapcon/[SID]** ディレクトリから、**metadata.db** ファイルを削除します。
+1.  **sapcon/[SID]** ディレクトリから、**metadata.db** ファイルを削除します。 次を実行します。
+
+    ```bash
+    cd ~/sapcon/<SID>
+    ls
+    mv metadata.db metadata.old
+    ```
 
     > [!NOTE]
     > **metadata.db** ファイルには各ログの最後のタイムスタンプが含まれ、重複を防止します。
@@ -147,7 +162,7 @@ SAP データ コネクタとセキュリティ コンテンツの両方をデ�
 
 ### <a name="corrupt-or-missing-sap-sdk-file"></a>破損した、または見つからない SAP SDK ファイル
 
-これは、PyRfc でコネクタの起動に失敗した場合、または zip 関連のエラー メッセージが表示された場合に発生します。
+このエラーは、PyRfc でコネクタの起動に失敗した場合、または zip 関連のエラー メッセージが表示された場合に発生することがあります。
 
 1. SAP SDK を再インストールします。
 1. 正しい Linux 64 ビット バージョンを使用していることを確認します。 現時点において、リリース ファイル名は、**nwrfc750P_8-70002752.zip** です。
@@ -173,7 +188,7 @@ Docker cp SDK by running docker cp nwrfc750P_8-70002752.zip /sapcon-app/inst/
 ### <a name="empty-or-no-audit-log-retrieved-with-no-special-error-messages"></a>監査ログが空か、監査ログが取得されず、特別なエラー メッセージも表示されない
 
 1. SAP で監査ログが有効になっているか確認します。
-1. トランザクションの **SM19** と **RASU_CONFIG** を確認してください。
+1. **SM19** または **RSAU_CONFIG** トランザクションを確認します。
 1. 必要に応じてイベントを有効にします。
 1. コネクタ ログに特別なエラーが表示されずに、SAP **SM20** または **RSAU_READ_LOG** にメッセージが到着し、存在していることを確認します。
 
@@ -182,20 +197,29 @@ Docker cp SDK by running docker cp nwrfc750P_8-70002752.zip /sapcon-app/inst/
 
 [デプロイ スクリプト](sap-deploy-solution.md#create-key-vault-for-your-sap-credentials)に間違ったワークスペース ID またはキーを入力した場合は、Azure Key Vault に格納されている資格情報を更新します。
 
+Azure KeyVault で資格情報を確認した後、コンテナーを再起動します。
+
+```bash
+docker restart sapcon-[SID]
+```
+
 ### <a name="incorrect-sap-abap-user-credentials-in-a-fixed-configuration"></a>固定構成で SAP ABAP ユーザー資格情報が正しくない
 
 固定構成では、パスワードが **systemconfig.ini** 構成ファイルに直接格納されます。
 
 資格情報が正しくない場合は、資格情報を確認します。
 
-base64 暗号化を使用して、ユーザーとパスワードを暗号化します。 オンライン暗号化ツールを使用して、これを行います (例: https://www.base64encode.org/ )。
+base64 暗号化を使用して、ユーザーとパスワードを暗号化します。 https://www.base64encode.org/ のようなオンライン暗号化ツールを使用して、資格情報を暗号化することができます。
 
 ### <a name="incorrect-sap-abap-user-credentials-in-key-vault"></a>キー コンテナーの SAP ABAP ユーザー資格情報が正しくない
 
-資格情報を確認し、必要に応じて修正します。
+資格情報を確認し、必要に応じて修正して、Azure Key Vault の **ABAPUSER** と **ABAPPASS** の値に正しい値を適用します。
 
-Azure Key Vault の **ABAPUSER** と **ABAPPASS** の値に正しい値を適用します。
+次に、コンテナーを再起動します。
 
+```bash
+docker restart sapcon-[SID]
+```
 
 
 ### <a name="missing-abap-sap-user-permissions"></a>ABAP (SAP ユーザー) アクセス許可がない
@@ -225,7 +249,7 @@ SAP 環境または Azure Sentinel へのネットワーク接続の問題が発
 
 ### <a name="other-unexpected-issues"></a>その他の予期せぬ問題
 
-この記事に記載されていない予期せぬ問題がある場合は、次を試してください。
+この記事に記載されていない予期せぬ問題がある場合は、次のステップを試してください。
 
 - [コネクタをリセットしてログを再度読み込みます](#reset-the-sap-data-connector)。
 - [コネクタを最新バージョンにアップグレードします](sap-deploy-solution.md#update-your-sap-data-connector)。
@@ -235,7 +259,7 @@ SAP 環境または Azure Sentinel へのネットワーク接続の問題が発
 
 ### <a name="retrieving-an-audit-log-fails-with-warnings"></a>監査ログを取得しようとすると警告が出て失敗する
 
-[必要な変更要求](sap-solution-detailed-requirements.md#required-sap-log-change-requests)がデプロイされていない状態か、または古い/パッチが未適用のバージョンで監査ログを取得しようとして、警告が出てプロセスが失敗した場合は、次のいずれかの方法を使用して SAP 監査ログを取得できるか確認してください。
+[必要な変更要求](sap-solution-detailed-requirements.md#required-sap-log-change-requests)がデプロイされていない状態か、古い、またはパッチが未適用のバージョンで監査ログを取得しようとして、警告が出てプロセスが失敗した場合は、次のいずれかの方法を使用して SAP 監査ログを取得できることを確認してください。
 
 - 古いバージョンで *XAL* という互換性モードを使用する
 - 最近修正プログラムが適用されていないバージョンを使用する
@@ -244,7 +268,14 @@ SAP 環境または Azure Sentinel へのネットワーク接続の問題が発
 システムは必要に応じて互換性モードに自動的に切り替わりますが、手動で切り替える必要がある場合があります。 互換性モードに手動で切り替えるには:
 
 1. **sapcon/SID** ディレクトリで、**systemconfig.ini** ファイルを編集します
+
 1. 次のように定義します: `auditlogforcexal = True`
+
+1. Docker コンテナーを再起動します。
+
+    ```bash
+    docker restart sapcon-[SID]
+    ```
 
 ### <a name="sapcontrol-or-java-subsystems-unable-to-connect"></a>SAPCONTROL または JAVA サブシステムが接続できない
 
@@ -265,6 +296,34 @@ SAPCONTROL または JAVA サブシステムが、「**SAP サーバー 'Etc/NZS
 
 [必要な SAP ログ変更要求](sap-solution-detailed-requirements.md#required-sap-log-change-requests)をインポートできず、無効なコンポーネント バージョンに関するエラーが表示される場合には、変更要求をインポートする際に `ignore invalid component version` を追加します。
 
+### <a name="audit-log-data-not-ingested-past-initial-load"></a>初期読み込み後に監査ログ データが取り込まれない
+
+**RSAU_READ_LOAD** または **SM200** トランザクションに表示される SAP 監査ログ データが、初期読み込み後に Azure Sentinel に取り込まれない場合は、SAP システムと SAP ホスト オペレーティング システムの構成が間違っている可能性があります。
+
+- 初期読み込みは、SAP データ コネクタの新規インストール後、または **metadata.db** ファイルが削除された後に取り込まれます。
+- 誤った構成の例として、**STZAC** トランザクション内で SAP システムのタイムゾーンが **CET** に設定されているのに、SAP ホスト オペレーティング システムのタイム ゾーンが **UTC** に設定されている場合があります。
+
+構成の誤りを確認するには、トランザクション **SE38** で **RSDBTIME** レポートを実行します。 SAP システムと SAP ホスト オペレーティング システムの間で不一致が見つかった場合:
+
+1. Docker コンテナーを停止します。 実行
+
+    ```bash
+    docker stop sapcon-[SID]
+    ```
+
+1.  **sapcon/[SID]** ディレクトリから、**metadata.db** ファイルを削除します。 次を実行します。
+
+    ```bash
+    rm ~/sapcon/[SID]/metadata.db
+    ```
+
+1. SAP システムと SAP ホスト オペレーティング システムを、同じタイム ゾーンなどの一致する設定に更新します。 詳細については、[SAP コミュニティの Wiki](https://wiki.scn.sap.com/wiki/display/Basis/Time+zone+settings%2C+SAP+vs.+OS+level) を参照してください。
+
+1. もう一度コンテナーを起動します。 次を実行します。
+
+    ```bash
+    docker start sapcon-[SID]
+    ```
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -272,6 +331,7 @@ SAPCONTROL または JAVA サブシステムが、「**SAP サーバー 'Etc/NZS
 
 - [SAP の継続的な脅威監視をデプロイする (パブリック プレビュー)](sap-deploy-solution.md)
 - [Azure Sentinel SAP ソリューションのログ リファレンス (パブリック プレビュー)](sap-solution-log-reference.md)
+- [SNC を使用して Azure Sentinel SAP データ コネクタをデプロイする](sap-solution-deploy-snc.md)
 - [エキスパートの構成オプション、オンプレミス デプロイ、SAPControl のログ ソース](sap-solution-deploy-alternate.md)
 - [Azure Sentinel SAP ソリューション: セキュリティ コンテンツ リファレンス (パブリック プレビュー)](sap-solution-security-content.md)
 - [Azure Sentinel SAP ソリューションの詳細な SAP 要件 (パブリック プレビュー)](sap-solution-detailed-requirements.md)

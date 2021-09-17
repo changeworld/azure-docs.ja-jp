@@ -8,14 +8,16 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 04/20/2021
 ms.author: cynthn
-ms.openlocfilehash: 45616c5b5648153291c81c9ac17e3da3a2c66e3f
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 5e7c342ae66594e502870030f8e8561ba861b05b
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108769977"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692104"
 ---
 # <a name="use-scp-to-move-files-to-and-from-a-linux-vm"></a>SCP を使用して Linux VM との間でファイルを移動する 
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブル スケール セット 
 
 この記事では、Secure Copy (SCP) を使用して、ワークステーションと Azure Linux VM 間でファイルをやり取りする方法を説明します。 Azure インフラストラクチャの管理においては、ワークステーションと Linux VM の間でファイルを安全かつ迅速にやり取りできることが重要です。 
 

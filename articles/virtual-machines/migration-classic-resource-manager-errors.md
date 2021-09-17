@@ -10,14 +10,16 @@ ms.topic: troubleshooting
 ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 2d1364d8b408cc6a42e2c87f6748ab36558bb389
-ms.sourcegitcommit: 6a3096e92c5ae2540f2b3fe040bd18b70aa257ae
+ms.openlocfilehash: e883bccf5ed57f1cc300d4000c9bfb9cac91b39b
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112322568"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122690326"
 ---
 # <a name="errors-that-commonly-occur-during-classic-to-azure-resource-manager-migration"></a>クラシックから Azure Resource Manager への移行中によく発生するエラー
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM
 
 > [!IMPORTANT]
 > 現在、IaaS VM の約 90% で [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/) が使用されています。 2020 年 2 月 28 日の時点で、クラシック VM は非推奨とされており、2023 年 3 月 1 日に完全に廃止されます。 この非推奨の[詳細]( https://aka.ms/classicvmretirement)および[それが与える影響](classic-vm-deprecation.md#how-does-this-affect-me)について確認してください。

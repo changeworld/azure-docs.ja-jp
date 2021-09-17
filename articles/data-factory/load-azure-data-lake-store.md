@@ -4,15 +4,16 @@ description: Azure Data Factory を使用して Azure Data Lake Storage Gen1 に
 ms.author: jianleishen
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/18/2021
-ms.openlocfilehash: 5269267f0fa786163b6c1fa1a4d4bfc8d0ff9af5
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.date: 07/05/2021
+ms.openlocfilehash: 0d2bdda7cacc07b84c8136eb63d282d55a4a0806
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109483517"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122637876"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Data Lake Storage Gen1 へのデータの読み込み
 
@@ -59,15 +60,15 @@ Azure Data Factory には、Data Lake Storage Gen1 にデータを読み込む�
 3. **［作成］** を選択します
 4. 作成が完了したら、データ ファクトリに移動します。 次の画像のように **[データ ファクトリ]** ホーム ページが表示されます。 
    
-   ![データ ファクトリのホーム ページ](./media/load-data-into-azure-data-lake-store/data-factory-home-page.png)
+   :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="[Open Azure Data Factory Studio] タイルを含む、Azure Data Factory のホーム ページ。":::
 
-   **[作成と監視]** タイルを選択して、別のタブでデータ統合アプリケーションを起動します。
+   **[Open Azure Data Factory Studio]\(Azure Data Factory Studio を開く\)** タイルで **[開く]** を選択して、別のタブでデータ統合アプリケーションを起動します。
 
 ## <a name="load-data-into-data-lake-storage-gen1"></a>Data Lake Storage Gen1 にデータを読み込む
 
-1. **[Get started]\(開始\)** ページで、 **[データのコピー]** タイルを選択してデータのコピー ツールを起動します。 
+1. ホーム ページで、 **[取り込み]** タイルを選択し、データのコピー ツールを起動します。 
 
-   ![データのコピー ツールのタイル](./media/load-data-into-azure-data-lake-store/copy-data-tool-tile.png)
+   ![ADF のホーム ページを示すスクリーンショット。](./media/doc-common-process/get-started-page.png)
 2. **[プロパティ]** ページで、 **[タスク名]** フィールドに「**CopyFromAmazonS3ToADLS**」と指定し、 **[次へ]** を選択します。
 
     ![[プロパティ] ページ](./media/load-data-into-azure-data-lake-store/copy-data-tool-properties-page.png)

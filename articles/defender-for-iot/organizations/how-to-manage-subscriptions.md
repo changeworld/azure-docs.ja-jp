@@ -3,12 +3,12 @@ title: サブスクリプションを管理する
 description: サブスクリプションは、コミット済みのマネージド デバイスで構成され、必要に応じてオンボードまたはオフボードすることができます。
 ms.date: 08/10/2021
 ms.topic: how-to
-ms.openlocfilehash: b2d9c5ba3b359415f1dcfa5772003aec04a80855
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 41240bd3b05c08d8acd3484bbe32fc99b6590d49
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122252488"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444423"
 ---
 # <a name="manage-defender-for-iot-subscriptions"></a>Defender for IoT のサブスクリプションを管理する
 
@@ -32,20 +32,22 @@ Azure Defender for IoT の請求期間は暦月に従います。 ある月の�
 ユーザーは、限られた数のデバイスの監視を 30 日間サポートする試用版サブスクリプションを使用することもできます。
 コミットされたデバイスの価格については、「[Azure Defender の価格](https://azure.microsoft.com/pricing/details/azure-defender/)」情報を参照してください。
 
-### <a name="before-you-begin"></a>開始する前に
+## <a name="requirements"></a>必要条件
 
 サブスクリプションをオンボードする前に、次のことを確認してください。
+
 - Azure アカウントが設定されている。
 - 必要な Azure ユーザーのアクセス許可を持っている。
-#### <a name="azure-account-setup"></a>Azure アカウントのセットアップ
 
-Azure Defender for IoT の使用を開始するには、Microsoft Azure サブスクリプションを用意する必要があります。 サブスクリプションがない場合は、無料アカウントにサインアップできます。 Azure サブスクリプションへのアクセス権を既に持っているが、サブスクライブするときに一覧に表示されていない場合は、アカウントの詳細を確認し、自分のアクセス許可をサブスクリプションの所有者に確認してください。
+### <a name="azure-account-subscription-requirements"></a>Azure アカウントのサブスクリプションの要件
 
-- アカウントがある場合: https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade 。
+Azure Defender for IoT の使用を開始するには、Microsoft Azure アカウントのサブスクリプションを用意する必要があります。
 
-- アカウントがない場合: https://azure.microsoft.com/free/ 。
+サブスクリプションがない場合は、無料アカウントにサインアップできます。 詳細については、「https://azure.microsoft.com/free/」を参照してください。
 
-#### <a name="user-permission-requirements"></a>ユーザー権限の要件
+Azure サブスクリプションへのアクセス権を既に持っているが、Defender for IoT をサブスクライブするときに一覧に表示されていない場合は、アカウントの詳細を確認し、自分のアクセス許可をサブスクリプションの所有者に確認してください。 「https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade」を参照してください。
+
+### <a name="user-permission-requirements"></a>ユーザー権限の要件
 
 Azure の **サブスクリプションの所有者** および **サブスクリプションの共同作成者** は、Azure Defender for IoT のサブスクリプションのオンボード、更新、オフボードを行うことができます。
 
@@ -91,7 +93,7 @@ Defender for IoT を評価する場合は、試用版のサブスクリプショ
 1. [Azure Defender for IoT ポータル](https://ms.portal.azure.com/#blade/Microsoft_Azure_IoT_Defender/IoTDefenderDashboard/Getting_Started)に移動します。
 1. **[Onboard subscription]\(サブスクリプションのオンボード\)** を選択します。
 1. サブスクリプションを選択し、3 つのドットを選択します。 (...).
-1. **[Edit]\(編集\)** を選択します。
+1. **[編集]** を選択します。
 1. コミットされたデバイスを更新して、 **[Save]\(保存\)** を選択します。
 2. 確認のダイアログ ボックスが表示されたら、 **[Confirm]\(確認\)** を選択します。
 デバイスのコミットメントの変更は、変更を確定してから 1 時間後に有効になります。 これらの変更の課金は、変更を確定した翌月の月初に反映されます。
@@ -128,7 +130,7 @@ Defender for IoT を評価する場合は、試用版のサブスクリプショ
 1. サブスクリプションに関連付けられているセンサー用のアクティブ化ファイルをダウンロードします。
 1. アクティブ化ファイルをセンサーにアップロードします。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [Defender for IoT ポータルでセンサーを管理する](how-to-manage-sensors-on-the-cloud.md)
 

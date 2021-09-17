@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 09/09/2019
 ms.author: kefre
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 5feb16227653bdc7e51925b7a327c3eb50c88491
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 0014297d45c26d855a2df8c2a3fdccb2f0c047d2
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110453812"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122822911"
 ---
 # <a name="call-the-image-analysis-api"></a>画像分析 API の呼び出し
 
@@ -136,6 +136,10 @@ description.captions[].confidence    | `number`    | 語句の信頼度スコア
     * FailedToProcess
     * Timeout - 画像処理がタイムアウトしました。
     * InternalServerError
+
+> [!TIP]
+> Computer Vision の操作中に、このサービスによって適用された[レート制限](https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision/)によって一時的な障害が発生したり、ネットワークの停止など、他の一時的な問題が発生したりする可能性があります。 これらの種類の障害の処理については、クラウド設計パターン ガイドの「[再試行パターン](https://docs.microsoft.com/azure/architecture/patterns/retry)」および「[サーキット ブレーカー パターン](https://docs.microsoft.com/azure/architecture/patterns/circuit-breaker)」を参照してください。
+
 
 ## <a name="next-steps"></a>次のステップ
 

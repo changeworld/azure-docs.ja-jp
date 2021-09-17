@@ -8,14 +8,16 @@ ms.topic: article
 ms.date: 04/28/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 9b0e33b80cf5bd8963efa036dc76ae9f634fee66
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: b9277e8ce7c9c3fff748efff42517c6c0baed57a
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114460540"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122691476"
 ---
 # <a name="known-issues-with-h-series-and-n-series-vms"></a>H シリーズおよび N シリーズ VM に関する既知の問題
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 この記事は、[H シリーズ](../../sizes-hpc.md)と [N シリーズ](../../sizes-gpu.md)の HPC および GPU VM の使用時に最近よく発生している問題とその解決方法を一覧で示すことを意図したものです。
 

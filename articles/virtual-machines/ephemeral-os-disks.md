@@ -9,14 +9,16 @@ ms.date: 07/23/2020
 ms.author: cynthn
 ms.subservice: disks
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3237985389b8248781ad6662af895cf5cdf0dfc6
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: b37f88d79e0b5abdacf7ada31badc57e7e666b03
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110663295"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122691105"
 ---
 # <a name="ephemeral-os-disks-for-azure-vms"></a>Azure VM のエフェメラル OS ディスク
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 エフェメラル OS ディスクは、ローカルの仮想マシン (VM) ストレージで作成され、リモートの Azure Storage に保存されません。 エフェメラル OS ディスクは、ステートレス ワークロードで適切に動作します。この場合、アプリケーションは個々の VM 障害を許容しますが、VM のデプロイ時間または個々の VM インスタンスの再イメージ化によって影響をより強く受けます。 エフェメラル OS ディスクでは、OS ディスクへの読み取り/書き込み待機時間が短縮され、VM の再イメージ化が高速化されます。 
  

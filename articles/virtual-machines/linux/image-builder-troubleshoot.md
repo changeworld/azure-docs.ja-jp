@@ -9,14 +9,17 @@ ms.topic: troubleshooting
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 91b60204c8fddd892fbaacf00a7588cf1a64854d
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 6ef288e776daaf7aa266d13068647bea1c5a4c27
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122180360"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122691889"
 ---
 # <a name="troubleshoot-azure-image-builder-service"></a>Azure Image Builder サービスのトラブルシューティング
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブル スケール セット 
+
 この記事は、Azure Image Builder サービスの使用時に発生する可能性がある一般的な問題のトラブルシューティングと解決に役立ちます。
 
 ## <a name="prerequisites"></a>前提条件
@@ -535,6 +538,25 @@ Image Builder サービスは、ポート 22 (Linux) または 5986 (Windows) �
 
 #### <a name="solution"></a>解決策
 ファイアウォールの変更または有効化、あるいは SSH または WinRM への変更についてスクリプトを確認し、上記のポートでサービスとビルド VM の間の常時接続を確立できるように変更してください。 Image Builder のネットワークの詳細については、[要件](./image-builder-networking.md)に関する記事を確認してください。
+
+### <a name="jwt-errors-in-log-early-in-the-build"></a>ビルドの早い段階でログに記録される JWT エラー
+
+#### <a name="error"></a>エラー
+ビルド プロセスの早い段階でビルドが失敗し、ログに JWT エラーが示されます。
+
+```text
+PACKER OUT Error: Failed to prepare build: "azure-arm"
+PACKER ERR 
+PACKER OUT 
+PACKER ERR * client_jwt will expire within 5 minutes, please use a JWT that is valid for at least 5 minutes
+PACKER OUT 1 error(s) occurred:
+```
+
+#### <a name="cause"></a>原因
+テンプレートで `buildTimeoutInMinutes` の値が 1 から 5 分に設定されています。
+
+#### <a name="solution"></a>解決策
+「[Azure Image Builder テンプレートを作成する](./image-builder-json.md)」で説明されているように、タイムアウトは、既定値を使用するには 0 に設定し、既定値をオーバーライドするには 5 分より長く設定する必要があります。  テンプレートのタイムアウトを、既定値を使用する場合は 0 に、そうでない場合は少なくとも 6 分に変更します。
 
 ## <a name="devops-task"></a>DevOps タスク 
 

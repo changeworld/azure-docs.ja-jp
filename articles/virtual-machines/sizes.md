@@ -8,17 +8,19 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 07/21/2020
 ms.author: jushiman
-ms.openlocfilehash: 1da0acf71d8f3f806ec42dcb61c4d74127892c27
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: b3309677cef2684768f272a53267ea19ee47ebb5
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122254256"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122695419"
 ---
 # <a name="sizes-for-virtual-machines-in-azure"></a>Azure の仮想マシンのサイズ
 
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
+
 > [!TIP]
-> **[仮想マシン セレクター ツール](https://aka.ms/vm-selector)** を使用して、ご自身のワークロードに最適なその他のサイズを探してみてください。
+> **[仮想マシン セレクター ツール](https://aka.ms/vm-selector)** を使って、ワークロードに最適な他のサイズを見つけてください。
 
 この記事では、アプリとワークロードの実行に使用できる Azure 仮想マシンの利用可能なサイズとオプションについて説明します。 また、これらのリソースの使用を計画するときに注意する必要のあるデプロイの考慮事項も示します。 
 

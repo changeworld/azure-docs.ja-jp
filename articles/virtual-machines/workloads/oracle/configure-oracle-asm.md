@@ -8,14 +8,16 @@ ms.collection: linux
 ms.topic: article
 ms.date: 08/02/2018
 ms.author: kegorman
-ms.openlocfilehash: b180a0f148db5222a288958724ad248acd18b565
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7bd7b8e13ef6c44952f682497a4f4a5cdc2ebc3f
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101673855"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122688088"
 ---
-# <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>Azure Linux 仮想マシンで Oracle ASM をセットアップする  
+# <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>Azure Linux 仮想マシンで Oracle ASM をセットアップする
+
+**適用対象:** :heavy_check_mark: Linux VM 
 
 Azure 仮想マシンは、完全に構成可能で柔軟なコンピューティング環境を提供します。 このチュートリアルでは、Azure 仮想マシンの基本的な展開と Oracle Automated Storage Management (Oracle自動ストレージ管理) (ASM) のインストールと構成について扱います。  学習内容は次のとおりです。
 

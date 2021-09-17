@@ -7,12 +7,12 @@ services: web-application-firewall
 ms.topic: tutorial
 ms.date: 09/16/2020
 ms.author: victorh
-ms.openlocfilehash: 9579d0da3347bdd4ecc627662cee42f909cbfaf7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a8710bac1d3161581f1002aa2d7531350c197be1
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92132773"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122696717"
 ---
 # <a name="tutorial-create-a-waf-policy-on-azure-cdn-using-the-azure-portal"></a>チュートリアル:Azure portal を使用して Azure CDN の WAF ポリシーを作成する
 
@@ -39,8 +39,8 @@ ms.locfileid: "92132773"
     | 設定                 | 値                                              |
     | ---                     | ---                                                |
     | 次に対するポリシー            |[Azure CDN (プレビュー)] を選択します。|
-    | サブスクリプション            |Front Door のサブスクリプションの名前を選択します。|
-    | Resource group          |Front Door のリソース グループの名前を選択します。|
+    | サブスクリプション            |CDN プロファイルのサブスクリプション名を選択します。|
+    | Resource group          |CDN プロファイルのリソース グループ名を選択します。|
     | ポリシー名             |WAF ポリシーの一意の名前を入力します。|
 
    :::image type="content" source="../media/waf-cdn-create-portal/basic.png" alt-text="[Create a W A F policy]\(W A F ポリシーの作成\) ページのスクリーンショット。[確認と作成] ボタンのほか、各種設定の入力値が表示されています。" border="false":::

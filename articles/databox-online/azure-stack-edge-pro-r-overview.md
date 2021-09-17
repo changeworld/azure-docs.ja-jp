@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 04/19/2021
+ms.date: 08/11/2021
 ms.author: alkohli
-ms.openlocfilehash: becd3c0994007b06c74b1bfbd2c88660464d6622
-ms.sourcegitcommit: ca38027e8298c824e624e710e82f7b16f5885951
+ms.openlocfilehash: ab133e05cd08be42b212e72f801ee59ffa104d4a
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112575516"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122429643"
 ---
 # <a name="what-is-the-azure-stack-edge-pro-r"></a>Azure Stack Edge Pro R とは
 
@@ -38,6 +38,7 @@ Azure Stack Edge Pro R には、次の機能があります。
 |データ更新     | ローカル ファイルをクラウドから最新の情報に更新する機能。|
 |二重暗号化    | 自己暗号化ドライブの使用によって暗号化の最初のレイヤーが提供されます。 VPN によって暗号化の第 2 レイヤーが提供されます。 ローカルでデータを暗号化し、クラウドへのデータ転送を *https* 経由で保護する BitLocker のサポート。|
 |帯域幅調整| ピーク時の帯域幅の使用量を制限するように調整します。|
+|簡単な発注| Azure Edge Hardware Center によるデバイスの一括発注と追跡 (プレビュー)。|
 
 <!--|Scale out file server| Available as 1-node and 4-node cluster configurations|-->
 
@@ -64,6 +65,10 @@ Azure Stack Edge Pro R ソリューションは、Azure Stack Edge リソース�
 
     ![Azure Stack Edge Pro R の 1 ノード デバイス](media/azure-stack-edge-pro-r-overview/device-image-1.png)
 
+    [!INCLUDE [azure-stack-edge-gateway-edge-hardware-center-overview](../../includes/azure-stack-edge-gateway-edge-hardware-center-overview.md)]    
+
+    詳細については、[Azure Stack Edge Pro R デバイスの注文の作成](azure-stack-edge-pro-r-deploy-prep.md#create-a-new-resource)に関する記事を参照してください。
+
 - **Azure Stack Edge リソース** - さまざまな地理的な場所からアクセス可能な Web インターフェイスから、ラグドな Azure Stack Edge Pro R デバイスを管理できる、Azure portal でのリソース。 Azure Stack Edge リソースを使用して、リソースの作成と管理、デバイスとアラートの表示と管理、および共有の管理を行います。  
 
 - **Azure Stack Edge Pro R のローカル Web UI** - Azure Stack Edge Pro R デバイス上のブラウザー ベースのローカル ユーザー インターフェイス。主にデバイスの初期構成を想定しています。 他にも、ローカル Web UI を使用して、診断の実行、Azure Stack Edge Pro デバイスのシャットダウンと再起動し、コピー ログの表示、Microsoft サポートへの連絡とサービス要求の提出を行います。
@@ -82,6 +87,8 @@ Azure Stack Edge Pro R 物理デバイス、Azure リソース、データ転送
 - **転送先ストレージ アカウント** - データを格納するストレージ アカウントは、すべての Azure 地域で利用できます。 最適なパフォーマンスを得るには、ストレージ アカウントによって Azure Stack Edge Pro R のデータが格納されるリージョンと、デバイスが配置される場所を近くにする必要があります。 デバイスから離れた場所にあるストレージ アカウントは、待ち時間が長くなり、パフォーマンスが低下します。
 
 Azure Stack Edge サービスは、非リージョン サービスです。 詳細については、「[Azure のリージョンと Availability Zones](../availability-zones/az-overview.md)」をご覧ください。 Azure Stack Edge サービスは、特定の Azure リージョンに依存しません。そのため、ゾーン全体の障害やリージョン全体の障害に対する回復性があります。
+
+Azure Stack Edge サービス、デバイス、およびデータ ストレージのリージョンの選択に関する考慮事項については、「[Azure Stack Edge のリージョンの選択](azure-stack-edge-gpu-regions.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

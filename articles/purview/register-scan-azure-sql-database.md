@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 06/08/2021
-ms.openlocfilehash: f4fa21c99a17111b1045b66713490b86592e04bf
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 83fd36ca1f352371e4d0717968512d791443d590
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114467118"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122515537"
 ---
 # <a name="register-and-scan-an-azure-sql-database"></a>Azure SQL Database の登録とスキャン
 
@@ -112,9 +112,9 @@ Purview でサービス プリンシパルまたは Purview の **マネージ�
 1. [Azure portal](https://portal.azure.com) で自分のサービス プリンシパルに移動します
 1. **[概要]** から **[アプリケーション (クライアント) ID]** 、 **[証明書とシークレット]** から **[クライアント シークレット]** の値をコピーします。
 1. お使いのキー コンテナーに移動する
-1. **[設定] > [シークレット]** の順に選択します。
+1. **[設定]、[シークレット]** の順に選択します
 1. **[生成/インポート]** を選択し、サービス プリンシパルの **クライアント シークレット** として任意の **名前** と **値** を入力します
-1. **[作成]** を選択して完了します。
+1. **[作成]** を選択して完了します
 1. キー コンテナーが Purview にまだ接続されていない場合は、[新しいキー コンテナーの接続を作成](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account)する必要があります。
 1. 最後に、サービス プリンシパルを使用して[新しい資格情報を作成](manage-credentials.md#create-a-new-credential)し、スキャンを設定します
 
@@ -140,9 +140,9 @@ Azure 接続を有効にすると、ファイアウォール自体を更新す�
 
 セルフホステッド統合ランタイム (SHIR) をマシンにインストールすると、プライベート ネットワーク内のリソースと接続できるようになります。
 
-1. 個人用マシンまたはデータベース サーバーと同じ VNet 内のマシンに[セルフホステッド統合ランタイムを作成してインストールします](/azure/purview/manage-integration-runtimes)。
+1. 個人用マシンまたはデータベース サーバーと同じ VNet 内のマシンに[セルフホステッド統合ランタイムを作成してインストールします](./manage-integration-runtimes.md)。
 1. データベース サーバーのファイアウォールを確認し、SHIR マシンからファイアウォールを介してアクセスできることを確認します。 まだアクセスできない場合は、マシンの IP を追加します。
-1. Azure SQL Server がプライベート エンドポイントの背後にある場合や VNet 内にある場合は、[インジェスト プライベート エンドポイント](catalog-private-link.md#ingestion-private-endpoints-and-scanning-sources)を使用して、エンドツーエンドのネットワーク分離を確保することができます。
+1. Azure SQL Server がプライベート エンドポイントの背後にある場合や VNet 内にある場合は、[インジェスト プライベート エンドポイント](catalog-private-link-ingestion.md#deploy-self-hosted-integration-runtime-ir-and-scan-your-data-sources)を使用して、エンドツーエンドのネットワーク分離を確保することができます。
 
 ## <a name="register-an-azure-sql-database-data-source"></a>Azure SQL Database データ ソースの登録
 
@@ -150,9 +150,9 @@ Azure 接続を有効にすると、ファイアウォール自体を更新す�
 
 1. ご自分の Purview アカウントに移動します。
 
-1. 左側のナビゲーションで **[ソース]** を選択します。
+1. 左側のナビゲーションで **[Data Map]** を選択します。
 
-1. **[登録]** を選択します。
+1. **[登録]** を選択します
 
 1. **[Register sources]\(ソースの登録\)** で、 **[Azure SQL Database]** を選択します。 **[続行]** をクリックします。
 

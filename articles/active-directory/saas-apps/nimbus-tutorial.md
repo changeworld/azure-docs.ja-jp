@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/17/2020
+ms.date: 08/17/2021
 ms.author: jeedes
-ms.openlocfilehash: 0cc005ee22bff897a87679a0bde95ffec6e98e51
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 96077765fe4332c56a2d2d429bc5a18c2fcaf750
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92522412"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122772481"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-nimbus"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Nimbus の統合
 
@@ -37,10 +37,10 @@ ms.locfileid: "92522412"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Nimbus では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
-* Nimbus では、**Just In Time** ユーザー プロビジョニングがサポートされます
+* Nimbus では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます。
+* Nimbus では、**Just In Time** ユーザー プロビジョニングがサポートされます。
 
-## <a name="adding-nimbus-from-the-gallery"></a>ギャラリーからの Nimbus の追加
+## <a name="add-nimbus-from-the-gallery"></a>ギャラリーから Nimbus を追加する
 
 Azure AD への Nimbus の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に Nimbus を追加する必要があります。
 
@@ -50,7 +50,6 @@ Azure AD への Nimbus の統合を構成するには、ギャラリーからマ
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Nimbus**」と入力します。
 1. 結果のパネルから **[Nimbus]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-nimbus"></a>Nimbus の Azure AD SSO の構成とテスト
 
@@ -71,11 +70,11 @@ Nimbus に対して Azure AD SSO を構成してテストするには、次の�
 
 1. Azure portal の **Nimbus** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次のフィールドの値を入力します。
+1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
     a. **[識別子]** ボックスに、`https://<CUSTOMER_NAME>.time2work.com/Security/ADFS.aspx` の形式で URL を入力します。
 
@@ -91,6 +90,7 @@ Nimbus に対して Azure AD SSO を構成してテストするには、次の�
 1. **[Set up single sign-on with SAML]\(SAML でシングル サインオンをセットアップします\)** ページの **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/copy-metadataurl.png)
+
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
@@ -135,9 +135,9 @@ Nimbus に対して Azure AD SSO を構成してテストするには、次の�
 
 #### <a name="idp-initiated"></a>IDP Initiated:
 
-* Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した Nimbus に自動的にサインインされます 
+* Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した Nimbus に自動的にサインインされます。 
 
-また、Microsoft アクセス パネルを使用して、任意のモードでアプリケーションをテストすることもできます。 アクセス パネルで Nimbus タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Nimbus に自動的にサインインされます。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [Nimbus] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Nimbus に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

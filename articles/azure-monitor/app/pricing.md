@@ -5,14 +5,14 @@ ms.topic: conceptual
 ms.custom: devx-track-dotnet
 author: DaleKoetke
 ms.author: dalek
-ms.date: 6/24/2021
+ms.date: 8/23/2021
 ms.reviewer: lagayhar
-ms.openlocfilehash: 39109106a100d2af8a9dad4e6009f4c73fea8f59
-ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
+ms.openlocfilehash: 8183e52e5b475f08df3631021d8ea6d3120525c8
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122195520"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122772593"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Application Insights の使用量とコストを管理する
 
@@ -37,22 +37,20 @@ Application Insights の課金のしくみについてご質問がある場合�
 
 ## <a name="estimating-the-costs-to-manage-your-application"></a>アプリケーションを管理するためのコストの見積もり
 
-Application Insights をまだ使用していない場合は、[Azure Monitor 料金計算ツール](https://azure.microsoft.com/pricing/calculator/?service=monitor)を使用して、Application Insights の使用コストを見積もることができます。 まず、[検索] ボックスに「Azure Monitor」と入力し、結果として表示される Azure Monitor タイルをクリックします。 ページを下にスクロールして Azure Monitor に移動し、[種類] ドロップダウンから [Application Insights] を選択します。  知りたいことは Application Insights によるアプリケーションの監視で収集されるデータの量なので、ここでは 1 か月間に収集することが予想されるデータの GB 数を入力できます。
+Application Insights をまだ使用していない場合は、[Azure Monitor 料金計算ツール](https://azure.microsoft.com/pricing/calculator/?service=monitor)を使用して、Application Insights の使用コストを見積もることができます。 まず、[検索] ボックスに「Azure Monitor」と入力し、結果として表示される Azure Monitor タイルをクリックします。 ページを下にスクロールして [Azure Monitor] に移動し、[Application Insights] セクションを展開します。 見積もりコストは、取り込まれたログ データの量に依存します。  データ量の見積もりには 2 つの手法があります。
 
-これに対応する方法は 2 つあります。1 つは、ASP.NET SDK で利用できる既定の監視とアダプティブ サンプリングを使用する方法で、もう 1 つは他の似た顧客の実績に基づいてデータ インジェストを推定する方法です。
+1. 他の同様のアプリケーションで生成される内容に基づき、考えられるデータ インジェストを見積もる。あるいは 
+2. 既定の監視とアダプティブ サンプリングを使用する。これは ASP.NET SDK にあります。
+
+### <a name="learn-from-what-similar-applications-collect"></a>同様のアプリケーションの収集内容から学習する
+
+Application Insights の Azure Monitoring Pricing 電卓で、クリックして **[Estimate data volume based on application activity]\(アプリケーション アクティビティに基づいてデータ量を見積もる\)** を有効にします。 アプリケーションに関する情報を (クライアント側テレメトリを収集する場合、1 か月あたりの要求数とページ ビュー数) を入力すると、類似アプリケーションによって収集されたデータ量の中央値と 90 パーセンタイル量が表示されます。 これらのアプリケーションでの Application Insights の構成は範囲が広いので (既定の[サンプリング](./sampling.md)を使用しているものや、サンプルを使用していないものなど)、サンプリングを使用して、取り込まれるデータの量が中央値のレベルよりはるかに少なくなるように制御できます。 
 
 ### <a name="data-collection-when-using-sampling"></a>サンプリングを使用する場合のデータ収集
 
 ASP.NET SDK の[アダプティブ サンプリング](sampling.md#adaptive-sampling)を使用すると、データ ボリュームが自動的に調整されて、既定の Application Insights 監視に対して指定されている最大トラフィック レート内に維持されます。 アプリケーションが少量のテレメトリを生成している場合 (デバッグ時や使用量が少ない場合など)、量が構成されている秒あたりイベント数レベルを下回っている限り、サンプリング プロセッサによって項目がドロップされることはありません。 量の多いアプリケーションの場合、既定のしきい値である 5 イベント/秒では、アダプティブ サンプリングによって 1 日あたりのイベント数は 432,000 に制限されます。 サンプリングは各ノードに対してローカルに行われるため、標準的な平均イベント サイズである 1 KB を使用すると、アプリケーションがホストされているノードごとに、1 か月 (31 日) あたり 13.4 GB のテレメトリに対応します。
 
-> [!NOTE]
-> Azure Monitor ログ データのサイズは、GB 単位で計算されます (1 GB = 10 ^ 9 バイト)。
-
 アダプティブ サンプリングがサポートされていない SDK の場合は、[インジェスト サンプリング](./sampling.md#ingestion-sampling)を使用できます。この機能では、保持するデータの割合に基づいて、または Web サーバーと Web ブラウザーから送信されるトラフィックを減らすために [ASP.NET、ASP.NET Core、および Java の Web サイトでは固定レートのサンプリング](sampling.md#fixed-rate-sampling)で、Application Insights によってデータが受信されたときにサンプリングされます
-
-### <a name="learn-from-what-similar-customers-collect"></a>似た顧客の収集を参考にする
-
-Application Insights 用の Azure Monitoring 料金計算ツールでは、"アプリケーションのアクティビティに基づいてデータ量を見積もる" 機能を有効にした場合、アプリケーションに関する情報を (クライアント側テレメトリを収集する場合、1 か月あたりの要求数とページ ビュー数) を入力すると、類似アプリケーションによって収集されたデータ量の中央値と 90 パーセンタイル量が表示されます。 これらのアプリケーションでの Application Insights の構成は範囲が広いので (既定の[サンプリング](./sampling.md)を使用しているものや、サンプルを使用していないものなど)、サンプリングを使用して、取り込まれるデータの量が中央値のレベルよりはるかに少なくなるように制御できます。 しかし、これは、他の似た顧客が行っていることを理解するための出発点となります。
 
 ## <a name="understand-your-usage-and-estimate-costs"></a>ご自分の使用量を理解してコストを見積もる
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/19/2021
 ms.author: msangapu
 ms.custom: contperf-fy22q1
-ms.openlocfilehash: 571f273d54989b0ea2f014294cd570c26b5e6931
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3efac96949d701bbc0147abf8712d4995f781d47
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121741546"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122771846"
 ---
 # <a name="monitor-app-service-instances-using-health-check"></a>正常性チェックを使用して App Service インスタンスを監視する
 
@@ -99,6 +99,10 @@ App Service プランに他のアプリがあるかどうかに関係なく、�
 ### <a name="what-if-all-my-instances-are-unhealthy"></a>すべてのインスタンスが異常になった場合はどうなりますか?
 
 アプリケーションのすべてのインスタンスが異常なシナリオでは、`WEBSITE_HEALTHCHECK_MAXUNHEALTHYWORKERPERCENT` で指定されている割合になるまで、App Service によってロード バランサーからインスタンスが削除されます。 このシナリオでは、すべての異常なアプリ インスタンスがロード バランサーのローテーションから外されると、アプリケーションは実質的に停止します。
+
+### <a name="does-health-check-work-on-app-service-environments"></a>正常性チェックは App Service Environment で機能しますか?
+
+はい。App Service Environment (ASE) では、プラットフォームから指定されたパスのインスタンスに ping が実行され、ロード バランサーから異常なインスタンスが削除されるので、要求はそれらにルーティングされません。 ただし、現在、これらの異常なインスタンスは、1 時間異常なままになっている場合、新しいインスタンスに置き換えられません。
 
 ## <a name="next-steps"></a>次のステップ
 - [アクティビティ ログ アラートを作成して、サブスクリプションで自動スケールのエンジン操作をすべて監視する](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/monitor-autoscale-alert)

@@ -9,14 +9,16 @@ ms.workload: infrastructure
 ms.date: 07/31/2020
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 12715a3f1392f789425ac7cc5176db3f293efef8
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: f195a741ed11fc8f7ded421593417bf41a3b9d84
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110668218"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692821"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-azure-with-powershell"></a>クイック スタート:PowerShell を使用して Azure に Linux 仮想マシンを作成する
+
+**適用対象:** :heavy_check_mark: Linux VM 
 
 Azure PowerShell モジュールは、PowerShell コマンド ラインやスクリプトで Azure リソースを作成および管理するために使用します。 このクイック スタートでは、Azure PowerShell モジュールを使って、Linux 仮想マシン (VM) を Azure に展開する方法を示します。 このクイック スタートでは、Canonical の Ubuntu 18.04 LTS マーケットプレース イメージを使用します。 また、VM の動作を確認するために、VM に SSH 接続し、NGINX Web サーバーをインストールします。
 

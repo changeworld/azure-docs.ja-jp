@@ -7,14 +7,17 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 09/12/2018
 ms.author: cynthn
-ms.openlocfilehash: 7dbe06a9f2fff8abf59adbdfc9e41055c85e8f2c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c2ceae3fbf1a59f5f148a488900e9bb88e6be4e4
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104889299"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122688281"
 ---
 # <a name="move-a-vm-to-another-subscription-or-resource-group"></a>他のサブスクリプションまたはリソース グループへ VM を移動する
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブルなスケール セット 
+
 この記事では、リソース グループまたはサブスクリプション間で仮想マシン (VM) を移動する方法について説明します。 サブスクリプション間での VM の移動は、個人のサブスクリプションで作成した VM を、会社のサブスクリプションに移動する場合に便利です。
 
 > [!IMPORTANT]

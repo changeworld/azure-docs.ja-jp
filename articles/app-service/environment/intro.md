@@ -4,15 +4,15 @@ description: Azure App Service Environments を利用して、完全に分離さ
 author: ccompy
 ms.assetid: 3c7eaefa-1850-4643-8540-428e8982b7cb
 ms.topic: overview
-ms.date: 04/19/2018
+ms.date: 07/28/2021
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 990d1ca07d4cf9e66c50a22f213817dda3ae029c
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: 195da1286251ca51c9d36aaf7c2dcfb3c2177766
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113432916"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725743"
 ---
 # <a name="introduction-to-the-app-service-environments"></a>App Service Environment の概要 #
 > [!NOTE]
@@ -49,7 +49,7 @@ ASE では、単一の顧客のアプリケーションは VNet の 1 つでホ�
 
 ## <a name="dedicated-environment"></a>専用の環境 ##
 
-ASE は、1 つのサブスクリプション専用であり、100 の App Service プラン インスタンスをホストできます。 1 つの App Service プラン内の 100 のインスタンスから、100 の単一インスタンス App Service プラン、およびその間のすべてのプランがあります。
+ASE は、1 人の顧客に限定された専用環境であり、合計 200 件の App Service プランのインスタンスをホストできます。 Isolated SKU App Service プランの場合には、1 つにつきインスタンスを 100 件まで作成できます。 その ASE のすべての App Service プランからすべてのインスタンスを追加する場合、合計は 200 件以下にする必要があります。
 
 ASE は、フロントエンドとワーカーで構成されます。 フロントエンドは、HTTP/HTTPS ターミネーションと、ASE 内でのアプリ要求の自動負荷分散を担当します。 ASE で App Service プランをスケールアウトすると、フロントエンドが自動的に追加されます。
 

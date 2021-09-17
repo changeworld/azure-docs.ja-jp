@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 12/23/2020
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 62d5d3095d2c68741a61f2df64d54287fb429110
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 987857c4534ddbef90ef3eca5f73f554db0c4341
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110375983"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122777718"
 ---
 # <a name="what-are-durable-functions"></a>Durable Functions とは
 
@@ -22,7 +22,7 @@ ms.locfileid: "110375983"
 Durable Functions では、現在次の言語をサポートしています。
 
 * **C#**: [プリコンパイル済みクラス ライブラリ](../functions-dotnet-class-library.md)と [C# スクリプト](../functions-reference-csharp.md)の両方。
-* **JavaScript**: Azure Functions ランタイムのバージョン 2.x でのみサポートされています。 Durable Functions 拡張機能のバージョン 1.7.0 以降が必要です。 
+* **JavaScript**: Azure Functions ランタイムのバージョン 2.x 以降でのみサポートされています。 Durable Functions 拡張機能のバージョン 1.7.0 以降が必要です。 
 * **Python**: Durable Functions 拡張機能のバージョン 2.3.1 以降が必要です。
 * **F#**: プリコンパイル済みクラス ライブラリと F# スクリプト。 F# スクリプトは、Azure Functions ランタイムのバージョン 1.x でのみサポートされています。
 * **PowerShell**: Azure Functions ランタイムのバージョン 3.x と PowerShell 7 でのみサポートされています。 バンドル拡張のバージョン 2.x が必要です。

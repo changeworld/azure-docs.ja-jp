@@ -8,14 +8,16 @@ ms.collection: linux
 ms.topic: overview
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 4403a45e4bb4383977b68725518317cdf8acbdbc
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 8ccb6b9fa2d6b7e4f91f460c07789a17ad29a4ef
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112467403"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122696831"
 ---
 # <a name="red-hat-workloads-on-azure"></a>Azure 上の Red Hat ワークロード
+
+**適用対象:** :heavy_check_mark: Linux VM 
 
 Azure では、さまざまなオファリングを通じて Red Hat ワークロードがサポートされます。 Red Hat Enterprise Linux (RHEL) イメージは、Red Hat Update Infrastructure (RHUI) と同様、RHEL ワークロードの中核にあります。
 

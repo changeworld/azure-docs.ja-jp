@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 06/30/2021
-ms.openlocfilehash: 4f4e9b51a44ee193a946f76499c95d6fe77f2e5e
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.openlocfilehash: 622e89392dc10f12fe81ed1c1085e5b9cc524999
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114665401"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122181300"
 ---
 # <a name="register-and-scan-an-azure-database-for-postgresql"></a>Azure database for PostgreSQL の登録とスキャン
 
@@ -37,14 +37,14 @@ Purview では、Azure database for PostgreSQL の SQL 認証のみをサポー�
 
 #### <a name="sql-authentication-for-an-azure-database-for-postgresql"></a>Azure database for PostgreSQL の SQL 認証
 
-Azure Database for PostgreSQL データベースに接続するには、完全修飾サーバー名とログイン資格情報が必要です。 Azure database for PostgreSQL のログインが使用可能になっていない場合は、「[接続とクエリ](/azure/postgresql/connect-python)」に関するページの手順に従って、ログイン情報を作成できます。 次の手順で、**ユーザー名** と **パスワード** が必要になります。
+Azure Database for PostgreSQL データベースに接続するには、完全修飾サーバー名とログイン資格情報が必要です。 Azure database for PostgreSQL のログインが使用可能になっていない場合は、「[接続とクエリ](../postgresql/connect-python.md)」に関するページの手順に従って、ログイン情報を作成できます。 次の手順で、**ユーザー名** と **パスワード** が必要になります。
 
 1. Azure portal で、キー コンテナーに移動します
 1. **[設定] > [シークレット]** の順に選択します。
 1. **[+ 生成/インポート]** を選択し、**名前** と **値** を Azure PostgreSQL Database の "*パスワード*" として入力します
 1. **[作成]** を選択して完了します。
 1. キー コンテナーが Purview にまだ接続されていない場合は、[新しいキー コンテナーの接続を作成](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account)する必要があります。
-1. 最後に、**ユーザー名** と **パスワード** を使用して、SQL 認証型の[新しい資格情報を作成](manage-credentials.md#create-a-new-credential)し、スキャンを設定します
+1. 最後に、**ユーザー名** と **パスワード** を使用して、SQL 認証型の [新しい資格情報を作成](manage-credentials.md#create-a-new-credential)し、スキャンを設定します
 
 ## <a name="register-an-azure-database-for-postgresql-data-source"></a>Azure database for PostgreSQL データ ソースの登録
 
@@ -52,9 +52,9 @@ Azure Database for PostgreSQL データベースに接続するには、完全�
 
 1. ご自分の Purview アカウントに移動します。
 
-1. 左側のナビゲーションで **[ソース]** を選択します。
+1. 左側のナビゲーションで **[Data Map]** を選択します。
 
-1. **[登録]** を選択します。
+1. **[登録]** を選択します
 
 1. **[ソースの登録]** で、 **[Azure Database for PostgreSQL]** を選択します。 **[続行]** をクリックします。
 
@@ -62,7 +62,7 @@ Azure Database for PostgreSQL データベースに接続するには、完全�
 
 **[Azure Database for PostgreSQL のソース登録]** 画面で、以下を実行します。
 
-1. データ ソースの **名前** を入力します。 これは、カタログ内のこのデータ ソースの表示名になります。
+1. データ ソースの **名前** を入力します。 これがご自分のカタログのこのデータ ソースの表示名になります。
 1. **[From Azure subscription]\(Azure サブスクリプションから\)** を選択し、 **[Azure subscription]\(Azure サブスクリプション\)** ドロップダウン ボックスから適切なサブスクリプション、 **[Server name]\(サーバー名\)** ドロップダウン ボックスから適切なサーバーを選択します。
 1. **[登録]** を選択してデータ ソースを登録します。 
  

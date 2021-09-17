@@ -5,16 +5,19 @@ author: mimckitt
 ms.author: mimckitt
 ms.service: virtual-machines
 ms.topic: overview
-ms.date: 03/08/2021
+ms.date: 08/10/2021
 ms.reviewer: cynthn
-ms.openlocfilehash: 81c6fb2e7f25abc9a236c80d1412b84fd6761872
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5e2d200e7133074ffc1dc2732cdedb692c1ea30c
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103021991"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122698331"
 ---
 # <a name="updates-and-maintenance-overview"></a>更新プログラムとメンテナンスの概要
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
+
 この記事では、Azure 仮想マシン (VM) のさまざまな更新およびメンテナンスのオプションの概要について説明します。
 
 ## <a name="automatic-os-image-upgrade"></a>OS イメージの自動アップグレード
@@ -40,17 +43,17 @@ Azure VM で [VM ゲストの自動パッチ適用](automatic-vm-guest-patching.
 [VM ゲストの自動パッチ適用](automatic-vm-guest-patching.md)には、次の特徴があります。
 - *[重大]* または *[セキュリティ]* に分類されているパッチは、自動的にダウンロードされ、VM に適用されます。
 - パッチは、VM のタイムゾーンでピーク外の時間帯に適用されます。
-- パッチ オーケストレーションが Azure によって管理され、[可用性優先の原則](automatic-vm-guest-patching.md#availability-first-patching)に従ってパッチが適用されます。
+- パッチ オーケストレーションが Azure によって管理され、[可用性優先の原則](automatic-vm-guest-patching.md#availability-first-updates)に従ってパッチが適用されます。
 - プラットフォーム正常性シグナルによって特定された仮想マシンの正常性は、パッチ適用の失敗を検出するために監視されます。
 - すべての VM サイズで機能します。
 
 
-## <a name="automatic-extension-upgrade-preview"></a>拡張機能の自動アップグレード (プレビュー)
+## <a name="automatic-extension-upgrade"></a>拡張機能の自動アップグレード
 
-[拡張機能の自動アップグレード](automatic-extension-upgrade.md)は、Azure VM と Azure Virtual Machine Scale Sets 用のプレビューで利用できます。 VM またはスケール セットで拡張機能の自動アップグレードが有効になっていると、拡張機能の発行元がその拡張機能の新しいバージョンをリリースするたびに、拡張機能が自動的にアップグレードされます。
+[拡張機能の自動アップグレード](automatic-extension-upgrade.md)は、Azure VM と Azure Virtual Machine Scale Sets で利用できます。 VM またはスケール セットで拡張機能の自動アップグレードが有効になっていると、拡張機能の発行元がその拡張機能の新しいバージョンをリリースするたびに、拡張機能が自動的にアップグレードされます。
 
  拡張機能の自動アップグレードには、次の機能があります。
-- Azure VM と Azure Virtual Machine Scale Sets でサポートされています。 Service Fabric Virtual Machine Scale Sets は現在はサポートされていません。
+- Azure VM と Azure Virtual Machine Scale Sets でサポートされています。
 - アップグレードは、可用性優先のデプロイ モデルで適用されます。
 - Virtual Machine Scale Sets の場合、20% を超えるスケール セットの仮想マシンが 1 回のバッチでアップグレードされることはありません。 最小バッチ サイズは 1 仮想マシンです。
 - すべての VM サイズ、および Windows と Linux の両方の拡張機能で動作します。
@@ -59,7 +62,7 @@ Azure VM で [VM ゲストの自動パッチ適用](automatic-vm-guest-patching.
 - サポートされている各拡張機能は個別に登録され、どの拡張機能を自動的にアップグレードするかを選択できます。
 - すべてのパブリック クラウド リージョンでサポートされています。
 
-## <a name="hotpatch"></a>ホットパッチ 
+## <a name="hotpatch"></a>ホットパッチ
 
 [ホット パッチの適用](../automanage/automanage-hotpatch.md?context=/azure/virtual-machines/context/context)は、新しい Windows Server Azure Edition の仮想マシン (VM) に更新プログラムをインストールするための新しい方法であり、インストール後に再起動を必要としません。 Windows Server Azure Edition の VM を対象にしたホットパッチには、次の利点があります。
 
@@ -74,23 +77,23 @@ Azure VM で [VM ゲストの自動パッチ適用](automatic-vm-guest-patching.
 
 ## <a name="maintenance-control"></a>メンテナンス管理
 
-[メンテナンス コントロール](maintenance-control.md)を使用して、プラットフォームの再起動が不要な更新プログラムを管理します。 Azure は、信頼性、パフォーマンス、セキュリティを改善し、新機能を導入する目的で、インフラストラクチャを頻繁に更新しています。 ほとんどの更新は、ユーザーからは透過的に行われます。 ゲーム、メディア ストリーミング、金融取引などの一部のセンシティブなワークロードでは、数秒間であっても、メンテナンスのために VM がフリーズしたり切断したりすることが許されません。 メンテナンス コントロールが提供するオプションを使用すると、プラットフォームの更新を待機し、35 日間のローリング期間内にそれらの更新を適用できます。 
+[メンテナンス コントロール](maintenance-control.md)を使用して、プラットフォームの再起動が不要な更新プログラムを管理します。 Azure は、信頼性、パフォーマンス、セキュリティを改善し、新機能を導入する目的で、インフラストラクチャを頻繁に更新しています。 ほとんどの更新は、ユーザーからは透過的に行われます。 ゲーム、メディア ストリーミング、金融取引などの一部のセンシティブなワークロードでは、数秒間であっても、メンテナンスのために VM がフリーズしたり切断したりすることが許されません。 メンテナンス コントロールが提供するオプションを使用すると、プラットフォームの更新を待機し、35 日間のローリング期間内にそれらの更新を適用できます。
 
 メンテナンス コントロールを使用すると、分離された VM や Azure 専用ホストに更新プログラムを適用するタイミングをユーザーが決定できます。
 
 [メンテナンス コントロール](maintenance-control.md)を使用すると、次のことができます。
 - 更新プログラムを 1 つの更新プログラム パッケージにまとめる。
-- 最大 35 日間待機して更新プログラムを適用する。 
+- 最大 35 日間待機して更新プログラムを適用する。
 - メンテナンス スケジュールを構成するか、[Azure Functions](https://github.com/Azure/azure-docs-powershell-samples/tree/master/maintenance-auto-scheduler)を使用して、プラットフォームの更新を自動化します。
-- メンテナンス構成が、複数のサブスクリプションやリソース グループ全体で機能するようにする。 
+- メンテナンス構成が、複数のサブスクリプションやリソース グループ全体で機能するようにする。
 
 
 ## <a name="scheduled-events"></a>スケジュールされたイベント
 
-スケジュールされたイベントとは、仮想マシン (VM) のメンテナンスに備えるための時間をアプリケーションに与える Azure Metadata Service です。 今後のメンテナンス イベント (再起動など) に関する情報を提供することで、アプリケーションがイベントの準備を行い、中断を制限できるようにします。 このサービスは、Windows および Linux の、PaaS と IaaS を含むすべての Azure Virtual Machine の種類で利用できます。 
+スケジュールされたイベントとは、仮想マシン (VM) のメンテナンスに備えるための時間をアプリケーションに与える Azure Metadata Service です。 今後のメンテナンス イベント (再起動など) に関する情報を提供することで、アプリケーションがイベントの準備を行い、中断を制限できるようにします。 このサービスは、Windows および Linux の、PaaS と IaaS を含むすべての Azure Virtual Machine の種類で利用できます。
 
 Scheduled Events の詳細については、[Windows VM 用の Scheduled Events](./windows/scheduled-events.md) に関する記事と [Linux 用の Scheduled Events](./linux/scheduled-events.md) に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-アプリケーションとサービスのアップタイムを向上させる方法については、[可用性とスケール](availability.md)に関するドキュメントを参照してください。 
+アプリケーションとサービスのアップタイムを向上させる方法については、[可用性とスケール](availability.md)に関するドキュメントを参照してください。

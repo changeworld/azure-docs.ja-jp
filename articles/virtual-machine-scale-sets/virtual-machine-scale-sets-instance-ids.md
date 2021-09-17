@@ -9,14 +9,17 @@ ms.subservice: management
 ms.date: 02/22/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: a62c9bbde0726c8dec8fba1f69e221bd4e4b63bc
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7b9b088eb3e9524e711ba4068c49f172e65b1be8
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102209851"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122697460"
 ---
 # <a name="understand-instance-ids-for-azure-vm-scale-set-vms"></a>Azure VM スケール セット VM のインスタンス ID を理解する
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: ユニフォーム スケール セット
+
 この記事では、スケール セットのインスタンス ID と、さまざまな使用方法について説明します。
 
 ## <a name="scale-set-instance-ids"></a>スケール セットのインスタンス ID

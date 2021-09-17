@@ -1,38 +1,31 @@
 ---
-title: インクルード ファイル
-description: インクルード ファイル
-services: virtual-wan
+ms.author: cherylmc
 author: cherylmc
+ms.date: 08/19/2021
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 11/04/2019
-ms.author: cherylmc
-ms.custom: include file
-ms.openlocfilehash: 6f910dbe91ed8e1cb65eefa6dfc48c72a689bf25
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f5d641a1d017f40081b311e9b9b610b7fcc7c13c
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "73491528"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122820895"
 ---
-1. 作成した仮想 WAN を探します。 [仮想 WAN] ページの **[接続]** セクションで、 **[ハブ]** を選択します。
-2. [ハブ] ページで、 **[+ 新しいハブ]** を選択して **[仮想ハブを作成する]** ページを開きます。
-3. **[仮想ハブを作成する]** ページの **[基本]** タブで、次のフィールドを入力します。
+1. 作成した仮想 WAN を探します。 [仮想 WAN] ページの **[接続]** セクションで、 **[ハブ]** を選択します。 **[新しいハブ]** をクリックして **[仮想ハブを作成する]** ページを開きます。
 
-   ![基本操作](./media/virtual-wan-tutorial-er-hub-include/hub1.png "基本")
+   :::image type="content" source="media/virtual-wan-empty-hub/new-hub.jpg" alt-text="[Hubs configuration]\(ハブの構成\) ダイアログ ボックスを示すスクリーンショット。[新しいハブ] が選択されています。":::
 
-    **プロジェクトの詳細**
+1. **[仮想ハブを作成する]** ページで、フィールドに入力します。
 
-   * リージョン (旧称は場所)
-   * 名前
-   * ハブのプライベート アドレス空間。 ハブを作成するための最小アドレス空間は /24 です。これは、/25 から /32 のいずれの範囲でも、作成中にエラーが生成されることを意味します。
-4. **[ExpressRoute]** タブを選択します。
+   :::image type="content" source="media/virtual-wan-tutorial-er-hub/create-hub.png" alt-text="スクリーンショットには、値を入力できる [基本] タブが表示されています。":::
 
-5. **[ExpressRoute]** タブで、次のフィールドを入力します。
+   * **[リージョン]** : 仮想ハブをデプロイするリージョンを選択します。
+   * **[名前]** : 仮想ハブに付ける名前。
+   * **[ハブ プライベート アドレス空間]** : CIDR 表記のハブのアドレス範囲。
 
-   ![ExpressRoute](./media/virtual-wan-tutorial-er-hub-include/hub2.png "ExpressRoute")
+1. **[ExpressRoute] タブ** を選択します。 **[はい]** をクリックして設定を表示し、フィールドに入力します。 ゲートウェイ スケール ユニットについては、[よくあるご質問](../articles/virtual-wan/virtual-wan-faq.md#what-are-virtual-wan-gateway-scale-units)に関する記事を参照してください。
 
-   * **[はい]** を選択すると、**ExpressRoute** ゲートウェイが作成されます。
-   * ドロップダウンから **[ゲートウェイ スケール ユニット]** 値を選択します。
-6. **[確認と作成]** を選択して検証します。
-7. **[作成]** を選択してハブを作成します。 30 分後に **[更新]** を実行して、 **[ハブ]** ページでハブを確認します。 **[リソースに移動]** を選択してリソースに移動します。
+   :::image type="content" source="media/virtual-wan-tutorial-er-hub/expressroute.png" alt-text="スクリーンショットには、値を入力できる [ExpressRoute] タブが表示されています。":::
+
+1. **[確認と作成]** を選択して検証します。
+1. **[作成]** を選択し、ExpressRoute ゲートウェイを使用してハブを作成します。 ハブは完了までに 30 分程度かかる場合があります。 30 分後に **[更新]** を実行して、 **[ハブ]** ページでハブを確認します。 **[リソースに移動]** を選択してリソースに移動します。

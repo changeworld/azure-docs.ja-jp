@@ -3,28 +3,28 @@ title: インクルード ファイル
 description: インクルード ファイル
 services: cosmos-db
 ms.custom: include file
-ms.openlocfilehash: e81f5ef294fd798f720bff06e8fd5f8bc1075ff0
-ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
+ms.openlocfilehash: 3f7a37ce78e49abe1356180818a215488fe82ea3
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122195812"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122515622"
 ---
 1. 新しいブラウザー ウィンドウで、[Azure Portal](https://portal.azure.com/) にサインインします。
 
 2. 左側のメニューで、 **[リソースの作成]** を選択します。
    
-   :::image type="content" source="./media/cosmos-db-create-dbaccount-mongodb/create-nosql-db-databases-json-tutorial-0.png" alt-text="Azure portal でリソースを作成する":::
+   :::image type="content" source="./media/cosmos-db-create-dbaccount-mongodb/create-nosql-db-databases-json-tutorial-0.png" alt-text="Azure portal でリソースを作成する画面のスクリーンショット。":::
    
 3. **[新規]** ページで、 **[データベース]**  >  **[Azure Cosmos DB]** の順に選択します。
    
-   :::image type="content" source="./media/cosmos-db-create-dbaccount-mongodb/create-nosql-db-databases-json-tutorial-1.png" alt-text="Azure portal の [データベース] ウィンドウ":::
+   :::image type="content" source="./media/cosmos-db-create-dbaccount-mongodb/create-nosql-db-databases-json-tutorial-1.png" alt-text="Azure portal の [データベース] ウィンドウのスクリーンショット。":::
    
 4. **[API オプションの選択]** ページで、 **[MongoDB 用 Azure Cosmos DB API]**  >  **[作成]** を選択します。
 
    API によって、作成するアカウントの種類が決まります。 このクイックスタートでは MongoDB に対応するコレクションを作成するので、**MongoDB 用 Azure Cosmos DB API** を選択します。 詳細については、[MongoDB 用 Azure Cosmos DB API の概要](../mongodb-introduction.md)に関するページを参照してください。
 
-   :::image type="content" source="./media/cosmos-db-create-dbaccount-mongodb/azure-cosmos-db-select-api.png" alt-text="API の選択オプション ペイン":::
+   :::image type="content" source="./media/cosmos-db-create-dbaccount-mongodb/azure-cosmos-db-select-api.png" alt-text="[API オプションの選択] ウィンドウのスクリーンショット。":::
 
 5. **[Azure Cosmos DB アカウントの作成]** ページで、新しい Azure Cosmos DB アカウントの設定を入力します。
 
@@ -41,7 +41,7 @@ ms.locfileid: "122195812"
    > [!NOTE]
    > Azure サブスクリプションにつき所有できる Free レベルの Azure Cosmos DB アカウントは 1 つまでです。また、アカウントの作成時にオプトインする必要があります。 Free レベルの割引を適用するオプションが表示されない場合は、サブスクリプション内の別のアカウントが Free レベルで既に有効になっていることを意味します。
 
-   :::image type="content" source="./media/cosmos-db-create-dbaccount-mongodb/azure-cosmos-db-create-new-account.png" alt-text="Azure Cosmos DB の新しいアカウント ページ"::: 
+   :::image type="content" source="./media/cosmos-db-create-dbaccount-mongodb/azure-cosmos-db-create-new-account.png" alt-text="Azure Cosmos DB の新しいアカウントのページのスクリーンショット。"::: 
 
 1. **[グローバル分散]** タブで、次の詳細を構成します。 このクイックスタートでは、既定値のままでかまいません。
 
@@ -67,4 +67,4 @@ ms.locfileid: "122195812"
 
 4. アカウントの作成には数分かかります。 ポータルに **[Congratulations! Your Azure Cosmos DB API for MongoDB account is ready]\(おめでとうございます。Azure Cosmos DB の MongoDB 用 API アカウントの準備が完了しました\)** ページが表示されるのを待ちます。
 
-   :::image type="content" source="./media/cosmos-db-create-dbaccount-mongodb/azure-cosmos-db-account-created.png" alt-text="Azure portal の [通知] ペイン"::: 
+   :::image type="content" source="./media/cosmos-db-create-dbaccount-mongodb/azure-cosmos-db-account-created.png" alt-text="Azure portal の通知ウィンドウのスクリーンショット。"::: 

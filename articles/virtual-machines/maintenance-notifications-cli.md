@@ -8,16 +8,16 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: d8a9b7ec6425a3cd32b597c3f14f8227fde67064
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 7b4f79724ee3105e9a64b44617762d71f4f6a158
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107777871"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122698801"
 ---
 # <a name="handling-planned-maintenance-notifications-using-the-azure-cli"></a>Azure CLI に対する計画済みメンテナンスの通知の処理
 
-**この記事は、Linux と Windows の両方を実行する仮想マシンに適用されます。**
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 Azure CLI を使用して、VM の[メンテナンス](maintenance-notifications.md)の予定を確認できます。 計画メンテナンスの情報は、[az vm get-instance-view](/cli/azure/vm#az_vm_get_instance_view) から確認できます。
  
@@ -72,6 +72,6 @@ azure vm show myVM
 azure compute virtual-machine initiate-maintenance --service-name myService --name myDeployment --virtual-machine-name myVM
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 また、[Azure PowerShell](maintenance-notifications-powershell.md) または [portal](maintenance-notifications-portal.md) を使用して、計画メンテナンスを扱うこともできます。

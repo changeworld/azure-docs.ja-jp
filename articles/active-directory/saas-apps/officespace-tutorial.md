@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/14/2021
 ms.author: jeedes
-ms.openlocfilehash: fd02b1006d064adb08317191d913961260eed4c8
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: f7520a8562c9c82ba303e3e50e70dddc75efb27f
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110088533"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122178839"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-officespace-software"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と OfficeSpace Software の統合
 
@@ -38,6 +38,7 @@ ms.locfileid: "110088533"
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 * OfficeSpace Software では、**SP** によって開始される SSO がサポートされます。
+* OfficeSpace Software では、[**自動化されたユーザー プロビジョニングとプロビジョニング解除**](officespace-software-provisioning-tutorial.md) (推奨) がサポートされます。
 * OfficeSpace Software では、**Just In Time** ユーザー プロビジョニングがサポートされます。
 
 ## <a name="add-officespace-software-from-the-gallery"></a>ギャラリーから OfficeSpace Software を追加する

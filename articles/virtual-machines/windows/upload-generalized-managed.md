@@ -1,6 +1,6 @@
 ---
-title: アップロードした汎用化 VHD から VM を作成する
-description: 汎用化した VHD を Azure にアップロードし、それを使用して Resource Manager デプロイ モデルで新しい VM を作成します。
+title: アップロードされた汎用化 Windows VHD から VM を作成する
+description: 汎用化した Windows VHD を Azure にアップロードし、それを使用して Resource Manager デプロイ モデルで新しい VM を作成します。
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: imaging
@@ -9,14 +9,16 @@ ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: cynthn
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 70a89a8fe4917498dc7c31f2a15b95619e973b99
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 4f31fff34dcaaa8cc30b1a894e24f3eda8e5764d
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110667865"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122688587"
 ---
-# <a name="upload-a-generalized-vhd-and-use-it-to-create-new-vms-in-azure"></a>汎用化した VHD をアップロードして Azure で新しい VM を作成する
+# <a name="upload-a-generalized-windows-vhd-and-use-it-to-create-new-vms-in-azure"></a>汎用化した Windows VHD をアップロードして Azure で新しい VM を作成する
+
+**適用対象:** :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット 
 
 この記事では、汎用化した VM の VHD を PowerShell を使用して Azure にアップロードし、VHD からイメージを作成し、イメージから新しい VM を作成する方法を説明します。 オンプレミスの仮想化ツールや別のクラウドからエクスポートされた VHD をアップロードできます。 新しい VM に [Managed Disks](../managed-disks-overview.md) を使用すると VM 管理が簡略化されます。また、VM を可用性セット内に配置したときの可用性が向上します。 
 

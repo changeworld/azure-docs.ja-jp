@@ -8,14 +8,16 @@ ms.topic: conceptual
 ms.date: 03/12/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: cb87ca44ecc7ff5c308dbf3a74390e34a0f5daea
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 28198fe22bb20e3bb1e4a08715686eca62f1fbba
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108770013"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122689057"
 ---
 # <a name="hbv3-series"></a>HBv3 シリーズ
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 HBv3 シリーズ VM は、流体力学、明示的および暗黙的な有限要素分析、気象モデリング、地震処理、貯水池シミュレーション、RTL シミュレーションなど、HPC アプリケーションのために最適化されています。 HBv3 VM は、AMD EPYC™ 7003 シリーズ (Milan) CPU を最大 120 コア、448 GB の RAM を備え、ハイパースレッド機能はありません。 HBv3 シリーズ VM も毎秒 350 GB のメモリ帯域幅を提供します。L3 キャッシュはコアあたり最大 32 MB です。ブロック デバイス SSD パフォーマンスは最大毎秒 7 GB です。クロック周波数は最大 3.675 GHz です。 
 

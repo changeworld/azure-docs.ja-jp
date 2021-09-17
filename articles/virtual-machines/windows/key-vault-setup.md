@@ -9,14 +9,16 @@ ms.topic: how-to
 ms.date: 01/24/2017
 ms.author: mimckitt
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d2bede9932798a5aed5d919faae78e9a21809c50
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 73d4e3942fe4d6d7c62ff66b4202ea31eec1fd42
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112028003"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122697215"
 ---
 # <a name="set-up-key-vault-for-virtual-machines-using-azure-powershell"></a>Azure PowerShell を使用して仮想マシンの Key Vault を設定する
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブルなスケール セット 
 
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-rm-include.md)]
 

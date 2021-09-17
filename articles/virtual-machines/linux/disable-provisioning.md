@@ -10,14 +10,16 @@ ms.workload: infrastructure
 ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: c70b02bdc554c723f53ad5f8c0d36c5eca87811e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: f8aa1b8e50a287861cb6367e21878579d69e2d2d
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107774370"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122687882"
 ---
 # <a name="disable-or-remove-the-linux-agent-from-vms-and-images"></a>VM とイメージの Linux エージェントを無効化または削除する
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブル スケール セット 
 
 Linux エージェントを削除する前に、Linux エージェントの削除後に VM で実行できなくなる処理について理解しておく必要があります。
 

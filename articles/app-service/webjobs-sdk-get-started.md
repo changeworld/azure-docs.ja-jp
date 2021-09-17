@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.date: 06/25/2021
 ms.author: glenga
 ms.topic: tutorial
-ms.openlocfilehash: 4a017d57062e2871052305eb9bbf393c808a643d
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 6b4875f028fe8645125743d04770c2fd237b4f62
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114293277"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752467"
 ---
 # <a name="tutorial-get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>チュートリアル: イベント ドリブンのバックグラウンド処理に Azure WebJobs SDK の使用を開始する
 
@@ -246,7 +246,7 @@ WebJobs SDK のバージョン 3 以降で Azure Storage サービスに接続�
     }
     ```
 
-    `queue` という名前のキューにメッセージが追加されると、関数が実行され、`message` 文字列がログに書き込まれます。 監視対象のキューは、次に作成する既定の Azure Storage アカウントに含まれています。
+    ランタイムがメソッドにアクセスして実行するためには、*Functions* クラスを `public static` としてマークする必要があります。 上記のコード サンプルでは、`queue` という名前のキューにメッセージが追加されると、関数が実行され、`message` 文字列がログに書き込まれます。 監視対象のキューは、次に作成する既定の Azure Storage アカウントに含まれています。
    
 `message` パラメーターは文字列である必要はありません。 JSON オブジェクト、バイト配列、または [CloudQueueMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) オブジェクトにバインドすることもできます。 [キュー トリガーの使用方法](../azure-functions/functions-bindings-storage-queue-trigger.md?tabs=csharp#usage)に関するページをご覧ください。 バインドの種類 (キュー、BLOB、テーブルなど) ごとに、バインドできる異なる種類のパラメーター セットがあります。
 

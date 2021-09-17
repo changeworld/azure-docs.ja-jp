@@ -9,14 +9,16 @@ ms.topic: how-to
 ms.date: 08/10/2021
 ms.author: manayar
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6af80da8c05df4f56fe04ae45169c5e1a63fcd9c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 120171f77f9b9895cf58bbadd2f475110d068ffd
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121751725"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122698226"
 ---
 # <a name="automatic-extension-upgrade-for-vms-and-scale-sets-in-azure"></a>Azure での VM とスケール セットの拡張機能の自動アップグレード
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 拡張機能の自動アップグレードは、Azure VM と Azure Virtual Machine Scale Sets で利用できます。 VM またはスケール セットで拡張機能の自動アップグレードが有効になっていると、拡張機能の発行元がその拡張機能の新しいバージョンをリリースするたびに、拡張機能が自動的にアップグレードされます。
 

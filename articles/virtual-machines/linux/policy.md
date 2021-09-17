@@ -9,14 +9,17 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 08/02/2017
 ms.author: mimckitt
-ms.openlocfilehash: 6ce02e1af466562c2a50c8a3286e45355a881cb3
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 72360804989f5f328231d73893b12363447e1754
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114461093"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122693951"
 ---
 # <a name="apply-policies-to-linux-vms-with-azure-resource-manager"></a>Azure Resource Manager を使用して Linux VM にポリシーを適用する
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブルなスケール セット 
+
 ポリシーを使用すると、さまざまな習慣や規則を企業全体に適用できます。 望ましい行動を強制することによって、組織の成功に貢献しつつ、リスクを軽減することができます。 この記事では、Azure Resource Manager ポリシーを使用して、組織の Virtual Machines の望ましい行動を定義する方法について説明します。
 
 ポリシーの概要については、「[Azure Policy とは](../../governance/policy/overview.md)」をご覧ください。

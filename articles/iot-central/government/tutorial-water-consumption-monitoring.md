@@ -1,27 +1,54 @@
 ---
-title: チュートリアル:Azure IoT Central によって水消費量のモニタリング アプリを作成する
-description: チュートリアル:Azure IoT Central アプリケーション テンプレートを使用して水消費量のモニタリング アプリケーションを作成する方法について説明します。
+title: チュートリアル - Azure IoT 水消費量のモニタリング | Microsoft Docs
+description: このチュートリアルでは、IoT Central の水消費量のモニタリング アプリケーション テンプレートをデプロイして使用する方法について説明します。
 author: miriambrus
 ms.author: miriamb
-ms.date: 12/11/2020
+ms.date: 08/02/2021
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: df5752760dcb9968b44243fb4c2d2412698267df
-ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
+ms.openlocfilehash: 5b27c9b26c71fba3f5acbd326ff78514212c00ef
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113588995"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122183776"
 ---
-# <a name="tutorial-create-a-water-consumption-monitoring-application-with-azure-iot-central"></a>チュートリアル:Azure IoT Central によって水消費量のモニタリング アプリケーションを作成する
+# <a name="tutorial--deploy-and-walk-through-the-water-consumption-monitoring-application"></a>チュートリアル: 水消費量のモニタリング アプリケーションをデプロイして調べる
 
-このチュートリアルでは、新しい Azure IoT Central の水消費量のモニタリング アプリケーションを作成する方法について説明します。
+IoT Central の "*水消費量のモニタリング*" アプリケーション テンプレートとこの記事のガイダンスを使用して、エンドツーエンドの水消費量のモニタリング ソリューションを開発します。
 
-このチュートリアルでは、次の内容を学習します。
+![水消費量の監視アーキテクチャ](./media/tutorial-waterconsumptionmonitoring/concepts-waterconsumptionmonitoring-architecture1.png)
+
+### <a name="devices-and-connectivity"></a>デバイスと接続
+
+水管理ソリューションでは、流量計、水質モニター、スマート バルブ、漏れ検知器などのスマート ウォーター デバイスを使用します。
+
+スマート ウォーター ソリューションのデバイスは、省電力広域ネットワーク (LPWAN) またはサードパーティのネットワーク オペレーターを介して接続できます。 これらの種類のデバイスでは、[Azure IoT Central デバイス ブリッジ](../core/howto-build-iotc-device-bridge.md)を使用して、Azure IoT Central の IoT アプリケーションに自分のデバイス データを送信します。 または、IP 対応で IoT Central に直接接続可能なデバイス ゲートウェイを使用することもできます。
+
+### <a name="iot-central"></a>IoT Central
+
+Azure IoT Central は、IoT ソリューションを迅速に構築してデプロイするのに役立つ IoT アプリケーション プラットフォームです。 サードパーティのサービスを使用して、ソリューションをブランド化、カスタマイズ、統合することができます。
+
+スマート ウォーター デバイスを IoT Central に接続すると、アプリケーションによって、デバイス コマンドと制御、監視とアラート、RBAC が組み込まれたユーザー インターフェイス、構成可能なダッシュボード、拡張オプションが提供されます。
+
+### <a name="extensibility-and-integrations"></a>拡張性と統合
+
+IoT Central で IoT アプリケーションを拡張し、必要に応じて次のことを行うことができます。
+
+* IoT Central アプリケーションからの継続的なデータ エクスポートを使用して、機械学習モデルのトレーニングなどの高度な分析のために IoT データを変換して統合します。
+* Power Automate または IoT Central アプリケーションの Webhook を使用してアクションをトリガーし、他のシステムのワークフローを自動化します。
+* IoT Central API を使用して IoT Central で IoT アプリケーションにプログラムでアクセスします。
+
+### <a name="business-applications"></a>ビジネス アプリケーション
+
+IoT データを使用して、水道施設内でさまざまなビジネス アプリケーションを強化することができます。 [IoT Central 水消費量のモニタリング アプリケーション](tutorial-water-consumption-monitoring.md)では、ルールやアクションを構成し、[Connected Field Service](/dynamics365/field-service/connected-field-service) でアラートを作成するように設定できます。 IoT Central のルールで Power Automate を構成し、アプリケーションやサービス間のワークフローを自動化します。 また、Connected Field Service のサービス アクティビティに基づいて、情報を Azure IoT Central に送り返すことができます。
+
+このチュートリアルでは、次の作業を行う方法について説明します。
 
 > [!div class="checklist"]
+
 > * Azure IoT Central の水消費量のモニタリング テンプレートを使用して、水消費量のモニタリング アプリケーションを作成する。
 > * ダッシュボードをいろいろ試してみてからカスタマイズします。
 > * デバイス テンプレートを探索します。
@@ -30,55 +57,30 @@ ms.locfileid: "113588995"
 > * ジョブを構成します。
 > * ホワイト ラベルを使用してアプリケーション ブランドをカスタマイズします。
 
+## <a name="prerequisites"></a>前提条件
 
-## <a name="create-a-water-consumption-monitoring-app-with-azure-iot-central"></a>Azure IoT Central によって水消費量のモニタリング アプリを作成する
+* このアプリをデプロイするために必要な前提条件は特にありません。
+* 無料価格プランを使用するか、Azure サブスクリプションを使用することができます。
 
-このセクションでは、Azure IoT Central の Water consumption monitoring template (水消費量のモニタリング テンプレート) を使用して、Azure IoT Central で水消費量のモニタリング アプリケーションを作成します。
+## <a name="create-water-consumption-monitoring-application"></a>水消費量のモニタリング アプリケーションを作成する
 
-新しい Azure IoT Central の水消費量のモニタリング アプリケーションを作成するには:
+次の手順に従ってアプリケーションを作成します。
 
-1. [Azure IoT Central ホームページ](https://aka.ms/iotcentral) Web サイトに移動します。
+1. [Azure IoT Central ビルド](https://aka.ms/iotcentral) Web サイトに移動します。 次に、Microsoft 個人アカウントか、職場または学校アカウントを使用してサインインします。 左側のナビゲーションバーから **[ビルド]** を選択し、 **[政府機関]** タブを選択します。:::image type="content" source="media/tutorial-waterconsumptionmonitoring/iot-central-government-tab-overview1.png" alt-text="アプリケーション テンプレート":::
 
-    Azure サブスクリプションを持っている場合は、そのサブスクリプションへのアクセス用の資格情報を使用してサインインします。 持っていない場合は、Microsoft アカウントを使用してサインインします。
+1. **[水消費量のモニタリング]** で **[アプリの作成]** を選択します。
 
-    ![所属組織のアカウントを入力](media/tutorial-waterconsumptionmonitoring/sign-in.png)
+詳細については、「[IoT Central アプリケーションを作成する](../core/howto-create-iot-central-application.md)」を参照してください。
 
-1. 左側のペインで **[ビルド]** を選択し、 **[政府機関]** タブを選択します。 **[政府機関]** ページに、いくつかの政府機関アプリケーション テンプレートが表示されます。
+## <a name="walk-through-the-application"></a>アプリケーションを調べる
 
-    :::image type="content" source="media/tutorial-waterconsumptionmonitoring/iotcentral-government-tab-overview1.png" alt-text="政府機関アプリ テンプレートを作成する。":::
-  
+以降のセクションでは、アプリケーションの主な機能について見ていきます。
 
-1. **Water consumption monitoring (水消費量のモニタリング)** アプリケーション テンプレートを選択します。
-このテンプレートには、サンプルの水消費デバイス テンプレート、シミュレートされたデバイス、ダッシュボード、事前構成済みのモニタリング ルールが含まれています。
-
-1. **[アプリの作成]** を選択すると、次のフィールドがある **[新しいアプリケーション]** 作成フォームが開きます。
-    * **アプリケーション名**:既定で、アプリケーションでは、*Water consumption monitoring* と、その後に Azure IoT Central が生成する一意の ID 文字列が使われます。 必要に応じて、わかりやすいアプリケーション名を選択します。 後でアプリケーション名を変更することもできます。
-    * **URL**: Azure IoT Central によって、アプリケーション名に基づいて、URL が自動生成されます。 好みに合わせて URL を更新することができます。 URL は後で変更することもできます。
-    * Azure サブスクリプションをお持ちの場合は、 **[ディレクトリ]** 、 **[Azure サブスクリプション]** 、 **[リージョン]** を入力します。 サブスクリプションをお持ちでない場合は、**7 日間の無料試用版** オプションを選択し、必須の連絡先情報を入力できます。
-
-1. ページの下部にある **[作成]** を選択します。
-
-    :::image type="content" source="media/tutorial-waterconsumptionmonitoring/new-application-water-consumption-monitoring.png" alt-text="Azure IoT Central の [新しいアプリケーション] ページ。":::
-
-    ![Azure IoT Central の [課金情報] ページ](./media/tutorial-waterconsumptionmonitoring/new-application-water-consumption-monitoring-billing-info.png)
-
-これで、Azure IoT Central の Water consumption monitoring (水消費量のモニタリング) テンプレートを使用して、水消費量のモニタリング アプリを作成できました。
-
-水消費量のモニタリング アプリケーションでは、以下が事前に構成されています。
-
-* サンプル ダッシュボード。
-* 定義済みの水流量とバルブ デバイス テンプレートのサンプル。
-* シミュレートされた水流量とスマート バルブ デバイス。
-* ルールおよびジョブ。
-* ブランドのサンプル。
-
-これは自分のアプリケーションであるため、いつでも変更できます。 次に、アプリケーションを調べて、いくつかのカスタマイズを行います。
-
-## <a name="explore-and-customize-the-dashboard"></a>ダッシュボードをいろいろ試してみてからカスタマイズします
+### <a name="dashboard"></a>ダッシュボード
 
 アプリケーションを作成した後、サンプルの **[Wide World water consumption dashboard]\(Wide World の水消費量ダッシュボード\)** が開きます。
   
- :::image type="content" source="media/tutorial-waterconsumptionmonitoring/water-consumption-monitoring-dashboard-full.png" alt-text="水消費量のモニタリング ダッシュボード。":::
+:::image type="content" source="media/tutorial-waterconsumptionmonitoring/water-consumption-monitoring-dashboard-full.png" alt-text="水消費量のモニタリング ダッシュボード。":::
 
 
 オペレーター用のダッシュボードのビューを作成したりカスタマイズしたりすることができます。
@@ -268,4 +270,4 @@ Azure IoT Central では、ジョブを使用して、複数のデバイスで�
 
 ## <a name="next-steps"></a>次のステップ
  
-次の手順では、[水消費量の監視の概念](./concepts-waterconsumptionmonitoring-architecture.md)について学習することをお勧めします。
+次の手順では、[水質のモニタリング](./tutorial-water-quality-monitoring.md)について学習することをお勧めします。

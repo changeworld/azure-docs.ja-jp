@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 10/23/2020
 ms.author: inhenkel
-ms.openlocfilehash: f1df5c945c5216e82837672ad8aeaa669fc4fb20
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 5269be27a0e31e9626cd26960092356bce0d8ff4
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110786448"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122635031"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>Media Services のライブ イベントとライブ出力
 
@@ -166,7 +166,7 @@ IP アドレスが指定されておらず、規則の定義もない場合は�
 
     静的ホスト名 URL を有効にしたり、アクセス トークンを有効な GUID (たとえば `"accessToken": "1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`) に設定したりするには、次の API を使用します。  
 
-    |Language|静的ホスト名 URL を有効にする|アクセス トークンを設定する|
+    |言語|静的ホスト名 URL を有効にする|アクセス トークンを設定する|
     |---|---|---|
     |REST|[properties.useStaticHostname](/rest/api/media/liveevents/create#liveevent)|[LiveEventInput.useStaticHostname](/rest/api/media/liveevents/create#liveeventinput)|
     |CLI|[--use-static-hostname](/cli/azure/ams/live-event#az_ams_live_event_create)|[--access-token](/cli/azure/ams/live-event#optional-parameters)|
@@ -224,7 +224,6 @@ IP アドレスが指定されておらず、規則の定義もない場合は�
 ストリームがライブ イベントに流れ始めると、[アセット](/rest/api/media/assets)、[ライブ出力](/rest/api/media/liveoutputs)、[ストリーミング ロケーター](/rest/api/media/streaminglocators)を作成することにより、ストリーミング イベントを開始できます。 ライブ出力により、ストリームがアーカイブされ、[ストリーミング エンドポイント](/rest/api/media/streamingendpoints)を介して視聴者がストリームを使用できるようになります。  
 
 ライブ出力の詳細については、「[クラウド DVR の使用](live-event-cloud-dvr-time-how-to.md)」を参照してください。
-
 ## <a name="live-event-output-questions"></a>ライブ イベント出力の質問
 
-[ライブ イベント出力の質問](questions-collection.md#live-streaming)に関する記事をご覧ください。
+[FAQ のライブ イベントの質問](frequently-asked-questions.yml)に関する記事を参照してください。

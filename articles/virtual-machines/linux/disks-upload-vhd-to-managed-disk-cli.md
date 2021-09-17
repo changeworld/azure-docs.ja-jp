@@ -8,14 +8,16 @@ ms.date: 06/29/2021
 ms.topic: how-to
 ms.service: storage
 ms.subservice: disks
-ms.openlocfilehash: 4928cb098990a0f91fd0d6a4fbde4844a81ed338
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: e78998d089ffe6446e9b7dbdf898b2d4ee4ba3a1
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113358383"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122694931"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-cli"></a>VHD を Azure にアップロードするか、他のリージョンにマネージド ディスクをコピーする - Azure CLI
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット 
 
 [!INCLUDE [disks-upload-vhd-to-disk-intro](../../../includes/disks-upload-vhd-to-disk-intro.md)]
 

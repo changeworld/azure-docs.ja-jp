@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/13/2020
 ms.author: jeedes
-ms.openlocfilehash: b70c50e7c2900f884dd4d91c6650205bc626326e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 12471ef2816f5e4cb1e5f545f6d5670be59b4863
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96178043"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122183926"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-keeper-password-manager--digital-vault"></a>チュートリアル: Azure Active Directory と Keeper Password Manager & Digital Vault の統合
 
@@ -40,7 +40,7 @@ Keeper Password Manager & Digital Vault と Azure AD の統合を構成するに
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
 * Keeper Password Manager & Digital Vault では、SP Initiated SSO がサポートされます。
-
+* Keeper Password Manager では、[**自動化された** ユーザー プロビジョニングとプロビジョニング解除](keeper-password-manager-digitalvault-provisioning-tutorial.md) (推奨) がサポートされます。
 * Keeper Password Manager & Digital Vault では、Just In Time ユーザー プロビジョニングがサポートされます。
 
 ## <a name="add-keeper-password-manager--digital-vault-from-the-gallery"></a>ギャラリーから Keeper Password Manager & Digital Vault を追加する

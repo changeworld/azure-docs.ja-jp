@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.date: 02/05/2021
-ms.openlocfilehash: d02259419a6349224b1d047ce01b2e1bf64c1b37
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 7b0d43cec561040e98688a216165d7a4ed88c3d2
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112454556"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122635177"
 ---
 # <a name="access-a-compute-instance-terminal-in-your-workspace"></a>ワークスペースでコンピューティング インスタンスのターミナルにアクセスする
 
@@ -68,7 +68,7 @@ ms.locfileid: "112454556"
 
 ## <a name="install-packages"></a>パッケージをインストールする
 
- ターミナル ウィンドウからパッケージをインストールします。 Python パッケージを **Python 3.6 - AzureML** 環境にインストールします。  R パッケージを **R** 環境にインストールします。
+ ターミナル ウィンドウからパッケージをインストールします。 Python パッケージを **Python 3.8 - AzureML** 環境にインストールします。  R パッケージを **R** 環境にインストールします。
 
 または、パッケージを Jupyter Notebook または RStudio に直接インストールできます。
 
@@ -81,7 +81,7 @@ ms.locfileid: "112454556"
 ## <a name="add-new-kernels"></a>新しいカーネルを追加する
 
 > [!WARNING]
->  コンピューティング インスタンスをカスタマイズするときは、**azureml_py36** conda 環境も **Python 3.6 - AzureML** カーネルも決して削除しないようにしてください。 Jupyter/JupyterLab 機能に必要です
+>  コンピューティング インスタンスをカスタマイズしている間は、**azureml_py36** または **azureml_py38** Conda 環境を削除しないでください。  また、**Python 3.6 - AzureML** または **Python 3.8 - AzureML** カーネルも削除しないでください。 これらは、Jupyter/JupyterLab の機能に必要です。
 
 新しい Jupyter カーネルをコンピューティング インスタンスに追加するには、次のようにします。
 

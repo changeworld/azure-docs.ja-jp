@@ -8,14 +8,16 @@ ms.collection: linux
 ms.topic: article
 ms.date: 05/12/2020
 ms.author: kegorman
-ms.openlocfilehash: b81356c0a17315bbb614b4def5db90e4dbae9af3
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 9b847b1f4d3e4c47a5b353a2b0e9ad7a47b77330
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114450862"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692801"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Microsoft Azure での Oracle VM イメージとそのデプロイ
+
+**適用対象:** :heavy_check_mark: Linux VM 
 
 この記事では、Azure Marketplace で Oracle によって発行された仮想マシン イメージに基づく Oracle ソリューションについての情報を扱います。 Oracle Cloud Infrastructure を使用したクラウド横断アプリケーション ソリューションに関心がある場合は、[Microsoft Azure と Oracle Cloud Infrastructure を統合する Oracle アプリケーション ソリューション](oracle-oci-overview.md)に関する記事を参照してください。
 

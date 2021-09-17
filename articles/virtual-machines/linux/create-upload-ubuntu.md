@@ -7,15 +7,16 @@ ms.collection: linux
 ms.topic: how-to
 ms.date: 07/28/2021
 ms.author: srijangupta
-ms.openlocfilehash: f0417c156de07cd5a6fd45bdd63ed9134078966f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2079e50d92c7253c7c4f642c9a51e56aa1bfae2c
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121732482"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122689801"
 ---
 # <a name="prepare-an-ubuntu-virtual-machine-for-azure"></a>Azure 用の Ubuntu 仮想マシンの準備
 
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: 柔軟なスケール セット 
 
 Ubuntu は、現在、公式の Azure VHD を公開しており、[https://cloud-images.ubuntu.com/](https://cloud-images.ubuntu.com/) でダウンロードできます。 Azure 用に特殊な Ubuntu イメージを独自に構築する必要がある場合は、以下の手動の手順を使用するのではなく、このように動作している既知の VHD を基にして、必要に応じてカスタマイズすることをお勧めします。 最新のイメージ リリースは、常に次の場所にあります。
 

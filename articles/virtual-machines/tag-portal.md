@@ -7,14 +7,16 @@ author: cynthn
 ms.service: virtual-machines
 ms.date: 11/11/2020
 ms.author: cynthn
-ms.openlocfilehash: 9c220814ae1f714e9eac0c0c11a50d9cf68a621d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 543317b2e1dcc0c55ac970212612f5266e5f84aa
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98897410"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122695363"
 ---
 # <a name="tagging-a-vm-using-the-portal"></a>ポータルを使用して VM にタグを付ける
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 この記事では、ポータルを使用して VM にタグを追加する方法について説明します。 タグはユーザー定義のキーと値ペアです。リソースまたはリソース グループに直接設定できます。 現在、Azure では、1 つのリソースまたはリソース グループにつき最大 50 個のタグがサポートされます。 タグは、リソースの作成時に付けたり、既存のリソースに追加したりすることができます。
 

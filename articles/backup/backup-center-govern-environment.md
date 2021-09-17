@@ -3,12 +3,12 @@ title: バックアップ センターを使用してバックアップ資産を
 description: バックアップ センターを使用して、バックアップの観点からすべてのリソースが準拠していることを確認するために Azure 環境を管理する方法について説明します。
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: 283c99c4b17683850f71b25fb2006784e43f3b8f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8b62c2968dccb8d225e472db84c30f9513dd596d
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102506211"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122605110"
 ---
 # <a name="govern-your-backup-estate-using-backup-center"></a>バックアップ センターを使用してバックアップ資産を管理する
 
@@ -26,7 +26,7 @@ ms.locfileid: "102506211"
 
 ## <a name="azure-policies-for-backup"></a>バックアップ用の Azure ポリシー
 
-バックアップに使用できるすべての [Azure ポリシー](../governance/policy/overview.md)を表示するには、 **[バックアップ用の Azure ポリシー]** メニュー項目を選択します。 これにより、サブスクリプションとリソース グループへの割り当てに使用できる、組み込みとカスタムのすべての[バックアップ用の Azure ポリシー定義](policy-reference.md)が表示されます。
+バックアップに使用できるすべての [Azure ポリシー](../governance/policy/overview.md)を表示するには、 **[バックアップ用の Azure ポリシー]** メニュー項目を選択します。 これにより、サブスクリプションとリソース グループへの割り当てに使用できる、組み込みとカスタムのすべての[バックアップ用の Azure Policy 定義](policy-reference.md)が表示されます。
 
 いずれかの定義を選択すると、スコープに[ポリシーを割り当てる](../governance/policy/tutorials/create-and-manage.md#assign-a-policy)ことができます。
 

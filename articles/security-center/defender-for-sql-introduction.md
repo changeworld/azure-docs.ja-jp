@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 86be3b4fd072179d3ac8b584788ce8988e6b297c
-ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
+ms.openlocfilehash: e104a00f92517b917252144b3234c16dd104a673
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113486501"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751852"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>Azure Defender for SQL の概要
 
@@ -26,7 +26,7 @@ Azure Defender for SQL には、Azure Security Center の[データ セキュリ
 |リリース状態:|**Azure Defender for Azure SQL database servers** - 一般提供 (GA)<br>**マシン上の SQL サーバー向け Azure Defender** - 一般提供 (GA) |
 |価格:|**Azure Defender for SQL** を構成する 2 つのプランの課金については、「[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)」をご覧ください|
 |保護される SQL のバージョン:|[Azure 仮想マシン上の SQL](../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)<br>[Azure Arc 対応 SQL サーバー](/sql/sql-server/azure-arc/overview)<br>Windows マシン上のオンプレミス SQL サーバー (Azure Arc なし)<br>Azure SQL [単一データベース](../azure-sql/database/single-database-overview.md)および[エラスティック プール](../azure-sql/database/elastic-pool-overview.md)<br>[Azure SQL Managed Instance](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)<br>[Azure Synapse Analytics (旧称 SQL DW) 専用 SQL プール](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)|
-|クラウド:|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用クラウド<br>:::image type="icon" source="./media/icons/yes-icon.png"::: US Gov<br>:::image type="icon" source="./media/icons/yes-icon.png"::: Azure China (**部分的**: SQL サーバーのアラートと脆弱性評価のサブセット。 Behavioral Threat Protection は利用できません。)|
+|クラウド:|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用クラウド<br>:::image type="icon" source="./media/icons/yes-icon.png"::: Azure Government<br>:::image type="icon" source="./media/icons/yes-icon.png"::: Azure China 21Vianet (**部分的**: SQL サーバーのアラートと脆弱性評価のサブセット。 Behavioral Threat Protection は利用できません。)|
 |||
 
 ## <a name="what-does-azure-defender-for-sql-protect"></a>Azure Defender for SQL の保護対象

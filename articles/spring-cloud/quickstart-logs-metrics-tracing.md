@@ -8,17 +8,17 @@ ms.topic: quickstart
 ms.date: 04/23/2021
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 424954d18fc719748175c2ad9428bb621d577a70
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 4ff1666222eedecd944b94de428c7666b0998d03
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114470783"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122271578"
 ---
 # <a name="quickstart-monitoring-azure-spring-cloud-apps-with-logs-metrics-and-tracing"></a>クイック スタート:ログ、メトリック、およびトレースを使用した Azure Spring Cloud アプリの監視
 
 ::: zone pivot="programming-language-csharp"
-Azure Spring Cloud の組み込み監視機能を使用すると、複雑な問題をデバッグおよび監視できます。 Azure Spring Cloud は、Steeltoe [分散トレース](https://steeltoe.io/docs/3/tracing/distributed-tracing)と Azure の [Application Insights](../azure-monitor/app/app-insights-overview.md) を統合します。 この統合により、Azure portal から強力なログ、メトリック、および分散トレース機能を利用できます。
+Azure Spring Cloud の組み込み監視機能を使用すると、複雑な問題をデバッグおよび監視できます。 Azure Spring Cloud は、Steeltoe [分散トレース](https://docs.steeltoe.io/api/v3/tracing/)と Azure の [Application Insights](../azure-monitor/app/app-insights-overview.md) を統合します。 この統合により、Azure portal から強力なログ、メトリック、および分散トレース機能を利用できます。
 
 次の手順では、前のクイックスタートでデプロイしたサンプル アプリで、ログ ストリーミング、Log Analytics、メトリック、分散トレースを使用する方法について説明します。
 
@@ -66,7 +66,7 @@ Executing ObjectResult, writing value of type 'System.Collections.Generic.KeyVal
 1. Azure portal で **[service | Overview]\(サービス | 概要\)** ページに移動し、 **[Monitoring]\(監視\)** セクションの **[Logs]\(ログ\)** を選択します。 Azure Spring Cloud のいずれかのサンプル クエリで **[Run]\(実行\)** を選択します。
 
    [ ![Logs Analytics のエントリ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-entry.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-entry.png#lightbox)
-    
+
 1. クエリを編集し、表示を警告とエラーのログに制限する Where 句を削除します。
 
 1. その後、[`Run`] を選択すると、ログが表示されます。 クエリの記述の詳細なガイダンスについては、[Azure Log Analytics のドキュメント](../azure-monitor/logs/get-started-queries.md)を参照してください。
@@ -80,8 +80,8 @@ Executing ObjectResult, writing value of type 'System.Collections.Generic.KeyVal
 1. Azure portal で **[service | Overview]\(サービス | 概要\)** ページに移動し、 **[Monitoring]\(監視\)** セクションの **[Metrics]\(メトリック\)** を選択します。 最初のメトリックを追加するには、 **[メトリック]** ドロップダウンで **[Performance (.NET)]\(パフォーマンス (.NET)\)** または **[Request (.NET)]\(要求 (.NET)\)** の下の .NET メトリックのいずれかを選択します。また、そのメトリックのタイムラインを表示するには、 **[集計]** で `Avg` を選択します。
 
    [ ![メトリック エントリ - Steeltoe](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-basic-cpu-steeltoe.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-basic-cpu-steeltoe.png#lightbox)
-    
-1. ツール バーで **[Add filter]\(フィルターの追加\)** をクリックし、`App=solar-system-weather` を選択して、**solar-system-weather** アプリのみの CPU 使用率を表示します。
+
+1. ツール バーで **[Add filter]\(フィルターの追加\)** を選択し、`App=solar-system-weather` を選択して、**solar-system-weather** アプリのみの CPU 使用率を表示します。
 
    [ ![メトリックでフィルターを使用する - Steeltoe](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-filter-steeltoe.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/metrics-filter-steeltoe.png#lightbox)
 
@@ -95,14 +95,14 @@ Executing ObjectResult, writing value of type 'System.Collections.Generic.KeyVal
 
    [ ![分散トレースのエントリ - Steeltoe](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-entry.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-entry.png#lightbox)
 
-1. これで、アプリ間の呼び出しの状態を確認できるようになりました。 
+1. これで、アプリ間の呼び出しの状態を確認できるようになりました。
 
    [ ![分散トレースの概要 - Steeltoe](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-overview-steeltoe.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-overview-steeltoe.png#lightbox)
-    
+
 1. **solar-system-weather** と **planet-weather-provider** の間のリンクを選択すると、HTTP メソッドごとの最低速の呼び出しなどの詳細が表示されます。
 
    [ ![分散トレース - Steeltoe](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-call-steeltoe.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-call-steeltoe.png#lightbox)
-    
+
 1. 最後に、 **[パフォーマンスの調査]** を選択して、より強力な組み込みのパフォーマンス分析を調べます。
 
    [ ![分散トレースのパフォーマンス - Steeltoe](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-performance-steeltoe.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/tracing-performance-steeltoe.png#lightbox)
@@ -113,7 +113,7 @@ Azure Spring Cloud の組み込み監視機能を使用すると、複雑な問�
 
 ## <a name="prerequisites"></a>前提条件
 
-以下の先行する手順を完了してください。 
+以下の先行する手順を完了してください。
 
 * [Azure Spring Cloud のインスタンスをプロビジョニングする](./quickstart-provision-service-instance.md)
 * [構成サーバーを設定する](./quickstart-setup-config-server.md)
@@ -153,11 +153,11 @@ Azure Toolkit for IntelliJ を使用してログを取得するには:
 1. ドロップダウン リストから **[Streaming Logs]\(ストリーミング ログ\)** を選択します。
 
    ![ストリーミング ログの選択](media/spring-cloud-intellij-howto/streaming-logs.png)
-    
+
 1. **[Instance]\(インスタンス\)** を選択します。
 
    ![インスタンスの選択](media/spring-cloud-intellij-howto/select-instance.png)
-    
+
 1. ストリーミング ログが出力ウィンドウに表示されます。
 
    ![ストリーミング ログの出力](media/spring-cloud-intellij-howto/streaming-log-output.png)
@@ -168,7 +168,7 @@ Azure Toolkit for IntelliJ を使用してログを取得するには:
 
 ### <a name="log-analytics"></a>Log Analytics
 
-1. **[service | Overview]\(サービス | 概要\)** ページに移動し、 **[Monitoring]\(監視\)** セクションの **[Logs]\(ログ\)** を選択します。 Azure Spring Cloud のいずれかのサンプル クエリで **[Run]\(実行\)** をクリックします。
+1. **[service | Overview]\(サービス | 概要\)** ページに移動し、 **[Monitoring]\(監視\)** セクションの **[Logs]\(ログ\)** を選択します。 Azure Spring Cloud のいずれかのサンプル クエリで **[Run]\(実行\)** を選択します。
 
    [ ![Logs Analytics ポータルへのエントリ](media/spring-cloud-quickstart-logs-metrics-tracing/update-logs-metrics-tracing/logs-entry.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/update-logs-metrics-tracing/logs-entry.png#lightbox)
 
@@ -178,8 +178,10 @@ Azure Toolkit for IntelliJ を使用してログを取得するには:
 
 ## <a name="metrics"></a>メトリック
 
-[`Metrics`] ブレードに移動します。Spring Boot アプリ、Spring Cloud モジュール、および依存関係によって提供されるメトリックが表示されます。 次のグラフは、`gateway-requests` (Spring Cloud Gateway)、`hikaricp_connections` (JDBC Connections)、および `http_client_requests` を示しています。
- 
+`Application insights` ブレードに移動します。 次に、[`Metrics`] ブレードに移動します。Spring Boot アプリ、Spring Cloud モジュール、および依存関係によって提供されるメトリックが表示されます。 
+
+次のグラフは、`gateway-requests` (Spring Cloud Gateway)、`hikaricp_connections` (JDBC Connections)、および `http_client_requests` を示しています。
+
 [ ![[メトリック] ブレード](media/spring-cloud-quickstart-logs-metrics-tracing/update-logs-metrics-tracing/petclinic-microservices-metrics.jpg) ](media/spring-cloud-quickstart-logs-metrics-tracing/update-logs-metrics-tracing/petclinic-microservices-metrics.jpg#lightbox)
 
 Spring Boot では、JVM、CPU、Tomcat、Logback などの多数のコア メトリックが登録されます。Spring Boot の自動構成により、Spring MVC によって処理される要求のインストルメンテーションが有効になります。
@@ -209,11 +211,11 @@ Azure Spring Cloud によって作成された Application Insights を開き、
 
 [`Performance/Dependenices`] ブレードに移動します。依存関係 (特に SQL 呼び出し) のパフォーマンス番号が表示されます。[ ![[パフォーマンス] - [依存関係] ブレード](media/spring-cloud-quickstart-logs-metrics-tracing/update-logs-metrics-tracing/petclinic-microservices-insights-on-dependencies.jpg) ](media/spring-cloud-quickstart-logs-metrics-tracing/update-logs-metrics-tracing/petclinic-microservices-insights-on-dependencies.jpg#lightbox)
 
-SQL 呼び出しをクリックして、コンテキスト内のエンドツーエンド トランザクションを表示します。[ ![SQL エンドツーエンド トランザクション](media/spring-cloud-quickstart-logs-metrics-tracing/update-logs-metrics-tracing/petclinic-microservices-end-to-end-transaction-details.jpg) ](media/spring-cloud-quickstart-logs-metrics-tracing/update-logs-metrics-tracing/petclinic-microservices-end-to-end-transaction-details.jpg#lightbox)
+SQL 呼び出しを選択して、コンテキスト内のエンドツーエンド トランザクションを表示します。[ ![SQL エンドツーエンド トランザクション](media/spring-cloud-quickstart-logs-metrics-tracing/update-logs-metrics-tracing/petclinic-microservices-end-to-end-transaction-details.jpg) ](media/spring-cloud-quickstart-logs-metrics-tracing/update-logs-metrics-tracing/petclinic-microservices-end-to-end-transaction-details.jpg#lightbox)
 
-[`Failures/Exceptions`] ブレードに移動します。例外のコレクションが表示されます。[ ![[失敗] - [例外]](media/spring-cloud-quickstart-logs-metrics-tracing/update-logs-metrics-tracing/petclinic-microservices-failures-exceptions.jpg) ](media/spring-cloud-quickstart-logs-metrics-tracing/update-logs-metrics-tracing/petclinic-microservices-failures-exceptions.jpg#lightbox)
+[`Failures/Exceptions`] ブレードに移動します。例外のコレクションが表示されます。[ ![[失敗] - [例外]](media/spring-cloud-quickstart-logs-metrics-tracing/update-logs-metrics-tracing/petclinic-microservices-failures-exceptions.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/update-logs-metrics-tracing/petclinic-microservices-failures-exceptions.png#lightbox)
 
-例外をクリックして、コンテキスト内のエンドツーエンドのトランザクションとスタックトレースを表示します。[ ![エンドツーエンドのスタックトレース](media/spring-cloud-quickstart-logs-metrics-tracing/update-logs-metrics-tracing/end-to-end-transaction-details.jpg) ](media/spring-cloud-quickstart-logs-metrics-tracing/update-logs-metrics-tracing/end-to-end-transaction-details.jpg#lightbox)
+例外を選択して、コンテキスト内のエンドツーエンドのトランザクションとスタックトレースを表示します。[ ![エンドツーエンドのスタックトレース](media/spring-cloud-quickstart-logs-metrics-tracing/update-logs-metrics-tracing/end-to-end-transaction-details.jpg) ](media/spring-cloud-quickstart-logs-metrics-tracing/update-logs-metrics-tracing/end-to-end-transaction-details.jpg#lightbox)
 
 ::: zone-end
 

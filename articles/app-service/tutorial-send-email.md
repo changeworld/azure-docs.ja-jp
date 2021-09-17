@@ -4,12 +4,12 @@ description: App Service アプリからビジネス プロセスを呼び出す
 ms.topic: tutorial
 ms.date: 04/08/2020
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 04bdab82c9d1efed6da3f533617f19b82cf0781e
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 567bf62d2f78074cef331aeedcfd29bc382e79c4
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108290706"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121752430"
 ---
 # <a name="tutorial-send-email-and-invoke-other-business-processes-from-app-service"></a>チュートリアル:App Service からメールを送信したり他のビジネス プロセスを呼び出したりする
 
@@ -319,3 +319,4 @@ connection = clnt.post_async(ENV['LOGIC_APP_URL'], body)
 [チュートリアル:Azure App Service で CORS を使用して RESTful API をホストする](app-service-web-tutorial-rest-api.md)  
 [Logic Apps の HTTP 要求および応答のリファレンス](../connectors/connectors-native-reqres.md)  
 [クイック スタート: Azure Logic Apps を使用して初めてのワークフローを作成する - Azure portal](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+- [環境変数とアプリ設定のリファレンス](reference-app-settings.md)

@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: reference
 ms.date: 08/15/2021
 ms.author: memildin
-ms.openlocfilehash: 04cff79878c3110c6da8b40e7a207693e693e2ba
-ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
+ms.openlocfilehash: 9ebe158f1a047006b75eb519864152fc4bb396e8
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122229038"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122419529"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Security Center の最新情報
 
@@ -60,7 +60,7 @@ Defender for Endpoint で脅威が検出されると、アラートがトリガ�
 |推奨 |Description |重大度 |
 |---|---|---|
 |[エンドポイント保護をマシンにインストールする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/4fb67663-9ab9-475d-b026-8c544cced439) |脅威と脆弱性からマシンを保護するには、サポートされているエンドポイント保護ソリューションをインストールします。  <br> <a href="/azure/security-center/security-center-endpoint-protection">マシンのエンドポイント保護を評価する方法の詳細をご覧ください。</a><br />(関連ポリシー:[エンドポイント保護の不足を Azure Security Center で監視する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2faf6cd1bd-1635-48cb-bde7-5b15693900b9)) |高 |
-|[Endpoint Protection の正常性の問題を、お使いのコンピューターで解決する必要があります](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/37a3689a-818e-4a0e-82ac-b1392b9bb000) |仮想マシンでエンドポイント保護の正常性の問題を解決して、それらを最新の脅威と脆弱性から保護します。 Azure Security Center でサポートされるエンドポイント保護ソリューションについては、[こちら](./security-center-services.md?tabs=features-windows)を参照してください。 エンドポイント保護の評価については、<a href='/azure/security-center/security-center-endpoint-protection'>こちら</a>で説明されています。<br />(関連ポリシー:[エンドポイント保護の不足を Azure Security Center で監視する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2faf6cd1bd-1635-48cb-bde7-5b15693900b9)) |中 |
+|[Endpoint Protection の正常性の問題を、お使いのコンピューターで解決する必要があります](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/37a3689a-818e-4a0e-82ac-b1392b9bb000) |仮想マシンでエンドポイント保護の正常性の問題を解決して、それらを最新の脅威と脆弱性から保護します。 Azure Security Center でサポートされているエンドポイント保護ソリューションについては、[こちら](./security-center-services.md?tabs=features-windows)を参照してください。 エンドポイント保護の評価については、<a href='/azure/security-center/security-center-endpoint-protection'>こちら</a>を参照してください。<br />(関連ポリシー:[エンドポイント保護の不足を Azure Security Center で監視する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2faf6cd1bd-1635-48cb-bde7-5b15693900b9)) |中 |
 |||
 
 > [!NOTE]
@@ -119,6 +119,8 @@ Azure Policy では、Azure 内で実行するマシンと Arc に接続され�
 この更新プログラムにより、サポートされているすべてのコンピューターにこの拡張機能を自動的にプロビジョニングするように Security Center を設定できるようになりました。 
 
 :::image type="content" source="media/release-notes/auto-provisioning-guest-configuration.png" alt-text="ゲスト構成拡張の自動デプロイを有効にします。":::
+
+自動プロビジョニングのしくみの詳細については、[エージェントと拡張機能の自動プロビジョニングの構成](security-center-enable-data-collection.md)に関する記事を参照してください。
 
 ### <a name="recommendations-to-enable-azure-defender-plans-now-support-enforce"></a>Azure Defender プランを有効にする推奨事項での "強制" のサポート
 Security Center には、新しく作成されたリソースが安全な方法でプロビジョニングされるために役立つ、**強制** と **拒否** という 2 つの機能があります。 推奨事項によってこれらのオプションが提供されると、だれかがリソースを作成しようとするとき常に、セキュリティ要件が満たされていることを保証できます。

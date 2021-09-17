@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/20/2020
-ms.openlocfilehash: 4f127245ea36a7183603f5115739d317282ea686
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: ca35dc76107ca63dec885d34ebac9c9798334edb
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113009526"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122690647"
 ---
 # <a name="monitor-health-of-log-analytics-workspace-in-azure-monitor"></a>Azure Monitor で Log Analytics ワークスペースの正常性を監視する
 Azure Monitor で Log Analytics ワークスペースのパフォーマンスと可用性を維持するには、発生する問題を事前に検出できるようにする必要があります。 この記事では、[Operation](/azure/azure-monitor/reference/tables/operation) テーブル内のデータを使用して、Log Analytics ワークスペースの正常性を監視する方法について説明します。 このテーブルはすべての Log Analytics ワークスペースに含まれているもので、その中にはお使いのワークスペースで発生したエラーと警告が入っています。 "警告" および "エラー" レベルの問題についてアラートを作成することをお勧めします。

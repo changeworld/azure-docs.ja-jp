@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 06/07/2021
 ms.topic: conceptual
-ms.openlocfilehash: 5b2303b17a525a6ae394996780fe3ebb89388f44
-ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
+ms.openlocfilehash: 4c29ff09b6d353072cb8486e17ffa605ceff9aea
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111855162"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122769356"
 ---
 # <a name="plan-your-update-management-deployment"></a>Update Management の展開を計画する
 
@@ -34,7 +34,7 @@ Update Management をサポートするには、Windows および Linux 向け�
 
 Azure VM で Log Analytics エージェントがまだインストールされていない場合、VM の Update Management を有効にすると、[Windows](../../virtual-machines/extensions/oms-windows.md) または [Linux](../../virtual-machines/extensions/oms-linux.md) 向けの Log Analytics VM 拡張機能を使用してエージェントが自動的にインストールされます。 エージェントは、Update Management が有効になっている Automation アカウントにリンクされている Log Analytics ワークスペースに報告するように構成されています。
 
-Azure 以外の VM やサーバーの場合、Windows または Linux 向けの Log Analytics エージェントをインストールして、リンクされたワークスペースに報告させる必要があります。 最初にマシンを [Azure Arc 対応サーバー](../../azure-arc/servers/overview.md)に接続し、次に Azure Policy を使用して [Linux または Windows Azure Arc マシンに Log Analytics エージェントをデプロイする](../../governance/policy/samples/built-in-policies.md#monitoring)組み込みポリシーを割り当てることにより、Windows または Linux 用の Log Analytics エージェントをインストールすることをお勧めします。 また、[VM 分析情報](../../azure-monitor/vm/vminsights-overview.md)を使用してマシンの監視を行う場合は、代わりに [Azure Monitor for VMs を有効にする](../../governance/policy/samples/built-in-initiatives.md#monitoring)イニシアティブを使用します。
+Azure 以外の VM やサーバーの場合、Windows または Linux 向けの Log Analytics エージェントをインストールして、リンクされたワークスペースに報告させる必要があります。 最初にマシンを [Azure Arc 対応サーバー](../../azure-arc/servers/overview.md)に接続し、次に Azure Policy を使用して [Linux または Windows Azure Arc マシンに Log Analytics エージェントをデプロイする](../../governance/policy/samples/built-in-policies.md#monitoring)組み込みポリシー定義を割り当てることにより、Windows または Linux 用の Log Analytics エージェントをインストールすることをお勧めします。 また、[VM 分析情報](../../azure-monitor/vm/vminsights-overview.md)を使用してマシンの監視を行う場合は、代わりに [Azure Monitor for VMs を有効にする](../../governance/policy/samples/built-in-initiatives.md#monitoring)イニシアティブを使用します。
 
 Operations Manager によって現在管理されているマシンを有効にする場合、新しいエージェントは必要ありません。 管理グループを Log Analytics ワークスペースに接続すると、ワークスペースの情報がエージェントの構成に追加されます。
 

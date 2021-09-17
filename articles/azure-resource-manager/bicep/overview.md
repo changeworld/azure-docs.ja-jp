@@ -2,13 +2,13 @@
 title: Azure リソースをデプロイするための Bicep 言語
 description: Azure にインフラストラクチャをデプロイするための Bicep 言語について説明します。 JSON を使用してテンプレートを開発するよりも優れた作成エクスペリエンスが提供されます。
 ms.topic: conceptual
-ms.date: 07/30/2021
-ms.openlocfilehash: 28d42335901db5326be502be52fd4ce2209a7980
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 08/18/2021
+ms.openlocfilehash: 93aea8ee92d1f15ac45bd5978e7cbf68261e5a69
+ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121724605"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122429109"
 ---
 # <a name="what-is-bicep"></a>Bicep とは
 
@@ -34,6 +34,8 @@ Bicep を使用して作業を開始するには:
 2. **[クイックスタート](./quickstart-create-bicep-use-visual-studio-code.md)と [Microsoft Learn の Bicep モジュール](./learn-bicep.md)** を完了します。
 
 既存の ARM テンプレートを Bicep に逆コンパイルするには、[ARM テンプレートを Bicep に逆コンパイルする](./decompile.md)方法に関するページを参照してください。 [Bicep Playground](https://bicepdemo.z22.web.core.windows.net/) を使用すると、Bicep と同等の JSON を並べて表示できます。
+
+Bicep ファイルで使用可能なリソースの詳細については、[Bicep リソースのリファレンス](/azure/templates/)に関するページを参照してください
 
 Bicep の例については、[Bicep GitHub リポジトリ](https://github.com/Azure/bicep/tree/main/docs/examples)を参照してください。
 
@@ -111,7 +113,7 @@ ARM テンプレートを選択したお客様の場合、Bicep によって作�
 ## <a name="known-limitations"></a>既知の制限事項
 
 - 単一行のオブジェクトと配列はサポートされていません。 たとえば、`['a', 'b', 'c']` はサポートされていません。 詳細については、「[配列](data-types.md#arrays)」および「[オブジェクト](data-types.md#objects)」を参照してください。
-- 長い行を複数の行に分割することはサポートされていません。 次に例を示します。
+- 長い行を複数の行に分割することはサポートされていません。 例:
 
     ```bicep
     resource sa 'Microsoft.Storage/storageAccounts@2019-06-01' = if (newOrExisting == 'new') {
@@ -131,6 +133,6 @@ ARM テンプレートを選択したお客様の場合、Bicep によって作�
 - 単一の apiProfile をリソースの種類ごとの apiVersion のセットにマップするために使用される apiProfile の概念はサポートされていません。
 - ユーザー定義関数はサポートされていません。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [クイックスタート](./quickstart-create-bicep-use-visual-studio-code.md)を開始します。

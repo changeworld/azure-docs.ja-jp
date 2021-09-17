@@ -7,14 +7,16 @@ ms.topic: conceptual
 ms.date: 08/16/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 80491f2d9169bcd5c9d4054eb8329c89fd778ba9
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 0c72a263ff9d20f0cb70a0721625446b6a2e0ff9
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122252578"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122689353"
 ---
 # <a name="share-an-azure-managed-disk"></a>Azure マネージド ディスクの共有
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 Azure 共有ディスクは、マネージド ディスクを複数の仮想マシン (VM) に同時に接続できるようにする Azure マネージド ディスクの機能です。 マネージド ディスクを複数の VM に接続すると、新規にデプロイするか、既存のクラスター化されたアプリケーションを Azure に移行することができます。
 

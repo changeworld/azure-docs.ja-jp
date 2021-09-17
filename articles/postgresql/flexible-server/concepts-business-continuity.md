@@ -5,13 +5,13 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: fbc47fa19cccb8d5ce6af38fdff3f0e772f5039f
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.date: 08/24/2021
+ms.openlocfilehash: 64206d1e5a26d163c5d5ed81c3c762a10de0fe96
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111537703"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122769590"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL - フレキシブル サーバーでのビジネス継続性の概要
 
@@ -59,7 +59,7 @@ Azure Database for PostgreSQL - フレキシブル サーバーでの **ビジ�
 ### <a name="unplanned-downtime-failure-scenarios-and-service-recovery"></a>計画外のダウンタイム: 障害シナリオとサービス復旧
 計画外の障害シナリオと復旧プロセスを次に示します。 
 
-| **シナリオ** | **復旧プロセス [非 HA]** | **復旧プロセス [HA]** |
+| **シナリオ** | **復旧プロセス** <br> [ゾーン冗長 HA なしで構成されたサーバー] | **復旧プロセス** <br> [ゾーン冗長 HA ありで構成されたサーバー] |
 | ---------- | ---------- | ------- |
 | <B>データベース サーバーの障害 | データベース サーバーがダウンした場合、Azure によってデータベース サーバーの再起動が試みられます。 それが失敗した場合、データベース サーバーは別の物理ノードで再起動されます。  <br /> <br /> 復旧時間 (RTO) は、大規模なトランザクションや、データベース サーバーの起動プロセス中に実行される復旧の量など、障害発生時のアクティビティを含め、さまざまな要因によって異なります。 <br /> <br /> PostgreSQL データベースを使用するアプリケーションは、切断された接続や失敗したトランザクションを検出し、再試行するように構築されている必要があります。 | データベース サーバーの障害が検出されると、サーバーはスタンバイ サーバーにフェールオーバーされるため、ダウンタイムが短縮されます。 詳細については、[高可用性の概念に関するページ](./concepts-high-availability.md)を参照してください。 RTO は 60 秒から 120 秒で、データ損失はないものと予想されます。 |
 | <B>ストレージの障害 | アプリケーションは、ディスク障害や物理ブロックの破損など、ストレージ関連の問題の影響を一切認識しません。 データが 3 つのコピーに格納されるので、データのコピーは存続しているストレージから提供されます。 破損したデータ ブロックは自動的に修復され、データの新しいコピーが自動的に作成されます。 | ストレージ全体にアクセスできなくなるような、まれに発生する復旧不可能なエラーの場合は、ダウンタイムを短縮するため、フレキシブル サーバーがスタンバイ レプリカにフェールオーバーされます。 詳細については、[高可用性の概念に関するページ](./concepts-high-availability.md)を参照してください。 |

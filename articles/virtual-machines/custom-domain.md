@@ -9,14 +9,17 @@ ms.workload: infrastructure-services
 ms.date: 04/01/2021
 ms.author: jamesser
 ms.reviewer: cynthn
-ms.openlocfilehash: e8e3567d752627915596645b13246236bad321c9
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 5bd9adb8354c3919a63e3de2e850513641af12a3
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108146313"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122696550"
 ---
 # <a name="add-custom-domain-to-azure-vm-or-resource"></a>Azure VM またはリソースにカスタム ドメインを追加する
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット
+
 
 Azure では、ご利用の VM またはリソースにカスタム ドメインを接続する方法が複数あります。 パブリック IP (Virtual Machine、Load Balancer、Application Gateway) を持つリソースの場合、最も簡単な方法は、対応するドメイン レジストラーに A レコード セットを作成することです。 
 

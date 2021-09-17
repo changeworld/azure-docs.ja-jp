@@ -1,25 +1,25 @@
 ---
-title: チュートリアル - Azure Pipelines を使用した Azure VM への CI/CD
-description: このチュートリアルでは、YAML ベースの Azure パイプラインを使用して、Azure VM に対する Node.js アプリの継続的インテグレーション (CI) と継続的配置 (CD) を設定する方法について説明します。
+title: Azure Pipelines を使用した Azure VM への CI/CD
+description: YAML ベースの Azure パイプラインを使用して、Azure VM に対する Node.js アプリの継続的インテグレーション (CI) と継続的配置 (CD) を設定する方法について説明します。
+ms.service: virtual-machines
 author: ushan
 tags: azure-devops-pipelines
-ms.assetid: ''
-ms.service: virtual-machines
 ms.collection: linux
-ms.topic: tutorial
-ms.tgt_pltfrm: azure-pipelines
+ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 1/3/2020
 ms.author: ushan
 ms.custom: devops, devx-track-js
-ms.openlocfilehash: 49282bf6cbc7c24b75fbe3f1bbe68bd1fac62ae3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5a50a51d68154654d204149a5e76e5aa94e57683
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102552492"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122697743"
 ---
-# <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-using-azure-devops-services-and-azure-pipelines"></a>チュートリアル:Azure DevOps Services と Azure Pipelines を使用して Azure の Linux 仮想マシンにアプリをデプロイする
+# <a name="deploy-your-app-to-linux-virtual-machines-in-azure-using-azure-devops-services-and-azure-pipelines"></a>Azure DevOps Services と Azure Pipelines を使用して Azure の Linux 仮想マシンにアプリをデプロイする
+
+**適用対象:** :heavy_check_mark: Linux VM 
 
 継続的インテグレーション (CI) と継続的デプロイ (CD) では、すべてのコードのコミットの後でコードのビルド、リリース、デプロイに使用できるパイプラインが形成されます。 このドキュメントには、Azure Pipelines を使用して複数マシンのデプロイを行うための CI/CD パイプラインの設定に関連する手順が含まれています。
 

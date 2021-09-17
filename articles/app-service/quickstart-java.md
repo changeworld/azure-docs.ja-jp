@@ -14,12 +14,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./quickstart-java-uiex
-ms.openlocfilehash: 7393a8085a2ac597f3fdbcc365608d32956f39b7
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 54ca249d1b89eb90b636da72e1378eadfd5fe0c1
+ms.sourcegitcommit: deb5717df5a3c952115e452f206052737366df46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113111665"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122681390"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service"></a>クイック スタート:Azure App Service で Java アプリを作成する
 
@@ -98,7 +98,7 @@ Azure App Service へのデプロイ プロセスでは、Azure CLI から Azure
 次の Maven コマンドを実行して、デプロイを構成します。 このコマンドは、App Service オペレーティング システム、Java バージョン、および Tomcat バージョンを設定するのに役立ちます。
 
 ```azurecli-interactive
-mvn com.microsoft.azure:azure-webapp-maven-plugin:2.0.0:config
+mvn com.microsoft.azure:azure-webapp-maven-plugin:2.1.0:config
 ```
 
 ::: zone pivot="platform-windows"
@@ -291,13 +291,7 @@ JBoss EAP は、App Service の Linux バージョンでのみ使用できます
 
 ## <a name="deploy-the-app"></a>アプリケーションのデプロイ
 
-Maven プラグインでは、Azure CLI からのアカウント資格情報を App Services へのデプロイに使用します。 続行する前に、[Azure CLI にサインイン](/cli/azure/authenticate-azure-cli)します。
-
-```azurecli-interactive
-az login
-```
-
-次のコマンドを使用して、対象の Java アプリを Azure にデプロイできます。
+pom ファイルにすべての構成が準備されているため、1 つのコマンドを使用して Java アプリを Azure にデプロイできます。
 
 ```azurecli-interactive
 mvn package azure-webapp:deploy

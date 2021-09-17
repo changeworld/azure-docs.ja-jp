@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: static-web-apps
 ms.custom:
 - mode-portal
-ms.openlocfilehash: ce4c37091fc56398c9986396d56e2cc66f9b1d8a
-ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
+ms.openlocfilehash: d83a9f96745e798d307c6e5299da84f1ac717e76
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109813942"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122609086"
 ---
 # <a name="quickstart-building-your-first-static-site-in-the-azure-portal"></a>クイックスタート: Azure portal で最初の静的サイトを構築する
 
@@ -67,9 +67,9 @@ GitHub にサインインした後、リポジトリ情報を入力します。
     # <a name="no-framework"></a>[フレームワークなし](#tab/vanilla-javascript)
 
     1. _[ビルドのプリセット]_ ドロップダウンから **[カスタム]** を選択します。
-    1. _[App location]\(アプリの場所\)_ ボックスは既定値のままにします。
-    1. _[Api location]\(API の場所\)_ ボックスは空のままにします。
-    1. _[App artifact location]\(アプリ成果物の場所\)_ ボックスは空白のままにします。
+    1. _[App location]\(アプリの場所\)_ ボックスに「 **./src**」と入力します。
+    1. _[Api location]\(API の場所\)_ ボックスはからのままにします。
+    1. _[App artifact location]\(アプリ成果物の場所\)_ ボックスに「 **./src**」と入力します。
 
     # <a name="angular"></a>[Angular](#tab/angular)
 

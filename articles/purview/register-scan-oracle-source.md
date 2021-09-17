@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
-ms.openlocfilehash: f673c506411898788b35886dea741604e885e7a3
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: a9234a2bcce6a754a96d1f323af9f08a9697ff03
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112461677"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121725230"
 ---
 # <a name="register-and-scan-oracle-source"></a>Oracle ソースの登録とスキャン
 
@@ -74,7 +74,7 @@ Oracle ソースでサポートされている認証は **基本認証** のみ�
 新しい Oracle ソースをデータ カタログに登録するには、次のようにします。
 
 1.  ご自分の Purview アカウントに移動します。
-2.  左側のナビゲーションで **[ソース]** を選択します。
+2.  左側のナビゲーションで **[Data Map]** を選択します。
 3.  **[登録]** を選択します
 4.  [Register sources]\(ソースの登録\) で、 **[Oracle]** を選択します。 **[続行]** をクリックします。
 

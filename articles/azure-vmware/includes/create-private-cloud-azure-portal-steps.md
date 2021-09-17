@@ -2,17 +2,20 @@
 title: Azure VMware Solution のプライベート クラウドを作成する
 description: Azure portal を使用して、Azure VMware Solution のプライベート クラウドを作成する手順です。
 ms.topic: include
-ms.date: 06/17/2021
-ms.openlocfilehash: cb357bf5e0fa42c3c67531e45a51b8dbba6aa6da
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.date: 08/05/2021
+author: shortpatti
+ms.author: v-patsho
+ms.service: azure-vmware
+ms.openlocfilehash: beae1ba1fe5cb37f9c96d411ca9ee0e8cddfe1d3
+ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113431101"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122262516"
 ---
 <!-- Used in deploy-azure-vmware-solution.md and tutorial-create-private-cloud.md -->
 
-Azure portal または Azure CLI を使用して、Azure VMware Solution のプライベート クラウドを作成できます。
+Azure VMware Solution のプライベート クラウドを、Azure portal または Azure CLI を使用して作成できます。
 
 
 ### <a name="portal"></a>[ポータル](#tab/azure-portal)
@@ -21,34 +24,34 @@ Azure portal または Azure CLI を使用して、Azure VMware Solution のプ�
 
 1. **[新しいリソースを作成]** を選択します。 
 
-1. **[Marketplace を検索]** テキスト ボックスに「`Azure VMware Solution`」と入力し、一覧から **[Azure VMware Solution]** を選択します。 
+1. **[Marketplace を検索]** テキスト ボックスに「`Azure VMware Solution`」と入力して、それを結果から選択します。 
 
 1. **[Azure VMware Solution]** ウィンドウで、 **[作成]** を選択します。
 
-1. **[基本]** タブで、各フィールドの値を入力します。 
+1. **[基本]** タブで、各フィールドに値を入力し、 **[確認と作成]** を選択します。 
 
    >[!TIP]
-   >この情報は、このクイック スタートの[計画フェーズ](../production-ready-deployment-steps.md)で収集しました。
+   >この情報は、このクイック スタートの[計画フェーズ](../plan-private-cloud-deployment.md)で収集しました。
 
    | フィールド   | 値  |
    | ---| --- |
    | **サブスクリプション** | デプロイに使用する予定のサブスクリプションを選択します。 Azure サブスクリプションのすべてのリソースがまとめて課金されます。|
    | **リソース グループ** | プライベート クラウドのリソース グループを選択します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 代わりに、プライベート クラウド用の新しいリソース グループを作成することもできます。 |
-   | **場所** | 場所 (**米国東部** など) を選択します。 これは、計画フェーズ中に定義した "*リージョン*" です。 |
    | **リソース名** | Azure VMware Solution のプライベート クラウドの名前を指定します。 |
-   | **SKU** | **[AV36]** を選択します。 |
-   | **ホスト** | プライベート クラウド クラスターに割り当てられているホストの数を表示します。 既定値は 3 です。この値は、デプロイ後に増減できます。  |
-   | **アドレス ブロック** | プライベート クラウドの IP アドレス ブロックを指定します。  CIDR はプライベート クラウド管理ネットワークを表しており、クラスター管理サービス (vCenter Server、NSX-T Manager など) に使用されます。 10.175.0.0/22 など、/22 アドレス空間を使用します。  アドレスは一意であり、他の Azure Virtual Network やオンプレミス ネットワークと重複することはできません。 |
-   | **Virtual Network** | これは空のままにしておきます。Azure VMware Solution ExpressRoute 回線が、デプロイ後の手順で確立されるためです。   |
+   | **場所** | 場所 (**米国東部** など) を選択します。 これは、計画フェーズ中に定義した "*リージョン*" です。 |
+   | **ホストのサイズ** | **[AV36]** を選択します。 |
+   | **ホストの数** | プライベート クラウド クラスターに割り当てられているホストの数。 既定値は 3 です。この値は、デプロイ後に増減できます。  |
+   | **プライベート クラウドのアドレス ブロック** | プライベート クラウドの IP アドレス ブロックを指定します。  CIDR はプライベート クラウド管理ネットワークを表しており、クラスター管理サービス (vCenter Server、NSX-T Manager など) に使用されます。 10.175.0.0/22 など、/22 アドレス空間を使用します。  アドレスは一意であり、他の Azure Virtual Network やオンプレミス ネットワークと重複することはできません。 |
+   
 
    :::image type="content" source="../media/tutorial-create-private-cloud/create-private-cloud.png" alt-text="[プライベート クラウドの作成] ウィンドウの [基本] タブを示すスクリーンショット。" border="true":::
 
-1. 終わったら、 **[確認と作成]** を選択します。 次の画面で、入力した情報を確認します。 情報がすべて正しければ、 **[作成]** を選択します。
+1. 入力した情報を確認し、正しい場合は **[作成]** を選択します。  
 
    > [!NOTE]
    > この手順には、3 時間から 4 時間ほどかかります。 既存のクラスターまたは同じクラスターに 1 つのホストを追加するのにかかる時間は、30 分から 45 分です。
 
-1. デプロイが成功したことを確認します。 作成したリソース グループに移動し、プライベート クラウドを選択します。  デプロイが完了すると、状態が **[成功]** として表示されます。 
+1. デプロイが成功したことを確認します。 作成したリソース グループに移動し、プライベート クラウドを選択します。  デプロイが終了すると、状態が **[成功]** として表示されます。 
 
    :::image type="content" source="../media/tutorial-create-private-cloud/validate-deployment.png" alt-text="デプロイが成功したことを示すスクリーンショット。" border="true":::
 

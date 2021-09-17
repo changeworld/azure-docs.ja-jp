@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 01/11/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fa59db40f88824bdbec6fbaae8cf3664ae825846
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 4935b42efa6e6fd17d66ddfba744ae36653ed952
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121727783"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122419213"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C の ISV パートナー
 
@@ -93,6 +93,7 @@ Microsoft は、Web アプリケーション ファイアウォール (WAF) に�
 | ISV パートナー | 説明と統合のチュートリアル |
 |:-------------------------|:--------------|
 |  ![Akamai ロゴのスクリーンショット](./media/partner-gallery/akamai-logo.png) | [Akamai WAF](./partner-akamai.md) を使用すると、トラフィックをきめ細かく操作して、悪意のある攻撃から ID インフラストラクチャをセキュリティで保護することができます。  |
+|  ![Azure WAF ロゴのスクリーンショット](./media/partner-gallery/azure-web-application-firewall-logo.png) | [Azure WAF](./partner-azure-web-application-firewall.md) では、一般的な悪用や脆弱性からの Web アプリケーションの一元的な保護が提供されます。  |
 ![Cloudflare ロゴのスクリーンショット](./media/partner-gallery/cloudflare-logo.png) | [Cloudflare](./partner-cloudflare.md) は、SQLi や XSS など、脆弱性を悪用する悪意のある攻撃から組織を保護する WAF プロバイダーです。 |
 
 

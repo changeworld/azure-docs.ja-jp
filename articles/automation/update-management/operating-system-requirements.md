@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 07/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: 888123d1e1b2b87313f44f8b266d969cbff5bcde
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: d45ab7ba80a33658d1a3feaf024cb23ea65d5fab
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114460501"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122771801"
 ---
 # <a name="operating-systems-supported-by-update-management"></a>Update Management でサポートされているオペレーティング システム
 
@@ -60,7 +60,7 @@ ms.locfileid: "114460501"
 - Windows PowerShell 5.1 が必要です ([Windows Management Framework 5.1 のダウンロード](https://www.microsoft.com/download/details.aspx?id=54616))。
 - この Update Management 機能はシステムの Hybrid Runbook Worker ロールに依存し、その[システム要件](../automation-windows-hrw-install.md#prerequisites)を確認する必要があります。
 
-Windows Update エージェントは、Windows Server Update Services (WSUS) サーバーと通信するか Microsoft Update にアクセスできるように構成する必要があります。 ハイブリッド マシンの場合は、最初にマシンを [Azure Arc 対応サーバー](../../azure-arc/servers/overview.md)に接続し、次に Azure Policy を使用して [Windows Azure Arc マシンに Log Analytics エージェントをデプロイする](../../governance/policy/samples/built-in-policies.md#monitoring)組み込みポリシーを割り当てることにより、Windows 用の Log Analytics エージェントをインストールすることをお勧めします。 または、VM 分析情報を使用してマシンを監視する場合は、代わりに [[VM分析情報の有効化を有効にする]](../../governance/policy/samples/built-in-initiatives.md#monitoring) イニシアティブを使用します。
+Windows Update エージェントは、Windows Server Update Services (WSUS) サーバーと通信するか Microsoft Update にアクセスできるように構成する必要があります。 ハイブリッド マシンの場合は、最初にマシンを [Azure Arc 対応サーバー](../../azure-arc/servers/overview.md)に接続し、次に Azure Policy を使用して "[Windows Azure Arc マシンに Log Analytics エージェントをデプロイする](../../governance/policy/samples/built-in-policies.md#monitoring)" 組み込みポリシー定義を割り当てることにより、Windows 用の Log Analytics エージェントをインストールすることをお勧めします。 または、VM 分析情報を使用してマシンを監視する場合は、代わりに [[VM分析情報の有効化を有効にする]](../../governance/policy/samples/built-in-initiatives.md#monitoring) イニシアティブを使用します。
 
 Microsoft Endpoint Configuration Manager は、Update Management と組み合わせて使用できます。 統合シナリオの詳細については、「[Update Management を使用して、Microsoft Endpoint Configuration Manager クライアントに更新プログラムを展開する](mecmintegration.md)」を参照してください。 Configuration Manager 環境のサイトによって管理されている Windows サーバーでは、[Windows 用の Log Analytics エージェント](../../azure-monitor/agents/agent-windows.md)が必要です。
 
@@ -80,7 +80,7 @@ Microsoft Endpoint Configuration Manager は、Update Management と組み合わ
 > [!NOTE]
 > Linux マシンの更新プログラムの評価は、特定のリージョンでのみサポートされています。 Automation アカウントと Log Analytics ワークスペースの[マッピング テーブル](../how-to/region-mappings.md#supported-mappings)を参照してください。
 
-ハイブリッド マシンの場合は、最初にマシンを [Azure Arc 対応サーバー](../../azure-arc/servers/overview.md)に接続し、次に Azure Policy を使用して [Linux Azure Arc マシンに Log Analytics エージェントをデプロイする](../../governance/policy/samples/built-in-policies.md#monitoring)組み込みポリシーを割り当てることにより、Linux 用の Log Analytics エージェントをインストールすることをお勧めします。 また、Azure Monitor for VMs を使用してマシンの監視も行う場合は、代わりに [Azure Monitor for VMs を有効にする](../../governance/policy/samples/built-in-initiatives.md#monitoring)イニシアティブを使用します。
+ハイブリッド マシンの場合は、最初にマシンを [Azure Arc 対応サーバー](../../azure-arc/servers/overview.md)に接続し、次に Azure Policy を使用して "[Linux Azure Arc マシンに Log Analytics エージェントをデプロイする](../../governance/policy/samples/built-in-policies.md#monitoring)" 組み込みポリシー定義を割り当てることにより、Linux 用の Log Analytics エージェントをインストールすることをお勧めします。 また、Azure Monitor for VMs を使用してマシンの監視も行う場合は、代わりに [Azure Monitor for VMs を有効にする](../../governance/policy/samples/built-in-initiatives.md#monitoring)イニシアティブを使用します。
 
 ## <a name="next-steps"></a>次のステップ
 

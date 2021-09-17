@@ -7,14 +7,16 @@ ms.topic: how-to
 ms.date: 06/29/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 815e4bd34ecce3e77fafb95520632df6570cebb3
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: 14ff8552b2e5244a9820f575a397ecc506f24447
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113361155"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122689456"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks---azure-portal"></a>接続されていない Azure マネージド ディスクとアンマネージド ディスクを見つけて削除する - Azure portal
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 Azure で仮想マシン (VM) を削除するとき、既定では、その VM に接続されているディスクはいずれも削除されません。 これは、意図せず VM を削除したことによるデータ損失を防ぐのに役立ちます。 VM が削除された後、接続されていないディスクに対する料金の支払いが続きます。 この記事では、接続されていないディスクを Azure portal で見つけて削除し、不要なコストを削減する方法を示します。 削除は永続的です。ディスクを削除すると、データを回復できなくなります。
 

@@ -8,14 +8,16 @@ ms.topic: how-to
 ms.date: 12/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 1a0bca9446cd6a04b8568ccebd8df006641e6dca
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 58e68193ffabb6984365eade56c9c8efe8504acd
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114297709"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692140"
 ---
 # <a name="convert-a-linux-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Linux 仮想マシンを非管理対象ディスクからマネージド ディスクに変換する
+
+**適用対象:** :heavy_check_mark: Linux VM 
 
 非管理対象ディスクを使用する既存の Linux 仮想マシン (VM) を所有している場合、[Azure Managed Disks](../managed-disks-overview.md) を使用するように VM を変換することができます。 このプロセスでは、OS ディスクと接続されたすべてのデータ ディスクの両方を変換します。
 

@@ -7,14 +7,16 @@ ms.subservice: vm-sizes-memory
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: mimckitt
-ms.openlocfilehash: 5920a7c0aecd02e4d5b7bbcac9c5254a14d7f192
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3166ba5015c4d3a8e8d449c497eade6bc8bc56f6
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121751677"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122688290"
 ---
 # <a name="ev3-and-esv3-series"></a>Ev3 および Esv3 シリーズ
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 柔軟なスケール セット :heavy_check_mark: 均一のスケール セット
 
 Ev3 と Esv3 シリーズは、ハイパースレッド構成の Intel® Xeon® Platinum 8272CL (Cascade Lake)、Intel® Xeon® 8171M 2.1 GHz (Skylake)、または Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) プロセッサで実行されることで、大半の汎用ワークロード向けに付加価値を高め、他の多くのクラウドの汎用 VM と一線化されています。  メモリが増設 (7 GiB/vCPU から 8 GiB/vCPU) される一方、ディスクおよびネットワークの制限は、ハイパースレッディングへの移行に合わせてコア単位ベースで調整されています。 Ev3 は、D/Dv2 ファミリーのハイ メモリ VM サイズのフォローアップです。
 

@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 12/09/2019
 ms.author: lajanuar
 ms.topic: quickstart
-ms.openlocfilehash: ae417006903c8d2478126f928f05647361bad1b9
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: e77196572a0ea3b18f0b28a6ad26349e6e7c668e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896208"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121744784"
 ---
 # <a name="quickstart-build-deploy-and-use-a-custom-model-for-translation"></a>クイック スタート: 翻訳のためのカスタム モデルを構築、デプロイ、および使用する
 
@@ -27,6 +27,8 @@ ms.locfileid: "98896208"
 2. Azure portal を通じた Translator Text API へのサブスクリプション。 Custom Translator 内のお客様のワークスペースに関連付ける Translator Text API サブスクリプション キーが必要です。 「[Translator Text API にサインアップする方法](../translator-how-to-signup.md)」を参照してください。
 
 3. 上記の両方がある場合は、[カスタム翻訳ツール](https://portal.customtranslator.azure.ai) ポータルにサインインしてワークスペースとプロジェクトを作成し、ファイルをアップロードしてモデルを作成、デプロイします。
+
+[YouTube](https://www.youtube.com/watch?v=TykB6WDTkRc&t=3s) でカスタム翻訳ツールのすべてを説明した完全なチュートリアル ビデオを視聴することもできます。
 
 >[!Note]
 >[対応 VNET](../../../api-management/api-management-using-with-vnet.md) 内に作成された Translator Text API リソース用のワークスペースをカスタム翻訳ツールで作成することはできません。

@@ -2,18 +2,18 @@
 title: クイックスタート - Azure CLI を使用して Azure Spring Cloud をプロビジョニングする
 description: このクイックスタートでは、Azure CLI を使用して Spring Cloud クラスターを既存の仮想ネットワークにデプロイする方法について説明します。
 services: azure-cli
-author: vinodramasubbu
+author: karlerickson
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.custom: devx-track-azurecli, devx-track-java
 ms.author: vramasubbu
 ms.date: 06/15/2021
-ms.openlocfilehash: 7eb9b1a3194398dff60b72d1bc65f6ad71cb6822
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: a8dd727b0f0f999f1b0b8e6c9b6ed5977779f5ff
+ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114289480"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122271376"
 ---
 # <a name="quickstart-provision-azure-spring-cloud-using-azure-cli"></a>クイックスタート: Azure CLI を使用して Azure Spring Cloud をプロビジョニングする
 
@@ -157,7 +157,7 @@ Azure CLI スクリプトを使用して Azure Spring Cloud クラスターを�
    az account list-locations --output table
    ```
 
-1. リソースのデプロイ先となるリソース グループを作成します。 
+1. リソースのデプロイ先となるリソース グループを作成します。
 
    ```azurecli
    az group create --name <your-resource-group-name> --location <location-name>
@@ -172,38 +172,28 @@ Azure CLI スクリプトを使用して Azure Spring Cloud クラスターを�
 1. スクリプトから入力を求められたら、次の値を入力します。
 
    - 先ほど保存した Azure サブスクリプション ID。
-
    - 先ほど保存した Azure の場所の名前。
-
    - 先ほど作成したリソース グループの名前。
-
    - リソースのデプロイ先となる仮想ネットワーク リソース グループの名前。
-
    - スポーク仮想ネットワークの名前 (*vnet-spoke* など)。
-
    - Spring Cloud App Service で使用するサブネットの名前 (*snet-app* など)。
-
    - Spring Cloud ランタイム サービスで使用するサブネットの名前 (*snet-runtime* など)。
-
    - 診断ログの格納に使用する Azure Log Analytics ワークスペースのリソース グループの名前。
-
    - Azure Log Analytics ワークスペースの名前 (*la-cb5sqq6574o2a* など)。
-
    - Azure Spring Cloud で使用する仮想ネットワークからの CIDR 範囲 (*XX.X.X.X/16,XX.X.X.X/16,XX.X.X.X/16* など)。
-
    - タグをサポートするすべてのリソースにタグとして適用されるキーと値のペア。 詳細については、「[タグを使用して Azure リソースと整理階層を整理する](../azure-resource-manager/management/tag-resources.md)」を参照してください。 複数のタグを適用するには、スペース区切りのリストを使用します (*environment=Dev BusinessUnit=finance* など)。
 
 この情報を指定すると、スクリプトによって Azure リソースが作成され、デプロイされます。
 
 ## <a name="review-deployed-resources"></a>デプロイされているリソースを確認する
 
-Azure portal を使用してデプロイされたリソースを確認するか、Azure CLI または Azure PowerShell スクリプトを使用してデプロイされたリソースを一覧表示することができます。
+Azure portal を使用してデプロイされたリソースを確認するか、Azure CLI を使用してデプロイされたリソースを一覧表示することができます。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 後続のクイック スタートおよびチュートリアルを引き続き実行する場合は、これらのリソースをそのまま残しておくことができます。 不要になったら、リソース グループを削除します。これにより、リソース グループ内のリソースが削除されます。 Azure CLI を使用してリソース グループを削除するには、次のコマンドを使用します。
 
-```azurecli-interactive
+```azurecli
 echo "Enter the Resource Group name:" &&
 read resourceGroupName &&
 az group delete --name $resourceGroupName &&

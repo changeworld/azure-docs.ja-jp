@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
-ms.openlocfilehash: a0e6a02aed59cbe968abb0df5c3fb612c8f2d3b0
-ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
+ms.openlocfilehash: 811078d18d6659e600cb5b0931dcf2a217a8856e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113551688"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121751891"
 ---
 # <a name="register-and-scan-a-sap-s4hana-source"></a>SAP S/4HANA ソースを登録してスキャンする
 
@@ -54,7 +54,7 @@ SAP S/4HANA ソースでサポートされている認証は **基本認証** �
 新しい SAP S/4HANA ソースをデータ カタログに登録するには、次のようにします。
 
 1.  ご自分の Purview アカウントに移動します。
-2.  左側のナビゲーションで **[ソース]** を選択します。
+2.  左側のナビゲーションで **[Data Map]** を選択します。
 3.  **[登録]** を選択します
 4.  [Register sources]\(ソースの登録\) で、 **[SAP S/4HANA]** を選択します。 **[続行]** を選択します。
 

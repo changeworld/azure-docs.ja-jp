@@ -9,14 +9,16 @@ ms.topic: sample
 ms.service: virtual-machines
 ms.devlang: azurecli
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e70284a3a89c30d0f1d1363a15652449a6a1d4f5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6fc60e5b149ace0243df53e6da09c4f93aaf158a
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100558101"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122694469"
 ---
 # <a name="move-a-marketplace-azure-virtual-machine-to-another-subscription"></a>Marketplace Azure 仮想マシンを別のサブスクリプションに移動する
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット
 
 Marketplace 仮想マシンを別のサブスクリプションに移動するには、そのサブスクリプションに OS ディスクを移動してから、仮想マシンを再作成する必要があります。
 
@@ -141,7 +143,7 @@ az group delete --name $destinationResourceGroup --subscription $destinationSubs
 - [az vm image terms show](/cli/azure/vm/image/terms#az_vm_image_terms_show)
 - [az vm show](/cli/azure/vm#az_vm_show)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [VM を別の Azure リージョンに移動する](../site-recovery/azure-to-azure-tutorial-migrate.md)
 - [他のサブスクリプションまたはリソース グループへ VM を移動する](./linux/move-vm.md)

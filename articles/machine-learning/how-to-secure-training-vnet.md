@@ -11,12 +11,12 @@ ms.author: jhirono
 author: jhirono
 ms.date: 08/04/2021
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1
-ms.openlocfilehash: 913fb8f782872a2a8651d19de8c918595cdecfeb
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b4b7f35173b4f1d6d83d9b7ffd937704750f5502
+ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121739150"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122603972"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>仮想ネットワークを使用して Azure Machine Learning トレーニング環境をセキュリティで保護する
 
@@ -81,14 +81,14 @@ ms.locfileid: "121739150"
 
     * 1 つのネットワーク セキュリティ グループ (NSG)。 この NSG には、コンピューティング クラスターとコンピューティング インスタンスに固有の次のルールが含まれています。
 
-        * `BatchNodeManagement` サービス タグからポート 29876-29877 で受信 TCP トラフィックを許可します。
-        * `AzureMachineLearning` サービス タグからポート 44224 で受信 TCP トラフィックを許可します。
+        * `BatchNodeManagement` サービス タグからのポート 29876 から 29877 での受信 TCP トラフィックを許可します。
+        * `AzureMachineLearning` サービス タグからのポート 44224 での受信 TCP トラフィックを許可します。
 
-        次のスクリーンショットは、こうしたルールの例を示しています。
+        次のスクリーンショットは、これらのルールの例を示しています。
 
         :::image type="content" source="./media/how-to-secure-training-vnet/compute-instance-cluster-network-security-group.png" alt-text="NSG のスクリーンショット":::
 
-    * 1 つのパブリック IP アドレス。 Azure Policy によってパブリック IP の作成が禁止されている場合、クラスターやインスタンスのデプロイが失敗します。
+    * 1 つのパブリック IP アドレス。 Azure Policy の割り当てによってパブリック IP の作成が禁止されている場合、クラスターやインスタンスのデプロイが失敗します。
     * 1 つのロード バランサー
 
     コンピューティング クラスターでは、クラスターが 0 ノードにスケールダウンするたびにこれらのリソースが削除され、スケールアップすると作成されます。
@@ -96,7 +96,7 @@ ms.locfileid: "121739150"
     コンピューティング インスタンスでは、これらのリソースはインスタンスが削除されるまで保持されます。 インスタンスを停止しても、リソースは削除されません。 
 
     > [!IMPORTANT]
-    > これらのリソースは、サブスクリプションの[リソース クォータ](../azure-resource-manager/management/azure-subscription-service-limits.md)によって制限されます。 仮想ネットワーク リソース グループがロックされている場合、コンピューティング クラスターやインスタンスの削除が失敗します。 コンピューティング クラスターやインスタンスが削除されるまで、ロード バランサーを削除することはできません。 また、ネットワーク セキュリティ グループの作成を禁止する Azure ポリシーがないことも確認してください。
+    > これらのリソースは、サブスクリプションの[リソース クォータ](../azure-resource-manager/management/azure-subscription-service-limits.md)によって制限されます。 仮想ネットワーク リソース グループがロックされている場合、コンピューティング クラスターやインスタンスの削除が失敗します。 コンピューティング クラスターやインスタンスが削除されるまで、ロード バランサーを削除することはできません。 また、ネットワーク セキュリティ グループの作成を禁止する Azure Policy の割り当てがないことも確認してください。
 
 * ワークスペースの Azure Storage アカウントも仮想ネットワーク内にある場合は、サブネットの制限事項に関する次のガイダンスを使用します。
 

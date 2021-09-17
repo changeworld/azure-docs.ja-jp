@@ -9,14 +9,16 @@ ms.topic: overview
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 07562641ef866074dcf14cb01afd4d7ce071e467
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: cca6105704afbe4899c62493b50d971471a890f6
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107311007"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122694159"
 ---
 # <a name="windows-virtual-machines-in-azure"></a>Azure の Windows 仮想マシン
+
+**適用対象:** :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット 
 
 Azure Virtual Machines (VM) は、Azure が提供する[スケーラブルなオンデマンド コンピューティング リソース](/azure/architecture/guide/technology-choices/compute-decision-tree)の 1 つです。 通常、コンピューティング環境を他の手段より細かく管理する必要がある場合に、VM を選択します。 この記事では、VM を作成する前に検討する必要のある事項、VM の作成方法、VM の管理方法に関する情報を提供します。
 

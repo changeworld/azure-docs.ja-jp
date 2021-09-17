@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 09/08/2020
 ms.custom: devx-track-java, fasttrack-edit
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 95f4e7e9dcc8c9f16465d2a577d4bdf425dae4a8
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: f3a3e4897904dcfd02b6ef3879736d1afb533747
+ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114470557"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "122014718"
 ---
 # <a name="quickstart-set-up-azure-spring-cloud-configuration-server"></a>クイック スタート:Azure Spring Cloud の構成サーバーを設定する
 
@@ -27,7 +27,7 @@ Azure Spring Cloud 構成サーバーは、分散システムのための一元�
 
 ## <a name="azure-spring-cloud-config-server-procedures"></a>Azure Spring Cloud 構成サーバーの手順
 
-次のコマンドを実行し、プロジェクトの git リポジトリの場所を使用して、構成サーバーを設定します。 `<service instance name>` を、以前に作成したサービスの名前に置き換えます。 前のクイックスタートで設定したサービス インスタンス名の既定値は、このコマンドでは機能しません。
+次のコマンドを実行し、プロジェクトの git リポジトリの場所を使用して、構成サーバーを設定します。 *\<service instance name>* を、以前に作成したサービスの名前に置き換えます。 前のクイックスタートで設定したサービス インスタンス名の既定値は、このコマンドでは機能しません。
 
 ```azurecli
 az spring-cloud config-server git set -n <service instance name> --uri https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples --search-paths steeltoe-sample/config
@@ -57,22 +57,21 @@ Azure Spring Cloud 構成サーバーは、分散システムのための一元�
 
 2. **[既定のリポジトリ]** セクションで **[URI]** を "https://github.com/azure-samples/spring-petclinic-microservices-config" に設定します。
 
-3. **[検証]** をクリックします。
+3. **[検証]** を選択します。
 
     ![構成サーバーへの移動](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
 
-4. 検証が完了したら、 **[適用]** をクリックして変更内容を保存します。
+4. 検証が完了したら、 **[適用]** を選択して変更を保存します。
 
     ![構成サーバーの検証](media/spring-cloud-quickstart-launch-app-portal/validate-complete.png)
 
 5. 構成の更新に数分かかる場合があります。
- 
-    ![構成サーバーの更新](media/spring-cloud-quickstart-launch-app-portal/updating-config.png) 
+
+    ![構成サーバーの更新](media/spring-cloud-quickstart-launch-app-portal/updating-config.png)
 
 6. 構成が完了すると、通知が届きます。
 
 #### <a name="cli"></a>[CLI](#tab/Azure-CLI)
-
 
 次の手順では、Azure CLI を使用して、[Pet Clinic サンプル](https://github.com/azure-samples/spring-petclinic-microservices)をデプロイするように構成サーバーを設定します。
 
@@ -91,24 +90,24 @@ az spring-cloud config-server git set -n <service instance name> --uri https://g
 
 次の手順では、Config Server の設定のトラブルシューティングを行う方法について説明します。
 
-1. Azure portal でサービスの **[概要]** ページに移動し、 **[ログ]** を選択します。 
-1. **[クエリ]** を選択し、 **[Show the application logs that contain the "error" or "exception" terms"]\("エラー" または "例外" という語句を含むアプリケーション ログを表示する\)** を選択します。 
-1. **[実行]** をクリックします。 
+1. Azure portal でサービスの **[概要]** ページに移動し、 **[ログ]** を選択します。
+1. **[クエリ]** を選択し、 **[Show the application logs that contain the "error" or "exception" terms"]\("エラー" または "例外" という語句を含むアプリケーション ログを表示する\)** を選択します。
+1. **[実行]** を選択します。
 1. ログで **java.lang.illegalStateException** エラーが見つかった場合、これは Spring Cloud サービスで Config Server からプロパティを見つけることができないことを示します。
 
     [ ![ASC ポータルでのクエリの実行](media/spring-cloud-quickstart-setup-config-server/setup-config-server-query.png) ](media/spring-cloud-quickstart-setup-config-server/setup-config-server-query.png)
 
 1. サービスの **[概要]** ページに移動します。
-1. **[Diagnose and solve prolems]\(問題の診断と解決\)** を選択します。 
+1. **[Diagnose and solve prolems]\(問題の診断と解決\)** を選択します。
 1. **[Config Server]\(Config Server\)** 検出機能を選択します。
 
     [ ![ASC ポータルでの問題の診断](media/spring-cloud-quickstart-setup-config-server/setup-config-server-diagnose.png) ](media/spring-cloud-quickstart-setup-config-server/setup-config-server-diagnose.png)
 
-3. **[Config Server Health Check]\(Config Server の正常性チェック\)** をクリックします。
+1. **[Config Server Health Check]\(Config Server の正常性チェック\)** を選択します。
 
     [ ![ASC ポータルでの問題](media/spring-cloud-quickstart-setup-config-server/setup-config-server-genie.png) ](media/spring-cloud-quickstart-setup-config-server/setup-config-server-genie.png)
 
-4. **[Config Server Status]\(Config Server の状態\)** をクリックして、検出機能の詳細を表示します。
+1. **[Config Server Status]\(Config Server の状態\)** を選択して、検出機能の詳細を表示します。
 
     [ ![ASC ポータルでの正常性の状態](media/spring-cloud-quickstart-setup-config-server/setup-config-server-health-status.png) ](media/spring-cloud-quickstart-setup-config-server/setup-config-server-health-status.png)
 

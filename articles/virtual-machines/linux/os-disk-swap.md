@@ -9,15 +9,16 @@ ms.topic: how-to
 ms.date: 04/24/2018
 ms.author: cynthn
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 85d6350a36e62ace8f1922d30493d0f1d448d315
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: f186052117f40167c9e4e72e350bf689f43bd8b1
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107765937"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122692841"
 ---
 # <a name="change-the-os-disk-used-by-an-azure-vm-using-the-azure-cli"></a>Azure CLI を使用して Azure VM によって使用される OS ディスクを変更する
 
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブルなスケール セット 
 
 既存の VM があり、そのディスクをバックアップ ディスクまたは別の OS ディスクに交換する場合、Azure CLI を使用して OS ディスクを交換できます。 VM を削除して再作成する必要はありません。 別のリソース グループ内のマネージド ディスクでも、まだ使用されていない場合に限り使用することができます。
 

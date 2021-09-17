@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/27/2021
 ms.author: jeedes
-ms.openlocfilehash: 9872402ca86ec1d6de349f921806757822e3b587
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: 78fa4b405c95d1f39a733eb22ff7c08d28873940
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111568794"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122178067"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-code42"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Code42 の統合
 
@@ -38,6 +38,8 @@ ms.locfileid: "111568794"
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 * Code42 では、**SP** Initiated SSO がサポートされます。
+* Code42 では、[**自動化されたユーザー プロビジョニングとプロビジョニング解除**](code42-provisioning-tutorial.md) (推奨) がサポートされます。
+
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。

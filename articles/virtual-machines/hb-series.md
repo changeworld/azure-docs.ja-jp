@@ -8,14 +8,16 @@ ms.topic: conceptual
 ms.date: 03/22/2021
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 02eb75f96cee6df8cf2659e65cbb48099b0d81e4
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: ae1107deb58aa7bcc52fc9ed8055772c81cd4eb3
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108768249"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122696310"
 ---
 # <a name="hb-series"></a>HB シリーズ
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブルなスケール セット :heavy_check_mark: 均一スケール セット
 
 HB シリーズ VM は、流体力学、陽解法有限要素解析、気象モデリングなどの、メモリ帯域幅に基づいたアプリケーション向けに最適化されています。 HBv2 VM は 60 個の AMD EPYC 7551 プロセッサ コア、CPU コアあたり 4 GB の RAM を備え、同時マルチスレッドはありません。 HB VM では、最大 260 GB/秒のメモリ帯域幅が提供されます。
 

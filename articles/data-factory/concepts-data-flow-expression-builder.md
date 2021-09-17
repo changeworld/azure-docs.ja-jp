@@ -1,18 +1,21 @@
 ---
 title: マッピング データ フローでの式ビルダー
-description: Azure Data Factory のマッピング データ フローで式ビルダーを使用して式を構築する
+titleSuffix: Azure Data Factory & Azure Synapse
+description: Azure Data Factory と Azure Synapse Analytics のマッピング データ フローで式ビルダーを使用して式を構築する
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
+ms.subservice: data-flows
+ms.custom: synapse
 ms.topic: conceptual
-ms.date: 04/29/2021
-ms.openlocfilehash: e335176b5cd7c6c35477ac9318cf20ce4b64b82d
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.date: 08/24/2021
+ms.openlocfilehash: 7dd40b52cbc74e62a6dbb8ed83d19c968e48d9c4
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108291012"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122822816"
 ---
 # <a name="build-expressions-in-mapping-data-flow"></a>マッピング データ フローで式を構築する
 
@@ -20,7 +23,7 @@ ms.locfileid: "108291012"
 
 マッピング データ フローでは、多くの変換プロパティが式として入力されます。 これらの式は、実行時に Spark データ型に評価される列の値、パラメーター、関数、演算子、リテラルで構成されます。 マッピング データ フローには、これらの式の構築を支援する、**式ビルダー** と呼ばれる専用のエクスペリエンスがあります。 [IntelliSense](/visualstudio/ide/using-intellisense) のコード補完を利用して、強調表示、構文チェック、オートコンプリートを行うことで、式ビルダーはデータ フローを簡単に構築できるように設計されています。 この記事では、式ビルダーを使用してビジネス ロジックを効率よく構築する方法について説明します。
 
-![式ビルダー](media/data-flow/expresion-builder.png "式ビルダー")
+:::image type="content" source="media/data-flow/expresion-builder.png" alt-text="式ビルダー":::
 
 ## <a name="open-expression-builder"></a>式ビルダーを開く
 
@@ -173,7 +176,7 @@ toLong( currentTimestamp() - toTimestamp('1970-01-01 00:00:00.000', 'yyyy-MM-dd 
 ### <a name="data-flow-time-evaluation"></a>データ フローの時刻の評価
 
 データ フローは、ミリ秒単位まで処理します。 *2018-07-31T20:00:00.2170000* の場合は、出力に *2018-07-31T20:00:00.217* が表示されます。
-ADF ポータルでは、 **[current browser setting]\(現在のブラウザーの設定\)** にタイムスタンプが表示されています。ここでは 217 が表示されていない可能性がありますが、データフローを最後まで実行すると、217 (ミリ秒部分) も同様に処理されます。 toString(myDateTimeColumn) を式として使用すると、データを完全な精度でプレビュー表示することができます。 実際上は、datetime を文字列ではなく datetime として処理します。
+サービス用のポータルでは、 **[current browser setting]\(現在のブラウザーの設定\)** にタイムスタンプが表示されます。217 が表示されない可能性がありますが、データフローを最後まで実行すると、217 (ミリ秒部分) も同様に処理されます。 toString(myDateTimeColumn) を式として使用すると、データを完全な精度でプレビュー表示することができます。 実際上は、datetime を文字列ではなく datetime として処理します。
  
 
 ## <a name="next-steps"></a>次のステップ

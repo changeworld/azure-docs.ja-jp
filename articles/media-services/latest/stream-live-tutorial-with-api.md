@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc, devx-track-csharp
 ms.date: 06/13/2019
 ms.author: inhenkel
-ms.openlocfilehash: d471431da7cc738f9ef908897ccab34343cc4c4b
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: f10ef55a44aa917fd8f0fb3783dcd29284512d7e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110470431"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121732662"
 ---
 # <a name="tutorial-stream-live-with-media-services-by-using-net-50"></a>チュートリアル: .NET 5.0 を使用して Media Services でライブ ストリーム配信を行う
 
@@ -68,11 +68,7 @@ git clone https://github.com/Azure-Samples/media-services-v3-dotnet.git
 
 ライブストリーミングのサンプルは [Live](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/Live) フォルダーにあります。
 
-ダウンロードしたプロジェクトに含まれる [appsettings.json](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/main/Live/LiveEventWithDVR/appsettings.json) を開きます。 値を、[Azure CLI を使用した Azure Media Services API へのアクセス](./access-api-howto.md)に関するページで取得した資格情報に置き換えます。
-
-このほか、プロジェクトのルートにある *.env* ファイルの書式を使用して、.NET サンプルのリポジトリにある全プロジェクトに一括で環境変数を設定することもできます。 *sample.env* ファイルをコピーし、Azure portal の Media Services **API アクセス** ページまたは Azure CLI から取得した情報を入力します。 *sample.env* は、あらゆるプロジェクトで利用できるようにするために、ファイル名を *.env* に変更します。
-
-*.gitignore* ファイルは、フォークしたリポジトリにこのファイルが公開されないように既に構成されています。 
+[!INCLUDE [appsettings or .env file](./includes/note-appsettings-or-env-file.md)]
 
 > [!IMPORTANT]
 > このサンプルでは、各リソースに一意のサフィックスを使用します。 デバッグを取り消した場合、または完全に実行せずにアプリを終了した場合、アカウントに複数のライブ イベントが作成されます。
@@ -81,14 +77,16 @@ git clone https://github.com/Azure-Samples/media-services-v3-dotnet.git
 
 ## <a name="examine-the-code-that-performs-live-streaming"></a>ライブ ストリーミングを実行するコードを確認する
 
-このセクションでは、*LiveEventWithDVR* プロジェクトの [Authentication.cs](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/main/Common_Utils/Authentication.cs) ファイルと [Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/main/Live/LiveEventWithDVR/Program.cs) ファイルで定義されている関数を調べます。
+このセクションでは、*LiveEventWithDVR* プロジェクトの [Authentication.cs](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/main/Common_Utils/Authentication.cs) ファイル (Common_Utils フォルダー内) と [Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/main/Live/LiveEventWithDVR/Program.cs) ファイルで定義されている関数を調べます。
 
 サンプルをクリーンアップせずに複数回実行しても名前の競合が発生しないように、サンプルは各リソースに対して一意のサフィックスを作成します。
 
 
 ### <a name="start-using-media-services-apis-with-the-net-sdk"></a>.NET SDK で Media Services API の使用を開始する
 
-.NET で Media Services API の使用を始めるには、`AzureMediaServicesClient` オブジェクトを作成する必要があります。 オブジェクトを作成するには、クライアントが Azure Active Directory を使用して Azure に接続するために必要な資格情報を指定する必要があります。 もう 1 つのオプションは対話型認証を使用する方法で、これは `GetCredentialsInteractiveAuthAsync` に実装されています。
+Authentication.cs では、ローカル構成ファイル (appsettings.json または .env) で指定された資格情報を使用して `AzureMediaServicesClient` オブジェクトが作成されます。
+
+`AzureMediaServicesClient` オブジェクトを使用すると、.NET で Media Services API の使用を開始できます。 オブジェクトを作成するには、クライアントが `GetCredentailsAsync` に実装されている Azure Active Directory を使用して Azure に接続するために必要な資格情報を指定する必要があります。 もう 1 つのオプションは対話型認証を使用する方法で、これは `GetCredentialsInteractiveAuthAsync` に実装されています。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet/Common_Utils/Authentication.cs#CreateMediaServicesClientAsync)]
 
@@ -204,7 +202,7 @@ foreach (StreamingPath path in paths.StreamingPaths)
 
 ## <a name="watch-the-event"></a>イベントの視聴
 
-イベントを視聴するには、ストリーミング ロケーターを作成するコードを実行したときに取得したストリーミング URL をコピーします。 任意のメディア プレーヤーを使用できます。 [Media Player デモ サイト](https://ampdemo.azureedge.net)でストリームをテストするには、[Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) を利用できます。
+**Ctrl + F5** キーを押してコードを実行します。 これにより、ライブ イベントの視聴に使用できるストリーミング URL が出力されます。 取得したストリーミング URL をコピーしてストリーミング ロケーターを作成します。 任意のメディア プレーヤーを使用できます。 [Media Player デモ サイト](https://ampdemo.azureedge.net)でストリームをテストするには、[Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) を利用できます。
 
 ライブ イベントが停止すると、イベントがオンデマンド コンテンツに自動的に変換されます。 イベントを停止して削除した後でも、アセットを削除しない限り、ユーザーはアーカイブされたコンテンツをビデオ オン デマンドとしてストリーム配信できます。 イベントがアセットを使用している場合は、アセットを削除できません。まず、イベントを削除する必要があります。
 

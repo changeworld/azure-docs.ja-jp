@@ -6,14 +6,14 @@ author: alkohli
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.date: 06/24/2019
+ms.date: 07/21/2021
 ms.author: alkohli
-ms.openlocfilehash: a15ebd43861e2116ddbb2d9055b289645962e203
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a649383ab6998715de9a696cc1abd86926c81432
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96573920"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122419470"
 ---
 # <a name="solutions-for-periodic-data-transfer"></a>定期的なデータの転送用のソリューション
  
@@ -30,11 +30,13 @@ ms.locfileid: "96573920"
     - **AzCopy** - このコマンドライン ツールを使用すると、最適なパフォーマンスで Azure BLOB、Files、および Table ストレージとの間で相互に簡単にデータをコピーできます。 AzCopy はコンカレンシーと並列処理をサポートし、中断された場合にコピー操作を再開することができます。
     - **Azure Storage REST API/SDK** – アプリケーションの構築時に、Azure Storage REST API に対するアプリケーションを開発し、複数の言語で提供される Azure SDK を使用できます。 REST API では、Azure との間で相互に高パフォーマンスのデータ コピーを行うことができるように特別に設計された、Azure Storage Data Movement Library を利用することもできます。
 
-- **継続的なデータ インジェスト ツール** – 持続的かつ継続的なデータ インジェストには、Data Box オンライン転送デバイスの 1 つまたは Azure Data Factory を選択できます。 これらのツールは IT プロフェッショナルによって設定され、データ転送を透過的に自動化できます。
+- **継続的なデータ インジェスト ツール** – 連続する継続的なデータ インジェストの場合は、次のいずれかのオプションを選択できます。
 
+    - **オブジェクト レプリケーション** - オブジェクト レプリケーションは、ソーススとコピー先ストレージ アカウントのコンテナー間でブロック BLOB を非同期的にコピーします。 オブジェクト レプリケーションをソリューションとして使用すると、2 つの異なるストレージ アカウントのコンテナーの同期状態を維持できます。
     - **Azure Data Factory** – 転送操作をスケールアウトする場合や、オーケストレーションとエンタープライズ レベルの監視機能が必要な場合は、Data Factory を使用する必要があります。 Azure Data Factory を使用すると、クラウド パイプラインを設定して、複数の Azure サービス間またはオンプレミスで、あるいは 2 つを組み合わせて、ファイルを定期的に転送することができます。 Azure Data Factory では、さまざまなデータ ストアからデータをインジェストし、データ移動とデータ転送を自動化する、データ駆動型ワークフローを調整することができます。
     - **オンライン転送用の Azure Data Box** - Data Box Edge と Data Box Gateway はオンラインのネットワーク デバイスであり、Azure の内外へのデータの移動が可能です。 Data Box Edge は、人工知能 (AI) 対応 Edge コンピューティングを使用して、アップロードの前にデータを前処理します。 Data Box Gateway は、同じデータ転送機能を備えた、デバイスの仮想バージョンです。
 
+Data Box のオンライン転送デバイスまたは Azure Data Factory は、IT プロフェッショナルが設定し、データ転送を透過的に自動化できます。
 
 ## <a name="comparison-of-key-capabilities"></a>主な機能の比較
 

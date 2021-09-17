@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 06/16/2021
 ms.topic: how-to
 ms.custom: deploy, devplatv2
-ms.openlocfilehash: 74c4bc6079c9045679842b071b6ab315ff1e4d47
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 3804839ba5c641d7ed563a0593005f89f0b91812
+ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114446616"
+ms.lasthandoff: 08/18/2021
+ms.locfileid: "122418406"
 ---
 # <a name="deploy-a-tensorflow-model-served-with-tf-serving-using-a-custom-container-in-a-managed-online-endpoint-preview"></a>マネージド オンライン エンドポイントのカスタム コンテナーを使用して TF Serving で提供される TensorFlow モデルをデプロイする (プレビュー)
 
@@ -31,7 +31,7 @@ Azure Machine Learning でマネージド オンライン エンドポイント�
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure CLI と ML 拡張機能をインストールして構成します。 詳細については、[2.0 CLI (プレビュー) のインストール、セットアップ、使用](how-to-configure-cli.md)に関するページを参照してください。 
+* Azure CLI と ML 拡張機能をインストールして構成します。 詳細については、[CLI (v2) (プレビュー) のインストール、セットアップ、使用](how-to-configure-cli.md)に関するページを参照してください。 
 
 * Azure リソース グループがあること、また、そのリソース グループにおける `Contributor` アクセス権が自分 (または使用するサービス プリンシパル) に割り当てられていることが必要です。 上記の記事に従って ML 拡張機能を構成していれば、そのようなリソース グループが得られます。 
 

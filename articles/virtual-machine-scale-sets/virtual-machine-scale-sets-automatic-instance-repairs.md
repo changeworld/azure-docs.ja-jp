@@ -9,14 +9,16 @@ ms.subservice: instance-protection
 ms.date: 02/28/2020
 ms.reviewer: jushiman
 ms.custom: avverma, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: af63d27f60c3e3fa8f6aa95cd30d1f93114d4078
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 6134e1f4b4823b2198a1ecc316644ef0cd11ca33
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112031171"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122690537"
 ---
 # <a name="automatic-instance-repairs-for-azure-virtual-machine-scale-sets"></a>Azure Virtual Machine Scale Sets の自動インスタンス修復
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 均一のスケール セット
 
 Azure Virtual Machine Scale Sets の自動インスタンス修復を有効にすると、正常なインスタンスのセットを維持することで、アプリケーションの高可用性を実現できます。 スケール セット内のインスタンスが[アプリケーション正常性拡張機能](./virtual-machine-scale-sets-health-extension.md)または [Load Balancer の正常性プローブ](../load-balancer/load-balancer-custom-probe-overview.md)によって報告された通り異常な状態であることが判明した場合、この機能により問題のあるインスタンスが削除され、新たに作成されたインスタンスにより置き換えられます。
 

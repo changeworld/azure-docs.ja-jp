@@ -1,19 +1,19 @@
 ---
 title: IP ファイアウォール規則を構成する
 description: Azure Synapse Analytics で IP ファイアウォール規則を構成する方法を説明した記事
-author: RonyMSFT
+author: ashinMSFT
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: security
-ms.date: 04/15/2020
-ms.author: ronytho
-ms.reviewer: jrasnick
-ms.openlocfilehash: 787e600df4185346b250d9a96bdb89927e134075
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 08/15/2021
+ms.author: seshin
+ms.reviewer: wiassaf
+ms.openlocfilehash: a375c4c99e3b86706f9fed7bc52f3064995cd21c
+ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103472014"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122252785"
 ---
 # <a name="azure-synapse-analytics-ip-firewall-rules"></a>Azure Synapse Analytics の IP ファイアウォール規則
 
@@ -25,15 +25,17 @@ IP ファイアウォール規則は、各要求の発信元 IP アドレスに�
 
 ## <a name="create-and-manage-ip-firewall-rules"></a>IP ファイアウォール規則の作成および管理
 
-IP ファイアウォール規則を Synapse ワークスペースに追加するには、2 つの方法があります。 IP ファイアウォールをワークスペースに追加するには、 **[Security + networking]\(セキュリティ + ネットワーク\)** を選択し、ワークスペースの作成時に **[Allow connections from all IP addresses]\(すべての IP アドレスからの接続を許可する\)** をオンにします。
+IP ファイアウォール規則を Azure Synapse ワークスペースに追加するには、2 つの方法があります。 IP ファイアウォールをワークスペースに追加するには、ワークスペースの作成時に **[ネットワーク]** を選択し、 **[Allow connections from all IP addresses]\(すべての IP アドレスからの接続を許可する\)** をオンにします。
 
-![[Security + networking]\(セキュリティ + ネットワーク\) ボタンが強調表示されているスクリーンショット。](./media/synpase-workspace-ip-firewall/ip-firewall-1.png)
+> [!Important]
+> この機能は、マネージド VNet に関連付けられていない Azure Synapse ワークスペースでのみ使用できます。
 
-![Azure portal での Synapse ワークスペース IP の構成。](./media/synpase-workspace-ip-firewall/ip-firewall-2.png)
+:::image type="content" source="./media/synpase-workspace-ip-firewall/azure-synapse-workspace-networking-connections-all-ip-addresses.png" lightbox="./media/synpase-workspace-ip-firewall/azure-synapse-workspace-networking-connections-all-ip-addresses.png" alt-text="[セキュリティ] タブと [Allow connections from all IP addresses]\(すべての IP アドレスからの接続を許可する\) チェックボックスが強調表示されているスクリーンショット。":::
+
 
 また、ワークスペースの作成後に、Synapse ワークスペースに IP ファイアウォール規則を追加することもできます。 Azure portal の **[セキュリティ]** の下で **[ファイアウォール]** を選択します。 新しい IP ファイアウォール規則を追加するには、それに名前、開始 IP、および終了 IP を指定します。 完了したら、 **[保存]** を選択します。
 
-![Azure portal での Azure Synapse ワークスペース IP の構成。](./media/synpase-workspace-ip-firewall/ip-firewall-3.png)
+:::image type="content" source="./media/synpase-workspace-ip-firewall/azure-synapse-workspace-networking-firewalls-add-client-ip.png" lightbox="./media/synpase-workspace-ip-firewall/azure-synapse-workspace-networking-firewalls-add-client-ip.png" alt-text="Synapse ワークスペースの [ネットワーク] ページのスクリーンショット。[クライアント IP の追加] ボタンと [ルール] フィールドが強調表示されています。":::
 
 ## <a name="connect-to-synapse-from-your-own-network"></a>独自のネットワークから Synapse に接続する
 

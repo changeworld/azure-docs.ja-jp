@@ -7,14 +7,16 @@ ms.service: virtual-machines
 ms.topic: how-to
 ms.date: 03/06/2020
 ms.author: mimckitt
-ms.openlocfilehash: 8b0bc143ca92961d7c358248b73ee5524e6835c3
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: bf81d49bbbfaae2b96dfb712ae69568695ba6f23
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108768195"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122687517"
 ---
 # <a name="custom-data-and-cloud-init-on-azure-virtual-machines"></a>Azure 仮想マシンでのカスタム データと cloud-init
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブルなスケール セット
 
 プロビジョニング時にスクリプトまたはその他のメタデータを Microsoft Azure 仮想マシンに挿入する必要がある場合があります。  他のクラウドでは、この概念は多くの場合、ユーザー データと呼ばれます。  Microsoft Azure には、カスタム データと呼ばれる同様の機能があります。 
 

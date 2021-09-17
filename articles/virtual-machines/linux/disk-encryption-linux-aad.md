@@ -9,14 +9,16 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: a88fd0cd1e973118cc52456030046b3478d07e7a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: dadbd135617335ecff85a4583fd85a79af5b2e34
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121741769"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122687873"
 ---
 # <a name="enable-azure-disk-encryption-with-azure-ad-on-linux-vms-previous-release"></a>Linux VM で Azure AD を使用して Azure Disk Encryption を有効にする (以前のリリース)
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブルなスケール セット 
 
 Azure Disk Encryption の新しいリリースでは、VM ディスク暗号化を有効にするために Azure Active Directory (Azure AD) アプリケーション パラメーターを指定する必要はありません。 新しいリリースでは、暗号化を有効にする手順の途中で、Azure AD の資格情報を指定する必要がなくなりました。 すべての新しい VM は、新しいリリースを使用して、Azure AD アプリケーション パラメーターを指定せずに暗号化する必要があります。 新しいリリースを使用して VM のディスク暗号化を有効にする方法の手順については、[Linux VM の Azure Disk Encryption](disk-encryption-linux.md) に関するページを参照してください。 Azure AD アプリケーション パラメーターで既に暗号化された VM はまだサポートされていますが、AAD 構文を使用して保持し続ける必要があります。
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/16/2021
-ms.openlocfilehash: 749caf37ee09f9dc794dee60c6d4a5b93da43c6e
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: 81c82152bf87944c7aed191c12e067567ec2b086
+ms.sourcegitcommit: c2f0d789f971e11205df9b4b4647816da6856f5b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114386319"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122662247"
 ---
 # <a name="configure-data-collection-for-the-azure-monitor-agent"></a>Azure Monitor エージェント用のデータ収集の構成
 
@@ -89,6 +89,7 @@ Windows イベント ログでサポートされている XPath の制限事項�
 > Get-WinEvent -LogName 'Application' -FilterXPath $XPath
 > ```
 >
+> - **上のコマンドレットで、"-LogName" パラメーターの値は XPath クエリの "!" までの最初の部分ですが、$XPath パラメーターに渡されるのは XPath クエリの残りの部分だけです。**
 > - イベントが返されたら、クエリは有効です。
 > - *[No events were found that match the specified selection criteria.]\(指定した選択条件に一致するイベントは見つかりませんでした。\)* というメッセージが表示された場合は、クエリはおそらく有効ですが、一致するイベントがローカル コンピューターにありません。
 > - *[The specified query is invalid]\(指定したクエリは無効です\)* というメッセージが表示された場合は、クエリ構文が無効です。 

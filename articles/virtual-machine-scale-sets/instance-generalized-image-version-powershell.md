@@ -10,14 +10,16 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: mimckitt
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c202b8b2d4535afd96ffad1806460c3cf43e34b6
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 591ad83cf9beeff7b25ffa1234441109dc169aa2
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112028039"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122691260"
 ---
 # <a name="create-a-scale-set-from-a-generalized-image-using-powershell"></a>PowerShell を使用して一般化されたイメージからスケール セットを作成する 
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: ユニフォーム スケール セット
 
 [共有イメージ ギャラリー](../virtual-machines/shared-image-galleries.md)に格納されている一般化されたイメージ バージョンから VM を作成します。 特殊化されたイメージを使用してスケール セットを作成する場合は、[特殊化されたイメージからのスケール セット インスタンスの作成](instance-specialized-image-version-powershell.md)に関する記事をご覧ください。
 

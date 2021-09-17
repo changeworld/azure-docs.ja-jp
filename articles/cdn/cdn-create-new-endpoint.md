@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 04/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: e8b3b5c28d00b4d7c81fa3e245113119ae3134ad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d98b7050b2472c1dd0405c213b450c719bcd8572
+ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102555705"
+ms.lasthandoff: 08/17/2021
+ms.locfileid: "122322447"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint"></a>クイック スタート:Azure CDN プロファイルとエンドポイントの作成
 
@@ -50,7 +50,7 @@ CDN プロファイルを作成したら、これを使用してエンドポイ�
     | **配信元の種類** | **[ストレージ]** を選択します。 | 
     | **配信元のホスト名** | ご使用の Azure Storage アカウントのホスト名 (*cdnstorageacct123.blob.core.windows.net* など) をドロップダウン リストから選択します。 |
     | **配信元のパス** | 空白のままにします。 |
-    | **配信元のホスト ヘッダー** | 既定値 (ストレージ アカウントのホスト名) をそのまま使用します。 |  
+    | **配信元のホスト ヘッダー** | 既定値 (配信元のホスト名) のままにします。 |  
     | **プロトコル** | **[HTTP]** と **[HTTPS]** のオプションを既定値の選択状態のままにします。 |
     | **配信元のポート** | 既定のポート値のままにします。 | 
     | **最適化の対象** | 既定で選択される **[一般的な Web 配信]** のままにします。 |

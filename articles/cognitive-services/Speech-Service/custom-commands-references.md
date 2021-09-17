@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: c0694e7d136b7fd339362145179939d350eb23ef
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 1040c05b081c6edb181d349d00468d1ba0aac3a7
+ms.sourcegitcommit: d01c2b2719e363178720003b67b968ac2a640204
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110475967"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122455918"
 ---
 # <a name="custom-commands-concepts-and-definitions"></a>カスタム コマンドの概念と定義
 
@@ -51,12 +51,24 @@ ms.locfileid: "110475967"
 ### <a name="type"></a>Type
 カスタム コマンドでは、次のパラメーターの型がサポートされています。
 
+* Age
+* 通貨
 * DateTime
+* Dimension
+* 電子メール
 * [地理的な場所]
 * Number
+* Ordinal
+* パーセント
+* PersonName
+* PhoneNumber
 * String
+* 気温
+* url
 
-geography を除き、これらのパラメーターの型はすべて、ポータルから構成できる既定値の構成をサポートしています。
+すべてのロケールで "文字列" パラメーター型がサポートされますが、その他の型を使えるかどうかはロケールによって異なります。 Custom Commands では、LUIS の事前構築済みエンティティ ソリューションが使用されます。そのため、あるロケールであるパラメーター型が使えるかどうかは、そのロケールにおける LUIS の事前構築済みエンティティのサポートによって決まります。 [LUIS の事前構築済みエンティティのロケール別サポート](/azure/cognitive-services/luis/luis-reference-prebuilt-entities)に関するページに詳細があります。
+
+Number、String、DateTime のような一部のパラメーター型では、ポータルから構成できる既定値の構成がサポートされています。
 
 ### <a name="configuration"></a>構成
 構成は、String 型に対してのみ定義されるパラメーター プロパティです。 サポートされている値を次に示します。

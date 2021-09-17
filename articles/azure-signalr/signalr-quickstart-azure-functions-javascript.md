@@ -10,12 +10,12 @@ ms.devlang: javascript
 ms.custom:
 - devx-track-js
 - mode-api
-ms.openlocfilehash: 9e8bb3d49ef236521f7d4a48060b2405dbbbc104
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: fa3c4405bd2c62642e5d61dad10b078695fb32cd
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112462021"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122444676"
 ---
 # <a name="quickstart-use-javascript-to-create-an-app-showing-github-star-count-with-azure-functions-and-signalr-service"></a>クイック スタート: JavaScript を使用して Azure Functions と SignalR Service で GitHub の星の数を表示するアプリを作成する
 
@@ -50,7 +50,7 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
 問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qsjs)。
 
 
-## <a name="setup-and-run-the-azure-function-locally"></a>Azure Functions の設定とローカルでの実行
+## <a name="setup-and-run-the-azure-function-locally"></a>Azure Functions をローカルで設定して実行する
 
 1. Azure Function Core Tools がインストールされていることを確認します。 空のディレクトリを作成し、コマンド ラインを使用してディレクトリに移動します。
 
@@ -66,7 +66,30 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
         ```bash
         func new -n index -t HttpTrigger
         ```
-        
+        `index/function.json` を開いて次の JSON コードをコピーします。
+
+        ```json
+        {
+          "bindings": [
+            {
+              "authLevel": "anonymous",
+              "type": "httpTrigger",
+              "direction": "in",
+              "name": "req",
+              "methods": [
+                "get",
+                "post"
+              ]
+            },
+            {
+              "type": "http",
+              "direction": "out",
+              "name": "res"
+            }
+          ]
+        }
+        ```
+
         `index/index.js` を開いて次のコードをコピーします。
 
         ```javascript
@@ -191,7 +214,7 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
         }    
         ```
 
-3. このサンプルのクライアント インターフェイスは Web ページです。 `index` 関数で `content/index.html` から HTML コンテンツを読み込むと考え、`content` ディレクトリに `index.html` というファイルを新規に作成します。 そして、次の内容をコピーします。
+3. このサンプルのクライアント インターフェイスは Web ページです。 `index` 関数で `content/index.html` から HTML コンテンツを読み込むと考え、プロジェクト ルート フォルダーの下の `content` ディレクトリに新たに `index.html` ファイルを作成します。 そして、次の内容をコピーします。
 
     ```html
     <html>
@@ -229,23 +252,23 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
     
         ![プライマリ接続文字列が強調表示されているスクリーンショット。](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-keys.png)
 
-    1. プライマリ接続文字列をコピーします。 次に、以下のコマンドを実行します。
+    1. プライマリ接続文字列をコピーします。 そして、以下のコマンドを実行します。
     
         ```bash
-        func settings add AzureSignalRConnectionString '<signalr-connection-string>'
+        func settings add AzureSignalRConnectionString "<signalr-connection-string>"
         ```
     
-5. Azure 関数をローカルで実行します。
+5. Azure Functions をローカルで実行します:
 
     ```bash
     func start
     ```
 
-    その後、Azure 関数がローカルで実行されます。 ブラウザーを使用して `http://localhost:7071/api/index` にアクセスすると、現在の開始カウントを確認できます。 また、GitHub でスターを付けたり外したりすると、数秒ごとに開始カウントが更新されます。
+    その後、Azure Functions がローカルで実行されます。 ブラウザーを使用して `http://localhost:7071/api/index` にアクセスすると、現在の星の数を確認できます。 また、GitHub で星を付けたり外したりすると、数秒ごとに星の数が更新されます。
 
     > [!NOTE]
     > SignalR のバインディングには Azure Storage が必要ですが、Function がローカルで動作している場合は、ローカル ストレージ エミュレーターを使用することができます。
-    > `There was an error performing a read operation on the Blob Storage Secret Repository. Please ensure the 'AzureWebJobsStorage' connection string is valid.` のようなエラーが発生した場合は、[ストレージ エミュレーター](../storage/common/storage-use-emulator.md)をダウンロードして有効にする必要があります
+    > `There was an error performing a read operation on the Blob Storage Secret Repository. Please ensure the 'AzureWebJobsStorage' connection string is valid.` のようなエラーが発生した場合は、[Storage Emulator](../storage/common/storage-use-emulator.md) をダウンロードして有効にする必要があります
 
 問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qscsharp)
 
@@ -255,7 +278,7 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイックスタートでは、ローカルでリアルタイムのサーバーレス アプリケーションを構築して実行しました。 Azure Functions で SignalR Service のバインディングを使用する方法について確認します。
+このクイックスタートでは、リアルタイムのサーバーレス アプリケーションを構築してローカルで実行しました。 Azure Functions で SignalR Service のバインディングを使用する方法について確認します。
 次に、SignalR Service を使用して、クライアントと Azure Functions の間で双方向通信を行う方法について詳しく説明します。
 
 > [!div class="nextstepaction"]

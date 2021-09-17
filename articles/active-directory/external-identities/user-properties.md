@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 08/04/2021
+ms.date: 08/24/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a10345851d80bf8903e2b7bcb7fd295e6656bc7
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9a0cda7edf93578e95ee9a6f15cc8c3c26274b49
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121746142"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122823716"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Azure Active Directory B2B コラボレーション ユーザーのプロパティ
 
@@ -25,7 +25,7 @@ ms.locfileid: "121746142"
 
 招待側の組織のニーズに応じて、Azure AD B2B コラボレーション ユーザーは、以下のいずれかのアカウント状態になります。
 
-- 状態 1:Azure AD の外部インスタンスに所属し、招待側組織のゲスト ユーザーとして表されます。 この場合、B2B ユーザーは招待されたテナントに属している Azure AD アカウントを使用してサインインします。 パートナー組織が Azure AD を使用しない場合でも、Azure AD にゲスト ユーザーが作成されます。 要件は、ゲスト ユーザーが招待に応じること、および Azure AD が彼らの電子メール アドレスを検証することです。 この状態は、Just-In-Time (JIT) テナント、または "バイラル テナント" とも呼ばれます。
+- 状態 1:Azure AD の外部インスタンスに所属し、招待側組織のゲスト ユーザーとして表されます。 この場合、B2B ユーザーは招待されたテナントに属している Azure AD アカウントを使用してサインインします。 パートナー組織が Azure AD を使用しない場合でも、Azure AD にゲスト ユーザーが作成されます。 要件は、ゲスト ユーザーが招待に応じること、および Azure AD が彼らの電子メール アドレスを検証することです。 この状態は、Just-In-Time (JIT) テナント、"バイラル テナント"、またはアンマネージド Azure AD とも呼ばれます。
 
    > [!IMPORTANT]
    > **2021 年 10 月以降**、Microsoft では、B2B コラボレーション シナリオ向けのアンマネージド Azure AD アカウントとテナントを作成することによる招待の利用をサポートしなくなります。 その準備として、[メールによるワンタイム パスコード認証](one-time-passcode.md)を使用することをお勧めしています。この認証機能は現在一般利用できます。

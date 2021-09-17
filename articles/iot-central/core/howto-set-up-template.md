@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - contperf-fy21q1
 - device-developer
-ms.openlocfilehash: 451a880485503684f09108a84c559f222362bae8
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: 59c95633322f279504ded61bbf02a7415b1337b9
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122071592"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122446291"
 ---
 # <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>Azure IoT Central アプリケーションで新しい IoT デバイスの種類を定義する
 
@@ -63,6 +63,9 @@ ms.locfileid: "122071592"
 ## <a name="autogenerate-a-device-template"></a>デバイス テンプレートを自動生成する
 
 デバイス テンプレートにまだ割り当てられていない接続済みデバイスから、デバイス テンプレートを自動的に作成することもできます。 IoT Central は、デバイスから送信されるテレメトリ値とプロパティ値を使用して、デバイス モデルを推測します。
+
+> [!NOTE]
+> 現在、このプレビュー機能では、コンポーネントからのテレメトリとプロパティは使用できません。 ルート テレメトリとプロパティからのみ機能を生成できます。
 
 次の手順は、この機能を使用する方法を示しています。
 
@@ -239,7 +242,7 @@ cloud-to-device メッセージ:
 |セマンティックの種類 | モデルからセマンティックの種類をオーバーライド。 |
 |単位 | モデルから単位をオーバーライド。 |
 |表示単位 | モデルからオーバーライド。 |
-|コメント | モデルからオーバーライド。 |
+|解説 | モデルからオーバーライド。 |
 |説明 | モデルからオーバーライド。 |
 |Color | IoT Central 固有のオプション。 |
 |最小値 | 最小値を設定 - IoT Central 固有のオプション。 |
@@ -247,7 +250,7 @@ cloud-to-device メッセージ:
 |小数点以下の桁数 | IoT Central 固有のオプション。 |
 |初期値 | コマンドのみの IoT Central 固有の値 - 既定のパラメーター値。 |
 
-## <a name="views"></a>ビュー
+## <a name="views"></a>Views
 
 ビューを使用すると、オペレーターがデバイスを監視および操作できるビューとフォームを定義することができます。 ビューでは、グラフなどの視覚化を使用して、テレメトリ値とプロパティ値が表示されます。
 

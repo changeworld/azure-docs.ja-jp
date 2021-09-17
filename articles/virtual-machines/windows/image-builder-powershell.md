@@ -10,14 +10,16 @@ ms.service: virtual-machines
 ms.subervice: image-builder
 ms.colletion: windows
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: bae85c009bb382ee79526fb547af5e475a7ed785
-ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
+ms.openlocfilehash: c1c6937f3b532b94b3b82fcd17bb6591f4887b96
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2021
-ms.locfileid: "113594843"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122690703"
 ---
 # <a name="create-a-windows-vm-with-azure-image-builder-using-powershell"></a>PowerShell から Azure Image Builder を使用して Windows VM を作成する
+
+**適用対象:** :heavy_check_mark: Windows VM 
 
 この記事では、Azure VM Image Builder PowerShell モジュールを使用して、カスタマイズした Windows イメージを作成する方法について説明します。
 

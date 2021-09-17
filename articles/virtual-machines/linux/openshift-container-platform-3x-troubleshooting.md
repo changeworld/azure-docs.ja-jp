@@ -7,19 +7,20 @@ ms.service: virtual-machines
 ms.subservice: openshift
 ms.collection: linux
 ms.topic: troubleshooting
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
 ms.custom: devx-track-ansible
-ms.openlocfilehash: b6dfb4cb697e7d66c7db323df9786ff7ad45e1d7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5f01a31bbee5a6abe40020a5760ef5a5fafcd3ff
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101672328"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122688234"
 ---
 # <a name="troubleshoot-openshift-container-platform-311-deployment-in-azure"></a>Azure での OpenShift Container Platform 3.11 デプロイのトラブルシューティング
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブルなスケール セット 
 
 OpenShift クラスターが正常にデプロイされない場合は、Azure portal にエラーが出力されます。 この出力が読みにくく、問題を簡単に識別できない場合があります。 この出力にざっと目を通して、終了コード 3、4、または 5 を探してください。 これら 3 つの終了コードの情報を次に示します。
 

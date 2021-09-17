@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: a84d4d71e5190c455441d1e627381be86ef5e129
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2fa227e1aa503cf17da6027da8754a6f51e7f469
+ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97608529"
+ms.lasthandoff: 08/14/2021
+ms.locfileid: "122183040"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-peakon"></a>チュートリアル: Azure Active Directory と Peakon の統合
 
@@ -45,6 +45,7 @@ Peakon と Azure AD の統合を構成するには、次のものが必要です
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
 * Peakon では、**SP** と **IDP** によって開始される SSO がサポートされます
+* Peakon では、[**自動化された** ユーザー プロビジョニングとプロビジョニング解除](peakon-provisioning-tutorial.md) (推奨) がサポートされます。
 
 ## <a name="adding-peakon-from-the-gallery"></a>ギャラリーからの Peakon の追加
 

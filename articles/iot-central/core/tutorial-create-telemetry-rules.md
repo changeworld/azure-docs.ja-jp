@@ -7,12 +7,12 @@ ms.date: 01/08/2021
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: ce10143be81da9ad797ba0ccd68837b647aeb7a7
-ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
+ms.openlocfilehash: 6a9a7d23d4fb8f11c27f279bdef8d2b46274b21e
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2021
-ms.locfileid: "113301974"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121743384"
 ---
 # <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>チュートリアル:Azure IoT Central アプリケーションで規則を作成して通知を設定する
 
@@ -110,7 +110,7 @@ Azure IoT Central を使用して、接続されたデバイスをリモート�
 
     :::image type="content" source="media/tutorial-create-telemetry-rules/aggregate-condition-filled-out.png" alt-text="入力された集計条件を示すスクリーンショット":::
 
-複数の条件をルールに追加するには、 **[+ 条件]** を選択します。 複数の条件を指定する場合、ルールをトリガーするためにはすべての条件が満たされる必要があります。 各条件は、暗黙的な `AND` 句によって結合されます。 複数の条件で時間の集計を使用している場合は、すべてのテレメトリ値を集計する必要があります。
+複数の条件をルールに追加するには、 **[+ 条件]** を選択します。 複数の条件を追加する場合は、ルールをトリガーするために、すべての条件が満たされる必要があるか、またはいずれかの条件が満たされる必要があるかを指定できます。 複数の条件で時間の集計を使用している場合は、すべてのテレメトリ値を集計する必要があります。
 
 ### <a name="configure-actions"></a>アクションを構成する
 

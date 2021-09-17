@@ -9,14 +9,16 @@ ms.subservice: disks
 ms.date: 10/15/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurepowershell
-ms.openlocfilehash: 59b015232fcfe2fd98e1b9f28c2eb4fa86606049
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9b7ed6cbfcf93e05efb294c7af907a2416c3fe56
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102519573"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122691342"
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-azure-powershell"></a>Azure PowerShell を使用した仮想マシン スケール セットの OS および接続されているデータ ディスクの暗号化
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: 均一のスケール セット
 
 Azure PowerShell モジュールは、PowerShell コマンド ラインやスクリプトで Azure リソースを作成および管理するために使用します。  この記事では、Azure PoweShell を使用して、仮想マシン スケール セットを作成し、暗号化する方法について説明します。 仮想マシン スケール セットへの Azure Disk Encryption の適用の詳細については、「[仮想マシン スケール セットの Azure Disk Encryption](disk-encryption-overview.md)」を参照してください。
 

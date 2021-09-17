@@ -9,14 +9,16 @@ ms.workload: infrastructure-services
 ms.date: 03/19/2021
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 1a82c13d0ad64f100f2fb8b826b1786afa81abac
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 11c3fadd7f95f07bbcbf095e8d6a126022bbea0b
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122253371"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122697923"
 ---
 # <a name="high-performance-computing-vm-sizes"></a>ハイ パフォーマンス コンピューティング VM のサイズ
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 > [!TIP]
 > **[仮想マシン セレクター ツール](https://aka.ms/vm-selector)** を使って、ワークロードに最適な他のサイズを見つけてください。

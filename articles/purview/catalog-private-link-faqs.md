@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 05/11/2021
-ms.openlocfilehash: 6f9af57ad381604ffdf3882602a5dfa4163b8b25
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 3d7a37565b46137a95f0dd30a3e29b750bed3afe
+ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113090585"
+ms.lasthandoff: 08/20/2021
+ms.locfileid: "122515566"
 ---
 # <a name="faq-about-azure-purview-private-endpoints"></a>Azure Purview プライベート エンドポイントに関する FAQ
 
@@ -74,11 +74,11 @@ Azure Key Vault またはサービス プリンシパルです。
 
 ### <a name="what-private-dns-zones-are-required-for-azure-purview-for-a-private-endpoint"></a>プライベート エンドポイントの Azure Purview に必要なプライベート DNS ゾーンは何ですか?
 
-Azure Purview リソースの場合:
+Azure Purview "_アカウント_" および "_ポータル_" プライベート エンドポイントの場合:
 
 - `privatelink.purview.azure.com`
 
-Azure Purview 管理対象リソースの場合:
+Azure Purview "_インジェスト_" プライベート エンドポイントの場合:
 
 - `privatelink.blob.core.windows.net`
 - `privatelink.queue.core.windows.net`
@@ -131,6 +131,6 @@ Azure Purview アカウントがプライベート リンクを使用してデ�
 
 プライベート エンドポイントの DNS 設定の詳細については、「[Azure プライベート エンドポイントの DNS 構成](../private-link/private-endpoint-dns.md)」を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Private Link を使用して Azure Purview を設定するには、[Azure Purview アカウントにプライベート エンドポイントを使用する](./catalog-private-link.md)方法に関する記事を参照してください。

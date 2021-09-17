@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/14/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 6307c99c0796fb4159da7563c951304ceef6ece2
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 125f3aa1cb3cfec0b7e8ec3cfafebdf2fae53e59
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121750861"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122771213"
 ---
 # <a name="azure-digital-twins-high-availability-and-disaster-recovery"></a>Azure Digital Twins の高可用性とディザスター リカバリー
 
@@ -22,17 +22,17 @@ ms.locfileid: "121750861"
 
 Azure Digital Twins では、次の機能オプションがサポートされています。
 * *リージョン内 HA* -サービスのアップタイムを実現するために組み込まれている冗長性
-* *リージョン間 DR* -予期しないデータ センターの障害が発生した場合の Azure geo ペア リージョンへのフェールオーバー
+* "*リージョン間 DR*" - 予期しないデータ センターの障害が発生した場合の、geo ペアになっている Azure リージョンへのフェールオーバー
 
 HA/DR の設計に関する一般的な Azure ガイダンスについては、[ベスト プラクティス](#best-practices)に関するセクションも参照してください。
 
 ## <a name="intra-region-ha"></a>リージョン内 HA
  
-Azure Digital Twins では、サービス内で冗長性を実装することで、リージョン内 HA が実現されます。 これは、アップタイムの[サービス SLA](https://azure.microsoft.com/support/legal/sla/digital-twins)に反映されます。 **これらの HA 機能を利用するために、Azure Digital Twins ソリューションの開発者が追加の作業を行う必要はありません。** Azure Digital Twins ではかなり高いアップタイムが保証されていますが、分散コンピューティング プラットフォームの場合と同様に一時的な障害が発生する可能性があります。 一時的な障害に対処するには、クラウド アプリケーションと対話するコンポーネントに適切な再試行ポリシーを組み込む必要があります。
+Azure Digital Twins では、サービス内で冗長性を実装することで、リージョン内 HA が実現されます。 この機能は、アップタイムの[サービス SLA](https://azure.microsoft.com/support/legal/sla/digital-twins) に反映されます。 **これらの HA 機能を利用するために、Azure Digital Twins ソリューションの開発者が追加の作業を行う必要はありません。** Azure Digital Twins ではかなり高いアップタイムが保証されていますが、分散コンピューティング プラットフォームの場合と同様に一時的な障害が発生する可能性があります。 一時的な障害に対処するには、クラウド アプリケーションと対話するコンポーネントに適切な再試行ポリシーを組み込む必要があります。
 
 ## <a name="cross-region-dr"></a>リージョン間 DR
 
-リージョン内の停電やその他のイベントにより、データセンターに長時間の停止が発生する場合があります。 このようなイベントはまれであり、障害時に、前述のリージョン内 HA 機能があっても役立つとは限りません。 Azure Digital Twins では、Microsoft が開始するフェールオーバーを使用して、これに対処します。
+リージョン内の停電やその他のイベントにより、データセンターに長時間の停止が発生する場合があります。 このようなイベントはまれであり、障害時に、前述のリージョン内 HA 機能があっても役立つとは限りません。 Azure Digital Twins では、Microsoft が開始するフェールオーバーによって、このシナリオに対処します。
 
 **Microsoft が開始するフェールオーバー** は、まれな状況で実行されます。影響を受けるリージョンのすべての Azure Digital Twins インスタンスは、対応する [geo ペア リージョン](../best-practices-availability-paired-regions.md)にフェールオーバーされます。 このプロセスは既定のオプションであり (ユーザーがオプトアウトする方法はありません)、ユーザー操作は必要はありません。 Microsoft は、このオプションを実行するタイミングを決定する権利を留保します。 このメカニズムでは、ユーザーのインスタンスがフェールオーバーされる前にユーザーの同意を必要としません。
 

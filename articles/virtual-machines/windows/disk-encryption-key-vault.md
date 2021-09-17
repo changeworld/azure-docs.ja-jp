@@ -9,14 +9,16 @@ author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: a4cd97f838c454a1ea2fa2dba7be327cf157b081
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: eed24e01541b15ce002cb5f10538b376ca0797b7
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108288996"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122697607"
 ---
 # <a name="create-and-configure-a-key-vault-for-azure-disk-encryption-on-a-windows-vm"></a>Windows VM で Azure Disk Encryption のキー コンテナーを作成して構成する
+
+**適用対象:** :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブルなスケール セット 
 
 Azure Disk Encryption では、Azure Key Vault を使用して、ディスク暗号化キーとシークレットを制御および管理します。  キー コンテナーの詳細については、「[Azure Key Vault の概要](../../key-vault/general/overview.md)」と「[キー コンテナーのセキュリティ保護](../../key-vault/general/security-features.md)」を参照してください。 
 

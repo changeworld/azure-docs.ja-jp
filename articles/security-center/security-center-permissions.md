@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: overview
 ms.date: 07/04/2021
 ms.author: memildin
-ms.openlocfilehash: 50a907625d9ef2db84289165f377b9ebf5f5d56e
-ms.sourcegitcommit: 6ea4d4d1cfc913aef3927bef9e10b8443450e663
+ms.openlocfilehash: 9f35b3e79736ed195af9e0fc1303a24951fbb675
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2021
-ms.locfileid: "113297498"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121734849"
 ---
 # <a name="permissions-in-azure-security-center"></a>Azure Security Center におけるアクセス許可
 

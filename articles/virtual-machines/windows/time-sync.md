@@ -8,14 +8,16 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 85abc77757d31f3b1054a0670ea3f65a4fcb2e52
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dc35b26d1bf81b7d3cc139d0076c44a481cf4a70
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102555960"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122689657"
 ---
 # <a name="time-sync-for-windows-vms-in-azure"></a>Azure での Windows VM の時刻同期
+
+**適用対象:** :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 時刻同期は、セキュリティとイベントの関連付けで重要になります。 場合によっては、分散トランザクションの実装で使用されます。 複数のコンピューター システム間での時刻の精度は、同期によって実現されます。 同期は、再起動や、時刻をフェッチするコンピューターとタイム ソースとの間のネットワーク トラフィックなど、複数の要因に影響を受ける可能性があります。 
 

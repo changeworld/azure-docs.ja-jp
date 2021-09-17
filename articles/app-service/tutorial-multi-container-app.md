@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 10/31/2020
 ms.author: msangapu
 ms.custom: cli-validate, devx-track-azurecli
-ms.openlocfilehash: b9a3880c88224906e68054475233e8d8ce02476a
-ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
+ms.openlocfilehash: 0e4bcc24aa64cfa875057d8503d0d6b629b36896
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112964970"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121748813"
 ---
 # <a name="tutorial-create-a-multi-container-preview-app-in-web-app-for-containers"></a>チュートリアル:Web App for Containers でマルチコンテナー (プレビュー) アプリを作成する
 
@@ -530,8 +530,8 @@ WordPress が Redis サーバーに接続されます。 同じページに接�
 
 または、他のリソースを参照してください。
 
-> [!div class="nextstepaction"]
-> [カスタム コンテナーの構成](configure-custom-container.md)
+- [カスタム コンテナーの構成](configure-custom-container.md)
+- [環境変数とアプリ設定のリファレンス](reference-app-settings.md)
 
 <!--Image references-->
 [1]: ./media/tutorial-multi-container-app/azure-multi-container-wordpress-install.png

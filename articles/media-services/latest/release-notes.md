@@ -12,12 +12,12 @@ ms.custom: references_regions
 ms.topic: article
 ms.date: 03/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: 3258baa30d689513ae09ea727ac1db603f8bf5fe
-ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
+ms.openlocfilehash: 46ebdd1f5cb3093b0c1c1a5bc3273cf1aa1afd8f
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114720286"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122634829"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 リリース ノート
 
@@ -30,6 +30,26 @@ ms.locfileid: "114720286"
 * バグの修正
 * 非推奨の機能
 
+## <a name="july-2021"></a>2021 年 7 月
+
+### <a name="net-sdk-microsoftazuremanagementmedia--500-release-available-in-nuget-coming-soon---early-september-2021"></a>.NET SDK (Microsoft.Azure.Management.Media) 5.0.0 リリースは NuGet (近日公開予定 - 2021 年 9 月上旬) で利用可能です。
+
+[Microsoft.Azure.Management.Media](https://www.nuget.org/packages/Microsoft.Azure.Management.Media/5.0.0) .NET SDK バージョン 5.0.0 が NuGet でリリースされました。 このバージョンは、Open API (Swagger) ARM Rest API の [2021-06-01 安定](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2021-06-01)バージョンと連動するように生成されています。
+
+4\.0.0 リリースからの変更点について詳しくは、[変更ログ](https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/mediaservices/Microsoft.Azure.Management.Media/CHANGELOG.md)を参照してください。
+
+#### <a name="changes-in-the-500-net-sdk-release-coming-soon---early-september-2021"></a>5\.0.0 .NET SDK リリースの変更点 (近日公開予定 - 2021 年 9 月上旬)
+
+* Media Services アカウントはシステムおよびユーザー割り当てマネージド ID 対応になりました。
+* **PublicNetworkAccess** オプションを Media Services アカウントに追加しました。 このオプションを Private Link 機能と共に使用すると、アクセスをプライベート ネットワークのみに制限し、パブリック ネットワークからのアクセスをすべてブロックすることができます。
+* 基本パススルー - 新しい種類のライブ イベントが追加されています。 "基本パススルー" ライブ イベントは標準パススルー ライブ イベントと同様の機能を備えていますが、入力と出力にいくつかの制限があり、低価格で提供されます。
+* **PresetConfigurations** - 出力設定と、[コンテンツに対応したエンコード プリセット](./encode-content-aware-concept.md)に使用される最小および最大ビットレートをカスタマイズできます。 これにより、出力トラック番号や解像度が制限されているコンテンツに対応したエンコードを使用する際に、よりよい見積もりや正確な請求計画を立てることができます。
+
+#### <a name="breaking-changes-in-tht-500-net-sdk-release"></a>5\.0.0 .NET SDK リリースの破壊的変更
+
+* 他のすべての Azure SDK と一貫性を保つため、**ApiErrorException** が **ErrorResponseException** に置換されました。 例外本文は変更されません。
+* Media Service コンストラクターには、KeyDelivery パラメーターの後に新しい省略可能な PublicNetworkAccess パラメーターが与えられます。
+* MediaServiceIdentity の Type プロパティは、複数の型をコンマで区切って入れるために、ManagedIdentityType 列挙型から文字列に変更されました。 型の有効な文字列は、SystemAssigned または SystemAssigned、UserAssigned、または UserAssigned です。
 
 ## <a name="june-2021"></a>2021 年 6 月
 

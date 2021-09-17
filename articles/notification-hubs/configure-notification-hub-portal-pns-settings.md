@@ -7,17 +7,17 @@ manager: femila
 ms.service: notification-hubs
 ms.workload: mobile
 ms.topic: quickstart
-ms.date: 06/22/2020
+ms.date: 08/23/2021
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 02/14/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 31d915cd44bcf60f3515eb1a84309980f45d40b0
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: d7a46f41aecf4b53fed309ef9d1eaaaeadb819fc
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107868287"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122770309"
 ---
 # <a name="quickstart-set-up-push-notifications-in-a-notification-hub"></a>クイック スタート:通知ハブのプッシュ通知を設定する
 
@@ -123,6 +123,9 @@ Windows プッシュ通知サービス (WNS) を設定するには、次の手�
 詳細については、[Azure Notification Hubs を使用して UWP アプリに通知を送信する](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)方法に関するページを参照してください。
 
 ## <a name="microsoft-push-notification-service-for-windows-phone"></a>Windows Phone 用 Microsoft プッシュ通知サービス
+
+> [!NOTE]
+> Microsoft プッシュ通知サービス (MPNS) は非推奨となり、サポートされなくなりました。
 
 Windows Phone 用 Microsoft プッシュ通知サービス (MPNS) を設定するには、次の手順に従います。
 

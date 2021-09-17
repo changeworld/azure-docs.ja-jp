@@ -8,14 +8,16 @@ ms.date: 03/02/2020
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: image-builder
-ms.openlocfilehash: 87f77b72104caf74007d63477f6f845c7ae8ad96
-ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
+ms.openlocfilehash: ea18c4f5738fef119106dd983b58252ef364bae8
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2021
-ms.locfileid: "113593691"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122770358"
 ---
 # <a name="create-a-linux-image-and-distribute-it-to-a-shared-image-gallery-by-using-azure-cli"></a>Azure CLI を使用して Linux イメージを作成し Shared Image Gallery に配布する
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: フレキシブル スケール セット 
 
 この記事では、Azure Image Builder と Azure CLI を使用して [Shared Image Gallery](../shared-image-galleries.md) でイメージ バージョンを作成し、そのイメージをグローバルに配布する方法について説明します。 この操作は、[Azure PowerShell](../windows/image-builder-gallery.md) を使用して行うこともできます。
 
@@ -69,10 +71,10 @@ imageDefName=myIbImageDef
 runOutputName=aibLinuxSIG
 ```
 
-サブスクリプション ID の変数を作成します。 `az account show -o json | grep id` を使用してこれを取得できます。
+サブスクリプション ID の変数を作成します。
 
 ```azurecli-interactive
-subscriptionID=<Subscription ID>
+subscriptionID=$(az account show --query id --output tsv)
 ```
 
 リソース グループを作成します。
@@ -90,7 +92,7 @@ identityName=aibBuiUserId$(date +'%s')
 az identity create -g $sigResourceGroup -n $identityName
 
 # get identity id
-imgBuilderCliId=$(az identity show -g $sigResourceGroup -n $identityName -o json | grep "clientId" | cut -c16- | tr -d '",')
+imgBuilderCliId=$(az identity show -g $sigResourceGroup -n $identityName --query clientId -o tsv)
 
 # get the user identity URI, needed for the template
 imgBuilderId=/subscriptions/$subscriptionID/resourcegroups/$sigResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$identityName

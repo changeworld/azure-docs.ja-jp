@@ -3,14 +3,14 @@ title: Azure Kubernetes Service (AKS) でホストベースの暗号化を有効
 description: Azure Kubernetes Service (AKS) クラスターでホストベースの暗号化を構成する方法について説明します
 services: container-service
 ms.topic: article
-ms.date: 03/03/2021
-ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 3d5009c164ab09d3977bb15d85b166a31c1f1a0b
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.date: 04/26/2021
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 3eb2f0023cbd0bbe36b466ecf4a1380aa20a2c5c
+ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109754319"
+ms.lasthandoff: 08/19/2021
+ms.locfileid: "122446309"
 ---
 # <a name="host-based-encryption-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) のホストベースの暗号化
 
@@ -26,7 +26,30 @@ ms.locfileid: "109754319"
 
 ### <a name="prerequisites"></a>前提条件
 
-- Azure CLI バージョン 2.23.0 以降
+- CLI 拡張機能 v2.23 以降のバージョンがインストールされていることを確認します。
+- `Microsoft.Compute` の `EncryptionAtHost` 機能フラグが有効になっていることを確認します。
+
+### <a name="register-encryptionathost--preview-features"></a>`EncryptionAtHost` プレビュー機能の登録
+
+ホストベースの暗号化を使用する AKS クラスターを作成するには、サブスクリプションで `EncryptionAtHost` 機能フラグを有効にする必要があります。
+
+次の例に示すように [az feature register][az-feature-register] コマンドを使用して、`EncryptionAtHost` 機能フラグを登録します。
+
+```azurecli-interactive
+az feature register --namespace "Microsoft.Compute" --name "EncryptionAtHost"
+```
+
+状態が *[登録済み]* と表示されるまでに数分かかります。 登録状態を確認するには、[az feature list][az-feature-list] コマンドを使用します。
+
+```azurecli-interactive
+az feature list -o table --query "[?contains(name, 'Microsoft.Compute/EncryptionAtHost')].{Name:name,State:properties.state}"
+```
+
+準備ができたら、[az provider register][az-provider-register] コマンドを使用して、`Microsoft.Compute` の各リソース プロバイダーの登録を更新します。
+
+```azurecli-interactive
+az provider register --namespace Microsoft.Compute
+```
 
 ### <a name="limitations"></a>制限事項
 

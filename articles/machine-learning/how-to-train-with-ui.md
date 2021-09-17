@@ -1,5 +1,5 @@
 ---
-title: UI からトレーニング ジョブを作成する
+title: ジョブ作成 UI を使用してトレーニング ジョブを作成する
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning Studio でジョブ作成 UI を使用してトレーニング ジョブを作成する方法について説明します。
 services: machine-learning
@@ -11,16 +11,16 @@ author: wenxwei
 ms.author: wenxwei
 ms.date: 06/22/2021
 ms.reviewer: laobri
-ms.openlocfilehash: f3199158dd5a156192fafa87531c1d92a4262170
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 4da4cb933f24a0ca172c6b0fd6b8b9827d615859
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114448377"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122823464"
 ---
 # <a name="create-a-training-job-with-the-job-creation-ui-preview"></a>ジョブ作成 UI (プレビュー) を使用してトレーニング ジョブを作成する
 
-Azure Machine Learning でトレーニング ジョブを作成するには、さまざまな方法があります。 CLI を使用する (「[2.0 CLI を使用してモデルをトレーニングする (ジョブを作成する) (プレビュー)](how-to-train-cli.md)」を参照)、REST API を使用する (「[REST を使用してモデルをトレーニングする (プレビュー)](how-to-train-with-rest.md)」を参照)、または UI を使用して、トレーニング ジョブを直接作成できます。 この記事では、独自のデータとコードを使用して、Azure Machine Learning Studio のジョブ作成 UI で機械学習モデルをトレーニングする方法について説明します。
+Azure Machine Learning でトレーニング ジョブを作成するには、さまざまな方法があります。 CLI を使用する (「[CLI (v2) を使用してモデルをトレーニングする (ジョブを作成する) (プレビュー)](how-to-train-cli.md)」を参照)、REST API を使用する (「[REST を使用してモデルをトレーニングする (プレビュー)](how-to-train-with-rest.md)」を参照)、または UI を使用して、トレーニング ジョブを直接作成できます。 この記事では、独自のデータとコードを使用して、Azure Machine Learning Studio のジョブ作成 UI で機械学習モデルをトレーニングする方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -69,7 +69,7 @@ Azure Machine Learning でトレーニング ジョブを作成するには、�
 
 さまざまな種類の作成の詳細については、以下を参照してください。
 
-| コンピューティングの種類 | 方法 | 
+| コンピューティングの種類 | 操作方法 | 
 | --- | --- | 
 | コンピューティング インスタンス | [Azure Machine Learning コンピューティング インスタンスを作成して管理する](how-to-create-manage-compute-instance.md) | 
 | コンピューティング クラスター | [Azure Machine Learning コンピューティング クラスターの作成](how-to-create-attach-compute-cluster.md) | 
@@ -107,7 +107,7 @@ Azure Machine Learning のキュレーションされた環境を使用しない
 |ジョブ名| ジョブ名フィールドは、ジョブを一意に識別するために使用されます。 また、ジョブの表示名としても使用されます。 このフィールドの設定は省略可能です。何も入力しない場合、Azure によってジョブの GUID 名が生成されます。 注意: 各ジョブ名は一意である必要があります。|
 |実験名| これは Azure Machine Learning スタジオでジョブを整理するのに役立ちます。 各ジョブの実行レコードは、Studio の [実験] タブの対応する実験の下に編成されます。既定では、Azure によって **[既定]** の実験にジョブが配置されます。|
 |コード| コンピューターからコード ファイルまたはフォルダーをアップロードでき、ワークスペースの既定の BLOB ストレージからコード ファイルをアップロードすることもできます。 選択を行った後、アップロードされるファイルが Azure に表示されます。 |
-|command| 実行するコマンドです。 コマンドライン引数は、コマンドに明示的に書き込むことも、次のセクションで説明するように、中かっこ表記を使用して他のセクション (具体的には **inputs**) から推論することもできます。|
+|コマンド| 実行するコマンドです。 コマンドライン引数は、コマンドに明示的に書き込むことも、次のセクションで説明するように、中かっこ表記を使用して他のセクション (具体的には **inputs**) から推論することもできます。|
 |入力| 入力バインドを指定します。 次の 3 種類の入力をサポートしています。1) Azure Machine Learning の登録されたデータセット、2) ワークスペースの既定の BLOB ストレージ、3) ローカル ファイルのアップロード。 複数の入力を追加できます。 |
 |環境変数| 環境変数を設定すると、ジョブの動的な構成を提供できます。 ここで変数と値を追加できます。|
 |タグ| 組織に役立つタグをジョブに追加します。|
@@ -150,13 +150,13 @@ Azure Machine Learning のキュレーションされた環境を使用しない
 
 ジョブを構成したら、 **[次へ]** を選択し、 **[レビュー]** ページに移動します。 設定を変更するには、鉛筆アイコンを選択して変更を加えます。 
 
-**YAML 仕様を表示** して、このジョブ構成によって生成された yaml ファイルを確認してダウンロードすることができます。 このジョブ yaml ファイルを使用して、2.0 CLI からジョブを送信できます。 (「[2.0 CLI を使用してモデルをトレーニングする (ジョブを作成する) (プレビュー)](how-to-train-cli.md)」を参照。)[![yaml 仕様の表示](media/how-to-train-with-ui/view-yaml.png)](media/how-to-train-with-ui/view-yaml.png)
+**YAML 仕様を表示** して、このジョブ構成によって生成された yaml ファイルを確認してダウンロードすることができます。 このジョブ yaml ファイルを使用して、CLI (v2) からジョブを送信できます。 (「[CLI (v2) を使用してモデルをトレーニングする (ジョブを作成する) (プレビュー)](how-to-train-cli.md)」を参照。)[![yaml 仕様の表示](media/how-to-train-with-ui/view-yaml.png)](media/how-to-train-with-ui/view-yaml.png)
 [![Yaml 仕様](media/how-to-train-with-ui/yaml-spec.png)](media/how-to-train-with-ui/yaml-spec.png)
 
 ジョブを起動するには、 **[作成]** を選択します。 ジョブが作成されると、Azure に実行の詳細ページが表示されます。このページでは、トレーニング ジョブを監視および管理できます。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [マネージド オンライン エンドポイントを使用して機械学習モデルをデプロイおよびスコアリングする (プレビュー)](how-to-deploy-managed-online-endpoints.md)。
 
-* [2\.0 CLI を使用してモデルをトレーニングする (ジョブを作成する) (プレビュー)](how-to-train-cli.md)
+* [CLI (v2) を使用してモデルをトレーニングする (ジョブを作成する) (プレビュー)](how-to-train-cli.md)

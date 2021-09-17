@@ -7,20 +7,19 @@ ms.reviewer: mikeray
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.date: 07/13/2021
+ms.date: 07/30/2021
 ms.topic: overview
-ms.openlocfilehash: 467547b3a7aa9b1c0e728282ab8208134911d9b0
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: 042d7fd04ca3a41016e67481f81237a56e0dfc8d
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113734082"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121737182"
 ---
 #  <a name="create-azure-arc-data-controller-in-direct-connectivity-mode-using-cli"></a>CLI を使用して直接接続モードで Azure Arc データ コントローラーを作成する
 
 この記事では、この機能の現在のプレビューで、CLI を使用して Azure Arc データ コントローラーを **直接** 接続モードで作成する方法について説明します。 
 
-[!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
 ## <a name="complete-prerequisites"></a>前提条件を満たす
 
@@ -105,7 +104,7 @@ Arc 対応データ サービス拡張機能が作成されているかどうか
 #### <a name="azure-portal"></a>Azure portal
 1. Azure portal にログインし、Kubernetes に接続されたクラスター リソースがあるリソース グループに移動します。
 1. 拡張機能がデプロイされた Arc 対応 Kubernetes クラスター (タイプ = "Kubernetes - Azure Arc") を選択します。
-1. 左側のナビゲーションの **[設定]** で [拡張機能 (プレビュー)] を選択します。
+1. 左側のナビゲーションの **[設定]** で [拡張機能] を選択します。
 1. 先ほど作成した拡張機能が "インストール済み" の状態で表示されます。
 
 :::image type="content" source="media/deploy-data-controller-direct-mode-prerequisites/dc-extensions-dashboard.png" alt-text="拡張機能ダッシュボード":::

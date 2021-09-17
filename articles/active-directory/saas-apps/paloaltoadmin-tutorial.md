@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: jeedes
-ms.openlocfilehash: 57b1d47fa40c0af4bced1e4169fe60cd759ee2f3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aceaed29b83a190e4e943f0ec1ae99a8daa44682
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97963640"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121727596"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---admin-ui"></a>チュートリアル:Azure Active Directory と Palo Alto Networks - Admin UI の統合
 
@@ -107,7 +107,7 @@ Palo Alto Networks - Admin UI で Azure AD シングル サインオンを構成
     | | |
 
     > [!NOTE]
-    > _adminrole_ 値は、手順 9 で説明したように、**Palo Alto Networks** で構成されているロール名と同じにする必要があります。 
+    > 上記で _adminrole_ として示されている **名前** の値は、「 **[Palo Alto Networks - Admin UI の SSO の構成](#configure-palo-alto-networks---admin-ui-sso)** 」セクションの手順 12 で構成される "_管理者ロールの属性_" と同じ値である必要があります。 上記で _customadmin_ として示されている **ソース属性** の値は、「 **[Palo Alto Networks - Admin UI の SSO の構成](#configure-palo-alto-networks---admin-ui-sso)** 」セクションの手順 9 で構成される "_管理者ロールのプロファイル名_" と同じ値である必要があります。  
 
     > [!NOTE]
     > これらの属性の詳細については、次の記事を参照してください。

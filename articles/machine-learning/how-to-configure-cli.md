@@ -1,7 +1,7 @@
 ---
-title: 2\.0 CLI をインストール、設定、および使用する
+title: CLI (v2) のインストールと設定
 titleSuffix: Azure Machine Learning
-description: Machine Learning 用 Azure CLI 拡張機能をインストール、設定、および使用する方法について説明します。
+description: Machine Learning 用の Azure CLI 拡張機能をインストールして設定する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,14 +11,14 @@ ms.author: copeters
 ms.date: 05/25/2021
 ms.reviewer: laobri
 ms.custom: devx-track-azurecli, devplatv2
-ms.openlocfilehash: 53d7b42426919ec5b91821ac67fbde940972494a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 8034b9e6027f85d9dd5385fda18f81523830944f
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121745229"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122772710"
 ---
-# <a name="install-set-up-and-use-the-20-cli-preview"></a>2\.0 CLI (プレビュー) をインストール、設定、および使用する
+# <a name="install-and-set-up-the-cli-v2"></a>CLI (v2) のインストールと設定
 
 [Azure CLI](/cli/azure/) に対する `ml` 拡張機能 (プレビュー) は、Azure Machine Learning の拡張インターフェイスです。 これにより、コマンド ラインからモデルをトレーニングおよびデプロイできます。また、モデルのライフサイクルを追跡しながらデータ サイエンスのスケールアップとスケールアウトを加速する機能もあります。
 
@@ -29,16 +29,11 @@ ms.locfileid: "121745229"
 - CLI を使用するには、Azure サブスクリプションが必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://azure.microsoft.com/free/) を今すぐお試しください。
 - ご使用の **ローカル環境** からこのドキュメントの CLI コマンドを使用するには、[Azure CLI](/cli/azure/install-azure-cli) が必要です。
 
-    > [!TIP]
-    > [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/) を使用する場合は、ブラウザーを使用してクラウド内に存在する CLI にアクセスします。
-
 ## <a name="installation"></a>インストール
 
 新しい Machine Learning 拡張機能には、**Azure CLI バージョン `>=2.15.0` が必要です**。 この要件が満たされていることを確認します。
 
-```azurecli
-az version
-```
+:::code language="azurecli" source="~/azureml-examples-main/cli/misc.sh" id="az_version":::
 
 そうでない場合は、[Azure CLI をアップグレード](/cli/azure/update-azure-cli)します。
 
@@ -74,9 +69,7 @@ Linux を使用している場合、必要な CLI バージョンと Machine Lea
 
 ログイン: 
 
-```azurecli
-az login
-```
+:::code language="azurecli" source="~/azureml-examples-main/cli/misc.sh" id="az_login":::
 
 複数の Azure サブスクリプションにアクセスできる場合は、アクティブなサブスクリプションを設定できます。
 
@@ -96,29 +89,6 @@ az login
 次に機械学習ワークスペースを作成します。
 
 :::code language="azurecli" source="~/azureml-examples-main/cli/setup.sh" id="az_ml_workspace_create":::
-
-## <a name="hello-world"></a>Hello world
-
-続いて、サンプル リポジトリを複製し、`cli` サブディレクトリに移動します。
-
-```azurecli-interactive
-git clone https://github.com/Azure/azureml-examples --depth 1
-cd azureml-examples/cli
-```
-
-Python を使用してローカルで hello world を実行するには、`jobs` サブディレクトリの例を参照してください。
-
-:::code language="yaml" source="~/azureml-examples-main/cli/jobs/hello-world.yml":::
-
-> [!IMPORTANT]
-> [Docker](https://docker.io) をローカルにインストールして実行する必要があります。
-
-ジョブを送信して、ログをコンソール出力にストリーミングし、Azure Machine Learning スタジオで実行を開きます。
-
-:::code language="azurecli" source="~/azureml-examples-main/cli/hello-world.sh" id="hello_world":::
-
-> [!IMPORTANT]
-> Docker イメージがローカルにプルされ、Azure ML ジョブが実行されるため、初回の実行には数分かかる場合があります。 後続の実行では、イメージがローカルにキャッシュされ、より迅速に完了します。
 
 ## <a name="next-steps"></a>次の手順
 

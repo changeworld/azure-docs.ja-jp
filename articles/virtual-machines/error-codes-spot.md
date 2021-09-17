@@ -8,14 +8,16 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 03/25/2020
 ms.author: cynthn
-ms.openlocfilehash: 6d43935365580233063deb0e523d222351c22d54
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f035d7813dfcf84d21e5913fa4626188e125db9a
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101670620"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122691087"
 ---
 # <a name="error-messages-for-azure-spot-virtual-machines-and-scale-sets"></a>Azure Spot Virtual Machines とスケール セットのエラー メッセージ
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 
 ここでは、Azure Spot Virtual Machines とスケール セットを使用する場合に受け取る可能性のあるエラー コードを示します。
 

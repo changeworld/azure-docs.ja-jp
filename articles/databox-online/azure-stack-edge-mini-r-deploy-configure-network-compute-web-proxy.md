@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 05/11/2021
+ms.date: 08/12/2021
 ms.author: alkohli
-ms.openlocfilehash: ae3504b1483dce5678a9d7b53556d9228e53ded0
-ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
+ms.openlocfilehash: 68667c495384320731b8a7898e3590aa8487a13e
+ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109839139"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121860733"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-mini-r"></a>チュートリアル:Azure Stack Edge Mini R のネットワークを構成する
 
@@ -49,11 +49,16 @@ ms.locfileid: "109839139"
 
 2. ゼロ デイの更新が必要な場合は、ワイヤード (有線) 接続でデータ ポートを構成することにより、ここで実行できます。 このデバイスのワイヤード (有線) 接続を設定する方法の詳細については、[デバイスのケーブル接続](azure-stack-edge-mini-r-deploy-install.md#cable-the-device)に関するセクションを参照してください。 更新が終了したら、ワイヤード (有線) 接続を取り外すことができます。
 
-3. Wi-Fi と署名チェーンの証明書を作成します。 署名チェーンと Wi-Fi の証明書はどちらも、ファイル拡張子が *.cer* の DER 形式である必要があります。 手順については、[証明書の作成](azure-stack-edge-gpu-manage-certificates.md)に関するページを参照してください。
+3. Wi-Fi と署名チェーンの証明書を作成します。 署名チェーンと Wi-Fi の証明書はどちらも、ファイル拡張子が *.cer* の DER 形式である必要があります。 手順については、[証明書の作成](azure-stack-edge-gpu-manage-certificates.md)に関するページを参照してください。 認証で証明書の代わりに Wi-Fi プロファイルを使用している場合、この手順は省略可能です。
 
-4. ローカル Web UI で、 **[Get started]\(作業の開始\)** に移動します。 **[セキュリティ]** タイルで、 **[証明書]** を選択し、 **[構成]** を選択します。 
+   > [!NOTE] 
+   > 個人用 Wi-Fi ネットワークでパスワードベースの認証を使用している場合は、証明書の手順を省略できます。 Wi-Fi ポートを構成して Wi-Fi プロファイルをアップロードするだけです。</br></br> WPA2-パーソナル ネットワークの Wi-Fi プロファイルの詳細と、Wi-Fi プロファイルをエクスポートする方法については、「[Wi-Fi プロファイルの使用](azure-stack-edge-mini-r-use-wifi-profiles.md)」を参照してください。
 
-   [![ローカル Web UI の [証明書] ページ](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/get-started-1.png)](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/get-started-1.png#lightbox)
+4. 証明書をデバイスに追加します。 
+
+   1. ローカル Web UI で、 **[Get started]\(作業の開始\)** に移動します。 **[セキュリティ]** タイルで、 **[証明書]** を選択し、 **[構成]** を選択します。 
+
+      [![ローカル Web UI の [証明書] ページ](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/get-started-1.png)](./media/azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy/get-started-1.png#lightbox)
 
    1. **[+ 証明書の追加]** を選択します。 
     
@@ -73,7 +78,7 @@ ms.locfileid: "109839139"
 
    5. **[Get started]\(作業の開始\)** に戻ります。
 
-5. **[ネットワーク]** タイルで **[構成]** を選択します。  
+5. Wi-Fi ポートを構成します。 **[ネットワーク]** タイルで **[構成]** を選択します。  
 
    ご利用の物理デバイスには 5 つのネットワーク インターフェイスがあります。 ポート 1 とポート 2 は、1 Gbps ネットワーク インターフェイスです。 ポート 3 とポート 4 は、どちらも 10 Gbps ネットワーク インターフェイスです。 5 番目のポートは Wi-Fi ポートです。 
 

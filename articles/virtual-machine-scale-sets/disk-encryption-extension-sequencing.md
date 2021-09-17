@@ -9,14 +9,16 @@ ms.subservice: disks
 ms.date: 10/10/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 1aff05e51bcbc99f33325efb905ade819ae22e02
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 59f781e1e5969c9d11a0e801fef48e2f6e347832
+ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90988027"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122771357"
 ---
 # <a name="use-azure-disk-encryption-with-virtual-machine-scale-set-extension-sequencing"></a>Azure Disk Encryption を仮想マシン スケール セットの拡張機能のシーケンス処理と共に使用する
+
+**適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: ユニフォーム スケール セット
 
 Azure ディスク暗号化などの拡張機能は、指定された順序で、Azure 仮想マシン スケール セットに追加できます。 これを行うには、[拡張機能のシーケンス処理](virtual-machine-scale-sets-extension-sequencing.md)を使用します。 
 
@@ -31,7 +33,7 @@ Azure ディスク暗号化などの拡張機能は、指定された順序で�
 
 別の拡張子の後に Azure Disk Encryption を適用する場合は、`provisionAfterExtensions` プロパティを AzureDiskEncryption 拡張機能ブロック内に置きます。 
 
-次に、Windows ディスクを初期化および書式設定する Powershell スクリプトである「CustomScriptExtension」を使用し、「AzureDiskEncryption」をその後に続けた例を示します。
+次に、Windows ディスクを初期化および書式設定する PowerShell スクリプトである「CustomScriptExtension」を使用し、「AzureDiskEncryption」をその後に続けた例を示します。
 
 ```json
 "virtualMachineProfile": {

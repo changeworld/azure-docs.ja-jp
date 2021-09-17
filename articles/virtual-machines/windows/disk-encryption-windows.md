@@ -9,14 +9,16 @@ ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 0341e00e51c5d1c112451142d2e48f9707d525ed
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 3b26543927dd2631ebb8a7536b0cf8d5694b28ba
+ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110669122"
+ms.lasthandoff: 08/23/2021
+ms.locfileid: "122689335"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Windows VM での Azure Disk Encryption シナリオ
+
+**適用対象:** :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブルなスケール セット 
 
 Windows 仮想マシン (VM) 用の Azure Disk Encryption では、Windows の BitLocker 機能を使用して、OS ディスクとデータ ディスクの完全なディスク暗号化を提供します。 また、VolumeType パラメーターが ALL の場合、一時的なディスクの暗号化を行うことができます。
 
@@ -84,13 +86,10 @@ key-encryption-key パラメーターの値の構文は、 https://[keyvault-nam
      Get-AzVmDiskEncryptionStatus -ResourceGroupName 'MyVirtualMachineResourceGroup' -VMName 'MySecureVM'
      ```
 
-- **ディスク暗号化を無効にする:** 暗号化を無効にするには、[Disable-AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption) コマンドレットを使用します。 OS とデータ ディスクの両方が暗号化されている場合は、Windows VM におけるデータ ディスクの暗号化の無効化が想定どおりに機能しません。 代わりに、すべてのディスクで暗号化を無効にしてください。
-
-     ```azurepowershell-interactive
-     Disable-AzVMDiskEncryption -ResourceGroupName 'MyVirtualMachineResourceGroup' -VMName 'MySecureVM'
-     ```
+暗号化を無効にするには、「[暗号化を無効にし、暗号化拡張機能を削除する](#disable-encryption-and-remove-the-encryption-extension)」を参照してください。
 
 ### <a name="enable-encryption-on-existing-or-running-vms-with-the-azure-cli"></a>Azure CLI を使用して既存または実行中の VM で暗号化を有効にする
+
 [az vm encryption enable](/cli/azure/vm/encryption#az_vm_encryption_enable) コマンドを使用して、Azure で実行中の IaaS 仮想マシンで暗号化を有効にします。
 
 - **実行中の VM を暗号化する:**
@@ -115,11 +114,7 @@ key-encryption-key パラメーターの値の構文は、 https://[keyvault-nam
      az vm encryption show --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup"
      ```
 
-- **暗号化を無効にする:** 暗号化を無効にするには、[az vm encryption disable](/cli/azure/vm/encryption#az_vm_encryption_disable) コマンドを使用します。 OS とデータ ディスクの両方が暗号化されている場合は、Windows VM におけるデータ ディスクの暗号化の無効化が想定どおりに機能しません。 代わりに、すべてのディスクで暗号化を無効にしてください。
-
-     ```azurecli-interactive
-     az vm encryption disable --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup" --volume-type [ALL, DATA, OS]
-     ```
+暗号化を無効にするには、「[暗号化を無効にし、暗号化拡張機能を削除する](#disable-encryption-and-remove-the-encryption-extension)」を参照してください。
 
 ### <a name="using-the-resource-manager-template"></a>Resource Manager テンプレートの使用
 
@@ -232,6 +227,7 @@ New-AzVM -VM $VirtualMachine -ResourceGroupName "MyVirtualMachineResourceGroup"
 key-encryption-key パラメーターの値の構文は、 https://[keyvault-name].vault.azure.net/keys/[kekname]/[kek-unique-id] という KEK への完全な URI です。
 
 ### <a name="enable-encryption-on-a-newly-added-disk-with-azure-cli"></a>Azure CLI を使用して新しく追加されたディスクで暗号化を有効にする
+
  暗号化を有効にするコマンドを実行する際に、Azure CLI コマンドによって、新しいシーケンス バージョンが自動的に提供されます。 この例では、"All" が volume-type パラメーターに使用されています。 OS ディスクのみ暗号化する場合は、volume-type パラメーターを OS に変更する必要があります。 PowerShell 構文とは異なり、CLI では暗号化を有効にする際にユーザーが一意のシーケンス バージョンを指定する必要はありません。 CLI では独自の一意のシーケンス バージョン値が自動的に生成され、使用されます。
 
 -  **実行中の VM を暗号化する:**
@@ -246,9 +242,56 @@ key-encryption-key パラメーターの値の構文は、 https://[keyvault-nam
      az vm encryption enable --resource-group "MyVirtualMachineResourceGroup" --name "MySecureVM" --disk-encryption-keyvault  "MySecureVault" --key-encryption-key "MyKEK_URI" --key-encryption-keyvault "MySecureVaultContainingTheKEK" --volume-type "All"
      ```
 
+## <a name="disable-encryption-and-remove-the-encryption-extension"></a>暗号化を無効にし、暗号化拡張機能を削除する
 
-## <a name="disable-encryption"></a>暗号化を無効にする
-[!INCLUDE [disk-encryption-disable-encryption-powershell](../../../includes/disk-encryption-disable-powershell.md)]
+Azure Disk Encryption 拡張機能を無効にしたり、Azure Disk Encryption 拡張機能を削除したりできます。 これらは 2 つの異なる操作です。 
+
+ADE を削除するには、まず暗号化を無効にしてから拡張機能を削除することをお勧めします。 暗号化拡張機能を無効にせずに削除すると、ディスクは暗号化されたままになります。 拡張機能を削除した **後** に暗号化を無効にした場合、(暗号化解除操作を実行するために) 拡張機能は再インストールされ、もう一度削除する必要が生じます。
+
+### <a name="disable-encryption"></a>暗号化を無効にする
+
+Azure PowerShell、Azure CLI、または Resource Manager テンプレートを使用して暗号化を無効にすることができます。 暗号化を無効にしても、拡張機能は削除 **されません** (「[暗号化拡張機能を削除する](#remove-the-encryption-extension)」を参照してください)。
+
+> [!WARNING]
+> OS とデータ ディスクの両方が暗号化されている場合にデータ ディスクの暗号化を無効にすると、予期しない結果が生じる恐れがあります。 代わりに、すべてのディスクで暗号化を無効にしてください。
+>
+> 暗号化を無効にすると、ディスクの暗号化を解除するための BitLocker のバックグラウンド プロセスが開始されます。 暗号化の再有効化を試す前に、このプロセスを完了するための十分な時間を確保する必要があります。  
+
+- **Azure PowerShell を使用してディスク暗号化を無効にする:** 暗号化を無効にするには、[Disable-AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption) コマンドレットを使用します。
+
+     ```azurepowershell-interactive
+     Disable-AzVMDiskEncryption -ResourceGroupName "MyVirtualMachineResourceGroup" -VMName "MySecureVM" -VolumeType "all"
+     ```
+
+- **Azure CLI を使用して暗号化を無効にする:** 暗号化を無効にするには、[az vm encryption disable](/cli/azure/vm/encryption#az_vm_encryption_disable) コマンドを使用します。 
+
+     ```azurecli-interactive
+     az vm encryption disable --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup" --volume-type "all"
+     ```
+
+- **Resource Manager テンプレートを使用して暗号化を無効にする:** 
+
+    1. [実行中の Windows VM でディスク暗号化を無効にする](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/decrypt-running-windows-vm-without-aad)ためのテンプレートで **[Azure に配置する]** をクリックします。
+    2. サブスクリプション、リソース グループ、場所、VM、ボリュームの種類、法律条項、および契約を選択します。
+    3.  **[購入]** をクリックして、実行中の Windows VM でディスク暗号化を無効にします。
+
+### <a name="remove-the-encryption-extension"></a>暗号化拡張機能を削除する
+
+ディスクの暗号化を解除し、暗号化拡張機能を削除したい場合、拡張機能を削除する **前** に、暗号化を無効にする必要があります。「[暗号化を無効にする](#disable-encryption)」を参照してください。
+
+Azure PowerShell または Azure CLI を使用して、暗号化拡張機能を削除できます。 
+
+- **Azure PowerShell を使用してディスク暗号化を無効にする:** 暗号化を削除するには、[Remove-AzVMDiskEncryptionExtension](/powershell/module/az.compute/remove-azvmdiskencryptionextension) コマンドレットを使用します。
+
+     ```azurepowershell-interactive
+     Remove-AzVMDiskEncryptionExtension -ResourceGroupName "MyVirtualMachineResourceGroup" -VMName "MySecureVM"
+     ```
+
+- **Azure CLI を使用して暗号化を無効にする:** 暗号化を削除するには、[az vm extension delete](/cli/azure/vm/extension#az_vm_extension_delete) コマンドを使用します。
+
+     ```azurecli-interactive
+     az vm extension delete -g "MyVirtualMachineResourceGroup" --vm-name "MySecureVM" -n "AzureDiskEncryptionForWindows"
+     ```
 
 ## <a name="unsupported-scenarios"></a>サポートされていないシナリオ
 

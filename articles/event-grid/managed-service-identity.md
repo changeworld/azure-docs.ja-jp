@@ -3,12 +3,12 @@ title: イベント配信、マネージド サービス ID、およびプライ
 description: この記事では、Azure イベント グリッド トピックに対してマネージド サービス ID を有効にする方法を説明します。 これを使用して、サポートされている配信先にイベントを転送します。
 ms.topic: how-to
 ms.date: 03/25/2021
-ms.openlocfilehash: 76f10b4627dc9578b1e616a868eab03431b59b69
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f1f80f23fe108415daa6e0526b651c7269d6b1b3
+ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105625280"
+ms.lasthandoff: 08/21/2021
+ms.locfileid: "122634117"
 ---
 # <a name="event-delivery-with-a-managed-identity"></a>マネージド ID を使用したイベント配信
 この記事では、Azure Event Grid システム トピック、カスタム トピック、またはドメインに[マネージド サービス ID](../active-directory/managed-identities-azure-resources/overview.md) を使用する方法を説明します。 これを使用して、Service Bus のキューとトピック、イベント ハブ、ストレージ アカウントなどの、サポートされている配信先にイベントを転送します。
@@ -16,7 +16,7 @@ ms.locfileid: "105625280"
 
 
 ## <a name="prerequisites"></a>前提条件
-1. システム割り当て ID をシステム トピック、カスタム トピック、またはドメインに割り当てます。 
+1. システム割り当て ID またはユーザー割り当て ID をシステム トピック、カスタム トピック、またはドメインに割り当てます。 
     - カスタム トピックとドメインについては、[カスタム トピックとドメインのマネージド ID の有効化](enable-identity-custom-topics-domains.md)に関する記事を参照してください。 
     - システム トピックについては、[システム トピックのマネージド ID の有効化](enable-identity-system-topics.md)に関する記事を参照してください。
 1. 配信先 (Service Bus キューなど) の適切なロール (Service Bus データ送信者など) に ID を追加する。 詳細な手順については、[配信先の Azure ロールへの ID の追加](add-identity-roles.md)に関する記事を参照してください。
@@ -28,13 +28,24 @@ ms.locfileid: "105625280"
 システム マネージド ID を持つイベント グリッド カスタム トピック、システム トピック、またはドメインを作成し、その ID を配信先の適切なロールに追加したら、ID を使用してサブスクリプションを作成することができます。 
 
 ### <a name="use-the-azure-portal"></a>Azure ポータルの使用
-イベント サブスクリプションを作成する際、 **[エンドポイントの詳細]** セクションにエンドポイントに対するシステム割り当て ID の使用を有効にするオプションが表示されます。 
+イベント サブスクリプションを作成する際、 **[エンドポイントの詳細]** セクションにエンドポイントに対するシステム割り当て ID またはユーザー割り当て ID の使用を有効にするオプションが表示されます。 
+
+Service Bus キューを配信先として使用してイベント サブスクリプションを作成する際に、システム割り当て ID を有効にする例を次に示します。 
 
 ![Service Bus キューへのイベント サブスクリプションを作成する際に、ID を有効にする](./media/managed-service-identity/service-bus-queue-subscription-identity.png)
 
 また、 **[追加機能]** タブで、配信不能処理でシステム割り当て ID の使用を有効にすることもできます。 
 
 ![配信不能処理でシステム割り当て ID を有効にする](./media/managed-service-identity/enable-deadletter-identity.png)
+
+イベント サブスクリプションが作成された後に、マネージド ID を有効にすることもできます。 イベント サブスクリプションの **[イベント サブスクリプション]** ページで **[Additional Features]\(追加機能\)** タブに移動し、オプションを確認してください。 
+
+![既存のイベント サブスクリプションでシステム割り当て ID を有効にする](./media/managed-service-identity/event-subscription-additional-features.png)
+
+トピックに対してユーザー割り当て ID を有効にした場合、**Manged Identity Type\(マネージド ID の種類\)** のドロップダウン リストでユーザー割り当て ID オプションが有効になっています。 **[Managed Identity Type]\(マネージド ID の種類\)** に **[User Assigned]\(ユーザー割り当て\)** を選択すると、イベントの配信に使用するユーザー割り当て ID を選択できるようになります。 
+
+![イベント サブスクリプションでユーザー割り当て ID を有効にする](./media/managed-service-identity/event-subscription-user-identity.png)
+
 
 ### <a name="use-the-azure-cli---service-bus-queue"></a>Azure CLI の使用 - Service Bus キュー 
 このセクションでは、Azure CLI を使用してシステム割り当て ID の使用を有効にし、イベントを Service Bus キューに配信する方法について学びます。 ID は **Azure Service Bus データ送信者** ロールのメンバーである必要があります。 また、配信不能処理に使用されるストレージ アカウントの **ストレージ BLOB データ共同作成者** ロールのメンバーである必要もあります。 
