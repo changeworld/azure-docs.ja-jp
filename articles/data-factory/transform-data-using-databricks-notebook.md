@@ -159,7 +159,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
            ```
            # Creating widgets for leveraging parameters, and printing the parameters
 
-           dbutils.widgets.text(&quot;input&quot;, &quot;&quot;,&quot;")
+           dbutils.widgets.text("input", "","")
            y = dbutils.widgets.get("input")
            print ("Param -\'input':")
            print (y)
