@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Azure Database for MariaDB のドキュメント
-summary: Azure Database for MariaDB は、オープンソースの MariaDB サーバー エンジンに基づいたリレーショナル データベース サービスです。  フルマネージドのサービスとしてのデータベースであり、予測可能なパフォーマンスと動的なスケーラビリティを実現しながら、ミッションクリティカルなワークロードを処理できます。 Azure Database for MariaDB では、任意のオープンソース ツールとプラットフォームを利用してアプリケーションを開発できます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Database for MariaDB の使用方法を確認してください。
+summary: Azure Database for MariaDB は、オープンソースの MariaDB サーバー エンジンに基づいたリレーショナル データベース サービスです。  フル マネージドのサービスとしてのデータベースであり、予測可能なパフォーマンスと動的なスケーラビリティを実現しながら、ミッションクリティカルなワークロードを処理できます。 Azure Database for MariaDB では、任意のオープンソース ツールとプラットフォームを利用してアプリケーションを開発できます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Database for MariaDB の使用方法を確認してください。
 metadata:
   description: Azure Database for MariaDB は、オープンソースの MariaDB データベース エンジンに基づいて開発者向けに構築された、Microsoft クラウドのリレーショナル データベース サービスです。
   author: savjani
