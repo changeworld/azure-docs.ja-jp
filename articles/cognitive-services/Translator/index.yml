@@ -27,7 +27,7 @@ landingContent:
     links:
     - text: Translator
       url: translator-info-overview.md
-    - text: ドキュメント翻訳
+    - text: Document Translation
       url: document-translation/overview.md
     - text: Custom Translator
       url: custom-translator/overview.md
@@ -59,7 +59,7 @@ landingContent:
       url: request-limits.md
     - text: 言語のサポート
       url: language-support.md
-- title: カスタム変換
+- title: Custom Translator
   linkLists:
   - linkListType: quickstart
     links:
