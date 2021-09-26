@@ -1,10 +1,5 @@
 - name: Cloud Foundry のドキュメント
   href: index.yml
-- name: クイックスタート
-  expanded: true
-  items:
-    - name: Marketplace テンプレート
-      href: 'https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry'
 - name: チュートリアル
   items:
     - name: Azure での CF の作成

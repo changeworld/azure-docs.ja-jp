@@ -23,6 +23,8 @@
       href: tutorial-configure-password-hash-sync.md
     - name: レプリカ セットを作成する
       href: tutorial-create-replica-set.md
+    - name: ディザスター リカバリー訓練を実施する
+      href: tutorial-perform-disaster-recovery-drill.md
     - name: カスタイマイズされたマネージド ドメインの作成
       href: tutorial-create-instance-advanced.md
     - name: フォレストの信頼の作成

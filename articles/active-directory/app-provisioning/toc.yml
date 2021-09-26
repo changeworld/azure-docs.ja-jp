@@ -78,12 +78,6 @@
           href: ../reports-monitoring/concept-provisioning-logs.md?context=%2fazure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
     - name: オンプレミス アプリのプロビジョニング
       items:
-        - name: ECMA Connector Host の前提条件
-          href: on-premises-ecma-prerequisites.md
-        - name: ECMA Connector Host のインストール
-          href: on-premises-ecma-install.md
-        - name: ECMA Connector Host の構成
-          href: on-premises-ecma-configure.md
         - name: 汎用 SQL コネクタの構成
           href: on-premises-sql-connector-configure.md
         - name: SCIM 対応アプリへのオンプレミス アプリケーションのプロビジョニング
