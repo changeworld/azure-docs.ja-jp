@@ -11,12 +11,12 @@ metadata:
   author: Juliako
   ms.author: juliako
   ms.date: 05/07/2021
-  ms.openlocfilehash: f00c3318ada24acdb100ebba6a7589193453e935
-  ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+  ms.openlocfilehash: 03059ee26e42fa366d1181c700058d8187dc030c
+  ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/25/2021
-  ms.locfileid: "110383494"
+  ms.lasthandoff: 09/24/2021
+  ms.locfileid: "128653497"
 landingContent:
 - title: Azure Video Analyzer for Media (旧称 Video Indexer) について
   linkLists:
@@ -27,7 +27,7 @@ landingContent:
     - text: Media Services v3 プリセットと Video Analyzer for Media を比較する
       url: compare-video-indexer-with-media-services-presets.md
     - text: よく寄せられる質問
-      url: faq.md
+      url: faq.yml
     - text: ユーザーの声
       url: https://aka.ms/UserVoiceVI
   - linkListType: whats-new
