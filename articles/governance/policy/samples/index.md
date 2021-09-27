@@ -1,14 +1,14 @@
 ---
 title: ポリシーのサンプルのインデックス
 description: Azure Policy のビルトインのインデックス。 カテゴリ タグ、規制コンプライアンス、Key Vault、Kubernetes、ゲスト構成など。
-ms.date: 08/13/2021
+ms.date: 09/08/2021
 ms.topic: sample
-ms.openlocfilehash: ca5c973b8efe6ec97eb5d4e6dada5418d7433c0f
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 2c8dbaa1496d8f67c30cc3021697760d67206b8f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122180087"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128650479"
 ---
 # <a name="azure-policy-samples"></a>Azure Policy のサンプル
 
@@ -38,8 +38,7 @@ ms.locfileid: "122180087"
 次に示すのは、Azure の[法令遵守](../concepts/regulatory-compliance.md)の組み込みです。
 
 - [Australian Government ISM PROTECTED](./australia-ism.md)
-- [Azure セキュリティ ベンチマーク v2](./azure-security-benchmark.md)
-- [Azure セキュリティ ベンチマーク v1](./azure-security-benchmarkv1.md)
+- [Azure セキュリティ ベンチマーク](./azure-security-benchmark.md)
 - [カナダ連邦の PBMM](./canada-federal-pbmm.md)
 - [CIS Microsoft Azure Foundations Benchmark v1.3.0](./cis-azure-1-3-0.md)
 - [CIS Microsoft Azure Foundations Benchmark v1.1.0](./cis-azure-1-1-0.md)
@@ -57,7 +56,7 @@ ms.locfileid: "122180087"
 
 次に示すのは、Azure Government の[法令遵守](../concepts/regulatory-compliance.md)の組み込みです。
 
-- [Azure セキュリティ ベンチマーク v2](./gov-azure-security-benchmark.md)
+- [Azure セキュリティ ベンチマーク](./gov-azure-security-benchmark.md)
 - [CIS Microsoft Azure Foundations Benchmark v1.3.0](./gov-cis-azure-1-3-0.md)
 - [CIS Microsoft Azure Foundations Benchmark v1.1.0](./gov-cis-azure-1-1-0.md)
 - [CMMC レベル 3](./gov-cmmc-l3.md)

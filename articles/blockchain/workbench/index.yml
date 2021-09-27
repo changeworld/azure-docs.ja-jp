@@ -10,12 +10,12 @@ metadata:
   author: PatAltimore
   ms.author: patricka
   ms.date: 09/05/2019
-  ms.openlocfilehash: d94f01abdf3b2853e892925d5a19ec5468fd26f0
-  ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+  ms.openlocfilehash: 165cedba9688270971afdbc67f72aec21bc4ac76
+  ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 01/07/2021
-  ms.locfileid: "97964475"
+  ms.lasthandoff: 09/24/2021
+  ms.locfileid: "128708189"
 landingContent:
 - title: Azure Blockchain Workbench について
   linkLists:
@@ -25,12 +25,8 @@ landingContent:
       url: overview.md
   - linkListType: concept
     links:
-    - text: Architecture
+    - text: アーキテクチャ
       url: architecture.md
-  - linkListType: video
-    links:
-    - text: Azure Blockchain Workbench の概要
-      url: https://channel9.msdn.com/Shows/Blocktalk/Introduction-to-Azure-Blockchain-Workbench
 - title: はじめに
   linkLists:
   - linkListType: learn
@@ -49,10 +45,6 @@ landingContent:
       url: create-app.md
     - text: Blockchain Workbench アプリケーションを使用する
       url: use.md
-  - linkListType: video
-    links:
-    - text: 初めての Azure Blockchain Workbench アプリケーションを構築する
-      url: https://channel9.msdn.com/Shows/Blocktalk/Building-your-first-Azure-Blockchain-Workbench-application
 - title: サンプル コントラクト
   linkLists:
   - linkListType: download

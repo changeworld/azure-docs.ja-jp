@@ -1,14 +1,14 @@
 ---
 title: ISO 27001 共有サービス ブループリント サンプルの概要
 description: ISO 27001 共有サービスのブルー プリント サンプルの概要とアーキテクチャ。 このブループリント サンプルは、お客様が特定の ISO 27001 コントロールを評価するのに役立ちます。
-ms.date: 04/30/2021
+ms.date: 09/08/2021
 ms.topic: sample
-ms.openlocfilehash: 112b8dbfe49cfab555c53b52747c73bdca8c7cf1
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: d038345ad07cb41a7a3161dcfb4175d558a34ea3
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108739207"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128632027"
 ---
 # <a name="overview-of-the-iso-27001-shared-services-blueprint-sample"></a>ISO 27001 共有サービス ブループリント サンプルの概要
 

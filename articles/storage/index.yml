@@ -7,8 +7,8 @@ metadata:
   description: Azure Storage のドキュメントのハブ ページ。 クラウドおよびハイブリッド ストレージ ソリューションや、データの転送、共有、バックアップを行うためのサービスに関するサービス ドキュメントを指します。
   ms.service: storage
   ms.topic: hub-page
-  author: twooley
-  ms.author: twooley
+  author: tamram
+  ms.author: tamram
   ms.date: 04/14/2021
 highlightedContent:
   items:

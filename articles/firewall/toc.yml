@@ -99,7 +99,7 @@
     - name: IP グループの作成
       href: create-ip-group.md
     - name: Windows Virtual Desktop の保護
-      href: protect-windows-virtual-desktop.md
+      href: protect-azure-virtual-desktop.md
     - name: Azure Kubernetes Service (AKS) の保護
       href: protect-azure-kubernetes-service.md
     - name: DNS の設定
