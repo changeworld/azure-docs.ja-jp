@@ -8,13 +8,13 @@ metadata:
   ms.topic: landing-page
   author: shortpatti
   ms.author: v-patsho
-  ms.date: 08/31/2021
-  ms.openlocfilehash: 68b4b32afc1486214758173c9ea933641096d942
-  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+  ms.date: 09/13/2021
+  ms.openlocfilehash: 42368091188caa989187364a33e45eea32c6fe26
+  ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/13/2021
-  ms.locfileid: "124744266"
+  ms.lasthandoff: 09/24/2021
+  ms.locfileid: "128596336"
 landingContent:
 - title: Azure VMware Solution について
   linkLists:
@@ -78,6 +78,8 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
+    - text: JetStream DR をデプロイする
+      url: deploy-disaster-recovery-using-jetstream.md
     - text: ディザスター リカバリー用に VMware HCX をデプロイする
       url: deploy-disaster-recovery-using-vmware-hcx.md
     - text: ディザスター リカバリー用に VMware SRM をデプロイする
