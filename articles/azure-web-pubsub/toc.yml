@@ -13,18 +13,18 @@
     - name: インスタンスを作成する
       expanded: true
       items:
-        - name: ポータル
+        - name: Azure portal
           href: howto-develop-create-instance.md
-        - name: CLI
+        - name: Azure CLI
           href: quickstart-cli-create.md
     - name: インスタンスに接続する
       expanded: true
       items:
-        - name: ブラウザーからのパブリッシュ/サブスクライブ
+        - name: ブラウザーからの PubSub
           href: quickstart-live-demo.md
-        - name: CLI からのパブリッシュ/サブスクライブ
+        - name: Azure CLI からの PubSub
           href: quickstart-cli-try.md
-        - name: Service SDK を使用したパブリッシュ/サブスクライブ
+        - name: サービス SDK を使用した PubSub
           href: quickstart-use-sdk.md
 - name: チュートリアル
   expanded: true
@@ -49,7 +49,7 @@
   items:
     - name: 開発
       items:
-        - name: WebSocket クライアントを作成する方法
+        - name: WebSocket クライアントを作成する
           href: howto-websocket-connect.md
     - name: セキュリティで保護
       items:
@@ -65,7 +65,7 @@
       items:
         - name: ネットワーク トレースを収集する
           href: howto-troubleshoot-network-trace.md
-        - name: 診断ログのキャプチャ
+        - name: 診断ログをキャプチャする
           href: howto-troubleshoot-diagnostic-logs.md
 - name: 概念
   expanded: true

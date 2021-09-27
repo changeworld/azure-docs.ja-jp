@@ -2,7 +2,7 @@
   href: index.yml
 - name: 概要
   items:
-    - name: Web Apps について
+    - name: App Service について
       href: overview.md
     - name: App Service 環境について
       href: environment/intro.md
@@ -36,7 +36,7 @@
       href: quickstart-arc.md
 - name: チュートリアル
   items:
-    - name: アプリ アクセス、ストレージ、Microsoft Graph をセキュリティで保護する
+    - name: アプリ アクセスのストレージ、Microsoft Graph をセキュリティで保護する
       items:
         - name: 概要
           href: scenario-secure-app-overview.md
@@ -92,6 +92,8 @@
       items:
         - name: コンテナーを使用した ASP.NET Core
           href: app-service-sql-github-actions.md
+        - name: ASP.NET
+          href: app-service-sql-asp-github-actions.md
 - name: サンプル
   items:
     - name: Azure CLI

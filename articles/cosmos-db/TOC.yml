@@ -225,6 +225,8 @@
           href: sql/cli-samples.md
         - name: Azure Resource Manager
           href: sql/templates-samples-sql.md
+        - name: Bicep
+          href: sql/bicep-samples.md
     - name: 概念
       items:
         - name: モデル化とパーティション分割
@@ -788,7 +790,7 @@
                 - name: 低速な要求のトラブルシューティング
                   href: sql/troubleshoot-dot-net-sdk-slow-request.md
                 - name: サービス利用不可のトラブルシューティング
-                  href: troubleshoot-service-unavailable.md
+                  href: sql/troubleshoot-service-unavailable.md
             - name: .Java
               items:
                 - name: Java SDK v4 のトラブルシューティング
@@ -1065,6 +1067,8 @@
         - name: Resource Manager テンプレートを使用して管理する
           href: cassandra/templates-samples.md
           displayName: ARM
+        - name: Bicep を使用して管理する
+          href: cassandra/manage-with-bicep.md
         - name: PowerShell を使用して管理する
           href: cassandra/powershell-samples.md
         - name: Azure CLI を使用して管理する
@@ -1205,6 +1209,8 @@
         - name: Resource Manager テンプレートを使用して管理する
           href: mongodb/resource-manager-template-samples.md
           displayName: ARM
+        - name: Bicep を使用して管理する
+          href: mongodb/manage-with-bicep.md
         - name: PowerShell を使用して管理する
           href: mongodb/powershell-samples.md
         - name: Azure CLI を使用して管理する
@@ -1289,6 +1295,8 @@
         - name: Resource Manager テンプレートを使用して管理する
           href: graph/resource-manager-template-samples.md
           displayName: ARM
+        - name: Bicep を使用して管理する
+          href: graph/manage-with-bicep.md
         - name: PowerShell を使用して管理する
           href: graph/powershell-samples.md
         - name: Azure CLI を使用して管理する
@@ -1364,6 +1372,8 @@
           href: table/find-request-unit-charge.md
         - name: Resource Manager テンプレートを使用して管理する
           href: table/resource-manager-templates.md
+        - name: Bicep を使用して管理する
+          href: table/manage-with-bicep.md
           displayName: ARM
         - name: PowerShell を使用して管理する
           href: table/powershell-samples.md
@@ -1402,6 +1412,9 @@
           href: sql/manage-with-powershell.md
         - name: Azure CLI の使用
           href: sql/manage-with-cli.md
+        - name: Bicep の使用
+          href: sql/manage-with-bicep.md
+          displayName: ARM
         - name: Resource Manager テンプレートの使用
           href: sql/manage-with-templates.md
           displayName: ARM
@@ -1504,6 +1517,8 @@
               href: monitor-server-side-latency.md
             - name: 要求ユニットの使用状況を監視する
               href: monitor-request-unit-usage.md
+            - name: キーの更新を監視する
+              href: monitor-account-key-updates.md
             - name: 正規化された要求ユニットの使用状況の監視
               href: monitor-normalized-request-units.md
         - name: Azure モニター ログを使用する

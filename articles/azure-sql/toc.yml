@@ -104,6 +104,8 @@
                   href: database/authentication-aad-directory-readers-role.md
                 - name: Azure AD のみの認証
                   href: database/authentication-azure-ad-only-authentication.md
+                - name: Azure AD のみの認証の Azure Policy
+                  href: database/authentication-azure-ad-only-authentication-policy.md
             - name: Transparent Data Encryption (TDE)
               items:
                 - name: 概要
@@ -191,6 +193,8 @@
                   href: database/authentication-aad-directory-readers-role-tutorial.md
                 - name: Azure AD のみの認証を有効化する
                   href: database/authentication-azure-ad-only-authentication-tutorial.md
+                - name: Azure Policy を使用して Azure AD のみの認証を強制する
+                  href: database/authentication-azure-ad-only-authentication-policy-how-to.md
                 - name: Azure AD のみの認証を有効にしてサーバーを作成する
                   href: database/authentication-azure-ad-only-authentication-create-server.md
             - name: BYOK を使用した TDE の構成

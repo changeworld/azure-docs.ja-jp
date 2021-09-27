@@ -95,7 +95,7 @@
           href: event-hubs-output.md
         - name: Power BI
           href: power-bi-output.md
-        - name: Table ストレージ
+        - name: テーブル ストレージ
           href: table-storage-output.md
         - name: Service Bus キュー
           href: service-bus-queues-output.md
@@ -324,6 +324,12 @@
           href: stream-analytics-machine-learning-anomaly-detection.md
         - name: ML REST API を使用する
           href: stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md
+    - name: Application Insights からエクスポートする
+      items:
+        - name: Stream Analytics にエクスポートする
+          href: app-insights-export-stream-analytics.md
+        - name: Stream Analytics を使用して SQL にエクスポートする
+          href: app-insights-export-sql-stream-analytics.md
     - name: ジョブ ダイアグラムを使用したデバッグ
       href: stream-analytics-job-diagram-with-metrics.md
     - name: ML 関数を利用したスケーリング

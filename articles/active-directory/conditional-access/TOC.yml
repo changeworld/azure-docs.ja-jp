@@ -102,6 +102,8 @@
           href: troubleshoot-conditional-access.md
         - name: What If ツールを使用したトラブルシューティング
           href: troubleshoot-conditional-access-what-if.md
+        - name: 継続的アクセス評価のトラブルシューティング
+          href: howto-continuous-access-evaluation-troubleshoot.md
         - name: よく寄せられる質問
           href: faqs.md
     - name: クラシック ポリシーを移行する

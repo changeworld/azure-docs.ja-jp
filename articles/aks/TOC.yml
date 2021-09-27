@@ -207,6 +207,8 @@
           href: azure-files-dynamic-pv.md
         - name: Azure Files - 静的
           href: azure-files-volume.md
+        - name: Azure HPC Cache
+          href: azure-hpc-cache.md
         - name: NFS サーバー - 静的
           href: azure-nfs-volume.md
         - name: Azure NetApp Files
@@ -367,7 +369,11 @@
             - name: OSM の概要
               href: open-service-mesh-about.md
             - name: OSM AKS アドオンをデプロイする
-              href: open-service-mesh-deploy-add-on.md
+              items:
+                - name: Azure CLI を使用する
+                  href: open-service-mesh-deploy-addon-az-cli.md
+                - name: Bicep テンプレートを使用する
+                  href: open-service-mesh-deploy-addon-bicep.md
             - name: OSM クライアント バイナリをダウンロードする
               href: open-service-mesh-binary.md
             - name: OSM のチュートリアル

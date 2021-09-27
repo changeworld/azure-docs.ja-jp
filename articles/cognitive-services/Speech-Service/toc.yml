@@ -618,6 +618,8 @@
       items:
         - name: Speech Studio の概要
           href: speech-studio-overview.md
+        - name: Speech Studio でのロールベースのアクセス制御
+          href: speech-studio-role-based-access-control.md
     - name: エンタープライズ対応
       items:
         - name: リージョンのサポート

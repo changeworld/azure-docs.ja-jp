@@ -552,6 +552,8 @@
           href: howto-restrict-your-app-to-a-set-of-users.md
         - name: ご利用のアプリケーションにアプリ ロールを追加する
           href: howto-add-app-roles-in-azure-ad-apps.md
+        - name: アプリケーションに RBAC を実装する
+          href: howto-implement-rbac-for-apps.md
     - name: Microsoft Graph API を使用する
       href: microsoft-graph-intro.md
     - name: 回復性のための構築

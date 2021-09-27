@@ -422,6 +422,14 @@ groups:
     title: Python
   - id: programming-language-java
     title: Java
+- id: runtime-version-programming-functions
+  title: Azure Functions バージョン
+  prompt: ランタイム バージョンを選択する&#58;
+  pivots:
+  - id: programming-runtime-functions-v3
+    title: バージョン 3.x
+  - id: programming-runtime-functions-v4
+    title: バージョン 4.x
 - id: programming-languages-metrics-monitor
   title: プログラミング言語
   prompt: プログラミング言語を選択する。
@@ -816,6 +824,14 @@ groups:
   pivots:
   - id: development-environment-vs
     title: Visual Studio
+  - id: development-environment-vscode
+    title: Visual Studio Code
+  - id: development-environment-cli
+    title: コマンド ライン インターフェイス
+- id: app-service-ide-oss
+  title: 開発環境
+  prompt: 開発環境を選択する
+  pivots:
   - id: development-environment-vscode
     title: Visual Studio Code
   - id: development-environment-cli
@@ -1282,10 +1298,28 @@ groups:
     title: Azure CLI
   - id: identity-mi-methods-sub-powershell
     title: PowerShell
+- id: azure-stack-edge-device-deployment
+  title: Azure Stack Edge デバイスのデプロイ
+  prompt: デプロイの種類の選択
+  pivots:
+  - id: single-node
+    title: 単一ノード デバイス
+  - id: two-node
+    title: 2 ノード クラスター
+- id: iot-develop-toolset
+  title: IoT デバイス
+  prompt: ビルド環境を選択する
+  pivots:
+  - id: iot-toolset-cmake
+    title: CMake
+  - id: iot-toolset-iar-ewarm
+    title: IAR EWARM
+  - id: iot-toolset-mplab
+    title: MPLAB
 metadata:
-  ms.openlocfilehash: 6043c9ad329e91e258a57df19cb0a6e4ccb3ac93
-  ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+  ms.openlocfilehash: 89fe5b9daec6956c252679045c3f5a5b98cbd670
+  ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/04/2021
-  ms.locfileid: "123471446"
+  ms.lasthandoff: 09/24/2021
+  ms.locfileid: "128708531"

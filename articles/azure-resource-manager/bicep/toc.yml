@@ -1,7 +1,6 @@
 - name: Bicep のドキュメント
   href: index.yml
 - name: 概要
-  expanded: true
   items:
     - name: Bicep とは
       href: overview.md
@@ -35,9 +34,9 @@
             - name: 条件付きデプロイ
               href: conditional-resource-deployment.md
               displayName: runtime
-            - name: 子リソースの名前と種類
+            - name: 子リソース
               href: child-resource-name-type.md
-              displayName: 'parent,parent resource'
+              displayName: 'parent,parent resource,sub,nested'
             - name: 拡張リソース
               href: scope-extension-resources.md
         - name: パラメーター
@@ -84,7 +83,23 @@
               href: deploy-to-tenant.md
               displayName: assign role
         - name: リンター
-          href: linter.md
+          items:
+            - name: リンター
+              href: linter.md
+            - name: リンター ルール
+              items:
+                - name: ハードコーディングされた環境 URL がない
+                  href: linter-rule-no-hardcoded-environment-urls.md
+                - name: 未使用のパラメーターがない
+                  href: linter-rule-no-unused-parameters.md
+                - name: 未使用の変数がない
+                  href: linter-rule-no-unused-variables.md
+                - name: 補間を優先する
+                  href: linter-rule-prefer-interpolation.md
+                - name: パラメーターの既定値をセキュリティで保護する
+                  href: linter-rule-secure-parameter-default.md
+                - name: 補間を簡略化する
+                  href: linter-rule-simplify-interpolation.md
         - name: ベスト プラクティス
           href: best-practices.md
         - name: パターン
@@ -121,8 +136,10 @@
               href: add-template-to-azure-pipelines.md
             - name: Bicep と GitHub Actions
               href: deploy-github-actions.md
-    - name: Bicep CLI を使用する
+    - name: Bicep へ移行する
       items:
+        - name: 推奨されるワークフロー
+          href: migrate.md
         - name: 逆コンパイル
           href: decompile.md
           displayName: 'conversion issues,export,convert,playground'

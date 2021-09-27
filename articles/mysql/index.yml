@@ -8,12 +8,12 @@ metadata:
   ms.date: 09/10/2021
   ms.service: mysql
   ms.topic: landing-page
-  ms.openlocfilehash: 36338fdaad38bb84b4b4a796289c07e0cfee01d7
-  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+  ms.openlocfilehash: 448cf07b05d429106405cccc387ba9f4b84f3583
+  ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/13/2021
-  ms.locfileid: "124804888"
+  ms.lasthandoff: 09/24/2021
+  ms.locfileid: "128565230"
 landingContent:
 - title: Azure Database for MySQL について
   linkLists:
@@ -175,8 +175,10 @@ landingContent:
       url: https://dev.mysql.com/doc/connector-net/en/
   - linkListType: deploy
     links:
-    - text: 一般的なタスクのための Azure CLI スクリプト
+    - text: Azure CLI サンプル - シングル サーバー
       url: ./sample-scripts-azure-cli.md
+    - text: Azure CLI サンプル - フレキシブル サーバー
+      url: flexible-server/sample-scripts-azure-cli.md
     - text: Azure Resource Manager のテンプレート
       url: /azure/templates/microsoft.dbformysql/allversions
   - linkListType: reference

@@ -343,7 +343,23 @@
               href: power-bi-app-supplemental-content.md
     - name: Power BI ビジュアル オファー
       items:
-        - name: パートナー センターへの移行に関する FAQ
+        - name: オファーを計画する
+          href: marketplace-power-bi-visual.md
+        - name: オファーを作成する
+          items:
+            - name: オファーのセットアップ
+              href: power-bi-visual-offer-setup.md
+            - name: Properties
+              href: power-bi-visual-properties.md
+            - name: オファーのリスト登録
+              href: power-bi-visual-offer-listing.md
+            - name: 可用性
+              href: power-bi-visual-availability.md
+            - name: 技術的な構成
+              href: power-bi-visual-technical-configuration.md
+            - name: オファー名の管理
+              href: power-bi-visual-manage-names.md
+        - name: コマーシャル マーケットプレースへの移行に関する FAQ
           href: power-bi-visual-faq.yml
     - name: SaaS オファー
       items:
@@ -484,7 +500,7 @@
     - name: コマーシャル マーケットプレースのレビュー ポリシー
       href: /legal/marketplace/rating-review-policies?context=/azure/marketplace/context/context
     - name: Azure Marketplace の使用条件
-      href: /legal/marketplace/terms?context=/azure/marketplace/context/context
+      href: 'https://azure.microsoft.com/support/legal/marketplace-terms/'
     - name: Microsoft Publisher Agreement
       href: /legal/marketplace/msft-publisher-agreement
     - name: Microsoft Publisher Agreement の変更履歴

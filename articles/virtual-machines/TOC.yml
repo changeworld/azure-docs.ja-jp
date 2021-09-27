@@ -256,6 +256,12 @@
             - name: AMD GPU ドライバーの設定
               displayName: 'AMD GPU drivers, AMD, GPU drivers, GPU'
               href: ./windows/n-series-amd-driver-setup.md
+            - name: NC シリーズの提供終了
+              href: nc-series-retirement.md
+            - name: NCv2 シリーズの提供終了
+              href: ncv2-series-retirement.md
+            - name: ND シリーズの提供終了
+              href: nd-series-retirement.md
             - name: GPU コンピューティング移行ガイド
               displayName: GPU compute migration guide
               href: ./n-series-migration.md
@@ -337,13 +343,8 @@
         - name: 仮想マシン セレクター ツール
           href: 'https://aka.ms/vm-selector'
         - name: VM のサイズの変更
-          items:
-            - name: CLI
-              displayName: 'Change, resize, update size'
-              href: ./linux/change-vm-size.md
-            - name: ポータルまたは PowerShell
-              displayName: 'Change, resize, update size'
-              href: ./windows/resize-vm.md
+          displayName: 'Change, resize, update size'
+          href: resize-vm.md
         - name: 状態と課金
           href: states-billing.md
         - name: 一時ディスクを使用しない Azure VM
@@ -403,28 +404,28 @@
           href: reserved-vm-instance-size-flexibility.md
     - name: 容量予約 (プレビュー)
       items:
-        - name: 概要 (プレビュー)
+        - name: 概要
           displayName: on-demand capacity reservation
           href: capacity-reservation-overview.md
-        - name: 容量予約を作成する (プレビュー)
+        - name: 容量予約を作成する
           displayName: on-demand capacity reservation
           href: capacity-reservation-create.md
-        - name: 容量予約の過剰割り当て (プレビュー)
+        - name: 容量予約の割り当て超過
           displayName: on-demand capacity reservation
           href: capacity-reservation-overallocate.md
-        - name: 容量予約を変更する (プレビュー)
+        - name: 容量予約を変更する
           displayName: on-demand capacity reservation
           href: capacity-reservation-modify.md
-        - name: VM を関連付ける (プレビュー)
+        - name: VM を関連付ける
           displayName: on-demand capacity reservation
           href: capacity-reservation-associate-vm.md
-        - name: VM を削除する (プレビュー)
+        - name: VM を削除する
           displayName: on-demand capacity reservation
           href: capacity-reservation-remove-vm.md
-        - name: VM スケール セットを関連付ける (プレビュー)
+        - name: 仮想マシン スケール セットを関連付ける
           displayName: on-demand capacity reservation
           href: capacity-reservation-associate-virtual-machine-scale-set.md
-        - name: VM スケール セットを削除する (プレビュー)
+        - name: 仮想マシン スケール セットの削除
           displayName: on-demand capacity reservation
           href: capacity-reservation-remove-virtual-machine-scale-set.md
     - name: 仮想マシンを作成する

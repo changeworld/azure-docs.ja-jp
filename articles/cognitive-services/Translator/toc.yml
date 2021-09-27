@@ -100,7 +100,7 @@
       href: document-translation/get-started-with-document-translation.md
     - name: 操作方法ガイド
       items:
-        - name: ドキュメント翻訳用の SAS トークンを作成する
+        - name: ドキュメント翻訳用の SAS トークンを生成する
           href: document-translation/create-sas-tokens.md
         - name: マネージド ID の作成と使用
           href: document-translation/managed-identity.md

@@ -256,6 +256,8 @@ items:
             href: connector-overview.md
           - name: Amazon Marketplace Web Service
             href: connector-amazon-marketplace-web-service.md
+          - name: Amazon RDS for Oracle
+            href: connector-amazon-rds-for-oracle.md
           - name: Amazon Redshift
             href: connector-amazon-redshift.md
           - name: Amazon S3
@@ -709,6 +711,8 @@ items:
             href: monitor-integration-runtime.md
           - name: Azure-SSIS 統合ランタイムの監視
             href: monitor-integration-runtime.md#azure-ssis-integration-runtime
+          - name: サービス レベル アグリーメントを使用したデータ パイプラインの実行
+            href: tutorial-operationalize-pipelines.md
           - name: Azure-SSIS 統合ランタイムの再構成
             href: manage-azure-ssis-integration-runtime.md
           - name: データ ファクトリのコピーまたは複製
@@ -879,7 +883,7 @@ items:
             displayName: diu
       - name: トラブルシューティング ガイド
         items:
-          - name: Data Factory UX
+          - name: Azure Data Factory Studio
             href: data-factory-ux-troubleshoot-guide.md
           - name: Activities
             href: data-factory-troubleshoot-guide.md

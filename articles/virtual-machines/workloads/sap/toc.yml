@@ -260,6 +260,8 @@
               href: sap-ascs-ha-multi-sid-wsfc-shared-disk.md
         - name: ファイル共有を使用する SAP
           items:
+            - name: Azure Files SMB を使用した HA SAP NetWeaver のインストール
+              href: high-availability-guide-windows-azure-files-smb.md
             - name: Azure NetApp Files を使用した HA SAP NetWeaver のインストール (SMB)
               href: high-availability-guide-windows-netapp-files-smb.md
             - name: WSFC と SOFS ファイル共有を使用した SAP ASCS/SCS インスタンス

@@ -8,6 +8,8 @@
       href: core/overview-iot-central-tour.md
     - name: 最新の更新
       items:
+        - name: 2021 年 8 月の新機能と更新された機能
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-new-and-updated-features-august-2021/'
         - name: 2021 年 7 月の新機能と更新された機能
           href: 'https://azure.microsoft.com/updates/azure-iot-central-new-and-updated-features-july-2021/'
         - name: 2021 年 6 月の新機能と更新された機能

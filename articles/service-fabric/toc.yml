@@ -545,6 +545,8 @@
                   href: service-fabric-cluster-security-update-certs-azure.md
                 - name: クラスター ノード VM へのリモート接続
                   href: service-fabric-cluster-remote-connect-to-azure-cluster-node.md
+                - name: Azure Service Fabric の Linux OS のアップグレード
+                  href: service-fabric-cluster-upgrade-os.md
         - name: スタンドアロンのクラスター
           items:
             - name: 作成

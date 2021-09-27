@@ -113,6 +113,8 @@
           href: playback-recordings-how-to.md
         - name: Azure Video Analyzer プレーヤーウィジェットの使用方法
           href: player-widget.md
+        - name: プレーヤー ウィジェットのサンプル アプリ
+          href: sample-player-widget.md
         - name: 再生にアクセス ポリシーを使用
           href: access-policies.md
     - name: Record
@@ -135,6 +137,8 @@
       items:
         - name: 監視とログ記録
           href: monitor-log-edge.md
+        - name: パブリック エンドポイント
+          href: access-public-endpoints-networking.md
     - name: 視覚化する
       items:
         - name: Power BI にプレーヤー ウィジェットを埋め込む
@@ -173,3 +177,5 @@
       href: faq-edge.yml
     - name: クォータと制限
       href: quotas-limitations.md
+    - name: Azure ビデオ分析の Terraform リソース
+      href: 'https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/video_analyzer'

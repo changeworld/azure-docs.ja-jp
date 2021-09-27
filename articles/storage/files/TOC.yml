@@ -9,14 +9,8 @@
   items:
     - name: ファイル共有の作成および使用 - Windows
       href: storage-files-quick-create-use-windows.md
-    - name: ファイル共有の作成 - ポータル
+    - name: ファイル共有を作成する
       href: storage-how-to-use-files-portal.md
-    - name: ファイル共有の作成 - PowerShell
-      href: storage-how-to-use-files-powershell.md
-    - name: ファイル共有の作成 - CLI
-      href: storage-how-to-use-files-cli.md
-    - name: ファイル共有の作成 - Storage Explorer
-      href: storage-how-to-use-files-storage-explorer.md
 - name: チュートリアル
   items:
     - name: Azure File Sync を使用して Windows ファイル サーバーを拡張する
@@ -177,7 +171,7 @@
           href: storage-files-migration-overview.md
         - name: クラウドのみのデプロイをターゲットにする
           items:
-            - name: RoboCopy から Azure ファイル共有へ
+            - name: RoboCopy を使用して Azure ファイル共有に移行する
               href: storage-files-migration-robocopy.md
             - name: DataBox を使用してオンプレミスの NAS から Azure ファイル共有に移行する
               href: storage-files-migration-nas-cloud-databox.md

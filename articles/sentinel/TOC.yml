@@ -15,10 +15,12 @@
   items:
     - name: UEBA を使用して調査する
       href: investigate-with-ueba.md
-    - name: オートメーションを使用して脅威に対応する
-      href: tutorial-respond-threats-playbook.md
     - name: Azure Sentinel に対する KQL クエリを作成する (Learn モジュール)
       href: /learn/paths/sc-200-utilize-kql-for-azure-sentinel/
+    - name: オートメーションを使用して脅威に対応する
+      href: tutorial-respond-threats-playbook.md
+    - name: ノートブックと MSTICPy の概要
+      href: notebook-get-started.md
     - name: Azure Sentinel から Power BI レポートを作成する
       href: powerbi.md
 - name: 概念
@@ -200,6 +202,8 @@
       items:
         - name: Jupyter Notebook を使用して追求する
           href: notebooks.md
+        - name: Jupyter Notebook 用の高度な MSTICPy 設定
+          href: notebooks-msticpy-advanced.md
         - name: ブックマークを使用して追求する
           href: bookmarks.md
         - name: ライブストリームを使用して追求する
