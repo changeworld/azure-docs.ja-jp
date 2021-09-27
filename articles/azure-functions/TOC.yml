@@ -158,8 +158,10 @@
   items:
     - name: ベスト プラクティス
       items:
-        - name: パフォーマンスと信頼性
+        - name: 全般的なベスト プラクティス
           href: functions-best-practices.md
+        - name: パフォーマンスと信頼性
+          href: performance-reliability.md
           displayName: best practices
         - name: 接続の管理
           href: manage-connections.md
@@ -184,12 +186,12 @@
           href: functions-premium-plan.md
         - name: 専用プラン
           href: dedicated-plan.md
-        - name: イベント ドリブン スケーリング
-          href: event-driven-scaling.md
     - name: デプロイメント
       href: functions-deployment-technologies.md
     - name: イベントとメッセージング
       items:
+        - name: イベント ドリブン スケーリング
+          href: event-driven-scaling.md
         - name: 信頼できるイベント処理
           href: functions-reliable-event-processing.md
         - name: 同一入力のための設計
@@ -259,6 +261,8 @@
       href: ip-addresses.md
     - name: カスタム ハンドラー
       href: functions-custom-handlers.md
+    - name: 高可用性
+      href: azure-functions-az-redundancy.md
 - name: 操作方法ガイド
   items:
     - name: 開発

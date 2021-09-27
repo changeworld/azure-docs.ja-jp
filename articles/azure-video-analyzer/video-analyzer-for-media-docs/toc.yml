@@ -115,8 +115,8 @@
     - name: リージョン
       displayName: location
       href: regions.md
-    - name: FAQ
-      href: faq.md
+    - name: よく寄せられる質問
+      href: faq.yml
     - name: コンプライアンス
       href: 'https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942'
     - name: リリース ノート

@@ -60,8 +60,6 @@
           href: howto-find-activity-reports.md
         - name: ユーザーのサインイン エラーのトラブルシューティング
           href: howto-troubleshoot-sign-in-errors.md
-        - name: リスクのフラグ付きユーザーの修復
-          href: howto-remediate-users-flagged-for-risk.md
         - name: レポート API の構成の前提条件
           href: howto-configure-prerequisites-for-reporting-api.md
         - name: Azure AD ブックの使用方法
