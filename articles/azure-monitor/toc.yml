@@ -79,6 +79,8 @@
               href: app/resource-manager-web-app.md
             - name: Azure Functions
               href: app/resource-manager-function-app.md
+            - name: Azure CLI で管理する
+              href: insights/azure-cli-application-insights-component.md
         - name: Container insights
           href: containers/resource-manager-container-insights.md
         - name: データ収集ルール
@@ -1021,10 +1023,6 @@
           items:
             - name: 連続エクスポート
               href: app/export-telemetry.md
-            - name: Stream Analytics にエクスポートする
-              href: app/export-stream-analytics.md
-            - name: Stream Analytics を使用して SQL にエクスポートする
-              href: app/code-sample-export-sql-stream-analytics.md
             - name: データのエクスポート モデル
               href: app/export-data-model.md
         - name: Visual Studio
