@@ -609,8 +609,8 @@
       items:
         - name: Hyperscale (Citus) とは
           href: hyperscale-overview.md
-        - name: プレビュー段階の機能
-          href: hyperscale-preview-features.md
+        - name: 製品の更新
+          href: hyperscale-product-updates.md
     - name: クイックスタート
       items:
         - name: サーバー グループを作成する

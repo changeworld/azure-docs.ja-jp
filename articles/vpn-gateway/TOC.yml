@@ -261,7 +261,7 @@
       href: create-zone-redundant-vnet-gateway.md
     - name: パケット キャプチャの構成
       href: packet-capture.md
-    - name: 正常性の監視
+    - name: 監視
       items:
         - name: VPN Gateway の監視
           href: monitor-vpn-gateway.md
@@ -270,8 +270,9 @@
         - name: リソース ログに基づいたアラートの設定
           href: vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md
     - name: トラブルシューティング
-      href: vpn-gateway-troubleshoot.md
       items:
+        - name: VPN Gateway のトラブルシューティング
+          href: vpn-gateway-troubleshoot.md
         - name: 診断ログを使用した Azure VPN Gateway のトラブルシューティング
           href: troubleshoot-vpn-with-azure-diagnostics.md
         - name: コミュニティで推奨される VPN またはファイアウォール デバイスの設定

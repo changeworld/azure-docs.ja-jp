@@ -200,6 +200,8 @@
       items:
         - name: セキュリティ ベースライン
           href: /security/benchmark/azure/baselines/site-recovery-security-baseline?toc=/azure/site-recovery/toc.json
+        - name: トランスポート層セキュリティ
+          href: transport-layer-security.md
 - name: ハウツー ガイド
   items:
     - name: Azure 間のディザスター リカバリー
