@@ -1,5 +1,5 @@
 ---
-title: Azure Blueprint の概要
+title: Azure Blueprints の概要
 description: Azure Blueprints サービスによって Azure 環境でのアーティファクトの作成、定義、デプロイがどのように実現されるかについて理解します。
 ms.date: 01/27/2021
 ms.topic: overview
@@ -10,7 +10,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 03/29/2021
 ms.locfileid: "98919344"
 ---
-# <a name="what-is-azure-blueprints"></a>Azure Blueprint とは
+# <a name="what-is-azure-blueprints"></a>Azure Blueprints とは
 
 設計図によってエンジニアやアーキテクトがプロジェクト設計パラメーターの概略を示すのと同じように、Azure Blueprints によってクラウド アーキテクトや中央の情報技術部門は、組織の標準、パターン、要件を実装および順守した反復可能な一連の Azure リソースを定義できます。 Azure Blueprints を使用すると、開発チームは新しい環境を迅速に構築して立ち上げることができます。新しい環境は組織のコンプライアンスに従って構築され、ネットワークなどの一連の組み込みコンポーネントを含んでいるという確信が得られるため、開発とデリバリーにかかる時間を短縮できます。
 
@@ -110,7 +110,7 @@ ARM テンプレートとブループリントのどちらかを選ぶ必要は�
 
 |Azure ロール | 説明 |
 |-|-|
-|[所有者](../../role-based-access-control/built-in-roles.md#owner) | 他のアクセス許可に加えて、すべての Azure Blueprint 関連のアクセス許可が含まれます。 |
+|[所有者](../../role-based-access-control/built-in-roles.md#owner) | 他のアクセス許可に加えて、すべての Azure Blueprints 関連のアクセス許可が含まれます。 |
 |[Contributor](../../role-based-access-control/built-in-roles.md#contributor) | 他のアクセス許可に加えて、ブループリント定義を作成および削除できますが、ブループリントの割り当てのアクセス許可は持っていません。 |
 |[ブループリント共同作成者](../../role-based-access-control/built-in-roles.md#blueprint-contributor) | ブループリントの定義を管理できますが、それらを割り当てることはできません。 |
 |[ブループリント オペレーター](../../role-based-access-control/built-in-roles.md#blueprint-operator) | 既存の発行済みのブループリントを割り当てることはできますが、新しいブループリント定義は作成できません。 ブループリントの割り当ては、ユーザーによって割り当てられたマネージド ID を使用して割り当てが行われた場合にのみ機能します。 |
