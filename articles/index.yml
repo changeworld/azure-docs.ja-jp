@@ -340,12 +340,6 @@ productDirectory:
       azureCategories:
         - analytics
       url: hdinsight/r-server/r-server-overview.md
-    - title: Azure Blockchain Service (プレビュー)
-      summary: コンソーシアム ブロックチェーン ネットワークを構築、管理、展開
-      imageSrc: 'https://static.docs.com/ui/media/product/azure/blockchain-service.svg'
-      azureCategories:
-        - blockchain
-      url: blockchain/service/index.yml
     - title: Azure Blockchain Workbench (プレビュー)
       summary: クラウド内でのブロックチェーン アプリの容易なプロトタイプ作成
       imageSrc: 'https://static.docs.com/ui/media/product/azure/blockchain-workbench.svg'
