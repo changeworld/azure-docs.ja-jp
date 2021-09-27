@@ -11,12 +11,12 @@ metadata:
   ms.author: kgremban
   ms.date: 08/05/2019
   ms.custom: e2e-hybrid
-  ms.openlocfilehash: 069fe408fc4b4dac10484a9780c70cdfc722abc2
-  ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+  ms.openlocfilehash: e8514f4eff76d62fb48cbaf3641842cdb8cbb4c9
+  ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/13/2021
-  ms.locfileid: "121722003"
+  ms.lasthandoff: 09/24/2021
+  ms.locfileid: "128557208"
 landingContent:
 - title: Linux デバイス向けの開発
   linkLists:
@@ -53,7 +53,7 @@ landingContent:
     - text: 1 つのデバイスを登録する
       url: how-to-register-device.md
     - text: 大規模なデバイスの登録とプロビジョニング
-      url: how-to-auto-provision-symmetric-keys.md
+      url: how-to-provision-devices-at-scale-linux-symmetric.md
     - text: Linux デバイスに IoT Edge ランタイムをインストールする
       url: how-to-install-iot-edge.md
     - text: Windows デバイスに IoT Edge ランタイムをインストールする

@@ -41,10 +41,12 @@
           href: agent-overview.md
         - name: 展開を計画する
           href: plan-at-scale-deployment.md
-        - name: Azure portal から Azure Arc へのマシンの接続
+        - name: デプロイ スクリプトを使用してマシンを接続する
           href: onboard-portal.md
         - name: サービス プリンシパルを使用したマシンの大規模な接続
           href: onboard-service-principal.md
+        - name: Automation Update Management からマシンを接続する
+          href: onboard-update-management-machines.md
         - name: PowerShell DSC を使用してマシンを Azure Arc に接続する
           href: onboard-dsc.md
         - name: Windows Admin Center からマシンを接続する

@@ -130,6 +130,8 @@
           href: software-releases-usb-cable-updates.md
         - name: Azure Percept DK ソフトウェアのリリース ノート
           href: azure-percept-devkit-software-release-notes.md
+        - name: Azure Percept DK コンテナーのリリース ノート
+          href: azure-percept-devkit-container-release-notes.md
     - name: Azure Percept デバイスのデータシート
       items:
         - name: Azure Percept DK のデータシート

@@ -73,8 +73,6 @@
               href: how-to-set-up-instance-cli.md
             - name: PowerShell
               href: how-to-set-up-instance-powershell.md
-            - name: セットアップ スクリプトのサンプル
-              href: how-to-set-up-instance-scripted.md
         - name: Private Link でプライベート アクセスを有効にする
           href: how-to-enable-private-link.md
         - name: アプリ認証コードを作成する
@@ -137,7 +135,7 @@
       items:
         - name: Azure Monitor のメトリックを表示する
           href: troubleshoot-metrics.md
-        - name: 診断ログの有効化とクエリ
+        - name: 診断ログを使用する
           href: troubleshoot-diagnostics.md
         - name: アラートを有効にする
           href: troubleshoot-alerts.md

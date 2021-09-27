@@ -29,15 +29,19 @@ items:
           - name: 大規模な Azure Purview MSI 構成
             href: tutorial-msi-configuration.md
       - name: オンプレミスの SQL サーバーの登録とスキャン
-        href: register-scan-on-premises-sql-server.md
-      - name: カタログの REST API を呼び出す
+        href: tutorial-register-scan-on-premises-sql-server.md
+      - name: Purview データ プレーンに REST API を使用する方法
         href: tutorial-using-rest-apis.md
   - name: 概念
     items:
       - name: Purview Studio の使用
         href: use-purview-studio.md
-      - name: デプロイのベスト プラクティス
-        href: deployment-best-practices.md
+      - name: ベスト プラクティス
+        items:
+          - name: デプロイのベスト プラクティス
+            href: deployment-best-practices.md
+          - name: コレクションのアーキテクチャ
+            href: concept-best-practices-collections.md
       - name: Azure Purview の制限
         href: how-to-manage-quotas.md
       - name: スキャンとインジェスト
@@ -231,12 +235,10 @@ items:
             items:
               - name: プライベート エンドポイントの概要
                 href: catalog-private-link.md
-              - name: Purview アカウントとポータル用のネットワークを分離する
-                href: catalog-private-link-account-portal.md
-              - name: スキャン用にネットワークを分離する
-                href: catalog-private-link-ingestion.md
               - name: エンド ツー エンドのネットワークの分離
                 href: catalog-private-link-end-to-end.md
+              - name: Purview アカウントとポータル用のネットワークを分離する
+                href: catalog-private-link-account-portal.md
               - name: プライベート エンドポイントの DNS を構成する
                 href: catalog-private-link-name-resolution.md
               - name: プライベート エンドポイントのトラブルシューティング

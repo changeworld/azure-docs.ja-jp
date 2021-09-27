@@ -160,6 +160,32 @@
         - name: ベンチマーク スコア
           href: ../virtual-machines/windows/compute-benchmark-scores.md
           maintainContext: true
+        - name: 容量予約 (プレビュー)
+          items:
+            - name: 概要
+              displayName: on-demand capacity reservation
+              href: ../virtual-machines/capacity-reservation-overview.md
+              maintainContext: true
+            - name: 容量予約を作成する
+              displayName: on-demand capacity reservation
+              href: ../virtual-machines/capacity-reservation-create.md
+              maintainContext: true
+            - name: 容量予約の割り当て超過
+              displayName: on-demand capacity reservation
+              href: ../virtual-machines/capacity-reservation-overallocate.md
+              maintainContext: true
+            - name: 容量予約を変更する
+              displayName: on-demand capacity reservation
+              href: ../virtual-machines/capacity-reservation-modify.md
+              maintainContext: true
+            - name: 仮想マシン スケール セットを関連付ける
+              displayName: on-demand capacity reservation
+              href: ../virtual-machines/capacity-reservation-associate-virtual-machine-scale-set.md
+              maintainContext: true
+            - name: 仮想マシン スケール セットの削除
+              displayName: on-demand capacity reservation
+              href: ../virtual-machines/capacity-reservation-remove-virtual-machine-scale-set.md
+              maintainContext: true
       maintainContext: true
     - name: 動作保証済み Linux ディストリビューション
       href: ../virtual-machines/linux/endorsed-distros.md

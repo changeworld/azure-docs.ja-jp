@@ -5,8 +5,6 @@
   items:
     - name: アプリケーション管理とは
       href: what-is-application-management.md
-    - name: シングル サインオン (SSO) とは
-      href: what-is-single-sign-on.md
     - name: ドキュメントの最新情報
       href: whats-new-docs.md
 - name: クイックスタート
@@ -57,22 +55,10 @@
           href: my-apps-deployment-plan.md
     - name: シングル サインオン
       items:
-        - name: シングル サインオンのデプロイを計画する
+        - name: シングル サインオンとは
+          href: what-is-single-sign-on.md
+        - name: シングル サインオンのデプロイの計画
           href: plan-sso-deployment.md
-        - name: シングル サインオンのオプション
-          href: sso-options.md
-        - name: OIDC ベースの SSO
-          href: configure-oidc-single-sign-on.md
-        - name: SAML ベースの SSO
-          href: configure-saml-single-sign-on.md
-        - name: パスワードベースの SSO
-          href: configure-password-single-sign-on-non-gallery-applications.md
-        - name: リンクベースの SSO
-          href: configure-linked-sign-on.md
-        - name: ヘッダー ベースの SSO (オンプレミス アプリ)
-          href: ../app-proxy/application-proxy-configure-single-sign-on-with-headers.md
-        - name: ワンクリック SSO
-          href: one-click-sso-tutorial.md
     - name: アプリケーションのセキュリティ
       items:
         - name: アプリのアクセス オプション
@@ -158,16 +144,18 @@
       items:
         - name: Azure AD を使用した安全なハイブリッド アクセス
           href: secure-hybrid-access.md
-        - name: パートナー統合を使用した安全なハイブリッド アクセス
-          href: secure-hybrid-access-integrations.md
-        - name: Datawiza
-          href: datawiza-with-azure-ad.md
-        - name: F5
+        - name: F5 と Azure AD の統合
           href: f5-aad-integration.md
         - name: Azure IaaS での F5 BIG-IP VE のデプロイ
           href: f5-bigip-deployment-guide.md
-        - name: F5 Big-IP パスワードレス VPN
+        - name: パスワードレス VPN のための F5 Big-IP と Azure AD
           href: f5-aad-password-less-vpn.md
+    - name: シングル サイン オン
+      items:
+        - name: パスワードベースのシングル サインオン
+          href: configure-password-single-sign-on-non-gallery-applications.md
+        - name: リンクされたシングル サインオン
+          href: configure-linked-sign-on.md
     - name: トラブルシューティング
       items:
         - name: パスワードベースのシングル サインオンのトラブルシューティング

@@ -41,6 +41,8 @@
       href: /legal/cognitive-services/form-recognizer/fr-data-privacy-security?context=/azure/applied-ai-services/form-recognizer/context/context
 - name: 操作方法ガイド
   items:
+    - name: Azure BLOB コンテナーの SAS トークンを生成する
+      href: generate-sas-tokens.md
     - name: サンプル ラベル付けツールを使用してカスタム モデルをトレーニングする
       href: label-tool.md
     - name: トレーニング データ セットの作成

@@ -25,6 +25,12 @@
   items:
     - name: Azure Defender for IoT の試用版のセットアップ
       href: tutorial-onboarding.md
+    - name: Forescout を統合する
+      href: tutorial-forescout.md
+    - name: Fortinet を統合する
+      href: tutorial-fortinet.md
+    - name: Palo Alto をの統合する
+      href: tutorial-palo-alto.md
     - name: Qradar を統合する
       href: tutorial-qradar.md
     - name: Splunk を統合する
@@ -52,7 +58,7 @@
           displayName: 'SSL, TLS, PKI, Locally-signed, CA-signed'
           href: how-to-deploy-certificates.md
         - name: ソフトウェアをインストールする
-          displayName: 'tunnel, setup, deployment, virtual, Dell, HPE, SMB, certified, hardware, port mirroring, ESXi, DL20, EL300, R340,enterprise, SMB, corporate, NIC, second, secondary, network, interface, network interface, appliance, Nuvo 5006LP, Fitlet2, BIOS, sanity, mirroring, port, ports'
+          displayName: 'tunnel, setup, deployment, virtual, Dell, HPE, SMB, certified, hardware, port mirroring, ESXi, DL20, EL300, R340,enterprise, SMB, corporate, NIC, second, secondary, network, interface, network interface, appliance, Nuvo 5006LP, Fitlet2, BIOS, sanity, mirroring, port, ports, hyper-v, NDIS, ClearPass, span,'
           href: how-to-install-software.md
         - name: プロキシを使用してセンサーを接続する
           displayName: 'Squid, proxy, connect, direct internet access, access, internet, tunnel'
@@ -183,14 +189,6 @@
     - name: SNMP MIB の監視を設定する
       href: how-to-set-up-snmp-mib-monitoring.md
       displayName: health
-    - name: パートナーとの統合
-      items:
-        - name: Forescout の統合
-          href: integration-forescout.md
-        - name: Fortinet の統合
-          href: integration-fortinet.md
-        - name: Palo Alto の統合
-          href: integration-palo-alto.md
 - name: 関連項目
   items:
     - name: Defender for IoT の API を操作する

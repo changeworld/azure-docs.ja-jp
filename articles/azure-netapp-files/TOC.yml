@@ -87,70 +87,102 @@
       href: storage-service-add-ons.md
     - name: ボリュームのハード クォータを変更する意味
       href: volume-hard-quota-guidelines.md
+    - name: Azure Government 向け Azure NetApp Files
+      href: azure-government.md
 - name: 操作方法ガイド
   items:
-    - name: Azure NetApp Files に登録する
-      href: azure-netapp-files-register.md
-    - name: NetApp アカウントを作成する
-      href: azure-netapp-files-create-netapp-account.md
-    - name: 容量プールの作成と管理
+    - name: 登録と設定
+      items:
+        - name: Azure NetApp Files に登録する
+          href: azure-netapp-files-register.md
+        - name: NetApp アカウントを作成する
+          href: azure-netapp-files-create-netapp-account.md
+        - name: サブネットを Azure NetApp Files に委任する
+          href: azure-netapp-files-delegate-subnet.md
+    - name: Active Directory の管理
+      items:
+        - name: Active Directory 接続の作成と管理
+          href: create-active-directory-connections.md
+        - name: TLS 経由の ADDS LDAP を構成する
+          href: configure-ldap-over-tls.md
+    - name: 容量プールを管理する
       items:
         - name: 容量プールを設定する
           href: azure-netapp-files-set-up-capacity-pool.md
         - name: 手動 QoS 容量プールを管理する
           href: manage-manual-qos-capacity-pool.md
-    - name: サブネットを Azure NetApp Files に委任する
-      href: azure-netapp-files-delegate-subnet.md
-    - name: Active Directory 接続の作成と管理
-      href: create-active-directory-connections.md
-    - name: NFS ボリュームの作成と管理
+        - name: タグを使用して課金を管理する
+          href: manage-billing-tags.md
+    - name: ボリュームを管理する
       items:
-        - name: NFS ボリュームを作成する
-          href: azure-netapp-files-create-volumes.md
-        - name: NFSv 4.1 の既定のドメインを構成する
-          href: azure-netapp-files-configure-nfsv41-domain.md
-        - name: NFSv 4.1 の Kerberos 暗号化を構成する
-          href: configure-kerberos-encryption.md
-        - name: NFS 用に拡張グループを使用する ADDS LDAP を構成する
-          href: configure-ldap-extended-groups.md
-        - name: Azure NetApp Files 用に NFS クライアントを構成する
-          href: configure-nfs-clients.md
-    - name: SMB ボリュームの作成と管理
+        - name: NFS ボリュームを管理する
+          items:
+            - name: NFS ボリュームを作成する
+              href: azure-netapp-files-create-volumes.md
+            - name: NFSv 4.1 の既定のドメインを構成する
+              href: azure-netapp-files-configure-nfsv41-domain.md
+            - name: NFSv 4.1 の Kerberos 暗号化を構成する
+              href: configure-kerberos-encryption.md
+            - name: NFS 用に拡張グループを使用する ADDS LDAP を構成する
+              href: configure-ldap-extended-groups.md
+            - name: Azure NetApp Files 用に NFS クライアントを構成する
+              href: configure-nfs-clients.md
+        - name: SMB ボリュームを管理する
+          items:
+            - name: SMB ボリュームを作成する
+              href: azure-netapp-files-create-volumes-smb.md
+            - name: 既存の SMB ボリュームで継続的可用性を有効にする
+              href: enable-continuous-availability-existing-SMB.md
+        - name: デュアルプロトコル ボリュームを管理する
+          items:
+            - name: デュアルプロトコル ボリュームを作成する
+              href: create-volumes-dual-protocol.md
+        - name: ボリュームのアクセスと暗号化を管理する
+          items:
+            - name: NFS またはデュアル プロトコルのエクスポート ポリシーを構成する
+              href: azure-netapp-files-configure-export-policy.md
+            - name: Unix のアクセス許可を構成して所有権モードを変更する
+              href: configure-unix-permissions-change-ownership-mode.md
+        - name: ボリュームをマウントまたはマウント解除する
+          items:
+            - name: ボリュームをマウントまたはマウント解除する
+              href: azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md
+        - name: ボリュームの容量とパフォーマンスを管理する
+          items:
+            - name: ボリュームの容量を監視する
+              href: monitor-volume-capacity.md
+            - name: 容量プールまたはボリュームをサイズ変更する
+              href: azure-netapp-files-resize-capacity-pools-or-volumes.md
+            - name: ボリュームのサービス レベルを動的に変更する
+              href: dynamic-change-volume-service-level.md
+    - name: データ保護を管理する
       items:
-        - name: SMB ボリュームを作成する
-          href: azure-netapp-files-create-volumes-smb.md
-        - name: 既存の SMB ボリュームで継続的可用性を有効にする
-          href: enable-continuous-availability-existing-SMB.md
-    - name: デュアルプロトコル ボリュームを作成する
-      href: create-volumes-dual-protocol.md
-    - name: TLS 経由の ADDS LDAP を構成する
-      href: configure-ldap-over-tls.md
-    - name: NFS またはデュアル プロトコルのエクスポート ポリシーを構成する
-      href: azure-netapp-files-configure-export-policy.md
-    - name: ボリュームをマウントまたはマウント解除する
-      href: azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md
-    - name: Unix のアクセス許可を構成して所有権モードを変更する
-      href: configure-unix-permissions-change-ownership-mode.md
-    - name: スナップショットを管理する
-      href: azure-netapp-files-manage-snapshots.md
-    - name: 容量プールまたはボリュームをサイズ変更する
-      href: azure-netapp-files-resize-capacity-pools-or-volumes.md
-    - name: ボリュームの容量を監視する
-      href: monitor-volume-capacity.md
-    - name: ボリュームのサービス レベルを動的に変更する
-      href: dynamic-change-volume-service-level.md
-    - name: リージョン間レプリケーションの管理
-      items:
-        - name: ボリューム レプリケーションを作成する
-          href: cross-region-replication-create-peering.md
-        - name: レプリケーション関係の正常性状態を表示する
-          href: cross-region-replication-display-health-status.md
-        - name: ディザスター リカバリーの管理
-          href: cross-region-replication-manage-disaster-recovery.md
-        - name: ボリューム レプリケーションまたはボリュームを削除する
-          href: cross-region-replication-delete.md
-    - name: タグを使用して課金を管理する
-      href: manage-billing-tags.md
+        - name: ボリューム スナップショットを管理する
+          items:
+            - name: オンデマンド スナップショットを作成する
+              href: azure-netapp-files-manage-snapshots.md
+            - name: スナップショット ポリシーを管理する
+              href: snapshots-manage-policy.md
+            - name: '[スナップショット パスを非表示にする] を編集する'
+              href: snapshots-edit-hide-path.md
+            - name: スナップショットから新しいボリュームを復元する
+              href: snapshots-restore-new-volume.md
+            - name: クライアントを使用してスナップショットからファイルを復元する
+              href: snapshots-restore-file-client.md
+            - name: スナップショットの復元を使用してボリュームを元に戻す
+              href: snapshots-revert-volume.md
+            - name: スナップショットの削除
+              href: snapshots-delete.md
+        - name: リージョン間レプリケーションの管理
+          items:
+            - name: ボリューム レプリケーションを作成する
+              href: cross-region-replication-create-peering.md
+            - name: レプリケーション関係の正常性状態を表示する
+              href: cross-region-replication-display-health-status.md
+            - name: ディザスター リカバリーの管理
+              href: cross-region-replication-manage-disaster-recovery.md
+            - name: ボリューム レプリケーションまたはボリュームを削除する
+              href: cross-region-replication-delete.md
     - name: 開発
       items:
         - name: REST API
