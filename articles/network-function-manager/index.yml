@@ -9,12 +9,12 @@ metadata:
   author: cherylmc
   ms.author: cherylmc
   ms.date: 06/09/2021
-  ms.openlocfilehash: c7d07ca655089504d73e49080fb3db1846b73323
-  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+  ms.openlocfilehash: 350ee6e263c388af922cc9b5c44f411ab6491490
+  ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/17/2021
-  ms.locfileid: "122253552"
+  ms.lasthandoff: 09/24/2021
+  ms.locfileid: "128599432"
 landingContent:
 - title: Network Function Manager について
   linkLists:
@@ -38,6 +38,8 @@ landingContent:
   linkLists:
   - linkListType: reference
     links:
+    - text: REST
+      url: /rest/api/hybridnetwork
     - text: Python SDK
       url: https://pypi.org/project/azure-mgmt-hybridnetwork/1.0.0/
     - text: Java SDK
