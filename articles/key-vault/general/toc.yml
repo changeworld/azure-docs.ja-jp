@@ -106,6 +106,8 @@
           href: vs-key-vault-add-connected-service.md
     - name: 監視とガバナンス
       items:
+        - name: Key Vault の監視
+          href: monitor-key-vault.md
         - name: Event Grid の通知
           items:
             - name: Logic Apps を使用した通知の受信
@@ -114,7 +116,9 @@
               href: event-grid-tutorial.md
         - name: ログの有効化
           href: howto-logging.md
-        - name: Azure Monitor を使用して Azure Key Vault の監視とアラートを構成する
+        - name: Azure Key Vault の監視
+          href: monitor-key-vault.md
+        - name: Azure Key Vault 用アラートを構成する
           href: alert.md
         - name: 論理的な削除と消去保護を使用した回復の管理
           href: key-vault-recovery.md
@@ -146,6 +150,8 @@
   items:
     - name: 新機能
       href: whats-new.md
+    - name: Key Vault データ参照の監視
+      href: monitor-key-vault-reference.md
     - name: クライアント ライブラリ
       href: client-libraries.md
     - name: REST API のエラー コード

@@ -210,7 +210,7 @@ VM をプロビジョニングするか、継続的インテグレーション�
 >
 > **今すぐ試す:** [DevOps 統合のいくつかを試しましょう](https://azure.microsoft.com/try/devops/)。
 
-## <a name="azure-regions"></a>Azure Azure リージョン
+## <a name="azure-regions"></a>Azure のリージョン
 
 Azure は、世界中のさまざまな地域で一般的に利用できるグローバル クラウド プラットフォームです。 Azure でサービス、アプリケーション、VM をプロビジョニングするとき、リージョンを選択するように求められます。 このリージョンは、アプリケーションが実行される、またはデータが格納される特定のデータセンターに相当します。 これらのリージョンは特定の場所に対応しており、「[Azure リージョン](https://azure.microsoft.com/regions/)」ページに公開されています。
 

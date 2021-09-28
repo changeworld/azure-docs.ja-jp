@@ -104,6 +104,8 @@
       href: samples-resource-manager-templates.md
     - name: Terraform
       href: samples-terraform.md
+    - name: Bicep
+      href: samples-bicep.md
 - name: 概念
   items:
     - name: App Service プラン
@@ -321,6 +323,12 @@
       items:
         - name: 高可用性の構成
           href: how-to-zone-redundancy.md
+    - name: プロビジョニングを自動化する
+      items:
+        - name: Bicep
+          href: provision-resource-bicep.md
+        - name: Terraform
+          href: provision-resource-terraform.md
 - name: リファレンス
   items:
     - name: データの監視

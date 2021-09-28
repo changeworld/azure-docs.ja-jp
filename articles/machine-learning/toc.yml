@@ -276,7 +276,7 @@
         - name: 安全なコーディング
           href: concept-secure-code-best-practice.md
           displayName: security threat
-        - name: コンプライアンスの監査と管理
+        - name: 監査と管理
           href: how-to-integrate-azure-policy.md
           displayName: policy
     - name: ワークスペースとコンピューティング リソース

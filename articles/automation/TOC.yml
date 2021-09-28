@@ -30,6 +30,8 @@
   items:
     - name: Automation アカウントの認証の概要
       href: automation-security-overview.md
+    - name: Automation でのコンテキスト切り替え
+      href: context-switching.md
     - name: Runbook 実行の概要
       href: automation-runbook-execution.md
     - name: Hybrid Runbook Worker の概要

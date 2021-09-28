@@ -564,6 +564,8 @@ items:
             href: control-flow-append-variable-activity.md
           - name: Execute Pipeline アクティビティ
             href: control-flow-execute-pipeline-activity.md
+          - name: Fail アクティビティ
+            href: control-flow-fail-activity.md
           - name: Filter アクティビティ
             href: control-flow-filter-activity.md
           - name: For Each アクティビティ

@@ -10,19 +10,17 @@
 - name: クイックスタート
   expanded: true
   items:
-    - name: アプリを追加する
+    - name: アプリケーションを追加する
       href: add-application-portal.md
-    - name: アプリを構成する
-      href: add-application-portal-configure.md
-    - name: アプリにユーザーを割り当てる
+    - name: ユーザーを割り当てる
       href: add-application-portal-assign-users.md
-    - name: SAML ベースのシングル サインオンの設定
+    - name: シングル サインオンの有効化
       href: add-application-portal-setup-sso.md
-    - name: OIDC ベースのシングル サインオンの設定
-      href: add-application-portal-setup-oidc-sso.md
-    - name: アプリを表示する
+    - name: プロパティの構成
+      href: add-application-portal-configure.md
+    - name: アプリケーションの表示
       href: view-applications-portal.md
-    - name: アプリを削除する
+    - name: アプリケーションを削除する
       href: delete-application-portal.md
 - name: チュートリアル
   items:
@@ -47,6 +45,8 @@
       href: application-management-fundamentals.md
     - name: 一般的なアプリ管理シナリオ
       href: common-scenarios.md
+    - name: ホーム領域検出ポリシー
+      href: home-realm-discovery-policy.md
     - name: クラウド アプリの統合の計画
       items:
         - name: アプリ統合の概要
@@ -55,10 +55,10 @@
           href: my-apps-deployment-plan.md
     - name: シングル サインオン
       items:
+        - name: 展開を計画する
+          href: plan-sso-deployment.md
         - name: シングル サインオンとは
           href: what-is-single-sign-on.md
-        - name: シングル サインオンのデプロイの計画
-          href: plan-sso-deployment.md
     - name: アプリケーションのセキュリティ
       items:
         - name: アプリのアクセス オプション
@@ -152,10 +152,12 @@
           href: f5-aad-password-less-vpn.md
     - name: シングル サイン オン
       items:
-        - name: パスワードベースのシングル サインオン
-          href: configure-password-single-sign-on-non-gallery-applications.md
-        - name: リンクされたシングル サインオン
+        - name: リンク
           href: configure-linked-sign-on.md
+        - name: OpenID Connect
+          href: add-application-portal-setup-oidc-sso.md
+        - name: Password
+          href: configure-password-single-sign-on-non-gallery-applications.md
     - name: トラブルシューティング
       items:
         - name: パスワードベースのシングル サインオンのトラブルシューティング

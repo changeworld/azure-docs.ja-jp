@@ -509,36 +509,46 @@
   items:
     - name: Marketplace API のガイド
       href: marketplace-apis-guide.md
-    - name: CPP API リファレンス
+    - name: Marketplace 申請 API
       items:
-        - name: CPP API の概要
-          href: cloud-partner-portal-api-overview.md
-        - name: API 前提条件
-          href: cloud-partner-portal-api-prerequisites.md
-        - name: API の考慮事項
-          href: cloud-partner-portal-api-considerations.md
-        - name: コンカレンシー制御
-          href: cloud-partner-portal-api-concurrency-control.md
-        - name: オファーを取得する
-          href: cloud-partner-portal-api-retrieve-offers.md
-        - name: 特定のオファーの取得
-          href: cloud-partner-portal-api-retrieve-specific-offer.md
-        - name: オファーの追加または変更
-          href: cloud-partner-portal-api-creating-offer.md
-        - name: プランの状態の取得
-          href: cloud-partner-portal-api-retrieve-offer-status.md
-        - name: プランの発行
-          href: cloud-partner-portal-api-publish-offer.md
-        - name: 操作の取得
-          href: cloud-partner-portal-api-retrieve-operations.md
-        - name: 操作のキャンセル
-          href: cloud-partner-portal-api-cancel-operations.md
-        - name: 公開
-          href: cloud-partner-portal-api-go-live.md
-        - name: 仮想マシン プランの価格
-          href: cloud-partner-portal-api-setting-price.md
-        - name: 認証エラーのトラブルシューティング
-          href: cloud-partner-portal-api-troubleshooting-authentication-errors.md
+        - name: Marketplace 申請 API の概要
+          href: submission-api-overview.md
+        - name: パートナー センター申請 API
+          items:
+            - name: API 前提条件
+              href: submission-api-onboard.md
+            - name: パートナー センター申請 API
+              href: 'https://apidocs.microsoft.com/services/partneringestion/'
+        - name: レガシ申請 API
+          items:
+            - name: レガシ API の概要
+              href: cloud-partner-portal-api-overview.md
+            - name: API 前提条件
+              href: cloud-partner-portal-api-prerequisites.md
+            - name: API の考慮事項
+              href: cloud-partner-portal-api-considerations.md
+            - name: コンカレンシー制御
+              href: cloud-partner-portal-api-concurrency-control.md
+            - name: オファーを取得する
+              href: cloud-partner-portal-api-retrieve-offers.md
+            - name: 特定のオファーの取得
+              href: cloud-partner-portal-api-retrieve-specific-offer.md
+            - name: オファーの追加または変更
+              href: cloud-partner-portal-api-creating-offer.md
+            - name: プランの状態の取得
+              href: cloud-partner-portal-api-retrieve-offer-status.md
+            - name: プランの発行
+              href: cloud-partner-portal-api-publish-offer.md
+            - name: 操作の取得
+              href: cloud-partner-portal-api-retrieve-operations.md
+            - name: 操作のキャンセル
+              href: cloud-partner-portal-api-cancel-operations.md
+            - name: 公開
+              href: cloud-partner-portal-api-go-live.md
+            - name: 仮想マシン プランの価格
+              href: cloud-partner-portal-api-setting-price.md
+            - name: 認証エラーのトラブルシューティング
+              href: cloud-partner-portal-api-troubleshooting-authentication-errors.md
     - name: Marketplace の測定サービス
       items:
         - name: 異常検出サービス
