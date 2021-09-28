@@ -326,6 +326,8 @@
       items:
         - name: 概要
           href: sap-hana-db-about.md
+        - name: Architecture
+          href: azure-backup-architecture-for-sap-hana-backup.md
         - name: バックアップ
           href: backup-azure-sap-hana-database.md
         - name: 復元
@@ -488,7 +490,7 @@
           href: query-backups-using-azure-resource-graph.md
         - name: Resource Manager テンプレート
           href: backup-rm-template-samples.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: 概要
           href: security-overview.md
