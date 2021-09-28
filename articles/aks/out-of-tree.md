@@ -42,7 +42,7 @@ Cloud Controller Manager は、AKS でサポートされている Kubernetes 1.2
 Cloud Controller Manager 機能を使用するには、サブスクリプションで `EnableCloudControllerManager` 機能フラグを有効にする必要があります。 
 
 ```azurecli
-az feature register –name EnableCloudControllerManager --namespace Microsoft.ContainerService
+az feature register --name EnableCloudControllerManager --namespace Microsoft.ContainerService
 ```
 [az feature list][az-feature-list] コマンドを使用して登録状態を確認できます。
 
