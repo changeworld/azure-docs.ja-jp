@@ -8,12 +8,12 @@ ms.date: 02/11/2020
 ms.author: mansha
 author: manishmsfte
 ms.custom: devx-track-java
-ms.openlocfilehash: e638c7051aab49887b3391644c3e947beea04927
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 1ab1bd7c5c4dee610485c556eb3dc0e62ee6d9cb
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123114117"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128657711"
 ---
 # <a name="migrate-from-couchbase-to-azure-cosmos-db-sql-api"></a>CouchBase から Azure Cosmos DB SQL API に移行する
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -166,13 +166,13 @@ CRUD 操作のコード スニペットを次に示します。
 
 ここで、 *_repo* はレポジトリのオブジェクトで、*doc* は POJO クラスのオブジェクトです。 `.save` を使用して挿入または upsert できます (指定された ID を持つドキュメントが見つかった場合)。 次のコード スニペットは、doc オブジェクトを挿入または更新する方法を示しています。
 
-```_repo.save(doc);```
+`_repo.save(doc);`
 
 ### <a name="delete-operation"></a>削除操作。
 
 次のコード スニペットについて考えてみます。ここで、doc オブジェクトには、オブジェクトの検索と削除に必須の ID とパーティション キーがあります。
 
-```_repo.delete(doc);```
+`_repo.delete(doc);`
 
 ### <a name="read-operation"></a>読み取り操作。
 

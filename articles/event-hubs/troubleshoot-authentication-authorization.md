@@ -2,13 +2,13 @@
 title: 認証と承認の問題のトラブルシューティング - Azure Event Hubs
 description: この記事では、Azure Event Hubs での認証と承認に関する問題のトラブルシューティングについて説明します。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 368fd8efda1b828f99bc41da0743768989c1a601
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/20/2021
+ms.openlocfilehash: 0561ab94f113bf849d5492b93171c9b14540de44
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92329612"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128656837"
 ---
 # <a name="troubleshoot-authentication-and-authorization-issues---azure-event-hubs"></a>認証と承認の問題のトラブルシューティング - Azure Event Hubs
 [接続の問題のトラブルシューティング](troubleshooting-guide.md)に関する記事では、Azure Event Hubs での接続に関する問題に対してトラブルシューティングを行うためのヒントを提供します。 この記事では、Azure Event Hubs での認証と承認に関する問題のトラブルシューティングに役立つヒントと推奨事項を示します。 

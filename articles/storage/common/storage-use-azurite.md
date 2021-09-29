@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e01957c04e422f26601eab6f4e53694e317e22a3
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e097a9860c4e3cde968bc9b7c7bddb7eebd99349
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121741877"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128624863"
 ---
 # <a name="use-the-azurite-emulator-for-local-azure-storage-development"></a>ローカルでの Azure Storage の開発に Azurite エミュレーターを使用する
 
@@ -53,7 +53,7 @@ azurite
 
 [リリース ビルド構成](/visualstudio/debugger/how-to-set-debug-and-release-configurations#change-the-build-configuration)に変更し、プロジェクトを実行します。
 
->[!NOTE]
+> [!NOTE]
 > デバッグ ビルド構成を使用してプロジェクトを開始すると、エラーが発生する場合があります。 これは、Visual Studio に組み込まれているレガシ ストレージ エミュレーターを、Visual Studio が起動しようとする可能性があるためです。 レガシ ストレージエミュレーターに必要なリスニング ポートは Azurite によって使用されているため、レガシ エミュレーターを起動しようとしてもブロックされます。
 
 次のイメージは、Azure 関数プロジェクトを実行するときに表示されるコマンド ライン出力を示しています。
@@ -68,7 +68,7 @@ Visual Studio Code で、 **[EXTENSIONS]** ウィンドウを選択し、 **[EXT
 
 また、ブラウザーで [Visual Studio Code 拡張機能のマーケット](https://marketplace.visualstudio.com/items?itemName=Azurite.azurite)に移動することもできます。 **[Install]\(インストール\)** を選択して Visual Studio Code を開き、Azurite 拡張機能ページに直接アクセスします。
 
-拡張機能では、次の Visual Studio Code コマンドがサポートされています。 コマンド パレットを開くには、Visual Studio Code で F1 キーを押します。 
+拡張機能では、次の Visual Studio Code コマンドがサポートされています。 コマンド パレットを開くには、Visual Studio Code で F1 キーを押します。
 
    - **Azurite:Clean** - すべての Azurite サービス永続性データをリセットします
    - **Azurite:Clean Blob Service** - Blob Service をクリーンアップします
@@ -173,7 +173,7 @@ Azurite をインストールおよびビルドしたら、「[Azurite をコマ
 ## <a name="run-azurite-from-a-command-line"></a>Azurite をコマンド ラインから実行する
 
 > [!NOTE]
-> Visual Studio Code 拡張機能のみをインストールした場合、Azurite をコマンドラインから実行することはできません。 代わりに、Visual Studio Code コマンド パレットを使用します。 
+> Visual Studio Code 拡張機能のみをインストールした場合、Azurite をコマンドラインから実行することはできません。 代わりに、Visual Studio Code コマンド パレットを使用します。
 
 コマンド ラインを使用してすぐに作業を開始するには、*c:\azurite* という名前のディレクトリを作成し、次のコマンドを発行して Azurite を起動します。
 
@@ -333,6 +333,8 @@ azurite --location c:\azurite
 azurite -s
 azurite --silent
 ```
+
+
 ### <a name="debug-log"></a>デバッグ ログ
 
 **オプション** - デバッグ ログにはすべての要求と例外スタック トレースに関する詳細情報が含まれます。 `-d` または `--debug` スイッチに有効なローカル ファイル パスを指定すると、デバッグ ログが有効になります。
@@ -350,6 +352,8 @@ azurite --debug path/debug.log
 azurite -L
 azurite --loose
 ```
+
+
 ### <a name="version"></a>Version
 
 **オプション** - `-v` または `--version` スイッチを使用して、インストールされている Azurite のバージョン番号を表示します。
@@ -397,7 +401,6 @@ Azurite は、`--oauth` スイッチに `basic` パラメーターを指定す�
 ```console
 azurite --skipApiVersionCheck
 ```
-
 
 ## <a name="authorization-for-tools-and-sdks"></a>ツールと SDK の認証
 

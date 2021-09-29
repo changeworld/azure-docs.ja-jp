@@ -5,13 +5,13 @@ author: TerryLanfear
 ms.author: terrylan
 ms.service: security
 ms.topic: reference
-ms.date: 08/15/2021
-ms.openlocfilehash: b2b02e37c07baf51c7dc0405cd1c689ec5fd01e4
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.date: 09/13/2021
+ms.openlocfilehash: 3f2559ca573ed9fedf5a15fce454cf406f8f6b0b
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123429156"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129210746"
 ---
 # <a name="cloud-feature-availability-for-us-government-customers"></a>米国政府機関のお客様向けのクラウド機能の利用可能性
 
@@ -74,7 +74,7 @@ Azure Security Center は、データ センターのセキュリティ体制を
 | **Azure Defender のプランと拡張機能**                                                                                                                                       |                |                                | 
 | - [Azure Defender for servers](../../security-center/defender-for-servers-introduction.md)                                                                                    | GA             | GA                             | 
 | - [Azure Defender for App Service](../../security-center/defender-for-app-service-introduction.md)                                                                            | GA             | 利用不可                  | 
-| - [Azure Defender for DNS](../../security-center/defender-for-dns-introduction.md)                                                                                            | GA             | 利用不可                  | 
+| - [Azure Defender for DNS](../../security-center/defender-for-dns-introduction.md)                                                                                            | GA             | GA                             | 
 | - [コンテナー レジストリ用 Azure Defender](../../security-center/defender-for-container-registries-introduction.md) <sup>[1](#footnote1)</sup>                               | GA             | GA  <sup>[2](#footnote2)</sup> | 
 | - [CI/CD ワークフロー内の画像をスキャンするコンテナー レジストリ用 Azure Defender](../../security-center/defender-for-container-registries-cicd.md) <sup>[3](#footnote3)</sup> | パブリック プレビュー | 利用不可                  | 
 | - [Azure Defender for Kubernetes](../../security-center/defender-for-kubernetes-introduction.md) <sup>[4](#footnote4)</sup>                                                   | GA             | GA                             | 
@@ -87,7 +87,7 @@ Azure Security Center は、データ センターのセキュリティ体制を
 | - [Azure Defender for Storage](../../security-center/defender-for-storage-introduction.md) <sup>[6](#footnote6)</sup>                                                         | GA             | GA                             |
 | - [Threat protection for Cosmos DB](../../security-center/other-threat-protections.md#threat-protection-for-azure-cosmos-db-preview)                                          | パブリック プレビュー | 利用不可                  |
 | - [Kubernetes ワークロード保護](../../security-center/kubernetes-workload-protections.md)                                                                                  | GA             | GA                             |
-| - [Sentinel との双方向アラート同期](../../sentinel/connect-azure-security-center.md)                                                                          | パブリック プレビュー | 利用不可                  | 
+| - [Sentinel との双方向アラート同期](../../sentinel/connect-azure-security-center.md)                                                                       | パブリック プレビュー | 利用不可                  | 
 | **Azure Defender for servers features** <sup>[7](#footnote7)</sup>                                                                                                            |                |                                |
 | - [Just-In-Time VM アクセス](../../security-center/security-center-just-in-time.md)                                                                                             | GA             | GA                             |
 | - [ファイルの整合性の監視](../../security-center/security-center-file-integrity-monitoring.md)                                                                             | GA             | GA                             |
@@ -138,9 +138,9 @@ Microsoft Azure Sentinel は、スケーラブルでクラウドネイティブ�
 |- [SOC インシデント監査メトリック](../../sentinel/manage-soc-with-incident-metrics.md) | GA | GA |
 |- [ウォッチリスト](../../sentinel/watchlists.md) | GA | GA |
 | **脅威インテリジェンス サポート** | | |
-| - [脅威インテリジェンス - TAXII データ コネクタ](../../sentinel/understand-threat-intelligence.md)  | パブリック プレビュー | 利用不可 |
+| - [脅威インテリジェンス - TAXII データ コネクタ](../../sentinel/understand-threat-intelligence.md)  | GA | 利用不可 |
 | - [脅威インテリジェンス プラットフォーム データ コネクタ](../../sentinel/understand-threat-intelligence.md)  | パブリック プレビュー | 利用不可 |
-| - [脅威インテリジェンスの調査ブレード](https://techcommunity.microsoft.com/t5/azure-sentinel/what-s-new-threat-intelligence-menu-item-in-public-preview/ba-p/1646597)  | パブリック プレビュー | 利用不可 |
+| - [脅威インテリジェンスの調査ブレード](https://techcommunity.microsoft.com/t5/azure-sentinel/what-s-new-threat-intelligence-menu-item-in-public-preview/ba-p/1646597)  | GA | 利用不可 |
 | - [URL デトネーション](https://techcommunity.microsoft.com/t5/azure-sentinel/using-the-new-built-in-url-detonation-in-azure-sentinel/ba-p/996229) | パブリック プレビュー | 利用不可 |
 | - [脅威インテリジェンス ブック](/azure/architecture/example-scenario/data/sentinel-threat-intelligence)  | GA | 利用不可 |
 |**検出のサポート** | | |
@@ -148,96 +148,96 @@ Microsoft Azure Sentinel は、スケーラブルでクラウドネイティブ�
 | - [異常な RDP ログインの検出](../../sentinel/connect-windows-security-events.md#configure-the-security-events--windows-security-events-connector-for-anomalous-rdp-login-detection)<br>組み込みの ML 検出 | パブリック プレビュー | 利用不可 |
 | - [異常な SSH ログインの検出](../../sentinel/connect-syslog.md#configure-the-syslog-connector-for-anomalous-ssh-login-detection)<br>組み込みの ML 検出 | パブリック プレビュー | 利用不可 |
 | **Azure サービスのコネクタ** |  |  |
-| - [Azure アクティビティ ログ](../../sentinel/connect-azure-activity.md) | GA | GA |
+| - [Azure アクティビティ ログ](../../sentinel/data-connectors-reference.md#azure-activity) | GA | GA |
 | - [Azure Active Directory](../../sentinel/connect-azure-active-directory.md) | GA | GA |
-| - [Azure ADIP](../../sentinel/connect-azure-ad-identity-protection.md) | GA | GA |
-| - [Azure DDoS Protection](../../sentinel/connect-azure-ddos-protection.md) | GA | GA |
+| - [Azure ADIP](../../sentinel/data-connectors-reference.md#azure-active-directory-identity-protection) | GA | GA |
+| - [Azure DDoS Protection](../../sentinel/data-connectors-reference.md#azure-ddos-protection) | GA | GA |
 | - [Azure Defender](../../sentinel/connect-azure-security-center.md) | GA | GA |
-| - [Azure Defender for IoT](../../sentinel/connect-asc-iot.md) | パブリック プレビュー | 利用不可 |
-| - [Azure Firewall ](../../sentinel/connect-azure-firewall.md) | GA | GA |
-| - [Azure Information Protection](../../sentinel/connect-azure-information-protection.md) | パブリック プレビュー | 利用不可 |
-| - [Azure Key Vault ](../../sentinel/connect-azure-key-vault.md) | パブリック プレビュー | 利用不可 |
-| - [Azure Kubernetes Services (AKS)](../../sentinel/connect-azure-kubernetes-service.md) | パブリック プレビュー | 利用不可 |
-| - [Azure SQL Databases](../../sentinel/connect-azure-sql-logs.md) | GA | GA |
-| - [Azure WAF](../../sentinel/connect-azure-waf.md) | GA | GA |
+| - [Azure Defender for IoT](../../sentinel/data-connectors-reference.md#azure-defender-for-iot) | パブリック プレビュー | 利用不可 |
+| - [Azure Firewall ](../../sentinel/data-connectors-reference.md#azure-firewall) | GA | GA |
+| - [Azure Information Protection](../../sentinel/data-connectors-reference.md#azure-information-protection) | パブリック プレビュー | 利用不可 |
+| - [Azure Key Vault ](../../sentinel/data-connectors-reference.md#azure-key-vault) | パブリック プレビュー | 利用不可 |
+| - [Azure Kubernetes Services (AKS)](../../sentinel/data-connectors-reference.md#azure-kubernetes-service-aks) | パブリック プレビュー | 利用不可 |
+| - [Azure SQL Databases](../../sentinel/data-connectors-reference.md#azure-sql-databases) | GA | GA |
+| - [Azure WAF](../../sentinel/data-connectors-reference.md#azure-web-application-firewall-waf) | GA | GA |
 | **Windows のコネクタ** |  |  |
-| - [Windows Firewall](../../sentinel/connect-windows-firewall.md) | GA | GA |
+| - [Windows Firewall](../../sentinel/data-connectors-reference.md#windows-firewall) | GA | GA |
 | - [Windows セキュリティ イベント](../../sentinel/connect-windows-security-events.md) | GA | GA |
 | **外部コネクタ** |  |  |
-| - [Agari のフィッシング対策とブランド保護](../../sentinel/connect-agari-phishing-defense.md) | パブリック プレビュー | パブリック プレビュー |
+| - [Agari のフィッシング対策とブランド保護](../../sentinel/data-connectors-reference.md#agari-phishing-defense-and-brand-protection-preview) | パブリック プレビュー | パブリック プレビュー |
 | - [AI Analyst Darktrace](../../sentinel/connect-data-sources.md) | パブリック プレビュー | パブリック プレビュー |
-| - [AI Vectra 検出](../../sentinel/connect-ai-vectra-detect.md) | パブリック プレビュー | パブリック プレビュー |
-| - [Akamai セキュリティ イベント](../../sentinel/connect-akamai-security-events.md) | パブリック プレビュー | パブリック プレビュー |
-| - [Alcide kAudit](../../sentinel/connect-alcide-kaudit.md) | パブリック プレビュー | 利用不可 |
-| - [Alsid for Active Directory](../../sentinel/connect-alsid-active-directory.md) | パブリック プレビュー | 利用不可 |
-| - [Apache HTTP Server](../../sentinel/connect-apache-http-server.md) | パブリック プレビュー | 利用不可 |
-| - [Aruba ClearPass](../../sentinel/connect-aruba-clearpass.md) | パブリック プレビュー | パブリック プレビュー |
+| - [AI Vectra 検出](../../sentinel/data-connectors-reference.md#ai-vectra-detect-preview) | パブリック プレビュー | パブリック プレビュー |
+| - [Akamai セキュリティ イベント](../../sentinel/data-connectors-reference.md#akamai-security-events-preview) | パブリック プレビュー | パブリック プレビュー |
+| - [Alcide kAudit](../../sentinel/data-connectors-reference.md#alcide-kaudit) | パブリック プレビュー | 利用不可 |
+| - [Alsid for Active Directory](../../sentinel/data-connectors-reference.md#alsid-for-active-directory) | パブリック プレビュー | 利用不可 |
+| - [Apache HTTP Server](../../sentinel/data-connectors-reference.md#apache-http-server) | パブリック プレビュー | 利用不可 |
+| - [Aruba ClearPass](../../sentinel/data-connectors-reference.md#aruba-clearpass-preview) | パブリック プレビュー | パブリック プレビュー |
 | - [AWS](../../sentinel/connect-data-sources.md) | GA | GA |
-| - [Barracuda CloudGen Firewall](../../sentinel/connect-barracuda-cloudgen-firewall.md) | GA | GA |
-| - [Barracuda Web App Firewall](../../sentinel/connect-barracuda.md) | GA | GA |
-| - [BETTER Mobile Threat Defense MTD](../../sentinel/connect-better-mtd.md) | パブリック プレビュー | 利用不可 |
-| - [Beyond Security beSECURE](../../sentinel/connect-besecure.md) | パブリック プレビュー | 利用不可 |
+| - [Barracuda CloudGen Firewall](../../sentinel/data-connectors-reference.md#barracuda-cloudgen-firewall) | GA | GA |
+| - [Barracuda Web App Firewall](../../sentinel/data-connectors-reference.md#barracuda-waf) | GA | GA |
+| - [BETTER Mobile Threat Defense MTD](../../sentinel/data-connectors-reference.md#better-mobile-threat-defense-mtd-preview) | パブリック プレビュー | 利用不可 |
+| - [Beyond Security beSECURE](../../sentinel/data-connectors-reference.md#beyond-security-besecure) | パブリック プレビュー | 利用不可 |
 | - [Blackberry CylancePROTECT](../../sentinel/connect-data-sources.md) | パブリック プレビュー | パブリック プレビュー |
-| - [Broadcom Symantec DLP](../../sentinel/connect-broadcom-symantec-dlp.md) | パブリック プレビュー | パブリック プレビュー |
-| - [Check Point](../../sentinel/connect-checkpoint.md) | GA | GA |
-| - [Cisco ASA](../../sentinel/connect-cisco.md) | GA | GA |
-| - [Cisco Meraki](../../sentinel/connect-cisco-meraki.md) | パブリック プレビュー | パブリック プレビュー |
-| - [Cisco Umbrella](../../sentinel/connect-cisco-umbrella.md) | パブリック プレビュー | パブリック プレビュー |
-| - [Cisco UCS](../../sentinel/connect-cisco-ucs.md) | パブリック プレビュー | パブリック プレビュー |
+| - [Broadcom Symantec DLP](../../sentinel/data-connectors-reference.md#broadcom-symantec-data-loss-prevention-dlp-preview) | パブリック プレビュー | パブリック プレビュー |
+| - [Check Point](../../sentinel/data-connectors-reference.md#check-point) | GA | GA |
+| - [Cisco ASA](../../sentinel/data-connectors-reference.md#cisco-asa) | GA | GA |
+| - [Cisco Meraki](../../sentinel/data-connectors-reference.md#cisco-meraki-preview) | パブリック プレビュー | パブリック プレビュー |
+| - [Cisco Umbrella](../../sentinel/data-connectors-reference.md#cisco-umbrella-preview) | パブリック プレビュー | パブリック プレビュー |
+| - [Cisco UCS](../../sentinel/data-connectors-reference.md#cisco-unified-computing-system-ucs-preview) | パブリック プレビュー | パブリック プレビュー |
 | - [Cisco Firepower EStreamer](../../sentinel/connect-data-sources.md) | パブリック プレビュー | パブリック プレビュー |
-| - [Citrix Analytics WAF](../../sentinel/connect-citrix-waf.md) | GA | GA |
+| - [Citrix Analytics WAF](../../sentinel/data-connectors-reference.md#citrix-web-app-firewall-waf-preview) | GA | GA |
 | - [Common Event Format (CEF)](../../sentinel/connect-common-event-format.md) | GA | GA |
-| - [CyberArk Enterprise Password Vault (EPV) Events](../../sentinel/connect-cyberark.md) | パブリック プレビュー | パブリック プレビュー |
+| - [CyberArk Enterprise Password Vault (EPV) Events](../../sentinel/data-connectors-reference.md#cyberark-enterprise-password-vault-epv-events-preview) | パブリック プレビュー | パブリック プレビュー |
 | - [ESET Enterprise Inspector](../../sentinel/connect-data-sources.md)                       | パブリック プレビュー | 利用不可      |
 | - [Eset Security Management Center](../../sentinel/connect-data-sources.md)                  | パブリック プレビュー | 利用不可      |
-| - [ExtraHop Reveal(x)](../../sentinel/connect-extrahop.md)                               | GA             | GA             |
-| - [F5 BIG-IP ](../../sentinel/connect-f5-big-ip.md)                                       | GA             | GA             |
-| - [F5 Networks](../../sentinel/connect-f5.md)                                     | GA             | GA             |
-| - [Forcepoint NGFW](../../sentinel/connect-forcepoint-casb-ngfw.md)                                  | パブリック プレビュー | パブリック プレビュー |
-| - [Forcepoint CASB](../../sentinel/connect-forcepoint-casb-ngfw.md)                                  | パブリック プレビュー | パブリック プレビュー |
-| - [Forcepoint DLP ](../../sentinel/connect-forcepoint-dlp.md)                                   | パブリック プレビュー | 利用不可      |
+| - [ExtraHop Reveal(x)](../../sentinel/data-connectors-reference.md#extrahop-revealx)                               | GA             | GA             |
+| - [F5 BIG-IP ](../../sentinel/data-connectors-reference.md#f5-big-ip)                                       | GA             | GA             |
+| - [F5 Networks](../../sentinel/data-connectors-reference.md#f5-networks-asm)                                     | GA             | GA             |
+| - [Forcepoint NGFW](../../sentinel/data-connectors-reference.md#forcepoint-cloud-access-security-broker-casb-preview)                                  | パブリック プレビュー | パブリック プレビュー |
+| - [Forcepoint CASB](../../sentinel/data-connectors-reference.md#forcepoint-cloud-access-security-broker-casb-preview)                                  | パブリック プレビュー | パブリック プレビュー |
+| - [Forcepoint DLP ](../../sentinel/data-connectors-reference.md#forcepoint-data-loss-prevention-dlp-preview)                                   | パブリック プレビュー | 利用不可      |
 | - [ForgeRock Common Audit for CEF](../../sentinel/connect-data-sources.md)                  | パブリック プレビュー | パブリック プレビュー |
-| - [Fortinet](../../sentinel/connect-fortinet.md)                                         | GA             | GA             |
-| - [Google Workspace (G Suite) ](../../sentinel/connect-google-workspace.md)                      | パブリック プレビュー | 利用不可      |
-| - [Illusive 攻撃管理システム](../../sentinel/connect-illusive-attack-management-system.md)                | パブリック プレビュー | パブリック プレビュー |
-| - [Imperva WAF Gateway](../../sentinel/connect-imperva-waf-gateway.md)                             | パブリック プレビュー | パブリック プレビュー |
-| - [Infoblox NIOS](../../sentinel/connect-infoblox.md)                                    | パブリック プレビュー | パブリック プレビュー |
-| - [Juniper SRX](../../sentinel/connect-juniper-srx.md)                                      | パブリック プレビュー | パブリック プレビュー |
+| - [Fortinet](../../sentinel/data-connectors-reference.md#fortinet)                                         | GA             | GA             |
+| - [Google Workspace (G Suite) ](../../sentinel/data-connectors-reference.md#google-workspace-g-suite-preview)                      | パブリック プレビュー | 利用不可      |
+| - [Illusive 攻撃管理システム](../../sentinel/data-connectors-reference.md#illusive-attack-management-system-ams-preview)                | パブリック プレビュー | パブリック プレビュー |
+| - [Imperva WAF Gateway](../../sentinel/data-connectors-reference.md#imperva-waf-gateway-preview)                             | パブリック プレビュー | パブリック プレビュー |
+| - [Infoblox NIOS](../../sentinel/data-connectors-reference.md#infoblox-network-identity-operating-system-nios-preview)                                    | パブリック プレビュー | パブリック プレビュー |
+| - [Juniper SRX](../../sentinel/data-connectors-reference.md#juniper-srx-preview)                                      | パブリック プレビュー | パブリック プレビュー |
 | - [Morphisec UTPP](../../sentinel/connect-data-sources.md)                                   | パブリック プレビュー | パブリック プレビュー |
 | - [Netskope](../../sentinel/connect-data-sources.md)                                         | パブリック プレビュー | パブリック プレビュー |
-| - [NXLog Windows DNS](../../sentinel/connect-nxlog-dns.md)                                             | パブリック プレビュー | 利用不可      |
-| - [NXLog LinuxAudit](../../sentinel/connect-nxlog-linuxaudit.md)                                 | パブリック プレビュー | 利用不可      |
-| - [Okta シングル サインオン](../../sentinel/connect-okta-single-sign-on.md)                              | パブリック プレビュー | パブリック プレビュー |
+| - [NXLog Windows DNS](../../sentinel/data-connectors-reference.md#nxlog-dns-logs-preview)                                             | パブリック プレビュー | 利用不可      |
+| - [NXLog LinuxAudit](../../sentinel/data-connectors-reference.md#nxlog-linuxaudit-preview)                                 | パブリック プレビュー | 利用不可      |
+| - [Okta シングル サインオン](../../sentinel/data-connectors-reference.md#okta-single-sign-on-preview)                              | パブリック プレビュー | パブリック プレビュー |
 | - [Onapsis Platform](../../sentinel/connect-data-sources.md)                                 | パブリック プレビュー | パブリック プレビュー |
-| - [One Identity Safeguard](../../sentinel/connect-one-identity.md)                          | GA             | GA             |
-| - [Orca Security アラート](../../sentinel/connect-orca-security-alerts.md)                            | パブリック プレビュー | 利用不可      |
-| - [Palo Alto Networks](../../sentinel/connect-paloalto.md)                               | GA             | GA             |
-| - [Perimeter 81 のアクティビティ ログ](../../sentinel/connect-perimeter-81-logs.md)                      | GA             | 利用不可      |
-| - [Proofpoint On Demand Email Security](../../sentinel/connect-proofpoint-pod.md)             | パブリック プレビュー | 利用不可      |
-| - [Proofpoint TAP](../../sentinel/connect-proofpoint-tap.md)                                   | パブリック プレビュー | パブリック プレビュー |
-| - [Pulse Connect Secure](../../sentinel/connect-proofpoint-tap.md)                             | パブリック プレビュー | パブリック プレビュー |
-| - [Qualys Vulnerability Management](../../sentinel/connect-qualys-vm.md)                  | パブリック プレビュー | パブリック プレビュー |
-| - [Salesforce Service Cloud](../../sentinel/connect-salesforce-service-cloud.md)                         | パブリック プレビュー | 利用不可      |
-| - [SonicWall ファイアウォール](../../sentinel/connect-sophos-cloud-optix.md)                              | パブリック プレビュー | パブリック プレビュー |
-| - [Sophos Cloud Optix](../../sentinel/connect-sophos-cloud-optix.md)                               | パブリック プレビュー | 利用不可      |
-| - [Sophos XG Firewall](../../sentinel/connect-sophos-xg-firewall.md)                               | パブリック プレビュー | パブリック プレビュー |
-| - [Squadra Technologies secRMM](../../sentinel/connect-squadra-secrmm.md)               | GA             | GA             |
-| - [Squid Proxy](../../sentinel/connect-squid-proxy.md)                                      | パブリック プレビュー | 利用不可      |
-| - [Symantec Integrated Cyber Defense Exchange](../../sentinel/connect-symantec.md)       | GA             | GA             |
-| - [Symantec ProxySG](../../sentinel/connect-symantec-proxy-sg.md)                                | パブリック プレビュー | パブリック プレビュー |
-| - [Symantec VIP](../../sentinel/connect-symantec-vip.md)                                     | パブリック プレビュー | パブリック プレビュー |
+| - [One Identity Safeguard](../../sentinel/data-connectors-reference.md#one-identity-safeguard-preview)                          | GA             | GA             |
+| - [Orca Security アラート](../../sentinel/data-connectors-reference.md#orca-security-preview)                            | パブリック プレビュー | 利用不可      |
+| - [Palo Alto Networks](../../sentinel/data-connectors-reference.md#palo-alto-networks)                               | GA             | GA             |
+| - [Perimeter 81 のアクティビティ ログ](../../sentinel/data-connectors-reference.md#perimeter-81-activity-logs-preview)                      | GA             | 利用不可      |
+| - [Proofpoint On Demand Email Security](../../sentinel/data-connectors-reference.md#proofpoint-on-demand-pod-email-security-preview)             | パブリック プレビュー | 利用不可      |
+| - [Proofpoint TAP](../../sentinel/data-connectors-reference.md#proofpoint-targeted-attack-protection-tap-preview)                                   | パブリック プレビュー | パブリック プレビュー |
+| - [Pulse Connect Secure](../../sentinel/data-connectors-reference.md#proofpoint-targeted-attack-protection-tap-preview)                             | パブリック プレビュー | パブリック プレビュー |
+| - [Qualys Vulnerability Management](../../sentinel/data-connectors-reference.md#qualys-vulnerability-management-vm-preview)                  | パブリック プレビュー | パブリック プレビュー |
+| - [Salesforce Service Cloud](../../sentinel/data-connectors-reference.md#salesforce-service-cloud-preview)                         | パブリック プレビュー | 利用不可      |
+| - [SonicWall ファイアウォール](../../sentinel/data-connectors-reference.md#sophos-cloud-optix-preview)                              | パブリック プレビュー | パブリック プレビュー |
+| - [Sophos Cloud Optix](../../sentinel/data-connectors-reference.md#sophos-cloud-optix-preview)                               | パブリック プレビュー | 利用不可      |
+| - [Sophos XG Firewall](../../sentinel/data-connectors-reference.md#sophos-xg-firewall-preview)                               | パブリック プレビュー | パブリック プレビュー |
+| - [Squadra Technologies secRMM](../../sentinel/data-connectors-reference.md#squadra-technologies-secrmm)               | GA             | GA             |
+| - [Squid Proxy](../../sentinel/data-connectors-reference.md#squid-proxy-preview)                                      | パブリック プレビュー | 利用不可      |
+| - [Symantec Integrated Cyber Defense Exchange](../../sentinel/data-connectors-reference.md#symantec-integrated-cyber-defense-exchange-icdx)       | GA             | GA             |
+| - [Symantec ProxySG](../../sentinel/data-connectors-reference.md#symantec-proxysg-preview)                                | パブリック プレビュー | パブリック プレビュー |
+| - [Symantec VIP](../../sentinel/data-connectors-reference.md#symantec-vip-preview)                                     | パブリック プレビュー | パブリック プレビュー |
 | - [Syslog](../../sentinel/connect-syslog.md)                                           | GA             | GA             |
 | - [脅威インテリジェンス プラットフォーム](../../sentinel/connect-threat-intelligence-tip.md)                   | パブリック プレビュー | 利用不可      |
 | - [脅威インテリジェンス TAXII](../../sentinel/connect-threat-intelligence-tip.md)                       | パブリック プレビュー | 利用不可      |
-| - [Thycotic Secret Server](../../sentinel/connect-thycotic-secret-server.md)                          | パブリック プレビュー | パブリック プレビュー |
-| - [Trend Micro Deep Security](../../sentinel/connect-trend-micro.md)                       | GA             | GA             |
-| - [Trend Micro TippingPoint](../../sentinel/connect-trend-micro-tippingpoint.md)                         | パブリック プレビュー | パブリック プレビュー |
+| - [Thycotic Secret Server](../../sentinel/data-connectors-reference.md#thycotic-secret-server-preview)                          | パブリック プレビュー | パブリック プレビュー |
+| - [Trend Micro Deep Security](../../sentinel/data-connectors-reference.md#trend-micro-deep-security)                       | GA             | GA             |
+| - [Trend Micro TippingPoint](../../sentinel/data-connectors-reference.md#trend-micro-tippingpoint-preview)                         | パブリック プレビュー | パブリック プレビュー |
 | - [Trend Micro XDR](../../sentinel/connect-data-sources.md)                                  | パブリック プレビュー | 利用不可      |
-| - [VMware Carbon Black Endpoint Standard](../../sentinel/connect-vmware-carbon-black.md)           | パブリック プレビュー | パブリック プレビュー |
-| - [VMware ESXi](../../sentinel/connect-vmware-esxi.md)                                      | パブリック プレビュー | パブリック プレビュー |
-| - [WireX Network Forensics Platform](../../sentinel/connect-wirex-systems.md)                | パブリック プレビュー | パブリック プレビュー |
-| - [Zimperium Mobile Threat Defense](../../sentinel/connect-zimperium-mtd.md)                  | パブリック プレビュー | 利用不可      |
-| - [Zscaler](../../sentinel/connect-zscaler.md)                                         | GA             | GA             |
+| - [VMware Carbon Black Endpoint Standard](../../sentinel/data-connectors-reference.md#vmware-carbon-black-endpoint-standard-preview)           | パブリック プレビュー | パブリック プレビュー |
+| - [VMware ESXi](../../sentinel/data-connectors-reference.md#vmware-esxi-preview)                                      | パブリック プレビュー | パブリック プレビュー |
+| - [WireX Network Forensics Platform](../../sentinel/data-connectors-reference.md#wirex-network-forensics-platform-preview)                | パブリック プレビュー | パブリック プレビュー |
+| - [Zimperium Mobile Threat Defense](../../sentinel/data-connectors-reference.md#zimperium-mobile-thread-defense-preview)                  | パブリック プレビュー | 利用不可      |
+| - [Zscaler](../../sentinel/data-connectors-reference.md#zscaler)                                         | GA             | GA             |
 | | | |
 
 
@@ -253,7 +253,7 @@ Office 365 GCC は、Azure の Azure Active Directory (Azure AD) とペアにな
 
 | コネクタ | Azure | Azure Government |
 |--|--|--|
-| **[Dynamics365](../../sentinel/connect-dynamics-365.md)** |  |  |
+| **[Dynamics365](../../sentinel/data-connectors-reference.md#dynamics-365)** |  |  |
 | - Office 365 GCC | パブリック プレビュー | - |
 | - Office 365 GCC High | - | 利用不可 |
 | - Office 365 DoD | - | 利用不可 |
@@ -261,31 +261,31 @@ Office 365 GCC は、Azure の Azure Active Directory (Azure AD) とペアにな
 | - Office 365 GCC | パブリック プレビュー | - |
 | - Office 365 GCC High | - | 利用不可 |
 | - Office 365 DoD | - | 利用不可 |
-| **[Microsoft Cloud App Security (MCAS)](../../sentinel/connect-cloud-app-security.md)** |  |  |
+| **[Microsoft Cloud App Security (MCAS)](../../sentinel/data-connectors-reference.md#microsoft-cloud-app-security-mcas)** |  |  |
 | - Office 365 GCC | GA | - |
 | - Office 365 GCC High | - | GA |
 | - Office 365 DoD | - | GA |
-| **[Microsoft Cloud App Security (MCAS)](../../sentinel/connect-cloud-app-security.md)** <br>シャドウ IT ログ |  |  |
+| **[Microsoft Cloud App Security (MCAS)](../../sentinel/data-connectors-reference.md#microsoft-cloud-app-security-mcas)** <br>シャドウ IT ログ |  |  |
 | - Office 365 GCC | パブリック プレビュー | - |
 | - Office 365 GCC High | - | パブリック プレビュー |
 | - Office 365 DoD | - | パブリック プレビュー |
-| **[Microsoft Cloud App Security (MCAS)](../../sentinel/connect-cloud-app-security.md)**                  <br>警告 |  |  |
+| **[Microsoft Cloud App Security (MCAS)](../../sentinel/data-connectors-reference.md#microsoft-cloud-app-security-mcas)**                  <br>警告 |  |  |
 | - Office 365 GCC | パブリック プレビュー | - |
 | - Office 365 GCC High | - | パブリック プレビュー |
 | - Office 365 DoD | - | パブリック プレビュー |
-| **[Microsoft Defender for Endpoint](../../sentinel/connect-microsoft-defender-advanced-threat-protection.md)** |  |  |
+| **[Microsoft Defender for Endpoint](../../sentinel/data-connectors-reference.md#microsoft-defender-for-endpoint)** |  |  |
 | - Office 365 GCC | GA | - |
 | - Office 365 GCC High | - | GA |
 | - Office 365 DoD | - | GA |
-| **[Microsoft Defender for Identity](../../sentinel/connect-azure-atp.md)** |  |  |
+| **[Microsoft Defender for Identity](../../sentinel/data-connectors-reference.md#microsoft-defender-for-identity)** |  |  |
 | - Office 365 GCC | パブリック プレビュー | - |
 | - Office 365 GCC High | - | 利用不可 |
 | - Office 365 DoD | - | 利用不可 |
-| **[Microsoft Defender for Office 365](../../sentinel/connect-office-365-advanced-threat-protection.md)** |  |  |
+| **[Microsoft Defender for Office 365](../../sentinel/data-connectors-reference.md#microsoft-defender-for-office-365)** |  |  |
 | - Office 365 GCC | パブリック プレビュー | - |
 | - Office 365 GCC High | - | 利用不可 |
 | - Office 365 DoD | - | 利用不可 |
-| **[Office 365](../../sentinel/connect-office-365.md)** |  |  |
+| **[Office 365](../../sentinel/data-connectors-reference.md#microsoft-office-365)** |  |  |
 | - Office 365 GCC | GA | - |
 | - Office 365 GCC High | - | GA |
 | - Office 365 DoD | - | GA |

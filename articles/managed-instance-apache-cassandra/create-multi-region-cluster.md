@@ -5,13 +5,13 @@ author: TheovanKraay
 ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
-ms.date: 05/05/2021
-ms.openlocfilehash: d2319ee86c356dfc3f145bd7031efe2ff01befa5
-ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
+ms.date: 09/08/2021
+ms.openlocfilehash: b40a2a2a8aaff878fa514ddd0d5b56eb9d5e10a3
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109520579"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124736239"
 ---
 # <a name="quickstart-create-a-multi-region-cluster-with-azure-managed-instance-for-apache-cassandra-preview"></a>クイックスタート: Azure Managed Instance for Apache Cassandra (プレビュー) を使用してマルチリージョン クラスターを作成する
 
@@ -38,57 +38,84 @@ Azure Managed Instance for Apache Cassandra は、マネージドなオープン
 
 1. "cassandra-mi-multi-region" という名前のリソース グループを作成します
 
-    ```azurecli-interactive
-        az group create -l eastus2 -n cassandra-mi-multi-region
-    ```
+   ```azurecli-interactive
+   az group create -l eastus2 -n cassandra-mi-multi-region
+   ```
 
 1. 専用サブネットを指定して、米国東部 2 に 1 つ目の VNet を作成します。
 
-    ```azurecli-interactive
-        az network vnet create -n vnetEastUs2 -l eastus2 -g cassandra-mi-multi-region --address-prefix 10.0.0.0/16 --subnet-name dedicated-subnet
-    ```
+   ```azurecli-interactive
+   az network vnet create \
+     -n vnetEastUs2 \
+     -l eastus2 \
+     -g cassandra-mi-multi-region \
+     --address-prefix 10.0.0.0/16 \
+     --subnet-name dedicated-subnet
+   ```
 
 1. 同様に、専用サブネットを指定して、米国東部に 2 つ目の VNet を作成します。
 
-    ```azurecli-interactive
-        az network vnet create -n vnetEastUs -l eastus -g cassandra-mi-multi-region --address-prefix 192.168.0.0/16 --subnet-name dedicated-subnet
-    ```
+   ```azurecli-interactive
+    az network vnet create \
+      -n vnetEastUs \
+      -l eastus \
+      -g cassandra-mi-multi-region \
+      --address-prefix 192.168.0.0/16 \
+      --subnet-name dedicated-subnet
+   ```
 
    > [!NOTE]
    > ピアリング時にエラーが発生しないようにするために、異なる IP アドレス範囲を明示的に追加します。 
 
 1. 次に、1 つ目の VNet を 2 つ目の VNet にピアリングする必要があります。
 
-    ```azurecli-interactive
-        az network vnet peering create -g cassandra-mi-multi-region -n MyVnet1ToMyVnet2 --vnet-name vnetEastUs2 \
-            --remote-vnet vnetEastUs --allow-vnet-access --allow-forwarded-traffic
-    ```
+   ```azurecli-interactive
+   az network vnet peering create \
+     -g cassandra-mi-multi-region \
+     -n MyVnet1ToMyVnet2 \
+     --vnet-name vnetEastUs2 \
+     --remote-vnet vnetEastUs \
+     --allow-vnet-access \
+     --allow-forwarded-traffic
+   ```
 
 1. 2 つの VNet を接続するために、2 つ目の VNet と 1 つ目の VNet の間に別のピアリングを作成します。
 
-    ```azurecli-interactive
-        az network vnet peering create -g cassandra-mi-multi-region -n MyVnet2ToMyVnet1 --vnet-name vnetEastUs \
-            --remote-vnet vnetEastUs2 --allow-vnet-access --allow-forwarded-traffic  
-    ```
+   ```azurecli-interactive
+   az network vnet peering create \
+     -g cassandra-mi-multi-region \
+     -n MyVnet2ToMyVnet1 \
+     --vnet-name vnetEastUs \
+     --remote-vnet vnetEastUs2 \
+     --allow-vnet-access \
+     --allow-forwarded-traffic  
+   ```
 
    > [!NOTE]
    > さらにリージョンを追加する場合、VNet ごとに、その VNet から他のすべての VNet へのピアリングと、他のすべての VNet からその VNet へのピアリングが必要になります。 
 
 1. 前のコマンドの出力を確認し、"peeringState" の値が "Connected" になっていることを確認します。 これは、次のコマンドを実行して確認することもできます。
 
-    ```azurecli-interactive
-        az network vnet peering show \
-          --name MyVnet1ToMyVnet2 \
-          --resource-group cassandra-mi-multi-region \
-          --vnet-name vnetEastUs2 \
-          --query peeringState
-    ``` 
+   ```azurecli-interactive
+   az network vnet peering show \
+     --name MyVnet1ToMyVnet2 \
+     --resource-group cassandra-mi-multi-region \
+     --vnet-name vnetEastUs2 \
+     --query peeringState
+   ``` 
 
-1. 次に、Azure Managed Instance for Apache Cassandra に必要な、いくつかの特別なアクセス許可を両方の仮想ネットワークに適用します。 以下を実行します。このとき、`<Subscription ID>` を実際のサブスクリプション ID に置き換えてください。
+1. 次に、Azure Managed Instance for Apache Cassandra に必要な、いくつかの特別なアクセス許可を両方の仮想ネットワークに適用します。 以下を実行します。このとき、`<SubscriptionID>` を実際のサブスクリプション ID に置き換えてください。
 
-    ```azurecli-interactive
-        az role assignment create --assignee a232010e-820c-4083-83bb-3ace5fc29d0b --role 4d97b98b-1d4f-4787-a291-c67834d212e7 --scope /subscriptions/<Subscription ID>/resourceGroups/cassandra-mi-multi-region/providers/Microsoft.Network/virtualNetworks/vnetEastUs2
-        az role assignment create --assignee a232010e-820c-4083-83bb-3ace5fc29d0b --role 4d97b98b-1d4f-4787-a291-c67834d212e7 --scope /subscriptions/<Subscription ID>/resourceGroups/cassandra-mi-multi-region/providers/Microsoft.Network/virtualNetworks/vnetEastUs
+   ```azurecli-interactive
+   az role assignment create \
+     --assignee a232010e-820c-4083-83bb-3ace5fc29d0b \
+     --role 4d97b98b-1d4f-4787-a291-c67834d212e7 \
+     --scope /subscriptions/<SubscriptionID>/resourceGroups/cassandra-mi-multi-region/providers/Microsoft.Network/virtualNetworks/vnetEastUs2
+
+   az role assignment create     \
+     --assignee a232010e-820c-4083-83bb-3ace5fc29d0b \
+     --role 4d97b98b-1d4f-4787-a291-c67834d212e7 \
+     --scope /subscriptions/<SubscriptionID>/resourceGroups/cassandra-mi-multi-region/providers/Microsoft.Network/virtualNetworks/vnetEastUs
     ```
    > [!NOTE]
    > 前のコマンドの `assignee` と `role` の値は固定値です。これらの値は、コマンドに記載されているとおりに入力してください。 そうしないと、クラスターの作成時にエラーが発生します。 このコマンドの実行中にエラーが発生した場合は、実行するためのアクセス許可がない可能性があります。管理者に連絡してアクセス許可を求めてください。
@@ -97,57 +124,57 @@ Azure Managed Instance for Apache Cassandra は、マネージドなオープン
 
 1. 適切なネットワークが作成された段階で、クラスター リソースをデプロイする準備が整いました (`<Subscription ID>` を実際のサブスクリプション ID に置き換えてください)。 この処理には 5 分から 10 分かかることがあります。
 
-    ```azurecli-interactive
-        resourceGroupName='cassandra-mi-multi-region'
-        clusterName='test-multi-region'
-        location='eastus2'
-        delegatedManagementSubnetId='/subscriptions/<Subscription ID>/resourceGroups/cassandra-mi-multi-region/providers/Microsoft.Network/virtualNetworks/vnetEastUs2/subnets/dedicated-subnet'
-        initialCassandraAdminPassword='myPassword'
+   ```azurecli-interactive
+   resourceGroupName='cassandra-mi-multi-region'
+   clusterName='test-multi-region'
+   location='eastus2'
+   delegatedManagementSubnetId='/subscriptions/<SubscriptionID>/resourceGroups/cassandra-mi-multi-region/providers/Microsoft.Network/virtualNetworks/vnetEastUs2/subnets/dedicated-subnet'
+   initialCassandraAdminPassword='myPassword'
         
-        az managed-cassandra cluster create \
-           --cluster-name $clusterName \
-           --resource-group $resourceGroupName \
-           --location $location \
-           --delegated-management-subnet-id $delegatedManagementSubnetId \
-           --initial-cassandra-admin-password $initialCassandraAdminPassword \
-           --debug
-    ```
+    az managed-cassandra cluster create \
+      --cluster-name $clusterName \
+      --resource-group $resourceGroupName \
+      --location $location \
+      --delegated-management-subnet-id $delegatedManagementSubnetId \
+      --initial-cassandra-admin-password $initialCassandraAdminPassword \
+      --debug
+   ```
 
-1. クラスター リソースが作成された段階で、データ センターを作成する準備が整いました。 まず、米国東部 2 にデータセンターを作成します (`<Subscription ID>` を実際のサブスクリプション ID に置き換えてください)。 この処理には最大 10 分かかることがあります。
+1. クラスター リソースが作成された段階で、データ センターを作成する準備が整いました。 まず、米国東部 2 にデータセンターを作成します (`<SubscriptionID>` を実際のサブスクリプション ID に置き換えてください)。 この処理には最大 10 分かかることがあります。
 
-    ```azurecli-interactive
-        resourceGroupName='cassandra-mi-multi-region'
-        clusterName='test-multi-region'
-        dataCenterName='dc-eastus2'
-        dataCenterLocation='eastus2'
-        delegatedManagementSubnetId='/subscriptions/<Subscription ID>/resourceGroups/cassandra-mi-multi-region/providers/Microsoft.Network/virtualNetworks/vnetEastUs2/subnets/dedicated-subnet'
+   ```azurecli-interactive
+   resourceGroupName='cassandra-mi-multi-region'
+   clusterName='test-multi-region'
+   dataCenterName='dc-eastus2'
+   dataCenterLocation='eastus2'
+   delegatedManagementSubnetId='/subscriptions/<SubscriptionID>/resourceGroups/cassandra-mi-multi-region/providers/Microsoft.Network/virtualNetworks/vnetEastUs2/subnets/dedicated-subnet'
         
-        az managed-cassandra datacenter create \
-           --resource-group $resourceGroupName \
-           --cluster-name $clusterName \
-           --data-center-name $dataCenterName \
-           --data-center-location $dataCenterLocation \
-           --delegated-subnet-id $delegatedManagementSubnetId \
-           --node-count 3
-    ```
+    az managed-cassandra datacenter create \
+       --resource-group $resourceGroupName \
+       --cluster-name $clusterName \
+       --data-center-name $dataCenterName \
+       --data-center-location $dataCenterLocation \
+       --delegated-subnet-id $delegatedManagementSubnetId \
+       --node-count 3
+   ```
 
-1. 次に、米国東部にデータセンターを作成します (`<Subscription ID>` を実際のサブスクリプション ID に置き換えてください)。
+1. 次に、米国東部にデータセンターを作成します (`<SubscriptionID>` を実際のサブスクリプション ID に置き換えてください)。
 
-    ```azurecli-interactive
-        resourceGroupName='cassandra-mi-multi-region'
-        clusterName='test-multi-region'
-        dataCenterName='dc-eastus'
-        dataCenterLocation='eastus'
-        delegatedManagementSubnetId='/subscriptions/<Subscription ID>/resourceGroups/cassandra-mi-multi-region/providers/Microsoft.Network/virtualNetworks/vnetEastUs/subnets/dedicated-subnet'
+   ```azurecli-interactive
+   resourceGroupName='cassandra-mi-multi-region'
+   clusterName='test-multi-region'
+   dataCenterName='dc-eastus'
+   dataCenterLocation='eastus'
+   delegatedManagementSubnetId='/subscriptions/<SubscriptionID>/resourceGroups/cassandra-mi-multi-region/providers/Microsoft.Network/virtualNetworks/vnetEastUs/subnets/dedicated-subnet'
         
-        az managed-cassandra datacenter create \
-           --resource-group $resourceGroupName \
-           --cluster-name $clusterName \
-           --data-center-name $dataCenterName \
-           --data-center-location $dataCenterLocation \
-           --delegated-subnet-id $delegatedManagementSubnetId \
-           --node-count 3 
-    ```
+    az managed-cassandra datacenter create \
+      --resource-group $resourceGroupName \
+      --cluster-name $clusterName \
+      --data-center-name $dataCenterName \
+      --data-center-location $dataCenterLocation \
+      --delegated-subnet-id $delegatedManagementSubnetId \
+      --node-count 3 
+   ```
 
 1. 2 つ目のデータセンターが作成されたら、ノード状態を取得して、すべての Cassandra ノードが正常に動作していることを確認します。
 
@@ -156,10 +183,9 @@ Azure Managed Instance for Apache Cassandra は、マネージドなオープン
     clusterName='test-multi-region'
     
     az managed-cassandra cluster node-status \
-        --cluster-name $clusterName \
-        --resource-group $resourceGroupName
+       --cluster-name $clusterName \
+       --resource-group $resourceGroupName
     ```
-
 
 1. 最後に、CQLSH を使用して[対象のクラスターに接続](create-cluster-cli.md#connect-to-your-cluster)し、次の CQL クエリを使用して、各キースペースのレプリケーション戦略を更新し、クラスター全体のすべてのデータセンターを含めます。
 
@@ -190,7 +216,7 @@ Azure portal からアクセス許可を適用するには、既存の仮想ネ�
 1. Azure portal の左側にあるメニューで、 **[リソース グループ]** を選択します。
 1. 一覧から、このクイック スタートで作成したリソース グループを選択します。
 1. リソース グループの **[概要]** ペインで、 **[リソース グループの削除]** を選択します。
-3. 次のウィンドウで、削除するリソース グループの名前を入力し、**[削除]** を選択します。
+1. 次のウィンドウで、削除するリソース グループの名前を入力し、**[削除]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 

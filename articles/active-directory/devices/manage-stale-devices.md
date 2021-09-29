@@ -8,15 +8,15 @@ ms.topic: how-to
 ms.date: 06/02/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abc3c8123450c7962d25eb7112638a296d09fc01
-ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
+ms.openlocfilehash: 33b2ddfbd06d771ccd770d57525cb2bbd31a2f45
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111809686"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128597761"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>方法:Azure AD で古いデバイスを管理する
 

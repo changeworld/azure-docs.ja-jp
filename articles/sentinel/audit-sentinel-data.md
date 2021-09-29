@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/03/2021
 ms.author: bagol
-ms.openlocfilehash: 82d406521ad534c77fc48c095631e07a74bfd080
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 4378065a8d1a91f9051c04dbb71a90e2a4ab862c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122252923"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124777395"
 ---
 # <a name="audit-azure-sentinel-queries-and-activities"></a>Azure Sentinel クエリとアクティビティの監査
 
@@ -47,7 +47,7 @@ Azure Sentinel で SOC 環境のアクティビティを監査する場合は、
 
 **AzureActivity テーブルに対してクエリを実行するには**:
 
-1. [Azure アクティビティ](connect-azure-activity.md) データソースを接続して、"AzureActivity" という名前の **[ログ]** 画面の新しいテーブルに対してストリーミング監査イベントを開始します。
+1. [Azure アクティビティ](./data-connectors-reference.md#azure-activity) データソースを接続して、"AzureActivity" という名前の **[ログ]** 画面の新しいテーブルに対してストリーミング監査イベントを開始します。
 
 1. 次に、他のテーブルの場合と同様に、KQL を使用してデータに対してクエリを実行します。
 

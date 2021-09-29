@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-general
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: jushiman
-ms.openlocfilehash: 0d37e8308afd75b310893272f338fb5a3245a8ce
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: c5232d9ed3e7ab7caec6134e4c5d3e553e2b543c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122696523"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124818416"
 ---
 # <a name="dcsv2-series"></a>DCsv2 シリーズ
 
@@ -63,5 +63,7 @@ DCsv2 シリーズの仮想マシンは、パブリック クラウドで処理�
 - [旧世代](sizes-previous-gen.md)
 - [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 - [ディスクの種類の詳細](./disks-types.md#ultra-disk)
+
+料金計算ツール:[料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 
 [Azure コンピューティング ユニット (ACU)](acu.md) を確認することで、Azure SKU 全体の処理性能を比較できます。

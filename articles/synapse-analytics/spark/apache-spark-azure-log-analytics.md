@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.subservice: spark
 ms.date: 03/25/2021
 ms.custom: references_regions
-ms.openlocfilehash: cc4d6cd7809c58451f95b94970ee8b489f2f9dfe
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: a455eb81a804c9eff9dcd84142eccbdfc3ac376c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123535371"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124804186"
 ---
 # <a name="monitor-apache-spark-applications-with-azure-log-analytics-preview"></a>Azure Log Analytics を使用して Apache Spark アプリケーションを監視する (プレビュー)
 
@@ -29,7 +29,7 @@ ms.locfileid: "123535371"
 
 次のいずれかのリソースを参照して、ワークスペースを作成します。
 - [Azure portal でワークスペースを作成する](../../azure-monitor/logs/quick-create-workspace.md)
-- [Azure CLI を使用してワークスペースを作成する](../../azure-monitor/logs/quick-create-workspace-cli.md)
+- [Azure CLI を使用してワークスペースを作成する](../../azure-monitor/logs/resource-manager-workspace.md)
 - [PowerShell を使用して Azure Monitor でワークスペースを作成して構成する](../../azure-monitor/logs/powershell-workspace-configuration.md)
 
 ### <a name="step-2-prepare-a-apache-spark-configuration-file"></a>手順 2: Apache Spark 構成ファイルを準備する

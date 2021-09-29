@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/26/2021
 ms.author: jeedes
-ms.openlocfilehash: d8c94bfaeb3438ef54e745505e51442d6d391929
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1cf1da4b583e78ebf9e5cf9e17da4674d9401388
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105643132"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124770246"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-docusign"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と DocuSign の統合
 
@@ -236,7 +236,7 @@ Azure portal で Azure AD SSO を有効にするには、これらの手順を�
 
 2. DocuSign のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-3. Microsoft マイ アプリを使用することができます。 マイ アプリで [DocuSign] タイルをクリックすると、SSO を設定した DocuSign に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+3. Microsoft マイ アプリを使用することができます。 マイ アプリで [DocuSign] タイルをクリックすると、SSO を設定した DocuSign に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次の手順

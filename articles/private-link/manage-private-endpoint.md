@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d9e402b2015370eca5782ec91dd6afb8f7c6d962
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: f4d5de43786952b3581067c69e2b8840d3aa7296
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110701261"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128553338"
 ---
 # <a name="manage-a-private-endpoint-connection"></a>プライベート エンドポイント接続を管理する
 Azure Private Link は、承認呼び出しフロー モデルで機能します。このモデルでは、Private Link サービスのコンシューマーがサービスを使用するためにサービス プロバイダーへの接続を要求できます。 次に、サービス プロバイダーは、コンシューマーに接続を許可するかどうかを決定できます。 サービス プロバイダーは、Azure Private Link を使用して、自分のリソース上のプライベート エンドポイント接続を管理できます。 この記事では、プライベート エンドポイント接続を管理する方法について説明します。
@@ -36,7 +36,8 @@ Private Link サービスのコンシューマーは、次の 2 つの接続承�
 |   |         |         |
    
 ## <a name="manage-private-endpoint-connections-on-azure-paas-resources"></a>Azure PaaS リソース上のプライベート エンドポイント接続を管理する
-ポータルは、Azure PaaS リソース上のプライベート エンドポイント接続を管理するための推奨手段です。 現時点では、Azure PaaS リソース上の接続を管理するための PowerShell または CLI のサポートはありません。
+ポータルは、Azure PaaS リソース上のプライベート エンドポイント接続を管理するための推奨手段です。 
+
 1. Azure Portal ( https://portal.azure.com ) にサインインします。
 2. プライベート リンク センターに移動します。
 3. **[リソース]** で、プライベート エンドポイント接続を管理するリソースの種類を選択します。
@@ -46,7 +47,7 @@ Private Link サービスのコンシューマーは、次の 2 つの接続承�
 
 ## <a name="manage-private-endpoint-connections-on-a-customerpartner-owned-private-link-service"></a>顧客またはパートナーが所有する Private Link サービス上のプライベート エンドポイント接続を管理する
 
-Azure PowerShell および Azure CLI は、Microsoft Partner Services または顧客が所有するサービス上のプライベート エンドポイント接続を管理するための推奨手段です。 現時点では、Private Link サービス上の接続を管理するためのポータルのサポートはありません。  
+Azure PowerShell および Azure CLI は、Microsoft Partner Services または顧客が所有するサービス上のプライベート エンドポイント接続を管理するための推奨手段です。 
  
 ### <a name="powershell"></a>PowerShell 
   

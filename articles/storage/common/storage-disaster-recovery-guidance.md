@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/07/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 29392d17d31926f7ae261bad96b53623b3c5a36a
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 18f6be8421d424b8eefe04c5cb2e3f8026858ec7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123470510"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128626724"
 ---
 # <a name="disaster-recovery-and-storage-account-failover"></a>ディザスター リカバリーとストレージ アカウントのフェールオーバー
 
@@ -30,7 +30,7 @@ Azure Storage では、geo 冗長ストレージ アカウントのアカウン�
 
 ## <a name="choose-the-right-redundancy-option"></a>適切な冗長性オプションを選択する
 
-Azure Storage は、持続性と高可用性を確保するために、ストレージ アカウントの複数のコピーを保持します。 アカウントに対して選択する冗長性オプションは、必要な回復性の程度によって異なります。 リージョン規模の障害に対する保護の場合は、geo 冗長ストレージ用にアカウントを構成し、セカンダリ リージョンからの読み取りアクセスのオプションは指定しても指定しなくてもかまいません。  
+Azure Storage は、持続性と高可用性を確保するために、ストレージ アカウントの複数のコピーを保持します。 アカウントに対して選択する冗長性オプションは、必要な回復性の程度によって異なります。 リージョン規模の障害に対する保護の場合は、geo 冗長ストレージ用にアカウントを構成し、セカンダリ リージョンからの読み取りアクセスのオプションは指定しても指定しなくてもかまいません。
 
 **geo 冗長ストレージ (GRS) または geo ゾーン冗長ストレージ (GZRS)** では、少なくとも数百マイル離れた 2 つの地理的リージョンにデータが非同期的にコピーされます。 プライマリ リージョンで障害が発生した場合、セカンダリ リージョンがデータの冗長ソースとして機能します。 ユーザーがフェールオーバーを開始して、セカンダリ エンドポイントをプライマリ エンドポイントに変換することができます。
 
@@ -48,7 +48,7 @@ Azure Storage での冗長性の詳細については、「[Azure Storage の冗
 - [回復性に優れた Azure 用アプリケーションの設計](/azure/architecture/framework/resiliency/app-design):Azure で高可用性アプリケーションを設計するための主要な概念の概要です。
 - [回復性のチェックリスト](/azure/architecture/checklist/resiliency-per-service):アプリケーションで高可用性向け設計のベスト プラクティスが実装されていることを確認するためのチェックリストです。
 - [geo 冗長性を使用する高可用性アプリケーションの設計](geo-redundant-design.md):geo 冗長ストレージを利用するアプリケーションを構築するための設計ガイダンス。
-- [チュートリアル:Blob Storage を使用して高可用性アプリケーションを作成する](../blobs/storage-create-geo-redundant-storage.md):障害および復旧がシミュレートされたらエンドポイント間で自動的に切り替わる高可用性アプリケーションを構築する方法を示すチュートリアルです。 
+- [チュートリアル:Blob Storage を使用して高可用性アプリケーションを作成する](../blobs/storage-create-geo-redundant-storage.md):障害および復旧がシミュレートされたらエンドポイント間で自動的に切り替わる高可用性アプリケーションを構築する方法を示すチュートリアルです。
 
 さらに、Azure Storage のデータの高可用性を維持するためには、次のベスト プラクティスに留意してください。
 
@@ -68,7 +68,7 @@ Azure Storage での冗長性の詳細については、「[Azure Storage の冗
 お客様が管理するアカウントのフェールオーバーでは、何らかの理由でプライマリが使用できなくなった場合、ストレージ アカウント全体をセカンダリ リージョンにフェールオーバーすることができます。 セカンダリ リージョンへのフェールオーバーを強制的に実行すると、クライアントは、フェールオーバー完了後にセカンダリ エンドポイントへのデータの書き込みを開始することができます。 フェールオーバーには、通常、約 1 時間かかります。
 
 > [!NOTE]
-> この機能は、階層型名前空間 (Azure Data Lake Storage Gen2) を持つアカウントではまだサポートされていません。 詳細については、「[Azure Data Lake Storage Gen2 で使用できる BLOB ストレージ機能](../blobs/data-lake-storage-supported-blob-storage-features.md)」を参照してください。
+> この機能は、階層型名前空間 (Azure Data Lake Storage Gen2) を持つアカウントではまだサポートされていません。 詳細については、「[Azure Data Lake Storage Gen2 で使用できる BLOB ストレージ機能](../blobs/storage-feature-support-in-storage-accounts.md)」を参照してください。
 
 ### <a name="how-an-account-failover-works"></a>アカウントのフェールオーバーのしくみ
 
@@ -94,7 +94,7 @@ geo 冗長アカウントの場合は、DNS エントリが更新されて、要
 ### <a name="anticipate-data-loss"></a>データ損失の可能性
 
 > [!CAUTION]
-> アカウントのフェールオーバーでは、通常、ある程度のデータ損失が発生します。 アカウントのフェールオーバーを開始した場合の影響を理解しておく必要があります。  
+> アカウントのフェールオーバーでは、通常、ある程度のデータ損失が発生します。 アカウントのフェールオーバーを開始した場合の影響を理解しておく必要があります。
 
 データはプライマリ リージョンからセカンダリ リージョンに非同期的に書き込まれるため、プライマリ リージョンへの書き込みがセカンダリ リージョンにコピーされるまでの間に常に遅延があります。 プライマリ リージョンが使用できなくなった場合、最新の書き込みがまだセカンダリ リージョンにコピーされていない可能性があります。
 

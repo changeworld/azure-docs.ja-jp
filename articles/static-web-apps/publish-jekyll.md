@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/11/2021
 ms.author: cshoe
-ms.openlocfilehash: 179fa0e247b2c875a4d32eac312d240ae768c009
-ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
+ms.openlocfilehash: fa97100e670e1d96bdd33c362b2e133d78d8dae7
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110190554"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129155441"
 ---
 # <a name="tutorial-publish-a-jekyll-site-to-azure-static-web-apps"></a>チュートリアル:Jekyll サイトを Azure Static Web Apps に公開する
 
@@ -73,7 +73,7 @@ Azure Static Web Apps では、Web サイトの公開に GitHub を使用しま�
 1. GitHub リポジトリをリモートとしてローカル リポジトリに追加します。 次のコマンドの `<YOUR_USER_NAME>` プレースホルダーの代わりに、GitHub のユーザー名を追加してください。
 
    ```bash
-   git remote add origin https://github.com/<YOUR_USER_NAME>/jekyll-static-app
+   git remote add origin https://github.com/<YOUR_USER_NAME>/jekyll-azure-static
    ```
 
 1. ローカル リポジトリを GitHub にプッシュします。
@@ -94,7 +94,7 @@ Azure Static Web Apps では、Web サイトの公開に GitHub を使用しま�
 1. [Azure Portal](https://portal.azure.com) に移動します
 1. **[リソースの作成]** を選択します
 1. **[Static Web Apps]** を探します
-1. **[Static Web Apps]** を選択します
+1. **[Static Web Apps]** を選択します。
 1. **[作成]**
 1. _[基本]_ タブで、次の値を入力します。
 
@@ -113,7 +113,7 @@ Azure Static Web Apps では、Web サイトの公開に GitHub を使用しま�
 
     | プロパティ | 値 |
     | --- | --- |
-    | _組織_ | 自分の希望する GitHub 組織を選択します。 |
+    | _組織_ | ご自分の希望する GitHub 組織を選択します。 |
     | _リポジトリ_ | **[jekyll-static-app]** を選択します。 |
     | _ブランチ_ | **[main]\(メイン\)** を選択します。 |
 
@@ -139,7 +139,7 @@ Azure Static Web Apps では、Web サイトの公開に GitHub を使用しま�
 
 #### <a name="custom-jekyll-settings"></a>カスタム Jekyll の設定
 
-静的 Web アプリを生成すると、アプリケーションの発行構成設定を含む[ワークフロー ファイル](./github-actions-workflow.md)が生成されます。
+静的 Web アプリを生成すると、アプリケーションの発行構成設定を含む[ワークフロー ファイル](./build-configuration.md)が生成されます。
 
 `JEKYLL_ENV` などの環境変数を構成するには、ワークフローの Azure Static Web Apps GitHub アクションに `env` セクションを追加します。
 

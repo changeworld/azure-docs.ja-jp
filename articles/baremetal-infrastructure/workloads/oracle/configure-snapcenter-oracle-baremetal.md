@@ -4,12 +4,12 @@ description: BareMetal インフラストラクチャ上の Oracle 用に SnapCe
 ms.topic: how-to
 ms.subservice: baremetal-oracle
 ms.date: 05/05/2021
-ms.openlocfilehash: cd3163b90d65f3e33fa56a190ed854069afd6703
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.openlocfilehash: edc75bd8d5fb2a64e22b2dd8f53fceda092161c3
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110579210"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128676107"
 ---
 # <a name="configure-snapcenter-for-oracle-on-baremetal-infrastructure"></a>BareMetal インフラストラクチャ上の Oracle 用に SnapCenter を構成する
 
@@ -82,7 +82,7 @@ ping を検証した後、プライマリ ストレージの追加に使用し�
     - **[Credential Name]\(資格情報名\)** : ユーザー名と sudoers を示す名前を指定します。
     - **[Authentication]\(認証\)** : Linux
     - **[Username]\(ユーザー\)** : 新しく作成したユーザー名を指定します。
-    - **パスワード**: <Enter Password>
+    - **パスワード**: \<enter password\>
     - **[Use sudo privileges]\(sudo の特権を使用する\)** チェック ボックスをオンにします
     
 7. **[OK]** を選択します。

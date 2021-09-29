@@ -7,14 +7,14 @@ tags: azure-resource-manager
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.topic: quickstart
-ms.date: 07/28/2020
+ms.date: 09/15/2021
 ms.custom: subject-armqs, devx-track-azurepowershell
-ms.openlocfilehash: 739ffeb7c94f6c40481cdabfbe83f006cde5d388
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: b7ae1fa6533067c977952cdfc3ae73244e50d941
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112457932"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128584925"
 ---
 # <a name="quickstart-create-a-budget-with-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して予算を作成する
 

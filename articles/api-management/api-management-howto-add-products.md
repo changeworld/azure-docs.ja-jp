@@ -1,17 +1,17 @@
 ---
 title: チュートリアル - Azure API Management で製品を作成して発行する
 description: このチュートリアルでは、Azure API Management で製品を作成して発行します。 製品が発行されると、開発者は製品の API の利用を開始できます。
-author: mikebudzynski
+author: dlepow
 ms.service: api-management
 ms.topic: tutorial
 ms.date: 02/09/2021
-ms.author: apimpm
-ms.openlocfilehash: 7c0d24c667d2c7c46f65d8c6f3bf6e6e3b52fd00
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.author: danlep
+ms.openlocfilehash: f9d4b1565cc217aaa149e34fc278da779a3d869e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114669651"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128643329"
 ---
 # <a name="tutorial-create-and-publish-a-product"></a>チュートリアル:製品を作成して発行する  
 

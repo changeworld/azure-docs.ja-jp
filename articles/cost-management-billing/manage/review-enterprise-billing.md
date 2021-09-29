@@ -5,14 +5,14 @@ author: lleonard-msft
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.topic: article
-ms.date: 08/20/2020
+ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: 4ac9c38c3f86c1226edf3b448324205cf5f98568
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: cbd1ecd4b71ab66b70c4e20cf1ce3cdf02aede5a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106058869"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128679827"
 ---
 # <a name="review-enterprise-enrollment-billing-using-rest-apis"></a>REST API を使用してエンタープライズ加入契約の請求書を確認する
 

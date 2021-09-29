@@ -1,19 +1,17 @@
 ---
 title: 仮想マシン サイズの柔軟性 - Azure Reserved VM Instances
 description: 予約 VM インスタンスを購入する際に適用されるサイズ シリーズについて説明します。
-author: yashesvi
 ms.service: virtual-machines
-ms.subservice: reserved-instances
+ms.subservice: billing
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 04/06/2021
-ms.author: yashar
-ms.openlocfilehash: 5576ee62f1945266dfb4bc2d9e41124a88ab17f5
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 8d76bdbf17fbc03b9c99a2c08c56de1faf2ffea9
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122694231"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129215436"
 ---
 # <a name="virtual-machine-size-flexibility-with-reserved-vm-instances"></a>Reserved VM Instances での仮想マシン サイズの柔軟性
 

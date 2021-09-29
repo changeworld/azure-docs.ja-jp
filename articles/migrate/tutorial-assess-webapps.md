@@ -5,12 +5,12 @@ author: rashi-ms
 ms.author: rajosh
 ms.topic: tutorial
 ms.date: 07/28/2021
-ms.openlocfilehash: 1bbe267aef27151b3ef70e88e0a8e85091d8a33d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7d37b3755e79c8117bbec7269e7ef97e8edb7429
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121785485"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124782311"
 ---
 # <a name="tutorial-assess-aspnet-web-apps-for-migration-to-azure-app-service"></a>チュートリアル: Azure App Service に移行するための ASP.NET Web アプリの評価
 
@@ -83,7 +83,7 @@ Azure への移行に取り組む過程では、オンプレミスのワーク�
 
 #### <a name="azure-app-service-cost-details"></a>Azure App Service のコストの詳細
 
-[App Service プラン](/azure/app-service/overview-hosting-plans)では、使用するコンピューティング リソースに対して[課金](https://azure.microsoft.com/pricing/details/app-service/windows/)されます。
+[App Service プラン](../app-service/overview-hosting-plans.md)では、使用するコンピューティング リソースに対して[課金](https://azure.microsoft.com/pricing/details/app-service/windows/)されます。
 
 ### <a name="review-readiness"></a>対応性を確認する
 

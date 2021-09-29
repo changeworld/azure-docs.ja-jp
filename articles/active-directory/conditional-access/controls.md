@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 08/26/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7585c91e42b2d3591532756c1ead9ea60b7035e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5b42df2aeb70d9dcdc9ef77ed224d50a352097ec
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94837585"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128592833"
 ---
 # <a name="custom-controls-preview"></a>カスタム コントロール (プレビュー)
 

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 9/25/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: 96e055205c5c016504cd6246b9c1b6d1533ad6ac
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f8a8e5785af1bd74fb958a315de379facdc87171
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121736180"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128575974"
 ---
 # <a name="azure-kubernetes-network-policies-overview"></a>Azure Kubernetes ネットワーク ポリシーの概要
 
@@ -134,7 +134,9 @@ Azure NPM には、お客様の構成を監視して理解を深めることが�
 
 ConfigMap を編集したら、ローカルに保存し、次のように ConfigMap をクラスターに適用します。
 
-```kubectl apply -f container-azm-ms-agentconfig.yaml``` 次に示すのは、高度なメトリックの収集が有効になっている NPM 統合を示す [Azure monitor for containers ConfigMap](https://aka.ms/container-azm-ms-agentconfig) のスニペットです。
+`kubectl apply -f container-azm-ms-agentconfig.yaml`
+
+ 次に示すのは、高度なメトリックの収集が有効になっている NPM 統合を示す [Azure monitor for containers ConfigMap](https://aka.ms/container-azm-ms-agentconfig) のスニペットです。
 ```
 integrations: |-
     [integrations.azure_network_policy_manager]
@@ -265,4 +267,3 @@ Container Insights (CI) と Grafana の NPM メトリック用のサンプル �
 - [Azure Kubernetes Service](../aks/intro-kubernetes.md) について確認します。
 -  [コンテナー ネットワーク](container-networking-overview.md)について確認します。
 - Kubernetes クラスターまたは Docker コンテナー用の[プラグインをデプロイ](deploy-container-networking.md)します。
-

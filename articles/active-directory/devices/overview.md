@@ -8,15 +8,15 @@ ms.topic: overview
 ms.date: 06/09/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: sandeo, ravenn, spunukol, jogro, jploegert
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5115b8ce7d28e7fe3c254a1942ea035aa9db473
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: 76c997cc1f4ed2be18e06838f6c30864456f7539
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122514889"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128588240"
 ---
 # <a name="what-is-a-device-identity"></a>デバイス ID とは
 

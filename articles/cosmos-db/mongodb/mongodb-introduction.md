@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 08/26/2021
 author: gahl-levy
 ms.author: gahllevy
-ms.openlocfilehash: bce5b5874b12638d1f2d628e23812676053006a4
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 9a142dfcba67b80a8293a15d03ea2b389bd297d1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123035209"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128593897"
 ---
 # <a name="azure-cosmos-db-api-for-mongodb"></a>MongoDB 用 Azure Cosmos DB API
 [!INCLUDE[appliesto-mongodb-api](../includes/appliesto-mongodb-api.md)]
@@ -57,7 +57,7 @@ MongoDB 用 API の各バージョンはいずれも同じコードベースで�
 
 * MongoDB 用 Azure Cosmos DB API には、次の 3 とおりのデプロイ方法があります。
      * [プロビジョニング スループット](../set-throughput.md): 1 秒あたりの RU 数を設定して手動で変更します。 このモデルは、一貫性のあるワークロードに最も適しています。
-     * [自動スケーリング]../(provision-throughput-autoscale.md): 必要なスループットの上限を設定します。 ニーズに合わせてスループットは即時にスケーリングされます。 このモデルは、頻繁に変化するワークロードに最も適しており、そのコストが最適化されます。
+     * [自動スケーリング](../provision-throughput-autoscale.md): 必要なスループットの上限を設定します。 ニーズに合わせてスループットは即時にスケーリングされます。 このモデルは、頻繁に変化するワークロードに最も適しており、そのコストが最適化されます。
      * [サーバーレス](../serverless.md): 使用したスループット (期間) に対してのみ課金されます。 このモデルは、開発とテストのワークロードに最も適しています。 
 
 * シャード クラスターのパフォーマンスは、コレクションの作成時に選択したシャード キーに依存します。 データがシャード全体に均等に分散されるよう、シャード キーは慎重に選択してください。
@@ -65,7 +65,7 @@ MongoDB 用 API の各バージョンはいずれも同じコードベースで�
 ### <a name="capacity-planning"></a>容量計画
 
 Azure Cosmos DB への移行のための容量計画を実行しようとしていますか? 容量計画のために、既存のデータベース クラスターに関する情報を使用できます。
-* 既存のデータベース クラスターの仮想コアとサーバーの数のみを把握している場合は、[仮想コア数または vCPU 数を使用した要求ユニットの見積もり](../convert-vcore-to-request-unit.md)に関するページを参照してください 
+* 知っていることが既存のデータベース クラスター内の仮想コアとサーバーの数のみである場合は、[仮想コアまたは仮想 CPU の数を使用した要求ユニットの見積もり](../convert-vcore-to-request-unit.md)に関するページを参照してください 
 * 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB Capacity Planner を使用した要求ユニットの見積もり](../estimate-ru-with-capacity-planner.md)に関するページを参照してください
 
 ## <a name="quickstart"></a>クイック スタート
@@ -79,7 +79,7 @@ Azure Cosmos DB への移行のための容量計画を実行しようとして�
 ## <a name="next-steps"></a>次のステップ
 
 * Azure Cosmos DB への移行のための容量計画を実行しようとしていますか? 容量計画のために、既存のデータベース クラスターに関する情報を使用できます。
-    * 既存のデータベース クラスターの仮想コアとサーバーの数のみを把握している場合は、[仮想コア数または vCPU 数を使用した要求ユニットの見積もり](../convert-vcore-to-request-unit.md)に関するページを参照してください 
+    * 知っていることが既存のデータベース クラスター内の仮想コアとサーバーの数のみである場合は、[仮想コアまたは仮想 CPU の数を使用した要求ユニットの見積もり](../convert-vcore-to-request-unit.md)に関するページを参照してください 
     * 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB Capacity Planner を使用した要求ユニットの見積もり](estimate-ru-capacity-planner.md)に関するページを参照してください
 * チュートリアル「[Azure Cosmos DB への MongoDB アプリケーションの接続](connect-mongodb-account.md)」に従って、アカウントの接続文字列の情報を取得する方法について学習します。
 * [Azure Cosmos DB での Studio 3T の使用](connect-using-mongochef.md)に関するチュートリアルに従って、Studio 3T で Cosmos データベースと MongoDB アプリの間の接続を作成する方法を学習します。

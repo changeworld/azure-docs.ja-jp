@@ -10,12 +10,12 @@ ms.author: arupp
 ms.reviewer: vanto
 ms.date: 08/25/2021
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 5750192116b9d6008bf1bb903dd36875b6939ffb
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: 512f43c102aa40707170021ec1b1fd6372437d64
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122866483"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124793545"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Database および Azure Synapse Analytics の監査
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -159,7 +159,7 @@ Azure Log Analytics ワークスペースの詳細については、「[Azure Mo
 
 ## <a name="analyze-audit-logs-and-reports"></a><a id="subheading-3"></a>監査ログとレポートを分析する
 
-監査ログを Azure Monitor ログに書き込む場合:
+監査ログを Log Analytics に書き込む場合:
 
 - [Azure Portal](https://portal.azure.com) を使用します。 関連するデータベースを開きます。 データベースの **[監査]** ページの上部にある **[監査ログの表示]** を選択します。
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/07/2019
 ms.author: jeedes
-ms.openlocfilehash: ecd96e13f66e88be2ed4e53ff300510763fbd564
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 02a6788e25b5f3cb6ca38c74202af80972b7a4e7
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92457097"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124734387"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bitly"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Bitly の統合
 
@@ -139,7 +139,7 @@ Bitly に対する Azure AD SSO を構成してテストするには、次の構
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Bitly] タイルをクリックすると、SSO を設定した Bitly に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+アクセス パネル上で [Bitly] タイルをクリックすると、SSO を設定した Bitly に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

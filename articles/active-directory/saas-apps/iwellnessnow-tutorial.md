@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 4143d44591d92111d4d4a6cbba3e9059f201a29c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3a2ae6c5af09fb78067a1ca69f88a62bb2f974f4
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92459613"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124809085"
 ---
 # <a name="tutorial-integrate-iwellnessnow-with-azure-active-directory"></a>チュートリアル: iWellnessNow と Azure Active Directory の統合
 
@@ -159,7 +159,7 @@ iWellnessNow で Azure AD SSO を構成してテストするには、次の構�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [iWellnessNow] タイルをクリックすると、SSO を設定した iWellnessNow に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+アクセス パネル上で [iWellnessNow] タイルをクリックすると、SSO を設定した iWellnessNow に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

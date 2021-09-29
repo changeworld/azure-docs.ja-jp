@@ -3,16 +3,16 @@ title: 開発者ポータルをセルフホストするための代替方法
 titleSuffix: Azure API Management
 description: Azure API Management で開発者ポータルをセルフホストするときに使用できる代替アプローチについて説明します。
 author: dlepow
-ms.author: apimpm
+ms.author: danlep
 ms.date: 03/25/2021
 ms.service: api-management
 ms.topic: how-to
-ms.openlocfilehash: 207f5cbfb0e8f6d9d52920f7e4c72d7e663489fc
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: fb8514423bf4efd42373ad2f111aa3a96c5c0969
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110459352"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128582899"
 ---
 # <a name="alternative-approaches-to-self-host-developer-portal"></a>開発者ポータルをセルフホストするための代替アプローチ
 

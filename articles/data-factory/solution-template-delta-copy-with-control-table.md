@@ -8,12 +8,12 @@ ms.subservice: tutorials
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/09/2020
-ms.openlocfilehash: 2478c50b9753f3518a0a09533842a4d7abde762c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 8cf8ecaaafa9697286dcaa0ae61d00853d53a311
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121731467"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124743489"
 ---
 # <a name="delta-copy-from-a-database-with-a-control-table"></a>データベースから制御テーブルを使用して差分コピーを行う
 
@@ -90,37 +90,37 @@ ms.locfileid: "121731467"
     
 4. **[データベースからの差分コピー]** テンプレートに移動します。 データのコピー元となるソース データベースへの **新しい** 接続を作成します。
 
-    ![ソース テーブルへの新しい接続の作成](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable4.png)
+    :::image type="content" source="media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable4.png" alt-text="ソース テーブルへの新しい接続の作成":::
 
 5. データのコピー先となるコピー先データ ストアへの **新しい** 接続を作成します。
 
-    ![宛先テーブルへの新しい接続の作成](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable5.png)
+    :::image type="content" source="media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable5.png" alt-text="宛先テーブルへの新しい接続の作成":::
 
 6. 手順 2 と 3 で作成した外部制御テーブルとストアド プロシージャへの **新しい** 接続を作成します。
 
-    ![制御テーブル データ ストアへの新しい接続の作成](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable6.png)
+    :::image type="content" source="media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable6.png" alt-text="制御テーブル データ ストアへの新しい接続の作成":::
 
 7. **[このテンプレートを使用]** を選択します。
     
 8. 次の例に示すように、使用可能なパイプラインが表示されます。
   
-    ![パイプラインのレビュー](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable8.png)
+    :::image type="content" source="media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable8.png" alt-text="パイプラインのレビュー":::
 
 9. **[ストアド プロシージャ]** を選択します。 **[ストアド プロシージャ名]** に **[dbo].[update_watermark]** を選択します。 **[Import parameter (インポート パラメーター)]** を選択し、 **[動的なコンテンツの追加]** を選択します。  
 
-    ![ストアド プロシージャ アクティビティの設定](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable9.png)  
+    :::image type="content" source="media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable9.png" alt-text="ストアド プロシージャ アクティビティの設定":::   
 
 10. **\@{activity('LookupCurrentWaterMark').output.firstRow.NewWatermarkValue}** という内容を書き込んで、 **[完了]** を選択します。  
 
-    ![ストアド プロシージャのパラメーターの内容を書き込む](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable10.png)       
+    :::image type="content" source="media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable10.png" alt-text="ストアド プロシージャのパラメーターの内容を書き込む":::        
      
 11. **[デバッグ]** を選択し、 **[パラメーター]** で入力し、 **[完了]** を選択します。
 
-    ![**デバッグ** の選択](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable11.png)
+    :::image type="content" source="media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable11.png" alt-text="**デバッグ** の選択":::
 
 12. 次の例に示すような結果が表示されます。
 
-    ![結果を確認する](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable12.png)
+    :::image type="content" source="media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable12.png" alt-text="結果を確認する":::
 
 13. ソース テーブル内に新しい行を作成できます。 新規行を作成する SQL 言語の例を次に示します。
 
@@ -138,7 +138,7 @@ ms.locfileid: "121731467"
 
 15. (省略可能:)データの宛先として Azure Synapse Analytics を選択した場合、ステージング用に Azure BLOB ストレージへの接続も指定する必要があります。これは Azure Synapse Analytics の Polybase に必要です。 テンプレートによって、コンテナーのパスが生成されます。 パイプラインの実行後、コンテナーが BLOB ストレージに作成されているかどうかを確認します。
     
-    ![PolyBase の構成](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable15.png)
+    :::image type="content" source="media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable15.png" alt-text="PolyBase の構成":::
     
 ## <a name="next-steps"></a>次のステップ
 

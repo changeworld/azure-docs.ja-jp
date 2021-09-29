@@ -2,13 +2,13 @@
 title: Azure Event Grid - トピックまたはドメインの診断ログ
 description: この記事では、Azure Event Grid のトピックまたはドメインの診断ログの概念に関する情報を提供します。
 ms.topic: conceptual
-ms.date: 12/03/2020
-ms.openlocfilehash: 13577e02cba07fc788bb4846cddd3c0ed894f2b1
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.date: 09/28/2021
+ms.openlocfilehash: 057d4856e6a1bc0574639def731dffc99f988994
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108314929"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129216899"
 ---
 #  <a name="diagnostic-logs-for-azure-event-grid-topicsdomains"></a>Azure Event Grid のトピックまたはドメインの診断ログ
 Event Grid ユーザーは、診断設定を使用して、Azure ストレージ アカウント、イベント ハブ、または Log Analytics ワークスペースのいずれかで **発行および配信エラー** ログをキャプチャして表示することができます。 この記事では、ログのスキーマとログ エントリの例を示します。

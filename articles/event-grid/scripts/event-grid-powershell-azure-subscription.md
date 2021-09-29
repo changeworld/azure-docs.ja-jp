@@ -3,13 +3,13 @@ title: Azure PowerShell - Azure サブスクリプションのサブスクライ
 description: この記事では、Azure サブスクリプションの Event Grid イベントをサブスクライブする方法を示したサンプル Azure PowerShell スクリプトを紹介しています。
 ms.devlang: powershell
 ms.topic: sample
-ms.date: 07/22/2021
-ms.openlocfilehash: b14d1a07725b015b436f48dc03f0c21ce1e74226
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.date: 09/15/2021
+ms.openlocfilehash: cc2e0245e8209b096d66e8cf51db5ebe648e9b02
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114467434"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128680568"
 ---
 # <a name="subscribe-to-events-for-an-azure-subscription-with-powershell"></a>PowerShell を使用した Azure サブスクリプションのイベントのサブスクライブ
 

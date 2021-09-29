@@ -5,16 +5,16 @@ description: データのコピーや変換操作のディスパッチに使用�
 ms.service: data-factory
 ms.subservice: integration-runtime
 ms.topic: conceptual
-ms.date: 08/24/2021
+ms.date: 09/09/2021
 author: lrtoyou1223
 ms.author: lle
 ms.custom: devx-track-azurepowershell, synapse
-ms.openlocfilehash: a9819af196af6df60644a5e25599c6066dc17eaa
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 063d4138a86fb5235562ebb0d2592640f370806e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123312347"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124760329"
 ---
 # <a name="how-to-create-and-configure-azure-integration-runtime"></a>Azure 統合ランタイムを作成して構成する方法
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -70,10 +70,10 @@ UI を使用して Azure IR を作成するには、次の手順を使用しま�
 3. **[統合ランタイムのセットアップ]** ページで、 **[Azure, Self-Hosted] (Azure、セルフホステッド)** を選択してから、 **[続行]** を選択します。 
 
 1. 次のページで、Azure IR を作成する **[Azure]** を選択してから、 **[続行]** を選択します。
-   ![統合ランタイムを作成する](media/create-azure-integration-runtime/new-azure-integration-runtime.png)
+   :::image type="content" source="media/create-azure-integration-runtime/new-azure-integration-runtime.png" alt-text="統合ランタイムの作成":::
 
 1. Azure IR の名前を入力し、 **[作成]** を選択します。
-   ![Azure IR を作成する](media/create-azure-integration-runtime/create-azure-integration-runtime.png)
+   :::image type="content" source="media/create-azure-integration-runtime/create-azure-integration-runtime.png" alt-text="Azure IR を作成する":::
 
 1. 作成が完了すると、ポップアップ通知が表示されます。 **[統合ランタイム]** ページで、新しく作成された IR が一覧に表示されていることを確認します。
 

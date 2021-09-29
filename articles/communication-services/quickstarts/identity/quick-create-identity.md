@@ -9,12 +9,13 @@ ms.author: manoskow
 ms.date: 07/19/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: d61fb99787bc2e934ce2f1abc9bedff0c21bc64d
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.subservice: identity
+ms.openlocfilehash: 63a08ba4d117160177124d1951720f6d9a4fedcc
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123251108"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128671927"
 ---
 # <a name="quickstart-quickly-create-azure-communication-services-access-tokens-for-testing"></a>クイック スタート - テスト用の Azure Communication Services アクセス トークン をすばやく作成する
 

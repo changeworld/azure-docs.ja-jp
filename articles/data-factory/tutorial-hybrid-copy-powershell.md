@@ -8,12 +8,12 @@ ms.subservice: tutorials
 ms.topic: tutorial
 ms.custom: devx-track-azurepowershell
 ms.date: 02/18/2021
-ms.openlocfilehash: fb01749b71c89b4290abf71e7f8ed5d95b891cdd
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 38f98ab557738031e4c3933a4bc914b31c42cd91
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638005"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124814838"
 ---
 # <a name="tutorial-copy-data-from-a-sql-server-database-to-azure-blob-storage"></a>チュートリアル:SQL Server データベースから Azure Blob Storage にデータをコピーする
 
@@ -82,7 +82,7 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 
 1. 左側のウィンドウの **[その他のサービス]** を選択し、「**ストレージ**」というキーワードでフィルタリングして、 **[ストレージ アカウント]** を選択します。
 
-    ![ストレージ アカウントを検索](media/doc-common-process/search-storage-account.png)
+    :::image type="content" source="media/doc-common-process/search-storage-account.png" alt-text="ストレージ アカウントを検索":::
 
 1. ストレージ アカウントの一覧で、ご利用のストレージ アカウントを (必要に応じて) フィルターで抽出し、該当するストレージ アカウントを選択します。
 
@@ -95,13 +95,13 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 
 1. **[ストレージ アカウント]** ウィンドウで **[概要]** に切り替え、 **[BLOB]** を選択します。
 
-    ![BLOB オプションを選択する](media/tutorial-hybrid-copy-powershell/select-blobs.png)
+    :::image type="content" source="media/tutorial-hybrid-copy-powershell/select-blobs.png" alt-text="BLOB オプションを選択する":::
 
 1. **[Blob service]** ウィンドウで **[コンテナー]** を選択します。
 
 1. **[新しいコンテナー]** ウィンドウの **[名前]** ボックスに「**adftutorial**」と入力し、 **[OK]** を選択します。
 
-    ![コンテナー名を入力する](media/tutorial-hybrid-copy-powershell/new-container-dialog.png)
+    :::image type="content" source="media/tutorial-hybrid-copy-powershell/new-container-dialog.png" alt-text="コンテナー名を入力する":::
 
 1. コンテナーの一覧で、 **[adftutorial]** を選択します。  
 
@@ -266,21 +266,21 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 
 1. **[Integration Runtime (セルフホステッド) の登録]** ウィンドウで、前のセクションで保存したキーを貼り付け、 **[登録]** を選択します。
 
-    ![統合ランタイムの登録](media/tutorial-hybrid-copy-powershell/register-integration-runtime.png)
+    :::image type="content" source="media/tutorial-hybrid-copy-powershell/register-integration-runtime.png" alt-text="統合ランタイムの登録":::
 
 1. **[新しい Integration Runtime (セルフホステッド) ノード]** ウィンドウで **[完了]** を選択します。
 
-    ![[新しい Integration Runtime ノード] ウィンドウ](media/tutorial-hybrid-copy-powershell/new-integration-runtime-node-page.png)
+    :::image type="content" source="media/tutorial-hybrid-copy-powershell/new-integration-runtime-node-page.png" alt-text="[新しい Integration Runtime ノード] ウィンドウ":::
 
  1. セルフホステッド統合ランタイムが正常に登録されると、次のメッセージが表示されます。
 
-    ![正常に登録](media/tutorial-hybrid-copy-powershell/registered-successfully.png)
+    :::image type="content" source="media/tutorial-hybrid-copy-powershell/registered-successfully.png" alt-text="正常に登録":::
 
 1. **[Integration Runtime (セルフホステッド) の登録]** ウィンドウで **[構成マネージャーの起動]** を選択します。
 
 1. ノードがクラウド サービスに接続されると、次のメッセージが表示されます。
 
-    ![ノード接続済み](media/tutorial-hybrid-copy-powershell/node-is-connected.png)
+    :::image type="content" source="media/tutorial-hybrid-copy-powershell/node-is-connected.png" alt-text="ノード接続済み":::
 
 1. 次の手順に従って SQL Server データベースとの接続をテストします。
 
@@ -299,7 +299,7 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
     g. ユーザー名に関連付けられているパスワードを入力します。
 
     h. 統合ランタイムから SQL Server に接続できることを確認するために、 **[テスト]** を選択します。  
-    ![接続成功](media/tutorial-hybrid-copy-powershell/config-manager-diagnostics-tab.png)
+    :::image type="content" source="media/tutorial-hybrid-copy-powershell/config-manager-diagnostics-tab.png" alt-text="接続成功":::
 
     接続に成功すると、緑色のチェック マーク アイコンが表示されます。 それ以外の場合は、失敗を表すエラー メッセージが表示されます。 問題を修正し、統合ランタイムから SQL Server インスタンスに接続できるようにします。
 
@@ -710,7 +710,7 @@ $runId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -Resou
 1. フォルダーの一覧で、`fromonprem` を選択します。
 1. `dbo.emp.txt` という名前のファイルが表示されていることを確認します。
 
-    ![出力ファイル](media/tutorial-hybrid-copy-powershell/fromonprem-file.png)
+    :::image type="content" source="media/tutorial-hybrid-copy-powershell/fromonprem-file.png" alt-text="[出力ファイル]":::
 
 
 ## <a name="next-steps"></a>次のステップ

@@ -3,14 +3,14 @@ title: Azure CLI - リソース グループのサブスクライブとリソー
 description: この記事では、リソースの Event Grid イベントをサブスクライブして、特定のリソースをフィルターで抽出する方法を示したサンプル Azure CLI スクリプトを紹介しています。
 ms.devlang: azurecli
 ms.topic: sample
-ms.date: 07/22/2021
+ms.date: 09/15/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: c9e44744f8f356a4e4c2d68f8ea20121407218eb
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: f8d994e286b9d68b7a71a3048d95fdf21215611f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114463788"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128620637"
 ---
 # <a name="subscribe-to-events-for-a-resource-group-and-filter-for-a-resource-with-azure-cli"></a>Azure CLI を使用したリソース グループのイベントのサブスクライブとリソースのフィルタリング
 

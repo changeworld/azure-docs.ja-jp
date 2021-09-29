@@ -8,15 +8,15 @@ manager: martinco
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/20/2021
+ms.date: 09/20/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: c6b3802add796184714f389b813765945a8d20a4
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: d090d6c97a26b78799adf8c5927e6e680c43938a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122183906"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128596507"
 ---
 # <a name="tutorial-configure-biocatch-with-azure-active-directory-b2c"></a>チュートリアル: Azure Active Directory B2C と共に BioCatch を構成する
 
@@ -352,24 +352,18 @@ document.getElementById("clientSessionId").style.display = 'none';
 ポリシー ファイルを Azure AD B2C に追加するには、こちらの手順に従います
 
 1. Azure AD B2C テナントの全体管理者として  [**Azure portal**](https://portal.azure.com/) にサインインします。
-
-2. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 上部メニューで **[ディレクトリ + サブスクリプション]**   フィルターを選択し、ご利用のテナントが含まれるディレクトリを選択します。
-
-3. Azure portal の左上隅の  **[すべてのサービス]**   を選択し、「Azure AD B2C」を検索して選択します。
-
-4.  **[Azure AD B2C]**  > **[Identity Experience Framework]** に移動します
-
-3. すべてのポリシー ファイルをテナントにアップロードします。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
+1. Azure portal の左上隅の  **[すべてのサービス]**   を選択し、「Azure AD B2C」を検索して選択します。
+1.  **[Azure AD B2C]**  > **[Identity Experience Framework]** に移動します
+1. すべてのポリシー ファイルをテナントにアップロードします。
 
 ## <a name="test-the-solution"></a>ソリューションをテストする
 
 1. [JWT.MS にリダイレクトするダミー アプリケーションを登録します](./tutorial-register-applications.md?tabs=app-reg-ga)  
-
-2. **[Identity Experience Framework]** で、作成したポリシーを選択します
-
-3. そのポリシーのウィンドウで、ダミーの JWT.MS アプリケーションを選択し、 **[今すぐ実行]** を選択します
-
-4. サインアップ フローを実行し、アカウントを作成します。 JWT.MS に返されるトークンには、riskLevel と score に対する 2 倍のクレームが含まれているはずです。 例に従ってください。  
+1. **[Identity Experience Framework]** で、作成したポリシーを選択します
+1. そのポリシーのウィンドウで、ダミーの JWT.MS アプリケーションを選択し、 **[今すぐ実行]** を選択します
+1. サインアップ フローを実行し、アカウントを作成します。 JWT.MS に返されるトークンには、riskLevel と score に対する 2 倍のクレームが含まれているはずです。 例に従ってください。  
 
     ```JavaScript
     { 

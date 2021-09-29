@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/12/2020
 ms.author: jeedes
-ms.openlocfilehash: a7fad0af26d15bc77a52d55309c594937ba3be13
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 38d64cc11889e3279d4e81ed2ab760ea50755f40
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92518621"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124761038"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ns1-sso-for-azure"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と NS1 SSO for Azure の統合
 
@@ -165,7 +165,7 @@ NS1 SSO for Azure 側でシングル サインオンを構成するには、ア�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [NS1 SSO for Azure] タイルを選択すると、SSO を設定した NS1 SSO for Azure に自動的にサインインします。 詳細については、「[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)」を参照してください。
+アクセス パネル上で [NS1 SSO for Azure] タイルを選択すると、SSO を設定した NS1 SSO for Azure に自動的にサインインします。 詳細については、「[アクセス パネルの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)」を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

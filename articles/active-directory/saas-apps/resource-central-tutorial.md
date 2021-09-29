@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/07/2021
 ms.author: jeedes
-ms.openlocfilehash: 327fc5bd6003f93746f484e5d157cfa1737ae317
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: 0db8c8d14dbd3e09ebb798c41ea2d7b526acabc9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111982108"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124753207"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-resource-central--saml-sso-for-meeting-room-booking-system"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Resource Central – SAML SSO for Meeting Room Booking System の統合
 
@@ -177,7 +177,7 @@ Microsoft Azure Active Directory SSO を Resource Central – SAML SSO for Meeti
 
    :::image type="content" source="./media/resource-central/test.png" alt-text="Resource Central シングル サインオンのテスト Web ページのスクリーンショット。":::
 
-* Microsoft のマイ アプリ ポータルを使用します。 マイ アプリ ポータルで、 **[Resource Central – SAML SSO for Meeting Room Booking System]** タイルを選択し、Resource Central – SAML SSO for Meeting Room Booking System サインオン URL にリダイレクトします。 詳細については、「[マイ アプリ ポータルからアプリにサインインして開始する](../user-help/my-apps-portal-end-user-access.md)」を参照してください。
+* Microsoft のマイ アプリ ポータルを使用します。 マイ アプリ ポータルで、 **[Resource Central – SAML SSO for Meeting Room Booking System]** タイルを選択し、Resource Central – SAML SSO for Meeting Room Booking System サインオン URL にリダイレクトします。 詳細については、「[マイ アプリ ポータルからアプリにサインインして開始する](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

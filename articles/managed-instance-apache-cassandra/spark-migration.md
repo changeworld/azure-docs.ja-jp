@@ -6,12 +6,12 @@ ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: tutorial
 ms.date: 08/17/2021
-ms.openlocfilehash: 5d78161f73dfa1927483d7c6f8bad3ce925b3631
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 962c3f9e380bda96211ce2056ca886a555d44078
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123426870"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124736215"
 ---
 # <a name="migrate-to-azure-managed-instance-for-apache-cassandra-using-apache-spark"></a>Apache Spark を使用して Azure Managed Instance for Apache Cassandra に移行する
 
@@ -31,7 +31,6 @@ ms.locfileid: "123426870"
 * [マネージド Cassandra VNet 内に Azure Databricks アカウントをプロビジョニングします](deploy-cluster-databricks.md)。 また、ソース Cassandra クラスターへのネットワーク アクセスがあることも確認します。
 
 * キースペースまたはテーブル スキームをソース Cassandra データベースからターゲット Cassandra Managed Instance データベースに既に移行していることを確認します。
-
 
 ## <a name="provision-an-azure-databricks-cluster"></a>Azure Databricks クラスターのプロビジョニング
 

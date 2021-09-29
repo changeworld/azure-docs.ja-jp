@@ -8,12 +8,12 @@ ms.date: 09/01/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 09994e329072ab0ed67a9cb29c09ff245b288923
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 4cb943230c0211c67caf5d7a074d21077358c143
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123432074"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128605451"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -67,6 +67,7 @@ OAuth 認証を使用して 1 つのファイルをアップロードします�
 ```azcopy
 azcopy cp "/path/to/file.txt" "https://[account].blob.core.windows.net/[container]/[path/to/blob]"
 ```
+
 上記と同じですが、今度はファイル コンテンツの MD5 ハッシュも計算し、BLOB の Content-MD5 プロパティとして保存します。
 
 ```azcopy
@@ -80,13 +81,13 @@ azcopy cp "/path/to/file.txt" "https://[account].blob.core.windows.net/[containe
 ```
 
 SAS トークンとパイプを使用して 1 つのファイルをアップロードします (ブロック BLOB のみ)。
-  
+
 ```azcopy
 cat "/path/to/file.txt" | azcopy cp "https://[account].blob.core.windows.net/[container]/[path/to/blob]?[SAS]
 ```
 
 SAS トークンを使用してディレクトリ全体をアップロードします。
-  
+
 ```azcopy
 azcopy cp "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive
 ```
@@ -98,7 +99,7 @@ azcopy cp "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[p
 ```
 
 SAS トークンとワイルドカード文字 (*) を使用して、一連のファイルをアップロードします。
- 
+
 ```azcopy
 azcopy cp "/path/*foo/*bar/*.pdf" "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]"
 ```
@@ -109,10 +110,10 @@ SAS トークンとワイルドカード文字 (*) を使用して、ファイ�
 azcopy cp "/path/*foo/*bar*" "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive
 ```
 
-ファイルとディレクトリを Azure Storage アカウントにアップロードし、クエリ文字列でエンコードされたタグを BLOB に設定します。 
+ファイルとディレクトリを Azure Storage アカウントにアップロードし、クエリ文字列でエンコードされたタグを BLOB に設定します。
 
 - {key = "bla bla", val = "foo"}、{key = "bla bla 2", val = "bar"} の各タグを設定するには、次の構文を使用します。`azcopy cp "/path/*foo/*bar*" "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --blob-tags="bla%20bla=foo&bla%20bla%202=bar"`
-    
+
 - キーと値は URL でエンコードされ、キーと値のペアはアンパサンド ('&') で区切られます
 
 - BLOB にタグを設定するときに、SAS に追加のアクセス許可 (タグ用に 't') があります。これがないと、サービスから認可エラーが返されます。
@@ -130,27 +131,27 @@ azcopy cp "https://[account].blob.core.windows.net/[container]/[path/to/blob]?[S
 ```
 
 SAS トークンを使用し、次に出力をファイルにパイプして、1 つのファイルをダウンロードします (ブロック BLOB のみ)。
- 
+
 ```azcopy
 azcopy cp "https://[account].blob.core.windows.net/[container]/[path/to/blob]?[SAS]" > "/path/to/file.txt"
-``` 
+```
 
 SAS トークンを使用してディレクトリ全体をダウンロードします。
- 
+
 ```azcopy
 azcopy cp "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" "/path/to/dir" --recursive
-``` 
+```
 
 URL でのワイルドカード文字 (*) の使用に関する注意事項:
 
-URL でワイルドカード文字を使用するには、2 つの方法のみがサポートされます。 
+URL でワイルドカード文字を使用するには、2 つの方法のみがサポートされます。
 
-- URL の最後のスラッシュ (/) の直後に 1 つ使用できます。 このようにワイルドカード文字を使用することで、ディレクトリ内のすべてのファイルが、サブディレクトリに配置されることなく、コピー先に直接コピーされます。 
+- URL の最後のスラッシュ (/) の直後に 1 つ使用できます。 このようにワイルドカード文字を使用することで、ディレクトリ内のすべてのファイルが、サブディレクトリに配置されることなく、コピー先に直接コピーされます。
 
-- URL が、BLOB ではなくコンテナーのみを参照している場合は、コンテナーの名前にワイルドカード文字を使用することもできます。 この方法を使用して、コンテナーのサブセットからファイルを取得できます。 
+- URL が、BLOB ではなくコンテナーのみを参照している場合は、コンテナーの名前にワイルドカード文字を使用することもできます。 この方法を使用して、コンテナーのサブセットからファイルを取得できます。
 
 格納しているディレクトリ自体をコピーせずに、ディレクトリの内容をダウンロードします。
- 
+
 ```azcopy
 azcopy cp "https://[srcaccount].blob.core.windows.net/[container]/[path/to/folder]/*?[SAS]" "/path/to/dir"
 ```
@@ -173,7 +174,7 @@ SAS トークンを使用して、1 つの BLOB を別の BLOB にコピーし�
 azcopy cp "https://[srcaccount].blob.core.windows.net/[container]/[path/to/blob]?[SAS]" "https://[destaccount].blob.core.windows.net/[container]/[path/to/blob]?[SAS]"
 ```
 
-SAS トークンと認証トークンを使用して、1 つの BLOB を別の BLOB にコピーします。 ソース アカウント URL の末尾に SAS トークンを使用する必要がありますが、`azcopy login` コマンドを使用して AzCopy にログインする場合、コピー先アカウントでは不要です。 
+SAS トークンと認証トークンを使用して、1 つの BLOB を別の BLOB にコピーします。 ソース アカウント URL の末尾に SAS トークンを使用する必要がありますが、`azcopy login` コマンドを使用して AzCopy にログインする場合、コピー先アカウントでは不要です。
 
 ```azcopy
 azcopy cp "https://[srcaccount].blob.core.windows.net/[container]/[path/to/blob]?[SAS]" "https://[destaccount].blob.core.windows.net/[container]/[path/to/blob]"
@@ -192,27 +193,27 @@ azcopy cp "https://[srcaccount].blob.core.windows.net?[SAS]" "https://[destaccou
 ```
 
 アクセス キーと SAS トークンを使用して、アマゾン ウェブ サービス (AWS) S3 から Blob Storage に 1 つのオブジェクトをコピーします。 最初に、AWS S3 ソースの環境変数 `AWS_ACCESS_KEY_ID` と `AWS_SECRET_ACCESS_KEY` を設定します。
-  
+
 ```azcopy
 azcopy cp "https://s3.amazonaws.com/[bucket]/[object]" "https://[destaccount].blob.core.windows.net/[container]/[path/to/blob]?[SAS]"
 ```
 
 アクセス キーと SAS トークンを使用して、AWS S3 から Blob Storage にディレクトリ全体をコピーします。 最初に、AWS S3 ソースの環境変数 `AWS_ACCESS_KEY_ID` と `AWS_SECRET_ACCESS_KEY` を設定します。
- 
+
 ```azcopy
 azcopy cp "https://s3.amazonaws.com/[bucket]/[folder]" "https://[destaccount].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive
 ```
-    
+
   [folder] プレースホルダーをさらによく理解するには、 https://docs.aws.amazon.com/AmazonS3/latest/user-guide/using-folders.html を参照してください。
 
 アクセス キーと SAS トークンを使用して、アマゾン ウェブ サービス (AWS) から Blob Storage にすべてのバケットをコピーします。 最初に、AWS S3 ソースの環境変数 `AWS_ACCESS_KEY_ID` と `AWS_SECRET_ACCESS_KEY` を設定します。
- 
+
 ```azcopy
 azcopy cp "https://s3.amazonaws.com/" "https://[destaccount].blob.core.windows.net?[SAS]" --recursive
 ```
 
 アクセス キーと SAS トークンを使用して、アマゾン ウェブ サービス (AWS) のリージョンから Blob Storage にすべてのバケットをコピーします。 最初に、AWS S3 ソースの環境変数 `AWS_ACCESS_KEY_ID` と `AWS_SECRET_ACCESS_KEY` を設定します。
- 
+
 ```azcopy
 - azcopy cp "https://s3-[region].amazonaws.com/" "https://[destaccount].blob.core.windows.net?[SAS]" --recursive
 ```
@@ -223,22 +224,22 @@ azcopy cp "https://s3.amazonaws.com/" "https://[destaccount].blob.core.windows.n
 - azcopy cp "https://s3.amazonaws.com/[bucket*name]/" "https://[destaccount].blob.core.windows.net?[SAS]" --recursive
 ```
 
-ファイルとディレクトリを Azure Storage アカウントに転送し、指定されたクエリ文字列でエンコードされたタグを BLOB に設定します。 
+ファイルとディレクトリを Azure Storage アカウントに転送し、指定されたクエリ文字列でエンコードされたタグを BLOB に設定します。
 
 - {key = "bla bla", val = "foo"}、{key = "bla bla 2", val = "bar"} の各タグを設定するには、次の構文を使用します。`azcopy cp "https://[account].blob.core.windows.net/[source_container]/[path/to/directory]?[SAS]" "https://[account].blob.core.windows.net/[destination_container]/[path/to/directory]?[SAS]" --blob-tags="bla%20bla=foo&bla%20bla%202=bar"`
-        
+
 - キーと値は URL でエンコードされ、キーと値のペアはアンパサンド ('&') で区切られます
-    
+
 - BLOB にタグを設定するときに、SAS に追加のアクセス許可 (タグ用に 't') があります。これがないと、サービスから認可エラーが返されます。
 
 サービス アカウント キーと SAS トークンを使用して、Google Cloud Storage から Blob Storage に 1 つのオブジェクトをコピーします。 最初に、Google Cloud Storage ソースの環境変数 GOOGLE_APPLICATION_CREDENTIALS を設定します。
-  
+
 ```azcopy
 azcopy cp "https://storage.cloud.google.com/[bucket]/[object]" "https://[destaccount].blob.core.windows.net/[container]/[path/to/blob]?[SAS]"
 ```
 
 サービス アカウント キーと SAS トークンを使用して、Google Cloud Storage から Blob Storage にディレクトリ全体をコピーします。 最初に、Google Cloud Storage ソースの環境変数 GOOGLE_APPLICATION_CREDENTIALS を設定します。
- 
+
 ```azcopy
   - azcopy cp "https://storage.cloud.google.com/[bucket]/[folder]" "https://[destaccount].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive=true
 ```
@@ -256,7 +257,7 @@ azcopy cp "https://storage.cloud.google.com/[bucket]" "https://[destaccount].blo
 ```
 
 Google Cloud Storage のバケット名にワイルドカード記号 (*) を指定し、サービス アカウント キーと宛先の SAS トークンを使用して、バケットのサブセットをコピーします。 最初に、Google Cloud Storage ソースの環境変数 GOOGLE_APPLICATION_CREDENTIALS と GOOGLE_CLOUD_PROJECT=<`project-id`> を設定します。
- 
+
 ```azcopy
 azcopy cp "https://storage.cloud.google.com/[bucket*name]/" "https://[destaccount].blob.core.windows.net/?[SAS]" --recursive=true
 ```
@@ -299,7 +300,7 @@ azcopy cp "https://storage.cloud.google.com/[bucket*name]/" "https://[destaccoun
 
 **--exclude-attributes**  string (Windows のみ) 属性が属性一覧と一致するファイルを除外します。 次に例を示します。A;S;R
 
-**--exclude-blob-type** string 必要に応じて、コンテナーまたはアカウントから BLOB をコピーするときに除外する BLOB の種類 (`BlockBlob` / `PageBlob` / `AppendBlob`) を指定します。 このフラグの使用は、Azure 以外のサービスからサービスにデータをコピーする場合には適用されません。 複数の BLOB は `;` で区切る必要があります。 
+**--exclude-blob-type** string 必要に応じて、コンテナーまたはアカウントから BLOB をコピーするときに除外する BLOB の種類 (`BlockBlob` / `PageBlob` / `AppendBlob`) を指定します。 このフラグの使用は、Azure 以外のサービスからサービスにデータをコピーする場合には適用されません。 複数の BLOB は `;` で区切る必要があります。
 
 **--exclude-path** string コピーするときにこれらのパスを除外します。 このオプションでは、ワイルドカード文字 (*) はサポートされていません。 相対パスのプレフィックスを確認します (例: `myFolder;myFolder/subDirName/file.pdf`)。 アカウント トラバーサルと組み合わせて使用する場合、パスにはコンテナー名は含まれません。
 
@@ -331,7 +332,7 @@ azcopy cp "https://storage.cloud.google.com/[bucket*name]/" "https://[destaccoun
 
 **--list-of-versions** string  各バージョン ID が個別の行に一覧表示されているファイルを指定します。 ソースが 1 つの BLOB を指している必要があり、このフラグを使用してファイルで指定されたすべてのバージョン ID がソース BLOB のみに属している必要があるため、これを徹底します。 AzCopy は、指定されたバージョンをコピー先フォルダーにダウンロードします。 詳細については、「[前のバージョンの BLOB をダウンロードする](./storage-use-azcopy-v10.md#transfer-data)」を参照してください。
 
-**--log-level** string ログ ファイルのログの詳細度を定義します。使用できるレベルは次のとおりです。INFO (すべての要求/応答)、WARNING (遅い応答)、ERROR (失敗した要求のみ)、NONE (出力ログなし)。 既定値は `INFO` です。 
+**--log-level** string ログ ファイルのログの詳細度を定義します。使用できるレベルは次のとおりです。INFO (すべての要求/応答)、WARNING (遅い応答)、ERROR (失敗した要求のみ)、NONE (出力ログなし)。 既定値は `INFO` です。
 
 **--metadata** string これらのキーと値のペアをメタデータとして Azure Storage にアップロードします。
 
@@ -347,8 +348,7 @@ azcopy cp "https://storage.cloud.google.com/[bucket*name]/" "https://[destaccoun
 
 **--preserve-smb-info**   既定では true です。 SMB 対応リソース (Windows と Azure Files) 間の SMB プロパティ情報 (最終書き込み時刻、作成時刻、属性ビット) を保持します。 Azure Files によってサポートされる属性ビットのみが転送され、それ以外は無視されます。 ファイルのみのフィルターが指定されている場合を除き、このフラグはファイルとフォルダーの両方に適用されます (例: include-pattern)。 フォルダーの場合は保持されない最終書き込み時刻を除き、フォルダーについて転送される情報はファイルの情報と同じです。
 
-**--preserve-permissions**                既定では false です。 対応リソース (Windows と Azure Files、または Data Lake Storage Gen 2 から Data Lake Storage Gen 2). 間の ALC を保持します。 階層型名前空間のあるアカウントの場合は、所有権変更およびアクセス許可変更のアクセス許可とともにコンテナーの SAS トークンまたは OAuth トークンが必要です。 ダウンロードする場合は、--backup フラグを使用して、新しい所有者が AzCopy を実行しているユーザーにならないアクセス許可を復元する必要もあります。 ファイルのみのフィルターが指定されているのでない限り、このフラグは両方のファイルとフォルダーに適用されます (例: include-pattern)。
-
+**--preserve-permissions**                既定では false です。 対応リソース (Windows と Azure Files、または Data Lake Storage Gen 2 から Data Lake Storage Gen 2). 間の ALC を保持します。 階層型名前空間のあるアカウントの場合は、所有権変更およびアクセス許可変更のアクセス許可とともにコンテナーの SAS または OAuth トークンが必要です。 ダウンロードする場合は、--backup フラグを使用して、新しい所有者が AzCopy を実行しているユーザーにならないアクセス許可を復元する必要もあります。 ファイルのみのフィルターが指定されているのでない限り、このフラグは両方のファイルとフォルダーに適用されます (例: include-pattern)。
 
 **--put-md5** 各ファイルの MD5 ハッシュを作成し、ハッシュを宛先 BLOB またはファイルの Content-MD5 プロパティとして保存します。 (既定では、ハッシュは作成されません)。アップロード時にのみ使用できます。
 

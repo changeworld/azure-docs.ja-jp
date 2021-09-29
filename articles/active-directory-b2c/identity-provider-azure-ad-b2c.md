@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 08/09/2021
+ms.date: 09/16/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit, project-no-code
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 6ad2014b8fce21eada9ced1e63a3511daa5e1891
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 5757b2e875253ac21c64cd3fbd0b7ade42085e8b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122178058"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128571919"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-azure-ad-b2c-account-from-another-azure-ad-b2c-tenant"></a>別の Azure AD B2C テナントの Azure AD B2C アカウントを使用したサインアップとサインインを設定する
 
@@ -90,7 +90,8 @@ ms.locfileid: "122178058"
 ## <a name="configure-azure-ad-b2c-as-an-identity-provider"></a>Azure AD B2C を ID プロバイダーとして構成する
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-1. フェデレーションを構成する Azure AD B2C テナント (例: Contoso) が含まれるディレクトリを使用していることを確認します。 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、お使いの Azure AD B2C テナント (例: Contoso) を含むディレクトリを選択します。
+1. フェデレーションを構成する Azure AD B2C テナント (例: Contoso) が含まれるディレクトリを使用していることを確認します。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
 1. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
 1. **[ID プロバイダー]** を選択してから、 **[新しい OpenID Connect プロバイダー ]** を選択します。
 1. **[名前]** を入力します。 たとえば、「*Fabrikam*」と入力します。
@@ -138,7 +139,8 @@ ms.locfileid: "122178058"
 
 前に作成したアプリケーション キーを Azure AD B2C テナントに格納する必要があります。
 
-1. フェデレーションを構成する Azure AD B2C テナント (例: Contoso) が含まれるディレクトリを使用していることを確認します。 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、お使いの Azure AD B2C テナント (例: Contoso) を含むディレクトリを選択します。
+1. フェデレーションを構成する Azure AD B2C テナント (例: Contoso) が含まれるディレクトリを使用していることを確認します。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
 1. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
 1. **[ポリシー]** で **[Identity Experience Framework]** を選択します。
 1. **[ポリシー キー]** を選択し、 **[追加]** を選択します。

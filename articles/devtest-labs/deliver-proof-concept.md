@@ -1,14 +1,14 @@
 ---
-title: 概念実証の提供 - Azure DevTest Labs |Microsoft Docs
+title: 概念実証を提供する
 description: Azure DevTest Labs がエンタープライズ環境に適切に組み込まれるようにするために、概念実証を提供する方法について説明します。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/2/2020
-ms.openlocfilehash: 9c28cf9eebd8a39a2edce48e4fb8b96dc7608d80
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 03c8cc087f33ea6385fc0690f5634f33a3cbf0fd
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87288031"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128589969"
 ---
 # <a name="deliver-a-proof-of-concept"></a>概念実証を提供する 
 

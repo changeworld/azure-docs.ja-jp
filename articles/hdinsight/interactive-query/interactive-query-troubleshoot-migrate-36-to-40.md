@@ -4,12 +4,12 @@ description: HDInsight 3.6 から 4.0 への Hive ワークロードの移行に
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 07/12/2021
-ms.openlocfilehash: eb19f3bd726efe018b4c593f324eb1cacd2cc2c8
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: eecf8cd36c1f631176ce836523be802d751ed55b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121722289"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128625964"
 ---
 # <a name="troubleshooting-guide-for-migration-of-hive-workloads-from-hdinsight-36-to-hdinsight-40"></a>HDInsight 3.6 から HDInsight 4.0 への Hive ワークロードの移行に関するトラブルシューティング ガイド
 
@@ -18,9 +18,11 @@ ms.locfileid: "121722289"
 ## <a name="reduce-latency-when-running-describe-table_name"></a>`DESCRIBE TABLE_NAME` の実行時に待機時間を短縮する
 
 対応策 :
+
 * 1 つのバッチでメタストアから取得できるオブジェクト (テーブルまたはパーティション) の最大数を増やします。 待機時間が十分なレベルに達するまで、大きな数値に設定します (既定値は 300)。 数値が大きいほど、必要とされる Hive メタストア サーバーへのラウンド トリップ数は減少しますが、クライアント側でより多くのメモリが必要になることもあります。
 
-    ```hive.metastore.batch.retrieve.max=2000```
+  `hive.metastore.batch.retrieve.max=2000`
+
 * Hive と、古くなったすべてのサービスを再起動します
 
 ## <a name="unable-to-query-gzipped-text-file-if-skipheaderlinecount-and-skipfooterlinecount-are-set-for-table"></a>テーブルに対して skip.header.line.count と skip.footer.line.count が設定されている場合に GZip 圧縮されたテキスト ファイルのクエリを実行できない
@@ -137,14 +139,17 @@ Hive メタストアは HDInsight 4.0 に埋め込まれていないため、Met
 
 ## <a name="permission-errors-in-hive-job-after-upgrading-to-hdinsight-40"></a>HDInsight 4.0 へのアップグレード後に Hive ジョブでアクセス許可エラーが発生する
 
-* HDInsight 4.0 では、Hive コンポーネントがあるすべてのクラスター図形が、次の新しい認可プロバイダーを使用して構成されます: ```org.apache.hadoop.hive.ql.security.authorization.StorageBasedAuthorizationProvider```
+* HDInsight 4.0 では、Hive コンポーネントがあるすべてのクラスター図形が、次の新しい認可プロバイダーを使用して構成されます: 
+
+  `org.apache.hadoop.hive.ql.security.authorization.StorageBasedAuthorizationProvider`
 
 * HDFS ファイルのアクセス許可は、アクセスされるファイルのハイブ ユーザーに割り当てられる必要があります。 エラー メッセージには、問題の解決に必要な詳細が記載されています。
 
 * HDInsight 3.6 Hive クラスターで使用されている ```MetaStoreAuthzAPIAuthorizerEmbedOnly``` プロバイダーに切り替えることもできます。
-```org.apache.hadoop.hive.ql.security.authorization.MetaStoreAuthzAPIAuthorizerEmbedOnly```
 
-    :::image type="content" source="./media/apache-hive-40-migration-guide/hive-job-permission-errors.png" alt-text="認可を MetaStoreAuthzAPIAuthorizerEmbedOnly に設定します" border="true":::
+  `org.apache.hadoop.hive.ql.security.authorization.MetaStoreAuthzAPIAuthorizerEmbedOnly`
+
+  :::image type="content" source="./media/apache-hive-40-migration-guide/hive-job-permission-errors.png" alt-text="認可を MetaStoreAuthzAPIAuthorizerEmbedOnly に設定します" border="true":::
 
 ## <a name="unable-to-query-table-with-opencsvserde"></a>OpenCSVSerde を使用してテーブルのクエリを実行できない
 

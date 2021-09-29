@@ -6,12 +6,12 @@ ms.author: sujie
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/22/2020
-ms.openlocfilehash: 1813fb222bca74f355fec52252ce3d77fef06e5d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6d5787268cd5f7d25b54f8c7bc63f59c20a8495b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98013925"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128606990"
 ---
 # <a name="create-custom-net-deserializers-for-azure-stream-analytics-in-visual-studio-code"></a>Visual Studio Code 上で Azure Stream Analytics 用のカスタム .NET 逆シリアライザーを作成する
 
@@ -114,7 +114,7 @@ Stream Analytics ジョブのカスタム逆シリアライザーが正常に実
    **ProtobufCloudDeserializer** を選択し、ドロップダウン リストから **[Azure Stream Analytics]** を選択します。
    :::image type="content" source="./media/custom-deserializer/create-launch-file-vscode-2.png" alt-text="起動ファイル 2 を作成します。":::
 
-   **launch.json** ファイルを編集して、<ASAScript>.asaql を ProtobufCloudDeserializer.asaql に置き換えます。
+   **launch.json** ファイルを編集して、\<ASAScript\>.asaql を ProtobufCloudDeserializer.asaql に置き換えます。
    :::image type="content" source="./media/custom-deserializer/configure-launch-file-vscode.png" alt-text="起動ファイルを構成します。":::
 
 3. **F5** キーを押してデバッグを開始します。 期待どおりに、プログラムはブレークポイントで停止します。 これは、ローカル入力データとライブ入力データの両方に対して機能します。

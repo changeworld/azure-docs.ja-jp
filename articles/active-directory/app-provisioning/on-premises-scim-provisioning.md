@@ -11,17 +11,17 @@ ms.workload: identity
 ms.date: 07/16/2021
 ms.author: billmath
 ms.reviewer: arvinh
-ms.openlocfilehash: 11bd751ebc95b1a9486534b34c771fde64eced21
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 0bc74d9c9bab1337638249900de92bee39a40a68
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114437351"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128571684"
 ---
 # <a name="azure-ad-on-premises-application-provisioning-to-scim-enabled-apps"></a>SCIM 対応アプリへの Azure AD オンプレミス アプリケーションのプロビジョニング
 
 >[!IMPORTANT]
-> オンプレミス プロビジョニング プレビューは現在、招待のみのプレビューとなります。 この機能へのアクセスをリクエストするには、[アクセス リクエスト フォーム](https://aka.ms/onpremprovisioningpublicpreviewaccess)をご使用ください。 今後数か月の間に、より多くのお客様および接続ユーザーにプレビューを公開し、一般提供に向けて準備を進めていく予定です。
+> オンプレミス プロビジョニング プレビューは現在、招待のみのプレビューとなります。 この機能へのアクセスを要求するには、[アクセス要求フォーム](https://aka.ms/onpremprovisioningpublicpreviewaccess)を使用してください。 今後数か月の間に、より多くのお客様および接続ユーザーにプレビューを公開し、一般提供に向けて準備を進めていく予定です。
 
 Azure Active Directory (Azure AD) プロビジョニング サービスでは、クラウドまたはオンプレミスのアプリケーションにユーザーを自動的にプロビジョニングするために使用できる [SCIM 2.0](https://techcommunity.microsoft.com/t5/identity-standards-blog/provisioning-with-scim-getting-started/ba-p/880010) クライアントがサポートされています。 この記事では、Azure AD プロビジョニング サービスを使用して、SCIM 対応のオンプレミス アプリケーションにユーザーをプロビジョニングする方法について説明します。 SQL をデータ ストアとして使用する非 SCIM のオンプレミス アプリケーションにユーザーをプロビジョニングする場合は、「[Azure AD ECMA Connector Host 汎用 SQL コネクタのチュートリアル](tutorial-ecma-sql-connector.md)」を参照してください。 Dropbox、Atlassian などのクラウド アプリにユーザーをプロビジョニングする場合は、アプリ固有の[チュートリアル](../../active-directory/saas-apps/tutorial-list.md)を確認してください。
 
@@ -66,7 +66,5 @@ SCIM 対応アプリにユーザーをプロビジョニングするには、次
 ## <a name="next-steps"></a>次のステップ
 
 - [アプリ プロビジョニング](user-provisioning.md)
-- [Azure AD ECMA Connector Host のインストール](on-premises-ecma-install.md)
-- [Azure AD ECMA Connector Host の構成](on-premises-ecma-configure.md)
 - [汎用 SQL コネクタ](on-premises-sql-connector-configure.md)
-- [チュートリアル: ECMA Connector Host 汎用 SQL コネクタ](tutorial-ecma-sql-connector.md)
+- [チュートリアル: ECMA Connector Host の汎用 SQL コネクタ](tutorial-ecma-sql-connector.md)

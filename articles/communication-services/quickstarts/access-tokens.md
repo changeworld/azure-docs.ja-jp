@@ -9,13 +9,14 @@ ms.author: tchladek
 ms.date: 06/30/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
+ms.subservice: identity
 zone_pivot_groups: acs-js-csharp-java-python
-ms.openlocfilehash: 71c509ce5a7ae7983a66e521587a01d0ee1b4224
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 4b83fa7aec50d11c6ec4eac0baf2c15b95e29e6c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123253608"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128677287"
 ---
 # <a name="quickstart-create-and-manage-access-tokens"></a>クイック スタート:アクセス トークンを作成して管理する
 

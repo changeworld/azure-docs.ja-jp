@@ -1,9 +1,9 @@
 ---
-ms.openlocfilehash: 87df1e29ff7d625497d47d5805912128f7371693
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 416a08fbf421b24e1ec6979db09e3196612302a4
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113084491"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124748581"
 ---
-<Token>**適用対象:** :::image type="icon" source="../media/applies-to/yes.png" border="false":::Azure Database for MySQL - 単一サーバー :::image type="icon" source="../media/applies-to/yes.png" border="false":::Azure Database for MySQL - フレキシブル サーバー</Token>
+**適用対象:** :::image type="icon" source="../media/applies-to/yes.png" border="false":::Azure Database for MySQL - 単一サーバー :::image type="icon" source="../media/applies-to/yes.png" border="false":::Azure Database for MySQL - フレキシブル サーバー  

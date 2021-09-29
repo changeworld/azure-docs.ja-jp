@@ -9,19 +9,19 @@ ms.workload: infrastructure-services
 ms.date: 2/2/2021
 ms.author: mimckitt
 ms.custom: rybaker, chmimckitt, devx-track-azurepowershell
-ms.openlocfilehash: 08193cc933bfd7c1d183df119b1602270ecf6f74
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 96cd1c079a4d3705dbddaffcaf23c44191e38543
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122688507"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128622419"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>マルチテナント ホスティング権限を使用して Azure 上で Windows 10 をデプロイする方法 
 **適用対象:** :heavy_check_mark: Windows VM :heavy_check_mark: 柔軟なスケール セット
 
 接続ユーザーごとに Windows 10 Enterprise E3/E5 または Windows Virtual Desktop Access (ユーザー サブスクリプション ライセンスまたはアドオン ユーザー サブスクリプション ライセンス) をご利用中のお客様は、Windows 10 のマルチテナント ホスティング権限により、他のライセンスを購入することなく、Windows 10 ライセンスをクラウドに移行し、Azure 上で Windows 10 Virtual Machines を実行することができます。 マルチテナント ホスティング権限は、Windows 10 (バージョン 1703 以降) でのみ使用できます。
 
-詳細については、[Windows 10 のマルチテナント ホスティング](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)に関するページを参照してください。
+詳細については、[Windows 10 のマルチテナント ホスティング](https://www.microsoft.com/en-us/CloudandHosting)に関するページを参照してください。
 
 > [!NOTE]
 > - 開発またはテストのために Windows 7、8.1、10のイメージを使用する方法については、[開発/テスト シナリオのための Azure での Windows クライアント](client-images.md)に関するページを参照してください。
@@ -132,4 +132,4 @@ Azure では、ビルトイン Administrator アカウントですべての Wind
 
 ## <a name="next-steps"></a>次の手順
 - [Windows 10 の VDAの構成](/windows/deployment/vda-subscription-activation)に関する詳細情報を確認します
-- [Windows 10 のマルチテナント ホスティング](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)に関する詳細情報を確認します
+- [Windows 10 のマルチテナント ホスティング](https://www.microsoft.com/en-us/CloudandHosting)に関する詳細情報を確認します

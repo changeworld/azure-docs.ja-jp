@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.workload: identity
 ms.date: 02/18/2019
 ms.reviewer: ergreenl
-ms.openlocfilehash: 272e2d8a7234ca97646cf044be997f9ddba415e1
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 99f31344b5bc5b8aad6e2455be5f76ce1d546532
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122772260"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124754152"
 ---
 # <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>Azure Active Directory のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする
 
@@ -24,12 +24,12 @@ SAML ベースのシングル サインオンを使用する Azure Active Direct
 
 ## <a name="before-you-begin"></a>開始する前に
 
-[マイ アプリによるセキュリティで保護されたサインイン拡張機能](../user-help/my-apps-portal-end-user-troubleshoot.md#im-having-trouble-installing-the-my-apps-secure-sign-in-extension)をインストールすることをお勧めします。 このブラウザー拡張機能により、シングル サインオンに関する問題の解決に必要な SAML 要求および SAML 応答の情報を収集しやすくなります。 拡張機能をインストールできない場合でも、この記事では、拡張機能がインストールされている場合とされていない場合の両方について、問題を解決する方法が示されています。
+[マイ アプリによるセキュリティで保護されたサインイン拡張機能](https://support.microsoft.com/account-billing/troubleshoot-problems-with-the-my-apps-portal-d228da80-fcb7-479c-b960-a1e2535cbdff#im-having-trouble-installing-the-my-apps-secure-sign-in-extension)をインストールすることをお勧めします。 このブラウザー拡張機能により、シングル サインオンに関する問題の解決に必要な SAML 要求および SAML 応答の情報を収集しやすくなります。 拡張機能をインストールできない場合でも、この記事では、拡張機能がインストールされている場合とされていない場合の両方について、問題を解決する方法が示されています。
 
 マイ アプリによるセキュリティで保護されたサインイン拡張機能ををダウンロードしてインストールするには、次のいずれかのリンクを使用します。
 
 - [Chrome](https://go.microsoft.com/fwlink/?linkid=866367)
-- [Microsoft Edge](https://go.microsoft.com/fwlink/?linkid=845176)
+- [Microsoft Edge](https://microsoftedge.microsoft.com/addons/detail/my-apps-secure-signin-ex/gaaceiggkkiffbfdpmfapegoiohkiipl)
 
 ## <a name="test-saml-based-single-sign-on"></a>SAML に基づいたシングル サインオンをテストする
 

@@ -9,21 +9,23 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 08/24/2021
-ms.openlocfilehash: 7fe220315f7cccb749fe0974e822f157cf54ca36
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.date: 09/09/2021
+ms.openlocfilehash: 052b91600f77d50c6ae70c6742aa4fe41c64e552
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122821718"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129060329"
 ---
 # <a name="alter-row-transformation-in-mapping-data-flow"></a>マッピング データ フローでの行の変更変換
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
+[!INCLUDE[data-flow-preamble](includes/data-flow-preamble.md)]
+
 行の変更変換を使用して、行の挿入、削除、更新、アップサート ポリシーを設定します。 一対多の条件を式として追加できます。 各行は一致する最初の式に対応したポリシーでマークされるので、これらの条件は優先度の順に指定する必要があります。 これらの条件によってそれぞれ、行が挿入、更新、削除、アップサートされます。 行の変更では、ご利用のデータベースに対して DDL と DML の両方を生成できます。
 
-![行の変更の設定](media/data-flow/alter-row1.png "行の変更の設定")
+:::image type="content" source="media/data-flow/alter-row1.png" alt-text="行の変更の設定":::
 
 行の変更変換は、自分のデータ フローのデータベース、REST、または Cosmos DB シンクでのみ動作します。 行に割り当てるアクション (挿入、更新、削除、upsert) は、デバッグ セッション中に発生することはありません。 データ フローの実行アクティビティをパイプラインで実行し、データベース テーブルに行の変更ポリシーを適用します。
 
@@ -33,7 +35,7 @@ ms.locfileid: "122821718"
 
 行の変更変換を作成し、`true()` の条件を持つ行ポリシーを指定します。 以前に定義された式のいずれにも一致しない行はそれぞれ、指定された行ポリシー用にマークされます。 既定では、どの条件式にも一致しない行はそれぞれ、`Insert` 用にマークされます。
 
-![行の変更ポリシー](media/data-flow/alter-row4.png "行の変更ポリシー")
+:::image type="content" source="media/data-flow/alter-row4.png" alt-text="行の変更ポリシー":::
 
 > [!NOTE]
 > すべての行を 1 つのポリシーでマークするには、そのポリシーの条件を作成し、条件を `true()` として指定します。
@@ -42,7 +44,7 @@ ms.locfileid: "122821718"
 
 [デバッグ モード](concepts-data-flow-debug-mode.md)を使用して、[データのプレビュー] ペインで行の変更ポリシーの結果を表示します。 行の変更変換のデータのプレビューでは、ターゲットに対する DDL または DML アクションは生成されません。
 
-![行の変更を行う複数のポリシー](media/data-flow/alter-row3.png "行の変更を行う複数のポリシー")
+:::image type="content" source="media/data-flow/alter-row3.png" alt-text="行の変更を行う複数のポリシー":::
 
 挿入、更新、upsert、または削除アクションが発生するかどうかを示すアイコンによって、それぞれの行の変更ポリシーが表されます。 上部ヘッダーは、プレビューの各ポリシーによって影響を受ける行数を示しています。
 
@@ -50,7 +52,7 @@ ms.locfileid: "122821718"
 
 行の変更ポリシーを機能させるには、データ ストリームがデータベースまたは Cosmos シンクに書き込む必要があります。 シンクの **[設定]** タブで、そのシンクで許可する行の変更ポリシーを有効にします。
 
-![行の変更のシンク](media/data-flow/alter-row2.png "行の変更のシンク")
+:::image type="content" source="media/data-flow/alter-row2.png" alt-text="行の変更のシンク":::
 
 既定の動作では、挿入のみが許可されます。 更新、upsert、または削除を許可するには、その条件に対応する、シンクのチェックボックスをオンにします。 更新、upsert、または削除が有効になっている場合は、シンク内のどのキー列を照合するかを指定する必要があります。
 
@@ -93,7 +95,7 @@ ms.locfileid: "122821718"
 
 UI では、この変換は次の図のようになります。
 
-![行の変更の例](media/data-flow/alter-row4.png "行の変更の例")
+:::image type="content" source="media/data-flow/alter-row4.png" alt-text="行の変更の例":::
 
 この変換のデータ フロー スクリプトは、次のスニペットに含まれています。
 

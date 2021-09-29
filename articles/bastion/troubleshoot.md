@@ -1,5 +1,5 @@
 ---
-title: Azure Bastion のトラブルシューティング | Microsoft Docs
+title: Azure Bastion のトラブルシューティング
 description: Azure Bastion のトラブルシューティング方法について説明します。
 services: bastion
 author: charwen
@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: troubleshooting
 ms.date: 10/16/2019
 ms.author: charwen
-ms.openlocfilehash: 6b8ce0014524a407d6d35b85fed3bf5f41b556cf
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: 86be88a7e8900ef871af1a2ad2c1c301f7487042
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122067940"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128673903"
 ---
 # <a name="troubleshoot-azure-bastion"></a>Azure Bastion のトラブルシューティング
 
@@ -20,7 +20,7 @@ ms.locfileid: "122067940"
 
 ## <a name="unable-to-create-an-nsg-on-azurebastionsubnet"></a><a name="nsg"></a>AzureBastionSubnet 上で NSG を作成できない
 
-**質問:** Azure Bastion サブネット上で NSG を作成しようとすると、次のエラーを受け取ります。 *"Network security group <NSG name> does not have necessary rules for Azure Bastion Subnet AzureBastionSubnet" (ネットワーク セキュリティ グループには Azure Bastion Subnet AzureBastionSubnet に必要な規則がありません)* 。
+**質問:** Azure Bastion サブネット上で NSG を作成しようとすると、次のエラーを受け取ります。 *"Network security group \<NSG name\> does not have necessary rules for Azure Bastion Subnet AzureBastionSubnet" (ネットワーク セキュリティ グループには Azure Bastion Subnet AzureBastionSubnet に必要な規則がありません)* 。
 
 **A:** NSG を作成して *AzureBastionSubnet* に適用する場合は、NSG に必要な規則を追加済みであることを確認してください。 必要な規則の一覧については、「[NSG アクセスと Azure Bastion を使用する](./bastion-nsg.md)」を参照してください。 これらの規則を追加しないと、NSG の作成/更新は失敗します。
 
@@ -73,7 +73,7 @@ The key's randomart image is:
 
 **Q:** 仮想マシンに接続できません (上記の問題は発生していません)。
 
-**A:** 接続の問題をトラブルシューティングするには、Azure portal 内で Azure Bastion リソースの **[接続のトラブルシューティング]** タブ ( **[監視]** セクション内) に移動します。 Network Watcher の接続のトラブルシューティングを使用すると、仮想マシン (VM) から VM、完全修飾ドメイン名 (FQDN)、URI、または IPv4 アドレスへの直接 TCP 接続を確認できます。 開始するには、接続を開始するソースと接続先を選択し、[チェック] を選択します。 [詳細については、こちらを参照してください](https://docs.microsoft.com/azure/network-watcher/network-watcher-connectivity-overview)。
+**A:** 接続の問題をトラブルシューティングするには、Azure portal 内で Azure Bastion リソースの **[接続のトラブルシューティング]** タブ ( **[監視]** セクション内) に移動します。 Network Watcher の接続のトラブルシューティングを使用すると、仮想マシン (VM) から VM、完全修飾ドメイン名 (FQDN)、URI、または IPv4 アドレスへの直接 TCP 接続を確認できます。 開始するには、接続を開始するソースと接続先を選択し、[チェック] を選択します。 [詳細については、こちらを参照してください](../network-watcher/network-watcher-connectivity-overview.md)。
 
 
 ## <a name="file-transfer-issues"></a><a name="filetransfer"></a>ファイル転送に関する問題

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
-ms.openlocfilehash: 29c21fa422d7b5f4b5cca449c9c8b4833f867856
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 41c9e33db1f93ea9ea3dbc7f6f6ad5a0c6c6be4a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92456519"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124765991"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-capriza-platform"></a>チュートリアル: Azure Active Directory と Capriza Platform の統合
 
@@ -186,7 +186,7 @@ Capriza Platform で Azure AD シングル サインオンを構成するには�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Capriza Platform] タイルをクリックすると、SSO を設定した Capriza Platform に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+アクセス パネル上で [Capriza Platform] タイルをクリックすると、SSO を設定した Capriza Platform に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

@@ -9,12 +9,12 @@ ms.date: 06/21/2021
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 61f57e0ee0f1df5b66526a190e583c72ecde7151
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 54d406303019ebfa967133c26bd5487c848575b2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122965385"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128664886"
 ---
 # <a name="mount-blob-storage-by-using-the-network-file-system-nfs-30-protocol"></a>ネットワーク ファイル システム (NFS) 3.0 プロトコルを使用して Blob Storage をマウントする
 
@@ -41,17 +41,17 @@ NFS 3.0 プロトコルは、標準の汎用 v2 ストレージ アカウント�
 
 アカウントを構成するときに、次の値を選択します。
 
-|設定 | Premium パフォーマンス | Standard パフォーマンス  
+|設定 | Premium パフォーマンス | Standard パフォーマンス
 |----|---|---|
-|場所|利用可能なすべてのリージョン |利用可能なすべてのリージョン    
+|場所|利用可能なすべてのリージョン |利用可能なすべてのリージョン
 |パフォーマンス|Premium| Standard
 |アカウントの種類|BlockBlobStorage| 汎用 v2
 |レプリケーション|ローカル冗長ストレージ (LRS)、ゾーン冗長ストレージ (ZRS)| ローカル冗長ストレージ (LRS)、ゾーン冗長ストレージ (ZRS)
 |接続方法|パブリック エンドポイント (選択されたネットワーク) またはプライベート エンドポイント |パブリック エンドポイント (選択されたネットワーク) またはプライベート エンドポイント
 |階層型名前空間|Enabled|Enabled
-|NFS V3|Enabled |Enabled 
+|NFS V3|Enabled |Enabled
 
-他のすべての設定については、既定値をそのまま使用できます。 
+他のすべての設定については、既定値をそのまま使用できます。
 
 ## <a name="step-4-create-a-container"></a>手順 4: コンテナーを作成する
 
@@ -89,7 +89,7 @@ Linux システムにディレクトリを作成してから、コンテナー�
    mount -o sec=sys,vers=3,nolock,proto=tcp <storage-account-name>.blob.core.windows.net:/<storage-account-name>/<container-name>  /mnt/test
    ```
 
-   - このコマンドに表示される `<storage-account-name>` プレースホルダーをストレージ アカウントの名前に置き換えます。  
+   - このコマンドに表示される `<storage-account-name>` プレースホルダーをストレージ アカウントの名前に置き換えます。
 
    - `<container-name>` プレースホルダーは、実際のコンテナーの名前に置き換えます。
 
@@ -102,8 +102,8 @@ Linux システムにディレクトリを作成してから、コンテナー�
 |`Access denied by server while mounting`|サポートされているサブネット内でクライアントが実行されていることを確認します。 [サポートされているネットワークの場所](network-file-system-protocol-support.md#supported-network-connections)のページを参照してください。|
 |`No such file or directory`| mount コマンドとそのパラメーターを直接ターミナルに入力するようにしてください。 別のアプリケーションからこのコマンドの一部をコピーしてターミナルに貼り付けると、貼り付けた情報の非表示の文字が原因でこのエラーが発生することがあります。|
 |`Permision denied`| 新しく作成された NFS v3 コンテナーの既定のモードは 0750 です。 ルート以外のユーザーにはボリュームへのアクセス権がありません。 ルート以外のユーザーからのアクセスが必要な場合、ルート ユーザーがモードを 0755 に変更する必要があります。 サンプル コマンド: `sudo chmod 0755 /mnt/<newcontainer>`|
-|`EINVAL ("Invalid argument"`) |このエラーは、クライアントが次の操作を試みたときに発生する可能性があります。<li>BLOB エンドポイントから作成された BLOB に書き込む。<li>スナップショットを持つ BLOB、またはアクティブな WORM (Write Once, Read Many) ポリシーを持つコンテナー内にある BLOB を削除する。|
-|`EROFS ("Read-only file system"`) |このエラーは、クライアントが次の操作を試みたときに発生する可能性があります。<li>アクティブなリースを保持している BLOB に書き込むか、BLOB を削除する。<li>アクティブな WORM (Write Once, Read Many) ポリシーを持つコンテナー内にある BLOB に書き込むか、BLOB を削除する。 |
+|`EINVAL ("Invalid argument"`) |このエラーは、クライアントが次の操作を試みたときに発生する可能性があります。<li>BLOB エンドポイントから作成された BLOB に書き込む。<li>スナップショットを持つ BLOB、またはアクティブな WORM (Write Once, Read Many) ポリシーを持つコンテナー内にある BLOB を削除する。|
+|`EROFS ("Read-only file system"`) |このエラーは、クライアントが次の操作を試みたときに発生する可能性があります。<li>アクティブなリースを保持している BLOB に書き込むか、BLOB を削除する。<li>アクティブな WORM (Write Once, Read Many) ポリシーを持つコンテナー内にある BLOB に書き込むか、BLOB を削除する。 |
 |`NFS3ERR_IO/EIO ("Input/output error"`) |このエラーは、クライアントがアーカイブ アクセス層に格納されている BLOB への読み取り、書き込み、または属性の設定を試みた場合に発生する可能性があります。 |
 |`OperationNotSupportedOnSymLink` エラー| このエラーは、BLOB または Azure Data Lake Storage Gen2 API を介した書き込み操作中に返される可能性があります。 これらの API を使用して、NFS 3.0 を使用して作成されたシンボリック リンクへの書き込みや削除を行うことはできません。 シンボリック リンクを操作する際は、必ず NFS v3 エンドポイントを使用してください。 |
 |`mount: /mnt/test: bad option;`| **sudo apt install nfs-common** を使用して、nfs ヘルパー プログラムをインストールします。|

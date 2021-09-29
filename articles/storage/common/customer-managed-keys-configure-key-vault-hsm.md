@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 09f62865c80c05fd0860fa39b18d99c583cf3e56
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: d8e4610ee7fc6690f3d0784415cea09259dd99ba
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114461625"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128645723"
 ---
 # <a name="configure-encryption-with-customer-managed-keys-stored-in-azure-key-vault-managed-hsm"></a>Azure Key Vault Managed HSM に格納されているカスタマー マネージド キーによる暗号化を構成する
 
@@ -45,7 +45,7 @@ az storage account update \
 次に、ストレージ アカウントにマネージド HSM へのアクセス許可が付与されるように、**Managed HSM 暗号化サービスの暗号化ユーザー** ロールをストレージ アカウントのマネージド ID に割り当てます。 マネージド ID に付与する特権を最小限にするために、ロールの割り当てを個々のキーのレベルに限定することをお勧めします。
 
 ストレージ アカウントのロールの割り当てを作成するには、[az key vault role assignment create](/cli/azure/role/assignment#az_role_assignment_create) を呼び出します。 角かっこ内のプレースホルダー値を独自の値で置き換えてください。
-  
+
 ```azurecli
 storage_account_principal = $(az storage account show \
     --name <storage-account> \

@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 08/30/2021
-ms.openlocfilehash: e7d9e4da611bbbf13bacee60ed73248f5b39c14c
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.date: 09/09/2021
+ms.openlocfilehash: 9de59b4510642ab70540c4217ef074347a34ac89
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123307060"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124764186"
 ---
 # <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory-or-azure-synapse-analytics"></a>Azure Data Factory または Azure Synapse Analytics を使用して Azure BLOB ストレージのデータをコピーおよび変換する
 
@@ -59,7 +59,7 @@ Azure portal UI で、以下の手順を使用して Azure Blob Storage のリ�
 
     # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
 
-    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI を使用した新しいリンク サービスの作成を示すスクリーンショット。":::
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI で新しいリンク サービスを作成するスクリーンショット。":::
 
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
@@ -629,7 +629,7 @@ Amazon S3、Azure Blob Storage、または Azure Data Lake Storage Gen2 から A
 
 ソース変換では、Azure Blob Storage 内のコンテナー、フォルダー、または個々のファイルから読み取ることができます。 ファイルの読み取り方法を管理するには、 **[ソース オプション]** タブを使用します。 
 
-![ソース オプション](media/data-flow/sourceOptions1.png "ソース オプション")
+:::image type="content" source="media/data-flow/sourceOptions1.png" alt-text="ソース オプション":::
 
 **ワイルドカード パス:** ワイルドカード パターンを使用して、1 回のソース変換で、一致するフォルダーとファイルをそれぞれループ処理するようサービスに指示します。 これは、単一のフロー内の複数のファイルを処理するのに効果的な方法です。 既存のワイルドカード パターンにマウス ポインターを合わせると表示されるプラス記号を使って、複数のワイルドカード一致パターンを追加します。
 
@@ -651,11 +651,11 @@ Amazon S3、Azure Blob Storage、または Azure Data Lake Storage Gen2 から A
 
 最初に、ワイルドカードを設定して、パーティション分割されたフォルダーと読み取るリーフ ファイルのすべてのパスを含めます。
 
-![パーティション ソース ファイルの設定](media/data-flow/partfile2.png "パーティション ファイルの設定")
+:::image type="content" source="media/data-flow/partfile2.png" alt-text="パーティション ソース ファイルの設定":::
 
 **[Partition root path]\(パーティションのルート パス\)** 設定を使用して、フォルダー構造の最上位レベルを定義します。 データ プレビューでデータの内容を表示すると、各フォルダー レベルで見つかった解決済みのパーティションがサービスによって追加されることがわかります。
 
-![パーティションのルート パス](media/data-flow/partfile1.png "パーティション ルート パスのプレビュー")
+:::image type="content" source="media/data-flow/partfile1.png" alt-text="パーティションのルート パス":::
 
 **[List of files]:** これはファイル セットです。 処理する相対パス ファイルの一覧を含むテキスト ファイルを作成します。 このテキスト ファイルをポイントします。
 
@@ -688,7 +688,7 @@ Amazon S3、Azure Blob Storage、または Azure Data Lake Storage Gen2 から A
 
 シンク変換では、Azure Blob Storage 内のコンテナーまたはフォルダーに書き込むことができます。 ファイルへの書き込み方法を管理するには、 **[設定]** タブを使用します。
 
-![シンクのオプション](media/data-flow/file-sink-settings.png "シンク オプション")
+:::image type="content" source="media/data-flow/file-sink-settings.png" alt-text="シンクのオプション":::
 
 **Clear the folder**\(フォルダーのクリア\):データが書き込まれる前に、書き込み先のフォルダーをクリアするかどうかを決定します。
 

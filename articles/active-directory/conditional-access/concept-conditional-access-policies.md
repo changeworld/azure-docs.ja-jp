@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 03/17/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a62afbcd120a7404b1677a8c8adb62723a119d5
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 674f4cf80d68095ebd7b134c679b60b45ff2a548
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110070266"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128619346"
 ---
 # <a name="building-a-conditional-access-policy"></a>条件付きアクセス ポリシーの構築
 
@@ -77,9 +77,9 @@ ms.locfileid: "110070266"
 
 #### <a name="client-apps"></a>クライアント アプリ
 
-既定では、条件付きアクセス ポリシーは、ブラウザー アプリ、モバイル アプリ、および先進認証をサポートするデスクトップ クライアントに適用されます。 
+既定では、新しく作成されたすべての条件付きアクセス ポリシーは、クライアント アプリの条件が構成されていない場合でも、すべてのクライアント アプリの種類に適用されます。
 
-この割り当て条件により、先進認証を使用しない特定のクライアント アプリケーションを条件付きアクセス ポリシーの対象とすることができます。 これらのアプリケーションには、Exchange ActiveSync クライアント、先進認証を使用しない古い Office アプリケーション、および IMAP、MAPI、POP、SMTP などのメール プロトコルが含まれます。
+クライアント アプリの条件の動作は、2020 年 8 月に更新されました。 既存の条件付きアクセス ポリシーがある場合、それらは変更されません。 ただし、既存のポリシーをクリックすると、構成の切り替えが削除されており、ポリシーが適用されるクライアント アプリが選択されます。
 
 #### <a name="device-state"></a>デバイスの状態
 

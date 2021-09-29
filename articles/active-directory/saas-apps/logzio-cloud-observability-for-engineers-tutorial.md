@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/16/2021
 ms.author: jeedes
-ms.openlocfilehash: ca1ea14629b83bc5aa7f169cd3b6a0332c52f2e4
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 5bf3a2c743b2065aea975c96a8328556f773a496
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122968967"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124783351"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-set-up-for-logzio---azure-ad-integration"></a>チュートリアル: Logz.io - Azure AD Integration の Azure Active Directory シングル サインオン (SSO) の設定
 
@@ -244,7 +244,7 @@ Microsoft Azure Active Directory SSO を Logz.io - Azure AD Integration と一�
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した Logz.io Azure AD Integration に自動的にサインインされます。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Logz.io Azure AD Integration] タイルをクリックすると、SSO を設定した Logz.io Azure AD Integration に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Logz.io Azure AD Integration] タイルをクリックすると、SSO を設定した Logz.io Azure AD Integration に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ### <a name="next-steps"></a>次のステップ
 

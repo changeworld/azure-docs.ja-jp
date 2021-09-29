@@ -6,17 +6,16 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/30/2021
-ms.openlocfilehash: cf2fcf836962bbdb8a3af1671ecf9e11f6b4efa1
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: c8108540f77d323c46cc88caa628764b40c59e74
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122770250"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128597989"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL - フレキシブル サーバーでの高可用性の概念
 
-> [!IMPORTANT]
-> Azure Database for PostgreSQL - フレキシブル サーバーはプレビュー段階です
+
 
 Azure Database for PostgreSQL - フレキシブル サーバーは、**ゾーン冗長** サーバー デプロイを使用した自動フェールオーバー機能による高可用性構成を提供します。 ゾーン冗長構成でデプロイされた場合、フレキシブル サーバーによって自動的に、スタンバイ レプリカがプロビジョニングされ、別の可用性ゾーンで管理されます。 データは、PostgreSQL ストリーミング レプリケーションを使用して、**同期** モードでスタンバイ レプリカ サーバーにレプリケートされます。 
 

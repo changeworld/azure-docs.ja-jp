@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/30/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: dd63a04616848acfb3971a97f8363498e6ba4e55
-ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
+ms.openlocfilehash: 4e9bfa2dc340f567a6c2b7c4ab5d45cfeaa41e6c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122835744"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128661015"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins"></a>Azure Digital Twins でのエンドポイントとルートの管理
 
@@ -77,7 +77,7 @@ Azure Digital Twins では、ダウンストリームのサービスや接続さ
 1. エンドポイントの **[名前]** を入力し、 **[エンドポイントの種類]** を選択します。
 
 1. エンドポイントの種類にとって必要なその他の詳細 (サブスクリプションや[上](#prerequisite-create-endpoint-resources)のエンドポイント リソースなど) を入力します。
-    1. Event Hub と Service Bus エンドポイントでのみ、 **[認証の種類]** を選択する必要があります。 事前に作成された承認規則によるキーベースの認証を使用できます。エンドポイントで Azure Digital Twins インスタンスの[マネージド ID](concepts-security.md#managed-identity-for-accessing-other-resources-preview) を使用する場合は、ID ベースの認証を使用できます。 
+    1. Event Hub と Service Bus エンドポイントでのみ、 **[認証の種類]** を選択する必要があります。 事前に作成された承認規則によるキーベースの認証を使用できます。エンドポイントで Azure Digital Twins インスタンスの[マネージド ID](concepts-security.md#managed-identity-for-accessing-other-resources) を使用する場合は、ID ベースの認証を使用できます。 
 
     :::row:::
         :::column:::
@@ -132,7 +132,7 @@ az dt endpoint create servicebus --endpoint-name <Service-Bus-endpoint-name> --s
 
 #### <a name="create-an-endpoint-with-identity-based-authentication"></a>ID ベースの認証を使用してエンドポイントを作成する
 
-また、ID ベースの認証を使用するエンドポイントを作成し、そのエンドポイントを[マネージド ID](concepts-security.md#managed-identity-for-accessing-other-resources-preview) で使用することもできます。 このオプションは、種類が Event Hubs と Service Bus のエンドポイントでのみ使用できます (Event Grid ではサポートされていません)。
+また、ID ベースの認証を使用するエンドポイントを作成し、そのエンドポイントを[マネージド ID](concepts-security.md#managed-identity-for-accessing-other-resources) で使用することもできます。 このオプションは、種類が Event Hubs と Service Bus のエンドポイントでのみ使用できます (Event Grid ではサポートされていません)。
 
 この種類のエンドポイントを作成する CLI コマンドは次のようになります。 コマンドのプレースホルダーには次の値を設定する必要があります。
 * Azure Digital Twins インスタンスの Azure リソース ID
@@ -235,7 +235,7 @@ az resource create --id <Azure-Digital-Twins-instance-Azure-resource-ID>/endpoin
 
 #### <a name="create-a-dead-letter-endpoint-with-identity-based-authentication"></a>ID ベースの認証を使用して配信不能エンドポイントを作成する
 
-また、ID ベースの認証を使用する配信不能エンドポイントを作成し、そのエンドポイントを[マネージド ID](concepts-security.md#managed-identity-for-accessing-other-resources-preview) で使用することもできます。 このオプションは、種類が Event Hubs と Service Bus のエンドポイントでのみ使用できます (Event Grid ではサポートされていません)。
+また、ID ベースの認証を使用する配信不能エンドポイントを作成し、そのエンドポイントを[マネージド ID](concepts-security.md#managed-identity-for-accessing-other-resources) で使用することもできます。 このオプションは、種類が Event Hubs と Service Bus のエンドポイントでのみ使用できます (Event Grid ではサポートされていません)。
 
 この種類のエンドポイントを作成するには、前と同じ CLI コマンドを使用して [ID ベースの認証を使用するエンドポイントを作成する](#create-an-endpoint-with-identity-based-authentication)ときに、JSON ペイロードで `deadLetterUri` の追加フィールドを指定します。
 

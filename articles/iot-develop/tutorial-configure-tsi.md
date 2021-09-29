@@ -8,12 +8,12 @@ ms.date: 10/14/2020
 ms.topic: tutorial
 ms.service: iot-develop
 services: iot-develop
-ms.openlocfilehash: e1d4b294003fe7eb03f6742c75be6d4fadbfce4f
-ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.openlocfilehash: 1258255ddc12dc4d718998e2320aa40951916400
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2021
-ms.locfileid: "114406097"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128642740"
 ---
 # <a name="tutorial-create-and-configure-a-time-series-insights-gen2-environment"></a>チュートリアル:Time Series Insights Gen2 環境を作成および構成する
 
@@ -208,11 +208,11 @@ Time Series Insights Explorer で、左側のモデル アイコンを選択し�
 
 ![インスタンスを編集する方法を示すスクリーンショット。](./media/tutorial-configure-tsi/edit-instance.png)
 
-**[型]** ドロップダウン メニューを開き、 **[Temperature Controller]** を選択します。 「*defaultComponent, <your device name>* 」と入力して、デバイスに関連付けられているすべての最上位レベルのタグを表すインスタンスの名前を更新します。
+**[型]** ドロップダウン メニューを開き、 **[Temperature Controller]** を選択します。 「*defaultComponent, \<your device name\>* 」と入力して、デバイスに関連付けられているすべての最上位レベルのタグを表すインスタンスの名前を更新します。
 
 ![インスタンスの型を変更する方法を示すスクリーンショット。](./media/tutorial-configure-tsi/change-type.png)
 
-**[保存]** を選択する前に、 **[インスタンス フィールド]** タブを選択し、 **[Device Fleet]** を選択します。 テレメトリをグループ化するには、「 *\<your device name> - Temp Controller*」と入力します。 次に、 **[保存]** を選択します。
+**[保存]** を選択する前に、 **[インスタンス フィールド]** タブを選択し、 **[Device Fleet]** を選択します。 テレメトリをグループ化するには、「 *\<your device name\> - Temp Controller*」と入力します。 次に、 **[保存]** を選択します。
 
 ![インスタンスを階層に割り当てる方法を示すスクリーンショット](./media/tutorial-configure-tsi/assign-to-hierarchy.png)
 

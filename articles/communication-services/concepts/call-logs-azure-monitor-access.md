@@ -8,12 +8,13 @@ ms.author: timmitchell
 ms.date: 07/22/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 9d047746c29fb932fcb9ea7aeb2738606453b158
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.subservice: calling
+ms.openlocfilehash: b5c2da9842ba21b63c7b36d5b7377f74a25a1e90
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121744704"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128672278"
 ---
 # <a name="enable-and-access-call-summary-and-call-diagnostic-logs"></a>通話概要と通話診断のログを有効にしてアクセスする
 

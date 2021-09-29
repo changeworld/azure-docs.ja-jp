@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: terrylan
 manager: rkarlin
 ms.date: 08/27/2021
-ms.openlocfilehash: 6a9b251b9895b3d28bdeba59f121b646b7d8cd96
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 83caa5e93a8a9fd9df13646f867b176208655450
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123477530"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124763350"
 ---
 # <a name="backup-and-restore-plan-to-protect-against-ransomware"></a>ランサムウェアから保護するためのバックアップと復元の計画
 
@@ -63,7 +63,7 @@ ms.locfileid: "123477530"
 
 ### <a name="azure-backup"></a>Azure Backup
 
-[Azure Backup](/azure/backup/backup-overview) では、データの転送時と保存時の両方で、バックアップ環境にセキュリティが提供されます。 Azure Backup では、次のものを[バックアップできます](/azure/backup/backup-overview#what-can-i-back-up)。
+[Azure Backup](../../backup/backup-overview.md) では、データの転送時と保存時の両方で、バックアップ環境にセキュリティが提供されます。 Azure Backup では、次のものを[バックアップできます](../../backup/backup-overview.md#what-can-i-back-up)。
 
 - オンプレミスのファイル、フォルダー、システム状態
 - Windows または Linux VM 全体
@@ -75,22 +75,22 @@ ms.locfileid: "123477530"
 
 Azure Backup には、Azure Backup に関連するイベントのアクションを表示および構成する組み込みの監視とアラートの機能が用意されています。 バックアップ レポートは、使用状況の追跡、バックアップと復元の監査、およびさまざまな細分性レベルでの主要な傾向の特定を行うための、ワンストップの宛先として機能します。 Azure Backup の監視およびレポート ツールを使用すると、承認されていない、疑わしい、または悪意のあるアクティビティが発生した場合に直ちにアラートを受け取ることができます。
 
-有効なユーザーのみが各種操作を実行できるようにするためのチェックが追加されました。 これには、認証レイヤーの追加が含まれています。 重要な操作の認証レイヤーを追加する過程で、[オンライン バックアップを変更する](/azure/backup/backup-azure-security-feature#prevent-attacks)前にセキュリティ PIN を入力するように求められます。
+有効なユーザーのみが各種操作を実行できるようにするためのチェックが追加されました。 これには、認証レイヤーの追加が含まれています。 重要な操作の認証レイヤーを追加する過程で、[オンライン バックアップを変更する](../../backup/backup-azure-security-feature.md#prevent-attacks)前にセキュリティ PIN を入力するように求められます。
 
-Azure Backup に組み込まれている[セキュリティ機能](/azure/backup/security-overview)の詳細を参照してください。
+Azure Backup に組み込まれている[セキュリティ機能](../../backup/security-overview.md)の詳細を参照してください。
 
 ### <a name="validate-backups"></a>バックアップの検証
 
-バックアップの作成時および復元前に、バックアップが正常であることを確認します。 データを格納する Azure のストレージ エンティティである [Recovery Services コンテナー](/azure/backup/backup-azure-recovery-services-vault-overview)を使用することをお勧めします。 データは通常、データのコピーであるか、仮想マシン (VM)、ワークロード、サーバー、ワークステーションのいずれかの構成情報です。 Recovery Services コンテナーを使用すると、IaaS VM (Linux または Windows) や Azure SQL データベースなどのさまざまな Azure サービスとオンプレミス資産のバックアップ データを保持できます。 Recovery Services コンテナーでは、簡単にバックアップ データを整理することができ、次のような機能が提供されます。
+バックアップの作成時および復元前に、バックアップが正常であることを確認します。 データを格納する Azure のストレージ エンティティである [Recovery Services コンテナー](../../backup/backup-azure-recovery-services-vault-overview.md)を使用することをお勧めします。 データは通常、データのコピーであるか、仮想マシン (VM)、ワークロード、サーバー、ワークステーションのいずれかの構成情報です。 Recovery Services コンテナーを使用すると、IaaS VM (Linux または Windows) や Azure SQL データベースなどのさまざまな Azure サービスとオンプレミス資産のバックアップ データを保持できます。 Recovery Services コンテナーでは、簡単にバックアップ データを整理することができ、次のような機能が提供されます。
 
-- バックアップをセキュリティで保護し、運用およびバックアップ サーバーが侵害された場合でもデータを安全に回復できるようにする高度な機能。 [詳細については、こちらを参照してください](/azure/backup/backup-azure-security-feature)。
-- 中央ポータルからのハイブリッド IT 環境 (Azure IaaS VM とオンプレミス資産) の監視。 [詳細については、こちらを参照してください](/azure/backup/backup-azure-monitoring-built-in-monitor)。
-- バックアップと復元のアクセス権を定義済みのユーザー ロールのセットに制限する Azure ロールベースのアクセス制御 (Azure RBAC) との互換性。 Azure RBAC にはさまざまな組み込みロールがあり、Azure Backup には復旧ポイントを管理するための 3 つの組み込みロールがあります。 [詳細については、こちらを参照してください](/azure/backup/backup-rbac-rs-vault)。
-- 悪意のあるアクターがバックアップを削除した場合 (またはバックアップ データが誤って削除された場合) でも有効な、論理的な削除の保護。 バックアップ データはさらに 14 日間保持されるので、データを失うことなくバックアップ項目を回復できます。 [詳細については、こちらを参照してください](/azure/backup/backup-azure-security-feature-cloud)。
-- Azure VM をセカンダリ リージョン (Azure ペア リージョン) に復元できる、リージョンをまたがる復元。 レプリケートされたデータをいつでもセカンダリ リージョンに復元できます。 これにより、停止シナリオにおいて、(コンテナーの GRS 設定と異なり) Azure が障害を宣言するのを待たずに、監査コンプライアンスのためにセカンダリ リージョン データを復元できます。 [詳細については、こちらを参照してください](/azure/backup/backup-azure-arm-restore-vms#cross-region-restore)。
+- バックアップをセキュリティで保護し、運用およびバックアップ サーバーが侵害された場合でもデータを安全に回復できるようにする高度な機能。 [詳細については、こちらを参照してください](../../backup/backup-azure-security-feature.md)。
+- 中央ポータルからのハイブリッド IT 環境 (Azure IaaS VM とオンプレミス資産) の監視。 [詳細については、こちらを参照してください](../../backup/backup-azure-monitoring-built-in-monitor.md)。
+- バックアップと復元のアクセス権を定義済みのユーザー ロールのセットに制限する Azure ロールベースのアクセス制御 (Azure RBAC) との互換性。 Azure RBAC にはさまざまな組み込みロールがあり、Azure Backup には復旧ポイントを管理するための 3 つの組み込みロールがあります。 [詳細については、こちらを参照してください](../../backup/backup-rbac-rs-vault.md)。
+- 悪意のあるアクターがバックアップを削除した場合 (またはバックアップ データが誤って削除された場合) でも有効な、論理的な削除の保護。 バックアップ データはさらに 14 日間保持されるので、データを失うことなくバックアップ項目を回復できます。 [詳細については、こちらを参照してください](../../backup/backup-azure-security-feature-cloud.md)。
+- Azure VM をセカンダリ リージョン (Azure ペア リージョン) に復元できる、リージョンをまたがる復元。 レプリケートされたデータをいつでもセカンダリ リージョンに復元できます。 これにより、停止シナリオにおいて、(コンテナーの GRS 設定と異なり) Azure が障害を宣言するのを待たずに、監査コンプライアンスのためにセカンダリ リージョン データを復元できます。 [詳細については、こちらを参照してください](../../backup/backup-azure-arm-restore-vms.md#cross-region-restore)。
 
 > [!NOTE]
-> Azure Backup には 2 種類のコンテナーがあります。 Recovery Services コンテナーに加えて、Azure Backup でサポートされる新しいワークロードのデータを格納する[バックアップ コンテナー](/azure/backup/backup-vault-overview)もあります。
+> Azure Backup には 2 種類のコンテナーがあります。 Recovery Services コンテナーに加えて、Azure Backup でサポートされる新しいワークロードのデータを格納する[バックアップ コンテナー](../../backup/backup-vault-overview.md)もあります。
 
 ## <a name="what-to-do-before-an-attack"></a>攻撃前の対処
 
@@ -102,7 +102,7 @@ Azure Backup に組み込まれている[セキュリティ機能](/azure/backup
 
 経験上、お客様にとって最も重要な 5 つのアプリケーションは、次のカテゴリに分類されます (優先順位はこのとおりです)。
 
-- ID システム - Active Directory、[Azure AD Connect](/azure/active-directory/hybrid/whatis-azure-ad-connect)、AD ドメイン コントローラーなど、ユーザーがシステムにアクセスするために必要なもの
+- ID システム - Active Directory、[Azure AD Connect](../../active-directory/hybrid/whatis-azure-ad-connect.md)、AD ドメイン コントローラーなど、ユーザーがシステムにアクセスするために必要なもの
 - 人命 - 人間の生命をサポートするか、生命を危険にさらす可能性があるシステム (医療または生命維持システム、安全システム (救急、配送システム、信号機制御)、大型機械、化学/生物系、食品または個人用品の生産など)
 - 財務システム - 金融取引を処理し、ビジネス運用を維持するシステム (支払いシステムとそれに関連するデータベース、四半期報告用の財務システムなど)
 - 製品またはサービスの有効化 - ビジネス サービスを提供するため、または顧客が対価を払う物的生産物を生産/共有するために必要なシステム (工場制御システム、製品供給/配送システムなど)
@@ -126,7 +126,7 @@ Azure Backup に組み込まれている[セキュリティ機能](/azure/backup
 | 復元手順のドキュメント、CMDB、ネットワーク ダイアグラム、SolarWinds インスタンスなど、回復に必要なサポート ドキュメントおよびシステムを保護 (または印刷) します。 | これらのリソースは、回復能力に影響を及ぼすため、攻撃者はこれらを意図的にターゲットにします。 |
 | サードパーティのサポート、特に脅威インテリジェンス プロバイダー、マルウェア対策ソリューション プロバイダー、マルウェア分析プロバイダーのサポートと連絡を取るための手順が明確に文書化されていることを確認します。 これらの手順を保護 (または印刷) します。 | サードパーティの連絡窓口は、特定のランサムウェア バリアントに既知の弱点がある場合や、復号化ツールを入手できる場合に役立つことがあります。 |
 | バックアップと回復の戦略に次のものが含まれていることを確認します。 <br><br>特定の時点のデータをバックアップする機能。 <br><br>隔離されたオフライン (エアギャップ) の場所に格納されるバックアップの複数のコピー。 <br><br>バックアップされた情報を取得して運用環境に配置する速度を決定する目標復旧時間。 <br><br>運用環境/サンドボックスへのバックアップの迅速な復元。 | バックアップは、組織が侵害された後の回復性のために不可欠です。 最大限の保護と可用性を実現するために次の 3-2-1 ルールを適用します: 3 つのコピー (オリジナルと 2 つのバックアップ)、2 種類のストレージ、1 つのオフサイトまたはコールド コピー。 |
-| 意図的な消去と暗号化からバックアップを保護します。 <br><br>オフラインまたはオフサイト ストレージ、不変ストレージ、あるいはその両方にバックアップを格納します。 <br><br>オンライン バックアップの変更または消去を許可する前に、帯域外の手順 ([MFA](/azure/active-directory/authentication/concept-mfa-howitworks) やセキュリティ PIN など) が必要です。 <br><br>Azure Virtual Network 内にプライベート エンドポイントを作成し、Recovery Services コンテナーで安全にデータをバックアップおよび復元します。 | 攻撃者がアクセスできるバックアップは、ビジネス復旧に使用できなくなる可能性があります。 <br><br>オフサイト ストレージにより、ネットワーク帯域幅を使用せずにバックアップ データを確実に転送できます。 Azure Backup では、ネットワーク帯域幅を使用せずに初期バックアップ データをオフラインで転送する[オフライン バックアップ](/azure/backup/offline-backup-overview)がサポートされています。 これは、バックアップ データを物理記憶域装置にコピーするメカニズムを提供します。 その後、デバイスは近くの Azure データ センターに発送され、[Recovery Services コンテナー](/azure/backup/backup-azure-recovery-services-vault-overview)にアップロードされます。 <br><br>オンラインの不変ストレージ ([Azure Blob](/azure/storage/blobs/storage-blob-immutable-storage) など) を使用すると、ビジネス クリティカルなデータ オブジェクトを WORM (Write Once, Read Many) 状態で保存できます。 この状態では、ユーザーが指定した期間、データを消去および変更できなくなります。 <br><br>[多要素認証 (MFA)](/azure/active-directory/authentication/concept-mfa-howitworks) は、すべての管理者アカウントで必須にする必要があり、すべてのユーザーに強くお勧めします。 推奨される方法は、可能な限り SMS や音声ではなく認証アプリを使用することです。 Azure Backup を設定するときに、Azure portal で生成されたセキュリティ PIN を使用して MFA を有効にするように復旧サービスを構成できます。 これにより、復旧ポイントの更新や削除などの重要な操作を実行するためにセキュリティ PIN が生成されるようになります。 |
+| 意図的な消去と暗号化からバックアップを保護します。 <br><br>オフラインまたはオフサイト ストレージ、不変ストレージ、あるいはその両方にバックアップを格納します。 <br><br>オンライン バックアップの変更または消去を許可する前に、帯域外の手順 ([MFA](../../active-directory/authentication/concept-mfa-howitworks.md) やセキュリティ PIN など) が必要です。 <br><br>Azure Virtual Network 内にプライベート エンドポイントを作成し、Recovery Services コンテナーで安全にデータをバックアップおよび復元します。 | 攻撃者がアクセスできるバックアップは、ビジネス復旧に使用できなくなる可能性があります。 <br><br>オフサイト ストレージにより、ネットワーク帯域幅を使用せずにバックアップ データを確実に転送できます。 Azure Backup では、ネットワーク帯域幅を使用せずに初期バックアップ データをオフラインで転送する[オフライン バックアップ](../../backup/offline-backup-overview.md)がサポートされています。 これは、バックアップ データを物理記憶域装置にコピーするメカニズムを提供します。 その後、デバイスは近くの Azure データ センターに発送され、[Recovery Services コンテナー](../../backup/backup-azure-recovery-services-vault-overview.md)にアップロードされます。 <br><br>オンラインの不変ストレージ ([Azure Blob](../../storage/blobs/immutable-storage-overview.md) など) を使用すると、ビジネス クリティカルなデータ オブジェクトを WORM (Write Once, Read Many) 状態で保存できます。 この状態では、ユーザーが指定した期間、データを消去および変更できなくなります。 <br><br>[多要素認証 (MFA)](../../active-directory/authentication/concept-mfa-howitworks.md) は、すべての管理者アカウントで必須にする必要があり、すべてのユーザーに強くお勧めします。 推奨される方法は、可能な限り SMS や音声ではなく認証アプリを使用することです。 Azure Backup を設定するときに、Azure portal で生成されたセキュリティ PIN を使用して MFA を有効にするように復旧サービスを構成できます。 これにより、復旧ポイントの更新や削除などの重要な操作を実行するためにセキュリティ PIN が生成されるようになります。 |
 | [保護されたフォルダー](/windows/security/threat-protection/microsoft-defender-atp/controlled-folders)を指定します。 | 承認されていないアプリケーションによってこれらのフォルダー内のデータが変更されることを難しくします。 |
 | アクセス許可を確認します。 <br><br>ファイル共有、SharePoint、その他のソリューションに対する広範な書き込み/削除の権限を検出します。 広範とは、ビジネス クリティカルなデータに対して多数のユーザーが書き込み/削除の権限を持つことと定義されます。 <br><br>ビジネス コラボレーションの要件を満たしながら、広範なアクセス許可を減らします。 <br><br>監査と監視により、広範なアクセス許可が再び現れないようにします。 | 広範なアクセスがランサムウェア活動を可能にするリスクを削減します。 |
 | フィッシング詐欺から保護します。 <br><br>セキュリティ意識向上トレーニングを定期的に実施して、ユーザーがフィッシング詐欺を特定し、侵害の最初のエントリ ポイントを生み出す可能性があるものをクリックしないようにします。 <br><br>メールにセキュリティ フィルター制御を適用して、フィッシング詐欺が成功する可能性を検出し、最小化します。 | 攻撃者が組織に侵入するために使用する最も一般的な方法は、メールを使ったフィッシング詐欺です。 [Exchange Online Protection (EOP)](/microsoft-365/security/office-365-security/exchange-online-protection-overview) は、スパム、マルウェア、その他のメールの脅威から組織を保護するクラウドベースのフィルター処理サービスです。 EOP は、Exchange Online メールボックスを使用するすべての Microsoft 365 組織に含まれています。 <br><br>メールのセキュリティ フィルター処理コントロールの例として、[セーフ リンク](/microsoft-365/security/office-365-security/safe-links)があります。 セーフ リンクは、メール フローでの受信メール メッセージの URL スキャンと書き換え、およびメール メッセージやその他の場所での URL とリンクのクリック時の検証を提供する Defender for Office 365 の機能です。 セーフ リンク スキャンは、EOP の受信メール メッセージの通常のスパムおよびマルウェア対策に加えて行われます。 セーフ リンク スキャンは、フィッシングやその他の攻撃で使用される悪意のあるリンクから組織を保護するのに役立ちます。 <br><br>詳細については、[フィッシング対策保護](/microsoft-365/security/office-365-security/tuning-anti-phishing)に関するページをご覧ください。 |
@@ -160,7 +160,7 @@ Azure Backup に組み込まれている[セキュリティ機能](/azure/backup
 3. 元の侵害を調査して修復します ([Microsoft Detection and Response Team (DART)](https://www.microsoft.com/security/blog/2019/03/25/dart-the-microsoft-cybersecurity-team-we-hope-you-never-meet/) に連絡してサポートを受けます)
 4. 得られた教訓と機会に基づいて、バックアップと復元の戦略を更新します (最初に最も大きな影響と最も迅速な実装手順に基づいて優先順位を付けます)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 この記事では、ランサムウェアから保護するためにバックアップと復元の計画を改善する方法について説明しました。 ランサムウェア対策のデプロイに関するベスト プラクティスについては、「[ランサムウェアや脅迫からの迅速な保護](/security/compass/protect-against-ransomware)」を参照してください。
 
@@ -171,8 +171,8 @@ Azure Backup に組み込まれている[セキュリティ機能](/azure/backup
 Microsoft Azure: 
 
 - [Microsoft Azure Backup を使用してランサムウェアからの保護を支援](https://www.youtube.com/watch?v=VhLOr2_1MCg) (26 分のビデオ)
-- [システムの ID 侵害からの復旧](/azure/security/fundamentals/recover-from-identity-compromise)
-- [Azure Sentinel の高度なマルチステージ攻撃の検出](/azure/sentinel/fusion#ransomware)
+- [システムの ID 侵害からの復旧](./recover-from-identity-compromise.md)
+- [Azure Sentinel の高度なマルチステージ攻撃の検出](../../sentinel/fusion.md#ransomware)
 
 Microsoft 365:
 

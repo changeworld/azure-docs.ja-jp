@@ -7,14 +7,14 @@ ms.subservice: integration-runtime
 ms.topic: conceptual
 author: lrtoyou1223
 ms.author: lle
-ms.date: 08/24/2021
+ms.date: 09/09/2021
 ms.custom: devx-track-azurepowershell, synapse
-ms.openlocfilehash: 8c6f5954e173f58333ec3970cb09ca0404adf964
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: 734c469afa43a178f5c7a50550426a47940b8f35
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122822825"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124820029"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイムを作成して構成する
 
@@ -45,7 +45,7 @@ ms.locfileid: "122822825"
 
 セルフホステッド IR でコピーするデータ フロー手順の概要を以下に示します。
 
-![データ フローの大まかな概要](media/create-self-hosted-integration-runtime/high-level-overview.png)
+:::image type="content" source="media/create-self-hosted-integration-runtime/high-level-overview.png" alt-text="データ フローの大まかな概要":::
 
 1. まず、データ開発者は、Azure portal または PowerShell コマンドレットを使用して、Azure データ ファクトリまたは Synapse ワークスペース内にセルフホステッド統合ランタイムを作成します。  次にデータ開発者は、サービスがデータ ストアに接続するために使用する必要があるセルフホステッド統合ランタイムのインスタンスを指定して、オンプレミスのデータ ストア用のリンクされたサービスを作成します。
 
@@ -226,19 +226,19 @@ dmgcmd ACTION args...
 
 セルフホステッド統合ランタイムの既定のログオン サービス アカウントは、**NT SERVICE\DIAHostService** です。 これは **[サービス] -> [Integration Runtime サービス] -> [プロパティ] -> [ログオン]** で確認できます。
 
-![セルフホステッド統合ランタイムのサービス アカウント](media/create-self-hosted-integration-runtime/shir-service-account.png)
+:::image type="content" source="media/create-self-hosted-integration-runtime/shir-service-account.png" alt-text="セルフホステッド統合ランタイムのサービス アカウント":::
 
 アカウントにサービスとしてのログオンの権限があることを確認します。 そうでないと、セルフホステッド統合ランタイムを正常に開始できません。 アクセス許可は、 **[ローカル セキュリティ ポリシー] -> [セキュリティの設定] -> [ローカル ポリシー] -> [ユーザー権利の割り当て] -> [サービスとしてログオン]** で確認できます。
 
-![[ローカル セキュリティ ポリシー] のスクリーンショット - [ユーザー権利の割り当て]](media/create-self-hosted-integration-runtime/shir-service-account-permission.png)
+:::image type="content" source="media/create-self-hosted-integration-runtime/shir-service-account-permission.png" alt-text="[ローカル セキュリティ ポリシー] のスクリーンショット - [ユーザー権利の割り当て]":::
 
-![[サービスとしてログオン] のスクリーンショット、[ユーザー権利の割り当て]](media/create-self-hosted-integration-runtime/shir-service-account-permission-2.png)
+:::image type="content" source="media/create-self-hosted-integration-runtime/shir-service-account-permission-2.png" alt-text="[サービスとしてログオン] のスクリーンショット、[ユーザー権利の割り当て]":::
 
 ## <a name="notification-area-icons-and-notifications"></a>通知領域のアイコンと通知
 
 通知領域のアイコンまたはメッセージの上にカーソルを移動すると、セルフホステッド統合ランタイムの状態の詳細が表示されます。
 
-![通知領域内の通知](media/create-self-hosted-integration-runtime/system-tray-notifications.png)
+:::image type="content" source="media/create-self-hosted-integration-runtime/system-tray-notifications.png" alt-text="通知領域内の通知":::
 
 ## <a name="high-availability-and-scalability"></a>高可用性とスケーラビリティ
 

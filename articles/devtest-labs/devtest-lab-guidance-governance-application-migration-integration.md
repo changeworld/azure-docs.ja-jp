@@ -1,15 +1,15 @@
 ---
-title: Azure DevTest Labs でのアプリケーションの移行と統合
+title: アプリケーションの移行と統合
 description: この記事では、アプリケーションの移行と統合のコンテキストでの Azure DevTest Labs インフラストラクチャのガバナンスのためのガイダンスを提供します。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 6ad0eb500afad0309d9c5b34d3d8e83319192556
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3dbd2e45074d78bbef535773c17b7036fcaf3e72
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121726737"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128606421"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---application-migration-and-integration"></a>Azure DevTest Labs インフラストラクチャのガバナンス - アプリケーションの移行と統合
 開発/テスト ラボ環境が確立された後は、次の質問について考慮する必要があります。

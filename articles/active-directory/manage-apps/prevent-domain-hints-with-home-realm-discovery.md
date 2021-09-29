@@ -1,5 +1,6 @@
 ---
-title: ホーム領域検出ポリシーを使用して Azure AD でのサインインの自動高速化を防ぐ
+title: ホーム領域検出ポリシーを使用してサインインの自動アクセラレーションを防ぐ
+titleSuffix: Azure AD
 description: フェデレーション IDP への domain_hint の自動高速化を防ぐ方法について説明します。
 services: active-directory
 author: davidmu1
@@ -11,12 +12,12 @@ ms.topic: how-to
 ms.date: 02/12/2021
 ms.author: davidmu
 ms.reviewer: hirsin
-ms.openlocfilehash: c85c4028c1931c1e5eee061b9be7b2ebffc5b951
-ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
+ms.openlocfilehash: 9f8608330d5f74ef2e1262b7c3dff82be746c884
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113566928"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129059174"
 ---
 # <a name="disable-auto-acceleration-to-a-federated-idp-during-user-sign-in-with-home-realm-discovery-policy"></a>ホーム領域検出ポリシーを使用してユーザー サインイン時のフェデレーション IDP への自動高速化を無効にする
 
@@ -41,7 +42,7 @@ HRD ポリシーの DomainHintPolicy セクションは JSON オブジェクト�
 
 DomainHintPolicy ロジックは、ドメイン ヒントを含む受信要求ごとに実行され、要求に含まれる 2 つのデータ、つまりドメイン ヒント内のドメインと、クライアント ID (アプリ) に基づいて高速化されます。 要するに、ドメインまたはアプリを "優先" する方が、特定のドメインまたはアプリケーションに関するドメイン ヒントを "無視" する命令よりも優先されます。
 
-1. ドメイン ヒント ポリシーがない場合、あるいは 4 つのセクションのいずれにおいてもアプリまたはドメイン ヒントが参照されていない場合は、[HRD ポリシーの残りの部分が評価されます](configure-authentication-for-federated-users-portal.md#priority-and-evaluation-of-hrd-policies)。
+1. ドメイン ヒント ポリシーがない場合、あるいは 4 つのセクションのいずれにおいてもアプリまたはドメイン ヒントが参照されていない場合は、[HRD ポリシーの残りの部分が評価されます](home-realm-discovery-policy.md#priority-and-evaluation-of-hrd-policies)。
 1. 要求で `RespectDomainHintForApps` または `RespectDomainHintForDomains` セクションのどちらか一方 (または両方) にアプリまたはドメイン ヒントが含まれている場合、ユーザーは要求どおりにフェデレーション IDP に自動高速化されます。
 1. 要求の `IgnoreDomainHintsForApps` または `IgnoreDomainHintsForDomains` のどちらか一方 (または両方) でアプリまたはドメイン ヒントが参照されていて、"Respect" セクションでは参照されていない場合、要求は自動高速化されず、ユーザーは Azure AD のログイン ページにとどまってユーザー名を指定します。
 

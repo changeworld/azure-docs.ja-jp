@@ -3,12 +3,12 @@ title: 委任されたリソースを大規模に監視する
 description: Azure Lighthouse は、すべての顧客テナントで、スケーラブルな方法により、Azure Monitor のログを使用するのに役立ちます。
 ms.date: 08/12/2021
 ms.topic: how-to
-ms.openlocfilehash: 3424078b00aef569f054d6d3c02382f4bd071a91
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: d261fd41c300f317e34ff7cacafa53911b7bbc12
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122325068"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124736619"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>委任されたリソースを大規模に監視する
 
@@ -28,7 +28,7 @@ ms.locfileid: "122325068"
 > [!TIP]
 > Log Analytics ワークスペースからデータにアクセスする目的で使用される Automation アカウントは、ワークスペースと同じテナントで作成する必要があります。
 
-Log Analytics ワークスペースは、[Azure portal](../../azure-monitor/logs/quick-create-workspace.md)、[Azure CLI](../../azure-monitor/logs/quick-create-workspace-cli.md)、[Azure PowerShell](../../azure-monitor/logs/powershell-workspace-configuration.md) のいずれかを使用して作成できます。
+Log Analytics ワークスペースは、[Azure portal](../../azure-monitor/logs/quick-create-workspace.md)、[Azure CLI](../../azure-monitor/logs/resource-manager-workspace.md)、[Azure PowerShell](../../azure-monitor/logs/powershell-workspace-configuration.md) のいずれかを使用して作成できます。
 
 > [!IMPORTANT]
 > すべてのワークスペースが顧客テナントに作成されている場合、管理テナントのサブスクリプションには、Microsoft.Insights リソース プロバイダーも[登録する](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider)必要があります。 管理テナントに既存の Azure サブスクリプションがない場合は、次の PowerShell コマンドを使用してリソース プロバイダーを手動で登録できます。

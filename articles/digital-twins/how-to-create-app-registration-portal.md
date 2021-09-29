@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: Azure portal を使用して、クライアント アプリ向けの認証オプションとして Azure AD アプリの登録を作成する方法について説明します。
 author: baanders
 ms.author: baanders
-ms.date: 8/27/2021
+ms.date: 9/8/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: da935038599b86d9c86a1f55071d4b4d1ea4ce16
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 8350ff149b54ef8cf8f4061abd64df73dc688962
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123223058"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128653117"
 ---
 # <a name="create-an-app-registration-to-use-with-azure-digital-twins-portal"></a>Azure Digital Twins で使用するアプリ登録を作成する (ポータル)
 
@@ -64,7 +64,7 @@ Azure Digital Twins に使用する場合、**リソース名** は `http://digi
 
 **クライアント ID** と **テナント ID** の値は、Azure portal のアプリ登録の詳細ページから収集できます。
 
-:::image type="content" source="media/how-to-create-app-registration/client-id-tenant-id.png" alt-text="アプリ登録の重要な値が示されている Azure portal のスクリーンショット。":::
+:::image type="content" source="media/how-to-create-app-registration/client-id-tenant-id.png" alt-text="アプリ登録の重要な値が示されている Azure portal のスクリーンショット。"  lightbox="media/how-to-create-app-registration/client-id-tenant-id.png":::
 
 **実際の** ページに表示される、"**アプリケーション (クライアント) ID**" と "**ディレクトリ (テナント) ID**" をメモしておきます。
 
@@ -78,7 +78,13 @@ Azure Digital Twins に使用する場合、**リソース名** は `http://digi
 
 1. [説明] と [有効期限] に必要な値を入力して、 **[追加]** を選択します。
 
-    :::image type="content" source="media/how-to-create-app-registration/add-client-secret.png" alt-text="クライアント シークレットを追加しているときの Azure portal のスクリーンショット。":::
+    :::row:::
+        :::column:::
+            :::image type="content" source="media/how-to-create-app-registration/add-client-secret.png" alt-text="クライアント シークレットを追加しているときの Azure portal のスクリーンショット。":::
+        :::column-end:::
+        :::column:::
+        :::column-end:::
+    :::row-end:::
 
 1. **[証明書とシークレット]** ページの [有効期限] および [値] フィールドにクライアント シークレットが表示されていることを確認します。 
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/20/2021
 ms.author: jeedes
-ms.openlocfilehash: a2e3f3969ce9d39dc8d7b2aa2cb5d0cb6db7ad7a
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 51056c5c28fa15026a409f9baeb0f7a9ec5fd076
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111886857"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124834577"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fluxx-labs"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Fluxx Labs の統合
 
@@ -191,7 +191,7 @@ Azure AD ユーザーが Fluxx Labs にサインインできるようにする�
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した Fluxx Labs に自動的にサインインされます。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Fluxx Labs] タイルをクリックすると、SSO を設定した Fluxx Labs に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Fluxx Labs] タイルをクリックすると、SSO を設定した Fluxx Labs に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

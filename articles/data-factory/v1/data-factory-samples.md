@@ -5,14 +5,15 @@ author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 4fc4cea51494333bed90cd6c277469a58e2c6a3f
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: 5985c653d02a041e648f306847b5bcfd93783302
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122397483"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128615227"
 ---
 # <a name="azure-data-factory---samples"></a>Azure Data Factory - サンプル
 > [!NOTE]
@@ -54,21 +55,21 @@ GitHub 上に、Data Factory 向けの次の Azure Resource Manager テンプレ
 1. データ ファクトリを作成するか、既存のデータ ファクトリを開きます。 データ ファクトリを作成する手順については、「[Data Factory を使用した Blob Storage から SQL Database へのデータのコピー](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)」を参照してください。
 2. データ ファクトリの **[Data Factory]** ブレードで、 **[サンプル パイプライン]** タイルをクリックします。
 
-    ![サンプル パイプライン タイル](./media/data-factory-samples/SamplePipelinesTile.png)
+    :::image type="content" source="./media/data-factory-samples/SamplePipelinesTile.png" alt-text="サンプル パイプライン タイル":::
 3. **[サンプル パイプライン]** ブレードで、デプロイする **サンプル** をクリックします。
 
-    ![サンプル パイプライン ブレード](./media/data-factory-samples/SampleTile.png)
+    :::image type="content" source="./media/data-factory-samples/SampleTile.png" alt-text="サンプル パイプライン ブレード":::
 4. このサンプルの構成設定を指定します。 たとえば、Azure ストレージ アカウント名とアカウント キー、論理 SQL サーバーの名前、データベース、ユーザー ID、パスワードなどです。
 
-    ![サンプル ブレード](./media/data-factory-samples/SampleBlade.png)
+    :::image type="content" source="./media/data-factory-samples/SampleBlade.png" alt-text="サンプル ブレード":::
 5. 構成設定の指定が完了したら **[作成]** をクリックして、サンプルのパイプラインと、そのパイプラインで使用するリンクされたサービスとテーブルを作成またはデプロイします。
 6. 先程 **[サンプル パイプライン]** ブレードでクリックしたサンプルのタイルに、デプロイの状態が表示されます。
 
-    ![[デプロイ ステータス]](./media/data-factory-samples/DeploymentStatus.png)
+    :::image type="content" source="./media/data-factory-samples/DeploymentStatus.png" alt-text="デプロイの状態":::
 7. サンプルのタイルに "**デプロイに成功しました**" メッセージが表示されたら、 **[サンプル パイプライン]** ブレードを閉じます。  
 8. **[Data Factory]** ブレードで、リンクされたサービス、データ セット、パイプラインがデータ ファクトリに追加されたことを確認します。  
 
-    ![[Data Factory] ブレード](./media/data-factory-samples/DataFactoryBladeAfter.png)
+    :::image type="content" source="./media/data-factory-samples/DataFactoryBladeAfter.png" alt-text="[Data Factory] ブレード":::
 
 ## <a name="samples-in-visual-studio"></a>Visual Studio のサンプル
 ### <a name="prerequisites"></a>前提条件
@@ -88,10 +89,10 @@ GitHub 上に、Data Factory 向けの次の Azure Resource Manager テンプレ
    4. プロジェクトの **場所** を選択します。
    5. **[OK]** をクリックします。
 
-      ![[新しいプロジェクト] ダイアログ ボックス](./media/data-factory-samples/vs-new-project-adf-templates.png)
+      :::image type="content" source="./media/data-factory-samples/vs-new-project-adf-templates.png" alt-text="[新しいプロジェクト] ダイアログ ボックス":::
 3. **[Data Factory Templates]** (Data Factory テンプレート) ダイアログ ボックスで、 **[Use-Case Templates]** (ユースケース テンプレート) セクションからサンプル テンプレートを選択し、 **[次へ]** をクリックします。 この後の手順では、 **顧客プロファイリング** テンプレートの使用方法について説明します。 他のサンプルでも手順は同じです。
 
-    ![Data Factory Templates dialog box](./media/data-factory-samples/vs-data-factory-templates-dialog.png)
+    :::image type="content" source="./media/data-factory-samples/vs-data-factory-templates-dialog.png" alt-text="Data Factory Templates dialog box":::
 4. **[Data Factory Configuration]** (Data Factory の構成) ダイアログの **[Data Factory Basics]** (Data Factory の基本) ページで **[次へ]** をクリックします。
 5. **[Configure data factory]** (データ ファクトリの構成) ページで、次の手順を行います。
    1. **[Create New Data Factory]** (Data Factory の新規作成) を選択します。 **[既存のデータ ファクトリを使用する]** を選択することもできます。
@@ -108,7 +109,7 @@ GitHub 上に、Data Factory 向けの次の Azure Resource Manager テンプレ
 11. **[Microsoft アカウントへのサインイン]** ダイアログ ボックスが表示されたら、Azure サブスクリプションを所有するアカウントの資格情報を入力し、 **[サインイン]** をクリックします。
 12. 次のダイアログ ボックスが表示されます。
 
-    ![[発行] ダイアログ ボックス](./media/data-factory-build-your-first-pipeline-using-vs/publish.png)
+    :::image type="content" source="./media/data-factory-build-your-first-pipeline-using-vs/publish.png" alt-text="[発行] ダイアログ ボックス":::
 13. **[Configure data factory]** (データ ファクトリの構成) ページで、次の手順を行います。
 
     1. **[既存のデータ ファクトリを使用する]** オプションが選択されていることを確認します。

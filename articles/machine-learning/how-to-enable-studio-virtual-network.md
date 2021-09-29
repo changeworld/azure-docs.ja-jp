@@ -11,12 +11,12 @@ ms.author: jhirono
 author: jhirono
 ms.date: 07/13/2021
 ms.custom: contperf-fy20q4, tracking-python, security
-ms.openlocfilehash: d5c794bfc707f6429daad2e78affe592f5e3754c
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: 7fe7070611fc9fc94f983a69a6fb9009af0f9c3e
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114710001"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129091523"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Azure 仮想ネットワークで Azure Machine Learning Studio を使用する
 
@@ -65,7 +65,7 @@ ms.locfileid: "114710001"
 
 + [プライベート エンドポイントを持つ既存の Azure Machine Learning ワークスペース](how-to-secure-workspace-vnet.md#secure-the-workspace-with-private-endpoint)。
 
-+ [仮想ネットワークに追加された Azure ストレージ アカウント](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints) (既存)。
++ [仮想ネットワークに追加された Azure ストレージ アカウント](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts) (既存)。
 
 ## <a name="limitations"></a>制限事項
 
@@ -106,7 +106,7 @@ ms.locfileid: "114710001"
     |ワークスペースの既定の BLOB ストレージ| デザイナーからのモデル アセットが格納されます。 デザイナーでモデルをデプロイするには、このストレージ アカウントでマネージド ID 認証を有効にします。 <br> <br> マネージド ID を使用するように構成されている既定以外のデータストアを使用するデザイナー パイプラインは、視覚化して実行できます。 ただし、既定のデータストアでマネージド ID を有効にせずにトレーニング済みのモデルをデプロイしようとすると、他のデータストアの使用に関係なく、デプロイは失敗します。|
     |ワークスペースの既定のファイル ストア| AutoML 実験アセットが格納されます。 AutoML 実験を送信するには、このストレージ アカウントでマネージド ID 認証を有効にします。 |
 
-1. **マネージド ID 認証を使用するようにデータストアを構成します**。 [サービス エンドポイント](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints)または[プライベート エンドポイント](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-private-endpoints)のいずれかが設定されている仮想ネットワークに Azure ストレージ アカウントを追加した後、[マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) 認証を使用するようにデータストアを構成する必要があります。 これにより、Studio でストレージ アカウント内のデータにアクセスできるようになります。
+1. **マネージド ID 認証を使用するようにデータストアを構成します**。 [サービス エンドポイント](how-to-secure-workspace-vnet.md?tabs=se#secure-azure-storage-accounts)または[プライベート エンドポイント](how-to-secure-workspace-vnet.md?tabs=pe#secure-azure-storage-accounts)のいずれかが設定されている仮想ネットワークに Azure ストレージ アカウントを追加した後、[マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) 認証を使用するようにデータストアを構成する必要があります。 これにより、Studio でストレージ アカウント内のデータにアクセスできるようになります。
 
     Azure Machine Learning では、[データストア](concept-data.md#datastores)を使用してストレージ アカウントに接続します。 新しいデータストアを作成するときは、次の手順を使用して、マネージド ID 認証を使用するようにデータストアを構成します。
 

@@ -6,12 +6,12 @@ ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.date: 06/02/2021
-ms.openlocfilehash: 1e66e8a3358bdcbca3d5dea247e1e6af2000393f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7075b7efd871d3f226faa593e0730d22c8913fd1
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121735059"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124797086"
 ---
 # <a name="quickstart-deploy-a-managed-apache-spark-cluster-preview-with-azure-databricks"></a>クイックスタート - Azure Databricks でマネージド Apache Spark クラスター (プレビュー) をデプロイする
 
@@ -36,15 +36,15 @@ Azure Managed Instance for Apache Cassandra がある仮想ネットワークに
 
 1. **[Virtual Network]** リソースを開き、 **[アドレス空間]** をメモしておきます。
 
-    :::image type="content" source="./media/deploy-cluster-databricks/virtual-network-address-space.png" alt-text="仮想ネットワークのアドレス空間を入手する。" border="true":::
+   :::image type="content" source="./media/deploy-cluster-databricks/virtual-network-address-space.png" alt-text="仮想ネットワークのアドレス空間を入手する。" border="true":::
 
 1. そのリソース グループから **[追加]** を選択し、検索フィールドで「**Azure Databricks**」を検索します。
 
-    :::image type="content" source="./media/deploy-cluster-databricks/databricks.png" alt-text="Azure Databricks を検索する。" border="true":::
+   :::image type="content" source="./media/deploy-cluster-databricks/databricks.png" alt-text="Azure Databricks を検索する。" border="true":::
 
 1. **[作成]** を選択して Azure Databricks アカウントを作成します。
 
-    :::image type="content" source="./media/deploy-cluster-databricks/databricks-create.png" alt-text="Azure Databricks アカウントを作成する。" border="true":::
+   :::image type="content" source="./media/deploy-cluster-databricks/databricks-create.png" alt-text="Azure Databricks アカウントを作成する。" border="true":::
 
 1. 次の値に入力します。
 
@@ -52,7 +52,7 @@ Azure Managed Instance for Apache Cassandra がある仮想ネットワークに
    * **[リージョン]** - 仮想ネットワークと同じリージョンを必ず選択します。
    * **[価格レベル]** - Standard、Premium、Trial のいずれかを選択します。 これらのレベルの詳細については、[Databricks の価格に関するページ](https://azure.microsoft.com/pricing/details/databricks/)を参照してください。
 
-    :::image type="content" source="./media/deploy-cluster-databricks/select-name.png" alt-text="Databricks アカウントのワークスペース名、リージョン、価格レベルを記入する。" border="true":::
+   :::image type="content" source="./media/deploy-cluster-databricks/select-name.png" alt-text="Databricks アカウントのワークスペース名、リージョン、価格レベルを記入する。" border="true":::
 
 1. 次に、 **[ネットワーク]** タブを選択し、以下の情報を入力します。
 
@@ -82,17 +82,17 @@ Azure Managed Instance for Apache Cassandra がある仮想ネットワークに
    * **[クラスター名]** - クラスターの名前を入力します。
    * **[Databricks Runtime のバージョン]** - Spark 3.x をサポートするには、Databricks Runtime バージョン 7.5 以降を選択することをお勧めします。 
 
-    :::image type="content" source="../cosmos-db/cassandra/media/migrate-data-databricks/databricks-runtime.png" alt-text="Databricks Runtime のバージョンと Spark クラスターを選択する。" border="true":::
+   :::image type="content" source="../cosmos-db/cassandra/media/migrate-data-databricks/databricks-runtime.png" alt-text="Databricks Runtime のバージョンと Spark クラスターを選択する。" border="true":::
 
 1. **[Advanced Options]\(詳細オプション\)** を展開し、次の構成を追加します。 ノードの IP と資格情報は、必ず置き換えてください。
 
-    ```java
-    spark.cassandra.connection.host <node1 IP>,<node 2 IP>, <node IP>
-    spark.cassandra.auth.password cassandra
-    spark.cassandra.connection.port 9042
-    spark.cassandra.auth.username cassandra
-    spark.cassandra.connection.ssl.enabled true
-    ```
+   ```java
+   spark.cassandra.connection.host <node1 IP>,<node 2 IP>, <node IP>
+   spark.cassandra.auth.password cassandra
+   spark.cassandra.connection.port 9042
+   spark.cassandra.auth.username cassandra
+   spark.cassandra.connection.ssl.enabled true
+   ```
 
 1. Apache Spark Cassandra コネクタ ライブラリをクラスターに追加して、ネイティブと Azure Cosmos DB Cassandra 両方のエンドポイントに接続します。 自分のクラスターで、 **[ライブラリ]**  >  **[新規インストール]**  >  **[Maven]** の順に選択し、Maven 座標に `com.datastax.spark:spark-cassandra-connector-assembly_2.12:3.0.0` を追加します。
 
@@ -105,11 +105,11 @@ Azure Managed Instance for Apache Cassandra がある仮想ネットワークに
 1. Azure portal の左側にあるメニューで、 **[リソース グループ]** を選択します。
 1. 一覧から、このクイック スタートで作成したリソース グループを選択します。
 1. リソース グループの **[概要]** ペインで、 **[リソース グループの削除]** を選択します。
-3. 次のウィンドウで、削除するリソース グループの名前を入力し、**[削除]** を選択します。
+1. 次のウィンドウで、削除するリソース グループの名前を入力し、**[削除]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイックスタートでは、Azure Managed Instance for Apache Cassandra クラスターの仮想ネットワーク内にフル マネージドの Apache Spark クラスターを作成する方法について説明しました。 次に、クラスターとデータセンターのリソースを管理する方法を学習します。 
+このクイックスタートでは、Azure Managed Instance for Apache Cassandra クラスターの仮想ネットワーク内にフル マネージドの Apache Spark クラスターを作成する方法について説明しました。 次に、クラスターとデータセンターのリソースを管理する方法を学習します。
 
 > [!div class="nextstepaction"]
 > [Azure CLI を利用して Azure Managed Instance for Apache Cassandra リソースを管理する](manage-resources-cli.md)

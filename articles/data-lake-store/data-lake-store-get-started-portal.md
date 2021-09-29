@@ -1,17 +1,17 @@
 ---
 title: Azure Data Lake Storage Gen1 の使用を開始する - ポータル
 description: Azure portal を使用して Data Lake Storage Gen1 アカウントを作成し、アカウントで基本的な操作を実行します。
-author: twooley
+author: normesta
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 06/27/2018
-ms.author: twooley
-ms.openlocfilehash: b6b13c507f32271e4707cf4c4506bcf8e1f6e633
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.author: normesta
+ms.openlocfilehash: d67144ce7de7665fe69b1ebd9bb72c02995b24ec
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112007552"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128612380"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-portal"></a>Azure Portal で Azure Data Lake Storage Gen1 の使用を開始する
 

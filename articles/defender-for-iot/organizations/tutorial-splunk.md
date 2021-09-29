@@ -4,14 +4,14 @@ description: このチュートリアルでは、Splunk と Azure Defender for I
 author: ElazarK
 ms.author: v-ekrieg
 ms.topic: tutorial
-ms.date: 08/03/2021
+ms.date: 09/12/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 00d4f5c5c432a4b5cccdfbfb83fe81c2844d68e8
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2484de315508310729882e46b5e22669d01ec9f8
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121786405"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124814706"
 ---
 # <a name="tutorial-integrate-splunk-with-azure-defender-for-iot"></a>チュートリアル: Splunk を Azure Defender for IoT と統合する
 
@@ -33,6 +33,8 @@ Splunk アプリケーションは、ローカル環境にインストールす�
 > [!div class="checklist"]
 > * Splunk で Defender for IoT アプリケーションをダウンロードする
 > * Defender for IoT のアラートを Splunk に送信する
+
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -122,6 +124,10 @@ Defender for IoT から Splunk サーバーにアラート情報を送信する�
     | **パスワード** | Splunk サーバーのパスワード |
 
 1. **[送信]** を選びます。
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+クリーンアップするリソースがありません。
 
 ## <a name="next-steps"></a>次のステップ
 

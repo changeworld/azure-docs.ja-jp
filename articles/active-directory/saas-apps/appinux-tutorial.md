@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 344d2317a0a8370c962ff28dfb5dc75e42dfeb76
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: 6457ee919c65aca747a13e23559b883db969e68f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108802074"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124762973"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-appinux"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Appinux の統合
 
@@ -157,7 +157,7 @@ Appinux に対して Azure AD SSO を構成してテストするには、次の�
 
 - Appinux のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-- Microsoft マイ アプリを使用することができます。 マイ アプリで [Appinux] タイルをクリックすると、Appinux のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+- Microsoft マイ アプリを使用することができます。 マイ アプリで [Appinux] タイルをクリックすると、Appinux のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -7,13 +7,13 @@ author: vhorne
 ms.service: application-gateway
 ms.topic: how-to
 ms.date: 07/30/2021
-ms.author: absha
-ms.openlocfilehash: 5a06e02df8eed42db3b79fcfb06e44c4bb17db3e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.author: victorh
+ms.openlocfilehash: ca2f66e60440f2e852c21c196548ace8813099b0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121728067"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124837064"
 ---
 # <a name="create-certificates-to-allow-the-backend-with-azure-application-gateway"></a>Azure Application Gateway でバックエンドを許可する証明書を作成する
 

@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 01/26/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 24640254f32270b8c96c790dca7db31e285cc27f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f87c7f008a7ef004ec109129f440eede0f1cc25a
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98895290"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129080038"
 ---
 # <a name="blocking-legacy-authentication"></a>レガシ認証をブロックする
  

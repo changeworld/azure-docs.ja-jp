@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/21/2021
 ms.author: jeedes
-ms.openlocfilehash: de00b869aef2d1429740d75829da9a5c3e79de15
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: a2c33808be505209ff5eca58480b9fd5f03d9d4f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112465945"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124785536"
 ---
 # <a name="tutorial-integrate-azure-active-directory-single-sign-on-sso-with-splan-visitor"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Splan Visitor を統合する
 
@@ -123,7 +123,7 @@ Splan Visitor で **Britta Simon** というテスト ユーザーを作成し�
 次のオプションのいずれかを使用して Azure AD のシングル サインオン構成をテストします。
 
 * **Azure ポータル**: **[このアプリケーションをテストします]** を選択すると、SSO を設定する Splan Visitor に自動的にサインインします。
-* **Microsoft マイ アプリ ポータル**: **[Splan Visitor]** タイルを選択すると、SSO を設定する Splan Visitor に自動的にサインインします。 マイ アプリ ポータルの詳細については、「[マイ アプリ ポータルからアプリにサインインして開始する](../user-help/my-apps-portal-end-user-access.md)」を参照してください。
+* **Microsoft マイ アプリ ポータル**: **[Splan Visitor]** タイルを選択すると、SSO を設定する Splan Visitor に自動的にサインインします。 マイ アプリ ポータルの詳細については、「[マイ アプリ ポータルからアプリにサインインして開始する](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

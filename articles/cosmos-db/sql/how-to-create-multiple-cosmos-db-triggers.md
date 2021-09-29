@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: maquaran
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f3570256d74fa2da96b4b8335659b5274e492515
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 4d4f602d430a7e71db56f8d5babf78741fc4b88d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123113996"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128666649"
 ---
 # <a name="create-multiple-azure-functions-triggers-for-cosmos-db"></a>複数の Cosmos DB 用 Azure Functions トリガーの作成
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "123113996"
 
 ## <a name="event-based-architecture-requirements"></a>イベントベースのアーキテクチャの要件
 
-[Azure Functions](../../azure-functions/functions-overview.md) を使用してサーバーレス アーキテクチャを構築する際は、サイズが大きく実行時間の長い関数ではなく、連携する小さい関数のセットを作成することを[お勧めします](../../azure-functions/functions-best-practices.md#avoid-long-running-functions)。
+[Azure Functions](../../azure-functions/functions-overview.md) を使用してサーバーレス アーキテクチャを構築する際は、サイズが大きく実行時間の長い関数ではなく、連携する小さい関数のセットを作成することを[お勧めします](../../azure-functions/performance-reliability.md#avoid-long-running-functions)。
 
 [Cosmos DB 用 Azure Functions トリガー](./change-feed-functions.md)を使用してイベントベースのサーバーレス フローを構築する際に、特定の [Azure Cosmos コンテナー](../account-databases-containers-items.md#azure-cosmos-containers)に新しいイベントがあるたびに複数のことを実行したくなる状況に直面します。 トリガーするアクションが互いに独立している場合、理想的な解決策として、実行したい **アクションごとに 1 つの Cosmos DB 用 Azure Functions トリガーを作成** し、すべてで同一の Azure Cosmos コンテナーに対する変更をリッスンします。
 

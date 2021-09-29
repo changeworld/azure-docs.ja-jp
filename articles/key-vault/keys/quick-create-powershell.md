@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 01/27/2021
 ms.author: mbaldwin
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 083cd20747c5dec9b326707489b2494ff5a89804
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 51b1a255eb538dabd735e77ae6161d53c89e90d3
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110664309"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128675841"
 ---
 # <a name="quickstart-set-and-retrieve-a-key-from-azure-key-vault-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して Azure Key Vault との間でキーの設定と取得を行う
 
@@ -49,7 +49,7 @@ Login-AzAccount
 Add-AzKeyVaultKey -VaultName "<your-unique-keyvault-name>" -Name "ExampleKey" -Destination "Software"
 ```
 
-これで、Azure Key Vault に追加したキーは、その URI を使用すると参照できます。 現在のバージョンを取得するには、 **"https://<your-unique-keyvault-name>.vault.azure.net/keys/ExampleKey"** を使用します。 
+これで、Azure Key Vault に追加したキーは、その URI を使用すると参照できます。 **`https://<your-unique-keyvault-name>.vault.azure.net/keys/ExampleKey`** を使用して、現在のバージョンを取得します。 
 
 以前に格納したキーを表示するには:
 

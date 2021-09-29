@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/14/2021
 ms.author: jeedes
-ms.openlocfilehash: 16b54db4ed05e5e9133dcb210ed1d8dac97595fc
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: ecfaec5c9ea935efa67846f7c95f2d56a879cebc
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110090964"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124752127"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sumologic"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と SumoLogic の統合
 
@@ -128,7 +128,7 @@ SumoLogic に対して Azure AD SSO を構成してテストするには、次�
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+### <a name="create-an-azure-ad-test-user&quot;></a>Azure AD のテスト ユーザーの作成
 
 このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
 
@@ -140,7 +140,7 @@ SumoLogic に対して Azure AD SSO を構成してテストするには、次�
    1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
    1. **Create** をクリックしてください。
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
+### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>Azure AD テスト ユーザーの割り当て
 
 このセクションでは、B.Simon に SumoLogic へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
@@ -152,13 +152,13 @@ SumoLogic に対して Azure AD SSO を構成してテストするには、次�
 1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
-## <a name="configure-sumologic-sso"></a>SumoLogic の SSO の構成
+## <a name=&quot;configure-sumologic-sso&quot;></a>SumoLogic の SSO の構成
 
 1. 別の Web ブラウザーのウィンドウで、SumoLogic 企業サイトに管理者としてサインインします。
 
 1. **[管理]** 、 **[セキュリティ]** の順に移動します。
 
-    ![管理](./media/sumologic-tutorial/security.png "管理する")
+    ![管理](./media/sumologic-tutorial/security.png &quot;管理する")
 
 1. **[SAML]** をクリックします。
 
@@ -225,7 +225,7 @@ Azure AD ユーザーが SumoLogic にサインインできるようにするに
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した SumoLogic に自動的にサインインされます。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリ上で [SumoLogic] タイルをクリックすると、SSO を設定した SumoLogic に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリ上で [SumoLogic] タイルをクリックすると、SSO を設定した SumoLogic に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -3,15 +3,15 @@ title: チュートリアル - API のインポートと管理 - Azure API Manag
 description: このチュートリアルでは、Visual Studio Code 用の Azure API Management 拡張機能を使用して、API のインポート、テスト、管理を行う方法について説明します。
 ms.service: api-management
 author: dlepow
-ms.author: apimpm
+ms.author: danlep
 ms.topic: tutorial
 ms.date: 12/10/2020
-ms.openlocfilehash: 0090d981e93cee12f2feaaf7d2c12f341564f6ec
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: ecdb97ad62a9b75279546493bbbf185f92fd29f6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107482332"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128625774"
 ---
 # <a name="tutorial-use-the-api-management-extension-for-visual-studio-code-to-import-and-manage-apis"></a>チュートリアル:Visual Studio Code 用の API Management 拡張機能を使用して API をインポートおよび管理する
 
