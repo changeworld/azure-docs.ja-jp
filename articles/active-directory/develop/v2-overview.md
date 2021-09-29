@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: overview
 ms.workload: identity
-ms.date: 07/09/2020
+ms.date: 09/13/2021
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: identityplatformtop40, contperf-fy21q2
-ms.openlocfilehash: 9d8c747fb18cc815570c536b6f01a745a6c86a7a
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: ad3a5e6dba56bb9fced07f0aec82036031e1f627
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111438254"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128614545"
 ---
 # <a name="what-is-the-microsoft-identity-platform"></a>Microsoft ID プラットフォームとは
 

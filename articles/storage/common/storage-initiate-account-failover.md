@@ -10,12 +10,12 @@ ms.date: 05/07/2021
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: bd1bbf0d1c5a49bde35d303e6780737fb43ca997
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ab764fd95168fef768efd0687adb5e2841bfb140
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121726065"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128609291"
 ---
 # <a name="initiate-a-storage-account-failover"></a>ストレージ アカウントのフェールオーバーを開始する
 
@@ -124,7 +124,7 @@ az storage account failover \ --name accountName
 - CPU、メモリ、ディスク、WAN の容量など、バックグラウンド レプリケーションに使用できるリソース。 ライブ トラフィックは geo レプリケーションよりも優先されます。
 - BLOB ストレージを使用している場合は、BLOB ごとのスナップショットの数。
 - Table ストレージを使用する場合は、 [データのパーティション分割戦略](/rest/api/storageservices/designing-a-scalable-partitioning-strategy-for-azure-table-storage)。 レプリケーション プロセスでは、使用するパーティション キーの数を超えて拡張することはできません。
-  
+
 ## <a name="next-steps"></a>次のステップ
 
 - [ディザスター リカバリーとストレージ アカウントのフェールオーバー](storage-disaster-recovery-guidance.md)

@@ -7,15 +7,15 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 10/28/2020
+ms.date: 09/15/2021
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: f2443af472900363babf9e2381536df7538b5291
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 68b93401d53614301187a6d2994ba9029ed8beb1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107726486"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128605090"
 ---
 # <a name="get-started-with-the-azure-enterprise-portal"></a>Azure エンタープライズ ポータルを使い始める
 

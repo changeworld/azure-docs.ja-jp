@@ -9,12 +9,13 @@ ms.author: rifox
 ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 036a3de91d39337353eebf7c3d46b1c659fe7cd5
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.subservice: sms
+ms.openlocfilehash: c1759ba3bc4f9f516485f42f03d040bec5b4c78a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123255307"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128636061"
 ---
 # <a name="sms-concepts"></a>SMS の概念
 

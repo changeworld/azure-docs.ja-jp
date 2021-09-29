@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/22/2021
 ms.author: jeedes
-ms.openlocfilehash: 34b892e45dabf6273143ee331a9f7837464d99a3
-ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
+ms.openlocfilehash: b611d883d979069248590acb46196c84decd918a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114691371"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124731503"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-walkme-saml20"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と WalkMe SAML2.0 の統合
 
@@ -132,7 +132,7 @@ Microsoft Azure Active Directory SSO を WalkMe SAML2.0 と一緒に構成して
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した WalkMe SAML2.0 に自動的にサインインされます。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [WalkMe SAML2.0] タイルをクリックすると、SSO を設定した WalkMe SAML2.0 に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [WalkMe SAML2.0] タイルをクリックすると、SSO を設定した WalkMe SAML2.0 に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -8,26 +8,23 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/16/2021
+ms.date: 09/12/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 4c4d31d7a1d9e67b1c246de50887d65206a12d57
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: fd50253b5fc77ec1042aada9351e85ee64035ec2
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112284619"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124740290"
 ---
 # <a name="set-up-a-resource-owner-password-credentials-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でリソース所有者パスワード資格情報フローを設定する
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
 Azure Active Directory B2C (Azure AD B2C) では、リソース所有者パスワード資格情報 (ROPC) フローが OAuth の標準的な認証フローです。 このフローでは、アプリケーション (証明書利用者とも呼ばれます) によって有効な資格情報がトークンと交換されます。 資格情報には、ユーザー ID とパスワードが含まれます。 返されるトークンは、ID トークン、アクセス トークン、および更新トークンです。
-
-[!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
-
 
 ## <a name="ropc-flow-notes"></a>ROPC フローの説明
 
@@ -372,7 +369,7 @@ username=contosouser.outlook.com.ws&password=Passxword1&grant_type=password&scop
 
 * **現象** - ROPC フローを実行すると、次のメッセージが表示されます: *AADB2C90057: 指定されたアプリケーションは、OAuth 暗黙的フローを許可するように構成されていません*。
 * **考えられる原因** - アプリケーションで暗黙のフローが許可されていません。
-* **解決方法**: Azure AD B2C で[アプリケーションの登録](#register-an-application)を作成するときは、アプリケーションマニフェストを手動で編集し、`oauth2AllowImplicitFlow` プロパティの値を `true` に設定する必要があります。 `oauth2AllowImplicitFlow` プロパティを構成した後、変更が有効になるまで数分間かかる場合があります (通常は 5 分以下)。 
+* **解決方法**: Azure AD B2C で [アプリケーションの登録](#register-an-application)を作成するときは、アプリケーションマニフェストを手動で編集し、`oauth2AllowImplicitFlow` プロパティの値を `true` に設定する必要があります。 `oauth2AllowImplicitFlow` プロパティを構成した後、変更が有効になるまで数分間かかる場合があります (通常は 5 分以下)。 
 
 ## <a name="use-a-native-sdk-or-app-auth"></a>ネイティブ SDK または App-Auth を使用する
 

@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 249332f680bd0550d99a38a200ce95d32e6f95d7
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: f840d72698790be10630fe182f4655554ff23962
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123473606"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124748385"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>Azure AD で緊急アクセス用管理者アカウントを管理する
 
@@ -158,4 +158,4 @@ AD Domain Services と AD FS または類似の ID プロバイダーを使用�
 - [Azure AD Premium へのサインアップ](../fundamentals/active-directory-get-started-premium.md) (まだサインアップしていない場合)
 - [ユーザーに 2 段階認証を要求する方法](../authentication/howto-mfa-userstates.md)
 - [Microsoft 365 のグローバル管理者に追加の保護を構成する](/office365/enterprise/protect-your-global-administrator-accounts) (Microsoft 365 を使っている場合)
-- [グローバル管理者のアクセス レビューを開始する](../privileged-identity-management/pim-how-to-start-security-review.md)、および[既存のグローバル管理者をより明確な管理者ロールに移行する](permissions-reference.md)
+- [グローバル管理者のアクセス レビューを開始する](../privileged-identity-management/pim-create-azure-ad-roles-and-resource-roles-review.md)、および[既存のグローバル管理者をより明確な管理者ロールに移行する](permissions-reference.md)

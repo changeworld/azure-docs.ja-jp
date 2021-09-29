@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 72512f062fc1cd784bcaf9ec3a6dc1b87b3c998b
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: cbd4de11b575c3c8125b829d5636d22e3131bdc9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108801678"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124753799"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-dotcom-monitor"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Dotcom-Monitor の統合
 
@@ -143,7 +143,7 @@ Dotcom-Monitor に対して Azure AD SSO を構成してテストするには、
 
 - Dotcom-Monitor のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-- Microsoft マイ アプリを使用することができます。 マイ アプリで [Dotcom-Monitor] タイルをクリックすると、Dotcom-Monitor のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+- Microsoft マイ アプリを使用することができます。 マイ アプリで [Dotcom-Monitor] タイルをクリックすると、Dotcom-Monitor のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

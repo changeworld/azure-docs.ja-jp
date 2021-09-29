@@ -9,12 +9,13 @@ ms.author: tchladek
 ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: d660f63284c3ad5ade04bbd52bcd27c5db3fa946
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.subservice: teams-interop
+ms.openlocfilehash: 6140ba3573452e1285236e9848e2068fd77afc07
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123256830"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128636099"
 ---
 # <a name="build-a-custom-teams-endpoint"></a>カスタム Teams エンドポイントを構築する
 

@@ -12,12 +12,12 @@ metadata:
   manager: daveba
   ms.reviewer: michmcla
   ms.collection: M365-identity-device-management
-  ms.openlocfilehash: 93a4f7b6b58262ce71cfc40492ffc444d15ccc0c
-  ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+  ms.openlocfilehash: 101eec41e463be264f51015c9672b60bd52e0d40
+  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/30/2021
-  ms.locfileid: "111907487"
+  ms.lasthandoff: 09/13/2021
+  ms.locfileid: "124787397"
 title: Azure AD Multi-Factor Authentication についてよく寄せられる質問
 summary: >
   この FAQ では、Azure AD Multi-Factor Authentication と Multi-Factor Authentication サービスの利用について、よく寄せられる質問に回答します。 FAQ の内容は、サービス全般、課金モデル、ユーザー エクスペリエンス、トラブルシューティングに分けてまとめられています。
@@ -170,7 +170,7 @@ sections:
       上記の手順でうまく行かない場合は、ユーザーが複数の認証方法に構成されているかどうかを確認します。 再度サインインを試しますが、その際にサインイン ページで別の認証方法を選択します。
 
 
-      詳細については、[エンドユーザー向けトラブルシューティング ガイド](../user-help/multi-factor-authentication-end-user-troubleshoot.md)を参照してください。
+      詳細については、[エンドユーザー向けトラブルシューティング ガイド](https://support.microsoft.com/account-billing/common-problems-with-two-step-verification-for-a-work-or-school-account-63acbb9b-16a1-47b9-8619-6a865e8071a5)を参照してください。
   - question: >
       アカウントに入れないユーザーがいる場合はどうすればよいですか。
     answer: >
@@ -182,7 +182,7 @@ sections:
   - question: >
       ユーザーがブラウザー以外のアプリにサインインできない場合はどうすればよいですか。
     answer: >
-      組織でまだ従来型クライアントを使用しており、かつ[アプリ パスワードの使用を許可している](howto-mfa-app-passwords.md)場合、ユーザーがこのような従来型のクライアントにユーザー名とパスワードでサインインすることはできません。 代わりに、ユーザーは[アプリ パスワードを設定する](../user-help/multi-factor-authentication-end-user-app-passwords.md)必要があります。 ユーザーはサインイン情報をクリア (削除) してアプリを再起動し、ユーザー名と、通常のパスワードではなく "*アプリ パスワード*" を使用してサインインしなければなりません。
+      組織でまだ従来型クライアントを使用しており、かつ[アプリ パスワードの使用を許可している](howto-mfa-app-passwords.md)場合、ユーザーがこのような従来型のクライアントにユーザー名とパスワードでサインインすることはできません。 代わりに、ユーザーは[アプリ パスワードを設定する](https://support.microsoft.com/account-billing/manage-app-passwords-for-two-step-verification-d6dc8c6d-4bf7-4851-ad95-6d07799387e9)必要があります。 ユーザーはサインイン情報をクリア (削除) してアプリを再起動し、ユーザー名と、通常のパスワードではなく "*アプリ パスワード*" を使用してサインインしなければなりません。
 
 
       組織で従来型クライアントを使用していない場合は、アプリ パスワードの作成をユーザーに許可しないようにしてください。

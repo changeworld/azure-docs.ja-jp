@@ -1,14 +1,14 @@
 ---
 title: CMMC レベル 3 ブループリント サンプル
 description: CMMC レベル 3 ブループリント サンプルの概要。 このブループリント サンプルは、お客様が特定のコントロールを評価するのに役立ちます。
-ms.date: 03/24/2021
+ms.date: 09/08/2021
 ms.topic: sample
-ms.openlocfilehash: df3dac17ce91757640f5b437f5915d41c901afc4
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 2925acf75ada0bd950ca52e3fe63b9c97b5e34ad
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108757639"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128632331"
 ---
 # <a name="cmmc-level-3-blueprint-sample"></a>CMMC レベル 3 ブループリント サンプル
 
@@ -280,8 +280,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 |CMMC レベル 3|ポリシーの割り当て|ポリシーの評価から除外する名前空間: Kubernetes クラスター ポッドでは承認されたホスト ネットワークとポート範囲のみを使用する必要がある|ポリシー評価から除外する Kubernetes 名前空間の一覧。|
 |CMMC レベル 3|ポリシーの割り当て|App Services に対する最新の Java バージョン|App Services に対してサポートされる最新の Java バージョン|
 |CMMC レベル 3|ポリシーの割り当て|App Services に対する Linux 用の最新の Python バージョン|App Services に対してサポートされる最新の Python バージョン|
-|CMMC レベル 3|ポリシーの割り当て|省略可能: Log Analytics エージェントのデプロイを監査するときにスコープに追加する、Linux OS をサポートしている VM イメージのリスト|値の例: '/subscriptions/<subscriptionId>/resourceGroups/YourResourceGroup/providers/Microsoft.Compute/images/ContosoStdImage'|
-|CMMC レベル 3|ポリシーの割り当て|省略可能: Log Analytics エージェントのデプロイを監査するときにスコープに追加する、Windows OS をサポートしている VM イメージのリスト|値の例: '/subscriptions/<subscriptionId>/resourceGroups/YourResourceGroup/providers/Microsoft.Compute/images/ContosoStdImage'|
+|CMMC レベル 3|ポリシーの割り当て|省略可能: Log Analytics エージェントのデプロイを監査するときにスコープに追加する、Linux OS をサポートしている VM イメージのリスト|値の例: `/subscriptions/<subscriptionId>/resourceGroups/YourResourceGroup/providers/Microsoft.Compute/images/ContosoStdImage`|
+|CMMC レベル 3|ポリシーの割り当て|省略可能: Log Analytics エージェントのデプロイを監査するときにスコープに追加する、Windows OS をサポートしている VM イメージのリスト|値の例: `/subscriptions/<subscriptionId>/resourceGroups/YourResourceGroup/providers/Microsoft.Compute/images/ContosoStdImage`|
 |CMMC レベル 3|ポリシーの割り当て|Network Watcher を有効にする必要があるリージョンの一覧|Network Watcher がリージョンに対して有効になっていない場合に監査します。|
 |CMMC レベル 3|ポリシーの割り当て|診断ログを有効にする必要のあるリソースの種類の一覧||
 |CMMC レベル 3|ポリシーの割り当て|ポッドがホスト ネットワーク名前空間で使用可能な、許容されるホスト ポート範囲内の最大値|ポッドがホスト ネットワーク名前空間で使用可能な、許容されるホスト ポート範囲内の最大値です。|

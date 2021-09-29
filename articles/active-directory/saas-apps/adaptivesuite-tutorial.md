@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/19/2021
 ms.author: jeedes
-ms.openlocfilehash: 6372cd9d778210163c461c55119343e6c6911e4d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5444d1eb503fd238f5acd5c1e19da68d58782cad
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101649084"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124770531"
 ---
 # <a name="tutorial-integrate-adaptive-insights-with-azure-active-directory"></a>チュートリアル:Adaptive Insights を Azure Active Directory と統合する
 
@@ -189,7 +189,7 @@ Azure AD ユーザーが Adaptive Insights にサインインできるように�
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した Adaptive Insights に自動的にサインインします。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Adaptive Insights] タイルをクリックすると、SSO を設定した Adaptive Insights に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Adaptive Insights] タイルをクリックすると、SSO を設定した Adaptive Insights に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

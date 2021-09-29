@@ -1,8 +1,8 @@
 ---
 title: 'クイックスタート: Azure Blob Storage ライブラリ v12 - Python'
 description: このクイックスタートでは、Python 用 Azure Blob Storage クライアント ライブラリ バージョン 12 を使用して、BLOB (オブジェクト) ストレージ内にコンテナーと BLOB を作成する方法について説明します。 次に、ローカル コンピューターに BLOB をダウンロードする方法と、コンテナー内のすべての BLOB を一覧表示する方法について説明します。
-author: twooley
-ms.author: twooley
+author: normesta
+ms.author: normesta
 ms.date: 01/28/2021
 ms.topic: quickstart
 ms.service: storage
@@ -10,12 +10,12 @@ ms.subservice: blobs
 ms.custom:
 - devx-track-python
 - mode-api
-ms.openlocfilehash: d560dfc8d8621e94315d8603a9d6e8b3b8cbf09a
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: fdb5e14d57e2e8f9fa4bcf0cba5d54dba253e935
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123468116"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128587558"
 ---
 # <a name="quickstart-manage-blobs-with-python-v12-sdk"></a>クイック スタート:Python v12 SDK で BLOB を管理する
 
@@ -23,10 +23,10 @@ ms.locfileid: "123468116"
 
 その他のリソース:
 
-* [API リファレンス ドキュメント](/python/api/azure-storage-blob)
-* [ライブラリ ソース コード](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob)
-* [パッケージ (Python Package Index)](https://pypi.org/project/azure-storage-blob/)
-* [サンプル](../common/storage-samples-python.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
+- [API リファレンス ドキュメント](/python/api/azure-storage-blob)
+- [ライブラリ ソース コード](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob)
+- [パッケージ (Python Package Index)](https://pypi.org/project/azure-storage-blob/)
+- [サンプル](../common/storage-samples-python.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -90,9 +90,9 @@ pip install azure-storage-blob
 
 Azure Blob Storage は、大量の非構造化データを格納するために最適化されています。 非構造化データとは、特定のデータ モデルや定義に従っていないデータであり、テキスト データやバイナリ データなどがあります。 Blob Storage には、3 種類のリソースがあります。
 
-* ストレージ アカウント
-* ストレージ アカウント内のコンテナー
-* コンテナー内の BLOB
+- ストレージ アカウント
+- ストレージ アカウント内のコンテナー
+- コンテナー内の BLOB
 
 次の図に、これらのリソースの関係を示します。
 
@@ -100,20 +100,20 @@ Azure Blob Storage は、大量の非構造化データを格納するために�
 
 これらのリソースとやり取りするには、以下の Python クラスを使用します。
 
-* [BlobServiceClient](/python/api/azure-storage-blob/azure.storage.blob.blobserviceclient):`BlobServiceClient` クラスを使用して、Azure Storage リソースと BLOB コンテナーを操作できます。
-* [ContainerClient](/python/api/azure-storage-blob/azure.storage.blob.containerclient):`ContainerClient` クラスを使用して、Azure Storage コンテナーとその BLOB を操作できます。
-* [BlobClient](/python/api/azure-storage-blob/azure.storage.blob.blobclient):`BlobClient` クラスを使用して、Azure Storage BLOB を操作できます。
+- [BlobServiceClient](/python/api/azure-storage-blob/azure.storage.blob.blobserviceclient):`BlobServiceClient` クラスを使用して、Azure Storage リソースと BLOB コンテナーを操作できます。
+- [ContainerClient](/python/api/azure-storage-blob/azure.storage.blob.containerclient):`ContainerClient` クラスを使用して、Azure Storage コンテナーとその BLOB を操作できます。
+- [BlobClient](/python/api/azure-storage-blob/azure.storage.blob.blobclient):`BlobClient` クラスを使用して、Azure Storage BLOB を操作できます。
 
 ## <a name="code-examples"></a>コード例
 
 以下のサンプル コード スニペットは、Python 用 Azure Blob Storage クライアント ライブラリを使用して以下のタスクを実行する方法を示します。
 
-* [接続文字列を取得する](#get-the-connection-string)
-* [コンテナーの作成](#create-a-container)
-* [コンテナーに BLOB をアップロードする](#upload-blobs-to-a-container)
-* [コンテナー内の BLOB を一覧表示する](#list-the-blobs-in-a-container)
-* [BLOB をダウンロードする](#download-blobs)
-* [コンテナーの削除](#delete-a-container)
+- [接続文字列を取得する](#get-the-connection-string)
+- [コンテナーの作成](#create-a-container)
+- [コンテナーに BLOB をアップロードする](#upload-blobs-to-a-container)
+- [コンテナー内の BLOB を一覧表示する](#list-the-blobs-in-a-container)
+- [BLOB をダウンロードする](#download-blobs)
+- [コンテナーの削除](#delete-a-container)
 
 ### <a name="get-the-connection-string"></a>接続文字列を取得する
 
@@ -219,5 +219,5 @@ BLOB ストレージのサンプル アプリを確認するには、以下に�
 > [!div class="nextstepaction"]
 > [Azure Blob Storage SDK v12 Python サンプル](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob/samples)
 
-* 詳細については、「[Python 用 Azure Storage クライアント ライブラリ](/azure/developer/python/sdk/storage/overview)」を参照してください。
-* チュートリアル、サンプル、クイックスタートなどのドキュメントについては、「[Python 開発者向けの Azure](/azure/python/)」を参照してください。
+- 詳細については、「[Python 用 Azure Storage クライアント ライブラリ](/azure/developer/python/sdk/storage/overview)」を参照してください。
+- チュートリアル、サンプル、クイックスタートなどのドキュメントについては、「[Python 開発者向けの Azure](/azure/python/)」を参照してください。

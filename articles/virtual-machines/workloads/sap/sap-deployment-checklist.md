@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 51bfd632e854132be27a7b971cf03e9fe5b00138
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3c91961eb6e89533ee5b995eb56fdd172d21b6f2
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102504305"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124730183"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Azure での SAP ワークロード: 計画とデプロイに関するチェックリスト
 
@@ -82,7 +82,7 @@ ms.locfileid: "102504305"
     - [タグ付けの戦略](../../../azure-resource-manager/management/tag-resources.md#tags-and-billing)。
     - VM と他のインフラストラクチャ コンポーネントおよび論理名の名前付け規則。
 5.  Microsoft Professional または Premier サポート契約。 Microsoft の Premier サポート契約をお持ちの場合は、Microsoft テクニカル アカウント マネージャー (TAM) を確認してください。 SAP のサポート要件については、[SAP サポート ノート #2015553](https://launchpad.support.sap.com/#/notes/2015553) を参照してください。
-6.  Azure サブスクリプションの数と、サブスクリプションのコア クォータ。 必要に応じて、[Azure サブスクリプションのクォータを増やすサポート リクエストを開きます](../../../azure-portal/supportability/resource-manager-core-quotas-request.md)。
+6.  Azure サブスクリプションの数と、サブスクリプションのコア クォータ。 必要に応じて、[Azure サブスクリプションのクォータを増やすサポート リクエストを開きます](../../../azure-portal/supportability/regional-quota-requests.md)。
 7.  Azure への SAP データの移行に関するデータの削減とデータ移行計画。 SAP NetWeaver システムについては、大容量のデータ量を制限する方法についてのガイドラインが SAP にあります。 SAP ERP システムでのデータ管理に関する[こちらの SAP ガイド](https://wiki.scn.sap.com/wiki/download/attachments/247399467/DVM_%20Guide_7.2.pdf?version=1&modificationDate=1549365516000&api=v2)を参照してください。 一部のコンテンツは、一般に NetWeaver と S/4HANA システムにも適用されます。
 8.  自動化されたデプロイのアプローチ。 Azure へのインフラストラクチャ デプロイの自動化の目的は、決定論的な方法でデプロイし、決定論的な結果を得ることです。 多くのお客様は、PowerShell または CLI ベースのスクリプトを使用します。 しかしながら、SAP 用に Azure インフラストラクチャをデプロイしたり、SAP ソフトウェアをインストールしたりすることに使用できるさまざまなオープン ソース テクノロジがあります。 GitHub で例を見つけることができます。
     - [Azure Cloud での SAP の自動デプロイ](https://github.com/Azure/sap-hana)

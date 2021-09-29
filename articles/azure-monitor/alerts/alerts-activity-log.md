@@ -4,12 +4,12 @@ description: Azure portal、Azure Resource Manager テンプレート、およ�
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 08/12/2021
-ms.openlocfilehash: 8f26806a08ca463350e54d5ce1319fe0323715e7
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 273f8b3a747685c250958e745ce6a37754859329
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123220037"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124744585"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>Azure Monitor を使用してアクティビティ ログ アラートを作成、表示、管理する  
 
@@ -269,6 +269,5 @@ New-AzResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile sampleActi
 
 - [アクティビティ ログの Webhook スキーマ](./activity-log-alerts-webhook.md)について学習します。
 - [アクティビティ ログの概要](./activity-log-alerts.md)をお読みください。
-- [アクション グループ](../platform/action-groups.md)について学習します。  
+- [アクション グループ](./action-groups.md)について学習します。  
 - [サービス正常性の通知](../../service-health/service-notifications.md)について学習します。
-

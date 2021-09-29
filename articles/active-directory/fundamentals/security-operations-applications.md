@@ -12,12 +12,12 @@ ms.date: 07/15/2021
 ms.author: baselden
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aaa8f116680b3876eebb2b96a4f4c5e40d6384a2
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 1a03b30c1e2628342246430089e3c6fbb47c98a7
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121732342"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124754341"
 ---
 # <a name="azure-active-directory-security-operations-guide-for-applications"></a>アプリケーション向けの Azure Active Directory セキュリティ運用ガイド
 
@@ -66,21 +66,21 @@ Azure Active Directory (Azure AD) でのアプリケーションの動作に慣�
 
 ## <a name="where-to-look"></a>確認先
 
-調査と監視に使用するログ ファイルを以下に示します。
+調査と監視に使用するログ ファイルは次のとおりです。
 
 * [Azure AD 監査ログ](../reports-monitoring/concept-audit-logs.md)
 
 * [サインイン ログ](../reports-monitoring/concept-all-sign-ins.md)
 
-* [Microsoft 365 監査ログ](/microsoft-365/compliance/auditing-solutions-overview?view=o365-worldwide)
+* [Microsoft 365 監査ログ](/microsoft-365/compliance/auditing-solutions-overview)
 
 * [Azure Key Vault のログ](../../key-vault/general/logging.md)
 
-Azure portal から、Azure AD 監査ログを表示し、コンマ区切り値 (CSV) または JavaScript Object Notation (JSON) ファイルとしてダウンロードできます。 Azure portal には、Azure AD ログを、監視とアラートの自動化を向上できる他のツールと統合する方法がいくつかあります。
+Azure AD 監査ログは、Azure portal で確認し、コンマ区切り値 (CSV) ファイルまたは JavaScript Object Notation (JSON) ファイルとしてダウンロードできます。 Azure portal には、Azure AD ログを他のツールと統合する方法がいくつか用意されており、監視とアラートの自動化を強化することができます。
 
-* **[Azure Sentinel](../../sentinel/overview.md)** – セキュリティ情報およびイベント管理 (SIEM) 機能が提供され、エンタープライズ レベルでインテリジェントなセキュリティ分析を実現します。 
+* **[Azure Sentinel](../../sentinel/overview.md)** - セキュリティ情報イベント管理 (SIEM) 機能を備え、エンタープライズ レベルでのインテリジェントなセキュリティ分析を実現します。 
 
-* **[Azure Monitor](../../azure-monitor/overview.md)** – さまざまな状況の自動化された監視とアラートを有効にできます。 ブックを作成または使用して、異なるソースのデータを結合できます。
+* **[Azure Monitor](../../azure-monitor/overview.md)** - さまざまな条件に基づいて監視とアラートを自動化します。 ブックを作成または使用して、異なるソースのデータを結合できます。
 
 * **[Azure Event Hubs](../../event-hubs/event-hubs-about.md) を SIEM と統合** - Event Hub 統合を介して、Splunk、ArcSight、QRadar、Sumo Logic など、[他の SIEM に Azure AD ログを統合できます](../reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)。
 
@@ -99,7 +99,7 @@ Azure portal から、Azure AD 監査ログを表示し、コンマ区切り値 
 * 長い期間の資格情報は、短い期間の資格情報に置き換えます。 資格情報がコード リポジトリにコミットされず、安全に格納されることを保証するための手順を行います。
 
 
-| [What to monitor] (監視対象)| リスク レベル| Where| フィルター/サブフィルター| メモ |
+| [What to monitor] (監視対象)| リスク レベル| Where| フィルターまたはサブフィルター| メモ |
 | -|-|-|-|-|
 | 既存のアプリケーションに資格情報を追加した| 高| Azure AD 監査ログ| Service-Core ディレクトリ、Category-ApplicationManagement <br>アクティビティ: アプリケーションの更新 - 証明書およびシークレット管理<br>および<br>アクティビティ: サービス プリンシパルの更新/アプリケーションの更新| 資格情報が次の場合にアラートを生成します。<li> 通常営業時間またはワークフローの外で追加された。<li> ご利用の環境では使われていない種類である。<li> サービス プリンシパルをサポートする SAML 以外のフローに追加された。 |
 | 資格情報の有効期間がポリシーで許可されているよりも長い。| Medium| Microsoft Graph| アプリケーション キー資格情報の状態と終了日<br>および<br>アプリケーション パスワードの資格情報| MS Graph API を使用して、資格情報の開始および終了日を検索し、許可された有効期間よりも長い資格情報を評価できます。 この表の後の PowerShell スクリプトを参照してください。 |
@@ -121,7 +121,7 @@ Azure portal から、Azure AD 監査ログを表示し、コンマ区切り値 
 ### <a name="service-principal-assigned-to-a-role"></a>ロールに割り当てられたサービス プリンシパル
 
 
-| [What to monitor] (監視対象)| リスク レベル| Where| フィルター/サブフィルター| メモ |
+| [What to monitor] (監視対象)| リスク レベル| Where| フィルターまたはサブフィルター| メモ |
 |-|-|-|-|-|
 | Azure RBAC ロールまたは Azure AD ロールに割り当てられたアプリ| 高から中| Azure AD 監査ログ| 種類: サービス プリンシパル<br>アクティビティ: "メンバーをロールに追加する" または "適格なメンバーをロールに追加する"<br>または<br>"スコープを持つメンバーをロールに追加する"。| グローバル管理者などの高い特権を持つロールの場合、リスクは高です。 低い特権ロールの場合、リスクは中です。 通常の変更管理または構成手順の外部で、アプリケーションが Azure ロールまたは Azure AD ロールに割り当てられたときは常にアラートを生成します。 |
 
@@ -129,7 +129,7 @@ Azure portal から、Azure AD 監査ログを表示し、コンマ区切り値 
 
 アプリケーションは、最小特権のプリンシパルにも従う必要があります。 アプリケーションのアクセス許可を調査して、本当に必要なアクセス許可を確保します。 既存のアプリケーションを識別し、特権アクセス許可を強調表示するのに役立つ[アプリ同意付与レポート](https://aka.ms/getazureadpermissions)を作成できます。
 
-| [What to monitor] (監視対象)|リスク レベル|Where| フィルター/サブフィルター| メモ|
+| [What to monitor] (監視対象)|リスク レベル|Where| フィルターまたはサブフィルター| メモ|
 |-|-|-|-|-|
 | アプリに " *.All" のアクセス許可 (Directory.ReadWrite.All) や広範囲のアクセス許可 (Mail.* ) など、高い特権を持つアクセス許可が付与される| 高 |Azure AD 監査ログ| "サービス プリンシパルへのアプリ ロールの割り当てを追加する"、 <br>このとき<br> ターゲットで、機密データを含む API を識別する (Microsoft Graph など) <br>および<br>AppRole.Value で、高い特権を持つアプリケーションのアクセス許可 (アプリ ロール) を識別する。| " *.All" (Directory.ReadWrite.All) や広範囲のアクセス許可 (Mail.* ) など、幅広いアクセス許可が付与されたアプリ |
 | 管理者が、アプリケーションのアクセス許可 (アプリ ロール) または高い特権を持つ委任されたアクセス許可を付与する |高| Microsoft 365 ポータル| "サービス プリンシパルへのアプリ ロールの割り当てを追加する"、 <br>このとき<br>ターゲットで、機密データを含む API を識別する (Microsoft Graph など)<br>"委任されたアクセス許可の付与を追加する"、 <br>このとき<br>ターゲットで、機密データを含む API を識別する (Microsoft Graph など) <br>および<br>DelegatedPermissionGrant.Scope に、高い特権のアクセス許可が含まれる。| グローバル管理者、アプリケーション管理者、またはクラウド アプリケーション管理者がアプリケーションに同意したとき、アラートを生成します。 特に、通常のアクティビティや変更手順以外の同意を探します。 |
@@ -143,7 +143,7 @@ Azure portal から、Azure AD 監査ログを表示し、コンマ区切り値 
 
 Azure Key Vault を使用して、テナントのシークレットを格納できます。 Key Vault の構成とアクティビティの変更には特に注意することをお勧めします。 
 
-| [What to monitor] (監視対象)| リスク レベル| Where| フィルター/サブフィルター| メモ |
+| [What to monitor] (監視対象)| リスク レベル| Where| フィルターまたはサブフィルター| メモ |
 |-|-|-|-|-|
 | Key Vault にいつ、だれが、どのようにアクセスするか| Medium| [Azure Key Vault のログ](../../key-vault/general/logging.md?tabs=Vault)| リソースの種類: Key Vault| 調査項目 <li> 通常のプロセスおよび時間外の Key Vault へのアクセス。 <li> Key Vault ACL への変更すべて。 |
 
@@ -151,7 +151,7 @@ Azure Key Vault を設定した後、必ず[ログ記録を有効](../../key-vau
 
 ### <a name="end-user-consent"></a>エンドユーザーの同意
 
-| [What to monitor] (監視対象)| リスク レベル| Where| フィルター/サブフィルター| メモ |
+| [What to monitor] (監視対象)| リスク レベル| Where| フィルターまたはサブフィルター| メモ |
 |-|-|-|-|-|
 | アプリケーションに対するエンドユーザーの同意| 低| Azure AD 監査ログ| アクティビティ: アプリケーションへの同意/ConsentContext.IsAdminConsent = false| 以下のものを探します。 <li>高プロファイルまたは高い特権を持つアカウント。<li> アプリで、危険度の高いアクセス許可が要求されている<li>疑わしい名前を持つアプリ (ありふれている、スペルミスなど) |
 
@@ -162,13 +162,13 @@ Azure Key Vault を設定した後、必ず[ログ記録を有効](../../key-vau
 
 * [アプリケーションの同意の管理と Azure Active Directory の同意要求の評価](../manage-apps/manage-consent-requests.md)
 
-* [不正同意付与を検出して修復する - Office 365](/microsoft-365/security/office-365-security/detect-and-remediate-illicit-consent-grants?view=o365-worldwide)
+* [不正同意付与を検出して修復する - Office 365](/microsoft-365/security/office-365-security/detect-and-remediate-illicit-consent-grants)
 
 * [インシデント対応プレイブック - アプリ同意付与の調査](/security/compass/incident-response-playbook-app-consent)
 
 ### <a name="end-user-stopped-due-to-risk-based-consent"></a>リスクベースの同意のためにエンド ユーザーが停止した 
 
-| [What to monitor] (監視対象)| リスク レベル| Where| フィルター/サブフィルター| メモ |
+| [What to monitor] (監視対象)| リスク レベル| Where| フィルターまたはサブフィルター| メモ |
 |-|-|-|-|-|
 | リスクベースの同意のためにエンドユーザーの同意が停止した| Medium| Azure AD 監査ログ| Core ディレクトリ/ApplicationManagement/アプリケーションへの同意<br> エラー状態の理由 = Microsoft.online.Security.userConsent<br>BlockedForRiskyAppsExceptions| リスクが原因で同意が停止されたときは常に監視および分析します。 以下のものを探します。<li>高プロファイルまたは高い特権を持つアカウント。<li> アプリで、危険度の高いアクセス許可が要求されている<li>疑わしい名前を持つアプリ (ありふれている、スペルミスなど) |
 
@@ -178,7 +178,7 @@ Azure Key Vault を設定した後、必ず[ログ記録を有効](../../key-vau
 
 ### <a name="dangling-uri-and-redirect-uri-changes"></a>宙ぶらりんの URI とリダイレクト URI の変更 
 
-| [What to monitor] (監視対象)| リスク レベル| Where| フィルター/サブフィルター| メモ |
+| [What to monitor] (監視対象)| リスク レベル| Where| フィルターまたはサブフィルター| メモ |
 |-|-|-|-|-|
 | ダングリング URI| 高| Azure AD ログとアプリケーションの登録| Service-Core ディレクトリ、Category-ApplicationManagement<br>アクティビティ: アプリケーションの更新<br>成功 – プロパティ名 AppAddress| 存在しなくなったドメイン名や明示的に所有していないドメイン名を指すなど、宙ぶらりんの URI を探します。 |
 | リダイレクト URI 構成の変更| 高| Azure AD ログ| Service-Core ディレクトリ、Category-ApplicationManagement<br>アクティビティ: アプリケーションの更新<br>成功 – プロパティ名 AppAddress| HTTPS* を使用していない URI、URL の末尾またはドメインにワイルドカードを含む URI、アプリケーションに固有ではない URI、ご自分が制御していないドメインを指す URI を探します。 |
@@ -188,7 +188,7 @@ Azure Key Vault を設定した後、必ず[ログ記録を有効](../../key-vau
 ### <a name="appid-uri-added-modified-or-removed"></a>AppID URI が追加、変更、または削除された
 
 
-| [What to monitor] (監視対象)| リスク レベル| Where| フィルター/サブフィルター| メモ |
+| [What to monitor] (監視対象)| リスク レベル| Where| フィルターまたはサブフィルター| メモ |
 |-|-|-|-|-|
 | AppID URI の変更| 高| Azure AD ログ| Service-Core ディレクトリ、Category-ApplicationManagement<br>アクティビティ: 更新<br>Application<br>アクティビティ: サービス プリンシパルの更新| URI の追加、変更、削除など、AppID URI の変更を探します。 |
 
@@ -198,13 +198,13 @@ Azure Key Vault を設定した後、必ず[ログ記録を有効](../../key-vau
 ### <a name="new-owner"></a>新しい所有者
 
 
-| [What to monitor] (監視対象)| リスク レベル| Where| フィルター/サブフィルター| メモ |
+| [What to monitor] (監視対象)| リスク レベル| Where| フィルターまたはサブフィルター| メモ |
 |-|-|-|-|-|
 | アプリケーション所有者に対する変更| Medium| Azure AD ログ| Service-Core ディレクトリ、Category-ApplicationManagement<br>アクティビティ: アプリケーションへの所有者の追加| 通常の変更管理アクティビティの外部で、アプリケーション所有者として追加されているユーザーのインスタンスを探します。 |
 
 ### <a name="logout-url-modified-or-removed"></a>ログアウト URL が変更または削除された
 
-| [What to monitor] (監視対象)| リスク レベル| Where| フィルター/サブフィルター| メモ |
+| [What to monitor] (監視対象)| リスク レベル| Where| フィルターまたはサブフィルター| メモ |
 |-|-|-|-|-|
 | ログアウト URL の変更| 低| Azure AD ログ| Service-Core ディレクトリ、Category-ApplicationManagement<br>アクティビティ: アプリケーションの更新<br>および<br>アクティビティ: サービス プリンシパルの更新| サインアウト URL に対する変更を探します。 空のエントリまたは存在しない場所へのエントリがあると、ユーザーによるセッションの終了が停止されます。 |
 
@@ -224,7 +224,7 @@ SIEM に対する Azure AD 監視構成情報 - [Azure Monitor とパートナ�
 
  ## <a name="next-steps"></a>次のステップ
 
-次のセキュリティ運用ガイドの記事をご覧ください。
+これらのセキュリティ運用ガイドの記事を参照してください。
 
 [Azure AD セキュリティ運用の概要](security-operations-introduction.md)
 
@@ -232,11 +232,11 @@ SIEM に対する Azure AD 監視構成情報 - [Azure Monitor とパートナ�
 
 [特権アカウントのためのセキュリティ運用](security-operations-privileged-accounts.md)
 
-[Privileged Identity Management 向けのセキュリティ運用](security-operations-privileged-identity-management.md)
+[Privileged Identity Management のためのセキュリティ運用](security-operations-privileged-identity-management.md)
 
 [アプリケーションのためのセキュリティ運用](security-operations-applications.md)
 
 [デバイスのためのセキュリティ運用](security-operations-devices.md)
 
  
-[インフラストラクチャ向けのセキュリティ運用](security-operations-infrastructure.md)
+[インフラストラクチャのためのセキュリティ運用](security-operations-infrastructure.md)

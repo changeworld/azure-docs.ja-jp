@@ -9,12 +9,12 @@ ms.date: 12/06/2018
 ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: artek
-ms.openlocfilehash: b73e79c2f7bbd37b640d3e83d98be68d85ed3b5e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8861255cb81c1200108dff22354be7636c1bd2d5
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101735371"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128633794"
 ---
 # <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>Data Lake Storage Gen2 で HDFS CLI を使用する
 
@@ -24,8 +24,8 @@ HDInsight では、それぞれのコンピューティング ノードにロー
 
 HDFS CLI の詳細については、[公式ドキュメント](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html)、および「[HDFS Permissions Guide (HDFS 権限ガイド)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html)」を参照してください。
 
->[!NOTE]
->HDInsight の代わりに Azure Databricks を使用しており、コマンド ライン インターフェイスを使用してデータを操作したい場合は、Databricks CLI を使用して Databricks ファイル システムを操作してください。 「[Databricks CLI](/azure/databricks/dev-tools/cli/)」を参照してください。
+> [!NOTE]
+> HDInsight の代わりに Azure Databricks を使用しており、コマンド ライン インターフェイスを使用してデータを操作したい場合は、Databricks CLI を使用して Databricks ファイル システムを操作してください。 「[Databricks CLI](/azure/databricks/dev-tools/cli/)」を参照してください。
 
 ## <a name="use-the-hdfs-cli-with-an-hdinsight-hadoop-cluster-on-linux"></a>Linux の HDInsight Hadoop クラスターで HDFS CLI を使用する
 
@@ -39,18 +39,19 @@ hdfs dfs -ls /
 #Create a sample directory.
 hdfs dfs -mkdir /samplefolder
 ```
+
 接続文字列は、Azure portal 内の HDInsight クラスター ブレードの "SSH + Cluster login" セクションで確認できます。 SSH 資格情報は、クラスターの作成時に指定されています。
 
->[!IMPORTANT]
->HDInsight クラスターの課金は、クラスターが作成された後に開始し、クラスターが削除されると停止します。 課金は分単位なので、クラスターを使わなくなったら必ず削除してください。 クラスターを削除する方法については、[トピックに関する記事](../../hdinsight/hdinsight-delete-cluster.md)を参照してください。 ただし、HDInsight クラスターを削除しても、Data Lake Storage Gen2 が使用可能なストレージ アカウントに保存されているデータは削除されません。
+> [!IMPORTANT]
+> HDInsight クラスターの課金は、クラスターが作成された後に開始し、クラスターが削除されると停止します。 課金は分単位なので、クラスターを使わなくなったら必ず削除してください。 クラスターを削除する方法については、[トピックに関する記事](../../hdinsight/hdinsight-delete-cluster.md)を参照してください。 ただし、HDInsight クラスターを削除しても、Data Lake Storage Gen2 が使用可能なストレージ アカウントに保存されているデータは削除されません。
 
 ## <a name="create-a-container"></a>コンテナーを作成する
 
 `hdfs dfs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/`
 
-* `<container-name>` プレースホルダーを、ご自身のコンテナーに付ける名前に置き換えます。
+- `<container-name>` プレースホルダーを、ご自身のコンテナーに付ける名前に置き換えます。
 
-* `<storage-account-name>` プレースホルダーは、実際のストレージ アカウントの名前に置き換えます。
+- `<storage-account-name>` プレースホルダーは、実際のストレージ アカウントの名前に置き換えます。
 
 ## <a name="get-a-list-of-files-or-directories"></a>ファイルまたはディレクトリの一覧を取得する
 
@@ -118,6 +119,6 @@ hdfs dfs -mkdir /samplefolder
 
 ## <a name="next-steps"></a>次の手順
 
-* [Use an Azure Data Lake Storage Gen2 capable account in Azure Databricks](./data-lake-storage-use-databricks-spark.md) (Azure Databricks で Azure Data Lake Storage Gen2 対応アカウントを使用する)
+- [Use an Azure Data Lake Storage Gen2 capable account in Azure Databricks](./data-lake-storage-use-databricks-spark.md) (Azure Databricks で Azure Data Lake Storage Gen2 対応アカウントを使用する)
 
-* [ファイルおよびディレクトリに対するアクセス制御リストについて学習する](./data-lake-storage-access-control.md)
+- [ファイルおよびディレクトリに対するアクセス制御リストについて学習する](./data-lake-storage-access-control.md)

@@ -3,20 +3,20 @@ title: Live Video Analytics を使用して記録ポリシーを管理する - A
 description: このトピックでは、Live Video Analytics を使用して記録ポリシーを管理する方法について説明します。
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: 52c9011e81c4e9d43aa32158d8577a7388dc20d2
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: a8301b97e571370d498fba9a8d46cf3fc545ff29
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110379048"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124740366"
 ---
 # <a name="manage-recording-policy-with-live-video-analytics"></a>Live Video Analytics を使用して記録ポリシーを管理する
 
 [!INCLUDE [redirect to Azure Video Analyzer](./includes/redirect-video-analyzer.md)]
 
-Live Video Analytics on IoT Edge を使用して、クラウドにビデオを数週間から数か月にわたって録画する[継続的なビデオ記録](continuous-video-recording-concept.md)を行うことができます。 Azure ストレージに組み込まれている[ライフサイクル管理ツール](../../storage/blobs/storage-lifecycle-management-concepts.md?tabs=azure-portal)を使用して、そのクラウド アーカイブの長さ (日数) を管理できます。  
+Live Video Analytics on IoT Edge を使用して、クラウドにビデオを数週間から数か月にわたって録画する[継続的なビデオ記録](continuous-video-recording-concept.md)を行うことができます。 Azure ストレージに組み込まれている[ライフサイクル管理ツール](../../storage/blobs/lifecycle-management-overview.md?tabs=azure-portal)を使用して、そのクラウド アーカイブの長さ (日数) を管理できます。  
 
-お使いの Media Services アカウントを Azure Storage アカウントにリンクしして、ビデオをクラウドに録画すると、コンテンツは Media Service [アセット](../latest/assets-concept.md)に書き込まれます。 各アセットは、ストレージ アカウント内のコンテナーにマップされます。 ライフサイクル管理を使用すると、ストレージ アカウントの[ポリシー](../../storage/blobs/storage-lifecycle-management-concepts.md?tabs=azure-portal#policy)を定義できます。ここで、次のような[ルール](../../storage/blobs/storage-lifecycle-management-concepts.md?tabs=azure-portal#rules)を指定できます。
+お使いの Media Services アカウントを Azure Storage アカウントにリンクしして、ビデオをクラウドに録画すると、コンテンツは Media Service [アセット](../latest/assets-concept.md)に書き込まれます。 各アセットは、ストレージ アカウント内のコンテナーにマップされます。 ライフサイクル管理を使用すると、ストレージ アカウントの[ポリシー](../../storage/blobs/lifecycle-management-overview.md?tabs=azure-portal)を定義できます。ここで、次のような[ルール](../../storage/blobs/lifecycle-management-overview.md?tabs=azure-portal#lifecycle-management-rule-definition)を指定できます。
 
 ```
 {
@@ -54,7 +54,7 @@ Live Video Analytics を使用してアセットに記録する場合は、`segm
 次に、ライフサイクル管理に関する既知の制限事項をいくつか示します。
 
 * ポリシー内には最大で 100 のルールを設定でき、ルールごとに最大 10 個のコンテナーを指定できます。 したがって、異なる記録ポリシーを持つ必要がある場合 (たとえば、駐車場に面したカメラには 3 日間のアーカイブ、発送センターのカメラには 30 日間、レジ カウンターの背後にあるカメラには 180 日間)、1 つの Media Service アカウントを使用して、最大 1,000 台のカメラのルールをカスタマイズできます。
-* ライフサイクル管理ポリシーの更新はすぐには行われません。 詳細については、[この FAQ セクション](../../storage/blobs/storage-lifecycle-management-concepts.md?tabs=azure-portal#faq)を参照してください。
+* ライフサイクル管理ポリシーの更新はすぐには行われません。 詳細については、[この FAQ セクション](../../storage/blobs/lifecycle-management-overview.md?tabs=azure-portal#faq)を参照してください。
 * BLOB をクール層に移動するポリシーを適用する場合は、アーカイブのその部分の再生が影響を受ける可能性があります。 追加の待機時間、または散発的なエラーが表示されることがあります。 Media Services は、アーカイブ層のコンテンツの再生をサポートしていません。
 
 ## <a name="next-steps"></a>次のステップ

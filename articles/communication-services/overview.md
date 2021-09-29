@@ -8,12 +8,12 @@ ms.author: rifox
 ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 4e8ec31fc28014e404ae69f2746eb02099e83842
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 5e6716980ef8f813be49a7cd6d269d432114aeae
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122967847"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128671946"
 ---
 # <a name="what-is-azure-communication-services"></a>Azure Communication Services とは
 

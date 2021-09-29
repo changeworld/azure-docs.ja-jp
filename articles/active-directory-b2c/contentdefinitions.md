@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 08/04/2021
+ms.date: 09/12/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a3c8b3d97a117e88c323253134be383fb0766355
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: bbe79082f63065ed73b573ab87f3299f7df79148
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121723263"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124740237"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -112,8 +112,6 @@ ms.locfileid: "121723263"
 
 [JavaScript クライアント側コード](javascript-and-page-layout.md)を有効にするには、`elements` とページの種類の間に `contract` を挿入します。 たとえば、「 `urn:com:microsoft:aad:b2c:elements:contract:page-name:version` 」のように入力します。
 
-[!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
-
 `DataUri` の [version](page-layout.md) 部分には、ポリシーのユーザー インターフェイス要素に対する HTML、CSS、JavaScript を含むコンテンツのパッケージが指定されます。 JavaScript クライアント側コードを有効にする場合は、JavaScript の基になる要素を変更不可にする必要があります。 変更不可になっていないと、何らかの変更によってユーザー フローのページで予期しない動作が発生する可能性があります。 このような問題を防ぐために、ページ レイアウトの使用を強制して、ページ レイアウトのバージョンを指定します。 これにより、JavaScript の基になるすべてのコンテンツ定義が変更不可になります。 JavaScript を有効にする予定がない場合でも、引き続きページに対してページ レイアウトのバージョンを指定する必要があります。
 
 次の例は、`selfasserted` バージョン `1.2.0` の **DataUri** を示しています。
@@ -152,7 +150,7 @@ ms.locfileid: "121723263"
 | `urn:com:microsoft:aad:b2c:elements:multifactor:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:multifactor:1.2.5` |
 | `urn:com:microsoft:aad:b2c:elements:multifactor:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:multifactor:1.2.5` |
 
-次の例では、コンテンツ定義識別子と、対応する **DataUri** および[最新ページ バージョン](page-layout.md)を示します。 
+次の例では、コンテンツ定義識別子と、対応する **DataUri** および [最新ページ バージョン](page-layout.md)を示します。 
 
 ```xml
 <!-- 

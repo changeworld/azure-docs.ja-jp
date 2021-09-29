@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/04/2021
 ms.author: jeedes
-ms.openlocfilehash: 05070571a4c8a1b673ff145a9449c9e744718026
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: c25784583b74069f4b6462166da5c9cf1038c6d9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111891430"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124760871"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sectigo-certificate-manager"></a>チュートリアル:Azure Active Directory と Sectigo Certificate Manager の統合
 
@@ -162,7 +162,7 @@ Sectigo Certificate Manager 側でシングル サインオンを構成するに
 
 #### <a name="test-by-using-the-my-apps-portal-idp-initiated-single-sign-on"></a>マイ アプリ ポータルを使ったテスト (IDP Initiated シングル サインオン)
 
-マイ アプリ ポータルで **[Sectigo Certificate Manager]** を選択します。  正しく構成されている場合には、Sectigo Certificate Manager に自動的にサインインします。 マイ アプリ ポータルの詳細については、「[マイ アプリ ポータルでアプリにアクセスして使用する](../user-help/my-apps-portal-end-user-access.md)」を参照してください。
+マイ アプリ ポータルで **[Sectigo Certificate Manager]** を選択します。  正しく構成されている場合には、Sectigo Certificate Manager に自動的にサインインします。 マイ アプリ ポータルの詳細については、「[マイ アプリ ポータルでアプリにアクセスして使用する](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

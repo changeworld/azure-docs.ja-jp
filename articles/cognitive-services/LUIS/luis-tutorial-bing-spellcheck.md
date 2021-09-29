@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 01/12/2021
-ms.openlocfilehash: 509d1dc0b94bdfa9be5185df0bad793f7702eb26
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 904a29278ea3efdabe6ed72892d2e14ccbf2e0e3
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101731036"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124740761"
 ---
 # <a name="correct-misspelled-words-with-bing-resource"></a>Bing リソースを使用してスペルミスのある単語を修正する
 
@@ -68,11 +68,6 @@ Azure portal で Bing Search リソースを作成するには、次の手順に
 ## Using the key in LUIS test panel
 There are two places in LUIS to use the key. The first is in the [test panel](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel). The key isn't saved into LUIS but instead is a session variable. You need to set the key every time you want the test panel to apply the Bing Spell Check API v7 service to the utterance. See [instructions](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel) in the test panel for setting the key.
 -->
-## <a name="enable-spell-check-from-ui"></a>UI からのスペル チェックの有効化 
-[Luis ポータル](https://www.luis.ai)を使用して、サンプル クエリのスペルチェックを有効にすることができます。 画面の上部にある **[管理]** を選択し、左側のナビゲーションで **[Azure リソース]** を選択します。 予測リソースをアプリケーションに関連付けた後、ページの下部にある **[Change query parameters]\(クエリ パラメーターの変更\)** を選択し、 **[スペル チェックの有効化]** フィールドにリソース キーを貼り付けることができます。
-    
-   > [!div class="mx-imgBorder"]
-   > ![スペル チェックの有効化](./media/luis-tutorial-bing-spellcheck/spellcheck-query-params.png)
 
 
 ## <a name="adding-the-key-to-the-endpoint-url"></a>エンドポイント URL へのキーの追加

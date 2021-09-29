@@ -11,12 +11,12 @@ ms.date: 05/28/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2bd76a9633311a073f2a672efd1560272deddb48
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: cdd7995c50ef63b4ec88e65c949a4c098a4b9330
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122770061"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128609937"
 ---
 # <a name="azure-ad-on-premises-application-provisioning-architecture"></a>Azure AD オンプレミス アプリケーション プロビジョニングのアーキテクチャ
 
@@ -159,6 +159,3 @@ ECMA Connector Host は現在、USER オブジェクトの種類のみをサポ�
 ## <a name="next-steps"></a>次のステップ
 
 - [アプリ プロビジョニング](user-provisioning.md)
-- [Azure AD ECMA Connector Host の前提条件](on-premises-ecma-prerequisites.md)
-- [Azure AD ECMA Connector Host のインストール](on-premises-ecma-install.md)
-- [Azure AD ECMA Connector Host の構成](on-premises-ecma-configure.md)

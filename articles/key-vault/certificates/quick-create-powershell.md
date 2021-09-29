@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-azurepowershell
 ms.date: 01/27/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 32150fb4cce76d5a2537c5ec969f265e0d8aae20
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 170c115e56232b334527d92623c87bacd377f5aa
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107816190"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128659849"
 ---
 # <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して Azure Key Vault から証明書の設定と取得を行う
 
@@ -52,7 +52,7 @@ $Policy = New-AzKeyVaultCertificatePolicy -SecretContentType "application/x-pkcs
 Add-AzKeyVaultCertificate -VaultName "<your-unique-keyvault-name>" -Name "ExampleCertificate" -CertificatePolicy $Policy
 ```
 
-これで、URI を使用して、Azure Key Vault に追加したこの証明書を参照できるようになりました。 現在のバージョンを取得するには、 **"https://<your-unique-keyvault-name>.vault.azure.net/certificates/ExampleCertificate"** を使用します。 
+これで、URI を使用して、Azure Key Vault に追加したこの証明書を参照できるようになりました。 **`https://<your-unique-keyvault-name>.vault.azure.net/certificates/ExampleCertificate`** を使用して、現在のバージョンを取得します。 
 
 以前に格納した証明書を表示するには:
 

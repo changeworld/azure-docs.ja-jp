@@ -5,14 +5,14 @@ author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.date: 07/14/2020
+ms.date: 09/15/2021
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 1ffdba78d43d558f5d84ec30153df17dfba83cc1
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 02a1a6d5088a722c0b919811afc0ac89c7c52550
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114460124"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128593574"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Azure Digital Twins の既知の問題
 
@@ -25,15 +25,6 @@ ms.locfileid: "114460124"
 | 影響 | 原因 | 解決方法 |
 | --- | --- | --- |
 | この問題は、&nbsp;Azure&nbsp;Digital&nbsp;Twins では次のコマンド グループに影響します。<br><br>`az dt route`<br><br>`az dt model`<br><br>`az dt twin` | これは、Cloud Shell での既知の問題の結果です。[Cloud Shell からトークンを取得すると、400 Client Erro: Bad Request で断続的に失敗します](https://github.com/Azure/azure-cli/issues/11749)。<br><br>これは、Azure Digital Twins インスタンスの認証トークンと、Cloud Shell の既定の[マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) ベースの認証に問題があることを示しています。 <br><br>これは、`az dt` または `az dt endpoint` コマンド グループからの Azure Digital Twins コマンドには影響しません。なぜなら、これらのコマンドでは別の種類の認証トークン (Azure Resource Manager ベース) を使用し、Cloud Shell のマネージド ID 認証でも問題が発生しないからです。 | この問題を解決するための 1 つの方法は、Cloud Shell で `az login` コマンドを再実行し、その後のログイン手順を完了することです。 このアクションにより、マネージド ID 認証からセッションが切り替わり、根本的な問題が回避されます。 その後、コマンドを再実行できます。<br><br>または、Azure portal の [Cloud Shell] ペインを開き、そこから Cloud Shell 作業を完了することができます。<br>:::image type="content" source="media/troubleshoot-known-issues/portal-launch-icon.png" alt-text="Azure portal のアイコン バーにある Cloud Shell アイコンのスクリーンショット。" lightbox="media/troubleshoot-known-issues/portal-launch-icon.png":::<br><br>最終的には、別の解決策として、コンピューターに [Azure CLI をインストール](/cli/azure/install-azure-cli)して、Azure CLI コマンドをローカルで実行できるようにします。 ローカル CLI ではこの問題は発生しません。 |
-
-
-## <a name="missing-role-assignment-after-scripted-setup"></a>スクリプトを使用したセットアップ後にロールの割り当てが存在しない
-
-**問題の説明:** ユーザーによっては、[インスタンスと認証の設定 (スクリプト化)](how-to-set-up-instance-scripted.md) に関する記事のロールの割り当て部分で問題が発生することがあります。 このスクリプトには失敗と示されてはいませんが、"*Azure Digital Twins データ所有者*" ロールがユーザーに正常に割り当てられておらず、この問題は、今後その他のリソースを作成する機能に影響します。
-
-| 影響 | 原因 | 解決方法 |
-| --- | --- | --- |
-| スクリプトの実行後にロールの割り当てが正常に設定されたかどうかを確認するには、セットアップの記事にある「[ユーザー ロールの割り当てを確認する](how-to-set-up-instance-scripted.md#verify-user-role-assignment)」の手順に従ってください。 ユーザーに対してこのロールが表示されていない場合、この問題による影響があります。 | 個人の [Microsoft アカウント (MSA)](https://account.microsoft.com/account) でログインしているユーザーの場合、このようなコマンドにおいてユーザーの識別に使用されるユーザーのプリンシパル ID が、ユーザーのサインイン メールとは異なる場合があります。そのため、スクリプトによってこれを検出し、使用してロールを適切に割り当てることが困難になります。 | これを解決するには、[CLI のインストラクション](how-to-set-up-instance-cli.md#set-up-user-access-permissions)または[Azure portal のインストラクション](how-to-set-up-instance-portal.md#set-up-user-access-permissions)を使用して、手動でロールの割り当てを設定します。 |
 
 ## <a name="issue-with-interactive-browser-authentication-on-azureidentity-120"></a>Azure.Identity 1.2.0 での対話型ブラウザーの認証に関する問題
 

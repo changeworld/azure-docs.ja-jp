@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/13/2021
 ms.author: yelevin
-ms.openlocfilehash: c231840b6255ef693353d83323710cb3243efaef
-ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
+ms.openlocfilehash: 82a2dca4c38a8d8602bf41ee36760e846edb5d78
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123214303"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124774749"
 ---
 # <a name="threat-intelligence-integration-in-azure-sentinel"></a>Azure Sentinel への脅威インテリジェンスの統合
 
@@ -75,7 +75,7 @@ TAXII 脅威インテリジェンスフィードに接続するには、以下�
 
 ### <a name="agari-phishing-defense-and-brand-protection"></a>Agari のフィッシング対策とブランド保護
 
-- [Agari Phishing Defense と Brand Protection](https://agari.com/products/phishing-defense/) を接続するには、組み込みの [Agari データ コネクタ](connect-agari-phishing-defense.md)を Azure Sentinel で使用します。
+- [Agari Phishing Defense と Brand Protection](https://agari.com/products/phishing-defense/) を接続するには、組み込みの [Agari データ コネクタ](./data-connectors-reference.md#agari-phishing-defense-and-brand-protection-preview)を Azure Sentinel で使用します。
 
 ### <a name="anomali-threatstream"></a>Anomali ThreatStream
 

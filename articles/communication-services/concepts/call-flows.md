@@ -9,12 +9,13 @@ ms.author: rifox
 ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 4893e444b387bb59d174b8f64fb564182e8d2792
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.subservice: calling
+ms.openlocfilehash: 70eec46f882e9aedb8a30c6dede2f0b4a420c553
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123254786"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128672307"
 ---
 # <a name="call-flow-basics"></a>通話フローの基礎
 

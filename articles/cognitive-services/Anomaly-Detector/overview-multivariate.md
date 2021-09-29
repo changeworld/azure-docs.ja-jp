@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/01/2021
 ms.author: mbullwin
 keywords: 異常検出, 機械学習, アルゴリズム
-ms.openlocfilehash: 85c169afb8c6158a3e5c32ac4d62cbeeabb4c2bb
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 7f8e9c26de1cceb6c4dec514e21d36b9843bb44e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123035604"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128588164"
 ---
 # <a name="multivariate-time-series-anomaly-detection-preview"></a>多変量時系列の異常検出 (プレビュー)
 
@@ -34,7 +34,7 @@ ms.locfileid: "123035604"
 
 ## <a name="notebook"></a>ノートブック
 
-Anomaly Detector API (多変量) を呼び出す方法については、こちらの [Notebook](https://github.com/Azure-Samples/AnomalyDetector/blob/master/ipython-notebook/Multivariate%20API%20Demo%20Notebook.ipynb) をお試しください。 この Jupyter Notebook では、API 要求を送信して結果を視覚化する方法について説明しています。
+Anomaly Detector API (多変量) を呼び出す方法については、こちらの [Notebook](https://github.com/Azure-Samples/AnomalyDetector/blob/master/ipython-notebook/API%20Sample/Multivariate%20API%20Demo%20Notebook.ipynb) をお試しください。 この Jupyter Notebook では、API 要求を送信して結果を視覚化する方法について説明しています。
 
 Notebook を実行するには、有効な Anomaly Detector API **サブスクリプション キー** と **API エンドポイント** を取得する必要があります。 ノートブックで、有効な Anomaly Detector API サブスクリプション キーを `subscription_key` 変数に追加し、`endpoint` 変数をエンドポイントに変更します。
 

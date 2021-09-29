@@ -1,20 +1,19 @@
 ---
-title: Kubernetes にセルフホステッド ゲートウェイをデプロイする | Microsoft Docs
+title: Kubernetes にセルフホステッド ゲートウェイをデプロイする
 description: Azure API Management のセルフホステッド ゲートウェイ コンポーネントを Kubernetes にデプロイする方法について説明します
-services: api-management
-author: vladvino
+author: dlepow
 manager: gwallace
 ms.service: api-management
 ms.workload: mobile
 ms.topic: article
-ms.author: apimpm
+ms.author: danlep
 ms.date: 05/25/2021
-ms.openlocfilehash: 645fce68e408b65299090e4661b36690f7ca140c
-ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
+ms.openlocfilehash: dda6fcbf71914fefcd1afd2056864ad66aa11d4d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114690500"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128609823"
 ---
 # <a name="deploy-a-self-hosted-gateway-to-kubernetes"></a>Kubernetes にセルフホステッド ゲートウェイをデプロイする
 
@@ -43,25 +42,27 @@ ms.locfileid: "114690500"
 8. コマンドをターミナル (またはコマンド) ウィンドウに貼り付けます。 最初のコマンドでは、手順 4 で生成されたアクセス トークンを含めた Kubernetes シークレットを作成します。 2 番目のコマンドでは、手順 6 でダウンロードした構成ファイルを Kubernetes クラスターに適用し、ファイルが現在のディレクトリにあることを求めます。
 9. コマンドを実行して[既定の名前空間](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/)に必要な Kubernetes オブジェクトを作成し、Microsoft Container Registry からダウンロードされた[コンテナー イメージ](https://aka.ms/apim/sputnik/dhub)からセルフホステッド ゲートウェイ ポッドを起動します。
 10. 次のコマンドを実行し、デプロイが成功したかどうかを確認します。 すべてのオブジェクトが作成され、ポッドが初期化されるまでに少し時間がかかる場合があることにご注意ください。
+
     ```console
     kubectl get deployments
     NAME             READY   UP-TO-DATE   AVAILABLE   AGE
     <gateway-name>   1/1     1            1           18s
     ```
 11. サービスが正常に作成されたかどうかを確認するには、次のコマンドを実行します。 サービスの IP とポートが異なることに注意してください。
+
     ```console
     kubectl get services
     NAME             TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)                      AGE
     <gateway-name>   LoadBalancer   10.99.236.168   <pending>     80:31620/TCP,443:30456/TCP   9m1s
     ```
-12. Azure portal に戻り、 **[概要]** を選択します。
-13. **[状態]** に緑のチェック マークが表示されていることを確認し、そのマークの後ろのノード数が YAML ファイルに指定されているレプリカ数に一致することを確認します。 この状態は、デプロイされたセルフホステッド ゲートウェイ ポッドが API Management サービスと正常に通信しており、"ハートビート" が通常であることを意味します。
+1. Azure portal に戻り、 **[概要]** を選択します。
+1. **[状態]** に緑のチェック マークが表示されていることを確認し、そのマークの後ろのノード数が YAML ファイルに指定されているレプリカ数に一致することを確認します。 この状態は、デプロイされたセルフホステッド ゲートウェイ ポッドが API Management サービスと正常に通信しており、"ハートビート" が通常であることを意味します。
 
     ![ゲートウェイの状態](media/how-to-deploy-self-hosted-gateway-kubernetes/status.png)
 
 > [!TIP]
-> ランダムに選択されたポッドのログを表示するには、<code>kubectl logs deployment/<gateway-name></code> コマンドを実行します (複数存在する場合)。
-> 特定のポッドまたはコンテナーのログを表示する方法など、コマンド オプションの完全なセットに対して <code>kubectl logs -h</code> を実行します。
+> ランダムに選択されたポッドのログを表示するには、`kubectl logs deployment/<gateway-name>` コマンドを実行します (複数存在する場合)。
+> 特定のポッドまたはコンテナーのログを表示する方法など、コマンド オプションの完全なセットに対して `kubectl logs -h` を実行します。
 
 ## <a name="production-deployment-considerations"></a>運用環境のデプロイに関する考慮事項
 

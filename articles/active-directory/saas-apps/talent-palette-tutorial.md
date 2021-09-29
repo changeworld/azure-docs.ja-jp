@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/11/2021
 ms.author: jeedes
-ms.openlocfilehash: 362bd4d44605e56c2c63d6183540fa5767aeb02b
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: 7d0ab304b03d95ff95f4658d3630b9479a38e1d0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112062408"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124772469"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-talent-palette"></a>チュートリアル: Azure Active Directory と Talent Palette の統合
 
@@ -134,7 +134,7 @@ Talent Palette を使用した Azure AD SSO を構成してテストするには
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した Talent Palette に自動的にサインインします。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Talent Palette] タイルをクリックすると、SSO を設定した Talent Palette に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Talent Palette] タイルをクリックすると、SSO を設定した Talent Palette に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

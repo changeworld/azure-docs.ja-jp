@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: how-to
-ms.date: 05/14/2021
+ms.date: 09/07/2021
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 947e2b83c409f7e592fd112e20f64b70cc7db070
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 6c7073cc46b0320016222621ffb0c3b1d3fe53be
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121744010"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124748334"
 ---
 # <a name="list-azure-ad-role-assignments"></a>Azure AD ロールの割り当てを一覧表示する
 
@@ -32,7 +32,7 @@ ms.locfileid: "121744010"
 - PowerShell を使用する場合の AzureADPreview モジュール
 - Microsoft Graph API の Graph エクスプローラーを使用する場合の管理者の同意
 
-詳細については、[PowerShell または Graph エクスプローラーを使用するための前提条件](prerequisites.md)に関するページを参照してください。
+詳細については、「[PowerShell または Graph エクスプローラーを使用するための前提条件](prerequisites.md)」をご覧ください。
 
 ## <a name="azure-portal"></a>Azure portal
 
@@ -82,14 +82,14 @@ ms.locfileid: "121744010"
 ロールの割り当てを一覧表示する例。
 
 ``` PowerShell
-# Fetch list of all directory roles with object ID
-Get-AzureADDirectoryRole
+# Fetch list of all directory roles with template ID
+Get-AzureADMSRoleDefinition
 
 # Fetch a specific directory role by ID
-$role = Get-AzureADDirectoryRole -ObjectId "5b3fe201-fa8b-4144-b6f1-875829ff7543"
+$role = Get-AzureADMSRoleDefinition -Id "5b3fe201-fa8b-4144-b6f1-875829ff7543"
 
-# Fetch role membership for a role
-Get-AzureADDirectoryRoleMember -ObjectId $role.ObjectId | Get-AzureADUser
+# Fetch membership for a role
+Get-AzureADMSRoleAssignment -Filter "roleDefinitionId eq '$($role.Id)'"
 ```
 
 ## <a name="microsoft-graph-api"></a>Microsoft Graph API
@@ -101,7 +101,7 @@ Get-AzureADDirectoryRoleMember -ObjectId $role.ObjectId | Get-AzureADUser
 GET
 
 ``` HTTP
-https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments&$filter=roleDefinitionId eq ‘<object-id-or-template-id-of-role-definition>’
+https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments&$filter=roleDefinitionId eq ‘<template-id-of-role-definition>’
 ```
 
 Response
@@ -112,7 +112,7 @@ HTTP/1.1 200 OK
     "id":"CtRxNqwabEKgwaOCHr2CGJIiSDKQoTVJrLE9etXyrY0-1",
     "principalId":"ab2e1023-bddc-4038-9ac1-ad4843e7e539",
     "roleDefinitionId":"3671d40a-1aac-426c-a0c1-a3821ebd8218",
-    "resourceScopes":["/"]
+    "directoryScopeId":"/"
 }
 ```
 

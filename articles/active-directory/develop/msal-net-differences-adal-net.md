@@ -13,12 +13,12 @@ ms.date: 06/09/2021
 ms.author: jmprieur
 ms.reviewer: saeeda, shermanouko
 ms.custom: devx-track-csharp, aaddev, has-adal-ref
-ms.openlocfilehash: 7b7f94b5e71719b53e724c76f9604f40ba7990e2
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: 39c8f669b8577278a7654db92ae87d55758505ff
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122419048"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124787170"
 ---
 # <a name="differences-between-adalnet-and-msalnet-apps"></a>ADAL.NET アプリと MSAL.NET アプリの違い
 
@@ -50,10 +50,10 @@ ADAL.NET と開発者向け Azure AD (v1.0) エンドポイントについて既
 
 Grant                             | MSAL.NET                                                                                                                     | ADAL.NET                                                                                                                                                                                                   |
 --------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-Interactive                       | [MSAL.NET での対話型のトークンの取得](scenario-desktop-acquire-token.md#acquire-a-token-interactively)    | [対話型認証](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-interactively---Public-client-application-flows)                                              |
-統合 Windows 認証 | [統合 Windows 認証](scenario-desktop-acquire-token.md#integrated-windows-authentication)         | [Windows での統合認証 (Kerberos)](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AcquireTokenSilentAsync-using-Integrated-authentication-on-Windows-(Kerberos))  |
-ユーザー名/パスワード               | [ユーザー名とパスワードによる認証](scenario-desktop-acquire-token.md#username-and-password)                      | [ユーザー名とパスワードでのトークンの取得](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-with-username-and-password)                                        |
-デバイス コード フロー                  | [デバイス コード フロー](scenario-desktop-acquire-token.md#command-line-tool-without-a-web-browser)                    | [Web ブラウザーを使用しないデバイスのデバイス プロファイル](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Device-profile-for-devices-without-web-browsers)                                |
+Interactive                       | [MSAL.NET での対話型のトークンの取得](scenario-desktop-acquire-token-interactive.md)    | [対話型認証](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-interactively---Public-client-application-flows)                                              |
+統合 Windows 認証 | [統合 Windows 認証](scenario-desktop-acquire-token-integrated-windows-authentication.md)         | [Windows での統合認証 (Kerberos)](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AcquireTokenSilentAsync-using-Integrated-authentication-on-Windows-(Kerberos))  |
+ユーザー名/パスワード               | [ユーザー名とパスワードによる認証](scenario-desktop-acquire-token-username-password.md)                      | [ユーザー名とパスワードでのトークンの取得](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-with-username-and-password)                                        |
+デバイス コード フロー                  | [デバイス コード フロー](scenario-desktop-acquire-token-device-code-flow.md)                    | [Web ブラウザーを使用しないデバイスのデバイス プロファイル](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Device-profile-for-devices-without-web-browsers)                                |
 
 ### <a name="confidential-client-applications"></a>機密クライアント アプリケーション
 
@@ -227,7 +227,7 @@ var scopes = new [] { ResourceId+"/.default" };
 
 クライアント資格情報フローの場合、`/.default` スコープも渡します。 このスコープにより、管理者がアプリケーションの登録で同意したアプリレベルのすべてのアクセス許可が、Azure AD に示されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [アプリを ADAL から MSAL に移行する](msal-net-migration.md)
 [MSAL.NET を使用するために ADAL.NET 機密クライアント アプリを移行する](msal-net-migration-confidential-client.md)

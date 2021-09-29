@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
-ms.openlocfilehash: a5639d583d9b98f6527e47bf5db213cb191ebeb7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1ea079802a2628b8a698e108f6f689ff5e58f08b
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100575290"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124750302"
 ---
 # <a name="view-and-configure-ddos-protection-alerts"></a>DDoS 保護アラートの表示と構成
 
-Azure DDoS Protection Standard では、DDoS 攻撃の分析情報により、攻撃の詳細な情報および視覚化が提供されます。 DDoS 攻撃から仮想ネットワークを保護している場合、攻撃の軽減策レポートと軽減策フロー ログによって、攻撃のトラフィック、および攻撃を緩和するために行われたアクションの詳細を視覚的に確認できます。 豊富なテレメトリは、DDoS 攻撃の間に、詳細なメトリックを含む Azure Monitor を通じて公開されます。 DDoS Protection によって公開される Azure Monitor の任意のメトリックに対して、アラートを構成することができます。 Azure Monitor 診断インターフェイスを介した高度な分析用に、ログを [Azure Sentinel](../sentinel/connect-azure-ddos-protection.md)、Splunk (Azure Event Hubs)、OMS Log Analytics、Azure Storage とさらに統合できます。
+Azure DDoS Protection Standard では、DDoS 攻撃の分析情報により、攻撃の詳細な情報および視覚化が提供されます。 DDoS 攻撃から仮想ネットワークを保護している場合、攻撃の軽減策レポートと軽減策フロー ログによって、攻撃のトラフィック、および攻撃を緩和するために行われたアクションの詳細を視覚的に確認できます。 豊富なテレメトリは、DDoS 攻撃の間に、詳細なメトリックを含む Azure Monitor を通じて公開されます。 DDoS Protection によって公開される Azure Monitor の任意のメトリックに対して、アラートを構成することができます。 Azure Monitor 診断インターフェイスを介した高度な分析用に、ログを [Azure Sentinel](../sentinel/data-connectors-reference.md#azure-ddos-protection)、Splunk (Azure Event Hubs)、OMS Log Analytics、Azure Storage とさらに統合できます。
 
 このチュートリアルで学習する内容は次のとおりです。
 
@@ -65,7 +65,7 @@ Azure Monitor のアラート構成を使用すると、利用可能な DDoS Pro
     |---------                |---------                                                                                           |
     | スコープ                   | **[リソースの選択]** を選択します。 </br> ログに記録するパブリック IP アドレスを含む **サブスクリプション** を選択し、 **[リソースの種類]** で **[パブリック IP アドレス]** を選択してから、メトリックのログを記録する特定のパブリック IP アドレスを選択します。 </br> **[Done]** を選択します。 | 
     | 条件 | **[条件の選択]** を選択します。 </br> シグナル名で、 **[DDoS 攻撃中かどうか]** を選択します。 </br> **[演算子]** で、 **[次の値以上]** を選択します。 </br> **[集計の種類]** で、 **[最大]** を選択します。 </br> **[しきい値]** で、「*1*」と入力します。 **[DDoS 攻撃中かどうか]** メトリックの場合、**0** は攻撃を受けていないことを示し、**1** は攻撃を受けていることを示します。 </br> **[Done]** を選択します。 | 
-    | Actions | **[アクション グループの追加]** を選択します。 </br> **[アクション グループの作成]** を選択します。 </br> **[通知]** の **[通知の種類]** で、 **[メール/SMS メッセージ/プッシュ/音声]** を選択します。 </br> **[名前]** に「_MyUnderAttackEmailAlert_」と入力します。 </br> 編集ボタンをクリックし、 **[メール]** と次のオプションを必要なだけ選択してから、 **[OK]** を選択します。 </br> **[Review + create]\(レビュー + 作成\)** を選択します。 | 
+    | アクション | **[アクション グループの追加]** を選択します。 </br> **[アクション グループの作成]** を選択します。 </br> **[通知]** の **[通知の種類]** で、 **[メール/SMS メッセージ/プッシュ/音声]** を選択します。 </br> **[名前]** に「_MyUnderAttackEmailAlert_」と入力します。 </br> 編集ボタンをクリックし、 **[メール]** と次のオプションを必要なだけ選択してから、 **[OK]** を選択します。 </br> **[Review + create]\(レビュー + 作成\)** を選択します。 | 
     | アラート ルールの詳細 | **[アラート ルール名]** の下で、「_MyDdosAlert_」と入力します。 |
 
 攻撃の検出から数分以内に、次の図のような電子メールが Azure Monitor メトリックから届くはずです。

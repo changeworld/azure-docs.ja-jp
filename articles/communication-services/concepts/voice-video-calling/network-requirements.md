@@ -9,12 +9,13 @@ ms.author: nmurav
 ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 9b7728d77ebba14dd127c797898609c9ae6fed0d
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.subservice: calling
+ms.openlocfilehash: e0235f087660c10bdadd8baee228e5cd23d81495
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123258973"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128609462"
 ---
 # <a name="network-recommendations"></a>ネットワークの推奨事項
 

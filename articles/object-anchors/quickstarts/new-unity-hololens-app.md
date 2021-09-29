@@ -7,12 +7,12 @@ ms.author: rgarcia
 ms.date: 06/23/2021
 ms.topic: quickstart
 ms.service: azure-object-anchors
-ms.openlocfilehash: 174701b16d8ae9c8c8e5b1edf863aa9f1a65336c
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: a83606d76beb4fd9cead19293636b9e5348d4990
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113095027"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124777566"
 ---
 # <a name="quickstart-step-by-step-instructions-to-create-a-new-hololens-unity-app-using-azure-object-anchors"></a>クイックスタート: Azure Object Anchors を使用する新しい HoloLens Unity アプリを作成する詳細な手順
 
@@ -45,7 +45,7 @@ ms.locfileid: "113095027"
 
 ## <a name="install-mixed-reality-feature-tool-feature-packages"></a>Mixed Reality Feature Tool の機能パッケージをインストールする
 
-1. <a a href="/windows/mixed-reality/develop/unity/welcome-to-mr-feature-tool" target="_blank">Mixed Reality Feature Tool</a> のドキュメントに従ってツールを設定し、使用方法を確認してください。
+1. <a href="/windows/mixed-reality/develop/unity/welcome-to-mr-feature-tool" target="_blank">Mixed Reality Feature Tool</a> のドキュメントに従ってツールを設定し、使用方法を確認してください。
 1. **[Platform Support]\(プラットフォーム サポート\)** セクションで、**Mixed Reality OpenXR Plugin** 機能パッケージのバージョン 1.0.0 以降を Unity プロジェクト フォルダーにインストールします。
 1. **[Azure Mixed Reality Services]** セクションで、**Microsoft Azure Object Anchors** 機能パッケージを Unity プロジェクト フォルダーにインストールします。
 1. **Unity Editor** に戻ります。 **Mixed Reality Feature Tool** の機能パッケージがインストールされる間、数分かかることがあります。

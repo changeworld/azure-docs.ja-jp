@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/03/2021
 ms.author: jeedes
-ms.openlocfilehash: 567cbf72c94d63999ba2000a77a60717a01a9d94
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: 5bce2c89d39d4a3c3853c1592523da793b467d40
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111572526"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124732531"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-alcumus-info-exchange"></a>チュートリアル: Azure Active Directory と Alcumus Info Exchange の統合
 
@@ -128,7 +128,7 @@ Alcumus Info Exchange で Azure AD SSO を構成するには、次の手順に�
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した Alcumus Info Exchange に自動的にサインインされます。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Alcumus Info Exchange] タイルをクリックすると、SSO を設定した Alcumus Info Exchange に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Alcumus Info Exchange] タイルをクリックすると、SSO を設定した Alcumus Info Exchange に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

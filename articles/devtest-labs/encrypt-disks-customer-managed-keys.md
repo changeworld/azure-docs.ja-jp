@@ -1,14 +1,14 @@
 ---
-title: Azure DevTest Labs でカスタマー マネージド キーを使用して OS ディスクを暗号化する
+title: カスタマー マネージド キーを使用した OS ディスクの暗号化
 description: Azure DevTest Labs でカスタマー マネージド キーを使用してオペレーティング システム (OS) のディスクを暗号化する方法について説明します。
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/01/2020
-ms.openlocfilehash: 26ef4ff1529483da9956c6dcc43807af0ffd6463
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2da0e89c5a3f34d9ba967088ea3881f6a30bc1e2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96341210"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128632350"
 ---
 # <a name="encrypt-operating-system-os-disks-using-customer-managed-keys-in-azure-devtest-labs"></a>Azure DevTest Labs でカスタマー マネージド キーを使用してオペレーティング システム (OS) のディスクを暗号化する
 サーバー側暗号化 (SSE) によってデータが保護され、組織のセキュリティおよびコンプライアンス コミットメントを満たすのに役立ちます。 SSE では、Azure のマネージド ディスク (OS およびデータ ディスク) に格納されているお使いのデータをクラウドに永続化するときに、既定で保存時に自動的に暗号化されます。 Azure での[ディスク暗号化](../virtual-machines/disk-encryption.md)について確認してください。 

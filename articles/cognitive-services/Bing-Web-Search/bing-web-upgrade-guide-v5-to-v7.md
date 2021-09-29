@@ -3,20 +3,18 @@ title: v5 から v7 へのアップグレード - Bing Web Search API
 titleSuffix: Azure Cognitive Services
 description: Bing Web Search v7 API を使用するために更新が必要なアプリケーションの部分を特定します。
 services: cognitive-services
-author: swhite-msft
 manager: nitinme
 ms.assetid: E8827BEB-4379-47CE-B67B-6C81AD7DAEB1
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.author: scottwhi
-ms.openlocfilehash: d930543671a5328d76a38aa7e1b421c111e89e39
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 485505fec1a3f187b16af3496c6385be117d931b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96349522"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128613006"
 ---
 # <a name="upgrade-from-bing-web-search-api-v5-to-v7"></a>Bing Web Search API v5 から v7 へのアップグレード
 

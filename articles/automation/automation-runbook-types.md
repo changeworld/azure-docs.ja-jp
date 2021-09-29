@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 06/10/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a6005c267423787fed61f2fb9badfea5769137d2
-ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
+ms.openlocfilehash: 44923cd63676a6eb2fa589c66726f1c14c76896c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113565366"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124744811"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure Automation の Runbook の種類
 
@@ -134,7 +134,7 @@ Python 3 の Runbook は、次の Azure グローバル インフラストラク
 
 ## <a name="next-steps"></a>次のステップ
 
-* PowerShell Runbook の詳細については、「[チュートリアル: PowerShell Runbook を作成する](learn/automation-tutorial-runbook-textual-powershell.md)」を参照してください。
+* PowerShell Runbook の詳細については、「[チュートリアル: PowerShell Runbook を作成する](./learn/powershell-runbook-managed-identity.md)」を参照してください。
 * PowerShell Workflow Runbook の詳細については、「[チュートリアル: PowerShell Workflow Runbook を作成する](learn/automation-tutorial-runbook-textual.md)」を参照してください。
-* グラフィカル Runbook の詳細については、「[チュートリアル: グラフィカル Runbook を作成する](learn/automation-tutorial-runbook-graphical.md)」を参照してください。
-* Python Runbook の詳細については、「[チュートリアル: Python Runbook を作成する」](learn/automation-tutorial-runbook-textual-python2.md)を参照してください。
+* グラフィカル Runbook の詳細については、「[チュートリアル: グラフィカル Runbook を作成する](./learn/powershell-runbook-managed-identity.md)」を参照してください。
+* Python Runbook の詳細については、「[チュートリアル: Python Runbook を作成する」](./learn/automation-tutorial-runbook-textual-python-3.md)を参照してください。

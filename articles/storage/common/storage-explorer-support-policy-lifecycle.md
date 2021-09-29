@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 07/10/2020
 ms.author: marayerm
-ms.openlocfilehash: 87520d26ac4f83297d076ff7539a7731ddbd09fd
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: 37486f22aba1be1ac987238d38e69b95553a8629
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114708814"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128638218"
 ---
 # <a name="azure-storage-explorer-support-lifecycle-and-policy"></a>Azure Storage Explorer のサポート ライフサイクルとポリシー
 
@@ -39,7 +39,7 @@ Storage Explorer は、[モダン ライフサイクル ポリシー](https://su
 
 次の表は、Azure Storage Explorer の各リリースのリリース日とサポート終了日を示しています。
 
-| Storage Explorer のバージョン  | リリース日       | サポート終了日 |
+| Storage Explorer のバージョン  | リリース日         | サポート終了日 |
 |:-------------------------:|:------------------:|:-------------------:|
 | v1.20.1                   | 2021 年 7 月 23 日      | 2022 年 7 月 23 日       |
 | v1.20.0                   | 2021 年 6 月 25 日      | 2022 年 6 月 25 日       |
@@ -56,7 +56,7 @@ Storage Explorer は、[モダン ライフサイクル ポリシー](https://su
 | v1.14.0                   | 2020 年 6 月 24 日      | 2021 年 7 月 14 日       |
 | v1.13.1                   | 2020 年 5 月 18 日       | 2021 年 7 月 14 日       |
 | v1.13.0                   | 2020 年 5 月 1 日        | 2021 年 7 月 14 日       |
-| v1.12.0                   | 2020 年 1 月 16 日   | 2021 年 7 月 14 日       |
+| v1.12.0                   | 2020 年 1 月 16 日     | 2021 年 7 月 14 日       |
 | v1.11.2                   | 2019 年 12 月 17 日  | 2021 年 7 月 14 日       |
 | v1.11.1                   | 2019 年 11 月 20 日  | 2021 年 7 月 14 日       |
 | v1.11.0                   | 2019 年 11 月 4 日   | 2021 年 7 月 14 日       |
@@ -69,7 +69,7 @@ Storage Explorer は、[モダン ライフサイクル ポリシー](https://su
 | v1.6.2                    | 2019 年 1 月 8 日    | 2021 年 7 月 14 日       |
 | v1.6.1                    | 2018 年 12 月 18 日  | 2021 年 7 月 14 日       |
 | v1.6.0                    | 2018 年 12 月 4 日   | 2021 年 7 月 14 日       |
-| v1.5.0                    | 2018 年 10 月 29 日   | 2021 年 7 月 14 日       |
+| v1.5.0                    | 2018 年 10 月 29 日     | 2021 年 7 月 14 日       |
 | v1.4.4                    | 2018 年 10 月 15 日   | 2021 年 7 月 14 日       |
 | v1.4.2                    | 2018 年 9 月 24 日 | 2021 年 7 月 14 日       |
 | v1.4.1                    | 2018 年 8 月 28 日    | 2021 年 7 月 14 日       |

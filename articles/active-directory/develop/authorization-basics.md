@@ -13,12 +13,12 @@ ms.date: 07/23/2021
 ms.custom: template-concept
 ms.author: cchiedo
 ms.reviewer: johngarland, mamarxen, ianbe, marsma
-ms.openlocfilehash: 4dcdb90daa9bb8cd1df79ec399eb9372fca02c61
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: a3710d4af1b65b1220db8938b35cf9d6cb516579
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123037191"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124734715"
 ---
 # <a name="authorization-basics"></a>承認の基本
 
@@ -50,7 +50,7 @@ ms.locfileid: "123037191"
 高度な RBAC 実装では、ロールがアクセス許可のコレクションにマップされることがあり、このときアクセス許可には実行できるアクションやアクティビティが細かく記述されます。 ロールはその後、アクセス許可の組み合わせとして構成されます。 アプリケーションについてのエンティティの全体的なアクセス許可のセットを計算するために、エンティティが割り当てられているさまざまなロールに付与されたアクセス許可の交差部分が取られます。 このアプローチの好例として、Azure サブスクリプション内のリソースへのアクセスを制御する RBAC 実装が挙げられます。
 
 > [!NOTE]
-> [アプリケーション RBAC](./custom-rbac-for-developers.md) は [Azure RBAC](/azure/role-based-access-control/overview) および [Azure AD RBAC](../roles/custom-overview.md#understand-azure-ad-role-based-access-control) とは異なります。 Azure のカスタム ロールと組み込みロールはどちらも Azure RBAC の一部であり、Azure リソースの管理に役立ちます。 Azure AD RBAC では Azure AD リソースを管理できます。
+> [アプリケーション RBAC](./custom-rbac-for-developers.md) は [Azure RBAC](../../role-based-access-control/overview.md) および [Azure AD RBAC](../roles/custom-overview.md#understand-azure-ad-role-based-access-control) とは異なります。 Azure のカスタム ロールと組み込みロールはどちらも Azure RBAC の一部であり、Azure リソースの管理に役立ちます。 Azure AD RBAC では Azure AD リソースを管理できます。
 
 ### <a name="attribute-based-access-control"></a>属性ベースのアクセス制御 
 
@@ -75,4 +75,4 @@ Azure Active Directory で ABAC を実現する 1 つの方法は、[動的グ�
 
 - アプリケーションでのロールベースのアクセス制御のカスタム実装の詳細については、「[アプリケーション開発者向けのロールベースのアクセス制御](./custom-rbac-for-developers.md)」を参照してください。
 - Microsoft ID プラットフォームと統合できるようにアプリケーションを登録するプロセスについては、[アプリケーション モデル](./application-model.md)に関する記事を参照してください。
-- 単純な認証ベースの承認を構成する例については、「[Azure AD ログインを使用するように App Service または Azure Functions アプリを構成する](/azure/app-service/configure-authentication-provider-aad)」を参照してください。
+- 単純な認証ベースの承認を構成する例については、「[Azure AD ログインを使用するように App Service または Azure Functions アプリを構成する](../../app-service/configure-authentication-provider-aad.md)」を参照してください。

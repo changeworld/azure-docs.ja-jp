@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f2f3a3c561b2fe82dcbeaaee1138c0d465ac6a4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a38361355c48021b6145552071593056a2a3caa6
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121737328"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124759740"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリでパスワードなしのサインインを有効にする 
 
@@ -83,7 +83,7 @@ Azure AD のパスワードなし認証方法にユーザーが自分自身を�
 1. **Microsoft Authenticator** で、登録したアカウントのドロップダウン メニューから **[電話によるサインインを有効にする]** を選択します。
 1. アプリの指示に従って、パスワードなしの電話によるサインインに対するアカウントの登録を完了します。
 
-組織はユーザーに対して、パスワードを使用しないで、自分の電話でサインインするように指示することができます。 Microsoft Authenticator アプリの構成と電話によるサインインの有効化の詳細については、「[Microsoft Authenticator アプリを使用してアカウントにサインインする](../user-help/user-help-auth-app-sign-in.md)」を参照してください。
+組織はユーザーに対して、パスワードを使用しないで、自分の電話でサインインするように指示することができます。 Microsoft Authenticator アプリの構成と電話によるサインインの有効化の詳細については、「[Microsoft Authenticator アプリを使用してアカウントにサインインする](https://support.microsoft.com/account-billing/sign-in-to-your-accounts-using-the-microsoft-authenticator-app-582bdc07-4566-4c97-a7aa-56058122714c)」を参照してください。
 
 > [!NOTE]
 > ポリシーによって電話によるサインインを使用することが許可されていないユーザーは、Microsoft Authenticator アプリ内でそれを有効にすることができなくなります。

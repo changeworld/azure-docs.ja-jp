@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 10/22/2020
-ms.openlocfilehash: 42b25599bfd1ef40f8bb0bc1a954677f68dbf668
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 1c134fa24914ffc1cc2d51389cf6840986a74c58
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121862901"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "128661566"
 ---
 # <a name="quickstart-use-the-azure-portal-to-create-an-azure-database-for-mysql-flexible-server"></a>クイックスタート: Azure portal を使用して Azure Database for MySQL フレキシブル サーバーを作成する
 
@@ -24,7 +24,9 @@ Azure Database for MySQL フレキシブル サーバーは、高可用性 MySQL
 > [!IMPORTANT]
 > Azure Database for MySQL フレキシブル サーバーは現在、パブリック プレビュー段階にあります。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成してください。
+
+[!INCLUDE [flexible-server-free-trial-note](../includes/flexible-server-free-trial-note.md)]
+
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 [Azure ポータル](https://portal.azure.com/)にアクセスします。 資格情報を入力してポータルにサインインします。 既定のビューはサービス ダッシュボードです。
@@ -57,7 +59,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     Region|ユーザーに最も近いリージョン| ユーザーに最も近い場所。|
     ワークロードの種類| 開発 | 運用環境のワークロードでは、[max_connections](concepts-server-parameters.md#max_connections) の要件に応じて、小中規模または大規模を選択できます|
     可用性ゾーン| [優先設定なし] | Azure VM、仮想マシン スケール セット、または AKS インスタンス内のアプリケーションが特定の可用性ゾーンでプロビジョニングされている場合、同じ可用性ゾーンでフレキシブル サーバーを指定してアプリケーションとデータベースを併置し、ゾーン間でのネットワーク待ち時間を短縮することで、パフォーマンスを向上させることができます。|
-    高可用性| オフ | 実稼働サーバーの場合は、[ゾーン冗長による高可用性](https://docs.microsoft.com/azure/mysql/flexible-server/concepts-high-availability#zone-redundant-high-availability)と[同一ゾーン高可用性](https://docs.microsoft.com/azure/mysql/flexible-server/concepts-high-availability#same-zone-high-availability)のどちらかを選択します。 これは、VM の障害に備えたビジネス継続性と保護のために強くお勧めします|
+    高可用性| オフ | 実稼働サーバーの場合は、[ゾーン冗長による高可用性](concepts-high-availability.md#zone-redundant-ha-architecture)と[同一ゾーン高可用性](concepts-high-availability.md#same-zone-ha-architecture)のどちらかを選択します。 これは、VM の障害に備えたビジネス継続性と保護のために強くお勧めします|
     |スタンバイ可用性ゾーン| [優先設定なし]| ゾーンの障害が発生した場合に備えて、スタンバイ サーバー ゾーンの場所を選択して、それをアプリケーション スタンバイ サーバーと同じ場所に置きます |
     MySQL のバージョン|**5.7**| MySQL のメジャー バージョン。|
     管理者ユーザー名 |**mydemouser**| サーバーに接続するときに使用する自分のサインイン アカウント。 管理ユーザー名を **azure_superuser**、**admin**、**administrator**、**root**、**guest**、または **public** にすることはできません。|
@@ -132,7 +134,7 @@ mysql -h mydemoserver.mysql.database.azure.com -u mydemouser -p --ssl=true --ssl
 
 上のコマンドの実行後、フレキシブル サーバーに接続しているときに次のエラー メッセージが表示された場合、ファイアウォール規則の設定に不備があります。前述の [Allow public access from any Azure service within Azure to this server]\(Azure 内の Azure サービスからこのサーバーへのパブリック アクセスを許可する\) の設定が済んでいないか、オプションが保存されていません。 ファイアウォールの設定を再試行して、もう一度やり直してください。
 
-ERROR 2002 (HY000):Can't connect to MySQL server on <servername> (115) (エラー 2002 (HY000): &lt;servername&gt; 上の MySQL サーバーに接続できません (115))
+ERROR 2002 (HY000):Can't connect to MySQL server on \<servername\> (115) (エラー 2002 (HY000): &lt;servername&gt; 上の MySQL サーバーに接続できません (115))
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 これで、リソース グループに Azure Database for MySQL フレキシブル サーバーが作成されました。 これらのリソースが今後不要である思われる場合は、リソース グループを削除してリソースを削除することも、単にこの MySQL サーバーを削除することもできます。 リソース グループを削除するには、次の手順のようにします。

@@ -2,7 +2,6 @@
 title: 'リファレンス: Form Recognizer クライアント ライブラリ 3.0.0 および REST API v2.0'
 titleSuffix: Azure Cognitive Services
 description: Form Recognizer クライアント ライブラリ v3.0.0 または REST API v2.0 を使用して、カスタム ドキュメントからキーと値のペアとテーブル データを抽出するフォーム処理アプリを作成します。
-services: cognitive-services
 author: laujan
 manager: nitinme
 ms.service: applied-ai-services
@@ -13,12 +12,12 @@ ms.author: lajanuar
 zone_pivot_groups: programming-languages-set-formre
 ms.custom: devx-track-js, devx-track-csharp
 keywords: フォーム処理, 自動データ処理
-ms.openlocfilehash: 2a312359d164b54c90be7bc1dc8dbf8aa47f80cb
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 32dcfb1ba1e413e666e6a3d27ef9f03dbce81978
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122326411"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128641756"
 ---
 # <a name="reference-azure-form-recognizer-client-library-v300-and-rest-api-v20"></a>リファレンス: Azure Form Recognizer クライアント ライブラリ v3.0.0 および REST API v2.0
 

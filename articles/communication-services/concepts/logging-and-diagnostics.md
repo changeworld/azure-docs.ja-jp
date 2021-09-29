@@ -9,12 +9,13 @@ ms.author: rifox
 ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: b894fc7155f1b95ee7ed90b11b158efac9323c51
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.subservice: data
+ms.openlocfilehash: 8c0b1f403508ddc8f704518b2caa784b9c8894de
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123258145"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128671984"
 ---
 # <a name="communication-services-logs"></a>Communication Services のログ
 

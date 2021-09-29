@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: azure-redhat-openshift
 ms.date: 10/26/2020
-ms.openlocfilehash: 707ee38ef71a0f3f3f09e142bd4d944bb04cff3d
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: 82e21038b143e0e32a58c3aa24b227ebe850fd06
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122446131"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124775015"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>チュートリアル:Azure Red Hat OpenShift 4 クラスターを作成する
 
@@ -42,7 +42,7 @@ ARO プル シークレットを使用することで、ARO の RH OpenShift ラ
 
 このチュートリアルでは、クラスターの仮想ネットワークを含むリソース グループを作成します。 共同作成者とユーザー アクセス管理者のアクセス許可、または仮想ネットワークに対する直接の所有者アクセス許可、またはそれを含むリソース グループまたはサブスクリプションに対する所有者アクセス許可を取得している必要があります。
 
-また、クラスターのアプリケーションとサービス プリンシパルを作成するために、ツールに対する十分な Azure Active Directory アクセス許可 (テナントのメンバー ユーザー、または **アプリケーション管理者** ロールが割り当てられたゲスト ユーザー) も必要になります。 詳細については、「[メンバーとゲスト ユーザー](/azure/active-directory/fundamentals/users-default-permissions#member-and-guest-users)」および「[Azure Active Directory を使ってユーザーに管理者と管理者以外のロールを割り当てる](/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)」を参照してください。
+また、クラスターのアプリケーションとサービス プリンシパルを作成するために、ツールに対する十分な Azure Active Directory アクセス許可 (テナントのメンバー ユーザー、または **アプリケーション管理者** ロールが割り当てられたゲスト ユーザー) も必要になります。 詳細については、「[メンバーとゲスト ユーザー](../active-directory/fundamentals/users-default-permissions.md#member-and-guest-users)」および「[Azure Active Directory を使ってユーザーに管理者と管理者以外のロールを割り当てる](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md)」を参照してください。
 
 ### <a name="register-the-resource-providers"></a>リソース プロバイダーを登録する
 

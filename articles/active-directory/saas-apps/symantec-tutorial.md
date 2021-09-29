@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/24/2021
 ms.author: jeedes
-ms.openlocfilehash: cf7e990fccd4b1d649a66495799e8590d80f7f5c
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 7eb68e8e460c12336e6f10eb65701a542fcc1b3a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108205991"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124751890"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-symantec-web-security-service-wss"></a>チュートリアル: Azure Active Directory と Symantec Web Security Service (WSS) の統合
 
@@ -134,7 +134,7 @@ Symantec Web Security Service (WSS) 側にシングル サインオンを構成�
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した Symantec Web Security Service (WSS) に自動的にサインインされます。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Symantec Web Security Service (WSS)] タイルをクリックすると、SSO を設定した Symantec Web Security Service (WSS) に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Symantec Web Security Service (WSS)] タイルをクリックすると、SSO を設定した Symantec Web Security Service (WSS) に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

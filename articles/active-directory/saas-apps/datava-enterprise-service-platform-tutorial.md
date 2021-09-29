@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/20/2020
 ms.author: jeedes
-ms.openlocfilehash: fa91c634aca5428dcca09c4f23df7c639bf07a39
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7be19f9d88dd9967d6dd8735d6cf64af75c03626
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92454836"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124783484"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-datava-enterprise-service-platform"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Datava Enterprise Service Platform の統合
 
@@ -135,7 +135,7 @@ Datava Enterprise Service Platform で Azure AD SSO を構成してテストす�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Datava Enterprise Service Platform] タイルをクリックすると、SSO を設定した Datava Enterprise Service Platform に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+アクセス パネルで [Datava Enterprise Service Platform] タイルをクリックすると、SSO を設定した Datava Enterprise Service Platform に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

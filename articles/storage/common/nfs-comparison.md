@@ -6,12 +6,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 06/21/2021
 ms.author: rogarana
-ms.openlocfilehash: 6f179fe2e91da9e68a0809763bd9f38a5947e8a4
-ms.sourcegitcommit: 9caa850a2b26773e238f8ba6f4ca151c47260915
+ms.openlocfilehash: 3dcc0a93473e5f0b14f8921114172dbf6506d8aa
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2021
-ms.locfileid: "113600606"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128636745"
 ---
 # <a name="compare-access-to-azure-files-blob-storage-and-azure-netapp-files-with-nfs"></a>NFS を使用した Azure Files、Blob Storage、および Azure NetApp Files へのアクセスを比較する
 
@@ -29,7 +29,6 @@ ms.locfileid: "113600606"
 |パフォーマンス (ボリュームごと)     |最大 20,000 IOPS、最大 100 GiB/s のスループット。         |最大 100,000 IOPS、最大 80 GiB/s のスループット。         |最大 460,000 IOPS、最大 36 GiB/s のスループット。         |
 |スケール     | 1 つのボリュームに対して最大 2 PiB。 <br></br> 1 つのファイルに対して最大 4.75 TiB。<br></br>最小容量の要件はありません。         |1 つのファイル共有に対して最大 100 TiB。<br></br>1 つのファイルに対して最大 4 TiB。<br></br>100 GiB の最小容量。         |1 つのボリュームに対して最大 100 TiB。<br></br>1 つのファイルに対して最大 16 TiB。<br></br>一貫したハイブリッド クラウド エクスペリエンス。         |
 |価格     |[Azure Blob Storage の価格](https://azure.microsoft.com/pricing/details/storage/blobs/)         |[Azure Files の料金](https://azure.microsoft.com/pricing/details/storage/files/)         |[Azure NetApp Files の価格](https://azure.microsoft.com/pricing/details/netapp/)         |
-
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
-ms.openlocfilehash: e1900e84ddc4aecdacfdcddeeb8ffa63593bf5df
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4d4faa8a1e59d8b8c5c49cebab95aecf3db045ec
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92458814"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124739122"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lean"></a>チュートリアル: Azure Active Directory と Lean の統合
 
@@ -187,7 +187,7 @@ Lean で Azure AD シングル サインオンを構成するには、次の手�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Lean] タイルをクリックすると、SSO を設定した Lean に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+アクセス パネル上で [Lean] タイルをクリックすると、SSO を設定した Lean に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: tutorial
-ms.date: 12/02/2020
+ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: b5de81f5eaf76c16c1ea8fc78075c4567c77aeee
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 78e8e34a6dfed18a95da553aec57b774a3b3ff15
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96531983"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128612963"
 ---
 # <a name="tutorial-review-your-microsoft-customer-agreement-invoice"></a>チュートリアル:Microsoft 顧客契約の請求書を確認する
 

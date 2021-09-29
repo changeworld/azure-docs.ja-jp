@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/20/2021
 ms.author: jeedes
-ms.openlocfilehash: 754fb3f80bfdf44205d43461c4b09b5ea7b20072
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 941d516e1fa3f287db906586da0eb925fed9d27e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110481643"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124789714"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sauce-labs---mobile-and-web-testing"></a>チュートリアル: Azure Active Directory と Sauce Labs - Mobile and Web Testing の統合
 
@@ -147,7 +147,7 @@ Sauce Labs - Mobile and Web Testing に対して Azure AD SSO を構成し、テ
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した Sauce Labs - Mobile and Web Testing に自動的にサインインされます。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Sauce Labs - Mobile and Web Testing] タイルをクリックすると、SSO を設定した Sauce Labs - Mobile and Web Testing に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Sauce Labs - Mobile and Web Testing] タイルをクリックすると、SSO を設定した Sauce Labs - Mobile and Web Testing に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

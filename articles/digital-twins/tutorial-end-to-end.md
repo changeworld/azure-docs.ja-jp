@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/23/2021
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: cdd4554485a7c04f2d768f7a3bf7265d6342af96
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 9d19a74dc7bacc996fe328679d9c3e12766bfadf
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123227210"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128626192"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>チュートリアル:エンド ツー エンドのソリューションを構築する
 
@@ -84,12 +84,7 @@ SetupBuildingScenario
 Query
 ```
 
->[!TIP]
-> この簡略化された方法は、_**AdtE2ESample**_ プロジェクトの一部として提供されています。 このサンプル コードのコンテキスト外では、[クエリ API](/rest/api/digital-twins/dataplane/query) または [CLI コマンド](/cli/azure/dt?view=azure-cli-latest&preserve-view=true)を使用して、インスタンス内のすべてのツインに対していつでもクエリを実行できます。
->
-> インスタンス内のすべての Digital Twins を取得するための完全なクエリの本文を次に示します。
-> 
-> :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="GetAllTwins":::
+[!INCLUDE [digital-twins-query-latency-note.md](../../includes/digital-twins-query-latency-note.md)]
 
 プロジェクトの実行はもう停止してかまいません。 ただし、ソリューションは Visual Studio で開いたままにしてください。この後、チュートリアルが終わるまで使用することになります。
 

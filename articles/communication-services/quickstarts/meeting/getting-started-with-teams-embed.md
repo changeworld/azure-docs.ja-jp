@@ -7,13 +7,14 @@ ms.author: palatter
 ms.date: 06/30/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
+ms.subservice: teams-interop
 zone_pivot_groups: acs-plat-ios-android
-ms.openlocfilehash: 03f5e608dcf5460af6d9086bde43cd0d5a160589
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: e765551de3344e18e9f2fcef36a3b1be7c9a4d0d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123259778"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128677228"
 ---
 # <a name="quickstart-add-joining-a-teams-meeting-to-your-app"></a>クイックスタート: Teams 会議への参加機能をアプリに追加する
 

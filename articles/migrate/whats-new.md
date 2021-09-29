@@ -7,12 +7,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.date: 08/04/2021
 ms.custom: mvc
-ms.openlocfilehash: 720b19ff16e72fade8bcdbd1b41304b2d87d1f2d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 99216bd26bfff76c4342f1533ff4ced070a69e92
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121737655"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124735976"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Azure Migrate の新着情報
 
@@ -21,7 +21,7 @@ ms.locfileid: "121737655"
 ## <a name="update-august-2021"></a>更新 (2021 年 8 月)
 
 - VMware 環境 の IIS サーバーで実行されている ASP.NET Web アプリの大規模な検出と評価は、現在プレビュー段階です。 [詳細については、こちらを参照してください](concepts-azure-webapps-assessment-calculation.md)。 始めるには、[検出](tutorial-discover-vmware.md)と[評価](tutorial-assess-webapps.md)に関するチュートリアルを参照してください。
-- Azure VM 評価の推奨事項での Azure [Ultra Disks](https://docs.microsoft.com/azure/virtual-machines/disks-types#ultra-disk) のサポート。
+- Azure VM 評価の推奨事項での Azure [Ultra Disks](../virtual-machines/disks-types.md#ultra-disk) のサポート。
 - VMware 仮想マシンの大規模なソフトウェア インベントリおよびエージェントレスの依存関係の分析の一般提供。
 - Azure Migrate アプライアンスの更新:
     - ユーザーがアプライアンスの問題を特定して自己評価できるようにするアプライアンスの "診断と解決"。

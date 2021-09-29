@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 08/26/2021
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 9db589de9bd62a00b7de89b2b558a3bac1e1785a
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 4c45c127710ff5a572a68531a1a5b3836d505e39
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123039980"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124749510"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights におけるサンプリング
 
@@ -23,7 +23,7 @@ ms.locfileid: "123039980"
 * サンプリングには、アダプティブ サンプリング、固定レート サンプリング、インジェスト サンプリングの 3 種類があります。
 * アダプティブ サンプリングは、Application Insights ASP.NET および ASP.NET Core ソフトウェア開発キット (SDK) のすべての最新バージョンで既定で有効になっています。 また、[Azure Functions](../../azure-functions/functions-overview.md) でも使用されます。
 * 固定レート サンプリングは、ASP.NET、ASP.NET Core、Java (エージェントと SDK の両方)、および Python 用の Application Insights SDK の最近のバージョンで使用できます。
-* Java では、サンプリング オーバーライドが利用できます。一部の依存関係、要求、正常性確認に異なるサンプリング レートを適用する必要があるときに便利です。 [サンプリング オーバーライド](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-sampling-overrides)を使用し、ノイズのある依存関係をチューニングします。一方で、たとえば、重要なエラーはすべて 100% で保持します。 これは固定サンプリングの形式であり、テレメトリを細かく制御できます。
+* Java では、サンプリング オーバーライドが利用できます。一部の依存関係、要求、正常性確認に異なるサンプリング レートを適用する必要があるときに便利です。 [サンプリング オーバーライド](./java-standalone-sampling-overrides.md)を使用し、ノイズのある依存関係をチューニングします。一方で、たとえば、重要なエラーはすべて 100% で保持します。 これは固定サンプリングの形式であり、テレメトリを細かく制御できます。
 * インジェスト サンプリングは、Application Insights サービス エンドポイントで機能します。 これは、他のサンプリングが有効になっていない場合にのみ適用されます。 SDK でテレメトリがサンプリングされると、インジェスト サンプリングは無効になります。
 * Web アプリケーションの場合、カスタム イベントを記録しており、一連のイベントが確実にまとめて保持または破棄されるようにする必要がある場合は、それらのイベントに同じ `OperationId` 値を割り当てる必要があります。
 * Analytics クエリを作成する場合は、 [サンプリングを考慮する](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#aggregations)必要があります。 具体的には、単純にレコードをカウントするのではなく、 `summarize sum(itemCount)`を使用する必要があります。
@@ -310,12 +310,12 @@ Azure Functions で実行されているアプリに対してアダプティブ 
 
 ### <a name="configuring-sampling-overrides-and-fixed-rate-sampling-for-java-applications"></a>Java アプリケーションのサンプリング オーバーライドと固定レート サンプリングを構成する
 
-既定では、Java 自動インストルメンテーションと SDK ではサンプリングは有効になっていません。 現在、Java 自動インストルメンテーション、[サンプリング オーバーライド](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-sampling-overrides)、固定レート サンプリングはサポートされています。 Java では、アダプティブ サンプリングはサポートされていません。
+既定では、Java 自動インストルメンテーションと SDK ではサンプリングは有効になっていません。 現在、Java 自動インストルメンテーション、[サンプリング オーバーライド](./java-standalone-sampling-overrides.md)、固定レート サンプリングはサポートされています。 Java では、アダプティブ サンプリングはサポートされていません。
 
 #### <a name="configuring-java-auto-instrumentation"></a>Java 自動インストルメンテーションの構成
 
-* 既定のサンプリング レートをオーバーライドするサンプリング オーバーライドを構成し、一部の要求と依存関係に異なるサンプリング レートを適用するには、[サンプリング オーバーライド ガイド](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-sampling-overrides#getting-started)を使用します。
-* すべてのテレメトリに適用される固定レート サンプリングを構成するには、[固定レート サンプリング ガイド](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-config#sampling)を使用します。
+* 既定のサンプリング レートをオーバーライドするサンプリング オーバーライドを構成し、一部の要求と依存関係に異なるサンプリング レートを適用するには、[サンプリング オーバーライド ガイド](./java-standalone-sampling-overrides.md#getting-started)を使用します。
+* すべてのテレメトリに適用される固定レート サンプリングを構成するには、[固定レート サンプリング ガイド](./java-standalone-config.md#sampling)を使用します。
 
 #### <a name="configuring-java-2x-sdk"></a>Java 2.x SDK の構成
 
@@ -576,4 +576,3 @@ ASP.NET SDK の v2.5.0-beta2 および ASP.NET Core SDK の v2.2.0-beta3 より�
 
 * [フィルター](./api-filtering-sampling.md) を使用して、SDK から送信される情報についてさらに厳密に制御できます。
 * [Application Insights によるテレメトリの最適化](/archive/msdn-magazine/2017/may/devops-optimize-telemetry-with-application-insights)に関する Developer Network の記事を読みます。
-

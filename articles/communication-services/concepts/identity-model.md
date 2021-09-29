@@ -9,12 +9,13 @@ ms.author: tchladek
 ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 452fffa58d9845c1655c8b643dcde54f0b6a7d90
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.subservice: identity
+ms.openlocfilehash: e19ea511a74f95e3c3c9877226751c1933879c46
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114459264"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128671965"
 ---
 # <a name="identity-model"></a>ID モデル
 

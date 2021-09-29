@@ -7,16 +7,18 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.topic: conceptual
 ms.date: 05/10/2021
-ms.openlocfilehash: 2058fcade3375f680f616374ba8dee73a4e72dbc
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7f426c04793c754619cd40bfdfcb4a7b9fc7d904
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122637907"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129059912"
 ---
 # <a name="parse-transformation-in-mapping-data-flow"></a>マッピング データ フローでの変換を解析する
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+[!INCLUDE[data-flow-preamble](includes/data-flow-preamble.md)]
 
 変換解析を使用して、データ内のドキュメント形式の列を解析します。 現在サポートされている解析可能な埋め込みドキュメントの種類は、JSON、XML、区切りテキストです。
 
@@ -26,7 +28,7 @@ ms.locfileid: "122637907"
 
 変換解析の構成パネルで、最初に、インラインで解析する列に含まれているデータの種類を選択します。 変換解析には、次の構成設定も含まれています。
 
-![解析の設定](media/data-flow/data-flow-parse-1.png "[解析]")
+:::image type="content" source="media/data-flow/data-flow-parse-1.png" alt-text="解析の設定":::
 
 ### <a name="column"></a>列
 
@@ -51,11 +53,11 @@ ms.locfileid: "122637907"
 
 ここでは、1 つの列に書き込まれる、解析からのターゲット出力スキーマを構成します。
 
-![解析例](media/data-flow/data-flow-parse-2.png "解析例")
+:::image type="content" source="media/data-flow/data-flow-parse-2.png" alt-text="解析例":::
 
 この例では、受信フィールド "jsonString" の解析を定義しています。これはプレーンテキストですが、JSON 構造体として書式設定されています。 次のスキーマを使用して、解析結果を JSON として "json" という名前の新しい列に格納します。
 
-```(trade as boolean, customers as string[])```
+`(trade as boolean, customers as string[])`
 
 [検査] タブと [データのプレビュー] を参照して、出力が適切にマッピングされていることを確認します。
 

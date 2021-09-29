@@ -4,13 +4,13 @@ metadata:
   description: この記事では、Azure Relay サービスに関連する、よく寄せられる質問の一部の回答を示します。
   ms.topic: article
   ms.service: azure
-  ms.date: 06/23/2021
-  ms.openlocfilehash: fd18d0d36cb07596ba6f8b40e699228bb95a190d
-  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+  ms.date: 09/17/2021
+  ms.openlocfilehash: defbb7c8318b548de3ed5bc4aa6049944a719e6d
+  ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/17/2021
-  ms.locfileid: "122253962"
+  ms.lasthandoff: 09/24/2021
+  ms.locfileid: "128637557"
 title: Azure Relay に関する FAQ
 summary: >
   この記事では、[Azure Relay](https://azure.microsoft.com/services/service-bus/) についてよく寄せられる質問とその回答を紹介します。 Azure の価格およびサポートに関する一般的な情報については、「[Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq/)」を参照してください。
@@ -42,7 +42,7 @@ sections:
   - question: >
       ハイブリッド接続と WCF リレーの課金方法を教えてください。
     answer: >
-      Relay の価格の詳細については、Service Bus の価格の詳細ページで、[ハイブリッド接続と WCF リレー][料金の概要]表をご覧ください。 このページで説明されている価格に加え、ご利用のアプリケーションがプロビジョニングされているデータ センターから外部に送信される関連データ転送にも料金が発生します。
+      Relay の価格の詳細については、Service Bus の価格の詳細ページで、[ハイブリッド接続と WCF リレー](https://azure.microsoft.com/pricing/details/service-bus)の表をご覧ください。 このページで説明されている価格に加え、ご利用のアプリケーションがプロビジョニングされているデータ センターから外部に送信される関連データ転送にも料金が発生します。
   - question: >
       ハイブリッド接続はどのように課金されますか?
     answer: "ここでは、ハイブリッド接続での課金シナリオの例を 3 つ紹介します。\n\n*   シナリオ 1:\n    *   ハイブリッド接続マネージャーのインスタンスなどのリスナーを 1 つインストールし、1 か月間継続的に稼働させます。\n    *   その接続を経由して、1 か月で 3 GB のデータを送信します。 \n    *   合計料金は 5 ドルです。\n*   シナリオ 2:\n    *   ハイブリッド接続マネージャーのインスタンスなどのリスナーを 1 つインストールし、1 か月間継続的に稼働させます。\n    *   その接続を経由して、1 か月で 10 GB のデータを送信します。\n    *   合計料金は 7.50 ドルです。 内訳は、接続および最初の 5 GB に 5 ドル、追加のデータ 5 GB に 2.50 ドルです。\n*   シナリオ 3:\n    *   ハイブリッド接続マネージャーの A と B という 2 つのインスタンスをインストールし、1 か月間継続的に稼働させます。\n    *   接続 A を経由して、1 か月で 3 GB のデータを送信します。\n    *   接続 B を経由して、1 か月で 6 GB のデータを送信します。\n    *   合計料金は 10.50 ドルです。 内訳は、接続 A に 5 ドル、接続 B に 5 ドル、接続 B の 6 GB 目の料金として 0.50 ドルです。\n"
@@ -110,11 +110,11 @@ sections:
   - question: >
       Azure Relay API によって生成されるいくつかの例外と、それを解決するための推奨されるアクションを教えてください。
     answer: >
-      一般的な例外と、それを解決するための推奨されるアクションの説明については、[Relay の例外][Relay の例外] に関する記事を参照してください。
+      一般的な例外と、それを解決するための推奨されるアクションの説明については、[Relay の例外](relay-exceptions.md)に関する記事を参照してください。
   - question: >
       Shared Access Signature とは何ですか? また、どの言語で署名を生成できますか?
     answer: >
-      Shared Access Signature (SAS) は、SHA-256 セキュア ハッシュまたは URI に基づいた認証メカニズムです。 Node.js、PHP、Python、Java、C、C# で独自の署名を生成する方法については、[Shared Access Signature による Service Bus の認証][Shared Access Signature] を参照してください。
+      Shared Access Signature (SAS) は、SHA-256 セキュア ハッシュまたは URI に基づいた認証メカニズムです。 Node.js、PHP、Python、Java、C、C# で独自の署名を生成する方法については、「[Shared Access Signature による Service Bus の認証](../service-bus-messaging/service-bus-sas.md)」を参照してください。
   - question: >
       一部のリレー エンドポイントのみを許可することはできますか?
     answer: >

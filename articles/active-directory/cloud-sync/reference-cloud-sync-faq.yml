@@ -8,16 +8,16 @@ metadata:
   ms.service: active-directory
   ms.workload: identity
   ms.topic: reference
-  ms.date: 06/25/2020
+  ms.date: 09/10/2021
   ms.subservice: hybrid
   ms.author: billmath
   ms.collection: M365-identity-device-management
-  ms.openlocfilehash: cde28b924954db563ce3ed71873ded00a753f80f
-  ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+  ms.openlocfilehash: 45a4273ccdfa76eb158ca8fd2ce51161fc3993b1
+  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/30/2021
-  ms.locfileid: "113114589"
+  ms.lasthandoff: 09/13/2021
+  ms.locfileid: "124771348"
 title: Azure Active Directory Connect クラウド同期の FAQ
 summary: >
   Azure Active Directory (Azure AD) Connect クラウド同期に関してよく寄せられる質問をお読みください。
@@ -92,5 +92,5 @@ sections:
       Nothing。  OU の名前を変更したり、OU を移動したりしても、ユーザーは削除されません。
   - question: >
       Azure AD Connect クラウド同期では大規模なグループはサポートされていますか?
-    answer: "はい。 現在、OU スコープ フィルターを使用して同期された最大 50,000 人のグループ メンバーがサポートされています。 同時に、グループ スコープのフィルター処理を使用する場合は、グループのサイズを 1,500 メンバー未満にすることをお勧めします。 これは、グループ スコープのフィルター処理の一部として大規模なグループを同期できても、1,500 を超えるバッチでグループにメンバーを追加すると、差分同期が失敗するためです。 \n"
+    answer: "はい。 現在、OU スコープ フィルターを使用して同期された最大 50,000 人のグループ メンバーがサポートされています。 \n"
 additionalContent: "\n## <a name=\"next-steps\"></a>次のステップ \n\n- [プロビジョニングとは](what-is-provisioning.md)\n- [Azure AD Connect クラウド同期とは](what-is-cloud-sync.md)"

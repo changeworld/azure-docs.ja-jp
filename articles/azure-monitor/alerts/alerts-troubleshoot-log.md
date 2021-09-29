@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f7e5340b69bacb14180b4feee7ada22c7ca298d0
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: aafd6f2e0d5c10b1e3e1698176734a83083ef72d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111592699"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124744502"
 ---
 # <a name="troubleshoot-log-alerts-in-azure-monitor"></a>Azure Monitor のログ アラートのトラブルシューティング  
 
@@ -156,7 +156,7 @@ SecurityEvent
 
 ## <a name="activity-log-example-when-rule-is-disabled"></a>ルールが無効になっているときのアクティビティ ログの例
 
-クエリが 7 日間続けて失敗した場合、Azure Monitor によってログ アラートが無効にされ、ルールの課金が停止されます。 Azure Monitor がログ アラートを無効にした正確な時間は、[Azure アクティビティ ログ](../../azure-resource-manager/management/view-activity-logs.md)で確認できます。 
+クエリが 7 日間続けて失敗した場合、Azure Monitor によってログ アラートが無効にされ、ルールの課金が停止されます。 Azure Monitor がログ アラートを無効にした正確な時間は、[Azure アクティビティ ログ](../../azure-monitor/essentials/activity-log.md)で確認できます。 
 
 こちらの例を参照してください。
 

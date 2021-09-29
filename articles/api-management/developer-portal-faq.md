@@ -4,18 +4,18 @@ titleSuffix: Azure API Management
 description: API Management の開発者ポータルについてよく寄せられる質問。 開発者ポータルは、API のコンシューマーが API を探索できるカスタマイズ可能な Web サイトです。
 services: api-management
 documentationcenter: API Management
-author: mikebudzynski
+author: dlepow
 ms.service: api-management
 ms.topic: troubleshooting
 ms.date: 07/30/2021
-ms.author: apimpm
+ms.author: danlep
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b7b7efda7ca28382ca1dfbdead64db9976d67bd4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0c8757211bf11e97cde091d49eb6512bb0e4f7cc
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121747784"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128656343"
 ---
 # <a name="api-management-developer-portal---frequently-asked-questions"></a>API Management 開発者ポータル - よく寄せられる質問
 
@@ -79,7 +79,7 @@ CORS は手動で有効にすることもできます。
 1. 生成されたポリシー コードを表示するには、 **[手動でグローバル レベルに適用する]** リンクを選択します。
 2. Azure portal で API Management サービスの **[API]** セクションにある **[すべての API]** に移動します。
 3. **[受信処理]** セクションで **[</>]** アイコンを選択します。
-4. XML ファイルの **[<inbound>]** セクションにポリシーを挿入します。 **<origin>** 値が、開発者ポータルのドメインと一致していることを確認します。
+4. XML ファイルの **[\<inbound\>]** セクションにポリシーを挿入します。 **\<origin\>** 値が、開発者ポータルのドメインと一致していることを確認します。
 
 > [!NOTE]
 > 

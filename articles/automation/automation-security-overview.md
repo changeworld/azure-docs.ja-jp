@@ -7,12 +7,12 @@ ms.subservice: process-automation
 ms.date: 08/02/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 78b188b270ec08aa546311b449f908d47313a9a1
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5a86a5c8c0922e0861411e93376047344ba6c5af
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121730583"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124789106"
 ---
 # <a name="azure-automation-account-authentication-overview"></a>Azure Automation アカウントの認証の概要
 
@@ -24,7 +24,7 @@ Azure Automation を使用すると、Azure 内のリソース、オンプレミ
 
 Azure Automation を初めて開始するときに、少なくとも 1 つの Automation アカウントを作成する必要があります。 Automation アカウントを使用すると、他のアカウントのリソースから Automation のリソース、Runbook、資産、構成を分離できます。 Automation アカウントを使用して、リソースを個別の論理環境または委任された役割に分けることができます。 たとえば、開発環境用、本番環境用、オンプレミス環境用に、それぞれ異なるアカウントを使用できます。 または、[Update Management](update-management/overview.md) を使用して、すべてのコンピューターでオペレーティング システムの更新プログラムを管理するように 1 つの Automation アカウントを専用にすることもできます。 
 
-Azure Automation アカウントは、Microsoft アカウントや、Azure サブスクリプションで作成されたアカウントとは異なります。 Automation アカウントの作成の概要については、「[Automation アカウントを作成する](automation-quickstart-create-account.md)」を参照してください。
+Azure Automation アカウントは、Microsoft アカウントや、Azure サブスクリプションで作成されたアカウントとは異なります。 Automation アカウントの作成の概要については、「[Automation アカウントを作成する](./quickstarts/create-account-portal.md)」を参照してください。
 
 ## <a name="automation-resources"></a>Automation リソース
 

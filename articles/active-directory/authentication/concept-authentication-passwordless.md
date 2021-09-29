@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 115f792c82f2e3eea42636c788c3461f7cc55f77
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: 8d807de1eac29b233ad4fae3a4924c6238b33fd5
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122014605"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128605850"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Azure Active Directory のパスワードレス認証オプション
 
@@ -60,7 +60,7 @@ Windows Hello for Business の[計画ガイド](/windows/security/identity-prote
 
 ![Microsoft Authenticator アプリを使用して Microsoft Edge にサインインする](./media/concept-authentication-passwordless/concept-web-sign-in-microsoft-authenticator-app.png)
 
-Authenticator アプリは、あらゆる iOS や Android フォンを、強力なパスワードレスの資格情報に変えます。 ユーザーは、自分の電話で通知を受け取り、画面に表示される番号と電話の番号を照合してから、生体認証 (指紋または顔) あるいは PIN を使用して確認できます。 インストールの詳細については、「[Microsoft Authenticator アプリのダウンロードとインストール](../user-help/user-help-auth-app-download-install.md)」を参照してください。
+Authenticator アプリは、あらゆる iOS や Android フォンを、強力なパスワードレスの資格情報に変えます。 ユーザーは、自分の電話で通知を受け取り、画面に表示される番号と電話の番号を照合してから、生体認証 (指紋または顔) あるいは PIN を使用して確認できます。 インストールの詳細については、「[Microsoft Authenticator アプリのダウンロードとインストール](https://support.microsoft.com/account-billing/download-and-install-the-microsoft-authenticator-app-351498fc-850a-45da-b7b6-27e523b8702a)」を参照してください。
 
 Authenticator アプリを使用したパスワードレス認証では、Windows Hello for Business と同じ基本的なパターンに従います。 これは、Azure AD によって使用されている Microsoft Authenticator アプリのバージョンを見つけられるように、ユーザーを識別する必要があるため、少し複雑になります。
 
@@ -145,7 +145,7 @@ FIDO Alliance によって FIDO2 認定されたキーが多数存在する場�
 | Kensington                | ![○]              | ![○]| ![n]| ![n]| ![n]           | https://www.kensington.com/solutions/product-category/why-biometrics/                               |
 | KONA I                    | ![○]              | ![n]| ![○]| ![○]| ![n]           | https://konai.com/business/security/fido                                                            |
 | Nymi                      | ![○]              | ![n]| ![○]| ![n]| ![n]           | https://www.nymi.com/product                                                                      | 
-| OneSpan Inc.              | ![○]              | ![n]| ![n]| ![○]| ![n]           | https://www.onespan.com/products/fido                                                               |
+| OneSpan Inc.              | ![n]              | ![○]| ![n]| ![○]| ![n]           | https://www.onespan.com/products/fido                                                               |
 | Thales Group              | ![n]              | ![○]| ![○]| ![n]| ![n]           | https://cpl.thalesgroup.com/access-management/authenticators/fido-devices                           |
 | Thetis                    | ![○]              | ![○]| ![○]| ![○]| ![n]           | https://thetis.io/collections/fido2                                                                 |
 | Token2 スイス        | ![○]              | ![○]| ![○]| ![n]| ![n]           | https://www.token2.swiss/shop/product/token2-t2f2-alu-fido2-u2f-and-totp-security-key               |

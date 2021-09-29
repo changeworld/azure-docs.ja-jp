@@ -12,12 +12,12 @@ ms.custom:
 - seo-python-october2019
 - devx-track-python
 - mode-api
-ms.openlocfilehash: 40990dfb651817cf52cd5b5a039566e3209d6ac7
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 072e1b92241d841346ea7f949fec9dedfbe59ff9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107532054"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128650213"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-in-python"></a>クイックスタート: Python で Azure Cache for Redis を使用する
 
@@ -33,9 +33,9 @@ ms.locfileid: "107532054"
 - [Python 2 または 3](https://www.python.org/downloads/)
 
 ## <a name="create-an-azure-cache-for-redis-instance"></a>Azure Cache for Redis インスタンスを作成する
-[!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
+[!INCLUDE [redis-cache-create](includes/redis-cache-create.md)]
 
-[!INCLUDE [redis-cache-create](../../includes/redis-cache-access-keys.md)]
+[!INCLUDE [redis-cache-create](includes/redis-cache-access-keys.md)]
 
 ## <a name="install-redis-py"></a>redis-py をインストールする
 

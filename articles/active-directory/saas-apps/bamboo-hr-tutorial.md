@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/02/2020
 ms.author: jeedes
-ms.openlocfilehash: 3926e98cb55d1afd80caf4af5d67910b66c09cdd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 34adca214e5673340b12c8dfcdbdfd8a5bac9e0e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96180338"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124759607"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bamboohr"></a>チュートリアル: Azure Active Directory と BambooHR の統合
 
@@ -101,7 +101,7 @@ BambooHR に対して Azure AD SSO を構成してテストするには、次の
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+### <a name="create-an-azure-ad-test-user&quot;></a>Azure AD のテスト ユーザーの作成
 
 このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
 
@@ -113,7 +113,7 @@ BambooHR に対して Azure AD SSO を構成してテストするには、次の
    1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
    1. **Create** をクリックしてください。
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
+### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>Azure AD テスト ユーザーの割り当て
 
 このセクションでは、B.Simon に BambooHR へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
@@ -125,13 +125,13 @@ BambooHR に対して Azure AD SSO を構成してテストするには、次の
 1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
-## <a name="configure-bamboohr-sso"></a>BambooHR の SSO の構成
+## <a name=&quot;configure-bamboohr-sso&quot;></a>BambooHR の SSO の構成
 
 1. 新しいウィンドウで、BambooHR ｌ企業サイトに管理者としてサインインします。
 
 2. ホーム ページで、次の操作を行います。
    
-    ![BambooHR のシングル サインオン ページ](./media/bamboo-hr-tutorial/ic796691.png "[Single Sign-On]")   
+    ![BambooHR のシングル サインオン ページ](./media/bamboo-hr-tutorial/ic796691.png &quot;[Single Sign-On]")   
 
     a. **[アプリ]** を選択します。
    
@@ -178,7 +178,7 @@ Azure AD ユーザーで BambooHR にサインインできるようにするに�
 
 2. BambooHR のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-3. Microsoft アクセス パネルを使用することができます。 アクセス パネルで [BambooHR] タイルをクリックすると、BambooHR サインオン URL にリダイレクトされます。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+3. Microsoft アクセス パネルを使用することができます。 アクセス パネルで [BambooHR] タイルをクリックすると、BambooHR サインオン URL にリダイレクトされます。 アクセス パネルの詳細については、[アクセス パネルの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関する記事を参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ

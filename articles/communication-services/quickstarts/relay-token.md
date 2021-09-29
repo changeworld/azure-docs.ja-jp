@@ -8,14 +8,15 @@ ms.author: shahen
 ms.date: 06/30/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
+ms.subservice: calling
 ms.custom: tracking-python, devx-track-javascript
 zone_pivot_groups: acs-js-csharp
-ms.openlocfilehash: 88bdfe85dbd2905ff060498003b23909abe7a855
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 7e449fa88a080fd9568436c7806767bac52f1861
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114471469"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128677152"
 ---
 # <a name="quickstart-access-turn-relays"></a>クイックスタート: TURN リレーにアクセスする
 

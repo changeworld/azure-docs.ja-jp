@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e112d9b6cc55a898c77026c1982e2a7c19b6840c
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: 9ac8015403ffa64271990363b7a95a18ae6f57a4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113731762"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128626800"
 ---
 # <a name="access-public-containers-and-blobs-anonymously-with-net"></a>.NET を使用してパブリックのコンテナーと BLOB に匿名でアクセスする
 
@@ -46,7 +46,7 @@ public static void CreateAnonymousBlobClient()
     // Get a reference to a container that's available for anonymous access.
     CloudBlobContainer container = blobClient.GetContainerReference("sample-container");
 
-    // Read the container's properties. 
+    // Read the container's properties.
     // Note this is only possible when the container supports full public read access.
     container.FetchAttributes();
     Console.WriteLine(container.Properties.LastModified);

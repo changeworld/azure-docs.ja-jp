@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/05/2021
 ms.author: jeedes
-ms.openlocfilehash: e2dcb9b534a67fdaf4ebc4be224f9e1f3bbb770a
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 977d75e2c446e55cc5db55f6a5c7c493a61b4df1
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111889042"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124761165"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-heroku"></a>チュートリアル: Azure Active Directory と Heroku の統合
 
@@ -145,7 +145,7 @@ Heroku に対して Azure AD SSO を構成してテストするには、次の�
 
 * Heroku のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Heroku] タイルをクリックすると、Heroku のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Heroku] タイルをクリックすると、Heroku のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

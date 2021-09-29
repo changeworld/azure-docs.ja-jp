@@ -3,16 +3,16 @@ title: Visual Studio Code を使用した Azure API Management インスタン�
 description: Visual Studio Code による Azure API Management インスタンスの作成。
 ms.service: api-management
 ms.workload: integration
-author: vladvino
-ms.author: apimpm
+author: dlepow
+ms.author: danlep
 ms.topic: quickstart
 ms.date: 09/14/2020
-ms.openlocfilehash: 3105b6f34d7ece81e8145fdd9e89568e66360ddb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e8160948c12fd0c9652a409aa4c59e40250f7504
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101649514"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128625717"
 ---
 # <a name="quickstart-create-a-new-azure-api-management-service-instance-using-visual-studio-code"></a>クイック スタート」を参照してください。Visual Studio Code を使用して新しい Azure API Management サービス インスタンスを作成する
 

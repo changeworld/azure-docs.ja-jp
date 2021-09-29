@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.workload: infrastructure
 ms.date: 07/17/2020
 ms.author: cynthn
-ms.openlocfilehash: 2ba417782fcaa5fedc5696546af60623696387e7
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: a9605f6a6240fcaad29b30c03138f31e1472ba3f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122694303"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124734876"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>Azure の仮想マシンでインフラストラクチャ自動化ツールを使用する
 
@@ -118,7 +118,7 @@ DSC 構成では、マシンにインストールするものと、ホストを�
 
 具体的には、次の方法を学習します。
 
-- [PowerShell Runbook を作成する](../automation/learn/automation-tutorial-runbook-textual-powershell.md)。
+- [PowerShell Runbook を作成する](../automation/learn/powershell-runbook-managed-identity.md)。
 - [Hybrid Runbook Worker を使用して、オンプレミスのリソースを管理する](../automation/automation-hybrid-runbook-worker.md)。
 - [Azure Automation DSC を使用する](../automation/automation-dsc-getting-started.md)。
 

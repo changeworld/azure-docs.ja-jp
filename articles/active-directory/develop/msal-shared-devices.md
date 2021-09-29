@@ -13,12 +13,12 @@ ms.date: 03/31/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: cf8869002fb3e0170331709af3da5b971a098740
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6a6d66be619808ae7a6997966aef32e89b0b2226
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105612400"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124786885"
 ---
 # <a name="overview-of-shared-device-mode"></a>共有デバイス モードの概要
 
@@ -54,7 +54,7 @@ Azure Active Directory では、**共有デバイス モード** と呼ばれる
 
 ### <a name="build-applications-that-support-frontline-workers"></a>現場担当者をサポートするアプリケーションを構築する
 
-Microsoft 認証ライブラリ (MSAL) と [Microsoft Authenticator アプリ](../user-help/user-help-auth-app-overview.md)を使用して、"*共有デバイス モード*" と呼ばれるデバイスの状態を有効にすることにより、アプリケーションで現場担当者をサポートすることができます。 デバイスが共有デバイス モードになると、デバイスでのユーザーの状態に基づいてデバイスの動作を変更し、ユーザーのデータを保護できるようにするための情報が、Microsoft によってアプリケーションに提供されます。
+Microsoft 認証ライブラリ (MSAL) と [Microsoft Authenticator アプリ](https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc)を使用して、"*共有デバイス モード*" と呼ばれるデバイスの状態を有効にすることにより、アプリケーションで現場担当者をサポートすることができます。 デバイスが共有デバイス モードになると、デバイスでのユーザーの状態に基づいてデバイスの動作を変更し、ユーザーのデータを保護できるようにするための情報が、Microsoft によってアプリケーションに提供されます。
 
 サポートされている機能は次のとおりです。
 
@@ -73,7 +73,7 @@ Microsoft 認証ライブラリ (MSAL) と [Microsoft Authenticator アプリ](.
 
 アプリケーションで共有デバイス モードがサポートされるようになり、必要なデータとセキュリティの変更が組み込まれたら、そのアプリケーションを現場担当者が使用できるようになったことを通知できます。
 
-組織のデバイス管理者は、Microsoft Intune などのモバイル デバイス管理 (MDM) ソリューションを使用して、デバイスとアプリケーションを店舗や職場に展開することができます。 プロビジョニング プロセスの一部として、デバイスを "*共有デバイス*" としてマークします。 管理者は、[Microsoft Authenticator アプリ](../user-help/user-help-auth-app-overview.md)を展開し、構成パラメーターを使用して共有デバイス モードを設定することにより、共有デバイス モードを構成します。 これらの手順を実行すると、共有デバイス モードをサポートするすべてのアプリケーションでは、Microsoft Authenticator アプリケーションを使用して、ユーザーの状態が管理され、デバイスと組織にセキュリティ機能が提供されるようになります。
+組織のデバイス管理者は、Microsoft Intune などのモバイル デバイス管理 (MDM) ソリューションを使用して、デバイスとアプリケーションを店舗や職場に展開することができます。 プロビジョニング プロセスの一部として、デバイスを "*共有デバイス*" としてマークします。 管理者は、[Microsoft Authenticator アプリ](https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc)を展開し、構成パラメーターを使用して共有デバイス モードを設定することにより、共有デバイス モードを構成します。 これらの手順を実行すると、共有デバイス モードをサポートするすべてのアプリケーションでは、Microsoft Authenticator アプリケーションを使用して、ユーザーの状態が管理され、デバイスと組織にセキュリティ機能が提供されるようになります。
 
 ## <a name="next-steps"></a>次のステップ
 

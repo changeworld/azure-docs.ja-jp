@@ -8,16 +8,16 @@ ms.date: 04/02/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 352497f0f4d23250abe9f84121f358589664002b
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: c1171ada070131477c06292628da6eca9ee9c2ec
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107502914"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128590990"
 ---
 # <a name="upload-files-to-azure-blob-storage-by-using-azcopy"></a>AzCopy を使用して Azure BLOB ストレージにファイルをアップロードする
 
-AzCopy v10 コマンド ライン ユーティリティを使用して、BLOB ストレージにファイルやディレクトリをアップロードできます。 
+AzCopy v10 コマンド ライン ユーティリティを使用して、BLOB ストレージにファイルやディレクトリをアップロードできます。
 
 BLOB のダウンロード、BLOB ストレージとの同期、アカウント間での BLOB のコピーなどの他の種類のタスクの例を確認するには、この記事の「[次のステップ](#next-steps)」のセクションに示されているリンクを参照してください。
 
@@ -25,7 +25,7 @@ BLOB のダウンロード、BLOB ストレージとの同期、アカウント�
 
 AzCopy のダウンロード方法と、ストレージ サービスに認証資格情報を与える方法については、[AzCopy の作業開始](storage-use-azcopy-v10.md)に関するページをご覧ください。
 
-> [!NOTE] 
+> [!NOTE]
 > この記事の例では、Azure Active Directory (Azure AD) を使用して認証資格情報を指定していることを前提としています。
 >
 > SAS トークンを使用して BLOB データへのアクセスを承認する場合、各 AzCopy コマンドのリソース URL の先頭にそのトークンを追加できます。 (例: `'https://<storage-account-name>.blob.core.windows.net/<container-name><SAS-token>'`)。
@@ -84,7 +84,7 @@ azcopy copy 'C:\myDirectory\myTextFile.txt' 'https://mystorageaccount.dfs.core.w
 
 ## <a name="upload-a-directory"></a>ディレクトリをアップロードする
 
-[azcopy copy](storage-ref-azcopy-copy.md) コマンドを使用してディレクトリをアップロードします。 
+[azcopy copy](storage-ref-azcopy-copy.md) コマンドを使用してディレクトリをアップロードします。
 
 この例では、ディレクトリ (とそのディレクトリ内のすべてのファイル) が BLOB コンテナーにコピーされます。 その結果、同じ名前でコンテナーにディレクトリが生成されます。
 
@@ -132,7 +132,7 @@ azcopy copy 'C:\myDirectory' 'https://mystorageaccount.dfs.core.windows.net/myco
 
 **構文**
 
-`azcopy copy '<local-directory-path>\*' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<directory-path>'` 
+`azcopy copy '<local-directory-path>\*' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<directory-path>'`
 
 **例**
 
@@ -159,9 +159,9 @@ azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.dfs.core.windows.net/my
 
 [azcopy copy](storage-ref-azcopy-copy.md) コマンドを `--include-path` オプションと共に使用します。 セミコロン (`;`) を使用して、個々のファイル名を区切ります。
 
-**構文** 
+**構文**
 
-`azcopy copy '<local-directory-path>' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>' --include-path <semicolon-separated-file-list>` 
+`azcopy copy '<local-directory-path>' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>' --include-path <semicolon-separated-file-list>`
 
 **例**
 
@@ -181,11 +181,11 @@ azcopy copy 'C:\myDirectory' 'https://mystorageaccount.dfs.core.windows.net/myco
 
 ### <a name="use-wildcard-characters"></a>ワイルドカード文字を使用する
 
-[azcopy copy](storage-ref-azcopy-copy.md) コマンドを `--include-pattern` オプションと共に使用します。 ワイルドカード文字を含む名前の一部を指定します。 セミコロン (`;`) で名前を区切ります。 
+[azcopy copy](storage-ref-azcopy-copy.md) コマンドを `--include-pattern` オプションと共に使用します。 ワイルドカード文字を含む名前の一部を指定します。 セミコロン (`;`) で名前を区切ります。
 
 **構文**
 
-`azcopy copy '<local-directory-path>' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>' --include-pattern <semicolon-separated-file-list-with-wildcard-characters>` 
+`azcopy copy '<local-directory-path>' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>' --include-pattern <semicolon-separated-file-list-with-wildcard-characters>`
 
 **例**
 
@@ -203,15 +203,15 @@ azcopy copy 'C:\myDirectory' 'https://mystorageaccount.dfs.core.windows.net/myco
 
 `--include-pattern` オプションと `--exclude-pattern` オプションは、パスではなくファイル名にのみ適用されます。  ディレクトリ ツリーに存在するテキスト ファイルをすべてコピーする場合は、`–recursive` オプションを使用してディレクトリ ツリー全体を取得し、次に `–include-pattern` を使用して `*.txt` を指定し、すべてのテキスト ファイルを取得します。
 
-### <a name="upload-files-that-were-modified-before-or-after-a-date-and-time"></a>ある日時の前後に変更されたファイルをアップロードする 
+### <a name="upload-files-that-were-modified-before-or-after-a-date-and-time"></a>ある日時の前後に変更されたファイルをアップロードする
 
-[azcopy copy](storage-ref-azcopy-copy.md) コマンドを `--include-before` または `--include-after` オプションと共に使用します。 日付と時刻を ISO-8601 形式で指定します (例: `2020-08-19T15:04:00Z`)。 
+[azcopy copy](storage-ref-azcopy-copy.md) コマンドを `--include-before` または `--include-after` オプションと共に使用します。 日付と時刻を ISO-8601 形式で指定します (例: `2020-08-19T15:04:00Z`)。
 
 次の例では、指定した日付以降に変更されたファイルをアップロードします。
 
 **構文**
 
-`azcopy copy '<local-directory-path>\*' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-or-directory-name>'  --include-after <Date-Time-in-ISO-8601-format>` 
+`azcopy copy '<local-directory-path>\*' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-or-directory-name>'  --include-after <Date-Time-in-ISO-8601-format>`
 
 **例**
 
@@ -229,11 +229,11 @@ azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.dfs.core.windows.net/my
 
 ## <a name="upload-with-index-tags"></a>インデックス タグを使用してアップロードする
 
-ファイルをアップロードし、[BLOB インデックス タグ (プレビュー)](../blobs/storage-manage-find-blobs.md) をターゲット BLOB に追加することができます。  
+ファイルをアップロードし、[BLOB インデックス タグ (プレビュー)](../blobs/storage-manage-find-blobs.md) をターゲット BLOB に追加することができます。
 
 Azure AD 承認を使用している場合は、セキュリティ プリンシパルに[ストレージ Blob データ所有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)ロールが割り当てられているか、カスタム Azure ロールを使用して `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` [Azure リソース プロバイダーの操作](../../role-based-access-control/resource-provider-operations.md#microsoftstorage)に対するアクセス許可が付与されている必要があります。 Shared Access Signature (SAS) トークンを使用している場合、そのトークンは、`t` SAS アクセス許可を使用して BLOB のタグへのアクセスを提供する必要があります。
 
-タグを追加するには、URL でエンコードされたキーと値のペアと共に `--blob-tags` オプションを使用します。 たとえば、キー `my tag` と値 `my tag value` を追加するには、宛先パラメーターに `--blob-tags='my%20tag=my%20tag%20value'` を追加します。 
+タグを追加するには、URL でエンコードされたキーと値のペアと共に `--blob-tags` オプションを使用します。 たとえば、キー `my tag` と値 `my tag value` を追加するには、宛先パラメーターに `--blob-tags='my%20tag=my%20tag%20value'` を追加します。
 
 複数のインデックス タグを区切るには、アンパサンド (`&`) を使用します。  たとえば、キー `my second tag` と値 `my second tag value` を追加する場合、完全なオプション文字列は `--blob-tags='my%20tag=my%20tag%20value&my%20second%20tag=my%20second%20tag%20value'` になります。
 
@@ -286,7 +286,7 @@ azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.blob.core.windows.net/m
 - [例:Azure Files](storage-use-azcopy-files.md)
 - [チュートリアル:AzCopy を使用したオンプレミス データのクラウド ストレージへの移行](storage-use-azcopy-migrate-on-premises-data.md)
 
-設定の構成、パフォーマンスの最適化、および問題のトラブルシューティングを行うには、これらの記事を参照してください。
+設定の構成、パフォーマンスの最適化、および問題のトラブルシューティングを行うには、次の記事を参照してください。
 
 - [AzCopy の構成設定](storage-ref-azcopy-configuration-settings.md)
 - [AzCopy のパフォーマンスを最適化する](storage-use-azcopy-optimize.md)

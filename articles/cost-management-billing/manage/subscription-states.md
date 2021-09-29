@@ -8,14 +8,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 09/15/2021
 ms.author: andalmia
-ms.openlocfilehash: 5267b333e66a0ae7b2ad05399406fecc32af74b0
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 565e6a556946859f757ec291a313eff766a15c9d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430128"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128634921"
 ---
 # <a name="azure-subscription-states"></a>Azure サブスクリプションの状態
 

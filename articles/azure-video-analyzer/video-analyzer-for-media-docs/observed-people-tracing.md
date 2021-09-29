@@ -1,21 +1,15 @@
 ---
 title: ビデオ内の観察対象人物を追跡する
-titleSuffix: Azure Video Analyzer for Media
 description: このトピックでは、ビデオ内の観察対象人物の追跡の概要について説明します。
-services: azure-video-analyzer
-author: Juliako
-manager: femila
-ms.service: azure-video-analyzer
-ms.topic: article
-ms.subservice: azure-video-analyzer-media
+ms.topic: conceptual
 ms.date: 04/30/2021
 ms.author: juliako
-ms.openlocfilehash: 469073650bbcf00ba2634ac5be68c10bf7ac49ee
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: c24d7f4a67afbf194be498e4fcd15779a806a3b9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112115408"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128605147"
 ---
 # <a name="trace-observed-people-in-a-video"></a>ビデオ内の観察対象人物を追跡する
 

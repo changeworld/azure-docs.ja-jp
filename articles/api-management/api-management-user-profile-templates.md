@@ -3,7 +3,7 @@ title: Azure API Management のユーザー プロファイル テンプレー�
 description: Azure API Management で開発者ポータルの ユーザー プロファイル ページの内容をカスタマイズ方法について説明します。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 manager: erikre
 editor: ''
 ms.assetid: 2e3b73ef-d223-44fe-9280-c3af3fd4a030
@@ -12,13 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: apimpm
-ms.openlocfilehash: 1aef238ec0b947dda1417b567b343ae9d92754d9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: danlep
+ms.openlocfilehash: 6e239c81ebf5c2ead95e9015c9b7d2a9c244810d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86249514"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128639947"
 ---
 # <a name="user-profile-templates-in-azure-api-management"></a>Azure API Management のユーザー プロファイル テンプレート
 Azure API Management には、開発者ポータルの各ページの内容を、内容を構成するテンプレート セットを使用してカスタマイズする機能があります。 [DotLiquid](http://dotliquidmarkup.org/) 構文、好みのエディター ([DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)など)、および用意されているローカライズされた[文字列リソース](api-management-template-resources.md#strings)、[グリフ リソース](api-management-template-resources.md#glyphs)、および[ページ コントロール](api-management-page-controls.md)のセットをテンプレートで使用して、表示されるページの内容を自由に構成できます。  
@@ -105,7 +105,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 > [!NOTE]
 >  [プロファイル](#Profile)、[アプリケーション](#Applications)、および[サブスクリプション](#Subscriptions) テンプレートは、同じデータ モデルを共有し、同じテンプレート データを受信します。  
   
-|プロパティ|Type|説明|  
+|プロパティ|種類|説明|  
 |--------------|----------|-----------------|  
 |`firstName`|string|現在のユーザーの名。|  
 |`lastName`|string|現在のユーザーの姓。|  
@@ -326,7 +326,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 > [!NOTE]
 >  [プロファイル](#Profile)、[アプリケーション](#Applications)、および[サブスクリプション](#Subscriptions) テンプレートは、同じデータ モデルを共有し、同じテンプレート データを受信します。  
   
-|プロパティ|Type|説明|  
+|プロパティ|種類|説明|  
 |--------------|----------|-----------------|  
 |`firstName`|string|現在のユーザーの名。|  
 |`lastName`|string|現在のユーザーの姓。|  
@@ -489,7 +489,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 > [!NOTE]
 >  [プロファイル](#Profile)、[アプリケーション](#Applications)、および[サブスクリプション](#Subscriptions) テンプレートは、同じデータ モデルを共有し、同じテンプレート データを受信します。  
   
-|プロパティ|Type|説明|  
+|プロパティ|種類|説明|  
 |--------------|----------|-----------------|  
 |`firstName`|string|現在のユーザーの名。|  
 |`lastName`|string|現在のユーザーの姓。|  

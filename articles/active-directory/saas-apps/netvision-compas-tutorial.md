@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 423ac882c81582f2843eeba37d11c660662ad6e2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ed467b9b0d2f647122906273a6f22860f5d525ae
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92519403"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124761051"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netvision-compas"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Netvision Compas の統合
 
@@ -167,7 +167,7 @@ Netvision Compas で Azure AD SSO を構成してテストするには、次の�
 
 ### <a name="using-the-access-panel-idp-initiated"></a>アクセス パネルを使用する (IDP 開始)
 
-アクセス パネル上で [Netvision Compas] タイルをクリックすると、SSO を設定した Netvision Compas に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+アクセス パネル上で [Netvision Compas] タイルをクリックすると、SSO を設定した Netvision Compas に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関する記事を参照してください。
 
 ### <a name="directly-accessing-netvision-compas-sp-initiated"></a>Netvision Compas に直接アクセスする (SP 開始)
 

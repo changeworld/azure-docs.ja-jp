@@ -1,19 +1,15 @@
 ---
 title: Logic Apps および Power Automate を使用した Azure Video Analyzer for Media (旧称 Video Indexer) コネクタのチュートリアル。
 description: このチュートリアルでは、Logic Apps と Power Automate を使用して Azure Video Analyzer for Media (旧称 Video Indexer) コネクタの新しいエクスペリエンスと収益化の可能性を開く方法について説明します。
-author: anzaman
-manager: johndeu
 ms.author: alzam
 ms.topic: tutorial
-ms.service: azure-video-analyzer
-ms.subservice: azure-video-analyzer-media
 ms.date: 09/21/2020
-ms.openlocfilehash: e6f312f92fa910677f979edb31985d5c6698fa47
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: 3650d82ec5d35b6b4e9826fd7a9d8579e40bb543
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112119558"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128626154"
 ---
 # <a name="tutorial-use-video-analyzer-for-media-with-logic-app-and-power-automate"></a>チュートリアル: Logic Apps および Power Automate と共に Video Analyzer for Media コネクタを使用する
 

@@ -7,14 +7,14 @@ ms.topic: how-to
 ms.date: 04/02/2021
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 91e771554c5ce1940243eaec4a0ea3cf965c3f8f
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 3e60815b2361f4ba14b6a40ded2734c748f8d4ae
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114468572"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128633699"
 ---
-# <a name="transfer-data-with-azcopy-and-file-storage"></a>AzCopy とファイル ストレージでデータを転送する 
+# <a name="transfer-data-with-azcopy-and-file-storage"></a>AzCopy とファイル ストレージでデータを転送する
 
 AzCopy は、ストレージ アカウント間でのファイル コピーに利用できるコマンドライン ユーティリティです。 この記事には、Azure Files で使用するサンプル コマンドが含まれています。
 
@@ -46,10 +46,10 @@ azcopy make 'https://mystorageaccount.file.core.windows.net/myfileshare?sv=2018-
 このセクションには、次の例が含まれています。
 
 > [!div class="checklist"]
-> * ファイルをアップロードする
-> * ディレクトリをアップロードする
-> * ディレクトリの内容をアップロードする
-> * 特定のファイルをアップロードする
+> - ファイルをアップロードする
+> - ディレクトリをアップロードする
+> - ディレクトリの内容をアップロードする
+> - 特定のファイルをアップロードする
 
 > [!TIP]
 > オプションのフラグを使用して、アップロード操作を調整できます。 以下にいくつか例を示します。  
@@ -58,7 +58,7 @@ azcopy make 'https://mystorageaccount.file.core.windows.net/myfileshare?sv=2018-
 > |---|---|
 > |ファイルと共にアクセス制御リスト (ACL) をコピーします。|**--preserve-smb-permissions**=\[true\|false\]|
 > |ファイルと共に SMB プロパティ情報をコピーします。|**--preserve-smb-info**=\[true\|false\]|
-> 
+>
 > 完全な一覧については、「[オプション](storage-ref-azcopy-copy.md#options)」を参照してください。
 
 > [!NOTE]
@@ -159,9 +159,9 @@ azcopy copy 'C:\myDirectory' 'https://mystorageaccount.file.core.windows.net/myf
 
 `--include-pattern` オプションと `--exclude-pattern` オプションは、パスではなくファイル名にのみ適用されます。  ディレクトリ ツリーに存在するテキスト ファイルをすべてコピーする場合は、`--recursive` オプションを使用してディレクトリ ツリー全体を取得し、次に `--include-pattern` を使用して `*.txt` を指定し、すべてのテキスト ファイルを取得します。
 
-#### <a name="upload-files-that-were-modified-after-a-date-and-time"></a>ある日時の後に変更されたファイルをアップロードする 
+#### <a name="upload-files-that-were-modified-after-a-date-and-time"></a>ある日時の後に変更されたファイルをアップロードする
 
-[azcopy copy](storage-ref-azcopy-copy.md) コマンドを `--include-after` オプションと共に使用します。 日時を ISO 8601 形式で指定します (例: `2020-08-19T15:04:00Z`)。 
+[azcopy copy](storage-ref-azcopy-copy.md) コマンドを `--include-after` オプションと共に使用します。 日時を ISO 8601 形式で指定します (例: `2020-08-19T15:04:00Z`)。
 
 **構文**
 
@@ -182,10 +182,10 @@ azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.file.core.windows.net/m
 このセクションには、次の例が含まれています。
 
 > [!div class="checklist"]
-> * ファイルをダウンロードする
-> * ディレクトリをダウンロードする
-> * ディレクトリの内容をダウンロードする
-> * 特定のファイルをダウンロードする
+> - ファイルをダウンロードする
+> - ディレクトリをダウンロードする
+> - ディレクトリの内容をダウンロードする
+> - 特定のファイルをダウンロードする
 
 > [!TIP]
 > オプションのフラグを使用して、ダウンロード操作を調整できます。 以下にいくつか例を示します。
@@ -195,7 +195,7 @@ azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.file.core.windows.net/m
 > |ファイルと共にアクセス制御リスト (ACL) をコピーします。|**--preserve-smb-permissions**=\[true\|false\]|
 > |ファイルと共に SMB プロパティ情報をコピーします。|**--preserve-smb-info**=\[true\|false\]|
 > |自動的にファイルを圧縮解除します。|**--decompress**|
-> 
+>
 > 完全な一覧については、「[オプション](storage-ref-azcopy-copy.md#options)」を参照してください。
 
 > [!NOTE]
@@ -284,9 +284,9 @@ azcopy copy 'https://mystorageaccount.file.core.windows.net/myfileshare/myDirect
 
 `--include-pattern` オプションと `--exclude-pattern` オプションは、パスではなくファイル名にのみ適用されます。  ディレクトリ ツリーに存在するテキスト ファイルをすべてコピーする場合は、`--recursive` オプションを使用してディレクトリ ツリー全体を取得し、次に `--include-pattern` を使用して `*.txt` を指定し、すべてのテキスト ファイルを取得します。
 
-#### <a name="download-files-that-were-modified-after-a-date-and-time"></a>ある日時の後に変更されたファイルをダウンロードする 
+#### <a name="download-files-that-were-modified-after-a-date-and-time"></a>ある日時の後に変更されたファイルをダウンロードする
 
-[azcopy copy](storage-ref-azcopy-copy.md) コマンドを `--include-after` オプションと共に使用します。 日付と時刻を ISO-8601 形式で指定します (例: `2020-08-19T15:04:00Z`)。 
+[azcopy copy](storage-ref-azcopy-copy.md) コマンドを `--include-after` オプションと共に使用します。 日付と時刻を ISO-8601 形式で指定します (例: `2020-08-19T15:04:00Z`)。
 
 **構文**
 
@@ -302,7 +302,7 @@ azcopy copy 'https://mystorageaccount.file.core.windows.net/myfileshare/*?sv=201
 
 #### <a name="download-from-a-share-snapshot"></a>共有スナップショットからのダウンロード
 
-ファイルまたはディレクトリの特定のバージョンをダウンロードするには、共有スナップショットの **DateTime** 値を参照します。 共有スナップショットの詳細については、「[Azure Files の共有スナップショットの概要](../files/storage-snapshots-files.md)」を参照してください。 
+ファイルまたはディレクトリの特定のバージョンをダウンロードするには、共有スナップショットの **DateTime** 値を参照します。 共有スナップショットの詳細については、「[Azure Files の共有スナップショットの概要](../files/storage-snapshots-files.md)」を参照してください。
 
 **構文**
 
@@ -326,15 +326,15 @@ AzCopy を使用し、ファイルを他のストレージ アカウントにコ
 
 AzCopy では、[サーバー間](/rest/api/storageservices/put-block-from-url) [API](/rest/api/storageservices/put-page-from-url) が使用されます。そのため、データはストレージ サーバー間で直接コピーされます。 これらのコピー操作では、コンピューターのネットワーク帯域幅が使用されません。 `AZCOPY_CONCURRENCY_VALUE` 環境変数の値を設定することによって、これらの操作のスループットを上げることができます。 詳細については、[コンカレンシーの向上](storage-use-azcopy-optimize.md#increase-concurrency)に関するページを参照してください。
 
-また、共有スナップショットの **DateTime** 値を参照して、特定のバージョンのファイルをコピーすることもできます。 共有スナップショットの詳細については、「[Azure Files の共有スナップショットの概要](../files/storage-snapshots-files.md)」を参照してください。 
+また、共有スナップショットの **DateTime** 値を参照して、特定のバージョンのファイルをコピーすることもできます。 共有スナップショットの詳細については、「[Azure Files の共有スナップショットの概要](../files/storage-snapshots-files.md)」を参照してください。
 
 このセクションには、次の例が含まれています。
 
 > [!div class="checklist"]
-> * 別のストレージ アカウントにファイルをコピーする
-> * 別のストレージ アカウントにディレクトリをコピーする
-> * 別のストレージ アカウントにファイル共有をコピーする
-> * すべてのファイル共有、ディレクトリ、ファイルを別のストレージ アカウントにコピーする
+> - 別のストレージ アカウントにファイルをコピーする
+> - 別のストレージ アカウントにディレクトリをコピーする
+> - 別のストレージ アカウントにファイル共有をコピーする
+> - すべてのファイル共有、ディレクトリ、ファイルを別のストレージ アカウントにコピーする
 
 > [!TIP]
 > オプションのフラグを使用して、コピー操作を調整できます。 以下にいくつか例を示します。
@@ -343,7 +343,7 @@ AzCopy では、[サーバー間](/rest/api/storageservices/put-block-from-url) 
 > |---|---|
 > |ファイルと共にアクセス制御リスト (ACL) をコピーします。|**--preserve-smb-permissions**=\[true\|false\]|
 > |ファイルと共に SMB プロパティ情報をコピーします。|**--preserve-smb-info**=\[true\|false\]|
-> 
+>
 > 完全な一覧については、「[オプション](storage-ref-azcopy-copy.md#options)」を参照してください。
 
 ### <a name="copy-a-file-to-another-storage-account"></a>別のストレージ アカウントにファイルをコピーする
@@ -431,7 +431,7 @@ azcopy copy 'https://mysourceaccount.file.core.windows.net?sv=2018-03-28&ss=bfqt
 
 - `--delete-destination` フラグを `true` に設定すると、AzCopy では、プロンプトが表示されずにファイルが削除されます。 AzCopy でファイルが削除される前にプロンプトを表示する場合、`--delete-destination` フラグを `prompt` に設定します。
 
-- `--delete-destination` フラグを `prompt` または `false` に設定する場合は、[sync](storage-ref-azcopy-sync.md) コマンドではなく [copy](storage-ref-azcopy-copy.md) コマンドを使用し、`--overwrite` パラメーターを `ifSourceNewer` に設定することを検討してください。 [copy](storage-ref-azcopy-copy.md) コマンドでは、消費されるメモリ量が少なくなり、発生する課金コストが減ります。これは、コピー操作では、ファイルを移動する前にコピー元またはコピー先のインデックスを作成する必要がないからです。 
+- `--delete-destination` フラグを `prompt` または `false` に設定する場合は、[sync](storage-ref-azcopy-sync.md) コマンドではなく [copy](storage-ref-azcopy-copy.md) コマンドを使用し、`--overwrite` パラメーターを `ifSourceNewer` に設定することを検討してください。 [copy](storage-ref-azcopy-copy.md) コマンドでは、消費されるメモリ量が少なくなり、発生する課金コストが減ります。これは、コピー操作では、ファイルを移動する前にコピー元またはコピー先のインデックスを作成する必要がないからです。
 
 - sync コマンドを実行するマシンでは、ファイルを転送する必要があるかどうかの判断において最終変更時刻が重要になるため、正確なシステム クロックが必要になります。 システムのクロック スキューが大きい場合は、sync コマンドの実行を計画している時刻にあまりに近い時点で、コピー先でのファイル変更を行わないようにしてください。
 
@@ -444,12 +444,12 @@ azcopy copy 'https://mysourceaccount.file.core.windows.net?sv=2018-03-28&ss=bfqt
 > |ファイルと共に SMB プロパティ情報をコピーします。|**--preserve-smb-info**=\[true\|false\]|
 > |パターンに基づいてファイルを除外します。|**--exclude-path**|
 > |同期に関連するログ エントリの詳細レベルを指定します。|**--log-level**=\[WARNING\|ERROR\|INFO\|NONE\]|
-> 
+>
 > 完全な一覧については、[オプション](storage-ref-azcopy-sync.md#options)を参照してください。
 
 ### <a name="update-a-file-share-with-changes-to-a-local-file-system"></a>ローカル ファイル システムへの変更を使用してファイル共有を更新する
 
-この場合、ファイル共有がコピー先であり、ローカル ファイル システムがコピー元です。 
+この場合、ファイル共有がコピー先であり、ローカル ファイル システムがコピー元です。
 
 > [!TIP]
 > この例では、パス引数を単一引用符 ('') で囲んでいます。 Windows コマンド シェル (cmd.exe) を除き、すべてのコマンド シェルで単一引用符を使用します。 Windows コマンド シェル (cmd.exe) を使用している場合は、単一引用符 ('') ではなく、二重引用符 ("") でパス引数を囲みます。
@@ -521,7 +521,7 @@ azcopy sync 'https://mysourceaccount.file.core.windows.net/myFileShare/myDirecto
 
 ```azcopy
 azcopy sync 'https://mysourceaccount.file.core.windows.net/myfileShare?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D&sharesnapshot=2020-03-03T20%3A24%3A13.0000000Z' 'https://mydestinationaccount.file.core.windows.net/myfileshare?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive --preserve-smb-permissions=true --preserve-smb-info=true
-``` 
+```
 
 共有スナップショットの詳細については、「[Azure Files の共有スナップショットの概要](../files/storage-snapshots-files.md)」を参照してください。
 
@@ -537,4 +537,3 @@ azcopy sync 'https://mysourceaccount.file.core.windows.net/myfileShare?sv=2018-0
 - [AzCopy の構成設定](storage-ref-azcopy-configuration-settings.md)
 - [AzCopy のパフォーマンスを最適化する](storage-use-azcopy-optimize.md)
 - [ログ ファイルを使用した Azure Storage での AzCopy V10 の問題のトラブルシューティング](storage-use-azcopy-configure.md)
-

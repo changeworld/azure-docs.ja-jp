@@ -3,7 +3,7 @@ title: Visual Studio Code で Azure API Management ポリシーをデバッグ�
 description: Visual Studio Code の Azure API Management 拡張機能を使用して Azure API Management ポリシーをデバッグする方法について説明します
 services: api-management
 documentationcenter: ''
-author: miaojiang
+author: dlepow
 manager: cfowler
 editor: ''
 ms.service: api-management
@@ -11,13 +11,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/22/2020
-ms.author: apimpm
-ms.openlocfilehash: 2e45d1274cf7332dbca70eaa8fc51f0ac98e5359
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: danlep
+ms.openlocfilehash: 884ddb46c2182ae22df555b5ac32c4b4ff72c424
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101648018"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128625831"
 ---
 # <a name="debug-azure-api-management-policies-in-visual-studio-code"></a>Visual Studio Code で Azure API Management ポリシーをデバッグする
 

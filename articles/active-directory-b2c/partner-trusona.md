@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/30/2020
+ms.date: 09/20/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2efd5fdc49f5ae6724b9d1dc3b45d54329f17a61
-ms.sourcegitcommit: f4e04fe2dfc869b2553f557709afaf057dcccb0b
+ms.openlocfilehash: 67e0601430b7c1f6f2fc97b78534080e0731fc7a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113223952"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128595638"
 ---
 # <a name="integrating-trusona-with-azure-active-directory-b2c"></a>Trusona と Azure Active Directory B2C の統合
 
@@ -55,24 +55,24 @@ Trusona は、パスワードレス認証、多要素認証、およびデジタ
 
 1. [フォーム](https://www.trusona.com/)に入力して、Trusona アカウントを作成し、作業を開始します。
 
-2. App Store から Trusona モバイル アプリをダウンロードします。 アプリをインストールし、電子メールを登録します。
+1. App Store から Trusona モバイル アプリをダウンロードします。 アプリをインストールし、電子メールを登録します。
 
-3. ソフトウェアによって送信された安全な "魔法のリンク" を使用して電子メールを検証します。  
+1. ソフトウェアによって送信された安全な "魔法のリンク" を使用して電子メールを検証します。  
 
-4. セルフサービス用の [Trusona Developer のダッシュボード](https://dashboard.trusona.com)にアクセスします。
+1. セルフサービス用の [Trusona Developer のダッシュボード](https://dashboard.trusona.com)にアクセスします。
 
-5. **[I’m Ready] (準備完了)** を選択して、Trusona アプリを使って自分で認証します。
+1. **[I’m Ready] (準備完了)** を選択して、Trusona アプリを使って自分で認証します。
 
-6. 左側のナビゲーション ウィンドウから、 **[OIDC Integrations] (OIDC の統合)** を選択します。
+1. 左側のナビゲーション ウィンドウから、 **[OIDC Integrations] (OIDC の統合)** を選択します。
 
-7. **[Create OpenID Connect Integration] (OpenID Connect 統合の作成)** を選択します。
+1. **[Create OpenID Connect Integration] (OpenID Connect 統合の作成)** を選択します。
 
-8. 任意の **[名前]** を指定し、以前に **[Client Redirect Host] (クライアント リダイレクト ホスト) フィールド** に入力したドメイン情報 (Contoso など) を使用します。  
+1. 任意の **[名前]** を指定し、以前に **[Client Redirect Host] (クライアント リダイレクト ホスト) フィールド** に入力したドメイン情報 (Contoso など) を使用します。  
 
    > [!NOTE]
    > Azure Active Directory の初期ドメイン名が、クライアント リダイレクト ホストとして使用されます。
 
-9. [Trusona 統合ガイド](https://docs.trusona.com/integrations/aad-b2c-integration/)の手順に従います。 メッセージが表示されたら、前の手順で参照されている初期ドメイン名 (たとえば、Contoso) を使用します。  
+1. [Trusona 統合ガイド](https://docs.trusona.com/integrations/aad-b2c-integration/)の手順に従います。 メッセージが表示されたら、前の手順で参照されている初期ドメイン名 (たとえば、Contoso) を使用します。  
 
 ## <a name="integrate-with-azure-ad-b2c"></a>Azure AD B2C との統合
 
@@ -82,22 +82,18 @@ Trusona は、パスワードレス認証、多要素認証、およびデジタ
 > まだ持っていない場合は、[お使いの Azure サブスクリプションにリンクされている Azure AD B2C テナント](tutorial-create-tenant.md)を作成します。
 
 1. Azure AD B2C テナントの全体管理者として [Azure Portal](https://portal.azure.com/) にサインインします。
-
-2. ご利用の Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。そのためには、トップ メニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択して、ご利用のテナントを含むディレクトリを選択します。
-
-3. Azure Portal の左上隅の **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
-
-4. **[ダッシュボード]**  >  **[Azure Active Directory B2C]**  >  **[ID プロバイダー]** の順に移動します。
-
-3. **[Identity Providers]** を選択します。
-
-4. **[追加]** を選択します。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
+1. Azure Portal の左上隅の **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
+1. **[ダッシュボード]**  >  **[Azure Active Directory B2C]**  >  **[ID プロバイダー]** の順に移動します。
+1. **[Identity Providers]** を選択します。
+1. **[追加]** を選択します。
 
 ### <a name="configure-an-identity-provider"></a>ID プロバイダーの構成  
 
 1. **[ID プロバイダーの種類]**  >  **[OpenID Connect (Preview)]** の順に選択します。
 
-2. フォームに入力して、ID プロバイダーを設定します。  
+1. フォームに入力して、ID プロバイダーを設定します。  
 
    | プロパティ | 値  |
    | :--- | :--- |
@@ -107,11 +103,11 @@ Trusona は、パスワードレス認証、多要素認証、およびデジタ
    | 応答の種類 | Id_token |
    | 応答モード  | Form_post |
 
-3. **[OK]** を選択します。  
+1. **[OK]** を選択します。  
 
-4. **[Map this identity provider's claims]** を選択します。  
+1. **[Map this identity provider's claims]** を選択します。  
 
-5. フォームに入力して、ID プロバイダーをマップします。
+1. フォームに入力して、ID プロバイダーをマップします。
 
    | プロパティ | 値  |
    | :--- | :--- |
@@ -121,7 +117,7 @@ Trusona は、パスワードレス認証、多要素認証、およびデジタ
    | Surname | Family_name |
    | 応答モード | email |
 
-6. **[OK]** を選択して、新しい OIDC ID プロバイダーのセットアップを完了します。
+1. **[OK]** を選択して、新しい OIDC ID プロバイダーのセットアップを完了します。
 
 ### <a name="create-a-user-flow-policy"></a>ユーザー フロー ポリシーの作成
 

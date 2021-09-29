@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/31/2021
 ms.author: jeedes
-ms.openlocfilehash: b08121b7008dd40944eb1035ecb968ac0d01b8af
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: e57824ff7a88c5a3306fc500956d43cbb0a02a93
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111557946"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124738399"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-onit"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Onit の統合
 
@@ -94,7 +94,7 @@ Onit に対する Azure AD SSO を構成してテストするには、次の手�
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+### <a name="create-an-azure-ad-test-user&quot;></a>Azure AD のテスト ユーザーの作成
 
 このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
 
@@ -106,7 +106,7 @@ Onit に対する Azure AD SSO を構成してテストするには、次の手�
    1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
    1. **Create** をクリックしてください。
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
+### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>Azure AD テスト ユーザーの割り当て
 
 このセクションでは、B.Simon に Onit へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
@@ -118,13 +118,13 @@ Onit に対する Azure AD SSO を構成してテストするには、次の手�
 1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
-## <a name="configure-onit-sso"></a>Onit SSO の構成
+## <a name=&quot;configure-onit-sso&quot;></a>Onit SSO の構成
 
 1. 別の Web ブラウザー ウィンドウで、Onit 企業サイトに管理者としてログインします。
 
 2. 上部のメニューで **[管理]** をクリックします。
    
-    !["MS SSO テスト" ページの上部にあるメニューのスクリーンショット。[管理] アクションが選択されています。](./media/onit-tutorial/admin.png "管理")
+    ![&quot;MS SSO テスト&quot; ページの上部にあるメニューのスクリーンショット。[管理] アクションが選択されています。](./media/onit-tutorial/admin.png &quot;管理")
 
 3. **コーポレーションの編集** をクリックします。
    
@@ -177,9 +177,8 @@ Azure AD ユーザーが Onit にログインできるようにするには、�
 
 * Onit のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Onit] タイルをクリックすると、Onit のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Onit] タイルをクリックすると、Onit のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 Onit を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
-

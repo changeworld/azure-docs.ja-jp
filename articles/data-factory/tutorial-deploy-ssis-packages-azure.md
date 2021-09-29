@@ -8,12 +8,12 @@ ms.custom: seo-lt-2019
 ms.date: 07/19/2021
 author: swinarko
 ms.author: sawinark
-ms.openlocfilehash: 2eff29e1260198c6d5031403e9dfb9fcbd2da4e5
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fcd1349df07920ff0e7669face1bfa0e66343dfb
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121730098"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124737012"
 ---
 # <a name="provision-the-azure-ssis-integration-runtime-in-azure-data-factory"></a>Azure Data Factory に Azure-SSIS Integration Runtime をプロビジョニングする
 
@@ -73,7 +73,7 @@ Azure portal でデータ ファクトリを作成するには、[UI を使用�
 
 1. ホーム ページで、 **[Configure SSIS]\(SSIS の構成\)** タイルを選択します。 
 
-   ![Azure Data Factory ホーム ページのスクリーンショット。](./media/doc-common-process/get-started-page.png)
+   :::image type="content" source="./media/doc-common-process/get-started-page.png" alt-text="Azure Data Factory ホーム ページのスクリーンショット。":::
 
 1. Azure-SSIS IR を設定する残りの手順については、「[Azure SSIS 統合ランタイムをプロビジョニングする](#provision-an-azure-ssis-integration-runtime)」セクションを参照してください。 
 
@@ -81,15 +81,15 @@ Azure portal でデータ ファクトリを作成するには、[UI を使用�
 
 1. Azure Data Factory の UI で、 **[管理]** タブに切り替え、 **[Integration runtimes]\(統合ランタイム\)** タブに切り替えて、データ ファクトリ内の既存の統合ランタイムを表示します。 
 
-   ![既存の IR を表示するための選択](./media/tutorial-create-azure-ssis-runtime-portal/view-azure-ssis-integration-runtimes.png)
+   :::image type="content" source="./media/tutorial-create-azure-ssis-runtime-portal/view-azure-ssis-integration-runtimes.png" alt-text="既存の IR を表示するための選択":::
 
 1. **[New]\(新規\)** を選択して Azure-SSIS IR を作成し、 **[Integration runtime setup]\(統合ランタイムのセットアップ\)** ペインを開きます。 
 
-   ![メニューによる統合ランタイム](./media/tutorial-create-azure-ssis-runtime-portal/edit-connections-new-integration-runtime-button.png)
+   :::image type="content" source="./media/tutorial-create-azure-ssis-runtime-portal/edit-connections-new-integration-runtime-button.png" alt-text="メニューによる統合ランタイム":::
 
 1. **[統合ランタイムのセットアップ]** ペインで、 **[Azure で実行するには、既存の SSIS パッケージをリフトアンドシフトします]** タイルを選択してから、 **[Continue]\(続行\)** を選択します。
 
-   ![統合ランタイムの種類を指定する](./media/tutorial-create-azure-ssis-runtime-portal/integration-runtime-setup-options.png)
+   :::image type="content" source="./media/tutorial-create-azure-ssis-runtime-portal/integration-runtime-setup-options.png" alt-text="統合ランタイムの種類を指定する":::
 
 1. Azure-SSIS IR を設定する残りの手順については、「[Azure SSIS 統合ランタイムをプロビジョニングする](#provision-an-azure-ssis-integration-runtime)」セクションを参照してください。 
 
@@ -101,7 +101,7 @@ Azure portal でデータ ファクトリを作成するには、[UI を使用�
 
 **[統合ランタイムのセットアップ]** ペインの **[全般設定]** ページで、次の手順を行います。 
 
-   ![全般設定](./media/tutorial-create-azure-ssis-runtime-portal/general-settings.png)
+   :::image type="content" source="./media/tutorial-create-azure-ssis-runtime-portal/general-settings.png" alt-text="全般設定":::
 
    1. **[名前]** に統合ランタイムの名前を入力します。 
 
@@ -131,7 +131,7 @@ Azure portal でデータ ファクトリを作成するには、[UI を使用�
    
 このチェック ボックスをオンにした場合は、自動的に作成および管理される SSISDB のホストとなる独自のデータベース サーバーを次の手順に従って用意してください。
 
-   ![SSISDB のデプロイ設定](./media/tutorial-create-azure-ssis-runtime-portal/deployment-settings.png)
+   :::image type="content" source="./media/tutorial-create-azure-ssis-runtime-portal/deployment-settings.png" alt-text="SSISDB のデプロイ設定":::
    
    1. **[サブスクリプション]** で、SSISDB をホストするデータベース サーバーを保有する Azure サブスクリプションを選択します。 
 
@@ -169,7 +169,7 @@ Azure-SSIS IR パッケージ ストアを使用すると、パッケージの�
    
 このチェック ボックスをオンにした場合、 **[新規]** を選択することで Azure-SSIS IR に複数のパッケージ ストアを追加できます。 逆に、1 つのパッケージ ストアを複数の Azure-SSIS IR で共有することもできます。
 
-![MSDB、ファイル システム、Azure Files のデプロイ設定](./media/tutorial-create-azure-ssis-runtime-portal/deployment-settings2.png)
+:::image type="content" source="./media/tutorial-create-azure-ssis-runtime-portal/deployment-settings2.png" alt-text="MSDB、ファイル システム、Azure Files のデプロイ設定":::
 
 **[Add package store]\(パッケージ ストアの追加\)** ペインで、次の手順を実行します。
    
@@ -180,7 +180,7 @@ Azure-SSIS IR パッケージ ストアを使用すると、パッケージの�
       > [!NOTE]
       > **Azure File Storage** か **File System** にリンクされているサービスを利用し、Azure Files にアクセスできます。 **Azure File Storage** にリンクされているサービスを使用する場合、Azure-SSIS IR パッケージ ストアでは現在のところ、(**アカウント キー** でも **SAS URI** でもなく) **基本** 認証方法のみがサポートされています。 
 
-      ![リンクされたサービスのデプロイ設定](./media/tutorial-create-azure-ssis-runtime-portal/deployment-settings-linked-service.png)
+      :::image type="content" source="./media/tutorial-create-azure-ssis-runtime-portal/deployment-settings-linked-service.png" alt-text="リンクされたサービスのデプロイ設定":::
 
       1. **[名前]** に、リンクされたサービスの名前を入力します。 
          
@@ -230,7 +230,7 @@ Azure-SSIS IR パッケージ ストアを使用すると、パッケージの�
 
 **[統合ランタイムのセットアップ]** ペインの **[詳細設定]** ページで、次の手順を行います。 
 
-   ![詳細設定](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings.png)
+   :::image type="content" source="./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings.png" alt-text="詳細設定":::
 
    1. **[Maximum Parallel Executions Per Node]\(ノードあたりの最大並列実行数\)** で、統合ランタイム クラスター内のノードあたりの同時に実行するパッケージの最大数を選択します。 サポートされているパッケージ数のみが表示されます。 コンピューティングやメモリを大量に使用する 1 つの大規模なパッケージを実行するために複数のコアを使用する場合は、低い数値を選択します。 1 つのコアで 1 つ以上の小規模なパッケージを実行する場合は、高い数値を選択します。 
 
@@ -257,7 +257,7 @@ Azure-SSIS IR パッケージ ストアを使用すると、パッケージの�
 
 **[管理]** ハブの **[接続]** ペインで、 **[Integration runtimes]\(統合ランタイム\)** ページに切り替え、 **[Refresh]\(更新\)** を選択します。 
 
-   ![[接続] ペイン](./media/tutorial-create-azure-ssis-runtime-portal/connections-pane.png)
+   :::image type="content" source="./media/tutorial-create-azure-ssis-runtime-portal/connections-pane.png" alt-text="[接続] ペイン":::
 
    Azure-SSIS IR は、その名前を選択することで編集したり再構成したりすることができます。 該当するボタンを選択することで、Azure-SSIS IR を監視、開始、停止、削除したり、Azure-SSIS IR 上で動作する SSIS パッケージの実行アクティビティを含む ADF パイプラインを自動生成したりできます。また、Azure-SSIS IR の JSON コード (またはペイロード) を表示することもできます。  Azure-SSIS IR の編集と削除は、Azure-SSIS IR が停止しているときにしか実行できません。
 

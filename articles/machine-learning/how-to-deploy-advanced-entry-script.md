@@ -2,21 +2,19 @@
 title: 高度なシナリオのためのエントリ スクリプトを作成する
 titleSuffix: Azure Machine Learning entry script authoring
 description: デプロイ時の前処理および後処理のための Azure Machine Learning のエントリ スクリプトを記述する方法について説明します。
-author: gvashishtha
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.date: 09/17/2020
-ms.author: gopalv
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: 920dd7a885570df4cd7c5529bcc00f2345c3d81d
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: acdb9a371a6a49bc8d4c5475748f60d9c589d80e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114287132"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128591541"
 ---
 # <a name="advanced-entry-script-authoring"></a>高度なエントリ スクリプトの作成
 

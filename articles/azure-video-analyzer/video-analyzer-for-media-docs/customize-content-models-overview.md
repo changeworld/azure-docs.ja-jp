@@ -1,20 +1,15 @@
 ---
 title: Azure Video Analyzer for Media (旧称 Video Indexer) でのコンテンツ モデルのカスタマイズ
-titleSuffix: Azure Video Analyzer for Media
 description: この記事では、各種カスタマイズのメリットを説明する概念記事へのリンクを示します。 この記事では、各モデルのカスタマイズを実装する方法を示す攻略ガイドへのリンクも記載します。
-services: azure-video-analyzer
-author: anikaz
-manager: johndeu
-ms.topic: article
-ms.subservice: azure-video-analyzer-media
+ms.topic: conceptual
 ms.date: 06/26/2019
 ms.author: kumud
-ms.openlocfilehash: 11801b9f2434250a42c6a505d08fa286b95d6c02
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: 2f30e4ec76e5cf710f515f95b49f3293216a67df
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112123247"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128607351"
 ---
 # <a name="customizing-content-models-in-video-analyzer-for-media"></a>Video Analyzer for Media でのコンテンツ モデルのカスタマイズ
 

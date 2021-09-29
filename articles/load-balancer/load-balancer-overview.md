@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/25/2021
 ms.author: allensu
-ms.openlocfilehash: f847ef4f4490b64212e4cdcce3f9a89e94c7cd37
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 3d3c1d9937382080ea5a735e3f67e9767919366f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106058597"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124740766"
 ---
 # <a name="what-is-azure-load-balancer"></a>Azure Load Balancer の概要
 
@@ -55,7 +55,7 @@ Azure Standard Load Balancer を使用して実現できる主なシナリオは
 
 - **[内部](./quickstart-load-balancer-standard-internal-portal.md)** および **[外部](./quickstart-load-balancer-standard-public-portal.md)** トラフィックを Azure 仮想マシンに負荷分散する。
 
-- ゾーンの **[内部で](./tutorial-load-balancer-standard-public-zonal-portal.md)** 、および複数のゾーンに **[わたって](./tutorial-load-balancer-standard-public-zone-redundant-portal.md)** リソースを分散することによって、可用性を向上させる。
+- ゾーンの **[内部で](./tutorial-load-balancer-standard-public-zonal-portal.md)** 、および複数のゾーンに **[わたって](./quickstart-load-balancer-standard-public-portal.md)** リソースを分散することによって、可用性を向上させる。
 
 - Azure 仮想マシンの **[アウトバウンド接続](./load-balancer-outbound-connections.md)** を構成する。
 

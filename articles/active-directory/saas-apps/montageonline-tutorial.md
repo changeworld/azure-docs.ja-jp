@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 2caf0384a8e55a44f78b37c4ca8776675b6e971d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1f2a46dcd599996f9cd099476eb7c7e11a1ff4e9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92504167"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124742346"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-montage-online"></a>チュートリアル: Azure Active Directory と Montage Online の統合
 
@@ -193,7 +193,7 @@ Montage Online で Azure AD シングル サインオンを構成するには、
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Montage Online] タイルをクリックすると、SSO を設定した Montage Online に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+アクセス パネル上で [Montage Online] タイルをクリックすると、SSO を設定した Montage Online に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

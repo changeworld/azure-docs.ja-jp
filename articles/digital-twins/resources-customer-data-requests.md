@@ -4,16 +4,16 @@ titleSuffix: Azure Digital Twins
 description: この記事では、Azure Digital Twins で個人データをエクスポートおよび削除するプロセスについて説明します。
 author: baanders
 ms.author: baanders
-ms.date: 05/05/2020
+ms.date: 9/14/2021
 ms.topic: conceptual
 ms.service: digital-twins
 services: digital-twins
-ms.openlocfilehash: c50ff2e1a8e63fd775b7b09863ffcd9d832d8683
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: ef68e552d57df0fc202b9d75ae76065e3119ccff
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108205721"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128642797"
 ---
 # <a name="azure-digital-twins-customer-data-request-features"></a>Azure Digital Twins の顧客データ要求機能
 
@@ -31,7 +31,7 @@ Azure Digital Twins のデジタル ツインの多くは、個人のエンテ�
 
 Azure Digital Twins は *個人データ* を管理者とユーザーに関連付けられたデータと見なします。 
 
-Azure Digital Twins には、環境に対するアクセス権を持つユーザーの [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) *オブジェクト ID* が格納されます。 Azure portal の Azure Digital Twins にはユーザーの電子メール アドレスが表示されますが、これらの電子メール アドレスは Azure Digital Twins 内に格納されません。 これらのオブジェクトは、Azure Active Directory オブジェクト ID を使用して Azure Active Directory で動的に検索されます。
+Azure Digital Twins には、環境に対するアクセス権を持つユーザーの [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) **オブジェクト ID** が格納されます。 Azure portal の Azure Digital Twins にはユーザーの電子メール アドレスが表示されますが、これらの電子メール アドレスは Azure Digital Twins 内に格納されません。 これらのオブジェクトは、Azure Active Directory オブジェクト ID を使用して Azure Active Directory で動的に検索されます。
 
 ## <a name="deleting-customer-data"></a>顧客データの削除
 

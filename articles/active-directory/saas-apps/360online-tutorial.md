@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/22/2021
 ms.author: jeedes
-ms.openlocfilehash: e8bd9efa8b86f208608412c315bf13ae2a0ced7a
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: a73785765ca735e746ed51a6d81fe443e9746a91
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114602066"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124771120"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-360-online"></a>チュートリアル: Azure Active Directory と 360 Online の統合
 
@@ -131,7 +131,7 @@ Azure AD SSO と 360 Online を構成してテストするには、次の手順�
 
 * 360 Online のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで 360 Online タイルをクリックすると、360 Online のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで 360 Online タイルをクリックすると、360 Online のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

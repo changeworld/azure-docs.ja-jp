@@ -3,16 +3,16 @@ title: 開発者ポータルに Application Insights を統合する
 titleSuffix: Azure API Management
 description: マネージドまたはセルフホステッドの開発者ポータルに Application Insights を統合する方法について説明します。
 author: dlepow
-ms.author: apimpm
+ms.author: danlep
 ms.date: 03/25/2021
 ms.service: api-management
 ms.topic: how-to
-ms.openlocfilehash: 5e1c9caa55d0b3b7820f766a30c878fdc01f5137
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: b495a6141e064df80e57c4c96eff67fc928d58c0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107741395"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128601692"
 ---
 # <a name="integrate-application-insights-to-developer-portal"></a>開発者ポータルに Application Insights を統合する
 

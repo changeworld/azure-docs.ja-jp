@@ -7,16 +7,16 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 07/18/2020
 ms.author: cshoe
-ms.openlocfilehash: 767b20600c8edb2752a87a10c788ee446a8f15b3
-ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
+ms.openlocfilehash: be5415658de782c362eca0f40a17a4578932aafa
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109813976"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124777224"
 ---
 # <a name="configure-front-end-frameworks-and-libraries-with-azure-static-web-apps"></a>Azure Static Web Apps を使用してフロントエンド フレームワークとライブラリを構成する
 
-Azure Static Web Apps を使用するには、フロントエンド フレームワークまたはライブラリの[ビルド構成ファイル](github-actions-workflow.md)内に、適切な構成値が必要です。
+Azure Static Web Apps を使用するには、フロントエンド フレームワークまたはライブラリの[ビルド構成ファイル](build-configuration.md)内に、適切な構成値が必要です。
 
 ## <a name="configuration"></a>構成
 
@@ -24,9 +24,9 @@ Azure Static Web Apps を使用するには、フロントエンド フレーム
 
 表の各列の意図は、次の項目によって説明されます。
 
-- **出力場所**: `output_location` の値を表示します。これは、[ビルドされたバージョンのアプリケーション ファイル用のフォルダー](github-actions-workflow.md#build-and-deploy)です。
+- **出力場所**: `output_location` の値を表示します。これは、[ビルドされたバージョンのアプリケーション ファイル用のフォルダー](build-configuration.md)です。
 
-- **カスタム ビルド コマンド**:フレームワークで `npm run build` または `npm run azure:build` とは異なるコマンドが必要となる場合に、[カスタム ビルド コマンド](github-actions-workflow.md#custom-build-commands)を規定できます。
+- **カスタム ビルド コマンド**:フレームワークで `npm run build` または `npm run azure:build` とは異なるコマンドが必要となる場合に、[カスタム ビルド コマンド](build-configuration.md#custom-build-commands)を規定できます。
 
 | フレームワーク | App artifact location (アプリ成果物の場所) | カスタム ビルド コマンド |
 |--|--|--|
@@ -65,4 +65,4 @@ Azure Static Web Apps を使用するには、フロントエンド フレーム
 
 ## <a name="next-steps"></a>次のステップ
 
-- [ビルドとワークフロー構成](github-actions-workflow.md)
+- [ビルドとワークフロー構成](build-configuration.md)

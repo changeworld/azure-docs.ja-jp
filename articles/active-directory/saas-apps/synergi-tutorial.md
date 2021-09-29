@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/09/2021
 ms.author: jeedes
-ms.openlocfilehash: dd8254030f26f9271e9777318205c575731740d5
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3a984346431b12ee18e056066387cbdd3ed2272e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121752499"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124751645"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-synergi"></a>チュートリアル: Azure Active Directory と Synergi の統合
 
@@ -128,7 +128,7 @@ Synergi 用に Azure AD SSO を構成してテストするには、次の手順�
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した Synergi に自動的にサインインされます。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Synergi] タイルをクリックすると、SSO を設定した Synergi に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Synergi] タイルをクリックすると、SSO を設定した Synergi に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

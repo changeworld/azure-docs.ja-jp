@@ -3,12 +3,12 @@ title: Azure Video Analyzer を使用してライブ ビデオでオブジェク
 description: このクイックスタートでは、Azure Video Analyzer 使用して、(シミュレートされた) IP カメラからのライブ ビデオ フィードでオブジェクトが線を越えたことを検出する方法を示します。
 ms.topic: tutorial
 ms.date: 06/01/2021
-ms.openlocfilehash: 7257562626b17c8f61479eb1ba4d51fea52d3c91
-ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+ms.openlocfilehash: 27f14c8257d11956d0cacb3efddfb6a00ba239f6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123185959"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128630188"
 ---
 # <a name="tutorial-detect-when-objects-cross-a-virtual-line-in-a-live-video"></a>チュートリアル: ライブ ビデオでオブジェクトが仮想線を越えたことを検出する
 
@@ -253,7 +253,7 @@ HTTP 拡張プロセッサ ノードは、0 番目、15 番目、30 番目、...
 * `direction` には、このイベントの方向が含まれています。
 
 > [!NOTE] 
-> このチュートリアルのワンクリック デプロイを使用して Azure リソースをデプロイした場合は、Standard DS1 仮想マシンが作成されます。 ただし、YOLO のように多くのリソースを消費する AI モデルから正確な結果を得るには、VM サイズの増加が必要な場合があります。 [VM のサイズを変更](../../virtual-machines/windows/resize-vm.md)し、要件に基づいて vCPU の数とメモリを増やします。 次に、ライブ パイプラインを再アクティブ化して推論を表示します。
+> このチュートリアルのワンクリック デプロイを使用して Azure リソースをデプロイした場合は、Standard DS1 仮想マシンが作成されます。 ただし、YOLO のように多くのリソースを消費する AI モデルから正確な結果を得るには、VM サイズの増加が必要な場合があります。 [VM のサイズを変更](../../virtual-machines/resize-vm.md)し、要件に基づいて vCPU の数とメモリを増やします。 次に、ライブ パイプラインを再アクティブ化して推論を表示します。
 
 ## <a name="customize-for-your-own-environment"></a>独自の環境に合わせてカスタマイズする
 

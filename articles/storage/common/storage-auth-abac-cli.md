@@ -10,12 +10,12 @@ ms.author: rolyon
 ms.reviewer: ''
 ms.subservice: common
 ms.date: 05/06/2021
-ms.openlocfilehash: b05dbeeb69cee8afd3c237b3fbc2c3e59fef238f
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 4050d9452a8253bbfe468b180a8eaa701e2a3684
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112288057"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128587463"
 ---
 # <a name="tutorial-add-a-role-assignment-condition-to-restrict-access-to-blobs-using-azure-cli-preview"></a>チュートリアル: Azure CLI を使用してロールの割り当て条件を追加し、BLOB へのアクセスを制限する (プレビュー)
 
@@ -24,14 +24,13 @@ ms.locfileid: "112288057"
 > このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
 > 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
-
 ほとんどの場合、ロールの割り当てを使えば Azure リソースに必要なアクセス許可を付与できます。 しかし、さらにきめ細かなアクセス制御をしたい局面が出てくることもあるでしょう。そのような場合には、ロールの割り当て条件を追加します。
 
 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
-> * ロールの割り当てに条件を追加する
-> * BLOB インデックス タグに基づいて BLOB に対するアクセスを制限する
+> - ロールの割り当てに条件を追加する
+> - BLOB インデックス タグに基づいて BLOB に対するアクセスを制限する
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -106,7 +105,7 @@ Blob Storage へのアクセスは、Azure CLI から Azure AD の資格情報�
 1. そのテキストファイルに、次の BLOB インデックス タグを追加します。 詳細については、「[BLOB インデックス タグ (プレビュー) を使用して Azure Blob Storage でデータを管理および検索する](../blobs/storage-blob-index-how-to.md)」を参照してください。
 
     > [!NOTE]
-    > BLOB ではほかにも、ユーザー定義による任意のキー値メタデータを格納する機能がサポートされています。 メタデータと BLOB インデックス タグはよく似ていますが、条件では BLOB インデックス タグを使用する必要があります。 
+    > BLOB ではほかにも、ユーザー定義による任意のキー値メタデータを格納する機能がサポートされています。 メタデータと BLOB インデックス タグはよく似ていますが、条件では BLOB インデックス タグを使用する必要があります。
 
     | キー | 値 |
     | --- | --- |
@@ -225,7 +224,7 @@ Blob Storage へのアクセスは、Azure CLI から Azure AD の資格情報�
     ```
 
     出力の例を次に示します。 追加した条件が原因となってファイルを読み取ることが **できない** ことがわかります。
-    
+
     ```azurecli
     You do not have the required permissions needed to perform this operation.
     Depending on your operation, you may need to be assigned one of the following roles:
@@ -233,10 +232,10 @@ Blob Storage へのアクセスは、Azure CLI から Azure AD の資格情報�
         "Storage Blob Data Reader"
         "Storage Queue Data Contributor"
         "Storage Queue Data Reader"
-    
+
     If you want to use the old authentication method and allow querying for the right account key, please use the "--auth-mode" parameter and "key" value.
     ```
-    
+
 1. Cascade プロジェクトに関連するファイルのプロパティを読み取ります。
 
     ```azurecli
@@ -244,7 +243,7 @@ Blob Storage へのアクセスは、Azure CLI から Azure AD の資格情報�
     ```
 
     出力の例を次に示します。 ファイルに Project=Cascade タグが設定されているため、ファイルのプロパティを読み取ることができます。
-    
+
     ```azurecli
     {
       "container": "<containerName>",
@@ -283,7 +282,7 @@ Blob Storage へのアクセスは、Azure CLI から Azure AD の資格情報�
     ```
 
     出力は次のようになります。
-    
+
     ```azurecli
     [
       {
@@ -331,7 +330,7 @@ Blob Storage へのアクセスは、Azure CLI から Azure AD の資格情報�
     ```azurecli
     az role assignment update --role-assignment "./path/roleassignment.json"
     ```
-    
+
 ## <a name="step-8-clean-up-resources"></a>手順 8: リソースをクリーンアップする
 
 1. [az role assignment delete](/cli/azure/role/assignment#az_role_assignment_delete) を使用して、追加したロールの割り当てと条件を削除します。

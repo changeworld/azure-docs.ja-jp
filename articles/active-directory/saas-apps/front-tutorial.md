@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/06/2021
 ms.author: jeedes
-ms.openlocfilehash: 02995b8317355af4a6bbb6343cafabc61ea12d24
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 62ad5a2ac2bf22afa03bac9f02abfc4dcd9982eb
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111887224"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124780644"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-front"></a>チュートリアル: Azure Active Directory と Front の統合
 
@@ -156,7 +156,7 @@ Front に対して Azure AD SSO を構成してテストするには、次の手
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した Front に自動的にサインインされます
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Front] タイルをクリックすると、SSO を設定した Front に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Front] タイルをクリックすると、SSO を設定した Front に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

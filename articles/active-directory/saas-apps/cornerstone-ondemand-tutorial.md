@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/27/2021
 ms.author: jeedes
-ms.openlocfilehash: 8740f7e8b02002e4f55a833074cf34057cddc056
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: db128d799b9d0ff498bf7aec8958626582e514bf
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123226156"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124765630"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cornerstone"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Cornerstone の統合
 
@@ -152,7 +152,7 @@ Cornerstone Single Sign-On では、自動ユーザー プロビジョニング�
 
 * Cornerstone のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Cornerstone Single Sign-On] タイルをクリックすると、Cornerstone のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Cornerstone Single Sign-On] タイルをクリックすると、Cornerstone のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="test-sso-for-cornerstone-mobile"></a>Cornerstone (モバイル) の SSO のテスト
 

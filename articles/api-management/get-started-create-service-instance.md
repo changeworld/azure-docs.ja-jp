@@ -1,18 +1,18 @@
 ---
 title: クイック スタート - Azure API Management インスタンスの作成
 description: Azure portal を使用して新しい Azure API Management サービス インスタンスを作成します。
-author: vladvino
+author: dlepow
 ms.service: api-management
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/08/2020
-ms.author: apimpm
-ms.openlocfilehash: 66d0874536b358b720b43780d6ecce879ac866ee
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: danlep
+ms.openlocfilehash: c2a822147b06cfdd950d12bd1fa2d5c1c583f22f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90708208"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128660787"
 ---
 # <a name="quickstart-create-a-new-azure-api-management-service-instance-by-using-the-azure-portal"></a>クイック スタート」を参照してください。Azure portal を使用して新しい Azure API Management サービス インスタンスを作成する
 

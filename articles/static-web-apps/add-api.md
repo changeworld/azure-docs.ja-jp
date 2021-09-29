@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/14/2021
 ms.author: wachegha
 ms.custom: devx-track-js
-ms.openlocfilehash: 56c8044f1ab36015accb3f951469ee0a0579ca23
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: 4d549c3d8e97cad7a2cf0bbb75f45c6c06eba641
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122608642"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128640042"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-with-azure-functions"></a>Azure Functions を使用して Azure Static Web Apps に API を追加する
 
@@ -277,10 +277,10 @@ npm run build
 
     # <a name="no-framework"></a>[フレームワークなし](#tab/vanilla-javascript)
 
-    現在のフォルダー (`.`) と API フォルダー (`api`) を CLI に渡します。
+    現在のフォルダー (`src`) と API フォルダー (`api`) を CLI に渡します。
      
     ```bash
-    swa start . --api api
+    swa start src --api api
     ```
 
     # <a name="angular"></a>[Angular](#tab/angular)

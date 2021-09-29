@@ -7,18 +7,18 @@ author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: how-to
+ms.topic: conceptual
 ms.workload: identity
 ms.date: 08/31/2020
 ms.author: ryanwi
 ms.reviewer: arielgo, jiml
 ms.custom: aaddev, signin_art
-ms.openlocfilehash: beccbb77f27ef462f8725cf6b2ffb6966c68e23b
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 9cef7c88b5c0fa5f9260dadfdfbeb7456ab1327a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110471366"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124734790"
 ---
 # <a name="sign-in-with-microsoft-branding-guidelines-for-applications"></a>Microsoft アカウントでサインイン: アプリケーションのブランド化ガイドライン
 

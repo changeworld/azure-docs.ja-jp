@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/09/2021
 ms.author: bagol
-ms.openlocfilehash: b0a0b8cb4d3ff5ce10348608d66a451517b60016
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: 3b578ffbb734c738aa3f082d192eae8557f4e307
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122514738"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124755098"
 ---
 # <a name="resources-for-creating-azure-sentinel-custom-connectors"></a>Azure Sentinel カスタム コネクタを作成するためのリソース
 
@@ -183,10 +183,10 @@ Azure Functions と RESTful API および [PowerShell](../azure-functions/functi
 
 この方法の例については、以下を参照してください。
 
-- [Azure Function を使用して、VMware Carbon Black Cloud Endpoint Standard を Azure Sentinel に接続します](connect-vmware-carbon-black.md)
-- [Azure 関数を使用して Okta シングル サインオンを Azure Sentinel に接続する](connect-okta-single-sign-on.md)
-- [Azure Functions を使用して Proofpoint TAP を Azure Sentinel に接続する](connect-proofpoint-tap.md)
-- [Azure Functions を使用して Qualys VM を Azure Sentinel に接続する](connect-qualys-vm.md)
+- [Azure Function を使用して、VMware Carbon Black Cloud Endpoint Standard を Azure Sentinel に接続します](./data-connectors-reference.md#vmware-carbon-black-endpoint-standard-preview)
+- [Azure 関数を使用して Okta シングル サインオンを Azure Sentinel に接続する](./data-connectors-reference.md#okta-single-sign-on-preview)
+- [Azure Functions を使用して Proofpoint TAP を Azure Sentinel に接続する](./data-connectors-reference.md#proofpoint-targeted-attack-protection-tap-preview)
+- [Azure Functions を使用して Qualys VM を Azure Sentinel に接続する](./data-connectors-reference.md#qualys-vulnerability-management-vm-preview)
 - [XML や CSV など各種形式のデータを取り込む](../azure-monitor/logs/create-pipeline-datacollector-api.md#ingesting-xml-csv-or-other-formats-of-data)
 - [Azure Sentinel を使用した Zoom の監視](https://techcommunity.microsoft.com/t5/azure-sentinel/monitoring-zoom-with-azure-sentinel/ba-p/1341516) (ブログ)
 - [Office 365 Management API のデータを取得するための関数アプリを Azure Sentinel にデプロイする](https://github.com/Azure/Azure-Sentinel/tree/master/DataConnectors/O365%20Data) (Azure Sentinel GitHub コミュニティ)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: jeedes
-ms.openlocfilehash: 72072feebfcf8dba249d2045a399e09714177698
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2f2af4fc7b5c9c1c6244d5552c382a79896b6c87
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97963691"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124746640"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-palo-alto-networks---globalprotect"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Palo Alto Networks - GlobalProtect の統合
 
@@ -149,7 +149,7 @@ Palo Alto Networks - GlobalProtect に対して Azure AD SSO を構成してテ�
 
 * Palo Alto Networks - GlobalProtect のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Palo Alto Networks - GlobalProtect] タイルをクリックすると、SSO を設定した Palo Alto Networks - GlobalProtect に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Palo Alto Networks - GlobalProtect] タイルをクリックすると、SSO を設定した Palo Alto Networks - GlobalProtect に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

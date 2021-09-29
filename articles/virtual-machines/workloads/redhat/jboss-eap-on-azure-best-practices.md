@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: redhat
 ms.assetid: 195a0bfa-dff1-429b-b030-19ca95ee6abe
 ms.date: 06/08/2021
-ms.openlocfilehash: 711a91b86eb5e802693fea7b3cf2f84f9eae59b3
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 909f3dcff9f8ad5af5f1128d1d067f2430a00525
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123314462"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124730125"
 ---
 # <a name="red-hat-jboss-eap-on-azure-best-practices"></a>Azure での Red Hat JBoss EAP のベスト プラクティス
 
@@ -187,7 +187,7 @@ Microsoft Azure ストレージ アカウント内では、*AZURE_PING* によ�
 
 ## <a name="other-best-practices"></a>その他のベスト プラクティス
 
-- VM 上の JBoss EAP セットアップの管理者として、お使いの VM のセキュリティを確保することが重要です。 これにより、ご自身のゲストおよびホストの OS が、悪意のあるソフトウェアに感染するリスクが大幅に軽減されます。 ご自身の VM をセキュリティで保護すると、JBoss EAP に対する攻撃と、JBoss EAP 上でホストされているアプリケーションの誤動作が少なくなります。 Azure VM へのアクセスは、[Azure Policy](https://azure.microsoft.com/services/azure-policy/) や、[Azure ロールベースのアクセス制御 (RBAC)](/azure/role-based-access-control/overview) の [Azure 組み込みロール](../../../role-based-access-control/built-in-roles.md)などの機能を使用して制御します。 お使いの VM をマルウェアから保護するには、Microsoft Antimalware または Microsoft パートナーのエンドポイント保護ソリューションをインストールし、お使いのマルウェア対策ソリューションを [Azure Security Center](https://azure.microsoft.com/services/security-center/) と統合して、ご自身の保護の状態を監視します。 RHEL VM では、ポート フォワーディングをブロックし、ルート ログインをブロックすることで保護できます。これは、*/ で無効にすることができます
+- VM 上の JBoss EAP セットアップの管理者として、お使いの VM のセキュリティを確保することが重要です。 これにより、ご自身のゲストおよびホストの OS が、悪意のあるソフトウェアに感染するリスクが大幅に軽減されます。 ご自身の VM をセキュリティで保護すると、JBoss EAP に対する攻撃と、JBoss EAP 上でホストされているアプリケーションの誤動作が少なくなります。 Azure VM へのアクセスは、[Azure Policy](https://azure.microsoft.com/services/azure-policy/) や、[Azure ロールベースのアクセス制御 (RBAC)](../../../role-based-access-control/overview.md) の [Azure 組み込みロール](../../../role-based-access-control/built-in-roles.md)などの機能を使用して制御します。 お使いの VM をマルウェアから保護するには、Microsoft Antimalware または Microsoft パートナーのエンドポイント保護ソリューションをインストールし、お使いのマルウェア対策ソリューションを [Azure Security Center](https://azure.microsoft.com/services/security-center/) と統合して、ご自身の保護の状態を監視します。 RHEL VM では、ポート フォワーディングをブロックし、ルート ログインをブロックすることで保護できます。これは、*/ で無効にすることができます
 
 
 - 環境変数を使用して、JBoss EAP on Azure VM を簡単かつスムーズに使用できるようにします。 たとえば、EAP_HOME を使用して、JBoss EAP 環境へのパスを表すことができます。これは数回使用されます。 このような場合は、環境変数が便利です。 環境変数は、一般的なサービス構成および Web アプリケーション シークレット処理手段でもあります。 export コマンドを使用してシェルから環境変数が設定されている場合、ユーザーのセッションが終了すると、変数の存在も終了します。 セッション間で変数を保持する必要がある場合は、これが問題になります。 ユーザーの環境に対して環境を永続化するには、ユーザーのプロファイル スクリプトから変数をエクスポートします。 export コマンドは、bash_profile に保持する環境変数ごとに追加します。 VM にアクセスできるすべてのユーザーに対して、永続的なグローバル環境変数を設定する必要がある場合は、それを既定のプロファイルに追加できます。 グローバル環境変数は、`/etc/profile.d` という名前のディレクトリに格納することをお勧めします。 ディレクトリには、システム全体の環境変数を設定するときに使用されるファイルの一覧が含まれています。 set コマンドを使用して Windows Server コマンド プロンプト内でシステム環境変数を設定しても、環境変数は永続的には設定されません。 *setx* コマンド、またはコントロール パネルのシステム インターフェースのいずれかを使用します。
@@ -196,7 +196,7 @@ Microsoft Azure ストレージ アカウント内では、*AZURE_PING* によ�
 
 - [Azure Monitor](../../../azure-monitor/data-platform.md) を使用してリソースの正常性を把握します。 Azure Monitor の機能としては、[Azure 診断ログ ファイル](../../../azure-monitor/essentials/platform-logs-overview.md)があります。 これは VM リソースの監視に使用され、パフォーマンスと可用性を損なう可能性がある問題を特定します。 [Azure Diagnostics 拡張機能](../../../azure-monitor/agents/diagnostics-extension-overview.md)によって、Windows VM 上で監視機能と診断機能を提供することができます。 この機能を有効にするには、その拡張機能を、Azure Resource Manager テンプレートの一部として追加します。 起動しない VM のトラブルシューティング時に使用する重要なツールであるブート診断を有効にします。 コンソール出力とブート ログは、Red Hat テクニカル サポートがブートに関する問題を解決するときに非常に役立ちます。 ブート診断は、Microsoft Azure portal 内で VM を作成中、または既存の VM 上で有効にします。 有効にすると、VM のコンソール出力を表示し、トラブルシューティングのためにブート ログをダウンロードできます。
 
-- 通信をセキュリティで保護するもう 1 つの方法は、[Virtual Network (VNet)](/azure/virtual-network/virtual-networks-overview) や[仮想プライベート ネットワーク (VPN)](../../../vpn-gateway/vpn-gateway-about-vpngateways.md) でプライベート エンドポイントを使用することです。 オープン ネットワークは外部からアクセスできるため、悪意のあるユーザーからの攻撃を受けやすくなっています。 VNet および VPN により、特定のユーザーへのアクセスが制限されます。 VNET はプライベート IP を使用して、同じ範囲内のサーバー間に、分離された通信チャネルを確立します。 通信を分離することで、同じアカウント内の複数のサーバーが、情報やデータをパブリック空間に公開することなく交換できます。 これをプライベート ネットワークを介してローカルで行っている場合は、リモート サーバーに接続してください。 アプリケーション サーバーと同じ VNet 内の JumpVM/JumpBox を使用するなど、さまざまな方法があります。または、[Azure Virtual Network Peering](../../../virtual-network/virtual-network-peering-overview.md)、[Azure Application Gateway](../../../application-gateway/overview.md)、[Azure Bastion](https://azure.microsoft.com/services/azure-bastion) などを使用します。 これらの方法すべてによって、完全に安全かつプライベートな接続が実現し、複数のリモート サーバーを接続することができます。
+- 通信をセキュリティで保護するもう 1 つの方法は、[Virtual Network (VNet)](../../../virtual-network/virtual-networks-overview.md) や[仮想プライベート ネットワーク (VPN)](../../../vpn-gateway/vpn-gateway-about-vpngateways.md) でプライベート エンドポイントを使用することです。 オープン ネットワークは外部からアクセスできるため、悪意のあるユーザーからの攻撃を受けやすくなっています。 VNet および VPN により、特定のユーザーへのアクセスが制限されます。 VNET はプライベート IP を使用して、同じ範囲内のサーバー間に、分離された通信チャネルを確立します。 通信を分離することで、同じアカウント内の複数のサーバーが、情報やデータをパブリック空間に公開することなく交換できます。 これをプライベート ネットワークを介してローカルで行っている場合は、リモート サーバーに接続してください。 アプリケーション サーバーと同じ VNet 内の JumpVM/JumpBox を使用するなど、さまざまな方法があります。または、[Azure Virtual Network Peering](../../../virtual-network/virtual-network-peering-overview.md)、[Azure Application Gateway](../../../application-gateway/overview.md)、[Azure Bastion](https://azure.microsoft.com/services/azure-bastion) などを使用します。 これらの方法すべてによって、完全に安全かつプライベートな接続が実現し、複数のリモート サーバーを接続することができます。
 
 - [Azure ネットワーク セキュリティ グループ](../../../virtual-network/network-security-groups-overview.md) (NSG) を使用して、Azure VNet 内のアプリケーション サーバー間のネットワーク トラフィックをフィルター処理します。 NSG には、数種類の Azure リソースへの受信ネットワーク トラフィック (またはリソースからの送信ネットワーク トラフィック) を許可または拒否するセキュリティ規則が含まれます。 各規則で、送信元と送信先、ポート、およびプロトコルを指定することができます。 これらの NSG 規則を使用して JBoss EAP 上のアプリケーションを保護し、インターネットへのポートをブロックまたは許可します。
 

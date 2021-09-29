@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/25/2021
 ms.author: jeedes
-ms.openlocfilehash: 66551f806e698cbbcf0eebd228806718b9617e5a
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: ad4fa3cf66681e630d699f13b95542c506f4e6c0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123077611"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124732179"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-managed-grafana"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Amazon Managed Grafana の統合
 
@@ -183,7 +183,7 @@ Amazon Managed Grafana に対して Azure AD SSO を構成してテストする�
 
 * Amazon Managed Grafana のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Amazon Managed Grafana] タイルをクリックすると、Amazon Managed Grafana のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Amazon Managed Grafana] タイルをクリックすると、Amazon Managed Grafana のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

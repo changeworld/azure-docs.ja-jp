@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 39d14187c2a6acb9731b8f3c477685d2635c2607
-ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
+ms.openlocfilehash: 3b40a285b934da2a193d1d4c6819f69e6b0ba69c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122830799"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128610353"
 ---
 # <a name="tutorial-use-azure-powershell-to-configure-iot-hub-message-routing"></a>チュートリアル:Azure PowerShell を使用して IoT Hub のメッセージ ルーティングを構成する
 
@@ -258,8 +258,8 @@ $condition = 'level="critical"'
 # https://github.com/Azure/azure-powershell/issues
 #   pause for 90 seconds and then start again. 
 # This way, it if didn't get to finish before it tried to move on, 
-#   now it will have time to finish. 
-## Start-Sleep -Seconds 90
+#   now it will have time to finish first.
+   Start-Sleep -Seconds 90
 
 # This command is the one that sometimes doesn't work. It's as if it doesn't have time to
 #   finish before it moves to the next line.

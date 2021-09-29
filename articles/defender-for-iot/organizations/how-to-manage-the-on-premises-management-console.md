@@ -3,12 +3,12 @@ title: オンプレミスの管理コンソールを管理する
 description: バックアップと復元、ホスト名の定義、センサーへのプロキシの設定など、オンプレミスの管理コンソールのオプションについて説明します。
 ms.date: 1/12/2021
 ms.topic: article
-ms.openlocfilehash: a94dc89f6d39bfef096809299e31bd88b43824d4
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 9b956dbfa640862d10d0e47aef97e5a1727052c7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123431082"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128625223"
 ---
 # <a name="manage-the-on-premises-management-console"></a>オンプレミスの管理コンソールを管理する
 
@@ -232,9 +232,9 @@ VLAN 名は、センサーと管理コンソールの間で同期されません
 1. 管理者資格情報を使用して、オンプレミス管理用の CLI にサインインします。
 1. 「```nano /var/cyberx/properties/remote-interfaces.properties```」と入力します。
 1. [Enter] を選択します。 次のプロンプトが表示されます。
-```mail.smtp_server= ```
-```mail.port=25 ```
-```mail.sender=```
+   `mail.smtp_server=`
+   `mail.port=25`
+   `mail.sender=`
 1. SMTP サーバーの名前と送信者を入力し、Enter キーを押します。
 
 ## <a name="see-also"></a>関連項目

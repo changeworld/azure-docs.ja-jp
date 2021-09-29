@@ -8,16 +8,16 @@ ms.service: bastion
 ms.topic: quickstart
 ms.date: 08/30/2021
 ms.author: cherylmc
-ms.openlocfilehash: f6319369a03de754b1ce016fb20aa99e5ab466e1
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: d9f3d2c8f30f3b5d249aae0789a7e2fee282e867
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123223411"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128677817"
 ---
 # <a name="quickstart-configure-azure-bastion-from-vm-settings"></a>クイックスタート: VM 設定から Azure Bastion を構成する
 
-このクイックスタートの記事では、Azure portal で VM の設定に基づいて Azure Bastion を構成し、プライベート IP アドレスを使用して VM に接続する方法について説明します。 サービスがプロビジョニングされると、同じ仮想ネットワーク内のすべての仮想マシンで RDP/SSH エクスペリエンスを使用できるようになります。 この VM には、パブリック IP アドレスやクライアント ソフトウェア、エージェント、特殊な構成は必要ありません。 VM ではパブリック IP アドレスを他のことで必要としない場合、削除してかまいません。 次に、プライベート IP アドレスを利用してポータルから VM に接続します。 Azure Bastion の詳細については、「[Azure Bastion とは](bastion-overview.md)」を参照してください。
+このクイックスタートの記事では、Azure portal で VM の設定に基づいて Azure Bastion を構成し、プライベート IP アドレスを使用して VM に接続する方法について説明します。 サービスがプロビジョニングされると、同じ仮想ネットワーク内のすべての仮想マシンで RDP/SSH エクスペリエンスを使用できるようになります。 この VM には、パブリック IP アドレスやクライアント ソフトウェア、エージェント、特殊な構成は必要ありません。 VM ではパブリック IP アドレスを他のことで必要としない場合、削除してかまいません。 次に、プライベート IP アドレスを利用してポータルから VM に接続します。 Azure Bastion の詳細については、「[Azure Bastion とは](bastion-overview.md)」を参照してください。 
 
 ## <a name="prerequisites"></a><a name="prereq"></a>前提条件
 

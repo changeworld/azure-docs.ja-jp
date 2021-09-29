@@ -8,12 +8,12 @@ ms.date: 04/02/2021
 ms.author: normesta
 ms.subservice: common
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: e289ad866ba53de761077f22b27ef4ff763451ff
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: ccf2f423137e4732b2785f23256577c92eee07ac
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114468555"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128595657"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy を使ってみる
 
@@ -46,7 +46,7 @@ AzCopy は、ストレージ アカウント間の BLOB またはファイル �
 
 AzCopy ディレクトリをご自分のパスに追加しないことを選択した場合、実際の AzCopy 実行可能ファイルの場所にディレクトリを変更し、Windows PowerShell コマンド プロンプトで「`azcopy`」または「`.\azcopy`」と入力する必要があります。
 
-ご自分の Azure Storage アカウントの所有者であっても、データへのアクセス許可が自動的に割り当てられるわけではありません。 AzCopy を使用して意味のある動作を行う前に、ストレージ サービスに認証資格情報を提供する方法を決定する必要があります。 
+ご自分の Azure Storage アカウントの所有者であっても、データへのアクセス許可が自動的に割り当てられるわけではありません。 AzCopy を使用して意味のある動作を行う前に、ストレージ サービスに認証資格情報を提供する方法を決定する必要があります。
 
 <a id="choose-how-youll-provide-authorization-credentials"></a>
 
@@ -64,7 +64,7 @@ AzCopy ディレクトリをご自分のパスに追加しないことを選択�
 
 #### <a name="option-1-use-azure-active-directory"></a>オプション 1: Azure Active Directory を使用する
 
-このオプションは、BLOB ストレージでのみ使用できます。 Azure Active Directory を使用すると、各コマンドに SAS トークンを追加する代わりに、資格情報を 1 回入力するだけで済みます。  
+このオプションは、BLOB ストレージでのみ使用できます。 Azure Active Directory を使用すると、各コマンドに SAS トークンを追加する代わりに、資格情報を 1 回入力するだけで済みます。
 
 > [!NOTE]
 > 現在のリリースでは、ストレージ アカウント間で BLOB をコピーする場合は、各ソース URL に SAS トークンを追加する必要があります。 コピー先 URL からのみ、SAS トークンを省略できます。 例については、「[ストレージ アカウント間で BLOB をコピーする](#transfer-data)」をご覧ください。
@@ -84,7 +84,7 @@ azcopy copy "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/
 SAS トークンの詳細とその取得方法については、「[Shared Access Signatures (SAS) の使用](./storage-sas-overview.md)」を参照してください。
 
 > [!NOTE]
-> ストレージ アカウントの [[安全な転送が必須]](storage-require-secure-transfer.md) 設定によって、ストレージ アカウントへの接続がトランスポート層セキュリティ (TLS) で保護されるかどうかが決まります。 既定では、この設定は有効になっています。   
+> ストレージ アカウントの [[安全な転送が必須]](storage-require-secure-transfer.md) 設定によって、ストレージ アカウントへの接続がトランスポート層セキュリティ (TLS) で保護されるかどうかが決まります。 既定では、この設定は有効になっています。
 
 <a id="transfer-data"></a>
 
@@ -116,7 +116,7 @@ ID を承認するか、SAS トークンを取得したら、データの転送�
 
 ### <a name="list-of-commands"></a>コマンドの一覧
 
-次の表に、AzCopy v10 のすべてのコマンドを示します。 各コマンドは、リファレンス記事にリンクされています。 
+次の表に、AzCopy v10 のすべてのコマンドを示します。 各コマンドは、リファレンス記事にリンクされています。
 
 |command|説明|
 |---|---|
@@ -140,7 +140,7 @@ ID を承認するか、SAS トークンを取得したら、データの転送�
 |[azcopy sync](storage-ref-azcopy-sync.md?toc=/azure/storage/blobs/toc.json)|元の場所を同期先の場所にレプリケートします。|
 
 > [!NOTE]
-> AzCopy には、ファイルの名前を変更するコマンドはありません。 
+> AzCopy には、ファイルの名前を変更するコマンドはありません。
 
 ## <a name="use-in-a-script"></a>スクリプト内で使用する
 
@@ -152,7 +152,7 @@ ID を承認するか、SAS トークンを取得したら、データの転送�
 
 そのリンクを取得するには、このコマンドを実行します。
 
-| オペレーティング システム  | command |
+| オペレーティング システム  | コマンド |
 |--------|-----------|
 | **Linux** | `curl -s -D- https://aka.ms/downloadazcopy-v10-linux | grep ^Location` |
 | **Windows** | `(curl https://aka.ms/downloadazcopy-v10-windows -MaximumRedirection 0 -ErrorAction silentlycontinue).headers.location` |
@@ -162,7 +162,7 @@ ID を承認するか、SAS トークンを取得したら、データの転送�
 
 この URL はこのコマンドの出力に表示されます。 その後、実際のスクリプトでその URL を使用して AzCopy をダウンロードできます。
 
-| オペレーティング システム  | command |
+| オペレーティング システム  | コマンド |
 |--------|-----------|
 | **Linux** | `wget -O azcopy_v10.tar.gz https://aka.ms/downloadazcopy-v10-linux && tar -xf azcopy_v10.tar.gz --strip-components=1` |
 | **Windows** | `Invoke-WebRequest https://azcopyvnext.azureedge.net/release20190517/azcopy_windows_amd64_10.1.2.zip -OutFile azcopyv10.zip <<Unzip here>>` |

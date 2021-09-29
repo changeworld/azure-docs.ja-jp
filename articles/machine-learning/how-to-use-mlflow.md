@@ -3,20 +3,20 @@ title: ML 実験の MLflow Tracking
 titleSuffix: Azure Machine Learning
 description: ML モデルのメトリックと成果物をログに記録するために、MLflow Tracking と Azure Machine Learning を設定します。
 services: machine-learning
-author: shivp950
-ms.author: shipatel
+author: cjgronlund
+ms.author: cgronlun
 ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: nibaccam
 ms.date: 05/25/2021
 ms.topic: how-to
 ms.custom: devx-track-python
-ms.openlocfilehash: 867f4a7c2c45a73c3ebc651a0f2d7a4b38156b90
-ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
+ms.openlocfilehash: c0c3be8c6698bb66c4f5b5e05ee74dde6be5fd75
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113031105"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124761507"
 ---
 # <a name="track-ml-models-with-mlflow-and-azure-machine-learning"></a>MLflow と Azure Machine Learning を使用して ML モデルを追跡する
 

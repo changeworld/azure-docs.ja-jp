@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/09/2021
 ms.reviewer: cynthn, jushiman
 ms.custom: template-how-to
-ms.openlocfilehash: a8c5e7f21747bc4f37f766106931a8f303fa33d3
-ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+ms.openlocfilehash: db9b8b71ddbdccb2cdc4893ce7ea041304bafba9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123273291"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124776616"
 ---
 # <a name="create-a-capacity-reservation-preview"></a>容量予約を作成する (プレビュー)
 
@@ -28,9 +28,9 @@ ms.locfileid: "123273291"
 > このプレビュー バージョンはサービス レベル アグリーメントなしで提供されており、運用環境のワークロードに使用することは推奨されません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 
-## <a name="register-for-capacity-reservation"></a>容量予約を登録する 
+## <a name="register-for-capacity-reservation"></a>容量予約に登録する 
 
-容量予約の機能を使う前に、[プレビュー版を利用するためにサブスクリプションを登録](capacity-reservation-overview.md#register-for-capacity-reservation)しなければなりません。 登録が完了するまでに数分かかる場合があります。 Azure CLI または PowerShell のいずれかを使用して、機能の登録を完了することができます。
+容量予約機能を使用する前に、[プレビュー版を利用するためにサブスクリプションを登録する](capacity-reservation-overview.md#register-for-capacity-reservation)必要があります。 登録が完了するまでに数分かかる場合があります。 Azure CLI または PowerShell のいずれかを使用して、機能の登録を完了することができます。
 
 
 ## <a name="considerations"></a>考慮事項
@@ -157,12 +157,12 @@ ms.locfileid: "123273291"
     -CapacityToReserve 5
     ```
 
-詳細については、Azure PowerShell コマンド「[New-AzResourceGroup](/powershell/module/az.compute/new-azresourcegroup)」、「[New-AzCapacityReservationGroup](/powershell/module/az.compute/new-azcapacityreservationgroup)」、「[New-AzCapacityReservation](/powershell/module/az.compute/new-azcapacityreservation)」を参照してください。
+詳細については、Azure PowerShell コマンド「[New-AzResourceGroup](/powershell/module/az.Resources/new-azresourcegroup)」、「[New-AzCapacityReservationGroup](/powershell/module/az.compute/new-azcapacityreservationgroup)」、「[New-AzCapacityReservation](/powershell/module/az.compute/new-azcapacityreservation)」を参照してください。
 
 
 ### <a name="arm-template"></a>[ARM テンプレート](#tab/arm1)
 
- [ARM テンプレート](/azure/azure-resource-manager/templates/overview) は JavaScript Object Notation (JSON) ファイルであり、プロジェクトのインフラストラクチャと構成が定義されています。 このテンプレートでは、宣言型の構文が使用されています。 宣言型の構文では、デプロイしようとしているものを、デプロイを作成する一連のプログラミング コマンドを記述しなくても記述できます。 
+ [ARM テンプレート](../azure-resource-manager/templates/overview.md) は JavaScript Object Notation (JSON) ファイルであり、プロジェクトのインフラストラクチャと構成が定義されています。 このテンプレートでは、宣言型の構文が使用されています。 宣言型の構文では、デプロイしようとしているものを、デプロイを作成する一連のプログラミング コマンドを記述しなくても記述できます。 
 
 ARM テンプレートを使用して、関連するリソースのグループをデプロイできます。 1 つのテンプレートで、容量予約グループと容量予約を作成できます。 テンプレートは、Azure portal、Azure CLI、Azure PowerShell からデプロイすることも、継続的インテグレーション/継続的デリバリー (CI/CD) パイプラインから呼び出すこともできます。 
 

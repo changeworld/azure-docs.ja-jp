@@ -11,12 +11,12 @@ ms.date: 04/16/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.custom: devx-track-js
-ms.openlocfilehash: 5a0bef4fbfd4ee9aa720dab430a33bbfcd0b918b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fe955ede3c2936c0c842d19fbadb9a075830822c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91280353"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128603488"
 ---
 # <a name="tutorial-simulate-a-failure-in-reading-data-from-the-primary-region"></a>チュートリアル:プライマリ リージョンからデータを読み取る際のエラーをシミュレートする
 
@@ -29,9 +29,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 シリーズの第 2 部で学習する内容は次のとおりです。
 
 > [!div class="checklist"]
-> * アプリケーションの実行と一時停止
-> * [無効な静的ルート](#simulate-a-failure-with-an-invalid-static-route)または [Fiddler](#simulate-a-failure-with-fiddler) を使用してエラーをシミュレートする
-> * プライマリ エンドポイントの復元をシミュレートする
+> - アプリケーションの実行と一時停止
+> - [無効な静的ルート](#simulate-a-failure-with-an-invalid-static-route)または [Fiddler](#simulate-a-failure-with-fiddler) を使用してエラーをシミュレートする
+> - プライマリ エンドポイントの復元をシミュレートする
 
 ## <a name="prerequisites"></a>前提条件
 

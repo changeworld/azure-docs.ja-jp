@@ -1,19 +1,18 @@
 ---
 title: Azure Queue Storage リファレンス
 description: Azure Queue Storage API リファレンス、README ファイル、クライアント ライブラリ パッケージが見つかります。
-author: twooley
-ms.author: twooley
-ms.reviewer: ripohane
+author: normesta
+ms.author: normesta
 ms.date: 09/10/2020
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: queues
-ms.openlocfilehash: 92b822da14b75dc27c71b3d9400409cb37554cf6
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 029ac2d0e71e41d1f2db684bad6f5f6288fc735d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106276724"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128606914"
 ---
 # <a name="azure-queue-storage-reference"></a>Azure Queue Storage リファレンス
 

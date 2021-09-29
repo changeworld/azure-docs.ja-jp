@@ -6,15 +6,16 @@ metadata:
   author: bandersmsft
   ms.reviewer: adwise
   ms.service: cost-management-billing
+  ms.subservice: common
   ms.topic: conceptual
-  ms.date: 05/21/2021
+  ms.date: 09/16/2021
   ms.author: banders
-  ms.openlocfilehash: 36dff080da94b899680222eb1dd7c7955f1e093b
-  ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+  ms.openlocfilehash: d23c07386fe0245f3acd7bc1e716a053cdfa2019
+  ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/10/2021
-  ms.locfileid: "111962730"
+  ms.lasthandoff: 09/24/2021
+  ms.locfileid: "128607294"
 title: Azure Cost Management + Billing についてよくあるご質問 (FAQ)
 summary: ''
 sections:

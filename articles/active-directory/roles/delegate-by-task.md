@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a65ce79252c25d187ed61de3b637182deaf225db
-ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
+ms.openlocfilehash: df3c243970709ad7ae4bc52f179117affc2d8613
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113136348"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124776437"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Azure Active Directory における管理タスク別の管理者ロール
 
@@ -166,7 +166,7 @@ ms.locfileid: "113136348"
 > [!div class="mx-tableFixed"]
 > | タスク | 最小特権ロール | その他のロール |
 > | ---- | --------------------- | ---------------- |
-> | カタログにリソースを追加する | Identity Governance 管理者 | エンタイトルメント管理を使用すると、このタスクをカタログ所有者に委任できます ([ドキュメントを参照](../governance/entitlement-management-catalog-create.md#add-additional-catalog-owners)) |
+> | カタログにリソースを追加する | Identity Governance 管理者 | エンタイトルメント管理を使用すると、このタスクをカタログ所有者に委任できます ([ドキュメントを参照](../governance/entitlement-management-catalog-create.md#add-more-catalog-owners)) |
 > | カタログに SharePoint Online サイトを追加する | SharePoint 管理者 |  |
 
 ## <a name="groups"></a>グループ

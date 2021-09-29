@@ -9,12 +9,13 @@ ms.author: chpalm
 ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 1bcb97892965cbe978899df4208888a4adb07253
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.subservice: teams-interop
+ms.openlocfilehash: 15936b796e677f913e6814b29c68394a9560285d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123251348"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128609728"
 ---
 # <a name="teams-interoperability"></a>Teams の相互運用性
 

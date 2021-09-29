@@ -6,12 +6,12 @@ ms.author: jaawasth
 ms.service: virtual-machines-sap
 ms.topic: how-to
 ms.date: 04/19/2021
-ms.openlocfilehash: 3da8c2a0147136ad5da90489e4f8db511cad7378
-ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+ms.openlocfilehash: 7f5f554f6563c2d0275bca7b6db48f2521379b11
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113217451"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128626610"
 ---
 # <a name="azure-large-instances-high-availability-for-sap-on-rhel"></a>SAP on RHEL のための Azure Large Instances の高可用性
 
@@ -19,7 +19,7 @@ ms.locfileid: "113217451"
 > この記事には、Microsoft では使用されなくなった "*ブラックリスト*" という用語への言及があります。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
 
 > [!NOTE]
-> この記事には、Microsoft が使用しなくなった "スレーブ" という用語への言及が含まれています。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
+> この記事には、Microsoft が使用しなくなった "*スレーブ*" という用語への言及が含まれています。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
 
 この記事では、SAP HANA データベースのフェールオーバーが自動化されるように、RHEL 7 で Pacemaker クラスターを構成する方法について説明します。 このガイドの手順を完了するには、Linux、SAP HANA、Pacemaker についてよく理解している必要があります。
 
@@ -1226,10 +1226,12 @@ global.ini
 
 
 あるノードから別のノードへの SAPHana リソースの移動をテストするには、次のコマンドを使用します。 SAPHana リソースの内部動作方法のため、次のコマンドを実行するときは、`--primary` オプションを使用しないでください。
-```pcs resource move SAPHana_HR2_00-primary```
+
+`pcs resource move SAPHana_HR2_00-primary`
 
 pcs リソース移動コマンドの各呼び出しの後で、クラスターにより、リソースの移動を実現するための場所の制約が作成されます。 後で、自動フェールオーバーを可能にするには、これらの制約を削除する必要があります。
 それらを削除するには、次のコマンドを使用します。
+
 ```
 pcs resource clear SAPHana_HR2_00-primary
 crm_mon -A1

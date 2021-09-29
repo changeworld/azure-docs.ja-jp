@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 120e97e62980427fb83c6bf7884da92dd9c5e1f7
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: 01044f9d03b911bfb6939023dfb4fd5d3b0a3cd3
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114602304"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124773799"
 ---
 # <a name="plan-an-azure-active-directory-multi-factor-authentication-deployment"></a>Azure AD の多要素認証のデプロイを計画する 
 
@@ -182,7 +182,7 @@ SMS または音声通話を使用した MFA に登録されているユーザ�
 - 管理者としてそれらのユーザーの方法を更新します。 これを行うには、Azure portal でユーザーを選択し、[認証方法] を選択して、方法を更新します。
 ユーザーへの伝達
 
-予定されている変更、Azure AD MFA の登録要件、必要なユーザー アクションについて、ユーザーに通知することが重要です。 通知の草案として役立つ[通信テンプレート](https://aka.ms/mfatemplates)と[エンドユーザー文書](../user-help/security-info-setup-signin.md)が用意されています。 ユーザーを [https://myprofile.microsoft.com](https://myprofile.microsoft.com/) に誘導し、そのページの **[セキュリティ情報]** リンクを選択して登録してもらいます。
+予定されている変更、Azure AD MFA の登録要件、必要なユーザー アクションについて、ユーザーに通知することが重要です。 通知の草案として役立つ[通信テンプレート](https://aka.ms/mfatemplates)と[エンドユーザー文書](https://support.microsoft.com/account-billing/set-up-your-security-info-from-a-sign-in-prompt-28180870-c256-4ebf-8bd7-5335571bf9a8)が用意されています。 ユーザーを [https://myprofile.microsoft.com](https://myprofile.microsoft.com/) に誘導し、そのページの **[セキュリティ情報]** リンクを選択して登録してもらいます。
 
 ## <a name="plan-integration-with-on-premises-systems"></a>オンプレミスのシステムとの統合を計画する
 

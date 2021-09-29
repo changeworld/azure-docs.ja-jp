@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/08/2020
 ms.author: jeedes
-ms.openlocfilehash: 946c754b9335553ec5c741470c0ed4b39bc41098
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: 5ef0c43dbd989983fbf627d323603924c6c1dcdb
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108802236"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124770911"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-academy-attendance"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Academy Attendance の統合
 
@@ -145,7 +145,7 @@ Academy Attendance に対して Azure AD SSO を構成してテストするに�
 
 - Academy Attendance のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-- Microsoft マイ アプリを使用することができます。 マイ アプリで [Academy Attendance] タイルをクリックすると、Academy Attendance サインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+- Microsoft マイ アプリを使用することができます。 マイ アプリで [Academy Attendance] タイルをクリックすると、Academy Attendance サインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

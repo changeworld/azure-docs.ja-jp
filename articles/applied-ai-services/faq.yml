@@ -8,32 +8,32 @@ metadata:
   ms.topic: conceptual
   ms.service: applied-ai-services
   ms.date: 05/28/2021
-  ms.openlocfilehash: b1e6b81b29fd21713e1357540026d777dad1cfac
-  ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+  ms.openlocfilehash: a532c87dbed7db5cd876135900387c495c0eb699
+  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/13/2021
-  ms.locfileid: "121747772"
+  ms.lasthandoff: 09/13/2021
+  ms.locfileid: "124751065"
 title: Azure Applied AI Services についてよく寄せられる質問
 summary: >
   Azure Applied AI Services の使用に関する一般的な質問への回答を次に示します。
 sections:
 - name: 1 つのセクション - 無視
   questions:
-  - question: Does Azure Applied AI Services support encryption of data at rest and Customer Managed Keys (CMK)?
+  - question: Azure Applied AI Services は、保存データとカスタマー マネージド キー (CMK) の暗号化をサポートしていますか?
     answer: >
-      Yes, the process to enable Customer-Managed Keys with Azure Key Vault for Applied AI Services varies by product. Use these links for service-specific instructions:
+      はい。Applied AI Services 用に Azure Key Vault でカスタマー マネージド キーを有効にするプロセスは、製品ごとに異なります。 サービス固有の手順については、以下のリンクを使用してください。
 
-      - [Cognitive Search encryption of data at rest](../search/search-security-manage-encryption-keys.md)
+      - [Cognitive Search による保存データの暗号化](../search/search-security-manage-encryption-keys.md)
 
-      - [Form Recognizer encryption of data at rest](../cognitive-services/form-recognizer/encrypt-data-at-rest.md)
+      - [Form Recognizer による保存データの暗号化](./form-recognizer/encrypt-data-at-rest.md)
 
-      - [Metrics Advisor encryption of data at rest](./metrics-advisor/encryption.md)
+      - [Metrics Advisor による保存データの暗号化](./metrics-advisor/encryption.md)
 
-      - [Video Analyzer encryption of data at rest](../azure-video-analyzer/video-analyzer-docs/customer-managed-keys.md)
+      - [Video Analyzer による保存データの暗号化](../azure-video-analyzer/video-analyzer-docs/customer-managed-keys.md)
 additionalContent: >-
-  ## Next Steps
+  ## <a name="next-steps"></a>次の手順
 
-  - [What is Azure Key Vault](../key-vault/general/overview.md)?
+  - [Azure Key Vault とは](../key-vault/general/overview.md)
 
-  - [Applied AI Services Customer-Managed Key Request Form](https://aka.ms/cogsvc-cmk)
+  - [Applied AI Services カスタマー マネージド キー要求フォーム](https://aka.ms/cogsvc-cmk)

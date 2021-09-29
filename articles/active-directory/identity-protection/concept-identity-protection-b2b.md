@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1d275c4fe093992f1bf87f7d4b8c5965e448a41
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0f3a5efbb9c990173c7012b9ff6f938fed33f1ad
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121737295"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124734560"
 ---
 # <a name="identity-protection-and-b2b-users"></a>Identity Protection と B2B ユーザー
 
@@ -32,7 +32,7 @@ Identity Protection は、Azure AD ユーザーの資格情報の侵害を検出
 
 組織で有効になっている場合は、セルフサービスによるパスワード リセットを使用してアカウントのブロックを解除して、資格情報を安全な状態に戻すことができます。
 1. [パスワード リセット ポータル](https://passwordreset.microsoftonline.com/)に移動して、パスワード リセットを開始します。 セルフサービスのパスワード リセットが自分のアカウントで有効になっておらず、続行できない場合は、[下](#how-to-remediate-a-users-risk-as-an-administrator)の情報を使用して IT 管理者に連絡してください。
-2. セルフサービスのパスワード リセットが自分のアカウントで有効になっている場合は、パスワードを変更する前に、セキュリティ手段を使用して本人確認を行うように求められます。 詳細については、[職場または学校のパスワードのリセット](../user-help/active-directory-passwords-update-your-own-password.md)に関する記事を参照してください。
+2. セルフサービスのパスワード リセットが自分のアカウントで有効になっている場合は、パスワードを変更する前に、セキュリティ手段を使用して本人確認を行うように求められます。 詳細については、[職場または学校のパスワードのリセット](https://support.microsoft.com/account-billing/reset-your-work-or-school-password-using-security-info-23dde81f-08bb-4776-ba72-e6b72b9dda9e)に関する記事を参照してください。
 3. パスワードが正常かつ安全にリセットされると、ユーザーのリスクが修復されます。 もう一度、ゲスト ユーザーとしてサインインを試してください。
 
 パスワードをリセットした後も、リスクを理由にゲストとしてブロックされている場合は、組織の IT 管理者に連絡してください。

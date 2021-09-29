@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 10/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 28d66477c31db9ee274fb1e8aaa1690365a4fa72
-ms.sourcegitcommit: fd83264abadd9c737ab4fe85abdbc5a216467d8b
+ms.openlocfilehash: 393d710ba411a6573a4cce155abd7c1aeae06aa8
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112912791"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124754874"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Azure Stream Analytics の出力のトラブルシューティング
 
@@ -25,7 +25,7 @@ ms.locfileid: "112912791"
 
    * **[入力イベント]** の値が 0 より大きい場合、ジョブでは入力データを読み取ることができます。 **[入力イベント]** の値が 0 より大きくない場合は、ジョブの入力に問題があります。 詳しくは、「[入力接続のトラブルシューティング](stream-analytics-troubleshoot-input.md)」をご覧ください。 ジョブに参照データ入力が含まれている場合は、**入力イベント** メトリックを参照するときに、論理名で分割を適用します。 参照データのみからの入力イベントがない場合は、この入力ソースが適切な参照データセットをフェッチするように適切に構成されていない可能性があります。
    * **[データ変換エラー]** の値が 0 より大きく、上昇している場合は、「[Azure Stream Analytics データ エラー](data-errors.md)」でデータ変換エラーの詳細について確認してください。
-   * **[ランタイム エラー]** の値が 0 より大きい場合は、ジョブはデータを受け取っていますが、クエリの処理中にエラーが発生しています。 エラーを確認するには、[監査ログ](../azure-resource-manager/management/view-activity-logs.md)に移動し、 **[失敗]** ステータスでフィルター処理します。
+   * **[ランタイム エラー]** の値が 0 より大きい場合は、ジョブはデータを受け取っていますが、クエリの処理中にエラーが発生しています。 エラーを確認するには、[監査ログ](../azure-monitor/essentials/activity-log.md)に移動し、 **[失敗]** ステータスでフィルター処理します。
    * **[入力イベント]** の値が 0 より大きく、 **[出力イベント]** の値が 0 の場合は、次のいずれかの状態になっています。
       * クエリの処理結果で、出力イベントが 0 個だった。
       * イベントまたはフィールドの形式が不適切なため、クエリ処理の実行後に出力が 0 個になった。

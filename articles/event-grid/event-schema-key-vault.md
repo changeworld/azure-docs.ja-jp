@@ -2,13 +2,13 @@
 title: Event Grid ソースとして Azure Key Vault
 description: Azure Event Grid で Azure Key Vault のイベント用に提供されているプロパティとスキーマについて説明します
 ms.topic: conceptual
-ms.date: 02/11/2021
-ms.openlocfilehash: 31a5e77cc238dcfc774ebc851e864c916206fd9e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/15/2021
+ms.openlocfilehash: fccd93b97455a673da5a3b92dcd54cf494f0cecb
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121748466"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128612778"
 ---
 # <a name="azure-key-vault-as-event-grid-source"></a>Event Grid ソースとして Azure Key Vault
 
@@ -50,8 +50,8 @@ Azure Key Vault アカウントでは、以下の種類のイベントが生成�
          "Id":"https://sample-kv.vault.azure.net/secrets/newsecret/ee059b2bb5bc48398a53b168c6cdcb10",
          "VaultName":"sample-kv",
          "ObjectType":"Secret",
-         "ObjectName ":"newsecret",
-         "Version":" ee059b2bb5bc48398a53b168c6cdcb10",
+         "ObjectName":"newsecret",
+         "Version":"ee059b2bb5bc48398a53b168c6cdcb10",
          "NBF":"1559081980",
          "EXP":"1559082102"
       },
@@ -77,8 +77,8 @@ Azure Key Vault アカウントでは、以下の種類のイベントが生成�
          "Id":"https://sample-kv.vault.azure.net/secrets/newsecret/ee059b2bb5bc48398a53b168c6cdcb10",
          "VaultName":"sample-kv",
          "ObjectType":"Secret",
-         "ObjectName ":"newsecret",
-         "Version":" ee059b2bb5bc48398a53b168c6cdcb10",
+         "ObjectName":"newsecret",
+         "Version":"ee059b2bb5bc48398a53b168c6cdcb10",
          "NBF":"1559081980",
          "EXP":"1559082102"
       },
@@ -94,7 +94,7 @@ Azure Key Vault アカウントでは、以下の種類のイベントが生成�
 # <a name="event-grid-event-schema"></a>[Event Grid イベント スキーマ](#tab/event-grid-event-schema)
 イベントのトップレベルのデータを次に示します。
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | 説明 |
 | -------- | ---- | ----------- |
 | `topic` | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
 | `subject` | string | 発行元が定義したイベントの対象のパス。 |
@@ -110,7 +110,7 @@ Azure Key Vault アカウントでは、以下の種類のイベントが生成�
 
 イベントのトップレベルのデータを次に示します。
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | 説明 |
 | -------- | ---- | ----------- |
 | `source` | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
 | `subject` | string | 発行元が定義したイベントの対象のパス。 |
@@ -125,7 +125,7 @@ Azure Key Vault アカウントでは、以下の種類のイベントが生成�
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | 説明 |
 | ---------- | ----------- |---|
 | `id` | string | このイベントをトリガーしたオブジェクトの ID |
 | `VaultName` | string | このイベントをトリガーしたオブジェクトのキー コンテナー名 |

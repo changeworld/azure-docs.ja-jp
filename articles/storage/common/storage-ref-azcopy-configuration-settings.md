@@ -8,12 +8,12 @@ ms.date: 04/02/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: edd90071125c65b7d4af3d0065e92b30f35e5f65
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 7c3ad407b0c412e3cf4dbb5cc1635376c718a747
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114436955"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128605812"
 ---
 # <a name="azcopy-v10-configuration-settings-azure-storage"></a>AzCopy v10 の構成設定 (Azure Storage)
 
@@ -59,12 +59,11 @@ AzCopy は、ストレージ アカウント間の BLOB またはファイル �
 | GOOGLE_APPLICATION_CREDENTIALS | サービス アカウント キー ファイルへの絶対パスによって、Google Cloud Storage での承認を行うためのキーが提供されます。 [AzCopy を使用して Google Cloud Storage から Azure Storage にデータをコピーする (プレビュー)](storage-ref-azcopy-configuration-settings.md) |
 | HTTPS_PROXY | AzCopy のプロキシ設定を構成します。 この変数は、プロキシ IP アドレスとプロキシ ポート番号に設定します。 たとえば、「 `xx.xxx.xx.xxx:xx` 」のように入力します。 Windows で AzCopy を実行すると、AzCopy によって自動的にプロキシ設定が検出されるため、Windows でこの設定を使用する必要はありません。 Windows でこの設定を使用することを選択した場合は、自動検出がオーバーライドされます。 「[プロキシ設定の構成](#configure-proxy-settings)」を参照してください。 |
 
-
 ## <a name="configure-proxy-settings"></a>プロキシ設定の構成
 
 AzCopy v10 のプロキシ設定を構成するには、`HTTPS_PROXY` 環境変数を設定します。 Windows で AzCopy を実行すると、AzCopy によって自動的にプロキシ設定が検出されるため、Windows でこの設定を使用する必要はありません。 Windows でこの設定を使用することを選択した場合は、自動検出がオーバーライドされます。
 
-| オペレーティング システム | command  |
+| オペレーティング システム | コマンド  |
 |--------|-----------|
 | **Windows** | コマンド プロンプトでは、`set HTTPS_PROXY=<proxy IP>:<proxy port>` を使用します<br> PowerShell では、`$env:HTTPS_PROXY="<proxy IP>:<proxy port>"` を使用します|
 | **Linux** | `export HTTPS_PROXY=<proxy IP>:<proxy port>` |
@@ -74,7 +73,7 @@ AzCopy v10 のプロキシ設定を構成するには、`HTTPS_PROXY` 環境変�
 
 ### <a name="bypassing-a-proxy"></a>プロキシのバイパス
 
-Windows で AzCopy を実行していて、プロキシを使用 _しない_ ように (設定の自動検出ではなく) 指定する場合、次のコマンドを使用します。 これらの設定を使用すると、AzCopy はプロキシを検索したり、使用したりしません。
+Windows で AzCopy を実行していて、プロキシを使用 *しない* ように (設定の自動検出ではなく) 指定する場合、次のコマンドを使用します。 これらの設定を使用すると、AzCopy はプロキシを検索したり、使用したりしません。
 
 | オペレーティング システム | 環境 | コマンド  |
 |--------|-----------|----------|

@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 3d0103857b6f759560129dbe8e693ec6c0d7291e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 99824c80b041af284d3e71f720943b4425b78a75
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94961211"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124730269"
 ---
 # <a name="use-azure-automation-to-trigger-a-job"></a>Azure Automation を使用してジョブをトリガーする
 
@@ -98,7 +98,7 @@ Runbook をインポート、発行、実行してジョブ定義をトリガー
 
     ![Runbook の追加 4](./media/storsimple-data-manager-job-using-automation/add-runbook-4.png)
 
-6. StorSimple Data Manager サービスの名前、関連付けられているリソース グループ、ジョブ定義の名前などのパラメーターを指定します。 テストを **開始** します。 実行が完了すると、レポートが生成されます。 詳しくは、[Runbook のテスト](../automation/learn/automation-tutorial-runbook-textual-powershell.md#step-3---test-the-runbook)方法に関するページをご覧ください。
+6. StorSimple Data Manager サービスの名前、関連付けられているリソース グループ、ジョブ定義の名前などのパラメーターを指定します。 テストを **開始** します。 実行が完了すると、レポートが生成されます。 詳しくは、[Runbook のテスト](../automation/learn/powershell-runbook-managed-identity.md)方法に関するページをご覧ください。
 
     ![Runbook の追加 8](./media/storsimple-data-manager-job-using-automation/add-runbook-8.png)    
 

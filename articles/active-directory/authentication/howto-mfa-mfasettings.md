@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: d5aa2a2eba1cf6123d81813cab00d2ac7c5309b4
-ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
+ms.openlocfilehash: 22dd9bdfc8f26a46c7cd5989851fb748955732fe
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122835369"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124773818"
 ---
 # <a name="configure-azure-ad-multi-factor-authentication-settings"></a>Azure AD Multi-Factor Authentication の設定を構成する
 
@@ -311,7 +311,7 @@ Azure AD Multi-Factor Authentication の "_信頼できる IP_" 機能を使用�
 
 ## <a name="verification-methods"></a>検証方法
 
-サービス設定ポータルでユーザーが使用できる検証方法を選択できます。 ユーザーは、自分のアカウントを Azure AD Multi-Factor Authentication 用に登録するときに、有効になっているオプションから使用する検証方法を選択します。 登録プロセスのガイダンスについては、[アカウントへの多要素認証の設定](../user-help/multi-factor-authentication-end-user-first-time.md)を参照してください。
+サービス設定ポータルでユーザーが使用できる検証方法を選択できます。 ユーザーは、自分のアカウントを Azure AD Multi-Factor Authentication 用に登録するときに、有効になっているオプションから使用する検証方法を選択します。 登録プロセスのガイダンスについては、[アカウントへの多要素認証の設定](https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc)を参照してください。
 
 次の検証方法を使用できます。
 
@@ -341,7 +341,7 @@ _[Multi-Factor Authentication を記憶する]_ 機能を使用すると、ユ�
 > [!IMPORTANT]
 > アカウントまたはデバイスが侵害された場合、信頼済みデバイスに対する Multi-Factor Authentication の記憶はセキュリティに影響する可能性があります。 企業アカウントが侵害された場合や、信頼済みデバイスを紛失したり盗難に遭ったりした場合は、[MFA セッションを取り消す](howto-mfa-userdevicesettings.md)必要があります。
 >
-> 復元操作により、信頼された状態がすべてのデバイスから失われ、ユーザーは多要素認証を再度実行する必要があります。 [多要素認証設定の管理](../user-help/multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device)に関する記事に記載されているように、各自のデバイスの Multi-Factor Authentication を復元するようユーザーに指示することもできます。
+> 復元操作により、信頼された状態がすべてのデバイスから失われ、ユーザーは多要素認証を再度実行する必要があります。 [多要素認証設定の管理](https://support.microsoft.com/account-billing/change-your-two-step-verification-method-and-settings-c801d5ad-e0fc-4711-94d5-33ad5d4630f7#turn-on-two-factor-verification-prompts-on-a-trusted-device)に関する記事に記載されているように、各自のデバイスの Multi-Factor Authentication を復元するようユーザーに指示することもできます。
 
 ### <a name="how-the-feature-works"></a>機能のしくみ
 

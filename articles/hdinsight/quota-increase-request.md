@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 05/07/2020
-ms.openlocfilehash: b62e41f280d02664b3df631c3413960f1265356f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c6a46d1d0224ac802dc2c7b418e1fa19f1b26099
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104863175"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124742860"
 ---
 # <a name="requesting-quota-increases-for-azure-hdinsight"></a>Azure HDInsight のクォータの増加を要求する
 
@@ -64,7 +64,7 @@ CPU コア クォータは、確実に、特定の Azure リージョン内の�
 > [!NOTE]  
 > プライベート リージョンで HDInsight コア クォータを増やす必要がある場合は、[承認済みリストの要求を送信](https://aka.ms/canaryintwhitelist)してください。
 
-[サポートに連絡してクォータの引き上げを要求](../azure-portal/supportability/resource-manager-core-quotas-request.md)できます。
+[サポートに連絡してクォータの引き上げを要求](../azure-portal/supportability/regional-quota-requests.md)できます。
 
 固定のクォータ制限がいくつか存在します。 たとえば、1 つの Azure サブスクリプションに許可されるコアの数は最大 10,000 です。 これらの制限の詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-resource-manager/management/azure-subscription-service-limits.md)」をご覧ください。
 

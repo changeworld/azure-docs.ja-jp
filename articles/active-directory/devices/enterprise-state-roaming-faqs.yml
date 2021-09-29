@@ -9,15 +9,15 @@ metadata:
   ms.date: 02/12/2020
   ms.author: joflore
   author: MicrosoftGuyJFlo
-  manager: daveba
+  manager: karenhoran
   ms.reviewer: na
   ms.collection: M365-identity-device-management
-  ms.openlocfilehash: 8fa75d1baae917e7e60ca99f4d5c3cc33ff85f0a
-  ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
+  ms.openlocfilehash: 0a948eaf278e2f3064178f8ec29465dfc4d0b3fa
+  ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/16/2021
-  ms.locfileid: "112200750"
+  ms.lasthandoff: 09/24/2021
+  ms.locfileid: "128590654"
 title: 設定とデータのローミングに関する FAQ
 summary: この記事では、IT 管理者が設定やアプリ データの同期に関して抱く可能性のあるいくつかの疑問に答えます。
 sections:

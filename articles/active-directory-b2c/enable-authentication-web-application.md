@@ -11,12 +11,12 @@ ms.date: 06/11/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: 44f3c777279d6f6b8d2df2600141e7fd66e44214
-ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+ms.openlocfilehash: 8cb836752ff75a32465d5c8df0e88210c323fb26
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123186301"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124740111"
 ---
 # <a name="enable-authentication-in-your-own-web-app-by-using-azure-ad-b2c"></a>Azure AD B2C を使用して独自の Web アプリで認証を有効にする
 
@@ -273,19 +273,18 @@ Azure AD B2C ID プロバイダーの設定は、*appsettings.json* ファイル
 必要な情報については、[サンプル Web アプリで認証を構成する](configure-authentication-sample-web-app.md)方法に関する記事を参照してください。 次の設定を使用します。
 
 * **インスタンス**: `<your-tenant-name>` を Azure AD B2C [テナント名](tenant-management.md#get-your-tenant-name)の最初の部分に置き換えます (例: `https://contoso.b2clogin.com`)。
-* **ドメイン**: `<your-b2c-domain>` を Azure AD B2C の完全な[テナント名](tenant-management.md#get-your-tenant-name)に置き換えます (例: `contoso.onmicrosoft.com`)。
-* **クライアント ID**: `<web-app-application-id>` を[手順 2](configure-authentication-sample-web-app.md#step-2-register-a-web-application) のアプリケーション ID に置き換えます。
-* **ポリシー名**: `<your-sign-up-in-policy>` を[手順 1](configure-authentication-sample-web-app.md#step-1-configure-your-user-flow) で作成したユーザー フローに置き換えます。
+* **ドメイン**: `<your-b2c-domain>` を Azure AD B2C の完全な [テナント名](tenant-management.md#get-your-tenant-name)に置き換えます (例: `contoso.onmicrosoft.com`)。
+* **クライアント ID**: `<web-app-application-id>` を [手順 2](configure-authentication-sample-web-app.md#step-2-register-a-web-application) のアプリケーション ID に置き換えます。
+* **ポリシー名**: `<your-sign-up-in-policy>` を [手順 1](configure-authentication-sample-web-app.md#step-1-configure-your-user-flow) で作成したユーザー フローに置き換えます。
 
 ## <a name="step-7-run-your-application"></a>手順 7: アプリケーションを実行する
 
 1. プロジェクトをビルドして実行します。
-1. [https://localhost:5001](https://localhost:5001) に移動します。 
+1. `https://localhost:5001` にアクセスします。 
 1. **[サインアップ/イン]** を選択します。
 1. サインインアップまたはサインイン プロセスを完了します。
 
 正しく認証されると、ナビゲーション バーに自分の表示名が表示されます。 Azure AD B2C トークンによってアプリに返される要求を表示するには、 **[要求]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
-
 * [Web アプリの Azure AD B2C 認証エクスペリエンスをカスタマイズおよび強化する](enable-authentication-web-application-options.md)方法を学ぶ。

@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/18/2020
 ms.author: cshoe
-ms.openlocfilehash: 168c187c4e573193b439e790fb94290aadec046a
-ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+ms.openlocfilehash: d7716c6d91ac0f7c8c699d14f265e00f5535a00d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122778874"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124730403"
 ---
 # <a name="api-support-in-azure-static-web-apps-with-azure-functions"></a>Azure Functions による Azure Static Web Apps での API のサポート
 
@@ -49,7 +49,7 @@ Web アプリでは、_api_ ルートを介して API エンドポイントを�
 
 | マネージド関数 | 独自の関数の持ち込み |
 | --- | --- |
-| _api_ ルートは固定されていますが、マネージド関数アプリのフォルダーの場所は制御できます。 リポジトリの _.github/workflows_ フォルダーにある [ワークフロー YAML ファイルを編集する](github-actions-workflow.md#build-and-deploy)ことにより、この場所を変更できます。 | _api_ ルートへの要求は、既存の Azure Functions アプリに送信されます。 |
+| _api_ ルートは固定されていますが、マネージド関数アプリのフォルダーの場所は制御できます。 リポジトリの _.github/workflows_ フォルダーにある [ワークフロー YAML ファイルを編集する](build-configuration.md)ことにより、この場所を変更できます。 | _api_ ルートへの要求は、既存の Azure Functions アプリに送信されます。 |
 
 ## <a name="troubleshooting-and-logs"></a>トラブルシューティングとログ
 

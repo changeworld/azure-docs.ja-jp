@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/14/2021
 ms.author: jeedes
-ms.openlocfilehash: 0b832cc0732d874b1e56411887e426c19f683639
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: fa145b83df03fba29e4f1bb9f8847952eaf6b71a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110063804"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124783446"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-degreed"></a>チュートリアル: Azure Active Directory と Degreed の統合
 
@@ -140,7 +140,7 @@ Degreed に対する Azure AD SSO を構成してテストするには、次の�
 
 * Degreed のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリの [Degreed] タイルをクリックすると、Degreed のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリの [Degreed] タイルをクリックすると、Degreed のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

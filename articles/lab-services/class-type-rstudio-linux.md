@@ -5,18 +5,18 @@ author: emaher
 ms.topic: article
 ms.date: 08/25/2021
 ms.author: enewman
-ms.openlocfilehash: 80a64ce36697db2ac7bf941fdb40ab997e9f700f
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 14e30572ab620b36730c725c7ac5a2e762947366
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123110099"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124755499"
 ---
 # <a name="set-up-a-lab-to-teach-r-on-linux"></a>Linux で R を教えるためのラボを設定
 
-[R](https://www.r-project.org/about.html) は、統計的なコンピューティングとグラフィックス用のオープン ソースの言語と環境です。  遺伝学の統計的解析から、自然言語処理、財務データの解析などに使われています。  R には、[対話型のコマンドライン](https://cran.r-project.org/doc/manuals/r-release/R-intro.html#Invoking-R-from-the-command-line) エクスペリエンスが用意されています。  [RStudio](https://www.rstudio.com/products/rstudio/) は、R 言語で使用できる対話型開発環境 (IDE) です。  無料版は、コード編集ツール、統合されたデバッグ エクスペリエンス、およびパッケージ開発ツールを提供します。
+[R](https://www.r-project.org/about.html) は、統計的なコンピューティングとグラフィックス用のオープン ソースの言語と環境です。  これは、遺伝学の統計分析を始め、自然言語処理、財務データの分析において使用されています。  R には、[対話型のコマンドライン](https://cran.r-project.org/doc/manuals/r-release/R-intro.html#Invoking-R-from-the-command-line) エクスペリエンスが用意されています。  [RStudio](https://www.rstudio.com/products/rstudio/) は、R 言語で使用できる対話型開発環境 (IDE) です。  無料版には、コード編集ツール、統合されたデバッグ エクスペリエンス、パッケージ開発ツールが用意されています。
 
-このアーティクルでは、統計的コンピューティングが必要なクラスのビルド ブロックとして、もっぱら RStudio と R に焦点を当てます。  [ディープ ラーニング](class-type-deep-learning-natural-language-processing.md)と [Python、Jupyter Notebooks](class-type-jupyter-notebook.md) クラスでは、RStudio の設定方法が異なります。  各アーティクルでは、 [Data Science Virtual Machine for Linux (Ubuntu)](https://azuremarketplace.microsoft.com/en-US/marketplace/apps/microsoft-dsvm.ubuntu-1804) を使用する方法について説明します。このイメージには、RStudio、プレインストールなど、多くの [データ サイエンス関連ツール](/azure/machine-learning/data-science-virtual-machine/tools-included)が含まれています。  
+この記事では、RStudio と R の、統計的コンピューティングを使用する必要があるクラスの構成要素としての側面のみを取り上げます。  [ディープ ラーニング](class-type-deep-learning-natural-language-processing.md)や、[Python と Jupyter Notebooks](class-type-jupyter-notebook.md) を扱う種類のクラスでは、RStudio の設定方法が異なります。  各記事では、マーケットプレース イメージの [Data Science Virtual Machine for Linux (Ubuntu)](https://azuremarketplace.microsoft.com/en-US/marketplace/apps/microsoft-dsvm.ubuntu-1804) を使用する方法について説明しています。それには、プレインストールされた RStudio など、多くの[データ サイエンス関連ツール](../machine-learning/data-science-virtual-machine/tools-included.md)が含まれています。  
 
 ## <a name="lab-account-configuration"></a>ラボ アカウントの構成
 
@@ -29,14 +29,14 @@ ms.locfileid: "123110099"
 | ラボ アカウントの設定 | Instructions |
 | -------------------- | ----- |
 | マーケットプレースの画像 | Ubuntu Server 18.04 LTS |
-| [ピア仮想ネットワークの有効化](how-to-connect-peer-virtual-network.md) | 次を有効にします。<ul><li>クラスには、共有 Microsoft R Server が必要です。</li><li>クラスには、学生の VM ではなく、外部に格納する大きなデータ ファイルが必要です。</li></ul> |
+| [ピア仮想ネットワークの有効化](how-to-connect-peer-virtual-network.md) | 次の場合に有効にします。<ul><li>クラスに共有の Microsoft R Server が必要。</li><li>クラスに、学生用 VM ではなく外部に格納するための大きなデータ ファイルが必要。</li></ul> |
 
 > [!IMPORTANT]
-> ピア仮想ネットワークの有効化を選択した場合は、ラボを作成する前にこれを行う必要があります。
+> ピア仮想ネットワークを有効にすることを選ぶ場合は、ラボを作成する前にそれを行う必要があります。
 
 ## <a name="lab-configuration"></a>ラボの構成
 
-新しいラボを作成し、必要な設定を適用する手順については、「[チュートリアル: クラスルーム ラボのセットアップ](tutorial-setup-classroom-lab.md)」を参照してください。  ラボを作成するときに、次の設定を適用します。
+新しいラボを作成し、必要な設定を適用する手順については、「[チュートリアル: クラスルーム ラボを設定する](tutorial-setup-classroom-lab.md)」を参照してください。  ラボを作成するときには、以下の設定を適用します。
 
 | ラボの設定 | 値と説明 |
 | ------------ | ------------------ |
@@ -48,7 +48,7 @@ ms.locfileid: "123110099"
 
 クラスによっては、大きなデータ ファイルなどのファイルを外部に保存する必要があります。  オプションとセットアップ手順は、「[Azure Lab Services での外部ファイル ストレージの使用](how-to-attach-external-storage.md)」を参照してください。
 
-学生に共有 Microsoft R Server を用意する場合は、ラボを作成する前にサーバーをセットアップしておく必要があります。  共有サーバーをセットアップする方法は、「[Azure Lab Services で共有リソースを使用してラボを作成する方法](how-to-create-a-lab-with-shared-resource.md)」を参照してください。  RStudio サーバーを作成する手順については、「[RStudio Server for Debian と Ubuntu のダウンロード](https://www.rstudio.com/products/rstudio/download-server/debian-ubuntu/)」と、「[Rstudio Server のオープンソースへのアクセス](https://support.rstudio.com/hc/en-us/articles/200552306-Getting-Started)」を参照してください。
+学生に共有 Microsoft R Server を用意する場合は、ラボを作成する前にサーバーをセットアップしておく必要があります。  共有サーバーをセットアップする方法は、「[Azure Lab Services で共有リソースを使用してラボを作成する方法](how-to-create-a-lab-with-shared-resource.md)」を参照してください。  RStudio Server を作成する手順については、「[Debian および Ubuntu 用 RStudio Server のダウンロード](https://www.rstudio.com/products/rstudio/download-server/debian-ubuntu/)」と「[オープンソース版 Rstudio Server へのアクセス](https://support.rstudio.com/hc/en-us/articles/200552306-Getting-Started)」を参照してください。
 
 ## <a name="template-configuration"></a>テンプレートの構成
 
@@ -133,7 +133,7 @@ sudo add-apt-repository ppa:c2d4u.team/c2d4u4.0+
 
 [便利な R パッケージのクイック リスト](https://support.rstudio.com/hc/articles/201057987-Quick-list-of-useful-R-packages)のアーティクルにあるように、`install.packages(“package name”)` コマンドを R のインタラクティブ セッションで使用します。  または、RStudio で [ツール]-> [パッケージのインストール] メニュー項目を使用します。
 
-パッケージを検索する場合は、[タスク別パッケージ一覧](https://cran.r-project.org/web/views/)や[アルファベット順パッケージ一覧](https://cloud.r-project.org/web/packages/available_packages_by_name.html)を参照してください。
+パッケージを見つける際に情報が必要な場合は、[タスク別のパッケージの一覧](https://cran.r-project.org/web/views/)や[アルファベット順のパッケージの一覧](https://cloud.r-project.org/web/packages/available_packages_by_name.html)を参照してください。
 
 ## <a name="cost"></a>コスト
 

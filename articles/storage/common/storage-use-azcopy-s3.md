@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 04/02/2021
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: ac73d0e57377a8922691ea06c8de3df5ef577680
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 68aaa447aef65a109105f870b805dd485f322643
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107502438"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128639985"
 ---
 # <a name="copy-data-from-amazon-s3-to-azure-storage-by-using-azcopy"></a>AzCopy を使用して Amazon S3 から Azure Storage にデータをコピーする
 
@@ -21,9 +21,9 @@ AzCopy は、ストレージ アカウント間の BLOB またはファイル �
 
 ## <a name="choose-how-youll-provide-authorization-credentials"></a>認証資格情報の提供方法を選択する
 
-* Azure Storage による承認を行うには、Azure Active Directory (AD) または Shared Access Signature (SAS) トークンを使用します。
+- Azure Storage による承認を行うには、Azure Active Directory (AD) または Shared Access Signature (SAS) トークンを使用します。
 
-* AWS S3 による承認を行うには、AWS アクセス キーとシークレット アクセス キーを使用します。
+- AWS S3 による承認を行うには、AWS アクセス キーとシークレット アクセス キーを使用します。
 
 ### <a name="authorize-with-azure-storage"></a>Azure Storage による認証
 
@@ -40,7 +40,7 @@ AzCopy のダウンロード方法と、ストレージ サービスに認証資
 
 AWS アクセス キーとシークレット アクセス キーを収集して、以下の環境変数を設定します。
 
-| オペレーティング システム | command  |
+| オペレーティング システム | コマンド  |
 |--------|-----------|
 | **Windows** | `set AWS_ACCESS_KEY_ID=<access-key>`<br>`set AWS_SECRET_ACCESS_KEY=<secret-access-key>` |
 | **Linux** | `export AWS_ACCESS_KEY_ID=<access-key>`<br>`export AWS_SECRET_ACCESS_KEY=<secret-access-key>` |
@@ -53,7 +53,7 @@ AzCopy では、[URL からブロックの配置](/rest/api/storageservices/put-
 > [!TIP]
 > このセクションの例では、単一引用符 ('') でパス引数を囲みます。 Windows コマンド シェル (cmd.exe) を除き、すべてのコマンド シェルで単一引用符を使用します。 Windows コマンド シェル (cmd.exe) を使用している場合は、単一引用符 ('') ではなく、二重引用符 ("") でパス引数を囲みます。
 
- これらの例は、階層型名前空間があるアカウントでも機能します。 [Data Lake Storage のマルチプロトコル アクセス](../blobs/data-lake-storage-multi-protocol-access.md)では、これらのアカウントで同じ URL 構文 (`blob.core.windows.net`) を使用できます。 
+ これらの例は、階層型名前空間があるアカウントでも機能します。 [Data Lake Storage のマルチプロトコル アクセス](../blobs/data-lake-storage-multi-protocol-access.md)では、これらのアカウントで同じ URL 構文 (`blob.core.windows.net`) を使用できます。
 
 ### <a name="copy-an-object"></a>オブジェクトをコピーする
 
@@ -153,7 +153,7 @@ azcopy copy 'https://s3-rds.eu-north-1.amazonaws.com' 'https://mystorageaccount.
 
 AWS の S3 では、Azure BLOB コンテナーと比べると異なるバケット名の名前付け規則があります。 詳しくは、[こちら](https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html#bucketnamingrules)をご覧ください。 バケットのグループを Azure ストレージ アカウントにコピーする場合は、名前付けの違いのためにコピー操作が失敗することがあります。
 
-AzCopy は、発生する可能性のある最も一般的な 2 つの問題を処理します。期間が含まれているバケットと、連続するハイフンが含まれているバケットです。 AWS S3 バケットの名前には期間と連続するハイフンを含めることができますが、Azure 内のコンテナーには含めることができません。 AzCopy では、期間はハイフンに置き換えられ、連続するハイフンは、連続するハイフンの数を表す数に置き換えられます (たとえば、`my----bucket` という名前のバケットは `my-4-bucket` になります)。 
+AzCopy は、発生する可能性のある最も一般的な 2 つの問題を処理します。期間が含まれているバケットと、連続するハイフンが含まれているバケットです。 AWS S3 バケットの名前には期間と連続するハイフンを含めることができますが、Azure 内のコンテナーには含めることができません。 AzCopy では、期間はハイフンに置き換えられ、連続するハイフンは、連続するハイフンの数を表す数に置き換えられます (たとえば、`my----bucket` という名前のバケットは `my-4-bucket` になります)。
 
 また、AzCopy でファイルがコピーされるときには、名前の競合がチェックされ、その解決が試みられます。 たとえば、名前が `bucket-name` と `bucket.name` のバケットがある場合、AzCopy は `bucket.name` という名前のバケットをまず `bucket-name` に解決してから、次に `bucket-name-2` に解決します。
 
@@ -197,7 +197,7 @@ AzCopy では次の手順が実行されます。
 - [例:Azure Files](storage-use-azcopy-files.md)
 - [チュートリアル:AzCopy を使用したオンプレミス データのクラウド ストレージへの移行](storage-use-azcopy-migrate-on-premises-data.md)
 
-設定の構成、パフォーマンスの最適化、および問題のトラブルシューティングを行うには、これらの記事を参照してください。
+設定の構成、パフォーマンスの最適化、および問題のトラブルシューティングを行うには、次の記事を参照してください。
 
 - [AzCopy の構成設定](storage-ref-azcopy-configuration-settings.md)
 - [AzCopy のパフォーマンスを最適化する](storage-use-azcopy-optimize.md)

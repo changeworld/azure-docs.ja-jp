@@ -10,12 +10,12 @@ ms.subservice: develop
 ms.topic: tutorial
 ms.date: 02/17/2021
 ms.author: v-doeris
-ms.openlocfilehash: 33d3712e25a06419e0ccc5914cdddfae7d85a371
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 94e5675a4710e1d90ca053727c32219bb98d80c1
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101645791"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124786334"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-in-a-nodejs-console-app"></a>チュートリアル:Node.js コンソール アプリで Microsoft Graph API を呼び出す
 
@@ -143,11 +143,11 @@ const msalConfig = {
  * https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow
  */
 const tokenRequest = {
-    scopes: [process.env.GRAPH_ENDPOINT + '.default'],
+    scopes: [process.env.GRAPH_ENDPOINT + '/.default'],
 };
 
 const apiConfig = {
-    uri: process.env.GRAPH_ENDPOINT + 'v1.0/users',
+    uri: process.env.GRAPH_ENDPOINT + '/v1.0/users',
 };
 
 /**

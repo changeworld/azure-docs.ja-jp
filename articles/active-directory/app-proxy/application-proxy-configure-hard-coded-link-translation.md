@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 32fcbcd7c932eee36f5974b369d41e551c861ebf
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 08b730b0196aa5b78ebafc0208accd51e544e8d7
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108187219"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124787492"
 ---
 # <a name="redirect-hard-coded-links-for-apps-published-with-azure-active-directory-application-proxy"></a>Azure Active Directory アプリケーション プロキシで公開されているアプリのハードコードされたリンクをリダイレクトする
 
@@ -57,7 +57,7 @@ MyApps ブラウザー拡張機能を使用すると、アプリケーション 
 
 この機能を使用するには、ユーザーが拡張機能をダウンロードしてログインしている必要があります。 管理者またはユーザーに必要なその他の構成はありません。 
 
-このオプションの構成方法などの詳細については、[MyApps Browser 拡張機能](../user-help/my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension)のドキュメントを参照してください。
+このオプションの構成方法などの詳細については、[MyApps Browser 拡張機能](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510#download-and-install-the-my-apps-secure-sign-in-extension)のドキュメントを参照してください。
 
 > [!NOTE]
 > MyApps ブラウザー拡張機能では、ワイルドカード URL のリンク変換はサポートされていません。

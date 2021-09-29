@@ -8,12 +8,12 @@ ms.service: azure-sentinel
 ms.topic: reference
 ms.date: 08/12/2021
 ms.author: bagol
-ms.openlocfilehash: d3f727b251c13bdc52de793919d85e984d8b78f2
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 8cbd8861e7dc01e8615225dd88960b581fd4c2f4
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123260995"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124755083"
 ---
 # <a name="find-your-azure-sentinel-data-connector"></a>Azure Sentinel データ コネクタを見つける
 
@@ -72,7 +72,7 @@ ms.locfileid: "123260995"
 > [!IMPORTANT]
 > この手順を実行する場合は、データ コネクタをデプロイする前に実行してください。
 >
-Agari 関数アプリを使用すると、セキュリティ グラフ API を介して Azure Sentinel と脅威インテリジェンスを共有できます。 この機能を使用するには、[Sentinel 脅威インテリジェンス プラットフォーム コネクタ](connect-threat-intelligence.md)を有効にし、Azure Active Directory で[アプリケーションを登録する](/graph/auth-register-app-v2)必要があります。
+Agari 関数アプリを使用すると、セキュリティ グラフ API を介して Azure Sentinel と脅威インテリジェンスを共有できます。 この機能を使用するには、[Sentinel 脅威インテリジェンス プラットフォーム コネクタ](./connect-threat-intelligence-tip.md)を有効にし、Azure Active Directory で[アプリケーションを登録する](/graph/auth-register-app-v2)必要があります。
 
 このプロセスでは、[関数アプリをデプロイ](connect-azure-functions-template.md)するときに使用する 3 つの情報 (**Graph テナント ID**、**Graph クライアント ID**、**Graph クライアント シークレット**) が提供されます (上の表の「*アプリケーション設定*」を参照してください)。
 
@@ -163,7 +163,6 @@ Vectra インターフェイスから、[設定] > [通知] の順に移動し�
 | --- | --- |
 | **データ インジェスト方法** | [**Log Analytics エージェント - カスタム ログ**](connect-custom-logs.md) <br><br>[Alsid の追加構成](#extra-configuration-for-alsid)|
 | **Log Analytics テーブル** | AlsidForADLog_CL |
-| **カスタム ログのサンプル ファイル:** | https://github.com/Azure/azure-quickstart-templates/blob/master/alsid-syslog-proxy/logs/AlsidForAD.log |
 | **Kusto 関数エイリアス:** | afad_parser |
 | **Kusto 関数 URL:** | https://aka.ms/sentinel-alsidforad-parser |
 | **サポートしているもの** | [Alsid](https://www.alsid.com/contact-us/) |
@@ -1109,7 +1108,7 @@ end
 | **Log Analytics テーブル** | Okta_CL |
 | **Azure 関数アプリのコード** | https://aka.ms/sentineloktaazurefunctioncodev2 |
 | **API 資格情報** | <li>API トークン |
-| **ベンダーのドキュメント/<br>インストール手順** | <li>[Okta システム ログ API のドキュメント](https://developer.okta.com/docs/reference/api/system-log/)<li>[API トークンを作成する](https://developer.okta.com/docs/guides/create-an-api-token/create-the-token/)<li>[Okta SSO を Azure Sentinel に接続する](connect-okta-single-sign-on.md) |
+| **ベンダーのドキュメント/<br>インストール手順** | <li>[Okta システム ログ API のドキュメント](https://developer.okta.com/docs/reference/api/system-log/)<li>[API トークンを作成する](https://developer.okta.com/docs/guides/create-an-api-token/create-the-token/)<li>[Okta SSO を Azure Sentinel に接続する](#okta-single-sign-on-preview) |
 | **コネクタのデプロイ手順** | <li>Azure Resource Manager (ARM) テンプレートを使用した[ワンクリック デプロイ](connect-azure-functions-template.md?tabs=ARM)<li>[手動による展開](connect-azure-functions-template.md?tabs=MPS) |
 | **アプリケーションの設定** | <li>apiToken<li>workspaceID<li>workspaceKey<li>uri (次のスキーマに従います: `https://<OktaDomain>/api/v1/logs?since=`。 [ドメインの名前空間を識別します](https://developer.okta.com/docs/reference/api-overview/#url-namespace)。) <li>logAnalyticsUri (省略可能) |
 | **サポートしているもの** | Microsoft |
@@ -1610,7 +1609,7 @@ Log Analytics エージェントへのログ転送を設定するには、Onapsi
 
 Zimperium Mobile Threat Defense データ コネクタでは、Zimperium の脅威ログを Azure Sentinel に接続して、ダッシュボードを表示し、カスタム アラートを作成し、調査を向上させることができます。 このコネクタにより、組織のモバイル脅威のランドスケープに関するより詳細な分析情報が提供され、セキュリティ運用機能が向上します。 詳細については、を参照してください。
 
-Azure Sentinel への接続の詳細については、[Azure Sentinel への Zimperium の接続](connect-zimperium-mtd.md)に関するページを参照してください。
+Azure Sentinel への接続の詳細については、[Azure Sentinel への Zimperium の接続](#zimperium-mobile-thread-defense-preview)に関するページを参照してください。
 
 | コネクタ属性 | 説明 |
 | --- | --- |

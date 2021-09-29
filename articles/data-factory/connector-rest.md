@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/30/2021
+ms.date: 09/09/2021
 ms.author: makromer
-ms.openlocfilehash: 16bb4ac7062c39ad57becce4d5280ed227160690
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: dc9aec86e01655087a64c3ac0a494d448889f857
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123311573"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124733074"
 ---
 # <a name="copy-and-transform-data-from-and-to-a-rest-endpoint-by-using-azure-data-factory"></a>Azure Data Factory を使用して REST エンドポイントとの間でデータをコピーおよび変換する
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -57,7 +57,7 @@ REST ソースから、サポートされている任意のシンク データ �
 
     # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
 
-    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI を使用した新しいリンク サービスの作成を示すスクリーンショット。":::
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI で新しいリンク サービスを作成するスクリーンショット。":::
 
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
@@ -193,7 +193,7 @@ REST のリンクされたサービスでは、次のプロパティがサポー
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | aadResourceId | 承認を要求しようとしている AAD リソースを指定します。例: `https://management.core.windows.net`。| はい |
-| 資格情報 | 資格情報オブジェクトとしてユーザー割り当てマネージド ID を指定します。 | はい |
+| 資格情報 | ユーザー割り当てマネージド ID を資格情報オブジェクトとして指定します。 | はい |
 
 
 **例**
@@ -465,7 +465,7 @@ REST は、統合データセットとインライン データセットの両�
 
 削除、挿入、更新、アップサートの各メソッドと、CRUD 操作のために REST シンクに送信する相対行データを設定できます。
 
-![データ フロー REST シンク](media/data-flow/data-flow-sink.png)
+:::image type="content" source="media/data-flow/data-flow-sink.png" alt-text="データ フロー REST シンク":::
 
 ## <a name="sample-data-flow-script"></a>データ フロー スクリプトのサンプル
 
@@ -586,21 +586,21 @@ Facebook Graph API によって、次の構造で応答が返されます。こ�
 ### <a name="how-to-use-this-solution-template"></a>このソリューション テンプレートの使用方法
 
 1. **[Copy from REST or HTTP using OAuth]** (OAuth を使用して REST または HTTP からコピーする) テンプレートにアクセスします。 コピー元の接続用に新しい接続を作成します。 
-    ![新しい接続を作成する](media/solution-template-copy-from-rest-or-http-using-oauth/source-connection.png)
+    :::image type="content" source="media/solution-template-copy-from-rest-or-http-using-oauth/source-connection.png" alt-text="新しい接続を作成する":::
 
     新しいリンクされたサービス (REST) 設定の主要な手順を以下に示します。
     
      1. **[ベース URL]** で、自分のソース REST サービスの URL パラメーターを指定します。 
      2. **[認証の種類]** で *[匿名]* を選択します。
-        ![新しい REST 接続](media/solution-template-copy-from-rest-or-http-using-oauth/new-rest-connection.png)
+        :::image type="content" source="media/solution-template-copy-from-rest-or-http-using-oauth/new-rest-connection.png" alt-text="新しい REST 接続":::
 
 2. コピー先の接続用に新しい接続を作成します。  
-    ![新しい Gen2 接続](media/solution-template-copy-from-rest-or-http-using-oauth/destination-connection.png)
+    :::image type="content" source="media/solution-template-copy-from-rest-or-http-using-oauth/destination-connection.png" alt-text="新しい Gen2 接続":::
 
 3. **[このテンプレートを使用]** を選択します。
-    ![このテンプレートを使用](media/solution-template-copy-from-rest-or-http-using-oauth/use-this-template.png)
+    :::image type="content" source="media/solution-template-copy-from-rest-or-http-using-oauth/use-this-template.png" alt-text="このテンプレートを使用":::
 
-4. 次の例に示すように、作成されたパイプラインが表示されます。![テンプレートから作成されたパイプラインを示すスクリーンショット。](media/solution-template-copy-from-rest-or-http-using-oauth/pipeline.png)
+4. 次の例に示すように、作成されたパイプラインが表示されます。:::image type="content" source="media/solution-template-copy-from-rest-or-http-using-oauth/pipeline.png" alt-text="テンプレートから作成されたパイプラインを示すスクリーンショット。":::
 
 5. **[Web]** アクティビティを選択します。 **[設定]** で、対応する **[URL]** 、 **[Method]** (メソッド)、 **[Headers]** (ヘッダー)、および **[Body]** (本文) を指定して、データのコピー元となるサービスのログイン API から OAuth ベアラー トークンを取得します。 テンプレート内のプレースホルダーは、Azure Active Directory (AAD) OAuth のサンプルを示しています。 AAD 認証が REST コネクタによってネイティブにサポートされていることに注意してください。OAuth フローの一例を次に示します。 
 
@@ -611,7 +611,7 @@ Facebook Graph API によって、次の構造で応答が返されます。こ�
     | ヘッダー | [ヘッダー] はユーザー定義であり、HTTP 要求内で 1 つのヘッダー名を参照します。 | 
     | Body | HTTP 要求の本文。 | 
 
-    ![パイプライン](media/solution-template-copy-from-rest-or-http-using-oauth/web-settings.png)
+    :::image type="content" source="media/solution-template-copy-from-rest-or-http-using-oauth/web-settings.png" alt-text="パイプライン":::
 
 6. **[データのコピー]** アクティビティで *[ソース]* タブを選択すると、前の手順で取得したベアラー トークン (access_token) が、[追加ヘッダー] で **[認証]**  として [データのコピー] アクティビティに渡されることを確認できます。 パイプラインの実行を開始する前に、次のプロパティの設定を確認してください。
 
@@ -620,20 +620,20 @@ Facebook Graph API によって、次の構造で応答が返されます。こ�
     | 要求メソッド | HTTP メソッド。 使用できる値は、**Get** (既定値) と **Post** です。 | 
     | 追加ヘッダー | 追加の HTTP 要求ヘッダー。| 
 
-   ![コピー元の認証](media/solution-template-copy-from-rest-or-http-using-oauth/copy-data-settings.png)
+   :::image type="content" source="media/solution-template-copy-from-rest-or-http-using-oauth/copy-data-settings.png" alt-text="コピー元の認証":::
 
 7. **[デバッグ]** を選択し、 **[パラメーター]** で入力し、 **[完了]** を選択します。
-   ![パイプラインの実行](media/solution-template-copy-from-rest-or-http-using-oauth/pipeline-run.png) 
+   :::image type="content" source="media/solution-template-copy-from-rest-or-http-using-oauth/pipeline-run.png" alt-text="パイプラインの実行"::: 
 
-8. パイプラインの実行が正常に完了すると、次の例のような結果が表示されます。![パイプラインの実行結果](media/solution-template-copy-from-rest-or-http-using-oauth/run-result.png) 
+8. パイプラインの実行が正常に完了すると、次の例のような結果が表示されます。:::image type="content" source="media/solution-template-copy-from-rest-or-http-using-oauth/run-result.png" alt-text="パイプラインの実行結果"::: 
 
 9. **[アクション]** 列で WebActivity の [出力] アイコンをクリックすると、サービスによって返された access_token が表示されます。
 
-   ![トークンの出力](media/solution-template-copy-from-rest-or-http-using-oauth/token-output.png) 
+   :::image type="content" source="media/solution-template-copy-from-rest-or-http-using-oauth/token-output.png" alt-text="トークンの出力"::: 
 
 10. **アクション** 列で CopyActivity の [入力] アイコンをクリックすると、WebActivity によって取得された access_token が、認証のために CopyActivity に渡されます。 
 
-    ![トークンの入力](media/solution-template-copy-from-rest-or-http-using-oauth/token-input.png)
+    :::image type="content" source="media/solution-template-copy-from-rest-or-http-using-oauth/token-input.png" alt-text="トークンの入力":::
         
     >[!CAUTION] 
     >トークンがプレーン テキストでログに記録されないようにするには、Web アクティビティの "セキュリティで保護された出力" とコピー アクティビティの "セキュリティで保護された入力" を有効にします。

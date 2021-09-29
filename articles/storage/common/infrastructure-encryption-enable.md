@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 5c87ed5222b5bb95660b6e63e259a2b5e14b7b47
-ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
+ms.openlocfilehash: c4dca05b855666a04d1def09228c596eb931bbf5
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2021
-ms.locfileid: "111372676"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128607009"
 ---
 # <a name="enable-infrastructure-encryption-for-double-encryption-of-data"></a>データの二重暗号化のためのインフラストラクチャ暗号化を有効にする
 
@@ -142,7 +142,6 @@ az storage account show /
 ---
 
 Azure Policy には、ストレージ アカウントに対してインフラストラクチャの暗号化を有効にすることを要求する組み込みポリシーが用意されています。 詳細については、[「Azure Policy の組み込みポリシー定義」](../../governance/policy/samples/built-in-policies.md#storage)の「**ストレージ**」セクションを参照してください。
-
 
 ## <a name="create-an-encryption-scope-with-infrastructure-encryption-enabled"></a>インフラストラクチャ暗号化を有効にして暗号化スコープを作成する
 

@@ -8,12 +8,13 @@ ms.author: bobazile
 ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 6f843b8ab2e19231dbf0507fd666a08c999cb094
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.subservice: pstn
+ms.openlocfilehash: 66e39f0ec9beea775c18f0c1619cc8517e9b80a8
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123251192"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128609652"
 ---
 # <a name="telephony-concepts"></a>テレフォニーの概念
 

@@ -6,13 +6,14 @@ ms.author: palatter
 ms.date: 06/30/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
+ms.subservice: teams-interop
 zone_pivot_groups: acs-plat-ios-android
-ms.openlocfilehash: fef3c256cbebb14582499aac66e0f66c500af522
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: e9d87bc1b6c4fdc21d4f8c1812386fa7d4ad9500
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123251095"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128609481"
 ---
 # <a name="use-the-communication-services-teams-embed-library"></a>Communication Services Teams Embed ライブラリの使用
 

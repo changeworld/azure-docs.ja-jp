@@ -8,12 +8,12 @@ ms.date: 6/1/2021
 ms.topic: conceptual
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 00bc85b06bd734a075ff9a9ca2baf3fe58e95623
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: c5779f827177907d3bf3378fde8a35157723b5f8
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122253630"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128631117"
 ---
 # <a name="about-the-query-language-for-azure-digital-twins"></a>Azure Digital Twins 用のクエリ言語について
 
@@ -43,7 +43,7 @@ Azure Digital Twins のクエリを作成する場合は、次の考慮事項に
 
   :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="EscapedSingleQuote":::
 
-* **待機時間を想定する**: グラフのデータを変更してからそれがクエリに反映されるまで、最大 10 秒の待機時間が発生する場合があります。 [GetDigitalTwin API](how-to-manage-twin.md#get-data-for-a-digital-twin) ではこの待機時間が発生しないので、即時の応答が必要な場合は、クエリを実行する代わりにこの API の呼び出しを使用して、変更が即座に反映されるようにしてください。
+[!INCLUDE [digital-twins-query-latency-note.md](../../includes/digital-twins-query-latency-note.md)]
 
 ## <a name="next-steps"></a>次のステップ
 

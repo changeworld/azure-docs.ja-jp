@@ -12,12 +12,12 @@ ms.date: 08/31/2021
 ms.author: davidmu
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: babc9da622fdca1365d5b963191775881ad992e8
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 94c3280731f40839f462632fedaa30ebc916466e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123431930"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124754186"
 ---
 # <a name="configure-group-owner-consent-to-apps-accessing-group-data"></a>グループ データにアクセスするアプリに対するグループ所有者の同意を構成する
 
@@ -29,7 +29,7 @@ ms.locfileid: "123431930"
 
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - グローバル管理者ロール。
-- Azure AD PowerShell を設定します。 [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/) に関するページを参照してください。
+- Azure AD PowerShell を設定します。 [Azure AD PowerShell](/powershell/azure/) に関するページを参照してください。
 
 ## <a name="manage-group-owner-consent-to-apps"></a>アプリに対するグループ所有者の同意を管理する
 

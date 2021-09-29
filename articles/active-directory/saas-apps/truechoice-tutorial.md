@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/27/2021
 ms.author: jeedes
-ms.openlocfilehash: 98e6290041573adb4dba0dced5268caacae47017
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 42bee8e95d21c0cf11112b1fa745b6acef79875c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108162809"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124765047"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-truechoice"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と TrueChoice の統合
 
@@ -136,7 +136,7 @@ TrueChoice に対して Azure AD SSO を構成してテストするには、次�
 
 * TrueChoice のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [TrueChoice] タイルをクリックすると、TrueChoice サインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [TrueChoice] タイルをクリックすると、TrueChoice サインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ

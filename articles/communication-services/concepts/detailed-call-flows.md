@@ -8,12 +8,13 @@ ms.author: nmurav
 ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 332af91806da4514aad9ccc320a5498539682879
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.subservice: calling
+ms.openlocfilehash: 064586d0fadac917359a7de70145a10ab6e2cb45
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123252240"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128672041"
 ---
 # <a name="call-flow-topologies"></a>通話フローのトポロジ
 この記事では、Azure Communication Services における通話フローのトポロジについて説明します。 この記事は、管理下のネットワーク内に Communication Services を統合することを検討しているエンタープライズのお客様にぜひお勧めします。 Communication Services における通話フローの概要については、[通話フローの概念に関するドキュメント](./call-flows.md)を参照してください。

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2020
-ms.openlocfilehash: 5aca623f9292a1e34eacd209b204436dc7fbdcea
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: c0cb4d4c1c9d37c7b449dd3e6d3c07ec2bd2476d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123220837"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124737394"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure の Office 365 管理ソリューション (プレビュー)
 
@@ -18,7 +18,7 @@ ms.locfileid: "123220837"
 
 > [!IMPORTANT]
 > ## <a name="solution-update"></a>ソリューションの更新
-> このソリューションは、[Azure Sentinel](../../sentinel/overview.md) の [Office 365](../../sentinel/connect-office-365.md) 一般公開ソリューション、および [Azure AD レポートおよび監視ソリューション](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md)に置き換えられました。 これらのソリューションにより、以前の Azure Monitor Office 365 ソリューションの更新バージョンが提供され、構成操作が向上しました。 2020 年 10 月 31 日までは、既存のソリューションを引き続きご利用いただけます。
+> このソリューションは、[Azure Sentinel](../../sentinel/overview.md) の [Office 365](../../sentinel/data-connectors-reference.md#microsoft-office-365) 一般公開ソリューション、および [Azure AD レポートおよび監視ソリューション](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md)に置き換えられました。 これらのソリューションにより、以前の Azure Monitor Office 365 ソリューションの更新バージョンが提供され、構成操作が向上しました。 2020 年 10 月 31 日までは、既存のソリューションを引き続きご利用いただけます。
 > 
 > Azure Sentinel は、ログを取り込み、検出、調査、検出、機械学習による分析情報を含む追加の SIEM 機能を提供するクラウド ネイティブのセキュリティ情報およびイベント管理ソリューションです。 Azure Sentinel を使用することで、Office 365 SharePoint アクティビティと Exchange 管理ログの取り込みが提供されるようになりました。
 > 
@@ -91,10 +91,10 @@ ms.locfileid: "123220837"
 > ### <a name="q-how-i-can-use-the-azure-sentinel-out-of-the-box-security-oriented-content"></a>Q:組み込みの Azure Sentinel のセキュリティ指向コンテンツを使用するにはどうすればよいですか。
 > Azure Sentinel は、Office 365 および Azure AD ログに基づいた、組み込みのセキュリティ指向のダッシュボード、カスタム アラート クエリ、検索クエリ、調査、および自動応答機能を提供します。 詳細については、Azure Sentinel GitHub とチュートリアルを参照してください。
 >
-> - [難しい設定なしで脅威を検出する](/azure/sentinel/detect-threats-built-in)
-> - [疑わしい脅威を検出するカスタム分析ルールを作成する](/azure/sentinel/detect-threats-custom)
-> - [データを監視する](/azure/sentinel/monitor-your-data)
-> - [Azure Sentinel でインシデントを調査します](/azure/sentinel/investigate-cases)
+> - [難しい設定なしで脅威を検出する](../../sentinel/detect-threats-built-in.md)
+> - [疑わしい脅威を検出するカスタム分析ルールを作成する](../../sentinel/detect-threats-custom.md)
+> - [データを監視する](../../sentinel/monitor-your-data.md)
+> - [Azure Sentinel でインシデントを調査します](../../sentinel/investigate-cases.md)
 > - [Azure Sentinel で脅威への自動対応を設定します](../../sentinel/tutorial-respond-threats-playbook.md)
 > - [Azure Sentinel GitHub コミュニティ](https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks)
 > 

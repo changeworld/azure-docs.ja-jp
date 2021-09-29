@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: how-to
-ms.date: 05/14/2021
+ms.date: 09/07/2021
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60517714e0aa19a2cf465c22c6511b0c89648942
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: bf1fbd4d57b3daa073d506fbaf371b379030a810
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110792445"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124776464"
 ---
 # <a name="assign-custom-roles-with-resource-scope-using-powershell-in-azure-active-directory"></a>Azure Active Directory で PowerShell を使用してリソース スコープのカスタム ロールを割り当てる
 
@@ -29,7 +29,7 @@ Azure AD ロールの詳細については、「[Azure AD の組み込みロー�
 ## <a name="prerequisites"></a>前提条件
 
 - Azure AD Premium P1 または P2 ライセンス
-- 特権ロール管理者または全体管理者
+- 特権ロール管理者またはグローバル管理者
 - PowerShell を使用する場合の AzureADPreview モジュール
 
 詳細については、[PowerShell または Graph エクスプローラーを使用するための前提条件](prerequisites.md)に関するページを参照してください。
@@ -48,10 +48,10 @@ $roleDefinition = Get-AzureADMSRoleDefinition -Filter "displayName eq 'Applicati
 
 # Get app registration and construct resource scope for assignment.
 $appRegistration = Get-AzureADApplication -Filter "displayName eq 'f/128 Filter Photos'"
-$resourceScope = '/' + $appRegistration.objectId
+$directoryScope = '/' + $appRegistration.objectId
 
 # Create a scoped role assignment
-$roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -RoleDefinitionId $roleDefinition.Id -PrincipalId $user.objectId
+$roleAssignment = New-AzureADMSRoleAssignment -DirectoryScopeId $directoryScope -RoleDefinitionId $roleDefinition.Id -PrincipalId $user.objectId
 ```
 
 ユーザーではなくサービス プリンシパルにロールを割り当てるには、[Get-AzureADMSServicePrincipal](/powershell/module/azuread/get-azureadserviceprincipal) コマンドレットを使用します。
@@ -122,10 +122,10 @@ $roleDefinition = Get-AzureADMSRoleDefinition -Filter "displayName eq 'Applicati
 
 # Get app registration and construct resource scope for assignment.
 $appRegistration = Get-AzureADApplication -Filter "displayName eq 'f/128 Filter Photos'"
-$resourceScope = '/' + $appRegistration.objectId
+$directoryScope = '/' + $appRegistration.objectId
 
 # Create a scoped role assignment
-$roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -RoleDefinitionId $roleDefinition.Id -PrincipalId $user.objectId
+$roleAssignment = New-AzureADMSRoleAssignment -DirectoryScopeId $directoryScope -RoleDefinitionId $roleDefinition.Id -PrincipalId $user.objectId
 ```
 
 ### <a name="read-and-list-role-assignments"></a>ロールの割り当てを読み取るおよび一覧表示する

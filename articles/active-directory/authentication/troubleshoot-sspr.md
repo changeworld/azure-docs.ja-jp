@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ff19142255b168dc0c0d3b422752c0610a3ddd1
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 5451c8b5211fec91872b05eba5c30d9622f51dc9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123538581"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124787303"
 ---
 # <a name="troubleshoot-self-service-password-reset-in-azure-active-directory"></a>Azure Active Directory でセルフサービス パスワード リセットをトラブルシューティングする
 
@@ -121,7 +121,7 @@ Azure portal で、 **[セルフサービス パスワード リセットが有�
 
 | エラー | 詳細 | 技術的な詳細 |
 | --- | --- | --- |
-| TenantSSPRFlagDisabled = 9 | 申し訳ありません。管理者が組織でのパスワードのリセットを無効にしているため、現時点ではパスワードをリセットできません。 この状況を解決するためにご自分で行える処理はありません。 管理者に連絡して、この機能を有効にするように依頼してください。<br /><br />詳細については、[Azure AD パスワードを忘れた場合](../user-help/active-directory-passwords-update-your-own-password.md#common-problems-and-their-solutions)に関する記事をご覧ください。 | SSPR_0009: パスワードのリセットが管理者によって有効にされていないことが検出されました。 管理者に連絡して、組織のパスワードのリセットを有効にするように依頼してください。 |
+| TenantSSPRFlagDisabled = 9 | 申し訳ありません。管理者が組織でのパスワードのリセットを無効にしているため、現時点ではパスワードをリセットできません。 この状況を解決するためにご自分で行える処理はありません。 管理者に連絡して、この機能を有効にするように依頼してください。<br /><br />詳細については、[Azure AD パスワードを忘れた場合](https://support.microsoft.com/account-billing/reset-your-work-or-school-password-using-security-info-23dde81f-08bb-4776-ba72-e6b72b9dda9e#common-problems-and-their-solutions)に関する記事をご覧ください。 | SSPR_0009: パスワードのリセットが管理者によって有効にされていないことが検出されました。 管理者に連絡して、組織のパスワードのリセットを有効にするように依頼してください。 |
 | WritebackNotEnabled = 10 |申し訳ありません。管理者が組織に必要なサービスを有効にしていないため、現時点ではパスワードをリセットできません。 この状況を解決するためにご自分で行える処理はありません。 管理者に連絡して、組織の構成を確認するように依頼してください。<br /><br />この必要なサービスの詳細については、[パスワード ライトバックの構成](./tutorial-enable-sspr-writeback.md)に関する記事をご覧ください。 | SSPR_0010: パスワード ライトバックが有効になっていないことが検出されました。 管理者に連絡して、パスワード ライトバックを有効にするように依頼してください。 |
 | SsprNotEnabledInUserPolicy = 11 | 申し訳ありません。管理者が組織のパスワード リセットを構成していないため、現時点ではパスワードをリセットできません。 この状況を解決するためにご自分で行える処理はありません。 管理者に連絡して、パスワードのリセットを構成するように依頼してください。<br /><br />パスワードのリセット構成の詳細については、[Azure AD のセルフサービス パスワード リセット のクイック スタート](./tutorial-enable-sspr.md)に関する記事をご覧ください。 | SSPR_0011: 組織でパスワード リセット ポリシーを定義していません。 管理者に連絡して、パスワード リセット ポリシーを定義するように依頼してください。 |
 | UserNotLicensed = 12 | 申し訳ありません。組織で必要なライセンスが不足しているため、現時点ではパスワードをリセットできません。 この状況を解決するためにご自分で行える処理はありません。 管理者に連絡して、ご自分のライセンスの割り当てを確認するように依頼してください。<br /><br />ライセンスの詳細については、「[Azure AD のセルフサービス パスワード リセットのライセンス要件](./concept-sspr-licensing.md)」をご覧ください。 | SSPR_0012: 組織には、パスワードのリセットを実行するために必要なライセンスがありません。 管理者に連絡して、ライセンスの割り当てを見直すように依頼してください。 |

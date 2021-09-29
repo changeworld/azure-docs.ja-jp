@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/11/2021
 ms.author: jeedes
-ms.openlocfilehash: cc99e8504ad929a0b04da0d5490eff601afeb2ba
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: 00f5401ec80739c31ed16875d537ae2b48a5e730
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112063254"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124753450"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-encompass"></a>チュートリアル: Azure Active Directory と Encompass の統合
 
@@ -131,7 +131,7 @@ Encompass に対して Azure AD SSO を構成してテストするには、次�
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した Encompass に自動的にサインインされます。
 
-* Microsoft マイ アプリを使用することができます。 マイアプリ上で [Encompass] タイルをクリックすると、SSO を設定した Encompass に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイアプリ上で [Encompass] タイルをクリックすると、SSO を設定した Encompass に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

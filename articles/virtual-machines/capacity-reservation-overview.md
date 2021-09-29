@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/09/2021
 ms.reviewer: cynthn, jushiman
 ms.custom: template-how-to
-ms.openlocfilehash: ee14ea525575a49abd4e4026201c3fa39ffa84b9
-ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+ms.openlocfilehash: fe50e8db24f0f280365e435d8a205e9b45ac6ccb
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123273299"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124774522"
 ---
 # <a name="on-demand-capacity-reservation-preview"></a>オンデマンドの容量予約 (プレビュー)
 
@@ -137,7 +137,7 @@ Azure によって予約要求が受け入れられると、一致する構成�
 
 予約が作成されると、Azure によって、指定した場所に要求した数の容量インスタンスが確保されます。 
 
-![容量予約の図 1。](\media\capacity-reservation-overview\capacity-reservation-1.jpg) 
+![容量予約の図 1。](./media/capacity-reservation-overview/capacity-reservation-1.jpg) 
 
 予約全体の状態を追跡するには、次のプロパティが使用されます。  
 - `capacity` = お客様によって予約されたインスタンスの合計数 
@@ -148,7 +148,7 @@ Azure によって予約要求が受け入れられると、一致する構成�
 
 その後、VM が容量予約に対して割り当てられると、予約容量インスタンスの 1 つが論理的に消費されます。 
 
-![容量予約の図 2。](\media\capacity-reservation-overview\capacity-reservation-2.jpg) 
+![容量予約の図 2。](./media/capacity-reservation-overview/capacity-reservation-2.jpg) 
 
 容量予約の状態は、`capacity` が 2 で、`virutalMachinesAllocated` と `virtualMachinesAssociated` の長さは 1 と表示されるようになります。  
 
@@ -156,23 +156,23 @@ VM のプロパティが一致し、空の容量インスタンスが少なく�
 
 この例で、3 番目の VM が容量予約に割り当てられると、その予約は[過剰割り当て](capacity-reservation-overallocate.md)状態になります。 この 3 番目の VM には、未使用のクォータと、Azure からの追加容量の充当が必要です。 3 番目の VM が割り当てられると、容量予約は次のようになります。 
 
-![容量予約の図 3。](\media\capacity-reservation-overview\capacity-reservation-3.jpg) 
+![容量予約の図 3。](./media/capacity-reservation-overview/capacity-reservation-3.jpg) 
 
 `capacity` は 2 で、`virutalMachinesAllocated` と `virtualMachinesAssociated` の長さは 3 です。 
 
 ここで、アプリケーションが最小限 2 つの VM にスケールダウンするとします。 VM 0 には更新が必要なため、割り当て解除の対象に選択されます。 予約は、次の状態に自動的に移ります。 
 
-![容量予約の図 4。](\media\capacity-reservation-overview\capacity-reservation-4.jpg) 
+![容量予約の図 4。](./media/capacity-reservation-overview/capacity-reservation-4.jpg) 
 
 `capacity` と `virtualMachinesAllocated` の長さは両方とも 2 です。 ただし、VM 0 は割り当てを解除されましたが、依然として容量予約に関連付けられているため、`virtualMachinesAssociated` の長さはまだ 3 です。  
 
 容量予約は、明示的に削除されるまで存在します。 容量予約を削除するには、最初に、`virtualMachinesAssociated` プロパティに含まれるすべての VM の関連付けを解除します。 関連付けの解除が完了すると、容量予約は次のようになります。 
 
-![容量予約の図 5。](\media\capacity-reservation-overview\capacity-reservation-5.jpg) 
+![容量予約の図 5。](./media/capacity-reservation-overview/capacity-reservation-5.jpg) 
 
 容量予約の状態は、`capacity` が 2 で、`virtualMachinesAssociated` と `virtualMachinesAllocated` の長さは 0 と表示されるようになります。 この状態からであれば、容量予約を削除できます。 削除が済むと、予約に対して課金されなくなります。  
 
-![容量予約の図 6。](\media\capacity-reservation-overview\capacity-reservation-6.jpg)
+![容量予約の図 6。](./media/capacity-reservation-overview/capacity-reservation-6.jpg)
 
 
 ## <a name="usage-and-billing"></a>使用量と課金 
@@ -183,13 +183,13 @@ VM のプロパティが一致し、空の容量インスタンスが少なく�
 
 たとえば、予約数量 2 で容量予約が作成されているとします。 サブスクリプションは、同じサイズの 1 つの一致する予約 VM インスタンスにアクセスできます。 その結果、容量予約には 2 つの使用ストリームがあり、そのうちの 1 つは予約インスタンスによってカバーされます。 
 
-![容量予約の図 7。](\media\capacity-reservation-overview\capacity-reservation-7.jpg)
+![容量予約の図 7。](./media/capacity-reservation-overview/capacity-reservation-7.jpg)
 
 上の図で、予約 VM インスタンスの割引が未使用のインスタンスの 1 つに適用され、そのインスタンスのコストはゼロになります。他のインスタンスについては、予約されている VM サイズに対する PAYG 料金が課金されます。  
 
 1 つの VM が容量予約に割り当てられたら、他の VM のディスク、ネットワーク、拡張機能、その他の要求されたコンポーネントなどのコンポーネントも、割り当てられる必要があります。 この状態では、VM の使用量には 1 つの割り当て済み VM と 1 つの未使用の容量インスタンスが反映されます。 予約 VM インスタンスにより、VM または未使用の容量インスタンスのいずれかのコストがゼロになります。 割り当て済み VM に関連付けられているディスク、ネットワーク、その他のコンポーネントに対するその他の料金も、請求書に表示されます。 
 
-![容量予約の図 8。](\media\capacity-reservation-overview\capacity-reservation-8.jpg)
+![容量予約の図 8。](./media/capacity-reservation-overview/capacity-reservation-8.jpg)
 
 上の図で、VM 予約インスタンスの割引は VM 0 に適用されており、そのディスクやネットワークなどの他のコンポーネントに対してのみ課金されます。 他の未使用のインスタンスは、予約済みの VM サイズの PAYG 料金で課金されます。
 

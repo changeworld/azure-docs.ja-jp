@@ -2,14 +2,14 @@
 title: PowerShell で Azure Service Bus リソースを管理する | Microsoft ドキュメント
 description: この記事では Azure PowerShell モジュールを使用して、Service Bus のエンティティ (名前空間、キュー、トピック、サブスクリプション) を作成および管理する方法について説明します。
 ms.topic: article
-ms.date: 06/23/2020
+ms.date: 09/20/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d2f8b1252e75a2c0aa1a44b8b7aaae5389aa8fa3
-ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
+ms.openlocfilehash: 41fe10c13c77871845cadf93890768064f6dc143
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2021
-ms.locfileid: "112379854"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128627978"
 ---
 # <a name="use-powershell-to-manage-service-bus-resources"></a>PowerShell モジュールで Service Bus リソースを管理する
 

@@ -2,18 +2,18 @@
 title: チュートリアル - Azure API Management で発行された API を監視する | Microsoft Docs
 description: このチュートリアルの手順に従い、メトリック、アラート、アクティビティ ログ、リソース ログを使用して Azure API Management で API を監視する方法を学びます。
 services: api-management
-author: vladvino
+author: dlepow
 ms.service: api-management
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 10/14/2020
-ms.author: apimpm
-ms.openlocfilehash: f70a43efd0b56f76ee4b68e8fede3ce4e255063d
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.author: danlep
+ms.openlocfilehash: 378fa83925808b1c9551522cfe4c47665095cd17
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110466026"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128642075"
 ---
 # <a name="tutorial-monitor-published-apis"></a>チュートリアル:発行された API を監視する
 

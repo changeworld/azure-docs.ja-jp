@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 19e40d135316c1c7cd270d2804fff1f487937685
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4b48fa334aedce144e274b8155edda3cc7b08b9a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96858537"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124739940"
 ---
 # <a name="plan-and-troubleshoot-user-principal-name-changes-in-azure-active-directory"></a>Azure Active Directory でのユーザー プリンシパル名の変更の計画とトラブルシューティング
 
@@ -168,9 +168,9 @@ Windows Hello for Business が使用されている場合、ユーザーは[再�
 
 ## <a name="microsoft-authenticator-known-issues-and-workarounds"></a>Microsoft Authenticator に関する既知の問題と回避策
 
-組織では、組織のアプリケーションやデータへのサインインとアクセスに、[Microsoft Authenticator アプリ](../user-help/user-help-auth-app-overview.md)の使用が要求されている場合があります。 アプリにユーザー名が表示される場合でも、ユーザーが登録プロセスを完了するまで、アカウントは検証方法として機能するように設定されません。
+組織では、組織のアプリケーションやデータへのサインインとアクセスに、[Microsoft Authenticator アプリ](https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc)の使用が要求されている場合があります。 アプリにユーザー名が表示される場合でも、ユーザーが登録プロセスを完了するまで、アカウントは検証方法として機能するように設定されません。
 
-[Microsoft Authenticator アプリ](../user-help/user-help-auth-app-overview.md)には、次の 4 つの主要な機能があります。
+[Microsoft Authenticator アプリ](https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc)には、次の 4 つの主要な機能があります。
 
 * プッシュ通知または確認コードを使用した多要素認証
 
@@ -186,7 +186,7 @@ Microsoft Authenticator アプリには、帯域外検証オプションが用�
 
 **既知の問題** 
 
-ユーザーの UPN を変更すると、ユーザー アカウントに古い UPN が引き続き表示され、通知が受信されない可能性があります。 [検証コード](../user-help/user-help-auth-app-faq.md)は引き続き機能します。
+ユーザーの UPN を変更すると、ユーザー アカウントに古い UPN が引き続き表示され、通知が受信されない可能性があります。 [検証コード](https://support.microsoft.com/account-billing/common-problems-with-the-microsoft-authenticator-app-12d283d1-bcef-4875-9ae5-ac360e2945dd)は引き続き機能します。
 
 **回避策**
 

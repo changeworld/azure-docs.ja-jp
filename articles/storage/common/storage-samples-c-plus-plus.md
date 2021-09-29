@@ -1,18 +1,18 @@
 ---
 title: C++ を使用した Azure Storage サンプル | Microsoft Docs
 description: Azure Storage のサンプル コードとアプリケーションを表示、ダウンロード、実行します。 C++ のストレージ クライアント ライブラリを使用して、BLOB、キュー、テーブル、ファイルのサンプルの概要について説明します。
-author: twooley
-ms.author: twooley
+author: normesta
+ms.author: normesta
 ms.date: 10/01/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: d82b31cde0e8df5db2d073abcec8ea44f13bd0f0
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 46f34dfc6a841bf465aed527907ee81e8fb56e22
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106276673"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128633718"
 ---
 # <a name="azure-storage-samples-using-v12-c-client-libraries"></a>v12 C++ クライアント ライブラリを使用した Azure Storage サンプル
 
@@ -132,9 +132,9 @@ ms.locfileid: "106276673"
 
 完全な C++ サンプル ライブラリをご覧いただくには、次のページにアクセスしてください。
 
-* [Azure BLOB のコード サンプル](https://github.com/Azure/azure-sdk-for-cpp/tree/master/sdk/storage/azure-storage-blobs/sample)
-* [Azure Data Lake のコード サンプル](https://github.com/Azure/azure-sdk-for-cpp/tree/master/sdk/storage/azure-storage-files-datalake/sample)
-* [Azure Files のコード サンプル](https://github.com/Azure/azure-sdk-for-cpp/tree/master/sdk/storage/azure-storage-files-shares/sample)
+- [Azure BLOB のコード サンプル](https://github.com/Azure/azure-sdk-for-cpp/tree/master/sdk/storage/azure-storage-blobs/sample)
+- [Azure Data Lake のコード サンプル](https://github.com/Azure/azure-sdk-for-cpp/tree/master/sdk/storage/azure-storage-files-datalake/sample)
+- [Azure Files のコード サンプル](https://github.com/Azure/azure-sdk-for-cpp/tree/master/sdk/storage/azure-storage-files-shares/sample)
 
 各ライブラリの GitHub リポジトリを参照してクローンすることができます。
 
@@ -142,14 +142,14 @@ ms.locfileid: "106276673"
 
 Azure Storage ライブラリのインストール方法と概要については、以下のガイドをご覧ください。
 
-* [クイック スタート: Azure Blob Storage ライブラリ v12 - C++](../blobs/quickstart-blobs-c-plus-plus.md)
+- [クイック スタート: Azure Blob Storage ライブラリ v12 - C++](../blobs/quickstart-blobs-c-plus-plus.md)
 
 ## <a name="next-steps"></a>次のステップ
 
 他の言語のサンプルについては、以下のページをご覧ください。
 
-* .NET:[.NET を使用した Azure Storage サンプル](storage-samples-dotnet.md)
-* Java:[Java を使用した Azure Storage サンプル](storage-samples-java.md)
-* Python: [Python を使用した Azure Storage サンプル](storage-samples-python.md)
-* JavaScript/Node.js: [JavaScript を使用した Azure Storage サンプル](storage-samples-javascript.md)
-* その他すべての言語: [Azure Storage のサンプル](storage-samples.md)
+- .NET:[.NET を使用した Azure Storage サンプル](storage-samples-dotnet.md)
+- Java:[Java を使用した Azure Storage サンプル](storage-samples-java.md)
+- Python: [Python を使用した Azure Storage サンプル](storage-samples-python.md)
+- JavaScript/Node.js: [JavaScript を使用した Azure Storage サンプル](storage-samples-javascript.md)
+- その他すべての言語: [Azure Storage のサンプル](storage-samples.md)

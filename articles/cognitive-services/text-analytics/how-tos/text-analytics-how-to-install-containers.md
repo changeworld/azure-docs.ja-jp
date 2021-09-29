@@ -9,15 +9,15 @@ ms.custom: seodec18, cog-serv-seo-aug-2020, devx-track-azurecli
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 07/21/2021
+ms.date: 09/21/2021
 ms.author: aahi
 keywords: オンプレミス, Docker, コンテナー, 感情分析, 自然言語処理
-ms.openlocfilehash: 82e247d51351417a987205b2c65ea26be737ec5c
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 4cf8ddce1045209f6d5e45a2eaccbbf4d2f03afc
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114473424"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128677569"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Text Analytics コンテナーをインストールして実行する
 

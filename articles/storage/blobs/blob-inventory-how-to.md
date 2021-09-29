@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.author: normesta
 ms.reviewer: klaasl
 ms.subservice: blobs
-ms.openlocfilehash: e7b92b2b9c4885e09bc2a700fbf3a8f1a37dbfa4
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.openlocfilehash: 67bd943028ba321aa4fa3a5acca30e80cfc36a32
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122272264"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128615569"
 ---
 # <a name="enable-azure-storage-blob-inventory-reports"></a>Azure Storage BLOB のインベントリ レポートを有効にする
 
-Azure Storage BLOB インベントリ機能により、ストレージ アカウント内のご自身のコンテナー、BLOB、スナップショット、BLOB バージョンの概要が提供されます。 インベントリ レポートを使用すると、ご自身の合計データ サイズ、経過日数、暗号化の状態、不変ポリシー、訴訟ホールドなど、BLOB とコンテナーのさまざまな属性を把握できます。 このレポートには、ビジネス要件とコンプライアンス要件に関するデータの概要が示されます。 
+Azure Storage BLOB インベントリ機能により、ストレージ アカウント内のご自身のコンテナー、BLOB、スナップショット、BLOB バージョンの概要が提供されます。 インベントリ レポートを使用すると、ご自身の合計データ サイズ、経過日数、暗号化の状態、不変ポリシー、訴訟ホールドなど、BLOB とコンテナーのさまざまな属性を把握できます。 このレポートには、ビジネス要件とコンプライアンス要件に関するデータの概要が示されます。
 
 BLOB インベントリ レポートの詳細については、[Azure Storage BLOB インベントリ](blob-inventory.md)に関するページをご覧ください。
 
@@ -44,7 +44,7 @@ BLOB インベントリ レポートを有効にするには、1 つ以上のル
 
 7. **[Object type to inventory]\(インベントリのオブジェクトの種類\)** で、BLOB とコンテナーのどちらのレポートを作成するかを選択します。
 
-   **[BLOB]** を選択した場合は、 **[Blob subtype]\(BLOB のサブタイプ\)** の下で、レポートに含める BLOB の種類と、BLOB バージョンまたはスナップショット、あるいはその両方をインベントリ レポートに含めるかを選択します。 
+   **[BLOB]** を選択した場合は、 **[Blob subtype]\(BLOB のサブタイプ\)** の下で、レポートに含める BLOB の種類と、BLOB バージョンまたはスナップショット、あるいはその両方をインベントリ レポートに含めるかを選択します。
 
    > [!NOTE]
    > これらのオプションを有効にして新しいルールを保存するには、それぞれバージョンとスナップショットがアカウントで有効になっている必要があります。
@@ -91,30 +91,30 @@ Azure PowerShell モジュールを使用して、静的な Web サイトのホ�
    $ctx = $storageAccount.Context
    ```
 
-   * `<resource-group-name>` プレースホルダーの値を、リソース グループの名前に置き換えます。
+   - `<resource-group-name>` プレースホルダーの値を、リソース グループの名前に置き換えます。
 
-   * `<storage-account-name>` プレースホルダーの値は、実際のストレージ アカウントの名前に置き換えます。
+   - `<storage-account-name>` プレースホルダーの値は、実際のストレージ アカウントの名前に置き換えます。
 
 6. [New-AzStorageBlobInventoryPolicyRule](/powershell/module/az.storage/new-azstorageblobinventorypolicyrule) コマンドを使用して、インベントリ ルールを作成します。 ルールごとにレポート フィールドが一覧表示されます。 レポート フィールドの完全な一覧については、[Azure Storage BLOB インベントリ](blob-inventory.md)に関するページをご覧ください。
 
-   ```Powershell
+   ```powershell
     $containerName = "my-container"
 
     $rule1 = New-AzStorageBlobInventoryPolicyRule -Name Test1 -Destination $containerName -Disabled -Format Csv -Schedule Daily -PrefixMatch con1,con2 `
-                -ContainerSchemaField Name,Metadata,PublicAccess,Last-modified,LeaseStatus,LeaseState,LeaseDuration,HasImmutabilityPolicy,HasLegalHold 
+                -ContainerSchemaField Name,Metadata,PublicAccess,Last-modified,LeaseStatus,LeaseState,LeaseDuration,HasImmutabilityPolicy,HasLegalHold
 
     $rule2 = New-AzStorageBlobInventoryPolicyRule -Name test2 -Destination $containerName -Format Parquet -Schedule Weekly  -BlobType blockBlob,appendBlob -PrefixMatch aaa,bbb `
                 -BlobSchemaField name,Last-Modified,Metadata,LastAccessTime
 
     $rule3 = New-AzStorageBlobInventoryPolicyRule -Name Test3 -Destination $containerName -Format Parquet -Schedule Weekly -IncludeBlobVersion -IncludeSnapshot -BlobType blockBlob,appendBlob -PrefixMatch aaa,bbb `
-                -BlobSchemaField name,Creation-Time,Last-Modified,Content-Length,Content-MD5,BlobType,AccessTier,AccessTierChangeTime,Expiry-Time,hdi_isfolder,Owner,Group,Permissions,Acl,Metadata,LastAccessTime 
+                -BlobSchemaField name,Creation-Time,Last-Modified,Content-Length,Content-MD5,BlobType,AccessTier,AccessTierChangeTime,Expiry-Time,hdi_isfolder,Owner,Group,Permissions,Acl,Metadata,LastAccessTime
 
     $rule4 = New-AzStorageBlobInventoryPolicyRule -Name test4 -Destination $containerName -Format Csv -Schedule Weekly -BlobType blockBlob -BlobSchemaField Name,BlobType,Content-Length,Creation-Time
 
    ```
 
-7. [Set-AzStorageBlobInventoryPolicy](/powershell/module/az.storage/set-azstorageblobinventorypolicy) を使用して、BLOB インベントリ ポリシーを作成します。 `-Rule` パラメーターを使用して、このコマンドにルールを渡します。 
-  
+7. [Set-AzStorageBlobInventoryPolicy](/powershell/module/az.storage/set-azstorageblobinventorypolicy) を使用して、BLOB インベントリ ポリシーを作成します。 `-Rule` パラメーターを使用して、このコマンドにルールを渡します。
+
    ```powershell
    $policy = Set-AzStorageBlobInventoryPolicy -StorageAccount $storageAccount -Rule $rule1,$rule2,$rule3,$rule4  
    ```
@@ -132,9 +132,10 @@ Azure PowerShell モジュールを使用して、静的な Web サイトのホ�
    ```azurecli
       az account set --subscription <subscription-id>
    ```
+
    `<subscription-id>` プレースホルダーの値をサブスクリプションの ID に置き換えます。
 
-3. JSON ドキュメント内でご自身のポリシーのルールを定義します。 `policy.json` という名前の JSON ファイルの例のコンテンツを次に示します。 
+3. JSON ドキュメント内でご自身のポリシーのルールを定義します。 `policy.json` という名前の JSON ファイルの例のコンテンツを次に示します。
 
     ```json
     {
@@ -178,7 +179,8 @@ Azure PowerShell モジュールを使用して、静的な Web サイトのホ�
       }
      ]
    }
-   ``` 
+
+   ```
 
 4. [az storage account blob-inventory-policy](/cli/azure/storage/account/blob-inventory-policy#az_storage_account_blob_inventory_policy_create) create コマンドを使用して、BLOB インベントリ ポリシーを作成します。 `--policy` パラメーターを使用して、ご自身の JSON ドキュメントの名前を指定します。
 
@@ -191,4 +193,4 @@ Azure PowerShell モジュールを使用して、静的な Web サイトのホ�
 ## <a name="next-steps"></a>次のステップ
 
 - [コンテナーごとの BLOB の数と合計サイズを計算する](calculate-blob-count-size.md)
-- [Azure Blob Storage のライフサイクルを管理する](storage-lifecycle-management-concepts.md)
+- [Azure Blob Storage のライフサイクルを管理する](./lifecycle-management-overview.md)

@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: 1706fd69f58e4dee4a7ed963fb22cb63aec026fa
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 2f2d88a48b7dca0b2ab3ad512e6b723ab68931c8
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100593388"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128650251"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>Azure Budgets でのコストの管理
 
@@ -60,7 +60,7 @@ ms.locfileid: "100593388"
 1. Runbook のインポート処理が完了したら、 **[編集]** を選択します。グラフィカル Runbook エディターと発行オプションが表示されます。  
     ![Azure - グラフィカル Runbook の編集](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-01.png)
 1. **[発行]** を選択して Runbook を発行し、確認を要求されたら **[はい]** を選択します。 Runbook を発行すると、既存の発行済みバージョンよりもドラフト バージョンがオーバーライドされるようになります。 この例では、Runbook を作成したばかりであるため、発行済みバージョンはまだありません。
-    Runbook の発行の詳細については、[グラフィカル Runbook の作成](../../automation/learn/automation-tutorial-runbook-graphical.md)に関するページを参照してください。
+    Runbook の発行の詳細については、[グラフィカル Runbook の作成](../../automation/learn/powershell-runbook-managed-identity.md)に関するページを参照してください。
 
 ## <a name="create-webhooks-for-the-runbook"></a>Runbook に対する Webhook を作成する
 

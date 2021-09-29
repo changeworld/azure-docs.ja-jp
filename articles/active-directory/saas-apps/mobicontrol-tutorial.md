@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2021
 ms.author: jeedes
-ms.openlocfilehash: 0c079b789cc63eb231c35f1ba37884bb6f9da394
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 5d6ecf59ce5e5abdf42677f31df765efc373bd4d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108132505"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124780321"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobicontrol"></a>チュートリアル:Azure Active Directory と MobiControl の統合
 
@@ -126,7 +126,7 @@ MobiControl に対して Azure AD SSO を構成してテストするには、次
 
 * MobiControl のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [MobiControl] タイルをクリックすると、MobiControl のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [MobiControl] タイルをクリックすると、MobiControl のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

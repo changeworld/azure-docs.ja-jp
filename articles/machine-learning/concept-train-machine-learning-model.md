@@ -8,14 +8,14 @@ author: Blackmist
 ms.author: larryfr
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 05/13/2020
+ms.date: 09/23/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: 53b4c0250e4ceb034853ab588cfb2ef93a6ae005
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 6e75d2a7a7bfbe08447df98f170ba470e3503ebe
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114297796"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128601389"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Azure Machine Learning を使用してモデルをトレーニングする
 

@@ -8,12 +8,12 @@ metadata:
   ms.subservice: education-hub
   ms.topic: overview
   ms.date: 08/31/2021
-  ms.openlocfilehash: 28972b6c29e14ca453d713e25867b8079e05c3ca
-  ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+  ms.openlocfilehash: add297aa2c3ff9b883cbf07b2e546bbf46f09b94
+  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/03/2021
-  ms.locfileid: "123431028"
+  ms.lasthandoff: 09/13/2021
+  ms.locfileid: "124771481"
 title: Education Hub に関してよく寄せられる質問
 summary: この記事では、Microsoft Azure for Students、Microsoft Azure for Students Starter、Azure Dev Tools for Teaching についてよく寄せられる質問にお答えします。
 sections:
@@ -32,7 +32,7 @@ sections:
       はい、ご利用いただけます。  1 年後に Microsoft Azure for Students サブスクリプションを更新できます。  その直前に、忘れずに更新するようメールを送信します。  Microsoft Azure for Students の [Web サイト](https://aka.ms/azure4students)からプランに再度サインアップするだけ更新できます。
   - question: >
       Microsoft から請求書が届いたのはなぜですか?
-    answer: "前月の Microsoft Azure for Students の利用時に発生した使用状況を詳細に記載した請求書を送信する場合があります。  ご安心ください。その使用に対する支払いは不要です。Microsoft Azure for Students で提供されるクレジットで全額が処理されます。  請求書とそのしくみの詳細については、docs.microsoft.com の[記事](https://docs.microsoft.com/en-us/azure/cost-management-billing/understand/mca-overview)を確認してください。 \n"
+    answer: "前月の Microsoft Azure for Students の利用時に発生した使用状況を詳細に記載した請求書を送信する場合があります。  ご安心ください。その使用に対する支払いは不要です。Microsoft Azure for Students で提供されるクレジットで全額が処理されます。  請求書とそのしくみの詳細については、docs.microsoft.com の[記事](../../cost-management-billing/understand/mca-overview.md)を確認してください。 \n"
   - question: >
       サブスクリプションとは何ですか? Microsoft Azure for Students とどのような関係があるのですか?
     answer: >

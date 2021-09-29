@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/09/2021
 ms.author: jeedes
-ms.openlocfilehash: 9bdfaef667d0a9377a69011f2ce21750854a33c3
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: f2bde73ace6861f96df0708fc7a406921589cfdd
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111895996"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124739883"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-autotask-endpoint-backup"></a>チュートリアル: Azure Active Directory と Autotask Endpoint Backup の統合
 
@@ -128,7 +128,7 @@ Autotask Endpoint Backup に対して Azure AD SSO を構成してテストす�
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した Autotask Endpoint Backup に自動的にサインインされます。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Autotask Endpoint Backup] タイルをクリックすると、SSO を設定した Autotask Endpoint Backup に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Autotask Endpoint Backup] タイルをクリックすると、SSO を設定した Autotask Endpoint Backup に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

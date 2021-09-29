@@ -4,12 +4,12 @@ description: Apache Storm のワークロードを Spark ストリーミング�
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/16/2019
-ms.openlocfilehash: b8b054d06c9c0987508abfdf03bbcf9470572bd1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c4f4156f80fac0c9e5eaae360aa937544d88aa9e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104868768"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128656799"
 ---
 # <a name="migrate-azure-hdinsight-36-apache-storm-to-hdinsight-40-apache-spark"></a>Azure HDInsight 3.6 Apache Storm を HDInsight 4.0 Apache Spark に移行する
 
@@ -40,7 +40,7 @@ Apache Storm では、さまざまなレベルでメッセージの処理が保�
 
 ### <a name="spark-streaming-vs-spark-structured-streaming"></a>Spark ストリーミングと Spark Structured Streaming
 
-Spark Structured Streaming は、Spark ストリーミング (DStreams) に代わるものです。 Structured Streaming が拡張やメンテナンスを継続的に受けるのに対して、DStreams はメンテナンス モードのみになります。 **注: このポイントを強調するためのリンクが必要**。 Structured Streaming には、標準でサポートされているソースやシンクに対して DStreams ほど多くの機能がないため、要件を評価して適切な Spark ストリーム処理オプションを選択してください。
+Spark Structured Streaming は、Spark ストリーミング (DStreams) に代わるものです。 Structured Streaming が拡張やメンテナンスを継続的に受けるのに対して、DStreams はメンテナンス モードのみになります。 Structured Streaming には、標準でサポートされているソースやシンクに対して DStreams ほど多くの機能がないため、要件を評価して適切な Spark ストリーム処理オプションを選択してください。
 
 ## <a name="streaming-single-event-processing-vs-micro-batch-processing"></a>ストリーミング (単一イベント) 処理とマイクロ バッチ処理
 

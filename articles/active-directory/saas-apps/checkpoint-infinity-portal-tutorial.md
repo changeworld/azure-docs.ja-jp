@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/14/2021
 ms.author: jeedes
-ms.openlocfilehash: 5e35f717c2ebce4cc39383afcd87bce3d7352276
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 25511f956d61a16efbfe589f8b4df4cb16a406a7
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112464103"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124747666"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-check-point-infinity-portal"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Check Point Infinity Portal の統合
 
@@ -192,7 +192,7 @@ Check Point Infinity Portal に対して Azure AD SSO を構成してテスト�
 
 * Check Point Infinity Portal のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Check Point Infinity Portal] タイルをクリックすると、Check Point Infinity Portal のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Check Point Infinity Portal] タイルをクリックすると、Check Point Infinity Portal のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

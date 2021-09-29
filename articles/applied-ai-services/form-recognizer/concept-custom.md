@@ -2,7 +2,6 @@
 title: カスタム モデルと作成済みモデル - Form Recognizer
 titleSuffix: Azure Applied AI Services
 description: Form Recognizer のカスタム モデルと作成済みモデルを作成、使用、管理する方法、使用法、制限について説明します。
-services: cognitive-services
 author: laujan
 manager: nitinme
 ms.service: applied-ai-services
@@ -10,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/09/2021
 ms.author: lajanuar
-ms.openlocfilehash: 19d18028118c5513f6272612c9e4c690aceab493
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 9c995c5ce63c44473cd3d7b824ef85e64868ae1e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122326399"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128546638"
 ---
 # <a name="form-recognizer-custom-and-composed-models"></a>Form Recognizer のカスタム モデルと作成済みモデル
 

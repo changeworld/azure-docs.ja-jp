@@ -12,12 +12,12 @@ ms.date: 08/27/2021
 ms.author: marsma
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 541c9f29e18f3972bf0f9e2a717457fa4fe07a70
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: fb8cf19f3b266d2cc7c3a1569f964acdc934ba7b
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123102094"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124786771"
 ---
 # <a name="microsoft-identity-platform-code-samples"></a>Microsoft ID プラットフォームのコード サンプル
 
@@ -88,7 +88,7 @@ ms.locfileid: "123102094"
 > | Node.js | [ユーザーのサインイン](https://github.com/Azure-Samples/ms-identity-javascript-nodejs-desktop) | MSAL Node | 認可コードと PKCE |
 > | Powershell | [ユーザー名/パスワードを使用したユーザーのサインインによる Microsoft Graph の呼び出し](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2) | MSAL.NET | リソース所有者のパスワード資格情報 |
 > | Python | [ユーザーのサインイン](https://github.com/Azure-Samples/ms-identity-python-desktop) | MSAL Python | 認可コードと PKCE |
-> | ユニバーサル Windows プラットフォーム (UWP) | [Microsoft Graph の呼び出し](https://github.com/azure-samples/active-directory-dotnet-native-uwp-wam) | Web アカウント マネージャー API | 統合 Windows 認証 |
+> | ユニバーサル Windows プラットフォーム (UWP) | [Microsoft Graph の呼び出し](https://github.com/Azure-Samples/active-directory-xamarin-native-v2/tree/main/2-With-broker) | MSAL.NET | Web アカウント マネージャー |
 > | Windows Presentation Foundation (WPF) | [ユーザーのサインインと Microsoft Graph の呼び出し](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/tree/master/2.%20Web%20API%20now%20calls%20Microsoft%20Graph) | MSAL.NET | 認可コードと PKCE |
 > | XAML | &#8226; [ユーザーのサインインと ASP.NET Core Web API の呼び出し](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/tree/master/1.%20Desktop%20app%20calls%20Web%20API) <br/> &#8226; [ユーザーのサインインと Microsoft Graph の呼び出し](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | MSAL.NET | 認可コードと PKCE |
 
