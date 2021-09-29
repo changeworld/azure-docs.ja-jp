@@ -8,12 +8,12 @@ author: swinarko
 ms.author: sawinark
 ms.custom: seo-lt-2019
 ms.date: 04/30/2021
-ms.openlocfilehash: ec309debca7d3852411318ed56a914d47494fe2b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 626afa6926dea10a633a5c7d5438ec8b8c578b6a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121735323"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124798657"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>Azure-SSIS 統合ランタイムのセットアップのカスタマイズ
 
@@ -74,40 +74,40 @@ ADF UI で標準カスタム セットアップを使用して Azure-SSIS IR を
 
    a. **[Local and Attached]\(ローカルで接続済み\)** で、 **[ストレージ アカウント]** を右クリックして、 **[Azure Storage へ接続]** を選択します。
 
-      ![Azure Storage への接続](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image1.png)
+      :::image type="content" source="media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image1.png" alt-text="Azure Storage への接続":::
 
    b. **ストレージ アカウントまたはサービス** を選択し、**アカウント名とキー** を選択して、 **[次へ]** を選択します。
 
    c. お使いの Azure Storage アカウント名とキーを入力し、 **[次へ]** を選択してから **[接続]** を選択します。
 
-      ![ストレージ アカウントの名前とキーを指定する](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image3.png)
+      :::image type="content" source="media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image3.png" alt-text="ストレージ アカウントの名前とキーを指定する":::
 
    d. 接続された Azure ストレージ アカウントで、 **[BLOB コンテナー]** を右クリックし、 **[BLOB コンテナーの作成]** を選択して、新しい BLOB コンテナーに名前を付けます。
 
-      ![BLOB コンテナーを作成する](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image4.png)
+      :::image type="content" source="media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image4.png" alt-text="BLOB コンテナーを作成する":::
 
    e. 新しい BLOB コンテナーを選択し、ご自分のカスタム セットアップ スクリプトとその関連ファイルをアップロードします。 任意のフォルダーではなく、必ずご利用の BLOB コンテナーの最上位に *main.cmd* をアップロードしてください。 ご利用の BLOB コンテナーには必要なカスタム セットアップ ファイルのみを含める必要があります。これにより、ご利用の Azure-SSIS IR に後でダウンロードする場合に時間が短縮されます。 カスタム セットアップの最長期間は現在 45 分に設定されていて、これを過ぎるとタイムアウトになります。これには、ご利用の BLOB コンテナーからすべてのファイルをダウンロードし、それらを Azure-SSIS IR にインストールする時間が含まれます。 セットアップにより長い時間が必要な場合は、サポート チケットを生成してください。
 
-      ![BLOB コンテナーにファイルをアップロードする](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image5.png)
+      :::image type="content" source="media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image5.png" alt-text="BLOB コンテナーにファイルをアップロードする":::
 
    f. BLOB コンテナーを右クリックして、 **[Shared Access Signature の取得]** を選択します。
 
-      ![BLOB コンテナーの Shared Access Signature を取得する](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image6.png)
+      :::image type="content" source="media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image6.png" alt-text="BLOB コンテナーの Shared Access Signature を取得する":::
 
    g. 十分に長い有効期間と [読み取り]、[書き込み]、または [リスト] のアクセス許可を使用して、ご利用の BLOB コンテナー用に SAS URI を作成します。 カスタム セットアップ スクリプトとその関連ファイルをダウンロードして実行するには、SAS URI が必要となります。 これは、Azure-SSIS IR の任意のノードが再イメージ化または再起動されるたびに発生します。 また、セットアップ実行ログをアップロードするには、書き込みアクセス許可も必要です。
 
       > [!IMPORTANT]
       > Azure-SSIS IR の作成から削除まで (この期間に Azure-SSIS IR を定期的に停止および開始する場合は特に) そのライフサイクル全体を通して、SAS URI の有効期限が切れないこと、カスタム セットアップ リソースが常に利用可能であることを保証します。
 
-      ![BLOB コンテナーの Shared Access Signature を生成する](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image7.png)
+      :::image type="content" source="media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image7.png" alt-text="BLOB コンテナーの Shared Access Signature を生成する":::
 
    h. BLOB コンテナーの SAS URI をコピーして保存します。
 
-      ![Shared Access Signature をコピーして保存する](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image8.png)
+      :::image type="content" source="media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image8.png" alt-text="Shared Access Signature をコピーして保存する":::
 
 1. **[詳細設定]** ページの **[統合ランタイムのセットアップ]** ペインにある **[Customize your Azure-SSIS Integration Runtime with additional system configurations/component installations]** \(追加のシステム構成およびコンポーネントのインストールで Azure-SSIS 統合ラインタイムをカスタマイズする\) チェック ボックスをオンにします。 次に、 **[カスタム セットアップ コンテナーの SAS URI]** テキスト ボックスに、ご利用の BLOB コンテナーの SAS URI を入力します。
 
-   ![カスタム セットアップでの詳細設定](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-custom.png)
+   :::image type="content" source="./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-custom.png" alt-text="カスタム セットアップでの詳細設定":::
 
 標準カスタム セットアップが完了し、Azure-SSIS IR が開始した後は、ご利用の BLOB コンテナーの *main.cmd.log* フォルダー内ですべてのカスタム セットアップ ログを見つけることができます。 これには、*main.cmd* の標準出力とその他の実行ログが含まれます。
 
@@ -269,7 +269,7 @@ Azure PowerShell を使用してカスタム セットアップで Azure-SSIS IR
 
    a. **[Local and Attached]\(ローカルで接続済み\)** で、 **[ストレージ アカウント]** を右クリックして、 **[Azure Storage へ接続]** を選択します。
 
-      ![Azure Storage への接続](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image1.png)
+      :::image type="content" source="media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image1.png" alt-text="Azure Storage への接続":::
 
    b. **BLOB コンテナー** を選択し、**Shared Access Signature の URL (SAS)** を選択して、 **[次へ]** を選択します。
 
@@ -283,7 +283,7 @@ Azure PowerShell を使用してカスタム セットアップで Azure-SSIS IR
 
       * *UserScenarios* フォルダー。これには、実際のユーザー シナリオからのいくつかのカスタム セットアップ サンプルが格納されています。 Azure-SSIS IR に複数のサンプルをインストールする場合は、それらのカスタム セットアップ スクリプト (*main.cmd*) ファイルを 1 つにまとめて、関連付けられているすべてのファイルと共に BLOB コンテナーにアップロードすることができます。
 
-        ![パブリック プレビュー BLOB コンテナーの内容](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image11.png)
+        :::image type="content" source="media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image11.png" alt-text="パブリック プレビュー BLOB コンテナーの内容":::
 
    e. *[UserScenarios]* フォルダーをダブルクリックして、次の項目を検索します。
 
@@ -343,7 +343,7 @@ Azure PowerShell を使用してカスタム セットアップで Azure-SSIS IR
       
         まず、[最新の Zulu OpenJDK をダウンロード](https://www.azul.com/downloads/zulu/zulu-windows/)し (たとえば、*zulu8.33.0.1-jdk8.0.192-win_x64.zip*)、次にそれを、*main.cmd* および *install_openjdk.ps1* と共にご利用の BLOB コンテナーにアップロードします。
 
-        ![ユーザー シナリオ フォルダー内のフォルダー](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image12.png)
+        :::image type="content" source="media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image12.png" alt-text="ユーザー シナリオ フォルダー内のフォルダー":::
 
    f. これらの標準カスタム セットアップのサンプルを再利用するには、選択したフォルダーの内容をご利用の BLOB コンテナーへコピーします。
 

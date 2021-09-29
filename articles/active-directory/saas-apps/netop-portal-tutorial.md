@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/09/2021
 ms.author: jeedes
-ms.openlocfilehash: 0db5f99aa6cc772422929bef9ccec3cf7f939ecc
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: 4e6c05af3486d74ca30587d91fbe505f9a3b2d0f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112062768"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124802077"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netop-portal"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Netop Portal の統合
 
@@ -143,7 +143,7 @@ Netop Portal で Azure AD SSO を構成してテストするには、次の手�
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した Netop Portal に自動的にサインインします。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Netop Portal] タイルをクリックすると、SSO を設定した Netop Portal に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Netop Portal] タイルをクリックすると、SSO を設定した Netop Portal に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

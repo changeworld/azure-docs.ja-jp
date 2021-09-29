@@ -12,12 +12,12 @@ ms.date: 08/09/2021
 ms.custom: template-concept
 ms.author: cchiedo
 ms.reviewer: tilarso
-ms.openlocfilehash: 7f9f5a49a46c4f73dce65f23e8ace278f02fe941
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 6d2a6afe4555bc9324241616ae6c22494216a146
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123113448"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124791443"
 ---
 # <a name="protecting-against-consent-phishing"></a>同意フィッシングからの保護
 
@@ -48,7 +48,7 @@ Azure AD で OAuth アプリケーションが無効化されると、いくつ�
 1. 次を含む、無効化されたアプリケーションのアプリケーション アクティビティを調べます。
     - アプリケーションによって要求された、委任されたアクセス許可またはアプリケーションのアクセス許可。
     - アプリケーションによるアクティビティとアプリケーションを使用する権限を持つユーザーのサインイン アクティビティに関する Azure AD 監査ログ。
-1. Microsoft クラウド製品の[不正な同意付与からの保護に関するガイダンス](/microsoft-365/security/office-365-security/detect-and-remediate-illicit-consent-grants?view=o365-worldwide&preserve-view=true)を確認して実装します。これには、無効化されたアプリケーションの監査のアクセス許可と同意や、審査中に検出されたその他の疑わしいアプリが含まれます。
+1. Microsoft クラウド製品の[不正な同意付与からの保護に関するガイダンス](/microsoft-365/security/office-365-security/detect-and-remediate-illicit-consent-grants)を確認して実装します。これには、無効化されたアプリケーションの監査のアクセス許可と同意や、審査中に検出されたその他の疑わしいアプリが含まれます。
 1. 以下で説明する、同意フィッシングに対するセキュリティ強化のベスト プラクティスを実装します。
 
 
@@ -59,20 +59,20 @@ Microsoft では、組織内でアプリケーションを許可および使用�
 * アクセス許可と同意フレームワークのしくみについて組織を教育する
     - アプリケーションから求められるデータとアクセス許可を理解し、 [アクセス許可と同意](../develop/v2-permissions-and-consent.md)がプラットフォーム内でどのように機能するかを理解します。
     - 管理者が [同意要求を管理および評価する](./manage-consent-requests.md)方法を理解しているか確認します。
-    - 定期的に組織内の[アプリと同意済みのアクセス許可を監査](/azure/security/fundamentals/steps-secure-identity#audit-apps-and-consented-permissions) して、使用されているアプリケーションが必要なデータにのみアクセスしており、最小特権の原則に準拠していることを確認します。
+    - 定期的に組織内の[アプリと同意済みのアクセス許可を監査](../../security/fundamentals/steps-secure-identity.md#audit-apps-and-consented-permissions) して、使用されているアプリケーションが必要なデータにのみアクセスしており、最小特権の原則に準拠していることを確認します。
 * 一般的な同意フィッシングの戦術を特定してブロックする方法を知る
     - スペルや文法に誤りがあるか確認します。 メール メッセージまたはアプリケーションの同意画面にスペルミスや文法エラーがある場合、それは疑わしいアプリケーションである可能性があります。 その場合は、[同意プロンプト](../develop/application-consent-experience.md#building-blocks-of-the-consent-prompt)の [*こちらでご報告ください*] リンクを使用して直接報告できます。Microsoft では、それが悪意のあるアプリケーションかどうかを調べ、確認された場合は、それを無効化します。
     - アプリ名やドメイン URL を信頼性のソースとして利用しないでください。 攻撃者は、正当なサービスまたは企業のアプリケーションに見えるようにアプリ名を偽造し、悪意のあるアプリに同意させようとします。 代わりに、ドメイン URL のソースを検証し、可能であれば[確認済みの発行元](../develop/publisher-verification-overview.md)から入手したアプリケーションを使用します。
-    - 攻撃者が組織内の既知のユーザーを偽装しているフィッシング キャンペーンから保護することで、[Microsoft Defender for Office 365 による同意フィッシング メール](/microsoft-365/security/office-365-security/set-up-anti-phishing-policies?view=o365-worldwide&preserve-view=true#impersonation-settings-in-anti-phishing-policies-in-microsoft-defender-for-office-365)をブロックします。
+    - 攻撃者が組織内の既知のユーザーを偽装しているフィッシング キャンペーンから保護することで、[Microsoft Defender for Office 365 による同意フィッシング メール](/microsoft-365/security/office-365-security/set-up-anti-phishing-policies#impersonation-settings-in-anti-phishing-policies-in-microsoft-defender-for-office-365)をブロックします。
     -  [アクティビティ ポリシー](/cloud-app-security/user-activity-policies)、 [異常検出](/cloud-app-security/anomaly-detection-policy)、 [OAuth アプリ ポリシー](/cloud-app-security/app-permission-policy) などの Microsoft Cloud App Security ポリシーを構成すると、組織の異常なアプリケーション アクティビティを管理し、対応するアクションを実行するのに役立ちます。
-    - [Microsoft 365 Defender を使用した高度な検出](/microsoft-365/security/defender/advanced-hunting-overview?view=o365-worldwide&preserve-view=true)に関するガイダンスに従って、同意フィッシング攻撃の調査と検出を行います。
+    - [Microsoft 365 Defender を使用した高度な検出](/microsoft-365/security/defender/advanced-hunting-overview)に関するガイダンスに従って、同意フィッシング攻撃の調査と検出を行います。
 * 信頼できるアプリへのアクセスを許可し、信頼できないアプリから保護する
     - 発行元が確認されたアプリケーションを使用します。 [発行元の確認](../develop/publisher-verification-overview.md)は、管理者とエンド ユーザーが、Microsoft がサポートする審査プロセスを通じてアプリケーション開発者の信頼性を理解するのに役立ちます。
     - 信頼できる特定のアプリケーション (所属組織や確認済みの発行元が開発したアプリケーションなど) にのみユーザーが同意できるように、[ユーザーの同意設定を構成](./configure-user-consent.md?tabs=azure-portal)します。
-    - 一般的な疑わしいアプリの動作に対処するため、プロアクティブな[アプリ ガバナンス](/microsoft-365/compliance/app-governance-manage-app-governance?view=o365-worldwide&preserve-view=true) ポリシーを作成して、Microsoft 365 プラットフォーム上でサードパーティのアプリの動作を監視します。
+    - 一般的な疑わしいアプリの動作に対処するため、プロアクティブな[アプリ ガバナンス](/microsoft-365/compliance/app-governance-manage-app-governance) ポリシーを作成して、Microsoft 365 プラットフォーム上でサードパーティのアプリの動作を監視します。
 
 ## <a name="next-steps"></a>次のステップ
 
 * [アプリ同意付与の調査](/security/compass/incident-response-playbook-app-consent)
 * [アプリへのアクセスの管理](./what-is-access-management.md)
-* [Azure AD でのユーザーの同意操作を制限する](/azure/security/fundamentals/steps-secure-identity#restrict-user-consent-operations)
+* [Azure AD でのユーザーの同意操作を制限する](../../security/fundamentals/steps-secure-identity.md#restrict-user-consent-operations)

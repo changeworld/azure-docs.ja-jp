@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 06/08/2020
-ms.openlocfilehash: 05f82c055a0c98423fb7096a019d7d9d80932142
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 288a78ee3b3e8c0a3d32d72d289c2b3e4c3d4aff
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123542037"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128619017"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Azure への移行に向けてオンプレミスのマシンの準備を整える
 
@@ -90,7 +90,7 @@ Azure に VM を移行する前に、それらに対していくつかの変更�
 **Windows Azure ゲスト エージェントをインストールする** <br/><br/> 仮想マシン エージェント (VM エージェント) は、仮想マシン (VM) と Azure ファブリック コントローラーのやり取りを管理する、セキュリティで保護された簡易プロセスです。 VM エージェントの主要な役割は、Azure 仮想マシン拡張機能を有効にして実行することであり、これにより、ソフトウェアのインストールや構成など、VM のデプロイ後の構成が可能になります。 |  Windows Server 2008 R2 以降が実行されているマシンでは、自動的に設定されます。 <br/> それより前のオペレーティング システムでは、手動で構成します。 | Windows Server 2008 R2 以降が実行されているマシンでは、自動的に設定されます。 | Windows Server 2008 R2 以降が実行されているマシンでは、自動的に設定されます。
 **移行後に接続する**<br/><br/> 移行後に接続するためには、移行前に行うべき手順が数多くあります。 | 手動で[設定](#prepare-to-connect-to-azure-windows-vms)します。 | 手動で[設定](#prepare-to-connect-to-azure-windows-vms)します。 | 手動で[設定](#prepare-to-connect-to-azure-windows-vms)します。
 
-エージェントレスの VMware 移行について Windows サーバーで行われた変更の詳細については、[こちら](/prepare-for-agentless-migration#changes-performed-on-windows-servers)を参照してください。
+エージェントレスの VMware 移行について Windows サーバーで行われた変更の詳細については、[こちら](/azure/migrate/prepare-for-agentless-migration#changes-performed-on-windows-servers)を参照してください。
 
 #### <a name="configure-san-policy"></a>SAN のポリシーを構成する
 
@@ -132,9 +132,9 @@ Azure に VM を移行する前に、それらに対していくつかの変更�
 **Udev ルールを削除する** | MAC アドレスなどに基づいてインターフェイス名を予約する Udev ルールを削除します。 | 前述したバージョンを除くすべてのバージョンについては、手動で削除してください。
 **ネットワーク インターフェイスを更新する** | DHCP.nst に基づいて IP アドレスを受け取るよう、ネットワーク インターフェイスを更新します。 | 前述したバージョンを除くすべてのバージョンについては、手動で更新してください。
 **SSH を有効にする** | SSH を有効にして、再起動時に自動的に開始するよう sshd サービスを設定してください。<br/><br/> 受信 SSH 接続要求が、OS ファイアウォールまたはスクリプト実行可能なルールによってブロックされないようにします。| 前述したバージョンを除くすべてのバージョンについては、手動で有効にしてください。
-**Linux Azure ゲスト エージェントをインストールする** | Microsoft Azure Linux エージェント (waagent) は、Linux と FreeBSD のプロビジョニングおよび VM と Azure ファブリック コントローラーのやり取りを管理する、セキュリティで保護された軽量のプロセスです。| 前述したバージョンを除くすべてのバージョンについては、手動で有効にしてください。  <br> 他の OS バージョンについては、[Linux エージェントの手動インストール手順](/azure/virtual-machines/extensions/agent-linux#installation)に従ってください。 Linux VM エージェントをインストールするために[必要なパッケージ](/azure/virtual-machines/extensions/agent-linux#requirements)の一覧を確認します。 
+**Linux Azure ゲスト エージェントをインストールする** | Microsoft Azure Linux エージェント (waagent) は、Linux と FreeBSD のプロビジョニングおよび VM と Azure ファブリック コントローラーのやり取りを管理する、セキュリティで保護された軽量のプロセスです。| 前述したバージョンを除くすべてのバージョンについては、手動で有効にしてください。  <br> 他の OS バージョンについては、[Linux エージェントの手動インストール手順](../virtual-machines/extensions/agent-linux.md#installation)に従ってください。 Linux VM エージェントをインストールするために[必要なパッケージ](../virtual-machines/extensions/agent-linux.md#requirements)の一覧を確認します。 
 
-エージェントレスの VMware 移行について Linux サーバーで行われた変更の詳細については、[こちら](/azure/migrate/prepare-for-agentless-migration#changes-performed-on-linux-servers)を参照してください。
+エージェントレスの VMware 移行について Linux サーバーで行われた変更の詳細については、[こちら](./prepare-for-agentless-migration.md#changes-performed-on-linux-servers)を参照してください。
 
 次の表は、上記のオペレーティング システムに対して自動的に実行される手順をまとめたものです。
 

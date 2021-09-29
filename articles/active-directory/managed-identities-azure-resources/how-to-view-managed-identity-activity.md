@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 08/26/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 937cdae8c1f191bc8e6b03d680829d8f674b8d62
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 03ab5ed10dcb9127c5b62850228d22222b4225be
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123077262"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124814416"
 ---
 # <a name="view-update-and-sign-in-activities-for-managed-identities"></a>マネージド ID の更新アクティビティとサインイン アクティビティを表示する
 
@@ -115,5 +115,5 @@ ms.locfileid: "123077262"
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure リソースのマネージド ID](./overview.md)
-* [Azure アクティビティ ログ](/azure/azure-monitor/essentials/activity-log)
-* [Azure Active Directory のサインイン ログ](/azure/active-directory/reports-monitoring/concept-sign-ins )
+* [Azure アクティビティ ログ](../../azure-monitor/essentials/activity-log.md)
+* [Azure Active Directory のサインイン ログ](../reports-monitoring/concept-sign-ins.md)

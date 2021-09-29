@@ -8,12 +8,12 @@ ms.date: 08/28/2021
 author: swinarko
 ms.author: sawinark
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3e793f7a1c2e927be9b0431df05bdc228355429f
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 7e235bd04b0693a0fabc9f4432aff01c85b5c67e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123110198"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124824719"
 ---
 # <a name="how-to-clean-up-ssisdb-logs-automatically"></a>SSISDB ログを自動的にクリーンアップする方法
 
@@ -34,7 +34,7 @@ SSIS パッケージ実行ログを管理するために、SQL Server Management
 - **古いバージョンを定期的に削除**: 格納されているプロジェクト バージョンのクリーンアップを有効にします。既定では *True* に設定されています。
 - **プロジェクトあたりのバージョンの最大数**: 格納されているプロジェクト バージョンの最大数を指定します。既定では *10* に設定され、関連する SSISDB ストアド プロシージャが呼び出されると、古いバージョンが削除されます。
 
-![SSISDB ログのクリーンアップ プロパティ](media/how-to-clean-up-ssisdb-logs-with-elastic-jobs/clean-up-logs-ssms-ssisdb-properties.png)
+:::image type="content" source="media/how-to-clean-up-ssisdb-logs-with-elastic-jobs/clean-up-logs-ssms-ssisdb-properties.png" alt-text="SSISDB ログのクリーンアップ プロパティ":::
 
 SSISDB ログのクリーンアップ プロパティが構成されたら、関連する SSISDB ストアド プロシージャ `[internal].[cleanup_server_retention_window_exclusive]` を呼び出して、SSIS パッケージ実行ログをクリーンアップできます。
 
@@ -55,7 +55,7 @@ SSIS IR 操作ログをクリーンアップするには、関連する SSISDB �
 ## <a name="clean-up-ssisdb-logs-automatically-via-adf"></a>ADF を使用して SSISDB ログを自動的にクリーンアップする
 SSISDB のホストに Azure SQL データベース サーバー/Managed Instance を使用するかどうかに関係なく、常に ADF を使用して、スケジュールに基づいて SSISDB ログを自動的にクリーンアップできます。 これを行うには、関連する SSISDB ストアド プロシージャを呼び出す単一の SQL 実行タスクを含む埋め込みパッケージを使用して、ADF パイプライン内で SSIS パッケージの実行アクティビティを準備できます。 ブログ「[Azure Data Factory の SSIS を使用して、3 つの簡単な手順で任意の場所で任意の SQL を実行する](https://techcommunity.microsoft.com/t5/sql-server-integration-services/run-any-sql-anywhere-in-3-easy-steps-with-ssis-in-azure-data/ba-p/2457244)」の例 4) を参照してください。
 
-![ADF を使用した SSISDB ログのクリーンアップ](media/how-to-clean-up-ssisdb-logs-with-elastic-jobs/run-sql-ssis-activity-ssis-parameters-ssisdb-clean-up.png)
+:::image type="content" source="media/how-to-clean-up-ssisdb-logs-with-elastic-jobs/run-sql-ssis-activity-ssis-parameters-ssisdb-clean-up.png" alt-text="ADF を使用した SSISDB ログのクリーンアップ":::
 
 **SQLStatementSource** パラメーターについては、`EXEC internal.cleanup_server_retention_window_exclusive` を入力して、SSIS パッケージの実行ログをクリーンアップできます。 
 
@@ -68,7 +68,7 @@ ADF パイプラインの準備ができたら、スケジュール トリガー
 ## <a name="clean-up-ssisdb-logs-automatically-via-azure-sql-managed-instance-agent"></a>Azure SQL Managed Instance エージェントを使用して SSISDB ログを自動的にクリーンアップする
 Azure SQL Managed Instance を使用して SSISDB をホストする場合は、その組み込みのジョブ オーケストレーター/スケジューラである Azure SQL Managed Instance エージェントを使用して、スケジュールに基づいて SSISDB ログを自動的にクリーンアップすることもできます。 お使いの Azure SQL Managed Instance 内に SSISDB が最近作成された場合は、特に SSIS パッケージの実行ログをクリーンアップするために、Azure SQL Managed Instance エージェントの下に **SSIS サーバー メンテナンス ジョブ** と呼ばれる T-SQL ジョブも作成されています。 これは既定では無効になっており、毎日実行されるようにスケジュールで構成されます。  これを有効にし、スケジュールを再構成する場合は、SSMS を使用して、Azure SQL Managed Instance に接続します。 接続されたら、SSMS の **オブジェクト エクスプローラー** ウィンドウで、**SQL Server エージェント** ノードを展開し、**Jobs** サブノードを展開してから、**SSIS サーバー メンテナンス ジョブ** をダブルクリックして、有効化/再構成します。
 
-![Azure SQL Managed Instance エージェントを使用した SSISDB ログのクリーンアップ](media/how-to-clean-up-ssisdb-logs-with-elastic-jobs/clean-up-logs-ssms-maintenance-job.png)
+:::image type="content" source="media/how-to-clean-up-ssisdb-logs-with-elastic-jobs/clean-up-logs-ssms-maintenance-job.png" alt-text="Azure SQL Managed Instance エージェントを使用した SSISDB ログのクリーンアップ":::
 
 お使いの Azure SQL Managed Instance エージェントに **SSIS サーバー メンテナンス ジョブ** がまだ作成されていない場合、そのジョブを手動で追加するには、お使いの Azure SQL Managed Instance 上で次の T-SQL スクリプトを実行します。
 
@@ -375,7 +375,7 @@ $Job | Set-AzureRmSqlElasticJob -IntervalType $IntervalType -IntervalCount $Inte
 
 Azure portal 内で SSISDB ログのクリーンアップ ジョブを監視できます。 実行ごとに、その状態、開始時刻、終了時刻を確認することができます。
 
-![Azure portal 内で SSISDB ログのクリーンアップ ジョブを監視する](media/how-to-clean-up-ssisdb-logs-with-elastic-jobs/monitor-cleanup-job-portal.png)
+:::image type="content" source="media/how-to-clean-up-ssisdb-logs-with-elastic-jobs/monitor-cleanup-job-portal.png" alt-text="Azure portal 内で SSISDB ログのクリーンアップ ジョブを監視する":::
 
 ### <a name="monitor-ssisdb-log-clean-up-job-using-t-sql"></a>T-SQL を使用して SSISDB ログのクリーンアップ ジョブを監視する
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/23/2021
 ms.author: bagol
-ms.openlocfilehash: 18166bc22f34fe8bd4757ffd3a0d468c6a75b23c
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 545ab178c99b8d5ab6db1d6619a9859eb3133306
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122868406"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124781346"
 ---
 # <a name="troubleshoot-your-cef-or-syslog-data-connector"></a>CEF または Syslog データ コネクタのトラブルシューティング
 
@@ -43,7 +43,7 @@ ms.locfileid: "122868406"
 
 ## <a name="validate-cef-connectivity"></a>CEF 接続の検証
 
-[ログ フォワーダーをデプロイ](connect-common-event-format.md)し、[CEF メッセージを送信するようにセキュリティ ソリューションを構成](connect-cef-solution-config.md)したら (手順 2)、本セクションの手順に従って、セキュリティ ソリューションと Azure Sentinel との間の接続を検証します。
+[ログ フォワーダーをデプロイ](connect-common-event-format.md)し、[CEF メッセージを送信するようにセキュリティ ソリューションを構成](./connect-common-event-format.md)したら (手順 2)、本セクションの手順に従って、セキュリティ ソリューションと Azure Sentinel との間の接続を検証します。
 
 1. 次の前提条件を満たしていることを確認します。
 
@@ -269,15 +269,15 @@ ms.locfileid: "122868406"
 
 Azure 仮想マシンを Syslog コレクターとして使用している場合は、次のことを確認してください。
 
-- Syslog データ コネクタの設定中は、[MMA または OMS エージェント[の ](/azure/security-center/security-center-enable-data-collection)Azure Security Center の自動プロビジョニング設定](connect-windows-security-events.md#connector-options)を必ずオフにするようにしてください。
+- Syslog データ コネクタの設定中は、[MMA または OMS エージェント[の ](../security-center/security-center-enable-data-collection.md)Azure Security Center の自動プロビジョニング設定](connect-windows-security-events.md#connector-options)を必ずオフにするようにしてください。
 
     データ コネクタの設定が完了したら、再びオンにすることができます。
 
-- [Common Event Format データ コネクタの python スクリプト](connect-cef-agent.md)をデプロイする前に、仮想マシンが既に既存の Syslog ワークスペースに接続されていないことを確認してください。 この情報は、Syslog ワークスペースに接続されている VM が **[接続済み]** と表示されている、Log Analytics ワークスペースの仮想マシンの一覧にあります。
+- [Common Event Format データ コネクタの python スクリプト](./connect-log-forwarder.md)をデプロイする前に、仮想マシンが既に既存の Syslog ワークスペースに接続されていないことを確認してください。 この情報は、Syslog ワークスペースに接続されている VM が **[接続済み]** と表示されている、Log Analytics ワークスペースの仮想マシンの一覧にあります。
 
 - Azure Sentinel が、**Securityinsights** ソリューションがインストールされている正しい Syslog ワークスペースに接続されていることを確認します。
 
-    詳細については、[手順 1: ログ フォワーダーを展開する](connect-cef-agent.md)方法に関するページを参照してください。
+    詳細については、[手順 1: ログ フォワーダーを展開する](./connect-log-forwarder.md)方法に関するページを参照してください。
 
 - 少なくとも必要な前提条件を満たすよう、マシンのサイズが正しく設定されていることを確認します。 詳細については、[CEF の前提条件](connect-common-event-format.md#prerequisites)に関するセクションを参照してください。
 
@@ -299,7 +299,7 @@ Syslog サーバー (rsyslog または syslog-ng) は、関連する構成ファ
 
 Azure Sentinel に取り込むファシリティと重要度のログ レベルに関する詳細を追加するようにしてください。 構成プロセスには約 20 分かかる場合があります。
 
-詳細については、[デプロイ スクリプトの説明](connect-cef-agent.md#deployment-script-explained)に関するページと、[Azure portal で Syslog を構成する](/azure/azure-monitor/agents/data-sources-syslog.md)方法に関するページを参照してください。
+詳細については、[デプロイ スクリプトの説明](./connect-log-forwarder.md#deployment-script-explained)に関するページと、[Azure portal で Syslog を構成する](../azure-monitor/agents/data-sources-syslog.md)方法に関するページを参照してください。
 
 
 **たとえば、rsyslog サーバーの場合** は、次のコマンドを実行して、Syslog 転送の現在の設定を表示し、構成ファイルへの変更を確認します。
@@ -506,9 +506,9 @@ if $rawmsg contains "CEF:" or $rawmsg contains "ASA-" then @@127.0.0.1:25226
 
 - ポート 25524、25526、または両方で、データ パケットが流れていることを確認します
 
-- 仮想マシンからポート 443 への TCP 経由のアウトバウンド接続があること、または [Log Analytics エンドポイント](/azure/azure-monitor/agents/log-analytics-agent#network-requirements)に接続できることを確認します
+- 仮想マシンからポート 443 への TCP 経由のアウトバウンド接続があること、または [Log Analytics エンドポイント](../azure-monitor/agents/log-analytics-agent.md#network-requirements)に接続できることを確認します
 
-- ファイアウォール ポリシーを使用して、Syslog コレクターから必要な URL にアクセスできることを確認します。 詳細については、[Log Analytics エージェントのファイアウォール要件](/azure/azure-monitor/agents/log-analytics-agent##firewall-requirements)に関するページを参照してください。
+- ファイアウォール ポリシーを使用して、Syslog コレクターから必要な URL にアクセスできることを確認します。 詳細については、[Log Analytics エージェントのファイアウォール要件](../azure-monitor/agents/log-analytics-agent.md#firewall-requirements)に関するページを参照してください。
 
 - ワークスペースの仮想マシンの一覧に、Azure 仮想マシンが接続済みとして表示されていることを確認します。
 

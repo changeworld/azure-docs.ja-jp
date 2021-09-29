@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 07/21/2021
 ms.author: madhukan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5add931f71dfdb5034e614b3d6c3ddc8703293a2
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 6e37ab692b1e8f4a498d4b279ef3e45940e7d7f2
+ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114461574"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128708322"
 ---
 # <a name="sap-hana-large-instances-network-architecture"></a>SAP HANA (L インスタンス) のネットワーク アーキテクチャ
 
@@ -201,7 +201,7 @@ HANA Large Instances と VM の間で転送されるデータは暗号化され�
  - システム コピーまたはシステム更新を行うための、異なるリージョン内の HANA Large Instances ユニット間でのバックアップのコピー。
 
 
-![異なる Azure リージョン内の Azure L インスタンス スタンプに接続された仮想ネットワーク](./media/hana-overview-architecture/image8-multiple-regions.png)
+[![異なる Azure リージョン内の Azure L インスタンス スタンプに接続された仮想ネットワーク](./media/hana-overview-architecture/image8-multiple-regions.png)](./media/hana-overview-architecture/image8-multiple-regions.png#lightbox)
 
 前の図は、両方のリージョン内の仮想ネットワークが、2 つの ExpressRoute 回線に接続されるしくみを示しています。 この回線は、両方の Azure リージョン (グレーの線) 内の SAP HANA on Azure (Large Instances) への接続に使用されます。 この 2 つの交差接続の理由は、両側の MSEE を機能停止から保護することです。 2 つの Azure リージョン内の 2 つの仮想ネットワーク間の通信フローは、2 つの異なるリージョン内の 2 つの仮想ネットワークの[グローバル ピアリング](/archive/blogs/azureedu/how-to-setup-global-vnet-peering-in-azure) (青い点線) で処理されることになっています。 太い赤線は、ExpressRoute Global Reach の接続を示します。 この接続により、異なるリージョン内のテナントの HANA Large Instance ユニットが相互に通信できます。 
 

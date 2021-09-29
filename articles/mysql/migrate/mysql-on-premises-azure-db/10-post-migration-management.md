@@ -9,12 +9,12 @@ ms.author: arthiaga
 ms.reviewer: maghan
 ms.custom: ''
 ms.date: 06/21/2021
-ms.openlocfilehash: bed5253a1d5948e7d016bca9e46236d6b57bac57
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 9894769ecd3d7144fa2cf4bb245575d397c60148
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114292952"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124824002"
 ---
 # <a name="migrate-mysql-on-premises-to-azure-database-for-mysql-post-migration-management"></a>オンプレミスの MySQL から Azure Database for MySQL への移行: 移行後の管理
 
@@ -30,7 +30,7 @@ ms.locfileid: "114292952"
 
 Azure Database for MySQL は、[Azure Monitor](../../../azure-monitor/overview.md)、[Log Analytics](../../../azure-monitor/logs/design-logs-deployment.md)、[Azure Sentinel](../../../sentinel/overview.md) などの Azure ベースのツールを使用して、これら両方の種類の操作アクティビティを監視する機能を備えています。 Azure ベースのツールに加え、これらのログを使用するようにセキュリティ情報イベント管理 (SIEM) システムを構成することもできます。
 
-新しいクラウドベース ワークロードの監視にどちらのツールを使用する場合でも、疑わしいアクティビティについて Azure とデータベース管理者に警告するアラートを作成する必要があります。 特定のアラート イベントに明確に定義された修復パスがある場合、アラートによって自動化された [Azure Runbook](../../../automation/automation-quickstart-create-runbook.md) を起動し、そのイベントに対処できます。
+新しいクラウドベース ワークロードの監視にどちらのツールを使用する場合でも、疑わしいアクティビティについて Azure とデータベース管理者に警告するアラートを作成する必要があります。 特定のアラート イベントに明確に定義された修復パスがある場合、アラートによって自動化された [Azure Runbook](../../../automation/learn/powershell-runbook-managed-identity.md) を起動し、そのイベントに対処できます。
 
 完全に監視された環境を作成する最初の手順は、MySQL ログ データが Azure Monitor に流れるようにすることです。 詳細については、「[Azure portal での Azure Database for MySQL の監査ログの構成とアクセス](../../howto-configure-audit-logs-portal.md)」を参照してください。
 

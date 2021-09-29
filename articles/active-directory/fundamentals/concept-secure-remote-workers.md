@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: davidspo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb002eec38cf4c940450616ac1d30a0f43cc83f9
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 52c82b01b9c6bc45779e9bed04bb04e8ac3fcab7
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108176074"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129083659"
 ---
 # <a name="rapidly-respond-to-secure-identities-with-azure-ad"></a>Azure AD を使用してセキュリティで保護された ID に迅速に対応する
 

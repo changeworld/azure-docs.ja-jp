@@ -6,12 +6,12 @@ ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: tutorial
 ms.date: 08/17/2021
-ms.openlocfilehash: 03862b42fb181adcf1a6c4edbed66ce61ee49e73
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: d6fa48fb35d836fc7f08c98e7b1807068c000d84
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123426132"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124797029"
 ---
 # <a name="live-migration-to-azure-managed-instance-for-apache-cassandra-by-using-a-dual-write-proxy"></a>デュアル書き込みプロキシを使用した Azure Managed Instance for Apache Cassandra へのライブ マイグレーション
 
@@ -29,7 +29,6 @@ ms.locfileid: "123426132"
 
 次の図はこのアプローチを示したものです。
 
-
 :::image type="content" source="./media/migration/live-migration.gif" alt-text="Azure Managed Instance for Apache Cassandra へのデータのライブ マイグレーションを示すアニメーション。" border="false":::
 
 ## <a name="prerequisites"></a>前提条件
@@ -39,7 +38,6 @@ ms.locfileid: "123426132"
 * [マネージド Cassandra 仮想ネットワーク内に Azure Databricks アカウントをプロビジョニングします](deploy-cluster-databricks.md)。 アカウントにソース Cassandra クラスターへのネットワーク アクセス権があることも確認します。 履歴データの読み込み用に、このアカウントに Spark クラスターを作成します。
 
 * キースペースまたはテーブル スキームをソース Cassandra データベースからターゲット Cassandra マネージド インスタンス データベースに既に移行していることを確認します。
-
 
 ## <a name="provision-a-spark-cluster"></a>Spark クラスターをプロビジョニングする
 
@@ -92,7 +90,7 @@ java -jar target/cassandra-proxy-1.0-SNAPSHOT-fat.jar localhost <target-server> 
 - ソースとターゲットのエンドポイントで、ユーザー名とパスワードが同じである。
 - ソースとターゲットのエンドポイントに、Secure Sockets Layer (SSL) が実装されている。
 
-ソースとターゲットのエンドポイントでこれらの条件が満たされない場合は、詳細な構成オプションを参照してください。 
+ソースとターゲットのエンドポイントでこれらの条件が満たされない場合は、詳細な構成オプションを参照してください。
 
 ### <a name="configure-ssl"></a>SSL の構成
 
@@ -109,7 +107,6 @@ java -jar target/cassandra-proxy-1.0-SNAPSHOT-fat.jar localhost <target-server> 
 
 > [!NOTE]
 > データベースへのプロキシ経由の SSL 接続を構築する場合は、必ずデュアル書き込みプロキシに使用したものと同じキーストアとパスワードをクライアント アプリケーションに使用してください。
-
 
 ### <a name="configure-the-credentials-and-port"></a>資格情報とポートを構成する
 
@@ -165,7 +162,6 @@ java -jar target/cassandra-proxy-1.0-SNAPSHOT-fat.jar source-server destination-
 ```
 
 デュアル書き込みプロキシが実行されるようになった後、アプリケーション クライアントでポートを変更し、再起動する必要があります。 (または、その方法を選択した場合は、Cassandra のポートを変更してクラスターを再起動します)。その後、プロキシによるターゲット エンドポイントへの書き込みの転送が開始されます。 プロキシ ツールで使用できる[監視とメトリックについてはこちら](https://github.com/Azure-Samples/cassandra-proxy#monitoring)を参照してください。 
-
 
 ## <a name="run-the-historical-data-load"></a>履歴データの読み込みを実行する
 
@@ -233,7 +229,6 @@ DFfromSourceCassandra
 ## <a name="validate-the-source-and-target"></a>ソースとターゲットを検証する
 
 履歴データの読み込みが完了すると、データベースは同期され、切り替えの準備が整います。 ただし、最終的に切り替える前に、ソースとターゲットを検証し、要求の結果が一致することを確認することをお勧めします。
-
 
 ## <a name="next-steps"></a>次のステップ
 

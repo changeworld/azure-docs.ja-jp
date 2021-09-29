@@ -3,12 +3,12 @@ title: Windows デバイスに C# エージェントをインストールする
 description: Defender for IoT エージェントを 32 ビットまたは 64 ビットの Windows デバイスにインストールする方法について説明します。
 ms.topic: conceptual
 ms.date: 05/26/2021
-ms.openlocfilehash: f76d9122b4f50d475efbbac465096022261a9ef4
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 1a9bab1f9e24fba6a2b04b6d0bb5d9f2560dcc1d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113018110"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128643975"
 ---
 # <a name="deploy-a-defender-for-iot-c-based-security-agent-for-windows"></a>Windows 用の Defender for IoT の C# ベースのセキュリティ エージェントをデプロイする
 
@@ -73,7 +73,7 @@ Get-Help の例: ```Get-Help .\InstallSecurityAgent.ps1```
 
 以下を実行して、エージェントのデプロイの状態を確認します。
 
-```sc.exe query "ASC IoT Agent"```
+`sc.exe query "ASC IoT Agent"`
 
 ### <a name="uninstall-the-agent"></a>エージェントのアンインストール
 

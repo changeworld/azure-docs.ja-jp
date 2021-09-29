@@ -8,12 +8,12 @@ ms.subservice: tutorials
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 07/08/2021
-ms.openlocfilehash: 3adb1c084276bed35ec7a2f542ee7f9d319f7b2b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2311c7e0ab22510211b8fe6c6668b3253d5df28e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638327"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124798315"
 ---
 # <a name="copy-data-from-a-sql-server-database-to-azure-blob-storage-by-using-the-copy-data-tool"></a>データのコピー ツールを使用して SQL Server データベースから Azure Blob Storage にデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -80,7 +80,7 @@ Data Factory インスタンスを作成するには、Azure へのログイン�
 
 1. 左側のウィンドウで、 **[すべてのサービス]** を選択します。 「**ストレージ**」というキーワードでフィルタリングして、 **[ストレージ アカウント]** を選択します。
 
-    ![Storage account search](media/doc-common-process/search-storage-account.png)
+    :::image type="content" source="media/doc-common-process/search-storage-account.png" alt-text="Storage account search":::
 
 1. ストレージ アカウントの一覧で、必要に応じてご利用のストレージ アカウントをフィルターで抽出します。 次に、ストレージ アカウントを選択します。
 
@@ -93,7 +93,7 @@ Data Factory インスタンスを作成するには、Azure へのログイン�
 
 1. 左側のメニューで、 **[リソースの作成]**  >  **[統合]**  >  **[Data Factory]** を選択します。
 
-   ![新しいデータ ファクトリの作成](./media/doc-common-process/new-azure-data-factory-menu.png)
+   :::image type="content" source="./media/doc-common-process/new-azure-data-factory-menu.png" alt-text="新しいデータ ファクトリの作成":::
 
 1. **[新しいデータ ファクトリ]** ページで、 **[名前]** に「**ADFTutorialDataFactory**」と入力します。
 
@@ -122,7 +122,7 @@ Data Factory インスタンスを作成するには、Azure へのログイン�
 
 1. Azure Data Factory のホーム ページで **[取り込む]** を選択して、データ コピー ツールを起動します。
 
-   ![Azure Data Factory ホーム ページのスクリーンショット。](./media/doc-common-process/get-started-page.png)
+   :::image type="content" source="./media/doc-common-process/get-started-page.png" alt-text="Azure Data Factory ホーム ページのスクリーンショット。":::
 
 1. データのコピー ツールの **[プロパティ]** ページで、 **[タスクの種類]** の **[組み込みコピー タスク]** を選択して、 **[Task cadence or task schedule]\(タスクの周期またはタスクのスケジュール\)** の **[Run once now]\(今すぐ 1 度だけ実行する\)** を選択し、 **[次へ]** を選択します。
 
@@ -134,7 +134,7 @@ Data Factory インスタンスを作成するには、Azure へのログイン�
 
 1. **[統合ランタイムのセットアップ]** ダイアログ ボックスで、 **[セルフホステッド]** を選択します。 その後 **[続行]** を選択します。
 
-   ![統合ランタイムの作成](./media/tutorial-hybrid-copy-data-tool/create-self-hosted-integration-runtime.png)
+   :::image type="content" source="./media/tutorial-hybrid-copy-data-tool/create-self-hosted-integration-runtime.png" alt-text="統合ランタイムの作成":::
 
 1. **[統合ランタイムのセットアップ]** ダイアログ ボックスの **[名前]** に「**TutorialIntegrationRuntime**」と入力します。 **[作成]** を選択します。
 
@@ -142,7 +142,7 @@ Data Factory インスタンスを作成するには、Azure へのログイン�
 
 1. ダウンロードされたアプリケーションを実行します。 ウィンドウには高速セットアップの状態が表示されます。
 
-    ![高速セットアップの状態](./media/tutorial-hybrid-copy-data-tool/express-setup-status.png)
+    :::image type="content" source="./media/tutorial-hybrid-copy-data-tool/express-setup-status.png" alt-text="高速セットアップの状態":::
 
 1. **[新しい接続 (SQL Server)]** ダイアログ ボックスで、 **[統合ランタイム経由で接続する]** の **TutorialIntegrationRuntime** が選択されていることを確認します。 その後、次の手順を行います。
 
@@ -160,7 +160,7 @@ Data Factory インスタンスを作成するには、Azure へのログイン�
 
     g. 接続をテストし、 **[作成]** を選択します。
 
-      ![統合ランタイムの選択](./media/tutorial-hybrid-copy-data-tool/integration-runtime-selected.png)
+      :::image type="content" source="./media/tutorial-hybrid-copy-data-tool/integration-runtime-selected.png" alt-text="統合ランタイムの選択":::
 
 1. **[ソース データ ストア]** ページで、新しく作成した **SQL Server** 接続が、 **[接続]** ブロックで選択されていることを確認します。 次に、 **[ソース テーブル]** セクションで、 **[EXISTING TABLES]** を選択し、 **[dbo.emp]** テーブルをリストで選択し、 **[次へ]** を選択します。 データベースに基づいて、その他のテーブルを選択できます。
 
@@ -170,7 +170,7 @@ Data Factory インスタンスを作成するには、Azure へのログイン�
 
 1. **[新しい接続]** で、 **[Azure Blob Storage]** 、 **[続行]** の順に選択します。
 
-   ![Blob Storage の選択](./media/tutorial-hybrid-copy-data-tool/select-destination-data-store.png)
+   :::image type="content" source="./media/tutorial-hybrid-copy-data-tool/select-destination-data-store.png" alt-text="Blob Storage の選択":::
 
 1. **[新しい接続 (Azure Blob Storage)]** ダイアログで、次の手順を実行します。
 

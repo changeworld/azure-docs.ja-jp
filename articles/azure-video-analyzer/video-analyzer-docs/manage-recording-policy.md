@@ -4,18 +4,18 @@ description: このトピックでは、Azure Video Analyzer を使用してレ�
 ms.service: azure-video-analyzer
 ms.topic: how-to
 ms.date: 06/01/2021
-ms.openlocfilehash: 31b9d4f14a9c60687b9a6e8f32fcc3a1fba82856
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: 95e5decc8092c6a40e368c395da61fd8b9904e30
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114601580"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124762001"
 ---
 # <a name="manage-recording-policy-with-video-analyzer"></a>Video Analyzer を使用してレコーディング ポリシーを管理する
 
-Azure Video Analyzer を使用して、数週間 、数か月、または数年におよびライブ ビデオをクラウドに[記録](video-recording.md)できます。 この記録は、[連続](continuous-video-recording.md)である場合も、スパースまたは[イベント ベース](event-based-video-recording-concept.md)となることもできます。 どちらの場合も、レコーディングは年にまたがって行う可能性があります。 Azure ストレージに組み込まれている[ライフサイクル管理ツール](../../storage/blobs/storage-lifecycle-management-concepts.md?tabs=azure-portal)を使用して、そのクラウド アーカイブの長さ (日数) を管理できます。  
+Azure Video Analyzer を使用して、数週間 、数か月、または数年におよびライブ ビデオをクラウドに[記録](video-recording.md)できます。 この記録は、[連続](continuous-video-recording.md)である場合も、スパースまたは[イベント ベース](event-based-video-recording-concept.md)となることもできます。 どちらの場合も、レコーディングは年にまたがって行う可能性があります。 Azure ストレージに組み込まれている[ライフサイクル管理ツール](../../storage/blobs/lifecycle-management-overview.md?tabs=azure-portal)を使用して、そのクラウド アーカイブの長さ (日数) を管理できます。  
 
-Video Analyzer アカウントは Azure Storage アカウントにリンクされ、ビデオ リソースに記録すると、メディア データがストレージ アカウント内のコンテナーに書き込まれます。 ライフサイクル管理を使用すると、ストレージ アカウントの[ポリシー](../../storage/blobs/storage-lifecycle-management-concepts.md?tabs=azure-portal#policy)を定義できます。ここで、次のような[ルール](../../storage/blobs/storage-lifecycle-management-concepts.md?tabs=azure-portal#rules)を指定できます。
+Video Analyzer アカウントは Azure Storage アカウントにリンクされ、ビデオ リソースに記録すると、メディア データがストレージ アカウント内のコンテナーに書き込まれます。 ライフサイクル管理を使用すると、ストレージ アカウントの[ポリシー](../../storage/blobs/lifecycle-management-overview.md?tabs=azure-portal)を定義できます。ここで、次のような[ルール](../../storage/blobs/lifecycle-management-overview.md?tabs=azure-portal#lifecycle-management-rule-definition)を指定できます。
 
 ```
 {
@@ -53,7 +53,7 @@ Video Analyzer を使用してビデオ リソースに記録する場合は、�
 次に、ライフサイクル管理に関する既知の制限事項をいくつか示します。
 
 * ポリシー内には最大で 100 のルールを設定でき、ルールごとに最大 10 個のコンテナーを指定できます。 したがって、異なる記録ポリシーを持つ必要がある場合 (たとえば、駐車場に面したカメラには 3 日間のアーカイブ、発送センターのカメラには 30 日間、レジ カウンターの背後にあるカメラには 180 日間)、1 つの ストレージ アカウントを使用して、最大 1,000 台のカメラのルールをカスタマイズできます。
-* ライフサイクル管理ポリシーの更新はすぐには行われません。 詳細については、[この FAQ セクション](../../storage/blobs/storage-lifecycle-management-concepts.md?tabs=azure-portal#faq)を参照してください。
+* ライフサイクル管理ポリシーの更新はすぐには行われません。 詳細については、[この FAQ セクション](../../storage/blobs/lifecycle-management-overview.md?tabs=azure-portal#faq)を参照してください。
 * BLOB をクール層に移動するポリシーを適用する場合は、アーカイブのその部分の再生が影響を受ける可能性があります。 追加の待機時間、または散発的なエラーが表示されることがあります。 Video Analyzer は、アーカイブ層のコンテンツの再生をサポートしていません。
 
 ## <a name="next-steps"></a>次のステップ

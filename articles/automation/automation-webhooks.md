@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 07/21/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 50299b64577ed93f7aa1b09f2b5b20ccca88404e
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 3ccdbb04942e946d251008187693ee948b960178
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114472607"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124836931"
 ---
 # <a name="start-a-runbook-from-a-webhook"></a>webhook から Runbook を開始する
 
@@ -94,7 +94,7 @@ Webhook のセキュリティは、Webhook の呼び出しを許可するセキ�
 
 ## <a name="create-a-webhook"></a>webhook を作成する
 
-Webhook には発行された Runbook が必要です。 このチュートリアルでは、「[Azure Automation Runbook を作成する](automation-quickstart-create-runbook.md)」で作成した Runbook の変更バージョンを使用します。 先に進むには、次のコードを使用して PowerShell Runbook を編集します。
+Webhook には発行された Runbook が必要です。 このチュートリアルでは、「[Azure Automation Runbook を作成する](./learn/powershell-runbook-managed-identity.md)」で作成した Runbook の変更バージョンを使用します。 先に進むには、次のコードを使用して PowerShell Runbook を編集します。
 
 ```powershell
 param

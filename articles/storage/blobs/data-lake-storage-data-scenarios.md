@@ -8,22 +8,22 @@ ms.topic: conceptual
 ms.date: 02/14/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 4ed2458b09d200542ce8789d90250027a07a970d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7670430d112482addea26c9fc1bc97c2434bc2e2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101735473"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128555343"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>Data Lake Storage Gen2 を使用してビッグ データの要件に対応する
 
 ビッグ データの処理には主に 4 つの段階があります。
 
 > [!div class="checklist"]
-> * データ ストアへの大量のデータの取り込み (リアルタイムまたは一括)
-> * データの処理
-> * データのダウンロード
-> * データの視覚化
+> - データ ストアへの大量のデータの取り込み (リアルタイムまたは一括)
+> - データの処理
+> - データのダウンロード
+> - データの視覚化
 
 この記事では、各処理フェーズのオプションとツールについて説明します。
 
@@ -37,7 +37,7 @@ Azure Data Lake Storage Gen2 で使用できる Azure サービスの完全な�
 
 ### <a name="ad-hoc-data"></a>アドホック データ
 
-これは、ビッグ データ アプリケーションのプロトタイプ作成に使用される小規模なデータ セットを表します。 アドホック データの取り込み方法は、データ ソースに応じてさまざまです。 
+これは、ビッグ データ アプリケーションのプロトタイプ作成に使用される小規模なデータ セットを表します。 アドホック データの取り込み方法は、データ ソースに応じてさまざまです。
 
 アドホック データの取り込みに使用できるツールの一覧を次に示します。
 
@@ -104,13 +104,13 @@ HDInsight クラスターに関連付けられたデータの取り込みに使�
 
 ### <a name="really-large-datasets"></a>非常に大規模なデータセット
 
-数 TB に及ぶデータセットをアップロードする場合、上記の方法では速度が遅く、コストがかかることがあります。 このような場合は、Azure ExpressRoute を使用できます。  
+数 TB に及ぶデータセットをアップロードする場合、上記の方法では速度が遅く、コストがかかることがあります。 このような場合は、Azure ExpressRoute を使用できます。
 
 Azure ExpressRoute を使用すると、Azure データ センターとお客様のオンプレミスのインフラストラクチャとの間でプライベート接続を作成できます。 これにより、大量のデータを転送するための信頼性の高いオプションが提供されます。 詳しくは、[Azure ExpressRoute のドキュメント](../../expressroute/expressroute-introduction.md)をご覧ください。
 
 ## <a name="process-the-data"></a>データを処理する
 
-Data Lake Storage Gen2 でデータが利用できるようになったら、サポートされているビッグ データ アプリケーションを使用して、そのデータの分析を実行できます。 
+Data Lake Storage Gen2 でデータが利用できるようになったら、サポートされているビッグ データ アプリケーションを使用して、そのデータの分析を実行できます。
 
 ![Data Lake Storage Gen2 のデータを分析する](./media/data-lake-storage-data-scenarios/analyze-data.png "Data Lake Storage Gen2 のデータを分析する")
 
@@ -129,9 +129,9 @@ Data Lake Storage Gen2 に格納されたデータを視覚的に表現するに
 
 次のようなシナリオでは、Azure Data Lake Storage Gen2 からデータをダウンロードしたり、移動したりすることもできます。
 
-* 既存のデータ処理パイプラインとのインターフェイスとなる他のリポジトリにデータを移動する。 たとえば、Data Lake Storage Gen2 から Azure SQL Database または SQL Server インスタンスにデータを移動できます。
+- 既存のデータ処理パイプラインとのインターフェイスとなる他のリポジトリにデータを移動する。 たとえば、Data Lake Storage Gen2 から Azure SQL Database または SQL Server インスタンスにデータを移動できます。
 
-* アプリケーション プロトタイプの作成中に IDE 環境で処理するために、ローカル コンピューターにデータをダウンロードする。
+- アプリケーション プロトタイプの作成中に IDE 環境で処理するために、ローカル コンピューターにデータをダウンロードする。
 
 ![Data Lake Storage Gen2 からデータを送信する](./media/data-lake-storage-data-scenarios/egress-data.png "Data Lake Storage Gen2 からデータを送信する")
 

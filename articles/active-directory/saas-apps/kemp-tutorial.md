@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/30/2021
 ms.author: jeedes
-ms.openlocfilehash: 362b2108fb76716b0ad8f81aa2cca4215a97a570
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 1fd3f82e74e3372088851cc402847133daa6be66
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121746971"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124822111"
 ---
 # <a name="tutorial-azure-active-directory-sso-integration-with-kemp-loadmaster-azure-ad-integration"></a>チュートリアル:Azure Active Directory SSO と Kemp LoadMaster Azure AD integration の統合
 
@@ -374,7 +374,7 @@ d. [Server-Side configuration]\(サーバー側の構成\) で、以前に作成
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した Kemp LoadMaster Azure AD integration に自動的にサインインされます。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Kemp LoadMaster Azure AD integration] タイルをクリックすると、SSO を設定した Kemp LoadMaster Azure AD integration に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Kemp LoadMaster Azure AD integration] タイルをクリックすると、SSO を設定した Kemp LoadMaster Azure AD integration に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

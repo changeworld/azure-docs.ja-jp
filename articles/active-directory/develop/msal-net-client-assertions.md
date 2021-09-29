@@ -13,12 +13,12 @@ ms.date: 03/18/2021
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 000aeffa982c59f1efbb6ecae73f6b48e95f981e
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 92c1dbe34078442fa5ba84c00880e15502602bc6
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105967321"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124787151"
 ---
 # <a name="confidential-client-assertions"></a>機密クライアント アサーション
 
@@ -54,6 +54,12 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 string signedClientAssertion = ComputeAssertion();
 app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .WithClientAssertion(() => { return GetSignedClientAssertion(); } )
+                                          .Build();
+                                          
+// or in async manner
+
+app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
+                                          .WithClientAssertion(async cancellationToken => { return await GetClientAssertionAsync(cancellationToken); })
                                           .Build();
 ```
 

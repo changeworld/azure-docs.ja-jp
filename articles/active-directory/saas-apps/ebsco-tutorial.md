@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/17/2021
 ms.author: jeedes
-ms.openlocfilehash: 95e84bbe917a6b1e30ecb9dcf41f1f5e00576c82
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 075bcffd7cb2beb3e64b54536934953c49df9b76
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110469255"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124813610"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ebsco"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と EBSCO の統合
 
@@ -161,7 +161,7 @@ Azure AD によって必要なデータが EBSCO アプリケーションに渡�
 このセクションでは、マイ アプリを使用して Azure AD のシングル サインオン構成をテストします。
 
 1. マイ アプリで [EBSCO] タイルをクリックすると、EBSCO アプリケーションに自動的にサインオンします。
-マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 1. アプリケーションにログインしたら、右上隅の **[サインイン]** ボタンをクリックします。
 

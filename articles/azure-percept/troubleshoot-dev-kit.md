@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 08/10/2021
 ms.custom: template-how-to
-ms.openlocfilehash: e644732a90652b1672dc77bfc6db86d7a6b7295a
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 8db131bd39ae8ebe27720a7d725f6ab8082dfd83
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123221073"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124780017"
 ---
 # <a name="troubleshoot-the-azure-percept-dk-device"></a>Azure Percept DK デバイスのトラブルシューティング
 
@@ -48,6 +48,9 @@ ms.locfileid: "123221073"
 |*edgeAgent logs* - デバイス上で実行されているすべてのモジュールのバージョン番号を記録します。|1 つ以上のモジュールが動作していない場合に収集します。|```sudo iotedge logs edgeAgent```|
 |*モジュール コンテナー ログ* - 特定の IoT Edge モジュール コンテナーの詳細を記録します|モジュールに問題が検出されたときに収集します|```sudo iotedge logs [container name]```|
 |*ネットワーク ログ* -Wi-Fi サービスとネットワーク スタックをカバーするログのセット。|Wi-Fi またはネットワークの問題が検出されたときに収集します。|```sudo journalctl -u hostapd.service -u wpa_supplicant.service -u ztpd.service -u systemd-networkd > network_log.txt```<br><br>```cat /etc/os-release && cat /etc/os-subrelease && cat /etc/adu-version && rpm -q ztpd > system_ver.txt```<br><br>両方のコマンドを実行します。 各コマンドによって複数のログが収集され、1 つの出力に格納されます。|
+
+> [!WARNING]
+> `support-bundle` コマンドからの出力には、ホスト、デバイス名とモジュール名、モジュールによってログに記録された情報などが含まれる場合があります。パブリック フォーラムで出力を共有する場合は、この点に注意してください。
 
 ## <a name="troubleshooting-commands"></a>コマンドのトラブルシューティング
 開発キットで発生する可能性のある問題のトラブルシューティングに使用できる一連のコマンドを次に示します。 これらのコマンドを実行するには、まず [SSH 経由](./how-to-ssh-into-percept-dk.md)で開発キットに接続する必要があります。 

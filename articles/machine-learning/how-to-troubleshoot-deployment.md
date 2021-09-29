@@ -5,17 +5,15 @@ description: Azure Kubernetes Service と Azure Container Instances での一般
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-author: gvashishtha
-ms.author: gopalv
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: contperf-fy20q4, devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: 2fddb83123f22a99e0b65363f52c2b8c3bbfbfc3
-ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
+ms.openlocfilehash: 0e3163ad1cdc3f75bb40975c57af277339e2a62d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122597996"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128620314"
 ---
 # <a name="troubleshooting-remote-model-deployment"></a>リモートでのモデル デプロイのトラブルシューティング 
 

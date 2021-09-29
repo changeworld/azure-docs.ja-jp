@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 06/29/2021
 ms.author: tamram
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 600c651601e4281b717c1c8fa7808f3663be4af6
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: cfea2bd15bceb7d1478059d9ef80f4eb33337dc6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113093945"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128664753"
 ---
 # <a name="manage-storage-account-access-keys"></a>ストレージ アカウント アクセス キーを管理する
 
@@ -57,7 +57,7 @@ $storageAccountKey = `
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Azure CLI でアカウント アクセス キーを一覧表示するには、次の例のように [az storage account keys list](/cli/azure/storage/account/keys#az_storage_account_keys_list) コマンドを呼び出します。 角かっこ内のプレースホルダー値を独自の値で置き換えてください。 
+Azure CLI でアカウント アクセス キーを一覧表示するには、次の例のように [az storage account keys list](/cli/azure/storage/account/keys#az_storage_account_keys_list) コマンドを呼び出します。 角かっこ内のプレースホルダー値を独自の値で置き換えてください。
 
 ```azurecli-interactive
 az storage account keys list \
@@ -97,7 +97,7 @@ Azure portal を使用してキーの有効期限ポリシーを設定する機�
 
 #### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-キーの有効期限ポリシーを作成するには、[Set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) コマンドを使用して、アクセス キーがアクティブになってからローテーションが必要になるまでの日数を `-KeyExpirationPeriodInDay` パラメーターで設定します。 
+キーの有効期限ポリシーを作成するには、[Set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) コマンドを使用して、アクセス キーがアクティブになってからローテーションが必要になるまでの日数を `-KeyExpirationPeriodInDay` パラメーターで設定します。
 
 ```powershell
 $account = Set-AzStorageAccount -ResourceGroupName <resource-group> -Name `
@@ -107,32 +107,31 @@ $account = Set-AzStorageAccount -ResourceGroupName <resource-group> -Name `
 > [!TIP]
 > キーの有効期限ポリシーの設定は、ストレージ アカウントの作成時に、[New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) コマンドの `-KeyExpirationPeriodInDay` パラメーターの設定で行うこともできます。
 
-ポリシーが適用されていることを確認するには、前のコマンドの `$account` 変数に返された [PSStorageAccount](/dotnet/api/microsoft.azure.commands.management.storage.models.psstorageaccount) の `KeyPolicy` プロパティを使用します。 
-  
+ポリシーが適用されていることを確認するには、前のコマンドの `$account` 変数に返された [PSStorageAccount](/dotnet/api/microsoft.azure.commands.management.storage.models.psstorageaccount) の `KeyPolicy` プロパティを使用します。
+
 ```powershell
 $account.KeyPolicy
-``` 
+```
 
 コンソールの出力にキーの有効期限が表示されます。
 
 > [!div class="mx-imgBorder"]
 > ![アクセス キーの有効期限](./media/storage-account-keys-manage/key-policy-powershell.png)
 
-有効期限を超えてアクティブになっている既存のキーをローテーションしたい場合があります。 キーの作成日時を調べるには、`KeyCreationTime` プロパティを使用します。 
-  
+有効期限を超えてアクティブになっている既存のキーをローテーションしたい場合があります。 キーの作成日時を調べるには、`KeyCreationTime` プロパティを使用します。
+
 ```powershell
 $account.KeyCreationTime
-``` 
+```
 
 両方のアクセス キーの作成時刻がコンソールの出力に表示されます。
 
 > [!div class="mx-imgBorder"]
 > ![アクセス キーの作成時刻](./media/storage-account-keys-manage/key-creation-time-powershell.png)
 
-
 #### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-既存のストレージ アカウントにキーの有効期限ポリシーを作成するには、[az storage account update](/cli/azure/storage/account#az_storage_account_update) コマンドを使用して、アクセス キーがアクティブになってからローテーションが必要になるまでの日数を `--key-exp-days` パラメーターで設定します。 
+既存のストレージ アカウントにキーの有効期限ポリシーを作成するには、[az storage account update](/cli/azure/storage/account#az_storage_account_update) コマンドを使用して、アクセス キーがアクティブになってからローテーションが必要になるまでの日数を `--key-exp-days` パラメーターで設定します。
 
 ```azurecli-interactive
 az storage account update \
@@ -144,7 +143,7 @@ az storage account update \
 > キーの有効期限ポリシーの設定は、ストレージ アカウントの作成時に、[az storage account create](/cli/azure/storage/account#az_storage_account_create) コマンドの `-KeyExpirationPeriodInDay` パラメーターの設定で行うこともできます。
 
 ポリシーが適用されていることを確認するには、[az storage account show](/cli/azure/storage/account#az_storage_account_show) コマンドを呼び出します。`-query` パラメーターには、`{KeyPolicy:keyPolicy}` という文字列を使用します。
-  
+
 ```azurecli-interactive
 az storage account show \
   -n <storage-account-name> \
@@ -162,9 +161,8 @@ az storage account show \
 }
 ```
 
-
 有効期限を超えてアクティブになっている既存のキーをローテーションしたい場合があります。 キーがいつ作成されたかを調べるには、[az storage account show](/cli/azure/storage/account#az_storage_account_show) コマンドを使用します。-query パラメーターには、`keyCreationTime` という文字列を使用します。
-  
+
 ```azurecli-interactive
 az storage account show \
   -n <storage-account-name> \
@@ -176,22 +174,22 @@ az storage account show \
 
 ### <a name="query-for-policy-violations"></a>ポリシー違反を照会する
 
-[Azure Log Analytics ワークスペースにログを送信](../blobs/monitor-blob-storage.md#send-logs-to-azure-log-analytics)する診断設定を作成すれば、Azure Monitor ログ クエリを使用して、キーの有効期限が切れているかどうかを調べることができます。 
+[Azure Log Analytics ワークスペースにログを送信](../blobs/monitor-blob-storage.md#send-logs-to-azure-log-analytics)する診断設定を作成すれば、Azure Monitor ログ クエリを使用して、キーの有効期限が切れているかどうかを調べることができます。
 
 キーの有効期限が切れているかどうかを調べるには、 **[ログ検索]** バーに次のクエリを入力します。
 
-```Kusto
+```kusto
 StorageBlobLogs | where KeyExpiryStatus startsWith "Policy Violated". 
 ```
 
 有効期限が近づいているかどうかを調べることのできるクエリを作成することもできます。 この情報を取得するクエリは次のとおりです。
 
-```Kusto
-resources  
-| where type =~ 'microsoft.storage/storageAccounts' 
-| extend days = datetime_diff('day', now(), todatetime(parse_json(properties).keyCreationTime)) 
-| extend KeyExpiryStatus = iff(days > 180, "Policy Violated", "") 
-| project name, days, KeyExpiryStatus  
+```kusto
+resources 
+| where type =~ 'microsoft.storage/storageAccounts'
+| extend days = datetime_diff('day', now(), todatetime(parse_json(properties).keyCreationTime))
+| extend KeyExpiryStatus = iff(days > 180, "Policy Violated", "")
+| project name, days, KeyExpiryStatus  
 ```
 
 ### <a name="rotate-access-keys"></a>アクセス キーをローテーションする
@@ -241,13 +239,13 @@ Azure CLI を使用してストレージ アカウントのアクセス キー�
     ```azurecli-interactive
     az storage account keys renew \
       --resource-group <resource-group> \
-      --account-name <storage-account>
+      --account-name <storage-account> \
       --key primary
     ```
 
 1. 新しいプライマリ アクセス キーを参照するようにアプリケーション コードの接続文字列を更新します。
 
-2. 同様に、セカンダリ アクセス キーを再生成します。 セカンダリ キーを再生成するには、キー名として `key1` の代わりに `key2` を使用します。
+2. 同様に、セカンダリ アクセス キーを再生成します。 セカンダリ キーを再生成するには、キー名として `primary` の代わりに `secondary` を使用します。
 
 ---
 

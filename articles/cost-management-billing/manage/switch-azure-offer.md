@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 08/27/2021
 ms.author: banders
-ms.openlocfilehash: 7388ee42195d93a9b7d9a64567f25be91b0eb38d
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 73f40b059e5577ba893b26ab715a8158e3a33482
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123111956"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124836912"
 ---
 # <a name="change-your-azure-subscription-to-a-different-offer"></a>Azure サブスクリプションを別のオファーに変更する
 
@@ -108,7 +108,7 @@ Azure のプランを切り替えるとどうなるかを以下で詳しく説�
 
 #### <a name="quota-increases-are-reset"></a>クォータの増加はリセットされる
 
-プランを切り替えると、[既定の制限を上回る制限またはクォータの増加](../../azure-portal/supportability/resource-manager-core-quotas-request.md)がリセットされます。 既定の制限を超えるリソースがあっても、サービスのダウンタイムはありません。 たとえば、サブスクリプションで 200 コアを使用しているとき、オファーを切り替えるとコア クォータが既定の 20 コアにリセットされます。 200 コアを使用している VM は影響を受けず、実行を継続します。 ただし、クォータ増加をもう一度要求しないのであれば、これ以上はコアをプロビジョニングできません。
+プランを切り替えると、[既定の制限を上回る制限またはクォータの増加](../../azure-portal/supportability/regional-quota-requests.md)がリセットされます。 既定の制限を超えるリソースがあっても、サービスのダウンタイムはありません。 たとえば、サブスクリプションで 200 コアを使用しているとき、オファーを切り替えるとコア クォータが既定の 20 コアにリセットされます。 200 コアを使用している VM は影響を受けず、実行を継続します。 ただし、クォータ増加をもう一度要求しないのであれば、これ以上はコアをプロビジョニングできません。
 
 #### <a name="billing"></a>課金
 

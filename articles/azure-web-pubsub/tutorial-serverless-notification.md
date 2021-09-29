@@ -6,12 +6,12 @@ ms.author: jixin
 ms.service: azure-web-pubsub
 ms.topic: tutorial
 ms.date: 08/24/2021
-ms.openlocfilehash: 0012b17de652d2282cfb2ca21806b95e892b80a7
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: 98bb95800596ac54bae01efb501c6016767ca650
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123452233"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124785099"
 ---
 # <a name="tutorial-create-a-serverless-notification-app-with-azure-functions-and-azure-web-pubsub-service"></a>チュートリアル: Azure Functions と Azure Web PubSub サービスを使用してサーバーレス通知アプリを作成する
 
@@ -358,7 +358,7 @@ Azure Web PubSub サービスは、WebSocket を使用して、リアルタイ�
 
 1. Azure に関数プロジェクトをデプロイする:
 
-    Azure への関数アプリの作成に成功したら、[func azure functionapp publish](/azure/azure-functions/functions-run-local) コマンドを使用して、ローカル関数プロジェクトをデプロイすることができます。
+    Azure への関数アプリの作成に成功したら、[func azure functionapp publish](../azure-functions/functions-run-local.md) コマンドを使用して、ローカル関数プロジェクトをデプロイすることができます。
 
     ```bash
     func azure functionapp publish <FUNCIONAPP_NAME> --publish-local-settings

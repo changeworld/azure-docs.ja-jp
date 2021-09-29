@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/14/2020
-ms.openlocfilehash: 9c6be388d02ebec99a3ec9ad105cff68c6e3f1bd
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e490d3a1b38c70e7d5ed7fa11ac5b5055225fb8b
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121735827"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129059120"
 ---
 # <a name="send-log-data-to-azure-monitor-by-using-the-http-data-collector-api-preview"></a>HTTP データ コレクター API を使用して Azure Monitor にログ データを送信する (プレビュー)
 
@@ -64,7 +64,7 @@ Azure Monitor HTTP データ コレクター API への要求には、Authorizat
 Authorization: SharedKey <WorkspaceID>:<Signature>
 ```
 
-*WorkspaceID* は、Log Analytics ワークスペースの一意識別子です。 *Signature* は、要求で構築されてから、[SHA256 アルゴリズム](/dotnet/api/system.security.cryptography.sha256)を使用して計算される[ハッシュ ベースのメッセージ認証コード (HMAC)](/dotnet/api/system.security.cryptography.hmacsha256) です。 このコードを Base64 エンコーディングを使用してエンコードします。
+*WorkspaceID* は、Log Analytics ワークスペースの一意識別子です。 *Signature* は、要求で構築されてから、[SHA256 アルゴリズム](/dotnet/api/system.security.cryptography.sha256)を使用して計算される [ハッシュ ベースのメッセージ認証コード (HMAC)](/dotnet/api/system.security.cryptography.hmacsha256) です。 このコードを Base64 エンコーディングを使用してエンコードします。
 
 **SharedKey** 署名文字列をエンコードするには、次の形式を使用します。
 
@@ -573,6 +573,7 @@ import java.text.SimpleDateFormat;
 import java.util.Base64;
 import java.util.Calendar;
 import java.util.TimeZone;
+import java.util.Locale;
 
 import static org.springframework.http.HttpHeaders.CONTENT_TYPE;
 

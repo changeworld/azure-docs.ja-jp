@@ -8,12 +8,12 @@ ms.date: 02/20/2018
 ms.author: rogarana
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 4b8c52b03cb6dec6096565e9eac26b7b2c4a30e4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1674fe3aee6ea336986a9570232d070f47bbb478
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89073252"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128620238"
 ---
 # <a name="create-a-virtual-machine-and-storage-account-for-a-scalable-application"></a>スケーラブルなアプリケーションの仮想マシンおよびストレージ アカウントの作成
 
@@ -22,9 +22,9 @@ ms.locfileid: "89073252"
 シリーズの第 1 部で学習する内容は次のとおりです。
 
 > [!div class="checklist"]
-> * ストレージ アカウントの作成
-> * 仮想マシンの作成
-> * カスタム スクリプト拡張機能の構成
+> - ストレージ アカウントの作成
+> - 仮想マシンの作成
+> - カスタム スクリプト拡張機能の構成
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -43,7 +43,7 @@ New-AzResourceGroup -Name myResourceGroup -Location EastUS
 ```
 
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
- 
+
 サンプルでは、Azure Storage アカウント内の BLOB コンテナーに 50 個の大規模ファイルをアップロードします。 ストレージ アカウントは、Azure Storage データ オブジェクトを格納してアクセスするための一意の名前空間を用意します。 [New-AzStorageAccount](/powershell/module/az.Storage/New-azStorageAccount) コマンドを使用して作成されたリソース グループ内に、ストレージ アカウントを作成します。
 
 次のコマンドの `<blob_storage_account>` プレースホルダーを、BLOB ストレージ アカウントのグローバルな一意の名前に置き換えます。
@@ -103,12 +103,12 @@ Write-host "Your public IP address is $($pip.IpAddress)"
 このチュートリアルでは、必ず仮想マシンにインストールされていなければならない前提条件があります。 カスタム スクリプト拡張機能は、次のタスクを完了する PowerShell スクリプトの実行に使用されます。
 
 > [!div class="checklist"]
-> * .NET core 2.0 のインストール
-> * chocolatey のインストール
-> * GIT のインストール
-> * サンプル リポジトリの複製
-> * NuGet パッケージの復元
-> * ランダム データでの 50 1-GB ファイルの作成
+> - .NET core 2.0 のインストール
+> - chocolatey のインストール
+> - GIT のインストール
+> - サンプル リポジトリの複製
+> - NuGet パッケージの復元
+> - ランダム データでの 50 1-GB ファイルの作成
 
 次のコマンドレットを実行して、仮想マシンの構成の最終処理を行います。 この手順を完了するには、5 ～ 15 分かかります。
 
@@ -127,9 +127,9 @@ Set-AzVMCustomScriptExtension -ResourceGroupName myResourceGroup `
 シリーズの第 1 部では、ストレージ アカウントの作成、仮想マシンのデプロイ、そして、以下を行う方法など必要な前提条件での仮想マシンの構成について説明しました。
 
 > [!div class="checklist"]
-> * ストレージ アカウントの作成
-> * 仮想マシンの作成
-> * カスタム スクリプト拡張機能の構成
+> - ストレージ アカウントの作成
+> - 仮想マシンの作成
+> - カスタム スクリプト拡張機能の構成
 
 シリーズの第 2 部では、指数による再試行と並行処理を使用して大量データをストレージ アカウントにアップロードします。
 

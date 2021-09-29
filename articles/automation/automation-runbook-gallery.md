@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/07/2021
 ms.topic: conceptual
-ms.openlocfilehash: 1f7a3f31ed67817252f7ba33b9f4a83ef8ccd5c6
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 203900e225700055c581ce4c7a100e055d9526b7
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114455624"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124837444"
 ---
 # <a name="use-existing-runbooks-and-modules"></a>既存の Runbook とモジュールを使用する
 
@@ -131,7 +131,7 @@ Azure Automation コミュニティに貢献し、成長を支援することを
 
 ## <a name="next-steps"></a>次のステップ
 
-* PowerShell Runbook の使用を開始するには、「[チュートリアル:PowerShell Runbook を作成する](learn/automation-tutorial-runbook-textual-powershell.md)」を参照してください。
+* PowerShell Runbook の使用を開始するには、「[チュートリアル:PowerShell Runbook を作成する](./learn/powershell-runbook-managed-identity.md)」を参照してください。
 * Runbook を操作するには、「[Azure Automation で Runbook を管理する](manage-runbooks.md)」を参照してください。
 * PowerShell スクリプトの詳細については、[PowerShell のドキュメント](/powershell/scripting/overview)を参照してください。
 * PowerShell コマンドレットのリファレンスについては、「[Az.Automation](/powershell/module/az.automation)」をご覧ください。

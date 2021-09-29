@@ -10,20 +10,20 @@ ms.date: 10/14/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: d7ca1707c89f03683960822591065143d3f8aa4f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 435f5376a0a84cf2d9d706e4391142814b0f0141
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92783880"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128593080"
 ---
 # <a name="configure-azure-storage-connection-strings"></a>Azure Storage の接続文字列を構成する
 
 接続文字列には、アプリケーションの実行時に共有キーによる承認を使用して Azure Storage アカウント内のデータにアクセスするために必要な承認情報が格納されています。 接続文字列は、次の目的に構成できます。
 
-* Azurite ストレージ エミュレーターに接続します。
-* Azure のストレージ アカウントにアクセスする。
-* Shared Access Signature (SAS) を介して Azure の特定のリソースにアクセスする。
+- Azurite ストレージ エミュレーターに接続します。
+- Azure のストレージ アカウントにアクセスする。
+- Shared Access Signature (SAS) を介して Azure の特定のリソースにアクセスする。
 
 アカウント アクセス キーを表示し、接続文字列をコピーする方法については、「[ストレージ アカウント アクセス キーを管理する](storage-account-keys-manage.md)」を参照してください。
 
@@ -33,9 +33,9 @@ ms.locfileid: "92783880"
 
 アプリケーションは実行時に接続文字列にアクセスして、Azure Storage に対する要求を承認する必要があります。 接続文字列は次の方法で保存できます。
 
-* 接続文字列は、環境変数に保存することができます。
-* デスクトップまたはデバイスで実行するアプリケーションの場合は、**app.config** ファイルまたは **web.config** ファイルに接続文字列を保存できます。 この接続文字列は、これらのファイルの **AppSettings** セクションに追加します。
-* Azure クラウド サービスで実行するアプリケーションの場合、接続文字列は [Azure サービスの構成スキーマ (.cscfg) ファイル](/previous-versions/azure/reference/ee758710(v=azure.100))に保存できます。 接続文字列をサービス構成ファイルの **ConfigurationSettings** セクションに追加します。
+- 接続文字列は、環境変数に保存することができます。
+- デスクトップまたはデバイスで実行するアプリケーションの場合は、**app.config** ファイルまたは **web.config** ファイルに接続文字列を保存できます。 この接続文字列は、これらのファイルの **AppSettings** セクションに追加します。
+- Azure クラウド サービスで実行するアプリケーションの場合、接続文字列は [Azure サービスの構成スキーマ (.cscfg) ファイル](/previous-versions/azure/reference/ee758710(v=azure.100))に保存できます。 接続文字列をサービス構成ファイルの **ConfigurationSettings** セクションに追加します。
 
 構成ファイル内に接続文字列を保存すると、接続文字列を簡単に更新して [Azurite ストレージ エミュレーター](../common/storage-use-azurite.md)とクラウドの Azure Storage アカウントを切り替えることができます。 必要な作業は、対象となる環境に合わせて接続文字列を編集するだけです。
 
@@ -141,6 +141,6 @@ EndpointSuffix=core.chinacloudapi.cn;
 
 ## <a name="next-steps"></a>次のステップ
 
-* [ローカルでの Azure Storage の開発に Azurite エミュレーターを使用する](../common/storage-use-azurite.md)
-* [Azure Storage Explorer](storage-explorers.md)
-* [Shared Access Signatures (SAS) の使用](storage-sas-overview.md)
+- [ローカルでの Azure Storage の開発に Azurite エミュレーターを使用する](../common/storage-use-azurite.md)
+- [Azure Storage Explorer](storage-explorers.md)
+- [Shared Access Signatures (SAS) の使用](storage-sas-overview.md)

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: davidmu
 ms.reviewer: lenalepa
-ms.openlocfilehash: 5cf4fe927d7079d866e90a789bb210730a6c4867
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a63cf628baf2f0f707f018da60f16d7bfc71e37c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121738782"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124823052"
 ---
 # <a name="end-user-experiences-for-applications-in-azure-active-directory"></a>Azure Active Directory でのアプリケーションのエンド ユーザー エクスペリエンス
 
@@ -37,7 +37,7 @@ Azure Active Directory (Azure AD) には、組織内のエンド ユーザーに
 
 マイ アプリは Azure portal から独立しているため、ユーザーが Azure サブスクリプションや Microsoft 365 サブスクリプションを持っている必要はありません。
 
-Azure AD のマイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+Azure AD のマイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="microsoft-365-application-launcher"></a>Microsoft 365 アプリケーション起動プログラム
 

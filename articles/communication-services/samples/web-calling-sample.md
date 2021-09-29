@@ -9,12 +9,13 @@ ms.author: mariusu
 ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 5ba40f396ba6d9fe255052c0e6cb3b099380b581
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.subservice: calling
+ms.openlocfilehash: da09d05650c231abf2e8a6e30440ba17982ae248
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113107579"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128671566"
 ---
 # <a name="get-started-with-the-web-calling-sample"></a>Web 通話サンプルの概要
 

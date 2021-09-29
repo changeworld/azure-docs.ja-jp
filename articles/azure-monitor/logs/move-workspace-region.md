@@ -5,12 +5,12 @@ author: yossiy
 ms.topic: how-to
 ms.date: 08/17/2021
 ms.author: yossiy
-ms.openlocfilehash: 8d8a12fe1fcc53b5e268ca412f3e0320cf8d95d9
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: cecfa72493545f40c2e7326fece88cb85f99974b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123427248"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128565415"
 ---
 # <a name="move-a-log-analytics-workspace-to-another-region-by-using-the-azure-portal"></a>Azure portal を使用して Log Analytics ワークスペースを別のリージョンに移動する
 
@@ -25,7 +25,7 @@ Log Analytics ワークスペースをリージョン間で移動することは
 - ワークスペース構成を、別のリージョンにデプロイ可能なテンプレートにエクスポートするには、[Log Analytics 共同作成者](../../role-based-access-control/built-in-roles.md#log-analytics-contributor)または[監視共同作成者](../../role-based-access-control/built-in-roles.md#monitoring-contributor)ロール以上が必要です。
 
 - 次のような、お使いのワークスペースに現在関連付けられているすべてのリソースを特定します。
-  - *接続されたエージェント*: ワークスペースに「**ログ**」と入力し、[ハートビート](../insights/solution-agenthealth.md#heartbeat-records) テーブルのクエリを実行して、接続されているエージェントを一覧表示します。
+  - *接続されたエージェント*: ワークスペースに「**ログ**」と入力し、[ハートビート](../insights/solution-agenthealth.md#azure-monitor-log-records) テーブルのクエリを実行して、接続されているエージェントを一覧表示します。
     ```kusto
     Heartbeat
     | summarize by Computer, Category, OSType, _ResourceId

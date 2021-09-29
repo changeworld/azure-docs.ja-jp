@@ -2,13 +2,13 @@
 title: Event Grid のソースとしての Azure Machine Learning
 description: Azure Event Grid の Machine Learning ワークスペース イベント用に用意されているプロパティについて説明します
 ms.topic: conceptual
-ms.date: 02/11/2021
-ms.openlocfilehash: e47c2137840e21eab73906d42b1e1536422f872d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/15/2021
+ms.openlocfilehash: 7b2a4bb1fafed62669ded2e6ff1dd0f8b7aaac74
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100363391"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128638641"
 ---
 # <a name="azure-machine-learning-as-an-event-grid-source"></a>Event Grid のソースとしての Azure Machine Learning
 
@@ -334,7 +334,7 @@ Azure Machine Learning から出力されるイベントの種類は次のとお
 
 イベントのトップレベルのデータを次に示します。
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | 説明 |
 | -------- | ---- | ----------- |
 | `topic` | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
 | `subject` | string | 発行元が定義したイベントの対象のパス。 |
@@ -349,7 +349,7 @@ Azure Machine Learning から出力されるイベントの種類は次のとお
 
 イベントのトップレベルのデータを次に示します。
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | 説明 |
 | -------- | ---- | ----------- |
 | `source` | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
 | `subject` | string | 発行元が定義したイベントの対象のパス。 |
@@ -366,7 +366,7 @@ Azure Machine Learning から出力されるイベントの種類は次のとお
 
 ### <a name="microsoftmachinelearningservicesmodelregistered"></a>Microsoft.MachineLearningServices.ModelRegistered
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | 説明 |
 | -------- | ---- | ----------- |
 | `ModelName` | string | 登録されたモデルの名前。 |
 | `ModelVersion` | string | 登録されたモデルのバージョン。 |
@@ -375,7 +375,7 @@ Azure Machine Learning から出力されるイベントの種類は次のとお
 
 ### <a name="microsoftmachinelearningservicesmodeldeployed"></a>Microsoft.MachineLearningServices.ModelDeployed
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | 説明 |
 | -------- | ---- | ----------- |
 | `ServiceName` | string | デプロイされたサービスの名前。 |
 | `ServiceComputeType` | string | デプロイされたサービスのコンピューティングの種類 (ACI、AKS など)。 |
@@ -385,7 +385,7 @@ Azure Machine Learning から出力されるイベントの種類は次のとお
 
 ### <a name="microsoftmachinelearningservicesruncompleted"></a>Microsoft.MachineLearningServices.RunCompleted
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | 説明 |
 | -------- | ---- | ----------- |
 | `experimentId` | string | 実行が属する実験の ID。 |
 | `experimentName` | string | 実行が属する実験の名前。 |
@@ -396,7 +396,7 @@ Azure Machine Learning から出力されるイベントの種類は次のとお
 
 ### <a name="microsoftmachinelearningservicesdatasetdriftdetected"></a>Microsoft.MachineLearningServices.DatasetDriftDetected
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | 説明 |
 | -------- | ---- | ----------- |
 | `DataDriftId` | string | イベントをトリガーしたデータ ドリフト モニターの ID。 |
 | `DataDriftName` | string | イベントをトリガーしたデータ ドリフト モニターの名前。 |
@@ -409,7 +409,7 @@ Azure Machine Learning から出力されるイベントの種類は次のとお
 
 ### <a name="microsoftmachinelearningservicesrunstatuschanged"></a>Microsoft.MachineLearningServices.RunStatusChanged
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | 説明 |
 | -------- | ---- | ----------- |
 | `experimentId` | string | 実行が属する実験の ID。 |
 | `experimentName` | string | 実行が属する実験の名前。 |

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/04/2021
 ms.author: jeedes
-ms.openlocfilehash: fde57eb3727eda6f810f861102e47a9f5746d1f8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 233cbcec5b22d0bd363756559b4e6d2b681e75a4
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104955603"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124820811"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-vmware-horizon---unified-access-gateway"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と VMware Horizon - Unified Access Gateway の統合
 
@@ -141,7 +141,7 @@ VMware Horizon - Unified Access Gateway で Azure AD SSO を構成してテス�
 
 * Azure portal で **[このアプリケーションをテストします]** をクリックします。すると、SSO を設定した VMware Horizon - Unified Access Gateway に自動的にサインインします。 
 
-また、Microsoft アクセス パネルを使用して、任意のモードでアプリケーションをテストすることもできます。 アクセス パネル上で [VMware Horizon - Unified Access Gateway] タイルをクリックすると、SSO を設定した VMware Horizon - Unified Access Gateway に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+また、Microsoft アクセス パネルを使用して、任意のモードでアプリケーションをテストすることもできます。 アクセス パネル上で [VMware Horizon - Unified Access Gateway] タイルをクリックすると、SSO を設定した VMware Horizon - Unified Access Gateway に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

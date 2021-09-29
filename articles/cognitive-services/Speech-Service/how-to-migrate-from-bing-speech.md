@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: pafarley
-ms.openlocfilehash: 0c914429cc98aa06421658b862367b03ce527802
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 9e3408ef27f4ee31f3308754cf5a0352b22c375b
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123540939"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124828787"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>Bing Speech から Speech Service に移行する
 
@@ -29,7 +29,7 @@ ms.locfileid: "123540939"
 * [カスタム音声テキスト変換](./custom-speech-overview.md)
 * [テキスト読み上げ](text-to-speech.md)
 * [カスタム テキスト音声読み上げ](./how-to-custom-voice-create-voice.md)
-* [音声翻訳](speech-translation.md) ([テキスト翻訳](../translator/translator-info-overview.md)は含まれません)
+* [音声翻訳](speech-translation.md) ([テキスト翻訳](../translator/translator-overview.md)は含まれません)
 
 [Speech SDK](speech-sdk.md) は Bing Speech クライアント ライブラリの機能を代替するものですが､使用している API は異なります｡
 

@@ -1,19 +1,19 @@
 ---
 title: クイック スタート:JavaScript 用 Azure Blob Storage クライアント ライブラリ v10
 description: JavaScript 用 Azure Storage クライアント ライブラリ v10 を使用して Node.js で BLOB とコンテナーを作成、アップロード、削除します
-author: twooley
-ms.author: twooley
+author: normesta
+ms.author: normesta
 ms.date: 01/19/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: ddcce3e624de7e8bed62783bdc22c5c4211e19e2
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: be5e67eeec220e2bbb8fa3cb525bb8ec9f224b06
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106280107"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128599071"
 ---
 # <a name="quickstart-manage-blobs-with-javascript-v10-sdk-in-nodejs"></a>クイック スタート:Node.js で JavaScript v10 SDK を使用して BLOB を管理する
 
@@ -120,7 +120,7 @@ const fs = require('fs');
 const path = require('path');
 ```
 
-各モジュールの目的は次のとおりです。 
+各モジュールの目的は次のとおりです。
 
 - *fs* は、ファイル システムを操作するために使用されるネイティブの Node.js モジュールです
 
@@ -132,6 +132,7 @@ const path = require('path');
 const STORAGE_ACCOUNT_NAME = process.env.AZURE_STORAGE_ACCOUNT_NAME;
 const ACCOUNT_ACCESS_KEY = process.env.AZURE_STORAGE_ACCOUNT_ACCESS_KEY;
 ```
+
 次の一連の定数は、アップロード操作中にファイル サイズの計算の意図を明らかにするのに役立ちます。
 
 ```javascript
@@ -191,7 +192,7 @@ const containerURL = ContainerURL.fromServiceURL(serviceURL, containerName);
 const blockBlobURL = BlockBlobURL.fromContainerURL(containerURL, blobName);
 ```
 
-*containerURL* 変数と *blockBlobURL* 変数は、ストレージ アカウントを操作するためにサンプル全体で再利用されます。 
+*containerURL* 変数と *blockBlobURL* 変数は、ストレージ アカウントを操作するためにサンプル全体で再利用されます。
 
 この時点では、コンテナーはストレージ アカウントに存在しません。 *ContainerURL* のインスタンスは操作できる URL を表します。 このインスタンスを使用して、コンテナーを作成および削除できます。 このコンテナーの場所は、次のような場所に相当します。
 
@@ -258,7 +259,7 @@ async function showContainerNames(aborter, serviceURL) {
 }
 ```
 
-応答が返されたら、*containerItems* を反復処理してコンソールに名前を表示します。 
+応答が返されたら、*containerItems* を反復処理してコンソールに名前を表示します。
 
 ### <a name="upload-text"></a>テキストをアップロードする
 
@@ -405,7 +406,7 @@ console.log(`Container "${containerName}" is deleted`);
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-ストレージ アカウントに書き込まれたデータはすべて、サンプル コードの最後で自動的に削除されます。 
+ストレージ アカウントに書き込まれたデータはすべて、サンプル コードの最後で自動的に削除されます。
 
 ## <a name="next-steps"></a>次のステップ
 

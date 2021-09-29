@@ -6,12 +6,12 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: v-erkel
-ms.openlocfilehash: 1385e81b5e5a4047a23b47f39d206ea94ec4d79c
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 77663500c6a3e4c432506a5859892506f8995de1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111414328"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128552606"
 ---
 # <a name="tutorial-mount-the-cluster"></a>チュートリアル:クラスターのマウント
 
@@ -92,7 +92,7 @@ mount コマンドのローカル パスは、ユーザーが指定できます�
 
 クライアントのマウントがシームレスに行われるように、mount コマンドで以下の設定と引数を渡します。
 
-``mount -o hard,nointr,proto=tcp,mountproto=tcp,retry=30 ${VSERVER_IP_ADDRESS}:/${NAMESPACE_PATH} ${LOCAL_FILESYSTEM_MOUNT_POINT}``
+`mount -o hard,nointr,proto=tcp,mountproto=tcp,retry=30 ${VSERVER_IP_ADDRESS}:/${NAMESPACE_PATH} ${LOCAL_FILESYSTEM_MOUNT_POINT}`
 
 | 必須の設定 | 説明 |
 --- | ---
@@ -101,9 +101,9 @@ mount コマンドのローカル パスは、ユーザーが指定できます�
 ``mountproto=netid`` | このオプションは、マウント操作に対するネットワーク エラーの適切な処理をサポートします。
 ``retry=n`` | 一時的なマウントの障害を回避するため、``retry=30`` を設定します。 (フォアグラウンド マウントの場合は、別の値が推奨されます。)
 
-| 推奨される設定  | 説明 |
---- | ---
-``nointr``            | このオプションをサポートする以前の OS カーネル (2008 年 4 月以前) をクライアントが使用している場合は、それを使用します。 オプション "intr" が既定値です。
+| 推奨される設定 | 説明 |
+| --- | --- |
+| `nointr` | このオプションをサポートする以前の OS カーネル (2008 年 4 月以前) をクライアントが使用している場合は、それを使用します。 オプション "intr" が既定値です。 |
 
 ## <a name="next-steps"></a>次のステップ
 

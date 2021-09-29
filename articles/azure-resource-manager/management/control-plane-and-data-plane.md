@@ -3,12 +3,12 @@ title: コントロール プレーンとデータ プレーンの操作
 description: コントロール プレーンとデータ プレーンの操作の違いについて説明します。 コントロール プレーンの操作は、Azure Resource Manager によって処理されます。 データ プレーンの操作は、サービスによって処理されます。
 ms.topic: conceptual
 ms.date: 09/10/2020
-ms.openlocfilehash: 40bb3291e4eec589c88bcd6ffd0f94a718ce8d1f
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 0e1dbf525266fdcf7ca34a449cc51169dda027d5
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108132091"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124755978"
 ---
 # <a name="azure-control-plane-and-data-plane"></a>Azure コントロール プレーンとデータ プレーン
 
@@ -44,7 +44,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 * [Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md)
 * [Azure Policy](../../governance/policy/overview.md)
 * [管理ロック](lock-resources.md)
-* [アクティビティ ログ](view-activity-logs.md)
+* [アクティビティ ログ](../../azure-monitor/essentials/activity-log.md)
 
 要求が認証されると、Azure Resource Manager によって要求がリソース プロバイダーに送信され、そこで操作が完了します。
 

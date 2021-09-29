@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/01/2021
 ms.author: gasinh
 ms.subservice: app-mgmt
-ms.openlocfilehash: 4d88932bc6cc945b38d90f1e7d79702f4b3013c9
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: d70d3f32093fc2e509d351e0ce194bac1d7490b8
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123440195"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129084153"
 ---
 # <a name="tutorial-migrate-okta-sync-provisioning-to-azure-active-directory-connect-based-synchronization"></a>チュートリアル: Okta 同期プロビジョニングを Azure Active Directory Connect ベースの同期に移行する
 
@@ -26,7 +26,7 @@ ms.locfileid: "123440195"
 
 ## <a name="prerequisites"></a>前提条件
 
-Okta プロビジョニングから Azure AD に切り替える場合、お客様には Azure AD Connect サーバーと Azure AD クラウド プロビジョニングの 2 つの選択肢があります。 2 つの製品の違いを理解するために、[Microsoft がまとめた比較記事](https://docs.microsoft.com/azure/active-directory/cloud-sync/what-is-cloud-sync#comparison-between-azure-ad-connect-and-cloud-provisioning)を確認することをお勧めします。
+Okta プロビジョニングから Azure AD に切り替える場合、お客様には Azure AD Connect サーバーと Azure AD クラウド プロビジョニングの 2 つの選択肢があります。 2 つの製品の違いを理解するために、[Microsoft がまとめた比較記事](../cloud-sync/what-is-cloud-sync.md#comparison-between-azure-ad-connect-and-cloud-sync)を確認することをお勧めします。
 
 Azure AD クラウド プロビジョニングは、ユニバーサル同期やユーザー同期を使用している Okta のお客様にとって最もわかりやすい移行パスです。クラウド プロビジョニング エージェントは軽量で、Okta ディレクトリ同期エージェントのようにドメイン コントローラー上かその近くにインストールできます。 両者を同一のサーバーにインストールすることはお勧めしません。
 
@@ -41,7 +41,7 @@ Azure AD Connect サーバーを選択しなければならないのは、ユー
 - 書き戻しのサポート
 
 >[!NOTE]
->Azure AD Connect や Azure AD クラウド プロビジョニングをインストールする場合は、すべての前提条件を考慮する必要があります。 インストールの前に、[こちらの記事](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-prerequisites)で詳細をご確認ください。  
+>Azure AD Connect や Azure AD クラウド プロビジョニングをインストールする場合は、すべての前提条件を考慮する必要があります。 インストールの前に、[こちらの記事](../hybrid/how-to-connect-install-prerequisites.md)で詳細をご確認ください。  
 
 ## <a name="step-1---confirm-immutableid-attribute-synchronized-by-okta"></a>手順 1 - Okta によって同期された ImmutableID 属性を確認する
 
@@ -117,7 +117,7 @@ Azure AD Connect に一括移行する前に、Azure AD の ImmutableID がオ�
 
 ソースと移行先ターゲットの一覧が準備できたら、Azure AD Connect サーバーをインストールします。 Azure AD Connect クラウド プロビジョニングを使用することを選択した場合は、このセクションをスキップしてください。
 
-1. 選択したサーバーへの [Azure AD Connect のダウンロードとインストール](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-custom)を続行します。 
+1. 選択したサーバーへの [Azure AD Connect のダウンロードとインストール](../hybrid/how-to-connect-install-custom.md)を続行します。 
 
 2. **[ユーザーの識別]** ページの **[Azure AD でのユーザーの識別方法を選択します]** で、 **[特定の属性を選択します]** のラジアルを選択します。 次に、Okta の既定値を変更していない場合は、 **[mS-DS-ConsistencyGUID]** を選択します。
 
@@ -173,7 +173,7 @@ Azure AD Connect に一括移行する前に、Azure AD の ImmutableID がオ�
 
 ## <a name="step-4---install-azure-ad-cloud-sync-agents"></a>手順 4 - Azure AD クラウド同期エージェントをインストールする
 
-ソースと移行先ターゲットの一覧が準備できたら、[Azure AD クラウド同期エージェントをインストールして構成](https://docs.microsoft.com/azure/active-directory/cloud-sync/tutorial-single-forest)します。 Azure AD Connect サーバーを使用することを選択した場合は、このセクションをスキップしてください。
+ソースと移行先ターゲットの一覧が準備できたら、[Azure AD クラウド同期エージェントをインストールして構成](../cloud-sync/tutorial-single-forest.md)します。 Azure AD Connect サーバーを使用することを選択した場合は、このセクションをスキップしてください。
 
 ## <a name="step-5---disable-okta-provisioning-to-azure-ad"></a>手順 5 - Azure AD への Okta プロビジョニングを無効にする
 

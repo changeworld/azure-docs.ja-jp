@@ -6,14 +6,15 @@ metadata:
   ms.author: weetok
   ms.reviewer: jburchel
   ms.service: data-factory
+  ms.subservice: v1
   ms.topic: conceptual
   ms.date: 01/10/2018
-  ms.openlocfilehash: e5876374cbf50ff4236a46f9889358b92b8f8de8
-  ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+  ms.openlocfilehash: 50def0d8edc5b522634073c0abd433c5d15f9e58
+  ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/18/2021
-  ms.locfileid: "122396563"
+  ms.lasthandoff: 09/24/2021
+  ms.locfileid: "128633319"
 title: Azure Data Factory - よく寄せられる質問
 summary: >
   > [!NOTE]
@@ -72,7 +73,7 @@ sections:
       はい。 次の図に示されているように、データ ファクトリ ブレードの **[移動]** ボタンを使用します。
 
 
-      ![データ ファクトリの移動](media/data-factory-faq/move-data-factory.png)
+      :::image type="content" source="media/data-factory-faq/move-data-factory.png" alt-text="データ ファクトリの移動":::
   - question: >
       Data Factory ではどのようなコンピューティング環境がサポートされますか。
     answer: >

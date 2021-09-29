@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 10/06/2020
 ms.author: memildin
-ms.openlocfilehash: f2014d2ecea91ae650ec1fb1d730ee9b64c66c98
-ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
+ms.openlocfilehash: ad4d401072bc96784b45c0f5fd43d08f3de8ade0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122195911"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124823827"
 ---
 # <a name="stream-alerts-to-a-siem-soar-or-it-service-management-solution"></a>SIEM、SOAR、または IT サービス管理ソリューションにアラートをストリーミングする
 
@@ -56,7 +56,7 @@ Azure Defender を Azure Sentinel に接続すると、Azure Sentinel に取り�
 Azure Sentinel で Security Center アラートを調査する別の方法として、監査ログの Azure Sentinel へのストリーミングがあります。
     - [Windows セキュリティ イベントの接続](../sentinel/connect-windows-security-events.md)
     - [Syslog を使用して Linux ベースのソースからデータを収集する](../sentinel/connect-syslog.md)
-    - [Azure アクティビティ ログからデータを接続する](../sentinel/connect-azure-activity.md)
+    - [Azure アクティビティ ログからデータを接続する](../sentinel/data-connectors-reference.md#azure-activity)
 
 > [!TIP]
 > Azure Sentinel の課金は、分析のために Azure Sentinel に取り込まれ、Azure Monitor Log Analytics ワークスペースに格納されたデータの量に基づいて行われます。 Azure Sentinel には、柔軟で予測可能な価格モデルが用意されています。 [Azure Sentinel の価格ページを確認してください](https://azure.microsoft.com/pricing/details/azure-sentinel/)。

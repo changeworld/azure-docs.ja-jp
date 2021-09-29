@@ -8,12 +8,12 @@ ms.date: 04/02/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 1f07907d3a4f421fa9f7a03c48d5f74496a1d45a
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 8fc9934c5d524550929c3400af9f257c4cbcccc8
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123303078"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128665912"
 ---
 # <a name="find-errors-and-resume-jobs-by-using-log-and-plan-files-in-azcopy"></a>AzCopy でログとプラン ファイルを使用してエラーの検出とジョブの再開を行う
 
@@ -24,13 +24,13 @@ AzCopy は、ストレージ アカウント間の BLOB またはファイル �
 
 ## <a name="log-and-plan-files"></a>ログとプラン ファイル
 
-AzCopy では、ジョブごとに "*ログ*" と "*プラン*" ファイルが作成されます。 これらのログを使用することで、潜在的な問題を調査してトラブルシューティングできます。 
+AzCopy では、ジョブごとに "*ログ*" と "*プラン*" ファイルが作成されます。 これらのログを使用することで、潜在的な問題を調査してトラブルシューティングできます。
 
 ログには、エラーの状態 (`UPLOADFAILED`、`COPYFAILED`、および `DOWNLOADFAILED`)、完全なパス、エラーの理由が含まれます。
 
-既定では、ログとプラン ファイルは、Windows では `%USERPROFILE%\.azcopy` ディレクトリに、Mac および Linux では `$HOME$\.azcopy` ディレクトリにありますが、その場所は変更できます。 
+既定では、ログとプラン ファイルは、Windows では `%USERPROFILE%\.azcopy` ディレクトリに、Mac および Linux では `$HOME$\.azcopy` ディレクトリにありますが、その場所は変更できます。
 
-関連するエラーは、必ずしもファイルに表示される最初のエラーではありません。 ネットワーク エラー、タイムアウト、サーバー ビジー エラーなどのエラーの場合、AzCopy により最大 20 回まで再試行され、通常は再試行プロセスが成功します。  最初に表示されるエラーは、正常に再試行された無害なものである可能性があります。  そのため、ファイルの最初のエラーを確認するのではなく、`UPLOADFAILED`、`COPYFAILED`、または `DOWNLOADFAILED` の近くにあるエラーを探します。 
+関連するエラーは、必ずしもファイルに表示される最初のエラーではありません。 ネットワーク エラー、タイムアウト、サーバー ビジー エラーなどのエラーの場合、AzCopy により最大 20 回まで再試行され、通常は再試行プロセスが成功します。  最初に表示されるエラーは、正常に再試行された無害なものである可能性があります。  そのため、ファイルの最初のエラーを確認するのではなく、`UPLOADFAILED`、`COPYFAILED`、または `DOWNLOADFAILED` の近くにあるエラーを探します。
 
 > [!IMPORTANT]
 > Microsoft サポートに要求を送信するとき (または、サード パーティが関わる問題のトラブルシューティングを行うとき) は、実行したいコマンドの修正済みバージョンを共有します。 これにより、SAS が誤って誰かと共有されることがなくなります。 修正済みバージョンは、ログ ファイルの先頭にあります。
@@ -86,7 +86,7 @@ azcopy jobs resume <job-id> --source-sas="<sas-token>" --destination-sas="<sas-t
 
 これらのコマンドのいずれかを使用します。
 
-| オペレーティング システム | command  |
+| オペレーティング システム | コマンド  |
 |--------|-----------|
 | **Windows** | PowerShell:`$env:AZCOPY_JOB_PLAN_LOCATION="<value>"` <br> コマンド プロンプトでは次を使用します: `set AZCOPY_JOB_PLAN_LOCATION=<value>` |
 | **Linux** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
@@ -98,7 +98,7 @@ azcopy jobs resume <job-id> --source-sas="<sas-token>" --destination-sas="<sas-t
 
 これらのコマンドのいずれかを使用します。
 
-| オペレーティング システム | command  |
+| オペレーティング システム | コマンド  |
 |--------|-----------|
 | **Windows** | PowerShell:`$env:AZCOPY_LOG_LOCATION="<value>"` <br> コマンド プロンプトでは次を使用します: `set AZCOPY_LOG_LOCATION=<value>`|
 | **Linux** | `export AZCOPY_LOG_LOCATION=<value>` |
@@ -108,7 +108,7 @@ azcopy jobs resume <job-id> --source-sas="<sas-token>" --destination-sas="<sas-t
 
 ## <a name="change-the-default-log-level"></a>既定のログ レベルを変更する
 
-既定では、AzCopy ログ レベルは `INFO` に設定されます。 ディスク領域を節約するためにログ詳細度を下げたい場合は、``--log-level`` オプションを使用してこの設定を上書きます。 
+既定では、AzCopy ログ レベルは `INFO` に設定されます。 ディスク領域を節約するためにログ詳細度を下げたい場合は、``--log-level`` オプションを使用してこの設定を上書きます。
 
 使用可能なログ レベルは、`NONE`、`DEBUG`、`INFO`、`WARNING`、`ERROR`、`PANIC`、および `FATAL` です。
 

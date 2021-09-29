@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/22/2021
 ms.author: jeedes
-ms.openlocfilehash: 2847f263f18280eb3bcfcb072ecf54e50e00a5d7
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: bd6dd3dffbe9f8955084a230c1a5a8cc16ccd6f9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114605605"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124809010"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-iwt-procurement-suite"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と IWT Procurement Suite の統合
 
@@ -128,7 +128,7 @@ IWT Procurement Suite に対して Azure AD SSO を構成してテストする�
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した IWT Procurement Suite に自動的にサインインされます。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [IWT Procurement Suite] タイルをクリックすると、SSO を設定した IWT Procurement Suite に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [IWT Procurement Suite] タイルをクリックすると、SSO を設定した IWT Procurement Suite に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

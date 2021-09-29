@@ -1,21 +1,18 @@
 ---
-title: Docker にセルフホステッド ゲートウェイをデプロイする| Microsoft Docs
+title: Docker にセルフホステッド ゲートウェイをデプロイする
 description: Azure API Management のセルフホステッド ゲートウェイ コンポーネントを Docker にデプロイする方法について説明します
-services: api-management
-documentationcenter: ''
-author: vladvino
+author: dlepow
 manager: gwallace
-editor: ''
 ms.service: api-management
 ms.topic: article
 ms.date: 04/19/2021
-ms.author: apimpm
-ms.openlocfilehash: 531421726bc1e081d85eca9d535267520d3fea5f
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.author: danlep
+ms.openlocfilehash: 3ef8e0316b6df0b95f2163b6df8ae139ebb8fe6b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107725609"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128580948"
 ---
 # <a name="deploy-an-azure-api-management-self-hosted-gateway-to-docker"></a>Azure API Management のセルフホステッド ゲートウェイを Docker にデプロイする
 
@@ -43,9 +40,11 @@ ms.locfileid: "107725609"
 6. **[環境]** の横にある **env.conf** ファイル リンクを選択して、ファイルをダウンロードします。
 7. **[実行]** テキスト ボックスの右端にある **[コピー]** アイコンを選択して、Docker コマンドをクリップボードにコピーします。
 8. コマンドをターミナル (またはコマンド) ウィンドウに貼り付けます。 必要に応じて、ポート マッピングとコンテナー名を調整します。 コマンドでは、ダウンロードした環境ファイルが現在のディレクトリに存在することが前提であることに注意してください。
+
    ```
-       docker run -d -p 80:8080 -p 443:8081 --name <gateway-name> --env-file env.conf mcr.microsoft.com/azure-api-management/gateway:<tag>
+   docker run -d -p 80:8080 -p 443:8081 --name <gateway-name> --env-file env.conf mcr.microsoft.com/azure-api-management/gateway:<tag>
    ```
+
 9. コマンドを実行します。 コマンドでは、Microsoft Container Registry からダウンロードした[コンテナー イメージ](https://aka.ms/apim/sputnik/dhub)を使用してコンテナーを実行し、コンテナーの HTTP (8080) ポートと HTTPS (8081) ポートをホスト上のポート 80 と 443 にマップするように、Docker 環境に対して指示します。
 10. 次のコマンドを実行して、ゲートウェイ コンテナーが実行中であるかどうかを確認します。
     ```console
@@ -58,9 +57,9 @@ ms.locfileid: "107725609"
     ![ゲートウェイの状態](media/how-to-deploy-self-hosted-gateway-docker/status.png)
 
 > [!TIP]
-> <code>console docker container logs <gateway-name></code> コマンドを使用して、セルフホステッド ゲートウェイ ログのスナップショットを表示します。
+> `console docker container logs <gateway-name>` コマンドを使用して、セルフホステッド ゲートウェイ ログのスナップショットを表示します。
 >
-> <code>docker container logs --help</code> コマンドを使用して、すべてのログ表示オプションを表示します。
+> `docker container logs --help` コマンドを使用して、すべてのログ表示オプションを表示します。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -11,12 +11,12 @@ ms.date: 06/24/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5dec171c299bdd8ea6c5989794539b6c79e7d3fe
-ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
+ms.openlocfilehash: 34d0a6c4940032bc1957c787e05722586c792417
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114229691"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124814389"
 ---
 # <a name="azure-ad-connect-single-object-sync"></a>Azure AD Connect 単一オブジェクト同期 
 
@@ -43,7 +43,7 @@ Azure AD Connect 単一オブジェクト同期ツールは、個々のオブジ
  9. Active Directory コネクタ スペースからオブジェクトを同期します。 
  10. Azure Active Directory コネクタ スペースから Azure Active Directory にオブジェクトをエクスポートします。 
 
-このツールでは、JSON 出力に加えて、同期操作のすべての詳細を含む HTML レポートが生成されます。 HTML レポートは **C:\ProgramData\AADConnect\ADSyncObjectDiagnostics\ ADSyncSingleObjectSyncResult-<date>.htm** にあります。 この HTML レポートを必要に応じてサポート チームと共有し、さらなるトラブルシューティングを行うこともできます。 
+このツールでは、JSON 出力に加えて、同期操作のすべての詳細を含む HTML レポートが生成されます。 HTML レポートは **C:\ProgramData\AADConnect\ADSyncObjectDiagnostics\ ADSyncSingleObjectSyncResult-\<date\>.htm** にあります。 この HTML レポートを必要に応じてサポート チームと共有し、さらなるトラブルシューティングを行うこともできます。 
 
 HTML レポートには、次のものがあります。 
 
@@ -58,7 +58,7 @@ HTML レポートには、次のものがあります。
 
 単一オブジェクト同期ツールを使用するには、次を使用する必要があります。  
  - Azure AD Connect の 2021 年 3 月 ([1.6.4.0](reference-connect-version-history.md#1640)) 以降のリリース。
- -  [PowerShell 5.0](/powershell/scripting/windows-powershell/whats-new/what-s-new-in-windows-powershell-50?view=powershell-7.1)
+ -  [PowerShell 5.0](/powershell/scripting/windows-powershell/whats-new/what-s-new-in-windows-powershell-50)
 
 ### <a name="run-the-single-object-sync-tool"></a>単一オブジェクト同期ツールを実行する 
 

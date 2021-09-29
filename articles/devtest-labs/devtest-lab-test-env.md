@@ -1,14 +1,14 @@
 ---
-title: VM と PaaS のテスト環境に Azure DevTest Labs を使用する | Microsoft Docs
+title: VM と PaaS のテスト環境に Azure DevTest Labs を使用する
 description: VM と PaaS のテスト環境シナリオに Azure DevTest Labs を使う方法を説明します。
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/26/2020
-ms.openlocfilehash: 24ff4e982fb0c436133e7a39e72e8210b06eeb03
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 6e08eaa43d556d47724dbf184bb1b06856e999e3
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114295652"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128629315"
 ---
 # <a name="use-azure-devtest-labs-for-vm-and-paas-test-environments"></a>VM と PaaS のテスト環境に Azure DevTest Labs を使用する
 

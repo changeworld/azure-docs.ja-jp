@@ -6,19 +6,19 @@ ms.author: sunaray
 ms.service: mysql
 ms.topic: how-to
 ms.date: 06/18/2021
-ms.openlocfilehash: cbabc94f1aa8a2dcd8d8022ab81b7d772006b574
-ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
+ms.openlocfilehash: 0197d3c4a76158663d721604cdd8e033b3d78153
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114203477"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128589646"
 ---
 # <a name="tutorial-migrate-azure-database-for-mysql--single-server-to-azure-database-for-mysql--flexible-server-with-minimal-downtime"></a>チュートリアル: 最小限のダウンタイムで Azure Database for MySQL - 単一サーバーを Azure Database for MySQL - フレキシブル サーバーに移行する
 
 mydumper や myloader などのオープンソース ツールとデータイン レプリケーションを組み合わせて使用することで、アプリケーションのダウンタイムを最小限に抑えながら、Azure Database for MySQL - 単一サーバーのインスタンスを Azure Database for MySQL - フレキシブル サーバーに移行できます。
 
 > [!NOTE]
-> この記事には、Microsoft が使用しなくなった "_スレーブ_" という用語への言及が含まれています。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
+> この記事には、Microsoft が使用しなくなった "*スレーブ*" という用語への言及が含まれています。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
 
 データイン レプリケーションは、バイナリ ログ ファイルの配置方法に基づいてソース サーバーへのデータ変更を宛先サーバーにレプリケートする技術です。 このシナリオでは、ソース (データベースの変更が行われる元の場所) として動作する MySQL インスタンスが更新と変更を "イベント" としてバイナリ ログに書き込みます。 バイナリ ログ内の情報は、記録されるデータベースの変更に応じてさまざまなログ形式で保存されます。 レプリカは、ソースからバイナリ ログを読み取り、レプリカのローカル データベース上でバイナリ ログのイベントを実行するように構成されます。
 

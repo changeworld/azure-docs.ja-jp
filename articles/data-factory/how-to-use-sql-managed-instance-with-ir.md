@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: tutorials
 ms.topic: conceptual
 ms.date: 4/15/2020
-ms.openlocfilehash: 18f73a379c32bf80893e00ff0e95cb9edf905724
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: 070c9ff8cbca98272be6aa0cf48a97381f4ff6b4
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122607761"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129216614"
 ---
 # <a name="use-azure-sql-managed-instance-with-sql-server-integration-services-ssis-in-azure-data-factory"></a>Azure Data Factory 内で SQL Server Integration Services (SSIS) と共に Azure SQL Managed Instance を使用する
 
@@ -133,15 +133,15 @@ SQL Server Integration Services (SSIS) プロジェクト、パッケージ、�
 
 1. SQL Managed Instance のプライベート エンドポイントまたはパブリック エンドポイントを選択します。
 
-    Azure portal/ADF アプリの [SQL の設定] ページで [Azure-SSIS IR をプロビジョニング](create-azure-ssis-integration-runtime.md#provision-an-azure-ssis-integration-runtime)するとき、SSIS カタログ (SSISDB) の作成時に、SQL Managed Instance の **プライベート エンドポイント** または **パブリック エンドポイント** を使用します。
+    Azure portal/ADF アプリの [SQL の設定] ページで [Azure-SSIS IR をプロビジョニング](create-azure-ssis-integration-runtime-portal.md#provision-an-azure-ssis-integration-runtime)するとき、SSIS カタログ (SSISDB) の作成時に、SQL Managed Instance の **プライベート エンドポイント** または **パブリック エンドポイント** を使用します。
 
     パブリック エンドポイントのホスト名が <mi_name>.public.<dns_zone>.database.windows.net 形式になっており、接続に使用されるポートが 3342 です。  
 
-    ![統合ランタイム セットアップのスクリーンショット。SSIS カタログの作成が選択されており、Catalog データベース サーバー エンドポイントが入力されています。](./media/how-to-use-sql-managed-instance-with-ir/catalog-public-endpoint.png)
+    :::image type="content" source="./media/how-to-use-sql-managed-instance-with-ir/catalog-public-endpoint.png" alt-text="統合ランタイム セットアップのスクリーンショット。SSIS カタログの作成が選択されており、Catalog データベース サーバー エンドポイントが入力されています。":::
 
 1. 適用する場合は、[Azure AD 認証] を選択します。
 
-    ![カタログ-パブリック-エンドポイント](./media/how-to-use-sql-managed-instance-with-ir/catalog-aad.png)
+    :::image type="content" source="./media/how-to-use-sql-managed-instance-with-ir/catalog-aad.png" alt-text="カタログ-パブリック-エンドポイント":::
 
     Azure AD 認証を有効にする方法の詳細については、[Azure SQL Database Managed Instance に対する Azure AD の有効化](enable-aad-authentication-azure-ssis-ir.md#configure-azure-ad-authentication-for-azure-sql-managed-instance)に関するセクションをご覧ください。
 
@@ -153,9 +153,9 @@ SQL Server Integration Services (SSIS) プロジェクト、パッケージ、�
 
     Azure-SSIS IR を仮想ネットワークに参加させる方法の詳細については、「[Azure-SSIS 統合ランタイムを仮想ネットワークに参加させる](join-azure-ssis-integration-runtime-virtual-network.md)」をご覧ください。
 
-    ![統合ランタイム セットアップの詳細設定のスクリーンショット。ここで、参加するランタイムに仮想ネットワークを選択できます。](./media/how-to-use-sql-managed-instance-with-ir/join-virtual-network.png)
+    :::image type="content" source="./media/how-to-use-sql-managed-instance-with-ir/join-virtual-network.png" alt-text="統合ランタイム セットアップの詳細設定のスクリーンショット。ここで、参加するランタイムに仮想ネットワークを選択できます。":::
 
-Azure-SSIS IR を作成する方法の詳細については、「[Azure Data Factory で Azure-SSIS 統合ランタイムを作成する](create-azure-ssis-integration-runtime.md#provision-an-azure-ssis-integration-runtime)」を参照してください。
+Azure-SSIS IR を作成する方法の詳細については、「[Azure Data Factory で Azure-SSIS 統合ランタイムを作成する](create-azure-ssis-integration-runtime-portal.md#provision-an-azure-ssis-integration-runtime)」を参照してください。
 
 ## <a name="clean-up-ssisdb-logs"></a>SSISDB ログのクリーンアップ
 

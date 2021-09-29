@@ -4,12 +4,12 @@ description: 従量課金プランと Premium プランの関数アプリのス�
 ms.date: 10/29/2020
 ms.topic: conceptual
 ms.service: azure-functions
-ms.openlocfilehash: ff7194b5dfda09253526aa79b52be475c131a411
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c67177570906e0122df6116f1a0a159d64f3486b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121752274"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128571313"
 ---
 # <a name="event-driven-scaling-in-azure-functions"></a>Azure Functions でのイベント ドリブン スケーリング
 
@@ -55,7 +55,7 @@ $resource | Set-AzResource -Force
 
 ## <a name="best-practices-and-patterns-for-scalable-apps"></a>スケーラブルなアプリのベスト プラクティスとパターン
 
-関数アプリには、ホスト構成、ランタイム フットプリント、リソース効率など、そのスケーリング方法に影響を与える多くの側面があります。  詳細については、[パフォーマンスの考慮事項に関する記事のスケーラビリティのセクション](functions-best-practices.md#scalability-best-practices)をご覧ください。 関数アプリがスケールするにつれて、接続がどのように変化するかを認識する必要もあります。 詳細については、「[How to manage connections in Azure Functions](manage-connections.md)」(Azure Functions で接続を管理する方法) を参照してください。
+関数アプリには、ホスト構成、ランタイム フットプリント、リソース効率など、そのスケーリング方法に影響を与える多くの側面があります。  詳細については、[パフォーマンスの考慮事項に関する記事のスケーラビリティのセクション](performance-reliability.md#scalability-best-practices)をご覧ください。 関数アプリがスケールするにつれて、接続がどのように変化するかを認識する必要もあります。 詳細については、「[How to manage connections in Azure Functions](manage-connections.md)」(Azure Functions で接続を管理する方法) を参照してください。
 
 Python と Node.js のスケールインの詳細については、「[Azure Functions の Python 開発者向けガイド - スケーリングとコンカレンシー](functions-reference-python.md#scaling-and-performance)」および [Azure Functions Node.js 開発者ガイド - スケーリングとコンカレンシー](functions-reference-node.md#scaling-and-concurrency)に関するページを参照してください。
 

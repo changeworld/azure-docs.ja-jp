@@ -3,12 +3,12 @@ title: Azure Portal を使用してリソースをデプロイする
 description: Azure Portal と Azure Resource Manager を使用して、サブスクリプション内のリソース グループにリソースをデプロイします。
 ms.topic: conceptual
 ms.date: 05/05/2021
-ms.openlocfilehash: 718d8be4e51bf41467bea398440b24f98ac1f6e9
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 03b1cda06bf6865dda1b8d40096f6b76588d8184
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111957905"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124762191"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-portal"></a>ARM テンプレートと Azure Portal でリソースをデプロイする
 
@@ -126,6 +126,5 @@ Azure Portal を使用して Azure リソースをデプロイするには、通
 
 ## <a name="next-steps"></a>次のステップ
 
-- 監査ログの表示については、「 [Resource Manager の監査操作](../management/view-activity-logs.md)」を参照してください。
 - デプロイ エラーをトラブルシューティングするには、「[デプロイ操作の表示](deployment-history.md)」を参照してください。
 - デプロイまたはリソース グループからテンプレートをエクスポートするには、「[ARM テンプレートのエクスポート](export-template-portal.md)」を参照してください。

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 2d236b9910e2eda8e574d020544d625a68aefb81
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 67337a8326a6eca334489b644454debea782c3c7
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92455316"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124816887"
 ---
 # <a name="tutorial-integrate-azure-active-directory-single-sign-on-sso-with-contractsafe-saml2-sso"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と ContractSafe Saml2 SSO の統合
 
@@ -142,7 +142,7 @@ ContractSafe Saml2 SSO で B.Simon というユーザーを作成します。 [C
 
 ## <a name="test-sso"></a>SSO のテスト
 
-アクセス パネルを使用して Azure AD SSO の構成をテストします。 アクセス パネル上で [ContractSafe Saml2 SSO] タイルを選択すると、SSO を設定した ContractSafe Saml2 SSO に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+アクセス パネルを使用して Azure AD SSO の構成をテストします。 アクセス パネル上で [ContractSafe Saml2 SSO] タイルを選択すると、SSO を設定した ContractSafe Saml2 SSO に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

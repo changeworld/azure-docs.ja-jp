@@ -3,12 +3,12 @@ title: カスタム ゲスト構成ポリシー定義の作成方法
 description: ゲスト構成ポリシーの作成方法について説明します。
 ms.date: 07/22/2021
 ms.topic: how-to
-ms.openlocfilehash: 28ad60284912261510a55438919924138d4e2b5e
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 1dd1620d0ef41bf28a276cfe2412ca4bdc09d183
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122868649"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128644906"
 ---
 # <a name="how-to-create-custom-guest-configuration-policy-definitions"></a>カスタム ゲスト構成ポリシー定義の作成方法
 
@@ -80,7 +80,7 @@ ms.locfileid: "122868649"
 
 ```powershell
 New-GuestConfigurationPolicy `
-  -PolicyId 'My GUID'
+  -PolicyId 'My GUID' `
   -ContentUri '<paste the ContentUri output from the Publish command>' `
   -DisplayName 'My audit policy.' `
   -Description 'Details about my policy.' `
@@ -94,7 +94,7 @@ New-GuestConfigurationPolicy `
 
 ```powershell
 New-GuestConfigurationPolicy `
-  -PolicyId 'My GUID'
+  -PolicyId 'My GUID' `
   -ContentUri '<paste the ContentUri output from the Publish command>' `
   -DisplayName 'My audit policy.' `
   -Description 'Details about my policy.' `
@@ -166,8 +166,8 @@ $PolicyParameterInfo = @(
   }
 )
 
-New-GuestConfigurationPolicy
-  -PolicyId 'My GUID'
+New-GuestConfigurationPolicy `
+  -PolicyId 'My GUID' `
   -ContentUri '<paste the ContentUri output from the Publish command>' `
   -DisplayName 'Audit Windows Service.' `
   -Description 'Audit if a Windows Service isn't enabled on Windows machine.' `
@@ -229,4 +229,4 @@ Publish-GuestConfigurationPolicy
 ## <a name="next-steps"></a>次のステップ
 
 - Azure portal を使用して[カスタム ポリシー定義を割り当てる](../assign-policy-portal.md)。
-- [ゲスト構成のポリシー割り当てのコンプライアンスの詳細](./determine-non-compliance.md#compliance-details-for-guest-configuration)を確認する方法を学ぶ。
+- [ゲスト構成ポリシーの割り当てに関するコンプライアンスの詳細](./determine-non-compliance.md#compliance-details-for-guest-configuration)を見る方法を学習する。

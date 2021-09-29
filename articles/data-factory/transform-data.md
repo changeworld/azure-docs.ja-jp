@@ -8,13 +8,13 @@ ms.topic: conceptual
 author: nabhishek
 ms.author: abnarain
 ms.custom: synapse
-ms.date: 07/31/2018
-ms.openlocfilehash: de3f582ea6c475a3f571164133b066469f572dc4
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.date: 09/09/2021
+ms.openlocfilehash: 6a5500bdcf551fbbb8c3fc612606ec63bce00557
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122270978"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124805949"
 ---
 # <a name="transform-data-in-azure-data-factory-and-azure-synapse-analytics"></a>Azure Data Factory および Azure Synapse Analytics でデータを変換する
 

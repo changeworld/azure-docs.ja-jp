@@ -1,14 +1,14 @@
 ---
-title: ブラウザーを使用して仮想マシンに接続する - Azure | Microsoft Docs
+title: ブラウザーを使用して仮想マシンに接続する
 description: ブラウザーを使用して仮想マシンに接続する方法について説明します。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 352fc5fd3ff53a00d9f62966ecf21417ad898706
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dbbaa4286aac91e362a2024f1705add8f48d566d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87288061"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128645001"
 ---
 # <a name="connect-to-your-virtual-machines-through-a-browser"></a>ブラウザーを使用して仮想マシンに接続する 
 

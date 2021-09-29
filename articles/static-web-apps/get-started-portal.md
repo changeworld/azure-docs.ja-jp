@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: static-web-apps
 ms.custom:
 - mode-portal
-ms.openlocfilehash: d83a9f96745e798d307c6e5299da84f1ac717e76
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: 41be62a4e7baed39cc45011ed055a1abfe097002
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122609086"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124804586"
 ---
 # <a name="quickstart-building-your-first-static-site-in-the-azure-portal"></a>クイックスタート: Azure portal で最初の静的サイトを構築する
 
@@ -99,7 +99,7 @@ GitHub にサインインした後、リポジトリ情報を入力します。
     :::image type="content" source="media/getting-started-portal/review-create.png" alt-text="[確認および作成] ボタン":::
 
     > [!NOTE]
-    > アプリを作成した後にこれらの値を変更するには、[ワークフロー ファイル](github-actions-workflow.md)を編集します。
+    > アプリを作成した後にこれらの値を変更するには、[ワークフロー ファイル](build-configuration.md)を編集します。
 
 1. **［作成］** を選択します
 

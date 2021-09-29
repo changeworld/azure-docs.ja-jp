@@ -3,21 +3,21 @@ title: Azure PowerShell のサンプル スクリプト - サービスのバッ�
 description: API Management サービス インスタンスをバックアップおよび復元する方法について説明します。 サンプル スクリプトを参照し、使用可能なその他のリソースを確認してください。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 manager: cfowler
 editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.topic: sample
 ms.date: 11/16/2017
-ms.author: apimpm
+ms.author: danlep
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: e879c4df24e7913aac2aac09078bbf7f817ffcea
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 333ab63e3cdc85b36066546f141f7c39cfc681c7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107812608"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128585484"
 ---
 # <a name="backup-and-restore-service"></a>サービスのバックアップと復元
 

@@ -3,15 +3,15 @@ title: Azure Virtual Desktop (クラシック) から自動的に移行する (�
 description: 移行モジュールを使用して Azure Virtual Desktop (クラシック) から Azure Virtual Desktop に自動的に移行する方法。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 08/31/2021
+ms.date: 09/15/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 856b5c08176573640876cab1fa34fe6f33cc8a18
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: ec3ba6a71ea1430dc060d431776a31bc6c5e1b81
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123440059"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128547506"
 ---
 # <a name="migrate-automatically-from-azure-virtual-desktop-classic-preview"></a>Azure Virtual Desktop (クラシック) から自動的に移行する (プレビュー)
 
@@ -93,7 +93,7 @@ PowerShell 環境を準備するには:
     Install-Module -Name PackageManagement -Repository PSGallery -Force
     Install-Module -Name PowerShellGet -Repository PSGallery -Force
     # Then restart shell
-    Install-Module -Name Microsoft.RdInfra.RDPowershell.Migration -RequiredVersion 1.0.3595-Prerelease -AllowPrerelease
+    Install-Module -Name Microsoft.RdInfra.RDPowershell.Migration -RequiredVersion 1.0.3725-Prerelease -AllowPrerelease -AllowClobber
     Import-Module <Full path to the location of the migration module>\Microsoft.RdInfra.RDPowershell.Migration.psd1
     ```
 

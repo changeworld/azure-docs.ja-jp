@@ -8,12 +8,12 @@ ms.date: 04/01/2021
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: de7f62dd4d4205e819278e6dc90d905e825580f2
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 4eaee714d079836e0919621b2d2e5661d07dfe80
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106220506"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128664848"
 ---
 # <a name="azure-data-lake-storage-gen2-hierarchical-namespace"></a>Azure Data Lake Storage Gen2 の階層型名前空間
 
@@ -35,9 +35,9 @@ BLOB データに対する階層構造の名前空間が実装されたファイ
 
 アカウントで階層型名前空間を有効にした後は、フラット型名前空間に戻すことができません。 そのため、オブジェクト ストアのワークロードの性質に基づいて、階層型名前空間を有効にすることが理にかなっているかどうかを検討してください。
 
-ワークロードの中には、階層型名前空間を有効にしてもメリットが得られないものもあります。 その例としては、バックアップや画像ストレージをはじめ、オブジェクト編成がオブジェクト自体とは別に (たとえば独立したデータベース内に) 保存されるアプリケーションがあります。 
+ワークロードの中には、階層型名前空間を有効にしてもメリットが得られないものもあります。 その例としては、バックアップや画像ストレージをはじめ、オブジェクト編成がオブジェクト自体とは別に (たとえば独立したデータベース内に) 保存されるアプリケーションがあります。
 
-また、BLOB ストレージ機能に対するサポートと Azure サービス エコシステムは引き続き拡大していますが、階層型名前空間を使用するアカウントではまだサポートされていない機能や Azure サービスもあります。 [既知の問題](data-lake-storage-known-issues.md)を参照してください。 
+また、BLOB ストレージ機能に対するサポートと Azure サービス エコシステムは引き続き拡大していますが、階層型名前空間を使用するアカウントではまだサポートされていない機能や Azure サービスもあります。 [既知の問題](data-lake-storage-known-issues.md)を参照してください。
 
 一般的に、ディレクトリを操作するファイル システム用に設計されているストレージ ワークロードについては、階層型名前空間を有効にすることをお勧めします。 これには、分析処理を主な目的としたすべてのワークロードが含まれます。 高度な編成が必要なデータセットの場合も、階層型名前空間を有効にすることによってメリットが得られます。
 

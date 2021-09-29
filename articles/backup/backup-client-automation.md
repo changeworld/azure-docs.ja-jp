@@ -4,12 +4,12 @@ description: この記事では、PowerShell を使用して Windows Server ま�
 ms.topic: conceptual
 ms.date: 08/24/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1d72dec0e9e2c1df0f93df5b557d72e8ad5c857e
-ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+ms.openlocfilehash: b1ec8bf20871fe5cb6f3245f202f2db2ca2c57f2
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122779495"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124824884"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>PowerShell を使用して Windows Server/Windows Client に Microsoft Azure Backup をデプロイおよび管理する手順
 
@@ -410,7 +410,7 @@ PolicyState     : Valid
 これで、ポリシー オブジェクトが完了し、バックアップ スケジュール、保有ポリシー、およびファイルの包含/除外リストに関連付けられました。 次に、Microsoft Azure Backup で使用するためにこのポリシーをコミットできます。 新しく作成されたポリシーを適用する前に、[Remove-OBPolicy](/powershell/module/msonlinebackup/remove-obpolicy) コマンドレットを使用して、サーバーに関連付けられた既存のバックアップ ポリシーが存在しないことを確認してください。 ポリシーを削除すると確認のダイアログが表示されます。 確認をスキップするには、コマンドレットで `-Confirm:$false` フラグを使用します。
 
 >[!Note]
->コマンドレットの実行時、セキュリティ PIN を設定するように求められた場合、[方法 1 セクション](/azure/backup/backup-azure-delete-vault#method-1)をご覧ください。
+>コマンドレットの実行時、セキュリティ PIN を設定するように求められた場合、[方法 1 セクション](./backup-azure-delete-vault.md#method-1)をご覧ください。
 
 ```powershell
 Get-OBPolicy | Remove-OBPolicy

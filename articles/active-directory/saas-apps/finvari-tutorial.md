@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/10/2021
 ms.author: jeedes
-ms.openlocfilehash: 1c9fefb68452c82dc54ef9b61d1bcc4af903a689
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: 04ae4ad3463efd9dd38a4c2bc06374efacda83df
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111987761"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124834974"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-finvari"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Finvari の統合
 
@@ -134,7 +134,7 @@ Microsoft Azure Active Directory SSO を Finvari と一緒に構成してテス�
 
 * Finvari のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Finvari] タイルをクリックすると、Finvari のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Finvari] タイルをクリックすると、Finvari のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

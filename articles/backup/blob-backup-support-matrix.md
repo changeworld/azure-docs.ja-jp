@@ -4,12 +4,12 @@ description: Azure BLOB をバックアップするときのサポート設定�
 ms.topic: conceptual
 ms.date: 07/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: ba2798ff464720379326ee56098f840a06e2c042
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0d9dbcb9bb4497de4c8355ca42597b8e9eecd0e9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121722648"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124799246"
 ---
 # <a name="support-matrix-for-azure-blobs-backup"></a>Azure BLOB バックアップのサポート マトリックス
 
@@ -28,7 +28,7 @@ BLOB の運用バックアップでは、ローカル バックアップソリ�
 **その他の制限事項:**
 
 - 保持期間中にコンテナーを削除した場合、そのコンテナーは、ポイントインタイム リストア操作では復元されません。 復元しようとしている BLOB 範囲に、削除されたコンテナー内の BLOB が含まれている場合、ポイントインタイム リストア操作は失敗します。 削除からのコンテナーの保護の詳細については、「[コンテナーの論理的な削除 (プレビュー)](../storage/blobs/soft-delete-container-overview.md)」を参照してください。
-- 現在の時点から復元ポイントまでの間にホット層とクール層の間で BLOB が移動した場合、BLOB は以前の層に復元されます。 アーカイブ層でのブロック BLOB の復元はサポートされていません。 たとえば、ホット層の BLOB が 2 日前にアーカイブ層に移動され、復元操作によって 3 日前の時点に復元された場合、BLOB はホット層に復元されません。 アーカイブされた BLOB を復元するには、最初にアーカイブ層の外に移動します。 詳細については、「[アーカイブ層から BLOB データをリハイドレートする](../storage/blobs/storage-blob-rehydration.md)」を参照してください。
+- 現在の時点から復元ポイントまでの間にホット層とクール層の間で BLOB が移動した場合、BLOB は以前の層に復元されます。 アーカイブ層でのブロック BLOB の復元はサポートされていません。 たとえば、ホット層の BLOB が 2 日前にアーカイブ層に移動され、復元操作によって 3 日前の時点に復元された場合、BLOB はホット層に復元されません。 アーカイブされた BLOB を復元するには、最初にアーカイブ層の外に移動します。 詳細については、「[アーカイブ層から BLOB データをリハイドレートする](../storage/blobs/archive-rehydrate-overview.md)」を参照してください。
 - [Put Block](/rest/api/storageservices/put-block) または [Put Block from URL](/rest/api/storageservices/put-block-from-url) を使用してアップロードされたが、[Put Block List](/rest/api/storageservices/put-block-list) を使用してコミットされていないブロックは、BLOB の一部ではないため、復元操作の一部としては復元されません。
 - アクティブなリースを持つ BLOB は復元できません。 リースがアクティブになっている BLOB が、復元する BLOB の範囲に含まれる場合、復元操作は自動的に失敗します。 復元操作を始める前に、アクティブなリースをすべて中断してください。
 - スナップショットは、復元操作の一環として作成または削除されません。 ベース BLOB のみが以前の状態に復元されます。

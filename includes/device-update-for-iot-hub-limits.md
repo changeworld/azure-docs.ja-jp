@@ -4,12 +4,12 @@ ms.author: vimeht
 ms.date: 7/8/2021
 ms.topic: include
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 58977fdfb05a2f2b152d66fb12065d88a98b2b2e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d7970fff815449adf6412c2748e22b2d471e52b0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121801879"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128645465"
 ---
  > [!NOTE]
  > 調整可能な制限が特定のリソースまたは操作に存在しない場合、既定の制限と最大制限は同じです。
@@ -37,6 +37,6 @@ ms.locfileid: "121801879"
 | インスタンスごとのプロバイダーあたりの更新名の数 | 25 | 25 | いいえ |
 | インスタンスごとの更新プロバイダーおよび更新名あたりの更新バージョン数 | 100 | 100 | いいえ |
 | インスタンスあたりの更新回数の合計 | 100 | 100 | いいえ |
-| 1 つの更新ファイルの最大サイズ | 800 MB | 800 MB | いいえ |
-| 1 回のインポート操作の全ファイルの最大合計サイズ | 800 MB | 800 MB | いいえ |
+| 1 つの更新ファイルの最大サイズ | 2 GB | 2 GB | いいえ |
+| 1 回のインポート操作の全ファイルの最大合計サイズ | 2 GB | 2 GB | いいえ |
 | インスタンスあたりのデバイス グループ数 | 75 | 75 | いいえ |

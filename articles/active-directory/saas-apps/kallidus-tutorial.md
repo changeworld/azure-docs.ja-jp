@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/23/2021
 ms.author: jeedes
-ms.openlocfilehash: 4243a6fa1a1b1dcc3ffd1f39dd10c04041b276f4
-ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
+ms.openlocfilehash: 74436f1b3f5c962d99a246c5789180be0282e87a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114688245"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124822346"
 ---
 # <a name="tutorial-integrate-kallidus-with-azure-active-directory"></a>チュートリアル:Kallidus と Azure Active Directory の統合
 
@@ -125,7 +125,7 @@ Kallidus と Azure AD SSO を構成してテストするには、次の手順を
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した Kallidus に自動的にサインインされます。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Kallidus] タイルをクリックすると、SSO を設定した Kallidus に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Kallidus] タイルをクリックすると、SSO を設定した Kallidus に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

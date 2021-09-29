@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: b3b4f7737320cc0359192f947271a0f4beb3c478
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 7153eb1ee29ea63a17e614f49f287945869c7a7e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107502999"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128680150"
 ---
 # <a name="azcopy"></a>azcopy
 
@@ -37,7 +37,7 @@ AzCopy は、Azure Storage との間でデータを移動するコマンドラ�
 **--cap-mbps** (float)  転送速度の上限を設定します (メガビット/秒)。 瞬間的なスループットは、上限と若干異なる場合があります。 このオプションを 0 に設定した場合や省略した場合、スループットは制限されません。
 
 **--help** azcopy のヘルプ
-      
+
 **--output-type**  (string) コマンドの出力の形式。 選択肢には、text、json などがあります。 既定値は `text` です。 (既定値は `text`)
 
 **--trusted-microsoft-suffixes** (string) Azure Active Directory ログイン トークンを送信できる追加のドメイン サフィックスを指定します。  既定値は " *.core.windows.net;* .core.chinacloudapi.cn; *.core.cloudapi.de;* .core.usgovcloudapi.net" です。 ここに記載されているすべてが既定値に追加されます。 セキュリティのために、Microsoft Azure のドメインのみをここに入力してください。 複数のエンティティは、セミコロンで区切ります。

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.subervice: image-builder
 ms.colletion: windows
-ms.openlocfilehash: 256ae289b86ec2c16b850f16d379700dc69c2f6f
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 83deba3d6fe63f5a63bda04556b911168527b065
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123424638"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128553063"
 ---
 # <a name="create-a-windows-vm-with-azure-image-builder"></a>Azure Image Builder で Windows VM を作成する
 
@@ -76,8 +76,6 @@ az provider register -n Microsoft.Network
 imageResourceGroup=myWinImgBuilderRG
 # Region location 
 location=WestUS2
-# Name for the image 
-imageName=myWinBuilderImage
 # Run output name
 runOutputName=aibWindows
 # name of the image to be created

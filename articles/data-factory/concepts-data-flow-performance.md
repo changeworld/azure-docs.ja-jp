@@ -8,13 +8,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.subservice: data-flows
 ms.custom: synapse
-ms.date: 08/24/2021
-ms.openlocfilehash: 877b2adb2dd61bdbba30ce4d5c84e26380be5b2b
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.date: 09/09/2021
+ms.openlocfilehash: 4c1ec8e8ca10764c630320c1d448b812da7a3cc4
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123472292"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124750725"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Mapping Data Flow のパフォーマンスとチューニング ガイド
 
@@ -30,7 +30,7 @@ Azure Data Factory と Synapse パイプラインのマッピング データ �
 
 デバッグ モードを使用して変換ロジックを確認したら、パイプラインでアクティビティとしてデータ フローをエンドツーエンドで実行します。 データ フローは、パイプラインで[データ フローの実行アクティビティ](control-flow-execute-data-flow-activity.md)を使用して運用可能にすることができます。 データ フロー アクティビティには、他のアクティビティと比較して独自の監視エクスペリエンスが用意されており、変換ロジックの詳細な実行プランとパフォーマンス プロファイルを表示できます。 データ フローの詳細な監視情報を表示するには、パイプラインのアクティビティの実行出力で眼鏡のアイコンをクリックします。 詳細については、[マッピング データ フローの監視](concepts-data-flow-monitoring.md)に関するページを参照してください。
 
-![データ フローの監視](media/data-flow/monitoring-details.png "データ フローの監視 2")
+:::image type="content" source="media/data-flow/monitoring-details.png" alt-text="データ フローの監視":::
 
 データ フローのパフォーマンスを監視する際には、次の 4 つのボトルネックが考えられます。
 
@@ -39,7 +39,7 @@ Azure Data Factory と Synapse パイプラインのマッピング データ �
 * 変換時間
 * シンクへの書き込み 
 
-![データ フローの監視](media/data-flow/monitoring-performance.png "データ フローの監視 3")
+:::image type="content" source="media/data-flow/monitoring-performance.png" alt-text="データ フローの監視":::
 
 クラスターの起動時間は、Apache Spark クラスターをスピンアップするためにかかる時間です。 この値は、監視画面の右上隅にあります。 データ フローは、各ジョブが分離クラスターを使用する Just-In-Time モデルで実行されます。 通常、この起動時間は 3 - 5 分かかります。 シーケンシャル ジョブの場合は、Time to Live を有効にすることで、これを短縮できます。 詳細については、「[Integration Runtime のパフォーマンス](concepts-integration-runtime-performance.md#time-to-live)」の「**Time to live**」セクションを参照してください。
 
@@ -55,7 +55,7 @@ UI からデータ フローを設計およびテストするときに、デバ�
 
 **[最適化]** タブには、Spark クラスターのパーティション分割を構成するための設定が含まれています。 データ フローのすべての変換に存在するこのタブでは、変換が完了した **後** にデータのパーティション再分割を行うかどうかを指定します。 パーティション分割を調整すると、全体的なデータ フローのパフォーマンスに好影響を与えることも、悪影響も与えることもある、各計算ノードへのデータの分散とデータの局所性の最適化を制御できます。
 
-![パーティション オプション、パーティションの種類、パーティションの数が含まれる [最適化] タブが示されているスクリーンショット。](media/data-flow/optimize.png)
+:::image type="content" source="media/data-flow/optimize.png" alt-text="パーティション オプション、パーティションの種類、パーティションの数が含まれる [最適化] タブが示されているスクリーンショット。":::
 
 既定では、変換の現在の出力パーティション分割を維持するようサービスに指示する *[Use current partitioning]\(現在のパーティション分割を使用する\)* が選択されています。 データのパーティション再分割は時間がかかるため、ほとんどのシナリオでは、 *[Use current partitioning]\(現在のパーティション分割を使用する\)* をお勧めします。 データのパーティションを再分割する必要があるシナリオとしては、集計や結合によってデータが大幅にスキューされた場合や、SQL DB でソースのパーティション分割を使用する場合があります。
 
@@ -91,9 +91,9 @@ UI からデータ フローを設計およびテストするときに、デバ�
 
 ## <a name="logging-level"></a>ログ記録レベル
 
-データ フロー アクティビティのすべてのパイプラインを実行してすべての詳細なテレメトリ ログを完全にログする必要がない場合は、必要に応じてログ レベルを "基本" または "なし" に設定できます。 データ フローを "詳細" モード (既定値) で実行する場合、データ変換中に各パーティション レベルでアクティビティを完全にログするように、サービスに要求します。 これは負荷の高い操作であるため、トラブルシューティングを行うときにのみ詳細を有効にすることで、データ フローとパイプラインのパフォーマンス全体を向上させることができます。 "基本" モードでは、その変換の期間だけがログされるのに対し、"なし" を指定した場合は、期間の概要のみが提供されます。
+データ フロー アクティビティのすべてのパイプラインを実行してすべての詳細なテレメトリ ログを完全にログする必要がない場合は、必要に応じてログ レベルを "基本" または "なし" に設定できます。 データ フローを [詳細] モード (既定値) で実行する場合、データ変換中に各パーティション レベルでアクティビティを完全にログするように、サービスに要求します。 これは負荷の高い操作であるため、トラブルシューティングを行うときにのみ詳細を有効にすることで、データ フローとパイプラインのパフォーマンス全体を向上させることができます。 "基本" モードでは、その変換の期間だけがログされるのに対し、"なし" を指定した場合は、期間の概要のみが提供されます。
 
-![ログ記録レベル](media/data-flow/logging.png "ログ レベルの設定")
+:::image type="content" source="media/data-flow/logging.png" alt-text="ログ記録レベル":::
 
 ## <a name="optimizing-sources"></a>ソースの最適化
 
@@ -111,7 +111,7 @@ Azure SQL Database には、"ソース" パーティション分割と呼ばれ�
 > [!TIP]
 > ソースのパーティション分割では、SQL Server の I/O がボトルネックになります。 追加するパーティションが多すぎると、ソース データベースが飽和状態になる可能性があります。 通常、このオプションを使用する場合、4 つまたは 5 つのパーティションが理想的です。
 
-![ソースのパーティション分割](media/data-flow/sourcepart3.png "ソースのパーティション分割")
+:::image type="content" source="media/data-flow/sourcepart3.png" alt-text="ソースのパーティション分割":::
 
 #### <a name="isolation-level"></a>分離レベル
 
@@ -125,7 +125,7 @@ Azure SQL ソース システムでの読み取りの分離レベルは、パフ
 
 Azure Synapse Analytics を使用するとき、ソース オプションに **[Enable staging]\(ステージングの有効化\)** という設定があります。 これにより、サービスでは ```Staging``` を使用して Synapse から読み取りを実行できます。これにより、最もパフォーマンスの高い一括読み込み機能に対して [Synapse COPY ステートメント](/sql/t-sql/statements/copy-into-transact-sql) コマンドを使用することで、読み取りパフォーマンスが大幅に向上します。 ```Staging``` を有効にするには、データ フロー アクティビティの設定で Azure Blob Storage または Azure Data Lake Storage gen2 ステージングの場所を指定する必要があります。
 
-![ステージングの有効化](media/data-flow/enable-staging.png "ステージングの有効化")
+:::image type="content" source="media/data-flow/enable-staging.png" alt-text="ステージングの有効化":::
 
 ### <a name="file-based-sources"></a>ファイルベースのソース
 
@@ -159,7 +159,7 @@ SQL データベースで読み込み前にインデックスを無効にする�
 
 これらは両方とも、マッピング データ フローの Azure SQL DB または Synapse シンク内で、Post-SQL スクリプトを使用してネイティブに実行できます。
 
-![インデックスの無効化](media/data-flow/disable-indexes-sql.png "インデックスの無効化")
+:::image type="content" source="media/data-flow/disable-indexes-sql.png" alt-text="インデックスの無効化":::
 
 > [!WARNING]
 > インデックスを無効にすると、実質的にデータ フローでデータベースが制御されますが、クエリはこの時点では成功しない可能性があります。 その結果、この競合を回避するために、多くの ETL ジョブが夜間にトリガーされます。 詳細については、[SQL インデックスの無効化に関する制約](/sql/relational-databases/indexes/disable-indexes-and-constraints)を参照してください
@@ -184,7 +184,7 @@ Azure Synapse Analytics に書き込むときは、 **[Enable staging]\(ステ�
 
 ファイルの作成時、それぞれにパフォーマンスへの影響がある名前付けオプションを選択できます。
 
-![シンクのオプション](media/data-flow/file-sink-settings.png "シンク オプション")
+:::image type="content" source="media/data-flow/file-sink-settings.png" alt-text="シンクのオプション":::
 
 **[既定]** オプションを選択すると、書き込みが最速になります。 各パーティションは、Spark の既定の名前を持つファイルに相当します。 これは、データのフォルダーから読み取るだけの場合に便利です。
 
@@ -216,7 +216,7 @@ CosmosDB に書き込む場合、データ フローの実行中にスループ�
 
 大規模なデータベース クエリのように、クエリに時間がかかる可能性のあるデータ ソースを使用する場合は、結合のブロードキャストをオフにすることをお勧めします。 クエリ時間が長いソースでは、クラスターが計算ノードにブロードキャストしようとしたときに Spark タイムアウトが発生する可能性があります。 ブロードキャストを無効にすることをお勧めするもう 1 つの状況として、後で参照変換に使用するために値を集計するストリームがデータ フロー内に存在する場合があります。 このパターンでは、Spark オプティマイザーが混乱し、タイムアウトが発生する可能性があります。
 
-![結合変換の最適化](media/data-flow/joinoptimize.png "結合の最適化")
+:::image type="content" source="media/data-flow/joinoptimize.png" alt-text="結合変換の最適化":::
 
 #### <a name="cross-joins"></a>クロス結合
 
@@ -234,7 +234,7 @@ SSIS などのツールでのマージ結合とは異なり、結合変換は強
 
 結合や集計などの特定の変換によってデータ パーティションが再シャッフルされるため、非対称のデータが生じることがあります。 非対称のデータは、パーティション間でデータが均等に分散されていないことを意味します。 データが大幅に非対称であると、ダウンストリーム変換とシンク書き込みの速度が低下する可能性があります。 データ フロー実行の任意の時点でデータの歪度を確認するには、監視画面で変換をクリックします。
 
-![歪度と尖度](media/data-flow/skewness-kurtosis.png "歪度と尖度")
+:::image type="content" source="media/data-flow/skewness-kurtosis.png" alt-text="歪度と尖度":::
 
 監視画面には、各パーティションにデータがどのように分散されているかが、歪度と尖度という 2 つのメトリックと共に示されます。 **歪度** は、データがどの程度非対称であるかを示す尺度であり、正、0、負、または未定義の値を持つことができます。 負の歪度は、左端が右側より長いことを意味します。 **尖度** は、データが大幅に非対称であるか、または軽度に非対称であるかを示す尺度です。 高い尖度値は望ましくありません。 理想的な歪度の範囲は -3 から 3 の範囲で、尖度の範囲は 10 未満です。 これらの数値を解釈する簡単な方法として、パーティション チャートを見て、1 つの棒が残りよりも大幅に大きいかどうかを確認します。
 

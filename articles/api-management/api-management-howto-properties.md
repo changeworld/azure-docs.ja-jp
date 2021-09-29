@@ -3,17 +3,17 @@ title: Azure API Management ポリシーでの名前付きの値の使用方法
 description: Azure API Management ポリシーでの名前付きの値の使用方法を説明します。 名前付きの値には、リテラル文字列、ポリシー式、および Azure Key Vault に格納されているシークレットを含めることができます。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 ms.service: api-management
 ms.topic: article
 ms.date: 02/09/2021
-ms.author: apimpm
-ms.openlocfilehash: a970eb23c171522907b6066454d9ca15d85f0835
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.author: danlep
+ms.openlocfilehash: 65f45758ab00d9e549ac0e52287a198bf5734acd
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107812288"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128671205"
 ---
 # <a name="use-named-values-in-azure-api-management-policies"></a>Azure API Management ポリシーで名前付きの値を使用する
 

@@ -8,12 +8,12 @@ ms.service: media-services
 ms.topic: conceptual
 ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 7c4db2326ab8e325dfdfa759ec7f5fdc71f17df1
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.openlocfilehash: 08108de86c5c64d50e86e3a83faa58db4fd607e2
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122633723"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129060576"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Azure Media Services v3 を使用したライブ ストリーミング
 
@@ -117,6 +117,7 @@ Media Services v3 のライブ ストリーミング ワークフローを理解
 - [ライブ イベントの種類の機能の比較](live-event-types-comparison-reference.md)
 - [状態と課金](live-event-states-billing-concept.md)
 - [待機時間](live-event-latency-reference.md)
+- [クォータと制限](limits-quotas-constraints-reference.md)
 
 ## <a name="live-streaming-faq"></a>ライブ ストリーミングの FAQ
 

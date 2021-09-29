@@ -3,21 +3,21 @@ title: Azure PowerShell のサンプル スクリプト - カスタム ドメイ
 description: API Management サービスのプロキシまたはポータル エンドポイントにカスタム ドメインを設定する方法について説明します。 サンプル スクリプトを参照し、使用可能なその他のリソースを確認してください。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 manager: cfowler
 editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.topic: sample
 ms.date: 12/14/2017
-ms.author: apimpm
+ms.author: danlep
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: ce7ac9a27dd2708e3a32758c6e86011e493ea33a
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: cc3c6241296d9ebed5e4c174f0aecd14055049d4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107817091"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128648793"
 ---
 # <a name="set-up-custom-domain"></a>カスタム ドメインのセットアップ
 

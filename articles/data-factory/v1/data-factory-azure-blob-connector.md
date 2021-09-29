@@ -3,16 +3,17 @@ title: Azure Blob Storage との間でデータをコピーする
 description: Azure Data Factory で BLOB データをコピーする方法について説明します。 サンプルを使用して、Azure Blob Storage と Azure SQL Database の間でデータをコピーする方法を示します。
 author: linda33wj
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3d42c7cc6498adad251174db7caea11feec82784
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 02b51ff93b14adcbf0dc4c628421a7521fdc49c7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108753564"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128599812"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Blob Storage との間でのデータのコピー
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -188,7 +189,7 @@ Azure Blob Storage との間でデータをすばやくコピーする方法を�
     4. データ ファクトリの **場所** を選択します。
     5. ブレードの一番下にある **[ダッシュボードにピン留めする]** チェック ボックスをオンにします。
     6. **Create** をクリックしてください。
-3. 作成が完了すると、次の図に示すような **[Data Factory]** ブレードが表示されます。![データ ファクトリのホーム ページ](./media/data-factory-azure-blob-connector/data-factory-home-page.png)
+3. 作成が完了すると、次の図に示すような **[Data Factory]** ブレードが表示されます。:::image type="content" source="./media/data-factory-azure-blob-connector/data-factory-home-page.png" alt-text="データ ファクトリのホーム ページ":::
 
 ### <a name="copy-wizard"></a>コピー ウィザード
 1. Data Factory のホーム ページで **[データのコピー]** タイルをクリックして、新しいタブで **データのコピー ウィザード** を起動します。  
@@ -203,27 +204,27 @@ Azure Blob Storage との間でデータをすばやくコピーする方法を�
     5. **開始日時** を **04/21/2017** に変更します。
     6. **終了日時** を **04/25/2017** に変更します。 日付はカレンダーから選択する代わりに、直接入力することもできます。
     8. **[次へ]** をクリックします。
-        ![コピー ツール - [プロパティ] ページ](./media/data-factory-azure-blob-connector/copy-tool-properties-page.png)
+        :::image type="content" source="./media/data-factory-azure-blob-connector/copy-tool-properties-page.png" alt-text="コピー ツール - [プロパティ] ページ":::
 3. **[Source data store (ソース データ ストア)]** ページで、 **[Azure Blob Storage]** タイルをクリックします。 このページを使用して、コピー タスクのソース データ ストアを指定します。 既存のデータ ストアのリンクされたサービスを使用するか、新しいデータ ストアを指定できます。 既存のリンクされたサービスを使用するには、 **[FROM EXISTING LINKED SERVICES (既存のリンクされたサービスから)]** を選択し、適切なリンクされたサービスを選択します。
-    ![コピー ツール - [ソース データ ストア] ページ](./media/data-factory-azure-blob-connector/copy-tool-source-data-store-page.png)
+    :::image type="content" source="./media/data-factory-azure-blob-connector/copy-tool-source-data-store-page.png" alt-text="コピー ツール - [ソース データ ストア] ページ":::
 4. **[Specify the Azure Blob storage account (Azure BLOB ストレージ アカウントの指定)]** ページで次の操作を実行します。
     1. **[接続名]** は、自動生成された名前のままにします。 接続名は、リンクされたサービスの種類の名前である Azure Storage です。
     2. **[Account selection method (アカウントの選択方法)]** で **[From Azure subscriptions (Azure サブスクリプションから)]** オプションが選択されていることを確認します。
     3. 使用している Azure サブスクリプションを選択するか、 **[Azure サブスクリプション]** で設定されている **[すべて選択]** をそのまま使用します。
     4. 選択したサブスクリプションで利用できる Azure ストレージ アカウントの一覧から、使用する **Azure ストレージ アカウント** を選択します。 ストレージ アカウント設定を手動で入力することもできます。その場合は、 **[Account selection method (アカウントの選択方法)]** で **[手動で入力]** オプションを選択します。
     5. **[次へ]** をクリックします。  
-        ![コピー ツール - Azure BLOB ストレージ アカウントの指定](./media/data-factory-azure-blob-connector/copy-tool-specify-azure-blob-storage-account.png)
+        :::image type="content" source="./media/data-factory-azure-blob-connector/copy-tool-specify-azure-blob-storage-account.png" alt-text="コピー ツール - Azure BLOB ストレージ アカウントの指定":::
 5. **[Choose the input file or folder (入力ファイルまたはフォルダーの選択)]** ページで次の操作を実行します。
     1. **[adfblobcontainer]** をダブルクリックします。
     2. **[input]** を選択し、 **[選択]** をクリックします。 このチュートリアルでは、input フォルダーを選択します。 フォルダーではなく、emp.txt ファイルも選択することもできます。
-        ![コピー ツール - 入力ファイルまたはフォルダーの選択 1](./media/data-factory-azure-blob-connector/copy-tool-choose-input-file-or-folder.png)
+        :::image type="content" source="./media/data-factory-azure-blob-connector/copy-tool-choose-input-file-or-folder.png" alt-text="コピー ツール - 入力ファイルまたはフォルダーの選択 1":::
 6. **[Choose the input file or folder (入力ファイルまたはフォルダーの選択)]** ページで次の操作を実行します。
     1. **[ファイルまたはフォルダー]** が **adfblobconnector/input** に設定されていることを確認します。 ファイルがサブフォルダー内にある場合は、ファイルまたはフォルダーの名前として、adfblobconnector/input/{年}/{月}/{日} (例: 2017/04/01、2017/04/02、...) と入力します。 テキスト ボックスの外で Tab キーを押すと、3 つのドロップダウン リストが表示され、年 (yyyy)、月 (MM)、および日 (dd) の形式を選択できます。
     2. **[Copy file recursively (再帰的にファイルをコピーする)]** は設定しないでください。 このオプションは、フォルダーを再帰的にスキャンして、ファイルをコピーするときに選択します。
     3. **[バイナリ コピー]** オプションは選択しないでください。 このオプションは、コピー元ファイルをバイナリ コピーするときに選択します。 次のページで他のオプションが表示されるように、このチュートリアルでは選択しません。
     4. **[圧縮の種類]** が **[なし]** に設定されていることを確認します。 サポートされている形式のいずれかでコピー元ファイルが圧縮されている場合は、このオプションで値を選択します。
     5. **[次へ]** をクリックします。
-    ![コピー ツール - 入力ファイルまたはフォルダーの選択 2](./media/data-factory-azure-blob-connector/chose-input-file-folder.png)
+    :::image type="content" source="./media/data-factory-azure-blob-connector/chose-input-file-folder.png" alt-text="コピー ツール - 入力ファイルまたはフォルダーの選択 2":::
 7. **[File format settings (ファイル形式の設定)]** ページに、ウィザードがファイルを解析することによって自動的に検出した区切り記号とスキーマが表示されます。
     1. 次のオプションを選択します。  
         a. **[ファイル形式]** を **[テキスト形式]** に設定します。 ドロップダウン リストには、サポートされているすべての形式が表示されます。 次に例を示します。JSON、Avro、ORC、Parquet。
@@ -236,9 +237,9 @@ Azure Blob Storage との間でデータをすばやくコピーする方法を�
     3. ページの下部で、emp.txt ファイルのデータの **プレビュー** を確認します。
     4. 下部の **[スキーマ]** タブをクリックし、コピー元ファイルのデータからコピー ウィザードが推測したスキーマを確認します。
     5. 区切り記号を確認し、データをプレビューしたら、 **[次へ]** をクリックします。
-    ![コピー ツール - ファイル形式の設定](./media/data-factory-azure-blob-connector/copy-tool-file-format-settings.png)
+    :::image type="content" source="./media/data-factory-azure-blob-connector/copy-tool-file-format-settings.png" alt-text="コピー ツール - ファイル形式の設定":::
 8. **[Destination data store (コピー先データ ストア)]** ページで **[Azure Blob Storage]** を選択し、 **[次へ]** をクリックします。 このチュートリアルでは、コピー元データ ストアおよびコピー先データ ストアとして Azure Blob Storage を使用しています。  
-    ![コピー ツール - コピー先データ ストアの選択](media/data-factory-azure-blob-connector/select-destination-data-store.png)
+    :::image type="content" source="media/data-factory-azure-blob-connector/select-destination-data-store.png" alt-text="コピー ツール - コピー先データ ストアの選択":::
 9. **[Specify the Azure Blob storage account (Azure BLOB ストレージ アカウントの指定)]** ページで次の操作を実行します。  
     1. **[接続名]** フィールドに「**AzureStorageLinkedService**」と入力します。
     2. **[Account selection method (アカウントの選択方法)]** で **[From Azure subscriptions (Azure サブスクリプションから)]** オプションが選択されていることを確認します。
@@ -253,20 +254,20 @@ Azure Blob Storage との間でデータをすばやくコピーする方法を�
     1. **[圧縮の種類]** が **[なし]** に設定されていることを確認します。
     1. **[コピー動作]** が **[Merge files (ファイルを結合)]** に設定されていることを確認します。 同じ名前の出力ファイルが既に存在する場合は、最後にある同じファイルに新しいコンテンツが追加されます。
     1. **[次へ]** をクリックします。
-       ![コピー ツール - 出力ファイルまたはフォルダーの選択](media/data-factory-azure-blob-connector/choose-the-output-file-or-folder.png)
+       :::image type="content" source="media/data-factory-azure-blob-connector/choose-the-output-file-or-folder.png" alt-text="コピー ツール - 出力ファイルまたはフォルダーの選択":::
 11. **[File format settings (ファイル形式設定)]** ページで設定を確認し、 **[次へ]** をクリックします。 ここで使用できる追加オプションの 1 つが、ヘッダーを出力ファイルに追加するオプションです。 このオプションを選択すると、ヘッダー行が、コピー元のスキーマの列名で追加されます。 既定の列名は、コピー元のスキーマを表示するときに変更できます。 たとえば、最初の列を "名" に、2 番目の列を "姓" に変更できます。 その後、出力ファイルが生成され、そのファイルのヘッダーでは、この名前が列名として使用されます。
-    ![コピー ツール - コピー先のファイル形式の設定](media/data-factory-azure-blob-connector/file-format-destination.png)
+    :::image type="content" source="media/data-factory-azure-blob-connector/file-format-destination.png" alt-text="コピー ツール - コピー先のファイル形式の設定":::
 12. **[パフォーマンス設定]** ページで、 **[Cloud units (クラウド単位)]** と **[Parallel copies (並列コピー)]** が **[自動]** に設定されていることを確認し、[次へ] をクリックします。 こうした設定の詳細については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md#parallel-copy)」を参照してください。
-    ![コピー ツール - パフォーマンス設定](media/data-factory-azure-blob-connector/copy-performance-settings.png)
+    :::image type="content" source="media/data-factory-azure-blob-connector/copy-performance-settings.png" alt-text="コピー ツール - パフォーマンス設定":::
 14. **[概要**] ページで、すべての設定 (タスクのプロパティ、コピー元とコピー先の設定、コピーの設定) を確認し、 **[次へ]** をクリックします。
-    ![コピー ツール - [概要] ページ](media/data-factory-azure-blob-connector/copy-tool-summary-page.png)
+    :::image type="content" source="media/data-factory-azure-blob-connector/copy-tool-summary-page.png" alt-text="コピー ツール - [概要] ページ":::
 15. **[概要]** ページの内容を確認し、 **[完了]** をクリックします。 これにより、2 つのリンクされたサービス、2 つのデータセット (入力と出力)、1 つのパイプラインが (コピー ウィザードを起動した場所から) データ ファクトリに作成されます。
-    ![コピー ページ - [デプロイ] ページ](media/data-factory-azure-blob-connector/copy-tool-deployment-page.png)
+    :::image type="content" source="media/data-factory-azure-blob-connector/copy-tool-deployment-page.png" alt-text="コピー ページ - [デプロイ] ページ":::
 
 ### <a name="monitor-the-pipeline-copy-task"></a>パイプラインの監視 (コピー タスク)
 
 1. **[デプロイ]** ページで `Click here to monitor copy pipeline` リンクをクリックします。
-2. 新しいタブで **[Monitor and Manage application (アプリケーションの監視および管理)]** が表示されます。![アプリの監視および管理](media/data-factory-azure-blob-connector/monitor-manage-app.png)
+2. 新しいタブで **[Monitor and Manage application (アプリケーションの監視および管理)]** が表示されます。:::image type="content" source="media/data-factory-azure-blob-connector/monitor-manage-app.png" alt-text="アプリの監視および管理":::
 3. **開始** 時間を `04/19/2017` に、**終了** 時間を `04/27/2017` に変更し、 **[適用]** をクリックします。
 4. **[ACTIVITY WINDOWS (アクティビティ ウィンドウ)]** リストに 5 つのアクティビティ ウィンドウが表示されます。 **[Window Start (ウィンドウの開始)]** 時間には、すべての日付のパイプライン開始時間からパイプライン終了時間が表示されます。
 5. すべてのアクティビティ ウィンドウの状態が [準備完了] に設定されるまで、 **[ACTIVITY WINDOWS (アクティビティ ウィンドウ)]** リストの **[更新]** を何度かクリックします。
@@ -283,11 +284,11 @@ Azure Blob Storage との間でデータをすばやくコピーする方法を�
 ### <a name="data-factory-entities"></a>Data Factory のエンティティ
 ここで、Data Factory のホーム ページのタブに戻ります。 現在データ ファクトリには、2 つのリンクされたサービス、2 つのデータセット、および 1 つのパイプラインがあります。
 
-![Data Factory のホーム ページとそのエンティティ](media/data-factory-azure-blob-connector/data-factory-home-page-with-numbers.png)
+:::image type="content" source="media/data-factory-azure-blob-connector/data-factory-home-page-with-numbers.png" alt-text="Data Factory のホーム ページとそのエンティティ":::
 
 **[作成およびデプロイ]** をクリックして、Data Factory エディターを起動します。
 
-![Data Factory エディター](media/data-factory-azure-blob-connector/data-factory-editor.png)
+:::image type="content" source="media/data-factory-azure-blob-connector/data-factory-editor.png" alt-text="Data Factory エディター":::
 
 データ ファクトリに次の Data Factory エンティティが表示されます。
 

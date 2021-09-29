@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: e701ac76672712f98930d0a2d87e3da5b2afdc51
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 222a0f3c327c476ef372117ff0734b6739faf9db
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122181429"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128588696"
 ---
 # <a name="performance-tiers-for-block-blob-storage"></a>ブロック BLOB ストレージのパフォーマンス レベル
 
@@ -57,7 +57,7 @@ Standard パフォーマンスでは、最もコスト効率の高い方法で�
 
 - **バックアップおよびディザスター リカバリーのデータセット**。 Standard パフォーマンス ストレージでは、コスト効率に優れた層が提供されるため、短期および長期のディザスター リカバリー データセット、セカンダリ バックアップ、コンプライアンス データ アーカイブにおける最適なユース ケースとなります。
 
-- **メディア コンテンツ**。 多くの場合、画像とビデオは最初に作成されて保存されるときに頻繁にアクセスされますが、このコンテンツ タイプは古くなるにつれて使用頻度が落ちます。 Standard パフォーマンス ストレージでは、メディア コンテンツのニーズに適した層が提供されます。 
+- **メディア コンテンツ**。 多くの場合、画像とビデオは最初に作成されて保存されるときに頻繁にアクセスされますが、このコンテンツ タイプは古くなるにつれて使用頻度が落ちます。 Standard パフォーマンス ストレージでは、メディア コンテンツのニーズに適した層が提供されます。
 
 - **バルク データ処理**。 これらの種類のワークロードは、安定した待機時間の短さより、コスト効果の高い高スループットのストレージを必要とするため、Standard Storage に適しています。 大量の生データセットは処理用にステージングされ、最終的にはクールな層に移行します。
 
@@ -74,7 +74,7 @@ Blob ストレージのライフサイクル管理には、ルールベースの
 - **Premium**: データは、そのライフサイクルの終了時に有効期限が切れます。
 - **Standard**: データは、最適なアクセス層に移行され、そのライフサイクルの終了時に有効期限が切れます。
 
-詳細については、「[Azure Blob Storage のライフサイクルを管理する](storage-lifecycle-management-concepts.md)」を参照してください。
+詳細については、「[Azure Blob Storage のライフサイクルを管理する](./lifecycle-management-overview.md)」を参照してください。
 
 Premium のブロック BLOB ストレージ アカウントに格納されているデータは、ホット、クール、およびアーカイブ層間で移動することはできません。 ただし、ブロック BLOB ストレージ アカウントから *別の* アカウントのホット アクセス層に BLOB をコピーすることは可能です。 別にアカウントにデータをコピーするには、[Put Block From URL](/rest/api/storageservices/put-block-from-url) API または [AzCopy v10](../common/storage-use-azcopy-v10.md) を使用します。 **Put Block From URL** API では、サーバー上のデータを同期的にコピーします。 この呼び出しは、すべてのデータが、元のサーバー上の場所からコピー先の場所に移動された後でのみ完了します。
 

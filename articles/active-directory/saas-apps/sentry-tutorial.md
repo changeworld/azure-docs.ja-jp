@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/23/2020
 ms.author: jeedes
-ms.openlocfilehash: 0f639c656207f94b37bbf2768b6c39fc69eb8603
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 5a8cbdc77a7570037645b350b62787aeaea7374f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114454609"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124821508"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sentry"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Sentry の統合
 
@@ -140,7 +140,7 @@ Sentry に対して Azure AD SSO を構成してテストするには、次の�
 
 #### <a name="either-mode"></a>両方のモード:
 
-マイ アプリ ポータルを使用して、任意のモードでアプリケーションをテストできます。 マイ アプリ ポータルで [Sentry] タイルをクリックすると、SP モードで構成されている場合は、アプリケーションのサインオン ページにリダイレクトされ、サインイン フローが開始されます。 IDP モードで構成されている場合は、SSO を設定した Sentry アプリケーションに自動的にサインインされます。 マイ アプリ ポータルの詳細については、「[マイ アプリ ポータルからアプリにサインインして開始する](../user-help/my-apps-portal-end-user-access.md)」を参照してください。
+マイ アプリ ポータルを使用して、任意のモードでアプリケーションをテストできます。 マイ アプリ ポータルで [Sentry] タイルをクリックすると、SP モードで構成されている場合は、アプリケーションのサインオン ページにリダイレクトされ、サインイン フローが開始されます。 IDP モードで構成されている場合は、SSO を設定した Sentry アプリケーションに自動的にサインインされます。 マイ アプリ ポータルの詳細については、「[マイ アプリ ポータルからアプリにサインインして開始する](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

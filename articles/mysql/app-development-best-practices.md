@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: 1ec3d86ea66e436732cd8d1044c0658238ba781f
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 22f17c59b93a3defd6c372eb6a871496850ba122
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113086264"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128670768"
 ---
 # <a name="best-practices-for-building-an-application-with-azure-database-for-mysql"></a>Azure Database for MySQL を使用してアプリケーションを構築するためのベスト プラクティス
 
@@ -45,7 +45,7 @@ VM で高速ネットワークが有効になると、待ち時間が少なく�
 
 `tmp_table_size` と `max_heap_table_size` の考えられる最大サイズを計算するには、次の数式を使用します。
 
-```(total memory - (base memory + (sum of per-connection memory * # of connections)) / # of connections```
+`(total memory - (base memory + (sum of per-connection memory * # of connections)) / # of connections`
 
 > [!NOTE]
 > 合計メモリは、プロビジョニングされた仮想コア全体でサーバーによって使用されるメモリの総量を示します。  たとえば、General Purpose 2 仮想コア Azure Database for MySQL サーバーでは、合計メモリは、5 GB * 2 になります。 各レベルのメモリの詳細については、[価格レベル](./concepts-pricing-tiers.md)のドキュメントを参照してください。
@@ -125,7 +125,7 @@ show global status like 'created_tmp_tables';
 
 クエリがディスクへの書き込みを行うワークロードの割合を計算するには、次の数式でメトリック値を使用します。
 
-```(created_tmp_disk_tables / (created_tmp_disk_tables + created_tmp_tables)) * 100```
+`(created_tmp_disk_tables / (created_tmp_disk_tables + created_tmp_tables)) * 100`
 
 理想的には、この割合は 25% 未満である必要があります。 割合が 25% 以上であることがわかった場合は、tmp_table_size と max_heap_table_size の 2 つのサーバー パラメーターを変更することをお勧めします。
 

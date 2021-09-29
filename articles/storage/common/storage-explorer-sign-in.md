@@ -7,16 +7,16 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/01/2021
 ms.author: marayerm
-ms.openlocfilehash: 92447c4d0c8d0a1fac6e59a11a81dc7beae52516
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: bf7fe9dc4d8c60b7e8779100bd959ee7e85415e0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123451473"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128583858"
 ---
 # <a name="sign-in-to-storage-explorer"></a>Storage Explorer にサインインする
 
-サインインは、Storage Explorer を使用して Azure Storage リソースにアクセスするのに推奨される方法です。 サインインにより、RBAC や Gen2 POSIX ACL など、Azure AD が支援するアクセス許可を利用できます。 
+サインインは、Storage Explorer を使用して Azure Storage リソースにアクセスするのに推奨される方法です。 サインインにより、RBAC や Gen2 POSIX ACL など、Azure AD が支援するアクセス許可を利用できます。
 
 ## <a name="how-to-sign-in"></a>サインイン方法
 
@@ -59,5 +59,5 @@ Azure アカウント全体を削除する場合は、アカウントの横に�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Storage Explorer を使用して Azure Blob Storage リソースを管理する](../../vs-azure-tools-storage-explorer-blobs.md)
-* [サインインに関する問題のトラブルシューティング](./storage-explorer-troubleshooting.md#sign-in-issues)
+- [Storage Explorer を使用して Azure Blob Storage リソースを管理する](../../vs-azure-tools-storage-explorer-blobs.md)
+- [サインインに関する問題のトラブルシューティング](./storage-explorer-troubleshooting.md#sign-in-issues)

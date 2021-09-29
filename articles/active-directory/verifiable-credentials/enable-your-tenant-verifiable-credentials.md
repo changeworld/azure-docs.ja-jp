@@ -11,12 +11,12 @@ ms.subservice: verifiable-credentials
 ms.date: 06/24/2021
 ms.author: barclayn
 ms.reviewer: ''
-ms.openlocfilehash: 7b50e17a8c6730aedbc8fea68a2ab4d8685b2fa5
-ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
+ms.openlocfilehash: 9867825794c363b9df53849ad3fd1cb644492677
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114228980"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124816281"
 ---
 # <a name="tutorial---configure-azure-active-directory-to-issue-verifiable-credentials-preview"></a>チュートリアル - Azure Active Directory を構成して検証可能な資格情報 (プレビュー) を発行する
 
@@ -249,7 +249,7 @@ ms.locfileid: "114228980"
 1. 次の情報を指定して、組織を設定します。
 
       - **組織名**: 検証可能な資格情報内で自分のビジネスを参照する名前を入力します。 この値は顧客には公開されません。
-      - **ドメイン:** DID ドキュメントにサービス エンドポイントとして追加されるドメインを入力します。 [Microsoft Authenticator](../user-help/user-help-auth-app-download-install.md) とその他のウォレットでは、DID が[ドメインにリンク](how-to-dnsbind.md)されていることを検証するために、この情報を使用します。 DID を検証できる場合、ウォレットには検証済み記号が表示されます。 ウォレットが DID を検証できない場合、検証できない資格情報が組織によって発行されたことがユーザーに通知されます。 ドメインは、ユーザーがお客様のビジネスについて知っている具体的な何かに DID をバインドするものです。
+      - **ドメイン:** DID ドキュメントにサービス エンドポイントとして追加されるドメインを入力します。 [Microsoft Authenticator](https://support.microsoft.com/account-billing/download-and-install-the-microsoft-authenticator-app-351498fc-850a-45da-b7b6-27e523b8702a) とその他のウォレットでは、DID が[ドメインにリンク](how-to-dnsbind.md)されていることを検証するために、この情報を使用します。 DID を検証できる場合、ウォレットには検証済み記号が表示されます。 ウォレットが DID を検証できない場合、検証できない資格情報が組織によって発行されたことがユーザーに通知されます。 ドメインは、ユーザーがお客様のビジネスについて知っている具体的な何かに DID をバインドするものです。
       - **キー コンテナー:** 前に作成したキー コンテナーの名前を入力します。
 
    >[!IMPORTANT]

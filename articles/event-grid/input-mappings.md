@@ -2,14 +2,14 @@
 title: Azure Event Grid スキーマへのカスタム フィールドのマップ
 description: この記事では、イベント データが Event Grid スキーマと一致しない場合にカスタム スキーマを Azure Event Grid スキーマに変換する方法について説明します。
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 09/28/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6676134f878ea77168ee56f065ec1d4cd5b08505
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 88d1b8f9968859f6aad7b81182a7830af5b636c0
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110704944"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129218320"
 ---
 # <a name="map-custom-fields-to-event-grid-schema"></a>Event Grid スキーマへのカスタム フィールドのマップ
 

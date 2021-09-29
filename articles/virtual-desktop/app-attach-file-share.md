@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: e0ba3363b6004afb8e42f420fae681b2827106fb
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: b568b11b7e0e630dcceef53e4c0f513dc0a7732c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114707082"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128547559"
 ---
 # <a name="set-up-a-file-share-for-msix-app-attach"></a>MSIX アプリのアタッチ用にファイル共有を設定する
 
@@ -44,12 +44,12 @@ MSIX アプリのアタッチのパフォーマンスを最適化するために
 - MSIX アプリのアタッチに使用するストレージ ソリューションは、セッション ホストと同じデータセンターの場所に存在する必要があります。
 - パフォーマンスのボトルネックを回避するには、次の VHD、VHDX、および CIM ファイルをウイルス対策スキャンから除外します。
    
-    - <MSIXAppAttachFileShare\>\*.VHD
-    - <MSIXAppAttachFileShare\>\*.VHDX
-    - \\\\storageaccount.file.core.windows.net\\share\*\*.VHD
-    - \\\\storageaccount.file.core.windows.net\\share\*\*.VHDX
-    - <MSIXAppAttachFileShare>.CIM
-    - \\\\storageaccount.file.core.windows.net\\share\*\*.CIM
+    - `<MSIXAppAttachFileShare\>\*.VHD`
+    - `<MSIXAppAttachFileShare\>\*.VHDX`
+    - `\\storageaccount.file.core.windows.net\share*.VHD`
+    - `\\storageaccount.file.core.windows.net\share*.VHDX`
+    - `<MSIXAppAttachFileShare>.CIM`
+    - `\\storageaccount.file.core.windows.net\share**.CIM`
 
 - MSIX アプリのアタッチ用の記憶域ファブリックを FSLogix プロファイル コンテナーから分離します。
 - ファイル共有にアクセスするには、すべての VM システム アカウントとユーザー アカウントに読み取り専用アクセス許可が必要です。

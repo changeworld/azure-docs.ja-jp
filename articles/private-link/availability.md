@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 3/15/2021
 ms.custom: template-concept,references_regions
-ms.openlocfilehash: 052a59ede2acc751d6847646ca1b103de0c1b78a
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: aaa013a25e9131ec55f002db089de0d353f13f7c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122446456"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128585768"
 ---
 # <a name="azure-private-link-availability"></a>Azure Private Link の可用性
 
@@ -82,7 +82,7 @@ Azure Private Link を使用すると、お使いの仮想ネットワーク内�
 
 | サポートされているサービス | 対応リージョン | その他の考慮事項 | Status  |
 | ------------ | ----------------| ------------| ----------------|
-| Azure Automation  | すべてのパブリック リージョン<br/> すべての Government リージョン |  | プレビュー </br> [Azure Automation のプライベート エンドポイントを作成する方法を確認します。](../automation/how-to/private-link-security.md)|
+| Azure Automation  | すべてのパブリック リージョン<br/> すべての Government リージョン |  | GA </br> [Azure Automation のプライベート エンドポイントを作成する方法を確認します。](../automation/how-to/private-link-security.md)|
 |Azure Backup | すべてのパブリック リージョン<br/> すべての Government リージョン   |  | GA <br/> [Azure Backup のプライベート エンドポイントを作成する方法を確認します。](../backup/private-endpoints.md)   |
 
 ### <a name="security"></a>セキュリティ

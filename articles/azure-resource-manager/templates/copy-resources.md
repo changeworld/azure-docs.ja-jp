@@ -3,12 +3,12 @@ title: リソースの複数のインスタンスをデプロイする
 description: Azure Resource Manager テンプレート (ARM テンプレート) で copy 操作と配列を使用して、リソースの種類を複数回デプロイします。
 ms.topic: conceptual
 ms.date: 05/07/2021
-ms.openlocfilehash: fc1b8389280880372e8209f5c699b39363e286bf
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: 84276811f1a809e66427584ad6d59a2805b2f79e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123449785"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128590007"
 ---
 # <a name="resource-iteration-in-arm-templates"></a>ARM テンプレートでのリソースの反復処理
 
@@ -248,7 +248,7 @@ count は負の数値にすることはできません。 Azure CLI、PowerShell
 |[Copy storage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystorage.json) |名前にインデックス番号を含む複数のストレージ アカウントをデプロイします。 |
 |[Serial copy storage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/serialcopystorage.json) |複数のストレージ アカウントを一度に 1 つずつデプロイします。 名前にはインデックス番号が含まれます。 |
 |[Copy storage with array](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystoragewitharray.json) |複数のストレージ アカウントをデプロイします。 名前には、配列からの値が含まれます。 |
-| [リソース グループをコピーする](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyRG.json) | 複数のリソース グループをデプロイします。 |
+| [リソース グループをコピーする](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyrg.json) | 複数のリソース グループをデプロイします。 |
 
 ## <a name="next-steps"></a>次のステップ
 

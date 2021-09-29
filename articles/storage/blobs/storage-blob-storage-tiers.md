@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: klaasl
-ms.openlocfilehash: 7b32e75645c2c930e296bdb4c5448bcb16045d6d
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 272575ab5fac1888e6f9c3d84317e0450447f3c4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123470564"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128662649"
 ---
 # <a name="access-tiers-for-azure-blob-storage---hot-cool-and-archive"></a>Azure Blob Storage のアクセス層 - ホット、クール、およびアーカイブ
 
@@ -88,9 +88,9 @@ BLOB がアーカイブ ストレージ内にある間、BLOB データはオフ
 
 ## <a name="account-level-tiering"></a>アカウント レベルの階層制御
 
-この 3 つのアクセス階層に保存されているすべての BLOB は、同一アカウントに共存させることができます。 層が明示的に割り当てられていない BLOB では、アカウントのアクセス層の設定から層が推定されます。 アクセス層がアカウントから取得されている場合、BLOB の **推定されたアクセス層** プロパティは "true" に設定され、**アクセス層** プロパティはアカウントの階層と一致します。 Azure portal では、_アクセス層の推定_ プロパティが、**ホット (推定)** や **クール (推定)** として BLOB アクセス層と共に表示されます。
+この 3 つのアクセス階層に保存されているすべての BLOB は、同一アカウントに共存させることができます。 層が明示的に割り当てられていない BLOB では、アカウントのアクセス層の設定から層が推定されます。 アクセス層がアカウントから取得されている場合、BLOB の **推定されたアクセス層** プロパティは "true" に設定され、**アクセス層** プロパティはアカウントの階層と一致します。 Azure portal では、*アクセス層の推定* プロパティが、**ホット (推定)** や **クール (推定)** として BLOB アクセス層と共に表示されます。
 
-アカウント アクセス層の変更は、アカウントに格納されている、層が明示的に設定されていないすべての "_推定されたアクセス層_" オブジェクトに適用されます。 アカウントの階層をホットからクールに切り替えた場合、層が設定されていない全 BLOB に関して書き込み操作 (10,000 件単位) の料金が適用されます。この料金が適用されるのは GPv2 アカウントのみです。 Blob Storage アカウントでは、この変更に関しての料金は発生しません。 Blob Storage アカウントまたは GPv2 アカウントでクールからホットに切り替えた場合は、読み取り操作 (10,000 件単位) とデータ取得 (GB 単位) の両方の料金が発生します。
+アカウント アクセス層の変更は、アカウントに格納されている、層が明示的に設定されていないすべての "*推定されたアクセス層*" オブジェクトに適用されます。 アカウントの階層をホットからクールに切り替えた場合、層が設定されていない全 BLOB に関して書き込み操作 (10,000 件単位) の料金が適用されます。この料金が適用されるのは GPv2 アカウントのみです。 Blob Storage アカウントでは、この変更に関しての料金は発生しません。 Blob Storage アカウントまたは GPv2 アカウントでクールからホットに切り替えた場合は、読み取り操作 (10,000 件単位) とデータ取得 (GB 単位) の両方の料金が発生します。
 
 既定のアカウント アクセス層として設定できるのは、ホット アクセス層とクール アクセス層だけです。 アーカイブは、オブジェクト レベルでのみ設定することができます。 BLOB のアップロードで、選択したアクセス層を、既定のアカウント層に関係なく、ホット、クール、またはアーカイブにするよう指定できます。 この機能により、データを直接アーカイブ層に書き込み、BLOB ストレージでデータを作成した瞬間からコストを削減することができます。
 
@@ -107,7 +107,7 @@ BLOB 層が最後に変更された時間は、BLOB の **アクセス層変更�
 
 ### <a name="blob-lifecycle-management"></a>BLOB のライフサイクル管理
 
-Blob Storage のライフサイクル管理には優れたルールベースのポリシーが用意されており、これを使用して、最適なアクセス層にデータを移行し、ライフサイクルの最後にデータを期限切れにすることができます。 詳細については、「[Azure Blob Storage アクセス層の自動化によるコストの最適化](storage-lifecycle-management-concepts.md)」を参照してください。
+Blob Storage のライフサイクル管理には優れたルールベースのポリシーが用意されており、これを使用して、最適なアクセス層にデータを移行し、ライフサイクルの最後にデータを期限切れにすることができます。 詳細については、「[Azure Blob Storage アクセス層の自動化によるコストの最適化](./lifecycle-management-overview.md)」を参照してください。
 
 > [!NOTE]
 > ブロック BLOB ストレージ アカウント (Premium パフォーマンス) に格納されているデータは、現在、[BLOB 層の設定](/rest/api/storageservices/set-blob-tier)または Azure Blob Storage のライフサイクル管理を使用して、ホット、クールまたはアーカイブに階層化することはできません。
@@ -180,16 +180,14 @@ BLOB をよりホットな層 (アーカイブからクール、アーカイブ�
 
 ## <a name="feature-support"></a>機能サポート
 
-次の表は、アカウントでのこの機能のサポートと、特定の機能を有効にした場合のサポートへの影響を示しています。 
+この表は、アカウントでのこの機能のサポート状況と、特定の機能を有効にした場合のサポートへの影響を示しています。
 
-| ストレージ アカウントの種類                | BLOB Storage (既定のサポート)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+| ストレージ アカウントの種類                | Blob Storage (既定のサポート)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>
 |-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
-| Standard 汎用 v2 | ![はい](../media/icons/yes-icon.png) |![はい](../media/icons/yes-icon.png)              | ![はい](../media/icons/yes-icon.png) | 
+| Standard 汎用 v2 | ![はい](../media/icons/yes-icon.png) |![はい](../media/icons/yes-icon.png)              | ![はい](../media/icons/yes-icon.png) |
 | Premium ブロック BLOB          | ![いいえ](../media/icons/no-icon.png)|![いいえ](../media/icons/no-icon.png) | ![いいえ](../media/icons/no-icon.png) |
 
 <sup>1</sup>    Data Lake Storage Gen2 とネットワーク ファイル システム (NFS) 3.0 プロトコルの両方で、階層型名前空間が有効になっているストレージ アカウントが必要です。
-
-
 
 ## <a name="next-steps"></a>次の手順
 
@@ -197,4 +195,4 @@ BLOB とアカウントをアクセス層間で管理する方法について説
 
 - [Azure Storage アカウントの BLOB の層を管理する方法](manage-access-tier.md)
 - [Azure Storage アカウントの既定のアカウント アクセス層を管理する方法](../common/manage-account-default-access-tier.md)
-- [Azure Blob Storage アクセス層の自動化によるコストの最適化](storage-lifecycle-management-concepts.md)
+- [Azure Blob Storage アクセス層の自動化によるコストの最適化](./lifecycle-management-overview.md)

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/12/2018
 ms.author: allensu
-ms.openlocfilehash: 186ded90b504420a2f315d054551d97821cf8465
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9e5ffa69105e05cbb465b13672ae08be7c9dff5d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100385049"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128557899"
 ---
 # <a name="pre-load-assets-on-an-azure-cdn-endpoint"></a>Azure CDN エンドポイント上の資産を事前に読み込む
 [!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
@@ -68,5 +68,5 @@ ms.locfileid: "100385049"
 
 ## <a name="see-also"></a>関連項目
 * [Azure CDN エンドポイントの消去](cdn-purge-endpoint.md)
-* [Azure CDN REST API リファレンス: エンドポイント上のコンテンツの事前読み込み](/rest/api/cdn/cdn/endpoints/loadcontent)
-* [Azure CDN REST API リファレンス: エンドポイントからのコンテンツの消去](/rest/api/cdn/cdn/endpoints/purgecontent)
+* [Azure CDN REST API リファレンス: エンドポイント上のコンテンツの事前読み込み](/rest/api/cdn/endpoints/load-content)
+* [Azure CDN REST API リファレンス: エンドポイントからのコンテンツの消去](/rest/api/cdn/endpoints/purge-content)

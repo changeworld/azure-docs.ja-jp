@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/09/2021
 ms.author: yelevin
-ms.openlocfilehash: b68d2a8219e7aa23aac3187333160dfd4276e7b8
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 090e82a3efd27629633772b0549ee6d2452e159d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122182175"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124818944"
 ---
 # <a name="advanced-multistage-attack-detection-in-azure-sentinel"></a>Azure Sentinel の高度なマルチステージ攻撃の検出
 
@@ -746,9 +746,9 @@ ms.locfileid: "122182175"
 次のデータ ソースからさまざまな種類の複数のアラートが検出され、ランサムウェア アクティビティに関連する可能性がある場合、Azure Sentinel によってインシデントが生成されます。
 
 - [Azure Defender (Azure Security Center)](connect-azure-security-center.md)
-- [Microsoft Defender for Endpoint](connect-microsoft-defender-advanced-threat-protection.md)
-- [Microsoft Defender for Identity](connect-azure-atp.md)
-- [Microsoft Cloud App Security](connect-cloud-app-security.md)
+- [Microsoft Defender for Endpoint](./data-connectors-reference.md#microsoft-defender-for-endpoint)
+- [Microsoft Defender for Identity](./data-connectors-reference.md#microsoft-defender-for-identity)
+- [Microsoft Cloud App Security](./data-connectors-reference.md#microsoft-cloud-app-security-mcas)
 - [Azure Sentinel のスケジュール化された分析ルール](detect-threats-built-in.md#scheduled)。 Fusion では、戦術情報を含むスケジュール化された分析ルールのみが考慮されます。
 
 そのような Fusion インシデントは、**Multiple alerts possibly related to Ransomware activity detected (ランサムウェア アクティビティに関連する可能性のある複数のアラートの検出)** という名前が付けられ、関連するアラートが特定の期間内に検出され、攻撃の **実行** と **防衛回避** ステージに関連している場合に生成されます。

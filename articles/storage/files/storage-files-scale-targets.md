@@ -4,15 +4,15 @@ description: Azure Files のスケーラビリティとパフォーマンスの�
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/28/2021
+ms.date: 09/16/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 871cb72c163472dbe3409738199e710300c5057d
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: 83e33933e8afb8b376750368a64c60cb56406a75
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122867329"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128651543"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure Files のスケーラビリティおよびパフォーマンスのターゲット
 [Azure Files](storage-files-introduction.md) はクラウドで、SMB および NFS ファイル システム プロトコルを介してアクセスできる、フル マネージドのファイル共有を提供します。 この記事では、Azure Files と Azure File Sync のスケーラビリティとパフォーマンスのターゲットについて説明します。
@@ -100,7 +100,7 @@ Azure では、お客様のさまざまなストレージ シナリオに対し�
 | ディレクトリ内のファイル システム オブジェクト (ディレクトリとファイル) の最大数 **(再帰的ではない)** | 500 万オブジェクト | はい |
 | オブジェクト (ディレクトリとファイル) のセキュリティ記述子の最大サイズ | 64 KiB | はい |
 | ファイル サイズ | 100 GiB | いいえ |
-| 階層化するファイルの最小ファイル サイズ | V9 以降:ファイル システムのクラスター サイズ (ダブルファイル システムクラスターのサイズ) に基づきます。 たとえば、ファイル システム クラスターのサイズが 4 KiB の場合、ファイルの最小サイズは 8 KiB になります。<br> V8 およびそれ以前:64 KiB  | はい |
+| 階層化するファイルの最小ファイル サイズ | ファイル システムのクラスター サイズ (ダブルファイル システムクラスターのサイズ) に基づきます。 たとえば、ファイル システム クラスターのサイズが 4 KiB の場合、ファイルの最小サイズは 8 KiB になります。 | はい |
 
 > [!Note]  
 > Azure File Sync エンドポイントは、Azure ファイル共有のサイズにスケールアップできます。 Azure ファイル共有のサイズの上限に達した場合、同期は操作できません。

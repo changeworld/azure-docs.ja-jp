@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: a2450a45140b3ba47c172f05d2eb7200252ca23b
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 3edad020098a44c9e77258ec5643dda3d0db291e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108071021"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124825522"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-thoughtworks-mingle"></a>チュートリアル: Azure Active Directory と Thoughtworks Mingle の統合
 
@@ -186,7 +186,7 @@ Thoughtworks Mingle で Azure AD シングル サインオンを構成するに�
 
 7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
-### <a name="create-thoughtworks-mingle-test-user&quot;></a>Thoughtworks Mingle テスト ユーザーの作成
+### <a name="create-thoughtworks-mingle-test-user"></a>Thoughtworks Mingle テスト ユーザーの作成
 
 Azure AD ユーザーがサインインできるようにするには、Azure Active Directory ユーザー名を使用して、Azure AD ユーザーを Thoughtworks Mingle アプリケーションにプロビジョニングする必要があります。 Thoughtworks Mingle の場合、プロビジョニングは手動で行います。
 
@@ -196,7 +196,7 @@ Azure AD ユーザーがサインインできるようにするには、Azure Ac
 
 2. [**プロファイル**] をクリックします。
    
-    ![最初のプロジェクト](./media/thoughtworks-mingle-tutorial/ic785160.png &quot;最初のプロジェクト")
+    ![最初のプロジェクト](./media/thoughtworks-mingle-tutorial/ic785160.png "最初のプロジェクト")
 
 3. [**管理**] タブをクリックし、[**ユーザー**] をクリックします。
    
@@ -224,7 +224,7 @@ Azure AD ユーザーがサインインできるようにするには、Azure Ac
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Thoughtworks Mingle] タイルをクリックすると、SSO を設定した Thoughtworks Mingle に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+アクセス パネルで [Thoughtworks Mingle] タイルをクリックすると、SSO を設定した Thoughtworks Mingle に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

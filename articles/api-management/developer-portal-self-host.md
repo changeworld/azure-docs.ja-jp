@@ -3,16 +3,16 @@ title: 開発者ポータルをセルフホストする
 titleSuffix: Azure API Management
 description: API Management 開発者ポータルをセルフホストする方法について説明します。
 author: dlepow
-ms.author: apimpm
+ms.author: danlep
 ms.date: 04/15/2021
 ms.service: api-management
 ms.topic: how-to
-ms.openlocfilehash: e63a329a10699102802af6d544ab55aa19513f17
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: f3e0004115b417c85914c7cc40fd98acf3c63d73
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107741385"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128592643"
 ---
 # <a name="self-host-the-api-management-developer-portal"></a>API Management 開発者ポータルをセルフホストする
 

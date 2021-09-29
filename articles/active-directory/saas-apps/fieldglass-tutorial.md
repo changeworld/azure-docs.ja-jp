@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/03/2021
 ms.author: jeedes
-ms.openlocfilehash: cb95fbf4c2ff7430249743702c930e065dcf5125
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 9b319b3126048919b31a952edcddac1e3201bd39
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111896028"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128618884"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fieldglass"></a>チュートリアル: Azure Active Directory と Fieldglass の統合
 
@@ -81,8 +81,8 @@ Fieldglass に対して Azure AD SSO を構成してテストするには、次�
     
    | [応答 URL] |
    |-----------|
-   | https://www.fieldglass.net/<company name> |
-   | https://<company name>.fgvms.com/<company name> |
+   | `https://www.fieldglass.net/<company name>` |
+   | `https://<company name>.fgvms.com/<company name>` |
    | 
 
     > [!NOTE]
@@ -134,7 +134,7 @@ Fieldglass に対して Azure AD SSO を構成してテストするには、次�
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した Fieldglass に自動的にサインインされます。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Fieldglass] タイルをクリックすると、SSO を設定した Fieldglass に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Fieldglass] タイルをクリックすると、SSO を設定した Fieldglass に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

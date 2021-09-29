@@ -8,12 +8,12 @@ ms.subservice: security
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/03/2021
-ms.openlocfilehash: ab31c1629140a1e0f3f5a6dcbe409b6803805e34
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2b39017bb8d1a7e8527f8302190921463247f721
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638892"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124779694"
 ---
 # <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Azure Data Factory におけるデータ移動のセキュリティに関する考慮事項
 
@@ -113,7 +113,7 @@ Salesforce では、ファイル、添付ファイル、カスタム フィー�
 
 ハイブリッド シナリオでは、オンプレミス ネットワーク、仮想ネットワーク (Azure)、または仮想プライベート クラウド (Amazon) 内にセルフホステッド統合ランタイムをインストールする必要があります。 セルフホステッド統合ランタイムは、ローカルのデータ ストアにアクセスできる必要があります。 セルフホステッド統合ランタイムの詳細については、「[自己ホスト型統合ランタイムを作成し構成する方法](./create-self-hosted-integration-runtime.md)」を参照してください。 
 
-![セルフホステッド統合ランタイム チャネル](media/data-movement-security-considerations/data-management-gateway-channels.png)
+:::image type="content" source="media/data-movement-security-considerations/data-management-gateway-channels.png" alt-text="セルフホステッド統合ランタイム チャネル":::
 
 コマンド チャネルは、Data Factory のデータ移動サービスとセルフホステッド統合ランタイム間で通信できるようにします。 通信には、アクティビティに関連する情報が含まれます。 データ チャネルは、オンプレミス データ ストアとクラウド データ ストア間でデータを転送するために使用されます。    
 
@@ -157,11 +157,11 @@ Azure Virtual Network は、クラウド内のユーザーのネットワーク�
 
 #### <a name="express-route"></a>ExpressRoute
 
-![ExpressRoute とゲートウェイの使用](media/data-movement-security-considerations/express-route-for-gateway.png) 
+:::image type="content" source="media/data-movement-security-considerations/express-route-for-gateway.png" alt-text="ExpressRoute とゲートウェイの使用"::: 
 
 #### <a name="ipsec-vpn"></a>IPSec VPN
 
-![IPSec VPN とゲートウェイの使用](media/data-movement-security-considerations/ipsec-vpn-for-gateway.png)
+:::image type="content" source="media/data-movement-security-considerations/ipsec-vpn-for-gateway.png" alt-text="IPSec VPN とゲートウェイの使用":::
 
 ### <a name="firewall-configurations-and-allow-list-setting-up-for-ip-addresses"></a> IP アドレスに対するファイアウォールの構成と許可リストの設定
 
@@ -188,7 +188,7 @@ Azure Virtual Network は、クラウド内のユーザーのネットワーク�
 | ------------- | ---------------------------------------- |
 | 8060 (TCP)    | 「[Azure Data Factory でオンプレミスのデータ ストアの資格情報を暗号化する](encrypt-credentials-self-hosted-integration-runtime.md)」に説明されているように PowerShell 暗号化コマンドレットと、セルフホステッド統合ランタイムのオンプレミス データ ストアに安全に資格情報を設定するために資格情報マネージャー アプリケーションで必要です。 |
 
-![ゲートウェイのポートの要件](media/data-movement-security-considerations/gateway-port-requirements.png) 
+:::image type="content" source="media/data-movement-security-considerations/gateway-port-requirements.png" alt-text="ゲートウェイのポートの要件"::: 
 
 #### <a name="ip-configurations-and-allow-list-setting-up-in-data-stores"></a>データ ストアでの IP の構成と許可リストの設定
 

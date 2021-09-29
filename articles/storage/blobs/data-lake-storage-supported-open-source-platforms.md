@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 02/26/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: be7bd448fdf043c9a3916d87e9d54042ffe07380
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 4a79f70036f63e5159ce1da003535f417358d4a0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123476648"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128599223"
 ---
 # <a name="open-source-platforms-that-support-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 がサポートされているオープンソース プラットフォーム
 
-この記事では、Data Lake Storage Gen2 がサポートされているオープン ソース プラットフォームの一覧を示します。  
+この記事では、Data Lake Storage Gen2 がサポートされているオープン ソース プラットフォームの一覧を示します。
 
 ## <a name="supported-open-source-platforms"></a>サポートされるオープン ソース プラットフォーム
 

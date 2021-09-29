@@ -17,12 +17,12 @@ ms.date: 04/05/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6570e378aa75843c525cb21ed58c9da5fd4fb574
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: 5980e535de875e50c2b2c5a890a371183623dac0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122445853"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124835789"
 ---
 # <a name="license-requirements-to-use-privileged-identity-management"></a>Privileged Identity Management を使用するためのライセンスの要件
 
@@ -73,5 +73,5 @@ Azure AD Premium P2、EMS E5、または試用版ライセンスの有効期限�
 - [Privileged Identity Management をデプロイする](pim-deployment-plan.md)
 - [Privileged Identity Management の使用を開始する](pim-getting-started.md)
 - [Privileged Identity Management で管理できないロール](pim-roles.md)
-- [PIM で Azure リソース ロールのアクセス レビューを作成する](pim-resource-roles-start-access-review.md)
-- [PIM で Azure AD ロールのアクセス レビューを作成する](pim-how-to-start-security-review.md)
+- [PIM で Azure リソース ロールのアクセス レビューを作成する](./pim-create-azure-ad-roles-and-resource-roles-review.md)
+- [PIM で Azure AD ロールのアクセス レビューを作成する](./pim-create-azure-ad-roles-and-resource-roles-review.md)

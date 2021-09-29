@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 07/28/2021
 ms.custom: mvc
-ms.openlocfilehash: 520b75e38d7ccf33c3f900c0b30bfd68e6184720
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 3d3fc18ebceb18e7411a68c19e069a0db4889854
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123542406"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124797117"
 ---
 # <a name="tutorial-discover-servers-running-in-a-vmware-environment-with-azure-migrate"></a>チュートリアル: Azure Migrate を使用して VMware 環境で実行されているサーバーを検出する
 
@@ -141,7 +141,7 @@ Azure Migrate の検出および評価ツールでは、軽量の Azure Migrate 
 
 > [!NOTE]
 > OVA テンプレートを使用してアプライアンスを設定できない場合は、Windows Server 2016 を実行している既存のサーバーで PowerShell スクリプトを実行して設定できます。 [PowerShell を使用して Azure Migrate アプライアンスを設定する](deploy-appliance-script.md#set-up-the-appliance-for-vmware)方法をご確認ください。 <br/>
-> OVA テンプレートを使用してアプライアンスをデプロイする方法は、Azure Government クラウドではサポートされません。 Azure Government クラウド用のアプライアンスをデプロイする方法について[詳細をご覧ください](/azure/migrate/deploy-appliance-script-government)。
+> OVA テンプレートを使用してアプライアンスをデプロイする方法は、Azure Government クラウドではサポートされません。 Azure Government クラウド用のアプライアンスをデプロイする方法について[詳細をご覧ください](./deploy-appliance-script-government.md)。
 
 ### <a name="deploy-by-using-an-ova-template"></a>OVA テンプレートを使用してデプロイする
 
@@ -318,7 +318,7 @@ vCenter Server の検出を開始するには、 **[検出の開始]** を選択
 * [ソフトウェア インベントリ](how-to-discover-applications.md)は、検出されたサーバーに存在する Web サーバーの役割を識別します。 サーバーで Web サーバーの役割が有効になっている場合、Azure Migrate により、サーバーで Web アプリの検出が実行されます。 Web アプリ構成データは 24 時間に 1 回更新されます。
 * ソフトウェア インベントリの間、エージェントレスの依存関係分析のために、追加されたサーバー資格情報がサーバーに対して繰り返され、検証されます。 サーバーの検出が完了すると、ポータルでサーバーに対するエージェントレスの依存関係分析を有効にできます。 [エージェントレスの依存関係分析](how-to-create-group-machine-dependencies-agentless.md)を有効にするように選択できるのは、検証が成功したサーバーだけです。
 * 検出を開始してから 24 時間以内に、ASP.NET Web アプリと、SQL Server インスタンスおよびデータベースのデータがポータルに表示され始めます。
-* Azure Migrate の既定では、SQL インスタンスに接続する最も安全な方法が使用されます。つまり、Azure Migrate により、TrustServerCertificate プロパティが `true` に設定され、Azure Migrate アプライアンスとソース SQL Server インスタンス間の通信が暗号化されます。 さらに、トランスポート層で SSL を使用してチャネルが暗号化され、証明書チェーンによる信頼性の検証がバイパスされます。 そのため、証明書のルート証明機関を信頼するようにアプライアンス サーバーを設定する必要があります。 ただし、アプライアンス上で **[Edit SQL Server connection properties]\(SQL Server の接続プロパティの編集\)** を選択して、接続設定を変更することができます。何を選択すべきかについては、[詳細](https://go.microsoft.com/fwlink/?linkid=2158046)のページを参照してください。
+* Azure Migrate の既定では、SQL インスタンスに接続する最も安全な方法が使用されます。つまり、Azure Migrate により、TrustServerCertificate プロパティが `true` に設定され、Azure Migrate アプライアンスとソース SQL Server インスタンス間の通信が暗号化されます。 さらに、トランスポート層で SSL を使用してチャネルが暗号化され、証明書チェーンによる信頼性の検証がバイパスされます。 そのため、証明書のルート証明機関を信頼するようにアプライアンス サーバーを設定する必要があります。 ただし、アプライアンス上で **[Edit SQL Server connection properties]\(SQL Server の接続プロパティの編集\)** を選択して、接続設定を変更することができます。何を選択すべきかについては、[詳細](/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine)のページを参照してください。
 
     :::image type="content" source="./media/tutorial-discover-vmware/sql-connection-properties.png" alt-text="SQL Server の接続プロパティを編集する方法を示すスクリーンショット。":::
 

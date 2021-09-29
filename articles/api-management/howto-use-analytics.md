@@ -5,13 +5,13 @@ author: dlepow
 ms.service: api-management
 ms.topic: article
 ms.date: 11/24/2020
-ms.author: apimpm
-ms.openlocfilehash: da8b462eba7b5f68e345ffe5e73bd4096831935f
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.author: danlep
+ms.openlocfilehash: 07ac5abfb3357d5d36496d12f34853257bc76a4b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114713060"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128585073"
 ---
 # <a name="get-api-analytics-in-azure-api-management"></a>Azure API Management で API 分析を取得する
 

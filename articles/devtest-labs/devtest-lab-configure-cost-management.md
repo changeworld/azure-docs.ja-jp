@@ -1,14 +1,14 @@
 ---
-title: Azure DevTest Labs で、ラボの月間推定コスト傾向を表示する
+title: ラボの月間推定コスト傾向を表示する
 description: この記事では、Azure DevTest Labs のラボのコスト (月間推定コスト傾向グラフ) を追跡する方法について説明します。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 6a2a9bef9e54ef7deda123aad34cf0c576fd158f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2b202479fd7f3b42cb6f4f2dd284ef8981705790
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98892339"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128645039"
 ---
 # <a name="track-costs-associated-with-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs でラボに関連付けられているコストを追跡する
 この記事では、ラボのコストを追跡する方法について説明します。 ラボの現在のカレンダー月の推定コスト傾向を表示する方法を紹介します。 また、ラボのリソースごとの過去 1 か月間のコストを表示する方法も紹介します。

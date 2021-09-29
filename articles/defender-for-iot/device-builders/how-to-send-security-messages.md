@@ -4,12 +4,12 @@ description: Defender for IoT を使用してセキュリティ メッセージ�
 ms.topic: how-to
 ms.date: 2/8/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: 2f5c6581772599c5527f037987e34bca643781bd
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 791e49c4e8f0e503c67f24e440fc229998b7b9da
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113018814"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128680503"
 ---
 # <a name="send-security-messages-sdk"></a>セキュリティ メッセージの送信 SDK
 
@@ -26,14 +26,14 @@ ms.locfileid: "113018814"
 
 ## <a name="defender-for-iot-capabilities"></a>Defender for IoT の機能
 
-Defender for IoT では、送信されるデータが [Defender for IoT スキーマ](https://aka.ms/iot-security-schemas)に準拠していて、メッセージがセキュリティ メッセージとして設定されていれば、すべての種類のセキュリティ メッセージ データを処理および分析できます。
+Defender for IoT では、送信されるデータが Defender for IoT スキーマに準拠していて、メッセージがセキュリティ メッセージとして設定されていれば、すべての種類のセキュリティ メッセージ データを処理および分析できます。
 
 ## <a name="security-message"></a>セキュリティ メッセージ
 
 Defender for IoT では、次の条件を使用してセキュリティ メッセージが定義されています。
 
 - メッセージが Azure IoT SDK で送信された場合
-- メッセージが[セキュリティ メッセージ スキーマ](https://aka.ms/iot-security-schemas)に準拠している場合
+- メッセージがセキュリティ メッセージ スキーマに準拠している場合
 - メッセージが送信前にセキュリティ メッセージとして設定されている場合
 
 各セキュリティ メッセージには、`AgentId`、`AgentVersion`、`MessageSchemaVersion`、セキュリティ イベントのリストなど、送信者のメタデータが含まれています。
@@ -85,7 +85,7 @@ Defender for IoT エージェント *なしで* セキュリティ メッセー�
 
 Defender for IoT で処理するためにデバイスからデバイス データを送信するには、以下のいずれかの API を使用して、Defender for IoT 処理パイプラインへの正しいルーティングが行われるようにメッセージをマークします。
 
-送信されるすべてのデータは、正しいヘッダーでマークされている場合でも、[Defender for IoT メッセージ スキーマ](https://aka.ms/iot-security-schemas)にも準拠する必要があります。
+送信されるすべてのデータは、正しいヘッダーでマークされている場合でも、Defender for IoT メッセージ スキーマにも準拠する必要があります。
 
 ### <a name="send-security-message-api"></a>セキュリティ メッセージの送信 API
 

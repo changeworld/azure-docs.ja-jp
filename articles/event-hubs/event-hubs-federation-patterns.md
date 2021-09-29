@@ -2,13 +2,13 @@
 title: イベント レプリケーション タスクのパターン - Azure Event Hubs | Microsoft Docs
 description: この記事では、特定のイベント レプリケーション タスクのパターンを実装するための詳細なガイダンスを提供します
 ms.topic: article
-ms.date: 12/12/2020
-ms.openlocfilehash: adaa124470e6b3cc94bab647967f08b63a1c4f49
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.date: 09/28/2021
+ms.openlocfilehash: f4fb2a166a5dfd50f3035e5efe5462313716daef
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110462855"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129217412"
 ---
 # <a name="event-replication-tasks-patterns"></a>イベント レプリケーション タスクのパターン
 
@@ -124,7 +124,7 @@ DNS (具体的には [Azure DNS](../dns/dns-overview.md)) を使用する利点�
 
 切り替え元のイベント ハブのチェックポイント ストアに引き続きアクセスできる場合は、既に処理されているイベントをスキップし、最後に中断した場所から正確に再開するのに、前述の[伝達されたメタデータ](#service-assigned-metadata)が役立ちます。
 
-## <a name="merge"></a>マージする
+## <a name="merge"></a>Merge
 
 マージ パターンには、1 つのターゲットを指す 1 つまたは複数のレプリケーション タスクがあります。また、通常のプロデューサーと同時に、同じターゲットにイベントが送信される場合もあります。
 

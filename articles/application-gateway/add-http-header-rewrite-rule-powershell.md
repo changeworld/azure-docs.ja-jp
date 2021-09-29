@@ -2,18 +2,18 @@
 title: Azure Application Gateway で HTTP ヘッダーを書き換える
 description: この記事では、Azure PowerShell を使用して、Azure Application Gateway で HTTP ヘッダーを書き換える方法に関する情報を提供します
 services: application-gateway
-author: abshamsft
+author: KumudD
 ms.service: application-gateway
 ms.topic: how-to
 ms.date: 04/12/2019
-ms.author: absha
+ms.author: kumud
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c694a2151f15af52a5380b9a442c1ac27fa1e475
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 1a3f64167978196afc5d86b983c44f021b554115
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108319595"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124836275"
 ---
 # <a name="rewrite-http-request-and-response-headers-with-azure-application-gateway---azure-powershell"></a>Azure Application Gateway で HTTP の要求および応答ヘッダーを書き換える - Azure PowerShell
 

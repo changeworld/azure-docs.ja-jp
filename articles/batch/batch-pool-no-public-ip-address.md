@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/9/2020
 ms.author: peshultz
 ms.custom: references_regions
-ms.openlocfilehash: 22c9163b0b8e809fba3c870393c03dd7c0d3c194
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: c229bd53dffa079b32d41f52b8450616e55498fc
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113433762"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128665589"
 ---
 # <a name="create-an-azure-batch-pool-without-public-ip-addresses"></a>パブリック IP アドレスのない Azure Batch プールを作成する
 
@@ -33,9 +33,14 @@ Azure Batch プールを作成する場合は、パブリック IP アドレス�
 - **[認証]** : [仮想ネットワーク](./batch-virtual-network.md)内でパブリック IP アドレスのないプールを使用するには、Batch クライアント API で Azure Active Directory (AD) 認証を使用する必要があります。 Azure AD の Azure Batch のサポートについては、「[Batch サービスの認証に Active Directory を使用する](batch-aad-auth.md)」に記載されています。 仮想ネットワーク内にご自分のプールを作成しない場合は、Azure AD 認証またはキーベースの認証のいずれかを使用できます。
 
 - **Azure VNet**。 [仮想ネットワーク](batch-virtual-network.md)内にプールを作成する場合は、次の要件と構成に従ってください。 1 つまたは複数のサブネットを持つ VNet を前もって用意するために、Azure Portal、Azure PowerShell、Azure コマンド ライン インターフェイス (CLI)、その他の方法を利用できます。
+
   - VNET が存在するサブスクリプションとリージョンは、プールの作成に使用する Batch アカウントと同じである必要があります。
+
   - プールに指定されたサブネットには、プールの対象となる VM 数 (つまり、プールの `targetDedicatedNodes` および `targetLowPriorityNodes` プロパティの合計) に対応できる十分な未割り当て IP アドレスが必要です。 サブネットの未割り当て IP アドレスが十分でない場合、プールによってコンピューティング ノードが部分的に割り当てられ、サイズ変更エラーが発生します。
-  - プライベート リンク サービスとエンドポイントのネットワーク ポリシーを無効にする必要があります。 これを行うには Azure CLI を使用します: ```az network vnet subnet update --vnet-name <vnetname> -n <subnetname> --resource-group <resourcegroup> --disable-private-endpoint-network-policies --disable-private-link-service-network-policies```
+
+  - プライベート リンク サービスとエンドポイントのネットワーク ポリシーを無効にする必要があります。 これを行うには Azure CLI を使用します: 
+
+    `az network vnet subnet update --vnet-name <vnetname> -n <subnetname> --resource-group <resourcegroup> --disable-private-endpoint-network-policies --disable-private-link-service-network-policies`
 
 > [!IMPORTANT]
 > 100 の専用ノードまたは優先順位の低いノードごとに、プライベート リンク サービスが 1 つおよびロード バランサーが 1 つ、Batch によって割り当てられます。 これらのリソースは、サブスクリプションの[リソース クォータ](../azure-resource-manager/management/azure-subscription-service-limits.md)によって制限されます。 大規模なプールでは、これらの 1 つまたは複数のリソースについて、[クォータの引き上げの要求](batch-quota-limit.md#increase-a-quota)が必要になる場合があります。 また、Batch によって作成されたリソースにはリソース ロックを適用しないでください。そうしないと、プールの削除やゼロへのサイズ変更など、ユーザーが開始した操作の結果として、リソースのクリーンアップが妨げられるからです。

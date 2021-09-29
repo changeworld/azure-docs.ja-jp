@@ -2,13 +2,13 @@
 title: エージェント ベースの推奨事項
 description: セキュリティに関する推奨事項の概念と Defender for IoT デバイスでの使用方法について説明します。
 ms.topic: conceptual
-ms.date: 02/16/2021
-ms.openlocfilehash: a29957f459edad8b768daea7bc4567d77c80b165
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.date: 09/26/2021
+ms.openlocfilehash: 41a983f1c5d4e647d83751ea00e444f34e608559
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113018365"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129083108"
 ---
 # <a name="security-recommendations-for-iot-devices"></a>IoT デバイスのセキュリティに関する推奨事項
 

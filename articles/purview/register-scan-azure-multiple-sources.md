@@ -4,15 +4,15 @@ description: Azure Purview Data Catalog で Azure サブスクリプションま
 author: viseshag
 ms.author: viseshag
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 05/08/2021
-ms.openlocfilehash: ee5151b31e691b43d1d0df1694c636c3c35f9bc2
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d141ac2be690a0cb788285a773208e0d930f5e67
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121743191"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129209891"
 ---
 # <a name="register-and-scan-multiple-sources-in-azure-purview"></a>Azure Purview で複数のソースを登録してスキャンする
 

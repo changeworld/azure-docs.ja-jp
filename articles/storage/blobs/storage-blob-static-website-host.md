@@ -8,30 +8,30 @@ ms.topic: tutorial
 ms.date: 1/22/2020
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: 15c0cf0b24fef36902806656a2e47a7fda7bb52c
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: f222475560c282e7eb63c55a3f827f8f8e48c8ce
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123471068"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128549473"
 ---
 <!---Customer intent: I want to host files for a static website in Blob storage and access the website from an Azure endpoint.--->
 
 # <a name="tutorial-host-a-static-website-on-blob-storage"></a>チュートリアル: Blob Storage で静的な Web サイトをホストする
 
-このチュートリアルでは、静的な Web サイトを構築し、Azure Storage にデプロイする方法を学習します。 終了すると、ユーザーがパブリックにアクセスできる静的な Web サイトが用意できます。 
+このチュートリアルでは、静的な Web サイトを構築し、Azure Storage にデプロイする方法を学習します。 終了すると、ユーザーがパブリックにアクセスできる静的な Web サイトが用意できます。
 
 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
-> * 静的な Web サイト ホスティングを構成する
-> * Hello World Web アプリをデプロイする
+> - 静的な Web サイト ホスティングを構成する
+> - Hello World Web アプリをデプロイする
 
 ## <a name="prerequisites"></a>前提条件
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
-> [!NOTE] 
+> [!NOTE]
 > 汎用 v2 Standard ストレージ アカウントだけでなく、階層型名前空間が有効になっているストレージ アカウントでも、静的 Web サイトを使用できます。
 
 このチュートリアルでは [Visual Studio Code](https://code.visualstudio.com/download) (プログラマ向け無料ツール) を使用して、静的な Web サイトを構築し、それを Azure Storage アカウントにデプロイします。
@@ -49,15 +49,15 @@ Visual Studio Code をインストールした後、Azure Storage プレビュ�
 
 ## <a name="configure-static-website-hosting"></a>静的な Web サイト ホスティングを構成する
 
-最初の手順では、Azure ポータルで静的な Web サイトをホストするためにストレージ アカウントを構成します。 静的な Web サイト ホスティングを構成する際に、Azure Storage で *$web* という名前のコンテナーが自動的に作成されます。 *$web* コンテナーには、静的な Web サイトのファイルが含まれます。 
+最初の手順では、Azure ポータルで静的な Web サイトをホストするためにストレージ アカウントを構成します。 静的な Web サイト ホスティングを構成する際に、Azure Storage で *$web* という名前のコンテナーが自動的に作成されます。 *$web* コンテナーには、静的な Web サイトのファイルが含まれます。
 
-1. Web ブラウザーで [Azure ポータル](https://portal.azure.com/)を開きます。 
+1. Web ブラウザーで [Azure ポータル](https://portal.azure.com/)を開きます。
 1. ストレージ アカウントを見つけて、アカウントの概要を表示します。
 1. **[静的な Web サイト]** を選択して、静的な Web サイトの構成ページを表示します。
 1. **[有効]** を選択して、ストレージ アカウントに対して静的な Web サイト ホスティングを有効にします。
-1. **[インデックス ドキュメント名]** フィールドで、*index.html* の既定のインデックス ページを指定します。 既定のインデックス ページは、ユーザーが静的な Web サイトのルートに移動したときに表示されます。  
+1. **[インデックス ドキュメント名]** フィールドで、*index.html* の既定のインデックス ページを指定します。 既定のインデックス ページは、ユーザーが静的な Web サイトのルートに移動したときに表示されます。
 1. **[エラー ドキュメントのパス]** フィールドで、*404.html* の既定のエラー ページを指定します。 既定のエラー ページは、ユーザーが静的な Web サイトに存在しないページに移動しようとしたときに表示されます。
-1. **[保存]** をクリックします。 これで、Azure ポータルで静的な Web サイトのエンドポイントが表示されるようになります。 
+1. **[保存]** をクリックします。 これで、Azure ポータルで静的な Web サイトのエンドポイントが表示されるようになります。
 
     ![ストレージ アカウントに対して静的な Web サイト ホスティングを有効にする](media/storage-blob-static-website-host/enable-static-website-hosting.png)
 
@@ -65,7 +65,7 @@ Visual Studio Code をインストールした後、Azure Storage プレビュ�
 
 次に、Visual Studio Code を使用して Hello World Web ページを作成し、それを Azure Storage アカウントでホストされている静的な Web サイトにデプロイします。
 
-1. ローカル ファイル システムで *mywebsite* という名前の空のフォルダーを作成します。 
+1. ローカル ファイル システムで *mywebsite* という名前の空のフォルダーを作成します。
 1. Visual Studio Code を起動して、**[エクスプローラー]** パネルから先ほど作成したフォルダーを開きます。
 
     ![Visual Studio Code でフォルダーを開く](media/storage-blob-static-website-host/open-folder-vs-code.png)
@@ -107,11 +107,11 @@ Visual Studio Code をインストールした後、Azure Storage プレビュ�
 
 ## <a name="feature-support"></a>機能サポート
 
-この表は、アカウントでのこの機能のサポート状況と、特定の機能を有効にした場合のサポートへの影響を示しています。 
+この表は、アカウントでのこの機能のサポート状況と、特定の機能を有効にした場合のサポートへの影響を示しています。
 
-| ストレージ アカウントの種類                | Blob Storage (既定のサポート)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+| ストレージ アカウントの種類                | Blob Storage (既定のサポート)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>
 |-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
-| Standard 汎用 v2 | ![はい](../media/icons/yes-icon.png) |![はい](../media/icons/yes-icon.png)              | ![はい](../media/icons/yes-icon.png) | 
+| Standard 汎用 v2 | ![はい](../media/icons/yes-icon.png) |![はい](../media/icons/yes-icon.png)              | ![はい](../media/icons/yes-icon.png) |
 | Premium ブロック BLOB          | ![はい](../media/icons/yes-icon.png) |![はい](../media/icons/yes-icon.png)              | ![はい](../media/icons/yes-icon.png) |
 
 <sup>1</sup>    Data Lake Storage Gen2 とネットワーク ファイル システム (NFS) 3.0 プロトコルの両方で、階層型名前空間が有効になっているストレージ アカウントが必要です。

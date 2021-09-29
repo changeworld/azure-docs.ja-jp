@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.date: 06/08/2021
-ms.openlocfilehash: bf29f435c2d9439659abdcc76a7f8d85cf51c2af
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 47f10b542bd2c4eb7965e6dfc25349661ca3c3d8
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121739154"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124805242"
 ---
 # <a name="manage-and-optimize-azure-machine-learning-costs"></a>Azure Machine Learning のコストを管理して最適化する
 
@@ -29,7 +29,7 @@ Azure Machine Learning に対して機械学習モデルをトレーニングし
 - 自動的にシャットダウンおよび起動するようにコンピューティング インスタンスのスケジュールを設定する
 - Azure 予約 VM インスタンスを使用する
 - ローカルでトレーニングする
-- トレーニングを並列化する
+- トレーニングの並列化
 - データ保持と削除のポリシーを設定する
 - リソースを同じリージョンにデプロイする
 
@@ -109,7 +109,7 @@ Visual Studio Code では、機械学習アプリケーションを開発する�
 
 ## <a name="set-data-retention--deletion-policies"></a>データ保持と削除のポリシーを設定する
 
-パイプラインが実行されるたび、各ステップで中間データセットが生成されます。 時間が経過すると、これらの中間データセットはストレージ アカウントの領域を使用します。 データセットをアーカイブおよび削除するには、ライフサイクル全体を通してデータを管理するポリシーを設定することを検討します。 詳細については、「[Azure Blob Storage アクセス層の自動化によるコストの最適化](../storage/blobs/storage-lifecycle-management-concepts.md)」を参照してください。
+パイプラインが実行されるたび、各ステップで中間データセットが生成されます。 時間が経過すると、これらの中間データセットはストレージ アカウントの領域を使用します。 データセットをアーカイブおよび削除するには、ライフサイクル全体を通してデータを管理するポリシーを設定することを検討します。 詳細については、「[Azure Blob Storage アクセス層の自動化によるコストの最適化](../storage/blobs/lifecycle-management-overview.md)」を参照してください。
 
 ## <a name="deploy-resources-to-the-same-region"></a>リソースを同じリージョンにデプロイする
 

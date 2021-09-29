@@ -4,7 +4,7 @@ titleSuffix: Azure API Management
 description: この記事では、Azure Function App を API として Azure API Management にインポートする方法について説明します。
 services: api-management
 documentationcenter: ''
-author: mikebudzynski
+author: dlepow
 manager: cfowler
 editor: ''
 ms.service: api-management
@@ -12,13 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 04/16/2021
-ms.author: apimpm
-ms.openlocfilehash: cf4ff32af5b0960d22496512e8d624df0f4cf5e5
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.author: danlep
+ms.openlocfilehash: f4a90656164931a6d625fb486737eb970c08e89a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114669248"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128667808"
 ---
 # <a name="import-an-azure-function-app-as-an-api-in-azure-api-management"></a>Azure API Management で Azure Function App を API としてインポートする
 

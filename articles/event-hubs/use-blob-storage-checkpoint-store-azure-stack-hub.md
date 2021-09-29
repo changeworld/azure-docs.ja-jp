@@ -2,13 +2,13 @@
 title: Azure Stack Hub でチェックポイント ストアとして Blob Storage を使用する
 description: この記事では Azure Stack Hub 上の Event Hubs でチェックポイント ストアとして Blob Storage を使用する方法について説明します。
 ms.topic: how-to
-ms.date: 12/09/2020
-ms.openlocfilehash: b3abfca771835b05c654025e7c29c359346d2b5c
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.date: 09/28/2021
+ms.openlocfilehash: e3d75d4cd85bbf4e1bc8fc6fd581d510c35b0cb4
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113003160"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129213517"
 ---
 # <a name="use-blob-storage-as-checkpoint-store---event-hubs-on-azure-stack-hub"></a>チェックポイント ストアとして Blob Storage を使用する - Azure Stack Hub 上の Event Hubs
 Azure で一般公開されているものとは異なるバージョンの Storage Blob SDK をサポートする環境で、チェックポイント ストアとして Azure Blob Storage を使用している場合は、コードを使用して、Storage Service API バージョンをその環境でサポートされている特定のバージョンに変更する必要があります。 たとえば、[Azure Stack Hub バージョン 2002 上で Event Hubs](/azure-stack/user/event-hubs-overview) を実行している場合、Storage Service で利用可能な最も高いバージョンは 2017-11-09 です。 この場合は、コードを使用して、対象にする Storage Service API のバージョンを 2017-11-09 にする必要があります。 特定の Storage API バージョンを対象にする方法の例については、GitHub の次のサンプルを参照してください。 

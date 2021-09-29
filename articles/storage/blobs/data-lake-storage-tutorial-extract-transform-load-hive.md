@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: f8210c3bc0437180ace110f8decd9f83e18650ed
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6982cbc64e28b71566deb295dfe7d56aa8d24189
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98661935"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128588753"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-hdinsight"></a>チュートリアル:Azure HDInsight を使用してデータの抽出、変換、読み込みを行う
 
@@ -22,27 +22,27 @@ ms.locfileid: "98661935"
 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
-> * データを抽出し、HDInsight クラスターにアップロードする。
-> * Apache Hive を使用してデータを変換する。
-> * Sqoop を使用して Azure SQL Database にデータを読み込む。
+> - データを抽出し、HDInsight クラスターにアップロードする。
+> - Apache Hive を使用してデータを変換する。
+> - Sqoop を使用して Azure SQL Database にデータを読み込む。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-* **HDInsight 用に構成された Azure Data Lake Storage Gen2 ストレージ アカウント**
+- **HDInsight 用に構成された Azure Data Lake Storage Gen2 ストレージ アカウント**
 
     「[Use Azure Data Lake Storage Gen2 with Azure HDInsight clusters](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md)」 (Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する) を参照してください。
 
-* **HDInsight での Linux ベースの Hadoop クラスター**
+- **HDInsight での Linux ベースの Hadoop クラスター**
 
     「[クイック スタート:Azure portal を使用して Azure HDInsight で Apache Hadoop と Apache Hive を使用する](../../hdinsight/hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md)」を参照してください。
 
-* **Azure SQL Database**:保存先データ ストアとして Azure SQL Database を使用します。 SQL Database のデータベースがない場合は、[Azure portal での Azure SQL Database のデータベースの作成](../../azure-sql/database/single-database-create-quickstart.md)に関するページを参照してください。
+- **Azure SQL Database**:保存先データ ストアとして Azure SQL Database を使用します。 SQL Database のデータベースがない場合は、[Azure portal での Azure SQL Database のデータベースの作成](../../azure-sql/database/single-database-create-quickstart.md)に関するページを参照してください。
 
-* **Azure CLI**:Azure CLI をインストールしていない場合は、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。
+- **Azure CLI**:Azure CLI をインストールしていない場合は、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。
 
-* **Secure Shell (SSH) クライアント**:詳細については、[SSH を使用した HDInsight (Hadoop) への接続](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
+- **Secure Shell (SSH) クライアント**:詳細については、[SSH を使用した HDInsight (Hadoop) への接続](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
 ## <a name="download-the-flight-data"></a>フライト データのダウンロード
 
@@ -55,7 +55,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    | Filter Year |2013 |
    | Filter Period |January |
    | フィールド |Year、FlightDate、Reporting_Airline、IATA_CODE_Reporting_Airline、Flight_Number_Reporting_Airline、OriginAirportID、Origin、OriginCityName、OriginState、DestAirportID、Dest、DestCityName、DestState、DepDelayMinutes、ArrDelay、ArrDelayMinutes、CarrierDelay、WeatherDelay、NASDelay、SecurityDelay、LateAircraftDelay。 |
-   
+
    その他のフィールドはすべてクリアします。
 
 3. **[Download]** を選択します。 選択したデータ フィールドを含む .zip ファイルがダウンロードされます。
@@ -70,9 +70,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    scp <file-name>.zip <ssh-user-name>@<cluster-name>-ssh.azurehdinsight.net:<file-name.zip>
    ```
 
-   * `<file-name>` プレースホルダーを .ZIP ファイルの名前に置き換えます。
-   * `<ssh-user-name>` プレースホルダーを HDInsight クラスターの SSH ログインに置き換えます。
-   * `<cluster-name>` プレースホルダーを HDInsight クラスターの名前に置き換えます。
+   - `<file-name>` プレースホルダーを .ZIP ファイルの名前に置き換えます。
+   - `<ssh-user-name>` プレースホルダーを HDInsight クラスターの SSH ログインに置き換えます。
+   - `<cluster-name>` プレースホルダーを HDInsight クラスターの名前に置き換えます。
 
    パスワードを使用して SSH ログインを認証する場合は、パスワードを入力するよう求められます。
 
@@ -194,13 +194,13 @@ Apache Hive ジョブの一環として、.csv ファイルから **delays** と
 
 3. Ctrl キーを押しながら X キーを押し、確認を求められたら「`Y`」と入力してファイルを保存します。
 
-4. Hive を起動し、**flightdelays.hql** ファイルを実行するには、次のコマンドを使用します。
+4. Hive を起動し、`flightdelays.hql` ファイルを実行するには、次のコマンドを使用します。
 
    ```bash
    beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -f flightdelays.hql
    ```
 
-5. __flightdelays.hql__ スクリプトの実行が完了したら、次のコマンドを使用して対話型 Beeline セッションを開きます。
+5. `flightdelays.hql` スクリプトの実行が完了したら、次のコマンドを使用して対話型 Beeline セッションを開きます。
 
    ```bash
    beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http'
@@ -249,11 +249,12 @@ Apache Hive ジョブの一環として、.csv ファイルから **delays** と
    ```bash
    TDSVER=8.0 tsql -H '<server-name>.database.windows.net' -U '<admin-login>' -p 1433 -D '<database-name>'
     ```
-   * `<server-name>` プレースホルダーを論理 SQL サーバーの名前に置き換えます。
 
-   * `<admin-login>` プレースホルダーを SQL Database の管理者ログインに置き換えます。
+   - `<server-name>` プレースホルダーを論理 SQL サーバーの名前に置き換えます。
 
-   * `<database-name>` プレースホルダーをデータベース名に置き換えます。
+   - `<admin-login>` プレースホルダーを SQL Database の管理者ログインに置き換えます。
+
+   - `<database-name>` プレースホルダーをデータベース名に置き換えます。
 
    メッセージが表示されたら、SQL Database 管理者ログインのパスワードを入力します。
 

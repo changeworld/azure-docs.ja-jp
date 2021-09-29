@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/07/2021
 ms.author: yelevin
-ms.openlocfilehash: f776c39a5a1dadde2e6ee01fe211e0769e5e06eb
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: b6e38d6ce5944d09a089404ae1fe2ca81a951c18
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123260936"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124781305"
 ---
 # <a name="use-azure-functions-to-connect-azure-sentinel-to-your-data-source"></a>Azure Functions を使用して Azure Sentinel をデータ ソースに接続する
 
-[Azure Functions](/azure/azure-functions/functions-overview) を、[PowerShell](../azure-functions/functions-reference-powershell.md) や Python などのさまざまなコーディング言語と組み合わせて使用して、互換性のあるデータ ソースの REST API エンドポイントへのサーバーレス コネクタを作成することができます。 Azure 関数アプリにより、データ ソースの REST API に Azure Sentinel を接続してログをプルすることができます。
+[Azure Functions](../azure-functions/functions-overview.md) を、[PowerShell](../azure-functions/functions-reference-powershell.md) や Python などのさまざまなコーディング言語と組み合わせて使用して、互換性のあるデータ ソースの REST API エンドポイントへのサーバーレス コネクタを作成することができます。 Azure 関数アプリにより、データ ソースの REST API に Azure Sentinel を接続してログをプルすることができます。
 
 この記事では、Azure 関数アプリを使用するために Azure Sentinel を構成する方法について説明します。 さらに、ソース システムを構成する必要がある場合もありますが、ポータルの各データ コネクタのページ、または [Azure Sentinel データ コネクタのリファレンス](data-connectors-reference.md) ページのお使いのサービスについてのセクションで、ベンダー固有および製品固有の情報リンクを見つけることができます。
 
@@ -213,6 +213,6 @@ Azure Functions を使用して Azure Sentinel をデータ ソースに接続�
 
 このドキュメントでは、Azure Functions ベースのコネクタを使用して Azure Sentinel をデータ ソースに接続する方法について説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 
-- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
-- [ブックを使用](tutorial-monitor-your-data.md)してデータを監視する。
+- [データと潜在的な脅威を可視化](./get-visibility.md)する方法についての説明。
+- [Azure Sentinel を使用した脅威の検出](./detect-threats-built-in.md)の概要。
+- [ブックを使用](./monitor-your-data.md)してデータを監視する。

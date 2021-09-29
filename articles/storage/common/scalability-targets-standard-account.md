@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/22/2021
+ms.date: 09/07/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 1364a9373fbd776d380366fa62749c14b678c976
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: de362e478156403e39dd097f5496426e6ccea64a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114446182"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124804447"
 ---
 # <a name="scalability-and-performance-targets-for-standard-storage-accounts"></a>Standard Storage アカウントのスケーラビリティとパフォーマンスのターゲット
 

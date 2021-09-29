@@ -5,12 +5,12 @@ tags: top-support-issue
 ms.topic: troubleshooting
 ms.date: 01/20/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1b26af22423f7af64d3dbcffd7d7ed20c1069a60
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: be79c143cf38602dbe8f406d8aa3e2988de2c9d9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108314969"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124785232"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング
 
@@ -91,7 +91,7 @@ ms.locfileid: "108314969"
 
 検証エラーは、デプロイ前に判断できるシナリオで発生します。 これには、テンプレートに構文エラーがある場合や、サブスクリプション クォータを超えるリソースをデプロイしようとしている場合などがあります。 デプロイ エラーは、デプロイ プロセスで発生する状況に起因します。 これには、並列でデプロイされているリソースにアクセスしようとしている場合などがあります。
 
-この 2 種類のエラーでは、デプロイのトラブルシューティングに使用するエラー コードが返されます。 どちらの種類のエラーも[アクティビティ ログ](../management/view-activity-logs.md)に表示されます。 ただし、検証エラーは、デプロイが開始されていないため、デプロイ履歴には表示されません。
+この 2 種類のエラーでは、デプロイのトラブルシューティングに使用するエラー コードが返されます。 どちらの種類のエラーも[アクティビティ ログ](../../azure-monitor/essentials/activity-log.md)に表示されます。 ただし、検証エラーは、デプロイが開始されていないため、デプロイ履歴には表示されません。
 
 ### <a name="validation-errors"></a>検証エラー
 
@@ -251,5 +251,4 @@ az deployment operation group list \
 ## <a name="next-steps"></a>次のステップ
 
 * トラブルシューティング チュートリアルについては、「[チュートリアル: Resource Manager テンプレート デプロイのトラブルシューティング](template-tutorial-troubleshoot.md)
-* 監査アクションについては、「 [リソース マネージャーの監査操作](../management/view-activity-logs.md)」をご覧ください。
 * デプロイ時にエラーが発生した場合の対応については、 [デプロイ操作の確認](deployment-history.md)に関するページを参照してください。

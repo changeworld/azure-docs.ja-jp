@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 01/13/2021
-ms.openlocfilehash: 7319e0bf5a1c382d6a6f0b2984d5428be6131c5e
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 479fe6c4f30c8272d73c9d1d085f541beeefe229
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113088604"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128579661"
 ---
 # <a name="create-databases-and-users-in-azure-database-for-mysql"></a>Azure Database for MySQL でデータベースとユーザーを作成する
 
@@ -20,7 +20,7 @@ ms.locfileid: "113088604"
 この記事では、Azure Database for MySQL でユーザーを作成する方法について説明します。
 
 > [!NOTE]
-> この記事には、Microsoft が使用しなくなった "_スレーブ_" という用語への言及が含まれています。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
+> この記事には、Microsoft が使用しなくなった "*スレーブ*" という用語への言及が含まれています。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
 
 Azure Database for MySQL サーバーを初めて作成したときに、サーバー管理者のユーザー名とパスワードを指定しています。 詳細については、こちらの[クイックスタート](quickstart-create-mysql-server-database-using-azure-portal.md)をご覧ください。 サーバー管理者のユーザー名は、Azure portal で確認できます。
 

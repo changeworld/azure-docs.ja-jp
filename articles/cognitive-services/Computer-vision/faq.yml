@@ -12,12 +12,12 @@ metadata:
   ms.date: 04/17/2019
   ms.author: kefre
   ms.custom: seodec18
-  ms.openlocfilehash: 2509338fac06a182864777e2ff5825f1092f758c
-  ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+  ms.openlocfilehash: b344ae378bc299a737e212205b2d85f6106424a6
+  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/26/2021
-  ms.locfileid: "122968829"
+  ms.lasthandoff: 09/13/2021
+  ms.locfileid: "124824818"
 title: Computer Vision API についてよく寄せられる質問
 summary: >
   > [!TIP]
@@ -48,7 +48,7 @@ sections:
   - question: >
       カスタム タグを使用するように Computer Vision API をトレーニングできますか?  たとえば、ネコの品種の写真をフィードして AI を "トレーニング" し、AI 要求に対して品種値を受け取りたいと思います。
     answer: >
-      この機能は、現在使用できません。 [Custom Vision](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/overview) を使用すると、ユーザー定義の視覚的特徴を検出するモデルをトレーニングできます。
+      この機能は、現在使用できません。 [Custom Vision](../custom-vision-service/overview.md) を使用すると、ユーザー定義の視覚的特徴を検出するモデルをトレーニングできます。
   - question: >
       OCR (Read) 機能をオンプレミスにデプロイすることはできますか?
     answer: >

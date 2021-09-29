@@ -2,13 +2,13 @@
 title: 概念 - Azure VMware Solution の実行コマンド (プレビュー)
 description: Azure VMware Solution での実行コマンドの使用について学習します。
 ms.topic: conceptual
-ms.date: 08/31/2021
-ms.openlocfilehash: 1e2889254c8711c92efdc53ab181e26d3ac06b43
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.date: 09/17/2021
+ms.openlocfilehash: a4121f8479b22eb1c0666a1e7d7a23ece4fb3d20
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123541641"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128668851"
 ---
 # <a name="run-command-in-azure-vmware-solution-preview"></a>Azure VMware Solution の実行コマンド (プレビュー)
 
@@ -16,11 +16,11 @@ Azure VMware Solution では、vCenter に *cloudadmin* という組み込みの
 
 Azure VMware Solution では、次の操作をサポートしています。
 
-- [JetStream DR ソリューションをインストールおよびアンインストールする](deploy-disaster-recovery-using-jetstream.md)
-
 - [外部 ID ソースを構成する](configure-identity-source-vcenter.md)
 
 - [ストレージ ポリシーを表示および設定する](configure-storage-policy.md) 
+
+- [JetStream を使用してディザスター リカバリーをデプロイする](deploy-disaster-recovery-using-jetstream.md)
 
 
 >[!NOTE]

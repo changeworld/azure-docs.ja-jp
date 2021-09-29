@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: b3e33fecc1df930cf4fb01808b2a8400a210fce8
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: e804168d56092b6e5451aa26c7a2106b96672865
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114707147"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128587349"
 ---
 # <a name="prepare-an-msix-image-for-azure-virtual-desktop"></a>Azure Virtual Desktop 用の MSIX イメージを準備する
 
@@ -86,7 +86,7 @@ MSIX イメージを展開するには:
 
     アンパックが完了すると、次のメッセージが表示されます。
 
-    > パッケージの ACL が正常にアンパックされ、適用されました: <package name>.msix
+    > パッケージの ACL が正常にアンパックされ、適用されました: \<package name\>.msix
 
     >[!NOTE]
     > ネットワーク上、またはインターネットに接続されていないデバイス上のビジネス向けまたは教育機関向け Microsoft Store のパッケージを使用する場合、アプリを実行するには、Microsoft Store からパッケージ ライセンスをダウンロードしてインストールする必要があります。 ライセンスを取得するには、「[パッケージをオフラインで使用する](app-attach.md#use-packages-offline)」をご覧ください。

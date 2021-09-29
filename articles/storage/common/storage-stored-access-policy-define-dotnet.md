@@ -11,28 +11,28 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8c1b6aa0d6bdd98a66a638a216f93a6d81bd6b93
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: 1be2b8200cd9e7b83fb3d113966a13c32e126d34
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113726862"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128589266"
 ---
 # <a name="create-a-stored-access-policy-with-net"></a>.NET を使用して保存されているアクセス ポリシーを作成する
 
 保存されているアクセス ポリシーを使用すると、サーバー側でのサービス レベルの共有アクセス署名 (SAS) をさらに制御できます。 保存されているアクセス ポリシーを定義することで、共有アクセス署名をグループ化し、ポリシーにバインドされている共有アクセス署名に対して追加の制限を設定できます。 保存されているアクセス ポリシーを使用して、SAS の開始時刻、有効期限、アクセス許可の変更や、その発行後の取り消しを実行できます。
-  
-次の Azure Storage リソースでは、保存されているアクセス ポリシーがサポートされます。  
-  
-- BLOB コンテナー  
-- ファイル共有  
-- キュー  
-- テーブル  
-  
+
+次の Azure Storage リソースでは、保存されているアクセス ポリシーがサポートされます。
+
+- BLOB コンテナー
+- ファイル共有
+- キュー
+- テーブル
+
 > [!NOTE]
 > コンテナーに関する保存されているアクセス ポリシーでは、コンテナー自体またはコンテナーに含まれている BLOB へのアクセス許可を付与している共有アクセス署名に関連付けることができます。 同様に、ファイル共有に関する保存されているアクセス ポリシーでは、共有自体または共有に含まれているファイルへのアクセス許可を付与している共有アクセス署名に関連付けることができます。  
 >
-> 保存されているアクセス ポリシーは、サービス SAS に対してのみサポートされます。 保存されているアクセス ポリシーは、アカウント SAS またはユーザー委任 SAS ではサポートされません。  
+> 保存されているアクセス ポリシーは、サービス SAS に対してのみサポートされます。 保存されているアクセス ポリシーは、アカウント SAS またはユーザー委任 SAS ではサポートされません。
 
 保存されているアクセス ポリシーの詳細については、「[保存されているアクセス ポリシーの定義](/rest/api/storageservices/define-stored-access-policy)」を参照してください。
 

@@ -1,23 +1,17 @@
 ---
 title: Azure Data Lake Storage Gen1 のリージョン間の移行 | Microsoft Docs
 description: 新しいリージョンで利用可能になったとき、Azure Data Lake Storage Gen1 への移行を計画し、遂行するときの考慮事項について説明します。
-services: data-lake-store
-documentationcenter: ''
-author: twooley
-manager: amitkul
-editor: swums
-ms.assetid: ebde7b9f-2e51-4d43-b7ab-566417221335
+author: normesta
 ms.service: data-lake-store
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/27/2017
-ms.author: twooley
-ms.openlocfilehash: c6520036f3ddb8799025129391330268b0604886
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: normesta
+ms.openlocfilehash: 5ec448970eff389d2c213b560d782230b7360d01
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97723808"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128580379"
 ---
 # <a name="migrate-azure-data-lake-storage-gen1-across-regions"></a>リージョン間での Azure Data Lake Storage Gen1 の移行
 

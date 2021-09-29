@@ -4,15 +4,16 @@ description: Azure Data Factory を使用してオンプレミスまたは Azure
 author: linda33wj
 ms.author: jingwang
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 01/10/2018
 robots: noindex
-ms.openlocfilehash: 103a3bad91018a2a7b91cbc6a7839e8be56489ba
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: aaafc0cf6134aa701ef30953460f55fc77fed27a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108741415"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128661794"
 ---
 # <a name="move-data-to-and-from-sql-server-using-azure-data-factory"></a>Azure Data Factory を使用した SQL Server との間のデータの移動
 
@@ -539,12 +540,12 @@ SqlSource と BlobSink でサポートされるプロパティの一覧につい
 ## <a name="troubleshooting-connection-issues"></a>接続の問題のトラブルシューティング
 1. リモート接続を許可するよう、SQL Server を構成します。 **SQL Server Management Studio** を起動し、**サーバー** を右クリックして、 **[プロパティ]** をクリックします。 一覧から **[接続]** を選択し、 **[このサーバーへのリモート接続を許可する]** をオンにします。
 
-    ![リモート接続を有効にする](./media/data-factory-sqlserver-connector/AllowRemoteConnections.png)
+    :::image type="content" source="./media/data-factory-sqlserver-connector/AllowRemoteConnections.png" alt-text="リモート接続の有効化":::
 
     詳細な手順については、「 [remote access サーバー構成オプションの構成](/sql/database-engine/configure-windows/configure-the-remote-access-server-configuration-option) 」をご覧ください。
 2. **SQL Server 構成マネージャー** を起動します。 目的のインスタンスの **[SQL Server ネットワークの構成]** を展開し、 **[MSSQLSERVER のプロトコル]** を選択します。 右側のウィンドウにプロトコルが表示されます。 **[TCP/IP]** を右クリックし、 **[有効化]** をクリックして TCP/IP を有効にします。
 
-    ![TCP/IP を有効にする](./media/data-factory-sqlserver-connector/EnableTCPProptocol.png)
+    :::image type="content" source="./media/data-factory-sqlserver-connector/EnableTCPProptocol.png" alt-text="TCP/IP を有効にする":::
 
     詳細および TCP/IP プロトコルを有効にする別の方法については、「 [サーバー ネットワーク プロトコルの有効化または無効化](/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol) 」をご覧ください。
 3. 同じウィンドウで、 **[TCP/IP]** をダブルクリックして、 **[TCP/IP のプロパティ]** ウィンドウを起動します。
@@ -650,7 +651,7 @@ SQL Server との間でデータを移動するとき、SQL 型から .NET 型�
 | --- | --- |
 | bigint |Int64 |
 | binary |Byte[] |
-| bit |Boolean |
+| bit |ブール型 |
 | char |String, Char[] |
 | date |DateTime |
 | Datetime |DateTime |

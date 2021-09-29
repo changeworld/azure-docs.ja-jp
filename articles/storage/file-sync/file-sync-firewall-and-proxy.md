@@ -8,14 +8,15 @@ ms.date: 04/13/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6af10befe614ecd353bd5bd2185fcd9c7097f058
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: 64c6f101d0b8acd9c3d0ca00593c4b63b2b21a83
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122445074"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129080501"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Azure File Sync のプロキシとファイアウォールの設定
+
 Azure File Sync は、オンプレミスのサーバーを Azure Files に接続することで、マルチサイトの同期とクラウドの階層化の機能を実現します。 そのため、オンプレミスのサーバーがインターネットに接続されている必要があります。 サーバーから Azure Cloud Services に到達するための最適なパスは、IT 管理者が決める必要があります。
 
 この記事では、ご利用のサーバーを Azure File Sync に正しく安全に接続するための具体的な要件と選択肢についての分析情報を提供します。
@@ -23,6 +24,7 @@ Azure File Sync は、オンプレミスのサーバーを Azure Files に接続
 この攻略ガイドを読む前に、「[Azure File Sync のネットワークに関する考慮事項](file-sync-networking-overview.md)」を読むことをお勧めします。
 
 ## <a name="overview"></a>概要
+
 Azure File Sync は、Windows Server と Azure ファイル共有など各種 Azure サービスとの間のオーケストレーション サービスとして機能し、同期グループ内の定義に従ってデータを同期します。 Azure File Sync を正しく機能させるためには、次の Azure サービスと通信するための構成をサーバーに対して行う必要があります。
 
 - Azure Storage
@@ -30,39 +32,44 @@ Azure File Sync は、Windows Server と Azure ファイル共有など各種 Az
 - Azure Resource Manager
 - 認証サービス
 
-> [!Note]  
+> [!NOTE]
 > クラウド サービスに対する要求はすべて、Windows Server 上の Azure File Sync エージェントによって開始されます。したがってファイアウォールの観点から考慮する必要があるのは送信トラフィックだけです。 <br /> Azure File Sync エージェントへの接続が Azure サービス側から開始されることはありません。
 
 ## <a name="ports"></a>Port
+
 Azure File Sync は HTTPS のみを使ってファイル データとメタデータを移動するため、送信方向のポート 443 を開放する必要があります。
 結果的にすべてのトラフィックが暗号化されます。
 
 ## <a name="networks-and-special-connections-to-azure"></a>Azure への特別な接続とネットワーク
+
 Azure File Sync エージェントと Azure とのチャンネルに関して特別な要件 ([ExpressRoute](../../expressroute/expressroute-introduction.md) など) はありません。
 
-Azure File Sync は、Azure に到達さえできれば、その接続手段を問わず正しく機能します。さまざまなネットワーク特性 (帯域幅、待ち時間など) に応じた自動調整のほか、管理制御による微調整の手段も用意されています。 一部の機能については、現時点では利用することができません。 構成の対象として希望する具体的な動作がある場合は、[Azure Files の UserVoice](https://feedback.azure.com/forums/217298-storage?category_id=180670) でお聞かせください。
+Azure File Sync は、Azure に到達さえできれば、その接続手段を問わず正しく機能します。さまざまなネットワーク特性 (帯域幅、待ち時間など) に応じた自動調整のほか、管理制御による微調整の手段も用意されています。
 
 ## <a name="proxy"></a>プロキシ
+
 Azure File Sync では、アプリ固有のプロキシ設定とマシン全体のプロキシ設定がサポートされています。
 
 **アプリ固有のプロキシ設定** を使用すると、Azure File Sync のトラフィック専用のプロキシを構成できます。 アプリ固有のプロキシ設定はエージェント バージョン 4.0.1.0 以降でサポートされ、エージェントのインストール中に、または Set-StorageSyncProxyConfiguration PowerShell コマンドレットを使用して構成できます。
 
 アプリ固有のプロキシ設定を構成する PowerShell コマンドを次に示します。
+
 ```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCredential <credentials>
 ```
+
 たとえば、プロキシ サーバーでユーザー名とパスワードを使用した認証を必要とする場合は、次の PowerShell コマンドを実行します。
 
 ```powershell
 # IP address or name of the proxy server.
-$Address="127.0.0.1"  
+$Address="127.0.0.1"
 
 # The port to use for the connection to the proxy.
 $Port=8080
 
 # The user name for a proxy.
-$UserName="user_name" 
+$UserName="user_name"
 
 # Please type or paste a string with a password for the proxy.
 $SecurePassword = Read-Host -AsSecureString
@@ -76,17 +83,19 @@ Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.Se
 
 Set-StorageSyncProxyConfiguration -Address $Address -Port $Port -ProxyCredential $Creds
 ```
+
 **マシン全体のプロキシ設定** は、Azure File Sync エージェントに対して透過的です。このプロキシではサーバーのトラフィック全体がルーティングされるためです。
 
-マシン全体のプロキシ設定を構成するには、次の手順のようにします。 
+マシン全体のプロキシ設定を構成するには、次の手順のようにします。
 
-1. .NET アプリケーションのプロキシ設定を構成します 
+1. .NET アプリケーションのプロキシ設定を構成します
 
    - 以下の 2 つのファイルを編集します。  
      C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config  
      C:\Windows\Microsoft.NET\Framework\v4.0.30319\Config\machine.config
 
    - <system.net> セクションを machine.config ファイルに追加します (<system.serviceModel> セクションの下)。  127.0.01:8888 をプロキシ サーバーの IP アドレスとポートに変更します。 
+
      ```
       <system.net>
         <defaultProxy enabled="true" useDefaultCredentials="true">
@@ -95,27 +104,27 @@ Set-StorageSyncProxyConfiguration -Address $Address -Port $Port -ProxyCredential
       </system.net>
      ```
 
-2. WinHTTP のプロキシ設定を設定します 
+2. WinHTTP のプロキシ設定を設定します
 
-   > [!Note]  
+   > [!NOTE]
    > プロキシ サーバーを使用するように Windows Server を構成するには、いくつかの方法 (WPAD、PAC ファイル、netsh など) があります。 以降の手順では、netsh を使用してプロキシ設定を構成する方法について説明しますが、「[Windows でプロキシ サーバーの設定を構成する](/troubleshoot/windows-server/networking/configure-proxy-server-settings)」のドキュメントに記載されているすべての方法がサポートされています。
 
-
-   - 管理者特権でのコマンド プロンプトまたは PowerShell から次のコマンドを実行して、既存のプロキシ設定を表示します。   
+   - 管理者特権でのコマンド プロンプトまたは PowerShell から次のコマンドを実行して、既存のプロキシ設定を表示します。
 
      netsh winhttp show proxy
 
-   - 管理者特権でのコマンド プロンプトまたは PowerShell から次のコマンドを実行して、プロキシ設定を設定します (127.0.01:8888 をプロキシ サーバーの IP アドレスとポートに変更します)。  
+   - 管理者特権でのコマンド プロンプトまたは PowerShell から次のコマンドを実行して、プロキシ設定を設定します (127.0.01:8888 をプロキシ サーバーの IP アドレスとポートに変更します)。
 
      netsh winhttp set proxy 127.0.0.1:8888
 
-3. 管理者特権でのコマンド プロンプトまたは PowerShell から次のコマンドを実行して、ストレージ同期エージェント サービスを開始し直します。 
+3. 管理者特権でのコマンド プロンプトまたは PowerShell から次のコマンドを実行して、ストレージ同期エージェント サービスを開始し直します。
 
       net stop filesyncsvc
 
       注:ストレージ同期エージェント (filesyncsvc) サービスは、停止すると自動的に開始します。
 
 ## <a name="firewall"></a>ファイアウォール
+
 前のセクションで述べたように、送信方向のポート 443 を開放する必要があります。 さらに、ご利用のデータセンターやブランチ、リージョンのポリシーによっては、このポート上のトラフィックを特定のドメインに制限することが望ましい、または必須となる場合もあります。
 
 次の表で、通信に必要なドメインについて説明します。
@@ -131,7 +140,7 @@ Set-StorageSyncProxyConfiguration -Address $Address -Port $Port -ProxyCredential
 | **Microsoft PKI** |  https://www.microsoft.com/pki/mscorp/cps<br>http://crl.microsoft.com/pki/mscorp/crl/<br>http://mscrl.microsoft.com/pki/mscorp/crl/<br>http://ocsp.msocsp.com<br>http://ocsp.digicert.com/<br>http://crl3.digicert.com/ | https://www.microsoft.com/pki/mscorp/cps<br>http://crl.microsoft.com/pki/mscorp/crl/<br>http://mscrl.microsoft.com/pki/mscorp/crl/<br>http://ocsp.msocsp.com<br>http://ocsp.digicert.com/<br>http://crl3.digicert.com/ | Azure File Sync エージェントがインストールされると、PKI URL を使用して、Azure File Sync サービスと Azure ファイル共有との通信に必要な中間証明書がダウンロードされます。 OCSP URL は、証明書の状態を確認するために使用されます。 |
 | **Microsoft Update** | &ast;.update.microsoft.com<br>&ast;.download.windowsupdate.com<br>&ast;.ctldl.windowsupdate.com<br>&ast;.dl.delivery.mp.microsoft.com<br>&ast;.emdl.ws.microsoft.com | &ast;.update.microsoft.com<br>&ast;.download.windowsupdate.com<br>&ast;.ctldl.windowsupdate.com<br>&ast;.dl.delivery.mp.microsoft.com<br>&ast;.emdl.ws.microsoft.com | Azure File Sync エージェントがインストールされると、Microsoft Update URL を使用して Azure File Sync エージェントの更新プログラムがダウンロードされます。 |
 
-> [!Important]
+> [!IMPORTANT]
 > &ast;.afs.azure.net へのトラフィックを許可すると、同期サービスへのトラフィックのみが可能になります。 このドメインを使用する他の Microsoft サービスはありません。
 > &ast;.one.microsoft.com へのトラフィックを許可すると、同期サービスに限らず、サーバーから出て行くそれ以外のトラフィックも許可されます。 サブドメインには、その他多くの Microsoft サービスが提供されています。
 
@@ -184,6 +193,7 @@ Set-StorageSyncProxyConfiguration -Address $Address -Port $Port -ProxyCredential
 > - https:\//tm-westus01.afs.azure.net (プライマリ リージョンの探索 URL)
 
 ### <a name="allow-list-for-azure-file-sync-ip-addresses"></a>Azure File Sync IP アドレスの許可リスト
+
 Azure File Sync では[サービス タグ](../../virtual-network/service-tags-overview.md)の使用がサポートされています。これは、指定された Azure サービスからの IP アドレス プレフィックスのグループを表すものです。 サービス タグを使用して、Azure File Sync サービスとの通信を可能にするファイアウォール規則を作成できます。 Azure File Sync のサービス タグは `StorageSyncService` です。
 
 Azure 内で Azure File Sync を使用している場合は、ネットワーク セキュリティ グループでサービス タグ名を直接使用して、トラフィックを許可することができます。 詳しい方法については、「[セキュリティ グループ](../../virtual-network/network-security-groups-overview.md)」を参照してください。
@@ -191,18 +201,18 @@ Azure 内で Azure File Sync を使用している場合は、ネットワーク
 オンプレミスの Azure File Sync を使用している場合は、サービス タグ API を使用して、ファイアウォールの許可リスト用の特定の IP アドレス範囲を取得できます。 この情報を取得するには、次の 2 つの方法があります。
 
 - サービス タグをサポートするすべての Azure サービスの最新の IP アドレス範囲の一覧が、Microsoft ダウンロード センターに JSON ドキュメントの形式で毎週公開されています。 各 Azure クラウドには、そのクラウドに関連する IP アドレス範囲が記載された独自の JSON ドキュメントが存在します。
-    - [Azure Public](https://www.microsoft.com/download/details.aspx?id=56519)
-    - [Azure US Government](https://www.microsoft.com/download/details.aspx?id=57063)
-    - [Azure China](https://www.microsoft.com/download/details.aspx?id=57062)
-    - [Azure Germany](https://www.microsoft.com/download/details.aspx?id=57064)
+  - [Azure Public](https://www.microsoft.com/download/details.aspx?id=56519)
+  - [Azure US Government](https://www.microsoft.com/download/details.aspx?id=57063)
+  - [Azure China](https://www.microsoft.com/download/details.aspx?id=57062)
+  - [Azure Germany](https://www.microsoft.com/download/details.aspx?id=57064)
 - サービス タグ検出 API (プレビュー) を使用すると、サービス タグの現在の一覧をプログラムで取得できます。 プレビューの段階では、サービス タグ検出 API によって返される情報は、Microsoft ダウンロード センターに公開されている JSON ドキュメントから返される情報よりも古い場合があります。 API サーフェスは、ご自分の自動化の設定に基づいて使用できます。
-    - [REST API](/rest/api/virtualnetwork/servicetags/list)
-    - [Azure PowerShell](/powershell/module/az.network/Get-AzNetworkServiceTag)
-    - [Azure CLI](/cli/azure/network#az_network_list_service_tags)
+  - [REST API](/rest/api/virtualnetwork/servicetags/list)
+  - [Azure PowerShell](/powershell/module/az.network/Get-AzNetworkServiceTag)
+  - [Azure CLI](/cli/azure/network#az_network_list_service_tags)
 
 サービス タグ検出 API は、Microsoft ダウンロード センターに公開される JSON ドキュメントほど頻繁に更新されないため、JSON ドキュメントを使用して、オンプレミスのファイアウォールの許可リストを更新することをお勧めします。 そのためには、次の手順に従います。
 
-```PowerShell
+```powershell
 # The specific region to get the IP address ranges for. Replace westus2 with the desired region code 
 # from Get-AzLocation.
 $region = "westus2"
@@ -300,20 +310,24 @@ if ($found) {
 その後、`$ipAddressRanges` 内の IP アドレス範囲を使用して、ファイアウォールを更新できます。 ファイアウォールを更新する方法については、ご利用のファイアウォールまたはネットワーク アプライアンスの Web サイトを確認してください。
 
 ## <a name="test-network-connectivity-to-service-endpoints"></a>サービス エンドポイントへのネットワーク接続をテストする
+
 サーバーが Azure File Sync サービスに登録されたら、Test-StorageSyncNetworkConnectivity コマンドレットと ServerRegistration.exe を使用して、このサーバーに固有のすべてのエンドポイント (URL) との通信をテストできます。 このコマンドレットは、不完全な通信によってサーバーが Azure File Sync で完全に動作しない場合のトラブルシューティングに役立ちます。また、プロキシとファイアウォールの構成を微調整するために使用できます。
 
 ネットワーク接続テストを実行するには、Azure File Sync エージェント バージョン 9.1 以降をインストールし、次の PowerShell コマンドを実行します。
+
 ```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 Test-StorageSyncNetworkConnectivity
 ```
 
 ## <a name="summary-and-risk-limitation"></a>概要とリスクの制限
+
 このドキュメントで前述したリストは、現時点で Azure File Sync が通信する URL を記載したものです。 ファイアウォールで、これらのドメインに向かうトラフィックを許可する必要があります。 Microsoft は、このリストを最新の内容に保つよう努めます。
 
 ドメインを制限するファイアウォール規則の設定は、セキュリティを強化するための対策になると考えられます。 そうしたファイアウォール構成を使用する場合、時間の経過に伴って URL が追加されること、また場合によっては変更される可能性もあることに留意する必要があります。 こちらの記事を定期的にご確認ください。
 
 ## <a name="next-steps"></a>次のステップ
+
 - [Azure File Sync のデプロイの計画](file-sync-planning.md)
 - [Azure File Sync をデプロイする](file-sync-deployment-guide.md)
 - [Azure File Sync の監視](file-sync-monitoring.md)

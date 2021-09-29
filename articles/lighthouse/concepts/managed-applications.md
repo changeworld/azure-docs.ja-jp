@@ -1,14 +1,14 @@
 ---
 title: Azure Lighthouse と Azure Managed Applications
 description: Azure Lighthouse と Azure Managed Applications を組み合わせて使用する方法について説明します。
-ms.date: 05/11/2021
+ms.date: 09/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: 09e07aca77fc53cb9eab2ba0c980b6c838ef6726
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 629f9f1f6b6db69816d26cc7eed1e305dd55923b
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111962637"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124768574"
 ---
 # <a name="azure-lighthouse-and-azure-managed-applications"></a>Azure Lighthouse と Azure Managed Applications
 

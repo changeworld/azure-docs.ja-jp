@@ -6,13 +6,13 @@ ms.author: csugunan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 08/25/2021
-ms.openlocfilehash: 40b1652bec99844675e030cfd12ef8ff28a0f01f
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.date: 09/27/2021
+ms.openlocfilehash: 6778394fa152f22002ef48681942edde4b4ed460
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123435458"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129219118"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>Azure Data Factory と Azure Purview を接続する方法
 
@@ -44,9 +44,9 @@ ms.locfileid: "123435458"
 >[!Note]
 >Data Factory の接続を追加または削除するには、次のロールが割り当てられている必要があります。 管理グループからのロールの継承はサポートされていません。
 >- **2021 年 8 月 18 日以降** に作成された Purview アカウントの場合: ルート コレクションの **コレクション管理者** ロール。
->- **2021 年 8 月 18 日より前** に作成された Purview アカウントの場合: **所有者** または **ユーザー アクセス管理者** ロール。 
+>- **2021 年 8 月 18 日より前** に作成された Purview アカウントの場合: **所有者** または **ユーザー アクセス管理者** ロール。
 >
-> さらに、ユーザーはデータ ファクトリの "所有者" または "共同作成者" である必要があります。 
+> さらに、ユーザーはデータ ファクトリの "所有者" または "共同作成者" である必要があります。
 
 既存のデータ ファクトリを Purview アカウントに接続するには、次の手順に従います。 [Data Factory を ADF から Purview アカウントに接続する](../data-factory/connect-data-factory-to-azure-purview.md)こともできます。
 
@@ -62,14 +62,14 @@ ms.locfileid: "123435458"
 
     選択されている Data Factory のいずれかが他の Purview アカウントに既に接続されている場合は、警告メッセージが表示されます。 [OK] を選択すると、他の Purview アカウントとの Data Factory 接続は切断されます。 追加の確認は必要ありません。
 
-    :::image type="content" source="./media/how-to-link-azure-data-factory/warning-for-disconnect-factory.png" alt-text="Azure Data Factory を切断するという警告を示すスクリーンショット。" lightbox="./media/how-to-link-azure-data-factory/warning-for-disconnect-factory.png":::
+    :::image type="content" source="./media/how-to-link-azure-data-factory/warning-for-disconnect-factory.png" alt-text="Azure Data Factory を切断するという警告を示すスクリーンショット。":::
 
 >[!Note]
 >一度に 10 個までのデータ ファクトリの追加がサポートされるようになりました。 一度に 10 個を超えるデータ ファクトリを追加する場合は、サポート チケットを提出してください。
 
 ### <a name="how-authentication-works"></a>認証のしくみ
 
-データ ファクトリのマネージド ID は、データ ファクトリから Purview への系列のプッシュ操作を認証するために使用されます。 UI 上で Purview にデータ ファクトリを接続すると、ロールの割り当てが自動的に追加されます。 
+データ ファクトリのマネージド ID は、データ ファクトリから Purview への系列のプッシュ操作を認証するために使用されます。 UI 上で Purview にデータ ファクトリを接続すると、ロールの割り当てが自動的に追加されます。
 
 - **2021 年 8 月 18 日以降** に作成された Purview アカウントでは、データ ファクトリのマネージド ID に、Purview **ルート コレクション** の **データ キュレーター** ロールが付与されます。 詳細については、[Azure Purview でのアクセス制御](../purview/catalog-permissions.md)および[コレクションを使用したロールの追加とアクセスの制限](../purview/how-to-create-and-manage-collections.md#add-roles-and-restrict-access-through-collections)に関連するページを参照してください。
 
@@ -133,7 +133,7 @@ Azure Purview でサポートされる系列のパターンはいくつかあり
 - 1 つのシンク/出力: *Customer1.csv* (Azure BLOB)
 - 1 つのプロセス: *CopyCustomerInfo1\#Customer1.csv* (Data Factory のコピー アクティビティ)
 
-:::image type="content" source="./media/how-to-link-azure-data-factory/adf-copy-lineage.png" alt-text="1:1 の Data Factory のコピー操作の系列を示すスクリーンショット。" lightbox="./media/how-to-link-azure-data-factory/adf-copy-lineage.png":::
+:::image type="content" source="./media/how-to-link-azure-data-factory/adf-copy-lineage.png" alt-text="1:1 の Data Factory のコピー操作の系列を示すスクリーンショット。":::
 
 ### <a name="data-movement-with-11-lineage-and-wildcard-support"></a>1:1 の系列とワイルドカードのサポートを使用したデータ移動
 

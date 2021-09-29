@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/20/2018
 ms.author: normesta
 ms.reviewer: fryu
-ms.openlocfilehash: 6c1d9b813db15900521968865c1036d53ad53f41
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 45b5a29307ca8aa37f3b369b4e79054a22fa0634
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95544787"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128579642"
 ---
 # <a name="monitor-and-troubleshoot-a-cloud-storage-application"></a>クラウド ストレージ アプリケーションの監視およびトラブルシューティング
 
@@ -22,10 +22,10 @@ ms.locfileid: "95544787"
 シリーズの第 4 部では、次の方法を学習します。
 
 > [!div class="checklist"]
-> * ログ記録とメトリックを有効にする
-> * 承認エラーのアラートを有効にする
-> * 正しくない SAS トークンでテスト トラフィックを実行する
-> * ログをダウンロードして分析する
+> - ログ記録とメトリックを有効にする
+> - 承認エラーのアラートを有効にする
+> - 正しくない SAS トークンでテスト トラフィックを実行する
+> - ログをダウンロードして分析する
 
 [Azure Storage Analytics](../common/storage-analytics.md) では、ストレージ アカウントのログ記録およびメトリック データが提供されます。 このデータにより、ストレージ アカウントの正常性を確認できます。 Azure Storage Analytics からデータを収集するには、ログ記録、メトリック、およびアラートを構成します。 このプロセスには、ログ記録の有効化、メトリックの構成、およびアラートの有効化が含まれます。
 
@@ -112,10 +112,10 @@ curl https://<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/<CONTAINER_NAME>/<INCO
 シリーズの第 4 部であり、かつ最後の部分では、次に示すような、ストレージ アカウントを監視およびトラブルシューティングする方法を学習しました。
 
 > [!div class="checklist"]
-> * ログ記録とメトリックを有効にする
-> * 承認エラーのアラートを有効にする
-> * 正しくない SAS トークンでテスト トラフィックを実行する
-> * ログをダウンロードして分析する
+> - ログ記録とメトリックを有効にする
+> - 承認エラーのアラートを有効にする
+> - 正しくない SAS トークンでテスト トラフィックを実行する
+> - ログをダウンロードして分析する
 
 事前に作成されたストレージ サンプルを確認するには、次のリンクに従ってください。
 

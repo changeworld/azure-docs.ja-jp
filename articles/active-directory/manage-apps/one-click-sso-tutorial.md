@@ -12,12 +12,12 @@ ms.date: 06/11/2019
 ms.author: davidmu
 ms.collection: M365-identity-device-management
 ms.reviewer: ergreenl
-ms.openlocfilehash: bec4df252a98fc105f0eec1480452021fefb0031
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: dac32dd14e006b1187f62389d3bc38e3c30a890f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121733673"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124791462"
 ---
 # <a name="one-click-app-configuration-of-single-sign-on"></a>アプリの One Click シングル サインオンの構成
 
@@ -36,7 +36,7 @@ One Click SSO 機能は、SAML プロトコルをサポートする Azure Market
 ## <a name="prerequisites"></a>前提条件
 
 - SSO を構成するアプリケーションのアクティブなサブスクリプション。 また、管理者の資格情報も必要です。
-- ブラウザーにインストールされた、Microsoft の **My Apps Secure Sign-in 拡張機能**。 詳細については、「[マイ アプリ ポータルでアプリにアクセスして使用する](../user-help/my-apps-portal-end-user-access.md)」を参照してください。
+- ブラウザーにインストールされた、Microsoft の **My Apps Secure Sign-in 拡張機能**。 詳細については、「[マイ アプリ ポータルでアプリにアクセスして使用する](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)」を参照してください。
 
 ## <a name="one-click-sso-configuration-steps"></a>One Click SSO の構成手順
 
@@ -81,4 +81,4 @@ One Click SSO 機能は、SAML プロトコルをサポートする Azure Market
 ## <a name="additional-resources"></a>その他のリソース
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](../saas-apps/tutorial-list.md)
-- [My Apps Secure Sign-in ブラウザー拡張機能の概要](../user-help/my-apps-portal-end-user-access.md)
+- [My Apps Secure Sign-in ブラウザー拡張機能の概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)

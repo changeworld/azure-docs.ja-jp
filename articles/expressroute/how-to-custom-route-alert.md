@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: duau
-ms.openlocfilehash: f9dcea1c9f25772d45e6d01e1a6b17635df9cf48
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 90ce78bfab0cacbaea871402394fe8963775844c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108287520"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124824667"
 ---
 # <a name="configure-custom-alerts-to-monitor-advertised-routes"></a>カスタム アラートを構成して、アドバタイズされるルートを監視する
 
@@ -64,7 +64,7 @@ Automation アカウントを作成するには、特権とアクセス許可が
 
 ### <a name="1-create-an-automation-account"></a><a name="about"></a>1.Automation アカウントの作成
 
-実行アクセス許可を持つ Automation アカウントを作成します。 手順については、「[Azure Automation アカウントを作成する](../automation/automation-quickstart-create-account.md)」をご覧ください。
+実行アクセス許可を持つ Automation アカウントを作成します。 手順については、「[Azure Automation アカウントを作成する](../automation/quickstarts/create-account-portal.md)」をご覧ください。
 
 :::image type="content" source="./media/custom-route-alert-portal/create-account.png" alt-text="Automation アカウントの追加" lightbox="./media/custom-route-alert-portal/create-account-expand.png":::
 

@@ -3,12 +3,12 @@ title: MABS でのファイル データのバックアップ
 description: MABS でサーバーおよびクライアント コンピューター上のファイル データをバックアップすることができます。
 ms.topic: conceptual
 ms.date: 08/19/2021
-ms.openlocfilehash: 71b12c98713dff2340bdda1baf486dcd5cfdb70a
-ms.sourcegitcommit: deb5717df5a3c952115e452f206052737366df46
+ms.openlocfilehash: 5c5535969340b5612758ee0781e030fad0ec6dc6
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122868378"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124806715"
 ---
 # <a name="back-up-file-data-with-mabs"></a>MABS でのファイル データのバックアップ
 
@@ -73,7 +73,7 @@ MABS インフラストラクチャの設定が完了したら、バックアッ
 
 1. **[オンライン保持ポリシーの指定]** では、毎日/毎週/毎月/毎年のバックアップから作成された回復ポイントの Azure での保持方法を指定することができます。
 
-1. **[オンライン レプリケーションの選択]** で、データの初期フル レプリケーションの方法を指定します。 ネットワーク経由でのレプリケーションまたはオフライン バックアップ (オフライン シード処理) を実行できます。 オフライン バックアップは、Azure Import 機能を使用します。 詳細については、[こちら](/azure/backup/backup-azure-backup-import-export)を参照してください。
+1. **[オンライン レプリケーションの選択]** で、データの初期フル レプリケーションの方法を指定します。 ネットワーク経由でのレプリケーションまたはオフライン バックアップ (オフライン シード処理) を実行できます。 オフライン バックアップは、Azure Import 機能を使用します。 詳細については、[こちら](./backup-azure-backup-import-export.md)を参照してください。
 
 1. **[サマリー]** ページで、設定を確認します。 **[グループの作成]** をクリックすると、初回のデータ レプリケーションが実行されます。 終了すると、 **[状態]** ページに保護グループの状態が **[OK]** と表示されます。 バックアップは保護グループ設定に沿って行われます。
 

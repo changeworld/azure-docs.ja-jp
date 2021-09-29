@@ -1,19 +1,19 @@
 ---
 title: チュートリアル - IoT プラグ アンド プレイのサンプル デバイス コードを Azure IoT Hub に接続する | Microsoft Docs
 description: チュートリアル - IoT ハブに接続する IoT Plug and Play のサンプル デバイス コード (C、C#、Java、JavaScript、Python) を、Linux または Windows 上でビルドして実行します。 Azure IoT Explorer ツールを使用して、デバイスからハブに送信された情報を表示します。
-author: ericmitt
-ms.author: ericmitt
+author: lizross
+ms.author: lizross
 ms.date: 07/14/2020
 ms.topic: tutorial
 ms.service: iot-develop
 services: iot-develop
 zone_pivot_groups: programming-languages-set-twenty-seven
-ms.openlocfilehash: 88441340b23548e73831d73fe7f96476c12438e6
-ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.openlocfilehash: 2a5b5dc02387a07b3d9485feddd07d9fce9825dc
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2021
-ms.locfileid: "114406080"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129091941"
 ---
 # <a name="tutorial-connect-a-sample-iot-plug-and-play-device-application-running-on-linux-or-windows-to-iot-hub"></a>チュートリアル: Linux または Windows 上で実行されている IoT Plug and Play のサンプル デバイス アプリケーションを IoT Hub に接続する
 

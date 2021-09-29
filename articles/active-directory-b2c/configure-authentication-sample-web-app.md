@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 08/23/2021
+ms.date: 09/15/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: f8d27d30ace8ac29a59df9b77de4b56b5e138f63
-ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+ms.openlocfilehash: 60f3383c58ab297fd5c2199d532591b1d3a38b8f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123185743"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128572494"
 ---
 # <a name="configure-authentication-in-a-sample-web-app-by-using-azure-ad-b2c"></a>Azure AD B2C を使ってサンプル web アプリケーションで認証を構成する
 
@@ -70,21 +70,22 @@ ID トークンが有効期限切れになった場合、またはアプリ セ�
 
 アプリの登録時に、*リダイレクト URI* を明記します。 リダイレクト URI は、ユーザーが Azure AD B2C で認証を行った後、Azure AD B2C によってリダイレクトされるエンドポイントです。 アプリ登録プロセスは、アプリを一意に識別する *アプリケーション ID* (または *クライアント ID* として知られています) を生成します。 アプリが登録されると、Azure AD B2C はアプリケーション ID とリダイレクト URI の両方を使用して認証要求を作成します。 
 
-### <a name="step-21-register-the-app"></a>手順 2.1: アプリ を登録する
+### <a name="step-21-register-the-app"></a>手順 2.1: アプリを登録する
 
-Web アプリを登録するには、次の手順を実行します。
+Web アプリの登録を作成するには、次の手順を実行します。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-1. ポータル ツール バーにある **[ディレクトリ + サブスクリプション]** アイコンを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
-1. **Azure AD B2C** を検索して選択します。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページの **[ディレクトリ名]** の一覧で自分の Azure AD B2C ディレクトリを見つけて、 **[切り替え]** を選択します。
+1. Azure portal で、 **[Azure AD B2C]** を検索して選択します。
 1. **[アプリの登録]** を選択し、 **[新規登録]** を選択します。
-1. **Name** には、アプリケーションの名前を入力します (たとえば *webapp1*)。
+1. **[名前]** で、アプリケーションの名前を入力します (*webapp1* など)。
 1. **[サポートされているアカウントの種類]** で、 **[Accounts in any identity provider or organizational directory (for authenticating users with user flows)]\((ユーザー フローを使用してユーザーを認証するための) 任意の ID プロバイダーまたは組織のディレクトリのアカウント\)** を選択します。 
 1. **[リダイレクト URI]** で、 **[Web]** を選択し、URL ボックスに「`https://localhost:5001/signin-oidc`」と入力します。
 1. **[アクセス許可]** で、 **[Grant admin consent to openid and offline access permissions]\(OpenID とオフラインのアクセス許可に管理者の同意を与える\)** チェック ボックスをオンにします。
 1. **[登録]** を選択します。
 1. **[概要]** を選択します。
-1. 後に Web アプリケーションを構成するときに使うために、**アプリケーション (クライアント) ID** を記録しておきます。
+1. **アプリケーション (クライアント) ID** を記録しておきます。これは、後で Web アプリケーションを構成するときに使用します。
 
     ![Web アプリケーション ID を記録するための Web アプリの [概要] ページのスクリーンショット。](./media/configure-authentication-sample-web-app/get-azure-ad-b2c-app-id.png)  
 
@@ -105,7 +106,7 @@ Azure AD B2C から直接 ID トークンを要求する Web アプリの場合�
 git clone https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2
 ```
 
-パスの全文字列の長さが 260 文字以下となるフォルダーにサンプル ファイルを展開します。
+パスの合計文字長が 260 以下のフォルダーにサンプル ファイルを展開します。
 
 ## <a name="step-4-configure-the-sample-web-app"></a>手順 4: サンプル Web アプリを構成する
 
@@ -135,7 +136,7 @@ git clone https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-op
 ## <a name="step-5-run-the-sample-web-app"></a>手順 5: サンプル Web アプリを実行する
 
 1. プロジェクトをビルドして実行します。
-1. [https://localhost:5001](https://localhost:5001) に移動します。 
+1. `https://localhost:5001` にアクセスします。 
 1. **[サインアップ/イン]** を選択します。
 
     ![プロジェクトの Welcome ページの [サインアップ/イン] ボタンのスクリーンショット。](./media/configure-authentication-sample-web-app/web-app-sign-in.png)

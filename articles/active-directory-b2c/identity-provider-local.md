@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/22/2021
+ms.date: 09/16/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 1de783a3e6696e9ca8a8f618ce3744a91e774692
-ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
+ms.openlocfilehash: f5f72fa4dc126074177b96a484c10ade06724f83
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112198856"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128574445"
 ---
 # <a name="set-up-the-local-account-identity-provider"></a>ローカル アカウント ID プロバイダーを設定する
 
@@ -47,7 +47,8 @@ Azure AD B2C の **ID プロバイダー** のリストで **ローカル アカ
 ローカル アカウントのサインイン オプションをテナント レベルで設定するには、次の手順を実行します。 
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-1. ご利用の Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。そのためには、トップ メニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択して、ご利用の Azure AD テナントを含むディレクトリを選択します。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
 1. **[Azure サービス]** で、 **[Azure AD B2C]** を選択します。 または、検索ボックスを使用して検索し、 **[Azure AD B2C]** を選択します。
 1. **[管理]** で、 **[ID プロバイダー]** を選択します。
 1. ID プロバイダー リストで、 **[ローカル アカウント]** を選択します。
@@ -71,7 +72,8 @@ Azure AD B2C の **ID プロバイダー** のリストで **ローカル アカ
 **[Phone signup]\(電話でのサインアップ\)** 、 **[Phone/Email signup]\(電話/電子メールでのサインアップ\)** オプションを選択した場合、回復用メール アドレスのプロンプトを有効にします。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-1. ポータル ツール バーにある **[ディレクトリ + サブスクリプション]** アイコンを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページの **[ディレクトリ名]** の一覧で自分の Azure AD B2C ディレクトリを見つけて、 **[切り替え]** を選択します。
 1. Azure portal で、 **[Azure AD B2C]** を検索して選択します。
 1. Azure AD B2C の **[ポリシー]** で、 **[ユーザー フロー]** を選択します。
 1. 一覧からユーザー フローを選択します。

@@ -3,17 +3,18 @@ title: Data Factory の Data Management Gateway
 description: Azure Data Factory で Data Management Gateway を使用してデータを移動します。
 author: nabhishek
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 ms.custom: devx-track-azurepowershell
 robots: noindex
-ms.openlocfilehash: 50e9dbddd0a84f104aed9275f985f444990dbc30
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 14f3a838fb5c2893e25828234121f053ee951afc
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110677166"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128662003"
 ---
 # <a name="data-management-gateway"></a>Data Management Gateway
 > [!NOTE]
@@ -47,7 +48,7 @@ ms.locfileid: "110677166"
 ### <a name="command-flow-and-data-flow"></a>コマンド フローとデータ フロー
 コピー アクティビティを使用してオンプレミスとクラウドの間でデータをコピーするとき、アクティビティはゲートウェイを使用して、オンプレミスのデータ ソースからクラウドに、またはその逆に、データを転送します。
 
-データ ゲートウェイでのコピーのおおまかなデータ フローと手順の概要を次に示します。![ゲートウェイを使用したデータ フロー](./media/data-factory-data-management-gateway/data-flow-using-gateway.png)
+データ ゲートウェイでのコピーのおおまかなデータ フローと手順の概要を次に示します。:::image type="content" source="./media/data-factory-data-management-gateway/data-flow-using-gateway.png" alt-text="ゲートウェイを使用したデータ フロー":::
 
 1. データ開発者は、[Azure portal](https://portal.azure.com) または [PowerShell コマンドレット](/powershell/module/az.datafactory/)を使用して Azure Data Factory 用のゲートウェイを作成します。
 2. データ開発者は、ゲートウェイを指定することで、オンプレミスのデータ ストアに使用するリンクされたサービスを作成します。 リンクされたサービスの設定の一部として、データ開発者は、資格情報の設定アプリケーションを使用して認証の種類と資格情報を指定します。 資格情報の設定アプリケーションのダイアログは、データ ストアと通信して接続をテストし、ゲートウェイと通信して資格情報を保存します。
@@ -108,31 +109,31 @@ ms.locfileid: "110677166"
 #### <a name="if-you-have-already-created-the-logical-gateway-in-the-portal"></a>ポータルに論理ゲートウェイを既に作成している場合
 1. Azure Portal で **[データ ファクトリ]** ページに移動し、 **[リンクされたサービス]** タイルをクリックします。
 
-    ![[データ ファクトリ] ページ](media/data-factory-data-management-gateway/data-factory-blade.png)
+    :::image type="content" source="media/data-factory-data-management-gateway/data-factory-blade.png" alt-text="[データ ファクトリ] ページ":::
 2. **[リンクされたサービス]** ページで、ポータルに作成した論理 **ゲートウェイ** を選択します。
 
-    ![論理ゲートウェイ](media/data-factory-data-management-gateway/data-factory-select-gateway.png)
+    :::image type="content" source="media/data-factory-data-management-gateway/data-factory-select-gateway.png" alt-text="論理ゲートウェイ":::
 3. **[データ ゲートウェイ]** ページで、 **[データ ゲートウェイをダウンロードしてインストールする]** をクリックします。
 
-    ![ポータルのダウンロード リンク](media/data-factory-data-management-gateway/download-and-install-link-on-portal.png)
+    :::image type="content" source="media/data-factory-data-management-gateway/download-and-install-link-on-portal.png" alt-text="ポータルのダウンロード リンク":::
 4. **[構成]** ページで、 **[キーの再作成]** をクリックします。 警告メッセージを注意して読んでから、[はい] をクリックします。
 
-    ![[キーの再作成] ボタン](media/data-factory-data-management-gateway/recreate-key-button.png)
+    :::image type="content" source="media/data-factory-data-management-gateway/recreate-key-button.png" alt-text="[キーの再作成] ボタン":::
 5. キーの横にある [コピー] ボタンをクリックします。 キーがクリップボードにコピーされます。
 
-    ![キーのコピー](media/data-factory-data-management-gateway/copy-gateway-key.png)
+    :::image type="content" source="media/data-factory-data-management-gateway/copy-gateway-key.png" alt-text="キーのコピー":::
 
 ### <a name="system-tray-icons-notifications"></a>システム トレイ アイコン/通知
 次の図は、表示されるトレイ アイコンの一部を示しています。
 
-![システム トレイのアイコン](./media/data-factory-data-management-gateway/gateway-tray-icons.png)
+:::image type="content" source="./media/data-factory-data-management-gateway/gateway-tray-icons.png" alt-text="システム トレイのアイコン":::
 
 システム トレイ アイコン/通知メッセージの上にカーソルを移動すると、ゲートウェイ/更新操作の状態の詳細がポップアップ ウィンドウに表示されます。
 
 ### <a name="ports-and-firewall"></a>ポートとファイアウォール
 考慮する必要がある 2 つのファイアウォールがあります。組織の中央ルーターで実行している **企業ファイアウォール** と、ゲートウェイがインストールされているローカル コンピューター上のデーモンとして構成されている **Windows ファイアウォール** です。
 
-![ファイアウォール](./media/data-factory-data-management-gateway/firewalls2.png)
+:::image type="content" source="./media/data-factory-data-management-gateway/firewalls2.png" alt-text="ファイアウォール":::
 
 企業ファイアウォール レベルで、次のドメインと送信ポートを構成する必要があります。
 
@@ -167,11 +168,11 @@ Windows のファイアウォール レベルでは、通常これらの送信�
 ### <a name="proxy-server-considerations"></a>プロキシ サーバーに関する考慮事項
 企業ネットワーク環境でプロキシ サーバーを使用してインターネットにアクセスしている場合は、適切なプロキシ設定を使用するようにデータ管理ゲートウェイを構成します。 プロキシは、初期登録フェーズ中に設定できます。
 
-![登録時にプロキシを設定](media/data-factory-data-management-gateway/SetProxyDuringRegistration.png)
+:::image type="content" source="media/data-factory-data-management-gateway/SetProxyDuringRegistration.png" alt-text="登録時にプロキシを設定":::
 
 ゲートウェイは、プロキシ サーバーを使用してクラウド サービスに接続します。 初期セットアップする際に **[変更]** リンクをクリックします。 **[プロキシ設定]** ダイアログが表示されます。
 
-![構成マネージャーを使用してプロキシを設定 1](media/data-factory-data-management-gateway/SetProxySettings.png)
+:::image type="content" source="media/data-factory-data-management-gateway/SetProxySettings.png" alt-text="構成マネージャーを使用してプロキシを設定 1":::
 
 3 つの構成オプションがあります。
 
@@ -190,7 +191,7 @@ Windows のファイアウォール レベルでは、通常これらの送信�
 
 HTTP プロキシを表示して更新するには、構成マネージャー ツールを使用します。
 
-![構成マネージャーを使用してプロキシを設定 2](media/data-factory-data-management-gateway/SetProxyConfigManager.png)
+:::image type="content" source="media/data-factory-data-management-gateway/SetProxyConfigManager.png" alt-text="構成マネージャーを使用してプロキシを設定 2":::
 
 > [!NOTE]
 > NTLM 認証でプロキシ サーバーを設定する場合は、ドメイン アカウントで Gateway Host Service が実行されます。 ドメイン アカウントのパスワードを後で変更する場合は、忘れずにサービスの構成設定を更新し、必要に応じて再起動してください。 この要件のため、専用のドメイン アカウントを使用して、パスワードを頻繁に更新する必要がないプロキシ サーバーにアクセスすることをお勧めします。
@@ -260,15 +261,15 @@ msiexec /q /i DataManagementGateway.msi NOFIREWALL=1
 
 Data Management Gateway 構成マネージャーの [ホーム] タブには、更新スケジュールと、ゲートウェイが最後にインストール/更新された時刻が表示されます。
 
-![更新のスケジュール](media/data-factory-data-management-gateway/UpdateSection.png)
+:::image type="content" source="media/data-factory-data-management-gateway/UpdateSection.png" alt-text="更新のスケジュール":::
 
 今すぐ更新をインストールすることも、スケジュールされた時刻にゲートウェイが自動的に更新されるのを待つこともできます。 たとえば、次の図は Gateway 構成マネージャーに表示される通知メッセージと、すぐに更新をインストールする場合にクリックできる [更新] ボタンを示しています。
 
-![DMG 構成マネージャーの更新](./media/data-factory-data-management-gateway/gateway-auto-update-config-manager.png)
+:::image type="content" source="./media/data-factory-data-management-gateway/gateway-auto-update-config-manager.png" alt-text="DMG 構成マネージャーの更新":::
 
 システム トレイの通知メッセージは、次の画像のようになります。
 
-![システム トレイのメッセージ](./media/data-factory-data-management-gateway/gateway-auto-update-tray-message.png)
+:::image type="content" source="./media/data-factory-data-management-gateway/gateway-auto-update-tray-message.png" alt-text="システム トレイのメッセージ":::
 
 システム トレイに更新操作 (手動または自動) の状態が表示されます。 Gateway 構成マネージャーを次回開いたときに、通知バーにゲートウェイが更新されたことを示すメッセージと、 [最新情報のトピック](data-factory-gateway-release-notes.md)へのリンクが表示されます。
 
@@ -347,16 +348,16 @@ Azure Portal では、ゲートウェイ コンピューターでのリソース
 
 1. Azure Portal で、データ ファクトリのホーム ページに移動して、 **[リンクされたサービス]** タイルをクリックします。
 
-    ![データ ファクトリのホーム ページ](./media/data-factory-data-management-gateway/monitor-data-factory-home-page.png)
+    :::image type="content" source="./media/data-factory-data-management-gateway/monitor-data-factory-home-page.png" alt-text="データ ファクトリのホーム ページ":::
 2. **[リンクされたサービス]** ページで、**ゲートウェイ** を選択します。
 
-    ![[リンクされたサービス] ページ](./media/data-factory-data-management-gateway/monitor-linked-services-blade.png)
+    :::image type="content" source="./media/data-factory-data-management-gateway/monitor-linked-services-blade.png" alt-text="[リンクされたサービス] ページ":::
 3. **[ゲートウェイ]** ページで、ゲートウェイのメモリと CPU の使用率を確認できます。
 
-    ![ゲートウェイの CPU とメモリの使用率](./media/data-factory-data-management-gateway/gateway-simple-monitoring.png)
+    :::image type="content" source="./media/data-factory-data-management-gateway/gateway-simple-monitoring.png" alt-text="ゲートウェイの CPU とメモリの使用率":::
 4. **[詳細設定]** を有効にして、ネットワーク使用率などの詳細を確認します。
     
-    ![ゲートウェイの詳細な監視](./media/data-factory-data-management-gateway/gateway-advanced-monitoring.png)
+    :::image type="content" source="./media/data-factory-data-management-gateway/gateway-advanced-monitoring.png" alt-text="ゲートウェイの詳細な監視":::
 
 次の表に、**ゲートウェイ ノード** 一覧の列の説明を示します。
 
@@ -406,29 +407,29 @@ Needs Registration\(登録が必要\) | この論理ゲートウェイには、�
 
 1. ポータルで **Data Factory ホーム ページ** に移動し、 **[リンクされたサービス]** タイルをクリックします。
 
-    ![データ ゲートウェイ リンク](./media/data-factory-data-management-gateway/DataGatewaysLink.png)
+    :::image type="content" source="./media/data-factory-data-management-gateway/DataGatewaysLink.png" alt-text="データ ゲートウェイ リンク":::
 2. **[リンクされたサービス]** ページの **[データ ゲートウェイ]** セクションでゲートウェイを選択します。
 
-    ![ゲートウェイが選択された状態の [リンクされたサービス] ページ](./media/data-factory-data-management-gateway/LinkedServiceBladeWithGateway.png)
+    :::image type="content" source="./media/data-factory-data-management-gateway/LinkedServiceBladeWithGateway.png" alt-text="ゲートウェイが選択された状態の [リンクされたサービス] ページ":::
 3. **[データ ゲートウェイ]** ページで **[データ ゲートウェイをダウンロードしてインストールする]** をクリックします。
 
-    ![ダウンロード ゲートウェイ リンク](./media/data-factory-data-management-gateway/DownloadGatewayLink.png)
+    :::image type="content" source="./media/data-factory-data-management-gateway/DownloadGatewayLink.png" alt-text="ダウンロード ゲートウェイ リンク":::
 4. **[構成]** ページで **[データ ゲートウェイのダウンロードとインストール]** をクリックし、指示に従ってコンピューターにデータ ゲートウェイをインストールします。
 
-    ![[構成] ページ](./media/data-factory-data-management-gateway/ConfigureBlade.png)
+    :::image type="content" source="./media/data-factory-data-management-gateway/ConfigureBlade.png" alt-text="[構成] ページ":::
 5. **Microsoft Data Management Gateway Configuration Manager** を開いたままにします。
 
-    ![構成マネージャー](./media/data-factory-data-management-gateway/ConfigurationManager.png)
+    :::image type="content" source="./media/data-factory-data-management-gateway/ConfigurationManager.png" alt-text="構成マネージャー":::
 6. ポータルの **[構成]** ページでコマンド バーの **[キーの再作成]** をクリックし、警告メッセージで **[はい]** をクリックします。 キー文字列の横にある **コピー ボタン** をクリックして、キーをクリップボードにコピーします。 古いコンピューターのゲートウェイは、キーが再作成されるとすぐに機能しなくなります。
 
-    ![キーの再作成 2](./media/data-factory-data-management-gateway/RecreateKey.png)
+    :::image type="content" source="./media/data-factory-data-management-gateway/RecreateKey.png" alt-text="キーの再作成 2":::
 7. コンピューター上の **Data Management Gateway 構成マネージャー** の **[ゲートウェイの登録]** ページで、**キー** を貼り付けます。 (省略可能) **[ゲートウェイのキーを表示する]** チェック ボックスをオンにしてキー文字列を表示します。
 
-    ![キーのコピーと登録](./media/data-factory-data-management-gateway/CopyKeyAndRegister.png)
+    :::image type="content" source="./media/data-factory-data-management-gateway/CopyKeyAndRegister.png" alt-text="キーのコピーと登録":::
 8. **[登録]** をクリックして、ゲートウェイをクラウド サービスに登録します。
 9. **[設定]** タブで **[変更]** をクリックして以前のゲートウェイで使用されていたのと同じ証明書を選択し、 **[パスワード]** を入力して **[完了]** をクリックします。
 
-   ![証明書の指定](./media/data-factory-data-management-gateway/SpecifyCertificate.png)
+   :::image type="content" source="./media/data-factory-data-management-gateway/SpecifyCertificate.png" alt-text="証明書の指定":::
 
    古いゲートウェイから証明書をエクスポートするには、古いコンピューターで Data Management Gateway 構成マネージャーを起動し、 **[証明書]** タブに切り替え、 **[エクスポート]** をクリックして指示に従います。
 10. ゲートウェイの登録が成功したら、Gateway Configuration Manager のホーム ページで、 **[登録]** が **[登録済み]** に、 **[状態]** が **[開始]** に設定されていることを確認する必要があります。
@@ -443,7 +444,7 @@ Data Factory エディターで資格情報を暗号化するには、以下の�
 5. **connectionString** の **[初期カタログ]** プロパティにデータベース名を入力します。
 6. コマンド バーの **[暗号化]** ボタンをクリックして、ClickOnce **資格情報マネージャー** アプリケーションを起動します。 **[資格情報の設定]** ダイアログ ボックスが表示されます。
 
-    ![[資格情報の設定] ダイアログ](./media/data-factory-data-management-gateway/setting-credentials-dialog.png)
+    :::image type="content" source="./media/data-factory-data-management-gateway/setting-credentials-dialog.png" alt-text="[資格情報の設定] ダイアログ":::
 7. **[資格情報の設定]** ダイアログ ボックスで、以下の手順を実行します。
    1. Data Factory サービスがデータベースへの接続に使用する **認証** を選択します。
    2. **[ユーザー名]** の設定に、データベースへのアクセス権を持つユーザーの名前を入力します。

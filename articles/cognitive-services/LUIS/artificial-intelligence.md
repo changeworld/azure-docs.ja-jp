@@ -6,12 +6,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.date: 08/07/2020
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 39f73dd002091451ae832516d525499eae98564d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 623b50bee72f99be4d31159165f1af5b98f67b88
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "95021373"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124750738"
 ---
 # <a name="artificial-intelligence-in-language-understanding-luis"></a>Language Understanding (LUIS) における人工知能
 
@@ -39,7 +39,7 @@ LUIS では、人工知能 (AI) を使用し、定義されたスキーマに基
     * [トークン化](luis-language-support.md#tokenization)
     * 分音記号、句読点、および単語形式の [API 設定](luis-reference-application-settings.md)を使用した形態論
 * 他の [Cognitive Services](../what-are-cognitive-services.md) によって提供されるクエリ (発話) の前または後処理。例:
-    * [翻訳](../translator/translator-info-overview.md)
+    * [翻訳](../translator/translator-overview.md)
 
 ## <a name="natural-language-understanding-nlu"></a>自然言語理解 (NLU)
 

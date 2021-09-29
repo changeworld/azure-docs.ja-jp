@@ -1,17 +1,15 @@
 ---
 title: Azure Functions での Python Function App のトラブルシューティング
 description: Python 関数のトラブルシューティングの方法について説明します。
-author: Hazhzeng
 ms.topic: article
 ms.date: 07/29/2020
-ms.author: hazeng
 ms.custom: devx-track-python
-ms.openlocfilehash: 56da006dc5a0eef46d5b13984983ca680359b968
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 3d6be539763e655405a1e46b628e68cb5690e4f2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106168095"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128654349"
 ---
 # <a name="troubleshoot-python-errors-in-azure-functions"></a>Azure Functions での Python エラーのトラブルシューティング
 
@@ -171,14 +169,14 @@ Windows で PowerShell の場合:`py -c 'import platform; print(platform.archite
 
 Unix のようなシェルの場合:`python3 -c 'import platform; print(platform.architecture()[0])'`
 
-Python インタープリターのビットとオペレーティング システムのアーキテクチャが一致しない場合は、[Python Software Foundation](https://python.org/downloads/release) から適切な Python インタープリターをダウンロードしてください。
+Python インタープリターのビットとオペレーティング システムのアーキテクチャが一致しない場合は、[Python Software Foundation](https://www.python.org/downloads) から適切な Python インタープリターをダウンロードしてください。
 
 #### <a name="the-python-interpreter-is-not-supported-by-azure-functions-python-worker"></a>Python インタープリターが Azure Functions の Python Worker でサポートされない
 
 Azure Functions の Python Worker では、Python 3.6、3.7、3.8 のみがサポートされています。
 Windows の場合は `py --version`、または Unix 系システムの場合は `python3 --version` で、Python インタープリターが想定されているバージョンと一致しているかどうかを確認してください。 返された結果が Python 3.6.x、Python 3.7.x、または Python 3.8.x であることを確認します。
 
-Python インタープリターが想定されているバージョンでない場合は、[Python Software Foundation](https://python.org/downloads/release) から Python 3.6、3.7、または 3.8 インタープリターをダウンロードしてください。
+Python インタープリターが想定されているバージョンでない場合は、[Python Software Foundation](https://www.python.org/downloads) から Python 3.6、3.7、または 3.8 インタープリターをダウンロードしてください。
 
 ---
 

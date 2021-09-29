@@ -12,12 +12,12 @@ ms.date: 07/11/2017
 ms.author: davidmu
 ms.reviewer: lenalepa
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 116aaeddb9ca3378c076b70c4a0e53d18fe3244f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ea4b1cb837c481dab1a63850d6eb3753720ae4fa
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121738913"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124796402"
 ---
 # <a name="troubleshoot-problems-signing-in-to-an-application-from-azure-ad-my-apps"></a>Azure AD マイ アプリからのアプリケーションへのサインインに関する問題のトラブルシューティング
 
@@ -43,7 +43,7 @@ Web ベースのポータルであるマイ アプリを使用すると、Azure 
 
 ## <a name="general-issues-to-check-first"></a>最初にチェックすべき一般的な問題
 
-- Web ブラウザーが要件を満たしていることを確認してください。詳細については、[マイ アプリでサポートされているブラウザー](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+- Web ブラウザーが要件を満たしていることを確認してください。詳細については、[マイ アプリでサポートされているブラウザー](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 - ユーザーのブラウザーが、その **信頼済みサイト** にアプリケーションの URL を追加していることを確認します。
 - アプリケーションが正しく **構成** されていることを確認します。
 - ユーザーのアカウントがサインイン用に **有効になっている** ことを確認します。

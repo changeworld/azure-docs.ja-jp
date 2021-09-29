@@ -1,26 +1,22 @@
 ---
 title: Azure VM で Azure CLI を使用してマネージド ID を構成する - Azure AD
 description: Azure CLI を使用して、Azure VM 上にシステム割り当てマネージド ID とユーザー割り当てマネージド ID を構成するための詳細な手順について説明します。
-services: active-directory
-documentationcenter: ''
 author: barclayn
 manager: daveba
-editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/15/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8dbe9665612e888b7e7afe95a472ba6b0de8d48
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 205661a32d938352ae81073668843c569825cc8e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107762517"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128679610"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-azure-cli"></a>Azure CLI を使用して Azure VM 上に Azure リソースのマネージド ID を構成する
 
@@ -100,7 +96,7 @@ az vm update -n myVM -g myResourceGroup --set identity.type="none"
 ## <a name="user-assigned-managed-identity"></a>ユーザー割り当てマネージド ID
 
 このセクションでは、Azure CLI を使用して、Azure VM に対してユーザー割り当てマネージド ID を追加および削除する方法について説明します。 VM とは異なるリソース グループにユーザー割り当てマネージド ID を作成する場合、 マネージド ID の URL を使用して、それを VM に割り当てる必要があります。
-たとえば、「--identities "/subscriptions/<SUBID>/resourcegroups/<RESROURCEGROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<USER_ASSIGNED_ID_NAME>"」のようにします。
+例: `--identities "/subscriptions/<SUBID>/resourcegroups/<RESROURCEGROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<USER_ASSIGNED_ID_NAME>"`。
 
 ### <a name="assign-a-user-assigned-managed-identity-during-the-creation-of-an-azure-vm"></a>Azure VM の作成中にユーザー割り当てマネージド ID を割り当てる
 

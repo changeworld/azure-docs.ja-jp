@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/10/2021
 ms.author: alkohli
-ms.openlocfilehash: 1ef18e29abfc479307aa840d5c0f34ed52227aaf
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a2a6b7b514cb95eb327235c59bb569ac66f4a5d0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121740925"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128670502"
 ---
 # <a name="manage-an-azure-stack-edge-pro-gpu-device-via-windows-powershell"></a>Windows PowerShell を使用して Azure Stack Edge Pro GPU デバイスを管理する
 
@@ -109,7 +109,7 @@ Nvidia GPU 上のマルチプロセス サービス (MPS) は、GPU を複数の
 
     `Set-HcsKubeClusterNetworkInfo -PodSubnet <subnet details> -ServiceSubnet <subnet details>`
 
-    <subnet details> を、使用するサブネットの範囲に置き換えます。 
+    \<subnet details\> を、使用するサブネットの範囲に置き換えます。 
 
 1. このコマンドの実行が完了したら、`Get-HcsKubeClusterNetworkInfo` コマンドを使用して、ポッドおよびサービスのサブネットが変更されたことを確認できます。
 
@@ -485,9 +485,11 @@ Kubernetes ワーカー ノードのメモリまたはプロセッサの制限�
     
 1. ワーカー ノードのメモリおよびプロセッサの値を変更するには、次のコマンドを実行します。
 
-    Set-AzureDataBoxEdgeRoleCompute -Name <Name value from the output of Get-AzureDataBoxEdgeRole> -Memory <Value in Bytes> -ProcessorCount < コア数 >
+   ```powershell
+   Set-AzureDataBoxEdgeRoleCompute -Name <Name value from the output of Get-AzureDataBoxEdgeRole> -Memory <Value in Bytes> -ProcessorCount <No. of cores>
+   ```
 
-    出力例を次に示します。 
+   出力例を次に示します。 
     
     ```powershell
     [10.100.10.10]: PS>Set-AzureDataBoxEdgeRoleCompute -Name IotRole -MemoryInBytes 32GB -ProcessorCount 16

@@ -1,21 +1,17 @@
 ---
 title: Data Lake Storage Gen1 と互換性のあるビッグ データ アプリケーション| Microsoft Docs
 description: Azure Data Lake Storage Gen1 (旧称 Azure Data Lake Store) と互換性のあるオープン ソース アプリケーションの一覧
-services: data-lake-store
-documentationcenter: ''
-author: twooley
-manager: mtillman
+author: normesta
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.author: twooley
-ms.openlocfilehash: 37bf26db5f7ae08734410d36a892aaeb2380bd9f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: normesta
+ms.openlocfilehash: 15b146ff436463f2b7efe2d1e22d0ed9fc951c42
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "60878887"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128635491"
 ---
 # <a name="open-source-big-data-applications-that-work-with-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 と互換性のあるオープン ソースのビッグ データ アプリケーション
 

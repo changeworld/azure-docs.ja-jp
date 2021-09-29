@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 08/20/2021
-ms.openlocfilehash: a2c716479d3b8fd279da855a1df9f280e47c6c5a
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.openlocfilehash: 8c48f5ec6804996cb65428f2e66199cb30127849
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122635218"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124824113"
 ---
 # <a name="marketplace-categories-and-industries"></a>Marketplace のカテゴリと業界
 
@@ -103,6 +103,5 @@ Microsoft AppSource で選択した製品に表示されるオファーについ
 
 ## <a name="next-steps"></a>次の手順
 
-- オファーを作成するには、[パートナー センター](https://go.microsoft.com/fwlink/?linkid=2165290)にサインインして、オファーを作成および構成します。 パートナー センターに登録していない場合、[アカウントを作成します](/azure/marketplace/create-account)。
-- オファーを公開する手順については、コマーシャル マーケットプレースの「[プランの種類別の公開ガイド](/azure/marketplace/publisher-guide-by-offer-type)」を参照してください。
-
+- オファーを作成するには、[パートナー センター](https://go.microsoft.com/fwlink/?linkid=2165290)にサインインして、オファーを作成および構成します。 パートナー センターに登録していない場合、[アカウントを作成します](./create-account.md)。
+- オファーを公開する手順については、コマーシャル マーケットプレースの「[プランの種類別の公開ガイド](./publisher-guide-by-offer-type.md)」を参照してください。

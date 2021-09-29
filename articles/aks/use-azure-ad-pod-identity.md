@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) で AAD ポッドマネージド ID 
 services: container-service
 ms.topic: article
 ms.date: 3/12/2021
-ms.openlocfilehash: 1ecf9b45983dbc34938593424644a646dc3d96cb
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: df893949214fc73813bb1b45a663f052ae3ed3c8
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123101231"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124829078"
 ---
 # <a name="use-azure-active-directory-pod-managed-identities-in-azure-kubernetes-service-preview"></a>Azure Kubernetes Service で Azure Active Directory ポッドマネージド ID を使用する (プレビュー)
 
@@ -73,7 +73,7 @@ az aks create -g myResourceGroup -n myAKSCluster --enable-pod-identity --network
 >     * [Node Management Identity (NMI)](https://azure.github.io/aad-pod-identity/docs/concepts/nmi/) は、AKS クラスターの各ノードで DaemonSet として実行されるポッドです。 NMI は、各ノード上の [Azure Instance Metadata Service](../virtual-machines/linux/instance-metadata-service.md?tabs=linux) に対するセキュリティ トークン要求をインターセプトし、それをそれ自体にリダイレクトし、トークンを要求している ID にポッドがアクセスできるか検証し、アプリケーションに代わって Azure Active Directory テナントからトークンをフェッチします。
 > 2. マネージド モード: このモードでは、NMI のみがあります。 ID は、ユーザーが手動で割り当て、管理する必要があります。 詳細については、[マネージド モードのポッド ID](https://azure.github.io/aad-pod-identity/docs/configure/pod_identity_in_managed_mode/) に関するページをご覧ください。
 >
->[インストール ガイド](https://azure.github.io/aad-pod-identity/docs/getting-started/installation/)に示すように Helm chart または YAML マニフェストを介して Azure Active Directory のポッド ID をインストールする場合、`standard` または `managed` モードを選択できます。 そうではなく、この記事に示すように、[AKS クラスター アドオン](/azure/aks/use-azure-ad-pod-identity)を使用して Azure Active Directory のポッド ID をインストールする場合、セットアップでは `managed` モードが使用されます。
+>[インストール ガイド](https://azure.github.io/aad-pod-identity/docs/getting-started/installation/)に示すように Helm chart または YAML マニフェストを介して Azure Active Directory のポッド ID をインストールする場合、`standard` または `managed` モードを選択できます。 そうではなく、この記事に示すように、AKS クラスター アドオンを使用して Azure Active Directory のポッド ID をインストールする場合、セットアップでは `managed` モードが使用されます。
 
 [az aks get-credentials][az-aks-get-credentials] を使用して、AKS クラスターにサインインします。 また、このコマンドにより、ご使用の開発用コンピューターに `kubectl` クライアント証明書がダウンロードされて構成されます。
 

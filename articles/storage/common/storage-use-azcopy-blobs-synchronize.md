@@ -8,18 +8,18 @@ ms.date: 04/02/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 4dc2dd06128c373439229b5e649c37caa25b727e
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: 84c8c1e0eeb402185b7451ce953581d23b39c860
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109715018"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128624825"
 ---
 # <a name="synchronize-with-azure-blob-storage-by-using-azcopy"></a>AzCopy を使用して Azure Blob Storage と同期する
 
-AzCopy v10 コマンドライン ユーティリティを使用して、Azure Blob Storage とローカル ストレージを同期できます。 
+AzCopy v10 コマンドライン ユーティリティを使用して、Azure Blob Storage とローカル ストレージを同期できます。
 
-ローカル ファイル システムのコンテンツを BLOB コンテナーに同期できます。 また、コンテナーと仮想ディレクトリを相互に同期することもできます。 同期は一方向です。 言い換えると、2 つのエンドポイントのいずれかを同期元として、いずれかを同期先として選択します。 同期にもサーバー間 API が使用されます。 このセクションに示されている例は、階層型名前空間があるアカウントでも機能します。 
+ローカル ファイル システムのコンテンツを BLOB コンテナーに同期できます。 また、コンテナーと仮想ディレクトリを相互に同期することもできます。 同期は一方向です。 言い換えると、2 つのエンドポイントのいずれかを同期元として、いずれかを同期先として選択します。 同期にもサーバー間 API が使用されます。 このセクションに示されている例は、階層型名前空間があるアカウントでも機能します。
 
 > [!NOTE]
 > 現行版の AzCopy では、他のコピー元とコピー先の間では同期されません (例:ファイル ストレージまたはアマゾン ウェブ サービス (AWS) S3 バケット)。
@@ -30,7 +30,7 @@ AzCopy v10 コマンドライン ユーティリティを使用して、Azure Bl
 
 AzCopy のダウンロード方法と、ストレージ サービスに認証資格情報を与える方法については、[AzCopy の作業開始](storage-use-azcopy-v10.md)に関するページをご覧ください。
 
-> [!NOTE] 
+> [!NOTE]
 > この記事の例では、Azure Active Directory (Azure AD) を使用して認証資格情報を指定していることを前提としています。
 >
 > SAS トークンを使用して BLOB データへのアクセスを承認する場合、各 AzCopy コマンドのリソース URL の先頭にそのトークンを追加できます。 (例: `'https://<storage-account-name>.blob.core.windows.net/<container-name><SAS-token>'`)。
@@ -41,7 +41,7 @@ AzCopy のダウンロード方法と、ストレージ サービスに認証資
 
 - `--delete-destination` フラグを `true` に設定すると、AzCopy では、プロンプトが表示されずにファイルが削除されます。 AzCopy でファイルが削除される前にプロンプトを表示する場合、`--delete-destination` フラグを `prompt` に設定します。
 
-- `--delete-destination` フラグを `prompt` または `false` に設定する場合は、[sync](storage-ref-azcopy-sync.md) コマンドではなく [copy](storage-ref-azcopy-copy.md) コマンドを使用し、`--overwrite` パラメーターを `ifSourceNewer` に設定することを検討してください。 [copy](storage-ref-azcopy-copy.md) コマンドでは、消費されるメモリ量が少なくなり、発生する課金コストが減ります。これは、コピー操作では、ファイルを移動する前にコピー元またはコピー先のインデックスを作成する必要がないからです。 
+- `--delete-destination` フラグを `prompt` または `false` に設定する場合は、[sync](storage-ref-azcopy-sync.md) コマンドではなく [copy](storage-ref-azcopy-copy.md) コマンドを使用し、`--overwrite` パラメーターを `ifSourceNewer` に設定することを検討してください。 [copy](storage-ref-azcopy-copy.md) コマンドでは、消費されるメモリ量が少なくなり、発生する課金コストが減ります。これは、コピー操作では、ファイルを移動する前にコピー元またはコピー先のインデックスを作成する必要がないからです。
 
 - 誤削除を防ぐために、`--delete-destination=prompt|true` フラグを使用する前に[論理的な削除](../blobs/soft-delete-blob-overview.md)機能を有効にしてください。
 
@@ -49,7 +49,7 @@ AzCopy のダウンロード方法と、ストレージ サービスに認証資
 
 ## <a name="update-a-container-with-changes-to-a-local-file-system"></a>ローカル ファイル システムへの変更を使用してコンテナーを更新する
 
-この場合、コンテナーが宛先であり、ローカル ファイル システムがソースです。 
+この場合、コンテナーが宛先であり、ローカル ファイル システムがソースです。
 
 > [!TIP]
 > この例では、パス引数を単一引用符 ('') で囲んでいます。 Windows コマンド シェル (cmd.exe) を除き、すべてのコマンド シェルで単一引用符を使用します。 Windows コマンド シェル (cmd.exe) を使用している場合は、単一引用符 ('') ではなく、二重引用符 ("") でパス引数を囲みます。
@@ -83,7 +83,7 @@ azcopy sync 'https://mystorageaccount.blob.core.windows.net/mycontainer' 'C:\myD
 
 ## <a name="update-a-container-with-changes-in-another-container"></a>別のコンテナーへの変更を使用してコンテナーを更新する
 
-このコマンドに表示される最初のコンテナーがソースです。 2 つ目が宛先です。 必ず、各ソース URL の末尾に SAS トークンを追加してください。  
+このコマンドに表示される最初のコンテナーがソースです。 2 つ目が宛先です。 必ず、各ソース URL の末尾に SAS トークンを追加してください。
 
 Azure Active Directory (Azure AD) を使用して認証資格情報を提供する場合、SAS トークンを省略できるのは宛先 URL だけです。 宛先アカウントに適切なロールが設定されていることを確認します。 「[オプション 1: Azure Active Directory を使用する](storage-use-azcopy-v10.md?toc=/azure/storage/blobs/toc.json#option-1-use-azure-active-directory)」を参照してください。
 
@@ -102,7 +102,7 @@ azcopy sync 'https://mysourceaccount.blob.core.windows.net/mycontainer?sv=2018-0
 
 ## <a name="update-a-directory-with-changes-to-a-directory-in-another-container"></a>別のコンテナー内のディレクトリへの変更を使用してディレクトリを更新する
 
-このコマンドに表示される最初のディレクトリがソースです。 2 つ目が宛先です。 必ず、各ソース URL の末尾に SAS トークンを追加してください。  
+このコマンドに表示される最初のディレクトリがソースです。 2 つ目が宛先です。 必ず、各ソース URL の末尾に SAS トークンを追加してください。
 
 Azure Active Directory (Azure AD) を使用して認証資格情報を提供する場合、SAS トークンを省略できるのは宛先 URL だけです。 宛先アカウントに適切なロールが設定されていることを確認します。 「[オプション 1: Azure Active Directory を使用する](storage-use-azcopy-v10.md?toc=/azure/storage/blobs/toc.json#option-1-use-azure-active-directory)」を参照してください。
 
@@ -132,7 +132,7 @@ azcopy sync 'https://mysourceaccount.blob.core.windows.net/<container-name>/myDi
 フラグの完全な一覧については、「[オプション](storage-ref-azcopy-sync.md#options)」を参照してください。
 
 > [!NOTE]
-> 既定では、`--recursive` フラグは `true` に設定されています。 `--exclude-pattern` と `--include-pattern` の各フラグはファイル名のみに適用され、ファイル パスの他の部分には適用されません。 
+> 既定では、`--recursive` フラグは `true` に設定されています。 `--exclude-pattern` と `--include-pattern` の各フラグはファイル名のみに適用され、ファイル パスの他の部分には適用されません。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -151,4 +151,3 @@ azcopy sync 'https://mysourceaccount.blob.core.windows.net/<container-name>/myDi
 - [AzCopy の構成設定](storage-ref-azcopy-configuration-settings.md)
 - [AzCopy のパフォーマンスを最適化する](storage-use-azcopy-optimize.md)
 - [ログ ファイルを使用した Azure Storage での AzCopy V10 の問題のトラブルシューティング](storage-use-azcopy-configure.md)
-

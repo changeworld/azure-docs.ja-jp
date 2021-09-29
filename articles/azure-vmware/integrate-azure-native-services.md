@@ -3,12 +3,12 @@ title: Azure ネイティブ サービスを使用して VM を監視および�
 description: Microsoft Azure ネイティブ ツールを統合してデプロイし、Azure VMware Solution ワークロードを監視および管理する方法について説明します。
 ms.topic: how-to
 ms.date: 08/15/2021
-ms.openlocfilehash: 36bdb029f61a707f83ae42e66f399f376db23025
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 19453eeb652a0303e0447a80e37b63613aa92255
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122323877"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124799322"
 ---
 # <a name="monitor-and-protect-vms-with-azure-native-services"></a>Azure ネイティブ サービスを使用して VM を監視および保護する
 
@@ -86,7 +86,7 @@ Azure Automation の [Azure Update Management](../automation/update-management/o
    >[!TIP]
    >[Azure Resource Manager (ARM) テンプレートを使用して、Automation アカウントを作成](../automation/quickstart-create-automation-account-template.md)することができます。 ARM テンプレートを使用すると、他のデプロイ方法より手順が減ります。
 
-1. [Azure portal で Log Analytics ワークスペースを作成する](../azure-monitor/logs/quick-create-workspace.md)。 必要に応じて、[CLI](../azure-monitor/logs/quick-create-workspace-cli.md)、[PowerShell](../azure-monitor/logs/powershell-workspace-configuration.md)、または [Azure Resource Manager テンプレート](../azure-monitor/logs/resource-manager-workspace.md)を使用してワークスペースを作成することもできます。
+1. [Azure portal で Log Analytics ワークスペースを作成する](../azure-monitor/logs/quick-create-workspace.md)。 必要に応じて、[CLI](../azure-monitor/logs/resource-manager-workspace.md)、[PowerShell](../azure-monitor/logs/powershell-workspace-configuration.md)、または [Azure Resource Manager テンプレート](../azure-monitor/logs/resource-manager-workspace.md)を使用してワークスペースを作成することもできます。
 
 1. [Automation アカウントから Update Management を有効にします](../automation/update-management/enable-from-automation-account.md)。 このプロセスでは、Log Analytics ワークスペースを Automation アカウントにリンクします。 
  

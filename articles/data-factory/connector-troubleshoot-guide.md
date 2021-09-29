@@ -6,15 +6,15 @@ author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: troubleshooting
-ms.date: 08/24/2021
+ms.date: 09/09/2021
 ms.author: jianleishen
 ms.custom: has-adal-ref, synapse
-ms.openlocfilehash: 27e9f92f7ea2be3ebdafbf973c4d1def179d5636
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: 0808b52c777389cfdf641094fd152ee9f11b482f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122864148"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124782724"
 ---
 # <a name="troubleshoot-azure-data-factory-and-azure-synapse-analytics-connectors"></a>Azure Data Factory と Azure Synapse Analytics のコネクタのトラブルシューティング
 
@@ -154,7 +154,7 @@ ms.locfileid: "122864148"
 
 - **解決方法**:回避策として、ステージング コピーを使用して、Azure Data Lake Storage Gen1 のトランスポート層セキュリティ (TLS) 検証をスキップします。 この問題を再現し、ネットワーク モニター (netmon) トレースを収集してから、ネットワーク チームに連絡し、ローカル ネットワーク構成を確認する必要があります。
 
-    ![問題をトラブルシューティングするための Azure Data Lake Storage Gen1 接続の図。](./media/connector-troubleshoot-guide/adls-troubleshoot.png)
+    :::image type="content" source="./media/connector-troubleshoot-guide/adls-troubleshoot.png" alt-text="問題をトラブルシューティングするための Azure Data Lake Storage Gen1 接続の図。":::
 
 
 ### <a name="error-message-the-remote-server-returned-an-error-403-forbidden"></a>エラー メッセージ:リモート サーバーがエラー(403) 禁止されています
@@ -1208,7 +1208,7 @@ ms.locfileid: "122864148"
 
     2. *diawp.exe.config* ファイルを開き、`<runtime>` セクションの最後で、次のように `<enforceFIPSPolicy enabled="false"/>` を追加します。
 
-        ![FIPS が無効になっていることを示す、diawp.exe.config ファイルのセクションのスクリーンショット。](./media/connector-troubleshoot-guide/disable-fips-policy.png)
+        :::image type="content" source="./media/connector-troubleshoot-guide/disable-fips-policy.png" alt-text="FIPS が無効になっていることを示す、diawp.exe.config ファイルのセクションのスクリーンショット。":::
 
     3. ファイルを保存し、セルフホステッド IR コンピューターを再起動します。
 

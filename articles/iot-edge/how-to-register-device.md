@@ -8,12 +8,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 10/06/2020
 ms.author: kgremban
-ms.openlocfilehash: c617b4c3558be2409c8bf2272e805a8b8cb9d349
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 75061400eb68e3c17a24839e9e155e3a284607c6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121725319"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128589798"
 ---
 # <a name="register-an-iot-edge-device-in-iot-hub"></a>IoT Edge デバイスを IoT Hubに登録する
 
@@ -37,9 +37,9 @@ IoT ハブに接続するすべてのデバイスには、cloud-to-device また
 
 設定するデバイスが多数あり、それぞれを手動でプロビジョニングしたくない場合は、次の記事のいずれかを使用して、IoT Edge が IoT Hub Device Provisioning Service でどのように動作するかを確認してください。
 
-* [X.509 証明書を使用して IoT Edge デバイスを作成およびプロビジョニングする](how-to-auto-provision-x509-certs.md)
+* [X.509 証明書を使用して IoT Edge デバイスを作成およびプロビジョニングする](how-to-provision-devices-at-scale-linux-x509.md)
 * [TPM を使用して IoT Edge デバイスを作成およびプロビジョニングする](how-to-auto-provision-simulated-device-linux.md)
-* [対称キーを使用して IoT Edge デバイスを作成およびプロビジョニングする](how-to-auto-provision-symmetric-keys.md)
+* [対称キーを使用して IoT Edge デバイスを作成およびプロビジョニングする](how-to-provision-devices-at-scale-linux-symmetric.md)
 
 ## <a name="prerequisites"></a>前提条件
 

@@ -3,12 +3,12 @@ title: Azure Site Recovery を使用した VMware のディザスター リカ�
 description: Azure Site Recovery を使用してオンプレミスの VMware VM を Azure にディザスター リカバリーする場合のよくある質問に対する回答を確認します。
 ms.date: 11/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 0e39cd3b9f06620f2004a2afbc869fe22de04468
-ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+ms.openlocfilehash: 8480598cc872a051b6b81f928e92740e39353598
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123272886"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128621244"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>VMware から Azure へのレプリケーションに関するよくある質問
 
@@ -25,7 +25,7 @@ Azure Site Recovery レプリケーション アプライアンスを使用し�
 1. Azure portal でコンテナーを開きます。 
 2. **[作業の開始]** セクションで、 **[Site Recovery]** を選択します。 
 3. このページの上部にあるバナーをクリックします。 
-
+    
     [![VMware スタックの変更手順 1](./media/vmware-azure-common-questions/change-stack-step-1.png)](./media/vmware-azure-common-questions/change-stack-step-1.png#lightbox)
 
 4. エクスペリエンス セレクション ブレードが表示されます。 構成サーバーを使用する場合はクラシック エクスペリエンスを選択して、 **[OK]** をクリックします。 そうでない場合は、ペインを閉じます。 

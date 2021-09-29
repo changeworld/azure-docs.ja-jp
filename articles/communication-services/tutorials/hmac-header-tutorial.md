@@ -9,12 +9,13 @@ ms.author: apistrak
 ms.date: 06/30/2021
 ms.topic: tutorial
 ms.service: azure-communication-services
-ms.openlocfilehash: a3317e483320c55eca6b2ee7edcb4b6671fec7f9
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.subservice: identity
+ms.openlocfilehash: 5210793b7c42d0c91ef26fb629cd3c4d57d39e2d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123256282"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128671547"
 ---
 # <a name="sign-an-http-request"></a>HTTP 要求に署名する
 

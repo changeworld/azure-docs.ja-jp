@@ -5,12 +5,12 @@ author: tfitzmac
 ms.date: 05/04/2021
 ms.topic: quickstart
 ms.author: tomfitz
-ms.openlocfilehash: 0775d58bebaf487d5a536818aec788fabdace909
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: f44c485d0a7eb7f546c1b227ca121d906225b43e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108754183"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128631212"
 ---
 # <a name="quickstart-create-and-deploy-template-spec"></a>クイックスタート: テンプレート スペックの作成とデプロイ
 
@@ -172,7 +172,7 @@ ms.locfileid: "108754183"
                   "resources": [
                     {
                       "type": "Microsoft.Storage/storageAccounts",
-                      "apiVersion": "2019-04-01",
+                      "apiVersion": "2021-04-01",
                       "name": "[[variables('storageAccountName')]",
                       "location": "[[parameters('location')]",
                       "sku": {
@@ -335,7 +335,7 @@ ms.locfileid: "108754183"
       "resources": [
         {
           "type": "Microsoft.Resources/deployments",
-          "apiVersion": "2020-10-01",
+          "apiVersion": "2021-04-01",
           "name": "demo",
           "properties": {
             "templateLink": {
@@ -544,7 +544,7 @@ ms.locfileid: "108754183"
                   "resources": [
                     {
                       "type": "Microsoft.Storage/storageAccounts",
-                      "apiVersion": "2019-04-01",
+                      "apiVersion": "2021-04-01",
                       "name": "[[variables('storageAccountName')]",
                       "location": "[[parameters('location')]",
                       "sku": {
@@ -597,7 +597,7 @@ ms.locfileid: "108754183"
       "resources": [
         {
           "type": "Microsoft.Resources/deployments",
-          "apiVersion": "2020-10-01",
+          "apiVersion": "2021-04-01",
           "name": "demo",
           "properties": {
             "templateLink": {

@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 08/13/2021
 ms.topic: conceptual
 ms.custom: devx-track-python
-ms.openlocfilehash: 2d5cf0a3d577949edd9e8174ef74e5fede96e67e
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 916cd5fa9251a1f6c14b4518db7b77398c7ab5e0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122965691"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124799987"
 ---
 # <a name="manage-python-2-packages-in-azure-automation"></a>Azure Automation で Python 2 パッケージを管理する
 
@@ -93,4 +93,4 @@ Python 2 Runbook をオフラインで開発してテストするには、GitHub
 
 ## <a name="next-steps"></a>次のステップ
 
-Python Runbook を準備するには、「[Python Runbook を作成する](learn/automation-tutorial-runbook-textual-python2.md)」を参照してください。
+Python Runbook を準備するには、「[Python Runbook を作成する](./learn/automation-tutorial-runbook-textual-python-3.md)」を参照してください。

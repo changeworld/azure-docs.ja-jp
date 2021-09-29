@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 06/09/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 252c4d27a9d7b53a0298c434c953802c11dd6e0f
-ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
+ms.openlocfilehash: 217663ae8dc1f2a0cba7bcd001ee12a20f1b6826
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2021
-ms.locfileid: "113303024"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128618041"
 ---
 # <a name="azure-ad-registered-devices"></a>Azure AD 登録済みデバイス
 

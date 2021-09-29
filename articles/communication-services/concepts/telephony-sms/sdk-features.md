@@ -9,12 +9,13 @@ ms.author: prakulka
 ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 5e30f7741352945fb634b2f8066a47f2c47c879b
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.subservice: sms
+ms.openlocfilehash: c3564a7c66002241a6b678d7314c4abe92cd3d24
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123258130"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128609633"
 ---
 # <a name="sms-sdk-overview"></a>SMS SDK の概要
 
