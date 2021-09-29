@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 04/19/2021
 ms.topic: how-to
-ms.openlocfilehash: 4cb94dab1576e6fdb422fc640ae6edfdcdaad119
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 81f05686954e35d68d93c598978e9676652fe71f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114446223"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128593479"
 ---
 # <a name="log--view-metrics-and-log-files"></a>メトリックおよびログ ファイルの記録および表示
 
@@ -79,9 +79,9 @@ mlflow_run = mlflow.start_run()
 
 |ログに記録される値|コード例| メモ|
 |----|----|----|
-|数値 (int または float) をログに記録する | `mlfow.log_metric('my_metric', 1)`| |
-|ブール値をログに記録する | `mlfow.log_metric('my_metric', 0)`| 0 = True、1 = False|
-|文字列をログに記録する | `mlfow.log_text('foo', 'my_string')`| 成果物としてログに記録されます|
+|数値 (int または float) をログに記録する | `mlflow.log_metric('my_metric', 1)`| |
+|ブール値をログに記録する | `mlflow.log_metric('my_metric', 0)`| 0 = True、1 = False|
+|文字列をログに記録する | `mlflow.log_text('foo', 'my_string')`| 成果物としてログに記録されます|
 |numpy メトリックまたは PIL 画像オブジェクトをログに記録する|`mlflow.log_image(img, 'figure.png')`||
 |matlotlib プロットまたは画像ファイルをログに記録する|` mlflow.log_figure(fig, "figure.png")`||
 

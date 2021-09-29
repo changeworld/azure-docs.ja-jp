@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/24/2021
+ms.date: 09/09/2021
 ms.author: jianleishen
-ms.openlocfilehash: 046b25164df92c609196a701d35f989aa397253b
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: af22c23184da4163deb07b2b9d5fa470bd35042d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122825093"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124760500"
 ---
 # <a name="schema-and-data-type-mapping-in-copy-activity"></a>コピー アクティビティでのスキーマとデータ型のマッピング
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -68,7 +68,7 @@ ms.locfileid: "122825093"
 
 2. 必要なフィールドをマップし、残りを除外または削除します。
 
-![表形式を表形式にマップする](media/copy-activity-schema-and-type-mapping/map-tabular-to-tabular.png)
+:::image type="content" source="media/copy-activity-schema-and-type-mapping/map-tabular-to-tabular.png" alt-text="表形式を表形式にマップする":::
 
 コピー アクティビティ ペイロードでは、同じマッピングを次のように構成できます (`translator` を参照してください)。
 
@@ -187,11 +187,11 @@ ms.locfileid: "122825093"
 > [!NOTE]
 > コレクション参照としてマークされた配列が空で、チェック ボックスがオンになっているレコードの場合、レコード全体がスキップされます。
 
-![UI を使用して階層構造から表形式にマップする](media/copy-activity-schema-and-type-mapping/map-hierarchical-to-tabular-ui.png)
+:::image type="content" source="media/copy-activity-schema-and-type-mapping/map-hierarchical-to-tabular-ui.png" alt-text="UI を使用して階層構造から表形式にマップする":::
 
 また、**詳細エディター** に切り替えることもでき、ここで、フィールドの JSON パスを直接表示および編集できます。 このビューに新しいマッピングを追加することを選択する場合は、JSON パスを指定します。
 
-![詳細エディターを使用して階層構造から表形式にマップする](media/copy-activity-schema-and-type-mapping/map-hierarchical-to-tabular-advanced-editor.png)
+:::image type="content" source="media/copy-activity-schema-and-type-mapping/map-hierarchical-to-tabular-advanced-editor.png" alt-text="詳細エディターを使用して階層構造から表形式にマップする":::
 
 コピー アクティビティ ペイロードでは、同じマッピングを次のように構成できます (`translator` を参照してください)。
 

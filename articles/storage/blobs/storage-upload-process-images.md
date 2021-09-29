@@ -9,12 +9,12 @@ ms.date: 06/24/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.custom: devx-track-js, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 9aa776b52d3303d7721d900476f606c3ab38d7a5
-ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
+ms.openlocfilehash: 3ba616f2edead3bdd3b3353405e3b9ce6b40ccaa
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2021
-ms.locfileid: "112378711"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128599147"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>チュートリアル:Azure Storage を使用してクラウドに画像データをアップロードする
 
@@ -34,12 +34,12 @@ ms.locfileid: "112378711"
 
 > [!div class="checklist"]
 
-> * ストレージ アカウントの作成
-> * コンテナーを作成し、アクセス許可を設定する
-> * アクセス キーを取得する
-> * Web アプリを Azure にデプロイする
-> * アプリケーションの設定の構成
-> * Web アプリと対話する
+> - ストレージ アカウントの作成
+> - コンテナーを作成し、アクセス許可を設定する
+> - アクセス キーを取得する
+> - Web アプリを Azure にデプロイする
+> - アプリケーションの設定の構成
+> - Web アプリと対話する
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -47,7 +47,7 @@ ms.locfileid: "112378711"
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用する場合は、Azure CLI バージョン 2.0.4 以降を実行してください。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。 
+CLI をローカルにインストールして使用する場合は、Azure CLI バージョン 2.0.4 以降を実行してください。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
@@ -55,7 +55,7 @@ CLI をローカルにインストールして使用する場合は、Azure CLI 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
+[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
 
 ```powershell
 New-AzResourceGroup -Name myResourceGroup -Location southeastasia
@@ -63,7 +63,7 @@ New-AzResourceGroup -Name myResourceGroup -Location southeastasia
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[az group create](/cli/azure/group) コマンドを使用して、リソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
+[az group create](/cli/azure/group) コマンドを使用して、リソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
 
 ```azurecli
 az group create --name myResourceGroup --location southeastasia
@@ -140,7 +140,7 @@ az storage container create --name thumbnails \
 
 ---
 
-BLOB ストレージ アカウント名とキーをメモしておきます。 サンプル アプリでは、これらの設定を使用して、画像をアップロードするストレージ アカウントに接続します。 
+BLOB ストレージ アカウント名とキーをメモしておきます。 サンプル アプリでは、これらの設定を使用して、画像をアップロードするストレージ アカウントに接続します。
 
 ## <a name="create-an-app-service-plan"></a>App Service プランを作成する
 
@@ -170,11 +170,11 @@ az appservice plan create --name myAppServicePlan --resource-group myResourceGro
 
 Web アプリでは、GitHub サンプル リポジトリからデプロイされるサンプル アプリ コード用のホスト領域を提供します。
 
-次のコマンドで、`<web_app>` を一意の名前に置き換えます。 有効な文字は、`a-z`、`0-9`、および `-` です。 `<web_app>` が一意でない場合は、"*指定された名前 `<web_app>` の Web サイトは既に存在します*" というエラー メッセージが表示されます。 Web アプリの既定の URL は、`https://<web_app>.azurewebsites.net` です。  
+次のコマンドで、`<web_app>` を一意の名前に置き換えます。 有効な文字は、`a-z`、`0-9`、および `-` です。 `<web_app>` が一意でない場合は、"*指定された名前 `<web_app>` の Web サイトは既に存在します*" というエラー メッセージが表示されます。 Web アプリの既定の URL は、`https://<web_app>.azurewebsites.net` です。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-[New-AzWebApp](/powershell/module/az.websites/new-azwebapp) コマンドで `myAppServicePlan` App Service プラン内に [Web アプリ](../../app-service/overview.md)を作成します。  
+[New-AzWebApp](/powershell/module/az.websites/new-azwebapp) コマンドで `myAppServicePlan` App Service プラン内に [Web アプリ](../../app-service/overview.md)を作成します。
 
 ```powershell
 $webapp="<web_app>"
@@ -184,7 +184,7 @@ New-AzWebApp -ResourceGroupName myResourceGroup -Name $webapp -AppServicePlan my
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[az webapp create](/cli/azure/webapp) コマンドを使って、`myAppServicePlan`App Service プランに [Web アプリ](../../app-service/overview.md)を作成します。  
+[az webapp create](/cli/azure/webapp) コマンドを使って、`myAppServicePlan`App Service プランに [Web アプリ](../../app-service/overview.md)を作成します。
 
 ```azurecli
 webapp="<web_app>"

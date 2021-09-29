@@ -7,12 +7,12 @@ author: vikancha-MSFT
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: vikancha
-ms.openlocfilehash: 55799d15ef0ebe8af0f4a79b583143394540f48b
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 62108e46b748552fc22a8dc1e86ea78b3cc5e4e5
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122697968"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124774160"
 ---
 # <a name="ncast4_v3-series"></a>NCasT4_v3 シリーズ 
 
@@ -42,7 +42,7 @@ Nvidia NVLink Interconnect:サポートされていません<br>
 | Standard_NC64as_T4_v3 |64 |440 |2880 | 4 | 64 | 32 | 8 / 32000  |
 
 
-[!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
+
 
 ## <a name="supported-operating-systems-and-drivers"></a>サポートされているオペレーティング システムとドライバー
 
@@ -52,7 +52,9 @@ Nvidia GPU ドライバーを手動でインストールする場合、サポー
 
 Azure Nvidia GPU ドライバー拡張機能は、CUDA ドライバーを NCasT4_v3 シリーズ VM にデプロイします。 グラフィックスと視覚化のワークロードについては、Azure でサポートされている GRID ドライバーを手動でインストールしてください。
 
-## <a name="other-sizes"></a>その他のサイズ
+[!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
+
+## <a name="other-sizes-and-information"></a>その他のサイズと情報
 
 - [汎用](sizes-general.md)
 - [メモリの最適化](sizes-memory.md)
@@ -60,6 +62,10 @@ Azure Nvidia GPU ドライバー拡張機能は、CUDA ドライバーを NCasT4
 - [GPU の最適化](sizes-gpu.md)
 - [ハイ パフォーマンス コンピューティング](sizes-hpc.md)
 - [旧世代](sizes-previous-gen.md)
+
+料金計算ツール:[料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
+
+ディスクの種類の詳細については、「[Azure で利用できるディスクの種類](disks-types.md)」を参照してください
 
 ## <a name="next-steps"></a>次のステップ
 

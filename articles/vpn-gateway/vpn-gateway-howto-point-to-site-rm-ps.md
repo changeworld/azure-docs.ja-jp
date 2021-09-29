@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 06/03/2021
 ms.author: cherylmc
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0d6281f0767938b8ffd00f1790a629adcb8252d6
-ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
+ms.openlocfilehash: 62765ceb53d7a66d591b0fa62397b50c7fc04b9a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114722406"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124774046"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-azure-certificate-authentication-powershell"></a>Azure 証明書認証を使用した VNet へのポイント対サイト VPN 接続の構成:PowerShell
 
@@ -386,6 +386,6 @@ Azure には、最大 20 個のルート証明書 .cer ファイルを追加で�
 
 ## <a name="next-steps"></a>次のステップ
 
-接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 詳細については、[Virtual Machines](../index.yml) に関するページを参照してください。 ネットワークと仮想マシンの詳細については、「[Azure と Linux の VM ネットワークの概要](../virtual-machines/network-overview.md)」を参照してください。
+接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 詳細については、[Virtual Machines](../index.yml) に関するページを参照してください。 ネットワークと仮想マシンの詳細については、「[Azure と Linux の VM ネットワークの概要](../virtual-network/network-overview.md)」を参照してください。
 
 P2S のトラブルシューティング情報については、[Azure ポイント対サイト接続の問題のトラブルシューティング](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)に関するページを参照してください。

@@ -10,12 +10,12 @@ ms.author: rolyon
 ms.reviewer: ''
 ms.subservice: common
 ms.date: 05/06/2021
-ms.openlocfilehash: 062be43bda26169d27740777bdb60d335c9923e6
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: a04c205370ee07900b649ed0a3f6f4bf3a892685
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109489888"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128577826"
 ---
 # <a name="example-azure-role-assignment-conditions-preview"></a>Azure ロール割り当て条件の例 (プレビュー)
 
@@ -35,7 +35,7 @@ ms.locfileid: "109489888"
 この条件により、ユーザーが Project の BLOB のインデックス タグ キーと Cascade のタグ値を使用して、BLOB を読み取ることが許可されます。 このキーと値のタグを使用せずに BLOB にアクセスしようとする試みは許可されません。
 
 > [!TIP]
-> また、BLOB では任意のユーザー定義のキー値メタデータを格納する機能もサポートされています。 メタデータは BLOB インデックス タグに似ていますが、BLOB インデックス タグは条件と共に使用する必要があります。 詳しくは、「[BLOB インデックス タグを使用して Azure BLOB データを管理および検索する (プレビュー)](../blobs/storage-manage-find-blobs.md)」をご覧ください。
+> また、BLOB では任意のユーザー定義のキー値メタデータを格納する機能もサポートされています。 メタデータと BLOB インデックス タグはよく似ていますが、条件では BLOB インデックス タグを使用する必要があります。 詳しくは、「[BLOB インデックス タグを使用して Azure BLOB データを管理および検索する (プレビュー)](../blobs/storage-manage-find-blobs.md)」をご覧ください。
 
 ![タグを使用した BLOB への読み取りアクセスを示す例 1 の条件の図。](./media/storage-auth-abac-examples/example-1.png)
 
@@ -92,11 +92,11 @@ Get-AzStorageBlob -Container <containerName> -Blob <blobName> -Context $bearerCt
 この条件では、新しい BLOB に Project の BLOB インデックス タグ キーと Cascade のタグ値を含める必要があります。
 
 > [!TIP]
-> また、BLOB では任意のユーザー定義のキー値メタデータを格納する機能もサポートされています。 メタデータは BLOB インデックス タグに似ていますが、BLOB インデックス タグは条件と共に使用する必要があります。 詳しくは、「[BLOB インデックス タグを使用して Azure BLOB データを管理および検索する (プレビュー)](../blobs/storage-manage-find-blobs.md)」をご覧ください。
+> また、BLOB では任意のユーザー定義のキー値メタデータを格納する機能もサポートされています。 メタデータと BLOB インデックス タグはよく似ていますが、条件では BLOB インデックス タグを使用する必要があります。 詳しくは、「[BLOB インデックス タグを使用して Azure BLOB データを管理および検索する (プレビュー)](../blobs/storage-manage-find-blobs.md)」をご覧ください。
 
 新しい BLOB を作成することを許可するアクセス許可が 2 つあるため、両方をターゲットにする必要があります。 この条件は、次のいずれかのアクセス許可があるすべてのロール割り当てに追加する必要があります。
 
-- /blobs/write (作成または更新) 
+- /blobs/write (作成または更新)
 - /blobs/add/action (作成)
 
 ![新しい BLOB にタグを含める必要があることを示す例 2 の条件の図。](./media/storage-auth-abac-examples/example-2.png)
@@ -161,7 +161,7 @@ $content = Set-AzStorageBlobContent -File $localSrcFile -Container example2 -Blo
 この条件では、すべての既存の BLOB に、許可されているいずれかの BLOB インデックス タグ キー (Project または Program) が 1 つ以上タグ付けされている必要があります。 この条件は、既存の BLOB にガバナンスを追加する場合に役立ちます。
 
 > [!TIP]
-> また、BLOB では任意のユーザー定義のキー値メタデータを格納する機能もサポートされています。 メタデータは BLOB インデックス タグに似ていますが、BLOB インデックス タグは条件と共に使用する必要があります。 詳しくは、「[BLOB インデックス タグを使用して Azure BLOB データを管理および検索する (プレビュー)](../blobs/storage-manage-find-blobs.md)」をご覧ください。
+> また、BLOB では任意のユーザー定義のキー値メタデータを格納する機能もサポートされています。 メタデータと BLOB インデックス タグはよく似ていますが、条件では BLOB インデックス タグを使用する必要があります。 詳しくは、「[BLOB インデックス タグを使用して Azure BLOB データを管理および検索する (プレビュー)](../blobs/storage-manage-find-blobs.md)」をご覧ください。
 
 既存の BLOB のタグを更新することを許可するアクセス許可が 2 つあるため、両方をターゲットにする必要があります。 この条件は、次のいずれかのアクセス許可があるすべてのロール割り当てに追加する必要があります。
 
@@ -229,7 +229,7 @@ $content = Set-AzStorageBlobContent -File $localSrcFile -Container example3 -Blo
 この条件では、既存の BLOB に Project の BLOB インデックス タグ キーと Cascade、Baker、または Skagit のタグ値が必要です。 この条件は、既存の BLOB にガバナンスを追加する場合に役立ちます。
 
 > [!TIP]
-> また、BLOB では任意のユーザー定義のキー値メタデータを格納する機能もサポートされています。 メタデータは BLOB インデックス タグに似ていますが、BLOB インデックス タグは条件と共に使用する必要があります。 詳しくは、「[BLOB インデックス タグを使用して Azure BLOB データを管理および検索する (プレビュー)](../blobs/storage-manage-find-blobs.md)」をご覧ください。
+> また、BLOB では任意のユーザー定義のキー値メタデータを格納する機能もサポートされています。 メタデータと BLOB インデックス タグはよく似ていますが、条件では BLOB インデックス タグを使用する必要があります。 詳しくは、「[BLOB インデックス タグを使用して Azure BLOB データを管理および検索する (プレビュー)](../blobs/storage-manage-find-blobs.md)」をご覧ください。
 
 既存の BLOB のタグを更新することを許可するアクセス許可が 2 つあるため、両方をターゲットにする必要があります。 この条件は、次のいずれかのアクセス許可があるすべてのロール割り当てに追加する必要があります。
 
@@ -526,7 +526,7 @@ $content = Set-AzStorageBlobContent -Container $grantedContainer -Blob "uploads/
 この条件により、ユーザーは、Program の BLOB インデックス タグ キー、Alpine のタグ値、および logs *の BLOB パスを使用して BLOB を読み取ることをユーザーに許可します。logs* の BLOB パスには、BLOB 名も含まれます。
 
 > [!TIP]
-> また、BLOB では任意のユーザー定義のキー値メタデータを格納する機能もサポートされています。 メタデータは BLOB インデックス タグに似ていますが、BLOB インデックス タグは条件と共に使用する必要があります。 詳しくは、「[BLOB インデックス タグを使用して Azure BLOB データを管理および検索する (プレビュー)](../blobs/storage-manage-find-blobs.md)」をご覧ください。
+> また、BLOB では任意のユーザー定義のキー値メタデータを格納する機能もサポートされています。 メタデータと BLOB インデックス タグはよく似ていますが、条件では BLOB インデックス タグを使用する必要があります。 詳しくは、「[BLOB インデックス タグを使用して Azure BLOB データを管理および検索する (プレビュー)](../blobs/storage-manage-find-blobs.md)」をご覧ください。
 
 この条件は、次のアクセス許可があるすべてのロール割り当てに追加する必要があります。
 

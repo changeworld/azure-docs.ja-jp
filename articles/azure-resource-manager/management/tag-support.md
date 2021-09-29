@@ -3,12 +3,12 @@ title: リソースでのタグのサポート
 description: タグをサポートしている Azure リソースの種類を示します。 すべての Azure サービスの詳細を提供します。
 ms.topic: conceptual
 ms.date: 07/20/2021
-ms.openlocfilehash: 4f15fea365fc242f3c7253a39b6a877dd672deb1
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 6581a4c9a61fb3de1e04119b13bc83a4b67ce92d
+ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114453291"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128707733"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure リソースでのタグのサポート
 この記事では、リソースの種類が[タグ](tag-resources.md)をサポートしているかどうかについて説明します。 「**タグのサポート**」というラベルが付けられた列は、リソースの種類にタグのプロパティがあるかどうかを示します。 「**コスト レポートのタグ**」というラベルが付けられた列は、リソースの種類がタグをコスト レポートに渡すかどうかを示します。 [Cost Management のコスト分析](../../cost-management-billing/costs/group-filter.md)および [Azure の請求書と毎日の使用データ](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)で、タグ別にコストを表示できます。
@@ -911,10 +911,10 @@ ms.locfileid: "114453291"
 > | diskEncryptionSets | はい | はい |
 > | disks | はい | はい |
 > | galleries | はい | はい |
-> | galleries / applications | いいえ | いいえ |
-> | galleries / applications / versions | いいえ | いいえ |
-> | galleries/images | いいえ | いいえ |
-> | galleries/images/versions | いいえ | いいえ |
+> | galleries / applications | はい | いいえ |
+> | galleries / applications / versions | はい | いいえ |
+> | galleries/images | はい | いいえ |
+> | galleries/images/versions | はい | いいえ |
 > | hostGroups | はい | はい |
 > | hostGroups / hosts | はい | はい |
 > | images | はい | はい |

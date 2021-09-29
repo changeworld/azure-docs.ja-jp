@@ -3,13 +3,13 @@ title: Azure PowerShell のサンプル スクリプト - リソース グルー
 description: この記事では、リソース グループの Event Grid イベントをサブスクライブする方法を示したサンプル Azure PowerShell スクリプトを紹介しています。
 ms.devlang: powershell
 ms.topic: sample
-ms.date: 07/08/2020
-ms.openlocfilehash: c8e84fe12cf239e7dbb0e6a15088efda793ddec9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/15/2021
+ms.openlocfilehash: 317d712a5bdaf3532e31408dc8980eab854173b6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87460747"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128612018"
 ---
 # <a name="subscribe-to-events-for-a-resource-group-with-powershell"></a>PowerShell を使用したリソース グループのイベントのサブスクライブ
 

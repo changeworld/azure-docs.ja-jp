@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/26/2021
 ms.author: jeedes
-ms.openlocfilehash: 4c22f6dc8aee4fc5ac27bf8768b26aa5bc3f76e9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fdcc22b4869f4c16b34885383897f81a832baa5f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121788018"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124790949"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fresh-relevance"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Fresh Relevance の統合
 
@@ -167,7 +167,7 @@ Fresh Relevance で Azure AD SSO を構成してテストするには、次の�
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した Fresh Relevance に自動的にサインインされます。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Fresh Relevance] タイルをクリックすると、SSO を設定した Fresh Relevance に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Fresh Relevance] タイルをクリックすると、SSO を設定した Fresh Relevance に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

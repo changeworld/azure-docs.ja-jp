@@ -6,18 +6,18 @@ documentationcenter: ''
 author: mathapli
 manager: rochakm
 ms.service: virtual-machines
-ms.subservice: azure-hybrid-benefit
+ms.subservice: billing
 ms.collection: linux
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: c794d3e18eaf25241cb9c55c14a32e4e5c9ff7b0
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 867d4b380266c5cbfbae68ca61d83ab3fd28aee3
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122692259"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129216595"
 ---
 # <a name="how-azure-hybrid-benefit-applies-for-linux-virtual-machines"></a>Azure ハイブリッド特典を Linux 仮想マシンに適用する方法
 
@@ -255,6 +255,6 @@ A:いいえ、できません。 VDC は、AHB を含め、Azure ではサポー
 | ----- | ---------- |
 | "The action could not be completed because our records show that you have not successfully enabled Red Hat Cloud Access on your Azure subscription…."\(お使いの Azure サブスクリプションで Red Hat Cloud Access が正常に有効化されていないと記録されているため、この操作を完了できませんでした……\) | RHEL VM で特典を使用するには、まず [Azure サブスクリプションを Red Hat Cloud Access に登録する](https://access.redhat.com/management/cloud)必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Azure CLI を使用して、VM を作成および更新し、Azure ハイブリッド特典のライセンスの種類 (RHEL_BYOS、SLES_BYOS) を追加する方法を確認する](/cli/azure/vm)
 * RHEL および SLES の仮想マシン スケール セットでの Azure ハイブリッド特典はすべてのユーザーが使用できます。 [この特典について、およびこれを使用する方法については、こちらを参照](../../virtual-machine-scale-sets/azure-hybrid-benefit-linux.md)してください。

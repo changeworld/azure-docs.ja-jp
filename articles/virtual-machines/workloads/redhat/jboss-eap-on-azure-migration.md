@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: redhat
 ms.assetid: 9b37b2c4-5927-4271-85c7-19adf33d838b
 ms.date: 06/08/2021
-ms.openlocfilehash: d733e42d6a415ec6ccbe5ee85f66dd11a87591d4
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 1671b0c4ba57faa6dc631c50cc273678c72b379b
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122770145"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124730140"
 ---
 # <a name="how-to-migrate-java-applications-to-jboss-eap-on-azure-vms-and-virtual-machine-scale-sets"></a>Java アプリケーションを Azure VM と仮想マシン スケール セット上の JBoss EAP に移行する方法
 
@@ -111,8 +111,6 @@ MTA では、Oracle WebLogic Server などのサードパーティ製エンタ�
 
 <sup>1</sup> 現在、この移行パスについてのルールは MTA から提供されていませんが、Red Hat のコンサルティングが、任意のソース プラットフォームから JBoss EAP 7 への移行を支援できます。
 
-:::image type="content" source="./media/jboss-cli-image.png" alt-text="画像では、CLI ウィンドウの出力が示されています。":::
-
 MTA の[システム要件](https://access.redhat.com/documentation/en/migration_toolkit_for_applications/5.0/html-single/introduction_to_the_migration_toolkit_for_applications/index#system_requirements_getting-started-guide)を確認することもできます。
 
 移行を計画する前に、[JBoss EAP 7.3 でサポートされている構成](https://access.redhat.com/articles/2026253#EAP_73)と [JBoss EAP 7.2 でサポートされている構成](https://access.redhat.com/articles/2026253#EAP_72)を確認してください。
@@ -161,7 +159,7 @@ WEB-INF/jboss-web.xml または WEB-INF/web.xml、あるいはその両方のフ
 * 接続プールの構成
 * Java Database Connectivity (JDBC) ドライバーの JAR ファイルはどこで見つかりますか
 
-詳細については、JBoss EAP のドキュメントの [JBoss EAP DataSources](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.3html/configuration_guide/datasource_management) に関する記事を参照してください。
+詳細については、JBoss EAP のドキュメントの [JBoss EAP DataSources](https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.4/html/configuration_guide/datasource_management) に関する記事を参照してください。
 
 ### <a name="determine-whether-and-how-the-file-system-is-used"></a>ファイル システムが使用されているかどうかとその使用方法を判断する
 

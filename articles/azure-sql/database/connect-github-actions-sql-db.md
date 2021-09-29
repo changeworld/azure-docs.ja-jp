@@ -10,12 +10,12 @@ ms.author: jukullam
 ms.date: 05/05/2021
 ms.custom: github-actions-azure
 ms.reviewer: mathoma
-ms.openlocfilehash: 5a46b5c5f8d8d4d39f93f6a91210e70fa41ea20d
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 54ef930cbc194f51fc9460da2aa3e4a553910849
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110694645"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128632521"
 ---
 # <a name="use-github-actions-to-connect-to-azure-sql-database"></a>GitHub Actions を使用して Azure SQL Database に接続する
 
@@ -48,8 +48,8 @@ GitHub Actions ワークフローは、お使いのリポジトリの `/.github/
 プレースホルダー `server-name` を、Azure でホストされている SQL サーバーの名前で置き換えます。 `subscription-id` と `resource-group` を、サブスクリプション ID と、SQL サーバーに接続されているリソース グループで置き換えます。  
 
 ```azurecli-interactive
-   az ad sp create-for-rbac --name {server-name} --role contributor \
-                            --scopes /subscriptions/{subscription-id}/resourceGroups/{resource-group} \
+   az ad sp create-for-rbac --name {server-name} --role contributor 
+                            --scopes /subscriptions/{subscription-id}/resourceGroups/{resource-group} 
                             --sdk-auth
 ```
 

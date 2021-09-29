@@ -1,24 +1,19 @@
 ---
 title: Azure のトラフィック分析スキーマ | Microsoft Docs
 description: Azure ネットワーク セキュリティ グループのフロー ログを分析するための、Traffic Analytics のスキーマについて説明します。
-services: network-watcher
-documentationcenter: na
 author: vinynigam
 manager: agummadi
-editor: ''
 ms.service: network-watcher
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: fb32ff13df7329e6e78095b8ee28639312cc62b5
-ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+ms.openlocfilehash: 2ec8f1df778a95b571f89f3213c2cc71163de955
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113216245"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128597229"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>Traffic Analytics のスキーマとデータ集計
 
@@ -143,7 +138,7 @@ Traffic Analytics は Log Analytics をベースに構築されています。�
 | LocalNetworkGateway1_s | \<SubscriptionID>/\<ResourceGroupName>/\<LocalNetworkGatewayName> | フロー内のソース ID アドレスに関連付けられたローカル ネットワーク ゲートウェイ |
 | LocalNetworkGateway2_s | \<SubscriptionID>/\<ResourceGroupName>/\<LocalNetworkGatewayName> | フロー内の宛先 ID アドレスに関連付けられたローカル ネットワーク ゲートウェイ |
 | ConnectionType_s | 可能な値は、VNetPeering、VpnGateway、および ExpressRoute です |    接続の種類 |
-| ConnectionName_s | \<SubscriptionID>/\<ResourceGroupName>/\<ConnectionName> | 接続名。 フローの種類が P2S の場合、これは <gateway name>_<VPN Client IP> として書式設定されます |
+| ConnectionName_s | \<SubscriptionID>/\<ResourceGroupName>/\<ConnectionName> | 接続名。 フローの種類が P2S の場合、これは \<gateway name\>_\<VPN Client IP\> として書式設定されます |
 | ConnectingVNets_s | 仮想ネットワーク名のスペース区切りリスト | ハブとスポークのトポロジの場合は、ハブの仮想ネットワークがここに入力されます |
 | Country_s | 2 文字の国コード (ISO 3166-1 alpha-2) | フローの種類が ExternalPublic の場合に入力されます。 PublicIPs_s フィールド内のすべての IP アドレスは、同じ国コードになります |
 | AzureRegion_s | Azure リージョンの場所 | フローの種類が AzurePublic の場合に入力されます。 PublicIPs_s フィールド内のすべての IP アドレスは、同じ Azure リージョンになります |

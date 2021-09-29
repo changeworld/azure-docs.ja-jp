@@ -14,12 +14,12 @@ ms.date: 06/25/2021
 ms.author: curtand
 ms.custom: pim,azuread-video-2020,contperf-fy21q3-portal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 697dd72ba72924a14501a1410255a817f50f6789
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d24f4806274889be1743e19b6b10c909b4a0057d
+ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121738711"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128707611"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management とは
 
@@ -149,7 +149,7 @@ Azure Active Directory (Azure AD) ゲスト ユーザーは Azure AD 内の企�
 
 B2B コラボレーションを使用する場合は、外部ユーザーをゲストとして貴社の組織に招待することができます。 ゲストは貴社の組織内のユーザーとして管理できますが、ゲストの認証は Azure AD 組織ではなく、ゲスト自身のホーム組織で行う必要があります。 つまり、ゲストは自分のホーム組織へのアクセス権を失った場合、貴社の組織へのアクセス権も失うことになります。 たとえば、ゲストが所属する組織を離れた場合、貴社が何もしなくても、ゲストは Azure AD 内で貴社と共有しているリソースへのアクセス権を自動的に失います。 B2B コラボレーションの詳細については、「[Azure Active Directory B2B のゲスト ユーザー アクセスとは](../external-identities/what-is-b2b.md)」を参照してください。
 
-![ゲスト ユーザーが自身のホーム ディレクトリでどのように認証されるかを示す図](./media/pim-resource-roles-external-users/b2b-external-user.png)
+![ゲスト ユーザーが自身のホーム ディレクトリでどのように認証されるかを示す図](./media/pim-configure/b2b-external-user.png)
 
 ## <a name="next-steps"></a>次のステップ
 

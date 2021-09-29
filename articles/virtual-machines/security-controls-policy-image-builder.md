@@ -1,7 +1,7 @@
 ---
 title: Azure Image Builder 用の Azure Policy 規制コンプライアンス コントロール
 description: Azure Image Builder に対して使用できる Azure Policy 規制コンプライアンス コントロールの一覧を示します。 これらの組み込みポリシー定義により、Azure リソースのコンプライアンスを管理するための一般的な方法が提供されます。
-ms.date: 09/03/2021
+ms.date: 09/17/2021
 ms.topic: sample
 author: kof-f
 ms.author: kofiforson
@@ -9,12 +9,12 @@ ms.reviewer: cynthn
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: ea4f5d0df0a9d071933c9d0cd31e5c4e984449bd
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: dd2ea5263e8355db9e1caaae575d60a7d5e94243
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123471889"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128640015"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-image-builder"></a>Azure Image Builder 用の Azure Policy 規制コンプライアンス コントロール
 

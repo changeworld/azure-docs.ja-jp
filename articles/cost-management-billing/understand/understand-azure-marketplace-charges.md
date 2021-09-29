@@ -7,15 +7,15 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 09/15/2021
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8da85ec5781ff9575cf380092fea9e41d6af8786
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: ee3e5b7b172bc6441e0148c3cbfa4bab02e6949b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686124"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128586468"
 ---
 # <a name="understand-your-azure-external-services-charges"></a>Azure 外部サービスの料金について
 外部サービスは、Azure Marketplace でサードパーティ ソフトウェア ベンダーによって公開されています。 たとえば、SendGrid は、Azure で購入できる外部サービスですが、Microsoft が公開したものではありません。 一部の Microsoft 製品も、Azure Marketplace で販売されています。

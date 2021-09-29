@@ -7,14 +7,14 @@ tags: billing,top-support-issue
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: db9c8d18d975661edf4a120a2e82b073c884d2a9
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 383f9a2f2b4cd3b1e3ed1a4330f0b91f16dca74c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369677"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128648736"
 ---
 # <a name="sign-up-for-a-microsoft-365-subscription-with-your-azure-account"></a>Azure アカウントで Microsoft 365 サブスクリプションにサインアップする
 
@@ -60,7 +60,7 @@ Azure サブスクライバーは、Azure アカウントを使用して、Micro
 5. **[ディレクトリ ロール]** をクリックします。
 
     ![Azure ポータルでのディレクトリ ロールの表示のスクリーン ショット](./media/azure-account-for-microsoft-365-subscription/billing-user-directory-role.png)
-6.  既存の Azure Active Directory にユーザーの Microsoft 365 サブスクリプションを作成するには、 **グローバル管理者** ロール、または **制限付き管理者** > **課金管理者** ロールが必要です。
+6.  既存の Azure Active Directory にユーザーの Microsoft 365 サブスクリプションを作成するには、**グローバル管理者** ロール、または **制限付き管理者** > **課金管理者** ロールが必要です。
 
     ![Azure ポータルでの課金管理者ディレクトリ ロールの表示のスクリーン ショット](./media/azure-account-for-microsoft-365-subscription/billing-directoryrole-limited.png)
 

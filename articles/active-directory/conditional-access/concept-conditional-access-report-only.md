@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 05/01/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ac2304ffd8f45d2147822f55f35c965da2db7a9
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: c558c61f2ea35045cc3e3e66408340664e00ecf9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113005224"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128637971"
 ---
 # <a name="what-is-conditional-access-report-only-mode"></a>条件付きアクセスのレポート専用モードとは
 

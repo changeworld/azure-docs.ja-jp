@@ -10,12 +10,12 @@ ms.date: 02/10/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: blobs
-ms.openlocfilehash: d32058fed80db335086c6ec508441817002feca9
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: dae63f442c2e2df068cc3f17bb5355abd4b7de77
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111900757"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128615626"
 ---
 # <a name="run-powershell-commands-with-azure-ad-credentials-to-access-blob-data"></a>Azure AD 資格情報を使用して PowerShell コマンドを実行して BLOB データにアクセスする
 
@@ -27,7 +27,7 @@ BLOB データへのアクセス許可を Azure ロールベースのアクセ�
 
 Azure Storage 拡張機能は、BLOB データの操作でサポートされています。 呼び出す操作は、PowerShell にサインインする Azure AD セキュリティ プリンシパルに与えられているアクセス許可に依存します。 Azure Storage のコンテナーへのアクセス許可は、Azure RBAC を介して割り当てられます。 たとえば、**BLOB データ閲覧者** ロールが割り当てられている場合、コンテナーからデータを読み取るスクリプト コマンドを実行できます。 **BLOB データ共同作成者** ロールが割り当てられている場合、コンテナーまたはそれらに含まれているデータの読み取り、書き込み、または削除を行うスクリプト コマンドを実行できます。
 
-コンテナーでの各 Azure Storage 操作に必要なアクセス許可の詳細については、「[OAuth トークンを使用したストレージ操作の呼び出し](/rest/api/storageservices/authorize-with-azure-active-directory#call-storage-operations-with-oauth-tokens)」を参照してください。  
+コンテナーでの各 Azure Storage 操作に必要なアクセス許可の詳細については、「[OAuth トークンを使用したストレージ操作の呼び出し](/rest/api/storageservices/authorize-with-azure-active-directory#call-storage-operations-with-oauth-tokens)」を参照してください。
 
 > [!IMPORTANT]
 > ストレージ アカウントが Azure Resource Manager の **ReadOnly** ロックでロックされている場合、そのストレージ アカウントに対して [キーの一覧表示](/rest/api/storagerp/storageaccounts/listkeys)操作は許可されません。 **キーの一覧表示** は POST 操作であり、アカウントに対して **ReadOnly** ロックが構成されている場合、すべての POST 操作が禁止されます。 このため、アカウントが **ReadOnly** ロックでロックされている場合、アカウント キーをまだ所有していないユーザーは、Azure AD 資格情報を使用して BLOB データにアクセスする必要があります。 PowerShell では、`-UseConnectedAccount` パラメーターを使用して、Azure AD 資格情報で **AzureStorageContext** オブジェクトを作成します。
@@ -48,7 +48,7 @@ Azure PowerShell を使用してサインインし Azure Storage に対する後
 
     PowerShell を使用した Azure へのサインインの詳細については、「[Azure PowerShell を使用してサインインする](/powershell/azure/authenticate-azureps)」を参照してください。
 
-1. [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) を呼び出して、Azure リソース グループを作成します。 
+1. [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) を呼び出して、Azure リソース グループを作成します。
 
     ```powershell
     $resourceGroup = "sample-resource-group-ps"

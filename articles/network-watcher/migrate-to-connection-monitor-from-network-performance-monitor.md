@@ -2,22 +2,18 @@
 title: Network Performance Monitor から接続モニターに移行する
 titleSuffix: Azure Network Watcher
 description: Network Performance Monitor から接続モニターに移行する方法について説明します。
-services: network-watcher
-documentationcenter: na
 author: vinynigam
 ms.service: network-watcher
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: 0ec16b16c8e71d764fb0fe21520eb407493ed8d7
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 84daa5527617584d420db02b012bec28760a146c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113105365"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128614564"
 ---
 # <a name="migrate-to-connection-monitor-from-network-performance-monitor"></a>Network Performance Monitor から接続モニターに移行する
 
@@ -58,7 +54,7 @@ Network Performance Monitor から接続モニターにテストを移行する�
 1. ドロップダウン リストで、お使いのサブスクリプションとワークスペースを選択してから、移行する NPM 機能を選択します。 
 1. **[インポート]** を選択してテストを移行します。
 * ワークスペースで NPM が有効になっていない場合は、"No valid NPM config found" (有効な NPM 構成が見つかりませんでした) というエラーが表示されます。 
-* 手順 2 で選択した機能にテストが存在しない場合、"選択したワークスペースには、<feature> 構成がありません" というエラーが表示されます。
+* 手順 2 で選択した機能にテストが存在しない場合、"選択したワークスペースには、\<feature\> 構成がありません" というエラーが表示されます。
 * 有効なテストがない場合は、"Workspace selected does not have valid tests" (選択したワークスペースには有効なテストがありません) というエラーが表示されます。
 * テストには、現在はアクティブでないが、過去にアクティブだった可能性のあるエージェントが含まれている場合があります。 "いくつかのテストに、アクティブではなくなったエージェントが含まれています。 非アクティブなエージェントの一覧 - {0}。 これらのエージェントは、過去に実行されていた可能性がありますが、シャットダウンされたか、今はもう実行されていません。 エージェントを有効にして、接続モニターに移行してください。 非アクティブなエージェントが含まれていないテストを移行するには、[続行] をクリックします。" というエラーが表示されます。
 

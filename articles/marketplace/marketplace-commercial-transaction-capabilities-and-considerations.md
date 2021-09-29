@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/06/2021
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: f75d3872d0125e210edcd33ca85978901468bfe8
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 77ec7a7dad4b215ae22bf3766172f1e92e932593
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122322385"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124736196"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>コマーシャル マーケットプレースの販売機能
 
@@ -75,7 +75,7 @@ Microsoft 経由で販売することを選択すると、Microsoft コマース
 仮想マシンおよび Azure アプリケーション オファーは、顧客にパッケージ化されたアプリまたはサービス (VM イメージ、ARM テンプレート内のその他の Azure サービスなど) を、顧客独自のクラウド インフラストラクチャでデプロイ、管理、実行させる場合に適しています。
 
 [![オファーの種類と価格設定プランを決定するためのフローチャートを示します。](media/commercial-marketplace-plans/offer-type-and-pricing-plan-flowchart.png)](media/commercial-marketplace-plans/offer-type-and-pricing-plan-flowchart.png#lightbox)
-&nbsp;&nbsp;&nbsp;<sup>(1)</sup> [Microsoft Office Hours](https://microsoftcloudpartner.eventbuilder.com/MarketplaceDeveloperOfficeHours) または[サポート](/azure/marketplace/support)に問い合わせます。<br>
+&nbsp;&nbsp;&nbsp;<sup>(1)</sup> [Microsoft Office Hours](https://microsoftcloudpartner.eventbuilder.com/MarketplaceDeveloperOfficeHours) または[サポート](./support.md)に問い合わせます。<br>
 &nbsp;&nbsp;&nbsp;<sup>(2)</sup> VM オファー イメージを Azure アプリ オファーに含めて、価格設定の柔軟性を高めることができます。<br>
 &nbsp;&nbsp;&nbsp;<sup>(3)</sup> Azure サービスは VM 用の顧客のテナントや Azure アプリ オファーに展開されるため、顧客がインフラストラクチャ コストを支払います。
 
@@ -207,4 +207,4 @@ Microsoft を介した取引を利用できるのは、次のコマーシャル 
 
 - オンライン ショップごとの公開パターン (ソリューションをオファーの種類や構成にマップする方法など) を確認します。
 - [オファーの種類別の公開ガイド](publisher-guide-by-offer-type.md)。
-- [コマーシャル マーケットプレース オファーのプランと価格](/azure/marketplace/plans-pricing)
+- [コマーシャル マーケットプレース オファーのプランと価格](./plans-pricing.md)

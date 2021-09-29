@@ -2,13 +2,13 @@
 title: Azure Active Directory を使用したアクセスを承認する
 description: この記事では、Azure Active Directory を使用して Event Hubs リソースへのアクセスを承認する方法について説明します。
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: d794b03fdbb5429983788c74cbb05a7c13bf2d76
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/20/2021
+ms.openlocfilehash: f00f0ff73762cede60a0f2298875fac057ff0563
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92910799"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128627370"
 ---
 # <a name="authorize-access-to-event-hubs-resources-using-azure-active-directory"></a>Azure Active Directory を使用して Event Hubs リソースへのアクセスを承認する
 Azure Event Hubs は、Azure Active Directory (Azure AD) を使用して Event Hubs リソースへの要求を承認することをサポートしています。 Azure AD では、Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、セキュリティ プリンシパル (ユーザーまたはアプリケーションのサービス プリンシパルである可能性があります) にアクセス許可を付与できます。 ロールとロールの割り当ての詳細については、[各種ロールの理解](../role-based-access-control/overview.md)に関するページを参照してください。

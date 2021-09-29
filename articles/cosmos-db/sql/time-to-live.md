@@ -6,14 +6,14 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 11/04/2020
+ms.date: 09/16/2021
 ms.reviewer: sngun
-ms.openlocfilehash: e859e244e41b6bbd065244a285653b2d9d3988e9
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 800ac96aee933791d0507e21ec5623ce47e82efb
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123113897"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128623743"
 ---
 # <a name="time-to-live-ttl-in-azure-cosmos-db"></a>Azure Cosmos DB の Time to Live (TTL)
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -22,6 +22,7 @@ Azure Cosmos DB は、**Time to Live** (TTL) を使用して、一定の期間�
 
 期限切れアイテムの削除は、残っている[要求ユニット](../request-units.md)、つまりユーザー要求によってまだ消費されていない要求ユニットを消費するバックグラウンド タスクです。 TTL の期限が切れた後であっても、要求のためにコンテナーが過負荷の状態で、使用できる RU が十分にない場合、データの削除は遅延します。 削除操作を実行するのに十分な RU が利用可能になると、データは削除されます。 たとえデータの削除が遅延しても、TTL の期限が切れた後は、どんなクエリによっても (どんな API によっても) データが返されることはありません。
 
+> [!NOTE]
 > このコンテンツは Azure Cosmos DB トランザクション ストア TTL に関連付けられています。 [Azure Synapse Link](../synapse-link.md) 経由で NoETL HTAP シナリオを可能にする分析ストア TTL をお探しの場合、[こちら](../analytical-store-introduction.md#analytical-ttl)をクリックしてください。
 
 ## <a name="time-to-live-for-containers-and-items"></a>コンテナーおよび項目の Time to Live

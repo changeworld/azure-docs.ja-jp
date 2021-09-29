@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 09/03/2021
+ms.date: 09/17/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 32008e0071f9e57c7b85dd3146f7082797710b1c
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 43929f4fc00b8a6ca3fb485c0257f5e651f2802f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123474836"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128618392"
 ---
 |名前 |説明 |ポリシー |Version |
 |---|---|---|---|
@@ -19,8 +19,8 @@ ms.locfileid: "123474836"
 |[CIS Microsoft Azure Foundations Benchmark v1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CISv1_1_0.json) |このイニシアティブには、CIS Microsoft Azure Foundations Benchmark の推奨事項のサブセットに対応するポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、[https://aka.ms/cisazure110-initiative](../../../../articles/governance/policy/samples/cis-azure-1-1-0.md) を参照してください。 |99 |10.1.0 |
 |[CIS Microsoft Azure Foundations Benchmark v1.3.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CISv1_3_0.json) |このイニシアティブには、CIS Microsoft Azure Foundations Benchmark の推奨事項のサブセットに対応するポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、[https://aka.ms/cisazure130-initiative](../../../../articles/governance/policy/samples/cis-azure-1-3-0.md) を参照してください。 |104 |1.1.2 |
 |[\[プレビュー\]: CMMC Level 3](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CMMC_L3.json) |このイニシアティブには、サイバーセキュリティ成熟度モデル認定 (CMMC) レベル 3 の要件のサブセットに対応するポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、[https://aka.ms/cmmc-initiative](../../../../articles/governance/policy/samples/cmmc-l3.md) を参照してください。 |182 |3.2.1-preview |
-|[FedRAMP High](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/FedRAMP_H_audit.json) |このイニシアチブには、FedRAMP High コントロールのサブセットに対応するポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、[https://aka.ms/fedramph-initiative](../../../../articles/governance/policy/samples/built-in-initiatives.md) を参照してください。 |262 |5.0.0 |
-|[FedRAMP (中)](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/FedRAMP_M_audit.json) |このイニシアチブには、FedRAMP Moderate コントロールのサブセットに対応するポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、[https://aka.ms/fedrampm-initiative](../../../../articles/governance/policy/samples/built-in-initiatives.md) を参照してください。 |262 |5.0.0 |
+|[FedRAMP High](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/FedRAMP_H_audit.json) |このイニシアチブには、FedRAMP High コントロールのサブセットに対応するポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、[https://aka.ms/fedramph-initiative](../../../../articles/governance/policy/samples/built-in-initiatives.md) を参照してください。 |262 |5.0.1 |
+|[FedRAMP (中)](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/FedRAMP_M_audit.json) |このイニシアチブには、FedRAMP Moderate コントロールのサブセットに対応するポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、[https://aka.ms/fedrampm-initiative](../../../../articles/governance/policy/samples/built-in-initiatives.md) を参照してください。 |262 |5.0.1 |
 |[HITRUST/HIPAA](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/HIPAA_HITRUST_audit.json) |このイニシアチブには、HITRUST/HIPAA コントロールのサブセットに対応する監査および仮想マシン拡張機能のデプロイ ポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、[https://aka.ms/hipaa-blueprint](../../../../articles/governance/blueprints/samples/index.md) を参照してください。 |121 |6.0.1 |
 |[IRS1075 September 2016](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/IRS1075_audit.json) |このイニシアチブには、IRS1075 (2016 年 9 月) コントロールのサブセットに対応する監査および仮想マシン拡張機能のデプロイ ポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、[https://aka.ms/irs1075-blueprint](../../../../articles/governance/blueprints/samples/irs-1075-sept2016.md) を参照してください。 |62 |5.0.0 |
 |[ISO 27001:2013](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/ISO27001_2013_audit.json) |このイニシアチブには、ISO 27001:2013 コントロールのサブセットに対応する監査および仮想マシン拡張機能のデプロイ ポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、[https://aka.ms/iso27001-init](../../../../articles/governance/blueprints/samples/iso-27001-2013.md) を参照してください。 |53 |4.0.2 |

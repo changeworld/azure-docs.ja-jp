@@ -8,19 +8,19 @@ ms.custom: mvc
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 9/21/2020
-ms.openlocfilehash: 57bfd9564f1f5ee3ea66e80a969760ea578a0e74
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 8430fc401e8cbb6c526f5bdca9a0b6841447793b
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "122643400"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "128588772"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-mysql---flexible-server"></a>クイック スタート:Python を使用して Azure Database for MySQL - フレキシブル サーバーに接続し、データのクエリを実行する
 
 [[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 > [!IMPORTANT]
-> Azure Database for MySQL - フレキシブル サーバーは、現在パブリック プレビュー段階にあります。
+> Azure Database for MySQL - フレキシブル サーバーは現在、パブリック プレビュー段階にあります。
 
 このクイックスタートでは、Python を使用して Azure Database for MySQL フレキシブル サーバーに接続します。 Mac、Ubuntu Linux、Windows の各プラットフォームから SQL ステートメントを使用して、データベース内のデータを照会、挿入、更新、削除できます。 
 
@@ -28,7 +28,9 @@ ms.locfileid: "122643400"
 
 ## <a name="prerequisites"></a>前提条件
 
-* アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+* アクティブなサブスクリプションが含まれる Azure アカウント。 
+
+    [!INCLUDE [flexible-server-free-trial-note](../includes/flexible-server-free-trial-note.md)]
 * Azure Database for MySQL フレキシブル サーバー。 フレキシブル サーバーの作成方法については、「[Azure portal を使用して Azure Database for MySQL フレキシブル サーバーを作成する](./quickstart-create-server-portal.md)」または「[Azure CLI を使用して Azure Database for MySQL フレキシブル サーバーを作成する](./quickstart-create-server-cli.md)」を参照してください。
 
 ## <a name="preparing-your-client-workstation"></a>クライアント ワークステーションを準備する

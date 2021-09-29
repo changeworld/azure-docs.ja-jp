@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 6755aae60f09fad14f773c3976ae4f3d7e073744
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 6fbffc3b9a8c45aca7fa61b45dd6f34b300864e6
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108187176"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124773970"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy"></a>アプリケーション プロキシ を使用したオンプレミスのアプリケーションに対する SAML シングル サインオン
 
@@ -81,7 +81,7 @@ SAML 認証でセキュリティ保護されているオンプレミスのアプ
    * SP によって開始されたフローの場合、バックエンド アプリケーションで認証トークンを受け取るための適切な **応答 URL** または Assertion Consumer Service URL が指定されていることを確認します。
 
     > [!NOTE]
-    > バックエンド アプリケーションで **応答 URL** が内部 URL である必要がある場合は、[カスタム ドメイン](application-proxy-configure-custom-domain.md)を使用して内部 URL と外部 URL を一致させるか、マイ アプリのセキュリティで保護されたサインイン拡張機能を、ユーザーのデバイスにインストールする必要があります。 この拡張機能では、適切なアプリケーション プロキシ サービスに自動的にリダイレクトされます。 拡張機能のインストールについては、「[マイ アプリによるセキュリティで保護されたサインイン拡張機能](../user-help/my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension)」をご覧ください。
+    > バックエンド アプリケーションで **応答 URL** が内部 URL である必要がある場合は、[カスタム ドメイン](application-proxy-configure-custom-domain.md)を使用して内部 URL と外部 URL を一致させるか、マイ アプリのセキュリティで保護されたサインイン拡張機能を、ユーザーのデバイスにインストールする必要があります。 この拡張機能では、適切なアプリケーション プロキシ サービスに自動的にリダイレクトされます。 拡張機能のインストールについては、「[マイ アプリによるセキュリティで保護されたサインイン拡張機能](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510#download-and-install-the-my-apps-secure-sign-in-extension)」をご覧ください。
     
 ## <a name="test-your-app"></a>アプリをテストする
 

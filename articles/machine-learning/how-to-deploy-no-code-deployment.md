@@ -5,18 +5,16 @@ description: コードなしのデプロイでは、エントリ スクリプト
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.author: gopalv
-author: gvashishtha
 ms.date: 07/31/2020
 ms.topic: how-to
 ms.custom: deploy
 ms.reviewer: larryfr
-ms.openlocfilehash: 8735898a462d9488aec95bf9f5840bf9b9be2bb6
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 80dd7b06b725e4e30aa51eaabede4e6a91c69554
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123428436"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128649324"
 ---
 # <a name="no-code-model-deployment-preview"></a>コードなしのモデル デプロイ (プレビュー)
 

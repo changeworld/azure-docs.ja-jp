@@ -1,17 +1,17 @@
 ### YamlMime:FAQ
 metadata:
-  title: Azure DevTest Labs に関する FAQ | Microsoft Docs
+  title: Azure DevTest Labs に関する FAQ
   description: この記事では、Azure DevTest Labs に関連する、よく寄せられる質問 (FAQ) の一部の回答を示します。
-  ms.topic: article
+  ms.topic: troubleshooting
   ms.service: azure
   ms.date: 07/17/2020
   ms.custom: devx-track-azurepowershell, references_regions
-  ms.openlocfilehash: c1ad54ee9c95590cf25aacadf0fd549d460e2d8c
-  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+  ms.openlocfilehash: 55a8c385479b5a14407e07288d61ff9cd1eb21a5
+  ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/17/2021
-  ms.locfileid: "122253136"
+  ms.lasthandoff: 09/24/2021
+  ms.locfileid: "128650460"
 title: Azure DevTest Labs に関する FAQ
 summary: "\nAzure DevTest Labs について特に多く寄せられる質問にお答えします。\n\n## <a name=\"blog-post\"></a>ブログ記事\nDevTest Labs チームのブログは 2019 年 3 月 20 日時点で廃止されました。 \n\n### <a name=\"where-can-i-track-feature-updates-from-now-on\"></a>今後の機能更新はどこで追跡できるのでしょうか。\n今後、Azure ブログと Azure の更新情報で、機能更新や情報ブログ記事を投稿していきます。 これらのブログ記事は、必要に応じて、Microsoft のドキュメントにもリンクされます。\n        \n[DevTest Labs Azure ブログ](https://azure.microsoft.com/blog/tag/azure-devtest-labs/)と [DevTest Labs Azure の更新情報](https://azure.microsoft.com/updates/?product=devtest-lab)をご覧になり、DevTest Labs の新機能に関する情報を入手するようにしてください。\n        \n### <a name=\"what-happens-to-the-existing-blog-posts\"></a>既存のブログ記事はどうなりますか。\n現在、既存のブログ記事 (障害更新情報を除く) の [DevTest Labs ドキュメント](devtest-lab-overview.md)への移行を進めています。 MSDN ブログが非推奨になると、DevTest Labs のドキュメントの概要にリダイレクトされます。 リダイレクトされたら、タイトルの 'フィルター条件' で探している記事を検索できます。 まだすべての記事を移行していませんが、今月末までに完了するはずです。 \n        \n### <a name=\"where-do-i-see-outage-updates\"></a>障害更新情報はどこで確認できますか。\n今後、Twitter ハンドルを使用して、障害更新情報を投稿する予定です。 Twitter でフォローして、障害と既知のバグに関する最新の更新情報を取得してください。\n\n### <a name=\"twitter\"></a>Twitter\nTwitter ハンドル: [@azlabservices](https://twitter.com/azlabservices)\n"
 sections:
@@ -446,7 +446,7 @@ sections:
       VM のデプロイ エラーは、アクティビティ ログに記録されます。 ラボの VM のアクティビティ ログは、ラボの VM ページにあるリソース メニューの **[監査ログ]** または **[仮想マシンの診断]** で確認できます (VM ページは、[自分の仮想マシン] の一覧から VM を選択すると表示されます)。
 
 
-      VM のデプロイが開始される前に、デプロイ エラーが発生する場合もあります。 たとえば、VM で作成されたリソースのサブスクリプションの制限を超えた場合です。 この場合、ラボ レベルのアクティビティ ログにエラーの詳細が記録されます。 アクティビティ ログは、 **[Configuration and policies]\(構成とポリシー\)** 設定の下部にあります。 Azure でのアクティビティ ログ使用の詳細については、「[リソースのアクションを監査するアクティビティ ログの表示](../azure-resource-manager/management/view-activity-logs.md)」を参照してください。
+      VM のデプロイが開始される前に、デプロイ エラーが発生する場合もあります。 たとえば、VM で作成されたリソースのサブスクリプションの制限を超えた場合です。 この場合、ラボ レベルのアクティビティ ログにエラーの詳細が記録されます。 アクティビティ ログは、 **[Configuration and policies]\(構成とポリシー\)** 設定の下部にあります。 Azure でのアクティビティ ログ使用の詳細については、「[リソースのアクションを監査するアクティビティ ログの表示](../azure-monitor/essentials/activity-log.md)」を参照してください。
   - question: >
       ラボを作成しようとすると、"location is not available for resource type" (リソースの種類に使用できる場所がありません) というエラーが表示されるのはなぜですか。
     answer: >-

@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 34c3f19ebb48bef3ece00b6413af2c1d7e585cf5
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b30bb21369e75b76c5aba299d38b2ccfc3259803
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121737461"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128651600"
 ---
 # <a name="assign-an-azure-role-for-access-to-blob-data"></a>BLOB データにアクセスするための Azure ロールを割り当てる
 
@@ -65,7 +65,7 @@ PowerShell を使用して Azure ロールをセキュリティ プリンシパ�
 /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/blobServices/default/containers/<container-name>
 ```
 
-次の例では、*sample-container* という名前のコンテナーにスコープが指定された **ストレージ BLOB データ共同作成者** ロールをユーザーに割り当てます。 サンプルの値とブラケット内のプレースホルダーの値は、実際の値に置き換えてください。 
+次の例では、*sample-container* という名前のコンテナーにスコープが指定された **ストレージ BLOB データ共同作成者** ロールをユーザーに割り当てます。 サンプルの値とブラケット内のプレースホルダーの値は、実際の値に置き換えてください。
 
 ```powershell
 New-AzRoleAssignment -SignInName <email> `

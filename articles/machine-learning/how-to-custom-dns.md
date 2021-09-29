@@ -11,12 +11,12 @@ author: jhirono
 ms.date: 08/03/2021
 ms.topic: how-to
 ms.custom: contperf-fy21q3, devx-track-azurepowershell
-ms.openlocfilehash: 6395f88f4841ef5447b8dfef5310fba6e0440e32
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 74c8fd2c096d8a4b236d9f26bdd27737fac897ca
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122771456"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128632996"
 ---
 # <a name="how-to-use-your-workspace-with-a-custom-dns-server"></a>カスタム DNS サーバーでワークスペースを使用する方法
 
@@ -354,7 +354,7 @@ FQDN と対応する IP アドレスの一覧が収集された後、構成さ�
 
     コマンド プロンプト、シェル、または PowerShell を開きます。 次に、各ワークスペース FQDN について、次のコマンドを実行します。
 
-    ```nslookup <workspace FQDN>```
+    `nslookup <workspace FQDN>`
         
     各 nslookup の結果により、Azure Machine Learning ワークスペースへのプライベート エンドポイントの 2 つのプライベート IP アドレスの 1 つが返されます。 そうでない場合は、カスタム DNS ソリューションで何かが正しく構成されていません。
 
@@ -553,7 +553,7 @@ Azure Machine Learning の `hosts` ファイル エントリの例を次に示�
 
     コマンド プロンプト、シェル、または PowerShell を開きます。 次に、各ワークスペース FQDN について、次のコマンドを実行します。
 
-    ```nslookup <workspace FQDN>```
+    `nslookup <workspace FQDN>`
         
     各 nslookup の結果で、Azure Machine Learning ワークスペースへのプライベート エンドポイントの 2 つのプライベート IP アドレスの 1 つが生成される必要があります。 そうでない場合は、カスタム DNS ソリューションで何かが正しく構成されていません。
 

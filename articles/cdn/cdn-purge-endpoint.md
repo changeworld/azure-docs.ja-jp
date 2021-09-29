@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/30/2021
 ms.author: allensu
-ms.openlocfilehash: d54b181ee55d841f8739008a2fb6657f7885cb96
-ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
+ms.openlocfilehash: 97d1fc2605cc649af0603be540165ba47b3b4345
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113126448"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128658718"
 ---
 # <a name="purge-an-azure-cdn-endpoint"></a>Azure CDN エンドポイントの消去
 ## <a name="overview"></a>概要
@@ -78,5 +78,5 @@ Azure CDN エッジ ノードは、アセットの Time-to-Live (TTL) が期限�
 
 ## <a name="see-also"></a>関連項目
 * [Azure CDN エンドポイント上のアセットを事前に読み込む](cdn-preload-endpoint.md)
-* [Azure CDN REST API リファレンス - エンドポイントの消去または事前読み込み](/rest/api/cdn/cdn/endpoints)
+* [Azure CDN REST API リファレンス - エンドポイントの消去または事前読み込み](/rest/api/cdn/endpoints)
 

@@ -12,12 +12,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/11/2021
-ms.openlocfilehash: 29479aa35146630162226ff392f3924bc59ea8ae
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 4bcfc687e1a91fd2ecc652ced2481963974e155f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121735627"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128643348"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Azure SQL での Azure AD 認証を構成して管理する
 
@@ -330,7 +330,7 @@ Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -Se
 
 以下の CLI コマンドを呼び出して、Azure AD 管理者をプロビジョニングできます。
 
-| command | 説明 |
+| コマンド | 説明 |
 | --- | --- |
 |[az sql server ad-admin create](/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_create) | SQL Server または Azure Synapse をホストするサーバーに対する Azure Active Directory 管理者をプロビジョニングします。 (現在のサブスクリプションから実行する必要があります)。 |
 |[az sql server ad-admin delete](/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_delete) | SQL Server または Azure Synapse をホストするサーバーに対する Azure Active Directory 管理者を削除します。 |
@@ -531,9 +531,9 @@ conn.Open();
 サンプルの接続文字列を次に示します。
 
 ```csharp
-string ConnectionString =@"Data Source=n9lxnyuzhv.database.windows.net; Initial Catalog=testdb;"
+string ConnectionString = @"Data Source=n9lxnyuzhv.database.windows.net; Initial Catalog=testdb;";
 SqlConnection conn = new SqlConnection(ConnectionString);
-conn.AccessToken = "Your JWT token"
+conn.AccessToken = "Your JWT token";
 conn.Open();
 ```
 

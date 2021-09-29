@@ -8,15 +8,15 @@ tags: billing,top-support-issue
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 09/15/2021
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 746845004a7a1baf1cafb872aae9322177879b6b
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: 03a2395adde34be7e83c8d151d7e0ad2893b5c95
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103011104"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128655716"
 ---
 # <a name="about-transferring-billing-ownership-for-an-azure-subscription"></a>Azure サブスクリプションの課金所有権の譲渡の概要
 

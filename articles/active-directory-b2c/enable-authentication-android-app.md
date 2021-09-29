@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 07/06/2021
+ms.date: 09/16/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: b2c-support, has-adal-ref
-ms.openlocfilehash: 1e21be821a495dae95b0bc45b47aef4345802f38
-ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+ms.openlocfilehash: 4dca649048a393adaba58614ab8f63dec5db29e2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123186193"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128575173"
 ---
 # <a name="enable-authentication-in-your-own-android-app-by-using-azure-ad-b2c"></a>Azure AD B2C を使用して独自の Android アプリで認証を有効にする
 
@@ -142,7 +142,8 @@ packagingOptions{
 モバイル アプリの登録をアプリのリダイレクト URI で更新するには、次のようにします。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-1. ポータル ツール バーにある **[ディレクトリ + サブスクリプション]** アイコンを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
 1. **Azure AD B2C** を検索して選択します。
 1. **[アプリの登録]** を選択し、「[手順 2.3 モバイル アプリを登録する](configure-authentication-sample-android-app.md#step-23-register-the-mobile-app)」で登録したアプリケーションを選択します。
 1. **[認証]** を選択します。

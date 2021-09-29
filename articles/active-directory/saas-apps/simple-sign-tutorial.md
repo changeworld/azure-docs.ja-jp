@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/03/2021
 ms.author: jeedes
-ms.openlocfilehash: bcb6deb4adc79bf3bc3442d4215acc4f4e9c5a12
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 0593ed5d93f9b1d3d0fee072107ce4145970ee7f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111558010"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124775761"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-simple-sign"></a>チュートリアル:Azure Active Directory と Simple Sign の統合
 
@@ -128,7 +128,7 @@ Simple Sign に対して Azure AD SSO を構成してテストするには、次
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した Simple Sign に自動的にサインインされます
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Simple Sign] タイルをクリックすると、SSO を設定した Simple Sign に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Simple Sign] タイルをクリックすると、SSO を設定した Simple Sign に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

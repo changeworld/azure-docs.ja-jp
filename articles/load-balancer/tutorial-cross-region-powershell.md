@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: tutorial
 ms.date: 02/10/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0f6ee0323768287ee860becc5d02c85efb32e3fe
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 3718cbacedf6f8770d0b7d1c83eb4035cb5676b0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110704734"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124784852"
 ---
 # <a name="tutorial-create-a-cross-region-azure-load-balancer-using-azure-powershell"></a>チュートリアル:Azure PowerShell を使用してリージョン間 Azure ロード バランサーを作成する
 
@@ -233,4 +233,4 @@ Remove-AzResourceGroup -Name 'myResourceGroupLB-CR'
 
 次の記事に進み、以下の方法を学習してください。
 > [!div class="nextstepaction"]
-> [可用性ゾーン間のロード バランサー VM](tutorial-load-balancer-standard-public-zone-redundant-portal.md)
+> [可用性ゾーン間のロード バランサー VM](./quickstart-load-balancer-standard-public-portal.md)

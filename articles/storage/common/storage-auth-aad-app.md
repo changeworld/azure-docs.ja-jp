@@ -10,12 +10,12 @@ ms.date: 12/07/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ee77fd8ee7f9b209fa1639c787295e380e8dce0b
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: 746d908065523651f9147a721531514d1a0f84c0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111901999"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128673276"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>クライアント アプリケーションからの要求を承認するために Azure AD からトークンを取得する
 
@@ -35,7 +35,7 @@ Azure Storage アプリケーションからセキュリティ プリンシパ�
 
 ## <a name="register-your-application-with-an-azure-ad-tenant"></a>アプリケーションを Azure AD テナントに登録する
 
-Azure AD を使用してストレージ リソースへのアクセスを承認する最初の手順は、[Azure portal](https://portal.azure.com) からクライアント アプリケーションを Azure AD テナントに登録することです。 クライアント アプリケーションの登録では、使用するアプリケーションに関する情報を Azure AD に提供します。 これで Azure AD から、実行時にアプリケーションを Azure AD と関連付ける際に使用するクライアント ID (*アプリケーション ID とも呼ばれます*) が提供されます。 クライアント ID の詳細については、「[Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト](../../active-directory/develop/app-objects-and-service-principals.md)」を参照してください。 Azure Storage アプリケーションを登録するための手順については、「[クイック スタート:Microsoft ID プラットフォームにアプリケーションを登録する](../../active-directory/develop/quickstart-configure-app-access-web-apis.md)」を参照してください。 
+Azure AD を使用してストレージ リソースへのアクセスを承認する最初の手順は、[Azure portal](https://portal.azure.com) からクライアント アプリケーションを Azure AD テナントに登録することです。 クライアント アプリケーションの登録では、使用するアプリケーションに関する情報を Azure AD に提供します。 これで Azure AD から、実行時にアプリケーションを Azure AD と関連付ける際に使用するクライアント ID (*アプリケーション ID とも呼ばれます*) が提供されます。 クライアント ID の詳細については、「[Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト](../../active-directory/develop/app-objects-and-service-principals.md)」を参照してください。 Azure Storage アプリケーションを登録するための手順については、「[クイック スタート:Microsoft ID プラットフォームにアプリケーションを登録する](../../active-directory/develop/quickstart-configure-app-access-web-apis.md)」を参照してください。
 
 次の図は、Web アプリケーションを登録するための一般的な設定を示します。 この例では、開発環境でサンプル アプリケーションをテストするために、リダイレクト URI が `http://localhost:5000/signin-oidc` に設定されていることに注意してください。 この設定は、Azure portal に登録されたアプリケーションに合わせて **[認証]** 設定を使用して後で変更できます。
 
@@ -140,7 +140,7 @@ Microsoft パブリック クラウドの場合、基本 Azure AD 機関は次�
 
 トークンを取得し、それを使って Azure Storage に BLOB を作成する完全なサンプル Web アプリケーションは、[GitHub](https://aka.ms/aadstorage) で入手できます。 完全なサンプルをレビューして実行すると、コード例の理解に役立つことがあります。 完全なサンプルを実行する方法については、「[完全なサンプルを表示して実行する](#view-and-run-the-completed-sample)」セクションをご覧ください。
 
-#### <a name="add-references-and-using-statements"></a>参照と using ステートメントを追加する  
+#### <a name="add-references-and-using-statements"></a>参照と using ステートメントを追加する
 
 Visual Studio から Azure Storage クライアント ライブラリをインストールします。 **[ツール]** メニューで、 **[NuGet パッケージ マネージャー]** 、 **[パッケージ マネージャー コンソール]** の順に選択します。 コンソール ウィンドウに次のコマンドを入力して、.NET 用 Azure Storage クライアント ライブラリから必要なパッケージをインストールします。
 

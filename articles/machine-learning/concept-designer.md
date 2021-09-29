@@ -10,19 +10,19 @@ ms.author: peterlu
 author: peterclu
 ms.date: 08/03/2021
 ms.custom: designer, FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: c6bb9eefd7545a014faf10ad20afa655f7f4cd48
-ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
+ms.openlocfilehash: 3a38717cec9aed40e3aff96376a9d956eb82a53d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122195868"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124792222"
 ---
 # <a name="what-is-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーとは 
 
 Azure Machine Learning デザイナーは、Azure Machine Learning 内でのモデルのトレーニングとデプロイに使用されるドラッグ アンド ドロップ インターフェイスです。 この記事では、デザイナー内で実行できるタスクについて説明します。
 
  - デザイナーで作業を開始するには、[コードなし回帰モデルをトレーニングするためのチュートリアル](tutorial-designer-automobile-price-train-score.md)をご覧ください。 
- - デザイナー内で使用できるコンポーネントについては、[アルゴリズムとコンポーネントのリファレンス](/azure/machine-learning/algorithm-module-reference/module-reference)をご覧ください。
+ - デザイナー内で使用できるコンポーネントについては、[アルゴリズムとコンポーネントのリファレンス](./algorithm-module-reference/module-reference.md)をご覧ください。
 
 ![Azure Machine Learning デザイナーの例](./media/concept-designer/designer-drag-and-drop.gif)
 

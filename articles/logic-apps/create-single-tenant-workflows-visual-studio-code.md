@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: how-to
-ms.date: 07/13/2021
-ms.openlocfilehash: 776068748b9cd7e90b9d9418bdf9a31fe36ff180
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.date: 09/13/2021
+ms.openlocfilehash: 960ade1209b6473884e75c660d658abaf6e73af7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113733756"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128609956"
 ---
 # <a name="create-an-integration-workflow-with-single-tenant-azure-logic-apps-standard-in-visual-studio-code"></a>Visual Studio Code でシングルテナント Azure Logic Apps (Standard) を使用して統合ワークフローを作成する
 
@@ -213,6 +213,8 @@ Visual Studio Code でローカル開発を行う場合は、ローカルの開�
    [エクスプローラー] ペインにプロジェクトが表示されます。そこには、自動的に生成されたプロジェクト ファイルが含まれています。 たとえば、プロジェクトには、ワークフローの名前を示すフォルダーがあります。 このフォルダーにある **workflow.json** ファイルには、ワークフローの基になる JSON 定義が含まれています。
 
    ![プロジェクト フォルダー、ワークフロー フォルダー、"workflow. json" ファイルが表示されている [エクスプローラー] ペインのスクリーンショット。](./media/create-single-tenant-workflows-visual-studio-code/local-project-created.png)
+
+   [!INCLUDE [Visual Studio Code - logic app project structure](../../includes/logic-apps-single-tenant-project-structure-visual-studio-code.md)]
 
 <a name="enable-built-in-connector-authoring"></a>
 

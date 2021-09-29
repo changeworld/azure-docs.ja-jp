@@ -9,12 +9,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0d06e40fc33a713904fb171a3a44ba8e977a254f
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 67ecaac43885b76071a6bc71268edb811db7cbbd
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123467648"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128680283"
 ---
 # <a name="change-feed-support-in-azure-blob-storage"></a>Azure Blob Storage の変更フィードのサポート
 
@@ -41,7 +41,7 @@ ms.locfileid: "123467648"
 変更フィードは、[オブジェクト レプリケーション](object-replication-overview.md)と[ブロック BLOB のポイントインタイム リストア](point-in-time-restore-overview.md)を行うための前提条件となる機能です。
 
 > [!NOTE]
-> 変更フィードは、BLOB に発生する変更の持続的でかつ順序付けられたログ モデルを提供します。 変更は、変更から数分以内に変更フィード ログに書き込まれ、使用可能になります。 アプリケーションでこれよりはるかに高速にイベントに対応する必要がある場合は、代わりに [Blob Storage イベント](storage-blob-event-overview.md)を使用することを検討してください。 [Blob Storage イベント](storage-blob-event-overview.md)は、Azure Functions またはアプリケーションが BLOB に発生する変更にすばやく反応できるようにする、リアルタイムの 1 回限りのイベントを提供します。 
+> 変更フィードは、BLOB に発生する変更の持続的でかつ順序付けられたログ モデルを提供します。 変更は、変更から数分以内に変更フィード ログに書き込まれ、使用可能になります。 アプリケーションでこれよりはるかに高速にイベントに対応する必要がある場合は、代わりに [Blob Storage イベント](storage-blob-event-overview.md)を使用することを検討してください。 [Blob Storage イベント](storage-blob-event-overview.md)は、Azure Functions またはアプリケーションが BLOB に発生する変更にすばやく反応できるようにする、リアルタイムの 1 回限りのイベントを提供します。
 
 ## <a name="enable-and-disable-the-change-feed"></a>変更フィードを有効または無効にする
 
@@ -99,6 +99,7 @@ PowerShell を使用して変更フィードを有効にします。
    ```
 
 ### <a name="template"></a>[テンプレート](#tab/template)
+
 Azure portal を使用して既存のストレージ アカウントで変更フィードを有効にするには、Azure Resource Manager テンプレートを使用します。
 
 1. Azure portal で、 **[リソースの作成]** を選択します。
@@ -153,7 +154,7 @@ Azure portal を使用して既存のストレージ アカウントで変更フ
 
 変更フィードの利用可能な時間単位のセグメントは、そのセグメントの変更フィード ファイルへのパスを指定するマニフェスト ファイルに記述されています。 `$blobchangefeed/idx/segments/` 仮想ディレクトリのリストには、これらのセグメントが時間順に表示されます。 セグメントのパスは、セグメントで表される時間単位の時間範囲の開始を示します このリストを使用して、関心のあるログのセグメントをフィルターで除外することができます。
 
-```text
+```output
 Name                                                                    Blob Type    Blob Tier      Length  Content Type    
 ----------------------------------------------------------------------  -----------  -----------  --------  ----------------
 $blobchangefeed/idx/segments/1601/01/01/0000/meta.json                  BlockBlob                      584  application/json
@@ -163,7 +164,7 @@ $blobchangefeed/idx/segments/2019/02/23/0110/meta.json                  BlockBlo
 ```
 
 > [!NOTE]
-> 変更フィードを有効にすると、`$blobchangefeed/idx/segments/1601/01/01/0000/meta.json` が自動的に作成されます。 このファイルは無視してかまいません。 これは常に、空の初期化ファイルです。 
+> 変更フィードを有効にすると、`$blobchangefeed/idx/segments/1601/01/01/0000/meta.json` が自動的に作成されます。 このファイルは無視してかまいません。 これは常に、空の初期化ファイルです。
 
 セグメント マニフェスト ファイル (`meta.json`) では、`chunkFilePaths` プロパティにそのセグメントの変更フィード ファイルのパスが表示されます。 以下は、セグメント マニフェスト ファイルの例です。
 
@@ -196,7 +197,7 @@ $blobchangefeed/idx/segments/2019/02/23/0110/meta.json                  BlockBlo
 ```
 
 > [!NOTE]
-> `$blobchangefeed` コンテナーは、アカウントで変更フィード機能を有効にした後にのみ表示されます。 変更フィードを有効にした後、このコンテナー内の BLOB を一覧表示できるようになるまでに数分待つ必要があります。 
+> `$blobchangefeed` コンテナーは、アカウントで変更フィード機能を有効にした後にのみ表示されます。 変更フィードを有効にした後、このコンテナー内の BLOB を一覧表示できるようになるまでに数分待つ必要があります。
 
 <a id="log-files"></a>
 
@@ -288,7 +289,7 @@ $blobchangefeed/idx/segments/2019/02/23/0110/meta.json                  BlockBlo
 
 ## <a name="conditions-and-known-issues"></a>条件と既知の問題
 
-このセクションでは、変更フィードの現在のリリースにおける既知の問題と条件について説明します。 
+このセクションでは、変更フィードの現在のリリースにおける既知の問題と条件について説明します。
 
 - 1 つの変更の変更イベント レコードは、変更フィードに複数回表示される場合があります。
 - 変更フィード ログ ファイルに時間ベースの保持ポリシーを設定してそのファイルの有効期間を管理することはまだできず、BLOB を削除できません。
@@ -299,14 +300,14 @@ $blobchangefeed/idx/segments/2019/02/23/0110/meta.json                  BlockBlo
 
 ## <a name="feature-support"></a>機能サポート
 
-次の表は、お使いのアカウントでこの機能がどのようにサポートされるかと、特定の機能を有効にした場合のサポートへの影響を示しています。 
+この表は、アカウントでのこの機能のサポート状況と、特定の機能を有効にした場合のサポートへの影響を示しています。
 
-| ストレージ アカウントの種類                | Blob Storage (既定のサポート)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+| ストレージ アカウントの種類                | Blob Storage (既定のサポート)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>
 |-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
-| Standard 汎用 v2 | ![はい](../media/icons/yes-icon.png) |![いいえ](../media/icons/no-icon.png)              | ![いいえ](../media/icons/no-icon.png) | 
+| Standard 汎用 v2 | ![はい](../media/icons/yes-icon.png) |![いいえ](../media/icons/no-icon.png)              | ![いいえ](../media/icons/no-icon.png) |
 | Premium ブロック BLOB          | ![いいえ](../media/icons/no-icon.png)|![いいえ](../media/icons/no-icon.png) | ![いいえ](../media/icons/no-icon.png) |
 
-<sup>1</sup>    Data Lake Storage Gen2 とネットワーク ファイル システム (NFS) 3.0 プロトコルはどちらも、階層型名前空間が有効になっているストレージ アカウントが必要です。
+<sup>1</sup>    Data Lake Storage Gen2 とネットワーク ファイル システム (NFS) 3.0 プロトコルの両方で、階層型名前空間が有効になっているストレージ アカウントが必要です。
 
 ## <a name="faq"></a>よく寄せられる質問
 

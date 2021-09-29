@@ -3,14 +3,14 @@ title: Azure Event Grid リソースのネットワーク セキュリティ
 description: この記事では、Azure Event Grid で、エグレス用のサービス タグ、イングレス用の IP ファイアウォール規則、イングレス用のプライベート エンドポイントを使用する方法について説明します。
 author: VidyaKukke
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 09/28/2021
 ms.author: vkukke
-ms.openlocfilehash: d58e8b5ce9fb444fa501f897cca722613d9c51fe
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 041c09a23b25b2ffe487b6d13171c51f2d96e6e1
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105967576"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129212762"
 ---
 # <a name="network-security-for-azure-event-grid-resources"></a>Azure Event Grid リソースのネットワーク セキュリティ
 この記事では、Azure Event Grid で次のセキュリティ機能を使用する方法について説明します。 
@@ -57,7 +57,7 @@ Event Grid リソースにプライベート エンドポイントを使用す�
 
 プライベート エンドポイントを持つ VNet の外部からトピックまたはドメインのエンドポイント URL を解決すると、サービスのパブリック エンドポイントに解決されます。 'topicA' の DNS リソース レコードは、プライベート エンドポイントをホストしている **VNet 外部** から解決されると、次のようになります。
 
-| 名前                                          | Type      | 値                                         |
+| 名前                                          | 種類      | 値                                         |
 | --------------------------------------------- | ----------| --------------------------------------------- |  
 | `topicA.westus.eventgrid.azure.net`             | CNAME     | `topicA.westus.privatelink.eventgrid.azure.net` |
 | `topicA.westus.privatelink.eventgrid.azure.net` | CNAME     | \<Azure traffic manager profile\>
@@ -66,7 +66,7 @@ Event Grid リソースにプライベート エンドポイントを使用す�
 
 プライベート エンドポイントをホストしている VNet から解決されると、トピックまたはドメインのエンドポイント URL はプライベート エンドポイントの IP アドレスに解決されます。 'topicA' の DNS リソース レコードは、プライベート エンドポイントをホストしている **VNet 内部** から解決されると、次のようになります。
 
-| 名前                                          | Type      | 値                                         |
+| 名前                                          | 種類      | 値                                         |
 | --------------------------------------------- | ----------| --------------------------------------------- |  
 | `topicA.westus.eventgrid.azure.net`             | CNAME     | `topicA.westus.privatelink.eventgrid.azure.net` |
 | `topicA.westus.privatelink.eventgrid.azure.net` | A         | 10.0.0.5

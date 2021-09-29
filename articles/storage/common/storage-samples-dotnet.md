@@ -1,18 +1,18 @@
 ---
 title: .NET を使用した Azure Storage サンプル | Microsoft Docs
 description: Azure Storage のサンプル コードとアプリケーションを表示、ダウンロード、実行します。 .NET のストレージ クライアント ライブラリを使用して、BLOB、キュー、テーブル、ファイルのサンプルの概要について説明します。
-author: twooley
-ms.author: twooley
+author: normesta
+ms.author: normesta
 ms.date: 10/01/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: c140234ce93ff9146ef3b1a5a135258ad707c807
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 947afa47c3ad5903e22cdd114a8020956861aa45
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106275704"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128633737"
 ---
 # <a name="azure-storage-samples-using-v12-net-client-libraries"></a>v12 .NET クライアント ライブラリを使用した Azure Storage サンプル
 
@@ -86,6 +86,7 @@ ms.locfileid: "106275704"
 :::row-end:::
 
 ### <a name="troubleshooting"></a>トラブルシューティング
+
 :::row:::
    :::column span="2":::
       [コンテナー クライアントを使用して回復可能なエラーをトリガーする](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample01b_HelloWorldAsync.cs#L166)
@@ -114,6 +115,7 @@ ms.locfileid: "106275704"
 :::row-end:::
 
 ### <a name="file-system"></a>ファイル システム
+
 :::row:::
    :::column span="":::
       [ファイル システム クライアントを使用してファイルを作成する](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L22)
@@ -148,6 +150,7 @@ ms.locfileid: "106275704"
 :::row-end:::
 
 ### <a name="file"></a>ファイル
+
 :::row:::
    :::column span="":::
       [ファイルをアップロードする](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples/Sample01b_HelloWorldAsync.cs#L126)
@@ -270,7 +273,8 @@ ms.locfileid: "106275704"
    :::column-end:::
 :::row-end:::
 
-### <a name="troubleshooting"></a>トラブルシューティング 
+### <a name="troubleshooting"></a>トラブルシューティング
+
 :::row:::
    :::column span="2":::
       [キュー クライアントを使用して回復可能なエラーをトリガーする](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples/Sample01b_HelloWorldAsync.cs#L188)
@@ -313,10 +317,10 @@ ms.locfileid: "106275704"
 
 完全な .NET サンプル ライブラリをご覧いただくには、次のページにアクセスしてください。
 
-* [Azure BLOB のコード サンプル](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples)
-* [Azure Data Lake のコード サンプル](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples)
-* [Azure Files のコード サンプル](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.Shares/samples)
-* [Azure Queue のコード サンプル](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples)
+- [Azure BLOB のコード サンプル](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples)
+- [Azure Data Lake のコード サンプル](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.DataLake/samples)
+- [Azure Files のコード サンプル](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Files.Shares/samples)
+- [Azure Queue のコード サンプル](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues/samples)
 
 各ライブラリの GitHub リポジトリを参照してクローンすることができます。
 
@@ -324,17 +328,17 @@ ms.locfileid: "106275704"
 
 Azure Storage ライブラリのインストール方法と概要については、以下のガイドをご覧ください。
 
-* [.Net での Azure BLOB サービスの概要](../blobs/storage-quickstart-blobs-dotnet.md)
-* [.Net での Azure Queue サービスの概要](../queues/storage-quickstart-queues-dotnet.md)
-* [.Net での Azure Table サービスの概要](../../cosmos-db/tutorial-develop-table-dotnet.md)
-* [.Net での Azure File サービスの概要](../files/storage-dotnet-how-to-use-files.md)
+- [.Net での Azure BLOB サービスの概要](../blobs/storage-quickstart-blobs-dotnet.md)
+- [.Net での Azure Queue サービスの概要](../queues/storage-quickstart-queues-dotnet.md)
+- [.Net での Azure Table サービスの概要](../../cosmos-db/tutorial-develop-table-dotnet.md)
+- [.Net での Azure File サービスの概要](../files/storage-dotnet-how-to-use-files.md)
 
 ## <a name="next-steps"></a>次のステップ
 
 他の言語のサンプルについては、以下のページをご覧ください。
 
-* Java:[Java を使用した Azure Storage サンプル](storage-samples-java.md)
-* Python: [Python を使用した Azure Storage サンプル](storage-samples-python.md)
-* JavaScript/Node.js: [JavaScript を使用した Azure Storage サンプル](storage-samples-javascript.md)
-* C++: [C++ を使用した Azure Storage サンプル](storage-samples-c-plus-plus.md)
-* その他すべての言語: [Azure Storage のサンプル](storage-samples.md)
+- Java:[Java を使用した Azure Storage サンプル](storage-samples-java.md)
+- Python: [Python を使用した Azure Storage サンプル](storage-samples-python.md)
+- JavaScript/Node.js: [JavaScript を使用した Azure Storage サンプル](storage-samples-javascript.md)
+- C++: [C++ を使用した Azure Storage サンプル](storage-samples-c-plus-plus.md)
+- その他すべての言語: [Azure Storage のサンプル](storage-samples.md)

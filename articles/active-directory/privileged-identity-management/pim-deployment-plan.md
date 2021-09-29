@@ -14,12 +14,12 @@ ms.date: 07/26/2021
 ms.author: baselden
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99bdfeff59f26f59c9d64bcca9226d9b1f70ec1d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: afb94b9589171a5715b1e7bdf9a80ceb0a8b7f45
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121749078"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124771177"
 ---
 # <a name="plan-a-privileged-identity-management-deployment"></a>Privileged Identity Management のデプロイを計画する
 
@@ -152,7 +152,7 @@ Azure AD ロールを管理するように PIM を準備するには、これら
 
 組織内の特権ロールを持つユーザーのリスト。 割り当て対象のユーザーを確認し、ロールが不要になった管理者を特定して、割り当てから削除します。 
 
-[Azure AD ロールのアクセス レビュー](pim-how-to-start-security-review.md)を使用して、割り当ての検出、レビュー、承認または削除を自動化することができます。
+[Azure AD ロールのアクセス レビュー](./pim-create-azure-ad-roles-and-resource-roles-review.md)を使用して、割り当ての検出、レビュー、承認または削除を自動化することができます。
 
 ### <a name="determine-roles-to-be-managed-by-pim"></a>PIM によって管理されるロールを決定する
 
@@ -183,7 +183,7 @@ PIM での Azure AD ロールの場合、他の管理者の割り当てを管理
 
 2. [資格のあるユーザーが Azure AD ロールを Just-In-Time でアクティブ化できるようにする](pim-how-to-activate-role.md)
 
-ロールが有効期限に近づいたら、[PIM を使用してロールを延長または更新します](pim-resource-roles-renew-extend.md)。 ユーザーが行うこれらの操作には、グローバル管理者または特権ロール管理者からの承認が必要です。  ユーザーが行うこれらの操作には、グローバル管理者または特権ロール管理者からの承認が必要です。 
+ロールが有効期限に近づいたら、[PIM を使用してロールを延長または更新します](pim-resource-roles-renew-extend.md)。 ユーザーが行うこれらの操作には、グローバル管理者または特権ロール管理者からの承認が必要です。
 
 これらの重要なイベントが Azure AD ロールで発生すると、PIM から特権管理者に、ロール、イベント、通知の設定に応じて[電子メール通知と週刊ダイジェスト メールが送信](pim-email-notifications.md)されます。 これらの電子メールには、関連するタスク (ロールのアクティブ化や更新など) へのリンクが含まれる場合もあります。 
 
@@ -214,7 +214,7 @@ Azure リソース ロールを管理するように PIM を準備するには�
 
 グローバル管理者は、[すべての Azure サブスクリプションを管理するようにアクセス権を昇格](../../role-based-access-control/elevate-access-global-admin.md)できます。 その後、各サブスクリプション所有者を見つけ、協力して、それらのサブスクリプション内の不要な割り当てを削除することができます。
 
-[Azure リソースのアクセス レビュー](pim-resource-roles-start-access-review.md)を使用して監査し、不要なロール割り当てを削除します。 
+[Azure リソースのアクセス レビュー](./pim-create-azure-ad-roles-and-resource-roles-review.md)を使用して監査し、不要なロール割り当てを削除します。 
 
 ### <a name="determine-roles-to-be-managed-by-pim"></a>PIM によって管理されるロールを決定する
 
@@ -318,6 +318,4 @@ PIM で保護しようとしている特権アクセス グループの[設定�
 * PIM 関連の問題がある場合は、[PIM での問題のトラブルシューティング](pim-troubleshoot.md)に関するページを参照してください。
 
 * [その他の ID 機能をデプロイする](../fundamentals/active-directory-deployment-plans.md)
-
- 
 

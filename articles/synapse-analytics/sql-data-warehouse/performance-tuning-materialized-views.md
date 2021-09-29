@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 08/17/2021
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick; azure-synapse
-ms.openlocfilehash: ce3f7b923cec3dec28043f43babbaa86a0c6d92e
-ms.sourcegitcommit: c2f0d789f971e11205df9b4b4647816da6856f5b
+ms.openlocfilehash: 2b3e2af66334ebb82c8113caac2f8b78d5c8bf20
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122662070"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128674492"
 ---
 # <a name="performance-tune-with-materialized-views"></a>マテリアライズドビューを使用したパフォーマンスのチューニング
 
@@ -57,9 +57,6 @@ Azure Synapse の専用 SQL プールでは、標準ビューと具体化され�
 - 幅広い集計関数がサポートされます。 [CREATE MATERIALIZED VIEW AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql) に関するページを参照してください。
 - クエリに固有のマテリアライズドビューに関する推奨情報が得られます。  「[EXPLAIN (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql)」を参照してください。
 - ベース テーブル内のデータ変更で自動的かつ同期的にデータが更新されます。 ユーザーによる操作は不要です。
->[!note] 
-> CASE 式を使用して作成された具体化されたビューには、ビュー作成時の CASE 式を満たす値のみが保存されます。  具体化されたビューには、ビューの生成後に生じた CASE 式によるデータの増分変更は反映されません。   
-
  
 ## <a name="common-scenarios"></a>一般的なシナリオ  
 

@@ -4,12 +4,12 @@ description: このチュートリアルでは、Intel OpenVINO™ DL Streamer �
 ms.topic: tutorial
 ms.service: azure-video-analyzer
 ms.date: 06/01/2021
-ms.openlocfilehash: f666ac772d85fb1501c54001511e25cd941ee7c3
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: a55b4a970f1a6aeb0e257ae6404eae349f356a01
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114604778"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129058568"
 ---
 # <a name="tutorial-analyze-live-video-with-intel-openvino-dl-streamer--edge-ai-extension"></a>チュートリアル: Intel OpenVINO™ DL Streamer – Edge AI Extension を使用してライブ ビデオを分析する 
 
@@ -55,7 +55,7 @@ OpenVINO™ DL Streamer – Edge AI Extension モジュールは、OpenVINO™ D
 
 複雑なハイパフォーマンスのビデオ分析ソリューションを構築するには、Azure Video Analyzer モジュールに、エッジのスケールを活かせる強力な推論エンジンを組み合わせる必要があります。 このチュートリアルでは、Azure Video Analyzer と連動するように設計されたエッジ モジュールである Intel OpenVINO™ DL Streamer – Edge AI Extension に推論要求が送信されます。
 
-この推論サーバーの初期リリースでは、次の[モデル](https://aka.ms/intel-dlstreamer-docs)を利用できます。
+この推論サーバーの初期リリースでは、次の[モデル](https://github.com/intel/video-analytics-serving/tree/master/samples/ava_ai_extension#edge-ai-extension-module-options)を利用できます。
 
 - person_vehicle_bike_detection のための object_detection ![車両を対象とする物体検出](./media/use-intel-openvino-tutorial/object-detection.png)
 

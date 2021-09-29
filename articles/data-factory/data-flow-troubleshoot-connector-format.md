@@ -4,17 +4,17 @@ description: Azure Data Factory でのコネクタと形式に関するデータ
 author: linda33wj
 ms.author: jingwang
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: troubleshooting
 ms.date: 08/17/2021
-ms.openlocfilehash: 79a64a7eb1e06fef3c9e534a69324faaf9f23107
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: 3a723f2317e9408f35ef506d96d7fb9714c9f4b3
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122867536"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129059798"
 ---
 # <a name="troubleshoot-connector-and-format-issues-in-mapping-data-flows-in-azure-data-factory"></a>Azure Data Factory でのマッピング データ フローにおけるコネクタと形式に関する問題をトラブルシューティングする
-
 
 この記事では、Azure Data Factory (ADF) でのマッピング データ フローのためのコネクタと形式に関するトラブルシューティング方法について説明します。
 
@@ -75,7 +75,7 @@ ADF データ フローを使用して Cosmos DB または JSON から他のデ�
 
     1. データ フロー ソースの **[デバッグ設定]** を使用して、 **[Import projection]\(プロジェクションのインポート\)** で、完全なスキーマを取得するためにサンプルのファイル/テーブルを使用します。 次の図の手順に従うことができます。<br/>
 
-        ![ソース スキーマをカスタマイズする最初のオプションの最初の部分を示すスクリーンショット。](./media/data-flow-troubleshoot-connector-format/customize-schema-option-1-1.png)<br/>
+        :::image type="content" source="./media/data-flow-troubleshoot-connector-format/customize-schema-option-1-1.png" alt-text="ソース スキーマをカスタマイズする最初のオプションの最初の部分を示すスクリーンショット。":::<br/>
          1. データ フロー キャンバスで **[デバッグ設定]** を選択します。
          1. ポップアップ ウィンドウで、 **[cosmosSource]** タブの下にある **[サンプル テーブル]** を選択し、 **[テーブル]** ブロックにテーブルの名前を入力します。
          1. **[Save]\(保存\)** を選択して設定を保存します。
@@ -83,7 +83,7 @@ ADF データ フローを使用して Cosmos DB または JSON から他のデ�
     
     1. 残りのデータ移動/変換用にソース データセットを使用するように、 **[デバッグ設定]** を戻します。 次の図の手順に進むことができます。<br/>
 
-        ![ソース スキーマをカスタマイズする最初のオプションの 2 番目の部分を示すスクリーンショット。](./media/data-flow-troubleshoot-connector-format/customize-schema-option-1-2.png) <br/>   
+        :::image type="content" source="./media/data-flow-troubleshoot-connector-format/customize-schema-option-1-2.png" alt-text="ソース スキーマをカスタマイズする最初のオプションの 2 番目の部分を示すスクリーンショット。"::: <br/>   
          1. データ フロー キャンバスで **[デバッグ設定]** を選択します。
          1. ポップアップ ウィンドウで、 **[cosmosSource]** タブの下にある **[ソース データセット]** を選択します。
          1. **[Save]\(保存\)** を選択して設定を保存します。<br/>
@@ -92,7 +92,7 @@ ADF データ フローを使用して Cosmos DB または JSON から他のデ�
 
 - **オプション 2**: ソース データのスキーマと DSL 言語を使い慣れている場合は、データ フローのソース スクリプトを手動で更新して、データを読み取るための追加/欠落列を追加することができます。 例を次の図に示します。 
 
-    ![ソース スキーマをカスタマイズする 2 番目のオプションを示すスクリーンショット。](./media/data-flow-troubleshoot-connector-format/customize-schema-option-2.png)
+    :::image type="content" source="./media/data-flow-troubleshoot-connector-format/customize-schema-option-2.png" alt-text="ソース スキーマをカスタマイズする 2 番目のオプションを示すスクリーンショット。":::
 
 ### <a name="support-map-type-in-the-source"></a>ソースでの map 型のサポート
 
@@ -102,7 +102,7 @@ ADF データ フローでは、Cosmos DB または JSON ソースで map デー
 #### <a name="cause"></a>原因
 Cosmos DB と JSON では、これらはスキーマ フリー接続です。関連する Spark コネクタではサンプル データを使用してスキーマが推論され、そのスキーマが Cosmos DB/JSON 送信元スキーマとして使用されます。 スキーマを推論するとき、Cosmos DB/JSON Spark コネクタでは、オブジェクト データは map データ型ではなく構造体としてのみ推論できます。そのため、map 型を直接サポートすることはできません。
 
-#### <a name="recommendation"></a>推奨事項 
+#### <a name="recommendation"></a>推奨 
 この問題を解決するには、次の例と手順を参照して、Cosmos DB/JSON ソースのスクリプト (DSL) を手動で更新し、map データ型がサポートされるようにします。
 
 **例**:
@@ -119,7 +119,7 @@ Cosmos DB と JSON では、これらはスキーマ フリー接続です。関
 
 map 型のサポート:
 
-|Type |map 型のサポートの有無   |コメント|
+|型 |map 型のサポートの有無   |コメント|
 |-------------------------|-----------|------------|
 |Excel、CSV  |いいえ      |どちらも、プリミティブ型の表形式データ ソースであるため、map 型をサポートする必要はありません。 |
 |Orc、Avro |はい |[なし] :|
@@ -247,7 +247,7 @@ Azure PostgreSQL サーバーにフレキシブル サーバーまたは Hypersc
 - [MCW-Real-time-data-with-Azure-Database-for-PostgreSQL-Hyperscale](https://github.com/microsoft/MCW-Real-time-data-with-Azure-Database-for-PostgreSQL-Hyperscale/blob/master/Hands-on%20lab/HOL%20step-by%20step%20-%20Real-time%20data%20with%20Azure%20Database%20for%20PostgreSQL%20Hyperscale.md)<br/>
     この記事の次の図の内容を参照してください。<br/>
 
-    ![上の記事の参照内容を示すスクリーンショット。](./media/data-flow-troubleshoot-connector-format/handshake-failure-cause-2.png)
+    :::image type="content" source="./media/data-flow-troubleshoot-connector-format/handshake-failure-cause-2.png" alt-text="上の記事の参照内容を示すスクリーンショット。":::
 
 #### <a name="recommendation"></a>推奨
 コピー アクティビティを使用して、この問題のブロック解除を試すことができます。 
@@ -395,7 +395,7 @@ Azure Synapse Analytics を使用すると、リンク サービスが実際に�
 #### <a name="symptoms"></a>現象
 Synapse をデータ フローのソースまたはシンクとして使用して、データのプレビュー、デバッグまたはトリガーの実行などを行い、ステージングで PolyBase を使用できるようにすると、マネージド ID (MI) 認証を使用するためにステージング ストアのリンク サービス (BLOB、Gen2 など) が作成されます。ジョブは、次の図に示されているエラーで失敗する場合があります。 <br/>
 
-![サービス ID エラーを示すスクリーンショット。](./media/data-flow-troubleshoot-connector-format/service-identity-error.png)
+:::image type="content" source="./media/data-flow-troubleshoot-connector-format/service-identity-error.png" alt-text="サービス ID エラーを示すスクリーンショット。":::
 
 #### <a name="error-message"></a>エラー メッセージ
 `shaded.msdataflow.com.microsoft.sqlserver.jdbc.SQLServerException: Managed Service Identity has not been enabled on this server. Please enable Managed Service Identity and try again.`
@@ -480,7 +480,7 @@ model.json ファイルの最終的な名前に特殊文字が含まれている
 #### <a name="symptoms"></a>現象
 CDM に manifest.json を使用すると、データ プレビューに、またはパイプラインの実行後にデータが表示されません。 ヘッダーのみが表示されます。 この問題は、次の図で確認できます。<br/>
 
-![データが出力されない現象を示しているスクリーンショット。](./media/data-flow-troubleshoot-connector-format/no-data-output.png)
+:::image type="content" source="./media/data-flow-troubleshoot-connector-format/no-data-output.png" alt-text="データが出力されない現象を示しているスクリーンショット。":::
 
 #### <a name="cause"></a>原因
 マニフェスト ドキュメントに、CDM フォルダーが記述されています。たとえば、フォルダー内にあるエンティティ、それらのエンティティの参照、およびこのインスタンスに対応するデータなどです。 マニフェスト ドキュメントには、データの読み取り先を ADF に示す `dataPartitions` 情報がありません。この情報が空であるため、データが返されません。 
@@ -495,11 +495,11 @@ CDM エンティティの 1 つの属性 (文字列型) にデータとして JS
 
 - CSV ソース データ (2 番目の列を参照): <br/>
 
-    ![CSV ソース データ内の属性を示すスクリーンショット。](./media/data-flow-troubleshoot-connector-format/json-array-csv.png)
+    :::image type="content" source="./media/data-flow-troubleshoot-connector-format/json-array-csv.png" alt-text="CSV ソース データ内の属性を示すスクリーンショット。":::
 
 - CDM ソース データ プレビュー: <br/>
 
-    ![CDM ソース データ内の個別の列を示すスクリーンショット。](./media/data-flow-troubleshoot-connector-format/json-array-cdm.png)
+    :::image type="content" source="./media/data-flow-troubleshoot-connector-format/json-array-cdm.png" alt-text="CDM ソース データ内の個別の列を示すスクリーンショット。":::
 
  
 また、誤差の列をマップし、データ フロー式を使用して、この属性を配列として変換することもできます。 ただし、この属性は読み取り時に別の列として読み取られるため、配列への変換は機能しません。  
@@ -538,7 +538,7 @@ Power BI によって生成された model.json で CDM を使用します。 �
 #### <a name="symptoms"></a>現象
 モデル形式のデータ フローで CDM を使用すると、データをプレビューできず、次のエラーが発生します。`DF-CDM_005 The corpus path is null or empty` エラーを次の図に示します。  
 
-![コーパス パス エラーを示すスクリーンショット。](./media/data-flow-troubleshoot-connector-format/corpus-path-error.png)
+:::image type="content" source="./media/data-flow-troubleshoot-connector-format/corpus-path-error.png" alt-text="コーパス パス エラーを示すスクリーンショット。":::
 
 #### <a name="cause"></a>原因
 model.json のデータ パーティション パスが、データ レイクではなく BLOB ストレージの場所を指しています。 この場所には、ADLS Gen2 の **dfs.core.windows.net** のベース URL を指定する必要があります。 
@@ -546,14 +546,14 @@ model.json のデータ パーティション パスが、データ レイクで
 #### <a name="recommendation"></a>推奨
 この問題を解決するには、「[ADF によりインライン データセットと Common Data Model のサポートがデータ フローに追加される](https://techcommunity.microsoft.com/t5/azure-data-factory/adf-adds-support-for-inline-datasets-and-common-data-model-to/ba-p/1441798)」を参照してください。次の図は、この記事のコーパス パス エラーを修正する方法を示しています。
 
-![コーパス パス エラーの修正方法を示すスクリーンショット。](./media/data-flow-troubleshoot-connector-format/fix-format-issue.png)
+:::image type="content" source="./media/data-flow-troubleshoot-connector-format/fix-format-issue.png" alt-text="コーパス パス エラーの修正方法を示すスクリーンショット。":::
 
 ### <a name="unable-to-read-csv-data-files"></a>CSV データ ファイルが読み取れない
 
 #### <a name="symptoms"></a>現象 
 マニフェストをソースとして持つ共通データ モデルとしてインライン データセットを使用し、エントリ マニフェスト ファイル、ルート パス、エンティティ名、およびパスを指定しました。 マニフェストには、CSV ファイルの場所を含むデータ パーティションがあります。 一方、エンティティ スキーマと csv スキーマは同一で、すべての検証は成功しました。 ただし、データ プレビューでは、データではなくスキーマのみが読み込まれ、データは非表示になります。これを次の図に示します。
 
-![データ ファイルを読み取れない問題を示すスクリーンショット。](./media/data-flow-troubleshoot-connector-format/unable-read-data.png)
+:::image type="content" source="./media/data-flow-troubleshoot-connector-format/unable-read-data.png" alt-text="データ ファイルを読み取れない問題を示すスクリーンショット。":::
 
 #### <a name="cause"></a>原因
 CDM フォルダーは論理モデルと物理モデルに分離されていないため、CDM フォルダーには物理モデルのみが存在します。 「[論理定義](/common-data-model/sdk/logical-definitions)」と「[論理エンティティ定義の解決](/common-data-model/sdk/convert-logical-entities-resolved-entities)」の 2 つの記事でその違いを説明しています。<br/> 
@@ -613,11 +613,11 @@ CDM フォルダーは論理モデルと物理モデルに分離されていな�
 データ フローを使用して、スキーマが異なる CSV や Excel などのファイルを読み取ると、データ フローのデバッグ、サンドボックス、またはアクティビティの実行が失敗します。
 - CSV の場合、ファイルのスキーマが異なると、データの不整合が発生します。 
 
-    ![1 番目のスキーマ エラーを示すスクリーンショット。](./media/data-flow-troubleshoot-connector-format/schema-error-1.png)
+    :::image type="content" source="./media/data-flow-troubleshoot-connector-format/schema-error-1.png" alt-text="1 番目のスキーマ エラーを示すスクリーンショット。":::
 
 - Excel の場合、ファイルのスキーマが異なるとエラーが発生します。
 
-    ![2 番目のスキーマ エラーを示すスクリーンショット。](./media/data-flow-troubleshoot-connector-format/schema-error-2.png)
+    :::image type="content" source="./media/data-flow-troubleshoot-connector-format/schema-error-2.png" alt-text="2 番目のスキーマ エラーを示すスクリーンショット。":::
 
 #### <a name="cause"></a>原因
 

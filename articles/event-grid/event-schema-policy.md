@@ -4,13 +4,13 @@ description: この記事では、Event Grid イベント ソースとして Azu
 ms.topic: conceptual
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 03/29/2021
-ms.openlocfilehash: 7723b618910f52d58204711468b482db85ab502c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 09/15/2021
+ms.openlocfilehash: 3b5c984ca1374c50a312665c3f5e3bb063ed8feb
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105734914"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128589779"
 ---
 # <a name="azure-policy-as-an-event-grid-source"></a>Event Grid ソースとしての Azure Policy
 
@@ -128,7 +128,7 @@ Azure Policy から出力されるイベントの種類は次のとおりです�
 
 イベントのトップレベルのデータを次に示します。
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | 説明 |
 | -------- | ---- | ----------- |
 | `topic` | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
 | `subject` | string | コンプライアンス状態の変更の対象となるリソースの完全修飾 ID。リソース名とリソースの種類が含まれます。 次の形式が使用されます: `/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroup>/providers/<ProviderNamespace>/<ResourceType>/<ResourceName>` |
@@ -143,7 +143,7 @@ Azure Policy から出力されるイベントの種類は次のとおりです�
 
 イベントのトップレベルのデータを次に示します。
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | 説明 |
 | -------- | ---- | ----------- |
 | `source` | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
 | `subject` | string | コンプライアンス状態の変更の対象となるリソースの完全修飾 ID。リソース名とリソースの種類が含まれます。 次の形式が使用されます: `/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroup>/providers/<ProviderNamespace>/<ResourceType>/<ResourceName>` |
@@ -157,15 +157,15 @@ Azure Policy から出力されるイベントの種類は次のとおりです�
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | 説明 |
 | -------- | ---- | ----------- |
-| `timestamp` | string | リソースが Azure Policy によってスキャンされた時刻 (UTC)。 イベントを並べ替えるには、このプロパティを、トップレベルの `eventTime` または `time` プロパティの代わりに使用します。 |
+| `timestamp` | string | リソースが Azure Policy によってスキャンされた時刻 (UTC)。 イベントを並べ替えるには、このプロパティを、最上位レベルの `eventTime` または `time` プロパティの代わりに使用します。 |
 | `policyAssignmentId` | string | ポリシー割り当てのリソース ID。 |
 | `policyDefinitionId` | string | ポリシー定義のリソース ID。 |
 | `policyDefinitionReferenceId` | string | イニシアチブ定義内のポリシー定義の参照 ID (ポリシー割り当てがイニシアチブの場合)。 空の場合もあります。 |
 | `complianceState` | string | ポリシー割り当てに関するリソースのコンプライアンス状態。 |
 | `subscriptionId` | string | リソースのサブスクリプション ID。 |
-| `complianceReasonCode` | string | コンプライアンスの理由コード。 空の場合もあります。 |
+| `complianceReasonCode` | string | コンプライアンスの理由コード 空の場合もあります。 |
 
 ## <a name="next-steps"></a>次のステップ
 

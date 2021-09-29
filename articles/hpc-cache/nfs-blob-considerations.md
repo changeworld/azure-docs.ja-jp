@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 07/12/2021
 ms.author: v-erkel
-ms.openlocfilehash: 70b1dc3e2de6c70a6b59aa739a9bed254295a4f9
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 090003e25c2d8ca13be27bf94bc12b4941cda798
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114293430"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124814644"
 ---
 # <a name="use-nfs-mounted-blob-storage-with-azure-hpc-cache"></a>NFS でマウントされた BLOB ストレージを Azure HPC Cache で使用する
 
@@ -38,7 +38,7 @@ HPC Cache では、ADLS-NFS ストレージ ターゲットの厳密な整合性
 ## <a name="pre-load-data-with-nfs-protocol"></a>NFS プロトコルを使用してデータを事前に読み込む
 <!-- cross-referenced from hpc-cache-ingest.md and here -->
 
-NFS 対応 BLOB コンテナーで ''*ファイルを編集できるのは、作成時に使用したものと同じプロトコルでのみです*''。 つまり、Azure REST API を使用してコンテナーを設定した場合、NFS を使用してそれらのファイルを更新することはできません。 Azure HPC Cache では NFS のみを使用するため、Azure REST API で作成されたファイルを編集することはできません。 ([BLOB ストレージ API に関する既知の問題](../storage/blobs/network-file-system-protocol-known-issues.md#blob-storage-apis)について確認してください)
+NFS 対応 BLOB コンテナーで ''*ファイルを編集できるのは、作成時に使用したものと同じプロトコルでのみです*''。 つまり、Azure REST API を使用してコンテナーを設定した場合、NFS を使用してそれらのファイルを更新することはできません。 Azure HPC Cache では NFS のみを使用するため、Azure REST API で作成されたファイルを編集することはできません。 ([BLOB ストレージ API に関する既知の問題](../storage/blobs/data-lake-storage-known-issues.md#blob-storage-apis)について確認してください)
 
 コンテナーが空の場合、またはファイルが NFS を使用して作成された場合、キャッシュに問題はありません。
 

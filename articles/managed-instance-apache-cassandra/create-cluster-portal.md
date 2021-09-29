@@ -5,17 +5,17 @@ author: TheovanKraay
 ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
-ms.date: 03/02/2021
+ms.date: 09/08/2021
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 67f317594b257776a3a8ac8c257281352516bfee
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 468f5141d7e28d387719df6bddbf30f5810c5955
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121749475"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128557248"
 ---
 # <a name="quickstart-create-an-azure-managed-instance-for-apache-cassandra-cluster-from-the-azure-portal-preview"></a>クイックスタート: Azure portal から Azure Managed Instance for Apache Cassandra クラスターを作成する (プレビュー)
- 
+
 Azure Managed Instance for Apache Cassandra では、マネージド オープンソースの Apache Cassandra データセンターのデプロイとスケーリングの自動操作が提供されます。これにより、ハイブリッド シナリオが推進され、継続的なメンテナンスが削減されます。
 
 > [!IMPORTANT]
@@ -52,8 +52,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    * **[Initial Cassandra admin password]\(最初の Cassandra 管理者パスワード\)** - クラスターの作成に使用されるパスワード。
    * **[Confirm Cassandra admin password]\(Cassandra 管理者パスワードの確認\)** - パスワードを再入力します。
 
-    > [!NOTE]
-    > パブリック プレビュー期間中は、"*米国東部、米国西部、米国東部 2、米国西部 2、米国中部、米国中南部、北ヨーロッパ、西ヨーロッパ、東南アジア、およびオーストラリア東部*" リージョンでマネージド インスタンス クラスターを作成できます。
+   > [!NOTE]
+   > パブリック プレビュー期間中は、"*米国東部、米国西部、米国東部 2、米国西部 2、米国中部、米国中南部、北ヨーロッパ、西ヨーロッパ、東南アジア、およびオーストラリア東部*" リージョンでマネージド インスタンス クラスターを作成できます。
 
    :::image type="content" source="./media/create-cluster-portal/create-cluster-page.png" alt-text="クラスターの作成フォームに入力する。" lightbox="./media/create-cluster-portal/create-cluster-page.png" border="true":::
 
@@ -63,14 +63,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    :::image type="content" source="./media/create-cluster-portal/networking.png" alt-text="ネットワークの詳細を構成する。" lightbox="./media/create-cluster-portal/networking.png" border="true":::
 
-    > [!NOTE]
-    > Azure Managed Instance for Apache Cassandra をデプロイするには、インターネットへのアクセスが必要です。 インターネットへのアクセスが制限されている環境では、デプロイは失敗します。 Managed Cassandra が適切に機能するために必要な、次の重要な Azure サービスへのアクセスが VNet 内でブロックされていないことを確認します。
-    > - Azure Storage
-    > - Azure KeyVault
-    > - Azure 仮想マシン スケール セット
-    > - Azure 監視
-    > - Azure Active Directory
-    > - Azure Security
+   > [!NOTE]
+   > Azure Managed Instance for Apache Cassandra をデプロイするには、インターネットへのアクセスが必要です。 インターネットへのアクセスが制限されている環境では、デプロイは失敗します。 Managed Cassandra が適切に機能するために必要な、次の重要な Azure サービスへのアクセスが VNet 内でブロックされていないことを確認します。
+   > - Azure Storage
+   > - Azure KeyVault
+   > - Azure 仮想マシン スケール セット
+   > - Azure 監視
+   > - Azure Active Directory
+   > - Azure Security
 
 1. 最後の手順で新しい VNet を作成した場合は、手順 8. に進みます。 既存の VNet を選択した場合は、クラスターを作成する前に、仮想ネットワークとサブネットに特別なアクセス許可を適用する必要があります。 そのためには、`az role assignment create` コマンドを使用します。`<subscription ID>`、`<resource group name>`、`<VNet name>` は、適切な値に置き換えてください。
 
@@ -83,11 +83,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. これでネットワークが完成しました。 **[確認および作成]**  >  **[作成]** をクリックします。
 
-    > [!NOTE]
-    > クラスターの作成には、最大 15 分かかることがあります。
+   > [!NOTE]
+   > クラスターの作成には、最大 15 分かかることがあります。
 
    :::image type="content" source="./media/create-cluster-portal/review-create.png" alt-text="概要を確認して、クラスターを作成する。" lightbox="./media/create-cluster-portal/review-create.png" border="true":::
-
 
 1. デプロイが完了したら、リソース グループを調べて、新しく作成されたマネージド インスタンス クラスターを確認します。
 
@@ -96,7 +95,6 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. クラスター ノードを参照するには、クラスターの作成に使用した [仮想ネットワーク] ウィンドウに移動し、 **[概要]** ウィンドウを開いてこれらを表示します。
 
    :::image type="content" source="./media/create-cluster-portal/resources.png" alt-text="クラスター リソースを表示する。" lightbox="./media/create-cluster-portal/resources.png" border="true":::
-
 
 ## <a name="connecting-to-your-cluster"></a>クラスターに接続する
 
@@ -119,7 +117,8 @@ export SSL_VALIDATE=false
 
 # Connect to CQLSH (replace <IP> with the private IP addresses of the nodes in your Datacenter):
 host=("<IP>" "<IP>" "<IP>")
-cqlsh $host 9042 -u cassandra -p cassandra --ssl
+initial_admin_password="Password provided when creating the cluster"
+cqlsh $host 9042 -u cassandra -p $initial_admin_password --ssl
 ```
 
 ## <a name="troubleshooting"></a>トラブルシューティング

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/02/2020
 ms.author: jeedes
-ms.openlocfilehash: ef2151c7f3c03ff8996bae1814e4df638b25490f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 15d82f492a2615bda9f8f0acb2fd942b8acddea1
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92513740"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124821898"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-otsuka-shokai"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Otsuka Shokai の統合
 
@@ -141,7 +141,7 @@ SaaS アカウントの新規登録は、Otsuka Shokai への最初のアクセ�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Otsuka Shokai] タイルをクリックすると、SSO を設定した Otsuka Shokai に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+アクセス パネルで [Otsuka Shokai] タイルをクリックすると、SSO を設定した Otsuka Shokai に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

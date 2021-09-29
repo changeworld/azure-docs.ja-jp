@@ -3,14 +3,14 @@ title: クイック スタート - Azure CLI を使用して Service Bus キュ�
 description: このクイックスタートでは、Service Bus 名前空間とその名前空間のキューを Azure CLI を使用して作成する方法について説明します。
 author: spelluru
 ms.topic: quickstart
-ms.date: 08/12/2020
+ms.date: 09/28/2021
 ms.author: spelluru
-ms.openlocfilehash: 73457e6b2e210bd7db91165e97ce73591d921be4
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 381d4d32d87391c0914d55690a0f4119b95a3488
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110479025"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129211831"
 ---
 # <a name="use-the-azure-cli-to-create-a-service-bus-namespace-and-a-queue"></a>Azure CLI を使用して Service Bus 名前空間とキューを作成する
 このクイックスタートでは、Azure CLI を使用して Service Bus 名前空間とキューを作成する方法について説明します。 また、クライアント アプリケーションがキューとの間でメッセージを送受信するときに使用できる承認の資格情報を取得する方法についても説明します。 

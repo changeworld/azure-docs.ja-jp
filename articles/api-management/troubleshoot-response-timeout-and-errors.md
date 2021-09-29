@@ -1,17 +1,17 @@
 ---
 title: API Management でのクライアント応答のタイムアウトとエラーのトラブルシューティング
 description: API Management での断続的な接続エラーとそれに関連した待ち時間の問題をトラブルシューティングする
-author: vladvino
+author: dlepow
 ms.topic: troubleshooting
 ms.date: 12/04/2020
-ms.author: apimpm
+ms.author: danlep
 ms.service: api-management
-ms.openlocfilehash: 6cace4a02c8d45cacbbc34e9778b5c4a78ada27f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d7b6f8ed20f1af7b4a6f512b9aa4611936f784fd
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100576528"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128623914"
 ---
 # <a name="troubleshooting-client-response-timeouts-and-errors-with-api-management"></a>API Management でのクライアント応答のタイムアウトとエラーのトラブルシューティング
 

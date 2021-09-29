@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/16/2021
 ms.author: jeedes
-ms.openlocfilehash: 6073142b21a28f1242e0e6ec65ee2945a354b60b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: f4cef83309d1579a9360738193c0ea4771883ae1
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104592508"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124813915"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-umbrella-admin-sso"></a>チュートリアル: Azure Active Directory と Cisco Umbrella Admin SSO の統合
 
@@ -188,7 +188,7 @@ Cisco Umbrella Admin SSO の場合、プロビジョニングは手動で行い�
 
 * Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した Cisco Umbrella Admin SSO に自動的にサインインされます。 
 
-また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [Cisco Umbrella Admin SSO] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Cisco Umbrella Admin SSO に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [Cisco Umbrella Admin SSO] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Cisco Umbrella Admin SSO に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -8,15 +8,14 @@ ms.topic: include
 ms.date: 07/22/2020
 ms.author: baanders
 ms.custom: include file
-ms.openlocfilehash: 5c21093edc66ed47c600e7156081f90136cfcc0d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 012e4f2541ff77e5470fce3eb8c8a44f68f43569
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98035276"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128910327"
 ---
 > [!div class="op_single_selector"]
 > * [ポータル](../articles/digital-twins/how-to-set-up-instance-portal.md)
 > * [CLI](../articles/digital-twins/how-to-set-up-instance-cli.md)
 > * [PowerShell](../articles/digital-twins/how-to-set-up-instance-powershell.md)
-> * [スクリプト化](../articles/digital-twins/how-to-set-up-instance-scripted.md)

@@ -1,26 +1,19 @@
 ---
 title: Azure Sentinel UEBA エンリッチメント リファレンス | Microsoft Docs
 description: この記事では、Azure Sentinel のエンティティ行動分析によって生成されるエンティティ エンリッチメントを示します。
-services: sentinel
-cloud: na
-documentationcenter: na
 author: yelevin
 manager: rkarlin
-ms.assetid: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: reference
 ms.date: 05/10/2021
 ms.author: yelevin
-ms.openlocfilehash: 3253a399015e533fc299bc7a338ce091769f4c65
-ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
+ms.openlocfilehash: 6420ef1345e20c2aec511a0a0284753a78895020
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114721686"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128627351"
 ---
 # <a name="azure-sentinel-ueba-enrichments-reference"></a>Azure Sentinel UEBA エンリッチメント リファレンス
 
@@ -199,7 +192,7 @@ BehaviorAnalytics テーブルに含まれる以下の 3 つの動的フィー�
 
 | エンリッチメント名 | [ベースライン](#baseline-explained) (日数) | 説明 | 値の例 |
 | --- | --- | --- | --- |
-| **Last time user performed action** (ユーザーによる最後のアクションの実行)<br>*(LastTimeUserPerformedAction)* | 180 | ユーザーが同じアクションを最後に実行した日時。 | <Timestamp> |
+| **Last time user performed action** (ユーザーによる最後のアクションの実行)<br>*(LastTimeUserPerformedAction)* | 180 | ユーザーが同じアクションを最後に実行した日時。 | \<Timestamp\> |
 | **Similar action wasn't performed in the past** (過去に類似のものが実行されたことのないアクション)<br>*(SimilarActionWasn'tPerformedInThePast)* | 30 | 同じリソース プロバイダー内に、そのユーザーによって実行されたアクションはありません。 | True、False |
 | **Source IP location** (ソース IP の場所)<br>*(SourceIPLocation)* | *N/A* | アクションのソース IP から解決された国。 | [Surrey、England] |
 | **Uncommon high volume of operations** (一般的でない大量の操作)<br>*(UncommonHighVolumeOfOperations)* | 7 | ユーザーが同じプロバイダー内で類似の操作を大量に実行しました。 | True、False |

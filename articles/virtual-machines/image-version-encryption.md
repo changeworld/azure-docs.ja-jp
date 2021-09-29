@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.date: 7/1/2021
 ms.author: olayemio
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 936eb725836b8191aa35045d37882c859c9c058a
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: 46fe21c47db436f1abedb60b3468b8a2e69cd432
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123449173"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128583494"
 ---
-# <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>プレビュー:イメージの暗号化にカスタマー マネージド キーを使用する
+# <a name="use-customer-managed-keys-for-encrypting-images"></a>イメージの暗号化にカスタマー マネージド キーを使用する
 
 **適用対象:** :heavy_check_mark: Linux VM :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
 

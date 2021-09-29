@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/26/2021
-ms.openlocfilehash: a075a84322dc11be352470d50478979b975f0292
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 7eb4affb75816789dca094f9ec6e2ae19a222285
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108140895"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128582383"
 ---
 # <a name="entities-in-luis"></a>LUIS のエンティティ
 
@@ -95,7 +95,7 @@ pattern.Any エンティティは、エンティティの開始位置と終了�
 
 機械学習エンティティの詳細については、[こちら](./reference-entity-machine-learned-entity.md)を参照してください。
 
-詳細については、[機械学習エンティティのリファレンス記事](./reference-entity-pattern-any.md)をご覧ください。
+詳細については、[機械学習エンティティのリファレンス記事](./reference-entity-machine-learned-entity.md)をご覧ください。
 
 #### <a name="ml-entity-with-structure"></a>構造がある ML エンティティ
 

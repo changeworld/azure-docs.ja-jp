@@ -9,15 +9,15 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 06/28/2019
+ms.date: 09/27/2021
 ms.author: ryanwi
 ROBOTS: NOINDEX
-ms.openlocfilehash: 51d7c1e433e72a393178cf429759b5e9a6479e88
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f2fb5582a1d386a50c83d44e85d409e6b941388a
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101648681"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129155270"
 ---
 # <a name="how-to-recognize-differences-between-delegated-and-application-permissions"></a>委任されたアクセス許可とアプリケーションのアクセス許可の違いを識別する方法
 

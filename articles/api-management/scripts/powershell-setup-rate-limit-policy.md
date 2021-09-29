@@ -3,21 +3,21 @@ title: Azure PowerShell のサンプル スクリプト - レート制限ポリ�
 description: Azure PowerShell を使用してレート制限ポリシーを設定する方法について説明します。 サンプル スクリプトを参照し、使用可能なその他のリソースを確認してください。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 manager: cfowler
 editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.topic: sample
 ms.date: 11/16/2017
-ms.author: apimpm
+ms.author: danlep
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: f78639b4f693b5dd0d414bf603b5518ddd2bf5da
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 9882e056968b501e1aabd4e98f4ae9b1178b7c15
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107818586"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128603222"
 ---
 # <a name="set-up-rate-limit-policy"></a>レート制限ポリシーのセットアップ
 

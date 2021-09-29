@@ -3,16 +3,16 @@ title: 開発者ポータルのウィジェットを投稿する方法
 titleSuffix: Azure API Management
 description: API Management 開発者ポータル リポジトリにウィジェットを投稿するときに従うべき推奨ガイドラインについて説明します。
 author: dlepow
-ms.author: apimpm
+ms.author: danlep
 ms.date: 03/25/2021
 ms.service: api-management
 ms.topic: how-to
-ms.openlocfilehash: c4d3ed2aeaac57f721d23d7c7aa1c70ef14e4294
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: ae491880dc7dc69a3930e6c967fb7a660db75f38
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107741374"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128631478"
 ---
 # <a name="how-to-contribute-widgets-to-the-api-management-developer-portal"></a>API Management 開発者ポータルにウィジェットを投稿する方法
 

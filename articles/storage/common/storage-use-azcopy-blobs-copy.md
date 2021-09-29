@@ -8,46 +8,46 @@ ms.date: 04/02/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 980c4da25e681b8bb2fb7a608481160a2c0857f2
-ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
+ms.openlocfilehash: 1effb888e1210b431817be2ccf05ddc7d521362d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111854560"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128636723"
 ---
 # <a name="copy-blobs-between-azure-storage-accounts-by-using-azcopy"></a>AzCopy を使用して Azure ストレージ アカウント間で BLOB をコピーする
 
-AzCopy v10 コマンドライン ユーティリティを使用して、ストレージ アカウント間で BLOB、ディレクトリ、コンテナーをコピーできます。 
+AzCopy v10 コマンドライン ユーティリティを使用して、ストレージ アカウント間で BLOB、ディレクトリ、コンテナーをコピーできます。
 
 ファイルのアップロード、BLOB のダウンロード、および BLOB ストレージとの同期など、他の種類のタスクの例については、この記事の「[次のステップ](#next-steps)」セクションに記載されているリンクを参照してください。
 
 AzCopy では、[サーバー間](/rest/api/storageservices/put-block-from-url) [API](/rest/api/storageservices/put-page-from-url) が使用されます。そのため、データはストレージ サーバー間で直接コピーされます。 これらのコピー操作では、コンピューターのネットワーク帯域幅が使用されません。
 
-AzCopy のダウンロード方法と、ストレージ サービスに認証資格情報を提供する方法については、「[AzCopy を使ってみる](storage-use-azcopy-v10.md)」を参照してください。 
+AzCopy のダウンロード方法と、ストレージ サービスに認証資格情報を提供する方法については、「[AzCopy を使ってみる](storage-use-azcopy-v10.md)」を参照してください。
 
 ## <a name="guidelines"></a>ガイドライン
 
-AzCopy コマンドには次のガイドラインを適用します。 
+AzCopy コマンドには次のガイドラインを適用します。
 
 - クライアントは、ソース ストレージ アカウントと宛先ストレージ アカウントの両方へのネットワーク アクセスを持っている必要があります。 各ストレージ アカウントのネットワーク設定を構成する方法の詳細については、「[Azure Storage ファイアウォールおよび仮想ネットワークを構成する](storage-network-security.md?toc=/azure/storage/blobs/toc.json)」を参照してください。
 
-- 各ソース URL に SAS トークンを追加します。 
+- 各ソース URL に SAS トークンを追加します。
 
-  Azure Active Directory (Azure AD) を使用して認証資格情報を提供する場合、SAS トークンを省略できるのは宛先 URL だけです。 宛先アカウントに適切なロールが設定されていることを確認します。 「[オプション 1: Azure Active Directory を使用する](storage-use-azcopy-v10.md?toc=/azure/storage/blobs/toc.json#option-1-use-azure-active-directory)」を参照してください。 
+  Azure Active Directory (Azure AD) を使用して認証資格情報を提供する場合、SAS トークンを省略できるのは宛先 URL だけです。 宛先アカウントに適切なロールが設定されていることを確認します。 「[オプション 1: Azure Active Directory を使用する](storage-use-azcopy-v10.md?toc=/azure/storage/blobs/toc.json#option-1-use-azure-active-directory)」を参照してください。
 
   この記事の例では、Azure AD を使用して ID を認証していることを前提としているため、例では接続先 URL の SAS トークンが省略されています。
 
--  Premium ブロック BLOB ストレージ アカウントにコピーする場合は、`s2s-preserve-access-tier` を `false` に設定することで (例: `--s2s-preserve-access-tier=false`)、コピー操作から BLOB のアクセス層を除外します。 Premium ブロック BLOB ストレージ アカウントでは、アクセス層はサポートされません。 
+-  Premium ブロック BLOB ストレージ アカウントにコピーする場合は、`s2s-preserve-access-tier` を `false` に設定することで (例: `--s2s-preserve-access-tier=false`)、コピー操作から BLOB のアクセス層を除外します。 Premium ブロック BLOB ストレージ アカウントでは、アクセス層はサポートされません。
 
-- 階層型名前空間を持つアカウントとの間でコピーを行う場合は、URL 構文で `dfs.core.windows.net` ではなく `blob.core.windows.net` を使用します。 [Data Lake Storage のマルチプロトコル アクセス](../blobs/data-lake-storage-multi-protocol-access.md)では、`blob.core.windows.net` を使用できます。これは、アカウントからアカウントへのコピー シナリオでサポートされている唯一の構文です。 
+- 階層型名前空間を持つアカウントとの間でコピーを行う場合は、URL 構文で `dfs.core.windows.net` ではなく `blob.core.windows.net` を使用します。 [Data Lake Storage のマルチプロトコル アクセス](../blobs/data-lake-storage-multi-protocol-access.md)では、`blob.core.windows.net` を使用できます。これは、アカウントからアカウントへのコピー シナリオでサポートされている唯一の構文です。
 
-- `AZCOPY_CONCURRENCY_VALUE` 環境変数の値を設定することによって、コピー操作のスループットを上げることができます。 詳細については、[コンカレンシーの向上](storage-use-azcopy-optimize.md#increase-concurrency)に関するページを参照してください。 
+- `AZCOPY_CONCURRENCY_VALUE` 環境変数の値を設定することによって、コピー操作のスループットを上げることができます。 詳細については、[コンカレンシーの向上](storage-use-azcopy-optimize.md#increase-concurrency)に関するページを参照してください。
 
 - ソース BLOB にインデックス タグがあり、それらのタグを保持する必要がある場合は、コピー先 BLOB に再適用する必要があります。 インデックス タグを設定する方法の詳細については、この記事の[インデックス タグがある BLOB を別のストレージ アカウントにコピーする](#copy-between-accounts-and-add-index-tags)方法に関するセクションを参照してください。
 
 ## <a name="copy-a-blob"></a>BLOB をコピーする
 
-[azcopy copy](storage-ref-azcopy-copy.md) コマンドを使用して、BLOB を別のストレージ アカウントにコピーします。 
+[azcopy copy](storage-ref-azcopy-copy.md) コマンドを使用して、BLOB を別のストレージ アカウントにコピーします。
 
 > [!TIP]
 > この例では、パス引数を単一引用符 ('') で囲んでいます。 Windows コマンド シェル (cmd.exe) を除き、すべてのコマンド シェルで単一引用符を使用します。 Windows コマンド シェル (cmd.exe) を使用している場合は、単一引用符 ('') ではなく、二重引用符 ("") でパス引数を囲みます。
@@ -62,11 +62,11 @@ AzCopy コマンドには次のガイドラインを適用します。
 azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer/myTextFile.txt'
 ```
 
-コピー操作は同期しているため、コマンドが返されると、それはすべてのファイルがコピーされていることを示します。 
+コピー操作は同期しているため、コマンドが返されると、それはすべてのファイルがコピーされていることを示します。
 
 ## <a name="copy-a-directory"></a>ディレクトリをコピーする
 
-[azcopy copy](storage-ref-azcopy-copy.md) コマンドを使用して、ディレクトリを別のストレージ アカウントにコピーします。 
+[azcopy copy](storage-ref-azcopy-copy.md) コマンドを使用して、ディレクトリを別のストレージ アカウントにコピーします。
 
 > [!TIP]
 > この例では、パス引数を単一引用符 ('') で囲んでいます。 Windows コマンド シェル (cmd.exe) を除き、すべてのコマンド シェルで単一引用符を使用します。 Windows コマンド シェル (cmd.exe) を使用している場合は、単一引用符 ('') ではなく、二重引用符 ("") でパス引数を囲みます。
@@ -129,9 +129,9 @@ BLOB を別のストレージ アカウントにコピーし、[BLOB インデ�
 
 Azure AD 承認を使用している場合は、セキュリティ プリンシパルに[ストレージ Blob データ所有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)ロールが割り当てられているか、カスタム Azure ロールを使用して `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` [Azure リソース プロバイダーの操作](../../role-based-access-control/resource-provider-operations.md#microsoftstorage)に対するアクセス許可が付与されている必要があります。 Shared Access Signature (SAS) トークンを使用している場合、そのトークンは、`t` SAS アクセス許可を使用して BLOB のタグへのアクセスを提供する必要があります。
 
-タグを追加するには、URL でエンコードされたキーと値のペアと共に `--blob-tags` オプションを使用します。 
+タグを追加するには、URL でエンコードされたキーと値のペアと共に `--blob-tags` オプションを使用します。
 
-たとえば、キー `my tag` と値 `my tag value` を追加するには、宛先パラメーターに `--blob-tags='my%20tag=my%20tag%20value'` を追加します。 
+たとえば、キー `my tag` と値 `my tag value` を追加するには、宛先パラメーターに `--blob-tags='my%20tag=my%20tag%20value'` を追加します。
 
 複数のインデックス タグを区切るには、アンパサンド (`&`) を使用します。  たとえば、キー `my second tag` と値 `my second tag value` を追加する場合、完全なオプション文字列は `--blob-tags='my%20tag=my%20tag%20value&my%20second%20tag=my%20second%20tag%20value'` になります。
 
@@ -180,7 +180,7 @@ azcopy copy 'https://mysourceaccount.blob.core.windows.net/?sv=2018-03-28&ss=bfq
 |特定のアクセス層 (アーカイブ層など) にコピーします。|**--block-blob-tier**=\[None\|Hot\|Cool\|Archive\]|
 |自動的にファイルを圧縮解除します。|**--decompress**=\[gzip\|deflate\]|
 
-完全な一覧については、[オプション](storage-ref-azcopy-copy.md#options)を参照してください。 
+完全な一覧については、[オプション](storage-ref-azcopy-copy.md#options)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

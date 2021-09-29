@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/31/2021
 ms.author: jeedes
-ms.openlocfilehash: 527b2bf9e7f97e0ffffa3d2cab1fae45a6393f49
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 3f4e44664a3d8b4a013bea5fb26ae0b2c5252ca5
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108125501"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124803337"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-captivate-prime"></a>チュートリアル: Azure Active Directory と Adobe Captivate Prime
 
@@ -132,7 +132,7 @@ Adobe Captivate Prime に対して Azure AD SSO を構成してテストする�
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した Adobe Captivate Prime に自動的にサインインされます。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Adobe Captivate Prime] タイルをクリックすると、SSO を設定した Adobe Captivate Prime に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Adobe Captivate Prime] タイルをクリックすると、SSO を設定した Adobe Captivate Prime に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

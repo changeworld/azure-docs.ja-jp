@@ -1,15 +1,16 @@
 ---
 author: linda33wj
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: include
 ms.date: 11/19/2018
 ms.author: jingwang
-ms.openlocfilehash: b7edac28d97ac96bc7ed2910da99ce89d0cf93da
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 5daf2c97591e12f11f5d6ceec502a8996b51f709
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108753167"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128597620"
 ---
 | カテゴリ | データ ストア | ソースとしてサポート | シンクとしてサポート |
 |:--- |:--- |:--- |:--- |

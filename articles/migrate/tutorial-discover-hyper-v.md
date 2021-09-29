@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 03/25/2021
 ms.custom: mvc
-ms.openlocfilehash: 7bdc0008baa1ee03c11aeeba03485fd7cd09e6f9
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 8ee94cf4c02c5535a85b75eec5a60522143a16ce
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122969818"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124748695"
 ---
 # <a name="tutorial-discover-servers-running-on-hyper-v-with-azure-migrate-discovery-and-assessment"></a>チュートリアル: Azure Migrate 検出および評価を使用して Hyper-V で実行されているサーバーを検出する
 
@@ -139,7 +139,7 @@ Azure Migrate には軽量の Azure Migrate アプライアンスが使用され
 
 > [!NOTE]
 > なんらかの理由で、テンプレートを使用してアプライアンスを設定できない場合は、既存の Windows Server 2016 サーバー上で PowerShell スクリプトを使用して設定できます。 [詳細については、こちらを参照してください](deploy-appliance-script.md#set-up-the-appliance-for-hyper-v)。<br/>
-> VHD テンプレートを使用してアプライアンスをデプロイする方法は、Azure Government クラウドではサポートされません。 Azure Government クラウド用のアプライアンスをデプロイする方法について[詳細をご覧ください](/azure/migrate/deploy-appliance-script-government)。
+> VHD テンプレートを使用してアプライアンスをデプロイする方法は、Azure Government クラウドではサポートされません。 Azure Government クラウド用のアプライアンスをデプロイする方法について[詳細をご覧ください](./deploy-appliance-script-government.md)。
 
 このチュートリアルでは、次のように、Hyper-V 環境で実行されているサーバーにアプライアンスを設定します。
 

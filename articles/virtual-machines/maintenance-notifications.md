@@ -3,17 +3,17 @@ title: メンテナンスの通知
 description: Azure で実行されている仮想マシンのメンテナンス通知の概要。
 author: shants123
 ms.service: virtual-machines
-ms.subservice: maintenance-control
+ms.subservice: maintenance
 ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 8/12/2020
 ms.author: shants
-ms.openlocfilehash: bc282833b57b03faf782f40ebb42666899c56e81
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 4330f171b9fe7559a22cb90e6fbd18598f04dd40
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122698783"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129216082"
 ---
 # <a name="handling-planned-maintenance-notifications"></a>計画メンテナンスの通知の処理
 

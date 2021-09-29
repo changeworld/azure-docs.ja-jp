@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 07/06/2021
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur, marsma
-ms.custom: aaddev, fasttrack-edit, contperf-fy21q1, identityplatformtop40
-ms.openlocfilehash: 77737060d8cfc84d9b433d9be2ea5ad9ba11b0a4
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.custom: aaddev, fasttrack-edit, contperf-fy21q1, identityplatformtop40, has-adal-ref
+ms.openlocfilehash: 292bca70ae9ebb8b864e95d9f5eda125a90a597d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121861226"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128632977"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform"></a>Microsoft ID プラットフォームでのアクセス許可と同意
 
@@ -182,6 +182,9 @@ Microsoft のリソースにおける高い特権のアクセス許可には、"
 * `User.Read.All` を使用してすべてのユーザーの完全なプロファイルを読み取る
 * `Directory.ReadWrite.All` を使用した組織のディレクトリへのデータの書き込み
 * `Groups.Read.All` を使用して組織のディレクトリ内の全グループを読み取る
+
+> [!NOTE]
+>Microsoft ID プラットフォームの承認、トークン、または同意エンドポイントへの要求では、スコープ パラメーターでリソース識別子が省略されている場合、リソースは Microsoft Graph と見なされます。 たとえば、`scope=User.Read` は、`https://graph.microsoft.com/User.Read` と同じです。
 
 コンシューマー ユーザーがこの種類のデータへのアプリケーション アクセスを許可する場合がありますが、組織のユーザーは会社の同じ機密データへのアクセスを許可することはできません。 アプリケーションが組織のユーザーにこれらのアクセス許可のいずれかへのアクセスを要求すると、ユーザーは、アプリのアクセス許可に同意する権限がないという内容のエラー メッセージを受け取ります。
 

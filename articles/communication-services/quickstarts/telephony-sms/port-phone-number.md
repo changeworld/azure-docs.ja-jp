@@ -8,13 +8,14 @@ ms.author: rifox
 ms.date: 06/30/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
+ms.subservice: pstn
 ms.custom: references_regions
-ms.openlocfilehash: 4bc923d2d6c9c0fc88f40ed6dd3d6290723a7a1e
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 611f6b50d1d7ab6cd2578ca7d4e56a97f25b6f51
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122969527"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128677019"
 ---
 # <a name="quickstart-port-a-phone-number"></a>クイックスタート: 電話番号を移行する
 

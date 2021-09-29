@@ -9,13 +9,14 @@ ms.author: dademath
 ms.date: 06/30/2021
 ms.topic: overview
 ms.service: azure-communication-services
+ms.subservice: calling
 zone_pivot_groups: acs-web-ios-android
-ms.openlocfilehash: dbc1ad083aa9292836efe257b580987a3c9be25b
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 177fd6ecb1a94542f7d55c5b261aea3052f410fd
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113111750"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128671642"
 ---
 # <a name="get-started-with-the-group-calling-hero-sample"></a>Group Calling Hero Sample を使ってみる
 

@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/21/2021
+ms.date: 09/16/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 329a8340bdb7353553866e2f4182f6df2c60ccce
-ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
+ms.openlocfilehash: 6d7180b92ba4f4dbcc23f19bdc2581072446a15f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2021
-ms.locfileid: "108001306"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128574921"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-facebook-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して Facebook アカウントでのサインアップおよびサインインを設定する
 
@@ -66,7 +66,8 @@ Azure Active Directory B2C (Azure AD B2C) でユーザーが Facebook アカウ�
 ## <a name="configure-facebook-as-an-identity-provider"></a>Facebook を ID プロバイダーとして構成する
 
 1. Azure AD B2C テナントの全体管理者として [Azure Portal](https://portal.azure.com/) にサインインします。
-1. ご利用の Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。そのためには、トップ メニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択して、ご利用のテナントを含むディレクトリを選択します。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
 1. Azure Portal の左上隅の **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
 1. **[ID プロバイダー]** を選択してから、 **[Facebook]** を選択します。
 1. **[名前]** を入力します。 たとえば、「*Facebook*」とします。
@@ -99,15 +100,16 @@ Azure Active Directory B2C (Azure AD B2C) でユーザーが Facebook アカウ�
 Azure AD B2C テナントで前に記録したアプリ シークレットを格納する必要があります。
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
-2. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 上部メニューで **[ディレクトリ + サブスクリプション]** フィルターを選択し、ご利用のテナントが含まれるディレクトリを選択します。
-3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
-4. [概要] ページで、 **[Identity Experience Framework]** を選択します。
-5. **[ポリシー キー]** を選択し、 **[追加]** を選択します。
-6. **オプション** については、`Manual`を選択します。
-7. ポリシー キーの **名前** を入力します。 たとえば、「 `FacebookSecret` 」のように入力します。 プレフィックス `B2C_1A_` がキーの名前に自動的に追加されます。
-8. **[シークレット]** に、前に記録したアプリ シークレットを入力します。
-9. **[キー使用法]** として [`Signature`] を選択します。
-10. **Create** をクリックしてください。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
+1. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
+1. [概要] ページで、 **[Identity Experience Framework]** を選択します。
+1. **[ポリシー キー]** を選択し、 **[追加]** を選択します。
+1. **オプション** については、`Manual`を選択します。
+1. ポリシー キーの **名前** を入力します。 たとえば、「 `FacebookSecret` 」のように入力します。 プレフィックス `B2C_1A_` がキーの名前に自動的に追加されます。
+1. **[シークレット]** に、前に記録したアプリ シークレットを入力します。
+1. **[キー使用法]** として [`Signature`] を選択します。
+1. **Create** をクリックしてください。
 
 ## <a name="configure-a-facebook-account-as-an-identity-provider"></a>ID プロバイダーとして Facebook アカウントを構成する
 

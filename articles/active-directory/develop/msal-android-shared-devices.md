@@ -13,12 +13,12 @@ ms.date: 03/31/2020
 ms.author: marsma
 ms.reviewer: hahamil
 ms.custom: aaddev, identitypla | Azuretformtop40
-ms.openlocfilehash: 005f69473fa238d56cf7d582a8af4000166d6939
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7b1c87c67413f8240746f2a793c913cd4add4865
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105612434"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124787284"
 ---
 # <a name="shared-device-mode-for-android-devices"></a>Android デバイスの共有デバイス モード
 
@@ -31,7 +31,7 @@ ms.locfileid: "105612434"
 共有デバイス モード アプリを作成するには、開発者とクラウド デバイス管理者が協力して作業します。
 
 - 開発者は、単一アカウント アプリ (共有デバイス モードでは複数アカウント アプリはサポートされていません) を記述し、アプリの構成に `"shared_device_mode_supported": true` を追加して、共有デバイスのサインアウトなどを処理するためのコードを記述します。
-- デバイス管理者は、認証アプリをインストールし、その認証アプリを使用してデバイスを共有モードに設定することによって、共有されるデバイスを準備します。 [認証アプリ](../user-help/user-help-auth-app-overview.md)を使用してデバイスを共有モードにすることができるのは、[クラウド デバイス管理者](../roles/permissions-reference.md#cloud-device-administrator)ロールのユーザーだけです。 組織ロールのメンバーシップは、Azure portal で次のコマンドを使用して構成できます。 **[Azure Active Directory]**  >  **[ロールと管理者]**  >  **[クラウド デバイス管理者]** 。
+- デバイス管理者は、認証アプリをインストールし、その認証アプリを使用してデバイスを共有モードに設定することによって、共有されるデバイスを準備します。 [認証アプリ](https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc)を使用してデバイスを共有モードにすることができるのは、[クラウド デバイス管理者](../roles/permissions-reference.md#cloud-device-administrator)ロールのユーザーだけです。 組織ロールのメンバーシップは、Azure portal で次のコマンドを使用して構成できます。 **[Azure Active Directory]**  >  **[ロールと管理者]**  >  **[クラウド デバイス管理者]** 。
 
  この記事では主に、開発者が考慮すべき事項に重点を置いています。
 

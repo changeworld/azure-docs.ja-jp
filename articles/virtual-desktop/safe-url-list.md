@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/04/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 95081b661d4f33577df07420ab194ec48488221a
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: ea5cd9dffeb8efdeb9dc29fa9d38696973285e47
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122768087"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128549238"
 ---
 # <a name="required-url-list"></a>必要な URL リスト
 
@@ -87,7 +87,7 @@ Azure Virtual Desktop 用に作成する Azure 仮想マシンには、Azure コ
 | 168.63.129.16 | 80 | [セッション ホストの正常性の監視](../virtual-network/network-security-groups-overview.md#azure-platform-considerations) | 該当なし |
 
 >[!IMPORTANT]
->Azure Virtual Desktop で FQDN タグがサポートされるようになりました。 詳細については、「[Azure Firewall を使用して Windows Virtual Desktop のデプロイを保護する](../firewall/protect-windows-virtual-desktop.md)」を参照してください。
+>Azure Virtual Desktop で FQDN タグがサポートされるようになりました。 詳細については、「[Azure Firewall を使用して Windows Virtual Desktop のデプロイを保護する](../firewall/protect-azure-virtual-desktop.md)」を参照してください。
 >
 >サービスの問題を防ぐために、URL ではなく FQDN タグまたはサービス タグを使用することをお勧めします。 記載した URL とタグは、Azure Virtual Desktop のサイトとリソースにのみ対応します。 他のサービス (Azure Active Directory など) の URL は含まれません。
 

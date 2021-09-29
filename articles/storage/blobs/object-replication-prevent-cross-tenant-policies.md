@@ -10,12 +10,12 @@ ms.date: 09/02/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: a44ac9aa7e7f8a924621345c3b7316012eeddae1
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: 2fe98c0a15b1ec07ff1608e00aa030fd18360547
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123452375"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128599193"
 ---
 # <a name="prevent-object-replication-across-azure-active-directory-tenants-preview"></a>Azure Active Directory テナント間でのオブジェクト レプリケーションを禁止する (プレビュー)
 
@@ -79,7 +79,7 @@ az storage account create \
     --name <storage-account> \
     --resource-group <resource-group> \
     --location <location> \
-    --sku Standard_LRS 
+    --sku Standard_LRS
     --allow-cross-tenant-replication false
 
 # Read the property for the new storage account
@@ -87,7 +87,7 @@ az storage account show \
     --name <storage-account> \
     --resource-group <resource-group> \
     --query allowCrossTenantReplication \
-    --output tsv 
+    --output tsv
 ```
 
 ---

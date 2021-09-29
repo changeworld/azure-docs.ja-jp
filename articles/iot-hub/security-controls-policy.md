@@ -1,18 +1,18 @@
 ---
 title: Azure IoT Hub 用の Azure Policy 規制コンプライアンス コントロール
 description: Azure IoT Hub に対して使用できる Azure Policy 規制コンプライアンス コントロールの一覧を示します。 これらの組み込みポリシー定義により、Azure リソースのコンプライアンスを管理するための一般的な方法が提供されます。
-ms.date: 09/03/2021
+ms.date: 09/17/2021
 ms.topic: sample
 author: robinsh
 ms.author: robinsh
 ms.service: iot-hub
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: b0207b5d8fc951e1c2e3e550af39c2775ebb51b3
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 81d15488b6485d7213ecfc14ea0582dc01696c55
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123474427"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128622621"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-iot-hub"></a>Azure IoT Hub 用の Azure Policy 規制コンプライアンス コントロール
 

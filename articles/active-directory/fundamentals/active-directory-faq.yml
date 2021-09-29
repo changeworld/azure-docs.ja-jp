@@ -14,12 +14,12 @@ metadata:
   ms.author: ajburnle
   ms.custom: it-pro, seodec18
   ms.collection: M365-identity-device-management
-  ms.openlocfilehash: a60d4a7f59888c7bd19156e567313a0110651753
-  ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+  ms.openlocfilehash: 3eda49497f84c26829a626a243f19c7ac94e3b22
+  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/10/2021
-  ms.locfileid: "111954989"
+  ms.lasthandoff: 09/13/2021
+  ms.locfileid: "124732635"
 title: Azure Active Directory についてよくあるご質問
 summary: >
   Azure Active Directory (Azure AD) は、包括的なサービスとしての ID (IDaaS) ソリューションです。その範囲は ID、アクセス管理、セキュリティのあらゆる面に及びます。
@@ -97,7 +97,7 @@ sections:
       はい。Azure AD には、ユーザーによるアプリケーションのセルフ サービス アクセス用に [Azure AD アクセス パネル](https://myapps.microsoft.com)が用意されています。 Microsoft 365 を利用している方は、これと同じ機能の多くを [Office 365 ポータル](https://portal.office.com)で使用できます。
 
 
-      詳細については、「[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)」を参照してください。
+      詳細については、「[アクセス パネルの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)」を参照してください。
   - question: >
       Azure AD はオンプレミスのインフラストラクチャの管理に役立ちますか?
     answer: "はい。 Azure AD Premium Edition には Azure AD Connect Health が用意されています。 Azure AD Connect Health では、オンプレミスの ID インフラストラクチャと同期サービスを監視、分析できます。  \n\n詳細については、「[クラウド内のオンプレミスの ID インフラストラクチャと同期サービスの監視](../hybrid/whatis-azure-ad-connect.md)」を参照してください。  \n"

@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/22/2020
 ms.author: mbullwin
-ms.openlocfilehash: f526038a37e6f4e4a5d03c516446653a95c08be4
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 13245ac2e9569ee9d984ae0978dca2a93ca735da
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110164796"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128909185"
 ---
 C# 用 Anomaly Detector クライアント ライブラリを使ってみます。 サービスによって提供されるアルゴリズムを使用してパッケージをインストールするには、次の手順に従います。 Anomaly Detector サービスにより、業界、シナリオ、データ量に関係なく、最適なモデルを自動的に使用することで、時系列データ内の異常を検出できます。
 
@@ -23,7 +23,7 @@ C# 用 Anomaly Detector クライアント ライブラリを使ってみます�
 * 時系列で最新のデータ ポイントの異常状態を検出する
 * データセット内の傾向変化点を検出する。
 
-[ライブラリのリファレンス ドキュメント](https://aka.ms/anomaly-detector-dotnet-ref) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/AnomalyDetector) | [パッケージ (NuGet)](https://www.nuget.org/packages/Azure.AI.AnomalyDetector/3.0.0-preview.2) | [GitHub でコードを検索する](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/sdk/csharp-sdk-sample.cs)
+[ライブラリのリファレンス ドキュメント](https://aka.ms/anomaly-detector-dotnet-ref) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-net/tree/main/sdk/anomalydetector) | [パッケージ (NuGet)](https://www.nuget.org/packages/Azure.AI.AnomalyDetector/3.0.0-preview.2) | [GitHub でコードを検索する](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/sdk/csharp-sdk-sample.cs)
 
 ## <a name="prerequisites"></a>前提条件
 

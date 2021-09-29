@@ -12,12 +12,12 @@ manager: karenhoran
 ms.reviewer: sahandle
 ms.custom: contperf-fy21q1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7c48b156b8f25d40f88be74287c9955a4012107
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b849d6b208208e42700037179b60b286658bc1fd
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121739974"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124779409"
 ---
 # <a name="what-is-identity-protection"></a>Identity Protection とは
 
@@ -25,7 +25,7 @@ Identity Protection は、組織が次の 3 つの主要なタスクを実行で
 
 - [ID ベースのリスクの検出と修復を自動化します](howto-identity-protection-configure-risk-policies.md)。
 - ポータルのデータを使用して[リスクを調査](howto-identity-protection-investigate-risk.md)します。
-- [リスク検出データを SIEM にエクスポートします](../../sentinel/connect-azure-ad-identity-protection.md)。
+- [リスク検出データを SIEM にエクスポートします](../../sentinel/data-connectors-reference.md#azure-active-directory-identity-protection)。
 
 Identity Protection は、Azure AD により組織について、Microsoft アカウントによりコンシューマー領域について、そして Xbox によりゲームについて得られた学習内容を使用して、ユーザーを保護します。 Microsoft は、脅威を特定し顧客を保護するために、1 日あたり 6 兆 5000 億の信号を分析します。
 
@@ -79,13 +79,13 @@ Microsoft ではリスクの計算方法に関する具体的な詳細を公開�
 
 Identity Protection からのデータを他のツールにエクスポートしてアーカイブしたり、さらに調査したり、関連付けしたりすることができます。 Microsoft Graph ベースの API を使用すると、組織はこのデータを収集して、SIEM などのツールでさらに処理することができます。 Identity Protection API へのアクセス方法の詳細については、「[Azure Active Directory Identity Protection と Microsoft Graph の基本](howto-identity-protection-graph-api.md)」を参照してください
 
-Identity Protection の情報と Azure Sentinel の統合に関する情報については、「[Azure AD Identity Protection からデータを接続する](../../sentinel/connect-azure-ad-identity-protection.md)」を参照してください。
+Identity Protection の情報と Azure Sentinel の統合に関する情報については、「[Azure AD Identity Protection からデータを接続する](../../sentinel/data-connectors-reference.md#azure-active-directory-identity-protection)」を参照してください。
 
 ## <a name="permissions"></a>アクセス許可
 
 Identity Protection にユーザーがにアクセスするためには、セキュリティ閲覧者、セキュリティ オペレーター、セキュリティ管理者、グローバル閲覧者、またはグローバル管理者である必要があります。
 
-| Role | できること | できないこと |
+| ロール | できること | できないこと |
 | --- | --- | --- |
 | 全体管理者 | Identity Protection へのフル アクセス |   |
 | セキュリティ管理者 | Identity Protection へのフル アクセス | ユーザーのパスワードをリセットする |

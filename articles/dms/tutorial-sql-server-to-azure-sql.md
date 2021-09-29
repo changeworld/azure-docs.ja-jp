@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/03/2021
-ms.openlocfilehash: ab16bfe708589b6f89dd5b9a37512d4f2148992f
-ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
+ms.openlocfilehash: 5afe39d7693d36ebfd433c6cd1db336e9c72b7ca
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123214920"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128664240"
 ---
 # <a name="tutorial-migrate-sql-server-to-azure-sql-database-using-dms"></a>チュートリアル: DMS を使用して SQL Server を Azure SQL Database に移行する
 
@@ -343,7 +343,7 @@ Azure SQL Database に移行するすべてのデータベースまたは特定�
 
 2. ターゲットの **Azure SQL Database** にターゲット データベースがあることを確認します。
 
-### <a name="additional-resources"></a>その他のリソース
+## <a name="additional-resources"></a>その他のリソース
 
 - Azure Database Migration Service の詳細については、「[Azure Database Migration Service とは](./dms-overview.md)」を参照してください。
 - Azure SQL Database については、「[Azure SQL Database サービスとは](../azure-sql/database/sql-database-paas-overview.md)」を参照してください。

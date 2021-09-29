@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 8/25/2021
 ms.author: juda
-ms.openlocfilehash: 533f4317c6c189e0691ab26822fe917c7567c1ce
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 98f8fe2e00a7671078da7dae2174401b6c33fd30
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123544390"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128667618"
 ---
 # <a name="enable-cloud-controller-manager-preview"></a>Cloud Controller Manager を有効にする (プレビュー)
 

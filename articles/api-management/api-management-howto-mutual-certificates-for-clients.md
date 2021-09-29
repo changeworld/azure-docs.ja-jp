@@ -4,7 +4,7 @@ titleSuffix: Azure API Management
 description: クライアント証明書を使用して API へのアクセスを保護する方法について説明します。 ポリシー式を使用して、受信証明書を検証できます。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 manager: erikre
 editor: ''
 ms.service: api-management
@@ -12,13 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/01/2021
-ms.author: apimpm
-ms.openlocfilehash: 6faa78dc75b67afd4c310a94ce4a81129e09cb26
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.author: danlep
+ms.openlocfilehash: 2eac7a8de0ca49cdab85f3ab948e54e402073128
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121742750"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128582918"
 ---
 # <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>API Management でクライアント証明書認証を使用して API を保護する方法
 

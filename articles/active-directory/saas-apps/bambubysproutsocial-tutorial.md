@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/12/2021
 ms.author: jeedes
-ms.openlocfilehash: bff69752b0b9bd2a1ded4605b874458cb0ae0cb9
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.openlocfilehash: f42f393c9191a082231a4d0c16912d0ac1e2ead8
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122271221"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124814374"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bambu-by-sprout-social"></a>チュートリアル: Azure Active Directory と Bambu by Sprout Social の統合
 
@@ -122,7 +122,7 @@ Bambu by Sprout Social 用に Azure AD SSO を構成してテストするには�
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した Bambu by Sprout Social に自動的にサインインします。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Bambu by Sprout Social] タイルをクリックすると、SSO を設定した Bambu by Sprout Social に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Bambu by Sprout Social] タイルをクリックすると、SSO を設定した Bambu by Sprout Social に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

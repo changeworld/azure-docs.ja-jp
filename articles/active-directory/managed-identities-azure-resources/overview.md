@@ -15,12 +15,12 @@ ms.custom: mvc
 ms.date: 08/26/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f79fc66b44de89ba93137b244e22890348ab1c4
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 91728bfee6b8e303de2e7199e703a8acaa5139d8
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122967205"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124773590"
 ---
 # <a name="what-are-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID とは
 
@@ -75,7 +75,7 @@ Azure リソースのマネージド ID は、Azure AD 認証をサポートす�
 
 - リソース レベルでマネージド ID を有効または無効にする。
 - RBAC ロールを使用して[アクセス許可を付与する](howto-assign-access-portal.md)。
-- [Azure アクティビティ ログ](../../azure-resource-manager/management/view-activity-logs.md)内の作成、読み取り、更新、削除 (CRUD) 操作を表示する。
+- [Azure アクティビティ ログ](../../azure-monitor/essentials/activity-log.md)内の作成、読み取り、更新、削除 (CRUD) 操作を表示する。
 - Azure AD [サインイン ログ](../reports-monitoring/concept-sign-ins.md)内のサインイン アクティビティを表示する。
 
 代わりにユーザー割り当てマネージド ID を選択した場合:
@@ -83,7 +83,7 @@ Azure リソースのマネージド ID は、Azure AD 認証をサポートす�
 - ID の[作成、読み取り、更新、削除](how-to-manage-ua-identity-portal.md)操作を実行できます。
 - RBAC のロールの割り当てを使用して[アクセス許可を付与する](howto-assign-access-portal.md)ことができます。
 - ユーザー割り当てマネージド ID は、複数のリソースで使用できます。
-- CRUD 操作は、[Azure アクティビティ ログ](../../azure-resource-manager/management/view-activity-logs.md)内で確認できます。
+- CRUD 操作は、[Azure アクティビティ ログ](../../azure-monitor/essentials/activity-log.md)内で確認できます。
 - Azure AD [サインイン ログ](../reports-monitoring/concept-sign-ins.md)内のサインイン アクティビティを表示する。
 
 マネージド ID に対する操作は、Azure Resource Manager (ARM) テンプレート、Azure portal、Azure CLI、PowerShell、および REST API を使用して実行できます。

@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 5/6/2019
-ms.openlocfilehash: 20e45454284af230da74896d5b3f5e9da676dbb4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 703178ae1a99044ae12b4f594f1c1b977aa8e929
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97831705"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129217279"
 ---
 # <a name="quickstart-use-ruby-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>クイック スタート:Ruby を使用して Azure Database for PostgreSQL - Single Server に接続してデータを照会する
 
@@ -102,7 +102,7 @@ begin
     password = String('<server_admin_password>')
 
     # Initialize connection object.
-    connection = PG::Connection.new(:host => host, :user => user, :database => dbname, :port => '5432', :password => password)
+    connection = PG::Connection.new(:host => host, :user => user, :dbname => database, :port => '5432', :password => password)
     puts 'Successfully created connection to database.'
 
     resultSet = connection.exec('SELECT * from inventory;')

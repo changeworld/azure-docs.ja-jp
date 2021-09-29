@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/09/2021
 ms.author: jeedes
-ms.openlocfilehash: df1da9b871d2d076e1543d48ecde934242e8d37a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7cd8244a1f3f8eaba151a7d5957308118a635d37
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121727562"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124778649"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-pantheon"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Pantheon の統合
 
@@ -152,7 +152,7 @@ Pantheon 用に Azure AD SSO を構成してテストするには、次の手順
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した Pantheon に自動的にサインインされます。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Pantheon] タイルをクリックすると、SSO を設定した Pantheon に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Pantheon] タイルをクリックすると、SSO を設定した Pantheon に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

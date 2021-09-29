@@ -7,16 +7,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.custom: deploy
-ms.author: gopalv
-author: gvashishtha
 ms.reviewer: larryfr
 ms.date: 04/22/2021
-ms.openlocfilehash: c047d89b554bed61f0015235a52927ffda7d1ec7
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: cd848a6d07a21c965aa0de9be0206be86d1688a5
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114446582"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128549818"
 ---
 # <a name="deploy-a-model-locally"></a>ローカルでモデルをデプロイする
 

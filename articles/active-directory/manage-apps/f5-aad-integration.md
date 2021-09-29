@@ -12,12 +12,12 @@ ms.date: 11/12/2020
 ms.author: davidmu
 ms.collection: M365-identity-device-management
 ms.reviewer: miccohen
-ms.openlocfilehash: cc55eff7c5ed3a4773a016bcd73bbd33708d9595
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a5066eece8950d4e9dffabedb2e0cca4c527353f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121738780"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124823001"
 ---
 # <a name="f5-big-ip-access-policy-manager-and-azure-active-directory-integration-for-secure-hybrid-access"></a>F5 BIG-IP Access Policy Manager と Azure Active Directory の統合による、安全なハイブリッド アクセス
 
@@ -30,7 +30,7 @@ SHA は、組織が既存の F5 を引き続き使用して、より優れたネ
 
 Azure AD の事前認証によって BIG-IP の公開済みサービスにアクセスすると、次のような利点があります。
 
-- [Windows Hello](/windows/security/identity-protection/hello-for-business/hello-overview)、[MS Authenticator](../user-help/user-help-auth-app-download-install.md)、[Fast Identity Online (FIDO) キー](../authentication/howto-authentication-passwordless-security-key.md)、および[証明書ベースの認証](../authentication/active-directory-certificate-based-authentication-get-started.md)を使用した、パスワードレス認証
+- [Windows Hello](/windows/security/identity-protection/hello-for-business/hello-overview)、[MS Authenticator](https://support.microsoft.com/account-billing/download-and-install-the-microsoft-authenticator-app-351498fc-850a-45da-b7b6-27e523b8702a)、[Fast Identity Online (FIDO) キー](../authentication/howto-authentication-passwordless-security-key.md)、および[証明書ベースの認証](../authentication/active-directory-certificate-based-authentication-get-started.md)を使用した、パスワードレス認証
 
 - プリエンプティブな[条件付きアクセス](../conditional-access/overview.md)および[多要素認証 (MFA)](../authentication/concept-mfa-howitworks.md)
 
@@ -81,7 +81,7 @@ BIG-IP と Azure AD の統合によって、従来のサービスや非 Azure AD
 
 社員、関係者、コンシューマーの区別なく、ほとんどのユーザーは既に Office 365 のログインに精通しているので、SHA 経由での BIG-IP サービスへのアクセスについても、ほとんどの場合は理解しています。
 
-デバイスの種類や場所に関係なく、BIG-IP で公開されたサービスが、セルフサービス機能と共に、[MyApps](../user-help/my-apps-portal-end-user-access.md) または [O365 スタートパッド](https://o365pp.blob.core.windows.net/media/Resources/Microsoft%20365%20Business/Launchpad%20Overview_for%20Partners_10292019.pdf)で幅広いサービス セットに統合されます。 希望する場合は、BIG-IP 独自の Web トップ ポータルを使用して、公開されたサービスに直接アクセスすることもできます。 ログオフ時には SHA によって BIG-IP と Azure AD の両方でユーザー セッションが確実に終了されるため、サービスが不正アクセスから完全に保護されたままになります。  
+デバイスの種類や場所に関係なく、BIG-IP で公開されたサービスが、セルフサービス機能と共に、[MyApps](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510) または [O365 スタートパッド](https://o365pp.blob.core.windows.net/media/Resources/Microsoft%20365%20Business/Launchpad%20Overview_for%20Partners_10292019.pdf)で幅広いサービス セットに統合されます。 希望する場合は、BIG-IP 独自の Web トップ ポータルを使用して、公開されたサービスに直接アクセスすることもできます。 ログオフ時には SHA によって BIG-IP と Azure AD の両方でユーザー セッションが確実に終了されるため、サービスが不正アクセスから完全に保護されたままになります。  
 
 このスクリーンショットは、ユーザーが BIG-IP で公開されたサービスを見つけ、アカウントのプロパティを管理するために安全にアクセスできる、Azure AD アプリ ポータルのものです。  
 

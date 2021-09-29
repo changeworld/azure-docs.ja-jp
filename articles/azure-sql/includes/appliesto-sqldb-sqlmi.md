@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 201fab00dcf1f3fede0b0acb0fa2dc5e45d0d1e0
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d0e92f21cc4805a73efc3590632ea834879347dd
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "90533335"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "126057228"
 ---
-<Token>**適用対象:** :::image type="icon" source="../media/applies-to/yes.png" border="false":::Azure SQL Database :::image type="icon" source="../media/applies-to/yes.png" border="false":::Azure SQL Managed Instance</Token> 
+**適用対象:** :::image type="icon" source="../media/applies-to/yes.png" border="false":::Azure SQL Database :::image type="icon" source="../media/applies-to/yes.png" border="false":::Azure SQL Managed Instance  
 

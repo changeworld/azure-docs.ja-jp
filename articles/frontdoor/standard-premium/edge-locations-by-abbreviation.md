@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.date: 05/25/2021
 ms.author: duau
 ms.custom: references_regions
-ms.openlocfilehash: 012104c100a66d11f75234b7b9a998d0bd99f29b
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: c853812cdb869d706f238c346af8e06caecabf41
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110482366"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128652341"
 ---
 # <a name="microsoft-edge-locations-by-abbreviation-for-azure-front-door-standardpremium"></a>Azure Front Door の Standard および Premium に関する Microsoft のエッジ ロケーション (略称別)
 > [!div class="op_single_selector"]
@@ -31,5 +31,5 @@ ms.locfileid: "110482366"
 ## <a name="next-steps"></a>次のステップ
 
 * [都市別の Azure Front Door のエッジ ロケーション](edge-locations.md)を表示します。
-* Azure Front Door のエッジ ノードの最新の一覧を取得するには、[エッジ ノードの一覧 - REST API](/rest/api/cdn/cdn/edgenodes/list) に関するページを参照してください。
+* Azure Front Door のエッジ ノードの最新の一覧を取得するには、[エッジ ノードの一覧 - REST API](/rest/api/cdn/edge-nodes/list) に関するページを参照してください。
 * [Azure Front Door の Standard および Premium プロファイルを作成する](create-front-door-portal.md)方法を学習します。

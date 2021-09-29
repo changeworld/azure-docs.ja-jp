@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 61cefacc4147ab1eb105af9cb21365129dd1950e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f07ddd744481b80e5a74a7b4b597167964f4f183
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96742461"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124750136"
 ---
 # <a name="user-portal-for-the-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication Server のユーザー ポータル
 
@@ -38,7 +38,7 @@ ms.locfileid: "96742461"
 ![MFA Server ユーザー ポータルのログイン ページ](./media/howto-mfaserver-deploy-userportal/portal.png)
 
 > [!NOTE]
-> ユーザー ポータルは Multi-Factor Authentication Server でのみ使用できます。 Multi-Factor Authentication をクラウドで使用する場合、[2 段階認証のためのアカウント設定](../user-help/multi-factor-authentication-end-user-first-time.md)に関するページか「[2 段階認証設定の管理](../user-help/multi-factor-authentication-end-user-manage-settings.md)」をユーザーに参照してもらってください。
+> ユーザー ポータルは Multi-Factor Authentication Server でのみ使用できます。 Multi-Factor Authentication をクラウドで使用する場合、[2 段階認証のためのアカウント設定](https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc)に関するページか「[2 段階認証設定の管理](https://support.microsoft.com/account-billing/change-your-two-step-verification-method-and-settings-c801d5ad-e0fc-4711-94d5-33ad5d4630f7)」をユーザーに参照してもらってください。
 
 ## <a name="install-the-web-service-sdk"></a>Web サービス SDK のインストール
 

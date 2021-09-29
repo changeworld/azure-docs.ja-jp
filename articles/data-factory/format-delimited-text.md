@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/24/2021
+ms.date: 09/09/2021
 ms.author: jianleishen
-ms.openlocfilehash: 64ef52e542d5e014ab3e79d98f730f691fa28a50
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 4b21aa5d63f371749081d7bc71577c7d0f5a2d49
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123257376"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124787681"
 ---
 # <a name="delimited-text-format-in-azure-data-factory-and-azure-synapse-analytics"></a>Azure Data Factory および Azure Synapse Analytics での区切りテキスト形式
 
@@ -167,7 +167,7 @@ Azure Blob Storage の区切りテキスト データセットの例を次に示
 
 次の図は、マッピング データ フローにおける区切りテキスト ソースの構成例です。
 
-![DelimitedText ソース](media/data-flow/delimited-text-source.png)
+:::image type="content" source="media/data-flow/delimited-text-source.png" alt-text="DelimitedText ソース":::
 
 関連付けられているデータ フロー スクリプトは次のとおりです。
 
@@ -197,7 +197,7 @@ source(
 
 次の図は、マッピング データ フローにおける区切りテキスト シンクの構成例です。
 
-![DelimitedText シンク](media/data-flow/delimited-text-sink.png)
+:::image type="content" source="media/data-flow/delimited-text-sink.png" alt-text="DelimitedText シンク":::
 
 関連付けられているデータ フロー スクリプトは次のとおりです。
 

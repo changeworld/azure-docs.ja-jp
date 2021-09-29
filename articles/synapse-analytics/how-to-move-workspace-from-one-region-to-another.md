@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/16/2021
 ms.author: phanir
 ms.reviewer: jrasnick
-ms.openlocfilehash: a13231ea890476e5fc52cf563c250ef0124f940b
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 6ad246eefb86c31291d2a9745c6f77e276701744
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123539697"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129214087"
 ---
 # <a name="move-an-azure-synapse-analytics-workspace-from-one-region-to-another"></a>一方のリージョンから他方に Azure Synapse Analytics ワークスペースを移動する
 
@@ -364,7 +364,7 @@ Select-Object Id,Command,JobStateInfo,PSBeginTime,PSEndTime,PSJobTypeName,Error 
 
 ## <a name="step-6-deploy-artifacts-and-pipelines-by-using-cicd"></a>手順 6: CI/CD を使用して成果物とパイプラインをデプロイする 
 
- Azure Synapse ワークスペースを Azure DevOps または GitHub と統合する方法および成果物をターゲット リージョンのワークスペースにデプロイする方法については、「[Azure Synapse ワークスペースの継続的インテグレーションとデリバリー (CI/CD)](cicd/continuous-integration-deployment.md)」の手順に従ってください。 
+ Azure Synapse ワークスペースを Azure DevOps または GitHub と統合する方法および成果物をターゲット リージョンのワークスペースにデプロイする方法については、「[Azure Synapse ワークスペースの継続的インテグレーションとデリバリー (CI/CD)](cicd/continuous-integration-delivery.md)」の手順に従ってください。 
 
 ワークスペースが Azure DevOps と統合されると、workspace_publish という名前の分岐が見つかります。 この分岐には、ノートブック、SQL スクリプト、データセット、リンク サービス、パイプライン、トリガー、Spark ジョブ定義などの成果物の定義を含むワークスペース テンプレートが含まれています。
 

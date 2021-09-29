@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/06/2019
 ms.author: jeedes
-ms.openlocfilehash: bb49f542fbd744a16ab1674ceab4b0bffc9a41f8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7d6def54aa2e10208dab0d43f830f58620c1affc
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92453414"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124834878"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-firstbird"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Firstbird の統合
 
@@ -160,7 +160,7 @@ Firstbird によって構成がシステムに適宜保存され、アカウン�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Firstbird] タイルをクリックすると、SSO を設定した Firstbird に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+アクセス パネル上で [Firstbird] タイルをクリックすると、SSO を設定した Firstbird に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 649a26e474c7c4d6b4f51a035b3f8f9da35b9dd1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dd06107e1ae3262e13cc75a6af266a10a5cdebff
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92511156"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124758734"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-raketa"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Raketa の統合
 
@@ -176,7 +176,7 @@ Raketa で Azure AD SSO を構成してテストするには、次の構成要�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Raketa] タイルをクリックすると、SSO を設定した Raketa に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+アクセス パネルで [Raketa] タイルをクリックすると、SSO を設定した Raketa に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/11/2021
 ms.author: jeedes
-ms.openlocfilehash: 3135c36a604d67b4a5321e1f44189dde6d124dfc
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: ab300cceaa023f5479aa7db74c9597bef0a1bfa9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112062912"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124772754"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hpe-saas"></a>チュートリアル: Azure Active Directory と HPE SaaS の統合
 
@@ -130,7 +130,7 @@ HPE SaaS に対して Azure AD SSO を構成してテストするには、次の
 
 * HPE SaaS のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [HPE SaaS] タイルをクリックすると、HPE SaaS のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [HPE SaaS] タイルをクリックすると、HPE SaaS のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

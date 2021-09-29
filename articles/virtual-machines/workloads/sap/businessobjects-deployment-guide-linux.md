@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: bf1ca9de6d7ee8ac6c7e87bd444cbd1d98b56f51
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 0d7d68f9452f5f551361a48580e223b0dd614a09
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112463407"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124818132"
 ---
 # <a name="sap-businessobjects-bi-platform-deployment-guide-for-linux-on-azure"></a>Linux on Azure 向け SAP BusinessObjects BI プラットフォーム デプロイ ガイド
 
@@ -70,19 +70,15 @@ Azure NetApp Files はいくつかの [Azure リージョン](https://azure.micr
 
 [Azure NetApp Files を利用できる Azure リージョン](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all)を参照して、リージョンごとの Azure NetApp Files の利用可能性を確認してください。
 
-Azure NetApp Files を導入する前に、[Azure NetApp Files の登録手順](../../../azure-netapp-files/azure-netapp-files-register.md)を参照してください。
-
 ### <a name="deploy-azure-netapp-files-resources"></a>Azure NetApp Files リソースのデプロイ
 
 以下の手順では、お使いの [Azure 仮想ネットワーク](../../../virtual-network/virtual-networks-overview.md)が既にデプロイされていることを前提としています。 Azure NetApp Files のリソースと、そのリソースがマウントされる VM は、同じ Azure Virtual Network 内またはピアリングされた Azure Virtual Network 内にデプロイする必要があります。
 
-1. リソースをまだデプロイしていない場合は、[Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-register.md) を登録してください。
+1. 選択した Azure リージョンで、[Azure NetApp Files アカウントを作成](../../../azure-netapp-files/azure-netapp-files-create-netapp-account.md)します。
 
-2. 選択した Azure リージョンで、[Azure NetApp Files アカウントを作成](../../../azure-netapp-files/azure-netapp-files-create-netapp-account.md)します。
+2. [Azure NetApp Files 容量プールを設定](../../../azure-netapp-files/azure-netapp-files-set-up-capacity-pool.md)します。 このアーティクルで示されている SAP BI プラットフォーム アーキテクチャには、Premium サービス レベルで 1 つの Azure NetApp Files 容量プールが使用されています。 Azure の SAP BI ファイル リポジトリ サーバーには、Azure NetApp Files Premium または Ultra [サービス レベル](../../../azure-netapp-files/azure-netapp-files-service-levels.md)を使用することをお勧めします。
 
-3. [Azure NetApp Files 容量プールを設定](../../../azure-netapp-files/azure-netapp-files-set-up-capacity-pool.md)します。 このアーティクルで示されている SAP BI プラットフォーム アーキテクチャには、Premium サービス レベルで 1 つの Azure NetApp Files 容量プールが使用されています。 Azure の SAP BI ファイル リポジトリ サーバーには、Azure NetApp Files Premium または Ultra [サービス レベル](../../../azure-netapp-files/azure-netapp-files-service-levels.md)を使用することをお勧めします。
-
-4. [サブネットを Azure NetApp Files に委任します](../../../azure-netapp-files/azure-netapp-files-delegate-subnet.md)。
+3. [サブネットを Azure NetApp Files に委任します](../../../azure-netapp-files/azure-netapp-files-delegate-subnet.md)。
 
 5. 「[Azure NetApp Files の NFS ボリュームを作成する](../../../azure-netapp-files/azure-netapp-files-create-volumes.md)」の手順に従って、Azure NetApp Files のボリュームをデプロイします。
 

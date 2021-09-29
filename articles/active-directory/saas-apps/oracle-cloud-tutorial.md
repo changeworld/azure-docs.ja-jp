@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/04/2020
 ms.author: jeedes
-ms.openlocfilehash: 02ba974aa430bd75848c3fcf2b762453d99e27fe
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 1462b45ede121cfbbe72b1f06d0f64b167c9246f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122183608"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124808651"
 ---
 # <a name="tutorial-integrate-oracle-cloud-infrastructure-console-with-azure-active-directory"></a>チュートリアル:Oracle Cloud Infrastructure Console と Azure Active Directory を統合する
 
@@ -197,7 +197,7 @@ Oracle Cloud Infrastructure Console に対して Azure AD SSO を構成してテ
 
 ### <a name="test-sso"></a>SSO のテスト
 
-アクセス パネルで [Oracle Cloud Infrastructure Console] タイルを選択すると、Oracle Cloud Infrastructure Console のサインイン ページにリダイレクトされます。 次のようにドロップダウン メニューから **[IDENTITY PROVIDER]\(ID プロバイダー\)** を選択し、 **[Continue]\(続行\)** をクリックしてサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+アクセス パネルで [Oracle Cloud Infrastructure Console] タイルを選択すると、Oracle Cloud Infrastructure Console のサインイン ページにリダイレクトされます。 次のようにドロップダウン メニューから **[IDENTITY PROVIDER]\(ID プロバイダー\)** を選択し、 **[Continue]\(続行\)** をクリックしてサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関する記事を参照してください。
 
 ![構成](./media/oracle-cloud-tutorial/config10.png)
 

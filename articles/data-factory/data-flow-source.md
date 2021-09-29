@@ -8,17 +8,19 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 07/27/2021
-ms.openlocfilehash: ef2db7e11666c104215b29f298882cfe77631310
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.date: 09/09/2021
+ms.openlocfilehash: a95bfe8ed978a0d67381d0be1f15038c847ab36b
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122015540"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129061221"
 ---
 # <a name="source-transformation-in-mapping-data-flow"></a>マッピング データ フローのソース変換
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+[!INCLUDE[data-flow-preamble](includes/data-flow-preamble.md)]
 
 ソース変換は、データ フローのデータ ソースを構成します。 データ フローを設計する際、最初の手順では、常にソース変換を構成します。 ソースを追加するには、データ フローのキャンバスにある **[Add Source]\(ソースの追加\)** ボックスを選択します。
 
@@ -36,7 +38,7 @@ ms.locfileid: "122015540"
 
 インライン データセットを使用するには、 **[Source Type]\(ソースの種類\)** セレクターで目的の形式を選択します。 ソース データセットを選択せず、接続先にするリンクされたサービスを選択します。
 
-![インラインが選択されていることを示すスクリーンショット。](media/data-flow/inline-selector.png "インラインが選択されていることを示すスクリーンショット。")
+:::image type="content" source="media/data-flow/inline-selector.png" alt-text="インラインが選択されていることを示すスクリーンショット。":::
 
 ## <a name="workspace-db-synapse-workspaces-only"></a>ワークスペース DB (Synapse ワークスペースのみ)
 
@@ -45,7 +47,7 @@ Azure Synapse ワークスペースで、データ フロー ソース変換に 
 > [!NOTE]
 > Azure Synapse ワークスペース DB コネクタは現在パブリック プレビュー段階にあり、現時点では Spark Lake データベースでのみ機能します
 
-![選択されたワークスペース DB を示すスクリーンショット。](media/data-flow/syms-source.png "選択されたワークスペース DB を示すスクリーンショット。")
+:::image type="content" source="media/data-flow/syms-source.png" alt-text="選択されたワークスペース DB を示すスクリーンショット。":::
 
 ##  <a name="supported-source-types"></a><a name="supported-sources"></a> サポートされるソースの種類
 
@@ -76,7 +78,7 @@ Azure Data Factory および Synapse パイプラインには、[90 個以上の
 
 データセット パラメーターの開発値は、[デバッグの設定](concepts-data-flow-debug-mode.md)で構成できます (デバッグ モードをオンにする必要があります)。
 
-![[ソースの設定] タブを示すスクリーンショット。](media/data-flow/source1.png "[ソースの設定] タブを示すスクリーンショット。")
+:::image type="content" source="media/data-flow/source1.png" alt-text="[ソースの設定] タブを示すスクリーンショット。":::
 
 **[出力ストリーム名]** : ソース変換の名前です。
 
@@ -109,7 +111,7 @@ Azure Data Factory および Synapse パイプラインには、[90 個以上の
 
 データセット内のスキーマと同様に、ソース内のプロジェクションでは、ソース データのデータの列、型、および形式が定義されます。 SQL や Parquet など、ほとんどのデータセットの種類では、ソース内のプロジェクトは、データセットで定義されたスキーマを反映するように固定されています。 ソース ファイルが厳密に型指定されていない場合 (たとえば、Parquet ファイルでなくフラットな .csv ファイル)、このソース変換では各フィールドのデータ型を定義できます。
 
-![[プロジェクション] タブの設定を示すスクリーンショット。](media/data-flow/source3.png "[プロジェクション] タブの設定を示すスクリーンショット。")
+:::image type="content" source="media/data-flow/source3.png" alt-text="[プロジェクション] タブの設定を示すスクリーンショット。":::
 
 テキスト ファイルが定義済みのスキーマを含まない場合は、サービスがデータ型をサンプリングして推論するように、 **[データ型の検出]** を選択します。 **[Define default format]\(既定の形式の定義\)** を選択して、既定のデータ形式を自動検出します。
 
@@ -129,7 +131,7 @@ Azure Data Factory および Synapse パイプラインには、[90 個以上の
 
 Azure SQL Database ソースから読み取る場合、カスタムの **[ソース]** パーティション分割にすると、データが最速で読み取られる可能性があります。 サービスは、データベースへの接続を並列で行うことによって、大規模なクエリを読み取ります。 このソース パーティション分割は、列に対して、またはクエリを使用して行うことができます。
 
-![ソース パーティション設定を示すスクリーンショット。](media/data-flow/sourcepart3.png "ソース パーティション設定を示すスクリーンショット。")
+:::image type="content" source="media/data-flow/sourcepart3.png" alt-text="ソース パーティション設定を示すスクリーンショット。":::
 
 マッピング データ フロー内での最適化の詳細については、[[Optimize] タブ](concepts-data-flow-overview.md#optimize)に関する説明を参照してください。
 

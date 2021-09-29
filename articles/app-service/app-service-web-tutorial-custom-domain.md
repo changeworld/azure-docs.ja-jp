@@ -10,12 +10,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./app-service-web-tutorial-custom-domain-uiex
-ms.openlocfilehash: 6977bbe8d9854a771e31d2dcc0d49353ff29c4bf
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: 35d2a35475c6a22608c28f3ffdf3dc1abc3065a1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111591582"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128657407"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>チュートリアル:既存のカスタム DNS 名を Azure App Service にマップする
 
@@ -163,8 +163,8 @@ Web アプリにカスタム DNS 名をマップするには、Web アプリの 
 
     |レコード タイプ|Host|値|
     |--- |--- |--- |
-    |A|<subdomain> (例: www)|「アプリの IP アドレスをコピーする」で取得した IP アドレス|
-    |TXT|asuid.<subdomain> (例: asuid.www)|前に取得した検証 ID|
+    |A|\<subdomain\> (例: www)|「アプリの IP アドレスをコピーする」で取得した IP アドレス|
+    |TXT|asuid.\<subdomain\> (例: asuid.www)|前に取得した検証 ID|
     
 # <a name="wildcard-cname"></a>[ワイルドカード (CNAME)](#tab/wildcard)
 

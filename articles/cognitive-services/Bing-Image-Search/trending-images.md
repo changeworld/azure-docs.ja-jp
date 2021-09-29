@@ -3,21 +3,19 @@ title: Bing Image Search API で注目の画像を取得する
 titleSuffix: Azure Cognitive Services
 description: Bing Image Search API で Web から今日の注目の画像を検索します。
 services: cognitive-services
-author: swhite-msft
 manager: nitinme
 ms.assetid: EAB92D35-5C0B-4A0A-8F49-02DF7FAD44B4
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: conceptual
 ms.date: 03/04/2019
-ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: cf7d1baf895d44730eb913b658ee4c7fe7eb7b11
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fb8e27ea3d35a6a8c6f83090d97188d7473b5890
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96341616"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128619801"
 ---
 # <a name="get-trending-images-from-the-web"></a>Web から注目の画像を取得する
 

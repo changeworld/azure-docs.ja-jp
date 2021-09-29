@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: jeedes
-ms.openlocfilehash: 2fe674f0f290c58a7e32a05c3666be8fc2c324bc
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 8991771ec60e6e3e98ee16ca1caea153baffa67a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108074585"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124802661"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-iqnavigator-vms"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と IQNavigator VMS の統合
 
@@ -145,7 +145,7 @@ IQNavigator VMS で Azure AD SSO を構成してテストするには、次の�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [IQNavigator VMS] タイルをクリックすると、SSO を設定した IQNavigator VMS に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+アクセス パネルで [IQNavigator VMS] タイルをクリックすると、SSO を設定した IQNavigator VMS に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

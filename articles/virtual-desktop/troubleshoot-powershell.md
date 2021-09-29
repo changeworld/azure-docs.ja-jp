@@ -7,12 +7,12 @@ ms.date: 06/05/2020
 ms.author: helohr
 ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: aae1f58eb9fc5e006254f6fdfd620c057e6d6fc3
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 3426ff64bbaf1d3d4801a8fcc069cb1767091181
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113762519"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124804110"
 ---
 # <a name="azure-virtual-desktop-powershell"></a>Azure Virtual Desktop PowerShell
 
@@ -81,5 +81,5 @@ New-AzWvdApplicationGroup_CreateExpanded: ActivityId: e5fe6c1d-5f2c-4db9-817d-e4
 - Azure Virtual Desktop クライアント接続の問題のトラブルシューティングを行う場合は、「[Windows Virtual Desktop サービスの接続](troubleshoot-service-connection.md)」を参照してください。
 - リモート デスクトップ クライアントの問題をトラブルシューティングするには、[リモート デスクトップ クライアントのトラブルシューティング](troubleshoot-client.md) に関するページを参照してください
 - サービスの詳細については、[Azure Virtual Desktop 環境](environment-setup.md)に関するページを参照してください。
-- 監査アクションについては、「 [リソース マネージャーの監査操作](../azure-resource-manager/management/view-activity-logs.md)」をご覧ください。
+- 監査アクションについては、「 [リソース マネージャーの監査操作](../azure-monitor/essentials/activity-log.md)」をご覧ください。
 - デプロイ時にエラーが発生した場合の対応については、 [デプロイ操作の確認](../azure-resource-manager/templates/deployment-history.md)に関するページを参照してください。

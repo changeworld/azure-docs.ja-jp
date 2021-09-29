@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: tutorials
 ms.topic: tutorial
 ms.date: 02/18/2021
-ms.openlocfilehash: ecb83eb2b2cbdbbb91eb9b7dbf21c106ff0cab04
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9b1592f76917975e06e7d8a36cb618cbe3abadcf
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122637996"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124757783"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-powershell"></a>PowerShell を使用して Azure SQL Database から Azure Blob Storage にデータを増分読み込みする
 
@@ -34,7 +34,7 @@ ms.locfileid: "122637996"
 ## <a name="overview"></a>概要
 ソリューションの概略図を次に示します。
 
-![データの増分読み込み](media/tutorial-Incrementally-copy-powershell/incrementally-load.png)
+:::image type="content" source="media/tutorial-Incrementally-copy-powershell/incrementally-load.png" alt-text="データの増分読み込み":::
 
 このソリューションを作成するための重要な手順を次に示します。
 

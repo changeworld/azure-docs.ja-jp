@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: nichola
-ms.openlocfilehash: daf339a1ba79212f82a853a209068c97c13b29f8
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 7c3e4441289b2b17cf772df73f3c53caa465813e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111965997"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124732584"
 ---
 # <a name="five-steps-for-integrating-all-your-apps-with-azure-ad"></a>すべてのアプリを Azure AD と統合するための 5 つの手順
 
@@ -74,7 +74,7 @@ Azure Active Directory (Azure AD) には、簡単に開始できるようにす�
 
 ![図は、オンプレミスのアプリ、基幹業務アプリ、SaaS アプリ、Azure AD 経由の Office 365 がすべて Active Directory と AD FS に点線で接続されていることを示しています。](\media\five-steps-to-full-application-integration-with-azure-ad\adfs-integration-1.png)
 
-ID 管理ソリューションの[中心として ADFS を Azure AD に置き換える](../manage-apps/migrate-adfs-apps-to-azure.md)ことで、この構成をアップグレードできます。 これにより、従業員がアクセスする必要があるすべてのアプリのサインオンが可能になり、上記の他の利点に加えて、[MyApps ポータル](../user-help/my-apps-portal-end-user-access.md)経由で、従業員が必要とするビジネス アプリケーションを簡単に見つけられるようになります。
+ID 管理ソリューションの[中心として ADFS を Azure AD に置き換える](../manage-apps/migrate-adfs-apps-to-azure.md)ことで、この構成をアップグレードできます。 これにより、従業員がアクセスする必要があるすべてのアプリのサインオンが可能になり、上記の他の利点に加えて、[MyApps ポータル](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)経由で、従業員が必要とするビジネス アプリケーションを簡単に見つけられるようになります。
 
 ![図は、Active Directory と AD FS 経由のオンプレミスのアプリ、基幹業務アプリ、SaaS アプリ、Office 365 がすべて Azure Active Directory に点線で接続されていることを示しています。](\media\five-steps-to-full-application-integration-with-azure-ad\adfs-integration-2.png)
 

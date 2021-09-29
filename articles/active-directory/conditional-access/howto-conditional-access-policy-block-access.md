@@ -8,15 +8,15 @@ ms.topic: how-to
 ms.date: 05/26/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: calebb,
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c792888b65f331332c320deecbcd2b5f8d7e2ee3
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 11191d1a0b3ec275184617a16b7dc2dce767d8d6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108175768"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128618136"
 ---
 # <a name="conditional-access-block-access"></a>条件付きアクセス:アクセスのブロック
 

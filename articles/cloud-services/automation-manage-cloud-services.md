@@ -8,12 +8,12 @@ author: hirenshah1
 ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: cc352a35308cbc77dc544c780ea7045cff561b02
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: 6dd814f2c834428d321747a989af8beb76890bd0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122824517"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124799170"
 ---
 # <a name="managing-azure-cloud-services-classic-using-azure-automation"></a>Azure Automation を使用した Azure Cloud Services (クラシック) の管理
 
@@ -40,4 +40,4 @@ Azure Automation を使用して、次のような Azure Cloud Services を管�
 ここまで、Azure Automation の基本と Azure Automation を使用して Azure クラウド サービスを管理する方法について説明しました。Azure Automation の詳細については、これらのリンクを参照してください。
 
 * [Azure Automation Overview (Azure Automation の概要)](../automation/automation-intro.md)
-* [初めての Runbook](../automation/learn/automation-tutorial-runbook-graphical.md)
+* [初めての Runbook](../automation/learn/powershell-runbook-managed-identity.md)

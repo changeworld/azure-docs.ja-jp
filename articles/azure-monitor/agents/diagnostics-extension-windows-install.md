@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: bwren
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 71b54db0df20ea1bfe630639fb5e60bea62712b2
-ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
+ms.openlocfilehash: 6fb9698b4f2f20fb4fa527bbd68cc2b4c352d5f5
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112200278"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128663499"
 ---
 # <a name="install-and-configure-windows-azure-diagnostics-extension-wad"></a>Windows Azure Diagnostics 拡張機能 (WAD) のインストールと構成
 [Azure Diagnostics 拡張機能](diagnostics-extension-overview.md)は Azure Monitor のエージェントで、ゲスト オペレーティング システムと Azure 仮想マシンと他のコンピューティング リソースのワークロードから監視データを収集します。 この記事では、Windows 診断拡張機能のインストールと構成の詳細と、Azure ストレージ アカウントでデータを保存する方法について説明します。
@@ -207,7 +207,7 @@ Set-AzVMDiagnosticsExtension -ResourceGroupName "myvmresourcegroup" `
 
 * Visual Studio のサーバー エクスプローラー - Azure Tools for Microsoft Visual Studio がインストールされている場合、サーバー エクスプローラーの Azure Storage ノードを使用して、Azure ストレージ アカウントの読み取り専用の BLOB およびテーブル データを表示できます。 データは、ローカルのストレージ エミュレーター アカウントから表示できます。また、Azure 用に作成したストレージ アカウントから表示することもできます。 詳細については、「[サーバー エクスプローラーを使用したストレージ リソースの参照と管理](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage)」を参照してください。
 * [Microsoft Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md) は、Windows、OSX、Linux で Azure Storage データを容易に操作できるスタンドアロン アプリです。
-* [Azure Management Studio](https://www.cerebrata.com/products/azure-management-studio/introduction) に含まれている Azure Diagnostics Manager では、Azure で実行されているアプリケーションによって収集された診断データの表示、ダウンロード、管理を行うことができます。
+* [Azure Management Studio](https://cerebrata.com/blog/introducing-azure-management-studio-and-azure-explorer) に含まれている Azure Diagnostics Manager では、Azure で実行されているアプリケーションによって収集された診断データの表示、ダウンロード、管理を行うことができます。
 
 ## <a name="next-steps"></a>次のステップ
 - Azure Event Hubs への監視データの転送の詳細については、[Windows Azure Diagnostics 拡張機能から Event Hubs へのデータ送信](diagnostics-extension-stream-event-hubs.md)に関する記事を参照してください。

@@ -10,27 +10,27 @@ ms.author: normesta
 ms.reviewer: dineshm
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 391541569f237b98c46f001b511c86c17f00e058
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: e56a36947930894548a4490320c48efab0509ef1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123468134"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128662566"
 ---
 # <a name="map-a-custom-domain-to-an-azure-blob-storage-endpoint"></a>カスタム ドメインを Azure Blob Storage エンドポイントにマップする
 
-カスタム ドメインは、BLOB サービス エンドポイントまたは[静的な Web サイト](storage-blob-static-website.md)のエンドポイントにマップできます。 
+カスタム ドメインは、BLOB サービス エンドポイントまたは[静的な Web サイト](storage-blob-static-website.md)のエンドポイントにマップできます。
 
-> [!NOTE] 
-> このマッピングは、サブドメイン (例: `www.contoso.com`) に対してのみ機能します。 Web エンドポイントをルート ドメイン (例: `contoso.com`) で使用できるようにする場合、Azure CDN を使用する必要があります。 ガイダンスについては、この記事の「[HTTPS が有効になっているカスタム ドメインをマップする](#enable-https)」セクションを参照してください。 この記事のそのセクションに移動し、カスタム ドメインのルート ドメインを有効にするので、そのセクション内の HTTPS を有効にする手順を省略できます。 
+> [!NOTE]
+> このマッピングは、サブドメイン (例: `www.contoso.com`) に対してのみ機能します。 Web エンドポイントをルート ドメイン (例: `contoso.com`) で使用できるようにする場合、Azure CDN を使用する必要があります。 ガイダンスについては、この記事の「[HTTPS が有効になっているカスタム ドメインをマップする](#enable-https)」セクションを参照してください。 この記事のそのセクションに移動し、カスタム ドメインのルート ドメインを有効にするので、そのセクション内の HTTPS を有効にする手順を省略できます。
 
 <a id="enable-http"></a>
 
 ## <a name="map-a-custom-domain-with-only-http-enabled"></a>HTTP のみが有効になっているカスタム ドメインをマップする
 
-この方法は簡単ですが、HTTP アクセスのみが有効になります。 ストレージ アカウントが HTTPS 経由の[セキュリティで保護された転送を必要とする](../common/storage-require-secure-transfer.md)ように構成されている場合は、カスタム ドメインの HTTPS アクセスを有効にする必要があります。 
+この方法は簡単ですが、HTTP アクセスのみが有効になります。 ストレージ アカウントが HTTPS 経由の[セキュリティで保護された転送を必要とする](../common/storage-require-secure-transfer.md)ように構成されている場合は、カスタム ドメインの HTTPS アクセスを有効にする必要があります。
 
-HTTPS アクセスを有効にするには、この記事の「[HTTPS が有効になっているカスタム ドメインをマップする](#enable-https)」セクションを参照してください。 
+HTTPS アクセスを有効にするには、この記事の「[HTTPS が有効になっているカスタム ドメインをマップする](#enable-https)」セクションを参照してください。
 
 <a id="map-a-domain"></a>
 
@@ -45,22 +45,22 @@ HTTPS アクセスを有効にするには、この記事の「[HTTPS が有効�
 
 :heavy_check_mark:手順 2:ドメイン プロバイダーで正規名 (CNAME) レコードを作成する。
 
-:heavy_check_mark:手順 3:カスタム ドメインを Azure に登録する。 
+:heavy_check_mark:手順 3:カスタム ドメインを Azure に登録する。
 
 :heavy_check_mark:手順 4:カスタム ドメインをテストする。
 
 <a id="endpoint"></a>
 
-#### <a name="step-1-get-the-host-name-of-your-storage-endpoint"></a>手順 1:ストレージ エンドポイントのホスト名を取得する 
+#### <a name="step-1-get-the-host-name-of-your-storage-endpoint"></a>手順 1:ストレージ エンドポイントのホスト名を取得する
 
-ホスト名は、プロトコル識別子と末尾のスラッシュを含まないストレージ エンドポイントの URL です。 
+ホスト名は、プロトコル識別子と末尾のスラッシュを含まないストレージ エンドポイントの URL です。
 
 1. [Azure portal](https://portal.azure.com) で、ストレージ アカウントに移動します。
 
-2. メニュー ウィンドウの **[設定]** で、 **[エンドポイント]** を選択します。  
+2. メニュー ウィンドウの **[設定]** で、 **[エンドポイント]** を選択します。
 
-3. **BLOB サービス** エンドポイントまたは **静的 Web サイト** エンドポイントの値をテキスト ファイルにコピーします。 
-  
+3. **BLOB サービス** エンドポイントまたは **静的 Web サイト** エンドポイントの値をテキスト ファイルにコピーします。
+
    > [!NOTE]
    > Data Lake ストレージ エンドポイントはサポートされていません (例: `https://mystorageaccount.dfs.core.windows.net/`)。
 
@@ -70,7 +70,7 @@ HTTPS アクセスを有効にするには、この記事の「[HTTPS が有効�
    |------------|-----------------|-------------------|
    |BLOB サービス  | `https://mystorageaccount.blob.core.windows.net/` | `mystorageaccount.blob.core.windows.net` |
    |静的な Web サイト  | `https://mystorageaccount.z5.web.core.windows.net/` | `mystorageaccount.z5.web.core.windows.net` |
-  
+
    この値は、後で使用するために取っておいてください。
 
 <a id="create-cname-record"></a>
@@ -83,15 +83,15 @@ HTTPS アクセスを有効にするには、この記事の「[HTTPS が有効�
 
    このページは、**Domain Name**、**DNS**、または **Name Server Management** というセクションにある可能性があります。
 
-2. CNAME レコードの管理セクションを見つけます。 
+2. CNAME レコードの管理セクションを見つけます。
 
    詳細設定ページに進み、**CNAME**、**Alias**、または **Subdomains** などを見つける必要があります。
 
-3. CNAME レコードを作成します。 そのレコードの一部として、次の項目を指定します。 
+3. CNAME レコードを作成します。 そのレコードの一部として、次の項目を指定します。
 
-   - `www` や `photos` などのサブドメイン エイリアス。 サブドメインは必須であり、ルート ドメインはサポートされていません。 
-      
-   - この記事の前半で既に説明した「[ストレージ エンドポイントのホスト名を取得する](#endpoint)」セクションで取得したホスト名。 
+   - `www` や `photos` などのサブドメイン エイリアス。 サブドメインは必須であり、ルート ドメインはサポートされていません。
+
+   - この記事の前半で既に説明した「[ストレージ エンドポイントのホスト名を取得する](#endpoint)」セクションで取得したホスト名。
 
 <a id="register"></a>
 
@@ -108,8 +108,8 @@ HTTPS アクセスを有効にするには、この記事の「[HTTPS が有効�
    > [!NOTE]
    > このオプションは、階層型名前空間の機能が有効になっているアカウントでは表示されません。 これらのアカウントでは、PowerShell または Azure CLI のどちらかを使用してこの手順を実行します。
 
-3. **[ドメイン名]** テキスト ボックスに、サブドメインを含むカスタム ドメインの名前を入力します。  
-   
+3. **[ドメイン名]** テキスト ボックスに、サブドメインを含むカスタム ドメインの名前を入力します。
+
    たとえば、ドメインが *contoso.com* でサブドメイン エイリアスが *www* の場合、「`www.contoso.com`」と入力します。 サブドメインが *photos* の場合、「`photos.contoso.com`」と入力します。
 
 4. カスタム ドメインを登録するには、 **[保存]** ボタンを選択します。
@@ -169,9 +169,9 @@ CNAME レコードがドメイン ネーム サーバー (DNS) を介して反�
 ### <a name="map-a-custom-domain-with-zero-downtime"></a>ダウンタイムなしでカスタム ドメインをマップする
 
 > [!NOTE]
-> ユーザーがドメインを短時間使用できなくても構わない場合は、この記事の「[カスタム ドメインをマップする](#map-a-domain)」セクションの手順を使用することを検討してください。 これは、手順が少なくなっている、より簡単な方法です。  
+> ユーザーがドメインを短時間使用できなくても構わない場合は、この記事の「[カスタム ドメインをマップする](#map-a-domain)」セクションの手順を使用することを検討してください。 これは、手順が少なくなっている、より簡単な方法です。
 
-ドメインが現在、ダウンタイムなしのサービス レベル アグリーメント (SLA) を締結しているアプリケーションをサポートしている場合は、次の手順に従って、DNS マッピングの実行中にユーザーがドメインにアクセスできるようにします。 
+ドメインが現在、ダウンタイムなしのサービス レベル アグリーメント (SLA) を締結しているアプリケーションをサポートしている場合は、次の手順に従って、DNS マッピングの実行中にユーザーがドメインにアクセスできるようにします。
 
 :heavy_check_mark:手順 1:ストレージ エンドポイントのホスト名を取得する。
 
@@ -185,15 +185,15 @@ CNAME レコードがドメイン ネーム サーバー (DNS) を介して反�
 
 <a id="endpoint-2"></a>
 
-#### <a name="step-1-get-the-host-name-of-your-storage-endpoint"></a>手順 1:ストレージ エンドポイントのホスト名を取得する 
+#### <a name="step-1-get-the-host-name-of-your-storage-endpoint"></a>手順 1:ストレージ エンドポイントのホスト名を取得する
 
-ホスト名は、プロトコル識別子と末尾のスラッシュを含まないストレージ エンドポイントの URL です。 
+ホスト名は、プロトコル識別子と末尾のスラッシュを含まないストレージ エンドポイントの URL です。
 
 1. [Azure portal](https://portal.azure.com) で、ストレージ アカウントに移動します。
 
-2. メニュー ウィンドウの **[設定]** で、 **[エンドポイント]** を選択します。  
+2. メニュー ウィンドウの **[設定]** で、 **[エンドポイント]** を選択します。
 
-3. **BLOB サービス** エンドポイントまたは **静的 Web サイト** エンドポイントの値をテキスト ファイルにコピーします。  
+3. **BLOB サービス** エンドポイントまたは **静的 Web サイト** エンドポイントの値をテキスト ファイルにコピーします。
 
    > [!NOTE]
    > Data Lake ストレージ エンドポイントはサポートされていません (例: `https://mystorageaccount.dfs.core.windows.net/`)。
@@ -204,7 +204,7 @@ CNAME レコードがドメイン ネーム サーバー (DNS) を介して反�
    |------------|-----------------|-------------------|
    |BLOB サービス  | `https://mystorageaccount.blob.core.windows.net/` | `mystorageaccount.blob.core.windows.net` |
    |静的な Web サイト  | `https://mystorageaccount.z5.web.core.windows.net/` | `mystorageaccount.z5.web.core.windows.net` |
-  
+
    この値は、後で使用するために取っておいてください。
 
 #### <a name="step-2-create-an-intermediary-canonical-name-cname-record-with-your-domain-provider"></a>手順 2:ドメイン プロバイダーで中間正規名 (CNAME) レコードを作成する
@@ -215,17 +215,17 @@ CNAME レコードがドメイン ネーム サーバー (DNS) を介して反�
 
    このページは、**Domain Name**、**DNS**、または **Name Server Management** というセクションにある可能性があります。
 
-2. CNAME レコードの管理セクションを見つけます。 
+2. CNAME レコードの管理セクションを見つけます。
 
    詳細設定ページに進み、**CNAME**、**Alias**、または **Subdomains** などを見つける必要があります。
 
-3. CNAME レコードを作成します。 そのレコードの一部として、次の項目を指定します。 
+3. CNAME レコードを作成します。 そのレコードの一部として、次の項目を指定します。
 
    - `www` や `photos` などのサブドメイン エイリアス。 サブドメインは必須であり、ルート ドメインはサポートされていません。
 
      `asverify` サブドメインをエイリアスに追加します。 たとえば、`asverify.www` や `asverify.photos` などです。
-       
-   - この記事の前半で既に説明した「[ストレージ エンドポイントのホスト名を取得する](#endpoint)」セクションで取得したホスト名。 
+
+   - この記事の前半で既に説明した「[ストレージ エンドポイントのホスト名を取得する](#endpoint)」セクションで取得したホスト名。
 
      サブドメイン `asverify` をホスト名に追加します。 (例: `asverify.mystorageaccount.blob.core.windows.net`)。
 
@@ -244,14 +244,14 @@ CNAME レコードがドメイン ネーム サーバー (DNS) を介して反�
    > [!NOTE]
    > このオプションは、階層型名前空間の機能が有効になっているアカウントでは表示されません。 これらのアカウントでは、PowerShell または Azure CLI のどちらかを使用してこの手順を実行します。
 
-3. **[ドメイン名]** テキスト ボックスに、サブドメインを含むカスタム ドメインの名前を入力します。  
-   
+3. **[ドメイン名]** テキスト ボックスに、サブドメインを含むカスタム ドメインの名前を入力します。
+
    たとえば、ドメインが *contoso.com* でサブドメイン エイリアスが *www* の場合、「`www.contoso.com`」と入力します。 サブドメインが *photos* の場合、「`photos.contoso.com`」と入力します。
 
 4. **[Use indirect CNAME validation]\(間接 CNAME 検証を使用する\)** チェックボックスをオンにします。
 
 5. カスタム ドメインを登録するには、 **[保存]** ボタンを選択します。
-  
+
    正常に登録された場合は、portal からストレージ アカウントが正常に更新されたことが通知されます。 カスタム ドメインは Azure によって確認されていますが、ドメインへのトラフィックは、ドメイン プロバイダーで CNAME レコードを作成するまでは、まだストレージ アカウントへはルーティングされません。 これは、次のセクションで行います。
 
 ##### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -304,15 +304,15 @@ az storage account update \
 
    このページは、**Domain Name**、**DNS**、または **Name Server Management** というセクションにある可能性があります。
 
-2. CNAME レコードの管理セクションを見つけます。 
+2. CNAME レコードの管理セクションを見つけます。
 
    詳細設定ページに進み、**CNAME**、**Alias**、または **Subdomains** などを見つける必要があります。
 
-3. CNAME レコードを作成します。 そのレコードの一部として、次の項目を指定します。 
+3. CNAME レコードを作成します。 そのレコードの一部として、次の項目を指定します。
 
    - `www` や `photos` などのサブドメイン エイリアス。 サブドメインは必須であり、ルート ドメインはサポートされていません。
-      
-   - この記事で既に説明した「[ストレージ エンドポイントのホスト名を取得する](#endpoint-2)」セクションで取得したホスト名。 
+
+   - この記事で既に説明した「[ストレージ エンドポイントのホスト名を取得する](#endpoint-2)」セクションで取得したホスト名。
 
 #### <a name="step-5-test-your-custom-domain"></a>手順 5:カスタム ドメインのテスト
 
@@ -344,7 +344,7 @@ az storage account update \
 
 カスタム ドメインの登録を削除するには、[Set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) PowerShell コマンドレットを使用して、`-CustomDomainName` 引数値に空の文字列 (`""`) を指定します。
 
-* コマンド形式:
+- コマンド形式:
 
   ```powershell
   Set-AzStorageAccount `
@@ -353,7 +353,7 @@ az storage account update \
       -CustomDomainName ""
   ```
 
-* コマンド例:
+- コマンド例:
 
   ```powershell
   Set-AzStorageAccount `
@@ -366,7 +366,7 @@ az storage account update \
 
 カスタム ドメインの登録を削除するには、[az storage account update](/cli/azure/storage/account) CLI コマンドを使用して、`--custom-domain` 引数値に空の文字列 (`""`) を指定します。
 
-* コマンド形式:
+- コマンド形式:
 
   ```azurecli
   az storage account update \
@@ -375,7 +375,7 @@ az storage account update \
       --custom-domain ""
   ```
 
-* コマンド例:
+- コマンド例:
 
   ```azurecli
   az storage account update \
@@ -383,19 +383,20 @@ az storage account update \
       --resource-group myresourcegroup \
       --custom-domain ""
   ```
+
 ---
 
 <a id="enable-https"></a>
 
 ## <a name="map-a-custom-domain-with-https-enabled"></a>HTTPS が有効になっているカスタム ドメインをマップする
 
-この方法では、さらに多くの手順が必要になりますが、HTTPS アクセスが可能になります。 
+この方法では、さらに多くの手順が必要になりますが、HTTPS アクセスが可能になります。
 
-ユーザーが HTTPS を使用して BLOB または Web コンテンツにアクセスする必要がない場合は、この記事の「[HTTP のみが有効になっているカスタム ドメインをマップする](#enable-http)」セクションを参照してください。 
+ユーザーが HTTPS を使用して BLOB または Web コンテンツにアクセスする必要がない場合は、この記事の「[HTTP のみが有効になっているカスタム ドメインをマップする](#enable-http)」セクションを参照してください。
 
-1. BLOB または Web エンドポイントで [Azure CDN](../../cdn/cdn-overview.md) を有効にします。 
+1. BLOB または Web エンドポイントで [Azure CDN](../../cdn/cdn-overview.md) を有効にします。
 
-   BLOB ストレージ エンドポイントについては、「[Azure ストレージ アカウントと Azure CDN との統合](../../cdn/cdn-create-a-storage-account-with-cdn.md)」を参照してください。 
+   BLOB ストレージ エンドポイントについては、「[Azure ストレージ アカウントと Azure CDN との統合](../../cdn/cdn-create-a-storage-account-with-cdn.md)」を参照してください。
 
    静的な Web サイトのエンドポイントについては、[静的な Web サイトと Azure CDN との統合](static-website-content-delivery-network.md)に関する記事を参照してください。
 
@@ -403,30 +404,30 @@ az storage account update \
 
 3. [Azure CDN カスタム ドメインで HTTPS を有効にします](../../cdn/cdn-custom-ssl.md)｡
 
-   > [!NOTE] 
+   > [!NOTE]
    > 静的 Web サイトを更新するときは、CDN エンドポイントを消去して、CDN エッジ サーバー上のキャッシュされたコンテンツを必ず消去してください。 詳細については、「[Azure CDN エンドポイントの消去](../../cdn/cdn-purge-endpoint.md)」を参照してください。
 
 4. (省略可能) 次のガイダンスを確認します。
 
-   * [Azure CDN での Shared Access Signature (SAS) トークン](../../cdn/cdn-storage-custom-domain-https.md#shared-access-signatures)。
+   - [Azure CDN での Shared Access Signature (SAS) トークン](../../cdn/cdn-storage-custom-domain-https.md#shared-access-signatures)。
 
-   * [Azure CDN での HTTP から HTTPS へのリダイレクト](../../cdn/cdn-storage-custom-domain-https.md#http-to-https-redirection)。
+   - [Azure CDN での HTTP から HTTPS へのリダイレクト](../../cdn/cdn-storage-custom-domain-https.md#http-to-https-redirection)。
 
-   * [Azure CDN で Blob Storage を使用する場合の価格と課金](../../cdn/cdn-storage-custom-domain-https.md#pricing-and-billing)。
+   - [Azure CDN で Blob Storage を使用する場合の価格と課金](../../cdn/cdn-storage-custom-domain-https.md#pricing-and-billing)。
 
 ## <a name="feature-support"></a>機能サポート
 
-次の表は、お使いのアカウントでこの機能がどのようにサポートされるかと、特定の機能を有効にした場合のサポートへの影響を示しています。 
+この表は、アカウントでのこの機能のサポート状況と、特定の機能を有効にした場合のサポートへの影響を示しています。
 
-| ストレージ アカウントの種類                | Blob Storage (既定のサポート)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+| ストレージ アカウントの種類                | Blob Storage (既定のサポート)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>
 |-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
-| Standard 汎用 v2 | ![はい](../media/icons/yes-icon.png) | ![はい](../media/icons/yes-icon.png)  <sup>2</sup> | ![はい](../media/icons/yes-icon.png)  <sup>2</sup> | 
+| Standard 汎用 v2 | ![はい](../media/icons/yes-icon.png) | ![はい](../media/icons/yes-icon.png)  <sup>2</sup> | ![はい](../media/icons/yes-icon.png)  <sup>2</sup> |
 | Premium ブロック BLOB          | ![はい](../media/icons/yes-icon.png) | ![はい](../media/icons/yes-icon.png)  <sup>2</sup> | ![はい](../media/icons/yes-icon.png)  <sup>2</sup> |
 
-<sup>1</sup>    Data Lake Storage Gen2 とネットワーク ファイル システム (NFS) 3.0 プロトコルはどちらも、階層型名前空間が有効になっているストレージ アカウントが必要です。
+<sup>1</sup>    Data Lake Storage Gen2 とネットワーク ファイル システム (NFS) 3.0 プロトコルの両方で、階層型名前空間が有効になっているストレージ アカウントが必要です。
 
 <sup>2</sup>    機能はプレビュー レベルでサポートされています。
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Blob Storage での静的な Web サイトのホスティングについて確認します](storage-blob-static-website.md)
+- [Azure Blob Storage での静的な Web サイトのホスティングについて確認します](storage-blob-static-website.md)

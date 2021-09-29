@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: troubleshooting
 ms.custom: synapse
 ms.topic: troubleshooting
-ms.date: 08/24/2021
+ms.date: 09/09/2021
 ms.author: abnarain
-ms.openlocfilehash: bab07b19efc1978836d1f14463392f8de2bd6e92
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: c9e6c4c0475842d9eb8c674464ebcf997d98b548
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122864553"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124749444"
 ---
 # <a name="troubleshoot-azure-data-factory-and-synapse-pipelines"></a>Azure Data Factory と Synapse パイプラインのトラブルシューティング
 
@@ -566,7 +566,7 @@ Copy アクティビティの使用時にエラーが発生したなど、コネ
 
 - **推奨事項**:資格情報を訂正して、リンクされたサービスを再デプロイしてください。 任意のブラウザーでクラスター URI を開いてサインインを試行することで、まず HDInsight で資格情報が機能することを確認します。 資格情報が機能しない場合は、Azure portal からリセットできます。
 
-   ESP クラスターでは、[セルフ サービスのパスワード リセット](../active-directory/user-help/active-directory-passwords-update-your-own-password.md)を使用してパスワードをリセットすることができます。
+   ESP クラスターでは、[セルフ サービスのパスワード リセット](https://support.microsoft.com/account-billing/reset-your-work-or-school-password-using-security-info-23dde81f-08bb-4776-ba72-e6b72b9dda9e)を使用してパスワードをリセットすることができます。
 
  </br>
 
@@ -953,7 +953,7 @@ Copy アクティビティの使用時にエラーが発生したなど、コネ
 
 - **解決方法**:パス **Microsoft Integration Runtime\4.0\Shared\ODBC Drivers\Microsoft Hive ODBC Driver\lib** に移動し、DriverConfiguration64.exe を開いて設定を変更できます。
 
-    ![[Use System Trust Store]\(システムの信頼ストアの使用\) をオフにする](./media/connector-troubleshoot-guide/system-trust-store-setting.png)
+    :::image type="content" source="./media/connector-troubleshoot-guide/system-trust-store-setting.png" alt-text="[Use System Trust Store]\(システムの信頼ストアの使用\) をオフにする":::
 
 ## <a name="web-activity"></a>Web アクティビティ
 
@@ -982,7 +982,7 @@ Copy アクティビティの使用時にエラーが発生したなど、コネ
 
    1. [HTTPS] タブで、 **[Capture HTTPS CONNECTs]\(HTTPS 接続をキャプチャする\)** と **[Decrypt HTTPS traffic]\(HTTPS トラフィックの暗号化を解除する\)** の両方をオンにします。
 
-      ![Fiddler オプション](media/data-factory-troubleshoot-guide/fiddler-options.png)
+      :::image type="content" source="media/data-factory-troubleshoot-guide/fiddler-options.png" alt-text="Fiddler オプション":::
 
 1. お使いのアプリケーションで TLS/SSL 証明書が使用されている場合は、Fiddler の証明書をデバイスに追加します。
 

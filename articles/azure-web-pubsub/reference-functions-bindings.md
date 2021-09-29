@@ -6,12 +6,12 @@ ms.author: lianwei
 ms.service: azure-web-pubsub
 ms.topic: conceptual
 ms.date: 08/16/2021
-ms.openlocfilehash: 68c3ba369af177d2b673dc06d5f7ccafe09c4cf6
-ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
+ms.openlocfilehash: 43fcc70bf88b7e037167a936ebd655b8877b394d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122598298"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124820379"
 ---
 #  <a name="azure-web-pubsub-trigger-and-bindings-for-azure-functions"></a>Azure Functions での Azure Web PubSub のトリガーとバインド
 
@@ -28,14 +28,14 @@ Web PubSub は、開発者がリアルタイムの機能と発行-サブスク�
 [ソース コード](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/webpubsub/) |
 [パッケージ](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.WebPubSub) |
 [API リファレンス ドキュメント](https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/webpubsub/Microsoft.Azure.WebJobs.Extensions.WebPubSub/api/Microsoft.Azure.WebJobs.Extensions.WebPubSub.netstandard2.0.cs) |
-[製品ドキュメント](https://aka.ms/awps/doc) |
+[製品ドキュメント](./index.yml) |
 [サンプル][samples_ref]
 
 ## <a name="add-to-your-functions-app"></a>Functions アプリに追加する
 
 トリガーとバインドを使用するには、適切なパッケージを参照する必要があります。 NuGet パッケージは .NET クラス ライブラリに使用されますが、他のすべてのアプリケーションの種類には拡張バンドルが使用されます。
 
-| 言語                                        | 追加手段                                   | 解説 
+| Language                                        | 追加手段                                   | 解説 
 |-------------------------------------------------|---------------------------------------------|-------------|
 | C#                                              | [NuGet パッケージ] バージョン プレリリースをインストールする | |
 | C# スクリプト、JavaScript、Python、PowerShell       | [拡張機能を明示的にインストールする]                    | Visual Studio Code で使用するには [Azure Tools 拡張機能]をお勧めします。 |
@@ -48,9 +48,9 @@ func extensions install --package Microsoft.Azure.WebJobs.Extensions.WebPubSub -
 ```
 
 [NuGet パッケージ]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.WebPubSub
-[拡張機能を明示的にインストールする]: /azure/azure-functions/functions-bindings-register#explicitly-install-extensions 
+[拡張機能を明示的にインストールする]: ../azure-functions/functions-bindings-register.md#explicitly-install-extensions 
 [Azure Tools 拡張機能]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack
-[拡張機能の更新]: /azure/azure-functions/functions-bindings-register
+[拡張機能の更新]: ../azure-functions/functions-bindings-register.md
 
 ## <a name="key-concepts"></a>主要な概念
 
@@ -66,7 +66,7 @@ func extensions install --package Microsoft.Azure.WebJobs.Extensions.WebPubSub -
 
 関数トリガーを使用して、Azure Web PubSub サービスからの要求を処理します。 
 
-`WebPubSubTrigger` は、サービス側からの要求を処理する必要がある場合に使用します。 トリガー エンドポイント パターンは次のようになります。これは、Web PubSub サービス側で設定する必要があります (ポータル: 設定 -> イベント ハンドラー -> URL テンプレート)。 エンドポイント パターンでは、[セキュリティ](/azure/azure-functions/security-concepts#system-key)上の理由で、Azure 関数アプリを使用している場合は、クエリ部分 `code=<API_KEY>` が **必須** です。 このキーは **Azure portal** で確認できます。 関数アプリを Azure にデプロイした後に、関数アプリ リソースを見つけて、 **[関数]**  ->  **[アプリ キー]**  ->  **[システム キー]**  ->  **[webpubsub_extension]** の順に移動します。 ただし、ローカル関数を使用する場合、このキーは必要ありません。
+`WebPubSubTrigger` は、サービス側からの要求を処理する必要がある場合に使用します。 トリガー エンドポイント パターンは次のようになります。これは、Web PubSub サービス側で設定する必要があります (ポータル: 設定 -> イベント ハンドラー -> URL テンプレート)。 エンドポイント パターンでは、[セキュリティ](../azure-functions/security-concepts.md#system-key)上の理由で、Azure 関数アプリを使用している場合は、クエリ部分 `code=<API_KEY>` が **必須** です。 このキーは **Azure portal** で確認できます。 関数アプリを Azure にデプロイした後に、関数アプリ リソースを見つけて、 **[関数]**  ->  **[アプリ キー]**  ->  **[システム キー]**  ->  **[webpubsub_extension]** の順に移動します。 ただし、ローカル関数を使用する場合、このキーは必要ありません。
 
 ```
 <Function_App_Url>/runtime/webhooks/webpubsub?code=<API_KEY>
@@ -155,7 +155,7 @@ module.exports = async function (context) {
 
 ### <a name="attributes-and-annotations"></a>属性と注釈
 
-[C# クラス ライブラリ](/azure/azure-functions/functions-dotnet-class-library)では、`WebPubSubTrigger` 属性を使用します。
+[C# クラス ライブラリ](../azure-functions/functions-dotnet-class-library.md)では、`WebPubSubTrigger` 属性を使用します。
 
 メソッド シグネチャでの `WebPubSubTrigger` 属性を次に示します。
 

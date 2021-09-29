@@ -4,12 +4,12 @@ description: Azure Batch でコンテナー イメージからアプリを実行
 ms.topic: how-to
 ms.date: 08/18/2021
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: e8effa7daf0c30edaef9924cbefe35cdad1b20e1
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: c6922c48aedc3394d164367806bece43d5fb8a49
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122445774"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124744224"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Azure Batch で コンテナー アプリケーションを実行する
 
@@ -75,7 +75,7 @@ Linux コンテナー ワークロードの場合、現在、Batch は、Azure M
 
 Docker を実行している VM から、Batch と互換性のある Linux ディストリビューションのいずれかでカスタム イメージを作成することもできます。 独自のカスタム Linux イメージを提供する場合は、「[マネージド カスタム イメージを使用して仮想マシンのプールを作成する](batch-custom-images.md)」の手順を参照してください。
 
-カスタム イメージ上の Docker サポートの場合、[Docker Community Edition (CE)](https://www.docker.com/community-edition) または [Docker Enterprise Edition (EE)](https://www.docker.com/enterprise-edition) をインストールします。
+カスタム イメージ上の Docker サポートの場合、[Docker Community Edition (CE)](https://www.docker.com/community-edition) または [Docker Enterprise Edition (EE)](https://www.docker.com/blog/docker-enterprise-edition/) をインストールします。
 
 カスタム Linux イメージを使用するためのその他の注意点:
 

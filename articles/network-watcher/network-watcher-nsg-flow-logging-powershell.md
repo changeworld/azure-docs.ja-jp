@@ -2,23 +2,19 @@
 title: NSG フロー ログの管理 - Azure PowerShell
 titleSuffix: Azure Network Watcher
 description: このページでは、PowerShell を使用して Azure Network Watcher でネットワーク セキュリティ グループのフローのログを管理する方法を説明します。
-services: network-watcher
-documentationcenter: na
 author: damendo
 ms.service: network-watcher
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8ee289e069aed9f405463bba6392bbffc2dd2b24
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 94a604c687326d7fb43b4b9e44aaad682d7e5ee4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114291901"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128585816"
 ---
 # <a name="configuring-network-security-group-flow-logs-with-powershell"></a>PowerShell を使用したネットワーク セキュリティ グループのフローのログの構成
 
@@ -35,7 +31,7 @@ ms.locfileid: "114291901"
 > [!NOTE]
 > - このドキュメントで使用されているコマンド [Get-AzNetworkWatcherFlowLogStatus](/powershell/module/az.network/get-aznetworkwatcherflowlogstatus) および [Set-AzNetworkWatcherConfigFlowLog](/powershell/module/az.network/set-aznetworkwatcherconfigflowlog) には、Network Watcher のリソース グループに追加の "閲覧者" アクセス許可が必要です。 また、これらのコマンドは古いものであり、間もなく非推奨となる可能性があります。
 > - 代わりに、新しい [Get-AzNetworkWatcherFlowLog](/powershell/module/az.network/get-aznetworkwatcherflowlog) コマンドと [Set-AzNetworkWatcherFlowLog](/powershell/module/az.network/set-aznetworkwatcherflowlog) コマンドを使用することが推奨されます。
-> - 新しい [Get-AzNetworkWatcherFlowLog](/powershell/module/az.network/get-aznetworkwatcherflowlog) コマンドには、柔軟性のために 4 つのバリアントが用意されています。 このコマンドの "Location <String>" バリアントを使用する場合は、Network Watcher のリソース グループに追加の "閲覧者" アクセス許可が必要になります。 その他のバリアントの場合、追加のアクセス許可は必要ありません。 
+> - 新しい [Get-AzNetworkWatcherFlowLog](/powershell/module/az.network/get-aznetworkwatcherflowlog) コマンドには、柔軟性のために 4 つのバリアントが用意されています。 このコマンドの "Location \<String\>" バリアントを使用する場合は、Network Watcher のリソース グループに追加の "閲覧者" アクセス許可が必要になります。 その他のバリアントの場合、追加のアクセス許可は必要ありません。 
 
 ## <a name="register-insights-provider"></a>Insights プロバイダーの登録
 
@@ -80,7 +76,7 @@ Get-AzNetworkWatcherFlowLogStatus -NetworkWatcher $NW -TargetResourceId $nsg.Id
 Traffic Analytics とフロー ログを無効にするには、次の例を使用します。
 
 ```powershell
-#Disable Traffic Analaytics by removing -EnableTrafficAnalytics property
+#Disable Traffic Analytics by removing -EnableTrafficAnalytics property
 Set-AzNetworkWatcherConfigFlowLog -NetworkWatcher $NW -TargetResourceId $nsg.Id -StorageAccountId $storageAccount.Id -EnableFlowLog $true -FormatType Json -FormatVersion 2 -WorkspaceResourceId $workspaceResourceId -WorkspaceGUID $workspaceGUID -WorkspaceLocation $workspaceLocation
 
 #Disable Flow Logging

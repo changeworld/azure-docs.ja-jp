@@ -5,16 +5,16 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/02/2021
+ms.date: 09/03/2021
 ms.author: alkohli
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli, contperf-fy21q3
-ms.openlocfilehash: e06c5adc37e4c7ea73e3b86db61160c51d060f71
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: 344d513f823c3eb04e869c66ca79bfb611c3eb6a
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123449191"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129079753"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Azure Import/Export サービスを使用してデータを Azure Files にインポートする
 
@@ -96,13 +96,13 @@ Import/Export サービスでは、Azure Files の Azure Storage へのインポ
 5. `PrepImport` オプションを使用して、ディスク ドライブにデータをコピーして準備します。 最初のコピー セッションで新しいコピー セッションを使用してディレクトリやファイルをコピーするために、次のコマンドを実行します。
 
     ```cmd
-    .\WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> [/logdir:<LogDirectory>] [/sk:<StorageAccountKey>] [/silentmode] [/InitialDriveSet:<driveset.csv>]/DataSet:<dataset.csv>
+    .\WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> [/logdir:<LogDirectory>] [/silentmode] [/InitialDriveSet:<driveset.csv>]/DataSet:<dataset.csv>
     ```
 
    インポートの例を以下に示します。
 
     ```cmd
-    .\WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#1  /sk:************* /InitialDriveSet:driveset.csv /DataSet:dataset.csv /logdir:C:\logs
+    .\WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#1 /InitialDriveSet:driveset.csv /DataSet:dataset.csv /logdir:C:\logs
     ```
 
 6. コマンド行を実行するたびに、`/j:` パラメーターで指定した名前のジャーナル ファイルが作成されます。 準備した各ドライブには、インポート ジョブを作成するときにアップロードする必要があるジャーナル ファイルがあります。 ジャーナル ファイルのないドライブは処理されません。

@@ -7,18 +7,18 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.topic: conceptual
 ms.date: 01/18/2021
-ms.openlocfilehash: ab19b62ff4aaca1b3357d586e3bba4252e8a5d9e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 07e663b7b631cbc083916e48924d740255e46e37
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121738261"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128638769"
 ---
-# <a name="power-query-activity-in-data-factory"></a>Data Factory での Power Query アクティビティ
+# <a name="power-query-activity-in-azure-data-factory"></a>Azure Data Factory での Power Query アクティビティ
 
 Power Query アクティビティを使用すると、Data Factory パイプラインで大規模なデータ ラングリングを実行するために、Power Query マッシュアップをビルドして実行できます。 新しい Power Query マッシュアップを作成するには、[New resources]\(新しいリソース\) メニュー オプションを使用するか、パイプラインに Power アクティビティを追加します。
 
-![ファクトリ リソース ペインでの Power Query を示すスクリーンショット。](media/data-flow/power-query-wrangling.png)
+:::image type="content" source="media/data-flow/power-query-wrangling.png" alt-text="ファクトリ リソース ペインでの Power Query を示すスクリーンショット。":::
 
 以前は、Azure Data Factory でのデータ ラングリングは、[データ フロー] メニュー オプションから作成しました。 これは、新しい Power Query アクティビティからの作成に変更されました。 Power Query マッシュアップ エディターの内部で直接操作を行い、対話型データ探索を実行して、作業内容を保存できます。 完了後、Power Query アクティビティを取得して、パイプラインに追加できます。 Azure Data Factory は、Azure Data Factory のデータ フロー Spark 環境を使用して、これを自動的にスケールアウトし、データ ラングリングを運用可能にします。
 

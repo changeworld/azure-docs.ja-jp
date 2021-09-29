@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/02/2021
 ms.author: jeedes
-ms.openlocfilehash: 7f472099b38962871953d6dee043a4e7553a9dce
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: bcd4cb2424aec83d3a69ee857b0f10cd98797b5b
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111570065"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124768091"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-planview-enterprise-one"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Planview Enterprise One の統合
 
@@ -130,7 +130,7 @@ Planview Enterprise One に対して Azure AD SSO を構成してテストする
 
 * Planview Enterprise One のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Planview Enterprise One] タイルをクリックすると、Planview Enterprise One のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Planview Enterprise One] タイルをクリックすると、Planview Enterprise One のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

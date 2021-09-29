@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: article
 ms.date: 04/02/2021
 ms.author: victorh
-ms.openlocfilehash: 4514717274cfb66fbfc0eee25b09aa9e1234ffad
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 504ed485115f48b252027431a5b69e2a6b5f33f3
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106280328"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124763578"
 ---
 # <a name="azure-firewall-logs-and-metrics"></a>Azure Firewall のログとメトリック
 
@@ -138,7 +138,7 @@ Azure Firewall を監視するには、ファイアウォール ログを使用�
 
    アクティビティ ログ エントリは既定で収集され、Azure Portal で表示できます。
 
-   [Azure アクティビティ ログ](../azure-resource-manager/management/view-activity-logs.md) (以前の操作ログと監査ログ) を使用して、Azure サブスクリプションに送信されるすべての操作を表示できます。
+   [Azure アクティビティ ログ](../azure-monitor/essentials/activity-log.md) (以前の操作ログと監査ログ) を使用して、Azure サブスクリプションに送信されるすべての操作を表示できます。
 
 ## <a name="metrics"></a>メトリック
 

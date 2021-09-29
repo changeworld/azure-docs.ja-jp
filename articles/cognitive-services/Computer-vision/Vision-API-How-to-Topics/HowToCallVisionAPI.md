@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 09/09/2019
 ms.author: kefre
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 0014297d45c26d855a2df8c2a3fdccb2f0c047d2
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: b7835185071d85b064c942da9f86f6848443dcd1
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122822911"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124820219"
 ---
 # <a name="call-the-image-analysis-api"></a>画像分析 API の呼び出し
 
@@ -138,7 +138,7 @@ description.captions[].confidence    | `number`    | 語句の信頼度スコア
     * InternalServerError
 
 > [!TIP]
-> Computer Vision の操作中に、このサービスによって適用された[レート制限](https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision/)によって一時的な障害が発生したり、ネットワークの停止など、他の一時的な問題が発生したりする可能性があります。 これらの種類の障害の処理については、クラウド設計パターン ガイドの「[再試行パターン](https://docs.microsoft.com/azure/architecture/patterns/retry)」および「[サーキット ブレーカー パターン](https://docs.microsoft.com/azure/architecture/patterns/circuit-breaker)」を参照してください。
+> Computer Vision の操作中に、このサービスによって適用された[レート制限](https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision/)によって一時的な障害が発生したり、ネットワークの停止など、他の一時的な問題が発生したりする可能性があります。 これらの種類の障害の処理については、クラウド設計パターン ガイドの「[再試行パターン](/azure/architecture/patterns/retry)」および「[サーキット ブレーカー パターン](/azure/architecture/patterns/circuit-breaker)」を参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ

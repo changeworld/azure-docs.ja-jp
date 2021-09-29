@@ -6,14 +6,14 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 04/30/2020
+ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: f0bd57befc0ec30473065ac69026a77e21e30e5c
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 1d1ac2d61b8ef70b63f174431168a169868a989b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682605"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128625204"
 ---
 # <a name="how-reservation-discounts-apply-to-azure-synapse-analytics"></a>Azure Synapse Analytics への予約割引の適用方法
 

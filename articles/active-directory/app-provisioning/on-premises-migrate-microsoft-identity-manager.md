@@ -11,12 +11,12 @@ ms.date: 06/01/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0731e35eab3a2872cd3c07e5401577fd51c33323
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: b96d3ec481d21d937a9c8810c6f2601966672ff1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114437299"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128551545"
 ---
 # <a name="export-a-microsoft-identity-manager-connector-for-use-with-the-azure-ad-ecma-connector-host"></a>Azure AD ECMA コネクタ ホストで使用するために Microsoft Identity Manager コネクタをエクスポートする
 
@@ -55,7 +55,4 @@ ECMA コネクタと MIM Sync が既に構成されている場合は、手順 1
 ## <a name="next-steps"></a>次のステップ
 
 - [アプリ プロビジョニング](user-provisioning.md)
-- [Azure AD ECMA Connector Host の前提条件](on-premises-ecma-prerequisites.md)
-- [Azure AD ECMA Connector Host のインストール](on-premises-ecma-install.md)
-- [Azure AD ECMA Connector Host の構成](on-premises-ecma-configure.md)
 - [汎用 SQL コネクタ](on-premises-sql-connector-configure.md)

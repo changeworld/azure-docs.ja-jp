@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 1040c05b081c6edb181d349d00468d1ba0aac3a7
-ms.sourcegitcommit: d01c2b2719e363178720003b67b968ac2a640204
+ms.openlocfilehash: 85c51be3b8434aadd254b0274e22b756c667832f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122455918"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124750786"
 ---
 # <a name="custom-commands-concepts-and-definitions"></a>カスタム コマンドの概念と定義
 
@@ -66,7 +66,7 @@ ms.locfileid: "122455918"
 * 気温
 * url
 
-すべてのロケールで "文字列" パラメーター型がサポートされますが、その他の型を使えるかどうかはロケールによって異なります。 Custom Commands では、LUIS の事前構築済みエンティティ ソリューションが使用されます。そのため、あるロケールであるパラメーター型が使えるかどうかは、そのロケールにおける LUIS の事前構築済みエンティティのサポートによって決まります。 [LUIS の事前構築済みエンティティのロケール別サポート](/azure/cognitive-services/luis/luis-reference-prebuilt-entities)に関するページに詳細があります。
+すべてのロケールで "文字列" パラメーター型がサポートされますが、その他の型を使えるかどうかはロケールによって異なります。 Custom Commands では、LUIS の事前構築済みエンティティ ソリューションが使用されます。そのため、あるロケールであるパラメーター型が使えるかどうかは、そのロケールにおける LUIS の事前構築済みエンティティのサポートによって決まります。 [LUIS の事前構築済みエンティティのロケール別サポート](../luis/luis-reference-prebuilt-entities.md)に関するページに詳細があります。
 
 Number、String、DateTime のような一部のパラメーター型では、ポータルから構成できる既定値の構成がサポートされています。
 

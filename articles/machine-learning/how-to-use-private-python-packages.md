@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.date: 07/10/2020
-ms.openlocfilehash: 6d199eb684802de948451bd376feda4a254aa06f
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 2ca004902a6d574348846ba2ee4829a099db8b39
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107884212"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129094654"
 ---
 # <a name="use-private-python-packages-with-azure-machine-learning"></a>Azure Machine Learning で非公開の Python パッケージを使用する
 
@@ -91,7 +91,7 @@ myenv.python.conda_dependencies=conda_dep
 
 組織のファイアウォール内の Azure ストレージ アカウントからパッケージを使用できます。 このストレージ アカウントでは、キュレーションされたパッケージのセットや、一般に公開されているパッケージの内部ミラーを保持することができます。
 
-このようなプライベート ストレージを設定するには、[Azure Machine Learning ワークスペースおよび関連付けられているリソースのセキュリティ保護](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints)に関する記事を参照してください。 また、[Azure Container Registry (ACR) を VNet の背後に配置する](how-to-secure-workspace-vnet.md#enable-azure-container-registry-acr)必要があります。
+このようなプライベート ストレージを設定するには、[Azure Machine Learning ワークスペースおよび関連付けられているリソースのセキュリティ保護](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts)に関する記事を参照してください。 また、[Azure Container Registry (ACR) を VNet の背後に配置する](how-to-secure-workspace-vnet.md#enable-azure-container-registry-acr)必要があります。
 
 > [!IMPORTANT]
 > プライベート パッケージ リポジトリを使用してモデルをトレーニングまたはデプロイできるようにするには、この手順を完了する必要があります。

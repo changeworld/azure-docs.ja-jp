@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/24/2021
 ms.author: jeedes
-ms.openlocfilehash: ee2431a9d4f832343d140ab09e8d247a627ec79e
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 7af03aa89037598f16de7e7f22008139a189e428
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123077646"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124816500"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-qiita-team"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Qiita Team の統合
 
@@ -141,7 +141,7 @@ Qiita Team に対して Azure AD SSO を構成してテストするには、次�
 
 * Azure portal で [このアプリケーションをテストします] をクリックします。これにより、SSO を設定した Qiita Team に自動的にサインインします。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Qiita Team] タイルをクリックします。これにより、SSO を設定した Qiita Team に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Qiita Team] タイルをクリックします。これにより、SSO を設定した Qiita Team に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

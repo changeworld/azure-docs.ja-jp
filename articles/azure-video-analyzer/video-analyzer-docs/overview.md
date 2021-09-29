@@ -1,15 +1,14 @@
 ---
 title: Azure Video Analyzer とは
 description: このトピックでは、Azure Video Analyzer の概要を示します
-ms.service: azure-video-analyzer
 ms.topic: overview
 ms.date: 06/01/2021
-ms.openlocfilehash: c32ccdbbf73d9e2dd4ee6812e49ca82eac150a31
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: 4cf2ba0bb9d5388eb6017fd0717929a3f5410a7d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122397721"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128646923"
 ---
 # <a name="what-is-azure-video-analyzer-preview"></a>Azure Video Analyzer とは (プレビュー)
  

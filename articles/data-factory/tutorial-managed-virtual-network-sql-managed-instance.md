@@ -4,14 +4,15 @@ description: このチュートリアルでは、Azure portal を使用して Pr
 author: lrtoyou1223
 ms.author: lle
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: tutorial
 ms.date: 05/06/2021
-ms.openlocfilehash: faa08121bde07f82a24fad24ca49b2fe2d0ea618
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: cb4d07c28e14ab18500218e3b3942eb768db1755
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121731454"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128632445"
 ---
 # <a name="tutorial-how-to-access-sql-managed-instance-from-data-factory-managed-vnet-using-private-endpoint"></a>チュートリアル: プライベート エンドポイントを使用して、Data Factory マネージド VNET から SQL Managed Instance にアクセスする方法
 

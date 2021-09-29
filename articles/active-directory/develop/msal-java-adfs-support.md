@@ -3,22 +3,22 @@ title: AD FS のサポート (MSAL for Java)
 titleSuffix: Microsoft identity platform
 description: Microsoft Authentication Library for Java (MSAL4j) での Active Directory フェデレーション サービス (AD FS) サポートについて説明します。
 services: active-directory
-author: sangonzal
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 11/21/2019
-ms.author: sagonzal
+ms.author: marsma
 ms.reviewer: nacanuma
 ms.custom: aaddev, devx-track-java
-ms.openlocfilehash: 82e3f3b32c6d96b83ec1d0402f344e7d65788c06
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9eea63573d2da462d055a784353a18bcee822998
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98063707"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128601161"
 ---
 # <a name="active-directory-federation-services-support-in-msal-for-java"></a>MSAL for Java での Active Directory フェデレーション サービスのサポート
 

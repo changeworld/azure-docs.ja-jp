@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/05/2021
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: adc52df3a393abb5579a7e03015548808722b197
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 081295e77da4a8bdf3929a08f405fe0230967579
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122697116"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124754620"
 ---
 # <a name="hc-series"></a>HC シリーズ
 
@@ -47,7 +47,7 @@ HC シリーズ VM は、100 Gb/秒の Mellanox EDR InfiniBand を特徴とし�
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
-## <a name="other-sizes"></a>その他のサイズ
+## <a name="other-sizes-and-information"></a>その他のサイズと情報
 
 - [汎用](sizes-general.md)
 - [メモリの最適化](sizes-memory.md)
@@ -55,6 +55,11 @@ HC シリーズ VM は、100 Gb/秒の Mellanox EDR InfiniBand を特徴とし�
 - [GPU の最適化](sizes-gpu.md)
 - [ハイ パフォーマンス コンピューティング](sizes-hpc.md)
 - [旧世代](sizes-previous-gen.md)
+
+料金計算ツール:[料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
+
+ディスクの種類の詳細については、「[Azure で利用できるディスクの種類](disks-types.md)」を参照してください
+
 
 ## <a name="next-steps"></a>次のステップ
 

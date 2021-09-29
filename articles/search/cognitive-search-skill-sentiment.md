@@ -6,13 +6,13 @@ author: LiamCavanagh
 ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/17/2020
-ms.openlocfilehash: 11190d27a8c8fa7fac465ca7132439f0bc34fef0
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/17/2021
+ms.openlocfilehash: b750e99d30c0b540a381ce9e9b32b228b4dceaf8
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121737624"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129210950"
 ---
 # <a name="sentiment-cognitive-skill"></a>センチメント コグニティブ スキル
 

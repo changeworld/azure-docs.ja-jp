@@ -7,12 +7,12 @@ ms.custom: references_regions
 ms.date: 02/17/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 6eb6dd71ae95b3af4ee913e1ac88d9988d2b23a9
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 7e2c4c6a68bb8db4434a233e7b7c658074ed015a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113762528"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124804123"
 ---
 # <a name="host-pool-creation"></a>ホスト プールの作成
 
@@ -71,7 +71,7 @@ Windows 10 Enterprise マルチセッションのイメージを使用するに�
 Azure Resource Manager テンプレートと PowerShell DSC のデプロイ失敗をトラブルシューティングするには、次の手順に従います。
 
 1. 「[Azure Resource Manager でのデプロイ操作の表示](../azure-resource-manager/templates/deployment-history.md)」を使用して、デプロイのエラーを確認します。
-2. デプロイにエラーがない場合、「[リソースのアクションを監査するアクティビティ ログの表示](../azure-resource-manager/management/view-activity-logs.md)」を使用して、アクティビティ ログのエラーを確認します。
+2. デプロイにエラーがない場合、「[リソースのアクションを監査するアクティビティ ログの表示](../azure-monitor/essentials/activity-log.md)」を使用して、アクティビティ ログのエラーを確認します。
 3. エラーが特定されたら、エラー メッセージと、「[Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング](../azure-resource-manager/templates/common-deployment-errors.md)」のリソースを使用して問題に対処します。
 4. 以前のデプロイ中に作成されたすべてのリソースを削除し、テンプレートのデプロイを再試行します。
 
@@ -288,5 +288,5 @@ the VM.\\\"
 - Azure Virtual Desktop で PowerShell を使用しているときに発生した問題を解決するには、「[Azure Virtual Desktop PowerShell](troubleshoot-powershell.md)」を参照してください。
 - サービスの詳細については、[Azure Virtual Desktop 環境](environment-setup.md)に関するページを参照してください。
 - トラブルシューティング チュートリアルについては、「[Tutorial:Resource Manager テンプレート デプロイのトラブルシューティング](../azure-resource-manager/templates/template-tutorial-troubleshoot.md)」を参照してください。
-- 監査アクションについては、「 [リソース マネージャーの監査操作](../azure-resource-manager/management/view-activity-logs.md)」をご覧ください。
+- 監査アクションについては、「 [リソース マネージャーの監査操作](../azure-monitor/essentials/activity-log.md)」をご覧ください。
 - デプロイ時にエラーが発生した場合の対応については、 [デプロイ操作の確認](../azure-resource-manager/templates/deployment-history.md)に関するページを参照してください。

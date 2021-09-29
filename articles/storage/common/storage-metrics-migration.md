@@ -9,35 +9,35 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: ff4c3c5ae8629879fca6e9e683a9c77d0e2f144b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 77097d0d59da65acd71b42eef58a3f2aa9b3c85b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100596109"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128587425"
 ---
 # <a name="transition-to-metrics-in-azure-monitor"></a>Azure Monitor のメトリックに移行する
 
-**2023 年 8 月 31 日** をもって、Storage Analytics メトリック ("*クラシック メトリック*" とも呼ばれます) は廃止されます。 詳細については、[公式告知](https://azure.microsoft.com/updates/azure-storage-classic-metrics-will-be-retired-on-31-august-2023/)を参照してください。 クラシック メトリックを使用している場合は、その日より前に Azure Monitor のメトリックに移行するようにしてください。 この記事は、移行を行う際に役立ちます。 
+**2023 年 8 月 31 日** をもって、Storage Analytics メトリック ("*クラシック メトリック*" とも呼ばれます) は廃止されます。 詳細については、[公式告知](https://azure.microsoft.com/updates/azure-storage-classic-metrics-will-be-retired-on-31-august-2023/)を参照してください。 クラシック メトリックを使用している場合は、その日より前に Azure Monitor のメトリックに移行するようにしてください。 この記事は、移行を行う際に役立ちます。
 
 ## <a name="steps-to-complete-the-transition"></a>移行を行うための手順
 
 Azure Monitor のメトリックに移行するには、次の方法をお勧めします。
 
-1. クラシック メトリックと Azure Monitor のメトリックの間の[重要な違い](#key-differences-between-classic-metrics-and-metrics-in-azure-monitor)について確認します。 
+1. クラシック メトリックと Azure Monitor のメトリックの間の[重要な違い](#key-differences-between-classic-metrics-and-metrics-in-azure-monitor)について確認します。
 
 2. 現在使用しているクラシック メトリックの一覧をまとめます。
 
-3. 現在使用しているメトリックと同じデータが提供される [Azure Monitor のメトリック](#metrics-mapping-between-old-metrics-and-new-metrics)を特定します。 
-   
+3. 現在使用しているメトリックと同じデータが提供される [Azure Monitor のメトリック](#metrics-mapping-between-old-metrics-and-new-metrics)を特定します。
+
 4. メトリック データを表示するための[グラフ](/learn/modules/gather-metrics-blob-storage/2-viewing-blob-metrics-in-azure-portal)または[ダッシュボード](/learn/modules/gather-metrics-blob-storage/4-using-dashboards-in-the-azure-portal)を作成します。
 
    > [!NOTE]
-   > Azure Monitor のメトリックは既定で有効になるので、メトリックのキャプチャを開始するために行う必要があることはありません。 ただし、それらのメトリックを表示するには、グラフまたはダッシュボードを作成する必要があります。 
- 
-5. クラシック ストレージ メトリックに基づく警告ルールを作成してある場合は、Azure Monitor のメトリックに基づいて[警告ルールを作成](../../azure-monitor/alerts/alerts-overview.md)します。 
+   > Azure Monitor のメトリックは既定で有効になるので、メトリックのキャプチャを開始するために行う必要があることはありません。 ただし、それらのメトリックを表示するには、グラフまたはダッシュボードを作成する必要があります。
 
-6. Azure Monitor のすべてのメトリックを表示できるようになったら、クラシック ログをオフにすることができます。 
+5. クラシック ストレージ メトリックに基づく警告ルールを作成してある場合は、Azure Monitor のメトリックに基づいて[警告ルールを作成](../../azure-monitor/alerts/alerts-overview.md)します。
+
+6. Azure Monitor のすべてのメトリックを表示できるようになったら、クラシック ログをオフにすることができます。
 
 <a id="key-differences-between-classic-metrics-and-metrics-in-azure-monitor"></a>
 
@@ -45,13 +45,13 @@ Azure Monitor のメトリックに移行するには、次の方法をお勧め
 
 ここでは、これら 2 つのメトリック プラットフォームの重要な違いについて説明します。
 
-主な違いは、メトリックの管理方法です。 クラシック メトリックは Azure Storage によって管理されますが、Azure Monitor のメトリックは Azure Monitor によって管理されます。 クラシック メトリックを使用すると、Azure Storage によってメトリックの値が収集されて集計され、ストレージ アカウント内にあるテーブルに格納されます。 Azure Monitor のメトリックでは、Azure Storage によって Azure Monitor バックエンドにメトリック データが送信されます。 Azure Monitor で提供される統合監視エクスペリエンスには、Azure portal からのデータや、取り込まれたデータが含まれます。 
+主な違いは、メトリックの管理方法です。 クラシック メトリックは Azure Storage によって管理されますが、Azure Monitor のメトリックは Azure Monitor によって管理されます。 クラシック メトリックを使用すると、Azure Storage によってメトリックの値が収集されて集計され、ストレージ アカウント内にあるテーブルに格納されます。 Azure Monitor のメトリックでは、Azure Storage によって Azure Monitor バックエンドにメトリック データが送信されます。 Azure Monitor で提供される統合監視エクスペリエンスには、Azure portal からのデータや、取り込まれたデータが含まれます。
 
-クラシック メトリックは Azure ストレージ アカウントに送信され、保管されます。 Azure Monitor メトリックは複数の場所に送信できます。 ストレージ アカウントはいずれかの場所にすることができますが、必須ではありません。  
+クラシック メトリックは Azure ストレージ アカウントに送信され、保管されます。 Azure Monitor メトリックは複数の場所に送信できます。 ストレージ アカウントはいずれかの場所にすることができますが、必須ではありません。
 
 メトリックでサポートされている限り、クラシック メトリックの **容量** メトリックは、Azure Blob Storage に対してのみ提供されます。 Azure Monitor のメトリックでは、BLOB、Table、File、Queue、Premium Storage に対して容量メトリックが提供されます。 クラシック メトリックの **トランザクション** メトリックは、BLOB、Table、Azure File、Queue Storage に対して提供されます。 Azure Monitor のメトリックは、その一覧に Premium Storage が追加されます。
 
-アカウントのアクティビティによってメトリックがトリガーされない場合、クラシック メトリックではそのメトリックに対してゼロ (0) という値が表示されます。 Azure Monitor のメトリックの場合は、データが完全に除外され、レポートがわかりやすくなります。 たとえば、クラシック メトリックでは、サーバー タイムアウト エラーが報告されない場合、メトリック テーブルの `ServerTimeoutError` の値は 0 に設定されます。 Azure Monitor では、ディメンション `ResponseType` が `ServerTimeoutError` に等しいメトリック `Transactions` の値に対してクエリを実行すると、データは返されません。 
+アカウントのアクティビティによってメトリックがトリガーされない場合、クラシック メトリックではそのメトリックに対してゼロ (0) という値が表示されます。 Azure Monitor のメトリックの場合は、データが完全に除外され、レポートがわかりやすくなります。 たとえば、クラシック メトリックでは、サーバー タイムアウト エラーが報告されない場合、メトリック テーブルの `ServerTimeoutError` の値は 0 に設定されます。 Azure Monitor では、ディメンション `ResponseType` が `ServerTimeoutError` に等しいメトリック `Transactions` の値に対してクエリを実行すると、データは返されません。
 
 Azure Monitor のメトリックの詳細については、「[Azure Monitor のメトリック](../../azure-monitor/essentials/data-platform-metrics.md)」を参照してください。
 
@@ -59,7 +59,7 @@ Azure Monitor のメトリックの詳細については、「[Azure Monitor の
 
 ## <a name="map-classic-metrics-to-metrics-in-azure-monitor"></a>クラシック メトリックを Azure Monitor のメトリックにマップする
 
- 現在使用しているメトリックと同じデータが提供される Azure Monitor のメトリックを確認するには、次の表を使用します。 
+ 現在使用しているメトリックと同じデータが提供される Azure Monitor のメトリックを確認するには、次の表を使用します。
 
 **容量メトリック**
 
@@ -117,4 +117,4 @@ Azure Monitor のメトリックの詳細については、「[Azure Monitor の
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Monitor](../../azure-monitor/overview.md)
+- [Azure Monitor](../../azure-monitor/overview.md)

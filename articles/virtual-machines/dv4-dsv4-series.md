@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: vm-sizes-general
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: a32fdd1da872c45c0e2402cdddd0685ef4296c7a
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: e33dba0f48f59f9be02e9cbab8346efd078cb893
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122691215"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124803919"
 ---
 # <a name="dv4-and-dsv4-series"></a>Dv4 および Dsv4 シリーズ
 
@@ -85,3 +85,22 @@ Dsv4 シリーズのサイズは、Intel&reg; Xeon&reg; Platinum 8272CL (Cascade
 
 <sup>1</sup>  Dsv4 シリーズの VM では、ディスクのパフォーマンスを[バースト](./disk-bursting.md)でき、一度に最大 30 分間バーストを最大にしておくことができます。<br>
 <sup>2</sup> 高速ネットワークは、1 つの NIC にのみ適用できます。 
+
+[!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
+
+## <a name="other-sizes-and-information"></a>その他のサイズと情報
+
+- [汎用](sizes-general.md)
+- [メモリの最適化](sizes-memory.md)
+- [ストレージの最適化](sizes-storage.md)
+- [GPU の最適化](sizes-gpu.md)
+- [ハイ パフォーマンス コンピューティング](sizes-hpc.md)
+- [旧世代](sizes-previous-gen.md)
+
+料金計算ツール:[料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
+
+ディスクの種類の詳細については、「[Azure で利用できるディスクの種類](disks-types.md)」を参照してください
+
+## <a name="next-steps"></a>次のステップ
+
+[Azure コンピューティング ユニット (ACU)](acu.md) を確認することで、Azure SKU 全体の処理性能を比較できます。

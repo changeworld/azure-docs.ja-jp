@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.author: jianleishen
 author: jianleishen
 ms.custom: synapse
-ms.date: 08/30/2021
-ms.openlocfilehash: 483ad9dbceb134188ee8a5e2fdce3469226c579b
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.date: 09/09/2021
+ms.openlocfilehash: 6f95e117865ccf9d242d595ec98b66d7cd344a85
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123312942"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128597684"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-microsoft-dataverse-or-dynamics-crm"></a>Dynamics 365 (Microsoft Dataverse) または Dynamics CRM との間でデータをコピーする
 
@@ -80,7 +80,7 @@ Dynamics のバージョンおよび製品でサポートされている認証�
 
     # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
 
-    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI を使用した新しいリンク サービスの作成を示すスクリーンショット。":::
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI で新しいリンク サービスを作成するスクリーンショット。":::
 
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
@@ -88,11 +88,11 @@ Dynamics のバージョンおよび製品でサポートされている認証�
 
 2. Dynamics を検索し、Dynamics 365 コネクタを選択します。
 
-    :::image type="content" source="media/connector-azure-blob-storage/azure-blob-storage-connector.png" alt-text="Dynamics 365 コネクタのスクリーンショット。":::    
+    :::image type="content" source="media/connector-dynamics-crm-office-365/dynamics-crm-office-365-connector.png" alt-text="Dynamics 365 コネクタのスクリーンショット。":::    
 
 1. サービスの詳細を構成し、接続をテストして、新しいリンク サービスを作成します。
 
-    :::image type="content" source="media/connector-azure-blob-storage/configure-azure-blob-storage-linked-service.png" alt-text="Dynamics 365 のリンク サービスの構成のスクリーンショット。":::
+    :::image type="content" source="media/connector-dynamics-crm-office-365/configure-dynamics-crm-office-365-linked-service.png" alt-text="Dynamics 365 のリンク サービスの構成のスクリーンショット。":::
 
 ## <a name="connector-configuration-details"></a>コネクタの構成の詳細
 
@@ -354,7 +354,7 @@ Dynamics にデータをコピーするために、コピー アクティビテ�
 | alternateKeyName | upsert を実行するためにエンティティに定義されている代替キー名。 | いいえ。 |
 | writeBatchSize | 各バッチで Dynamics に書き込まれたデータの行数。 | いいえ。 既定値は 10 です。 |
 | ignoreNullValues | 書き込み操作時に、キー フィールド以外の入力データからの null 値を無視するかどうか。<br/><br/>有効な値は **TRUE** と **FALSE** です。<ul><li>**TRUE**: upsert または更新操作を行うときに、対象オブジェクト内のデータが変更されないようにします。 挿入操作を実行するときに、定義済みの既定値を挿入します。</li><li>**FALSE**: upsert または更新操作を行うときに、対象オブジェクト内のデータを null 値に更新します。 挿入操作を実行するときに、null 値を挿入します。</li></ul> | いいえ。 既定値は **FALSE** です。 |
-| maxConcurrentConnections |アクティビティの実行中にデータ ストアに対して確立されたコンカレント接続数の上限。 コンカレント接続を制限する場合にのみ、値を指定します。| No |
+| maxConcurrentConnections |アクティビティの実行中にデータ ストアに対して確立されたコンカレント接続数の上限。 コンカレント接続を制限する場合にのみ、値を指定します。| いいえ |
 
 >[!NOTE]
 >Dynamics シンクでのシンク **writeBatchSize** とコピー アクティビティ **[parallelCopies](copy-activity-performance-features.md#parallel-copy)** のどちらでも、既定値は 10 です。 そのため、既定で 100 個のレコードが同時に Dynamics に送信されます。
@@ -477,11 +477,11 @@ Customer や Owner のように、複数のターゲットがあるルックア�
 - **CustomerField** を **CustomerField** に。 このマッピングは通常のフィールド マッピングです。
 - **Target** を **CustomerField\@EntityReference** に。 シンク列は、エンティティ参照を表す仮想列です。 そのようなフィールド名は、スキーマをインポートしても現れないため、マッピングに入力します。
 
-![Dynamics のルックアップ フィールド: 列マッピング](./media/connector-dynamics-crm-office-365/connector-dynamics-lookup-field-column-mapping.png)
+:::image type="content" source="./media/connector-dynamics-crm-office-365/connector-dynamics-lookup-field-column-mapping.png" alt-text="Dynamics のルックアップ フィールド: 列マッピング":::
 
 すべてのソース レコードが同じターゲット エンティティにマップされ、ソース データにターゲット エンティティ名が含まれていない場合、簡単な方法は次のとおりです。コピー アクティビティのソースで、列を追加します。 パターン `{lookup_field_name}@EntityReference` を使用して新しい列に名前を付け、値をターゲット エンティティ名に設定してから、通常どおりの列マッピングに進みます。 ソースとシンクで列名が同一の場合、コピー アクティビティでは既定で名前によって列がマップされるため、明示的な列マッピングをスキップすることもできます。
 
-![Dynamics のルックアップ フィールド: エンティティ参照列の追加](./media/connector-dynamics-crm-office-365/connector-dynamics-add-entity-reference-column.png)
+:::image type="content" source="./media/connector-dynamics-crm-office-365/connector-dynamics-add-entity-reference-column.png" alt-text="Dynamics のルックアップ フィールド: エンティティ参照列の追加":::
 
 ## <a name="lookup-activity-properties"></a>Lookup アクティビティのプロパティ
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/26/2021
 ms.author: jeedes
-ms.openlocfilehash: 34b18de633d586b6b32bc11b4eb6cb1a65928550
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 411eb76308fd9f68541ea7c50d75566b56747baf
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123222626"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124817058"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-concur"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Concur の統合
 
@@ -146,7 +146,7 @@ Concur では、自動ユーザー プロビジョニングもサポートされ
 
 * Concur のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Concur] タイルをクリックすると、Concur のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Concur] タイルをクリックすると、Concur のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ

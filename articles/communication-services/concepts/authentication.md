@@ -9,12 +9,13 @@ ms.author: rifox
 ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 7c2f060bbe317cbefc3b4748cbdced21053f80f7
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.subservice: identity
+ms.openlocfilehash: 657ea9b12f8bff633f1bcb87439e950a3aa5ce3b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122970308"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128672326"
 ---
 # <a name="authenticate-to-azure-communication-services"></a>Azure Communication Services に対する認証
 

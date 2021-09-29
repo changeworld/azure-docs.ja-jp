@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 08/30/2021
-ms.openlocfilehash: b5e60883f4af77eabcd3a59334bbf31b63d5cc49
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.date: 09/09/2021
+ms.openlocfilehash: e4d77aa3d4456154149c5ad38b9fdc769953f8ad
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123316573"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124764053"
 ---
 # <a name="copy-data-from-an-sap-table-using-azure-data-factory-or-azure-synapse-analytics"></a>Azure Data Factory または Azure Synapse Analytics を使用して SAP テーブルからデータをコピーする
 
@@ -53,7 +53,7 @@ SAP テーブルから、サポートされている任意のシンク データ
 1. SAP GUI を使用して SAP システムに接続します。 
 2. **[システム]**  ->  **[ステータス]** に移動します。 
 3. SAP_BASIS のリリースを調べ、701 以上であることを確認します。  
-      ![SAP_BASIS の確認](./media/connector-sap-table/sap-basis.png)
+      :::image type="content" source="./media/connector-sap-table/sap-basis.png" alt-text="SAP_BASIS の確認":::
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -63,7 +63,7 @@ SAP テーブルから、サポートされている任意のシンク データ
 
 - [Microsoft .NET 3.0 用の 64 ビット SAP コネクタ](https://support.sap.com/en/product/connectors/msnet.html)を SAP の Web サイトからダウンロードし、それをセルフホステッド統合ランタイムのコンピューターにインストールします。 インストール時に、 **[Optional setup steps]\(省略可能なセットアップ手順\)** ウィンドウで、 **[Install Assemblies to GAC]\(アセンブリを GAC にインストールする\)** オプションを必ず選択します。
 
-  ![SAP Connector for .NET をインストールする](./media/connector-sap-business-warehouse-open-hub/install-sap-dotnet-connector.png)
+  :::image type="content" source="./media/connector-sap-business-warehouse-open-hub/install-sap-dotnet-connector.png" alt-text="SAP Connector for .NET をインストールする":::
 
 - SAP テーブル コネクタで使用される SAP ユーザーには、次のアクセス許可が必要です。
 
@@ -82,7 +82,7 @@ SAP テーブルから、サポートされている任意のシンク データ
 
     # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
 
-    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI を使用した新しいリンク サービスの作成を示すスクリーンショット。":::
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI で新しいリンク サービスを作成するスクリーンショット。":::
 
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
@@ -331,7 +331,7 @@ SAP テーブルからデータをコピーするために、次のプロパテ�
 
 次に例を示します。
 
-![SAP テーブルの結合](./media/connector-sap-table/sap-table-join.png) 
+:::image type="content" source="./media/connector-sap-table/sap-table-join.png" alt-text="SAP テーブルの結合"::: 
 
 >[!TIP]
 >また、SAP テーブル コネクタでサポートされている VIEW で、結合されたデータを集計することも検討できます。
@@ -345,13 +345,13 @@ SAP テーブルについては、現在、[customRfcReadTableFunctionModule](#c
 
 - 定義は次のとおりです。
 
-    ![定義](./media/connector-sap-table/custom-function-module-definition.png) 
+    :::image type="content" source="./media/connector-sap-table/custom-function-module-definition.png" alt-text="定義"::: 
 
 - 次のいずれかのテーブルにデータをエクスポートします。
 
-    ![エクスポート テーブル 1](./media/connector-sap-table/export-table-1.png) 
+    :::image type="content" source="./media/connector-sap-table/export-table-1.png" alt-text="エクスポート テーブル 1"::: 
 
-    ![エクスポート テーブル 2](./media/connector-sap-table/export-table-2.png)
+    :::image type="content" source="./media/connector-sap-table/export-table-2.png" alt-text="エクスポート テーブル 2":::
  
 SAP テーブル コネクタでカスタム関数モジュールがどのように使用されるのかを以下に示します。
 
@@ -367,11 +367,11 @@ SAP テーブル コネクタでカスタム関数モジュールがどのよう
 
     1. Fields テーブル内の値を解析して、スキーマを取得します。
 
-        ![Fields 内の値を解析する](./media/connector-sap-table/parse-values.png)
+        :::image type="content" source="./media/connector-sap-table/parse-values.png" alt-text="Fields 内の値を解析する":::
 
     1. 出力テーブルの値を取得して、これらの値が含まれているテーブルを確認します。
 
-        ![出力テーブル内の値を取得する](./media/connector-sap-table/get-values.png)
+        :::image type="content" source="./media/connector-sap-table/get-values.png" alt-text="出力テーブル内の値を取得する":::
 
     1. OUT_TABLE 内の値を取得し、データを解析してから、シンクに書き込みます。
 

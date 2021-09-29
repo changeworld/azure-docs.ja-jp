@@ -4,15 +4,15 @@ description: App Service Environment の概要
 author: ccompy
 ms.assetid: 3d37f007-d6f2-4e47-8e26-b844e47ee919
 ms.topic: article
-ms.date: 08/05/2021
+ms.date: 09/07/2021
 ms.author: ccompy
 ms.custom: references_regions
-ms.openlocfilehash: 848b7ce830c91cffaaaa39ed2102255f0adc3b7f
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: e422f6316cce204a4b6ea152ff9be4489bb3e331
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122445682"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124767909"
 ---
 # <a name="app-service-environment-overview"></a>App Service Environment の概要 
 > [!NOTE]
@@ -108,22 +108,27 @@ ASEv3 は、次のリージョンで使用できます。
 |米国中部 |米国東部 2|
 |東アジア  | フランス中部|
 |米国東部    | ドイツ中西部|
-|米国東部 2| 北ヨーロッパ|
-|フランス中部 | 米国中南部|
-|ドイツ中西部   |   東南アジア|
+|米国東部 2| 東日本|
+|フランス中部 | 北ヨーロッパ|
+|ドイツ中西部   |   米国中南部|
+|東日本 | 東南アジア|
 |韓国中部  | 英国南部|
-|北ヨーロッパ   | 西ヨーロッパ|
-|ノルウェー東部    | 米国西部 2 |
+|米国中北部   | 西ヨーロッパ|
+|北ヨーロッパ   | 米国西部 2|
+|ノルウェー東部    | |
+|南アフリカ北部 | |
 |米国中南部   | |
 |東南アジア| |
 |スイス北部  | | 
+|アラブ首長国連邦北部| |   
 |英国南部| |    
 |英国西部| |
 |米国中西部    | | 
 |西ヨーロッパ    | |
 |米国西部    | | 
 |米国西部 2| |
+|米国西部 3| |
 
 <!--Links-->
-[reservedinstances]: https://docs.microsoft.com/azure/cost-management-billing/reservations/reservation-discount-app-service#how-reservation-discounts-apply-to-isolated-v2-instances
+[reservedinstances]: ../../cost-management-billing/reservations/reservation-discount-app-service.md
 [pricing]: https://azure.microsoft.com/pricing/details/app-service/windows/

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 03/07/2021
 ms.author: bagol
-ms.openlocfilehash: e2da161d98a7f4bcae0f8da55a1cf7129c7633f9
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 76800b0f7a90dacd1447b87fdc1f1d23300873ec
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122183955"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124784396"
 ---
 # <a name="commonly-used-azure-sentinel-workbooks"></a>一般的に使用される Azure Sentinel ブック
 
@@ -48,7 +48,7 @@ ms.locfileid: "122183955"
 |**ID およびアクセス**     |   監査およびサインイン ログを含むセキュリティログを使用して、Microsoft 製品の使用における ID およびアクセス操作に関する分析情報が提供されます。     |
 |**インシデントの概要**     |   一般情報、エンティティ データ、トリアージ時間、軽減時間、コメントなど、インシデントに関する詳細情報を提供することによって、トリアージと調査を支援するように設計されています。 <br><br>詳細については、[データドリブン SOC のためのツールキット](https://techcommunity.microsoft.com/t5/azure-sentinel/the-toolkit-for-data-driven-socs/ba-p/2143152)に関するページをご覧ください。      |
 |<a name="investigation-insights"></a>**調査の分析情報**     | インシデント、ブックマーク、エンティティ データに関する分析情報がアナリストに提供されます。 一般的なクエリと詳細な視覚化は、アナリストが疑わしいアクティビティを調査するのに役立ちます。     |
-|**Microsoft Cloud App Security - 検出ログ**     |   組織で使用されているクラウド アプリの詳細と、特定のユーザーおよびアプリケーションの使用傾向やドリルダウン データから得られる分析情報が提供されます。  <br><br>詳細については、「[Microsoft Cloud App Security からデータを接続する](connect-cloud-app-security.md)」をご覧ください。|
+|**Microsoft Cloud App Security - 検出ログ**     |   組織で使用されているクラウド アプリの詳細と、特定のユーザーおよびアプリケーションの使用傾向やドリルダウン データから得られる分析情報が提供されます。  <br><br>詳細については、「[Microsoft Cloud App Security からデータを接続する](./data-connectors-reference.md#microsoft-cloud-app-security-mcas)」をご覧ください。|
 |**MITRE ATT&CK ブック**     |   Azure Sentinel の MITRE ATT&CK カバレッジについて詳細が提供されます。      |
 |**Office 365**     | すべての操作とアクティビティをトレースおよび分析することで、Office 365 に関する分析情報が提供されます。 SharePoint、OneDrive、Teams、および Exchange のデータがドリルダウンされます。       |
 |**セキュリティのアラート**     |  Azure Sentinel 環境でのアラートのセキュリティ アラート ダッシュボードが提供されます。 <br><br>詳細については、「[Microsoft セキュリティ アラートからインシデントを自動的に作成する](create-incidents-from-alerts.md)」を参照してください。      |

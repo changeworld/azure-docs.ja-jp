@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 8/27/2021
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf8b1d7a3f45cd49bdb2ea420084a242e3e2c959
-ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
+ms.openlocfilehash: 19a3f4835e3e2b20d0921aa2a259739ec6cd51bc
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123214229"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124754162"
 ---
 # <a name="tutorial-configure-datawiza-with-azure-active-directory-for-secure-hybrid-access"></a>チュートリアル: Datawiza と Azure Active Directory の統合を構成して安全なハイブリッド アクセスを実現する
 
@@ -32,7 +32,7 @@ Datawiza の [Datawiza Access Broker (DAB)](https://www.datawiza.com/access-brok
 
 - Azure サブスクリプション。 サブスクリプションがない場合は、[試用アカウント](https://azure.microsoft.com/free/)を取得できます。
 
-- お使いの Azure サブスクリプションにリンクされている [Azure AD テナント](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)。
+- お使いの Azure サブスクリプションにリンクされている [Azure AD テナント](../fundamentals/active-directory-access-create-new-tenant.md)。
 
 - DAB を実行するには、[Docker](https://docs.docker.com/get-docker/) と [docker-compose](https://docs.docker.com/compose/install/) が必要です。 アプリケーションは、仮想マシンやベアメタルなど、任意のプラットフォームで実行できます。
 
@@ -42,7 +42,7 @@ Datawiza の [Datawiza Access Broker (DAB)](https://www.datawiza.com/access-brok
 
 Datawiza 統合には、次のコンポーネントが含まれています。
 
-- [Azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) - ID とアクセス管理のための Microsoft のクラウドベースのサービスです。ユーザーはこのサービスを利用して外部リソースおよび内部リソースにサインインしてアクセスすることができます。
+- [Azure AD](../fundamentals/active-directory-whatis.md) - ID とアクセス管理のための Microsoft のクラウドベースのサービスです。ユーザーはこのサービスを利用して外部リソースおよび内部リソースにサインインしてアクセスすることができます。
 
 - Datawiza Access Broker (DAB) - サービス ユーザーがサインオンし、HTTP ヘッダーを介してアプリケーションに透過的に ID を渡します。
 
@@ -125,6 +125,6 @@ Azure AD テナントで既存の Web アプリケーションを使用したい
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Datawiza と Azure AD B2C の統合を構成する](https://docs.microsoft.com/azure/active-directory-b2c/partner-datawiza)
+- [Datawiza と Azure AD B2C の統合を構成する](../../active-directory-b2c/partner-datawiza.md)
 
 - [Datawiza のドキュメント](https://docs.datawiza.com)

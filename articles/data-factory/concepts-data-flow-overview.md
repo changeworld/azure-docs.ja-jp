@@ -8,12 +8,12 @@ ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 08/26/2021
-ms.openlocfilehash: 1d4e8ad4fd7d0b5690f506e9db7f1043c8f21045
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 2c61431f3556a83482306c76c7246df5ba2c0139
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123039092"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124828406"
 ---
 # <a name="mapping-data-flows-in-azure-data-factory"></a>Azure Data Factory のマッピング データ フロー
 
@@ -29,7 +29,7 @@ ms.locfileid: "123039092"
 
 データ フローは、パイプラインやデータセットなどのファクトリ リソースのペインから作成されます。 データ フローを作成するには、 **[Factory Resources]\(Factory リソース\)** の横にあるプラス記号アイコンを選択して、 **[データ フロー]** を選択します。 
 
-![新しいデータ フロー](media/data-flow/new-data-flow.png)
+:::image type="content" source="media/data-flow/new-data-flow.png" alt-text="新しいデータ フロー":::
 
 このアクションにより、変換ロジックを作成できるデータ フロー キャンバスに移動します。 **[ソースの追加]** を選択すると、ソース変換の構成が開始します。 詳細については、[ソース変換](data-flow-source.md)に関するページを参照してください。
 
@@ -37,13 +37,13 @@ ms.locfileid: "123039092"
 
 マッピング データ フローには、変換ロジックを簡単に構築するために設計された独自の作成キャンバスがあります。 データ フロー キャンバスは、上部バー、グラフ、および構成パネルの 3 つの部分に分かれています。 
 
-![スクリーンショットには、上部バー、グラフ、および構成パネルにラベルが付いたデータ フロー キャンバスが示されています。](media/data-flow/canvas-1.png "キャンバス")
+:::image type="content" source="media/data-flow/canvas-1.png" alt-text="スクリーンショットには、上部バー、グラフ、および構成パネルにラベルが付いたデータ フロー キャンバスが示されています。":::
 
 ### <a name="graph"></a>グラフ
 
 グラフには変換ストリームが表示されます。 ここにはソース データが 1 つ以上のシンクに流れるときのソース データの系列が表示されます。 新しいソースを追加するには、 **[ソースの追加]** を選択します。 新しい変換を追加するには、既存の変換の右下にあるプラス記号を選択します。 詳しくは、[データ フロー グラフの管理](concepts-data-flow-manage-graph.md)方法に関するページを参照してください。
 
-![スクリーンショットには、[検索] テキスト ボックスがあるキャンバスのグラフ部分が示されています。](media/data-flow/canvas-2.png)
+:::image type="content" source="media/data-flow/canvas-2.png" alt-text="スクリーンショットには、[検索] テキスト ボックスがあるキャンバスのグラフ部分が示されています。":::
 
 ### <a name="configuration-panel"></a>構成パネル
 
@@ -55,19 +55,19 @@ ms.locfileid: "123039092"
 
 各変換の構成ウィンドウの最初のタブには、その変換に固有の設定が含まれています。 詳しくは、各変換のドキュメント ページを参照してください。
 
-![[Source Settings] タブ](media/data-flow/source1.png "[Source Settings] タブ")
+:::image type="content" source="media/data-flow/source1.png" alt-text="[Source Settings] タブ":::
 
 #### <a name="optimize"></a>最適化
 
 **[最適化]** タブには、パーティション分割を構成するためのオプション設定が含まれています。 データ フローを最適化する方法の詳細については、[マッピング データ フローのパフォーマンス ガイド](concepts-data-flow-performance.md)に関する記事を参照してください。
 
-![パーティション オプション、パーティションの種類、パーティションの数が含まれる [最適化] タブが示されているスクリーンショット。](media/data-flow/optimize.png)
+:::image type="content" source="media/data-flow/optimize.png" alt-text="パーティション オプション、パーティションの種類、パーティションの数が含まれる [最適化] タブが示されているスクリーンショット。":::
 
 #### <a name="inspect"></a>検査
 
 **[Inspect]\(検査\)** タブには、変換するデータ ストリームのメタデータのビューが表示されます。 列数、変更された列、追加された列、データ型、列の順序、および列の参照を確認できます。 **[Inspect]\(検査\)** は、メタデータの読み取り専用ビューです。 **[Inspect]\(検査\)** ペインでメタデータを表示するためにデバッグ モードを有効にする必要はありません。
 
-![検査](media/data-flow/inspect1.png "検査")
+:::image type="content" source="media/data-flow/inspect1.png" alt-text="検査":::
 
 変換を使ってデータの形状を変更すると、メタデータの変更が **[Inspect]\(検査\)** ペインに反映されます。 ソースの変換に定義済みのスキーマがない場合、メタデータは **[Inspect]\(検査\)** ペインに表示されません。 スキーマの誤差シナリオでは、メタデータがないことは一般的です。
 

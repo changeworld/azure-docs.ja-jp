@@ -7,12 +7,12 @@ ms.subservice: scheduled-events
 ms.date: 08/20/2019
 ms.author: sarn
 ms.topic: how-to
-ms.openlocfilehash: b8e13f8a8bd577e3e872d3fc59b099e34fd495d1
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 678c59f8a2ca9a3d9f1030597d84ed9986bce8d7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122694213"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128588525"
 ---
 # <a name="monitor-scheduled-events-for-your-azure-vms"></a>Azure VM のスケジュールされたイベントを監視する
 
@@ -158,7 +158,7 @@ Scheduled Event Service は、`–stop` スイッチおよび `–remove` スイ
 
 1. **[新しいアラート ルール]** を選択します。 
 1. **[ルールの作成]** ページでは、 **[リソース]** として `collectorworkspace` をそのまま使用します。
-1. **[条件]** で、エントリ *[Whenever the customer log search is]\(顧客ログ検索がいつでも\)<login undefined>* を選択します。 **[シグナル ロジックの構成]** ページが開きます。
+1. **[条件]** で、エントリ *[Whenever the customer log search is]\(顧客ログ検索がいつでも\)\<login undefined\>* を選択します。 **[シグナル ロジックの構成]** ページが開きます。
 1. **[しきい値]** に「*0*」を入力して、 **[完了]** を選択します。
 1. **[アクション]** で、 **[アクショングループの作成]** を選択します。 **[アクション グループの追加]** ページが開きます。
 1. **[アクション グループ名]** に「*myActionGroup*」と入力します。

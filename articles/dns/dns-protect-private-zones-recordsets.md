@@ -3,17 +3,17 @@ title: プライベート DNS ゾーンとレコードを保護する - Azure DN
 description: このラーニング パスでは、Microsoft Azure DNS でプライベート DNS ゾーンとレコード セットの保護を始めます。
 services: dns
 ms.service: dns
-author: twooley
-ms.author: twooley
+author: duongau
+ms.author: duau
 ms.topic: how-to
 ms.date: 05/07/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b7867783a8c9fd95bd203fb3b1148095a2f5af03
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: b64d20e07ca78d18662f3e7aa7fe6ef1f822a159
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110691159"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128659799"
 ---
 # <a name="how-to-protect-private-dns-zones-and-records"></a>プライベート DNS ゾーンとレコードを保護する方法
 

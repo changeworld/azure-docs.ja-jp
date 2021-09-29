@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 08/09/2021
+ms.date: 09/16/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 324e494271287824c09030eaf918cd7f3881bc01
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 2e024c9cbe5733b5cf5cfb81946957518b7ea28d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122178053"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128574464"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-microsoft-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して Microsoft アカウントでのサインアップおよびサインインを設定する
 
@@ -40,14 +40,15 @@ ms.locfileid: "122178053"
 1. [自分の Microsoft Partner Network (MPN) アカウントを使用して会社 ID を確認します](/partner-center/verification-responses)。 このプロセスにより、会社と会社の主要連絡先に関する情報が検証されます。
 1. 発行元の確認プロセスを完了し、次のいずれかのオプションを使用して、MPN アカウントをアプリ登録に関連付けます。
    - Microsoft アカウント ID プロバイダーのアプリの登録が Azure AD テナント内にある場合は、[アプリ登録ポータルでアプリを検証](../active-directory/develop/mark-app-as-publisher-verified.md)します。
-   - Microsoft アカウント ID プロバイダーのアプリの登録が Azure AD B2C テナント内にある場合は、[Microsoft Graph API を使用して発行元がアプリを検証済みとしてマーク](../active-directory/develop/troubleshoot-publisher-verification.md#making-microsoft-graph-api-calls)します (たとえば、Graph Explorer を使用)。 アプリの検証済み発行元を設定するための UI は、現在、Azure AD B2C テナントでは無効になっています。
+   - Microsoft アカウント ID プロバイダーのアプリの登録が Azure AD B2C テナント内にある場合は、[Microsoft Graph API を使用して発行元により検証済みとしてアプリをマーク](../active-directory/develop/troubleshoot-publisher-verification.md#making-microsoft-graph-api-calls)します (たとえば、Graph Explorer を使用)。 アプリの検証済み発行元を設定するための UI は、現在、Azure AD B2C テナントでは無効になっています。
 
 ## <a name="create-a-microsoft-account-application"></a>Microsoft アカウント アプリケーションを作成する
 
 Azure Active Directory B2C (Azure AD B2C) で Microsoft アカウントを持つユーザーのサインインを有効にするには、[Azure portal](https://portal.azure.com) でアプリケーションを作成する必要があります。 詳細については、[Microsoft ID プラットフォームにアプリケーションを登録する](../active-directory/develop/quickstart-register-app.md)方法に関するページを参照してください。 まだ Microsoft アカウントを持っていない場合は、[https://www.live.com/](https://www.live.com/) で取得できます。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-1. ご利用の Azure AD テナントを含むディレクトリを使用していることを確認してください。そのためには、トップ メニューにある **[ディレクトリ + サブスクリプション]** フィルターをクリックして、ご利用の Azure AD テナントを含むディレクトリを選択します。
+1. ご自分の Azure AD テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[スイッチ]** を選択します。
 1. Azure portal の左上隅にある **[すべてのサービス]** を選択し、 **[アプリの登録]** を検索して選択します。
 1. **[新規登録]** を選択します。
 1. アプリケーションの **[名前]** を入力します。 たとえば、 *MSAapp1* です。
@@ -67,7 +68,8 @@ Azure Active Directory B2C (Azure AD B2C) で Microsoft アカウントを持つ
 ## <a name="configure-microsoft-as-an-identity-provider"></a>Microsoft を ID プロバイダーとして構成する
 
 1. Azure AD B2C テナントの全体管理者として [Azure Portal](https://portal.azure.com/) にサインインします。
-1. ご利用の Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。そのためには、トップ メニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択して、ご利用のテナントを含むディレクトリを選択します。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
 1. Azure Portal の左上隅の **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
 1. **[ID プロバイダー]** を選択してから、 **[Microsoft アカウント]** を選択します。
 1. **[名前]** を入力します。 たとえば、「*MSA*」とします。
@@ -112,7 +114,8 @@ Azure AD から `family_name` および `given_name` 要求を取得する場合
 これで、Azure AD テナント内にアプリケーションが作成されたので、そのアプリケーションのクライアント シークレットを Azure AD B2C テナント内に格納する必要があります。
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
-1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 上部メニューで **[ディレクトリ + サブスクリプション]** フィルターを選択し、ご利用のテナントが含まれるディレクトリを選択します。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
 1. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
 1. [概要] ページで、 **[Identity Experience Framework]** を選択します。
 1. **[ポリシー キー]** を選択し、 **[追加]** を選択します。

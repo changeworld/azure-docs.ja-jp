@@ -8,15 +8,15 @@ ms.topic: overview
 ms.date: 02/12/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5cd64a9372f8f987ae79ed6c2927d179d71d141c
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.openlocfilehash: 338ca079f2c351b1600d387c3e8e81a27382604e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108286584"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128596393"
 ---
 # <a name="what-is-enterprise-state-roaming"></a>Enterprise State Roaming とは
 

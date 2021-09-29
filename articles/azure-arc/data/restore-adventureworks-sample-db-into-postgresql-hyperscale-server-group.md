@@ -1,7 +1,6 @@
 ---
 title: AdventureWorks サンプル データベースを Azure Arc 対応 PostgreSQL Hyperscale にインポートする
 description: AdventureWorks サンプル データベースを Azure Arc 対応 PostgreSQL Hyperscale に復元する
-services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
 author: TheJY
@@ -9,12 +8,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 06/02/2021
 ms.topic: how-to
-ms.openlocfilehash: f802bb5d681e9e77d258d6071def53d4c5e4958f
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: f3174e0980470f9ad23a53810767d75ba375bd9e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113731099"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128650175"
 ---
 # <a name="import-the-adventureworks-sample-database-to-azure-arc-enabled-postgresql-hyperscale"></a>AdventureWorks サンプル データベースを Azure Arc 対応 PostgreSQL Hyperscale にインポートする
 
@@ -38,7 +37,7 @@ AdventureWorks の .sql ファイルを PostgreSQL Hyperscale サーバー グ�
 >  GitHub からファイルをダウンロードするには、コンテナーが 443 経由でインターネットに接続されている必要があります。
 
 > [!NOTE]
->  Postgres Hyperscale サーバー グループのコーディネーター ノードのポッド名を使用します。 その名前は <server group name>c-0 です (たとえば、postgres01c-0 の場合、c は Coordinator ノードを表します)。  ポッド名がわからない場合は、`kubectl get pod` コマンドを実行します。
+>  Postgres Hyperscale サーバー グループのコーディネーター ノードのポッド名を使用します。 その名前は \<server group name\>c-0 です (たとえば、postgres01c-0 の場合、c は Coordinator ノードを表します)。  ポッド名がわからない場合は、`kubectl get pod` コマンドを実行します。
 
 ```console
 kubectl exec <PostgreSQL pod name> -n <namespace name> -c postgres  -- /bin/bash -c "cd /tmp && curl -k -O https://raw.githubusercontent.com/microsoft/azure_arc/main/azure_arc_data_jumpstart/aks/arm_template/postgres_hs/AdventureWorks.sql"

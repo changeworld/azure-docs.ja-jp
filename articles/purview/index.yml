@@ -8,13 +8,13 @@ metadata:
   ms.topic: landing-page
   author: whhender
   ms.author: whhender
-  ms.date: 08/26/2021
-  ms.openlocfilehash: fbe52bbe6bc7835dc80251f7dffcd31c7a999d52
-  ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+  ms.date: 09/27/2021
+  ms.openlocfilehash: d5d523ea0473e6f4e292ca73d97b463e705a0b08
+  ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/26/2021
-  ms.locfileid: "122969734"
+  ms.lasthandoff: 09/29/2021
+  ms.locfileid: "129214847"
 landingContent:
 - title: Azure Purview について
   linkLists:
@@ -34,6 +34,10 @@ landingContent:
       url: catalog-permissions.md
     - text: ソースのスキャンと取り込み
       url: concept-scans-and-ingestion.md
+  - linkListType: learn
+    links:
+    - text: Azure Purview の概要
+      url: /learn/modules/intro-to-azure-purview/
 - title: 開始
   linkLists:
   - linkListType: quickstart

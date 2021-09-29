@@ -3,12 +3,12 @@ title: 証明書をデプロイする
 description: Defender for IoT 用の証明書を設定してデプロイする方法について説明します。
 ms.date: 08/29/2021
 ms.topic: how-to
-ms.openlocfilehash: 83345d9ad0267e39093bc310c8ebd940f878c47e
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: d6a67a84dab6df165346ff2739d0ac56e2b8eff2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123440135"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128602823"
 ---
 # <a name="about-certificates"></a>証明書について
 
@@ -193,9 +193,9 @@ RSA 2048 ビット または 4096 ビットを使用します。
 
 |**説明** | **CLI コマンド** |
 |--|--|
-| .crt ファイルを .pem ファイルに変換する   | openssl x509 -inform PEM -in <full path>/<pem-file-name>.pem -out <fullpath>/<crt-file-name>.crt  | 
-| .pem ファイルを .crt ファイルに変換する   | openssl x509 -inform PEM -in <full path>/<pem-file-name>.pem -out <fullpath>/<crt-file-name>.crt |  
-| 秘密キーと証明書を含む PKCS#12 ファイル (.pfx. p12) を PEM に変換する   | openssl pkcs12 -in keyStore.pfx -out keyStore.pem -nodes. -nocerts を追加して秘密キーのみを出力するか、-nokeys を追加して証明書のみを出力することができます。  |  
+| .crt ファイルを .pem ファイルに変換する   | `openssl x509 -inform PEM -in <full path>/<pem-file-name>.pem -out <fullpath>/<crt-file-name>.crt`  | 
+| .pem ファイルを .crt ファイルに変換する   | `openssl x509 -inform PEM -in <full path>/<pem-file-name>.pem -out <fullpath>/<crt-file-name>.crt` |  
+| 秘密キーと証明書を含む PKCS#12 ファイル (.pfx. p12) を PEM に変換する   | `openssl pkcs12 -in keyStore.pfx -out keyStore.pem -nodes`. -nocerts を追加して秘密キーのみを出力するか、-nokeys を追加して証明書のみを出力することができます。  |  
 
 ## <a name="troubleshooting"></a>トラブルシューティング  
 

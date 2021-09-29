@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/30/2021
+ms.date: 09/16/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6477283b3eb96579b943baf0aa34c2737bf43a58
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 39c21beb5f2f8f673210f8fc4c8c5bf0a7d13c2a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110059617"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128575078"
 ---
 # <a name="define-an-id-token-hint-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで ID トークン ヒントの技術プロファイルを定義する
 
@@ -130,7 +130,8 @@ $newClientSecret
 トークン発行者が使用するのと同じキーを、Azure AD B2C ポリシー キーで作成する必要があります。  
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-1. ポータル ツール バーにある **[ディレクトリ + サブスクリプション]** アイコンを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページの **[ディレクトリ名]** の一覧で自分の Azure AD B2C ディレクトリを見つけて、 **[切り替え]** を選択します。
 1. Azure portal で、 **[Azure AD B2C]** を検索して選択します。
 1. [概要] ページで、 **[ポリシー]** を選択してから **[Identity Experience Framework]** を選択します。
 1. **[ポリシー キー]** を選択します。 

@@ -8,12 +8,12 @@ ms.service: media-services
 ms.topic: tutorial
 ms.date: 07/26/2021
 ms.author: inhenkel
-ms.openlocfilehash: 38586e2cc60186c929b5ca43990019e768a1ed13
-ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
+ms.openlocfilehash: 8f857ff3c1a17e0f17d396b8d97d9d0e27b4fa18
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114720473"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128646082"
 ---
 # <a name="tutorial-analyze-videos-with-media-services-v3"></a>チュートリアル:Media Services v3 を使用してビデオを分析する
 
@@ -34,7 +34,7 @@ ms.locfileid: "114720473"
 
 ## <a name="compliance-privacy-and-security"></a>コンプライアンス、プライバシー、セキュリティ
  
-重要な注意事項として、Azure Video Analyzer for Media (旧名 Video Indexer) の使用においては、適用されるすべての法令に従う必要があります。 他の人の権利を侵害するような方法で Azure Video Analyzer for Media またはその他の Azure サービスを使用することはできません。 生体認証データなどのビデオを Azure Video Analyzer for Media サービスにアップロードして処理と保管を行う前に、ビデオに写っている個人から適切なすべての同意を得ることを含め、適切な権限をすべて持っている必要があります。 Azure Video Analyzer for Media のコンプライアンス、プライバシー、セキュリティについては、Azure の [Cognitive Services の条項](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)に関するページを参照してください。 Microsoft のプライバシー義務とデータの取り扱いについては、Microsoft の[プライバシー ステートメント](https://privacy.microsoft.com/PrivacyStatement)、[オンライン サービス条件](https://www.microsoft.com/licensing/product-licensing/products) (OST)、および[データ処理の補遺](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA") に関するページをご確認ください。 データの保有、削除、破棄などのその他のプライバシー情報は、OST および[こちら](../../azure-video-analyzer/video-analyzer-for-media-docs/faq.md)で確認できます。 Azure Video Analyzer for Media を使用すると、Cognitive Services の条項、OST、DPA、およびプライバシー ステートメントに従うことに同意したものと見なされます。
+重要な注意事項として、Azure Video Analyzer for Media (旧名 Video Indexer) の使用においては、適用されるすべての法令に従う必要があります。 他の人の権利を侵害するような方法で Azure Video Analyzer for Media またはその他の Azure サービスを使用することはできません。 生体認証データなどのビデオを Azure Video Analyzer for Media サービスにアップロードして処理と保管を行う前に、ビデオに写っている個人から適切なすべての同意を得ることを含め、適切な権限をすべて持っている必要があります。 Azure Video Analyzer for Media のコンプライアンス、プライバシー、セキュリティについては、Azure の [Cognitive Services の条項](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)に関するページを参照してください。 Microsoft のプライバシー義務とデータの取り扱いについては、Microsoft の[プライバシー ステートメント](https://privacy.microsoft.com/PrivacyStatement)、[オンライン サービス条件](https://www.microsoft.com/licensing/product-licensing/products) (OST)、および[データ処理の補遺](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) ("DPA") に関するページをご確認ください。 データの保有、削除、破棄などのその他のプライバシー情報は、OST および[こちら](../../azure-video-analyzer/video-analyzer-for-media-docs/faq.yml)で確認できます。 Azure Video Analyzer for Media を使用すると、Cognitive Services の条項、OST、DPA、およびプライバシー ステートメントに従うことに同意したものと見なされます。
 
 ## <a name="prerequisites"></a>前提条件
 
