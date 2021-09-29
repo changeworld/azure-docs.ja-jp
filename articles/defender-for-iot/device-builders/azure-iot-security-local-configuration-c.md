@@ -3,12 +3,12 @@ title: セキュリティ エージェントのローカル構成 (C)
 description: Defender での C のエージェント ローカル構成について説明します。
 ms.topic: conceptual
 ms.date: 10/08/2020
-ms.openlocfilehash: 7cd230b188c7c1d644ec03cff2d084ff7ea57139
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 24445ce60b3a6d070805cf04a23d7834c24f01e4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113018326"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128680504"
 ---
 # <a name="understanding-the-localconfigurationjson-file---c-agent"></a>LocalConfiguration.json ファイルについて - C エージェント
 
@@ -32,7 +32,7 @@ Defender for IoT セキュリティ エージェントでは、ローカル構�
 | ID | "DPS"、"SecurityModule"、"Device" | 認証 ID - 認証が DPS を使用して行われる場合は DPS、認証が Defender-IoT-micro-agent の資格情報を使用して行われる場合は SecurityModule、認証がデバイスの資格情報を使用して行われる場合は Device |
 | AuthenticationMethod | "SasToken"、"SelfSignedCertificate" | 認証用のユーザー シークレット - ユーザー シークレットが対称キーの場合は SasToken を選択します。シークレットが自己署名証明書の場合は SelfSignedCertificate を選択します  |
 | FilePath | ファイルへのパス (文字列) | 認証シークレットを含むファイルへのパス |
-| HostName | string | Azure IoT ハブのホスト名。 通常 <my-hub>.azure-devices.net |
+| HostName | string | Azure IoT ハブのホスト名。 usually \<my-hub\>.azure-devices.net |
 | deviceId | string | デバイスの ID (Azure IoT Hub に登録されているもの) |
 | DPS | JsonObject | DPS 関連の構成 |
 | IDScope | string | DPS の ID スコープ |

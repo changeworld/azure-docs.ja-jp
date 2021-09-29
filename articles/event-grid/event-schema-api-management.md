@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: dlepow
 ms.author: danlep
 ms.date: 07/12/2021
-ms.openlocfilehash: c14107561886a9e29c2d95c5d04847274afdf4e3
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: e2f56f8886a387158c148edaf9ae557deac3783f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113734113"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128659155"
 ---
 # <a name="azure-api-management-as-an-event-grid-source-preview"></a>Event Grid ソースとしての Azure API Management (プレビュー)
 
@@ -22,21 +22,21 @@ API Management から出力されるイベントの種類は次のとおりで�
 
 | イベントの種類 | 説明 |
 | ---------- | ----------- |
-| Microsoft.APIManagement.UserCreated | ユーザーが作成されたときに発生します。 |
-| Microsoft.APIManagement.UserUpdated | ユーザーが更新されたときに発生します。 |
-| Microsoft.APIManagement.UserDeleted | ユーザーが削除されたときに発生します。 |
-| Microsoft.APIManagement.APICreated | API が作成されたときに発生します。 |
-| Microsoft.APIManagement.APIUpdated | API が更新されたときに発生します。 |
-| Microsoft.APIManagement.APIDeleted | API が削除されたときに発生します。 |
-| Microsoft.APIManagement.ProductCreated | 製品が作成されたときに発生します。 |
-| Microsoft.APIManagement.ProductUpdated | 製品が更新されたときに発生します。 |
-| Microsoft.APIManagement.ProductDeleted | 製品が削除されたときに発生します。 |
-| Microsoft.APIManagement.ReleaseCreated | API リリースが作成されたときに発生します。 |
-| Microsoft.APIManagement.ReleaseUpdated | API リリースが更新されたときに発生します。 |
-| Microsoft.APIManagement.ReleaseDeleted | API リリースが削除されたときに発生します。 |
-| Microsoft.APIManagement.SubscriptionCreated | サブスクリプションが作成されたときに発生します。 |
-| Microsoft.APIManagement.SubscriptionUpdated | サブスクリプションが更新されたときに発生します。 |
-| Microsoft.APIManagement.SubscriptionDeleted | サブスクリプションが削除されたときに発生します。 |
+| Microsoft.ApiManagement.UserCreated | ユーザーが作成されたときに発生します。 |
+| Microsoft.ApiManagement.UserUpdated | ユーザーが更新されたときに発生します。 |
+| Microsoft.ApiManagement.UserDeleted | ユーザーが削除されたときに発生します。 |
+| Microsoft.ApiManagement.APICreated | API が作成されたときに発生します。 |
+| Microsoft.ApiManagement.APIUpdated | API が更新されたときに発生します。 |
+| Microsoft.ApiManagement.APIDeleted | API が削除されたときに発生します。 |
+| Microsoft.ApiManagement.ProductCreated | 製品が作成されたときに発生します。 |
+| Microsoft.ApiManagement.ProductUpdated | 製品が更新されたときに発生します。 |
+| Microsoft.ApiManagement.ProductDeleted | 製品が削除されたときに発生します。 |
+| Microsoft.ApiManagement.ReleaseCreated | API リリースが作成されたときに発生します。 |
+| Microsoft.ApiManagement.ReleaseUpdated | API リリースが更新されたときに発生します。 |
+| Microsoft.ApiManagement.ReleaseDeleted | API リリースが削除されたときに発生します。 |
+| Microsoft.ApiManagement.SubscriptionCreated | サブスクリプションが作成されたときに発生します。 |
+| Microsoft.ApiManagement.SubscriptionUpdated | サブスクリプションが更新されたときに発生します。 |
+| Microsoft.ApiManagement.SubscriptionDeleted | サブスクリプションが削除されたときに発生します。 |
 
 ## <a name="example-event"></a>イベントの例
 
@@ -116,16 +116,13 @@ API Management から出力されるイベントの種類は次のとおりで�
 
 # <a name="event-grid-event-schema"></a>[Event Grid イベント スキーマ](#tab/event-grid-event-schema)
 
-次の例は、API 更新イベントのスキーマを示しています。 `data` プロパティには、`updatedProperies` 配列と `resourceUri` の両方が含まれます。  他の API Management リソース更新イベントのスキーマも同様です。 
+次の例は、API 更新イベントのスキーマを示しています。 他の API Management リソース更新イベントのスキーマも同様です。 
 ```json
 [{
   "id": "95015754-aa51-4eb6-98d9-9ee322b82ad7",
   "topic": "/subscriptions/{subscription-id}/resourceGroups/{your-rg}/providers/Microsoft.ApiManagement/service/{your-APIM-instance}",
   "subject": "/apis/myapi;Rev=1",
   "data": {
-    "updatedProperties": [
-      "path"
-    ],
     "resourceUri": "/subscriptions/subscription-id}/resourceGroups/{your-rg}/providers/Microsoft.ApiManagement/service/{your-APIM-instance}/apis/myapi;Rev=1"
   },
   "eventType": "Microsoft.ApiManagement.APIUpdated",
@@ -137,7 +134,7 @@ API Management から出力されるイベントの種類は次のとおりで�
 
 # <a name="cloud-event-schema"></a>[クラウド イベント スキーマ](#tab/cloud-event-schema)
 
-次の例は、API 更新イベントのスキーマを示しています。 `data` プロパティには、`updatedProperies` 配列と `resourceUri` の両方が含まれます。  他の API Management リソース更新イベントのスキーマも同様です。 
+次の例は、API 更新イベントのスキーマを示しています。 他の API Management リソース更新イベントのスキーマも同様です。 
 
 ```json
 [{
@@ -145,10 +142,7 @@ API Management から出力されるイベントの種類は次のとおりで�
   "source": "/subscriptions/{subscription-id}/resourceGroups/{your-rg}/providers/Microsoft.ApiManagement/service/{your-APIM-instance}",
   "subject": "/apis/myapi;Rev=1",
   "data": {
-    "updatedProperties": [
-      "path"
-    ],
-    "resourceUri": "/subscriptions/subscription-id}/resourceGroups/{your-rg}/providers/Microsoft.ApiManagement/service/{your-APIM-instance}/apis/myapi;Rev=1"
+    "resourceUri": "/subscriptions/{subscription-id}/resourceGroups/{your-rg}/providers/Microsoft.ApiManagement/service/{your-APIM-instance}/apis/myapi;Rev=1"
   },
   "Type": "Microsoft.ApiManagement.APIUpdated",
   "Time": "2021-07-12T23:13:44.9048323Z",
@@ -163,10 +157,10 @@ API Management から出力されるイベントの種類は次のとおりで�
 
 イベントのトップレベルのデータを次に示します。
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | 説明 |
 | -------- | ---- | ----------- |
 | `topic` | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
-| `subject` | string | コンプライアンス状態の変更の対象となるリソースの完全修飾 ID。リソース名とリソースの種類が含まれます。 次の形式が使用されます: `/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroup>/providers/<ProviderNamespace>/<ResourceType>/<ResourceName>` |
+| `subject` | string | 発行元が定義したイベントの対象のパス。 |
 | `eventType` | string | このイベント ソース用に登録されたイベントの種類のいずれか。 |
 | `eventTime` | string | プロバイダーの UTC 時刻に基づくイベントの生成時刻。 |
 | `id` | string | イベントの一意識別子。 |
@@ -178,10 +172,10 @@ API Management から出力されるイベントの種類は次のとおりで�
 
 イベントのトップレベルのデータを次に示します。
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | 説明 |
 | -------- | ---- | ----------- |
 | `source` | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
-| `subject` | string | コンプライアンス状態の変更の対象となるリソースの完全修飾 ID。リソース名とリソースの種類が含まれます。 次の形式が使用されます: `/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroup>/providers/<ProviderNamespace>/<ResourceType>/<ResourceName>` |
+| `subject` | string | 発行元が定義したイベントの対象のパス。 |
 | `type` | string | このイベント ソース用に登録されたイベントの種類のいずれか。 |
 | `time` | string | プロバイダーの UTC 時刻に基づくイベントの生成時刻。 |
 | `id` | string | イベントの一意識別子。 |
@@ -192,10 +186,9 @@ API Management から出力されるイベントの種類は次のとおりで�
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | 説明 |
 | -------- | ---- | ----------- |
-| `resourceUri` | string | イベントをトリガーした API Management リソースの URI。 |
-| `updatedProperties` | string[] | 更新イベントをトリガーした API Management リソースで更新されたプロパティの一覧。 |
+| `resourceUri` | string | コンプライアンス状態の変更の対象となるリソースの完全修飾 ID。リソース名とリソースの種類が含まれます。 `/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroup>/Microsoft.ApiManagement/service/<ServiceName>/<ResourceType>/<ResourceName>` の形式が使用されます。 |
 
 ## <a name="tutorials-and-how-tos"></a>チュートリアルと方法
 

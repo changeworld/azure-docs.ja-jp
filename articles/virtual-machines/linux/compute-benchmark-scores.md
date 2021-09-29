@@ -2,17 +2,17 @@
 title: Azure Linux VM のコンピューティング ベンチマーク スコア
 description: Linux を実行する Azure VM の CoreMark コンピューティング ベンチマーク スコアを比較します。
 ms.service: virtual-machines
-ms.subservice: benchmark
+ms.subservice: sizes
 ms.collection: linux
 ms.topic: conceptual
 ms.date: 04/08/2021
 ms.reviewer: davberg
-ms.openlocfilehash: 41a2f377629b8cce647adecb21e395c60bf15a7c
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 3847250ee3c5a080740aef51541fdf47e5c11882
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122770781"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129216531"
 ---
 # <a name="compute-benchmark-scores-for-linux-vms"></a>Linux VM のコンピューティング ベンチマーク スコア
 
@@ -708,7 +708,7 @@ CoreMark は、[GitHub](https://github.com/eembc/coremark) からダウンロー
 
 ベンチマークをビルドして実行するには、次のように入力します。
 
-```> make```
+`> make`
 
 すべての結果は、```run1.log``` および ```run2.log``` ファイルで確認できます。 
 ```run1.log``` には CoreMark の結果が含まれています。 これらは、パフォーマンス パラメーターを使用したベンチマークの結果です。
@@ -718,7 +718,7 @@ CoreMark は、[GitHub](https://github.com/eembc/coremark) からダウンロー
 
 既定では、ベンチマークは 10 から 100 秒間実行されます。 オーバーライドするには、```ITERATIONS=N``` を使用します
 
-```% make ITERATIONS=10```
+`% make ITERATIONS=10`
 
 上記のフラグでは、ベンチマークが 10 回繰り返されます。 
 **結果がレポート作成に有効となるのは、ベンチマークが少なくとも 10 秒間実行された場合のみです。**
@@ -727,7 +727,7 @@ CoreMark は、[GitHub](https://github.com/eembc/coremark) からダウンロー
 
 ```XCFLAGS=-DMULTITHREAD=N``` を使用します。ここで、N は並列で実行されるスレッドの数です。 複数のコンテキストで実行するために複数の実装を使用できます。
 
-```% make XCFLAGS="-DMULTITHREAD=4 -DUSE_PTHREAD"```
+`% make XCFLAGS="-DMULTITHREAD=4 -DUSE_PTHREAD"`
 
 上記の例では、4 つのコアで実行されるベンチマークがコンパイルされます。
 

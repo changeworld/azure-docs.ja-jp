@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 03/01/2021
 ms.author: davidmu
 ms.reviewer: alamaral
-ms.openlocfilehash: 6633d7a6ed7def1a2c3ee7f0262c16b106275bfa
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 420b1a0042dff8b643dc98f3b3f92e33be8c2d75
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121742904"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124791766"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>アプリケーション認証を Active Directory フェデレーション サービス (AD FS) から Azure Active Directory に移動する
 
@@ -413,7 +413,7 @@ Azure portal で信頼できる場所に対する [除外] オプションを構
 | :- | :- |
 | OAuth/OpenID Connect| **[エンタープライズ アプリケーション] > [アクセス許可]** の順に選択し、アプリのユーザー設定においてアプリケーションに確実に同意しているようにします。|
 | SAML ベースの SSO | **[シングル サインオン]** の下にある [[SAML 設定のテスト]](debug-saml-sso-issues.md) ボタンを使用します。 |
-| パスワードベースの SSO |  [マイ アプリによるセキュリティで保護されたサインイン](../user-help/my-apps-portal-end-user-access.md)[-](../user-help/my-apps-portal-end-user-access.md)[拡張機能](../user-help/my-apps-portal-end-user-access.md)をダウンロードしてインストールします。 この拡張機能は、SSO プロセスを使用する必要がある組織の任意のクラウド アプリを開始する場合に役立ちます。 |
+| パスワードベースの SSO |  [マイ アプリによるセキュリティで保護されたサインイン](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)[-](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)[拡張機能](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)をダウンロードしてインストールします。 この拡張機能は、SSO プロセスを使用する必要がある組織の任意のクラウド アプリを開始する場合に役立ちます。 |
 | アプリケーション プロキシ | コネクタが実行されていて、アプリケーションに割り当てられていることを確認します。 詳細については、[アプリケーション プロキシのトラブルシューティング ガイド](../app-proxy/application-proxy-troubleshoot.md)に関する記事をご覧ください。 |
 
 > [!NOTE]
