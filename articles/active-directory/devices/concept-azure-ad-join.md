@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 06/10/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c39aac2abeb9d569690b056df1a2fb892b11d3c1
-ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
+ms.openlocfilehash: 49ea66296140d5b9e3a6e9ac06dd1233001d7252
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2021
-ms.locfileid: "113303060"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128619877"
 ---
 # <a name="azure-ad-joined-devices"></a>Azure AD 参加済みデバイス
 

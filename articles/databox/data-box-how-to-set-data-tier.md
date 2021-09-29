@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: how-to
 ms.date: 05/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 80c4d8a70454c007ac45f588e59c03ef45f10933
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 82ac4e9c4a2f573295790d5d7fa3b02c2e690bbc
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92125066"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124819856"
 ---
 # <a name="use-azure-data-box-or-azure-data-box-heavy-to-send-data-to-appropriate-azure-storage-blob-tier"></a>Azure Data Box または Azure Data Box Heavy を使用して適切な Azure Storage BLOB 層にデータを送信する
 
@@ -47,7 +47,7 @@ Data Box または Data Box Heavy の注文時にアカウントの新規作成�
 
 Data Box デバイスのデータを既定の層にアップロードした後、そのデータを既定以外の層に移動することもできます。 データを既定以外の層に移動するには、2 つの方法があります。
 
-- **Azure Blob Storage ライフ サイクル管理** - ポリシー ベースのアプローチを使用して、データを自動的に階層制御したり、ライフ サイクル終了時に期限切れにしたりできます。 詳細については、「[Azure Blob Storage のライフサイクルの管理](../storage/blobs/storage-lifecycle-management-concepts.md)」を参照してください。
+- **Azure Blob Storage ライフ サイクル管理** - ポリシー ベースのアプローチを使用して、データを自動的に階層制御したり、ライフ サイクル終了時に期限切れにしたりできます。 詳細については、「[Azure Blob Storage のライフサイクルの管理](../storage/blobs/lifecycle-management-overview.md)」を参照してください。
 - **スクリプト** - Azure PowerShell でスクリプトを使用して、BLOB レベルの階層制御を有効にできます。 BLOB に対する層を設定するには、`SetBlobTier` 操作を呼び出します。
 
 ## <a name="use-azure-powershell-to-set-the-blob-tier"></a>Azure PowerShell を使用して、BLOB 層を設定する
@@ -116,4 +116,4 @@ Data Box デバイスのデータを既定の層にアップロードした後�
 
 ## <a name="next-steps"></a>次のステップ
 
--  [ライフ サイクル ポリシー ルールを使用して一般的なデータ階層制御シナリオ](../storage/blobs/storage-lifecycle-management-concepts.md#examples)に対処する方法を学びます。
+-  [ライフ サイクル ポリシー ルールを使用して一般的なデータ階層制御シナリオ](../storage/blobs/lifecycle-management-overview.md#examples-of-lifecycle-policies)に対処する方法を学びます。

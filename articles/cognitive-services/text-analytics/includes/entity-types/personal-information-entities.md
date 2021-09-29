@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 08/11/2021
+ms.date: 09/09/2021
 ms.author: aahi
-ms.openlocfilehash: c1b4d8801013eeb25c18b837ef4ff5a0245739e5
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ce85895307af9e437fb9ceaaff3f1a385e77e17d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121734085"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128672591"
 ---
 > [!NOTE]
 > 保護されている医療情報 (PHI) を検出するには、`domain=phi` パラメーターとモデル バージョン `2020-04-01` 以降を使用します。
@@ -155,78 +155,6 @@ ms.locfileid: "121734085"
 
 :::row-end:::
 
-#### <a name="subcategories"></a>サブカテゴリー
-
-このカテゴリのエンティティには、次のサブカテゴリが含まれる場合があります。
-
-:::row:::
-    :::column span="":::
-        **エンティティのサブカテゴリ**
-
-        医療    
-
-    :::column-end:::
-    :::column span="2":::
-        **詳細**
-
-        医療関係の企業および団体。
-
-        このエンティティ カテゴリを取得するには、`OrganizationMedical` を `piiCategories` パラメーターに追加します。 検出されると、`OrganizationMedical` が API 応答で返されます。
-      
-    :::column-end:::
-
-    :::column span="":::
-      **サポートされているドキュメントの言語**
-
-      `en`   
-      
-   :::column-end:::
-
-:::row-end:::
-:::row:::
-    :::column span="":::
-
-        証券取引
-
-    :::column-end:::
-    :::column span="2":::
-
-        証券取引団体。 
-
-        このエンティティ カテゴリを取得するには、`OrganizationStockExchange` を `piiCategories` パラメーターに追加します。 検出されると、`OrganizationStockExchange` が API 応答で返されます。
-      
-    :::column-end:::
-
-    :::column span="":::
-
-      `en`   
-      
-   :::column-end:::
-
-:::row-end:::
-:::row:::
-    :::column span="":::
-
-        スポーツ
-
-    :::column-end:::
-    :::column span="2":::
-
-        スポーツ関連の組織。
-
-        このエンティティ カテゴリを取得するには、`OrganizationSports` を `piiCategories` パラメーターに追加します。 検出されると、`OrganizationSports` が API 応答で返されます。
-      
-    :::column-end:::
-
-    :::column span="":::
-
-      `en`   
-      
-   :::column-end:::
-
-:::row-end:::
-
-
 ### <a name="category-address"></a>カテゴリ:Address
 
 このカテゴリには、次のエンティティが含まれます。
@@ -366,33 +294,6 @@ ms.locfileid: "121734085"
       `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`
       
    :::column-end:::
-:::row-end:::
-
-#### <a name="subcategories"></a>サブカテゴリー
-
-このカテゴリのエンティティには、次のサブカテゴリが含まれる場合があります。
-
-:::row:::
-    :::column span="":::
-        **エンティティのサブカテゴリ**
-
-        Date
-
-    :::column-end:::
-    :::column span="2":::
-        **詳細**
-
-        カレンダーの日付。 `domain=phi` でも返されます。
-
-        このエンティティ カテゴリを取得するには、`Date` を `piiCategories` パラメーターに追加します。 検出されると、`Date` が API 応答で返されます。
-      
-    :::column-end:::
-    :::column span="2":::
-      **サポートされているドキュメントの言語**
-      
-      `en`, `es`, `fr`, `de`, `it`, `zh-hans`, `ja`, `ko`, `pt-pt`, `pt-br`   
-      
-    :::column-end:::
 :::row-end:::
 
 ### <a name="category-quantity"></a>カテゴリ:Quantity

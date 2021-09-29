@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: d9d15735439890d16ba56ca12b5476253f6fcf5d
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: 8d5ef1f13b7413eeb21c7e026aa1cbf9d9bb4541
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110537368"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124757403"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-python"></a>クイックスタート: Python 用 Azure Key Vault シークレット クライアント ライブラリ
 
@@ -133,7 +133,7 @@ python kv_secrets.py
 ```
 
 - アクセス許可エラーが発生した場合は、[`az keyvault set-policy` コマンド](#grant-access-to-your-key-vault)を実行したことを確認してください。
-- 同じシークレット名を使用してコードを再実行すると、"(競合) シークレット <name> は現在削除されているが、回復可能な状態です" というエラーが生成されることがあります。 別のシークレット名を使用してください。
+- 同じシークレット名を使用してコードを再実行すると、"(競合) シークレット \<name\> は現在削除されているが、回復可能な状態です" というエラーが生成されることがあります。 別のシークレット名を使用してください。
 
 ## <a name="code-details"></a>コードの詳細
 

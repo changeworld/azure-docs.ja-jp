@@ -7,12 +7,12 @@ ms.author: rgarcia
 ms.date: 06/23/2021
 ms.topic: quickstart
 ms.service: azure-object-anchors
-ms.openlocfilehash: 6ee047cd39eb092c55ed417995bf1e9df6134c5e
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: b628aab20e08460ea6d023651098227aa3390d5e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113095021"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124791994"
 ---
 # <a name="quickstart-upgrade-quickstart-app-to-unity-2020"></a>クイック スタート: クイック スタート アプリを Unity 2020 にアップグレードする
 
@@ -48,7 +48,7 @@ Unity Hub を開きます。 **[追加]** ボタンを選択し、`quickstarts/a
 
 アップグレード プロセスが完了すると、**Unity Editor** が開きます。
 
-<a a href="/windows/mixed-reality/develop/unity/welcome-to-mr-feature-tool" target="_blank">Mixed Reality Feature Tool</a> のドキュメントに従ってツールを設定し、使用方法を確認してください。
+<a href="/windows/mixed-reality/develop/unity/welcome-to-mr-feature-tool" target="_blank">Mixed Reality Feature Tool</a> のドキュメントに従ってツールを設定し、使用方法を確認してください。
 
 **[Platform Support]\(プラットフォーム サポート\)** セクションで、**Mixed Reality OpenXR Plugin** 機能パッケージのバージョン 1.0.0 以降を Unity プロジェクト フォルダーにインストールします。 `quickstarts/apps/unity/mrtk` プロジェクトを操作している場合は、 **[Mixed Reality Toolkit]** セクションも開いて **Mixed Reality Toolkit Foundation** 機能パッケージと **Mixed Reality Toolkit Tools** 機能パッケージを見つけ、これらをバージョン 2.7.0 以降にアップグレードします。
 

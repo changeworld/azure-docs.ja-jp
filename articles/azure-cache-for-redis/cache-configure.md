@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1d49d222ff26198be0b9b07df900fa4dfac6c07d
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: a182d86485a8ca934b3ed94b5251e12b456edabd
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114294104"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128558677"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Azure Cache for Redis の構成方法
 
@@ -25,7 +25,7 @@ ms.locfileid: "114294104"
 
 ## <a name="configure-azure-cache-for-redis-settings"></a>Azure Cache for Redis の設定を構成する
 
-[!INCLUDE [redis-cache-create](../../includes/redis-cache-browse.md)]
+[!INCLUDE [redis-cache-create](includes/redis-cache-browse.md)]
 
 Azure Cache for Redis の設定の表示と構成は、左側にある **[Azure Cache for Redis]** の **リソース メニュー** を使って行うことができます。
 
@@ -70,7 +70,7 @@ Azure Cache for Redis の設定の表示と構成は、左側にある **[Azure 
 
 ### <a name="activity-log"></a>アクティビティ ログ
 
-キャッシュに対して実行した操作を確認するには、 **[アクティビティ ログ]** を選択します。 また、フィルター処理を使用すれば、ビューを拡張してその他のリソースを含めることができます。 監査ログの処理の詳細については、[Resource Manager の監査操作](../azure-resource-manager/management/view-activity-logs.md)に関するページを参照してください。 Azure Cache for Redis イベントの監視の詳細については、[操作とアラート](cache-how-to-monitor.md#operations-and-alerts)についてのページを参照してください。
+キャッシュに対して実行した操作を確認するには、 **[アクティビティ ログ]** を選択します。 また、フィルター処理を使用すれば、ビューを拡張してその他のリソースを含めることができます。 監査ログの処理の詳細については、[Resource Manager の監査操作](../azure-monitor/essentials/activity-log.md)に関するページを参照してください。 Azure Cache for Redis イベントの監視の詳細については、[操作とアラート](cache-how-to-monitor.md#operations-and-alerts)についてのページを参照してください。
 
 ### <a name="access-control-iam"></a>アクセス制御 (IAM)
 
@@ -498,7 +498,7 @@ Redis コンソールにアクセスするには、左側の **[Azure Cache for 
 
 接続したシャードとは別のシャードに格納されているキーにアクセスしようとすると、次のようなエラー メッセージが表示されます。
 
-```
+```console
 shard1>get myKey
 (error) MOVED 866 13.90.202.154:13000 (shard 0)
 ```

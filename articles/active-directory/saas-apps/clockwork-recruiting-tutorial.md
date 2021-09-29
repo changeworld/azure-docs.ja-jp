@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/26/2021
 ms.author: jeedes
-ms.openlocfilehash: 9aea5cda6f4cc1b1bf017ae6e317a26982906c88
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7697932a0fa39c2aa0f1ed66f766407bd59d0db7
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121786194"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124817528"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-clockwork-recruiting"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Clockwork Recruiting の統合
 
@@ -124,7 +124,7 @@ Clockwork Recruiting に対して Azure AD SSO を構成してテストするに
 
 * Azure portal で、 **[このアプリケーションをテストします]** を選択します。 ログイン フローを開始できる Clockwork Recruiting のサインオン URL にリダイレクトされます。 
 * Clockwork Recruiting のサインオン URL に直接移動し、そこからログイン フローを開始します。
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Clockwork Recruiting] タイルを選択すると、Clockwork Recruiting のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Clockwork Recruiting] タイルを選択すると、Clockwork Recruiting のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

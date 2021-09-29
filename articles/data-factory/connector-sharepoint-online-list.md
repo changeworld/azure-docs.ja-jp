@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/30/2021
+ms.date: 09/09/2021
 ms.author: jianleishen
-ms.openlocfilehash: 1b21416e06948c9a32831dc23c66c31b62a3ddae
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: ad9adb2c9f6b8308aba79f9e9bd1eadbf755760a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123307806"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124763939"
 ---
 # <a name="copy-data-from-sharepoint-online-list-by-using-azure-data-factory-or-azure-synapse-analytics"></a>Azure Data Factory または Azure Synapse Analytics を使用して SharePoint Online リストからデータをコピーする
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -63,7 +63,7 @@ SharePoint List Online コネクタでは、サービス プリンシパル認�
         </AppPermissionRequests>
         ```
 
-        ![sharepoint のアクセス許可​​の付与](media/connector-sharepoint-online-list/sharepoint-online-grant-permission.png)
+        :::image type="content" source="media/connector-sharepoint-online-list/sharepoint-online-grant-permission.png" alt-text="sharepoint のアクセス許可​​の付与":::
 
     3. このアプリに対して [信頼する] をクリックします。
 
@@ -79,7 +79,7 @@ SharePoint List Online コネクタでは、サービス プリンシパル認�
 
     # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
 
-    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI を使用した新しいリンク サービスの作成を示すスクリーンショット。":::
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI で新しいリンク サービスを作成するスクリーンショット。":::
 
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
@@ -234,7 +234,7 @@ SharePoint Online リストからデータをコピーする際、SharePoint Onl
 
 SharePoint Online からファイルをコピーするには、**Web アクティビティ** を使用して認証し、SPO からアクセス トークンを取得し、後続の **コピー アクティビティ** に渡し、**HTTP コネクタをソースとして** 使用してデータをコピーします。
 
-![sharepoint のファイルのコピー フロー](media/connector-sharepoint-online-list/sharepoint-online-copy-file-flow.png)
+:::image type="content" source="media/connector-sharepoint-online-list/sharepoint-online-copy-file-flow.png" alt-text="sharepoint のファイルのコピー フロー":::
 
 1. 「[前提条件](#prerequisites)」セクションに従って AAD アプリケーションを作成し、SharePoint Online にアクセス許可を付与します。 
 

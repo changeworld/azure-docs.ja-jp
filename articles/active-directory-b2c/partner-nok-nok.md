@@ -8,15 +8,15 @@ manager: martinco
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 08/04/2021
+ms.date: 09/20/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 586c8373e32f210d6f2f53c773fbe58ef5a2181b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 26842d40034527e5b7b785cfc94e4f7a37e36e04
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121779475"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128587216"
 ---
 # <a name="tutorial-configure-nok-nok-with-azure-active-directory-b2c-to-enable-passwordless-fido2-authentication"></a>チュートリアル: パスワードレス FIDO2 認証を有効にするために Azure Active Directory B2C で Nok Nok を構成する
 
@@ -70,23 +70,19 @@ ms.locfileid: "121779475"
 新しい ID プロバイダーを追加するには、次の手順を実行します。
 
 1. Azure AD B2C テナントのグローバル管理者として **[Azure portal](https://portal.azure.com/#home)** にサインインします。
-
-2. ご利用の Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。そのためには、トップ メニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択して、ご利用のテナントを含むディレクトリを選択します。
-
-3. Azure Portal の左上隅の **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
-
-4. **[ダッシュボード]**  >  **[Azure Active Directory B2C]**  >   **[ID プロバイダー]** の順に移動します
-
-5. **[Identity Providers]** を選択します。
-
-6. **[追加]** を選択します。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
+1. Azure Portal の左上隅の **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
+1. **[ダッシュボード]**  >  **[Azure Active Directory B2C]**  >   **[ID プロバイダー]** の順に移動します
+1. **[Identity Providers]** を選択します。
+1. **[追加]** を選択します。
 
 ### <a name="configure-an-identity-provider"></a>ID プロバイダーの構成 
 
 ID プロバイダーを構成するには、次の手順のようにします。
 
 1. **[ID プロバイダーの種類]**  >  **[OpenID Connect (Preview)]\(OpenID Connect (プレビュー))** の順に選択します
-2. フォームに入力して、ID プロバイダーを設定します。
+1. フォームに入力して、ID プロバイダーを設定します。
 
    |プロパティ | 値 |
    |:-----| :-----------|
@@ -98,11 +94,11 @@ ID プロバイダーを構成するには、次の手順のようにします�
    | 応答の種類 | code |
    | 応答モード | form_post|
 
-3. **[OK]** を選択します。
+1. **[OK]** を選択します。
 
-4. **[Map this identity provider's claims]** を選択します。
+1. **[Map this identity provider's claims]** を選択します。
 
-5. フォームに入力して、ID プロバイダーをマップします。
+1. フォームに入力して、ID プロバイダーをマップします。
 
    |プロパティ | 値 |
    |:-----| :-----------|
@@ -110,7 +106,7 @@ ID プロバイダーを構成するには、次の手順のようにします�
    | 表示名 | サブスクリプションから |
    | 応答モード | サブスクリプションから |
 
-6. **[保存]** を選択して、新しい OIDC ID プロバイダーのセットアップを完了します。
+1. **[保存]** を選択して、新しい OIDC ID プロバイダーのセットアップを完了します。
 
 ### <a name="create-a-user-flow-policy"></a>ユーザー フロー ポリシーの作成
 

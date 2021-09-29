@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f42329632b384ad2217f4deac97a9b984d17da7
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 07ea682d65bde9748a4cd55ed066eb8f31eb418a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121779533"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124784092"
 ---
 # <a name="how-to-export-risk-data"></a>方法: リスク データをエクスポートする
 
@@ -73,7 +73,7 @@ Azure Event Hubs では、Azure AD Identity Protection のようなソースか�
 
 ## <a name="other-options"></a>その他のオプション
 
-組織では、さらに処理するために [Azure AD データを Azure Sentinel に接続](../../sentinel/connect-azure-ad-identity-protection.md)することも選択できます。
+組織では、さらに処理するために [Azure AD データを Azure Sentinel に接続](../../sentinel/data-connectors-reference.md#azure-active-directory-identity-protection)することも選択できます。
 
 組織では、[Microsoft Graph API を使用して、リスク イベントをプログラムで操作](howto-identity-protection-graph-api.md)できます。
 
@@ -81,6 +81,6 @@ Azure Event Hubs では、Azure AD Identity Protection のようなソースか�
 
 - [Azure Active Directory の監視とは](../reports-monitoring/overview-monitoring.md)
 - [Azure Active Directory ログ分析用のビューのインストールと使用](../reports-monitoring/howto-install-use-log-analytics-views.md)
-- [Azure Active Directory (Azure AD) Identity Protection からデータを接続する](../../sentinel/connect-azure-ad-identity-protection.md)
+- [Azure Active Directory (Azure AD) Identity Protection からデータを接続する](../../sentinel/data-connectors-reference.md#azure-active-directory-identity-protection)
 - [Azure Active Directory Identity Protection と Microsoft Graph PowerShell SDK](howto-identity-protection-graph-api.md)
 - [チュートリアル:Azure Active Directory ログを Azure イベント ハブにストリーム配信する](../reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)

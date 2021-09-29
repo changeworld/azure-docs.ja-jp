@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 59faa9bb9dba0b65a820db5702ea2c76a4bf86d8
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: 6a56116ef50260c451564e571679a28a741584d8
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108802020"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124831074"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services"></a>チュートリアル: Azure Active Directory とアマゾン ウェブ サービスの統合
 
@@ -362,7 +362,7 @@ SAML 応答を確認し、クレームとして渡されるロールを参照す
 
 ![SAML 応答のスクリーンショット。](./media/aws-multi-accounts-tutorial/tutorial-amazonwebservices-test-saml.png)
 
-マイ アプリの詳細については、「[マイ アプリ ポータルからアプリにサインインして開始する](../user-help/my-apps-portal-end-user-access.md)」を参照してください。
+マイ アプリの詳細については、「[マイ アプリ ポータルからアプリにサインインして開始する](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

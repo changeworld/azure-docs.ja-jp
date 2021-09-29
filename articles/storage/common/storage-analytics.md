@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 3ccd5cf9ebc1c5183571dcdfbe3beeabe1b28a63
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 01283dd9607dbe3f9b5b0c2103345cb73d56e093
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114448119"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128579517"
 ---
 # <a name="storage-analytics"></a>Storage Analytics
 
@@ -34,8 +34,8 @@ Storage Analytics や他のツールを使用した Azure Storage 関連の問�
 
 Storage Analytics によって実行される次の操作には料金が発生します。
 
-* ログの BLOB の作成要求
-* メトリックのテーブル エンティティの作成要求
+- ログの BLOB の作成要求
+- メトリックのテーブル エンティティの作成要求
 
 データ保持ポリシーを構成している場合は、古いログとメトリック データを削除することで、支出を削減できます。 保持ポリシーの詳細については、「[Storage Analytics のデータ保持ポリシーの設定](/rest/api/storageservices/Setting-a-Storage-Analytics-Data-Retention-Policy)」をご覧ください。
 
@@ -46,6 +46,7 @@ Storage Analytics によって実行される次の操作には料金が発生�
 Storage Analytics のデータで課金対象の要求を調べるときには、「[Storage Analytics によって記録される操作やステータス メッセージ](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) 」の表が参考になります。 手元のログ データとメトリック データをステータス メッセージと照らし合わせながら、特定の要求が課金対象であったかどうかを確認できます。 この表は、ストレージ サービスまたは特定の API 操作の可用性を調べるときにも利用できます。
 
 ## <a name="next-steps"></a>次のステップ
-* [Azure Portal でのストレージ アカウントの監視](./manage-storage-analytics-logs.md)
-* [Storage Analytics のメトリック](storage-analytics-metrics.md)
-* [Storage Analytics のログ記録](storage-analytics-logging.md)
+
+- [Azure Portal でのストレージ アカウントの監視](./manage-storage-analytics-logs.md)
+- [Storage Analytics のメトリック](storage-analytics-metrics.md)
+- [Storage Analytics のログ記録](storage-analytics-logging.md)

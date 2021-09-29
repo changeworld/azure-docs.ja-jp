@@ -2,7 +2,6 @@
 title: 'クイックスタート: Form Recognizer クライアント ライブラリまたは REST API'
 titleSuffix: Azure Applied AI Services
 description: Form Recognizer クライアント ライブラリまたは REST API を使用して、カスタム ドキュメントからキーと値のペアとテーブル データを抽出するフォーム処理アプリを作成します。
-services: cognitive-services
 author: laujan
 manager: nitinme
 ms.service: applied-ai-services
@@ -13,12 +12,12 @@ ms.author: lajanuar
 zone_pivot_groups: programming-languages-set-formre
 ms.custom: devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 keywords: フォーム処理, 自動データ処理
-ms.openlocfilehash: 898d7628ea96da82095ce5ff9e6fbd0a1fd6227a
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: a1b355bdd67d9bf84a2c9ae24fb557a9e50fa1d9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122327545"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128652522"
 ---
 # <a name="quickstart-get-started-with-the-client-library-sdks-or-rest-api"></a>クイックスタート: クライアント ライブラリ SDK または REST API の概要
 

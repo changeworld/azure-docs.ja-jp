@@ -3,12 +3,12 @@ title: ガイダンスとベスト プラクティス
 description: クラウドとオンプレミスのワークロードをクラウドにバックアップするためのベストプラクティスとガイダンスについて説明します
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: e2d65f256a69b397486675dc71efb71ce3e4263d
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: ecac56034c78cba09133fc12ca4ac8827afb0ea2
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122605035"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124806733"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>クラウドとオンプレミスのワークロードをクラウドにバックアップする
 
@@ -240,7 +240,7 @@ Azure Backup サービスの機能には、コストを効果的に管理しな�
 * さらに、次の点も考慮する必要があります。
   * データ (ジョブ、ポリシーなど) を **Log Analytics** ワークスペースに送信できます。 これにより、Azure Monitor ログの機能が有効になり、データを Azure Monitor で収集されたその他の監視データと関連付けたり、複数の Azure サブスクリプションおよびテナントのログ エントリを 1 か所に統合して、まとめて分析できるようにしたり、ログ クエリを使用して複雑な分析を実行したり、ログ エントリに関する詳細な分析情報を取得したりすることができます。 [こちら](../azure-monitor/essentials/activity-log.md#send-to-log-analytics-workspace)を参照してください。
   * イベント ハブにデータを送信して、サードパーティの SIEM (セキュリティ情報イベント管理) やその他のログ分析ソリューションなど、Azure の外部にエントリを送信できます。 [こちら](../azure-monitor/essentials/activity-log.md#send-to-azure-event-hubs)を参照してください。
-  * 監査、静的分析、またはバックアップのためにログ データを 90 日より長く保持する場合は、Azure ストレージ アカウントにデータを送信できます。 90 日以内でイベントを保持する必要があるだけの場合は、ストレージ アカウントへのアーカイブを設定する必要はありません (アクティビティ ログのイベントは Azure プラットフォームに 90 日間保持されるため)。 [詳細については、こちらを参照してください](../azure-monitor/essentials/activity-log.md#send-to--azure-storage)。
+  * 監査、静的分析、またはバックアップのためにログ データを 90 日より長く保持する場合は、Azure ストレージ アカウントにデータを送信できます。 90 日以内でイベントを保持する必要があるだけの場合は、ストレージ アカウントへのアーカイブを設定する必要はありません (アクティビティ ログのイベントは Azure プラットフォームに 90 日間保持されるため)。 [詳細については、こちらを参照してください](../azure-monitor/essentials/activity-log.md#send-to-azure-storage)。
 
 ### <a name="alerting"></a>アラート
 

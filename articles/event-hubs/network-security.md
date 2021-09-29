@@ -3,12 +3,12 @@ title: Azure Event Hubs のネットワーク セキュリティ
 description: この記事では、プライベート エンドポイントからのアクセスを構成する方法について説明します
 ms.topic: conceptual
 ms.date: 05/04/2021
-ms.openlocfilehash: 39bad6fabb0f8f639449cd20033b8b31139d98b1
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: ef789153dd807e68736c12f779cad22311c63443
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111413413"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124784985"
 ---
 # <a name="network-security-for-azure-event-hubs"></a>Azure Event Hubs のネットワーク セキュリティ 
 この記事では、Azure Event Hubs で次のセキュリティ機能を使用する方法について説明します。 
@@ -73,7 +73,7 @@ TCP/IP 上で HTTPS を搬送するものを含め、コンパートメント間
 プライベート エンドポイントとは、Azure Private Link を使用するサービスにプライベートかつ安全に接続するネットワーク インターフェイスです。 プライベート エンドポイントは、ご自分の VNet からのプライベート IP アドレスを使用して、サービスを実質的に VNet に取り込みます。 サービスへのすべてのトラフィックをプライベート エンドポイント経由でルーティングできるため、ゲートウェイ、NAT デバイス、ExpressRoute または VPN 接続、パブリック IP アドレスは必要ありません。 仮想ネットワークとサービスの間のトラフィックは、Microsoft のバックボーン ネットワークを経由して、パブリック インターネットからの公開を排除します。 最高レベルの細分性でアクセスを制御しながら Azure リソースのインスタンスに接続できます。
 
 > [!IMPORTANT]
-> この機能は **Basic** レベルおよび **Premium** レベル内ではサポートされていません。 
+> この機能は **Basic** レベルではサポートされていません。 
 
 
 詳細については、[イベント ハブのプライベート エンドポイントを構成する方法](private-link-service.md)に関する記事を参照してください。

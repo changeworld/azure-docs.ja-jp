@@ -1,17 +1,17 @@
 ---
 title: DistCp を使用して Azure Data Lake Storage Gen1 と WASB の間でデータをコピーする
 description: DistCp ツールを使用して Azure Storage Blob と Azure Data Lake Storage Gen1 の間でデータをコピーする
-author: twooley
+author: normesta
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 01/03/2020
-ms.author: twooley
-ms.openlocfilehash: c608f357eb1eff9fd36e583b98d26250a71cb923
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: normesta
+ms.openlocfilehash: 5e1f4cda87bbc73218826e76e3e11760c31dc159
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85515679"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128637436"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen1"></a>DistCp を使用して Azure Storage Blob と Azure Data Lake Storage Gen1 の間でデータをコピーする
 

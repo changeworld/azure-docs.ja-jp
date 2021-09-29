@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/24/2021
+ms.date: 09/09/2021
 ms.author: jianleishen
-ms.openlocfilehash: 09bb503be37df8afe54f6dcc8c427bf12f9e7dc1
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: dbee4a0c4aa82d34df6b5ea6e3e7274868be5d62
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123252980"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124743842"
 ---
 # <a name="json-format-in-azure-data-factory-and-azure-synapse-analytics"></a>Azure Data Factory および Azure Synapse Analytics での JSON 形式
 
@@ -223,7 +223,7 @@ JSON ファイルからデータをコピーする場合、コピー アクテ�
 
 データ フローでソースとして JSON データセットを使用すると、5 つの追加設定を行うことができます。 これらの設定は、 **[Source Options]\(ソース オプション\)** タブの **[JSON settings]\(JSON 設定\)** アコーディオンにあります。**ドキュメント フォーム** の設定では、 **[1 つのドキュメント]** 、 **[Document per line]\(行ごとのドキュメント\)** 、および **[Array of documents]\(ドキュメントの配列\)** のいずれかの種類を選択できます。
 
-![JSON 設定](media/data-flow/json-settings.png "JSON 設定")
+:::image type="content" source="media/data-flow/json-settings.png" alt-text="JSON 設定":::
 
 #### <a name="default"></a>Default
 
@@ -359,11 +359,11 @@ JSON データ内の文字をエスケープするためにバックスラッシ
 
 出力スキーマのサイド ウィンドウで、列の上にマウス ポインターを移動し、プラス記号のアイコンをクリックします。 列を複合型にするために、 **[Add subcolumn]\(サブ列の追加\)** を選択します。
 
-![サブ列の追加](media/data-flow/derive-add-subcolumn.png "サブ列の追加")
+:::image type="content" source="media/data-flow/derive-add-subcolumn.png" alt-text="サブ列の追加":::
 
 同じ方法で、さらに列とサブ列を追加できます。 複合でない各フィールドについては、式エディターで右側に式を追加できます。
 
-![複合列の追加](media/data-flow/derive-complex-column.png "列の追加")
+:::image type="content" source="media/data-flow/derive-complex-column.png" alt-text="複合列の追加":::
 
 #### <a name="entering-the-json-structure-manually"></a>手動による JSON 構造の入力
 

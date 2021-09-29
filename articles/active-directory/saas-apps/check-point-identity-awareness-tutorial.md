@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/15/2021
 ms.author: jeedes
-ms.openlocfilehash: 3f517698c1e44ccb5bdddb5a0bf78578c62b481e
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 44dbc49b6bca6e0bf4b9079ee7199dc96ede06e6
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108740053"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124796098"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-check-point-identity-awareness"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Check Point Identity Awareness の統合
 
@@ -156,7 +156,7 @@ Check Point Identity Awareness に対して Azure AD SSO を構成してテス�
 
 * Check Point Identity Awareness のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Check Point Identity Awareness] タイルをクリックすると、Check Point Identity Awareness のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Check Point Identity Awareness] タイルをクリックすると、Check Point Identity Awareness のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ

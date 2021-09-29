@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: ab9a70dccdeff6ed16eb3f25e9dc78fb274b2449
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 013a2d377ef4e30848d29c43c7275c6644cf4549
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111746935"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128593061"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-ad-ds"></a>Azure Files および AD DS を使用してプロファイル コンテナーを作成する
 
@@ -176,8 +176,8 @@ NTFS のアクセス許可を構成するには:
      icacls <mounted-drive-letter>: /remove "Builtin\Users"
      ```
 
-     - <mounted-drive-letter> の部分は、ドライブのマップに使用したドライブ文字に置き換えます。
-     - <user-email> の部分は、共有にアクセスする必要があるユーザーか、そのユーザーが含まれる Active Directory グループの UPN に置き換えます。
+     - \<mounted-drive-letter\> の部分は、ドライブのマップに使用したドライブ文字に置き換えます。
+     - \<user-email\> の部分は、共有にアクセスする必要があるユーザーか、そのユーザーが含まれる Active Directory グループの UPN に置き換えます。
 
      次に例を示します。
 

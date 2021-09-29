@@ -1,14 +1,14 @@
 ---
-title: Azure DevTest Labs の必須成果物を指定する | Microsoft Docs
+title: 必須アーティファクトの指定
 description: ユーザーが選択した成果物のラボの仮想マシン (VM) へのインストールに先立ってインストールする必要がある必須成果物の指定方法を説明します。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 0677f8bea35cb34735fdcf34e717eea349fad8bf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8963db2f99cc893937365a4eac0a656e1ba90613
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85480305"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128678499"
 ---
 # <a name="specify-mandatory-artifacts-for-your-lab-in-azure-devtest-labs"></a>Azure DevTest Labs のラボに対する必須成果物を指定する
 ラボ所有者として、ラボ内に作成されるすべてのマシンに適用される必須成果物を指定できます。 ラボ内の各マシンを企業ネットワークに接続してほしいシナリオを想像してください。 この場合、各ラボ ユーザーは、仮想マシンの作成時にドメイン参加成果物を追加して、各自のマシンが企業ドメインに接続されるようにする必要があります。 つまり、ラボ ユーザーが各自のマシンに必須成果物を適用するのを忘れた場合、基本的にはマシンを作成し直す必要があります。 ラボ所有者として、ドメイン参加成果物をラボの必須成果物として作成します。 この手順により、各マシンが企業ネットワークに確実に接続され、ラボ ユーザーの時間と労力が節約されます。
@@ -76,4 +76,3 @@ Windows マシンと Linux マシン用の必須成果物を個別に選択で�
 
 ## <a name="next-steps"></a>次のステップ
 * [ラボへの Git アーティファクト リポジトリの追加](devtest-lab-add-artifact-repo.md)方法を学習します。
-

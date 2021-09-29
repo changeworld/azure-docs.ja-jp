@@ -8,12 +8,12 @@ metadata:
   author: trkeya
   ms.author: trkeya
   ms.date: 06/02/2021
-  ms.openlocfilehash: d8403e69b241ee107631f7ba8cdd88d6700e65e0
-  ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+  ms.openlocfilehash: 5af21d8e78f468a1a099da30ca87437a0433e750
+  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/30/2021
-  ms.locfileid: "123187637"
+  ms.lasthandoff: 09/13/2021
+  ms.locfileid: "124736164"
 title: Microsoft コマーシャル マーケットプレースに関するよくあるご質問
 summary: この記事では、コマーシャル マーケットプレースに関してよく寄せられる質問に回答します。
 sections:
@@ -35,7 +35,7 @@ sections:
       Azure Marketplace には、Azure 上に構築されたものや、Azure サブスクリプション自体内で使用されるものなど、IT 向けや開発者向けのソリューションが含まれます。
 
 
-      詳細については、[マーケットプレースのお客様向けドキュメント](https://aka.ms/MarketplaceBuyerGuide)を参照してください。
+      詳細については、[マーケットプレースのお客様向けドキュメント](/marketplace/)を参照してください。
   - question: >
       Microsoft コマーシャル マーケットプレースでソフトウェアまたはサービスを利用できるようにする必要があるのはなぜですか?
     answer: "コマーシャル マーケットプレースは、販売チャネルと Marketplace 報酬による市場開拓の共同作業と実現のための出発点です。 Web サイトと製品内のエクスペリエンスにより、パートナーの製品が、ソリューションを探している Microsoft の何百万もの顧客の目に留まりやすくなります。 コマース機能を構築したり購入したりする必要さえありません。 \n\nコマーシャル マーケットプレースは、プランごとに 141 の地域でご利用いただけます。 \n\nMicrosoft は多くの国/地域で税金の支払いを管理し、Microsoft のリセラーのグローバル チャネル ネットワークへのアクセスを提供しています。 パートナーは、顧客の Microsoft 顧客契約またはエンタープライズ契約を使用して、組織に販売できます。新しい購入関係を築く必要はありません。\n\n詳細については、「[Microsoft コマーシャル マーケットプレース ハブ](https://aka.ms/commercialmarketplacehub)」を参照してください。\n"

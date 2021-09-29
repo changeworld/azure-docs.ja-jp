@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 07/28/2021
-ms.openlocfilehash: 852bbd93fe7ac1524201db1f96a6a43c7ff60bdb
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0a5591ddad8410c2cea7018fa2f4d4f13a3afa86
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121736473"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124735950"
 ---
 # <a name="assessment-overview-migrate-to-azure-vms"></a>評価の概要 (Azure VM への移行)
 
@@ -232,7 +232,7 @@ Ultra Disk の場合、特定のディスク サイズに対して許容され�
     - 1 つのディスク (ディスク 2) は、合計 IOPS の要件を満たすことができます
         - プロビジョニングされる IOPS = (ソース ディスク スループット) * 1024/256
     - 1 つのディスク (ディスク 3) は、合計スループットの要件を満たすことができます
-1. 3 つのディスクから、ディスク サイズが最大のものが検出され、次に使用可能な [Ultra Disk オファリング](https://docs.microsoft.com/azure/virtual-machines/disks-types#disk-size)に切り上げられます。 これが、プロビジョニングされる Ultra Disk サイズです。
+1. 3 つのディスクから、ディスク サイズが最大のものが検出され、次に使用可能な [Ultra Disk オファリング](../virtual-machines/disks-types.md#disk-size)に切り上げられます。 これが、プロビジョニングされる Ultra Disk サイズです。
 1. プロビジョニングされた IOPS は、次のロジックを使用して計算されます。
     - 検出されたソース スループットが Ultra Disk の許容範囲内である場合、プロビジョニングされる IOPS はソース ディスクの IOPS と等しくなります
     - そうでない場合、プロビジョニングされる IOPS は、"プロビジョニングされる IOPS = (ソース ディスクのスループット) * 1024/256" を使用して計算されます

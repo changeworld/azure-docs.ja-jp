@@ -9,13 +9,14 @@ ms.author: rifox
 ms.date: 06/30/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
+ms.subservice: arm
 zone_pivot_groups: acs-plat-azp-azcli-net-ps
-ms.openlocfilehash: 4516e753248b133ef0a48ab12ffe032ef7a7809e
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: e3be24cda914edbf4f3ae3474ff43eef438fce20
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123253581"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128635643"
 ---
 # <a name="quickstart-create-and-manage-communication-services-resources"></a>クイック スタート:Communication Services のリソースを作成して管理する
 

@@ -8,12 +8,12 @@ ms.subservice: tutorials
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/1/2018
-ms.openlocfilehash: c1f2a83807703593482cc725036a2da158d7195d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d1d1ffaecdf57817e5ef7be48791d0cb50ca9b74
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121747408"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124743541"
 ---
 # <a name="copy-multiple-folders-with-azure-data-factory"></a>Azure Data Factory で複数のフォルダーをコピーする
 
@@ -45,27 +45,27 @@ ms.locfileid: "121747408"
 
 1. **Copy multiple files containers between File Stores** テンプレートに移動します。 ソース ストレージ ストアへの **[新規]** 接続を作成します。 ソース ストレージ ストアは、複数のコンテナーからファイルをコピーする場所 (コピー元) です。
 
-    ![ソースへの新しい接続を作成する](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image1.png)
+    :::image type="content" source="media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image1.png" alt-text="ソースへの新しい接続を作成する":::
 
 2. コピー先ストレージ ストアへの **[新規]** 接続を作成します。
 
-    ![コピー先への新しい接続を作成する](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image2.png)
+    :::image type="content" source="media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image2.png" alt-text="コピー先への新しい接続を作成する":::
 
 3. **[このテンプレートを使用]** を選択します。
 
-    ![このテンプレートを使用](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image3.png)
+    :::image type="content" source="media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image3.png" alt-text="このテンプレートを使用":::
     
 4. 次の例に示すように、パイプラインが表示されます。
 
-    ![パイプラインを表示する](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image4.png)
+    :::image type="content" source="media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image4.png" alt-text="パイプラインを表示する":::
 
 5. **[デバッグ]** を選択し、 **[パラメーター]** で入力し、 **[完了]** を選択します。
 
-    ![パイプラインを実行する](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image5.png)
+    :::image type="content" source="media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image5.png" alt-text="パイプラインを実行する":::
 
 6. 結果を確認します。
 
-    ![結果を確認する](media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image6.png)
+    :::image type="content" source="media/solution-template-copy-files-multiple-containers/copy-files-multiple-containers-image6.png" alt-text="結果を確認する":::
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -3,19 +3,17 @@ title: Bing Video Search API を使用して、急上昇中の動画を Web で�
 titleSuffix: Azure Cognitive Services
 description: Bing Video Search API を使用して、急上昇中の動画を Web で検索する方法を示します。
 services: cognitive-services
-author: swhite-msft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.author: scottwhi
-ms.openlocfilehash: cfeebcda201df592f6c396dcc780208a36d1e989
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fca6bfa797e7d2b382e1336359c52f448f94a148
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96353801"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128600667"
 ---
 # <a name="get-trending-videos-with-the-bing-video-search-api"></a>Bing Video Search API を使用して急上昇中の動画を取得する 
 

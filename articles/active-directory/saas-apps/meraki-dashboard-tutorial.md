@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 87ab7156e92f46630e9eed005c7384d883b0caa0
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: 0cc51035a8bdb0ee12d27763b1d03e6b08494b66
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108804828"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124795775"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-meraki-dashboard"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Meraki Dashboard の統合
 
@@ -191,7 +191,7 @@ Meraki Dashboard に対して Azure AD SSO を構成してテストするには�
 
 - Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した Meraki Dashboard に自動的にサインインされます
 
-- Microsoft マイ アプリを使用することができます。 マイ アプリで [Meraki Dashboard] タイルをクリックすると、SSO を設定した Meraki Dashboard に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+- Microsoft マイ アプリを使用することができます。 マイ アプリで [Meraki Dashboard] タイルをクリックすると、SSO を設定した Meraki Dashboard に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

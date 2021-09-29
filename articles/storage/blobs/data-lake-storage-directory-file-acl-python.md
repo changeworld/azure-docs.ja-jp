@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.custom: devx-track-python
-ms.openlocfilehash: a2db4734650f4af2f0ed67040c7f94eeda5f7c69
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: f6374d502a292fc25ecf2a0f7fadc2dc26157f7c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114453104"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128667884"
 ---
 # <a name="use-python-to-manage-directories-and-files-in-azure-data-lake-storage-gen2"></a>Python を使用して Azure Data Lake Storage Gen2 でディレクトリとファイルを管理する
 
@@ -49,11 +49,11 @@ from azure.storage.filedatalake._models import ContentSettings
 
 ## <a name="connect-to-the-account"></a>アカウントに接続する
 
-この記事のスニペットを使用するには、ストレージ アカウントを表す **DataLakeServiceClient** インスタンスを作成する必要があります。 
+この記事のスニペットを使用するには、ストレージ アカウントを表す **DataLakeServiceClient** インスタンスを作成する必要があります。
 
 ### <a name="connect-by-using-an-account-key"></a>アカウント キーを使用して接続する
 
-これはアカウントに接続する最も簡単な方法です。 
+これはアカウントに接続する最も簡単な方法です。
 
 この例では、アカウント キーを使用して **DataLakeServiceClient** インスタンスを作成します。
 
@@ -86,13 +86,13 @@ from azure.storage.filedatalake._models import ContentSettings
 
 **FileSystemClient.create_directory** メソッドを呼び出して、ディレクトリ参照を作成します。
 
-この例では、`my-directory` という名前のディレクトリをコンテナーに追加します。 
+この例では、`my-directory` という名前のディレクトリをコンテナーに追加します。
 
 :::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/crud_datalake.py" id="Snippet_CreateDirectory":::
 
 ## <a name="rename-or-move-a-directory"></a>ディレクトリの名前変更または移動
 
-**DataLakeDirectoryClient.rename_directory** メソッドを呼び出して、ディレクトリの名前を変更するか、ディレクトリを移動します。 目的のディレクトリのパスをパラメーターに渡します。 
+**DataLakeDirectoryClient.rename_directory** メソッドを呼び出して、ディレクトリの名前を変更するか、ディレクトリを移動します。 目的のディレクトリのパスをパラメーターに渡します。
 
 この例では、サブディレクトリの名前を `my-directory-renamed` に変更します。
 
@@ -102,7 +102,7 @@ from azure.storage.filedatalake._models import ContentSettings
 
 **DataLakeDirectoryClient.delete_directory** メソッドを呼び出して、ディレクトリを削除します。
 
-この例では、`my-directory` という名前のディレクトリを削除します。  
+この例では、`my-directory` という名前のディレクトリを削除します。
 
 :::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/crud_datalake.py" id="Snippet_DeleteDirectory":::
 
@@ -110,12 +110,12 @@ from azure.storage.filedatalake._models import ContentSettings
 
 まず、**DataLakeFileClient** クラスのインスタンスを作成して、ターゲット ディレクトリにファイル参照を作成します。 **DataLakeFileClient.append_data** メソッドを呼び出して、ファイルをアップロードします。 **DataLakeFileClient.flush_data** メソッドを呼び出して、アップロードの完了を確認してください。
 
-この例では、`my-directory` という名前のディレクトリにテキスト ファイルをアップロードします。   
+この例では、`my-directory` という名前のディレクトリにテキスト ファイルをアップロードします。
 
 :::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/crud_datalake.py" id="Snippet_UploadFile":::
 
 > [!TIP]
-> ファイル サイズが大きい場合は、コードで **DataLakeFileClient.append_data** メソッドを複数回呼び出す必要があります。 代わりに **DataLakeFileClient.upload_data** メソッドを使用することを検討してください。 この方法により、1 回の呼び出しでファイル全体をアップロードできます。 
+> ファイル サイズが大きい場合は、コードで **DataLakeFileClient.append_data** メソッドを複数回呼び出す必要があります。 代わりに **DataLakeFileClient.upload_data** メソッドを使用することを検討してください。 この方法により、1 回の呼び出しでファイル全体をアップロードできます。
 
 ## <a name="upload-a-large-file-to-a-directory"></a>大きなファイルをディレクトリにアップロードする
 
@@ -123,9 +123,9 @@ from azure.storage.filedatalake._models import ContentSettings
 
 :::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/crud_datalake.py" id="Snippet_UploadFileBulk":::
 
-## <a name="download-from-a-directory"></a>ディレクトリからダウンロードする 
+## <a name="download-from-a-directory"></a>ディレクトリからダウンロードする
 
-書き込み用にローカル ファイルを開きます。 次に、ダウンロードするファイルを表す **DataLakeFileClient** インスタンスを作成します。 **DataLakeFileClient.read_file** を呼び出して、ファイルからバイトを読み取り、そのバイトをローカル ファイルに書き込みます。 
+書き込み用にローカル ファイルを開きます。 次に、ダウンロードするファイルを表す **DataLakeFileClient** インスタンスを作成します。 **DataLakeFileClient.read_file** を呼び出して、ファイルからバイトを読み取り、そのバイトをローカル ファイルに書き込みます。
 
 :::code language="python" source="~/azure-storage-snippets/blobs/howto/python/python-v12/crud_datalake.py" id="Snippet_DownloadFromDirectory":::
 

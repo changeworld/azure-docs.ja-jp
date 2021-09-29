@@ -6,12 +6,12 @@ ms.author: sunaray
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/26/2021
-ms.openlocfilehash: e95119f65e088fe9b9b6ace71b6fee98f679f5a4
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 95cc91298945c50174f1edec6ca766e3f7df59c8
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123426096"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129153731"
 ---
 # <a name="high-availability-in-azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL - フレキシブル サーバー プレビューでの高可用性
 
@@ -107,8 +107,8 @@ HA の正常性は、概要ページで継続的に監視され、報告され�
 * ゾーン冗長高可用性は、フレキシブル サーバーが作成されるときにのみ設定できます。
 * 高可用性は、バースト可能なコンピューティング レベルではサポートされません。
 * 静的パラメーターの変更を取得するためにプライマリ データベース サーバーを再起動すると、スタンバイ レプリカも再起動されます。
-* ゾーン冗長 HA サーバーでは、読み取りレプリカはサポートされていません。
-* HA サーバーのデータイン レプリケーションはサポートされていません。 
+* 読み取りレプリカは HA サーバーではサポートされていません。
+* HA サーバーのデータイン レプリケーションはサポートされていません。
 * HA ソリューションでは GTID が使用されるので、GTID モードが有効になります。 お使いのワークロードに、[GTID を使用したレプリケーションに関する制限](https://dev.mysql.com/doc/refman/5.7/en/replication-gtids-restrictions.html)があるかどうかを調べてください。  
  
 ## <a name="frequently-asked-questions-faq"></a>よく寄せられる質問 (FAQ)

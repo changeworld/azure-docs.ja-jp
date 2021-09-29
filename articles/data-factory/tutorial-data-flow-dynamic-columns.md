@@ -4,15 +4,16 @@ description: このチュートリアルでは、データ フローで列名を
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
+ms.subservice: tutorials
 ms.topic: conceptual
 ms.custom: seo-lt-2021
 ms.date: 06/17/2021
-ms.openlocfilehash: 96143f39811658c2794b46f3504a1a604264ab13
-ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
+ms.openlocfilehash: 576b11e78c8cf928863d7db700942cbeab884e2c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112542871"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128617832"
 ---
 # <a name="dynamically-set-column-names-in-data-flows"></a>データ フローで列名を動的に設定する
 
@@ -51,17 +52,17 @@ Azure Data Factory を初めて使用する場合は、「[Azure Data Factory �
 1. パイプラインの **[全般]** タブで、パイプラインの **名前** として「**DeltaLake**」と入力します。
 1. ファクトリの上部のバーで、 **[Data Flow のデバッグ]** スライダーをオンにスライドします。 デバッグ モードを使用すると、ライブ Spark クラスターに対する変換ロジックの対話型テストが可能になります。 Data Flow クラスターのウォームアップには 5 から 7 分かかるため、ユーザーが Data Flow の開発を計画している場合は、最初にデバッグを有効にすることをお勧めします。 詳細については、[デバッグ モード](concepts-data-flow-debug-mode.md)に関するページを参照してください。
 
-    ![Data Flow アクティビティ](media/tutorial-data-flow/dataflow1.png)
+    :::image type="content" source="media/tutorial-data-flow/dataflow1.png" alt-text="Data Flow アクティビティ":::
 1. **[アクティビティ]** ウィンドウで、 **[移動と変換]** アコーディオンを展開します。 ウィンドウから **Data Flow** アクティビティをパイプライン キャンバスにドラッグ アンド ドロップします。
 
-    ![Data Flow アクティビティをドロップできるパイプライン キャンバスを示すスクリーンショット。](media/tutorial-data-flow/activity1.png)
+    :::image type="content" source="media/tutorial-data-flow/activity1.png" alt-text="Data Flow アクティビティをドロップできるパイプライン キャンバスを示すスクリーンショット。":::
 1. **[Data Flow の追加]** ポップアップで、 **[新しい Data Flow の作成]** を選択し、データ フローに **DynaCols** という名前を付けます。 終了したら、[完了] をクリックします。    
 
 ## <a name="build-dynamic-column-mapping-in-data-flows"></a>データ フローで動的な列マッピングを作成する
 
 このチュートリアルでは、サンプル映画評価ファイルを使用し、ソース内のいくつかのフィールドを、新しい一連のターゲット列の名前に変更します。ターゲット列の名前は時間と共に変わる可能性があります。 以下で作成するデータセットは、Blob Storage または ADLS Gen2 ストレージ アカウント内のこの映画ファイル (CSV) を参照する必要があります。 [こちらで映画ファイルをダウンロード](https://github.com/kromerm/adfdataflowdocs/blob/master/sampledata/moviesDB.csv)し、Azure ストレージ アカウントに格納してください。
 
-![最終的なフロー](media/data-flow/dynacols-1.png "最終的なフロー")
+:::image type="content" source="media/data-flow/dynacols-1.png" alt-text="最終的なフロー":::
 
 ### <a name="tutorial-objectives"></a>チュートリアルの目標
 
@@ -95,7 +96,7 @@ Azure Data Factory を初めて使用する場合は、「[Azure Data Factory �
 
 この最初のシナリオでは、入力フィールドとパラメーター (列の文字列配列) との対応、そして各配列インデックスと入力列序数位置との対応に基づいて列マッピングを設定し、データ フローの出力列名を設定します。 このデータ フローをパイプラインから実行するとき、この文字列配列パラメーターをデータ フロー アクティビティに送信することで、パイプラインを実行するたびに異なる列名を設定できるようになります。
 
-![パラメーター](media/data-flow/dynacols-3.png "パラメーター")
+:::image type="content" source="media/data-flow/dynacols-3.png" alt-text="パラメーター":::
 
 1. データ フロー デザイナーに戻り、先ほど作成したデータ フローを編集します。
 1. [パラメーター] タブをクリックします
@@ -108,7 +109,7 @@ Azure Data Factory を初めて使用する場合は、「[Azure Data Factory �
 1. 先頭列では、一致規則が ```position==1``` で、名前は ```$parameter1[1]``` になります
 1. 2 列目と 3 列目についても、同じパターンに従います
  
-    ![Select transformation (選択変換)](media/data-flow/dynacols-4.png "Select transformation (選択変換)")
+    :::image type="content" source="media/data-flow/dynacols-4.png" alt-text="Select transformation (選択変換)":::
 
 1. 選択変換の [検査] タブと [Data Preview]\(データ プレビュー\) タブをクリックして、元の列名 movie、title、genres が新しい列名値 ```(a,b,c)``` に置き換わっていることを確認します
    
@@ -131,7 +132,7 @@ Azure Data Factory を初めて使用する場合は、「[Azure Data Factory �
 1. ここでは、外部 JSON 構成ファイルの ```prevcolumn``` プロパティと一致する列名をすべて検索し、一致したものそれぞれの名前を新しい ```newcolumn``` 名に変更しています。
 1. 選択変換の [Data Preview]\(データ プレビュー\) タブと [検査] タブをクリックすると、今度は、外部マッピング ファイルに基づく新しい列名が表示されます。
 
-![ソース 2](media/data-flow/dynacols-2.png "ソース 2")
+:::image type="content" source="media/data-flow/dynacols-2.png" alt-text="ソース 2":::
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/01/2021
 ms.author: gasinh
 ms.subservice: app-mgmt
-ms.openlocfilehash: da42e6ea14167b3214be9162197e2cbc3afabcd5
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: b2486f4be20d2347f0cadff04ef8d0aa776ccdc5
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123439844"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124791690"
 ---
 # <a name="tutorial-migrate-okta-federation-to-azure-active-directory-managed-authentication"></a>チュートリアル: Okta フェデレーションを Azure Active Directory マネージド認証に移行する
 
@@ -35,15 +35,15 @@ ms.locfileid: "123439844"
 
 環境に最適な方法を判断するには、次の方法を使用します。
 
-- **パスワード ハッシュ同期** - [パスワード ハッシュ同期](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-phs)は、Azure AD Connect サーバーまたは Azure AD Connect クラウド プロビジョニング エージェントによって実装されるディレクトリ同期の拡張機能です。 この機能を使用して、Microsoft 365 などの Azure AD サービスにサインインできます。 このサービスにサインインするときに使用するパスワードは、オンプレミスの Active Directory インスタンスにサインインするときに使うものと同じです。
+- **パスワード ハッシュ同期** - [パスワード ハッシュ同期](../hybrid/whatis-phs.md)は、Azure AD Connect サーバーまたは Azure AD Connect クラウド プロビジョニング エージェントによって実装されるディレクトリ同期の拡張機能です。 この機能を使用して、Microsoft 365 などの Azure AD サービスにサインインできます。 このサービスにサインインするときに使用するパスワードは、オンプレミスの Active Directory インスタンスにサインインするときに使うものと同じです。
 
-- **パススルー認証** - Azure Active Directory (Azure AD) [パススルー認証](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta)を使用すると、ユーザーは同じパスワードを使用して、オンプレミスのアプリケーションとクラウド ベースのアプリケーションの両方にサインインできます。 この機能により、ユーザーが Azure AD を使用してサインインするとき、パススルー認証エージェントを介してユーザーのパスワードが Windows Server Active Directory に対して直接検証されます。
+- **パススルー認証** - Azure Active Directory (Azure AD) [パススルー認証](../hybrid/how-to-connect-pta.md)を使用すると、ユーザーは同じパスワードを使用して、オンプレミスのアプリケーションとクラウド ベースのアプリケーションの両方にサインインできます。 この機能により、ユーザーが Azure AD を使用してサインインするとき、パススルー認証エージェントを介してユーザーのパスワードが Windows Server Active Directory に対して直接検証されます。
 
-- **シームレス SSO** - [Azure Active Directory (Azure AD) シームレス SSO](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso) により、ユーザーは企業ネットワークにつながっている会社のデスクトップを使用するときに自動でサインインできます。 シームレス SSO により、ユーザーは、他のオンプレミス コンポーネントを必要とすることなく、クラウド ベースのアプリケーションに簡単にアクセスできるようになります。
+- **シームレス SSO** - [Azure Active Directory (Azure AD) シームレス SSO](../hybrid/how-to-connect-sso.md) により、ユーザーは企業ネットワークにつながっている会社のデスクトップを使用するときに自動でサインインできます。 シームレス SSO により、ユーザーは、他のオンプレミス コンポーネントを必要とすることなく、クラウド ベースのアプリケーションに簡単にアクセスできるようになります。
 
 シームレス SSO は、パスワード ハッシュ同期またはパススルー認証にもデプロイでき、Azure Active Directory 内のユーザーにシームレスな認証エクスペリエンスを作成できます。
 
-[デプロイ ガイド](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso-quick-start#step-1-check-the-prerequisites)に従って、シームレス SSO に必要なすべての前提条件をエンド ユーザーにデプロイします。
+[デプロイ ガイド](../hybrid/how-to-connect-sso-quick-start.md#step-1-check-the-prerequisites)に従って、シームレス SSO に必要なすべての前提条件をエンド ユーザーにデプロイします。
 
 この例では、パスワード ハッシュ同期とシームレス SSO を構成します。
 
@@ -83,7 +83,7 @@ ms.locfileid: "123439844"
 
 ## <a name="step-2---configure-staged-rollout-features"></a>手順 2 - 段階的ロールアウト機能を構成する
 
-[クラウド認証の段階的ロールアウト](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-staged-rollout)は、ドメイン全体のフェデレーションを解除する前に、ユーザーのフェデレーション解除をテストするために使用できる Azure Active Directory の機能です。 デプロイの前に、[前提条件](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-staged-rollout#prerequisites)を確認してください。
+[クラウド認証の段階的ロールアウト](../hybrid/how-to-connect-staged-rollout.md)は、ドメイン全体のフェデレーションを解除する前に、ユーザーのフェデレーション解除をテストするために使用できる Azure Active Directory の機能です。 デプロイの前に、[前提条件](../hybrid/how-to-connect-staged-rollout.md#prerequisites)を確認してください。
 
 Azure AD Connect サーバーでパスワード ハッシュ同期とシームレス SSO を有効にした後、次の手順に従って段階的なロールアウトを構成します。
 
@@ -241,7 +241,7 @@ Azure AD で Okta アプリを構成し、Okta ポータルで ID プロバイ�
 
 ## <a name="step-5---test-managed-authentication-on-pilot-members"></a>手順 5 - パイロット メンバーでのテストマネージド認証
 
-Okta 逆フェデレーション アプリを構成した後は、マネージド認証エクスペリエンスに対してユーザーが完全なテストを実施するようにします。 ユーザーがサインインする適切なテナントを区別できるように、会社のブランドを設定することをお勧めします。 会社のブランドを設定するための[ガイダンス](https://docs.microsoft.com/azure/active-directory/fundamentals/customize-branding)を入手します。
+Okta 逆フェデレーション アプリを構成した後は、マネージド認証エクスペリエンスに対してユーザーが完全なテストを実施するようにします。 ユーザーがサインインする適切なテナントを区別できるように、会社のブランドを設定することをお勧めします。 会社のブランドを設定するための[ガイダンス](../fundamentals/customize-branding.md)を入手します。
 
 >[!IMPORTANT]
 >Okta からドメインを全体としてフェデレーション解除する前に、必要になる可能性がある追加の条件付きアクセス ポリシーを判断します。 **完全にカットオフする前に環境をセキュリティで保護するための手順については、Okta サインオン ポリシーの Azure Active Directory への条件付きアクセス移行** について参照してください。

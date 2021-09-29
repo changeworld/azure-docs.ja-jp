@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/21/2021
 ms.author: jeedes
-ms.openlocfilehash: c7dc85a2fad11ec47dcf43aaf90da3dbc47c4ae5
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: 952ba939511911bd0cec41ee6c3f9b3311bed084
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114602609"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124795642"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mercell"></a>チュートリアル: Azure Active Directory と Mercell の統合
 
@@ -127,7 +127,7 @@ Mercell に対して Azure AD SSO を構成してテストするには、次の�
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した Mercell に自動的にサインインされます。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Mercell] タイルをクリックすると、SSO を設定した Mercell に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Mercell] タイルをクリックすると、SSO を設定した Mercell に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

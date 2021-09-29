@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: thwimmer
-ms.openlocfilehash: a02b767a097ec2d826f44ac5975063b681242ad1
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: f751b3b705cd1cacc5ef1398fb343de60b8ede6b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113759547"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128596792"
 ---
 # <a name="tutorial-configure-sap-cloud-platform-identity-authentication-for-automatic-user-provisioning"></a>チュートリアル:SAP Cloud Platform Identity Authentication を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -32,7 +32,7 @@ ms.locfileid: "113759547"
 このチュートリアルで説明するシナリオでは、次の前提条件目があることを前提としています。
 
 * Azure AD テナント
-* [SAP Cloud Platform Identity Authentication テナント](https://cloudplatform.sap.com/pricing.html)
+* [SAP Cloud Platform Identity Authentication テナント](https://www.sap.com/products/cloud-platform.html)
 * 管理者のアクセス許可がある SAP Cloud Platform Identity Authentication のユーザー アカウント。
 
 ## <a name="assigning-users-to-sap-cloud-platform-identity-authentication"></a>SAP Cloud Platform Identity Authentication にユーザーを割り当てる

@@ -8,22 +8,22 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 07/25/2021
+ms.date: 09/02/2021
 ms.author: davidmu
 ms.reviewer: lenalepa
-ms.openlocfilehash: 36da44521169c516888489bd0ac60015adcc432f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 6d77f3d93ad3b69f6cc8842e8a320221e533c4c7
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121733668"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124791481"
 ---
 # <a name="plan-azure-active-directory-my-apps-configuration"></a>Azure Active Directory マイ アプリの構成を計画する
 
 > [!NOTE]
 > この記事は、組織のマイ アプリ ポータルの構成を計画する必要がある IT プロフェッショナル向けです。
 >
-> **エンド ユーザー向けドキュメントについては、「[マイ アプリ ポータルからサインインしてアプリを開始する](../user-help/my-apps-portal-end-user-access.md)」を参照してください**。
+> **エンド ユーザー向けドキュメントについては、「[マイ アプリ ポータルからサインインしてアプリを開始する](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)」を参照してください**。
 
 Azure Active Directory (Azure AD) のマイ アプリは、アプリの起動と管理を行うための Web ベースのポータルです。 [マイ アプリ] ページを使用すると、ユーザーは 1 か所で、作業を開始し、アクセスできるすべてのアプリケーションを見つけることができます。 ユーザーは [https://myapps.microsoft.com](https://myapps.microsoft.com/) でマイ アプリにアクセスします。
 
@@ -36,7 +36,6 @@ Azure Active Directory (Azure AD) のマイ アプリは、アプリの起動と
 次の両方の条件が満たされている場合に、Azure Active Directory のエンタープライズ アプリケーションの一覧にあるアプリケーションが表示されます。
 
 * アプリの可視性プロパティが true に設定されている。
-
 * アプリが任意のユーザーまたはグループに割り当てられている。 割り当てられたユーザーに対して表示されます。
 
 ポータルを構成すると、適切なユーザーが適切なアプリを簡単に見つけられるようになります。
@@ -46,27 +45,18 @@ Azure Active Directory (Azure AD) のマイ アプリは、アプリの起動と
 ユーザーは以下のためにマイ アプリ ポータルにアクセスします。
 
 * 組織の Azure AD 接続アプリケーションで自分がアクセスできるものすべてを検出してアクセスする。
-
    * ユーザーに最良のエクスペリエンスを提供できるように、アプリが確実にシングル サインオン (SSO) 用に構成されているようにすることをお勧めします。
-
 * セルフサービス用に構成された新しいアプリへのアクセス権を要求する。
-
 * 個人用のアプリのコレクションを作成する。
-
 * アプリケーションへのアクセスを許可するために使用されるグループのグループ所有者ロールが割り当てられているか、制御を委任されている場合に、他のユーザーのアプリへのアクセスを管理する。
 
 管理者は以下を構成できます。
 
 * サービス使用条件をはじめとする[同意エクスペリエンス](../manage-apps/configure-user-consent.md)。
-
 * [セルフサービスによるアプリケーションの検出とアクセスの要求](../manage-apps/access-panel-manage-self-service-access.md)。
-
 * [アプリケーションのコレクション](../manage-apps/access-panel-collections.md)。
-
 * アプリケーションへのアイコンの割り当て
-
 * アプリケーションのユーザー フレンドリ名
-
 * マイ アプリに表示される会社のブランド
 
 ## <a name="plan-consent-configuration"></a>同意の構成を計画する
@@ -102,7 +92,6 @@ Microsoft は、マイ アプリに関する[電子メールやその他の連�
 Azure AD は、複数の SSO オプションをサポートします。
 
 * 詳細については、「[Azure AD のシングル サインオン オプション](sso-options.md)」を参照してください。
-
 * アプリの ID プロバイダーとして Azure AD を使用する方法については、[アプリケーション管理に関するクイックスタート シリーズ](../manage-apps/view-applications-portal.md)を参照してください。
 
 ### <a name="use-federated-sso-if-possible"></a>可能な場合はフェデレーション SSO を使用する
@@ -120,12 +109,11 @@ Azure AD は、複数の SSO オプションをサポートします。
 
 ![スクリーンショット](./media/my-apps-deployment-plan/ap-dp-install-myapps.png)
 
-拡張機能の詳細については、[マイ アプリのブラウザー拡張機能のインストール](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+拡張機能の詳細については、[マイ アプリのブラウザー拡張機能のインストール](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
-このようなアプリケーションを統合する必要がある場合、[サポートされているブラウザー](../user-help/my-apps-portal-end-user-access.md)を使用して拡張機能を大規模にデプロイするためのメカニズムを定義する必要があります。 次のオプションがあります。
+このようなアプリケーションを統合する必要がある場合、[サポートされているブラウザー](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)を使用して拡張機能を大規模にデプロイするためのメカニズムを定義する必要があります。 次のオプションがあります。
 
 * [Chrome、Firefox、Microsoft Edge、IE 用のユーザー主導のダウンロードおよび構成](../user-help/my-apps-portal-end-user-access.md)
-
 * [Internet Explorer の Configuration Manager](/mem/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
 
 この拡張機能を使用すると、ユーザーはその検索バーから任意のアプリを起動し、最近使ったアプリケーションへのアクセスを検索したり、[マイ アプリ] ページへのリンクを使用したりできます。
@@ -151,7 +139,6 @@ Azure AD は、複数の SSO オプションをサポートします。
 エンド ユーザーは、次のようにしてエクスペリエンスをカスタマイズすることもできます。
 
 * 自分用のアプリ コレクションを作成する。
-
 * [アプリ コレクションの非表示と並べ替え](access-panel-collections.md)を行う。
 
 ![セルフサービス構成のスクリーンショット](./media/my-apps-deployment-plan/collections.png)
@@ -174,9 +161,7 @@ Azure AD では、独自のセキュリティ グループまたは Microsoft 36
 ユーザーが [マイ アプリ] パネルを使用してアプリケーションを検出し、アクセスを要求できるようにすることができます。 これを行うには、最初に次のことを行います。
 
 * セルフサービス グループ管理を有効にする
-
 * アプリの SSO を有効にする
-
 * アプリケーション アクセス用のグループを作成する
 
 ![マイ アプリのセルフサービス構成のスクリーンショット](./media/my-apps-deployment-plan/my-apps-self-service.png)

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 70f318c10799c1cf30265373d8971faddfafc072
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: e7241944f6178b80ad684ff35684b5b5d3f53e94
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122180458"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124784529"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure の ID 管理とアクセス制御セキュリティのベスト プラクティス
 
@@ -142,7 +142,7 @@ ID セキュリティ スコアは、セキュリティ対策を客観的に測�
 
 ## <a name="enable-password-management"></a>パスワード管理を有効にする
 
-複数のテナントがある場合、またはユーザーが[自分のパスワードをリセット](../../active-directory/user-help/active-directory-passwords-update-your-own-password.md)できるようにする場合は、適切なセキュリティ ポリシーを使用して不適切な使用を防止することが重要です。
+複数のテナントがある場合、またはユーザーが[自分のパスワードをリセット](https://support.microsoft.com/account-billing/reset-your-work-or-school-password-using-security-info-23dde81f-08bb-4776-ba72-e6b72b9dda9e)できるようにする場合は、適切なセキュリティ ポリシーを使用して不適切な使用を防止することが重要です。
 
 **ベスト プラクティス**: ユーザーに対してセルフサービス パスワード リセット (SSPR) を設定します。  
 **詳細**: Azure AD の [セルフサービス パスワード リセット](../../active-directory-b2c/user-flow-self-service-password-reset.md)機能を使用します。

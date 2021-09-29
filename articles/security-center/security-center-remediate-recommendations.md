@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/04/2021
 ms.author: memildin
-ms.openlocfilehash: f0caaea2296a8981df4717497cb641676b43dea1
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.openlocfilehash: c35b9de3b4660c3a5f809fe519040618142490dd
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112237077"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124763369"
 ---
 # <a name="remediate-recommendations-in-azure-security-center"></a>Azure Security Center の修復レコメンデーション
 
@@ -68,7 +68,7 @@ ms.locfileid: "112237077"
 
 ## <a name="fix-actions-logged-to-the-activity-log"></a>アクティビティ ログに記録された修正プログラム アクション<a name="activity-log"></a>
 
-修復操作では、テンプレートのデプロイまたは REST PATCH API の呼び出しを使用して、リソースに構成を適用します。 これらの操作は、[Azure のアクティビティ ログ](../azure-resource-manager/management/view-activity-logs.md)に記録されます。
+修復操作では、テンプレートのデプロイまたは REST PATCH API の呼び出しを使用して、リソースに構成を適用します。 これらの操作は、[Azure のアクティビティ ログ](../azure-monitor/essentials/activity-log.md)に記録されます。
 
 
 ## <a name="next-steps"></a>次のステップ

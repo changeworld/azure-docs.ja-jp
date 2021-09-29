@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/24/2021
+ms.date: 09/09/2021
 ms.author: jianleishen
-ms.openlocfilehash: b8f3de9a986c491de6bfd2b507755abe4face534
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: ed65bb5bcde37bf4ad18d9650697d51640ac1e4a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122822402"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124767586"
 ---
 # <a name="monitor-copy-activity"></a>コピー アクティビティの監視
 
@@ -30,17 +30,17 @@ ms.locfileid: "122822402"
 
 # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
 
-![パイプラインの実行の監視](./media/copy-activity-overview/monitor-pipeline-run.png)
+:::image type="content" source="./media/copy-activity-overview/monitor-pipeline-run.png" alt-text="パイプラインの実行の監視":::
 
 # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
-![パイプラインの実行の監視](./media/copy-activity-overview/monitor-pipeline-run-synapse.png)
+:::image type="content" source="./media/copy-activity-overview/monitor-pipeline-run-synapse.png" alt-text="パイプラインの実行の監視":::
 
 ---
 
 このレベルでは、コピー アクティビティの入力、出力、エラー (コピー アクティビティの実行が失敗した場合) と、実行時間や状態などの統計情報へのリンクが表示されます。 コピー アクティビティ名の横にある **[詳細]** ボタン (眼鏡) をクリックすると、コピー アクティビティの実行に関する詳細が表示されます。 
 
-![コピー アクティビティの実行を監視する](./media/copy-activity-overview/monitor-copy-activity-run.png)
+:::image type="content" source="./media/copy-activity-overview/monitor-copy-activity-run.png" alt-text="コピー アクティビティの実行を監視する":::
 
 このグラフィカルな監視ビューでは、サービスによってコピー アクティビティの実行の情報が表示されます。これには、データの読み取りと書き込みの量、ソースからシンクにコピーされたデータのファイルと行の数、スループット、コピー シナリオに適用された構成、コピー アクティビティで行われた手順および対応する実行時間と詳細などが含まれます。 各メトリックとその詳細な説明については、[こちらの表](#monitor-programmatically)を参照してください。 
 
@@ -50,7 +50,7 @@ ms.locfileid: "122822402"
 
 **例:Amazon S3 から Azure Data Lake Storage Gen2 にコピーする**
 
-![コピー アクティビティの実行状況の詳細の監視](./media/copy-activity-overview/monitor-copy-activity-run-details.png)
+:::image type="content" source="./media/copy-activity-overview/monitor-copy-activity-run-details.png" alt-text="コピー アクティビティの実行状況の詳細の監視":::
 
 ## <a name="monitor-programmatically"></a>プログラムで監視する
 

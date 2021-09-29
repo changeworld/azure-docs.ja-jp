@@ -4,12 +4,12 @@ description: 概要セクションにある Azure Arc 対応サーバー エー�
 ms.topic: overview
 ms.date: 08/27/2021
 ms.custom: references_regions
-ms.openlocfilehash: 45f7ed97cf9e0fbb389ccf893f2674e2601ee7f9
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 0e3dbda61503442f15bc74e0ec3b771e732b96db
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123441648"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128680701"
 ---
 # <a name="archive-for-whats-new-with-azure-arc-enabled-servers-agent"></a>Azure Arc 対応サーバー エージェントの新着情報のアーカイブ
 
@@ -21,6 +21,17 @@ Azure Arc 対応サーバーの Connected Machine エージェントは、継続
 - 既知の問題
 - バグの修正
 
+## <a name="april-2021"></a>2021 年 4 月
+
+バージョン 1.5
+
+### <a name="new-features"></a>新機能
+
+- Red Hat Enterprise Linux 8 および CentOS Linux 8 のサポートが追加されました。
+- エラーおよび詳細出力を stderr に送る新しい `-useStderr` パラメーター。
+- 出力結果を JSON 形式 (-useStderr と共に使用するとき) で送る新しい `-json` パラメーター。
+- 他のインスタンス メタデータとして製造元、モデル、クラスター リソース ID (Azure Stack HCI ノードの場合) を収集します。
+ 
 ## <a name="march-2021"></a>2021 年 3 月
 
 バージョン 1.4

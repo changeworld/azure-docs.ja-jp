@@ -4,12 +4,12 @@ ms.author: dobett
 ms.service: iot-develop
 ms.topic: include
 ms.date: 04/28/2021
-ms.openlocfilehash: d6df060afb65814175b02137720f7a9f27a6c4eb
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: c4e0070a9647412a873953af59338b13f4c653fd
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122264621"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128909295"
 ---
 "*制約のあるデバイス*" 向けの開発を行っている場合、IoT プラグ アンド プレイを以下と共に使用できます。
 
@@ -37,9 +37,9 @@ ms.locfileid: "122264621"
 > [!NOTE]
 > これらのサンプルでは、教育およびデバッグの目的で、Windows および Linux での実行が示されます。 運用環境のシナリオでは、サンプルは制約のあるデバイスのみを対象としています。
 
-- [埋め込み C 用の SDK を使用するサーモスタットの例](https://github.com/Azure/azure-sdk-for-c/blob/master/sdk/samples/iot/paho_iot_hub_pnp_sample.c)
+- [埋め込み C 用の SDK を使用するサーモスタットの例](https://github.com/Azure/azure-sdk-for-c/blob/main/sdk/samples/iot/paho_iot_pnp_sample.c)
 
-- [埋め込み C 用の SDK を使用する温度コントローラーの例](https://github.com/Azure/azure-sdk-for-c/blob/master/sdk/samples/iot/paho_iot_hub_pnp_component_sample.c)
+- [埋め込み C 用の SDK を使用する温度コントローラーの例](https://github.com/Azure/azure-sdk-for-c/blob/main/sdk/samples/iot/paho_iot_pnp_component_sample.c)
 
 ## <a name="using-azure-rtos"></a>Azure RTOS の使用
 

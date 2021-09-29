@@ -7,12 +7,12 @@ ms.custom: references_regions
 ms.date: 08/06/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 49c453f4ffcb2fac04b42f4956768e06ab8fce8f
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 8e33c165cd249b578bd4cba9ef4f25446287d7ec
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123100825"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124766447"
 ---
 # <a name="tutorial-create-a-host-pool"></a>チュートリアル: ホスト プールを作成する
 
@@ -237,7 +237,7 @@ Azure CLI を使用した Azure 仮想マシンの作成について詳しくは
     - [Azure CLI を使用して Windows VM を作成する]( /azure/virtual-machines/windows/quick-create-cli)
     - [チュートリアル: Azure CLI を使用した Windows VM の作成と管理](/cli/azure/azure-cli-vm-tutorial)
 - Linux
-    - [Azure CLI を使用して新しく Linux VM を作成する]( /virtual-machines/linux/quick-create-cli)
+    - [Azure CLI を使用して新しく Linux VM を作成する](../virtual-machines/linux/quick-create-cli.md)
     - [チュートリアル:Azure CLI を使用した Linux VM の作成と管理]( /azure/virtual-machines/linux/tutorial-manage-vm) 
 ---
 

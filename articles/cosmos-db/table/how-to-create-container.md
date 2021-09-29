@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: mjbrown
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cfb7513ad3dc76c87cb9b06d5d7325011fb2908b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9320e34ccd4cdb217ac574eeef0d5c0b0f1eeb42
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121780949"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124812087"
 ---
 # <a name="create-a-container-in-azure-cosmos-db-table-api"></a>Azure Cosmos DB Table API にコンテナーを作成する
 [!INCLUDE[appliesto-table-api](../includes/appliesto-table-api.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "121780949"
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
 
-1. [新しい Azure Cosmos アカウントを作成する](create-table-dotnet.md#create-a-database-account)か、既存のアカウントを選択します。
+1. [新しい Azure Cosmos アカウントを作成する](create-table-dotnet.md#1---create-an-azure-cosmos-db-account)か、既存のアカウントを選択します。
 
 1. **[データ エクスプローラー]** ウィンドウを開いて **[新しいテーブル]** を選択します。 次に、以下の詳細を指定します。
 

@@ -2,13 +2,13 @@
 title: Event GrID ソースとしての Azure SignalR
 description: Azure Event Grid の Azure SignalR イベントに対して用意されているプロパティについて説明します
 ms.topic: conceptual
-ms.date: 02/11/2021
-ms.openlocfilehash: 321dc4d21485af23a9cca0d42d74da0a3e121b7c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/15/2021
+ms.openlocfilehash: a7caf42d40308ea2f95d7bf71091fd8e0ee63088
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100363696"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128651068"
 ---
 # <a name="azure-event-grid-event-schema-for-signalr-service"></a>SignalR Service 用の Azure Event Grid イベント スキーマ
 
@@ -118,7 +118,7 @@ SignalR Service から出力されるイベントの種類は次のとおりで�
 # <a name="event-grid-event-schema"></a>[Event Grid イベント スキーマ](#tab/event-grid-event-schema)
 イベントのトップレベルのデータを次に示します。
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | 説明 |
 | -------- | ---- | ----------- |
 | `topic` | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
 | `subject` | string | 発行元が定義したイベントの対象のパス。 |
@@ -133,7 +133,7 @@ SignalR Service から出力されるイベントの種類は次のとおりで�
 
 イベントのトップレベルのデータを次に示します。
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | 説明 |
 | -------- | ---- | ----------- |
 | `source` | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
 | `subject` | string | 発行元が定義したイベントの対象のパス。 |
@@ -147,7 +147,7 @@ SignalR Service から出力されるイベントの種類は次のとおりで�
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | 説明 |
 | -------- | ---- | ----------- |
 | `timestamp` | string | プロバイダーの UTC 時刻に基づくイベントの生成時刻。 |
 | `hubName` | string | クライアント接続が属するハブ。 |

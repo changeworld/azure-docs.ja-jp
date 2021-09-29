@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/02/2021
 ms.author: jeedes
-ms.openlocfilehash: 21823a2157712d7bc5a78c5434b0d7a9a88014f0
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: 9f5483c5368a74faee25c80af976a21961094f9e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111568488"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124835321"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fastly-edge-cloud"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Fastly Edge Cloud の統合
 
@@ -126,7 +126,7 @@ Fastly Edge Cloud に対して Azure AD SSO を構成してテストするには
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した Fastly Edge Cloud に自動的にサインインされます。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Fastly Edge Cloud] タイルをクリックすると、SSO を設定した Fastly Edge Cloud に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Fastly Edge Cloud] タイルをクリックすると、SSO を設定した Fastly Edge Cloud に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

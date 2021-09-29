@@ -9,13 +9,13 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 08/24/2021
-ms.openlocfilehash: d1f3313c1b348e037ab70dad0f4072d4727f21b3
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.date: 09/09/2021
+ms.openlocfilehash: dff54916007046d3d0d8d6741ca6fce7409c5d99
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122824283"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124787984"
 ---
 # <a name="datasets-in-azure-data-factory-and-azure-synapse-analytics"></a>Azure Data Factory および Azure Synapse Analytics 内のデータセット
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -38,7 +38,7 @@ Data Factory または Synapse ワークスペースには、1 つ以上のパ�
 
 次の図は、パイプライン、アクティビティ、データセット、リンクされたサービスの関係を示しています。
 
-![パイプライン、アクティビティ、データセット、リンクされたサービスの関係](media/concepts-datasets-linked-services/relationship-between-data-factory-entities.png)
+:::image type="content" source="media/concepts-datasets-linked-services/relationship-between-data-factory-entities.png" alt-text="パイプライン、アクティビティ、データセット、リンクされたサービスの関係":::
 
 
 ## <a name="dataset-json"></a>データセットの JSON

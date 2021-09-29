@@ -2,13 +2,13 @@
 title: Azure Event Hubs で Shared Access Signature を使用してアクセスを承認する
 description: この記事では、Shared Access Signature (SAS) を使用する Azure Event Hubs リソースへのアクセスの承認に関する情報を提供します。
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: 6a2d7385f82864e8d378055333377fb9c3f73c19
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/20/2021
+ms.openlocfilehash: cc5ed89f9197bfb79735e558b9f36e22f87eba4b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85323127"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128561046"
 ---
 # <a name="authorizing-access-to-event-hubs-resources-using-shared-access-signatures"></a>Shared Access Signature を使用する Event Hubs リソースへのアクセスの承認
 Shared Access Signature (SAS) では、Event Hubs 名前空間のリソースへの制限付きアクセスを許可する方法が提供されます。 SAS では、承認規則に基づいて Event Hubs リソースへのアクセスが保護されます。 これらの規則は、名前空間、またはエンティティ (イベント ハブまたはトピック) のいずれかで構成されます。 この記事では、SAS モデルの概要を提供し、SAS のベスト プラクティスを確認します。

@@ -3,12 +3,12 @@ title: Azure Site Recovery の最新情報
 description: Azure Site Recovery サービスの新機能と最新の更新プログラムの概要について説明します。
 ms.topic: conceptual
 ms.date: 07/28/2021
-ms.openlocfilehash: 2b733f4e525f2f47df7afde0ddc308430ae05d0b
-ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
+ms.openlocfilehash: 0058078e04e14e6e8c823490f8c6e09a123d40f8
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123215318"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124804779"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery の最新情報
 
@@ -43,10 +43,10 @@ Site Recovery コンポーネントでは、N-4 バージョン (N は最新リ�
 > プレビュー エクスペリエンスを設定するには、新規セットアップを実行し、新しい Recovery Services コンテナーを使用する必要があります。 既存のアーキテクチャから新しいアーキテクチャに更新することはサポートされていません。
 
 今回のパブリック プレビューでは、VMware マシンを保護するための現行のアーキテクチャが全面的に見直されています。
-- 新しいアーキテクチャと導入された変更について[説明](https://docs.microsoft.com/azure/site-recovery/vmware-azure-architecture-preview)します。
-- 前提条件を確認し、次の[手順](https://docs.microsoft.com/azure/site-recovery/deploy-vmware-azure-replication-appliance-preview)に従って ASR レプリケーション アプライアンスを設定します。
-- VMware マシンの[レプリケーションを有効](https://docs.microsoft.com/azure/site-recovery/vmware-azure-set-up-replication-tutorial-preview)にします。
-- ASR レプリケーション アプライアンスの[自動アップグレード](https://docs.microsoft.com/azure/site-recovery/upgrade-mobility-service-preview)と[スイッチ](https://docs.microsoft.com/azure/site-recovery/switch-replication-appliance-preview)の機能を確認してください。
+- 新しいアーキテクチャと導入された変更について[説明](./vmware-azure-architecture-preview.md)します。
+- 前提条件を確認し、次の[手順](./deploy-vmware-azure-replication-appliance-preview.md)に従って ASR レプリケーション アプライアンスを設定します。
+- VMware マシンの[レプリケーションを有効](./vmware-azure-set-up-replication-tutorial-preview.md)にします。
+- ASR レプリケーション アプライアンスの[自動アップグレード](./upgrade-mobility-service-preview.md)と[スイッチ](./switch-replication-appliance-preview.md)の機能を確認してください。
 
 
 ### <a name="update-rollup-56"></a>更新プログラム ロールアップ 56

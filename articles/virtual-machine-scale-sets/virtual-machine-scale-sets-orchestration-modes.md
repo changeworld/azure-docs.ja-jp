@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.date: 08/05/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli, vmss-flex, devx-track-azurepowershell
-ms.openlocfilehash: 7983ae912d29f2a27d35b261d1654205fe503651
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: be8c322bafb5dfaf3fadecfadfd5f9b1ec9a95f1
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123305072"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124804098"
 ---
 # <a name="preview-orchestration-modes-for-virtual-machine-scale-sets-in-azure"></a>プレビュー: Azure の仮想マシン スケール セットのオーケストレーション モード
 
@@ -124,11 +124,11 @@ Virtual Machine Scale Sets では、スケール セットに属するインス�
 | Ultra SSD ディスク   | はい  | はい。ゾーン デプロイの場合のみ  | いいえ  |
 | Infiniband   | いいえ  | はい。単一の配置グループのみ  | はい  |
 | 書き込みアクセラレータ   | いいえ  | はい  | はい  |
-| 近接配置グループ   | はい  | Yes  | はい  |
+| 近接配置グループ   | はい  | はい  | はい  |
 | Azure 専用ホスト   | いいえ  | はい  | はい  |
 | Basic SLB   | いいえ  | はい  | はい  |
-| Azure Load Balancer Standard SKU  | はい  | Yes  | はい  |
-| Application Gateway  | はい  | Yes  | はい  |
+| Azure Load Balancer Standard SKU  | はい  | はい  | はい  |
+| Application Gateway  | はい  | はい  | はい  |
 | メンテナンス コントロール   | いいえ  | はい  | はい  |
 | セット内の VM の一覧表示  | はい  | はい  | はい。AvSet 内の VM を一覧表示します  |
 | Azure アラート  | いいえ  | はい  | はい  |
@@ -164,7 +164,6 @@ Virtual Machine Scale Sets では、スケール セットに属するインス�
     | 機能  | フレキシブル オーケストレーション (プレビュー) によるサポート対象  | 均一オーケストレーション (一般提供) によるサポート対象  | AvSets (一般提供) によるサポート対象  |
     |-|-|-|-|
     | 最大インスタンス数 (FD 可用性の保証あり)  | 1000  | 3000  | 200  |
-
 
 ## <a name="troubleshoot-scale-sets-with-flexible-orchestration"></a>フレキシブル オーケストレーションでのスケール セットのトラブルシューティング
 ご自分のトラブルシューティング シナリオに適した解決策を見つけてください。

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/26/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: ffe433e632e2afed32f2a135d87d927686e9a004
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.openlocfilehash: 6c8f4e902929d6a610dc1f9224ac17b2d3b893d0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108018289"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "126056951"
 ---
 Microsoft Intune を使用して、Azure VPN クライアント (Windows 10) のプロファイルを展開できます。 この記事では、カスタム設定を使用して Intune プロファイルを作成する方法について説明します。
 
@@ -72,7 +72,7 @@ Microsoft Intune を使用して、Azure VPN クライアント (Windows 10) の
 
     * **[名前]:** 構成の名前を入力します。
     * **説明:** 省略可能な説明です。
-    * **OMA-URI:** ```./User/Vendor/MSFT/VPNv2/<name of your connection>/ProfileXML``` (この情報は、azurevpnconfig.xml の <name></name> タグ内にあります)。
+    * **OMA-URI:** ```./User/Vendor/MSFT/VPNv2/<name of your connection>/ProfileXML``` (この情報は、azurevpnconfig.xml の \<name\> \</name\> タグ内にあります)。
     * **データ型**: 文字列 (XML ファイル)。
 
    フォルダー アイコンを選択し、[XML](#xml) 手順の手順 6 で保存したファイルを選択します。 **[追加]** を選択します。

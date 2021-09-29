@@ -1,19 +1,19 @@
 ---
 title: 'クイックスタート: Azure Blob Storage ライブラリ v12 - Java'
 description: このクイックスタートでは、Java 用 Azure Blob Storage クライアント ライブラリ バージョン 12 を使用して、BLOB (オブジェクト) ストレージ内にコンテナーと BLOB を作成する方法について説明します。 次に、ローカル コンピューターに BLOB をダウンロードする方法と、コンテナー内のすべての BLOB を一覧表示する方法について説明します。
-author: twooley
+author: normesta
 ms.custom: devx-track-java
-ms.author: twooley
+ms.author: normesta
 ms.date: 12/01/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: c951071b7746e426edfd6a9c9f4851236c12159d
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 74fd04281b27c66861de686a03d2dd26031f0349
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123469628"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128562571"
 ---
 # <a name="quickstart-manage-blobs-with-java-v12-sdk"></a>クイック スタート:Java v12 SDK で BLOB を管理する
 
@@ -21,10 +21,10 @@ ms.locfileid: "123469628"
 
 その他のリソース:
 
-* [API リファレンス ドキュメント](/java/api/overview/azure/storage-blob-readme)
-* [ライブラリ ソース コード](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob)
-* [パッケージ (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-blob)
-* [サンプル](../common/storage-samples-java.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
+- [API リファレンス ドキュメント](/java/api/overview/azure/storage-blob-readme)
+- [ライブラリ ソース コード](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob)
+- [パッケージ (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-blob)
+- [サンプル](../common/storage-samples-java.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -163,9 +163,9 @@ public class App
 
 Azure Blob Storage は、大量の非構造化データを格納するために最適化されています。 非構造化データとは、特定のデータ モデルや定義に従っていないデータであり、テキスト データやバイナリ データなどがあります。 Blob Storage には、3 種類のリソースがあります。
 
-* ストレージ アカウント
-* ストレージ アカウント内のコンテナー
-* コンテナー内の BLOB
+- ストレージ アカウント
+- ストレージ アカウント内のコンテナー
+- コンテナー内の BLOB
 
 次の図に、これらのリソースの関係を示します。
 
@@ -173,22 +173,22 @@ Azure Blob Storage は、大量の非構造化データを格納するために�
 
 これらのリソースとやり取りするには、以下の Java クラスを使用します。
 
-* [BlobServiceClient](/java/api/com.azure.storage.blob.blobserviceclient):`BlobServiceClient` クラスを使用して、Azure Storage リソースと BLOB コンテナーを操作できます。 ストレージ アカウントでは、Blob service に対して最上位の名前空間が提供されます。
-* [ クラスでは、](/java/api/com.azure.storage.blob.blobserviceclientbuilder) オブジェクトの構成とインスタンス化を支援する fluent ビルダー API が提供されています。
-* [BlobContainerClient](/java/api/com.azure.storage.blob.blobcontainerclient):`BlobContainerClient` クラスを使用して、Azure Storage コンテナーとその BLOB を操作できます。
-* [ クラスを使用して、Azure Storage BLOB を操作できます。
-* [BlobItem](/java/api/com.azure.storage.blob.models.blobitem):`BlobItem` クラスは、[listBlobs](/java/api/com.azure.storage.blob.blobcontainerclient.listblobs) の呼び出しから返された個々の BLOB を表します。
+- [BlobServiceClient](/java/api/com.azure.storage.blob.blobserviceclient):`BlobServiceClient` クラスを使用して、Azure Storage リソースと BLOB コンテナーを操作できます。 ストレージ アカウントでは、Blob service に対して最上位の名前空間が提供されます。
+- [ クラスでは、](/java/api/com.azure.storage.blob.blobserviceclientbuilder) オブジェクトの構成とインスタンス化を支援する fluent ビルダー API が提供されています。
+- [BlobContainerClient](/java/api/com.azure.storage.blob.blobcontainerclient):`BlobContainerClient` クラスを使用して、Azure Storage コンテナーとその BLOB を操作できます。
+- [ クラスを使用して、Azure Storage BLOB を操作できます。
+- [BlobItem](/java/api/com.azure.storage.blob.models.blobitem):`BlobItem` クラスは、[listBlobs](/java/api/com.azure.storage.blob.blobcontainerclient.listblobs) の呼び出しから返された個々の BLOB を表します。
 
 ## <a name="code-examples"></a>コード例
 
 これらのコード例のスニペットは、Java 用 Azure Blob Storage クライアント ライブラリを使用して以下を実行する方法を示します。
 
-* [接続文字列を取得する](#get-the-connection-string)
-* [コンテナーの作成](#create-a-container)
-* [コンテナーに BLOB をアップロードする](#upload-blobs-to-a-container)
-* [コンテナー内の BLOB を一覧表示する](#list-the-blobs-in-a-container)
-* [BLOB をダウンロードする](#download-blobs)
-* [コンテナーの削除](#delete-a-container)
+- [接続文字列を取得する](#get-the-connection-string)
+- [コンテナーの作成](#create-a-container)
+- [コンテナーに BLOB をアップロードする](#upload-blobs-to-a-container)
+- [コンテナー内の BLOB を一覧表示する](#list-the-blobs-in-a-container)
+- [BLOB をダウンロードする](#download-blobs)
+- [コンテナーの削除](#delete-a-container)
 
 ### <a name="get-the-connection-string"></a>接続文字列を取得する
 
@@ -371,5 +371,5 @@ BLOB ストレージのサンプル アプリを確認するには、以下に�
 > [!div class="nextstepaction"]
 > [Azure Blob Storage SDK v12 の Java サンプル](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob)
 
-* 詳細については、「[Azure SDK for Java (Java 用の Azure SDK)](https://github.com/Azure/azure-sdk-for-java/blob/master/README.md)」を参照してください。
-* チュートリアル、サンプル、クイックスタートなどのドキュメントについては、「[Java クラウド開発者向けの Azure](/azure/developer/java/)」を参照してください。
+- 詳細については、「[Azure SDK for Java (Java 用の Azure SDK)](https://github.com/Azure/azure-sdk-for-java/blob/master/README.md)」を参照してください。
+- チュートリアル、サンプル、クイックスタートなどのドキュメントについては、「[Java クラウド開発者向けの Azure](/azure/developer/java/)」を参照してください。

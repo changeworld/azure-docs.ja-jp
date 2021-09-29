@@ -4,18 +4,19 @@ description: セルフホステッド統合ランタイムの診断ツール
 ms.author: lle
 author: lrtoyou1223
 ms.service: data-factory
+ms.subservice: integration-runtime
 ms.topic: conceptual
 ms.custom:
 - seo-lt-2019
 - references_regions
 - devx-track-azurepowershell
 ms.date: 07/28/2021
-ms.openlocfilehash: b8aa070759ea29c9c2853d0c8a6af184bc169569
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b3c98d4e85b1a7d04b017eea2da00f36a479eeac
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121780801"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128598577"
 ---
 # <a name="diagnostic-tool-for-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイムの診断ツール
 セルフホステッド統合ランタイムは、異なるネットワーク環境間でデータ統合機能を提供するために Azure Data Factory によって使用されるコンピューティング インフラストラクチャです。 セルフホステッド統合ランタイムは、オンプレミス コンピューター、またはプライベート ネットワーク内の仮想マシンにインストールする必要があります。 場合によっては、ネットワーク、ファイアウォール、依存関係、OS 関連の問題など、オンプレミスのマシンの問題の調査は困難です。 この記事では、オンプレミス環境での問題をトラブルシューティングするための新しい診断ツールについて説明します。

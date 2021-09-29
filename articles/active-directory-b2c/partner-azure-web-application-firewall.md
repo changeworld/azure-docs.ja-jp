@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/17/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 03c66f9610ab8dc309098e1eee695ded477938bc
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 54cb0cdbff2ac11334f168e41a18107d3d0dfe87
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122768447"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124763220"
 ---
 # <a name="tutorial-configure-azure-web-application-firewall-with-azure-active-directory-b2c"></a>チュートリアル: Azure Active Directory B2C を使用して Azure Web Application Firewall を構成する
 
@@ -33,15 +33,15 @@ ms.locfileid: "122768447"
 
 - [Azure AD B2C テナント](tutorial-create-tenant.md) – テナントで定義されているカスタム ポリシーを使用してユーザーの資格情報を検証する承認サーバー。  ID プロバイダーとも呼ばれます。
 
-- [Azure Front Door (AFD)](https://docs.microsoft.com/azure/frontdoor/) – Azure AD B2C テナントに対してカスタム ドメインを有効にする役割を担います。  
+- [Azure Front Door (AFD)](../frontdoor/index.yml) – Azure AD B2C テナントに対してカスタム ドメインを有効にする役割を担います。  
 
 - [Azure WAF](https://azure.microsoft.com/services/web-application-firewall/#overview) – 承認サーバーに送信されるすべてのトラフィックを管理します。
 
 ## <a name="azure-ad-b2c-setup"></a>Azure AD B2C のセットアップ
 
-Azure AD B2C でカスタム ドメインを使用するには、AFD によって提供されるカスタム ドメイン機能を使用する必要があります。 [Azure AD B2C カスタム ドメインを有効にする](https://docs.microsoft.com/azure/active-directory-b2c/custom-domain?pivots=b2c-user-flow)方法を理解します。  
+Azure AD B2C でカスタム ドメインを使用するには、AFD によって提供されるカスタム ドメイン機能を使用する必要があります。 [Azure AD B2C カスタム ドメインを有効にする](./custom-domain.md?pivots=b2c-user-flow)方法を理解します。  
 
-AFD を使用して Azure AD B2C のカスタム ドメインを正常に構成したら、次に進む前に[カスタム ドメインをテスト](https://docs.microsoft.com/azure/active-directory-b2c/custom-domain?pivots=b2c-custom-policy#test-your-custom-domain)します。  
+AFD を使用して Azure AD B2C のカスタム ドメインを正常に構成したら、次に進む前に[カスタム ドメインをテスト](./custom-domain.md?pivots=b2c-custom-policy#test-your-custom-domain)します。  
 
 ## <a name="onboard-with-azure-waf"></a>Azure WAF を使用してオンボードする
 
@@ -80,7 +80,7 @@ Azure WAF を有効にするには、WAF ポリシーを構成し、そのポリ
 
 ### <a name="change-policy-mode-from-detection-to-prevention"></a>ポリシー モードを検出から防止に変更する
 
-WAF ポリシーを作成すると、ポリシーは既定で検出モードになります。 検出モードでは、WAF によって要求はブロックされず、代わりに、WAF 規則に一致する要求は WAF ログに記録されます。 WAF のログの詳細については、[Azure WAF の監視とログ](https://docs.microsoft.com/azure/web-application-firewall/afds/waf-front-door-monitor)に関する記事を参照してください。
+WAF ポリシーを作成すると、ポリシーは既定で検出モードになります。 検出モードでは、WAF によって要求はブロックされず、代わりに、WAF 規則に一致する要求は WAF ログに記録されます。 WAF のログの詳細については、[Azure WAF の監視とログ](../web-application-firewall/afds/waf-front-door-monitor.md)に関する記事を参照してください。
 
 サンプル クエリでは、過去 24 時間に WAF ポリシーによってブロックされたすべての要求が示されます。 詳細には、ルール名、要求データ、ポリシーによって実行されたアクション、ポリシー モードが含まれます。
 
@@ -88,7 +88,7 @@ WAF ポリシーを作成すると、ポリシーは既定で検出モードに�
 
 ![画像には、ブロックされた要求の詳細が示されています](./media/partner-azure-web-application-firewall/blocked-requests-details.png)
 
-WAF によって検出モードで要求がキャプチャされるようにすることをお勧めします。 WAF ログを調べて、擬陽性の結果の原因になっているルールがポリシーにあるかどうかを確認します。 次に、[WAF ログに基づいて WAF ルールを除外します](https://docs.microsoft.com/azure/web-application-firewall/afds/waf-front-door-exclusion#define-exclusion-based-on-web-application-firewall-logs)。
+WAF によって検出モードで要求がキャプチャされるようにすることをお勧めします。 WAF ログを調べて、擬陽性の結果の原因になっているルールがポリシーにあるかどうかを確認します。 次に、[WAF ログに基づいて WAF ルールを除外します](../web-application-firewall/afds/waf-front-door-exclusion.md#define-exclusion-based-on-web-application-firewall-logs)。
 
 WAF の動作を確認するには、[Switch to prevention mode]\(防止モードに切り替え\) を使用して、検出を防止モードに変更します。 既定ルール セット (DRS) で定義されているルールに一致するすべての要求がブロックされ、WAF ログに記録されます。
 
@@ -100,6 +100,6 @@ WAF の動作を確認するには、[Switch to prevention mode]\(防止モー�
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure WAF の監視とログ](https://docs.microsoft.com/azure/web-application-firewall/afds/waf-front-door-monitor/)
+- [Azure WAF の監視とログ](../web-application-firewall/afds/waf-front-door-monitor.md)
 
-- [Front Door Service の除外リストを使用する WAF](https://docs.microsoft.com/azure/web-application-firewall/afds/waf-front-door-exclusion/)
+- [Front Door Service の除外リストを使用する WAF](../web-application-firewall/afds/waf-front-door-exclusion.md)

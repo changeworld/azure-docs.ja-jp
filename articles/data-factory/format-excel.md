@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/24/2021
+ms.date: 09/09/2021
 ms.author: jianleishen
-ms.openlocfilehash: 7a1a0331276169bb81dcf86c74aab1a16855b25c
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 66f0f310faa32e65dea657d7b15ceae7e4f84ba0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123255849"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124831347"
 ---
 # <a name="excel-file-format-in-azure-data-factory-and-azure-synapse-analytics"></a>Azure Data Factory および Azure Synapse Analytics での Excel ファイル形式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -124,7 +124,7 @@ Azure Blob Storage 上の Excel データセットの例を次に示します。
 
 次の図は、データセット モードを使用したマッピング データ フローにおける Excel ソースの構成例です。
 
-![Excel ソース](media/data-flow/excel-source.png)
+:::image type="content" source="media/data-flow/excel-source.png" alt-text="Excel ソース":::
 
 関連付けられているデータ フロー スクリプトは次のとおりです。
 
@@ -136,7 +136,7 @@ source(allowSchemaDrift: true,
 
 インライン データセットを使用する場合、マッピング データ フローに次のソース オプションが表示されます。
 
-![Excel ソースのインライン データセット](media/data-flow/excel-source-inline-dataset.png)
+:::image type="content" source="media/data-flow/excel-source-inline-dataset.png" alt-text="Excel ソースのインライン データセット":::
 
 関連付けられているデータ フロー スクリプトは次のとおりです。
 

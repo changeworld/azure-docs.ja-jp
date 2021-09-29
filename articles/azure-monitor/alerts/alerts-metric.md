@@ -4,13 +4,13 @@ description: Azure portal または CLI を使用して、メトリック アラ
 author: harelbr
 ms.author: harelbr
 ms.topic: conceptual
-ms.date: 08/02/2021
-ms.openlocfilehash: 49e9dee0b28eb17f2a4241570a2f0752f33b9020
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/09/2021
+ms.openlocfilehash: 7a76b4b37760e5e320ab62c2660e97c9fcabdbb0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121747689"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124815688"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Azure Monitor を使用してメトリック アラートを作成、表示、管理する
 
@@ -126,7 +126,7 @@ Azure Monitor のメトリック アラートには、メトリックのいず�
 6. 次のコマンドを使用して、メトリック アラート ルールを無効にできます。
 
     ```azurecli
-    az monitor metrics alert update -g {ResourceGroup} -n {AlertRuleName} --disabled false
+    az monitor metrics alert update -g {ResourceGroup} -n {AlertRuleName} --enabled false
     ```
 
 7. 次のコマンドを使用して、メトリック アラート ルールを削除できます。

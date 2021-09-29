@@ -9,12 +9,13 @@ ms.author: jken
 ms.date: 06/30/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 599a210425509fd6134a6541a27f2eee74b6054d
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.subservice: calling
+ms.openlocfilehash: 893ed45046cef2feb10c64464952dafa34d16021
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123254624"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128676943"
 ---
 # <a name="record-and-download-calls-with-event-grid"></a>Event Grid を使用した通話の記録とダウンロード
 

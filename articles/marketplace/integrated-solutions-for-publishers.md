@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.date: 06/22/2021
-ms.openlocfilehash: afdfce29840bbc88bdfc853e12e8109881f8366a
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: d593b234e33eefeb5116bc69aeb7ad990ac24536
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113002032"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129153826"
 ---
 # <a name="publish-an-integrated-solution"></a>統合ソリューションを公開する
 
@@ -51,7 +51,7 @@ ms.locfileid: "113002032"
 
 ## <a name="submit-a-nomination"></a>申請を提出する
 
-このプログラムへの参加を希望するパートナーは、連携したい他のパートナーを特定する必要があります。 [統合ソリューションの申請フォーム](https://aka.ms/AA5qicu)に入力する必要があります。 統合ソリューション プログラムのチームが申請を審査し、10 営業日以内にフォローアップします。 チームは、承認と次のステップを提供します。
+このプログラムへの参加を希望するパートナーは、連携したい他のパートナーを特定する必要があります。 [統合ソリューションの申請フォーム](https://go.microsoft.com/fwlink/?linkid=2172593)に入力する必要があります。 統合ソリューション プログラムのチームが申請を審査し、10 営業日以内にフォローアップします。 チームは、承認と次のステップを提供します。
 
 ## <a name="develop-an-integrated-solution"></a>統合ソリューションを開発する
 

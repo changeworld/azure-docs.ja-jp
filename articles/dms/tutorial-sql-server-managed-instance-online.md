@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 08/20/2021
-ms.openlocfilehash: 23b40998c3777a4d7d0e1d092a33d8e9b85b3d54
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 4c9028b559c537c0707b0ab3264fbfa11d26a350
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122970101"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128664112"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-managed-instance-online-using-dms"></a>チュートリアル:DMS を使用してオンラインで SQL Server を Azure SQL Managed Instance に移行する
 
@@ -109,7 +109,7 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 
 2. **[Azure Database Migration Service]** 画面で、 **[作成]** を選択します。
 
-    ![Azure Database Migration Service インスタンスを作成する](media/tutorial-sql-server-to-managed-instance-online/dms-create-service1.png)
+    ![Azure Database Migration Service インスタンスを作成する](media/tutorial-sql-server-to-managed-instance-online/dms-create-service-1.png)
 
 3. **[移行サービスの作成]** の [基本] 画面で、次の手順を実行します。
 
@@ -120,12 +120,12 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
      - サービス モードとして **[Azure]** を選択します。
      - Premium 価格レベルの SKU を選択します。 
      
-    > [!NOTE]
-    > オンライン移行は、Premium レベルを使用している場合にのみサポートされます。
+      > [!NOTE]
+      > オンライン移行は、Premium レベルを使用している場合にのみサポートされます。
 
      - コストと価格レベルの詳細については、[価格に関するページ](https://aka.ms/dms-pricing)を参照してください。
 
-    ![Azure Database Migration Service インスタンスの基本設定を構成する](media/tutorial-sql-server-to-managed-instance-online/dms-create-service2.png)
+    ![Azure Database Migration Service インスタンスの基本設定を構成する](media/tutorial-sql-server-to-managed-instance-online/dms-create-service-2.png)
 
      - **[次へ: ネットワーク]** を選択します。
 
@@ -137,7 +137,7 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
     
     - その他の詳細については、記事「[Azure Database Migration Service を使用して Azure SQL Managed Instance を移行するためのネットワーク トポロジ](./resource-network-topologies.md)」を参照してください。
 
-    ![Azure Database Migration Service インスタンスのネットワーク設定を構成する](media/tutorial-sql-server-to-managed-instance-online/dms-create-service3.png)
+      ![Azure Database Migration Service インスタンスのネットワーク設定を構成する](media/tutorial-sql-server-to-managed-instance-online/dms-create-service-3.png)
 
     - **[確認と作成]** を選択して詳細を確認し、 **[作成]** を選択してサービスを作成します。
 
@@ -153,11 +153,11 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 
 3. **[新しい移行プロジェクト]** を選択します。
 
-     ![Azure Database Migration Service のインスタンスを検索する](media/tutorial-sql-server-to-managed-instance-online/dms-create-project1.png)
+     ![Azure Database Migration Service のインスタンスを検索する](media/tutorial-sql-server-to-managed-instance-online/dms-create-project-1.png)
 
 4. **[新しい移行プロジェクト]** 画面でプロジェクトの名前を指定し、**[Source server type]\(ソース サーバーの種類\)** ボックスで **[SQL Server]** を選択した後、**[ターゲット サーバーの種類]** ボックスで **[Azure SQL Database Managed Instance]** を選択し、**[アクティビティの種類を選択します]** で **[オンライン データの移行]** を選択します。
 
-   ![Database Migration Service プロジェクトを作成する](media/tutorial-sql-server-to-managed-instance-online/dms-create-project2.png)
+   ![Database Migration Service プロジェクトを作成する](media/tutorial-sql-server-to-managed-instance-online/dms-create-project-2.png)
 
 5. **[アクティビティの作成と実行]** を選択してプロジェクトを作成し、移行アクティビティを実行します。
 
@@ -174,7 +174,7 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
     > [!CAUTION]
     > 自己署名証明書で暗号化されている TLS 接続のセキュリティは強力ではありません。 man-in-the-middle (中間者) 攻撃を受ける可能性が高くなります。 実稼働環境やインターネットに接続しているサーバーでは、自己署名証明書を使用した TLS 接続は使用しないでください。
 
-   ![ソースの詳細](media/tutorial-sql-server-to-managed-instance-online/dms-source-details.png)
+    ![ソースの詳細](media/tutorial-sql-server-to-managed-instance-online/dms-source-details.png)
 
 3. **[次へ: ターゲットの選択]** を選択します。
 
@@ -198,10 +198,10 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 
 1. **[データベースの選択]** 画面で、移行するソース データベースを選択します。
 
-   ![ソース データベースを選択する](media/tutorial-sql-server-to-managed-instance-online/dms-source-database.png)
+  ![ソース データベースを選択する](media/tutorial-sql-server-to-managed-instance-online/dms-source-database.png)
 
-> [!IMPORTANT]
-> SQL Server Integration Services (SSIS) を使用する場合、DMS では現在、SQL Server から SQL Managed Instance への SSIS プロジェクトまたはパッケージ (SSISDB) 用のカタログ データベースの移行がサポートされていません。 ただし、Azure Data Factory (ADF) に SSIS をプロビジョニングした後、SQL Managed Instance によってホストされている移行先 SSISDB に SSIS プロジェクトまたはパッケージを再デプロイすることはできます。 SSIS パッケージの移行の詳細については、記事「[SQL Server Integration Services パッケージを Azure に移行する](./how-to-migrate-ssis-packages.md)」を参照してください。
+  > [!IMPORTANT]
+  > SQL Server Integration Services (SSIS) を使用する場合、DMS では現在、SQL Server から SQL Managed Instance への SSIS プロジェクトまたはパッケージ (SSISDB) 用のカタログ データベースの移行がサポートされていません。 ただし、Azure Data Factory (ADF) に SSIS をプロビジョニングした後、SQL Managed Instance によってホストされている移行先 SSISDB に SSIS プロジェクトまたはパッケージを再デプロイすることはできます。 SSIS パッケージの移行の詳細については、記事「[SQL Server Integration Services パッケージを Azure に移行する](./how-to-migrate-ssis-packages.md)」を参照してください。
 
 2. **[次へ: 移行の設定の構成]** を選択します。
 

@@ -9,12 +9,12 @@ ms.subservice: ip-services
 ms.topic: conceptual
 ms.date: 07/13/2021
 ms.author: allensu
-ms.openlocfilehash: f4c06fb4c97ea38c494f18e5bf72e9eb015299a8
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: 0ca1f0ee6bcac39f0f73286fe8c426be9447c345
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122515797"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124754455"
 ---
 # <a name="default-outbound-access-in-azure"></a>Azure での既定の送信アクセス
 
@@ -62,7 +62,7 @@ Azure に仮想マシンをデプロイし、それが明示的な送信接続�
 
 2.  仮想マシン スケール セットのフレキシブル オーケストレーション モードを使用する。
 
-    * フレキシブル スケール セットは、既定でセキュリティによって保護されています。 フレキシブル スケール セットを使用して作成されたインスタンスには、既定の送信アクセス IP は関連付けされません。 詳細については、[仮想マシン スケール セットのフレキシブル オーケストレーション モード](https://aka.ms/vmssflex/docs)に関するページをご覧ください。
+    * フレキシブル スケール セットは、既定でセキュリティによって保護されています。 フレキシブル スケール セットを使用して作成されたインスタンスには、既定の送信アクセス IP は関連付けされません。 詳細については、[仮想マシン スケール セットのフレキシブル オーケストレーション モード](../virtual-machines/flexible-virtual-machine-scale-sets.md)に関するページをご覧ください。
 
 ## <a name="if-i-need-outbound-access-what-is-the-recommended-way"></a>送信アクセスが必要な場合に、推奨される方法
 

@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: db5cb2f6bc8b4ca3eed802552fe86830b9f1723f
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 6277e42daf370cef65724f8958a9851ecd51d57c
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123259576"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129216747"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux-smb"></a>Linux での Azure Files に関する問題のトラブルシューティング (SMB)
 
@@ -40,7 +40,6 @@ ms.locfileid: "123259576"
 - クライアントに SMB ユーティリティ (cifs-utils) がインストールされていません。
 - SMB の最小バージョン 2.1 がクライアントで利用できません。
 - SMB 3.x 暗号化がクライアントでサポートされていません。 上記の表では、暗号化を使用してオンプレミスや複数のリージョンにまたがるマウントをサポートする Linux ディストリビューションの一覧を示しています。 他のディストリビューションの場合は、カーネル 4.11 以降のバージョンが必要です。
-- サポートされていない TCP ポート 445 経由でストレージ アカウントに接続しようとしています。
 - Azure VM から Azure ファイル共有に接続しようとしていますが、VM はストレージ アカウントと同じリージョンにありません。
 - [[安全な転送が必須]](../common/storage-require-secure-transfer.md) 設定がストレージ アカウントで有効になっている場合、Azure Files は暗号化付き SMB 3.x を使った接続のみを許可します。
 

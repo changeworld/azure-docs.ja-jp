@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/19/2021
 ms.author: jeedes
-ms.openlocfilehash: 0367581d17545b3334865bae4c74fb095a210664
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 86538e75480d89d2bc4b87d037dcea8f4b62cc49
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101644838"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124816997"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-condeco"></a>チュートリアル: Azure Active Directory と Condeco の統合
 
@@ -131,7 +131,7 @@ Condeco に対する Azure AD SSO を構成してテストするには、次の�
 
 * Condeco のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Condeco] タイルをクリックすると、SSO を設定した Condeco に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Condeco] タイルをクリックすると、SSO を設定した Condeco に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

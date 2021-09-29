@@ -1,20 +1,20 @@
 ---
 title: 仮想マシン用 Azure 専用ホストの概要
 description: Azure 専用ホストを使用して仮想マシンをデプロイする方法の詳細について説明します。
-author: cynthn
+author: brittanyrowe
 ms.service: virtual-machines
 ms.subservice: dedicated-hosts
 ms.topic: conceptual
 ms.workload: infrastructure
 ms.date: 12/07/2020
-ms.author: cynthn
-ms.reviewer: zivr
-ms.openlocfilehash: 957bc2f34ddbc1af019afe0154d3a27ca6e3e368
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.author: brittanyrowe
+ms.reviewer: brittanyrowe
+ms.openlocfilehash: 6e34d5c638c8501840c9ef8d9bbaf22ae2874ff1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123451567"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128557100"
 ---
 # <a name="azure-dedicated-hosts"></a>Azure 専用ホスト
 
@@ -80,7 +80,6 @@ Azure で VM を作成するときに、使用する専用ホストを選択で�
 
 VM の自動配置を使用する場合の既知の問題と制限事項:
 
-- 専用ホストに Azure ハイブリッド特典を適用することはできません。
 - VM を再デプロイすることはできません。
 - 専用ホストで Lsv2、NVasv4、NVsv3、Msv2、または M シリーズの VM を使用することはできません
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/15/2021
 ms.author: v-erkel
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: eb7d88424a04754612f981d58e8e1d6cb85ce0fb
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: b7789af76572eeaa3dfdfe4c6ff379889341033e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122770592"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128557462"
 ---
 # <a name="create-an-azure-hpc-cache"></a>Azure HPC キャッシュを作成する
 
@@ -163,7 +163,7 @@ Azure HPC Cache では、キャッシュ ヒット率を最大限に高めるた
 * Azure リージョン
 * キャッシュのサブネット (次の形式):
 
-  ``--subnet "/subscriptions/<subscription_id>/resourceGroups/<cache_resource_group>/providers/Microsoft.Network/virtualNetworks/<virtual_network_name>/subnets/<cache_subnet_name>"``
+  `--subnet "/subscriptions/<subscription_id>/resourceGroups/<cache_resource_group>/providers/Microsoft.Network/virtualNetworks/<virtual_network_name>/subnets/<cache_subnet_name>"`
 
   キャッシュのサブネットには少なくとも 64 個の IP アドレス (/24) が必要で、そこに他のリソースを格納することはできません。
 
@@ -182,7 +182,7 @@ Azure HPC Cache では、キャッシュ ヒット率を最大限に高めるた
   | 6144 GB    | はい         | はい         | no          |
   | 12288 GB   | 可         | はい         | 可         |
   | 24576 GB   | Ｘ          | はい         | 可         |
-  | 49152 GB   | Ｘ          | いいえ          | はい         |
+  | 49152 GB   | Ｘ          | Ｘ          | はい         |
 
   キャッシュで 10 を超えるストレージ ターゲットを使用する場合は、SKU に対して使用可能なキャッシュの最大サイズ値を選択します。 これらの構成は、最大 20 のストレージ ターゲットをサポートします。
 
@@ -286,7 +286,7 @@ Install-Module -Name Az.HPCCache
   | 6144 GB    | はい         | はい         | no          |
   | 12,288 GB   | はい         | はい         | はい         |
   | 24,576 GB   | no          | はい         | はい         |
-  | 49,152 GB   | no          | いいえ          | 可         |
+  | 49,152 GB   | no          | Ｘ          | 可         |
 
   料金、スループット、およびワークフローに応じてキャッシュのサイズを適切に設定する方法については、ポータルの指示タブにある「**キャッシュ容量を設定する**」セクションを参照してください。
 

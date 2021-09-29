@@ -7,16 +7,16 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.author: shipatel
-author: shivp950
+ms.author: cgronlun
+author: cjgronlund
 ms.reviewer: larryfr
 ms.date: 05/11/2020
-ms.openlocfilehash: 8294ecb255578305c868188575d5fa33e3b29b42
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 0f5cdc9acd68f67c57027d6b68e6c79a8ab1a24e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107884518"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124767301"
 ---
 # <a name="trigger-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>Azure Machine Learning イベントに基づいてアプリケーション、プロセス、または CI/CD ワークフローをトリガーする (プレビュー)
 

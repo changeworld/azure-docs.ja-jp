@@ -14,12 +14,12 @@ ms.topic: troubleshooting
 ms.date: 07/15/2020
 ms.author: allensu
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6754ac10f614082f09a460b55dc712f5bc0c27be
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 2b4db3701ee5d66616d6e3888a12cb73232f62b5
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110702618"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128603089"
 ---
 # <a name="diagnostic-logs---azure-content-delivery-network"></a>診断ログ - Azure Content Delivery Network
 
@@ -196,12 +196,11 @@ Azure 診断ログでコア分析を確認し、1 つまたは複数の宛先に
 6.  各 Blob *PT1H.json* ファイルは、特定の CDN エンドポイントまたはカスタム ドメインについての 1 時間の分析ログを表します。
 7.  この JSON ファイルのコンテンツのスキーマは、コア分析ログのセクション スキーマに説明されています。
 
-
 #### <a name="blob-path-format"></a>BLOB パスの形式
 
-コア分析ログは、1 時間ごとに生成され、そのデータは 1 つの Azure BLOB 内に JSON ペイロードとして収集され、格納されます。 ストレージ エクスプローラー ツールは '/' をディレクトリの区切り記号と見なし、階層を表示します。 Azure BLOB へのパスは、階層構造が存在するかのように表示され、BLOB 名が示されます。 BLOB のこの名前は次の名前付け規則に従っています    
+コア分析ログは、1 時間ごとに生成され、そのデータは 1 つの Azure BLOB 内に JSON ペイロードとして収集され、格納されます。 ストレージ エクスプローラー ツールは '/' をディレクトリの区切り記号と見なし、階層を表示します。 Azure BLOB へのパスは、階層構造が存在するかのように表示され、BLOB 名が示されます。 BLOB のこの名前は次の名前付け規則に従っています
 
-```resourceId=/SUBSCRIPTIONS/{Subscription Id}/RESOURCEGROUPS/{Resource Group Name}/PROVIDERS/MICROSOFT.CDN/PROFILES/{Profile Name}/ENDPOINTS/{Endpoint Name}/ y={Year}/m={Month}/d={Day}/h={Hour}/m={Minutes}/PT1H.json```
+`resourceId=/SUBSCRIPTIONS/{Subscription Id}/RESOURCEGROUPS/{Resource Group Name}/PROVIDERS/MICROSOFT.CDN/PROFILES/{Profile Name}/ENDPOINTS/{Endpoint Name}/ y=/m=/d=/h=/m=/PT1H.json`
 
 **フィールドの説明:**
 

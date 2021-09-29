@@ -5,12 +5,12 @@ author: mumian
 ms.author: jgao
 ms.topic: conceptual
 ms.date: 06/01/2021
-ms.openlocfilehash: a367c643ea2780c081250ec35ebcb890fdfec24e
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 3058265fee62143f88bbd87e69c58dd4ff597920
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123427008"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124793799"
 ---
 # <a name="deploy-resources-with-bicep-and-azure-powershell"></a>Bicep と Azure PowerShell を使用してリソースをデプロイする
 
@@ -88,7 +88,7 @@ New-AzResourceGroupDeployment `
 
 ## <a name="deploy-remote-bicep-file"></a>リモートの Bicep ファイルをデプロイする
 
-現在、Azure PowerShell ではリモート Bicep ファイルのデプロイはサポートされていません。 [Bicep CLI](./install.md#development-environment) を使用して、Bicep ファイルを JSON テンプレートにコンパイルし、その JSON ファイルをリモートの場所に読み込みます。
+現在、Azure PowerShell ではリモート Bicep ファイルのデプロイはサポートされていません。 [Bicep CLI](./install.md#vs-code-and-bicep-extension) を使用して、Bicep ファイルを JSON テンプレートにコンパイルし、その JSON ファイルをリモートの場所に読み込みます。
 
 ## <a name="parameters"></a>パラメーター
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2021
 ms.author: yelevin
-ms.openlocfilehash: 6f261e69daa14e652d226c9b0d6402eb353c1744
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 71f127bd45c833205067256a2b23cdc72b2c3bfb
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123251885"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124784510"
 ---
 # <a name="get-cef-formatted-logs-from-your-device-or-appliance-into-azure-sentinel"></a>デバイスまたはアプライアンスの CEF 形式のログを Azure Sentinel に取得する
 
@@ -55,7 +55,7 @@ CEF データを Log Analytics に取り込むためには、Azure Sentinel ワ�
 
 - このワークスペースに対する読み取りおよび書き込みアクセス許可が必要です。
 
-- このワークスペースの共有キーに対する読み取りアクセス許可が必要です。 ワークスペース キーの詳細については、[こちら](../azure-monitor/platform/agent-windows.md#obtain-workspace-id-and-key)を参照してください。
+- このワークスペースの共有キーに対する読み取りアクセス許可が必要です。 ワークスペース キーの詳細については、[こちら](../azure-monitor/agents/agent-windows.md)を参照してください。
 
 ## <a name="designate-a-log-forwarder-and-install-the-log-analytics-agent"></a>ログ フォワーダーを指定し、Log Analytics エージェントをインストールする
 
@@ -117,7 +117,7 @@ Log Analytics で CEF イベントを検索するには、クエリ ウィンド
 
 Azure Sentinel ポータルにある、お使いの製品のデータ コネクタ ページの **[Next steps]\(次のステップ\)** タブで、特にその製品用に作成された便利なサンプル クエリ、ブック、および分析ルール テンプレートを見つけることができます。
 
-データが何も表示されない場合は、[CEF のトラブルシューティング](connect-cef-verify.md)に関するページを参照してください。
+データが何も表示されない場合は、[CEF のトラブルシューティング](./troubleshooting-cef-syslog.md)に関するページを参照してください。
 
 ### <a name="changing-the-source-of-the-timegenerated-field"></a>TimeGenerated フィールドのソースの変更
 

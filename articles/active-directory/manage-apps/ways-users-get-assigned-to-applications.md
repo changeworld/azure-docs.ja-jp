@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 01/07/2021
 ms.author: davidmu
 ms.reviewer: alamaral
-ms.openlocfilehash: 081ae6506949407c0cc5331abf542367f7cc4c84
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9f4e99c21ab0cba538021f416e058bdafd5c83b9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121738767"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124779352"
 ---
 # <a name="understand-how-users-are-assigned-to-apps-in-azure-active-directory"></a>Azure Active Directory でユーザーをアプリに割り当てる方法を理解する
 
@@ -34,8 +34,8 @@ ms.locfileid: "121738767"
   * クラウドで作成された[動的なセキュリティ グループ](../enterprise-users/groups-dynamic-membership.md)
   * クラウドで作成された Microsoft 365 グループ
   * [すべてのユーザー](../fundamentals/active-directory-groups-create-azure-portal.md) グループ
-* 管理者が [[アプリケーションのセルフ サービス アクセス]](./manage-self-service-access.md) を有効にして、**ビジネス承認なし** でユーザーが [マイ アプリ](../user-help/my-apps-portal-end-user-access.md)の **[アプリの追加]** 機能を使用してアプリケーションを追加することを許可します
-* 管理者が [[アプリケーションのセルフ サービス アクセス]](./manage-self-service-access.md) を有効にして、ユーザーが [マイ アプリ](../user-help/my-apps-portal-end-user-access.md)の **[アプリの追加]** 機能を使用してアプリケーションを追加することを許可しますが、**選択された一連のビジネス承認者からの事前の承認があった** 場合に限ります
+* 管理者が [[アプリケーションのセルフ サービス アクセス]](./manage-self-service-access.md) を有効にして、**ビジネス承認なし** でユーザーが [マイ アプリ](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)の **[アプリの追加]** 機能を使用してアプリケーションを追加することを許可します
+* 管理者が [[アプリケーションのセルフ サービス アクセス]](./manage-self-service-access.md) を有効にして、ユーザーが [マイ アプリ](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)の **[アプリの追加]** 機能を使用してアプリケーションを追加することを許可しますが、**選択された一連のビジネス承認者からの事前の承認があった** 場合に限ります
 * 管理者が [[セルフサービスによるグループ管理]](../enterprise-users/groups-self-service-management.md) を有効にして、アプリケーションが **ビジネス承認なし** で割り当てられているグループにユーザーが参加することを許可します。
 * 管理者が [[セルフサービスによるグループ管理]](../enterprise-users/groups-self-service-management.md) を有効にして、アプリケーションが割り当てられているグループにユーザーが参加することを許可しますが、**選択された一連のビジネス承認者からの事前の承認があった** 場合に限ります。
 * 管理者は、[Microsoft 365](https://products.office.com/) などのファースト パーティ アプリケーションのライセンスを直接ユーザーに割り当てます。

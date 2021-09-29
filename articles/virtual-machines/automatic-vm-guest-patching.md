@@ -3,18 +3,18 @@ title: Azure VM での VM ゲストの自動パッチ適用
 description: Azure の仮想マシンに自動的にパッチを適用する方法について説明します。
 author: mayanknayar
 ms.service: virtual-machines
-ms.subservice: automatic-guest-patching
+ms.subservice: maintenance
 ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 07/29/2021
 ms.author: manayar
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0043935f46698f694aa76aec816c8bf72a9ee098
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: a120914051f7da0ccbfffb2a7fda9ab8404e7a76
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122698170"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129216472"
 ---
 # <a name="preview-automatic-vm-guest-patching-for-azure-vms"></a>プレビュー: Azure VM での VM ゲストの自動パッチ適用
 

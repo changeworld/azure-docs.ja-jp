@@ -5,12 +5,12 @@ author: emaher
 ms.topic: article
 ms.date: 03/30/2021
 ms.author: enewman
-ms.openlocfilehash: dc0f2a4f51fb12c61d0e1e16cb23d030a5dc9cc6
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 86dd9290c640829049f4f6cb7b784aacba3cf7ce
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122969276"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124768745"
 ---
 # <a name="use-external-file-storage-in-lab-services"></a>Lab Services で 外部ファイル ストレージを使用する
 
@@ -188,11 +188,10 @@ Active Directory 認証に対して有効になっている Azure Files を作�
 
 Azure Lab Services で Azure NetApp Files 共有を使用するには、次の操作を行います。
 
-1. 必要に応じて、[Azure NetApp Files](https://aka.ms/azurenetappfiles) へのアクセス権を取得します。
-2. NetApp Files 容量プールと 1 つまたは複数の NFS ボリュームを作成するには、「[Azure NetApp Files を設定し、NFS ボリュームを作成する](../azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes.md)」を参照してください。 サービス レベルの詳細については、「[Azure NetApp Files のサービス レベル](../azure-netapp-files/azure-netapp-files-service-levels.md)」を参照してください。
-3. NetApp Files 容量プールの[仮想ネットワーク](how-to-connect-peer-virtual-network.md)をラボ アカウントにピアリングします。
-4. [クラスルーム ラボを作成します](how-to-manage-classroom-labs.md)。
-5. テンプレート VM で、NFS ファイル共有を使用するために必要なコンポーネントをインストールします。
+1. NetApp Files 容量プールと 1 つまたは複数の NFS ボリュームを作成するには、「[Azure NetApp Files を設定し、NFS ボリュームを作成する](../azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes.md)」を参照してください。 サービス レベルの詳細については、「[Azure NetApp Files のサービス レベル](../azure-netapp-files/azure-netapp-files-service-levels.md)」を参照してください。
+2. NetApp Files 容量プールの[仮想ネットワーク](how-to-connect-peer-virtual-network.md)をラボ アカウントにピアリングします。
+3. [クラスルーム ラボを作成します](how-to-manage-classroom-labs.md)。
+4. テンプレート VM で、NFS ファイル共有を使用するために必要なコンポーネントをインストールします。
     - Ubuntu:
 
         ```bash
@@ -206,7 +205,7 @@ Azure Lab Services で Azure NetApp Files 共有を使用するには、次の�
         sudo yum install nfs-utils
         ```
 
-6. テンプレート VM で、次のスクリプトを `mount_fileshare.sh` として保存して、[NetApp Files 共有をマウントします](../azure-netapp-files/azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)。 `capacity_pool_ipaddress` 変数に容量プールのマウント ターゲット IP アドレスを割り当てます。 ボリュームのマウント命令を取得して、適切な値を見つけます。 このスクリプトには、NetApp Files ボリュームのパス名が必要です。 ユーザーがスクリプトを実行できるようにするには、`chmod u+x mount_fileshare.sh` を実行します。
+5. テンプレート VM で、次のスクリプトを `mount_fileshare.sh` として保存して、[NetApp Files 共有をマウントします](../azure-netapp-files/azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)。 `capacity_pool_ipaddress` 変数に容量プールのマウント ターゲット IP アドレスを割り当てます。 ボリュームのマウント命令を取得して、適切な値を見つけます。 このスクリプトには、NetApp Files ボリュームのパス名が必要です。 ユーザーがスクリプトを実行できるようにするには、`chmod u+x mount_fileshare.sh` を実行します。
 
     ```bash
     #!/bin/bash
@@ -230,10 +229,10 @@ Azure Lab Services で Azure NetApp Files 共有を使用するには、次の�
     sudo bash -c "echo ""$capacity_pool_ipaddress:/$volume_name /$mount_directory/$volume_name nfs bg,rw,hard,noatime,nolock,rsize=65536,wsize=65536,vers=3,tcp,_netdev 0 0"" >> /etc/fstab"
     ```
 
-7. すべての学生が同じ NetApp Files ボリュームへのアクセスを共有している場合は、発行の前にテンプレート マシンで `mount_fileshare.sh` スクリプトを実行できます。 学生がそれぞれ独自のボリュームを取得する場合は、スクリプトを保存して、後で学生が実行できるようにします。
-8. テンプレート VM を[発行](how-to-create-manage-template.md#publish-the-template-vm)します。
-9. ファイル共有の[ポリシーを構成](../azure-netapp-files/azure-netapp-files-configure-export-policy.md)します。 エクスポート ポリシーでは、単一の VM または複数の VM がボリュームにアクセスすることを許可できます。 読み取り専用または読み取り/書き込みアクセス権を付与できます。
-10. 学生は VM を起動し、スクリプトを実行してファイル共有をマウントする必要があります。 スクリプトを実行する必要があるのは 1 回だけです。 コマンドは次のようになります: `./mount_fileshare.sh myvolumename`。
+6. すべての学生が同じ NetApp Files ボリュームへのアクセスを共有している場合は、発行の前にテンプレート マシンで `mount_fileshare.sh` スクリプトを実行できます。 学生がそれぞれ独自のボリュームを取得する場合は、スクリプトを保存して、後で学生が実行できるようにします。
+7. テンプレート VM を[発行](how-to-create-manage-template.md#publish-the-template-vm)します。
+8. ファイル共有の[ポリシーを構成](../azure-netapp-files/azure-netapp-files-configure-export-policy.md)します。 エクスポート ポリシーでは、単一の VM または複数の VM がボリュームにアクセスすることを許可できます。 読み取り専用または読み取り/書き込みアクセス権を付与できます。
+9. 学生は VM を起動し、スクリプトを実行してファイル共有をマウントする必要があります。 スクリプトを実行する必要があるのは 1 回だけです。 コマンドは次のようになります: `./mount_fileshare.sh myvolumename`。
 
 ## <a name="next-steps"></a>次のステップ
 

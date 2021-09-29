@@ -12,12 +12,12 @@ ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: has-adal-ref
-ms.openlocfilehash: 16761e71cdb3b87454bc8409fa8896d13779f66d
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: 9a21ae719a6e89819cb6841f69ff48e17cc0bec6
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122419264"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124779523"
 ---
 # <a name="using-azure-ad-application-proxy-to-publish-on-premises-apps-for-remote-users"></a>Azure AD アプリケーション プロキシを使用してリモート ユーザー向けにオンプレミス アプリを発行する
 
@@ -77,7 +77,7 @@ Azure AD はアプリケーション プロキシを使用して、オンプレ�
 
 この機能のコンポーネントには、クラウドで実行するアプリケーション プロキシ サービス、オンプレミスのサーバーで実行する軽量エージェントのアプリケーション プロキシ コネクタ、および ID プロバイダーの Azure AD が含まれます。 これら 3 つのコンポーネントがすべて連携し、オンプレミス Web アプリケーションにアクセスするためのシングル サインオン エクスペリエンスがユーザーに提供されます。
 
-外部ユーザーは、サインイン後、使い慣れた URL を使用するか、自分のデスクトップまたは iOS/MAC デバイスの[マイ アプリ](../user-help/my-apps-portal-end-user-access.md)から、オンプレミス Web アプリケーションにアクセスできます。 たとえば、アプリケーション プロキシでは、リモート デスクトップ、SharePoint サイト、Tableau、Qlik、Outlook on the web、および基幹業務 (LOB) アプリケーションへのリモート アクセスとシングル サインオンを提供できます。
+外部ユーザーは、サインイン後、使い慣れた URL を使用するか、自分のデスクトップまたは iOS/MAC デバイスの[マイ アプリ](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)から、オンプレミス Web アプリケーションにアクセスできます。 たとえば、アプリケーション プロキシでは、リモート デスクトップ、SharePoint サイト、Tableau、Qlik、Outlook on the web、および基幹業務 (LOB) アプリケーションへのリモート アクセスとシングル サインオンを提供できます。
 
 ![Azure AD アプリケーション プロキシのアーキテクチャ](media/what-is-application-proxy/azure-ad-application-proxy-architecture.png)
 

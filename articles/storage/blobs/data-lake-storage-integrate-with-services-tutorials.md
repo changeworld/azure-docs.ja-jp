@@ -7,20 +7,20 @@ ms.author: normesta
 ms.date: 02/17/2021
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: b67c3ccebefc178ddebc2b4a7fd49043bc0776b8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: bbe99ced7a4d0110ac9ff709201a16017b45ec15
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101735422"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128562478"
 ---
 # <a name="tutorials-that-use-azure-services-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 で Azure サービスを使用するチュートリアル
 
-この記事には、Data Lake Storage Gen2 でさまざまな Azure サービスを使用する方法を示すチュートリアルへのリンクが含まれています。 
+この記事には、Data Lake Storage Gen2 でさまざまな Azure サービスを使用する方法を示すチュートリアルへのリンクが含まれています。
 
 ## <a name="list-of-tutorials"></a>チュートリアルの一覧
 
-| Azure サービス | ステップバイステップ ガイド | 
+| Azure サービス | ステップバイステップ ガイド |
 |---------------|-------------------|
 | Azure Synapse Analytics | [Azure Synapse Analytics の使用を開始する](../../synapse-analytics/get-started.md) |
 | Azure Data Factory | [Load data into Azure Data Lake Storage Gen2 with Azure Data Factory (Azure Data Factory を使用して Azure Data Lake Storage Gen2 内にデータを読み込む)](../../data-factory/load-azure-data-lake-storage-gen2.md) |

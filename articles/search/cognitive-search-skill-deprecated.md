@@ -6,13 +6,13 @@ author: LiamCavanagh
 ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: b44ba49fea555652bdf513e40c3e030ec5862cf5
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/16/2021
+ms.openlocfilehash: 884d5cd8d2a1318162a09a39a7ef03bb8b8f612e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121751864"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128631744"
 ---
 # <a name="deprecated-cognitive-skills-in-azure-cognitive-search"></a>Azure Cognitive Search の非推奨のコグニティブ スキル
 

@@ -3,16 +3,17 @@ title: オンプレミスの HDFS からデータを移動する
 description: Azure Data Factory を使用してオンプレミスの HDFS からデータを移動する方法を説明します。
 author: linda33wj
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 52e176e0fed85b649d482614667d695db539e5d1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2e514903a3c89790a6b0bb85d37a530e13b07d8c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100383077"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128580910"
 ---
 # <a name="move-data-from-on-premises-hdfs-using-azure-data-factory"></a>Azure Data Factory を使用してオンプレミスの HDFS からデータを移動する
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -467,7 +468,7 @@ HDFS コネクタで Kerberos 認証を使用するようにオンプレミス�
 
    3. KDC に接続するときに使用する暗号化アルゴリズムを選択します。 通常は、単純にすべてのオプションを選択できます。
 
-      ![Kerberos での暗号化の種類の構成](media/data-factory-hdfs-connector/config-encryption-types-for-kerberos.png)
+      :::image type="content" source="media/data-factory-hdfs-connector/config-encryption-types-for-kerberos.png" alt-text="Kerberos での暗号化の種類の構成":::
 
    4. **Ksetup** コマンドを使用して、特定の領域で使用される暗号化アルゴリズムを指定します。
 
@@ -485,7 +486,7 @@ HDFS コネクタで Kerberos 認証を使用するようにオンプレミス�
 
    4. 領域からプリンシパルを追加します。
 
-      ![マップ セキュリティ ID](media/data-factory-hdfs-connector/map-security-identity.png)
+      :::image type="content" source="media/data-factory-hdfs-connector/map-security-identity.png" alt-text="マップ セキュリティ ID":::
 
 **ゲートウェイ コンピューターで以下を実行します。**
 

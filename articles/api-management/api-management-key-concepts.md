@@ -3,7 +3,7 @@ title: Azure API Management の概要と主な概念 | Microsoft Docs
 description: API、成果物、ロール、グループ、その他 API Management の重要概念について説明します。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 manager: erikre
 editor: ''
 ms.service: api-management
@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: overview
 ms.date: 11/15/2017
-ms.author: apimpm
+ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 3258bc59146d6e5fbdb3532005d9b9da5334af5c
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 9c0cef1c451183c2f5d31f086d2612bf47ab3f7b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114468537"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128658984"
 ---
 # <a name="about-api-management"></a>API Management について
 

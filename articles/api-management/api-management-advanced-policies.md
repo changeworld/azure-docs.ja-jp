@@ -1,17 +1,17 @@
 ---
 title: Azure API Management の高度なポリシー | Microsoft Docs
 description: Azure API Management で使用できる高度なポリシーについて説明します。 例を参照し、使用可能なその他のリソースを確認します。
-author: vladvino
+author: dlepow
 ms.topic: article
 ms.date: 07/19/2021
 ms.service: api-management
-ms.author: apimpm
-ms.openlocfilehash: 274c4d55955bb3ee7c95fc755660cb67de3bbbd3
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.author: danlep
+ms.openlocfilehash: 056b757b2902889d94ba380dffdd1668de95f892
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114467624"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128643367"
 ---
 # <a name="api-management-advanced-policies"></a>API Management の高度なポリシー
 
@@ -409,14 +409,14 @@ ms.locfileid: "114467624"
 ### <a name="attributes"></a>属性
 
 #### <a name="emit-metric"></a>emit-metric
-| 属性 | 説明                | 必須 | Type               | 既定値  |
+| 属性 | 説明                | 必須 | 種類               | 既定値  |
 | --------- | -------------------------- | -------- | ------------------ | -------------- |
 | name      | カスタム メトリックの名前。      | はい      | 文字列、式 | 該当なし            |
 | namespace | カスタム メトリックの名前空間。 | いいえ       | 文字列、式 | API Management |
 | 値     | カスタム メトリックの値。    | いいえ       | 整数、式    | 1              |
 
 #### <a name="dimension"></a>ディメンション
-| 属性 | 説明                | 必須 | Type               | 既定値  |
+| 属性 | 説明                | 必須 | 種類               | 既定値  |
 | --------- | -------------------------- | -------- | ------------------ | -------------- |
 | name      | ディメンションの名前。      | はい      | 文字列、式 | 該当なし            |
 | value     | ディメンションの値。 省略できるのは、`name` が既定のディメンションのいずれかと一致する場合のみです。 その場合、ディメンション名に従って値が指定されます。 | いいえ       | 文字列、式 | 該当なし |

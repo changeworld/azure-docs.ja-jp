@@ -6,12 +6,12 @@ ms.author: v-ekrieg
 ms.topic: tutorial
 ms.date: 07/27/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: dd4500940b7a7b009e8cfb8acfb0411f2ade3023
-ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
+ms.openlocfilehash: 506af89773f9639df2bd3fcc07a204531d0dcf6e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114719941"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124748995"
 ---
 # <a name="tutorial-integrate-servicenow-with-azure-defender-for-iot"></a>チュートリアル: ServiceNow を Azure Defender for IoT と統合する
 
@@ -224,7 +224,7 @@ Defender for IoT では、統合に使用する規定のポートの変更を有
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、ServiceNow 統合の使用を開始する方法を学習しました。 [Cisco 統合](integration-cisco-ise-pxgrid.md)の詳細については、続行してください。
+このチュートリアルでは、ServiceNow 統合の使用を開始する方法を学習しました。 [Cisco 統合](./integration-forescout.md)の詳細については、続行してください。
 
 > [!div class="nextstepaction"]
-> [次のステップのボタン](integration-cisco-ise-pxgrid.md)
+> [次のステップのボタン](./integration-forescout.md)

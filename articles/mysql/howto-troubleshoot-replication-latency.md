@@ -7,12 +7,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 01/13/2021
-ms.openlocfilehash: 44752024c8bd2ddbceed1495067260bce3ce0037
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: fc206254180e2b5b35f10538bfb4940970b1609e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113088388"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128560809"
 ---
 # <a name="troubleshoot-replication-latency-in-azure-database-for-mysql"></a>Azure Database for MySQL のレプリケーション待ち時間のトラブルシューティング
 
@@ -32,7 +32,7 @@ ms.locfileid: "113088388"
 この記事では、Azure Database for MySQL でレプリケーション待機時間のトラブルシューティングを行う方法について説明します。 レプリカ サーバーでレプリケーション待機時間が長くなるいくつかの一般的な原因についても説明します。
 
 > [!NOTE]
-> この記事には、Microsoft が使用しなくなった "_スレーブ_" という用語への言及が含まれています。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
+> この記事には、Microsoft が使用しなくなった "*スレーブ*" という用語への言及が含まれています。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
 >
 
 ## <a name="replication-concepts"></a>レプリケーションの概念

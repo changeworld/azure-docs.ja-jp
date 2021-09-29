@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 12/18/2020
 ms.author: mbaldwin
-ms.openlocfilehash: f6d467b2480ded274699e7274edcf745eaa4980a
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 11df80fc8c418c76750f4fedb8a4116999800ecf
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111748483"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129058512"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault のログ記録
 

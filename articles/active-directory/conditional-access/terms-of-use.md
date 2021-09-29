@@ -8,15 +8,15 @@ ms.topic: how-to
 ms.date: 07/12/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9afabe40426a5e86fdd3c6ef76969e1392a9b051
-ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
+ms.openlocfilehash: 9f34d031bafd801cf068d19a4885bb9a818885c7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113649589"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128561919"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Azure Active Directory Terms of Use
 
@@ -305,7 +305,7 @@ ToU 言語を追加する方法を次の手順で説明します。
 
 ### <a name="join-a-windows-10-device"></a>Windows 10 デバイスを参加させる
 
-ユーザーが Windows 10 と Microsoft Edge を使用している場合、[デバイスを参加させる](../user-help/user-help-join-device-on-network.md#to-join-an-already-configured-windows-10-device)ための次のようなメッセージを受信します。
+ユーザーが Windows 10 と Microsoft Edge を使用している場合、[デバイスを参加させる](https://support.microsoft.com/account-billing/join-your-work-device-to-your-work-or-school-network-ef4d6adb-5095-4e51-829e-5457430f3973#to-join-an-already-configured-windows-10-device)ための次のようなメッセージを受信します。
 
 ![Windows 10 および Microsoft Edge - デバイスを登録する必要があることを示すメッセージ](./media/terms-of-use/per-device-win10-edge.png)
 

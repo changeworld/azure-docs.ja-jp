@@ -8,12 +8,12 @@ ms.author: meiyl
 author: meiyl
 ms.reviewer: sawinark
 ms.date: 06/21/2021
-ms.openlocfilehash: 1d501a461caab23fb45441473fda60e13c7e8334
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e1d1b8a876d55698db83b0c7d331f45797c3c1b3
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121732999"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124743184"
 ---
 # <a name="use-the-diagnose-connectivity-feature-in-the-ssis-integration-runtime"></a>SSIS 統合ランタイムで接続の診断機能を使用する
 
@@ -23,9 +23,9 @@ SSIS 統合ランタイムで SQL Server Integration Services (SSIS) パッケ�
 
 接続をテストするための "*接続の診断*" 機能を使用して、接続の問題をトラブルシューティングします。 この機能は、Azure Data Factory ポータルの SSIS 統合ランタイムの監視ページにあります。
 
- ![監視ページ - 接続の診断](media/ssis-integration-runtime-diagnose-connectivity-faq/ssis-monitor-diagnose-connectivity.png)
+ :::image type="content" source="media/ssis-integration-runtime-diagnose-connectivity-faq/ssis-monitor-diagnose-connectivity.png" alt-text="監視ページ - 接続の診断":::
 
- ![監視ページ - 接続のテスト](media/ssis-integration-runtime-diagnose-connectivity-faq/ssis-monitor-test-connection.png)
+ :::image type="content" source="media/ssis-integration-runtime-diagnose-connectivity-faq/ssis-monitor-test-connection.png" alt-text="監視ページ - 接続のテスト":::
 
 以降のセクションでは、接続をテストしているときに発生する最も一般的なエラーについて説明します。 各セクションでは、次のことについて説明します。
 

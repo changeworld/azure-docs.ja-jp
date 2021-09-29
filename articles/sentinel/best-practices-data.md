@@ -8,12 +8,12 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 07/21/2021
-ms.openlocfilehash: 35b29ae6116e2e040f2383606fa20c5ab6316315
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 7c29ae41acd800a3e8893ec50ef25cb77c89fe04
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123253471"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124810162"
 ---
 #  <a name="data-collection-best-practices"></a>データ収集のベスト プラクティス
 
@@ -99,7 +99,7 @@ EDR、その他のセキュリティ イベント、Sysmon などのエンドポ
 
 |課題/要件  |考えられる解決策  |考慮事項  |
 |---------|---------|---------|
-|**Teams、メッセージ トレース、フィッシング データなどから生データを収集する**     |    組み込みの [Office 365 コネクタ](connect-office-365.md)機能を使用し、次に、その他の生データ用のカスタム コネクタを作成する。  |  イベントを対応する recordID にマッピングすることが困難な場合があります。  |
+|**Teams、メッセージ トレース、フィッシング データなどから生データを収集する**     |    組み込みの [Office 365 コネクタ](./data-connectors-reference.md#microsoft-office-365)機能を使用し、次に、その他の生データ用のカスタム コネクタを作成する。  |  イベントを対応する recordID にマッピングすることが困難な場合があります。  |
 |**国や部門などを分割するための RBAC が必要**     | データにタグを追加し、必要な分離ごとに専用のワークスペースを作成することによって、データ収集をカスタマイズする。|   カスタム データ収集には余分なインジェスト コストがかかります。     |
 |**1 つのワークスペースに複数のテナントが必要**     |  Azure LightHouse と統合されたインシデント ビューを使用して、データ収集をカスタマイズする。|  カスタム データ収集には余分なインジェスト コストがかかります。  <br><br>詳細については、「[ワークスペースおよびテナント全体での Azure Sentinel の拡張](extend-sentinel-across-workspaces-tenants.md)」を参照してください。      |
 | | | |

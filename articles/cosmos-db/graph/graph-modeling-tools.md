@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/25/2021
 ms.reviewer: sngun
-ms.openlocfilehash: 9d603de7ae8f011ac2ae2ed96d61efb571bdcf64
-ms.sourcegitcommit: c2f0d789f971e11205df9b4b4647816da6856f5b
+ms.openlocfilehash: 224465fe282b086c2158f4d81ee67e5bf7cedc09
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122662357"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124771785"
 ---
 # <a name="third-party-data-modeling-tools-for-azure-cosmos-db-graph-data"></a>Azure Cosmos DB グラフ データのサードパーティー製データ モデリング ツール
 
@@ -57,5 +57,5 @@ SQL Server としてのソースのサンプル DDL は、[こちら](https://gi
 -  [その他のデータ モデルを取得する](https://hackolade.com/samplemodels.html#cosmosdb)。
 -  [Hackolade のドキュメント](https://hackolade.com/help/CosmosDBGremlin.html)
 
-## <a name="next-steps"></a>次の手順
-- [データの視覚化](/azure/cosmos-db/graph/graph-visualization-partners)
+## <a name="next-steps"></a>次のステップ
+- [データの視覚化](./graph-visualization-partners.md)

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/11/2021
 ms.author: ofshezaf
-ms.openlocfilehash: 5474dbce356ab8bb4b07ffcc5bd9facadd7134e0
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 828524e225f660cab2c11d23c5657ca82ae8781e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123430038"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124796516"
 ---
 # <a name="azure-sentinel-information-model-asim-schemas-public-preview"></a>Azure Sentinel 情報モデル (ASIM) スキーマ (パブリック プレビュー)
 
@@ -85,8 +85,8 @@ ms.locfileid: "123430038"
 | <a name="timegenerated"></a>**TimeGenerated** | 組み込み | DATETIME | イベントがレポート デバイスによって生成された時刻。|
 | **_ResourceId**   | 組み込み |  guid     | レポート デバイスまたはサービスの Azure リソース ID。Syslog、CEF、WEF を使用して転送されたイベントの場合はログ フォワーダー リソース ID。 |
 | **Type** | 組み込み | String | レコードがフェッチされた元のテーブル。 このフィールドは、同じイベントを異なるテーブルに対して 2 つのチャネルを通じて受信できるが、同じ `EventVendor` と `EventProduct` を持つ場合に便利です。 たとえば、Sysmon イベントは、イベント テーブルまたは SecurityEvent テーブルのいずれかに収集できます。 |
-| **EventMessage**        | 省略可能    | String     |     レコードに含まれるか、レコードから生成された一般的なメッセージまたは説明です。   |
-| **EventCount**          | Mandatory   | 整数型    |     レコードによって記述されるイベントの数。 <br><br>この値は、ソースが集計に対応しており、1 つのレコードが複数のイベントを表す場合があるときに使用されます。 <br><br>その他のソースの場合は、`1` に設定します。   |
+| **EventMessage**        | 省略可能    | String     |     レコードに含まれるか、レコードから生成された一般的なメッセージまたは説明。   |
+| **EventCount**          | Mandatory   | Integer    |     レコードによって記述されるイベントの数。 <br><br>この値は、ソースが集計に対応しており、1 つのレコードが複数のイベントを表す場合があるときに使用されます。 <br><br>その他のソースの場合は、`1` に設定します。   |
 | **EventStartTime**      | Mandatory   | 日付/時刻  |      ソースが集計に対応しており、レコードが複数のイベントを表す場合、このフィールドでは最初にイベントが生成された時間を指定します。 <br><br>それ以外の場合、このフィールドは [TimeGenerated](#timegenerated) フィールドの別名になります。 |
 | **EventEndTime**        | Mandatory   | エイリアス      |      [TimeGenerated](#timegenerated) フィールドの別名。    |
 |  <a name=eventtype></a>**EventType**           | Mandatory   | Enumerated |    レコードによってレポートされる操作を記述します。 各スキーマには、このフィールドに対して有効な値の一覧が文書化されています。 |
@@ -111,7 +111,7 @@ ms.locfileid: "123430038"
 | | | | |
 
 > [!NOTE]
-> Log Analytics では、セキュリティのユース ケースとあまり関連しない他のフィールドも追加します。 詳細については、「[Azure Monitor ログ内の標準列](/azure/azure-monitor/logs/log-standard-columns)」を参照してください。
+> Log Analytics では、セキュリティのユース ケースとあまり関連しない他のフィールドも追加します。 詳細については、「[Azure Monitor ログ内の標準列](../azure-monitor/logs/log-standard-columns.md)」を参照してください。
 >
 
 
@@ -252,11 +252,11 @@ ms.locfileid: "123430038"
 | | | | |
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 この記事では、Azure Sentinel での正規化の概要と、Azure Sentinel 情報モデルについて説明しています。
 
-詳細については次を参照してください:
+詳細については、次を参照してください。
 
 - [Azure Sentinel 情報モデルの概要](normalization.md)
 - [Azure Sentinel 情報モデル パーサー](normalization-about-parsers.md)

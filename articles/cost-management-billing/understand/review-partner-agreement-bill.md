@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: tutorial
-ms.date: 08/20/2020
+ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: 9e5ecc67fe86afa15c66d175f0705818154588bf
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: a7c67b364fba771ad485eee8b93a62b9bdabc841
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684356"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128643044"
 ---
 # <a name="tutorial-review-your-microsoft-partner-agreement-invoice"></a>チュートリアル:Microsoft Partner Agreement の請求書を確認する
 
@@ -89,7 +89,7 @@ Azure portal の検索ボックスで「*コストの管理と請求*」と入�
 
 ページの左側から **[すべてのトランザクション]** を選択します。
 
-*保留中*を検索します。 **Timespan** フィルターを使用して、当月または先月の保留中の料金を表示します。
+*保留中* を検索します。 **Timespan** フィルターを使用して、当月または先月の保留中の料金を表示します。
 
 <!-- ![Screenshot that shows the pending transactions list](./media/billing-mpa-understand-your-bill/mpa-billing-profile-pending-transactions.png) -->
 

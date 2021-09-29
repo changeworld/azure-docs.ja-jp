@@ -3,7 +3,7 @@ title: Azure API Management のクロス ドメイン ポリシー | Microsoft D
 description: Azure API Management で使用できるクロス ドメイン ポリシーについて説明します。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 manager: erikre
 editor: ''
 ms.assetid: 7689d277-8abe-472a-a78c-e6d4bd43455d
@@ -12,13 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/01/2021
-ms.author: apimpm
-ms.openlocfilehash: 6f074ff389971fa56da7838a9a46ec5c4d42dc5a
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.author: danlep
+ms.openlocfilehash: d5f15b6d3ba1b006c3495c6c7db693814f68a823
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107739100"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128601047"
 ---
 # <a name="api-management-cross-domain-policies"></a>API Management cross domain policies (API Management のクロス ドメイン ポリシー)
 このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](./api-management-policies.md)」をご覧ください。

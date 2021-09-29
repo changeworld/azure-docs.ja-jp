@@ -2,14 +2,14 @@
 title: Azure Database for PostgreSQL のバックアップ
 description: 長期保有を指定した Azure Database for PostgreSQL のバックアップ (プレビュー) について説明します。
 ms.topic: conceptual
-ms.date: 09/01/2021
+ms.date: 09/06/2021
 ms.custom: references_regions , devx-track-azurecli
-ms.openlocfilehash: ac7790cd823bbca4ca7580bc5b3c5edee6f45f96
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 1896f836d9eeb2f4d32e4b0784424837a2f80d0c
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123432686"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129081835"
 ---
 # <a name="azure-database-for-postgresql-backup-with-long-term-retention-preview"></a>長期保有を指定した Azure Database for PostgreSQL のバックアップ (プレビュー)
 
@@ -67,7 +67,7 @@ Azure Backup は、厳密なセキュリティ ガイドラインに準拠して
 
 8. データ転送が完了すると、コーディネーターはバックアップ サービスを使用してコミットを確認します。
 
-    ![バックアップ プロセス](./media/backup-azure-database-postgresql/backup-process.png)
+    ![バックアップ プロセス](./media/backup-azure-database-postgresql-overview/backup-process.png)
 
 ## <a name="configure-backup-on-azure-postgresql-databases"></a>Azure PostgreSQL データベースでバックアップを構成する
 
@@ -162,21 +162,22 @@ Azure Backup は、厳密なセキュリティ ガイドラインに準拠して
 次のステップ バイ ステップのガイドに従って復元をトリガーします。
 
 1. 復元プロセスを開始するには、次の 2 つの方法があります。
-    1. [バックアップ センター](backup-center-overview.md) ->  **[概要]**  ->  **[復元]** に移動します。
 
-    ![バックアップ センターで [復元] を選択する](./media/backup-azure-database-postgresql/backup-center-restore.png)
+   1. [バックアップ センター](backup-center-overview.md) ->  **[概要]**  ->  **[復元]** に移動します。
 
-    **[開始: 復元]** で、 **[データ ソースの種類]** として **[Azure Database for PostgreSQL]** を選択します。 **[バックアップ インスタンス]** を選択します。
+      ![バックアップ センターで [復元] を選択する](./media/backup-azure-database-postgresql/backup-center-restore.png)
 
-    ![[開始: 復元] で [データ ソースの種類] を選択する](./media/backup-azure-database-postgresql/initiate-restore.png)
+      **[開始: 復元]** で、 **[データ ソースの種類]** として **[Azure Database for PostgreSQL]** を選択します。 **[バックアップ インスタンス]** を選択します。
 
-    1. または、 **[バックアップ コンテナー]**  ->  **[バックアップ インスタンス]** に直接移動することもできます。 復元するデータベースに対応する **バックアップ インスタンス** を選択します。
+      ![[開始: 復元] で [データ ソースの種類] を選択する](./media/backup-azure-database-postgresql/initiate-restore.png)
 
-    ![復元用のバックアップ インスタンス](./media/backup-azure-database-postgresql/backup-instances-restore.png)
+   1. または、 **[バックアップ コンテナー]**  ->  **[バックアップ インスタンス]** に直接移動することもできます。 復元するデータベースに対応する **バックアップ インスタンス** を選択します。
 
-    ![バックアップ インスタンスの一覧](./media/backup-azure-database-postgresql/list-backup-instances.png)
+      ![復元用のバックアップ インスタンス](./media/backup-azure-database-postgresql/backup-instances-restore.png)
 
-    ![[復元] を選択](./media/backup-azure-database-postgresql/select-restore.png)
+      ![バックアップ インスタンスの一覧](./media/backup-azure-database-postgresql/list-backup-instances.png)
+
+      ![[復元] を選択](./media/backup-azure-database-postgresql/select-restore.png)
 
 1. 選択したバックアップ インスタンスで使用できるすべての完全バックアップの一覧から **復旧ポイントを選択** します。 既定では、最新の復旧ポイントが選択されます。
 
@@ -232,12 +233,6 @@ Azure Backup は、厳密なセキュリティ ガイドラインに準拠して
 ![今すぐバックアップをトリガーする](./media/backup-azure-database-postgresql/backup-now.png)
 
 ![保持規則の一覧から選択する](./media/backup-azure-database-postgresql/retention-rules.png)
-
-### <a name="stop-protection"></a>保護の停止
-
-バックアップ項目の保護を停止できます。 これにより、そのバックアップ項目に関連付けられている復旧ポイントも削除されます。 少なくとも 6 か月間、回復ポイントがアーカイブ層に含まれていない場合は、これらの回復ポイントを削除すると早期削除コストが発生します。 既存の復旧ポイントを保持しながら、保護を停止するオプションはまだ提供されていません。
-
-![保護の停止](./media/backup-azure-database-postgresql/stop-protection.png)
 
 ### <a name="change-policy"></a>ポリシーを変更する
 

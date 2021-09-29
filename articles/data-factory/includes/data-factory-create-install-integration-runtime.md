@@ -4,12 +4,12 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
-ms.openlocfilehash: c0a0b44b3de088539a070f1182248c4e6db7303f
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 6bf40202908aa68345fabd2b6fe55d501e8325ff
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108771187"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124733015"
 ---
 ## <a name="create-a-self-hosted-integration-runtime"></a>自己ホスト型統合ランタイムを作成する
 
@@ -101,23 +101,23 @@ ms.locfileid: "108771187"
 
 8. **[統合ランタイム (セルフホステッド) の登録]** ページで、前のセクションで保存したキーを貼り付け、 **[登録]** を選択します。 
 
-    ![統合ランタイムの登録](media/data-factory-create-install-integration-runtime/register-integration-runtime.png)
+    :::image type="content" source="media/data-factory-create-install-integration-runtime/register-integration-runtime.png" alt-text="統合ランタイムの登録":::
 
 9. **[新しい統合ランタイム (セルフホステッド) ノード]** ページで **[完了]** を選択します。 
 
 10. セルフホステッド統合ランタイムが正常に登録されると、次のメッセージが表示されます。
 
-    ![正常に登録](media/data-factory-create-install-integration-runtime/registered-successfully.png)
+    :::image type="content" source="media/data-factory-create-install-integration-runtime/registered-successfully.png" alt-text="正常に登録":::
 
 14. **[統合ランタイム (セルフホステッド) の登録]** ページで **[構成マネージャーの起動]** を選択します。
 
 15. ノードがクラウド サービスに接続されると、次のページが表示されます。
 
-    ![ノード接続済みページ](media/data-factory-create-install-integration-runtime/node-is-connected.png)
+    :::image type="content" source="media/data-factory-create-install-integration-runtime/node-is-connected.png" alt-text="ノード接続済みページ":::
 
 16. ここで、SQL Server データベースへの接続をテストします。
 
-    ![[診断] タブ](media/data-factory-create-install-integration-runtime/config-manager-diagnostics-tab.png)   
+    :::image type="content" source="media/data-factory-create-install-integration-runtime/config-manager-diagnostics-tab.png" alt-text="[診断] タブ":::   
 
     a. **[構成マネージャー]** ページで、 **[診断]** タブに移動します。
 

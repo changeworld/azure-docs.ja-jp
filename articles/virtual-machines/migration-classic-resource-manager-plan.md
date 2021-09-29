@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 931c1f446523247c485987edb29638bb94656b77
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 4e8ce635f25eccedbd07e3ccaa89a1e2cf418eda
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122698096"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124823388"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>クラシックから Azure Resource Manager への IaaS リソースの移行計画
 
@@ -196,7 +196,7 @@ Azure Resource Manager で有効にするサービスを、目的を持って選
 - [Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md)。
 - [より詳細に制御されたデプロイを簡単に行うための Azure Resource Manager テンプレート](../azure-resource-manager/templates/overview.md)。
 - [タグ](../azure-resource-manager/management/tag-resources.md)。
-- [アクティビティ コントロール](../azure-resource-manager/management/view-activity-logs.md)
+- [アクティビティ コントロール](../azure-monitor/essentials/activity-log.md)
 - [Azure のポリシー](../governance/policy/overview.md)
 
 ### <a name="pitfalls-to-avoid"></a>回避すべき問題

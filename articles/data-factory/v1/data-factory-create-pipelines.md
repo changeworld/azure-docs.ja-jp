@@ -5,15 +5,16 @@ author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b2c166da02d145e9995526279121c1dd360557ad
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: e764623fa84be4ffe023545495528e18f3a9adb2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122397685"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128624420"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure Data Factory のパイプラインとアクティビティ
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -35,7 +36,7 @@ ms.locfileid: "122397685"
 
 アクティビティは 0 個以上の入力[データセット](data-factory-create-datasets.md)を受け取り、1 個以上の出力[データセット](data-factory-create-datasets.md)を生成できます。 次の図は、Data Factory でのパイプライン、アクティビティ、データセットの関係を示しています。
 
-![パイプライン、アクティビティ、データセットの関係](media/data-factory-create-pipelines/relationship-pipeline-activity-dataset.png)
+:::image type="content" source="media/data-factory-create-pipelines/relationship-pipeline-activity-dataset.png" alt-text="パイプライン、アクティビティ、データセットの関係":::
 
 パイプラインを使用すると、各アクティビティを個別に管理するのではなく、セットとして管理できます。 たとえば、パイプライン内のアクティビティを個別に扱うのではなく、パイプラインのデプロイ、スケジュール設定、中断、再開を行うことができます。
 
@@ -153,7 +154,7 @@ Data Factory のコピー アクティビティは、ソース データ スト�
 | longRetryInterval |TimeSpan |00:00:00 |長い再試行の間の遅延 |
 
 ## <a name="sample-copy-pipeline"></a>コピー パイプラインのサンプル
-次のサンプル パイプラインでは、**Copy** in the **アクティビティ** 型のアクティビティが 1 つあります。 このサンプルでは、[コピー アクティビティ](data-factory-data-movement-activities.md)により、Azure の BLOB ストレージから Azure SQL Database にデータをコピーします。
+次のサンプル パイプラインでは、 **Copy** in the **アクティビティ** 型のアクティビティが 1 つあります。 このサンプルでは、[コピー アクティビティ](data-factory-data-movement-activities.md)により、Azure の BLOB ストレージから Azure SQL Database にデータをコピーします。
 
 ```json
 {
@@ -271,13 +272,13 @@ Data Factory のコピー アクティビティは、ソース データ スト�
 
 2 つのアクティビティを連鎖させるには、一方のアクティビティの出力データセットを、もう一方のアクティビティの入力データセットとして指定します。 2 つ目のアクティビティは、1 つ目のアクティビティが正常に完了した後にのみ実行されます。
 
-![同じパイプラインでのアクティビティの連鎖](./media/data-factory-create-pipelines/chaining-one-pipeline.png)
+:::image type="content" source="./media/data-factory-create-pipelines/chaining-one-pipeline.png" alt-text="同じパイプラインでのアクティビティの連鎖":::
 
 このサンプルでは、パイプラインに 2 つのアクティビティ Activity1 と Activity2 が含まれています。 Activity1 は Dataset1 を入力として受け取り、出力として Dataset2 を生成します。 Activity2 は Dataset2 を入力として受け取り、出力として Dataset3 を生成します。 Activity1 の出力 (Dataset2) は Activity2 の入力であるため、Activity2 が実行されるのは、Activity1 が正常に完了して Dataset2 スライスを生成した後です。 Activity1 が何らかの理由で失敗し、Dataset2 スライスが生成されない場合、Activity 2 はそのスライス (9 AM から 10 AM など) に対して実行されません。
 
 別のパイプラインに含まれるアクティビティを連鎖することもできます。
 
-![2 つのパイプラインでのアクティビティの連鎖](./media/data-factory-create-pipelines/chaining-two-pipelines.png)
+:::image type="content" source="./media/data-factory-create-pipelines/chaining-two-pipelines.png" alt-text="2 つのパイプラインでのアクティビティの連鎖":::
 
 このサンプルの Pipeline1 には、Dataset1 を入力として受け取り、Dataset2 を出力として生成するアクティビティのみが含まれます。 Pipeline2 にも、Dataset2 を入力として受け取り、Dataset3 を出力として生成するアクティビティのみが含まれます。
 

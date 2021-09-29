@@ -8,17 +8,17 @@ ms.topic: how-to
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 08/23/2021
-ms.openlocfilehash: 87902df54eccdd7038c8351f4ca1794b013a0f13
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 4f4b0cd13095c83f84c96e57e73f255caf4fcdc9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122868394"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124736337"
 ---
 # <a name="migrate-to-azure-machine-learning"></a>Azure Machine Learning への移行 
 
 > [!IMPORTANT]
-> Machine Learning Studio (クラシック) のサポートは、2024 年 8 月 31 日に終了します。 その日までに、[Azure Machine Learning](/azure/machine-learning/overview-what-is-azure-machine-learning) に切り替えすることをお勧めします。
+> Machine Learning Studio (クラシック) のサポートは、2024 年 8 月 31 日に終了します。 その日までに、[Azure Machine Learning](./overview-what-is-azure-machine-learning.md) に切り替えすることをお勧めします。
 >
 > 2021 年 12 月 1 日以降、新しい Machine Learning Studio (クラシック) リソースは作成できません。 2024 年 8 月 31 日まで、既存の Machine Learning Studio (クラシック) リソースを引き続き使用できます。  
 >
@@ -82,7 +82,7 @@ Azure Machine Learning に移行するには、次の方法をお勧めします
 
 ## <a name="step-5-cleanup-studio-classic-assets"></a>手順 5: スタジオ (クラシック) アセットをクリーンアップする
 
-1. 追加料金が発生しないように、[スタジオ (クラシック) アセットをクリーンアップします](/classic/export-delete-personal-data-dsr.md)。 Azure Machine Learning ワークロードの検証が終了するまで、フォールバックできるようにアセットを保持することをお勧めします。
+1. 追加料金が発生しないように、[スタジオ (クラシック) アセットをクリーンアップします](./classic/export-delete-personal-data-dsr.md)。 Azure Machine Learning ワークロードの検証が終了するまで、フォールバックできるようにアセットを保持することをお勧めします。
 
 ## <a name="step-6-review-and-expand-scenarios"></a>手順 6: シナリオを確認して展開する
 

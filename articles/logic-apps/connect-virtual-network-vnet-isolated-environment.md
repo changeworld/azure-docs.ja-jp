@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: conceptual
 ms.date: 08/11/2021
-ms.openlocfilehash: f1a7af136633b096f8bcda08466822549f922b35
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 318c4ba47caab7ce7f84f8bc43522d04c3eb40da
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123536961"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128644868"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-using-an-integration-service-environment-ise"></a>統合サービス環境 (ISE) を使用して Azure Logic Apps から Azure 仮想ネットワークに接続する
 
@@ -168,7 +168,7 @@ ISE にアクセスできること、および ISE 内のロジック アプリ�
    
    * [Azure App Service の依存関係](../app-service/environment/firewall-integration.md#deploying-your-ase-behind-a-firewall)
    * [Azure キャッシュ サービスの依存関係](../azure-cache-for-redis/cache-how-to-premium-vnet.md#what-are-some-common-misconfiguration-issues-with-azure-cache-for-redis-and-virtual-networks)
-   * [Azure API Management の依存関係](../api-management/api-management-using-with-vnet.md#network-configuration)
+   * [Azure API Management の依存関係](../api-management/api-management-using-with-vnet.md#network-configuration-issues)
 
 <a name="create-environment"></a>
 

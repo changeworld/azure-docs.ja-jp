@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/01/2021
 ms.author: gasinh
 ms.subservice: app-mgmt
-ms.openlocfilehash: f8967d0674689328bf0f761a5f39c17c505d1bd6
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: c36ad9b56ce49234d2ee28f53073267944152db0
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123440166"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129080437"
 ---
 # <a name="tutorial-migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access"></a>チュートリアル: Okta サインオン ポリシーを Azure Active Directory の条件付きアクセスに移行する
 
@@ -64,7 +64,7 @@ Azure AD の CA ポリシーは、ほとんどのシナリオで追加構成な�
 
 いくつかのシナリオでは、CA ポリシーを構成する前に追加の設定が必要な場合があります。 この記事の執筆時点では、以下の 2 つの既知のシナリオがあります。
 
-- **Okta のネットワークの場所から Azure AD のネームド ロケーションへ** - [こちらの記事](https://docs.microsoft.com/azure/active-directory/conditional-access/location-condition#named-locations)に従って、Azure AD でネームド ロケーションを構成します。
+- **Okta のネットワークの場所から Azure AD のネームド ロケーションへ** - [こちらの記事](../conditional-access/location-condition.md#named-locations)に従って、Azure AD でネームド ロケーションを構成します。
 
 - **Okta のデバイスの信頼からデバイスベースの CA へ** - CA は、ユーザーのデバイスを評価する際に 2 つのオプションを提供します。
 
@@ -79,7 +79,7 @@ Hybrid Azure AD 参加を有効にするには、Azure AD Connect サーバー�
 >[!NOTE]
 >Hybrid Azure AD 参加は、Azure AD Connect のクラウド プロビジョニング エージェントではサポートされていません。
 
-1. Hybrid Azure AD 参加を有効にするには、これらの[手順](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-managed-domains#configure-hybrid-azure-ad-join)に従ってください。
+1. Hybrid Azure AD 参加を有効にするには、これらの[手順](../devices/hybrid-azuread-join-managed-domains.md#configure-hybrid-azure-ad-join)に従ってください。
 
 2. [SCP の構成] ページで、 **[認証サービス]** ドロップダウンを選択します。 Okta フェデレーション プロバイダーの URL を選択してから、 **[追加]** を選択します。 オンプレミスのエンタープライズ管理者の資格情報を入力し、 **[次へ]** を選択します。
 
@@ -93,15 +93,15 @@ Hybrid Azure AD 参加を有効にするには、Azure AD Connect サーバー�
 
 Hybrid Azure AD 参加は、Windows の Okta のデバイスの信頼に直接代わるものですが、CA ポリシーは、Microsoft エンドポイント マネージャーに完全に登録されているデバイスのデバイス コンプライアンスを確認することもできます。
 
-- **コンプライアンスの概要** - [Microsoft Intune のデバイス コンプライアンス ポリシー](https://docs.microsoft.com/mem/intune/protect/device-compliance-get-started#:~:text=Reference%20for%20non-compliance%20and%20Conditional%20Access%20on%20the,applicable%20%20...%20%203%20more%20rows)に関するページを参照してください。
+- **コンプライアンスの概要** - [Microsoft Intune のデバイス コンプライアンス ポリシー](/mem/intune/protect/device-compliance-get-started#:~:text=Reference%20for%20non-compliance%20and%20Conditional%20Access%20on%20the,applicable%20%20...%20%203%20more%20rows)に関するページを参照してください。
 
-- **デバイス コンプライアンス** - [Microsoft Intune でポリシー](https://docs.microsoft.com/mem/intune/protect/create-compliance-policy)を作成します。
+- **デバイス コンプライアンス** - [Microsoft Intune でポリシー](/mem/intune/protect/create-compliance-policy)を作成します。
 
-- **Windows の登録** - Hybrid Azure AD 参加を展開することを選択した場合は、追加のグループ ポリシーを展開して、[これらのデバイスの Microsoft Intune への自動登録プロセス](https://docs.microsoft.com/windows/client-management/mdm/enroll-a-windows-10-device-automatically-using-group-policy)を完了できます。
+- **Windows の登録** - Hybrid Azure AD 参加を展開することを選択した場合は、追加のグループ ポリシーを展開して、[これらのデバイスの Microsoft Intune への自動登録プロセス](/windows/client-management/mdm/enroll-a-windows-10-device-automatically-using-group-policy)を完了できます。
 
-- **iOS または iPadOS の登録** - ios デバイスを登録する前に、エンドポイント管理コンソールで[追加の構成](https://docs.microsoft.com/mem/intune/enrollment/ios-enroll)を行う必要があります。
+- **iOS または iPadOS の登録** - ios デバイスを登録する前に、エンドポイント管理コンソールで [追加の構成](/mem/intune/enrollment/ios-enroll)を行う必要があります。
 
-- **Android の登録** - Android デバイスを登録する前に、エンドポイント管理コンソールで[追加の構成](https://docs.microsoft.com/mem/intune/enrollment/android-enroll)を行う必要があります。
+- **Android の登録** - Android デバイスを登録する前に、エンドポイント管理コンソールで [追加の構成](/mem/intune/enrollment/android-enroll)を行う必要があります。
 
 ## <a name="step-3---configure-azure-ad-multi-factor-authentication-tenant-settings"></a>手順 3 - Azure AD Multi-Factor Authentication のテナント設定を構成する
 
@@ -109,13 +109,13 @@ CA に変換する前に、組織の Azure AD Multi-Factor Authentication テナ
 
 1. [Azure portal](https://portal.azure.com) に移動して、全体管理者アカウントを使用してサインインします。
 
-2. **[Azure Active Directory]** 、 **[ユーザー]** 、 **[多要素認証]** の順に選択すると、レガシの Azure MFA ポータルが表示されます。
+1. **[Azure Active Directory]** 、 **[ユーザー]** 、 **[多要素認証]** の順に選択すると、レガシの Azure MFA ポータルが表示されます。
 
    ![レガシの Azure AD Multi-Factor Authentication ポータルを示す画像](media/migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access/legacy-azure-ad-portal.png)
 
-代わりに、 **<https://aka.ms/mfaportal>** を使用することができます。
+   代わりに、 **<https://aka.ms/mfaportal>** を使用することができます。
 
-4. **[Legacy Azure MFA]\(レガシの Azure MFA\)** メニューで、状態メニューを **[enabled]\(有効\)** から **[enforced]\(適用済み\)** に変更して、レガシの MFA を有効にしているユーザーがいないことを確認します。 テナントに以下のように表示されているユーザーがいる場合は、レガシ メニューでそれらを無効にする必要があります。 その後、そのアカウントで CA ポリシーが有効になります。
+1. **[Legacy Azure MFA]\(レガシの Azure MFA\)** メニューで、状態メニューを **[enabled]\(有効\)** から **[enforced]\(適用済み\)** に変更して、レガシの MFA を有効にしているユーザーがいないことを確認します。 テナントに以下のように表示されているユーザーがいる場合は、レガシ メニューでそれらを無効にする必要があります。 その後、そのアカウントで CA ポリシーが有効になります。
 
    ![レガシの Azure AD Multi-Factor Authentication ポータルで無効になったユーザーを示す画像](media/migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access/disable-user-legacy-azure-ad-portal.png)
 
@@ -123,12 +123,12 @@ CA に変換する前に、組織の Azure AD Multi-Factor Authentication テナ
 
    ![レガシの Azure AD Multi-Factor Authentication ポータルの空の [enforced]\(適用済み\) フィールドを示す画像](media/migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access/enforced-empty-legacy-azure-ad-portal.png)
 
-5. レガシ MFA で構成されているユーザーがいないことを確認したら、 **[サービス設定]** オプションを選択します。 **[アプリ パスワード]** の選択を **[ブラウザーではないアプリケーションへのサインイン用にアプリケーション パスワードの作成を許可しない]** に変更します。
+1. レガシ MFA で構成されているユーザーがいないことを確認したら、 **[サービス設定]** オプションを選択します。 **[アプリ パスワード]** の選択を **[ブラウザーではないアプリケーションへのサインイン用にアプリケーション パスワードの作成を許可しない]** に変更します。
 
-6. **[イントラネット内のフェデレーション ユーザーからのリクエストの場合、多要素認証をスキップする]** と **[信頼済みデバイスでユーザーが多要素認証を記憶できるようにする (1 から 365 日)]** のボックスのチェックがオフになっていることを確認してから、 **[保存]** を選択します。
+1. **[イントラネット内のフェデレーション ユーザーからのリクエストの場合、多要素認証をスキップする]** と **[信頼済みデバイスでユーザーが多要素認証を記憶できるようにする (1 から 365 日)]** のボックスのチェックがオフになっていることを確認してから、 **[保存]** を選択します。
 
    >[!NOTE]
-   >詳細については、[MFA プロンプトの設定を構成するためのベスト プラクティス](https://aka.ms/mfaprompts)に関するページを参照してください。
+   >詳細については、[MFA プロンプトの設定を構成するためのベスト プラクティス](../authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime.md)に関するページを参照してください。
 
    ![レガシの Azure AD Multi-Factor Authentication ポータルのオフになっているフィールドを示す画像](media/migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access/uncheck-fields-legacy-azure-ad-portal.png)
 
@@ -138,11 +138,11 @@ CA に変換する前に、組織の Azure AD Multi-Factor Authentication テナ
 
 1. Azure AD で CA ポリシーを構成するには、[Azure portal](https://portal.azure.com) に移動します。 [Azure Active Directory の管理] で、 **[表示]** を選択します。
 
-2. CA ポリシーを構成する際は、[CA を導入して設計する際のベストプラクティス](https://docs.microsoft.com/azure/active-directory/conditional-access/plan-conditional-access#understand-conditional-access-policy-components)を念頭に置く必要があります。
+2. CA ポリシーを構成する際は、[CA を導入して設計する際のベストプラクティス](../conditional-access/plan-conditional-access.md#understand-conditional-access-policy-components)を念頭に置く必要があります。
 
-3. Okta からのグローバル サインオン MFA ポリシーを模倣するために、[ポリシーを作成](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-policy-all-users-mfa)します。
+3. Okta からのグローバル サインオン MFA ポリシーを模倣するために、[ポリシーを作成](../conditional-access/howto-conditional-access-policy-all-users-mfa.md)します。
 
-4. [デバイスの信頼ベースの CA 規則](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices)を作成します。
+4. [デバイスの信頼ベースの CA 規則](../conditional-access/require-managed-devices.md)を作成します。
 
 5. このポリシーは、このチュートリアルの他の項目と同様に、特定のアプリケーション、テスト グループのユーザー、またはその両方を対象とすることができます。
 
@@ -150,7 +150,7 @@ CA に変換する前に、組織の Azure AD Multi-Factor Authentication テナ
 
    ![テスト ユーザーの成功を示す画像](media/migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access/success-test-user.png)
 
-6. 場所ベースのポリシーとデバイスの信頼ポリシーを構成したら、今度は同等の [**ブロック レガシ認証**](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-policy-block-legacy)ポリシーを構成します。
+6. 場所ベースのポリシーとデバイスの信頼ポリシーを構成したら、今度は同等の [**ブロック レガシ認証**](../conditional-access/howto-conditional-access-policy-block-legacy.md)ポリシーを構成します。
 
 これら 3 つの CA ポリシーにより、元の Okta サインオン ポリシーのエクスペリエンスが Azure AD にレプリケートされました。 次の手順では、ユーザーを Azure MFA に登録し、ポリシーをテストします。
 
@@ -162,14 +162,14 @@ CA ポリシーを構成したら、ユーザーを Azure MFA メソッドに登
 
 2. ユーザーは、<https://aka.ms/mysecurityinfo> にアクセスして情報を入力したり、MFA 登録のフォームを管理したりできます。
 
-MFA の登録プロセスについてより詳しく理解するには、[こちらのガイド](https://docs.microsoft.com/azure/active-directory/authentication/howto-registration-mfa-sspr-combined)を参照してください。  
+MFA の登録プロセスについてより詳しく理解するには、[こちらのガイド](../authentication/howto-registration-mfa-sspr-combined.md)を参照してください。  
 
 Okta MFA でサインインした後に <https://aka.ms/mfasetup> に移動すると、Azure AD で MFA を登録するように指示されます。
 
 >[!NOTE]
 >そのユーザーが既に登録されている場合は、MFA プロンプトに対応した後、 **[My Security]\(マイ セキュリティ\)** の情報ページが表示されます。
 
-詳しくは、[MFA 登録に関するエンドユーザー向けのドキュメント](https://docs.microsoft.com/azure/active-directory/user-help/security-info-setup-signin)を参照してください。
+詳しくは、[MFA 登録に関するエンドユーザー向けのドキュメント](../user-help/security-info-setup-signin.md)を参照してください。
 
 ## <a name="step-6---enable-ca-policies"></a>手順 6 - CA ポリシーを有効にする
 

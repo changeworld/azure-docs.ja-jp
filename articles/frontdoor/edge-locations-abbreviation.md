@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.date: 05/25/2021
 ms.author: duau
 ms.custom: references_regions
-ms.openlocfilehash: 70fc52bf0cb2eb74e115601da713e706b9d690a1
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: df85a123fa6b3700e71d2d05ae99f4c4ecec5074
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110483256"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128560936"
 ---
 # <a name="microsoft-edge-locations-by-abbreviation-for-azure-front-door"></a>Azure Front Door の Microsoft のエッジ ロケーション (略称別)
 > [!div class="op_single_selector"]
@@ -30,6 +30,6 @@ ms.locfileid: "110483256"
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Front Door のエッジ ロケーション (都市別)](edge-locations-by-region.md) を確認します。
-* Azure Front Door のエッジ ノードの最新の一覧を取得するには、[エッジ ノードの一覧 - REST API](/rest/api/cdn/cdn/edgenodes/list) に関するページを参照してください。
+* [都市別の Azure Front Door のエッジ ロケーション](edge-locations-by-region.md)を表示します。
+* Azure Front Door のエッジ ノードの最新の一覧を取得するには、[エッジ ノードの一覧 - REST API](/rest/api/cdn/edge-nodes/list) に関するページを参照してください。
 * [Azure Front Door プロファイルを作成する](quickstart-create-front-door.md)方法について学習します。

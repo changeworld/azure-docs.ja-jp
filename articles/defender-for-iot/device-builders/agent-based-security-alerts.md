@@ -2,13 +2,13 @@
 title: クラシック エージェント ベースのセキュリティ アラート
 description: Defender for IoT のセキュリティ アラートのクラシック バージョン、Defender for IoT device の機能、サービス使用時の推奨解決策について説明します。
 ms.topic: conceptual
-ms.date: 08/25/2021
-ms.openlocfilehash: 184001243803b64717ac124c116529bab4c4170d
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.date: 09/27/2021
+ms.openlocfilehash: c62a0216a68f685244c1e9ef4e14c4487c9f8b3e
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122968265"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129081968"
 ---
 # <a name="classic-defender-for-iot-devices-security-alerts"></a>クラシック Defender for IoT デバイスのセキュリティ アラート
 

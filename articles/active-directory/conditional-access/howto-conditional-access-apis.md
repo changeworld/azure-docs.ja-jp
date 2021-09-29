@@ -8,15 +8,15 @@ ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: videor, jeevanb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d4dd6e64053af41d66e3accbb7fc9b21d951fc6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9f4c6e36defc8b3e97f73133d2fb766e64a872fb
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96860215"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128618979"
 ---
 # <a name="conditional-access-programmatic-access"></a>条件付きアクセス:プログラムによるアクセス
 

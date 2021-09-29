@@ -3,16 +3,17 @@ title: Data Management Gateway に関する問題をトラブルシューティ�
 description: Data Management Gateway に関連する問題のトラブルシューティングを行うためのヒントを示します。
 author: nabhishek
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 284486c5db248ced8ada6e7194c7bc5a9be5689f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e136ec96cc2a698f0b0e794830403dcbc284341c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100388347"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128554242"
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>Data Management Gateway の使用に関する問題のトラブルシューティング
 この記事では、Data Management Gateway の使用に関する問題のトラブルシューティングについて説明します。
@@ -69,7 +70,7 @@ Azure Portal で **[このコンピューターに直接インストールしま
 
 
 
-![キーの内容または形式が無効](media/data-factory-troubleshoot-gateway-issues/invalid-format-gateway-key.png)
+:::image type="content" source="media/data-factory-troubleshoot-gateway-issues/invalid-format-gateway-key.png" alt-text="キーの内容または形式が無効":::
 
 #### <a name="cause"></a>原因
 入力したゲートウェイ キーの内容または形式が正しくありません。 その理由として、ポータルからコピーしたキーの一部が欠落しているか、無効なキーを使用している可能性があります。
@@ -82,7 +83,7 @@ Azure Portal で **[このコンピューターに直接インストールしま
 
 `Error: The gateway key is invalid or empty. Specify a valid gateway key from the portal.`
 
-![ゲートウェイ キーが無効または空であることを示すエラー メッセージが強調表示されているスクリーンショット。](media/data-factory-troubleshoot-gateway-issues/gateway-key-is-invalid-or-empty.png)
+:::image type="content" source="media/data-factory-troubleshoot-gateway-issues/gateway-key-is-invalid-or-empty.png" alt-text="ゲートウェイ キーが無効または空であることを示すエラー メッセージが強調表示されているスクリーンショット。":::
 
 #### <a name="cause"></a>原因
 Azure Portal でゲートウェイ キーが再生成されているか、ゲートウェイが削除されています。 Data Management Gateway セットアップが最新でない場合にも発生することがあります。
@@ -97,7 +98,7 @@ Data Management Gateway セットアップのバージョンが最新かどう�
 
 `Error: Gateway has been online for a while, then shows "Gateway is not registered" with the status "Gateway key is invalid"`
 
-![ゲートウェイ キーが無効または空](media/data-factory-troubleshoot-gateway-issues/gateway-not-registered-key-invalid.png)
+:::image type="content" source="media/data-factory-troubleshoot-gateway-issues/gateway-not-registered-key-invalid.png" alt-text="ゲートウェイ キーが無効または空":::
 
 #### <a name="cause"></a>原因
 このエラーは、ゲートウェイが削除されているか、関連付けられているゲートウェイ キーが再生成されている場合に発生する可能性があります。
@@ -110,12 +111,12 @@ Data Management Gateway セットアップのバージョンが最新かどう�
 ### <a name="7-problem"></a>7.問題
 ゲートウェイを登録するときに、証明書のパスとパスワードの入力が必要になる場合があります。
 
-![証明書のパスとパスワードの入力場所を示すスクリーンショット。](media/data-factory-troubleshoot-gateway-issues/specify-certificate.png)
+:::image type="content" source="media/data-factory-troubleshoot-gateway-issues/specify-certificate.png" alt-text="証明書のパスとパスワードの入力場所を示すスクリーンショット。":::
 
 #### <a name="cause"></a>原因
 以前にこのゲートウェイが別のコンピューターを使用して登録されています。 ゲートウェイの初回登録時に、暗号化証明書がゲートウェイに関連付けられています。 証明書は、ゲートウェイ自体で生成することも、ユーザーが提供することもできます。  この証明書は、データ ストア (リンクされたサービス) の資格情報を暗号化するために使用されます。  
 
-![証明書をエクスポートします。](media/data-factory-troubleshoot-gateway-issues/export-certificate.png)
+:::image type="content" source="media/data-factory-troubleshoot-gateway-issues/export-certificate.png" alt-text="証明書のエクスポート":::
 
 別のホスト コンピューター上のゲートウェイを復元するとき、以前にこの証明書を使用して暗号化された資格情報の暗号化を解除するために、登録ウィザードによってこの証明書が要求されます。  この証明書がない場合、新しいゲートウェイで資格情報の暗号化を解除できず、この新しいゲートウェイに関連付けられている後続のコピー アクティビティの実行に失敗します。  
 
@@ -155,7 +156,7 @@ Data Management Gateway Configuration Manager の **[設定]** タブにある *
 
 `Error: Gateway cannot connect to cloud service through service bus`
 
-![ゲートウェイからクラウド サービスに接続できない](media/data-factory-troubleshoot-gateway-issues/gateway-cannot-connect-to-cloud-service.png)
+:::image type="content" source="media/data-factory-troubleshoot-gateway-issues/gateway-cannot-connect-to-cloud-service.png" alt-text="ゲートウェイからクラウド サービスに接続できない":::
 
 #### <a name="cause"></a>原因
 ゲートウェイから Service Bus 経由でクラウド サービスに接続できない。
@@ -189,7 +190,7 @@ Data Management Gateway Configuration Manager の **[設定]** タブにある *
 
 このエラーが表示される場合、Data Management Gateway Configuration Manager の設定ページは、次のスクリーン ショットのようになる可能性があります。
 
-![データ ストアに接続できない](media/data-factory-troubleshoot-gateway-issues/database-cannot-be-reached.png)
+:::image type="content" source="media/data-factory-troubleshoot-gateway-issues/database-cannot-be-reached.png" alt-text="データ ストアに接続できない":::
 
 #### <a name="cause"></a>原因
 ゲートウェイ コンピューター上で TLS/SSL 証明書が見つからない可能性があります。 現在 TLS 暗号化に使用されている証明書をゲートウェイ コンピューターで読み込むことができません。 イベント ログに次のようなエラー メッセージが表示される場合もあります。
@@ -203,10 +204,10 @@ Data Management Gateway Configuration Manager の **[設定]** タブにある *
 2. **[設定]** タブに切り替えます。  
 3. TLS/SSL 証明書を変更するために、 **[変更]** をクリックします。
 
-   ![証明書の変更ボタン](media/data-factory-troubleshoot-gateway-issues/change-button-ssl-certificate.png)
+   :::image type="content" source="media/data-factory-troubleshoot-gateway-issues/change-button-ssl-certificate.png" alt-text="証明書の変更ボタン":::
 4. 新しい証明書を TLS/SSL 証明書として選択します。 自分で生成した TLS/SSL 証明書も、任意の組織によって生成された SSL 証明書も使用できます。
 
-   ![証明書の指定](media/data-factory-troubleshoot-gateway-issues/specify-http-end-point.png)
+   :::image type="content" source="media/data-factory-troubleshoot-gateway-issues/specify-http-end-point.png" alt-text="証明書の指定":::
 
 ## <a name="copy-activity-fails"></a>コピー アクティビティが失敗する
 ### <a name="problem"></a>問題
@@ -232,7 +233,7 @@ SQL データベースに接続する前に、Data Management Gateway のクラ�
 3. **[接続テスト]** で、ゲートウェイ グループ値を追加します。
 4. **[テスト]** をクリックして、その接続情報と資格情報で、ゲートウェイ コンピューターからオンプレミスのデータ ソースに接続できるかどうかを確認します。 ドライバーのインストール後も接続テストが失敗する場合は、最新の変更を認識できるようにゲートウェイを再起動します。
 
-![[診断] タブの [接続のテスト]](media/data-factory-troubleshoot-gateway-issues/test-connection-in-diagnostics-tab.png)
+:::image type="content" source="media/data-factory-troubleshoot-gateway-issues/test-connection-in-diagnostics-tab.png" alt-text="[診断] タブの [接続のテスト]":::
 
 ## <a name="gateway-logs"></a>ゲートウェイ ログ
 ### <a name="send-gateway-logs-to-microsoft"></a>ゲートウェイ ログを Microsoft に送信する
@@ -240,21 +241,21 @@ SQL データベースに接続する前に、Data Management Gateway のクラ�
 
 1. Data Management Gateway Configuration Manager で **[診断]** タブに切り替えます。
 
-    ![Data Managemetn Gateway - [診断] タブ](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-diagnostics-tab.png)
+    :::image type="content" source="media/data-factory-troubleshoot-gateway-issues/data-management-gateway-diagnostics-tab.png" alt-text="Data Managemetn Gateway - [診断] タブ":::
 2. **[ログの送信]** をクリックして次のダイアログ ボックスを表示します。
 
-    ![Data Management Gateway - ログの送信](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-dialog.png)
+    :::image type="content" source="media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-dialog.png" alt-text="Data Management Gateway - ログの送信":::
 3. (省略可能) **[ログの表示]** をクリックしてイベント ビューアーでログを確認します。
 4. (省略可能) **[プライバシー]** をクリックして Microsoft Web サービスのプライバシーに関する声明を表示します。
 5. アップロードする情報に問題がなければ、 **[ログの送信]** をクリックすると、トラブルシューティングのために過去 7 日間のログが Microsoft に実際に送信されます。 ログ送信操作の状態が、次のスクリーンショットのように表示されます。
 
-    ![ログ送信操作の状態が表示される場所を示すスクリーンショット。](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-status.png)
+    :::image type="content" source="media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-status.png" alt-text="ログ送信操作の状態が表示される場所を示すスクリーンショット。":::
 6. 操作が完了すると、次のスクリーンショットのようなダイアログ ボックスが表示されます。
 
-    ![Data Management Gateway - ログの送信の状態](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-result.png)
+    :::image type="content" source="media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-result.png" alt-text="Data Management Gateway - ログの送信の状態":::
 7. **レポート ID** を保存し、Microsoft サポートに伝えます。 レポート ID は、トラブルシューティング用にアップロードしたゲートウェイ ログを特定するために使われます。  レポート ID はイベント ビューアーにも保存されます。  レポート ID を探すときは、イベント ID "25" を見つけて日付と時刻を確認します。
 
-    ![Data Management Gateway - ログの送信のレポート ID](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-report-id.png)    
+    :::image type="content" source="media/data-factory-troubleshoot-gateway-issues/data-management-gateway-send-logs-report-id.png" alt-text="Data Management Gateway - ログの送信のレポート ID":::    
 
 ### <a name="archive-gateway-logs-on-gateway-host-machine"></a>ゲートウェイ ホスト コンピューターでゲートウェイ ログをアーカイブする
 ゲートウェイに問題が発生し、ゲートウェイ ログを直接共有できない場合として、次のようないくつかのシナリオがあります。
@@ -265,11 +266,11 @@ SQL データベースに接続する前に、Data Management Gateway のクラ�
 
 このようなシナリオでは、ゲートウェイ ログを zip ファイルとして保存し、Microsoft サポートに連絡するときにそれを共有できます。 たとえば、ゲートウェイを登録するときに、次のスクリーンショットのようなエラーが表示されたら、以下の操作を行います。   
 
-![Data Management Gateway - 登録エラー](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-registration-error.png)
+:::image type="content" source="media/data-factory-troubleshoot-gateway-issues/data-management-gateway-registration-error.png" alt-text="Data Management Gateway - 登録エラー":::
 
 **[ゲートウェイ ログのアーカイブ]** リンクをクリックしてログをアーカイブして保存し、zip ファイルを Microsoft サポートと共有します。
 
-![Data Management Gateway - ログのアーカイブ](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-archive-logs.png)
+:::image type="content" source="media/data-factory-troubleshoot-gateway-issues/data-management-gateway-archive-logs.png" alt-text="Data Management Gateway - ログのアーカイブ":::
 
 ### <a name="locate-gateway-logs"></a>ゲートウェイ ログの検索
 詳細なゲートウェイ ログの情報は、Windows イベント ログで確認できます。
@@ -279,4 +280,4 @@ SQL データベースに接続する前に、Data Management Gateway のクラ�
 
    ゲートウェイ関連の問題のトラブルシューティングでは、イベント ビューアーでエラー レベルのイベントを調べます。
 
-![Data Management Gateway - イベント ビューアーに表示されたログ](media/data-factory-troubleshoot-gateway-issues/gateway-logs-event-viewer.png)
+:::image type="content" source="media/data-factory-troubleshoot-gateway-issues/gateway-logs-event-viewer.png" alt-text="Data Management Gateway - イベント ビューアーに表示されたログ":::

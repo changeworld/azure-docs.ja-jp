@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/01/2021
 ms.author: gasinh
 ms.subservice: app-mgmt
-ms.openlocfilehash: 5b91946886866d86542725155114d86ab5316f03
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: c46410a6998998ace9bc1a9e9809262970a131f2
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123439877"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124791728"
 ---
 # <a name="tutorial-migrate-your-applications-from-okta-to-azure-active-directory"></a>チュートリアル: アプリケーションを Okta から Azure Active Directory に移行する
 
@@ -79,13 +79,13 @@ Okta には、この情報を一元化された場所から収集するために
 
 ![アプリケーションの一覧を示す画像](media/migrate-applications-from-okta-to-azure-active-directory/list-of-applications.png)
 
-<https://konklone.io/json/> または [ConvertFrom-Json](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/convertfrom-json?view=powershell-7.1) や [ConvertTo-CSV.](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/convertto-csv?view=powershell-7.1) を使用した PowerShell などのパブリック コンバーターを使用して、この JSON リストをコピーして CSV に変換することが推奨されます。
+<https://konklone.io/json/> または [ConvertFrom-Json](/powershell/module/microsoft.powershell.utility/convertfrom-json) や [ConvertTo-CSV.](/powershell/module/microsoft.powershell.utility/convertto-csv) を使用した PowerShell などのパブリック コンバーターを使用して、この JSON リストをコピーして CSV に変換することが推奨されます。
 
 CSV をダウンロードしたら、Okta テナント内のアプリケーションは、後で参照するために正常に記録されています。
 
 ## <a name="migrate-a-saml-application-to-azure-ad"></a>SAML アプリケーションを Azure AD に移行する
 
-SAML 2.0 アプリケーションを Azure AD に移行するには、まず、アプリケーション アクセスのために、Azure AD テナントにアプリケーションを構成します。 この例では、Salesforce インスタンスを変換します。 [このチュートリアル](https://docs.microsoft.com/azure/active-directory/saas-apps/salesforce-tutorial)に従って、アプリケーションをオンボードします。
+SAML 2.0 アプリケーションを Azure AD に移行するには、まず、アプリケーション アクセスのために、Azure AD テナントにアプリケーションを構成します。 この例では、Salesforce インスタンスを変換します。 [このチュートリアル](../saas-apps/salesforce-tutorial.md)に従って、アプリケーションをオンボードします。
 
 移行プロセスを完了するには、Okta テナントで検出されたすべてのアプリケーションについて構成手順を繰り返します。
 
@@ -145,7 +145,7 @@ SAML 2.0 アプリケーションを Azure AD に移行するには、まず、�
 
     ![新しい ID プロバイダーの選択を示す画像](media/migrate-applications-from-okta-to-azure-active-directory/new-identity-provider.png)
 
-15. すべてが正しく構成されていれば、ユーザーは Salesforce ホームページに到達します。 何らかの問題がある場合は、[デバッグ ガイド](https://docs.microsoft.com/azure/active-directory/manage-apps/debug-saml-sso-issues)に従ってください。
+15. すべてが正しく構成されていれば、ユーザーは Salesforce ホームページに到達します。 何らかの問題がある場合は、[デバッグ ガイド](../manage-apps/debug-saml-sso-issues.md)に従ってください。
 
 16. Azure から SSO 接続をテストした後に、エンタープライズ アプリケーションに戻り、残りのユーザーを正しいロールで Salesforce アプリケーションに割り当てます。
 
@@ -172,7 +172,7 @@ SSO 用に Azure AD に対して Salesforce が正常に構成されました。
 
    ![新しい OIDC アプリケーションを示す画像](media/migrate-applications-from-okta-to-azure-active-directory/new-oidc-application.png)
 
-3. 次のページでは、アプリケーションの登録のテナントに関する選択肢が表示されます。 詳細については、[こちらの記事](https://docs.microsoft.com/azure/active-directory/develop/single-and-multi-tenant-apps)をご覧ください。
+3. 次のページでは、アプリケーションの登録のテナントに関する選択肢が表示されます。 詳細については、[こちらの記事](../develop/single-and-multi-tenant-apps.md)をご覧ください。
 
 この例では、 **[任意の組織ディレクトリ内のアカウント]** 、任意の Azure AD ディレクトリ、 **[マルチテナント]** 、次に **[登録]** を選択します。
 
@@ -180,7 +180,7 @@ SSO 用に Azure AD に対して Salesforce が正常に構成されました。
 
 4. アプリケーションを登録したら、 **[Azure Active Directory]** の下の **[アプリの登録]** ページに移動し、新しく作成した登録を開きます。
 
-   [アプリケーションのシナリオ](https://docs.microsoft.com/azure/active-directory/develop/authentication-flows-app-scenarios)によっては、さまざまな構成アクションが必要になる場合があります。 ほとんどのシナリオではアプリ クライアント シークレットが必要であり、それらの例を取り上げます。
+   [アプリケーションのシナリオ](../develop/authentication-flows-app-scenarios.md)によっては、さまざまな構成アクションが必要になる場合があります。 ほとんどのシナリオではアプリ クライアント シークレットが必要であり、それらの例を取り上げます。
 
 5. **[概要]** ページで、後でアプリケーションで使用するためにアプリケーション (クライアント) ID を記録します。
 
@@ -219,7 +219,7 @@ SSO 用に Azure AD に対して Salesforce が正常に構成されました。
 
 ## <a name="migrate-a-custom-authorization-server-to-azure-ad"></a>カスタム承認サーバーを Azure AD に移行する
 
-Okta 承認サーバーは [API を公開する](https://docs.microsoft.com/azure/active-directory/develop/quickstart-configure-app-expose-web-apis#add-a-scope)アプリケーション登録に 1 対 1 でマップされます。
+Okta 承認サーバーは [API を公開する](../develop/quickstart-configure-app-expose-web-apis.md#add-a-scope)アプリケーション登録に 1 対 1 でマップされます。
 
 既定の Okta 承認サーバーは Microsoft Graph スコープ/アクセス許可にマップされる必要があります。
 

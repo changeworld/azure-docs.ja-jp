@@ -12,13 +12,13 @@ ms.subservice: data-movement
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 08/24/2021
-ms.openlocfilehash: 2a2708c3d84dd83b752db2a0ae56843ae068aabe
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.date: 09/09/2021
+ms.openlocfilehash: c66e7a1d19ecf392c5f990bcaa31ba506cf0d7f2
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122822429"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124767415"
 ---
 # <a name="copy-activity-performance-and-scalability-guide"></a>コピー アクティビティのパフォーマンスとスケーラビリティに関するガイド
 
@@ -84,7 +84,7 @@ Azure Data Factory パイプラインおよび Azure Synapse Analytics パイプ
 
 コピーはさまざまなレベルでスケーラブルです。
 
-![コピーのスケーリングのしくみ](media/copy-activity-performance/adf-copy-scalability.png)
+:::image type="content" source="media/copy-activity-performance/adf-copy-scalability.png" alt-text="コピーのスケーリングのしくみ":::
 
 * 制御フローでは、複数のコピー アクティビティを並列して開始できます。たとえば、[For Each ループ](control-flow-for-each-activity.md)を使用します。
 

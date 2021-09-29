@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: overview
-ms.date: 06/03/2021
+ms.date: 09/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 author: msmimart
 manager: celested
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 96e402a46d931223832295ccbd892eb38b909c59
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 54229ff68cf9e4ac749fb1396282d9c881f52806
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123220793"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128572673"
 ---
 # <a name="add-conditional-access-to-user-flows-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のユーザー フローに条件付きアクセスを追加する
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
@@ -75,11 +75,12 @@ Azure AD の条件付きアクセスを使用する場合は、次の点を考�
 ## <a name="prepare-your-azure-ad-b2c-tenant"></a>Azure AD B2C テナントを準備する
 条件付きアクセス ポリシーを追加するには、セキュリティの既定値を無効にします。
 1. [Azure portal](https://portal.azure.com/) にサインインします。
-2. ポータル ツール バーにある **[ディレクトリ + サブスクリプション]** アイコンを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
-3. **[Azure サービス]** で、 **[Azure AD B2C]** を選択します。 または、検索ボックスを使用して検索し、 **[Azure AD B2C]** を選択します。
-4. **[プロパティ]** を選択し、次に **[セキュリティの既定値群の管理]** を選択します。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
+1. **[Azure サービス]** で、 **[Azure AD B2C]** を選択します。 または、検索ボックスを使用して検索し、 **[Azure AD B2C]** を選択します。
+1. **[プロパティ]** を選択し、次に **[セキュリティの既定値群の管理]** を選択します。
    ![セキュリティの既定値群を無効にする](media/conditional-access-user-flow/disable-security-defaults.png)
-5. **[セキュリティの既定値群を有効にする]** で、 **[いいえ]** を選択します。
+1. **[セキュリティの既定値群を有効にする]** で、 **[いいえ]** を選択します。
    ![[セキュリティの既定値群の有効化] トグルを [いいえ] に設定する](media/conditional-access-user-flow/enable-security-defaults-toggle.png)
 
 ## <a name="add-a-conditional-access-policy"></a>条件付きアクセス ポリシーを追加する
@@ -331,8 +332,10 @@ Azure AD 条件付きアクセス ポリシーを追加した後、ユーザー 
    > Azure AD B2C での条件付きアクセスの一般提供では、サインアップの間にユーザーは MFA の方法での登録を求められるようになります。 一般提供の前に作成したサインアップ ユーザー フローには、この新しい動作は自動的には反映されませんが、新しいユーザー フローを作成することで動作を組み込むことができます。
 ::: zone pivot="b2c-user-flow"
 ユーザー フローの条件付きアクセスを有効にするには、条件付きアクセスがご使用のバージョンでサポートされていることを確認します。 これらのユーザー フローのバージョンには、"**推奨**" というラベルが付けられています。
+
 1. [Azure portal](https://portal.azure.com) にサインインします。
-1. ポータル ツール バーにある **[ディレクトリ + サブスクリプション]** アイコンを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
 1. **[Azure サービス]** で、 **[Azure AD B2C]** を選択します。 または、検索ボックスを使用して検索し、 **[Azure AD B2C]** を選択します。
 1. **[ポリシー]** で **[ユーザー フロー]** を選択します。 次に、ユーザー フローを選択します。
 1. **[プロパティ]** を選択し、このユーザー フローで条件付きアクセスがサポートされていることを確認します。そのためには、 **[条件付きアクセス]** というラベルの設定を探します。
@@ -374,14 +377,15 @@ Azure AD 条件付きアクセス ポリシーを追加した後、ユーザー 
 ## <a name="review-conditional-access-outcomes-in-the-audit-report"></a>監査レポートで条件付きアクセスの結果を確認する
 条件付きアクセス イベントの結果を確認するには:
 1. [Azure portal](https://portal.azure.com/) にサインインします。
-2. ポータル ツール バーにある **[ディレクトリ + サブスクリプション]** アイコンを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
-3. **[Azure サービス]** で、 **[Azure AD B2C]** を選択します。 または、検索ボックスを使用して検索し、 **[Azure AD B2C]** を選択します。
-4. **[活動]** で、 **[監査ログ]** を選択します。
-5. **[カテゴリ]** を **[B2C]** に設定し、 **[アクティビティのリソースの種類]** を **[IdentityProtection]** に設定することで、監査ログをフィルター処理します。 次に、**[適用]** を選択します。
-6. 最大で過去 7 日間の監査アクティビティを確認します。 次の種類のアクティビティが含まれています。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
+1. **[Azure サービス]** で、 **[Azure AD B2C]** を選択します。 または、検索ボックスを使用して検索し、 **[Azure AD B2C]** を選択します。
+1. **[活動]** で、 **[監査ログ]** を選択します。
+1. **[カテゴリ]** を **[B2C]** に設定し、 **[アクティビティのリソースの種類]** を **[IdentityProtection]** に設定することで、監査ログをフィルター処理します。 次に、**[適用]** を選択します。
+1. 最大で過去 7 日間の監査アクティビティを確認します。 次の種類のアクティビティが含まれています。
    - **[Evaluate conditional access policies]\(条件付きアクセス ポリシーを評価する\)** : この監査ログ エントリは、認証中に条件付きアクセスの評価が実行されたことを示しています。
    - **[ユーザーを修復する]** : このエントリは、エンド ユーザーが条件付きアクセス ポリシーの許可または要件を満たしていたことを示します。このアクティビティは、ユーザーのリスクを軽減 (リスクの緩和) するためにリスク エンジンに報告されています。
-7. 一覧で **[Evaluate conditional access policies]\(条件付きアクセス ポリシーを評価する\)** ログ エントリを選択して、 **[アクティビティの詳細: 監査ログ]** ページを開きます。このページでは、監査ログ識別子と共に次の情報が **[追加の詳細]** セクションに表示されます。
+1. 一覧で **[Evaluate conditional access policies]\(条件付きアクセス ポリシーを評価する\)** ログ エントリを選択して、 **[アクティビティの詳細: 監査ログ]** ページを開きます。このページでは、監査ログ識別子と共に次の情報が **[追加の詳細]** セクションに表示されます。
    - **ConditionalAccessResult**: 条件付きポリシーの評価に必要な許可。
    - **AppliedPolicies**: 条件が満たされ、ポリシーがオンになっているすべての条件付きアクセス ポリシーの一覧。
    - **ReportingPolicies**: レポート専用モードに設定され、条件が満たされていた条件付きアクセス ポリシーの一覧。

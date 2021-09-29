@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48d424a64df215a7506130a44d57fc45d638255d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c40d1ae4d24f24feafa138b75aefc3f9b711287e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121739943"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124762875"
 ---
 # <a name="best-practices-for-azure-ad-roles"></a>Azure AD ロールのベスト プラクティス
 
@@ -62,7 +62,7 @@ ms.locfileid: "121739943"
 - 悪意のあるアクターによってアカウントが侵害される可能性があります。
 - 企業内でチームが移動します。 監査がない場合、時間の経過と共に不要なアクセスが行われる可能性があります。
  
-ロールのアクセス レビューの詳細については、「[PIM で Azure AD ロールのアクセス レビューを作成する](../privileged-identity-management/pim-how-to-start-security-review.md)」を参照してください。 ロールが割り当てられているグループのアクセス レビューの詳細については、「[グループとアプリケーションのアクセス レビューを Azure AD アクセス レビューで作成する](../governance/create-access-review.md)」を参照してください。
+ロールのアクセス レビューの詳細については、「[PIM で Azure AD ロールのアクセス レビューを作成する](../privileged-identity-management/pim-create-azure-ad-roles-and-resource-roles-review.md)」を参照してください。 ロールが割り当てられているグループのアクセス レビューの詳細については、「[グループとアプリケーションのアクセス レビューを Azure AD アクセス レビューで作成する](../governance/create-access-review.md)」を参照してください。
 
 ## <a name="5-limit-the-number-of-global-administrators-to-less-than-5"></a>5. グローバル管理者の数を 5 人未満に制限する
 

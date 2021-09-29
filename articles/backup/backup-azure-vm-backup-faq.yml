@@ -5,12 +5,12 @@ metadata:
   ms.topic: article
   ms.service: backup
   ms.date: 08/19/2021
-  ms.openlocfilehash: d579c304c9a345323fc57020435b4b3a41c70cbd
-  ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
+  ms.openlocfilehash: 2b7ecc95117201d9ab60a39acf1d0f6ae60896a0
+  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/20/2021
-  ms.locfileid: "122597866"
+  ms.lasthandoff: 09/13/2021
+  ms.locfileid: "124799303"
 title: よく寄せられる質問 - Azure VM のバックアップ
 summary: >
   この記事では、[Azure Backup](./backup-overview.md) サービスによる Azure VM のバックアップについてよくある質問にお答えします。
@@ -116,7 +116,7 @@ sections:
       クラスター内のすべての Azure VM は、個々の Azure VM と見なされます。 そのため、すべてのバックアップ操作は、個々の Azure VM ごとに適用されます。
   - question: Azure Backup は、アプリケーションのパフォーマンスに影響を与えますか?
     answer: >
-      VM スナップショットの作成には数分かかります。この段階では、アプリケーションのパフォーマンスに対する影響はほとんどありません。 ただし、コンテナーへのデータ転送には数時間かかります。そのため、営業時間外にバックアップをスケジュールすることをお勧めします。 詳しくは、[バックアップと復元のベスト プラクティス](/azure/backup/backup-azure-vms-introduction#backup-and-restore-considerations)に関するページを参照してください。
+      VM スナップショットの作成には数分かかります。この段階では、アプリケーションのパフォーマンスに対する影響はほとんどありません。 ただし、コンテナーへのデータ転送には数時間かかります。そのため、営業時間外にバックアップをスケジュールすることをお勧めします。 詳しくは、[バックアップと復元のベスト プラクティス](./backup-azure-vms-introduction.md#backup-and-restore-considerations)に関するページを参照してください。
   - question: VM に追加された新しいディスクは自動的にバックアップされますか?
     answer: >
       はい。VM に追加された新しいディスクは、次のバックアップ時に自動的にバックアップされます。
@@ -178,7 +178,7 @@ sections:
       `if (storageProfile.osDisk.createOption == "Attach") then { exclude <Policy> }`
   - question: VM を電源を切った状態に復元するにはどうすればよいですか?
     answer: >
-      電源を切った状態の VM を復元するには、[VM を作成](/azure/backup/backup-during-vm-creation#create-a-vm-with-backup-configured)するか、[ディスクを復元](/azure/backup/backup-azure-arm-restore-vms#restore-disks)します。ただし、既存の VM を置き換えることはできません。 詳しくは、[使用可能な復元オプション](/azure/backup/backup-azure-arm-restore-vms#restore-options)に関するページを参照してください。
+      電源を切った状態の VM を復元するには、[VM を作成](./backup-during-vm-creation.md#create-a-vm-with-backup-configured)するか、[ディスクを復元](./backup-azure-arm-restore-vms.md#restore-disks)します。ただし、既存の VM を置き換えることはできません。 詳しくは、[使用可能な復元オプション](./backup-azure-arm-restore-vms.md#restore-options)に関するページを参照してください。
 - name: VM バックアップの管理
   questions:
   - question: バックアップ ポリシーを変更した場合は、どのようになりますか。

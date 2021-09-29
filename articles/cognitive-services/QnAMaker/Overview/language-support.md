@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/09/2019
-ms.openlocfilehash: 3718a4255e8b58202c723bccbbfb1aa3459e1ce2
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 9c6b80897908bf73c21e9bf8b358216c3fd23b1f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110372324"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124806646"
 ---
 # <a name="language-support-for-a-qna-maker-resource-and-knowledge-bases"></a>QnA Maker のリソースとナレッジ ベースに対する言語のサポート
 
@@ -27,7 +27,7 @@ ms.locfileid: "110372324"
 
 # <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
 
-Custom question answering には、同じサービスに対して異なる言語のナレッジ ベースを追加するオプションがあります。 ナレッジ ベース単位の言語設定は、一度有効にすると無効に戻すことはできません。 そのサービスで作成するすべてのナレッジベースに対して言語の選択が必要になります。
+カスタム質問と回答には、同じサービスに対して異なる言語のナレッジ ベースを追加するオプションがあります。 ナレッジ ベース単位の言語設定は、一度有効にすると無効に戻すことはできません。 そのサービスで作成するすべてのナレッジベースに対して言語の選択が必要になります。
 
 この設定により、同じサービスの複数のナレッジベースにそれぞれ異なる言語を設定するという柔軟な構成が可能になります。
 
@@ -54,7 +54,7 @@ Custom question answering には、同じサービスに対して異なる言語
 * 言語は、サービスの最初のナレッジ ベースが作成されるときに明示的に設定されます
 * 言語は、ナレッジ ベースの作成時に追加されたファイルと URL から決定されます
 * サービス内の他のナレッジ ベースの言語は変更できません
-* Cognitive Search サービス (ランカー 1) と Custom question answering (ランカー 2) では、その言語でクエリに対するベスト アンサーを生成します
+* 言語は、Cognitive Search サービス (ランカー #1) とカスタム質問と回答 (ランカー #2) によって、クエリに対するベスト アンサーを生成するために使用されます
 
 ---
 
@@ -77,7 +77,7 @@ Custom question answering には、同じサービスに対して異なる言語
 
 複数の言語を含むナレッジ ベース システムをサポートする必要がある場合は、次を行うことができます。
 
-* ナレッジ ベースに質問を送信する前に、[Translator サービス](../../translator/translator-info-overview.md)を使用して、質問を 1 つの言語に翻訳します。 これで、1 つの言語の品質と、代替の質問と回答の品質に集中できるようになります。
+* ナレッジ ベースに質問を送信する前に、[Translator サービス](../../translator/translator-overview.md)を使用して、質問を 1 つの言語に翻訳します。 これで、1 つの言語の品質と、代替の質問と回答の品質に集中できるようになります。
 * すべての言語について、QnA Maker リソースとそのリソース内のナレッジ ベースを作成します。 これで、言語ごとに、より微妙な個別の代替の質問と回答のテキストを管理できるようになります。 これにより、柔軟性が大幅に向上しますが、すべての言語で質問または回答が変わると、メンテナンス コストが大幅に増加します。
 
 

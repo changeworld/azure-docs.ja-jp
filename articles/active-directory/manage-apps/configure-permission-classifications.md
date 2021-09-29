@@ -12,12 +12,12 @@ ms.date: 08/31/2021
 ms.author: davidmu
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: f42f258383e1ca76be7fa45c79b11b3c18e900a7
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 1824eb31b17ba1a46bd5514797e11a502ac4665a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123425830"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124810054"
 ---
 # <a name="configure-permission-classifications"></a>アクセス許可の分類を構成する
 
@@ -28,8 +28,8 @@ ms.locfileid: "123425830"
 このガイドのタスクを完了するには、次のものが必要です。
 
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- 全体管理者ロール。
-- Azure AD PowerShell の設定。 詳しくは、[Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/) に関するページを参照してください
+- グローバル管理者ロール。
+- Azure AD PowerShell を設定します。 詳しくは、[Azure AD PowerShell](/powershell/azure/) に関するページを参照してください
 
 ## <a name="manage-permission-classifications"></a>アクセス許可の分類を管理する
 

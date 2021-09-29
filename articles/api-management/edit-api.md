@@ -3,7 +3,7 @@ title: Azure Portal を使用した API の編集 | Microsoft Docs
 description: API Management (APIM) を使用して API を編集する方法について説明します。 APIM インスタンスで操作を追加、削除、名前変更したり、API の Swagger を編集したりします。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 manager: cfowler
 editor: ''
 ms.service: api-management
@@ -11,13 +11,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/08/2017
-ms.author: apimpm
-ms.openlocfilehash: 1c4e64251390936e8a63ee904ec69f173cac6114
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: danlep
+ms.openlocfilehash: db8ceb0921d7ed18cfaa7651d208d5f7e899a6e7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93146707"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128654444"
 ---
 # <a name="edit-an-api"></a>API の編集
 

@@ -8,12 +8,12 @@ ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/06/2021
-ms.openlocfilehash: 0b927f945dc7e891e93df6cd455840e6ff19a2fd
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 5f18e2a1fc64e33faecf17c95e9261e023cc6c9d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122772447"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124779713"
 ---
 # <a name="copy-data-from-azure-data-lake-storage-gen1-to-gen2-with-azure-data-factory"></a>Azure Data Factory を使用して Azure Data Lake Storage Gen1 から Gen2 にデータをコピーする
 
@@ -39,11 +39,11 @@ Azure Data Factory では、スケール アウトしたマネージド デー�
 
 1. 左側のメニューで、 **[リソースの作成]** 、 **[データ + 分析]** 、 **[Data Factory]** の順に選択します。
    
-   ![[新規] ウィンドウでの [Data Factory] の選択を示すスクリーンショット。](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
+   :::image type="content" source="./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png" alt-text="[新規] ウィンドウでの [Data Factory] の選択を示すスクリーンショット。":::
 
 2. **[新しいデータ ファクトリ]** ページで、次の画像に示されているフィールドの値を指定します。 
       
-   ![[新しいデータ ファクトリ] ページを示すスクリーンショット。](./media/load-azure-data-lake-storage-gen2-from-gen1/new-azure-data-factory.png)
+   :::image type="content" source="./media/load-azure-data-lake-storage-gen2-from-gen1/new-azure-data-factory.png" alt-text="[新しいデータ ファクトリ] ページを示すスクリーンショット。":::
  
     * **Name**:Azure Data Factory のグローバルに一意の名前を入力します。 "データ ファクトリ名 \"LoadADLSDemo\" は利用できません" エラーが発生する場合は、データ ファクトリの別の名前を入力します。 たとえば、 _**yourname**_ **ADFTutorialDataFactory** という名前を使用します。 データ ファクトリをもう一度作成します。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事をご覧ください。
     * **サブスクリプション**:データ ファクトリを作成する Azure サブスクリプションを選択します。 
@@ -62,7 +62,7 @@ Azure Data Factory では、スケール アウトしたマネージド デー�
 
 1. ホーム ページで、 **[取り込み]** タイルを選択し、データのコピー ツールを起動します。 
 
-   ![ADF のホーム ページを示すスクリーンショット。](./media/doc-common-process/get-started-page.png )
+   :::image type="content" source="./media/doc-common-process/get-started-page.png " alt-text="ADF のホーム ページを示すスクリーンショット。":::
 
 2. **[プロパティ]** ページで、 **[タスクの種類]** の **[組み込みコピー タスク]** を選択して、 **[Task cadence or task schedule](タスクの周期またはタスクのスケジュール)** の **[Run once now](今すぐ 1 度だけ実行する)** を選択し、 **[次へ]** を選択します。
 
@@ -70,7 +70,7 @@ Azure Data Factory では、スケール アウトしたマネージド デー�
     
 4. コネクタ ギャラリーから **[Azure Data Lake Storage Gen1]** を選択し、 **[続行]** を選択します。
     
-    ![Azure Data Lake Storage Gen1 接続を選択するページを示すスクリーンショット。](./media/load-azure-data-lake-storage-gen2-from-gen1/source-data-store-page-adls-gen1.png)
+    :::image type="content" source="./media/load-azure-data-lake-storage-gen2-from-gen1/source-data-store-page-adls-gen1.png" alt-text="Azure Data Lake Storage Gen1 接続を選択するページを示すスクリーンショット。":::
     
 5. **[New connection (Azure Data Lake Storage Gen1)(新しい接続 (Azure Data Lake Storage Gen1))]** ページで、次の手順を行います。
    1. アカウント名に対してお使いの Data Lake Storage Gen1 を選択し、 **[テナント]** を指定または確認します。
@@ -79,24 +79,24 @@ Azure Data Factory では、スケール アウトしたマネージド デー�
    > [!IMPORTANT]
    > このチュートリアルでは、Azure リソースのマネージド ID を使用して、Azure Data Lake Storage Gen1 を認証します。 [次の手順](connector-azure-data-lake-store.md#managed-identity)に従って、マネージド ID に Azure Data Lake Storage Gen1 のアクセス許可を適切に付与します。
    
-   ![Azure Data Lake Storage Gen1 接続の構成を示すスクリーンショット。](./media/load-azure-data-lake-storage-gen2-from-gen1/specify-adls-gen1-account.png)
+   :::image type="content" source="./media/load-azure-data-lake-storage-gen2-from-gen1/specify-adls-gen1-account.png" alt-text="Azure Data Lake Storage Gen1 接続の構成を示すスクリーンショット。":::
       
 6. **[ソース データ ストア]** ページで、次の手順を実行します。 
     1. **[接続]** セクションで新しく作成した接続を選択します。
     1. **[ファイルまたはフォルダー]** で、コピーするフォルダーとファイルを参照します。 フォルダーまたはファイルを選択し、 **[OK]** を選択します。
-    1. **[再帰的]** オプションと **[バイナリ コピー]** オプションを選択することで、コピーの動作を指定します。 **[次へ]** を選びます。
+    1. **[再帰的]** オプションと **[バイナリ コピー]** オプションを選択することで、コピーの動作を指定します。 **[次へ]** を選択します。
     
     :::image type="content" source="./media/load-azure-data-lake-storage-gen2-from-gen1/source-data-store-page.png" alt-text="[ソース データ ストア] ページを示すスクリーンショット。":::
     
 7. **[Destination data store](コピー先データ ストア)** ページで **[+ 新しい接続]**  >  **[Azure Data Lake Storage Gen2]**  >  **[続行]** の順に選択します。
 
-    ![Azure Data Lake Storage Gen2 接続を選択するページを示すスクリーンショット。](./media/load-azure-data-lake-storage-gen2-from-gen1/destination-data-store-page-adls-gen2.png)
+    :::image type="content" source="./media/load-azure-data-lake-storage-gen2-from-gen1/destination-data-store-page-adls-gen2.png" alt-text="Azure Data Lake Storage Gen2 接続を選択するページを示すスクリーンショット。":::
 
 8. **[New connection (Azure Data Lake Storage Gen2)(新しい接続 (Azure Data Lake Storage Gen2))]** ページで、次の手順を行います。
    1. **[ストレージ アカウント名]** ドロップダウン リストから目的の Data Lake Storage Gen2 に対応するアカウントを選択します。
    1. **[作成]** を選択して接続を作成します。 
 
-   ![Azure Data Lake Storage Gen2 接続の構成を示すスクリーンショット。](./media/load-azure-data-lake-storage-gen2-from-gen1/specify-adls-gen2-account.png)
+   :::image type="content" source="./media/load-azure-data-lake-storage-gen2-from-gen1/specify-adls-gen2-account.png" alt-text="Azure Data Lake Storage Gen2 接続の構成を示すスクリーンショット。":::
 
 9. **[コピー先データ ストア]** ページで、次の手順を実行します。 
     1. **[接続]** ブロックで新しく作成した接続を選択します。 
@@ -109,19 +109,19 @@ Azure Data Factory では、スケール アウトしたマネージド デー�
 
 11. **[サマリー]** ページで設定を確認し、 **[次へ]** を選択します。
 
-    ![[Summary](概要) ページを示すスクリーンショット。](./media/load-azure-data-lake-storage-gen2-from-gen1/copy-summary.png)
+    :::image type="content" source="./media/load-azure-data-lake-storage-gen2-from-gen1/copy-summary.png" alt-text="[Summary]\(概要\) ページを示すスクリーンショット。":::
 
 12. **[Deployment]\(デプロイ\)** ページで **[Monitor]\(監視\)** を選択してパイプラインを監視します。
 
-    ![[Deployment](デプロイ) ページを示すスクリーンショット。](./media/load-azure-data-lake-storage-gen2-from-gen1/deployment-page.png)
+    :::image type="content" source="./media/load-azure-data-lake-storage-gen2-from-gen1/deployment-page.png" alt-text="[Deployment](デプロイ) ページを示すスクリーンショット。":::
 
 13. 左側の **[監視]** タブが自動的に選択されたことがわかります。 **[パイプライン名]** 列には、アクティビティの実行の詳細を表示するリンクとパイプラインを再実行するリンクが表示されます。
 
-    ![監視パイプラインの実行のページを示すスクリーンショット。](./media/load-azure-data-lake-storage-gen2-from-gen1/monitor-pipeline-runs.png)
+    :::image type="content" source="./media/load-azure-data-lake-storage-gen2-from-gen1/monitor-pipeline-runs.png" alt-text="監視パイプラインの実行のページを示すスクリーンショット。":::
 
 14. パイプラインの実行に関連付けられているアクティビティの実行を表示するには、 **[パイプライン名]** 列のリンクを選択します。 パイプライン内のアクティビティ (コピー アクティビティ) は 1 つだけなので、エントリは 1 つのみです。 [パイプラインの実行] ビューに戻るには、上部の階層リンク メニューの **[すべてのパイプラインの実行]** リンクを選択します。 **[最新の情報に更新]** を選択して、一覧を更新します。 
 
-    ![監視アクティビティの実行のページを示すスクリーンショット。](./media/load-azure-data-lake-storage-gen2-from-gen1/monitor-activity-runs.png)
+    :::image type="content" source="./media/load-azure-data-lake-storage-gen2-from-gen1/monitor-activity-runs.png" alt-text="監視アクティビティの実行のページを示すスクリーンショット。":::
 
 15. 各コピー アクティビティの実行状況の詳細を監視するには、アクティビティ監視ビューの **[アクティビティ名]** 列の下の **[詳細]** リンク (眼鏡のイメージ) を選択します。 ソースからシンクにコピーされるデータの量、データのスループット、実行ステップと対応する期間、使用される構成などの詳細を監視できます。
 

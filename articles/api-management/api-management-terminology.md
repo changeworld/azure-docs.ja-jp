@@ -3,20 +3,20 @@ title: Azure API Management の 用語集 | Microsoft Docs
 description: この記事では、API Management に固有の用語の定義について説明します。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 manager: cfowler
 editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
 ms.date: 10/11/2017
-ms.author: apimpm
-ms.openlocfilehash: 002ae9f99865114dd8bf52b53efc9303a0706a82
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: danlep
+ms.openlocfilehash: 45ba2ee8366f0d3612eab2ba300f816d80c1a62a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99491826"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128654406"
 ---
 # <a name="azure-api-management-terminology"></a>Azure API Management の用語
 

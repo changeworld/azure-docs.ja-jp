@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: d75c6d6274cadc6c523c1c7c94f6d8357ab8c6dd
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0f8ea510000e506e4b1fd156a00b1eb89ddbb76e
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121743819"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129081227"
 ---
 # <a name="tutorial-use-azure-maps-to-create-a-store-locator"></a>チュートリアル: Azure Maps を使用してストア ロケーターを作成する
 
@@ -643,54 +643,55 @@ JavaScript を追加するには、次の手順を実行します。
     //Load a custom image icon into the map resources.
     map.imageSprite.add('myCustomIcon', iconImageUrl).then(function() {
 
-    //Create a layer to render a coffee cup symbol above each bubble for an individual location.
-    iconLayer = new atlas.layer.SymbolLayer(datasource, null, {
-        iconOptions: {
-            //Pass in the ID of the custom icon that was loaded into the map resources.
-            image: 'myCustomIcon',
+       //Create a layer to render a coffee cup symbol above each bubble for an individual location.
+       iconLayer = new atlas.layer.SymbolLayer(datasource, null, {
+           iconOptions: {
+               //Pass in the ID of the custom icon that was loaded into the map resources.
+               image: 'myCustomIcon',
 
-            //Optionally, scale the size of the icon.
-            font: ['SegoeUi-Bold'],
+               //Optionally, scale the size of the icon.
+               font: ['SegoeUi-Bold'],
 
-            //Anchor the center of the icon image to the coordinate.
-            anchor: 'center',
+               //Anchor the center of the icon image to the coordinate.
+               anchor: 'center',
 
-            //Allow the icons to overlap.
-            allowOverlap: true
-        },
+               //Allow the icons to overlap.
+               allowOverlap: true
+           },
 
-        filter: ['!', ['has', 'point_count']] //Filter out clustered points from this layer.
-    });
+           filter: ['!', ['has', 'point_count']] //Filter out clustered points from this layer.
+       });
 
-    map.layers.add(iconLayer);
+       map.layers.add(iconLayer);
 
-    //When the mouse is over the cluster and icon layers, change the cursor to a pointer.
-    map.events.add('mouseover', [clusterBubbleLayer, iconLayer], function() {
-        map.getCanvasContainer().style.cursor = 'pointer';
-    });
+       //When the mouse is over the cluster and icon layers, change the cursor to a pointer.
+       map.events.add('mouseover', [clusterBubbleLayer, iconLayer], function() {
+           map.getCanvasContainer().style.cursor = 'pointer';
+       });
 
-    //When the mouse leaves the item on the cluster and icon layers, change the cursor back to the default (grab).
-    map.events.add('mouseout', [clusterBubbleLayer, iconLayer], function() {
-        map.getCanvasContainer().style.cursor = 'grab';
-    });
+       //When the mouse leaves the item on the cluster and icon layers, change the cursor back to the default (grab).
+       map.events.add('mouseout', [clusterBubbleLayer, iconLayer], function() {
+           map.getCanvasContainer().style.cursor = 'grab';
+       });
 
-    //Add a click event to the cluster layer. When the user selects a cluster, zoom into it by two levels.  
-    map.events.add('click', clusterBubbleLayer, function(e) {
-        map.setCamera({
-            center: e.position,
-            zoom: map.getCamera().zoom + 2
-        });
-    });
+       //Add a click event to the cluster layer. When the user selects a cluster, zoom into it by two levels.  
+       map.events.add('click', clusterBubbleLayer, function(e) {
+           map.setCamera({
+               center: e.position,
+               zoom: map.getCamera().zoom + 2
+           });
+       });
 
-    //Add a click event to the icon layer and show the shape that was selected.
-    map.events.add('click', iconLayer, function(e) {
-        showPopup(e.shapes[0]);
-    });
+       //Add a click event to the icon layer and show the shape that was selected.
+       map.events.add('click', iconLayer, function(e) {
+           showPopup(e.shapes[0]);
+       });
 
-    //Add an event to monitor when the map is finished rendering the map after it has moved.
-    map.events.add('render', function() {
-        //Update the data in the list.
-        updateListItems();
+       //Add an event to monitor when the map is finished rendering the map after it has moved.
+       map.events.add('render', function() {
+           //Update the data in the list.
+           updateListItems();
+       });
     });
     ```
 

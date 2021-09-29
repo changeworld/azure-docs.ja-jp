@@ -3,21 +3,21 @@ title: Azure PowerShell のサンプル スクリプト - API のインポート
 description: API をインポートして API Management 製品に追加する方法について説明します。 サンプル スクリプトを参照し、使用可能なその他のリソースを確認してください。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 manager: cfowler
 editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.topic: sample
 ms.date: 11/16/2017
-ms.author: apimpm
+ms.author: danlep
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 7748558fa7cee6972e4bb47fea0ba08ffb72b83e
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: bbb9ec94f7af3ca62c704655195f52230c60cb72
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107816892"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128624066"
 ---
 # <a name="import-an-api"></a>API をインポートする
 

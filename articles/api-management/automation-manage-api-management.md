@@ -3,7 +3,7 @@ title: Azure Automation を使用した Azure API Management の管理
 description: Azure Automation サービスを使用して Azure API Management を管理する方法について説明します。
 services: api-management, automation
 documentationcenter: ''
-author: vladvino
+author: dlepow
 manager: eamono
 editor: ''
 ms.assetid: 2e53c9af-f738-47f8-b1b6-593050a7c51b
@@ -12,13 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/13/2018
-ms.author: apimpm
-ms.openlocfilehash: c808d4659b5987b099dd96d73bb8c18c08fe3c99
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: danlep
+ms.openlocfilehash: b503174049c459902f69c627f7b13c29e876266b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86249397"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128657939"
 ---
 # <a name="managing-azure-api-management-using-azure-automation"></a>Azure Automation を使用した Azure API Management の管理
 このガイドでは、Azure Automation サービスと、このサービスを使用して Azure API Management の管理を簡略化する方法について紹介します。
@@ -40,4 +40,4 @@ Powershell で API Management を使用する例については、次を参照�
 ## <a name="next-steps"></a>次の手順
 ここまでは、Azure Automation の基本と Azure Automation を使用して Azure API Management を管理する方法について説明しました。詳細については、次の各リンクを参照してください。
 
-* Azure Automation の [作業開始のチュートリアル](../automation/learn/automation-tutorial-runbook-graphical.md)に関するページを参照してください。
+* Azure Automation の [作業開始のチュートリアル](../automation/learn/powershell-runbook-managed-identity.md)に関するページを参照してください。

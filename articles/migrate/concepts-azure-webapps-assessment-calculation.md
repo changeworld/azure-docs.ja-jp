@@ -5,12 +5,12 @@ author: rashi-ms
 ms.author: rajosh
 ms.topic: conceptual
 ms.date: 07/27/2021
-ms.openlocfilehash: ec83b7a8de449a73dc227941f864ac7cd8495e68
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3328fb0fb20a9b0e492c3cd4281ee35dcf12dda0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121779249"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124792032"
 ---
 # <a name="assessment-overview-migrate-to-azure-app-service"></a>評価の概要 (Azure App Service への移行)
 
@@ -92,7 +92,7 @@ Premium プランは運用ワークロード向けで、専用の仮想マシン
 
 ### <a name="azure-app-service-plan"></a>Azure App Service プラン
 
-App Service では、アプリは常に [App Service プラン](/azure/app-service/overview-hosting-plans)で実行されます。 App Service プランでは、Web アプリを実行するための一連のコンピューティング リソースを定義します。 大まかに言えば、プランと SKU は次の表に示すように決定されます。
+App Service では、アプリは常に [App Service プラン](../app-service/overview-hosting-plans.md)で実行されます。 App Service プランでは、Web アプリを実行するための一連のコンピューティング リソースを定義します。 大まかに言えば、プランと SKU は次の表に示すように決定されます。
 
 **分離が必要** | **予約インスタンス** | **App Service プラン/SKU**
 --- | --- | ---
@@ -103,7 +103,7 @@ App Service では、アプリは常に [App Service プラン](/azure/app-servi
 
 ### <a name="azure-app-service-cost-details"></a>Azure App Service のコストの詳細
 
-[App Service プラン](/azure/app-service/overview-hosting-plans)では、使用するコンピューティング リソースに対して[課金](https://azure.microsoft.com/pricing/details/app-service/windows/)されます。 App Service では、Web アプリごとにではなく、App Service プランごとに料金を支払います。 1 つまたは複数のアプリを同じコンピューティング リソース (または、同じ App Service プラン) で実行するように構成することができます。 この App Service プランに入れたアプリは、App Service プランで定義されたとおりにこれらのコンピューティング リソースで実行されます。
+[App Service プラン](../app-service/overview-hosting-plans.md)では、使用するコンピューティング リソースに対して[課金](https://azure.microsoft.com/pricing/details/app-service/windows/)されます。 App Service では、Web アプリごとにではなく、App Service プランごとに料金を支払います。 1 つまたは複数のアプリを同じコンピューティング リソース (または、同じ App Service プラン) で実行するように構成することができます。 この App Service プランに入れたアプリは、App Service プランで定義されたとおりにこれらのコンピューティング リソースで実行されます。
 コストを最適化するため、Azure Migrate の評価では、複数の Web アプリをそれぞれに推奨されている App Service プランに割り当てます。 各プランのインスタンスに割り当てられる Web アプリの数は、次の表のようになります。
 
 **App Service プラン** | **App Service プランごとの Web アプリ**
@@ -113,7 +113,7 @@ P1v2  | 8
 P1v3  | 16
 
 > [!NOTE]
-> App Service プランは、いつでもスケールアップまたはスケールダウンできます。 [詳細については、こちらを参照してください](/azure/app-service/overview-hosting-plans#what-if-my-app-needs-more-capabilities-or-features/)。
+> App Service プランは、いつでもスケールアップまたはスケールダウンできます。 [詳細については、こちらを参照してください](../app-service/overview-hosting-plans.md#what-if-my-app-needs-more-capabilities-or-features)。
 
 ## <a name="next-steps"></a>次のステップ
 - 評価作成のベストプラクティスを[確認](best-practices-assessment.md)します。 

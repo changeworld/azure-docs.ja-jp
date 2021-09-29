@@ -1,15 +1,15 @@
 ---
 title: Azure DevTest Labs インフラストラクチャをスケールアップする
 description: この記事では、Azure DevTest Labs インフラストラクチャをスケールアップするためのガイダンスを提供します。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 50bf08678a12a1a0499abd08c52a264d03f4a401
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ceba7023df2a704d43a47f3804c18fd6c0bb113d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85478792"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128550749"
 ---
 # <a name="scale-up-your-azure-devtest-labs-infrastructure"></a>Azure DevTest Labs インフラストラクチャをスケールアップする
 エンタープライズ規模で DevTest Labs を実装する前には、いくつかの重要な意思決定ポイントがあります。 これらの意思決定ポイントを高いレベルで理解することは、将来の設計上の決定を抱えている組織に役立ちます。 ただし、これらのポイントが、組織の概念実証の開始を妨げないようにする必要があります。 初期のスケール アップ計画には、重要な領域が 3 つあります。

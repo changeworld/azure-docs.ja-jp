@@ -9,12 +9,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 64bffb127c7d3fbcf56619ea17b23fc0a58d6a37
-ms.sourcegitcommit: 1b698fb8ceb46e75c2ef9ef8fece697852c0356c
+ms.openlocfilehash: 39969e5e1767bbd2a84a27bb5cbbea6d51c9a4eb
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110652880"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128674568"
 ---
 # <a name="copy-a-blob-with-azure-storage-client-libraries"></a>Azure Storage クライアント ライブラリを使用して BLOB をコピーする
 
@@ -183,10 +183,10 @@ if (destBlob.CopyState.Status == CopyStatus.Pending)
 
 Azure SDK に関する詳細を確認します。
 
- - [Azure SDK for .NET](https://github.com/azure/azure-sdk-for-net)
- - [Azure SDK for Java](https://github.com/azure/azure-sdk-for-java)
- - [Azure SDK for Python](https://github.com/azure/azure-sdk-for-python)
- - [Azure SDK for JavaScript](https://github.com/azure/azure-sdk-for-js)
+- [Azure SDK for .NET](https://github.com/azure/azure-sdk-for-net)
+- [Azure SDK for Java](https://github.com/azure/azure-sdk-for-java)
+- [Azure SDK for Python](https://github.com/azure/azure-sdk-for-python)
+- [Azure SDK for JavaScript](https://github.com/azure/azure-sdk-for-js)
 
 ## <a name="next-steps"></a>次のステップ
 

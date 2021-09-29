@@ -5,14 +5,15 @@ author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: d4a930677f4760ae5f2d77dd4f148097ae67f465
-ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
+ms.openlocfilehash: fd666c51042811a8008657d965d629d1b17848f4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122598016"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128571275"
 ---
 # <a name="create-predictive-pipelines-using-machine-learning-studio-classic-and-azure-data-factory"></a>Machine Learning スタジオ (クラシック) と Azure Data Factory を使用して予測パイプラインを作成する
 
@@ -65,9 +66,9 @@ Azure Data Factory を使用してデータの移動と処理を調整した後�
    2. 発行されたスタジオ (クラシック) Web サービス用の **API キー**。 API キーは、発行した Web サービスをクリックするとわかります。
    3. **AzureMLBatchExecution** アクティビティを使用します。
 
-      ![Machine Learning スタジオ (クラシック) のダッシュボード](./media/data-factory-azure-ml-batch-execution-activity/AzureMLDashboard.png)
+      :::image type="content" source="./media/data-factory-azure-ml-batch-execution-activity/AzureMLDashboard.png" alt-text="Machine Learning スタジオ (クラシック) のダッシュボード":::
 
-      ![Batch URI](./media/data-factory-azure-ml-batch-execution-activity/batch-uri.png)
+      :::image type="content" source="./media/data-factory-azure-ml-batch-execution-activity/batch-uri.png" alt-text="Batch URI":::
 
 ### <a name="scenario-experiments-using-web-service-inputsoutputs-that-refer-to-data-in-azure-blob-storage"></a>シナリオ:Azure Blob Storage のデータを参照する Web サービスの入力/出力の使用を実験する
 このシナリオのスタジオ (クラシック) Web サービスでは、Azure Blob Storage 内のファイルのデータを使用して予測が作成され、Blob Storage に予測結果が保存されます。 次の JSON では、AzureMLBatchExecution アクティビティを使用する Data Factory パイプラインが定義されています。 このアクティビティは、入力としてデータセット **DecisionTreeInputBlob** を使用し、出力として **DecisionTreeResultBlob** を使用します。 **DecisionTreeInputBlob** は、**webServiceInput** JSON プロパティを使用して Web サービスの入力として渡します。 **DecisionTreeResultBlob** は、**webServiceOutputs** JSON プロパティを使用して Web サービスの出力として渡します。
@@ -349,7 +350,7 @@ Web サービス パラメーターを使用するシナリオを見てみまし
 
 スタジオ (クラシック) の実験でリーダー モジュールを使用する場合は、入力として Azure BLOB を指定できます。 Azure Blob Storage 内のファイルは、HDInsight 上で実行する Pig および Hive スクリプトによって生成される出力ファイル (例:000000_0) でもかまいません。 リーダー モジュールでは、 **[Path to container, directory/blob (コンテナーへのパス、ディレクトリ/BLOB)]** を構成して (拡張子がない) ファイルを読み取ることができます。 **コンテナーへのパス** でコンテナーをポイントし、**ディレクトリ/BLOB** では、次の画像のようにファイルが含まれるフォルダーをポイントします。 アスタリスク (\*) **は、実験の一環としてコンテナー/フォルダー内のすべてのファイル (つまり、data/aggregateddata/year=2014/month-6/\*)** を読み取るように指定します。
 
-![Azure BLOB のプロパティ](./media/data-factory-create-predictive-pipelines/azure-blob-properties.png)
+:::image type="content" source="./media/data-factory-create-predictive-pipelines/azure-blob-properties.png" alt-text="Azure BLOB のプロパティ":::
 
 ### <a name="example"></a>例
 #### <a name="pipeline-with-azuremlbatchexecution-activity-with-web-service-parameters"></a>Web サービス パラメーターを使用した AzureMLBatchExecution のパイプライン

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: erhopf
 ms.service: cognitive-services
 ms.date: 06/14/2021
-ms.openlocfilehash: d8b5d8141410143385cd950ae4e0ecb59d61d422
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 655f61388d2fd19cffbb4b7d3212bf401e20040d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123478340"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124824770"
 ---
 # <a name="cognitive-services-docs-whats-new-for-may-1-2021---may-31-2021"></a>Cognitive Services ドキュメント: 2021 年 5 月 1 日から 2021 年 5 月 31 日までの更新情報
 
@@ -36,14 +36,14 @@ ms.locfileid: "123478340"
 
 ### <a name="new-articles"></a>新しい記事
 
-- [リファレンス: Azure Form Recognizer クライアント ライブラリ v3.0.0 および REST API v2.0](./form-recognizer/api-v2-0/reference-sdk-api-v2-0.md)
+- [リファレンス: Azure Form Recognizer クライアント ライブラリ v3.0.0 および REST API v2.0](../applied-ai-services/form-recognizer/api-v2-0/reference-sdk-api-v2-0.md)
 
 ### <a name="updated-articles"></a>更新された記事
 
-- [Form Recognizer の事前構築済みの名刺モデル](./form-recognizer/concept-business-cards.md)
-- [クイックスタート: クライアント ライブラリ SDK または REST API の概要](./form-recognizer/quickstarts/client-library.md)
-- [Form Recognizer の新機能](./form-recognizer/whats-new.md)
-- [Form Recognizer のランディング ページ](./form-recognizer/index.yml)
+- [Form Recognizer の事前構築済みの名刺モデル](../applied-ai-services/form-recognizer/concept-business-cards.md)
+- [クイックスタート: クライアント ライブラリ SDK または REST API の概要](../applied-ai-services/form-recognizer/quickstarts/client-library.md)
+- [Form Recognizer の新機能](../applied-ai-services/form-recognizer/whats-new.md)
+- [Form Recognizer のランディング ページ](../applied-ai-services/form-recognizer/index.yml)
 
 ## <a name="translator"></a>Translator
 

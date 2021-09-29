@@ -9,12 +9,12 @@ ms.reviewer: dineshm
 ms.date: 09/04/2020
 ms.subservice: blobs
 ms.custom: devx-track-js
-ms.openlocfilehash: 53153c7ea154b77ee4d0d348818c891ce22bc5f8
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 388b84dc831984cf03b91ff16e4cfb8962b88c73
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123470960"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128662725"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Azure Storage での静的 Web サイト ホスティング
 
@@ -41,12 +41,12 @@ Web サーバーでコンテンツのレンダリングが必要な場合は、[
 これらの任意のツールを使用して、コンテンツを **$web** コンテナーにアップロードできます。
 
 > [!div class="checklist"]
-> * [Azure CLI](storage-blob-static-website-how-to.md?tabs=azure-cli)
-> * [Azure PowerShell モジュール](storage-blob-static-website-how-to.md?tabs=azure-powershell)
-> * [AzCopy](../common/storage-use-azcopy-v10.md)
-> * [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)
-> * [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/)
-> * [Visual Studio Code 拡張機能](- https://channel9.msdn.com/Shows/Docs-Azure/Deploy-static-website-to-Azure-from-Visual-Studio-Code/player)
+> - [Azure CLI](storage-blob-static-website-how-to.md?tabs=azure-cli)
+> - [Azure PowerShell モジュール](storage-blob-static-website-how-to.md?tabs=azure-powershell)
+> - [AzCopy](../common/storage-use-azcopy-v10.md)
+> - [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)
+> - [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/)
+> - [Visual Studio Code 拡張機能](- https://channel9.msdn.com/Shows/Docs-Azure/Deploy-static-website-to-Azure-from-Visual-Studio-Code/player)
 
 ## <a name="viewing-content"></a>コンテンツの表示
 
@@ -102,7 +102,7 @@ Web サーバーでコンテンツのレンダリングが必要な場合は、[
 
 ## <a name="permissions"></a>アクセス許可
 
-静的 Web サイトを有効にできるようになるためのアクセス許可は、Microsoft.Storage/storageAccounts/blobServices/write または共有キーです。  このアクセスを提供する組み込みのロールに、ストレージ アカウント共同作成者が含まれます。  
+静的 Web サイトを有効にできるようになるためのアクセス許可は、Microsoft.Storage/storageAccounts/blobServices/write または共有キーです。  このアクセスを提供する組み込みのロールに、ストレージ アカウント共同作成者が含まれます。
 
 ## <a name="pricing"></a>価格
 
@@ -116,11 +116,11 @@ Web サーバーでコンテンツのレンダリングが必要な場合は、[
 
 ## <a name="feature-support"></a>機能サポート
 
-この表は、アカウントでのこの機能のサポート状況と、特定の機能を有効にした場合のサポートへの影響を示しています。 
+この表は、アカウントでのこの機能のサポート状況と、特定の機能を有効にした場合のサポートへの影響を示しています。
 
-| ストレージ アカウントの種類                | Blob Storage (既定のサポート)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+| ストレージ アカウントの種類                | Blob Storage (既定のサポート)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>
 |-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
-| Standard 汎用 v2 | ![はい](../media/icons/yes-icon.png) |![はい](../media/icons/yes-icon.png)              | ![はい](../media/icons/yes-icon.png) | 
+| Standard 汎用 v2 | ![はい](../media/icons/yes-icon.png) |![はい](../media/icons/yes-icon.png)              | ![はい](../media/icons/yes-icon.png) |
 | Premium ブロック BLOB          | ![はい](../media/icons/yes-icon.png)|![はい](../media/icons/yes-icon.png) | ![はい](../media/icons/yes-icon.png) |
 
 <sup>1</sup>    Data Lake Storage Gen2 とネットワーク ファイル システム (NFS) 3.0 プロトコルの両方で、階層型名前空間が有効になっているストレージ アカウントが必要です。
@@ -137,7 +137,7 @@ Web サーバーでコンテンツのレンダリングが必要な場合は、[
 
 ##### <a name="how-do-i-use-a-custom-domain-with-a-static-website"></a>静的 Web サイトでのカスタム ドメインの使用方法を教えてください
 
-[Azure Content Delivery Network (Azure CDN)](./storage-custom-domain-name.md#map-a-custom-domain-with-https-enabled) を使用して、静的 Web サイトで[カスタム ドメイン](./static-website-content-delivery-network.md)を構成できます。 Azure CDN によって、世界中のどこからアクセスする場合でも Web サイトの待ち時間が一貫して短くなります。 
+[Azure Content Delivery Network (Azure CDN)](./storage-custom-domain-name.md#map-a-custom-domain-with-https-enabled) を使用して、静的 Web サイトで[カスタム ドメイン](./static-website-content-delivery-network.md)を構成できます。 Azure CDN によって、世界中のどこからアクセスする場合でも Web サイトの待ち時間が一貫して短くなります。
 
 ##### <a name="how-do-i-use-a-custom-ssl-certificate-with-a-static-website"></a>静的 Web サイトでカスタム SSL 証明書をどのように使用しますか?
 
@@ -153,13 +153,13 @@ Web サーバーでコンテンツのレンダリングが必要な場合は、[
 
 ##### <a name="why-isnt-the-root-directory-of-the-website-not-redirecting-to-the-default-index-page"></a>Web サイトのルート ディレクトリが既定のインデックス ページにリダイレクトされないのはなぜですか?
 
-Azure portal で、お使いのアカウントの静的 Web サイト構成ページを開き、 **[インデックス ドキュメント名]** フィールドに設定されている名前と拡張子を見つけてください。 この名前が、ストレージ アカウントの **$web** コンテナーにあるファイルの名前と完全に同じであることを確認します。 静的 Web サイトの URL にあるファイル名と拡張子は、HTTP を介して提供される場合でも大文字と小文字が区別されます。 
+Azure portal で、お使いのアカウントの静的 Web サイト構成ページを開き、 **[インデックス ドキュメント名]** フィールドに設定されている名前と拡張子を見つけてください。 この名前が、ストレージ アカウントの **$web** コンテナーにあるファイルの名前と完全に同じであることを確認します。 静的 Web サイトの URL にあるファイル名と拡張子は、HTTP を介して提供される場合でも大文字と小文字が区別されます。
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Storage で静的 Web サイトをホストする](storage-blob-static-website-how-to.md)
-* [カスタム ドメインを Azure Blob Storage エンドポイントにマップする](storage-custom-domain-name.md)
-* [Azure Functions](../../azure-functions/functions-overview.md)
-* [Azure App Service](../../app-service/overview.md)
-* [最初のサーバーレス Web アプリを作成する](/azure/functions/tutorial-static-website-serverless-api-with-database)
-* [チュートリアル:Azure DNS でドメインをホストする](../../dns/dns-delegate-domain-azure-dns.md)
+- [Azure Storage で静的 Web サイトをホストする](storage-blob-static-website-how-to.md)
+- [カスタム ドメインを Azure Blob Storage エンドポイントにマップする](storage-custom-domain-name.md)
+- [Azure Functions](../../azure-functions/functions-overview.md)
+- [Azure App Service](../../app-service/overview.md)
+- [最初のサーバーレス Web アプリを作成する](/azure/functions/tutorial-static-website-serverless-api-with-database)
+- [チュートリアル:Azure DNS でドメインをホストする](../../dns/dns-delegate-domain-azure-dns.md)

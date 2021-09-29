@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: how-to
 ms.date: 03/30/2021
 ms.author: gatharej
-ms.openlocfilehash: 4c4e3e2331ce334fbdd1c273fecd899bcd24612b
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 395ca8022b0355ff79c200dfbe87bc78e29de089
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108124565"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129060860"
 ---
 # <a name="azure-internet-peering-for-communications-services-walkthrough"></a>Communication Services のための Azure インターネット ピアリングのチュートリアル
 
@@ -52,7 +52,7 @@ Peer によりパブリック ASN が Azure サブスクリプションに既に
 次の手順では、Peering Service のための Direct ピアリング接続を作成します。
 
 > [!NOTE]
-> ASN の関連付けが承認されたら、ご利用の ASN とサブスクリプション ID で peeringservices@microsoft.com 宛てに電子メールを送信し、サブスクリプションを Communication Services に関連付けます。 
+> ASN の関連付けが承認されたら、ご利用の ASN とサブスクリプション ID で peeringservice@microsoft.com 宛てに電子メールを送信し、サブスクリプションを Communication Services に関連付けます。 
 
 **2.    Peering Service のための Direct ピアリング接続を作成する:**
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/10/2021
 ms.author: jeedes
-ms.openlocfilehash: b3ca14b1b89873cc3ba8295a4c0a52ee3033370a
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: befa56fa3d0c0cda4626e629e22564ccc457fea0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111987754"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124800652"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-styleflow"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Styleflow の統合
 
@@ -133,10 +133,8 @@ Styleflow に対して Azure AD SSO を構成してテストするには、次�
 
 * Check Point Styleflow のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Check Point Styleflow] タイルをクリックすると、Check Point Styleflow のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Check Point Styleflow] タイルをクリックすると、Check Point Styleflow のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 Styleflow を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
-
-

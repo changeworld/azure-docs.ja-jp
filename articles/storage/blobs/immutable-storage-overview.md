@@ -10,12 +10,12 @@ ms.date: 08/31/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: 01ea434081b83065f510a246591af2d05a8d7276
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: ca0ec185721b0e35c15dfe99e361ff024cf01a78
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123469592"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128584215"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>不変ストレージを使用してビジネスに不可欠な BLOB データを保存する
 
@@ -53,7 +53,7 @@ Cohasset レポートは [Microsoft Service Trust Center](https://aka.ms/AzureWo
 
 不変ポリシーは、BLOB バージョン (プレビュー) またはコンテナーにスコープを設定できます。 オブジェクトが不変ポリシーの下でどのように動作するかは、ポリシーのスコープによって異なります。 不変ポリシーの種類ごとのポリシー スコープの詳細については、次のセクションを参照してください。
 
-- [時間ベースのアイテム保持ポリシーのスコープ](immutable-time-based-retention-policy-overview.md#time-based-retention-policy-scope) 
+- [時間ベースのアイテム保持ポリシーのスコープ](immutable-time-based-retention-policy-overview.md#time-based-retention-policy-scope)
 - [訴訟ホールドのスコープ](immutable-legal-hold-overview.md#legal-hold-scope)
 
 スコープに応じて、時間ベースのアイテム保持ポリシーとリソース (コンテナーまたは BLOB バージョン) の訴訟ホールドの両方を構成できます。 次の表は、各リソース スコープでサポートされている不変ポリシーをまとめたものです。
@@ -165,14 +165,14 @@ BLOB バージョンに対する時間ベースのアイテム保持ポリシー
 
 ## <a name="feature-support"></a>機能サポート
 
-次の表は、アカウントでのこの機能のサポート方法と、特定の機能を有効にした場合のサポートへの影響を示しています。 
+この表は、アカウントでのこの機能のサポート状況と、特定の機能を有効にした場合のサポートへの影響を示しています。
 
-| ストレージ アカウントの種類                | BLOB Storage (既定のサポート)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+| ストレージ アカウントの種類                | Blob Storage (既定のサポート)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>
 |-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
-| Standard 汎用 v2 | ![はい](../media/icons/yes-icon.png) |![はい](../media/icons/yes-icon.png)  <sup>2</sup>              | ![はい](../media/icons/yes-icon.png)  <sup>2</sup> | 
+| Standard 汎用 v2 | ![はい](../media/icons/yes-icon.png) |![はい](../media/icons/yes-icon.png)  <sup>2</sup>              | ![はい](../media/icons/yes-icon.png)  <sup>2</sup> |
 | Premium ブロック BLOB          | ![はい](../media/icons/yes-icon.png) |![はい](../media/icons/yes-icon.png)  <sup>2</sup> | ![はい](../media/icons/yes-icon.png)  <sup>2</sup> |
 
-<sup>1</sup>    Data Lake Storage Gen2 とネットワーク ファイル システム (NFS) 3.0 プロトコルはどちらも、階層型名前空間が有効になっているストレージ アカウントが必要です。
+<sup>1</sup>    Data Lake Storage Gen2 とネットワーク ファイル システム (NFS) 3.0 プロトコルの両方で、階層型名前空間が有効になっているストレージ アカウントが必要です。
 
 <sup>2</sup>    機能はプレビュー レベルでサポートされています。
 

@@ -9,12 +9,12 @@ ms.subservice: ip-services
 ms.topic: conceptual
 ms.date: 04/29/2021
 ms.author: allensu
-ms.openlocfilehash: 383c1c0419224a568e32dd41f50d49dc448dbb3c
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 61ba348c93b034b5ed1419c22330e2ce842b7136
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123538149"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124784206"
 ---
 # <a name="public-ip-addresses"></a>パブリック IP アドレス
 
@@ -38,8 +38,8 @@ Virtual Machine Scale Sets の場合は、[パブリック IP プレフィック
 
 | 最上位リソース | IP アドレスの関連付け | 動的 IPv4 | 静的 IPv4 | 動的 IPv6 | 静的 IPv6 |
 | --- | --- | --- | --- | --- | --- |
-| 仮想マシン |ネットワーク インターフェイス |はい | Yes | Yes | はい |
-| インターネットに接続するロード バランサー |フロント エンド構成 |はい | Yes | Yes |はい |
+| 仮想マシン |ネットワーク インターフェイス |はい | はい | はい | はい |
+| インターネットに接続するロード バランサー |フロント エンド構成 |はい | はい | はい |はい |
 | Virtual Network ゲートウェイ (VPN) |ゲートウェイ IP の構成 |はい (AZ 以外のみ) |はい (AZ のみ) | いいえ |いいえ |
 | Virtual Network ゲートウェイ (ER) |ゲートウェイ IP の構成 |はい | いいえ | はい (プレビュー) |いいえ |
 | NAT Gateway |ゲートウェイ IP の構成 |いいえ |はい | いいえ |いいえ |
@@ -87,7 +87,7 @@ Basic SKU のアドレス:
 
 ## <a name="ip-address-assignment"></a>IP アドレスの割り当て
 
- Standard パブリック IPv4、Basic パブリック IPv4、および Standard パブリック IPv6 アドレスのすべてで、**静的** な割り当てがサポートされます。  リソースには、作成時に IP アドレスが割り当てられます。 この IP アドレスは、リソースが削除されたときに解放されます。  
+Standard パブリック IPv4、Basic パブリック IPv4、および Standard パブリック IPv6 アドレスのすべてで、**静的** な割り当てがサポートされます。  リソースには、作成時に IP アドレスが割り当てられます。 この IP アドレスは、リソースが削除されたときに解放されます。  
 
 > [!NOTE]
 > 割り当て方法を **静的** に設定しても、パブリック IP アドレス リソースに割り当てられる実際の IP アドレスは指定できません。 リソースが作成される Azureの場所で使用可能な IP アドレスのプールから IP アドレスが割り当てられます。

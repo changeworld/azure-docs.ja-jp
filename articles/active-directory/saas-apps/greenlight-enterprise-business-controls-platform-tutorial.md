@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/04/2020
 ms.author: jeedes
-ms.openlocfilehash: e1e15c3fdf9900d016581f848fdfdba5d91b0997
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 74cffc8c495e76ba631db49c69eb63e188bf4b30
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92447087"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124833502"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-greenlight-enterprise-business-controls-platform"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Greenlight Enterprise Business Controls Platform の統合
 
@@ -141,7 +141,7 @@ Greenlight Enterprise Business Controls Platform で Azure AD SSO を構成し�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Greenlight Enterprise Business Controls Platform] タイルをクリックすると、SSO を設定した Greenlight Enterprise Business Controls Platform に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+アクセス パネルで [Greenlight Enterprise Business Controls Platform] タイルをクリックすると、SSO を設定した Greenlight Enterprise Business Controls Platform に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

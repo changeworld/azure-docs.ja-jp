@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: e1099f271291c6d86610237454e08e06b5fe48c7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 61bb44a6431885c4696af840d829bc1671f1c1e5
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92522157"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124801298"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-humanity"></a>チュートリアル: Azure Active Directory と Humanity の統合
 
@@ -122,13 +122,13 @@ Humanity で Azure AD シングル サインオンを構成するには、次の
 
     c. ログアウト URL
 
-### <a name="configure-humanity-single-sign-on"></a>Humanity のシングル サインオンの構成
+### <a name="configure-humanity-single-sign-on&quot;></a>Humanity のシングル サインオンの構成
 
 1. 別の Web ブラウザー ウィンドウで、**Humanity** 企業サイトに管理者としてログインします。
 
 2. 上部のメニューで **[Admin]** をクリックします。
 
-    ![管理者](./media/shiftplanning-tutorial/iC786619.png "[Admin]")
+    ![管理者](./media/shiftplanning-tutorial/iC786619.png &quot;[Admin]")
 3. **[Integration]** の **[Single Sign-On]** をクリックします。
 
     ![[Integration]\(統合\) メニューの [Single Sign-On]\(シングル サインオン\) が選択されている画面のスクリーンショット。](./media/shiftplanning-tutorial/iC786620.png "[Single Sign-On]")
@@ -235,7 +235,7 @@ Azure AD ユーザーが Humanity にログインできるようにするには�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Humanity] タイルをクリックすると、SSO を設定した Humanity に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+アクセス パネル上で [Humanity] タイルをクリックすると、SSO を設定した Humanity に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

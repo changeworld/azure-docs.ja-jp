@@ -7,12 +7,12 @@ ms.service: cache
 ms.devlang: rust
 ms.topic: quickstart
 ms.date: 01/08/2021
-ms.openlocfilehash: acbf5933f01a465ad1855c049796901da5d1ff90
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 23e1bdc895da7ba9941901832d7fc89cd9c6196a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110059736"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128592624"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-rust"></a>クイックスタート: Rust で Azure Cache for Redis を使用する
 
@@ -35,9 +35,9 @@ ms.locfileid: "110059736"
 - [Git](https://git-scm.com/downloads)
 
 ## <a name="create-an-azure-cache-for-redis-instance"></a>Azure Cache for Redis インスタンスを作成する
-[!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
+[!INCLUDE [redis-cache-create](includes/redis-cache-create.md)]
 
-[!INCLUDE [redis-cache-create](../../includes/redis-cache-access-keys.md)]
+[!INCLUDE [redis-cache-create](includes/redis-cache-access-keys.md)]
 
 ## <a name="review-the-code-optional"></a>コードの確認 (省略可能)
 
@@ -177,7 +177,7 @@ fn list() {
 }
 ```
 
-ここでは、いくつかの `SET` 操作が確認できます。 [sadd](https://docs.rs/redis/0.19.0/redis/trait.Commands.html#method.sadd) (高レベルの API) メソッドを使用して、`users` という名前の `SET` に 2 つのエントリを追加しています。 その後、[SISMEMBER](https://redis.io/commands/hset) (低レベルの API) を実行して、`user1` が存在するかどうかをチェックします。 最後に、[smembers](https://docs.rs/redis/0.19.0/redis/trait.Commands.html#method.smembers) を使用し、Vector ([Vec<String>](https://doc.rust-lang.org/std/vec/struct.Vec.html)) の形式でセットのエントリをすべて取得して反復処理します。
+ここでは、いくつかの `SET` 操作が確認できます。 [sadd](https://docs.rs/redis/0.19.0/redis/trait.Commands.html#method.sadd) (高レベルの API) メソッドを使用して、`users` という名前の `SET` に 2 つのエントリを追加しています。 その後、[SISMEMBER](https://redis.io/commands/hset) (低レベルの API) を実行して、`user1` が存在するかどうかをチェックします。 最後に、[smembers](https://docs.rs/redis/0.19.0/redis/trait.Commands.html#method.smembers) を使用し、Vector ([Vec\<String\>](https://doc.rust-lang.org/std/vec/struct.Vec.html)) の形式でセットのエントリをすべて取得して反復処理します。
 
 ```rust
 fn set() {

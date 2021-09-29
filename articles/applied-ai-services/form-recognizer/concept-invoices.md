@@ -2,7 +2,6 @@
 title: 請求書 - Form Recognizer
 titleSuffix: Azure Applied AI Services
 description: Form Recognizer API を使用した請求書分析に関連する概念 (使用法と制限) について説明します。
-services: cognitive-services
 author: laujan
 manager: nitinme
 ms.service: applied-ai-services
@@ -10,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/09/2021
 ms.author: lajanuar
-ms.openlocfilehash: f1d0860e3ab5366661971ba932b87e61d82803e0
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 92f20d9275aad08a47e20202e1daab621d1a4578
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122326387"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128646989"
 ---
 # <a name="form-recognizer-prebuilt-invoice-model"></a>Form Recognizer の事前構築済み請求書モデル
 
@@ -80,7 +79,7 @@ JSON 出力には、次の 3 つの部分があります。
 
 ### <a name="key-value-pairs"></a>キーと値のペア 
 
-|Name| Type | 説明 | Text | 値 (標準化された出力) |
+|Name| 種類 | 説明 | Text | 値 (標準化された出力) |
 |:-----|:----|:----|:----| :----|
 | CustomerName | string | 請求対象の顧客 | Microsoft Corp |  |
 | CustomerId | string | 顧客の参照 ID | CID-12345 |  |
@@ -113,7 +112,7 @@ JSON 出力には、次の 3 つの部分があります。
 
 次に示すのは、JSON の出力応答で請求書から抽出される品目です (以下の出力では、こちらの[サンプル請求書](./media/sample-invoice.jpg)が使用されています)
 
-|名前| Type | 説明 | テキスト (品目 #1) | 値 (標準化された出力) |
+|名前| 種類 | 説明 | テキスト (品目 #1) | 値 (標準化された出力) |
 |:-----|:----|:----|:----| :----|
 | アイテム | string | 品目の完全な文字列テキスト行 | 3/4/2021 A123 Consulting Services 2 hours $30.00 10% $60.00 | |
 | Amount | number | 品目の金額 | $60.00 | 100 |

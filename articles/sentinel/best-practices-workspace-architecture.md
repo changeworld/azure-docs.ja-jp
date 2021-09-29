@@ -8,12 +8,12 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 07/28/2021
-ms.openlocfilehash: 085b9a187ce574c5138867f7a2ce929218717c37
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 591d248bed623a31d9c120ae669615efa5c5544d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123253825"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124763255"
 ---
 # <a name="azure-sentinel-workspace-architecture-best-practices"></a>Azure Sentinel ワークスペース アーキテクチャのベスト プラクティス
 
@@ -42,7 +42,7 @@ Azure Sentinel ワークスペース デプロイを計画するときに、Log 
 
 マネージド セキュリティ サービス プロバイダー (MSSP) である場合など、複数のテナントがある場合は、Azure AD テナントごとに少なくとも 1 つのワークスペースを作成して、自身の Azure AD テナント内でのみ動作する組み込みの[サービス間データ コネクタ](connect-data-sources.md#service-to-service-integration)をサポートすることをお勧めします。
 
-診断設定に基づくすべてのコネクタは、リソースが存在するのと同じテナントに配置されていないワークスペースには接続できません。 これは、[Azure Firewall](connect-azure-firewall.md)、[Azure Storage](connect-azure-storage-account.md)、[Azure アクティビティ](connect-azure-activity.md)、または [Azure Active Directory](connect-azure-active-directory.md) などのコネクタが該当します。
+診断設定に基づくすべてのコネクタは、リソースが存在するのと同じテナントに配置されていないワークスペースには接続できません。 これは、[Azure Firewall](./data-connectors-reference.md#azure-firewall)、[Azure Storage](./data-connectors-reference.md#azure-storage-account)、[Azure アクティビティ](./data-connectors-reference.md#azure-activity)、または [Azure Active Directory](connect-azure-active-directory.md) などのコネクタが該当します。
 
 [Azure Lighthouse](../lighthouse/how-to/onboard-customer.md) を使用すると、別々のテナント内の複数の Azure Sentinel インスタンスを管理するのに役立ちます。
 

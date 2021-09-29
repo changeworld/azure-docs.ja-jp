@@ -2,13 +2,13 @@
 title: サンプル - Azure Event Hubs | Microsoft Docs
 description: この記事では、GitHub にある Azure Event Hubs のサンプルの一覧を示します。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 53adefa5f517ac638117d55471de6fd04cc10773
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.date: 09/15/2021
+ms.openlocfilehash: df698037af1617f4a6da7c2d898abb7bff876fd6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108071300"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128668699"
 ---
 # <a name="git-repositories-with-samples-for-azure-event-hubs"></a>Azure Event Hubs のサンプルが含まれる Git リポジトリ 
 Event Hubs サンプルは [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples) で見つけることができます。 これらのサンプルは [Azure Event Hubs](./index.yml) の主な機能を示しています。 この記事では、使用可能なサンプルを分類して説明しています。また、各サンプルへのリンクも含まれています。

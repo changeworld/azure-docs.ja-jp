@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mqtt
-ms.openlocfilehash: 469e7005d1def5bd2f76347fc934577eca54b435
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e55653b5a5b3ac52c0952d5a70e835646247664e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121745334"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128673713"
 ---
 # <a name="understand-how-azure-iot-edge-uses-certificates"></a>Azure IoT Edge での証明書の使用方法について理解する
 
@@ -22,7 +22,7 @@ ms.locfileid: "121745334"
 IoT Edge 証明書は、モジュールおよびダウンストリーム IoT デバイスで、[IoT Edge ハブ](iot-edge-runtime.md#iot-edge-hub) ランタイム モジュールの ID と正当性を検証するために使用されます。 これらの検証によって、ランタイム、モジュール、および IoT デバイス間で TLS (トランスポート層セキュリティ) によるセキュアな接続が実現します。 IoT Hub 自体と同様に、IoT Edge では、IoT ダウンストリーム (リーフ) デバイスおよび IoT Edge モジュールからの、暗号化されたセキュアな接続が必要になります。 セキュアな TLS 接続を確立するために、IoT Edge ハブ モジュールでは、接続するクライアントにサーバー証明書のチェーンを提示して、それらのクライアントで ID を検証します。
 
 >[!NOTE]
->この記事では、IoT Edge デバイス上のさまざまなコンポーネント間、または IoT Edge デバイスとリーフ デバイスとの間の接続をセキュリティで保護するために使用される証明書について説明します。 また、証明書を使用して、IoT Hub に対して IoT Edge デバイスを認証することもできます。 これらの認証証明書は異なりますが、この記事では説明されません。 証明書を使用してデバイスを認証する方法の詳細については、「[X.509 証明書を使用して IoT Edge デバイスを作成およびプロビジョニングする](how-to-auto-provision-x509-certs.md)」を参照してください。
+>この記事では、IoT Edge デバイス上のさまざまなコンポーネント間、または IoT Edge デバイスとリーフ デバイスとの間の接続をセキュリティで保護するために使用される証明書について説明します。 また、証明書を使用して、IoT Hub に対して IoT Edge デバイスを認証することもできます。 これらの認証証明書は異なりますが、この記事では説明されません。 証明書を使用してデバイスを認証する方法の詳細については、「[X.509 証明書を使用して IoT Edge デバイスを作成およびプロビジョニングする](how-to-provision-devices-at-scale-linux-x509.md)」を参照してください。
 
 この記事では、IoT Edge 証明書が運用、開発、およびテストのシナリオでどのように動作可能であるかについて説明します。
 

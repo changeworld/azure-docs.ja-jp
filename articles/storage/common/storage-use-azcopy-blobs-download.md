@@ -8,16 +8,16 @@ ms.date: 04/02/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: c57744817e26cc79c101246f146d32d3db061ed5
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: 9ee927ff858c1242ddab687e28707049a27a23bb
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113361481"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128624844"
 ---
 # <a name="download-blobs-from-azure-blob-storage-by-using-azcopy"></a>AzCopy を使用して Azure BLOB ストレージから BLOB をダウンロードする
 
-AzCopy v10 コマンド ライン ユーティリティを使用して、BLOB ストレージから BLOB やディレクトリをダウンロードできます。 
+AzCopy v10 コマンド ライン ユーティリティを使用して、BLOB ストレージから BLOB やディレクトリをダウンロードできます。
 
 ファイルのアップロード、BLOB ストレージとの同期、アカウント間での BLOB のコピーなどの他の種類のタスクの例を確認するには、この記事の「[次のステップ](#next-steps)」のセクションに示されているリンクを参照してください。
 
@@ -25,7 +25,7 @@ AzCopy v10 コマンド ライン ユーティリティを使用して、BLOB �
 
 AzCopy のダウンロード方法と、ストレージ サービスに認証資格情報を与える方法については、[AzCopy の作業開始](storage-use-azcopy-v10.md)に関するページをご覧ください。
 
-> [!NOTE] 
+> [!NOTE]
 > この記事の例では、Azure Active Directory (Azure AD) を使用して認証資格情報を指定していることを前提としています。
 >
 > SAS トークンを使用して BLOB データへのアクセスを承認する場合、各 AzCopy コマンドのリソース URL の先頭にそのトークンを追加できます。 (例: `'https://<storage-account-name>.blob.core.windows.net/<container-name><SAS-token>'`)。
@@ -39,7 +39,7 @@ AzCopy のダウンロード方法と、ストレージ サービスに認証資
 
 **構文**
 
-``azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<blob-path>' '<local-file-path>'``
+`azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<blob-path>' '<local-file-path>'`
 
 **例**
 
@@ -105,7 +105,7 @@ azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDi
 
 ## <a name="download-specific-blobs"></a>特定の BLOB をダウンロードする
 
-完全なファイル名かワイルドカード文字 (*) による部分的な名前を使用して、または日付と時刻を使用して、特定の BLOB をダウンロードできます。 
+完全なファイル名かワイルドカード文字 (*) による部分的な名前を使用して、または日付と時刻を使用して、特定の BLOB をダウンロードできます。
 
 > [!TIP]
 > これらの例では、パス引数を単一引用符 ('') で囲んでいます。 Windows コマンド シェル (cmd.exe) を除き、すべてのコマンド シェルで単一引用符を使用します。 Windows コマンド シェル (cmd.exe) を使用している場合は、単一引用符 ('') ではなく、二重引用符 ("") でパス引数を囲みます。
@@ -158,9 +158,9 @@ azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/FileDirec
 
 `--include-pattern` および `--exclude-pattern` オプションは BLOB 名にのみ適用され、パスには適用されません。  ディレクトリ ツリー内に存在するすべてのテキスト ファイル (BLOB) をコピーする場合は、`–recursive` オプションを使用してディレクトリ ツリー全体を取得した後、`–include-pattern` を使用し、`*.txt` を指定してすべてのテキスト ファイルを取得します。
 
-#### <a name="download-blobs-that-were-modified-before-or-after-a-date-and-time"></a>ある日付と時刻の前後に変更された BLOB をダウンロードする 
+#### <a name="download-blobs-that-were-modified-before-or-after-a-date-and-time"></a>ある日付と時刻の前後に変更された BLOB をダウンロードする
 
-[azcopy copy](storage-ref-azcopy-copy.md) コマンドを `--include-before` または `--include-after` オプションと共に使用します。 日付と時刻を ISO-8601 形式で指定します (例: `2020-08-19T15:04:00Z`)。 
+[azcopy copy](storage-ref-azcopy-copy.md) コマンドを `--include-before` または `--include-after` オプションと共に使用します。 日付と時刻を ISO-8601 形式で指定します (例: `2020-08-19T15:04:00Z`)。
 
 次の例では、指定した日付以降に変更されたファイルをダウンロードします。
 
@@ -184,9 +184,9 @@ azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/FileDirec
 
 #### <a name="download-previous-versions-of-a-blob"></a>前のバージョンの BLOB をダウンロードする
 
-[BLOB のバージョン管理](../blobs/versioning-enable.md)を有効にした場合、BLOB の以前のバージョンを 1 つでも複数でもダウンロードできます。 
+[BLOB のバージョン管理](../blobs/versioning-enable.md)を有効にした場合、BLOB の以前のバージョンを 1 つでも複数でもダウンロードできます。
 
-まず、[バージョン ID](../blobs/versioning-overview.md) の一覧が含まれるテキスト ファイルを作成します。 各バージョン ID は別個の行に表示する必要があります。 次に例を示します。 
+まず、[バージョン ID](../blobs/versioning-overview.md) の一覧が含まれるテキスト ファイルを作成します。 各バージョン ID は別個の行に表示する必要があります。 次に例を示します。
 
 ```
 2020-08-17T05:50:34.2199403Z
@@ -194,11 +194,11 @@ azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/FileDirec
 2020-08-17T05:50:36.7607103Z
 ```
 
-次に、[azcopy copy](storage-ref-azcopy-copy.md) コマンドを `--list-of-versions` オプションと共に使用します。 バージョンの一覧を含むテキスト ファイルの場所を指定します (例: `D:\\list-of-versions.txt`)。  
+次に、[azcopy copy](storage-ref-azcopy-copy.md) コマンドを `--list-of-versions` オプションと共に使用します。 バージョンの一覧を含むテキスト ファイルの場所を指定します (例: `D:\\list-of-versions.txt`)。
 
 #### <a name="download-a-blob-snapshot"></a>BLOB のスナップショットをダウンロードする
 
-BLOB スナップショットの **DateTime** 値を参照することによって、[BLOB スナップショット](../blobs/snapshots-overview.md)をダウンロードできます。 
+BLOB スナップショットの **DateTime** 値を参照することによって、[BLOB スナップショット](../blobs/snapshots-overview.md)をダウンロードできます。
 
 **構文**
 

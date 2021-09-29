@@ -2,13 +2,13 @@
 title: IoT Edge セキュリティ モジュールをデプロイする
 description: IoT Edge に Defender for IoT セキュリティ エージェントをデプロイする方法について説明します。
 ms.topic: conceptual
-ms.date: 05/26/2021
-ms.openlocfilehash: 45f7351b47554ce3eb6906d5b6011de945182484
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.date: 09/23/2021
+ms.openlocfilehash: f5d6dbf45745629fb656812bf75a3b69381260eb
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113018133"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128678575"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>IoT Edge デバイスにセキュリティ モジュールをデプロイする
 
@@ -57,8 +57,11 @@ ms.locfileid: "113018133"
 #### <a name="step-1-modules"></a>手順 1:モジュール
 
 1. **AzureSecurityCenterforIoT** モジュールを選択します。
+
 1. **[モジュールの設定]** タブで、**名前** を **azureiotsecurity** に変更します。
+
 1. **[環境変数]** タブで、必要に応じて変数を追加します (たとえば、*debug level* を追加し、次のいずれかの値に設定することができます: "致命的"、"エラー"、"警告"、または "情報")。
+
 1. **[コンテナーの作成オプション]** タブで、次の構成を追加します。
 
     ``` json
@@ -82,19 +85,19 @@ ms.locfileid: "113018133"
 1. **[モジュール ツインの設定]** タブで、次の構成を追加します。
 
    モジュール ツイン プロパティ:
-   
+
    ``` json
      "ms_iotn:urn_azureiot_Security_SecurityAgentConfiguration"
    ```
 
-   モジュール ツイン プロパティのコンテンツ: 
+   モジュール ツイン プロパティのコンテンツ:
 
    ```json
      {
 
      }
    ```
-    
+
    エージェントの構成の詳細については、「[セキュリティ エージェントを構成する](./how-to-agent-configuration.md)」を参照してください。
 
 1. **[Update]\(更新\)** を選択します。

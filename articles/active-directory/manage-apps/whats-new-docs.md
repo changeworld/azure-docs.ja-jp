@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory アプリケーション管理の新機能
 description: Azure Active Directory アプリケーション管理の新規および更新されたドキュメント。
-ms.date: 08/03/2021
+ms.date: 09/08/2021
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: reference
@@ -10,16 +10,38 @@ ms.author: davidmu
 author: davidmu1
 manager: CelesteDG
 reviewer: napuri
-ms.openlocfilehash: d95c81256dcb58b64273d6062563daf38dfdb4fa
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a5de6a248d389c90cbc67f59b0b94f53c35821f2
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121727628"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124810036"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory アプリケーション管理: 新機能
 
 Azure Active Directory アプリケーション管理のドキュメントの最新情報にようこそ。 この記事では、過去 3 か月間に追加された新しいドキュメントと、重要な更新があったものの一覧を示します。 アプリケーション管理サービスの新機能については、「[Azure Active Directory の新着情報](../fundamentals/whats-new.md)」を参照してください。
+
+## <a name="august-2021"></a>2021 年 8 月
+
+### <a name="new-articles"></a>新しい記事
+
+- [同意フィッシングからの保護](protect-against-consent-phishing.md)
+
+### <a name="updated-articles"></a>更新された記事
+
+- [アクセス許可の分類を構成する](configure-permission-classifications.md)
+- [グループ データにアクセスするアプリに対するグループ所有者の同意を構成する](configure-user-consent-groups.md)
+- [Azure Active Directory で、過剰な特権が与えられているか、または疑わしいアプリケーションに対してアクションを実行する](manage-application-permissions.md)
+- [アプリケーションの同意の管理と同意要求の評価](manage-consent-requests.md)
+- [アプリケーションへのテナント全体の管理者の同意の付与](grant-admin-consent.md)
+- [クイック スタート: テナントにアプリケーションを追加する](add-application-portal.md)
+- [エンタープライズ アプリケーションにユーザーとグループを割り当てる](assign-user-or-group-access-portal.md)
+- [アプリへのアクセスの管理](what-is-access-management.md)
+- [Azure Active Directory アプリケーション管理: 新機能](whats-new-docs.md)
+- [Azure Active Directory マイ アプリの構成を計画する](my-apps-deployment-plan.md)
+- [SAML トークンの詳細な証明書署名オプション](certificate-signing-options.md)
+- [マイ アプリ ポータルでコレクションを作成する](access-panel-collections.md)
+
 
 ## <a name="july-2021"></a>2021 年 7 月
 

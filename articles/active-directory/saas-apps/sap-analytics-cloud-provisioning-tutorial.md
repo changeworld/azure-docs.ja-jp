@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/13/2020
 ms.author: thwimmer
-ms.openlocfilehash: 16fbc64f77407c02ec189e9f0bd0de40d9a7f2bd
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 84842b751c0e4351da13d26654147c9541af6973
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113759636"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128643397"
 ---
 # <a name="tutorial-configure-sap-analytics-cloud-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニングを行うために SAP Analytics Cloud を構成する
 
@@ -54,7 +54,7 @@ ms.locfileid: "113759636"
 
 1. [SAP Identity Provisioning の管理コンソール](https://ips-xlnk9v890j.dispatcher.us1.hana.ondemand.com/)に管理者アカウントでサインインし、 **[プロキシ システム]** を選択します。
 
-   ![SAP プロキシ システム](./media/sap-analytics-cloud-provisioning-tutorial/sap-proxy-systems.png.png)
+   ![SAP プロキシ システム](./media/sap-analytics-cloud-provisioning-tutorial/sap-proxy-systems.png)
 
 2. **[プロパティ]** を選択します。
 

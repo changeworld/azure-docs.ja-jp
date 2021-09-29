@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: eca43b43606828ebb514f3f22e1839d96db4e0fa
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 577a288d8dbe6afd7c05aa78e7055bdae288ce82
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110461796"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128589304"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>Microsoft Azure Storage のクライアント側の暗号化と Azure Key Vault
 
@@ -95,7 +95,7 @@ BLOB 全体をダウンロードするときに、ラップされた CEK はラ�
 > [!NOTE]
 > 現在、マージはサポートされていません。 別のキーを使用してプロパティのサブセットが以前に暗号化されている場合、新しいプロパティをマージしたり、メタデータを更新したりするとデータ損失が発生します。 マージでは、追加のサービス呼び出しをして既存のエンティティをサービスから読み込むか、プロパティごとに新しいキーを使用する必要があります。いずれの方法も、パフォーマンス上の理由でお勧めできません。
 
-テーブル データの暗号化は、次のように機能します。  
+テーブル データの暗号化は、次のように機能します。
 
 1. 暗号化するプロパティをユーザーが指定します。
 2. クライアント ライブラリは 16 バイトのランダムな初期化ベクトル (IV) と 32 バイトのランダムなコンテンツ暗号化キー (CEK) を各エンティティごとに生成し、プロパティごとに新しい IV を派生させることで暗号化する個々のプロパティでエンベロープ暗号化を実行します。 暗号化されたプロパティは、バイナリ データとして格納されます。
@@ -129,8 +129,8 @@ Azure Key Vault は、クラウド アプリケーションやサービスで使
 
 Key Vault 統合には、次の 2 つの必要なパッケージがあります。
 
-* Azure.Core には、`IKeyEncryptionKey` および `IKeyEncryptionKeyResolver` インターフェイスが含まれています。 .NET 用ストレージ クライアント ライブラリでは、既に依存関係としてそれが定義されています。
-* Azure.Security.KeyVault.Keys (v4.x) には、Key Vault REST クライアントと、クライアント側の暗号化で使用される暗号化クライアントが含まれています。
+- Azure.Core には、`IKeyEncryptionKey` および `IKeyEncryptionKeyResolver` インターフェイスが含まれています。 .NET 用ストレージ クライアント ライブラリでは、既に依存関係としてそれが定義されています。
+- Azure.Security.KeyVault.Keys (v4.x) には、Key Vault REST クライアントと、クライアント側の暗号化で使用される暗号化クライアントが含まれています。
 
 Key Vault は値の高いマスター キー向けで、Key Vault ごとのスロットルの上限はこれを念頭に設計されています。 Azure.Security.KeyVault.Keys 4.1.0 では、キーのキャッシュをサポートしている `IKeyEncryptionKeyResolver` 実装はありません。 スロットルのためにキャッシュする必要がある場合は、[こちらのサンプル](/samples/azure/azure-sdk-for-net/azure-key-vault-proxy/)に従って、キャッシュ層を `Azure.Security.KeyVault.Keys.Cryptography.KeyResolver` インスタンスに挿入できます。
 
@@ -138,9 +138,9 @@ Key Vault は値の高いマスター キー向けで、Key Vault ごとのス�
 
 次の 3 種類の Key Vault パッケージがあります。
 
-* Microsoft.Azure.KeyVault.Core には、IKey と IKeyResolver が含まれています。 これは、依存関係のない小型パッケージです。 .NET 用ストレージ クライアント ライブラリでは、依存関係としてそれを定義します。
-* Microsoft.Azure.KeyVault (v3.x) には Key Vault REST クライアントが含まれています。
-* Microsoft.Azure.KeyVault.Extensions (v3.x) には、暗号化アルゴリズム、RSAKey、および SymmetricKey の実装を含む拡張機能コードが含まれています。 これは、コアおよび KeyVault 名前空間に依存し、集計リゾルバー (複数のキー プロバイダーを使用する必要がある場合) およびキャッシュ キー リゾルバーを定義する機能を提供します。 ストレージ クライアント ライブラリはこのパッケージに直接依存しませんが、Azure Key Vault を使用してキーを格納するか、Key Vault 拡張機能を使用してローカルおよびクラウドの暗号化プロバイダーを使用する必要がある場合はこのパッケージが必要です。
+- Microsoft.Azure.KeyVault.Core には、IKey と IKeyResolver が含まれています。 これは、依存関係のない小型パッケージです。 .NET 用ストレージ クライアント ライブラリでは、依存関係としてそれを定義します。
+- Microsoft.Azure.KeyVault (v3.x) には Key Vault REST クライアントが含まれています。
+- Microsoft.Azure.KeyVault.Extensions (v3.x) には、暗号化アルゴリズム、RSAKey、および SymmetricKey の実装を含む拡張機能コードが含まれています。 これは、コアおよび KeyVault 名前空間に依存し、集計リゾルバー (複数のキー プロバイダーを使用する必要がある場合) およびキャッシュ キー リゾルバーを定義する機能を提供します。 ストレージ クライアント ライブラリはこのパッケージに直接依存しませんが、Azure Key Vault を使用してキーを格納するか、Key Vault 拡張機能を使用してローカルおよびクラウドの暗号化プロバイダーを使用する必要がある場合はこのパッケージが必要です。
 
 Key Vault は値の高いマスター キー向けで、Key Vault ごとのスロットルの上限はこれを念頭に設計されています。 Key Vault を使用してクライアント側の暗号化を実行するときに推奨されるモデルは、Key Vault 内のシークレットやローカルにキャッシュされたシークレットとして格納された対象マスター キーを使用することです。 次の操作を実行する必要があります。
 
@@ -159,19 +159,19 @@ v11 での Key Vault の使用方法について詳しくは、[v11 暗号化コ
 > [!IMPORTANT]
 > クライアント側の暗号化を使用する場合は、次の重要な点に注意してください。
 >
-> * 暗号化された BLOB を読み書きするときは、完全 BLOB アップロード コマンドと範囲/完全 BLOB ダウンロード コマンドを使用してください。 Put Block、Put Block List、Write Pages、Clear Pages、または Append Block などのプロトコル操作で暗号化された BLOB に書き込まないでください。暗号化された BLOB が壊れたり、読み取り不可能になったりすることがあります。
-> * テーブルの場合、同様の制約があります。 暗号化メタデータを更新せずに暗号化されたプロパティを更新する行為は避けてください。
-> * 暗号化された BLOB にメタデータを設定する場合、メタデータの設定は付加的には行われないため、復号化に必要な暗号化関連メタデータが上書きされる可能性があります。 これはスナップショットにも該当します。暗号化された BLOB のスナップショットを作成するときにメタデータを指定しないでください。 メタデータを設定する必要がある場合は、最初に **FetchAttributes** メソッドを呼び出し、現在の暗号化メタデータを取得してください。メタデータの設定中に、同時書き込みは行わないでください。
-> * 暗号化されたデータのみを処理する必要のあるユーザーについては、既定の要求オプションで、 **RequireEncryption** プロパティを有効にします。 詳細については、以下をご覧ください。
+> - 暗号化された BLOB を読み書きするときは、完全 BLOB アップロード コマンドと範囲/完全 BLOB ダウンロード コマンドを使用してください。 Put Block、Put Block List、Write Pages、Clear Pages、または Append Block などのプロトコル操作で暗号化された BLOB に書き込まないでください。暗号化された BLOB が壊れたり、読み取り不可能になったりすることがあります。
+> - テーブルの場合、同様の制約があります。 暗号化メタデータを更新せずに暗号化されたプロパティを更新する行為は避けてください。
+> - 暗号化された BLOB にメタデータを設定する場合、メタデータの設定は付加的には行われないため、復号化に必要な暗号化関連メタデータが上書きされる可能性があります。 これはスナップショットにも該当します。暗号化された BLOB のスナップショットを作成するときにメタデータを指定しないでください。 メタデータを設定する必要がある場合は、最初に **FetchAttributes** メソッドを呼び出し、現在の暗号化メタデータを取得してください。メタデータの設定中に、同時書き込みは行わないでください。
+> - 暗号化されたデータのみを処理する必要のあるユーザーについては、既定の要求オプションで、 **RequireEncryption** プロパティを有効にします。 詳細については、以下をご覧ください。
 
 ## <a name="client-api--interface"></a>クライアント API/インターフェイス
 
 ユーザーは、キーのみ、リゾルバーのみ、またはキーとリゾルバーの両方を指定できます。 キーは、キー識別子を使用して識別され、ラップ/ラップ解除のロジックを指定します。 リゾルバーは復号化プロセス中のキーの解決に使用します。 これは、指定されたキー識別子のキーを返す解決方法を定義します。 これは、複数の場所で管理されている複数のキーの中から選択するための機能を提供します。
 
-* 暗号化では、キーは常に使用され、キーがないとエラーが発生します。
-* 復号化の場合:
-  * キーが指定され、その識別子が必要なキー識別子と一致する場合、そのキーが復号化に使用されます。 それ以外の場合は、リゾルバーが試行されます。 この試行に対してリゾルバーが存在しない場合は、エラーがスローされます。
-  * キーを取得するよう指定した場合にキー リゾルバーが起動します。 リゾルバーが指定されていても、キー識別子のマッピングがない場合、エラーがスローされます。
+- 暗号化では、キーは常に使用され、キーがないとエラーが発生します。
+- 復号化の場合:
+  - キーが指定され、その識別子が必要なキー識別子と一致する場合、そのキーが復号化に使用されます。 それ以外の場合は、リゾルバーが試行されます。 この試行に対してリゾルバーが存在しない場合は、エラーがスローされます。
+  - キーを取得するよう指定した場合にキー リゾルバーが起動します。 リゾルバーが指定されていても、キー識別子のマッピングがない場合、エラーがスローされます。
 
 ### <a name="requireencryption-mode-v11-only"></a>RequireEncryption モード (v11 のみ)
 
@@ -409,7 +409,7 @@ Debug.Assert(messages.Length == 4)
 
 ## <a name="next-steps"></a>次の手順
 
-* [チュートリアル: Azure Key Vault を使用した Microsoft Azure Storage 内の BLOB の暗号化と復号化](../blobs/storage-encrypt-decrypt-blobs-key-vault.md)
-* [Azure Storage Client Library for .NET NuGet package](https://www.nuget.org/packages/WindowsAzure.Storage)
-* Azure Key Vault NuGet [Core](https://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core/)、[Client](https://www.nuget.org/packages/Microsoft.Azure.KeyVault/)、[Extensions](https://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions/) の 3 つのパッケージをダウンロードする  
-* [Azure Key Vault のドキュメント](../../key-vault/general/overview.md)
+- [チュートリアル: Azure Key Vault を使用した Microsoft Azure Storage 内の BLOB の暗号化と復号化](../blobs/storage-encrypt-decrypt-blobs-key-vault.md)
+- [Azure Storage Client Library for .NET NuGet package](https://www.nuget.org/packages/WindowsAzure.Storage)
+- Azure Key Vault NuGet [Core](https://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core/)、[Client](https://www.nuget.org/packages/Microsoft.Azure.KeyVault/)、[Extensions](https://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions/) の 3 つのパッケージをダウンロードする
+- [Azure Key Vault のドキュメント](../../key-vault/general/overview.md)

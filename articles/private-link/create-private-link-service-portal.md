@@ -8,12 +8,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 08/18/2021
 ms.author: allensu
-ms.openlocfilehash: 6b54784b5cd77113983dea5e936d93e36aca5591
-ms.sourcegitcommit: 47491ce44b91e546b608de58e6fa5bbd67315119
+ms.openlocfilehash: de7d106ae02e1150d9765e60fbfdf0dc0cb9bc74
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122201847"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124810321"
 ---
 # <a name="quickstart-create-a-private-link-service-by-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Private Link サービスを作成する
 
@@ -50,7 +50,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
     | リソース グループ   | **[新規作成]** を選択します。 「**CreatePrivLinkService-rg**」と入力します。 </br> **[OK]** を選択します。 |
     | **インスタンスの詳細** |                                                                 |
     | 名前             | 「**myVNet**」と入力します                                    |
-    | リージョン           | **[(米国) 米国東部]** を選択します |
+    | リージョン           | **[(米国) 米国東部 2]** を選択します。 |
 
 5. **[IP アドレス]** タブを選択するか、ページの下部にある **[Next: IP Addresses]\(次へ: IP アドレス\)** ボタンを選択します。
 
@@ -92,7 +92,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
     | リソース グループ   | **[CreatePrivLinkService-rg]** を選択します。 |
     | **インスタンスの詳細** |                                                                 |
     | 名前             | 「**myNATGateway**」と入力します                                    |
-    | リージョン           | **[(米国) 米国東部 2]** を選択します  |
+    | リージョン           | **[(米国) 米国東部 2]** を選択します。  |
     | 可用性ゾーン | **[なし]** を選択します。 |
     | アイドル タイムアウト (分) | 「**10**」と入力します。 |
 
@@ -170,15 +170,15 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 16. **[追加]** を選択します。
 
-17. ページ下部にある **[次へ: インバウンド規則]** ボタンを選択します。
+17. ページ下部にある **[次へ: 受信規則]** ボタンを選択します。
 
-18. **[インバウンド規則]** タブの **[負荷分散規則]** で、 **[+ 負荷分散規則の追加]** を選択します。
+18. **[受信規則]** タブの **[負荷分散規則]** で、 **[+ 負荷分散規則の追加]** を選択します。
 
 19. **[負荷分散規則の追加]** で、次の情報を入力または選択します。
 
     | 設定 | 値 |
     | ------- | ----- |
-    | Name | 「**myHTTPRule**」と入力します。 |
+    | 名前 | 「**myHTTPRule**」と入力します。 |
     | IP バージョン | 要件に応じて、 **[IPv4]** または **[IPv6]** を選択します。 |
     | フロントエンド IP アドレス | **[LoadBalancerFrontend]** を選択します。 |
     | Protocol | **[TCP]** を選択します。 |
@@ -187,7 +187,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
     | バックエンド プール | **[myBackendPool]** を選択します。 |
     | 正常性プローブ | **[新規作成]** を選択します。 </br> **[名前]** に、「**myHealthProbe**」と入力します。 </br> **[プロトコル]** で、 **[HTTP]** を選択します。 </br> 残りの部分は既定値のままにし、 **[OK]** を選択します。 |
     | セッション永続化 | **[なし]** を選択します。 |
-    | アイドル タイムアウト (分) | 「**15**」と入力するか、その値を選択します。 |
+    | アイドル タイムアウト (分) | 「**15**」を入力または選択します。 |
     | TCP リセット | **[Enabled]** を選択します。 |
     | フローティング IP | **[無効]** をクリックします。 |
 
@@ -262,7 +262,7 @@ Private Link サービスが作成され、トラフィックを受信できる�
     | リソース グループ   | **[CreatePrivLinkService-rg]** を選択します |
     | **インスタンスの詳細** |                                                                 |
     | 名前             | 「**myVNetPE**」と入力します                                    |
-    | リージョン           | **[(米国) 米国東部 2]** を選択します |
+    | リージョン           | **[(米国) 米国東部 2]** を選択します。 |
 
 3. **[IP アドレス]** タブを選択するか、ページの下部にある **[Next: IP Addresses]\(次へ: IP アドレス\)** ボタンを選択します。
 

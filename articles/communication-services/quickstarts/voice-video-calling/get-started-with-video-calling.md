@@ -7,13 +7,14 @@ ms.author: rifox
 ms.date: 06/30/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
+ms.subservice: calling
 zone_pivot_groups: acs-plat-web-ios-android-windows
-ms.openlocfilehash: f7ea9e9706cbf5e5f07f709cc4973927933499ad
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 3eba4506761903294c537049477ed61a97d31ee1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123251599"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128676962"
 ---
 # <a name="quickstart-add-11-video-calling-to-your-app"></a>クイックスタート: アプリに 1 対 1 のビデオ通話を追加する
 

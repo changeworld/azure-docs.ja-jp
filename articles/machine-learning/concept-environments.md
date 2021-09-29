@@ -7,14 +7,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: larryfr
-author: BlackMist
-ms.date: 11/16/2020
-ms.openlocfilehash: 2364f0c029b57649ed56fa9ba93ed3978db2ca41
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+author: Blackmist
+ms.date: 09/23/2021
+ms.openlocfilehash: a90846df8aa57ee970bdf50a7bb61fabeba03144
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122444700"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128665149"
 ---
 # <a name="what-are-azure-machine-learning-environments"></a>Azure Machine Learning 環境とは?
 

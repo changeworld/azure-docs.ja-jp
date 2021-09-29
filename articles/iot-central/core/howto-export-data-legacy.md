@@ -2,17 +2,17 @@
 title: Azure IoT Central からデータをエクスポートする (レガシ) | Microsoft Docs
 description: Azure IoT Central アプリケーションから Azure Event Hubs、Azure Service Bus、および Azure Blob Storage にデータをエクスポートする方法
 services: iot-central
-author: viv-liu
-ms.author: viviali
-ms.date: 06/25/2020
+author: dominicbetts
+ms.author: dobett
+ms.date: 08/30/2021
 ms.topic: how-to
 ms.service: iot-central
-ms.openlocfilehash: cd4df6157d4b163a6c475b0f627a1d96466f8ae5
-ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
+ms.openlocfilehash: 017d563c4f253eb8cc49736f2fc3036ae4082e0a
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122835816"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129153484"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export-legacy"></a>データ エクスポートを使用してクラウドの宛先に IoT データをエクスポートする (レガシ)
 
@@ -555,7 +555,7 @@ Blob Storage の場合は、最後のものが書き込まれてから以降の�
 
 "*デバイス*" と "*デバイス テンプレート*" のストリームが有効になっているプレビュー アプリケーションに既存のデータ エクスポートがある場合は、**2020 年 6 月 30 日** までにそのエクスポートを更新してください。 この要件は、Azure Blob Storage、Azure Event Hubs、および Azure Service Bus へのエクスポートに適用されます。
 
-2020 年 2 月 3 日以降、デバイスとデバイス テンプレートが有効になっているアプリケーションの新しいすべてのエクスポートに、上記のデータ形式が使用されます。 この日付より前に作成されたすべてのエクスポートは、2020 年 6 月 30 日までは古いデータ形式のままになります。この時点で、これらのエクスポートは新しいデータ形式に自動的に移行されます。 新しいデータ形式は、IoT Central パブリック API 内の[デバイス](/rest/api/iotcentral/1.0/devices/get)、[デバイス プロパティ](/rest/api/iotcentral/1.0/devices/get-properties)、および[デバイス テンプレート](/rest/api/iotcentral/1.0/device-templates/get)のオブジェクトと一致します。
+2020 年 2 月 3 日以降、デバイスとデバイス テンプレートが有効になっているアプリケーションの新しいすべてのエクスポートに、上記のデータ形式が使用されます。 この日付より前に作成されたすべてのエクスポートは、2020 年 6 月 30 日までは古いデータ形式のままになります。この時点で、これらのエクスポートは新しいデータ形式に自動的に移行されます。 新しいデータ形式は、IoT Central パブリック API 内の[デバイス](/rest/api/iotcentral/1.0dataplane/devices/get)、[デバイス プロパティ](/rest/api/iotcentral/1.0dataplane/devices/get-properties)、および[デバイス テンプレート](/rest/api/iotcentral/1.0dataplane/device-templates/get)のオブジェクトと一致します。
 
 **デバイス** については、古いデータ形式と新しいデータ形式の間で主に次のような違いがあります。
 - デバイスの `@id` は削除され、`deviceId` の名前は `id` に変更されます 

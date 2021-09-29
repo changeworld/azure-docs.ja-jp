@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-azurepowershell
 ms.author: sumuth
 ms.date: 10/23/2020
-ms.openlocfilehash: 85b7f9898906ffd34ce88fb2243534b5b53898de
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 310e3e4b4b4b00a4b3255cfd581b155c28ed7705
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "122643392"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "128609367"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mysql---flexible-server-preview"></a>クイック スタート:ARM テンプレートを使用して Azure Database for MySQL - フレキシブル サーバー (プレビュー) を作成する
 
@@ -27,7 +27,9 @@ Azure Database for MySQL - フレキシブル サーバー (プレビュー) は
 
 ## <a name="prerequisites"></a>前提条件
 
-アクティブなサブスクリプションが含まれる Azure アカウント。 [無料で作成できます](https://azure.microsoft.com/free/)。
+アクティブなサブスクリプションが含まれる Azure アカウント。 
+
+[!INCLUDE [flexible-server-free-trial-note](../includes/flexible-server-free-trial-note.md)]
 
 ## <a name="review-the-template"></a>テンプレートを確認する
 

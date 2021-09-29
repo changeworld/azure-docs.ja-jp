@@ -3,7 +3,7 @@ title: Azure Portal を使用して OpenAPI 仕様をインポートする | Mic
 description: API Management を使用して OpenAPI 仕様をインポートし、Azure portal と開発者ポータルで API をテストする方法について説明します。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 manager: cfowler
 editor: ''
 ms.service: api-management
@@ -11,13 +11,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 04/20/2020
-ms.author: apimpm
-ms.openlocfilehash: 2fd06fa92d7ad028aa45d78268f5a992d4b2b862
-ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+ms.author: danlep
+ms.openlocfilehash: 438e779d5eb7718a5cf9b56cf9bbe7404f6861c9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123186355"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128679335"
 ---
 # <a name="import-an-openapi-specification"></a>OpenAPI 仕様のインポート
 

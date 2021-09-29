@@ -1,17 +1,17 @@
 ---
 title: Azure Data Lake Storage Gen1 のパフォーマンス チューニング - MapReduce
 description: パラメーター、ガイダンス、計算例、制限事項など、Azure Data Lake Storage Gen1 の MapReduce のパフォーマンス チューニングについて説明します。
-author: twooley
+author: normesta
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 12/19/2016
-ms.author: twooley
-ms.openlocfilehash: 2549413241e422fb1e0e5e1f079c287e0b7cf005
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: normesta
+ms.openlocfilehash: cbe7c9b8ac535d6f69ac6043524d1e720b9a96fc
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97723730"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128660958"
 ---
 # <a name="performance-tuning-guidance-for-mapreduce-on-hdinsight-and-azure-data-lake-storage-gen1"></a>HDInsight の MapReduce と Azure Data Lake Storage Gen1 のパフォーマンス チューニング ガイダンス
 

@@ -9,12 +9,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: ce1d83ddd47553de1efdef80cc33bc5dd4634c81
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: b2eeca4bb6f5d8af01aa283446961b56d27918d7
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123307596"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124761671"
 ---
 # <a name="renew-your-azure-key-vault-certificates"></a>Azure Key Vault の証明書の更新
 
@@ -65,7 +65,7 @@ Azure Key Vault を使用すると、任意の CA から証明書をインポー
 > [!NOTE]
 > 署名した CSR を、自分が作成したのと同じ CSR 要求にマージすることが重要です。 そうしないと、キーが一致しません。
 
-新しい CSR の作成の詳細については、[Key Vault での CSR の作成とマージ]( https://docs.microsoft.com/azure/key-vault/certificates/create-certificate-signing-request#azure-portal)に関するページを参照してください。
+新しい CSR の作成の詳細については、[Key Vault での CSR の作成とマージ](create-certificate-signing-request.md)に関するページを参照してください。
 
 ## <a name="renew-a-self-signed-certificate"></a>自己署名証明書を更新する
 

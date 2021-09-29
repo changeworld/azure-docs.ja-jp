@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.subservice: orchestration
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/24/2021
-ms.openlocfilehash: 135d9235a94dd22311a804ee8c20046d2608a95c
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.date: 09/09/2021
+ms.openlocfilehash: b030ab291f1b1ce0d3d89ea01c63d6c2eaeff72c
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122822222"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129218037"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory-and-azure-synapse-analytics"></a>Azure Data Factory と Azure Synapse Analytics のパイプラインとアクティビティ
 
@@ -32,7 +32,7 @@ Data Factory または Synapse ワークスペースには、1 つ以上のパ�
 
 Azure Data Factory と Azure Synapse Analytics には、[データ移動アクティビティ](copy-activity-overview.md)、[データ変換アクティビティ](transform-data.md)、[制御アクティビティ](#control-flow-activities)の 3 種類のアクティビティ グループがあります。 アクティビティは 0 個以上の入力[データセット](concepts-datasets-linked-services.md)を受け取り、1 個以上の出力[データセット](concepts-datasets-linked-services.md)を生成できます。 次の図は、パイプライン、アクティビティ、データセットの関係を示しています。
 
-![データセット、アクティビティ、パイプラインの関係](media/concepts-pipelines-activities/relationship-between-dataset-pipeline-activity.png)
+:::image type="content" source="media/concepts-pipelines-activities/relationship-between-dataset-pipeline-activity.png" alt-text="データセット、アクティビティ、パイプラインの関係":::
 
 入力データセットはパイプライン内のアクティビティに対する入力を表し、出力データセットはアクティビティの出力を表します。 データセットは、テーブル、ファイル、フォルダー、ドキュメントなど、さまざまなデータ ストア内のデータを示します。 作成したデータセットは、パイプライン内のアクティビティで使用できます。 たとえば、データセットはコピー アクティビティまたは HDInsightHive アクティビティの入力/出力データセットとして使用できます。 データセットの詳細については、「[Azure Data Factory のデータセット](concepts-datasets-linked-services.md)」の記事を参照してください。
 
@@ -56,7 +56,7 @@ Azure Data Factory と Azure Synapse Analytics では、次の変換アクティ
 [MapReduce](transform-data-using-hadoop-map-reduce.md) | HDInsight [Hadoop]
 [Hadoop ストリーミング](transform-data-using-hadoop-streaming.md) | HDInsight [Hadoop]
 [Spark](transform-data-using-spark.md) | HDInsight [Hadoop]
-[ML スタジオ (クラシック) のアクティビティ: Batch Execution と更新リソース](transform-data-using-machine-learning.md) | Azure VM
+[ML Studio (クラシック) のアクティビティ: Batch Execution と更新リソース](transform-data-using-machine-learning.md) | Azure VM
 [ストアド プロシージャ](transform-data-using-stored-procedure.md) | Azure SQL、Azure Synapse Analytics、または SQL Server
 [U-SQL](transform-data-using-data-lake-analytics.md) | Azure Data Lake Analytics
 [カスタム アクティビティ](transform-data-using-dotnet-custom-activity.md) | Azure Batch
@@ -106,7 +106,7 @@ Azure Data Factory と Azure Synapse Analytics では、次の変換アクティ
 }
 ```
 
-タグ | 説明 | Type | 必須
+タグ | 説明 | 種類 | 必須
 --- | ----------- | ---- | --------
 name | パイプラインの名前。 パイプラインが実行するアクションを表す名前を指定します。 <br/><ul><li>最大文字数: 140</li><li>文字、数字、アンダー スコア (\_) のいずれかで始める必要があります</li><li>次の文字は使用できません: "."、"+"、"?"、"/"、"<"、">"、"*"、"%"、" &"、":"、" \" </li></ul> | String | はい
 description | パイプラインの用途を説明するテキストを指定します。 | String | いいえ
@@ -408,4 +408,4 @@ dependsOn | このプロパティを使用して、アクティビティの依�
 - [データ変換アクティビティを含むパイプラインの作成](tutorial-transform-data-spark-powershell.md)
 
 Azure Data Factory を使用して CI/CD (継続的インテグレーションとデリバリー) を実現する方法
-- [Azure Data Factory における継続的インテグレーションとデリバリー](continuous-integration-deployment.md)
+- [Azure Data Factory における継続的インテグレーションとデリバリー](continuous-integration-delivery.md)

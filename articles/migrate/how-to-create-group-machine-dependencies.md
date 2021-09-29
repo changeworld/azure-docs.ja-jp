@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 11/25/2020
-ms.openlocfilehash: 235dc8fa484212a8322b24d32f7516af5441978a
-ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
+ms.openlocfilehash: 757a10473c2f6776ef3a84310b42209ddd12ed45
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114652926"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128643652"
 ---
 # <a name="set-up-dependency-visualization"></a>依存関係の視覚化を設定する
 
@@ -96,18 +96,20 @@ Windows サーバーにエージェントをインストールするには、次
 Linux サーバーに MMA をインストールするには、以下を実行します。
 
 1. 該当するバンドル (x86 または x64) を、scp/sftp を使用して Linux コンピューターに転送します。
+
 2. --install 引数を使用してバンドルをインストールします。
 
-    ```sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>```
+   `sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>`
 
 MMA でサポートされる Linux オペレーティング システムの一覧は、[ここ](../azure-monitor/agents/agents-overview.md#supported-operating-systems)をご覧ください。 
 
 ## <a name="install-the-dependency-agent"></a>依存関係エージェントをインストールする
 
 1. Windows サーバーに依存関係エージェントをインストールするには、セットアップ ファイルをダブルクリックし、ウィザードに従います。
+
 2. Linux サーバーに依存関係エージェントをインストールするには、次のコマンドを使用してルートとしてインストールします。
 
-    ```sh InstallDependencyAgent-Linux64.bin```
+   `sh InstallDependencyAgent-Linux64.bin`
 
 - スクリプトを使用して依存関係エージェントをインストールする方法については、[こちら](../azure-monitor/vm/vminsights-enable-hybrid.md#dependency-agent)をご覧ください。
 - 依存関係エージェントでサポートされるオペレーティング システムの詳細については、[こちら](../azure-monitor/vm/vminsights-enable-overview.md#supported-operating-systems)をご覧ください。

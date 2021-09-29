@@ -8,16 +8,16 @@ ms.topic: overview
 ms.date: 01/27/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4, azuread-video-2020
-ms.openlocfilehash: 7b43cf23b3f01e64c0be31ed013aa990ff80d3db
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 80ba129ae6e945072bea0184445f27e2a724c455
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98938344"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128591991"
 ---
 # <a name="what-is-conditional-access"></a>条件付きアクセスとは
 

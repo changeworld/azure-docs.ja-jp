@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 06/02/2021
 ms.topic: how-to
-ms.openlocfilehash: c721f0ac599863fb2fa72e0c243df1087be83ff1
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 620e304ffa7fae9b12a26c3ba15f57e33aaeed6c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111407545"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128664506"
 ---
 # <a name="create-a-postgresql-hyperscale-server-group-using-kubernetes-tools"></a>Kubernetes ツールを使用して PostgreSQL Hyperscale サーバー グループを作成する
 
@@ -47,7 +47,7 @@ metadata:
   name: pg1-login-secret
 type: Opaque
 ---
-apiVersion: arcdata.microsoft.com/v1alpha1
+apiVersion: arcdata.microsoft.com/v1beta1
 kind: postgresql
 metadata:
   name: pg1

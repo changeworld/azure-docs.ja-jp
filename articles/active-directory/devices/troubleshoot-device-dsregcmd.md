@@ -8,15 +8,15 @@ ms.topic: troubleshooting
 ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4965835581aa6d257faaf9681fe3bdf9b14b933
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: ad62e355fc54f08e6c21967c2359740f22323db9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123426654"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128616766"
 ---
 # <a name="troubleshoot-devices-by-using-the-dsregcmd-command"></a>dsregcmd コマンドを使用したデバイスのトラブルシューティング
 

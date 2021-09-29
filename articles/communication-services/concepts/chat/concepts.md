@@ -9,12 +9,13 @@ ms.author: rifox
 ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 9370539d981838589e0b113083504da33948050b
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.subservice: chat
+ms.openlocfilehash: 54a04db65c94adb1200000d027cdd9177c228297
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123256947"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128672136"
 ---
 # <a name="chat-concepts"></a>チャットに関する概念 
 

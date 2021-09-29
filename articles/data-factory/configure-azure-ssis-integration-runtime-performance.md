@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: integration-services
 author: swinarko
 ms.author: sawinark
-ms.openlocfilehash: 93fdb913da430241835d448945747ba5ab736f45
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 907b946dec3112d152212d26a1d3dffca41150fa
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121749911"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124828382"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>Azure-SSIS 統合ランタイムを高パフォーマンス用に構成する
 
@@ -103,7 +103,7 @@ SSIS エンジニアリング チームによる非公式な社内テストで�
 
 Y 軸は、1 時間に実行が完了したパッケージの数です。 これは、1 つのメモリを消費するパッケージのテスト結果であることに注意してください。 パッケージのスループットを知りたい場合は、自分でテストを実行することをお勧めします。
 
-![SSIS 統合ランタイム パッケージの実行速度](media/configure-azure-ssis-integration-runtime-performance/ssisir-execution-speedV2.png)
+:::image type="content" source="media/configure-azure-ssis-integration-runtime-performance/ssisir-execution-speedV2.png" alt-text="SSIS 統合ランタイム パッケージの実行速度":::
 
 ### <a name="configure-for-overall-throughput"></a>全体的なスループットが上がるように構成する
 
@@ -111,7 +111,7 @@ Y 軸は、1 時間に実行が完了したパッケージの数です。 これ
 
 Y 軸は、1 時間に実行が完了したパッケージの数です。 これは、1 つのメモリを消費するパッケージのテスト結果であることに注意してください。 パッケージのスループットを知りたい場合は、自分でテストを実行することをお勧めします。
 
-![SSIS 統合ランタイムの全体的な最大スループット](media/configure-azure-ssis-integration-runtime-performance/ssisir-overall-throughputV2.png)
+:::image type="content" source="media/configure-azure-ssis-integration-runtime-performance/ssisir-overall-throughputV2.png" alt-text="SSIS 統合ランタイムの全体的な最大スループット":::
 
 ## <a name="azuressisnodenumber"></a>AzureSSISNodeNumber
 

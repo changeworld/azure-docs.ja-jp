@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42a7b541b3f5b5c5d1ec462898615793d50b5493
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f17ff93dde6c4bbb7df57d177bc7d1e3d746b347
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121727721"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124814622"
 ---
 # <a name="azure-active-directory-security-operations-for-privileged-identity-management-pim"></a>Privileged Identity Management に対する Azure Active Directory (PIM) セキュリティ操作
 
@@ -56,19 +56,19 @@ Privileged Identity Management (PIM) は Azure AD サービスの 1 つで、こ
 
 * [サインイン ログ](../reports-monitoring/concept-all-sign-ins.md)
 
-* [Microsoft 365 監査ログ](/microsoft-365/compliance/auditing-solutions-overview?view=o365-worldwide) 
+* [Microsoft 365 監査ログ](/microsoft-365/compliance/auditing-solutions-overview) 
 
 * [Azure Key Vault のログ](../../key-vault/general/logging.md?tabs=Vault)
 
 Azure portal で、Azure AD 監査ログを表示したり、コンマ区切り値 (CSV) または JavaScript Object Notation (JSON) ファイルとしてダウンロードしたりできます。 Azure portal には、Azure AD ログを他のツールと統合する方法がいくつか用意されており、監視とアラートの自動化を強化することができます。
 
-* [**Azure Sentinel**](../../sentinel/overview.md) – セキュリティ情報イベント管理 (SIEM) 機能を備え、エンタープライズ レベルでのインテリジェントなセキュリティ分析を実現します。 
+* [**Azure Sentinel**](../../sentinel/overview.md) - セキュリティ情報イベント管理 (SIEM) 機能を備え、エンタープライズ レベルでのインテリジェントなセキュリティ分析を実現します。 
 
-* [**Azure Monitor**](../../azure-monitor/overview.md) – さまざまな条件に基づいて監視とアラートを自動化します。 ブックを作成または使用して、異なるソースのデータを結合できます。
+* [**Azure Monitor**](../../azure-monitor/overview.md) - さまざまな条件に基づいて監視とアラートを自動化します。 ブックを作成または使用して、異なるソースのデータを結合できます。
 
 * [**Azure Event Hubs**](../../event-hubs/event-hubs-about.md)**と SIEM の統合**- [Azure Event Hubs 統合を介して、Splunk、ArcSight、QRadar、Sumo Logic などの他の SIEM](../reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md) と Azure AD ログを統合できます。
 
-* [**Microsoft Cloud App Security (MCAS)** ](/cloud-app-security/what-is-cloud-app-security) – アプリの検出と管理、アプリとリソース全体の管理、クラウド アプリのコンプライアンスの確認を行うことができます。 
+* [**Microsoft Cloud App Security (MCAS)**](/cloud-app-security/what-is-cloud-app-security) – アプリの検出と管理、アプリとリソース全体の管理、クラウド アプリのコンプライアンスの確認を行うことができます。 
 
 この記事の残りの部分では、階層モデルを使用して編成された、監視およびアラートのベースラインを設定する際の推奨事項について説明します。 事前構築済みのソリューションへのリンクを次の表に示します。 前述のツールを使用してアラートを作成することもできます。 内容は、PIM の次のトピック領域で構成されています。
 
@@ -102,7 +102,7 @@ Azure portal で、Azure AD 監査ログを表示したり、コンマ区切り�
 
 * 悪意のあるユーザーが、特権アクセスをアクティブ化する理由と承認を回避するのを防ぎます。
 
-| [What to monitor] (監視対象)| リスク レベル| Where| フィルター/サブフィルター| メモ |
+| [What to monitor] (監視対象)| リスク レベル| Where| フィルターまたはサブフィルター| メモ |
 | - |- |- |- |- |
 | 特権アカウントのアクセス許可に対する変更についてアラートを出し、その変更を追加します| 高| Azure AD 監査ログ| カテゴリ = ロール管理<br>および<br>アクティビティの種類 – 対象メンバーの追加 (永続的) <br>および<br>アクティビティの種類 – 対象メンバーの追加 (対象) <br>および<br>状態 = 成功/失敗<br>および<br>変更されたプロパティ = Role.DisplayName| 特権ロール管理者とグローバル管理者に対する変更を監視し、常に警告します。 <li>これは、攻撃者がロールの割り当て設定を変更する特権を取得しようとしていることを示している可能性があります<li> しきい値を定義していない場合は、ユーザーの場合については 60 分で 4 回、特権アカウントについては 60 分で 2 回でアラートを送信します。 |
 | 特権アカウントのアクセス許可に対する一括削除の変更についてアラートを出します| 高| Azure AD 監査ログ| カテゴリ = ロール管理<br>および<br>アクティビティの種類 – 対象メンバーの削除 (永続的) <br>および<br>アクティビティの種類 – 対象メンバーの削除 (対象) <br>および<br>状態 = 成功/失敗<br>および<br>変更されたプロパティ = Role.DisplayName| 計画された変更でない場合は、すぐに調査します。 この設定により、攻撃者がユーザーの環境内の Azure サブスクリプションにアクセスできる可能性があります。 |
@@ -123,7 +123,7 @@ Azure リソース ロールの割り当てを監視すると、リソースロ�
 
 * アクティブなロールと資格のあるロールの割り当ての変更
 
-| [What to monitor] (監視対象)| リスク レベル| Where| フィルター/サブフィルター| メモ |
+| [What to monitor] (監視対象)| リスク レベル| Where| フィルターまたはサブフィルター| メモ |
 | - |- |- |- |- |
 | 特権アカウント アクティビティのアラート リソース監査ログの監査| 高| PIM の [Azure リソース] にある [リソースの監査]| アクション: PIM での資格のあるメンバーのロールへの追加が完了しました (期限付き) <br>および<br>プライマリ ターゲット <br>および<br>種類: ユーザー<br>および<br>状態: 成功<br>| 常にアラート。 不正なアクターが、Azure のすべてのリソースを管理する資格のあるロールを追加しようとするのを検出できます。 |
 | アラートの無効化に関する監査アラート リソース監査| Medium| PIM の [Azure リソース] にある [リソースの監査]| アクション: アラートの無効化<br>および<br>プライマリ ターゲット: 1 つのリソースに過剰に割り当てられた所有者<br>および<br>状態: 成功| 不正なアクターが、[アラート] ウィンドウでアラートを無効にし、悪意のあるアクティビティの調査をバイパスしようとするのを検出できます。 |
@@ -143,7 +143,7 @@ Azure AD でサブスクリプション管理を有効にする、所有者ま�
 
 リソース管理者のアクセス許可を持つユーザーは、リソースの PIM を管理できます。 そのため、この機能を使用して、仮想マシンやストレージ アカウントなどの Azure サブスクリプション リソースに対する特権アクセスを、不正なアクターに許可できてしまうというリスクの監視と軽減が必要になります。
 
-| [What to monitor] (監視対象)| リスク レベル| Where| フィルター/サブフィルター| メモ |
+| [What to monitor] (監視対象)| リスク レベル| Where| フィルターまたはサブフィルター| メモ |
 | - |- |- |- |- |
 | 標高| 高| Azure AD の [管理] の [プロパティ]| 設定を定期的に確認します。<br>Azure リソースのアクセス管理| グローバル管理者は、Azure リソースのアクセス管理を有効にすることで昇格が可能です。<br>Active Directory に関連付けられているすべての Azure サブスクリプションと管理グループにロールを割り当てるアクセス許可が不正なアクターに付与されていないか確認します。 |
 
@@ -151,7 +151,7 @@ Azure AD でサブスクリプション管理を有効にする、所有者ま�
 詳細については、「[Privileged Identity Management で Azure リソース ロールを割り当てる](../privileged-identity-management/pim-resource-roles-assign-roles.md)」を参照してください
 
 ## <a name="next-steps"></a>次のステップ
-これらのセキュリティ運用ガイドの記事をご覧ください。
+これらのセキュリティ運用ガイドの記事を参照してください。
 
 [Azure AD セキュリティ運用の概要](security-operations-introduction.md)
 

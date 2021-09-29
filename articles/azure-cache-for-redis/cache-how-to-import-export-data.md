@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/31/2017
 ms.author: yegu
-ms.openlocfilehash: 0430217ab8c2f113127c6a2e519d9e394fc3d3e7
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 91991be65e132ebdcdc06fa5e3a7729debec7062
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123318683"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124836950"
 ---
 # <a name="import-and-export-data-in-azure-cache-for-redis"></a>Azure Cache for Redis でデータをインポートまたはエクスポートする
 
@@ -59,7 +59,7 @@ Import を使用して、Redis と互換性のある RDB ファイルを、任�
 
     ![[インポート]](./media/cache-how-to-import-export-data/cache-import-blobs.png)
 
-    インポート操作の進行状況を監視するには、Azure Portal からの通知を確認するか、[監査ログ](../azure-resource-manager/management/view-activity-logs.md)のイベントを確認します。
+    インポート操作の進行状況を監視するには、Azure Portal からの通知を確認するか、[監査ログ](../azure-monitor/essentials/activity-log.md)のイベントを確認します。
 
     ![Import progress](./media/cache-how-to-import-export-data/cache-import-data-import-complete.png)
 
@@ -89,7 +89,7 @@ Export では、Azure Cache for Redis に格納されたデータを、Redis と
 
     ![[エクスポート]](./media/cache-how-to-import-export-data/cache-export-data.png)
 
-    エクスポート操作の進行状況を監視するには、Azure Portal からの通知を確認するか、[監査ログ](../azure-resource-manager/management/view-activity-logs.md)のイベントを確認します。
+    エクスポート操作の進行状況を監視するには、Azure Portal からの通知を確認するか、[監査ログ](../azure-monitor/essentials/activity-log.md)のイベントを確認します。
 
     ![データのエクスポートの完了](./media/cache-how-to-import-export-data/cache-export-data-export-complete.png)
 

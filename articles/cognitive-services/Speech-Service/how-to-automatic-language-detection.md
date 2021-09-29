@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 05/21/2021
 ms.author: pafarley
 zone_pivot_groups: programming-languages-speech-services-nomore-variant
-ms.openlocfilehash: 04c5c178a37f83203c0b5ee0597cba0b832933d7
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 917dd55035ecca40c0a8a25a8f70d79d6a7e6e37
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123538545"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124806643"
 ---
 # <a name="how-to-use-language-identification"></a>言語識別の使用方法
 
 言語識別は、提供された言語一覧と照合する際に、Speech SDK に渡されたオーディオで話されている言語を判断するために使用されます。 言語識別によって返される値を使用して、音声テキスト変換の言語モデルが選択されます。これにより、文字起こしの精度が上がります。 
 
-言語識別は、[音声翻訳](./get-started-speech-translation.md?pivots=programming-language-csharp&tabs=script%2cwindowsinstall#multi-lingual-translation-with-language-identification)の実行中、または[スタンドアロン識別](/azure/cognitive-services/speech-service/language-identification)を実行する際に使用できます。 
+言語識別は、[音声翻訳](./get-started-speech-translation.md?pivots=programming-language-csharp&tabs=script%2cwindowsinstall#multi-lingual-translation-with-language-identification)の実行中、または[スタンドアロン識別](./language-identification.md)を実行する際に使用できます。 
 
 利用できる言語については、[言語サポート](language-support.md)に関するページを参照してください。
 

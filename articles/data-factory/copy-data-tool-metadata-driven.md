@@ -3,15 +3,16 @@ title: データのコピー ツールでメタデータ駆動型の方法を使
 description: ADF のデータのコピー ツールのメタデータ駆動型の方法について説明します
 author: dearandyxu
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
 ms.date: 06/19/2021
 ms.author: yexu
-ms.openlocfilehash: e2263db67214fb6fea91c8a8cefa65a981475ec3
-ms.sourcegitcommit: deb5717df5a3c952115e452f206052737366df46
+ms.openlocfilehash: 02d7b741ec0c3fb9547d10bde759900ce3a69dd6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122681599"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128663347"
 ---
 # <a name="build-large-scale-data-copy-pipelines-with-metadata-driven-approach-in-copy-data-tool-preview"></a>データのコピー ツール (プレビュー) でメタデータ駆動型の方法を使用して大規模なデータ コピー パイプラインを作成する
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -26,15 +27,15 @@ ADF のデータのコピー ツールによって、このようなメタデー
 
    生成されたパイプラインによってメタデータが読み込まれるように、制御テーブルの接続とテーブル名を入力する必要があります。
 
-   ![タスクの種類を選択する](./media/copy-data-tool-metadata-driven/select-task-type.png)
+   :::image type="content" source="./media/copy-data-tool-metadata-driven/select-task-type.png" alt-text="タスクの種類を選択する":::
 
 2. **接続元データベースの接続** を入力します。 [パラメーター化されリンクされたサービス](parameterize-linked-services.md)も使用できます。
 
-   ![パラメーター化されリンクされたサービスを選択する](./media/copy-data-tool-metadata-driven/select-parameterized-linked-service.png)
+   :::image type="content" source="./media/copy-data-tool-metadata-driven/select-parameterized-linked-service.png" alt-text="パラメーター化されリンクされたサービスを選択する":::
 
 3. コピーする **テーブル名** を選択します。
 
-   ![テーブルの選択](./media/copy-data-tool-metadata-driven/select-table.png)
+   :::image type="content" source="./media/copy-data-tool-metadata-driven/select-table.png" alt-text="テーブルの選択":::
 
    > [!NOTE]
    > 表形式データ ストアを選択した場合は、次のページで全体の読み込みまたは増分読み込みをさらに選択することができます。 ストレージ ストアを選択した場合は、次のページで全体の読み込みのみを選択できます。 ストレージ ストアからの新しいファイルのみの増分読み込みは、現在サポートされていません。  
@@ -47,11 +48,11 @@ ADF のデータのコピー ツールによって、このようなメタデー
 
 6. **[設定]** ページで、 **[Number of concurrent copy tasks]\(同時コピー タスク数\)** によって、ソース ストアからデータを同時にコピーするコピー アクティビティの最大数を決定できます。 既定値は 20 です。 
 
-   ![[設定] ページ](./media/copy-data-tool-metadata-driven/settings.png)
+   :::image type="content" source="./media/copy-data-tool-metadata-driven/settings.png" alt-text="設定ページ":::
 
 7. パイプラインのデプロイ後、制御テーブルとストア プロシージャを作成するための UI から SQL スクリプトをコピーまたはダウンロードできます。 
 
-   ![スクリプトのダウンロード](./media/copy-data-tool-metadata-driven/download-scripts.png)
+   :::image type="content" source="./media/copy-data-tool-metadata-driven/download-scripts.png" alt-text="スクリプトのダウンロード":::
 
    2 つの SQL スクリプトが表示されます。
    
@@ -60,15 +61,15 @@ ADF のデータのコピー ツールによって、このようなメタデー
 
 8. **SSMS** を開いて制御テーブル サーバーに接続し、2 つの SQL スクリプトを実行して制御テーブルとストア プロシージャを作成します。
 
-   ![制御テーブル スクリプトを作成する](./media/copy-data-tool-metadata-driven/create-control-table-script.png)
+   :::image type="content" source="./media/copy-data-tool-metadata-driven/create-control-table-script.png" alt-text="制御テーブル スクリプトを作成する":::
 
 9. メインの制御テーブルと接続制御テーブルに対してクエリを実行し、その中のメタデータを確認します。
 
    **メインの制御テーブル**
-   ![クエリ制御テーブル script1](./media/copy-data-tool-metadata-driven/query-control-table.png)
+   :::image type="content" source="./media/copy-data-tool-metadata-driven/query-control-table.png" alt-text="クエリ制御テーブル script1":::
 
    **接続制御テーブル**
-   ![クエリ制御テーブル script2](./media/copy-data-tool-metadata-driven/query-connection-control-table.png)
+   :::image type="content" source="./media/copy-data-tool-metadata-driven/query-connection-control-table.png" alt-text="クエリ制御テーブル script2":::
 
 10. ADF ポータルに戻り、パイプラインを表示およびデバッグします。 "MetadataDrivenCopyTask_### _######" という名前を付けることによって作成されたフォルダーが表示されます。"MetadataDrivenCopyTask_###_TopLevel" という名前のパイプラインを **クリック** し、 **[debug run]\(デバッグの実行\)** をクリックします。 
 
@@ -85,7 +86,7 @@ ADF のデータのコピー ツールによって、このようなメタデー
 
 11. パイプラインを運用化するトリガーを有効にします。
 
-    ![トリガーを有効にする](./media/copy-data-tool-metadata-driven/enable-trigger.png)
+    :::image type="content" source="./media/copy-data-tool-metadata-driven/enable-trigger.png" alt-text="トリガーを有効にする":::
 
 
 ## <a name="update-control-table-by-copy-data-tool"></a>データのコピー ツールによって制御テーブルを更新する
@@ -93,15 +94,15 @@ ADF のデータのコピー ツールによって、このようなメタデー
 
 1. 最上位のパイプライン **MetadataDrivenCopyTask_xxx_TopLevel** を右クリックして、 **[編集コントロール テーブル]** を選択します。
 
-   ![制御 table1 を編集する](./media/copy-data-tool-metadata-driven/edit-control-table.png)
+   :::image type="content" source="./media/copy-data-tool-metadata-driven/edit-control-table.png" alt-text="制御 table1 を編集する":::
 
 2. 編集する制御テーブルから行を選択します。
 
-   ![制御 table2 を編集する](./media/copy-data-tool-metadata-driven/edit-control-table-select-tables.png)
+   :::image type="content" source="./media/copy-data-tool-metadata-driven/edit-control-table-select-tables.png" alt-text="制御 table2 を編集する":::
 
 3. データのコピー ツールのスループットを使用すると、新しい SQL スクリプトが表示されます。 SQL スクリプトを再実行して、制御テーブルを更新します。
 
-   ![制御 table3 を編集する](./media/copy-data-tool-metadata-driven/edit-control-table-create-script.png)
+   :::image type="content" source="./media/copy-data-tool-metadata-driven/edit-control-table-create-script.png" alt-text="制御 table3 を編集する":::
 
    > [!NOTE]
    > パイプラインは再デプロイされません。 新しく作成された SQL スクリプトを使用すると、制御テーブルのみを更新できます。 
@@ -132,7 +133,7 @@ ADF のデータのコピー ツールによって、このようなメタデー
 
 | 列名 | 説明 | 
 |:--- |:--- |
-| Name | メインの制御テーブル内のパラメーター化された接続の名前。 |
+| 名前 | メインの制御テーブル内のパラメーター化された接続の名前。 |
 | ConnectionSettings | 接続設定。 DB 名、サーバー名などにできます。 |
 
 ## <a name="pipelines"></a>パイプライン
@@ -150,7 +151,7 @@ ADF のデータのコピー ツールによって、このようなメタデー
 | MaxNumberOfObjectsReturnedFromLookupActivity | 出力検索アクティビティの制限に到達しないようにするために、検索アクティビティによって返されるオブジェクトの最大数を定義する方法があります。 ほとんどの場合、既定値を変更する必要はありません。  |
 | windowStart | フォルダー パスとして動的な値 (yyyy/mm/dd など) を入力すると、このパラメーターを使用して、動的フォルダー パスを埋めるために現在のトリガー時間をパイプラインに渡すことができます。 パイプラインがスケジュール トリガーまたはタンブリング ウィンドウ トリガーによってトリガーされる場合、ユーザーはこのパラメーターの値を入力する必要はありません。 サンプル値: 2021-01-25T01:49:28Z |
 
-#### <a name="activities"></a>アクティビティ
+#### <a name="activities"></a>Activities
 | アクティビティ名 | アクティビティの種類 | 説明 |
 |:--- |:--- |:--- |
 | GetSumOfObjectsToCopy  | 参照 | この実行でコピーする必要があるオブジェクト (テーブルなど) の総数を計算します。 |
@@ -173,7 +174,7 @@ ADF のデータのコピー ツールによって、このようなメタデー
 | MainControlTableName | メインの制御テーブルの名前。 |
 | ConnectionControlTableName | 接続制御テーブルの名前。 |
 
-#### <a name="activities"></a>アクティビティ
+#### <a name="activities"></a>Activities
 | アクティビティ名 | アクティビティの種類 | 説明 |
 |:--- |:--- |:--- |
 | DivideOneBatchIntoMultipleGroups | ForEach  | 検索アクティビティの出力制限に達しないように、オブジェクトを 1 つのバッチから複数の並列グループに分割します。 |
@@ -191,7 +192,7 @@ ADF のデータのコピー ツールによって、このようなメタデー
 | ConnectionControlTableName | 接続制御テーブルの名前。 | 
 | windowStart | ユーザーによって構成されている場合、動的フォルダー パスを埋める目的で、現在のトリガー時間をパイプラインに渡すために使用されます。 | 
 
-#### <a name="activities"></a>アクティビティ
+#### <a name="activities"></a>Activities
 | アクティビティ名 | アクティビティの種類 | 説明 |
 |:--- |:--- |:--- |
 | ListObjectsFromOneGroup | ForEach | 1 つのグループからオブジェクトを一覧表示し、各オブジェクトにつき、ダウンストリーム アクティビティに反復処理します。 |

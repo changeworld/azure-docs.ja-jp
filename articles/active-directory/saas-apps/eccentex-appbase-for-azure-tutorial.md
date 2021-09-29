@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/02/2021
 ms.author: jeedes
-ms.openlocfilehash: 6d8c2fc67f768ed3fc4d4c66e91c42fbbe97e032
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d66b09aac2d03fe81cc38ffb53ac1bb29dae6f8f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121786029"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124813618"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-eccentex-appbase-for-azure"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Eccentex AppBase for Azure の統合
 
@@ -199,7 +199,7 @@ Eccentex AppBase for Azure に対して Azure AD SSO を構成してテストす
 
 * Eccentex AppBase for Azure のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Eccentex AppBase for Azure] タイルをクリックすると、Eccentex AppBase for Azure サインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Eccentex AppBase for Azure] タイルをクリックすると、Eccentex AppBase for Azure サインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -1,17 +1,17 @@
 ---
 title: Azure API Management での収益化のサポート
 description: Azure API Management により、API 製品の収益化戦略をサポートする方法について説明します。
-author: v-hhunter
-ms.author: v-hhunter
+author: dlepow
+ms.author: danlep
 ms.date: 08/23/2021
 ms.topic: article
 ms.service: api-management
-ms.openlocfilehash: 88323145b9b6bb66babe77b19d6b834afc2831ab
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: ad6e4358ebd312c498504da6650045d9019fadbe
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122868705"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128548715"
 ---
 # <a name="how-api-management-supports-monetization"></a>API Management での収益化のサポート方法
 
@@ -132,7 +132,7 @@ API Management と選択した支払プロバイダーの間のフロントエ�
 - API Management 製品およびポリシーを取得して、Stripe などの支払プロバイダーにおける同様の概念を同期的に構成できるようにします。
 - API Management を定期的にポーリングして、各サブスクリプションの API 使用状況のメトリックを取得し、課金プロセスを開始します。
 
-詳しくは、[REST API Azure API Management](https://docs.microsoft.com/rest/api/apimanagement/#rest-operation-groups) の概要に関するページをご覧ください。
+詳しくは、[REST API Azure API Management](/rest/api/apimanagement/#rest-operation-groups) の概要に関するページをご覧ください。
 
 ## <a name="devops"></a>DevOps
 

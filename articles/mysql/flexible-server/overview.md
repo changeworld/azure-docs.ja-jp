@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc, references_regions
 ms.topic: overview
 ms.date: 08/10/2021
-ms.openlocfilehash: c2cdd4009261306357bc9d840afa83bc1ebf40df
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 863281f85eac1d467e7935f47a90aacf1b3134dd
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123111637"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129153446"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL - フレキシブル サーバー (プレビュー)
 
@@ -162,26 +162,34 @@ Azure でワークロードを実行する利点の 1 つは、グローバル�
 | Region | 可用性 | 同一ゾーン HA | ゾーン冗長 HA |
 | --- | --- | --- | --- |
 | オーストラリア東部 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| オーストラリア南東部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
 | Brazil South | :heavy_check_mark: | :heavy_check_mark: | :x: |
 | カナダ中部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
+| カナダ東部 | :heavy_check_mark: | :x: | :x: |
+| インド中部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
 | 米国中部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
+| 東アジア (香港) | :heavy_check_mark: | :heavy_check_mark: | :x: |
 | 米国東部 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | 米国東部 2 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| フランス中部 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:|
+| フランス中部 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | ドイツ中西部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
 | Japan East | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| 韓国中部 | :heavy_check_mark: | :x: | :x: |
+| 西日本 | :heavy_check_mark: | :x: | :x: |
+| 韓国中部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
+| 韓国南部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
 | 北ヨーロッパ | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| ノルウェー東部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
 | Southeast Asia | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| スイス北部 | :heavy_check_mark: | :x: | :x: |
+| 米国中南部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
+| 南アフリカ北部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
+| スイス北部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
 | 英国南部 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| 英国西部 | :heavy_check_mark: | :x: | :x: |
+| アラブ首長国連邦北部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
 | 米国西部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
 | 米国西部 2 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | 西ヨーロッパ | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| オーストラリア南東部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
-| 南アフリカ北部 | :heavy_check_mark: | :x: | :x: |
-| 東アジア (香港) | :heavy_check_mark: | :x: | :x: |
-| インド中部 | :heavy_check_mark: | :x: | :x: |
+| 米国中西部 | :heavy_check_mark: | :heavy_check_mark: | :x: |
 
 ## <a name="contacts"></a>連絡先
 

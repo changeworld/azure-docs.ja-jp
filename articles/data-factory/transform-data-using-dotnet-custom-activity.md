@@ -8,13 +8,13 @@ author: nabhishek
 ms.author: abnarain
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell, synapse
-ms.date: 08/24/2021
-ms.openlocfilehash: 30cae7cb417037637b16b8c5e69981d5897c4a0e
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.date: 09/09/2021
+ms.openlocfilehash: 5446bf3c2271fd31fc99e5fadb2f3ab92ca38e26
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122824724"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124806293"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-or-azure-synapse-analytics-pipeline"></a>Azure Data Factory または Azure Synapse Analytics のパイプラインでカスタム アクティビティを使用する
 

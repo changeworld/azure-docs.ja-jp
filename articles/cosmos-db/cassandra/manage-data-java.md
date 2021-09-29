@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 07/17/2021
 ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: c348b82135f129b4c603a70c87f880e8d23d2b67
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.openlocfilehash: 598f1df9808bfe4e367719615ebae332c617a984
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122633629"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124767833"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-cassandra-api-data-v3-driver"></a>Azure Cosmos DB Cassandra API データを管理する Java アプリを作成する (v3 ドライバー)
 [!INCLUDE[appliesto-cassandra-api](../includes/appliesto-cassandra-api.md)]
@@ -39,7 +39,7 @@ ms.locfileid: "122633629"
 - [Git](https://www.git-scm.com/downloads). Ubuntu で `sudo apt-get install git` を実行して Git をインストールします。
 
 > [!NOTE]
-> これは、Java 用のオープンソース Apache Cassandra ドライバーの[バージョン 3](https://github.com/datastax/java-driver/tree/3.x) を使用するシンプルなクイック スタートです。 ほとんどの場合、既存の Apache Cassandra 依存の Java アプリケーションは、既存のコードを変更しなくても Azure Cosmos DB Cassandra API に接続できるはずです。 しかし、全体的なエクスペリエンスを向上させるために、[カスタム Java 拡張機能](https://github.com/Azure/azure-cosmos-cassandra-extensions/tree/feature/java-driver-3%2F1.0.0)を追加して、カスタムの再試行と負荷分散のポリシーを含めることをお勧めします。 これは、Azure Cosmos DB での[レート制限](/azure/cosmos-db/cassandra/scale-account-throughput#handling-rate-limiting-429-errors)とアプリケーション レベルのフェールオーバーをそれぞれ処理するためです。 この拡張機能を実装している包括的なサンプルについては、[こちら](https://github.com/Azure-Samples/azure-cosmos-cassandra-extensions-java-sample)を参照してください。
+> これは、Java 用のオープンソース Apache Cassandra ドライバーの[バージョン 3](https://github.com/datastax/java-driver/tree/3.x) を使用するシンプルなクイック スタートです。 ほとんどの場合、既存の Apache Cassandra 依存の Java アプリケーションは、既存のコードを変更しなくても Azure Cosmos DB Cassandra API に接続できるはずです。 しかし、全体的なエクスペリエンスを向上させるために、[カスタム Java 拡張機能](https://github.com/Azure/azure-cosmos-cassandra-extensions/tree/feature/java-driver-3%2F1.0.0)を追加して、カスタムの再試行と負荷分散のポリシーを含めることをお勧めします。 これは、Azure Cosmos DB での[レート制限](./scale-account-throughput.md#handling-rate-limiting-429-errors)とアプリケーション レベルのフェールオーバーをそれぞれ処理するためです。 この拡張機能を実装している包括的なサンプルについては、[こちら](https://github.com/Azure-Samples/azure-cosmos-cassandra-extensions-java-sample)を参照してください。
 
 ## <a name="create-a-database-account"></a>データベース アカウントの作成
 
