@@ -8,13 +8,13 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 07/08/2020
-ms.openlocfilehash: 59e3c756fbd7d7d0a7d4bd8f7dca2ff64c8a7a0f
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.date: 09/16/2021
+ms.openlocfilehash: 823b758c24ab9b66c47ea76803eb54af8d7c1fb1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113000268"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128631725"
 ---
 # <a name="upgrading-versions-of-the-azure-search-net-management-sdk"></a>Azure Search .NET Management SDK のバージョンのアップグレード
 

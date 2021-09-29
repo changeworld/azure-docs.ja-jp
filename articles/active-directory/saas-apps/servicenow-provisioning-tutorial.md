@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/10/2021
 ms.author: jeedes
-ms.openlocfilehash: afad903734fded062681f18683cb74492993fe1c
-ms.sourcegitcommit: b35c7f3e7f0e30d337db382abb7c11a69723997e
+ms.openlocfilehash: 1d240d1a4fd37c9ec6371407969473e415a27065
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109684219"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129093689"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニングのために ServiceNow を構成する
 
@@ -146,7 +146,7 @@ Azure AD で ServiceNow の自動ユーザー プロビジョニングを構成�
 
    たとえば、ServiceNow の特定のテーブルに 2 つの場所 (Seattle、Los Angeles) と 3 つの部門 (Sales、Finance、Marketing) があるとします。 部門が "Sales" で場所が "Seattle" のユーザーをプロビジョニングすると、そのユーザーは正常にプロビジョニングされます。 部門が "Sales" で場所が "LA" のユーザーをプロビジョニングしようとすると、そのユーザーはプロビジョニングされません。 ServiceNow の参照テーブルに場所 "LA" を追加するか、ServiceNow の形式に合わせて Azure AD のユーザー属性を更新する必要があります。 
 * **EntryJoiningPropertyValueIsMissing** エラーが発生した場合は、[属性マッピング](../app-provisioning/customize-application-attributes.md)を確認して、一致する属性を特定します。 プロビジョニングしようとしているユーザーまたはグループに、この値が存在する必要があります。 
-* 要件や制限事項 (ユーザーの国番号を指定する際の形式など) については、[ServiceNow SOAP API](https://docs.servicenow.com/bundle/newyork-application-development/page/integrate/web-services-apis/reference/r_DirectWebServiceAPIFunctions.html) を確認してください。
+* 要件や制限事項 (ユーザーの国番号を指定する際の形式など) については、[ServiceNow SOAP API](https://docs.servicenow.com/bundle/rome-application-development/page/integrate/web-services-apis/reference/r_DirectWebServiceAPIFunctions.html) を確認してください。
 * プロビジョニング要求は、既定では https://{your-instance-name}.service-now.com/{table-name} に送信されます。 カスタム テナント URL が必要な場合は、URL 全体をインスタンス名として指定できます。
 * **ServiceNowInstanceInvalid** エラーは、ServiceNow インスタンスとの通信に問題があることを示しています。 このエラーのテキストを次に示します。
   

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/10/2020
 ms.author: jeedes
-ms.openlocfilehash: 28dff02bea6f27b0da96c9a852ec5a62fe643151
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1ab0fc883b33a815a2da1681d0b65714e02147e9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92453911"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124813577"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-aventri"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Aventri の統合
 
@@ -167,7 +167,7 @@ Aventri で Azure AD SSO を構成してテストするには、次の構成要�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Aventri] タイルをクリックすると、SSO を設定した Aventri に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+アクセス パネルで [Aventri] タイルをクリックすると、SSO を設定した Aventri に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

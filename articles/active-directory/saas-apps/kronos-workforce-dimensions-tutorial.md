@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/19/2021
 ms.author: jeedes
-ms.openlocfilehash: 53bcb759ceebf83b87f4042a9bf7e95e97f26595
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: faa0d1cd6c079937bf48a75497f3e02bebdc41d3
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114479723"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124758918"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-kronos-workforce-dimensions"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Kronos Workforce Dimensions の統合
 
@@ -131,7 +131,7 @@ Kronos Workforce Dimensions に対する Azure AD SSO を構成してテスト�
 
 * Kronos Workforce Dimensions のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Kronos Workforce Dimensions] タイルをクリックすると、Kronos Workforce Dimensions のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Kronos Workforce Dimensions] タイルをクリックすると、Kronos Workforce Dimensions のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

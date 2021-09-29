@@ -5,12 +5,12 @@ ms.service: container-service
 ms.custom: subject-monitoring
 ms.date: 07/29/2021
 ms.topic: reference
-ms.openlocfilehash: d2c945d975b158131abb99b421622d5dd9d58477
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 9e8a12f8d3075bade1619ce766c74dc8cac23481
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123472418"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124816056"
 ---
 # <a name="monitoring-aks-data-reference"></a>AKS データの監視に関するリファレンス
 
@@ -99,4 +99,4 @@ AKS の監視データの収集と分析の詳細については、[AKS の監�
 ## <a name="see-also"></a>関連項目
 
 - Azure AKS の監視の詳細については、[Azure AKS の監視](monitor-aks.md)に関する記事を参照してください。
-- Azure リソースの監視の詳細については、「[Azure Monitor を使用した Azure リソースの監視](/azure/azure-monitor/essentials/monitor-azure-resource)」を参照してください。
+- Azure リソースの監視の詳細については、「[Azure Monitor を使用した Azure リソースの監視](../azure-monitor/essentials/monitor-azure-resource.md)」を参照してください。

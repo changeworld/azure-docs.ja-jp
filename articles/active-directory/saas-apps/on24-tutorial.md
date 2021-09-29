@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/14/2021
 ms.author: jeedes
-ms.openlocfilehash: aad8e571d477fe0cf50abccaa167ada8b64cc02c
-ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
+ms.openlocfilehash: b6bc4798ca48d4950bb976e6c5b61a02b8b1bd47
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112200296"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124738453"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-on24-virtual-environment-saml-connection"></a>チュートリアル: Azure Active Directory と ON24 Virtual Environment SAML Connection の統合
 
@@ -177,7 +177,7 @@ ON24 Virtual Environment SAML Connection に対して Azure AD SSO を構成し�
 
 * Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した ON24 Virtual Environment SAML Connection に自動的にサインインします。 
 
-また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [ON24 Virtual Environment SAML Connection] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した ON24 Virtual Environment SAML Connection に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [ON24 Virtual Environment SAML Connection] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した ON24 Virtual Environment SAML Connection に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

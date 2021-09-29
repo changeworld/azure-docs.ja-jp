@@ -4,14 +4,15 @@ description: データ フロー コンピューティング最適化オプシ�
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
+ms.subservice: data-flows
 ms.topic: tutorial
 ms.date: 06/29/2021
-ms.openlocfilehash: 883fd878ecc90cb9608b6d5e6cbe8be4fb1ea079
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2ef5e68f9629feab42a4417b4e08697038947495
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122643452"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128661832"
 ---
 # <a name="retirement-of-data-flow-compute-optimized-option"></a>データ フロー コンピューティング最適化オプションの廃止
 
@@ -26,7 +27,7 @@ Azure Data Factory と Azure Synapse Analytics のデータ フローでは、�
 1. コンピューティングの種類として "General Purpose" または "メモリ最適化" を使用して、新しい Azure Integration Runtime を作成します。
 2. これらのいずれかのコンピューティングの種類を使用して、データ フロー アクティビティを設定します。
 
-   ![コンピューティングの種類](media/data-flow/compute-types.png)
+   :::image type="content" source="media/data-flow/compute-types.png" alt-text="コンピューティングの種類":::
 
 ## <a name="comparison-between-different-compute-options"></a>異なるコンピューティング オプションの比較 
 
@@ -37,5 +38,5 @@ Azure Data Factory と Azure Synapse Analytics のデータ フローでは、�
 | コンピューティング最適化データ フロー (非推奨) | 運用環境のワークロードにはお勧めしません |
 
 * [Azure Data Factory の価格ページで、General Purpose とメモリ最適化のデータ フローに対して用意された最新の更新済み価格を参照する](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)
-* [こちらのデータ フローの FAQ で詳細情報を見つける](https://aka.ms/dataflowsqa)  
+* [こちらのデータ フローの FAQ で詳細情報を見つける](/azure/data-factory/frequently-asked-questions#mapping-data-flows)  
 * [Microsoft Q&A でデータ フローに関する質問を投稿し、回答を見つける](https://aka.ms/datafactoryqa)

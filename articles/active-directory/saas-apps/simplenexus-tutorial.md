@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/18/2021
 ms.author: jeedes
-ms.openlocfilehash: f150f01f98b40bc512ec9dee9b53c4d25c8fb736
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: df96d6c4a9c8756ea269f1f67ea6a3a8728fcbe9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110455573"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124775742"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-simplenexus"></a>チュートリアル: Azure Active Directory と SimpleNexus の統合
 
@@ -133,7 +133,7 @@ Azure AD ユーザーが SimpleNexus にログインできるようにするに�
 
 * SimpleNexus のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [SimpleNexus] タイルをクリックすると、SimpleNexus のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [SimpleNexus] タイルをクリックすると、SimpleNexus のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

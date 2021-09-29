@@ -9,12 +9,12 @@ ms.subservice: flexible-scale-sets
 ms.date: 08/05/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli, vmss-flex
-ms.openlocfilehash: cef23894759b0b2dca7098ef1c430548d1720406
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 5d25e46ae62962e3f94d4a3f9222f91ebfa1d430
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122868411"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124823439"
 ---
 # <a name="preview-create-virtual-machines-in-a-flexible-scale-set-using-azure-portal"></a>プレビュー: Azure portal を使用してフレキシブル スケール セットに仮想マシンを作成する
 
@@ -37,9 +37,7 @@ ms.locfileid: "122868411"
 
 フレキシブル オーケストレーション モードで仮想マシン スケール セットをデプロイするには、最初にプレビュー機能に対してサブスクリプションを登録しておく必要があります。 機能の登録には最大で 15 分かかる場合があります。
 
-スケール セット プレビューのフレキシブル オーケストレーション モードでは、次の手順でリンクされている "*プレビュー*" の Azure portal を使用します。 
-
-1. Azure portal (https://preview.portal.azure.com ) にログインします。
+1. https://portal.azure.com で、Azure Portal にログインします。
 1. **[サブスクリプション]** に移動します。
 1. サブスクリプションの名前を選択して、フレキシブル オーケストレーション モードでスケール セットを作成するサブスクリプションの詳細ページに移動します。
 1. **[設定]** の下のメニューで、 **[プレビュー機能]** を選択します。
@@ -57,9 +55,7 @@ ms.locfileid: "122868411"
 
 ### <a name="create-a-virtual-machine-scale-set-in-flexible-orchestration-mode-through-the-azure-portal"></a>Azure portal を通じてフレキシブル オーケストレーション モードで仮想マシン スケール セットを作成します。
 
-スケール セット プレビューのフレキシブル オーケストレーション モードでは、次の手順でリンクされている "*プレビュー*" の Azure portal を使用します。 
-
-1. Azure portal (https://preview.portal.azure.com ) にログインします。
+1. Azure portal (https://portal.azure.com ) にログインします。
 1. 検索バーで、 **[仮想マシン スケール セット]** を検索して選択します。
 1. **[仮想マシン スケール セット]** ページで **[作成]** を選択します。
 1. **[仮想マシン スケール セットの作成]** ページで、 **[オーケストレーション]** セクションを表示します。

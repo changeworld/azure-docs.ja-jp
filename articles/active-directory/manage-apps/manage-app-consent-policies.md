@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/01/2020
+ms.date: 09/02/2021
 ms.author: davidmu
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 2112afeafa10ae9226a3d183489b9e13a094cab7
-ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
+ms.openlocfilehash: bc457ad3a610f8c5942ba5b00a953f0cc5e05481
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113568534"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124835813"
 ---
 # <a name="manage-app-consent-policies"></a>アプリ同意ポリシーを管理する
 

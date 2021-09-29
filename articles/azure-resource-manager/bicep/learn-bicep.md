@@ -3,12 +3,12 @@ title: Microsoft Learn で Bicep を検出する
 description: Bicep について Microsoft Learn で使用できるユニットの概要について説明します。
 ms.topic: conceptual
 ms.date: 08/26/2021
-ms.openlocfilehash: 47ac7f6915453502b40b5ad5417a5d060e2ecd3e
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 71af6012dcdd9cd5b951a0edbe8f244fb3a8be26
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123430344"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124793514"
 ---
 # <a name="bicep-on-microsoft-learn"></a>Microsoft Learn での Bicep
 
@@ -42,6 +42,7 @@ Bicep が Azure へのデプロイを簡略化し、加速するためにどの�
 | [Azure Pipelines を使用して最初の Bicep デプロイ パイプラインを作成する](/learn/modules/build-first-bicep-deployment-pipeline-using-azure-pipelines/) | Bicep コード用の基本的なデプロイ パイプラインを構築します。 サービス接続を使用して、Azure へのパイプラインを安全に識別します。 トリガーを使用してパイプラインを実行するタイミングを構成します。 |
 | [GitHub Actions を使用して最初の Bicep デプロイ ワークフローを作成する](/learn/modules/build-first-bicep-deployment-pipeline-using-github-actions/) | Bicep コード用の基本的なデプロイ ワークフローを構築します。 シークレットを使用し、Azure に対する GitHub Actions ワークフローを安全に識別し、トリガーとスケジュールを使用してワークフローを実行するタイミングを設定します。 |
 | [サービス プリンシパルを使用して Azure デプロイ パイプラインを認証する](/learn/modules/authenticate-azure-deployment-pipeline-service-principals/) | サービス プリンシパルを使用すると、Azure でデプロイ パイプラインを安全に認証できます。 このモジュールでは、サービス プリンシパルの概要、動作方法、作成方法について説明します。 また、それらに Azure リソースへのアクセス許可を付与する方法についても説明します。これにより、パイプラインで Bicep ファイルをデプロイできます。 |
+| [Azure Pipelines を使用して Bicep のコードをテストする](/learn/modules/test-bicep-code-using-azure-pipelines/) | デプロイ パイプラインで Bicep コードを検証してテストします。 デプロイする前に、リンティング、プレフライト検証、What-If 操作を使用して Azure の変更を検証し、各デプロイの後でリソースをテストします。 |
 
 ## <a name="next-steps"></a>次のステップ
 

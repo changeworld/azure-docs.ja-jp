@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/21/2020
 ms.author: jeedes
-ms.openlocfilehash: ab7263cd2b4988a83d8eae67264705dd09f28456
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 45b4ee9c854feed230b1596365fe20c4dcde1b22
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96180950"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124753592"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-eacomposer"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と EAComposer の統合
 
@@ -130,7 +130,7 @@ EAComposer で Azure AD SSO を構成してテストするには、次の手順�
 
 2. EAComposer のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-3. Microsoft アクセス パネルを使用することができます。 アクセス パネル上で [EAComposer] タイルをクリックすると、EAComposer サインオン URL にリダイレクトされます。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+3. Microsoft アクセス パネルを使用することができます。 アクセス パネル上で [EAComposer] タイルをクリックすると、EAComposer サインオン URL にリダイレクトされます。 アクセス パネルの詳細については、[アクセス パネルの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関する記事を参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ

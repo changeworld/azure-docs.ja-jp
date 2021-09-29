@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/11/2021
 ms.author: jeedes
-ms.openlocfilehash: 61b8a15e4e765113455be0e8b37ba22b98e6e4ad
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.openlocfilehash: 6e7e51f235a1f222e431d40d6430a1328ae9a770
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122271115"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124813179"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-knowledgeowl"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と KnowledgeOwl の統合
 
@@ -216,7 +216,7 @@ KnowledgeOwl に対する Azure AD SSO を構成してテストするには、�
 
 * Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した KnowledgeOwl アプリケーションに自動的にサインインされます。 
 
-また、Microsoft マイ アプリ ポータルを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリ ポータルで [KnowledgeOwl] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した KnowledgeOwl アプリケーションに自動的にサインインされます。 マイ アプリ ポータルの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+また、Microsoft マイ アプリ ポータルを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリ ポータルで [KnowledgeOwl] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した KnowledgeOwl アプリケーションに自動的にサインインされます。 マイ アプリ ポータルの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

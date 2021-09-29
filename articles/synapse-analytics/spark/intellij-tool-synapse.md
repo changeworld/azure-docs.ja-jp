@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 04/15/2020
-ms.openlocfilehash: 4ccc36bb9f940fd018fe6d96b5338a7178657aa2
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: d237a1ff5ff2fa55a5a22fbc3b57c93849bdb87d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114469383"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124818824"
 ---
 # <a name="tutorial-create-an-apache-spark-application-with-intellij-using-a-synapse-workspace"></a>チュートリアル:IntelliJ で Synapse ワークスペースを使用して Apache Spark アプリケーションを作成する
 
@@ -145,7 +145,7 @@ Scala アプリケーションを作成した後、これをリモートから�
     |メイン クラス名|既定値は、選択したファイルのメイン クラスです。 クラスを変更するには、省略記号 ( **...** ) をクリックし、別のクラスを選択します。|
     |ジョブの構成|既定のキーと値を変更できます。 詳細については、[Apache Livy REST API](http://livy.incubator.apache.org./docs/latest/rest-api.html) に関するページを参照してください。|
     |コマンド ライン引数|必要に応じて、main クラスの引数をスペースで区切って入力できます。|
-    |参照される JAR と参照されるファイル|参照されている Jar およびファイルのパスを入力できます (存在する場合)。 現在 ADLS Gen2 クラスターのみをサポートする Azure 仮想ファイル システム内のファイルを参照することもできます。 詳細については、[Apache Spark 構成]https://spark.apache.org/docs/2.4.5/configuration.html#runtime-environment) および[リソースをクラスターにアップロードする方法](../../storage/blobs/storage-quickstart-blobs-storage-explorer.md)に関するページをご覧ください。|
+    |参照される JAR と参照されるファイル|参照されている Jar およびファイルのパスを入力できます (存在する場合)。 現在 ADLS Gen2 クラスターのみをサポートする Azure 仮想ファイル システム内のファイルを参照することもできます。 詳細情報:[Apache Spark 構成](https://spark.apache.org/docs/2.4.5/configuration.html#runtime-environment)および[リソースをクラスターにアップロードする方法](../../storage/blobs/quickstart-storage-explorer.md)。|
     |ジョブ アップロード ストレージ|展開して追加のオプションを表示します。|
     |ストレージ型|ドロップダウンリストから **[Use Azure Blob to upload]\(Azure BLOB を使用してアップロード\)** または **[Use cluster default storage account to upload]\(クラスターの既定のストレージ アカウントを使用してアップロード\)** を選択します。|
     |ストレージ アカウント|ストレージ アカウントを入力します。|

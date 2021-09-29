@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/23/2021
 ms.author: jeedes
-ms.openlocfilehash: 69649cf16ecfeca81d730ecfc19c8124fdc25579
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 5948ff079ad207d843e29f8b0735c45d21071ecb
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123224172"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124765459"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-druva"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Druva の統合
 
@@ -165,7 +165,7 @@ Druva では、自動ユーザー プロビジョニングもサポートされ�
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した Druva に自動的にサインインされます。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Druva] タイルをクリックすると、SSO を設定した Druva に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Druva] タイルをクリックすると、SSO を設定した Druva に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

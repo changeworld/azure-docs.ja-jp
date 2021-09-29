@@ -7,14 +7,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 04/01/2020
+ms.date: 09/21/2021
 ms.author: aahi
-ms.openlocfilehash: 32a550e120331a8255281d51725d2d5fc8ca1e05
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: f836a8313927dd773c432428cdf1b12c0cf00aef
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107564508"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128677566"
 ---
 #### <a name="docker-pull-for-the-sentiment-analysis-v3-container"></a>感情分析コンテナー v3 用の docker pull
 

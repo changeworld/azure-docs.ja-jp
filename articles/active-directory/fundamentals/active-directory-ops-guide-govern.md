@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: ba3ca140abe36a31ffa03422420ea537bbe4f39a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 065b0ca66b2e8d253ae798ce672638877ddceef8
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97935752"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124732663"
 ---
 # <a name="azure-active-directory-governance-operations-reference-guide"></a>Azure Active Directory ガバナンス運用リファレンス ガイド
 
@@ -96,7 +96,7 @@ Azure Active Directory を管理するには、ロールアウト プロジェ�
 
 特権アカウントを管理するプロセスが組織に存在しない場合、または通常のユーザー アカウントを使用してサービスとリソースを管理する管理者が現在いる場合は、すぐに個別のアカウントの使用を開始することをお勧めします。たとえば、定期的な日常のアクティビティ用と、特権アクセス用で MFA を使用して構成されたものです。 さらに、組織に Azure AD Premium P2 サブスクリプションがある場合は、すぐに [Azure AD Privileged Identity Management](../privileged-identity-management/pim-configure.md#license-requirements) (PIM) をデプロイするようにします。 同じトークン内で、その特権アカウントも確認し、必要に応じて[下位の特権ロールを割り当てます](../roles/security-planning.md)。
 
-実装が推奨される特権アカウント管理のもう 1 つの側面は、そのようなアカウントに対して、手動で、または [PIM による自動的な方法](../privileged-identity-management/pim-how-to-perform-security-review.md)で[アクセス レビュー](../governance/access-reviews-overview.md)を定義することです。
+実装が推奨される特権アカウント管理のもう 1 つの側面は、そのようなアカウントに対して、手動で、または [PIM による自動的な方法](../privileged-identity-management/pim-perform-azure-ad-roles-and-resource-roles-review.md)で[アクセス レビュー](../governance/access-reviews-overview.md)を定義することです。
 
 #### <a name="privileged-account-management-recommended-reading"></a>特権アカウントの管理に関する推奨資料
 

@@ -3,22 +3,22 @@ title: カスタム トークン キャッシュのシリアル化 (MSAL4j)
 titleSuffix: Microsoft identity platform
 description: MSAL for Java 用のトークン キャッシュをシリアル化する方法について説明します
 services: active-directory
-author: sangonzal
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
 ms.date: 11/07/2019
-ms.author: sagonzal
+ms.author: marsma
 ms.reviewer: nacanuma
 ms.custom: aaddev, devx-track-java
-ms.openlocfilehash: e85cfb8c03111b889a9f95509f337d415c517163
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4a8ea864acaba138819abe900433f01ff125ec09
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87312369"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128616785"
 ---
 # <a name="custom-token-cache-serialization-in-msal-for-java"></a>MSAL for Java でのカスタム トークン キャッシュのシリアル化
 

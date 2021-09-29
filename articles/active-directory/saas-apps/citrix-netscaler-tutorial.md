@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/08/2021
 ms.author: jeedes
-ms.openlocfilehash: 915c8d7767842a698c786052f93e81097a4f79c3
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: 68d973511685c71d7e698bb84ed51ce27a812280
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111986212"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124791234"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-citrix-adc-saml-connector-for-azure-ad-kerberos-based-authentication"></a>チュートリアル: Azure Active Directory シングル サインオンと Citrix ADC SAML Connector for Azure AD の統合 (Kerberos ベースの認証)
 
@@ -440,7 +440,7 @@ GUI を使用してトラフィック ポリシーを仮想サーバーにバイ
 
 * Citrix ADC SAML Connector for Azure AD のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Citrix ADC SAML Connector for Azure AD] タイルをクリックすると、Citrix ADC SAML Connector for Azure AD サインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Citrix ADC SAML Connector for Azure AD] タイルをクリックすると、Citrix ADC SAML Connector for Azure AD サインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ

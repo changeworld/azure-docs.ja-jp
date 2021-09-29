@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/10/2021
 ms.custom: references_regions
-ms.openlocfilehash: 73a1ae771ba3e3e5876b2efd3914b9e38ab0e426
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: b1c7a8f29c08f00cc69dbd304c8215180f5ace92
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123222360"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124796611"
 ---
 # <a name="ai-enrichment-in-azure-cognitive-search"></a>Azure Cognitive Search における AI エンリッチメント
 
@@ -71,7 +71,7 @@ AI エンリッチメントは、Azure Cognitive Services が利用できるリ�
 
 ### <a name="use-cases-for-custom-skills"></a>カスタム スキルのユース ケース
 
-カスタム スキルは、フォームの認識や、[カスタム スキル Web インターフェイス](cognitive-search-custom-skill-interface.md)で指定してラップするモデルを使用するカスタム エンティティ検出などの、より複雑なシナリオに対応できます。 カスタム スキルの例としては、[Forms Recognizer](../cognitive-services/form-recognizer/overview.md)、[Bing Entity Search API](./cognitive-search-create-custom-skill-example.md) の統合、[カスタム エンティティ認識](https://github.com/Microsoft/SkillsExtractorCognitiveSearch)などがあります。
+カスタム スキルは、フォームの認識や、[カスタム スキル Web インターフェイス](cognitive-search-custom-skill-interface.md)で指定してラップするモデルを使用するカスタム エンティティ検出などの、より複雑なシナリオに対応できます。 カスタム スキルの例としては、[Forms Recognizer](../applied-ai-services/form-recognizer/overview.md)、[Bing Entity Search API](./cognitive-search-create-custom-skill-example.md) の統合、[カスタム エンティティ認識](https://github.com/Microsoft/SkillsExtractorCognitiveSearch)などがあります。
 
 ## <a name="enrichment-steps"></a>エンリッチメントの手順 <a name="enrichment-steps"></a>
 

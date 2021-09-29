@@ -8,19 +8,21 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 9/21/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 0e5b5a2fb64c803c76f663d506dec8d750a4af29
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: b8b7454effbef87eb44ec5e99caf5bfb03756d1a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "122643391"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "128609253"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-flexible-server-using-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure Database for MySQL フレキシブル サーバーを作成する
 
 [[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 
-このクイック スタートでは、[Azure Cloud Shell](https://shell.azure.com) で [Azure CLI](/cli/azure/get-started-with-azure-cli) コマンドを使用して、Azure Database for MySQL フレキシブル サーバーを 5 分で作成する方法について説明します。 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
+このクイック スタートでは、[Azure Cloud Shell](https://shell.azure.com) で [Azure CLI](/cli/azure/get-started-with-azure-cli) コマンドを使用して、Azure Database for MySQL フレキシブル サーバーを 5 分で作成する方法について説明します。 
+
+[!INCLUDE [flexible-server-free-trial-note](../includes/flexible-server-free-trial-note.md)]
 
 > [!IMPORTANT]
 > Azure Database for MySQL フレキシブル サーバーは現在、パブリック プレビュー段階にあります。
@@ -226,7 +228,7 @@ mysql -h mydemoserver.mysql.database.azure.com -u mydemouser -p --ssl=true --ssl
 
 上のコマンドの実行後、フレキシブル サーバーに接続しているときに次のエラー メッセージが表示された場合、ファイアウォール規則の設定に不備があります。前述の [Allow public access from any Azure service within Azure to this server]\(Azure 内の Azure サービスからこのサーバーへのパブリック アクセスを許可する\) の設定が済んでいないか、オプションが保存されていません。 ファイアウォールの設定を再試行して、もう一度やり直してください。
 
-ERROR 2002 (HY000):Can't connect to MySQL server on <servername> (115) (エラー 2002 (HY000): &lt;servername&gt; 上の MySQL サーバーに接続できません (115))
+ERROR 2002 (HY000):Can't connect to MySQL server on \<servername\> (115) (エラー 2002 (HY000): &lt;servername&gt; 上の MySQL サーバーに接続できません (115))
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

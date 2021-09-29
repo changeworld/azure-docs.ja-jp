@@ -2,13 +2,13 @@
 title: Event Grid ソースとして Azure Container Registry
 description: Azure Event Grid で Container Registry イベント用に用意されているプロパティについて説明します
 ms.topic: conceptual
-ms.date: 02/11/2021
-ms.openlocfilehash: 7e19b223e43f30a532c1cd8bdc86f9a29220f5aa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/15/2021
+ms.openlocfilehash: 9be7a7b8b9674aa755bc40d56394257783753edd
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100363578"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128651087"
 ---
 # <a name="azure-container-registry-as-an-event-grid-source"></a>Event Grid ソースとして Azure Container Registry
 
@@ -273,7 +273,7 @@ Azure Container Registry では、次の種類のイベントが生成されま�
 
 イベントのトップレベルのデータを次に示します。
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | 説明 |
 | -------- | ---- | ----------- |
 | `topic` | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
 | `subject` | string | 発行元が定義したイベントの対象のパス。 |
@@ -288,7 +288,7 @@ Azure Container Registry では、次の種類のイベントが生成されま�
 
 イベントのトップレベルのデータを次に示します。
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | 説明 |
 | -------- | ---- | ----------- |
 | `source` | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
 | `subject` | string | 発行元が定義したイベントの対象のパス。 |
@@ -302,7 +302,7 @@ Azure Container Registry では、次の種類のイベントが生成されま�
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | 説明 |
 | -------- | ---- | ----------- |
 | `id` | string | イベント ID。 |
 | `timestamp` | string | イベントが発生した時刻。 |
@@ -313,7 +313,7 @@ Azure Container Registry では、次の種類のイベントが生成されま�
 
 ターゲット オブジェクトには、次のプロパティがあります。
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | 説明 |
 | -------- | ---- | ----------- |
 | `mediaType` | string | 参照されているオブジェクトの MIME の種類。 |
 | `size` | 整数 (integer) | コンテンツのバイト数。 length フィールドと同じです。 |
@@ -326,7 +326,7 @@ Azure Container Registry では、次の種類のイベントが生成されま�
 
 要求オブジェクトには、次のプロパティがあります。
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | 説明 |
 | -------- | ---- | ----------- |
 | `id` | string | イベントを開始した要求の ID。 |
 | `addr` | string | IP またはホスト名。イベントを開始したクライアント接続のポートの可能性もあります。 この値は、標準 http 要求からの RemoteAddr です。 |

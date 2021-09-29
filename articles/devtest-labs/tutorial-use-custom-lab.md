@@ -1,15 +1,15 @@
 ---
-title: Azure DevTest Labs のラボへのアクセス | Microsoft Docs
+title: ラボにアクセスする
 description: このチュートリアルでは、Azure DevTest Labs を使って作成されたラボにアクセスし、仮想マシンを要求して使用した後、それらを解放します。
 ms.topic: tutorial
 ms.date: 06/26/2020
 ms.author: spelluru
-ms.openlocfilehash: 96d41b74b3c143feb64fc9c602de68182787c08b
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: d9338bc746158802c86b9631323f3523d01714ce
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107379470"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128561317"
 ---
 # <a name="tutorial-access-a-lab-in-azure-devtest-labs"></a>チュートリアル: Azure DevTest Labs のラボにアクセスする
 このチュートリアルでは、[チュートリアル: Azure DevTest Labs でラボを作成する](tutorial-create-custom-lab.md)の記事で作成したラボを使います。
@@ -77,4 +77,3 @@ VM を使い終わったら、次の手順で VM を解放します。
 
 > [!div class="nextstepaction"]
 > [方法: ラボでの VM の使用](devtest-lab-add-vm.md)
-

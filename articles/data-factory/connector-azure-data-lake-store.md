@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 08/30/2021
-ms.openlocfilehash: e1ec23300f5bccfea161ec967702e65152bc658f
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.date: 09/09/2021
+ms.openlocfilehash: 87e377c5fbfd5c8a6045e7178351419c246a0bc5
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123314620"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128652474"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen1-using-azure-data-factory-or-azure-synapse-analytics"></a>Azure Data Factory または Azure Synapse Analytics を使用して Azure Data Lake Storage Gen1 との間でデータをコピーします
 
@@ -61,7 +61,7 @@ ms.locfileid: "123314620"
 
     # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
 
-    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI を使用した新しいリンク サービスの作成を示すスクリーンショット。":::
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI で新しいリンク サービスを作成するスクリーンショット。":::
 
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
@@ -439,7 +439,7 @@ Data Lake Storage Gen1 から Data Lake Storage Gen2 にアップグレードす
 
 ソース変換では、Azure Data Lake Storage Gen1 内のコンテナー、フォルダー、または個々のファイルからの読み取りが可能です。 **[Source options]\(ソース オプション\)** タブで、ファイルの読み取り方法を管理できます。 
 
-![ソース オプション](media/data-flow/sourceOptions1.png "ソース オプション")
+:::image type="content" source="media/data-flow/sourceOptions1.png" alt-text="ソース オプション":::
 
 **ワイルドカード パス:** ワイルドカード パターンを使用して、1 回のソース変換で、一致するフォルダーとファイルをそれぞれループ処理するようサービスに指示します。 これは、単一のフロー内の複数のファイルを処理するのに効果的な方法です。 既存のワイルドカード パターンをポイントしたときに表示される + 記号を使って複数のワイルドカード一致パターンを追加します。
 
@@ -461,11 +461,11 @@ Data Lake Storage Gen1 から Data Lake Storage Gen2 にアップグレードす
 
 最初に、ワイルドカードを設定して、パーティション分割されたフォルダーと読み取るリーフ ファイルのすべてのパスを含めます。
 
-![パーティション ソース ファイルの設定](media/data-flow/partfile2.png "パーティション ファイルの設定")
+:::image type="content" source="media/data-flow/partfile2.png" alt-text="パーティション ソース ファイルの設定":::
 
 パーティションのルート パス設定を使用して、フォルダー構造の最上位レベルを定義します。 データ プレビューでデータの内容を表示すると、各フォルダー レベルで見つかった解決済みのパーティションがサービスによって追加されることがわかります。
 
-![パーティションのルート パス](media/data-flow/partfile1.png "パーティション ルート パスのプレビュー")
+:::image type="content" source="media/data-flow/partfile1.png" alt-text="パーティションのルート パス":::
 
 **[List of files]:** これはファイル セットです。 処理する相対パス ファイルの一覧を含むテキスト ファイルを作成します。 このテキスト ファイルをポイントします。
 
@@ -477,15 +477,15 @@ Data Lake Storage Gen1 から Data Lake Storage Gen2 にアップグレードす
 
 ワイルドカードを含むソース パスがある場合、構文は次のようになります。
 
-```/data/sales/20??/**/*.csv```
+`/data/sales/20??/**/*.csv`
 
 "移動元" は次のように指定できます。
 
-```/data/sales```
+`/data/sales`
 
 "移動先" は次のように指定できます。
 
-```/backup/priorSales```
+`/backup/priorSales`
 
 この場合、ソースとして指定された /data/sales の下のすべてのファイルは /backup/priorSales に移動されます。
 
@@ -498,7 +498,7 @@ Data Lake Storage Gen1 から Data Lake Storage Gen2 にアップグレードす
 
 シンク変換では、Azure Data Lake Storage Gen1 内のコンテナーまたはフォルダーに書き込むことができます。 **[設定]** タブで、ファイルの書き込み方法を管理できます。
 
-![シンクのオプション](media/data-flow/file-sink-settings.png "シンク オプション")
+:::image type="content" source="media/data-flow/file-sink-settings.png" alt-text="シンクのオプション":::
 
 **Clear the folder**\(フォルダーのクリア\):データが書き込まれる前に、書き込み先のフォルダーをクリアするかどうかを決定します。
 

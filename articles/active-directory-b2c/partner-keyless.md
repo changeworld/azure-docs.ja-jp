@@ -8,15 +8,15 @@ manager: martinco
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 1/17/2021
+ms.date: 09/20/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 006bcc6c0cffe6f7c08b16057325a499e44f06be
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: bc8bc67ca2fd7a023b68f6aa2e21527e26281dd3
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107257910"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128588430"
 ---
 # <a name="tutorial-configure-keyless-with-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C を使用して Keyless を構成する
 
@@ -65,25 +65,21 @@ Keyless 統合には、次のコンポーネントが含まれています。
 新しい ID プロバイダーを追加するには、次の手順を実行します。
 
 1. Azure AD B2C テナントのグローバル管理者として **[Azure portal](https://portal.azure.com/#home)** にサインインします。
-
-2. ご利用の Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。そのためには、トップ メニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択して、ご利用のテナントを含むディレクトリを選択します。
-
-3. Azure Portal の左上隅の **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
-
-4. **[ダッシュボード]**  >  **[Azure Active Directory B2C]**  >   **[ID プロバイダー]** の順に移動します
-
-5. **[Identity Providers]** を選択します。
-
-6. **[追加]** を選択します。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
+1. Azure Portal の左上隅の **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
+1. **[ダッシュボード]**  >  **[Azure Active Directory B2C]**  >   **[ID プロバイダー]** の順に移動します
+1. **[Identity Providers]** を選択します。
+1. **[追加]** を選択します。
 
 ### <a name="configure-an-identity-provider"></a>ID プロバイダーの構成
 
 ID プロバイダーを構成するには、次の手順を実行します。
 
 1. **[ID プロバイダーの種類]**  >  **[OpenID Connect (Preview)]\(OpenID Connect (プレビュー))** の順に選択します
-2. フォームに入力して、ID プロバイダーを設定します。
+1. フォームに入力して、ID プロバイダーを設定します。
 
-   |プロパティ | [値] |
+   |プロパティ | 値 |
    |:-----| :-----------|
    | 名前   | Keyless |
    | メタデータ URL | ホストされている Keyless Authentication アプリの URI を挿入し、その後に特定のパスを入力します ('https://keyless.auth/.well-known/openid-configuration ' など)。 |
@@ -93,11 +89,11 @@ ID プロバイダーを構成するには、次の手順を実行します。
    | 応答の種類 | id_token |
    | 応答モード | form_post|
 
-3. **[OK]** を選択します。
+1. **[OK]** を選択します。
 
-4. **[Map this identity provider's claims]** を選択します。
+1. **[Map this identity provider's claims]** を選択します。
 
-5. フォームに入力して、ID プロバイダーをマップします。
+1. フォームに入力して、ID プロバイダーをマップします。
 
    |プロパティ | 値 |
    |:-----| :-----------|
@@ -105,7 +101,7 @@ ID プロバイダーを構成するには、次の手順を実行します。
    | 表示名 | サブスクリプションから |
    | 応答モード | サブスクリプションから |
 
-6. **[保存]** を選択して、新しい Open ID Connect (OIDC) ID プロバイダーの設定を完了します。
+1. **[保存]** を選択して、新しい Open ID Connect (OIDC) ID プロバイダーの設定を完了します。
 
 ### <a name="create-a-user-flow-policy"></a>ユーザー フロー ポリシーの作成
 

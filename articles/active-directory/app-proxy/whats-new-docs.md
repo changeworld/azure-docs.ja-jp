@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory アプリケーション プロキシの新機能
 description: Azure Active Directory アプリケーション プロキシの新規および更新されたドキュメント。
-ms.date: 08/03/2021
+ms.date: 09/08/2021
 ms.service: active-directory
 ms.subservice: app-proxy
 ms.topic: reference
@@ -9,16 +9,24 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: mtillman
-ms.openlocfilehash: f4fd9a1ac646e4a78598b4d07ba8197ed89da148
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 289cb5e77f94cbe60b71d642f99d21a41ecf042c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121732386"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124779469"
 ---
 # <a name="azure-active-directory-application-proxy-whats-new"></a>Azure Active Directory アプリケーション プロキシ: 新機能
 
 Azure Active Directory アプリケーション プロキシに関するドキュメントの最新情報にようこそ。 この記事では、過去 3 か月間に追加された新しいドキュメントと、重要な更新があったものの一覧を示します。 サービスの新機能については、「[Azure Active Directory の新着情報](../fundamentals/whats-new.md)」を参照してください。
+
+## <a name="august-2021"></a>2021 年 8 月
+
+### <a name="updated-articles"></a>更新された記事
+
+- [Azure AD アプリケーション プロキシでカスタム ドメインを構成する](application-proxy-configure-custom-domain.md)
+
+
 ## <a name="july-2021"></a>2021 年 7 月
 
 ### <a name="updated-articles"></a>更新された記事

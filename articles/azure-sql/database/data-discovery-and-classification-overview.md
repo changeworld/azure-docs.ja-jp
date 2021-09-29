@@ -13,12 +13,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 08/24/2021
 tags: azure-synapse
-ms.openlocfilehash: bcda86cd166e410bfc546c802466180557a92dc8
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: b24fcbac37288dd3c49fe64fe517dd31bbab03d2
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122825057"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124788403"
 ---
 # <a name="data-discovery--classification"></a>データの検出と分類
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -134,7 +134,7 @@ Azure 組織全体の分類法の定義とカスタマイズは 1 か所で行�
 - DBCC SHOW_STATISTICS
 - sys.dm_db_stats_histogram
 
-[sys.fn_get_audit_file](https://docs.microsoft.com/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql) を使用して、Azure Storage アカウントに格納されている監査ファイルから情報を返します。
+[sys.fn_get_audit_file](/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql) を使用して、Azure Storage アカウントに格納されている監査ファイルから情報を返します。
 
 ## <a name="permissions"></a><a id="permissions"></a>アクセス許可
 
@@ -218,10 +218,10 @@ REST API を使用して、分類および推奨事項をプログラムで管�
 
 次の SQL ドライバーを使用して、分類メタデータを取得できます。
 
-- [ODBC ドライバー](https://docs.microsoft.com/sql/connect/odbc/data-classification)
-- [OLE DB ドライバー](https://docs.microsoft.com/sql/connect/oledb/features/using-data-classification)
-- [JDBC ドライバー](https://docs.microsoft.com/sql/connect/jdbc/data-discovery-classification-sample)
-- [Microsoft SQL Server 用 Drivers for PHP](https://docs.microsoft.com/sql/connect/php/release-notes-php-sql-driver)
+- [ODBC ドライバー](/sql/connect/odbc/data-classification)
+- [OLE DB ドライバー](/sql/connect/oledb/features/using-data-classification)
+- [JDBC ドライバー](/sql/connect/jdbc/data-discovery-classification-sample)
+- [Microsoft SQL Server 用 Drivers for PHP](/sql/connect/php/release-notes-php-sql-driver)
 
 ## <a name="faq---advanced-classification-capabilities"></a>FAQ - 高度な分類機能
 

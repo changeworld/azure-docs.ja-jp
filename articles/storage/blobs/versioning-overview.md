@@ -10,12 +10,12 @@ ms.date: 05/10/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0641a7357a334847bc52c3089eb4cf36cc3e3175
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 1feb78c381a189ae2db1d2aa658f8d0782769f99
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123467612"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128664791"
 ---
 # <a name="blob-versioning"></a>BLOB のバージョン管理
 
@@ -45,7 +45,7 @@ BLOB のバージョン管理は、BLOB データの包括的なデータ保護�
 
 BLOB のバージョンは変更できません。 既存の BLOB のバージョンの内容やメタデータを変更することはできません。
 
-BLOB ごとに多数のバージョンがあると、BLOB の一覧表示操作の待機時間が長くなる可能性があります。 Microsoft では、BLOB ごとのバージョン数を 1000 未満に保つことをお勧めします。 ライフサイクル管理を使用して、古いバージョンを自動的に削除できます。 ライフサイクル管理の詳細については、「[Azure Blob Storage アクセス層の自動化によるコストの最適化](storage-lifecycle-management-concepts.md)」を参照してください。
+BLOB ごとに多数のバージョンがあると、BLOB の一覧表示操作の待機時間が長くなる可能性があります。 Microsoft では、BLOB ごとのバージョン数を 1000 未満に保つことをお勧めします。 ライフサイクル管理を使用して、古いバージョンを自動的に削除できます。 ライフサイクル管理の詳細については、「[Azure Blob Storage アクセス層の自動化によるコストの最適化](./lifecycle-management-overview.md)」を参照してください。
 
 BLOB のバージョン管理は、汎用 v2、Premium ブロック BLOB、および従来の BLOB ストレージ アカウントで使用できます。 階層型名前空間が Azure Data Lake Storage Gen2 で使用できるストレージ アカウントは、現在、サポートされていません。
 
@@ -111,7 +111,7 @@ BLOB のバージョン管理が有効になっている場合、BLOB に対す�
 
 [Set Blob Tier](/rest/api/storageservices/set-blob-tier) 操作を呼び出すことにより、現在のバージョンを含む、任意のバージョンのブロック BLOB を別の BLOB のアクセス層に移動することができます。 古いバージョンの BLOB をクールまたはアーカイブ層に移動することにより、より低い容量価格を利用できます。 詳細については、「[Azure Blob Storage: ホット、クール、アーカイブ アクセス層](storage-blob-storage-tiers.md)」を参照してください。
 
-ブロック BLOB を適切な層に移動するプロセスを自動化するには、BLOB のライフ サイクル管理を使用します。 ライフ サイクル管理の詳細については、「[Azure Blob Storage のライフ サイクルを管理する](storage-lifecycle-management-concepts.md)」を参照してください。
+ブロック BLOB を適切な層に移動するプロセスを自動化するには、BLOB のライフ サイクル管理を使用します。 ライフ サイクル管理の詳細については、「[Azure Blob Storage のライフ サイクルを管理する](./lifecycle-management-overview.md)」を参照してください。
 
 ## <a name="enable-or-disable-blob-versioning"></a>BLOB のバージョン管理を有効または無効にする
 
@@ -298,11 +298,11 @@ BLOB の論理的な削除が有効になっている場合に、層が明示的
 
 ## <a name="feature-support"></a>機能サポート
 
-次の表は、お使いのアカウントでこの機能がどのようにサポートされるかと、特定の機能を有効にした場合のサポートへの影響を示しています。 
+この表は、アカウントでのこの機能のサポート状況と、特定の機能を有効にした場合のサポートへの影響を示しています。
 
-| ストレージ アカウントの種類                | Blob Storage (既定のサポート)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+| ストレージ アカウントの種類                | Blob Storage (既定のサポート)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>
 |-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
-| Standard 汎用 v2 | ![はい](../media/icons/yes-icon.png) |![いいえ](../media/icons/no-icon.png)              | ![いいえ](../media/icons/no-icon.png) | 
+| Standard 汎用 v2 | ![はい](../media/icons/yes-icon.png) |![いいえ](../media/icons/no-icon.png)              | ![いいえ](../media/icons/no-icon.png) |
 | Premium ブロック BLOB          | ![はい](../media/icons/yes-icon.png) |![いいえ](../media/icons/no-icon.png)              | ![いいえ](../media/icons/no-icon.png) |
 
 <sup>1</sup>    Data Lake Storage Gen2 とネットワーク ファイル システム (NFS) 3.0 プロトコルはどちらも、階層型名前空間が有効になっているストレージ アカウントが必要です。

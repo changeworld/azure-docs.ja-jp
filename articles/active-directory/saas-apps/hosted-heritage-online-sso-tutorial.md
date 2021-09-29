@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/17/2019
 ms.author: jeedes
-ms.openlocfilehash: fe09da61f4d87fbef4ce6c8739cd79c7bcda6796
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 24d0c4d7d8812192fe256b15076196c9020b3c92
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92442756"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124773077"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hosted-heritage-online-sso"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Hosted Heritage Online SSO の統合
 
@@ -130,7 +130,7 @@ Hosted Heritage Online SSO で Azure AD の SSO を構成してテストする�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Hosted Heritage Online SSO] タイルをクリックすると、SSO を設定した Hosted Heritage Online SSO に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+アクセス パネルで [Hosted Heritage Online SSO] タイルをクリックすると、SSO を設定した Hosted Heritage Online SSO に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

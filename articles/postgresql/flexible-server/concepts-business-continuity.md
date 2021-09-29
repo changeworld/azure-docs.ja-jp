@@ -6,17 +6,16 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/24/2021
-ms.openlocfilehash: 64206d1e5a26d163c5d5ed81c3c762a10de0fe96
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 571311d5d455bedc61bae06634324cc5a380f7ab
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122769590"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128555981"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL - フレキシブル サーバーでのビジネス継続性の概要
 
-> [!IMPORTANT]
-> Azure Database for PostgreSQL - フレキシブル サーバーはプレビュー段階です
+
 
 Azure Database for PostgreSQL - フレキシブル サーバーでの **ビジネス継続性** とは、中断 (特にそのコンピューティング インフラストラクチャに対する) が発生した場合でもビジネス活動を続けることができるようにするメカニズム、ポリシー、手順を指します。 ほとんどの場合、クラウド環境で発生する可能性がある破壊的なイベントはフレキシブル サーバーによって処理されて、アプリケーションとビジネス プロセスの実行が維持されます。 ただし、次のようなイベントは自動的に処理できません。
 

@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 10/29/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b746b1f7d35668759108580d4d695787ac8fa3bc
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: e2411ef1ba4878e43c7f6432b6aa3bd032f2842a
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113733108"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129083716"
 ---
 # <a name="azure-active-directory-feature-deployment-guide"></a>Azure Active Directory 機能のデプロイ ガイド
 
@@ -92,7 +92,7 @@ ms.locfileid: "113733108"
 | タスク | Detail | 必要とされるライセンス |
 | ---- | ------ | ---------------- |
 | [Privileged Identity Management の使用を強制する](../privileged-identity-management/pim-security-wizard.md) | 通常の日常ユーザー アカウントから管理者ロールを削除します。 管理ユーザーにそのロールの使用を認めるのは、多要素認証チェックの成功後、業務上妥当である理由の提示後、指定された承認者からの要求後とします。 | Azure AD Premium P2 |
-| [PIM で Azure AD ディレクトリ ロールのアクセス レビューを完了する](../privileged-identity-management/pim-how-to-start-security-review.md) | セキュリティおよびリーダーシップ チームと協力して、組織のポリシーに基づいて管理アクセスをレビューするアクセス レビュー ポリシーを作成します。 | Azure AD Premium P2 |
+| [PIM で Azure AD ディレクトリ ロールのアクセス レビューを完了する](../privileged-identity-management/pim-create-azure-ad-roles-and-resource-roles-review.md) | セキュリティおよびリーダーシップ チームと協力して、組織のポリシーに基づいて管理アクセスをレビューするアクセス レビュー ポリシーを作成します。 | Azure AD Premium P2 |
 | [動的グループ メンバーシップのポリシーを実装する](../enterprise-users/groups-dynamic-membership.md) | 動的グループを使用して、部門、役職、リージョン、その他の属性など、人事 (または、信頼できるソース) からの属性に基づいて、グループにユーザーを自動的に割り当てます。 |  |
 | [グループ ベースのアプリケーション プロビジョニングを実装する](../manage-apps/what-is-access-management.md) | グループベース アクセス管理のプロビジョニングを使用して、SaaS アプリケーションのユーザーを自動的にプロビジョニングします。 |  |
 | [ユーザー プロビジョニングとプロビジョニング解除を自動化する](../app-provisioning/user-provisioning.md) | 未承認のアクセスを防ぐために、従業員のアカウント ライフサイクルから手動の手順をなくします。 適切なソース (人事システム) からの ID を Azure AD に同期する。 |  |

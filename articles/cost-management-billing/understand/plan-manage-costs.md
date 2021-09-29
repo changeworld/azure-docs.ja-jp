@@ -7,15 +7,15 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: common
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 09/15/2021
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 210f7daa9305f2fb343dfae050354264e2fd823e
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 087cc0e9e650e89edb099e2593383a54d173ad89
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98898564"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128588088"
 ---
 # <a name="plan-to-manage-azure-costs"></a>Azure のコストの管理を計画する
 

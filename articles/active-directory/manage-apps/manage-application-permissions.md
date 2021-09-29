@@ -12,12 +12,12 @@ ms.date: 08/31/2021
 ms.author: davidmu
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35afe080bdbb98a871fa039ad533c31ac0e8c111
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: ab20521ea61820a7518529c4940837ab08ae3a4f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123439706"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124822967"
 ---
 # <a name="take-action-on-over-privileged-or-suspicious-applications-in-azure-active-directory"></a>Azure Active Directory で、過剰な特権が与えられているか、または疑わしいアプリケーションに対してアクションを実行する
 
@@ -29,7 +29,7 @@ ms.locfileid: "123439706"
 
 次のアクションを実行するには、グローバル管理者、アプリケーション管理者、またはクラウド アプリケーション管理者としてサインインする必要があります。
 
-- Azure AD PowerShell を設定します。 [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/) に関するページを参照してください。
+- Azure AD PowerShell を設定します。 [Azure AD PowerShell](/powershell/azure/) に関するページを参照してください。
 
 アプリケーションへのアクセスを制限するには、ユーザーの割り当てが必要で、その後、アプリケーションにユーザーまたはグループを割り当てる必要があります。  詳細については、[ユーザーとグループの割り当て方法](./assign-user-or-group-access-portal.md)に関するページを参照してください。
 

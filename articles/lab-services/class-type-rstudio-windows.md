@@ -5,18 +5,18 @@ author: emaher
 ms.topic: article
 ms.date: 08/26/2021
 ms.author: enewman
-ms.openlocfilehash: 6a50b1f0cb53fa064a426b2fe3d28ae7fb7be2aa
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 5d081e21723fa73d84beec12e8602234ad5e8074
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123114083"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124757384"
 ---
 # <a name="set-up-a-lab-to-teach-r-on-windows"></a>Windows で R を教えるためにラボを設定する
 
 [R](https://www.r-project.org/about.html) は、統計に関するコンピューティングとグラフィックスで使用されるオープン ソースの言語です。  これは、遺伝学の統計分析を始め、自然言語処理、財務データの分析において使用されています。  R には、[対話型のコマンドライン](https://cran.r-project.org/doc/manuals/r-release/R-intro.html#Invoking-R-from-the-command-line) エクスペリエンスが用意されています。  [RStudio](https://www.rstudio.com/products/rstudio/) は、R 言語で使用できる対話型開発環境 (IDE) です。  無料版には、コード編集ツール、統合されたデバッグ エクスペリエンス、パッケージ開発ツールが用意されています。
 
-この記事では、RStudio と R の、統計的コンピューティングを使用する必要があるクラスの構成要素としての側面のみを取り上げます。  [ディープ ラーニング](class-type-deep-learning-natural-language-processing.md)や、[Python と Jupyter Notebooks](class-type-jupyter-notebook.md) を扱う種類のクラスでは、RStudio の設定方法が異なります。  各記事では、マーケットプレース イメージの [Data Science Virtual Machine for Linux (Ubuntu)](https://azuremarketplace.microsoft.com/en-US/marketplace/apps/microsoft-dsvm.ubuntu-1804) を使用する方法について説明しています。それには、プレインストールされた RStudio など、多くの[データ サイエンス関連ツール](/azure/machine-learning/data-science-virtual-machine/tools-included)が含まれています。  
+この記事では、RStudio と R の、統計的コンピューティングを使用する必要があるクラスの構成要素としての側面のみを取り上げます。  [ディープ ラーニング](class-type-deep-learning-natural-language-processing.md)や、[Python と Jupyter Notebooks](class-type-jupyter-notebook.md) を扱う種類のクラスでは、RStudio の設定方法が異なります。  各記事では、マーケットプレース イメージの [Data Science Virtual Machine for Linux (Ubuntu)](https://azuremarketplace.microsoft.com/en-US/marketplace/apps/microsoft-dsvm.ubuntu-1804) を使用する方法について説明しています。それには、プレインストールされた RStudio など、多くの[データ サイエンス関連ツール](../machine-learning/data-science-virtual-machine/tools-included.md)が含まれています。  
 
 ## <a name="lab-account-configuration"></a>ラボ アカウントの構成
 

@@ -3,12 +3,12 @@ title: 効果のしくみを理解する
 description: Azure Policy の定義には、コンプライアンスが管理および報告される方法を決定するさまざまな効果があります。
 ms.date: 09/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: aa1dc5554924efa36d7f1ab8b9d7398a7a076852
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: bca5d7535cbbcbf2fc7b6f54e853872c788c723d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123437042"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124792279"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Policy の効果について
 
@@ -202,7 +202,7 @@ AuditIfNotExists 効果の **details** プロパティは、照合する関連�
   - 既定値は _ResourceGroup_ です。
 - **EvaluationDelay** (省略可能)
   - 関連リソースの存在を評価する必要があるタイミングを指定します。 遅延は、リソースの作成または更新要求の結果である評価のみに使用されます。
-  - 使用できる値は `AfterProvisioning`、`AfterProvisioningSuccess`、`AfterProvisioningFailure`、または ISO 8601 期間の 10 から 360 分の間です。
+  - 使用できる値は `AfterProvisioning`、`AfterProvisioningSuccess`、`AfterProvisioningFailure`、または ISO 8601 期間の 0 から 360 分の間です。
   - _AfterProvisioning_ 値では、ポリシー規則の IF 条件で評価されたリソースのプロビジョニング結果が検査されます。 結果に関係なく、プロビジョニングが完了した後に `AfterProvisioning` が実行されます。 プロビジョニングに 6 時間より長くかかると、_Afterprovisioning_ の評価の遅延を判断するときにエラーとして扱われます。
   - 既定値は `PT10M` (10 分間) です。
   - 評価の遅延を長く指定すると、リソースの記録されたコンプライアンス状態が次の[評価のトリガー](../how-to/get-compliance-data.md#evaluation-triggers)まで更新されない場合があります。

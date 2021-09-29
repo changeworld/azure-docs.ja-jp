@@ -3,12 +3,12 @@ title: テンプレート内のパラメーター
 description: Azure Resource Manager テンプレート (ARM テンプレート) でパラメーターを定義する方法について説明します。
 ms.topic: conceptual
 ms.date: 05/14/2021
-ms.openlocfilehash: 4fa624763b3a0eaa0277882fcb8493e96e24e7a5
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 5c94dc3f4d37fa6c08e29e03e88dd3ba54e68271
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111960212"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128625527"
 ---
 # <a name="parameters-in-arm-templates"></a>ARM テンプレートのパラメーター
 
@@ -199,7 +199,7 @@ Resource Manager は、デプロイ操作を開始する前にパラメーター
   "resources": [
     {
       "type": "Microsoft.KeyVault/vaults",
-      "apiVersion": "2019-09-01",
+      "apiVersion": "2021-06-01-preview",
       "name": "[parameters('vaultName')]",
       ...
     }
@@ -245,7 +245,7 @@ Resource Manager は、デプロイ操作を開始する前にパラメーター
   "resources": [
     {
       "type": "Microsoft.Network/virtualNetworks",
-      "apiVersion": "2020-06-01",
+      "apiVersion": "2021-02-01",
       "name": "[parameters('vNetSettings').name]",
       "location": "[parameters('vNetSettings').location]",
       "properties": {

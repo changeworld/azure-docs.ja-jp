@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/22/2021
 ms.author: jeedes
-ms.openlocfilehash: a45b4d1c006762cdad7f818c22f59b9e18436b95
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: c60b8f605fea83ef0eccab140f1d9f460be78701
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108146151"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124778953"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-oracle-peoplesoft---protected-by-f5-big-ip-apm"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Oracle PeopleSoft - Protected by F5 BIG-IP APM の統合
 
@@ -329,7 +329,7 @@ Oracle PeopleSoft - Protected by F5 BIG-IP APM で Azure AD SSO を構成して�
 
 * Azure portal で **[このアプリケーションをテストします]** をクリックします。すると、SSO を設定した Oracle PeopleSoft-Protected by F5 BIG-IP APM に自動的にサインインします。 
 
-また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [Oracle PeopleSoft-Protected by F5 BIG-IP APM] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Oracle PeopleSoft-Protected by F5 BIG-IP APM に自動的にサインインされるはずです。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [Oracle PeopleSoft-Protected by F5 BIG-IP APM] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Oracle PeopleSoft-Protected by F5 BIG-IP APM に自動的にサインインされるはずです。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

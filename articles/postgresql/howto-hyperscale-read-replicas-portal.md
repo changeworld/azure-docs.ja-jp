@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 08/03/2021
-ms.openlocfilehash: 74c9df5ee9eb6cd6a61104b4c9cce91b284dbb29
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 45867bc93b90c76d971fc4b7d8e4d8cc094929d6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121726139"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128629011"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---hyperscale-citus-from-the-azure-portal"></a>Azure portal から Azure Database for PostgreSQL - Hyperscale (Citus) の読み取りレプリカを作成および管理する
 
@@ -47,13 +47,7 @@ ms.locfileid: "121726139"
 
 ## <a name="delete-a-primary-server-group"></a>プライマリ サーバー グループを削除する
 
-プライマリ サーバー グループを削除するには、スタンドアロンの Hyperscale (Citus) サーバー グループの削除と同じ手順を使用します。 
-
-> [!IMPORTANT]
->
-> プライマリ サーバー グループを削除すると、すべての読み取りレプリカへのレプリケーションが停止されます。 読み取りレプリカは、読み取りと書き込みの両方をサポートするようになったスタンドアロン サーバー グループになります。
-
-Azure Portal からサーバー グループを削除するには、次の手順に従います。
+プライマリ サーバー グループを削除するには、スタンドアロンの Hyperscale (Citus) サーバー グループの削除と同じ手順を使用します。 Azure portal から次の手順を実行します。
 
 1. Azure portal で、ご利用の プライマリ Azure Database for PostgreSQL サーバー グループを選択します。
 

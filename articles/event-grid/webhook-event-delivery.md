@@ -2,13 +2,13 @@
 title: webhook のイベント配信
 description: この記事では、WebHook を使用する場合の WebHook イベント配信とエンドポイント検証について説明します。
 ms.topic: conceptual
-ms.date: 09/02/2021
-ms.openlocfilehash: 04ae18ca6aab01331bdc1005498820177dfec56d
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.date: 09/15/2021
+ms.openlocfilehash: 58da34498fa3e2fc81c8fe1476b1098688b9c6c0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123450199"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128625166"
 ---
 # <a name="webhook-event-delivery"></a>Webhook のイベント配信
 Webhook は、Azure Event Grid からイベントを受信する多数ある方法の 1 つです。 新しいイベントの準備ができるたびに、Event Grid サービスは、本文にイベントが含まれる HTTP 要求を構成済み HTTP エンドポイントに POST します。
@@ -81,7 +81,7 @@ SubscriptionValidationEvent の例を以下に示します。
 サブスクリプション検証ハンドシェイクの処理の例については、[C# のサンプル](https://github.com/Azure-Samples/event-grid-dotnet-publish-consume-events/blob/master/EventGridConsumer/EventGridConsumer/Function1.cs)に関するページをご覧ください。
 
 ## <a name="endpoint-validation-with-cloudevents-v10"></a>CloudEvents v1.0 を使用したエンドポイントの検証
-CloudEvents v1.0 では、**HTTP OPTIONS** メソッドを使用して、独自の[不正使用防止のセマンティクス](webhook-event-delivery.md)が実装されます。 詳細については、 [こちら](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection)を参照してください。 出力に CloudEvents スキーマを使用すると、Event Grid では、Event Grid の検証イベント メカニズムではなく CloudEvents v1.0 の不正使用防止が使用されます。
+CloudEvents v1.0 では、**HTTP OPTIONS** メソッドを使用して、独自の [不正使用防止のセマンティクス](webhook-event-delivery.md)が実装されます。 詳細については、 [こちら](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection)を参照してください。 出力に CloudEvents スキーマを使用すると、Event Grid では、Event Grid の検証イベント メカニズムではなく CloudEvents v1.0 の不正使用防止が使用されます。
 
 ## <a name="next-steps"></a>次のステップ
 イベント サブスクリプション検証をトラブルシューティングする方法については、次の記事を参照してください。 

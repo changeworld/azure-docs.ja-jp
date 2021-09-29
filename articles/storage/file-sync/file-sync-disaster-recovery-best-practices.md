@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/18/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 87fd5de90896a1a5b97cf9fa07a880ebcea1f35b
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: f5928815b6559c257319eb625587135cbf99df0d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122420595"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128645742"
 ---
 # <a name="best-practices-for-disaster-recovery-with-azure-file-sync"></a>Azure File Sync を使用したディザスター リカバリーのベスト プラクティス
 
@@ -30,7 +30,6 @@ Azure File Sync デプロイにおいては、クラウド エンドポイント
 - サーバーのオペレーティング システムを別のサーバーに複製する
 - 以前の仮想マシン チェックポイントに戻す
 - クラウドを使った階層化が有効になっている場合にオンプレミス バックアップからファイルを復元する
-
 
 ## <a name="high-availability"></a>高可用性
 
@@ -67,7 +66,7 @@ Azure File Sync エージェントのバージョン 9 以上では、[ボリュ
 堅牢なディザスター リカバリー ソリューションを確保するには、何らかの形式のデータ冗長性をインフラストラクチャに追加します。 Azure Files 用に 4 つの冗長性オファリングがあります。[ローカル冗長ストレージ (LRS)](../common/storage-redundancy.md#locally-redundant-storage)、[ゾーン冗長ストレージ (ZRS)](../common/storage-redundancy.md#zone-redundant-storage)、[geo 冗長ストレージ (GRS)](../common/storage-redundancy.md#geo-redundant-storage)、および [geo ゾーン冗長ストレージ (GZRS)](../common/storage-redundancy.md#geo-zone-redundant-storage) です。
 
 - [ローカル冗長ストレージ (LRS)](../common/storage-redundancy.md#locally-redundant-storage): LRS を使用すると、すべてのファイルが Azure ストレージ クラスター内に 3 回保存されます。 これにより、不良ディスク ドライブなどのハードウェア障害によるデータの損失を防ぐことができます。 ただし、データセンター内で火災や洪水などの災害が発生した場合、LRS を使用しているストレージ アカウントのすべてのレプリカが失われたり、回復不能になる可能性があります。
-- [ゾーン冗長ストレージ (ZRS)](../common/storage-redundancy.md#zone-redundant-storage): ZRS を使用すると、各ファイルのコピーが 3 つ保存されますが、これらのコピーは物理的に異なる Azure "*可用性ゾーン*" にある 3 つの異なるストレージ クラスターに分離されます。 可用性ゾーンは、Azure リージョン内の一意の物理的な場所です。 それぞれのゾーンは、独立した電源、冷却手段、ネットワークを備えた 1 つまたは複数のデータ センターで構成されています。 3 つの可用性ゾーンすべてのストレージ クラスターに書き込まれるまで、ストレージへの書き込みは受け入れられません。 
+- [ゾーン冗長ストレージ (ZRS)](../common/storage-redundancy.md#zone-redundant-storage): ZRS を使用すると、各ファイルのコピーが 3 つ保存されますが、これらのコピーは物理的に異なる Azure "*可用性ゾーン*" にある 3 つの異なるストレージ クラスターに分離されます。 可用性ゾーンは、Azure リージョン内の一意の物理的な場所です。 それぞれのゾーンは、独立した電源、冷却手段、ネットワークを備えた 1 つまたは複数のデータ センターで構成されています。 3 つの可用性ゾーンすべてのストレージ クラスターに書き込まれるまで、ストレージへの書き込みは受け入れられません。
 - [Geo 冗長ストレージ (GRS)](../common/storage-redundancy.md#geo-redundant-storage): GRS の場合、プライマリ リージョンとセカンダリ リージョンの 2 つのリージョンがあります。 ファイルは、プライマリ リージョンの Azure ストレージ クラスター内に 3 回保存されます。 書き込みは、Microsoft によって定義されたセカンダリ リージョンに非同期的にレプリケートされます。 GRS を使用すると、データの 6 つのコピーが 2 つの Azure リージョンに分散して作成されます。
 - [Geo ゾーン冗長ストレージ (GZRS)](../common/storage-redundancy.md#geo-zone-redundant-storage): GZRS は、ZRS のようなものと考えることができますが、geo 冗長を備えています。 GZRS を使用すると、ファイルはプライマリ リージョンの 3 つの異なるストレージ クラスターに 3 回保存されます。 その後、すべての書き込みが Microsoft で定義されたセカンダリ リージョンに非同期的にレプリケートされます。
 

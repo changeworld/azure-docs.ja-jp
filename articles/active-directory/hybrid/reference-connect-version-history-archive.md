@@ -13,12 +13,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 4c358a0ac6d19918c43cdc99417664ff8ce63971
-ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
+ms.openlocfilehash: 24d62e282258a92826b6e5226ab342d890099c18
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122428696"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124773628"
 ---
 # <a name="azure-ad-connect-version-release-history-archive"></a>Azure AD Connect:バージョンのリリース履歴アーカイブ
 
@@ -1069,7 +1069,7 @@ AD FS の管理
 **新しいプレビュー機能:**
 
 * [Azure AD Connect Health for Sync](how-to-connect-health-sync.md)。
-* [Azure AD Domain Services](../user-help/active-directory-passwords-update-your-own-password.md) のパスワード同期がサポートされました。
+* [Azure AD Domain Services](https://support.microsoft.com/account-billing/reset-your-work-or-school-password-using-security-info-23dde81f-08bb-4776-ba72-e6b72b9dda9e) のパスワード同期がサポートされました。
 
 **新しくサポートされたシナリオ:**
 

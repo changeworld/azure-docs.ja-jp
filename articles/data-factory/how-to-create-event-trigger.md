@@ -9,13 +9,13 @@ author: chez-charlie
 ms.author: chez
 ms.reviewer: jburchel
 ms.topic: conceptual
-ms.date: 08/24/2021
-ms.openlocfilehash: 5c7cf8d02b3a1cf19b826db63ff5eaaac1ff20d1
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.date: 09/09/2021
+ms.openlocfilehash: bea14b1630cbe5d1c4035e9abea62130cd546964
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123303236"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124831427"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-a-storage-event"></a>ストレージ イベントに応答してパイプラインを実行するトリガーを作成する
 

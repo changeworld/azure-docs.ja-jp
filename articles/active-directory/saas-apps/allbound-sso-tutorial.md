@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: f6030e209b06dc7ae9acd8a13e6dcdf22b58f8c5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: d8bac5651e0fe82ab018cb68af3a7a18027e1990
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92318873"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124732376"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-allbound-sso"></a>チュートリアル: Azure Active Directory と Allbound SSO の統合
 
@@ -195,7 +195,7 @@ Allbound SSO で Azure AD シングル サインオンを構成するには、�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Allbound SSO] タイルをクリックすると、SSO を設定した Allbound SSO に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+アクセス パネル上で [Allbound SSO] タイルをクリックすると、SSO を設定した Allbound SSO に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

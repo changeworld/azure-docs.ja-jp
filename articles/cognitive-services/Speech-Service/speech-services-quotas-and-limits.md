@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/16/2021
+ms.date: 09/10/2021
 ms.author: alexeyo
-ms.openlocfilehash: a71a2736533cd2c707d4224db3790e93fe5e2782
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 06d54a7d42efd1cad9088785d24095abc039337b
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121747554"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124737089"
 ---
 # <a name="speech-service-quotas-and-limits"></a>Speech サービスのクォータと制限
 
@@ -45,7 +45,6 @@ ms.locfileid: "121747554"
 | BLOB コンテナーの最大サイズ | 該当なし | 5 GB |
 | コンテナーごとの BLOB の最大数 | 該当なし | 10000 |
 | 文字起こし要求あたりの最大ファイル数 (入力として複数のコンテンツ URL を使用する場合) | 該当なし | 1000  |
-| 同時実行されるジョブの最大数 | 該当なし | 2000  |
 
 #### <a name="model-customization"></a>モデルのカスタマイズ
 | Quota | Free (F0)<sup>1</sup> | Standard (S0) |
@@ -100,7 +99,7 @@ ms.locfileid: "121747554"
 | **カスタム ニューラル音声の同時要求の上限** |  |  |
 | 既定値 | 該当なし | 10 |
 | 調整可能 | 該当なし | ○<sup>5</sup> |
-| **Custom Voice の同時要求の上限<sup>6</sup>** |  |  |
+| **Custom Voice の同時要求の上限 <sup>6</sup>** |  |  |
 | 既定値 | 10 | 10 |
 | 調整可能 | いいえ<sup>5</sup> | ○<sup>5</sup> |
 

@@ -8,12 +8,12 @@ ms.author: lle
 author: lrtoyou1223
 ms.custom: seo-lt-2019, devx-track-azurepowershell
 ms.date: 06/10/2020
-ms.openlocfilehash: b59655f343c8b5aa279dae9197c1d7fa41e0c318
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 65473b226ac8c188660862bddadb30ba44c4136d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121733075"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124811659"
 ---
 # <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>Azure Data Factory で共有のセルフホステッド統合ランタイムを作成する
 
@@ -40,17 +40,17 @@ Azure Data Factory の UI を使用して共有のセルフホステッド IR �
 
 1. 共有されるセルフホステッド IR で、 **[別のデータ ファクトリにアクセス許可を付与]** を選択し、[統合ランタイムのセットアップ] ページで、リンクされた IR を作成するデータ ファクトリを選択します。
       
-    ![[共有] タブのアクセス許可を付与するためのボタン](media/create-self-hosted-integration-runtime/grant-permissions-IR-sharing.png)  
+    :::image type="content" source="media/create-self-hosted-integration-runtime/grant-permissions-IR-sharing.png" alt-text="[共有] タブのアクセス許可を付与するためのボタン":::  
     
 2. 上記の共有されるセルフホステッド IR の "リソース ID" に注目してコピーしておきます。
          
 3. アクセス許可が付与されたデータ ファクトリで、新しいセルフホステッド IR (共有) を作成して、リソース ID を入力します。
       
-    ![セルフホステッド統合ランタイムを作成するためのボタン](media/create-self-hosted-integration-runtime/create-linkedir-1.png)
+    :::image type="content" source="media/create-self-hosted-integration-runtime/create-linkedir-1.png" alt-text="セルフホステッド統合ランタイムを作成するためのボタン":::
    
-    ![リンクされたセルフホステッド統合ランタイムを作成するためのボタン](media/create-self-hosted-integration-runtime/create-linkedir-2.png) 
+    :::image type="content" source="media/create-self-hosted-integration-runtime/create-linkedir-2.png" alt-text="リンクされたセルフホステッド統合ランタイムを作成するためのボタン"::: 
 
-    ![名前とリソース ID のボックス](media/create-self-hosted-integration-runtime/create-linkedir-3.png)
+    :::image type="content" source="media/create-self-hosted-integration-runtime/create-linkedir-3.png" alt-text="名前とリソース ID のボックス":::
 
 ## <a name="create-a-shared-self-hosted-ir-using-azure-powershell"></a>Azure PowerShell を使用して共有のセルフホステッド IR を作成する
 
@@ -227,15 +227,15 @@ Remove-AzDataFactoryV2IntegrationRuntime `
 
 #### <a name="shared-ir"></a>共有された IR:
 
-![共有された統合ランタイムを検索するための選択](media/create-self-hosted-integration-runtime/Contoso-shared-IR.png)
+:::image type="content" source="media/create-self-hosted-integration-runtime/Contoso-shared-IR.png" alt-text="共有された統合ランタイムを検索するための選択":::
 
-![共有された統合ランタイムを監視](media/create-self-hosted-integration-runtime/contoso-shared-ir-monitoring.png)
+:::image type="content" source="media/create-self-hosted-integration-runtime/contoso-shared-ir-monitoring.png" alt-text="共有された統合ランタイムを監視":::
 
 #### <a name="linked-ir"></a>リンクされた IR:
 
-![リンクされた統合ランタイムを検索するための選択](media/create-self-hosted-integration-runtime/Contoso-linked-ir.png)
+:::image type="content" source="media/create-self-hosted-integration-runtime/Contoso-linked-ir.png" alt-text="リンクされた統合ランタイムを検索するための選択":::
 
-![リンクされた統合ランタイムを監視](media/create-self-hosted-integration-runtime/Contoso-linked-ir-monitoring.png)
+:::image type="content" source="media/create-self-hosted-integration-runtime/Contoso-linked-ir-monitoring.png" alt-text="リンクされた統合ランタイムを監視":::
 
 
 ### <a name="known-limitations-of-self-hosted-ir-sharing"></a>セルフホステッド IR の共有に関する既知の制限事項

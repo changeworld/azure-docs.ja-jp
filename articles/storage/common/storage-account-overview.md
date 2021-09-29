@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/14/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: c5d4c390110a5b3eef7509508d35c9554f7be984
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: cb19372e5b97a9f508367366faa9ae49d0d11261
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110065982"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128596963"
 ---
 # <a name="storage-account-overview"></a>ストレージ アカウントの概要
 
@@ -66,7 +66,7 @@ Azure Storage では、数種類のストレージ アカウントが提供さ�
 
 `http://*mystorageaccount*.blob.core.windows.net/*mycontainer*/*myblob*`
 
-BLOB 用のカスタム ドメインを使用するようにストレージ アカウントを構成することもできます。 詳細については、「[Azure Storage アカウントのカスタム ドメイン名の構成](../blobs/storage-custom-domain-name.md)」をご覧ください。  
+BLOB 用のカスタム ドメインを使用するようにストレージ アカウントを構成することもできます。 詳細については、「[Azure Storage アカウントのカスタム ドメイン名の構成](../blobs/storage-custom-domain-name.md)」をご覧ください。
 
 ## <a name="migrate-a-storage-account"></a>ストレージ アカウントを移行する
 
@@ -108,7 +108,7 @@ Azure Storage では、ストレージ アカウントの使用に基づいて�
 
 次の表では、レガシ ストレージ アカウントの種類について説明します。 これらの種類のアカウントは、Microsoft によって推奨されていませんが、特定のシナリオで使用される場合があります。
 
-| レガシ ストレージ アカウントの種類 | サポートされているストレージ サービス | 冗長オプション | デプロイ モデル | 使用 |
+| レガシ ストレージ アカウントの種類 | サポートされているストレージ サービス | 冗長オプション | デプロイメント モデル | 使用法 |
 |--|--|--|--|--|
 | Standard 汎用 v1 | Blob Storage、Queue Storage、Table Storage、Azure Files | LRS、GRS、RA-GRS | Resource Manager、クラシック | 汎用 v1 アカウントでは、最新の機能が利用できない場合があるほか、GB 単価もやや高いことがあります。 使用が検討されるシナリオは次のとおりです。<br /><ul><li>アプリケーションで、Azure [クラシック デプロイ モデル](../../azure-portal/supportability/classic-deployment-model-quota-increase-requests.md)が必要である。</li><li>アプリケーションは、トランザクション集中型であるか、かなり geo レプリケーション帯域幅を使用しますが、大容量は必要ありません。 この場合は、汎用 v1 が最も経済的な選択肢になる可能性があります。</li><li>Azure Storage REST API の 2014-02-14 より前のバージョンか、クライアント ライブラリの 4.x より前のバージョンを使用していて、アプリケーションをアップグレードできない。</li></ul> |
 | Standard Blob Storage | Blob Storage (ブロック BLOB および追加 BLOB のみ) | LRS、GRS、RA-GRS | リソース マネージャー | 可能であれば、Standard 汎用の v2 アカウントの使用をお勧めします。 |

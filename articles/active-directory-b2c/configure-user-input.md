@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/03/2021
+ms.date: 09/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: eb700a4432082f75cf1ddf1ce007cee801597948
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: f2b7eade30ad675b9c64fbe8d21ce5c7f6d63e43
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111409453"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128558425"
 ---
 #  <a name="add-user-attributes-and-customize-user-input-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でユーザー属性を追加してユーザー入力をカスタマイズする
 
@@ -322,7 +322,8 @@ city 要求を証明書利用者アプリケーションに返すには、出力
 
 ## <a name="upload-and-test-your-updated-custom-policy"></a>更新されたカスタム ポリシーをアップロードしてテストする
 
-1. ご利用の Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。そのためには、トップ メニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択して、ご利用のテナントを含むディレクトリを選択します。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
 1. **Azure AD B2C** を検索して選択します。
 1. **[ポリシー]** で **[Identity Experience Framework]** を選択します。
 1. **[カスタム ポリシーのアップロード]** を選択します。

@@ -8,12 +8,12 @@ ms.author: sawinark
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/09/2020
-ms.openlocfilehash: c12c6bf17b5a773e9ef7f5ef122dfd8f466f3822
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 71991798306296c7df16ee7d39678a25f263629f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121738137"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124831221"
 ---
 # <a name="install-paid-or-licensed-custom-components-for-the-azure-ssis-integration-runtime"></a>Azure SSIS 統合ランタイムの有料 (ライセンスあり) カスタム コンポーネントをインストールする
 
@@ -35,9 +35,9 @@ Azure SSIS 統合ランタイムは、その性質上、いくつかの難題を
 
 次の図は、これらの新しい変数を使用するサードパーティ コンポーネントの一般的なインストール、ライセンス認証、ライセンス バインディング、検証のフローを示したものです。
 
-![ライセンス コンポーネントのインストール](media/how-to-configure-azure-ssis-ir-licensed-components/licensed-component-installation.png)
+:::image type="content" source="media/how-to-configure-azure-ssis-ir-licensed-components/licensed-component-installation.png" alt-text="ライセンス コンポーネントのインストール":::
 
-## <a name="instructions"></a>Instructions
+## <a name="instructions"></a>手順
 1. ISV はさまざまな SKU または階層でライセンス コンポーネントを提供できます (シングル ノード、最大 5 個のノード、最大 10 個のノードなど)。 ISV は、顧客が製品を購入したときにプロダクト キーを提供します。 ISV は、ISV セットアップ スクリプトと関連ファイルが含まれる Azure Storage BLOB コンテナーも提供します。 顧客はこれらのファイルを自分のストレージ コンテナーに複製し、自分のプロダクト キーで変更できます (たとえば、`IsvSetup.exe -pid xxxx-xxxx-xxxx` を実行します)。 顧客は次に、自分のコンテナーの SAS URI をパラメーターとして Azure SSIS IR をプロビジョニングしたり、再構成したりできます。 詳細については、「[Custom setup for the Azure-SSIS integration runtime](how-to-configure-azure-ssis-ir-custom-setup.md)」(Azure-SSIS 統合ランタイムのカスタム設定) を参照してください。
 
 2. Azure SSIS IR がプロビジョニングまたは再構成されると、ISV セットアップが各ノードで実行され、Windows 環境変数の `SSIS_CLUSTERID` と `SSIS_CLUSTERNODECOUNT` にクエリを実行します。 次に、Azure SSIS IR はそのクラスター ID とライセンス製品のプロダクト キーを ISV ライセンス認証サーバーに送信し、ライセンス認証キーを生成します。

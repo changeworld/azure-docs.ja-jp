@@ -6,16 +6,16 @@ ms.service: data-factory
 ms.subservice: orchestration
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/24/2021
+ms.date: 09/09/2021
 author: chez-charlie
 ms.author: chez
 ms.reviewer: jburchel
-ms.openlocfilehash: c9c489ab15f7b6a44e4aadeef8cd98b0d935e1ba
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: 63c4a4b53889f2c762b7c1dadffe432cd7383b4c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122821646"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124758050"
 ---
 # <a name="set-variable-activity-in-azure-data-factory-and-azure-synapse-analytics"></a>Azure Data Factory と Azure Synapse Analytics での変数の設定アクティビティ
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -38,7 +38,7 @@ variableName | このアクティビティによって設定される変数の�
 
 以下に、このパターンの例を示します。
 
-![変数のインクリメント](media/control-flow-set-variable-activity/increment-variable.png "変数の値を増やす")
+:::image type="content" source="media/control-flow-set-variable-activity/increment-variable.png" alt-text="変数のインクリメント":::
 
 ``` json
 {

@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 04/05/2021
 ms.author: jeedes
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 18a91f5b04ab31680a335a1e9e044b821d8324d8
-ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
+ms.openlocfilehash: 1efe79c1e58b64744c7ad17a53c130f21b109a7d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108206009"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124825723"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-terraform-enterprise"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Terraform Enterprise の統合
 
@@ -132,7 +132,7 @@ Terraform Enterprise に対する Azure AD SSO を構成してテストするに
 
 * Terraform Enterprise のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Terraform Enterprise] タイルをクリックすると、Terraform Enterprise のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Terraform Enterprise] タイルをクリックすると、Terraform Enterprise のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

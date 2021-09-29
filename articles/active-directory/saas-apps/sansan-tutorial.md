@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/25/2021
 ms.author: jeedes
-ms.openlocfilehash: d23e56aeb80fbd00eac65c4c1fb7ce7cb88c4e8b
-ms.sourcegitcommit: 1c12bbaba1842214c6578d914fa758f521d7d485
+ms.openlocfilehash: be146cba31d1eb6f22db8788f7e71ed60f9ca52a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2021
-ms.locfileid: "112988807"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128627655"
 ---
 # <a name="tutorial-integrate-sansan-with-azure-active-directory"></a>チュートリアル:Azure Active Directory と Sansan の統合
 
@@ -81,7 +81,7 @@ Sansan に対して Azure AD SSO を構成してテストするには、次の�
        | 環境 | URL |
       |:--- |:--- |
       | PC |`https://ap.sansan.com/v/saml2/<COMPANY_NAME>/acs` |
-      | スマートフォン アプリ |`https://internal.api.sansan.com/<COMPANY_NAME>/acs` |
+      | スマートフォン アプリ |`https://internal.api.sansan.com/saml2/<COMPANY_NAME>/acs` |
       | スマートフォン Web |`https://ap.sansan.com/s/saml2/<COMPANY_NAME>/acs` |
 
    1. **[サインオン URL]** テキスト ボックスに、URL として「`https://ap.sansan.com/`」と入力します。
@@ -146,7 +146,7 @@ Sansan に対して Azure AD SSO を構成してテストするには、次の�
 
 * Sansan のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Sansan] タイルをクリックすると、Sansan のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Sansan] タイルをクリックすると、Sansan のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

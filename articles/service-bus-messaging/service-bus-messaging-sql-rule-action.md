@@ -2,13 +2,13 @@
 title: Azure Service Bus サブスクリプション ルールの SQL アクション構文 |Microsoft Docs
 description: この記事では、SQL ルールのアクション構文のリファレンスを示します。 アクションは、メッセージに対して実行される SQL 言語ベースの構文で記述されています。
 ms.topic: article
-ms.date: 11/24/2020
-ms.openlocfilehash: 7aceb1992aafbbf92718a6bf558a72060f3275df
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.date: 09/28/2021
+ms.openlocfilehash: 19d4ae9a188e2e675e055eae2f4aedd714e17e47
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108770085"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129211774"
 ---
 # <a name="subscription-rule-sql-action-syntax"></a>サブスクリプション ルールの SQL アクション構文
 

@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 04/18/2021
-ms.openlocfilehash: b1168833242aa69b8e1bff5d7bd810f2c3db019d
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 70acef205aea35439e9b88e193c65a6e34ac0b7f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122693588"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124761481"
 ---
 # <a name="connect-azure-database-for-mysql-flexible-server-with-private-access-connectivity-method"></a>プライベート アクセスの接続方法を使用して Azure Database for MySQL フレキシブル サーバーに接続する
 
@@ -21,7 +21,9 @@ Azure Database for MySQL フレキシブル サーバーは、高可用性 MySQL
 > [!IMPORTANT]
 > Azure Database for MySQL フレキシブル サーバーは現在、パブリック プレビュー段階にあります。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成してください。
+
+[!INCLUDE [flexible-server-free-trial-note](../includes/flexible-server-free-trial-note.md)]
+
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 [Azure ポータル](https://portal.azure.com/)にアクセスします。 資格情報を入力してポータルにサインインします。 既定のビューはサービス ダッシュボードです。

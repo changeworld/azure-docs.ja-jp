@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
-ms.openlocfilehash: 3bbd18bc7851d4ccffca4f721f6e2aef45ff3c3d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d444a62b7bb6be680c359d6b853a629a1e2dc5a9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97673723"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124830798"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bime"></a>チュートリアル: Azure Active Directory と Bime の統合
 
@@ -126,13 +126,13 @@ Bime で Azure AD シングル サインオンを構成するには、次の手�
 
     c. ログアウト URL
 
-### <a name="configure-bime-single-sign-on"></a>Bime のシングル サインオンの構成
+### <a name="configure-bime-single-sign-on&quot;></a>Bime のシングル サインオンの構成
 
 1. 別の Web ブラウザー ウィンドウで、Bime 企業サイトに管理者としてログインします。
 
 2. ツールバーで、 **[管理者]** 、 **[アカウント]** の順にクリックします。
 
-    ![スクリーンショットは、[管理者] および [アカウント] が選択されていることを示しています。](./media/bime-tutorial/ic775558.png "[Admin]")
+    ![スクリーンショットは、[管理者] および [アカウント] が選択されていることを示しています。](./media/bime-tutorial/ic775558.png &quot;[Admin]")
 
 3. アカウント構成ページで、次の手順に従います。
 
@@ -232,7 +232,7 @@ Azure AD ユーザーが Bime にログインできるようにするには、�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Bime] タイルをクリックすると、SSO を設定した Bime に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+アクセス パネルで [Bime] タイルをクリックすると、SSO を設定した Bime に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

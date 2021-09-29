@@ -10,16 +10,16 @@ ms.date: 08/16/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1cdc40b8aebe2d80553a23deec3990d4349ebd79
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 2aeedab7e8ec7204137ec12fdcc049c0ad01881f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123255608"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128606287"
 ---
 # <a name="configure-immutability-policies-for-containers"></a>コンテナーの不変性ポリシーを構成する
 
-Azure Blob Storage の不変ストレージを使用すると、ユーザーはビジネスに不可欠なデータを WORM (Write Once, Read Many) 状態で保存できます。 WORM の状態では、ユーザーが指定した期間、データを変更および削除できません。 BLOB データに不変ポリシーを構成することにより、上書きや削除からデータを保護することができます。 不変ポリシーには、時間ベースの保持ポリシーと訴訟ホールドが含まれています。 Blob Storage の不変ポリシーの詳細については、「[不変ストレージを使用してビジネスに不可欠な BLOB データを保存する](immutable-storage-overview.md)」を参照してください。
+Azure Blob Storage の不変ストレージを使用すると、ユーザーはビジネスに不可欠なデータを WORM (Write Once Read Many) 状態で保存できます。 WORM の状態では、ユーザーが指定した期間、データを変更および削除できません。 BLOB データに不変ポリシーを構成することにより、上書きや削除からデータを保護することができます。 不変性ポリシーには、時間ベースの保持ポリシーと訴訟ホールドが含まれています。 Blob Storage の不変性ポリシーの詳細については、「[不変ストレージを使用してビジネスに不可欠な BLOB データを保存する](immutable-storage-overview.md)」を参照してください。
 
 不変ポリシーは、個々の BLOB バージョン (プレビュー) またはコンテナーのいずれかにスコープ設定できます。 この記事では、コンテナーレベルの不変性ポリシーを構成する方法について説明します。 バージョンレベルの不変性ポリシーを構成する方法については、「[BLOB バージョンに対する不変性ポリシーを構成する (プレビュー)](immutable-policy-configure-version-scope.md)」を参照してください。
 
@@ -36,7 +36,7 @@ Azure portal を使用して時間ベースの保持ポリシーをコンテナ�
 1. **[Immutable blob storage]\(不変 BLOB ストレージ\)** セクションで、 **[ポリシーの追加]** を選択します。
 1. **[ポリシーの種類]** フィールドで、 **[Time-based retention]\(時間ベースの保持\)** を選択し、保持期間を日単位で指定します。
 1. コンテナー スコープでポリシーを作成するには、 **[Enable version-level immutability]\(バージョンレベルの不変性を有効にする\)** チェック ボックスをオフにします。
-1. 必要に応じて、 **[その他の保護された追加を許可する]** を選択して、不変ポリシーによって保護されている BLOB を追加する書き込みを有効にします。 詳細については、「[保護された追加 BLOB の書き込みを許可する](immutable-time-based-retention-policy-overview.md#allow-protected-append-blobs-writes)」を参照してください。
+1. 必要に応じて、 **[その他の保護された追加を許可する]** を選択して、不変ポリシーによって保護されている BLOB を追加する書き込みを有効にします。 詳細については、[保護された追加 BLOB の書き込みの許可](immutable-time-based-retention-policy-overview.md#allow-protected-append-blobs-writes)に関するページを参照してください。
 
     :::image type="content" source="media/immutable-policy-configure-container-scope/configure-retention-policy-container-scope.png" alt-text="コンテナーにスコープ設定されている不変性ポリシーの構成方法を示すスクリーンショット":::
 
@@ -112,7 +112,7 @@ Set-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName <resource-group> `
 ```azurepowershell
 Remove-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName <resource-group> `
     -AccountName <storage-account> `
-    -ContainerName <container> 
+    -ContainerName <container>
     -Etag $policy.Etag
 ```
 
@@ -125,7 +125,7 @@ $etag=$(az storage container immutability-policy show /
         --account-name <storage-account> /
         --container-name <container> /
         --query etag /
-        --output tsv) 
+        --output tsv)
 
 az storage container immutability-policy \
     --resource-group <resource-group>
@@ -133,7 +133,7 @@ az storage container immutability-policy \
     --container-name <container> \
     --period 21 \
     --if-match $etag \
-    --allow-protected-append-writes true 
+    --allow-protected-append-writes true
 ```
 
 ロック解除されたポリシーを削除するには、[az storage container immutability-policy delete](/cli/azure/storage/container/immutability-policy#az_storage_container_immutability_policy_delete) コマンドを呼び出します。
@@ -151,7 +151,7 @@ az storage container immutability-policy \
 Azure portal でポリシーをロックするには、次の手順を実行します。
 
 1. ロック解除されたポリシーがあるコンテナーにアクセスします。
-1. **[Immutable blob versions]\(不変 BLOB バージョン\)** セクションで、既存のロック解除されたポリシーを見つけます。 **[その他]** ボタンを選択し、メニューから **[Lock policy]\(ポリシーのロック\)** を選択します。
+1. **[Immutable blob versions]\(不変 BLOB バージョン\)** セクションで、既存のロック解除されたポリシーを見つけます。 **[詳細]** ボタンを選択し、メニューから **[ポリシーのロック]** を選択します。
 1. ポリシーをロックすることを確認します。
 
 :::image type="content" source="media/immutable-policy-configure-container-scope/lock-retention-policy.png" alt-text="Azure portal で時間ベースの保持ポリシーをロックする方法を示すスクリーンショット":::
@@ -180,7 +180,7 @@ $etag=$(az storage container immutability-policy show /
         --account-name <storage-account> /
         --container-name <container> /
         --query etag /
-        --output tsv) 
+        --output tsv)
 
 az storage container immutability-policy lock /
     --resource-group <resource-group> /
@@ -208,7 +208,7 @@ Azure portal を使用してコンテナーの訴訟ホールドを構成する�
 
 :::image type="content" source="media/immutable-policy-configure-container-scope/retention-policy-legal-hold-container-scope.png" alt-text="時間ベースの保持ポリシーと訴訟ホールドの両方が構成されたコンテナーを示すスクリーンショット":::
 
-訴訟ホールドをクリアするには、 **[アクセス ポリシー]** ダイアログに移動し、 **[その他]** ボタンを選択して、 **[削除]** を選択します。
+訴訟ホールドをクリアするには、 **[アクセス ポリシー]** ダイアログに移動し、 **[詳細]** ボタンを選択して、 **[削除]** を選択します。
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -226,7 +226,7 @@ Add-AzRmStorageContainerLegalHold -ResourceGroupName <resource-group> `
 ```azurepowershell
 Remove-AzRmStorageContainerLegalHold -ResourceGroupName <resource-group> `
     -StorageAccountName <storage-account> `
-    -Name <container> ` 
+    -Name <container> `
     -Tag <tag1>,<tag2>,...
 ```
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.topic: how-to
 ms.date: 12/17/2020
-ms.openlocfilehash: 55d9e46d4808c79003407767a667d3232d62acef
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 0a4b62d60c255d79eaf0042aa075b216d362dbce
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108776590"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124758505"
 ---
 # <a name="track-updated-files-with-a-watcher-task"></a>監視タスクによる更新されたファイルの追跡
 
@@ -168,4 +168,4 @@ Passed in data is @{FileName=D:\examplefiles\ExampleFile1.txt; Length=0}
 
 ## <a name="next-steps"></a>次のステップ
 
-独自の Runbook の作成の詳細については、[PowerShell Runbook の作成](learn/automation-tutorial-runbook-textual-powershell.md)に関する記事を参照してください。
+独自の Runbook の作成の詳細については、[PowerShell Runbook の作成](./learn/powershell-runbook-managed-identity.md)に関する記事を参照してください。

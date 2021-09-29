@@ -1,20 +1,19 @@
 ---
 title: Azure IoT Central エクスプローラーを使用してデバイスの接続を監視する
 description: IoT Central エクスプローラー CLI を使用して、デバイスのメッセージを監視し、デバイス ツインの変更を観察します。
-author: viv-liu
-ms.author: viviali
+author: dominicbetts
+ms.author: dobett
 ms.date: 08/30/2021
 ms.topic: how-to
 ms.service: iot-central
 ms.custom: devx-track-azurecli, device-developer
 services: iot-central
-manager: corywink
-ms.openlocfilehash: fe42d9bcfef72dfb8f2deebd3fb147ed2025f150
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 9c257b9df42af31c443ae3e609d578db6adeb1c8
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123479448"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129154833"
 ---
 # <a name="monitor-device-connectivity-using-azure-cli"></a>Azure CLI を使用してデバイスの接続性を監視する
 

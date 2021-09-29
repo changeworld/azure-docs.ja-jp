@@ -200,7 +200,7 @@
           href: /azure/azure-vmware/faq#compute
         - name: ネットワークと相互接続
           href: /azure/azure-vmware/faq#networking-and-interconnectivity
-        - name: Storage
+        - name: ストレージ
           href: /azure/azure-vmware/faq#storage
         - name: ホスト、クラスター、およびプライベート クラウド
           href: '/azure/azure-vmware/faq#hosts,-clusters,-and-private-clouds'
@@ -226,5 +226,7 @@
       href: /cli/azure/vmware
     - name: Azure PowerShell
       href: /powershell/module/az.vmware/
+    - name: Resource Manager テンプレート
+      href: /azure/templates/microsoft.avs/privateclouds
     - name: Terraform Azure プロバイダー
       href: 'https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/vmware_private_cloud'

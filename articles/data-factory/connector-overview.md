@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/30/2021
+ms.date: 09/09/2021
 ms.author: jianleishen
-ms.openlocfilehash: be49d5563a1e267b6f9be7ad5b4fa4534a56f22c
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 9233c17070d5a4f60311501e0f42072b1e4ea125
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123225616"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124767681"
 ---
 # <a name="azure-data-factory-and-azure-synapse-analytics-connector-overview"></a>Azure Data Factory と Azure Synapse Analytics のコネクタの概要
 

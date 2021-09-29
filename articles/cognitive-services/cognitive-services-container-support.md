@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 07/02/2021
+ms.date: 09/24/2021
 ms.author: aahi
 keywords: オンプレミス, Docker, コンテナー, Kubernetes
-ms.openlocfilehash: 567e09dfcc47926b8b25fa8c634a11ee339ab2ea
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 0a55820202d5bfe6d0948afdd00ac99c6d9d666e
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123475856"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129061886"
 ---
 # <a name="azure-cognitive-services-containers"></a>Azure Cognitive Services コンテナー
 
@@ -54,7 +54,7 @@ Azure Cognitive Services のコンテナーでは、次の Docker コンテナ�
 | [Text Analytics][ta-containers-language] |  **テキスト言語検出** ([イメージ](https://go.microsoft.com/fwlink/?linkid=2018759&clcid=0x409)) | 最大 120 の言語に対して、入力テキストが書かれている言語を検出し、要求で送信されたドキュメントごとに 1 つの言語コードを報告します。 言語コードは、評価値の強度を示すスコアと組みになります。 | 一般公開 |
 | [Text Analytics][ta-containers-sentiment] | **感情分析 v3** ([イメージ](https://go.microsoft.com/fwlink/?linkid=2018654&clcid=0x409)) | 肯定的または否定的な感情の手がかりを探して未加工のテキストを分析します。 このバージョンの感情分析からは、各ドキュメントとその中の文のセンチメント ラベル (たとえば、"*肯定的*"、"*否定的*") が返されます。 |  一般公開 |
 | [Text Analytics][ta-containers-health] |  **Text Analytics for Health** | 構造化されていない臨床テキストから医療情報を抽出してラベル付けします。 | プレビュー |
-| [Translator][tr-containers] | **Translator** | 複数の言語と方言にテキストを翻訳できます。 | 限定的なプレビュー。 [アクセスを要求][request-access]してください。 | 
+| [Translator][tr-containers] | **Translator** | 複数の言語と方言にテキストを翻訳できます。 | 限定的なプレビュー。 [アクセスを要求](https://aka.ms/csgate-translator)してください。 | 
 
 ### <a name="speech-containers"></a>音声コンテナー
 

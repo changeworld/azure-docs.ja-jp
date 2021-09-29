@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: application-gateway
 ms.custom: subject-monitoring
 ms.date: 06/10/2021
-ms.openlocfilehash: dce23e60b3a3be5ba7647de1f45380d188c07094
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 5ece5b220a59f562774fde7b093236ed5946f019
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114295999"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124836246"
 ---
 <!-- VERSION 2.2
 Template for monitoring data reference article for Azure services. This article is support for the main "Monitoring [servicename]" article for the service. -->
@@ -147,7 +147,7 @@ Azure Application Gateway では、Azure Monitor の一部のメトリックの�
 
 | カテゴリ | 表示名 | 情報|
 |:---------|:-------------|------------------|
-| **Activitylog**   | アクティビティ ログ | アクティビティ ログのエントリは既定で収集されます。 [Azure アクティビティ ログ](../azure-resource-manager/management/view-activity-logs.md) (以前の操作ログと監査ログ) を使用すると、Azure サブスクリプションに送信されるすべての操作とその操作の状態を表示できます。 |
+| **Activitylog**   | アクティビティ ログ | アクティビティ ログのエントリは既定で収集されます。 [Azure アクティビティ ログ](../azure-monitor/essentials/activity-log.md) (以前の操作ログと監査ログ) を使用すると、Azure サブスクリプションに送信されるすべての操作とその操作の状態を表示できます。 |
 |**ApplicationGatewayAccessLog**|アクセス ログ| このログを使用して Application Gateway のアクセス パターンを表示し、重要な情報を分析できます。 これには、呼び出し元の IP アドレス、要求された URL、応答の待機時間、リターン コード、入出力バイトが含まれます。アクセス ログは 60 秒ごとに収集されます。 このログには、Application Gateway のインスタンスごとに 1 つのレコードが含まれます。 Application Gateway のインスタンスは、instanceId プロパティで識別されます。|
 | **ApplicationGatewayPerformanceLog**|パフォーマンス ログ|このログを使用すると、Application Gateway のインスタンスの実行状況を確認できます。 このログでは、インスタンスごとのパフォーマンス情報 (処理された要求の総数、スループット (バイト単位)、失敗した要求の数、正常および異常なバックエンド インスタンスの数など) が取得されます。 パフォーマンス ログは 60 秒ごとに収集されます。 パフォーマンス ログは v1 SKU でのみ使用できます。 v2 SKU の場合は、パフォーマンス データに[メトリック](#metrics)を使用します。|
 |**ApplicationGatewayFirewallLog**|ファイアウォール ログ|このログを使用すると、Web アプリケーション ファイアウォールが構成された Application Gateway の、検出モードまたは防止モードでログに記録された要求を表示することができます。 ファイアウォール ログは 60 秒ごとに収集されます。|

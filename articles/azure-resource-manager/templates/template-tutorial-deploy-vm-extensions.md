@@ -6,12 +6,12 @@ ms.date: 03/26/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d394b74bb2021d77f9d68cd101e0ee98e091f0ac
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 14aece10cad828b82f2541e4f0478633382de662
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111892996"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128656248"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-arm-templates"></a>チュートリアル:ARM テンプレートを使用して仮想マシン拡張機能をデプロイする
 
@@ -45,7 +45,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 インライン PowerShell スクリプトまたはスクリプト ファイルを使用することができます。 このチュートリアルでは、スクリプト ファイルの使用方法について説明します。 次の内容が含まれた PowerShell スクリプトは、[GitHub](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1) から共有されます。
 
 ```azurepowershell
-Install-WindowsFeature -name Web-Server -IncludeManagementTools
+Install-WindowsFeature -Name Web-Server -IncludeManagementTools
 ```
 
 ファイルを独自の場所に発行する場合は、チュートリアルの後半でテンプレートの `fileUri` 要素を更新する必要があります。
@@ -82,23 +82,23 @@ Azure クイックスタート テンプレートは、ARM テンプレートの
 ```json
 {
   "type": "Microsoft.Compute/virtualMachines/extensions",
-  "apiVersion": "2020-12-01",
+  "apiVersion": "2021-04-01",
   "name": "[concat(variables('vmName'),'/', 'InstallWebServer')]",
   "location": "[parameters('location')]",
   "dependsOn": [
-      "[concat('Microsoft.Compute/virtualMachines/',variables('vmName'))]"
+    "[concat('Microsoft.Compute/virtualMachines/',variables('vmName'))]"
   ],
   "properties": {
-      "publisher": "Microsoft.Compute",
-      "type": "CustomScriptExtension",
-      "typeHandlerVersion": "1.7",
-      "autoUpgradeMinorVersion":true,
-      "settings": {
-        "fileUris": [
-          "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1"
-        ],
-        "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File installWebServer.ps1"
-      }
+    "publisher": "Microsoft.Compute",
+    "type": "CustomScriptExtension",
+    "typeHandlerVersion": "1.7",
+    "autoUpgradeMinorVersion": true,
+    "settings": {
+      "fileUris": [
+        "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1"
+      ],
+      "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File installWebServer.ps1"
+    }
   }
 }
 ```

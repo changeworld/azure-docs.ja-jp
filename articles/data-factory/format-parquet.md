@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/24/2021
+ms.date: 09/09/2021
 ms.author: jianleishen
-ms.openlocfilehash: 58dfe48ca6b0f9cdf1db1f4342e1ee19b5c4c9ce
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: f0391e0993470bc8980a60ab6398d3e144b04acc
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123255011"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124743756"
 ---
 # <a name="parquet-format-in-azure-data-factory-and-azure-synapse-analytics"></a>Azure Data Factory および Azure Synapse Analytics での Parquet 形式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -114,7 +114,7 @@ Azure Blob Storage の Parquet データセットの例を次に示します。
 
 次の図は、マッピング データ フローにおける Parquet ソースの構成例です。
 
-![Parquet ソース](media/data-flow/parquet-source.png)
+:::image type="content" source="media/data-flow/parquet-source.png" alt-text="Parquet ソース":::
 
 関連付けられているデータ フロー スクリプトは次のとおりです。
 
@@ -139,7 +139,7 @@ source(allowSchemaDrift: true,
 
 次の図は、マッピング データ フローにおける Parquet シンクの構成例です。
 
-![Parquet シンク](media/data-flow/parquet-sink.png)
+:::image type="content" source="media/data-flow/parquet-sink.png" alt-text="Parquet シンク":::
 
 関連付けられているデータ フロー スクリプトは次のとおりです。
 
@@ -172,7 +172,7 @@ Parquet ファイルのシリアル化/逆シリアル化を使用してセル�
 > [!TIP]
 > セルフホステッド統合ランタイムを使用して、 Parquet 形式をコピー元またはコピー先にしてデータをコピーしたときに、[An error occurred when invoking java, message: **java.lang.OutOfMemoryError:Java heap space** (java の呼び出し中にエラーが発生しました。メッセージ: java.lang.OutOfMemoryError:Java heap space)] というエラーが発生する場合は、まず、セルフホステッド IR のホストであるマシン内に環境変数 `_JAVA_OPTIONS` を追加してください。次に、JVM の最小/最大ヒープ サイズを調整し、コピーを行えるようにしてから、パイプラインを再実行してください。
 
-![セルフホステッド IR 上での JVM ヒープ サイズの設定](./media/supported-file-formats-and-compression-codecs/set-jvm-heap-size-on-selfhosted-ir.png)
+:::image type="content" source="./media/supported-file-formats-and-compression-codecs/set-jvm-heap-size-on-selfhosted-ir.png" alt-text="セルフホステッド IR 上での JVM ヒープ サイズの設定":::
 
 例: 変数 `_JAVA_OPTIONS` を設定して、値 `-Xms256m -Xmx16g` を指定します。 フラグ `Xms` では、Java 仮想マシン (JVM) の初期メモリ割り当てプールを指定します。`Xmx` では、最大メモリ割り当てプールを指定します。 これは、JVM 起動時のメモリ量が `Xms`、使用可能なメモリ量が最大で `Xmx` であることを意味します。 既定では、サービスにより最小で 64MB、最大で 1G が使用されます。
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/12/2020
 ms.author: jeedes
-ms.openlocfilehash: 1e27bd823bd4ad0428773242b5cbc0f9922925ed
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a86b3be63de3aabf45d08784e2f89ed207f7ed6f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96181766"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124789980"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-podbean"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Podbean の統合
 
@@ -143,7 +143,7 @@ Podbean に対して Azure AD SSO を構成してテストするには、次の�
 
 2. Podbean のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-3. Microsoft アクセス パネルを使用することができます。 アクセス パネルで [Podbean] タイルをクリックすると、Podbean のサインオン URL にリダイレクトされます。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+3. Microsoft アクセス パネルを使用することができます。 アクセス パネルで [Podbean] タイルをクリックすると、Podbean のサインオン URL にリダイレクトされます。 アクセス パネルの詳細については、[アクセス パネルの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

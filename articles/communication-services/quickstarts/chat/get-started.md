@@ -9,13 +9,14 @@ ms.author: rifox
 ms.date: 06/30/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
+ms.subservice: chat
 zone_pivot_groups: acs-js-csharp-java-python-swift-android
-ms.openlocfilehash: c05bc5c332be311de0cafc180f16651e4d83406f
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: fbe7d4dd4c46c90f8a6fe84c7b0b3bea8308533a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122967897"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128677361"
 ---
 # <a name="quickstart-add-chat-to-your-app"></a>クイック スタート:チャットをアプリに追加する
 

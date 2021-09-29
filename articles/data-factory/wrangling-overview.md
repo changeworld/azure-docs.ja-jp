@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.topic: conceptual
 ms.date: 07/29/2021
-ms.openlocfilehash: 133496614db862d4c1af31afb015a535ddbfd188
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d49b587262bfceb8072761cec6981ab908abb21e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121724457"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124732946"
 ---
 # <a name="what-is-data-wrangling"></a>データ ラングリングとは
 
@@ -57,7 +57,7 @@ Data Factory は、Power Query Online マッシュアップ エディターに�
 
 Power Query アクティビティを作成すると、すべてのソース データセットがデータセット クエリになり、 **ADFResource** フォルダーに配置されます。 既定では、UserQuery は最初のデータセット クエリを指します。 データセット クエリに対する変更はサポートされておらず、永続化もされないため、すべての変換は UserQuery で実行される必要があります。 クエリの名前変更、追加、削除は、現在サポートされていません。
 
-![ラングリング](media/wrangling-data-flow/editor.png)
+:::image type="content" source="media/wrangling-data-flow/editor.png" alt-text="ラングリング":::
 
 現時点では、Power Query M 関数は、作成中に利用可能であっても、そのすべてがデータ ラングリングでサポートされているわけではありません。 Power Query のアクティビティの作成中、関数がサポートされていない場合は、次のエラー メッセージが表示されます。
 

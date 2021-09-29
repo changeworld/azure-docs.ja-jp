@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/27/2020
 ms.author: jeedes
-ms.openlocfilehash: 5f54c61cf8ce056c79faf84b64cf6650ea1db513
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1b0d4c88bc9408fa6b7c9a3f848e3ce7d402b4c9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92459035"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124802423"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-khoros-care"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Khoros Care の統合
 
@@ -151,7 +151,7 @@ Khoros Care に対する Azure AD SSO を構成してテストするには、次
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Khoros Care] タイルをクリックすると、SSO を設定した Khoros Care に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+アクセス パネル上で [Khoros Care] タイルをクリックすると、SSO を設定した Khoros Care に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

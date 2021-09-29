@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/06/2021
+ms.date: 09/15/2021
 ms.custom: project-no-code, b2c-support
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: f227c63ef837b0de60ee72e2f33084e744f2f96f
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 583c9fb66708cee46cbd0b7c7f341c1a6a9b7a55
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123535601"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128575315"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 内のユーザー インターフェイスをカスタマイズする
 
@@ -72,7 +72,8 @@ Azure Active Directory [[会社のブランド]](../active-directory/fundamental
 ::: zone pivot="b2c-user-flow"
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-1. ポータル ツール バーにある **[ディレクトリ + サブスクリプション]** アイコンを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページの **[ディレクトリ名]** の一覧で自分の Azure AD B2C ディレクトリを見つけて、 **[切り替え]** を選択します。
 1. Azure portal で、 **[Azure AD B2C]** を検索して選択します。
 1. **[ユーザー フロー]** を選択します。
 1. カスタマイズするユーザー フローを選択します。
@@ -198,7 +199,8 @@ Azure Active Directory [[会社のブランド]](../active-directory/fundamental
 まず、 **[会社のブランド]** でバナー ロゴ、背景画像、および背景色を設定します。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページの **[ディレクトリ名]** の一覧で自分の Azure AD B2C ディレクトリを見つけて、 **[切り替え]** を選択します。
 1. Azure portal で、 **[Azure AD B2C]** を検索して選択します。
 1. **[管理]** から **[会社のブランド]** を選択します。
 1. 「[組織の Azure Active Directory のサインイン ページにブランドを追加する](../active-directory/fundamentals/customize-branding.md)」の手順に従います。

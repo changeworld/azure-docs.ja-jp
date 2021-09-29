@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/11/2021
-ms.openlocfilehash: fc27ed68f5dedefa0b4bf77a206faa15c94f083f
-ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+ms.openlocfilehash: 17ce9f711572d1d760e44676ad8e8b51c5333985
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112018317"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129218411"
 ---
 # <a name="python-code-samples-for-azure-cognitive-search"></a>Azure Cognitive Search の Python コード サンプル
 
@@ -40,7 +40,7 @@ Azure SDK 開発チームのコード サンプルは、API の使用方法を�
 | [ドキュメントを読み込む](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/search/azure-search-documents/samples/sample_crud_operations.py) | [データ インポート](search-what-is-data-import.md)操作においてインデックスにドキュメントをアップロードまたはマージする方法を示します。 |
 | [単純なクエリ](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/search/azure-search-documents/samples/sample_simple_query.py) | [基本的なクエリ](search-query-overview.md)を設定する方法を示します。 |
 | [フィルター クエリ](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/search/azure-search-documents/samples/sample_filter_query.py) | [フィルター式](search-filters.md)の設定方法を示します。 |
-| [ファセット クエリ](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/search/azure-search-documents/samples/sample_facet_query.py) | [ファセット](search-filters-facets.md)の使用方法を示します。 |
+| [ファセット クエリ](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/search/azure-search-documents/samples/sample_facet_query.py) | [ファセット](search-faceted-navigation.md)の使用方法を示します。 |
 
 ## <a name="doc-samples"></a>ドキュメントのサンプル
 

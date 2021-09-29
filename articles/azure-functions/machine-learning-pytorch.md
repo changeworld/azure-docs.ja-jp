@@ -1,17 +1,15 @@
 ---
 title: PyTorch モデルを Azure Functions アプリケーションとしてデプロイする
 description: Azure Functions で PyTorch の事前トレーニング済みの ResNet 18 ディープ ニューラル ネットワークを使用して、1,000 個の ImageNet ラベルのうちの 1 つを画像に割り当てます。
-author: gvashishtha
 ms.topic: tutorial
 ms.date: 02/28/2020
-ms.author: gopalv
 ms.custom: devx-track-python, devx-track-azurepowershell
-ms.openlocfilehash: 4677ec09994b9dcafbf3600c3c3cae48d71f1477
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 680bae6ddcd1f46a91bd1f332762a590fd9c60e2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121750186"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128615189"
 ---
 # <a name="tutorial-deploy-a-pre-trained-image-classification-model-to-azure-functions-with-pytorch"></a>チュートリアル: PyTorch を使用して事前トレーニング済みの画像分類モデルを Azure Functions にデプロイする
 

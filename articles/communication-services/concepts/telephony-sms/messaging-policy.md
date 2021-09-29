@@ -9,12 +9,12 @@ ms.author: prakulka
 ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 2281dac86281d01ec6f033062b87236a780d3bc7
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 8bd683be329572189daedc74f089ef89d9f015ea
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123259757"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128609671"
 ---
 # <a name="azure-communication-services-messaging-policy"></a>Azure Communication Services のメッセージング ポリシー
 
@@ -101,7 +101,6 @@ Azure Communication Services では、すべてのメッセージング キャ�
  
 これらのメッセージに勧誘や宣伝を含めることはできません。
 
-
 ## <a name="opt-out"></a>オプトアウト
 
 メッセージ受信者は、あらゆる正当な手段を利用して、同意を取り消し、今後のメッセージの受信をオプトアウトすることができます。 メッセージ受信者が同意を取り消すための唯一の手段をお客様が指定することはできません。 
@@ -115,7 +114,6 @@ Azure Communication Services では、すべてのメッセージング キャ�
 ### <a name="opt-out-best-practices"></a>オプトアウトのベスト プラクティス:
 
 その他の一般的なオプトアウト メカニズムでは、キーワードに加えて、指定されたオプトアウトのメール アドレス、カスタマー サポート スタッフの電話番号、または Web ページで登録を解除するためのリンクが顧客に提供されます。 
-
 
 ### <a name="how-we-handle-opt-out-requests"></a>オプトアウト要求の処理方法:
 

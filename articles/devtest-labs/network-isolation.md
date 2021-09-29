@@ -1,14 +1,14 @@
 ---
-title: Azure DevTest Labs でのネットワークの分離
+title: ネットワークの分離
 description: Azure DevTest Labs でのネットワークの分離について説明します。
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/25/2020
-ms.openlocfilehash: e7a46d242d16cf1c84495fbd2f2f10911cf4f1e9
-ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
+ms.openlocfilehash: 7da1dbddee6d4807969cda41550972912fc69910
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111809520"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128661756"
 ---
 # <a name="network-isolation-in-devtest-labs"></a>DevTest Labs でのネットワークの分離
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/13/2021
 ms.author: jeedes
-ms.openlocfilehash: 204c2720c905e301b89927def25e0ab8e1ef230a
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 9a71a0c90dab995374a8b28db8d814e718d732de
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110083838"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124822610"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-edx-for-business-saml-integration"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と edX for Business SAML Integration の統合
 
@@ -137,7 +137,7 @@ edX for Business SAML Integration で Azure AD SSO を構成してテストす�
 
 * edX for Business SAML Integration のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [edX for Business SAML Integration] タイルをクリックすると、edX for Business SAML Integration サインオンの URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [edX for Business SAML Integration] タイルをクリックすると、edX for Business SAML Integration サインオンの URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

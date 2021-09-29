@@ -10,20 +10,20 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e924a5f6c765b5b964fe3b1492393b063d9d23b4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 181dd9531ec8aa3630ff1ef3e3356ead5120c512
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92783574"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128605964"
 ---
 # <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>Azure から独立しているクラウドでの Azure PowerShell によるストレージの管理
 
 ほとんどの人は、グローバルな Azure のデプロイに Azure パブリック クラウドを使用します。 主権などの理由から、Microsoft Azure の独立したデプロイもいくつかあります。 これらの独立したデプロイを「環境」と呼びます。 次の一覧は、現在使用可能な独立したクラウドを示しています。
 
-* [Azure Government Cloud](https://azure.microsoft.com/features/gov/)
-* [中国の 21Vianet が運営する Azure China 21Vianet Cloud](http://www.windowsazure.cn/)
-* [Azure German Cloud](../../germany/germany-welcome.md)
+- [Azure Government Cloud](https://azure.microsoft.com/features/gov/)
+- [中国の 21Vianet が運営する Azure China 21Vianet Cloud](http://www.windowsazure.cn/)
+- [Azure German Cloud](../../germany/germany-welcome.md)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -31,9 +31,9 @@ ms.locfileid: "92783574"
 
 いずれかの独立したクラウドの Azure Storage を使用するには、Azure パブリックではなく、そのクラウドに接続します。 Azure パブリックではなく、いずれかの独立したクラウドを使用するには:
 
-* 接続する "*環境*" を指定します。
-* 使用可能なリージョンを判断して、そのリージョンを使用します。
-* Azure パブリックとは異なる適切なエンドポイント サフィックスを使用します。
+- 接続する "*環境*" を指定します。
+- 使用可能なリージョンを判断して、そのリージョンを使用します。
+- Azure パブリックとは異なる適切なエンドポイント サフィックスを使用します。
 
 例を実行するには、Azure PowerShell モジュール Az バージョン 0.7 以降が必要です。 PowerShell ウィンドウで、`Get-Module -ListAvailable Az` を実行して、バージョンを確認します。 何も表示されない、またはアップグレードが必要な場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-Az-ps)に関するページを参照してください。
 
@@ -45,7 +45,7 @@ ms.locfileid: "92783574"
 Get-AzEnvironment
 ```
 
-接続するクラウドにアクセスできるアカウントにサインインし、環境を設定します。 次の例は、Azure Government Cloud を使用するアカウントにサインインする方法を示しています。   
+接続するクラウドにアクセスできるアカウントにサインインし、環境を設定します。 次の例は、Azure Government Cloud を使用するアカウントにサインインする方法を示しています。
 
 ```powershell
 Connect-AzAccount –Environment AzureUSGovernment
@@ -65,7 +65,6 @@ Get-AzLocation | select Location, DisplayName
 |----|----|
 | `germanycentral` | ドイツ中部|
 | `germanynortheast` | ドイツ北東部 |
-
 
 ## <a name="endpoint-suffix"></a>エンドポイント サフィックス
 
@@ -166,8 +165,8 @@ Remove-AzResourceGroup -Name $resourceGroup
 
 ## <a name="next-steps"></a>次のステップ
 
-* [PowerShell セッション間でのユーザー ログインの保持](/powershell/azure/context-persistence)
-* [Azure Government ストレージ](../../azure-government/compare-azure-government-global-azure.md)
-* [「Microsoft Azure Government Developer Guide (Microsoft Azure Government 開発者向けガイド)」をご覧ください](../../azure-government/documentation-government-developer-guide.md)
-* [Azure China 21Vianet アプリケーション開発者向けのメモ](https://msdn.microsoft.com/library/azure/dn578439.aspx)
-* [Azure Germany ドキュメント](../../germany/germany-welcome.md)
+- [PowerShell セッション間でのユーザー ログインの保持](/powershell/azure/context-persistence)
+- [Azure Government ストレージ](../../azure-government/compare-azure-government-global-azure.md)
+- [「Microsoft Azure Government Developer Guide (Microsoft Azure Government 開発者向けガイド)」をご覧ください](../../azure-government/documentation-government-developer-guide.md)
+- [Azure China 21Vianet アプリケーション開発者向けのメモ](https://msdn.microsoft.com/library/azure/dn578439.aspx)
+- [Azure Germany ドキュメント](../../germany/germany-welcome.md)

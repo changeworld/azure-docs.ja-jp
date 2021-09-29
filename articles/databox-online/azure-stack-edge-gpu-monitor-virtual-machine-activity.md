@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/03/2021
 ms.author: alkohli
-ms.openlocfilehash: a73337ad261d8d2d7aef2c6292c7387d7c4cad9a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: aa1974347caa04c314e51b33daba47d7835026db
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121779559"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124757612"
 ---
 # <a name="monitor-vm-activity-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU デバイスで VM のアクティビティを監視する
 
@@ -42,7 +42,7 @@ Azure Stack Edge Pro GPU デバイス上の仮想マシンのアクティビテ�
 
     ![Azure Stack Edge デバイス上の仮想マシンの [アクティビティ ログ] ページを示すスクリーンショット。 展開された操作が一覧で強調表示されています。](./media/azure-stack-edge-gpu-monitor-virtual-machine-activity/activity-log-03.png)<!--Reshoot to remove pointer. May be able to replace drop-down only.-->
 
-Azure の **[アクティビティ ログ]** ペインでは、アクティビティのフィルタリングと並べ替え、表示する列の選択、特定のアクティビティの詳細へのドリルダウンが可能で、過去 24 時間に発生したエラー、デプロイの失敗、アラート、サービスの正常性、セキュリティの変更についての **[クイック分析情報]** を得ることができます。 ログとフィルタリングのオプションの詳細については、[アクティビティ ログの表示](../azure-resource-manager/management/view-activity-logs.md)に関するページを参照してください。
+Azure の **[アクティビティ ログ]** ペインでは、アクティビティのフィルタリングと並べ替え、表示する列の選択、特定のアクティビティの詳細へのドリルダウンが可能で、過去 24 時間に発生したエラー、デプロイの失敗、アラート、サービスの正常性、セキュリティの変更についての **[クイック分析情報]** を得ることができます。 ログとフィルタリングのオプションの詳細については、[アクティビティ ログの表示](../azure-monitor/essentials/activity-log.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

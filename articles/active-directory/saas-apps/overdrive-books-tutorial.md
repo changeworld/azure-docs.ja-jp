@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/06/2021
 ms.author: jeedes
-ms.openlocfilehash: f94c19f52ab5b49f63d02296f30108f643f5c66d
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 4f521f21ad61eb0163460b552199f2ef5d7b6152
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109734525"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124821816"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-overdrive"></a>チュートリアル: Azure Active Directory と OverDrive の統合
 
@@ -141,7 +141,7 @@ Overdrive に対して Azure AD SSO を構成してテストするには、次�
 
 * Overdrive のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Overdrive] タイルをクリックすると、Overdrive のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Overdrive] タイルをクリックすると、Overdrive のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

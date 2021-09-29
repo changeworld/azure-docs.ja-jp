@@ -4,16 +4,16 @@ ms.topic: include
 ms.service: azure-video-analyzer
 ms.date: 05/03/2021
 ms.author: juliako
-ms.openlocfilehash: 341730ee0ed64809cec3f60a0e28cb6367fa863f
-ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
+ms.openlocfilehash: ca59a7d54b405c323529353878f2e2de27b5566a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113559693"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "126057224"
 ---
 ### <a name="get-the-sample-code"></a>サンプル コードを入手する
 
-1. [AVA C# サンプル リポジトリ](https://github.com/Azure-Samples/video-analyzer-iot-edge-csharp)を複製します。
+1. [AVA C# サンプル リポジトリ](https://github.com/Azure-Samples/video-analyzer-iot-edge-python)を複製します。
 1. Visual Studio Code を開始して、リポジトリをダウンロードしたフォルダーを開きます。
 1. Visual Studio Code で、src/cloud-to-device-console-app フォルダーに移動し、**appsettings.json** という名前のファイルを作成します。 このファイルには、プログラムを実行するために必要な設定が格納されています。
 1. 上記のセットアップ手順で作成したストレージ アカウントのファイル共有を参照し、"deployment-output" ファイル共有の下にある **appsettings.json** を見つけます。 そのファイルをクリックし、[ダウンロード] ボタンをクリックします。 コンテンツは新しいブラウザー タブで開きます。これは次のようになっています。

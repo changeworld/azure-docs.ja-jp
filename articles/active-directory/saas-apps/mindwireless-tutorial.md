@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/21/2021
 ms.author: jeedes
-ms.openlocfilehash: 56dbad9ebeaf2af2bb1fc26f27e55569e4ac9858
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: b0c22e48876b88bed5b01ad89de4a6b0aa3c6f19
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114602109"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124795205"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mindwireless"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と mindWireless の統合
 
@@ -141,7 +141,7 @@ mindWireless と Azure AD SSO を構成してテストするには、次の手�
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した mindWireless に自動的にサインインされます。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリ上で [mindWireless] タイルをクリックすると、SSO を設定した mindWireless に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリ上で [mindWireless] タイルをクリックすると、SSO を設定した mindWireless に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

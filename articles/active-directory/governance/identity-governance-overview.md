@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0558be2ea1defb2a09e6461ba838e328cb293d6
-ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
+ms.openlocfilehash: 072cfcd66207d8c778c77f3ece4db49a30e8ca28
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112201718"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124826859"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Azure AD Identity Governance とは
 
@@ -82,7 +82,7 @@ Identity Governance により、組織は、*生産性* (従業員が組織に�
 |アクセス要求|エンド ユーザーは、グループのメンバーシップまたはアプリケーションへのアクセスを要求できます。 エンド ユーザー (他の組織のゲストを含む) は、アクセス パッケージへのアクセスを要求できます。|[エンタイトルメント管理](entitlement-management-overview.md)|
 |ワークフロー|リソース所有者は、アクセス要求の承認者とエスカレーション承認者、およびロールのアクティブ化要求の承認者を定義できます。  |[エンタイトルメント管理](entitlement-management-overview.md)と [PIM](../privileged-identity-management/pim-configure.md)|
 |ポリシーとロールの管理|管理者は、アプリケーションへの実行時アクセスに対して条件付きアクセス ポリシーを定義できます。  リソース所有者は、アクセス パッケージを使用してユーザーのアクセスに対してポリシーを定義できます。|[条件付きアクセス](../conditional-access/overview.md) ポリシーと[エンタイトルメント管理](entitlement-management-overview.md)ポリシー|
-|アクセス認定|管理者は、次に対して定期的なアクセスの再認定を有効にすることができます。SaaS アプリまたはクラウド グループのメンバーシップ、Azure AD または Azure リソース ロールの割り当て。 リソース アクセスを自動的に削除し、ゲスト アクセスをブロックして、ゲスト アカウントを削除します。|[アクセス レビュー](access-reviews-overview.md)。[PIM](../privileged-identity-management/pim-how-to-start-security-review.md) にも表示されます|
+|アクセス認定|管理者は、次に対して定期的なアクセスの再認定を有効にすることができます。SaaS アプリまたはクラウド グループのメンバーシップ、Azure AD または Azure リソース ロールの割り当て。 リソース アクセスを自動的に削除し、ゲスト アクセスをブロックして、ゲスト アカウントを削除します。|[アクセス レビュー](access-reviews-overview.md)。[PIM](../privileged-identity-management/pim-create-azure-ad-roles-and-resource-roles-review.md) にも表示されます|
 |フルフィルメントとプロビジョニング|Azure AD 接続されたアプリへの自動プロビジョニングとプロビジョニング解除 (SCIM を介した、および SharePoint Online サイトへの、を含む)。 |[ユーザー プロビジョニング](../app-provisioning/user-provisioning.md)|
 |レポートと分析|管理者は、最近のユーザー プロビジョニングおよびサインオン アクティビティの監査ログを取得できます。 アクセス パッケージを使用した Azure Monitor と "アクセス権を持つユーザー" との統合。|[Azure AD レポート](../reports-monitoring/overview-reports.md)と[監視](../reports-monitoring/overview-monitoring.md)|
 |特権アクセス|Just-In-Time およびスケジュールを指定したアクセス、アラート、Azure AD ロール (カスタム ロールを含む) と Azure リソース ロールの承認ワークフロー。|[Azure AD PIM](../privileged-identity-management/pim-configure.md)|

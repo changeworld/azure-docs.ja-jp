@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/21/2021
 ms.author: jeedes
-ms.openlocfilehash: 56918491f2fad1357f565ed5c07942d0c65c4114
-ms.sourcegitcommit: f0168d80eb396ce27032aa02fe9da5a0c10b5af3
+ms.openlocfilehash: def91912dd628b99fb2d4e62fc7799b4366887d8
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112552444"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124756282"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-procore-sso"></a>チュートリアル: Azure Active Directory と Procore SSO の統合
 
@@ -170,7 +170,7 @@ Procore SSO を使用した Azure AD SSO を構成してテストするには、
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した Procore SSO に自動的にサインインします。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Procore SSO] タイルをクリックすると、SSO を設定した Procore SSO に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Procore SSO] タイルをクリックすると、SSO を設定した Procore SSO に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

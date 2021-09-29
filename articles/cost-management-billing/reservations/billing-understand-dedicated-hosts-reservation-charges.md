@@ -5,14 +5,14 @@ author: yashesvi
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 02/28/2020
+ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: 8d273aae3588a006f7b0a55d2798b7a43c040c9b
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 3e0f6bc30ca86653ff7a05f2874236a51d359955
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148367"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128631098"
 ---
 # <a name="how-the-azure-reservation-discount-is-applied-to-azure-dedicated-hosts"></a>Azure Dedicated Host への Azure 予約割引の適用
 
@@ -30,7 +30,7 @@ Azure Dedicated Host での予約インスタンスによって、専用ホス�
 
 ## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせ
 
-ご質問がある場合やヘルプが必要な場合は、 [サポート リクエスト](https://go.microsoft.com/fwlink/?linkid=2083458)を作成してください。
+ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。
 
 ## <a name="next-steps"></a>次のステップ
 

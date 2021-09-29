@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/30/2020
 ms.author: jeedes
-ms.openlocfilehash: 44ea8afcb42365b2b01d81674d0f76781cca0ea9
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: eb1b40636c26e9515b19cc1853e249a7e4c99b57
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108801732"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124753873"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-count-me-in---operations-dashboard"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Count Me In - Operations Dashboard の統合
 
@@ -145,7 +145,7 @@ Count Me In - Operations Dashboard に対して Azure AD SSO を構成してテ�
 
 - Count Me In - Operations Dashboard のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-- Microsoft マイ アプリを使用することができます。 マイ アプリで [Count Me In - Operations Dashboard] タイルをクリックすると、Count Me In - Operations Dashboard のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+- Microsoft マイ アプリを使用することができます。 マイ アプリで [Count Me In - Operations Dashboard] タイルをクリックすると、Count Me In - Operations Dashboard のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

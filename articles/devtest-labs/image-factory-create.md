@@ -1,14 +1,14 @@
 ---
-title: Azure DevTest Labs でイメージ ファクトリを作成する | Microsoft Docs
+title: イメージ ファクトリを作成する
 description: この記事では、Git リポジトリ (Azure DevTest Labs) にあるサンプル スクリプトを使用してカスタム イメージ ファクトリを設定する方法について説明します。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 14c8338d6a5ae21847da3a9c774ea6dcdac33ae4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 0e4ed8444475d1cd396dfa6c54083858b7671d5e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "85482073"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128623591"
 ---
 # <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>Azure DevTest Labs でカスタム イメージ ファクトリを作成する
 この記事では、[Git リポジトリ](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImageFactory)にあるサンプル スクリプトを使用してカスタム イメージ ファクトリを設定する方法について説明します。

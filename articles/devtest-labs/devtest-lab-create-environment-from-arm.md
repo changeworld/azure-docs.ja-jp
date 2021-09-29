@@ -1,14 +1,14 @@
 ---
 title: テンプレートを使用してマルチ VM 環境と PaaS リソースを作成する
 description: Azure Resource Manager テンプレートから Azure DevTest Labs で複数 VM の環境と PaaS リソースを作成する方法について説明します
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/12/2020
-ms.openlocfilehash: 839953bcf5f48dc856da0d01133e81ed69fd08cd
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: c1a83a5e8f471b68d1c512443371a9a592cfbc88
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111954143"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128587993"
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用してマルチ VM 環境と PaaS リソースを作成する
 

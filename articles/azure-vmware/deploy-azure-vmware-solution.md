@@ -4,12 +4,12 @@ description: 計画ステージで収集した情報を使用して、Azure VMwa
 ms.topic: tutorial
 ms.custom: contperf-fy22q1, devx-track-azurecli
 ms.date: 07/28/2021
-ms.openlocfilehash: fd3d39a33fcf86556b12fefe7a07dde48dd14c2c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0df1634d047dfe6abfaa717fd10b75b99f100076
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121729085"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128623933"
 ---
 # <a name="deploy-and-configure-azure-vmware-solution"></a>Azure VMware Solution をデプロイして構成する
 
@@ -28,7 +28,7 @@ ms.locfileid: "121729085"
 
 完了したら、最後に推奨される次の手順に従って、この入門ガイドの手順に進みます。
 
-## <a name="register-the-microsoftavs-resource-provider"></a>**Microsoft.AVS** リソース プロバイダーを登録する
+## <a name="register-the-microsoftavs-resource-provider"></a>Microsoft.AVS リソース プロバイダーを登録する
 
 [!INCLUDE [register-resource-provider-steps](includes/register-resource-provider-steps.md)]
 

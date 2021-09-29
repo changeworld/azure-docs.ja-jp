@@ -3,7 +3,7 @@ title: Azure API Management のサブスクリプション | Microsoft Docs
 description: Azure API Management のサブスクリプションの概念について説明します。 コンシューマーは、Azure API Management のサブスクリプションを使用して API にアクセスします。
 services: api-management
 documentationcenter: ''
-author: miaojiang
+author: dlepow
 manager: cfowler
 editor: ''
 ms.service: api-management
@@ -11,13 +11,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/27/2021
-ms.author: apimpm
-ms.openlocfilehash: 9bbdc914eae50a7226b22952b40cdb4b28849239
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.author: danlep
+ms.openlocfilehash: acf1db006dac4dd67937bf1d0788a219b6c482e9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123111671"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128637933"
 ---
 # <a name="subscriptions-in-azure-api-management"></a>Azure API Management のサブスクリプション
 

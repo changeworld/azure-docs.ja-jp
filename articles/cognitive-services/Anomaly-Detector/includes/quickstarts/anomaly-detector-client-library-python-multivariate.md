@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/29/2021
 ms.author: mbullwin
-ms.openlocfilehash: 5b0dfd51ac3de7f7abea41f18f8bf43dfa14580c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0ac9f337ed24a3e440fe877998a40181853d5657
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121801831"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128910788"
 ---
 Python 用 Anomaly Detector (多変量) クライアント ライブラリを使ってみましょう。 サービスによって提供されるアルゴリズムを使用してパッケージをインストールするには、次の手順に従います。 新しい多変量異常検出 API を使用すると、機械学習の知識やラベル付けされたデータがなくても、一連のメトリックから異常を検出できる高度な AI を開発者が容易に統合することができます。 異なる信号間の依存関係や相互相関が自動的に主要な要因として考慮されます。 これにより、複雑なシステムを障害から予防的に保護することができます。
 
@@ -262,9 +262,9 @@ if __name__ == '__main__':
 
 ```
 
-実行する前に、このクイックスタートの派生元である[完全なサンプル コード](https://github.com/Azure-Samples/AnomalyDetector/blob/master/ipython-notebook/Multivariate%20API%20Demo%20Notebook.ipynb)と自分のプロジェクトを照合しておくと役立つ場合があります。
+実行する前に、このクイックスタートの派生元である[完全なサンプル コード](https://github.com/Azure-Samples/AnomalyDetector/blob/master/ipython-notebook/API%20Sample/Multivariate%20API%20Demo%20Notebook.ipynb)と自分のプロジェクトを照合しておくと役立つ場合があります。
 
-また、作業の開始を支援するための[詳細な Jupyter Notebook](https://github.com/Azure-Samples/AnomalyDetector/blob/master/ipython-notebook/Multivariate%20API%20Demo%20Notebook.ipynb) も用意されています。
+また、作業の開始を支援するための[詳細な Jupyter Notebook](https://github.com/Azure-Samples/AnomalyDetector/blob/master/ipython-notebook/API%20Sample/Multivariate%20API%20Demo%20Notebook.ipynb) も用意されています。
 
 `python` コマンドとファイル名を使用してアプリケーションを実行します。
 

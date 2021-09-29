@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 06/11/2021
+ms.date: 09/15/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: 89fb5fdd217ddc38a4b3f80504b3c48a882c4251
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 1b315343b524dc165fb6464728a5a9700d4e22c8
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123471932"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128572637"
 ---
 # <a name="configure-authentication-in-a-sample-python-web-app-by-using-azure-ad-b2c"></a>Azure AD B2C を使ってサンプル Python Web アプリケーションで認証を構成する
 
@@ -61,8 +61,9 @@ OpenID Connect (OIDC) は、OAuth 2.0 を基盤にした認証プロトコルで
 Web アプリの登録を作成するには、次の手順を実行します。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-1. ポータル ツール バーにある **[ディレクトリ + サブスクリプション]** アイコンを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
-1. **Azure AD B2C** を検索して選択します。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページの **[ディレクトリ名]** の一覧で自分の Azure AD B2C ディレクトリを見つけて、 **[切り替え]** を選択します。
+1. Azure portal で、 **[Azure AD B2C]** を検索して選択します。
 1. **[アプリの登録]** を選択し、 **[新規登録]** を選択します。
 1. **[名前]** で、アプリケーションの名前を入力します (*webapp1* など)。
 1. **[サポートされているアカウントの種類]** で、 **[Accounts in any identity provider or organizational directory (for authenticating users with user flows)]\((ユーザー フローを使用してユーザーを認証するための) 任意の ID プロバイダーまたは組織のディレクトリのアカウント\)** を選択します。 

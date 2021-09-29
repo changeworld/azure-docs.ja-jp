@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: 9ff151071d42308137bdb8e9064f9b27ed194cae
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 63295e27791252e3b978fb83801182b7b8814f82
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88688846"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128559827"
 ---
 # <a name="terms-in-your-microsoft-partner-agreement-invoice"></a>Microsoft Partner Agreement の請求書の用語
 
@@ -42,7 +42,7 @@ ms.locfileid: "88688846"
 | 発注 number |追跡のために割り当てられる、省略可能な発注書番号 |
 | 請求書番号 |追跡のために使用される、Microsoft で生成した一意の請求書番号 |
 | 請求日 |請求書が生成された日付。通常は、請求期間が終了してから 5 から 12 日後。 請求書の日付は、課金プロファイルのプロパティで確認できます。|
-| 支払い条件 |Microsoft の請求に対する支払い方法。 "*60 日払い*" とは、請求書の日付から 60 日以内に支払うことを意味します。 |
+| 支払条件 |Microsoft の請求に対する支払い方法。 "*60 日払い*" とは、請求書の日付から 60 日以内に支払うことを意味します。 |
 
 ## <a name="billing-summary"></a>課金の要約
 

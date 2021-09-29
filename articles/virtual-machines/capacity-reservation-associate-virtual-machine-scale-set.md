@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/09/2021
 ms.reviewer: cynthn, jushiman
 ms.custom: template-how-to
-ms.openlocfilehash: 39dc20f240ba051dd5b49ddbbcc99a20b732ec77
-ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+ms.openlocfilehash: fe9b445a1eccb6c897a1fd7f383e487714c23966
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123273301"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128575936"
 ---
 # <a name="associate-a-virtual-machine-scale-set-to-a-capacity-reservation-group-preview"></a>仮想マシン スケール セットを容量予約グループに関連付ける (プレビュー)
 
@@ -31,10 +31,6 @@ Virtual Machine Scale Sets には次の 2 つのモードがあります。
 ## <a name="register-for-capacity-reservation"></a>容量予約に登録する 
 
 容量予約機能を使用する前に、[プレビュー版を利用するためにサブスクリプションを登録する](capacity-reservation-overview.md#register-for-capacity-reservation)必要があります。 登録が完了するまでに数分かかる場合があります。 Azure CLI または PowerShell のいずれかを使用して、機能の登録を完了することができます。
-
-> [!NOTE]
-> オンデマンドの容量予約は、選択したリージョンでのみ、均一オーケストレーション モードの仮想マシン スケール セットで使用できます。 リージョンがサポートされているかどうかを確認するには、[均一仮想マシン スケール セットのデプロイ トラッカー](https://aka.ms/vmssuniformdeploymenttracker)に関するページにアクセスしてください。
-
 
 ## <a name="limitations-of-scale-sets-in-uniform-orchestration"></a>均一オーケストレーションでのスケール セットの制限 
 
@@ -109,7 +105,7 @@ New-AzVmss
 
 ### <a name="arm-template"></a>[ARM テンプレート](#tab/arm1)
 
- [ARM テンプレート](/azure/azure-resource-manager/templates/overview) は JavaScript Object Notation (JSON) ファイルであり、プロジェクトのインフラストラクチャと構成が定義されています。 このテンプレートでは、宣言型の構文が使用されています。 宣言型の構文では、デプロイしようとしているものを、デプロイを作成する一連のプログラミング コマンドを記述しなくても記述できます。 
+ [ARM テンプレート](../azure-resource-manager/templates/overview.md) は JavaScript Object Notation (JSON) ファイルであり、プロジェクトのインフラストラクチャと構成が定義されています。 このテンプレートでは、宣言型の構文が使用されています。 宣言型の構文では、デプロイしようとしているものを、デプロイを作成する一連のプログラミング コマンドを記述しなくても記述できます。 
 
 ARM テンプレートを使用して、関連するリソースのグループをデプロイできます。 1 つのテンプレートで、容量予約グループと容量予約を作成できます。 テンプレートは、Azure portal、Azure CLI、Azure PowerShell からデプロイすることも、継続的インテグレーション/継続的デリバリー (CI/CD) パイプラインから呼び出すこともできます。 
 

@@ -9,12 +9,12 @@ ms.author: sawinark
 author: swinarko
 ms.custom: seo-lt-2019, devx-track-azurepowershell
 ms.date: 06/04/2021
-ms.openlocfilehash: 3b8c15a764f3a196232e43ffd8d7fd7fe373355c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0b24ae5a1564f182cf44e540a9d05a2aaac005ae
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121739461"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124733100"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>Azure Data Factory の SSIS パッケージの実行アクティビティを使用して SSIS パッケージを実行する
 
@@ -36,15 +36,15 @@ Azure-SSIS 統合ランタイム (IR) がない場合は、[「チュートリ�
 
 1. Azure portal の Data Factory の概要ページまたはホームページで、 **[作成と監視]** タイルを選択して Data Factory の UI またはアプリを別のタブで開始します。 
 
-   ![Data Factory ホーム ページ](./media/how-to-invoke-ssis-package-stored-procedure-activity/data-factory-home-page.png)
+   :::image type="content" source="./media/how-to-invoke-ssis-package-stored-procedure-activity/data-factory-home-page.png" alt-text="Data Factory ホーム ページ":::
 
-   ホーム ページで **[Orchestrate]\(調整\)** を選択します。 
+   ホーム ページで **[調整]** を選択します。 
 
-   ![ADF のホーム ページを示すスクリーンショット。](./media/doc-common-process/get-started-page.png)
+   :::image type="content" source="./media/doc-common-process/get-started-page.png" alt-text="ADF のホーム ページを示すスクリーンショット。":::
 
 1. **[アクティビティ]** ツールボックスで **[全般]** を展開します。 次に、**SSIS パッケージの実行** アクティビティをパイプライン デザイナー画面にドラッグします。 
 
-   ![SSIS パッケージの実行アクティビティをデザイナー画面にドラッグする](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-designer.png) 
+   :::image type="content" source="media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-designer.png" alt-text="SSIS パッケージの実行アクティビティをデザイナー画面にドラッグする"::: 
 
    [SSIS パッケージの実行] アクティビティ オブジェクトを選択して、 **[全般]** 、 **[設定]** 、 **[SSIS パラメーター]** 、 **[接続マネージャー]** 、および **[プロパティのオーバーライド]** タブを構成します。
 
@@ -52,7 +52,7 @@ Azure-SSIS 統合ランタイム (IR) がない場合は、[「チュートリ�
 
 [SSIS パッケージの実行] アクティビティの **[全般]** タブで、次の手順を実行します。
 
-![[一般] タブでプロパティを設定する](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
+:::image type="content" source="media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png" alt-text="[一般] タブでプロパティを設定する":::
 
    1. **[名前]** には、[SSIS パッケージの実行] アクティビティの名前を入力します。
 
@@ -72,7 +72,7 @@ Azure-SSIS 統合ランタイム (IR) がない場合は、[「チュートリ�
 
 [SSIS パッケージの実行] アクティビティの **[設定]** タブで、次の手順を実行します。
 
-![[設定] タブでプロパティを設定する - 自動](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings.png)
+:::image type="content" source="media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings.png" alt-text="[設定] タブでプロパティを設定する - 自動":::
 
    1. **[Azure-SSIS IR]** では、SSIS パッケージの実行アクティビティを実行する指定された Azure-SSIS IR を選択します。
 
@@ -98,13 +98,13 @@ Azure-SSIS IR が Azure SQL Database サーバー/Managed Instance でホスト�
 
    1. Azure-SSIS IR が実行されていない場合、または **[Manual entries]\(手動入力\)** チェック ボックスがオンになっている場合は、`<folder name>/<project name>/<package name>.dtsx` および `<folder name>/<environment name>` の形式で SSISDB からパッケージと環境のパスを直接入力します。
 
-      ![[設定] タブでプロパティを設定する - 手動](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings2.png)
+      :::image type="content" source="media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings2.png" alt-text="[設定] タブでプロパティを設定する - 手動":::
 
 ##### <a name="package-location-file-system-package"></a>パッケージの場所:ファイル システム (パッケージ)
 
 Azure-SSIS IR が SSISDB なしでプロビジョニングされた場合、パッケージの場所として **[ファイル システム (パッケージ)]** が自動的に選択されます。または、自分で選択することもできます。 選択されている場合は、次の手順を実行します。
 
-![[設定] タブでプロパティを設定する - ファイル システム (パッケージ)](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings3.png)
+:::image type="content" source="media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings3.png" alt-text="[設定] タブでプロパティを設定する - ファイル システム (パッケージ)":::
    
    1. **[パッケージ パス]** でパッケージ ファイル (`.dtsx` を含む) への汎用名前付け規則 (UNC) パスを指定して、実行するパッケージを指定します。 パッケージを参照して選択するには、 **[Browse file storage]\(ファイル ストレージを参照\)** を選択するか、パスを手動で入力します。 たとえば、Azure Files にパッケージを保存する場合、そのパスは `\\<storage account name>.file.core.windows.net\<file share name>\<package name>.dtsx` です。 
    
@@ -134,7 +134,7 @@ Azure-SSIS IR が SSISDB なしでプロビジョニングされた場合、パ�
 
 パッケージの場所として **[ファイル システム (プロジェクト)]** を選択した場合は、次の手順を実行します。
 
-![[設定] タブでプロパティを設定する - ファイル システム (プロジェクト)](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings4.png)
+:::image type="content" source="media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings4.png" alt-text="[設定] タブでプロパティを設定する - ファイル システム (プロジェクト)":::
 
    1. 実行するパッケージを指定するには、 **[プロジェクト パス]** ボックスにプロジェクト ファイル (`.ispac` を含む) への UNC パス、 **[パッケージ名]** ボックスにプロジェクトのパッケージ ファイル (`.dtsx` を含む) を指定します。 プロジェクトを参照して選択するには、 **[Browse file storage]\(ファイル ストレージを参照\)** を選択するか、パスを手動で入力します。 たとえば、Azure Files にプロジェクトを保存する場合、そのパスは `\\<storage account name>.file.core.windows.net\<file share name>\<project name>.ispac` です。
 
@@ -162,7 +162,7 @@ Azure-SSIS IR が SSISDB なしでプロビジョニングされた場合、パ�
 
 パッケージの場所として **[埋め込みパッケージ]** を選択した場合は、次の手順を実行します。
 
-![[設定] タブでプロパティを設定する - 埋め込みパッケージ](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings5.png)
+:::image type="content" source="media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings5.png" alt-text="[設定] タブでプロパティを設定する - 埋め込みパッケージ":::
 
    1. パッケージ ファイル (`.dtsx`) をドラッグ アンド ドロップするか、ファイル フォルダーから指定されたボックスに **アップロード** します。 パッケージは自動的に圧縮され、アクティビティ ペイロードに埋め込まれます。 埋め込みが完了すると、パッケージは後で編集用に **ダウンロード** できます。 また、埋め込みパッケージを複数のアクティビティで使用できるパイプライン パラメーターに割り当てることによって **パラメーター化する** ことで、パイプライン ペイロードのサイズを最適化することもできます。 現在、プロジェクト ファイル (`.ispac`) の埋め込みはサポートされていないため、埋め込みパッケージのプロジェクトレベルのスコープで SSIS パラメーター/接続マネージャーを使用することはできません。
    
@@ -190,7 +190,7 @@ Azure-SSIS IR が SSISDB なしでプロビジョニングされた場合、パ�
 
 パッケージの場所として **[パッケージ ストア]** を選択した場合は、次の手順を実行します。
 
-![[設定] タブでプロパティを設定する - パッケージ ストア](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings6.png)
+:::image type="content" source="media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings6.png" alt-text="[設定] タブでプロパティを設定する - パッケージ ストア":::
    
    1. **[Package store name]\(パッケージ ストア名\)** には、Azure-SSIS IR に関連付けられている既存のパッケージ ストアを選択します。
 
@@ -222,7 +222,7 @@ Azure-SSIS IR が SSISDB なしでプロビジョニングされた場合、パ�
 
 [SSIS パッケージの実行] アクティビティの **[SSIS パラメーター]** タブで、次の手順を実行します。
 
-![[SSIS パラメーター] タブでプロパティを設定する](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-ssis-parameters.png)
+:::image type="content" source="media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-ssis-parameters.png" alt-text="[SSIS パラメーター] タブでプロパティを設定する":::
 
    1. Azure-SSIS IR の実行中にパッケージの場所として **[SSISDB]** が選択され、 **[設定]** タブの **[Manual entries]\(手動入力\)** チェック ボックスがオフの場合は、値を割り当てるパラメーターとして、SSISDB から選択したプロジェクトおよびパッケージ内の既存の SSIS パラメーターが表示されます。 それ以外の場合は、値を 1 つずつ入力して手動で値を割り当てることができます。 パッケージの実行が成功するためには、それらが存在し、正しく入力されていることを確認します。 
    
@@ -236,19 +236,19 @@ Azure-SSIS IR が SSISDB なしでプロビジョニングされた場合、パ�
 
 [SSIS パッケージの実行] アクティビティの **[接続マネージャー]** タブで、次の手順を実行します。
 
-![[接続マネージャー] タブでプロパティを設定する](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-connection-managers.png)
+:::image type="content" source="media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-connection-managers.png" alt-text="[接続マネージャー] タブでプロパティを設定する":::
 
    1. Azure-SSIS IR の実行中にパッケージの場所として **[SSISDB]** が選択され、 **[設定]** タブの **[Manual entries]\(手動入力\)** チェック ボックスがオフの場合は、そのプロパティに値を割り当てるパラメーターとして、SSISDB から選択したプロジェクトおよびパッケージ内の既存の接続マネージャーが表示されます。 それ以外の場合は、値を 1 つずつ入力して手動でプロパティに値を割り当てることができます。 パッケージの実行が成功するためには、それらが存在し、正しく入力されていることを確認します。 
    
       接続マネージャーの正しい **SCOPE**、**NAME**、**PROPERTY** 名を取得するには、SSDT でその接続マネージャーが含まれているパッケージを開きます。 パッケージが開いたら、該当する接続マネージャーを選択して、SSDT の **[プロパティ]** ウィンドウで、そのすべてのプロパティの名前と値を表示します。 この情報を使用して、実行時に接続マネージャーのプロパティの値をオーバーライドできます。 
 
-      ![SSDT から接続マネージャーのプロパティを取得する](media/how-to-invoke-ssis-package-ssis-activity/ssdt-connection-manager-properties.png)
+      :::image type="content" source="media/how-to-invoke-ssis-package-ssis-activity/ssdt-connection-manager-properties.png" alt-text="SSDT から接続マネージャーのプロパティを取得する":::
 
       たとえば、SSDT で元のパッケージを変更せずに、SQL Server で実行されているオンプレミスからオンプレミスへのデータ フローを、ADF の SSIS IR 上で実行されているオンプレミスからクラウドへのデータ フローに変換できます。これを行うには、実行時に既存の接続マネージャーの **ConnectByProxy**、**ConnectionString**、および **ConnectUsingManagedIdentity** プロパティの値をオーバーライドします。
       
       このような実行時のオーバーライドにより、オンプレミスのデータにアクセスするときに SSIS IR のプロキシとしてセルフホステッド IR (SHIR) を有効にすることができます ([SHIR を SSIS IR のプロキシとして構成する](./self-hosted-integration-runtime-proxy-ssis.md)方法に関する記事を参照)。また、最新の MSOLEDBSQL ドライバーを使用して Azure SQL Database/マネージド インスタンスに接続することで、ADF マネージド ID による Azure Active Directory (AAD) 認証が有効になります ([OLEDB 接続のために ADF マネージド ID による AAD 認証を構成する](/sql/integration-services/connection-manager/ole-db-connection-manager#managed-identities-for-azure-resources-authentication)方法に関する記事を参照)。
 
-      ![SSDT の [接続マネージャー] タブでプロパティを設定する](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-connection-managers2.png)
+      :::image type="content" source="media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-connection-managers2.png" alt-text="SSDT の [接続マネージャー] タブでプロパティを設定する":::
    
    1. SSDT でパッケージを作成するときに **EncryptSensitiveWithUserKey** 保護レベルを使用し、パッケージの場所として **[ファイル システム (パッケージ)]** 、 **[ファイル システム (プロジェクト)]** 、 **[埋め込みパッケージ]** 、または **[パッケージ ストア]** を選択する場合は、構成ファイルまたはこのタブで機密性の高い接続マネージャー プロパティを再入力して値を割り当てる必要もあります。 
 
@@ -260,23 +260,23 @@ Azure-SSIS IR が SSISDB なしでプロビジョニングされた場合、パ�
 
 [SSIS パッケージの実行] アクティビティの **[プロパティのオーバーライド]** タブで、次の手順を実行します。
 
-![[プロパティのオーバーライド] タブでプロパティを設定する](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-property-overrides.png)
+:::image type="content" source="media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-property-overrides.png" alt-text="[プロパティのオーバーライド] タブでプロパティを設定する":::
 
    1. 選択したパッケージの既存のプロパティのパスを 1 つずつ入力して、手動でそれらに値を割り当てます。 パッケージの実行が成功するためには、それらが存在し、正しく入力されていることを確認します。 たとえば、ユーザー変数の値をオーバーライドするには、`\Package.Variables[User::<variable name>].Value` の形式でパスを入力します。 
 
       パッケージ プロパティの正しい **PROPERTY PATH** を取得するには、SSDT でそのプロパティが含まれているパッケージを開きます。 パッケージが開いたら、その制御フローを選択し、SSDT の **[プロパティ]** ウィンドウで **[構成]** プロパティを選択します。 次に、 **[構成]** プロパティの横にある省略記号 ( **...** ) ボタンを選択して、**パッケージ構成オーガナイザー** を開きます。これは、通常、[パッケージ配置モデルのパッケージ構成を作成する](/sql/integration-services/packages/legacy-package-deployment-ssis#create-package-configurations)ために使用されます。 
 
-      ![SSDT からパッケージ プロパティを取得する - [構成] プロパティ](media/how-to-invoke-ssis-package-ssis-activity/ssdt-package-properties.png)
+      :::image type="content" source="media/how-to-invoke-ssis-package-ssis-activity/ssdt-package-properties.png" alt-text="SSDT からパッケージ プロパティを取得する - [構成] プロパティ":::
 
       **[パッケージ構成オーガナイザー]** ダイアログ ボックスで、 **[パッケージの構成を有効にする]** チェック ボックスをオンにし、 **[追加...]** ボタンをクリックして **パッケージ構成ウィザード** を開きます。 
       
       **パッケージ構成ウィザード** で、 **[構成の種類]** ドロップダウン メニューの **[XML 構成ファイル]** 項目を選択し、 **[構成設定を直接指定する]** ボタンをクリックして構成ファイル名を入力し、 **[次へ >]** ボタンをクリックします。 
 
-      ![SSDT からパッケージ プロパティを取得する - 構成オーガナイザー](media/how-to-invoke-ssis-package-ssis-activity/ssdt-package-properties2.png)
+      :::image type="content" source="media/how-to-invoke-ssis-package-ssis-activity/ssdt-package-properties2.png" alt-text="SSDT からパッケージ プロパティを取得する - 構成オーガナイザー":::
 
       最後に、必要なパスを含むパッケージ プロパティを選択して **[次へ >]** をクリックします。  これで、必要なパッケージ プロパティのパスを表示し、コピーして構成ファイルに貼り付け、保存することができます。 この情報を使用して、実行時にパッケージ プロパティの値をオーバーライドできます。 
 
-      ![SSDT からパッケージ プロパティを取得する - 構成ウィザード](media/how-to-invoke-ssis-package-ssis-activity/ssdt-package-properties3.png)
+      :::image type="content" source="media/how-to-invoke-ssis-package-ssis-activity/ssdt-package-properties3.png" alt-text="SSDT からパッケージ プロパティを取得する - 構成ウィザード":::
    
    1. SSDT でパッケージを作成するときに **EncryptSensitiveWithUserKey** 保護レベルを使用し、パッケージの場所として **[ファイル システム (パッケージ)]** 、 **[ファイル システム (プロジェクト)]** 、 **[埋め込みパッケージ]** 、または **[パッケージ ストア]** を選択する場合は、構成ファイルまたはこのタブで機密性の高いパッケージ プロパティを再入力して値を割り当てる必要もあります。 
    
@@ -293,7 +293,7 @@ Data Factory にパイプラインを発行するには、 **[Publish All]\(す�
 
 1. パイプラインの実行をトリガーするには、ツール バーの **[トリガー]** を選択し、 **[Trigger Now]\(今すぐトリガー\)** を選択します。 
 
-   ![[Trigger Now]\(今すぐトリガー\)](./media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-trigger.png)
+   :::image type="content" source="./media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-trigger.png" alt-text="[Trigger Now]\(今すぐトリガー\)":::
 
 2. **[Pipeline Run]\(パイプラインの実行\)** ウィンドウで **[完了]** を選択します。 
 
@@ -301,11 +301,11 @@ Data Factory にパイプラインを発行するには、 **[Publish All]\(す�
 
 1. 左側で **[監視]** タブに切り替えます。 パイプラインの実行とその状態が、その他の情報 (**実行開始** 時刻など) と共に表示されます。 表示を更新するには、 **[最新の情報に更新]** を選択します。
 
-   ![パイプライン実行](./media/how-to-invoke-ssis-package-stored-procedure-activity/pipeline-runs.png)
+   :::image type="content" source="./media/how-to-invoke-ssis-package-stored-procedure-activity/pipeline-runs.png" alt-text="パイプライン実行":::
 
 2. **[アクション]** 列の **[View Activity Runs]\(アクティビティの実行の表示\)** リンクを選択します。 パイプラインに 1 つしかアクティビティがないので、アクティビティの実行が 1 つだけ表示されます。 SSIS パッケージの実行アクティビティです。
 
-   ![アクティビティの実行](./media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-runs.png)
+   :::image type="content" source="./media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-runs.png" alt-text="アクティビティの実行":::
 
 3. パッケージが実行されたことを確認するには、次のクエリを SQL サーバーの SSISDB データベースに対して実行します。 
 
@@ -313,11 +313,11 @@ Data Factory にパイプラインを発行するには、 **[Publish All]\(す�
    select * from catalog.executions
    ```
 
-   ![パッケージの実行を確認する](./media/how-to-invoke-ssis-package-stored-procedure-activity/verify-package-executions.png)
+   :::image type="content" source="./media/how-to-invoke-ssis-package-stored-procedure-activity/verify-package-executions.png" alt-text="パッケージの実行を確認する":::
 
 4. パイプラインのアクティビティ実行の出力から SSISDB 実行 ID を取得し、その ID を使用して SQL Server Management Studio 内でより包括的な実行ログとエラー メッセージを確認することもできます。
 
-   ![実行 ID を取得します。](media/how-to-invoke-ssis-package-ssis-activity/get-execution-id.png)
+   :::image type="content" source="media/how-to-invoke-ssis-package-ssis-activity/get-execution-id.png" alt-text="実行 ID を取得します。":::
 
 ### <a name="schedule-the-pipeline-with-a-trigger"></a>トリガーを使用してパイプラインのスケジュールを設定する
 

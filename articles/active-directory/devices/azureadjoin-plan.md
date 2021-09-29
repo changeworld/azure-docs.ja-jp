@@ -8,15 +8,15 @@ ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdaef1c746ca23f2badf657e6e72e6e3988bcfa4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f3eb56d9de903fc6013600908e3b44e8e0f547ed
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121724857"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128618117"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>方法:Azure AD Join の実装を計画する
 
@@ -199,7 +199,7 @@ Windows 10 2004 更新プログラム以降、ユーザーは Azure AD 登録済
 
 次のアプローチを使用して Azure AD 参加をプロビジョニングできます。
 
-- **OOBE/設定内でのセルフサービス** - セルフサービス モードでは、ユーザーは Windows Out of Box Experience (OOBE) の実行中に、または Windows 設定から、Azure AD 参加のプロセスを実行します。 詳しくは、「[職場のデバイスを組織のネットワークに参加させる](../user-help/user-help-join-device-on-network.md)」をご覧ください。 
+- **OOBE/設定内でのセルフサービス** - セルフサービス モードでは、ユーザーは Windows Out of Box Experience (OOBE) の実行中に、または Windows 設定から、Azure AD 参加のプロセスを実行します。 詳しくは、「[職場のデバイスを組織のネットワークに参加させる](https://support.microsoft.com/account-billing/join-your-work-device-to-your-work-or-school-network-ef4d6adb-5095-4e51-829e-5457430f3973)」をご覧ください。 
 - **Windows Autopilot** - Windows Autopilot により、Azure AD 参加を実行する OOBE のエクスペリエンスを円滑にするためにデバイスの事前構成を行うことができます。 詳しくは、「[Windows Autopilot の概要](/windows/deployment/windows-autopilot/windows-10-autopilot)」をご覧ください。 
 - **一括登録** - 一括登録により、一括プロビジョニング ツールを使用してデバイスを構成することで、管理者主導の Azure AD 参加が可能になります。 詳しくは、「[Windows デバイスの一括登録](/intune/windows-bulk-enroll)」をご覧ください。
  
@@ -308,7 +308,7 @@ Azure AD 参加済みデバイスに対して MDM プロバイダーが構成さ
 
 > [!div class="nextstepaction"]
 > [最初の実行中に新しい Windows 10 デバイスを Azure AD に参加させる](azuread-joined-devices-frx.md)
-> [職場のデバイスを組織のネットワークに参加させる](../user-help/user-help-join-device-on-network.md)
+> [職場のデバイスを組織のネットワークに参加させる](https://support.microsoft.com/account-billing/join-your-work-device-to-your-work-or-school-network-ef4d6adb-5095-4e51-829e-5457430f3973)
 
 <!--Image references-->
 [1]: ./media/azureadjoin-plan/12.png

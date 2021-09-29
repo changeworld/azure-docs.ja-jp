@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/10/2021
+ms.date: 09/20/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8aeb818104e1424d96374bf535d4c02a870f4705
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 3851f9893799902c9cdcda71db67a9152de028ec
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112453882"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128595809"
 ---
 # <a name="manage-your-azure-active-directory-b2c-tenant"></a>Azure Active Directory B2C テナントを管理する
 
@@ -76,7 +76,8 @@ Azure AD B2C テナントには、「[Azure Active Directory B2C のユーザー
 新しい管理アカウントを作成する場合は、次の手順に従います。
 
 1. グローバル管理者または特権ロール管理者のアクセス許可を使用して [Azure portal](https://portal.azure.com/) にサインインします。
-1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
 1. **[Azure サービス]** で、 **[Azure AD B2C]** を選択します。 または、検索ボックスを使用して検索し、 **[Azure AD B2C]** を選択します。
 1. **[管理]** にある **[ユーザー]** を選択します。
 1. **[ 新規ユーザー]** を選択します。
@@ -101,7 +102,8 @@ Azure AD B2C テナントには、「[Azure Active Directory B2C のユーザー
 ユーザーを招待するには、次の手順に従います。
 
 1. グローバル管理者または特権ロール管理者のアクセス許可を使用して [Azure portal](https://portal.azure.com/) にサインインします。
-1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
 1. **[Azure サービス]** で、 **[Azure AD B2C]** を選択します。 または、検索ボックスを使用して検索し、 **[Azure AD B2C]** を選択します。
 1. **[管理]** にある **[ユーザー]** を選択します。
 1. **[新しいゲスト アカウント]** を選択します。
@@ -123,13 +125,13 @@ Azure AD B2C テナントには、「[Azure Active Directory B2C のユーザー
 ゲストが招待メールを受け取っていない場合、または招待の有効期限が切れた場合は、招待を再送信できます。 招待メールの代わりに、アプリまたはポータルへの直接リンクをゲストに知らせることができます。 招待を再送信し、直接リンクを取得する手順は、次のとおりです。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
 1. **[Azure サービス]** で、 **[Azure AD B2C]** を選択します。 または、検索ボックスを使用して検索し、 **[Azure AD B2C]** を選択します。
 1. **[管理]** にある **[ユーザー]** を選択します。
 1. 招待を再送信するユーザーを検索し、選択します。
 1. **[ユーザー | プロファイル]** ページの **[ID]** で **[(管理)]** を選択します。
-    
-    ![ゲスト アカウントに招待メールを再送信する方法を示すスクリーンショット。](./media/tenant-management/guest-account-resend-invite.png)
+        ![ゲスト アカウントに招待メールを再送信する方法を示すスクリーンショット。](./media/tenant-management/guest-account-resend-invite.png)
 
 1. **[招待を再送信しますか?]** で **[はい]** を選択します。 **[招待を再送信してもよろしいですか?]** が表示されたら、 **[はい]** を選択します。
 1. Azure AD B2C によって招待が送信されます。 招待 URL をコピーし、ゲストに直接、渡すこともできます。
@@ -141,7 +143,8 @@ Azure AD B2C テナントには、「[Azure Active Directory B2C のユーザー
 [ユーザーを作成](#add-an-administrator-work-account)するか、[ゲスト ユーザーを招待](#invite-an-administrator-guest-account)するときにロールを割り当てることができます。 ユーザーに対してロールの追加、変更、または削除を実行できます。
 
 1. グローバル管理者または特権ロール管理者のアクセス許可を使用して [Azure portal](https://portal.azure.com/) にサインインします。
-1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
 1. **[Azure サービス]** で、 **[Azure AD B2C]** を選択します。 または、検索ボックスを使用して検索し、 **[Azure AD B2C]** を選択します。
 1. **[管理]** にある **[ユーザー]** を選択します。
 1. ロールを変更するユーザーを選択します。 次に、 **[割り当てられたロール]** を選択します。
@@ -159,7 +162,8 @@ Azure AD B2C テナントには、「[Azure Active Directory B2C のユーザー
 監査プロセスの一環として、通常は、Azure AD B2C ディレクトリ内の特定のロールにどのユーザーが割り当てられているかを確認します。 現在、どのユーザーに特権ロールが割り当てられているかを監査するには、次の手順に従います。
 
 1. グローバル管理者または特権ロール管理者のアクセス許可を使用して [Azure portal](https://portal.azure.com/) にサインインします。
-1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
 1. **[Azure サービス]** で、 **[Azure AD B2C]** を選択します。 または、検索ボックスを使用して検索し、 **[Azure AD B2C]** を選択します。
 1. **[管理]** で **[ロールと管理者]** を選択します。
 1. **[グローバル管理者]** などのロールを選択します。 **[ロール| 割り当て]** ページには、そのロールのユーザーが一覧表示されます。
@@ -186,7 +190,8 @@ Azure AD B2C テナントには、「[Azure Active Directory B2C のユーザー
 Azure AD B2C テナント名を取得するには、これらの手順に従います。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページの **[ディレクトリ名]** の一覧で自分の Azure AD B2C ディレクトリを見つけて、 **[切り替え]** を選択します。
 1. Azure portal で、 **[Azure AD B2C]** を検索して選択します。
 1. **[概要]** で **ドメイン名** をコピーします。
 
@@ -197,7 +202,8 @@ Azure AD B2C テナント名を取得するには、これらの手順に従い�
 Azure AD B2C テナント ID を取得するには、これらの手順に従います。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
 1. Azure portal で、 **[Azure Active Directory]** を検索して選択します。
 1. **[概要]** で **テナント ID** をコピーします。
 

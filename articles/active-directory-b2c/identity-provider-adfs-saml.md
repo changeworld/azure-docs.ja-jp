@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 09/16/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 90e16f89a6b591841ed28942c44f7dc1223e975a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3114a182ff381213a06fbf91e038439ac5007bdc
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121778839"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128575116"
 ---
 # <a name="add-ad-fs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用して SAML ID プロバイダーとして AD FS を追加する
 
@@ -49,14 +49,15 @@ ms.locfileid: "121778839"
 証明書を Azure AD B2C テナントに格納する必要があります。
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
-2. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 上部メニューで **[ディレクトリ + サブスクリプション]** フィルターを選択し、ご利用のテナントが含まれるディレクトリを選択します。
-3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
-4. [概要] ページで、 **[Identity Experience Framework]** を選択します。
-5. **[ポリシー キー]** を選択し、 **[追加]** を選択します。
-6. **オプション** については、`Upload`を選択します。
-7. ポリシー キーの **名前** を入力します。 たとえば、「 `SAMLSigningCert` 」のように入力します。 プレフィックス `B2C_1A_` がキーの名前に自動的に追加されます。
-8. 秘密キーが含まれている証明書の .pfx ファイルを参照して選択します。
-9. **Create** をクリックしてください。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
+1. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
+1. [概要] ページで、 **[Identity Experience Framework]** を選択します。
+1. **[ポリシー キー]** を選択し、 **[追加]** を選択します。
+1. **オプション** については、`Upload`を選択します。
+1. ポリシー キーの **名前** を入力します。 たとえば、「 `SAMLSigningCert` 」のように入力します。 プレフィックス `B2C_1A_` がキーの名前に自動的に追加されます。
+1. 秘密キーが含まれている証明書の .pfx ファイルを参照して選択します。
+1. **Create** をクリックしてください。
 
 ## <a name="add-a-claims-provider"></a>クレーム プロバイダーを追加する
 
@@ -200,7 +201,8 @@ https://your-domain-name/your-tenant-name.onmicrosoft.com/your-policy/samlp/meta
 ## <a name="test-your-custom-policy"></a>カスタム ポリシーのテスト
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-1. ポータル ツール バーにある **[ディレクトリ + サブスクリプション]** アイコンを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページの **[ディレクトリ名]** の一覧で自分の Azure AD B2C ディレクトリを見つけて、 **[切り替え]** を選択します。
 1. Azure portal で、 **[Azure AD B2C]** を検索して選択します。
 1. **[ポリシー]** で **[Identity Experience Framework]** を選択します。
 1. 証明書利用者ポリシー (`B2C_1A_signup_signin` など) を選択します。

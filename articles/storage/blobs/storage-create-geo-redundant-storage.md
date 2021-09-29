@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: artek
 ms.custom: mvc, devx-track-python, devx-track-js, devx-track-csharp
 ms.subservice: blobs
-ms.openlocfilehash: 8c9666f9cfadeda29b6259876c972bda67a9ee44
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: e8009e7b86ca151b6445ff3a5c165687641318d3
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110462016"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128590349"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>チュートリアル:Blob Storage を使用して高可用性アプリケーションを作成する
 
@@ -31,9 +31,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 シリーズの第 1 部で学習する内容は次のとおりです。
 
 > [!div class="checklist"]
-> * ストレージ アカウントの作成
-> * 接続文字列の設定
-> * コンソール アプリケーションを実行する
+> - ストレージ アカウントの作成
+> - 接続文字列の設定
+> - コンソール アプリケーションを実行する
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -45,7 +45,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 # <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
-* **Azure 開発** ワークロードと共に [Visual Studio 2019](https://www.visualstudio.com/downloads/) をインストールします。
+- **Azure 開発** ワークロードと共に [Visual Studio 2019](https://www.visualstudio.com/downloads/) をインストールします。
 
   ![Azure 開発 ([Web & Cloud]\(Web とクラウド\) 以下)](media/storage-create-geo-redundant-storage/workloads.png)
 
@@ -55,8 +55,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 # <a name="python-v21"></a>[Python v2.1](#tab/python2)
 
-* [Python](https://www.python.org/downloads/) のインストール
-* [Azure Storage SDK for Python](https://github.com/Azure/azure-storage-python) をダウンロードしてインストールします。
+- [Python](https://www.python.org/downloads/) のインストール
+- [Azure Storage SDK for Python](https://github.com/Azure/azure-storage-python) をダウンロードしてインストールします。
 
 # <a name="nodejs-v12-sdk"></a>[Node.js v12 SDK](#tab/nodejs)
 
@@ -64,7 +64,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 # <a name="nodejs-v11-sdk"></a>[Node.js v11 SDK](#tab/nodejs11)
 
-* [Node.js](https://nodejs.org) をインストールします。
+- [Node.js](https://nodejs.org) をインストールします。
 
 ---
 
@@ -82,7 +82,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 2. **[新規]** ページの **[ストレージ アカウント - Blob、File、Table、Queue]** を選択します。
 4. 下図のように、ストレージ アカウント フォームに次の情報を入力し、 **[作成]** を選択します。
 
-   | 設定       | 値の例 | 説明 |
+   | 設定       | 値の例 | 説明 |
    | ------------ | ------------------ | ------------------------------------------------- |
    | **サブスクリプション** | *My subscription* | サブスクリプションの詳細については、[サブスクリプション](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)に関するページを参照してください。 |
    | **ResourceGroup** | *myResourceGroup* | 有効なリソース グループ名については、[名前付け規則と制限](/azure/architecture/best-practices/resource-naming)に関するページを参照してください。 |

@@ -8,12 +8,12 @@ ms.subservice: tutorials
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 02/18/2021
-ms.openlocfilehash: a521e6f21346898a7a9af17b2cd6e66cc4029c1e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 692ec1db6e897774e3fe662e59d24339de55e723
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638311"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124805905"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-using-powershell"></a>PowerShell を使用し、Azure Data Factory を使用して複数のテーブルを一括コピーする
 
@@ -36,7 +36,7 @@ ms.locfileid: "122638311"
 ## <a name="end-to-end-workflow"></a>エンド ツー エンド ワークフロー
 このシナリオでは、Azure Synapse Analytics にコピーする必要のあるテーブルが Azure SQL Database に多数存在します。 以下の図は、パイプラインのワークフロー ステップを論理的な発生順に並べたものです。
 
-![ワークフロー](media/tutorial-bulk-copy/tutorial-copy-multiple-tables.png)
+:::image type="content" source="media/tutorial-bulk-copy/tutorial-copy-multiple-tables.png" alt-text="Workflow":::
 
 * 1 つ目のパイプラインでは、シンク データ ストアにコピーするテーブルの一覧が検索されます。  代わりに、シンク データ ストアにコピーするすべてのテーブルが列挙されたメタデータ テーブルを用意する方法もあります。 次に、1 つ目のパイプラインによって 2 つ目のパイプラインがトリガーされ、データベース内の各テーブルを反復処理しながらデータのコピー操作が実行されます。
 * 実際のコピーは 2 つ目のパイプラインによって実行されます。 このパイプラインは、テーブルの一覧をパラメーターとして受け取ります。 その一覧の各テーブルについて、Azure SQL Database 内の特定のテーブルを Azure Synapse Analytics 内の該当するテーブルにコピーします。この処理には、パフォーマンスを最大限に高めるために、[Blob Storage と PolyBase によるステージング コピー](connector-azure-sql-data-warehouse.md#use-polybase-to-load-data-into-azure-synapse-analytics)が使用されます。 この例では、1 つ目のパイプラインからパラメーターの値としてテーブルの一覧が渡されます。 

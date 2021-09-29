@@ -3,16 +3,16 @@ title: セルフホステッド開発者ポータルをテストする
 titleSuffix: Azure API Management
 description: セルフホステッド型の API Management ポータルの単体テストとエンド ツー エンドのテストを設定する方法について説明します。
 author: dlepow
-ms.author: apimpm
+ms.author: danlep
 ms.date: 03/25/2021
 ms.service: api-management
 ms.topic: how-to
-ms.openlocfilehash: ab6a7aa8fc4f11c34126415379294ef1e48fa286
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: 62c5ab98e067bb735bcfa1510cae405b17461cac
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107741384"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128646441"
 ---
 # <a name="test-the-self-hosted-developer-portal"></a>セルフホステッド開発者ポータルをテストする
 
@@ -219,4 +219,4 @@ VS Code 用のテスト エクスプローラー拡張機能 (たとえば、[Mo
 
 - [Azure API Management 開発者ポータルの概要](api-management-howto-developer-portal.md)
 
-- [開発者ポータルをセルフホストする](developer-portal-self-host.md)
+- [開発者ポータルのセルフホスト](developer-portal-self-host.md)

@@ -5,15 +5,15 @@ services: event-hubs
 author: spelluru
 ms.service: event-hubs
 ms.topic: include
-ms.date: 10/23/2020
+ms.date: 09/28/2021
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 0335481566ae3f28ac0f1e6bddce7050a65e7dc2
-ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
+ms.openlocfilehash: 024c6d3e428d78ef4be4c42578f407b09148e001
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2021
-ms.locfileid: "112412967"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129210719"
 ---
 ### <a name="what-can-i-achieve-with-a-cluster"></a>クラスターでは何ができますか?
 

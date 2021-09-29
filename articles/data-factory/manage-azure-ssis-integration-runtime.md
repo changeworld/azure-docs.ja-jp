@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/03/2020
 author: swinarko
 ms.author: sawinark
-ms.openlocfilehash: f163087133e6273752663b9bffa9da4a6fb19879
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fcdf2975d99cb5653f7e7b33480729d303c3caa0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121730131"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124824505"
 ---
 # <a name="reconfigure-the-azure-ssis-integration-runtime"></a>Azure-SSIS 統合ランタイムの再構成
 
@@ -29,7 +29,7 @@ Data Factory UI を使用して、Azure-SSIS IR を停止、編集/再構成、�
 ### <a name="to-reconfigure-an-azure-ssis-ir"></a>Azure-SSIS IR を再構成するには
 **[管理]** ハブの **[接続]** ペインで、 **[Integration runtimes]\(統合ランタイム\)** ページに切り替え、 **[Refresh]\(更新\)** を選択します。 
 
-   ![[接続] ペイン](./media/tutorial-create-azure-ssis-runtime-portal/connections-pane.png)
+   :::image type="content" source="./media/tutorial-create-azure-ssis-runtime-portal/connections-pane.png" alt-text="[接続] ペイン":::
 
    Azure-SSIS IR は、その名前を選択することで編集したり再構成したりすることができます。 該当するボタンを選択することで、Azure-SSIS IR を監視、開始、停止、削除したり、Azure-SSIS IR 上で動作する SSIS パッケージの実行アクティビティを含む ADF パイプラインを自動生成したりできます。また、Azure-SSIS IR の JSON コード (またはペイロード) を表示することもできます。  Azure-SSIS IR の編集と削除は、それが停止しているときにしか実行できません。
 

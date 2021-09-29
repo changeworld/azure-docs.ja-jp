@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 07/22/2021
+ms.date: 09/20/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8e17f6933695755a86c5d1e2fbcb7a14c183d0c4
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: 99363e4f9f67e6ceca0d163131a2f2ff64b09857
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114602840"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128546975"
 ---
 # <a name="mitigate-credential-attacks-in-azure-ad-b2c"></a>Azure AD B2C の資格情報攻撃を軽減する
 
@@ -36,7 +36,8 @@ Azure AD B2C では高度な戦略を使用して、アカウントをロック�
 ロックアウトのしきい値を含むパスワード保護設定を管理するには、以下の手順に従います。
 
 1. [Azure ポータル](https://portal.azure.com)
-1. 上部のメニューにある **[ディレクトリとサブスクリプション]** フィルターを使用して、お使いの Azure AD B2C テナントを含むディレクトリを選択します。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
 1. 左側のメニューで、 **[Azure AD B2C]** を選択します。 または、 **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
 1. **[セキュリティ]** で、**[認証方法 (プレビュー)]** を選択し、**[パスワード保護]** を選択します。
 1. **[カスタム スマート ロックアウト]** で、目的のパスワード保護設定を入力します。

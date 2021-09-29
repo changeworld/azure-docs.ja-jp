@@ -13,12 +13,12 @@ ms.date: 04/08/2021
 ms.author: ryanwi
 ms.custom: aaddev, content-perf, FY21Q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 66e9817c6d3bbcd199418b9afd78eda016c5f291
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: ac1fa8db8d153365f990c4d3eff120a254ed8096
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107363888"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129060633"
 ---
 # <a name="configure-token-lifetime-policies-preview"></a>トークンの有効期間ポリシーを構成する (プレビュー)
 Microsoft ID プラットフォームによって発行されたアクセス トークン、SAML トークン、または ID トークンの有効期間を指定できます。 組織のすべてのアプリ、マルチテナント (複数の組織) アプリケーション、または組織の特定のサービス プリンシパルに対して、トークンの有効期間を設定できます。 詳細については、[構成可能なトークンの有効期間](active-directory-configurable-token-lifetimes.md)に関する記事を参照してください。
@@ -94,11 +94,9 @@ Get-AzureADPolicyAppliedObject -id 1a37dad8-5da7-4cc8-87c7-efbc0326cf20
 # Uninstall the AzureAD Module
 UnInstall-Module AzureAD
 
-# Re-install the AzureAD Module
-Install-Module AzureAD
-
 # Install the AzureAD Preview Module adding the -AllowClobber
 Install-Module AzureADPreview -AllowClobber
+Note: You cannot install both the preview and the GA version on the same computer at the same time. 
 
 Connect-AzureAD
 Get-AzureADPolicy -All $true

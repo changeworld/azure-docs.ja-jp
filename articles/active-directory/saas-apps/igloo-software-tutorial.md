@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/06/2019
 ms.author: jeedes
-ms.openlocfilehash: 033561ac3c4a510927691dc8db4f61196f54ec2a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 243c00ef686f0259a20f564f1641b9399a6691d7
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92460395"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124749888"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-igloo-software"></a>チュートリアル: Azure Active Directory と Igloo Software の統合
 
@@ -125,13 +125,13 @@ Igloo Software で Azure AD シングル サインオンを構成するには、
 
     c. ログアウト URL
 
-### <a name="configure-igloo-software-single-sign-on"></a>Igloo Software のシングル サインオンの構成
+### <a name="configure-igloo-software-single-sign-on&quot;></a>Igloo Software のシングル サインオンの構成
 
 1. 別の Web ブラウザーのウィンドウで、管理者として Igloo Software 企業サイトにログインします。
 
 2. [**コントロール パネル**] に移動します。
 
-     ![コントロール パネル](./media/igloo-software-tutorial/ic799949.png "コントロール パネル")
+     ![コントロール パネル](./media/igloo-software-tutorial/ic799949.png &quot;コントロール パネル")
 
 3. [**メンバーシップ**] タブで、[**サイン イン設定**] をクリックします。
 
@@ -240,7 +240,7 @@ Igloo Software へのユーザー プロビジョニングを構成するとき�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Igloo Software] タイルをクリックすると、SSO を設定した Igloo Software に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+アクセス パネルで [Igloo Software] タイルをクリックすると、SSO を設定した Igloo Software に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

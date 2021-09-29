@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/11/2021
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: ad25ce992dec7165e2b936e5642e8c3a209ce6a5
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: ce6451bb1293f9cf3d85ff2e92cf6a5f8f42ba52
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122516320"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129220609"
 ---
 Event Hubs では、次のカテゴリの診断ログをキャプチャします。
 
@@ -122,7 +122,7 @@ Example:
 ```json
 {
     "TrackingId": "fb1b3676-bb2d-4b17-85b7-be1c7aa1967e",
-    "Message": "Scaled-up EventHub TUs (UpdateStartTimeUTC: 5/13/2020 7:48:36 AM, PreviousValue: 1, UpdatedThroughputUnitValue: 2, AutoScaleReason: 'IncomingMessagesPerSecond reached 2170')",
+    "Message": "Scaled-up EventHub TUs (UpdateStartTimeUTC: 5/13/2021 7:48:36 AM, PreviousValue: 1, UpdatedThroughputUnitValue: 2, AutoScaleReason: 'IncomingMessagesPerSecond reached 2170')",
     "ResourceId": "/subscriptions/0000000-0000-0000-0000-000000000000/resourcegroups/testrg/providers/microsoft.eventhub/namespaces/namespace-name"
 }
 ```

@@ -3,16 +3,16 @@ title: Azure portal を使用して Service Bus のトピックとサブスク�
 description: クイック スタート:このクイック スタートでは、Azure portal を使用して、Service Bus のトピックとそのサブスクリプションを作成する方法について説明します。
 author: spelluru
 ms.author: spelluru
-ms.date: 06/23/2020
+ms.date: 09/15/2021
 ms.topic: quickstart
 ms.custom:
 - mode-portal
-ms.openlocfilehash: 99d7fd283ecd6c1872922c0298d334d254dd9656
-ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
+ms.openlocfilehash: f4a4e0ab9803ea12922e264888930c4f199bfefb
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2021
-ms.locfileid: "112413699"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128565727"
 ---
 # <a name="use-the-azure-portal-to-create-a-service-bus-topic-and-subscriptions-to-the-topic"></a>Azure portal を使用して Service Bus トピックとそのサブスクリプションを作成する
 このクイック スタートでは、Azure portal を使用して Service Bus トピックを作成した後、そのトピックのサブスクリプションを作成します。 

@@ -10,15 +10,15 @@ author: rajeshsetlem
 ms.author: rsetlem
 ms.reviewer: mathoma, cawrites
 ms.date: 12/15/2020
-ms.openlocfilehash: abe88555bc7d545e62faa4c22a5e3f02e5eef630
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0d3ef1e9a7a4d30e4a716992caf4ec3f2f04cc1c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121743653"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128625584"
 ---
 # <a name="assessment-rules-for-sql-server-to--azure-sql-managed-instance-migration"></a>SQL Server から Azure SQL Managed Instance への移行に関する評価ルール
-[!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
+[!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
 
 移行ツールでは、SQL Server データベースを Azure SQL Managed Instance に移行する前に対処する必要がある問題を特定するためにいくつかの評価ルールを実行して、ソース SQL Server インスタンスを検証します。 
 

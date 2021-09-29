@@ -8,12 +8,12 @@ ms.subservice: tutorials
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/12/2021
-ms.openlocfilehash: 0c2cfe51e84931b90ab80588b16fe126aadaf4c3
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: bd9bfff8faf8f5c5e2c81ea9a8abea23af0da6ca
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638813"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124771652"
 ---
 # <a name="incrementally-copy-new-and-changed-files-based-on-lastmodifieddate-by-using-the-copy-data-tool"></a>データのコピー ツールを使用し LastModifiedDate に基づいて新しいファイルおよび変更されたファイルを増分コピーする
 
@@ -50,7 +50,7 @@ ms.locfileid: "122638813"
 
 1. 左側のウィンドウで、 **[リソースの作成]** を選びます。 **[統合]**  >  **[Data Factory]** を選択します。
 
-   ![データ ファクトリの選択](./media/doc-common-process/new-azure-data-factory-menu.png)
+   :::image type="content" source="./media/doc-common-process/new-azure-data-factory-menu.png" alt-text="データ ファクトリの選択":::
 
 2. **[新しいデータ ファクトリ]** ページで、 **[名前]** に「**ADFTutorialDataFactory**」と入力します。
 
@@ -80,7 +80,7 @@ ms.locfileid: "122638813"
 
 1. Azure Data Factory のホーム ページで **[取り込む]** タイルを選択して、データ コピー ツールを開きます。
 
-   ![ADF のホーム ページを示すスクリーンショット。](./media/doc-common-process/get-started-page.png)
+   :::image type="content" source="./media/doc-common-process/get-started-page.png" alt-text="ADF のホーム ページを示すスクリーンショット。":::
 
 2. **[プロパティ]** ページで、次の手順を行います。
 
@@ -92,7 +92,7 @@ ms.locfileid: "122638813"
 
     1. **[次へ]** を選びます。
 
-    ![[データのコピー] の [プロパティ] ページ](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/copy-data-tool-properties-page.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-lastmodified-copy-data-tool/copy-data-tool-properties-page.png" alt-text="[データのコピー] の [プロパティ] ページ":::
 
 3. **[ソース データ ストア]** ページで、次の手順を実行します。
 
@@ -100,7 +100,7 @@ ms.locfileid: "122638813"
 
     1. ギャラリーから **[Azure Blob Storage]** を選び、 **[続行]** を選択します。
 
-        ![[Azure Blob Storage] を選択する](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/source-data-store-page-select-blob.png)
+        :::image type="content" source="./media/tutorial-incremental-copy-lastmodified-copy-data-tool/source-data-store-page-select-blob.png" alt-text="[Azure Blob Storage] を選択する":::
 
     1. **[新しい接続 (Azure Blob Storage)]** ページで、 **[Azure サブスクリプション]** の一覧から自分の Azure サブスクリプションを選択し、 **[ストレージ アカウント名]** の一覧から自分のストレージ アカウントを選択します。 接続をテストし、 **[作成]** を選択します。
 
@@ -129,27 +129,27 @@ ms.locfileid: "122638813"
 
 6. **[Summary]\(概要\)** ページで設定を確認し、 **[次へ]** を選択します。
 
-    ![概要ページ](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/summary-page.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-lastmodified-copy-data-tool/summary-page.png" alt-text="[概要] ページ":::
 
 7. **[Deployment]\(デプロイ\)** ページで **[監視]** を選択してパイプライン (タスク) を監視します。
 
-    ![[Deployment]\(デプロイ\) ページ](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/deployment-page.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-lastmodified-copy-data-tool/deployment-page.png" alt-text="[Deployment]\(デプロイ\) ページ":::
 
 8. 左側の **[監視]** タブが自動的に選択されたことがわかります。 アプリケーションの **[監視]** タブに切り替えます。パイプラインの状態が表示されます。 **[最新の情報に更新]** を選択して、一覧を更新します。 **[パイプライン名]** の下にあるリンクを選択して、アクティビティの実行の詳細を表示するか、パイプラインを再実行します。
 
-    ![リストを最新の情報に更新してアクティビティの実行の詳細を表示する](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs-1.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs-1.png" alt-text="リストを最新の情報に更新してアクティビティの実行の詳細を表示する":::
 
 9. パイプラインにはアクティビティ (コピー アクティビティ) が 1 つしかないため、エントリが 1 つだけ表示されます。 コピー操作の詳細を確認するには、 **[アクティビティの実行]** ページで、 **[アクティビティ名]** 列の **[詳細]** リンク (眼鏡アイコン) を選択します。 プロパティの詳細については、[コピー アクティビティの概要](copy-activity-overview.md)に関するページを参照してください。
 
-    ![パイプラインのコピー アクティビティ](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs2.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs2.png" alt-text="パイプラインのコピー アクティビティ":::
 
     BLOB ストレージ アカウントの source コンテナーにはファイルがないので、そのアカウントの destination コンテナーにコピーされたファイルは表示されません。
 
-    ![source コンテナーまたは destination コンテナーにファイルがない](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs3.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs3.png" alt-text="source コンテナーまたは destination コンテナーにファイルがない":::
 
 10. 空のテキスト ファイルを作成し、**file1.txt** という名前を付けます。 このテキスト ファイルを、ストレージ アカウントの source コンテナーにアップロードします。 この作業は、[Azure Storage Explorer](https://storageexplorer.com/) をはじめとするさまざまなツールを使用して実行できます。
 
-    ![file1.txt を作成して source コンテナーにアップロードする](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs3-1.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs3-1.png" alt-text="file1.txt を作成して source コンテナーにアップロードする":::
 
 11. **[パイプラインの実行]** ビューに戻るには、 **[アクティビティの実行]** ページの階層リンク メニューで **[すべてのパイプラインの実行]** を選択し、同じパイプラインが再び自動的にトリガーされるまで待ちます。  
 
@@ -157,7 +157,7 @@ ms.locfileid: "122638813"
 
     BLOB ストレージ アカウントの source コンテナーから destination コンテナーに 1 つのファイル (file1.txt) がコピーされたことが表示されます。
 
-    ![file1.txt が source コンテナーから desination コンテナーにコピーされた](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs6.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs6.png" alt-text="file1.txt が source コンテナーから desination コンテナーにコピーされた":::
 
 13. 空のテキスト ファイルをもう 1 つ作成し、**file2.txt** という名前を付けます。 このテキスト ファイルを BLOB ストレージ アカウントの source コンテナーにアップロードします。
 
@@ -165,7 +165,7 @@ ms.locfileid: "122638813"
 
     [Azure Storage Explorer](https://storageexplorer.com/) を使用してファイルをスキャンすることにより、1 つのファイルだけがコピーされたことを確認することもできます。
 
-    ![Azure Storage Explorer を使用してファイルをスキャンする](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs8.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs8.png" alt-text="Azure Storage Explorer を使用してファイルをスキャンする":::
 
 ## <a name="next-steps"></a>次のステップ
 次のチュートリアルに進み、Azure 上の Apache Spark クラスターを使ってデータを変換する方法を学習します。

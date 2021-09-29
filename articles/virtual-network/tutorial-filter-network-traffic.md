@@ -8,12 +8,12 @@ ms.service: virtual-network
 ms.topic: tutorial
 ms.date: 03/06/2021
 ms.author: kumud
-ms.openlocfilehash: cfbb499c79761e1f2014c834e65dac35fe09ef90
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 4af40f7f1caab7e4517c0dd621e400f58e3a29ad
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106057288"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129091371"
 ---
 # <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>チュートリアル: Azure portal を使用してネットワーク セキュリティ グループでネットワーク トラフィックをフィルター処理する
 
@@ -178,7 +178,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
     | 宛先アプリケーションのセキュリティ グループ | **[myAsgMgmtServers]** を選択します。 |
     | サービス | 既定値の **[Custom]\(カスタム\)** のままにします。 |
     | 宛先ポート範囲 | 「**3389**」と入力します。 |
-    | Protocol | **[TCP]** を選択します。 |
+    | Protocol | **[任意]** をクリックします。 |
     | アクション | 既定値の **[Allow]\(許可\)** のままにします。 |
     | Priority | 既定値の **[110]** のままにします。 |
     | 名前 | 「**Allow-RDP-All**」と入力します。 |

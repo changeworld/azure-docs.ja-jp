@@ -2,14 +2,14 @@
 title: Azure Service Bus - メッセージ数
 description: Azure Resource Manager および Azure Service Bus NamespaceManager API を使用して、キューおよびサブスクリプションに保持されているメッセージの数を取得します。
 ms.topic: article
-ms.date: 06/23/2020
+ms.date: 09/20/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: cb559f6dbd492d1c35a15f9f30cbc0ad02620a01
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 74038f38f1faca90e4fab7a0d4f94229a1b44429
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110670691"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128576063"
 ---
 # <a name="get-message-counters"></a>メッセージ数を取得する
 この記事では、次に挙げるキューまたはサブスクリプションのメッセージ数を取得する複数の方法を説明します。 現在展開されているものより、処理により多くのリソースを必要とするバックログをキューが生成するかどうか判断するために、アクティブなメッセージの数を把握することが有効です。 

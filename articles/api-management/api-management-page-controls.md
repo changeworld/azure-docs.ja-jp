@@ -3,7 +3,7 @@ title: Azure API Management のページ コントロール | Microsoft Docs
 description: Azure API Management の開発者ポータル テンプレートで使用できるページ コントロールについて説明します。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 manager: cfowler
 editor: ''
 ms.service: api-management
@@ -11,13 +11,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: apimpm
-ms.openlocfilehash: b826c986a0af26bb79fb0823e4e8626f0165d460
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: danlep
+ms.openlocfilehash: cdaa82308e4208306327dc064642c2b0897597d5
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86250024"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128635206"
 ---
 # <a name="azure-api-management-page-controls"></a>Azure API Management のページ コントロール
 Azure API Management には、開発者ポータル テンプレート用に次のページ コントロールが用意されています。  

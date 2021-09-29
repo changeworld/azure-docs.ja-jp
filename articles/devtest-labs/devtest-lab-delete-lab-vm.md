@@ -1,14 +1,14 @@
 ---
-title: Azure DevTest Labs でラボやラボ内の VM を削除する
+title: ラボまたはラボ内の VM を削除する
 description: この記事では、Azure portal (Azure DevTest Labs) を使用してラボを削除したり、ラボ内の VM を削除したりする方法について説明します。
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/24/2020
-ms.openlocfilehash: 495fb98f3da41a47d316dd64554ba616ede0af47
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: af8a1691bbd0f34647b7e52a8f05b7acffb86d2b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85481223"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128616367"
 ---
 # <a name="delete-a-lab-or-vm-in-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs でラボやラボ内の VM を削除する
 この記事では、ラボまたはラボ内の VM を削除する方法について説明します。

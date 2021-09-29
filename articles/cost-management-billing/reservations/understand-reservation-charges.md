@@ -6,14 +6,14 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 10/13/2020
+ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: 99f2c9c16f2ca2147a6e6da333ff64116e42aecc
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 7d163e1958ee97e8032edc0a42bc160dd234d3c1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96338089"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128628479"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-sql-database"></a>Azure SQL Database に対する予約割引の適用方法
 

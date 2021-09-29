@@ -13,14 +13,14 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 06/30/2021
+ms.date: 07/29/2021
 ms.author: radeltch
-ms.openlocfilehash: 97564fef2278861f2e22e85752cd803ad289c766
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 59c977b94efe62489208fca0d2514a5d2e381aff
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121737370"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124803690"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-windows-with-azure-netapp-filessmb-for-sap-applications"></a>SAP アプリケーション用の Azure NetApp Files (SMB) を使用した Windows 上の Azure VM における SAP NetWeaver の高可用性
 
@@ -31,7 +31,6 @@ ms.locfileid: "121737370"
 
 [anf-azure-doc]:../../../azure-netapp-files/azure-netapp-files-introduction.md
 [anf-avail-matrix]:https://azure.microsoft.com/global-infrastructure/services/?products=storage&regions=all
-[anf-register]:https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register
 [anf-sap-applications-azure]:https://www.netapp.com/us/media/tr-4746.pdf
 
 [2205917]:https://launchpad.support.sap.com/#/notes/2205917
@@ -111,10 +110,9 @@ SMB ファイル共有の前提条件:
 
 Azure NetApp Files を使用するための準備として、次のステップを実行します。  
 
-1. 「[Azure NetApp Files の登録](../../../azure-netapp-files/azure-netapp-files-register.md)」のステップに従います  
-2. 「[NetApp アカウントを作成する](../../../azure-netapp-files/azure-netapp-files-create-netapp-account.md)」で説明されているステップに従って、Azure NetApp アカウントを作成します  
-3. 「[容量プールを設定する](../../../azure-netapp-files/azure-netapp-files-set-up-capacity-pool.md)」の指示に従って、容量プールを設定します
-4. Azure NetApp Files リソースは、委任されたサブネット内に存在する必要があります。 「[サブネットを Azure NetApp Files に委任する](../../../azure-netapp-files/azure-netapp-files-delegate-subnet.md)」の指示に従って、委任されたサブネットを作成します。  
+1. 「[NetApp アカウントを作成する](../../../azure-netapp-files/azure-netapp-files-create-netapp-account.md)」で説明されているステップに従って、Azure NetApp アカウントを作成します  
+2. 「[容量プールを設定する](../../../azure-netapp-files/azure-netapp-files-set-up-capacity-pool.md)」の指示に従って、容量プールを設定します
+3. Azure NetApp Files リソースは、委任されたサブネット内に存在する必要があります。 「[サブネットを Azure NetApp Files に委任する](../../../azure-netapp-files/azure-netapp-files-delegate-subnet.md)」の指示に従って、委任されたサブネットを作成します。  
 
    > [!IMPORTANT]
    > SMB ボリュームを作成する前に Active Directory の接続を作成する必要があります。 [Active Directory コンポーネント要件](../../../azure-netapp-files/create-active-directory-connections.md#requirements-for-active-directory-connections)を確認します。  
@@ -122,9 +120,9 @@ Azure NetApp Files を使用するための準備として、次のステップ�
    > Active Directory 接続の作成時には、SAP アプリケーションにおける 13 文字のホスト名制限を回避するために SMB サーバー (コンピューター アカウント) プレフィックスを 8 文字以内で入力してください (サフィックスが SMB コンピューター アカウント名に自動的に追加されます)。     
    > SAP アプリケーションでのホスト名の制限については、[2718300 - 物理および仮想ホスト名の長さの制限](https://launchpad.support.sap.com/#/notes/2718300)および [611361 - SAP ABAP Platform サーバーのホスト名](https://launchpad.support.sap.com/#/notes/611361)に関するページを参照してください。  
 
-5. 「[Active Directory 接続を作成する](../../../azure-netapp-files/create-active-directory-connections.md#create-an-active-directory-connection)」の説明に従って、Active Directory 接続を作成します  
-6. 「[SMB ボリュームを追加する](../../../azure-netapp-files/azure-netapp-files-create-volumes-smb.md#add-an-smb-volume)」の指示に従って、SMB Azure NetApp Files の SMB ボリュームを作成します  
-7. Windows 仮想マシンに SMB ボリュームをマウントします。
+4. 「[Active Directory 接続を作成する](../../../azure-netapp-files/create-active-directory-connections.md#create-an-active-directory-connection)」の説明に従って、Active Directory 接続を作成します  
+5. 「[SMB ボリュームを追加する](../../../azure-netapp-files/azure-netapp-files-create-volumes-smb.md#add-an-smb-volume)」の指示に従って、SMB Azure NetApp Files の SMB ボリュームを作成します  
+6. Windows 仮想マシンに SMB ボリュームをマウントします。
 
 > [!TIP]
 > Azure NetApp Files ボリュームをマウントする方法の手順については、[Azure Portal](https://portal.azure.com/#home) で Azure NetApp Files オブジェクトに移動した場合は、 **[ボリューム]** ブレードをクリックし、 **[マウント手順]** をクリックします。  

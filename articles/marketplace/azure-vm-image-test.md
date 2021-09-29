@@ -4,15 +4,15 @@ description: Azure Marketplace で Azure 仮想マシン オファーをテス�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-author: kriti-ms
-ms.author: krsh
+author: ebolton-cyber
+ms.author: edewebolton
 ms.date: 03/10/2021
-ms.openlocfilehash: e44fcd6261a4d9b866896dc91e7f1edb1fd8b30a
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 876f4b42c77caba27ed94b42d784004b0bfd32ce
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112285132"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128598158"
 ---
 # <a name="test-a-virtual-machine-image"></a>仮想マシン イメージをテストする
 

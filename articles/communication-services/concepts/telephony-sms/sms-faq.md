@@ -7,14 +7,15 @@ manager: nmurav
 services: azure-communication-services
 ms.author: prakulka
 ms.date: 06/30/2021
-ms.topic: reference
+ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: c92a62c32c3c1a89efd3fecfeff8e72e0cbfe490
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.subservice: sms
+ms.openlocfilehash: 7b10040aa8aabd16d84326c73bd422f9b66ef04e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114467382"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128635985"
 ---
 # <a name="sms-faq"></a>SMS に関する FAQ
 

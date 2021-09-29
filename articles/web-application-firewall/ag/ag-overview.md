@@ -5,21 +5,21 @@ description: この記事では、Application Gateway 上の Web アプリケー
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 12/04/2020
+ms.date: 09/02/2021
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: ea3bc751d91e72c68bd9900f07c3c2e8aae38212
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2734bc7c02df4f9bbd84d1681d606b3ea92f2ce0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121729441"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128680112"
 ---
 # <a name="what-is-azure-web-application-firewall-on-azure-application-gateway"></a>Azure Application Gateway 上の Azure Web アプリケーション ファイアウォールとは
 
 Azure Application Gateway 上の Azure Web アプリケーション ファイアウォール (WAF) は、一般的な脆弱性やその悪用から Web アプリケーションを一元的に保護します。 Web アプリケーションが、一般的な既知の脆弱性を悪用した悪意のある攻撃の標的になるケースが増えています。 よくある攻撃の例として、SQL インジェクションやクロスサイト スクリプティングが挙げられます。
 
-Application Gateway 上の WAF は、OWASP (Open Web Application Security Project) の[コア ルール セット (CRS)](https://owasp.org/www-project-modsecurity-core-rule-set/) 3.1、3.0 または 2.2.9 に基づいています。 WAF は、追加構成を必要とすることなく、新たな脆弱性に対する保護を含めるために自動的に更新します。 
+Application Gateway 上の WAF は、OWASP (Open Web Application Security Project) の[コア ルール セット (CRS)](https://owasp.org/www-project-modsecurity-core-rule-set/) 3.1、3.0 または 2.2.9 に基づいています。 
 
 次に示す WAF の機能はすべて WAF ポリシー内に存在します。 複数のポリシーを作成して、Application Gateway、個々のリスナー、または Application Gateway のパスベースのルーティング規則に関連付けることができます。 これにより、必要に応じて、Application Gateway の後ろにあるサイトごとに個別のポリシーを設定できます。 WAF ポリシーの詳細については、「[WAF ポリシーの作成](create-waf-policy-ag.md)」を参照してください。
 

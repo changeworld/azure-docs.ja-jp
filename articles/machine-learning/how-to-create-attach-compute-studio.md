@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/16/2021
 ms.topic: how-to
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 8f74b21e2c40b441c48cc3a2837f396252408224
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: be6bc9166ffc0bddae5433734d3213b53e6f6f0e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121736597"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128673656"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-in-azure-machine-learning-studio"></a>Azure Machine Learning スタジオでモデルのトレーニングとデプロイのためのコンピューティング先を作成する
 
@@ -198,10 +198,10 @@ SSH アクセスを有効にしてコンピューティング インスタンス
 
 1. 接続文字列をコピーします。
 1. Windows の場合は、PowerShell またはコマンド プロンプトを開きます。
-    1. キーが格納されているディレクトリまたはフォルダーに移動します
-    1. 秘密キーの場所を特定し、格納場所をポイントできるよう、接続文字列に -i フラグを追加します。
+   1. キーが格納されているディレクトリまたはフォルダーに移動します
+   1. 秘密キーの場所を特定し、格納場所をポイントできるよう、接続文字列に -i フラグを追加します。
     
-        ```ssh -i <keyname.pem> azureuser@... (rest of connection string)```
+      `ssh -i <keyname.pem> azureuser@... (rest of connection string)`
 
 1. Linux ユーザーの場合は、[Azure 内の Linux VM 用の SSH キーの組を作成して使用する](../virtual-machines/linux/mac-create-ssh-keys.md)方法に関する記事の手順に従ってください
 

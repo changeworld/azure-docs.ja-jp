@@ -5,7 +5,7 @@ services: active-directory
 author: curtand
 ms.author: curtand
 manager: daveba
-ms.date: 09/02/2021
+ms.date: 09/22/2021
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: enterprise-users
@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 52aa3c4b2f9ec34139debf008a5cb291e443c689
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 254b92907c04559f0e63fee9daa4db25e0df0965
+ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123431966"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128707764"
 ---
 # <a name="bulk-remove-group-members-in-azure-active-directory"></a>Azure Active Directory でのグループ メンバーの一括削除
 
@@ -57,7 +57,7 @@ Azure Active Directory (Azure AD) ポータルでは、コンマ区切り値 (CS
 
 1. CSV ファイルを開き、グループから削除する各グループ メンバーの行を追加します (必要な値は、メンバー オブジェクト ID またはユーザー プリンシパル名です)。 そのうえでファイルを保存します。
 
-    :::image type="content" source="./media/groups-bulk-import-members/csv-file.png" alt-text="CSV ファイルには、削除するグループ メンバーの名前と ID が含まれています":::
+    :::image type="content" source="./media/groups-bulk-remove-members/csv-file.png" alt-text="CSV ファイルには、削除するグループ メンバーの名前と ID が含まれています":::
 
 1. **[グループ メンバーの一括削除]** ページの **[csv ファイルをアップロードします]** で、そのファイルを参照します。 ファイルを選択すると、CSV ファイルの検証が開始されます。
 1. ファイルの内容が検証されると、一括インポート ページに "**ファイルが正常にアップロードされました**" と表示されます。 エラーが存在する場合は、ジョブを送信する前にそれらを修正する必要があります。

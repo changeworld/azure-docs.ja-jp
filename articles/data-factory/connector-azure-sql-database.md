@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 08/30/2021
-ms.openlocfilehash: c594d253c193928eae47949474aaa75c4f27b60d
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.date: 09/09/2021
+ms.openlocfilehash: ce4d1030999978ba5814d7978238c6f70026b34c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123314006"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124785118"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-database-by-using-azure-data-factory-or-azure-synapse-analytics"></a>Azure Data Factory または Azure Synapse Analytics を使用して Azure SQL Database のデータをコピーおよび変換する
 
@@ -61,7 +61,7 @@ Azure SQL Database の[サーバーレス レベル](../azure-sql/database/serve
 
    # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
 
-   :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI を使用した新しいリンク サービスの作成を示すスクリーンショット。":::
+   :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI で新しいリンク サービスを作成するスクリーンショット。":::
 
    # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
@@ -326,7 +326,7 @@ Azure SQL Database からデータをコピーするために、コピー アク
 | partitionSettings | データ パーティション分割の設定のグループを指定します。 <br>パーティション オプションが `None` でない場合に適用されます。 | いいえ |
 | ***`partitionSettings` の下:*** | | |
 | partitionColumnName | 並列コピーの範囲パーティション分割で使用される **整数型または日付/日時型** (`int`、`smallint`、`bigint`、`date`、`smalldatetime`、`datetime`、`datetime2`、または `datetimeoffset`) のソース列の名前を指定します。 指定しない場合、テーブルのインデックスまたは主キーが自動検出され、パーティション列として使用されます。<br>パーティション オプションが `DynamicRange` である場合に適用されます。 クエリを使用してソース データを取得する場合は、WHERE 句で `?AdfDynamicRangePartitionCondition ` をフックします。 例については、「[SQL データベースからの並列コピー](#parallel-copy-from-sql-database)」セクションを参照してください。 | いいえ |
-| partitionUpperBound | パーティション範囲の分割のための、パーティション列の最大値。 この値は、テーブル内の行のフィルター処理用ではなく、パーティションのストライドを決定するために使用されます。 テーブルまたはクエリ結果に含まれるすべての行がパーティション分割され、コピーされます。 指定されていない場合は、コピー アクティビティによって値が自動検出されます。  <br>パーティション オプションが `DynamicRange` である場合に適用されます。 例については、「[SQL データベースからの並列コピー](#parallel-copy-from-sql-database)」セクションを参照してください。 | いいえ |
+| partitionUpperBound | パーティション範囲の分割のための、パーティション列の最大値。 この値は、テーブル内の行のフィルター処理用ではなく、パーティションのストライドを決定するために使用されます。 テーブルまたはクエリ結果に含まれるすべての行がパーティション分割され、コピーされます。 指定しない場合、コピー アクティビティによって値が自動検出されます。  <br>パーティション オプションが `DynamicRange` である場合に適用されます。 例については、「[SQL データベースからの並列コピー](#parallel-copy-from-sql-database)」セクションを参照してください。 | いいえ |
 | partitionLowerBound | パーティション範囲の分割のための、パーティション列の最小値。 この値は、テーブル内の行のフィルター処理用ではなく、パーティションのストライドを決定するために使用されます。 テーブルまたはクエリ結果に含まれるすべての行がパーティション分割され、コピーされます。 指定されていない場合は、コピー アクティビティによって値が自動検出されます。<br>パーティション オプションが `DynamicRange` である場合に適用されます。 例については、「[SQL データベースからの並列コピー](#parallel-copy-from-sql-database)」セクションを参照してください。 | いいえ |
 
 **以下の点に注意してください。**
@@ -519,7 +519,7 @@ GO
 
 Azure SQL Database コネクタでは、コピー アクティビティの際に、データを並列でコピーするための組み込みのデータ パーティション分割が提供されます。 データ パーティション分割オプションは、コピー アクティビティの **[ソース]** タブにあります。
 
-![パーティションのオプションのスクリーンショット](./media/connector-sql-server/connector-sql-partition-options.png)
+:::image type="content" source="./media/connector-sql-server/connector-sql-partition-options.png" alt-text="パーティションのオプションのスクリーンショット":::
 
 パーティション分割されるコピーを有効にすると、コピー アクティビティによって Azure SQL Database ソースに対する並列クエリが実行され、パーティションごとにデータが読み込まれます。 並列度は、コピー アクティビティの [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) 設定によって制御されます。 たとえば、`parallelCopies` を 4 に設定した場合、指定したパーティション オプションと設定に基づいて 4 つのクエリが同時に生成され、実行されます。各クエリでは、Azure SQL Database からデータの一部を取得します。
 
@@ -580,7 +580,7 @@ WHERE s.name='[your schema]' AND t.name = '[your table name]'
 
 テーブルに物理パーティションがある場合、次のように、"HasPartition" は "yes" と表示されます。
 
-![SQL クエリの結果](./media/connector-azure-sql-database/sql-query-result.png)
+:::image type="content" source="./media/connector-azure-sql-database/sql-query-result.png" alt-text="SQL クエリの結果":::
 
 ## <a name="best-practice-for-loading-data-into-azure-sql-database"></a>Azure SQL Database にデータを読み込む際のベスト プラクティス
 
@@ -605,7 +605,7 @@ Azure SQL Database にデータをコピーする場合は、さまざまな書�
 
 例として、**Copy アクティビティ** と **ストアド プロシージャ アクティビティ** を連結させたパイプラインを作成できます。 前者では、ソース ストアから Azure SQL Database ステージング テーブル (たとえば、データセット内のテーブル名 **UpsertStagingTable**) にデータをコピーします。 その後、後者でストアド プロシージャが呼び出され、ステージング テーブルのソース データがターゲット テーブルにマージされて、ステージング テーブルがクリーンアップされます。
 
-![Upsert](./media/connector-azure-sql-database/azure-sql-database-upsert.png)
+:::image type="content" source="./media/connector-azure-sql-database/azure-sql-database-upsert.png" alt-text="Upsert":::
 
 データベースで、前のストアド プロシージャ アクティビティから指し示されている、次の例に示すような MERGE ロジックを含むストアド プロシージャを定義します。 ターゲットは **Marketing** テーブルであり、そこには 3 つの列 (**ProfileID**、**State**、**Category**) があるものとします。 **ProfileID** 列に基づいて、アップサートを実行します。
 
@@ -702,7 +702,7 @@ Azure SQL Database に固有の設定は、ソース変換の **[Source Options]
 
 **[Stored procedure]** : ソース データベースから実行されるストアド プロシージャからプロジェクションおよびソース データを生成する場合は、このオプションを選択します。 スキーマ、プロシージャ名、パラメーターを入力することも、[Refresh]\(最新の情報に更新\) をクリックして、スキーマとプロシージャ名の検出をサービスに要求することもできます。 次に、[Import ] をクリックして、すべてのプロシージャ パラメーターをフォーム ``@paraName`` を使用してインポートできます。
 
-![ストアド プロシージャ](media/data-flow/stored-procedure-2.png "ストアド プロシージャ")
+:::image type="content" source="media/data-flow/stored-procedure-2.png" alt-text="ストアド プロシージャ":::
 
 - SQL の例: ```Select * from MyTable where customerId > 1000 and customerId < 2000```
 - パラメーター化された SQL の例: ``"select * from {$tablename} where orderyear > {$year}"``
@@ -717,7 +717,7 @@ Azure SQL Database に固有の設定は、ソース変換の **[Source Options]
 - シリアル化可能
 - なし (分離レベルを無視)
 
-![Isolation Level](media/data-flow/isolationlevel.png "Isolation Level")
+:::image type="content" source="media/data-flow/isolationlevel.png" alt-text="Isolation Level":::
 
 ### <a name="sink-transformation"></a>シンク変換
 
@@ -725,7 +725,7 @@ Azure SQL Database に固有の設定は、シンク変換の **[設定]** タ�
 
 **[Update method]\(更新方法\)** :対象となるデータベースに対して許可される操作を指定します。 既定では、挿入のみが許可されます。 行を更新、アップサート、または削除するには、それらのアクションに対して行をタグ付けするために行の変更変換が必要になります。 更新、アップサート、削除の場合、1 つまたは複数のキー列を設定して、変更する行を決定する必要があります。
 
-![[キー列]](media/data-flow/keycolumn.png "[キー列]")
+:::image type="content" source="media/data-flow/keycolumn.png" alt-text="[キー列]":::
 
 ここでキーとして選択する列の名前は、後続の更新、アップサート、削除でサービスによって使用されます。 そのため、シンク マッピングに存在する列を選択する必要があります。 このキー列に値を書き込まない場合、[Skip writing key columns]\(キー列の書き込みをスキップする\) をクリックします。
 
@@ -741,11 +741,11 @@ Azure SQL Database に固有の設定は、シンク変換の **[設定]** タ�
 
 **[Use TempDB]\(TempDB を使用\):** 既定では、読み込みプロセスの一環としてデータを保存するために、グローバル一時テーブルが使用されます。 [Use TempDB]\(TempDB を使用\) オプションをオフにし、代わりに、このシンクに使用されているデータベース内にあるユーザー データベースに、一時的に保持するテーブルを保存するようサービスに要求することもできます。
 
-![Temp DB を使用](media/data-flow/tempdb.png "Temp DB を使用")
+:::image type="content" source="media/data-flow/tempdb.png" alt-text="Temp DB を使用":::
 
 **[Pre and Post SQL scripts] (事前および事後 SQL スクリプト)** : データがシンク データベースに書き込まれる前 (前処理) と書き込まれた後 (後処理) に実行される複数行の SQL スクリプトを入力します。
 
-![事前および事後 SQL 処理スクリプト](media/data-flow/prepost1.png "SQL 処理スクリプト")
+:::image type="content" source="media/data-flow/prepost1.png" alt-text="事前および事後 SQL 処理スクリプト":::
 
 ### <a name="error-row-handling"></a>エラー行の処理
 
@@ -763,7 +763,7 @@ Azure SQL DB に書き込む場合、書き込み先で設定されている制�
 
 **[Report success on error]\(エラー発生時に成功を報告\):** 有効にすると、エラー行が見つかった場合でもデータ フローは成功としてマークされます。 
 
-![エラー行の処理](media/data-flow/sql-error-row-handling.png "エラー行の処理")
+:::image type="content" source="media/data-flow/sql-error-row-handling.png" alt-text="エラー行の処理":::
 
 
 ## <a name="data-type-mapping-for-azure-sql-database"></a>Azure SQL Database のデータ型のマッピング
@@ -774,7 +774,7 @@ Azure SQL Database をコピー元またはコピー先としてデータがコ�
 |:--- |:--- |
 | bigint |Int64 |
 | binary |Byte[] |
-| bit |Boolean |
+| bit |ブール型 |
 | char |String, Char[] |
 | date |DateTime |
 | Datetime |DateTime |

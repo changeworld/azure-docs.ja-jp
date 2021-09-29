@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/30/2021
 ms.author: jeedes
-ms.openlocfilehash: bdfb60425984aeeec18e54d64d215ac5d6a1838b
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 8bdbdbc4b2317f73d11882e0315dd7b6f77920cf
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111956620"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124732558"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-alacritylaw"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と AlacrityLaw の統合
 
@@ -133,7 +133,7 @@ AlacrityLaw に対して Azure AD SSO を構成してテストするには、次
 
 * AlacrityLaw のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [AlacrityLaw] タイルをクリックすると、AlacrityLaw のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [AlacrityLaw] タイルをクリックすると、AlacrityLaw のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ
