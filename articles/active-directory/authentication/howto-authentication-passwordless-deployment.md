@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c6cb9d7dad1b55e6d49fdbe40a0ecd9dd052ba8
-ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
+ms.openlocfilehash: 1ee82c26217ac1b760c59f56f9875b7dcbcaf663
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114228398"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124759816"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Azure Active Directory でパスワードレス認証のデプロイを計画する
 
@@ -109,11 +109,11 @@ Windows Hello for Business を選択し、[ウィザードを完了](https://aka
 
 * [Azure AD MFA と SSPR の両方の統合された登録に関するガイダンス](howto-registration-mfa-sspr-combined.md)
 
-* [Microsoft Authenticator アプリのダウンロード](../user-help/user-help-auth-app-download-install.md)
+* [Microsoft Authenticator アプリのダウンロード](https://support.microsoft.com/account-billing/download-and-install-the-microsoft-authenticator-app-351498fc-850a-45da-b7b6-27e523b8702a)
 
 * [Microsoft Authenticator アプリでの登録](howto-authentication-passwordless-phone.md)
 
-* [電話を使用したサインイン](../user-help/user-help-auth-app-sign-in.md)
+* [電話を使用したサインイン](https://support.microsoft.com/account-billing/sign-in-to-your-accounts-using-the-microsoft-authenticator-app-582bdc07-4566-4c97-a7aa-56058122714c)
 
 Microsoft では、エンド ユーザー向けの連絡テンプレートを提供しています。 連絡のドラフト作成に役立つ、[認証のロールアウトに関する資料](https://aka.ms/MFAtemplates)をダウンロードしてください。 このロールアウトの資料にはカスタマイズ可能なポスターと電子メール テンプレートが含まれており、それを使用して、組織内の今後のパスワードレス認証オプションについてユーザーに通知することができます。
 
@@ -130,7 +130,7 @@ Microsoft では、エンド ユーザー向けの連絡テンプレートを提
 
 ## <a name="plan-for-and-deploy-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリを計画してデプロイする
 
-[Microsoft Authenticator アプリ](concept-authentication-passwordless.md)は、あらゆる iOS や Android フォンを、強力なパスワードレスの資格情報に変えます。 これは Google Play ストアまたは Apple App Store から無償でダウンロードできます。 ユーザーに [Microsoft Authenticator アプリをダウンロードしてもらい](../user-help/user-help-auth-app-download-install.md)、指示に従って電話によるサインインを有効にしてもらいます。
+[Microsoft Authenticator アプリ](concept-authentication-passwordless.md)は、あらゆる iOS や Android フォンを、強力なパスワードレスの資格情報に変えます。 これは Google Play ストアまたは Apple App Store から無償でダウンロードできます。 ユーザーに [Microsoft Authenticator アプリをダウンロードしてもらい](https://support.microsoft.com/account-billing/download-and-install-the-microsoft-authenticator-app-351498fc-850a-45da-b7b6-27e523b8702a)、指示に従って電話によるサインインを有効にしてもらいます。
 
 ### <a name="technical-considerations"></a>技術的な考慮事項
 

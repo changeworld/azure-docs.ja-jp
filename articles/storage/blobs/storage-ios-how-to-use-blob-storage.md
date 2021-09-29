@@ -1,18 +1,18 @@
 ---
 title: iOS - Azure からオブジェクト (BLOB) ストレージを使用する方法 | Microsoft Docs
 description: Azure Blob Storage (オブジェクト ストレージ) を使用して、非構造化データをクラウドに格納します。
-author: twooley
-ms.author: twooley
+author: normesta
+ms.author: normesta
 ms.date: 11/20/2018
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
-ms.openlocfilehash: 1b0653c997930c60950da335e79b0388edd43897
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 999b9d5b700dc807255b695b3254cf11e7d37f80
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106278356"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128603963"
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>iOS から BLOB ストレージを使用する方法
 
@@ -39,7 +39,7 @@ Blob Storage の詳細については、「[Azure Blob Storage の概要](storag
     sudo gem install cocoapods
     ```
 
-2. 次に、プロジェクト ディレクトリ (.xcodeproj ファイルが含まれるディレクトリ) に、_Podfile_ という新しいファイル (ファイル拡張子なし) を作成します。 _Podfile_ に次のコードを追加して保存します。
+2. 次に、プロジェクト ディレクトリ (.xcodeproj ファイルが含まれるディレクトリ) に、*Podfile* という新しいファイル (ファイル拡張子なし) を作成します。 *Podfile* に次のコードを追加して保存します。
 
     ```ruby
     platform :ios, '8.0'
@@ -224,12 +224,12 @@ NSString からのブロック BLOB のアップロードばかりでなく、NS
 - **prefix** - BLOB の一覧表示に使用するプレフィックスを指定できます。 このプレフィックスで始まる名前の BLOB のみが一覧表示されます。
 - **useFlatBlobListing** - 「[コンテナーおよび BLOB の名前付けと参照](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata)」セクションで説明したように、Blob service はフラット ストレージ スキームですが、パス情報を使用して BLOB に名前を付けることで、仮想階層を作成できます。 ただし、フラットでない一覧表示は現在サポートされておらず､ まもなく公開されます｡ 現時点では、この値は **YES** にする必要があります。
 - **blobListingDetails** - BLOB を一覧表示するときに含める項目を指定できます。
-  - _AZSBlobListingDetailsNone_:コミット済みの BLOB のみを一覧表示し、BLOB メタデータは返しません。
-  - _AZSBlobListingDetailsSnapshots_:コミット済みの BLOB と BLOB スナップショットを一覧表示します。
-  - _AZSBlobListingDetailsMetadata_:一覧に返された BLOB ごとに BLOB メタデータを取得します。
-  - _AZSBlobListingDetailsUncommittedBlobs_:コミット済みおよびコミット前の BLOB を一覧表示します。
-  - _AZSBlobListingDetailsCopy_:コピー プロパティを一覧に含めます。
-  - _AZSBlobListingDetailsAll_:使用可能なコミット済みの BLOB、コミット前の BLOB、スナップショットをすべて一覧表示し、それらの BLOB に関するすべてのメタデータとコピーの状態を返します。
+  - *AZSBlobListingDetailsNone*:コミット済みの BLOB のみを一覧表示し、BLOB メタデータは返しません。
+  - *AZSBlobListingDetailsSnapshots*:コミット済みの BLOB と BLOB スナップショットを一覧表示します。
+  - *AZSBlobListingDetailsMetadata*:一覧に返された BLOB ごとに BLOB メタデータを取得します。
+  - *AZSBlobListingDetailsUncommittedBlobs*:コミット済みおよびコミット前の BLOB を一覧表示します。
+  - *AZSBlobListingDetailsCopy*:コピー プロパティを一覧に含めます。
+  - *AZSBlobListingDetailsAll*:使用可能なコミット済みの BLOB、コミット前の BLOB、スナップショットをすべて一覧表示し、それらの BLOB に関するすべてのメタデータとコピーの状態を返します。
 - **maxResults** - この操作に対して返される結果の最大数。 制限を設けない場合は -1 を使用します。
 - **completionHandler** - 一覧表示操作の結果を使用して実行するコードのブロック。
 

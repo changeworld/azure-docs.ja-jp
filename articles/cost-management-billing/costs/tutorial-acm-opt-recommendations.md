@@ -3,18 +3,18 @@ title: チュートリアル - 推奨事項に従って Azure のコストを削
 description: このチュートリアルは、最適化の推奨事項に従って対処すると、Azure のコスト削減に役立ちます。
 author: bandersmsft
 ms.author: banders
-ms.date: 03/24/2020
+ms.date: 09/15/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 28f9369d044cf9b2713cb2f2ad42f744e517918b
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: f8b8b99c1cf2be554703eb49de8c6ff2a39b53be
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683285"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128567701"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>チュートリアル:推奨事項に従ってコストを最適化する
 

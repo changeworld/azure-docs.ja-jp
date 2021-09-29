@@ -9,12 +9,12 @@ ms.subservice: tutorials
 ms.topic: tutorial
 ms.custom: devx-track-azurepowershell
 ms.date: 07/05/2021
-ms.openlocfilehash: 16feecb1560c114520b10ed2adaef578534052f4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 46c6dfa381ec2dff04212c38a7580859bcba4762
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638398"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124733039"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-azure-sql-database-using-powershell"></a>PowerShell を使用して SQL Server にある複数のテーブルから Azure SQL Database にデータを増分読み込みする
 
@@ -60,7 +60,7 @@ ms.locfileid: "122638398"
 
     ソリューションの概略図を次に示します。 
 
-    ![データの増分読み込み](media/tutorial-incremental-copy-multiple-tables-powershell/high-level-solution-diagram.png)
+    :::image type="content" source="media/tutorial-incremental-copy-multiple-tables-powershell/high-level-solution-diagram.png" alt-text="データの増分読み込み":::
 
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
@@ -820,11 +820,11 @@ END
 
 5. Azure Data Factory のホームページの左側で **[モニター]** を選択します。 
 
-    ![Azure Data Factory のホーム ページのスクリーンショット。](media/doc-common-process/get-started-page-monitor-button.png)    
+    :::image type="content" source="media/doc-common-process/get-started-page-monitor-button.png" alt-text="Azure Data Factory のホーム ページのスクリーンショット。":::    
 
 6. すべてのパイプラインの実行とその状態を確認できます。 次の例では、パイプラインの実行が、**成功** 状態であることに注目してください。 パイプラインに渡されたパラメーターを確認するには、 **[パラメーター]** 列のリンクを選択します。 エラーが発生した場合は、 **[エラー]** 列にリンクが表示されます。
 
-    ![パイプラインを含むデータ ファクトリのパイプライン実行を示すスクリーンショット。](media/tutorial-incremental-copy-multiple-tables-powershell/monitor-pipeline-runs-4.png)    
+    :::image type="content" source="media/tutorial-incremental-copy-multiple-tables-powershell/monitor-pipeline-runs-4.png" alt-text="パイプラインを含むデータ ファクトリのパイプライン実行を示すスクリーンショット。":::    
 7. **[アクション]** 列のリンクを選択すると、そのパイプラインに関するすべてのアクティビティの実行が表示されます。 
 
 8. 再度 **パイプラインの実行** ビューに移動するには、 **[すべてのパイプラインの実行]** を選択します。 

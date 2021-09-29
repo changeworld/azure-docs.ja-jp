@@ -10,12 +10,12 @@ ms.date: 05/11/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8ff972965533dac423cafc731aa4a10165570977
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: c447d5cacc0c1d60a7594c1b6e6f2082941f7ae9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123258757"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128587444"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>Azure ストレージ アカウントを別のリージョンに移動する
 
@@ -24,13 +24,13 @@ ms.locfileid: "123258757"
 この記事では、次の方法について学習します。
 
 > [!div class="checklist"]
-> 
-> * テンプレートをエクスポートします。
-> * ターゲット リージョンとストレージ アカウント名を追加して、テンプレートを変更します。
-> * テンプレートをデプロイして、新しいストレージ アカウントを作成します。
-> * 新しいストレージ アカウントを構成します。
-> * 新しいストレージ アカウントにデータを移動します。
-> * ソース リージョンにあるリソースを削除します。
+>
+> - テンプレートをエクスポートします。
+> - ターゲット リージョンとストレージ アカウント名を追加して、テンプレートを変更します。
+> - テンプレートをデプロイして、新しいストレージ アカウントを作成します。
+> - 新しいストレージ アカウントを構成します。
+> - 新しいストレージ アカウントにデータを移動します。
+> - ソース リージョンにあるリソースを削除します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -42,11 +42,11 @@ ms.locfileid: "123258757"
 
 ## <a name="prepare"></a>準備
 
-作業を開始するには、Resource Manager テンプレートをエクスポートして変更します。 
+作業を開始するには、Resource Manager テンプレートをエクスポートして変更します。
 
 ### <a name="export-a-template"></a>テンプレートをエクスポートする
 
-このテンプレートには、ストレージ アカウントを表す設定が含まれます。 
+このテンプレートには、ストレージ アカウントを表す設定が含まれます。
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 
@@ -73,6 +73,7 @@ PowerShell を使用してテンプレートをエクスポートするには:
    ```azurepowershell-interactive
    Connect-AzAccount
    ```
+
 2. 自分の ID が複数のサブスクリプションに関連付けられている場合は、アクティブなサブスクリプションを、移動するストレージ アカウントのサブスクリプションに設定します。
 
    ```azurepowershell-interactive
@@ -94,7 +95,7 @@ PowerShell を使用してテンプレートをエクスポートするには:
 
 ---
 
-### <a name="modify-the-template"></a>テンプレートの変更 
+### <a name="modify-the-template"></a>テンプレートの変更
 
 ストレージ アカウント名とリージョンを変更して、テンプレートを変更します。
 
@@ -117,7 +118,7 @@ Azure portal を使用してテンプレートをデプロイするには:
 6. **[ファイルの読み込み]** を選択し、手順に従って、前のセクションでダウンロードした **template.json** ファイルを読み込みます。
 
 7. **template.json** ファイル内で、ストレージ アカウント名の既定値を設定して、ターゲット ストレージ アカウントに名前を付与します。 この例では、ストレージ アカウント名の既定値を `mytargetaccount` に設定します。
-    
+
     ```json
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
@@ -127,7 +128,7 @@ Azure portal を使用してテンプレートをデプロイするには:
             "type": "String"
         }
     },
- 
+
 8. Edit the **location** property in the **template.json** file to the target region. This example sets the target region to `centralus`.
 
     ```json
@@ -138,6 +139,7 @@ Azure portal を使用してテンプレートをデプロイするには:
          "location": "centralus"
          }]          
     ```
+
     リージョンの場所コードを取得するには、「[Azure の場所](https://azure.microsoft.com/global-infrastructure/locations/)」を参照してください。  リージョンのコードは、スペースを含まないリージョン名です (**Central US** = **centralus**)。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -145,7 +147,7 @@ Azure portal を使用してテンプレートをデプロイするには:
 PowerShell を使用してテンプレートをデプロイするには:
 
 1. **template.json** ファイル内で、ストレージ アカウント名の既定値を設定して、ターゲット ストレージ アカウントに名前を付与します。 この例では、ストレージ アカウント名の既定値を `mytargetaccount` に設定します。
-    
+
     ```json
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
@@ -155,7 +157,7 @@ PowerShell を使用してテンプレートをデプロイするには:
             "type": "String"
         }
     },
-    ``` 
+    ```
 
 2. **template.json** ファイル内の **location** プロパティを編集して、ターゲット リージョンを指定します。 この例では、ターゲット リージョンを `eastus` に設定します。
 
@@ -173,13 +175,14 @@ PowerShell を使用してテンプレートをデプロイするには:
     ```azurepowershell-interactive
     Get-AzLocation | format-table 
     ```
+
 ---
 
 <a id="move"></a>
 
 ## <a name="move"></a>詳細ビュー
 
-テンプレートをデプロイして、ターゲット リージョンに新しいストレージ アカウントを作成します。 
+テンプレートをデプロイして、ターゲット リージョンに新しいストレージ アカウントを作成します。
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 
@@ -187,11 +190,11 @@ PowerShell を使用してテンプレートをデプロイするには:
 
 2. プロパティ値を入力または選択します。
 
-- **サブスクリプション**:Azure サブスクリプションを選択します。
+   - **サブスクリプション**:Azure サブスクリプションを選択します。
 
-- **[リソース グループ]** : **[新規作成]** を選択して、リソース グループに名前を付けます。
+   - **[リソース グループ]** : **[新規作成]** を選択して、リソース グループに名前を付けます。
 
-- **[場所]** :Azure の場所を選択します。
+   - **[場所]** :Azure の場所を選択します。
 
 3. **[上記の使用条件に同意する]** チェック ボックスをオンにして、 **[Select Purchase]\(購入の選択\)** ボタンをクリックします。
 
@@ -212,11 +215,12 @@ PowerShell を使用してテンプレートをデプロイするには:
    New-AzResourceGroup -Name $resourceGroupName -Location "$location"
    New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri "<name of your local template file>"  
    ```
+
 ---
 
 ### <a name="configure-the-new-storage-account"></a>新しいストレージ アカウントを構成する
 
-一部の機能はテンプレートにエクスポートされないため、新しいストレージ アカウントに追加する必要があります。 
+一部の機能はテンプレートにエクスポートされないため、新しいストレージ アカウントに追加する必要があります。
 
 次の表に、これらの機能と、新しいストレージ アカウントに追加するためのガイダンスを一覧表示します。
 
@@ -228,14 +232,14 @@ PowerShell を使用してテンプレートをデプロイするには:
 | **警告** | [Azure Monitor を使用してアクティビティ ログ アラートを作成、表示、管理する](../../azure-monitor/alerts/alerts-activity-log.md) |
 | **Content Delivery Network (CDN)** | [Azure CDN を使用して HTTPS 経由でカスタム ドメインを使用した BLOB にアクセスする](../blobs/storage-https-custom-domain-cdn.md) |
 
-> [!NOTE] 
-> 元のストレージ アカウントに対して CDN を設定する場合は、単に既存の CDN の配信元を新しいアカウントのプライマリ BLOB サービス エンドポイント (またはプライマリ静的 Web サイト エンドポイント) に変更します。 
+> [!NOTE]
+> 元のストレージ アカウントに対して CDN を設定する場合は、単に既存の CDN の配信元を新しいアカウントのプライマリ BLOB サービス エンドポイント (またはプライマリ静的 Web サイト エンドポイント) に変更します。
 
 ### <a name="move-data-to-the-new-storage-account"></a>新しいストレージ アカウントにデータを移動する
 
 AzCopy は、データの移動に推奨されるツールです。 パフォーマンスのために最適化されています。  より迅速な方法では、データがストレージ サーバー間で直接コピーされます。その場合、AzCopy では、コンピューターのネットワーク帯域幅を使用しません。 コマンド ラインまたはカスタム スクリプトの一部として AzCopy を使用します。 [AzCopy の作業開始](/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)に関するページを参照してください。
 
-Azure Data Factory を使用してデータを移動することもできます。 これには、直感的なユーザー インターフェイスが用意されています。 Azure Data Factory を使用するには、以下のリンクのいずれかを参照してください。 
+Azure Data Factory を使用してデータを移動することもできます。 これには、直感的なユーザー インターフェイスが用意されています。 Azure Data Factory を使用するには、以下のリンクのいずれかを参照してください。
 
   - [Copy data to or from Azure Blob storage by using Azure Data Factory (Azure Data Factory を使用して、Azure Blob ストレージをコピー先、またはコピー元にして、データをコピーする)](/azure/data-factory/connector-azure-blob-storage)
   - [Azure Data Factory を使用して Azure Data Lake Storage Gen2 との間でデータをコピーする](/azure/data-factory/connector-azure-data-lake-storage)
@@ -267,12 +271,12 @@ Azure portal を使用してストレージ アカウントを削除するには
 ```powershell
 Remove-AzStorageAccount -ResourceGroupName  $resourceGroup -AccountName $storageAccount
 ```
+
 ---
 
 ## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure ストレージ アカウントをあるリージョンから別のリージョンに移動し、元のリソースをクリーンアップしました。  リージョン間でのリソースの移動と Azure でのディザスター リカバリーの詳細については、以下を参照してください。
-
 
 - [リソースを新しいリソース グループまたはサブスクリプションに移動する](../../azure-resource-manager/management/move-resource-group-and-subscription.md)
 - [Azure VM を別のリージョンに移動する](../../site-recovery/azure-to-azure-tutorial-migrate.md)

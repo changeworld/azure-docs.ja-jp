@@ -8,15 +8,15 @@ ms.topic: troubleshooting
 ms.date: 02/12/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: tanning
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df70891ef090d44769aadbc235273e3193bc780e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d6dde404b4ba490494d28beaf94affaef381adf6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94837211"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128625945"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Azure Active Directory の Enterprise State Roaming の設定のトラブルシューティング
 

@@ -1,14 +1,14 @@
 ---
 title: Australian Government ISM PROTECTED ブループリント サンプルのコントロール
 description: Australian Government ISM PROTECTED ブループリント サンプルのコントロール マッピング。 それぞれのコントロールは、評価を支援する 1 つまたは複数の Azure Policy 定義に対応します。
-ms.date: 04/02/2021
+ms.date: 09/08/2021
 ms.topic: sample
-ms.openlocfilehash: 2129c3d8e63f11f3902f3ddb0690ed1463206849
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 293c1a0566b830f9aab84d3c675479f91eff4976
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108733987"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128632274"
 ---
 # <a name="control-mapping-of-the-australian-government-ism-protected-blueprint-sample"></a>Australian Government ISM PROTECTED ブループリント サンプルのコントロール マッピング
 
@@ -235,7 +235,7 @@ ms.locfileid: "108733987"
 
 - Advanced Data Security を、SQL サーバー上で有効にする必要がある
 - 診断設定の監査
-- Advanced Data Security を SQL Managed Instance 上で有効にする必要がある
+- Advanced Data Security を SQL マネージド インスタンス上で有効にする必要がある
 
 ## <a name="guidelines-for-system-monitoring---vulnerability-management"></a>システム監視のガイドライン - 脆弱性の管理
 

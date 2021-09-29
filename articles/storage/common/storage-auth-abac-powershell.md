@@ -10,12 +10,12 @@ ms.author: rolyon
 ms.reviewer: ''
 ms.subservice: common
 ms.date: 05/06/2021
-ms.openlocfilehash: d6cb1980c93e5161f02b79b05f1128ba777027c6
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 19aee45977dfde4b401dc4736e24970e311a4cc9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112281955"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128621131"
 ---
 # <a name="tutorial-add-a-role-assignment-condition-to-restrict-access-to-blobs-using-azure-powershell-preview"></a>チュートリアル: Azure PowerShell を使用してロールの割り当て条件を追加し、BLOB へのアクセスを制限する (プレビュー)
 
@@ -29,8 +29,8 @@ ms.locfileid: "112281955"
 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
-> * ロールの割り当てに条件を追加する
-> * BLOB インデックス タグに基づいて BLOB に対するアクセスを制限する
+> - ロールの割り当てに条件を追加する
+> - BLOB インデックス タグに基づいて BLOB に対するアクセスを制限する
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -132,7 +132,7 @@ Chandra が Project=Cascade タグの設定されていない BLOB を読み取�
 1. そのテキストファイルに、次の BLOB インデックス タグを追加します。 詳細については、「[BLOB インデックス タグ (プレビュー) を使用して Azure Blob Storage でデータを管理および検索する](../blobs/storage-blob-index-how-to.md)」を参照してください。
 
     > [!NOTE]
-    > BLOB ではほかにも、ユーザー定義による任意のキー値メタデータを格納する機能がサポートされています。 メタデータと BLOB インデックス タグはよく似ていますが、条件では BLOB インデックス タグを使用する必要があります。 
+    > BLOB ではほかにも、ユーザー定義による任意のキー値メタデータを格納する機能がサポートされています。 メタデータと BLOB インデックス タグはよく似ていますが、条件では BLOB インデックス タグを使用する必要があります。
 
     | キー | 値 |
     | --- | --- |
@@ -193,7 +193,7 @@ Chandra が Project=Cascade タグの設定されていない BLOB を読み取�
     ```
 
     出力の例を次に示します。
-    
+
     ```azurepowershell
     RoleAssignmentId   : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/Microso
                          ft.Authorization/roleAssignments/<roleAssignmentId>
@@ -257,7 +257,7 @@ Chandra が Project=Cascade タグの設定されていない BLOB を読み取�
     ```
 
     出力の例を次に示します。 追加した条件が原因となってファイルを読み取ることが **できない** ことがわかります。
-    
+
     ```azurepowershell
     Get-AzStorageBlob : This request is not authorized to perform this operation using this permission. HTTP Status Code:
     403 - HTTP Error Message: This request is not authorized to perform this operation using this permission.
@@ -272,7 +272,7 @@ Chandra が Project=Cascade タグの設定されていない BLOB を読み取�
         + FullyQualifiedErrorId : StorageException,Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet.GetAzureStorageBlob
        Command
     ```
-    
+
 1. Cascade プロジェクトに関連するファイルを読み取ります。
 
     ```azurepowershell
@@ -280,10 +280,10 @@ Chandra が Project=Cascade タグの設定されていない BLOB を読み取�
     ```
 
     出力の例を次に示します。 ファイルに Project=Cascade タグが設定されているため、読み取ることができます。
-    
+
     ```azurepowershell
        AccountName: <storageAccountName>, ContainerName: <containerName>
-    
+
     Name                 BlobType  Length          ContentType                    LastModified         AccessTier SnapshotT
                                                                                                                   ime
     ----                 --------  ------          -----------                    ------------         ---------- ---------
@@ -339,7 +339,7 @@ Chandra が Project=Cascade タグの設定されていない BLOB を読み取�
                          torage/storageAccounts/blobServices/containers/blobs/tags:Project<$key_case_sensitive$>]
                          StringEquals 'Baker'))
     ```
-    
+
 ## <a name="step-9-clean-up-resources"></a>手順 9: リソースをクリーンアップする
 
 1. [Remove-AzRoleAssignment](/powershell/module/az.resources/remove-azroleassignment) を使用して、追加したロールの割り当てと条件を削除します。

@@ -13,12 +13,12 @@ ms.date: 08/10/2021
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev, has-adal-ref
-ms.openlocfilehash: 5b490ff71253739779089da92c87532f7abbdbcc
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: e03b288934ce01a25a8ee7b4ad3569af6507b8a6
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122418529"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124734764"
 ---
 # <a name="microsoft-enterprise-sso-plug-in-for-apple-devices-preview"></a>Apple デバイス用の Microsoft Enterprise SSO プラグイン (プレビュー)
 
@@ -29,7 +29,7 @@ ms.locfileid: "122418529"
 
 Enterprise SSO プラグインは現在、次のアプリの組み込み機能です。
 
-* [Microsoft Authenticator](../user-help/user-help-auth-app-overview.md): iOS、iPadOS
+* [Microsoft Authenticator](https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc): iOS、iPadOS
 * Microsoft Intune [ポータル サイト](/mem/intune/apps/apps-company-portal-macos): macOS
 
 ## <a name="features"></a>特徴
@@ -46,15 +46,15 @@ Apple デバイス用の Microsoft Enterprise SSO プラグインには、次の
 Apple デバイス用の Microsoft Enterprise SSO プラグインを使用するには:
 
 - Apple デバイス用の Microsoft Enterprise SSO プラグインを含むアプリが、デバイスで *サポート* およびインストールされている必要があります。
-  - iOS 13.0 以降: [Microsoft Authenticator アプリ](../user-help/user-help-auth-app-overview.md)
-  - iPadOS 13.0 以降: [Microsoft Authenticator アプリ](../user-help/user-help-auth-app-overview.md)
+  - iOS 13.0 以降: [Microsoft Authenticator アプリ](https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc)
+  - iPadOS 13.0 以降: [Microsoft Authenticator アプリ](https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc)
   - macOS 10.15 以降: [Intune ポータル サイト アプリ](/mem/intune/user-help/enroll-your-device-in-intune-macos-cp)
 - Microsoft Intune を使用するなどして、デバイスが *MDM に登録* されている必要があります。
 - 構成を *デバイスにプッシュ* して、Enterprise SSO プラグインを有効にする必要があります。 このセキュリティ制約は Apple の要件です。
 
 ### <a name="ios-requirements"></a>iOS の要件:
 - iOS 13.0 以降がデバイスにインストールされている必要があります。
-- Apple デバイス用の Microsoft Enterprise SSO プラグインを提供する Microsoft アプリケーションが、デバイスにインストールされている必要があります。 パブリック プレビューでは、これらのアプリケーションは [Microsoft Authenticator アプリ](../user-help/user-help-auth-app-overview.md)です。
+- Apple デバイス用の Microsoft Enterprise SSO プラグインを提供する Microsoft アプリケーションが、デバイスにインストールされている必要があります。 パブリック プレビューでは、これらのアプリケーションは [Microsoft Authenticator アプリ](https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc)です。
 
 
 ### <a name="macos-requirements"></a>macOS の要件:

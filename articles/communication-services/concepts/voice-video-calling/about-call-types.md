@@ -9,12 +9,13 @@ ms.author: rifox
 ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: e5172e4d6d1ba18638b453aaab9747229381bb79
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.subservice: calling
+ms.openlocfilehash: 9fd2de1bdcd89f027db9a3fd74ef40111f540ced
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123256809"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128635966"
 ---
 # <a name="voice-and-video-concepts"></a>音声とビデオの概念
 

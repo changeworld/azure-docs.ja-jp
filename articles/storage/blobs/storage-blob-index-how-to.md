@@ -9,12 +9,12 @@ ms.subservice: blobs
 ms.topic: how-to
 ms.reviewer: klaasl
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 682f855232ef021b10d148b3ede71a35dbaee760
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: d4743a529649c7223449b35092b1505ee534eeaf
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122867653"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128615671"
 ---
 # <a name="use-blob-index-tags-to-manage-and-find-data-on-azure-blob-storage"></a>BLOB インデックス タグを使用して Azure Blob Storage でデータを管理および検索する
 
@@ -57,7 +57,7 @@ ms.locfileid: "122867653"
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 
-1. [Azure portal](https://portal.azure.com/) で、ストレージ アカウントを選択します。 
+1. [Azure portal](https://portal.azure.com/) で、ストレージ アカウントを選択します。
 
 2. **[データ ストレージ]** の **[コンテナー]** オプションに移動し、コンテナーを選択します
 
@@ -199,7 +199,7 @@ static async Task BlobIndexTagsExample()
 
 Azure portal 内では、BLOB インデックス タグ フィルターによって `@container` パラメーターが自動的に適用され、選択したコンテナーがスコープになります。 ストレージ アカウント全体で、タグ付けされたデータをフィルター処理して検索する場合は、REST API、SDK、またはツールを使用してください。
 
-1. [Azure portal](https://portal.azure.com/) で、ストレージ アカウントを選択します。 
+1. [Azure portal](https://portal.azure.com/) で、ストレージ アカウントを選択します。
 
 2. **[データ ストレージ]** の **[コンテナー]** オプションに移動し、コンテナーを選択します
 
@@ -241,7 +241,7 @@ static async Task FindBlobsByTagsExample()
           AppendBlobClient appendBlobWithTags3 = container2.GetAppendBlobClient("myAppendBlob03.logs");
           AppendBlobClient appendBlobWithTags4 = container2.GetAppendBlobClient("myAppendBlob04.logs");
           AppendBlobClient appendBlobWithTags5 = container2.GetAppendBlobClient("myAppendBlob05.logs");
-           
+
           // Blob index tags to upload
           CreateAppendBlobOptions appendOptions = new CreateAppendBlobOptions();
           appendOptions.Tags = new Dictionary<string, string>
@@ -250,7 +250,7 @@ static async Task FindBlobsByTagsExample()
               { "Priority", "01" },
               { "Date", "2020-04-20" }
           };
-          
+
           CreateAppendBlobOptions appendOptions2 = new CreateAppendBlobOptions();
           appendOptions2.Tags = new Dictionary<string, string>
           {
@@ -295,7 +295,7 @@ static async Task FindBlobsByTagsExample()
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 
-1. [Azure portal](https://portal.azure.com/) で、ストレージ アカウントを選択します。 
+1. [Azure portal](https://portal.azure.com/) で、ストレージ アカウントを選択します。
 
 2. **[Blob service]** の下の **[ライフサイクル管理]** オプションに移動します
 
@@ -313,11 +313,11 @@ static async Task FindBlobsByTagsExample()
 
 # <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/net)
 
-[ライフサイクル管理](storage-lifecycle-management-concepts.md)ポリシーは、各ストレージ アカウントにコントロール プレーン レベルで適用されます。 .NET の場合は、[Microsoft Azure の管理ストレージ ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/) バージョン 16.0.0 以降をインストールします。
+[ライフサイクル管理](./lifecycle-management-overview.md)ポリシーは、各ストレージ アカウントにコントロール プレーン レベルで適用されます。 .NET の場合は、[Microsoft Azure の管理ストレージ ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/) バージョン 16.0.0 以降をインストールします。
 
 ---
 
 ## <a name="next-steps"></a>次のステップ
 
- - BLOB インデックス タグの詳細については、「[BLOB インデックス タグを使用して Azure BLOB データを管理および検索する](storage-manage-find-blobs.md )」を参照してください
- - ライフサイクル管理の詳細については、「[Azure Blob Storage のライフサイクルを管理する](storage-lifecycle-management-concepts.md)」を参照してください
+- BLOB インデックス タグの詳細については、「[BLOB インデックス タグを使用して Azure BLOB データを管理および検索する](storage-manage-find-blobs.md )」を参照してください
+- ライフサイクル管理の詳細については、「[Azure Blob Storage のライフサイクルを管理する](./lifecycle-management-overview.md)」を参照してください

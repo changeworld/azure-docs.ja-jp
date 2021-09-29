@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/24/2021
+ms.date: 09/09/2021
 ms.author: jianleishen
-ms.openlocfilehash: a5b84673a879c086fe1fc0543da1ab0037d32ac1
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 2c7c2a6d0056cb16f2ff79cb662cce2604d835b5
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123255977"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124767624"
 ---
 # <a name="copy-activity-in-azure-data-factory-and-azure-synapse-analytics"></a>Azure Data Factory と Azure Synapse Analytics の Copy アクティビティ
 
@@ -26,7 +26,7 @@ ms.locfileid: "123255977"
 
 Azure Data Factory と Synapse のパイプラインでは、Copy アクティビティを使用して、オンプレミスやクラウド内のデータ ストアの間でデータをコピーできます。 データをコピーした後は、他のアクティビティを使用してさらに変換および分析できます。 また、コピー アクティビティを使用して、変換や分析の結果を発行し、ビジネス インテリジェンス (BI) やアプリケーションで使用することもできます。
 
-![コピー アクティビティの役割](media/copy-activity-overview/copy-activity.png)
+:::image type="content" source="media/copy-activity-overview/copy-activity.png" alt-text="コピー アクティビティの役割":::
 
 コピー アクティビティは、[統合ランタイム](concepts-integration-runtime.md)で実行されます。 さまざまなデータ コピーのシナリオで、さまざまな種類の統合ランタイムを使用できます。
 
@@ -41,7 +41,7 @@ Azure Data Factory と Synapse のパイプラインでは、Copy アクティ�
 2. シリアル化/逆シリアル化、圧縮/圧縮解除、列マッピングなどを実行する。 この操作は、入力データセット、出力データセット、およびコピー アクティビティの構成に基づいて実行されます。
 3. シンク/宛先データ ストアにデータを書き込む。
 
-![コピー アクティビティの概要](media/copy-activity-overview/copy-activity-overview.png)
+:::image type="content" source="media/copy-activity-overview/copy-activity-overview.png" alt-text="コピー アクティビティの概要":::
 
 ## <a name="supported-data-stores-and-formats"></a>サポートされるデータ ストアと形式
 
@@ -161,7 +161,7 @@ Data Factory および Synapse パイプラインを使用すると、ソース 
 - **アクティビティ レベルの再試行:** コピー アクティビティに再試行回数を設定できます。 パイプラインの実行中に、このコピー アクティビティの実行が失敗した場合、次の自動再試行は最後の試行の失敗ポイントから開始されます。
 - **失敗したアクティビティから再実行する:** パイプラインの実行完了後、ADF UI 監視ビューまたはプログラムによって失敗したアクティビティから再実行をトリガーすることもできます。 失敗したアクティビティがコピー アクティビティの場合、パイプラインはそのアクティビティから再実行されるだけでなく、前の実行の失敗ポイントからも再開されます。
 
-    ![コピーの再開](media/copy-activity-overview/resume-copy.png)
+    :::image type="content" source="media/copy-activity-overview/resume-copy.png" alt-text="コピーの再開":::
 
 いくつかの注意点があります。
 
@@ -190,7 +190,7 @@ Data Factory および Synapse パイプラインを使用すると、ソース 
 
 コピー アクティビティ ソース タブの構成は次のとおりです。また、定義されている列名を使用して、通常どおりのコピー アクティビティ [スキーマ マッピング](copy-activity-schema-and-type-mapping.md#schema-mapping)で追加の列をマッピングすることもできます。 
 
-![コピー アクティビティで列を追加する](./media/copy-activity-overview/copy-activity-add-additional-columns.png)
+:::image type="content" source="./media/copy-activity-overview/copy-activity-add-additional-columns.png" alt-text="コピー アクティビティで列を追加する":::
 
 >[!TIP]
 >この機能は、最新のデータセット モデルで動作します。 UI にこのオプションが表示されない場合は、新しいデータセットを作成してみてください。
@@ -255,7 +255,7 @@ SQL データベース/Azure Synapse Analytics にデータをコピーすると
 - [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md)
 - [SQL Server](connector-sql-server.md)
 
-![シンク テーブルの作成](media/copy-activity-overview/create-sink-table.png)
+:::image type="content" source="media/copy-activity-overview/create-sink-table.png" alt-text="シンク テーブルの作成":::
 
 ## <a name="fault-tolerance"></a>フォールト トレランス
 

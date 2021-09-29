@@ -9,12 +9,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: fryu
-ms.openlocfilehash: be4c00596e0d058dad50ae5f535ac56334b305ea
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 2c4eac524ecda8a2b90036748fd2a6f2a389a3cd
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123436520"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124823741"
 ---
 # <a name="overview-of-blob-rehydration-from-the-archive-tier"></a>アーカイブ層からの BLOB のリハイドレートの概要
 
@@ -80,7 +80,7 @@ BLOB をアーカイブ層からオンライン層にリハイドレートする
 階層をオンライン層に変更して BLOB をリハイドレートする方法については、「[その層を変更して BLOB をリハイドレートする](archive-rehydrate-to-online-tier.md#rehydrate-a-blob-by-changing-its-tier)」を参照してください。
 
 > [!CAUTION]
-> BLOB の層を変更しても、最後に変更された時刻には影響しません。 ストレージ アカウントに対する [ライフサイクル管理](storage-lifecycle-management-concepts.md)ポリシーが有効な場合、**Set Blob Tier** で BLOB をリハイドレートさせると、最終更新時刻がポリシーで設定された閾値を超えているため、ライフサイクル ポリシーによってリハイドレート後に BLOB がアーカイブ層に戻されるというシナリオが発生します。
+> BLOB の層を変更しても、最後に変更された時刻には影響しません。 ストレージ アカウントに対する [ライフサイクル管理](./lifecycle-management-overview.md)ポリシーが有効な場合、**Set Blob Tier** で BLOB をリハイドレートさせると、最終更新時刻がポリシーで設定された閾値を超えているため、ライフサイクル ポリシーによってリハイドレート後に BLOB がアーカイブ層に戻されるというシナリオが発生します。
 >
 > このシナリオを回避するには、「[アーカイブ済み BLOB をオンライン層にコピーする](#copy-an-archived-blob-to-an-online-tier)」セクションの説明に従って、アーカイブ済み BLOB を代わりにコピーしてリハイドレートします。 コピー操作を実行すると、最終更新時刻を更新された BLOB の新しいインスタンスが作成されるため、ライフサイクル管理ポリシーがトリガされることはありません。
 

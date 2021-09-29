@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 03/17/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e1f4c7272c3db3b1e4cd834a621b66f519c6f69
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e5e49e3e545e7536d9f0d9bc49b7fd791ea52b8d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104952815"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128627636"
 ---
 # <a name="conditional-access-users-and-groups"></a>条件付きアクセス:ユーザーとグループ
 

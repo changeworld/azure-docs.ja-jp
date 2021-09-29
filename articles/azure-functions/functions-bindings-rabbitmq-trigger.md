@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 12/17/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: be3c5bc2d178171aaebd322e13b23b3a6f79c442
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f0cac775870345ae298672c2af5dad8277c592e6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100388993"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128639788"
 ---
 # <a name="rabbitmq-trigger-for-azure-functions-overview"></a>Azure Functions の RabbitMQ トリガーの概要
 
@@ -247,7 +247,7 @@ public static void RabbitMQTest([RabbitMQTrigger("queue")] string message, ILogg
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-キュー メッセージは、context.bindings.<NAME> を介して使用できます。 ここでの <NAME> は、function.json で定義されている名前と一致します。 ペイロードが JSON の場合、値はオブジェクトに逆シリアル化されます。
+キュー メッセージは、context.bindings.\<NAME\> を介して使用できます。 ここでの \<NAME\> は、function.json で定義されている名前と一致します。 ペイロードが JSON の場合、値はオブジェクトに逆シリアル化されます。
 
 # <a name="python"></a>[Python](#tab/python)
 

@@ -5,14 +5,15 @@ author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: 42a1318ffb4c0063875939c8d3633ea513818ba4
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: 2d1cd9053f5be915015653e1b522e82eff7b978c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122397073"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128571237"
 ---
 # <a name="updating-ml-studio-classic-models-using-update-resource-activity"></a>更新リソース アクティビティを使用した ML Studio (クラシック) モデルの更新
 
@@ -47,7 +48,7 @@ ms.locfileid: "122397073"
 
 次の図は、ML Studio (クラシック) でのトレーニングとスコア付けのエンドポイントの関係を示しています。
 
-![Web サービス](./media/data-factory-azure-ml-batch-execution-activity/web-services.png)
+:::image type="content" source="./media/data-factory-azure-ml-batch-execution-activity/web-services.png" alt-text="Web サービス":::
 
 **ML Studio (クラシック) の Batch Execution アクティビティ** を使用して、**トレーニング Web サービス** を呼び出すことができます。 トレーニング Web サービスを呼び出す方法は、データのスコア付け用 ML Studio (クラシック) Web サービス (スコア付け Web サービス) を呼び出す場合と同じです。 前のセクションで、Azure Data Factory パイプラインから ML Studio (クラシック) Web サービスを呼び出す方法について詳しく説明しています。 
 
@@ -59,7 +60,7 @@ ms.locfileid: "122397073"
 * **[バッチ実行]** をクリックして、**mlEndpoint** JSON プロパティの URI の値を取得します。
 * **[リソースの更新]** リンクをクリックして、**updateResourceEndpoint** JSON プロパティの URI の値を取得します。 API キーは、エンドポイントのページにあります (右下隅)。
 
-![updatable endpoint](./media/data-factory-azure-ml-batch-execution-activity/updatable-endpoint.png)
+:::image type="content" source="./media/data-factory-azure-ml-batch-execution-activity/updatable-endpoint.png" alt-text="updatable endpoint":::
 
 次の例は、Azure ML のリンクされたサービスに対する JSON 定義のサンプルを示しています。 リンクされたサービスでは、認証に apiKey が使用されます。  
 
@@ -111,7 +112,7 @@ https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{reso
 
 サンプル パイプラインのダイアグラム ビューを次に示します。 ご覧のように、スタジオ (クラシック) バッチ実行アクティビティを使用して、トレーニングの入力を受け取り、トレーニングの出力 (iLearner ファイル) を作成します。 スタジオ (クラシック) 更新リソース アクティビティを使用して、トレーニングの出力を受け取り、スコア付け Web サービスのエンドポイントでモデルを更新します。 更新リソース アクティビティは出力を作成しません。 placeholderBlob は、パイプラインを実行するために、Azure Data Factory サービスで必要とされるダミーの出力データセットです。
 
-![pipeline diagram](./media/data-factory-azure-ml-batch-execution-activity/update-activity-pipeline-diagram.png)
+:::image type="content" source="./media/data-factory-azure-ml-batch-execution-activity/update-activity-pipeline-diagram.png" alt-text="pipeline diagram":::
 
 ### <a name="azure-blob-storage-linked-service"></a>Azure BLOB ストレージのリンクされたサービス:
 Azure Storage には次のデータが格納されています。
@@ -258,7 +259,7 @@ Azure Storage には次のデータが格納されています。
 ### <a name="pipeline"></a>パイプライン
 パイプラインには、**AzureMLBatchExecution** と **AzureMLUpdateResource** の 2 つのアクティビティが含まれています。 ML Studio (クラシック) の Batch Execution アクティビティにより、トレーニング データが入力として使用され、iLearner ファイルが出力として作成されます。 このアクティビティは、トレーニング Web サービス (Web サービスとして公開されたトレーニング実験) と入力トレーニング データを呼び出し、Web サービスから ilearner ファイルを受け取ります。 placeholderBlob は、パイプラインを実行するために、Azure Data Factory サービスで必要とされるダミーの出力データセットです。
 
-![pipeline diagram](./media/data-factory-azure-ml-batch-execution-activity/update-activity-pipeline-diagram.png)
+:::image type="content" source="./media/data-factory-azure-ml-batch-execution-activity/update-activity-pipeline-diagram.png" alt-text="pipeline diagram":::
 
 ```JSON
 {

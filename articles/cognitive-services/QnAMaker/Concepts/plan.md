@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 177c02da26ffcedd0453538bc32158cf2f014896
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 1f3db34f477e228157cfa8378f171adf7a239811
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110369288"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124828835"
 ---
 # <a name="plan-your-qna-maker-app"></a>QnA Maker アプリの計画
 
@@ -88,7 +88,7 @@ QnA Maker で作成される各 [Azure リソース](azure-resources.md#resource
 
 QnA Maker リソースに作成された 1 つ目のナレッジ ベースによって、リソースの言語が設定されます。 1 つの QnA Maker リソースには 1 つの言語のみを使用できます。
 
-クエリをクエリ予測エンドポイントに送信する前に、QnA Maker リソースを言語ごとに構築するか、[Translator](../../translator/translator-info-overview.md) を使用してクエリを別の言語からナレッジ ベースの言語に変更することができます。
+クエリをクエリ予測エンドポイントに送信する前に、QnA Maker リソースを言語ごとに構築するか、[Translator](../../translator/translator-overview.md) を使用してクエリを別の言語からナレッジ ベースの言語に変更することができます。
 
 # <a name="custom-question-answering-preview-release"></a>[カスタム質問と回答 (プレビュー リリース)](#tab/v2)
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 08/11/2021
+ms.date: 09/09/2021
 ms.author: aahi
-ms.openlocfilehash: 9d63fc9f90408fd60331f77079fdd8f15ca4aad6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 784654cb21306f2fadb28b52aba30c21c66c900b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121734083"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128672573"
 ---
 # <a name="supported-entity-categories-in-the-text-analytics-api-v3"></a>Text Analytics API v3 でサポートされているエンティティのカテゴリ
 

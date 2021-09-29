@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 08/30/2021
-ms.openlocfilehash: 48c6232678adceed0bc239ff788f8a191d9d88c2
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.date: 09/09/2021
+ms.openlocfilehash: 42040653f432577457cea6e5325fe686878e9da3
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123304706"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124820167"
 ---
 # <a name="copy-and-transform-data-to-and-from-sql-server-by-using-azure-data-factory-or-azure-synapse-analytics"></a>Azure Data Factory または Azure Synapse Analytics を使用して SQL Server との間でデータをコピーおよび変換する
 
@@ -62,7 +62,7 @@ SQL Server データベースから、サポートされている任意のシン
 
     # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
 
-    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI を使用した新しいリンク サービスの作成を示すスクリーンショット。":::
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI で新しいリンク サービスを作成するスクリーンショット。":::
 
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
@@ -440,7 +440,7 @@ SQL Server にデータをコピーするには、コピー アクティビテ�
 
 SQL Server コネクタでは、コピー アクティビティの際に、データを並列でコピーするための組み込みのデータ パーティション分割が提供されます。 データ パーティション分割オプションは、コピー アクティビティの **[ソース]** タブにあります。
 
-![パーティションのオプションのスクリーンショット](./media/connector-sql-server/connector-sql-partition-options.png)
+:::image type="content" source="./media/connector-sql-server/connector-sql-partition-options.png" alt-text="パーティションのオプションのスクリーンショット":::
 
 パーティション分割でのコピーを有効にすると、コピー アクティビティによってユーザーの SQL Server ソースに対して並列クエリが実行され、パーティションごとにデータが読み込まれます。 並列度は、コピー アクティビティの [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) 設定によって制御されます。 たとえば、`parallelCopies` を 4 に設定した場合、指定したパーティション オプションと設定に基づいて 4 つのクエリが同時に生成され、実行されます。各クエリでは、SQL Server からデータの一部を取得します。
 
@@ -501,7 +501,7 @@ WHERE s.name='[your schema]' AND t.name = '[your table name]'
 
 テーブルに物理パーティションがある場合、次のように、"HasPartition" は "yes" と表示されます。
 
-![SQL クエリの結果](./media/connector-azure-sql-database/sql-query-result.png)
+:::image type="content" source="./media/connector-azure-sql-database/sql-query-result.png" alt-text="SQL クエリの結果":::
 
 ## <a name="best-practice-for-loading-data-into-sql-server"></a>SQL Server にデータを読み込むときのベスト プラクティス
 
@@ -526,7 +526,7 @@ SQL Server にデータをコピーするときは、さまざまな書き込み
 
 例として、**Copy アクティビティ** と **ストアド プロシージャ アクティビティ** を連結させたパイプラインを作成できます。 前者では、ソース ストアから SQL Server ステージング テーブル (たとえば、データセット内のテーブル名 **UpsertStagingTable**) にデータがコピーされます。 次に、後者によってストアド プロシージャが呼び出され、ステージング テーブルのソース データがターゲット テーブルにマージされて、ステージング テーブルがクリーンアップされます。
 
-![Upsert](./media/connector-azure-sql-database/azure-sql-database-upsert.png)
+:::image type="content" source="./media/connector-azure-sql-database/azure-sql-database-upsert.png" alt-text="Upsert":::
 
 データベースで、前のストアド プロシージャ アクティビティから指し示されている、次の例に示すような MERGE ロジックを含むストアド プロシージャを定義します。 ターゲットは **Marketing** テーブルであり、そこには 3 つの列 (**ProfileID**、**State**、**Category**) があるものとします。 **ProfileID** 列に基づいて、アップサートを実行します。
 
@@ -676,7 +676,7 @@ SQL Server との間でデータをコピーするとき、SQL Server のデー�
 |:--- |:--- |
 | bigint |Int64 |
 | binary |Byte[] |
-| bit |Boolean |
+| bit |ブール型 |
 | char |String, Char[] |
 | date |DateTime |
 | Datetime |DateTime |
@@ -739,13 +739,13 @@ SQL Server との間でデータをコピーするとき、SQL Server のデー�
 
 1. リモート接続を受け付けるように、SQL Server インスタンスを構成します。 **SQL Server Management Studio** を開始し、**サーバー** を右クリックして、 **[プロパティ]** を選択します。 一覧から **[接続]** を選択し、 **[このサーバーへのリモート接続を許可する]** チェック ボックスをオンにします。
 
-    ![リモート接続を有効にする](media/copy-data-to-from-sql-server/AllowRemoteConnections.png)
+    :::image type="content" source="media/copy-data-to-from-sql-server/AllowRemoteConnections.png" alt-text="リモート接続の有効化":::
 
     詳細な手順については、「[remote access サーバー構成オプションの構成](/sql/database-engine/configure-windows/configure-the-remote-access-server-configuration-option)」をご覧ください。
 
 2. **SQL Server 構成マネージャー** を開始します。 目的のインスタンスの **[SQL Server ネットワークの構成]** を展開し、 **[MSSQLSERVER のプロトコル]** を選択します。 右側のウィンドウにプロトコルが表示されます。 **[TCP/IP]** を右クリックして **[有効化]** を選択し、TCP/IP を有効にします。
 
-    ![TCP/IP を有効にする](./media/copy-data-to-from-sql-server/EnableTCPProptocol.png)
+    :::image type="content" source="./media/copy-data-to-from-sql-server/EnableTCPProptocol.png" alt-text="TCP/IP を有効にする":::
 
     TCP/IP プロトコルの有効化の詳細および別の方法については、「[サーバー ネットワーク プロトコルの有効化または無効化](/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol)」をご覧ください。
 
@@ -755,4 +755,4 @@ SQL Server との間でデータをコピーするとき、SQL Server のデー�
 6. **接続の確認**: 完全修飾名を使って SQL Server に接続するには、別のコンピューターから SQL Server Management Studio を使用します。 たとえば `"<machine>.<domain>.corp.<company>.com,1433"` です。
 
 ## <a name="next-steps"></a>次のステップ
-Copy アクティビティでソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関するセクションを参照してください。
+コピー アクティビティによってソース、シンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関するセクションを参照してください。

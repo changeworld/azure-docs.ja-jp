@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/07/2021
 ms.author: jeedes
-ms.openlocfilehash: 67a7641c00dbd03e111f2fa8b62b7a6b709efb43
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 8a654d33b73e0346b468c7401f1c4b0fd5988637
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111753055"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124772412"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tango-analytics"></a>チュートリアル: Azure Active Directory と Tango Analytics の統合
 
@@ -128,7 +128,7 @@ Tango Analytics に対して Azure AD SSO を構成してテストするには�
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した Tango Analytics に自動的にサインインされます。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Tango Analytics] タイルをクリックすると、SSO を設定した Tango Analytics に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Tango Analytics] タイルをクリックすると、SSO を設定した Tango Analytics に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -3,7 +3,7 @@ title: Azure API Management 開発者ポータルのテンプレート | Microso
 description: Azure API Management のテンプレート セットを使用して開発者ポータル ページの内容をカスタマイズする方法について説明します。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 manager: erikre
 editor: ''
 ms.assetid: 5189f3d8-2a4c-4dc8-ab19-11c7df0114d4
@@ -12,13 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: apimpm
-ms.openlocfilehash: 9bbb7ef46fbde881c8968128870d24a03b046c23
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: danlep
+ms.openlocfilehash: 67f9d9727190df3494953e22e1a566a99f2ef5cd
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "73176794"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128548751"
 ---
 # <a name="developer-portal-templates"></a>開発者ポータル テンプレート
 

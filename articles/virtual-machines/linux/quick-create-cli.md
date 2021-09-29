@@ -14,12 +14,12 @@ ms.custom:
 - seo-javascript-october2019
 - seo-python-october2019
 - devx-track-azurecli
-ms.openlocfilehash: f6ae323dadd2f2859079899906c3ba51a12df935
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 4329110d117a81d34b70662e44e36d8aed21e114
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122698161"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124774198"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-with-the-azure-cli"></a>クイック スタート:Azure CLI で Linux 仮想マシンを作成する
 
@@ -51,7 +51,7 @@ az group create --name myResourceGroup --location eastus
 
 [az vm create](/cli/azure/vm) コマンドで VM を作成します。
 
-次の例では、*myVM* という名前の VM を作成し、*azureuser* という名前のユーザー アカウントを追加します。 SSH キーを自動的に生成するために `--generate-ssh-keys` パラメーターが使用され、キーは既定のキーの場所 ( *~/.ssh*) に配置されます。 代わりに特定のキーのセットを使用するには、`--ssh-key-value` オプションを使用します。
+次の例では、*myVM* という名前の VM を作成し、*azureuser* という名前のユーザー アカウントを追加します。 SSH キーを自動的に生成するために `--generate-ssh-keys` パラメーターが使用され、キーは既定のキーの場所 ( *~/.ssh*) に配置されます。 代わりに特定のキーのセットを使用するには、`--ssh-key-values` オプションを使用します。
 
 ```azurecli-interactive
 az vm create \

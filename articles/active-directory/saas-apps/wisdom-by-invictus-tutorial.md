@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/31/2020
 ms.author: jeedes
-ms.openlocfilehash: d1ca90d00dad66bf88f767f46d9cd2839fdd57b1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 99d682cc6d2ae1d7bbdb039953df60aa22dbe00f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92519165"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124745656"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-wisdom-by-invictus"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Wisdom by Invictus の統合
 
@@ -132,7 +132,7 @@ Wisdom by Invictus に対する Azure AD SSO を構成してテストするに�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Wisdom by Invictus] タイルをクリックすると、SSO を設定した Wisdom by Invictus に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+アクセス パネル上で [Wisdom by Invictus] タイルをクリックすると、SSO を設定した Wisdom by Invictus に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

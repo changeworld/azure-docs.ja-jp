@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/05/2021
 ms.author: jeedes
-ms.openlocfilehash: d58552b7d85c6c9b01f5fc984797865401a98a4f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fcf3b4ede6bb1b1f02d701dfc62816d494cfe00e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121785789"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124765497"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-corporateexperience"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と CorporateExperience の統合
 
@@ -144,7 +144,7 @@ CorporateExperience 用に Azure AD SSO を構成してテストするには、�
 
 * CorporateExperience のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [CorporateExperience] タイルをクリックすると、CorporateExperience のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [CorporateExperience] タイルをクリックすると、CorporateExperience のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

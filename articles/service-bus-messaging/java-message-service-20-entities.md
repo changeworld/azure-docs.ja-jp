@@ -2,13 +2,13 @@
 title: Azure Service Bus メッセージング - Java Message Service エンティティ
 description: この記事では、Java Message Service API でアクセスできる Azure Service Bus メッセージング エンティティの概要について取り上げます。
 ms.topic: article
-ms.date: 07/20/2020
-ms.openlocfilehash: ee4e0124dced16b86d5292c647e129aa87645f22
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/27/2021
+ms.openlocfilehash: 6900deff355f10e4274a5268bd21da189a9daf80
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100652583"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129154529"
 ---
 # <a name="java-message-service-jms-20-entities"></a>Java Message Service (JMS) 2.0 のエンティティ
 

@@ -3,20 +3,18 @@ title: 分析情報トークンの使用 - Bing Visual Search
 titleSuffix: Azure Cognitive Services
 description: Bing Visual Search API で画像の分析情報トークンを使用して、画像に関する分析情報を取得する方法を説明します。
 services: cognitive-services
-author: swhite-msft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 4/26/2019
-ms.author: scottwhi
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: 685bdc3f67594c51f6ab749c33ab30e940faee34
-ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
+ms.openlocfilehash: 04239a1fb2ce060ac2622c8607d66c5b5aacc790
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/04/2021
-ms.locfileid: "113288286"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128663195"
 ---
 # <a name="use-an-insights-token-to-get-insights-for-an-image"></a>分析情報トークンを使用して画像についての分析情報を取得する
 

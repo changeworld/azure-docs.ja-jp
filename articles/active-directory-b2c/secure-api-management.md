@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/30/2020
+ms.date: 09/20/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4d1aab07514f4a42d011cf75a9a22b34246a5653
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 6dd813d2bd046d6b4256bd17b447b8d5660bdea2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121734534"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128564044"
 ---
 # <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>Azure AD B2C を使用して Azure API Management API をセキュリティで保護する
 
@@ -40,7 +40,8 @@ Azure API Management において Azure AD B2C を使用して API のセキュ�
 # <a name="app-registrations"></a>[アプリの登録](#tab/app-reg-ga/)
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
 1. 左側のペインで、 **[Azure AD B2C]** を選択します。 あるいは、 **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
 1. **[アプリの登録]** を選択してから、 **[所有しているアプリケーション]** タブを選択します。
 1. *webapp1* または以前に作成した別のアプリケーションの **[アプリケーション (クライアント) ID]** 列の値を記録します。
@@ -48,7 +49,8 @@ Azure API Management において Azure AD B2C を使用して API のセキュ�
 # <a name="applications-legacy"></a>[アプリケーション (レガシ)](#tab/applications-legacy/)
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
 1. 左側のペインで、 **[Azure AD B2C]** を選択します。 あるいは、 **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
 1. **[管理]** で、 **[アプリケーション (レガシ)]** を選択します。
 1. *webapp1* または以前に作成した別のアプリケーションの **[アプリケーション ID]** 列の値を記録します。

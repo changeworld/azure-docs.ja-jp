@@ -1,19 +1,19 @@
 ---
 title: Queue Storage を使用する方法 (C++) - Azure Storage
 description: Azure で Queue Storage サービスを使用する方法について説明します。 サンプルは C++ で記述されています。
-author: twooley
-ms.author: twooley
+author: normesta
+ms.author: normesta
 ms.reviewer: dineshm
 ms.date: 07/16/2020
 ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
-ms.openlocfilehash: 0e8274378ed321dc7c3d6ddcfb85f5bb0a2f7993
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: f83d10b59ae2af24ddf690e773ca63e71bff02b9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106276282"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128564999"
 ---
 # <a name="how-to-use-queue-storage-from-c"></a>C++ から Queue ストレージを使用する方法
 
@@ -278,7 +278,7 @@ queue.delete_queue_if_exists();
 
 これで、Queue Storage の基本を学習できました。Azure Storage の詳細については、次のリンク先を参照してください。
 
-- [C++ から BLOB ストレージを使用する方法](../blobs/storage-c-plus-plus-how-to-use-blobs.md)
+- [C++ から BLOB ストレージを使用する方法](../blobs/quickstart-blobs-c-plus-plus.md)
 - [C++ から Table ストレージを使用する方法](../../cosmos-db/table-storage-how-to-use-c-plus.md)
 - [C++ での Azure Storage のリソース一覧の取得](../common/storage-c-plus-plus-enumeration.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
 - [C++ 用 Azure Storage クライアント ライブラリ リファレンス](https://azure.github.io/azure-storage-cpp)

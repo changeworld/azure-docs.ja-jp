@@ -8,14 +8,14 @@ ms.topic: overview
 ms.date: 11/04/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 8f9c1b1762c4e6028d935e03a630dfc0ca4ee4b9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 021e7d3bac6c14ea4ca9ae0ae36be9df30d3b74a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "73615758"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128662516"
 ---
-# <a name="what-is-azure-blob-storage"></a>Azure BLOB Storage とは 
+# <a name="what-is-azure-blob-storage"></a>Azure BLOB Storage とは
 
 [!INCLUDE [storage-blob-concepts-include](../../../includes/storage-blob-concepts-include.md)]
 

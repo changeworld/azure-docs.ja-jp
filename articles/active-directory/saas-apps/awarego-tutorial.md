@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/07/2020
 ms.author: jeedes
-ms.openlocfilehash: 4682396f68d6ff1af0b2fb6a5b1a8419d6963529
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 096315d314555478b993151bd1b562010cb24949
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98735341"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124761279"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-awarego"></a>チュートリアル:Azure Active Directory シングル サインオンと AwareGo の統合
 
@@ -139,7 +139,7 @@ Azure portal で Azure AD SSO を有効にするには、以下を実行しま�
 
 * AwareGo のサインイン ページに直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリに移動します。 マイ アプリで **[AwareGo]** タイルを選択すると、AwareGo サインイン ページにリダイレクトされます。 詳細については、「[マイ アプリ ポータルからアプリにサインインして開始する](../user-help/my-apps-portal-end-user-access.md)」を参照してください。
+* Microsoft マイ アプリに移動します。 マイ アプリで **[AwareGo]** タイルを選択すると、AwareGo サインイン ページにリダイレクトされます。 詳細については、「[マイ アプリ ポータルからアプリにサインインして開始する](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)」を参照してください。
 
 
 ## <a name="next-steps"></a>次の手順

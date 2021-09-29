@@ -3,12 +3,12 @@ title: VMware Site Recovery Manager を使用してディザスター リカバ�
 description: Azure VMware Solution のプライベート クラウドで VMware Site Recovery Manager (SRM) を使用してディザスター リカバリーをデプロイします。
 ms.topic: how-to
 ms.date: 08/18/2021
-ms.openlocfilehash: 7c4f518623801e8cb489452dbeb3be76e1104e62
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: d9a224f0aba33420359d50441fe44e6602df7fb0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122608067"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128668925"
 ---
 # <a name="deploy-disaster-recovery-with-vmware-site-recovery-manager"></a>VMware Site Recovery Manager を使用してディザスター リカバリーをデプロイする
 
@@ -309,7 +309,7 @@ VMware と Microsoft のサポート チームは、Azure VMware Solution での
 - [vSphere Replication 8.3 の運用上の制限](https://docs.vmware.com/en/vSphere-Replication/8.3/com.vmware.vsphere.replication-admin.doc/GUID-E114BAB8-F423-45D4-B029-91A5D551AC47.html)
 - [vSphere Replication の帯域幅の計算](https://docs.vmware.com/en/vSphere-Replication/8.3/com.vmware.vsphere.replication-admin.doc/GUID-4A34D0C9-8CC1-46C4-96FF-3BF7583D3C4F.html)
 - [SRM のインストールと構成](https://docs.vmware.com/en/Site-Recovery-Manager/8.3/com.vmware.srm.install_config.doc/GUID-B3A49FFF-E3B9-45E3-AD35-093D896596A0.html)
-- [vSphere Replication の管理](https://docs.vmware.com/en/vSphere-Replication/8.3/com.vmware.vsphere.replication-admin.doc/GUID-35C0A355-C57B-430B-876E-9D2E6BE4DDBA.html)
+- [vSphere Replication の管理](https://docs.vmware.com/en/vSphere-Replication/8.2/com.vmware.vsphere.replication-admin.doc/GUID-35C0A355-C57B-430B-876E-9D2E6BE4DDBA.html)
 - [SRM のインストールの前提条件とベスト プラクティス](https://docs.vmware.com/en/Site-Recovery-Manager/8.3/com.vmware.srm.install_config.doc/GUID-BB0C03E4-72BE-4C74-96C3-97AC6911B6B8.html)
 - [SRM のネットワーク ポート](https://docs.vmware.com/en/Site-Recovery-Manager/8.3/com.vmware.srm.install_config.doc/GUID-499D3C83-B8FD-4D4C-AE3D-19F518A13C98.html)
 - [vSphere Replication のネットワーク ポート](https://kb.vmware.com/s/article/2087769)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/13/2021
 ms.author: jeedes
-ms.openlocfilehash: e65399c363fe5afc3c233e32b3a1e606ff272f61
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: b14abe793ed2e9e309b68e742ecbd40f25bb09c0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122182984"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124833677"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-grammarly"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Grammarly の統合
 
@@ -135,7 +135,7 @@ Grammarly に対する Azure AD SSO を構成してテストするには、次�
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した Grammarly に自動的にサインインされます。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Grammarly] タイルをクリックすると、SSO を設定した Grammarly に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Grammarly] タイルをクリックすると、SSO を設定した Grammarly に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

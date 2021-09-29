@@ -1,19 +1,19 @@
 ---
 title: インクルード ファイル
 description: インクルード ファイル
-services: storage
-author: twooley
-ms.service: storage
+author: linda33wj
+ms.service: data-factory
+ms.subservice: v1
 ms.topic: include
 ms.date: 11/19/2018
-ms.author: twooley
+ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: d60d3a5d73724c88a08be3c17e3ca5baeefd6ec4
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 6f3af8c4efa31a8d82a6a8e42d3cdcf2b2159b23
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108741439"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128554125"
 ---
 |カテゴリ | データ ストア |  
 | :-------- | :----- |  

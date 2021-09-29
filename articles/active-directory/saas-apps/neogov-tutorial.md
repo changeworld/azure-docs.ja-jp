@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/08/2021
 ms.author: jeedes
-ms.openlocfilehash: ef10672ec6dbe4cd7b646f05daf7ec702c2815de
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 98aa5d76f07da0ac6c5624e28e80a80377f1336a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111890296"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124741524"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-neogov"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と NEOGOV の統合
 
@@ -146,7 +146,7 @@ NEOGOV に対して Azure AD SSO を構成してテストするには、次の�
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した NEOGOV に自動的にサインインされます。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [NEOGOV] タイルをクリックすると、SSO を設定した NEOGOV に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [NEOGOV] タイルをクリックすると、SSO を設定した NEOGOV に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -10,12 +10,12 @@ ms.date: 05/06/2021
 ms.author: santoshc
 ms.reviewer: jiacfan
 ms.subservice: common
-ms.openlocfilehash: 45a0fbac0fbe1bd513717ba1ab1d30b3cffbf78e
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 791e533cc1f0dafa8724faa8cc3a46d1f8c770d7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110065946"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128666005"
 ---
 # <a name="actions-and-attributes-for-azure-role-assignment-conditions-in-azure-storage-preview"></a>Azure Storage 内での Azure のロールの割り当て条件のアクションと属性 (プレビュー)
 
@@ -58,11 +58,11 @@ ms.locfileid: "110065946"
 > | --- | --- | --- |
 > | BLOB を削除する | BLOB を削除するための DataAction。 | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete` |
 > | Read a blob (BLOB を読み取る) | BLOB を読み取るための DataAction。 | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read` |
-> | Read content from a blob with tag conditions (タグ条件を使用して BLOB からコンテンツを読み取る)  | REST 操作: Get Blob、Get Blob Metadata、Get Blob Properties、Get Block List、Get Page Ranges、Query Blob Contents。 | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read`<br/>**サブ操作**<br/>`Blob.Read.WithTagConditions` | 
+> | Read content from a blob with tag conditions (タグ条件を使用して BLOB からコンテンツを読み取る)  | REST 操作: Get Blob、Get Blob Metadata、Get Blob Properties、Get Block List、Get Page Ranges、Query Blob Contents。 | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read`<br/>**サブ操作**<br/>`Blob.Read.WithTagConditions` |
 > | Write to a blob (BLOB に書き込む) | BLOB に書き込むための DataAction。 | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write` |
-> | Write to a blob with blob index tags (BLOB インデックス タグを使用して BLOB に書き込む) | REST 操作: Put Blob、Put Block List、Copy Blob、Copy Blob From URL。 |`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write`<br/>**サブ操作**<br/>`Blob.Write.WithTagHeaders` | 
+> | Write to a blob with blob index tags (BLOB インデックス タグを使用して BLOB に書き込む) | REST 操作: Put Blob、Put Block List、Copy Blob、Copy Blob From URL。 |`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write`<br/>**サブ操作**<br/>`Blob.Write.WithTagHeaders` |
 > | Create a blob or snapshot, or append data (BLOB またはスナップショットを作成するか、データを追加する) | BLOB を作成するための DataAction。 | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/add/action` |
-> | Write content to a blob with blob index tags (BLOB インデックス タグを使用して BLOB にコンテンツを書き込む) | REST 操作: Put Blob、Put Block List、Copy Blob、Copy Blob From URL。 | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/add/action`<br/>**サブ操作**<br/>`Blob.Write.WithTagHeaders` | 
+> | Write content to a blob with blob index tags (BLOB インデックス タグを使用して BLOB にコンテンツを書き込む) | REST 操作: Put Blob、Put Block List、Copy Blob、Copy Blob From URL。 | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/add/action`<br/>**サブ操作**<br/>`Blob.Write.WithTagHeaders` |
 > | Delete a version of a blob (BLOB のバージョンを削除する) | BLOB のバージョンを削除するための DataAction。 | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/deleteBlobVersion/action` |
 > | Changes ownership of a blob (BLOB の所有権を変更する) | BLOB の所有権を変更するための DataAction。 | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/manageOwnership/action` |
 > | Modify permissions of a blob (BLOB のアクセス許可を変更する) | BLOB のアクセス許可を変更するための DataAction。 | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/modifyPermissions/action` |
@@ -141,4 +141,3 @@ ms.locfileid: "110065946"
 - [Azure ロールの割り当て条件の例 (プレビュー)](storage-auth-abac-examples.md)
 - [Azure ロールの割り当て条件の形式と構文 (プレビュー)](../../role-based-access-control/conditions-format.md)
 - [Azure の属性ベースのアクセス制御 (Azure ABAC) とは (プレビュー)](../../role-based-access-control/conditions-overview.md)
-

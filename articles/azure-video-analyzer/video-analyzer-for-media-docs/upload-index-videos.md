@@ -1,20 +1,15 @@
 ---
 title: Azure Video Analyzer for Media (旧称 Video Indexer) を使用してビデオのアップロードとインデックスの作成を行う
-titleSuffix: Azure Video Analyzer for Media
 description: このトピックでは、Azure Video Analyzer for Media (旧称 Video Indexer) で API を使用して、ビデオのアップロードとインデックスの作成を行う方法を示します。
-author: Juliako
-manager: femila
 ms.service: azure-video-analyzer
 ms.topic: article
-ms.subservice: azure-video-analyzer-media
 ms.date: 05/12/2021
-ms.author: juliako
-ms.openlocfilehash: ce8804d1f057bc8f67331211c7ed4b734750aa19
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: 4020050cdcc1f9910ab14117b45bb007f5915dca
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112119079"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128658775"
 ---
 # <a name="upload-and-index-your-videos"></a>ビデオのアップロードとインデックス作成  
 
@@ -353,7 +348,7 @@ public class AccountContractSlim
 
 ## <a name="firewall"></a>ファイアウォール
 
-[ファイアウォールの内側にあるストレージ アカウント](faq.md#can-a-storage-account-connected-to-the-media-services-account-be-behind-a-firewall)に関する記事を参照してください。
+[ファイアウォールの内側にあるストレージ アカウント](faq.yml#can-a-storage-account-connected-to-the-media-services-account-be-behind-a-firewall)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 07/05/2021
 ms.author: jianleishen
-ms.openlocfilehash: 227bbaf2faa845d269d8326883c3e63c4572fdab
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7aee146ea06e15696b1e52e701d8d32b476d0570
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122637743"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124798334"
 ---
 # <a name="copy-data-securely-from-azure-blob-storage-to-a-sql-database-by-using-private-endpoints"></a>プライベート エンドポイントを使用して Azure Blob Storage から SQL データベースに安全にデータをコピーする
 
@@ -102,14 +102,14 @@ CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
 
 1. Data Factory ポータルで、 **[管理]** に移動し、 **[新規]** を選択して新しい Azure 統合ランタイムを作成します。
 
-   ![新しい Azure 統合ランタイムの作成を示すスクリーンショット。](./media/tutorial-copy-data-portal-private/create-new-azure-ir.png)
+   :::image type="content" source="./media/tutorial-copy-data-portal-private/create-new-azure-ir.png" alt-text="新しい Azure 統合ランタイムの作成を示すスクリーンショット。":::
 1. **[Integration runtime setup]\(統合ランタイムのセットアップ\)** ページで、必要な機能に基づいて作成する統合ランタイムを選択します。 このチュートリアルでは、 **[Azure、セルフホステッド]** を選択し、 **[続行]** をクリックします。 
-1. **[Azure]** を選択し、 **[続行]** をクリックして、Azure Integration Runtime を作成します。
+1. **[Azure]** を選択し、 **[続行]** をクリックして、Azure Integration ランタイムを作成します。
 
-   ![新しい Azure 統合ランタイムを示すスクリーンショット。](./media/tutorial-copy-data-portal-private/azure-ir.png)
+   :::image type="content" source="./media/tutorial-copy-data-portal-private/azure-ir.png" alt-text="新しい Azure 統合ランタイムを示すスクリーンショット。":::
 1. **[仮想ネットワークの構成 (プレビュー)]** で、 **[有効化]** を選択します。
 
-   ![新しい Azure 統合ランタイムの有効化を示すスクリーンショット。](./media/tutorial-copy-data-portal-private/enable-managed-vnet.png)
+   :::image type="content" source="./media/tutorial-copy-data-portal-private/enable-managed-vnet.png" alt-text="新しい Azure 統合ランタイムの有効化を示すスクリーンショット。":::
 1. **［作成］** を選択します
 
 ## <a name="create-a-pipeline"></a>パイプラインを作成する
@@ -123,12 +123,12 @@ CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
 
 1. ホーム ページで **[調整]** を選択します。
 
-   ![ADF ホームページのスクリーンショット。](./media/doc-common-process/get-started-page.png)
+   :::image type="content" source="./media/doc-common-process/get-started-page.png" alt-text="ADF ホームページのスクリーンショット。":::
 1. パイプラインの [プロパティ] ペインで、パイプライン名として「**CopyPipeline**」と入力します。
 
 1. **[アクティビティ]** ツール ボックスで **[Move and Transform]\(移動と変換\)** カテゴリを展開し、ツール ボックスからパイプライン デザイナー画面に **[データのコピー]** アクティビティをドラッグします。 名前に「**CopyFromBlobToSql**」と入力します。
 
-    ![コピー アクティビティを示すスクリーン ショット。](./media/tutorial-copy-data-portal-private/drag-drop-copy-activity.png)
+    :::image type="content" source="./media/tutorial-copy-data-portal-private/drag-drop-copy-activity.png" alt-text="コピー アクティビティを示すスクリーン ショット。":::
 
 ### <a name="configure-a-source"></a>ソースを構成する
 
@@ -151,7 +151,7 @@ CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
 
 1. **[Interactive authoring]\(インタラクティブな作成\)** を必ず有効にしてください。 これは有効になるまでに 1 分程かかる場合があります。
 
-    ![インタラクティブな作成を示すスクリーンショット。](./media/tutorial-copy-data-portal-private/interactive-authoring.png)
+    :::image type="content" source="./media/tutorial-copy-data-portal-private/interactive-authoring.png" alt-text="インタラクティブな作成を示すスクリーンショット。":::
 
 1. **[接続テスト]** を選択します。 これは、ストレージ アカウントが、**選択したネットワーク** からのアクセスのみを許可していて、Data Factory に、使用する前に承認が必要なプライベート エンドポイントの作成を要求する場合、失敗します。 エラー メッセージ内に、プライベート エンドポイントを作成するためのリンクが表示されます。それをたどることで、マネージド プライベート エンドポイントを作成できます。 代わりに、 **[管理]** タブに直接移動し、[次のセクション](#create-a-managed-private-endpoint)の指示に従って、マネージド プライベート エンドポイントを作成する方法もあります。
 
@@ -169,7 +169,7 @@ CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
 
 1. **[OK]** を選択します。 自動的にパイプライン ページに移動します。 **[ソース]** タブで、 **[SourceBlobDataset]** が選択されていることを確認します。 このページのデータをプレビューするには、 **[データのプレビュー]** を選択します。
 
-    ![ソース データセットを示すスクリーンショット。](./media/tutorial-copy-data-portal-private/source-dataset-selected.png)
+    :::image type="content" source="./media/tutorial-copy-data-portal-private/source-dataset-selected.png" alt-text="ソース データセットを示すスクリーンショット。":::
 
 #### <a name="create-a-managed-private-endpoint"></a>マネージド プライベート エンドポイントを作成する
 
@@ -184,7 +184,7 @@ CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
 
 1. **[マネージド プライベート エンドポイント]** で、 **[+ 新規]** を選択します。
 
-    ![[マネージド プライベート エンドポイント] の [新規] ボタンを示すスクリーンショット。](./media/tutorial-copy-data-portal-private/new-managed-private-endpoint.png) 
+    :::image type="content" source="./media/tutorial-copy-data-portal-private/new-managed-private-endpoint.png" alt-text="[マネージド プライベート エンドポイント] の [新規] ボタンを示すスクリーンショット。"::: 
 
 1. 一覧から **[Azure Blob Storage]** タイルを選択し、 **[続行]** を選択します。
 
@@ -196,14 +196,14 @@ CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
 
 1. 作成したプライベート エンドポイントを選択します。 ストレージ アカウント レベルでプライベート エンドポイントを承認できるハイパーリンクが表示されます。
 
-    ![[マネージド プライベート エンドポイント] ペインを示すスクリーンショット。](./media/tutorial-copy-data-portal-private/manage-private-endpoint.png) 
+    :::image type="content" source="./media/tutorial-copy-data-portal-private/manage-private-endpoint.png" alt-text="[マネージド プライベート エンドポイント] ペインを示すスクリーンショット。"::: 
 
 #### <a name="approval-of-a-private-link-in-a-storage-account"></a>ストレージ アカウントでプライベート リンクを承認する
 1. ストレージ アカウントで、 **[設定]** セクションの **[プライベート エンドポイント接続]** に移動します。
 
 1. 作成したプライベート エンドポイントのチェック ボックスをオンにし、 **[承認]** を選択します。
 
-    ![プライベート エンドポイントの [承認] ボタンを示すスクリーンショット。](./media/tutorial-copy-data-portal-private/approve-private-endpoint.png)
+    :::image type="content" source="./media/tutorial-copy-data-portal-private/approve-private-endpoint.png" alt-text="プライベート エンドポイントの [承認] ボタンを示すスクリーンショット。":::
 
 1. 説明を追加し、 **[はい]** を選択します。
 1. Data Factory の **[管理]** タブにある **[マネージド プライベート エンドポイント]** セクションに戻ります。
@@ -240,7 +240,7 @@ CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
 
 1. パイプラインがあるタブに移動し、 **[シンク データセット]** で **OutputSqlDataset** が選択されていることを確認します。
 
-    ![[パイプライン] タブを示すスクリーンショット。](./media/tutorial-copy-data-portal-private/pipeline-tab-2.png)
+    :::image type="content" source="./media/tutorial-copy-data-portal-private/pipeline-tab-2.png" alt-text="[パイプライン] タブを示すスクリーンショット。":::
 
 必要に応じて「[コピー アクティビティでのスキーマ マッピング](./copy-activity-schema-and-type-mapping.md)」に従い、コピー元のスキーマをコピー先の対応するスキーマにマッピングすることができます。
 
@@ -252,7 +252,7 @@ CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
 1. **[マネージド プライベート エンドポイント]** セクションに移動します。
 1. **[マネージド プライベート エンドポイント]** で、 **[+ 新規]** を選択します。
 
-    ![[マネージド プライベート エンドポイント] の [新規] ボタンを示すスクリーンショット。](./media/tutorial-copy-data-portal-private/new-managed-private-endpoint.png) 
+    :::image type="content" source="./media/tutorial-copy-data-portal-private/new-managed-private-endpoint.png" alt-text="[マネージド プライベート エンドポイント] の [新規] ボタンを示すスクリーンショット。"::: 
 
 1. 一覧から **[Azure SQL Database]** タイルを選択し、 **[続行]** を選択します。
 1. 選択した SQL サーバーの名前を入力します。

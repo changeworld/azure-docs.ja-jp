@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3fd16df2d8f1dfff4f5a7bd1075a63cf9b0ec78b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 1fc542d019e34848cd5fb907892b487f25383075
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121732388"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124773856"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-ad-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Azure のネットワーク ポリシー サーバー拡張機能を使用して VPN インフラストラクチャを Azure AD MFA と統合する
 
@@ -301,7 +301,7 @@ NPS ロールがメンバー サーバーにインストールされている場
 
 ## <a name="configure-multi-factor-authentication"></a>Multi-Factor Authentication の構成
 
-ユーザーに Multi-Factor Authentication を構成する方法については、「[クラウドベースの Azure AD Multi-Factor Authentication のデプロイの計画](howto-mfa-getstarted.md#plan-conditional-access-policies)」および「[アカウントへの 2 段階認証の設定](../user-help/multi-factor-authentication-end-user-first-time.md)」を参照してください
+ユーザーに Multi-Factor Authentication を構成する方法については、「[クラウドベースの Azure AD Multi-Factor Authentication のデプロイの計画](howto-mfa-getstarted.md#plan-conditional-access-policies)」および「[アカウントへの 2 段階認証の設定](https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc)」を参照してください
 
 ## <a name="install-and-configure-the-nps-extension"></a>NPS 拡張機能のインストールと構成
 

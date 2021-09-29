@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: c1fa9d27bbdfe91eebb74186e69cf707166384fd
-ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
+ms.openlocfilehash: 197b04a659ff2635742907339ba9b48e00668cff
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122228620"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124732748"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Azure Active Directory の認証管理の運用リファレンス ガイド
 
@@ -89,7 +89,7 @@ Azure Active Directory を管理するには、ロールアウト プロジェ�
 
 ### <a name="strong-credential-management"></a>強力な資格情報の管理
 
-パスワード自体は、悪意のあるユーザーによる環境へのアクセスを阻止できるほど安全ではありません。 少なくとも、特権アカウントを持つすべてのユーザーが、多要素認証 (MFA) を有効にする必要があります。 理想的には、[統合された登録](../authentication/concept-registration-mfa-sspr-combined.md)を有効にし、すべてのユーザーに対して、[統合された登録エクスペリエンス](../user-help/security-info-setup-signin.md)を使用して MFA と SSPR に登録するように要求する必要があります。 最終的には、予期しない状況によるロックアウトのリスクを軽減するために、[回復性を提供する](../authentication/concept-resilient-controls.md)戦略を採用することをお勧めします。
+パスワード自体は、悪意のあるユーザーによる環境へのアクセスを阻止できるほど安全ではありません。 少なくとも、特権アカウントを持つすべてのユーザーが、多要素認証 (MFA) を有効にする必要があります。 理想的には、[統合された登録](../authentication/concept-registration-mfa-sspr-combined.md)を有効にし、すべてのユーザーに対して、[統合された登録エクスペリエンス](https://support.microsoft.com/account-billing/set-up-your-security-info-from-a-sign-in-prompt-28180870-c256-4ebf-8bd7-5335571bf9a8)を使用して MFA と SSPR に登録するように要求する必要があります。 最終的には、予期しない状況によるロックアウトのリスクを軽減するために、[回復性を提供する](../authentication/concept-resilient-controls.md)戦略を採用することをお勧めします。
 
 ![統合されたユーザー エクスペリエンスのフロー](./media/active-directory-ops-guide/active-directory-ops-img4.png)
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/25/2021
 ms.author: jeedes
-ms.openlocfilehash: f3fbab143fd330e017e9e51c74a403d9bfb687ff
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 472bf22c723bbbf08d97ca95fd595e1559879714
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110455659"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124808249"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-signalfx"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と SignalFx の統合
 
@@ -146,7 +146,7 @@ SSO のテスト方法および SignalFx への初回ログインに対する期
 
 * 新しいテスト ユーザーが初めてログインすると、Azure によってパスワードの変更が強制されます。 この場合は SSO ログイン プロセスが完了しないため、テスト ユーザーには Azure portal が表示されます。 トラブルシューティングを行うには、テスト ユーザーはパスワードを変更し、SignalFx のログイン ページまたはマイ アプリに移動して再試行する必要があります。
     * マイ アプリで [SignalFx] タイルをクリックすると、自動的に SignalFx にログインします。 
-        * マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+        * マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 * SignalFx アプリケーションには、マイ アプリから、または組織に割り当てられたカスタム ログイン ページを介してアクセスできます。 テスト ユーザーは、そのいずれかの場所から統合をテストする必要があります。
     * テスト ユーザーは、先ほどこのプロセスで作成された、**b.simon\@contoso.com** の資格情報を使用できます。

@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a2906145e135f1b2e683ed757efde07ce1d5dd65
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 48aeee9dfacad1812bb2044327342b25f63356e0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114296575"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124771519"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>Key Vault を Azure Private Link と統合する
 
@@ -164,7 +164,7 @@ az keyvault private-endpoint-connection delete --resource-group {RG} --vault-nam
 az network private-endpoint show -g {RG} -n {PE NAME}      # look for the property networkInterfaces then id; the value must be placed on {PE NIC} below.
 az network nic show --ids {PE NIC}                         # look for the property ipConfigurations then privateIpAddress; the value must be placed on {NIC IP} below.
 
-# https://docs.microsoft.com/en-us/azure/dns/private-dns-getstarted-cli#create-an-additional-dns-record
+# https://docs.microsoft.com/azure/dns/private-dns-getstarted-cli#create-an-additional-dns-record
 az network private-dns zone list -g {RG}
 az network private-dns record-set a add-record -g {RG} -z "privatelink.vaultcore.azure.net" -n {KEY VAULT NAME} -a {NIC IP}
 az network private-dns record-set list -g {RG} -z "privatelink.vaultcore.azure.net"

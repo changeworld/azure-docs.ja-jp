@@ -12,12 +12,12 @@ ms.date: 02/05/2021
 ms.author: davidmu
 ms.reviewer: alamaral
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f8ee443f12ce4c28e5bb883be686a4610eeec38
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 2ef33a1fa80e443a51583551f2ec3ceb65da3f88
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122768906"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124791652"
 ---
 # <a name="migrate-application-authentication-to-azure-active-directory"></a>アプリケーション認証を Azure Active Directory に移行する
 
@@ -503,7 +503,7 @@ Azure AD でサポートされているアプリとリソースのユーザー�
 | ------------------------ | --------------------------------------------------- |
 | **OAuth/OpenID Connect** | **[エンタープライズ アプリケーション] &gt; [アクセス許可]** の順に選択し、アプリのユーザー設定において組織内で使用されるアプリケーションに確実に同意しているようにします。 |
 | **SAML ベースの SSO** | **[シングル サインオン]** の下にある [[SAML 設定のテスト]](./debug-saml-sso-issues.md) ボタンを使用します。 |
-| **パスワードベースの SSO** | [マイ アプリによるセキュリティで保護されたサインイン拡張機能](../user-help/my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension)をダウンロードしてインストールします。 この拡張機能は、SSO プロセスを使用する必要がある組織の任意のクラウド アプリを開始する場合に役立ちます。 |
+| **パスワードベースの SSO** | [マイ アプリによるセキュリティで保護されたサインイン拡張機能](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510#download-and-install-the-my-apps-secure-sign-in-extension)をダウンロードしてインストールします。 この拡張機能は、SSO プロセスを使用する必要がある組織の任意のクラウド アプリを開始する場合に役立ちます。 |
 
 |  **[アプリケーション プロキシ](../app-proxy/application-proxy.md)** | コネクタが実行されていて、アプリケーションに割り当てられていることを確認します。 詳細については、[アプリケーション プロキシのトラブルシューティング ガイド](../app-proxy/application-proxy-troubleshoot.md)に関する記事をご覧ください。 |
 
@@ -553,7 +553,7 @@ Azure AD でサポートされているアプリとリソースのユーザー�
 
 **アプリを検出できるようにする**
 
-[MyApps](../user-help/my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension) ポータル エクスペリエンスを **ユーザーに示します**。 ここで、すべてのクラウドベースのアプリ、[Azure AD Connect](../hybrid/whatis-azure-ad-connect.md) を使用して利用できるアプリ、およびこれらのアプリにアクセスする権限がある場合は[アプリケーション プロキシ](../app-proxy/application-proxy.md)を使用しているアプリにアクセスできます。
+[MyApps](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510#download-and-install-the-my-apps-secure-sign-in-extension) ポータル エクスペリエンスを **ユーザーに示します**。 ここで、すべてのクラウドベースのアプリ、[Azure AD Connect](../hybrid/whatis-azure-ad-connect.md) を使用して利用できるアプリ、およびこれらのアプリにアクセスする権限がある場合は[アプリケーション プロキシ](../app-proxy/application-proxy.md)を使用しているアプリにアクセスできます。
 
 次のようにして、ユーザーにアプリを検出する方法を説明できます。
 

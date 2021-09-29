@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: harshja
-ms.openlocfilehash: d635d0c87cb6f759c15461abe9efc9dd42297ddb
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: fbeadc3a8c947f673ca134e0daf8a0a1c1d68b80
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111964899"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124787511"
 ---
 # <a name="set-a-custom-home-page-for-published-apps-by-using-azure-active-directory-application-proxy"></a>Azure Active Directory アプリケーション プロキシを利用し、発行されたアプリのカスタム ホーム ページを設定する
 
@@ -32,7 +32,7 @@ ms.locfileid: "111964899"
 - 代わりに `https://ExpenseApp-contoso.msappproxy.net/login/login.aspx` をホーム ページ URL として設定します。それにより、外部ユーザーに対しては最初にサインインページが表示されます。
 
 > [!NOTE]
-> 発行されたアプリにユーザーがアクセスできるようにすると、[マイ アプリ](../user-help/my-apps-portal-end-user-access.md)と [Office 365 アプリ起動ツール](https://www.microsoft.com/microsoft-365/blog/2016/09/27/introducing-the-new-office-365-app-launcher/)にアプリが表示されます。
+> 発行されたアプリにユーザーがアクセスできるようにすると、[マイ アプリ](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)と [Office 365 アプリ起動ツール](https://www.microsoft.com/microsoft-365/blog/2016/09/27/introducing-the-new-office-365-app-launcher/)にアプリが表示されます。
 
 ## <a name="before-you-start"></a>開始する前に
 

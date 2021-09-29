@@ -1,19 +1,19 @@
 ---
 title: Java を使用した Azure Storage サンプル | Microsoft Docs
 description: Azure Storage のサンプル コードとアプリケーションを表示、ダウンロード、実行します。 Java のストレージ クライアント ライブラリを使用して、BLOB、キュー、テーブル、ファイルのサンプルの概要について説明します。
-author: twooley
+author: normesta
 ms.custom: devx-track-java
-ms.author: twooley
+ms.author: normesta
 ms.date: 10/01/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: 3a6a68a150bd474f40ffb1610ed7a310e4f30de9
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 0d5a6c98e990bdc87fbe3dcb26cfe4710b3af099
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106276639"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128588658"
 ---
 # <a name="azure-storage-samples-using-v12-java-client-libraries"></a>v12 Java クライアント ライブラリを使用した Azure Storage サンプル
 
@@ -111,6 +111,7 @@ ms.locfileid: "106276639"
 :::row-end:::
 
 ### <a name="troubleshooting"></a>トラブルシューティング
+
 :::row:::
    :::column span="2":::
       [コンテナー クライアントを使用して回復可能なエラーをトリガーする](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob/StorageErrorHandlingExample.java#L11)
@@ -120,6 +121,7 @@ ms.locfileid: "106276639"
 ## <a name="data-lake-storage-gen2-samples"></a>Data Lake Storage Gen2 のサンプル
 
 ### <a name="data-lake-service"></a>Data Lake サービス
+
 :::row:::
    :::column span="":::
       [Data Lake サービス クライアントを作成する](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/BasicExample.java#L48)
@@ -130,6 +132,7 @@ ms.locfileid: "106276639"
 :::row-end:::
 
 ### <a name="file-system"></a>ファイル システム
+
 :::row:::
    :::column span="":::
       [ファイル システムを作成する](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/BasicExample.java#L64)
@@ -210,7 +213,6 @@ ms.locfileid: "106276639"
       [ファイルに対するアクセスの制御を取得する](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake/GetSetAccessControlExample.java#L104)
    :::column-end:::
 :::row-end:::
-
 
 ## <a name="azure-file-samples"></a>Azure File のサンプル
 
@@ -324,7 +326,6 @@ ms.locfileid: "106276639"
    :::column-end:::
 :::row-end:::
 
-
 ## <a name="queue-samples"></a>キューのサンプル
 
 ### <a name="authentication"></a>認証
@@ -430,10 +431,10 @@ ms.locfileid: "106276639"
 
 完全な Java サンプル ライブラリをご覧いただくには、次のページにアクセスしてください。
 
-* [Azure BLOB のコード サンプル](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob)
-* [Azure Data Lake のコード サンプル](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake)
-* [Azure Files のコード サンプル](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share)
-* [Azure Queue のコード サンプル](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue)
+- [Azure BLOB のコード サンプル](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob)
+- [Azure Data Lake のコード サンプル](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake/src/samples/java/com/azure/storage/file/datalake)
+- [Azure Files のコード サンプル](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-share/src/samples/java/com/azure/storage/file/share)
+- [Azure Queue のコード サンプル](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue)
 
 各ライブラリの GitHub リポジトリを参照してクローンすることができます。
 
@@ -441,17 +442,17 @@ ms.locfileid: "106276639"
 
 Azure Storage ライブラリのインストール方法と概要については、以下のガイドをご覧ください。
 
-* [Java での Azure Blob service の概要](../blobs/storage-quickstart-blobs-java.md)
-* [Java での Azure Queue サービスの概要](../queues/storage-quickstart-queues-java.md)
-* [Java での Azure Table service の概要](../../cosmos-db/table-storage-how-to-use-java.md)
-* [Java での Azure File サービスの概要](../files/storage-java-how-to-use-file-storage.md)
+- [Java での Azure Blob service の概要](../blobs/storage-quickstart-blobs-java.md)
+- [Java での Azure Queue サービスの概要](../queues/storage-quickstart-queues-java.md)
+- [Java での Azure Table service の概要](../../cosmos-db/table-storage-how-to-use-java.md)
+- [Java での Azure File サービスの概要](../files/storage-java-how-to-use-file-storage.md)
 
 ## <a name="next-steps"></a>次のステップ
 
 他の言語のサンプルについては、以下のページをご覧ください。
 
-* .NET:[.NET を使用した Azure Storage サンプル](storage-samples-dotnet.md)
-* Python: [Python を使用した Azure Storage サンプル](storage-samples-python.md)
-* JavaScript/Node.js: [JavaScript を使用した Azure Storage サンプル](storage-samples-javascript.md)
-* C++: [C++ を使用した Azure Storage サンプル](storage-samples-c-plus-plus.md)
-* その他すべての言語: [Azure Storage のサンプル](storage-samples.md)
+- .NET:[.NET を使用した Azure Storage サンプル](storage-samples-dotnet.md)
+- Python: [Python を使用した Azure Storage サンプル](storage-samples-python.md)
+- JavaScript/Node.js: [JavaScript を使用した Azure Storage サンプル](storage-samples-javascript.md)
+- C++: [C++ を使用した Azure Storage サンプル](storage-samples-c-plus-plus.md)
+- その他すべての言語: [Azure Storage のサンプル](storage-samples.md)

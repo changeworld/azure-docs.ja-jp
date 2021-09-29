@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 3f5bd22619e49246583d8b9fc4e62ad8ab266993
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d97df947309f9ccc9886e45878cfc91ea6423b23
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100656379"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128590368"
 ---
 # <a name="use-azure-storage-explorer-to-manage-acls-in-azure-data-lake-storage-gen2"></a>Azure Storage Explorer を使用して Azure Data Lake Storage Gen2 での ACL を管理する
 
 この記事では、[Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) を使用して、階層型名前空間 (HNS) が有効になっているストレージ アカウントでアクセス制御リスト (ACL) を管理する方法を説明します。
 
-Storage Explorer を使用して、ディレクトリとファイルの ACL を表示して更新することができます。 ACL の継承は、親ディレクトリの下に作成された新しい子項目に対して既に利用可能です。 ただし、親ディレクトリの既存の子項目に対して ACL 設定を再帰的に適用することもできます。各子項目に対してこれらの変更を個別に行う必要はありません。 
+Storage Explorer を使用して、ディレクトリとファイルの ACL を表示して更新することができます。 ACL の継承は、親ディレクトリの下に作成された新しい子項目に対して既に利用可能です。 ただし、親ディレクトリの既存の子項目に対して ACL 設定を再帰的に適用することもできます。各子項目に対してこれらの変更を個別に行う必要はありません。
 
 この記事では、ファイルまたはディレクトリの ACL を変更する方法と、ACL 設定を子ディレクトリに再帰的に適用する方法について説明します。
 
@@ -46,11 +46,11 @@ Storage Explorer を初めて起動すると、 **[Microsoft Azure Storage Explo
 
 **[Add an Azure Account\(Azure アカウントの追加\)]** を選択し、 **[サインイン]** をクリックします。画面上のプロンプトに従って Azure アカウントにサインインします。
 
-![Microsoft Azure Storage Explorer を示すスクリーンショット。[Azure アカウントの追加] オプションと [サインイン] ボタンが強調表示されています。](media/storage-quickstart-blobs-storage-explorer/connect.png)
+![Microsoft Azure Storage Explorer を示すスクリーンショット。[Azure アカウントの追加] オプションと [サインイン] ボタンが強調表示されています。](media/quickstart-storage-explorer/storage-explorer-connect.png)
 
-接続が完了すると、Azure Storage Explorer が読み込まれて **[Explorer]** タブが表示されます。 このビューには、すべての Azure ストレージ アカウント、[Azure ストレージ エミュレーター](../common/storage-use-azurite.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)、[Cosmos DB](../../cosmos-db/storage-explorer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) アカウント、または [Azure Stack](/azure-stack/user/azure-stack-storage-connect-se?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 環境を使用して構成されたおよびローカル ストレージの分析情報が表示されます。
+接続が完了すると、Azure Storage Explorer が読み込まれて **[Explorer]** タブが表示されます。 このビューには、すべての Azure ストレージ アカウント、[Azure Storage Emulator](../common/storage-use-azurite.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)、[Cosmos DB](../../cosmos-db/storage-explorer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) アカウント、または [Azure Stack](/azure-stack/user/azure-stack-storage-connect-se?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 環境を使用して構成されたおよびローカル ストレージの分析情報が表示されます。
 
-![[Microsoft Azure Storage Explorer - 接続] ウィンドウ](media/storage-quickstart-blobs-storage-explorer/mainpage.png)
+![[Microsoft Azure Storage Explorer - 接続] ウィンドウ](media/quickstart-storage-explorer/storage-explorer-main-page.png)
 
 ## <a name="manage-an-acl"></a>ACL を管理する
 

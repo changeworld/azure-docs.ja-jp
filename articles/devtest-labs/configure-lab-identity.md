@@ -1,14 +1,14 @@
 ---
-title: Azure DevTest Labs でラボ ID を構成する
+title: ラボ ID を構成する
 description: Azure DevTest でラボ ID を構成する方法について説明します。
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/20/2020
-ms.openlocfilehash: a652eb5751f9b723911a1c1baaaaf9860febc5b6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3cc14d87cfea331d8a11e09071005c23be942405
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88719575"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128638731"
 ---
 # <a name="configure-a-lab-identity"></a>ラボ ID を構成する
 

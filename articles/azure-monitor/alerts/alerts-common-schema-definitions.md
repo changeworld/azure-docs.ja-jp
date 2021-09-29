@@ -4,12 +4,12 @@ description: Azure Monitor の共通アラート スキーマ定義について
 author: ofirmanor
 ms.topic: conceptual
 ms.date: 07/20/2021
-ms.openlocfilehash: 165753b293d73d89865710074ad11869c6e1aa6b
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 784106dab7b95f63957abe1de44dfbf5734dd5f4
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114440707"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124744490"
 ---
 # <a name="common-alert-schema-definitions"></a>共通アラート スキーマ定義
 
@@ -313,7 +313,7 @@ ms.locfileid: "114440707"
     "LinkToFilteredSearchResultsAPI": "https://api.applicationinsights.io/v1/apps/0MyAppId0/metrics/requests/count",
     "SearchIntervalDurationMin": "15",
     "SearchIntervalInMinutes": "15",
-    "Threshold": 10000,
+    "Threshold": 10000.0,
     "Operator": "Less Than",
     "ApplicationId": "8e20151d-75b2-4d66-b965-153fb69d65a6",
     "Dimensions": [

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: jeedes
-ms.openlocfilehash: a674f5f653ad420ab8f28ff73c6b86f9c18b154e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d7b2f01a9e90ca8a29b6ecbfc380cb138a3ad073
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92517754"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124800481"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-trelica"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Trelica の統合
 
@@ -138,7 +138,7 @@ Trelica では、Just-In-Time ユーザー プロビジョニングがサポー�
 
 このセクションでは、マイ アプリ ポータルを使用して自分の Azure AD のシングル サインオン構成をテストします。
 
-マイ アプリ ポータルで [Trelica] タイルを選択すると、SSO を設定した Trelica に自動的にサインインします。 マイ アプリ ポータルの詳細については、[マイ アプリ ポータルの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+マイ アプリ ポータルで [Trelica] タイルを選択すると、SSO を設定した Trelica に自動的にサインインします。 マイ アプリ ポータルの詳細については、[マイ アプリ ポータルの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

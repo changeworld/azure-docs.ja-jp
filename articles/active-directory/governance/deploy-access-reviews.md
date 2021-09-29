@@ -16,12 +16,12 @@ ms.date: 04/16/2021
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9acbe5d7b57906c894021ec4e4f83633433b3c3b
-ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
+ms.openlocfilehash: f5974f8d3f94d16a27c77c81837d7c430ee48b26
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122228617"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124817916"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>Azure Active Directory アクセス レビューのデプロイの計画
 
@@ -439,9 +439,9 @@ Azure AD と統合されたリソースのアクセスをレビューする戦�
 
 | ハウツー記事 | 説明 |
 | - | - |
- [アクセス レビューの作成](../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| PIM で Azure AD の特権ロールのアクセス レビューを作成します |
-| [アクセスの自己レビュー](../privileged-identity-management/pim-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| 管理者ロールが割り当てられている場合に、ロールへのアクセスを承認または拒否します |
-| [アクセス レビューの完了](../privileged-identity-management/pim-how-to-complete-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| アクセス レビューを表示して結果を適用します |
+ [アクセス レビューの作成](../privileged-identity-management/pim-create-azure-ad-roles-and-resource-roles-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| PIM で Azure AD の特権ロールのアクセス レビューを作成します |
+| [アクセスの自己レビュー](../privileged-identity-management/pim-perform-azure-ad-roles-and-resource-roles-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| 管理者ロールが割り当てられている場合に、ロールへのアクセスを承認または拒否します |
+| [アクセス レビューの完了](../privileged-identity-management/pim-complete-azure-ad-roles-and-resource-roles-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| アクセス レビューを表示して結果を適用します |
 
 
 ### <a name="review-azure-resource-roles"></a>Azure リソースのロールのレビュー
@@ -454,9 +454,9 @@ Azure AD と統合されたリソースのアクセスをレビューする戦�
 
 | ハウツー記事| 説明 |
 | - | -|
-| [アクセス レビューの作成](../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| PIM で Azure リソースの特権ロールのアクセス レビューを作成します |
-| [アクセスの自己レビュー](../privileged-identity-management/pim-resource-roles-perform-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| 管理者ロールが割り当てられている場合に、ロールへのアクセスを承認または拒否します |
-| [アクセス レビューの完了](../privileged-identity-management/pim-resource-roles-complete-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| アクセス レビューを表示して結果を適用します |
+| [アクセス レビューの作成](../privileged-identity-management/pim-create-azure-ad-roles-and-resource-roles-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| PIM で Azure リソースの特権ロールのアクセス レビューを作成します |
+| [アクセスの自己レビュー](../privileged-identity-management/pim-perform-azure-ad-roles-and-resource-roles-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| 管理者ロールが割り当てられている場合に、ロールへのアクセスを承認または拒否します |
+| [アクセス レビューの完了](../privileged-identity-management/pim-complete-azure-ad-roles-and-resource-roles-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| アクセス レビューを表示して結果を適用します |
 
 
 ## <a name="use-the-access-reviews-api"></a>アクセス レビュー API の使用

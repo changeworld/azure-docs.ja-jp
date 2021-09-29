@@ -4,12 +4,12 @@ description: この記事では、REST API を使用して Azure 仮想マシン
 ms.topic: conceptual
 ms.date: 08/26/2021
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: f82adee9690c0114fef17640672c7326cffc8481
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 0aa66b5c853faf26320510b3fe78ac71cd9d8afc
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122966078"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124820341"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>REST API を使用して Azure 仮想マシンを復元する
 
@@ -31,7 +31,7 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 ### <a name="responses"></a>Responses
 
-|名前  |型  |説明  |
+|名前  |種類  |説明  |
 |---------|---------|---------|
 |200 OK     |   [RecoveryPointResourceList](/rest/api/backup/recovery-points/list#recoverypointresourcelist)      |       [OK]  |
 
@@ -144,7 +144,7 @@ POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/
 
 これにより、2 つの応答が返されます。別の操作が作成されたときは 202 (Accepted)、その操作が完了したときは 200 (OK) です。
 
-|名前  |Type  |説明  |
+|名前  |種類  |説明  |
 |---------|---------|---------|
 |202 Accepted     |         |     承認済み    |
 
@@ -216,7 +216,7 @@ X-Powered-By: ASP.NET
 
 Azure VM バックアップからのディスクの復元をトリガーする場合、要求本文のコンポーネントは次のとおりです。
 
-|名前  |Type  |説明  |
+|名前  |種類  |説明  |
 |---------|---------|---------|
 |properties     | [IaaSVMRestoreRequest](/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
 
@@ -278,7 +278,7 @@ Azure VM バックアップからのディスクの復元をトリガーする�
 
 Azure VM バックアップからのディスク交換をトリガーする場合、要求本文のコンポーネントは次のとおりです。
 
-|名前  |Type  |説明  |
+|名前  |種類  |説明  |
 |---------|---------|---------|
 |properties     | [IaaSVMRestoreRequest](/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
 
@@ -361,7 +361,7 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 #### <a name="responses"></a>Responses
 
-|名前  |型  |説明  |
+|名前  |種類  |説明  |
 |---------|---------|---------|
 |200 OK     |   [RecoveryPointResourceList](/rest/api/backup/recovery-points-crr/list#recoverypointresourcelist)      |       [OK]  |
 
@@ -603,7 +603,7 @@ VM のディスクをセカンダリ リージョンに復元する要求本文�
 }
 ```
 
-プライマリ リージョンの復元操作と同様、これは非同期の操作であり、[個別に追跡](/azure/backup/backup-azure-arm-userestapi-restoreazurevms#restore-response)する必要があります。
+プライマリ リージョンの復元操作と同様、これは非同期の操作であり、[個別に追跡](#restore-response)する必要があります。
 
 
 

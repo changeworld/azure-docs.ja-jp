@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/06/2021
 ms.author: jeedes
-ms.openlocfilehash: 42180a293ce6e720c54979257fcec7d36e996731
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 666ed8613087336314026d2b46794182ee0824ab
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111893230"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124742010"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ms-azure-sso-access-for-ethidex-compliance-office"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と MS Azure SSO Access for Ethidex Compliance Office™ の統合
 
@@ -133,7 +133,7 @@ MS Azure SSO Access for Ethidex Compliance Office™ に対する Azure AD SSO �
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した Ethidex Compliance Office™ に自動的にサインインされます
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Ethidex Compliance Office™] タイルをクリックすると、SSO を設定した Ethidex Compliance Office™ に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Ethidex Compliance Office™] タイルをクリックすると、SSO を設定した Ethidex Compliance Office™ に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ

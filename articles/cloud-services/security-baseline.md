@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 12b6e3d0202de03c6378438457900601e4d091b8
-ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
+ms.openlocfilehash: 814514ede598d0de435c767ee29ef6aa4564d003
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113129533"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128616576"
 ---
 # <a name="azure-security-baseline-for-azure-cloud-services"></a>Azure Cloud Services の Azure セキュリティ ベースライン
 
@@ -193,7 +193,7 @@ Azure のプラットフォーム ログであるアクティビティ ログか
 
 **ガイダンス**:Microsoft は、Azure Cloud Services 用の Azure リソースのタイム ソースを保持しています。 お客様は、環境内で使用されているタイム サーバーへのアクセス (UDP プロトコルでポート 123 を使用) を許可するネットワーク ルールを作成することが必要になる場合があります。
 
-- [NTP サーバー アクセス](../firewall/protect-windows-virtual-desktop.md#additional-considerations)
+- [NTP サーバー アクセス](../firewall/protect-azure-virtual-desktop.md#additional-considerations)
 
 **責任**: 共有
 

@@ -5,15 +5,15 @@ author: craigktreasure
 manager: virivera
 services: azure-object-anchors
 ms.author: crtreasu
-ms.date: 08/02/2021
+ms.date: 09/08/2021
 ms.topic: quickstart
 ms.service: azure-object-anchors
-ms.openlocfilehash: b047c293a14dcfde5c8de2f56fb5c2abeab61c69
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 987c8933040b71c8053728f64da2964e02ac6fa3
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122254364"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128607313"
 ---
 # <a name="quickstart-create-a-hololens-app-with-azure-object-anchors-in-unity-with-mrtk"></a>クイック スタート: Azure Object Anchors を使用する HoloLens アプリを MRKT を使用した Unity で作成する
 
@@ -57,11 +57,11 @@ Unity で `quickstarts/apps/unity/mrtk` プロジェクトを開きます。
 
  Unity スプラッシュ スクリーンの後に、白い境界ボックスが表示されます。 手を使用して、境界ボックスの移動、拡大縮小、または回転を行うことができます。 検出したい物体を範囲に含むボックスを配置します。
 
-<a href="https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/README_HandMenu.html" target="_blank">ハンド メニュー</a>を開き、 **[Lock Search Area]\(検索領域のロック\)** を選択して、境界ボックスがこれ以上移動しないようにします。 **[検索開始]** を選択して、物体検出を開始します。 物体が検出されると、メッシュがその物体に対してレンダリングされます。 検出されたインスタンスの詳細が画面に表示されます。たとえば、更新されたタイムスタンプやサーフェス カバレッジ比率などです。 **[検索の停止]** を選択して追跡を停止すると、検出されたすべてのインスタンスが削除されます。
+<a href="/windows/mixed-reality/mrtk-unity/features/ux-building-blocks/hand-menu" target="_blank">ハンド メニュー</a>を開き、 **[Lock Search Area]\(検索領域のロック\)** を選択して、境界ボックスがこれ以上移動しないようにします。 **[検索開始]** を選択して、物体検出を開始します。 物体が検出されると、メッシュがその物体に対してレンダリングされます。 検出されたインスタンスの詳細が画面に表示されます。たとえば、更新されたタイムスタンプやサーフェス カバレッジ比率などです。 **[検索の停止]** を選択して追跡を停止すると、検出されたすべてのインスタンスが削除されます。
 
 #### <a name="the-app-menus"></a>アプリのメニュー
 
-<a href="https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/README_HandMenu.html" target="_blank">ハンド メニュー</a>を使用して他の操作を行うこともできます。
+<a href="/windows/mixed-reality/mrtk-unity/features/ux-building-blocks/hand-menu" target="_blank">ハンド メニュー</a>を使用して他の操作を行うこともできます。
 
 ##### <a name="primary-menu"></a>主なメニュー
 
@@ -70,7 +70,7 @@ Unity で `quickstarts/apps/unity/mrtk` プロジェクトを開きます。
 * **Tracker Settings (トラッカー設定)** – トラッカー設定メニューをアクティブにするか、しないかを切り替えます。
 * **Search Area Settings (検索領域の設定)** – 検索領域の設定メニューをアクティブにするか、しないかを切り替えます。
 * **Start Tracing (トレースの開始)** – 診断データを取得し、デバイスに保存します。 詳細については **検出に関する問題のデバッグと診断の取得** に関するセクションを参照してください。
-* **Upload Tracing (トレースのアップロード)** – 診断データを Object Anchors サービスにアップロードします。    
+* **Upload Tracing (トレースのアップロード)** – 診断データを Object Anchors サービスにアップロードします。
 
     :::image type="content" source="./media/mrtk-hand-menu-primary.png" alt-text="Unity の主なハンド メニュー":::
 
@@ -93,7 +93,7 @@ Unity で `quickstarts/apps/unity/mrtk` プロジェクトを開きます。
 
 [!INCLUDE [Unity troubleshooting](../../../includes/object-anchors-quickstart-unity-troubleshooting.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [クイック スタート: 詳細な MRTK チュートリアル](in-depth-mrtk-walkthrough.md)
@@ -106,3 +106,6 @@ Unity で `quickstarts/apps/unity/mrtk` プロジェクトを開きます。
 
 > [!div class="nextstepaction"]
 > [変換 SDK](/dotnet/api/overview/azure/mixedreality.objectanchors.conversion-readme-pre)
+
+> [!div class="nextstepaction"]
+> [オブジェクト検出のトラブルシューティング](../troubleshoot/object-detection.md)

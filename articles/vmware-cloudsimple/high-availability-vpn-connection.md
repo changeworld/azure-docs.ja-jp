@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 0dda4f6bbc5f9942522fb19031091b76105acf64
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: f2ea74aa319bd3cf736a50542e2e8d0285a13646
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114390996"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128577753"
 ---
 # <a name="configure-a-high-availability-connection-from-on-premises-to-cloudsimple-vpn-gateway"></a>オンプレミスから CloudSimple VPN ゲートウェイへの高可用接続を構成する
 
@@ -40,7 +40,7 @@ ms.locfileid: "114390996"
 
 外部インターフェイス上でフェーズ 1 (IKEv1) を有効にするには、Cisco ASA ファイアウォールで次の CLI コマンドを入力します。
 
-```crypto ikev1 enable outside```
+`crypto ikev1 enable outside`
 
 ### <a name="2-create-an-ikev1-policy"></a>2.IKEv1 ポリシーを作成する
 
@@ -121,13 +121,13 @@ crypto map mymap 1 set ikev1 transform-set devtest39
 
 外部インターフェイスに暗号化マップを適用します。
 
-```crypto map mymap interface outside```
+`crypto map mymap interface outside`
 
 ### <a name="8-confirm-applicable-nat-rules"></a>8.適用できる NAT 規則を確認する
 
 使用される NAT 規則を次に示します。 VPN トラフィックが他の NAT 規則の対象になっていないことを確認します。
 
-```nat (inside,outside) source static AZ_inside AZ_inside destination static CS_inside CS_inside```
+`nat (inside,outside) source static AZ_inside AZ_inside destination static CS_inside CS_inside`
 
 ### <a name="sample-ipsec-site-to-site-vpn-established-output-from-cisco-asa"></a>Cisco ASA からの IPsec サイト間 VPN の確立された出力の例
 

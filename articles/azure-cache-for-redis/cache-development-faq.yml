@@ -8,12 +8,12 @@ metadata:
   ms.topic: conceptual
   ms.custom: devx-track-csharp
   ms.date: 08/06/2020
-  ms.openlocfilehash: c8aeae13f22103cc895dffda497b71ac3129330c
-  ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
+  ms.openlocfilehash: 5963fe660a3fed4b084d94abb92b172566988c9f
+  ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/01/2021
-  ms.locfileid: "113137436"
+  ms.lasthandoff: 09/24/2021
+  ms.locfileid: "128577035"
 title: Azure Cache for Redis 開発に関してよくあるご質問
 summary: この記事では、Azure Cache for Redis の開発に役立つ、よくある質問に対する回答について説明します。
 sections:
@@ -47,7 +47,7 @@ sections:
       Redis のメリットの 1 つが、クライアントが多数存在しており、さまざまな開発言語を多数サポートしている点です。 現在のクライアントの一覧については、 [Radis クライアント](https://redis.io/clients)に関するページをご覧ください。 さまざまな言語とクライアントを取り上げたチュートリアルについては、「[Azure Cache for Redis の使用方法](cache-dotnet-how-to-use-azure-redis-cache.md)」を参照してください。
 
 
-      [!INCLUDE [redis-cache-create](../../includes/redis-cache-access-keys.md)]
+      [!INCLUDE [redis-cache-create](includes/redis-cache-access-keys.md)]
   - question: >
       Azure Cache for Redis のローカル エミュレーターの有無について
     answer: >
@@ -133,4 +133,4 @@ sections:
   - question: >
       Redis データベースとは
     answer: "Redis データベースとは、単に同じ Redis インスタンス内でデータを論理的に切り離したものです。 キャッシュ メモリは、すべてのデータベースで共有され、特定のデータベースの実際のメモリ使用量は、そのデータベースに格納されているキー/値によって異なります。 たとえば、C6 キャッシュは 53 GB のメモリを備え、P5 の場合は 120 GB になります。 この 53 GB/120 GB すべてを 1 つのデータベースに配置することも、複数のデータベースに分割することもできます。 \n\n> [!NOTE]\n> クラスタリングを有効にして Premium Azure Cache for Redis を使用すると、使用できるのはデータベース 0 だけになります。 これは Redis に固有の制限事項です。Azure Cache for Redis の制限事項ではありません。 詳細については、「[クラスタリングを使用するためにクライアント アプリケーションを変更する必要がありますか](cache-how-to-premium-clustering.md#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)」を参照してください。\n"
-additionalContent: "\n## <a name=\"next-steps\"></a>次のステップ\n   その他の [Azure Cache for Redis のよくあるご質問](cache-faq.yml)について。"
+additionalContent: "\n## <a name=\"next-steps\"></a>次の手順\n   その他の [Azure Cache for Redis のよくあるご質問](cache-faq.yml)について。"
