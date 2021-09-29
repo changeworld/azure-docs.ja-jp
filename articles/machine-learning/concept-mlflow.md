@@ -3,20 +3,20 @@ title: MLflow と Azure Machine Learning
 titleSuffix: Azure Machine Learning
 description: MLflow と Azure Machine Learning を使用して ML モデルのメトリックと成果物をログに記録し、ML モデルを Web サービスとしてデプロイすることについて説明します。
 services: machine-learning
-author: shivp950
-ms.author: shipatel
+author: cjgronlund
+ms.author: cgronlun
 ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: nibaccam
 ms.date: 05/25/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: a4b9810764a0a2d8b421d17e546cd39e93cec582
-ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
+ms.openlocfilehash: a4ade0567f28cef23fe0752a1aa6ec018464ad01
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113034642"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124792070"
 ---
 # <a name="mlflow-and-azure-machine-learning"></a>MLflow と Azure Machine Learning
 
