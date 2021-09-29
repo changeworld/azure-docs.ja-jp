@@ -228,10 +228,6 @@ items:
             href: ./sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md?context=/azure/synapse-analytics/context/context
           - name: サーバーレス SQL プールのコスト管理
             href: sql/data-processed.md
-          - name: ベスト プラクティス サーバーレス SQL プール
-            href: sql/best-practices-serverless-sql-pool.md
-          - name: ベスト プラクティス専用 SQL プール
-            href: sql/best-practices-dedicated-sql-pool.md
       - name: クイックスタート
         items:
           - name: サーバーレス SQL プールを使用する
@@ -293,8 +289,10 @@ items:
             items:
               - name: 概要
                 href: sql/develop-overview.md
-              - name: ベスト プラクティス
-                href: sql/develop-best-practices.md
+              - name: ベスト プラクティス サーバーレス SQL プール
+                href: sql/best-practices-serverless-sql-pool.md
+              - name: ベスト プラクティス専用 SQL プール
+                href: sql/best-practices-dedicated-sql-pool.md
               - name: 具体化されたビュー
                 items:
                   - name: パフォーマンス チューニング ガイダンス
@@ -793,6 +791,8 @@ items:
                 href: ../data-factory/connector-amazon-marketplace-web-service.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
               - name: Amazon RDS for Oracle
                 href: ../data-factory/connector-amazon-rds-for-oracle.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
+              - name: Amazon RDS for SQL Server
+                href: ../data-factory/connector-amazon-rds-for-sql-server.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
               - name: Amazon Redshift
                 href: ../data-factory/connector-amazon-redshift.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
               - name: Amazon S3

@@ -18,8 +18,11 @@
         - name: コンテナー レジストリの作成 - PowerShell
           href: container-registry-get-started-powershell.md
         - name: コンテナー レジストリの作成 - Resource Manager テンプレート
-          displayName: Resource Manager
+          displayName: 'Resource Manager,ARM'
           href: container-registry-get-started-geo-replication-template.md
+        - name: コンテナー レジストリの作成 - Bicep
+          displayName: 'Resource Manager,ARM'
+          href: container-registry-get-started-bicep.md
         - name: Event Grid へのイベントの送信 - CLI
           href: container-registry-event-grid-quickstart.md
         - name: Java イメージのビルドとプッシュ - CLI

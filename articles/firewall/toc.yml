@@ -68,8 +68,8 @@
       href: dns-details.md
     - name: セキュリティ ベースライン
       href: /security/benchmark/azure/baselines/firewall-security-baseline?toc=/azure/firewall/toc.json
-    - name: アクティブ FTP のサポート
-      href: active-ftp-support.md
+    - name: FTP のサポート
+      href: ftp-support.md
 - name: 操作方法ガイド
   items:
     - name: デプロイと構成 - クラシック

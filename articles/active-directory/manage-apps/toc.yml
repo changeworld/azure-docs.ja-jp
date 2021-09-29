@@ -106,16 +106,12 @@
           href: assign-user-or-group-access-portal.md
         - name: マイ アプリでのコレクションの作成
           href: access-panel-collections.md
-        - name: セルフサービス アプリ アクセスの使用
+        - name: セルフサービス アプリ アクセスの有効化
           href: access-panel-manage-self-service-access.md
-        - name: ユーザー アカウントの削除
-          href: methods-for-removing-user-access.md
         - name: アプリを非表示にする
           href: hide-application-from-user-portal.md
         - name: ユーザー サインインの無効化
           href: disable-user-sign-in-portal.md
-        - name: セルフサービスの割り当ての構成
-          href: manage-self-service-access.md
         - name: 自動高速化を強制する
           href: configure-authentication-for-federated-users-portal.md
         - name: サインインの自動高速化を防止する
@@ -184,6 +180,8 @@
       href: application-types.md
     - name: ユーザーがアプリに割り当てられる理由
       href: ways-users-get-assigned-to-applications.md
+    - name: ユーザー アカウントの削除
+      href: methods-for-removing-user-access.md
 - name: リソース
   items:
     - name: 開発者向けのサポート オプションとヘルプ オプション

@@ -55,10 +55,16 @@
       href: volume-quota-introduction.md
     - name: Azure NetApp Files のネットワーク計画のガイドライン
       href: azure-netapp-files-network-topologies.md
-    - name: Azure NetApp Files のスナップショットのしくみ
-      href: snapshots-introduction.md
     - name: 手動 QoS 容量プール
       href: manual-qos-capacity-pool-introduction.md
+    - name: Azure NetApp Files のスナップショットのしくみ
+      href: snapshots-introduction.md
+    - name: Azure NetApp Files バックアップ
+      items:
+        - name: Azure NetApp Files バックアップについて
+          href: backup-introduction.md
+        - name: Azure NetApp Files バックアップの要件と考慮事項
+          href: backup-requirements-considerations.md
     - name: リージョン間レプリケーション
       items:
         - name: リージョン間レプリケーションについて
@@ -173,6 +179,24 @@
               href: snapshots-revert-volume.md
             - name: スナップショットの削除
               href: snapshots-delete.md
+        - name: ボリューム バックアップの管理
+          items:
+            - name: バックアップを構成する
+              items:
+                - name: ポリシー ベースのバックアップの構成
+                  href: backup-configure-policy-based.md
+                - name: 手動バックアップの構成
+                  href: backup-configure-manual.md
+            - name: バックアップ ポリシーを管理する
+              href: backup-manage-policies.md
+            - name: バックアップを検索する
+              href: backup-search.md
+            - name: バックアップを復元する
+              href: backup-restore-new-volume.md
+            - name: バックアップ機能を無効にする
+              href: backup-disable.md
+            - name: バックアップを削除する
+              href: backup-delete.md
         - name: リージョン間レプリケーションの管理
           items:
             - name: ボリューム レプリケーションを作成する
