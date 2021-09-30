@@ -442,8 +442,6 @@
       items:
         - name: フィルターの概要
           href: search-filters.md
-        - name: ファセット フィルター
-          href: search-filters-facets.md
         - name: ファセット ナビゲーションの追加
           href: search-faceted-navigation.md
         - name: コレクション フィルターのトラブルシューティング

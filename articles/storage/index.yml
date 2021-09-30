@@ -125,7 +125,7 @@ additionalContent:
               text: Azure Storage Explorer の GUI ベースのツールを使用する
         - title: コストの管理
           links:
-            - url: ./blobs/storage-blob-storage-tiers.md
+            - url: ./blobs/access-tiers-overview.md
               text: コスト効果の高い方法で BLOB データを階層化する (ホット、クール、アーカイブ)
         - title: データを共有する
           links:

@@ -1298,6 +1298,32 @@ groups:
     title: Azure CLI
   - id: identity-mi-methods-sub-powershell
     title: PowerShell
+- id: iot-dps-set1
+  title: プログラミング言語を選択する
+  prompt: プログラミング言語を選択する
+  pivots:
+  - id: programming-language-ansi-c
+    title: C
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-nodejs
+    title: Node.js
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-java
+    title: Java
+- id: iot-dps-set2
+  title: プログラミング言語を選択する
+  prompt: プログラミング言語を選択する
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-nodejs
+    title: Node.js
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-java
+    title: Java
 - id: azure-stack-edge-device-deployment
   title: Azure Stack Edge デバイスのデプロイ
   prompt: デプロイの種類の選択
@@ -1317,9 +1343,9 @@ groups:
   - id: iot-toolset-mplab
     title: MPLAB
 metadata:
-  ms.openlocfilehash: 89fe5b9daec6956c252679045c3f5a5b98cbd670
-  ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
+  ms.openlocfilehash: 8f94e077e2983d0b3b8a71729d3d27522f3ee961
+  ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/24/2021
-  ms.locfileid: "128708531"
+  ms.lasthandoff: 09/29/2021
+  ms.locfileid: "129274749"

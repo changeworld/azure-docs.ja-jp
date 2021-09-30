@@ -12,12 +12,12 @@ metadata:
   ms.author: jburchel
   ms.date: 06/14/2021
   ms.custom: contperf-fy21q4
-  ms.openlocfilehash: 74703d21a5066f224da06d1afffdd2a5ecabd4c9
-  ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+  ms.openlocfilehash: f3541e1901de8b120b3e892f0872dd838869dd4b
+  ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/25/2021
-  ms.locfileid: "122867154"
+  ms.lasthandoff: 09/29/2021
+  ms.locfileid: "129207984"
 landingContent:
 - title: Azure Data Factory について
   linkLists:
@@ -156,6 +156,6 @@ landingContent:
     - text: ソース管理
       url: ./source-control.md
     - text: 継続的インテグレーションと配信
-      url: ./continuous-integration-deployment.md
+      url: ./continuous-integration-delivery.md
     - text: Azure Monitor による監視
       url: ./monitor-using-azure-monitor.md

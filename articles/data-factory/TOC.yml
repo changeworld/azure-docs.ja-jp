@@ -210,8 +210,18 @@ items:
               - name: データ フローの監視
                 href: concepts-data-flow-monitoring.md
               - name: データ フローのパフォーマンス
-                href: concepts-data-flow-performance.md
-                displayName: 'merge, timeout'
+                items:
+                  - name: 概要
+                    href: concepts-data-flow-performance.md
+                    displayName: 'merge, timeout'
+                  - name: ソースの最適化
+                    href: concepts-data-flow-performance-sources.md
+                  - name: シンクの最適化
+                    href: concepts-data-flow-performance-sinks.md
+                  - name: 変換の最適化
+                    href: concepts-data-flow-performance-transformations.md
+                  - name: パイプラインでのデータ フローの使用
+                    href: concepts-data-flow-performance-pipelines.md
               - name: Integration Runtime のパフォーマンス
                 href: concepts-integration-runtime-performance.md
               - name: データ フロー キャンバスの管理

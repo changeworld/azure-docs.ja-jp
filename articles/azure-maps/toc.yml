@@ -202,6 +202,8 @@
               href: map-add-drawing-toolbar.md
             - name: 図形データを取得する
               href: map-get-shape-data.md
+            - name: スナップ グリッドを追加する
+              href: map-add-snap-grid.md
             - name: 描画イベントに応答する
               href: drawing-tools-events.md
             - name: 相互作用の種類とキーボード ショートカット
@@ -394,10 +396,8 @@
           href: /microsoft-iot-central/
         - name: IoT Edge
           href: ../iot-edge/index.yml
-        - name: IoT ソリューション アクセラレータ
-          href: ../iot-accelerators/index.yml
         - name: IoT プラグ アンド プレイ
-          href: ../iot-pnp/index.yml
+          href: ../iot-develop/index.yml
         - name: Azure Maps
           href: ./index.yml
         - name: Time Series Insights

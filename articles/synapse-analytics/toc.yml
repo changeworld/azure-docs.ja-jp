@@ -105,7 +105,7 @@ items:
           - name: ソース管理
             href: ./cicd/source-control.md
           - name: 継続的インテグレーションと配信
-            href: ./cicd/continuous-integration-deployment.md
+            href: ./cicd/continuous-integration-delivery.md
           - name: セキュリティ
             items:
               - name: セキュリティ ベースライン
@@ -766,7 +766,18 @@ items:
               - name: データ フローの監視
                 href: ../data-factory/concepts-data-flow-monitoring.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
               - name: データ フローのパフォーマンス
-                href: ../data-factory/concepts-data-flow-performance.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
+                items:
+                  - name: 概要
+                    href: ../data-factory/concepts-data-flow-performance.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
+                    displayName: 'merge, timeout'
+                  - name: ソースの最適化
+                    href: ../data-factory/concepts-data-flow-performance-sources.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
+                  - name: シンクの最適化
+                    href: ../data-factory/concepts-data-flow-performance-sinks.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
+                  - name: 変換の最適化
+                    href: ../data-factory/concepts-data-flow-performance-transformations.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
+                  - name: パイプラインでのデータ フローの使用
+                    href: ../data-factory/concepts-data-flow-performance-pipelines.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
               - name: Integration Runtime のパフォーマンス
                 href: ../data-factory/concepts-integration-runtime-performance.md?context=/azure/synapse-analytics/context/context
               - name: グラフの管理

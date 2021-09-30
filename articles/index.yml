@@ -834,12 +834,6 @@ productDirectory:
       azureCategories:
         - iot
       url: iot-hub/index.yml
-    - title: Azure IoT ソリューション アクセラレータ
-      summary: 一般的な IoT シナリオのための、テンプレートを用いた完全にカスタマイズ可能なソリューションを作成する
-      imageSrc: ./media/index/iot-solution-accelerators.svg
-      azureCategories:
-        - iot
-      url: iot-accelerators/index.yml
     - title: Azure Maps
       summary: シンプルで安全な位置 API が地理空間コンテキストをデータに提供
       imageSrc: 'https://static.docs.com/ui/media/product/azure/maps.svg'
@@ -1189,7 +1183,7 @@ productDirectory:
       imageSrc: 'https://static.docs.com/ui/media/product/azure/storage-explorer.svg'
       azureCategories:
         - storage
-      url: storage/blobs/storage-blob-storage-tiers.md
+      url: storage/blobs/access-tiers-overview.md
     - title: Avere vFXT for Azure
       summary: ファイルベースのハイパフォーマンス ワークロードを Azure で実行
       imageSrc: ./media/index/avere.svg

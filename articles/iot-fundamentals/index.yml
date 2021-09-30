@@ -107,7 +107,7 @@ conceptualContent:
         - url: ../iot-dps/quick-setup-auto-provision-cli.md
           itemType: quickstart
           text: サービスを設定する
-        - url: ../iot-dps/quick-create-simulated-device.md
+        - url: ../iot-dps/quick-create-simulated-device-tpm.md
           itemType: quickstart
           text: TPM デバイスをプロビジョニングする
       footerLink:
@@ -168,17 +168,6 @@ conceptualContent:
           text: 目的地へのルートを検索する
       footerLink:
         url: ../azure-maps/index.yml
-        text: 詳細情報
-    - title: 事前に構築された IoT ソリューションをカスタマイズする
-      links:
-        - url: ../iot-accelerators/about-iot-accelerators.md
-          itemType: overview
-          text: Azure IoT ソリューション アクセラレータとは
-        - url: ../iot-accelerators/quickstart-connected-factory-deploy.md
-          itemType: quickstart
-          text: コネクテッド ファクトリ ソリューションを試す
-      footerLink:
-        url: ../iot-accelerators/index.yml
         text: 詳細情報
 tools:
   title: Azure IoT SDK

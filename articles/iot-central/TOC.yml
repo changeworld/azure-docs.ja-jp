@@ -275,8 +275,6 @@
           href: ../iot-dps/index.yml
         - name: IoT Edge
           href: ../iot-edge/index.yml
-        - name: IoT ソリューション アクセラレータ
-          href: ../iot-accelerators/index.yml
         - name: IoT プラグ アンド プレイ
           href: ../iot-develop/index.yml
         - name: Azure Maps

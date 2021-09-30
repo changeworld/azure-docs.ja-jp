@@ -170,7 +170,7 @@
           href: how-to-github-actions.md
         - name: GitHub Actions での Key Vault を使用した認証
           href: github-actions-key-vault.md
-        - name: terraform を使用して Azure Spring Cloud インスタンスをプロビジョニングする
+        - name: Terraform を使用して Azure Spring Cloud インスタンスをプロビジョニングする
           href: how-to-provision-azure-spring-cloud-instance-terraform.md
     - name: トラブルシューティング
       items:

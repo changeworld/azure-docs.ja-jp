@@ -12,12 +12,12 @@ metadata:
   author: normesta
   ms.author: normesta
   ms.date: 08/20/2019
-  ms.openlocfilehash: f2d5ce352b8763f55f1e542b583f8d22773aa06f
-  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+  ms.openlocfilehash: 67f829dea3446527ed387dda372b5fec759f63ff
+  ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/13/2021
-  ms.locfileid: "124776958"
+  ms.lasthandoff: 09/29/2021
+  ms.locfileid: "129276361"
 landingContent:
 - title: Blob Storage について
   linkLists:
@@ -162,6 +162,6 @@ landingContent:
   - linkListType: concept
     links:
     - text: ホット、クール、アーカイブ ストレージ
-      url: storage-blob-storage-tiers.md
+      url: access-tiers-overview.md
     - text: Blob Storage のライフサイクルを管理する
       url: storage-lifecycle-management-concepts.md

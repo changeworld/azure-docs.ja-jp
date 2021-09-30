@@ -12,8 +12,6 @@
       href: what-is-a-data-warehouse-unit-dwu-cdwu.md
     - name: チート シート
       href: cheat-sheet.md
-    - name: ベスト プラクティス
-      href: ../sql/best-practices-dedicated-sql-pool.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json
     - name: 容量制限
       href: sql-data-warehouse-service-capacity-limits.md
     - name: よく寄せられる質問
@@ -145,7 +143,7 @@
         - name: 概要
           href: sql-data-warehouse-overview-develop.md
         - name: ベスト プラクティス
-          href: sql-data-warehouse-best-practices-development.md
+          href: ../sql/best-practices-dedicated-sql-pool.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json
         - name: JSON
           items:
             - name: JSON
@@ -268,7 +266,7 @@
           href: sql-data-warehouse-concept-resource-utilization-query-activity.md
         - name: データ保護
           href: backup-and-restore.md
-        - name: Recommendations
+        - name: 推奨事項
           href: sql-data-warehouse-concept-recommendations.md
         - name: トラブルシューティング
           href: sql-data-warehouse-troubleshoot.md
