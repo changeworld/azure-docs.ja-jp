@@ -66,71 +66,12 @@
           href: tutorial-x509-test-certificate.md
 - name: 概念
   items:
-    - name: TLS サポート
-      href: iot-hub-tls-support.md
-    - name: 仮想ネットワークのサポート
-      href: virtual-network-support.md
-    - name: メッセージ エンリッチメントの概要
-      href: iot-hub-message-enrichments-overview.md
-    - name: デバイス管理の概要
-      href: iot-hub-device-management-overview.md
-    - name: IoT Hub と Event Hubs の比較
-      href: iot-hub-compare-event-hubs.md
-    - name: 適切な階層の選択
-      href: iot-hub-scaling.md
-    - name: 高可用性とディザスター リカバリー
-      href: iot-hub-ha-dr.md
-    - name: IoT ハブを別のリージョンに複製する方法
-      href: iot-hub-how-to-clone.md
-    - name: IoT Hub IP アドレスについて
-      href: iot-hub-understand-ip-address.md
-    - name: その他のプロトコルのサポート
-      href: iot-hub-protocol-gateway.md
-    - name: メッセージ ルーティングとイベント ルーティングの比較
-      href: iot-hub-event-grid-routing-comparison.md
-    - name: デバイス構成のベスト プラクティス
-      href: iot-hub-configuration-best-practices.md
-    - name: IoT Hub デバイス ストリームの概要 (プレビュー)
-      href: iot-hub-device-streams-overview.md
-    - name: 開発者ガイド
-      href: iot-hub-devguide.md
+    - name: 開発
       items:
         - name: device-to-cloud の機能ガイド
           href: iot-hub-devguide-d2c-guidance.md
         - name: cloud-to-device の機能ガイド
           href: iot-hub-devguide-c2d-guidance.md
-        - name: メッセージを送受信する
-          href: iot-hub-devguide-messaging.md
-          items:
-            - name: IoT Hub メッセージを作成し、読み取る
-              href: iot-hub-devguide-messages-construct.md
-            - name: デバイス通信プロトコルを選択する
-              href: iot-hub-devguide-protocols.md
-            - name: デバイスからクラウドへのメッセージを組み込みのエンドポイントから読み取る
-              href: iot-hub-devguide-messages-read-builtin.md
-            - name: メッセージ ルーティングを使用して、デバイスからクラウドへのメッセージを送信する
-              href: iot-hub-devguide-messages-d2c.md
-              items:
-                - name: device-to-cloud メッセージにカスタム エンドポイントとルーティング規則を使用する
-                  href: iot-hub-devguide-messages-read-custom.md
-                - name: メッセージ ルートにクエリを追加する
-                  href: iot-hub-devguide-routing-query-syntax.md
-            - name: cloud-to-device メッセージを IoT Hub から送信する
-              href: iot-hub-devguide-messages-c2d.md
-        - name: Event Grid を使用して IoT Hub のイベントに対応する
-          href: iot-hub-event-grid.md
-        - name: デバイスからファイルをアップロードする
-          href: iot-hub-devguide-file-upload.md
-        - name: デバイス ID を管理する
-          href: iot-hub-devguide-identity-registry.md
-        - name: IoT Hub へのアクセスの制御
-          items:
-            - name: 概要
-              href: iot-hub-devguide-security.md
-            - name: Azure AD を使用してアクセスを制御する
-              href: iot-hub-dev-guide-azure-ad-rbac.md
-            - name: SAS を使用してアクセスを制御する
-              href: iot-hub-dev-guide-sas.md
         - name: デバイス ツインを理解する
           href: iot-hub-devguide-device-twins.md
         - name: モジュール ツインを理解する
@@ -145,16 +86,80 @@
           href: iot-hub-devguide-query-language.md
         - name: クォータと調整
           href: iot-hub-devguide-quotas-throttling.md
+        - name: IoT Hub と Event Hubs の比較
+          href: iot-hub-compare-event-hubs.md
+        - name: Event Grid を使用して IoT Hub のイベントに対応する
+          href: iot-hub-event-grid.md
+        - name: デバイスからファイルをアップロードする
+          href: iot-hub-devguide-file-upload.md
+        - name: IoT Hub デバイス ストリームの概要 (プレビュー)
+          href: iot-hub-device-streams-overview.md
+    - name: 管理する
+      items:
+        - name: 最適な IoT Hub サービス レベルの選択
+          href: iot-hub-scaling.md
         - name: 価格の例
           href: iot-hub-devguide-pricing.md
-        - name: IoT Hub SDK
-          items:
-            - name: SDK の概要
-              href: iot-hub-devguide-sdks.md
-            - name: SDK を使用せずに開発する
-              href: iot-hub-devguide-no-sdk.md
-            - name: 接続と信頼できるメッセージングの管理
-              href: iot-hub-reliability-features-in-sdks.md
+    - name: メッセージング
+      items:
+        - name: メッセージを送受信する
+          href: iot-hub-devguide-messaging.md
+        - name: IoT Hub メッセージを作成し、読み取る
+          href: iot-hub-devguide-messages-construct.md
+        - name: デバイス通信プロトコルを選択する
+          href: iot-hub-devguide-protocols.md
+        - name: デバイスからクラウドへのメッセージを組み込みのエンドポイントから読み取る
+          href: iot-hub-devguide-messages-read-builtin.md
+        - name: メッセージ エンリッチメントの概要
+          href: iot-hub-message-enrichments-overview.md
+    - name: メッセージ ルーティング
+      items:
+        - name: メッセージ ルーティングを使用して、デバイスからクラウドへのメッセージを送信する
+          href: iot-hub-devguide-messages-d2c.md
+        - name: device-to-cloud メッセージにカスタム エンドポイントとルーティング規則を使用する
+          href: iot-hub-devguide-messages-read-custom.md
+        - name: メッセージ ルートにクエリを追加する
+          href: iot-hub-devguide-routing-query-syntax.md
+        - name: cloud-to-device メッセージを IoT Hub から送信する
+          href: iot-hub-devguide-messages-c2d.md
+        - name: メッセージ ルーティングとイベント ルーティングの比較
+          href: iot-hub-event-grid-routing-comparison.md
+    - name: デバイス管理
+      items:
+        - name: デバイス管理の概要
+          href: iot-hub-device-management-overview.md
+        - name: デバイス ID を管理する
+          href: iot-hub-devguide-identity-registry.md
+        - name: デバイス構成のベスト プラクティス
+          href: iot-hub-configuration-best-practices.md
+    - name: 接続
+      items:
+        - name: IoT Hub IP アドレスについて
+          href: iot-hub-understand-ip-address.md
+    - name: スケーリングと可用性
+      items:
+        - name: 高可用性とディザスター リカバリー
+          href: iot-hub-ha-dr.md
+        - name: IoT ハブを別のリージョンに複製する方法
+          href: iot-hub-how-to-clone.md
+    - name: IoT Hub へのアクセスの制御
+      items:
+        - name: 概要
+          href: iot-hub-devguide-security.md
+        - name: Azure AD を使用してアクセスを制御する
+          href: iot-hub-dev-guide-azure-ad-rbac.md
+        - name: SAS を使用してアクセスを制御する
+          href: iot-hub-dev-guide-sas.md
+    - name: IoT Hub SDK
+      items:
+        - name: SDK の概要
+          href: iot-hub-devguide-sdks.md
+        - name: SDK を使用せずに開発する
+          href: iot-hub-devguide-no-sdk.md
+        - name: 接続と信頼できるメッセージングの管理
+          href: iot-hub-reliability-features-in-sdks.md
+    - name: プロトコルのサポート
+      items:
         - name: MQTT サポート
           href: iot-hub-mqtt-support.md
         - name: MQTT 5 サポート (プレビュー)
@@ -165,8 +170,14 @@
               href: iot-hub-mqtt-5-reference.md
         - name: AMQP のサポート
           href: iot-hub-amqp-support.md
+        - name: その他のプロトコルのサポート
+          href: iot-hub-protocol-gateway.md
     - name: Security
       items:
+        - name: TLS サポート
+          href: iot-hub-tls-support.md
+        - name: 仮想ネットワークのサポート
+          href: virtual-network-support.md
         - name: セキュリティ ベースライン
           href: /security/benchmark/azure/baselines/iot-hub-security-baseline?toc=/azure/iot-hub/TOC.json
         - name: 推奨事項
@@ -182,12 +193,12 @@
         - name: Azure Policy によるセキュリティ制御
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
-    - name: X.509 CA 証明書を使用したセキュリティ保護
-      items:
-        - name: X.509 CA 証明書セキュリティの概要
-          href: iot-hub-x509ca-overview.md
-        - name: X.509 CA 証明書セキュリティの概念
-          href: iot-hub-x509ca-concept.md
+        - name: X.509 CA 証明書を使用したセキュリティ保護
+          items:
+            - name: X.509 CA 証明書セキュリティの概要
+              href: iot-hub-x509ca-overview.md
+            - name: X.509 CA 証明書セキュリティの概念
+              href: iot-hub-x509ca-concept.md
 - name: 操作方法ガイド
   items:
     - name: 開発

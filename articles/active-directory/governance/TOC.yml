@@ -18,6 +18,8 @@
       href: entitlement-management-access-package-first.md
     - name: リソースへのアクセスの管理 - Microsoft Graph
       href: /graph/tutorial-access-package-api?toc=/azure/active-directory/governance/toc.json&bc=/azure/active-directory/governance/breadcrumb/toc.json
+    - name: 承認プロセスを通じて Azure AD に外部ユーザーをオンボードする
+      href: entitlement-management-onboard-external-user.md
     - name: Azure AD でグループベースのライセンスのライフサイクルを管理する
       href: entitlement-management-group-licenses.md
 - name: 概念

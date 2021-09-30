@@ -26,6 +26,8 @@
           href: event-hubs-dotnet-standard-getstarted-send.md
         - name: Java (azure-messaging-eventhubs)
           href: event-hubs-java-get-started-send.md
+        - name: Java (azure-eventhubs - レガシ)
+          href: event-hubs-java-get-started-send-legacy.md
         - name: Python (azure-eventhub)
           href: event-hubs-python-get-started-send.md
         - name: JavaScript (azure/event-hubs)
@@ -36,14 +38,6 @@
           href: event-hubs-c-getstarted-send.md
         - name: Apache Storm (受信のみ)
           href: event-hubs-storm-getstarted-receive.md
-    - name: イベントの送受信 (古いパッケージ)
-      items:
-        - name: .NET (Microsoft.Azure.EventHubs)
-          href: event-hubs-dotnet-standard-get-started-send-legacy.md
-        - name: Java (azure-eventhubs)
-          href: event-hubs-java-get-started-send-legacy.md
-        - name: .NET Framework (Microsoft.ServiceBus)
-          href: event-hubs-dotnet-framework-getstarted-send.md
     - name: イベントのキャプチャ
       items:
         - name: Azure portal を使用した Event Hubs Capture の有効化

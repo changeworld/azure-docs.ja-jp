@@ -247,9 +247,23 @@ items:
           - name: ソース管理
             href: source-control.md
           - name: 継続的インテグレーションと配信
-            href: continuous-integration-deployment.md
+            items:
+              - name: 概要
+                href: continuous-integration-delivery.md
+              - name: Azure Pipelines リリースを使用した自動化
+                href: continuous-integration-delivery-automate-azure-pipelines.md
+              - name: 各環境用の Resource Manager テンプレートを手動でプロモートする
+                href: continuous-integration-delivery-manual-promotion.md
+              - name: Resource Manager テンプレートでカスタム パラメーターを使用する
+                href: continuous-integration-delivery-resource-manager-custom-parameters.md
+              - name: リンクされた Resource Manager テンプレート
+                href: continuous-integration-delivery-linked-templates.md
+              - name: 修正プログラム運用環境の適用
+                href: continuous-integration-delivery-hotfix-environment.md
+              - name: サンプルの配置前と配置後スクリプト
+                href: continuous-integration-delivery-sample-script.md
           - name: CI/CD の自動発行
-            href: continuous-integration-deployment-improvements.md
+            href: continuous-integration-delivery-improvements.md
       - name: Connectors
         items:
           - name: コネクタの概要
@@ -747,7 +761,22 @@ items:
                 displayName: self hosted
             displayName: 'self hosted, runtime'
           - name: Azure-SSIS 統合ランタイム
-            href: create-azure-ssis-integration-runtime.md
+            items:
+              - name: 概要と前提条件
+                href: create-azure-ssis-integration-runtime.md
+                displayName: Azure SSIS
+              - name: Azure portal での作成
+                href: create-azure-ssis-integration-runtime-portal.md
+                displayName: Azure SSIS
+              - name: PowerShell を使用して作成する
+                href: create-azure-ssis-integration-runtime-powershell.md
+                displayName: Azure SSIS
+              - name: Resource Manager テンプレートを使用して作成する
+                href: create-azure-ssis-integration-runtime-resource-manager-template.md
+                displayName: Azure SSIS
+              - name: SSIS パッケージのデプロイと実行
+                href: create-azure-ssis-integration-runtime-deploy-packages.md
+                displayName: Azure SSIS
       - name: Azure での SSIS パッケージの実行
         items:
           - name: SSDT からの Azure での SSIS パッケージの実行

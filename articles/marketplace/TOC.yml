@@ -149,6 +149,8 @@
           href: azure-app-marketing.md
         - name: 従量制課金
           href: marketplace-metering-service-apis.md
+        - name: 使用量ベースの月次請求の価格を構成する
+          href: azure-vm-pricing.md
         - name: レビュー フィードバックの処理
           href: azure-app-review-feedback.md
         - name: アプリケーションの API

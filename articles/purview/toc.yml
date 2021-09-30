@@ -10,28 +10,30 @@ items:
     items:
       - name: Purview アカウントを作成する
         items:
-          - name: Purview アカウントの作成 - Azure portal
+          - name: Purview アカウントの作成 - ポータル
             href: create-catalog-portal.md
-          - name: Purview アカウントの作成 - Azure PowerShell
+          - name: Purview アカウントの作成 - PowerShell
             href: create-catalog-powershell.md
           - name: Purview アカウントの作成 - .NET SDK
             href: create-purview-dotnet.md
           - name: Purview アカウントの作成 - Python
             href: create-purview-python.md
-      - name: コレクションを作成する - Azure Purview Studio
+      - name: コレクションの作成 - ポータル
         href: quickstart-create-collection.md
   - name: チュートリアル
     items:
-      - name: 大規模な Azure データ ソースのオンボード
+      - name: Azure ソースを大規模にオンボードする
         items:
-          - name: 大規模な Azure データ ソースの準備チェック
+          - name: 大規模な Azure ソースの準備
             href: tutorial-data-sources-readiness.md
-          - name: 大規模な Azure Purview MSI 構成
+          - name: 大規模な Purview MSI 構成
             href: tutorial-msi-configuration.md
-      - name: オンプレミスの SQL サーバーの登録とスキャン
+      - name: オンプレミスの SQL Server をオンボードする
         href: tutorial-register-scan-on-premises-sql-server.md
-      - name: Purview データ プレーンに REST API を使用する方法
+      - name: Purview データ プレーンに REST API を使用する
         href: tutorial-using-rest-apis.md
+      - name: コレクション管理に REST API を使用する
+        href: tutorial-metadata-policy-collections-apis.md
   - name: 概念
     items:
       - name: Purview Studio の使用
@@ -42,142 +44,122 @@ items:
             href: deployment-best-practices.md
           - name: コレクションのアーキテクチャ
             href: concept-best-practices-collections.md
-      - name: Azure Purview の制限
-        href: how-to-manage-quotas.md
-      - name: スキャンとインジェスト
-        href: concept-scans-and-ingestion.md
-      - name: エラスティック データ マップ
-        href: concept-elastic-data-map.md
-      - name: リソース セットについて
-        href: concept-resource-sets.md
-      - name: データ系列
-        href: concept-data-lineage.md
-      - name: サポートされているデータ ソースとファイルの種類
-        href: sources-and-scans.md
-      - name: カタログのアクセス許可
+      - name: Purview のアクセス許可
         href: catalog-permissions.md
-      - name: カタログの検索
-        href: concept-search.md
-      - name: ビジネス用語集
-        href: concept-business-glossary.md
+      - name: データ マップ
+        items:
+          - name: エラスティック データ マップ
+            href: concept-elastic-data-map.md
+          - name: リソース セット
+            href: concept-resource-sets.md
+          - name: スキャンとインジェスト
+            href: concept-scans-and-ingestion.md
+          - name: データ系列
+            href: concept-data-lineage.md
+      - name: データ カタログ
+        items:
+          - name: カタログの検索
+            href: concept-search.md
+          - name: ビジネス用語集
+            href: concept-business-glossary.md
+          - name: アセット正規化
+            href: concept-asset-normalization.md
       - name: データの分析情報
         href: concept-insights.md
-      - name: サポートされているブラウザー
-        href: supported-browsers.md
-      - name: アセット正規化
-        href: concept-asset-normalization.md
-      - name: よく寄せられる質問
-        href: ./frequently-asked-questions.yml
       - name: アップグレードされた Purview アカウント
         href: concept-account-upgrade.md
   - name: 操作方法ガイド
     items:
       - name: コレクションの作成と管理
         href: how-to-create-and-manage-collections.md
-      - name: 登録とスキャン
+      - name: ソースを管理する
         items:
+          - name: サポートされているソース
+            href: purview-connector-overview.md
+          - name: データ ソースを管理する
+            href: manage-data-sources.md
           - name: '[資格情報の管理]'
             href: manage-credentials.md
             displayName: Create and manage Credentials
+      - name: 変換元
+        items:
+          - name: Azure Multiple Source
+            href: register-scan-azure-multiple-sources.md
+          - name: Azure Synapse Analytics ワークスペース
+            href: register-scan-synapse-workspace.md
+          - name: Azure Blob Storage
+            href: register-scan-azure-blob-storage-source.md
+            displayName: Register and scan Azure Blob Storage
+          - name: Azure Files
+            href: register-scan-azure-files-storage-source.md
+            displayName: Register and scan Azure Files
+          - name: Azure Cosmos DB
+            href: register-scan-azure-cosmos-database.md
+            displayName: Register and scan Azure Cosmos DB
+          - name: Azure Database for MySQL
+            href: register-scan-azure-mysql-database.md
+            displayName: Register and scan an Azure database for MySQL
+          - name: Azure Database for PostgreSQL
+            href: register-scan-azure-postgresql.md
+            displayName: Register and scan an Azure database for PostgreSQL
+          - name: Azure Data Explorer
+            href: register-scan-azure-data-explorer.md
+            displayName: Register and scan Azure Data Explorer Kusto
+          - name: Azure Data Lake Storage Gen 1
+            href: register-scan-adls-gen1.md
+            displayName: Register and scan Azure Data Lake Storage Gen 1 ADLS
+          - name: Azure Data Lake Storage Gen 2
+            href: register-scan-adls-gen2.md
+            displayName: Register and scan Azure Data Lake Storage Gen 2 ADLS
+          - name: Azure SQL データベース
+            href: register-scan-azure-sql-database.md
+            displayName: Register and scan Azure SQL DB
+          - name: Azure SQL Database Managed Instance
+            href: register-scan-azure-sql-database-managed-instance.md
+            displayName: Register and scan Azure SQL DB Managed Instance
+          - name: Azure 専用 SQL プール (以前の SQL DW)
+            href: register-scan-azure-synapse-analytics.md
+          - name: Cassandra
+            href: register-scan-cassandra-source.md
+          - name: Erwin
+            href: register-scan-erwin-source.md
+          - name: Google BigQuery
+            href: register-scan-google-bigquery-source.md
+          - name: Hive メタストア データベース
+            href: register-scan-hive-metastore-source.md
+          - name: Looker
+            href: register-scan-looker-source.md
+          - name: オンプレミスの SQL Server
+            href: register-scan-on-premises-sql-server.md
+          - name: Oracle
+            href: register-scan-oracle-source.md
+          - name: Power BI のテナント - ポータル
+            href: register-scan-power-bi-tenant.md
+          - name: SAP ECC
+            href: register-scan-sapecc-source.md
+          - name: SAP S/4HANA
+            href: register-scan-saps4hana-source.md
+          - name: Teradata
+            href: register-scan-teradata-source.md
+          - name: Amazon S3
+            href: register-scan-amazon-s3.md
+      - name: スキャン
+        items:
           - name: スキャン ルール セットを作成する
             href: create-a-scan-rule-set.md
+          - name: リソース セットのパターン ルール
+            href: how-to-resource-set-pattern-rules.md
           - name: 統合ランタイムの管理
             href: manage-integration-runtimes.md
           - name: 接続の問題のトラブルシューティング
             href: troubleshoot-connections.md
-          - name: リソース セットのパターン ルール
-            href: how-to-resource-set-pattern-rules.md
-          - name: 変換元
-            items:
-              - name: データ ソースを管理する
-                href: manage-data-sources.md
-              - name: Azure Purview コネクタ
-                href: purview-connector-overview.md
-              - name: Azure Multiple Source
-                href: register-scan-azure-multiple-sources.md
-              - name: Azure Synapse Analytics ワークスペース
-                href: register-scan-synapse-workspace.md
-              - name: Azure Blob Storage
-                href: register-scan-azure-blob-storage-source.md
-                displayName: Register and scan Azure Blob Storage
-              - name: Azure Files
-                href: register-scan-azure-files-storage-source.md
-                displayName: Register and scan Azure Files
-              - name: Azure Cosmos DB
-                href: register-scan-azure-cosmos-database.md
-                displayName: Register and scan Azure Cosmos DB
-              - name: Azure Database for MySQL
-                href: register-scan-azure-mysql-database.md
-                displayName: Register and scan an Azure database for MySQL
-              - name: Azure Database for PostgreSQL
-                href: register-scan-azure-postgresql.md
-                displayName: Register and scan an Azure database for PostgreSQL
-              - name: Azure Data Explorer
-                href: register-scan-azure-data-explorer.md
-                displayName: Register and scan Azure Data Explorer Kusto
-              - name: Azure Data Lake Storage Gen 1
-                href: register-scan-adls-gen1.md
-                displayName: Register and scan Azure Data Lake Storage Gen 1 ADLS
-              - name: Azure Data Lake Storage Gen 2
-                href: register-scan-adls-gen2.md
-                displayName: Register and scan Azure Data Lake Storage Gen 2 ADLS
-              - name: Azure SQL データベース
-                href: register-scan-azure-sql-database.md
-                displayName: Register and scan Azure SQL DB
-              - name: Azure SQL Database Managed Instance
-                href: register-scan-azure-sql-database-managed-instance.md
-                displayName: Register and scan Azure SQL DB Managed Instance
-              - name: Azure 専用 SQL プール (以前の SQL DW)
-                href: register-scan-azure-synapse-analytics.md
-              - name: Cassandra
-                href: register-scan-cassandra-source.md
-              - name: Erwin
-                href: register-scan-erwin-source.md
-              - name: Google BigQuery
-                href: register-scan-google-bigquery-source.md
-              - name: Hive メタストア データベース
-                href: register-scan-hive-metastore-source.md
-              - name: Looker
-                href: register-scan-looker-source.md
-              - name: オンプレミスの SQL サーバー
-                href: register-scan-on-premises-sql-server.md
-              - name: Oracle
-                href: register-scan-oracle-source.md
-              - name: Power BI のテナント - ポータル
-                href: register-scan-power-bi-tenant.md
-              - name: SAP ECC
-                href: register-scan-sapecc-source.md
-              - name: SAP S/4HANA
-                href: register-scan-saps4hana-source.md
-              - name: Teradata
-                href: register-scan-teradata-source.md
-              - name: Amazon S3
-                href: register-scan-amazon-s3.md
-      - name: ビジネス用語集
-        items:
-          - name: 用語集の用語の作成、インポート、エクスポート
-            href: how-to-create-import-export-glossary.md
-          - name: 用語テンプレートの管理
-            href: how-to-manage-term-templates.md
-      - name: 一括編集
-        items:
-          - name: 資産を一括編集して注釈と連絡先にタグを付ける
-            href: how-to-bulk-edit-assets.md
-      - name: 分類
-        items:
-          - name: カスタム分類と分類規則の作成
-            href: create-a-custom-classification-and-classification-rule.md
-          - name: 分類の適応
-            href: apply-classifications.md
-          - name: コンテンツに自動的にラベルを付ける
-            href: create-sensitivity-label.md
-      - name: 検索と参照
+      - name: データの検出
         items:
           - name: Data Catalog の参照
             href: how-to-browse-catalog.md
           - name: Data Catalog の検索
             href: how-to-search-catalog.md
-          - name: カタログ アセットの表示、編集、削除
+          - name: カタログ資産を管理する
             href: catalog-asset-details.md
       - name: 系列
         items:
@@ -211,10 +193,28 @@ items:
             href: how-to-lineage-sql-server-integration-services.md
           - name: Teradata のデータ系列
             href: how-to-lineage-teradata.md
-      - name: Monitor
+      - name: ビジネス用語集
         items:
-          - name: Azure Monitor による監視
-            href: how-to-monitor-with-azure-monitor.md
+          - name: 用語集の用語の作成、インポート、エクスポート
+            href: how-to-create-import-export-glossary.md
+          - name: 用語テンプレートの管理
+            href: how-to-manage-term-templates.md
+      - name: アセットの一括編集
+        href: how-to-bulk-edit-assets.md
+      - name: 分類
+        items:
+          - name: カスタム分類を作成する
+            href: create-a-custom-classification-and-classification-rule.md
+          - name: 分類の適応
+            href: apply-classifications.md
+      - name: Label
+        items:
+          - name: Azure Purview でのラベル付け
+            href: create-sensitivity-label.md
+          - name: データにラベルを付ける方法
+            href: how-to-automatically-label-your-content.md
+          - name: 秘密度ラベルの FAQ
+            href: sensitivity-labels-frequently-asked-questions.yml
       - name: 洞察
         items:
           - name: アセットの分析情報を表示する
@@ -251,22 +251,34 @@ items:
         href: manage-kafka-dotnet.md
       - name: 障害復旧
         href: disaster-recovery.md
+      - name: Azure Monitor による監視
+        href: how-to-monitor-with-azure-monitor.md
   - name: リファレンス
     items:
+      - name: Azure Purview 製品用語集
+        href: reference-purview-glossary.md
+      - name: サポートされているブラウザー
+        href: supported-browsers.md
+      - name: サポートされているデータ ソースとファイルの種類
+        href: sources-and-scans.md
+      - name: サポートされている分類
+        href: supported-classifications.md
+      - name: Azure Purview の制限
+        href: how-to-manage-quotas.md
       - name: Java
         href: /samples/browse/?products=azure&languages=java&terms=purview
       - name: .NET
         href: /dotnet/api/overview/azure/purviewresourceprovider
+      - name: PowerShell
+        href: /powershell/module/az.purview/
       - name: Python
         href: /python/api/azure-mgmt-purview/
       - name: REST
         href: /rest/api/purview/
-      - name: サポートされている分類
-        href: supported-classifications.md
-      - name: Azure Purview 製品用語集
-        href: reference-purview-glossary.md
       - name: ABAP 関数のデプロイ ガイド
         href: abap-functions-deployment-guide.md
+      - name: よく寄せられる質問 (FAQ)
+        href: ./frequently-asked-questions.yml
   - name: リソース
     items:
       - name: 料金計算ツール
