@@ -30,8 +30,6 @@
   items:
     - name: Automation アカウントの認証の概要
       href: automation-security-overview.md
-    - name: Automation でのコンテキスト切り替え
-      href: context-switching.md
     - name: Runbook 実行の概要
       href: automation-runbook-execution.md
     - name: Hybrid Runbook Worker の概要
@@ -63,6 +61,8 @@
           href: automation-create-standalone-account.md
         - name: Automation アカウントを作成する - Resource Manager テンプレート
           href: quickstart-create-automation-account-template.md
+        - name: ローカル認証の無効化
+          href: disable-local-authentication.md
         - name: マネージド ID
           items:
             - name: システム割り当てマネージド ID の使用
@@ -165,15 +165,19 @@
               href: troubleshoot/collect-data-microsoft-azure-automation-case.md
         - name: Hybrid Runbook Worker の操作
           items:
-            - name: Windows Hybrid Runbook Worker のデプロイ
+            - name: 拡張機能ベース ワーカーのデプロイ
+              href: extension-based-hybrid-runbook-worker-install.md
+            - name: エージェントベース Windows ワーカーのデプロイ
               href: automation-windows-hrw-install.md
-            - name: Linux Hybrid Runbook Worker のデプロイ
+            - name: エージェントベース Linux ワーカーのデプロイ
               href: automation-linux-hrw-install.md
             - name: Hybrid Runbook Worker で Runbook を実行する
               href: automation-hrw-run-runbooks.md
             - name: Azure Policy を使用してジョブの実行を適用する
               href: enforce-job-execution-hybrid-worker.md
-            - name: Hybrid Runbook Worker の問題のトラブルシューティング
+            - name: 拡張機能ベース ワーカーに関する問題のトラブルシューティング
+              href: troubleshoot/extension-based-hybrid-runbook-worker.md
+            - name: エージェントベース ワーカーに関する問題のトラブルシューティング
               href: troubleshoot/hybrid-runbook-worker.md
         - name: ソース管理の統合を使用する
           href: source-control-integration.md

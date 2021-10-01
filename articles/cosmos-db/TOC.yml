@@ -723,6 +723,8 @@
                   href: index-policy.md
                 - name: インデックス作成ポリシーの管理
                   href: sql/how-to-manage-indexing-policy.md
+                - name: インデックス メトリック
+                  href: sql/index-metrics.md
             - name: .NET
               items:
                 - name: .NET SDK v3 のパフォーマンスに関するヒント

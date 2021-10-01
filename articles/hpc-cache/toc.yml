@@ -43,7 +43,7 @@ items:
                     href: hpc-cache-ingest-manual.md
           - name: ストレージ ターゲットを編集する
             href: hpc-cache-edit-storage.md
-          - name: ストレージ ターゲットを管理する
+          - name: ストレージ ターゲットの表示と管理
             href: manage-storage-targets.md
       - name: キャッシュに接続する
         href: hpc-cache-mount.md

@@ -10,12 +10,12 @@ metadata:
   author: ekpgh
   ms.author: v-erkel
   ms.date: 07/08/2021
-  ms.openlocfilehash: 0d91bd4c4b1371b155bb564a888c59235efc72c9
-  ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+  ms.openlocfilehash: a125d73f0f0cac5e359df6eebf537ada004b0022
+  ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/24/2021
-  ms.locfileid: "122772247"
+  ms.lasthandoff: 09/29/2021
+  ms.locfileid: "129274863"
 landingContent:
 - title: Azure HPC Cache について
   linkLists:
@@ -55,7 +55,7 @@ landingContent:
       url: hpc-cache-support-ticket.md
     - text: ストレージ ターゲットを編集する
       url: hpc-cache-edit-storage.md
-    - text: ストレージ ターゲットを管理する
+    - text: ストレージ ターゲットの表示と管理
       url: manage-storage-targets.md
     - text: ファイアウォール設定を回避して BLOB ストレージ ターゲットを作成する
       url: hpc-cache-blob-firewall-fix.md
