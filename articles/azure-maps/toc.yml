@@ -11,6 +11,8 @@
       href: quick-demo-map-app.md
     - name: Android アプリの作成
       href: quick-android-map.md
+    - name: iOS アプリの作成
+      href: quick-ios-app.md
 - name: チュートリアル
   items:
     - name: Web SDK のチュートリアル

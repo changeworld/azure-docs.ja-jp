@@ -194,6 +194,8 @@
           href: event-driven-scaling.md
         - name: 信頼できるイベント処理
           href: functions-reliable-event-processing.md
+        - name: コンカレンシー
+          href: functions-concurrency.md
         - name: 同一入力のための設計
           href: functions-idempotent.md
     - name: トリガーとバインド
@@ -538,7 +540,7 @@
             - name: 入力
               displayName: Blob storage
               href: functions-bindings-storage-blob-input.md
-            - name: 出力
+            - name: Output
               displayName: Blob storage
               href: functions-bindings-storage-blob-output.md
         - name: Azure Cosmos DB
