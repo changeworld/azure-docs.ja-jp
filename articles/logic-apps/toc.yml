@@ -211,12 +211,8 @@
           items:
             - name: EDIFACT メッセージの交換
               href: logic-apps-enterprise-integration-edifact.md
-            - name: EDIFACT のエンコード
-              href: logic-apps-enterprise-integration-edifact-encode.md
-            - name: EDIFACT のデコード
-              href: logic-apps-enterprise-integration-edifact-decode.md
-            - name: UNH2.5 セグメントが含まれた EDIFACT ファイルの処理
-              href: logic-apps-enterprise-integration-edifact_inputfile_unh2.5.md
+            - name: EDIFACT メッセージの設定
+              href: logic-apps-enterprise-integration-edifact-message-settings.md
             - name: EDIFACT CONTRL 受信確認とエラー コード
               href: logic-apps-enterprise-integration-edifact-contrl-acknowledgment.md
         - name: RosettaNet メッセージング

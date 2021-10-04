@@ -189,8 +189,6 @@ items:
                 href: monitoring-log-analytics-azure-portal-managed-instance.md
               - name: 高可用性
                 href: managed-instance-high-availability.md
-              - name: ポイントインタイム リストア
-                href: point-in-time-restore.md
               - name: 削除
                 href: delete-managed-instance.md
           - name: 移行
@@ -199,6 +197,10 @@ items:
                 href: migrate-to-managed-instance.md
               - name: AdventureWorks の復元
                 href: restore-adventureworks-sample-db.md
+          - name: ビジネス継続性の構成
+            items:
+              - name: ポイントインタイム リストア
+                href: point-in-time-restore.md
   - name: 関連項目
     items:
       - name: リリース バージョン ログ

@@ -99,7 +99,7 @@
   items:
     - name: 登録と設定
       items:
-        - name: Azure NetApp Files に登録する
+        - name: NetApp リソース プロバイダーを登録する
           href: azure-netapp-files-register.md
         - name: NetApp アカウントを作成する
           href: azure-netapp-files-create-netapp-account.md
