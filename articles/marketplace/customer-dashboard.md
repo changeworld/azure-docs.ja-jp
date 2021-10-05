@@ -7,13 +7,13 @@ ms.topic: article
 author: smannepalle
 ms.author: smannepalle
 ms.reviewer: sroy
-ms.date: 11/09/2020
-ms.openlocfilehash: 43332c559c309bc99754467994a4718ece78d3cc
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 9/27/2021
+ms.openlocfilehash: 7d665b34a112328a742e2ba4ed9816406a58fa30
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121731210"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129082967"
 ---
 # <a name="customers-dashboard-in-commercial-marketplace-analytics"></a>コマーシャル マーケットプレース分析での [顧客] ダッシュボード
 
@@ -38,17 +38,45 @@ ms.locfileid: "121731210"
 > [!NOTE]
 > 顧客の獲得からパートナー センターでの報告までの最大待ち時間は、48 時間です。
 
+## <a name="access-the-customers-dashboard"></a>顧客ダッシュボードにアクセスする
+
+[!INCLUDE [Workspaces view note](./includes/preview-interface.md)]
+
+#### <a name="workspaces-view"></a>[ワークスペース ビュー](#tab/workspaces-view)
+
+1. [パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインします。
+1. ホーム ページで、 **[分析情報]** タイルを選択します。
+
+    [ ![パートナー センター ホーム ページの [分析情報] タイルを示しています。](./media/workspaces/partner-center-insights-tile.png) ](./media/workspaces/partner-center-insights-tile.png#lightbox)
+
+1. 左側のメニューで **[顧客]** を選択します。
+
+#### <a name="current-view"></a>[現在のビュー](#tab/current-view)
+
+1. [パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインします。
+1. 左側のナビゲーション メニューで、 **[コマーシャル マーケットプレース]** 、 **[分析]** 、 **[顧客]** の順に選択します。
+
+---
+
 ## <a name="elements-of-the-customers-dashboard"></a>[顧客] ダッシュボードの要素
 
 次のセクションでは、[顧客] ダッシュボードの使用方法とデータの読み方について説明します。
 
-パートナー センターの [顧客] ダッシュボードにアクセスするには、**コマーシャル マーケットプレース** で、 **[[分析]](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**  >  **[顧客]** を選択します。
-
 ### <a name="month-range"></a>月範囲
+
+#### <a name="workspaces-view"></a>[ワークスペース ビュー](#tab/workspaces-view)
+
+各ページの右上隅には、月範囲の選択が表示されます。 過去 6 か月または 12 か月の月範囲を選択することで、あるいは 12 か月を最大期間とするカスタムの月範囲を選択することで、 **[顧客]** ページのグラフの出力をカスタマイズします。 既定の月範囲 (計算期間) は 6 か月です。
+
+[ ![[顧客] ページの月フィルターを示しています。](./media/customer-dashboard/customers-workspace-filters.png) ](./media/customer-dashboard/customers-workspace-filters.png#lightbox)
+
+#### <a name="current-view"></a>[現在のビュー](#tab/current-view)
 
 各ページの右上隅には、月範囲の選択が表示されます。 過去 6 か月または 12 か月の月範囲を選択することで、あるいは 12 か月を最大期間とするカスタムの月範囲を選択することで、 **[顧客]** ページのグラフの出力をカスタマイズします。 既定の月範囲 (計算期間) は 6 か月です。
 
 :::image type="content" source="./media/customer-dashboard/month-range-filters.png" alt-text="[顧客] ページの月フィルターの画像。":::
+
+---
 
 > [!NOTE]
 > 視覚化ウィジェットおよびエクスポート レポートのすべてのメトリックでは、ユーザーが選択した計算期間が優先されます。
@@ -81,7 +109,7 @@ _顧客の種類_ には、新規、既存、チャーンの 3 つがありま�
 
 **注文/使用量別顧客数** グラフには、[注文]、[正規化した使用]、および [生の使用] の 3 つのタブがあります。 **[注文]** タブを選択して、注文の詳細を表示します。
 
-:::image type="content" source="./media/customer-dashboard/customers-by-orders-usage.png" alt-text="[顧客] ページの [注文別および使用量別の顧客] ウィジェットの [注文] タブの画像。":::
+[ ![[顧客] ページの [注文別および使用量別の顧客] ウィジェットの [注文] タブを示しています。](./media/customer-dashboard/customers-by-orders-usage.png) ](./media/customer-dashboard/customers-by-orders-usage.png#lightbox)
 
 次のことを考慮してください。
 
