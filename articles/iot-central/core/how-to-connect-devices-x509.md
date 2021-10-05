@@ -102,7 +102,7 @@ IoT Central では、デバイスとアプリケーションの間の通信を�
 
 ### <a name="run-sample-device-code&quot;></a>サンプル デバイス コードを実行する
 
-:::zone pivot=&quot;programming-language-csharp&quot;
+:::zone pivot="programming-language-csharp"
 
 Windows を使用している場合、サンプルを機能させるには、X.509 証明書を Windows 証明書ストアに格納する必要があります。 証明書をストアに追加するには:
 
