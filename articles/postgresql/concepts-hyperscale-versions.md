@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 08/03/2021
-ms.openlocfilehash: 299005d8d7c961335decbce46bab8c558d2589a1
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 8dd0929d56bac0b2f825d976ba07bd0956c0d063
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121734977"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124755206"
 ---
 # <a name="supported-database-versions-in-azure-database-for-postgresql--hyperscale-citus"></a>Azure Database for PostgreSQL でサポートされているデータベースのバージョン – Hyperscale (Citus)
 
@@ -22,15 +22,15 @@ Hyperscale (Citus) サーバー グループで実行されている PostgreSQL 
 
 ### <a name="postgresql-version-13"></a>PostgreSQL バージョン 13
 
-現在のマイナー リリースは 13.3 です。 このマイナー リリースの機能強化と修正の詳細については、[PostgreSQL のドキュメント](https://www.postgresql.org/docs/13/static/release-13-2.html)を参照してください。
+現在のマイナー リリースは 13.4 です。 このマイナー リリースの機能強化と修正の詳細については、[PostgreSQL のドキュメント](https://www.postgresql.org/docs/13/release-13-4.html)を参照してください。
 
 ### <a name="postgresql-version-12"></a>PostgreSQL バージョン 12
 
-現在のマイナー リリースは 12.7 です。 このマイナー リリースの機能強化と修正の詳細については、[PostgreSQL のドキュメント](https://www.postgresql.org/docs/12/static/release-12-6.html)を参照してください。
+現在のマイナー リリースは 12.8 です。 このマイナー リリースの機能強化と修正の詳細については、[PostgreSQL のドキュメント](https://www.postgresql.org/docs/12/release-12-8.html)を参照してください。
 
 ### <a name="postgresql-version-11"></a>PostgreSQL バージョン 11
 
-現在のマイナー リリースは 11.12 です。 このマイナー リリースの機能強化と修正の詳細については、[PostgreSQL のドキュメント](https://www.postgresql.org/docs/11/static/release-11-11.html)を参照してください。
+現在のマイナー リリースは 11.13 です。 このマイナー リリースの機能強化と修正の詳細については、[PostgreSQL のドキュメント](https://www.postgresql.org/docs/11/release-11-13.html)を参照してください。
 
 ### <a name="postgresql-version-10-and-older"></a>PostgreSQL バージョン 10 以前
 

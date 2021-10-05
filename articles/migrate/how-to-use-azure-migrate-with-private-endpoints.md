@@ -6,12 +6,12 @@ ms.author: deseelam
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 05/10/2020
-ms.openlocfilehash: 10f46f5788cd2f17be4b46c2f655fb4e05fed1d9
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: efe9f6ce21e59df3d7f8009b7ff540a77b4cc50a
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122965946"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129094502"
 ---
 # <a name="use-azure-migrate-with-private-endpoints"></a>プライベート エンドポイントで Azure Migrate を使用する
 
@@ -27,7 +27,7 @@ Private Link を使用すると、Azure ExpressRoute のプライベート ピ�
 
 ### <a name="supported-geographies"></a>サポートされている地域
 
-すべての[パブリック クラウド リージョン](./migrate-support-matrix.md#supported-geographies-public-cloud)で、機能がプレビュー段階になりました。
+この機能は、現在サポートされている[パブリック クラウド](/azure/migrate/migrate-support-matrix#supported-geographies-public-cloud)と[政府機関のクラウド地域でプレビュー段階にあります。](/azure/migrate-support-matrix#supported-geographies-azure-government)
 
 ### <a name="required-permissions"></a>必要なアクセス許可
 
@@ -121,7 +121,7 @@ Azure Migrate の検出および評価では、軽量の Azure Migrate アプラ
 
     **ダウンロード** | **ハッシュ値**
     --- | ---
-    [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2160648) | CA8CEEE4C7AC13328ECA56AE9EB35137336CD3D73B1F867C4D736286EF61A234
+    [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2160648) | BA84B58E88DDFE23E5D4CE73530227EBBC187B3634B66A3E0F0B3E5DF5F0A94F
 
 > [!NOTE]
 > 同じスクリプトを使用すると、選択したシナリオ (VMware、Hyper-V、物理など) のいずれかでプライベート エンドポイント接続を使用してアプライアンスを設定し、必要な構成でアプライアンスをデプロイすることができます。
@@ -131,16 +131,18 @@ Azure Migrate の検出および評価では、軽量の Azure Migrate アプラ
 #### <a name="run-the-azure-migrate-installer-script"></a>Azure Migrate インストーラー スクリプトを実行する
 
 1. アプライアンスをホストするサーバー上のフォルダーに ZIP ファイルを抽出します。  既存の Azure Migrate アプライアンスが存在するサーバー上でスクリプトを実行しないよう注意してください。
-2. 管理 (昇格された) 特権を使用して上記のサーバーで PowerShell を起動します。
-3. PowerShell ディレクトリを、ダウンロードした ZIP ファイルの内容が抽出されたフォルダーに変更します。
-4. 次のコマンドを実行して、**AzureMigrateInstaller.ps1** という名前のスクリプトを実行します。
 
-    
-    ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> .\AzureMigrateInstaller.ps1 ```
+2. 管理 (昇格された) 特権を使用して上記のサーバーで PowerShell を起動します。
+
+3. PowerShell ディレクトリを、ダウンロードした ZIP ファイルの内容が抽出されたフォルダーに変更します。
+
+4. 次のコマンドを実行して、`AzureMigrateInstaller.ps1` という名前のスクリプトを実行します。
+
+   `PS C:\Users\administrator\Desktop\AzureMigrateInstaller> .\AzureMigrateInstaller.ps1`
 
 5. シナリオ、クラウド、接続性からそれぞれオプションを選択して、必要な構成でアプライアンスをデプロイします。 たとえば、以下に示す選択内容の場合、アプライアンスは、**Azure パブリック クラウド** で **プライベート エンドポイント接続** を使用して、**VMware 環境で実行されているサーバー** を検出して Azure Migrate プロジェクトに対して評価するように設定されます。
 
-    :::image type="content" source="./media/how-to-use-azure-migrate-with-private-endpoints/script-vmware-private-inline.png" alt-text="必要なプライベート エンドポイント向けの構成でアプライアンスを設定する方法を示すスクリーンショット。" lightbox="./media/how-to-use-azure-migrate-with-private-endpoints/script-vmware-private-expanded.png":::
+   :::image type="content" source="./media/how-to-use-azure-migrate-with-private-endpoints/script-vmware-private-inline.png" alt-text="必要なプライベート エンドポイント向けの構成でアプライアンスを設定する方法を示すスクリーンショット。" lightbox="./media/how-to-use-azure-migrate-with-private-endpoints/script-vmware-private-expanded.png":::
 
 スクリプトが正常に実行されると、アプライアンス構成マネージャーが自動的に起動します。
 
@@ -302,7 +304,7 @@ Azure Resource Manager のロールのアクセス許可は、ストレージ �
 
 その後、[レプリケーションの確認と開始](./tutorial-migrate-physical-virtual-machines.md#replicate-machines)および[移行の実行](./tutorial-migrate-physical-virtual-machines.md#run-a-test-migration)に関する手順に従ってください。
 
+## <a name="next-steps"></a>次のステップ
 
-## <a name="next-steps"></a>次の手順
 - [移行プロセス](./tutorial-migrate-physical-virtual-machines.md#complete-the-migration)を完了します。
 - [移行後のベスト プラクティス](./tutorial-migrate-physical-virtual-machines.md#post-migration-best-practices)を確認します。

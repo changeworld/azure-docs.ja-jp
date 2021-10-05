@@ -4,13 +4,13 @@ description: Bicep ファイルでパラメーターを定義する方法につ�
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 09/02/2021
-ms.openlocfilehash: 901e95708be75ebd4415c90dbd51eeb46ba492c4
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.date: 09/13/2021
+ms.openlocfilehash: b53402dfaa274c57d40ef7814b7920dc7eb0a8c7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123450253"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128619516"
 ---
 # <a name="parameters-in-bicep"></a>Bicep のパラメーター
 
@@ -20,7 +20,11 @@ Resource Manager は、デプロイ操作を開始する前にパラメーター
 
 各パラメーターは、いずれかの[データ型](data-types.md)に設定する必要があります。
 
-## <a name="minimal-declaration"></a>最小限の宣言
+### <a name="microsoft-learn"></a>Microsoft Learn
+
+パラメーターの詳細とハンズオン ガイダンスについては、**Microsoft Learn** で「[パラメーターを使用して再利用可能な Bicep テンプレートを構築する](/learn/modules/build-reusable-bicep-templates-parameters)」を参照してください。
+
+## <a name="declaration"></a>宣言
 
 各パラメーターには名前と型が必要です。 パラメーターに、同じスコープ内の変数、リソース、出力、またはその他のパラメーターと同じ名前を付けることはできません。
 
@@ -32,18 +36,27 @@ param demoObject object
 param demoArray array
 ```
 
-## <a name="decorators"></a>デコレータ
+## <a name="default-value"></a>既定値
 
-パラメーターでは、制約またはメタデータにデコレーターを使用します。 デコレーターは `@expression` という形で使用し、パラメーターの宣言の上に配置されます。
+パラメーターの既定値を指定できます。 既定値は、デプロイ時に値が指定されない場合に使用されます。
 
 ```bicep
-@expression
-param stgAcctName string
+param demoParam string = 'Contoso'
 ```
 
-この記事では、Bicep ファイルで使用できるデコレーターの使用方法について説明します。
+既定値を指定した式を使用できます。 他のパラメーター プロパティと共に式を使用することはできません。 パラメーター セクションでは、[reference](bicep-functions-resource.md#reference) 関数も、いずれの [list](bicep-functions-resource.md#list) 関数も使用できません。 これらの関数は、リソースのランタイムの状態を取得します。パラメーターが解決されるとき、デプロイの前に実行することはできません。
+
+```bicep
+param location string = resourceGroup().location
+```
+
+別のパラメーター値を使用して既定値を作成できます。 次のテンプレートを使用すると、サイト名からホスト プラン名が作成されます。
+
+:::code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/parameters/parameterswithfunctions.bicep" highlight="2":::
 
 ## <a name="secure-parameters"></a>セキュリティで保護されたパラメーター
+
+パラメーターでは、制約またはメタデータにデコレーターを使用します。 デコレーターは `@expression` という形で使用し、パラメーターの宣言の上に配置されます。
 
 文字列またはオブジェクトのパラメーターをセキュリティで保護されたものとマークすることができます。 セキュリティで保護されたパラメーターの値はデプロイ履歴に保存されず、ログに記録されません。
 
@@ -66,34 +79,6 @@ param demoSecretObject object
 ])
 param demoEnum string
 ```
-
-## <a name="default-value"></a>既定値
-
-パラメーターの既定値を指定できます。 既定値は、デプロイ時に値が指定されない場合に使用されます。
-
-```bicep
-param demoParam string = 'Contoso'
-```
-
-パラメーターの他のプロパティと共に既定値を指定するには、次の構文を使用します。
-
-```bicep
-@allowed([
-  'Contoso'
-  'Fabrikam'
-])
-param demoParam string = 'Contoso'
-```
-
-既定値を指定した式を使用できます。 他のパラメーター プロパティと共に式を使用することはできません。 パラメーター セクションでは、[reference](bicep-functions-resource.md#reference) 関数も、いずれの [list](bicep-functions-resource.md#list) 関数も使用できません。 これらの関数は、リソースのランタイムの状態を取得します。パラメーターが解決されるとき、デプロイの前に実行することはできません。
-
-```bicep
-param location string = resourceGroup().location
-```
-
-別のパラメーター値を使用して既定値を作成できます。 次のテンプレートを使用すると、サイト名からホスト プラン名が作成されます。
-
-:::code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/parameters/parameterswithfunctions.bicep":::
 
 ## <a name="length-constraints"></a>長さの制限
 

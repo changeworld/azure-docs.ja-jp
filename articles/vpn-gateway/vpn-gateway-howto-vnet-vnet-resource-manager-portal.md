@@ -6,22 +6,22 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 07/21/2021
+ms.date: 09/23/2021
 ms.author: cherylmc
-ms.openlocfilehash: 3e8c2846b58499e5aabdec80f8fcd75cab3e6eb5
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 92ec3349f5e2e2f06fdbe7f56468a7145452276d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121729495"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128667067"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>Azure ポータルを使用して VNet 間 VPN ゲートウェイ接続を構成する
 
-この記事は、VNet 間という接続の種類を使用して、仮想ネットワーク (VNets) を接続する際に役立ちます。 仮想ネットワークが属しているリージョンやサブスクリプションは異なっていてもかまいません。 異なるサブスクリプションの VNet を接続する場合、サブスクリプションが同じ Active Directory テナントに関連付けられている必要はありません。 
+この記事は、Azure portal を使用して VNet 間接続の種類を使用して、仮想ネットワーク (VNets) を接続する際に役立ちます。 仮想ネットワークが属しているリージョンやサブスクリプションは異なっていてもかまいません。 異なるサブスクリプションの VNet を接続する場合、サブスクリプションが同じ Active Directory テナントに関連付けられている必要はありません。 この種類の構成では、2 つの仮想ネットワーク ゲートウェイ間の接続が作成されます。 この記事の内容は、VNet ピアリングには当てはまりません。 VNet ピアリングについては、「[仮想ネットワーク ピアリング](../virtual-network/virtual-network-peering-overview.md)」記事を参照してください。 
 
 :::image type="content" source="./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/vnet-vnet-diagram.png" alt-text="VNet 間の図":::
 
-この記事の手順は、[Azure Resource Manager デプロイ モデル](../azure-resource-manager/management/deployment-models.md)に適用されます。また、この手順では Azure portal を使用します。 以下の記事で説明されているオプションを使用して、別のデプロイ ツールやモデルでこの構成を作成することができます。
+この構成は、VNet のデプロイ モデルに応じて、さまざまなツールを使用して作成できます。 この記事の手順は、[Azure Resource Manager デプロイ モデル](../azure-resource-manager/management/deployment-models.md) と Azure portal に適用されます。 別のデプロイ モデルまたはデプロイ方法の記事に切り替えるには、ドロップダウンを使用します。 
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
@@ -41,7 +41,9 @@ ms.locfileid: "121729495"
 
 VNet 間接続の構成は、VNet を接続するためのシンプルな方法です。 VNet 間接続 (VNet2VNet) の種類を使用して仮想ネットワークどうしを接続する場合、それはオンプレミスの場所へのサイト間 IPsec 接続を作成することに似ています。 どちらの接続の種類でも、VPN ゲートウェイを使用して IPsec/IKE を使った安全なトンネルが提供され、通信時には同じように機能します。 しかし、ローカル ネットワーク ゲートウェイの構成方法は異なります。 
 
-VNet 間接続を作成するときに、ローカル ネットワーク ゲートウェイのアドレス空間は自動的に作成され、設定されます。 一方の VNet のアドレス空間を更新すると、更新されたアドレス空間へのルーティングがもう一方の VNet で自動的に行われます。 VNet 間接続の作成は、通常、サイト間接続の場合よりも高速で簡単です。
+VNet 間接続を作成するときに、ローカル ネットワーク ゲートウェイのアドレス空間は自動的に作成され、設定されます。 一方の VNet のアドレス空間を更新すると、更新されたアドレス空間へのルーティングがもう一方の VNet で自動的に行われます。 VNet 間接続の作成は、通常、サイト間接続の場合よりも高速で簡単です。 ただし、この構成では、ローカル ネットワーク ゲートウェイは表示されません。 
+* ローカル ネットワーク ゲートウェイに追加のアドレス空間を指定する場合、または後で接続を追加する予定でローカル ネットワーク ゲートウェイを調整する必要がある場合は、サイト間の手順を使用して構成を作成する必要があります。 
+* VNet 間接続には、ポイント対サイト クライアント プールのアドレス空間は含まれません。 ポイント対サイト クライアントの推移的ルーティングが必要な場合は、仮想ネットワーク ゲートウェイ間にサイト間接続を作成するか、VNet ピアリングを使用します。
 
 ### <a name="site-to-site-ipsec"></a>サイト間 (IPsec)
 
@@ -49,7 +51,10 @@ VNet 間接続を作成するときに、ローカル ネットワーク ゲー�
 
 ### <a name="vnet-peering"></a>VNET ピアリング
 
-VNet ピアリングを使用して VNet を接続することもできます。 VNet ピアリングは VPN ゲートウェイを使用せず、さまざまな制約があります。 さらに、[VNET ピアリングの料金](https://azure.microsoft.com/pricing/details/virtual-network)は、[VNet 間 VPN Gateway の料金](https://azure.microsoft.com/pricing/details/vpn-gateway)と計算方法が異なります。 詳細については、「 [VNet ピアリング](../virtual-network/virtual-network-peering-overview.md)」を参照してください。
+VNet ピアリングを使用して VNet を接続することもできます。
+* VNet ピアリングは VPN ゲートウェイを使用せず、さまざまな制約があります。
+* [VNet ピアリングの料金](https://azure.microsoft.com/pricing/details/virtual-network)は、[VNet 間 VPN Gateway の料金](https://azure.microsoft.com/pricing/details/vpn-gateway)とは計算方法が異なります。
+* VNet ピアリングの詳細については、「[仮想ネットワーク ピアリング](../virtual-network/virtual-network-peering-overview.md)」記事を参照してください。
 
 ## <a name="why-create-a-vnet-to-vnet-connection"></a>VNet 間接続を作成する理由
 

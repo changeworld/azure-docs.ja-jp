@@ -1,13 +1,9 @@
 ---
 title: SAP NetWeaver のための Azure Virtual Machines 高可用性
 description: この記事では、SAP NetWeaver のための高可用性 Azure Virtual Machines について説明します。
-services: virtual-machines-windows,virtual-network,storage
-documentationcenter: saponazure
 author: rdeltcheva
 manager: juergent
-editor: ''
 tags: azure-resource-manager
-keywords: ''
 ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
 ms.service: virtual-machines-sap
 ms.topic: article
@@ -16,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9b63dc024124665e76e27241101de9b70e62fa17
-ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
+ms.openlocfilehash: 2f9d8c2c6b300a13956e3bdf4e4c4591e7f2ee87
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113486249"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128591275"
 ---
 # <a name="high-availability-azure-virtual-machines-for-sap-netweaver"></a>SAP NetWeaver のための高可用性 Azure Virtual Machines
 
@@ -1330,7 +1326,7 @@ SAP アプリケーション サーバー インスタンスのホストとし�
 
 **SAP PR1** クラスター グループが、クラスター ノード A (たとえば **pr1-ascs-0**) で動作しています。 **SAP PR1** クラスター グループに含まれ、ASCS/SCS インスタンスが使用する共有ディスク ドライブ S を、クラスター ノード A に割り当てます。
 
-![図 61:フェールオーバー クラスター マネージャー:SAP <SID> クラスター グループがクラスター ノード A で動作している][sap-ha-guide-figure-5000]
+![図 61: フェールオーバー クラスター マネージャー: SAP \<SID\> クラスター グループがクラスター ノード A で動作している][sap-ha-guide-figure-5000]
 
 _**図 61:** フェールオーバー クラスター マネージャー:SAP <*SID*> クラスター グループがクラスター ノード A で動作している_
 
@@ -1359,7 +1355,7 @@ _**図 62:** SIOS DataKeeper で、クラスター ノード A からクラス�
 
    フェールオーバーの後、SAP <*SID*> クラスター グループは、クラスター ノード B (たとえば **pr1-ascs-1**) で動作しています。
 
-   ![図 63:フェールオーバー クラスター マネージャーで SAP <SID> クラスター グループがクラスター ノード B で動作している][sap-ha-guide-figure-5002]
+   ![図 63: フェールオーバー クラスター マネージャー: SAP \<SID\> クラスター グループがクラスター ノード B で動作している][sap-ha-guide-figure-5002]
 
    _**図 63**:フェールオーバー クラスター マネージャーで SAP <*SID*> クラスター グループがクラスター ノード B で動作している_
 

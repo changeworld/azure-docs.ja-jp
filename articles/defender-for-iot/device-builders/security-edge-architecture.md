@@ -1,27 +1,27 @@
 ---
-title: IoT Edge 向け Defender for IoT Defender-IoT-micro-agent
-description: IoT Edge 向け Azure Defender for IoT Defender-IoT-micro-agent のアーキテクチャと機能を理解します。
+title: IoT Edge 用の Defender for IoT azureiotsecurity
+description: IoT Edge 用の Azure Defender for IoT azureiotsecurity のアーキテクチャと機能を理解します。
 ms.topic: conceptual
-ms.date: 09/09/2020
-ms.openlocfilehash: 2e97d31ddf447c072f7bcf8674f29e3ee8086f83
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.date: 09/23/2021
+ms.openlocfilehash: dddd45c857537cbb1af8032c6e53590e9a8ff4cd
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113018765"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128604894"
 ---
-# <a name="azure-defender-for-iot-edge-defender-iot-micro-agent"></a>Azure Defender for IoT Edge Defender-IoT-micro-agent
+# <a name="azure-defender-for-iot-edge-azureiotsecurity"></a>Azure Defender for IoT Edge azureiotsecurity
 
 [Azure IoT Edge](../../iot-edge/index.yml) では、エッジでのビジネス ワークフローを管理および実行するための強力な機能が提供されます。
 IoT Edge は IoT 環境内で重要な役割を果たしているため、悪意のあるアクターの注意を特に引きます。
 
-Defender for IoT Defender-IoT-micro-agent により、IoT Edge デバイスの包括的なセキュリティ ソリューションが提供されます。
+Defender for IoT azureiotsecurity により、IoT Edge デバイスの包括的なセキュリティ ソリューションが提供されます。
 Defender for IoT モジュールでは、オペレーティング システムおよびコンテナー システムから未加工のセキュリティ データが収集、集約、分析されて、実行可能なセキュリティ推奨事項とアラートに変換されます。
 
 IoT デバイスに対する Defender for IoT セキュリティ エージェントと同様に、Defender for IoT Edge モジュールもそのモジュール ツインによって高度なカスタマイズが可能です。
 詳しくは、[エージェントの構成](how-to-agent-configuration.md)に関する記事をご覧ください。
 
-IoT Edge 用の Defender for IoT Defender-IoT-micro-agent からは、次の機能が提供されます。
+IoT Edge 用の Defender for IoT azureiotsecurity では、次の機能が提供されます。
 
 - 基になるオペレーティング システム (Linux) および IoT Edge コンテナー システムから、生のセキュリティ イベントを収集します。
 
@@ -31,24 +31,24 @@ IoT Edge 用の Defender for IoT Defender-IoT-micro-agent からは、次の機�
 
 - [IoT Edge ハブ](../../iot-edge/iot-edge-runtime.md#iot-edge-hub)経由で送信されるメッセージに、未加工のセキュリティ イベントを集約します。
 
-- Defender-IoT-micro-agent ツインを使用することで構成が削除されます。
+- azureiotsecurity ツインを使用して構成を削除します。
 
   詳細については、[Defender for IoT エージェントの構成](how-to-agent-configuration.md)に関するページを参照してください。
 
-IoT Edge 用の Defender for IoT Defender-IoT-micro-agent は、IoT Edge において特権モードで実行されます。
+IoT Edge 用の Defender for IoT azureiotsecurity は、IoT Edge において特権モードで実行されます。
 モジュールでオペレーティング システムおよび他の IoT Edge モジュールを監視できるためには、特権モードが必要です。
 
 ## <a name="module-supported-platforms"></a>モジュールのサポート対象プラットフォーム
 
-現在、IoT Edge 用の Defender for IoT Defender-IoT-micro-agent は、Linux でのみ利用できます。
+現在、IoT Edge 用の Defender for IoT azureiotsecurity は、Linux でのみ利用できます。
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、IoT Edge 用の Defender for IoT Defender-IoT-micro-agent のアーキテクチャと機能について説明しました。
+この記事では、IoT Edge 用の Defender for IoT azureiotsecurity のアーキテクチャと機能について説明しました。
 
 Defender for IoT のデプロイの概要について引き続き学習するには、次の記事を参照してください。
 
-- [IoT Edge 向け Defender-IoT-micro-agent](how-to-deploy-edge.md) を展開する
+- [IoT Edge 用の azureiotsecurity](how-to-deploy-edge.md) をデプロイする
 - [Defender-IoT-micro-agent を構成する](how-to-agent-configuration.md)方法を学習する
 - [IoT Hub で Defender for IoT サービスを有効にする](quickstart-onboard-iot-hub.md)方法について確認する
 - [Defender for IoT についてよく寄せられる質問](resources-agent-frequently-asked-questions.md)からサービスの詳細について確認する

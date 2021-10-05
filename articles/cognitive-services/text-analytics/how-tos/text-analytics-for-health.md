@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 06/18/2021
+ms.date: 09/16/2021
 ms.author: aahi
-ms.openlocfilehash: 5b1883b06ae234ed8a4f9adf949cf26919f7b877
-ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
+ms.openlocfilehash: d86e9d5cbd9168625f71ce7b4ebb0be598d00557
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113550158"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128677424"
 ---
 # <a name="how-to-use-text-analytics-for-health"></a>方法: Text Analytics for Health を使用する
 
@@ -83,7 +83,7 @@ Text Analytics for Health では、英語のドキュメントのみがサポー
 
 ## <a name="using-the-client-library"></a>クライアント ライブラリの使用
 
-Text Analytics クライアント ライブラリの最新のプレリリース版を使用すると、クライアント オブジェクトを使用して Text Analytics for Health を呼び出すことができます。 リファレンス ドキュメントと、GitHub の例を参照してください。
+Text Analytics クライアント ライブラリの最新のプレリリース版を使用すると、クライアント ライブラリを使用して Text Analytics for Health を呼び出すことができます。 リファレンス ドキュメントと、GitHub の例を参照してください。
 * [C#](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics)
 * [Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/)
 * [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics)

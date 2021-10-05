@@ -10,13 +10,13 @@ ms.custom: devx-track-azurecli, references_regions
 ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
-ms.date: 08/30/2021
-ms.openlocfilehash: cad2ac9319eb674cb8022ff5ce3d2df2a57df648
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.date: 09/22/2021
+ms.openlocfilehash: 4897b557626be5071a21d2cc1a6a8194eaed8994
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123224705"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129154282"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>Azure Machine Learning コンピューティング インスタンスを作成して管理する
 
@@ -123,10 +123,11 @@ az ml computetarget create computeinstance  -n instance -s "STANDARD_D3_V2" -v
 1. 必要に応じて <a name="advanced-settings"></a> **[詳細設定] の [次へ]** を選択します。
 
     * SSH アクセスを有効にします。  以下の[詳細な SSH アクセス手順](#enable-ssh)に従います。
-    * 仮想ネットワークを有効にします。 **[リソース グループ]** 、 **[仮想ネットワーク]** 、および **[サブネット]** を指定して、Azure Virtual Network (vnet) 内にコンピューティング インスタンスを作成します。 詳細については、vnet でのこれらの[ネットワーク要件](./how-to-secure-training-vnet.md)に関するページを参照してください。 
+    * 仮想ネットワークを有効にします。 **[リソース グループ]** 、 **[仮想ネットワーク]** 、および **[サブネット]** を指定して、Azure Virtual Network (vnet) 内にコンピューティング インスタンスを作成します。 __[No public IP]\(パブリック IP なし\)__ (プレビュー) を選択して、プライベート リンク ワークスペースを必要とするパブリック IP アドレスを作成しないようにすることもできます。 また、仮想ネットワークのセットアップに必要なこれらの[ネットワーク要件](./how-to-secure-training-vnet.md)も満たしている必要があります。 
     * コンピューターを別のユーザーに割り当てます。 他のユーザーに割り当てる方法の詳細については「、[代理作成](#on-behalf)」を参照してください。
     * セットアップ スクリプトを使用したプロビジョニング (プレビュー) - セットアップ スクリプトを作成して使用する方法の詳細については、「[スクリプトを使用したコンピューティング インスタンスのカスタマイズ](#setup-script)」を参照してください。
     * スケジュールを追加する (プレビュー)。 コンピューティング インスタンスが自動的に起動またはシャットダウンするために時間をスケジュール設定します。 以下の「[スケジュールの詳細](#schedule)」を参照してください。
+
 
 ---
 
@@ -265,8 +266,50 @@ Resource Manager テンプレートに、以下を追加します。
     // the ranges shown above or two numbers in the range separated by a 
     // hyphen (meaning an inclusive range). 
     ```
-
+### <a name="azure-policy-support-to-default-a-schedule"></a>1 つのスケジュールを既定にするための Azure Policy サポート
 Azure Policy を使用して、サブスクリプション内のすべてのコンピューティング インスタンスに対して存在するシャットダウン スケジュールを適用するか、何も存在しない場合のスケジュールを既定値として設定します。
+午後 10 時 (太平洋標準時) のシャットダウン スケジュールを既定にするためのサンプル ポリシーを次に示します。
+```json
+{
+    "mode": "All",
+    "policyRule": {
+     "if": {
+      "allOf": [
+       {
+        "field": "Microsoft.MachineLearningServices/workspaces/computes/computeType",
+        "equals": "ComputeInstance"
+       },
+       {
+        "field": "Microsoft.MachineLearningServices/workspaces/computes/schedules",
+        "exists": "false"
+       }
+      ]
+     },
+     "then": {
+      "effect": "append",
+      "details": [
+       {
+        "field": "Microsoft.MachineLearningServices/workspaces/computes/schedules",
+        "value": {
+         "computeStartStop": [
+          {
+           "triggerType": "Cron",
+           "cron": {
+            "startTime": "2021-03-10T21:21:07",
+            "timeZone": "Pacific Standard Time",
+            "expression": "0 22 * * *"
+           },
+           "action": "Stop",
+           "status": "Enabled"
+          }
+         ]
+        }
+       }
+      ]
+     }
+    }
+}    
+```
 
 ## <a name="customize-the-compute-instance-with-a-script-preview"></a><a name="setup-script"></a> スクリプトを使用したコンピューティング インスタンスのカスタマイズ (プレビュー)
 

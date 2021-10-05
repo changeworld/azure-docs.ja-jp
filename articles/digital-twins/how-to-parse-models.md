@@ -4,22 +4,22 @@ titleSuffix: Azure Digital Twins
 description: パーサー ライブラリを使用して DTDL モデルを解析する方法について学習します。
 author: baanders
 ms.author: baanders
-ms.date: 8/13/2021
+ms.date: 9/2/2021
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: 584d4ba9de922cd035a70850f723550b02863e16
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: e77fc64277cd0210a4741bc6828b5f1f72cf0e73
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122606597"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124831003"
 ---
 # <a name="parse-and-validate-models-with-the-dtdl-parser-library"></a>DTDL パーサー ライブラリを使用してモデルを解析および検証する
 
 Azure Digital Twins の[モデル](concepts-models.md)は、JSON-LD ベースの Digital Twins Definition language (DTDL) を使用して定義されます。 **モデルは、Azure Digital Twins インスタンスにアップロードする前に、オフラインで検証することをお勧めします。**
 
-NuGet には、これを行うのに役立つ .NET クライアント側の DTDL 解析ライブラリが用意されています。[Microsoft.Azure.DigitalTwins.Parser](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/). 
+モデルを検証するために、.NET クライアント側 DTDL 解析ライブラリが NuGet: [Microsoft.Azure.DigitalTwins.Parser](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/) に用意されています。 
 
 パーサー ライブラリを直接 C# コードで使用することも、パーサー ライブラリに構築された、言語に依存しないコード サンプル プロジェクトを使用することもできます。[DTDL 検証ツール サンプル](/samples/azure-samples/dtdl-validator/dtdl-validator)
 

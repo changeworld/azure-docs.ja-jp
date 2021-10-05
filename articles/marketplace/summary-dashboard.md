@@ -7,13 +7,13 @@ ms.topic: conceptual
 author: smannepalle
 ms.author: smannepalle
 ms.reviewer: sroy
-ms.date: 08/06/2021
-ms.openlocfilehash: b9b3a1e651e6207cc037ab8e4c70f81a176c3d82
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/27/2021
+ms.openlocfilehash: ebf0a77eb4b0e79931af4f33a8adad4f6c115c22
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121747264"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129081542"
 ---
 # <a name="summary-dashboard-in-commercial-marketplace-analytics"></a>コマーシャル マーケットプレース分析での [Summary] (概要) ダッシュボード
 
@@ -31,17 +31,45 @@ ms.locfileid: "121747264"
 - 顧客によるオファーの使用
 - Azure Marketplace および AppSource での顧客のページ アクセス
 
+## <a name="access-the-summary-dashboard"></a>概要ダッシュボードにアクセスする
+
+[!INCLUDE [Workspaces view note](./includes/preview-interface.md)]
+
+#### <a name="workspaces-view"></a>[ワークスペース ビュー](#tab/workspaces-view)
+
+1. [パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインします。
+1. ホーム ページで、 **[分析情報]** タイルを選択します。
+
+    [ ![パートナー センター ホーム ページの [分析情報] タイルの図。](./media/workspaces/partner-center-insights-tile.png) ](./media/workspaces/partner-center-insights-tile.png#lightbox)
+
+1. 左側のメニューで **[概要]** を選択します。
+
+#### <a name="current-view"></a>[現在のビュー](#tab/current-view)
+
+1. [パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインします。
+1. 左側のナビゲーション メニューで、 **[コマーシャル マーケットプレース]**  >  **[分析]**  >  **[概要]** の順に選択します。
+
+---
+
 ## <a name="elements-of-the-summary-dashboard"></a>[Summary]\(概要\) ダッシュボードの要素
 
 次のセクションでは、[Summary]\(概要\) ダッシュボードの使用方法とデータの読み取り方法について説明します。
 
-パートナー センターの [概要] ダッシュボードにアクセスするには、**コマーシャル マーケットプレース** で、 **[[分析]](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**  >  **[概要]** を選択します。
-
 ### <a name="month-range"></a>月範囲
+
+#### <a name="workspaces-view"></a>[ワークスペース ビュー](#tab/workspaces-view)
+
+各ページの右上隅には、月範囲の選択が表示されます。 過去の指定した月数に基づく月範囲を選択することで、あるいは 12 か月を最大期間とするカスタムの月範囲を選択することで、 **[概要]** ページのグラフの出力をカスタマイズします。 既定の月範囲 (計算期間) は 6 か月です。
+
+[![[概要] ダッシュボードの月範囲オプションの画像。](./media/summary-dashboard/summary-dashboard-filters.png)](./media/summary-dashboard/summary-dashboard-filters.png#lightbox)
+
+#### <a name="current-view"></a>[現在のビュー](#tab/current-view)
 
 各ページの右上隅には、月範囲の選択が表示されます。 過去 3 か月、6 か月、または 12 か月の月範囲を選択することで、あるいは 12 か月を最大期間とするカスタムの月範囲を選択することで、 **[概要]** ページのグラフの出力をカスタマイズします。 既定の月範囲 (計算期間) は 6 か月です。
 
 :::image type="content" source="./media/summary-dashboard/summary-dashboard.png" alt-text="[概要] ダッシュボードの月範囲オプションの画像。":::
+
+---
 
 > [!NOTE]
 > 視覚化ウィジェットおよびエクスポート レポートのすべてのメトリックでは、ユーザーが選択した計算期間が優先されます。

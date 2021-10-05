@@ -1,27 +1,27 @@
 ---
 title: Google AdWords からデータをコピーする
+description: Azure Data Factory または Azure Synapse Analytics パイプラインで Copy アクティビティを使用して、Google AdWords からサポートされているシンク データ ストアへデータをコピーする方法について説明します。
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Google AdWords からサポートされているシンク データ ストアへデータをコピーする方法について説明します。
 ms.author: jianleishen
 author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 08/30/2021
-ms.openlocfilehash: 2cf54c712b4ac5ead93efb635fcb830ee4962694
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.date: 09/09/2021
+ms.openlocfilehash: fb7510c4be3b71b575de5b29f49babbfdd0943e6
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123312866"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124815187"
 ---
-# <a name="copy-data-from-google-adwords-using-azure-data-factory"></a>Azure Data Factory を使用して Google AdWords からデータをコピーする
+# <a name="copy-data-from-google-adwords-using-azure-data-factory-or-synapse-analytics"></a>Azure Data Factory または Azure Synapse Analytics を使用して Google AdWords からデータをコピーする
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 
-この記事では、Azure Data Factory でのコピー アクティビティを使用して、Google AdWords からデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
+この記事では、Azure Data Factory および Azure Synapse Analytics パイプラインで Copy アクティビティを使用して、Google AdWords からデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -33,7 +33,7 @@ ms.locfileid: "123312866"
 
 Google AdWords から、サポートされている任意のシンク データ ストアにデータをコピーできます。 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事の表をご覧ください。
 
-Azure Data Factory では接続を有効にする組み込みのドライバーが提供されるので、このコネクタを使用してドライバーを手動でインストールする必要はありません。
+このサービスでは接続を有効にする組み込みのドライバーが提供されるので、このコネクタを使用してドライバーを手動でインストールする必要はありません。
 
 ## <a name="getting-started"></a>作業の開始
 
@@ -47,7 +47,7 @@ Azure Data Factory では接続を有効にする組み込みのドライバー�
 
     # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
 
-    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI を使用した新しいリンク サービスの作成を示すスクリーンショット。":::
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI で新しいリンク サービスを作成するスクリーンショット。":::
 
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
@@ -74,11 +74,11 @@ Google AdWords のリンクされたサービスには、次のプロパティ�
 |:--- |:--- |:--- |
 | type | type プロパティは、次のように設定する必要があります:**GoogleAdWords** | はい |
 | clientCustomerID | レポート データをフェッチする対象の、AdWords アカウントのクライアント顧客 ID。  | はい |
-| developerToken | AdWords API へのアクセスを許可するために使用する、マネージャー アカウントに関連付けられている開発者トークン。  このフィールドを SecureString としてマークして ADF に安全に格納するか、Azure Key Vault にパスワードを格納し、データ コピーの実行時に ADF コピー アクティビティでそこからプルするかを選択できます。詳細については、[Key Vault への資格情報の格納](store-credentials-in-key-vault.md)に関するページを参照してください。 | はい |
+| developerToken | AdWords API へのアクセスを許可するために使用する、マネージャー アカウントに関連付けられている開発者トークン。  このフィールドを SecureString としてマークして ADF に安全に格納するか、Azure Key Vault にパスワードを格納し、データ コピーの実行時に Copy アクティビティでそこからプルするかを選択できます。詳しくは、[Key Vault への資格情報の格納](store-credentials-in-key-vault.md)に関するページをご覧ください。 | はい |
 | authenticationType | 認証に使用される OAuth 2.0 認証メカニズム。 ServiceAuthentication はセルフホステッド IR のみで使用できます。 <br/>使用できる値は、以下のとおりです。**ServiceAuthentication**、**UserAuthentication** | はい |
-| refreshToken | UserAuthentication で AdWords へのアクセスを承認するために Google から取得した更新トークン。 このフィールドを SecureString としてマークして ADF に安全に格納するか、Azure Key Vault にパスワードを格納し、データ コピーの実行時に ADF コピー アクティビティでそこからプルするかを選択できます。詳細については、[Key Vault への資格情報の格納](store-credentials-in-key-vault.md)に関するページを参照してください。 | いいえ |
-| clientId | 更新トークンを取得するために使用される Google アプリケーションのクライアント ID。 このフィールドを SecureString としてマークして ADF に安全に格納するか、Azure Key Vault にパスワードを格納し、データ コピーの実行時に ADF コピー アクティビティでそこからプルするかを選択できます。詳細については、[Key Vault への資格情報の格納](store-credentials-in-key-vault.md)に関するページを参照してください。 | いいえ |
-| clientSecret | 更新トークンを取得するために使用される google アプリケーションのクライアント シークレット。 このフィールドを SecureString としてマークして ADF に安全に格納するか、Azure Key Vault にパスワードを格納し、データ コピーの実行時に ADF コピー アクティビティでそこからプルするかを選択できます。詳細については、[Key Vault への資格情報の格納](store-credentials-in-key-vault.md)に関するページを参照してください。 | いいえ |
+| refreshToken | UserAuthentication で AdWords へのアクセスを承認するために Google から取得した更新トークン。 このフィールドを SecureString としてマークして ADF に安全に格納するか、Azure Key Vault にパスワードを格納し、データ コピーの実行時に Copy アクティビティでそこからプルするかを選択できます。詳しくは、[Key Vault への資格情報の格納](store-credentials-in-key-vault.md)に関するページをご覧ください。 | いいえ |
+| clientId | 更新トークンを取得するために使用される Google アプリケーションのクライアント ID。 このフィールドを SecureString としてマークして ADF に安全に格納するか、Azure Key Vault にパスワードを格納し、データ コピーの実行時に Copy アクティビティでそこからプルするかを選択できます。詳しくは、[Key Vault への資格情報の格納](store-credentials-in-key-vault.md)に関するページをご覧ください。 | いいえ |
+| clientSecret | 更新トークンを取得するために使用される google アプリケーションのクライアント シークレット。 このフィールドを SecureString としてマークして ADF に安全に格納するか、Azure Key Vault にパスワードを格納し、データ コピーの実行時に Copy アクティビティでそこからプルするかを選択できます。詳しくは、[Key Vault への資格情報の格納](store-credentials-in-key-vault.md)に関するページをご覧ください。 | いいえ |
 | email | ServiceAuthentication で使用されるサービス アカウントの電子メール ID。これはセルフホステッド IR のみで使用できます。  | いいえ |
 | keyFilePath | サービス アカウントの電子メール アドレスを認証するために使用される .p12 キー ファイルへの完全なパス。これはセルフホステッド IR のみで使用できます。  | いいえ |
 | trustedCertPath | TLS 経由で接続するときにサーバーを検証するための信頼された CA 証明書を含む .pem ファイルの完全なパス。 このプロパティは、セルフホステッド IR 上で TLS を使用している場合にのみ設定できます。 既定値は、IR でインストールされる cacerts.pem ファイルです。  | いいえ |
@@ -200,4 +200,4 @@ Google AdWords からデータをコピーするには、コピー アクティ�
 
 
 ## <a name="next-steps"></a>次のステップ
-Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。
+Copy アクティビティでソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関するセクションを参照してください。

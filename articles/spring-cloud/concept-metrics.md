@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: karler
 ms.custom: devx-track-java
-ms.openlocfilehash: d09b2aff00d32dc3865c13e2aaab94a0a86464e3
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 26d95493042d259029bc6a9428b016bbceb5681b
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122181575"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129154244"
 ---
 # <a name="metrics-for-azure-spring-cloud"></a>Azure Spring Cloud のメトリック
 
@@ -177,6 +177,20 @@ Azure Spring Cloud は、1 分ごとに更新されるメトリックを使用�
 >| tomcat.sessions.expired | tomcat.sessions.expired | Count | 期限切れになったセッションの数 |
 >| tomcat.sessions.rejected | tomcat.sessions.rejected | Count | アクティブなセッションの最大数に達したために作成されなかったセッションの数。 |
 >| tomcat.sessions.active.current | tomcat.sessions.active.current | Count | Tomcat セッションのアクティブ数 |
+
+### <a name="ingress"></a>イングレス
+
+>[!div class="mx-tdCol2BreakAll"]
+>| 表示名             | Azure メトリック名        | ユニット           | 詳細                                                                                                                                                                          |
+>|--------------------------|--------------------------|----------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+>| 受信バイト数           | IngressBytesReceived     | バイト          | クライアントからの Azure Spring Cloud によって受信されたバイト数                                                                                                                   |
+>| 送信バイト数               | IngressBytesSent         | バイト          | Azure Spring Cloud によってクライアントに送信されたバイト数                                                                                                                         |
+>| Requests                 | IngressRequests          | Count          | クライアントからの Azure Spring Cloud による要求数                                                                                                                         |
+>| 失敗した要求          | IngressFailedRequests    | Count          | クライアントからの Azure Spring Cloud による失敗した要求数                                                                                                                  |
+>| 応答の状態          | IngressResponseStatus    | Count          | Azure Spring Cloud によって返された HTTP 応答の状態。 応答状態コードの分布をさらに分類し、2xx、3xx、4xx、5xx のカテゴリで応答を表示できます |
+>| 応答時間            | IngressResponseTime      | 秒        | Azure Spring Cloud によって返された HTTP 応答時間。                                                                                                                                  |
+>| スループット (バイト/秒)  | IngressBytesReceivedRate | BytesPerSecond | クライアントからの Azure Spring Cloud によって受信された 1 秒あたりのバイト数                                                                                                                 |
+>| スループット アウト (バイト/秒) | IngressBytesSentRate     | BytesPerSecond | クライアントに Azure Spring Cloud によって送信された 1 秒あたりのバイト数                                                                                                                       |
 
 ## <a name="next-steps"></a>次のステップ
 

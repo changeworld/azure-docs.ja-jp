@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 224b0685b922e6ddd833637ddc1b628f0479ec70
-ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
+ms.openlocfilehash: 61703654b11543f2c0f41fa68964cae287d940b8
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112200818"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128563751"
 ---
 # <a name="ldap-synchronization-with-azure-active-directory"></a>Azure Active Directory との LDAP 同期
 
@@ -40,7 +40,7 @@ Azure Active Directory (Azure AD) によって、LDAP 同期を Azure AD Connect
 
 * **Web アプリ**:LDAP v3 ディレクトリに依存しているアプリケーションです。
 
-* **Azure AD**:Azure AD は、Azure AD Connect 経由で組織のオンプレミス LDAP ディレクトリから ID 情報 (ユーザー、グループ、パスワード) を同期します。 
+* **Azure AD**: Azure AD は、Azure AD Connect 経由で組織のオンプレミス LDAP ディレクトリから ID 情報 (ユーザー、グループ) を同期します。 
 
 * **Azure AD Connect**: オンプレミスの ID インフラストラクチャを Microsoft Azure AD に接続するためのツールです。 ウィザードとガイド付きエクスペリエンスは、接続に必要な前提条件とコンポーネントをデプロイおよび構成するのに役立ちます。 
 

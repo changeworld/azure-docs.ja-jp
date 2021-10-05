@@ -6,18 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/03/2021
+ms.date: 09/15/2021
 ms.author: alkohli
-ms.openlocfilehash: ab087747bbc6ee9edcb072223c2edf3465ba4cba
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 3fa49fdab111c60c9f73dad5703c39dbc33e1472
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110460550"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128554216"
 ---
 # <a name="return-your-azure-stack-edge-device"></a>Azure Stack Edge デバイスを返却する
 
-[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
+[!INCLUDE [applies-to-pro-fpga](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-fpga-sku.md)]
 
 この記事では、データをワイプして、ご利用の Azure Stack Edge デバイスを返却する方法について説明します。 デバイスを返却した後、デバイスと関連付けられたリソースを削除することもできます。
 
@@ -50,7 +50,7 @@ ms.locfileid: "110460550"
 
 返却プロセスを開始するには、次の手順を行います。
 
-1. Azure portal で Azure Stack Edge または Data Box Gateway リソースにアクセスします。 **[概要]** で、右ペインのコマンド バーに移動し、 **[デバイスの返却]** を選択します。 
+1. Azure portal で、お使いの Azure Stack Edge リソースに移動します。 **[概要]** で、右ペインのコマンド バーに移動し、 **[デバイスの返却]** を選択します。 
 
     ![デバイスの返却 1](media/azure-stack-edge-return-device/return-device-1.png)  
 
@@ -87,16 +87,31 @@ ms.locfileid: "110460550"
 
 7. Azure Stack Edge 運用チームがメールを受信すると、返送ラベルが送られてきます。 このラベルを受け取ったら、運送業者とデバイスの集荷をスケジュールできます。 
 
+## <a name="pack-the-device"></a>デバイスのパック
+
+デバイスをパックするには、次の手順を実行します。
+
+1. デバイスをシャットダウンします。 ローカル Web UI で、 **[メンテナンス] > [Power settings]\(電源設定\)** に移動します。
+2. **[シャットダウン]** を選択します。 確認を求めるメッセージが表示されたら、 **[はい]** をクリックして続行します。 詳細については、「[電源を管理する](../databox-online/azure-stack-edge-manage-access-power-connectivity-mode.md#manage-power)」を参照してください。
+3. 電源ケーブルを外して、デバイスからネットワーク ケーブルをすべて取り外します。
+4. 出荷パッケージは、次の手順に従って慎重に準備してください。
+    1. Azure から要求された出荷箱、または元の出荷箱をパッケージ梱包材と一緒に使用します。 
+    1. 下部梱包材を箱の中に配置します。
+    1. 梱包材の上にデバイスを配置し、このときに、梱包材の中にぴったり収まるようにします。
+    1. パッケージに上部梱包材を配置します。
+    1. アクセサリ トレイに電源コードを配置し、上部梱包材の上にレールを配置します。
+    1. 箱に封をし、Azure から受け取った出荷ラベルをパッケージに貼り付けます。
+    
+    > [!IMPORTANT]
+    > 返送品を準備するための適切なガイドラインが確認されない場合、デバイスが破損する可能性があり、破損したデバイスの料金が課される可能性があります。 [製品のサービス使用条件](https://www.microsoft.com/licensing/product-licensing/products)に関するページと[紛失または破損しているデバイスに関する FAQ](https://azure.microsoft.com/pricing/details/databox/edge/) に関するページを参照してください。
+ 
+
+
 ## <a name="schedule-a-pickup"></a>集荷をスケジュールする
 
 集荷をスケジュールするには、次の手順を行います。
 
-1. デバイスをシャットダウンします。 ローカル Web UI で、 **[メンテナンス] > [Power settings]\(電源設定\)** に移動します。
-2. **[シャットダウン]** を選択します。 確認を求めるメッセージが表示されたら、 **[はい]** をクリックして続行します。 詳細については、「[電源を管理する](../databox-gateway/data-box-gateway-manage-access-power-connectivity-mode.md#manage-power)」を参照してください。
-3. 電源ケーブルを外して、デバイスからネットワーク ケーブルをすべて取り外します。
-4. 自分の箱または Azure から受け取った空き箱を使用して、出荷パッケージを準備します。 デバイスとそのデバイスに同梱されていた電源コードを箱に入れます。
-5. Azure から受け取った出荷ラベルをパッケージに貼り付けます。
-6. リージョンの運送業者で集荷をスケジュールします。 米国でデバイスを返却する場合、UPS または FedEx の運送業者をご利用になれます。 UPS に集荷をスケジュールするには:
+1. リージョンの運送業者で集荷をスケジュールします。 米国でデバイスを返却する場合、UPS または FedEx の運送業者をご利用になれます。 UPS に集荷をスケジュールするには:
 
     1. 最寄りの UPS (国/地域固有のフリー ダイヤル) に連絡します。
     2. 電話で、印刷ラベルに表示されている返送追跡番号を伝えます。
@@ -109,7 +124,7 @@ ms.locfileid: "110460550"
 デバイスが Azure データセンターに到着した後、デバイスは破損や改ざんの兆候がないかを検証されます。
 
 - デバイスがそのまま良好な状態で到着した場合、課金メーターはそのリソースに対して停止されます。 Azure Stack Edge 運用チームが、デバイスが返却されたことを確認するためにご連絡します。 その後、Azure portal でデバイスと関連付けられたリソースを削除することができます。
-- デバイスが大幅に破損して到着した場合、罰金が適用される可能性があります。 詳細については、[紛失または破損しているデバイスに関する FAQ](https://azure.microsoft.com/pricing/details/databox/edge/) に関するページと[製品のサービス使用条件](https://www.microsoft.com/licensing/product-licensing/products)に関するページを参照してください。  
+- デバイスが大幅に破損して到着した場合、料金が課される可能性があります。 詳細については、[紛失または破損しているデバイスに関する FAQ](https://azure.microsoft.com/pricing/details/databox/edge/) に関するページと[製品のサービス使用条件](https://www.microsoft.com/licensing/product-licensing/products)に関するページを参照してください。  
 
 
 次の場合に Azure portal でデバイスを削除できます。

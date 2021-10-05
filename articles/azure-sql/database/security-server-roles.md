@@ -9,12 +9,12 @@ ms.author: anwolter
 ms.topic: conceptual
 ms.date: 09/02/2021
 ms.reviewer: vanto
-ms.openlocfilehash: 64c012373187059792174618920b797b2d081aa2
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: cfb24ee98bf00fa46f75b0bef321a7b1694e2113
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123537204"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128630264"
 ---
 # <a name="azure-sql-database-server-roles-for-permission-management"></a>アクセス許可の管理のための Azure SQL Database サーバー ロール
 
@@ -56,7 +56,7 @@ Azure SQL Database のログインとユーザーについては、「[SQL Datab
 
 組み込みのサーバーレベルの各ロールには、特定のアクセス許可が割り当てられています。 次の表は、サーバーレベルのロールに割り当てられているアクセス許可を示しています。 また、データベースにユーザー アカウントが存在する場合に継承される、データベースレベルのアクセス許可も示します。
   
-|固定サーバー レベル ロール|サーバーレベルのアクセス許可|データベースレベルのアクセス許可 (データベース ユーザーが存在する場合)  
+|固定サーバー レベル ロール|サーバーレベルのアクセス許可|データベースレベルの権限 (ログインに一致するデータベース ユーザーが存在する場合)  
 |-------------|----------|-----------------|  
 |**##MS_DefinitionReader##**|VIEW ANY DATABASE、VIEW ANY DEFINITION、VIEW ANY SECURITY DEFINITION|VIEW DEFINITION、VIEW SECURITY DEFINITION|  
 |**##MS_ServerStateReader##**|VIEW SERVER STATE、VIEW SERVER PERFORMANCE STATE、VIEW SERVER SECURITY STATE|VIEW DATABASE STATE、VIEW DATABASE PERFORMANCE STATE、VIEW DATABASE SECURITY STATE|  

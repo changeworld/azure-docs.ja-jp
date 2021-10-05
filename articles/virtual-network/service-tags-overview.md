@@ -10,15 +10,15 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 4/23/2021
+ms.date: 9/20/2021
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 11f8c7ddd7e06e9cc4c27173d5bb8f9dd14cbd42
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 79785c82e06c9dc1621b3278ef886866ae9695ab
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122768474"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128590292"
 ---
 # <a name="virtual-network-service-tags"></a>仮想ネットワーク サービス タグ
 <a name="network-service-tags"></a>
@@ -101,6 +101,7 @@ ms.locfileid: "122768474"
 | **Internet** | パブリック インターネットによってアクセスできる仮想ネットワークの外部の IP アドレス空間。<br/><br/>このアドレス範囲には、[Azure によって所有されているパブリック IP アドレス空間](https://www.microsoft.com/download/details.aspx?id=41653)が含まれています。 | 両方 | いいえ | いいえ |
 | **LogicApps** | Logic Apps。 | 両方 | いいえ | いいえ |
 | **LogicAppsManagement** | Logic Apps の管理トラフィック。 | 受信 | いいえ | いいえ |
+| **MicrosoftAzureFluidRelay** | このタグは、Azure Microsoft Fluid Relay Server に使用される IP アドレスを表します。 | 送信 | いいえ | いいえ |
 | **MicrosoftCloudAppSecurity** | Microsoft Cloud App Security。 | 送信 | いいえ | いいえ |
 | **MicrosoftContainerRegistry** | Microsoft コンテナー イメージ用のコンテナー レジストリ。 <br/><br/>*注:* このタグは **AzureFrontDoor.FirstParty** タグに依存します。 | 送信 | はい | はい |
 | **PowerBI** | PowerBI。 *注: 現在、このタグは Azure portal で構成することはできません。* | 両方 | いいえ | いいえ|
@@ -155,6 +156,19 @@ ms.locfileid: "122768474"
 - [Azure Germany](https://www.microsoft.com/download/details.aspx?id=57064)   
 
 これらのファイル内の IP アドレス範囲は CIDR 表記です。 
+
+次の AzureCloud タグには、標準スキーマに従って書式設定された地域名を持たないことに注意してください。 
+- AzureCloud.centralfrance (FranceCentral)
+- AzureCloud.southfrance (FranceSouth)
+- AzureCloud.germanywc (GermanyWestCentral)
+- AzureCloud.germanyn (GermanyNorth)
+- AzureCloud.norwaye (NorwayEast)
+- AzureCloud.norwayw (NorwayWest)
+- AzureCloud.switzerlandn (SwitzerlandNorth)
+- AzureCloud.switzerlandw (SwitzerlandWest)
+- AzureCloud.usstagee (EastUSSTG)
+- AzureCloud.usstagec (SouthCentralUSSTG)
+
 
 > [!NOTE]
 >[Azure Public](https://www.microsoft.com/download/details.aspx?id=41653)、[Azure China](https://www.microsoft.com/download/details.aspx?id=42064)、および [Azure Germany](https://www.microsoft.com/download/details.aspx?id=54770) については、この情報のサブセットが XML ファイルで公開されています。 これらの XML ダウンロードは、2020 年 6 月 30 日に非推奨となり、その後は使用できなくなります。 前のセクションの説明に従って、Discovery API または JSON ファイルのダウンロードの使用に移行してください。

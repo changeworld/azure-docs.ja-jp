@@ -3,12 +3,12 @@ title: Azure Service Fabric のバージョン
 description: Azure Service Fabric のクラスターのバージョンとアクティブにサポートされているプラットフォームのバージョンについて説明します
 ms.topic: troubleshooting
 ms.date: 04/12/2021
-ms.openlocfilehash: 4eb08bb2ce94612ee81b9cdf19a1b3cd2e2d6b00
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: bf9eee45ab674e7089fbf5210d6d5677ae4e11a9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121729730"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124754958"
 ---
 # <a name="service-fabric-supported-versions"></a>Service Fabric のサポートされているバージョン
 この記事の表は、アクティブにサポートされている Service Fabric とプラットフォームのバージョンの概要です。
@@ -17,6 +17,7 @@ ms.locfileid: "121729730"
 
 | Service Fabric ランタイム |次のバージョンから直接アップグレード可能|次のバージョンにダウングレード可能|互換性のある SDK または NuGet パッケージのバージョン|サポートされている .NET ランタイム** |OS バージョン |サポート終了 |
 | --- | --- | --- | --- | --- | --- | --- |
+| 8.1 CU2 | 7.2 CU7 | 8.0 | バージョン 5.1 以前 | .NET 5.0 (GA)、.NET Core 2.1 以降、 <br>.NET Framework 4.5 以降すべて | [サポートされている OS バージョンを参照してください](#supported-windows-versions-and-support-end-date) | 現在のバージョン |
 | 8.1 CU1 | 7.2 CU7 | 8.0 | バージョン 5.1 以前 | .NET 5.0 (GA)、.NET Core 2.1 以降、 <br>.NET Framework 4.5 以降すべて | [サポートされている OS バージョンを参照してください](#supported-windows-versions-and-support-end-date) | 現在のバージョン |
 | 8.1 RTO | 7.2 CU7 | 8.0 | バージョン 5.1 以前 | .NET 5.0 (GA)、.NET Core 2.1 以降、 <br>.NET Framework 4.5 以降すべて | [サポートされている OS バージョンを参照してください](#supported-windows-versions-and-support-end-date) | 現在のバージョン |
 | 8.0 CU3 | 7.1 CU10 | 7.2 | バージョン 5.0 以前 | .NET 5.0 (GA)、.NET Core 2.1 以降、 <br>.NET Framework 4.5 以降すべて | [サポートされている OS バージョンを参照してください](#supported-windows-versions-and-support-end-date) | 2022 年 2 月 28 日 |
@@ -62,6 +63,7 @@ ms.locfileid: "121729730"
 
 | Service Fabric ランタイム | 次のバージョンから直接アップグレード可能 |次のバージョンにダウングレード可能 |互換性のある SDK または NuGet パッケージのバージョン | サポートされている .NET ランタイム** | OS のバージョン | サポート終了 |
 | --- | --- | --- | --- | --- | --- | --- |
+| 8.1 CU2 | 7.2 CU7 | 8.0 | バージョン 5.1 以前 | .NET Core 2.1 以降 | [サポートされている OS バージョンを参照してください](#supported-linux-versions-and-support-end-date) | 現在のバージョン |
 | 8.1 CU1 | 7.2 CU7 | 8.0 | バージョン 5.1 以前 | .NET Core 2.1 以降 | [サポートされている OS バージョンを参照してください](#supported-linux-versions-and-support-end-date) | 現在のバージョン |
 | 8.1 RTO | 7.2 CU7 | 8.0 | バージョン 5.1 以前 | .NET Core 2.1 以降 | [サポートされている OS バージョンを参照してください](#supported-linux-versions-and-support-end-date) | 現在のバージョン |
 | 8.0 CU3 | 7.1 CU8 | 7.2 | バージョン 5.0 以前 | .NET Core 2.1 以降 | [サポートされている OS バージョンを参照してください](#supported-linux-versions-and-support-end-date) | 2022 年 2 月 28 日 |
@@ -87,6 +89,7 @@ ms.locfileid: "121729730"
 
 | バージョン名 | Windows のバージョン番号 | Linux のバージョン番号 |
 | --- | --- | --- |
+| 8.1 CU2 | 8.1.329.9590 | 8.1.328.1 |
 | 8.1 CU1 | 8.1.321.9590 | 8.1.323.1 |
 | 8.1 RTO | 8.1.316.9590 | 8.1.320.1 |
 | 8.0 CU3 | 8.0.536.9590 | 8.0.527.1 |

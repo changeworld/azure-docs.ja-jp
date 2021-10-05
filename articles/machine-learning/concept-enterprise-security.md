@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: jmartens
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 06/02/2021
-ms.openlocfilehash: 27bd8124c0b78d1fecd1f7027104c3b5c9b8a8a1
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.date: 09/22/2021
+ms.openlocfilehash: 80416dd97f60935a221226cb50eb0a81c669658f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111541519"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128611360"
 ---
 # <a name="enterprise-security-and-governance-for-azure-machine-learning"></a>Azure Machine Learning のエンタープライズ セキュリティとガバナンス
 
@@ -115,6 +115,7 @@ Azure Machine Learning では、Azure プラットフォーム上でさまざま
 
 ## <a name="next-steps"></a>次のステップ
 
+* [Azure Machine Learning のエンタープライズ セキュリティに関するベスト プラクティス](/azure/cloud-adoption-framework/ready/azure-best-practices/ai-machine-learning-enterprise-security)
 * [TLS を使用して Azure Machine Learning Web サービスをセキュリティで保護する](how-to-secure-web-service.md)
 * [Web サービスとしてデプロイされた Machine Learning モデルを使用する](how-to-consume-web-service.md)
 * [Azure Firewall と共に Azure Machine Learning を使用する](how-to-access-azureml-behind-firewall.md)

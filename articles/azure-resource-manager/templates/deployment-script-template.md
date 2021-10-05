@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/25/2021
 ms.author: jgao
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ece3693fa183ba31de569e7db632c3d294c10437
-ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+ms.openlocfilehash: de462f24f05b93f40453cd74c85a41b5c11ac0d3
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123187183"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128656305"
 ---
 # <a name="use-deployment-scripts-in-arm-templates"></a>ARM テンプレートでデプロイ スクリプトを使用する
 
@@ -40,6 +40,10 @@ Azure Resource Manager テンプレート (ARM テンプレート) でデプロ�
 
 > [!NOTE]
 > 現在は、Azure サインインの再試行ロジックがラッパー スクリプトに組み込まれています。 デプロイ スクリプトと同じテンプレートでアクセス許可を付与する場合、マネージド ID のロール割り当てがレプリケートされるまで、デプロイ スクリプト サービスによって、10 秒間隔で 10 分間サインインが試行されます。
+
+### <a name="microsoft-learn"></a>Microsoft Learn
+
+ARM テンプレート テスト ツールキットの詳細と、ハンズオン ガイダンスについては、**Microsoft Learn** の「[デプロイ スクリプトを使用して ARM テンプレートを拡張する](/learn/modules/extend-resource-manager-template-deployment-scripts)」を参照してください。
 
 ## <a name="configure-the-minimum-permissions"></a>最低限のアクセス許可を構成する
 
@@ -320,8 +324,8 @@ PowerShell デプロイ スクリプトとは異なり、CLI/Bash のサポー�
 
 |環境変数|既定値|システムで予約済み|
 |--------------------|-------------|---------------|
-|AZ_SCRIPTS_AZURE_ENVIRONMENT|AzureCloud|N|
-|AZ_SCRIPTS_CLEANUP_PREFERENCE|OnExpiration|N|
+|AZ_SCRIPTS_AZURE_ENVIRONMENT|AzureCloud|×|
+|AZ_SCRIPTS_CLEANUP_PREFERENCE|OnExpiration|×|
 |AZ_SCRIPTS_OUTPUT_PATH|<AZ_SCRIPTS_PATH_OUTPUT_DIRECTORY>/<AZ_SCRIPTS_PATH_SCRIPT_OUTPUT_FILE_NAME>|Y|
 |AZ_SCRIPTS_PATH_INPUT_DIRECTORY|/mnt/azscripts/azscriptinput|Y|
 |AZ_SCRIPTS_PATH_OUTPUT_DIRECTORY|/mnt/azscripts/azscriptoutput|Y|
@@ -330,7 +334,7 @@ PowerShell デプロイ スクリプトとは異なり、CLI/Bash のサポー�
 |AZ_SCRIPTS_PATH_SUPPORTING_SCRIPT_URI_FILE_NAME|supportingscripturi.config|Y|
 |AZ_SCRIPTS_PATH_SCRIPT_OUTPUT_FILE_NAME|scriptoutputs.json|Y|
 |AZ_SCRIPTS_PATH_EXECUTION_RESULTS_FILE_NAME|executionresult.json|Y|
-|AZ_SCRIPTS_USER_ASSIGNED_IDENTITY|/subscriptions/|N|
+|AZ_SCRIPTS_USER_ASSIGNED_IDENTITY|/subscriptions/|×|
 
 `AZ_SCRIPTS_OUTPUT_PATH` の使用に関する詳細については、「[CLI スクリプトからの出力を操作する](#work-with-outputs-from-cli-script)」を参照してください。
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: conceptual
-ms.date: 07/20/2020
+ms.date: 09/13/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29b000ee3231361ccdca4c2909e093cdaef6bc04
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: cf76e5ffc7b3eabae7366805ed1a87d262854992
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122866519"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128630112"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>プライマリ更新トークンとは
 
@@ -69,14 +69,14 @@ Azure AD 登録済みデバイスのシナリオでは、この Azure AD アカ�
 
 ## <a name="what-is-the-lifetime-of-a-prt"></a>PRT の有効期間はどれくらいですか?
 
-発行された PRT は 14 日間有効であり、ユーザーがデバイスをアクティブに使用している限り継続的に更新されます。  
+発行された PRT は 90 日間有効であり、ユーザーがデバイスをアクティブに使用している限り継続的に更新されます。  
 
 ## <a name="how-is-a-prt-used"></a>PRT はどのように使用されますか?
 
 Windows で、PRT は 2 つの主要コンポーネントによって使用されます。
 
 * **Azure AD CloudAP プラグイン**: Windows サインイン中に、Azure AD CloudAP プラグインが、ユーザーから提供された資格情報を使用して Azure AD から PRT を要求します。 また、PRT をキャッシュして、ユーザーがインターネット接続にアクセスできないときのキャッシュ サインインを有効にします。
-* **Azure AD WAM プラグイン**: ユーザーがアプリケーションにアクセスしようとすると、Azure AD WAM プラグインが PRT を使用して Windows 10 で SSO を有効にします。 Azure AD WAM プラグインは PRT を使用して、トークン要求を WAM に依存するアプリケーションについて更新トークンとアクセス トークンを要求します。 また、ブラウザーの要求に PRT を挿入して、ブラウザー上で SSO を有効にします。 Windows 10 のブラウザー SSO は Microsoft Edge (ネイティブ)、Chrome ([Windows 10 Accounts](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji?hl=en) または [Office Online](https://chrome.google.com/webstore/detail/office/ndjpnladcallmjemlbaebfadecfhkepb?hl=en) 拡張機能経由で) または Mozilla Firefox v 91 以上 ([Windows SSO 設定](https://support.mozilla.org/en-US/kb/windows-sso)経由で) でサポートされています
+* **Azure AD WAM プラグイン**: ユーザーがアプリケーションにアクセスしようとすると、Azure AD WAM プラグインが PRT を使用して Windows 10 で SSO を有効にします。 Azure AD WAM プラグインは PRT を使用して、トークン要求を WAM に依存するアプリケーションについて更新トークンとアクセス トークンを要求します。 また、ブラウザーの要求に PRT を挿入して、ブラウザー上で SSO を有効にします。 Windows 10 のブラウザー SSO は Microsoft Edge (ネイティブ)、Chrome ([Windows 10 Accounts](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji?hl=en) または [Office Online](https://chrome.google.com/webstore/detail/office/ndjpnladcallmjemlbaebfadecfhkepb?hl=en) 拡張機能経由で) または Mozilla Firefox v 91 以上 ([Firefox Windows SSO 設定](https://support.mozilla.org/kb/windows-sso)) でサポートされています
 
 ## <a name="how-is-a-prt-renewed"></a>PRT はどのように更新されますか?
 

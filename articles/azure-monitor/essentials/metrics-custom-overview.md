@@ -6,12 +6,12 @@ ms.author: ancav
 services: azure-monitor
 ms.topic: conceptual
 ms.date: 06/01/2021
-ms.openlocfilehash: a456db938d1607565525aea7ab2e9b43bc368aeb
-ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
+ms.openlocfilehash: d7c73473952bfec537cc26c9f50092a198afc1d5
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122195199"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128614469"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Azure Monitor のカスタム メトリック (プレビュー)
 
@@ -187,7 +187,7 @@ Azure Monitor では、すべてのメトリックを 1 分刻みの間隔で保
 > Azure portal でメトリックを表示する方法の詳細については、「[Azure メトリックス エクスプローラーの概要](./metrics-getting-started.md)」を参照してください。
 
 ## <a name="supported-regions"></a>サポートされているリージョン
-パブリック プレビュー期間中、カスタム メトリックを発行する機能は一部の Azure リージョンでのみ利用できます。 つまりメトリックは、サポートされているいずれかのリージョンにあるリソースに対してしか発行できません。 Azure リージョンの詳細については、「[Azure リージョン](https://azure.microsoft.com/global-infrastructure/geographies/)」を参照してください。 以下のエンドポイントで使用される Azure リージョン コードは、空白が削除されただけのリージョンの名前です。次の表に、カスタム メトリックでサポートされている Azure リージョンのセットの一覧を示します。 この表には、それらのリージョンにあるリソースのメトリックが発行される、対応エンドポイントも示してあります。
+パブリック プレビュー期間中、カスタム メトリックを発行する機能は一部の Azure リージョンでのみ利用できます。 つまりメトリックは、サポートされているいずれかのリージョンにあるリソースに対してしか発行できません。 Azure リージョンの詳細については、「[Azure リージョン](https://azure.microsoft.com/global-infrastructure/geographies/)」を参照してください。 以下のエンドポイントで使用される Azure リージョン コードは、空白が削除されただけのリージョンの名前です。 次の表は、カスタム メトリックがサポートされている Azure リージョンを示したものです。 この表には、それらのリージョンにあるリソースのメトリックが発行される、対応エンドポイントも示してあります。
 
 |Azure リージョン |リージョンのエンドポイントのプレフィックス|
 |---|---|

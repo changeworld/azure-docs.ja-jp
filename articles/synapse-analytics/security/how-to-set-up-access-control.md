@@ -10,12 +10,12 @@ ms.date: 8/05/2021
 ms.author: ronytho
 ms.reviewer: jrasnick, wiassaf
 ms.custom: subject-rbac-steps
-ms.openlocfilehash: 6a604c4e2a3b1f12fa5d296558023be9bc31cd96
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 513b2edd432a274f155e79362e715fbc426a9f9e
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121862243"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129081512"
 ---
 # <a name="how-to-set-up-access-control-for-your-azure-synapse-workspace"></a>Azure Synapse ワークスペースのアクセス制御を設定する方法 
 
@@ -139,7 +139,7 @@ Azure Synapse では、パイプラインを実行してシステム タスク�
     
     | 設定 | 値 |
     | --- | --- |
-    | Role | ストレージ BLOB 共同作成者 |
+    | Role | ストレージ BLOB データ共同作成者 |
     | アクセスの割り当て先 | マネージド ID |
     | メンバー | マネージド ID 名  |
 
@@ -181,16 +181,16 @@ SQL プール、Apache Spark プールと統合ランタイムを作成するに
 
 ## <a name="step-7-grant-access-to-sql-pools"></a>手順 7:SQL プールへのアクセス権を付与する
 
-既定では、"Synapse 管理者" ロールが割り当てられているすべてのユーザーには、サーバーレス SQL プール (組み込み) およびそのすべてのデータベースに対する SQL `db_owner` ロールも割り当てられます。
+既定では、"Synapse 管理者" ロールが割り当てられているすべてのユーザーには、ワークスペース内の専用のサーバーレス SQL プール (組み込み) に対する SQL `db_owner` ロールも割り当てられます。
 
 他のユーザーおよびワークスペース MSI については、SQL プールへのアクセスは SQL アクセス許可を使用して制御されます。  SQL アクセス許可を割り当てるには、作成後に各 SQL データベースで SQL スクリプトを実行する必要があります。  これらのスクリプトを実行する必要があるケースは 3 つあります。
 1. サーバーレス SQL プール (組み込み) およびそのデータベースへのアクセス権を他のユーザーに付与する
-2. 専用プール データベースへのアクセス権を任意のユーザーに付与する
+2. 専用 SQL プール データベースへのアクセス権を任意のユーザーに付与する
 3. 正常な実行に SQL プールへのアクセスを必要とするパイプラインを有効にするために、SQL プール データベースへのアクセス権をワークスペース MSI に付与する。
 
 SQL スクリプトの例を以下に示します。
 
-専用 SQL プール データベースへのアクセス権を付与するには、ワークスペースの作成者または `workspace1_SQLAdmins` グループの任意のメンバーがスクリプトを実行できます。  
+専用 SQL プール データベースへのアクセス権を付与するには、ワークスペースの作成者または `workspace1_SQLAdmins` グループまたは `workspace1_SynapseAdministrators` グループの任意のメンバーがスクリプトを実行できます。  
 
 サーバーレス SQL プール (組み込み) へのアクセス権を付与するには、 `workspace1_SQLAdmins` グループまたは `workspace1_SynapseAdministrators` グループの任意のメンバーがスクリプトを実行できます。 
 

@@ -2,14 +2,14 @@
 title: 管理グループにリソースをデプロイする
 description: Azure Resource Manager テンプレートを使用して、管理グループのスコープでリソースをデプロイする方法について説明します。
 ms.topic: conceptual
-ms.date: 03/18/2021
+ms.date: 09/14/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: f01379a0c7e37aac368717526c05123519bebced
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 5dbf94c6f99e875e3694b96a3f01474c89348397
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109753617"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128654178"
 ---
 # <a name="management-group-deployments-with-arm-templates"></a>ARM テンプレートを使用した管理グループへのデプロイ
 
@@ -56,8 +56,8 @@ Azure のロールベースのアクセス制御 (Azure RBAC) では、以下を
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
-    ...
+  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+  ...
 }
 ```
 
@@ -65,8 +65,8 @@ Azure のロールベースのアクセス制御 (Azure RBAC) では、以下を
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
-    ...
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  ...
 }
 ```
 
@@ -185,39 +185,39 @@ ARM テンプレートをデプロイするためのデプロイ コマンドと
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "mgName": {
-            "type": "string",
-            "defaultValue": "[concat('mg-', uniqueString(newGuid()))]"
-        },
-        "parentMG": {
-            "type": "string"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "mgName": {
+      "type": "string",
+      "defaultValue": "[concat('mg-', uniqueString(newGuid()))]"
     },
-    "resources": [
-        {
-            "name": "[parameters('mgName')]",
-            "type": "Microsoft.Management/managementGroups",
-            "apiVersion": "2020-05-01",
-            "scope": "/",
-            "location": "eastus",
-            "properties": {
-                "details": {
-                    "parent": {
-                        "id": "[tenantResourceId('Microsoft.Management/managementGroups', parameters('parentMG'))]"
-                    }
-                }
-            }
-        }
-    ],
-    "outputs": {
-        "output": {
-            "type": "string",
-            "value": "[parameters('mgName')]"
-        }
+    "parentMG": {
+      "type": "string"
     }
+  },
+  "resources": [
+    {
+      "name": "[parameters('mgName')]",
+      "type": "Microsoft.Management/managementGroups",
+      "apiVersion": "2021-04-01",
+      "scope": "/",
+      "location": "eastus",
+      "properties": {
+        "details": {
+          "parent": {
+            "id": "[tenantResourceId('Microsoft.Management/managementGroups', parameters('parentMG'))]"
+          }
+        }
+      }
+    }
+  ],
+  "outputs": {
+    "output": {
+      "type": "string",
+      "value": "[parameters('mgName')]"
+    }
+  }
 }
 ```
 
@@ -239,67 +239,67 @@ ARM テンプレートを使用して、管理グループに新しい Azure サ
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "targetMG": {
-            "type": "string",
-            "metadata": {
-                "description": "Target Management Group"
-            }
-        },
-        "allowedLocations": {
-            "type": "array",
-            "defaultValue": [
-                "australiaeast",
-                "australiasoutheast",
-                "australiacentral"
-            ],
-            "metadata": {
-                "description": "An array of the allowed locations, all other locations will be denied by the created policy."
-            }
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "targetMG": {
+      "type": "string",
+      "metadata": {
+        "description": "Target Management Group"
+      }
     },
-    "variables": {
-        "mgScope": "[tenantResourceId('Microsoft.Management/managementGroups', parameters('targetMG'))]",
-        "policyDefinition": "LocationRestriction"
-    },
-    "resources": [
-        {
-            "type": "Microsoft.Authorization/policyDefinitions",
-            "name": "[variables('policyDefinition')]",
-            "apiVersion": "2019-09-01",
-            "properties": {
-                "policyType": "Custom",
-                "mode": "All",
-                "parameters": {
-                },
-                "policyRule": {
-                    "if": {
-                        "not": {
-                            "field": "location",
-                            "in": "[parameters('allowedLocations')]"
-                        }
-                    },
-                    "then": {
-                        "effect": "deny"
-                    }
-                }
-            }
+    "allowedLocations": {
+      "type": "array",
+      "defaultValue": [
+        "australiaeast",
+        "australiasoutheast",
+        "australiacentral"
+      ],
+      "metadata": {
+        "description": "An array of the allowed locations, all other locations will be denied by the created policy."
+      }
+    }
+  },
+  "variables": {
+    "mgScope": "[tenantResourceId('Microsoft.Management/managementGroups', parameters('targetMG'))]",
+    "policyDefinition": "LocationRestriction"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Authorization/policyDefinitions",
+      "name": "[variables('policyDefinition')]",
+      "apiVersion": "2020-09-01",
+      "properties": {
+        "policyType": "Custom",
+        "mode": "All",
+        "parameters": {
         },
-        {
-            "type": "Microsoft.Authorization/policyAssignments",
-            "name": "location-lock",
-            "apiVersion": "2019-09-01",
-            "dependsOn": [
-                "[variables('policyDefinition')]"
-            ],
-            "properties": {
-                "scope": "[variables('mgScope')]",
-                "policyDefinitionId": "[extensionResourceId(variables('mgScope'), 'Microsoft.Authorization/policyDefinitions', variables('policyDefinition'))]"
+        "policyRule": {
+          "if": {
+            "not": {
+              "field": "location",
+              "in": "[parameters('allowedLocations')]"
             }
+          },
+          "then": {
+            "effect": "deny"
+          }
         }
-    ]
+      }
+    },
+    {
+      "type": "Microsoft.Authorization/policyAssignments",
+      "name": "location-lock",
+      "apiVersion": "2020-09-01",
+      "dependsOn": [
+        "[variables('policyDefinition')]"
+      ],
+      "properties": {
+        "scope": "[variables('mgScope')]",
+        "policyDefinitionId": "[extensionResourceId(variables('mgScope'), 'Microsoft.Authorization/policyDefinitions', variables('policyDefinition'))]"
+      }
+    }
+  ]
 }
 ```
 
@@ -309,84 +309,84 @@ ARM テンプレートを使用して、管理グループに新しい Azure サ
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "nestedsubId": {
-            "type": "string"
-        },
-        "nestedRG": {
-            "type": "string"
-        },
-        "storageAccountName": {
-            "type": "string"
-        },
-        "nestedLocation": {
-            "type": "string"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "nestedsubId": {
+      "type": "string"
     },
-    "resources": [
-        {
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2020-10-01",
-            "name": "nestedSub",
-            "location": "[parameters('nestedLocation')]",
-            "subscriptionId": "[parameters('nestedSubId')]",
-            "properties": {
-                "mode": "Incremental",
-                "template": {
-                    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-                    "contentVersion": "1.0.0.0",
-                    "parameters": {
-                    },
-                    "variables": {
-                    },
-                    "resources": [
-                        {
-                            "type": "Microsoft.Resources/resourceGroups",
-                            "apiVersion": "2020-10-01",
-                            "name": "[parameters('nestedRG')]",
-                            "location": "[parameters('nestedLocation')]"
-                        }
-                    ]
-                }
+    "nestedRG": {
+      "type": "string"
+    },
+    "storageAccountName": {
+      "type": "string"
+    },
+    "nestedLocation": {
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2021-04-01",
+      "name": "nestedSub",
+      "location": "[parameters('nestedLocation')]",
+      "subscriptionId": "[parameters('nestedSubId')]",
+      "properties": {
+        "mode": "Incremental",
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "parameters": {
+          },
+          "variables": {
+          },
+          "resources": [
+            {
+              "type": "Microsoft.Resources/resourceGroups",
+              "apiVersion": "2021-04-01",
+              "name": "[parameters('nestedRG')]",
+              "location": "[parameters('nestedLocation')]"
             }
-        },
-        {
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2020-10-01",
-            "name": "nestedRG",
-            "subscriptionId": "[parameters('nestedSubId')]",
-            "resourceGroup": "[parameters('nestedRG')]",
-            "dependsOn": [
-                "nestedSub"
-            ],
-            "properties": {
-                "mode": "Incremental",
-                "template": {
-                    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-                    "contentVersion": "1.0.0.0",
-                    "resources": [
-                        {
-                            "type": "Microsoft.Storage/storageAccounts",
-                            "apiVersion": "2019-04-01",
-                            "name": "[parameters('storageAccountName')]",
-                            "location": "[parameters('nestedLocation')]",
-                            "kind": "StorageV2",
-                            "sku": {
-                                "name": "Standard_LRS"
-                            }
-                        }
-                    ]
-                }
-            }
+          ]
         }
-    ]
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2021-04-01",
+      "name": "nestedRG",
+      "subscriptionId": "[parameters('nestedSubId')]",
+      "resourceGroup": "[parameters('nestedRG')]",
+      "dependsOn": [
+        "nestedSub"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "resources": [
+            {
+              "type": "Microsoft.Storage/storageAccounts",
+              "apiVersion": "2021-04-01",
+              "name": "[parameters('storageAccountName')]",
+              "location": "[parameters('nestedLocation')]",
+              "kind": "StorageV2",
+              "sku": {
+                "name": "Standard_LRS"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
 }
 ```
 
 ## <a name="next-steps"></a>次のステップ
 
-* ロールの割り当ての詳細については、「[Azure Resource Manager テンプレートを使用して Azure でのロールの割り当てを追加する](../../role-based-access-control/role-assignments-template.md)」を参照してください。
+* ロールの割り当ての詳細については、「[Azure Resource Manager テンプレートを使用して Azure でのロールを割り当てる](../../role-based-access-control/role-assignments-template.md)」を参照してください。
 * Azure Security Center のワークスペースの設定をデプロイする例については、[deployASCwithWorkspaceSettings.json](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json) のページを参照してください。
 * [サブスクリプション レベル](deploy-to-subscription.md)と[テナント レベル](deploy-to-tenant.md)でテンプレートをデプロイすることもできます。

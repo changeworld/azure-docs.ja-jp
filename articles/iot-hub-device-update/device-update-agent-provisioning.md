@@ -6,12 +6,12 @@ ms.author: valls
 ms.date: 2/16/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: e0df727c93e5307e9b66ad5755c8218954a7ff7b
-ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
+ms.openlocfilehash: e65dc85dff7692f82118871ab93c628efe6cecf8
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113552552"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128661680"
 ---
 # <a name="device-update-agent-provisioning"></a>デバイス更新エージェントのプロビジョニング
 
@@ -185,7 +185,7 @@ IoT Linux デバイスでデバイス更新エージェントをプロビジョ�
        
     1. テキストを含むウィンドウが開きます。 IoT デバイスでデバイス更新エージェントを初めてプロビジョニングするときに、'connection_String=' の後の文字列全体を削除します。 これは単なるプレース ホルダーのテキストです。
     
-    1. ターミナルで、<your-connection-string> を、ご自身のデバイス更新エージェント インスタンスのデバイスの接続文字列に置き換えます。 Enter キーを押し、 **[保存]** を選択します。 こちらの例のようになります。
+    1. ターミナルで、\<your-connection-string\> を、ご自身のデバイス更新エージェント インスタンスのデバイスの接続文字列に置き換えます。 Enter キーを押し、 **[保存]** を選択します。 こちらの例のようになります。
     
         ```text
         connection_string=<ADD CONNECTION STRING HERE>

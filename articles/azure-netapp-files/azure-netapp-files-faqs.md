@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/01/2021
+ms.date: 09/27/2021
 ms.author: b-juche
-ms.openlocfilehash: 119cf21f90102f7ebccd8e4e06cd5e5dee3c4bfe
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 01a483e43429f45562cbb464e2b595023bd2ad5f
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123427986"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129091029"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Azure NetApp Files についての FAQ
 
@@ -54,9 +54,9 @@ ms.locfileid: "123427986"
 
 いいえ。Azure NetApp Files は現時点ではデュアル スタック (IPv4 および IPv6) VNet をサポートしていません。  
 
-### <a name="is-the-number-of-the-ip-addresses-using-azure-vmware-solutions-for-guest-os-mounts-limited-to-1000"></a>ゲスト OS マウントのために Azure VMWare ソリューションを使用する IP アドレスの数は [1,000 に制限されていますか](azure-netapp-files-resource-limits.md#resource-limits)?
+### <a name="is-the-number-of-the-ip-addresses-using-azure-vmware-solutions-for-guest-os-mounts-limited-to-1000"></a>ゲスト OS マウントのために Azure VMware Solution を使用する IP アドレスの数は [1,000 に制限されていますか](azure-netapp-files-resource-limits.md#resource-limits)?
 
-いいえ。 Azure VMWare ソリューションは ER ゲートウェイの内側にあるため、オンプレミスのシステムと同様の動作をします。 AVS の "ホスト" と "ゲスト" の数は Azure NetApp Files には見えないため、IP アドレスの 1,000 件の制限は適用されません。
+いいえ。 Azure VMware Solution は ER ゲートウェイの内側にあるため、オンプレミスのシステムと同様の動作をします。 AVS の "ホスト" と "ゲスト" の数は Azure NetApp Files には見えないため、IP アドレスの 1,000 件の制限は適用されません。
  
 ## <a name="security-faqs"></a>セキュリティに関する FAQ
 
@@ -277,7 +277,7 @@ Size: 4096            Blocks: 8          IO Block: 65536  directory
 はい。[消費されたスナップショット容量](azure-netapp-files-cost-model.md#capacity-consumption-of-snapshots)は、ボリューム内のプロビジョニングされた領域にカウントされます。 ボリュームがいっぱいになった場合は、次のアクションを実行することを検討してください。
 
 * [ボリュームのサイズを変更する](azure-netapp-files-resize-capacity-pools-or-volumes.md)。
-* ホストしているボリューム内の領域を解放するために、[以前のスナップショットを削除する](azure-netapp-files-manage-snapshots.md#delete-snapshots)。 
+* ホストしているボリューム内の領域を解放するために、[以前のスナップショットを削除する](snapshots-delete.md)。 
 
 ### <a name="does-azure-netapp-files-support-auto-grow-for-volumes-or-capacity-pools"></a>Azure NetApp Files では、ボリュームまたは容量プールの自動拡張をサポートしていますか?
 
@@ -317,7 +317,7 @@ NetApp には、SaaS ベースのソリューションである [NetApp Cloud Sy
     
 Azure NetApp Files には NFS ボリュームと SMB ボリュームがあります。  ファイル ベースのコピー ツールは、Azure リージョン間でデータをレプリケートするために使用できます。 
 
-[リージョン間レプリケーション](cross-region-replication-introduction.md)機能を使用すると、あるリージョン内の Azure NetApp Files ボリューム (ソース) から別のリージョン内の別の Azure NetApp Files ボリューム (宛先) にデータを非同期的にレプリケートできます。  さらに、[既存のボリュームのスナップショットを使用して新しいボリュームを作成](azure-netapp-files-manage-snapshots.md#restore-a-snapshot-to-a-new-volume)できます。
+[リージョン間レプリケーション](cross-region-replication-introduction.md)機能を使用すると、あるリージョン内の Azure NetApp Files ボリューム (ソース) から別のリージョン内の別の Azure NetApp Files ボリューム (宛先) にデータを非同期的にレプリケートできます。  さらに、[既存のボリュームのスナップショットを使用して新しいボリュームを作成](snapshots-restore-new-volume.md)できます。
 
 NetApp には、SaaS ベースのソリューションである [NetApp Cloud Sync](https://cloud.netapp.com/cloud-sync-service) があります。このソリューションでは、NFS または SMB のデータを、Azure NetApp Files の NFS エクスポートまたは SMB 共有にレプリケートすることができます。 
 
@@ -336,6 +336,34 @@ Azure NetApp Files ボリュームを別の Azure リージョンにレプリケ
 ### <a name="is-migration-with-azure-importexport-service-supported"></a>Azure Import/Export サービスを使用した移行はサポートされていますか?
 
 いいえ。 Azure Import/Export サービスでは、現在のところ Azure NetApp Files はサポートされません。
+
+## <a name="azure-netapp-files-backup-faqs"></a>Azure NetApp Files のバックアップに関する FAQ
+
+このセクションでは、[Azure NetApp Files バックアップ](backup-introduction.md)機能に関する質問に回答します。 
+
+### <a name="when-do-my-backups-occur"></a>バックアップはいつ発生しますか?   
+
+Azure NetApp Files バックアップは、バックアップ ポリシーの頻度が入力された後、ランダム化された時間枠で開始されます。 たとえば、毎週のバックアップは、日曜日の午前 12 時以降のランダムに割り当てられた間隔で開始されます。 深夜。 このタイミングは、この時点でユーザーが変更することはできません。 ベースライン バックアップは、バックアップ ポリシーをボリュームに割り当てるとすぐに開始されます。
+
+### <a name="what-happens-if-a-backup-operation-encounters-a-problem"></a>バックアップ操作で問題が発生した場合はどうなりますか?
+
+バックアップ操作中に問題が発生した場合、Azure NetApp Files バックアップでは、ユーザーの操作を必要とせずに、操作が自動的に再試行されます。 再試行が引き続き失敗する場合は、Azure NetApp Files バックアップによって操作の失敗が報告されます。
+
+### <a name="can-i-change-the-location-or-storage-tier-of-my-backup-vault"></a>バックアップ コンテナーの場所またはストレージ層を変更することはできますか?
+
+いいえ、Azure NetApp Files は Azure Storage 内のバックアップ データの場所を自動的に管理します。この場所または Azure Storage 層は、ユーザーが変更することはできません。
+
+### <a name="what-types-of-security-are-provided-for-the-backup-data"></a>バックアップ データにはどのような種類のセキュリティが用意されていますか?
+
+Azure NetApp Files は、受信したバックアップ データのエンコード時に AES-256 ビット暗号化を使用します。 さらに、暗号化されたデータは、HTTPS TLSv 1.2 接続を使用して Azure Storage に安全に送信されます。 Azure NetApp Files バックアップは、バックアップ データを格納するために、Azure Storage アカウントの組み込み暗号化の保存時機能に依存します。
+
+### <a name="what-happens-to-the-backups-when-i-delete-a-volume-or-my-netapp-account"></a>ボリュームまたは NetApp アカウントを削除した場合、バックアップはどうなりますか? 
+
+ Azure NetApp Files ボリュームを削除したときに、バックアップは保持されます。 バックアップを保持しない場合は、ボリュームを削除する前にバックアップを無効にします。 NetApp アカウントを削除しても、そのバックアップは同じサブスクリプションの他の NetApp アカウントに保持されて表示されるため、引き続き復元に使用できます。 サブスクリプションのすべての NetApp アカウントを削除する場合は、すべての NetApp アカウントのすべてのボリュームを削除する前に、バックアップを無効にしておく必要があります。
+
+### <a name="whats-the-systems-maximum-backup-retries-for-a-volume"></a>1 つのボリュームに対するシステムの最大バックアップ再試行回数は何回ですか?  
+
+システムは、スケジュールされたバックアップ ジョブを処理するときに、10 回再試行します。 ジョブが失敗した場合、システムはバックアップ操作に失敗します。 (構成済みのポリシーに基づいて) スケジュールされたバックアップの場合、システムは 1 時間ごとにデータのバックアップを試行します。 転送されなかった (または前回の試行中に失敗した) 新しいスナップショットが使用可能な場合、それらのスナップショットは転送対象と見なされます。 
 
 ## <a name="product-faqs"></a>製品に関する FAQ
 

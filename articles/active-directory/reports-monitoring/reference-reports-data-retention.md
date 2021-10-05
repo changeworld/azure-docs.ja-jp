@@ -17,12 +17,12 @@ ms.date: 11/05/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e240e8ec53ce007be1a858af7b6e41273ca8831
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b53333ff9d61e6ee5bbc98bb4756199ca07486d0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97093640"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128630074"
 ---
 # <a name="how-long-does-azure-ad-store-reporting-data"></a>Azure AD にレポート データが保存される期間
 
@@ -73,8 +73,11 @@ ms.locfileid: "97093640"
 
 | レポート         | Azure AD Free | Azure AD Premium P1 | Azure AD Premium P2 |
 | :--            | :--           | :--                 | :--                 |
-| リスクのあるユーザー  | 7 日        | 30 日             | 90 日間             |
+| 危険なユーザー    | 制限なし      | 制限なし            | 制限なし            |
 | リスクの高いサインイン | 7 日        | 30 日             | 90 日間             |
+
+> [!NOTE]
+> 危険なユーザーは、リスクが修復されるまで削除されません。
 
 ---
 

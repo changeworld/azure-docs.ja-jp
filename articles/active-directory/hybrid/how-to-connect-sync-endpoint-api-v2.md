@@ -12,12 +12,12 @@ ms.date: 12/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4434b59044aed8c9814431864e5c3c9b7d98254c
-ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
+ms.openlocfilehash: 1f546ff8ccabb4ef865fe9e75678d7b1ab2c22df
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107575719"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128614526"
 ---
 # <a name="azure-ad-connect-sync-v2-endpoint-api"></a>Azure AD Connect 同期 V2 エンドポイント API 
 Microsoft がデプロイした Azure AD Connect 用の新しいエンドポイント (API) では、Azure Active Directory に対する同期サービス操作のパフォーマンスが向上しています。 新しい V2 エンドポイントを利用すると、Azure AD に対するエクスポートとインポートのパフォーマンスが明らかに向上していることがわかるでしょう。 この新しいエンドポイントでは、次のものがサポートされています。
@@ -29,7 +29,7 @@ Microsoft がデプロイした Azure AD Connect 用の新しいエンドポイ�
 > 現在、新しいエンドポイントでは、書き戻される Microsoft 365 グループに対するグループ サイズの制限は構成されていません。 これにより、Active Directory と同期サイクルの待機時間に影響がある可能性があります。 グループ サイズは段階的に増やすことをお勧めします。  
 
 >[!NOTE]
-> Azure AD Connect 同期 V2 エンドポイント API は、現在、これらの Azure 環境でのみ使用できます。
+> Azure AD Connect 同期 V2 エンドポイント API は一般公開されていますが、現在、これらの Azure 環境でのみ使用できます。
 > - Azure Commercial
 > - Azure China Cloud
 > - Azure US Government Cloud。これは、Azure German Cloud では利用できません

@@ -8,12 +8,12 @@ ms.subservice: integration-runtime
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/16/2021
-ms.openlocfilehash: fd0fb07ad96d9897859281ef368452c96798d542
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 68c43d149da28f7a140ac4f4fd32d76fe53f3e2d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123428652"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128663309"
 ---
 # <a name="azure-private-link-for-azure-data-factory"></a>Azure Data Factory 用の Azure Private Link
 
@@ -73,7 +73,7 @@ Azure Data Factory サービスへの通信は、Private Link を経由し、セ
 
 上の図の例のように、プライベート エンドポイントをホストしている VNet の外部から解決されると、Data Factory の 'DataFactoryA' の DNS リソース レコードは次のようになります。
 
-| 名前 | Type | 値 |
+| 名前 | 種類 | 値 |
 | ---------- | -------- | --------------- |
 | DataFactoryA.{region}.datafactory.azure.net | CNAME   | DataFactoryA.{region}.datafactory.azure.net |
 | DataFactoryA.{region}.datafactory.azure.net | CNAME   | <データ ファクトリ サービスのパブリック エンドポイント> |
@@ -81,7 +81,7 @@ Azure Data Factory サービスへの通信は、Private Link を経由し、セ
 
 DataFactoryA の DNS リソース レコードは、プライベート エンドポイントをホストしている VNet 内で解決されると、次のようになります。
 
-| 名前 | Type | 値 |
+| 名前 | 種類 | 値 |
 | ---------- | -------- | --------------- |
 | DataFactoryA.{region}.datafactory.azure.net | CNAME   | DataFactoryA.{region}.privatelink.datafactory.azure.net |
 | DataFactoryA.{region}.privatelink.datafactory.azure.net   | A | <プライベート エンドポイントの IP アドレス> |

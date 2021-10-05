@@ -2,14 +2,14 @@
 title: リソースをテナントにデプロイする
 description: Azure Resource Manager テンプレートでテナントのスコープでリソースをデプロイする方法について説明します。
 ms.topic: conceptual
-ms.date: 04/27/2021
+ms.date: 09/14/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: dfcdd4c9fdf758b0e07c2566c50b45f534133c3c
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 0e998c4c26afc456a83cdb0c06a5ccb3906364df
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109751493"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128606572"
 ---
 # <a name="tenant-deployments-with-arm-templates"></a>ARM テンプレートを使用したテナントのデプロイ
 
@@ -55,8 +55,8 @@ Azure のロールベースのアクセス制御 (Azure RBAC) では、以下を
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
-    ...
+  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
+  ...
 }
 ```
 
@@ -64,8 +64,8 @@ Azure のロールベースのアクセス制御 (Azure RBAC) では、以下を
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
-    ...
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  ...
 }
 ```
 
@@ -193,5 +193,5 @@ ARM テンプレートをデプロイするためのデプロイ コマンドと
 
 ## <a name="next-steps"></a>次のステップ
 
-* ロールの割り当ての詳細については、「[Azure Resource Manager テンプレートを使用して Azure でのロールの割り当てを追加する](../../role-based-access-control/role-assignments-template.md)」を参照してください。
+* ロールの割り当ての詳細については、「[Azure Resource Manager テンプレートを使用して Azure でのロールを割り当てる](../../role-based-access-control/role-assignments-template.md)」を参照してください。
 * また、[サブスクリプション レベル](deploy-to-subscription.md)または[管理グループ レベル](deploy-to-management-group.md)でテンプレートをデプロイすることもできます。

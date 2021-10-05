@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: a095d2f6e05957e4a3daac76f3ac745e5a20de4a
-ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
+ms.openlocfilehash: 8a6fe163ade61df65f6ff0d9ba4f2862866094b7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122228982"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128631687"
 ---
 # <a name="understanding-just-in-time-jit-vm-access"></a>Just-In-Time (JIT) VM アクセスについて
 
@@ -47,7 +47,7 @@ Just-In-Time VM アクセスを有効にすると、受信トラフィックを�
 ユーザーが VM へのアクセス権を要求すると、Security Center によってそのユーザーが VM に対する [Azure ロール ベースのアクセス制御 (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) アクセス許可を持っているかどうかがチェックされます。 要求が承認されると、Security Center では、関連する IP アドレス (または範囲) から選択したポートへの受信トラフィックを指定された時間だけ許可するように、NSG および Azure Firewall が構成されます。 指定された時間が経過すると、Security Center により NSG が以前の状態に復元されます。 既に確立されている接続は中断されません。
 
 > [!NOTE]
-> JIT では、[Azure Firewall Manager](../firewall-manager/overview.md) によって制御される Azure Firewall によって保護されている VM はサポートされません。
+> JIT では、[Azure Firewall Manager](../firewall-manager/overview.md) によって制御される Azure Firewall によって保護されている VM はサポートされません。  Azure Firewall は、ルール (クラシック) を使用して構成する必要があり、ファイアウォール ポリシーを使用することはできません。
 
 
 

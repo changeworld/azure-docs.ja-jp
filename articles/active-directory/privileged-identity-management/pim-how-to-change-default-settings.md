@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 08/25/2021
+ms.date: 09/14/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 558f8b720992f44a747689cb0e69436507b685c4
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: 31d58536b1af26d037b3c53f04bcae5c9359ff47
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122866996"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128606705"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>Privileged Identity Management で Azure AD ロールの設定を構成する
 
@@ -78,9 +78,9 @@ Privileged Identity Management により、アクティブ化時およびアク�
 
 ### <a name="on-active-assignment"></a>アクティブな割り当て時
 
-場合によっては、ユーザーをロールに短期間 (たとえば 1 日) 割り当てる必要があります。 この場合、割り当てられたユーザーがアクティブ化を要求する必要はありません。 このシナリオでは、ユーザーは割り当てられた時点からそのロールでアクティブになるため、各自がそのロールの割り当てを使用するときに、Privileged Identity Management で多要素認証を強制することができません。
+このオプションを選択した場合、管理者は、資格のあるロールの割り当てでなく、アクティブなロールの割り当てを作成する前に、多要素認証を完了する必要があります。 ユーザーは割り当てられた時点からそのロールでアクティブになるため、各自がそのロールの割り当てを使用するときに、Privileged Identity Management で多要素認証を強制することができません。
 
-割り当てがアクティブなときに多要素認証を要求するには、 **[Edit role setting]\(ロールの設定の編集\)** の [割り当て] タブで **[アクティブな割り当てに Azure Multi-Factor Authentication を必要とする]** を選択します。
+アクティブなロール割り当てを作成するときに多要素認証を要求するには、 **[Edit role setting]\(ロールの設定の編集\)** の [割り当て] タブで **[アクティブな割り当てに Azure Multi-Factor Authentication を必要とする]** オプションを選択します。
 
 詳細については、「[多要素認証と Privileged Identity Management](pim-how-to-require-mfa.md)」を参照してください。
 

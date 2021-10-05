@@ -2,14 +2,14 @@
 title: アーカイブ層のサポート
 description: Azure Backup のアーカイブ層のサポートについて説明します
 ms.topic: conceptual
-ms.date: 08/31/2021
+ms.date: 09/10/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 228ab85a0cde5ed37156a5821ad3ac2acd6a7209
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 0468e463caa6d589b22596d2fe845014e96e10b8
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123260782"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128632464"
 ---
 # <a name="archive-tier-support"></a>アーカイブ層のサポート
 
@@ -76,7 +76,7 @@ Azure Backup は、スナップショットと Standard 層に加えて、アー
 
     - Azure 仮想マシン内の SQL Server の場合:
 
-        `$bckItm = $BackupItemList | Where-Object {$_.Name -match '<dbName>' -and $_.ContainerName -match '<vmName>'}`
+        `$bckItm = $BackupItemList | Where-Object {$_.FriendlyName -eq '<dbName>' -and $_.ContainerName -match '<vmName>'}`
 
 1. 表示する復旧ポイントの日付範囲を追加します。 たとえば、過去 124 日から過去 95 日の間の復旧ポイントを表示する場合は、次のコマンドを使用します。
 
@@ -88,6 +88,16 @@ Azure Backup は、スナップショットと Standard 層に加えて、アー
     >[!NOTE]
     >異なる時間範囲の復旧ポイントを表示するには、必要に応じて開始日と終了日を変更します。
 ## <a name="use-powershell"></a>PowerShell の使用
+
+### <a name="check-the-archivable-status-of-all-the-recovery-points"></a>すべての復旧ポイントのアーカイブ可能な状態を確認する
+
+次のコマンドレットを使用して、バックアップ項目のすべての復旧ポイントのアーカイブ可能な状態を確認できます。
+
+```azurepowershell
+$rp = Get-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -Item $bckItm -StartDate $startdate.ToUniversalTime() -EndDate $enddate.ToUniversalTime() 
+
+$rp | select RecoveryPointId, @{ Label="IsArchivable";Expression={$_.RecoveryPointMoveReadinessInfo["ArchivedRP"].IsReadyForMove}}, @{ Label="ArchivableInfo";Expression={$_.RecoveryPointMoveReadinessInfo["ArchivedRP"].AdditionalInfo}}
+```
 
 ### <a name="check-archivable-recovery-points"></a>アーカイブ可能な復旧ポイントを確認する
 
@@ -149,7 +159,7 @@ $rp = Get-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -Item $bckItm
 
 アーカイブ内の復旧ポイントについては、Azure Backup には統合型の復元方法が用意されています。
 
-統合型の復元は、2 つのステップから成るプロセスです。 最初のステップでは、アーカイブに保管されている復旧ポイントをリハイドレートし、それを一時的に Vault-Standard 層に 10 日から 30 日の期間 (リハイドレート期間とも呼ばれます) 保管します。 既定は 15 日間です。 リハイドレートの優先度には、Standard と High の 2 種類があります。 [リハイドレートの優先度](../storage/blobs/storage-blob-rehydration.md#rehydrate-an-archived-blob-to-an-online-tier)に関する詳細をご覧ください。
+統合型の復元は、2 つのステップから成るプロセスです。 最初のステップでは、アーカイブに保管されている復旧ポイントをリハイドレートし、それを一時的に Vault-Standard 層に 10 日から 30 日の期間 (リハイドレート期間とも呼ばれます) 保管します。 既定は 15 日間です。 リハイドレートの優先度には、Standard と High の 2 種類があります。 [リハイドレートの優先度](../storage/blobs/archive-rehydrate-overview.md#rehydration-priority)に関する詳細をご覧ください。
 
 >[!NOTE]
 >
@@ -171,6 +181,17 @@ SQL Server を復元するには、[これらの手順](backup-azure-sql-automat
 ```azurepowershell
 Get-AzRecoveryServicesBackupJob -VaultId $vault.ID
 ```
+
+### <a name="move-recovery-points-to-archive-tier-at-scale"></a>復旧ポイントをアーカイブ層に大規模に移動する
+
+サンプル スクリプトを使用して、大規模に操作を実行できるようになりました。 サンプル スクリプトの実行方法については、[詳細](https://github.com/hiaga/Az.RecoveryServices/blob/master/README.md)を確認してください。 スクリプトは[ここ](https://github.com/hiaga/Az.RecoveryServices)からダウンロードできます。
+
+Azure Backup で提供されるサンプル スクリプトを使用して、次の操作を実行できます。
+
+- Azure VM 内の SQL Server の特定のデータベースまたはすべてのデータベースのすべての対象復旧ポイントをアーカイブ層に移動します。
+- 特定の Azure 仮想マシンに対して推奨されるすべての復旧ポイントをアーカイブ層に移動します。
+ 
+また、要件に従ってスクリプトを記述し、上記のサンプル スクリプトを変更して必要なバックアップ項目をフェッチすることもできます。
 
 ## <a name="use-the-portal"></a>ポータルの使用
 
@@ -211,7 +232,7 @@ Get-AzRecoveryServicesBackupJob -VaultId $vault.ID
 
 | ワークロード | プレビュー | 一般公開 |
 | --- | --- | --- |
-| Azure VM の SQL Server | 米国東部、米国中南部、米国中北部、西ヨーロッパ | オーストラリア東部、インド中部、北ヨーロッパ、東南アジア、東アジア、オーストラリア南東部、カナダ中部、ブラジル南部、カナダ東部、フランス中部、フランス南部、東日本、西日本、韓国中部、韓国南部、インド南部、英国西部、英国南部、米国中部、米国東部 2、米国西部、米国西部 2、米国中西部 |
+| Azure VM の SQL Server | 米国中南部、米国中北部、西ヨーロッパ | オーストラリア東部、インド中部、北ヨーロッパ、東南アジア、東アジア、オーストラリア南東部、カナダ中部、ブラジル南部、カナダ東部、フランス中部、フランス南部、東日本、西日本、韓国中部、韓国南部、インド南部、英国西部、英国南部、米国中部、米国東部 2、米国西部、米国西部 2、米国中西部、米国東部 |
 | Azure Virtual Machines | 米国東部、米国東部 2、米国中部、米国中南部、米国西部、米国西部 2、米国中西部、米国中北部、ブラジル南部、カナダ東部、カナダ中部、西ヨーロッパ、英国南部、英国西部、東アジア、東日本、インド南部、東南アジア、オーストラリア東部、インド中部、北ヨーロッパ、オーストラリア東南部、フランス中部、フランス南部、西日本、韓国中部、韓国南部 | なし |
 
 ## <a name="error-codes-and-troubleshooting-steps"></a>エラー コードとトラブルシューティングの手順

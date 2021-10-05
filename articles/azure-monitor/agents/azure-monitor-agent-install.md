@@ -4,14 +4,14 @@ description: Azure 仮想マシンと Azure Arc 対応サーバーに Azure Moni
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 07/19/2021
+ms.date: 09/21/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 77a5390b2bd4888c0fe43fb0b0d94b07563d1a68
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: b7a35b819844b411a040542d4390fae3e69b9bcc
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123434900"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128656020"
 ---
 # <a name="install-the-azure-monitor-agent"></a>Azure Monitor エージェントのインストール
 この記事では、Azure 仮想マシンと Azure Arc 対応サーバーの両方に [Azure Monitor エージェント](azure-monitor-agent-overview.md) をインストールするために現在使用できるさまざまなオプションについて説明し、エージェントが収集するデータを定義する[データ収集ルールとの関連付け](data-collection-rule-azure-monitor-agent.md)を作成するオプションについても説明します。
@@ -46,6 +46,7 @@ Azure Monitor エージェントは、次の表に示す詳細で [Azure VM 拡�
 | 2021 年 6 月 | 一般提供が告知されました。 <ul><li>メトリックの宛先を除くすべての機能が一般提供になりました</li><li>実稼働の品質、セキュリティとコンプライアンス</li><li>すべてのパブリック リージョンで利用可能</li><li>EPS を上げるためのパフォーマンスとスケーリングの改善</li></ul> [詳細情報](https://azure.microsoft.com/updates/azure-monitor-agent-and-data-collection-rules-now-generally-available/) | 1.0.12.0 | 1.9.1.0 |
 | 2021 年 7 月 | <ul><li>直接プロキシのサポート</li><li>Log Analytics ゲートウェイのサポート</li></ul> [詳細情報](https://azure.microsoft.com/updates/general-availability-azure-monitor-agent-and-data-collection-rules-now-support-direct-proxies-and-log-analytics-gateway/) | 1.1.1.0 | 1.10.5.0 |
 | 2021 年 8 月 | Azure Monitor のメトリックを唯一の宛先として許可する問題を解決 | 1.1.2.0 | 1.10.9.0 (1.10.7.0 を使用しないでください) |
+| 2021 年 9 月 | エージェントの再起動時にデータが失われる問題を解決 | 1.1.3.1 | 1.12.2.0 |
 
 
 ## <a name="install-with-azure-portal"></a>Azure portal を使用してインストールする
@@ -117,11 +118,11 @@ az vm extension set --name AzureMonitorLinuxAgent --publisher Microsoft.Azure.Mo
 
 # <a name="windows"></a>[Windows](#tab/CLIWindowsArc)
 ```azurecli
-az connectedmachine extension create --name AzureMonitorWindowsAgent --publisher Microsoft.Azure.Monitor --machine-name <arc-server-name> --resource-group <resource-group-name> --location <arc-server-location>
+az connectedmachine extension create --name AzureMonitorWindowsAgent --publisher Microsoft.Azure.Monitor --type AzureMonitorWindowsAgent --machine-name <arc-server-name> --resource-group <resource-group-name> --location <arc-server-location>
 ```
 # <a name="linux"></a>[Linux](#tab/CLILinuxArc)
 ```azurecli
-az connectedmachine extension create --name AzureMonitorLinuxAgent --publisher Microsoft.Azure.Monitor --machine-name <arc-server-name> --resource-group <resource-group-name> --location <arc-server-location>
+az connectedmachine extension create --name AzureMonitorLinuxAgent --publisher Microsoft.Azure.Monitor --type AzureMonitorLinuxAgent --machine-name <arc-server-name> --resource-group <resource-group-name> --location <arc-server-location>
 ```
 ---
 

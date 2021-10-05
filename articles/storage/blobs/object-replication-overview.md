@@ -10,12 +10,12 @@ ms.date: 09/02/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 5a0ca85ff28e56e7e9a47df1e56861d5c6552b97
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 8ba9a24e050307b029e4026a7e8e519a1b4043dc
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123468098"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128607047"
 ---
 # <a name="object-replication-for-block-blobs"></a>ブロック BLOB のオブジェクト レプリケーション
 
@@ -166,7 +166,7 @@ Azure Blob Storage の不変性ポリシーには、時間ベースの保持ポ�
 
 Azure Active Directory (Azure AD) テナントは、ID およびアクセス管理のための組織を表す Azure AD の専用インスタンスです。 すべての Azure サブスクリプションには、単一の Azure AD テナントとの信頼関係があります。 ストレージ アカウントなどのサブスクリプション内のすべてのリソースは、同じ Azure AD テナントに関連付けられています。 詳細については、「[Azure Active Directory とは](../../active-directory/fundamentals/active-directory-whatis.md)」を参照してください。
 
-既定では、適切なアクセス許可を持つユーザーは、1 つの Azure AD テナントにあるソース ストレージ アカウントと、別のテナントにある宛先アカウントを使用して、オブジェクト レプリケーションを構成できます。 セキュリティ ポリシーで、オブジェクト レプリケーションを同じテナント内に存在するストレージ アカウントのみに制限する必要がある場合は、セキュリティ プロパティの **AllowCrossTenantReplication** プロパティ (プレビュー) を設定して、テナント間のレプリケーションを禁止することができます。 ストレージ アカウントのテナント間オブジェクト レプリケーションを禁止する場合は、ソースまたは宛先アカウントとしてそのストレージ アカウントで構成されている任意のオブジェクト レプリケーション ポリシーに対して、Azure Storage では、ソースと宛先の両方のアカウントが同じ Azure AD テナント内に存在する必要があります。  テナント間オブジェクト レプリケーションを禁止する方法の詳細については、「[Azure Active Directory テナント間でのオブジェクト レプリケーションを禁止する](object-replication-prevent-cross-tenant-policies.md)」を参照してください。
+既定では、適切なアクセス許可を持つユーザーは、1 つの Azure AD テナントにあるソース ストレージ アカウントと、別のテナントにある宛先アカウントを使用して、オブジェクト レプリケーションを構成できます。 セキュリティ ポリシーで、オブジェクト レプリケーションを同じテナント内に存在するストレージ アカウントのみに制限する必要がある場合は、セキュリティ プロパティの **AllowCrossTenantReplication** プロパティ (プレビュー) を設定して、テナント間のレプリケーションを禁止することができます。 ストレージ アカウントのテナント間オブジェクト レプリケーションを禁止する場合は、ソースまたは宛先アカウントとしてそのストレージ アカウントで構成されている任意のオブジェクト レプリケーション ポリシーに対して、Azure Storage では、ソースと宛先の両方のアカウントが同じ Azure AD テナント内に存在する必要があります。 テナント間オブジェクト レプリケーションを禁止する方法の詳細については、「[Azure Active Directory テナント間でのオブジェクト レプリケーションを禁止する](object-replication-prevent-cross-tenant-policies.md)」を参照してください。
 
 ストレージ アカウントのテナント間オブジェクト レプリケーションを禁止するには、**AllowCrossTenantReplication** プロパティを *false* に設定します。 現在、ストレージ アカウントがテナント間オブジェクト レプリケーション ポリシーに含まれていない場合、**AllowCrossTenantReplication** プロパティを *false* に設定すると、今後、テナント間オブジェクト レプリケーション ポリシーでこのストレージ アカウントをソースまたは宛先として使用するよう構成することができなくなります。
 
@@ -188,12 +188,12 @@ Azure Policy を使用して、テナント間オブジェクト レプリケー
 
 ## <a name="feature-support"></a>機能サポート
 
-次の表は、アカウントでのこの機能のサポート方法と、特定の機能を有効にした場合のサポートへの影響を示しています。 
+この表は、アカウントでのこの機能のサポート状況と、特定の機能を有効にした場合のサポートへの影響を示しています。
 
-| ストレージ アカウントの種類                | BLOB Storage (既定のサポート)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+| ストレージ アカウントの種類                | Blob Storage (既定のサポート)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>
 |-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
-| Standard 汎用 v2 | ![はい](../media/icons/yes-icon.png) |![いいえ](../media/icons/no-icon.png)              | ![いいえ](../media/icons/no-icon.png) | 
-| Premium ブロック BLOB          | ![はい](../media/icons/yes-icon.png) |![いいえ](../media/icons/no-icon.png)              | ![いいえ](../media/icons/no-icon.png) | 
+| Standard 汎用 v2 | ![はい](../media/icons/yes-icon.png) |![いいえ](../media/icons/no-icon.png)              | ![いいえ](../media/icons/no-icon.png) |
+| Premium ブロック BLOB          | ![はい](../media/icons/yes-icon.png) |![いいえ](../media/icons/no-icon.png)              | ![いいえ](../media/icons/no-icon.png) |
 
 <sup>1</sup>    Data Lake Storage Gen2 とネットワーク ファイル システム (NFS) 3.0 プロトコルはどちらも、階層型名前空間が有効になっているストレージ アカウントが必要です。
 

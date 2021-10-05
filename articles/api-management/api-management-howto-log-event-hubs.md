@@ -3,7 +3,7 @@ title: Azure API Management で Azure Event Hubs にイベントを記録する�
 description: Azure API Management で Azure Event Hubs にイベントを記録する方法について説明します。 Event Hubs は、拡張性の高いデータ イングレス サービスです。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 manager: erikre
 editor: ''
 ms.assetid: 88f6507d-7460-4eb2-bffd-76025b73f8c4
@@ -12,18 +12,18 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/29/2018
-ms.author: apimpm
-ms.openlocfilehash: dc36caf8e00a3f23928b95eedc2574072f9c474d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.author: danlep
+ms.openlocfilehash: 80a518b7db0f28e92a421189d111bde2e82875ec
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121741576"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128591883"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>Azure API Management で Azure Event Hubs にイベントを記録する方法
 Azure Event Hubs は、1 秒間に数百万件のイベントを取り込むことができる高度にスケーラブルなデータ受信サービスであり、接続されたデバイスとアプリケーションで生成される大量のデータを処理および分析できます。 Event Hubs はイベント パイプラインの「玄関」として機能し、Event Hubs に収集されたデータは、任意のリアルタイム分析プロバイダーまたはバッチ処理/ストレージ アダプターを使用して変換および格納できます。 Event Hubs はイベント ストリームの生成とイベントの使用を分離し、イベント コンシューマーが独自のスケジュールでイベントにアクセスできるようにします。
 
-この記事は [Azure API Management と Event Hubs の統合](https://azure.microsoft.com/documentation/videos/integrate-azure-api-management-with-event-hubs/) 動画に付随するものであり、Azure Event Hubs を利用して API Management イベントをログに記録する方法を説明しています。
+この記事では、Azure Event Hubs を使用して API Management のログを記録する方法について説明します。
 
 ## <a name="create-an-azure-event-hub"></a>Azure Event Hub を作成します
 

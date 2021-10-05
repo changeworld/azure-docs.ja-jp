@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 04/06/2021
+ms.date: 09/14/2021
 ms.author: memildin
-ms.openlocfilehash: e11d455238f4a4e8c128a6cda83a145adaf149e9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fa7076882370b404ea7b1e04cb5c364f22c35fae
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121745104"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128648470"
 ---
 # <a name="defend-azure-arc-enabled-kubernetes-clusters-running-in-on-premises-and-multi-cloud-environments"></a>オンプレミスおよびマルチクラウド環境で実行されている Azure Arc 対応 Kubernetes クラスターを防御する
 
@@ -29,7 +29,7 @@ ms.locfileid: "121745104"
 |--------|---------|
 | リリース状態 | **プレビュー**<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)]|
 | 必要なロールとアクセス許可 | [セキュリティ管理者](../role-based-access-control/built-in-roles.md#security-admin)はアラートを無視できます<br>[セキュリティ閲覧者](../role-based-access-control/built-in-roles.md#security-reader)は、結果を表示できます |
-| 価格 | [Azure Defender for Kubernetes](defender-for-kubernetes-introduction.md) が必要です |
+| 価格 | 無料 (プレビュー期間中) |
 | サポートされている Kubernetes ディストリビューション | [Azure Stack HCI の Azure Kubernetes Service](/azure-stack/aks-hci/overview)<br>[Kubernetes](https://kubernetes.io/docs/home/)<br> [AKS エンジン](https://github.com/Azure/aks-engine)<br> [Azure Red Hat OpenShift](https://azure.microsoft.com/services/openshift/)<br> [Red Hat OpenShift](https://www.openshift.com/learn/topics/kubernetes/) (バージョン 4.6 以降)<br> [VMware Tanzu Kubernetes Grid](https://tanzu.vmware.com/kubernetes-grid)<br> [Rancher Kubernetes Engine](https://rancher.com/docs/rke/latest/en/) |
 | 制限事項 | Azure Arc 対応 Kubernetes と Azure Defender 拡張機能では、Google Kubernetes Engine や Elastic Kubernetes Service などのマネージド Kubernetes オファリングがサポートされて **いません**。 [Azure Defender は Azure Kubernetes Service (AKS) に対してネイティブに使用でき](defender-for-kubernetes-introduction.md)、クラスターを Azure Arc に接続する必要はありません。 |
 | 環境とリージョン | この拡張機能の可用性は、[Azure Arc 対応 Kubernetes](../azure-arc/kubernetes/overview.md) と同じです|
@@ -46,9 +46,18 @@ AKS 以外のすべての Kubernetes クラスターについては、クラス�
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure Defender for Kubernetes が[お使いのサブスクリプションで有効になっている](enable-azure-defender.md)
-- ご自分の Kubernetes クラスターが [Azure Arc に接続されている](../azure-arc/kubernetes/quickstart-connect-cluster.md)
+拡張機能を展開する前に、次のことを確認してください。
+- [Kubernetes クラスターを Azure Arc に接続する](../azure-arc/kubernetes/quickstart-connect-cluster.md)
 - [汎用クラスター拡張機能のドキュメント](../azure-arc/kubernetes/extensions.md#prerequisites)に記載されている前提条件を満たしている。
+- 送信アクセス用に、次のエンドポイントで **ポート 443** を構成する。
+    - Azure Government クラウド上のクラスターの場合:
+        - *.ods.opinsights.azure.us
+        - *.oms.opinsights.azure.us
+        - :::no-loc text="login.microsoftonline.us":::
+    - 他の Azure クラウド デプロイ上のクラスターの場合:
+        - *.ods.opinsights.azure.com
+        - *.oms.opinsights.azure.com
+        - :::no-loc text="login.microsoftonline.com":::
 
 ## <a name="deploy-the-azure-defender-extension"></a>Azure Defender 拡張機能のデプロイ
 
@@ -141,7 +150,7 @@ REST API を使用して Azure Defender 拡張機能をデプロイするには�
 
     各値の説明:
 
-    | 名前            | /   | 必須 | 型   | 説明                                  |
+    | 名前            | /   | 必須 | 種類   | 説明                                  |
     |-----------------|------|----------|--------|----------------------------------------------|
     | サブスクリプション ID | path | True     | string | お使いの Azure Arc 対応 Kubernetes リソースのサブスクリプション ID |
     | リソース グループ  | path | True     | string | お使いの Azure Arc 対応 Kubernetes リソースを含むリソース グループの名前 |
@@ -150,7 +159,7 @@ REST API を使用して Azure Defender 拡張機能をデプロイするには�
 
     **認証** のために、(他の Azure API と同様に) 実際のヘッダーには、ベアラー トークンが必要です。 ベアラー トークンを取得するには、次のコマンドを実行します。
 
-    ```az account get-access-token --subscription <your-subscription-id>``` 実際のメッセージの本文には、次の構造を使用します。
+    `az account get-access-token --subscription <your-subscription-id>` 実際のメッセージの本文には、次の構造を使用します。
     ```json
     { 
     "properties": { 
@@ -324,7 +333,7 @@ REST API を使用して拡張機能を削除するには、次の DELETE コマ
 DELETE https://management.azure.com/subscriptions/{{Subscription Id}}/resourcegroups/{{Resource Group}}/providers/Microsoft.Kubernetes/connectedClusters/{{Cluster Name}}/providers/Microsoft.KubernetesConfiguration/extensions/microsoft.azuredefender.kubernetes?api-version=2020-07-01-preview
 ```
 
-| 名前            | /   | 必須 | 型   | 説明                                           |
+| 名前            | /   | 必須 | 種類   | 説明                                           |
 |-----------------|------|----------|--------|-------------------------------------------------------|
 | サブスクリプション ID | path | True     | string | ご自分の Arc 対応 Kubernetes クラスターのサブスクリプション ID |
 | リソース グループ  | path | True     | string | ご自分の Arc 対応 Kubernetes クラスターのリソース グループ  |

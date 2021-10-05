@@ -1,19 +1,20 @@
 ---
-title: Azure SQL で Azure Active Directory 専用認証を有効にしたサーバーを作成する
+title: Azure Active Directory 専用認証を有効にしたサーバーを作成する
 description: この記事では、Azure Active Directory (Azure AD) 専用認証を有効にした Azure SQL 論理サーバーまたはマネージド インスタンスを作成する手順について説明します。これにより、SQL 認証を使用した接続が無効になります。
+titleSuffix: Azure SQL Database & Azure SQL Managed Instance
 ms.service: sql-db-mi
 ms.subservice: security
 ms.topic: how-to
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 07/19/2021
-ms.openlocfilehash: 7b12e8cfac76f1b397e3dd1209afe584616ef340
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.date: 08/31/2021
+ms.openlocfilehash: 1519573670b3c97e1c47404ed457bf68c488108e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114458404"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128643196"
 ---
 # <a name="create-server-with-azure-ad-only-authentication-enabled-in-azure-sql"></a>Azure SQL で Azure AD 専用認証を有効にしたサーバーを作成する
 
@@ -22,7 +23,7 @@ ms.locfileid: "114458404"
 > [!NOTE]
 > この記事で説明している **Azure AD 専用認証** 機能は、**パブリック プレビュー** 段階です。 この機能の詳細については、「[Azure SQL を使用した Azure AD 専用認証](authentication-azure-ad-only-authentication.md)」を参照してください。 Azure AD 専用認証は現在、Azure Synapse Analytics では使用できません。
 
-この攻略ガイドでは、プロビジョニング中に [Azure AD 専用認証](authentication-azure-ad-only-authentication.md)を有効にした [Azure SQL 論理サーバー](logical-servers.md)または [Azure SQL マネージド インスタンス](../managed-instance/sql-managed-instance-paas-overview.md)を作成する手順の概要を示します。 Azure AD 専用認証機能を使用すると、ユーザーは SQL 認証を使用してサーバーまたはマネージド インスタンスに接続できなくなり、Azure AD 認証を使用した接続のみが許可されます。
+この攻略ガイドでは、プロビジョニング中に [Azure AD 専用認証](authentication-azure-ad-only-authentication.md)を有効にした Azure SQL Database 用[論理サーバー](logical-servers.md)または [Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md) を作成する手順の概要を示します。 Azure AD 専用認証機能を使用すると、ユーザーは SQL 認証を使用してサーバーまたはマネージド インスタンスに接続できなくなり、Azure AD 認証を使用した接続のみが許可されます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -32,13 +33,13 @@ ms.locfileid: "114458404"
 
 ## <a name="permissions"></a>アクセス許可
 
-Azure SQL 論理サーバーまたはマネージド インスタンスをプロビジョニングするには、これらのリソースを作成するための適切なアクセス許可が必要です。 サブスクリプションの[所有者](../../role-based-access-control/built-in-roles.md#owner)、[共同作成者](../../role-based-access-control/built-in-roles.md#contributor)、[サービス管理者](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)、[共同管理者](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)といった、より高いアクセス許可を持つ Azure ユーザーは、SQL サーバーまたはマネージド インスタンスを作成する特権を持ちます。 最小特権の Azure RBAC ロールでこれらのリソースを作成するには、SQL Database の場合は [SQL Server 共同作成者](../../role-based-access-control/built-in-roles.md#sql-server-contributor)ロールを使用し、Managed Instance の場合は [SQL Managed Instance 共同作成者](../../role-based-access-control/built-in-roles.md#sql-managed-instance-contributor)ロールを使用します。
+論理サーバーまたはマネージド インスタンスをプロビジョニングするには、これらのリソースを作成するための適切なアクセス許可が必要です。 サブスクリプションの[所有者](../../role-based-access-control/built-in-roles.md#owner)、[共同作成者](../../role-based-access-control/built-in-roles.md#contributor)、[サービス管理者](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)、[共同管理者](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)といった、より高いアクセス許可を持つ Azure ユーザーは、SQL サーバーまたはマネージド インスタンスを作成する特権を持ちます。 最小特権の Azure RBAC ロールでこれらのリソースを作成するには、SQL Database の場合は [SQL Server 共同作成者](../../role-based-access-control/built-in-roles.md#sql-server-contributor)ロールを使用し、Managed Instance の場合は [SQL Managed Instance 共同作成者](../../role-based-access-control/built-in-roles.md#sql-managed-instance-contributor)ロールを使用します。
 
 [SQL セキュリティ管理者](../../role-based-access-control/built-in-roles.md#sql-security-manager) Azure RBAC ロールには、Azure AD 専用認証を有効にしたサーバーまたはインスタンスを作成するための十分なアクセス許可がありません。 サーバーまたはインスタンスの作成後に Azure AD 専用認証機能を管理するには、[SQL セキュリティ管理者](../../role-based-access-control/built-in-roles.md#sql-security-manager)ロールが必要です。
 
 ## <a name="provision-with-azure-ad-only-authentication-enabled"></a>Azure AD 専用認証を有効にしたプロビジョニング
 
-次のセクションでは、サーバーまたはインスタンスの Azure AD 管理者セットを使用して SQL 論理サーバーまたはマネージド インスタンスを作成する方法およびサーバー作成時に Azure AD 専用認証を有効する方法に関する例とスクリプトを紹介します。 機能の詳細については、「[Azure AD 専用認証](authentication-azure-ad-only-authentication.md)」を参照してください。
+次のセクションでは、サーバーまたはインスタンスの Azure AD 管理者セットを使用して論理サーバーまたはマネージド インスタンスを作成する方法およびサーバー作成時に Azure AD 専用認証を有効にする方法に関する例とスクリプトを紹介します。 機能の詳細については、「[Azure AD 専用認証](authentication-azure-ad-only-authentication.md)」を参照してください。
 
 この例では、システムに割り当てられたサーバー管理者とパスワードを使用して、サーバーまたはマネージド インスタンスの作成時に Azure AD 専用認証を有効にします。 これにより Azure AD 専用認証が有効になっている場合にサーバー管理者がアクセスできなくなり、Azure AD 管理者のみがリソースにアクセスできるようになります。 サーバー作成時に独自のサーバー管理者とパスワードを含めるためにパラメーターを API に追加することは省略可能です。 ただし、Azure AD 専用認証を無効にするまで、パスワードをリセットすることはできません。
 
@@ -51,7 +52,7 @@ Azure SQL 論理サーバーまたはマネージド インスタンスをプロ
 
 # <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Azure CLI コマンド `az sql server create` は、新しい Azure SQL 論理サーバーをプロビジョニングするために使用されます。 次のコマンドは、Azure AD 専用認証が有効になっている新しいサーバーをプロビジョニングします。
+Azure CLI コマンド `az sql server create` は、新しい論理サーバーをプロビジョニングするために使用されます。 次のコマンドは、Azure AD 専用認証が有効になっている新しいサーバーをプロビジョニングします。
 
 サーバー SQL 管理者ログインが自動的に作成され、パスワードはランダムなパスワードに設定されます。 このサーバーを作成すると SQL 認証接続が無効になるため、SQL 管理者ログインは使用されません。
 
@@ -61,8 +62,8 @@ Azure CLI コマンド `az sql server create` は、新しい Azure SQL 論理�
 
 - `<AzureADAccount>`: Azure AD のユーザーまたはグループを指定できます。 たとえば、`DummyLogin` のように指定します。
 - `<AzureADAccountSID>`: ユーザーの Azure AD オブジェクト ID
-- `<ResourceGroupName>`: Azure SQL 論理サーバーのリソース グループの名前
-- `<ServerName>`: 一意の Azure SQL 論理サーバー名を使用します
+- `<ResourceGroupName>`: 論理サーバーのリソース グループの名前
+- `<ServerName>`: 一意の論理サーバー名を使用します
 
 ```azurecli
 az sql server create --enable-ad-only-auth --external-admin-principal-type User --external-admin-name <AzureADAccount> --external-admin-sid <AzureADAccountSID> -g <ResourceGroupName> -n <ServerName>
@@ -86,9 +87,9 @@ PowerShell コマンド `New-AzSqlServer` は、新しい Azure SQL 論理サー
 
 この例では次の値を置き換えます。
 
-- `<ResourceGroupName>`: Azure SQL 論理サーバーのリソース グループの名前
+- `<ResourceGroupName>`: 論理サーバーのリソース グループの名前
 - `<Location>`: サーバーの場所 (`West US`、`Central US` など)
-- `<ServerName>`: 一意の Azure SQL 論理サーバー名を使用します
+- `<ServerName>`: 一意の論理サーバー名を使用します
 - `<AzureADAccount>`: Azure AD のユーザーまたはグループを指定できます。 たとえば、`DummyLogin` のように指定します。
 
 ```powershell
@@ -99,9 +100,9 @@ New-AzSqlServer -ResourceGroupName "<ResourceGroupName>" -Location "<Location>" 
 
 # <a name="rest-api"></a>[Rest API](#tab/rest-api)
 
-[Servers - Create Or Update](/rest/api/sql/2020-11-01-preview/servers/create-or-update) Rest API を使用して、プロビジョニング中に Azure AD 専用認証が有効になっている Azure SQL 論理サーバーを作成できます。 
+[Servers - Create Or Update](/rest/api/sql/2020-11-01-preview/servers/create-or-update) Rest API を使用して、プロビジョニング中に Azure AD 専用認証が有効になっている論理サーバーを作成できます。 
 
-次のスクリプトでは、Azure SQL 論理サーバーをプロビジョニングし、Azure AD 管理者を `<AzureADAccount>` として設定して、Azure AD 専用認証を有効にします。 サーバー SQL 管理者ログインも自動的に作成され、パスワードはランダムなパスワードに設定されます。 このプロビジョニングでは SQL 認証接続が無効になるため、SQL 管理者ログインは使用されません。
+次のスクリプトでは、論理サーバーをプロビジョニングし、Azure AD 管理者を `<AzureADAccount>` として設定して、Azure AD 専用認証を有効にします。 サーバー SQL 管理者ログインも自動的に作成され、パスワードはランダムなパスワードに設定されます。 このプロビジョニングでは SQL 認証接続が無効になるため、SQL 管理者ログインは使用されません。
 
 Azure AD 管理者 `<AzureADAccount>` は、プロビジョニングが完了したときにサーバーを管理するために使用できます。
 
@@ -109,8 +110,8 @@ Azure AD 管理者 `<AzureADAccount>` は、プロビジョニングが完了し
 
 - `<tenantId>`: [Azure portal](https://portal.azure.com) から **Azure Active Directory** リソースにアクセスして確認できます。 **[概要]** ペインに **[テナント ID]** が表示されます
 - `<subscriptionId>`: サブスクリプション ID は Azure portal で確認できます
-- `<ServerName>`: 一意の Azure SQL 論理サーバー名を使用します
-- `<ResourceGroupName>`: Azure SQL 論理サーバーのリソース グループの名前
+- `<ServerName>`: 一意の論理サーバー名を使用します
+- `<ResourceGroupName>`: 論理サーバーのリソース グループの名前
 - `<AzureADAccount>`: Azure AD のユーザーまたはグループを指定できます。 たとえば、`DummyLogin` のように指定します。
 - `<Location>`: サーバーの場所 (`westus2`、`centralus` など)
 - `<objectId>`: [Azure portal](https://portal.azure.com) から **Azure Active Directory** リソースにアクセスして確認できます。 **[ユーザー]** ペインで、Azure AD ユーザーを検索し、**オブジェクト ID** を特定します
@@ -175,7 +176,7 @@ $responce.content
 
 ARM テンプレートの詳細については、「[Azure SQL Database および SQL Managed Instance 用 Azure Resource Manager テンプレート](arm-templates-content-guide.md)」を参照してください。
 
-ARM テンプレートを使用して、サーバーの Azure AD 管理者が設定され、Azure AD 専用認証が有効になった SQL 論理サーバーをプロビジョニングするには、「[Azure AD 専用認証を使用した Azure SQL 論理サーバー](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.sql/sql-logical-server-aad-only-auth)」クイックスタート テンプレートを参照してください。
+ARM テンプレートを使用して、サーバーの Azure AD 管理者が設定され、Azure AD 専用認証が有効になった論理サーバーをプロビジョニングするには、「[Azure AD 専用認証を使用した Azure SQL 論理サーバー](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.sql/sql-logical-server-aad-only-auth)」クイックスタート テンプレートを参照してください。
 
 次のテンプレートを使用することもできます。 [Azure portal のカスタム デプロイ](https://portal.azure.com/#create/Microsoft.Template)を使用し、**エディターで独自のテンプレートを作成** します。 次に、例に貼り付けたら、構成を **保存** します。
 
@@ -188,7 +189,7 @@ ARM テンプレートを使用して、サーバーの Azure AD 管理者が設
             "type": "string",
             "defaultValue": "[uniqueString('sql', resourceGroup().id)]",
             "metadata": {
-                "description": "The name of the SQL logical server."
+                "description": "The name of the logical server."
             }
         },
         "location": {
@@ -322,7 +323,7 @@ Azure AD 管理者 `<AzureADAccount>` は、プロビジョニングが完了し
 - `<tenantId>`: [Azure portal](https://portal.azure.com) から **Azure Active Directory** リソースにアクセスして確認できます。 **[概要]** ペインに **[テナント ID]** が表示されます
 - `<subscriptionId>`: サブスクリプション ID は Azure portal で確認できます
 - `<instanceName>`: 一意のマネージド インスタンス名を使用します
-- `<ResourceGroupName>`: Azure SQL 論理サーバーのリソース グループの名前
+- `<ResourceGroupName>`: 論理サーバーのリソース グループの名前
 - `<AzureADAccount>`: Azure AD のユーザーまたはグループを指定できます。 たとえば、`DummyLogin` のように指定します。
 - `<Location>`: サーバーの場所 (`westus2`、`centralus` など)
 - `<objectId>`: [Azure portal](https://portal.azure.com) から **Azure Active Directory** リソースにアクセスして確認できます。 **[ユーザー]** ペインで、Azure AD ユーザーを検索し、**オブジェクト ID** を特定します
@@ -673,3 +674,4 @@ Invoke-RestMethod -Uri https://management.azure.com/subscriptions/$subscriptionI
 
 - SQL サーバーまたはマネージド インスタンスが既に存在し、Azure AD 専用認証を有効にするだけの場合は、「[チュートリアル: Azure SQL を使用して Azure Active Directory 専用認証を有効にする](authentication-azure-ad-only-authentication-tutorial.md)」を参照してください。
 - Azure AD 専用認証機能の詳細については、「[Azure SQL を使用した Azure AD 専用認証](authentication-azure-ad-only-authentication.md)」を参照してください。
+- Azure AD 認証が有効になっているサーバーの作成を強制する場合は、[Azure SQL を使用して Azure Active Directory のみの認証を行うための Azure Policy](authentication-azure-ad-only-authentication-policy.md) に関する記事を参照してください

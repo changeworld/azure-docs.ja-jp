@@ -1,7 +1,7 @@
 ---
-title: Azure Data Factory のフィルター アクティビティ
+title: Filter アクティビティ
 titleSuffix: Azure Data Factory & Azure Synapse
-description: フィルター アクティビティは、入力をフィルター処理します。
+description: Filter アクティビティは、入力をフィルター処理して Azure Data Factory および Azure Synapse Analytics パイプラインに入力します。
 author: chez-charlie
 ms.author: chez
 ms.reviewer: jburchel
@@ -9,15 +9,15 @@ ms.service: data-factory
 ms.subservice: orchestration
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 05/04/2018
-ms.openlocfilehash: 2ec871aeb6fb7146e66c3d3124ed8bba3400d4c8
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/09/2021
+ms.openlocfilehash: d5a78ca89841abc1d6f060a2f84b7db5ec3758e0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638896"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124831632"
 ---
-# <a name="filter-activity-in-azure-data-factory"></a>Azure Data Factory のフィルター アクティビティ
+# <a name="filter-activity-in-azure-data-factory-and-synapse-analytics-pipelines"></a>Azure Data Factory と Azure Synapse Analytics パイプラインの Filter アクティビティ
 パイプラインでフィルター アクティビティを使用して、入力配列にフィルター式を適用することができます。 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -112,7 +112,7 @@ items | フィルターを適用する必要がある入力配列。 | Expressio
 ```
 
 ## <a name="next-steps"></a>次のステップ
-Data Factory でサポートされている他の制御フロー アクティビティを参照してください。 
+サポートされている他の制御フロー アクティビティを参照してください。 
 
 - [If Condition アクティビティ](control-flow-if-condition-activity.md)
 - [ExecutePipeline アクティビティ](control-flow-execute-pipeline-activity.md)

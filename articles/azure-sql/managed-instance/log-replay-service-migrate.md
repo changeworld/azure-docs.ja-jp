@@ -9,13 +9,13 @@ ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: mathoma
-ms.date: 09/07/2021
-ms.openlocfilehash: 85bf8c07da9d283011d17f1f96ad76e0fa411213
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.date: 09/21/2021
+ms.openlocfilehash: 2928ce1f58ddefce368a361b32fe65f9c79994cc
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123535313"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128630245"
 ---
 # <a name="migrate-databases-from-sql-server-to-sql-managed-instance-by-using-log-replay-service-preview"></a>Log Replay Service (プレビュー) を使用して SQL Server から SQL Managed Instance にデータベースを移行する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -89,11 +89,6 @@ LRS は "*オートコンプリート*" または "*連続*" モードで開始�
 - プロビジョニングされた Azure Blob Storage コンテナー
 - BLOB ストレージ コンテナーに対して読み取りとリストのアクセス許可が付与された Shared Access Signature (SAS) セキュリティ トークンが生成されている
 
-### <a name="migration-of-multiple-databases"></a>複数のデータベースの移行
-異なるデータベースのバックアップ ファイルは、Blob Storage 上の個別のフォルダーに配置する必要があります。
-
-LRS は、Blob Storage 上の適切なフォルダーを指すデータベースごとに個別に開始します。 LRS は、1 つのマネージド インスタンスごとに最大 100 個の同時復元プロセスをサポートできます。
-
 ### <a name="azure-rbac-permissions"></a>Azure RBAC アクセス許可
 指定したクライアントを介して LRS を実行するには、次のいずれかの Azure ロールが必要です。
 - サブスクリプションの所有者ロール
@@ -108,6 +103,7 @@ LRS は、Blob Storage 上の適切なフォルダーを指すデータベース
 - バックアップの圧縮を有効にします。
 - リリースされる最新のコマンドレットに常に更新されるため、Cloud Shell を使用してスクリプトを実行します。
 - LRS を開始してから 36 時間以内に移行を完了するように計画します。 これは、システム管理されているソフトウェア パッチのインストールが行われない猶予期間です。
+- 個々のデータベースのすべてのバックアップ ファイルを 1 つのフォルダーに配置します。 同じデータベースにサブフォルダーを使用しないでください。
 
 > [!IMPORTANT]
 > - 移行プロセスが完了するまで、LRS で復元中のデータベースを使用することはできません。 
@@ -385,6 +381,22 @@ Azure CLI を使用して LRS 連続モードで移行プロセスを完了す�
 az sql midb log-replay complete -g mygroup --mi myinstance -n mymanageddb --last-backup-name "backup.bak"
 ```
 
+### <a name="migration-of-multiple-databases"></a>複数のデータベースの移行
+異なるデータベースのバックアップ ファイルは、Azure Blob Storage コンテナー内の個別のフォルダーに配置する必要があります。 1 つのデータベースのすべてのバックアップ ファイルを同じフォルダー内に配置する必要があります。これは、個別のデータベースにサブフォルダーを使用できないためです。 LRS は、Azure Blob Storage コンテナーと個々のデータベース フォルダーの完全な URI パスを指すように、データベースごとに個別に開始する必要があります。
+
+複数のデータベースに対して LRS を呼び出すときに必要なフォルダー構造と URI 仕様の例を次に示します。 各データベースに対して LRS を個別に開始し、Azure Blob Storage コンテナーと個々のデータベース フォルダーへの完全な URI パスを指定します。
+
+```URI
+-- Place all backup files for database 1 in its own separate folder within a storage container. No further subfolders are allowed under database1 folder for this database.
+https://<mystorageaccountname>.blob.core.windows.net/<mycontainername>/database1/<all database 1 backup files>
+
+-- Place all backup files for database 2 in its own separate folder within a storage container. No further subfolders are allowed under database2 folder for this database.
+https://<mystorageaccountname>.blob.core.windows.net/<mycontainername>/database2/<all database 2 backup files>
+
+-- Place all backup files for database 2 in its own separate folder within a storage container. No further subfolders are allowed under database3 folder for this database.
+https://<mystorageaccountname>.blob.core.windows.net/<mycontainername>/database3/<all database 3 backup files>
+```
+
 ## <a name="functional-limitations"></a>機能制限
 
 LRS の機能制限は次のとおりです。
@@ -394,7 +406,8 @@ LRS の機能制限は次のとおりです。
 - LRS によって使用される SAS トークンは Azure Blob Storage コンテナー全体に対して生成される必要があり、読み取りとリストのアクセス許可のみ付与されている必要があります。
 - 異なるデータベースのバックアップ ファイルは、Blob Storage 上の個別のフォルダーに配置する必要があります。
 - ファイル名に % 文字と $ 文字が含まれるバックアップ ファイルは LRS で使用できません。 そのようなファイル名は変更を検討してください。
-- LRS は、Blob Storage 上のバックアップ ファイルがある個別のフォルダーを指すデータベースごとに個別に開始する必要があります。
+- 個々のデータベースのサブフォルダーにバックアップを配置することはサポートされていません。 1 つのデータベースのすべてのバックアップは、1 つのフォルダーのルートに配置する必要があります。
+- 複数のデータベースの場合、バックアップ ファイルは、データベースごとに個別のフォルダーに配置する必要があります。 LRS は、個々のデータベース フォルダーを含む完全な URI パスを指すデータベースごとに個別に開始する必要があります。 
 - LRS は、1 つのマネージド インスタンスごとに最大 100 個の同時復元プロセスをサポートできます。
 
 ## <a name="troubleshooting"></a>トラブルシューティング

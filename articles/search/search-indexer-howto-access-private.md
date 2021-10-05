@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/13/2021
-ms.openlocfilehash: 519181594bd98068cd66413a114a61d794b4d411
-ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
+ms.openlocfilehash: 79bb517faffdda7e9d7ddef45e7b52f5e81dc201
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122195619"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128589684"
 ---
 # <a name="make-indexer-connections-through-a-private-endpoint"></a>プライベート エンドポイントを経由したインデクサー接続の作成
 
@@ -43,6 +43,7 @@ Azure Cognitive Search では、その管理 REST API を通じて、Azure Cogni
 | Azure リソース | グループ ID |
 | --- | --- |
 | Azure Storage - Blob | `blob`|
+| Azure Storage - Data Lake Storage Gen2 | `dfs` および `blob` |
 | Azure Storage - Tables | `table`|
 | Azure Cosmos DB - SQL API | `Sql`|
 | Azure SQL データベース | `sqlServer`|
@@ -53,6 +54,9 @@ Azure Cognitive Search では、その管理 REST API を通じて、Azure Cogni
 発信プライベート エンドポイント接続がサポートされている Azure リソースは、[サポートされる API のリスト](/rest/api/searchmanagement/2021-04-01-preview/private-link-resources/list-supported)を使って照会することもできます。
 
 この記事の残りの部分では、Azure portal (または必要に応じて [Azure CLI](/cli/azure/)) と [Postman](https://www.postman.com/) (または必要に応じて [curl](https://curl.se/) などの他の HTTP クライアント) を組み合わせて使用して、REST API の呼び出しをデモンストレーションします。
+
+> [!NOTE]
+> Azure Data Lake Storage Gen2 へのプライベート エンドポイント接続を作成するには、2 つのプライベート エンドポイントを作成する必要があります。 groupID 'dfs' を持つ 1 つのプライベート エンドポイントと、groupID 'blob' を持つもう 1 つのプライベート エンドポイント。
 
 ## <a name="set-up-indexer-connection-through-private-endpoint"></a>プライベート エンドポイントを使用してインデクサー接続を設定する
 

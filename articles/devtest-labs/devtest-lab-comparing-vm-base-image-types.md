@@ -1,14 +1,14 @@
 ---
-title: DevTest Labs のカスタム イメージと数式の比較 | Microsoft Docs
+title: カスタム イメージと数式を比較する
 description: 環境に最適なものを判断できるように、VM ベースとして使用するカスタム イメージと数式の違いについて説明します。
 ms.topic: conceptual
 ms.date: 08/26/2021
-ms.openlocfilehash: f1fdb46decda2f72e64eff95cf57dba002168943
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.openlocfilehash: d78d6ba1f380b820fff9df7d82691334d40be8ce
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122634005"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128648508"
 ---
 # <a name="compare-custom-images-and-formulas-in-devtest-labs"></a>DevTest ラボのカスタム イメージと数式を比較する
 [カスタム イメージ](devtest-lab-create-template.md)と[数式](devtest-lab-manage-formulas.md)の両方を、[新しく作成した VM](devtest-lab-add-vm.md) のベースとして使用することができます。  カスタム イメージが単に VHD に基づくイメージであるのに対して、数式は VM サイズ、仮想ネットワーク、サブネット、アーティファクトなどの構成済み設定 *に加え*、VHD に基づくイメージであるという重要な相違点があります。 これらの構成済みの設定は、VM の作成時にオーバーライド可能な既定値で設定されます。 

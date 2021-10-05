@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: how-to
-ms.date: 05/25/2021
+ms.date: 09/13/2021
 tags: connectors
-ms.openlocfilehash: 10c946010fa3caba14130c3c7055c711323ad93c
-ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
+ms.openlocfilehash: 1c894c6162a8c9e24794f5c52ce1f6cefb6fa85a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110498294"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128563704"
 ---
 # <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>Azure Logic Apps から HTTP または HTTPS でサービス エンドポイントを呼び出す
 
@@ -256,7 +256,9 @@ HTTP 要求の本文に form-urlencoded データを提供するには、デー�
 
 ## <a name="asynchronous-request-response-behavior"></a>非同期の要求 - 応答の動作
 
-既定では、Azure Logic Apps での HTTP ベースのすべてのアクションは、標準的な[非同期操作パターン](/azure/architecture/patterns/async-request-reply)に従います。 このパターンでは、HTTP アクションがエンドポイント、サービス、システム、または API に対して要求を呼び出す、または送信した後、受信側が直ちに ["202 ACCEPTED"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.3) 応答を返すよう規定されます。 このコードは、受信側が要求を受け入れたが、処理が完了していないことを確認します。 応答には、受信側が処理を停止して ["200 OK"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) 成功応答またはその他の 202 以外の応答が返されるまで、呼び出し元が非同期要求の状態をポーリングまたは確認するために使用できる URL およびリフレッシュ ID を指定する `location` ヘッダーを含めることができます。 ただし、呼び出し元は要求の処理が完了するまで待機する必要はなく、次のアクションの実行を継続できます。 詳細については、[マイクロサービスの非同期統合によるマイクロサービスの自律性の強制](/azure/architecture/microservices/design/interservice-communication#synchronous-versus-asynchronous-messaging)に関するページを参照してください。
+マルチテナントとシングルテナントの両方の Azure Logic Apps の *ステートフル* ワークフローの場合、すべての HTTP ベースのアクションは、既定の動作として標準の[非同期操作パターン](/azure/architecture/patterns/async-request-reply)に従います。 このパターンでは、HTTP アクションがエンドポイント、サービス、システム、または API に対して要求を呼び出す、または送信した後、受信側が直ちに ["202 ACCEPTED"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.3) 応答を返すよう規定されます。 このコードは、受信側が要求を受け入れたが、処理が完了していないことを確認します。 応答には、受信側が処理を停止して ["200 OK"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) 成功応答またはその他の 202 以外の応答が返されるまで、呼び出し元が非同期要求の状態をポーリングまたは確認するために使用できる URI およびリフレッシュ ID を指定する `location` ヘッダーを含めることができます。 ただし、呼び出し元は要求の処理が完了するまで待機する必要はなく、次のアクションの実行を継続できます。 詳細については、[マイクロサービスの非同期統合によるマイクロサービスの自律性の強制](/azure/architecture/microservices/design/interservice-communication#synchronous-versus-asynchronous-messaging)に関するページを参照してください。
+
+シングルテナント ワークフローの *ステートレス* ワークフロー Azure Logic Apps の場合、HTTP ベースのアクションでは、非同期操作パターンは使用されません。 代わりに、同期的にのみ実行され、["202 ACCEPTED"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.3) 応答がそのまま返され、ワークフローの実行の次のステップに進みます。 応答に `location` ヘッダーが含まれる場合、ステートレス ワークフローでは、指定された URI をポーリングして状態を確認することはありません。 標準の[非同期操作パターン](/azure/architecture/patterns/async-request-reply)に従うには、代わりにステートフル ワークフローを使用します。
 
 * ロジック アプリ デザイナーでは、HTTP アクション (トリガーではありません) に **非同期パターン** 設定があります。これは既定で有効になっています。 この設定では、呼び出し元は処理が終了するのを待たずに次のアクションに進むことができますが、処理が停止するまで状態のチェックは継続されます。 無効にした場合、この設定では次のアクションに進む前に、呼び出し元が処理の終了を待機するように指定されます。
 
@@ -306,6 +308,22 @@ HTTP 要求には[タイムアウト制限](../logic-apps/logic-apps-limits-and-
 * HTTP アクションを [HTTP Webhook アクション](../connectors/connectors-native-webhook.md)に置き換えます。これにより、要求が処理を完了した後、受信側が状態と結果を応答するまで待機します。
 
 <a name="disable-location-header-check"></a>
+
+### <a name="set-up-interval-between-retry-attempts-with-the-retry-after-header"></a>Retry-After ヘッダーを使用して再試行間隔を設定する
+
+再試行間隔 (秒数) を指定するには、HTTP アクション応答に `Retry-After` ヘッダーを追加します。 たとえば、ターゲット エンドポイントが `429 - Too many requests` 状態コードを返す場合は、再試行間隔を長く指定できます。 `Retry-After` ヘッダーは、`202 - Accepted` 状態コードと一緒に使用することもできます。
+
+`Retry-After` を含む HTTP アクション応答を示す同じ例を次に示します。
+
+```json
+{
+    "statusCode": 429,
+    "headers": {
+        "Retry-After": "300"
+    }
+}
+```
+
 
 ## <a name="disable-checking-location-headers"></a>場所ヘッダーの確認を無効にする
 

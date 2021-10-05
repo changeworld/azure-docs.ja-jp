@@ -2,14 +2,14 @@
 title: Azure VM バックアップのサポート マトリックス
 description: Azure Backup サービスを使用して Azure VM をバックアップする場合のサポート設定と制限事項について概説します。
 ms.topic: conceptual
-ms.date: 08/23/2021
+ms.date: 09/17/2021
 ms.custom: references_regions
-ms.openlocfilehash: 9244b7c5a62be57b1f8ec9ea0f27918c7aa62457
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 17cd2ca7d4b42e79d1b5012fa36e09a509fa28fe
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122770979"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129090972"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM バックアップのサポート マトリックス
 
@@ -43,7 +43,7 @@ Azure VM の直接バックアップ (Windows のみ)  | 特定のファイル�
 VM のバックアップ ポリシーを変更する | サポートされています。<br/><br/> VM は、新しいポリシーのスケジュールおよびリテンション期間の設定を使用してバックアップされます。 リテンション期間の設定が延長されている場合、既存の復旧ポイントがマークされ、保持されます。 短縮されている場合、既存の復旧ポイントは次のクリーンアップ ジョブで取り除かれ、最終的に削除されます。
 バックアップ ジョブを取り消す| スナップショットの処理中にサポートされます。<br/><br/> スナップショットがコンテナーに転送されているときはサポートされません。
 別のリージョンまたはサブスクリプションに VM をバックアップする |サポートされていません。<br><br>正常にバックアップするには、仮想マシンがバックアップ用のコンテナーと同じサブスクリプションに含まれている必要があります。
-1 日あたりのバックアップ回数 (Azure VM 拡張機能を使用した場合) | 1 日あたり 1 回のスケジュール済みバックアップ。<br/><br/>Azure Backup サービスでは、1 日あたり最大 3 回のオンデマンド バックアップと、スケジュール済みバックアップを追加で 1 回サポートします。
+1 日あたりのバックアップ回数 (Azure VM 拡張機能を使用した場合) | 1 日あたり 4 つのバックアップ: バックアップ ポリシーに応じて 1 つのスケジュールされたバックアップと、3 つのオンデマンド バックアップ。    <br><br>    ただし、試行が失敗した場合にユーザーが再試行できるようにするために、オンデマンド バックアップのハード制限は 9 回の試行に設定されます。
 1 日あたりのバックアップ回数 (MARS エージェントを使用した場合) | 1 日あたり 3 回のスケジュール済みバックアップ。
 1 日あたりのバックアップ回数 (DPM/MABS を使用した場合) | 1 日あたり 2 回のスケジュール済みバックアップ。
 毎月/毎年のバックアップ| Azure VM 拡張機能を使用してバックアップする場合、サポートされません。 毎日および毎週のみサポートされます。<br/><br/> 毎月/毎年のリテンション期間の間、毎日/毎週のバックアップを保持するようにポリシーを設定できます。
@@ -83,6 +83,15 @@ Azure VM Linux のバックアップでは、Azure Backup は、[Azure で承認
 - 他の個人所有の Linux ディストリビューションは、VM 上で [Linux 用の Azure VM エージェント](../virtual-machines/extensions/agent-linux.md)が動作し、かつ Python がサポートされていれば使用できます。
 - Azure Backup は、プロキシが構成された Linux VM を、Python バージョン 2.7 がインストールされていない場合はサポートしていません。
 - Azure Backup では、ストレージまたはその他の NFS サーバーから Linux または Windows コンピューターにマウントされた NFS ファイルのバックアップはサポートされません。 VM にローカルに接続されているディスクのみがバックアップされます。
+
+## <a name="support-matrix-for-managed-pre-post-scripts-for-linux-databases"></a>Linux データベースのマネージド事前/事後スクリプトのサポート マトリックス
+
+Azure Backup は、お客様が独自の事前/事後スクリプトを作成するためのサポートを提供します
+
+|サポートされているデータベース  |OS バージョン  |データベースのバージョン  |
+|---------|---------|---------|
+|Azure VM での Oracle     |   [Oracle Linux](../virtual-machines/linux/endorsed-distros.md)      |    Oracle 12.x 以降     |
+
 
 ## <a name="backup-frequency-and-retention"></a>バックアップの頻度とリテンション期間
 

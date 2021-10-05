@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.custom:
 - devx-track-azurecli
 - devx-track-azurepowershell
-ms.openlocfilehash: b2ba640fec6f9bf2cd09611456967e15ed8f7ade
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 05eca5bb95906ebb34e51f79d70a33cc003f2220
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121732891"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129091637"
 ---
 # <a name="manage-iot-central-from-azure-cli-or-powershell"></a>Azure CLI または PowerShell から IoT Central を管理する
 
@@ -78,7 +78,7 @@ az iot central app create \
 | パラメーター         | 説明 |
 | ----------------- | ----------- |
 | resource-group    | そのアプリケーションを含むリソース グループ。 サブスクリプションにこのリソース グループが既に存在している必要があります。 |
-| location          | このコマンドでは既定で、リソース グループの場所が使用されます。 現時点では、IoT Central アプリケーションは、**オーストラリア**、**アジア太平洋**、**ヨーロッパ**、または **米国**、**イギリス**、**日本** の地域で作成できます。 |
+| location          | このコマンドでは既定で、リソース グループの場所が使用されます。 現在、IoT Central アプリケーションは **オーストラリア東部**、**米国中部**、**米国東部**、**米国東部 2**、**東日本**、**北ヨーロッパ**、**東南アジア**、**英国南部**、**西ヨーロッパ**、**米国西部** の各リージョンで作成できます。 |
 | name              | Azure portal 内のアプリケーションの名前。 特殊文字は使用しないでください。代わりに、小文字 (a から z)、数字 (0 から 9)、ダッシュ (-) を使用します。|
 | subdomain         | アプリケーションの URL のサブドメイン。 この例では、アプリケーションの URL は `https://mysubdomain.azureiotcentral.com` です。 |
 | sku               | 現在、**ST1** または **ST2** のいずれかを使用できます。 「[Azure IoT Central の価格](https://azure.microsoft.com/pricing/details/iot-central/)」を参照してください。 |
@@ -108,7 +108,7 @@ New-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `
 |パラメーター         |説明 |
 |------------------|------------|
 |ResourceGroupName |そのアプリケーションを含むリソース グループ。 サブスクリプションにこのリソース グループが既に存在している必要があります。 |
-|場所 |既定で、このコマンドレットにはリソース グループの場所が使用されます。 現時点では、IoT Central アプリケーションは、**オーストラリア**、**アジア太平洋**、**ヨーロッパ**、または **米国**、**イギリス**、**日本** の地域で作成できます。 |
+|場所 |既定で、このコマンドレットにはリソース グループの場所が使用されます。 現在、IoT Central アプリケーションは **オーストラリア東部**、**米国中部**、**米国東部**、**米国東部 2**、**東日本**、**北ヨーロッパ**、**東南アジア**、**英国南部**、**西ヨーロッパ**、**米国西部** の各リージョンで作成できます。 |
 |名前              |Azure portal 内のアプリケーションの名前。 特殊文字は使用しないでください。代わりに、小文字 (a から z)、数字 (0 から 9)、ダッシュ (-) を使用します。 |
 |Subdomain         |アプリケーションの URL のサブドメイン。 この例では、アプリケーションの URL は `https://mysubdomain.azureiotcentral.com` です。 |
 |Sku               |現在、**ST1** または **ST2** のいずれかを使用できます。 「[Azure IoT Central の価格](https://azure.microsoft.com/pricing/details/iot-central/)」を参照してください。 |

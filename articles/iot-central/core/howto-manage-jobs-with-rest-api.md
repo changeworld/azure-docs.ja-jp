@@ -7,12 +7,12 @@ ms.date: 08/30/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 89dd9c60e28db55ad1cab65fd5554d77244ff777
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 47548b3c7e1fa7503e3f30c155755d6fe4f29031
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123480752"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128667048"
 ---
 # <a name="how-to-use-the-iot-central-rest-api-to-create-and-manage-jobs"></a>IoT Central REST API を使用してジョブの作成と管理を行う方法
 
@@ -30,6 +30,11 @@ IoT Central REST API を使用して、IoT Central アプリケーションと�
 すべての IoT Central REST API 呼び出しに承認ヘッダーが必要です。 詳細については、「[IoT Central REST API 呼び出しを認証および承認する方法](howto-authorize-rest-api.md)」を参照してください。
 
 IoT Central REST API のリファレンス ドキュメントについては、「[Azure IoT Central REST API リファレンス](/rest/api/iotcentral/)」をご覧ください。
+
+> [!TIP]
+> [プレビュー API](/rest/api/iotcentral/1.1-previewdataplane/jobs) には、新しい[組織機能](howto-create-organizations.md)のサポートが含まれています。
+
+UI でジョブを作成および管理する方法については、「[Azure IoT Central アプリケーションでデバイスを一括管理する](howto-manage-devices-in-bulk.md)」を参照してください。
 
 ## <a name="job-payloads"></a>ジョブ ペイロード
 

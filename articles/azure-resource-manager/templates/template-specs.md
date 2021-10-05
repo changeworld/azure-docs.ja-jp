@@ -6,12 +6,12 @@ ms.date: 05/04/2021
 ms.author: tomfitz
 ms.custom: devx-track-azurepowershell
 author: tfitzmac
-ms.openlocfilehash: bfbf876f8621beec4d8eddb80c3db285cd6d4c49
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: bf417b6ca70012a3cf4bce17640aa4bc9ab9fd08
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110688295"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128611208"
 ---
 # <a name="azure-resource-manager-template-specs"></a>Azure Resource Manager テンプレート スペック
 
@@ -23,6 +23,10 @@ ms.locfileid: "110688295"
 
 > [!NOTE]
 > Azure PowerShell でテンプレート スペックを使用するには、[バージョン 5.0.0 以降](/powershell/azure/install-az-ps)をインストールする必要があります。 Azure CLI でこれを使用するには、[バージョン 2.14.2 以降](/cli/azure/install-azure-cli)を使用します。
+
+### <a name="microsoft-learn"></a>Microsoft Learn
+
+テンプレート スペックの詳細とハンズオン ガイダンスについては、**Microsoft Learn** の[テンプレート スペックを使用した再利用可能なインフラストラクチャ コードのライブラリの発行](/learn/modules/arm-template-specs)に関するページを参照してください。
 
 ## <a name="why-use-template-specs"></a>テンプレート スペックを使用する理由は何ですか。
 

@@ -4,19 +4,19 @@ description: この記事では、Purview でサポートされているさま�
 author: chandrakavya
 ms.author: kchandra
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: conceptual
-ms.date: 05/17/2021
-ms.openlocfilehash: 398cf852d789b61a1f2b1e7a7e6ef4bad50e329a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/27/2021
+ms.openlocfilehash: 96a51e4ca3ab1f145b5d2820b43290f9a5f98d48
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121725241"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129214824"
 ---
 # <a name="supported-data-stores"></a>サポートされているデータ ストア
 
-Purview では、次のデータ ストアがサポートされています。 各データ ストアをクリックすると、サポートされている機能と対応する構成の詳細を確認できます。
+Purview では、次のデータ ストアがサポートされています。 各データ ストアを選択すると、サポートされている機能と対応する構成の詳細を確認できます。
 
 ## <a name="purview-data-sources"></a>Purview のデータ ソース
 
@@ -26,10 +26,10 @@ Purview では、次のデータ ストアがサポートされています。 �
 ||[Azure Cosmos DB](register-scan-azure-cosmos-database.md)|はい| はい| はい| はい| はい| ○|
 ||[Azure Data Explorer](register-scan-azure-data-explorer.md)|○| はい| はい| はい| はい| ○|
 ||[Azure Data Lake Storage Gen1](register-scan-adls-gen1.md)|○| はい| はい| はい| はい| ○|
-||[Azure Data Lake Storage Gen2](register-scan-adls-gen2.md)|○| はい| はい| はい| はい| ○|
+||[Azure Data Lake Storage Gen2](register-scan-adls-gen2.md)|○| はい| はい| はい| はい| はい|
+||[Azure 専用 SQL プール (以前の SQL DW)](register-scan-azure-synapse-analytics.md)|はい| はい| いいえ| はい| はい| ○|
 ||[Azure SQL Database](register-scan-azure-sql-database.md)|○| はい| いいえ| はい| はい| ○|
 ||[Azure SQL Database マネージド インスタンス](register-scan-azure-sql-database-managed-instance.md)|はい| はい| いいえ| はい| はい| はい|
-||[Azure 専用 SQL プール (以前の SQL DW)](register-scan-azure-synapse-analytics.md)|はい| はい| いいえ| はい| はい| はい|
 ||[Azure Synapse Analytics (ワークスペース)](register-scan-synapse-workspace.md)|はい| はい| いいえ| はい| はい| ○|
 |データベース|[Cassandra](register-scan-cassandra-source.md)|はい| はい| いいえ| いいえ| いいえ| はい|
 ||[Google BigQuery](register-scan-google-bigquery-source.md)|はい| はい| いいえ| いいえ| いいえ| はい|
@@ -37,12 +37,12 @@ Purview では、次のデータ ストアがサポートされています。 �
 ||[Oracle DB](register-scan-oracle-source.md)|はい| はい| いいえ| いいえ| いいえ| はい|
 ||[SQL Server](register-scan-on-premises-sql-server.md)|○| はい| いいえ| はい| はい| はい|
 ||[Teradata](register-scan-teradata-source.md)|はい| はい| いいえ| いいえ| いいえ| はい|
-|Power BI|[Power BI](register-scan-power-bi-tenant.md)|はい| はい| いいえ| いいえ| いいえ| はい|
+|ファイル|[Amazon S3](register-scan-amazon-s3.md)|はい| はい| はい| はい| はい| はい|
 |サービスとアプリ|[Erwin](register-scan-erwin-source.md)|はい| はい| いいえ| いいえ| いいえ| はい|
 ||[Looker](register-scan-looker-source.md)|はい| はい| いいえ| いいえ| いいえ| はい|
+||[Power BI](register-scan-power-bi-tenant.md)|はい| はい| いいえ| いいえ| いいえ| はい|
 ||[SAP ECC](register-scan-sapecc-source.md)|はい| はい| いいえ| いいえ| いいえ| はい|
 ||[SAP S4HANA](register-scan-saps4hana-source.md)|はい| はい| いいえ| いいえ| いいえ| はい|
-|マルチクラウド|[Amazon S3](register-scan-amazon-s3.md)|はい| はい| はい| はい| はい| はい|
 
 ## <a name="scan-regions"></a>スキャンのリージョン
 Purview スキャナーが実行されるすべての Azure データ ソース (データセンター) リージョンの一覧を次に示します。 Azure データ ソースがこの一覧にないリージョンにある場合、スキャナーは Purview インスタンスのリージョンで実行されます。

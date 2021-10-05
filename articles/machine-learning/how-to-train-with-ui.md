@@ -11,12 +11,12 @@ author: wenxwei
 ms.author: wenxwei
 ms.date: 06/22/2021
 ms.reviewer: laobri
-ms.openlocfilehash: 4da4cb933f24a0ca172c6b0fd6b8b9827d615859
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: 94eb2beb95a43e422e8bff6c3ab53f7d2e6c208b
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122823464"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129094711"
 ---
 # <a name="create-a-training-job-with-the-job-creation-ui-preview"></a>ジョブ作成 UI (プレビュー) を使用してトレーニング ジョブを作成する
 
@@ -69,7 +69,7 @@ Azure Machine Learning でトレーニング ジョブを作成するには、�
 
 さまざまな種類の作成の詳細については、以下を参照してください。
 
-| コンピューティングの種類 | 操作方法 | 
+| コンピューティングの種類 | 方法 | 
 | --- | --- | 
 | コンピューティング インスタンス | [Azure Machine Learning コンピューティング インスタンスを作成して管理する](how-to-create-manage-compute-instance.md) | 
 | コンピューティング クラスター | [Azure Machine Learning コンピューティング クラスターの作成](how-to-create-attach-compute-cluster.md) | 
@@ -85,7 +85,7 @@ Azure Machine Learning でトレーニング ジョブを作成するには、�
 
 ### <a name="curated-environments"></a>キュレーションされた環境
 
-キュレーションされた環境は、共通の ML ワークロードで使用される、Azure で定義された Python パッケージのコレクションです。 キュレーションされた環境は、ワークスペース内で既定で使用できます。 これらの環境は、キャッシュされた Docker イメージでバックアップされ、実行の準備オーバーヘッドを低減します。 "キュレーションされた環境" ページに表示されるカードには、各環境の詳細が表示されます。 
+キュレーションされた環境は、共通の ML ワークロードで使用される、Azure で定義された Python パッケージのコレクションです。 キュレーションされた環境は、ワークスペース内で既定で使用できます。 これらの環境は、キャッシュされた Docker イメージでバックアップされ、実行の準備オーバーヘッドを低減します。 "キュレーションされた環境" ページに表示されるカードには、各環境の詳細が表示されます。 詳細については、「[Azure Machine Learning のキュレーションされた環境](resource-curated-environments.md)」を参照してください。
 
  [![キュレーションされた環境](media/how-to-train-with-ui/curated-env.png)](media/how-to-train-with-ui/curated-env.png)
 
@@ -155,7 +155,7 @@ Azure Machine Learning のキュレーションされた環境を使用しない
 
 ジョブを起動するには、 **[作成]** を選択します。 ジョブが作成されると、Azure に実行の詳細ページが表示されます。このページでは、トレーニング ジョブを監視および管理できます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [マネージド オンライン エンドポイントを使用して機械学習モデルをデプロイおよびスコアリングする (プレビュー)](how-to-deploy-managed-online-endpoints.md)。
 

@@ -7,12 +7,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 500c7627f36dd1eddfbb12ac26729fd6dbc027aa
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 460c8f4d5d59b0f43d0706587dafab60289b1984
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121722121"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128610980"
 ---
 # <a name="create-demo-certificates-to-test-iot-edge-device-features"></a>IoT Edge デバイスの機能をテストするためのデモ用の証明書を作成する
 
@@ -208,8 +208,7 @@ New-CACertsEdgeDeviceIdentity "<name>"
 * `<WRKDIR>\certs\iot-edge-device-identity-<name>.cert.pem`
 * `<WRKDIR>\private\iot-edge-device-identity-<name>.key.pem`
 
-DPS に IoT Edge デバイスを個別に登録するには、`iot-edge-device-identity-<name>.cert.pem` を使用します。 IoT Hub に IoT Edge デバイスを登録するには、`iot-edge-device-identity-<name>-full-chain.cert.pem` と `iot-edge-device-identity-<name>.key.pem` の証明書を使用します。 詳細については、「[X.509 証明書を使用して IoT Edge デバイスを作成およびプロビジョニングする](how-to-auto-provision-x509-certs.md)」を参照してください。
-
+DPS に IoT Edge デバイスを個別に登録するには、`iot-edge-device-identity-<name>.cert.pem` を使用します。 IoT Hub に IoT Edge デバイスを登録するには、`iot-edge-device-identity-<name>-full-chain.cert.pem` と `iot-edge-device-identity-<name>.key.pem` の証明書を使用します。 詳細については、「[X.509 証明書を使用して IoT Edge デバイスを作成およびプロビジョニングする](how-to-provision-devices-at-scale-windows-x509.md)」を参照してください。
 
 ### <a name="linux"></a>Linux
 

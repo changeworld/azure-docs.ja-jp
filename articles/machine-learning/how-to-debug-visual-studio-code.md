@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: how-to
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 08/11/2021
-ms.openlocfilehash: 4488670a5dfbedf22fa2880d6e4093c4fbfa52b9
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.date: 09/16/2021
+ms.openlocfilehash: 78726daeb82b652bb162eb1d9b165521cccb62c0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122419156"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128591617"
 ---
 # <a name="interactive-debugging-with-visual-studio-code"></a>Visual Studio Code を使用した対話型デバッグ
 
@@ -29,7 +29,7 @@ Azure Machine Learning 拡張機能を使用して、クラウドに送信する
 * Azure Machine Learning VS Code 拡張機能 (プレビュー)。 詳しくは、[Azure Machine Learning VS Code 拡張機能の設定](how-to-setup-vs-code.md)に関するページを参照してください。
 
     > [!IMPORTANT]
-    > Azure Machine Learning VS Code 拡張機能では、既定で CLI (v2) を使用しています。 このガイドの手順では、1.0 CLI を使用します。 1\.0 CLI に切り替えるには、Visual Studio Code の `azureML.CLI Compatibility Mode` 設定を `1.0` に設定します。 Visual Studio の設定の変更について詳しくは、[ユーザーとワークスペースの設定に関するドキュメント](https://code.visualstudio.com/docs/getstarted/settings)を参照してください。
+    > Azure Machine Learning VS Code 拡張機能では、既定で CLI (v2) を使用しています。 このガイドの手順では、1.0 CLI を使用します。 1\.0 CLI に切り替えるには、Visual Studio Code の `azureML.CLI Compatibility Mode` 設定を `1.0` に設定します。 Visual Studio Code の設定の変更について詳しくは、[ユーザーとワークスペースの設定に関するドキュメント](https://code.visualstudio.com/docs/getstarted/settings)を参照してください。
 
 * [Docker](https://www.docker.com/get-started)
   * Mac および Windows 用の Docker デスクトップ
@@ -46,7 +46,10 @@ Azure Machine Learning 拡張機能を使用して、クラウドに送信する
 ### <a name="debug-experiment-locally"></a>ローカルで実験をデバッグする
 
 > [!IMPORTANT]
-> 実験をローカルで実行する前に、Docker が実行されていることを確認してください。
+> 実験をローカルで実行する前に、次のことを確認してください。
+>
+> * Docker は実行中です。
+> * 前提条件で指定されているように、Visual Studio Code の `azureML.CLI Compatibility Mode` 設定は `1.0` に設定します。
 
 1. VS Code で、Azure Machine Learning 拡張機能ビューを開きます。
 1. ワークスペースが含まれているサブスクリプション ノードを展開します。 既存のものがない場合は、拡張機能を使用して [Azure Machine Learning ワークスペースを作成](how-to-manage-resources-vscode.md#create-a-workspace)できます。

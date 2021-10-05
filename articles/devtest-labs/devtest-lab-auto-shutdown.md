@@ -1,14 +1,14 @@
 ---
-title: Azure DevTest Labs とコンピューティング VM で自動シャットダウン ポリシーを管理する | Microsoft Docs
+title: Azure DevTest Labs とコンピューティング VM で自動シャットダウン ポリシーを管理する
 description: 使用されていないときに仮想マシンが自動的にシャットダウンされるように、ラボの自動シャットダウン ポリシーを設定する方法について説明します。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 946ee2a4d6f3503671664b0e46806fef7f71a459
-ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
+ms.openlocfilehash: 75fa8f07c7e3d67ea029413d427046e20d45cdea
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2021
-ms.locfileid: "113301998"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128648584"
 ---
 # <a name="configure-autoshutdown-for-lab-and-compute-virtual-machines-in-azure-devtest-labs"></a>Azure DevTest Labs でラボとコンピューティング仮想マシンの自動シャットダウンを構成する
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 04/02/2021
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 3b2ad11abb7d1a3e64deef1ca49d9f84f03e5879
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 8e592f8783bb0659a453c8d7d54cddf921f5b1e1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107498341"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128606933"
 ---
 # <a name="copy-data-from-google-cloud-storage-to-azure-storage-by-using-azcopy-preview"></a>AzCopy を使用して Google Cloud Storage から Azure Storage にデータをコピーする (プレビュー)
 
@@ -21,19 +21,20 @@ AzCopy は、ストレージ アカウント間の BLOB またはファイル �
 
 > [!IMPORTANT]
 > Google Cloud Storage から Azure Storage へのデータのコピーは、現在パブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
+> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 ## <a name="choose-how-youll-provide-authorization-credentials"></a>認証資格情報の提供方法を選択する
 
-* Azure Storage による承認を行うには、Azure Active Directory (AD) または Shared Access Signature (SAS) トークンを使用します。
+- Azure Storage による承認を行うには、Azure Active Directory (AD) または Shared Access Signature (SAS) トークンを使用します。
 
-* Google Cloud Storage による承認を行うには、サービス アカウント キーを使用します。
+- Google Cloud Storage による承認を行うには、サービス アカウント キーを使用します。
 
 ### <a name="authorize-with-azure-storage"></a>Azure Storage による認証
 
 AzCopy のダウンロード方法と、ストレージ サービスに認証資格情報を与える方法については、[AzCopy の作業開始](storage-use-azcopy-v10.md)に関するページをご覧ください。
 
-> [!NOTE] 
+> [!NOTE]
 > この記事の例では、Azure Active Directory (Azure AD) を使用して認証資格情報を指定していることを前提としています。
 >
 > SAS トークンを使用して BLOB データへのアクセスを承認する場合、各 AzCopy コマンドのリソース URL の先頭にそのトークンを追加できます。 (例: `'https://<storage-account-name>.blob.core.windows.net/<container-name><SAS-token>'`)。
@@ -44,7 +45,7 @@ Google Cloud Storage による承認を行うには、サービス アカウン�
 
 サービス キーを取得したら、`GOOGLE_APPLICATION_CREDENTIALS` 環境変数をサービス アカウント キー ファイルへの絶対パスに設定します。
 
-| オペレーティング システム | command  |
+| オペレーティング システム | コマンド  |
 |--------|-----------|
 | **Windows** | `set GOOGLE_APPLICATION_CREDENTIALS=<path-to-service-account-key>` |
 | **Linux** | `export GOOGLE_APPLICATION_CREDENTIALS=<path-to-service-account-key>` |
@@ -57,7 +58,7 @@ AzCopy では、[Put Block From URL](/rest/api/storageservices/put-block-from-ur
 > [!TIP]
 > このセクションの例では、単一引用符 ('') でパス引数を囲みます。 Windows コマンド シェル (cmd.exe) を除き、すべてのコマンド シェルで単一引用符を使用します。 Windows コマンド シェル (cmd.exe) を使用している場合は、単一引用符 ('') ではなく、二重引用符 ("") でパス引数を囲みます。
 
- これらの例は、階層型名前空間があるアカウントでも機能します。 [Data Lake Storage のマルチプロトコル アクセス](../blobs/data-lake-storage-multi-protocol-access.md)では、これらのアカウントで同じ URL 構文 (`blob.core.windows.net`) を使用できます。 
+ これらの例は、階層型名前空間があるアカウントでも機能します。 [Data Lake Storage のマルチプロトコル アクセス](../blobs/data-lake-storage-multi-protocol-access.md)では、これらのアカウントで同じ URL 構文 (`blob.core.windows.net`) を使用できます。
 
 ### <a name="copy-an-object"></a>オブジェクトをコピーする
 
@@ -72,7 +73,6 @@ AzCopy では、[Put Block From URL](/rest/api/storageservices/put-block-from-ur
 ```azcopy
 azcopy copy 'https://storage.cloud.google.com/mybucket/myobject' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myblob'
 ```
-
 
 ### <a name="copy-a-directory"></a>ディレクトリをコピーする
 
@@ -119,7 +119,7 @@ azcopy copy 'https://storage.cloud.google.com/mybucket/mydirectory/*' 'https://m
 azcopy copy 'https://storage.cloud.google.com/mybucket' 'https://mystorageaccount.blob.core.windows.net' --recursive=true
 ```
 
-### <a name="copy-all-buckets-in-a-google-cloud-project"></a>Google Cloud プロジェクト内のすべてのバケットをコピーする 
+### <a name="copy-all-buckets-in-a-google-cloud-project"></a>Google Cloud プロジェクト内のすべてのバケットをコピーする
 
 最初に、`GOOGLE_CLOUD_PROJECT` を Google Cloud プロジェクトのプロジェクト ID に設定します。
 
@@ -135,7 +135,7 @@ azcopy copy 'https://storage.cloud.google.com/mybucket' 'https://mystorageaccoun
 azcopy copy 'https://storage.cloud.google.com/' 'https://mystorageaccount.blob.core.windows.net' --recursive=true
 ```
 
-### <a name="copy-a-subset-of-buckets-in-a-google-cloud-project"></a>Google Cloud プロジェクト内のバケットのサブセットをコピーする 
+### <a name="copy-a-subset-of-buckets-in-a-google-cloud-project"></a>Google Cloud プロジェクト内のバケットのサブセットをコピーする
 
 最初に、`GOOGLE_CLOUD_PROJECT` を Google Cloud プロジェクトのプロジェクト ID に設定します。
 
@@ -155,13 +155,13 @@ azcopy copy 'https://storage.cloud.google.com/my*bucket' 'https://mystorageaccou
 
 Google Cloud Storage では、Azure BLOB コンテナーと比べると異なるバケット名の名前付け規則があります。 詳しくは、[こちら](https://cloud.google.com/storage/docs/naming-buckets)をご覧ください。 バケットのグループを Azure ストレージ アカウントにコピーする場合は、名前付けの違いのためにコピー操作が失敗することがあります。
 
-AzCopy は、発生する可能性のある最も一般的な 3 つの問題を処理します。ピリオドが含まれているバケットと、連続するハイフンが含まれているバケッと、アンダースコアが含まれているバケットです。 Google Cloud Storage バケットの名前にはピリオドと連続するハイフンを含めることができますが、Azure 内のコンテナーには含めることができません。 AzCopy では、期間はハイフンに置き換えられ、連続するハイフンは、連続するハイフンの数を表す数に置き換えられます (たとえば、`my----bucket` という名前のバケットは `my-4-bucket` になります)。 バケット名にアンダースコア (`_`) が含まれている場合、AzCopy を実行するとアンダースコアがハイフンに置き換えられます (たとえば、`my_bucket` という名前のバケットは `my-bucket` になります。 
+AzCopy は、発生する可能性のある最も一般的な 3 つの問題を処理します。ピリオドが含まれているバケットと、連続するハイフンが含まれているバケッと、アンダースコアが含まれているバケットです。 Google Cloud Storage バケットの名前にはピリオドと連続するハイフンを含めることができますが、Azure 内のコンテナーには含めることができません。 AzCopy では、期間はハイフンに置き換えられ、連続するハイフンは、連続するハイフンの数を表す数に置き換えられます (たとえば、`my----bucket` という名前のバケットは `my-4-bucket` になります)。 バケット名にアンダースコア (`_`) が含まれている場合、AzCopy を実行するとアンダースコアがハイフンに置き換えられます。 たとえば、`my_bucket` という名前のバケットは `my-bucket` になります。
 
 ## <a name="handle-differences-in-object-naming-rules"></a>オブジェクトの名前付け規則の違いに対処する
 
 Google Cloud Storage では、Azure BLOB コンテナーと比べると異なるオブジェクト名の名前付け規則があります。 詳しくは、[こちら](https://cloud.google.com/storage/docs/naming-objects)をご覧ください。
 
-Azure Storage では、オブジェクト名 (または仮想ディレクトリ パス内の任意のセグメント) が連続するドットで終わることは許可されていません (たとえば `my-bucket...`)。 末尾のドットは、コピー操作の実行時にトリミングされます。 
+Azure Storage では、オブジェクト名 (または仮想ディレクトリ パス内の任意のセグメント) が連続するドットで終わることは許可されていません (たとえば `my-bucket...`)。 末尾のドットは、コピー操作の実行時にトリミングされます。
 
 ## <a name="handle-differences-in-object-metadata"></a>オブジェクトのメタデータの違いに対処する
 

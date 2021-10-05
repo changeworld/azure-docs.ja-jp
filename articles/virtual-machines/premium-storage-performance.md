@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/29/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 6cd71daa43eb311316bb0da8b54bbef8733fb168
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 5c6530f138167cbd21ed1b40dee3b056ceb8c638
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122694330"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124803865"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Storage: 高パフォーマンス用に設計する
 
@@ -311,7 +311,7 @@ Premium Storage データ ディスクの ReadOnly キャッシュを構成す�
 
 * **reiserFS** の場合、barrier=none マウント オプションを使用してバリアを無効にします。  バリアを明示的に有効にするには、barrier=flush を使用します。
 * **ext3/ext4** の場合、barrier=0 マウント オプションを使用してバリアを無効にします。  バリアを明示的に有効にするには、barrier=1 を使用します。
-* **XFS** の場合、nobarrier マウント オプションを使用してバリアを無効にします。  バリアを明示的に有効にするには、barrier を使用します。  新しいバージョンの Linux カーネルでは、XFS ファイル システムの設計によって耐久性が常に確保されているため、バリアを無効にしても効果がないことに注意してください。  
+* **XFS** の場合、nobarrier マウント オプションを使用してバリアを無効にします。  バリアを明示的に有効にするには、barrier を使用します。 メインの Linux カーネルのバージョン 4.10 では、XFS ファイル システムの設計により、常に持続性が保証されます。 バリアを無効にしても効果はなく、"nobarrier" オプションは非推奨とされます。 ただし、一部の Linux ディストリビューションでは、以前のバージョンのカーネルでディストリビューション リリースへの変更が移植されている場合があります。ディストリビューション ベンダに、自分が実行中のディストリビューションとバージョンの状態を確認してください。
 
 ## <a name="disk-striping"></a>ディスク ストライピング
 

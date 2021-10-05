@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 05/18/2020
+ms.date: 9/14/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 261ab5d0f039705a2566b7c28ff4c06778bb661a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 676eb07a031aeae0e03d4352639a690bdc9b4cae
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94410540"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128612569"
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Azure AD Connect 同期サービスの機能
 
@@ -85,6 +85,15 @@ Get-MsolDirSyncFeatures -Feature EnableSoftMatchOnUpn
 
 ```powershell
 Set-MsolDirSyncFeature -Feature EnableSoftMatchOnUpn -Enable $true
+```
+
+## <a name="blocksoftmatch"></a>BlockSoftMatch
+この機能が有効になっていると、ソフト一致機能はブロックされます。 お客様は、この機能を有効にし、テナントにソフト一致機能が再度必要になるまでは有効にしたままにすることをお勧めします。 このフラグは、ソフト一致が完了し、不要になった後で、再度有効にする必要があります。
+
+例: テナントでのソフト一致をブロックするには、次のコマンドレットを実行します。
+
+```
+PS C:\> Set-MsolDirSyncFeature -Feature BlockSoftMatch -Enable $True
 ```
 
 ## <a name="synchronize-userprincipalname-updates"></a>userPrincipalName の更新の同期

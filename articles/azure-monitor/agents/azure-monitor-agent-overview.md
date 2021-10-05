@@ -4,14 +4,14 @@ description: 仮想マシンのゲスト オペレーティング システム�
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 07/22/2021
+ms.date: 09/21/2021
 ms.custom: references_regions
-ms.openlocfilehash: ccd194df39f0fff4bdabe4ae91e911dd030673e6
-ms.sourcegitcommit: c2f0d789f971e11205df9b4b4647816da6856f5b
+ms.openlocfilehash: 46c3aca1c2f983d857be59d2d69b0cadfb433303
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122662173"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128655982"
 ---
 # <a name="azure-monitor-agent-overview"></a>Azure Monitor エージェントの概要
 Azure Monitor エージェント (AMA) によって、Azure 仮想マシンのゲスト オペレーティング システムから監視データが収集され、それが Azure Monitor に配信されます。 この記事では、Azure Monitor エージェントの概要について説明します。また、そのインストール方法やデータ収集の構成方法などの情報が含まれます。
@@ -78,13 +78,14 @@ Azure Monitor エージェントで現在サポートされている Windows と
 | Azure サービス | 現在のサポート | 詳細情報 |
 |:---|:---|:---|
 | [Azure Security Center](../../security-center/security-center-introduction.md) | プライベート プレビュー | [サインアップ リンク](https://aka.ms/AMAgent) |
-| [Azure Sentinel](../../sentinel/overview.md) | プライベート プレビュー | [サインアップ リンク](https://aka.ms/AMAgent) |
+| [Azure Sentinel](../../sentinel/overview.md) | <ul><li>Windows イベント転送 (WEF): プライベート プレビュー</li><li>Windows セキュリティ イベント: [パブリック プレビュー](../../sentinel/connect-windows-security-events.md?tabs=AMA)</li></ul>  | <ul><li>[サインアップ リンク](https://aka.ms/AMAgent) </li><li>サインアップの必要はありません</li></ul> |
 
 次の表に、Azure Monitor 機能に対する Azure Monitor エージェントの現在のサポートを示します。
 
 | Azure Monitor 機能 | 現在のサポート | 詳細情報 |
 |:---|:---|:---|
-| [VM insights](../vm/vminsights-overview.md) | プライベート プレビュー  | [サインアップ リンク](https://forms.office.com/r/jmyE821tTy) |
+| [VM insights](../vm/vminsights-overview.md) | プライベート プレビュー  | [サインアップ リンク](https://aka.ms/amadcr-privatepreviews) |
+| [プライベート リンクまたは AMPLS を使用して接続する](../logs/private-link-security.md) | AMA のプライベート プレビュー | [サインアップ リンク](https://aka.ms/amadcr-privatepreviews) |
 | [VM insights のゲストの正常性](../vm/vminsights-health-overview.md) | パブリック プレビュー | 新しいエージェントでのみ使用可能 |
 | [SQL Insights](../insights/sql-insights-overview.md) | パブリック プレビュー | 新しいエージェントでのみ使用可能 |
 
@@ -108,15 +109,15 @@ Azure Monitor エージェントには料金はかかりませんが、取り込
 ## <a name="data-sources-and-destinations"></a>データ ソースと収集先
 次の表に、現在 Azure Monitor エージェントでデータ収集ルールを使用して収集できるデータの種類と、そのデータを送信できる場所を示します。 分析情報やソリューション、Azure Monitor エージェントを使用して他の種類のデータを収集するその他のソリューションの一覧については、「[Azure Monitor によって監視される内容](../monitor-reference.md)」を参照してください。
 
-Azure Monitor エージェントでは、Azure Monitor メトリック、または Azure Monitor ログをサポートする Log Analytics ワークスペースにデータが送信されます。
+Azure Monitor エージェントでは、Azure Monitor メトリック (プレビュー)、または Azure Monitor ログをサポートする Log Analytics ワークスペースにデータが送信されます。
 
 | データ ソース | 変換先 | Description |
 |:---|:---|:---|
-| パフォーマンス        | Azure Monitor メトリック<sup>1</sup><br>Log Analytics ワークスペース | オペレーティング システムとワークロードのさまざまな側面のパフォーマンスを測定する数値 |
+| パフォーマンス        | Azure Monitor メトリック (プレビュー)<sup>1</sup><br>Log Analytics ワークスペース | オペレーティング システムとワークロードのさまざまな側面のパフォーマンスを測定する数値 |
 | Windows イベント ログ | Log Analytics ワークスペース | Windows イベント ログ システムに送信された情報 |
 | syslog             | Log Analytics ワークスペース | Linux イベント ログ システムに送信される情報 |
 
-<sup>1</sup> 現在 Azure Monitor Agent for Linux には制限があります。 Azure Monitor メトリックを "*唯一の*" 収集先として使用する方法はサポートされていません。 Azure Monitor ログと一緒に使用すると、うまくいきます。 この制限は、次の拡張機能の更新プログラムで対処されます。
+<sup>1</sup> [ここをクリック](../essentials/metrics-custom-overview.md#quotas-and-limits)すると、Azure Monitor メトリックの使用に関するその他の制限を確認できます。 Linux では、Azure Monitor メトリックを唯一の宛先として使用する方法は、v.1.10.9.0 以降でサポートされています。 
 
 ## <a name="security"></a>セキュリティ
 Azure Monitor エージェントにはキーは必要ありませんが、代わりに[システム割り当てマネージド ID](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#system-assigned-managed-identity) が必要です。 エージェントをデプロイする前に、各仮想マシンで、システム割り当てマネージド ID を有効にしておく必要があります。
@@ -127,6 +128,9 @@ Azure Monitor エージェントは、Azure サービス タグに対応して�
 ### <a name="proxy-configuration"></a>[プロキシ構成]
 
 Windows や Linux 用の Azure Monitor エージェント拡張機能では、HTTPS プロトコルを使用することで、プロキシ サーバーまたは Log Analytics ゲートウェイのいずれかを経由して、Azure Monitor と通信できます。 Azure 仮想マシン、Azure 仮想マシン スケール セット、Azure Arc for servers に使用します。 次の手順で説明されているとおりに、その拡張機能の設定を構成に使用します。 匿名認証と、ユーザー名とパスワードを使用する基本認証の両方がサポートされています。
+
+> [!IMPORTANT]
+> プロキシの構成は、宛先としては [Azure Monitor メトリック (プレビュー)](../essentials/metrics-custom-overview.md) ではサポートされていません。 そのため、この宛先にメトリックを送信する場合は、プロキシなしでパブリック インターネットが使用されます。
 
 1. このフローチャートを使用して、*setting* パラメーターと *protectedSetting* パラメーターの値を最初に決定します。
 

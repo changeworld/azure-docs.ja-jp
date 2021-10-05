@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/24/2021
+ms.date: 09/27/2021
 ms.author: b-juche
-ms.openlocfilehash: 0b05b934b4dc57b4db941755cfcfb2f8d21fc2c6
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: 4a97b89957a4f451aaa9c7305535f87980234db2
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122824976"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129094293"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Azure NetApp Files のリソース制限
 
@@ -50,7 +50,11 @@ Azure NetApp Files のリソース制限を理解すると、ボリュームの�
 |  ボリュームあたりのエクスポート ポリシー ルールの最大数     |    5  |    いいえ    | 
 |  手動 QoS ボリュームに割り当てられた最小スループット     |    1 MiB/秒   |    No    |    
 |  手動 QoS ボリュームに割り当てられた最大スループット     |    4,500 MiB/秒    |    No    |    
-|  リージョン間レプリケーション データ保護ボリュームの数 (宛先ボリューム)     |    5    |    はい    |     
+|  リージョン間レプリケーション データ保護ボリュームの数 (宛先ボリューム)     |    10    |    はい    |     
+|  ボリュームあたりのポリシーベース (スケジュール) バックアップの最大数  | <ul><li> 日単位のリテンション期間数: 1 (最小) から 1019 (最大) </li> <li> 週単位のリテンション期間数: 1 (最小) から 1019 (最大) </li> <li> 月単位のリテンション期間数: 1 (最小) から 1019 (最大) </ol></li> <br> 日、週、月単位の最大バックアップ リテンション期間数の *合計* は 1019 です。  |  N  |
+|  保護されたボリュームの最大サイズ  |  100 TiB  |  ×  |
+|  サブスクリプションあたりのバックアップできるボリュームの最大数   |  5  |  Y  |
+|  1 日あたりのボリュームあたりの手動バックアップの最大数 |  5  |  Y  |
 
 詳細については、「[容量管理に関する FAQ](azure-netapp-files-faqs.md#capacity-management-faqs)」を参照してください。
 

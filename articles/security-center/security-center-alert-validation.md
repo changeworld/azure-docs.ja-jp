@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 03/17/2021
 ms.author: memildin
-ms.openlocfilehash: dc42882a15b70d7d656decebf8c7b2346c516c6d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 48a695f4217c7300c4d7db6edc23452ad4eaa55f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121734884"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128631706"
 ---
 # <a name="alert-validation-in-azure-security-center"></a>Azure Security Center でのアラートの検証
 このドキュメントは、Azure Security Center のアラートに対してシステムが適切に構成されているかどうかを確認する方法を学ぶのに役立ちます。
@@ -67,22 +67,22 @@ Security Center エージェントをコンピューターにインストール�
 ## <a name="simulate-alerts-on-your-azure-vms-linux"></a>Azure VM でアラートをシミュレートする (Linux) <a name="validate-linux"></a>
 
 Security Center エージェントをコンピューターにインストールした後、アラートの攻撃対象リソースとして使用するコンピューターから次の手順を実行します。
-1. 実行可能ファイルを任意の場所にコピーし、名前を **./asc_alerttest_662jfi039n** に変更します。例:
 
-    ```cp /bin/echo ./asc_alerttest_662jfi039n```
+1. 実行可能ファイルを便利な場所にコピーし、名前を `./asc_alerttest_662jfi039n` に変更します。 次に例を示します。
+
+    `cp /bin/echo ./asc_alerttest_662jfi039n`
 
 1. コマンド プロンプトを開き、このファイルを実行します。
 
-    ```./asc_alerttest_662jfi039n testing eicar pipe```
+    `./asc_alerttest_662jfi039n testing eicar pipe`
 
-1. 5 ～ 10 分待って、Security Center のアラートを開きます。 アラートが表示されます。
-
+1. 5 分から 10 分待って、Security Center のアラートを開きます。 アラートが表示されます。
 
 ## <a name="simulate-alerts-on-kubernetes"></a>Kubernetes でアラートをシミュレートする<a name="validate-kubernetes"></a>
 
 Azure Kubernetes Service と Security Center を統合してある場合は、次の kubectl コマンドを使用して、アラートが動作していることをテストできます。
 
-```kubectl get pods --namespace=asc-alerttest-662jfi039n```
+`kubectl get pods --namespace=asc-alerttest-662jfi039n`
 
 Kubernetes のノードとクラスターの防御の詳細については、「[Azure Defender for Kubernetes の概要](defender-for-kubernetes-introduction.md)」を参照してください
 

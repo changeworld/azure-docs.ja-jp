@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
-ms.openlocfilehash: cb66b9ad3106b9cad5b9b22cbe32838e13f56c28
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0df95d90d0119f8bc513fe2a26ed731d87401b3d
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121736404"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129154263"
 ---
 # <a name="troubleshoot-azure-private-endpoint-connectivity-problems"></a>Azure プライベート エンドポイント接続に関する問題のトラブルシューティング
 
@@ -119,7 +119,19 @@ Azure プライベート エンドポイントは、プライベート リンク
       - 別のソースからプライベート エンドポイントへの接続。 このようにすることで、仮想マシン固有のすべての問題を切り離せます。 
       - プライベート エンドポイントと同じ Virtual Network の一部である任意の仮想マシンへの接続。  
 
-1. 問題が解決されず、接続の問題が依然として存在する場合は、[Azure サポート](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) チームにお問い合わせください。
+1. プライベート エンドポイントが、[Azure Private Link サービス](./troubleshoot-private-link-connectivity.md)にリンクされている Azure Load Balancer にリンクされている場合は、バックエンド プールが正常と報告されるかどうかを確認します。 Azure Load Balancer の正常性を修正すると、プライベート エンドポイントへの接続に関する問題が修正されます。
+
+    - 次にアクセスすると、ビジュアル ダイアグラムまたは関連するリソース、メトリック、分析情報の[依存関係ビュー](../azure-monitor/insights/network-insights-overview.md#dependency-view)を表示できます。
+        - Azure Monitor
+        - ネットワーク
+        - プライベート エンドポイント
+        - [依存関係] ビュー 
+
+![モニター - ネットワーク](https://user-images.githubusercontent.com/20302679/134994620-0660b9e2-e2a3-4233-8953-d3e49b93e2f2.png)
+
+![DependencyView](https://user-images.githubusercontent.com/20302679/134994637-fb8b4a1a-81d5-4723-b1c3-d7bdc72162f3.png)
+
+9. 問題が解決されず、接続の問題が依然として存在する場合は、[Azure サポート](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) チームにお問い合わせください。
 
 ## <a name="next-steps"></a>次のステップ
 

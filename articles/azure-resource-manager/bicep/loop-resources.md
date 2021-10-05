@@ -4,13 +4,13 @@ description: Bicep ファイルでループと配列を使用して、リソー�
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 08/30/2021
-ms.openlocfilehash: 1b044b4ae3f5d73ad535d44153ea3d47023aeaaa
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.date: 09/23/2021
+ms.openlocfilehash: adb05c5af042e0c9f54e925f82097a1721f40073
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123225310"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128662098"
 ---
 # <a name="resource-iteration-in-bicep"></a>Bicep でのリソースの繰り返し
 
@@ -19,6 +19,10 @@ ms.locfileid: "123225310"
 [モジュール](loop-modules.md)、[プロパティ](loop-properties.md)、[変数](loop-variables.md)、[出力](loop-outputs.md)でもループを使用できます。
 
 リソースをデプロイするかどうかを指定する必要がある場合は、[condition 要素](conditional-resource-deployment.md)に関する記述を参照してください。
+
+### <a name="microsoft-learn"></a>Microsoft Learn
+
+ループの詳細とハンズオン ガイダンスについては、**Microsoft Learn** の[条件とループを使用した柔軟な Bicep テンプレートの構築](/learn/modules/build-flexible-bicep-templates-conditions-loops/)に関するページを参照してください。
 
 ## <a name="syntax"></a>構文
 
@@ -56,7 +60,11 @@ ms.locfileid: "123225310"
 
 ## <a name="loop-limits"></a>ループの制限
 
-Bicep ファイルのループの反復処理に、負の数を指定したり、800 回を超える数を指定したりすることはできません。
+Bicep ループには次の制限があります。
+
+- 入れ子になった子リソースを持つリソースをループすることはできません。 子リソースをトップレベル リソースに変更する必要があります。  「[子リソースの反復処理](#iteration-for-a-child-resource)」を参照してください。
+- 複数レベルのプロパティに対してループを行うことはできません。 「[Bicep でのプロパティの反復処理](./loop-properties.md)」を参照してください。
+- ループの反復処理に、負の数を指定したり、800 回を超える数を指定したりすることはできません。
 
 ## <a name="loop-index"></a>ループ インデックス
 

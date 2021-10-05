@@ -7,15 +7,15 @@ manager: daveba
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 06/25/2021
+ms.date: 09/24/2021
 ms.author: rolyon
 ms.custom: contperf-fy21q3-portal,subject-rbac-steps
-ms.openlocfilehash: e6a06c2a2a525e89fd6d7ab61f983f2b91c1cc8a
-ms.sourcegitcommit: 1c12bbaba1842214c6578d914fa758f521d7d485
+ms.openlocfilehash: 368a3480af60b4c1a9b819d3b4667f2212e62290
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2021
-ms.locfileid: "112989005"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129094810"
 ---
 # <a name="assign-azure-roles-using-the-azure-portal"></a>Azure portal を使用して Azure ロールを割り当てる
 
@@ -176,23 +176,21 @@ Azure RBAC には、Azure portal で Azure ロールを割り当てるための�
 
    ![[メンバーの選択] ペイン (プレビュー エクスペリエンス) のスクリーンショット。](./media/shared/select-members.png)
 
-1. **[保存]** をクリックして、メンバーの一覧にユーザー、グループ、またはサービス プリンシパルを追加します。
+1. **[選択]** をクリックして、メンバーの一覧にユーザー、グループ、またはサービス プリンシパルを追加します。
 
 1. 選択したロールを 1 つ以上のマネージド ID に割り当てるには、 **[マネージド ID]** を選択します。
 
 1. **[メンバーの選択]** をクリックします。
 
-1. **[マネージド ID の選択]** ウィンドウで、種類が [[システム割り当てマネージド ID]](../active-directory/managed-identities-azure-resources/overview.md) であるか、[[ユーザー割り当てマネージド ID]](../active-directory/managed-identities-azure-resources/overview.md) であるかを選択します。
+1. **[マネージド ID の選択]** ウィンドウで、種類が [[ユーザー割り当てマネージド ID]](../active-directory/managed-identities-azure-resources/overview.md) であるか、[[システム割り当てマネージド ID]](../active-directory/managed-identities-azure-resources/overview.md) であるかを選択します。
 
 1. マネージド ID を検索して選択します。
 
-    システム割り当てマネージド ID を選択した場合、マネージド ID が配置されている Azure サービス インスタンスを選択する必要があります。
+    システム割り当てマネージド ID の場合は、Azure サービス インスタンス別のマネージド ID を選択できます。
 
-   ![[プリンシパルの選択] ウィンドウを使用したシステム割り当てマネージド ID の追加 (プレビュー エクスペリエンス) を示すスクリーンショット。](./media/role-assignments-portal/select-managed-identity-system.png)
+   ![プレビュー エクスペリエンスのためにマネージド ID ウィンドウを選択するスクリーンショット。](./media/role-assignments-portal/select-managed-identity.png)
 
-   ![[プリンシパルの選択] ウィンドウを使用したユーザー割り当てマネージド ID の追加 (プレビュー エクスペリエンス) を示すスクリーンショット。](./media/role-assignments-portal/select-managed-identity-user.png)
-
-1. **[保存]** をクリックして、メンバーの一覧にマネージド ID を追加します。
+1. **[選択]** をクリックして、メンバーの一覧にマネージド ID を追加します。
 
 1. 必要に応じて、 **[説明]** ボックスにこのロール割り当ての説明を入力します。
 
@@ -202,7 +200,7 @@ Azure RBAC には、Azure portal で Azure ロールを割り当てるための�
 
 ## <a name="step-5-optional-add-condition-preview"></a>手順 5: (省略可能) 条件を追加する (プレビュー)
 
-条件をサポートするロールを選択した場合は、 **[条件]** タブが表示され、必要に応じてロールの割り当てに条件を追加できます。 [条件](conditions-overview.md)は、よりきめ細かなアクセス制御を行うために、必要に応じてロールの割り当てに追加できる追加のチェックです。
+条件をサポートするロールを選択した場合は、 **[条件]** (オプション) タブが表示され、必要に応じてロールの割り当てに条件を追加できます。 [条件](conditions-overview.md)は、よりきめ細かなアクセス制御を行うために、必要に応じてロールの割り当てに追加できる追加のチェックです。
 
 現時点では、[ストレージ BLOB データ アクション](conditions-format.md#actions)を使用する組み込みまたはカスタムのロール割り当てに対して条件を追加できます。 これらには、次の組み込みロールが含まれます。
 

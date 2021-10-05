@@ -2,13 +2,13 @@
 title: Azure Private Link を使用して、ネットワークを Azure Arc に安全に接続する
 description: Azure Private Link を使用して、ネットワークを Azure Arc に安全に接続する方法について説明します。
 ms.topic: conceptual
-ms.date: 07/20/2021
-ms.openlocfilehash: 1bd683631e9a7edb321abb56ed423cac11b42557
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.date: 09/14/2021
+ms.openlocfilehash: 53bd9310c193d4fad1d550fbf33446754c30ecd6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114468003"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128631516"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-arc"></a>Azure Private Link を使用して、ネットワークを Azure Arc に安全に接続する
 
@@ -26,7 +26,7 @@ Azure Arc 対応サーバー以降では、プライベート リンク スコ�
 Private Link を使用すると、次のことができます。
 
 - パブリック ネットワーク アクセスを開かずに Azure Arc にプライベートに接続する。
-- Arc 対応のマシンまたはサーバーからのデータが、認可されたプライベート ネットワーク経由でのみアクセスされるようにする。 これには、マシンまたはサーバーにインストールされている [VM 拡張機能](manage-vm-extensions.md)からのデータも含まれます。これにより、デプロイ後の管理と監視のサポートが提供されます。
+- Azure Arc 対応のマシンまたはサーバーからのデータが、認可されたプライベート ネットワーク経由でのみアクセスされるようにする。 これには、マシンまたはサーバーにインストールされている [VM 拡張機能](manage-vm-extensions.md)からのデータも含まれます。これにより、デプロイ後の管理と監視のサポートが提供されます。
 - プライベート エンドポイント経由で接続される特定の Azure Arc 対応サーバーおよびその他の Azure サービス リソース (Azure Monitor など) を定義することで、プライベート ネットワークからのデータ流出を防止する。
 - ExpressRoute と Private Link を使用して、オンプレミスのプライベート ネットワークを Azure Arc に安全に接続する。
 - すべてのトラフィックを Microsoft Azure のバックボーン ネットワーク内に収める。
@@ -35,7 +35,7 @@ Private Link を使用すると、次のことができます。
 
 ## <a name="how-it-works"></a>しくみ
 
-Azure Arc プライベート リンク スコープ (プレビュー) によって、プライベート エンドポイント (およびそれが含まれている仮想ネットワーク) が Azure リソース (この場合は Azure Arc 対応サーバー) に接続されます。 Arc 対応サーバーでサポートされる VM 拡張機能 (Azure Automation Update Management や Azure Monitor など) のいずれかを有効にすると、それらのリソースが他の Azure リソースに接続されます。 例:
+Azure Arc プライベート リンク スコープ (プレビュー) によって、プライベート エンドポイント (およびそれが含まれている仮想ネットワーク) が Azure リソース (この場合は Azure Arc 対応サーバー) に接続されます。 Azure Arc 対応サーバーでサポートされる VM 拡張機能 (Azure Automation Update Management や Azure Monitor など) のいずれかを有効にすると、それらのリソースが他の Azure リソースに接続されます。 例:
 
 - Log Analytics ワークスペース。Azure Automation Update Management、Azure Automation 変更履歴とインベントリ、Azure Monitor の VM 分析情報、Log Analytics エージェントを使用した Azure Monitor ログ収集で必要となります。
 - Azure Automation アカウント。Update Management と変更履歴とインベントリで必要となります。
@@ -44,7 +44,7 @@ Azure Arc プライベート リンク スコープ (プレビュー) によっ�
 
 :::image type="content" source="./media/private-link-security/private-link-topology.png" alt-text="基本的なリソース トポロジの図" border="true":::
 
-前に示した Arc 対応サーバーから他の Azure リソースに接続するには、各サービス用の Private Link を構成する必要があります。 詳細については、[Azure Automation](../../automation/how-to/private-link-security.md)、[Azure Monitor](../../azure-monitor/logs/private-link-security.md)、[Azure Key Vault](../../key-vault/general/private-link-service.md)、または [Azure Blob Storage](../../private-link/tutorial-private-endpoint-storage-portal.md) 用の Private Link の構成に関する記事を参照してください。
+前に示した Azure Arc 対応サーバーから他の Azure リソースに接続するには、各サービス用の Private Link を構成する必要があります。 詳細については、[Azure Automation](../../automation/how-to/private-link-security.md)、[Azure Monitor](../../azure-monitor/logs/private-link-security.md)、[Azure Key Vault](../../key-vault/general/private-link-service.md)、または [Azure Blob Storage](../../private-link/tutorial-private-endpoint-storage-portal.md) 用の Private Link の構成に関する記事を参照してください。
 
 > [!IMPORTANT]
 > Azure Private Link は、現在、一般提供されています。 プライベート エンドポイントと Private Link サービス (Standard ロード バランサーの背後にあるサービス) の両方が一般提供されています。 さまざまな Azure PaaS が異なるスケジュールで Azure Private Link にオンボードされます。 Private Link 上の Azure PaaS の正確な状態については、[プライベート リンクの可用性](../../private-link/availability.md)に関する記事を参照してください。 既知の制約については、[プライベート エンドポイント](../../private-link/private-endpoint-overview.md#limitations)と [Private Link サービス](../../private-link/private-link-service-overview.md#limitations)の説明を参照してください。
@@ -57,7 +57,7 @@ Azure Arc プライベート リンク スコープ (プレビュー) によっ�
 
 ## <a name="restrictions-and-limitations"></a>制限事項と制約事項
 
-Arc 対応サーバーのプライベート リンク スコープ オブジェクトには、Private Link の構成を計画するときに考慮に入れる必要のある制限がいくつかあります。
+Azure Arc 対応サーバーのプライベート リンク スコープ オブジェクトには、Private Link の設定を計画するときに考慮に入れる必要のある制限がいくつかあります。
 
 - 仮想ネットワークには、最大 1 つの Azure Arc プライベート リンク スコープを関連付けることができます。
 
@@ -65,9 +65,9 @@ Arc 対応サーバーのプライベート リンク スコープ オブジェ�
 
 - すべてのオンプレミス マシンでは、同じ DNS フォワーダーを使用して、正しいプライベート エンドポイント情報 (FQDN レコード名とプライベート IP アドレス) を解決することで、同じプライベート エンドポイントを使用する必要があります。 詳細については、「[Azure プライベート エンドポイントの DNS 構成](../../private-link/private-endpoint-dns.md)」を参照してください。
 
-- Azure Arc 対応のマシンまたはサーバー、Azure Arc プライベート リンク スコープ、仮想ネットワークは、同じ Azure リージョンに存在する必要があります。
+- Azure Arc 対応のサーバーと Azure Arc プライベート リンク スコープは、同じ Azure リージョンに存在する必要があります。 プライベート エンドポイントと仮想ネットワークも同じ Azure リージョンに存在する必要がありますが、このリージョンは、Azure Arc プライベート リンク スコープと Arc 対応サーバーのリージョンとは異なるリージョンにできます。
 
-- プレビュー期間中は、オンプレミスのネットワーク ファイアウォールを介して Azure Active Directory および Azure Resource Manager のサービス タグへのトラフィックが許可される必要があります。 
+- プレビュー期間中は、オンプレミスのネットワーク ファイアウォールを介して Azure Active Directory および Azure Resource Manager のサービス タグへのトラフィックが許可される必要があります。
 
 - 使用するその他の Azure サービス (Azure Monitor など) のために、仮想ネットワーク内に独自のプライベート エンドポイントが必要となります。
 
@@ -134,7 +134,7 @@ Azure Arc 対応サーバーは複数の Azure サービスと統合され、ク
 
 1. Azure Arc プライベート リンク スコープに名前を指定します。 意味のある明確な名前を使用することをお勧めします。
 
-   必要に応じて、この Azure Arc プライベート リンク スコープ (プレビュー) に関連付けられている Arc 対応のすべてのマシンまたはサーバーに、プライベート エンドポイントを介してサービスにデータを送信することを要求できます。 **[パブリック ネットワーク アクセスを有効にする]** を選択した場合、この Azure Arc プライベート リンク スコープ (プレビュー) に関連付けられているマシンまたはサーバーでは、プライベート ネットワークとパブリック ネットワークの両方を介してサービスと通信できます。 この設定は、設定を変更したい場合、スコープを作成した後に変更できます。
+   必要に応じて、この Azure Arc プライベート リンク スコープ (プレビュー) に関連付けられているすべての Azure Arc 対応マシンまたはサーバーに、プライベート エンドポイントを介してサービスにデータを送信することを要求できます。 **[パブリック ネットワーク アクセスを有効にする]** を選択した場合、この Azure Arc プライベート リンク スコープ (プレビュー) に関連付けられているマシンまたはサーバーでは、プライベート ネットワークとパブリック ネットワークの両方を介してサービスと通信できます。 この設定は、設定を変更したい場合、スコープを作成した後に変更できます。
 
 1. **[確認および作成]** を選択します。
 
@@ -173,7 +173,7 @@ Azure Arc プライベート リンク スコープ (プレビュー) を作成�
    b. **[プライベート DNS ゾーンとの統合]** で **[はい]** を選択して、新しいプライベート DNS ゾーンを自動で作成します。 実際の DNS ゾーンは、下のスクリーンショットに示されているものとは異なる場合があります。
 
      > [!NOTE]
-     > **[いいえ]** を選択して DNS レコードを手動で管理する場合は、最初に、このプライベート エンドポイントとプライベート スコープ構成を含め、プライベート リンクの設定を完了させます。 次に、「[Azure プライベート エンドポイントの DNS 構成](../../private-link/private-endpoint-dns.md)」の手順に従って、DNS を構成します。 プライベート リンクの設定の準備で、空のレコードを作成しないようにしてください。 作成する DNS レコードによって、既存の設定がオーバーライドされ、Arc 対応サーバーとの接続が影響を受ける可能性があります。
+     > **[いいえ]** を選択して DNS レコードを手動で管理する場合は、最初に、このプライベート エンドポイントとプライベート スコープ構成を含め、プライベート リンクの設定を完了させます。 次に、「[Azure プライベート エンドポイントの DNS 構成](../../private-link/private-endpoint-dns.md)」の手順に従って、DNS を構成します。 プライベート リンクの設定の準備で、空のレコードを作成しないようにしてください。 作成する DNS レコードによって、既存の設定がオーバーライドされ、Azure Arc 対応サーバーとの接続が影響を受ける可能性があります。
 
    c.    **[Review + create]\(レビュー + 作成\)** を選択します。
 
@@ -228,9 +228,9 @@ Private Link を使用していくつかのマシンまたはサーバーをサ�
 ## <a name="connect-to-an-azure-arc-enabled-servers"></a>Azure Arc 対応サーバーに接続する
 
 > [!NOTE]
-> プライベート エンドポイントを持つ Azure Arc Connected Machine Agent のサポートされる最低限のバージョンはバージョン 1.4 です。 ポータルで生成される Arc 対応サーバー デプロイ スクリプトでは、最新バージョンがダウンロードされます。
+> プライベート エンドポイントを持つ Azure Arc Connected Machine Agent のサポートされる最低限のバージョンはバージョン 1.4 です。 ポータルで生成される Azure Arc 対応サーバー デプロイ スクリプトでは、最新バージョンがダウンロードされます。
 
-### <a name="configure-a-new-arc-enabled-server-to-use-private-link"></a>Private Link を使用するように新しい Arc 対応サーバーを構成する
+### <a name="configure-a-new-azure-arc-enabled-server-to-use-private-link"></a>Private Link を使用するように新しい Azure Arc 対応サーバーを構成する
 
 マシンまたはサーバーを Azure Arc 対応サーバーに初めて接続する場合は、必要に応じて、プライベート リンク スコープに接続できます。 次の手順に従います。 
 
@@ -257,7 +257,7 @@ Private Link を使用していくつかのマシンまたはサーバーをサ�
 
     1. **タグ** を選択します。
 
-1. **[複数のサーバーの追加]** を選択した場合は、 **[認証]** ページで、ドロップダウン リストから Arc 対応サーバー用に作成されたサービス プリンシパルを選択します。 Arc 対応サーバー用のサービス プリンシパルを作成していない場合は、まず、[サービス プリンシパルを作成する方法](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale)を確認して、必要なアクセス許可と作成手順について理解します。 **[次: タグ]** を選択して続行します。
+1. **[複数のサーバーの追加]** を選択した場合は、 **[認証]** ページで、ドロップダウン リストから Azure Arc 対応サーバー用に作成されたサービス プリンシパルを選択します。 Azure Arc 対応サーバー用のサービス プリンシパルを作成していない場合は、まず、[サービス プリンシパルを作成する方法](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale)を確認して、必要なアクセス許可と作成手順について理解します。 **[次: タグ]** を選択して続行します。
 
 1. **[タグ]** ページで、提案されている既定の **物理的な場所のタグ** を確認し、値を入力するか、**カスタム タグ** を 1 つ以上指定して標準をサポートします。
 
@@ -274,9 +274,9 @@ Windows エージェントは [https://aka.ms/AzureConnectedMachineAgent](https:
 > [!NOTE]
 > Linux サーバーに Connected Machine Agent をデプロイする場合、ネットワークの接続チェック中に 5 分の遅延が発生し、ファイアウォールが正しく構成されている場合でも、`you do not have access to login.windows.net` というエラーが発生することがあります。 これは既知の問題であり、今後のエージェントのリリースで修正されます。 ファイアウォールが正しく構成されている場合は、オンボードが引き続き成功します。
 
-### <a name="configure-an-existing-arc-enabled-server"></a>既存の Arc 対応サーバーを構成する
+### <a name="configure-an-existing-azure-arc-enabled-server"></a>既存の Azure Arc 対応サーバーを構成する
 
-プライベート リンク スコープの前にセットアップされた Arc 対応サーバーの場合は、次の手順を実行して、Arc 対応サーバーのプライベート リンク スコープの使用を開始できるようにすることができます。
+プライベート リンク スコープの前にセットアップされた Azure Arc 対応サーバーの場合は、次の手順を実行して、Azure Arc 対応サーバーのプライベート リンク スコープの使用を開始できるようにすることができます。
 
 1. Azure portal で、Azure Arc プライベート リンク スコープ リソースに移動します。
 

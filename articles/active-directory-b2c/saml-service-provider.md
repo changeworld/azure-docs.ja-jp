@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/30/2021
+ms.date: 09/20/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 52966adfeffc137bf9edd95c61887dbc98f02aa6
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 673835a3e3112bf433faeba815e65c6203dd9ce8
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123221531"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128603811"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>SAML アプリケーションを Azure AD B2C に登録する
 
@@ -44,6 +44,10 @@ ms.locfileid: "123221531"
 2. ユーザーは、Azure AD B2C ローカル アカウント、または他のフェデレーション ID プロバイダー (構成されている場合) を使用して認証を行うことができます。
 3. ユーザーがフェデレーション ID プロバイダーを使用してサインインすると、トークン応答は Azure AD B2C に送信されます。
 4. Azure AD B2C により、SAML アサーションが生成され、アプリケーションに送信されます。
+
+このビデオでは、SAML アプリケーションを Azure AD B2C と統合する方法について説明します。 
+
+>[!Video https://www.youtube.com/embed/r2TIVBCm7v4]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -95,7 +99,8 @@ SAML アプリケーションと関連するメタデータ エンドポイン�
 証明書を Azure AD B2C テナントに格納する必要があります。
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
-1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 上部のメニューで **[ディレクトリ + サブスクリプション]** フィルターを選択し、ご利用のテナントが含まれるディレクトリを選びます。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
 1. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選びます。
 1. **[概要]** ページで、 **[Identity Experience Framework]** を選択します。
 1. **[ポリシー キー]** を選択し、 **[追加]** を選択します。
@@ -292,7 +297,8 @@ Azure AD B2C ポリシー メタデータは、次の URL から入手できま�
 Azure AD B2C にアプリケーションを信頼させるには、Azure AD B2C アプリケーションの登録を作成します。 その登録には、アプリケーションのメタデータ エンドポイントなどの構成情報が含まれます。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択してから、Azure AD B2C テナントを含むディレクトリを選びます。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
 1. 左側のメニューで、 **[Azure AD B2C]** を選択します。 または、**[すべてのサービス]** を選択し、**[Azure AD B2C]** を検索して選択します。
 1. **[アプリの登録]** を選択し、 **[新規登録]** を選択します。
 1. アプリケーションの **名前** を入力します。 たとえば、「**SAMLApp1**」と入力します。

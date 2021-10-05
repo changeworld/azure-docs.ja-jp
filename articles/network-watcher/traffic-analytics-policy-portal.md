@@ -3,21 +3,18 @@ title: Azure Policy を使用して Traffic Analytics をデプロイして管�
 titleSuffix: Azure Network Watcher
 description: この記事では、組み込みのポリシーを使用して、Traffic Analytics のデプロイを管理する方法について説明します
 services: network-watcher
-documentationcenter: na
 author: moagra
 ms.service: network-watcher
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2021
 ms.author: moagra
-ms.openlocfilehash: 3be6d5b30d270c9687b7100c07ee675268cee5c0
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: 9d916122714b1dddab7d1d9b6d13e6fd58d14d46
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122609150"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128619365"
 ---
 # <a name="deploy-and-manage-traffic-analytics-using-azure-policy"></a>Azure Policy を使用して Traffic Analytics をデプロイして管理する 
 
@@ -112,7 +109,7 @@ Network Watcher はリージョン サービスであるため、このポリシ
 - Storage ID:ストレージ アカウントのフル リソース ID。 ストレージ アカウントは、NSG と同じリージョンに存在する必要があります。
 - Network Watchers RG:ご利用の Network Watcher リソースを含むリソース グループの名前。 名前を変更していない場合は、既定の "NetworkWatcherRG" を入力できます。
 - Network Watcher 名:リージョンの Network Watcher サービスの名前。 形式:NetworkWatcher_RegionName。 例:NetworkWatcher_centralus.
-- ワークスペース リソース ID: ワークスペースのリソース ID。Traffic Analytics が有効になっている必要があります。 形式は "/subscriptions/<SubscriptionID>/resourceGroups/<ResouceGroupName>/providers/Microsoft.Storage/storageAccounts/<StorageAccountName>" です
+- ワークスペース リソース ID: ワークスペースのリソース ID。Traffic Analytics が有効になっている必要があります。 形式は `/subscriptions/<SubscriptionID>/resourceGroups/<ResouceGroupName>/providers/Microsoft.Storage/storageAccounts/<StorageAccountName>`
 - WorkspaceID: ワークスペース GUID
 - WorkspaceRegion: ワークスペースのリージョン (NSG のリージョンと同じである必要はないことにご注意ください)
 - TimeInterval: 処理されたログがワークスペースにプッシュされる頻度。 現在、使用できる値は 60 分と 10 分です。 既定値は 60 分です。
@@ -137,7 +134,7 @@ Network Watcher はリージョン サービスであるため、このポリシ
 
 ![DINE ポリシーの結果のトラフィック分析](./media/traffic-analytics/policy-two-results.png)  
 
-### <a name="remediation"></a>Remediation
+### <a name="remediation"></a>修復
 
 手動で修復するには、上記の [コンプライアンス] タブで *[修復タスクの作成]* を選択します
 
@@ -153,7 +150,7 @@ Network Watcher はリージョン サービスであるため、このポリシ
 このようなシナリオでは、割り当てのマネージド ID に手動でアクセスを許可する必要があります。 適切なサブスクリプションまたはリソース グループ (ポリシー パラメーターで指定されたリソースを含む) に移動し、ポリシーによって作成されたマネージド ID へのアクセスを共同作成者に許可します。 上の例では、"b67334e8770a4afc92e7a929" は共同作成者である必要があります。
 
 
-## <a name="next-steps"></a>次の手順 
+## <a name="next-steps"></a>次のステップ 
 
 -   [NSG フロー ログの組み込みポリシー](./nsg-flow-logs-policy-portal.md)について学習する
 -   [Traffic Analytics ](./traffic-analytics.md) についてさらに学習する

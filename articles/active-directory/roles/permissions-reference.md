@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: reference
-ms.date: 07/26/2021
+ms.date: 09/14/2021
 ms.author: rolyon
-ms.reviewer: vincesm
+ms.reviewer: abhijeetsinha
 ms.custom: generated, it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e05bfa8a024cb823a552f01e585f1c4843bd6df9
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: a057cbd765e58cf4eca509af38e74e62168cddc2
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122866456"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129058135"
 ---
 # <a name="azure-ad-built-in-roles"></a>Azure AD の組み込みロール
 
@@ -70,7 +70,7 @@ Azure Active Directory (Azure AD) で、別の管理者または管理者以外�
 > | [ハイブリッド ID の管理者](#hybrid-identity-administrator) | AD から Azure AD へのクラウド プロビジョニング、Azure AD Connect、フェデレーションの設定を管理できます。 | 8ac3fc64-6eca-42ea-9e69-59f4c7b60eb2 |
 > | [Identity Governance 管理者](#identity-governance-administrator) | Identity Governance シナリオで Azure AD を使用してアクセスを管理します。 | 45d8d3c5-c802-45c6-b32a-1d70b5e1e86e |
 > | [Insights 管理者](#insights-administrator) | Microsoft 365 Insights アプリへの管理アクセス権があります。 | eb1f4a8d-243a-41f0-9fbd-c7cdf6c5ef7c |
-> | [Insights ビジネス リーダー](#insights-business-leader) | M365 Insights アプリを使用して、ダッシュボードと分析情報を表示および共有できます。 | 31e939ad-9672-4796-9c2e-873181342d2d |
+> | [Insights ビジネス リーダー](#insights-business-leader) | Microsoft 365 Insights アプリを使用して、ダッシュボードと分析情報を表示および共有できます。 | 31e939ad-9672-4796-9c2e-873181342d2d |
 > | [Intune 管理者](#intune-administrator) | Intune 製品のすべての側面を管理できます。 | 3a2c62db-5318-420d-8d74-23affee5d9d5 |
 > | [Kaizala 管理者](#kaizala-administrator) | Microsoft Kaizala の設定を管理できます。 | 74ef975b-6605-40af-a5d2-b9539d836353 |
 > | [知識管理者](#knowledge-administrator) | 知識、学習、その他のインテリジェントな機能を構成できます。 | b5a8dcf3-09d5-43a9-a639-8e29ef291470 |
@@ -135,9 +135,11 @@ Azure Active Directory (Azure AD) で、別の管理者または管理者以外�
 > | microsoft.directory/applications/basic/update | アプリケーションの基本プロパティを更新する |
 > | microsoft.directory/applications/credentials/update | アプリケーション資格情報を更新する |
 > | microsoft.directory/applications/extensionProperties/update | アプリケーションの拡張機能プロパティを更新する |
+> | microsoft.directory/applications/notes/update | アプリケーションのメモを更新する |
 > | microsoft.directory/applications/owners/update | アプリケーションの所有者を更新する |
 > | microsoft.directory/applications/permissions/update | すべての種類のアプリケーションで、公開されたアクセス許可と必要なアクセス許可を更新する |
 > | microsoft.directory/applications/policies/update | アプリケーションのポリシーを更新する |
+> | microsoft.directory/applications/tag/update | アプリケーションのタグを更新する |
 > | microsoft.directory/applications/verification/update | applicationsverification プロパティを更新する |
 > | microsoft.directory/applications/synchronization/standard/read | アプリケーション オブジェクトに関連付けられているプロビジョニング設定を読み取る |
 > | microsoft.directory/applicationTemplates/instantiate | アプリケーション テンプレートからギャラリー アプリケーションのインスタンスを作成する |
@@ -174,6 +176,7 @@ Azure Active Directory (Azure AD) で、別の管理者または管理者以外�
 > | microsoft.directory/servicePrincipals/authentication/update | サービス プリンシパルで認証プロパティを更新する |
 > | microsoft.directory/servicePrincipals/basic/update | サービス プリンシパルで基本プロパティを更新する |
 > | microsoft.directory/servicePrincipals/credentials/update | サービス プリンシパルの資格情報を更新する |
+> | microsoft.directory/servicePrincipals/notes/update | サービス プリンシパルのメモを更新する |
 > | microsoft.directory/servicePrincipals/owners/update | サービス プリンシパルの所有者を更新する |
 > | microsoft.directory/servicePrincipals/permissions/update | サービスプリンシパルのアクセス許可を更新する |
 > | microsoft.directory/servicePrincipals/policies/update | サービス プリンシパルのポリシーを更新する |
@@ -247,8 +250,12 @@ Azure Active Directory (Azure AD) で、別の管理者または管理者以外�
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
 > | --- | --- |
+> | microsoft.directory/users/authenticationMethods/create | ユーザーの認証方法を作成する |
+> | microsoft.directory/users/authenticationMethods/delete | ユーザーの認証方法を削除する |
+> | microsoft.directory/users/authenticationMethods/standard/restrictedRead | 個人を特定できる情報を含まない認証方法の標準プロパティを読み取ります。 |
+> | microsoft.directory/users/authenticationMethods/basic/update | ユーザーの認証方法の基本プロパティを更新する |
 > | microsoft.directory/users/invalidateAllRefreshTokens | ユーザー更新トークンを無効にして強制的にサインアウトする |
-> | microsoft.directory/users/strongAuthentication/update | ユーザーの強力な認証プロパティを更新する |
+> | microsoft.directory/users/password/update | すべてのユーザーのパスワードをリセットする |
 > | microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health を読み取り、構成する |
 > | microsoft.azure.supportTickets/allEntities/allTasks | Azure サポート チケットを作成および管理する |
 > | microsoft.office365.serviceHealth/allEntities/allTasks | Microsoft 365 管理センターで Service Health を読み取り、構成する |
@@ -331,7 +338,7 @@ Azure Active Directory (Azure AD) で、別の管理者または管理者以外�
 
 ## <a name="b2c-ief-keyset-administrator"></a>B2C IEF キーセット管理者
 
-ユーザーは、トークンの暗号化、トークンの署名、および要求の暗号化/暗号化解除のために、ポリシー キーとシークレットを作成して管理できます。  新しいキーを既存のキー コンテナーに追加すると、この制限付き管理者は、既存のアプリケーションに影響を与えることなく、必要に応じてシークレットをロールオーバーできます。  このユーザーは、これらのシークレットとその有効期限の完全な内容を、シークレットを作成した後でも確認できます。
+ユーザーは、トークンの暗号化、トークンの署名、および要求の暗号化/暗号化解除のために、ポリシー キーとシークレットを作成して管理できます。 新しいキーを既存のキー コンテナーに追加すると、この制限付き管理者は、既存のアプリケーションに影響を与えることなく、必要に応じてシークレットをロールオーバーできます。  このユーザーは、これらのシークレットとその有効期限の完全な内容を、シークレットを作成した後でも確認できます。
 
 > [!IMPORTANT]
 > これは機密性の高いロールです。  キーセット管理者ロールは、慎重に監査し、運用前環境と運用環境では、慎重に割り当てる必要があります。
@@ -400,9 +407,11 @@ Azure Active Directory (Azure AD) で、別の管理者または管理者以外�
 > | microsoft.directory/applications/basic/update | アプリケーションの基本プロパティを更新する |
 > | microsoft.directory/applications/credentials/update | アプリケーション資格情報を更新する |
 > | microsoft.directory/applications/extensionProperties/update | アプリケーションの拡張機能プロパティを更新する |
+> | microsoft.directory/applications/notes/update | アプリケーションのメモを更新する |
 > | microsoft.directory/applications/owners/update | アプリケーションの所有者を更新する |
 > | microsoft.directory/applications/permissions/update | すべての種類のアプリケーションで、公開されたアクセス許可と必要なアクセス許可を更新する |
 > | microsoft.directory/applications/policies/update | アプリケーションのポリシーを更新する |
+> | microsoft.directory/applications/tag/update | アプリケーションのタグを更新する |
 > | microsoft.directory/applications/verification/update | applicationsverification プロパティを更新する |
 > | microsoft.directory/applications/synchronization/standard/read | アプリケーション オブジェクトに関連付けられているプロビジョニング設定を読み取る |
 > | microsoft.directory/applicationTemplates/instantiate | アプリケーション テンプレートからギャラリー アプリケーションのインスタンスを作成する |
@@ -433,6 +442,7 @@ Azure Active Directory (Azure AD) で、別の管理者または管理者以外�
 > | microsoft.directory/servicePrincipals/authentication/update | サービス プリンシパルで認証プロパティを更新する |
 > | microsoft.directory/servicePrincipals/basic/update | サービス プリンシパルで基本プロパティを更新する |
 > | microsoft.directory/servicePrincipals/credentials/update | サービス プリンシパルの資格情報を更新する |
+> | microsoft.directory/servicePrincipals/notes/update | サービス プリンシパルのメモを更新する |
 > | microsoft.directory/servicePrincipals/owners/update | サービス プリンシパルの所有者を更新する |
 > | microsoft.directory/servicePrincipals/permissions/update | サービスプリンシパルのアクセス許可を更新する |
 > | microsoft.directory/servicePrincipals/policies/update | サービス プリンシパルのポリシーを更新する |
@@ -638,9 +648,11 @@ Azure Active Directory (Azure AD) で、別の管理者または管理者以外�
 > | microsoft.directory/applications/authentication/update | すべての種類のアプリケーションで認証を更新する |
 > | microsoft.directory/applications/basic/update | アプリケーションの基本プロパティを更新する |
 > | microsoft.directory/applications/credentials/update | アプリケーション資格情報を更新する |
+> | microsoft.directory/applications/notes/update | アプリケーションのメモを更新する |
 > | microsoft.directory/applications/owners/update | アプリケーションの所有者を更新する |
 > | microsoft.directory/applications/permissions/update | すべての種類のアプリケーションで、公開されたアクセス許可と必要なアクセス許可を更新する |
 > | microsoft.directory/applications/policies/update | アプリケーションのポリシーを更新する |
+> | microsoft.directory/applications/tag/update | アプリケーションのタグを更新する |
 > | microsoft.directory/authorizationPolicy/standard/read | 認証ポリシーの標準プロパティを読み取る |
 > | microsoft.directory/organization/dirSync/update | 組織のディレクトリ同期プロパティを更新する |
 > | microsoft.directory/policies/create | Azure AD でポリシーを作成する |
@@ -670,6 +682,7 @@ Azure Active Directory (Azure AD) で、別の管理者または管理者以外�
 > | microsoft.directory/servicePrincipals/authentication/update | サービス プリンシパルで認証プロパティを更新する |
 > | microsoft.directory/servicePrincipals/basic/update | サービス プリンシパルで基本プロパティを更新する |
 > | microsoft.directory/servicePrincipals/credentials/update | サービス プリンシパルの資格情報を更新する |
+> | microsoft.directory/servicePrincipals/notes/update | サービス プリンシパルのメモを更新する |
 > | microsoft.directory/servicePrincipals/owners/update | サービス プリンシパルの所有者を更新する |
 > | microsoft.directory/servicePrincipals/permissions/update | サービスプリンシパルのアクセス許可を更新する |
 > | microsoft.directory/servicePrincipals/policies/update | サービス プリンシパルのポリシーを更新する |
@@ -822,12 +835,16 @@ Azure Active Directory (Azure AD) で、別の管理者または管理者以外�
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
 > | --- | --- |
-> | microsoft.directory/accessReviews/allProperties/allTasks | Azure AD で、アクセス レビューの作成と削除、およびアクセス レビューのすべてのプロパティの読み取りと更新を行う |
+> | microsoft.directory/accessReviews/allProperties/allTasks | Azure AD で、アクセス レビューの作成と削除、アクセス レビューのすべてのプロパティの読み取りと更新、およびグループのアクセス レビューの管理を行う |
 > | microsoft.directory/administrativeUnits/allProperties/allTasks | 管理単位 (メンバーを含む) の作成と管理。 |
 > | microsoft.directory/applications/allProperties/allTasks | アプリケーションの作成と削除、すべてのプロパティの読み取りと更新を行う |
 > | microsoft.directory/applications/synchronization/standard/read | アプリケーション オブジェクトに関連付けられているプロビジョニング設定を読み取る |
 > | microsoft.directory/applicationTemplates/instantiate | アプリケーション テンプレートからギャラリー アプリケーションのインスタンスを作成する |
 > | microsoft.directory/auditLogs/allProperties/read | 監査ログのすべてのプロパティ (特権プロパティを含む) を読み取る |
+> | microsoft.directory/users/authenticationMethods/create | ユーザーの認証方法を作成する |
+> | microsoft.directory/users/authenticationMethods/delete | ユーザーの認証方法を削除する |
+> | microsoft.directory/users/authenticationMethods/standard/read | ユーザーの認証方法の標準プロパティを読み取る |
+> | microsoft.directory/users/authenticationMethods/basic/update | ユーザーの認証方法の基本プロパティを更新する |
 > | microsoft.directory/authorizationPolicy/allProperties/allTasks | 認可ポリシーのすべての側面を管理する |
 > | microsoft.directory/bitlockerKeys/key/read | デバイス上の bitlocker メタデータとキーを読み取る |
 > | microsoft.directory/cloudAppSecurity/allProperties/allTasks | Microsoft Cloud App Security ですべてのリソースの作成と削除、標準プロパティの読み取りと更新を行う |
@@ -901,8 +918,10 @@ Azure Active Directory (Azure AD) で、別の管理者または管理者以外�
 > | microsoft.azure.informationProtection/allEntities/allTasks | Azure Information Protection のすべての側面を管理する |
 > | microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health を読み取り、構成する |
 > | microsoft.azure.supportTickets/allEntities/allTasks | Azure サポート チケットを作成および管理する |
+> | microsoft.cloudPC/allEntities/allProperties/allTasks | Windows 365 のすべての側面を管理する |
 > | microsoft.commerce.billing/allEntities/allTasks | Office 365 課金のすべての側面を管理する |
 > | microsoft.dynamics365/allEntities/allTasks | Dynamics 365 のすべての側面を管理する |
+> | microsoft.edge/allEntities/allProperties/allTasks | Microsoft Edge のすべての側面を管理する |
 > | microsoft.flow/allEntities/allTasks | Power Automate のすべての側面を管理する |
 > | microsoft.intune/allEntities/allTasks | Microsoft Intune のすべての側面を管理する |
 > | microsoft.office365.complianceManager/allEntities/allTasks | Office 365 コンプライアンス マネージャーの全側面の管理 |
@@ -953,51 +972,54 @@ Azure Active Directory (Azure AD) で、別の管理者または管理者以外�
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
 > | --- | --- |
-> | microsoft.directory/accessReviews/allProperties/read |  |
-> | microsoft.directory/administrativeUnits/allProperties/read |  |
+> | microsoft.directory/accessReviews/allProperties/read | アクセス レビューのすべてのプロパティを読み取る |
+> | microsoft.directory/administrativeUnits/allProperties/read | 管理単位のすべてのプロパティを読み取る |
 > | microsoft.directory/applications/allProperties/read | すべての種類のアプリケーションのすべてのプロパティ (特権プロパティを含む) を読み取る |
 > | microsoft.directory/applications/synchronization/standard/read | アプリケーション オブジェクトに関連付けられているプロビジョニング設定を読み取る |
 > | microsoft.directory/auditLogs/allProperties/read | 監査ログのすべてのプロパティ (特権プロパティを含む) を読み取る |
+> | microsoft.directory/users/authenticationMethods/standard/restrictedRead | 個人を特定できる情報を含まない認証方法の標準プロパティを読み取ります。 |
 > | microsoft.directory/authorizationPolicy/standard/read | 認証ポリシーの標準プロパティを読み取る |
 > | microsoft.directory/bitlockerKeys/key/read | デバイス上の bitlocker メタデータとキーを読み取る |
-> | microsoft.directory/cloudAppSecurity/allProperties/read |  |
+> | microsoft.directory/cloudAppSecurity/allProperties/read | Cloud App Security のすべてのプロパティを読み取る |
 > | microsoft.directory/connectors/allProperties/read | アプリケーション プロキシ コネクタのすべてのプロパティを読み取る |
 > | microsoft.directory/connectorGroups/allProperties/read | アプリケーション プロキシ コネクタ グループのすべてのプロパティを読み取る |
-> | microsoft.directory/contacts/allProperties/read |  |
+> | microsoft.directory/contacts/allProperties/read | 連絡先のすべてのプロパティを読み取る |
 > | microsoft.directory/devices/allProperties/read | デバイスのすべてのプロパティを読み取る |
-> | microsoft.directory/directoryRoles/allProperties/read |  |
-> | microsoft.directory/directoryRoleTemplates/allProperties/read |  |
+> | microsoft.directory/directoryRoles/allProperties/read | Azure AD ロールのすべてのプロパティを読み取る |
+> | microsoft.directory/directoryRoleTemplates/allProperties/read | ロール テンプレートのすべてのプロパティを読み取る |
 > | microsoft.directory/domains/allProperties/read | ドメインのすべてのプロパティの読み取る |
 > | microsoft.directory/entitlementManagement/allProperties/read | Azure AD エンタイトルメント管理ですべてのプロパティを読み取る |
 > | microsoft.directory/groups/allProperties/read | ロールを割り当て可能なグループを含む、セキュリティ グループと Microsoft 365 グループのすべてのプロパティ (特権プロパティを含む) を読み取る |
-> | microsoft.directory/groupSettings/allProperties/read |  |
-> | microsoft.directory/groupSettingTemplates/allProperties/read |  |
+> | microsoft.directory/groupSettings/allProperties/read | グループ設定のすべてのプロパティを読み取る |
+> | microsoft.directory/groupSettingTemplates/allProperties/read | グループ設定テンプレートのすべてのプロパティを読み取る |
 > | microsoft.directory/identityProtection/allProperties/read | Azure AD Identity Protection のすべてのリソースを読み取る |
-> | microsoft.directory/loginOrganizationBranding/allProperties/read |  |
-> | microsoft.directory/oAuth2PermissionGrants/allProperties/read |  |
-> | microsoft.directory/organization/allProperties/read |  |
+> | microsoft.directory/loginOrganizationBranding/allProperties/read | 組織のブランド化されたサインイン ページのすべてのプロパティを読み取る |
+> | microsoft.directory/oAuth2PermissionGrants/allProperties/read | OAuth 2.0 アクセス許可付与のすべてのプロパティを読み取る |
+> | microsoft.directory/organization/allProperties/read | 組織のすべてのプロパティを読み取る |
 > | microsoft.directory/permissionGrantPolicies/standard/read | アクセス許可付与ポリシーの標準プロパティを読み取る |
-> | microsoft.directory/policies/allProperties/read |  |
-> | microsoft.directory/conditionalAccessPolicies/allProperties/read |  |
-> | microsoft.directory/crossTenantAccessPolicies/allProperties/read |  |
+> | microsoft.directory/policies/allProperties/read | ポリシーのすべてのプロパティを読み取る |
+> | microsoft.directory/conditionalAccessPolicies/allProperties/read | 条件付きアクセス ポリシーのすべてのプロパティを読み取る |
+> | microsoft.directory/crossTenantAccessPolicies/allProperties/read | テナント間ポリシーのすべてのプロパティを読み取る |
 > | microsoft.directory/deviceManagementPolicies/standard/read | デバイス管理アプリケーション ポリシーの標準プロパティの読み取り |
 > | microsoft.directory/deviceRegistrationPolicy/standard/read | デバイス登録ポリシーの標準プロパティの読み取り |
 > | microsoft.directory/privilegedIdentityManagement/allProperties/read | Privileged Identity Management のすべてのリソースを読み取る |
 > | microsoft.directory/provisioningLogs/allProperties/read | プロビジョニング ログのすべてのプロパティを読み取ります。 |
-> | microsoft.directory/roleAssignments/allProperties/read |  |
-> | microsoft.directory/roleDefinitions/allProperties/read |  |
-> | microsoft.directory/scopedRoleMemberships/allProperties/read |  |
+> | microsoft.directory/roleAssignments/allProperties/read | ロールの割り当てのすべてのプロパティを読み取る |
+> | microsoft.directory/roleDefinitions/allProperties/read | ロールの定義のすべてのプロパティを読み取る |
+> | microsoft.directory/scopedRoleMemberships/allProperties/read | 管理単位のメンバーを表示する |
 > | microsoft.directory/serviceAction/getAvailableExtentionProperties | getAvailableExtentionProperties サービス アクションを実行できる |
 > | microsoft.directory/servicePrincipals/allProperties/read | servicePrincipals のすべてのプロパティ (特権プロパティを含む) を読み取る |
 > | microsoft.directory/servicePrincipalCreationPolicies/standard/read | サービス プリンシパル作成ポリシーの標準プロパティを読み取る |
 > | microsoft.directory/servicePrincipals/synchronization/standard/read | サービス プリンシパルに関連付けられているプロビジョニング設定を読み取る |
 > | microsoft.directory/signInReports/allProperties/read | サインイン情報レポートのすべてのプロパティ (特権プロパティを含む) を読み取る |
-> | microsoft.directory/subscribedSkus/allProperties/read |  |
+> | microsoft.directory/subscribedSkus/allProperties/read | 製品サブスクリプションのすべてのプロパティを読み取る |
 > | microsoft.directory/users/allProperties/read | ユーザーのすべてのプロパティを読み取る |
 > | microsoft.directory/verifiableCredentials/configuration/contracts/cards/allProperties/read | 検証可能な資格情報カードを読み取る |
 > | microsoft.directory/verifiableCredentials/configuration/contracts/allProperties/read | 検証可能な資格情報コントラクトを読み取る |
 > | microsoft.directory/verifiableCredentials/configuration/allProperties/read | 検証可能な資格情報を作成および管理するために必要な構成を読み取る |
+> | microsoft.cloudPC/allEntities/allProperties/read | Windows 365 のすべての側面を読み取る |
 > | microsoft.commerce.billing/allEntities/read | Office 365 課金情報のすべてのリソースを読み取る |
+> | microsoft.edge/allEntities/allProperties/read | Microsoft Edge のすべての側面を読み取る |
 > | microsoft.office365.exchange/allEntities/standard/read | Exchange Online のすべてのリソースを読み取る |
 > | microsoft.office365.messageCenter/messages/read | Microsoft 365 管理センターのメッセージ センターで、セキュリティ メッセージを除くメッセージを読み取る |
 > | microsoft.office365.messageCenter/securityMessages/read | Microsoft 365 管理センターのメッセージ センターでセキュリティ メッセージを読み取る |
@@ -1102,9 +1124,11 @@ Azure Active Directory (Azure AD) で、別の管理者または管理者以外�
 > | microsoft.directory/applications/authentication/update | すべての種類のアプリケーションで認証を更新する |
 > | microsoft.directory/applications/basic/update | アプリケーションの基本プロパティを更新する |
 > | microsoft.directory/applications/credentials/update | アプリケーション資格情報を更新する |
+> | microsoft.directory/applications/notes/update | アプリケーションのメモを更新する |
 > | microsoft.directory/applications/owners/update | アプリケーションの所有者を更新する |
 > | microsoft.directory/applications/permissions/update | すべての種類のアプリケーションで、公開されたアクセス許可と必要なアクセス許可を更新する |
 > | microsoft.directory/applications/policies/update | アプリケーションのポリシーを更新する |
+> | microsoft.directory/applications/tag/update | アプリケーションのタグを更新する |
 > | microsoft.directory/applications/synchronization/standard/read | アプリケーション オブジェクトに関連付けられているプロビジョニング設定を読み取る |
 > | microsoft.directory/applicationTemplates/instantiate | アプリケーション テンプレートからギャラリー アプリケーションのインスタンスを作成する |
 > | microsoft.directory/auditLogs/allProperties/read | 監査ログのすべてのプロパティ (特権プロパティを含む) を読み取る |
@@ -1126,6 +1150,7 @@ Azure Active Directory (Azure AD) で、別の管理者または管理者以外�
 > | microsoft.directory/servicePrincipals/authentication/update | サービス プリンシパルで認証プロパティを更新する |
 > | microsoft.directory/servicePrincipals/basic/update | サービス プリンシパルで基本プロパティを更新する |
 > | microsoft.directory/servicePrincipals/credentials/update | サービス プリンシパルの資格情報を更新する |
+> | microsoft.directory/servicePrincipals/notes/update | サービス プリンシパルのメモを更新する |
 > | microsoft.directory/servicePrincipals/owners/update | サービス プリンシパルの所有者を更新する |
 > | microsoft.directory/servicePrincipals/permissions/update | サービスプリンシパルのアクセス許可を更新する |
 > | microsoft.directory/servicePrincipals/policies/update | サービス プリンシパルのポリシーを更新する |
@@ -1147,14 +1172,13 @@ Azure Active Directory (Azure AD) で、別の管理者または管理者以外�
 > | アクション | 説明 |
 > | --- | --- |
 > | microsoft.directory/accessReviews/allProperties/allTasks | Azure AD で、アクセス レビューの作成と削除、アクセス レビューのすべてのプロパティの読み取りと更新、およびグループのアクセス レビューの管理を行う |
-> | microsoft.directory/accessReviews/definitions.applications/allTasks  | Azure AD のアプリケーション ロールの割り当てのアクセス レビューを管理 | 
 > | microsoft.directory/entitlementManagement/allProperties/allTasks | Azure AD エンタイトルメント管理でのリソースの作成と削除、すべてのプロパティの読み取りと更新を行う |
 > | microsoft.directory/groups/members/update | ロールを割り当て可能なグループを除き、セキュリティ グループと Microsoft 365 グループのメンバーを更新する |
 > | microsoft.directory/servicePrincipals/appRoleAssignedTo/update | サービス プリンシパルのロールの割り当ての更新 |
 
 ## <a name="insights-administrator"></a>Insights 管理者
 
-このロールのユーザーは、[M365 Insights アプリケーション](https://go.microsoft.com/fwlink/?linkid=2129521)の管理機能の完全なセットにアクセスできます。 このロールでは、ディレクトリ情報の読み取り、サービスの正常性の監視、サポート チケットの提出、Insights 管理者設定の側面へのアクセスを行うことができます。
+このロールのユーザーは、[Microsoft 365 Insights アプリケーション](https://go.microsoft.com/fwlink/?linkid=2129521)の管理機能の完全なセットにアクセスできます。 このロールでは、ディレクトリ情報の読み取り、サービスの正常性の監視、サポート チケットの提出、Insights 管理者設定の側面へのアクセスを行うことができます。
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
@@ -1168,7 +1192,7 @@ Azure Active Directory (Azure AD) で、別の管理者または管理者以外�
 
 ## <a name="insights-business-leader"></a>Insights ビジネス リーダー
 
-このロールのユーザーは、[M365 Insights アプリケーション](https://go.microsoft.com/fwlink/?linkid=2129521)を使用して、一連のダッシュボードと分析情報にアクセスできます。 これには、すべてのダッシュボード、表示される分析情報、およびデータ探索機能へのフル アクセスが含まれます。 このロールのユーザーには、製品の構成設定へのアクセス権がありません (これは Insights 管理者ロールの責任範囲です)。
+このロールのユーザーは、[Microsoft 365 Insights アプリケーション](https://go.microsoft.com/fwlink/?linkid=2129521)を使用して、一連のダッシュボードと分析情報にアクセスできます。 これには、すべてのダッシュボード、表示される分析情報、およびデータ探索機能へのフル アクセスが含まれます。 このロールのユーザーには、製品の構成設定へのアクセス権がありません (これは Insights 管理者ロールの責任範囲です)。
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
@@ -1217,6 +1241,7 @@ Azure Active Directory (Azure AD) で、別の管理者または管理者以外�
 > | microsoft.directory/users/manager/update | ユーザーのマネージャーを更新する |
 > | microsoft.directory/users/photo/update | ユーザーの写真を更新する |
 > | microsoft.azure.supportTickets/allEntities/allTasks | Azure サポート チケットを作成および管理する |
+> | microsoft.cloudPC/allEntities/allProperties/allTasks | Windows 365 のすべての側面を管理する |
 > | microsoft.intune/allEntities/allTasks | Microsoft Intune のすべての側面を管理する |
 > | microsoft.office365.supportTickets/allEntities/allTasks | Microsoft 365 サービス要求を作成および管理する |
 > | microsoft.office365.webPortal/allEntities/standard/read | Microsoft 365 管理センターですべてのリソースの基本プロパティを読み取る |
@@ -1377,9 +1402,11 @@ Modern Commerce ユーザー ロールが割り当てられたユーザーは、
 > | microsoft.directory/applications/authentication/update | すべての種類のアプリケーションで認証を更新する |
 > | microsoft.directory/applications/basic/update | アプリケーションの基本プロパティを更新する |
 > | microsoft.directory/applications/credentials/update | アプリケーション資格情報を更新する |
+> | microsoft.directory/applications/notes/update | アプリケーションのメモを更新する |
 > | microsoft.directory/applications/owners/update | アプリケーションの所有者を更新する |
 > | microsoft.directory/applications/permissions/update | すべての種類のアプリケーションで、公開されたアクセス許可と必要なアクセス許可を更新する |
 > | microsoft.directory/applications/policies/update | アプリケーションのポリシーを更新する |
+> | microsoft.directory/applications/tag/update | アプリケーションのタグを更新する |
 > | microsoft.directory/contacts/create | 連絡先を作成する |
 > | microsoft.directory/contacts/delete | 連絡先を削除する |
 > | microsoft.directory/contacts/basic/update | 連絡先の基本プロパティを更新する |
@@ -1423,9 +1450,11 @@ Modern Commerce ユーザー ロールが割り当てられたユーザーは、
 > | microsoft.directory/applications/authentication/update | すべての種類のアプリケーションで認証を更新する |
 > | microsoft.directory/applications/basic/update | アプリケーションの基本プロパティを更新する |
 > | microsoft.directory/applications/credentials/update | アプリケーション資格情報を更新する |
+> | microsoft.directory/applications/notes/update | アプリケーションのメモを更新する |
 > | microsoft.directory/applications/owners/update | アプリケーションの所有者を更新する |
 > | microsoft.directory/applications/permissions/update | すべての種類のアプリケーションで、公開されたアクセス許可と必要なアクセス許可を更新する |
 > | microsoft.directory/applications/policies/update | アプリケーションのポリシーを更新する |
+> | microsoft.directory/applications/tag/update | アプリケーションのタグを更新する |
 > | microsoft.directory/contacts/create | 連絡先を作成する |
 > | microsoft.directory/contacts/delete | 連絡先を削除する |
 > | microsoft.directory/contacts/basic/update | 連絡先の基本プロパティを更新する |
@@ -1555,8 +1584,12 @@ Modern Commerce ユーザー ロールが割り当てられたユーザーは、
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
 > | --- | --- |
+> | microsoft.directory/users/authenticationMethods/create | ユーザーの認証方法を作成する |
+> | microsoft.directory/users/authenticationMethods/delete | ユーザーの認証方法を削除する |
+> | microsoft.directory/users/authenticationMethods/standard/read | ユーザーの認証方法の標準プロパティを読み取る |
+> | microsoft.directory/users/authenticationMethods/basic/update | ユーザーの認証方法の基本プロパティを更新する |
 > | microsoft.directory/users/invalidateAllRefreshTokens | ユーザー更新トークンを無効にして強制的にサインアウトする |
-> | microsoft.directory/users/strongAuthentication/update | ユーザーの強力な認証プロパティを更新する |
+> | microsoft.directory/users/password/update | すべてのユーザーのパスワードをリセットする |
 > | microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health を読み取り、構成する |
 > | microsoft.azure.supportTickets/allEntities/allTasks | Azure サポート チケットを作成および管理する |
 > | microsoft.office365.serviceHealth/allEntities/allTasks | Microsoft 365 管理センターで Service Health を読み取り、構成する |
@@ -1924,7 +1957,7 @@ Windows Defender ATP および EDR | アラートを表示して調査します�
 
 ## <a name="user-administrator"></a>ユーザー管理者
 
-このロールが割り当てられたユーザーは、ユーザーを作成し、いくつか制限はありますがユーザーのすべての側面を管理できる (表参照) ほか、パスワードの有効期限ポリシーを更新できます。 また、このロールのユーザーは、グループを作成し、すべてのグループを管理することができます。 このロールでは、ユーザー ビューを作成および管理、サポート チケットの管理、サービスの正常性の監視を行うこともできます。 ユーザー管理者には、ほとんどの管理者ロールのユーザーについて、一部のユーザー プロパティを管理するためのアクセス許可がありません。 このロールのユーザーには、MFA を管理するためのアクセス許可がありません。 この制限の例外に相当するロールを次の表にまとめています。
+このロールが割り当てられたユーザーは、ユーザーを作成し、いくつか制限はありますがユーザーのすべての側面を管理できる (表参照) ほか、パスワードの有効期限ポリシーを更新できます。 また、このロールのユーザーは、グループを作成し、すべてのグループを管理することができます。 このロールでは、ユーザー ビューを作成および管理、サポート チケットの管理、サービスの正常性の監視を行うこともできます。 ユーザー管理者には、ほとんどの管理者ロールのユーザーについて、一部のユーザー プロパティを管理するためのアクセス許可がありません。 このロールの管理者には、MFA を管理したり、共有メールボックスを管理したりするためのアクセス許可がありません。 この制限の例外に相当するロールを次の表にまとめています。
 
 | ユーザー管理者のアクセス許可 | Notes |
 | --- | --- |
@@ -2001,7 +2034,7 @@ Windows Defender ATP および EDR | アラートを表示して調査します�
 
 `<namespace>/<entity>/<propertySet>/<action>`
 
-次に例を示します。
+例:
 
 `microsoft.directory/applications/credentials/update`
 

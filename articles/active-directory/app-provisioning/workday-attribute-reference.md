@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/11/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: beb15748086db6d2fb813a4ff636650d38472e36
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: d559c7f8a3fa498fb02a3c119d20a21966fa8b8d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109784685"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128603241"
 ---
 # <a name="workday-attribute-reference-for-azure-active-directory"></a>Azure Active Directory の Workday 属性リファレンス
 
@@ -205,7 +205,7 @@ ms.locfileid: "109784685"
 | 76 | UserID                                | wd:Worker/wd:Worker\_Data/wd:User\_ID/text\(\)                                                                                                                                                                                                                                                                                                                                         |
 | 77 | WID                                   | wd:Worker/wd:Worker\_Reference/wd:ID\[@wd:type='WID'\]/text\(\)                                                                                                                                                                                                                                                                                                                        |
 | 78 | WorkerID                              | wd:Worker/wd:Worker\_Data/wd:Worker\_ID/text\(\)                                                                                                                                                                                                                                                                                                                                       |
-| 79 | WorkerType                            | wd:Worker/wd:Worker\_Data/wd:Employment\_Data/wd:Worker\_Job\_Data\[@wd:Primary_Job=1]/wd:Position\_Data/wd:Worker\_Type\_Reference/wd:ID\[@wd:type="Employee\_Type\_ID"\]/text\(\)                                                                                                                                                                                                 |
+| 79 | WorkerType                            | wd:Worker/wd:Worker\_Data/wd:Employment\_Data/wd:Worker\_Job\_Data\[@wd:Primary\_Job=1]/wd:Position\_Data/wd:Worker\_Type\_Reference\[wd:ID/@wd:type="Contingent\_Worker\_Type\_ID" または wd:ID/@wd:type="Employee\_Type\_ID"]/@wd:Descriptor                                                                                                                                                                                                 |
 | 80 | WorkSpaceReference                    | wd:Worker/wd:Worker\_Data/wd:Employment\_Data/wd:Worker\_Job\_Data\[@wd:Primary_Job=1]/wd:Position\_Data/wd:Work\_Space\_\_Reference/@wd:Descriptor                                                                                                                                                                                                                                  |
 
 ## <a name="custom-xpath-values"></a>カスタム XPATH 値

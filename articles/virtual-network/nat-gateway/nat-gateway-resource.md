@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2021
 ms.author: allensu
-ms.openlocfilehash: 366d7210c499c2f0ab523b687b07edcb8f1719bd
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 79abb40532ad4b7940ecf94552b5ee5c0727f2b6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114297126"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128636631"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>NAT ゲートウェイ リソースを使用した仮想ネットワークの設計
 
@@ -180,7 +180,7 @@ NAT ゲートウェイは、サブネットのアウトバウンド シナリオ
 #### <a name="zone-isolation-with-zonal-stacks"></a>ゾーン スタックを使用したゾーンの分離
 
 <p align="center">
-  <img src="media/nat-overview/az-directions.svg" alt="Figure depicts three zonal stacks, each of which contains a NAT gateway and a subnet." width="425" title="複数形成するゾーンの分離を使用した Virtual Network NAT "zonal stacks"">
+  <img src="media/nat-overview/az-directions.svg" alt="Figure depicts three zonal stacks, each of which contains a NAT gateway and a subnet." width="425" title="ゾーン スタックを複数形成するゾーンの分離を使用した Virtual Network NAT">
 </p>
 
 *図:"ゾーン スタック" を複数形成するゾーンの分離を使用した Virtual Network NAT*

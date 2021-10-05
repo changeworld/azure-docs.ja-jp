@@ -7,12 +7,12 @@ author: dominicbetts
 ms.author: dobett
 ms.date: 05/11/2021
 ms.topic: how-to
-ms.openlocfilehash: c9f9dec23209d8bc401313a7213239dff52a1023
-ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
+ms.openlocfilehash: 70567f3cb1a80c7d23d19bf7de43c80723af0dfe
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113586205"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129094002"
 ---
 # <a name="create-an-iot-central-application"></a>IoT Central アプリケーションを作成する
 
@@ -68,7 +68,7 @@ IoT Central アプリケーションを作成するには、いくつかの方�
 
 - 使用している Azure サブスクリプション。
 - 使用しているサブスクリプションを含むディレクトリ。
-- アプリケーションをホストする場所。 IoT Central では場所として Azure の地域を使用します: 米国、ヨーロッパ、アジア太平洋、オーストラリア、英国、または日本。
+- アプリケーションをホストする場所。 IoT Central は、オーストラリア東部、米国中部、米国東部、米国東部 2、東日本、北ヨーロッパ、東南アジア、英国南部、西ヨーロッパ、米国西部の場所として Azure リージョンを使用します。
 
 ## <a name="azure-iot-central-site"></a>Azure IoT Central サイト
 

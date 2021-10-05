@@ -4,14 +4,14 @@ description: Azure 全体のすべてのメトリック、アラート、診断�
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 04/07/2021
+ms.date: 09/14/2021
 ms.author: duau
-ms.openlocfilehash: abcec496f6bf3fdcd42dcffa66ecfb67533c7052
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: ebb661500fdf14d19218704906d24f391389bec8
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123449497"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128667212"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>ExpressRoute の監視、メトリック、およびアラート
 
@@ -27,6 +27,11 @@ ms.locfileid: "123449497"
 
 メトリックを選択すると、既定の集計が適用されます。 必要に応じて、さまざまなディメンションでメトリックを表示する分割を適用できます。
 
+> [!IMPORTANT]
+> Azure portal で ExpressRoute メトリックを表示する場合は、可能な最適な結果を得るために、**5 分以上** の時間の細分性を選択します。
+> 
+> :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/metric-granularity.png" alt-text="時間の細分性オプションのスクリーンショット。":::
+
 ### <a name="aggregation-types"></a>集計の種類:
 
 メトリックス エクスプローラーでは、[集計の種類](../azure-monitor/essentials/metrics-charts.md#aggregation)として SUM、MAX、MIN、AVG、COUNT がサポートされています。 各 ExpressRoute メトリックの分析情報を確認するときは、推奨される集計の種類を使用する必要があります。
@@ -37,33 +42,59 @@ ms.locfileid: "123449497"
 * Min:集計間隔でキャプチャされた値の最小値。 
 * Max:集計間隔でキャプチャされた値の最大値。 
 
-### <a name="available-metrics"></a>使用可能なメトリック
+### <a name="expressroute-circuit"></a>ExpressRoute 回線
 
-|**メトリック**|**カテゴリ**|**ディメンション**|**機能**|
-| --- | --- | --- | --- |
-|ARP の可用性|可用性|<ul><li>ピア (プライマリ/セカンダリの ExpressRoute ルーター)</li><li> ピアリングの種類 (プライベート/パブリック/Microsoft)</li></ul>|ExpressRoute|
-|BGP の可用性|可用性|<ul><li> ピア (プライマリ/セカンダリの ExpressRoute ルーター)</li><li> ピアリングの種類</li></ul>|ExpressRoute|
-|BitsInPerSecond (受信ビット数/秒)|トラフィック|<ul><li> ピアリングの種類 (ExpressRoute)</li><li>リンク (ExpressRoute Direct)</li></ul>|<ul><li>ExpressRoute</li><li>ExpressRoute Direct</li><li>ExpressRoute ゲートウェイの接続</li></ul>|
-|BitsOutPerSecond (送信ビット数/秒)|トラフィック| <ul><li>ピアリングの種類 (ExpressRoute)</li><li> リンク (ExpressRoute Direct)</li></ul> |<ul><li>ExpressRoute</li><li>ExpressRoute Direct</li><li>ExpressRoute ゲートウェイの接続</li></ul>|
-|CPU 使用率|パフォーマンス| <ul><li>インスタンス</li></ul>|ExpressRoute 仮想ネットワーク ゲートウェイ|
-|1 秒あたりのパケット数|パフォーマンス| <ul><li>インスタンス</li></ul>|ExpressRoute 仮想ネットワーク ゲートウェイ|
-|ピアにアドバタイズされたルートの数 |可用性| <ul><li>インスタンス</li></ul>|ExpressRoute 仮想ネットワーク ゲートウェイ|
-|ピアから学習したルートの数 |可用性| <ul><li>インスタンス</li></ul>|ExpressRoute 仮想ネットワーク ゲートウェイ|
-|ルート変更の頻度 |可用性| <ul><li>インスタンス</li></ul>|ExpressRoute 仮想ネットワーク ゲートウェイ|
-|仮想ネットワーク内の VM の数 |可用性| 該当なし |ExpressRoute 仮想ネットワーク ゲートウェイ|
-|GlobalReachBitsInPerSecond|トラフィック|<ul><li>ピアリングされた回線 Skey (サービス キー)</li></ul>|Global Reach|
-|GlobalReachBitsOutPerSecond|トラフィック|<ul><li>ピアリングされた回線 Skey (サービス キー)</li></ul>|Global Reach|
-|AdminState|物理的な接続性|Link|ExpressRoute Direct|
-|LineProtocol|物理的な接続性|Link|ExpressRoute Direct|
-|RxLightLevel|物理的な接続性|<ul><li>Link</li><li>レーン</li></ul>|ExpressRoute Direct|
-|TxLightLevel|物理的な接続性|<ul><li>Link</li><li>レーン</li></ul>|ExpressRoute Direct|
+| メトリック | カテゴリ | ユニット | 集計の種類 | 説明 | Dimensions |  診断設定を使用したエクスポートが可能か? | 
+| --- | --- | --- | --- | --- | --- | --- | 
+| [ARP の可用性](#arp) | 可用性 | Percent | Average | MSEE からすべてのピアへの ARP の可用性。 | PeeringType、Peer |  はい | 
+| [BGP の可用性](#bgp) | 可用性 | Percent | Average | MSEE からすべてのピアへの BGP の可用性。 | PeeringType、Peer |  はい | 
+| [BitsInPerSecond (受信ビット数/秒)](#circuitbandwidth) | トラフィック | BitsPerSecond | Average | 1 秒あたりの Azure へのイングレス ビット数 | PeeringType | いいえ | 
+| [BitsOutPerSecond (送信ビット数/秒)](#circuitbandwidth) | トラフィック | BitsPerSecond | Average | 1 秒あたりの Azure からのエグレス ビット数 | PeeringType | いいえ | 
+| DroppedInBitsPerSecond | トラフィック | BitsPerSecond | Average | 1 秒あたりに破棄されたデータのイングレス ビット数 | ピアリングの種類 | はい | 
+| DroppedOutBitsPerSecond | トラフィック | BitPerSecond | Average | 1 秒あたりに破棄されたデータのエグレス ビット数 | ピアリングの種類 | はい | 
+| GlobalReachBitsInPerSecond | トラフィック | BitsPerSecond | Average | 1 秒あたりの Azure へのイングレス ビット数 | PeeredCircuitSKey | いいえ | 
+| GlobalReachBitsOutPerSecond | トラフィック | BitsPerSecond | Average | 1 秒あたりの Azure からのエグレス ビット数 | PeeredCircuitSKey | いいえ | 
+
 >[!NOTE]
 >*GlobalGlobalReachBitsInPerSecond* と *GlobalGlobalReachBitsOutPerSecond* の使用は、少なくとも 1 つの Global Reach 接続が確立されている場合にのみ表示されます。
 >
 
+### <a name="expressroute-gateways"></a>ExpressRoute ゲートウェイ
+
+| メトリック | カテゴリ | ユニット | 集計の種類 | 説明 | Dimensions | 診断設定を使用したエクスポートが可能か? | 
+| --- | --- | --- | --- | --- | --- | --- | 
+| [CPU 使用率](#cpu) | パフォーマンス | Count | Average | ExpressRoute ゲートウェイの CPU 使用率 | roleInstance | はい | 
+| [1 秒あたりのパケット数](#packets) | パフォーマンス | CountPerSecond | Average | ExpressRoute ゲートウェイのパケット数 | roleInstance | いいえ | 
+| [ピアにアドバタイズされたルートの数](#advertisedroutes) | 可用性 | Count | 最大値 | ExpressRouteGateway によってピアにアドバタイズされたルートの数 | roleInstance | はい | 
+| [ピアから学習したルートの数](#learnedroutes)| 可用性 | Count | 最大値 | ExpressRouteGateway によってピアから学習したルートの数 | roleInstance | はい | 
+| [ルートが変更された頻度](#frequency) | 可用性 | Count | 合計 | ExpressRoute ゲートウェイでのルート変更の頻度 | roleInstance | いいえ | 
+| [仮想ネットワーク内の VM の数](#vm) | 可用性 | Count | 最大値 | 仮想ネットワーク内の VM の数 | ディメンションなし | いいえ | 
+
+### <a name="expressroute-gateway-connections"></a>Azure ExpressRoute ゲートウェイの接続
+
+| メトリック | カテゴリ | ユニット | 集計の種類 | 説明 | Dimensions | 診断設定を使用したエクスポートが可能か? | 
+| --- | --- | --- | --- | --- | --- | --- | 
+| [BitsInPerSecond (受信ビット数/秒)](#connectionbandwidth) | トラフィック | BitsPerSecond | Average | 1 秒あたりの Azure へのイングレス ビット数 | ConnectionName | いいえ | 
+| [BitsOutPerSecond (送信ビット数/秒)](#connectionbandwidth) | トラフィック | BitsPerSecond | Average | 1 秒あたりの Azure からのエグレス ビット数 | ConnectionName | いいえ | 
+| DroppedInBitsPerSecond | トラフィック | BitsPerSecond | Average | 1 秒あたりに破棄されたデータのイングレス ビット数 | ConnectionName | はい | 
+| DroppedOutBitsPerSecond | トラフィック | BitPerSecond | Average | 1 秒あたりに破棄されたデータのエグレス ビット数 | ConnectionName | はい | 
+
+### <a name="expressroute-direct"></a>ExpressRoute Direct
+
+| メトリック | カテゴリ | ユニット | 集計の種類 | 説明 | Dimensions | 診断設定を使用したエクスポートが可能か? | 
+| --- | --- | --- | --- | --- | --- | --- | 
+| [BitsInPerSecond (受信ビット数/秒)](#directin) | トラフィック | BitsPerSecond | Average | 1 秒あたりの Azure へのイングレス ビット数 | Link | はい | 
+| [BitsOutPerSecond (送信ビット数/秒)](#directout) | トラフィック | BitsPerSecond | Average | 1 秒あたりの Azure からのエグレス ビット数 | Link | はい | 
+| DroppedInBitsPerSecond | トラフィック | BitsPerSecond | Average | 1 秒あたりに破棄されたデータのイングレス ビット数 | Link | はい | 
+| DroppedOutBitsPerSecond | トラフィック | BitPerSecond | Average | 1 秒あたりに破棄されたデータのエグレス ビット数 | Link  | はい | 
+| [AdminState](#admin) | 物理的な接続性 | Count | Average | ポートの管理者の状態 | Link | はい | 
+| [LineProtocol](#line) | 物理的な接続性 | Count | Average | ポートの回線プロトコルの状態 | Link | はい | 
+| [RxLightLevel](#rxlight) | 物理的な接続性 | Count | Average | DBM の Rx ライト レベル | Link、Lane | はい | 
+| [TxLightLevel](#txlight) | 物理的な接続性 | Count | Average | DBM の Tx ライト レベル | Link、Lane | はい |
+
 ## <a name="circuits-metrics"></a>回線のメトリック
 
-### <a name="bits-in-and-out---metrics-across-all-peerings"></a>ビットのインとアウト - すべてのピアリング全体でのメトリック
+### <a name="bits-in-and-out---metrics-across-all-peerings"></a><a name = "circuitbandwidth"></a>ビットのインとアウト - すべてのピアリング全体でのメトリック
 
 集計の種類: *Avg*
 
@@ -79,7 +110,7 @@ ms.locfileid: "123449497"
 
 :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/erpeeringmetrics.jpg" alt-text="ピアリングごとのメトリック":::
 
-### <a name="bgp-availability---split-by-peer"></a>BGP の可用性 - ピアによる分割  
+### <a name="bgp-availability---split-by-peer"></a><a name = "bgp"></a>BGP の可用性 - ピアによる分割  
 
 集計の種類: *Avg*
 
@@ -87,7 +118,7 @@ ms.locfileid: "123449497"
 
 :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/erBgpAvailabilityMetrics.jpg" alt-text="ピアごとの BGP の可用性":::
 
-### <a name="arp-availability---split-by-peering"></a>ARP の可用性 - ピアリングによる分割  
+### <a name="arp-availability---split-by-peering"></a><a name = "arp"></a>ARP の可用性 - ピアリングによる分割  
 
 集計の種類: *Avg*
 
@@ -97,7 +128,7 @@ ms.locfileid: "123449497"
 
 ## <a name="expressroute-direct-metrics"></a>ExpressRoute Direct メトリック
 
-### <a name="admin-state---split-by-link"></a>管理状態 - リンクによる分割
+### <a name="admin-state---split-by-link"></a><a name = "admin"></a>管理状態 - リンクによる分割
 
 集計の種類: *Avg*
 
@@ -105,7 +136,7 @@ ExpressRoute Direct ポート ペアのリンクごとに管理状態を表示�
 
 :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/adminstate-per-link.jpg" alt-text="ER Direct 管理状態":::
 
-### <a name="bits-in-per-second---split-by-link"></a>1 秒あたりのビット イン - リンクで分割
+### <a name="bits-in-per-second---split-by-link"></a><a name = "directin"></a>1 秒あたりのビット イン - リンクで分割
 
 集計の種類: *Avg*
 
@@ -113,7 +144,7 @@ ExpressRoute Direct ポート ペアの両方のリンクを対象に、1 秒あ
 
 :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/bits-in-per-second-per-link.jpg" alt-text="ER Direct の 1 秒あたりのビット イン":::
 
-### <a name="bits-out-per-second---split-by-link"></a>1 秒あたりのビット アウト - リンクで分割
+### <a name="bits-out-per-second---split-by-link"></a><a name = "directout"></a>1 秒あたりのビット アウト - リンクで分割
 
 集計の種類: *Avg*
 
@@ -121,7 +152,7 @@ ExpressRoute Direct ポート ペアの両方のリンクを対象に、1 秒あ
 
 :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/bits-out-per-second-per-link.jpg" alt-text="ER Direct の 1 秒あたりのビット アウト":::
 
-### <a name="line-protocol---split-by-link"></a>回線プロトコル - リンクによる分割
+### <a name="line-protocol---split-by-link"></a><a name = "line"></a>回線プロトコル - リンクによる分割
 
 集計の種類: *Avg*
 
@@ -129,7 +160,7 @@ ExpressRoute Direct ポート ペアのリンクごとに回線プロトコル�
 
 :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/line-protocol-per-link.jpg" alt-text="ER Direct 回線プロトコル":::
 
-### <a name="rx-light-level---split-by-link"></a>Rx ライト レベル - リンクによる分割
+### <a name="rx-light-level---split-by-link"></a><a name = "rxlight"></a>Rx ライト レベル - リンクによる分割
 
 集計の種類: *Avg*
 
@@ -137,7 +168,7 @@ ExpressRoute Direct ポート ペアのリンクごとに回線プロトコル�
 
 :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/rxlight-level-per-link.jpg" alt-text="ER Direct 回線 Rx ライト レベル":::
 
-### <a name="tx-light-level---split-by-link"></a>Tx ライト レベル - リンクによる分割
+### <a name="tx-light-level---split-by-link"></a><a name = "txlight"></a>Tx ライト レベル - リンクによる分割
 
 集計の種類: *Avg*
 
@@ -160,7 +191,7 @@ ExpressRoute ゲートウェイをデプロイすると、Azure でゲートウ�
 
 これらのメトリックごとにアラートを設定することを強くお勧めします。これにより、ゲートウェイでパフォーマンスの問題が発生した場合に把握できます。
 
-### <a name="cpu-utilization---split-instance"></a>CPU 使用率 - インスタンスの分割
+### <a name="cpu-utilization---split-instance"></a><a name = "cpu"></a>CPU 使用率 - インスタンスの分割
 
 集計の種類: *Avg*
 
@@ -168,7 +199,7 @@ ExpressRoute ゲートウェイをデプロイすると、Azure でゲートウ�
 
 :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/cpu-split.jpg" alt-text="CPU 使用率 - 分割メトリックのスクリーンショット。":::
 
-### <a name="packets-per-second---split-by-instance"></a>1 秒あたりのパケット数 - インスタンスで分割
+### <a name="packets-per-second---split-by-instance"></a><a name = "packets"></a>1 秒あたりのパケット数 - インスタンスで分割
 
 集計の種類: *Avg*
 
@@ -176,7 +207,7 @@ ExpressRoute ゲートウェイをデプロイすると、Azure でゲートウ�
 
 :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/pps-split.jpg" alt-text="1 秒あたりのパケット数 - 分割メトリックのスクリーンショット。":::
 
-### <a name="count-of-routes-advertised-to-peer---split-by-instance"></a>ピアにアドバタイズされたルートの数 - インスタンスで分割
+### <a name="count-of-routes-advertised-to-peer---split-by-instance"></a><a name = "advertisedroutes"></a>ピアにアドバタイズされたルートの数 - インスタンスで分割
 
 集計の種類: *Count*
 
@@ -184,7 +215,7 @@ ExpressRoute ゲートウェイをデプロイすると、Azure でゲートウ�
 
 :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/count-of-routes-advertised-to-peer.png" alt-text="ピアにアドバタイズされたルートの数のスクリーンショット。":::
 
-### <a name="count-of-routes-learned-from-peer---split-by-instance"></a>ピアから学習したルートの数 - インスタンスで分割
+### <a name="count-of-routes-learned-from-peer---split-by-instance"></a><a name = "learnedroutes"></a>ピアから学習したルートの数 - インスタンスで分割
 
 集計の種類: *Max*
 
@@ -192,7 +223,7 @@ ExpressRoute ゲートウェイをデプロイすると、Azure でゲートウ�
 
 :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/count-of-routes-learned-from-peer.png" alt-text="ピアから学習したルートの数のスクリーンショット。":::
 
-### <a name="frequency-of-routes-change---split-by-instance"></a>ルート変更の頻度 - インスタンスで分割
+### <a name="frequency-of-routes-change---split-by-instance"></a><a name = "frequency"></a>ルート変更の頻度 - インスタンスで分割
 
 集計の種類: *Sum*
 
@@ -200,7 +231,7 @@ ExpressRoute ゲートウェイをデプロイすると、Azure でゲートウ�
 
 :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/frequency-of-routes-changed.png" alt-text="ルートが変更された頻度のメトリックのスクリーンショット。":::
 
-### <a name="number-of-vms-in-the-virtual-network"></a>仮想ネットワーク内の VM の数
+### <a name="number-of-vms-in-the-virtual-network"></a><a name = "vm"></a>仮想ネットワーク内の VM の数
 
 集計の種類: *Max*
 
@@ -208,7 +239,7 @@ ExpressRoute ゲートウェイをデプロイすると、Azure でゲートウ�
 
 :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/number-of-virtual-machines-virtual-network.png" alt-text="仮想ネットワーク内の仮想マシンの数を示すメトリックのスクリーンショット。":::
 
-## <a name="expressroute-gateway-connections-in-bitsseconds"></a>ExpressRoute ゲートウェイの接続 (ビット/秒)
+## <a name="expressroute-gateway-connections-in-bitsseconds"></a><a name = "connectionbandwidth"></a>ExpressRoute ゲートウェイの接続 (ビット/秒)
 
 集計の種類: *Avg*
 
@@ -245,14 +276,14 @@ ExpressRoute ゲートウェイをデプロイすると、Azure でゲートウ�
 
 ExpressRoute メトリックは、ExpressRoute 回線に移動し、 *[ログ]* タブを選択する方法でも表示できます。クエリを実行するメトリックについては、出力に以下の列が含まれます。
 
-|**列**|**Type**|**説明**|
-| --- | --- | --- |
-|TimeGrain|string|PT1M (メトリック値が 1 分ごとにプッシュされます)|
-|Count|real|通常は 2 に等しい (各 MSEE により、1 分ごとにメトリック値が 1 つプッシュされます)|
-|最小値|real|2 つの MSEE によってプッシュされる 2 つのメトリック値の最小値|
-|最大値|real|2 つの MSEE によってプッシュされる 2 つのメトリック値の最大値|
-|Average|real|(最小値 + 最大値)/2 に等しい|
-|合計|real|両方の MSEE からの 2 つのメトリック値の合計 (クエリが実行されたメトリックの場合、メインの値に焦点が当たる)|
+| **列** | **Type** | **説明** | 
+|  ---  |  ---  |  ---  | 
+| TimeGrain | string | PT1M (メトリック値が 1 分ごとにプッシュされます) | 
+| Count | real | 通常は 2 に等しい (各 MSEE により、1 分ごとにメトリック値が 1 つプッシュされます) | 
+| 最小値 | real | 2 つの MSEE によってプッシュされる 2 つのメトリック値の最小値 | 
+| 最大値 | real | 2 つの MSEE によってプッシュされる 2 つのメトリック値の最大値 | 
+| Average | real | (最小値 + 最大値)/2 に等しい | 
+| 合計 | real | 両方の MSEE からの 2 つのメトリック値の合計 (クエリが実行されたメトリックの場合、メインの値に焦点が当たる) | 
   
 ## <a name="next-steps"></a>次のステップ
 

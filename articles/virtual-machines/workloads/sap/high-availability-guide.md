@@ -1,13 +1,9 @@
 ---
 title: Azure VM での SAP NetWeaver の高可用性
 description: Azure Virtual Machines (VM) 上の SAP NetWeaver の高可用性ガイド
-services: virtual-machines-windows,virtual-network,storage
-documentationcenter: saponazure
 author: rdeltcheva
 manager: juergent
-editor: ''
 tags: azure-resource-manager
-keywords: ''
 ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
@@ -15,12 +11,12 @@ ms.workload: infrastructure
 ms.date: 01/24/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: aab3807a9a69052de3e6b66b44e6ebacc616fce6
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: ef0f3cf29927e0d15702a9429fcabc54d10a8506
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112297631"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128648660"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Azure VM での SAP NetWeaver の高可用性
 
@@ -1609,7 +1605,7 @@ SAP アプリケーション サーバー インスタンスのホストとし�
 
 **SAP PR1** クラスター グループが、クラスター ノード A (たとえば **pr1-ascs-0**) で動作しています。 **SAP PR1** クラスター グループに含まれ、ASCS/SCS インスタンスが使用する共有ディスク ドライブ S を、クラスター ノード A に割り当てます。
 
-![図 61:フェールオーバー クラスター マネージャー:SAP <SID> クラスター グループがクラスター ノード A で動作している][sap-ha-guide-figure-5000]
+![図 61: フェールオーバー クラスター マネージャー: SAP \<SID\> クラスター グループがクラスター ノード A で動作している][sap-ha-guide-figure-5000]
 
 _**図 61:** フェールオーバー クラスター マネージャー:SAP <*SID*> クラスター グループがクラスター ノード A で動作している_
 
@@ -1638,7 +1634,7 @@ _**図 62:** SIOS DataKeeper で、クラスター ノード A からクラス�
 
    フェールオーバーの後、SAP <*SID*> クラスター グループは、クラスター ノード B (たとえば **pr1-ascs-1**) で動作しています。
 
-   ![図 63:フェールオーバー クラスター マネージャーで SAP <SID> クラスター グループがクラスター ノード B で動作している][sap-ha-guide-figure-5002]
+   ![図 63: フェールオーバー クラスター マネージャー: SAP \<SID\> クラスター グループがクラスター ノード B で動作している][sap-ha-guide-figure-5002]
 
    _**図 63**:フェールオーバー クラスター マネージャーで SAP <*SID*> クラスター グループがクラスター ノード B で動作している_
 

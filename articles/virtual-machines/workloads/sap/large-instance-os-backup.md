@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 06/22/2021
 ms.author: madhukan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5685f7932b49f8af57faf159a51a8cb634128337
-ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+ms.openlocfilehash: e7d2621aab6d49c8bd6f4b6083c35d5e7299bf50
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113217487"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128630511"
 ---
 # <a name="os-backup-and-restore"></a>OS のバックアップと復元
 
@@ -117,12 +117,12 @@ BACKUP_PROG_EXCLUDE=("${BACKUP_PROG_EXCLUDE[@]}" '/media' '/var/tmp/*' '/var/cra
 
 ### <a name="take-a-manual-backup"></a>手動バックアップの取得
 
-「[Azure アプリケーション整合性スナップショット ツールとは](../../../azure-netapp-files/azacsnap-introduction.md)」で始まる一連の記事で説明されている最新の Microsoft Snapshot Tools for SAP HANA を入手し、次の記事を参照して構成とテストを行います。
+「[Azure アプリケーション整合性スナップショット ツールとは](../../../azure-netapp-files/azacsnap-introduction.md)」で始まる一連の記事で説明されている最新の Microsoft Snapshot Tools for SAP HANA を入手してください。 それらを次の記事の説明に従って、構成してテストします。
 
 - [Azure アプリケーション整合性スナップショット ツールを構成する](../../../azure-netapp-files/azacsnap-cmd-ref-configure.md)
 - [Azure アプリケーション整合性スナップショット ツールをテストする](../../../azure-netapp-files/azacsnap-cmd-ref-test.md) 
 
-「`crontab`Azure アプリケーション整合性スナップショット ツールを使用してバックアップする[」の説明に従って ](../../../azure-netapp-files/azacsnap-cmd-ref-backup.md) を介して定期的に実行します。 
+このレビューでは、「[Azure アプリケーション整合性スナップショット ツールを使用してバックアップする](../../../azure-netapp-files/azacsnap-cmd-ref-backup.md)」の説明に従って `crontab` を介してバックアップを定期的に実行するために準備します。 
 
 詳細については、次のリファレンスを参照してください。
 

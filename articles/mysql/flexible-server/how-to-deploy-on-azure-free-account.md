@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 08/16/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 8d0de4a365d7eab09330371baa40b3f427348d29
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 2472a3495b872a17b073a86a6d99c6ddbf218343
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123540426"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124755347"
 ---
 # <a name="use-an-azure-free-account-to-try-azure-database-for-mysql---flexible-server-for-free"></a>Azure 無料アカウントを使用して Azure Database for MySQL - フレキシブル サーバーを無料で試す
 
@@ -34,7 +34,10 @@ Azure Database for MySQL - フレキシブル サーバー (プレビュー) は
 - Azure の無料アカウント。 まだ持っていない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。 
 
 
-## <a name="create-an-instance-of-azure-database-for-mysql---flexible-server"></a>Azure Database for MySQL フレキシブル サーバーのインスタンスを作成する
+## <a name="create-an-azure-database-for-mysql---flexible-server"></a>Azure Database for MySQL - フレキシブル サーバーを作成する
+
+この記事では、Azure portal を使用してフレキシブル サーバーとパブリック アクセスとの接続方法を作成します。 または、それぞれのクイックスタートを参照して、[Azure CLI](./quickstart-create-server-cli.md) または [ARM テンプレート](./quickstart-create-arm-template.md)を使用するか、[VNET 内](./quickstart-create-connect-server-vnet.md)でフレキシブル サーバーを作成します。
+
 
 1. Azure 無料アカウントで [Azure portal](https://portal.azure.com/) にサインインします。 
     
