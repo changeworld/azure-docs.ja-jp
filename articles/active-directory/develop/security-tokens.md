@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/11/2020
+ms.date: 09/27/2021
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 6d9f5538d377be1414089e591559344bde4f381a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2567a75c0accd7e2bb932d8578e1a225518f5ce3
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98795641"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129092758"
 ---
 # <a name="security-tokens"></a>セキュリティ トークン
 
@@ -26,7 +26,7 @@ ms.locfileid: "98795641"
 
 **アクセス トークン**:アクセス トークンは、[OAuth 2.0](active-directory-v2-protocols.md) フローの一部として [承認サーバー](developer-glossary.md#authorization-server)によって発行されるセキュリティ トークンです。 これには、そのトークンの対象となるユーザーとリソースに関する情報が含まれています。 この情報を使用すると、Web API やその他の保護されたリソースにアクセスできます。 アクセス トークンは、クライアント アプリにアクセス権を付与するためにリソースによって検証されます。 Microsoft ID プラットフォームがアクセス トークンを発行する方法の詳細については、[アクセス トークン](access-tokens.md)に関するページを参照してください。
 
-**リフレッシュトークン**: アクセス トークンは短時間しか有効でないため、承認サーバーでは、アクセス トークンが発行されると同時にリフレッシュトークンを発行する場合があります。 クライアント アプリケーションでは、必要に応じて、このリフレッシュトークンを新しいアクセス トークンに交換できます。 Microsoft ID プラットフォームがリフレッシュトークンを使用してアクセス許可を取り消す方法の詳細については、「[トークンの失効](access-tokens.md#token-revocation)」を参照してください。
+**リフレッシュトークン**: アクセス トークンは短時間しか有効でないため、承認サーバーでは、アクセス トークンが発行されると同時にリフレッシュトークンを発行する場合があります。 クライアント アプリケーションでは、必要に応じて、このリフレッシュトークンを新しいアクセス トークンに交換できます。 Microsoft ID プラットフォームが更新トークンを使用してアクセス許可を取り消す方法の詳細については、「[トークンの失効](refresh-tokens.md)」を参照してください。
 
 **ID トークン**: ID トークンは、[OpenID Connect](v2-protocols-oidc.md) フローの一部としてクライアント アプリケーションに送信されます。 これらは、アクセス トークンの代わりに、またはアクセス トークンと共に送信できます。 ID トークンは、ユーザーを認証するためにクライアントによって使用されます。 Microsoft ID プラットフォームが ID トークンを発行する方法の詳細については、[ID トークン](id-tokens.md)に関するページを参照してください。
 

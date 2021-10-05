@@ -4,15 +4,15 @@ description: 複数の Linux VM 間で Azure マネージド ディスクを共�
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/16/2021
+ms.date: 09/03/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 0c72a263ff9d20f0cb70a0721625446b6a2e0ff9
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 56ba97d5a13744ee034024f510eac70d4f343877
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122689353"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129052806"
 ---
 # <a name="share-an-azure-managed-disk"></a>Azure マネージド ディスクの共有
 
@@ -58,7 +58,7 @@ WSFC で実行される一般的なアプリケーションには、次のよう
 ### <a name="linux"></a>Linux
 
 Azure 共有ディスクは、以下でサポートされています。
-- [SUSE SLE for SAP および SUSE SLE HA 15 SP1 以上](https://www.suse.com/c/azure-shared-disks-excercise-w-sles-for-sap-or-sle-ha/)
+- [SUSE SLE HA 15 SP1 以降](https://www.suse.com/c/azure-shared-disks-excercise-w-sles-for-sap-or-sle-ha/)
 - [Ubuntu 18.04 以降](https://discourse.ubuntu.com/t/ubuntu-high-availability-corosync-pacemaker-shared-disk-environments/14874)
 - [RHEL 8 バージョンの RHEL 開発者向けプレビュー](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html-single/deploying_red_hat_enterprise_linux_8_on_public_cloud_platforms/index?lb_target=production#azure-configuring-shared-block-storage_configuring-rhel-high-availability-on-azure)
 - [Oracle Enterprise Linux](https://docs.oracle.com/en/operating-systems/oracle-linux/8/availability/hacluster-1.html)
@@ -152,6 +152,44 @@ Ultra ディスクには、変更可能な属性を公開して変更を許可�
 #### <a name="ultra-pricing"></a>Ultra の価格
 
 Ultra 共有ディスクは、プロビジョニング済みの容量、プロビジョニング済みの IOPS の合計 (diskIOPSReadWrite + diskIOPSReadOnly) とプロビジョニング済みのスループット MBps の合計 (diskMBpsReadWrite + diskMBpsReadOnly) に基づいて課金されます。 追加の VM マウントごとに追加料金は発生しません。 たとえば、次の構成の Ultra 共有ディスク (diskSizeGB:1024、DiskIOPSReadWrite:10000、DiskMBpsReadWrite:600、DiskIOPSReadOnly:100、DiskMBpsReadOnly:1) は、2 台の VM にマウントされているか、5台の VM にマウントされているかに関係なく、1024 GiB、10100 IOPS、および 601 MBps で課金されます。
+
+## <a name="frequently-asked-questions"></a>よく寄せられる質問
+
+**Q: アンマネージド ディスクまたはページ BLOB では、共有ディスク機能はサポートされていますか?**
+
+**A:** いいえ。 この機能がサポートされているのは Ultra Disks と Premium SSD マネージド ディスクのみです。
+
+**Q: 共有ディスクはどのリージョンでサポートされていますか?**
+
+**A:** リージョンごとの情報については、[概念に関する記事](/azure/virtual-machines/disks-shared)を参照してください。
+
+**Q: 共有ディスクを OS ディスクとして使用できますか?**
+
+**A:** いいえ。 共有ディスクはデータ ディスクでのみサポートされています。
+
+**Q: どのディスク サイズで共有ディスクがサポートされますか?**
+
+**A:** サポートされているサイズについては、[概念に関する記事](/azure/virtual-machines/disks-shared)を参照してください。
+
+**Q: 既存のディスクがある場合、そこで共有ディスクを有効にできますか?**
+
+**A:** API バージョン 2019-07-01 以降で作成されたあらゆるマネージド ディスクで共有ディスクを有効にできます。 このためには、接続されているすべての VM からディスクをマウント解除する必要があります。 次に、ディスクの maxShares プロパティを編集します。
+
+**Q: ディスクを共有モードで使用する必要がなくなったら、どのようにして無効にできますか?**
+
+**A:** 接続されているすべての VM からディスクをマウント解除します。 次に、ディスクの maxShare プロパティを **1** に変更します。
+
+**Q: 共有ディスクをサイズ変更できますか?**
+
+**A:** はい。
+
+**Q: 共有ディスクが有効になっているディスクで書き込みアクセラレータも有効にできますか?**
+
+**A:** いいえ。 共有ディスクが有効になっているディスクで書き込みアクセラレータも有効にすることはできません。
+
+**Q: 共有ディスクが有効になっているディスクでホスト キャッシュを有効にできますか?**
+
+**A:** 唯一サポートされるホスト キャッシュのオプションは **None** です。
 
 ## <a name="next-steps"></a>次のステップ
 

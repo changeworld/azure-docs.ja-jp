@@ -7,13 +7,13 @@ ms.topic: how-to
 author: sharath-satish-msft
 ms.author: shsatish
 ms.reviewer: stmummer
-ms.date: 09/03/2021
-ms.openlocfilehash: 39212b2e9ef5456ecc4f1343cc51fd83064a8840
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.date: 09/27/2021
+ms.openlocfilehash: c01e7d909e3227fe672047bca897bfa9d9978f85
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123535655"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129082150"
 ---
 # <a name="configure-co-sell-for-a-commercial-marketplace-offer"></a>コマーシャル マーケットプレース オファーの共同販売を構成する
 
@@ -35,6 +35,30 @@ ms.locfileid: "123535655"
 
 ## <a name="go-to-the-co-sell-with-microsoft-tab"></a>[Microsoft と共同販売する] タブにアクセスする
 
+[!INCLUDE [Workspaces view note](./includes/preview-interface.md)]
+
+#### <a name="workspaces-view"></a>[ワークスペース ビュー](#tab/workspaces-view)
+
+1. [パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインします。
+
+1. ホーム ページで、 **[Marketplace offers]\(Marketplace のオファー\)** タイルを選択します。
+
+     [ ![パートナー センター ホーム ページを示しています。](./media/workspaces/partner-center-home.png) ](./media/workspaces/partner-center-home.png#lightbox)
+
+    > [!TIP]
+    > [[Marketplace offers]\(Marketplace のオファー\)](create-account.md) タイルが表示されていない場合は、**パートナー センターでコマーシャル マーケットプレース アカウントを作成** し、アカウントがコマーシャル マーケットプレース プログラムに登録されていることを確認してください。
+
+1. [Marketplace offers]\(Marketplace のオファー\) ページで、共同販売するオファーを選択します。
+
+    > [!NOTE]
+    > まだ公開されていない新しいオファー、または既に公開されているオファーの共同販売プログラムを構成できます。
+
+1. 左側のメニューで、 **[Microsoft と共同販売する]** を選択します。
+
+    [ ![[Microsoft と共同販売する] ページを示しています。](./media/co-sell/co-sell-with-microsoft-tab-workspaces.png) ](./media/co-sell/co-sell-with-microsoft-tab-workspaces.png#lightbox)
+
+#### <a name="current-view"></a>[現在のビュー](#tab/current-view)
+
 1. [パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインします。
 1. 左側のナビゲーション メニューで、 **[商業マーケットプレース]**  >  **[概要]** の順に選択します。
     > [!TIP]
@@ -46,6 +70,8 @@ ms.locfileid: "123535655"
 1. 左側のメニューで、 **[Microsoft と共同販売する]** を選択します。
 
     [![左側のナビゲーションの [Microsoft と共同販売する] リンクを示しています。](./media/co-sell/co-sell-with-microsoft-tab.png)](./media/co-sell/co-sell-with-microsoft-tab.png#lightbox)
+
+---
 
 ## <a name="co-sell-listings"></a>共同販売一覧
 

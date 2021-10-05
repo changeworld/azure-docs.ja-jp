@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: article
-ms.date: 08/02/2021
+ms.date: 09/28/2021
 ms.author: alkohli
-ms.openlocfilehash: a176b971d830fcabf3eba1767b9ac198a4418f0b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ab759cf81ce95ca7cf61a3777092fd92040baf6c
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121751978"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129208478"
 ---
 # <a name="azure-data-box-disk-limits"></a>Azure Data Box Disk の制限
 
@@ -47,7 +47,8 @@ Azure Storage サービスの制限と共有、コンテナー、およびファ
 - ディスクに直接データをコピーしないでください。 事前に作成した *BlockBlob* フォルダー、*PageBlob* フォルダー、および *AzureFile* フォルダーにデータをコピーします。
 - *BlockBlob* および *PageBlob* の下位のフォルダーはコンテナーです。 たとえば、*BlockBlob/container* および *PageBlob/container* としてコンテナーが作成されます。
 - フォルダーに既存のコンテナーと同じ名前が付いている場合、フォルダーの内容はコンテナーの内容とマージされます。 クラウドにまだ存在していないファイルまたは BLOB はコンテナーに追加されます。 ファイルまたは BLOB に、コンテナーに既に存在するファイルまたは BLOB と同じ名前が付いている場合、既存のファイルまたは BLOB は上書きされます。
-- *BlockBlob* 共有と *PageBlob* 共有に書き込まれる各ファイルは、それぞれブロック BLOB およびページ BLOB としてアップロードされます。
+- *BlockBlob* 共有と *PageBlob* 共有に書き込まれる各ファイルは、それぞれブロック BLOB およびページ BLOB としてアップロードされます。 
+- BLOB と Azure Files の両方で、ファイルの階層はクラウドにアップロードするときに保持されます。 たとえば、`<container folder>\A\B\C.txt` というパスでファイルをコピーしたとします。 このファイルは、クラウド内の同じパスにアップロードされます。
 - *BlockBlob* フォルダーと *PageBlob* フォルダーの下に作成される空のディレクトリ階層 (ファイルを含まない) はアップロードされません。
 - データのアップロード中のパフォーマンスを向上するために、[ストレージ アカウントで大きいファイルの共有を有効にし、共有容量を 100 TiB に増やす](../../articles/storage/files/storage-how-to-create-file-share.md#enable-large-files-shares-on-an-existing-account)ことをお勧めします。 大きいファイルの共有は、ローカル冗長ストレージ (LRS) を持つストレージ アカウントでのみサポートされます。
 - Azure へのデータのアップロード時にエラーが発生した場合は、ターゲット ストレージ アカウントにエラー ログが作成されます。 このエラー ログへのパスは、アップロードが完了するとポータルに表示されます。ログを確認して、是正措置を行うことができます。 アップロードしたデータを確認せずにソースからデータを削除しないでください。

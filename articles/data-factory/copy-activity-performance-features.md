@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 08/24/2021
-ms.openlocfilehash: 9be8ef1772da6259441a8de4c85fa44d54945c7d
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.date: 09/09/2021
+ms.openlocfilehash: c9cedace5f4755e22c4f08ecdde0d3f6fb8fa52f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122821817"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128663214"
 ---
 # <a name="copy-activity-performance-optimization-features"></a>コピー アクティビティ パフォーマンス最適化機能
 
@@ -32,8 +32,8 @@ ms.locfileid: "122821817"
 |:--- |:--- |---- |
 | ファイル ストア間 |- **単一ファイルとの間でコピーする**:2-4 <br>- **複数のファイルとの間でコピーする**:ファイルの数とサイズに応じて 2 〜 256。 <br><br>たとえば、4 つの大きなファイルを含むフォルダーからデータをコピーし、階層を保持することを選択した場合、最大の有効な DIU は 16 です。ファイルのマージを選択すると、最大の有効な DIU は 4 になります。 |ファイルの数とサイズに応じて 4 〜 32。 |
 | ファイル ストアから非ファイル ストアへ |- **単一ファイルからコピーする**:2-4 <br/>- **複数のファイルからコピーする**:ファイルの数とサイズに応じて 2 〜 256。 <br/><br/>例えば、4 つの大きなファイルを含むフォルダーからデータをコピーする場合、最大の有効な DIU は 16 です。 |- **Azure SQL Database または Azure Cosmos DB**: シンク層 (Dtu/Ru) とソース ファイルのパターンに応じて 4 ～ 16 の範囲にコピーします。<br>PolyBase または COPY ステートメントを使用して、- **Azure Synapse Analytics にコピーします**。2<br>- その他のシナリオ:4 |
-| 非ファイル ストアからファイル ストアへ |- **パーティション オプションが有効なデータ ストア** ([Azure SQL Database](connector-azure-sql-database.md#azure-sql-database-as-the-source)、[Azure SQL Managed Instance](connector-azure-sql-managed-instance.md#sql-managed-instance-as-a-source)、[Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#azure-synapse-analytics-as-the-source)、[Oracle](connector-oracle.md#oracle-as-source)、[Netezza](connector-netezza.md#netezza-as-source)、[SQL Server](connector-sql-server.md#sql-server-as-a-source)、[Teradata](connector-teradata.md#teradata-as-source)) からコピーします。フォルダーに書き込む場合は 2-256 で、単一のファイルに書き込む場合は 2-4 です。 ソース データ パーティションごとに最大 4 つの DIU を使用できることに注意してください。<br>- **その他のシナリオ**:2-4 |- **REST または HTTP からコピーする**:1<br/>UNLOAD を使用して - **Amazon Redshift からコピーする**:2<br>- **その他のシナリオ**:4 |
-| 非ファイル ストア間 |- **パーティション オプションが有効なデータ ストア** ([Azure SQL Database](connector-azure-sql-database.md#azure-sql-database-as-the-source)、[Azure SQL Managed Instance](connector-azure-sql-managed-instance.md#sql-managed-instance-as-a-source)、[Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#azure-synapse-analytics-as-the-source)、[Oracle](connector-oracle.md#oracle-as-source)、[Netezza](connector-netezza.md#netezza-as-source)、[SQL Server](connector-sql-server.md#sql-server-as-a-source)、[Teradata](connector-teradata.md#teradata-as-source)) からコピーします。フォルダーに書き込む場合は 2-256 で、単一のファイルに書き込む場合は 2-4 です。 ソース データ パーティションごとに最大 4 つの DIU を使用できることに注意してください。<br/>- **その他のシナリオ**:2-4 |- **REST または HTTP からコピーする**:1<br>- **その他のシナリオ**:4 |
+| 非ファイル ストアからファイル ストアへ |- **パーティション オプションが有効なデータ ストア** ([Azure Database for PostgreSQL](connector-azure-database-for-postgresql.md#azure-database-for-postgresql-as-source)、[Azure SQL Database](connector-azure-sql-database.md#azure-sql-database-as-the-source)、[Azure SQL Managed Instance](connector-azure-sql-managed-instance.md#sql-managed-instance-as-a-source)、[Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#azure-synapse-analytics-as-the-source)、[Oracle](connector-oracle.md#oracle-as-source)、[Netezza](connector-netezza.md#netezza-as-source)、[SQL Server](connector-sql-server.md#sql-server-as-a-source)、[Teradata](connector-teradata.md#teradata-as-source) など) からコピーします。フォルダーに書き込む場合は 2-256 で、単一のファイルに書き込む場合は 2-4 です。 ソース データ パーティションごとに最大 4 つの DIU を使用できることに注意してください。<br>- **その他のシナリオ**:2-4 |- **REST または HTTP からコピーする**:1<br/>UNLOAD を使用して - **Amazon Redshift からコピーする**:2<br>- **その他のシナリオ**:4 |
+| 非ファイル ストア間 |- **パーティション オプションが有効なデータ ストア** ([Azure Database for PostgreSQL](connector-azure-database-for-postgresql.md#azure-database-for-postgresql-as-source)、[Azure SQL Database](connector-azure-sql-database.md#azure-sql-database-as-the-source)、[Azure SQL Managed Instance](connector-azure-sql-managed-instance.md#sql-managed-instance-as-a-source)、[Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#azure-synapse-analytics-as-the-source)、[Oracle](connector-oracle.md#oracle-as-source)、[Netezza](connector-netezza.md#netezza-as-source)、[SQL Server](connector-sql-server.md#sql-server-as-a-source)、[Teradata](connector-teradata.md#teradata-as-source) など) からコピーします。フォルダーに書き込む場合は 2-256 で、単一のファイルに書き込む場合は 2-4 です。 ソース データ パーティションごとに最大 4 つの DIU を使用できることに注意してください。<br/>- **その他のシナリオ**:2-4 |- **REST または HTTP からコピーする**:1<br>- **その他のシナリオ**:4 |
 
 コピー アクティビティの監視ビューまたはアクティビティの出力で、各コピー実行に使用される DIU を確認できます。 詳細については、[コピー アクティビティ監視](copy-activity-monitoring.md)に関するページを参照してください。 この既定の動作をオーバーライドするには、`dataIntegrationUnits` プロパティに次のように値を指定します。 コピー操作が実行時に使用する *DIU の実際の数* は、データ パターンに応じて、構成されている値以下になります。
 
@@ -135,7 +135,7 @@ ms.locfileid: "122821817"
 
 ステージング機能をアクティブにすると、まずデータがソース データ ストアからステージング ストレージにコピーされます (ご自分の Azure Blob または Azure Data Lake Storage Gen2 が使用されます)。 次に、データはステージングからシンクのデータ ストアにコピーされます。 コピー アクティビティでは、2 段階のフローが自動的に管理され、データの移動が完了した後、ステージング ストレージから一時データがクリーンアップされます。
 
-![ステージング コピー](media/copy-activity-performance/staged-copy.png)
+:::image type="content" source="media/copy-activity-performance/staged-copy.png" alt-text="ステージング コピー":::
 
 ステージング ストアを使用したデータ移動をアクティブにすると、ソース データ ストアからステージング ストアにデータを移動する前にデータを圧縮し、中間データ ストアまたはステージング データ ストアからシンク データ ストアにデータを移動する前に圧縮を解除するかどうかを指定できます。
 

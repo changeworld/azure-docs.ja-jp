@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 01/01/2020
+ms.date: 09/14/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10242d867c5d9676b4f6833151863b820b2f11d1
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: b64fe0e7fa06c66cdf43d423444e4e9e5bf1b908
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109481807"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128633034"
 ---
 # <a name="configure-azure-resource-role-settings-in-privileged-identity-management"></a>Privileged Identity Management で Azure リソース ロールの設定を構成する
 
@@ -93,23 +93,23 @@ Azure リソース ロールの設定を構成するときに、Azure Active Dir
 > [!NOTE]
 > リソース管理者は､終了日時が指定されている割り当てのどれでも更新することができます｡ これに対し､ユーザーは[ロールの割り当てを延長または更新する](pim-resource-roles-renew-extend.md)セルフサービス要求を開始することができます｡
 
-## <a name="require-multi-factor-authentication"></a>多要素認証が必要です
+## <a name="require-multifactor-authentication"></a>多要素認証を要求する
 
 Privileged Identity Management では、2 つの異なるシナリオで、Azure AD Multi-factor Authentication の強制を選択できます。
 
-### <a name="require-multi-factor-authentication-on-active-assignment"></a>アクティブな割り当てに多要素認証が必要
+### <a name="on-active-assignment"></a>アクティブな割り当て時
 
-場合によっては、ユーザーまたはグループをロールに短期間 (たとえば 1 日) 割り当てる必要があります。 この場合、割り当てられたユーザーがアクティブ化を要求する必要はありません。 このシナリオでは、ユーザーは割り当てられた時点からそのロールでアクティブになるため、各自がそのロールの割り当てを使用するときに、Privileged Identity Management で Multi-Factor Authentication を強制することができません。
+このオプションを選択した場合、管理者は、資格のあるロールの割り当てでなく、アクティブなロールの割り当てを作成する前に、多要素認証を完了する必要があります。 ユーザーは割り当てられた時点からそのロールでアクティブになるため、各自がそのロールの割り当てを使用するときに、Privileged Identity Management で多要素認証を強制することができません。
 
-割り当てを実行するリソース管理者が、確かに本人が言うような人物であることを保証するために、 **[アクティブな割り当てに多要素認証が必要]** チェックボックスをオンにして、アクティブな割り当てに Multi-Factor Authentication を強制することができます。
+アクティブなロールの割り当てを作成するときに多要素認証を要求するには、 **[アクティブな割り当てに多要素認証が必要]** チェックボックスをオンにして、アクティブな割り当てに多要素認証を適用できます。
 
-### <a name="require-multi-factor-authentication-on-activation"></a>アクティブ化に Multi-Factor Authentication を要求する
+### <a name="on-activation"></a>アクティブ化時
 
-ロールの資格を持つユーザーに対して、アクティブ化する前に Azure AD Multi-Factor Authentication を使用していることを証明するように要求することができます。 Multi-Factor Authentication により、ユーザーが、確かに本人が言うような人物であることが合理的かつ確実に保証されます。 このオプションを強制すると、ユーザー アカウントが侵害された可能性がある状況で、重要なリソースが保護されます。
+ロールの資格を持つユーザーに対して、アクティブ化する前に Azure AD Multi-Factor Authentication を使用していることを証明するように要求することができます。 多要素認証により、ユーザーが本人であることが合理的かつ確実に保証されます。 このオプションを強制すると、ユーザー アカウントが侵害された可能性がある状況で、重要なリソースが保護されます。
 
 アクティブ化には多要素認証の実行を必須にするには、 **[アクティブ化には Multi-Factor Authentication が必要です]** チェックボックスをオンにします。
 
-詳細については、[Multi-Factor Authentication と Privileged Identity Management](pim-how-to-require-mfa.md) に関するページを参照してください。
+詳細については、「[多要素認証と Privileged Identity Management](pim-how-to-require-mfa.md)」を参照してください。
 
 ## <a name="activation-maximum-duration"></a>アクティブ化の最大期間
 

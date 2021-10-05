@@ -1,15 +1,15 @@
 ---
-author: ccompy
+author: madsd
 ms.service: app-service-web
 ms.topic: include
 ms.date: 10/01/2020
-ms.author: ccompy
-ms.openlocfilehash: 1c3542332fbdad13d56a141d677e91b68f7e99d0
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.author: madsd
+ms.openlocfilehash: 8d4c2968e3b21269d233f584747856804f8ff9c6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121728075"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128641934"
 ---
 * Isolated を除くすべての価格プランをサポートするマルチテナント システム
 * VNet にデプロイされ、Isolated 価格プランのアプリをサポートする App Service Environment。
@@ -19,7 +19,7 @@ VNet 統合機能はマルチテナント アプリで使用されます。 ア�
 VNet 統合により、アプリから VNet 内のリソースにアクセスできるようになりますが、VNet からそのアプリへの受信プライベート アクセスは付与されません。 プライベート サイト アクセスとは、Azure 仮想ネットワーク内など、プライベート ネットワークのみからアプリにアクセスできるようにすることです。 VNet 統合は、アプリから VNet への送信呼び出しを行うためだけに使用されます。 VNet 統合機能は、同じリージョン内の VNet で使用する場合と、他のリージョン内の VNet で使用する場合とで、動作が異なります。 VNet 統合機能には 2 つのバリエーションがあります。
 
 * **リージョン VNet 統合**:同じリージョン内の Azure Resource Manager 仮想ネットワークに接続する場合、統合する VNet での専用のサブネットが必要になります。
-* **ゲートウェイが必要な VNet 統合**:他のリージョン内の VNet または同じリージョン内のクラシック仮想ネットワークに接続する場合、ターゲットの VNet にプロビジョニングされた Azure 仮想ネットワーク ゲートウェイが必要です。
+* **ゲートウェイが必要な VNet 統合**: 他のリージョン内の VNet または同じリージョン内のクラシック仮想ネットワークに直接接続する場合、ターゲットの VNet にプロビジョニングされた Azure 仮想ネットワーク ゲートウェイが必要です。
 
 以下は、VNet 統合機能の特徴です。
 

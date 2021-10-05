@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 03/02/2021
-ms.openlocfilehash: 56f79028b2424d8383a0a4a3cb27639f3924ff90
-ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+ms.openlocfilehash: 187ed49a116b99524f6cfca408bdb0d7e15a47ca
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122779621"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129092587"
 ---
 # <a name="scale-agentless-migration-of-vmware-virtual-machines-to-azure"></a>VMware 仮想マシンの Azure へのエージェントレス移行をスケーリングする
 
@@ -70,16 +70,19 @@ VMware 仮想マシンに対してエージェントレスの移行方法を使�
 > 2. 次のコマンドを実行して、圧縮されたファイルのハッシュを生成します。
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - 使用例: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256 ```
-> 3. 計算されたハッシュ値が次の文字列と一致しない場合は、ポータルから最新バージョンのスケールアウト アプライアンス インストーラーをダウンロードします。CA8CEEE4C7AC13328ECA56AE9EB35137336CD3D73B1F867C4D736286EF61A234
+> 3. 計算されたハッシュ値が文字列 BA84B58E88DDFE23E5D4CE73530227EBBC187B3634B66A3E0F0B3E5DF5F0A94F に一致しない場合、最新版のスケールアウト アプライアンス インストーラーをポータルからダウンロードします
 
 ### <a name="3-run-the-azure-migrate-installer-script"></a>3. Azure Migrate インストーラー スクリプトを実行する
 
 1. アプライアンスをホストするサーバー上のフォルダーに ZIP ファイルを抽出します。  既存の Azure Migrate アプライアンスが存在するサーバー上でスクリプトを実行しないよう注意してください。
-2. 管理 (昇格された) 特権を使用して上記のサーバーで PowerShell を起動します。
-3. PowerShell ディレクトリを、ダウンロードした ZIP ファイルの内容が抽出されたフォルダーに変更します。
-4. 次のコマンドを実行して、**AzureMigrateInstaller.ps1** という名前のスクリプトを実行します。
 
-    ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> .\AzureMigrateInstaller.ps1 ```
+2. 管理 (昇格された) 特権を使用して上記のサーバーで PowerShell を起動します。
+
+3. PowerShell ディレクトリを、ダウンロードした ZIP ファイルの内容が抽出されたフォルダーに変更します。
+
+4. 次のコマンドを実行して `AzureMigrateInstaller.ps1` という名前のスクリプトを実行します。
+
+  `PS C:\Users\administrator\Desktop\AzureMigrateInstaller> .\AzureMigrateInstaller.ps1 `
 
 5. シナリオ、クラウド、構成、接続性の各選択肢から選択して、必要なアプライアンスをデプロイします。 たとえば、以下に示す選択内容の場合、**スケールアウト アプライアンス** は、**Azure パブリック クラウド** で **既定の " _(パブリック エンドポイント)_ " 接続** を使用して、VMware 環境で実行されているサーバーで Azure Migrate プロジェクトへの同時レプリケーションを開始するように設定されます。
 
@@ -141,14 +144,17 @@ VMware 仮想マシンに対してエージェントレスの移行方法を使�
 スケールアウト アプライアンスの登録を完了するには、 **[インポート]** をクリックして、プライマリ アプライアンスから必要な構成ファイルを取得します。
 
 1. **[インポート]** をクリックすると、プライマリ アプライアンスから必要な構成ファイルをインポートする方法を示すポップアップ ウィンドウが開きます。
+
 :::image type="content" source="./media/how-to-scale-out-for-migration/import-modal-scale-out.png" alt-text="[構成のインポート] モーダル":::
+
 1. プライマリ アプライアンスに (リモート デスクトップで) ログインし、次の PowerShell コマンドを実行します。
 
-    ``` PS cd 'C:\Program Files\Microsoft Azure Appliance Configuration Manager\Scripts\PowerShell' ```
+   `PS cd 'C:\Program Files\Microsoft Azure Appliance Configuration Manager\Scripts\PowerShell' `
     
-    ``` PS .\ExportConfigFiles.ps1 ```
+    `PS .\ExportConfigFiles.ps1 `
 
 1. 上記のコマンドを実行して作成した zip ファイルをスケールアウト アプライアンスにコピーします。 ｚip ファイルには、スケールアウト アプライアンスを登録するために必要な構成ファイルが含まれています。
+
 1. 前の手順で開いたポップアップ ウィンドウで、コピーされた構成 zip ファイルの場所を選択し、 **[保存]** をクリックします。
 
 ファイルが正常にインポートされると、スケールアウト アプライアンスの登録が完了し、最後に成功したインポートのタイムスタンプが表示されます。 **[詳細の表示]** をクリックして、登録の詳細を確認することもできます。

@@ -4,21 +4,24 @@ description: Go-To-Market Services - このセクションでは、公開元が�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 07/01/2021
+ms.date: 09/23/2021
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: dcd7c7c64c0a686abe88b9e0d5810ff84aab27f9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9d957adf84bf6f9cf9b48c5d5554d27206d8c382
+ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121742035"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128708381"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>商用マーケットプレースのベネフィット
 
 Microsoft コマーシャル マーケットプレースに発行した後は、プランが成功していることを確認する必要があります。 オファーの成長を加速させるために必要なセールス、技術、マーケティングのベネフィットが用意されています。
 
 オファーが Microsoft AppSource または Azure Marketplace で有効になったら、[パートナー センター](https://go.microsoft.com/fwlink/?linkid=2165457)に進み、資格のあるマーケティング、セールス、技術のベネフィットにアクセスし、アクティベートします。 Marketplace 報酬ベネフィットは、商用マーケットプレースでのエンゲージメントと売上に基づいて提供されます。 エンゲージメントが多いほど、見返りも多くなります。
+
+> [!NOTE]
+> この記事の画像で参照されている通貨 ($) は Marketplace 報酬層であり、Microsoft AppSource や Azure Marketplace の累積課金売上または販売されたシート数に基づきます。
 
 ## <a name="marketplace-rewards"></a>Marketplace 報酬
 

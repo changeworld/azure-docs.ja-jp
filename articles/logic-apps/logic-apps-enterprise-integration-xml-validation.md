@@ -1,5 +1,5 @@
 ---
-title: B2B エンタープライズ統合用の XML を検証する
+title: エンタープライズ統合ワークフローで XML を検証する
 description: Enterprise Integration Pack を備えた Azure Logic Apps でスキーマを使用して XML を検証します。
 services: logic-apps
 ms.suite: integration
@@ -7,17 +7,19 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, azla
 ms.topic: how-to
-ms.date: 08/25/2021
-ms.openlocfilehash: 87650a1ab950f8e88fe08a1c4555c98652776730
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.date: 09/15/2021
+ms.openlocfilehash: 842b26502dcfa073bca21891eed44fe990037f06
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123099305"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128660806"
 ---
 # <a name="validate-xml-for-workflows-in-azure-logic-apps"></a>Azure Logic Apps でワークフロー用の XML を検証する
 
-企業統合の B2B シナリオでは、多くの場合、契約の取引先は、データ処理を開始する前に、交換するメッセージが有効であることを確認する必要があります。 Azure Logic Apps の **XML Validation** アクションを使用して、定義済みのススキーマに対してドキュメントを検証できます。
+企業統合の B2B シナリオでは、多くの場合、契約の取引先は、データ処理を開始する前に、交換するメッセージが有効であることを確認する必要があります。 ロジック アプリ ワークフローでは、**XML 検証** アクションと定義済みの[スキーマ](logic-apps-enterprise-integration-schemas.md)を使用して、XML メッセージとドキュメントを検証することができます。
+
+ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](logic-apps-overview.md)」を参照してください。 B2B エンタープライズ統合の詳細については、「[Azure Logic Apps と Enterprise Integration Pack を使用した B2B エンタープライズ統合ワークフロー](logic-apps-enterprise-integration-overview.md)」をご確認ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -27,27 +29,24 @@ ms.locfileid: "123099305"
 
   空のワークフローがある場合は、任意のトリガーを使用します。 この例では、要求トリガーを使用します。
 
-  ロジック アプリを初めて使用する場合は、次のドキュメントを参照してください。
-
-  * [Azure Logic Apps とは](logic-apps-overview.md)
-
-  * [クイックスタート: 初めてのロジック アプリ ワークフローを作成する](quickstart-create-first-logic-app-workflow.md)
-
-  * [シングル テナントのロジック アプリ ワークフローを作成する](create-single-tenant-workflows-azure-portal.md)
-
-  * [Azure Logic Apps の使用量の測定、課金、各価格モデル](logic-apps-pricing.md)
-
-* **Logic App (従量課金)** リソース タイプを使用する場合は、以下の要件を満たす[統合アカウント](logic-apps-enterprise-integration-create-integration-account.md)が必要です。
+* エンタープライズ統合および B2B ワークフローで使用する成果物 (取引先、契約、証明書など) を定義して保存する[統合アカウント リソース](logic-apps-enterprise-integration-create-integration-account.md)。 このリソースでは、次の要件が満たされている必要があります。
 
   * ロジック アプリ リソースと同じ Azure サブスクリプションに関連付けられている。
 
-  * **XML 検証** アクションを使用する予定のロジック アプリ リソースと同じ場所または Azure リージョンに存在する。
+  * **XML 検証*** アクションを使用する予定のロジック アプリ リソースと同じ場所または Azure リージョンに存在する。
 
-  * ロジック アプリ リソースに[リンクされている](logic-apps-enterprise-integration-create-integration-account.md#link-account)。
+  * [**ロジック アプリ (従量課金)** リソース タイプ](logic-apps-overview.md#resource-type-and-host-environment-differences)を使用する場合、統合アカウントには以下のアイテムが必要です。
 
-  * XML コンテンツの検証に使用する[スキーマ](logic-apps-enterprise-integration-schemas.md)が含まれている。
+    * XML コンテンツの検証に使用する[スキーマ](logic-apps-enterprise-integration-schemas.md)。
 
-  **ロジック アプリ (Standard)** のリソースの種類を使用している場合、統合アカウントにリンクするは必要ありません。 ただし、XML コンテンツの検証に使用する[スキーマ](logic-apps-enterprise-integration-schemas.md)をロジック アプリ リソースに追加する必要があります。 この作業は、ロジック アプリ リソースのメニューにある **[設定]** の **[スキーマ]** セクションで行います。
+    * [ご利用のロジック アプリ リソースへのリンク](logic-apps-enterprise-integration-create-integration-account.md#link-account)。
+
+  * [**ロジック アプリ (Standard)** リソース タイプ](logic-apps-overview.md#resource-type-and-host-environment-differences)を使用している場合は、統合アカウントにスキーマを保存しません。 代わりに、Azure portal または Visual Studio Code を使用して[ロジック アプリ リソースにスキーマを直接追加](logic-apps-enterprise-integration-schemas.md)することができます。 その後、"*同じロジック アプリ リソース*" 内の複数のワークフローでこれらのスキーマを使用できます。
+
+    取引先、契約、証明書などの他の成果物を保存すると共に、[AS2](logic-apps-enterprise-integration-as2.md)、[X12](logic-apps-enterprise-integration-x12.md)、および [EDIFACT](logic-apps-enterprise-integration-edifact.md) 操作を使用するには、引き続き統合アカウントが必要です。 ただし、ロジック アプリ リソースを統合アカウントにリンクする必要はないため、リンク機能は存在しません。 統合アカウントは、ロジック アプリ リソースと同じ Azure サブスクリプションを使用することや、ロジック アプリ リソースと同じ場所に存在することなど、他の要件も満たす必要があります。
+
+    > [!NOTE]
+    > 現時点では、[RosettaNet](logic-apps-enterprise-integration-rosettanet.md) の操作をサポートしているのは、**ロジック アプリ (従量課金)** のリソースの種類のみです。 **ロジック アプリ (Standard)** のリソースの種類には、[RosettaNet](logic-apps-enterprise-integration-rosettanet.md) 操作は含まれていません。
 
 ## <a name="add-xml-validation-action"></a>XML 検証アクションを追加する
 
@@ -75,15 +74,15 @@ ms.locfileid: "123099305"
 
 1. 検証する XML コンテンツを指定するには、 **[コンテンツ]** ボックス内をクリックし、動的コンテンツ リストを表示します。
 
-   動的コンテンツ リストには、ワークフローの前のステップの出力を表すプロパティ トークンが表示されます。 リストに期待するプロパティが表示されない場合は、リストのトリガーやアクションの見出しや、 **[See more (詳細表示)]** を選択できるかどうかを確認します。
+   動的コンテンツ リストには、ワークフローの前のステップの出力を表すプロパティ トークンが表示されます。 リストに想定されるプロパティが表示されない場合は、リストのトリガーまたはアクションの見出しと、 **[詳細表示]** を選択できるかどうかを確認します。
 
    従量課金または ISE プランベースのロジック アプリの場合、デザイナーは次の例のようになります。
 
-   ![マルチテナント デザイナーで動的コンテンツ リストを開いたスクリーンショット。[コンテンツ] ボックスにカーソルを置き、動的コンテンツ リストを開いています。](./media/logic-apps-enterprise-integration-xml-validation/open-dynamic-content-list-multi-tenant.png)
+   ![マルチテナント デザイナーを示すスクリーンショット。動的コンテンツ リストが開いて、[コンテンツ] ボックスにカーソルが置かれています。](./media/logic-apps-enterprise-integration-xml-validation/open-dynamic-content-list-multi-tenant.png)
 
    Standard プランベースのロジック アプリの場合、デザイナーは次の例のようになります。
 
-   ![シングルテナント デザイナーで動的コンテンツ リストを開いたスクリーンショット。[コンテンツ] ボックスにカーソルを置き、動的コンテンツ リストを開いています](./media/logic-apps-enterprise-integration-xml-validation/open-dynamic-content-list-single-tenant.png)
+   ![シングルテナント デザイナーを示すスクリーンショット。動的コンテンツ リストが開いて、[コンテンツ] ボックスにカーソルが置かれています](./media/logic-apps-enterprise-integration-xml-validation/open-dynamic-content-list-single-tenant.png)
 
 1. 動的コンテンツ リストから、検証するコンテンツのプロパティ トークンを選択します。
 
@@ -96,6 +95,8 @@ ms.locfileid: "123099305"
    これで、**XML 検証** アクションの設定が完了しました。 実際のアプリでは、検証したデータを Salesforce などの業務 (LOB) アプリケーションに保存する必要がある場合があります。 検証済みの出力を Salesforce に送信するには、Salesforce アクションを追加します。
 
 1. 検証アクションをテストするには、ワークフローをトリガーして実行します。 たとえば、要求トリガーの場合は、トリガーのエンドポイント URL に要求を送信します。
+
+   **XML 検証** アクションは、ワークフローがトリガーされた後に、XML コンテンツが検証に使用できるようになると実行されます。
 
 ## <a name="next-steps"></a>次のステップ
 

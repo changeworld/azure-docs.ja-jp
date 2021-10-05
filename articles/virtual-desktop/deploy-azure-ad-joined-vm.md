@@ -6,26 +6,21 @@ author: Heidilohr
 manager: lizross
 ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 08/11/2021
+ms.date: 09/15/2021
 ms.author: helohr
-ms.openlocfilehash: c7767ad85fabf748a442644f6c7c6701375d58c0
-ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
+ms.openlocfilehash: e6325c6511c6df9c3f3c021bc24a3f66b2e56c0f
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122228756"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129207737"
 ---
 # <a name="deploy-azure-ad-joined-virtual-machines-in-azure-virtual-desktop"></a>Azure Virtual Desktop で Azure AD 参加済み仮想マシンをデプロイする
-
-> [!IMPORTANT]
-> Azure AD 参加済み VM のサポートは、現在パブリック プレビューの段階です。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 この記事では、Azure Virtual Desktop での Azure Active Directory 参加済み仮想マシンのデプロイとアクセスのプロセスについて説明します。 Azure AD 参加済み VM を使用すると、VM からオンプレミスまたは仮想化された Active Directory ドメイン コントローラー (DC) への通信経路を確保することや、Azure AD ドメイン サービス (Azure AD DS) をデプロイすることは必要なくなります。 場合によっては、DC の必要性を完全に排除することも可能であり、環境のデプロイと管理が簡素化されます。 管理を容易にするために、これらの VM を Intune に自動的に登録することもできます。
 
 > [!NOTE]
-> Azure Virtual Desktop (クラシック) では、この機能はサポートされていません。
+> 現在、Azure AD に参加している VM は、Azure 商用クラウドでのみサポートされています。
 
 ## <a name="supported-configurations"></a>サポートされている構成
 
@@ -35,12 +30,20 @@ Azure AD 参加済み VM については、現在、次の構成がサポート�
 - ジャンプ ボックスとして使用されるプールされたデスクトップ。 この構成では、ユーザーはネットワーク上の別の PC に接続する前に、まず Azure Virtual Desktop VM にアクセスします。 ユーザーは VM にデータを保存することはできません。
 - ユーザーが VM にデータを保存する必要がない、プールされたデスクトップまたはアプリ。 たとえば、データをオンラインで保存したり、リモート データベースに接続したりするアプリケーションの場合です。
 
-ユーザー アカウントは、同じ Azure AD テナントのクラウド専用またはハイブリッド ユーザーとすることができます。 外部ユーザーは現時点ではサポートされていません。
+ユーザー アカウントは、同じ Azure AD テナントのクラウド専用またはハイブリッド ユーザーとすることができます。
+
+## <a name="known-limitations"></a>既知の制限事項
+
+次の既知の制限事項は、オンプレミスまたは Active Directory ドメイン参加のリソースへのアクセスに影響を与える可能性があり、Azure AD 参加 VM がご利用の環境に適切かどうかを判断する際に考慮してください。 現在、ユーザーがクラウドベース リソースまたは Azure AD ベース認証へのアクセスのみを必要とするシナリオで Azure AD 参加 VM を推奨しています。
+
+- Azure Virtual Desktop (クラシック) では、Azure AD 参加 VM はサポートされていません。
+- Azure AD 参加 VM では現在、外部ユーザーがサポートされていません。
+- Azure AD 参加 VM では、現時点でローカル ユーザー プロファイルのみがサポートされています。
+- Azure AD 参加 VM では、FSLogix または MSIX アプリ アタッチのために Azure Files ファイル共有にアクセスできません。 これらの機能のいずれにアクセスする場合でも、Kerberos 認証が必要です。
+- Windows Store クライアントでは現在、Azure AD 参加 VM がサポートされていません。
+- 現在、Azure Virtual Desktop で Azure AD 参加済み VM のシングル サインオンはサポートされていません。
 
 ## <a name="deploy-azure-ad-joined-vms"></a>Azure AD 参加済み VM のデプロイ
-
-> [!IMPORTANT]
-> パブリック プレビュー中は、[検証環境](create-validation-host-pool.md)にホスト プールを構成する必要があります。
 
 [新しいホスト プールを作成](create-host-pools-azure-marketplace.md)するとき、または[既存のホスト プールを拡張](expand-existing-host-pool.md)するときに、Azure portal から Azure AD 参加済み VM を直接デプロイできます。 [Virtual Machines] タブで、VM を Active Directory と Azure Active Directory のどちらに参加させるかを選択します。 **Azure Active Directory** を選択すると、オプションで自動的に **VM を Intune に登録する** ことができます。そうすることで、[Windows 10 Enterprise](/mem/intune/fundamentals/windows-virtual-desktop) および [Windows 10 Enterprise マルチセッション](/mem/intune/fundamentals/windows-virtual-desktop-multi-session)の VM を簡単に管理できます。 Azure Active Directory オプションは、現在のサブスクリプションと同じ Azure AD テナントに VM を参加させることに注意してください。
 
@@ -48,24 +51,20 @@ Azure AD 参加済み VM については、現在、次の構成がサポート�
 > - ホスト プールには、ドメイン参加の種類が同じ VM のみを含める必要があります。 たとえば、AD 参加済み VM は他の AD VM とのみ一緒にする必要があり、その逆も同様です。
 > - ホスト プールの VM は、Windows 10 シングルセッションまたはマルチセッションのバージョン 2004 以降でなければなりません。
 
-ホスト プールを作成したら、ユーザー アクセス権を割り当てる必要があります。 Azure AD 参加済み VM の場合は、2 つのことを行う必要があります。
+### <a name="assign-user-access-to-host-pools"></a>ホスト プールにユーザー アクセスを割り当てる
 
-- ユーザーをアプリ グループに追加して、リソースへのアクセス権を与えます。
-- ユーザーが VM にサインインできるように、仮想マシン ユーザー ログイン ロールを付与します。
+ホスト プールの作成後、リソースにアクセスできるよう、ユーザーにアクセス権を割り当てる必要があります。 リソースへのアクセスを付与するには、各ユーザーをアプリ グループに追加します。 [アプリ グループの管理](manage-app-groups.md)に関する記事にある手順に従って、アプリとデスクトップへのアクセス権をユーザーに割り当てます。 可能な限り、個々のユーザーではなくユーザー グループを使用することをお勧めします。
 
-[アプリ グループの管理](manage-app-groups.md)に関する記事にある手順に従って、アプリとデスクトップへのアクセス権をユーザーに割り当てます。 可能な限り、個々のユーザーではなくユーザー グループを使用することをお勧めします。
+Azure AD 参加 VM の場合、Active Directory または Azure Active Directory Domain Services ベースのデプロイの要件に加えて、次の 2 つの追加作業を行う必要があります。  
+
+- ユーザーが VM にサインインできるよう、**仮想マシン ユーザー ログイン** ロールをユーザーに割り当てます。
+- ローカル管理特権を必要とする管理者に **仮想マシン管理者ログイン** ロールを割り当てます。
 
 Azure AD 参加済みの VM へのアクセス権をユーザーに付与するには、[VM のロール割り当てを構成する](../active-directory/devices/howto-vm-sign-in-azure-ad-windows.md#configure-role-assignments-for-the-vm)必要があります。 **仮想マシン ユーザー ログイン** または **仮想マシン管理者ログイン** のロールは、VM、VM を含むリソース グループ、またはサブスクリプションのいずれかに割り当てることができます。 仮想マシン ユーザー ログイン ロールは、アプリ グループ用に使用したのと同じユーザー グループにリソース グループ レベルで割り当てることをお勧めします。そうすることで、ホスト プール内のすべての VM に適用されます。
 
 ## <a name="access-azure-ad-joined-vms"></a>Azure AD 参加済み VM へのアクセス
 
 このセクションでは、さまざまな Azure Virtual Desktop クライアントから Azure AD 参加済み VM にアクセスする方法について説明します。
-
-> [!NOTE]
-> 現在、Azure AD 参加済み VM に Windows Store クライアントを使用して接続することは、サポートされていません。
-
-> [!NOTE]
-> 現在、Azure Virtual Desktop で Azure AD 参加済み VM のシングル サインオンはサポートされていません。
 
 ### <a name="connect-using-the-windows-desktop-client"></a>Windows デスクトップ クライアントを使用した接続
 
@@ -75,15 +74,15 @@ Azure AD 参加済みの VM へのアクセス権をユーザーに付与する�
 - ローカル PC がセッション ホストと同じ Azure AD テナントにハイブリッド Azure AD 参加済みである
 - ローカル PC が Windows 10 バージョン 2004 以降を実行しており、セッション ホストと同じ Azure AD テナントに Azure AD 登録済みである
 
-Azure AD に参加していない Windows デバイスからのアクセスを有効にするには、**targetisaadjoined:i:1** を[カスタム RDP プロパティ](customize-rdp-properties.md)としてホスト プールに追加します。 これらの接続は、セッション ホストにサインインするときにユーザー名とパスワードの資格情報を入力するように制限されています。
+Azure AD に参加していない Windows デバイスからのアクセスを有効にするには、**targetisaadjoined:i:1** を [カスタム RDP プロパティ](customize-rdp-properties.md)としてホスト プールに追加します。 これらの接続は、セッション ホストにサインインするときにユーザー名とパスワードの資格情報を入力するように制限されています。
 
 ### <a name="connect-using-the-other-clients"></a>他のクライアントを使用した接続
 
-Web、Android、macOS、および iOS クライアントを使用して Azure AD 参加済み VM にアクセスするには、**targetisaadjoined:i:1** を[カスタム RDP プロパティ](customize-rdp-properties.md)としてホスト プールに追加する必要があります。 これらの接続は、セッション ホストにサインインするときにユーザー名とパスワードの資格情報を入力するように制限されています。
+Web、Android、macOS、および iOS クライアントを使用して Azure AD 参加済み VM にアクセスするには、**targetisaadjoined:i:1** を [カスタム RDP プロパティ](customize-rdp-properties.md)としてホスト プールに追加する必要があります。 これらの接続は、セッション ホストにサインインするときにユーザー名とパスワードの資格情報を入力するように制限されています。
 
 ### <a name="enabling-mfa-for-azure-ad-joined-vms"></a>Azure AD 参加済み VM に対する MFA の有効化
 
-Azure Virtual Desktop アプリに条件付きアクセス ポリシーを設定することにより、Azure AD 参加済み VM に対して[多要素認証](set-up-mfa.md)を有効にすることができます。 接続を成功させるには、[従来のユーザー単位の多要素認証を無効](../active-directory/devices/howto-vm-sign-in-azure-ad-windows.md#using-conditional-access)にします。 サインインを Windows Hello for Business などの強力な認証方法に制限しない場合は、条件付きアクセス ポリシーから [Azure Windows VM サインイン アプリを除外](../active-directory/devices/howto-vm-sign-in-azure-ad-windows.md#mfa-sign-in-method-required)する必要もあります。
+Azure Virtual Desktop アプリに条件付きアクセス ポリシーを設定することにより、Azure AD 参加済み VM に対して[多要素認証](set-up-mfa.md)を有効にすることができます。 接続を成功させるには、[従来のユーザー単位の多要素認証を無効](../active-directory/devices/howto-vm-sign-in-azure-ad-windows.md#mfa-sign-in-method-required)にする必要があります。 サインインを Windows Hello for Business などの強力な認証方法に制限しない場合は、条件付きアクセス ポリシーから [Azure Windows VM サインイン アプリを除外](../active-directory/devices/howto-vm-sign-in-azure-ad-windows.md#mfa-sign-in-method-required)する必要もあります。
 
 ## <a name="user-profiles"></a>ユーザー プロファイル
 

@@ -7,13 +7,13 @@ ms.topic: article
 author: smannepalle
 ms.author: smannepalle
 ms.reviewer: sroy
-ms.date: 06/10/2021
-ms.openlocfilehash: 6998005024bdbf61fb941ae3ff778be55dc5bb26
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/27/2021
+ms.openlocfilehash: 40323124846bd825b2d0c51d16f7dfa7dc67511f
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121729774"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129082705"
 ---
 # <a name="license-dashboard-in-commercial-marketplace-analytics"></a>コマーシャル マーケットプレース分析の [ライセンス] ダッシュボード
 
@@ -27,11 +27,31 @@ ms.locfileid: "121729774"
 
 ## <a name="check-license-usage"></a>ライセンスの使用状況の確認する
 
+[!INCLUDE [Workspaces view note](./includes/preview-interface.md)]
+
+#### <a name="workspaces-view"></a>[ワークスペース ビュー](#tab/workspaces-view)
+
 パートナー センターで ISV アプリのライセンスの使用状況を確認するには、次の手順を実行します。
+
+1. [パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインします。
+1. ホーム ページで、 **[分析情報]** タイルを選択します。
+
+    [ ![パートナー センター ホーム ページの [分析情報] タイルを示しています。](./media/workspaces/partner-center-insights-tile.png) ](./media/workspaces/partner-center-insights-tile.png#lightbox)
+
+1. 左側のメニューで **[ライセンス]** を選択します。
+
+    [ ![パートナー センターの [ライセンス] ダッシュボードのスクリーンショット。](./media/license-dashboard/license-dashboard-workspaces.png) ](./media/license-dashboard/license-dashboard-workspaces.png#lightbox)
+
+#### <a name="current-view"></a>[現在のビュー](#tab/current-view)
+
+パートナー センターで ISV アプリのライセンスの使用状況を確認するには、次の手順を実行します。
+
 1. [パートナー センター](https://go.microsoft.com/fwlink/?linkid=2165507)にサインインします。
 1. 左側のナビゲーション メニューで、 **[コマーシャル マーケットプレース]**  >  **[分析]**  >  **[ライセンス]** の順に選択します。
 
 :::image type="content" source="./media/license-dashboard/license-dashboard.png" alt-text="パートナー センターの [ライセンス] ダッシュボードのスクリーンショット。":::
+
+---
 
 ## <a name="elements-of-the-license-dashboard"></a>[ライセンス] ダッシュボードの要素
 
@@ -41,7 +61,15 @@ ms.locfileid: "121729774"
 
 ページの右上隅に月範囲の選択があります。 過去 6 か月または 12 か月を基準として月範囲を選択するか、カスタムの月範囲 (最大 12 か月間) を選択して、ページのウィジェットの出力をカスタマイズします。 既定の月範囲 (計算期間) は 6 か月です。
 
+#### <a name="workspaces-view"></a>[ワークスペース ビュー](#tab/workspaces-view) 
+
+[ ![パートナー センターの [ライセンス] ダッシュボードの月範囲のスクリーンショット。](./media/license-dashboard/license-workspace-filters.png) ](./media/license-dashboard/license-workspace-filters.png#lightbox)
+
+#### <a name="current-view"></a>[現在のビュー](#tab/current-view) 
+
 :::image type="content" source="./media/license-dashboard/month-range.png" alt-text="パートナー センターの [ライセンス] ダッシュボードの月範囲のスクリーンショット。":::
+
+---
 
 ## <a name="customers-widget"></a>[顧客] ウィジェット
 

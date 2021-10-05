@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: keferna
 ms.author: keferna
-ms.date: 05/26/2021
-ms.openlocfilehash: e86a97b0f4aa9fef24203128970b8d9cc857cd41
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 09/27/2021
+ms.openlocfilehash: 6020ff6b6152fa559de5f6afc6f6560f1d7252ba
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111955372"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129082530"
 ---
 # <a name="create-a-power-bi-app-offer"></a>Power BI アプリ オファーを作成する
 
@@ -26,6 +26,27 @@ ms.locfileid: "111955372"
 
 ## <a name="create-a-new-offer"></a>新しいオファーを作成する
 
+[!INCLUDE [Workspaces view note](./includes/preview-interface.md)]
+
+#### <a name="workspaces-view"></a>[ワークスペース ビュー](#tab/workspaces-view)
+
+1. [パートナー センター](https://go.microsoft.com/fwlink/?linkid=2166002)にサインインします。
+
+1. ホーム ページで、 **[Marketplace offers]\(Marketplace のオファー\)** タイルを選択します。
+
+    [ ![パートナー センターのホーム ページにある [Marketplace offers]\(Marketplace のオファー\) タイルを示しています。](./media/workspaces/partner-center-home.png) ](./media/workspaces/partner-center-home.png#lightbox)
+
+1. [Marketplace offers]\(Marketplace のオファー\) ページで、 **[新しいオファー]**  >  **[Power BI アプリ]** を選択します。
+
+    [ ![[新しいオファー] ボタンから選択できるオファーの種類、Power BI アプリを示しています。](./media/power-bi/new-offer-power-bi-app-workspaces.png) ](./media/power-bi/new-offer-power-bi-app-workspaces.png#lightbox)
+
+> [!IMPORTANT]
+> オファーが公開された後にパートナー センターで行った編集は、そのオファーを再公開した後にのみ Microsoft AppSource に反映されます。 変更後は必ずオファーを再公開するようにしてください。
+
+**[Power BI アプリ]** が表示されない場合、または有効にならない場合は、この種類のオファーを作成するためのアクセス許可がアカウントにありません。 開発者アカウントの登録など、この種類のオファーに対するすべての[要件](./marketplace-dynamics-365.md)を満たしていることを確認してください。
+
+#### <a name="current-view"></a>[現在のビュー](#tab/current-view)
+
 1. [パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインします。
 2. 左側のナビゲーション メニューで、 **[コマーシャル マーケットプレース]**  >  **[概要]** の順に選択します。
 3. [概要] ページで、 **[+ 新しいオファー]**  >  **[Power BI アプリ]** を選択します。
@@ -36,6 +57,8 @@ ms.locfileid: "111955372"
 > オファーが公開された後にパートナー センターで行った編集は、そのオファーを再公開した後にのみ Microsoft AppSource に反映されます。 変更後は必ずオファーを再公開するようにしてください。
 
 **[Power BI アプリ]** が表示されない場合、または有効にならない場合は、この種類のオファーを作成するためのアクセス許可がアカウントにありません。 開発者アカウントの登録など、この種類のオファーに対するすべての[要件](marketplace-dynamics-365.md)を満たしていることを確認してください。
+
+---
 
 ## <a name="new-offer"></a>新しいプラン
 

@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 09/03/2021
+ms.date: 09/17/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 14342b2926c4496d1d9d39dbd4d852811f8e610d
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 902d607862b6f785ceaead96c5289d674ab02565
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123469730"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128627502"
 ---
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -27,6 +27,7 @@ ms.locfileid: "123469730"
 |[証明書は、許可されたキーの種類を使用する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1151cede-290b-4ba0-8b38-0ad145ac888f) |証明書に許可されるキーの種類を制限して、組織のコンプライアンス要件を管理します。 |audit、deny、disabled |[2.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Certificates_AllowedKeyTypes.json) |
 |[楕円曲線暗号を使用する証明書には、許可されている曲線名が必要である](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fbd78111f-4953-4367-9fd5-7e08808b54bf) |キー コンテナーに格納される ECC 証明書に対して許可されている楕円曲線名を管理します。 詳細については、[https://aka.ms/akvpolicy](../../../../articles/key-vault/general/azure-policy.md)をご覧ください。 |audit、deny、disabled |[2.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Certificates_EC_AllowedCurveNames.json) |
 |[RSA 暗号を使用する証明書に、キーの最小サイズを指定する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcee51871-e572-4576-855c-047c820360f0) |キー コンテナーに格納される RSA 証明書の最小キー サイズを指定して、組織のコンプライアンス要件を管理します。 |audit、deny、disabled |[2.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Certificates_RSA_MinimumKeySize.json) |
+|[\[プレビュー\]: 公衆ネットワーク アクセスを無効にするように Azure Key Vault Managed HSM を構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F84d327c3-164a-4685-b453-900478614456) |Azure Key Vault Managed HSM の公衆ネットワーク アクセスを無効にして、パブリック インターネット経由でアクセスできないようにします。 これにより、データ漏えいのリスクを軽減することができます。 詳細については、[https://docs.microsoft.com/azure/key-vault/managed-hsm/private-link#allow-trusted-services-to-access-managed-hsm](../../../../articles/key-vault/managed-hsm/private-link.md#allow-trusted-services-to-access-managed-hsm) を参照してください。 |Modify、Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/ManagedHsm_FirewallEnabled_Modify.json) |
 |[\[プレビュー\]: プライベート エンドポイントを使用して Azure Key Vault Managed HSM を構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd1d6d8bb-cc7c-420f-8c7d-6f6f5279a844) |プライベート エンドポイントを使用すると、接続元または接続先にパブリック IP アドレスを使用せずに、仮想ネットワークを Azure サービスに接続できます。 プライベート エンドポイントを Azure Key Vault Managed HSM にマッピングすることにより、データ漏えいのリスクを軽減できます。 詳細については、[https://docs.microsoft.com/azure/key-vault/managed-hsm/private-link](../../../../articles/key-vault/managed-hsm/private-link.md) を参照してください。 |DeployIfNotExists、Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/ManagedHsm_Should_Use_PrivateEndpoint_DINE.json) |
 |[\[プレビュー\]: Configure Azure Key Vaults with private endpoints (プライベート エンドポイントを使用して Azure キー コンテナーを構成する)](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9d4fad1f-5189-4a42-b29e-cf7929c6b6df) |プライベート エンドポイントを使用すると、接続元または接続先にパブリック IP アドレスを使用せずに、仮想ネットワークを Azure サービスに接続できます。 プライベート エンドポイントをキー コンテナーにマッピングすることにより、データ漏えいのリスクを軽減することができます。 プライベート リンクの詳細については、[https://aka.ms/akvprivatelink](../../../../articles/key-vault/general/private-link-service.md) を参照してください。 |DeployIfNotExists、Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/AzureKeyVault_Should_Use_PrivateEndpoint_DINE.json) |
 |[\[プレビュー\]: Configure key vaults to disable public network access (公衆ネットワーク アクセスを無効にするようにキー コンテナーを構成する)](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fac673a9a-f77d-4846-b2d8-a57f8e1c01dc) |キー コンテナーの公衆ネットワーク アクセスを無効にして、パブリック インターネット経由でアクセスできないようにします。 これにより、データ漏えいのリスクを軽減することができます。 詳細については、[https://aka.ms/akvprivatelink](../../../../articles/key-vault/general/private-link-service.md) を参照してください。 |Modify、Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/AzureKeyVaultFirewallEnabled_Modify.json) |

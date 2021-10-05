@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
-ms.date: 05/19/2021
-ms.openlocfilehash: 3f9eb3ccae99bfae472dc135fc4526964b3c3bde
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 09/27/2021
+ms.openlocfilehash: 6efbd254a74d2432985d451adf67a33b74d2e2c4
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111955726"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129081922"
 ---
 # <a name="create-a-dynamics-365-for-operations-offer"></a>Dynamics 365 for Operations オファーの作成
 
@@ -26,14 +26,35 @@ ms.locfileid: "111955726"
 
 ## <a name="create-a-new-offer"></a>新しいオファーを作成する
 
+[!INCLUDE [Workspaces view note](./includes/preview-interface.md)]
+
+#### <a name="workspaces-view"></a>[ワークスペース ビュー](#tab/workspaces-view)
+
+1. [パートナー センター](https://go.microsoft.com/fwlink/?linkid=2166002)にサインインします。
+
+1. ホーム ページで、 **[Marketplace offers]\(Marketplace のオファー\)** タイルを選択します。
+
+    [ ![パートナー センターのホーム ページにある [Marketplace offers]\(Marketplace のオファー\) タイルを示しています。](./media/workspaces/partner-center-home.png) ](./media/workspaces/partner-center-home.png#lightbox)
+
+1. [Marketplace offers]\(Marketplace のオファー\) ページで、 **[+ 新しいプラン]**  >  **[Dynamics 365 for Operations]** の順に選択します。
+
+    [ ![[Marketplace offers]\(Marketplace のオファー\) の [新しいプラン] ボタンのスクリーンショット。プランの種類である Dynamics 365 for Operations を確認できます。](media/dynamics-365/new-offer-dynamics-365-operations-workspaces.png) ](media/dynamics-365/new-offer-dynamics-365-operations-workspaces.png#lightbox)
+
+> [!IMPORTANT]
+> オファーが公開された後にパートナー センターで行った編集は、そのオファーを再公開した後にのみ Microsoft AppSource に反映されます。 変更後は必ずオファーを再公開するようにしてください。
+
+#### <a name="current-view"></a>[現在のビュー](#tab/current-view)
+
 1. [パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインします。
-2. 左側のナビゲーション メニューで、 **[商業マーケットプレース]**  >  **[概要]** の順に選択します。
-3. [概要] ページで、 **[+ 新しいプラン]**  >  **[Dynamics 365 for Operations]** の順に選択します。
+1. 左側のナビゲーション メニューで、 **[商業マーケットプレース]**  >  **[概要]** の順に選択します。
+1. [概要] ページで、 **[+ 新しいプラン]**  >  **[Dynamics 365 for Operations]** の順に選択します。
 
     :::image type="content" source="media/dynamics-365/new-offer-dynamics-365-operations.png" alt-text="左ペイン メニューと [新しいオファー] ボタン。":::
 
 > [!IMPORTANT]
 > オファーが公開された後にパートナー センターで行った編集は、そのオファーを再公開した後にのみ Microsoft AppSource に反映されます。 変更後は必ずオファーを再公開するようにしてください。
+
+---
 
 ## <a name="new-offer"></a>新しいプラン
 

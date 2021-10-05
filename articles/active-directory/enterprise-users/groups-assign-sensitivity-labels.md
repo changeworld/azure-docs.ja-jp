@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5bb00c2554b17ec68cfd1cffa0902bed421b9e4e
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 05ea462d08c50e6483aeb0968b00b6b18d0e7397
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123433073"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129092678"
 ---
 # <a name="assign-sensitivity-labels-to-microsoft-365-groups-in-azure-active-directory"></a>Azure Active Directory で Microsoft 365 グループに秘密度ラベルを割り当てる
 
@@ -45,11 +45,13 @@ Azure Active Directory (Azure AD) では、[Microsoft 365 コンプライアン�
 1. Azure AD 組織の現在のグループ設定を取得します。
 
     ```PowerShell
-    $Setting = Get-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id
+    $setting = (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ)
+    $template = Get-AzureADDirectorySettingTemplate -Id 62375ab9-6b52-47ed-826b-58e47e0e304b
+    $setting = $template.CreateDirectorySetting()
     ```
 
     > [!NOTE]
-    > この Azure AD 組織のグループ設定が作成されていない場合、上記のコマンドレットで、"引数が null であるため、パラメーター 'Id' にバインドできません" というエラーが表示されます。 この場合、まず設定を作成する必要があります。 「[グループの設定を構成するための Azure Active Directory コマンドレット](../enterprise-users/groups-settings-cmdlets.md)」の手順に従って、この Azure AD 組織のグループ設定を作成します。
+    > この Azure AD 組織のグループ設定が作成されていない場合、"引数が null であるため、パラメーター 'Id' にバインドできません" というエラーが表示されます。 この場合、まず設定を作成する必要があります。 「[グループの設定を構成するための Azure Active Directory コマンドレット](../enterprise-users/groups-settings-cmdlets.md)」の手順に従って、この Azure AD 組織のグループ設定を作成します。
 
 1. 次に、現在のグループ設定を表示します。
 
@@ -66,7 +68,7 @@ Azure Active Directory (Azure AD) では、[Microsoft 365 コンプライアン�
 1. 次に、変更を保存し、設定を適用します。
 
     ```PowerShell
-    Set-AzureADDirectorySetting -Id $Setting.Id -DirectorySetting $Setting
+    New-AzureADDirectorySetting -DirectorySetting $setting
     ```
 
 また、秘密度ラベルを Azure AD に同期する必要があります。 手順については、「[コンテナーの秘密度ラベルを有効化してラベルを同期する方法](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#how-to-enable-sensitivity-labels-for-containers-and-synchronize-labels)」を参照してください。

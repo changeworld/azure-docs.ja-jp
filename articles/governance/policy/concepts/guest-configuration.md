@@ -3,12 +3,12 @@ title: Azure Policy のゲスト構成機能について
 description: Azure Policy によりゲスト構成機能を使用して仮想マシン内の設定が監査または構成されるしくみについて説明します。
 ms.date: 07/15/2021
 ms.topic: conceptual
-ms.openlocfilehash: 12e23b8db546d2bc34bbe17871ac5fbebd7a2de8
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: d9da1454fa531bcc6526cc11dda3b341be0688df
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122769644"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129092625"
 ---
 # <a name="understand-the-guest-configuration-feature-of-azure-policy"></a>Azure Policy のゲスト構成機能について
 
@@ -78,8 +78,8 @@ Azure Policy のゲスト構成機能を使用するには、その前に、`Mic
 |Publisher|名前|バージョン|
 |-|-|-|
 |Amazon|Linux|2|
-|Canonical|Ubuntu Server|14.04 - 20.x|
-|Credativ|Debian|8 - 10.x|
+|Canonical|Ubuntu Server|16.04 - 20.x|
+|Credativ|Debian|9 - 10.x|
 |Microsoft|Windows Server|2012 - 2019|
 |Microsoft|Windows クライアント|Windows 10|
 |Oracle|Oracle-Linux|7.x - 8.x|

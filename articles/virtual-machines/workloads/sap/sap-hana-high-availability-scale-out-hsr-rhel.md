@@ -1,26 +1,22 @@
 ---
 title: RHEL での HSR と Pacemaker を使用した SAP HANA スケールアウト | Microsoft Docs
 description: RHEL での HSR と Pacemaker を使用した SAP HANA スケールアウト
-services: virtual-machines-windows,virtual-network,storage
-documentationcenter: saponazure
 author: rdeltcheva
 manager: juergent
-editor: ''
 tags: azure-resource-manager
-keywords: ''
 ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
 ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/26/2021
+ms.date: 09/24/2021
 ms.author: radeltch
-ms.openlocfilehash: 75ab5bb14ad06a7396ee549ebb773328160754d1
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: 36925ac45d4773407d28020b58ef4d7ac8b279e1
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110534498"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129053072"
 ---
 # <a name="high-availability-of-sap-hana-scale-out-system-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux での SAP HANA スケールアウト システムの高可用性 
 
@@ -30,7 +26,6 @@ ms.locfileid: "110534498"
 
 [anf-azure-doc]:../../../azure-netapp-files/index.yml
 [anf-avail-matrix]:https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all 
-[anf-register]:https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register
 [anf-sap-applications-azure]:https://www.netapp.com/us/media/tr-4746.pdf
 
 [2205917]:https://launchpad.support.sap.com/#/notes/2205917
@@ -324,12 +319,13 @@ Azure NetApp ボリュームは、[Azure NetApp Files に委任された](../../
 
 2. **[A]** NFS クライアント パッケージをインストールします。  
 
-    ```yum install nfs-utils ```
+   `yum install nfs-utils`
 
 
 3. **[AH]** HANA 用の Red Hat の構成。  
 
-    <https://access.redhat.com/solutions/2447641> および次の SAP note で説明されているように RHEL を構成します。  
+   <https://access.redhat.com/solutions/2447641> および次の SAP note で説明されているように RHEL を構成します。
+
    - [2292690 - SAP HANA DB: Recommended OS settings for RHEL 7 (SAP HANA DB: RHEL 7 に推奨される OS 設定)](https://launchpad.support.sap.com/#/notes/2292690)
    - [2777782 - SAP HANA DB:RHEL 8 に推奨される OS 設定](https://launchpad.support.sap.com/#/notes/2777782)
    - [2455582 - Linux:GCC 6.x でコンパイルされた SAP アプリケーションの実行](https://launchpad.support.sap.com/#/notes/2455582)
@@ -341,7 +337,7 @@ Azure NetApp ボリュームは、[Azure NetApp Files に委任された](../../
 
 この例では、共有 HANA ファイル システムが Azure NetApp Files に展開され、NFSv4 経由でマウントされます。  
 
-1. **[AH]** HANA データベース ボリュームのマウント ポイントを作成します。  
+1. **[AH]** HANA データベース ボリュームのマウント ポイントを作成します。
 
     ```bash
     mkdir -p /hana/shared
@@ -621,11 +617,11 @@ Azure NetApp ボリュームは、[Azure NetApp Files に委任された](../../
      * **[Enter Root User Name]\(ルート ユーザー名を入力\) [root]** : Enter キーを押して既定値をそのまま使用します
      * **[Select roles for host 'hana-s1-db2']\(ホスト 'hana-s1-db2' のロールを選択\) [1]** :1 (worker)
      * **[Enter Host Failover Group for host 'hana-s1-db2']\(ホスト 'hana-s1-db2' のホスト フェールオーバー グループを入力\) [既定値]** : Enter キーを押して既定値をそのまま使用します
-     * **[Enter Storage Partition Number for host 'hana-s1-db2']\(ホスト 'hana-s1-db2' のストレージ パーティション番号を入力\) [<<assign automatically>>]** : Enter キーを押して既定値をそのまま使用します
+     * **[Enter Storage Partition Number for host 'hana-s1-db2']\(ホスト 'hana-s1-db2' のストレージ パーティション番号を入力\) [\<\<assign automatically\>\>]** : Enter キーを押して既定値をそのまま使用します
      * **[Enter Worker Group for host 'hana-s1-db2']\(ホスト 'hana-s1-db2' のワーカー グループを入力\) [既定値]** : Enter キーを押して既定値をそのまま使用します
      * **[Select roles for host 'hana-s1-db3']\(ホスト 'hana-s1-db3' のロールを選択\) [1]** :1 (worker)
      * **[Enter Host Failover Group for host 'hana-s1-db3']\(ホスト 'hana-s1-db3' のホスト フェールオーバー グループを入力\) [既定値]** : Enter キーを押して既定値をそのまま使用します
-     * **[Enter Storage Partition Number for host 'hana-s1-db3']\(ホスト 'hana-s1-db3' のストレージ パーティション番号を入力\) [<<assign automatically>>]** : Enter キーを押して既定値をそのまま使用します
+     * **[Enter Storage Partition Number for host 'hana-s1-db3']\(ホスト 'hana-s1-db3' のストレージ パーティション番号を入力\) [\<\<assign automatically\>\>]** : Enter キーを押して既定値をそのまま使用します
      * **[Enter Worker Group for host 'hana-s1-db3']\(ホスト 'hana-s1-db3' のワーカー グループを入力\) [既定値]** : Enter キーを押して既定値をそのまま使用します
      * **[System Administrator (hn1adm) Password]\(システム管理者 (hn1adm) のパスワード\)** : パスワードを入力します
      * **[Enter SAP Host Agent User (sapadm) Password]\(SAP ホスト エージェント ユーザー (sapadm) のパスワードを入力\)** : パスワードを入力します
@@ -922,12 +918,13 @@ Azure NetApp ボリュームは、[Azure NetApp Files に委任された](../../
 
 3. **[AH]** クラスターでは、<sid\>adm のクラスター ノードで sudoers 構成が必要です。 この例では、新しいファイルを作成することで実現します。 `root` としてコマンドを実行します。    
     ```bash
-    cat << EOF > /etc/sudoers.d/20-saphana
-    # SAPHanaSR-ScaleOut needs for srHook
-     Cmnd_Alias SOK = /usr/sbin/crm_attribute -n hana_hn1_glob_srHook -v SOK -t crm_config -s SAPHanaSR
-     Cmnd_Alias SFAIL = /usr/sbin/crm_attribute -n hana_hn1_glob_srHook -v SFAIL -t crm_config -s SAPHanaSR
-     hn1adm ALL=(ALL) NOPASSWD: SOK, SFAIL
-     EOF
+    sudo visudo -f /etc/sudoers.d/20-saphana
+    # Insert the following lines and then save
+    Cmnd_Alias HANA_S1_SOK   = /usr/sbin/crm_attribute -n hana_hn1_site_srHook_HANA_S1 -v SOK -t crm_config -s SAPHanaSR
+    Cmnd_Alias HANA_S1_SFAIL = /usr/sbin/crm_attribute -n hana_hn1_site_srHook_HANA_S1 -v SFAIL -t crm_config -s SAPHanaSR
+    Cmnd_Alias HANA_S2_SOK   = /usr/sbin/crm_attribute -n hana_hn1_site_srHook_HANA_S2 -v SOK -t crm_config -s SAPHanaSR
+    Cmnd_Alias HANA_S2_SFAIL = /usr/sbin/crm_attribute -n hana_hn1_site_srHook_HANA_S2 -v SFAIL -t crm_config -s SAPHanaSR
+    hn1adm ALL=(ALL) NOPASSWD: HANA_S1_SOK, HANA_S1_SFAIL, HANA_S2_SOK, HANA_S2_SFAIL
     ```
 
 4. **[1,2]** 両方のレプリケーション サイトで SAP HANA を開始します。 <sid\>adm として実行します。  

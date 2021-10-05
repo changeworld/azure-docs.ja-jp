@@ -6,15 +6,15 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
-ms.date: 05/19/2021
-ms.openlocfilehash: 43ce147cc1d8cb9cb6bcc389ad02cfcf71038e34
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.date: 09/27/2021
+ms.openlocfilehash: 6056259817c24079ae1a2efc912a8251feeaa1ad
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110547807"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129081998"
 ---
-# <a name="how-to-create-a-dynamics-365-for-business-central-offer"></a>Dynamics 365 for Business Central オファーを作成する方法
+# <a name="create-a-dynamics-365-for-business-central-offer"></a>Dynamics 365 for Business Central オファーを作成する
 
 このアーティクルでは、新しい [Dynamics 365 Business Central](https://dynamics.microsoft.com/business-central/overview) オファーの作成方法について説明します。 このオファー タイプは、財務、業務、サプライ チェーン、CRM、プロジェクト管理、電子商取引など、幅広いビジネス プロセスをサポートするエンタープライズ リソース プランニング (ERP) サービスです。 Dynamics 365 のすべてのオファーは、弊社の認定プロセスを通過する必要があります。
 
@@ -26,18 +26,39 @@ ms.locfileid: "110547807"
 
 ## <a name="create-a-new-offer"></a>新しいオファーを作成する
 
+[!INCLUDE [Workspaces view note](./includes/preview-interface.md)]
+
+#### <a name="workspaces-view"></a>[ワークスペース ビュー](#tab/workspaces-view)
+
+1. [パートナー センター](https://go.microsoft.com/fwlink/?linkid=2166002)にサインインします。
+
+1. ホーム ページで、 **[Marketplace offers]\(Marketplace のオファー\)** タイルを選択します。
+
+    [ ![パートナー センターのホーム ページにある [Marketplace offers]\(Marketplace のオファー\) タイルを示しています。](./media/workspaces/partner-center-home.png) ](./media/workspaces/partner-center-home.png#lightbox)
+
+1. [Marketplace offers]\(Marketplace のオファー\) ページで、 **[+ 新しいプラン]**  >  **[Dynamics 365 for Business Central]** の順に選択します。
+
+    [ ![[新しいプラン] ボタンを示しています。新しいプランである Dynamics 365 Business Central を確認できます。](media/dynamics-365/new-offer-dynamics-365-business-central-workspaces.png) ](media/dynamics-365/new-offer-dynamics-365-business-central-workspaces.png#lightbox)
+
+> [!IMPORTANT]
+> オファーが公開された後にパートナー センターで行った編集は、そのオファーを再公開した後にのみ Microsoft AppSource に反映されます。 変更後は必ずオファーを再公開するようにしてください。
+
+#### <a name="current-view"></a>[現在のビュー](#tab/current-view)
+
 1. [パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインします。
-2. 左側のナビゲーション メニューで、 **[コマーシャル マーケットプレース]**  >  **[概要]** の順に選択します。
-3. [概要] ページで、 **[+ New offer (+ 新しいオファー)]**  >  **[Dynamics 365 Business Central]** の順に選択します。
+1. 左側のナビゲーション メニューで、 **[コマーシャル マーケットプレース]**  >  **[概要]** の順に選択します。
+1. [概要] ページで、 **[+ New offer (+ 新しいオファー)]**  >  **[Dynamics 365 Business Central]** の順に選択します。
 
     :::image type="content" source="media/dynamics-365/new-offer-dynamics-365-business-central.png" alt-text="左ペイン メニューと [新しいオファー] ボタン。":::
 
 > [!IMPORTANT]
 > オファーが公開された後にパートナー センターで行った編集は、そのオファーを再公開した後にのみ Microsoft AppSource に反映されます。 変更後は必ずオファーを再公開するようにしてください。
 
+---
+
 ## <a name="new-offer"></a>新しいプラン
 
-**[オファー ID]** を入力します。 これは、アカウントのオファーごとに一意の識別子です。
+表示されるダイアログ ボックスに、**プラン ID** を入力します。 これは、アカウントのオファーごとに一意の識別子です。
 
 - この ID は、オファーの Web アドレス内と Azure Resource Manager テンプレート内 (該当する場合) の顧客に表示されます。
 - 使用できるのは小文字と数字だけです。 ID にはハイフンとアンダースコアを含めることができますが、スペースは使用できず、文字数は 50 文字に制限されています。 たとえば、パブリッシャー ID が `testpublisherid` であれば、「**test-offer-1**」と入力すると、オファーの Web アドレスは `https://appsource.microsoft.com/product/dynamics-365/testpublisherid.test-offer-1` になります。

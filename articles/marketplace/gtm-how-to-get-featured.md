@@ -6,19 +6,19 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
-ms.date: 04/15/2021
-ms.openlocfilehash: 7c3a2a00c0323bc9e80b1d94d445f873d5b86d34
-ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
+ms.date: 09/23/2021
+ms.openlocfilehash: 60ed6920d6d4f914fc8f8b410c83ba124bf393c5
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112541340"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128646475"
 ---
 # <a name="how-to-get-featured-in-microsoft-appsource-and-azure-marketplace"></a>Microsoft AppSource および Azure Marketplace でおすすめになる方法
 
 Azure Marketplace や AppSource の **[おすすめアプリ]** セクションで、自分のアプリをおすすめにしてもらうことができます。
 
-* 最初に、試用版、コンサルティングまたはトランザクションのプランがある場合は、[コマーシャル マーケットプレースの特典](./gtm-your-marketplace-benefits.md)で **コマーシャル マーケットプレースのおすすめカテゴリ配置特典** の対象となる可能性があります。 対象となる場合、コマーシャル マーケットプレースの登録情報が、一覧の左側にあるカテゴリのいずれかで自動的におすすめになります。 おすすめの配置のカテゴリとタイミングは、可用性に基づいて決まります。 マーケットプレースの登録情報をさらに豊富なものにするために、[登録情報を最適化するためのベスト プラクティス (microsoft.com)](https://partner.microsoft.com/asset/detail/best-practices-for-optimizing-your-listing-mp4) のビデオをご覧ください。
+* 最初に、コンサルティングまたはトランザクションのプランがある場合は、[コマーシャル マーケットプレースの特典](./gtm-your-marketplace-benefits.md)で **コマーシャル マーケットプレースのおすすめカテゴリ配置特典** の対象となる可能性があります。 対象となる場合、コマーシャル マーケットプレースの登録情報が、一覧の左側にあるカテゴリのいずれかで自動的におすすめになります。 おすすめの配置のカテゴリとタイミングは、可用性に基づいて決まります。 マーケットプレースの登録情報をさらに豊富なものにするために、[登録情報を最適化するためのベスト プラクティス (microsoft.com)](https://partner.microsoft.com/asset/detail/best-practices-for-optimizing-your-listing-mp4) のビデオをご覧ください。
 * 次に、スポットの獲得に関する以下のベスト プラクティスと条件の一覧を確認します。
 
 米国での個人のクレジット スコアと同じように、おすすめアプリ選択アルゴリズムによって、Microsoft によるアプリに対するスコアが生成されます。  週ごとのおすすめアプリの選択は、アプリおよびサービスのパフォーマンスの計算に基づいて行われます。

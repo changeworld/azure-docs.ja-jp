@@ -2,14 +2,14 @@
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: include
-ms.date: 07/29/2021
+ms.date: 09/20/2021
 ms.author: tomfitz
-ms.openlocfilehash: 735f19f1c9f66db6d311c42528b36a44bf924ec0
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 0375a43e2cee9c973a957d96a9f74353d9f1ac2c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123227296"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128910545"
 ---
 Private Link を使用すると、仮想ネットワーク内のプライベート エンドポイント経由で、Azure サービスにアクセスできます。 プライベート リンクを Azure Resource Manager の操作と組み合わせると、特定のエンドポイントに存在しないユーザーがリソースを管理するのをブロックします。 悪意のあるユーザーがサブスクリプション内のアカウントに対する資格情報を取得した場合、そのユーザーは特定のエンドポイントにいないとリソースを管理できません。
 
@@ -17,6 +17,9 @@ Private Link を使用すると、仮想ネットワーク内のプライベー�
 
 * **プライベート アクセス** - ユーザーは、プライベート ネットワークからプライベート エンドポイントを経由してリソースを管理できます。
 * **データ流出** - ユーザーはスコープに含まれないリソースへのアクセスを拒否されます。
+
+> [!NOTE]
+> 現在、Azure Kubernetes Service (AKS) は ARM プライベート エンドポイント実装をサポートしていません。
 
 ## <a name="understand-architecture"></a>アーキテクチャについての理解
 

@@ -2,14 +2,14 @@
 title: Azure Backup のプライベート エンドポイントの作成と使用
 description: Azure Backup のプライベート エンドポイントを作成するプロセスについて説明します。プライベート エンドポイントを使用することで、リソースのセキュリティが維持しやすくなります。
 ms.topic: conceptual
-ms.date: 08/19/2021
+ms.date: 09/24/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: df65aad1247f21c4deda3f7ee71f657a3b288168
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: cf26b87d0232b05cd7860981faa58a9b315f3979
+ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122444240"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128708265"
 ---
 # <a name="create-and-use-private-endpoints-for-azure-backup"></a>Azure Backup のプライベート エンドポイントの作成と使用
 
@@ -126,6 +126,8 @@ Azure Resource Manager クライアントを使用してプライベート エ�
 
 ![Azure プライベート DNS ゾーンの DNS 構成](./media/private-endpoints/dns-configuration.png)
 
+>[!Note]
+>プロキシ サーバーを使用している場合、プロキシ サーバーをバイパスするか、プロキシ サーバー経由でバックアップを実行できます。 プロキシ サーバーのバイパス方法については、次のセクションに進んでください。 プロキシ サーバーを使用してバックアップする方法については、[Recovery Services コンテナーのプロキシ サーバー セットアップの詳細](#set-up-proxy-server-for-recovery-services-vault-with-private-endpoint)に関するページを参照してください。
 #### <a name="validate-virtual-network-links-in-private-dns-zones"></a>プライベート DNS ゾーン内の仮想ネットワーク リンクを検証する
 
 上記の **それぞれのプライベート DNS** ゾーン (Backup、BLOB、キュー) に対して、次の手順を行います。
@@ -158,6 +160,7 @@ Azure Resource Manager クライアントを使用してプライベート エ�
     > - [中国](/azure/china/resources-developer-guide#check-endpoints-in-azure)
     > - [ドイツ](../germany/germany-developer-guide.md#endpoint-mapping)
     > - [US Gov ](../azure-government/documentation-government-developer-guide.md)
+    > - [geo コード リスト - サンプル XML](scripts/geo-code-list.md)
 
 1. 次に、必要な DNS レコードを追加する必要があります。 Backup DNS ゾーンに追加する必要があるレコードを表示するには、上で作成したプライベート エンドポイントに移動し、左側のナビゲーション バーの下にある **[DNS 構成]** オプションに移動します。
 
@@ -522,7 +525,7 @@ $privateEndpoint = New-AzPrivateEndpoint `
 
 Azure VM またはオンプレミスのマシン用のプロキシ サーバーを構成するには、次の手順を実行します。
 
-1. 例外に次のドメインを追加し、プロキシ サーバーをバイパスします。
+1. プロキシ サーバーからアクセスする必要がある次のドメインを追加します。
    
    | サービス | ドメイン名 | Port |
    | ------- | ------ | ---- |
@@ -532,7 +535,16 @@ Azure VM またはオンプレミスのマシン用のプロキシ サーバー�
 
 1. プロキシ サーバー内でこれらのドメインへのアクセスを許可し、プロキシ サーバーが作成された VNET にプライベート DNS ゾーン (`*.privatelink.<geo>.backup.windowsazure.com`、`*.privatelink.blob.core.windows.net`、`*.privatelink.queue.core.windows.net`) をリンクするか、それぞれの DNS エントリと共にカスタム DNS サーバーを使用します。 <br><br> プロキシ サーバーが実行されている VNET と、プライベート エンドポイント NIC が作成された VNET をピアリングする必要があります。これにより、プロキシ サーバーがプライベート IP に要求をリダイレクトできるようになります。 
 
-次の図は、必須の DNS エントリを含むプライベート DNS ゾーンに VNet がリンクされているプロキシ サーバーがあるセットアップを示しています。 プロキシ サーバーには独自のカスタム DNS サーバーを含めることもでき、上記のドメインは条件付きで 169.63.129.16 に転送できます。
+   >[!NOTE]
+   >上のテキストで、`<geo>` はリージョン コードを示します (たとえば、米国東部と北ヨーロッパはそれぞれ *eus* と *ne*)。 リージョン コードについては、次の一覧を参照してください。
+   >
+   >- [すべてのパブリック クラウド](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/AzureRegionCodesList.docx)
+   >- [中国](/azure/china/resources-developer-guide#check-endpoints-in-azure)
+   >- [ドイツ](../germany/germany-developer-guide.md#endpoint-mapping)
+   >- [US Gov ](../azure-government/documentation-government-developer-guide.md)
+   >- [geo コード リスト - サンプル XML](scripts/geo-code-list.md)
+
+次の図は、必須の DNS エントリを含むプライベート DNS ゾーンに VNet がリンクされているプロキシ サーバーがあるセットアップ (Azure プライベート DNS ゾーンの使用) を示しています。 プロキシ サーバーには独自のカスタム DNS サーバーを含めることもでき、上記のドメインは条件付きで 169.63.129.16 に転送できます。 DNS 解決にカスタム DNS サーバー/ホスト ファイルを使用している場合、[DNS エントリの管理](/azure/backup/private-endpoints#manage-dns-records)と[保護の構成](/azure/backup/private-endpoints#configure-backup)に関するセクションを参照してください。
 
 :::image type="content" source="./media/private-endpoints/setup-with-proxy-server-inline.png" alt-text="プロキシ サーバーがあるセットアップを示す図。" lightbox="./media/private-endpoints/setup-with-proxy-server-expanded.png":::
 

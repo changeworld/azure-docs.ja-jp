@@ -16,12 +16,12 @@ ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68251270b6273f5a07391138e5c7210f1c46ba5a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6d7c00ed7d0f48901a44a3df4d96fbd7bc54a894
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93420531"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128632939"
 ---
 # <a name="azure-ad-connect-when-you-have-an-existing-tenant"></a>Azure AD Connect:既存のテナントがある場合
 Azure AD Connect の使い方に関するトピックではほとんどの場合、新しい Azure AD テナントで作業を開始すること、そしてユーザーまたはその他のオブジェクトがないことを想定しています。 しかし、ユーザーとその他のオブジェクトが存在する Azure AD テナントを既に使用していて Connect が必要になった場合は、このトピックを参照してください。
@@ -55,6 +55,8 @@ Connect で生成されたオブジェクトと属性値が同じであるオブ
 
 ### <a name="hard-match-vs-soft-match"></a>完全一致とあいまい一致
 Connect を新しくインストールする場合、完全一致とあいまい一致にはほとんど違いはありません。 違いが生じるのは、ディザスター リカバリーの際です。 Azure AD Connect でサーバーを失った場合、データを失うことなく新しいインスタンスをもう一度インストールできます。 初期インストール中に、sourceAnchor があるオブジェクトは Connect に送信されます。 その後、一致はクライアント (Azure AD Connect) によって評価されます。これは Azure AD で実行される場合よりもはるかに高速です。 完全一致は Connect と Azure AD の両方によって評価されます。 あいまい一致は Azure AD によってのみ評価されます。
+
+ Azure AD Connect でソフト マッチング機能を無効にする構成オプションを追加しました。 Microsoft では、クラウド専用アカウントを引き継ぐ目的で必要としない限り、ソフト マッチングは無効にすることをお客様に提案しています。 この[記事](https://docs.microsoft.com/powershell/module/msonline/set-msoldirsyncfeature?view=azureadps-1.0)では、ソフト マッチングを無効にする方法を紹介します。
 
 ### <a name="other-objects-than-users"></a>ユーザー以外のオブジェクト
 メールが有効なグループと連絡先については、proxyAddresses に基づいてあいまい一致を利用できます。 ユーザーについてのみ、(PowerShell を使用して) sourceAnchor/immutableID の更新のみを実行できます。このため、完全一致は適用されません。 メールが有効になっていないグループについては、あいまい一致も完全一致もサポートされていません。

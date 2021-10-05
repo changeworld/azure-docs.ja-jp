@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/28/2018
 ms.author: allensu
-ms.openlocfilehash: 545125877f8ef8e3b01aa24f6d65dbff6756c391
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: 7ab5e46f81e4102428e50a63247e59279a83e899
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122445115"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128661319"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>Azure CDN でのファイル圧縮によるパフォーマンスの向上
 ファイル圧縮は、サーバーからファイルを送信する前にファイル サイズを減らすことができるため、ファイルの転送速度とページ読み込みのパフォーマンスを向上させることができる簡単で効率的な方法です。 ファイル圧縮により、帯域幅のコストを軽減し、ユーザーへの応答を改善することができます。
@@ -97,7 +97,8 @@ Standard および Premium CDN レベルでは同じ圧縮機能が提供され�
 ### <a name="azure-cdn-standard-from-microsoft-profiles"></a>Azure CDN Standard from Microsoft プロファイル
 
 **Azure CDN Standard from Microsoft** プロファイルの場合、対象ファイルのみが圧縮されます。 圧縮を実行可能にするためのファイルの条件は、次のとおりです。
-- ただし、ファイルは[圧縮用に構成されている](#enabling-compression) MIME の種類である必要があります。
+- ファイルは[圧縮用に構成されている](#enabling-compression) MIME の種類である必要がある
+- 配信元の応答に "ID" *コンテンツエンコーディング* ヘッダーのみを含める
 - 1 KB より大きい
 - 8 MB 未満
 

@@ -12,12 +12,12 @@ ms.custom: references_regions
 ms.topic: article
 ms.date: 03/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: 46ebdd1f5cb3093b0c1c1a5bc3273cf1aa1afd8f
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.openlocfilehash: 4a2c4959d6a84e8561ac23924207744b6c65f88b
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122634829"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129053494"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 リリース ノート
 
@@ -30,15 +30,50 @@ ms.locfileid: "122634829"
 * バグの修正
 * 非推奨の機能
 
+## <a name="september-2021"></a>2021 年 9 月
+
+
+### <a name="improved-scale-management-and-monitoring-for-a-streaming-endpoint-in-the-portal"></a>ポータルでのストリーミング エンドポイントのスケール管理と監視の向上
+
+ストリーミング エンドポイントのポータル ページには、エグレス容量を管理し、CDN が構成されている場合とされていない場合の対象ユーザーへのリーチを見積もることが簡単にできる方法が用意されました。  配信のビットレートと予想される CDN キャッシュのヒット率を調整して、対象ユーザーのサイズを短時間で見積もることができ、さらに Premium ストリーミング エンドポイントにスケールアップする必要があるかどうかを判断するのに役立ちます。
+
+   [ ![ポータルでのストリーミング エンドポイントのスケーリングと監視](./media/release-notes/streaming-endpoint-monitor-inline.png) ](./media/release-notes/streaming-endpoint-monitor.png#lightbox)
+
+### <a name="streaming-endpoint-portal-page-now-shows-cpu-egress-and-latency-metrics"></a>ストリーミング エンドポイントのポータル ページに CPU、エグレス、待機時間のメトリックが表示される
+
+Azure portal のストリーミング エンドポイントで、CPU 負荷、エグレス帯域幅、エンドツーエンドの待機時間のメトリックを視覚化できるようになりました。 Azure Monitor の機能を使用して、ポータルで直接、CPU、エグレス、待機時間のメトリックに基づいて監視アラートを作成できるようになりました。
+
+### <a name="user-assigned-managed-identities-support-for-media-services-accounts"></a>Media Services アカウント用のユーザー割り当てマネージド ID のサポート
+
+ユーザー割り当てマネージド ID を使用すると、お客様のストレージ アカウントおよび関連付けられたキー コンテナーのセキュリティを強化できるようになります。 ユーザーのストレージ アカウントとキー コンテナーにアクセスできるのは、ユーザー割り当てマネージド ID に限定されます。  お客様はユーザーが管理する ID の有効期間を完全に制御できます。また、必要に応じて、特定のストレージ アカウントへのメディア サービス アカウントのアクセス権を簡単に取り消すことができます。
+
+### <a name="media-services-storage-accounts-page-in-the-portal-now-support-both-uami-and-sami"></a>ポータルの Media Services ストレージ アカウントのページで UAMI と SAMI の両方をサポート
+
+Media Services のストレージ アカウントに、ユーザー割り当てマネージド ID (UAMI) またはシステム割り当てマネージド ID (SAMI) を Azure portal で直接割り当てて管理できるようになりました。
+
+### <a name="bring-your-own-key-page-now-also-supports-both-uami-and-sami"></a>Bring Your Own Key で UAMI と SAMI の両方もサポートされるようになりました。
+Media Services のキー管理ポータル ページで、ユーザー割り当てマネージド ID (UAMI) またはシステム割り当てマネージド ID (SAMI) の構成と管理がサポートされるようになりました。
+
+   [ ![アカウント暗号化のための Bring Your Own Key](./media/release-notes/byok-managed-identity.png)](./media/release-notes/byok-managed-identity.png)
+
+
+### <a name="private-link-support-for-media-services"></a>Media Services のプライベート リンクのサポート
+各サービスのプライベート エンドポイントを作成することによって、コンテンツ保護と DRM のためにライブ イベント、ストリーミング エンドポイント、キー配信サービス エンドポイントへのパブリック アクセスを制限できるようになりました。 これにより、これらの各サービスへのパブリック アクセスが制限されます。 プライベート エンドポイントで構成されている構成済みの仮想ネットワーク (VNET) から送信されたトラフィックのみが、これらのエンドポイントに接続できます。
+
+### <a name="ip-allow-list-for-key-service"></a>キー サービスの IP 許可リスト
+DRM およびコンテンツ保護のために、特定のパブリック IP アドレスからキー配信サービスへのアクセスを許可できるようになりました。 ライブ イベントとストリーミング エンドポイントについては、それぞれのページで IP 許可リストの構成が既にサポートされています。
+
+また、Media Services アカウントへのパブリック インターネット アクセスを許可またはブロックする、アカウント レベルの機能フラグを使用できるようになりました。
+
 ## <a name="july-2021"></a>2021 年 7 月
 
-### <a name="net-sdk-microsoftazuremanagementmedia--500-release-available-in-nuget-coming-soon---early-september-2021"></a>.NET SDK (Microsoft.Azure.Management.Media) 5.0.0 リリースは NuGet (近日公開予定 - 2021 年 9 月上旬) で利用可能です。
+### <a name="net-sdk-microsoftazuremanagementmedia--500-release-available-in-nuget"></a>.NET SDK (Microsoft.Azure.Management.Media) 5.0.0 リリースが NuGet で利用可能
 
 [Microsoft.Azure.Management.Media](https://www.nuget.org/packages/Microsoft.Azure.Management.Media/5.0.0) .NET SDK バージョン 5.0.0 が NuGet でリリースされました。 このバージョンは、Open API (Swagger) ARM Rest API の [2021-06-01 安定](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2021-06-01)バージョンと連動するように生成されています。
 
 4\.0.0 リリースからの変更点について詳しくは、[変更ログ](https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/mediaservices/Microsoft.Azure.Management.Media/CHANGELOG.md)を参照してください。
 
-#### <a name="changes-in-the-500-net-sdk-release-coming-soon---early-september-2021"></a>5\.0.0 .NET SDK リリースの変更点 (近日公開予定 - 2021 年 9 月上旬)
+#### <a name="changes-in-the-500-net-sdk-release"></a>5\.0.0 .NET SDK リリースでの変更点
 
 * Media Services アカウントはシステムおよびユーザー割り当てマネージド ID 対応になりました。
 * **PublicNetworkAccess** オプションを Media Services アカウントに追加しました。 このオプションを Private Link 機能と共に使用すると、アクセスをプライベート ネットワークのみに制限し、パブリック ネットワークからのアクセスをすべてブロックすることができます。
@@ -48,8 +83,9 @@ ms.locfileid: "122634829"
 #### <a name="breaking-changes-in-tht-500-net-sdk-release"></a>5\.0.0 .NET SDK リリースの破壊的変更
 
 * 他のすべての Azure SDK と一貫性を保つため、**ApiErrorException** が **ErrorResponseException** に置換されました。 例外本文は変更されません。
+* 404 Not found を返すすべての呼び出しで、null が返されるのではなく **ErrorResponseException** が発生するようになりました。 この変更は、他の Azure SDK との一貫性を維持するために行われました
 * Media Service コンストラクターには、KeyDelivery パラメーターの後に新しい省略可能な PublicNetworkAccess パラメーターが与えられます。
-* MediaServiceIdentity の Type プロパティは、複数の型をコンマで区切って入れるために、ManagedIdentityType 列挙型から文字列に変更されました。 型の有効な文字列は、SystemAssigned または SystemAssigned、UserAssigned、または UserAssigned です。
+* **MediaServiceIdentity** の Type プロパティは、コンマで区切った複数の値を入れるために、ManagedIdentityType 列挙型から文字列に変更されました。 有効な文字列は、**SystemAssigned** または **UserAssigned** です。
 
 ## <a name="june-2021"></a>2021 年 6 月
 
@@ -71,7 +107,7 @@ Azure Private Link を使用すると、仮想ネットワーク内のプライ�
 
 米国西部 3 リージョンが一般提供となり、お客様が新しい Media Services アカウントを作成するときに使用できるようになりました。
 
-### <a name="key-delivery-supports-ip-allowlist-restrictions"></a>キー配信で IP 許可リストの制限がサポートされる
+### <a name="key-delivery-supports-ip-allow-list-restrictions"></a>キー配信で IP 許可リストの制限がサポートされる
 
 キー配信に対する IP 許可リストの制限を使用して、Media Services アカウントを構成できるようになりました。 新しい許可リストの設定は、SDK、ポータル、CLI を介して、Media Services アカウント リソースで使用できます。
 これにより、オペレーターは DRM ライセンスと AES-128 コンテンツ キーの配信を特定の IPv4 範囲に制限できます。
@@ -161,6 +197,8 @@ v2 API の Premium Encoder で HEVC を使用していたお客様は、Standard
 - 24 時間 365 日体制のライブ イベント サポート
 - ARM REST API、.NET Core 用のクライアント SDK、Node.js、Python、Java、Go、Ruby。
 - カスタマー マネージド キー、信頼されたストレージ統合、プライベート リンクのサポート、[その他](./migrate-v-2-v-3-migration-benefits.md)
+
+v3 API と SDK に対する更新の一部として、Media Services アカウントにメディア占有ユニット (MRU) は不要になりました。負荷に基づいてシステムによって自動的にスケールアップとスケールダウンが行われるためです。 詳細については、[MRU の移行ガイダンス](./migrate-v-2-v-3-migration-scenario-based-media-reserved-units.md)を参照してください。
 
 #### <a name="action-required"></a>必要な操作
 

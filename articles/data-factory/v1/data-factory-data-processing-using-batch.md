@@ -5,15 +5,16 @@ author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
 ms.service: data-factory
+ms.subservice: v1
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2568fc2ea133a0cdd49e0a2577ce1e580056a74c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8dc93266244c6dd806d7ab7457893d6d2c89ce13
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104783134"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128637650"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Data Factory と Batch を使用して大規模なデータセットを処理する
 > [!NOTE]
@@ -60,7 +61,7 @@ Data Factory には組み込みのアクティビティが含まれています�
 
 このダイアグラムは、Data Factory がデータの移動と処理を調整する方法を示しています。 また、Batch がどのようにデータを並列処理するかについても示しています。 簡単に参照できるように、このダイアグラムをダウンロードして印刷してください (11 x 17 インチまたは A3 サイズ)。 ダイアグラムにアクセスして印刷できるようにするには、「[HPC and data orchestration by using Batch and Data Factory](https://go.microsoft.com/fwlink/?LinkId=717686)」(Batch および Data Factory を使用した HPC とデータのオーケストレーション) を参照してください。
 
-[![大規模なデータ処理のダイアグラム](./media/data-factory-data-processing-using-batch/image1.png)](https://go.microsoft.com/fwlink/?LinkId=717686)
+[:::image type="content" alt-text="大規模なデータ処理のダイアグラム。" source="./media/data-factory-data-processing-using-batch/large-scale-data-processing-diagram.png":::
 
 処理の基本的な手順を次のリストに示します。 ソリューションには、エンド ツー エンド ソリューションをビルドするためのコードと説明が含まれています。
 
@@ -125,7 +126,7 @@ Azure サブスクリプションをお持ちでない場合は、すぐに無�
 
 1. CloudXplorer を使用している場合、次の構造でフォルダーおよびサブフォルダーを作成します。
 
-   ![フォルダーとサブフォルダーの構造](./media/data-factory-data-processing-using-batch/image3.png)
+   :::image type="content" source="./media/data-factory-data-processing-using-batch/image3.png" alt-text="フォルダーとサブフォルダーの構造":::
 
    `Inputfolder` と `outputfolder` は、`mycontainer` 内の最上位フォルダーです。 `inputfolder` フォルダー内には、日付時刻スタンプ (YYYY-MM-DD-HH 形式) の付いたサブフォルダーがあります。
 
@@ -135,7 +136,7 @@ Azure サブスクリプションをお持ちでない場合は、すぐに無�
 
 1. ファイルを BLOB ストレージ内の次の入力フォルダーにアップロードします。
 
-   ![入力フォルダー](./media/data-factory-data-processing-using-batch/image4.png)
+   :::image type="content" source="./media/data-factory-data-processing-using-batch/image4.png" alt-text="入力フォルダー":::
 
    Storage Explorer を使用している場合は、ファイル **file.txt** を **mycontainer** にアップロードします。 ツールバーの **[コピー]** を選択して、BLOB のコピーを作成します。 **[BLOB のコピー]** ダイアログ ボックスで、 **[宛先 BLOB 名]** を「`inputfolder/2015-11-16-00/file.txt`」に変更します。 この手順を繰り返して `inputfolder/2015-11-16-01/file.txt`、`inputfolder/2015-11-16-02/file.txt`、`inputfolder/2015-11-16-03/file.txt`、`inputfolder/2015-11-16-04/file.txt` などを作成します。 この操作では、フォルダーが自動的に作成されます。
 
@@ -397,7 +398,7 @@ public IDictionary<string, string> Execute(
 
 1. **\\bin\\Debug** フォルダー内のすべてのバイナリを含む zip ファイル、**MyDotNetActivity.zip** を作成します。 エラー発生時の問題の原因となったソース コードの行番号など、追加情報を取得するために、MyDotNetActivity.**pdb** ファイルを含めることもできます。
 
-   ![bin\Debug フォルダー一覧](./media/data-factory-data-processing-using-batch/image5.png)
+   :::image type="content" source="./media/data-factory-data-processing-using-batch/image5.png" alt-text="bin\Debug フォルダー一覧":::
 
 1. **MyDotNetActivity.zip** を BLOB ストレージ内の BLOB コンテナー `customactivitycontainer` に BLOB としてアップロードします。このコンテナーは、ADFTutorialDataFactory 内のリンクされたサービス StorageLinkedService が使用します。 BLOB コンテナー `customactivitycontainer` がまだ存在しない場合は作成します。
 
@@ -541,7 +542,7 @@ test custom activity Microsoft test custom activity Microsoft
 
 1. データ ファクトリが正常に作成されると、データ ファクトリの内容を表示する **[データ ファクトリ]** ページが表示されます。
 
-   ![[データ ファクトリ] ページ](./media/data-factory-data-processing-using-batch/image6.png)
+   :::image type="content" source="./media/data-factory-data-processing-using-batch/image6.png" alt-text="[データ ファクトリ] ページ":::
 
 #### <a name="step-2-create-linked-services"></a>手順 2:リンクされたサービスを作成します
 リンクされたサービスは、データ ストアまたはコンピューティング サービスをデータ ファクトリにリンクします。 この手順では、ストレージ アカウントと Batch アカウントをデータ ファクトリにリンクします。
@@ -551,13 +552,13 @@ test custom activity Microsoft test custom activity Microsoft
 
 1. コマンド バーの **[新しいデータ ストア]** を選択し、 **[Azure Storage]** を選択します。 Storage のリンクされたサービスを作成するときに使用する JSON スクリプトがエディターに表示されます。
 
-   ![新しいデータ ストア](./media/data-factory-data-processing-using-batch/image7.png)
+   :::image type="content" source="./media/data-factory-data-processing-using-batch/image7.png" alt-text="新しいデータ ストア":::
 
 1. **accountname** をストレージ アカウントの名前に置き換えます。 **accountkey** をストレージ アカウントのアクセス キーに置き換えます。 ストレージ アクセス キーを取得する方法については、「[ストレージ アカウントのアクセス キーの管理](../../storage/common/storage-account-keys-manage.md)」を参照してください。
 
 1. コマンド バーの **[デプロイ]** を選択して、リンクされたサービスをデプロイします。
 
-   ![配置](./media/data-factory-data-processing-using-batch/image8.png)
+   :::image type="content" source="./media/data-factory-data-processing-using-batch/image8.png" alt-text="展開":::
 
 #### <a name="create-an-azure-batch-linked-service"></a>Azure Batch のリンクされたサービスの作成
 この手順では、データ ファクトリのカスタム アクティビティの実行に使用される、Batch アカウント用にリンクされたサービスを作成します。
@@ -577,7 +578,7 @@ test custom activity Microsoft test custom activity Microsoft
       > [!IMPORTANT]
       > **[Batch アカウント]** ブレードの URL は、`<accountname>.<region>.batch.azure.com` という形式です。 JSON スクリプトの `batchUri` プロパティでは、URL から `<accountname>.` を削除する必要があります。 たとえば `"batchUri": "https://eastus.batch.azure.com"` です。
 
-      ![[Batch アカウント] ブレード](./media/data-factory-data-processing-using-batch/image9.png)
+      :::image type="content" source="./media/data-factory-data-processing-using-batch/image9.png" alt-text="[Batch アカウント] ブレード":::
 
       **poolName** プロパティでは、プール名の代わりにプール ID を指定することもできます。
 
@@ -805,27 +806,27 @@ test custom activity Microsoft test custom activity Microsoft
 
 1. Azure Portal の **[データ ファクトリ]** ブレードで、 **[ダイアグラム]** を選択します。
 
-   ![ダイアグラム](./media/data-factory-data-processing-using-batch/image10.png)
+   :::image type="content" source="./media/data-factory-data-processing-using-batch/image10.png" alt-text="Diagram (ダイアグラム)":::
 
 1. **[ダイアグラム]** ビューで、 **[InputDataset]** という入力データセットをダブルクリックします。
 
-   ![InputDataset](./media/data-factory-data-processing-using-batch/image11.png)
+   :::image type="content" source="./media/data-factory-data-processing-using-batch/image11.png" alt-text="InputDataset":::
 
 1. 5 個のスライスがすべて準備完了の **[InputDataset]** ブレードが表示されます。 各スライスの **[スライス開始時間]** と **[スライス終了時間]** に注意してください。
 
-   ![入力スライスの開始時刻と終了時刻](./media/data-factory-data-processing-using-batch/image12.png)
+   :::image type="content" source="./media/data-factory-data-processing-using-batch/image12.png" alt-text="入力スライスの開始時刻と終了時刻":::
 
 1. **[ダイアグラム]** ビューで、 **[OutputDataset]** を選択します。
 
 1. 出力スライスが作成された場合、5 個の出力スライスが **準備完了** の状態で表示されます。
 
-   ![出力スライスの開始時刻と終了時刻](./media/data-factory-data-processing-using-batch/image13.png)
+   :::image type="content" source="./media/data-factory-data-processing-using-batch/image13.png" alt-text="出力スライスの開始時刻と終了時刻":::
 
 1. ポータルを使用して、スライスに関連付けられているタスクを表示し、各スライスが実行された VM を確認します。 詳細については、「[Data Factory と Batch の統合](#data-factory-and-batch-integration)」を参照してください。
 
 1. 出力ファイルは、BLOB ストレージの `outputfolder` の `mycontainer` 以下に表示されます。
 
-   ![ストレージの出力ファイル](./media/data-factory-data-processing-using-batch/image15.png)
+   :::image type="content" source="./media/data-factory-data-processing-using-batch/image15.png" alt-text="ストレージの出力ファイル":::
 
    5 個の出力ファイルが表示されます (各入力スライスに 1 つずつ)。 出力ファイルごとに、次の出力のようなコンテンツがあります。
 
@@ -834,7 +835,7 @@ test custom activity Microsoft test custom activity Microsoft
     ```
    次のダイアグラムでは、データ ファクトリのスライスを Batch のタスクにマップする方法を示します。 この例では、スライスごとに 1 つだけを実行します。
 
-   ![スライス マッピングのダイアグラム](./media/data-factory-data-processing-using-batch/image16.png)
+   :::image type="content" source="./media/data-factory-data-processing-using-batch/image16.png" alt-text="スライス マッピングのダイアグラム":::
 
 1. フォルダー内の複数のファイルを試してみましょう。 フォルダー **2015-11-06-01** にある file.txt と同じ内容で、**file2.txt**、**file3.txt**、**file4.txt**、および **file5.txt** のファイルを作成します。
 
@@ -842,7 +843,7 @@ test custom activity Microsoft test custom activity Microsoft
 
 1. **[OutputDataset]** ブレードで、 **[スライス開始時間]** を **11/16/2015 01:00:00 AM** に設定したスライスを右クリックします。 **[実行]** を選択し、スライスを再実行または再度処理します。 スライスには、1 個のファイルではなく、5 個のファイルがあります。
 
-    ![ラン](./media/data-factory-data-processing-using-batch/image17.png)
+    :::image type="content" source="./media/data-factory-data-processing-using-batch/image17.png" alt-text="[実行]":::
 
 1. スライスを実行して、その状態が **[準備完了]** になると、このスライスの出力ファイル (**2015-11-16-01.txt**) の内容を確認します。 この出力ファイルは、BLOB ストレージの `outputfolder` 内の `mycontainer` 以下に表示されます。 スライスのファイルごとに 1 行あります。
 
@@ -862,7 +863,7 @@ test custom activity Microsoft test custom activity Microsoft
 #### <a name="data-factory-and-batch-integration"></a>Data Factory と Batch の統合
 Data Factory サービスによって、Batch に `adf-poolname:job-xxx` という名前のジョブが作成されます。
 
-![Batch ジョブ](media/data-factory-data-processing-using-batch/data-factory-batch-jobs.png)
+:::image type="content" source="media/data-factory-data-processing-using-batch/data-factory-batch-jobs.png" alt-text="Batch ジョブ":::
 
 スライスのアクティビティの実行ごとに、1 つのタスクがジョブに作成されます。 10 個のスライスを処理する準備ができたとき、ジョブには 10 個のタスクが作成されています。 プール内に複数のコンピューティング ノードがある場合、複数のスライスを並列して実行することができます。 コンピューティング ノードあたりのタスクの最大数が 1 より大きい場合、複数のスライスを同じコンピューティングで実行できます。
 
@@ -870,14 +871,14 @@ Data Factory サービスによって、Batch に `adf-poolname:job-xxx` とい�
 
 ポータルを使用して、スライスに関連付けられている Batch ジョブとそのタスクを表示し、各スライスが実行された VM を確認します。
 
-![Batch ジョブ タスク](media/data-factory-data-processing-using-batch/data-factory-batch-job-tasks.png)
+:::image type="content" source="media/data-factory-data-processing-using-batch/data-factory-batch-job-tasks.png" alt-text="Batch ジョブ タスク":::
 
 ### <a name="debug-the-pipeline"></a>パイプラインのデバッグ
 デバッグには、いくつかの基本的な技術があります。
 
 1. 入力スライスが **[準備完了]** に設定されていない場合、入力フォルダー構造が正しく、入力フォルダーに file.txt が存在することを確認します。
 
-   ![入力フォルダーの構造](./media/data-factory-data-processing-using-batch/image3.png)
+   :::image type="content" source="./media/data-factory-data-processing-using-batch/image3.png" alt-text="入力フォルダーの構造":::
 
 1. 問題のトラブルシューティングに役立つ情報をログに記録するには、カスタム アクティビティの **Execute** メソッドで、**IActivityLogger** オブジェクトを使用します。 ログに記録されたメッセージは user\_0.log ファイルに表示されます。
 
@@ -885,11 +886,11 @@ Data Factory サービスによって、Batch に `adf-poolname:job-xxx` とい�
 
    アクティビティの実行を選択すると、 **[アクティビティの実行の詳細]** ブレードにログ ファイルの一覧が表示されます。 user\_0.log ファイルにログに記録されたメッセージが表示されます。 パイプライン/アクティビティ JSON で再試行回数が 3 に設定されているので、エラーが発生した場合、3 つのアクティビティの実行が表示されます。 アクティビティの実行を選択すると、ログ ファイルが表示されます。このファイルを確認して、エラーのトラブルシューティングを行うことができます。
 
-   ![[OutputDataset] および [データ スライス] ブレード](./media/data-factory-data-processing-using-batch/image18.png)
+   :::image type="content" source="./media/data-factory-data-processing-using-batch/image18.png" alt-text="[OutputDataset] および [データ スライス] ブレード":::
 
    ログ ファイルの一覧で、**user-0.log** を選択します。 右側のパネルには、**IActivityLogger.Write** メソッドの使用結果が表示されます。
 
-   ![[アクティビティの実行の詳細] ブレード](./media/data-factory-data-processing-using-batch/image19.png)
+   :::image type="content" source="./media/data-factory-data-processing-using-batch/image19.png" alt-text="[アクティビティの実行の詳細] ブレード":::
 
    system-0.log では、システム エラー メッセージと例外を確認できます。
 
@@ -906,13 +907,13 @@ Data Factory サービスによって、Batch に `adf-poolname:job-xxx` とい�
 
 1. カスタム アクティビティの zip ファイルのすべてのファイルは、サブフォルダーがないトップ レベルに置く必要があります。
 
-   ![カスタム アクティビティの zip ファイル一覧](./media/data-factory-data-processing-using-batch/image20.png)
+   :::image type="content" source="./media/data-factory-data-processing-using-batch/image20.png" alt-text="カスタム アクティビティの zip ファイル一覧":::
 
 1. **assemblyName** (MyDotNetActivity.dll)、**entryPoint**(MyDotNetActivityNS.MyDotNetActivity)、**packageFile** (customactivitycontainer/MyDotNetActivity.zip)、**packageLinkedService** (zip ファイルを含む BLOB ストレージを示す必要があります) が正しい値に設定されていることを確認します。
 
 1. エラーを修正し、スライスを再処理する場合は、 **[OutputDataset]** ブレードのスライスを右クリックし、 **[実行]** を選択します。
 
-   ![[OutputDataset] ブレードの [実行] オプション](./media/data-factory-data-processing-using-batch/image21.png)
+   :::image type="content" source="./media/data-factory-data-processing-using-batch/image21.png" alt-text="[OutputDataset] ブレードの [実行] オプション":::
 
    > [!NOTE]
    > コンテナーは、`adfjobs` という BLOB ストレージ内にあります。 このコンテナーは自動的に削除されませんが、ソリューションのテストを完了した後に、安全に削除することができます。 同様に、データ ファクトリ ソリューションでは、`adf-\<pool ID/name\>:job-0000000001` という名前の Batch ジョブを作成します。 必要な場合は、ソリューションをテストした後、このジョブを削除することができます。

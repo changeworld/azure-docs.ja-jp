@@ -4,15 +4,15 @@ description: 組織内のデータ ソースをすばやくスキャンできる
 author: chandrakavya
 ms.author: kchandra
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: how-to
-ms.date: 12/02/2020
-ms.openlocfilehash: 9662652a6a40285ad382857975ec0dd04b8ba8be
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/27/2021
+ms.openlocfilehash: 0b9175a2795ac926c7adf93dc81f84ff7b5a4472
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96550853"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129207384"
 ---
 # <a name="create-a-scan-rule-set"></a>スキャン ルール セットを作成する
 
@@ -24,7 +24,7 @@ Azure Purview カタログで、スキャン ルール セットを作成する�
 
 スキャン ルール セットを作成するには、次の操作を行います。
 
-1. Azure Purview カタログで、 **[管理センター]** を選択します。
+1. Azure [Purview Studio](https://web.purview.azure.com/resource/) から、 **[Data Map]** を選択します。
 
 1. 左側のウィンドウで **[スキャン ルール セット]** を選択してから、 **[新規]** を選択し ます。
 

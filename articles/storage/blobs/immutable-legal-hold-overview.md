@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/22/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 1434f689f8f629fd04ec0c0b059a1298b32d5ac9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 39108c5c5fd823e313ce616fbb4f6d6135e7d81e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121781254"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128645761"
 ---
 # <a name="legal-holds-for-immutable-blob-data"></a>不変 BLOB データに対する法的な保持
 
@@ -53,7 +53,7 @@ BLOB のバージョンに対して訴訟ホールドを構成するには、ま
 
 #### <a name="audit-logging"></a>監査ログ
 
-有効な訴訟ホールドを持つ各コンテナーは、ポリシー監査ログを提供します。  ログにはユーザー ID、コマンドの種類、タイム スタンプ、訴訟ホールド タグが含まれます。 この監査ログは、SEC 17a-4(f) 規制ガイドラインに従い、ポリシーの有効期間の間、保持されます。
+有効な訴訟ホールドを持つ各コンテナーは、ポリシー監査ログを提供します。 ログにはユーザー ID、コマンドの種類、タイム スタンプ、訴訟ホールド タグが含まれます。 この監査ログは、SEC 17a-4(f) 規制ガイドラインに従い、ポリシーの有効期間の間、保持されます。
 
 すべての管理サービス アクティビティのより包括的なログは、[Azure アクティビティ ログ](../../azure-monitor/essentials/platform-logs-overview.md)に表示されます。 [Azure リソース ログ](../../azure-monitor/essentials/platform-logs-overview.md)には、データ操作に関する情報が保持されます。 規制や他の目的で必要になる可能性のあるログは、ユーザーが永続的に保存する必要があります。
 

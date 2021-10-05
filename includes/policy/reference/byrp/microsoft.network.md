@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 09/03/2021
+ms.date: 09/17/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 979e305a5831dfdcf05761eae30b6520aab28114
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 0f35e90494345e044b7a04604e4d6049bbaa9c2c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123479827"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128627420"
 ---
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -32,6 +32,7 @@ ms.locfileid: "123479827"
 |[\[プレビュー\]: プライベート DNS ゾーンを使用するよう Azure Recovery Services コンテナーを構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F942bd215-1a66-44be-af65-6a1c0318dbe2) |プライベート DNS ゾーンを使用して、プライベート エンドポイントの DNS 解決をオーバーライドします。 プライベート DNS ゾーンが仮想ネットワークにリンクされ、Recovery Services コンテナーに解決されます。 詳細については、[https://aka.ms/privatednszone](../../../../articles/private-link/private-endpoint-dns.md) を参照してください。 |DeployIfNotExists、Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Site%20Recovery/SiteRecovery_PrivateDnsZones_DeployIfNotExist.json) |
 |[プライベート DNS ゾーンを使用するよう Azure Synapse ワークスペースを構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1e5ed725-f16c-478b-bd4b-7bfa2f7940b9) |プライベート DNS ゾーンを使用して、プライベート エンドポイントの DNS 解決をオーバーライドします。 Azure Synapse ワークスペースを解決するために、プライベート DNS ゾーンが仮想ネットワークにリンクされています。 詳細については、[https://docs.microsoft.com/azure/synapse-analytics/security/how-to-connect-to-workspace-from-restricted-network#appendix-dns-registration-for-private-endpoint](../../../../articles/synapse-analytics/security/how-to-connect-to-workspace-from-restricted-network.md#appendix-dns-registration-for-private-endpoint) を参照してください。 |DeployIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Synapse/SynapseWorkspaceUsePrivateDnsZones_DeployIfNotExists.json) |
 |[プライベート DNS ゾーンを使用するように Azure Web PubSub サービスを構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0b026355-49cb-467b-8ac4-f777874e175a) |プライベート DNS ゾーンを使用して、プライベート エンドポイントの DNS 解決をオーバーライドします。 プライベート DNS ゾーンは、仮想ネットワークにリンクされ、Azure Web PubSub サービスに解決されます。 詳細については、[https://aka.ms/awps/privatelink](https://aka.ms/awps/privatelink) を参照してください。 |DeployIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Web%20PubSub/WebPubSub_PrivateEndpointDNSZone_DeployIfNotExists.json) |
+|[プライベート DNS ゾーンを使用するように、BotService リソースを構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6a4e6f44-f2af-4082-9702-033c9e88b9f8) |プライベート DNS ゾーンを使用して、プライベート エンドポイントの DNS 解決をオーバーライドします。 プライベート DNS ゾーンは、BotService 関連リソースを解決するために、仮想ネットワークにリンクします。 詳細については、[https://aka.ms/privatednszone](../../../../articles/private-link/private-endpoint-dns.md) を参照してください。 |DeployIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Bot%20Service/BotService_PrivateDNSZone_DeployIfNotExists.json) |
 |[プライベート DNS ゾーンを使用するように Cognitive Services アカウントを構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc4bc6f10-cb41-49eb-b000-d5ab82e2a091) |プライベート DNS ゾーンを使用して、プライベート エンドポイントの DNS 解決をオーバーライドします。 プライベート DNS ゾーンを仮想ネットワークにリンクして、Cognitive Services アカウントに解決されるようにします。 詳細については、[https://go.microsoft.com/fwlink/?linkid=2110097](../../../../articles/cognitive-services/cognitive-services-virtual-networks.md) を参照してください。 |DeployIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cognitive%20Services/CognitiveServices_PrivateDnsZones_DeployIfNotExists.json) |
 |[プライベート DNS ゾーンを使用するようにコンテナー レジストリを構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe9585a95-5b8c-4d03-b193-dc7eb5ac4c32) |プライベート DNS ゾーンを使用して、プライベート エンドポイントの DNS 解決をオーバーライドします。 プライベート DNS ゾーンは、Container Registry を解決するために、仮想ネットワークにリンクします。 詳細情報: [https://aka.ms/privatednszone](../../../../articles/private-link/private-endpoint-dns.md) および [https://aka.ms/acr/private-link](../../../../articles/container-registry/container-registry-private-link.md)。 |DeployIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Container%20Registry/ACR_PrivateDNSZone_DeployIfNotExists.json) |
 |[プライベート DNS ゾーンを使用するように CosmosDB アカウントを構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa63cc0bd-cda4-4178-b705-37dc439d3e0f) |プライベート DNS ゾーンを使用して、プライベート エンドポイントの DNS 解決をオーバーライドします。 プライベート DNS ゾーンは、CosmosDB アカウントを解決するために、仮想ネットワークにリンクします。 詳細については、[https://aka.ms/privatednszone](../../../../articles/private-link/private-endpoint-dns.md) を参照してください。 |DeployIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cosmos%20DB/Cosmos_PrivateDNSZone_DeployIfNotExists.json) |

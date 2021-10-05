@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 06/01/2021
-ms.openlocfilehash: cc3c837c4dddf744f141ad930a1e52a5e9f684c7
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.date: 09/27/2021
+ms.openlocfilehash: d7606595adb5c0d20b348bbe323d27af64e8d9cb
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111542809"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129082101"
 ---
 # <a name="test-and-publish-an-azure-application-offer"></a>Azure アプリケーション オファーのテストと発行
 
@@ -21,7 +21,27 @@ ms.locfileid: "111542809"
 
 ## <a name="submit-the-offer-for-publishing"></a>公開するオファーを送信する
 
-1. [パートナー センター](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)でコマーシャル マーケットプレース ダッシュボードにサインインします。
+#### <a name="workspaces-view"></a>[ワークスペース ビュー](#tab/workspaces-view)
+
+1. [パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインします。
+
+1. ホーム ページで、 **[Marketplace offers]\(Marketplace のオファー\)** タイルを選択します。
+
+    [ ![パートナー センターのホーム ページにある [Marketplace offers]\(Marketplace のオファー\) タイルを示しています。](./media/workspaces/partner-center-home.png) ](./media/workspaces/partner-center-home.png#lightbox)
+
+1. [Marketplace offers]\(Marketplace のオファー\) ページで、公開するオファーを選択します。
+1. ポータルの右上隅で、 **[レビューと公開]** を選択します。
+1. 各ページの **[状態]** 列に **[完了]** と表示されていることを確認します。 次の 3 つの状態のいずれかが表示されます。
+    - **[未開始]** – ページが不完全です。
+    - **[不完全]** – ページに必要な情報がないか、修正が必要なエラーがあります。 ページに戻って更新する必要があります。
+    - **[完了]** – ページが完了しました。 必須のデータはすべて入力済みであり、エラーはありません。
+1. いずれかのページの状態が **[完了]** 以外である場合は、ページ名を選択し、問題を修正してページを保存してから、 **[レビューと公開]** をもう一度選択して、このページに戻ります。
+1. すべてのページが完了したら、アプリが確実に正しくテストされるよう、 **[認定の注意書き]** ボックスに認定チームに向けたテストの指示を入力します。 アプリの理解に役立つ補足事項を提供します。
+1. オファーを公開するプロセスを開始するには、 **[公開]** を選択します。 **[オファーの概要]** ページが表示され、オファーの **公開ステータス** が示されます。
+
+#### <a name="current-view"></a>[現在のビュー](#tab/current-view)
+
+1. [パートナー センター](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)のコマーシャル マーケットプレースにサインインします。
 1. **[概要]** ページで、発行するオファーを選択します。
 1. ポータルの右上隅で、 **[レビューと公開]** を選択します。
 1. 各ページの **[状態]** 列に **[完了]** と表示されていることを確認します。 次の 3 つの状態のいずれかが表示されます。
@@ -31,6 +51,8 @@ ms.locfileid: "111542809"
 1. いずれかのページの状態が **[完了]** 以外である場合は、ページ名を選択し、問題を修正してページを保存してから、 **[レビューと公開]** をもう一度選択して、このページに戻ります。
 1. すべてのページが完了したら、アプリが確実に正しくテストされるよう、 **[認定の注意書き]** ボックスに認定チームに向けたテストの指示を入力します。 アプリの理解に役立つ補足事項を提供します。
 1. オファーを公開するプロセスを開始するには、 **[公開]** を選択します。 **[オファーの概要]** ページが表示され、オファーの **公開ステータス** が示されます。
+
+---
 
 オファーの公開ステータスは、公開プロセスを移動すると変更されます。 このプロセスの詳細については、「[検証と公開の手順](review-publish-offer.md#validation-and-publishing-steps)」を参照してください。
 

@@ -3,12 +3,12 @@ title: Azure Functions のアプリケーション設定のリファレンス
 description: Azure Functions のアプリケーション設定または環境変数の参照ドキュメントです。
 ms.topic: conceptual
 ms.date: 07/27/2021
-ms.openlocfilehash: 78e142fd97158fb64387950f9515ac168c216e5d
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 6b860e40acd118bc708ab00001707755272525b6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123108671"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128663613"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions のアプリケーション設定のリファレンス
 
@@ -335,7 +335,7 @@ Windows 上のイベント ドリブン スケーリング プラン内の関数
 
 Windows 上で実行されている Premium プランまたは従量課金プランにデプロイする場合にのみ使用されます。 Linux を実行する従量課金プランではサポートされていません。 この設定を変更または削除すると、関数アプリが起動しなくなることがあります。 詳細については、[こちらのトラブルシューティング記事](functions-recover-storage-account.md#storage-account-application-settings-were-deleted)を参照してください。
 
-デプロイ中に Azure Resource Manager テンプレートを使用して関数アプリを作成する場合、テンプレートに WEBSITE_CONTENTSHARE を含めないでください。 このアプリケーション設定はデプロイ中に生成されます。 詳細については、[関数アプリのリソース デプロイを自動化する](functions-infrastructure-as-code.md#windows)方法に関するページを参照してください。
+デプロイ中に Azure Resource Manager テンプレートを使用して関数アプリを作成する場合、テンプレートに WEBSITE_CONTENTSHARE を含めないでください。 このスロット設定はデプロイ中に生成されます。 詳細については、[関数アプリのリソース デプロイを自動化する](functions-infrastructure-as-code.md#windows)方法に関するページを参照してください。
 
 ## <a name="website_dns_server"></a>WEBSITE\_DNS\_SERVER
 

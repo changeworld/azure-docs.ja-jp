@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 07/13/2021
+ms.date: 09/07/2021
 ms.author: cherylmc
-ms.openlocfilehash: 8ff219e326f7c8a2bbc075594ff8ffb30e9b04f5
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: d44ccec62a9da63fccc45a0735ff16f615dfbb4b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114289168"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128643139"
 ---
 # <a name="azure-bastion-faq"></a>Azure Bastion に関する FAQ
 
@@ -126,6 +126,9 @@ Azure Bastion は、VNet またはピアリングされた VNet 内にデプロ�
 はい、Bastion 経由の接続は、1 つのテナントの異なるサブスクリプション間でピアリングされた Vnet に対して引き続き機能します。 2 つの異なるテナントにまたがるサブスクリプションはサポートされていません。 **[接続]** ドロップダウン メニューにある Bastion を表示するには、 **[サブスクリプション] > [グローバル サブスクリプション]** で、アクセス権を持つサブスクリプションを選択する必要があります。
 
 :::image type="content" source="./media/bastion-faq/global-subscriptions.png" alt-text="グローバル サブスクリプション フィルター。" lightbox="./media/bastion-faq/global-subscriptions.png":::
+
+### <a name="does-bastion-support-connectivity-to-azure-virtual-desktop"></a>Bastion は Azure Virtual Desktop への接続をサポートしていますか?
+いいえ。Azure Virtual Desktop への Bastion 接続はサポートされていません。
 
 ### <a name="i-have-access-to-the-peered-vnet-but-i-cant-see-the-vm-deployed-there"></a>ピアリングされた VNet へのアクセス権を持っているにも関わらず、デプロイされている VM が表示されません。
 

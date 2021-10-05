@@ -8,14 +8,14 @@ ms.date: 10/06/2019
 ms.author: karler
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 8eaac1c68c9cff329fcc7b2c408063f01762169b
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: bacf4f808a7e963c11e8790636dabe1f3f4e4a47
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122014569"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129044191"
 ---
-# <a name="use-distributed-tracing-with-azure-spring-cloud"></a>Azure Spring Cloud で分散トレースを使用する
+# <a name="use-distributed-tracing-with-azure-spring-cloud-deprecated"></a>Azure Spring Cloud で分散トレースを使用する (非推奨)
 
 Azure Spring Cloud の分散トレース ツールを使用すると、複雑な問題を簡単にデバッグおよび監視できます。 Azure Spring Cloud は、[Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) と Azure の [Application Insights](../azure-monitor/app/app-insights-overview.md) を統合します。 この統合により、Azure portal から強力な分散トレース機能を利用できます。
 

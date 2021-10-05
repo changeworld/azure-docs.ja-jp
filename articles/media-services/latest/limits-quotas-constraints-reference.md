@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 08/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 4c0cb8241f6eb284acecfcb5921db616af336da8
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: a269f2d93730b6219a2d29d797d94c101b5fdc57
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122866933"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129052825"
 ---
 <!-- If you update limits in this topic, make sure to also update https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#media-services-limits -->
 # <a name="azure-media-services-quotas-and-limits"></a>Azure Media Services のクォータと制限
@@ -74,7 +74,7 @@ ms.locfileid: "122866933"
 | ライブ イベントあたりのライブ出力 |3 <sup>(5)</sup> |
 | ライブ出力の最大期間 | [DVR ウィンドウのサイズ](live-event-cloud-dvr-time-how-to.md) |
 
-<sup>4</sup> ライブイベントの制限の詳細については、[ライブ イベントの種類の比較と制限](live-event-types-comparison-reference.md)に関する記事を参照してください。
+<sup>4</sup> ライブイベントの制限の詳細については、[ライブ イベントの種類の比較と制限](live-event-types-comparison-reference.md)に関する記事を参照してください。 選択したストリーミング ユース ケースとリージョナル データセンターに基づき、AMS では、Media Services アカウントにつき 5 つを超えるライブ イベントを収納できます。 アカウント クォータを増やすには、サポート リクエストを提出してください。
 
 <sup>5</sup> ライブ出力は作成すると開始され、削除されると停止します。
 

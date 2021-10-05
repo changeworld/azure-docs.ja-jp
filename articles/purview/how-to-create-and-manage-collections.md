@@ -8,21 +8,21 @@ ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 08/18/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 824f1f06171e83381b46a6df99d70e3003f08f7d
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 0a684cec230766119345b8fd8acd3df53cc3f25a
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123473048"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129213016"
 ---
 # <a name="create-and-manage-collections-in-azure-purview"></a>Azure Purview でコレクションを作成および管理する
 
 > [!NOTE]
-> 現時点では、このガイドは **2021年8月18日以降** に作成された Purview インスタンスにのみ適用されます。 8 月 18 日より前に作成されたインスタンスでもコレクションを作成できますが、これらのコレクションでアクセス許可を管理することはできません。 8 月 18 日より前に作成された Purview インスタンスのコレクションの作成については、ページの下部にある [**レガシ コレクション ガイド**](#legacy-collection-guide)を参照してください。
+> 現時点では、このガイドは **2021 年 8 月 18 日以降** に作成された Azure Purview インスタンスにのみ適用されます。 8 月 18 日より前に作成されたインスタンスでもコレクションを作成できますが、これらのコレクションでアクセス許可を管理することはできません。 8 月 18 日より前に作成された Purview インスタンスのコレクションの作成については、ページの下部にある [**レガシ コレクション ガイド**](#legacy-collection-guide)を参照してください。
 >
 > すべてのレガシ アカウントは、今後数週間以内に自動的にアップグレードされます。 Purview アカウントがアップグレードされると、メールで通知が届きます。 アカウントがアップグレードされたときの変更内容については、[アップグレードされたアカウントに関するガイド](concept-account-upgrade.md)を参照してください。
 
-Purview のコレクションは、ビジネスのフローによる資産とソースの整理に使用できますが、Purview 間のアクセスを管理するために使用されるツールでもあります。 このガイドでは、これらのコレクションの作成と管理に加えて、ソースを登録して資産をコレクションに追加する方法の手順について説明します。
+Azure Purview のコレクションは、ビジネスのフローによる資産とソースの整理に使用できますが、Purview 間のアクセスを管理するために使用されるツールでもあります。 このガイドでは、これらのコレクションの作成と管理に加えて、ソースを登録して資産をコレクションに追加する方法の手順について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -34,7 +34,7 @@ Purview のコレクションは、ビジネスのフローによる資産とソ
 
 ### <a name="check-permissions"></a>アクセス許可を確認してください
 
-Purview でコレクションを作成および管理するには、Purview 内で **コレクション管理者** である必要があります。 これらのアクセス許可は [Purview Studio](use-purview-studio.md) で確認できます。 Studio を見つけるには、[Azure portal](https://portal.azure.com) で Purview リソースに移動し、概要ページで [Purview Studio を開く] タイルを選択します。
+Purview でコレクションを作成および管理するには、Purview 内で **コレクション管理者** である必要があります。 これらのアクセス許可は [Purview Studio](https://web.purview.azure.com/resource/) で確認できます。 Studio を見つけるには、[Azure portal](https://portal.azure.com) で Purview リソースに移動し、概要ページで [Purview Studio を開く] タイルを選択します。
 
 1. 左ペインから [データ マップ] > [コレクション] を選択し、コレクション管理ページを開きます。
 
@@ -124,7 +124,7 @@ Purview でコレクションを作成および管理するには、Purview 内�
 
     :::image type="content" source="./media/how-to-create-and-manage-collections/select-role-assignments.png" alt-text="[ロールの割り当て] タブが強調表示されている Purview Studio コレクション ウィンドウのスクリーンショット。" border="true":::
 
-1. **[Edit role assignments (ロールの割り当ての編集)]** または [person (個人)] アイコンを選択して、各ロール メンバーを編集します。
+1. **[ロール割り当ての編集]** または人アイコンを選択して、各ロールメンバーを編集します。
 
     :::image type="content" source="./media/how-to-create-and-manage-collections/edit-role-assignments.png" alt-text="[ロールの割り当ての編集] ドロップダウン リストが選択されている Purview Studio コレクション ウィンドウのスクリーンショット。" border="true":::
 
@@ -277,7 +277,7 @@ Purview でコレクションを作成および管理するには、Purview 内�
 
     :::image type="content" source="./media/how-to-create-and-manage-collections/legacy-collection-view.png" alt-text="データ マップが開かれている Purview Studio ウィンドウのスクリーンショット。" border="true":::
 
-1. **[+ New collection (+ 新しいコレクション)]** を選択します。
+1. **[+ 新しいコレクション]** を選択します。
 
     :::image type="content" source="./media/how-to-create-and-manage-collections/legacy-collection-create.png" alt-text="Purview Studio ウィンドウのスクリーンショット。データ マップが開かれ、[+ 新しいコレクション] が強調表示されています。" border="true":::
 
@@ -285,7 +285,7 @@ Purview でコレクションを作成および管理するには、Purview 内�
 
     :::image type="content" source="./media/how-to-create-and-manage-collections/legacy-collection-name.png" alt-text="新しいコレクション ウィンドウが表示されている Purview Studio ウィンドウのスクリーンショット。" border="true":::
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 コレクションが作成されたので、以下のガイドに従ってリソースの追加やスキャンを行います。
 

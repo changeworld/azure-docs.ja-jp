@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 06/24/2021
+ms.date: 09/27/2021
 ms.author: alkohli
-ms.openlocfilehash: ece1d03787308613961fe56087f8b621a753c856
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: a969486194f66be5c7ce4c3973352ca036a025f8
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111572602"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129093119"
 ---
 # <a name="kubernetes-networking-on-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU デバイスでの Kubernetes ネットワーク
 
@@ -139,10 +139,10 @@ Add-HcsNetRoute -InterfaceAlias <Port number> -DestinationPrefix <Destination IP
 出力例を次に示します。
 
 ```output
-Add-HcsNetRoute -InterfaceAlias "Port3" -DestinationPrefix "192.168.21.0/24" -NextHop "192.168.20.1" -RouteMetric 100 
+Add-HcsNetRoute -InterfaceAlias "Port3" -DestinationPrefix "192.168.20.0/24" -NextHop "192.168.20.1" -RouteMetric 100 
 ```
 
-上のコマンドにより、宛先サブネット 192.168.21.0/24 を定義し、ネクスト ホップを 192.168.20.1 と指定し、このルーティング エントリにルーティング メトリック 100 を割り当てるエントリがルーティング テーブル内に作成されます。 ルーティング メトリックが小さいほど、ルートに割り当てられる優先順位は高くなります。
+上のコマンドにより、宛先サブネット 192.168.20.0/24 を定義し、ネクスト ホップを 192.168.20.1 と指定し、このルーティング エントリにルーティング メトリック 100 を割り当てるエントリがルーティング テーブル内に作成されます。 ルーティング メトリックが小さいほど、ルートに割り当てられる優先順位は高くなります。
 
 ## <a name="check-route-configuration"></a>ルート構成の確認
 

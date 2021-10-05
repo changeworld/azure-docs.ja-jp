@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/30/2021
+ms.date: 09/27/2021
 ms.author: hirsin
 ms.reviewer: marsma
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 301a386c9c9a21cf1f988ee62c19ca7cc60e7a39
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: ecbb461e45b19630319622e978ad3bd49a376e74
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123430002"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129092739"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft ID プラットフォームと OAuth 2.0 クライアント資格情報フロー
 
@@ -58,7 +58,7 @@ OAuth 2.0 クライアント資格情報付与フローでは、Web サービス
 
 この ACL ベースの認証パターンを有効にするために、Azure AD では、アプリケーションが別のアプリケーションのトークンを取得することを認可されている必要はありません。 そのため、`roles` 要求なしにアプリ専用トークンを発行できます。 API を公開するアプリケーションは、トークンを受け入れるために、アクセス許可チェックを実装する必要があります。
 
-アプリケーションに対するロールのないアプリケーション専用のアクセス トークンをアプリケーションが取得できないようにするには、[ユーザー割り当て要件がアプリに対して有効になるようにします](../manage-apps/add-application-portal-configure.md#configure-app-properties)。 これにより、ロールが割り当てられていないユーザーとアプリケーションは、このアプリケーションのトークンを取得できなくなります。
+アプリケーションに対するロールのないアプリケーション専用のアクセス トークンをアプリケーションが取得できないようにするには、[ユーザー割り当て要件がアプリに対して有効になるようにします](../manage-apps/assign-user-or-group-access-portal.md)。 これにより、ロールが割り当てられていないユーザーとアプリケーションは、このアプリケーションのトークンを取得できなくなります。 
 
 ### <a name="application-permissions"></a>アプリケーションのアクセス許可
 
@@ -69,13 +69,13 @@ ACL を使用する代わりに、API を使用して **アプリケーション
 * 任意のユーザーとしてのメールの送信
 * ディレクトリ データの読み取り
 
-独自の API でアプリケーションのアクセス許可を使用するには (Microsoft Graph の場合と異なり)、まず、Azure portal での API のアプリ登録でスコープを定義して、[API を公開する](quickstart-configure-app-expose-web-apis.md)必要があります。 次に、クライアント アプリケーションのアプリ登録でこれらのアクセス許可を選択して、[API へのアクセスを構成](quickstart-configure-app-access-web-apis.md)します。 API のアプリ登録でスコープを公開していない場合は、Azure portal でのクライアント アプリケーションのアプリ登録で、その API に対するアプリケーションのアクセス許可を指定できません。
+独自の API でアプリケーションのアクセス許可を使用するには (Microsoft Graph の場合と異なり)、まず、Azure portal での API のアプリ登録でスコープを定義して、[API を公開する](howto-add-app-roles-in-azure-ad-apps.md)必要があります。 次に、クライアント アプリケーションのアプリ登録でこれらのアクセス許可を選択して、[API へのアクセスを構成](howto-add-app-roles-in-azure-ad-apps.md#assign-app-roles-to-applications)します。 API のアプリ登録でスコープを公開していない場合は、Azure portal でのクライアント アプリケーションのアプリ登録で、その API に対するアプリケーションのアクセス許可を指定できません。
 
-アプリケーションとして認証する場合は (ユーザーの場合と異なり)、"*委任されたアクセス許可*" (ユーザーによって付与されるスコープ) を使用できません。 アプリケーションのアクセス許可 (ロールとも呼ばれる) を使用する必要があります。これは、管理者によってアプリケーションに付与されるか、Web API による事前承認を介して付与されます。
+アプリケーションとして認証する場合は (ユーザーの場合と異なり)、"*委任されたアクセス許可*" (ユーザーによって付与されるスコープ) を使用できません。アプリに代わって動作するユーザーが存在しないためです。 アプリケーションのアクセス許可 (ロールとも呼ばれる) を使用する必要があります。これは、管理者によってアプリケーションに付与されるか、Web API による事前承認を介して付与されます。
 
 アプリケーションのアクセス許可の詳細については、[アクセス許可と同意](v2-permissions-and-consent.md#permission-types)に関するセクションを参照してください。
 
-#### <a name="recommended-sign-the-user-into-your-app"></a>推奨:ユーザーをアプリにサインインさせる
+#### <a name="recommended-sign-the-admin-into-your-app-to-have-app-roles-assigned"></a>推奨: アプリのロールを割り当てられるように管理者でアプリにサインインする
 
 通常、アプリケーションのアクセス許可を使用するアプリケーションを構築する場合は、アプリ側に管理者がアプリのアクセス許可を承認するページまたはビューが必要です。 このページは、アプリのサインイン フローやアプリの設定の一部にするか、専用の "接続" フローにすることができます。 多くの場合、職場または学校の Microsoft アカウントでユーザーがサインインした後にのみ、”接続" ビューが表示されます。
 

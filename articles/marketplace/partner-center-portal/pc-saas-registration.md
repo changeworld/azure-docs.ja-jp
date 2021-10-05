@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/10/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: e7bcfe1afc063d89bc6a5339bf62521cd644b8ca
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1c769cdac870c7384495d41158bd7ad516608575
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105048342"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128632958"
 ---
 # <a name="register-a-saas-application"></a>SaaS アプリケーションを登録する
 
@@ -89,7 +89,7 @@ Post<br>
 
 ##### <a name="response"></a>*Response*
 
-|  名前     |  Type         |  説明 |
+|  名前     |  種類         |  説明 |
 |  ------   |  ---------------  | ------------ |
 |  200 OK   |  TokenResponse    |  要求成功。 |
 
@@ -109,7 +109,14 @@ Post<br>
   }
 ```
 
-応答の `"access_token"` フィールド値は、すべての SaaS Fulfillment API と Marketplace 計測 API を呼び出すときに承認パラメーターとして渡す `<access_token>` です。
+| 要素 | 説明 |
+| ------- | ----------- |
+| `access_token` | この要素は、すべての SaaS Fulfillment API と Marketplace 計測 API を呼び出すときに承認パラメーターとして渡す `<access_token>` です。 セキュリティで保護された REST API を呼び出すとき、トークンは `Authorization` 要求ヘッダー フィールドに "ベアラー" トークンとして埋め込まれ、API が呼び出し元を認証できるようにします。 | 
+| `expires_in` | アクセス トークンが発行されてから期限切れになるまでの有効継続時間 (秒単位)。 発行時刻はトークンの `iat` 要求で確認できます。 |
+| `expires_on` | アクセス トークンが期限切れになるまでの期間。 日付は "1970-01-01T0:0:0Z UTC" からの秒数として表されます (トークンの `exp` 要求に対応)。 |
+| `not_before` | アクセス トークンが有効になり、承認されるまでの期間。 日付は "1970-01-01T0:0:0Z UTC" からの秒数として表されます (トークンの `nbf` 要求に対応)。 |
+| `resource` | アクセス トークンの要求対象リソース。要求の `resource` クエリ文字列パラメーターと一致します。 |
+| `token_type` | トークンの種類。つまり "ベアラー" アクセス トークン。リソースが、このトークンのベアラーへのアクセスを提供できることを意味します。 |
 
 ## <a name="next-steps"></a>次のステップ
 
