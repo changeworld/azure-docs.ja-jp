@@ -98,7 +98,7 @@ ms.locfileid: "104655102"
 
 
 ## <a name="create-datasets"></a>データセットを作成する
-この手順では、**InputDataset** と **OutputDataset**。 これらのデータセットの種類は、**AzureBlob** です。 これらは、前のセクションで作成した Azure Storage のリンクされたサービスを参照します。 
+この手順では、2つのデータセット: **InputDataset** と **OutputDataset** を作成します。 これらのデータセットの種類は、**AzureBlob** です。 これらは、前のセクションで作成した Azure Storage のリンクされたサービスを参照します。 
 
 入力データセットは、入力フォルダーのソース データを表します。 入力データセットの定義では、ソース データを格納している BLOB コンテナー (**adftutorial**)、フォルダー (**input**)、およびファイル (**emp.txt**) を指定します。 
 
