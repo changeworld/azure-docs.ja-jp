@@ -78,6 +78,8 @@
           href: howto-conditional-access-policy-compliant-device.md
         - name: アクセスのブロック
           href: howto-conditional-access-policy-block-access.md
+    - name: 回復力の既定値を構成する
+      href: resilience-defaults.md
     - name: レガシ認証をブロックする
       href: block-legacy-authentication.md
     - name: レポート専用モードを構成する

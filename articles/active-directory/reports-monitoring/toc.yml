@@ -91,6 +91,8 @@
 - name: リファレンス
   expanded: true
   items:
+    - name: サインイン ログの基本情報識別子
+      href: reference-basic-info-identifiers.md
     - name: レポート用の Azure AD PowerShell コマンドレット
       href: reference-powershell-reporting.md
     - name: 監査ログの API リファレンス

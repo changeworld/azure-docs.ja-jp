@@ -106,6 +106,8 @@
       href: publish-devops.md
     - name: ARM テンプレートを使用して公開する
       href: publish-azure-resource-manager.md
+    - name: Azure Front Door を追加する
+      href: front-door-manual.md
 - name: リファレンス
   items:
     - name: Azure CLI

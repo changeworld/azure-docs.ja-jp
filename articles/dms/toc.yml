@@ -41,6 +41,14 @@
       items:
         - name: Azure SQL Database へ
           href: tutorial-sql-server-to-azure-sql.md
+        - name: Azure Data Studio を使用して Azure SQL Managed Instance (オンライン) へ
+          href: tutorial-sql-server-managed-instance-online-ads.md
+        - name: Azure Data Studio を使用して Azure SQL Managed Instance (オフライン) へ
+          href: tutorial-sql-server-managed-instance-offline-ads.md
+        - name: Azure Data Studio を使用して Azure SQL VM (オンライン) へ
+          href: tutorial-sql-server-to-virtual-machine-online-ads.md
+        - name: Azure Data Studio を使用して Azure SQL VM (オフライン) へ
+          href: tutorial-sql-server-to-virtual-machine-offline-ads.md
         - name: Azure SQL Managed Instance へ (オフライン)
           href: tutorial-sql-server-to-managed-instance.md
         - name: Azure SQL Managed Instance へ (オンライン)

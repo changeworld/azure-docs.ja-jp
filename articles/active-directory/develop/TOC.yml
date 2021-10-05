@@ -320,6 +320,12 @@
               href: scenario-mobile-call-api.md
             - name: 運用環境に移行する
               href: scenario-mobile-production.md
+    - name: アプリのテストとデプロイ
+      items:
+        - name: テスト環境を設定する
+          href: test-setup-environment.md
+        - name: 調整とサービスの制限
+          href: test-throttle-service-limits.md
     - name: Microsoft Authentication Library の使用
       displayName: MSAL
       items:

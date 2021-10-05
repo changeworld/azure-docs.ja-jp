@@ -170,6 +170,32 @@
       href: howto-load-balancer-imds.md
     - name: 送信専用のロード バランサーの構成
       href: egress-only.md
+    - name: IPv6
+      items:
+        - name: Standard パブリック
+          items:
+            - name: IPv6 を使用する Standard パブリック ロード バランサー - PowerShell
+              href: virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md
+            - name: IPv6 を使用する Standard パブリック ロード バランサー - Azure CLI
+              href: virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli.md
+            - name: IPv6 を使用する Standard パブリック ロード バランサー - ARM テンプレート
+              href: ipv6-configure-standard-load-balancer-template-json.md
+        - name: Standard 内部
+          items:
+            - name: IPv6 を使用する Standard 内部ロード バランサー - PowerShell
+              href: ipv6-dual-stack-standard-internal-load-balancer-powershell.md
+        - name: Basic パブリック
+          items:
+            - name: Basic Load Balancer を使用する IPv6 デュアル スタック アプリケーションをデプロイする - PowerShell
+              href: virtual-network-ipv4-ipv6-dual-stack-powershell.md
+            - name: Basic Load Balancer を使用して IPv6 デュアル スタック アプリケーションをデプロイする - Azure CLI
+              href: virtual-network-ipv4-ipv6-dual-stack-cli.md
+            - name: Basic Load Balancer を使用して IPv6 デュアル スタック アプリケーションをデプロイする - ARM テンプレート
+              href: ipv6-configure-template-json.md
+        - name: IPv4 アプリケーションに IPv6 を追加する - PowerShell
+          href: ipv6-add-to-existing-vnet-powershell.md
+        - name: IPv4 アプリケーションに IPv6 を追加する - Azure CLI
+          href: ipv6-add-to-existing-vnet-cli.md
     - name: トラブルシューティング
       items:
         - name: Azure Load Balancer のトラブルシューティング

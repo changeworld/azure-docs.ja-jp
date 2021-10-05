@@ -148,6 +148,8 @@
           href: access-app-virtual-network.md
         - name: アプリケーションをインターネットに公開する
           href: expose-apps-gateway-azure-firewall.md
+        - name: Palo Alto を構成する
+          href: how-to-configure-palo-alto.md
         - name: VNET での Azure Spring Cloud の実行に関するお客様の責任
           href: vnet-customer-responsibilities.md
         - name: 仮想ネットワークでの Azure Spring Cloud のトラブルシューティング

@@ -210,6 +210,9 @@
           href: /security/benchmark/azure/baselines/event-grid-security-baseline?toc=/azure/event-grid/toc.json
         - name: Azure Policy によるセキュリティ制御
           href: ./security-controls-policy.md
+        - name: Azure Policy の組み込み
+          displayName: 'samples, policies, definitions'
+          href: ./policy-reference.md
         - name: イベンド ハンドラーへのイベント配信の認証
           href: security-authentication.md
         - name: 発行クライアントの認証
@@ -252,7 +255,7 @@
           href: auth0-how-to.md
     - name: トピックまたはドメインのアクセス キーを取得する
       href: get-access-keys.md
-    - name: アクセス キーを使用したカスタム トピックへの投稿
+    - name: アクセス キーを使用してイベントのカスタム トピックを発行する
       href: post-to-custom-topic.md
     - name: HTTP エンドポイントでのイベントの受信
       href: receive-events.md
@@ -348,9 +351,6 @@
           href: /azure/templates/microsoft.eventgrid/topics
     - name: SDK
       href: sdk-overview.md
-    - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ./policy-reference.md
 - name: リソース
   items:
     - name: Microsoft Learn でスキルを身に付ける

@@ -25,6 +25,8 @@
   items:
     - name: Azure Defender for IoT の試用版のセットアップ
       href: tutorial-onboarding.md
+    - name: CyberArk を統合する
+      href: tutorial-cyberark.md
     - name: Forescout を統合する
       href: tutorial-forescout.md
     - name: Fortinet を統合する

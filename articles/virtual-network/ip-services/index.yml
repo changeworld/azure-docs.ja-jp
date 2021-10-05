@@ -1,0 +1,85 @@
+### YamlMime:Landing
+title: Virtual Network IP サービスのドキュメント
+summary: Azure Virtual Network IP サービスの使用方法について説明します。 クイックスタート、チュートリアル、サンプルなどを使用して、Azure で IP サービスを使用する方法を説明します。
+metadata:
+  title: Azure Virtual Network IP サービスのドキュメント - チュートリアル、クイックスタート、API リファレンス
+  description: Azure Virtual Network IP サービスの使用方法について説明します。 クイックスタート、チュートリアル、サンプルなどを使用して、NAT ゲートウェイをデプロイする方法を説明します。
+  services: virtual-network
+  ms.service: virtual-network
+  ms.subservice: ip-services
+  ms.topic: landing-page
+  ms.collection: collection
+  author: asudbring
+  ms.author: allensu
+  ms.date: 10/01/2021
+  ms.openlocfilehash: 39bfb032451dad44aaf8c7faa634115776cc66d4
+  ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 10/01/2021
+  ms.locfileid: "129367250"
+landingContent:
+- title: Virtual Network IP サービスについて
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Virtual Network IP サービスとは
+      url: ip-services-overview.md
+  - linkListType: concept
+    links:
+    - text: Azure でのパブリック IP アドレス
+      url: public-ip-addresses.md
+    - text: Azure パブリック IP アドレス プレフィックス
+      url: public-ip-address-prefix.md
+    - text: Azure のプライベート IP アドレス
+      url: private-ip-addresses.md
+- title: はじめに
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: パブリック IP アドレスの作成
+      url: create-public-ip-portal.md
+    - text: パブリック IP アドレス プレフィックスの作成
+      url: create-public-ip-prefix-portal.md
+  - linkListType: tutorial
+    links:
+    - text: VM 用にルーティング設定を構成する
+      url: tutorial-routing-preference-virtual-machine-portal.md
+    - text: 仮想マシンの両方のルーティング優先設定オプションを構成する
+      url: routing-preference-mixed-network-adapter-portal.md
+    - text: Azure Kubernetes サービスのルーティング設定を構成する
+      url: routing-preference-azure-kubernetes-service-cli.md
+- title: 機能とオプションの管理
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Azure パブリック IP アドレスを作成、変更、または削除する
+      url: virtual-network-public-ip-address.md
+    - text: Azure パブリック IP アドレス プレフィックスを作成、変更、または削除する
+      url: manage-public-ip-address-prefix.md
+    - text: Azure Virtual Network の IPv6 の概要
+      url: ipv6-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: パブリック IP アドレスのルーティング設定を構成する
+      url: routing-preference-portal.md
+    - text: パブリック IP アドレスをアップグレードする
+      url: public-ip-upgrade-portal.md
+    - text: 従来の予約済み IP アドレスをパブリック IP アドレスに移行する
+      url: public-ip-upgrade-classic.md
+- title: 仮想マシン
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Azure での既定の送信アクセス
+      url: default-outbound-access.md
+    - text: ルーティング設定とは
+      url: routing-preference-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: 静的パブリック IP アドレスを持つ仮想マシンを作成する
+      url: virtual-network-deploy-static-pip-arm-portal.md
+    - text: 仮想マシンのプライベート IP アドレスを構成する
+      url: virtual-networks-static-private-ip-arm-pportal.md
+    - text: 仮想マシンに複数の IP アドレスを割り当てる
+      url: virtual-network-multiple-ip-addresses-portal.md

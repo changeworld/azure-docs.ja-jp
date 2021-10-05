@@ -363,12 +363,17 @@
       items:
         - name: データへのラベル付け
           items:
-            - name: ラベルの付いたデータの取得
-              displayName: 'data, dataset, labeling'
-              href: how-to-create-labeling-projects.md
+            - name: 画像のラベル付けの設定
+              displayName: 'data, dataset'
+              href: how-to-create-image-labeling-projects.md
+            - name: テキストのラベル付けの設定
+              displayName: 'data, dataset'
+              href: how-to-create-text-labeling-projects.md
             - name: 画像とテキストにラベルを付ける
               displayName: 'data, dataset, labeling'
               href: how-to-label-data.md
+            - name: ラベル付けタスクをアウトソーシングする
+              href: how-to-outsource-data-labeling.md
             - name: ラベル付きのデータセットを作成する
               displayName: 'data, labels, torchvision'
               href: how-to-use-labeled-dataset.md
