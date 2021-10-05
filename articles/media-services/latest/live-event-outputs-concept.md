@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 10/23/2020
 ms.author: inhenkel
-ms.openlocfilehash: 5269be27a0e31e9626cd26960092356bce0d8ff4
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.openlocfilehash: fb80374976752961b5c199fc06a8acba572c4d89
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122635031"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129054473"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>Media Services のライブ イベントとライブ出力
 
@@ -221,9 +221,11 @@ IP アドレスが指定されておらず、規則の定義もない場合は�
 
 ## <a name="live-outputs"></a>ライブ出力
 
-ストリームがライブ イベントに流れ始めると、[アセット](/rest/api/media/assets)、[ライブ出力](/rest/api/media/liveoutputs)、[ストリーミング ロケーター](/rest/api/media/streaminglocators)を作成することにより、ストリーミング イベントを開始できます。 ライブ出力により、ストリームがアーカイブされ、[ストリーミング エンドポイント](/rest/api/media/streamingendpoints)を介して視聴者がストリームを使用できるようになります。  
+ストリームがライブ イベントに流れ始めると、[アセット](/rest/api/media/assets)、[ライブ出力](/rest/api/media/liveoutputs)、[ストリーミング ロケーター](/rest/api/media/streaminglocators)を作成することにより、ストリーミング イベントを開始できます。 ライブ出力により、ストリームがアーカイブされ、[ストリーミング エンドポイント](/rest/api/media/streamingendpoints)を介して視聴者がストリームを使用できるようになります。 
+
+AMS の既定の割り当ては、Media Services アカウントあたり 5 つのライブ イベントです。 この上限を引き上げる場合は、Azure portal にサポート チケットを提出してください。 AMS では、ストリーミングの状況や地域のデータセンターの可用性に応じて、ライブ イベントの上限を引き上げることができます。
 
 ライブ出力の詳細については、「[クラウド DVR の使用](live-event-cloud-dvr-time-how-to.md)」を参照してください。
 ## <a name="live-event-output-questions"></a>ライブ イベント出力の質問
 
-[FAQ のライブ イベントの質問](frequently-asked-questions.yml)に関する記事を参照してください。
+[FAQ のライブ イベントの質問](frequently-asked-questions.yml)に関する記事を参照してください。 ライブ イベント クォータの詳細については、[クォータと制限](limits-quotas-constraints-reference.md)に関する記事を参照してください

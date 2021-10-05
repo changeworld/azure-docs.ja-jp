@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 05/18/2021
 ms.author: duau
-ms.openlocfilehash: be1ffdecb727426f914a74970a720f4f19e51824
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 378ba28eaa4b68cb1d05fa0af5c11ca95bd52a8b
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122322381"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129210328"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door-standardpremium-preview"></a>Azure Front Door Standard/Premium (プレビュー) についてよく寄せられる質問
 
@@ -126,6 +126,8 @@ Azure Front Door は、グローバルに分散されたマルチ テナント �
         </system.webServer>
     </configuration>
     ```
+
+* Azure Front Door では、クライアントが Front Door に接続するときに使用する IP アドレスの一覧を提供する *AzureFrontDoor.Frontend* サービス タグもサポートされています。 Azure Front Door の後方にデプロイされたサービスへの接続が許可されている必要がある送信トラフィックを制御する場合は、*AzureFrontDoor.Frontend* サービス タグを使用できます。 Azure Front Door では、他の Azure サービスと内部的に統合するための追加のサービス タグ *AzureFrontDoor.FirstParty* もサポートされています。 Azure Front Door サービス タグのユース ケースの詳細については、「[利用可能なサービス タグ](../../virtual-network/service-tags-overview.md#available-service-tags)」を参照してください。
 
 ### <a name="can-the-anycast-ip-change-over-the-lifetime-of-my-front-door"></a>エニーキャスト IP は、Front Door の有効期間を通じて変更できますか?
 

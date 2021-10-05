@@ -9,12 +9,12 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 08/19/2021
 ms.topic: conceptual
-ms.openlocfilehash: 5c8918870274cb0ea443dd1f4c93f39c301c6287
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: d91b14057937275338ee1c96ee4025d66af6251d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122446502"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124794600"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services"></a>リリース ノート - Azure Arc 対応データ サービス
 
@@ -103,7 +103,7 @@ ms.locfileid: "122446502"
 
 #### <a name="data-controller"></a>データ コントローラー
 
-- Azure Arc データ コントローラーが Azure portal から削除されたとき、この Arc データ コントローラーにデプロイされた Azure Arc 対応 SQL マネージド インスタンスがある場合は、削除をブロックするための検証が行われます。 現在、この検証は、Azure Arc データ コントローラーの [概要] ページから削除が実行された場合にのみ適用されます。 
+- Azure portal から Azure Arc データ コントローラーが削除されたとき、この Arc データ コントローラーにデプロイされた Azure Arc 対応 SQL マネージド インスタンスがある場合は、削除をブロックするための検証が行われます。 現在、この検証は、Azure Arc データ コントローラーの [概要] ページから削除が実行された場合にのみ適用されます。 
 
 #### <a name="azure-arc-enabled-postgresql-hyperscale"></a>Azure Arc 対応 PostgreSQL Hyperscale
 
@@ -140,7 +140,7 @@ ms.locfileid: "122446502"
 
 ##### <a name="point-in-time-restorepitr-supportability-and-limitations"></a>ポイントインタイム リストア (PITR) のサポートと制限事項:
     
--  1 つの Azure Arc 対応 SQL マネージド インスタンスから、別の Azure Arc 対応 SQL マネージド インスタンスへの復元は、サポートされていません。  データベースは、バックアップが作成されたのと同じ Arc 対応 SQL Managed Instance にのみ復元できます。
+-  1 つの Azure Arc 対応 SQL マネージド インスタンスから別の Azure Arc 対応 SQL マネージド インスタンスへの復元は、サポートされていません。  データベースは、バックアップが作成されたのと同じ Azure Arc 対応 SQL Managed Instance にのみ復元できます。
 -  ポイントインタイム リストアの目的のためには、データベースの名前変更は現在サポートされていません。
 -  現時点では、ポイントインタイム リストアに許可される時間枠に関する情報を提供する CLI コマンドや API はありません。 データベースが作成された日時以降の妥当な期間内の時間を指定することができ、タイムスタンプが有効な場合は復元が機能します。 タイムスタンプが有効でない場合は、許可される期間がエラー メッセージを介して示されます。
 -  TDE 対応データベースの復元はサポートされていません。
@@ -188,7 +188,7 @@ az extension add --name arcdata
 
 Azure Arc 対応 PostgreSQL Hyperscale の場合は、`azdata arc sql postgres...` を `az postgres arc-server...` に置き換えます。
 
-`azdata` コマンドにこれまで存在していたパラメーターに加えて、Azure CLI 拡張機能 `arcdata` の同じコマンドには、`--k8s-namespace` や `--use-k8s` などのいくつかの新しいパラメーターが必須になりました。 `--use-k8s` パラメーターは、コマンドを Kubernetes API と ARM API のどちらに送る必要があるのかを区別するために使用されます。 現在のところ、Arc 対応データ サービス用の Azure CLI コマンドはすべて、Kubernetes API のみをターゲットにしています。
+`azdata` コマンドにこれまで存在していたパラメーターに加えて、Azure CLI 拡張機能 `arcdata` の同じコマンドには、`--k8s-namespace` や `--use-k8s` などのいくつかの新しいパラメーターが必須になりました。 `--use-k8s` パラメーターは、コマンドを Kubernetes API と ARM API のどちらに送る必要があるのかを区別するために使用されます。 現在のところ、Azure Arc 対応データ サービス用の Azure CLI コマンドはすべて、Kubernetes API のみをターゲットにしています。
 
 パラメーター名の短い形式 (たとえば `--core-limit` を `-cl` とするなど) の一部は、削除または変更されています。 新しいパラメーターの短い名前または長い名前を使用してください。
 
@@ -204,7 +204,7 @@ OpenDistro セキュリティ パックが削除されました。 Kibana への
 
 #### <a name="crd-version-bump-to-v1beta1"></a>CRD バージョン `v1beta1` への更新
 
-このリリースでは、すべての CRD のバージョンが `v1alpha1` から `v1beta1` に更新されています。 2021 年 6 月のリリースより前に Arc 対応データ サービスのバージョンをデプロイした場合は、アンインストール プロセスの一環としてすべての CRD を必ず削除してください。 2021 年 6 月のリリースでデプロイされた新しい CRD には、バージョンとして v1beta1 が与えられます。
+このリリースでは、すべての CRD のバージョンが `v1alpha1` から `v1beta1` に更新されています。 2021 年 6 月のリリースより前に Azure Arc 対応データ サービスのバージョンをデプロイしている場合は、アンインストール プロセスの一環としてすべての CRD を必ず削除してください。 2021 年 6 月のリリースでデプロイされた新しい CRD には、バージョンとして v1beta1 が与えられます。
 
 #### <a name="azure-arc-enabled-sql-managed-instance"></a>Azure Arc 対応 SQL Managed Instance
 
@@ -218,13 +218,13 @@ OpenDistro セキュリティ パックが削除されました。 Kibana への
 
 #### <a name="data-controller"></a>データ コントローラー
 
-- Azure portal から直接接続モードでデータ コントローラーをデプロイするユーザー エクスペリエンスが効率化されました。 Kubernetes クラスターが Arc 対応になると、Arc データ コントローラー作成ウィザードを使用して、ポータルから 1 回の操作でデータ コントローラーを完全にデプロイできます。 このようにデプロイすると、カスタムの場所と Arc 対応データ サービス拡張機能 (ブートストラップ) も作成されます。 カスタムの場所や拡張機能を事前に作成し、それらを使用するようにデータ コントローラーのデプロイを構成することもできます。
+- Azure portal から直接接続モードでデータ コントローラーをデプロイするユーザー エクスペリエンスが効率化されました。 Kubernetes クラスターが Azure Arc 対応になると、Arc データ コントローラー作成ウィザードを使用して、ポータルから 1 回の操作でデータ コントローラーを完全にデプロイできます。 このようにデプロイすると、カスタムの場所と Azure Arc 対応データ サービス拡張機能 (ブートストラップ) も作成されます。 カスタムの場所や拡張機能を事前に作成し、それらを使用するようにデータ コントローラーのデプロイを構成することもできます。
 - 新しい `Infrastructure` プロパティは、Arc データ コントローラーをデプロイするときに必須のプロパティです。 このプロパティは課金の目的のために必要になります。 詳細は一般提供時に示されます。
 - Azure portal でのデータ コントローラーのユーザー エクスペリエンスに関する、さまざまな操作性の向上。たとえば、Kubernetes クラスターでのデプロイ プロセスの途中にあるリソースのデプロイ状態をより正確に把握できます。
 - データ コントローラーによってログが (必要に応じて) 自動的にアップロードされ、メトリックも直接接続モードで Azure にアップロードされるようになりました。
 - 監視スタック (メトリックとログ データベースまたはダッシュボード) は、独自のカスタム リソース定義 (CRD) `monitors.arcdata.microsoft.com` にパッケージ化されるようになりました。 このカスタム リソースが作成されると、監視スタック ポッドが作成されます。 削除されると、監視スタック ポッドが削除されます。 データ コントローラーが作成されると、監視カスタム リソースが自動的に作成されます。
 - 直接接続モード (プレビュー) でサポートされる新しいリージョン: 米国東部 2、米国西部 2、米国中南部、英国南部、フランス中部、東南アジア、オーストラリア東部。
-- 概要ブレードのカスタムの場所リソース グラフに、デプロイされている Arc 対応データ サービス リソースが表示されます。
+- 概要ブレードのカスタムの場所リソース グラフに、デプロイされている Azure Arc 対応データ サービス リソースが表示されます。
 - データ コントローラーの診断と解決策が Azure portal に追加されました。
 - Arc 関連のすべてのカスタム リソースに新しい `Observed Generation` プロパティが追加されました。
 - 資格情報マネージャー サービスが追加され、データ コントローラーによって管理されているすべてのサービスへの証明書の自動配布が処理されます。
@@ -235,7 +235,7 @@ OpenDistro セキュリティ パックが削除されました。 Kibana への
 - Azure Arc PostgreSQL Hyperscale デプロイで、nodeSelector、nodeAffinity、およびアンチアフィニティを使用したノード割り当て戦略に対して Kubernetes ポッドがサポートされます。
 - PostgreSQL Hyperscale サーバー グループをデプロイする場合、または Azure Data Studio と Azure portal からデプロイした後に、ロール (コーディネーターまたは worker) ごとにコンピューティング パラメーター (仮想コアとメモリ) を構成できます。
 - Azure portal から、PostgreSQL Hyperscale サーバー グループに作成された PostgreSQL 拡張機能の一覧を表示できるようになりました。
-- Azure portal から、Azure に直接接続されているデータ コントローラー上の Arc 対応 PostgreSQL Hyperscale グループを削除できます。
+- Azure portal から、Azure に直接接続されているデータ コントローラー上の Azure Arc 対応 PostgreSQL Hyperscale グループを削除できます。
 
 
 #### <a name="azure-arc-enabled-sql-managed-instance"></a>Azure Arc 対応 SQL Managed Instance
@@ -273,7 +273,7 @@ OpenDistro セキュリティ パックが削除されました。 Kibana への
 
 - Azure portal から、データ コントローラー、SQL マネージド インスタンス、および PostgreSQL Hyperscale サーバー グループを作成および削除します。
 - Azure Arc データ サービスを削除するときにポータル アクションを検証します。 たとえば、データ コントローラーを使用してデプロイされた SQL マネージド インスタンスがある場合に、そのデータ コントローラーを削除しようとすると、ポータルによって警告が表示されます。
-- Azure portal を使用して、Arc 対応のデータ コントローラーをデプロイするときに、カスタム設定をサポートするカスタム構成プロファイルを作成します。
+- Azure portal を使用して Azure Arc 対応のデータ コントローラーをデプロイするときに、カスタム設定をサポートするカスタム構成プロファイルを作成します。
 - 必要に応じて、直接接続モードでログを Azure Log Analytics ワークスペースに自動的にアップロードします。
 
 #### <a name="azure-arc-enabled-postgresql-hyperscale"></a>Azure Arc 対応 PostgreSQL Hyperscale
@@ -287,7 +287,7 @@ OpenDistro セキュリティ パックが削除されました。 Kibana への
 
 #### <a name="azure-arc-enabled-sql-managed-instance"></a>Azure Arc 対応 SQL Managed Instance
 
-- Arc 対応 SQL Managed Instance の新しい [Azure CLI 拡張機能](/cli/azure/azure-cli-extensions-overview)にも `az sql mi-arc <command>` と同じコマンドがあります。 Arc 対応 SQL Managed Instance のコマンドはすべて、`az sql mi-arc` にあります。 Arc 関連の `azdata` コマンドはすべて非推奨となり、今後のリリースで Azure CLI に移行します。
+- Azure Arc 対応 SQL Managed Instance の新しい [Azure CLI 拡張機能](/cli/azure/azure-cli-extensions-overview)にも `az sql mi-arc <command>` と同じコマンドがあります。 Azure Arc 対応 SQL Managed Instance のコマンドはすべて、`az sql mi-arc` にあります。 Arc 関連の `azdata` コマンドはすべて非推奨となり、今後のリリースで Azure CLI に移行します。
 
    拡張機能の追加するには:
 
@@ -484,7 +484,7 @@ Azure データ CLI (`azdata`) バージョン番号:20.2.3。 `azdata` は、�
 
 ## <a name="september-2020"></a>2020 年 9 月
 
-Azure Arc 対応データ サービスは、パブリック プレビュー用にリリースされています。 Arc 対応データ サービスを使用すると、どこからでもデータ サービスを管理できます。
+Azure Arc 対応データ サービスは、パブリック プレビュー用にリリースされています。 Azure Arc 対応データ サービスを使用すると、どこからでもデータ サービスを管理できます。
 
 - SQL Managed Instance
 - PostgreSQL Hyperscale

@@ -4,12 +4,12 @@ description: プライベート Azure Kubernetes Service (AKS) クラスター�
 services: container-service
 ms.topic: article
 ms.date: 8/30/2021
-ms.openlocfilehash: 69366f82c746d1d436d437e2892b010331ecf967
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: dcf969745fcc3c98b5bd0a9ba3681be602b73eb1
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123429030"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129210214"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>プライベート Azure Kubernetes Service クラスターを作成する
 
@@ -88,23 +88,26 @@ az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --lo
 az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --enable-managed-identity --assign-identity <ResourceId> --private-dns-zone <custom private dns zone ResourceId> --fqdn-subdomain <subdomain-name>
 ```
 
-## <a name="create-a-private-aks-cluster-with-a-public-dns-address"></a>パブリック DNS アドレスがあるプライベート AKS クラスターを作成する
+## <a name="create-a-private-aks-cluster-with-a-public-fqdn"></a>パブリック FQDN があるプライベート AKS クラスターを作成する
 
 前提条件:
 
-* aks-preview 拡張機能バージョン 0.5.29 以降を備えた Azure CLI。
+* 2\.28.0 以上の Azure CLI、または aks-preview 拡張機能バージョン 0.5.29 以降を備えた Azure CLI。
 * ARM または REST API を使用する場合、AKS API バージョンは 2021-05-01 以降である必要があります。
 
 パブリック DNS オプションを利用すると、プライベート クラスターのルーティング オプションを簡略化できます。  
 
 ![パブリック DNS](https://user-images.githubusercontent.com/50749048/124776520-82629600-df0d-11eb-8f6b-71c473b6bd01.png)
 
-1. プライベート AKS クラスターをプロビジョニングするときに `--enable-public-fqdn` を指定すると、AKS は、その FQDN の追加の A レコードを Azure パブリック DNS に作成します。 エージェント ノードにより引き続きプライベート DNS ゾーンの A レコードが使用され、API サーバーとの通信のためにプライベート エンドポイントのプライベート IP アドレスが解決されます。
+1. プライベート AKS クラスターをプロビジョニングすると、既定では AKS によって追加のパブリック FQDN とそれに対応する A レコードが Azure パブリック DNS に作成されます。 エージェント ノードにより引き続きプライベート DNS ゾーンの A レコードが使用され、API サーバーとの通信のためにプライベート エンドポイントのプライベート IP アドレスが解決されます。
 
-2. `--enable-public-fqdn` と `--private-dns-zone none` の両方を使用した場合、クラスターはパブリック FQDN のみを持ちます。 このオプションを使用する場合、API サーバーの FQDN の名前解決にプライベート DNS ゾーンが作成または使用されることはありません。 API の IP は引き続きプライベートであり、パブリックにルーティングできません。
+2. `--private-dns-zone none` を使用した場合、クラスターはパブリック FQDN のみを持ちます。 このオプションを使用する場合、API サーバーの FQDN の名前解決にプライベート DNS ゾーンが作成または使用されることはありません。 API の IP は引き続きプライベートであり、パブリックにルーティングできません。
+
+3. パブリック FQDN が不要な場合は、`--disable-public-fqdn` を使用して無効にすることができます (プライベート dns ゾーン "なし" でパブリック FQDN を無効にすることは許可されていません)。
 
 ```azurecli-interactive
-az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --enable-managed-identity --assign-identity <ResourceId> --private-dns-zone <private-dns-zone-mode> --enable-public-fqdn
+az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --enable-managed-identity --assign-identity <ResourceId> --private-dns-zone <private-dns-zone-mode> --disable-public-fqdn
+az aks update -n <private-cluster-name> -g <private-cluster-resource-group> --disable-public-fqdn
 ```
 
 ## <a name="options-for-connecting-to-the-private-cluster"></a>プライベート クラスターに接続するための選択肢
@@ -114,35 +117,17 @@ API サーバー エンドポイントには、パブリック IP アドレス�
 * AKS クラスターと同じ Azure Virtual Network (VNet) に VM を作成します。
 * 別のネットワーク内の VM を使用し、[仮想ネットワーク ピアリング][virtual-network-peering]を設定します。  このオプションの詳細については、以下のセクションを参照してください。
 * [Express Route または VPN][express-route-or-VPN] 接続を使用します。
-* [AKS 実行コマンド機能](#aks-run-command-preview)を使用します。
+* [AKS 実行コマンド機能](#aks-run-command)を使用します。
 
 AKS クラスターと同じ VNET に VM を作成するのが最も簡単な方法です。  Express Route と VPN にはコストがかかり、ネットワークがさらに複雑になります。  仮想ネットワーク ピアリングを利用する場合、重複する範囲がないようにネットワーク CIDR 範囲を計画する必要があります。
 
-### <a name="aks-run-command-preview"></a>AKS 実行コマンド (プレビュー)
+### <a name="aks-run-command"></a>AKS 実行コマンド
 
 現在、プライベート クラスターにアクセスする必要がある場合は、クラスター仮想ネットワークまたはピアリングされたネットワークかクライアント コンピューターの中で行う必要があります。 この場合、通常はお使いのコンピューターを VPN または Express Route 経由でクラスター仮想ネットワーク、またはクラスター仮想ネットワーク内に作成されるジャンプボックスに接続する必要があります。 AKS 実行コマンドを使用すると、AKS クラスター内で AKS API を介してコマンドをリモートで呼び出すことができます。 この機能により、リモート ラップトップから、たとえばプライベート クラスターに対する Just-In-Time コマンドを実行できるようにする API が提供されます。 これが大きな支援となって、クライアント コンピューターがクラスターのプライベート ネットワーク上になく、その場合でも同じ RBAC コントロールとプライベート API サーバーを保持して適用する場合に、プライベート クラスターへの迅速な Just-In-Time アクセスを実現できます。
 
-### <a name="register-the-runcommandpreview-preview-feature"></a>`RunCommandPreview` プレビュー機能を登録する
+### <a name="prerequisites"></a>前提条件
 
-新しい実行コマンド API を使用するには、サブスクリプションで `RunCommandPreview` 機能フラグを有効にする必要があります。
-
-`RunCommandPreview` 機能フラグは、次の例のとおり、[az feature register][az-feature-register] コマンドを使用して登録します。
-
-```azurecli-interactive
-az feature register --namespace "Microsoft.ContainerService" --name "RunCommandPreview"
-```
-
-状態が *[登録済み]* と表示されるまでに数分かかります。 登録の状態は、[az feature list][az-feature-list] コマンドで確認できます。
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/RunCommandPreview')].{Name:name,State:properties.state}"
-```
-
-準備ができたら、[az provider register][az-provider-register] コマンドを使用して、*Microsoft.ContainerService* リソース プロバイダーの登録を更新します。
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
+* Azure CLI、バージョン 2.24.0 以降
 
 ### <a name="use-aks-run-command"></a>AKS 実行コマンドを使用する
 
@@ -169,6 +154,8 @@ Helm のインストールを実行し、特定の値のマニフェストを渡
 ```azurecli-interactive
 az aks command invoke -g <resourceGroup> -n <clusterName> -c "helm repo add bitnami https://charts.bitnami.com/bitnami && helm repo update && helm install my-release -f values.yaml bitnami/nginx" -f values.yaml
 ```
+> [!NOTE]
+> AKS 実行コマンドへのアクセスをセキュリティで保護するには、"Microsoft.ContainerService/managedClusters/runcommand/action" アクセス許可を持つカスタム ロールを作成し、Just-in-time アクセスまたは条件付きアクセスのポリシーと組み合わせて特定のユーザーまたはグループ、あるいはその両方に割り当てます。 
 
 ## <a name="virtual-network-peering"></a>仮想ネットワーク ピアリング
 
@@ -200,7 +187,6 @@ az aks command invoke -g <resourceGroup> -n <clusterName> -c "helm repo add bitn
 > [kubernet で独自のルート テーブル](./configure-kubenet.md#bring-your-own-subnet-and-route-table-with-kubenet)を使用し、プライベート クラスターで独自の DNS を使用する場合、クラスターの作成は失敗します。 作成を成功させるためには、クラスターの作成に失敗した後、ノード リソース グループの [RouteTable](./configure-kubenet.md#bring-your-own-subnet-and-route-table-with-kubenet) をサブネットに関連付ける必要があります。
 
 ## <a name="limitations"></a>制限事項 
-* AKS-RunCommand コマンドは、AKS マネージド AAD と Private Link が有効になっているクラスターに対しては機能しません。
 * 承認済み IP 範囲は、プライベート API サーバー エンドポイントには適用できません。パブリック API サーバーにのみ適用されます
 * [Azure Private Link サービスの制限事項][private-link-service]は、プライベート クラスターに適用されます。
 * Azure DevOps Microsoft でホストするエージェントとプライベート クラスターの組み合わせはサポートされていません。 [セルフホステッド エージェント](/azure/devops/pipelines/agents/agents?tabs=browser)を使用することを検討してください。 

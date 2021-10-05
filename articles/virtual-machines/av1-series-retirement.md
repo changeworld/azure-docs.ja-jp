@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-general
 ms.topic: conceptual
 ms.date: 07/26/2021
 ms.author: mimckitt
-ms.openlocfilehash: c382954cf54779350e78fdadef7d0f4738dca48f
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.openlocfilehash: cfc30046d33ad9e6f91b866dc5653fbbcbdbd995
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122634666"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128577734"
 ---
 # <a name="av1-series-retirement"></a>Av1 シリーズの提供終了
 
@@ -24,7 +24,7 @@ ms.locfileid: "122634666"
 
 ## <a name="migrate-workloads-from-basic-and-standard-a-series-vms-to-av2-series-vms"></a>Basic および Standard の A シリーズの VM から Av2 シリーズの VM にワークロードを移行する 
 
-[Azure portal](https://portal.azure.com)、[PowerShell](windows/resize-vm.md)、および [CLI](linux/change-vm-size.md) を使用して、仮想マシンを Av2 シリーズにサイズ変更できます。 Azure portal と PowerShell を使用して VM のサイズを変更する例を以下に示します。 
+[Azure portal、PowerShell、または CLI](resize-vm.md) を使用して、仮想マシンのサイズを Av2 シリーズに変更できます。 Azure portal と PowerShell を使用して VM のサイズを変更する例を以下に示します。 
 
 > [!IMPORTANT]
 > 仮想マシンのサイズを変更すると、再起動が発生します。 再起動につながる操作は、ピーク時以外の営業時間中に行うことをお勧めします。 
@@ -70,5 +70,5 @@ ms.locfileid: "122634666"
 1. [問題の種類] で、[Assistance with resizing my VM]\(VM のサイズ変更に関するサポート\) を選択します。
 1. [問題のサブタイプ] で、該当するオプションを選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Av2 シリーズ VM](av2-series.md) の詳細情報

@@ -6,13 +6,13 @@ ms.author: daperlov
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
-ms.date: 03/16/2021
-ms.openlocfilehash: 178604335968c3664bde51c144759c1c040c359d
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.date: 09/27/2021
+ms.openlocfilehash: 5581a19f001b4caee8ef0e0d93908bd6d98471a0
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107564915"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129213602"
 ---
 # <a name="search-the-azure-purview-data-catalog"></a>Azure Purview Data Catalog を検索する
 
@@ -26,11 +26,11 @@ Azure Purview では、検索バーは Purview Studio UX の上部にありま�
 
 :::image type="content" source="./media/how-to-search-catalog/purview-search-bar.png" alt-text="Azure Purview の検索バーの場所を示すスクリーンショット" border="true":::
 
-検索バーをクリックすると、最近の検索履歴と最近アクセスした資産が表示されます。 最近表示したすべての資産を表示するには、[すべて表示] を選択します。
+検索バーを選択すると、最近の検索履歴と最近アクセスした資産が表示されます。 最近表示したすべての資産を表示するには、 **[View all (すべて表示)]** を選択します。
 
 :::image type="content" source="./media/how-to-search-catalog/search-no-keywords.png" alt-text="キーワードが入力される前の検索バーを示すスクリーンショット" border="true":::
 
-資産を識別するのに役立つキーワードを入力します (その名前、データ型、分類、用語集の用語など)。 目的の資産に関連するキーワードを入力すると、Azure Purview には、検索対象の候補と、一致する可能性がある資産の候補が表示されます。 検索を完了するには、[検索結果の表示] をクリックするか、"Enter" キーを押します。
+資産を識別するのに役立つキーワードを入力します (その名前、データ型、分類、用語集の用語など)。 目的の資産に関連するキーワードを入力すると、Azure Purview には、検索対象の候補と、一致する可能性がある資産の候補が表示されます。 検索を完了するには、 **[View search results (検索結果の表示)]** を選択するか、"Enter" キーを押します。
 
 :::image type="content" source="./media/how-to-search-catalog/search-keywords.png" alt-text="ユーザーがキーワードを入力した検索バーのスクリーンショット" border="true":::
 
@@ -38,7 +38,7 @@ Azure Purview では、検索バーは Purview Studio UX の上部にありま�
 
 :::image type="content" source="./media/how-to-search-catalog/search-results.png" alt-text="検索結果を示すスクリーンショット" border="true":::
 
- 目的の資産をクリックすると、資産の詳細ページが表示されます。ここでは、スキーマ、系列、資産の所有者などのプロパティを確認できます。
+ 目的の資産を選択すると、資産の詳細ページが表示されます。ここでは、スキーマ、系列、資産の所有者などのプロパティが確認できます。
 
 :::image type="content" source="./media/how-to-search-catalog/search-view-asset.png" alt-text="資産の詳細ページを示すスクリーンショット" border="true":::
 

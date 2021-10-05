@@ -1,14 +1,14 @@
 ---
-title: VM を作成するための Azure DevTest Labs 数式の管理 | Microsoft Docs
+title: VM を作成するための Azure DevTest Labs 数式を管理する
 description: この記事では、ベース (カスタム イメージ、Marketplace イメージ、他の数式) または既存の VM から数式を作成する方法について説明します。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 770bab28d6c000db8860d2de7dfeb8ad912e7c3a
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 632e05a566e1891afff3440563a2fabde0b669d3
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114293539"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128678537"
 ---
 # <a name="manage-azure-devtest-labs-formulas"></a>Azure DevTest Labs 数式の管理
 

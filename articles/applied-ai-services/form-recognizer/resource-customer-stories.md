@@ -2,7 +2,6 @@
 title: 顧客のご紹介
 titleSuffix: Azure Applied AI Services
 description: Form Recognizer の顧客事例を紹介します。
-services: cognitive-services
 author: laujan
 manager: nitinme
 ms.service: applied-ai-services
@@ -10,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/10/2021
 ms.author: lajanuar
-ms.openlocfilehash: bca9462ceb9812618247f03e111b74877ac841e2
-ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+ms.openlocfilehash: ba1dd0b77b2f4a1ce74ec24e0770300ba0ffb9b1
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123187759"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129154909"
 ---
 # <a name="customer-spotlight"></a>顧客のご紹介
 
@@ -35,6 +34,7 @@ ms.locfileid: "123187759"
 |<font size=5>GEP</font>| [**GEP**](https://www.gep.com/) は Form Recognizer を使用して、顧客のために請求書処理ソリューションを開発しました。 "GEP では、AI と自動化が調達とサプライ チェーンに大きな影響を及ぼすと考えています。 私たちは当社の AI ソリューションと Microsoft Form Recognizer を組み合わせることで、お客様のために 1 日あたり 4,000 通の請求書の処理を自動化しました。お客様はグローバルなスケールで正確性、制御性、コンプライアンスを高めながら、人の手による作業を数万時間も短縮できています" と、GEP の人工知能担当バイス プレジデントである Sarateudu Sethi 氏は述べます。 | [ブログ](https://techcommunity.microsoft.com/t5/azure-ai/form-recognizer-now-reads-more-languages-processes-ids-and/ba-p/2179428)|
 |<font size=5>HCA Healthcare</font>| [**HCA Healthcare**](https://hcahealthcare.com/) は、米国全土に 180 を超える病院と 2,000 の医療施設を持ち、毎年約 3,500 万人の患者に貢献している米国有数の医療供給者の 1 つです。 現在は Microsoft と提携しており、Azure Form Recognizer を活用して患者のオンボード エクスペリエンスを簡素化および改善するとともに、繰り返しデータをケア センターのシステムに入力するのに費やされる管理時間を削減しています。 | [顧客事例](https://customers.microsoft.com/en-us/story/1404891793134114534-hca-healthcare-healthcare-provider-azure)|
 |<font size=5>Instabase</font>| [**Instabase**](https://instabase.com/) は、組織化されていないデータの複雑な大量を取得、整理、識別、理解し、整理された情報としてビジネス ワークフローに取り込むのに役立つ、クラス最高の機械学習プロセスを提供する水平アプリケーション プラットフォームです。 プラットフォームでは、プラグ可能なアプリケーションのリポジトリにより、その情報と、必要に応じて迅速に拡張し強化する手段を調整して活用できます。 Instabase のアプリケーションは、インフラストラクチャに依存せずに広くデプロイするために完全にコンテナー化されています。 | [顧客事例](https://customers.microsoft.com/en-gb/story/1376278902865681018-instabase-partner-professional-services-azure)|
+|<font size=5>Northern Trust</font>| [**Northern Trust**](https://www.northerntrust.com/) は、ウェルス マネジメント、資産管理サービス、アセット マネジメント、銀行取引を企業、機関、裕福な家庭、個人に提供する一流プロバイダーです。 代替資産管理サービスをデジタル化する取り組みの一環として、Northern Trust では、代替資産ドキュメントから非構造化投資データを抽出して資産所有者クライアントがアクセスおよび操作できるようにする、人工知能を利用したソリューションを発表しました。 AI ソリューションを構築する企業の価値実現までの時間を短縮する Microsoft Azure Applied AI Services との組み込みコラボレーションと、ビジネスおよびコンサルティング会社である Neudesic の独自のソリューションにより、キャピタル コール通知、現金と株式の分配に関する通知、資本勘定明細書などの重要な情報が、さまざまな非構造化形式から投資チーム向けのアクション可能なデジタル分析情報に変換されます。 | [顧客事例](https://www.businesswire.com/news/home/20210914005449/en/Northern-Trust-Automates-Data-Extraction-from-Alternative-Asset-Documentation)|
 |<font size=5>WEX</font>| [**WEX**](https://www.wexinc.com/) は、Form Recognizer を使用して給付金明細書を処理するツールを開発しました。 製品管理および戦略担当シニア バイス プレジデントである Matt Dallahan 氏は次のように述べます。"この技術は本当に素晴らしいものです。 私は当初、このタイプのソリューションは実現できないのではないかと不安でした。しかし Form Recognizer なら、ほとんどどのようなドキュメントでも正確に読み取ることができるとすぐに確信しました。" | [ブログ](https://techcommunity.microsoft.com/t5/azure-ai/form-recognizer-now-reads-more-languages-processes-ids-and/ba-p/2179428)|
 |<font size=5>Wilson Allen</font> | [**Wilson Allen**](https://wilsonallen.com/) は、Microsoft Azure Cognitive Services の AI コンテナー サポートを活用し、高性能な AI ソリューションを開発しました。これは、世界中の企業が、これまでサイロ化されていた非構造化データから、かつてないレベルの分析情報を見つけ出すのに役立ちます。 今では、同社の顧客はそのデータを利用して、ビジネス開発をサポートし、顧客との関係を強化することができています。 | [顧客事例](https://customers.microsoft.com/story/814361-wilson-allen-partner-professional-services-azure)|
 |<font size=5>Zelros</font>| [**Zelros**](http://www.zelros.com/) は、保険業界向けに AI 搭載ソフトウェアを提供しています。 保険会社は Zelros のプラットフォームを使用して、フォームを取り込んだり、顧客の登録と請求の記入をシームレスに管理したりしています。 同社は、自社のテクノロジと Microsoft Azure Cognitive Services の 1 つである Form Recognizer とを組み合わせて、ドキュメントからキーと値のペアやテキストを自動で取得しています。 保険会社は Zelros プラットフォームを使用すると、書類業務をはるかに迅速に処理できるようになるほか、高い正確性を確保したうえで、これまで手作業のデータ抽出にかかっていた数千時間を、顧客へのより優れたサービスの提供に振り向けられるようになります。 | [顧客事例](https://customers.microsoft.com/story/816397-zelros-insurance-azure)|

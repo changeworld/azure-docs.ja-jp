@@ -5,13 +5,13 @@ ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 09/03/2021
-ms.openlocfilehash: c7b9eef946aed1a34bf35342c50315efe1b92688
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.date: 09/21/2021
+ms.openlocfilehash: f2e4cef0d7ebb728c6e3fc3e07c6b3a344cf03e4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123537789"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128585847"
 ---
 # <a name="whats-new-in-the-microsoft-commercial-marketplace"></a>Microsoft コマーシャル マーケットプレースの新機能
 
@@ -21,7 +21,8 @@ ms.locfileid: "123537789"
 
 | カテゴリ | 説明 | Date |
 | --- | --- | --- |
-| オファー | Power BI ビジュアルのセットアップは、今月、Office ストアからコマーシャル マーケットプレースに移行されます。 [この FAQ](/azure/marketplace/power-bi-visual-faq)では、オファー申請プロセスの機能強化の概要を示します。 | 2021-09-07 |
+| Analytics | Azure アプリケーション オファーの公開元は、オファーのデプロイの正常性をサービスの品質 (QoS) レポートで確認できます。 QoS を使用すると、公開元がオファーのデプロイ エラーの原因を把握するのに役立ち、修復に利用できる分析情報が提供されます。 詳細については、「[サービスの品質 (QoS) ダッシュボード](quality-of-service-dashboard.md)」を参照してください。 | 2021-09-07 |
+| オファー | Power BI ビジュアルのセットアップは、今後数週間かけて、Office ストアからコマーシャル マーケットプレースに移行されます。 [この FAQ](/azure/marketplace/power-bi-visual-faq)では、オファー申請プロセスの機能強化の概要を示します。 最初に、「[Power BI ビジュアル オファーを計画する](marketplace-power-bi-visual.md)」を参照してください。| 2021-09-21 |
 | オファー | Azure 仮想マシン オファーで、プラン レベルの追加のプロパティを使用できるようになりました。 詳細については、[仮想マシンの技術的な構成のプロパティ](azure-vm-create-plans.md#properties)に関する記事を参照してください。 | 2021-07-26 |
 | 料金 | Microsoft は、特定のサービスの料金を変更しました。 「[コマーシャル マーケットプレースの販売機能](marketplace-commercial-transaction-capabilities-and-considerations.md#examples-of-pricing-and-store-fees)」、また支払いと税に関する一般的な質問については「[現在のストア サービス料金と支払い率はどこで確認できますか?](/partner-center/payout-faq)」を参照してください。 | 2021-07-14 |
 | オファー | 発行元は、オンプレミスで構築した仮想マシン (VM) を発行できます。 詳細については、「[独自のイメージを使用して仮想マシンを作成する](./azure-vm-create-using-own-image.md)」を参照してください。 | 2021-06-23 |
@@ -43,7 +44,8 @@ ms.locfileid: "123537789"
 ## <a name="documentation-updates"></a>ドキュメントの更新
 
 | カテゴリ | 説明 | Date |
-| --- | --- | --- |
+| ------------ | ------------- | ------------- |
+| オファー | 新しい記事では、[サービスの品質ダッシュボード](quality-of-service-dashboard.md)で利用できるオファー デプロイ品質レポートについて説明されています。 | 2021-08-27 |
 | オファー | 「[コマーシャル マーケットプレースの販売機能](/azure/marketplace/marketplace-commercial-transaction-capabilities-and-considerations)」トピックに、コマーシャル マーケット プレースでソフトウェアを販売するための適切な取引可能なオファーの種類と価格設定プランを決定するのに役立つフローチャートが含まれるようになりました。 | 2021-08-18 |
 | ポリシー | [認定](/legal/marketplace/certification-policies?context=/azure/marketplace/context/context)ポリシーが更新されました。[変更履歴](/legal/marketplace/offer-policies-change-history)のページを参照してください。 | 2021-08-06 |
 | 共同販売 | 要件、MACC ステータスを更新する頻度、登録および未登録の定義などを含む、MACC プログラムに関する情報が追加されました。 詳細については、「[Azure Consumption Commitment の登録](./azure-consumption-commitment-enrollment.md)」または「[Microsoft のセールス チームとパートナーによる共同販売の概要](./co-sell-overview.md)」を参照してください。 | 2021-06-03 |

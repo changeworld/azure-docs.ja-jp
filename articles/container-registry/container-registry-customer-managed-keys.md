@@ -2,14 +2,14 @@
 title: カスタマー マネージド キーを使用してレジストリを暗号化する
 description: Azure コンテナー レジストリの保存時の暗号化、および Azure Key Vault に格納されているカスタマー マネージド キーを使用して Premium レジストリを暗号化する方法について説明します。
 ms.topic: how-to
-ms.date: 08/16/2021
+ms.date: 09/13/2021
 ms.custom: subject-rbac-steps
-ms.openlocfilehash: 399b1940ff3d87fa862e234948742a35d814f558
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.openlocfilehash: a5fd3140474b1d6d7c36d686c14f2dc4e6a9ef73
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122634903"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128561605"
 ---
 # <a name="encrypt-registry-using-a-customer-managed-key"></a>カスタマー マネージド キーを使用してレジストリを暗号化する
 
@@ -564,6 +564,12 @@ az acr identity assign -n myRegistry \
 暗号化されたレジストリを作成した後でキー コンテナー ファイアウォールまたは仮想ネットワークを有効にすると、イメージのインポートまたはキーの自動ローテーションで HTTP 403 などのエラーが発生する場合があります。 この問題を解決するには、最初に暗号化に使用したマネージ ID とキーを再構成します。 「[キーをローテーションする](#rotate-key)」の手順を参照してください。 
 
 問題が解決しない場合は、Azure サポートにお問い合わせください。
+
+### <a name="accidental-deletion-of-key-vault-or-key"></a>キー コンテナーまたはキーの誤削除
+
+カスタマー マネージド キーによるレジストリの暗号化に使用されるキー コンテナーまたはキーが削除されると、レジストリの内容にアクセスできなくなります。 キー コンテナーで[論理的な削除](../key-vault/general/soft-delete-overview.md)が有効になっている場合 (既定のオプション)、削除されたコンテナーまたはキー コンテナー オブジェクトを回復して、レジストリ操作を再開することができます。
+
+キー コンテナーの削除と回復のシナリオについては、「[論理的な削除と消去保護を使用した Azure Key Vault の回復の管理](../key-vault/general/key-vault-recovery.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

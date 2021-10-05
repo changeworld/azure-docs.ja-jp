@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: jhirono
 author: jhirono
-ms.date: 08/04/2021
-ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1
-ms.openlocfilehash: b4b7f35173b4f1d6d83d9b7ffd937704750f5502
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.date: 09/24/2021
+ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1, references_regions
+ms.openlocfilehash: 1bb8066af887005848f711437d33257ae2118e46
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122603972"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129093480"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>仮想ネットワークを使用して Azure Machine Learning トレーニング環境をセキュリティで保護する
 
@@ -25,14 +25,14 @@ ms.locfileid: "122603972"
 > [!TIP]
 > この記事は、Azure Machine Learning ワークフローのセキュリティ保護に関するシリーズの一部です。 このシリーズの他の記事は次のとおりです。
 >
-> * [Virtual Network の概要](how-to-network-security-overview.md)
-> * [ワークスペース リソースをセキュリティで保護する](how-to-secure-workspace-vnet.md)
-> * [推論環境をセキュリティで保護する](how-to-secure-inferencing-vnet.md)
-> * [スタジオの機能を有効にする](how-to-enable-studio-virtual-network.md)
-> * [カスタム DNS を使用する](how-to-custom-dns.md)
-> * [ファイアウォールを使用する](how-to-access-azureml-behind-firewall.md)
+> * <bpt id="p1">[</bpt>Virtual Network の概要<ept id="p1">](how-to-network-security-overview.md)</ept>
+> * <bpt id="p1">[</bpt>ワークスペース リソースをセキュリティで保護する<ept id="p1">](how-to-secure-workspace-vnet.md)</ept>
+> * <bpt id="p1">[</bpt>推論環境をセキュリティで保護する<ept id="p1">](how-to-secure-inferencing-vnet.md)</ept>
+> * <bpt id="p1">[</bpt>スタジオの機能を有効にする<ept id="p1">](how-to-enable-studio-virtual-network.md)</ept>
+> * <bpt id="p1">[</bpt>カスタム DNS を使用する<ept id="p1">](how-to-custom-dns.md)</ept>
+> * <bpt id="p1">[</bpt>ファイアウォールを使用する<ept id="p1">](how-to-access-azureml-behind-firewall.md)</ept>
 >
-> セキュリティで保護されたワークスペース、コンピューティング クラスター、コンピューティング インスタンスの作成に関するチュートリアルについては、「[チュートリアル: セキュリティで保護されたワークスペースを作成する](tutorial-create-secure-workspace.md)」を参照してください。
+> セキュリティで保護されたワークスペース、コンピューティング クラスター、コンピューティング インスタンスの作成に関するチュートリアルについては、「<bpt id="p1">[</bpt>チュートリアル: セキュリティで保護されたワークスペースを作成する<ept id="p1">](tutorial-create-secure-workspace.md)</ept>」を参照してください。
 
 この記事では、仮想ネットワークで次のトレーニング コンピューティング リソースをセキュリティで保護する方法について説明します。
 > [!div class="checklist"]
@@ -44,16 +44,16 @@ ms.locfileid: "122603972"
 
 ## <a name="prerequisites"></a>前提条件
 
-+ 一般的な仮想ネットワークのシナリオと全体的な仮想ネットワーク アーキテクチャについては、[ネットワーク セキュリティの概要](how-to-network-security-overview.md)に関するページを参照してください。
++ 一般的な仮想ネットワークのシナリオと全体的な仮想ネットワーク アーキテクチャについては、<bpt id="p1">[</bpt>ネットワーク セキュリティの概要<ept id="p1">](how-to-network-security-overview.md)</ept>に関するページを参照してください。
 
 + コンピューティング リソースで使用する既存の仮想ネットワークとサブネット。
 
 + リソースを仮想ネットワークまたはサブネットにデプロイするには、ご利用のユーザー アカウントが、Azure ロールベースのアクセス制御 (Azure RBAC) で次のアクションへのアクセス許可を保持している必要があります。
 
-    - 仮想ネットワーク リソース上の "Microsoft.Network/virtualNetworks/*/read"。 これは ARM テンプレートのデプロイでは必要ありません。
+    - 仮想ネットワーク リソース上の "Microsoft.Network/virtualNetworks/*/read"。 これは、Azure Resource Manager (ARM) テンプレートのデプロイには必要ありません
     - サブネット リソース上の "Microsoft.Network/virtualNetworks/subnet/join/action"。
 
-    ネットワークでの Azure RBAC の詳細については、[ネットワークの組み込みロール](../role-based-access-control/built-in-roles.md#networking)に関するページを参照してください
+    ネットワークでの Azure RBAC の詳細については、<bpt id="p1">[</bpt>ネットワークの組み込みロール<ept id="p1">](../role-based-access-control/built-in-roles.md#networking)</ept>に関するページを参照してください
 
 ### <a name="azure-machine-learning-compute-clusterinstance"></a>Azure Machine Learning コンピューティング クラスター/インスタンス
 
@@ -63,9 +63,10 @@ ms.locfileid: "122603972"
     * コンピューティング クラスターは動的にスケーリングできます。 未割り当ての IP アドレスが十分でない場合、クラスターは部分的に割り当てられます。
     * コンピューティング インスタンスに必要な IP アドレスは 1 つのみです。
 
+* [パブリック IP アドレスを持たない](#no-public-ip)コンピューティング インスタンス (プレビュー機能) を作成するには、ワークスペースから VNet に接続するためにプライベート エンドポイントを使用する必要があります。 詳細については、「[Azure Machine Learning ワークスペース用にプライベート エンドポイントを構成する](how-to-configure-private-link.md)」を参照してください。
 * 仮想ネットワークを管理するためのアクセス許可を制限するセキュリティ ポリシーまたはロックがないことを確認します。 ポリシーまたはロックを確認する場合は、仮想ネットワークのサブスクリプションとリソース グループの両方を確認します。
 * 仮想ネットワークのサブスクリプションまたはリソース グループに対するセキュリティ ポリシーまたはロックで、仮想ネットワークを管理するためのアクセス許可が制限されているかどうかを確認します。 
-* トラフィックを制限することで仮想ネットワークのセキュリティを保護する計画の場合は、「[必要なパブリック インターネット アクセス](#required-public-internet-access)」を参照してください。
+* トラフィックを制限することで仮想ネットワークのセキュリティを保護する計画の場合は、「<bpt id="p1">[</bpt>必要なパブリック インターネット アクセス<ept id="p1">](#required-public-internet-access)</ept>」を参照してください。
 * コンピューティング クラスターまたはインスタンスをデプロイするために使用されるサブネットを他のサービスには委任しないでください。 たとえば、ACI に委任しないでください。
 
 ### <a name="azure-databricks"></a>Azure Databricks
@@ -77,18 +78,24 @@ ms.locfileid: "122603972"
 
 ### <a name="azure-machine-learning-compute-clusterinstance"></a>Azure Machine Learning コンピューティング クラスター/インスタンス
 
-* 複数のコンピューティング インスタンスまたはクラスターを 1 つの仮想ネットワークに配置する場合は、1 つまたは複数のリソースのクォータの増加を要求する必要がある場合があります。 Machine Learning コンピューティング インスタンスまたはクラスターにより、__仮想ネットワークが含まれているリソース グループ__ に追加のネットワーク リソースが自動的に割り当てられます。 サービスにより、各コンピューティング インスタンスまたはクラスターについて次のリソースが割り当てられます。
+* 複数のコンピューティング インスタンスまたはクラスターを 1 つの仮想ネットワークに配置する場合は、1 つまたは複数のリソースのクォータの増加を要求する必要がある場合があります。 Machine Learning コンピューティング インスタンスまたはクラスターにより、<bpt id="p1">__</bpt>仮想ネットワークが含まれているリソース グループ<ept id="p1">__</ept>に追加のネットワーク リソースが自動的に割り当てられます。 サービスにより、各コンピューティング インスタンスまたはクラスターについて次のリソースが割り当てられます。
 
     * 1 つのネットワーク セキュリティ グループ (NSG)。 この NSG には、コンピューティング クラスターとコンピューティング インスタンスに固有の次のルールが含まれています。
 
-        * `BatchNodeManagement` サービス タグからのポート 29876 から 29877 での受信 TCP トラフィックを許可します。
-        * `AzureMachineLearning` サービス タグからのポート 44224 での受信 TCP トラフィックを許可します。
+        * <ph id="ph1">`BatchNodeManagement`</ph> サービス タグからのポート 29876 から 29877 での受信 TCP トラフィックを許可します。
+        * <ph id="ph1">`AzureMachineLearning`</ph> サービス タグからのポート 44224 での受信 TCP トラフィックを許可します。
 
         次のスクリーンショットは、これらのルールの例を示しています。
 
-        :::image type="content" source="./media/how-to-secure-training-vnet/compute-instance-cluster-network-security-group.png" alt-text="NSG のスクリーンショット":::
+        <bpt id="p1">:::image type="content" source="./media/how-to-secure-training-vnet/compute-instance-cluster-network-security-group.png" alt-text="</bpt>NSG のスクリーンショット<ept id=&quot;p1&quot;>":::</ept>
 
-    * 1 つのパブリック IP アドレス。 Azure Policy の割り当てによってパブリック IP の作成が禁止されている場合、クラスターやインスタンスのデプロイが失敗します。
+
+        > [!TIP]
+        > コンピューティング インスタンスにパブリック IP アドレス (プレビュー機能) が使用されていない場合、これらの受信 NSG 規則は必要ありません。 コンピューティング クラスターも使用している場合は、クラスターに引き続きこれらの規則が必要です。
+    * コンピューティング クラスターの場合は、1 つのパブリック IP アドレスです。 Azure Policy の割り当てによってパブリック IP の作成が禁止されている場合、コンピューティングのデプロイが失敗します。
+
+    * コンピューティング インスタンスの場合、パブリック IP アドレスを削除できるようになりました (プレビュー機能)。 Azure Policy の割り当てによってパブリック IP の作成が禁止されている場合、コンピューティング インスタンスのデプロイが成功します。
+
     * 1 つのロード バランサー
 
     コンピューティング クラスターでは、クラスターが 0 ノードにスケールダウンするたびにこれらのリソースが削除され、スケールアップすると作成されます。
@@ -96,38 +103,41 @@ ms.locfileid: "122603972"
     コンピューティング インスタンスでは、これらのリソースはインスタンスが削除されるまで保持されます。 インスタンスを停止しても、リソースは削除されません。 
 
     > [!IMPORTANT]
-    > これらのリソースは、サブスクリプションの[リソース クォータ](../azure-resource-manager/management/azure-subscription-service-limits.md)によって制限されます。 仮想ネットワーク リソース グループがロックされている場合、コンピューティング クラスターやインスタンスの削除が失敗します。 コンピューティング クラスターやインスタンスが削除されるまで、ロード バランサーを削除することはできません。 また、ネットワーク セキュリティ グループの作成を禁止する Azure Policy の割り当てがないことも確認してください。
+    > これらのリソースは、サブスクリプションの<bpt id="p1">[</bpt>リソース クォータ<ept id="p1">](../azure-resource-manager/management/azure-subscription-service-limits.md)</ept>によって制限されます。 仮想ネットワーク リソース グループがロックされている場合、コンピューティング クラスターやインスタンスの削除が失敗します。 コンピューティング クラスターやインスタンスが削除されるまで、ロード バランサーを削除することはできません。 また、ネットワーク セキュリティ グループの作成を禁止する Azure Policy の割り当てがないことも確認してください。
 
 * ワークスペースの Azure Storage アカウントも仮想ネットワーク内にある場合は、サブネットの制限事項に関する次のガイダンスを使用します。
 
-    * Azure Machine Learning __スタジオ__ を使用してデータを視覚化する計画の場合、またはデザイナーを使用する計画の場合、ストレージ アカウントは __コンピューティング インスタンスまたはクラスターと同じサブネット内__ にある必要があります。
-    * __SDK__ を使用する計画の場合は、ストレージ アカウントが別のサブネットに含まれていてもかまいません。
+    * Azure Machine Learning <bpt id="p1">__</bpt>スタジオ<ept id="p1">__</ept>を使用してデータを視覚化する計画の場合、またはデザイナーを使用する計画の場合、ストレージ アカウントは<bpt id="p2">__</bpt>コンピューティング インスタンスまたはクラスターと同じサブネット内<ept id="p2">__</ept>にある必要があります。
+    * <bpt id="p1">__</bpt>SDK<ept id="p1">__</ept> を使用する計画の場合は、ストレージ アカウントが別のサブネットに含まれていてもかまいません。
 
     > [!NOTE]
     > [信頼された Microsoft サービスによるこのアカウントに対するアクセスを許可します] チェック ボックスをオンにするだけでは、コンピューティングからの通信の許可には不十分です。
 
-* ワークスペースでプライベート エンドポイントを使用する場合、コンピューティング インスタンスには仮想ネットワーク内からのみアクセスできます。 カスタム DNS または hosts ファイルを使用する場合は、`<instance-name>.<region>.instances.azureml.ms` のエントリを追加します。 このエントリを、ワークスペースのプライベート エンドポイントのプライベート IP アドレスにマップします。 詳細については、[カスタム DNS](./how-to-custom-dns.md) に関するページを参照してください。
+* ワークスペースでプライベート エンドポイントを使用する場合、コンピューティング インスタンスには仮想ネットワーク内からのみアクセスできます。 カスタム DNS または hosts ファイルを使用する場合は、<ph id="ph1">`<instance-name>.<region>.instances.azureml.ms`</ph> のエントリを追加します。 このエントリを、ワークスペースのプライベート エンドポイントのプライベート IP アドレスにマップします。 詳細については、<bpt id="p1">[</bpt>カスタム DNS<ept id="p1">](./how-to-custom-dns.md)</ept> に関するページを参照してください。
 * 仮想ネットワーク サービス エンドポイント ポリシーは、コンピューティング クラスターやインスタンスのシステム ストレージ アカウントに対して機能しません。
 * ストレージ インスタンスとコンピューティング インスタンスが異なるリージョンに存在する場合、断続的にタイムアウトが発生することがあります。
+* ワークスペースの Azure Container Registry から仮想ネットワークへの接続にプライベート エンドポイントが使用されている場合、コンピューティング インスタンスにマネージド ID を使用することはできません。 コンピューティング インスタンスでマネージド ID を使用するには、コンテナー レジストリを VNet にデプロイしないでください。
 * コンピューティング インスタンスで Jupyter Notebook を使用する場合:
 
-    * WebSocket 通信を無効にしないでください。 ネットワークで `*.instances.azureml.net` と `*.instances.azureml.ms` との WebSocket 通信が許可されている必要があります。
-    * データと同じ仮想ネットワークおよびサブネットの背後にあるコンピューティング リソースでノートブックが実行されていることを確認する必要があります。 コンピューティング インスタンスを作成する場合は、 **[詳細設定]**  >  **[仮想ネットワークの構成]** を使用して、ネットワークとサブネットを選択します。
+    * WebSocket 通信を無効にしないでください。 ネットワークで <ph id="ph1">`*.instances.azureml.net`</ph> と <ph id="ph2">`*.instances.azureml.ms`</ph> との WebSocket 通信が許可されている必要があります。
+    * データと同じ仮想ネットワークおよびサブネットの背後にあるコンピューティング リソースでノートブックが実行されていることを確認する必要があります。 コンピューティング インスタンスを作成する場合は、 <bpt id="p1">**</bpt>[詳細設定]<ept id="p1">**</ept> <ph id="ph1"> > </ph> <bpt id="p2">**</bpt>[仮想ネットワークの構成]<ept id="p2">**</ept> を使用して、ネットワークとサブネットを選択します。
 
-* __コンピューティング クラスター__ は、ワークスペースとは別のリージョンに作成できます。 この機能は __プレビュー__ 段階であり、__コンピューティング クラスター__ でのみ利用できます。コンピューティング インスタンスでは利用できません。 クラスターに別のリージョンを使用する場合は、次の制限が適用されます。
+* <bpt id="p1">__</bpt>コンピューティング クラスター<ept id="p1">__</ept>は、ワークスペースとは別のリージョンに作成できます。 この機能は<bpt id="p1">__</bpt>プレビュー<ept id="p1">__</ept>段階であり、<bpt id="p2">__</bpt>コンピューティング クラスター<ept id="p2">__</ept>でのみ利用できます。コンピューティング インスタンスでは利用できません。 クラスターに別のリージョンを使用する場合は、次の制限が適用されます。
 
-    * ワークスペースに関連付けられているリソース (ストレージなど) がクラスターとは異なる仮想ネットワークにある場合は、ネットワーク間のグローバル仮想ネットワーク ピアリングを設定します。 詳細については、「[仮想ネットワーク ピアリング](../virtual-network/virtual-network-peering-overview.md)」をご覧ください。
-    * プライベート エンドポイントが有効なワークスペースを使用している場合、別のリージョンでのクラスターの作成は __サポートされていません__。
+    * ワークスペースに関連付けられているリソース (ストレージなど) がクラスターとは異なる仮想ネットワークにある場合は、ネットワーク間のグローバル仮想ネットワーク ピアリングを設定します。 詳細については、「<bpt id="p1">[</bpt>仮想ネットワーク ピアリング<ept id="p1">](../virtual-network/virtual-network-peering-overview.md)</ept>」をご覧ください。
     * ネットワーク待機時間とデータ転送コストが増加する可能性があります。 待機時間とコストは、クラスターの作成時や、クラスターでのジョブの実行時に発生する可能性があります。
 
     ワークスペースとは異なるリージョンを使用する場合、NSG ルール、ユーザー定義ルート、入力や出力要件の使用などのガイダンスは通常通り適用されます。
 
+    > [!WARNING]
+    > __プライベート エンドポイントが有効なワークスペース__ を使用している場合、別のリージョンでのクラスターの作成は __サポートされていません__。
+
 ### <a name="azure-databricks"></a>Azure Databricks
 
-* Azure Databricks によって使用される __databricks-private__ および __databricks-public__ サブネットに加えて、仮想ネットワーク用に作成された __既定の__ サブネットも必要です。
+* Azure Databricks によって使用される <bpt id="p1">__</bpt>databricks-private<ept id="p1">__</ept> および <bpt id="p2">__</bpt>databricks-public<ept id="p2">__</ept> サブネットに加えて、仮想ネットワーク用に作成された <bpt id="p3">__</bpt>既定の<ept id="p3">__</ept> サブネットも必要です。
 * Azure Databricks は、仮想ネットワークとの通信にプライベート エンドポイントを使用しません。
 
-仮想ネットワークでの Azure Databricks の使用に関する詳細については、[Azure Virtual Network での Azure Databricks のデプロイ](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject)に関するページを参照してください。
+仮想ネットワークでの Azure Databricks の使用に関する詳細については、<bpt id="p1">[</bpt>Azure Virtual Network での Azure Databricks のデプロイ<ept id="p1">](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject)</ept>に関するページを参照してください。
 
 ### <a name="azure-hdinsight-or-virtual-machine"></a>Azure HDInsight または仮想マシン
 
@@ -137,37 +147,38 @@ ms.locfileid: "122603972"
 
 [!INCLUDE [machine-learning-required-public-internet-access](../../includes/machine-learning-public-internet-access.md)]
 
-ファイアウォール ソリューションの使用方法の詳細については、[Azure Machine Learning でのファイアウォールの使用](how-to-access-azureml-behind-firewall.md)に関するページを参照してください。
+ファイアウォール ソリューションの使用方法の詳細については、<bpt id="p1">[</bpt>Azure Machine Learning でのファイアウォールの使用<ept id="p1">](how-to-access-azureml-behind-firewall.md)</ept>に関するページを参照してください。
 
-## <a name="compute-clusters--instances"></a><a name="compute-instance"></a>コンピューティング クラスターとインスタンス 
+## <a name="compute-clusters"></a><a name="compute-cluster"></a>コンピューティング クラスター
 
 次のタブを使用して、コンピューティング クラスターの作成方法を選択します。
 
-# <a name="studio"></a>[スタジオ](#tab/azure-studio)
+# <a name="studio"></a><bpt id="p1">[</bpt>スタジオ<ept id="p1">](#tab/azure-studio)</ept>
 
 次の手順を使用して、Azure Machine Learning スタジオでコンピューティング クラスターを作成します。
 
-1. [Azure Machine Learning Studio](https://ml.azure.com/) にサインインし、お使いのサブスクリプションとワークスペースを選択します。
-1. 左側の __[Compute]\(コンピューティング\)__ を選択し、中央の __[Compute clusters]\(コンピューティング クラスター\)__ を選択して、 __[+ 新規]__ を選択します。
+1. <bpt id="p1">[</bpt>Azure Machine Learning Studio<ept id="p1">](https://ml.azure.com/)</ept> にサインインし、お使いのサブスクリプションとワークスペースを選択します。
+1. 左側の <bpt id="p1">__</bpt>[Compute]\(コンピューティング\)<ept id="p1">__</ept> を選択し、中央の <bpt id="p2">__</bpt>[Compute clusters]\(コンピューティング クラスター\)<ept id="p2">__</ept> を選択して、 <bpt id="p3">__</bpt>[+ 新規]<ept id="p3">__</ept> を選択します。
 
-    :::image type="content" source="./media/how-to-enable-virtual-network/create-compute-cluster.png" alt-text="クラスター作成画面のスクリーンショット":::
+    <bpt id="p1">:::image type="content" source="./media/how-to-enable-virtual-network/create-compute-cluster.png" alt-text="</bpt>クラスター作成画面のスクリーンショット<ept id=&quot;p1&quot;>":::</ept>
 
-1. __[Create compute cluster]\(コンピューティング クラスターの作成\)__ ダイアログで、必要な VM サイズと構成を選択し、 __[次へ]__ を選択します。
+1. <bpt id="p1">__</bpt>[Create compute cluster]\(コンピューティング クラスターの作成\)<ept id="p1">__</ept> ダイアログで、必要な VM サイズと構成を選択し、 <bpt id="p2">__</bpt>[次へ]<ept id="p2">__</ept> を選択します。
 
-    :::image type="content" source="./media/how-to-enable-virtual-network/create-compute-cluster-vm.png" alt-text="VM 構成の設定画面のスクリーンショット":::
+    <bpt id="p1">:::image type="content" source="./media/how-to-enable-virtual-network/create-compute-cluster-vm.png" alt-text="</bpt>VM 構成の設定画面のスクリーンショット<ept id=&quot;p1&quot;>":::</ept>
 
-1. __[Configure Settings]\(構成の設定\)__ セクションで、__コンピューティング名__、__仮想ネットワーク__、__サブネット__ を設定します。
+1. <bpt id="p1">__</bpt>[Configure Settings]\(構成の設定\)<ept id="p1">__</ept> セクションで、<bpt id="p2">__</bpt>コンピューティング名<ept id="p2">__</ept>、<bpt id="p3">__</bpt>仮想ネットワーク<ept id="p3">__</ept>、<bpt id="p4">__</bpt>サブネット<ept id="p4">__</ept>を設定します。
+
+    :::image type="content" source="media/how-to-enable-virtual-network/create-compute-cluster-config.png" alt-text="コンピューティング名、仮想ネットワーク、サブネットの設定を示すスクリーンショット。":::
 
     > [!TIP]
-    > ワークスペースがプライベート エンドポイントを使用して仮想ネットワークに接続する場合、 __[仮想ネットワーク]__ 選択フィールドが灰色表示されます。
+    > ワークスペースがプライベート エンドポイントを使用して仮想ネットワークに接続する場合、 <bpt id="p1">__</bpt>[仮想ネットワーク]<ept id="p1">__</ept> 選択フィールドが灰色表示されます。
+    > 
 
-    :::image type="content" source="./media/how-to-enable-virtual-network/create-compute-cluster-config.png" alt-text="仮想ネットワーク設定のスクリーンショット":::
+1. <bpt id="p1">__</bpt>[作成]<ept id="p1">__</ept> を選択してコンピューティング クラスターを作成します。
 
-1. __[作成]__ を選択してコンピューティング クラスターを作成します。
+# <a name="python"></a><bpt id="p1">[</bpt>Python<ept id="p1">](#tab/python)</ept>
 
-# <a name="python"></a>[Python](#tab/python)
-
-次のコードでは、`mynetwork` という名前の仮想ネットワークの `default` サブネットに新しい Machine Learning コンピューティング クラスターが作成されます。
+次のコードでは、<ph id="ph2">`mynetwork`</ph> という名前の仮想ネットワークの <ph id="ph1">`default`</ph> サブネットに新しい Machine Learning コンピューティング クラスターが作成されます。
 
 ```python
 from azureml.core.compute import ComputeTarget, AmlCompute
@@ -206,19 +217,38 @@ except ComputeTargetException:
 
 ---
 
-作成プロセスが完了したら、実験でクラスターを使用してモデルをトレーニングします。 詳細については、[トレーニング用のコンピューティング ターゲットの選択と使用](how-to-set-up-training-targets.md)に関するページをご覧ください。
+作成プロセスが完了したら、実験でクラスターを使用してモデルをトレーニングします。 詳細については、<bpt id="p1">[</bpt>トレーニング用のコンピューティング ターゲットの選択と使用<ept id="p1">](how-to-set-up-training-targets.md)</ept>に関するページをご覧ください。
 
 [!INCLUDE [low-pri-note](../../includes/machine-learning-low-pri-vm.md)]
 
-### <a name="inbound-traffic"></a>受信トラフィック
+## <a name="compute-instance"></a>コンピューティング インスタンス
+
+仮想ネットワークにデプロイされたコンピューティング インスタンスを作成する手順については、「[Azure Machine Learning コンピューティング インスタンスを作成して管理する](how-to-create-manage-compute-instance.md)」を参照してください。
+
+### <a name="no-public-ip-for-compute-instances-preview"></a><a name="no-public-ip"></a>コンピューティング インスタンスの [No public IP]\(パブリック IP なし\) (プレビュー)
+
+**[No public IP]\(パブリック IP なし\)** を有効にすると、コンピューティング インスタンスと依存関係との通信にパブリック IP は使用されません。 代わりに、Azure Private Link エコシステムとサービスまたはプライベート エンドポイントを使用して仮想ネットワーク内でのみ通信が行われ、パブリック IP の必要性がまったくなくなります。 [No public IP]\(パブリック IP なし\) を使用すると、インターネットからコンピューティング インスタンス ノードへのアクセスと検出ができなくなるため、重大な脅威のベクトルを排除できます。 また、コンピューティング インスタンスによってパケット フィルター処理が行われ、仮想ネットワーク外からのトラフィックが拒否されます。 **[No public IP]\(パブリック IP なし\)** インスタンスは、Azure Machine Learning のワークスペースの場合に [Azure Private Link](how-to-configure-private-link.md) に依存しています。 
+
+**送信接続** が機能するには、ユーザー定義のルートを持つ Azure Firewall などのエグレス ファイアウォールを設定する必要があります。 たとえば、[受信および送信の構成](how-to-access-azureml-behind-firewall.md)で設定されたファイアウォールを使用し、コンピューティング インスタンスがデプロイされているサブネット上にルート テーブルを定義することで、トラフィックをそこにルーティングすることができます。 ルート テーブル エントリには、ファイアウォールのプライベート IP アドレスのネクスト ホップとして、0.0.0.0/0 というアドレス プレフィックスを設定することができます。
+
+**[No public IP]\(パブリック IP なし\)** が有効なコンピューティング インスタンスには、パブリック IP コンピューティング インスタンスの場合と比較して、パブリック インターネットからの **受信通信要件はありません**。 具体的には、どちらの受信 NSG 規則 (`BatchNodeManagement`、`AzureMachineLearning`) も必要ありません。
+
+また、 **[No public IP]\(パブリック IP なし\)** が有効なコンピューティング インスタンスの場合、プライベート エンドポイント ネットワーク ポリシーとプライベート リンク サービス ネットワーク ポリシーを無効にする必要があります。 これらの要件は、Azure Private Link サービスとプライベート エンドポイントに由来するものであり、Azure Machine Learning 固有のものではありません。 「[Private Link サービスのソース IP のネットワーク ポリシーを無効にする](../private-link/disable-private-link-service-network-policy.md)」の指示に従って、仮想ネットワーク サブネットにパラメーター `disable-private-endpoint-network-policies` と `disable-private-link-service-network-policies` を設定します。
+
+Studio で [No public IP address]\(パブリック IP アドレスなし\) コンピューティング インスタンス (プレビュー機能) を作成するには、仮想ネットワーク セクションで **[No public IP]\(パブリック IP なし\)** チェックボックスをオンにします。
+また、ARM テンプレートを使用して [No public IP]\(パブリック IP なし\) コンピューティング インスタンスを作成することもできます。 ARM テンプレートで、enableNodePublicIP パラメーターを false に設定してください。
+
+[!INCLUDE [no-public-ip-info](../../includes/machine-learning-no-public-ip-availibility.md)]
+
+## <a name="inbound-traffic"></a>受信トラフィック
 
 [!INCLUDE [udr info for computes](../../includes/machine-learning-compute-user-defined-routes.md)]
 
-Azure Machine Learning の入力と出力のトラフィック要件の詳細については、[ファイアウォールの内側でのワークスペースの使用](how-to-access-azureml-behind-firewall.md)に関するページを参照してください。
+Azure Machine Learning の入力と出力のトラフィック要件の詳細については、<bpt id="p1">[</bpt>ファイアウォールの内側でのワークスペースの使用<ept id="p1">](how-to-access-azureml-behind-firewall.md)</ept>に関するページを参照してください。
 
 ## <a name="azure-databricks"></a>Azure Databricks
 
-仮想ネットワークでの Azure Databricks の使用に関する具体的な情報については、「[Azure Virtual Network に Azure Databricks をデプロイする](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject)」を参照してください。
+仮想ネットワークでの Azure Databricks の使用に関する具体的な情報については、「<bpt id="p1">[</bpt>Azure Virtual Network に Azure Databricks をデプロイする<ept id="p1">](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject)</ept>」を参照してください。
 
 <a id="vmorhdi"></a>
 
@@ -229,45 +259,45 @@ Azure Machine Learning の入力と出力のトラフィック要件の詳細に
 ### <a name="create-the-vm-or-hdinsight-cluster"></a>VM または HDInsight クラスターを作成する
 
 Azure portal または Azure CLI を使用して VM または HDInsight クラスターを作成し、そのクラスターを Azure の仮想ネットワークに配置します。 詳細については、次の記事を参照してください。
-* [Linux VM 用の Azure 仮想ネットワークの作成と管理を行う](../virtual-machines/linux/tutorial-virtual-network.md)
+* <bpt id="p1">[</bpt>Linux VM 用の Azure 仮想ネットワークの作成と管理を行う<ept id="p1">](../virtual-machines/linux/tutorial-virtual-network.md)</ept>
 
-* [Azure Virtual Network を使用した Azure HDInsight の拡張](../hdinsight/hdinsight-plan-virtual-network-deployment.md)
+* <bpt id="p1">[</bpt>Azure Virtual Network を使用した Azure HDInsight の拡張<ept id="p1">](../hdinsight/hdinsight-plan-virtual-network-deployment.md)</ept>
 
 ### <a name="configure-network-ports"></a>ネットワーク ポートを構成する 
 
 Azure Machine Learning で VM またはクラスターの SSH ポートと通信できるようにするために、ネットワーク セキュリティ グループ用のソース エントリを構成します。 SSH ポートは、通常はポート 22 です。 このソースからのトラフィックを許可するには、次の操作を実行します。
 
-1. __[ソース]__ ボックスの一覧で、 __[サービス タグ]__ を選択します。
+1. <bpt id="p1">__</bpt>[ソース]<ept id="p1">__</ept> ボックスの一覧で、 <bpt id="p2">__</bpt>[サービス タグ]<ept id="p2">__</ept> を選択します。
 
-1. __[ソース サービス タグ]__ ボックスの一覧で、 __[AzureMachineLearning]__ を選択します。
+1. <bpt id="p1">__</bpt>[ソース サービス タグ]<ept id="p1">__</ept> ボックスの一覧で、 <bpt id="p2">__</bpt>[AzureMachineLearning]<ept id="p2">__</ept> を選択します。
 
     ![仮想ネットワーク内の VM または HDInsight クラスターで実験を行うためのインバウンド規則](./media/how-to-enable-virtual-network/experimentation-virtual-network-inbound.png)
 
-1. __[ソース ポート範囲]__ ボックスの一覧で、 __[*]__ を選択します。
+1. <bpt id="p1">__</bpt>[ソース ポート範囲]<ept id="p1">__</ept> ボックスの一覧で、 <bpt id="p2">__</bpt>[<ph id="ph1">*</ph>]<ept id="p2">__</ept> を選択します。
 
-1. __[宛先]__ ボックスの一覧で __[すべて]__ を選択します。
+1. <bpt id="p1">__</bpt>[宛先]<ept id="p1">__</ept> ボックスの一覧で <bpt id="p2">__</bpt>[すべて]<ept id="p2">__</ept> を選択します。
 
-1. __[宛先ポート範囲]__ ボックスの一覧で __[22]__ を選択します。
+1. <bpt id="p1">__</bpt>[宛先ポート範囲]<ept id="p1">__</ept> ボックスの一覧で <bpt id="p2">__</bpt>[22]<ept id="p2">__</ept> を選択します。
 
-1. __[プロトコル]__ で __[すべて]__ を選択します。
+1. <bpt id="p1">__</bpt>[プロトコル]<ept id="p1">__</ept> で <bpt id="p2">__</bpt>[すべて]<ept id="p2">__</ept> を選択します。
 
-1. __[アクション]__ で、 __[許可]__ を選択します。
+1. <bpt id="p1">__</bpt>[アクション]<ept id="p1">__</ept> で、 <bpt id="p2">__</bpt>[許可]<ept id="p2">__</ept> を選択します。
 
-ネットワーク セキュリティ グループの既定のアウトバウンド規則を保持します。 詳細については、「[セキュリティ グループ](../virtual-network/network-security-groups-overview.md#default-security-rules)」の既定のセキュリティ規則をご覧ください。
+ネットワーク セキュリティ グループの既定のアウトバウンド規則を保持します。 詳細については、「<bpt id="p1">[</bpt>セキュリティ グループ<ept id="p1">](../virtual-network/network-security-groups-overview.md#default-security-rules)</ept>」の既定のセキュリティ規則をご覧ください。
 
-既定のアウトバウンド規則を使用せずに仮想ネットワークのアウトバウンド アクセスを制限する場合は、「[必要なパブリック インターネット アクセス](#required-public-internet-access)」セクションを参照してください。
+既定のアウトバウンド規則を使用せずに仮想ネットワークのアウトバウンド アクセスを制限する場合は、「<bpt id="p1">[</bpt>必要なパブリック インターネット アクセス<ept id="p1">](#required-public-internet-access)</ept>」セクションを参照してください。
 
 ### <a name="attach-the-vm-or-hdinsight-cluster"></a>VM または HDInsight クラスターをアタッチする
 
-VM または HDInsight クラスターをお客様の Azure Machine Learning のワークスペースにアタッチします。 詳細については、「[モデル トレーニング用のコンピューティング ターゲットを設定する](how-to-set-up-training-targets.md)」をご覧ください。
+VM または HDInsight クラスターをお客様の Azure Machine Learning のワークスペースにアタッチします。 詳細については、「<bpt id="p1">[</bpt>モデル トレーニング用のコンピューティング ターゲットを設定する<ept id="p1">](how-to-set-up-training-targets.md)</ept>」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 
 この記事は、Azure Machine Learning ワークフローのセキュリティ保護に関するシリーズの一部です。 このシリーズの他の記事は次のとおりです。
 
-* [Virtual Network の概要](how-to-network-security-overview.md)
-* [ワークスペース リソースをセキュリティで保護する](how-to-secure-workspace-vnet.md)
-* [推論環境をセキュリティで保護する](how-to-secure-inferencing-vnet.md)
-* [スタジオの機能を有効にする](how-to-enable-studio-virtual-network.md)
-* [カスタム DNS を使用する](how-to-custom-dns.md)
-* [ファイアウォールを使用する](how-to-access-azureml-behind-firewall.md)
+* <bpt id="p1">[</bpt>Virtual Network の概要<ept id="p1">](how-to-network-security-overview.md)</ept>
+* <bpt id="p1">[</bpt>ワークスペース リソースをセキュリティで保護する<ept id="p1">](how-to-secure-workspace-vnet.md)</ept>
+* <bpt id="p1">[</bpt>推論環境をセキュリティで保護する<ept id="p1">](how-to-secure-inferencing-vnet.md)</ept>
+* <bpt id="p1">[</bpt>スタジオの機能を有効にする<ept id="p1">](how-to-enable-studio-virtual-network.md)</ept>
+* <bpt id="p1">[</bpt>カスタム DNS を使用する<ept id="p1">](how-to-custom-dns.md)</ept>
+* <bpt id="p1">[</bpt>ファイアウォールを使用する<ept id="p1">](how-to-access-azureml-behind-firewall.md)</ept>

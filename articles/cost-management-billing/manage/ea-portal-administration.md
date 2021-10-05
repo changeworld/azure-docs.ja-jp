@@ -3,18 +3,18 @@ title: Azure EA Portal の管理
 description: この記事では、Azure EA Portal で管理者が行う一般的なタスクについて説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 08/25/2021
+ms.date: 09/28/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
-ms.reviewer: boalcsva
+ms.reviewer: sapnakeshari
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: bf887ad515f8c4349fcff54d25be1c70a30d018f
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: ede22b400b597c8cc474d49f65341bb5b24ea118
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123098321"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129216766"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA Portal の管理
 
@@ -198,7 +198,7 @@ ms.locfileid: "123098321"
 
 1. エンタープライズ管理者として Azure EA Portal にサインインします。
 1. 左側のナビゲーションで **[管理]** を選択します。
-1. **[部門 (キー)]** を選択します。
+1. **[アカウント]** を選択します。
 1. 目的のアカウントが含まれる行の上にポインターを移動し、右側にある鉛筆アイコンを選択します。
 1. ドロップダウン メニューから部門を選択します。
 1. **[保存]** を選択します。

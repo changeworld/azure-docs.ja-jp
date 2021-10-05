@@ -7,12 +7,12 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
 ms.custom: mvc
 ms.date: 04/23/2021
-ms.openlocfilehash: 14b3487a158062e3186b485a8bcbd4584a0f09d2
-ms.sourcegitcommit: aaaa6ee55f5843ed69944f5c3869368e54793b48
+ms.openlocfilehash: fff316c328ac61f48693e635745ca42a9c773c4d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113665351"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128646627"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Visual Studio でロジック アプリを管理する
 
@@ -127,7 +127,7 @@ Visual Studio では、Azure portal から直接デプロイされているか�
 
 1. Visual Studio で、お使いのロジック アプリを含む Azure リソース グループ プロジェクトを開きます。
 
-1. ソリューション エクスプローラーで **<ロジック アプリ名>.json** ファイルのショートカット メニューを開き、 **[Open With Logic App Designer]\(ロジック アプリ デザイナーで開く\)** を選択します。 (Ctrl + L)
+1. ソリューション エクスプローラーで **\<logic-app-name\>.json** ファイルのショートカット メニューを開き、 **[Open With Logic App Designer]\(ロジック アプリ デザイナーで開く\)** を選択します。 (Ctrl + L)
 
    ![ロジック アプリ デザイナーでロジック アプリの .json ファイルを開く](./media/manage-logic-apps-with-visual-studio/open-logic-app-designer.png)
 

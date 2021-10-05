@@ -3,12 +3,12 @@ title: プライベート エンドポイントを使用して Azure Functions �
 description: このチュートリアルでは、関数を Azure 仮想ネットワークに接続し、プライベート エンドポイントを使用してこれをロック ダウンする方法について説明します。
 ms.topic: article
 ms.date: 2/22/2021
-ms.openlocfilehash: a410d6717a73df2c7e947fd15c6c89040f08846c
-ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
+ms.openlocfilehash: 8007fde1d4aaf52a98bf924f607450462a993c1d
+ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114204743"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128708436"
 ---
 # <a name="tutorial-integrate-azure-functions-with-an-azure-virtual-network-by-using-private-endpoints"></a>チュートリアル: プライベート エンドポイントを使用して Azure Functions を Azure 仮想ネットワークに統合する
 
@@ -303,6 +303,8 @@ Azure Functions サービス バス トリガーがイベントを取得する�
 1. **[仮想ネットワーク]** で、前に作成した仮想ネットワークを選択します。
 
 1. 先ほど作成した **関数** サブネットを選択します。 **[OK]** を選択します。  これで、関数アプリが仮想ネットワークと統合されました。
+
+    仮想ネットワークと関数アプリが異なるサブスクリプションにある場合は、まず、仮想ネットワークでサービス プリンシパル **Microsoft Azure App Service** に **共同作成者** アクセス権を提供する必要があります。
 
     :::image type="content" source="./media/functions-create-vnet/9-connect-app-subnet.png" alt-text="関数アプリをサブネットに接続する方法を示すスクリーンショット。":::
 

@@ -9,13 +9,13 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: mathoma
 ms.custom: references_regions
-ms.date: 07/22/2021
-ms.openlocfilehash: 9f058cfc97821dc9ddcbedeeed1acf9ebb9919d3
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/14/2021
+ms.openlocfilehash: bf37cfc156d45eb668a7f7da240e8a9437aa51d9
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121751310"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129216975"
 ---
 # <a name="maintenance-window-preview"></a>メンテナンス期間 (プレビュー)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -76,32 +76,42 @@ Azure では、SQL Database と SQL マネージド インスタンス リソー
 
 既定以外のメンテナンス期間は、現在、次のリージョンで選択できます。
 
-- オーストラリア東部
-- オーストラリア南東部
-- ブラジル南部
-- カナダ中部
-- カナダ東部
-- インド中部
-- 米国中部
-- 米国東部
-- 米国東部 2
-- 東アジア
-- フランス南部
-- ドイツ中西部
-- 東日本
-- 韓国中部*
-- 米国中北部
-- 北ヨーロッパ
-- 米国中南部
-- 東南アジア
-- 英国南部
-- 英国西部
-- 米国中西部
-- 西ヨーロッパ
-- 米国西部
-- 米国西部 2
-
-\* Azure SQL Managed Instance でのみ使用できます
+| Azure リージョン | SQL Managed Instance | SQL Database | [Azure 可用性ゾーン](high-availability-sla.md)内の SQL Database | 
+|:---|:---|:---|:---|
+| オーストラリア東部 | はい | はい | はい |
+| オーストラリア南東部 | はい | はい | |
+| ブラジル南部 | はい | はい |  |
+| カナダ中部 | はい | はい | はい |
+| カナダ東部 | はい | Yes | |
+| インド中部 | Yes | はい | |
+| 米国中部 | はい | はい | はい |
+| 中国東部 2 |はい | はい ||
+| 中国北部 2 |はい|はい ||
+| East US | はい | はい | はい |
+| 米国東部 2 | はい | はい | はい |
+| 東アジア | はい | はい | |
+| フランス中部 | はい | はい | |
+| フランス南部 | はい | はい | |
+| ドイツ中西部 | はい | はい |  |
+| 東日本 | はい | はい | はい |
+| 西日本 | はい | はい | |
+| 韓国中部 | はい | | |
+| 韓国南部 | はい | | |
+| 米国中北部 | はい | はい | |
+| 北ヨーロッパ | はい | はい | はい |
+| 南アフリカ北部 | はい | | | 
+| 米国中南部 | はい | はい | はい |
+| インド南部 | はい | はい | |
+| 東南アジア | はい | はい | はい |
+| スイス北部 | はい | はい | |
+| アラブ首長国連邦中部 | はい | | |
+| 英国南部 | はい | はい | はい |
+| 英国西部 | はい | Yes | |
+| 米国中西部 | はい | はい | |
+| 西ヨーロッパ | はい | はい | はい |
+| 米国西部 | はい | はい |  |
+| 米国西部 2 | はい | はい | はい |
+| | | | | 
 
 ## <a name="gateway-maintenance-for-azure-sql-database"></a>Azure SQL Database のゲートウェイ メンテナンス
 
@@ -113,7 +123,7 @@ Azure では、SQL Database と SQL マネージド インスタンス リソー
 
 Azure SQL Database でのクライアント接続ポリシーについて詳しくは、[Azure SQL Database の接続ポリシー](../database/connectivity-architecture.md#connection-policy)に関するページをご覧ください。 
 
-Azure SQL Managed Instance のクライアント接続ポリシーについて詳しくは、「[Azure SQL Managed Instance の接続の種類](../../azure-sql/managed-instance/connection-types-overview.md)」をご覧ください。
+Azure SQL Managed Instance でのクライアント接続ポリシーについて詳しくは、「[Azure SQL Managed Instance の接続の種類](../../azure-sql/managed-instance/connection-types-overview.md)」をご覧ください。
 
 ## <a name="considerations-for-azure-sql-managed-instance"></a>Azure SQL Managed Instance に関する考慮事項
 
@@ -136,13 +146,15 @@ Azure SQL Managed Instance は、お客様の仮想ネットワーク サブネ�
 >  IP アドレスを変更した後、NSG とファイアウォール規則によってデータ トラフィックがブロックされないようにしてください。 
 
 ### <a name="serialization-of-virtual-cluster-management-operations"></a>仮想クラスター管理操作のシリアル化
+
 サービスのアップグレードや仮想クラスターのサイズ変更 (新しいコンピューティング ノードの追加や不要なコンピューティング ノードの削除) のような、仮想クラスターに影響を与える操作はシリアル化されます。 つまり、前の操作が完了しないと、新しい仮想クラスター管理操作を開始できません。 進行中のサービスのアップグレードまたはメンテナンス操作が完了する前にメンテナンス期間が終了した場合、その間に送信された他の仮想クラスター管理操作は、次のメンテナンス期間が開始され、サービスのアップグレードまたはメンテナンス操作が完了するまで保留されます。 一般的に、仮想クラスターあたりのメンテナンス操作が 1 つの期間より長くかかることはありませんが、メンテナンス操作が非常に複雑な場合には発生する可能性があります。
+
 仮想クラスター管理操作のシリアル化は、既定のメンテナンス ポリシーにも適用される一般的な動作です。 メンテナンス期間のスケジュールが構成されている場合、隣接する 2 つの期間の間が数日になることもあります。 メンテナンス操作が 2 つの期間にまたがっている場合は、送信された操作が数日保留される可能性があります。 これは非常にまれなケースですが、新しいインスタンスの作成や既存のインスタンスのサイズ変更 (追加のコンピューティング ノードが必要な場合) は、この期間中にはブロックされる可能性があります。
 
 ## <a name="next-steps"></a>次のステップ
 
-* [事前通知](advance-notifications.md)
 * [メンテナンス期間の構成](maintenance-window-configure.md)
+* [事前通知](advance-notifications.md)
 
 ## <a name="learn-more"></a>詳細情報
 

@@ -4,15 +4,15 @@ description: この記事では、Azure Purview で接続のトラブルシュ�
 author: viseshag
 ms.author: viseshag
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: how-to
-ms.date: 06/04/2021
-ms.openlocfilehash: ab622cd2d8d88c79a4dd0098beded490f9e76a36
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.date: 09/27/2021
+ms.openlocfilehash: cfcac68bfc09a4c3b6d4794469734d0634b3ad0c
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122514656"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129213460"
 ---
 # <a name="troubleshoot-your-connections-in-azure-purview"></a>Azure Purview での接続のトラブルシューティング
 
@@ -35,7 +35,7 @@ ms.locfileid: "122514656"
 - [Azure Synapse Analytics](register-scan-azure-synapse-analytics.md#setting-up-authentication-for-a-scan)
 - [SQL Server](register-scan-on-premises-sql-server.md#setting-up-authentication-for-a-scan)
 - [Power BI](register-scan-power-bi-tenant.md)
-- [Amazon S3](register-scan-amazon-s3.md#create-a-purview-credential-for-your-aws-bucket-scan)
+- [Amazon S3](register-scan-amazon-s3.md#create-a-purview-credential-for-your-aws-s3-scan)
 
 ## <a name="verifying-azure-role-based-access-control-to-enumerate-azure-resources-in-azure-purview-studio"></a>Azure Purview Studio で Azure リソースを列挙するための Azure ロールベースのアクセス制御の確認
 
@@ -76,7 +76,7 @@ Azure Purview で新しい資格情報を作成する方法の詳細について
 1. お使いのキー コンテナーに移動します。
 1. **[Settings]\(設定\)** > **[Secrets]\(シークレット\)** を選択します。
 1. スキャンするデータ ソースに対する認証に使用するシークレットを選択します。
-1. 使用するバージョンを選択し、 **[シークレット値を表示する]** をクリックして、パスワードまたはアカウント キーが正しいことを確認します。 
+1. 使用するバージョンを選択し、 **[シークレット値を表示する]** を選択して、パスワードまたはアカウント キーが正しいことを確認します。 
 
 ## <a name="verify-permissions-for-the-purview-managed-identity-on-your-azure-key-vault"></a>Azure Key Vault での、Purview が管理する ID のアクセス許可の確認
 

@@ -6,14 +6,14 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 08/20/2021
+ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: 3b6f6a0700915263187f4f31b60a4d2d8b72d9fd
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.openlocfilehash: dbeb1a776aa5d813806cec6622e1ad1e515ccfc5
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122634204"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128623686"
 ---
 # <a name="automatically-renew-reservations"></a>予約を自動的に更新する
 
@@ -44,7 +44,7 @@ Azure portal > **[予約]** に移動します。
 
 - 既存の予約の所有者である必要があります。
 - 予約が 1 つのサブスクリプションまたはリソース グループを対象としている場合は、サブスクリプションの所有者である必要があります。
-- 共有スコープがある場合は、サブスクリプションの所有者である必要があります。
+- 共有スコープまたは管理グループ スコープがある場合は、サブスクリプションの所有者である必要があります。
 
 ## <a name="default-renewal-settings"></a>既定の更新設定
 
@@ -85,7 +85,7 @@ Azure では、次の場合に更新が処理されない可能性がありま�
 
 ## <a name="renewal-notification"></a>更新の通知
 
-更新通知電子メールは、有効期限の30日前に送信され、有効期限日にもう一度送信されます。 送信電子メール アドレスは `azure-noreply@microsoft.com` です。 差出人セーフ リストまたは許可リストに電子メールアドレスを追加することができます。
+更新通知電子メールは、有効期限の30日前に送信され、有効期限日にもう一度送信されます。 送信電子メール アドレスは `azure-noreply@microsoft.com` です。 差出人セーフ リストまたは許可リストにメール アドレスを追加することができます。
 
 購入方法に応じて、電子メールが送信されるユーザーは異なります。
 
@@ -93,5 +93,5 @@ Azure では、次の場合に更新が処理されない可能性がありま�
 - 従量課金制料金を使用した個々のサブスクリプションのお客様 - 電子メールは、アカウント管理者として設定されたユーザーに送信されます。
 - クラウド ソリューション プロバイダーのお客様 - 電子メールは、パートナー通知の連絡先に送信されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - Azure の予約の詳細については、「[Azure の予約とは](save-compute-costs-reservations.md)」を参照してください。

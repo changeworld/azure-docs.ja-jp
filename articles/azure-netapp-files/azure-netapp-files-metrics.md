@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/16/2021
+ms.date: 09/27/2021
 ms.author: b-juche
-ms.openlocfilehash: 13a63da9abf37f57842b34f32c3ff442f4214062
-ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.openlocfilehash: b4ea507087bbed2ee3ac49f3c58d81bbac24c90b
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2021
-ms.locfileid: "114402777"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129094274"
 ---
 # <a name="metrics-for-azure-netapp-files"></a>Azure NetApp Files のメトリック
 
@@ -122,6 +122,22 @@ Azure NetApp Files では、割り当て済みストレージ、実際のスト�
 * *その他のスループット*   
     1 秒あたりのバイト単位のその他のスループット (つまり、読み取りや書き込みではない)。
 
+## <a name="volume-backup-metrics"></a>ボリュームのバックアップ メトリック  
+
+* *ボリューム バックアップは有効か*   
+    ボリュームのバックアップが有効になっているかどうかを示します。 `1` が有効です。 `0` は無効です。
+
+* *ボリューム バックアップ操作が完了しているか*   
+    前回のボリューム バックアップまたは復元操作が正常に完了したかどうかを示します。  `1` は成功しました。 `0` は失敗しました。
+
+* *ボリューム バックアップが中断されているか*   
+    ボリュームのバックアップ ポリシーが中断されているかどうかを示します。  `1` は中断されていません。 `0` は中断されました。
+
+* *ボリューム バックアップのバイト数*   
+    このボリュームに対してバックアップされた合計バイト数。
+
+* *ボリューム バックアップの最後に転送されたバイト数*   
+    最後のバックアップまたは復元操作のために転送された合計バイト数。  
 
 ## <a name="next-steps"></a>次のステップ
 

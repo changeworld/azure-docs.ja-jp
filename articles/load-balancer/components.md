@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2020
 ms.author: allensu
-ms.openlocfilehash: b0643f0245a208d2011d7508b4b7593e81e6d510
-ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
+ms.openlocfilehash: a75ea7e9f3659b45e79748fdead7be9aa8ca4f94
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112964214"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128649475"
 ---
 # <a name="azure-load-balancer-components"></a>Azure Load Balancer のコンポーネント
 

@@ -4,19 +4,22 @@ description: この攻略ガイドでは、データに関する Purview ファ�
 author: batamig
 ms.author: bagol
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-insights
 ms.topic: how-to
-ms.date: 01/17/2021
-ms.openlocfilehash: f581594e6830efcf849f4ba51b218ce849bf3f9c
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.date: 09/27/2021
+ms.openlocfilehash: 706c27603233369836368239645cf28222da8eaa
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122396955"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129208543"
 ---
 # <a name="file-extension-insights-about-your-data-from-azure-purview"></a>Azure Purview からのデータに関するファイル拡張子の分析情報 
 
 このハウツーガイドでは、データから検出されるファイル拡張子またはファイルの種類に関する分析情報にアクセスし、これを表示し、フィルター処理する方法について説明します。
+
+> [!IMPORTANT]
+> Azure Purview Insights は現在プレビュー段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」に記載されています。
 
 サポートされるデータ ソースは次のとおりです。Azure Blob Storage、Azure Data Lake Storage (ADLS) GEN 1、Azure Data Lake Storage (ADLS) GEN 2、Amazon S3 バケット
 
@@ -26,18 +29,18 @@ ms.locfileid: "122396955"
 > - データのファイル拡張子の分析情報を表示する
 > - データのファイル拡張子の詳細情報にドリルダウンする
 
-## <a name="prerequisites"></a>前提条件 
+## <a name="prerequisites"></a>前提条件
 
 Purview の分析情報の使用を開始する前に、次の手順を完了していることを確認してください。
 
 - Azure リソースを設定し、関連するアカウントにテスト データを設定している
 
-- 各データ ソースのテスト データに対するスキャンを設定して完了している。 詳細については、「[Azure Purview でデータ ソースを管理する (プレビュー)](manage-data-sources.md)」および「[スキャン ルール セットを作成する](create-a-scan-rule-set.md)」を参照してください。
+- 各データ ソースのテスト データに対するスキャンを設定して完了している。 詳細については、「[Azure Purview でデータ ソースを管理する](manage-data-sources.md)」および「[スキャン ルール セットを作成する](create-a-scan-rule-set.md)」をご覧ください。
 
 - [データ閲覧者またはデータ キュレーター ロール](catalog-permissions.md#roles)を持つアカウントを使用して Purview にサインインします。
 
 
-詳細については、「[Azure Purview でデータ ソースを管理する (プレビュー)](manage-data-sources.md)」を参照してください。
+詳細については、「[Azure Purview でデータ ソースを管理する](manage-data-sources.md)」を参照してください。
 
 ## <a name="use-purview-file-extension-insights"></a>Purview のファイル拡張子の分析情報を使用する
 

@@ -10,14 +10,14 @@ ms.devlang: ''
 ms.topic: reference
 author: vladai78
 ms.author: vladiv
-ms.reviewer: mathoma, jovanpop, sachinp
-ms.date: 09/14/2020
-ms.openlocfilehash: c134631d33313eaefef63fde48dd1693354bf18d
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.reviewer: mathoma, vladiv, sachinp
+ms.date: 09/28/2021
+ms.openlocfilehash: 7fba2ede931375d310b64bf7800b2adf43b2a24e
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110692864"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129212781"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Azure SQL Managed Instance のリソース制限の概要
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -142,13 +142,21 @@ SQL Managed Instance では、現在、次の種類のサブスクリプショ�
 
 |サブスクリプションの種類| SQL Managed Instance のサブネットの最大数 | 最大仮想コア ユニット数* |
 | :---| :--- | :--- |
-|従量課金制|3|320|
-|CSP |8 (リージョンによっては 15**)|960 (リージョンによっては 1440**)|
-|開発テスト用の従量課金制プラン|3|320|
-|Enterprise Dev/Test|3|320|
-|EA|8 (リージョンによっては 15**)|960 (リージョンによっては 1440**)|
-|Visual Studio Enterprise|2 |64|
-|Visual Studio Professional および MSDN Platforms|2|32|
+|CSP |16 (リージョンによっては 30**)|960 (リージョンによっては 1440**)|
+|EA|16 (リージョンによっては 30**)|960 (リージョンによっては 1440**)|
+|Enterprise Dev/Test|6|320|
+|従量課金制|6|320|
+|開発テスト用の従量課金制プラン|6|320|
+|Azure Pass|3|64|
+|BizSpark|3|64|
+|BizSpark Plus|3|64|
+|Microsoft Azure スポンサー プラン|3|64|
+|Microsoft Partner Network|3|64|
+|Visual Studio Enterprise (MPN)|3|64|
+|Visual Studio Enterprise|3|32|
+|Visual Studio Enterprise (BizSpark)|3|32|
+|Visual Studio Professional|3|32|
+|MSDN Platforms|3|32|
 
 \* デプロイの計画では、Business Critical (BC) サービス レベルの場合、仮想コアの容量が General Purpose (GP) サービス レベルより 4 倍多い必要があることを考慮してください。 次に例を示します。1 つの GP 仮想コア = 1 つの仮想コア ユニット、1 つの BC 仮想コア = 4 つの仮想コアとなります。 既定の制限に対する消費量分析を簡素化するために、SQL Managed Instance がデプロイされているリージョン内のすべてのサブネットの仮想コア ユニットを集計して、その結果をサブスクリプションの種類のインスタンス ユニットの制限と比較します。 「**最大仮想コア ユニット数**」の制限は、リージョン内の各サブスクリプションに適用されます。 個々のサブネットあたりの制限はありませんが、複数のサブネット全体のデプロイされたすべての仮想コアの合計は、「**最大仮想コア ユニット数**」以下である必要があります。
 

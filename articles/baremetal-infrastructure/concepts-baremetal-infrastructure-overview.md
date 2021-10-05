@@ -3,13 +3,13 @@ title: Azure の BareMetal インフラストラクチャとは
 description: Azure の BareMetal インフラストラクチャの概要について説明します。
 ms.custom: references_regions
 ms.topic: conceptual
-ms.date: 07/13/2021
-ms.openlocfilehash: 135de43f26b969d3df79f6ec7348d295493e5134
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.date: 09/27/2021
+ms.openlocfilehash: 744378fc00bc443fdae3babefdf626eacbf486e7
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113765811"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129154871"
 ---
 #  <a name="what-is-baremetal-infrastructure-on-azure"></a>Azure の BareMetal インフラストラクチャとは
 
@@ -36,8 +36,8 @@ BareMetal インフラストラクチャは、エンタープライズ アプリ
 BareMetal インフラストラクチャには、これらのベネフィットがあります。
 
 - 専用のワークロード用の認定ハードウェア
-    - SAP ([SAP Note #1928533](https://launchpad.support.sap.com/#/notes/1928533) を参照)
-    - Oracle ([Oracle ドキュメント ID #948372.1](https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=52088246571495&id=948372.1&_adf.ctrl-state=kwnkj1hzm_52) を参照)
+    - SAP ([SAP Note #1928533](https://launchpad.support.sap.com/#/notes/1928533) を参照。 アクセスには SAP アカウントが必要です。)
+    - Oracle ([Oracle ドキュメント ID #948372.1](https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=52088246571495&id=948372.1&_adf.ctrl-state=kwnkj1hzm_52) を参照。 アクセスには Oracle アカウントが必要です。)
 - ハイパーバイザーを使用しない BareMetal インスタンス、シングル テナントの所有権
 - Azure でホストされるアプリケーション VM と BareMetal インスタンス間の短い待ち時間 (0.35 ミリ秒)
 - すべての Flash SSD と NVMe

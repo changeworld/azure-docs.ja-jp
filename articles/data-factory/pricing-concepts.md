@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.subservice: pricing
 ms.topic: conceptual
 ms.date: 09/07/2021
-ms.openlocfilehash: 8044df075fc5c5666bd30af3b7a01ee7e28c958d
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 38d6f8d8b96526c8ba190559a639985bedf96cff
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123537547"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124798562"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>Data Factory の価格を実例から理解する
 
@@ -36,7 +36,7 @@ ms.locfileid: "123537547"
 
 3. パイプラインを毎時実行するスケジュールトリガー。
 
-   ![図には、スケジュール トリガーを伴うパイプラインが示されています。 パイプラインでは、コピー アクティビティが入力データセットに送信され、ここから AWS S3 のリンクされたサービスに送信されます。また、コピー アクティビティは出力データセットにも送信され、ここから Azure Storate のリンクされたサービスに送信されます。](media/pricing-concepts/scenario1.png)
+   :::image type="content" source="media/pricing-concepts/scenario1.png" alt-text="図には、スケジュール トリガーを伴うパイプラインが示されています。パイプラインでは、コピー アクティビティが入力データセットに送信され、ここから AWS S3 のリンクされたサービスに送信されます。また、コピー アクティビティは出力データセットにも送信され、ここから Azure Storate のリンクされたサービスに送信されます。":::
 
 | **操作** | **タイプとユニット** |
 | --- | --- |
@@ -67,7 +67,7 @@ ms.locfileid: "123537547"
 2. データ変換のための１つの Azure Databricks アクティビティ。
 3. パイプラインを 1 時間ごとに実行する 1 つのスケジュールトリガー。
 
-![図には、スケジュール トリガーを伴うパイプラインが示されています。 パイプラインでは、コピー アクティビティが入力データセット、出力データセット、および Azure Databricks で実行される DataBricks アクティビティに送信されます。 入力データセットは、AWS S3 のリンクされたサービスに送信されます。 出力データセットは、Azure Storage のリンクされたサービスに送信されます。](media/pricing-concepts/scenario2.png)
+:::image type="content" source="media/pricing-concepts/scenario2.png" alt-text="図には、スケジュール トリガーを伴うパイプラインが示されています。パイプラインでは、コピー アクティビティが入力データセット、出力データセット、および Azure Databricks で実行される DataBricks アクティビティに送信されます。入力データセットは、AWS S3 のリンクされたサービスに送信されます。出力データセットは、Azure Storage のリンクされたサービスに送信されます。":::
 
 | **操作** | **タイプとユニット** |
 | --- | --- |
@@ -101,7 +101,7 @@ ms.locfileid: "123537547"
 3. データ変換のための１つの Azure Databricks アクティビティ。
 4. パイプラインを 1 時間ごとに実行する 1 つのスケジュールトリガー。
 
-![図には、スケジュール トリガーを伴うパイプラインが示されています。 パイプラインでは、コピー アクティビティが入力データセット、出力データセット、およびルックアップ アクティビティに送信されます。ルックアップ アクティビティは DataBricks アクティビティに送信され、このアクティビティは Azure Databricks で実行されます。 入力データセットは、AWS S3 のリンクされたサービスに送信されます。 出力データセットは、Azure Storage のリンクされたサービスに送信されます。](media/pricing-concepts/scenario3.png)
+:::image type="content" source="media/pricing-concepts/scenario3.png" alt-text="図には、スケジュール トリガーを伴うパイプラインが示されています。パイプラインでは、コピー アクティビティが入力データセット、出力データセット、およびルックアップ アクティビティに送信されます。ルックアップ アクティビティは DataBricks アクティビティに送信され、このアクティビティは Azure Databricks で実行されます。入力データセットは、AWS S3 のリンクされたサービスに送信されます。出力データセットは、Azure Storage のリンクされたサービスに送信されます。":::
 
 | **操作** | **タイプとユニット** |
 | --- | --- |
@@ -130,7 +130,7 @@ ms.locfileid: "123537547"
 
 Azure-SSIS 統合ランタイム (IR) は、Azure Data Factory (ADF) で SSIS パッケージを実行するための Azure 仮想マシン (VM) の特殊なクラスターです。 これは、プロビジョニングされると、そのユーザー専用になります。そのため、これを使用して SSIS パッケージを実行するかどうかにかかわらず、実行し続ける限り、他のすべての専用の Azure VM と同様に課金されます。 その実行コストについては、ADF ポータルのセットアップ ペインに時間単位の見積もりが表示されます。たとえば、次のようになります。  
 
-![SSIS の価格の例](media/pricing-concepts/ssis-pricing-example.png)
+:::image type="content" source="media/pricing-concepts/ssis-pricing-example.png" alt-text="SSIS の価格の例":::
 
 上の例では、Azure-SSIS IR を 2 時間実行し続けると、**2 (時間) x 1.158 米ドル/時 = 2.316 米ドル** が課金されます。
 
@@ -181,7 +181,8 @@ Sam は、データ エンジニアとして、毎日マッピング データ �
 
 ## <a name="data-integration-in-azure-data-factory-managed-vnet"></a>Azure Data Factory マネージド VNET でのデータ統合
 このシナリオでは、Azure Blob Storage にある元のファイルを削除し、Azure SQL Database から Azure Blob Storage にデータをコピーします。 この実行を、異なるパイプラインで 2 回行います。 これら 2 つのパイプラインでの実行時間は重なっています。
-![Scenario4](media/pricing-concepts/scenario-4.png) シナリオを実現するには、次の項目を含む 2 つのパイプラインを作成する必要があります。
+:::image type="content" source="media/pricing-concepts/scenario-4.png" alt-text="Scenario4":::
+シナリオを実現するには、次の項目を含む 2 つのパイプラインを作成する必要があります。
   - パイプライン アクティビティ – 削除アクティビティ。
   - Azure Blob Storage からコピーするデータに対する入力データセットのコピー アクティビティ。
   - Azure SQL Database 上のデータに対する出力データセット。

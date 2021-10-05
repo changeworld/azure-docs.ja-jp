@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 06/18/2021
+ms.date: 09/15/2021
 ms.author: justinha
-ms.openlocfilehash: 0d7c3eeb184f7ceb09541ca9533203f4b45194bb
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 10cf2da31aa65714516797b478ab00f6759b0aff
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121730830"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128561783"
 ---
 # <a name="how-trust-relationships-work-for-resource-forests-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services のリソース フォレストに対する信頼関係のしくみ
 
@@ -155,6 +155,9 @@ NTLM 認証プロトコルは、クライアントの認証および承認情報
 2 つのフォレストがフォレストの信頼によって接続されている場合、Kerberos V5 または NTLM プロトコルを使用して行われた認証要求は、両方のフォレスト内のリソースへのアクセスを提供するためにフォレスト間でルーティングできます。
 
 フォレストの信頼が最初に確立されたときに、各フォレストではそのパートナー フォレスト内の信頼された名前空間をすべて収集し、[信頼されたドメイン オブジェクト](#trusted-domain-object)に情報を格納します。 信頼された名前空間には、ドメイン ツリー名、ユーザー プリンシパル名 (UPN) のサフィックス、サービス プリンシパル名 (SPN) のサフィックス、および他のフォレストで使用されるセキュリティ ID (SID) の名前空間が含まれます。 TDO オブジェクトはグローバル カタログにレプリケートされます。
+
+>[!NOTE]
+>信頼での代替 UPN サフィックスはサポートされていません。 オンプレミスのドメインで Azure AD DS と同じ UPN サフィックスが使用されている場合は、サインインで **sAMAccountName** を使用する必要があります。  
 
 認証プロトコルがフォレストの信頼パスに従うようにするには、その前に、リソース コンピューターのサービス プリンシパル名 (SPN) を他のフォレスト内の場所に解決する必要があります。 SPN は、次のいずれかの名前にすることができます。
 

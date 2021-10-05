@@ -5,14 +5,14 @@ services: route-server
 author: duongau
 ms.service: route-server
 ms.topic: article
-ms.date: 09/01/2021
+ms.date: 09/23/2021
 ms.author: duau
-ms.openlocfilehash: e17d49654b3c658ed133686e11d70c72b7f7f3b8
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: fa5ea8f191c0b2ea9c7db483eb4d7b9c5a679be0
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123426024"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129094369"
 ---
 # <a name="azure-route-server-faq"></a>Azure Route Server に関する FAQ
 
@@ -48,6 +48,10 @@ Azure Route Server では、Border Gateway Protocol (BGP) のみがサポート�
 
 Azure Router Server では、Route Server の構成を管理するバックエンド サービスへの接続を確保する必要があるため、パブリック IP アドレスが必要になります。 
 
+### <a name="does-azure-route-server-support-ipv6"></a>Azure Route Server では IPv6 がサポートされていますか。
+
+いいえ。 IPv6 サポートは今後追加される予定です。 
+
 ### <a name="if-azure-route-server-receives-the-same-route-from-more-than-one-nva-how-does-it-handle-them"></a>Azure Route Server が複数の NVA から同じルートを受け取る場合、どのように処理されますか。
 
 ルートの AS パスの長さが同じ場合、Azure Route Server は、仮想ネットワーク内の VM へのルートの複数のコピーを、それぞれ異なるネクスト ホップで作成します。 VM によってこのルートの宛先にトラフィックが送信されると、VM ホストによって等コスト マルチパス (ECMP) ルーティングが行われます。 ただし、1つの NVA が、他の NVA よりも短い AS パスの長さでルートを送信した場合、Azure Route Server は、この NVA に対してネクスト ホップが設定されているルートのみを、仮想ネットワーク内の VM にプログラムします。
@@ -55,6 +59,9 @@ Azure Router Server では、Route Server の構成を管理するバックエ�
 ### <a name="does-azure-route-server-preserve-the-bgp-communities-of-the-route-it-receives"></a>Azure Route Server は、受信したルートの BGP コミュニティを保持しますか。
 
 はい。Azure Route Server は、BGP コミュニティを使用してルートを伝達します。
+
+### <a name="what-is-the-bgp-timer-setting-of-azure-route-server"></a>Azure Route Server の BGP タイマーはどのように設定されていますか。
+キープアライブ タイマーは 60 秒、停止タイマーは 180 秒に設定されています。
 
 ### <a name="what-autonomous-system-numbers-asns-can-i-use"></a>どの自律システム番号 (ASN) を使用できますか。
 
@@ -71,9 +78,13 @@ Azure Router Server では、Route Server の構成を管理するバックエ�
 
 いいえ。Azure Route Server でサポートされる ASN は、16 ビット (2 バイト) のみです。
 
-### <a name="can-i-configure-a-user-defined-route-udr-in-the-azurerouteserver-subnet"></a>AzureRouteServer サブネットでユーザー定義ルート (UDR) を構成できますか。
+### <a name="can-i-associate-a-user-defined-route-udr-to-the-routeserversubnet"></a>ユーザー定義ルート (UDR) を RouteServerSubnet に関連付けることはできますか。
 
-いいえ。Azure Route Server では、AzureRouteServer サブネットでの UDR の構成はサポートされていません。
+いいえ。Azure Route Server は、RouteServerSubnet 上での UDR の構成をサポートしていません。
+
+### <a name="can-i-associate-a-network-security-group-nsg-to-the-routeserversubnet"></a>ネットワーク セキュリティ グループ (NSG) を RouteServerSubnet に関連付けることはできますか。
+
+いいえ。Azure Route Server は、RouteServerSubnet への NSG の関連付けをサポートしていません。
 
 ### <a name="can-i-peer-two-route-servers-in-two-peered-virtual-networks-and-enable-the-nvas-connected-to-the-route-servers-to-talk-to-each-other"></a>2 つのピアリングされた仮想ネットワーク内の 2 つのルート サーバーをピアリングし、ルート サーバーに接続されている NVA が互いに通信可能となるようにできますか? 
 

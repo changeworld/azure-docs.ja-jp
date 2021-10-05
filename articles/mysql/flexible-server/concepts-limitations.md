@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/1/2020
-ms.openlocfilehash: 659f62cb8e42a4e2aba2e51dfcfee9826a614923
-ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
+ms.openlocfilehash: c8460d6df9710e5a8752a0edd50c6b83276725ad
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113588330"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "128668587"
 ---
 # <a name="limitations-in-azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL - フレキシブル サーバー (プレビュー) での制限
 
@@ -20,7 +20,7 @@ ms.locfileid: "113588330"
 > [!IMPORTANT]
 > Azure Database for MySQL - フレキシブル サーバーは現在、パブリック プレビュー段階にあります。
 
-この記事では、Azure Database for MySQL フレキシブル サーバー サービスで制限事項について説明します。 MySQL データベース エンジンでの[一般的な制限事項](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.7/en/limits.html)も適用されます。 リソース (コンピューティング、メモリ、ストレージ) レベルの詳細については、[コンピューティングとストレージ](concepts-compute-storage.md)の記事を参照してください。
+この記事では、Azure Database for MySQL フレキシブル サーバー サービスで制限事項について説明します。 MySQL データベース エンジンでの[一般的な制限事項](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.7/en/limits.html)も適用されます。 リソースの制限 (コンピューティング、メモリ、ストレージ) の詳細については、[コンピューティングとストレージ](concepts-compute-storage.md)に関する記事を参照してください。
 
 ## <a name="server-parameters"></a>サーバー パラメーター
 
@@ -29,11 +29,9 @@ ms.locfileid: "113588330"
 
 Azure Database for MySQL では、サーバー パラメーターの値のチューニングがサポートされています。 一部のパラメーターの最小値と最大値 ( `max_connections`、`join_buffer_size`、`query_cache_size` など) は、サーバーのコンピューティング レベルとコンピューティング サイズによって決まります。 これらの制限の詳細については、[サーバー パラメーター](./concepts-server-parameters.md)に関する記事を参照してください。
 
-"validate_password" や "caching_sha2_password" などのパスワード プラグインは、サービスではサポートされていません。
-
 ## <a name="storage-engines"></a>ストレージ エンジン
 
-MySQL では多くのストレージ エンジンがサポートされています。 Azure Database for MySQL フレキシブル サーバーでサポートされている、およびサポートされていないストレージ エンジンは次のとおりです。
+MySQL では多くのストレージ エンジンがサポートされています。 Azure Database for MySQL フレキシブル サーバーでサポートされている、およびサポートされていないストレージ エンジンの一覧は次のとおりです。
 
 ### <a name="supported"></a>サポートされています
 - [InnoDB](https://dev.mysql.com/doc/refman/5.7/en/innodb-introduction.html)
@@ -46,8 +44,6 @@ MySQL では多くのストレージ エンジンがサポートされていま�
 - [FEDERATED](https://dev.mysql.com/doc/refman/5.7/en/federated-storage-engine.html)
 
 ## <a name="privileges--data-manipulation-support"></a>特権とデータ操作のサポート
-
-多くのサーバー パラメーターおよび設定によって、誤ってサーバー パフォーマンスを低下させたり、MySQL サーバーの ACID プロパティを負数にしてしまったりする恐れがあります。 製品レベルでサービスの整合性と SLA を維持するため、このサービスでは複数のロールは公開されていません。 
 
 MySQL サービスでは、基になるファイル システムに直接アクセスすることはできません。 一部のデータ操作コマンドはサポートされていません。 
 
@@ -71,8 +67,6 @@ MySQL サービスでは、基になるファイル システムに直接アク�
 
 ### <a name="networking"></a>ネットワーキング
 - サーバーの作成後に接続方法を変更することはできません。 サーバーが "*プライベート アクセス (VNet 統合)* " で作成されている場合、作成後に "*パブリック アクセス (許可された IP アドレス)* " に変更することはできません。逆も同様です。
-- TLS/SSL は既定で有効になっており、無効にすることはできません。
-- サーバーでサポートされている TLS の最小バージョンは TLS 1.2 です。 詳細については、[TLS/SSL を使用した接続](./how-to-connect-tls-ssl.md)に関するページを参照してください。
 
 ### <a name="stopstart-operation"></a>停止/開始操作
 - ゾーン冗長 HA 構成 (プライマリとスタンバイの両方) ではサポートされていません。

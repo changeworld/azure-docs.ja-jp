@@ -1,18 +1,18 @@
 ---
-title: Azure Synapse Analytics ワークスペースをスキャンする方法
+title: Azure Synapse Analytics ワークスペースを登録してスキャンする方法
 description: Azure Purview データ カタログで Azure Synapse ワークスペースをスキャンする方法について説明します。
 author: viseshag
 ms.author: viseshag
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: how-to
-ms.date: 06/18/2021
-ms.openlocfilehash: a74e88d72d1e7109b6e0acfa81485476eed9e00b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/27/2021
+ms.openlocfilehash: 8a7b23089e9b17e35b56b04991c76b37baedf231
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121731144"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129207794"
 ---
 # <a name="register-and-scan-azure-synapse-analytics-workspaces"></a>Azure Synapse Analytics ワークスペースを登録してスキャンする
 
@@ -138,6 +138,7 @@ Azure Synapse ソースの認証は、次の 2 つの方法のいずれかで設
     EXEC sp_addrolemember 'db_datareader', [PurviewAccountName]
     GO
     ```
+
 #### <a name="use-a-managed-identity-for-serverless-sql-databases"></a>サーバーレス SQL データベースでマネージド ID を使用する
 
 1. ご利用の Azure Synapse ワークスペースに移動します。
@@ -148,6 +149,14 @@ Azure Synapse ソースの認証は、次の 2 つの方法のいずれかで設
     CREATE USER [PurviewAccountName] FOR LOGIN [PurviewAccountName];
     ALTER ROLE db_datareader ADD MEMBER [PurviewAccountName]; 
     ```
+
+#### <a name="grant-permission-to-use-credentials-for-external-tables"></a>外部テーブルの資格情報を使用するためのアクセス許可を付与する
+
+Azure Synapse ワークスペースに外部テーブルがある場合、Azure Purview マネージド ID には、外部テーブル スコープの資格情報に対する参照アクセス許可が付与されている必要があります。 参照アクセス許可を使用すると、Azure Purview では外部テーブルからデータを読み取ることができます。
+
+```sql
+GRANT REFERENCES ON DATABASE SCOPED CREDENTIAL::[scoped_credential] TO [PurviewAccountName];
+```
 
 #### <a name="use-a-service-principal-for-dedicated-sql-databases"></a>専用 SQL データベースでサービス プリンシパルを使用する
 
@@ -199,7 +208,7 @@ Azure Synapse ソースの認証は、次の 2 つの方法のいずれかで設
 
 新しいスキャンを作成して実行するには、次の操作を行います。
 
-1. Purview Studio の左側のペインで **[Data Map]** タブを選択します。
+1. [Purview Studio](https://web.purview.azure.com/resource/) の左側のペインで **[Data Map]** タブを選択します。
 
 1. 登録したデータ ソースを選択します。
 
@@ -232,11 +241,11 @@ Azure Synapse ソースの認証は、次の 2 つの方法のいずれかで設
 
     * **[状態] バー** には、子リソースの実行状態の概要が表示されます。 状態は、ワークスペース レベルのスキャンに対して表示されます。  
     * 緑はスキャン実行の成功を示し、赤はスキャン実行の失敗を示し、灰色はスキャン実行がまだ進行中であることを示します。  
-    * スキャンの実行に関するより詳細な情報を表示するには、それをクリックします。
+    * スキャンの実行に関するより詳細な情報を表示するには、それを選択します。
 
       :::image type="content" source="media/register-scan-synapse-workspace/synapse-scan-details.png" alt-text="Azure Synapse Analytics のスキャンの詳細ページのスクリーンショット。" lightbox="media/register-scan-synapse-workspace/synapse-scan-details.png"::: 
 
-    * **ソースの詳細** ページの下部に、最近失敗したスキャン実行の概要が表示されます。 ここでも、スキャンの実行に関するより詳細な情報を表示するには、それをクリックします。
+    * **ソースの詳細** ページの下部に、最近失敗したスキャン実行の概要が表示されます。 ここでも、スキャンの実行に関するより詳細な情報を表示するには、それを選択します。
 
 #### <a name="manage-your-scans"></a>スキャンを管理する
 

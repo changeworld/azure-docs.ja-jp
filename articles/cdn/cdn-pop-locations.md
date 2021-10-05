@@ -15,22 +15,22 @@ ms.topic: article
 ms.date: 05/18/2021
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: f51ca01988a090c4c61b821c16ec67f20d2c679f
-ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
+ms.openlocfilehash: 9355ddc7b84d2b120ee4c453fe21f0b820ea60a3
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2021
-ms.locfileid: "112417003"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129093233"
 ---
 # <a name="azure-cdn-coverage-by-metro"></a>都市別の Azure CDN のカバレッジ 
 > [!div class="op_single_selector"]
-> * [リージョン別の POP の場所](cdn-pop-locations.md)
-> * [略称別の Verizon POP の場所](cdn-pop-abbreviations.md)
-> * [略称別の Microsoft POP の場所](microsoft-pop-abbreviations.md)
+> * <bpt id="p1">[</bpt>リージョン別の POP の場所<ept id="p1">](cdn-pop-locations.md)</ept>
+> * <bpt id="p1">[</bpt>略称別の Verizon POP の場所<ept id="p1">](cdn-pop-abbreviations.md)</ept>
+> * <bpt id="p1">[</bpt>略称別の Microsoft POP の場所<ept id="p1">](microsoft-pop-abbreviations.md)</ept>
 >
 
 
-この記事では、Azure Content Delivery Network (CDN) 製品に対するポイント オブ プレゼンス (POP) の場所を含む現在の都市をリージョン別に示します。 各都市には複数の POP が含まれる場合があります。 たとえば、Microsoft の Azure CDN には 100 の都市に 116 の POP があります。 
+この記事では、Azure Content Delivery Network (CDN) 製品に対するポイント オブ プレゼンス (POP) の場所を含む現在の都市をリージョン別に示します。 各都市には複数の POP が含まれる場合があります。 たとえば、Microsoft の Azure CDN には 100 の都市に 117 の POP があります。 
 
 > [!IMPORTANT]
 > 各 Azure CDN 製品がそれぞれの異なる方法で CDN インフラストラクチャを構築するため、どの Azure CDN 製品を使うかを決めるときは、POP の場所を使用しないことをお勧めします。 代わりに、その機能とエンドユーザー パフォーマンスを考慮する必要があります。 各 Azure CDN 製品でパフォーマンスをテストして、ユーザーに適した製品を選択してください。 
@@ -43,7 +43,7 @@ ms.locfileid: "112417003"
 ## <a name="partners"></a>パートナー
 
 > [!IMPORTANT]
-> **Azure CDN from Akamai** の POP の都市の場所は、個別に開示されていません。  
+> <bpt id="p1">**</bpt>Azure CDN from Akamai<ept id="p1">**</ept> の POP の都市の場所は、個別に開示されていません。  
 > 
 
 | Region | Verizon | Akamai |
@@ -59,4 +59,4 @@ ms.locfileid: "112417003"
 
 ## <a name="next-steps"></a>次のステップ
 
-* 許可リスト用の最新 IP アドレスを取得するには、[Azure CDN エッジ ノード API](/rest/api/cdn/cdn/edgenodes) に関するページをご覧ください。
+* 許可リスト用の最新 IP アドレスを取得するには、<bpt id="p1">[</bpt>Azure CDN エッジ ノード API<ept id="p1">](/rest/api/cdn/edge-nodes/list)</ept> に関するページをご覧ください。

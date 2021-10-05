@@ -4,15 +4,15 @@ description: このハウツーガイドでは、Azure Cosmos Database (SQL API)
 author: djpmsft
 ms.author: daperlov
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 05/08/2021
-ms.openlocfilehash: 5cbf179cd28a36705379049a66010d02d2e7cf24
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 14799d5a3ae5878461775e8f581fdda44c140d30
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121739090"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129209967"
 ---
 # <a name="register-and-scan-azure-cosmos-database-sql-api"></a>Azure Cosmos Database (SQL API) の登録とスキャン
 
@@ -24,7 +24,7 @@ Azure Cosmos Database (SQL API) では、フル スキャンと増分スキャ�
 
 ## <a name="prerequisites"></a>前提条件
 
-- データ ソースを登録する前に、Azure Purview アカウントを作成します。 Purview アカウントの作成の詳細については、[Azure Purview アカウントの作成](create-catalog-portal.md)に関するクイックスタートを参照してください。
+- データ ソースを登録する前に、Azure Purview アカウントを作成します。 Purview アカウントの作成の詳細については、[クイック スタート: Azure Purview アカウントの作成](create-catalog-portal.md)に関するページを参照してください。
 - Azure Purview データ ソース管理者である必要があります
 
 ## <a name="setting-up-authentication-for-a-scan"></a>スキャンでの認証の設定
@@ -74,7 +74,7 @@ Azure Cosmos Database (SQL API) の認証を設定する方法は 1 つだけで
 
 新しいスキャンを作成して実行するには、次の操作を行います。
 
-1. Purview Studio の左側にあるペインで **[Data Map]** タブを選択します。
+1. [Purview Studio](https://web.purview.azure.com/resource/) の左側のペインで **[Data Map]** タブを選択します。
 
 1. 登録した Azure Cosmos DB データ ソースを選択します。
 

@@ -26,7 +26,7 @@
           href: hana-operations-model.md
         - name: 互換性のあるオペレーティング システム
           href: os-compatibility-matrix-hana-large-instance.md
-    - name: アーキテクチャ
+    - name: Architecture
       items:
         - name: 全般的なアーキテクチャ
           href: hana-architecture.md
@@ -154,6 +154,8 @@
           items:
             - name: Azure VM での SAP HANA データベースバックアップについて
               href: ../../../backup/sap-hana-db-about.md?toc=/azure/virtual-machines/workloads/sap/toc.json&bc=/azure/virtual-machines/workloads/sap/breadcrumb/toc.json
+            - name: SAP HANA バックアップのための Azure Backup アーキテクチャ
+              href: ../../../backup/azure-backup-architecture-for-sap-hana-backup.md?toc=/azure/virtual-machines/workloads/sap/toc.json&bc=/azure/virtual-machines/workloads/sap/breadcrumb/toc.json
             - name: チュートリアル - Azure VM での SAP HANA データベースのバックアップ
               href: ../../../backup/tutorial-backup-sap-hana-db.md?toc=/azure/virtual-machines/workloads/sap/toc.json&bc=/azure/virtual-machines/workloads/sap/breadcrumb/toc.json
             - name: データベース バックアップに関する FAQ

@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f27cee969d666d8605c0c87552eed1f305e1e4c3
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2a48a9f4ded6386b4b5a4ea2d02d796b8e5ed4f7
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121744185"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129213916"
 ---
 # <a name="how-does-self-service-password-reset-writeback-work-in-azure-active-directory"></a>Azure Active Directory でのセルフサービス パスワード リセットによる書き戻しのしくみ
 
@@ -105,7 +105,7 @@ SSPR 書き戻しの使用を開始するには、次のチュートリアルを
 ユーザーがパスワードのリセットを送信した後、リセット要求はオンプレミスの環境に届く前に、いくつかの暗号化ステップを通過します。 これらの暗号化ステップにより、サービスの最大限の信頼性とセキュリティが保証されます。 暗号化ステップの説明を次に示します。
 
 1. **2048 ビット RSA キーによるパスワードの暗号化**: ユーザーが、オンプレミスに書き戻すパスワードを送信すると、送信されたパスワードそのものが 2048 ビット RSA キーを使って暗号化されます。
-1. **AES-GCM によるパッケージ レベルの暗号化**: AES-GCM を使って、パッケージ全体 (パスワードと必要なメタデータ) が暗号化されます。 この暗号化により、Service Bus チャネルに直接アクセスできる人物による内容の表示または改ざんを防止します。
+1. **256 ビット AES-GCM によるパッケージ レベルの暗号化**: AES-GCM を使って、パッケージ全体 (パスワードと必要なメタデータ) が暗号化されます (キー サイズは 256 ビット)。 この暗号化により、Service Bus チャネルに直接アクセスできる人物による内容の表示または改ざんを防止します。
 1. **すべての通信が TLS/SSL 経由で行われる**: Service Bus でのすべての通信は、SSL/TLS チャネルで実行されます。 この暗号化により、権限がないサード パーティに対してコンテンツが保護されます。
 1. **半年ごとの自動キー ロールオーバー**:半年ごとに、または Azure AD Connect でパスワード ライトバックが無効化されて再び有効化されるたびに、すべてのキーがロールオーバーされ、最大限のサービスのセキュリティと安全性が確保されます。
 

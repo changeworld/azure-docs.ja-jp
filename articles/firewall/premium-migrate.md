@@ -5,15 +5,15 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: how-to
-ms.date: 08/16/2021
+ms.date: 09/13/2021
 ms.author: victorh
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 53587cbc54b9e59268e6ee348bb8956a0b9ca993
-ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
+ms.openlocfilehash: 580dcb11ae04aaae78d2c15f24c2c08d1df6158d
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122228921"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129061848"
 ---
 # <a name="migrate-to-azure-firewall-premium"></a>Azure Firewall Premium への移行
 
@@ -22,6 +22,8 @@ Azure Firewall Standard を Azure Firewall Premium に移行することで、�
 次の 2 つの例では、以下の方法を示します。
 - Azure PowerShell を使用して既存の標準ポリシーを移行する
 - 既存の標準ファイアウォール (クラシック規則を使用) を Premium ポリシーを使用する Azure Firewall Premium に移行します。
+
+Terraform を使用して Azure Firewall をデプロイすると、Terraform を使用して Azure Firewall Premium に移行することができます。 詳細については、「[Terraform を使用して Azure Firewall Standard を Premium に移行する](/azure/developer/terraform/firewall-upgrade-premium?toc=/azure/firewall/toc.json&bc=/azure/firewall/breadcrumb/toc.json)」を参照してください。
 
 ## <a name="performance-considerations"></a>パフォーマンスに関する考慮事項
 
@@ -37,7 +39,7 @@ Standard SKU から移行するとき、パフォーマンスが考慮事項に�
 
 `Transform-Policy.ps1` は、既存の Standard ポリシーから新しい Premium ポリシーを作成する Azure PowerShell スクリプトです。
 
-標準ファイアウォール ポリシー ID が指定されている場合、このスクリプトで、それを Premium Azure Firewall ポリシーに変換します。 このスクリプトは、まず Azure アカウントに接続し、ポリシーをプルし、さまざまなパラメーターを変換および追加してから、新しい Premium ポリシーをアップロードします。 新しい Premium ポリシーは `<previous_policy_name>_premium` という名前になります。
+標準ファイアウォール ポリシー ID が指定されている場合、このスクリプトで、それを Premium Azure Firewall ポリシーに変換します。 このスクリプトは、まず Azure アカウントに接続し、ポリシーをプルし、さまざまなパラメーターを変換および追加してから、新しい Premium ポリシーをアップロードします。 新しい Premium ポリシーは `<previous_policy_name>_premium` という名前になります。 子ポリシーを変換しても、親ポリシーへのリンクは残ります。
 
 使用例:
 
@@ -62,7 +64,7 @@ param (
     [string]
     $PolicyId,
 
-     #new firewallpolicy name, if not specified will be the previous name with the '_premium' suffix
+    #new filewallpolicy name, if not specified will be the previous name with the '_premium' suffix
     [Parameter(Mandatory=$false)]
     [string]
     $NewPolicyName = ""
@@ -123,7 +125,7 @@ function TransformPolicyToPremium {
                         ResourceGroupName = $Policy.ResourceGroupName 
                         Location = $Policy.Location 
                         ThreatIntelMode = $Policy.ThreatIntelMode 
-                        BasePolicy = $Policy.BasePolicy 
+                        BasePolicy = $Policy.BasePolicy.Id
                         DnsSetting = $Policy.DnsSettings 
                         Tag = $Policy.Tag 
                         SkuTier = "Premium" 
@@ -153,7 +155,7 @@ function TransformPolicyToPremium {
 function ValidateAzNetworkModuleExists {
     Write-Host "Validating needed module exists"
     $networkModule = Get-InstalledModule -Name "Az.Network" -ErrorAction SilentlyContinue
-    if (($null -eq $networkModule) -or ($networkModule.Version -lt 4.5)){
+    if (($null -eq $networkModule) -or ($networkModule.Version -lt 4.5.0)){
         Write-Host "Please install Az.Network module version 4.5.0 or higher, see instructions: https://github.com/Azure/azure-powershell#installation"
         exit(1)
     }
@@ -164,6 +166,7 @@ ValidateAzNetworkModuleExists
 $policy = Get-AzFirewallPolicy -ResourceId $script:PolicyId
 ValidatePolicy -Policy $policy
 TransformPolicyToPremium -Policy $policy
+
 ```
 
 ## <a name="migrate-an-existing-standard-firewall-using-the-azure-portal"></a>Azure portal を使用して既存の標準ファイアウォールを移行する

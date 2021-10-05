@@ -2,14 +2,14 @@
 title: プライベート エンドポイントの概要
 description: Azure Backup のプライベート エンドポイントの使用について、およびプライベート エンドポイントを使用することでリソースのセキュリティを維持しやすくなるシナリオについて理解を深めます。
 ms.topic: conceptual
-ms.date: 08/19/2021
+ms.date: 09/28/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 959929c92ecea5534930df5c23648062256c6ca4
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: 3070cb72b6e5949b94972f9dad54d4e57e5bf591
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122446618"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129154966"
 ---
 # <a name="overview-and-concepts-of-private-endpoints-for-azure-backup"></a>Azure Backup のプライベート エンドポイントの概要と概念
 
@@ -28,7 +28,7 @@ Azure Backup で[プライベート エンドポイント](../private-link/priva
 - ネットワーク ポリシーが適用されている仮想ネットワークは、プライベート エンドポイント用にサポートされません。 続行する前に、[ネットワーク ポリシーを無効にする](../private-link/disable-private-endpoint-network-policy.md)必要があります。
 - Recovery Services リソース プロバイダーをサブスクリプションに 2020 年 5 月 1 日より前に登録した場合は、再登録する必要があります。 プロバイダーを再登録するには、Azure portal のサブスクリプションに移動し、左側のナビゲーションバーで **[リソース プロバイダー]** に移動し、 **[Microsoft.RecoveryServices]** を選択し、 **[再登録]** を選択します。
 - コンテナーでプライベート エンドポイントが有効になっている場合、SQL および SAP HANA データベース バックアップの[リージョンをまたがる復元](backup-create-rs-vault.md#set-cross-region-restore)はサポートされていません。
-- 既にプライベート エンドポイントを使用している Recovery Services コンテナーを新しいテナントに移動する場合、Recovery Services コンテナーを更新して、コンテナーのマネージド ID を再作成および再構成し、新しいプライベート エンドポイント (新しいテナント内にあるはずです) を作成する必要があります。 これを実行しないと、バックアップおよび復元操作が失敗するようになります。 また、サブスクリプション内に設定されているすべてのロールベースのアクセス制御 (RBAC) アクセス許可も再構成する必要があります。
+- 既にプライベート エンドポイントを使用している Recovery Services コンテナーを新しいテナントに移動する場合、Recovery Services コンテナーを更新して、コンテナーのマネージド ID を再作成および再構成し、新しいプライベート エンドポイント (新しいテナント内にあるはずです) を作成する必要があります。 これを実行しないと、バックアップおよび復元操作が失敗するようになります。 また、サブスクリプション内に設定されているすべての Azure ロールベースのアクセス制御 (Azure RBAC) アクセス許可も再構成する必要があります。
 
 ## <a name="recommended-and-supported-scenarios"></a>推奨されるシナリオとサポートされるシナリオ
 
@@ -65,8 +65,8 @@ Azure Backup で[プライベート エンドポイント](../private-link/priva
 >上のテキストで、`<geo>` はリージョン コードを示します (たとえば、米国東部の場合は **eus**、北ヨーロッパの場合は **ne** です)。 リージョン コードについては、次の一覧を参照してください。
 >- [すべてのパブリック クラウド](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/AzureRegionCodesList.docx)
 >- [中国](/azure/china/resources-developer-guide#check-endpoints-in-azure)
->- [ドイツ](/azure/germany/germany-developer-guide#endpoint-mapping)
->- [US Gov ](/azure/azure-government/documentation-government-developer-guide)
+>- [ドイツ](../germany/germany-developer-guide.md#endpoint-mapping)
+>- [US Gov ](../azure-government/documentation-government-developer-guide.md)
 
 どちらのシナリオでも、ヒットされるストレージの FQDN は同じです。 ただし、プライベート エンドポイントが設定された Recovery Services コンテナーの場合、これらの名前解決では、プライベート IP アドレスを返す必要があります。 これは、プライベート DNS ゾーンを使用する、ホスト ファイルにストレージ アカウントの DNS エントリを作成する、またはそれぞれの DNS エントリでカスタム DNS への条件付きフォワーダーを使用することで実現できます。 ストレージ アカウントのプライベート IP マッピングは、portal のストレージ アカウントのプライベート エンドポイント ブレードに一覧表示されます。
 
@@ -91,14 +91,14 @@ Azure Backup サービスのエンドポイントは、プライベート エン
 >上のテキストで、`<geo>` はリージョン コードを示します (たとえば、米国東部の場合は **eus**、北ヨーロッパの場合は **ne** です)。 リージョン コードについては、次の一覧を参照してください。
 >- [すべてのパブリック クラウド](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/AzureRegionCodesList.docx)
 >- [中国](/azure/china/resources-developer-guide#check-endpoints-in-azure)
->- [ドイツ](/azure/germany/germany-developer-guide#endpoint-mapping)
->- [US Gov ](/azure/azure-government/documentation-government-developer-guide)
+>- [ドイツ](../germany/germany-developer-guide.md#endpoint-mapping)
+>- [US Gov ](../azure-government/documentation-government-developer-guide.md)
 
 変更された URL は、コンテナーに固有です。  URL 名の `<vault_id>` を参照してください。 このコンテナーに登録されている拡張機能とエージェントのみが、これらのエンドポイントを介して Azure Backup と通信できます。 これにより、この VNet 内のクライアントへのアクセスが制限されます。 拡張機能とエージェントは `*.privatelink.<geo>.backup.windowsazure.com` を介して通信し、これは、NIC 内の対応するプライベート IP を解決する必要があります。
 
 Azure portal で **[プライベート DNS ゾーンと統合する]** オプションを使用して、Recovery Services コンテナーのプライベート エンドポイントを作成すると、リソースが割り当てられるたびに、Azure Backup サービス (`*.privatelink.<geo>backup.windowsazure.com`) のプライベート IP アドレスに必要な DNS エントリが自動的に作成されます。 それ以外の場合は、カスタム DNS またはホスト ファイルでこれらの FQDN の DNS エントリを手動で作成する必要があります。
 
-通信チャネルの VM 検出後に BLOB またはキューの DNS レコードを手動で管理する方法については、「[最初の登録後の BLOB とキューの DNS レコード (カスタム DNS サーバーとホスト ファイルの場合のみ)](/azure/backup/private-endpoints#dns-records-for-blobs-and-queues-only-for-custom-dns-servershost-files-after-the-first-registration)」を参照してください。 最初のバックアップ後にバックアップ ストレージ アカウント BLOB の DNS レコードを手動で管理する方法については、「[最初のバックアップ後の BLOB の DNS レコード (カスタム DNS サーバーとホスト ファイルの場合のみ)](/azure/backup/private-endpoints#dns-records-for-blobs-only-for-custom-dns-servershost-files-after-the-first-backup)」を参照してください。
+通信チャネルの VM 検出後に BLOB またはキューの DNS レコードを手動で管理する方法については、「[最初の登録後の BLOB とキューの DNS レコード (カスタム DNS サーバーとホスト ファイルの場合のみ)](./private-endpoints.md#dns-records-for-blobs-and-queues-only-for-custom-dns-servershost-files-after-the-first-registration)」を参照してください。 最初のバックアップ後にバックアップ ストレージ アカウント BLOB の DNS レコードを手動で管理する方法については、「[最初のバックアップ後の BLOB の DNS レコード (カスタム DNS サーバーとホスト ファイルの場合のみ)](./private-endpoints.md#dns-records-for-blobs-only-for-custom-dns-servershost-files-after-the-first-backup)」を参照してください。
 
 >FQDN のプライベート IP アドレスは、Recovery Services コンテナー用に作成されたプライベート エンドポイントのプライベート エンドポイント ブレードにあります。
 
@@ -120,4 +120,4 @@ Azure portal で **[プライベート DNS ゾーンと統合する]** オプシ
 
 ## <a name="next-steps"></a>次の手順
 
-- [プライベート エンドポイントを作成して使用する](private-endpoints.md)
+- [プライベート エンドポイントを作成して使用する](private-endpoints.md)。

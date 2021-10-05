@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 06/03/2021
+ms.date: 09/23/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c28b901643e150cf98b97633f0dbec0a348b3995
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.openlocfilehash: f8ecfa670980015acbdd8f5b639734f538910804
+ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112232867"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128708626"
 ---
 # <a name="view-audit-history-for-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management で Azure AD ロールの監査履歴を表示する
 
@@ -39,7 +39,7 @@ Azure AD ロールの監査履歴を表示するには、次の手順に従い�
 
 1. 定義済みの日付またはカスタムの範囲を使用して履歴をフィルターします。
 
-    ![フィルターを使用したリソースの監査の一覧](media/azure-pim-resource-rbac/rbac-resource-audit.png)
+    ![フィルターを使用した Azure AD ロール監査リスト](media/azure-pim-resource-rbac/rbac-resource-audit.png)
 
 ## <a name="view-my-audit"></a>自分の監査を表示する
 

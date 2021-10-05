@@ -6,13 +6,13 @@ ms.author: kchandra
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
-ms.date: 11/13/2020
-ms.openlocfilehash: 9bd3c315fcc15317a9fa483289fdc326ca6aa47f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/27/2021
+ms.openlocfilehash: f235e4b293c47c9d2833732fa6333a350a1fd272
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102614362"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129210347"
 ---
 # <a name="deploy-the-metadata-extraction-abap-function-module-for-the-sap-r3-family-of-bridges"></a>SAP R3 ブリッジ ファミリ用のメタデータ抽出 ABAP 関数モジュールをデプロイする
 
@@ -65,7 +65,7 @@ Sap Business Suite 4 HANA (S/4HANA)、ECC、R/3 ERP ブリッジを使用して�
 
 1. 関数グループが作成されたら選択します。
 
-2. リポジトリ ブラウザーで関数グループ名を右クリックし、 **[作成]** を選択して、次に **[関数モジュール]** を選択します。
+2. リポジトリ ブラウザーで関数グループ名を選択したままにし (または右クリックし)、 **[作成]** を選択して、次に **[関数モジュール]** を選択します。
 
 3. **[関数モジュール]** フィールドに「`Z_MITI_DOWNLOAD`」と入力します。 **[短いテキスト]** の入力項目に適切な説明を入力します。
 
@@ -112,7 +112,7 @@ Sap Business Suite 4 HANA (S/4HANA)、ECC、R/3 ERP ブリッジを使用して�
 
 7. 関数を保存します (Ctrl + S キーを押すか、メイン メニューの **[関数モジュール]** を選択して **[保存]** を選択します)。
 
-8. ツール バーの **[アクティブ化]** アイコンをクリックし (Ctrl + F3 キー)、ダイアログ ウィンドウの **[続行]** ボタンを選択します。 プロンプトが表示されたら、メイン関数モジュールと共にアクティブにする、生成されたインクルードを選択する必要があります。
+8. ツール バーの **[アクティブ化]** アイコンを選択し (Ctrl + F3 キー)、ダイアログ ウィンドウの **[続行]** ボタンを選択します。 プロンプトが表示されたら、メイン関数モジュールと共にアクティブにする、生成されたインクルードを選択する必要があります。
 
 ### <a name="testing-the-function"></a>関数のテスト
 

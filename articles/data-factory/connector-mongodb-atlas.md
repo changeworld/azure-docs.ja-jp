@@ -1,26 +1,26 @@
 ---
 title: MongoDB Atlas のデータをコピーする、または MongoDB Atlas にデータをコピーする
+description: Azure Data Factory または Synapse Analytics パイプラインで Copy アクティビティを使用して、MongoDB Atlas からサポートされているシンク データ ストアに、またはサポートされているソース データ ストアから MongoDB Atlas にデータをコピーする方法について説明します。
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Azure Data Factory パイプラインでコピー アクティビティを使用して、MongoDB Atlas からサポートされているシンク データ ストアに、またはサポートされているソース データ ストアから MongoDB Atlas にデータをコピーする方法について説明します。
-ms.author: chez
-author: chez-charlie
+author: jianleishen
+ms.author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 08/30/2021
-ms.openlocfilehash: b2c174fce6e79b574276d1f95cfc4e1c93c321cd
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.date: 09/09/2021
+ms.openlocfilehash: bd99246d5174049e2f58f3c4dc114dcb8ef41eb6
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123318379"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124827140"
 ---
-# <a name="copy-data-from-or-to-mongodb-atlas-using-azure-data-factory"></a>Azure Data Factory を使用して MongoDB Atlas のデータをコピーする、または MongoDB Atlas にデータをコピーする
+# <a name="copy-data-from-or-to-mongodb-atlas-using-azure-data-factory-or-synapse-analytics"></a>Azure Data Factory または Azure Synapse Analytics を使用して MongoDB Atlas との間でデータをコピーする
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-この記事では、Azure Data Factory のコピー アクティビティを使用して、MongoDB Atlas データベースのデータをコピーする方法、および MongoDB Atlas にデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
+この記事では、Azure Data Factory または Synapse Analytics パイプラインで Copy アクティビティを使用して、MongoDB Atlas データベースからデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -44,7 +44,7 @@ MongoDB Atlas データベースからサポートされる任意のシンク �
 
     # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
 
-    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI を使用して新しいリンク サービスを作成します。":::
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI で新しいリンク サービスを作成する。":::
 
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
@@ -141,7 +141,7 @@ MongoDB Atlas のリンクされたサービスでは、次のプロパティが
 | batchSize | MongoDB Atlas インスタンスからの応答の各バッチで返されるドキュメントの数を指定します。 ほとんどの場合、バッチ サイズを変更しても、ユーザーまたはアプリケーションへの影響はありません。 Cosmos DB では各バッチのサイズが 40 MB を超過しないように制限されていますが、これはドキュメントが batchSize の数だけ存在するときの合計サイズなので、ドキュメントのサイズが大きくなる場合はこの値を減らしてください。 | いいえ<br/>(既定値は **100**) |
 
 >[!TIP]
->ADF は、**厳格モード** での BSON ドキュメントの利用をサポートしています。 フィルター クエリがシェル モードではなく厳格モードであることを確認してください。 詳細については、[MongoDB のマニュアル](https://docs.mongodb.com/manual/reference/mongodb-extended-json/index.html)を参照してください。
+>このサービスは、**厳格モード** での BSON ドキュメントの利用をサポートしています。 フィルター クエリがシェル モードではなく厳格モードであることを確認してください。 詳細については、[MongoDB のマニュアル](https://docs.mongodb.com/manual/reference/mongodb-extended-json/index.html)を参照してください。
 
 **例:**
 
@@ -188,7 +188,7 @@ MongoDB Atlas のリンクされたサービスでは、次のプロパティが
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | Copy アクティビティのシンクの **type** プロパティには **MongoDbAtlasSink** を設定する必要があります。 |はい |
-| writeBehavior |MongoDB Atlas にデータを書き込む方法について説明します。 使用可能な値は、**Insert**、**Upsert** です。<br/><br/>**upsert** の動作は、同じ `_id` を持つドキュメントが既に存在する場合、そのドキュメントを置き換えます。それ以外の場合は、ドキュメントを挿入します。<br /><br />**注**: 元のドキュメントにも列のマッピングによっても `_id` が指定されていない場合、Data Factory によってドキュメントの `_id` が自動的に生成されます。 つまり、**upsert** が期待どおりに動作するには、ドキュメントに ID があることを確認する必要があります。 |いいえ<br />(既定値は **insert** です) |
+| writeBehavior |MongoDB Atlas にデータを書き込む方法について説明します。 使用可能な値は、**Insert**、**Upsert** です。<br/><br/>**upsert** の動作は、同じ `_id` を持つドキュメントが既に存在する場合、そのドキュメントを置き換えます。それ以外の場合は、ドキュメントを挿入します。<br /><br />**注**: 元のドキュメントまたは列マッピングで `_id` が指定されていない場合は、サービスによってドキュメントの `_id` が自動的に生成されます。 つまり、**upsert** が期待どおりに動作するには、ドキュメントに ID があることを確認する必要があります。 |いいえ<br />(既定値は **insert** です) |
 | writeBatchSize | **writeBatchSize** プロパティにより、各バッチで書き込むドキュメントのサイズが制御されます。 パフォーマンスを向上させるには **writeBatchSize** の値を大きくしてみて、ドキュメントのサイズが大きい場合は値を小さくしてみます。 |いいえ<br />(既定値は **10,000**) |
 | writeBatchTimeout | タイムアウトするまでに一括挿入操作の完了を待つ時間です。許容される値は期間です。 | いいえ<br/>(既定値は **00:30:00** - 30 分) |
 
@@ -232,7 +232,7 @@ MongoDB Atlas のリンクされたサービスでは、次のプロパティが
 この MongoDB Atlas コネクタを使用すると、簡単に次を実行できます。
 
 * 2 つの MongoDB Atlas コレクション間でドキュメントをそのままコピーします。
-* Azure Cosmos DB、Azure Blob Storage、Azure Blob ストレージ、Azure Data Lake Store 、Azure Data Factory でサポートされているその他のファイル ベースのストアなど、さまざまなソースからMongoDB Atlas に JSON ドキュメントをインポートします。
+* Azure Cosmos DB、Azure Blob Storage、Azure Data Lake Store、その他のサポートされているファイルベースのストアなど、さまざまなソースから MongoDB Atlas に JSON ドキュメントをインポートします。
 * JSON ドキュメントをMongoDB Atlas コレクションからさまざまなファイル ベースのストアにエクスポートします。
 
 このようなスキーマに依存しないコピーを実現するには、データセットの "構造" ("*スキーマ*" とも呼ばれる) のセクションと、コピー アクティビティでのスキーマ マッピングをスキップします。
@@ -243,4 +243,4 @@ MongoDB Atlas のリンクされたサービスでは、次のプロパティが
 MongoDB Atlas から表形式のシンクにデータをコピーする、またはシンクから MongoDB Atlas にデータをコピーするには、[スキーマ マッピング](copy-activity-schema-and-type-mapping.md#schema-mapping)に関する記事をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
-Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。
+Copy アクティビティでソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関するセクションを参照してください。

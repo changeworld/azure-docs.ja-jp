@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 75e5100c12940083626d94367bb70b280a49711b
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: c537e9a9dd733d84161e59999ff17b8b0251f623
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110665161"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129061183"
 ---
 # <a name="enable-key-vault-logging"></a>Key Vault のログ記録を有効にする
 
@@ -229,12 +229,9 @@ BLOB を選択的にダウンロードするには、ワイルドカードを使
 
 ## <a name="use-azure-monitor-logs"></a>Azure Monitor ログの使用
 
-Azure Monitor ログの Key Vault ソリューションを使用して、Key Vault の `AuditEvent` ログを調査することができます。 Azure Monitor ログでは、ログ クエリを使用してデータを分析し、必要な情報を取得します。
-
-この設定方法などの詳細については、[Azure Monitor の Azure Key Vault](../../azure-monitor/insights/key-vault-insights-overview.md) に関するページをご覧ください。
+Azure Monitor ログの Key Vault ソリューションを使用して、Key Vault の `AuditEvent` ログを調査することができます。 Azure Monitor ログでは、ログ クエリを使用してデータを分析し、必要な情報を取得します。  詳細については、[Key Vault の監視](monitor-key-vault.md)に関するページをご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 
 - 概念的な情報については、Key Vault のログを解釈する方法を含め、[Key Vault のログ記録](logging.md)に関するページを参照してください。
-- .NET Web アプリケーションでの Azure Key Vault の使用方法に関するチュートリアルについては、「[Web アプリケーションからの Azure Key Vault の使用](tutorial-net-create-vault-azure-web-app.md)」を参照してください。
-- プログラミング リファレンスについては、「[Azure Key Vault 開発者ガイド](developers-guide.md)」を参照してください。
+- ご自身のキー コンテナー上での Azure Monitor の使用の詳細については、[Key Vault の監視](monitor-key-vault.md)に関するページをご覧ください。

@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/31/2021
-ms.openlocfilehash: 7afdd852bebc4eeff24671d8d60cb8805f86f29c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/17/2021
+ms.openlocfilehash: e31fff677b6e1363d0afda420d521d31b2cf4247
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121736489"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128657559"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>コマーシャル マーケットプレースの SaaS オファーを計画する方法
 
@@ -265,12 +265,8 @@ Microsoft を通じて販売される SaaS アプリ オファーでは、定額
 | Azure 使用コスト (D1/1 コア) | 顧客ではなく公開元に直接課金されます |
 | 顧客は Microsoft から請求されます | 1 か月あたり $100.00 (公開元は、ライセンス料金の中で、発生したパススルー インフラストラクチャ コストを考慮する必要があります) |
 | **Microsoft が請求** | **1 か月あたり $100** |
-| Microsoft は、ライセンス コストの 80% をパブリッシャーに支払います<br>`*` 対象の SaaS アプリの場合、Microsoft はライセンス コストの 90% を支払います| 1 か月あたり $80.00<br>``*`` 1 か月あたり $90.00 |
-|||
-
-**`*`マーケットプレース サービス料金の減額** - コマーシャル マーケットプレースで公開される特定の SaaS オファーについて、Microsoft では、マーケットプレース サービス料金を 20% (Microsoft 公開元契約の説明どおり) から 10% 減額します。 お客様のオファーが対象となるには、そのオファーが Microsoft によって Azure IP 共同販売インセンティブとして指定されている必要があります。 Marketplace サービス料金の減額を受け取るには、各カレンダー月の月末から少なくとも 5 営業日前に資格を満たす必要があります。 資格が満たされると、翌月の 1 日に有効なすべてのトランザクションについて、サービス料金の減額を受け、この適用は、Azure IP 共同販売インセンティブ対象の状態が失われるまで継続されます。 IP 共同販売の資格の詳細については、[共同販売の状態の要件](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status)に関する記事を参照してください。 Marketplace サービス料金の減額は、Azure IP 共同販売インセンティブの VM やマネージド アプリのほか、コマーシャル マーケットプレースを通じて公開された正規の取引可能 IaaS オファーにも適用されます。
-
-## <a name="preview-audience"></a>プレビュー対象ユーザー
+| Microsoft は 3% の Marketplace サービス料金を請求し、ライセンス コストの 97% を支払います | 1 か月あたり $97.00 |
+|
 
 プレビュー対象ユーザーは、オンライン ストアで公開される前に、オファーへアクセスできます。 このユーザーは、コマーシャル マーケットプレイスでオファーがどのように表示されるかを確認し、公開する前にエンドツーエンドの機能をテストすることができます。 
 

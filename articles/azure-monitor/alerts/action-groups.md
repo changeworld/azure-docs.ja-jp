@@ -5,12 +5,12 @@ author: dkamstra
 ms.topic: conceptual
 ms.date: 05/28/2021
 ms.author: dukek
-ms.openlocfilehash: ff6d911b85558e5efe9cc8302b9cb857cb7a9706
-ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
+ms.openlocfilehash: cc5d5aa589b56fb6e6fda1845e50606ff492fbdd
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122830659"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129217885"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure Portal でのアクション グループの作成および管理
 アクション グループは、Azure サブスクリプションの所有者によって定義された通知設定のコレクションです。 アクション グループは、アラートがトリガーされたことをユーザーに通知するために Azure Monitor、Service Health、Azure Advisor のアラートで使用されます。 ユーザーの要件に応じて、さまざまなアラートで同じアクション グループを使用することも、異なるアクション グループを使用することもあります。 
@@ -24,6 +24,8 @@ ms.locfileid: "122830659"
 * **[詳細]** :*種類* によって異なる対応する詳細。
 
 Azure Resource Manager テンプレートを使用したアクション グループの構成に関する詳細については、「[アクション グループの Resource Manager テンプレート](./action-groups-create-resource-manager-template.md)」を参照してください。
+
+アクション グループは **グローバル** サービスです。したがって、特定の Azure リージョンンに依存することはありません。 クライアントからの要求は、どのリージョンのアクション グループ サービスでも処理できます。つまり、あるリージョンのサービスがダウンしても、トラフィックは自動的に他のリージョンによってルーティングされ、処理されます。 "*グローバル サービス*" であるため、クライアントは **ディザスター リカバリー** について心配する必要がありません。 
 
 ## <a name="create-an-action-group-by-using-the-azure-portal"></a>Azure Portal を使用したアクション グループの作成
 

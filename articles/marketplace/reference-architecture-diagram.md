@@ -7,13 +7,13 @@ ms.reviewer: stmummer
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 02/18/2021
-ms.openlocfilehash: f7dfaf8e8afb4d7a5e39c16cf280c10dcae05859
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.date: 09/22/2021
+ms.openlocfilehash: 63c820a7dd4bcbe1322478a46043963edc45dd2b
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108133045"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129054264"
 ---
 # <a name="reference-architecture-diagram"></a>参照アーキテクチャ図
 
@@ -24,6 +24,8 @@ ms.locfileid: "108133045"
 参照アーキテクチャ図を作成するための有用な出発点は、[Azure のアーキテクチャのモデル](/azure/architecture/browse/)を活用することです。
 
 ## <a name="typical-components-of-a-reference-architecture-diagram"></a>参照アーキテクチャ図の代表的なコンポーネント
+
+この図では、Microsoft Azure 上にデプロイされ、その利用を促進するソリューション、アプリケーション、またはサービス コードとして IP を明確に識別する必要があります。 このコードは再利用性が高く、デプロイごとの広範なカスタマイズに依存しないようにする必要があります。
 
 - プランをホスト、操作するクラウド サービス (Azure リソースを使用するものを含む)
 - プランで使用されているデータ接続、データ レイヤー、データ サービス

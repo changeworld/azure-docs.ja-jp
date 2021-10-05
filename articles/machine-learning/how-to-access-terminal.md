@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.date: 02/05/2021
-ms.openlocfilehash: 7b0d43cec561040e98688a216165d7a4ed88c3d2
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.openlocfilehash: b4b953c527010cb4ec15f0adf52df6bb3b0d7db0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122635177"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128674948"
 ---
 # <a name="access-a-compute-instance-terminal-in-your-workspace"></a>ワークスペースでコンピューティング インスタンスのターミナルにアクセスする
 

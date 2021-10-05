@@ -6,12 +6,12 @@ author: joannapea
 ms.author: joanpo
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 33532380d8f98df44029eeea998130d1da5fdafd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a02624f4e5cf3ebbcd2f476372707f58c1d99f69
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "73468544"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128664069"
 ---
 # <a name="azure-data-share-concepts"></a>Azure Data Share の概念 
 
@@ -27,7 +27,7 @@ Azure Data Share では、データ共有に関連するいくつかの新しい
 
 ## <a name="data-share"></a>データ共有
 
-データ共有は、単一のエンティティとして共有されるデータセットのグループです。 データセットは、Azure Data Share がサポートするたくさんの Azure データ ソースからのものである可能性があります。 現時点で、Azure Data Share は Azure Blob Storage と Azure Data Lake Store をサポートしています。 
+データ共有は、単一のエンティティとして共有されるデータセットのグループです。 データセットは、Azure Data Share がサポートするたくさんの Azure データ ソースからのものである可能性があります。 現在、Azure Data Share で[サポートされているデータ ストア](supported-data-stores.md#supported-data-stores)をご確認ください。 
 
 ## <a name="share-subscription"></a>共有サブスクリプション 
 

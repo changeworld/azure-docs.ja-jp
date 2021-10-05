@@ -1,14 +1,14 @@
 ---
-title: Azure Functions を使用して Azure DevTest Labs を拡張する | Microsoft Docs
+title: Azure Functions を使用して Azure DevTest Labs を拡張する
 description: Azure Functions を使用して Azure DevTest Labs を拡張する方法について学習します。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: e8593453457bf7a077cf555e8d4f35b0c4b8f599
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 8a6200dbfce99ee7904dc1a65965e95d81e98471
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112300545"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128623648"
 ---
 # <a name="use-azure-functions-to-extend-devtest-labs"></a>Azure Functions を使用した DevTest Labs の拡張
 Azure Functions を使用して、DevTest Labs で既にサポートされているシナリオ以外の追加のシナリオをサポートできます。 Azure Functions を使用して、ビジネス固有のニーズに合わせてサービスの組み込み機能を拡張できます。 次の一覧に、考えられるシナリオをいくつか示します。 この記事では、これらのサンプル シナリオの 1 つを実装する方法について説明します。
@@ -108,11 +108,3 @@ Azure Functions は、既に組み込まれているもの以外の DevTest Labs
 - [よく寄せられる質問](devtest-lab-faq.yml)
 - [DevTest Labs のスケールアップ](devtest-lab-guidance-scale.md)
 - [PowerShell を使用した DevTest Labs の自動化](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Modules/Library/Tests)
-
-
-
-
-
-
-
-

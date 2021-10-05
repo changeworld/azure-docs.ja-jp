@@ -8,21 +8,21 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: how-to
-ms.date: 08/12/2021
+ms.date: 09/13/2021
 ms.author: absinh
 ms.reviewer: rolyon
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02c9e92d09ce929b47cd9a71559eabb4e7c40858
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 951431ca79bfeb182eb5d1252851edb767120039
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121862785"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128658243"
 ---
 # <a name="assign-azure-ad-roles-at-different-scopes"></a>Azure AD ロールを異なるスコープで割り当てる
 
-この記事では、Azure AD ロールを異なるスコープで割り当てる方法について説明します。 Azure AD におけるスコープ設定について理解するには、[Azure AD の RBAC の概要](custom-overview.md)に関する記事を参照してください。 一般的に、ユーザーは、ロールの割り当てを制限するスコープ内にいる必要があります。 例えば、[管理単位](administrative-units.md)にスコープ設定したヘルプデスク管理者ロールを割り当てたい場合、 **[Azure AD] > [管理単位] > [管理単位] > [ロールと管理者]** に移動してから、ロールの割り当てを行います。 これにより、テナント全体ではなく、管理単位にスコープ設定したロール割り当てが作成されます。
+Azure Active Directory (Azure AD) 内で Azure AD ロールを割り当てるときは、通常、テナント全体に適用されるようにします。 ただし、管理単位やアプリケーションの登録など、さまざまなリソースに対して Azure AD ロールを割り当てることもできます。 たとえば、ヘルプデスク管理者ロールを、テナント全体ではなく、特定の管理単位にのみ適用されるよう割り当てることができます。 ロールの割り当てが適用されるリソースは、スコープとも呼ばれます。 この記事では、テナント、管理単位、アプリケーションの登録のスコープで、Azure AD ロールを割り当てる方法について説明します。 スコープの詳細については、[Azure AD での RBAC の概要](custom-overview.md#scope)に関するページをご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -122,6 +122,8 @@ PowerShell を使用して Azure AD ロールを割り当てるには、これ�
     ```
 
 ## <a name="assign-roles-scoped-to-an-administrative-unit"></a>管理単位にスコープされたロールの割り当て
+
+このセクションでは、[管理単位](administrative-units.md)のスコープでロールを割り当てる方法について説明します。
 
 ### <a name="azure-portal"></a>Azure portal
 
@@ -226,6 +228,8 @@ PowerShell を使用して管理単位スコープで Azure AD ロールを割�
 >ここでは、directhoryScopeId は */foo* ではなく */administrativeUnits/foo* として指定されています。 これは仕様です。 */administrativeUnits/foo* というスコープは、プリンシパルが管理単位のメンバーを (割り当てられたロールに基づいて) 管理できることを意味し、管理単位自体を管理できるわけではありません。 スコープが */foo* の場合は、プリンシパルによって Azure AD オブジェクト自体が管理できることを意味します。 後続のセクションでは、アプリの登録にスコープ設定したロールによってオブジェクト自体を管理するアクセス許可が付与されるので、スコープが */foo* であることがわかります。
 
 ## <a name="assign-roles-scoped-to-an-app-registration"></a>アプリの登録にスコープ設定したロールの割り当て
+
+このセクションでは、アプリケーションの登録のスコープでロールを割り当てる方法について説明します。
 
 ### <a name="azure-portal"></a>Azure portal
 

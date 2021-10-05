@@ -1,22 +1,22 @@
 ---
-title: Azure Data Factory での XML 形式
+title: XML 形式
 titleSuffix: Azure Data Factory & Azure Synapse
-description: このトピックでは、Azure Data Factory で XML 形式を処理する方法について説明します。
+description: このトピックでは、Azure Data Factory と Azure Synapse Analytics のパイプラインで XML 形式を処理する方法について説明します。
 author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 04/29/2021
+ms.date: 09/09/2021
 ms.author: jianleishen
-ms.openlocfilehash: 9ee58b4afc33109ad8c205606e52fd1d76695d30
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 202c2ea7014ea0295fb342b1fc7fabd70d87ac29
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123257307"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124743565"
 ---
-# <a name="xml-format-in-azure-data-factory"></a>Azure Data Factory での XML 形式
+# <a name="xml-format-in-azure-data-factory-and-synapse-analytics-pipelines"></a>Azure Data Factory と Azure Synapse Analytics のパイプラインでの XML 形式
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -89,8 +89,8 @@ Azure Blob Storage 上の XML データセットの例を次に示します。
 | namespacePrefixes | 名前空間 URI とプレフィックスのマッピング。XML ファイルの解析時にフィールドに名前を付けるために使用されます。<br/>XML ファイルに名前空間があり、名前空間が有効になっている場合、既定では、フィールド名は XML ドキュメント内のものと同じになります。<br>このマップの名前空間 URI に対して定義された項目がある場合、フィールド名は `prefix:fieldName` です。 | いいえ |
 | detectDataType | 整数、倍精度、およびブール値のデータ型を検出するかどうか。 使用可能な値: **true** (既定値)、**false**。| いいえ |
 | compressionProperties | 特定の圧縮コーデックのデータを圧縮解除する方法のプロパティ グループ。 | いいえ       |
-| preserveZipFileNameAsFolder<br>(" *`compressionProperties`->`type` の下に `ZipDeflateReadSettings` として*")  | **ZipDeflate** で入力データセットが圧縮構成されている場合に適用されます。 コピー時にソースの ZIP ファイル名をフォルダー構造として保持するかどうかを指定します。<br>- **true (既定)** に設定した場合、Data Factory は解凍されたファイルを `<path specified in dataset>/<folder named as source zip file>/` に書き込みます。<br>- **false** に設定した場合、Data Factory は解凍されたファイルを `<path specified in dataset>` に直接書き込みます。 競合または予期しない動作を避けるために、異なるソース ZIP ファイルに重複したファイル名がないことを確認します。  | いいえ |
-| preserveCompressionFileNameAsFolder<br>(" *`compressionProperties`->`type` で `TarGZipReadSettings` または `TarReadSettings` として*") | **TarGzip**/**Tar** で入力データセットが圧縮構成されている場合に適用されます。 コピー時にソースの圧縮ファイル名をフォルダー構造として保持するかどうかを指定します。<br>- **true (既定)** に設定した場合、Data Factory は圧縮解除されたファイルを `<path specified in dataset>/<folder named as source compressed file>/` に書き込みます。 <br>- **false** に設定した場合、Data Factory は圧縮解除されたファイルを `<path specified in dataset>` に直接書き込みます。 競合または予期しない動作を避けるために、異なるソース ファイルに重複したファイル名がないことを確認します。 | いいえ |
+| preserveZipFileNameAsFolder<br>(" *`compressionProperties`->`type` の下に `ZipDeflateReadSettings` として*")  | **ZipDeflate** で入力データセットが圧縮構成されている場合に適用されます。 コピー時にソースの ZIP ファイル名をフォルダー構造として保持するかどうかを指定します。<br>- **true (既定)** に設定した場合、サービスにより解凍されたファイルが `<path specified in dataset>/<folder named as source zip file>/` に書き込まれます。<br>- **false** に設定した場合、サービスにより解凍されたファイルが `<path specified in dataset>` に直接書き込まれます。 競合または予期しない動作を避けるために、異なるソース ZIP ファイルに重複したファイル名がないことを確認します。  | いいえ |
+| preserveCompressionFileNameAsFolder<br>(" *`compressionProperties`->`type` で `TarGZipReadSettings` または `TarReadSettings` として*") | **TarGzip**/**Tar** で入力データセットが圧縮構成されている場合に適用されます。 コピー時にソースの圧縮ファイル名をフォルダー構造として保持するかどうかを指定します。<br>- **true (既定)** に設定した場合、サービスにより圧縮解除されたファイルが `<path specified in dataset>/<folder named as source compressed file>/` に書き込みます。 <br>- **false** に設定した場合、サービスにより圧縮解除されたファイルが `<path specified in dataset>` に直接書き込まれます。 競合または予期しない動作を避けるために、異なるソース ファイルに重複したファイル名がないことを確認します。 | いいえ |
 
 ## <a name="mapping-data-flow-properties"></a>Mapping Data Flow のプロパティ
 

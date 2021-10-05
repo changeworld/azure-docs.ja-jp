@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: c6dbfd0020598c280e006e863467a4dfa9b29a0c
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 57be98a76621d04ec14af04166117a5f62a40227
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114284520"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129061867"
 ---
 # <a name="load-balancer-health-probes"></a>Load Balancer の正常性プローブ
 
@@ -251,14 +251,15 @@ VM に複数のインターフェイスがある場合は、プローブを受�
 
 ## <a name="monitoring"></a>監視
 
-公開と内部いずれの [Standard Load Balancer](./load-balancer-overview.md) でも、エンドポイントおよびバックエンド エンドポイントごとの正常性プローブの状態が、Azure Monitor により多次元メトリックとして公開されます。 これらのメトリックは、他の Azure サービスやパートナー アプリケーションによって消費される可能性があります。 
+公開と内部いずれの [Standard Load Balancer](./load-balancer-overview.md) でも、エンドポイントおよびバックエンド エンドポイントごとの正常性プローブの状態が、[Azure Monitor](./monitor-load-balancer.md) により多次元メトリックとして公開されます。 これらのメトリックは、他の Azure サービスやパートナー アプリケーションによって消費される可能性があります。 
 
-公開の Basic Load Balancer では、Azure Monitor ログ経由でバックエンド プールごとにまとめられた正常性プローブの状態が公開されます。  Azure Monitor ログは内部の Basic Load Balancer では使用できません。  [Azure Monitor ログ](./monitor-load-balancer.md)を使って、パブリック Load Balancer のプローブの正常性状態とプローブの数を確認できます。 ログ記録と共に Power BI または Azure Operational Insights を使用することで、Load Balancer の正常性状態の統計情報を提供することができます。
+Azure Monitor ログは、公開と内部いずれの Basic Load Balancer でも使用できません。
 
 ## <a name="limitations"></a>制限事項
 
 - HTTPS プローブは、クライアント証明書との相互認証をサポートしていません。
 - TCP タイムスタンプが有効な場合は正常性プローブが失敗すると想定する必要があります。
+- Basic SKU のロード バランサーの正常性プローブは、仮想マシン スケール セットではサポートされていません。
 
 ## <a name="next-steps"></a>次のステップ
 

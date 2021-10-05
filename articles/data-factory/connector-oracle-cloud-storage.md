@@ -1,25 +1,26 @@
 ---
-title: Azure Data Factory を使用して Oracle Cloud Storage からデータをコピーする
+title: Oracle Cloud Storage のデータをコピーする
+description: Azure Data Factory または Azure Synapse Analytics パイプラインを使用して、Oracle Cloud Storage のデータを、サポートされているシンク データ ストアにコピーする方法について説明します。
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Azure Data Factory を使用して、Oracle Cloud Storage からサポートされているシンク データ ストアにデータをコピーする方法について説明します。
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/30/2021
+ms.date: 09/09/2021
 ms.author: jianleishen
-ms.openlocfilehash: caf817d8b31743f091a4655f6b9ddcfc0007e130
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 3ace2498c568d5193d110845bc7927983fd419ff
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123311940"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128678746"
 ---
-# <a name="copy-data-from-oracle-cloud-storage-by-using-azure-data-factory"></a>Azure Data Factory を使用して Oracle Cloud Storage からデータをコピーする
+# <a name="copy-data-from-oracle-cloud-storage-using-azure-data-factory-or-synapse-analytics"></a>Azure Data Factory または Azure Synapse Analytics を使用して Oracle Cloud Storage のデータをコピーする
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-この記事では、Oracle Cloud Storage からデータをコピーする方法について説明します。 Azure Data Factory については、[入門記事で](introduction.md)をご覧ください。
+この記事では、Oracle Cloud Storage からデータをコピーする方法について説明します。 詳細については、[Azure Data Factory](introduction.md) および [Azure Synapse Analytics](../synapse-analytics/overview-what-is.md) の概要記事を参照してください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -49,7 +50,7 @@ Oracle Cloud Storage からデータをコピーするには、前提条件お�
 
     # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
 
-    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI を使用した新しいリンク サービスの作成を示すスクリーンショット。":::
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI で新しいリンク サービスを作成するスクリーンショット。":::
 
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
@@ -66,7 +67,7 @@ Oracle Cloud Storage からデータをコピーするには、前提条件お�
 
 ## <a name="connector-configuration-details"></a>コネクタの構成の詳細 
 
-次のセクションでは、Oracle Cloud Storage に固有の Data Factory エンティティを定義するために使用されるプロパティについて詳しく説明します。
+次のセクションでは、Oracle Cloud Storage に固有のエンティティを定義するために使用されるプロパティについて詳しく説明します。
 
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
 
@@ -76,7 +77,7 @@ Oracle Cloud Storage のリンク サービスでは、次のプロパティが�
 |:--- |:--- |:--- |
 | type | **type** プロパティは、**OracleCloudStorage** に設定する必要があります。 | はい |
 | accessKeyId | シークレット アクセス キーの ID。 アクセス キーとシークレットの見つけ方については、「[前提条件](#prerequisites)」を参照してください。 |はい |
-| secretAccessKey | シークレット アクセス キー自体。 このフィールドを **SecureString** としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |はい |
+| secretAccessKey | シークレット アクセス キー自体。 このフィールドを **SecureString** とマークして安全に保存するか、[Azure Key Vault に保存されているシークレットを参照](store-credentials-in-key-vault.md)します。 |はい |
 | serviceUrl | カスタム エンドポイントを `https://<namespace>.compat.objectstorage.<region identifier>.oraclecloud.com` として指定します。 詳細については、[こちら](https://docs.oracle.com/en-us/iaas/Content/Object/Tasks/s3compatibleapi.htm)を参照してください。 | はい |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 データ ストアがプライベート ネットワーク内にある場合、Azure Integration Runtime またはセルフホステッド統合ランタイムを使用できます。 このプロパティが指定されていない場合は、サービスでは、既定の Azure Integration Runtime が使用されます。 |いいえ |
 
@@ -229,7 +230,7 @@ Oracle Cloud Storage では、形式ベースのコピー ソースの `storeSet
 
 次のソース フォルダー構造があり、太字のファイルをコピーするとします。
 
-| サンプルのソース構造                                      | FileListToCopy.txt のコンテンツ                             | Data Factory の構成                                            |
+| サンプルのソース構造                                      | FileListToCopy.txt のコンテンツ                             | 構成 |
 | ------------------------------------------------------------ | --------------------------------------------------------- | ------------------------------------------------------------ |
 | bucket<br/>&nbsp;&nbsp;&nbsp;&nbsp;FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Metadata<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileListToCopy.txt | File1.csv<br>Subfolder1/File3.csv<br>Subfolder1/File5.csv | **データセット内:**<br>- バケット: `bucket`<br>- フォルダー パス: `FolderA`<br><br>**コピー アクティビティ ソース内:**<br>- ファイル リストのパス: `bucket/Metadata/FileListToCopy.txt` <br><br>ファイル リストのパスは、コピーするファイルの一覧を含む同じデータ ストア内のテキスト ファイルをポイントします。データセットで構成されているパスへの相対パスで 1 行につき 1 つのファイルを指定します。 |
 
@@ -247,4 +248,4 @@ Oracle Cloud Storage では、形式ベースのコピー ソースの `storeSet
 
 
 ## <a name="next-steps"></a>次のステップ
-Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)をご覧ください。
+Copy アクティビティでソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関するページを参照してください。

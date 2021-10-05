@@ -1,15 +1,16 @@
 ---
 author: baanders
 ms.service: digital-twins
-ms.topic: include for accessing Azure Digital Twins Explorer
-ms.date: 05/04/2022
+description: Azure Digital Twins Explorer にアクセスするための情報
+ms.topic: include
+ms.date: 05/04/2021
 ms.author: baanders
-ms.openlocfilehash: fc0fb248ee0b8322e0cca45480abfb16b253e50b
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 4dc17937513cbfa1521d3c7af3e078d50f2bd20f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110486135"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128908931"
 ---
 ## <a name="how-to-access"></a>アクセス方法
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/12/2021
 ms.author: rosouz
 ms.custom: seo-nov-2020
-ms.openlocfilehash: 80818386ccd47619ccb23323474ac76fa2240db2
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: b2501631c8ccdb6c61d4f31e9179a7e94c2276cb
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123427716"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129210404"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store"></a>Azure Cosmos DB 分析ストアとは
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -149,7 +149,7 @@ Azure Cosmos DB のトランザクション ストアはスキーマに依存せ
   * コレクション内のすべてのドキュメントを削除しても、分析ストア スキーマはリセットされません。
   * スキーマのバージョン管理はありません。 トランザクション ストアから推定された最新のバージョンが、分析ストアに表示されます。
 
-* 現時点では、Azure Synapse Spark では、名前に次に示す特殊文字が含まれているプロパティを読み取ることはできません。 これに該当する場合は、[Azure Cosmos DB チーム](mailto:cosmosdbsynapselink@microsoft.com)に詳細をお問い合わせください。
+* 現時点では、Azure Synapse Spark では、次に示す特殊文字が名前に含まれているプロパティを読み取ることはできません。 Azure Synapse SQL サーバーレスは影響を受けません。
   * : (コロン)
   * ` (グレーブ アクセント)
   * , (コンマ)
@@ -161,6 +161,21 @@ Azure Cosmos DB のトランザクション ストアはスキーマに依存せ
   * = (等号)
   * " (引用符)
  
+* 上に示した文字を使用するプロパティ名がある場合は、次のような選択肢があります。
+   * データ モデルを事前に変更して、これらの文字を回避します。
+   * 現在、スキーマのリセットはサポートされていないため、アプリケーションを変更して、類似した名前の冗長プロパティを追加することで、これらの文字を回避できます。
+   * 変更フィードを使用して、プロパティ名にこれらの文字を含まないコンテナーの具体化されたビューを作成します。
+   * 新しい `dropColumn` Spark オプションを使用して、データフレームにデータを読み込むときに影響を受ける列を無視します。 コンマを含む "FirstName, LastNAme" という名前の仮定の列を削除するための構文は次のとおりです。
+
+```Python
+df = spark.read\
+     .format("cosmos.olap")\
+     .option("spark.synapse.linkedService","<your-linked-service-name>")\
+     .option("spark.synapse.container","<your-container-name>")\
+     .option("spark.synapse.dropColumn","FirstName,LastName")\
+     .load()
+```
+
 * Azure Synapse Spark では、名前に空白を含むプロパティがサポートされるようになりました。
 
 ### <a name="schema-representation"></a>スキーマ表現
@@ -376,7 +391,7 @@ Azure Cosmos DB コンテナーで分析ストアを有効にするためのだ�
 
 ## <a name="next-steps"></a>次のステップ
 
-詳細については、次のドキュメントを参照してください。
+詳しく学習するために、次のドキュメントを参照してください。
 
 * [Azure Synapse Link for Azure Cosmos DB](synapse-link.md)
 

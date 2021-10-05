@@ -5,15 +5,15 @@ author: ealsur
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 08/26/2021
+ms.date: 09/13/2021
 ms.author: maquaran
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 498b304e5b0e1deeca2b923e9f1312ea0cebf6bf
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: ad060c3fce28ef70137e0f25e09a1e4ea5fb9a09
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123114076"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128561480"
 ---
 # <a name="migrate-from-the-change-feed-processor-library-to-the-azure-cosmos-db-net-v3-sdk"></a>変更フィード プロセッサ ライブラリから Azure Cosmos DB .NET V3 SDK に移行する
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -28,7 +28,7 @@ ms.locfileid: "123114076"
 1. `WithProcessorOptions` を使用しているカスタマイズについては、間隔に `WithLeaseConfiguration` と `WithPollInterval` を使用し、`WithStartTime`開始時刻[に ](./change-feed-processor.md#starting-time) を使用し、最大項目数を定義するために `WithMaxItems` を使用するように更新する必要があります。
 1. `GetChangeFeedProcessorBuilder` 上の `processorName` については `ChangeFeedProcessorOptions.LeasePrefix` 上で構成されている値と一致するように設定します。それ以外の場合は `string.Empty` を使用します。
 1. 変更は `IReadOnlyList<Document>` として配信されなくなりました。代わりに、それは `IReadOnlyCollection<T>` となります。ここで、`T` は定義する必要のある型です。基本項目クラスはもうありません。
-1. 変更を処理する場合、実装は不要になりました。その代わりに、[デリゲートを定義](change-feed-processor.md#implementing-the-change-feed-processor)する必要があります。 デリゲートは静的関数とすることができます。実行中に状態を維持する必要がある場合は、独自のクラスを作成して、インスタンス メソッドをデリゲートとして渡すこともできます。
+1. 変更を処理する場合、`IChangeFeedObserver` の実装は不要になりました。代わりに、[デリゲートを定義する](change-feed-processor.md#implementing-the-change-feed-processor)必要があります。 デリゲートは静的関数とすることができます。実行中に状態を維持する必要がある場合は、独自のクラスを作成して、インスタンス メソッドをデリゲートとして渡すこともできます。
 
 たとえば、変更フィード プロセッサを構築する元のコードが次のようであるとします。
 
@@ -38,7 +38,11 @@ ms.locfileid: "123114076"
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=ChangeFeedProcessorMigrated)]
 
-そして、デリゲートは次のような静的メソッドにすることができます。
+デリゲートの場合は、静的メソッドを使用してイベントを受信できます。 `IChangeFeedObserverContext` からの情報を使用していた場合は、`ChangeFeedProcessorContext` を使用するように移行できます。
+
+* `IChangeFeedObserverContext.PartitionKeyRangeId` の代わりに `ChangeFeedProcessorContext.LeaseToken` を使用できます
+* `IChangeFeedObserverContext.FeedResponse` の代わりに `ChangeFeedProcessorContext.Headers` を使用できます
+* `ChangeFeedProcessorContext.Diagnostics` には、トラブルシューティングのために、要求の待機時間に関する詳細情報が含まれています
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=Delegate)]
 
@@ -64,5 +68,5 @@ SDK V3 変更フィード プロセッサでは、移行されたアプリケー
 * [変更フィード推定機能の使用](how-to-use-change-feed-estimator.md)
 * [変更フィード プロセッサの開始時刻](./change-feed-processor.md#starting-time)
 * Azure Cosmos DB への移行のための容量計画を実行しようとしていますか?
-    * 既存のデータベース クラスター内の仮想コアとサーバーの数のみがわかっている場合は、[仮想コア数または仮想 CPU 数を使用した要求ユニットの見積もり](../convert-vcore-to-request-unit.md)に関するページを参照してください 
-    * 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB Capacity Planner を使用した要求ユニットの見積もり](estimate-ru-with-capacity-planner.md)に関するページを参照してください
+    * 知っていることが既存のデータベース クラスター内の仮想コアとサーバーの数のみである場合は、[仮想コアまたは仮想 CPU の数を使用した要求ユニットの見積もり](../convert-vcore-to-request-unit.md)に関するページを参照してください 
+    * 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB 容量計画ツールを使用した要求ユニットに見積もり](estimate-ru-with-capacity-planner.md)に関するページを参照してください

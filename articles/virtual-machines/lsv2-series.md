@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-storage
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 77ab092fc62fb3f7a6270a4b5f38aeeed16d60fc
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 1af52e4344b7a70331e3b5d9cdc13d9ff4227068
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122698866"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129053338"
 ---
 # <a name="lsv2-series"></a>Lsv2 シリーズ
 
@@ -49,7 +49,7 @@ Lsv2 シリーズは、2.55 GHz の全コア ブーストと 3.0 GHz の最大�
 
 <sup>1</sup> Lsv2 シリーズの VM には、OS ページング/スワップ ファイル用の標準 SCSI ベースの一時リソース ディスクがあります (Windows の場合は D:、Linux の場合は /dev/sdb)。 このディスクは、8 vCPU ごとに 80 GiB のストレージ、4,000 IOPS、および 80 MBps の転送速度を提供します (たとえば、Standard_L80s_v2 は、40,000 IOPS および 800 MBPS で 800 GiB を提供します)。 これにより、NVMe ドライブを確実にアプリケーション専用にすることができます。 このディスクはエフェメラルであり、すべてのデータは停止/割り当て解除時に失われます。
 
-<sup>2</sup> ローカル NVMe ディスクはエフェメラルであり、VM を停止/割り当て解除した場合これらのディスク上のデータは失われます。
+<sup>2</sup> ローカル NVMe ディスクはエフェメラルであり、VM を停止/割り当て解除した場合これらのディスク上のデータは失われます。 ローカル NVMe ディスクは、[ホストでの暗号化](disk-encryption.md#supported-vm-sizes)を有効にした場合でも、[Azure Storage 暗号化](disk-encryption.md)によって暗号化されません。
 
 <sup>3</sup> Hyper-V NVMe Direct テクノロジにより、ゲスト VM スペースに安全にマッピングされたローカル NVMe ドライブへの無制限のアクセスが提供されます。  最大のパフォーマンスを実現するには、Azure Marketplace から最新の WS2019 ビルドまたは Ubuntu 18.04 または 16.04 のいずれかを使用する必要があります。  書き込みのパフォーマンスは、IO サイズ、ドライブの負荷、および容量使用率によって異なります。
 

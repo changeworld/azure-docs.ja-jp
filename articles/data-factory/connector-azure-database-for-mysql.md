@@ -1,26 +1,26 @@
 ---
 title: Azure Database for MySQL のデータのコピーと変換
+description: Azure Data Factory または Synapse Analytics パイプラインを使用して、Azure Database for MySQL のデータをコピーして変換する方法について説明します。
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Azure Data Factory を使用して、Azure Database for MySQL のデータをコピーして変換する方法について説明します。
-ms.author: susabat
-author: ssabat
+ms.author: jianleishen
+author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 08/30/2021
-ms.openlocfilehash: 5495feb3e4cfe8080b9be4ee1ec0bc3804232089
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.date: 09/09/2021
+ms.openlocfilehash: b9f5f5046e3c03ec0ee7057553b49ca26f18061c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123314338"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124761880"
 ---
-# <a name="copy-and-transform-data-in-azure-database-for-mysql-by-using-azure-data-factory"></a>Azure Data Factory を使用して、Azure Database for MySQL のデータをコピーして変換する
+# <a name="copy-and-transform-data-in-azure-database-for-mysql-using-azure-data-factory-or-synapse-analytics"></a>Azure Data Factory または Synapse Analytics を使用して、Azure Database for MySQL のデータをコピーして変換する
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-この記事では、Azure Data Factory のコピー アクティビティを使用して、Azure Database for MySQL との間でデータをコピーする方法、および Data Flow を使用して Azure Database for MySQL のデータを変換する方法について説明します。 Azure Data Factory については、[入門記事で](introduction.md)をご覧ください。
+この記事では、Azure Data Factory または Synapse Analytics パイプラインで Copy アクティビティを使用して、Azure Database for MySQL との間でデータをコピーする方法、および Data Flow を使用して Azure Database for MySQL のデータを変換する方法について説明します。 詳細については、[Azure Data Factory](introduction.md) と [Synapse Analytics](../synapse-analytics/overview-what-is.md) の概要記事を参照してください。
 
 このコネクタは、[Azure Database for MySQL サービス](../mysql/overview.md)に特化しています。 オンプレミスまたはクラウドにある汎用 MySQL データベースからデータをコピーするには、[MySQL コネクタ](connector-mysql.md)を使用します。
 
@@ -306,9 +306,9 @@ IncomingStream sink(allowSchemaDrift: true,
 
 ## <a name="data-type-mapping-for-azure-database-for-mysql"></a>Azure Database for MySQL のデータ型のマッピング
 
-Azure Database for MySQL からデータをコピーするとき、MySQL のデータ型から Azure Data Factory の中間データ型への次のマッピングが使用されます。 コピー アクティビティでソースのスキーマとデータ型がシンクにマッピングされるしくみについては、[スキーマとデータ型のマッピング](copy-activity-schema-and-type-mapping.md)に関する記事を参照してください。
+Azure Database for MySQL からデータをコピーするとき、MySQL のデータ型からサービス内で内部的に使用される中間データ型への次のマッピングが使用されます。 コピー アクティビティでソースのスキーマとデータ型がシンクにマッピングされるしくみについては、[スキーマとデータ型のマッピング](copy-activity-schema-and-type-mapping.md)に関する記事を参照してください。
 
-| Azure Database for MySQL データ型 | Data Factory の中間データ型 |
+| Azure Database for MySQL データ型 | 中間サービス データ型 |
 |:--- |:--- |
 | `bigint` |`Int64` |
 | `bigint unsigned` |`Decimal` |
@@ -352,4 +352,4 @@ Azure Database for MySQL からデータをコピーするとき、MySQL のデ�
 | `year` |`Int32` |
 
 ## <a name="next-steps"></a>次のステップ
-Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。
+Copy アクティビティでソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関するセクションを参照してください。

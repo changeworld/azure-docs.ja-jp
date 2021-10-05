@@ -6,20 +6,23 @@ ms.author: viseshag
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 08/18/2021
-ms.openlocfilehash: 26b98ad9c4c042c1e6bf60889625a4d23090f6f5
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.date: 09/27/2021
+ms.openlocfilehash: 0da3f53c41296f3cb467c00bb13649288ebd53c6
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122515800"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129213843"
 ---
 # <a name="connect-privately-and-securely-to-your-purview-account"></a>プライベートかつ安全な Purview アカウントへの接続
-このガイドでは、VNet とプライベート ネットワークからのみ Azure Purview アカウントに接続できるようにするために、Purview アカウントのプライベート エンドポイントをデプロイする方法について説明します。 この目標を実現するには、Azure Purview アカウントの "_アカウント_"、"_ポータル_"、"_インジェスト_" の各プライベート エンドポイントをデプロイする必要があります。
+このガイドでは、VNet とプライベート ネットワークからのみ Azure Purview アカウントに接続できるようにするために、Purview アカウントのプライベート エンドポイントをデプロイする方法について説明します。 この目標を実現するには、Azure Purview アカウントの "_アカウント_" および "_ポータル_" の各プライベート エンドポイントをデプロイする必要があります。
 
 Azure Purview の "_アカウント_" プライベート エンドポイントは、仮想ネットワーク内から発信されたクライアント呼び出しのみが Azure Purview アカウントへのアクセスを許可されるシナリオを可能にすることで、セキュリティを強化するために使用されます。 このプライベート エンドポイントは、ポータルのプライベート エンドポイントの前提条件でもあります。
 
-Azure Purview の "_ポータル_" プライベート エンドポイントは、プライベート ネットワークを使用して Azure Purview Studio に接続できるようにするために必要です。
+Azure Purview の "_ポータル_" プライベート エンドポイントは、プライベート ネットワークを使用して [Azure Purview Studio](https://web.purview.azure.com/resource/) に接続できるようにするために必要です。
+
+> [!NOTE]
+> "_アカウント_" と "_ポータル_" のプライベート エンドポイントのみを作成する場合、スキャンを実行することはできません。 プライベート ネットワーク上でのスキャンを有効にするには、[インジェスト プライベート エンドポイントも作成](catalog-private-link-end-to-end.md)する必要があります。
 
    :::image type="content" source="media/catalog-private-link/purview-private-link-account-portal.png" alt-text="Azure Purview と Private Link アーキテクチャを示す図。":::
 
@@ -49,30 +52,32 @@ Azure Private Link サービスの詳細については、[プライベート �
 
 3. **[アカウントとポータル]** で、 **[+ 追加]** を選択して、お使いの Azure Purview アカウントのプライベート エンドポイントを追加します。
 
-   :::image type="content" source="media/catalog-private-link/purview-pe-scenario-1-1.png" alt-text="アカウントとポータルのプライベート エンドポイントを作成するページの選択項目を示すスクリーンショット。":::
+   :::image type="content" source="media/catalog-private-link/purview-pe-deploy-account-portal.png" alt-text="アカウントとポータルのプライベート エンドポイントを作成するページの選択項目を示すスクリーンショット。":::
 
 4. **[プライベート エンドポイントの作成]** ページで、場所を選択し、"_アカウント_" プライベート エンドポイントの名前を指定し、 **[Purview サブリソース]** で **[アカウント]** を選択します。 **[ネットワーク]** で、お使いの仮想ネットワークとサブネットを選択し、必要に応じて、 **[プライベート DNS ゾーンと統合する]** をオンにして新しい Azure プライベート DNS ゾーンを作成します。 
    
-   :::image type="content" source="media/catalog-private-link/purview-pe-scenario-1-2.png" alt-text="アカウントのプライベート エンドポイントを作成するページを示すスクリーンショット。":::
+   :::image type="content" source="media/catalog-private-link/purview-pe-deploy-account.png" alt-text="アカウントのプライベート エンドポイントを作成するページを示すスクリーンショット。":::
 
-
-   > [!NOTE]
-   > また、既存の Azure プライベート DNS ゾーンを使用することも、後で DNS サーバーに DNS レコードを手動で作成することもできます。 詳細については、[プライベート エンドポイントの DNS 名前解決の構成](./catalog-private-link-name-resolution.md)に関するページを参照してください
+      > [!NOTE]
+      > また、既存の Azure プライベート DNS ゾーンを使用することも、後で DNS サーバーに DNS レコードを手動で作成することもできます。 詳細については、[プライベート エンドポイントの DNS 名前解決の構成](./catalog-private-link-name-resolution.md)に関するページを参照してください
 
 5. **[OK]** を選択します。
    
 6. **[Create Purview account]\(Purview アカウントの作成\)** ウィザードで、 **[+ 追加]** を選択して、"_ポータル_" プライベート エンドポイントを追加します。
      
 7. **[プライベート エンドポイントの作成]** ページで、場所を選択し、"_ポータル_" プライベート エンドポイントの名前を指定し、 **[Purview サブリソース]** で **[ポータル]** を選択します。 **[ネットワーク]** で、お使いの仮想ネットワークとサブネットを選択し、必要に応じて、 **[プライベート DNS ゾーンと統合する]** をオンにして新しい Azure プライベート DNS ゾーンを作成します。 
+
+   :::image type="content" source="media/catalog-private-link/purview-pe-deploy-portal.png" alt-text="ポータルのプライベート エンドポイント ページの作成を示すスクリーンショット。":::
    
    > [!NOTE]
    > また、既存の Azure プライベート DNS ゾーンを使用することも、後で DNS サーバーに DNS レコードを手動で作成することもできます。 詳細については、[プライベート エンドポイントの DNS 名前解決の構成](./catalog-private-link-name-resolution.md)に関するページを参照してください
 
 8.  **[OK]** を選択します。
    
-   :::image type="content" source="media/catalog-private-link/purview-pe-scenario-1-3.png" alt-text="プライベート エンドポイントの作成を確認するページを示すスクリーンショット。":::
-
 9.  **[確認および作成]** を選択します。 **[確認および作成]** ページで、Azure によって構成が検証されます。
+      
+      :::image type="content" source="media/catalog-private-link/purview-pe-deploy-account-portal-2.png" alt-text="プライベート エンドポイントの作成を確認するページを示すスクリーンショット。":::
+
 
 10. "検証に成功しました" というメッセージが表示されたら、 **[作成]** を選択します。
 
@@ -85,9 +90,9 @@ Azure Private Link サービスの詳細については、[プライベート �
 
 ### <a name="use-the-azure-portal-azure-purview-account"></a>Azure portal を使用する (Azure Purview アカウント)
 
-1. [Azure portal](https://portal.azure.com) に移動し、お使いの Azure Purview アカウントをクリックして、 **[設定]** で **[ネットワーク]** を選択し、 **[プライベート エンドポイント接続]** を選択します。
+1. [Azure portal](https://portal.azure.com) に移動し、お使いの Azure Purview アカウントを選択して、 **[設定]** で **[ネットワーク]** を選択し、 **[プライベート エンドポイント接続]** を選択します。
 
-    :::image type="content" source="media/catalog-private-link/pe-portal.png" alt-text="アカウントのプライベート エンドポイントの作成方法を示すスクリーンショット。":::
+    :::image type="content" source="media/catalog-private-link/purview-pe-add-to-existing.png" alt-text="アカウントのプライベート エンドポイントの作成方法を示すスクリーンショット。":::
 
 2. **[+ プライベート エンドポイント]** を選択して、新しいプライベート エンドポイントを作成します。
 

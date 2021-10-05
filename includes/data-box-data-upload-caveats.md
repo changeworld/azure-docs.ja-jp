@@ -3,14 +3,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: include
-ms.date: 08/16/2021
+ms.date: 09/28/2021
 ms.author: alkohli
-ms.openlocfilehash: e73b49b92894d2871e474f42ad4ba31a7161677b
-ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
+ms.openlocfilehash: 3a0a63d68c5a63eeb4ac7855b3541471814a734b
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122264843"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129220806"
 ---
 - コンテナー、共有、フォルダー:
   - 事前に作成された共有にファイルを直接コピーしないでください。 共有の下にフォルダーを作成し、そのフォルダーにファイルをコピーする必要があります。
@@ -25,5 +25,5 @@ ms.locfileid: "122264843"
   - データのアップロード中のパフォーマンスを向上させるために、[ストレージ アカウントで大きいファイルの共有を有効にし、共有容量を 100 TiB に増やす](../articles/storage/files/storage-how-to-create-file-share.md#enable-large-files-shares-on-an-existing-account)ことをお勧めします。 大きいファイルの共有は、ローカル冗長ストレージ (LRS) を持つストレージ アカウントでのみサポートされます。
   - Azure へのデータのアップロード時にエラーが発生した場合は、ターゲット ストレージ アカウントにエラー ログが作成されます。 このエラー ログへのパスは、アップロードが完了したときに使用可能になります。ログを確認して、是正措置を行うことができます。 アップロードしたデータを確認せずにソースからデータを削除しないでください。
   - 「[Azure Data Box によるファイルの ACL、属性、タイムスタンプの保持](../articles/databox/data-box-file-acls-preservation.md)」のガイダンスを使用して Azure Files にデータをアップロードすると、ファイル メタデータと NTFS アクセス許可を保持できます。
-  - ファイルの階層は、クラウドにアップロードされるときに保持されます。 たとえば、`<container folder>\A\B\C.txt` というパスでファイルをコピーしたとします。 このファイルは、クラウド内の同じ仮想パスにアップロードされます。
+  - BLOB と Azure Files の両方で、ファイルの階層はクラウドにアップロードするときに保持されます。 たとえば、`<container folder>\A\B\C.txt` というパスでファイルをコピーしたとします。 このファイルは、クラウド内の同じパスにアップロードされます。
   

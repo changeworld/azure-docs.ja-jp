@@ -1,26 +1,26 @@
 ---
-title: Azure Data Factory での Avro 形式
+title: Avro 形式
 titleSuffix: Azure Data Factory & Azure Synapse
-description: このトピックでは、Azure Data Factory で Avro 形式を処理する方法について説明します。
+description: このトピックでは、Azure Data Factory と Azure Synapse Analytics で Avro 形式を処理する方法について説明します。
 author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 09/09/2021
 ms.author: jianleishen
-ms.openlocfilehash: 6a4e3f033583f70250e12702b948fcd30875fb65
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 45c96b1e0777dd42bd1a7175a057e5a48f691ff4
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123250698"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124779675"
 ---
-# <a name="avro-format-in-azure-data-factory"></a>Azure Data Factory での Avro 形式
+# <a name="avro-format-in-azure-data-factory-and-synapse-analytics"></a>Azure Data Factory と Azure Synapse Analytics での Avro 形式
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-**Avro ファイルを解析する場合や、Avro 形式にデータを書き込む場合** は、この記事に従ってください。 
+**Avro ファイルを解析したり、データを Avro 形式に書き込む** 場合は、この記事に従ってください。 
 
 Avro 形式は、[Amazon S3](connector-amazon-simple-storage-service.md)、[Amazon S3 Compatible Storage](connector-amazon-s3-compatible-storage.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure Files](connector-azure-file-storage.md)、[File System](connector-file-system.md)、[FTP](connector-ftp.md)、[Google Cloud Storage](connector-google-cloud-storage.md)、[HDFS](connector-hdfs.md)、[HTTP](connector-http.md)、[Oracle Cloud Storage](connector-oracle-cloud-storage.md)、[SFTP](connector-sftp.md) の各コネクタでサポートされます。
 
@@ -32,7 +32,7 @@ Avro 形式は、[Amazon S3](connector-amazon-simple-storage-service.md)、[Amaz
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | データセットの type プロパティは、**Avro** に設定する必要があります。 | はい      |
 | location         | ファイルの場所の設定。 ファイル ベースの各コネクタには、固有の場所の種類と `location` でサポートされるプロパティがあります。 **詳細については、コネクタの記事でデータセットのプロパティに関するセクションを参照してください**。 | はい      |
-| avroCompressionCodec | Avro ファイルへの書き込み時に使用する圧縮コーデック。 Avro ファイルから読み取る場合、Data Factory では、ファイルのメタデータに基づいて圧縮コーデックが自動的に判別されます。<br>サポートされる型は "**none**" (既定値)、"**deflate**"、"**snappy**" です。 Avro ファイルの読み取りおよび書き込みの場合、コピー アクティビティでは現在、Snappy がサポートされていないことに注意してください。 | いいえ       |
+| avroCompressionCodec | Avro ファイルへの書き込み時に使用する圧縮コーデック。 Avro ファイルから読み取る場合、サービスでは、ファイルのメタデータに基づいて圧縮コーデックが自動的に判別されます。<br>サポートされる型は "**none**" (既定値)、"**deflate**"、"**snappy**" です。 Avro ファイルの読み取りおよび書き込みの場合、コピー アクティビティでは現在、Snappy がサポートされていないことに注意してください。 | いいえ       |
 
 > [!NOTE]
 > Avro ファイルでは、列名に空白文字はサポートされません。

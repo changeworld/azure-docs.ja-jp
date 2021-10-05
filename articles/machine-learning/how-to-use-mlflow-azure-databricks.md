@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.custom: devx-track-python
-ms.openlocfilehash: 62fd9820d1ec743d7424679753828b0cb7837fbc
-ms.sourcegitcommit: b044915306a6275c2211f143aa2daf9299d0c574
+ms.openlocfilehash: 9f5fae1fb1a4afaca021eddd8b04625d87b9b2d9
+ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113031051"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128707999"
 ---
 # <a name="track-azure-databricks-ml-experiments-with-mlflow-and-azure-machine-learning"></a>MLflow と Azure Machine Learning を使用した Azure Databricks ML 実験の追跡
 
@@ -214,7 +214,9 @@ display(preds)
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-ログに記録されたメトリックと成果物をワークスペースで使用する予定がない場合、現時点では、それらを個別に削除する機能は提供されていません。 代わりに、ストレージ アカウントとワークスペースを含むリソース グループを削除すれば、課金は発生しません。
+お使いの Azure Databricks ワークスペースを残したいが、Azure ML ワークスペースが不要になった場合は、Azure ML ワークスペースを削除できます。 この操作により、お使いの Azure Databricks ワークスペースと Azure ML ワークスペースのリンクが解除されます。 
+
+ログに記録されたメトリックと成果物をワークスペースで使用する予定がない場合、それらを個別に削除する機能は現時点では用意されていません。 代わりに、ストレージ アカウントとワークスペースを含むリソース グループを削除すれば、課金は発生しません。
 
 1. Azure Portal で、左端にある **[リソース グループ]** を選択します。
 

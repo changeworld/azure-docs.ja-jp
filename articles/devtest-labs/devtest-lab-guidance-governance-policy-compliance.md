@@ -1,15 +1,15 @@
 ---
-title: Azure DevTest Labs での会社のポリシーとコンプライアンス
+title: 会社のポリシーとコンプライアンス
 description: この記事では、Azure DevTest Labs インフラストラクチャに対する会社のポリシーとコンプライアンスの管理に関するガイダンスを提供します。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 89fe380c3a8e0e0a82cc806bf19f9a3454041d94
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 659f025e45ba3101b6bdebb30e9043490e5a3106
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97592349"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128623629"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---company-policy-and-compliance"></a>Azure DevTest Labs インフラストラクチャのガバナンス - 会社のポリシーとコンプライアンス
 この記事では、Azure DevTest Labs インフラストラクチャに対する会社のポリシーとコンプライアンスの管理に関するガイダンスを提供します。 

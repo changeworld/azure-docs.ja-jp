@@ -8,12 +8,12 @@ ms.author: srahaman
 ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 7b0ac0fdb6ee5b734d642612c1fea16665e07684
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 47d690b53b6e8fe9ccc2660e48283ce05e262d30
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123435512"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129154187"
 ---
 # <a name="best-practices-azure-communication-services-calling-sdks"></a>ベスト プラクティス: Azure Communication Services の通話 SDK
 この記事では、Azure Communication Services (ACS) の通話 SDK に関連するベスト プラクティスについて説明します。
@@ -55,9 +55,16 @@ document.addEventListener("visibilitychange", function() {
 });
  ```
 
-### <a name="hang-up-the-call-on-microphonemuteunexpectedly-ufd"></a>microphoneMuteUnexpectedly UFD で通話を切る
-iOS または Safari ユーザーが PSTN 通話を受信すると、Azure Communication Services はマイクにアクセスできなくなります。 Azure Communication Services は、`microphoneMuteUnexpectedly` 通話診断イベントが発生させます。この時点で、Communication Services がマイクへのアクセスを再取得することはできなくなります。
-このような状況が発生した場合は、通話を切る (`call.hangUp`) ことをお勧めします。
+### <a name="handle-os-muting-call-when-phone-call-comes-in"></a>電話がかかってきたときに OS の通話ミュートを処理する。
+ACS 通話中、(iOS と Android を問わず) 電話がかかってくると、OS によってユーザーのマイクとカメラが自動的にミュートされます。 Android の場合、通話が終了すると、自動的にミュートが解除され、ビデオが再開されます。 iOS の場合は、ユーザーが "ミュートを解除" して、再度 "ビデオを開始" する必要があります。 マイクが予期せずミュートされたという通知は、品質イベント `microphoneMuteUnexpectedly` によってリッスンできます。 適切に再通話するには、SDK 1.2.2-beta.1 以降を使用する必要があることに注意してください。
+```JavaScript
+const latestMediaDiagnostic = call.api(SDK.Features.Diagnostics).media.getLatest();
+const isIosSafari = (getOS() === OSName.ios) && (getPlatformName() === BrowserName.safari);
+if (isIosSafari && latestMediaDiagnostic.microphoneMuteUnexpectedly && latestMediaDiagnostic.microphoneMuteUnexpectedly.value) {
+  // received a QualityEvent on iOS that the microphone was unexpectedly muted - notify user to unmute their microphone and to start their video stream
+}
+ ```
+ビデオ ストリームを開始するには、お使いのアプリケーションで `call.startVideo(localVideoStream);` を呼び出す必要があります。また、オーディオのミュートを解除するには、`this.currentCall.unmute();` を使用する必要があります。
 
 ### <a name="device-management"></a>デバイス管理
 Azure Communication Services SDK を使用して、デバイスとメディア操作を管理できます。

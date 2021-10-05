@@ -2,23 +2,27 @@
 author: Blackmist
 ms.service: machine-learning
 ms.topic: include
-ms.date: 08/12/2021
+ms.date: 08/26/2021
 ms.author: larryfr
-ms.openlocfilehash: c2ad7408f00d8abf4cb5afdbdba44af5e0779380
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: e8f3a2b9fbca1a0b0756a4e1ec2e98212d4f0399
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122603971"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128633976"
 ---
-Azure Machine Learning の __コンピューティング インスタンス__ または __コンピューティング クラスター__ を使用するときは、Azure Batch 管理サービスと Azure Machine Learning service からのインバウンド トラフィックを許可します。 このトラフィックにユーザー定義ルートを作成する場合は、**IP アドレス** または **サービス タグ** を使用してトラフィックをルーティングできます。
+Azure Machine Learning の __コンピューティング インスタンス__ (パブリック IP あり) または __コンピューティング クラスター__ を使用するときは、Azure Batch 管理サービスと Azure Machine Learning service からのインバウンド トラフィックを許可します。 パブリック IP (プレビュー) を持つコンピューティング インスタンスでは、このインバウンド通信は必要ありません。 このトラフィックを許可するネットワーク セキュリティ グループは自動的に動的に作成されますが、ファイアウォールがある場合は、ユーザー定義ルート (UDR) の作成も必要な場合があります。 このトラフィック用の UDR を作成する場合は、**IP アドレス** または **サービス タグ** を使用してトラフィックをルーティングできます。
 
 > [!IMPORTANT]
-> ユーザー定義ルートでのサービス タグの使用は現在プレビュー段階であり、完全にはサポートされていない可能性があります。 詳細については、[仮想ネットワーク ルーティング](/azure/virtual-network/virtual-networks-udr-overview#service-tags-for-user-defined-routes-preview)に関する記事を参照してください。
+> ユーザー定義ルートでのサービス タグの使用は現在プレビュー段階であり、完全にはサポートされていない可能性があります。 詳細については、[仮想ネットワーク ルーティング](../articles/virtual-network/virtual-networks-udr-overview.md#service-tags-for-user-defined-routes-preview)に関する記事を参照してください。
+
+> [!TIP]
+> パブリック IP (プレビュー機能) のないコンピューティング インスタンスでは、このインバウンド トラフィック用に UDR は必要ありませんが、コンピューティング クラスターまたはパブリック IP を持つコンピューティング インスタンスも使用する場合は、これらの UDR がやはり必要です。
+
 
 # <a name="ip-address-routes"></a>[IP アドレス ルート](#tab/ipaddress)
 
-Azure Machine Learning service の場合は、__プライマリ__ と __セカンダリ__ の両方のリージョンの IP アドレスを追加する必要があります。 セカンダリ リージョンを見つけるには、[Azure のペアになっているリージョンを使用したビジネス継続性とディザスター リカバリー](/azure/best-practices-availability-paired-regions#azure-regional-pairs)に関するページを参照してください。 たとえば、Azure Machine Learning service が米国東部 2 にある場合、セカンダリ リージョンは米国中部です。 
+Azure Machine Learning service の場合は、__プライマリ__ と __セカンダリ__ の両方のリージョンの IP アドレスを追加する必要があります。 セカンダリ リージョンを見つけるには、[Azure のペアになっているリージョンを使用したビジネス継続性とディザスター リカバリー](../articles/best-practices-availability-paired-regions.md#azure-regional-pairs)に関するページを参照してください。 たとえば、Azure Machine Learning service が米国東部 2 にある場合、セカンダリ リージョンは米国中部です。 
 
 Batch サービスと Azure Machine Learning service の IP アドレスの一覧を取得するには、次のいずれかの方法を使用します。
 

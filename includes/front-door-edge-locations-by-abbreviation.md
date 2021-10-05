@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/17/2021
 ms.author: duau
 ms.custom: include file
-ms.openlocfilehash: ded1479b6967d7cf3b9957e83b7bb38472ebcc0c
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 8dddf347cfa46b24e990365765e1587526fd084c
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110482371"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129096008"
 ---
 | 省略形 | 場所 | Region |
 | --- | --- | --- |
@@ -54,6 +54,7 @@ ms.locfileid: "110482371"
 | GVA | ジュネーブ (スイス) | スイス北部 (ヨーロッパ) |
 | HEL | ヘルシンキ (フィンランド) | 西ヨーロッパ |
 | HK  | 香港 (香港特別行政区) | 東アジア |
+| HKB | 香港 (香港特別行政区) | 東アジア |
 | HKG | 柴湾 (香港特別行政区) | 東アジア |
 | HNL | ホノルル (米国ハワイ州) | 米国西部 (米国) |
 | HOU | ヒューストン (米国テキサス州) | 米国中部 (米国) |

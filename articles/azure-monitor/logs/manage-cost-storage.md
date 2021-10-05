@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/23/2021
 ms.author: bwren
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9967eaa374116ac28bd0db830eed6a4fc2becfa0
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 8cedd159c1c4c8a7d5309024d66ddc104c07506b
+ms.sourcegitcommit: 149815030568fb4d4dd2e2025a18dc64fc190d07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122771792"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129062087"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Azure Monitor ログで使用量とコストを管理する    
 
@@ -166,7 +166,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "YourResourceGroupName" -Templa
 
 ## <a name="log-analytics-and-azure-defender-security-center"></a>Log Analytics と Azure Defender (Security Center)
 
-[Azure Defender (Security Center)](../../security-center/index.yml) の課金は Log Analytics の課金と密接に結び付けられています。 Azure Defender では、[セキュリティ データの種類](/azure/azure-monitor/reference/tables/tables-category#security)のサブセット (WindowsEvent、SecurityAlert、SecurityBaseline、SecurityBaselineSummary、SecurityDetection、SecurityEvent、WindowsFirewall、MaliciousIPCommunication、LinuxAuditLog、SysmonEvent、ProtectionStatus) と、Update Management ソリューションがワークスペースで実行されていないか、またはソリューションのターゲット設定が有効にされている場合に、Update および UpdateSummary データの種類に対して 500 MB/ノード/日の割り当てが行われます ([詳細情報](../../security-center/security-center-pricing.md#what-data-types-are-included-in-the-500-mb-data-daily-allowance))。 ワークスペースがレガシのノードごとの価格レベルにある場合、Azure Defender と Log Analytics の割り当てが結合されて、すべての課金対象の取り込まれたデータにまとめて適用されます。  
+[Azure Defender for Servers (Security Center)](../../security-center/index.yml) の課金は Log Analytics の課金と密接に結び付けられています。 Azure Defender では、Update Management ソリューションがワークスペースで実行されていないか、またはソリューションのターゲット設定が有効にされている場合に、[監視対象サービス数に応じて課金](https://azure.microsoft.com/pricing/details/azure-defender/)され、[セキュリティ データの種類のサブセット](/azure/azure-monitor/reference/tables/tables-category#security) (WindowsEvent、SecurityAlert、SecurityBaseline、SecurityBaselineSummary、SecurityDetection、SecurityEvent、WindowsFirewall、MaliciousIPCommunication、LinuxAuditLog、SysmonEvent、ProtectionStatus)、および Update と UpdateSummary のデータの種類に対して適用される 500 MB/ノード/日の割り当てが行われます ([詳細情報](../../security-center/security-center-pricing.md#what-data-types-are-included-in-the-500-mb-data-daily-allowance))。 監視対象サーバーの数は、1 時間単位の細分性で計算されます。 各監視対象サーバーからの毎日のデータ割り当ては、ワークスペース レベルで集計されます。 ワークスペースがレガシのノードごとの価格レベルにある場合、Azure Defender と Log Analytics の割り当てが結合されて、すべての課金対象の取り込まれたデータにまとめて適用されます。  
 
 ## <a name="change-the-data-retention-period"></a>データ保持期間の変更
 

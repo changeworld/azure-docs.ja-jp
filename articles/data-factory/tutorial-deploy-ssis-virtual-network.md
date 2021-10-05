@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: integration-services
 ms.topic: conceptual
 ms.date: 1/10/2020
-ms.openlocfilehash: 3b303802d4186f8a7fe42f30f014dc4d06e73146
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 35094effcef3ff773b708e65f234ee1409a8970a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638011"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124798239"
 ---
 # <a name="configure-an-azure-sql-server-integration-services-ssis-integration-runtime-ir-to-join-a-virtual-network"></a>仮想ネットワークに参加するように Azure-SQL Server Integration Services (SSIS) 統合ランタイム (IR) を構成する
 
@@ -92,7 +92,7 @@ Azure-SSIS IR を参加させる前に、Azure portal を使用して仮想ネ�
 
    1. 左側の **[リソース プロバイダー]** を選択し、**Microsoft.Batch** が登録済みのプロバイダーであることを確認します。
 
-   !["登録済み" 状態の確認](media/join-azure-ssis-integration-runtime-virtual-network/batch-registered-confirmation.png)
+   :::image type="content" source="media/join-azure-ssis-integration-runtime-virtual-network/batch-registered-confirmation.png" alt-text="&quot;登録済み&quot;状態の確認":::
 
    **Microsoft.Batch** が一覧に表示されない場合は、サブスクリプションに [空の Azure Batch アカウントを作成](../batch/batch-account-create-portal.md)します。 これは後で削除することができます。
 
@@ -104,23 +104,23 @@ Azure Resource Manager 仮想ネットワークまたは従来の仮想ネット
 
 1. [Azure portal](https://portal.azure.com) の左側のメニューで **[データ ファクトリ]** を選択します。 メニューに **[データ ファクトリ]** が表示されない場合は、 **[その他のサービス]** を選択し、 **[インテリジェンス + 分析]** セクションで **[データ ファクトリ]** を選択します。
 
-   ![データ ファクトリの一覧](media/join-azure-ssis-integration-runtime-virtual-network/data-factories-list.png)
+   :::image type="content" source="media/join-azure-ssis-integration-runtime-virtual-network/data-factories-list.png" alt-text="データ ファクトリの一覧":::
 
 1. 一覧で Azure-SSIS IR を使用するデータ ファクトリを選択します。 データ ファクトリのホーム ページが表示されます。 **[作成と監視]** タイルを選択します。 Data Factory の UI が別のタブに表示されます。
 
-   ![データ ファクトリのホーム ページ](media/join-azure-ssis-integration-runtime-virtual-network/data-factory-home-page.png)
+   :::image type="content" source="media/join-azure-ssis-integration-runtime-virtual-network/data-factory-home-page.png" alt-text="データ ファクトリのホーム ページ":::
 
 1. データ ファクトリの UI で、 **[編集]** タブに切り替え、 **[接続]** を選択し、 **[統合ランタイム]** タブに切り替えます。
 
-   ![[統合ランタイム] タブ](media/join-azure-ssis-integration-runtime-virtual-network/integration-runtimes-tab.png)
+   :::image type="content" source="media/join-azure-ssis-integration-runtime-virtual-network/integration-runtimes-tab.png" alt-text="&quot;[統合ランタイム]&quot; タブ":::
 
 1. Azure-SSIS IR が実行されている場合、 **[統合ランタイム]** 一覧の **[アクション]** 列で Azure-SSIS IR の **[停止]** ボタンを選択します。 Azure-SSIS IR は、停止するまで編集できません。
 
-   ![IR を停止する](media/join-azure-ssis-integration-runtime-virtual-network/stop-ir-button.png)
+   :::image type="content" source="media/join-azure-ssis-integration-runtime-virtual-network/stop-ir-button.png" alt-text="IR を停止する":::
 
 1. **[統合ランタイム]** 一覧の **[アクション]** 列で、Azure-SSIS IR の **[編集]** ボタンを選択します。
 
-   ![統合ランタイムを編集する](media/join-azure-ssis-integration-runtime-virtual-network/integration-runtime-edit.png)
+   :::image type="content" source="media/join-azure-ssis-integration-runtime-virtual-network/integration-runtime-edit.png" alt-text="統合ランタイムを編集する":::
 
 1. 統合ランタイムの設定パネルで、 **[全般設定]** と **[SQL 設定]** セクションの **[次へ]** ボタンを選択して、先に進みます。
 
@@ -139,7 +139,7 @@ Azure Resource Manager 仮想ネットワークまたは従来の仮想ネット
 
    1. **[VNet Validation]\(VNet の検証\)** を選択します。 検証が成功した場合は、 **[続行]** を選択します。
 
-   ![仮想ネットワークの詳細設定](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-vnet.png)
+   :::image type="content" source="./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-vnet.png" alt-text="仮想ネットワークの詳細設定":::
 
 1. **[概要]** セクションで、Azure-SSIS IR のすべての設定を確認します。 次に、 **[更新]** を選択します。
 

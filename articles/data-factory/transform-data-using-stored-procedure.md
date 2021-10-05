@@ -1,32 +1,32 @@
 ---
 title: ストアド プロシージャ アクティビティを使用したデータの変換
 titleSuffix: Azure Data Factory & Azure Synapse
-description: SQL Server ストアド プロシージャ アクティビティを使用して、Data Factory パイプラインから Azure SQL Database/Data Warehouse でストアド プロシージャを呼び出す方法について説明します。
+description: SQL Server ストアド プロシージャ アクティビティを使用して、Azure Data Factory または Synapse Analytics パイプラインから Azure SQL Database/Data Warehouse のストアド プロシージャを呼び出す方法について説明します。
 ms.service: data-factory
 ms.subservice: tutorials
 ms.topic: conceptual
 author: nabhishek
 ms.author: abnarain
 ms.custom: synapse
-ms.date: 11/27/2018
-ms.openlocfilehash: c3815bfca83d6dcf789a780a2d82ff1d4bb62285
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.date: 09/09/2021
+ms.openlocfilehash: d2dacc3379d1587352c7593c3766294613229fad
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122271976"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124798353"
 ---
-# <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>Azure Data Factory での SQL Server ストアド プロシージャ アクティビティを使用したデータの変換
+# <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory-or-synapse-analytics"></a>Azure Data Factory または Synapse Analytics での SQL Server ストアド プロシージャ アクティビティを使用してデータを変換する
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-stored-proc-activity.md)
 > * [現在のバージョン](transform-data-using-stored-procedure.md)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Data Factory [パイプライン](concepts-pipelines-activities.md)のデータ変換アクティビティを使用して、生データを予測や洞察に変換および処理します。 ストアド プロシージャ アクティビティは、Data Factory でサポートされる変換アクティビティの 1 つです。 この記事は、データ変換と Data Factory でサポートされている変換アクティビティの概要を説明する、[データ変換](transform-data.md)に関する記事に基づいています。
+Data Factory または Synapse [パイプライン](concepts-pipelines-activities.md)でデータ変換アクティビティを使用して、生データを予測や分析情報に変換して処理します。 ストアド プロシージャ アクティビティは、パイプラインでサポートされる変換アクティビティの 1 つです。 この記事は、データ変換とサポートされている変換アクティビティの概要を説明する、[データ変換](transform-data.md)に関する記事に基づいています。
 
 > [!NOTE]
-> Azure Data Factory を初めて利用する場合は、この記事を読む前に、「[Azure Data Factory の概要](introduction.md)」を参照してから、[データの変換に関するチュートリアル](tutorial-transform-data-spark-powershell.md)を実行してください。 
+> Azure Data Factory を初めて利用する場合は、この記事を読む前に、「[Azure Data Factory の概要](introduction.md)」を参照してから、[データの変換に関するチュートリアル](tutorial-transform-data-spark-powershell.md)を実行してください。  Synapse Analytics の詳細については、「[Azure Synapse Analytics とは](../synapse-analytics/overview-what-is.md)」を参照してください。
 
 ストアド プロシージャ アクティビティを使用して、社内または Azure 仮想マシン (VM) 上の次のいずれかのデータ ストアでストアド プロシージャを呼び出すことができます。 
 
@@ -76,7 +76,7 @@ JSON 形式のストアド プロシージャ アクティビティの定義を�
 | storedProcedureParameters | ストアド プロシージャのパラメーター値を指定します。 パラメーター値と、データ ソースでサポートされるパラメーター値の型を渡すには、`"param1": { "value": "param1Value","type":"param1Type" }` を使います。 パラメーターで null を渡す必要がある場合は、`"param1": { "value": null }` (すべて小文字) を使います。 | いいえ       |
 
 ## <a name="parameter-data-type-mapping"></a>パラメーターのデータ型のマッピング
-パラメーターに指定するデータ型は、使用しているデータ ソースのデータ型にマップされる Azure Data Factory の型です。 データ ソースのデータ型マッピングは、コネクタのドキュメントで説明されています。 次に例を示します。
+パラメーターに指定するデータ型は、使用しているデータ ソースのデータ型にマップされる内部サービス型です。 データ ソースのデータ型マッピングは、コネクタのドキュメントで説明されています。 次に例を示します。
 
 - [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#data-type-mapping-for-azure-synapse-analytics)
 - [Azure SQL Database のデータ型のマッピング](connector-azure-sql-database.md#data-type-mapping-for-azure-sql-database)

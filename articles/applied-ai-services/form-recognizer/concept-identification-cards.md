@@ -2,7 +2,6 @@
 title: ID - Form Recognizer
 titleSuffix: Azure Applied AI Services
 description: Form Recognizer 事前構築済み ID API を使用した ID ドキュメントからのデータ抽出に関連する概念について説明します。
-services: cognitive-services
 author: laujan
 manager: nitinme
 ms.service: applied-ai-services
@@ -10,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/09/2021
 ms.author: lajanuar
-ms.openlocfilehash: bfa6cb13533a92c65369b8016971e0c1e37cdb61
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 528821649c0c212c869ac74f61a5e13e70f1671a
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122326415"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129153845"
 ---
 # <a name="form-recognizer-prebuilt-identification-id-document-model"></a>Form Recognizer 事前構築済み身分証明書類 (ID) モデル
 
@@ -54,7 +53,7 @@ Form Recognizer IDs サービスを試してみるには、オンラインのサ
 
 ### <a name="fields-extracted"></a>抽出されるフィールド
 
-|名前| Type | 説明 | 値 (標準化された出力) |
+|名前| 種類 | 説明 | 値 (標準化された出力) |
 |:-----|:----|:----|:----|
 |  CountryRegion | countryRegion | ISO 3166 標準に準拠した国または地域コード | "USA" |
 |  DateOfBirth | date | YYYY-MM-DD 形式の DOB | "1980-01-01" |
@@ -62,10 +61,9 @@ Form Recognizer IDs サービスを試してみるには、オンラインのサ
 |  DocumentNumber | string | 関連するパスポート番号、運転免許証番号など | "340020013" |
 |  FirstName | string | 該当する場合は、抽出された名とミドルネームのイニシャル | "JENNIFER" |
 |  LastName | string | 抽出された姓 | "BROOKS" |
-|  Nationality | countryRegion | ISO 3166 標準に準拠した国または地域コード | "USA" |
+|  Nationality | countryRegion | ISO 3166 標準に準拠した国または地域コード (Passport のみ) | "USA" |
 |  Sex | string | "M"、"F"、"X" という値が抽出される可能性があります | "F" |
-|  MachineReadableZone | object | それぞれ 44 文字の 2 行を含む抽出されたパスポート MRZ | "P<USABROOKS<<JENNIFER<<<<<<<<<<<<<<<<<<<<<<< 3400200135USA8001014F1905054710000307<715816" |
-|  DocumentType | string | ドキュメントの種類 (例: パスポート、運転免許証) | "passport" |
+|  MachineReadableZone | object | それぞれ 44 文字の 2 行を含む抽出されたパスポート MRZ (Passport のみ) | "P<USABROOKS<<JENNIFER<<<<<<<<<<<<<<<<<<<<<<< 3400200135USA8001014F1905054710000307<715816" |
 |  Address | string | 抽出された住所 (運転免許証) | "123 STREET ADDRESS YOUR CITY WA 99999-1234"|
 |  リージョン | string | 抽出された地域、州、都道府県など (運転免許証のみ) | "Washington" |
 
@@ -248,11 +246,6 @@ Need to update this with updated APIM links when available
               "#/readResults/0/lines/33/words/4",
               "#/readResults/0/lines/34/words/0"
             ]
-          },
-          "DocumentType": {
-            "type": "string",
-            "text": "passport",
-            "confidence": 0.995
           }
         }
       }

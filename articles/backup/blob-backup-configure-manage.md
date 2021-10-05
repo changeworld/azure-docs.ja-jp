@@ -2,13 +2,13 @@
 title: Azure BLOB の運用バックアップの構成
 description: Azure BLOB の運用バックアップを構成および管理する方法について説明します。
 ms.topic: conceptual
-ms.date: 08/06/2021
-ms.openlocfilehash: b437aa0df073267b07b3e74bc3a778e7aa274031
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/28/2021
+ms.openlocfilehash: 24a0f31a35342b53835563fdcca9754abd5d57ee
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121722679"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129153902"
 ---
 # <a name="configure-operational-backup-for-azure-blobs"></a>Azure BLOB の運用バックアップの構成
 
@@ -139,7 +139,7 @@ BLOB のバックアップは、ストレージ アカウント レベルで構�
 
     1. **[確認と作成]** を選択してバックアップ ポリシーを作成します。
 
-1. BLOB の保護を構成するために必要なストレージ アカウントを選択します。 一度に複数のストレージ アカウントを選択し、 [選択] を選択できます。<br></br>ただし、選択したコンテナーに、ストレージ アカウントでバックアップを構成するために必要な RBAC ロールが割り当てられていることを確認してください。 詳しくは、「[ストレージ アカウントでのバックアップ コンテナーへのアクセス許可の付与](#grant-permissions-to-the-backup-vault-on-storage-accounts)」をご覧ください。<br></br>ロールが割り当てられていない場合でも、バックアップの構成中にロールを割り当てることができます。 手順 7 を参照してください。
+1. BLOB の保護を構成するために必要なストレージ アカウントを選択します。 一度に複数のストレージ アカウントを選択し、 [選択] を選択できます。<br></br>ただし、選択したコンテナーに、ストレージ アカウントでバックアップを構成するために必要な Azure ロールベースのアクセス制御 (Azure RBAC) ロールが割り当てられていることを確認してください。 詳しくは、「[ストレージ アカウントでのバックアップ コンテナーへのアクセス許可の付与](#grant-permissions-to-the-backup-vault-on-storage-accounts)」をご覧ください。<br></br>ロールが割り当てられていない場合でも、バックアップの構成中にロールを割り当てることができます。 手順 7 を参照してください。
 
     ![コンテナーのアクセス許可を確認する](./media/blob-backup-configure-manage/verify-vault-permissions.png)
 

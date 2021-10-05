@@ -1,18 +1,18 @@
 ---
-title: Azure Files をスキャンする方法
-description: このハウツーガイドでは、Azure Files をスキャンする方法の詳細について説明します。
+title: Azure Files の登録とスキャンの方法
+description: このハウツーガイドでは、Azure Purview 内で Azure Files をスキャンする方法の詳細について説明します。
 author: viseshag
 ms.author: viseshag
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 06/22/2021
-ms.openlocfilehash: dbb29fea5253bbd00e66f0ed3d123ddc38533b8e
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 2db2b5343b8a55e29881bf0908fded0a48b90b78
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123256449"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129209910"
 ---
 # <a name="register-and-scan-azure-files"></a>Azure Files の登録とスキャン
 
@@ -77,7 +77,7 @@ csv、tsv、psv、ssv などのファイルの種類では、次のロジック�
 
 新しいスキャンを作成して実行するには、次の手順のようにします。
 
-1. Purview Studio の左側にあるペインで **[Data Map]** タブを選択します。
+1. [Purview Studio](https://web.purview.azure.com/resource/) の左側のペインで **[Data Map]** タブを選択します。
 
 1. 登録した Azure Files ソースを選択します。
 

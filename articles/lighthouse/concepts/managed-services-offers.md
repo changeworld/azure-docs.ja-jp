@@ -1,14 +1,14 @@
 ---
 title: Azure Marketplace のマネージド サービス オファー
 description: Azure Marketplace 内でマネージド サービス オファーを使用して、Azure Lighthouse 管理サービスを顧客に提供します。
-ms.date: 05/11/2021
+ms.date: 09/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: 10b32445fcf6d014219dd8559c9c1ac9b2905044
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: 5d96a23f1dbdba74eefbf4f483a441c25e2dd47b
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114391678"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124732933"
 ---
 # <a name="managed-service-offers-in-azure-marketplace"></a>Azure Marketplace のマネージド サービス オファー
 
@@ -18,7 +18,7 @@ ms.locfileid: "114391678"
 
 マネージド サービス オファーにより、Azure Lighthouse に顧客をオンボードするプロセスが効率化されます。 顧客は、Azure Marketplace でオファーを購入すると、オンボードするサブスクリプションやリソース グループを指定できるようになります。
 
-その後、組織内のユーザーは、オファーを作成するときに定義されたアクセス権に従い、[Azure の委任されたリソース管理](architecture.md)を使用して、管理テナント内からそれらのリソースに対して作業できるようになります。 これは、顧客のリソースにアクセスできる Azure Active Directory (Azure AD) ユーザー、グループ、サービス プリンシパルが指定されているマニフェストと、それらのアクセス レベルが定義されている[ロール](tenants-users-roles.md)を通じて行われます。
+オファーごとに、組織内のユーザーが顧客テナント内のリソースに対して作業する必要があるアクセス権を定義します。 これは、顧客のリソースにアクセスできる Azure Active Directory (Azure AD) ユーザー、グループ、サービス プリンシパルが指定されているマニフェストと、それらのアクセス レベルが定義されている[ロール](tenants-users-roles.md)を通じて行われます。
 
 > [!NOTE]
 > マネージド サービス オファーは、Azure Government およびその他の国内クラウドでは利用できない場合があります。

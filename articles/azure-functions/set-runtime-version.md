@@ -4,12 +4,12 @@ description: Azure Functions では、複数のバージョンのランタイム
 ms.topic: conceptual
 ms.date: 07/22/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ca107ec2f0ce04bf7b1eae3a98087217c267d33d
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 6f608822a8c9b348c16021e64a9fe6a63170d6d6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107830918"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128646969"
 ---
 # <a name="how-to-target-azure-functions-runtime-versions"></a>Azure Functions ランタイム バージョンをターゲットにする方法
 
@@ -32,11 +32,12 @@ Azure Functions を使用すると、Function App 内で `FUNCTIONS_EXTENSION_VE
 
 次の表は、各メジャー バージョンの自動更新を有効にする `FUNCTIONS_EXTENSION_VERSION` 値を示しています。
 
-| メジャー バージョン | `FUNCTIONS_EXTENSION_VERSION` 値 |
-| ------------- | ----------------------------------- |
-| 3.x  | `~3` |
-| 2.x  | `~2` |
-| 1.x  | `~1` |
+| メジャー バージョン | `FUNCTIONS_EXTENSION_VERSION` 値 | 追加構成  |
+| ------------- | ----------------------------------- | ------------------------- |
+| 4.x           | `~4`                                | [Windows では、.NET 6 を有効にします](./functions-versions.md#migrating-from-3x-to-4x) |
+| 3.x           | `~3`                                |                           |
+| 2.x           | `~2`                                |                           |
+| 1.x           | `~1`                                |                           |
 
 ランタイム バージョンを変更するたびに、Function App が再起動されます。
 

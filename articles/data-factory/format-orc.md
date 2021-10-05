@@ -1,22 +1,22 @@
 ---
-title: Azure Data Factory での ORC 形式
+title: ORC 形式のサポート
+description: このトピックでは、Azure Data Factory と Azure Synapse Analytics のパイプラインで ORC 形式を処理する方法について説明します。
 titleSuffix: Azure Data Factory & Azure Synapse
-description: このトピックでは、Azure Data Factory で ORC 形式を処理する方法について説明します。
 author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 09/28/2020
+ms.date: 09/09/2021
 ms.author: jianleishen
-ms.openlocfilehash: 72c81c2e8eec02be96512ce4100e3b9c48b96318
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: f0bd3840d7c1b1d3fde7c93f11e39d236a954847
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123252968"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124743789"
 ---
-# <a name="orc-format-in-azure-data-factory"></a>Azure Data Factory での ORC 形式
+# <a name="orc-format-in-azure-data-factory-and-synapse-analytics"></a>Azure Data Factory と Azure Synapse Analytics での ORC 形式
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -159,7 +159,7 @@ OrcSource sink(
 > [!IMPORTANT]
 > オンプレミスとクラウドのデータ ストアの間など、セルフホステッド統合ランタイムを利用したコピーでは、ORC ファイルを **そのまま** コピーしない場合は、**64-bit JRE 8 (Java Runtime Environment) または OpenJDK** と **Microsoft Visual C++ 2010 再頒布可能パッケージ** を IR マシンにインストールする必要があります。 詳細については、次の段落をご確認ください。
 
-ORC ファイルのシリアル化/逆シリアル化を使用してセルフホステッド IR 上で実行されるコピーでは、ADF は最初に JRE のレジストリ *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* を調べ、見つからない場合は次に OpenJDK のシステム変数 *`JAVA_HOME`* を調べることで、Java ランタイムを見つけます。
+ORC ファイルのシリアル化または逆シリアル化を使用してセルフホステッド IR 上で実行されるコピーの場合、サービスによる Java ランタイムの検索は、JRE のレジストリ *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* の確認から始まり、見つからない場合は、OpenJDK のシステム変数 *`JAVA_HOME`* が確認されます。
 
 - **JRE を使用する場合**:64 ビット IR には 64 ビット JRE が必要です。 [こちら](https://go.microsoft.com/fwlink/?LinkId=808605)から入手できます。
 - **OpenJDK の使用方法**:IR バージョン 3.13 以降でサポートされています。 jvm.dll を他のすべての必要な OpenJDK のアセンブリと共にセルフホステッド IR マシンにパッケージ化し、それに応じてシステム環境変数 JAVA_HOME を設定します。
@@ -168,9 +168,9 @@ ORC ファイルのシリアル化/逆シリアル化を使用してセルフホ
 > [!TIP]
 > セルフホステッド統合ランタイムを使用して、ORC 形式をコピー元またはコピー先にしてデータをコピーしたときに、"An error occurred when invoking java, message: **java.lang.OutOfMemoryError:Java heap space**" (java の呼び出し中にエラーが発生しました。メッセージ: java.lang.OutOfMemoryError:Java heap space) というエラーが発生する場合は、まず、セルフホステッド IR のホストであるマシン内に環境変数 `_JAVA_OPTIONS` を追加してください。次に、JVM の最小/最大ヒープ サイズを調整し、コピーを行えるようにしてから、パイプラインを再実行してください。
 
-![セルフホステッド IR 上での JVM ヒープ サイズの設定](./media/supported-file-formats-and-compression-codecs/set-jvm-heap-size-on-selfhosted-ir.png)
+:::image type="content" source="./media/supported-file-formats-and-compression-codecs/set-jvm-heap-size-on-selfhosted-ir.png" alt-text="セルフホステッド IR 上での JVM ヒープ サイズの設定":::
 
-例: 変数 `_JAVA_OPTIONS` を設定して、値 `-Xms256m -Xmx16g` を指定します。 フラグ `Xms` では、Java 仮想マシン (JVM) の初期メモリ割り当てプールを指定します。`Xmx` では、最大メモリ割り当てプールを指定します。 これは、JVM 起動時のメモリ量が `Xms`、使用可能なメモリ量が最大で `Xmx` であることを意味します。 既定では、ADF では、最小で 64MB、最大で 1G が使用されます。
+例: 変数 `_JAVA_OPTIONS` を設定して、値 `-Xms256m -Xmx16g` を指定します。 フラグ `Xms` では、Java 仮想マシン (JVM) の初期メモリ割り当てプールを指定します。`Xmx` では、最大メモリ割り当てプールを指定します。 これは、JVM 起動時のメモリ量が `Xms`、使用可能なメモリ量が最大で `Xmx` であることを意味します。 既定では、サービスにより最小で 64MB、最大で 1G が使用されます。
 
 ## <a name="next-steps"></a>次のステップ
 

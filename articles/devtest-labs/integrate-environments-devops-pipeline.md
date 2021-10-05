@@ -1,14 +1,14 @@
 ---
-title: Azure DevTest Labs で環境を Azure Pipelines に統合する
+title: 環境を Azure Pipelines に統合する
 description: Azure DevTest Labs 環境を Azure DevOps の継続的インテグレーション (CI) および継続的デリバリー (CD) パイプラインに統合する方法について説明します。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 18f334fe85b6a38c38fc41d55c711ee6d6629760
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: 4f205fb70978a667df8a8fe82beea38e492828a0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112006133"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128651122"
 ---
 # <a name="integrate-environments-into-your-azure-devops-cicd-pipelines"></a>環境を Azure DevOps CI/CD パイプラインに統合する
 Azure DevOps Services (旧称 Visual Studio Team Services) にインストールされている Azure DevTest Labs タスク拡張機能を使用して、継続的インテグレーション (CI)/継続的デリバリー (CD) のビルド・リリース パイプラインを Azure DevTest Labs に簡単に統合できます。 これらの拡張機能により、特定のテスト タスク用に[環境](devtest-lab-test-env.md)をすばやく展開し、テストの終了時に削除するのがより簡単になります。 
@@ -72,4 +72,3 @@ CI/CD パイプラインを Azure DevTest Labs に統合する前に、[Azure De
 - [Resource Manager テンプレートを使用してマルチ VM 環境を作成する](devtest-lab-create-environment-from-arm.md)。
 - [DevTest Labs GitHub リポジトリ](https://github.com/Azure/azure-quickstart-templates)にある、DevTest Labs 自動化のためのクイック スタート Resource Manager テンプレート。
 - [VSTS のトラブルシューティングのページ](/azure/devops/pipelines/troubleshooting)
-

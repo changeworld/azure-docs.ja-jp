@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 08/18/2021
+ms.date: 09/28/2021
 ms.author: b-juche
-ms.openlocfilehash: d9af43bad8f6db6b50070368be732f20fb1fbde8
-ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
+ms.openlocfilehash: 705cc540097ea41bc0039336d7cc9fdc025dd247
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122429832"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129218386"
 ---
 # <a name="enable-continuous-availability-on-existing-smb-volumes"></a>既存の SMB ボリュームで継続的可用性を有効にする
 
@@ -27,7 +27,7 @@ ms.locfileid: "122429832"
 
 ## <a name="considerations"></a>注意事項
 
-* 現在、[ **[スナップショット パスを非表示にする]** ](azure-netapp-files-manage-snapshots.md#edit-the-hide-snapshot-path-option) オプションは、CA が有効な SMB ボリュームには影響しません。  
+* 現在、[ **[スナップショット パスを非表示にする]**](snapshots-edit-hide-path.md) オプションは、CA が有効な SMB ボリュームには影響しません。  
 
 * `~snapshot` (他の SMB ボリュームでの走査に使用できる) ディレクトリは、CA が有効な SMB ボリュームでは表示されません。 手動で `~snapshot\<snapshotName>` を入力してスナップショットにアクセスすることもできます。
 
@@ -38,7 +38,7 @@ ms.locfileid: "122429832"
 3. 表示される [編集] ウィンドウで、 **[継続的可用性を有効にする]** チェックボックスをオンにします。   
     ![[継続的可用性を有効にする] オプションを示すスナップショット。](../media/azure-netapp-files/enable-continuous-availability.png)
 
-4. サーバーを再起動します。   
+4. 既存の SMB 共有に接続している Windows システムを再起動します。   
 
     > [!NOTE]
     > **[継続的可用性を有効にする]** オプションを選択しただけでは、自動的に既存の SMB セッションが継続的に使用できるようになるわけではありません。 このオプションを選択したら、サーバーを再起動して変更を有効にします。  
@@ -51,7 +51,7 @@ ms.locfileid: "122429832"
  
     新しいバージョンの PowerShell のインストールが必要になる場合があります。 
 
-    サーバー名がわかっている場合は、コマンドで `-ServerName` パラメーターを使用できます。 [Get-SmbConnection](/powershell/module/smbshare/get-smbconnection?view=windowsserver2019-ps&preserve-view=true) powershell コマンドの詳細を参照してください。
+    サーバー名がわかっている場合は、コマンドで `-ServerName` パラメーターを使用できます。 [Get-SmbConnection](/powershell/module/smbshare/get-smbconnection?view=windowsserver2019-ps&preserve-view=true) PowerShell コマンドの詳細を参照してください。
 
 ## <a name="next-steps"></a>次のステップ  
 

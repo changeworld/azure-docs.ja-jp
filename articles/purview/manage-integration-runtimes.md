@@ -4,15 +4,15 @@ description: この記事では、Azure Purview で統合ランタイムを作�
 author: viseshag
 ms.author: viseshag
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: how-to
-ms.date: 02/03/2021
-ms.openlocfilehash: 1b2748664046c97258ee3414b741075627064bbc
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.date: 09/27/2021
+ms.openlocfilehash: 1a51af8fd34516ca87d7ab98332221a308480193
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122867482"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129217149"
 ---
 # <a name="create-and-manage-a-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイムの作成および管理
 
@@ -24,13 +24,36 @@ ms.locfileid: "122867482"
 > [!IMPORTANT]
 > 2021 年 8 月 18 日以降に Azure Purview アカウントを作成した場合は必ず、[Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=39717)から最新バージョンのセルフホステッド統合ランタイムをダウンロードしてインストールしてください。
 
+## <a name="prerequisites"></a>前提条件
+
+- サポートされている Windows のバージョンは次のとおりです。
+  - Windows 8.1
+  - Windows 10
+  - Windows Server 2012
+  - Windows Server 2012 R2
+  - Windows Server 2016
+  - Windows Server 2019
+
+セルフホステッド統合ランタイムのドメイン コントローラーへのインストールはサポートされていません。
+
+- セルフホステッド統合ランタイムには、.NET Framework 4.7.2 以降を含む 64 ビット オペレーティング システムが必要です。 詳細については、「 [.NET Framework システム要件](/dotnet/framework/get-started/system-requirements) 」をご覧ください。
+- セルフホステッド統合ランタイム コンピューターに推奨される最小構成は、4 コアの 2 GHz プロセッサ、8 GB の RAM、および 80 GB の使用可能なハード ドライブ領域です。 システム要件の詳細については、[ダウンロード](https://www.microsoft.com/download/details.aspx?id=39717)のページを参照してください。
+- ホスト コンピューターが休止状態の場合、セルフホステッド統合ランタイムはデータ要求に応答しません。 セルフホステッド統合ランタイムをインストールする前に、コンピューターに適切な電源プランを構成します。 コンピューターが休止状態に入るよう構成されている場合、セルフホステッド統合ランタイムのインストーラーによりメッセージが出力されます。
+- セルフホステッド統合ランタイムを正常にインストールして構成するには、コンピューターの管理者である必要があります。
+- スキャンは、設定したスケジュールに従って特定の頻度で実行されます。 コンピューター上のプロセッサおよび RAM の使用量は、ピーク時とアイドル時のある同じパターンに従います。 また、リソース使用量は、スキャンされるデータの量に大きく依存します。 複数のスキャン ジョブが進行中のときには、ピーク時にリソース使用率が上昇します。
+- Parquet、ORC、または Avro 形式のデータの抽出中にタスクが失敗することがあります。
+
+## <a name="setting-up-a-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイムをセットアップする
+
+セルフホステッド統合ランタイムを作成およびセットアップするには、次の手順に従います。
+
 ## <a name="create-a-self-hosted-integration-runtime"></a>自己ホスト型統合ランタイムを作成する
 
-1. Purview Studio のホーム ページの左側のナビゲーション ウィンドウで、 **[管理センター]** を選択します。
+1. [Purview Studio](https://web.purview.azure.com/resource/) のホーム ページの左側のナビゲーション ウィンドウで、 **[Data Map]** を選択します。
 
 2. 左側のウィンドウの **[Sources and scanning]\(ソースとスキャン\)** で **[統合ランタイム]** を選択し、 **[+ 新規]** を選択します。
 
-   :::image type="content" source="media/manage-integration-runtimes/select-integration-runtimes.png" alt-text="IR をクリックします。":::
+   :::image type="content" source="media/manage-integration-runtimes/select-integration-runtimes.png" alt-text="IR の選択":::
 
 3. **[統合ランタイムのセットアップ]** ページで **[セルフホステッド]** を選択してセルフホステッド IR を作成し、 **[続行]** を選択します。
 
@@ -98,13 +121,13 @@ ms.locfileid: "122867482"
 
 ## <a name="manage-a-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイムの管理
 
-セルフホステッド統合ランタイムを編集するには、**管理センター** の **[統合ランタイム]** に移動し、IR を選択して [編集] をクリックします。 これで、説明の更新、キーのコピー、新しいキーの再生成ができるようになります。
+セルフホステッド統合ランタイムを編集するには、**管理センター** の **[統合ランタイム]** に移動し、IR を選択して [編集] を選択します。 これで、説明の更新、キーのコピー、新しいキーの再生成ができるようになります。
 
 :::image type="content" source="media/manage-integration-runtimes/edit-integration-runtime.png" alt-text="IR の編集":::
 
 :::image type="content" source="media/manage-integration-runtimes/edit-integration-runtime-settings.png" alt-text="IR の詳細の編集":::
 
-セルフホステッド統合ランタイムを削除するには、**管理センター** の **[統合ランタイム]** に移動し、IR を選択して [削除] をクリックします。 IR が削除されると、それに依存している実行中のスキャンは失敗します。
+セルフホステッド統合ランタイムを削除するには、管理センターの **[統合ランタイム]** に移動し、IR を選択して **[削除]** を選択します。 IR が削除されると、それに依存している実行中のスキャンは失敗します。
 
 ## <a name="next-steps"></a>次のステップ
 

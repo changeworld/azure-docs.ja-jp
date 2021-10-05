@@ -6,13 +6,13 @@ author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019, references_regions
-ms.date: 09/02/2021
-ms.openlocfilehash: a3f88b7263f264f2ae69892839524207e08e768d
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.date: 09/27/2021
+ms.openlocfilehash: 5d5b1ed8a20bc459370a9bb7e437e1f5c977714d
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123452215"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129217998"
 ---
 # <a name="connect-data-factory-to-azure-purview-preview"></a>Data Factory を Azure Purview に接続する (プレビュー)
 
@@ -43,7 +43,7 @@ Data Factory 作成 UI で接続を確立するには
 
 Purview アカウントがファイアウォールによって保護されている場合は、Purview 用のマネージド プライベート エンドポイントを作成します。 Data Factory から[セキュリティで保護された Purview アカウントにアクセス](how-to-access-secured-purview-account.md)できるようにする方法の詳細を確認してください。 初期接続時にそれを行うことも、既存の接続を後で編集することもできます。
 
-Purview の接続情報は、次のようなデータ ファクトリ リソースに格納されます。 プログラムを使用して接続を確立するには、データ ファクトリを更新し、`purviewConfiguration` 設定を追加します。
+Purview の接続情報は、次のようなデータ ファクトリ リソースに格納されます。 プログラムを使用して接続を確立するには、データ ファクトリを更新し、`purviewConfiguration` 設定を追加します。 SSIS アクティビティから系列をプッシュする必要がある場合は、さらに `catalogUri` タグも追加します。
 
 ```json
 {
@@ -56,8 +56,11 @@ Purview の接続情報は、次のようなデータ ファクトリ リソー�
             "purviewResourceId": "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupname>/providers/Microsoft.Purview/accounts/<PurviewAccountName>"
         }
     },
-    "identity": {...},
     ...
+    "identity": {...},
+    "tags": {
+        "catalogUri": "<PurviewAccountName>.catalog.purview.azure.com //Note: used for SSIS lineage only"
+    }
 }
 ```
 
@@ -77,9 +80,20 @@ Azure Purview に Data Factory を登録する方法については、「[Azure 
 
     作成 UI でデータ ファクトリを Purview に接続すると、ADF はこのようなロールの割り当てを自動的に追加します。 Purview アカウントに Azure 組み込みの **所有者** ロールまたは **ユーザー アクセス管理者** ロールがある場合、この操作は成功します。
 
-Purview ロールの割り当て情報を読み取る権限があり、必要なロールが付与されていない場合は、次の警告が表示される可能性があります。 パイプラインの系列のプッシュに対して接続が適切に設定されていることを確認するには、Purview アカウントに移動し、**Purview データ キュレーター** ロールが データ ファクトリのマネージド ID に付与されているかを確認します。 ない場合は、ロールの割り当てを手動で追加します。
+## <a name="monitor-purview-connection"></a>Purview 接続を監視する
 
-:::image type="content" source="./media/data-factory-purview/register-purview-account-warning.png" alt-text="Purview アカウント登録の警告のスクリーンショット。":::
+データ ファクトリを Purview アカウントに接続すると、次のページが表示されます。このページには、有効な統合機能の詳細が示されています。
+
+:::image type="content" source="./media/data-factory-purview/monitor-purview-connection-status.png" alt-text="Azure Data Factory と Purview の統合状態を監視するためのスクリーンショット。":::
+
+**データ系列 - パイプライン** については、次のいずれかの状態が表示されます。
+
+- **接続中**: データ ファクトリは Purview アカウントに正常に接続されています。 これは、データ ファクトリが Purview アカウントに関連付けられていて、そのアカウントに系列をプッシュする権限が、そのデータ ファクトリにあることを示しています。 Purview アカウントがファイアウォールによって保護されている場合は、アクティビティの実行および系列のプッシュに使用される統合ランタイムが、Purview アカウントに到達できることを確認する必要もあります。 詳細については、「[保護された Azure Purview アカウントに Azure Data Factory でアクセスする](how-to-access-secured-purview-account.md)」を参照してください。
+- **接続解除**: Purview データ キュレーター ロールがデータ ファクトリのマネージド ID に付与されないため、データ ファクトリは、Purview に系列をプッシュできません。 この問題を修正するには、ご自身の Purview アカウントに移動してロールの割り当てを確認し、必要に応じて手動でロールを付与します。 詳細については、「[認証の設定](#set-up-authentication)」セクションを 参照してください。
+- **不明**: Data Factory によって状態を確認できません。 次のような原因が考えられます。
+
+    - アカウントがファイアウォールによって保護されているため、ご自身の現在のネットワークから Purview アカウントに到達できません。 代わりに、ご自身の Purview アカウントに接続されているプライベート ネットワークから ADF UI を起動できます。
+    - Purview アカウント上でロールの割り当てを確認する権限がありません。 ご自身のロールの割り当てについては、Purview アカウント管理者に問い合わせることができます。 必要な Purview ロールについては、「[認証の設定](#set-up-authentication)」セクションを参照してください。
 
 ## <a name="report-lineage-data-to-azure-purview"></a>データ系列データを Azure Purview に報告する
 

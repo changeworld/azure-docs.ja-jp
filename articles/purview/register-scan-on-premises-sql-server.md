@@ -1,18 +1,18 @@
 ---
 title: オンプレミスの SQL Server の登録とスキャン
-description: このチュートリアルでは、セルフホステッド IR を使用してオンプレミスの SQL Server をスキャンする方法について説明します。
+description: このチュートリアルでは、Azure Purview のセルフホステッド IR を使用してオンプレミスの SQL Server をスキャンする方法について説明します。
 author: viseshag
 ms.author: viseshag
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: how-to
-ms.date: 09/18/2020
-ms.openlocfilehash: 2f07ed4ca7bdb722a2563c5e81f7e30a57c79aeb
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/27/2021
+ms.openlocfilehash: 4cef99adecadc73f105dfffcdc72163c8b622cc3
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121721940"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129208687"
 ---
 # <a name="register-and-scan-an-on-premises-sql-server"></a>オンプレミスの SQL Server の登録とスキャン
 
@@ -48,16 +48,6 @@ ms.locfileid: "121721940"
 
 SQL アカウントには、**master** データベースへのアクセス権が必要です。 これは、`sys.databases` が master データベース内にあるためです。 Purview スキャナーは、サーバー上のすべての SQL データベースを検出するために、`sys.databases` を列挙する必要があります。
 
-#### <a name="using-an-existing-server-administrator"></a>既存のサーバー管理者の使用
-
-既存のサーバー管理者 (sa) ユーザーを使用してオンプレミスの SQL Server をスキャンする予定がある場合は、次のことを確認してください。
-
-1. `sa` が Windows 認証アカウントではない。
-
-2. 使用する予定のサーバー レベルのログインが、public および sysadmin のサーバー ロールを持っている。 これを確認するには、サーバーに接続し、SQL Server Management Studio (SSMS) に移動し、セキュリティに移動します。次に、使用する予定のログインを選択し、 **[プロパティ]** を右クリックして **[サーバー ロール]** を選択します。
-
-   :::image type="content" source="media/register-scan-on-premises-sql-server/server-level-login.png" alt-text="サーバー レベルのログイン。":::
-
 #### <a name="creating-a-new-login-and-user"></a>新しいログインとユーザーの作成
 
 新しいログインとユーザーを作成して SQL Server をスキャンできるようにするには、次の手順に従います。
@@ -65,7 +55,7 @@ SQL アカウントには、**master** データベースへのアクセス権�
 > [!Note]
    > 下のすべての手順は、[こちら](https://github.com/Azure/Purview-Samples/blob/master/TSQL-Code-Permissions/grant-access-to-on-prem-sql-databases.sql)で提供されているコードを使用して実行できます。
 
-1. SQL Server Management Studio (SSMS) に移動してサーバ＾に接続し、セキュリティに移動し、[ログイン] を右クリックして新しいログインを作成します。 必ず SQL 認証を選択します。
+1. SQL Server Management Studio (SSMS) に移動してサーバーに接続し、セキュリティに移動し、[ログイン] を選択したままにして (または右クリックして) 新しいログインを作成します。 必ず SQL 認証を選択します。
 
    :::image type="content" source="media/register-scan-on-premises-sql-server/create-new-login-user.png" alt-text="新しいログインとユーザーを作成します。":::
 
@@ -75,9 +65,9 @@ SQL アカウントには、**master** データベースへのアクセス権�
 
    :::image type="content" source="media/register-scan-on-premises-sql-server/user-mapping.png" alt-text="ユーザー マッピング。":::
 
-4. [OK] をクリックして保存します。
+4. [OK] を選択して保存します。
 
-5. 右クリックして **[プロパティ]** を選択し、作成したユーザーにもう一度移動します。 新しいパスワードを入力し、それを確認します。 [古いパスワードを指定する] を選択し、古いパスワードを入力します。 **新しいログインを作成したらすぐに、パスワードを変更する必要があります。**
+5. 選択したままにして (または右クリックして) **[プロパティ]** を選択し、作成したユーザーにもう一度移動します。 新しいパスワードを入力し、それを確認します。 [古いパスワードを指定する] を選択し、古いパスワードを入力します。 **新しいログインを作成したらすぐに、パスワードを変更する必要があります。**
 
    :::image type="content" source="media/register-scan-on-premises-sql-server/change-password.png" alt-text="パスワードを変更します。":::
 
@@ -109,7 +99,7 @@ SQL アカウントには、**master** データベースへのアクセス権�
 
 新しいスキャンを作成して実行するには、次の操作を行います。
 
-1. Purview Studio の左側のペインで **[Data Map]** タブを選択します。
+1. [Purview Studio](https://web.purview.azure.com/resource/) の左側のペインで **[Data Map]** タブを選択します。
 
 1. 登録した SQL Server のソースを選択します。
 

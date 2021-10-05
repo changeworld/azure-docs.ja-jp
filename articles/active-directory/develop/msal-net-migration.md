@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 06/08/2021
 ms.author: jmprieur
 ms.reviewer: saeeda
-ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: d920cb4fc16f618c0c1945daf8e58246549d8b9d
-ms.sourcegitcommit: cd8e78a9e64736e1a03fb1861d19b51c540444ad
+ms.custom: devx-track-csharp, aaddev, has-adal-ref
+ms.openlocfilehash: 5a3dd6265c9fbefb85cf72b80473538983c682b7
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112966556"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129214705"
 ---
 # <a name="migrating-applications-to-msalnet-or-microsoftidentityweb"></a>MSAL.NET または Microsoft.Identity.Web にアプリケーションを移行する
 
@@ -52,7 +52,9 @@ MSAL.NET と ADAL.NET を詳細に比較する前に、MSAL.NET を使用する�
  
 ## <a name="next-steps"></a>次のステップ
 
+- [パブリック クライアントと機密性を扱うクライアント アプリケーション](msal-client-applications.md)について学ぶ。
 - [ASP.NET MVC または .NET classic を利用して開発した、機密性を扱うクライアント アプリケーションを、ADAL.NET から MSAL.NET に移行する方法](msal-net-migration-confidential-client.md)を学ぶ。
+- [.NET または .NET classic を利用して開発したパブリック クライアント アプリケーションを、ADAL.NET から MSAL.NET に移行する方法](msal-net-migration-public-client.md)を学ぶ。
 - [ADAL.NET と MSAL.NET アプリの違い](msal-net-differences-adal-net.md)について詳しく知る。
 - ASP.NET Core を利用して開発した、機密性を扱うクライアント アプリケーションを、ADAL.NET から Microsoft.Identity.Web に移行する方法を学ぶ。
   -  [Web アプリ](https://github.com/AzureAD/microsoft-identity-web/wiki/web-apps#migrating-from-previous-versions--adding-authentication)

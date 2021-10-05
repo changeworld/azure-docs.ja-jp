@@ -4,12 +4,12 @@ description: Defender for IoT セキュリティ サービスのセキュリテ�
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 10/08/2020
-ms.openlocfilehash: c83aec4772942aeb269f04804d55fd887e552925
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 810ca270fed350da8beaa1c63fafe39df4ab6a61
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113018310"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128658277"
 ---
 # <a name="understanding-the-local-configuration-file-c-agent"></a>ローカル構成ファイル (C# エージェント) について
 
@@ -77,7 +77,7 @@ Windows の場合:
 | moduleName | string | Defender-IoT-micro-agent ID の名前。 この名前は、デバイスのモジュール ID 名に対応している必要があります。 |
 | deviceId | string | デバイスの ID (Azure IoT Hub に登録されているもの)。 |
 | schedulerInterval | TimeSpan 文字列 | 内部スケジューラの間隔。 |
-| gatewayHostname | string | Azure Iot Hub のホスト名。 通常 <my-hub>.azure-devices.net |
+| gatewayHostname | string | Azure Iot Hub のホスト名。 通常、\<my-hub\>.azure-devices.net |
 | filePath | 文字列 - ファイルへのパス | 認証シークレットを含むファイルへのパス。|
 | type | "SymmetricKey"、"SelfSignedCertificate" | 認証用のユーザー シークレット。 ユーザー シークレットが対称キーの場合は、*SymmetricKey* を選択します。シークレットが自己署名証明書の場合は、*SelfSignedCertificate* を選択します。 |
 | identity | "DPS"、"Module"、"Device" | 認証 ID - 認証が DPS を使用して行われる場合は DPS、認証がモジュールの資格情報を使用して行われる場合は Module、認証がデバイスの資格情報を使用して行われる場合は Device。

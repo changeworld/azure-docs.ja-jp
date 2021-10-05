@@ -3,15 +3,15 @@ title: Functions 2.x 以降に対する Azure Cosmos DB の入力バインド
 description: Azure Functions で Azure Cosmos DB の入力バインドを使用する方法について説明します。
 author: craigshoemaker
 ms.topic: reference
-ms.date: 02/24/2020
+ms.date: 09/01/2021
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 5566ca21b9ac1f0491673af21d85201a2fd18efc
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 50a4e4ecbfb646603411944a2e65944b536aeb43
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110451247"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128615968"
 ---
 # <a name="azure-cosmos-db-input-binding-for-azure-functions-2x-and-higher"></a>Azure Functions 2.x 以降に対する Azure Cosmos DB の入力バインド
 
@@ -35,6 +35,7 @@ Azure Cosmos DB 入力バインドでは、SQL API を使用して 1 つ以上�
 * [HTTP トリガー、SqlQuery を使用したルート データからの ID の検索](#http-trigger-look-up-id-from-route-data-using-sqlquery-c)
 * [HTTP トリガー、SqlQuery を使用した複数のドキュメントの取得](#http-trigger-get-multiple-docs-using-sqlquery-c)
 * [HTTP トリガー、DocumentClient を使用した複数のドキュメントの取得](#http-trigger-get-multiple-docs-using-documentclient-c)
+* [HTTP トリガー、CosmosClient (v4 拡張機能) を使用した複数のドキュメントの取得](#http-trigger-get-multiple-docs-using-cosmosclient-c)
 
 例では、次のようなシンプルな `ToDoItem` タイプを参照します。
 
@@ -351,6 +352,68 @@ namespace CosmosDBSamplesV2
                     log.LogInformation(result.Description);
                 }
             }
+            return new OkResult();
+        }
+    }
+}
+```
+
+<a id="http-trigger-get-multiple-docs-using-cosmosclient-c"></a>
+
+### <a name="http-trigger-get-multiple-docs-using-cosmosclient"></a>HTTP トリガー、CosmosClient を使用した複数のドキュメントの取得
+
+次の例は、ドキュメントの一覧を取得する [C# 関数](functions-dotnet-class-library.md)を示しています。 関数は、HTTP 要求によってトリガーされます。 コードでは、[拡張機能バージョン 4.x](./functions-bindings-cosmosdb-v2.md#cosmos-db-extension-4x-and-higher) で使用可能な Azure Cosmos DB バインドによって提供される `CosmosClient` インスタンスを使用して、ドキュメントの一覧を読み取ります。 また、`CosmosClient` インスタンスは、書き込み操作に使用できます。
+
+```csharp
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Azure.Cosmos;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Host;
+using Microsoft.Azure.WebJobs.Extensions.Http;
+using Microsoft.Extensions.Logging;
+
+namespace CosmosDBSamplesV2
+{
+    public static class DocsByUsingCosmosClient
+    {  
+        [FunctionName("DocsByUsingCosmosClient")]
+        public static async Task<IActionResult> Run(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post",
+                Route = null)]HttpRequest req,
+            [CosmosDB(
+                databaseName: "ToDoItems",
+                containerName: "Items",
+                Connection = "CosmosDBConnection")] CosmosClient client,
+            ILogger log)
+        {
+            log.LogInformation("C# HTTP trigger function processed a request.");
+
+            var searchterm = req.Query["searchterm"].ToString();
+            if (string.IsNullOrWhiteSpace(searchterm))
+            {
+                return (ActionResult)new NotFoundResult();
+            }
+
+            Container container = client.GetDatabase("ToDoItems").GetContainer("Items");
+
+            log.LogInformation($"Searching for: {searchterm}");
+
+            QueryDefinition queryDefinition = new QueryDefinition(
+                "SELECT * FROM items i WHERE CONTAINS(i.Description, @searchterm)")
+                .WithParameter("@searchterm", searchterm);
+            using (FeedIterator<ToDoItem> resultSet = container.GetItemQueryIterator<ToDoItem>(queryDefinition))
+            {
+                while (resultSet.HasMoreResults)
+                {
+                    FeedResponse<ToDoItem> response = await resultSet.ReadNextAsync();
+                    ToDoItem item = response.First();
+                    log.LogInformation(item.Description);
+                }
+            }
+
             return new OkResult();
         }
     }
@@ -1620,7 +1683,7 @@ def main(queuemsg: func.QueueMessage, documents: func.DocumentList):
 
 [C# クラス ライブラリ](functions-dotnet-class-library.md)では、[CosmosDB](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/CosmosDBAttribute.cs) 属性を使用します。
 
-この属性のコンストラクターにはデータベース名とコレクションを指定します。 これらの設定や構成できる他のプロパティについて詳しくは、[この後の構成に関するセクション](#configuration)をご覧ください。
+この属性のコンストラクターにはデータベース名とコレクションを指定します。 [拡張機能バージョン 4.x](./functions-bindings-cosmosdb-v2.md#cosmos-db-extension-4x-and-higher) 内の設定およびプロパティの中には、削除されているものや、名前が変更されているものがあります。 すべてのバージョンの設定や構成できる他のプロパティについて詳しくは、[この後の構成に関するセクション](#configuration)をご覧ください。
 
 # <a name="c-script"></a>[C# スクリプト](#tab/csharp-script)
 
@@ -1654,10 +1717,10 @@ def main(queuemsg: func.QueueMessage, documents: func.DocumentList):
 |**direction**     | 該当なし | `in` に設定する必要があります。         |
 |**name**     | 該当なし | 関数のドキュメントを表すバインド パラメーターの名前。  |
 |**databaseName** |**DatabaseName** |ドキュメントを含むデータベース。        |
-|**collectionName** |**CollectionName** | ドキュメントを含むコレクションの名前。 |
+|**collectionName** <br> または <br> **containerName**|**CollectionName** <br> または <br> **ContainerName**| ドキュメントを含むコレクションの名前。 <br><br> [拡張機能バージョン 4.x](./functions-bindings-cosmosdb-v2.md#cosmos-db-extension-4x-and-higher) では、このプロパティは `ContainerName` と呼ばれます。 |
 |**id**    | **Id** | 取得するドキュメントの ID。 このプロパティは、[バインド式](./functions-bindings-expressions-patterns.md)をサポートしています。 `id` プロパティと **sqlQuery** プロパティの両方は設定しないでください。 いずれも設定しない場合は、コレクション全体が取得されます。 |
 |**sqlQuery**  |**SqlQuery**  | 複数のドキュメントを取得するときに使用する Azure Cosmos DB SQL クエリ。 このプロパティは、次の例のように実行時のバインドをサポートします。`SELECT * FROM c where c.departmentId = {departmentId}` `id` と `sqlQuery` プロパティの両方は設定しないでください。 いずれも設定しない場合は、コレクション全体が取得されます。|
-|**connectionStringSetting**     |**ConnectionStringSetting**|Azure Cosmos DB 接続文字列を含むアプリ設定の名前。 |
+|**connectionStringSetting** <br> または <br> **connection**  |**ConnectionStringSetting** <br> または <br> **接続**|Azure Cosmos DB 接続文字列を含むアプリ設定の名前。 <br><br> [拡張機能バージョン 4.x](./functions-bindings-cosmosdb-v2.md#cosmos-db-extension-4x-and-higher) では、このプロパティは `Connection` と呼ばれます。 値はアプリ設定の名前であり、接続文字列、または接続を定義する構成セクションあるいはプレフィックスが含まれます。 「[接続](./functions-reference.md#connections)」を参照してください。 |
 |**partitionKey**|**PartitionKey**|参照用のパーティション キー値を指定します。 バインディング パラメーターを含めることもできます。 [パーティション分割](../cosmos-db/partitioning-overview.md#logical-partitions)されたコレクションの参照で必須です。|
 |**preferredLocations**| **PreferredLocations**| (省略可能) Azure Cosmos DB サービスの geo レプリケートされたデータベース アカウントの優先される場所 (リージョン) を定義します。 複数の値はコンマで区切る必要があります。 たとえば、"East US,South Central US,North Europe" などです。 |
 

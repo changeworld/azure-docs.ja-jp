@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/02/2021
 ms.reviewer: nicking
 ms.custom: seodec18
-ms.openlocfilehash: 5d63f7068d7b058280ea2dfd241e547347b71e7e
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 48b3d859a73a2d63644e1d5881c3505cee93f9d7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123435610"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128679505"
 ---
 # <a name="restore-an-app-in-azure-from-a-snapshot"></a>Azure でスナップショットからアプリケーションを復元する
 この記事では、[Azure App Service](../app-service/overview.md) でスナップショットからアプリを復元する方法について説明します。 アプリのスナップショットの 1 つに基づいて、アプリを以前の状態に復元することができます。 スナップショットを有効にする必要はありません。データの復旧の目的で、すべてのアプリのスナップショットがプラットフォームによって自動的に保存されます。
@@ -27,8 +27,7 @@ ms.locfileid: "123435610"
 
 ## <a name="limitations"></a>制限事項
 
-- 現在は、Windows アプリのパブリック プレビューとしてのみ使用できます。 Linux アプリとカスタム コンテナー アプリはサポートされていません。
-- スナップショット復元でサポートされる最大サイズは 30 GB です。 ストレージ サイズが 30 GB を超えている場合、スナップショット復元は失敗します。 ストレージ サイズを削減するには、ログ、画像、オーディオ、ビデオなどのファイルを、たとえば [Azure Storage](/azure/storage/) に移動することを検討してください。
+- スナップショット復元でサポートされる最大サイズは 30 GB です。 ストレージ サイズが 30 GB を超えている場合、スナップショット復元は失敗します。 ストレージ サイズを削減するには、ログ、画像、オーディオ、ビデオなどのファイルを、たとえば [Azure Storage](../storage/index.yml) に移動することを検討してください。
 - [標準のバックアップ](manage-backup.md#what-gets-backed-up)でサポートされる接続されているデータベースや、[マウントされている Azure ストレージ](configure-connect-to-azure-storage.md?pivots=container-windows)はすべて、スナップショットに含まれ "*ません*"。 接続されている Azure サービスのネイティブ バックアップ機能 ([SQL Database](../azure-sql/database/automated-backups-overview.md) や [Azure Files](../storage/files/storage-snapshots-files.md) など) を使用すること検討してください。
 - App Service は、スナップショットの復元中にターゲット アプリやターゲット スロットを停止します。 運用アプリのダウンタイムを最小限に抑えるには、スナップショットをまず[ステージング スロット](deploy-staging-slots.md)に復元してから、運用環境にスワップしてください。
 - 過去 30 日間のスナップショットを使用できます。 保持期間やスナップショットの頻度は構成できません。
@@ -49,7 +48,7 @@ ms.locfileid: "123435610"
     ![復元先を指定する方法を示すスクリーンショット。](./media/app-service-web-restore-snapshots/3.png)
    
    > [!WARNING]
-   > **[上書き]** を選択した場合、アプリの現在のファイル システム内にある既存のデータはすべて消去され、上書きされます。 **[OK]** をクリックする前に、実行する操作内容を確認します。
+   > ベスト プラクティスとして、新しいスロットに復元してから、入れ替えを実行することをお勧めします。 **[上書き]** を選択した場合、アプリの現在のファイル システム内にある既存のデータはすべて消去され、上書きされます。 **[OK]** をクリックする前に、実行する操作内容を確認します。
    > 
    > 
       

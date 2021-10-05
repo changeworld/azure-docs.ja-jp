@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 08/25/2021
+ms.date: 09/20/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 29e9341427b74c2395288ac85ee98d8ff44bd02e
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: e0376e13c0519920a30229eafdc8fc66fb7c242f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122968202"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128585560"
 ---
 # <a name="define-a-saml-identity-provider-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで SAML ID プロバイダー技術プロファイルを定義する
 
@@ -156,7 +156,7 @@ SAML アサーションに `SPNameQualifier` または `NameQualifier` の両方
 
 | 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| PartnerEntity | はい | SAML ID プロバイダーのメタデータの URL です。 ID プロバイダーのメタデータをコピーし、CDATA 要素 `<![CDATA[Your IDP metadata]]>` 内に追加します |
+| PartnerEntity | はい | SAML ID プロバイダーのメタデータの URL です。 または、ID プロバイダーのメタデータをコピーし、CDATA の要素 `<![CDATA[Your IDP metadata]]>` の内部にそれを埋め込みます。 ID プロバイダーのメタデータを埋め込むことは推奨されません。 ID プロバイダーによって設定が変更されたり、証明書が更新されたりする可能性があります。 ID プロバイダーのメタデータが変更されている場合は、新しいメタデータを取得し、新しいものでポリシーを更新します。 |
 | WantsSignedRequests | いいえ | 技術プロファイルでは、送信認証要求すべてを署名する必要があるかどうかを示します。 指定できる値: `true` または `false`。 既定値は `true` です。 値を `true` に設定すると、 **SamlMessageSigning** 暗号化キーを指定する必要があり、送信認証要求すべてが署名されます。 値が `false` に設定されている場合、**SigAlg** と **Signature** パラメーター (クエリ文字列または post パラメーター) は要求から省略されます。 このメタデータは、メタデータ **AuthnRequestsSigned** 属性も制御し、これは ID プロバイダーと供給される Azure AD B2C の技術プロファイルのメタデータに出力されます。 技術プロファイル メタデータ内の **WantsSignedRequests** 値が `false` に設定され、ID プロバイダー メタデータ **WantAuthnRequestsSigned** 値が `false` に設定されている、または指定がない場合、Azure AD B2C では要求の署名は行われません。 |
 | XmlSignatureAlgorithm | いいえ | SAML 要求に署名するために Azure AD B2C が使用するメソッド。 このメタデータは、SAML 要求の **SigAlg** パラメーター (クエリ文字列または post パラメーター) の値を制御します。 指定できる値: `Sha256`、`Sha384`、`Sha512`、または `Sha1` (既定値)。 両方の側で同じ値の署名アルゴリズムを構成するようにします。 証明書でサポートされているアルゴリズムのみを使用してください。 |
 | WantsSignedAssertions | いいえ | 技術プロファイルで、着信アサーションすべてに署名が必要かどうかを示します。 指定できる値: `true` または `false`。 既定値は `true` です。 値が `true` に設定されている場合、ID プロバイダーによって Azure AD B2C に送信されるすべてのアサーション セクション `saml:Assertion` に署名する必要があります。 値が `false` に設定されている場合、ID プロバイダーは、アサーションを署名しませんが、その場合でも Azure AD B2C は署名を検証しません。 このメタデータは、メタデータ フラグ **WantsAssertionsSigned** も制御し、これは ID プロバイダーと供給される Azure AD B2C の技術プロファイルのメタデータに出力されます。 アサーションの検証を無効にした場合、応答の署名の検証も無効にできます (詳細については、**ResponsesSigned** を参照)。 |

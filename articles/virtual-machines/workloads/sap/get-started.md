@@ -13,15 +13,15 @@ ms.assetid: ad8e5c75-0cf6-4564-ae62-ea1246b4e5f2
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 08/26/2021
+ms.date: 09/24/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 305f7b964bfd084bf1fa245d436c431cde1b9104
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 2ac0c2795f5af31cec40d03ec1889f333441ae25
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123110330"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129054815"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Azure を使用して SAP ワークロード シナリオをホストして実行する
 
@@ -80,6 +80,9 @@ SAP アプリケーション レイヤーと DBMS の高可用性に関する詳
 このセクションでは、SAP データ ソースへの Microsoft Power BI の統合と、SAP BW への Azure Data Factory の統合に関するドキュメントを紹介します。
 
 ## <a name="change-log"></a>変更履歴
+- 2021 年 9 月 24 日: [SLES 上の Azure VM での Pacemaker を使用した SAP HANA スケールアウト HSR](./sap-hana-high-availability-scale-out-hsr-suse.md)、[RHEL で ANF を使用した SAP HANA スケールアップの HA](./sap-hana-high-availability-netapp-files-red-hat.md)、および [RHEL 上の Azure VM での Pacemaker を使用した SAP HANA スケールアウト HSR](./sap-hana-high-availability-scale-out-hsr-rhel.md) に関する記事を変更し、sudoers ファイルの作成手順を調整 (HANA srHook 用)
+- 2021 年 9 月 15 日: 「[SAP ワークロードのための SAP ASE Azure Virtual Machines DBMS のデプロイ](./dbms_guide_sapase.md)」に SAP ASE の新しい HADR 構成を導入
+- 2021 年 9 月 08 日: 「[SAP HANA 用 Azure NetApp Files 上の NFS v4.1 ボリューム](./hana-vm-operations-netapp.md)」に手動の QoS 容量プールを追加
 - 2021 年 8 月 26 日: Azure Fence Agent 用のロール定義 JSON を修正するために、[Azure の RHEL での Pacemaker のセットアップ](./high-availability-guide-rhel-pacemaker.md)、および [Azure の SLES での Pacemaker のセットアップ](./high-availability-guide-suse-pacemaker.md)に関するページを変更
 - 2021 年 8 月 17 日: ANF でホストされる NFS ボリュームを使用した IBM Db2 のサポートを導入するために、「[SAP ワークロードのための IBM Db2 Azure Virtual Machines DBMS のデプロイ](./dbms_guide_ibm.md)」、「[SAP ワークロードの Azure Storage の種類](./planning-guide-storage.md)」、「[Azure 仮想マシンの SAP ワークロードでサポートされるシナリオ](./sap-planning-supported-configurations.md)」の各ページを変更
 - 2021 年 8 月 2 日: エンキュー サーバーの障害をシミュレートするテスト シナリオの動作 (ENSA1/ENSA2) を明確にするために、[SAP アプリケーション用の SLES 上の Azure VM での SAP NW の高可用性](./high-availability-guide-suse.md)、[ANF を使用した SLES 上の Azure VM での SAP NW の高可用性](./high-availability-guide-suse-netapp-files.md)、[SAP アプリケーション用の RHEL 上の Azure VM での SAP NW の高可用性](./high-availability-guide-rhel.md)、[ANF を使用した RHEL 上の Azure VM での SAP NW の高可用性](./high-availability-guide-rhel-netapp-files.md)に関するページを変更     

@@ -2,13 +2,13 @@
 title: Azure Service Bus 名前空間の移行 - Standard から Premium
 description: 既存の Azure Service Bus Standard 名前空間を Premium に移行するためのガイドです
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 1ed09a077f086390c658e6650171c552b361008d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/20/2021
+ms.openlocfilehash: eea34edddf641e3ee1c07bea92b20364e7aeaf34
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85340750"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128602136"
 ---
 # <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>既存の Azure Service Bus Standard 名前空間を Premium レベルに移行する
 
@@ -90,30 +90,38 @@ Azure CLI または PowerShell ツールを使用して Service Bus の Standard
 Azure portal を使用した移行の論理フローは、コマンドを使用した移行と同じです。 Azure portal を使用して移行するには、次の手順に従います。
 
 1. 左側のウィンドウの **[ナビゲーション]** メニューで、 **[Premium へ移行]** を選択します。 **[作業を開始する]** ボタンをクリックして、次のページに進みます。
-    ![移行のランディング ページ][]
+    :::image type="content" source="./media/service-bus-standard-premium-migration/migrate-premium-page.png" alt-text="[Premium へ移行] ページを示す画像。":::
+1. 次の **[名前空間の設定]** ページが表示されます。
 
-1. **[セットアップ]** を完了します。
-   ![名前空間をセットアップする][]
-   1. 既存の Standard 名前空間を移行する Premium 名前空間を作成して割り当てます。
-        ![名前空間のセットアップ - Premium 名前空間を作成する][]
-   1. **[移行後の名前]** を選択します。 この名前は、移行が完了した後で Standard 名前空間にアクセスするために使用します。
-        ![名前空間のセットアップ - 移行後の名前を選択する][]
-   1. **[次へ]** を選択して続行します。
-1. Standard 名前空間と Premium 名前空間の間でエンティティを同期します。
-    ![名前空間のセットアップ - エンティティを同期する - 開始][]
+    :::image type="content" source="./media/service-bus-standard-premium-migration/setup-namespaces-page.png" alt-text="[名前空間の設定] ページを示す画像。":::
+1. **[名前空間の設定]** ページで、次のいずれかの手順のようにします。 
+    1. **[新しい Premium 名前空間を作成する]** を選択した場合:
+        1. **[名前空間の作成]** ページで、名前空間の名前を入力して、 **[確認および作成]** を選択します。
+        1. **[確認および作成]** ページで、 **[作成]** を選択します。
 
-   1. **[同期の開始]** を選択して、エンティティの同期を開始します。
-   1. ダイアログ ボックス内の **[はい]** を選択して同期を確認し、開始します。
-   1. 同期が完了するまで待ちます。 ステータス バーで状態を見ることができます。
-        ![名前空間のセットアップ - エンティティを同期する - 進行][]
-        >[!IMPORTANT]
-        > 何らかの理由で移行を中止する必要がある場合は、このドキュメントの FAQ セクションにある中止のフローを確認してください。
-   1. 同期が完了したら、ページ下部にある **[次へ]** を選択します。
+            :::image type="content" source="./media/service-bus-standard-premium-migration/create-premium-namespace.png" alt-text="[名前空間の作成] ページを示す画像。":::
+    1. **[既存の空の Premium 名前空間を選択します]** を選択した場合:
+        1. その名前空間を使用している Azure サブスクリプションとリソース グループを選択します。
+        1. 次に、Premium 名前空間を選択します。
+        1. **[選択]** をクリックします。
+        
+            :::image type="content" source="./media/service-bus-standard-premium-migration/select-existing-namespace.png" alt-text="既存の Premium 名前空間の選択を示す画像。":::
+1. **[移行後の名前]** を入力してから、 **[次へ]** を選択します。 この名前は、移行が完了した後で Standard 名前空間にアクセスするために使用します。
 
-1. 概要ページで変更を確認します。 **[移行の完了]** を選択して名前空間を切り替え、移行を完了します。
-    ![名前空間を切り替える - スイッチ メニュー][]  
-    移行が完了すると、確認ページが表示されます。
-    ![名前空間を切り替える - 成功][]
+    :::image type="content" source="./media/service-bus-standard-premium-migration/enter-post-migration-name.png" alt-text="Standard 名前空間の移行後の名前を示す画像。":::
+1. **[同期の開始]** を選択し、Standard と Premium の名前空間の間でエンティティを同期します。
+
+    :::image type="content" source="./media/service-bus-standard-premium-migration/start-sync-button.png" alt-text="[同期の開始] ボタンを示す画像。":::
+1. ダイアログ ボックス内の **[はい]** を選択し、同期を確認して開始します。同期が完了するまで待ちます。 **[次へ]** を選択します。
+
+    >[!IMPORTANT]
+    > 何らかの理由で移行を中止する必要がある場合は、このドキュメントの FAQ セクションにある中止のフローを確認してください。    
+1. **[切り替え]** ページで **[移行の完了]** を選択します。 
+
+    :::image type="content" source="./media/service-bus-standard-premium-migration/complete-migration.png" alt-text="移行ウィザードの **[切り替え]** ページを示す画像。":::
+1. **[はい]** を選択して、Standard 名前空間から Premium への切り替えを確認します。 切り替えが完了すると、Standard 名前空間の DNS 名が Premium 名前空間を指すようになります。 この操作は元に戻すことができません。 移行が完了すると、 **[成功]** ページが表示されます。
+
+    :::image type="content" source="./media/service-bus-standard-premium-migration/success-page.png" alt-text="[成功] ページを示す画像。":::
 
 ## <a name="caveats"></a>注意事項
 
@@ -178,8 +186,13 @@ az servicebus migration abort --resource-group $resourceGroup --name $standardNa
 
 #### <a name="azure-portal"></a>Azure portal
 
-![フローを中止する - 同期を中止][]
-![フローを中止する - 中止完了][]
+**[エンティティの同期]** ページで **[中止]** を選択します。 
+
+:::image type="content" source="./media/service-bus-standard-premium-migration/abort1.png" alt-text="[中止] ページを示す画像。":::
+
+完了すると、次のページが表示されます。 
+
+:::image type="content" source="./media/service-bus-standard-premium-migration/abort3.png" alt-text="中止完了ページを示す画像。":::
 
 移行プロセスを中止すると、Standard 名前空間から Premium 名前空間にエンティティ (トピック、サブスクリプション、フィルター) をコピーするプロセスが中止され、ペアリングが解除されます。
 
@@ -213,14 +226,3 @@ az servicebus migration abort --resource-group $resourceGroup --name $standardNa
 * [Standard と Premium のメッセージングの違い](./service-bus-premium-messaging.md)についてさらに詳しく学習してください。
 * [Service Bus Premium の高可用性と geo ディザスター リカバリーの側面](service-bus-outages-disasters.md#protecting-against-outages-and-disasters---service-bus-premium)について学びます。
 
-[移行のランディング ページ]: ./media/service-bus-standard-premium-migration/1.png
-[名前空間をセットアップする]: ./media/service-bus-standard-premium-migration/2.png
-[名前空間のセットアップ - Premium 名前空間を作成する]: ./media/service-bus-standard-premium-migration/3.png
-[名前空間のセットアップ - 移行後の名前を選択する]: ./media/service-bus-standard-premium-migration/4.png
-[名前空間のセットアップ - エンティティを同期する - 開始]: ./media/service-bus-standard-premium-migration/5.png
-[名前空間のセットアップ - エンティティを同期する - 進行]: ./media/service-bus-standard-premium-migration/8.png
-[名前空間を切り替える - スイッチ メニュー]: ./media/service-bus-standard-premium-migration/9.png
-[名前空間を切り替える - 成功]: ./media/service-bus-standard-premium-migration/12.png
-
-[フローを中止する - 同期を中止]: ./media/service-bus-standard-premium-migration/abort1.png
-[フローを中止する - 中止完了]: ./media/service-bus-standard-premium-migration/abort3.png

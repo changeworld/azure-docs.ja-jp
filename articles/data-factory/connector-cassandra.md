@@ -1,29 +1,29 @@
 ---
-title: Azure Data Factory を使用して Cassandra からデータをコピーする
+title: Cassandra からデータをコピーする
+description: Azure Data Factory または Synapse Analytics パイプラインでコピー アクティビティを使用して、Cassandra からサポートされているシンク データ ストアへデータをコピーする方法について説明します。
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Cassandra からサポートされているシンク データ ストアへデータをコピーする方法について説明します。
 author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/30/2021
+ms.date: 09/09/2021
 ms.author: jianleishen
-ms.openlocfilehash: 062aa5a27c0d080cebeb644deed4b42dbcf67e00
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 6979f8224513b3a2db5468cb18e8d5fb2f6d6bbc
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123313865"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124811942"
 ---
-# <a name="copy-data-from-cassandra-using-azure-data-factory"></a>Azure Data Factory を使用して Cassandra からデータをコピーする
+# <a name="copy-data-from-cassandra-using-azure-data-factory-or-synapse-analytics"></a>Azure Data Factory または Synapse Analytics を使用して Cassandra からデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-onprem-cassandra-connector.md)
 > * [現在のバージョン](connector-cassandra.md)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-この記事では、Azure Data Factory のコピー アクティビティを使用して、Cassandra データベースからデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
+この記事では、Azure Data Factory または Synapse Analytics パイプラインでコピー アクティビティを使用して、Cassandra データベースからデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -60,7 +60,7 @@ Cassandra データベースから、サポートされている任意のシン�
 
     # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
 
-    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI を使用した新しいリンク サービスの作成を示すスクリーンショット。":::
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI で新しいリンク サービスを作成するスクリーンショット。":::
 
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
@@ -90,7 +90,7 @@ Cassandra のリンクされたサービスでは、次のプロパティがサ�
 | port |Cassandra サーバーがクライアント接続のリッスンに使用する TCP ポート。 |いいえ (既定値は 9042) |
 | authenticationType | Cassandra データベースへの接続に使用される認証の種類です。<br/>使用できる値は、以下のとおりです。**Basic**、**Anonymous**。 |はい |
 | username |ユーザー アカウントのユーザー名を指定します。 |はい (authenticationType が Basic に設定されている場合)。 |
-| password |ユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |はい (authenticationType が Basic に設定されている場合)。 |
+| password |ユーザー アカウントのパスワードを指定します。 このフィールドを SecureString とマークして安全に保存するか、[Azure Key Vault に保存されているシークレットを参照](store-credentials-in-key-vault.md)します。 |はい (authenticationType が Basic に設定されている場合)。 |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 詳細については、「[前提条件](#prerequisites)」セクションを参照してください。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
 
 >[!NOTE]
@@ -201,9 +201,9 @@ Cassandra からデータをコピーするには、コピー アクティビテ
 
 ## <a name="data-type-mapping-for-cassandra"></a>Cassandra のデータ型マッピング
 
-Cassandra からデータをコピーするとき、次の Cassandra のデータ型から Azure Data Factory の中間データ型へのマッピングが使用されます。 コピー アクティビティでソースのスキーマとデータ型がシンクにマッピングされるしくみについては、[スキーマとデータ型のマッピング](copy-activity-schema-and-type-mapping.md)に関する記事を参照してください。
+Cassandra からデータをコピーするとき、Cassandra のデータ型からサービス内で内部的に使用される中間データ型への、以下のマッピングが使用されます。 コピー アクティビティでソースのスキーマとデータ型がシンクにマッピングされるしくみについては、[スキーマとデータ型のマッピング](copy-activity-schema-and-type-mapping.md)に関する記事を参照してください。
 
-| Cassandra のデータ型 | Data Factory の中間データ型 |
+| Cassandra のデータ型 | 中間サービス データ型 |
 |:--- |:--- |
 | ASCII |String |
 | bigint |Int64 |
@@ -231,12 +231,12 @@ Cassandra からデータをコピーするとき、次の Cassandra のデー�
 
 ## <a name="work-with-collections-using-virtual-table"></a>仮想テーブルを使用したコレクションの取り扱い
 
-Azure Data Factory では、ビルトインの ODBC ドライバーを使用して Cassandra データベースへの接続や、Cassandra データベースからのデータのコピーを行います。 マップ、セット、およびリストを含むコレクションの種類については、ODBC ドライバーが、対応する仮想テーブルへのデータの再正規化を行います。 具体的には、テーブルにコレクション列が含まれている場合に、ドライバーが次の仮想テーブルを生成します。
+このサービスでは、組み込みの ODBC ドライバーを使用して、Cassandra データベースに接続し、そこからデータをコピーします。 マップ、セット、およびリストを含むコレクションの種類については、ODBC ドライバーが、対応する仮想テーブルへのデータの再正規化を行います。 具体的には、テーブルにコレクション列が含まれている場合に、ドライバーが次の仮想テーブルを生成します。
 
 * 実テーブルと同じデータ (コレクション列を除く) を含む **ベース テーブル**。 ベース テーブルには、それが表す実テーブルと同じ名前が使用されます。
 * 入れ子になったデータを展開する、各コレクション列の **仮想テーブル** 。 コレクションを表す仮想テーブルには、実テーブルの名前、区切り文字の "*vt*"、および列の名前を使用して名前が付けられます。
 
-仮想テーブルは、非正規化データへのドライバーのアクセスを有効にして、実テーブルのデータを参照します。 詳細については、「例」セクションを参照してください。 仮想テーブルのクエリや結合により、Cassandra コレクションの内容にアクセスできます。
+仮想テーブルが実テーブルのデータを参照することで、ドライバーは非正規化データにアクセスできるようになります。 詳細については、「例」セクションを参照してください。 仮想テーブルのクエリや結合により、Cassandra コレクションの内容にアクセスできます。
 
 ### <a name="example"></a>例
 
@@ -295,4 +295,4 @@ Azure Data Factory では、ビルトインの ODBC ドライバーを使用し�
 プロパティの詳細については、[Lookup アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。
+Copy アクティビティでソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関するセクションを参照してください。

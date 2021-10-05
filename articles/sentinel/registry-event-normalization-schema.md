@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 07/01/2021
 ms.author: bagol
-ms.openlocfilehash: 38ab651ec864060aeb3bfcfd7f89a387d604723c
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: 0e38c7171d523f8b73df1b53750710bc170e1e81
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122515134"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124781270"
 ---
 # <a name="azure-sentinel-registry-event-normalization-schema-reference-public-preview"></a>Azure Sentinel レジストリ イベント正規化スキーマ リファレンス (パブリック プレビュー)
 
@@ -67,12 +67,13 @@ Azure Sentinel は、[IFEO レジストリ キーによる永続化](https://git
 ### <a name="log-analytics-fields"></a>Log Analytics のフィールド
 
 
-次のフィールドは、各レコードごとに Log Analytics によって生成され、カスタム コネクタの作成時にオーバーライドできます。
+次のフィールドは、レコードごとに Log Analytics によって生成され、カスタム コネクタの作成時にオーバーライドできます。
 
-| フィールド         | Type     | 考察 (Discussion)      |
+| フィールド         | 型     | 考察 (Discussion)      |
 | ------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
 | <a name="timegenerated"></a>**TimeGenerated** | DATETIME | イベントがレポート デバイスによって生成された時刻。|
 | **_ResourceId**   | guid     | レポート デバイスまたはサービスの Azure リソース ID。Syslog、CEF、WEF を使用して転送されたイベントの場合はログ フォワーダー リソース ID。 |
+| **Type** | String | レコードがフェッチされた元のテーブル。 このフィールドは、同じイベントを複数のチャネルを通じて異なるテーブルで受信できるときに、同じ EventVendor 値と EventProduct 値を設定する場合に役に立ちます。<br><br>たとえば、Sysmon イベントを、イベント テーブルにも WindowsEvent テーブルにも収集できます。 |
 
 
 > [!NOTE]
@@ -84,28 +85,28 @@ Azure Sentinel は、[IFEO レジストリ キーによる永続化](https://git
 
 イベント フィールドは、すべてのスキーマに共通であり、アクティビティ自体とレポート デバイスを記述します。
 
-| フィールド               | クラス       | Type       |  説明        |
+| フィールド               | クラス       | 型       |  説明        |
 |---------------------|-------------|------------|--------------------|
-| **EventMessage**        | オプション    | String     |     レコードに含まれるか、レコードから生成された一般的なメッセージまたは説明です。   |
+| **EventMessage**        | 省略可能    | String     |     レコードに含まれるか、レコードから生成された一般的なメッセージまたは説明。   |
 | **EventCount**          | Mandatory   | Integer    |     レコードによって記述されるイベントの数。 <br><br>この値は、ソースが集計に対応しており、1 つのレコードが複数のイベントを表す場合があるときに使用されます。 <br><br>その他のソースの場合は、`1` に設定します。   |
 | **EventStartTime**      | Mandatory   | 日付/時刻  |      ソースが集計に対応しており、レコードが複数のイベントを表す場合、このフィールドでは最初にイベントが生成された時間を指定します。 <br><br>それ以外の場合、このフィールドは [TimeGenerated](#timegenerated) フィールドの別名になります。 |
 | **EventEndTime**        | Mandatory   | エイリアス      |      [TimeGenerated](#timegenerated) フィールドの別名。    |
 | **EventType**           | Mandatory   | Enumerated |    レコードによってレポートされる操作を記述します。 <br><br>レジストリ レコードの場合、次の値がサポートされます。 <br>- `RegistryKeyCreated` <br>- `RegistryKeyDeleted`<br>- `RegistryKeyRenamed` <br>- `RegistryValueDeleted` <br>- `RegistryValueSet`|
-| **EventOriginalUid**    | オプション    | String     |   元のレコードの一意の ID (ソースによって提供されている場合)。<br><br>例: `69f37748-ddcd-4331-bf0f-b137f1ea83b`|
-| **EventOriginalType**   | オプション    | String     |   ソースによって提供されている場合、元のイベントの種類または ID。<br><br>例: `4657`|
+| **EventOriginalUid**    | 省略可能    | String     |   元のレコードの一意の ID (ソースによって提供されている場合)。<br><br>例: `69f37748-ddcd-4331-bf0f-b137f1ea83b`|
+| **EventOriginalType**   | 省略可能    | String     |   ソースによって提供されている場合、元のイベントの種類または ID。<br><br>例: `4657`|
 | <a name ="eventproduct"></a>**EventProduct**        | Mandatory   | String     |             イベントを生成している製品。 <br><br>例: `Sysmon`<br><br>**注**: このフィールドはソース レコードでは使用できない場合があります。 その場合、このフィールドはパーサーによって設定される必要があります。           |
-| **EventProductVersion** | オプション    | String     | イベントを生成している製品のバージョン。 <br><br>例: `12.1`      |
+| **EventProductVersion** | 省略可能    | String     | イベントを生成している製品のバージョン。 <br><br>例: `12.1`      |
 | **EventVendor**         | Mandatory   | String     |           イベントを生成している製品のベンダー。 <br><br>例: `Microsoft`  <br><br>**注**: このフィールドはソース レコードでは使用できない場合があります。 その場合、このフィールドはパーサーによって設定される必要があります。  |
 | **EventSchemaVersion**  | Mandatory   | String     |    スキーマのバージョン。 ここに記載されているスキーマのバージョンは `0.1` です         |
-| **EventReportUrl**      | オプション    | String     | あるリソースのイベントに指定された、そのイベントに関する追加情報を提供する URL。|
+| **EventReportUrl**      | 省略可能    | String     | あるリソースのイベントに指定された、そのイベントに関する追加情報を提供する URL。|
 | **Dvc** | Mandatory       | String     |               イベントが発生したデバイスの一意の識別子。 <br><br>このフィールドの別名は、[DvcId](#dvcid)、[DvcHostname](#dvchostname)、または [DvcIpAddr](#dvcipaddr) フィールドになる場合があります。 明確なデバイスがないクラウド リソースの場合は、[EventProduct](#eventproduct) フィールドと同じ値を使用します。         |
 | <a name ="dvcipaddr"></a>**DvcIpAddr**           | 推奨 | IP アドレス |         レジストリ イベントが発生したデバイスの IP アドレス。  <br><br>例: `45.21.42.12`    |
 | <a name ="dvchostname"></a>**DvcHostname**         | 推奨 | Hostname (ホスト名)   |               レジストリ イベントが発生したデバイスのホスト名。 <br><br>例: `ContosoDc.Contoso.Azure`               |
-| <a name ="dvcid"></a>**DvcId**               | オプション    | String     |  レジストリ イベントが発生したデバイスの一意の ID。 <br><br>例: `41502da5-21b7-48ec-81c9-baeea8d7d669`   |
-| **DvcMacAddr**          | オプション    | MAC        |   レジストリ イベントが発生したデバイスの MAC。  <br><br>例: `00:1B:44:11:3A:B7`       |
-| **DvcOs**               | オプション    | String     |         レジストリ イベントが発生したデバイスで実行されているオペレーティング システム。    <br><br>例: `Windows`    |
-| **DvcOsVersion**        | オプション    | String     |   レジストリ イベントが発生したデバイスのオペレーティング システムのバージョン。 <br><br>例: `10` |
-| **AdditionalFields**    | オプション    | 動的    | ソースから保持する必要のある追加情報が提供される場合は、元のフィールド名をそのまま使用するか、動的な **AdditionalFields** フィールドを作成し、それを追加情報にキーと値のペアとして追加します。    |
+| <a name ="dvcid"></a>**DvcId**               | 省略可能    | String     |  レジストリ イベントが発生したデバイスの一意の ID。 <br><br>例: `41502da5-21b7-48ec-81c9-baeea8d7d669`   |
+| **DvcMacAddr**          | 省略可能    | MAC        |   レジストリ イベントが発生したデバイスの MAC。  <br><br>例: `00:1B:44:11:3A:B7`       |
+| **DvcOs**               | 省略可能    | String     |         レジストリ イベントが発生したデバイスで実行されているオペレーティング システム。    <br><br>例: `Windows`    |
+| **DvcOsVersion**        | 省略可能    | String     |   レジストリ イベントが発生したデバイスのオペレーティング システムのバージョン。 <br><br>例: `10` |
+| **AdditionalFields**    | 省略可能    | 動的    | ソースから保持する必要のある追加情報が提供される場合は、元のフィールド名をそのまま使用するか、動的な **AdditionalFields** フィールドを作成し、それを追加情報にキーと値のペアとして追加します。    |
 
 
 ### <a name="registry-event-specific-fields"></a>レジストリ イベント固有のフィールド
@@ -114,7 +115,7 @@ Azure Sentinel は、[IFEO レジストリ キーによる永続化](https://git
 
 詳細については、Windows ドキュメントの[レジストリの構造](/windows/win32/sysinfo/structure-of-the-registry)に関するページを参照してください。
 
-| フィールド          | クラス        | Type       | 説明   |
+| フィールド          | クラス        | 型       | 説明   |
 |---------------|--------------|------------|-----------------|
 |<a name="registrykey"></a>**RegistryKey**     |     Mandatory    |   String      |操作に関連付けられたレジストリ キー。標準のルート キーの名前付け規則に正規化されます。 詳細については、「[ルート キー](#root-keys)」を参照してください。<br><br>レジストリ キーは、ファイル システムのフォルダーに似ています。 <br><br>例: `HKEY_LOCAL_MACHINE\SOFTWARE\MTG`        |
 |**RegistryValue**     |    推奨     |  String       |操作に関連付けられたレジストリ値。 レジストリ値は、ファイル システムのファイルに似ています。 <br><br>例: `Path`        |
@@ -130,13 +131,13 @@ Azure Sentinel は、[IFEO レジストリ キーによる永続化](https://git
 | **ActorUsernameType**              | Mandatory    | Enumerated |   [ActorUsername](#actorusername) フィールドに格納されているユーザー名の種類を指定します。 詳細については、「[ユーザー エンティティ](normalization-about-schemas.md#the-user-entity)」を参照してください。 <br><br>例: `Windows`       |
 | <a name="actoruserid"></a>**ActorUserId**    | 推奨  | String     |   Actor の一意の ID。 具体的な ID は、イベントが生成されるシステムによって異なります。 詳細については、「[ユーザー エンティティ](normalization-about-schemas.md#the-user-entity)」を参照してください。  <br><br>例: `S-1-5-18`    |
 | **ActorUserIdType**| 推奨  | String     |  [ActorUserId](#actoruserid) フィールドに格納されている ID の種類。 詳細については、「[ユーザー エンティティ](normalization-about-schemas.md#the-user-entity)」を参照してください。 <br><br>例: `SID`         |
-| **ActorSessionId** | オプション     | String     |   Actor のログイン セッションの一意の ID。  <br><br>例: `999`<br><br>**注**: さまざまなシステムに対応するために、型は "*文字列*" として定義されますが、Windows ではこの値は数値である必要があります。 Windows マシンを使用しており、かつソースが別の型を送信する場合は、必ず値を変換してください。 たとえば、ソースが 16 進数の値を送信する場合は、10 進数の値に変換します。   |
-| <a name="actingprocessname"></a>**ActingProcessName**              | オプション     | String     |   実行プロセス イメージ ファイルのファイル名。 この名前は通常、プロセス名と見なされます。  <br><br>例: `C:\Windows\explorer.exe`  |
+| **ActorSessionId** | 省略可能     | String     |   Actor のログイン セッションの一意の ID。  <br><br>例: `999`<br><br>**注**: さまざまなシステムに対応するために、型は "*文字列*" として定義されますが、Windows ではこの値は数値である必要があります。 Windows マシンを使用しており、かつソースが別の型を送信する場合は、必ず値を変換してください。 たとえば、ソースが 16 進数の値を送信する場合は、10 進数の値に変換します。   |
+| <a name="actingprocessname"></a>**ActingProcessName**              | 省略可能     | String     |   実行プロセス イメージ ファイルのファイル名。 この名前は通常、プロセス名と見なされます。  <br><br>例: `C:\Windows\explorer.exe`  |
 | **ActingProcessId**| Mandatory    | Integer        | 実行プロセスのプロセス ID (PID)。<br><br>例: `48610176`           <br><br>**注**: さまざまなシステムに対応するために、型は "*文字列*" として定義されますが、Windows と Linux ではこの値は数値である必要があります。 <br><br>Windows または Linux のマシンを使用しており、かつ別の型を使用した場合は、必ず値を変換してください。 たとえば、16 進数の値を使用した場合は、10 進数の値に変換します。    |
-| **ActingProcessGuid**              | オプション     | String     |  実行プロセスの生成された一意識別子 (GUID)。   <br><br> 例: `EF3BD0BD-2B74-60C5-AF5C-010000001E00`            |
-| **ParentProcessName**              | オプション     | String     |  親プロセス イメージ ファイルのファイル名。 この値は通常、プロセス名と見なされます。    <br><br>例: `C:\Windows\explorer.exe` |
+| **ActingProcessGuid**              | 省略可能     | String     |  実行プロセスの生成された一意識別子 (GUID)。   <br><br> 例: `EF3BD0BD-2B74-60C5-AF5C-010000001E00`            |
+| **ParentProcessName**              | 省略可能     | String     |  親プロセス イメージ ファイルのファイル名。 この値は通常、プロセス名と見なされます。    <br><br>例: `C:\Windows\explorer.exe` |
 | **ParentProcessId**| Mandatory    | Integer    | 親プロセスのプロセス ID (PID)。   <br><br>     例: `48610176`    |
-| **ParentProcessGuid**              | オプション     | String     |  親プロセスの生成された一意識別子 (GUID)。     <br><br> 例: `EF3BD0BD-2B74-60C5-AF5C-010000001E00` |
+| **ParentProcessGuid**              | 省略可能     | String     |  親プロセスの生成された一意識別子 (GUID)。     <br><br> 例: `EF3BD0BD-2B74-60C5-AF5C-010000001E00` |
 
 
 

@@ -4,12 +4,12 @@ description: X.509 証明書で保護された Service Fabric クラスターで
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.custom: sfrev, devx-track-azurepowershell
-ms.openlocfilehash: 2674e0e01432fdd45ae01632c69ada66222247f6
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 580831c402c8d07eead9f3b90215faa106640bfc
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114293267"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128601978"
 ---
 # <a name="certificate-management-in-service-fabric-clusters"></a>Service Fabric クラスターでの証明書管理
 
@@ -449,7 +449,7 @@ A の SAN リストは C に完全に含まれているため、A.renewal = C.th
 
 このようなインシデントを軽減するには、次の推奨事項があります。
   - 異なるコンテナー証明書の SAN を混在させないでください。各コンテナー証明書で個別の目的を果たし、サブジェクトと SAN はそれを具体的に反映するようにします
-  - SAN リストにサブジェクトの共通名を含めます (文字どおり "CN=<subject common name>")  
+  - SAN リストにサブジェクトの共通名を含めます (文字どおり `CN=<subject common name>`)  
   - 不明な場合は、KVVM 拡張機能でプロビジョニングされた証明書の更新時にリンクを無効にします 
 
 #### <a name="why-use-a-user-assigned-managed-identity-what-are-the-implications-of-using-it"></a>ユーザー割り当てマネージド ID を使用する理由と 使用する意味

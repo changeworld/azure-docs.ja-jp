@@ -6,13 +6,13 @@ ms.author: nayenama
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 04/02/2021
-ms.openlocfilehash: 6796a53ac05e8db606b29447a8792fa509c03d7e
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.date: 09/27/2021
+ms.openlocfilehash: dfb522e5231072e427c14dfe1c8c16889dd3ff9e
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106284093"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129214183"
 ---
 # <a name="how-to-create-import-and-export-glossary-terms"></a>用語集の用語を作成、インポート、エクスポートする方法
 
@@ -22,7 +22,9 @@ ms.locfileid: "106284093"
 
 用語集の新しい用語を作成するには、次の手順を実行します。
 
-1. ホーム ページの左側のナビゲーションにある用語集アイコンを選択して、用語一覧のページに移動します。
+1. ホーム ページの左側のナビゲーションで **[データ カタログ]** を選択し、ページの中央にある **[用語集の管理]** ボタンを選択します。
+
+    :::image type="content" source="media/how-to-create-import-export-glossary/find-glossary.png" alt-text="用語集が強調表示されているデータ カタログのスクリーンショット。" border="true":::
 
 2. **[用語集の用語]** ページで、 **[+ 新しい用語]** を選択します。 **[システムの既定値]** テンプレートが選択された状態でページが開きます。 用語集の用語の作成に使用するテンプレートを選択し、 **[続行]** を選択します。
 

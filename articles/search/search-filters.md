@@ -7,20 +7,20 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/02/2021
+ms.date: 09/28/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ba538f4753c2365406bd88286b6d54cff1a9e9ea
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f2356235bf70a5fdd3e284c26d421e16ca94fb59
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104800824"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129208497"
 ---
 # <a name="filters-in-azure-cognitive-search"></a>Azure Cognitive Search のフィルター 
 
 "*フィルター*" により、クエリに使用するドキュメントを選択するための、値に基づく条件が提供されます。 フィルターとして指定できるのは、単一の値または OData [フィルター式](search-query-odata-filter.md)です。 フルテキスト検索とは異なり、フィルター値または式では厳密な一致のみが返されます。
 
-[ファセット ナビゲーション](search-filters-facets.md)などの一部の検索エクスペリエンスは実装の一部としてフィルターに依存していますが、クエリのスコープを特定の値に限定する必要がある場合には、いつでもフィルターを使用できます。 一方、クエリを特定のフィールドに限定することが目的である場合には、以下で説明する別の方法があります。
+[ファセット ナビゲーション](search-faceted-navigation.md)などの一部の検索エクスペリエンスは実装の一部としてフィルターに依存していますが、クエリのスコープを特定の値に限定する必要がある場合には、いつでもフィルターを使用できます。 一方、クエリを特定のフィールドに限定することが目的である場合には、以下で説明する別の方法があります。
 
 ## <a name="when-to-use-a-filter"></a>フィルターを使用する場合
 
@@ -88,13 +88,13 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
     var results = searchIndexClient.Documents.Search("*", parameters);
 ```
 
-## <a name="filter-usage-patterns"></a>フィルターの使用パターン
+## <a name="filter-patterns"></a>フィルター パターン
 
 以下に、フィルター シナリオの使用パターン例をいくつか紹介します。 その他のアイデアについては、[「OData expression syntax」(OData 式の構文) > 「Examples」(例)](./search-query-odata-filter.md#examples) を参照してください。
 
 + クエリ文字列がないスタンドアロンの **$filter**。関係があるドキュメントをフィルター式で完全に修飾できる場合に役立ちます。 クエリ文字列がない場合、字句または言語の分析、スコア付け、優先度付けはありません。 検索文字列がアスタリスクのみであることに注意してください。これは、"すべてのドキュメントを照合する" ことを意味しています。
 
-  ```http
+  ```json
   {
     "search": "*",
     "filter": "Rooms/any(room: room/BaseRate ge 60 and room/BaseRate lt 300) and Address/City eq 'Honolulu"
@@ -103,7 +103,7 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
 
 + クエリ文字列と **$filter** の組み合わせ。フィルターによってサブセットが作成され、クエリ文字列は、フィルターされたサブセットに対するフルテキスト検索に用語入力を提供します。 用語 (walking distance theaters) を追加することにより、結果に検索スコアが導入され、用語に最も一致するドキュメントが上位にランク付けされます。 フィルターとクエリ文字列の併用は、最も一般的な使用パターンです。
 
-  ```http
+  ```json
   {
     "search": "walking distance theaters",
     "filter": "Rooms/any(room: room/BaseRate ge 60 and room/BaseRate lt 300) and Address/City eq 'Seattle'"
@@ -111,32 +111,27 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
 
 + Compound queries, separated by "or", each with its own filter criteria (for example, 'beagles' in 'dog' or 'siamese' in 'cat'). Expressions combined with `or` are evaluated individually, with the union of documents matching each expression sent back in the response. This usage pattern is achieved through the `search.ismatchscoring` function. You can also use the non-scoring version, `search.ismatch`.
 
-   ```
-   # <a name="match-on-hostels-rated-higher-than-4-or-5-star-motels"></a>4 つ星より上のホステルか、5 つ星のモーテルに一致します。
+   ```http
+   # Match on hostels rated higher than 4 OR 5-star motels.
    $filter=search.ismatchscoring('hostel') and Rating ge 4 or search.ismatchscoring('motel') and Rating eq 5
 
-   # <a name="match-on-luxury-or-high-end-in-the-description-field-or-on-category-exactly-equal-to-luxury"></a>description フィールド内に 'luxury' または 'high-end' が含まれているか、カテゴリが 'Luxury' とまったく同一の場合に一致します。
+   # Match on 'luxury' or 'high-end' in the description field OR on category exactly equal to 'Luxury'.
    $filter=search.ismatchscoring('luxury | high-end', 'Description') or Category eq 'Luxury'&$count=true
    ```
 
-  It is also possible to combine full-text search via `search.ismatchscoring` with filters using `and` instead of `or`, but this is functionally equivalent to using the `search` and `$filter` parameters in a search request. For example, the following two queries produce the same result:
+  `or` の代わりに `and` を指定して、`search.ismatchscoring` によるフルテキスト検索とフィルターを結合することもできますが、これは検索要求で `search` パラメーターと `$filter` パラメーターを使用することと機能的に同じです。 たとえば、次の 2 つのクエリでは同じ結果が生成されます。
 
-  ```
+  ```http
   $filter=search.ismatchscoring('pool') and Rating ge 4
 
   search=pool&$filter=Rating ge 4
   ```
 
-Follow up with these articles for comprehensive guidance on specific use cases:
+## <a name="field-requirements-for-filtering"></a>フィルターのフィールド要件
 
-+ [Facet filters](search-filters-facets.md)
-+ [Security trimming](search-security-trimming-for-azure-search.md) 
+REST API では、フィルター可能の設定は単純型フィールドの場合は既定で "*オン*" です。 フィルター可能なフィールドはインデックス サイズが大きくなります。実際にフィルターで使用する予定がないフィールドの場合は、`"filterable": false` を設定してください。 フィールド定義の設定の詳細については、「[Create Index](/rest/api/searchservice/create-index)」(インデックスの作成) を参照してください。
 
-## Field requirements for filtering
-
-In the REST API, filterable is *on* by default for simple fields. Filterable fields increase index size; be sure to set `"filterable": false` for fields that you don't plan to actually use in a filter. For more information about settings for field definitions, see [Create Index](/rest/api/searchservice/create-index).
-
-In the .NET SDK, the filterable is *off* by default. You can make a field filterable by setting the [IsFilterable property](/dotnet/api/azure.search.documents.indexes.models.searchfield.isfilterable) of the corresponding [SearchField](/dotnet/api/azure.search.documents.indexes.models.searchfield) object to `true`. In the example below, the attribute is set on the `BaseRate` property of a model class that maps to the index definition.
+.NET SDK では、フィルター可能の設定は既定で *オフ* です。 対応する [SearchField](/dotnet/api/azure.search.documents.indexes.models.searchfield) オブジェクトの [IsFilterable プロパティ](/dotnet/api/azure.search.documents.indexes.models.searchfield.isfilterable) を `true` に設定することで、フィールドをフィルター可能にすることができます。 次の例では、属性は、インデックス定義にマップされるモデル クラスの `BaseRate` プロパティで設定されています。
 
 ```csharp
 [IsFilterable, IsSortable, IsFacetable]

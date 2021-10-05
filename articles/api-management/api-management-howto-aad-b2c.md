@@ -3,37 +3,37 @@ title: Azure Active Directory B2C を使用して開発者アカウントを承�
 titleSuffix: Azure API Management
 description: Azure Active Directory B2C を使用して、Azure API Management の開発者ポータルのユーザーを認可する方法を説明します
 services: api-management
-author: miaojiang
+author: dlepow
 ms.service: api-management
 ms.topic: how-to
-ms.date: 07/07/2021
-ms.author: apimpm
-ms.openlocfilehash: 6385f87eec00820d535845df21a44965e1708a55
-ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
+ms.date: 09/28/2021
+ms.author: danlep
+ms.openlocfilehash: 900692d5f38e0ed1796a3cac213407a3bec29660
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113568157"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129212914"
 ---
 # <a name="how-to-authorize-developer-accounts-by-using-azure-active-directory-b2c-in-azure-api-management"></a>Azure API Management で Azure Active Directory B2C を使用して開発者アカウントを承認する方法
 
 
 Azure Active Directory B2C は、コンシューマー向け Web アプリケーションおよびモバイル アプリケーション用のクラウド ID 管理ソリューションです。 これを使用して API Management 開発者ポータルへのアクセスを管理できます。 
 
-このガイドでは、Azure Active Directory B2C との統合のために API Management サービスで必要な構成について説明します。 非推奨のレガシ開発者ポータルを使用している場合は、この記事で説明するとおり、手順の一部が異なります。
+このチュートリアルでは、Azure Active Directory B2C との統合のために API Management サービスで必要な構成について説明します。 この記事で後述するように、非推奨のレガシ開発者ポータルを使用している場合は、手順の一部が異なります。
 
 従来の Azure Active Directory を使用して開発者ポータルへのアクセスを有効にする方法については、[Azure Active Directory を使用して開発者アカウントを承認する方法](api-management-howto-aad.md)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 * アプリケーションを作成する Azure Active Directory B2C テナント。 詳細については、[Azure Active Directory B2C の概要](../active-directory-b2c/overview.md)に関する記事をご覧ください。
-* API Management サービスがまだない場合は、[Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関するクイックスタートの手順を完了します。
+* API Management インスタンス。 お持ちでない場合は、[Azure API Management インスタンスを作成](get-started-create-service-instance.md)します。
 
 [!INCLUDE [premium-dev-standard.md](../../includes/api-management-availability-premium-dev-standard.md)]
 
 ## <a name="configure-sign-up-and-sign-in-user-flow"></a>サインアップとサインインのユーザー フローを設定する
 
-このセクションでは、サインアップとサインイン ポリシーの両方が存在する Azure Active Directory B2C コンテナーで、ユーザー フローを作成します。 詳しい手順は、[Azure Active Directory B2C でユーザー フローとカスタム ポリシーを作成する方法](../active-directory-b2c/tutorial-create-user-flows.md?pivots=b2c-us)に関する記事をご覧ください。
+このセクションでは、サインアップとサインイン ポリシーの両方が存在する Azure Active Directory B2C テナント内で、ユーザー フローを作成します。 詳しい手順は、[Azure Active Directory B2C でユーザー フローとカスタム ポリシーを作成する方法](../active-directory-b2c/tutorial-create-user-flows.md?pivots=b2c-us)に関する記事をご覧ください。
 
 1. [Azure portal](https://portal.azure.com) で、Azure Active Directory B2C テナントにアクセスします。
 1. **[Policies]\(ポリシー\)** で **[User flows]\(ユーザー フロー\)**  >  **[+ New user flow]\(+ 新しいユーザー フロー\)** を順にクリックします。
@@ -76,11 +76,11 @@ Azure Active Directory B2C は、コンシューマー向け Web アプリケー
    * キーを安全な場所に記録します。 このページからの移動後は、このシークレットの値は "二度と表示されません"。
 1. API Management の **[Add identity provider]\(ID プロバイダーの追加\)** ページに戻り、 **[Client secret]\(クライアント シークレット\)** の入力欄にキーを貼り付けます。
 1. 登録した B2C アプリの画面に戻ります。 左側のメニューの **[管理]** セクションで、 **[認証]** を選択します。
-    * **[Implicit grant]\(暗黙的な許可\)** で **[Access tokens]\(アクセス トークン\)** のチェック ボックスに印を入れます。
+    * **[Implicit grant and hybrid flows]\(暗黙的な許可およびハイブリッド フロー\)** で、 **[アクセス トークン]** と **[ID トークン]** の両方のチェック ボックスをオンにします。
     * **[保存]** を選択します。
 1. API Management の **[Add identity provider]\(ID プロバイダーの追加\)** ページに戻ります。
     * **[Signin tenant]\(テナントへのサインイン\)** で、Azure Active Directory B2C テナントのドメイン名を指定します。
-    * **[Authority]\(拠点\)** フィールドでは、使用する Azure AD B2C ログイン URL を指定できます。 値を **< your_b2c_tenant_name >. b2clogin.com** に設定します。
+    * **[Authority]\(拠点\)** フィールドでは、使用する Azure Active Directory B2C ログイン URL を指定できます。 値を **< your_b2c_tenant_name >. b2clogin.com** に設定します。
     * B2C テナント ポリシーの **Signup Policy (サインアップ ポリシー)** と **Signin Policy (サインイン ポリシー)** を対応する欄に入力します。
     * **Profile Editing Policy (プロファイル編集ポリシー)** と **Password Reset Policy (パスワード リセット ポリシー)** も、必要ならば指定します。
 
@@ -89,12 +89,12 @@ Azure Active Directory B2C は、コンシューマー向け Web アプリケー
 
 変更が保存されると、開発者は新しいアカウントを作成し、Azure Active Directory B2C を使用して開発者ポータルにサインインできるようになります。
 
-## <a name="developer-portal---add-azure-ad-b2c-account-authentication"></a>開発者ポータル - Azure AD B2C アカウント認証の追加
+## <a name="developer-portal---add-azure-active-directory-b2c-account-authentication"></a>開発者ポータル - Azure Active Directory B2C アカウント認証の追加
 
 > [!IMPORTANT]
 > Azure Active Directory B2C の構成設定を作成したとき、または変更を有効にするためにこれを更新したときは、[開発者ポータルを再公開する](api-management-howto-developer-portal-customize.md#publish)必要があります。
 
-開発者ポータルでは、**Sign-in button: OAuth (サインイン ボタン: OAuth)** ウィジェットにより、Azure AD B2C を利用したサインインができます。 このウィジェットは、既定の開発者ポータル コンテンツのサインイン ページに既に含まれています。
+開発者ポータルでは、**Sign-in button: OAuth (サインイン ボタン: OAuth)** ウィジェットにより、Azure Active Directory B2C を利用したサインインができます。 このウィジェットは、既定の開発者ポータル コンテンツのサインイン ページに既に含まれています。
 
 1. Azure Active Directory B2C を使用してサインインするには、 新しいブラウザー ウィンドウを開いて開発者ポータルに移動します。 **[サインイン]** をクリックします。
 
@@ -107,22 +107,26 @@ Azure Active Directory B2C は、コンシューマー向け Web アプリケー
 
 :::image type="content" source="media/api-management-howto-aad-b2c/developer-portal-home.png" alt-text="開発者ポータルへのサインインを完了する":::
 
-新しいユーザーが Azure AD B2C を使用してサインインするたびに新しいアカウントが自動的に作成される仕組みになってはいますが、同じウィジェットをサインアップ ページに追加することもできます。
+新しいユーザーが Azure Active Directory B2C を使用してサインインするたびに新しいアカウントが自動的に作成される仕組みになってはいますが、同じウィジェットをサインアップ ページに追加することも検討できます。
 
 **サインアップ フォーム:OAuth** ウィジェットでは、OAuth によるサインアップに使用されるフォームが示されます。
 
-## <a name="legacy-developer-portal---how-to-sign-up-with-azure-ad-b2c"></a>従来の開発者ポータル - Azure AD B2C を使用してサインアップする方法
+## <a name="legacy-developer-portal---how-to-sign-up-with-azure-active-directory-b2c"></a>従来の開発者ポータル - Azure Active Directory B2C を使用してサインアップする方法
 
 [!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
-1. Azure AD B2C を使用して開発者アカウントのサインアップを行うには、新しいブラウザー ウィンドウを開いてレガシ開発ポータルに移動します。 **[サインアップ]** ボタンをクリックします。
+> [!NOTE]
+> B2C をレガシ開発者ポータルと適切に統合するには、Azure Active Directory B2C を使用して開発者アカウントにサインアップまたはサインインする前の [パスワードのリセット](/active-directory-b2c/user-flow-self-service-password-reset.md)の有効化と組み合わせて **standard v1** のユーザー フローを使用します。 
+
+1. 新しいブラウザー ウィンドウを開き、レガシ開発者ポータルにアクセスします。 **[サインアップ]** ボタンをクリックします。
 
     :::image type="content" source="media/api-management-howto-aad-b2c/b2c-dev-portal.png" alt-text="レガシ開発者ポータルにサインアップする":::
+
 1. **Azure Active Directory B2C** によるサインアップを選択します。
 
     :::image type="content" source="media/api-management-howto-aad-b2c/b2c-dev-portal-b2c-button.png" alt-text="Azure Active Directory B2C でサインアップする":::
 
-3. 前のセクションで構成したサインアップ ポリシーにリダイレクトされます。 サインアップの方法として、電子メール アドレスか既存のソーシャル アカウントを選択します。
+1. 前のセクションで構成したサインアップ ポリシーにリダイレクトされます。 サインアップの方法として、電子メール アドレスか既存のソーシャル アカウントを選択します。
 
    > [!NOTE]
    > 発行者ポータルの **[ID]** タブで有効になっているオプションが Azure Active Directory B2C のみの場合は、サインアップ ポリシーに直接リダイレクトされます。
@@ -130,6 +134,8 @@ Azure Active Directory B2C は、コンシューマー向け Web アプリケー
    :::image type="content" source="media/api-management-howto-aad-b2c/b2c-dev-portal-b2c-options.png" alt-text="レガシ開発者ポータルのサインアップ オプション":::
 
    サインアップが完了すると、開発者ポータルにリダイレクトされます。 これで、API Management サービス インスタンスの開発者ポータルにサインインしました。
+
+
 
 ## <a name="next-steps"></a>次のステップ
 

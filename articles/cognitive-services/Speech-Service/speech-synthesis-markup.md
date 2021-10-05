@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: pafarley
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: d310b56bf0851c5ef33a05421c731279fedbabbe
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: a43758b1c20b3983b4b2c0920481549ddccb0328
+ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123544008"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128708854"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>音声合成マークアップ言語 (SSML) を使用して合成を改善する
 
 音声合成マークアップ言語 (SSML) は、XML ベースのマークアップ言語であり、これにより、開発者はテキスト読み上げサービスを使用して、入力テキストを合成音声に変換する方法を指定することができます。 プレーンテキストと比較して、SSML では、開発者が音声合成出力のピッチ、読み方、読み上げ速度、音量などを微調整できます。 通常の句読点は、ピリオドの後の一時停止、または文が疑問符で終わるときの正しいイントネーションの使用など、自動的に処理されます。
 
-SSML の Speech Service の実装は、World Wide Web コンソーシアムの[音声合成マークアップ言語バージョン 1.0](https://www.w3.org/TR/speech-synthesis) に基づいています。
+SSML の Speech Service の実装は、World Wide Web コンソーシアムの[音声合成マークアップ言語バージョン 1.0](https://www.w3.org/TR/2004/REC-speech-synthesis-20040907/) に基づいています。
 
 > [!IMPORTANT]
 > 中国語、日本語、韓国語の文字は、2 文字としてカウントされ課金されます。 詳細については、[価格](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)に関するページをご覧ください。
@@ -127,6 +127,8 @@ SSML の各ドキュメントは、SSML 要素 (またはタグ) を使用して
 * `en-US-AriaNeural`
 * `en-US-JennyNeural`
 * `en-US-GuyNeural`
+* `en-US-SaraNeural`
+* `ja-JP-NanamiNeural`
 * `pt-BR-FranciscaNeural`
 * `zh-CN-XiaoxiaoNeural`
 * `zh-CN-YunyangNeural`
@@ -136,6 +138,7 @@ SSML の各ドキュメントは、SSML 要素 (またはタグ) を使用して
 * `zh-CN-XiaomoNeural`
 * `zh-CN-XiaoxuanNeural`
 * `zh-CN-XiaoruiNeural`
+* `zh-CN-XiaoshuangNeural`
 
 ユースケースに合わせて話し方の強度をさらに変更できます。 `styledegree` でより強いスタイルやより柔らかいスタイルを指定して、音声の表現力を高めたり抑えたりできます。 現在、話し方の調整は、中国語 (標準、簡体字) のニューラル音声でサポートされています。
 
@@ -183,6 +186,12 @@ SSML の各ドキュメントは、SSML 要素 (またはタグ) を使用して
 |                         | `style="assistant"`       | デジタル アシスタント向けの暖かくてリラックスした語調を表します    |
 |                         | `style="newscast"`        | 一般的なニュースを配信するときの汎用的でカジュアルな語調を表します   |
 | `en-US-GuyNeural`       | `style="newscast"`        | ニュースを読み上げる改まった職業的な語調を表します |
+| `en-US-SaraNeural`      | `style="cheerful"`        | 肯定的で幸せな語調を表します    |
+|                         | `style="sad"`             | 心のこもった語調を表します   |
+|                         | `style="angry"`           | 怒ってイライラした語調を表します   |
+| `ja-JP-NanamiNeural`    | `style="cheerful"`        | 肯定的で幸せな語調を表します   |
+|                         | `style="chat"`            | カジュアルでリラックスした語調を表します   |
+|                         | `style="customerservice"` | カスタマー サポート向けのフレンドリーでわかりやすい語調を表します    |
 | `pt-BR-FranciscaNeural` | `style="calm"`            | 話すときの冷静で落ち着いた態度を表します。 他の種類の音声に比べて、語調、ピッチ、韻律がかなり均一になります。                                |
 | `zh-CN-XiaoxiaoNeural`  | `style="newscast"`        | ニュースを読み上げる改まった職業的な語調を表します |
 |                         | `style="customerservice"` | カスタマー サポート向けのフレンドリーでわかりやすい語調を表します  |
@@ -243,6 +252,7 @@ SSML の各ドキュメントは、SSML 要素 (またはタグ) を使用して
 | `zh-CN-XiaoruiNeural`   | `style="sad"`             | 高いピッチ、低い強度、低い音声エネルギーにより、悲しそうな語調を表します。 この感情の一般的な指標は、話し中のすすり泣きや号泣です。         |
 |                         | `style="angry"`           | 低いピッチ、高い強度、高い音声エネルギーにより、怒っていらだっている語調を表します。 話者は、激怒し、不機嫌で、立腹した状態にあります。       |
 |                         | `style="fearful"`         | 高いピッチ、高い音声エネルギー、速いスピードにより、おびえた神経質な語調を表します。 話者は、緊張して不安な状態にあります。                       |
+| `zh-CN-XiaoshuangNeural`   | `style="chat"` | カジュアルでリラックスした語調を表します。 |
 
 このテーブルを使用して、サポートされているロールとその定義を確認します。
 
@@ -564,6 +574,9 @@ A good place to start is by trying out the slew of educational apps that are hel
 
 `lexicon` 要素には、少なくとも 1 つの `lexeme` 要素が含まれています。 各 `lexeme` 要素には、少なくとも 1 つの `grapheme` 要素と、1 つ以上の `grapheme`、`alias`、および `phoneme` 要素が含まれています。 `grapheme` 要素には、<a href="https://www.w3.org/TR/pronunciation-lexicon/#term-Orthography" target="_blank">正書法 </a> を説明するテキストが含まれています。 `alias` 要素は、頭字語または短縮語の発音を示すために使用されます。 `phoneme` 要素には、`lexeme` の発音方法を説明するテキストを指定します。 `alias` と `phoneme` 要素が同じ `grapheme` 要素で指定されている場合、`alias` の優先順位が高くなります。
 
+> [!IMPORTANT]
+> カスタム辞書では、`lexeme` 要素は大文字と小文字が区別されます。 たとえば、`lexeme` "Hello" に対する音素のみを指定した場合、`lexeme` "hello" では機能しません。
+
 辞書には、適用されるロケールを示すために必要な `xml:lang` 属性が含まれています。 1 つのカスタム辞書は、設計上 1 つのロケールに制限されています。そのため、別のロケールに適用しても機能しません。
 
 カスタム辞書を使用して語句の発音を直接設定することはできない点に注意してください。 頭字語または短縮語の発音を設定する必要がある場合は、まず `alias` を指定し、次に `phoneme` をその `alias` に関連付けます。 次に例を示します。
@@ -578,6 +591,8 @@ A good place to start is by trying out the slew of educational apps that are hel
     <phoneme>ˈskɒtlənd.ˈmiːdiəm.weɪv</phoneme>
   </lexeme>
 ```
+> [!Note]
+> 音節境界は、国際音標文字では "." です。
 
 また、頭字語または略語に対して期待される `alias` を直接指定することもできます。 次に例を示します。
 ```xml
@@ -612,6 +627,8 @@ A good place to start is by trying out the slew of educational apps that are hel
 ```
 
 このカスタム辞書を使用すると、"BTW" は "By the way" と読まれます。 "Benigni" は、IPA の指定により、"bɛˈniːnji" と読まれます。
+
+カスタム辞書では間違いやすいため、Microsoft から[カスタム辞書用の検証ツール](https://github.com/jiajzhan/Custom-Lexicon-Validation)が提供されています。 それでは、エラーの検出に役立つ詳細なエラー メッセージが表示されます。 SSML とカスタム辞書を Speech サービスに送信する前に、このツールでカスタム辞書を確認する必要があります。 
 
 **制限事項**
 - ファイル サイズ: カスタム辞書ファイル サイズの上限は 100 KB です。このサイズを超えると、合成要求は失敗します。

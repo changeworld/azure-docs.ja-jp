@@ -1,22 +1,22 @@
 ---
 title: Amazon Simple Storage Service (S3) からデータをコピーする
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Azure Data Factory を使用して、Amazon Simple Storage Service (S3) のデータをサポートされているシンク データ ストアにコピーする方法について説明します。
+description: Azure Data Factory または Synapse Analytics パイプラインを使用して、Amazon Simple Storage Service (S3) のデータをサポートされているシンク データ ストアにコピーする方法について説明します。
 ms.author: jianleishen
 author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 08/30/2021
-ms.openlocfilehash: 16b157e9a26a1a512d4d0ef94db1816210f8cf16
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.date: 09/09/2021
+ms.openlocfilehash: baaf601ce6ab21a524cbabc7188de24231002ffd
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123304659"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124762086"
 ---
-# <a name="copy-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>Azure Data Factory を使用した Amazon Simple Storage Service からのデータのコピー
+# <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory-or-synapse-analytics"></a>Azure Data Factory または Synapse Analytics を使用して Amazon Simple Storage Service からデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択します。"]
 >
 > * [Version 1](v1/data-factory-amazon-simple-storage-service-connector.md)
@@ -24,10 +24,10 @@ ms.locfileid: "123304659"
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-この記事では、Amazon Simple Storage Service (Amazon S3) からデータをコピーする方法を概説します。 Azure Data Factory については、[入門記事で](introduction.md)をご覧ください。
+この記事では、Amazon Simple Storage Service (Amazon S3) からデータをコピーする方法を概説します。 詳細については、[Azure Data Factory](introduction.md) と [Synapse Analytics](../synapse-analytics/overview-what-is.md) の概要記事を参照してください。
 
 >[!TIP]
->Amazon S3 から Azure Storage へのデータ移行のシナリオの詳細については、「[Azure Data Factory を使用して Amazon S3 から Azure Storage にデータを移行する](data-migration-guidance-s3-azure-storage.md)」を参照してください。
+>Amazon S3 から Azure Storage へのデータ移行のシナリオの詳細については、「[Amazon S3 から Azure Storage にデータを移行する](data-migration-guidance-s3-azure-storage.md)」を参照してください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -63,7 +63,7 @@ Amazon S3 のアクセス許可の完全な一覧については、[ポリシー
 
     # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
 
-    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI を使用した新しいリンク サービスの作成を示すスクリーンショット。":::
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI で新しいリンク サービスを作成するスクリーンショット。":::
 
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
@@ -90,8 +90,8 @@ Amazon S3 のリンクされたサービスでは、次のプロパティがサ�
 | type | **type** プロパティは **AmazonS3** に設定する必要があります。 | はい |
 | authenticationType | Amazon S3 への接続に使用する認証の種類を指定します。 AWS Identity and Access Management (IAM) アカウントのアクセス キー、または[一時的なセキュリティ認証情報](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html)を使用することを選択できます。<br>使用できる値は、`AccessKey` (既定値) と `TemporarySecurityCredentials` です。 |いいえ |
 | accessKeyId | シークレット アクセス キーの ID。 |はい |
-| secretAccessKey | シークレット アクセス キー自体。 このフィールドを **SecureString** としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |はい |
-| sessionToken | [一時的なセキュリティ認証情報](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html)の認証を使用する場合に適用されます。 AWS から[一時的なセキュリティ認証情報を要求](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#api_getsessiontoken)する方法について学習します。<br>AWS の一時的な認証情報は、設定に基づいて 15 分から 36 時間で有効期限が切れることにご注意ください。 アクティビティの実行時、特に運用ワークロードの場合に、認証情報が有効であることを確認してください。たとえば、定期的に更新して Azure Key Vault に格納できます。<br>このフィールドを **SecureString** としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |いいえ |
+| secretAccessKey | シークレット アクセス キー自体。 このフィールドを **SecureString** とマークして安全に保存するか、[Azure Key Vault に保存されているシークレットを参照](store-credentials-in-key-vault.md)します。 |はい |
+| sessionToken | [一時的なセキュリティ認証情報](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html)の認証を使用する場合に適用されます。 AWS から[一時的なセキュリティ認証情報を要求](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#api_getsessiontoken)する方法について学習します。<br>AWS の一時的な認証情報は、設定に基づいて 15 分から 36 時間で有効期限が切れることにご注意ください。 アクティビティの実行時、特に運用ワークロードの場合に、認証情報が有効であることを確認してください。たとえば、定期的に更新して Azure Key Vault に格納できます。<br>このフィールドを **SecureString** とマークして安全に保存するか、[Azure Key Vault に保存されているシークレットを参照](store-credentials-in-key-vault.md)します。 |いいえ |
 | serviceUrl | カスタム S3 エンドポイント `https://<service url>` を指定します。 | いいえ |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 データ ストアがプライベート ネットワーク内にある場合、Azure Integration Runtime またはセルフホステッド統合ランタイムを使用できます。 このプロパティが指定されていない場合は、サービスでは、既定の Azure Integration Runtime が使用されます。 |いいえ |
 
@@ -274,7 +274,7 @@ Amazon S3 では、形式ベースのコピー ソースの `storeSettings` 設�
 
 次のソース フォルダー構造があり、太字のファイルをコピーするとします。
 
-| サンプルのソース構造                                      | FileListToCopy.txt のコンテンツ                             | Data Factory の構成                                            |
+| サンプルのソース構造                                      | FileListToCopy.txt のコンテンツ                             | 構成 |
 | ------------------------------------------------------------ | --------------------------------------------------------- | ------------------------------------------------------------ |
 | bucket<br/>&nbsp;&nbsp;&nbsp;&nbsp;FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Metadata<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileListToCopy.txt | File1.csv<br>Subfolder1/File3.csv<br>Subfolder1/File5.csv | **データセット内:**<br>- バケット: `bucket`<br>- フォルダー パス: `FolderA`<br><br>**コピー アクティビティ ソース内:**<br>- ファイル リストのパス: `bucket/Metadata/FileListToCopy.txt` <br><br>ファイル リストのパスは、コピーするファイルの一覧を含む同じデータ ストア内のテキスト ファイルをポイントします。データセットで構成されているパスへの相対パスで 1 行につき 1 つのファイルを指定します。 |
 
@@ -297,7 +297,7 @@ Amazon S3 から Azure Data Lake Storage Gen2 または Azure Blob ストレー�
 ## <a name="legacy-models"></a>レガシ モデル
 
 >[!NOTE]
->次のモデルは、下位互換性のために引き続きそのままサポートされます。 前述の新しいモデルを使用することをお勧めします。 Data Factory 作成 UI は、新しいモデルの生成に切り替えられました。
+>次のモデルは、下位互換性のために引き続きそのままサポートされます。 前述の新しいモデルを使用することをお勧めします。 作成 UI は、新しいモデルの生成に切り替えられました。
 
 ### <a name="legacy-dataset-model"></a>レガシ データセット モデル
 
@@ -420,4 +420,4 @@ Amazon S3 から Azure Data Lake Storage Gen2 または Azure Blob ストレー�
 ```
 
 ## <a name="next-steps"></a>次のステップ
-Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)をご覧ください。
+Copy アクティビティでソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関するページを参照してください。

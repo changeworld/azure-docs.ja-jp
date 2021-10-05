@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 10df7f8db2a787300787f8995ac0ea3a33736e68
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5b03a7c713203dd61eb95fd5422b3002939e9011
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121745052"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129208739"
 ---
 # <a name="source-control-in-synapse-studio"></a>Synapse Studio でのソース管理
 
@@ -23,6 +23,9 @@ ms.locfileid: "121745052"
 
 > [!NOTE]
 > Synapse Studio Git 統合は、Azure Government クラウドでは利用できません。
+
+## <a name="prerequisites"></a>前提条件
+ユーザーは、Synapse ワークスペースに対する Azure 共同作成者 (Azure RBAC) 以上のロールを持っている必要があります。これにより、Synapse で Git リポジトリの構成、設定編集、および切断を行うことができます。 
 
 ## <a name="configure-git-repository-in-synapse-studio"></a>Synapse Studio で Git リポジトリを構成する 
 
@@ -39,9 +42,6 @@ Synapse Studio グローバル バーで、 **[Synapse Live]\(Synapse ライブ\
 Synapse Studio の管理ハブに移動します。 **[ソース管理]** セクションで **[Git 構成]** を選択します。 接続されているリポジトリがない場合は、 **[構成]** をクリックします。
 
 ![コード リポジトリ設定を管理ハブから構成する](media/configure-repo-2.png)
-
-> [!NOTE]
-> ワークスペースの共同作業者、所有者、またはより高いレベルのロールが付与されたユーザーは、Azure Synapse Studio で Git リポジトリの構成、設定編集、および切断を行うことができます。 
 
 ワークスペースで Azure DevOps または GitHub Git リポジトリに接続できます。
 
@@ -161,9 +161,13 @@ GitHub 組織に接続するには、組織が Synapse Studio にアクセス許
 
 ### <a name="creating-feature-branches"></a>機能ブランチの作成
 
-Synapse Studio に関連付けられた各 Git リポジトリには、コラボレーション ブランチがあります (`main` や `master` は、既定のコラボレーション ブランチです)。 ユーザーは、ブランチのドロップダウンで **[+ New Branch]\(新しいブランチ\)** をクリックして機能分岐を作成することもできます。 新しいブランチのウィンドウが表示されたら、機能ブランチの名前を入力します。
+Synapse Studio に関連付けられた各 Git リポジトリには、コラボレーション ブランチがあります (`main` や `master` は、既定のコラボレーション ブランチです)。 ユーザーは、ブランチのドロップダウンで **[+ New Branch]\(新しいブランチ\)** をクリックして機能分岐を作成することもできます。 
 
-![新しいブランチを作成する](media/create-new-branch.png)
+![新しいブランチの作成](media/create-new-branch.png)
+
+新しいブランチ ペインが表示されたら、機能ブランチの名前を入力し、作業の基にするブランチを選択します。
+
+![プライベート ブランチに基づいてブランチを作成する ](media/create-branch-from-private-branch.png)
 
 機能ブランチの変更をコラボレーション ブランチにマージする準備ができたら、ブランチのドロップダウンをクリックし、 **[Create pull request]\(pull request の作成\)** を選択します。 この操作を行うと、Git プロバイダーに移動します。ここで、pull request の発行、コードのレビュー、コラボレーション ブランチへの変更のマージを行うことができます。 コラボレーション ブランチからは、Synapse サービスへの発行のみ許可されます。 
 
@@ -243,4 +247,4 @@ Synapse Studio では、一度に 1 つの発行ブランチのみ使用でき�
 
 ## <a name="next-steps"></a>次の手順
 
-* 継続的インテグレーションとデプロイを実装するには、[継続的インテグレーションと配信 (CI/CD)](continuous-integration-deployment.md) に関する記事を参照してください。
+* 継続的インテグレーションとデプロイを実装するには、[継続的インテグレーションと配信 (CI/CD)](continuous-integration-delivery.md) に関する記事を参照してください。

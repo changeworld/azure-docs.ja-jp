@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 05/22/2019
+ms.date: 09/27/2021
 ms.author: ryanwi
-ms.reviewer: lenalepa, sureshja
+ms.reviewer: sureshja
 ms.custom: aaddev
-ms.openlocfilehash: ff363550b44286cb7140f533981229565fdf795f
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: cba6644b691c6e702ee25d0302a56ca989aa88d9
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123032237"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129153876"
 ---
 # <a name="configure-terms-of-service-and-privacy-statement-for-an-app"></a>アプリのサービス利用規約とプライバシーに関する声明を構成する
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 07/26/2021
-ms.openlocfilehash: a974bf12873d46b7835d861b8c4d7007fb7e72ee
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: eb94adfa104b68f515374090cfd07f300896a163
+ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121747246"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128708816"
 ---
 # <a name="create-plans-for-a-virtual-machine-offer"></a>仮想マシン オファーに対するプランを作成する
 
@@ -218,6 +218,9 @@ VM に対して選択できるプロパティの一覧を次に示します。
 3. 第 1 世代が既に発行されている既存の VM を更新するには、この **[技術的な構成]** ページで詳細を編集します。
 
 第 1 世代と第 2 世代の機能の違いの詳細については、「[Azure での第 2 世代 VM のサポート](../virtual-machines/generation-2.md)」を参照してください。
+
+> [!NOTE]
+> お客様が引き続き利用できるようにするには、発行される世代に少なくとも 1 つのイメージ バージョンが必要です。 プラン全体を (すべての世代およびイメージと共に) 削除するには、 **[プランの概要]** ページで **[Deprecate plan]\(プランの廃止\)** を選択します (この記事の最初のセクションを参照してください)。
 
 ### <a name="vm-images"></a>VM イメージ
 

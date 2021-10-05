@@ -4,20 +4,20 @@ titleSuffix: Azure Digital Twins
 description: Azure Digital Twins インスタンスを Azure リージョン間で移動する方法について説明します。
 author: baanders
 ms.author: baanders
-ms.date: 08/26/2020
+ms.date: 9/8/2021
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.service: digital-twins
-ms.openlocfilehash: 9617fc3cc7668d8449a9ec3b46e6c82228783e9d
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 9fc28555be055fe74f183c965190b2c784c4533b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114447151"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128676791"
 ---
 # <a name="move-an-azure-digital-twins-instance-to-a-different-azure-region"></a>Azure Digital Twins インスタンスを別の Azure リージョンに移動する
 
-Azure Digital Twins インスタンスをリージョン間で移動する必要がある場合、現在のプロセスでは、新しいリージョンでリソースを再作成してから元のリソースを削除します。 このプロセスの終わりには、更新された場所を除いて最初のものと同じである新しい Azure Digital Twins インスタンスを操作することになります。
+Azure Digital Twins インスタンスをリージョン間で移動する必要がある場合、現在のプロセスでは、新しいリージョン内でリソースを再作成します。 リソースが新しいリージョン内で再作成されたら、元のリソースは削除されます。 このプロセスの終わりには、更新された場所を除いて最初のものと同じである新しい Azure Digital Twins インスタンスを操作することになります。
 
 この記事では、新しいインスタンスを元のものと一致させるために必要なすべてを完全に移動して、コピーする方法についてのガイダンスを提供します。
 
@@ -67,11 +67,11 @@ Azure Digital Twins インスタンスを再作成しようとしている場合
 
 :::image type="content" source="media/includes/azure-digital-twins-explorer-portal-access.png" alt-text="Azure Digital Twins インスタンスの [概要] ページが表示されている Azure portal のスクリーンショット。[Explorer に移動する (プレビュー)] ボタンが強調されています。" lightbox="media/includes/azure-digital-twins-explorer-portal-access.png":::
 
-これにより、このインスタンスに接続された Azure Digital Twins Explorer ウィンドウが開きます。
+このボタンを選択すると、このインスタンスに接続された Azure Digital Twins Explorer ウィンドウが開きます。
 
 :::image type="content" source="media/quickstart-azure-digital-twins-explorer/explorer-blank.png" alt-text="インターネット ブラウザーでの Azure portal のスクリーンショット。ポータルには、データが含まれていない Azure Digital Twins Explorer が表示されています。" lightbox="media/quickstart-azure-digital-twins-explorer/explorer-blank.png":::
 
-Azure Digital Twins Explorer の手順に従って、[グラフとモデルをエクスポートします](how-to-use-azure-digital-twins-explorer.md#export-graph-and-models)。 これにより、モデル、ツイン、リレーションシップ (グラフで現在使用されていないモデルを含む) のコードを含む JSON ファイルがマシンにダウンロードされます。
+Azure Digital Twins Explorer の手順に従って、[グラフとモデルをエクスポートします](how-to-use-azure-digital-twins-explorer.md#export-graph-and-models)。 これらの手順に従うことで、モデル、ツイン、リレーションシップのコードが含まれている JSON ファイルを、ご自身のマシンにダウンロードすることができます (グラフで現在使用されていないモデルを含む)。
 
 ## <a name="move"></a>詳細ビュー
 
@@ -90,11 +90,11 @@ Azure Digital Twins Explorer の手順に従って、[グラフとモデルを�
 
 #### <a name="upload-models-twins-and-graph-with-azure-digital-twins-explorer"></a>Azure Digital Twins Explorer を使用してモデル、ツイン、グラフをアップロードする
 
-このセクションでは、モデル、ツイン、グラフを新しいインスタンスに再アップロードできます。 モデル、ツイン、またはグラフが元のインスタンスにないか、それらを新しいインスタンスに移動したくない場合は、スキップして[次のセクション](#re-create-endpoints-and-routes)に進むことができます。
+このセクションでは、モデル、ツイン、グラフを新しいインスタンスに再アップロードできます。 モデル、ツイン、またはグラフが元のインスタンスにないか、それらを新しいインスタンスに移動したくない場合は、スキップして[次のセクション](#recreate-endpoints-and-routes)に進むことができます。
 
 最初に、[Azure portal](https://portal.azure.com) で新しいインスタンスの **Azure Digital Twins Explorer** に移動します。 
 
-この記事の前半で[ダウンロードした JSON ファイル](#download-models-twins-and-graph-with-azure-digital-twins-explorer)を新しいインスタンスにインポートします。Azure Digital Twins Explorer の手順に従って、[ファイルを Azure Digital Twins Explorer にインポートしてください](how-to-use-azure-digital-twins-explorer.md#import-file-to-azure-digital-twins-explorer)。 これにより、元のインスタンスからすべてのモデル、ツイン、リレーションシップが新しいインスタンスにアップロードされます。
+この記事の前半で[ダウンロードした JSON ファイル](#download-models-twins-and-graph-with-azure-digital-twins-explorer)を、ご自身の新しいインスタンスにインポートします。 それには、Azure Digital Twins Explorer の手順に従って、[ファイルを Azure Digital Twins Explorer にインポート](how-to-use-azure-digital-twins-explorer.md#import-file-to-azure-digital-twins-explorer)します。 これらの手順により、ご自身の元のインスタンスからすべてのモデル、ツイン、リレーションシップを、新しいインスタンスにアップロードできます。
 
 すべてが正常にアップロードされたことを確認するには、 **[ツイン グラフ]** タブに切り替えて戻り、 **[クエリ エクスプローラー]** パネルにある **[クエリの実行]** ボタンを選択して、すべてのツインとリレーションシップをグラフに表示する既定のクエリを実行します。 この操作を行うと、 **[モデル]** パネルのモデルの一覧も更新されます。
 
@@ -106,9 +106,9 @@ Azure Digital Twins Explorer の手順に従って、[グラフとモデルを�
 
 これらのビューで、モデル、ツイン、グラフがターゲット リージョンの新しいインスタンスに再アップロードされたことを確認できます。
 
-#### <a name="re-create-endpoints-and-routes"></a>エンドポイントとルートを再作成する
+#### <a name="recreate-endpoints-and-routes"></a>エンドポイントとルートの再作成
 
-元のインスタンスにエンドポイントまたはルートがある場合、新しいインスタンスでそれらを再作成する必要があります。 エンドポイントまたはルートが元のインスタンスにないか、それらを新しいインスタンスに移動したくない場合は、スキップして[次のセクション](#relink-connected-resources)に進むことができます。
+元のインスタンスにエンドポイントまたはルートがある場合、新しいインスタンスでそれらを再作成する必要があります。 それ以外の場合、エンドポイントまたはルートが元のインスタンスにないか、それらを新しいインスタンスに移動したくないときは、スキップして[次のセクション](#relink-connected-resources)に進むことができます。
 
 それ以外の場合、新しいインスタンスを使用して、「[エンドポイントとルートを管理する](how-to-manage-routes.md)」の手順に従います。 これらの点に留意してください。
 
@@ -133,7 +133,7 @@ Azure Digital Twins Explorer の手順に従って、[グラフとモデルを�
 * Azure Maps。
 * IoT Hub Device Provisioning Service。
 * Azure の外部の個人または会社のアプリ。たとえば、「[クライアント アプリをコーディングする](tutorial-code.md)」で作成された、インスタンスに接続し、Azure Digital Twins API を呼び出すクライアント アプリなどです。
-* Azure AD アプリ登録を再作成する必要は "*ありません*"。 [アプリ登録](./how-to-create-app-registration-portal.md)を使用して Azure Digital Twins API に接続する場合、新しいインスタンスで同じアプリ登録を再利用できます。
+* Azure AD アプリ登録は再作成する必要が "*ありません*"。 [アプリ登録](./how-to-create-app-registration-portal.md)を使用して Azure Digital Twins API に接続する場合、新しいインスタンスで同じアプリ登録を再利用できます。
 
 この手順を完了した後、ターゲット リージョンの新しいインスタンスが元のインスタンスのコピーになるはずです。
 

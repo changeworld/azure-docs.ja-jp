@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 04/24/2020
+ms.date: 09/27/2021
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
-ms.openlocfilehash: 930341b60f785c2c618be4ee235225519a08aaa6
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: f1797ce848793e8f0d129039f00bb491c09e8308
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107530062"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129153921"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Microsoft ID プラットフォーム開発者向け用語集
 
@@ -34,7 +34,7 @@ ms.locfileid: "107530062"
 * ["承認コード" 型の承認付与](#authorization-grant): エンド ユーザーはまず、リソース所有者として認証を行い、リソースにアクセスするための承認をクライアントに委任します。 その後クライアントは、アクセス トークンを取得した時点で認証を行います。 このトークンは、クライアント アプリケーションを承認したユーザーとアプリケーションの両方を表すことから、より具体的に "User+App" トークンと呼ばれることがあります。
 * ["クライアント資格情報" 型の承認付与](#authorization-grant): クライアントが行うのは単一の認証のみです。クライアントがリソース所有者の認証/承認なしで機能することから、このトークンは、"App-Only" トークンと呼ばれることがあります。
 
-詳細については、[Microsoft ID プラットフォーム トークンのリファレンス][AAD-Tokens-Claims]に関するページを参照してください。
+詳細については、[アクセス トークンのリファレンス][AAD-Tokens-Claims]を参照してください。
 
 ## <a name="application-id-client-id"></a>アプリケーション ID (クライアント ID)
 
@@ -113,7 +113,7 @@ Microsoft ID プラットフォーム アプリケーション統合の場合、
 
 [承認サーバー](#authorization-server)の[承認エンドポイント](#authorization-endpoint)から提供される [OpenID Connect][OpenIDConnect-ID-Token] [セキュリティ トークン](#security-token)。このトークンには、エンド ユーザーの[リソース所有者](#resource-owner)の認証に関連した[要求](#claim)が格納されます。 ID トークンもアクセス トークンと同様、デジタル署名された [JSON Web トークン (JWT)][JWT] として表現されます。 ただし、アクセス トークンとは異なり、ID トークンの要求は、リソース アクセス (特にアクセス制御) に関連した目的には使用されません。
 
-詳細については、[Microsoft ID プラットフォーム トークンのリファレンス][AAD-Tokens-Claims]に関するページを参照してください。
+詳細については、[ID トークンのリファレンス](id-tokens.md)を参照してください。
 
 ## <a name="microsoft-identity-platform"></a>Microsoft ID プラットフォーム
 
@@ -145,6 +145,8 @@ Microsoft ID プラットフォームは、Azure Active Directory (Azure AD) の
 [承認サーバー](#authorization-server)によって発行される[セキュリティ トークン](#security-token)の一種。[クライアント アプリケーション](#client-application)が、アクセス トークンの有効期限が切れる前に、新しい[アクセス トークン](#access-token)を要求する目的で使用します。 通常、[JSON Web トークン (JWT)][JWT] の形式です。
 
 アクセス トークンとは異なり、更新トークンは取り消すことができます。 クライアント アプリケーションから取り消された更新トークンを使用して新しいアクセス トークンを要求しようとすると、承認サーバーによって要求が拒否され、クライアント アプリケーションが[リソース所有者](#resource-owner)の代わりに[リソース サーバー](#resource-server)にアクセスするためのアクセス許可はなくなります。
+
+詳細については、[更新トークン](refresh-tokens.md)に関するセクションをご覧ください。
 
 ## <a name="resource-owner"></a>リソース所有者
 

@@ -7,12 +7,12 @@ ms.subservice: baremetal-sap
 ms.topic: article
 ms.date: 07/06/2021
 ms.author: radeltch
-ms.openlocfilehash: e6d5ad24176c779055fbde2c2ec6e6506cea3285
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: 5061ee2131ee708c38a68dca02c18a21085b5430
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114392172"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128616861"
 ---
 # <a name="azure-monitor-for-sap-solutions-providers-preview"></a>Azure Monitor for SAP Solutions プロバイダー (プレビュー)
 
@@ -118,7 +118,7 @@ Microsoft SQL Server プロバイダーを構成するには、以下が必要�
    高可用性クラスター プロバイダーを構成するには、次の情報が必要です。
    
    - **[名前]**。 このプロバイダーの名前です。 この Azure Monitor for SAP Solutions インスタンスで一意である必要があります。
-   - **Prometheus エンドポイント**。 http\://\<servername or ip address\>:9664/metrics。
+   - **Prometheus エンドポイント**。 `http://<servername or ip address>:9664/metrics`.
    - **SID**。 SAP システムでは、SAP SID を使用します。 その他のシステム (たとえば、NFS クラスターなど) では、そのクラスターを表す 3 文字の名前を使用します。 この SID は、監視されている他のクラスターとは異なっている必要があります。   
    - **クラスター名**。 クラスターの作成時に使用されたクラスター名です。 クラスター名は、クラスター プロパティ `cluster-name` で確認できます。
    - **Hostname**。 仮想マシン (VM) の Linux ホスト名。  
@@ -141,7 +141,7 @@ OS (Linux) プロバイダーを構成するには、次の 2 つの主要な手
 2. 環境内の各 BareMetal または VM ノード インスタンスに対して OS (Linux) プロバイダーを構成します。 
    OS (Linux) プロバイダーを構成するには、次の情報が必要です。 
       - 名前。 このプロバイダーの名前です。 この Azure Monitor for SAP Solutions インスタンスで一意である必要があります。 
-      - Node Exporter エンドポイント。 通常は、 http://<servername or ip address>:9100/metrics です。 
+      - Node Exporter エンドポイント。 通常は `http://<servername or ip address>:9100/metrics`。 
 
 > [!NOTE]
 > 9100 は Node_Exporter エンドポイント用に公開されているポートです。

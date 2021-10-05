@@ -7,14 +7,14 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 12/04/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 1505837a316943c2d22f82a0107bb7a1990e0e83
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: 3922b716a5537838be06f3fec6a9626e59fa929f
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122014587"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129055110"
 ---
-# <a name="application-insights-java-in-process-agent-in-azure-spring-cloud-preview"></a>Azure Spring Cloud での Application Insights Java In-Process Agent (プレビュー)
+# <a name="application-insights-java-in-process-agent-in-azure-spring-cloud"></a>Azure Spring Cloud での Application Insights Java In-Process Agent
 
 この記事では、Azure Spring Cloud で Application Insights Java エージェントを使用してアプリとマイクロサービスを監視する方法について説明します。
 
@@ -27,7 +27,7 @@ ms.locfileid: "122014587"
 * 要求の失敗を確認する。
 * アプリケーション メトリックを確認する。
 
-Application Insights には、次のようにさまざまな観察できるパースペクティブが用意されています。
+Application Insights には、次のように多くの監視可能なパースペクティブが用意されています。
 
 * アプリケーション マップ
 * パフォーマンス
@@ -36,25 +36,22 @@ Application Insights には、次のようにさまざまな観察できるパ�
 * ライブ メトリック
 * 可用性
 
-> [!NOTE]
-> このプレビュー機能は、Mooncake と、アラブ首長国連邦のような新しいリージョンではまだサポートされていません。
-
 ## <a name="enable-java-in-process-agent-for-application-insights"></a>Application Insights に対して Java In-Process Agent を有効にする
 
-次の手順を使用して、Java In-Process Agent プレビュー機能を有効にします。
+次の手順を使用して、Java In-Process Agent を有効にします。
 
 1. サービス インスタンスのサービスの概要ページに移動します。
-2. [監視] ブレードの下にある **[Application Insights]** エントリを選択します。
-3. **[Application Insights を有効にする]** ボタンを選択して **Application Insights** 統合を有効にします。
+2. **[監視]** ペインで **[Application Insights]** エントリを選択します。
+3. **[Application Insights を有効にする]** を選択して **Application Insights** 統合を有効にします。
 4. Application Insights の既存のインスタンスを選択するか、新規に作成します。
-5. **[Enable Java in-process agent]\(Java In-Process Agent を有効にする\)** を選択して、Java In-Process Agent 機能のプレビューを有効にします。 ここで、サンプリング レートを 0 から 100 にカスタマイズすることもできます。
-6. **[保存]** を選択して変更を保存します。
+   ここで、サンプリング レートを 0 から 100 にカスタマイズすることもできます。
+5. **[保存]** を選択して変更を保存します。
 
 ## <a name="portal"></a>ポータル
 
 1. **[サービス | 概要]** ページに移動し、 **[監視]** セクションで **[Application Insights]** を選択します。
 2. **[Application Insights を有効にする]** を選択して、Azure Spring Cloud で Application Insights を有効にします。
-3. **[Enable Java in-process agent]\(Java In-Process Agent を有効にする\)** を選択して、Java IPA プレビュー機能を有効にします。 IPA プレビュー機能を有効にすると、1 つのオプションのサンプリング レート (既定値は 10.0%) を構成できます。
+3. **Application Insights** を有効にすると、1 つのオプションのサンプリング レート (既定値は 10.0%) を構成できます。
 
    [ ![IPA 0](media/spring-cloud-application-insights/insights-process-agent-0.png)](media/spring-cloud-application-insights/insights-process-agent-0.png)
 
@@ -90,9 +87,13 @@ Application Insights には、次のようにさまざまな観察できるパ�
 
    [ ![IPA 9](media/spring-cloud-application-insights/petclinic-microservices-availability.jpg)](media/spring-cloud-application-insights/petclinic-microservices-availability.jpg)
 
-## <a name="arm-template"></a>ARM テンプレート
+## <a name="automation"></a>オートメーション
 
-Azure Resource Manager テンプレートを使用するには、次の内容を `azuredeploy.json` にコピーします。
+以下のセクションでは、Azure Resource Manager テンプレート (ARM テンプレート) または Terraform を使用して、デプロイを自動化する方法について説明します。
+    
+### <a name="arm-templates"></a>ARM テンプレート
+
+ARM テンプレートを使用してデプロイするには、次の内容を *azuredeploy.json* ファイルにコピーします。 詳細については、[Microsoft.AppPlatform Spring/monitoringSettings](/azure/templates/microsoft.appplatform/spring/monitoringsettings) を参照してください。
 
 ```json
 {
@@ -124,27 +125,119 @@ Azure Resource Manager テンプレートを使用するには、次の内容を
 }
 ```
 
+### <a name="terraform"></a>Terraform
+
+Terraform デプロイの場合は、次のテンプレートを使用します。 詳細については、「[azurerm_spring_cloud_service](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/spring_cloud_service)」を参照してください。
+
+```terraform
+provider "azurerm" {
+  features {}
+}
+
+resource "azurerm_resource_group" "example" {
+  name     = "example-resources"
+  location = "West Europe"
+}
+
+resource "azurerm_application_insights" "example" {
+  name                = "tf-test-appinsights"
+  location            = azurerm_resource_group.example.location
+  resource_group_name = azurerm_resource_group.example.name
+  application_type    = "web"
+}
+
+resource "azurerm_spring_cloud_service" "example" {
+  name                = "example-springcloud"
+  resource_group_name = azurerm_resource_group.example.name
+  location            = azurerm_resource_group.example.location
+  sku_name            = "S0"
+
+  config_server_git_setting {
+    uri          = "https://github.com/Azure-Samples/piggymetrics"
+    label        = "config"
+    search_paths = ["dir1", "dir2"]
+  }
+
+  trace {
+    connection_string = azurerm_application_insights.example.connection_string
+    sample_rate       = 10.0
+  }
+
+  tags = {
+    Env = "staging"
+  }
+}
+```
+
 ## <a name="cli"></a>CLI
 
-CLI コマンドを使用して ARM テンプレートを適用します。
+Azure CLI コマンドを使用して Application Insights を管理できます。 次のコマンドでは、 *\<placeholder>* テキストを説明されている値に置き換える必要があります。 ここで、 *\<service-name>* プレースホルダーは Azure Spring Cloud インスタンスの名前を表します。
 
-* 既存の Azure Spring Cloud インスタンスの場合:
+Azure Spring Cloud インスタンスを作成するときに Application Insights を構成するには、次のコマンドを使用します。 `app-insights` 引数には、Application Insights の名前またはリソース ID を指定できます。
+   
+```azurecli
+az spring-cloud create \
+    --resource-group <resource-group-name> \
+    --name "serviceName" \
+    --app-insights <name-or-resource-ID> \
+    --sampling-rate <sampling-rate>
+```
 
-   ```azurecli
-   az spring-cloud app-insights update [--app-insights/--app-insights-key] "assignedName" [--sampling-rate]    "samplingRate" --name "assignedName" --resource-group "resourceGroupName"
-   ```
+次の例に示すように Application Insights 接続文字列 (推奨) またはインストルメンテーション キーを使用することもできます。
+   
+```azurecli
+az spring-cloud create \
+    --resource-group <resource-group-name> \
+    --name <service-name> \
+    --app-insights-key <connection-string-or-instrumentation-key> \
+    --sampling-rate <sampling-rate>
+```
 
-* 新しく作成された Azure Spring Cloud インスタンスの場合:
+Azure Spring Cloud インスタンスを作成するときに Application Insights を無効にするには、次のコマンドを使用します。
 
-   ```azurecli
-   az spring-cloud create/update [--app-insights]/[--app-insights-key] "assignedName"    --disable-app-insights false --enable-java-agent true --name "assignedName" --resource-group    "resourceGroupName"
-   ```
+```azurecli
+az spring-cloud create \
+    --resource-group <resource-group-name> \
+    --name <service-name> \
+    --disable-app-insights
+```
 
-* app-insight を無効にするには:
+既存の Azure Spring Cloud インスタンスの Application Insights 設定を確認するには、次のコマンドを使用します。
 
-   ```azurecli
-   az spring-cloud app-insights update --disable --name "assignedName" --resource-group "resourceGroupName"
-   ```
+```azurecli
+az spring-cloud app-insights show \
+    --resource-group <resource-group-name> \
+    --name <service-name>
+```
+
+接続文字列 (推奨) またはインストルメンテーション キーを使用して Application Insights を有効にするには、次のコマンドを使用します。
+
+```azurecli
+az spring-cloud app-insights update \
+    --resource-group <resource-group-name> \
+    --name <service-name> \
+    --app-insights-key <connection-string-or-instrumentation-key> \
+    --sampling-rate <sampling-rate>
+```
+
+リソース名または ID を使用して Application Insights を有効にするには、次のコマンドを使用します。
+
+```azurecli
+az spring-cloud app-insights update \
+    --resource-group <resource-group-name> \
+    --name <service-name> \
+    --app-insights <name-or-resource-ID> \
+    --sampling-rate <sampling-rate>
+```
+
+既存の Azure Spring Cloud インスタンスの Application Insights を無効にするには、次のコマンドを使用します。
+
+```azurecli
+az spring-cloud app-insights update \
+    --resource-group <resource-group-name> \
+    --name <service-name> \
+    --disable
+```
 
 ## <a name="java-agent-updateupgrade"></a>Java エージェントの更新またはアップグレード
 

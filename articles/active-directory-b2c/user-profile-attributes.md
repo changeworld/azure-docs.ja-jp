@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 06/16/2021
+ms.date: 09/24/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 76a7fa3cfeafa20dd81f043d67388bdfb281b6d4
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.openlocfilehash: c11227d975f572d6d473a22f62f4616ad024af3b
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112232523"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129061449"
 ---
 # <a name="user-profile-attributes"></a>ユーザー プロファイルの属性
 
@@ -39,7 +39,7 @@ Azure AD B2C ユーザー プロファイルで使用できるほとんどの属
 - 属性をユーザー フローで使用できるかどうか
 - 属性をカスタム ポリシーの [Azure AD 技術プロファイル](active-directory-technical-profile.md)で使用できるかどうか、およびどのセクション (&lt;InputClaims&gt;、&lt;OutputClaims&gt;、または &lt;PersistedClaims&gt;) で使用できるか
 
-|名前     |型     |説明|Azure portal|ユーザー フロー|カスタム ポリシー|
+|名前     |種類     |説明|Azure portal|ユーザー フロー|カスタム ポリシー|
 |---------|---------|----------|------------|----------|-------------|
 |accountEnabled  |Boolean|ユーザー アカウントが有効か無効か: アカウントが有効の場合は **true**、それ以外の場合は **false**。|はい|いいえ|Persisted、Output|
 |ageGroup        |String|ユーザーの年齢グループ。 指定できる値: null、Undefined、Minor、Adult、NotAdult。|はい|いいえ|Persisted、Output|
@@ -59,6 +59,7 @@ Azure AD B2C ユーザー プロファイルで使用できるほとんどの属
 |immutableId     |String|オンプレミスの Active Directory から移行されたユーザーに通常使用される識別子。|いいえ|いいえ|Persisted、Output|
 |legalAgeGroupClassification|String|法的年齢グループの分類。 読み取り専用で、ageGroup および consentProvidedForMinor プロパティに基づいて計算されます。 使用可能な値: null、minorWithOutParentalConsent、minorWithParentalConsent、minorNoParentalConsentRequired、notAdult、および adult。|はい|いいえ|Persisted、Output|
 |legalCountry<sup>1</sup>  |String|国またはリージョン (法的な目的)。|いいえ|いいえ|Persisted、Output|
+|mail    |String|ユーザーのメール アドレス。 例: "bob@contoso.com" 注: アクセント文字は使用できません。|はい|いいえ|Persisted、Output|
 |mailNickName    |String|ユーザーのメール エイリアス。 最大長 64。|いいえ|いいえ|Persisted、Output|
 |mobile (mobilePhone) |String|ユーザーのメインの携帯電話番号。 最大長 64。|はい|いいえ|Persisted、Output|
 |netId           |String|Net ID。|いいえ|いいえ|Persisted、Output|
@@ -114,7 +115,7 @@ Azure AD B2C ディレクトリにユーザー アカウントを作成するに
 
 Microsoft Graph API では、ローカル ID とフェデレーション ID の両方が、[objectIdentity](/graph/api/resources/objectidentity) 型のユーザー `identities` 属性に格納されます。 `identities` コレクションは、ユーザー アカウントへのサインインに使用される一連の ID を表します。 このコレクションにより、ユーザーは、関連付けられた任意の ID を使用してユーザー アカウントにサインインできます。 識別子属性には最大 10 個の [objectIdentity](/graph/api/resources/objectidentity) オブジェクトを含めることができます。 各オブジェクトには次のプロパティが含まれます。
 
-| 名前   | 型 |説明|
+| 名前   | 種類 |説明|
 |:---------------|:--------|:----------|
 |signInType|string| お使いのディレクトリ内のユーザー サインインの種類を指定します。 ローカル アカウントの場合: `emailAddress`、`emailAddress1`、`emailAddress2`、`emailAddress3`、`userName`、または他の任意の種類。 ソーシャル アカウントは `federated` に設定する必要があります。|
 |発行者|string|ID の発行者を指定します。 ローカル アカウント (**signInType** が `federated` でない) の場合、このプロパティは、ローカル B2C テナントの既定のドメイン名 (`contoso.onmicrosoft.com` など) になります。 ソーシャル ID (**signInType** が `federated`) の場合、値は発行者の名前 (`facebook.com` など) になります。|

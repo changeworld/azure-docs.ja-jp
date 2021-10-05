@@ -4,21 +4,17 @@ description: Bicep ファイルで数値を扱う関数について説明しま�
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: 2eec27d0317b6cfae4969244d069be6881566942
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.date: 09/10/2021
+ms.openlocfilehash: 8df0aec96001aa5b1a7cdd7342fe663f0bfa2da0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111027112"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124758486"
 ---
 # <a name="numeric-functions-for-bicep"></a>Bicep の数値関数
 
-Resource Manager では、Bicep ファイルで整数を扱うために、次の関数を用意しています。
-
-* [int](#int)
-* [max](#max)
-* [min](#min)
+この記事では、整数を操作するための Bicep 関数について説明します。
 
 Azure Resource Manager JSON 数値関数の一部は、[Bicep 数値演算子](./operators-numeric.md)に置き換えられました。
 
@@ -136,4 +132,4 @@ output intOutput int = min(0,3,2,5,4)
 
 ## <a name="next-steps"></a>次のステップ
 
-* Bicep ファイルのセクションの説明は、[Bicep ファイルの構造と構文](./file.md)に関する記事をご覧ください。
+* 数値に関連するその他のアクションについては、「[Bicep 数値演算子](./operators-numeric.md)」を参照してください。
