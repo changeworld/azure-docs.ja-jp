@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/27/2021
 ms.author: cherylmc
 ms.custom: references_regions
-ms.openlocfilehash: ff6e928c5f50c2f0a15936b190f0191da67b81c3
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: c5d548105b5fd749865132ae0629eaac17462da2
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122419446"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124818059"
 ---
 # <a name="virtual-wan-partners-and-virtual-hub-locations"></a>Virtual WAN パートナーと仮想ハブの場所
 
@@ -61,7 +61,7 @@ Azure Virtual WAN に接続するデバイスには、接続の自動化が組�
 |---|---|
 |[Barracuda Networks](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/barracudanetworks.barracuda_cloudgenwan_gateway?tab=Overviewus/marketplace/apps/barracudanetworks.barracuda_cloudgenwan_gateway?tab=Overview)| [Barracuda CloudGen WAN デプロイ ガイド](https://campus.barracuda.com/product/cloudgenwan/doc/91980640/deployment/)|
 |[Cisco Cloud Service Router (CSR) VWAN](https://aka.ms/ciscoMarketPlaceOffer)| Cisco SD-WAN ソリューションと Azure 仮想 WAN の統合により、Cloud OnRamp のマルチクラウド デプロイが強化され、Azure Virtual WAN ハブでネットワーク仮想アプライアンス (NVA) として Cisco Catalyst 8000V Edge ソフトウェア (Cisco Catalyst 8000V) を構成できます。 [Cisco SD-WAN Cloud OnRamp、Cisco IOS XE リリース 17.x 構成ガイドをご覧ください](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/cloudonramp/ios-xe-17/cloud-onramp-book-xe/cloud-onramp-multi-cloud.html#Cisco_Concept.dita_c61e0e7a-fff8-4080-afee-47b81e8df701) 
-|[Virtual WAN ハブ内の VMware SD-WAN](https://sdwan.vmware.com/partners/microsoft) | VWAN ハブ内の VMware SD-WAN のパブリックプレビュー中、顧客は vhubsupport@vmware.com に電子メールを送信して VMware に登録する必要があります。 [Virtual WAN ハブ内の VMware SD-WAN デプロイ ガイド](https://kb.vmware.com/s/article/82746)|
+|[Virtual WAN ハブ内の VMware SD-WAN](https://sdwan.vmware.com/partners/microsoft) | 仮想 WAN ハブで VMware SD-WAN アプライアンスを表示する手順については、[Virtual WAN ハブ内の VMware SD-WAN デプロイ ガイド](https://kb.vmware.com/s/article/82746)を参照してください。 デプロイするには、[ここで](https://azuremarketplace.microsoft.com/marketplace/apps/velocloud.vmware_sdwan_in_vwan)マネージド アプリケーションにアクセスしてください|
 
 Aviatrix、Citrix、Versa Networks の各パートナーは、近い将来、仮想ハブ サービスで NVA を提供する予定です。
 

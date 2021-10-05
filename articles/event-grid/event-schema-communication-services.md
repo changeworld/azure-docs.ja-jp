@@ -4,12 +4,12 @@ description: この記事では、Event Grid イベント ソースとして Azu
 ms.topic: conceptual
 ms.date: 06/11/2021
 ms.author: mikben
-ms.openlocfilehash: e6e4245d9f38c00ec337d689a11d185299d71891
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b6bef963fe4f326bf0737ede96f62bfc9ffa9267
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121748488"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128635320"
 ---
 # <a name="event-handling-in-azure-communication-services"></a>Azure Communication Services でのイベント処理
 
@@ -51,6 +51,10 @@ Azure Communication Services から出力されるイベントの種類は次の
 | Microsoft.Communication.ChatMessageEditedInThread | チャット スレッドでメッセージが編集されたときに発行されます |  
 | Microsoft.Communication.ChatMessageDeletedInThread | チャット スレッドでメッセージが削除されたときに発行されます  |  
 | Microsoft.Communication.RecordingFileStatusUpdated | ファイルの記録が可能なときに発行されます |
+| Microsoft.Communication.UserDisconnected (プレビュー) | Communication Services ユーザーが Communication Services から切断されたと見なされた後に発行されます |
+
+> [!NOTE]
+> Microsoft.Communication.UserDisconnected イベントは、パブリック プレビュー段階にあります。 このプレビュー期間中は、ユーザーの切断状態に関連付けられているログがグローバルにレプリケートされる場合があります。 Event Grid を介してこのイベントをサブスクライブすることで切断状態を取得できます。
 
 Azure portal または Azure CLI を使用して、Communication Services リソースによって発行されたイベントをサブスクライブできます。 「[Communication Services での SMS イベントの処理方法](../communication-services/quickstarts/telephony-sms/handle-sms-events.md)」を参照してイベントの処理を開始します
 
@@ -122,7 +126,7 @@ Azure portal または Azure CLI を使用して、Communication Services リソ
     "MessageId": "Incoming_20200918002745d29ebbea-3341-4466-9690-0a03af35228e",
     "From": "15555555555",
     "To": "15555555555",
-    "Message": "Great to connect with ACS events ",
+    "Message": "Great to connect with ACS events",
     "ReceivedTimestamp": "2020-09-18T00:27:45.32Z"
   },
   "eventType": "Microsoft.Communication.SMSReceived",
@@ -862,6 +866,30 @@ Azure portal または Azure CLI を使用して、Communication Services リソ
   "dataVersion": "1.0",
   "metadataVersion": "1",
   "eventTime": "2021-07-27T15:20:34.2199328Z"
+ }
+]
+```
+
+### <a name="microsoftcommunicationuserdisconnectedpreview"></a>Microsoft.Communication.UserDisconnected (プレビュー)
+
+```json
+[
+ {
+  "id": "8f60490d-0719-4d9d-a1a6-835362fb752e",
+  "topic": "/subscriptions/{subscription-id}/resourcegroups/}{group-name}/providers/microsoft.communication/communicationservices/{communication-services-resource-name}",
+  "subject": "user/{rawId}",
+  "data": {
+    "userCommunicationIdentifier": {
+      "rawId": "8:acs:3d703c91-9657-4b3f-b19c-ef9d53f99710_0000000b-d198-0d50-84f5-084822008d40",
+      "communicationUser": {
+        "id": "8:acs:3d703c91-9657-4b3f-b19c-ef9d53f99710_0000000b-d198-0d50-84f5-084822008d40"
+      }
+    }
+  },
+  "eventType": "Microsoft.Communication.UserDisconnected",
+  "dataVersion": "1.0",
+  "metadataVersion": "1",
+  "eventTime": "2021-08-10T20:25:38Z"
  }
 ]
 ```

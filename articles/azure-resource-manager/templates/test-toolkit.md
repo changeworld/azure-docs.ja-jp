@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 07/16/2021
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 5c53ede7df0fd8ba24ef82e7de5a793a4e55f204
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: c02d7183304ec3474427bf1687d67d7dd7058d44
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114393279"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128576658"
 ---
 # <a name="use-arm-template-test-toolkit"></a>ARM テンプレート テスト ツールキットを使用する
 
@@ -24,6 +24,10 @@ ms.locfileid: "114393279"
 - [パラメーター ファイルのテスト ケース](parameter-file-test-cases.md)
 - [createUiDefinition.json のテスト ケース](createUiDefinition-test-cases.md)
 - [すべてのファイルのテスト ケース](all-files-test-cases.md)
+
+### <a name="microsoft-learn"></a>Microsoft Learn
+
+ARM テンプレート テスト ツールキットの詳細と、ハンズオン ガイダンスについては、**Microsoft Learn** の「[ARM テンプレート テスト ツールキットを使用して Azure リソースを検証する](/learn/modules/arm-template-test)」を参照してください。
 
 ## <a name="install-on-windows"></a>Windows にインストールする
 

@@ -7,16 +7,16 @@ ms.service: load-balancer
 ms.topic: troubleshooting
 ms.date: 05/7/2020
 ms.author: anavin
-ms.openlocfilehash: e51a74ef4f01bda57e7cdef026aed9aa85111ca3
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: ba421e8996e37e79bf7044709d53be8d6f2a01f4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123437402"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128549960"
 ---
 # <a name="troubleshooting-outbound-connections-failures"></a><a name="obconnecttsg"></a>アウトバウンド接続エラーのトラブルシューティング
 
-この記事は、Azure Load Balancer からのアウトバウンド接続で発生する可能性のある一般的な問題の解決策を提供することを目的としています。 顧客が体験するアウトバウンド接続に関する問題のほとんどは、SNAT (Souce Network Address Translation) ポートの枯渇と、接続タイムアウトを原因とするパケットのドロップです。 この記事では、これらの各問題を軽減する手順について説明します。
+この記事は、Azure Load Balancer からのアウトバウンド接続で発生する可能性のある一般的な問題の解決策を提供することを目的としています。 顧客が体験するアウトバウンド接続に関する問題のほとんどは、SNAT (Source Network Address Translation) ポートの枯渇と、接続タイムアウトを原因とするパケットのドロップです。 この記事では、これらの各問題を軽減する手順について説明します。
 
 ## <a name="avoid-snat"></a>SNAT を避ける
 

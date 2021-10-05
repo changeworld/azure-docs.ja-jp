@@ -1,15 +1,15 @@
 ---
 title: Kubernetes 用の Azure Policy の概要
 description: Azure Policy で Rego および Open Policy Agent を使用して、Azure 内またはオンプレミスで Kubernetes を実行しているクラスターを管理する方法について説明します。
-ms.date: 09/01/2021
+ms.date: 09/13/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 43b5e010ec6f024838a0407f2cafae1d28bdcf1e
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 55a8f2f1cbb67c80c82e367a870cd61d76178518
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123436070"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128556329"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>Kubernetes 用の Azure Policy について理解する
 
@@ -463,6 +463,99 @@ kubectl logs <gatekeeper pod name> -n gatekeeper-system
 ```
 
 詳細については、Gatekeeper ドキュメントの [Gatekeeper のデバッグ](https://open-policy-agent.github.io/gatekeeper/website/docs/debug/)に関する記事を参照してください。
+
+## <a name="view-gatekeeper-artifacts"></a>Gatekeeper のアーティファクトを表示する
+
+アドオンにより、ポリシー割り当てがダウンロードされ、制約テンプレートと制約がクラスターにインストールされた後、ポリシー割り当て ID やポリシー定義 ID などの Azure Policy 情報で両方に注釈が付けられます。 アドオン関連のアーティファクトを表示するようにクライアントを構成するには、次の手順を使用します。
+
+1. クラスターの `kubeconfig` を設定します。
+
+   Azure Kubernetes Service クラスターの場合、次の Azure CLI を使用します。
+
+   ```azurecli-interactive
+   # Set context to the subscription
+   az account set --subscription <YOUR-SUBSCRIPTION>
+
+   # Save credentials for kubeconfig into .kube in your home folder
+   az aks get-credentials --resource-group <RESOURCE-GROUP> --name <CLUSTER-NAME>
+   ```
+
+1. クラスターの接続をテストします。
+
+   `kubectl cluster-info` コマンドを実行します。 正常に実行されると、各サービスは実行されている場所の URL で応答します。
+
+### <a name="view-the-add-on-constraint-templates"></a>アドオンの制約テンプレートを表示する
+
+アドオンによってダウンロードされた制約テンプレートを表示するには、`kubectl get constrainttemplates` を実行します。
+`k8sazure` で始まる制約テンプレートが、アドオンによってインストールされたものです。
+
+### <a name="get-azure-policy-mappings"></a>Azure Policy のマッピングを取得する
+
+クラスターにダウンロードされた制約テンプレートとポリシー定義間のマッピングを特定するには、`kubectl get constrainttemplates <TEMPLATE> -o yaml` を使用します。 結果は次の出力のようになります。
+
+```yaml
+apiVersion: templates.gatekeeper.sh/v1beta1
+kind: ConstraintTemplate
+metadata:
+    annotations:
+    azure-policy-definition-id: /subscriptions/<SUBID>/providers/Microsoft.Authorization/policyDefinitions/<GUID>
+    constraint-template-installed-by: azure-policy-addon
+    constraint-template: <URL-OF-YAML>
+    creationTimestamp: "2021-09-01T13:20:55Z"
+    generation: 1
+    managedFields:
+    - apiVersion: templates.gatekeeper.sh/v1beta1
+    fieldsType: FieldsV1
+...
+```
+
+`<SUBID>` はサブスクリプション ID、`<GUID>` はマップされたポリシー定義の ID です。
+`<URL-OF-YAML>` は、クラスターにインストールするためにアドオンによってダウンロードされた制約テンプレートのソースの場所です。
+
+### <a name="view-constraints-related-to-a-constraint-template"></a>制約テンプレートに関連する制約を表示する
+
+[アドオンによってダウンロードされた制約テンプレート](#view-the-add-on-constraint-templates)の名前を取得したら、その名前を使用して関連する制約を表示できます。 `kubectl get <constraintTemplateName>` を使用してリストを取得します。
+アドオンによってインストールされた制約は、`azurepolicy-` で始まります。
+
+### <a name="view-constraint-details"></a>制約の詳細を表示する
+
+制約には、ポリシー定義の違反とマッピングおよびポリシー割り当てに関する詳細が含まれます。 詳細を表示するには、`kubectl get <CONSTRAINT-TEMPLATE> <CONSTRAINT> -o yaml` を使用します。 結果は次の出力のようになります。
+
+```yaml
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sAzureContainerAllowedImages
+metadata:
+  annotations:
+    azure-policy-assignment-id: /subscriptions/<SUB-ID>/resourceGroups/<RG-NAME>/providers/Microsoft.Authorization/policyAssignments/<ASSIGNMENT-GUID>
+    azure-policy-definition-id: /providers/Microsoft.Authorization/policyDefinitions/<DEFINITION-GUID>
+    azure-policy-definition-reference-id: ""
+    azure-policy-setdefinition-id: ""
+    constraint-installed-by: azure-policy-addon
+    constraint-url: <URL-OF-YAML>
+  creationTimestamp: "2021-09-01T13:20:55Z"
+spec:
+  enforcementAction: deny
+  match:
+    excludedNamespaces:
+    - kube-system
+    - gatekeeper-system
+    - azure-arc
+  parameters:
+    imageRegex: ^.+azurecr.io/.+$
+status:
+  auditTimestamp: "2021-09-01T13:48:16Z"
+  totalViolations: 32
+  violations:
+  - enforcementAction: deny
+    kind: Pod
+    message: Container image nginx for container hello-world has not been allowed.
+    name: hello-world-78f7bfd5b8-lmc5b
+    namespace: default
+  - enforcementAction: deny
+    kind: Pod
+    message: Container image nginx for container hello-world has not been allowed.
+    name: hellow-world-89f8bfd6b9-zkggg
+```
 
 ## <a name="troubleshooting-the-add-on"></a>アドオンのトラブルシューティング
 

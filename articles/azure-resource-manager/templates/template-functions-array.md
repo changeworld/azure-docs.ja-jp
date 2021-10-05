@@ -2,13 +2,13 @@
 title: テンプレート関数 - 配列
 description: Azure Resource Manager テンプレート (ARM テンプレート) で配列を操作するために使用する関数について説明します。
 ms.topic: conceptual
-ms.date: 05/11/2021
-ms.openlocfilehash: 12349a52f192305a47913d57bcd760242ea32a70
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.date: 09/08/2021
+ms.openlocfilehash: 25fb249e1840a7538fa1dd14f3b1a930bbefdfee
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123451462"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124755997"
 ---
 # <a name="array-functions-for-arm-templates"></a>ARM テンプレート用の配列関数
 
@@ -40,7 +40,7 @@ Resource Manager では、Azure Resource Manager テンプレート (ARM テン�
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | convertToArray |はい |整数、文字列、配列、オブジェクト |配列に変換する値。 |
 
@@ -50,51 +50,13 @@ Resource Manager では、Azure Resource Manager テンプレート (ARM テン�
 
 ### <a name="example"></a>例
 
-次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/array.json)では、array 関数をさまざまな型で使用する方法を示します。
+次の例では、array 関数をさまざまな型で使用する方法を示します。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "intToConvert": {
-      "type": "int",
-      "defaultValue": 1
-    },
-    "stringToConvert": {
-      "type": "string",
-      "defaultValue": "efgh"
-    },
-    "objectToConvert": {
-      "type": "object",
-      "defaultValue": {
-        "a": "b",
-        "c": "d"
-      }
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "intOutput": {
-      "type": "array",
-      "value": "[array(parameters('intToConvert'))]"
-    },
-    "stringOutput": {
-      "type": "array",
-      "value": "[array(parameters('stringToConvert'))]"
-    },
-    "objectOutput": {
-      "type": "array",
-      "value": "[array(parameters('objectToConvert'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/array.json":::
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | Type | 値 |
+| 名前 | 種類 | 値 |
 | ---- | ---- | ----- |
 | intOutput | Array | [1] |
 | stringOutput | Array | ["efgh"] |
@@ -108,10 +70,10 @@ Resource Manager では、Azure Resource Manager テンプレート (ARM テン�
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |配列または文字列 |連結する最初の配列または文字列。 |
-| 残りの引数 |いいえ |配列または文字列 |順次連結する残りの配列または文字列。 |
+| その他の引数 |いいえ |配列または文字列 |順次連結するその他の配列または文字列。 |
 
 この関数は、任意の数の引数を取ることができ、パラメーターに文字列または配列を使用できます。 ただし、パラメーターに配列と文字列の両方を指定することはできません。 配列は、他の配列とのみ連結されます。
 
@@ -123,70 +85,21 @@ Resource Manager では、Azure Resource Manager テンプレート (ARM テン�
 
 次の例では、2 つの配列を結合する方法を示します。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "firstArray": {
-      "type": "array",
-      "defaultValue": [
-        "1-1",
-        "1-2",
-        "1-3"
-      ]
-    },
-    "secondArray": {
-      "type": "array",
-      "defaultValue": [
-        "2-1",
-        "2-2",
-        "2-3"
-      ]
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "return": {
-      "type": "array",
-      "value": "[concat(parameters('firstArray'), parameters('secondArray'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/concat-array.json":::
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | Type | 値 |
+| 名前 | 種類 | 値 |
 | ---- | ---- | ----- |
 | 戻り値 | Array | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
-次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/concat-string.json)は、2 つの文字列値を結合して 1 つの連結文字列を返す方法を示しています。
+次の例は、2 つの文字列値を結合して 1 つの連結文字列を返す方法を示しています。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "prefix": {
-      "type": "string",
-      "defaultValue": "prefix"
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "concatOutput": {
-      "type": "string",
-      "value": "[concat(parameters('prefix'), '-', uniqueString(resourceGroup().id))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/string/concat-string.json":::
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | Type | 値 |
+| 名前 | 種類 | 値 |
 | ---- | ---- | ----- |
 | concatOutput | String | prefix-5yj4yjf5mbg72 |
 
@@ -198,7 +111,7 @@ Resource Manager では、Azure Resource Manager テンプレート (ARM テン�
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | container |はい |配列、オブジェクト、文字列 |検索対象の値を含む値。 |
 | itemToFind |はい |文字列または整数 |検索対象の値。 |
@@ -211,62 +124,11 @@ Resource Manager では、Azure Resource Manager テンプレート (ARM テン�
 
 次の例では、contains をさまざまな型で使用する方法を示します。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "stringToTest": {
-      "type": "string",
-      "defaultValue": "OneTwoThree"
-    },
-    "objectToTest": {
-      "type": "object",
-      "defaultValue": {
-        "one": "a",
-        "two": "b",
-        "three": "c"
-      }
-    },
-    "arrayToTest": {
-      "type": "array",
-      "defaultValue": [ "one", "two", "three" ]
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "stringTrue": {
-      "type": "bool",
-      "value": "[contains(parameters('stringToTest'), 'e')]"
-    },
-    "stringFalse": {
-      "type": "bool",
-      "value": "[contains(parameters('stringToTest'), 'z')]"
-    },
-    "objectTrue": {
-      "type": "bool",
-      "value": "[contains(parameters('objectToTest'), 'one')]"
-    },
-    "objectFalse": {
-      "type": "bool",
-      "value": "[contains(parameters('objectToTest'), 'a')]"
-    },
-    "arrayTrue": {
-      "type": "bool",
-      "value": "[contains(parameters('arrayToTest'), 'three')]"
-    },
-    "arrayFalse": {
-      "type": "bool",
-      "value": "[contains(parameters('arrayToTest'), 'four')]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/contains.json":::
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | Type | 値 |
+| 名前 | 種類 | 値 |
 | ---- | ---- | ----- |
 | stringTrue | Bool | True |
 | stringFalse | Bool | False |
@@ -283,7 +145,7 @@ Resource Manager では、Azure Resource Manager テンプレート (ARM テン�
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | args |いいえ |文字列、整数、配列、オブジェクト |配列内の値。 |
 
@@ -293,56 +155,13 @@ Resource Manager では、Azure Resource Manager テンプレート (ARM テン�
 
 ### <a name="example"></a>例
 
-次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/createarray.json)では、createArray をさまざまな型で使用する方法を示します。
+次の例では、createArray をさまざまな型で使用する方法を示します。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "objectToTest": {
-      "type": "object",
-      "defaultValue": {
-        "one": "a",
-        "two": "b",
-        "three": "c"
-      }
-    },
-    "arrayToTest": {
-      "type": "array",
-      "defaultValue": [ "one", "two", "three" ]
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "stringArray": {
-      "type": "array",
-      "value": "[createArray('a', 'b', 'c')]"
-    },
-    "intArray": {
-      "type": "array",
-      "value": "[createArray(1, 2, 3)]"
-    },
-    "objectArray": {
-      "type": "array",
-      "value": "[createArray(parameters('objectToTest'))]"
-    },
-    "arrayArray": {
-      "type": "array",
-      "value": "[createArray(parameters('arrayToTest'))]"
-    },
-    "emptyArray": {
-      "type": "array",
-      "value": "[createArray()]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/createarray.json":::
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | Type | [値] |
+| 名前 | 種類 | [値] |
 | ---- | ---- | ----- |
 | stringArray | Array | ["a", "b", "c"] |
 | intArray | Array | [1, 2, 3] |
@@ -358,7 +177,7 @@ Resource Manager では、Azure Resource Manager テンプレート (ARM テン�
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | itemToTest |はい |配列、オブジェクト、文字列 |空かどうかを確認する値。 |
 
@@ -370,46 +189,11 @@ Resource Manager では、Azure Resource Manager テンプレート (ARM テン�
 
 次の例では、配列、オブジェクト、および文字列が空かどうかを確認します。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "testArray": {
-      "type": "array",
-      "defaultValue": []
-    },
-    "testObject": {
-      "type": "object",
-      "defaultValue": {}
-    },
-    "testString": {
-      "type": "string",
-      "defaultValue": ""
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "arrayEmpty": {
-      "type": "bool",
-      "value": "[empty(parameters('testArray'))]"
-    },
-    "objectEmpty": {
-      "type": "bool",
-      "value": "[empty(parameters('testObject'))]"
-    },
-    "stringEmpty": {
-      "type": "bool",
-      "value": "[empty(parameters('testString'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/empty.json":::
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | Type | 値 |
+| 名前 | 種類 | 値 |
 | ---- | ---- | ----- |
 | arrayEmpty | Bool | True |
 | objectEmpty | Bool | True |
@@ -423,7 +207,7 @@ Resource Manager では、Azure Resource Manager テンプレート (ARM テン�
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |配列または文字列 |最初の要素または文字を取得する値。 |
 
@@ -435,34 +219,11 @@ Resource Manager では、Azure Resource Manager テンプレート (ARM テン�
 
 次の例では、first 関数を配列および文字列と共に使用する方法を示します。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "arrayToTest": {
-      "type": "array",
-      "defaultValue": [ "one", "two", "three" ]
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "arrayOutput": {
-      "type": "string",
-      "value": "[first(parameters('arrayToTest'))]"
-    },
-    "stringOutput": {
-      "type": "string",
-      "value": "[first('One Two Three')]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/first.json":::
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | Type | 値 |
+| 名前 | 種類 | 値 |
 | ---- | ---- | ----- |
 | arrayOutput | String | one |
 | stringOutput | String | O |
@@ -475,11 +236,11 @@ Resource Manager では、Azure Resource Manager テンプレート (ARM テン�
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |配列またはオブジェクト |共通の要素の検索に使用する 1 番目の値。 |
 | arg2 |はい |配列またはオブジェクト |共通の要素の検索に使用する 2 番目の値。 |
-| 残りの引数 |いいえ |配列またはオブジェクト |共通の要素の検索に使用する残りの値。 |
+| その他の引数 |いいえ |配列またはオブジェクト |共通の要素の検索に使用するその他の値。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -489,54 +250,11 @@ Resource Manager では、Azure Resource Manager テンプレート (ARM テン�
 
 次の例では、intersection を配列およびオブジェクトと共に使用する方法を示します。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "firstObject": {
-      "type": "object",
-      "defaultValue": {
-        "one": "a",
-        "two": "b",
-        "three": "c"
-      }
-    },
-    "secondObject": {
-      "type": "object",
-      "defaultValue": {
-        "one": "a",
-        "two": "z",
-        "three": "c"
-      }
-    },
-    "firstArray": {
-      "type": "array",
-      "defaultValue": [ "one", "two", "three" ]
-    },
-    "secondArray": {
-      "type": "array",
-      "defaultValue": [ "two", "three" ]
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "objectOutput": {
-      "type": "object",
-      "value": "[intersection(parameters('firstObject'), parameters('secondObject'))]"
-    },
-    "arrayOutput": {
-      "type": "array",
-      "value": "[intersection(parameters('firstArray'), parameters('secondArray'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/intersection.json":::
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | Type | 値 |
+| 名前 | 種類 | 値 |
 | ---- | ---- | ----- |
 | objectOutput | Object | {"one": "a", "three": "c"} |
 | arrayOutput | Array | ["two", "three"] |
@@ -549,7 +267,7 @@ Resource Manager では、Azure Resource Manager テンプレート (ARM テン�
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |配列または文字列 |最後の要素または文字を取得する値。 |
 
@@ -561,34 +279,11 @@ Resource Manager では、Azure Resource Manager テンプレート (ARM テン�
 
 次の例では、last 関数を配列および文字列と共に使用する方法を示します。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "arrayToTest": {
-      "type": "array",
-      "defaultValue": [ "one", "two", "three" ]
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "arrayOutput": {
-      "type": "string",
-      "value": "[last(parameters('arrayToTest'))]"
-    },
-    "stringOutput": {
-      "type": "string",
-      "value": "[last('One Two Three')]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/last.json":::
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | Type | 値 |
+| 名前 | 種類 | 値 |
 | ---- | ---- | ----- |
 | arrayOutput | String | three |
 | stringOutput | String | e |
@@ -601,7 +296,7 @@ Resource Manager では、Azure Resource Manager テンプレート (ARM テン�
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |array、string、または object |要素の数を取得するために使用する配列、文字の数を取得するために使用する文字列、またはルート レベル プロパティの数を取得するために使用するオブジェクト。 |
 
@@ -613,57 +308,11 @@ Resource Manager では、Azure Resource Manager テンプレート (ARM テン�
 
 次の例では、length を配列および文字列と共に使用する方法を示します。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "arrayToTest": {
-      "type": "array",
-      "defaultValue": [
-        "one",
-        "two",
-        "three"
-      ]
-    },
-    "stringToTest": {
-      "type": "string",
-      "defaultValue": "One Two Three"
-    },
-    "objectToTest": {
-      "type": "object",
-      "defaultValue": {
-        "propA": "one",
-        "propB": "two",
-        "propC": "three",
-        "propD": {
-          "propD-1": "sub",
-          "propD-2": "sub"
-        }
-      }
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "arrayLength": {
-      "type": "int",
-      "value": "[length(parameters('arrayToTest'))]"
-    },
-    "stringLength": {
-      "type": "int",
-      "value": "[length(parameters('stringToTest'))]"
-    },
-    "objectLength": {
-      "type": "int",
-      "value": "[length(parameters('objectToTest'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/length.json":::
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | Type | 値 |
+| 名前 | 種類 | 値 |
 | ---- | ---- | ----- |
 | arrayLength | int | 3 |
 | stringLength | int | 13 |
@@ -688,7 +337,7 @@ Resource Manager では、Azure Resource Manager テンプレート (ARM テン�
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |整数の配列、または整数のコンマ区切りリスト |最大値を取得するコレクション。 |
 
@@ -700,33 +349,11 @@ Resource Manager では、Azure Resource Manager テンプレート (ARM テン�
 
 次の例では、max を配列および整数のリストと共に使用する方法を示します。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "arrayToTest": {
-      "type": "array",
-      "defaultValue": [ 0, 3, 2, 5, 4 ]
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "arrayOutput": {
-      "type": "int",
-      "value": "[max(parameters('arrayToTest'))]"
-    },
-    "intOutput": {
-      "type": "int",
-      "value": "[max(0,3,2,5,4)]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/numeric/max.json":::
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | Type | 値 |
+| 名前 | 種類 | 値 |
 | ---- | ---- | ----- |
 | arrayOutput | int | 5 |
 | intOutput | int | 5 |
@@ -739,7 +366,7 @@ Resource Manager では、Azure Resource Manager テンプレート (ARM テン�
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |整数の配列、または整数のコンマ区切りリスト |最小値を取得するコレクション。 |
 
@@ -751,33 +378,11 @@ Resource Manager では、Azure Resource Manager テンプレート (ARM テン�
 
 次の例では、min を配列および整数のリストと共に使用する方法を示します。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "arrayToTest": {
-      "type": "array",
-      "defaultValue": [ 0, 3, 2, 5, 4 ]
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "arrayOutput": {
-      "type": "int",
-      "value": "[min(parameters('arrayToTest'))]"
-    },
-    "intOutput": {
-      "type": "int",
-      "value": "[min(0,3,2,5,4)]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/numeric/min.json":::
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | Type | 値 |
+| 名前 | 種類 | 値 |
 | ---- | ---- | ----- |
 | arrayOutput | int | 0 |
 | intOutput | int | 0 |
@@ -790,7 +395,7 @@ Resource Manager では、Azure Resource Manager テンプレート (ARM テン�
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | startIndex |はい |INT |配列の最初の整数です。 startIndex と count の合計は、2147483647 より大きくてはいけません。 |
 | count |はい |INT |配列内の整数の数。 10000 までの負でない整数にする必要があります。 |
@@ -801,35 +406,13 @@ Resource Manager では、Azure Resource Manager テンプレート (ARM テン�
 
 ### <a name="example"></a>例
 
-次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/range.json)では、range 関数を使用する方法を示します。
+次の例では、range 関数を使用する方法を示します。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "startingInt": {
-      "type": "int",
-      "defaultValue": 5
-    },
-    "numberOfElements": {
-      "type": "int",
-      "defaultValue": 3
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "rangeOutput": {
-      "type": "array",
-      "value": "[range(parameters('startingInt'),parameters('numberOfElements'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/range.json":::
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | Type | 値 |
+| 名前 | 種類 | 値 |
 | ---- | ---- | ----- |
 | rangeOutput | Array | [5, 6, 7] |
 
@@ -841,10 +424,10 @@ Resource Manager では、Azure Resource Manager テンプレート (ARM テン�
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | originalValue |はい |配列または文字列 |スキップ対象の配列または文字列。 |
-| numberToSkip |はい |INT |スキップする要素または文字の数。 この値が 0 以下である場合は、値内のすべての要素または文字が返されます。 配列または文字列の長さを超える場合は、空の配列または文字列が返されます。 |
+| numberToSkip |はい |INT |スキップする要素または文字の数。 この値が 0 以下である場合は、値内のすべての要素または文字が返されます。 配列または文字列の長さを超過している場合は、空の配列または文字列が返されます。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -854,49 +437,11 @@ Resource Manager では、Azure Resource Manager テンプレート (ARM テン�
 
 次の例では、配列内の指定した数の要素と、文字列内の指定した数の文字をスキップします。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "testArray": {
-      "type": "array",
-      "defaultValue": [
-        "one",
-        "two",
-        "three"
-      ]
-    },
-    "elementsToSkip": {
-      "type": "int",
-      "defaultValue": 2
-    },
-    "testString": {
-      "type": "string",
-      "defaultValue": "one two three"
-    },
-    "charactersToSkip": {
-      "type": "int",
-      "defaultValue": 4
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "arrayOutput": {
-      "type": "array",
-      "value": "[skip(parameters('testArray'),parameters('elementsToSkip'))]"
-    },
-    "stringOutput": {
-      "type": "string",
-      "value": "[skip(parameters('testString'),parameters('charactersToSkip'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/skip.json":::
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | Type | 値 |
+| 名前 | 種類 | 値 |
 | ---- | ---- | ----- |
 | arrayOutput | Array | ["three"] |
 | stringOutput | String | two three |
@@ -905,14 +450,14 @@ Resource Manager では、Azure Resource Manager テンプレート (ARM テン�
 
 `take(originalValue, numberToTake)`
 
-配列の先頭から指定した数の要素を含む配列、または文字列の先頭から指定した数の文字を含む文字列を返します。
+配列または文字列を返します。 配列の先頭から指定された数の要素を含む配列。 文字列の先頭から指定された数の文字を含む文字列。
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | originalValue |はい |配列または文字列 |要素の取得元となる配列または文字列。 |
-| numberToTake |はい |INT |取得する要素または文字の数。 この値が 0 以下である場合、空の配列または文字列が返されます。 指定された配列または文字列の長さを超える場合は、その配列または文字列のすべての要素が返されます。 |
+| numberToTake |はい |INT |取得する要素または文字の数。 この値が 0 以下である場合、空の配列または文字列が返されます。 指定された配列または文字列の長さを超過している場合は、その配列または文字列のすべての要素が返されます。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -922,49 +467,11 @@ Resource Manager では、Azure Resource Manager テンプレート (ARM テン�
 
 次の例では、指定した数の要素を配列から取得し、指定した数の文字を文字列から取得します。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "testArray": {
-      "type": "array",
-      "defaultValue": [
-        "one",
-        "two",
-        "three"
-      ]
-    },
-    "elementsToTake": {
-      "type": "int",
-      "defaultValue": 2
-    },
-    "testString": {
-      "type": "string",
-      "defaultValue": "one two three"
-    },
-    "charactersToTake": {
-      "type": "int",
-      "defaultValue": 2
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "arrayOutput": {
-      "type": "array",
-      "value": "[take(parameters('testArray'),parameters('elementsToTake'))]"
-    },
-    "stringOutput": {
-      "type": "string",
-      "value": "[take(parameters('testString'),parameters('charactersToTake'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/take.json":::
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | Type | 値 |
+| 名前 | 種類 | 値 |
 | ---- | ---- | ----- |
 | arrayOutput | Array | ["one", "two"] |
 | stringOutput | String | on |
@@ -977,11 +484,11 @@ Resource Manager では、Azure Resource Manager テンプレート (ARM テン�
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |配列またはオブジェクト |要素の結合に使用される 1 番目の値。 |
 | arg2 |はい |配列またはオブジェクト |要素の結合に使用される 2 番目の値。 |
-| 残りの引数 |いいえ |配列またはオブジェクト |要素の結合に使用される残りの値。 |
+| その他の引数 |いいえ |配列またはオブジェクト |要素の結合に使用されるその他の値。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -991,54 +498,11 @@ Resource Manager では、Azure Resource Manager テンプレート (ARM テン�
 
 次の例では、union を配列およびオブジェクトと共に使用する方法を示します。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "firstObject": {
-      "type": "object",
-      "defaultValue": {
-        "one": "a",
-        "two": "b",
-        "three": "c1"
-      }
-    },
-    "secondObject": {
-      "type": "object",
-      "defaultValue": {
-        "three": "c2",
-        "four": "d",
-        "five": "e"
-      }
-    },
-    "firstArray": {
-      "type": "array",
-      "defaultValue": [ "one", "two", "three" ]
-    },
-    "secondArray": {
-      "type": "array",
-      "defaultValue": [ "three", "four" ]
-    }
-  },
-  "resources": [
-  ],
-  "outputs": {
-    "objectOutput": {
-      "type": "object",
-      "value": "[union(parameters('firstObject'), parameters('secondObject'))]"
-    },
-    "arrayOutput": {
-      "type": "array",
-      "value": "[union(parameters('firstArray'), parameters('secondArray'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/array/union.json":::
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | Type | 値 |
+| 名前 | 種類 | 値 |
 | ---- | ---- | ----- |
 | objectOutput | Object | {"one": "a", "two": "b", "three": "c2", "four": "d", "five": "e"} |
 | arrayOutput | Array | ["one", "two", "three", "four"] |

@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 08/15/2020
 ms.author: iafinder
-ms.openlocfilehash: 7ba99bca79fe25a740d11cfe5d87937d13ccdfd0
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.openlocfilehash: 574118d9bd8c400eccb48ed551d6059c0dfc7bf2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122272340"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128551683"
 ---
 # <a name="migration-guide-for-gpu-compute-workloads-in-azure"></a>Azure での GPU コンピューティング ワークロードの移行ガイド
 
@@ -30,7 +30,7 @@ Azure では、お客様には特定の GPU VM 製品の選択に影響する複
 
 また、GPU アクセラレーションは急速に進化している新しい領域でもあります。
 
-したがって、この製品領域には真に汎用的な指針がないため、クラスタ化されたデプロイ モデルから単一の大規模 8 GPU VM への (あるいはその逆への) 移動、精度の低いデータ型の活用、マルチインスタンス GPU などの機能の採用など、移行のタイミングが、ワークロードへの潜在的な劇的な変化を再評価する上で最も適しています。
+したがって、この製品領域には真に汎用的な指針がないため、クラスター化されたデプロイ モデルから単一の大規模 8 GPU VM への (あるいはその逆への) 移動、精度の低いデータ型の活用、マルチインスタンス GPU などの機能の採用など、移行のタイミングが、ワークロードへの潜在的な劇的な変化を再評価する上で最も適しています。
 
 世代ごとの GPU パフォーマンスが既に劇的に増加しているのはどのような状況か、TensorCores の追加などによりパフォーマンスが桁違いに増加できる機能はどれかといった種類の検討は、極めてワークロードに固有のものです。
 
@@ -50,7 +50,7 @@ Azure では、お客様には特定の GPU VM 製品の選択に影響する複
 
 一般に、NC シリーズをご利用のお客様は、NC サイズから、NVIDIA Tesla T4 GPU で稼働する軽量ワークロード用の Azure の新しい GPU 高速プラットフォームである [NC T4 v3](./nct4-v3-series.md) サイズに直接移行することを検討する必要があります。ただし、InfiniBand 対応の NC シリーズ サイズで実行中のワークロードについては、他の VM SKU を検討する必要があります。
 
-| 現在の VM サイズ | ターゲットの VM サイズ | 仕様の違い | 
+| 現在の VM サイズ | 目標とする VM サイズ | 仕様の違い | 
 |---|---|---|
 Standard_NC6 <br> Standard_NC6_Promo | Standard_NC4as_T4_v3 <br>or<br>Standard_NC8as_T4 | CPU: Intel Haswell と AMD Rome<br>GPU 数: 1 (同じ)<br>GPU 世代: NVIDIA Keppler と Turing (+2 世代、~2x FP32 FLOPs)<br>GPU メモリ (GPU あたり GiB): 16 (+4)<br>vCPU: 4 (-2) または 8 (+2)<br>メモリ GiB: 16 (-40) または 56 (同じ)<br>一時ストレージ (SSD) GiB: 180 (-160) または 360 (+20)<br>最大データ ディスク数: 8 (-4) または 16 (+4)<br>高速ネットワーク: あり (+)<br>Premium Storage: あり (+)| 
 | Standard_NC24<br>Standard_NC24_Promo | Standard_NC64as_T4_v3* | CPU: Intel Haswell と AMD Rome<br>GPU 数: 4 (同じ)<br>GPU 世代: NVIDIA Keppler と Turing (+2 世代、~2x FP32 FLOPs)<br>GPU メモリ (GPU あたり GiB): 16 (+4)<br>vCPU: 64 (+40)<br>メモリ GiB: 440 (+216)<br>一時ストレージ (SSD) GiB: 2880 (+1440)<br>最大データ ディスク数: 32 (-32)<br>高速ネットワーク: あり (+)<br>Premium Storage: あり (+) | 
@@ -61,7 +61,7 @@ Standard_NC6 <br> Standard_NC6_Promo | Standard_NC4as_T4_v3 <br>or<br>Standard_N
 
 ND シリーズの仮想マシンは、AI やディープ ラーニングのワークロード向けに元々設計されたミッドレンジ プラットフォームです。 これらは旧型に比べて単精度浮動小数点演算が改善されたことによりバッチ推論に対して優れたパフォーマンスを提供し、NVIDIA Tesla P40 GPU と Intel Xeon E5-2690 v4 (Broadwell) CPU で稼働しています。 NC および NC v2 シリーズと同様に、ND シリーズでは RDMA を利用した低遅延で高スループットなセカンダリ ネットワーク、InfiniBand との接続性などを備えた構成が利用できます。これにより、多数の GPU を利用した大規模なトレーニング ジョブを実行できます。
 
-| 現在の VM サイズ | ターゲットの VM サイズ | 仕様の違い | 
+| 現在の VM サイズ | 目標とする VM サイズ | 仕様の違い | 
 |---|---|---|
 |Standard_ND6 | Standard_NC4as_T4_v3<br>or<br>Standard_NC8as_T4 | CPU: Intel Broadwell と AMD Rome<br>GPU 数: 1 (同じ)<br>GPU 世代: NVIDIA Pascal と Turing (+1 世代)<br>GPU メモリ (GPU あたり GiB): 16 (-8)<br>vCPU: 4 (-2) または 8 (+2)<br>メモリ GiB: 16 (-40) または 56 (-56)<br>一時ストレージ (SSD) GiB: 180 (-552) または 360 (-372)<br>最大データ ディスク数: 8 (-4) または 16 (+4)<br>高速ネットワーク: あり (+)<br>Premium Storage: あり (+) | 
 | Standard_ND12 | Standard_NC16as_T4_v3 | CPU: Intel Broadwell と AMD Rome<br>GPU 数: 1 (-1)<br>GPU 世代: NVIDIA Pascal と Turing (+1 世代)<br>GPU メモリ (GPU あたり GiB): 16 (-8)<br>vCPU: 16 (+4)<br>メモリ GiB: 110 (-114)<br>一時ストレージ (SSD) GiB: 360 (-1,114)<br>最大データ ディスク数: 48 (+16)<br>高速ネットワーク: あり (+)<br>Premium Storage: あり (+) | 
@@ -72,7 +72,7 @@ ND シリーズの仮想マシンは、AI やディープ ラーニングのワ�
 
 NC v2 シリーズの仮想マシンは、AI やディープ ラーニングのワークロード向けに元々設計された主力プラットフォームです。 これらは GPU あたりのパフォーマンスが元の NC シリーズの約 2 倍で、NVIDIA Tesla P100 GPU および Intel Xeon E5-2690 v4 (Broadwell) CPU で稼働し、ディープ ラーニングのトレーニングに対して優れたパフォーマンスを提供します。 NC および ND シリーズと同様に、NC v2 シリーズでは RDMA を利用した低遅延で高スループットなセカンダリ ネットワーク、InfiniBand との接続性などを備えた構成が利用できます。これにより、多数の GPU を利用した大規模なトレーニング ジョブを実行できます。
 
-| 現在の VM サイズ | ターゲットの VM サイズ | 仕様の違い | 
+| 現在の VM サイズ | 目標とする VM サイズ | 仕様の違い | 
 |---|---|---|
 | Standard_NC6s_v2 | Standard_NC6s_v3 | CPU: Intel Broadwell (同じ)<br>GPU 数: 1 (同じ)<br>GPU 世代: NVIDIA Pascal と Volta (+1 世代)<br>GPU メモリ (GPU あたり GiB): 16 (同じ)<br>vCPU: 6 (同じ)<br>メモリ GiB: 112 (同じ)<br>一時ストレージ (SSD) GiB: 736 (同じ)<br>最大データ ディスク数: 12 (同じ)<br>高速ネットワーク設定: なし (同じ)<br>Premium Storage: あり (+) | 
 | Standard_NC12s_v2 | Standard_NC12s_v3 | CPU: Intel Broadwell (同じ)<br>GPU 数: 2 (同じ)<br>GPU 世代: NVIDIA Pascal と Volta (+1 世代)<br>GPU メモリ (GPU あたり GiB): 16 (同じ)<br>vCPU: 12 (同じ)<br>メモリ GiB: 112 (同じ)<br>一時ストレージ (SSD) GiB: 1474 (同じ)<br>最大データ ディスク数: 24 (同じ)<br>高速ネットワーク設定: なし (同じ)<br>Premium Storage: あり (+) | 
@@ -112,7 +112,7 @@ NC v2 シリーズの仮想マシンは、AI やディープ ラーニングの�
 
 #### <a name="resize-the-current-virtual-machine"></a>現在の仮想マシンをサイズ変更する
 
-[Azure portal または PowerShell を使用して、仮想マシンのサイズを変更](./windows/resize-vm.md)できます。 また、[Azure CLI を使用して仮想マシンのサイズを変更する](./linux/change-vm-size.md)こともできます。
+[仮想マシンのサイズを変更](resize-vm.md)できます。 
 
 ## <a name="next-steps"></a>次のステップ
 

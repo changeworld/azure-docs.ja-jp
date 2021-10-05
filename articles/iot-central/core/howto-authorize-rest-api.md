@@ -7,12 +7,12 @@ ms.date: 08/25/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 9ba337203aedbc2b9f27c2147f68c1d810f57d23
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 39c96be31a8a8be0cf1c2fc4f16fcbfa7468cb41
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123479852"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128584239"
 ---
 # <a name="how-to-authenticate-and-authorize-iot-central-rest-api-calls"></a>IoT Central REST API 呼び出しを認証および承認する方法
 
@@ -63,13 +63,13 @@ az account get-access-token --resource https://apps.azureiotcentral.com
 
 ## <a name="get-an-api-token"></a>API トークンを取得する
 
-API トークンを取得するには、IoT Central UI または REST API 呼び出しを使用します。
+API トークンを取得するには、IoT Central UI または REST API 呼び出しを使用します。 ルート組織に関連付けられている管理者と、適切なロールに割り当てられているユーザーは、API トークンを作成できます。
 
 IoT Central UI を使用する場合:
 
 1. **[認証] > [API トークン]** に移動します。
 1. **[+ トークンの作成]** を選択します。
-1. トークンの名前を入力し、ロールを選択します。
+1. トークンの名前を入力し、ロールと[組織](howto-create-organizations.md)を選択します。
 1. **[Generate] \(生成)** を選択します。
 1. IoT Central に、次の例のようなトークンが表示されます。
 
@@ -77,7 +77,7 @@ IoT Central UI を使用する場合:
 
     API トークンを確認できるのは、この画面が表示されたときだけです。分からなくなった場合は、新しいものを生成する必要があります。
 
-API トークンの有効期間は、約 1 年間です。 IoT Central アプリケーションでは、組み込みとカスタムの両方のロールに対してトークンを生成できます。
+API トークンの有効期間は、約 1 年間です。 IoT Central アプリケーションでは、組み込みとカスタムの両方のロールに対してトークンを生成できます。 API トークンの作成時に選択した組織によって、API がアクセスできるデバイスが決まります。 アプリケーションに組織を追加する前に作成された API トークンは、ルート組織に関連付けられています。
 
 アクセスを取り消す必要がある場合は、IoT Central UI で API トークンを削除できます。
 
@@ -146,6 +146,9 @@ REST API を使用する場合:
     API トークンには、この応答を通じてのみアクセスできます。これを失った場合は、新しいものを生成する必要があります。
 
 REST API を使用すると、アプリケーションで API トークンを一覧表示したり、削除したりできます。
+
+> [!TIP]
+> [プレビュー API](/rest/api/iotcentral/1.1-previewdataplane/api-tokens) には、新しい[組織機能](howto-create-organizations.md)のサポートが含まれています。
 
 ## <a name="use-a-bearer-token"></a>ベアラー トークンを使用する
 

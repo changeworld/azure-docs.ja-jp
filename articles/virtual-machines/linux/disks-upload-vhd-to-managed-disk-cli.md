@@ -4,16 +4,16 @@ description: Azure CLI を使用して、直接アップロードによって Az
 services: virtual-machines,storage
 author: roygara
 ms.author: rogarana
-ms.date: 06/29/2021
+ms.date: 09/07/2021
 ms.topic: how-to
 ms.service: storage
 ms.subservice: disks
-ms.openlocfilehash: e78998d089ffe6446e9b7dbdf898b2d4ee4ba3a1
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 08c58a65a8801646d0dd6d0bd51bbab8d57d97e9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122694931"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124754604"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-cli"></a>VHD を Azure にアップロードするか、他のリージョンにマネージド ディスクをコピーする - Azure CLI
 
@@ -51,10 +51,10 @@ GUI を使用してディスクをアップロードする場合は、Azure Stor
 `<yourdiskname>`、`<yourresourcegroupname>`、`<yourregion>` をご自身で選んだ値に置き換えます。 `--upload-size-bytes` パラメーターには例の値 `34359738880` が含まれており、それを適切な値に置き換えます。
 
 > [!TIP]
-> OS ディスクを作成する場合は、--hyper-v-generation <yourGeneration> を `az disk create` に追加します。
+> OS ディスクを作成する場合は、`--hyper-v-generation <yourGeneration>` を `az disk create` に追加します。
 
 ```azurecli
-az disk create -n <yourdiskname> -g <yourresourcegroupname> -l <yourregion> --for-upload --upload-size-bytes 34359738880 --sku standard_lrs
+az disk create -n <yourdiskname> -g <yourresourcegroupname> -l <yourregion> --os-type Linux --for-upload --upload-size-bytes 34359738880 --sku standard_lrs
 ```
 
 Premium SSD または Standard SSD のいずれかをアップロードする場合は、**standard_lrs** を **premium_LRS** または **standardssd_lrs** のいずれかに置き換えます。 現時点では、Ultra ディスクはサポートされていません。
@@ -107,7 +107,7 @@ az disk revoke-access -n <yourdiskname> -g <yourresourcegroupname>
 `<sourceResourceGroupHere>`、`<sourceDiskNameHere>`、`<targetDiskNameHere>`、`<targetResourceGroupHere>`、`<yourTargetLocationHere>` (場所の値の例: uswest2) を実際の値に置き換えたら、次のスクリプトを実行してマネージド ディスクをコピーします。
 
 > [!TIP]
-> OS ディスクを作成する場合は、--hyper-v-generation <yourGeneration> を `az disk create` に追加します。
+> OS ディスクを作成する場合は、`--hyper-v-generation <yourGeneration>` を `az disk create` に追加します。
 
 ```azurecli
 sourceDiskName=<sourceDiskNameHere>
@@ -115,10 +115,12 @@ sourceRG=<sourceResourceGroupHere>
 targetDiskName=<targetDiskNameHere>
 targetRG=<targetResourceGroupHere>
 targetLocation=<yourTargetLocationHere>
+#Expected value for OS is either "Windows" or "Linux"
+targetOS=<yourOSTypeHere>
 
 sourceDiskSizeBytes=$(az disk show -g $sourceRG -n $sourceDiskName --query '[diskSizeBytes]' -o tsv)
 
-az disk create -g $targetRG -n $targetDiskName -l $targetLocation --for-upload --upload-size-bytes $(($sourceDiskSizeBytes+512)) --sku standard_lrs
+az disk create -g $targetRG -n $targetDiskName -l $targetLocation --os-type $targetOS --for-upload --upload-size-bytes $(($sourceDiskSizeBytes+512)) --sku standard_lrs
 
 targetSASURI=$(az disk grant-access -n $targetDiskName -g $targetRG  --access-level Write --duration-in-seconds 86400 -o tsv)
 

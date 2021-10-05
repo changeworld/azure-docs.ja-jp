@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 08/17/2021
+ms.date: 09/09/2021
 ms.author: b-juche
-ms.openlocfilehash: 30b00320e9273ecb010239d66a3c056d3f95f332
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: aa47a6b9caaba4b23202390b0cb45a2392b985ea
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122397694"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124764407"
 ---
 # <a name="create-and-manage-active-directory-connections-for-azure-netapp-files"></a>Azure NetApp Files の Active Directory 接続の作成と管理
 
@@ -120,6 +120,7 @@ Azure NetApp Files では、以下の追加の考慮事項が適用されます�
 * Azure NetApp Files では、`user` と `resource forest` の種類がサポートされています。
 * 同期の種類では、`All` または `Scoped` を選択できます。   
     `Scoped` を選択した場合、SMB 共有にアクセスするための正しい Azure AD グループが選択されていることを確認してください。  不明な場合は、`All` の同期の種類を使用できます。
+* デュアルプロトコル ボリュームで AADDS を使用する場合、POSIX 属性を適用するにはカスタム OU 内にいる必要があります。 詳細については、「[LDAP POSIX 属性を管理する](create-volumes-dual-protocol.md#manage-ldap-posix-attributes)」を参照してください。
 
 Active Directory 接続を作成する場合は、次のような AADDS の詳細を確認してください。
 
@@ -251,6 +252,29 @@ DNS サーバーでは、Active Directory 接続を構成する際に 2 つの I
         ```
         
         また、[Azure CLI のコマンド](/cli/azure/feature) `az feature register` と `az feature show` を使用して、機能を登録し、登録状態を表示することもできます。  
+
+    * **Administrators** 
+
+        ボリュームに対する管理者権限が付与されるユーザーまたはグループを指定できます。 
+
+        ![[Active Directory 接続] ウィンドウの [管理者] ボックスを示すスクリーンショット。](../media/azure-netapp-files/active-directory-administrators.png) 
+        
+        現在、 **[管理者]** 機能はプレビュー段階にあります。 この機能を初めて使用する場合は、使用する前に機能を登録してください。 
+
+        ```azurepowershell-interactive
+        Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFAdAdministrators
+        ```
+
+        機能の登録の状態を確認します。 
+
+        > [!NOTE]
+        > **RegistrationState** が `Registering` 状態から `Registered` に変化するまでに最大 60 分間かかる場合があります。 この状態が `Registered` になってから続行してください。
+
+        ```azurepowershell-interactive
+        Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFAdAdministrators
+        ```
+        
+        また、[Azure CLI のコマンド](/cli/azure/feature) `az feature register` と `az feature show` を使用して、機能を登録し、登録状態を表示することもできます。 
 
     * **ユーザー名** や **パスワード** などの資格情報
 

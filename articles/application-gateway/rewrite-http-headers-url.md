@@ -1,18 +1,17 @@
 ---
-title: Azure Application Gateway で HTTP ヘッダーと URL を書き換える | Microsoft Docs
+title: Azure Application Gateway で HTTP ヘッダーと URL を書き換える
 description: この記事では、Azure Application Gateway での HTTP ヘッダーと URL の書き換えの概要を説明します
-services: application-gateway
 author: azhar2005
 ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 04/05/2021
 ms.author: azhussai
-ms.openlocfilehash: b7cf7c98e71da215eb30dcab556a88d6d2701591
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: c4e4af8fb14c48988a593261365dcfde6c7a0657
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107789449"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128577281"
 ---
 # <a name="rewrite-http-headers-and-url-with-application-gateway"></a>Application Gateway で HTTP ヘッダーと URL を書き換える
 
@@ -123,7 +122,7 @@ Application Gateway では、サーバー変数を使用して、サーバー、
 | sent_bytes                | クライアントに送信されたバイト数。                        |
 | server_port               | 要求を受け付けたサーバーのポート。              |
 | ssl_connection_protocol   | 確立された TLS 接続のプロトコル。               |
-| ssl_enabled               | 接続が TLS モードで動作する場合は “オン”。 それ以外の場合は、空の文字列です。 |
+| ssl_enabled               | 接続が TLS モードで動作する場合は "オン"。 それ以外の場合は、空の文字列です。 |
 | uri_path                  | Web クライアントがアクセスする必要があるホスト内の特定のリソースを識別します。 これは、引数を含まない要求 URI の部分です。 例: 要求 `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` では、uri_path 値は `/article.aspx` になります |
 
 ### <a name="mutual-authentication-server-variables-preview"></a>相互認証サーバー変数 (プレビュー)
@@ -139,7 +138,7 @@ Application Gateway は、相互認証のシナリオに対して次のサーバ
 | client_certificate_serial | 確立された SSL 接続用のクライアント証明書のシリアル番号。  |
 | client_certificate_start_date| クライアント証明書の開始日。 |
 | client_certificate_subject| 確立された SSL 接続のクライアント証明書の "サブジェクトの DN" 文字列。 |
-| client_certificate_verification| クライアント証明書検証の結果: *SUCCESS*、*FAILED:<reason>* 、証明書が存在しない場合は *NONE*。 | 
+| client_certificate_verification| クライアント証明書検証の結果: *SUCCESS*、*FAILED:\<reason\>* 、証明書が存在しない場合は *NONE*。 | 
 
 ## <a name="rewrite-configuration"></a>書き換えの構成
 

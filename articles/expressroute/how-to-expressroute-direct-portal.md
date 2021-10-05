@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 05/05/2021
 ms.author: duau
-ms.openlocfilehash: b659fee979fd936a85c0cd5a711390594bbe79b1
-ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
+ms.openlocfilehash: d5b7bba4774eb81c684875a4db9ffb1afb2a60aa
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108795766"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124811232"
 ---
 # <a name="create-expressroute-direct-using-the-azure-portal"></a>Azure portal を使用して ExpressRoute Direct を作成する
 
@@ -135,4 +135,4 @@ ExpressRoute Direct のワークフローから ExpressRoute 回線を作成す�
 
 ## <a name="next-steps"></a>次のステップ
 
-ExpressRoute Direct について詳しくは、[概要](expressroute-erdirect-about.md)のページをご覧ください。
+ExpressRoute 回線の作成後、[仮想ネットワークを ExpressRoute 回線にリンク](expressroute-howto-add-gateway-portal-resource-manager.md)できます。

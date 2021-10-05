@@ -3,16 +3,20 @@ title: Bicep を使用してテナントにリソースをデプロイする
 description: Bicep ファイルでテナント スコープにリソースをデプロイする方法について説明します。
 ms.topic: conceptual
 ms.date: 07/19/2021
-ms.openlocfilehash: 3f446670cd85daa5b541cc9b5858ab768ac8411d
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: fe5b8a1a17af47570bb2399172866a1e720b0bab
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114453411"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124793723"
 ---
 # <a name="tenant-deployments-with-bicep-file"></a>Bicep ファイルを使用したテナントのデプロイ
 
 組織が成熟するにつれて、[ポリシー](../../governance/policy/overview.md)または [Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) を定義し、Azure AD テナント全体に割り当てる必要性が生じることがあります。 テナント レベルのテンプレートを使用すると、宣言によってポリシーを適用し、グローバル レベルでロールを割り当てることができます。
+
+### <a name="microsoft-learn"></a>Microsoft Learn
+
+デプロイ スコープの詳細およびハンズオン ガイダンスについては、**Microsoft Learn** の「[Bicep を使用してサブスクリプション、管理グループ、テナントにリソースをデプロイする](/learn/modules/deploy-resources-scopes-bicep/)」を参照してください。
 
 ## <a name="supported-resources"></a>サポートされているリソース
 

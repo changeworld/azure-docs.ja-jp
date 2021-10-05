@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 07/06/2021
+ms.date: 09/09/2021
 ms.author: lajanuar
-ms.openlocfilehash: 18a9d2efa3093dd342e05f1c9038fa7f460d97bd
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: d430d7f2db90c4051201b7e9805cde1f4138e7f0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113358923"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124793298"
 ---
 # <a name="translator-v30"></a>Translator v3.0
 
@@ -23,17 +23,17 @@ ms.locfileid: "113358923"
 
 Translator のバージョン 3 には、最新の JSON ベースの Web API が用意されています。 既存の機能をより少ない操作に統合することによって、使いやすさとパフォーマンスが向上しています。また、新機能が用意されています。
 
- * ある言語のテキストを、ある書記体系から別の書記体系に変換する音訳。
- * 1 つの要求での複数言語への翻訳。
- * 1 つの要求での言語の検出、翻訳、および音訳。
- * 用語の翻訳候補を検索し、逆翻訳やコンテキスト内で使用されている用語を示す例を見つけるための辞書。
- * 多くの情報が得られる言語検出結果。
+* ある言語のテキストを、ある書記体系から別の書記体系に変換する音訳。
+* 1 つの要求での複数言語への翻訳。
+* 1 つの要求での言語の検出、翻訳、および音訳。
+* 用語の翻訳候補を検索し、逆翻訳やコンテキスト内で使用されている用語を示す例を見つけるための辞書。
+* 多くの情報が得られる言語検出結果。
 
 ## <a name="base-urls"></a>ベース URL
 
 Microsoft Translator のサービスは、複数のデータセンター拠点から提供されます。 現在、それらの拠点は、10 の [Azure 地域](https://azure.microsoft.com/global-infrastructure/regions)に存在します。
 
-* **アメリカ合衆国:** 米国東部、米国中南部、米国中西部、および米国西部 2 
+* **アメリカ合衆国:** 米国東部、米国中南部、米国中西部、および米国西部 2
 * **アジア太平洋:** 韓国南部、東日本、東南アジア、オーストラリア東部
 * **ヨーロッパ:** 北ヨーロッパ、西ヨーロッパ
 
@@ -61,7 +61,7 @@ curl -X POST " my-ch-n.cognitiveservices.azure.com/translator/text/v3.0/translat
 
 ## <a name="authentication"></a>認証
 
-Azure Cognitive Services の Translator または [Cognitive Services マルチサービス](https://azure.microsoft.com/pricing/details/cognitive-services/)をサブスクライブし、(Azure portal で入手できる) お客様のサブスクリプション キーを使用して認証します。 
+Azure Cognitive Services の Translator または [Cognitive Services マルチサービス](https://azure.microsoft.com/pricing/details/cognitive-services/)をサブスクライブし、(Azure portal で入手できる) お客様のサブスクリプション キーを使用して認証します。
 
 お客様のサブスクリプションの認証に使用できるヘッダーは 3 つあります。 次の表は、それぞれの使用方法を示しています。
 
@@ -115,7 +115,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 #### <a name="authenticating-with-a-multi-service-resource"></a>マルチサービス リソースを使用した認証
 
-Cognitive Service のマルチサービス リソースを使用する場合。 この場合、単一の秘密鍵を使用して複数のサービスの要求を認証することができます。 
+Cognitive Service のマルチサービス リソースを使用する場合。 この場合、単一の秘密鍵を使用して複数のサービスの要求を認証することができます。
 
 マルチサービスの秘密鍵を使用するときは、2 つの認証ヘッダーをお客様の要求に含める必要があります。 Translator を呼び出すために必要なヘッダーが 2 つあります。
 
@@ -131,6 +131,7 @@ Cognitive Service のマルチサービス リソースを使用する場合。 
 クエリ文字列のパラメーター `Subscription-Key` で秘密鍵を渡す場合、クエリ パラメーター `Subscription-Region` でリージョンを指定する必要があります。
 
 ### <a name="authenticating-with-an-access-token"></a>アクセス トークンを使用した認証
+
 または、お客様の秘密鍵をアクセス トークンと交換する方法もあります。 このトークンをそれぞれの要求に `Authorization` ヘッダーとして含めます。 承認トークンを取得するには、次の URL に `POST` 要求を送信します。
 
 | リソースの種類     | 承認サービスの URL                                |
@@ -156,9 +157,85 @@ Authorization: Bearer <Base64-access_token>
 
 認証トークンは 10 分間有効です。 Translator に対して複数の呼び出しを行う場合は、このトークンを再利用する必要があります。 ただし、プログラムで、長時間にわたって Translator に要求を行う場合は、一定間隔 (たとえば、8 分ごと) でプログラムから新しいアクセス トークンを要求する必要があります。
 
+## <a name="authentication-with-azure-active-directory-azure-ad"></a>Azure Active Directory による認証 (Azure AD)
+
+ Translator v3.0 では、Microsoft のクラウドベースの ID およびアクセス管理ソリューションである Azure AD 認証がサポートされています。  Authorization ヘッダーにより、Translator サービスは、要求元のクライアントがリソースを使用することと要求を完了することを許可されているかどうかを検証できます。
+
+### <a name="prerequisites"></a>**前提条件**
+
+* [**Azure Active Directory を使用して認証する**](/azure/cognitive-services/authentication?tabs=powershell#authenticate-with-azure-active-directory)方法についての大まかな理解。
+
+* [**マネージド ID へのアクセスを認証する**](/azure/cognitive-services/authentication?tabs=powershell#authorize-access-to-managed-identities)方法についての大まかな理解。
+
+### <a name="headers"></a>**ヘッダー**
+
+|ヘッダー|値|
+|:-----|:----|
+|承認| 値は、Azure AD によって生成されるアクセス **ベアラー トークン** です。</br><ul><li> ベアラー トークンは、認証の証明を提供し、リソースを使用するためのクライアントの承認を検証します。</li><li> 認証トークンは 10 分間有効であり、Translator を複数回呼び出す場合に再利用する必要があります。</br></li>前述の「[アクセス トークンを使用した認証](#authenticating-with-an-access-token)」を "*参照してください*"。 </ul>|
+|Ocp-Apim-Subscription-Region| 値は、**Translator リソース** のリージョンです。</br><ul><li> リソースがグローバルの場合、この値は省略可能です。</li></ul>|
+|Ocp-Apim-ResourceId| 値は、Translator リソース インスタンスのリソース ID です。</br><ul><li>リソース ID は、Azure portal の **[Translator Resource]\(翻訳者リソース\) → [プロパティ]** で確認できます。 </li><li>リソース ID の形式: </br>/subscriptions/<**subscriptionId**>/resourceGroups/<**resourceGroupName**>/providers/Microsoft.CognitiveServices/accounts/<**resourceName**>/</li></ul>|
+
+##### <a name="translator-property-pageazure-portal"></a>**Translator のプロパティ ページ - Azure portal**
+
+:::image type="content" source="../media/managed-identities/resource-id-property.png" alt-text="スクリーンショット: Azure portal の Translator のプロパティ ページ。":::
+
+### <a name="examples"></a>**使用例**
+
+#### <a name="using-the-global-endpoint"></a>**グローバル エンドポイントを使用する**
+
+```curl
+ // Using headers, pass a bearer token generated by Azure AD, resource ID, and the region.
+
+curl -X POST "https://api.cognitive.microsofttranslator.com/translator/text/v3.0/translate?api-version=3.0&to=es" \
+     -H "Authorization: Bearer <Base64-access_token>"\
+     -H "Ocp-Apim-ResourceId: <Resource ID>" \
+     -H "Ocp-Apim-Subscription-Region: <your-region>" \
+     -H "Content-Type: application/json" \
+     -data-raw "[{'Text':'Hello, friend.'}]"
+```
+
+#### <a name="using-your-custom-endpoint"></a>**カスタム エンドポイントを使用する**
+
+```curl
+// Using headers, pass a bearer token generated by Azure AD.
+
+curl -X POST https://<your-custom-domain>.cognitiveservices.azure.com/translator/text/v3.0/translate?api-version=3.0&to=es \
+     -H "Authorization: Bearer <Base64-access_token>"\
+     -H "Content-Type: application/json" \
+     -data-raw "[{'Text':'Hello, friend.'}]"
+```
+
+### <a name="examples-using-managed-identities"></a>**マネージド ID を使用する例**
+
+Translator v3.0 では、マネージド ID へのアクセスの承認もサポートされています。 マネージド ID が Translator リソースに対して有効になっている場合は、マネージド ID によって生成されたベアラー トークンを要求ヘッダーで渡すことができます。
+
+#### <a name="with-the-global-endpoint"></a>**グローバル エンドポイントを使用する**
+
+```curl
+// Using headers, pass a bearer token generated either by Azure AD or Managed Identities, resource ID, and the region.
+
+curl -X POST https://api.cognitive.microsofttranslator.com/translator/text/v3.0/translate?api-version=3.0&to=es \
+     -H "Authorization: Bearer <Base64-access_token>"\
+     -H "Ocp-Apim-ResourceId: <Resource ID>" \
+     -H "Ocp-Apim-Subscription-Region: <your-region>" \
+     -H "Content-Type: application/json" \
+     -data-raw "[{'Text':'Hello, friend.'}]"
+```
+
+#### <a name="with-your-custom-endpoint"></a>**カスタム エンドポイントを使用する**
+
+```curl
+//Using headers, pass a bearer token generated by Managed Identities.
+
+curl -X POST https://<your-custom-domain>.cognitiveservices.azure.com/translator/text/v3.0/translate?api-version=3.0&to=es \
+     -H "Authorization: Bearer <Base64-access_token>"\
+     -H "Content-Type: application/json" \
+     -data-raw "[{'Text':'Hello, friend.'}]"
+```
+
 ## <a name="virtual-network-support"></a>仮想ネットワークのサポート
 
-翻訳サービスは、Azure パブリック クラウドのすべてのリージョンの Virtual Network (VNET) 機能で使用できるようになりました。 Virtual Network を有効にするには、[Azure Cognitive Services 仮想ネットワークを構成する](../../cognitive-services-virtual-networks.md?tabs=portal)方法に関するページを "*参照*" してください。 
+翻訳サービスは、Azure パブリック クラウドのすべてのリージョンの Virtual Network (VNET) 機能で使用できるようになりました。 Virtual Network を有効にするには、[Azure Cognitive Services 仮想ネットワークを構成する](../../cognitive-services-virtual-networks.md?tabs=portal)方法に関するページを "*参照*" してください。
 
 この機能を有効にした後、カスタム エンドポイントを使用して Translator を呼び出す必要があります。 グローバル トランスレーター エンドポイント ("api.cognitive.microsofttranslator.com") は使用できず、アクセス トークンで認証することはできません。
 
@@ -241,7 +318,7 @@ curl -X POST "https://<your-custom-domain>.cognitiveservices.azure.com/translato
 | 500000| 予期しないエラーが発生しました。 エラーが解決しない場合は、エラーの発生日時と応答ヘッダーの要求識別子 X-RequestID、要求ヘッダーのクライアント識別子 X-ClientTraceID を添えてその旨をご報告ください。|
 | 503000| サービスが一時的に利用できません。 再試行してください。 エラーが解決しない場合は、エラーの発生日時と応答ヘッダーの要求識別子 X-RequestID、要求ヘッダーのクライアント識別子 X-ClientTraceID を添えてその旨をご報告ください。|
 
-## <a name="metrics"></a>メトリック 
+## <a name="metrics"></a>メトリック
 メトリックを使用すると、次のスクリーンショットに示すように、Azure portal の [メトリック] セクションで、トランスレーターの使用状況と可用性の情報を表示できます。 詳細については、[データとプラットフォームのメトリック](../../../azure-monitor/essentials/data-platform-metrics.md)に関するページを参照してください。
 
 ![トランスレーター メトリック](../media/translatormetrics.png)

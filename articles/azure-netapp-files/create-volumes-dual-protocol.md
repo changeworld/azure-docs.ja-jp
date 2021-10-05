@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 08/06/2021
+ms.date: 09/16/2021
 ms.author: b-juche
-ms.openlocfilehash: 33e01466a3e0629af9a691e33eb9161bf8098611
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a37ce583e5392099c923e9bc0a7a3363fa7b97c0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121751428"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128576855"
 ---
 # <a name="create-a-dual-protocol-volume-for-azure-netapp-files"></a>Azure NetApp Files のデュアルプロトコル ボリュームを作成する
 
@@ -112,7 +112,7 @@ NFS ボリュームを作成するには、[NFS ボリュームの作成](azure-
 
     * 既存のスナップショット ポリシーをボリュームに適用する場合は、 **[詳細セクションの表示]** をクリックして展開し、スナップショットのパスを非表示にするかどうかを指定して、プルダウン メニューでスナップショット ポリシーを選択します。 
 
-        スナップショット ポリシーの作成については、「[スナップショット ポリシーを管理する](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies)」を参照してください。
+        スナップショット ポリシーの作成については、「[スナップショット ポリシーを管理する](snapshots-manage-policy.md)」を参照してください。
 
         ![詳細セクションの表示](../media/azure-netapp-files/volume-create-advanced-selection.png)
 
@@ -174,7 +174,7 @@ NFS ボリュームを作成するには、[NFS ボリュームの作成](azure-
         Kerberos の場合は追加の構成が必要です。 [NFSv4.1 Kerberos 暗号化の構成](configure-kerberos-encryption.md)に関する記事の手順に従います。
 
     *  必要に応じて **[Unix Permissions]\(Unix のアクセス許可\)** をカスタマイズして、マウント パスの変更アクセス許可を指定します。 この設定は、マウント パスの下のファイルには適用されません。 既定の設定は `0770` です。 この既定の設定では、所有者とグループに読み取り、書き込み、実行のアクセス許可が付与されますが、他のユーザーにはアクセス許可は付与されません。     
-        **[Unix Permissions]\(Unix のアクセス許可\)** の設定には、登録の要件と考慮事項が適用されます。 [Unix のアクセス許可の構成と所有権モードの変更](configure-unix-permissions-change-ownership-mode.md)に関する記事の手順に従ってください。  
+        **[Unix のアクセス許可]** の設定には、登録の要件と考慮事項が適用されます。 [Unix のアクセス許可の構成と所有権モードの変更](configure-unix-permissions-change-ownership-mode.md)に関する記事の手順に従ってください。  
 
     * 必要に応じて、[ボリュームのエクスポート ポリシーを構成します](azure-netapp-files-configure-export-policy.md)。
 
@@ -203,16 +203,24 @@ Active Directory 接続で **[LDAP を使用するローカル NFS ユーザー�
 
 ## <a name="manage-ldap-posix-attributes"></a>LDAP POSIX 属性を管理する
 
-Active Directory ユーザーとコンピューター MMC スナップインを使用して、UID、ホーム ディレクトリ、その他の値などの POSIX 属性を管理できます。  次の例は、Active Directory の属性エディターを示しています。  
+Active Directory ユーザーとコンピューター MMC スナップインを使用して、UID、ホーム ディレクトリ、その他の値などの POSIX 属性を管理できます。  次の例は、Active Directory の属性エディターを示しています。 
 
 ![Active Directory の属性エディター](../media/azure-netapp-files/active-directory-attribute-editor.png) 
 
 LDAP ユーザーおよび LDAP グループには、次の属性を設定する必要があります。 
 * LDAP ユーザーに必要な属性:   
-    `uid: Alice`, `uidNumber: 139`, `gidNumber: 555`, `objectClass: posixAccount`
+    `uid: Alice`,  
+    `uidNumber: 139`,  
+    `gidNumber: 555`,  
+    `objectClass: user, posixAccount`
 * LDAP グループに必要な属性:   
-    `objectClass: posixGroup`, `gidNumber: 555`
+    `objectClass: group, posixGroup`,  
+    `gidNumber: 555`
 * すべてのユーザーとグループには、それぞれ一意の `uidNumber` と `gidNumber` が必要です。 
+
+`objectClass` に指定された値は、個別のエントリです。 たとえば、複数値の文字列エディターでは、`objectClass` には、次のように LDAP ユーザーとして個別の値 (`user` と `posixAccount`) が指定されます。   
+
+![オブジェクト クラスに指定された複数の値を示している複数値の文字列エディターのスクリーンショット。](../media/azure-netapp-files/multi-valued-string-editor.png) 
 
 Azure Active Directory Domain Services (AADDS) では、組織の AADDC Users OU で作成されたユーザーとグループの POSIX 属性を変更することはできません。 回避策として、カスタム OU を作成し、カスタム OU にユーザーとグループを作成することができます。
 

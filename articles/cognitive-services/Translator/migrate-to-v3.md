@@ -10,17 +10,17 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: lajanuar
-ms.openlocfilehash: 13c4d39284fad293c945f8b7e31076dccee84fda
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2e64e0699be0c53a7f515574be63deb613d04bfe
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98896835"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124750762"
 ---
 # <a name="translator-v2-to-v3-migration"></a>Translator V2 から V3 への移行
 
 > [!NOTE]
-> V2 は、2018 年 4 月 30 日に非推奨となりました。 V3 で独占的に使用できる新しい機能を活用するためにアプリケーションを V3 に移行してください。 V2 は 2021 年 5 月 24 日に廃止される予定です。 
+> V2 は、2018 年 4 月 30 日に非推奨となりました。 V3 で独占的に使用できる新しい機能を活用するためにアプリケーションを V3 に移行してください。 V2 は 2021 年 5 月 24 日に廃止されました。 
 
 Microsoft Translator チームは Translator のバージョン 3 (V3) をリリースしました。 このリリースには、新しい機能、非推奨になったメソッド、Microsoft Translator Service との間でデータを送受信するための新しい形式が含まれています。 このドキュメントでは、V3 を使用するためにアプリケーションを変更する方法に関する情報を提供します。 
 

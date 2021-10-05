@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/25/2021
+ms.date: 09/13/2021
 ms.author: b-juche
-ms.openlocfilehash: fc5d979c0c89c6f331e6b48fa1ffba30b5a91eb2
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 4311070b594b7cfadde4845bf7e9f8380b8657bf
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122970323"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128577016"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Azure NetApp Files を使用したソリューション アーキテクチャ
 この記事では、Azure NetApp Files を使用するためのソリューション アーキテクチャを理解するうえで役立つベスト プラクティスへの参照を提供します。  
@@ -34,6 +34,7 @@ ms.locfileid: "122970323"
 
 ### <a name="oracle"></a>Oracle
 
+* [Azure NetApp Files を使用した Oracle Database - Azure シナリオ例](/azure/architecture/example-scenario/file-storage/oracle-azure-netapp-files)
 * [Azure NetApp Files を使用した Microsoft Azure 上の Oracle Database](https://www.netapp.com/media/17105-tr4780.pdf)
 * [Microsoft Azure での Oracle VM イメージとそのデプロイ:共有ストレージの構成オプション](../virtual-machines/workloads/oracle/oracle-vm-solutions.md#shared-storage-configuration-options)
 * [Azure NetApp Files の単一ボリュームでの Oracle データベースのパフォーマンス](performance-oracle-single-volumes.md)
@@ -58,6 +59,7 @@ ms.locfileid: "122970323"
 
 ### <a name="sql-server"></a>SQL Server
 
+* [Azure NetApp Files を使用した Azure Virtual Machines 上の SQL Server - Azure シナリオ例](/azure/architecture/example-scenario/file-storage/sql-server-azure-netapp-files)
 * [Azure NetApp Files を使用した Azure での SQL Server のデプロイ ガイド](https://www.netapp.com/pdf.html?item=/media/27154-tr-4888.pdf)
 * [SQL Server のデプロイに Azure NetApp Files を使用する利点](solutions-benefits-azure-netapp-files-sql-server.md)
 * [Azure NetApp Files を使用して SMB 経由で SQL Server をデプロイする](https://www.youtube.com/watch?v=x7udfcYbibs)
@@ -85,6 +87,7 @@ ms.locfileid: "122970323"
 * [Red Hat Enterprise Linux 上で Azure NetApp Files を使用した Azure VM のスタンバイ ノードを使用して SAP HANA をスケールアウトする](../virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel.md)
 * [RHEL での HSR と Pacemaker を使用した SAP HANA スケールアウト - Azure Virtual Machines](../virtual-machines/workloads/sap/sap-hana-high-availability-scale-out-hsr-rhel.md)
 * [Azure アプリケーション整合性スナップショット ツール (AzAcSnap)](azacsnap-introduction.md)
+* [Azure NetApp Files を使用した SAP HANA のディザスター リカバリー](https://docs.netapp.com/us-en/netapp-solutions-sap/pdfs/sidebar/SAP_HANA_Disaster_Recovery_with_Azure_NetApp_Files.pdf)
 
 ### <a name="sap-anydb"></a>SAP AnyDB
 
@@ -171,6 +174,11 @@ ms.locfileid: "122970323"
 * [Azure NetApp Files + Trident = Kubernetes 用の動的および永続的ストレージ](https://anfcommunity.com/2021/02/16/azure-netapp-files-trident-dynamic-and-persistent-storage-for-kubernetes/)
 * [Trident - コンテナー用のストレージ オーケストレーター](https://netapp-trident.readthedocs.io/en/stable-v20.04/kubernetes/operations/tasks/backends/anf.html)
 * [Azure Kubernetes Service (AKS) の Magento eコマース プラットフォーム](/azure/architecture/example-scenario/magento/magento-azure)
+
+### <a name="azure-red-hat-openshift"></a>Azure Red Hat Openshift   
+
+*   [Trident を使用して OpenShift から Azure NetApp Files を自動化](https://techcommunity.microsoft.com/t5/fasttrack-for-azure/using-trident-to-automate-azure-netapp-files-from-openshift/ba-p/2367351)
+
 
 ### <a name="azure-batch"></a>Azure Batch
 

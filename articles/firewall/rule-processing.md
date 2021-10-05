@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 06/07/2021
+ms.date: 09/28/2021
 ms.author: victorh
-ms.openlocfilehash: 30ae9e7bf915e558a806d9297fbcc35700b64ce1
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: 2dbcb4d42372c97b12d4a71ef43ee1e10f1232bf
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111571083"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129209549"
 ---
 # <a name="configure-azure-firewall-rules"></a>Azure Firewall 規則を構成する
 従来の規則か Firewall Policy を使用して、Azure Firewall で NAT 規則、ネットワーク規則、アプリケーション規則を設定できます。 Azure Firewall では既定ですべてのトラフィックを拒否します。トラフィックを許可するには、手動で規則を設定する必要があります。
@@ -159,6 +159,14 @@ TLS インスペクションを含む Application 規則では、ファイアウ
 ## <a name="rule-changes"></a>ルールの変更
 
 以前に許可されたトラフィックを拒否するようにルールを変更すると、関連する既存のセッションがすべて削除されます。
+
+## <a name="3-way-handshake-behavior"></a>3 方向ハンドシェイクの動作
+
+ステートフル サービスとして、Azure Firewall では、送信元から送信先への許可されたトラフィックに対する TCP 3 方向ハンドシェイクを行います。たとえば、VNet-A から VNet-B などです。
+
+VNet-A から VNet-B への許可規則を作成しても、VNet-B から VNet-A への新たに開始される接続が許可されるわけではありません。
+
+そのため、VNet-B から VNet-A への明示的な拒否規則を作成する必要はありません。 この拒否規則を作成すると、VNet-A から VNet-B への最初の許可規則の 3 方向ハンドシェイクを中断することになります。 
 
 ## <a name="next-steps"></a>次のステップ
 

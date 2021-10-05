@@ -9,13 +9,13 @@ ms.topic: how-to
 author: AlainDormehlMSFT
 ms.author: aldorme
 ms.reviewer: mathoma, wiassaf
-ms.date: 04/06/2020
-ms.openlocfilehash: 058e602568083471cc5e0053dea0ed77b0b9474f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/21/2021
+ms.openlocfilehash: 9452b12a8ad26ec2da5c488dc83f624863a4c647
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121741251"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128582565"
 ---
 # <a name="configure-streaming-export-of-azure-sql-database-and-sql-managed-instance-diagnostic-telemetry"></a>Azure SQL Database および SQL Managed Instance 診断テレメトリのストリーミング エクスポートを構成する
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -462,7 +462,10 @@ Azure SQL Analytics を使用している場合は、Azure SQL Analytics のナ�
 
 <sup>1</sup> このメトリックはDTUベースの購入モデルに対して、仮想コア購入モデル（２仮想コア以上）または200DUT以上を使用しているデータベースで使用可能です。
 
-<sup>1</sup> このメトリックはDTUベースの購入モデルに対して、仮想コア購入モデル（2仮想コア以上）または200DUT以上を使用しているデータベースで使用可能です。 ハイパースケールデータベースおよびデータウェアハウスでは、このメトリックは現在使用できません。
+<sup>1</sup> このメトリックはDTUベースの購入モデルに対して、仮想コア購入モデル（2仮想コア以上）または200DUT以上を使用しているデータベースで使用可能です。 このメトリックは、Synapse Analytics SQL プールでは現在使用できません。
+
+> [!NOTE]
+> 7 日以上非アクティブなデータベースでは、基本メトリックと高度なメトリックのどちらも使用できない場合があります。
 
 ### <a name="basic-logs"></a>基本ログ
 

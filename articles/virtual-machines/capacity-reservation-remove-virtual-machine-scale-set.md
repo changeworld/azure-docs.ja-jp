@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/09/2021
 ms.reviewer: cynthn, jushiman
 ms.custom: template-how-to
-ms.openlocfilehash: f615cf25f30cc0bad6a8317b08126c05fe22f047
-ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+ms.openlocfilehash: 2d8f9c7c73b4cb5d0f617893a7d981b94d30b344
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123273298"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128553099"
 ---
 # <a name="remove-a-virtual-machine-scale-set-association-from-a-capacity-reservation-group"></a>容量予約グループから仮想マシン スケール セットの関連付けを削除する 
 
@@ -29,9 +29,9 @@ VM と基になる容量予約の両方で容量が論理的に消費される�
 > 容量予約は現在パブリック プレビュー段階にあります。
 > このプレビュー バージョンはサービス レベル アグリーメントなしで提供されており、運用環境のワークロードに使用することは推奨されません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
-## <a name="register-for-capacity-reservation"></a>容量予約を登録する 
+## <a name="register-for-capacity-reservation"></a>容量予約に登録する 
 
-容量予約の機能を使う前に、[プレビュー版を利用するためにサブスクリプションを登録](capacity-reservation-overview.md#register-for-capacity-reservation)しなければなりません。 登録が完了するまでに数分かかる場合があります。 Azure CLI または PowerShell のいずれかを使用して、機能の登録を完了することができます。
+容量予約機能を使用する前に、[プレビュー版を利用するためにサブスクリプションを登録する](capacity-reservation-overview.md#register-for-capacity-reservation)必要があります。 登録が完了するまでに数分かかる場合があります。 Azure CLI または PowerShell のいずれかを使用して、機能の登録を完了することができます。
 
 > [!NOTE]
 > オンデマンドの容量予約は、選択したリージョンでのみ、均一オーケストレーション モードの仮想マシン スケール セットで使用できます。 リージョンがサポートされているかどうかを確認するには、[均一仮想マシン スケール セットのデプロイ トラッカー](https://aka.ms/vmssuniformdeploymenttracker)に関するページにアクセスしてください。
@@ -56,7 +56,7 @@ VM と基になる容量予約の両方で容量が論理的に消費される�
     ```rest
     PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{VMScaleSetName}/update?api-version=2021-04-01
     ```
-    要求本文で、`capacityReservationGroup` プロパティを空に設定して、グループへの仮想マシン スケール セットの関連付けを削除します。
+    要求本文で、`capacityReservationGroup` プロパティを null に設定して、グループへの仮想マシン スケール セットの関連付けを削除します。
 
     ```json
     {
@@ -65,7 +65,7 @@ VM と基になる容量予約の両方で容量が論理的に消費される�
         "virtualMachineProfile": {
             "capacityReservation": {
                 "capacityReservationGroup":{
-                    "id":""    
+                    "id":null    
                 }
             }
         }
@@ -83,7 +83,7 @@ VM と基になる容量予約の両方で容量が論理的に消費される�
     -VMScaleSetName "myVmss"
     ```
 
-1. スケール セットを更新して、容量予約グループとの関連付けを削除します。 `CapacityReservationGroupId` プロパティを空に設定すると、スケール セットと容量予約グループの関連付けは削除されます。 
+1. スケール セットを更新して、容量予約グループとの関連付けを削除します。 `CapacityReservationGroupId` プロパティを null に設定すると、スケール セットと容量予約グループの関連付けは削除されます。 
 
     ```powershell-interactive
     $vmss =
@@ -95,7 +95,7 @@ VM と基になる容量予約の両方で容量が論理的に消費される�
     -ResourceGroupName "myResourceGroup"
     -VMScaleSetName "myvmss"
     -VirtualMachineScaleSet $vmss
-    -CapacityReservationGroupId ""
+    -CapacityReservationGroupId $null
     ```
 
 詳細については、Azure PowerShell コマンド「[Stop-AzVmss](/powershell/module/az.compute/stop-azvmss)」、「[Get-AzVmss](/powershell/module/az.compute/get-azvmss)」、「[Update-AzVmss](/powershell/module/az.compute/update-azvmss)」を参照してください。
@@ -139,7 +139,7 @@ VM と基になる容量予約の両方で容量が論理的に消費される�
     PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{VMScaleSetName}/update?api-version=2021-04-01
     ```
 
-    要求本文で、`capacityReservationGroup` プロパティを空に設定して、関連付けを削除します。
+    要求本文で、`capacityReservationGroup` プロパティを null に設定して、関連付けを削除します。
     
     ```json
     {
@@ -148,7 +148,7 @@ VM と基になる容量予約の両方で容量が論理的に消費される�
         "virtualMachineProfile": {
             "capacityReservation": {
                 "capacityReservationGroup":{
-                    "id":""
+                    "id":null
                 }
             }
         }
@@ -158,23 +158,17 @@ VM と基になる容量予約の両方で容量が論理的に消費される�
 
 ### <a name="powershell"></a>[PowerShell](#tab/powershell2)
 
->[!NOTE]
-> `Update-AzCapacityReservation` コマンドは、プレビュー段階にある間は使用できません。 既存の容量予約を変更するには、`New-AzCapacityReservation` を使用します。
-
 1. 予約数量をゼロに更新します。
 
     ```powershell-interactive
-    New-AzCapacityReservation
+    Update-AzCapacityReservation
     -ResourceGroupName "myResourceGroup"
-    -Location "eastus"
-    -Zone "1"
     -ReservationGroupName "myCapacityReservationGroup"
     -Name "myCapacityReservation"
-    -Sku "Standard_D2s_v3"
     -CapacityToReserve 0
     ```
 
-2. `CapacityReservationGroupId` プロパティを空に設定することで、スケール セットを更新して容量予約グループとの関連付けを削除します。 
+2. `CapacityReservationGroupId` プロパティを null に設定することで、スケール セットを更新して容量予約グループとの関連付けを削除します。 
 
     ```powershell-interactive
     $vmss =
@@ -186,7 +180,7 @@ VM と基になる容量予約の両方で容量が論理的に消費される�
     -ResourceGroupName "myResourceGroup"
     -VMScaleSetName "myvmss"
     -VirtualMachineScaleSet $vmss
-    -CapacityReservationGroupId ""
+    -CapacityReservationGroupId $null
     ```
 
 詳細については、Azure PowerShell コマンド「[New-AzCapacityReservation](/powershell/module/az.compute/new-azcapacityreservation)」、「[Get-AzVmss](/powershell/module/az.compute/get-azvmss)」、「[Update-AzVmss](/powershell/module/az.compute/update-azvmss)」を参照してください。

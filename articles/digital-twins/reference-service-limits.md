@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: Azure Digital Twins サービスの制限を示すグラフ。
 author: baanders
 ms.author: baanders
-ms.date: 04/08/2021
+ms.date: 09/02/2021
 ms.topic: article
 ms.service: digital-twins
-ms.openlocfilehash: cb86fe0d4a99897821b389682c5a131ce0b9118c
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 6ab7e10b32d3cf99b17151bea61b8cb5542e0ef3
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114472889"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124763597"
 ---
 # <a name="azure-digital-twins-service-limits"></a>Azure Digital Twins サービスの制限
 
@@ -31,7 +31,7 @@ ms.locfileid: "114472889"
 
 制限に達すると、制限を超える要求がサービスによって調整されます。これにより、これらの要求に対して 429 エラー応答が返されます。
 
-これを管理するには、次の推奨事項に留意して制限を使用します。
+スロットリングを管理するには、次の推奨事項に留意して制限を使用します。
 * **再試行ロジックを使用します。** [Azure Digital Twins SDK](concepts-apis-sdks.md) は、失敗した要求に対する再試行ロジックを実装しています。そのため、提供された SDK を使用している場合は、この機能が既に組み込まれています。 それ以外の場合は、使用しているアプリケーションに再試行ロジックを実装することを検討してください。 サービスは、失敗の応答で `Retry-After` ヘッダーを返送します。これを使用して、再試行までの待機時間を特定できます。
 * **しきい値と通知を使用して、制限に近づいていることを警告します。** Azure Digital Twins のサービスの制限には、対応する[メトリック](troubleshoot-metrics.md)があり、これを使用して、これらの領域での使用状況を追跡することができます。 しきい値を構成し、しきい値に近づいたときのメトリックに関するアラートを設定するには、[アラート設定のトラブルシューティング](troubleshoot-alerts.md)に関するページにある手順を参照してください。 メトリックが提供されない他の制限の通知を設定するには、使用しているアプリケーションのコードにこのロジックを実装することを検討してください。
 * **複数のインスタンスにわたって大規模にデプロイします。** 単一障害点を回避します。 デプロイ全体に対して 1 つの大きなグラフを作成するのではなく、ツインのサブセットをリージョンまたはテナントごとなどの、複数のインスタンスに論理的に分割することを検討してください。 

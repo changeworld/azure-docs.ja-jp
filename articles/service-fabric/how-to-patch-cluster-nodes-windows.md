@@ -3,12 +3,12 @@ title: Service Fabric クラスターでの Windows オペレーティング シ
 description: Windows で実行されている Service Fabric クラスター ノードにパッチを適用するために、OS イメージの自動アップグレードを有効にする方法を次に示します。
 ms.topic: how-to
 ms.date: 03/09/2021
-ms.openlocfilehash: 187217a0d8195917d1dfe7d726b987efbb07f8f8
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 5a3b2c78f0a7a3103c2fc56fe518739ac648ad31
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109739047"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124796497"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Service Fabric クラスターでの Windows オペレーティング システムへのパッチの適用
 
@@ -24,6 +24,8 @@ ms.locfileid: "109739047"
 Service Fabric クラスターと Service Fabric 拡張機能で持続性の設定に不一致がないことを確認します。これは、一致しない場合にアップグレード エラーが発生する可能性があるためです。 持続性レベルは、[このページ](../service-fabric/service-fabric-cluster-capacity.md#changing-durability-levels)で説明されているガイドラインに従って変更できます。
 
 ブロンズ 持続性を使用する場合、OS イメージの自動アップグレードは使用できません。 [パッチ オーケストレーション アプリケーション](service-fabric-patch-orchestration-application.md) (Azure 以外でホストされているクラスターのみが対象) は、Silver 以上の持続性レベルでは *推奨されません* が、Service Fabric アップグレード ドメインに関しては、Windows 更新プログラムを自動化する唯一のオプションです。
+
+パッチ オーケストレーション アプリケーションから OS イメージの自動アップグレードに切り替える場合、最初にパッチ オーケストレーション アプリケーションの使用を非推奨にする必要があります。
 
 ## <a name="enable-auto-os-upgrades-and-disable-windows-update"></a>OS の自動アップグレードを有効にし、Windows Update を無効にする
 

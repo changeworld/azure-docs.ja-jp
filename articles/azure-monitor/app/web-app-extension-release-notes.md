@@ -2,26 +2,24 @@
 title: Azure Web アプリ拡張機能のリリース ノート - Application Insights
 description: Application Insights を使用した実行時インストルメンテーションのための Azure Web アプリ拡張機能のリリース ノートです。
 ms.topic: conceptual
-author: MS-jgol
-ms.author: jgol
 ms.date: 06/26/2020
-ms.openlocfilehash: 07ba61f630b849a377f1c7ba881f95518eb73606
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 8b0ddf90f5e6ffbe685c4aea1239323beea6c106
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102042608"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124828813"
 ---
 # <a name="release-notes-for-azure-web-app-extension-for-application-insights"></a>Application Insights 用 Azure Web アプリ拡張機能のリリース ノート
 
 この記事には、Application Insights を使用した実行時インストルメンテーションのための Azure Web アプリ拡張機能のリリース ノートが含まれています。 これは、プレインストールされている拡張機能にのみ適用されます。
 
-Application Insights 用 Azure Web アプリ拡張機能の詳細については、[こちら](azure-web-apps.md)を参照してください。
+[Application Insights 用 Azure Web アプリ拡張機能](azure-web-apps.md)の詳細については、こちらを参照してください。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
 - 現在使用している拡張機能のバージョンは、どうすれば確認できますか?
-    - `https://<yoursitename>.scm.azurewebsites.net/ApplicationInsights` にアクセスします。 詳細については、[拡張機能またはエージェント ベースの監視に関するステップ バイ ステップ トラブルシューティング ガイド](./azure-web-apps.md?tabs=net#troubleshooting)を参照してください。
+    - `https://<yoursitename>.scm.azurewebsites.net/ApplicationInsights` にアクセスします。 詳細については、[ASP.NET Core](./azure-web-apps-net-core.md#troubleshooting)、[ASP.NET](./azure-web-apps-net.md#troubleshooting)、[Java](./azure-web-apps-java.md#troubleshooting)、または [Node.js](./azure-web-apps-nodejs.md#troubleshooting) を対象とする拡張機能またはエージェント ベースの監視に関するステップ バイ ステップ トラブルシューティング ガイドを参照してください。
 
 - プライベート拡張機能を使用している場合はどうすればよいですか?
     - プライベート サイト拡張機能は現在サポートされていないため、アンインストールしてください。
@@ -36,7 +34,7 @@ Application Insights 用 Azure Web アプリ拡張機能の詳細については
 
 ### <a name="2837"></a>2.8.37
 
-- AppSvc Windows 拡張機能: .Net Core を System.Diagnostics.DiagnosticSource.dll のすべてのバージョンで動作するようにしました。
+- AppSvc Windows 拡張機能: .NET Core を System.Diagnostics.DiagnosticSource.dll のすべてのバージョンで動作するようにしました。
 
 ### <a name="2836"></a>2.8.36
 
@@ -93,4 +91,4 @@ Application Insights 用 Azure Web アプリ拡張機能の詳細については
 
 ## <a name="next-steps"></a>次のステップ
 
-- Azure App Service の監視を構成する方法の詳細については、[Azure App Service のドキュメント](azure-web-apps.md)を参照してください。 
+- Azure App Service の監視を構成する方法の詳細については、[Azure App Service のアプリケーション監視のドキュメント](azure-web-apps.md)を参照してください。 

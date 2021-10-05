@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-hpc
 ms.topic: conceptual
 ms.date: 08/02/2021
 ms.author: amverma
-ms.openlocfilehash: 023fb8a352e1e02023fe0ce16afba9531625e370
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: 98465066f79f93777255a3072c472d342b557bdc
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122515839"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128600230"
 ---
 # <a name="migrate-your-h-and-h_promo-series-virtual-machines-by-august-31-2022"></a>2022 年 8 月 31 日までに H および H_Promo シリーズの仮想マシンを移行してください
 Microsoft Azure には、新世代のハイ パフォーマンス コンピューティング (HPC)、汎用、およびメモリ最適化の仮想マシンが導入されているため、元の H シリーズ (H シリーズ promo を含む) の仮想マシンから新しいオファリングにワークロードを移行することをお勧めします。
@@ -39,7 +39,7 @@ HPC ワークロードの場合、[HC](hc-series.md)、[HBv2](hbv2-series.md)、
 
 
 ### <a name="migration-steps"></a>移行の手順 
-1. 移行用のシリーズとサイズを選択します。 
+1. 移行先となるシリーズとサイズを選ぶ。 
 2. ターゲット VM シリーズのクォータを取得します 
 3. 現在の H シリーズの VM サイズをターゲット サイズに変更します 
 
@@ -50,8 +50,8 @@ InfiniBand ネットワーク インターフェイスを公開する H シリ�
 
 ### <a name="get-quota-for-the-target-vm-family"></a>ターゲット VM ファミリのクォータを取得する 
 
-ガイドに従って、[VM ファミリごとの vCPU クォータの引き上げを依頼してください](../azure-portal/supportability/per-vm-quota-requests.md)。
+[VM ファミリによる vCPU クォータの増加を要求する](../azure-portal/supportability/per-vm-quota-requests.md)ためのガイドに従ってください。
 
 
-### <a name="resize-the-current-virtual-machine"></a>現在の仮想マシンをサイズ変更する
-[PowerShell、[Azure CLI](./linux/change-vm-size.md) を使用して、または Azure portal を通して、仮想マシンのサイズを変更することができます](./windows/resize-vm.md)。
+### <a name="resize-the-current-virtual-machine"></a>現在の仮想マシンのサイズを変更する
+[仮想マシンのサイズを変更](resize-vm.md)できます。

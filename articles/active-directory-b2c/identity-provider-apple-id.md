@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 08/17/2021
+ms.date: 09/16/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: c150fdae1820dee3ae440f4d4acdacff04e14e66
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.openlocfilehash: 13120c083eda20b76581448c842db94d657cf42b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122271086"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128571900"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-apple-id--using-azure-active-directory-b2c-preview"></a>Azure Active Directory B2C を使用して、Apple ID でのサインアップとサインインを設定する (プレビュー)
 
@@ -78,7 +78,8 @@ Azure Active Directory B2C (Azure AD B2C) で Apple ID でのユーザーのサ�
 ## <a name="configure-apple-as-an-identity-provider"></a>Apple を ID プロバイダーとして構成する
 
 1. Azure AD B2C テナントの全体管理者として [Azure portal](https://portal.azure.com/) にサインインします。
-1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、ご利用の Azure AD B2C テナントを含むディレクトリを選択します。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
 1. **[Azure サービス]** で、 **[Azure AD B2C]** を選択します。 または、検索ボックスを使用して検索し、 **[Azure AD B2C]** を選択します。
 1. **[ID プロバイダー]** を選択してから、 **[Apple (プレビュー)]** を選択します。
 1. **[名前]** には、「**Apple でサインイン**」と入力します。 
@@ -126,6 +127,7 @@ Azure Active Directory B2C (Azure AD B2C) で Apple ID でのユーザーのサ�
 
     - **appleTeamId**: ご利用の Apple Developer Team ID
     - **appleServiceId**: App Service ID (クライアント ID)
+    - **appleKeyId**: JWT ヘッダーに格納されている 10 桁のキー ID (Apple で必須)
     - **p8key**: PEM 形式のキー。 これは、テキスト エディターで .p8 ファイルを開き、改行なしで `-----BEGIN PRIVATE KEY-----` と `-----END PRIVATE KEY-----` の間のすべてをコピーすることで取得できます。
  
 次の JSON は、Azure 関数への呼び出し例です。
@@ -134,6 +136,7 @@ Azure Active Directory B2C (Azure AD B2C) で Apple ID でのユーザーのサ�
 {
     "appleTeamId": "ABC123DEFG",
     "appleServiceId": "com.yourcompany.app1",
+    "appleKeyId": "URKEYID001",
     "p8key": "MIGTAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBHkwdwIBAQQg+s07NiAcuGEu8rxsJBG7ttupF6FRe3bXdHxEipuyK82gCgYIKoZIzj0DAQehRANCAAQnR1W/KbbaihTQayXH3tuAXA8Aei7u7Ij5OdRy6clOgBeRBPy1miObKYVx3ki1msjjG2uGqRbrc1LvjLHINWRD"
 }
 ```
@@ -151,8 +154,9 @@ Azure 関数は、応答内の適切に書式設定され署名されたクラ�
 Azure AD B2C テナントで前に記録したクライアント シークレットを格納する必要があります。
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
-1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、ご利用の Azure AD B2C テナントを含むディレクトリを選択します。
-2. **[Azure サービス]** で、 **[Azure AD B2C]** を選択します。 または、検索ボックスを使用して検索し、 **[Azure AD B2C]** を選択します。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
+1. **[Azure サービス]** で、 **[Azure AD B2C]** を選択します。 または、検索ボックスを使用して検索し、 **[Azure AD B2C]** を選択します。
 1. **[概要]** ページで、 **[Identity Experience Framework]** を選択します。
 1. **[ポリシー キー]** を選択し、 **[追加]** を選択します。
 1. **[オプション]** では、 **[手動]** を選びます。

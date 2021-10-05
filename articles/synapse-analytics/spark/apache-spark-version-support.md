@@ -6,14 +6,14 @@ author: midesa
 ms.service: synapse-analytics
 ms.topic: reference
 ms.subservice: spark
-ms.date: 05/26/2021
+ms.date: 09/22/2021
 ms.author: midesa
-ms.openlocfilehash: c312aad4cd3cea5af3c074c7e32498d9ee30cad5
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 9f13a0797caa13f0d4367357308809c97bde0b17
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110450227"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128577772"
 ---
 # <a name="azure-synapse-runtimes"></a>Azure Synapse ランタイム
 Azure Synapse の Apache Spark プールでは、ランタイムを使用して、必須コンポーネントのバージョン、Azure Synapse の最適化、パッケージ、およびコネクタを特定の Apache Spark のバージョンに結び付けます。 これらのランタイムは、新しい改良、機能、パッチを含むように定期的にアップグレードされます。 
@@ -34,7 +34,7 @@ Azure Synapse の Apache Spark プールでは、ランタイムを使用して�
 |  ランタイム名  | リリース日 |  リリース ステージ |
 | ----- | ----- | ----- |
 | [Azure Synapse Runtime for Apache Spark 2.4](./apache-spark-24-runtime.md) | 2020 年 12 月 15 日 | GA|
-| [Azure Synapse Runtime for Apache Spark 3.0](./apache-spark-3-runtime.md) | 2021 年 5 月 26 日 | プレビュー |
+| [Azure Synapse Runtime for Apache Spark 3.1](./apache-spark-3-runtime.md) | 2021 年 5 月 26 日 | GA |
 
 ## <a name="runtime-release-stages"></a>ランタイム リリース ステージ
 

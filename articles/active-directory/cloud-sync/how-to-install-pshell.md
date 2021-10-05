@@ -11,12 +11,12 @@ ms.date: 11/16/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c150f4bf18f9c4f5b9215122a45df1de32f48c32
-ms.sourcegitcommit: 0ab53a984dcd23b0a264e9148f837c12bb27dac0
+ms.openlocfilehash: 9587c60cc37badc29a9a9f3ba80a77f6f193a3a9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2021
-ms.locfileid: "113506243"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128583047"
 ---
 # <a name="install-the-azure-ad-connect-provisioning-agent-by-using-a-cli-and-powershell"></a>CLI と PowerShell を使用して Azure AD Connect プロビジョニング エージェントをインストールする
 この記事では、PowerShell コマンドレットを使用して Azure Active Directory (Azure AD) Connect プロビジョニング エージェントをインストールする方法を紹介します。
@@ -35,12 +35,12 @@ PowerShell コマンドレットを使用して Azure AD Connect プロビジョ
 
  1. Azure portal にサインインし、 **[Azure Active Directory]** に移動します。
  1. 左側のメニューで **[Azure AD Connect]** を選びます。
- 1. **[プロビジョニングの管理 (プレビュー)]**  >  **[すべてのエージェントの確認]** を選択します。
+ 1. **[プロビジョニングの管理]**  >  **[すべてのエージェントの確認]** の順に選択します。
  1. Azure portal から Azure AD Connect プロビジョニング エージェントをダウンロードします。
 
     ![オンプレミス エージェントのダウンロードを示すスクリーンショット。](media/how-to-install/install-9.png)</br>
 
- 1. この手順では、C:\ProvisioningSetup フォルダーにエージェントがダウンロードされました。 
+ 1. この手順のために、C:\temp フォルダーにエージェントがダウンロードされました。 
  1. プロビジョニング エージェントを quiet モードでインストールします。
 
        ```

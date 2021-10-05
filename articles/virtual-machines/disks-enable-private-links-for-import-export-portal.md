@@ -4,15 +4,15 @@ description: Azure portal を使用して、マネージド ディスクの Priv
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/19/2021
+ms.date: 09/03/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: b023f7f068d1dc52c073519cc7e7f308e5d86ad0
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: c38c1ec60b3a7fbeb65f85e4560c4495ab93a031
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122696458"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124754811"
 ---
 # <a name="restrict-importexport-access-for-managed-disks-using-azure-private-link"></a>Azure Private Link を使用してマネージド ディスクに対するインポートおよびエクスポートのアクセスを制限する
 
@@ -88,6 +88,32 @@ Private Link を使用してマネージド ディスクをエクスポートお
 1. **[保存]** を選択します。
 
 これで、マネージド ディスクのインポートとエクスポートに使用できるプライベート リンクが構成されました。
+
+## <a name="frequently-asked-questions"></a>よく寄せられる質問
+
+**Q: Managed Disks のエクスポートとインポートに Private Link を使用する利点は何ですか?**
+
+**A:** Private Link を使用すると、マネージド ディスクへのエクスポートおよびインポート プロセスを対象の Azure 仮想ネットワークからのみに制限できます。
+
+**Q: Private Link を介してのみディスクをエクスポートまたはインポートできるようにするにはどうすればよいですか?**
+
+**A:** **DiskAccessId** プロパティをディスク アクセス オブジェクトのインスタンスに設定します。 また、**NetworkAccessPolicy** プロパティを **AllowPrivate** に設定します。
+
+**Q: 複数の仮想ネットワークを同じディスク アクセス オブジェクトにリンクすることはできますか?**
+
+**A:** いいえ。 現時点では、ディスク アクセス オブジェクトは 1 つの仮想ネットワークにのみリンクできます。
+
+**Q: 仮想ネットワークを別のサブスクリプションのディスク アクセス オブジェクトにリンクすることはできますか?**
+
+**A:** いいえ。 現在、ディスク アクセス オブジェクトは同じサブスクリプションの仮想ネットワークにのみリンクできます。
+
+**Q: 同じディスク アクセス オブジェクトを使用したエクスポートまたはインポートは、同時に何個まで行うことができますか?**
+
+**A:** 同時に 5 つのエクスポートまたはインポートを行うことができます。
+
+**Q: ディスクまたはスナップショットの SAS URI を使用して、ディスクに関連付けられているプライベート エンドポイントのサブネットと同じサブネットにない VM の基になる VHD をダウンロードすることはできますか?**
+
+**A:** いいえ。 これは、ディスクに関連付けられているプライベート エンドポイントのサブネットと同じサブネット内にある VM に対してのみ実行できます。
 
 ## <a name="next-steps"></a>次のステップ
 

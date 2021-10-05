@@ -8,12 +8,12 @@ ms.author: dinethi
 ms.reviewer: mikeray
 ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: b1e7c210dc7e9a0482f6f2471e5079f71a4ac621
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0d9ae624ddc0a4e5a2f5d9ac38428f4f3c10a01e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121741484"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124832412"
 ---
 # <a name="plan-to-deploy-azure-arc-enabled-data-services"></a>Azure Arc 対応データ サービスのデプロイを計画する
 
@@ -44,6 +44,9 @@ Azure Arc 対応データ サービスをデプロイする前に、前提条件
 インフラストラクチャの準備ができたら、次の方法で Azure Arc 対応データ サービスをデプロイします。
 1. Kubernetes クラスターの検証済みディストリビューションのいずれかで Azure Arc 対応データ コントローラーを作成します
 1. Azure Arc 対応 SQL Managed Instance または Azure Arc 対応 PostgreSQL Hyperscale サーバー グループ、あるいはその両方を作成します。
+
+> [!CAUTION]
+> 一部のデータ サービス レベルとモードは[一般提供](release-notes.md)段階であり、一部はプレビュー段階です。 同じデータ コントローラーで GA サービスとプレビュー サービスを混在させないことをお勧めします。 同じデータ コントローラーで GA サービスとプレビュー サービスを混在させている場合、インプレース アップグレードはできません。 このシナリオでは、アップグレードするときに、データ コントローラーとデータ サービスをいったん削除してから再作成する必要があります。
 
 ## <a name="overview-create-the-azure-arc-enabled-data-controller"></a>概要: Azure Arc 対応データ コントローラーを作成する
 
@@ -78,12 +81,12 @@ Azure Arc 対応データ サービスは、複数の異なる種類の Kubernet
 - **Azure リソース グループ名** - Azure 内のデータ コントローラー リソースを作成するリソース グループの名前。  すべての Azure Arc 対応 SQL Managed Instance および PostgreSQL Hyperscale サーバー グループもこのリソース グループで作成されます。
 - **Azure の場所** - Azure でデータ コントローラー リソース メタデータが格納される Azure の場所。 利用可能なリージョンの一覧については、「[Azure グローバル インフラストラクチャ/リージョン別の製品](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc)」を参照してください。 デプロイしているデータ コントローラーにより管理される Azure リソースに関するメタデータと課金情報は、場所パラメーターとして指定した Azure 内の場所だけに保存されます。 直接接続モードでデプロイしている場合、データ コントローラーの場所パラメーターは、対象とするカスタム場所リソースの場所と同じになります。
 - **サービス プリンシパル情報** - [アップロードの前提条件](upload-metrics-and-logs-to-azure-monitor.md)に関する記事で説明されているように、"*直接*" 接続モードでデプロイする場合は、Azure Arc データ コントローラーの作成時にサービス プリンシパル情報が必要になります。 "*間接*" 接続モードでは、Azure Arc データ コントローラーを作成した後で、手動でエクスポートしてアップロードするためにサービス プリンシパルが必要になります。
-- **インフラストラクチャ** - 課金のために、Arc 対応データ サービスを実行しているインフラストラクチャを示す必要があります。  オプションには、`alibaba`、`aws`、`azure`、`gcp`、`onpremises`、または `other` があります。
+- **インフラストラクチャ** - 課金のために、Azure Arc 対応データ サービスを実行しているインフラストラクチャを示す必要があります。  オプションには、`alibaba`、`aws`、`azure`、`gcp`、`onpremises`、または `other` があります。
 
 ## <a name="additional-concepts-for-direct-connected-mode"></a>直接接続モードの追加の概念
 
 [接続モード](./connectivity.md)に関するページで説明されているように、Azure Arc データ コントローラーは **直接** または **間接** の接続モードでデプロイできます。 **直接** 接続モードで Azure Arc データ サービスをデプロイするには、いくつかの追加の概念と考慮事項を理解している必要があります。
-まず、Arc 対応データ サービスがデプロイされる Kubernetes クラスターは、[Azure Arc 対応 Kubernetes クラスター](../kubernetes/overview.md)である必要があります。 Kubernetes クラスターを Azure Arc にオンボードすると、使用状況情報、ログ、メトリックなどの自動アップロードといった機能に利用できる Azure 接続が提供されます。Kubernetes クラスターを Azure に接続することで、Azure portal からクラスターに直接 Azure Arc データ サービスをデプロイして管理することもできます。
+まず、Azure Arc 対応データ サービスがデプロイされる Kubernetes クラスターは、[Azure Arc 対応 Kubernetes クラスター](../kubernetes/overview.md)である必要があります。 Kubernetes クラスターを Azure Arc にオンボードすると、使用状況情報、ログ、メトリックなどの自動アップロードといった機能に利用できる Azure 接続が提供されます。Kubernetes クラスターを Azure に接続することで、Azure portal からクラスターに直接 Azure Arc データ サービスをデプロイして管理することもできます。
 
 Kubernetes クラスターを Azure に接続するには、次の手順を実行します。
 - [お使いのクラスターを Azure に接続する](../kubernetes/quickstart-connect-cluster.md)
@@ -110,4 +113,3 @@ Azure Arc データ コントローラーをインストールしたら、Azure 
 - [Azure Data Studio を使用して間接接続モードでデータ コントローラーを作成する](create-data-controller-indirect-azure-data-studio.md)
 - [Azure Data Studio で Jupyter ノートブックを使用して、データ コントローラーを Azure portal から間接接続モードで作成する](create-data-controller-indirect-azure-portal.md)
 - [kubectl や oc などの Kubernetes ツールを使用して、間接接続モードでデータ コントローラーを作成する](create-data-controller-using-kubernetes-native-tools.md)
-

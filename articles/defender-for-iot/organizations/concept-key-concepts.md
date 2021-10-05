@@ -1,16 +1,16 @@
 ---
 title: 主な利点
 description: Defender for IoT の基本的な概念について説明します。
-ms.date: 12/13/2020
+ms.date: 09/09/2021
 ms.topic: article
-ms.openlocfilehash: ca1e5a4d8554b208f5275fd0e7519f2db3fafc08
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: be5c7f31cb652bb40f4bae35fa42b76d7a576276
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113021270"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124836475"
 ---
-# <a name="basic-concepts"></a>基本的な概念 
+# <a name="basic-concepts"></a>基本的な概念
 
 この記事では、Azure Defender for IoT の主な利点について説明します。
 
@@ -63,9 +63,9 @@ DPI だけでは、プロトコルの異常を特定し、詳細なレベルで�
 
 ## <a name="air-gapped-networks"></a>エアギャップ ネットワーク
 
-エアギャップ環境で作業している場合、Defender for IoT のオンプレミス管理コンソールでは、すべての施設にわたって、IoT および OT の主要なリスク インジケーターとアラートがリアルタイムで表示されます。 SOC ワークフローと Runbook に緊密に統合されているため、軽減アクティビティの優先順位付けと脅威のクロスサイト関連付けを簡単に行うことができます。  
+エアギャップ環境で作業している場合、Defender for IoT のオンプレミス管理コンソールでは、すべての施設にわたって、IoT および OT の主要なリスク インジケーターとアラートがリアルタイムで表示されます。 SOC ワークフローと Runbook に緊密に統合されているため、軽減アクティビティの優先順位付けと脅威のクロスサイト関連付けを簡単に行うことができます。
 
-Defender for IoT には、すべてのデバイスの統合ビューが用意されています。 デバイスに関する重要な情報 (種類 (PLC、RTU、DC など)、製造元、モデル、ファームウェア リビジョン レベルなど) に加えてアラート情報も提供されます。  
+Defender for IoT には、すべてのデバイスの統合ビューが用意されています。 デバイスに関する重要な情報 (種類 (PLC、RTU、DC など)、製造元、モデル、ファームウェア リビジョン レベルなど) に加えてアラート情報も提供されます。
 
 Defender for IoT を使用すると、複数のデプロイを効果的に管理し、ネットワークの包括的な統合ビューを表示できます。 Defender for IoT により、アラート処理と、運用ネットワーク セキュリティの制御が最適化されます。
 
@@ -113,6 +113,7 @@ Defender for IoT を使用すると、複数のデプロイを効果的に管理
 
 条件に基づくカスタムのアラートのトリガーとメッセージングを使用すると、特定のネットワーク アクティビティを特定し、セキュリティ、IT、および運用チームを効果的に更新することができます。
 
+サポートされているプロトコルの完全な一覧については、「[サポートされているプロトコル](concept-supported-protocols.md#supported-protocols)」を参照してください。
 
 ## <a name="high-availability"></a>高可用性
 

@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 06/03/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e760cbca23aba21ad2d8c85e21a8014590419e9
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: 835c102cffa7fb956d284792fd144cccadfa94b4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111438326"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128582992"
 ---
 # <a name="conditional-access-filters-for-devices-preview"></a>条件付きアクセス: デバイスのフィルター (プレビュー)
 
@@ -141,6 +141,9 @@ ms.locfileid: "111438326"
 | 対象/対象外モードで負の演算子 (NotEquals、NotStartsWith、NotEndsWith、NotContains、NotIn) を指定し、extensionAttributes1-15 を対象外とする任意の属性を使用する | 登録済みのデバイス | はい (条件が満たされている場合) |
 | 対象/対象外モードで負の演算子 (NotEquals、NotStartsWith、NotEndsWith、NotContains、NotIn) を指定し、extensionAttributes1-15 を対象とする任意の属性を使用する | Intune で管理されている登録済みデバイス | はい (条件が満たされている場合) |
 | 対象/対象外モードで負の演算子 (NotEquals、NotStartsWith、NotEndsWith、NotContains、NotIn) を指定し、extensionAttributes1-15 を対象とする任意の属性を使用する | Intune で管理されていない登録済みデバイス | はい (条件が満たされている場合、かつ、デバイスが準拠している、または Hybrid Azure AD 参加済みの場合) |
+
+> [!IMPORTANT]
+> 未登録のデバイスの場合、渡されるデバイス情報は、オペレーティング システム、オペレーティング システムのバージョン、ブラウザーのみとなります。  これは、未登録のデバイスと、デバイスのフィルターに負の演算子を使用する条件付きアクセス ポリシーの場合、これら以外の値は空白の値で評価されることを意味します。  たとえば、未登録のデバイスが次のように評価されているとします: **device.displayName -notContains *Example***。 未登録のデバイスから、空白の表示名 ("*例*" の値ではない) が渡されるため、結果として得られる条件は真になります。
 
 ## <a name="next-steps"></a>次のステップ
 

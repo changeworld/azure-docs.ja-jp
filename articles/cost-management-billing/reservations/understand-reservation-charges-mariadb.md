@@ -6,13 +6,13 @@ ms.author: sumuth
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 02/13/2020
-ms.openlocfilehash: 2197f3ec9907aa9f1afde6272dd2e8a807465476
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.date: 09/15/2021
+ms.openlocfilehash: 78eca3804d36b4b65dd4026c16676d13c3241ca3
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93240394"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128668748"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-database-for-mariadb"></a>Azure Database for MariaDB に対する予約割引の適用方法
 
@@ -20,7 +20,7 @@ Azure Database for MariaDB の予約容量を購入すると、予約の属性�
 
 ## <a name="how-reservation-discount-is-applied"></a>予約割引の適用方法
 
-予約割引は、"* **使用しないと失われます** _"。 したがって、ある時間、一致するリソースがない場合は、その時間に対する予約量は失われます。 未使用の予約済み時間を繰り越すことはできません。
+予約割引は、***使用しないと失われます***。 したがって、ある時間、一致するリソースがない場合は、その時間に対する予約量は失われます。 未使用の予約済み時間を繰り越すことはできません。
 
 リソースをシャットダウンすると、予約割引は、指定されたスコープ内の別の一致するリソースに自動的に適用されます。 指定したスコープ内に一致するリソースが見つからない場合、予約済み時間は失われます。
 
@@ -30,15 +30,15 @@ Azure Database for MariaDB の予約容量割引は、実行中の MariaDB サ�
 
 次の例は、購入したコア数と実行する時間に応じて、Azure Database for MariaDB の予約容量割引がどのように適用されるかを示しています。
 
-_ **例 1** : 8 仮想コア用の Azure Database for MariaDB の予約容量を購入するとします。 予約の残りの属性と一致する 16 仮想コアの Azure Database for MariaDB サーバーを実行している場合、MariaDB サーバーのコンピューティング使用量の 8 仮想コアに対して従量課金制の料金が請求され、1 時間分の 8 仮想コアの MariaDB サーバーのコンピューティング使用量に対して予約割引が適用されます。
+* **例 1**: 8 仮想コア用の Azure Database for MariaDB の予約容量を購入するとします。 予約の残りの属性と一致する 16 仮想コアの Azure Database for MariaDB サーバーを実行している場合、MariaDB サーバーのコンピューティング使用量の 8 仮想コアに対して従量課金制の料金が請求され、1 時間分の 8 仮想コアの MariaDB サーバーのコンピューティング使用量に対して予約割引が適用されます。
 
 以降の例では、購入する Azure Database for MariaDB の予約容量は、16 仮想コアの Azure Database for MariaDB 用であり、残りの予約属性は実行中の MariaDB サーバーと一致するものとします。
 
-* **例 2** :8 仮想コアを持つ 2 つの Azure Database for MariaDB サーバーを 1 時間実行します。 16 仮想コアの予約割引は、8 仮想コア Azure Database for MariaDB サーバーの両方のコンピューティング使用量に適用されます。
+* **例 2**:8 仮想コアを持つ 2 つの Azure Database for MariaDB サーバーを 1 時間実行します。 16 仮想コアの予約割引は、8 仮想コア Azure Database for MariaDB サーバーの両方のコンピューティング使用量に適用されます。
 
-* **例 3** :1 つの 16 仮想コア Azure Database for MariaDB サーバーを、午後 1 時から午後 1 時 30 分まで実行します。 別の 16 仮想コア Azure Database for MariaDB サーバーを、午後 1 時 30 分から午後 2 時まで実行します。 いずれも予約割引が適用されます。
+* **例 3**:1 つの 16 仮想コア Azure Database for MariaDB サーバーを、午後 1 時から午後 1 時 30 分まで実行します。 別の 16 仮想コア Azure Database for MariaDB サーバーを、午後 1 時 30 分から午後 2 時まで実行します。 いずれも予約割引が適用されます。
 
-* **例 4** :1 つの 16 仮想コア Azure Database for MariaDB サーバーを、午後 1 時から午後 1 時 45 分まで実行します。 別の 16 仮想コア Azure Database for MariaDB サーバーを、午後 1 時 30 分から午後 2 時まで実行します。 15 分間の重復分には、従量課金制の料金が適用されます。 残りの時間の計算使用量には、予約割引が適用されます。
+* **例 4**:1 つの 16 仮想コア Azure Database for MariaDB サーバーを、午後 1 時から午後 1 時 45 分まで実行します。 別の 16 仮想コア Azure Database for MariaDB サーバーを、午後 1 時 30 分から午後 2 時まで実行します。 15 分間の重復分には、従量課金制の料金が適用されます。 残りの時間の計算使用量には、予約割引が適用されます。
 
 Azure の予約の適用状況を把握し、課金の使用状況レポートで確認する方法については、[Azure の予約の使用状況](./understand-reserved-instance-usage-ea.md)に関するページを参照してください。
 

@@ -1,29 +1,29 @@
 ---
 title: SAP Cloud for Customer との間でデータをコピーする
+description: Azure Data Factory または Synapse Analytics パイプラインを使用して、SAP Cloud for Customer からサポートされるシンク データ ストアにデータをコピーしたり、サポートされるソース データ ストアから SAP Cloud for Customer にデータをコピーしたりする方法を説明します。
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Data Factory を使用して、SAP Cloud for Customer からサポートされるシンク データ ストアにコピーしたり、サポートされるソース データ ストアから SAP Cloud for Customer にデータをコピーしたりする方法を説明します。
 author: linda33wj
 ms.author: jingwang
 ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 08/30/2021
-ms.openlocfilehash: 9e35ae73304fa6eb06bc1d4a363c8009e870a861
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.date: 09/09/2021
+ms.openlocfilehash: e3a09400b3ebf8fb0f49a46677f7d0dc815d4937
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123307895"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124836032"
 ---
-# <a name="copy-data-from-sap-cloud-for-customer-c4c-using-azure-data-factory"></a>Azure Data Factory を使用して SAP Cloud for Customer (C4C) からデータをコピーする
+# <a name="copy-data-from-sap-cloud-for-customer-c4c-using-azure-data-factory-or-synapse-analytics"></a>Azure Data Factory または Synapse Analytics を使用して SAP Cloud for Customer (C4C) からデータをコピーする
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-この記事では、Azure Data Factory のコピー アクティビティを使用して、SAP Cloud for Customer (C4C) との間でデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
+この記事では、Azure Data Factory または Synapse Analytics パイプラインでコピー アクティビティを使用して、SAP Cloud for Customer (C4C) との間でデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
 
 >[!TIP]
->SAP データ統合シナリオにおける ADF の全体的なサポートについては、各 SAP コネクタの詳細な情報、比較、およびガイダンスが含まれる、[Azure Data Factory を使用した SAP データの統合に関するホワイトペーパー](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)を参照してください。
+>SAP データ統合シナリオでのサービスの全体的なサポートについては、各 SAP コネクタの詳細な説明、比較、ガイダンスが含まれた、[Azure Data Factory を使用した SAP データ統合に関するホワイトペーパー](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)を参照してください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -34,7 +34,7 @@ ms.locfileid: "123307895"
 
 SAP Cloud for Customer のデータを、サポートされる任意のシンク データ ストアにコピーしたり、サポートされる任意のソース データ ストアのデータを SAP Cloud for Customer にコピーしたりできます。 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事の表をご覧ください。
 
-具体的には、Azure Data Factory はこのコネクタを使用して、SAP Cloud for Sales、SAP Cloud for Service、SAP Cloud for Social Engagement ソリューションを含む SAP Cloud for Customer との間でデータをコピーできます。
+具体的には、サービスはこのコネクタを使用して、SAP Cloud for Sales、SAP Cloud for Service、SAP Cloud for Social Engagement ソリューションを含む SAP Cloud for Customer との間でデータをコピーできます。
 
 ## <a name="getting-started"></a>作業の開始
 
@@ -48,7 +48,7 @@ SAP Cloud for Customer のデータを、サポートされる任意のシンク
 
     # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
 
-    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI を使用して新しいリンクされたサービスを作成します。":::
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI で新しいリンク サービスを作成する。":::
 
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
@@ -76,7 +76,7 @@ SAP Cloud for Customer のリンクされたサービスでは、次のプロパ
 | type | type プロパティは、次のように設定する必要があります:**SapCloudForCustomer**。 | はい |
 | url | SAP C4C OData サービスの URL。 | はい |
 | username | SAP C4C に接続するためのユーザー名を指定します。 | はい |
-| password | username に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
+| password | username に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString とマークして安全に保存するか、[Azure Key Vault に保存されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 | いいえ |
 
 **例:**
@@ -232,9 +232,9 @@ SAP Cloud for Customer にデータをコピーするには、コピー アク�
 
 ## <a name="data-type-mapping-for-sap-cloud-for-customer"></a>SAP Cloud for Customer のデータ型マッピング
 
-SAP Cloud for Customer からデータをコピーするとき、次のSAP Cloud for Customer のデータ型から Azure Data Factory の中間データ型へのマッピングが使用されます。 コピー アクティビティでソースのスキーマとデータ型がシンクにマッピングされるしくみについては、[スキーマとデータ型のマッピング](copy-activity-schema-and-type-mapping.md)に関する記事を参照してください。
+SAP Cloud for Customer からデータをコピーするとき、SAP Cloud for Customer のデータ型からサービス内で内部的に使用される中間データ型への、以下のマッピングが使用されます。 コピー アクティビティでソースのスキーマとデータ型がシンクにマッピングされるしくみについては、[スキーマとデータ型のマッピング](copy-activity-schema-and-type-mapping.md)に関する記事を参照してください。
 
-| SAP C4C OData のデータ型 | Data Factory の中間データ型 |
+| SAP C4C OData のデータ型 | 中間サービス データ型 |
 |:--- |:--- |
 | Edm.Binary | Byte[] |
 | Edm.Boolean | Bool |
@@ -258,4 +258,4 @@ SAP Cloud for Customer からデータをコピーするとき、次のSAP Cloud
 プロパティの詳細については、[Lookup アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。
+Copy アクティビティでソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関するセクションを参照してください。

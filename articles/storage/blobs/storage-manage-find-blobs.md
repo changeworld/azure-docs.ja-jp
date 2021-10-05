@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: klaasl
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: a03cf3039d996c79b3a6ada3394acae5e6459fa1
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: fa2284e03c8d69bacb40a2fe99d3c3cb10a73828
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123470528"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129154643"
 ---
 # <a name="manage-and-find-azure-blob-data-with-blob-index-tags"></a>BLOB インデックス タグを使用して Azure BLOB データを管理および検索する
 
@@ -28,7 +28,7 @@ BLOB インデックス タグを使用すると、次のことができます�
 
 - インデックス タグの評価に基づいて BLOB API の条件付き動作を指定する
 
-- [BLOB ライフサイクル管理](storage-lifecycle-management-concepts.md)などの機能の高度な制御に、インデックス タグを使用する
+- [BLOB ライフサイクル管理](./lifecycle-management-overview.md)などの機能の高度な制御に、インデックス タグを使用する
 
 ストレージ アカウントに何百万もの BLOB があり、多数の異なるアプリケーションによってアクセスされるシナリオについて考えてみましょう。 1 つのプロジェクトからすべての関連データを検索する必要があります。 データは異なる名前付け規則を使用して複数のコンテナーに分散されている可能性があるので、スコープ内に何があるか確実にはわかりません。 ただし、アプリケーションを使用すると、すべてのデータにプロジェクトに基づくタグが付けられてアップロードされます。 何百万もの BLOB を検索して名前とプロパティを比較するのではなく、`Project = Contoso` を検出条件として使用できます。 BLOB インデックスにより、ストレージ アカウント全体のすべてのコンテナーがフィルター処理され、`Project = Contoso` から 50 個の BLOB のセットだけがすばやく検出されて返されます。
 
@@ -67,10 +67,7 @@ BLOB インデックス タグは、ストレージ アカウント内の新規�
 
 BLOB に複数のタグを適用して、データをよりわかりやすくすることができます。
 
-> "Project" = 'Contoso'  
-> "Classified" = 'True'  
-> "Status" = 'Unprocessed'  
-> "Priority" = '01'
+> "Project" = 'Contoso' "Classified" = 'True' "Status" = 'Unprocessed' "Priority" = '01'
 
 既存のインデックス タグ属性を変更するには、既存のタグ属性を取得し、そのタグ属性を変更してから、[Set Blob Tags](/rest/api/storageservices/set-blob-tags) 操作を使用して置き換えます。 BLOB からすべてのインデックス タグを削除するには、タグ属性を指定せずに `Set Blob Tags` 操作を呼び出します。 BLOB インデックス タグは BLOB データ コンテンツのサブリソースであるため、`Set Blob Tags` により基になるコンテンツは変更されず、BLOB の last-modified-time または eTag も変更されません。 現在のすべてのベース BLOB に対するインデックス タグを作成または変更できます。 以前のバージョンでもインデックス タグは保持されますが、BLOB インデックス エンジンには渡されません。そのため、インデックス タグのクエリを実行して以前のバージョンを取得することはできません。 スナップショットや論理的に削除された BLOB のタグを変更することはできません。
 
@@ -179,7 +176,7 @@ REST バージョン 2019-10-10 以降では、ほとんどの [BLOB サービ�
 
 ## <a name="platform-integrations-with-blob-index-tags"></a>BLOB インデックス タグを使用したプラットフォーム統合
 
-BLOB インデックス タグを使用すると、BLOB データの分類、管理、検索に役立つだけでなく、[ライフサイクル管理](storage-lifecycle-management-concepts.md)などの他の Blob Storage 機能との統合も提供されます。
+BLOB インデックス タグを使用すると、BLOB データの分類、管理、検索に役立つだけでなく、[ライフサイクル管理](./lifecycle-management-overview.md)などの他の Blob Storage 機能との統合も提供されます。
 
 ### <a name="lifecycle-management"></a>ライフサイクル管理
 
@@ -260,7 +257,7 @@ BLOB インデックス タグは、BLOB データに対するサブリソース
 | [BLOB タグの取得](/rest/api/storageservices/get-blob-tags)           | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/read     |
 | [タグによる BLOB の検索](/rest/api/storageservices/find-blobs-by-tags) | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/filter/action |
 
-インデックス タグの操作には、基になる BLOB データとは別に、追加のアクセス許可が必要です。 [ストレージ BLOB データ所有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)ロールには、3 つの BLOB インデックス タグ操作すべてに対するアクセス許可が付与されます。 [ストレージ BLOB データ閲覧者](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader)には、`Find Blobs by Tags` 操作と `Get Blob Tags` 操作に対するアクセス許可のみが付与されます。
+インデックス タグの操作には、基になる BLOB データとは別に、追加のアクセス許可が必要です。 [ストレージ BLOB データ所有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)ロールには、3 つの BLOB インデックス タグ操作すべてに対するアクセス許可が付与されます。 
 
 ### <a name="sas-permissions"></a>SAS のアクセス許可
 
@@ -293,7 +290,7 @@ BLOB インデックス タグとメタデータはどちらも、ユーザー�
 |              |   Metadata   |   BLOB インデックス タグ  |
 |--------------|--------------|--------------------|
 | **制限**      | 数に制限はなく、合計 8 KB で、大文字と小文字の区別はありません | BLOB あたり最大 10 個のタグ、タグあたり 768 バイトで、大文字と小文字が区別されます |
-| **更新プログラム**    | アーカイブ層では許可されません。`Set Blob Metadata` により、既存のすべてのメタデータが置き換えられます。S`Set Blob Metadata` により、BLOB の last-modified-time が変更されます | すべてのアクセス層で許可されます。`Set Blob Tags` により、既存のすべてのタグが置き換えられます。`Set Blob Tags` により、BLOB の last-modified-time は変更されません |
+| **更新プログラム**    | アーカイブ層では許可されません。`Set Blob Metadata` により、既存のすべてのメタデータが置き換えられます。`Set Blob Metadata` により、BLOB の last-modified-time が変更されます | すべてのアクセス層で許可されます。`Set Blob Tags` により、既存のすべてのタグが置き換えられます。`Set Blob Tags` により、BLOB の last-modified-time は変更されません |
 | **Storage**     | BLOB データと共に格納されます | BLOB データのサブリソース |
 | **インデックス作成とクエリの実行** | Azure Search などの別のサービスを使用する必要があります | インデックス付けとクエリ実行機能は、Blob Storage に組み込まれています |
 | **暗号化** | BLOB データに使用されるのと同じ暗号化キーを使用して保存時に暗号化 | Microsoft が管理する暗号化キーを使用して保存時に暗号化 |
@@ -310,11 +307,11 @@ BLOB インデックス タグとメタデータはどちらも、ユーザー�
 
 ## <a name="feature-support"></a>機能サポート
 
-次の表は、アカウントでのこの機能のサポートと、特定の機能を有効にした場合のサポートへの影響を示しています。 
+この表は、アカウントでのこの機能のサポート状況と、特定の機能を有効にした場合のサポートへの影響を示しています。
 
-| ストレージ アカウントの種類                | BLOB Storage (既定のサポート)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+| ストレージ アカウントの種類                | Blob Storage (既定のサポート)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>
 |-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
-| Standard 汎用 v2 | ![はい](../media/icons/yes-icon.png) |![いいえ](../media/icons/no-icon.png)              | ![いいえ](../media/icons/no-icon.png) | 
+| Standard 汎用 v2 | ![はい](../media/icons/yes-icon.png) |![いいえ](../media/icons/no-icon.png)              | ![いいえ](../media/icons/no-icon.png) |
 | Premium ブロック BLOB          | ![いいえ](../media/icons/no-icon.png)|![いいえ](../media/icons/no-icon.png) | ![いいえ](../media/icons/no-icon.png) |
 
 <sup>1</sup>    Data Lake Storage Gen2 とネットワーク ファイル システム (NFS) 3.0 プロトコルの両方で、階層型名前空間が有効になっているストレージ アカウントが必要です。
@@ -327,7 +324,7 @@ BLOB インデックス タグとメタデータはどちらも、ユーザー�
 
 - インデックス タグがあるページ BLOB をアップロードしても、タグは保持されません。 ページ BLOB をアップロードした後で、タグを設定してください。
 
-- BLOB ストレージのバージョン管理が有効になっている場合でも、現在のバージョンでインデックス タグを使用できます。 インデックス タグは以前のバージョンでも保持されますが、これらのタグは BLOB インデックス エンジンには渡されません。そのため、前のバージョンを取得するために使用することはできません。 以前のバージョンを現在のバージョンに昇格させると、その以前のバージョンのタグが現在のバージョンのタグになります。 これらのタグは現在のバージョンに関連付けられているため、BLOB インデックス エンジンに渡され、クエリが実行できるようになります。 
+- BLOB ストレージのバージョン管理が有効になっている場合でも、現在のバージョンでインデックス タグを使用できます。 インデックス タグは以前のバージョンでも保持されますが、これらのタグは BLOB インデックス エンジンには渡されません。そのため、前のバージョンを取得するために使用することはできません。 以前のバージョンを現在のバージョンに昇格させると、その以前のバージョンのタグが現在のバージョンのタグになります。 これらのタグは現在のバージョンに関連付けられているため、BLOB インデックス エンジンに渡され、クエリが実行できるようになります。
 
 - インデックス タグにインデックスが付けられているかどうかを判断する API はありません。
 
@@ -353,4 +350,4 @@ BLOB インデックス タグとメタデータはどちらも、ユーザー�
 
 BLOB インデックスを使用する方法の例については、[BLOB インデックスを使用してデータを管理して検索する](storage-blob-index-how-to.md)方法に関する記事を参照してください。
 
-[ライフサイクルの管理](storage-lifecycle-management-concepts.md)について確認し、BLOB インデックスの一致を含むルールを設定します。
+[ライフサイクルの管理](./lifecycle-management-overview.md)について確認し、BLOB インデックスの一致を含むルールを設定します。

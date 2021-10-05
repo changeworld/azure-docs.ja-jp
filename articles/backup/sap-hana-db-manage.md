@@ -3,12 +3,12 @@ title: Azure VM 上のバックアップされた SAP HANA データベースを
 description: この記事では、Azure 仮想マシン上で実行されている SAP HANA データベースを管理および監視するための一般的なタスクについて説明します。
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 54d3341a83873ad3cc50815f04a0b252bb44438e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d514a8f790f906a4830672dc726c03ad2cf41a2c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101703768"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128662250"
 ---
 # <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>バックアップされた SAP HANA データベースを管理および監視する
 
@@ -85,6 +85,10 @@ HANA ネイティブ クライアントから (**Backint** に) トリガーさ�
 #### <a name="restore"></a>復元
 
 同じマシンに復元するために (**Backint** を使用して) HANA ネイティブ クライアントからトリガーされた復元は、 **[バックアップ ジョブ]** ページから [監視](#monitor-manual-backup-jobs-in-the-portal)することができます。
+
+#### <a name="delete"></a>削除
+
+Azure Recovery Services コンテナーにおけるバックアップのライフサイクルはバックアップ ポリシーによって決まるため、HANA ネイティブからの削除操作は Azure Backup ではサポート **されません**。
 
 ### <a name="run-sap-hana-native-client-backup-to-local-disk-on-a-database-with-azure-backup-enabled"></a>Azure Backup が有効になっているデータベースでローカル ディスクへの SAP HANA ネイティブ クライアント バックアップを実行する
 

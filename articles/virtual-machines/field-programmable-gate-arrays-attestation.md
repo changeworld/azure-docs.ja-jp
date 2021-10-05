@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 04/01/2021
 ms.author: vikancha
-ms.openlocfilehash: 034acde1f99409ef7d541d7705bb995e0db00d3b
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: dba6962199f61eeb93dfb2f98e3e448c94ff633a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122689104"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128567102"
 ---
 # <a name="fpga-attestation-for-azure-np-series-vms-preview"></a>Azure NP シリーズ VM の FPGA 構成証明 (プレビュー)
 
@@ -54,9 +54,9 @@ Azure で何らかの操作を実行する前に、Azure にログインし、�
 
 ## <a name="upload-your-netlist-file-to-azure-blob-storage"></a>netlist ファイルを Azure BLOB ストレージにアップロードする  
 
-ファイルをコピーするには、いくつかの方法があります。az ストレージ アップロード コマンドレットの使用例を次に示します。 az コマンドは、Linux と Windows の両方で実行できます。 "BLOB" 名には任意の名前を選択できますが、xclbin 拡張子は変更しないようにしてください。 
+ファイルをコピーするには、いくつかの方法があります。az ストレージ アップロード コマンドレットの使用例を次に示します。 az コマンドは、Linux と Windows の両方で実行できます。 "BLOB" 名には任意の名前を選択できますが、`xclbin` 拡張子は変更しないようにしてください。
 
-```az storage blob upload --account-name <storage account to receive netlist> --container-name <blob container name> --name <blob filename> --file <local file with netlist>  ```
+`az storage blob upload --account-name <storage account to receive netlist> --container-name <blob container name> --name <blob filename> --file <local file with netlist>`
 
 ## <a name="download-the-attestation-scripts"></a>構成証明スクリプトのダウンロード  
 

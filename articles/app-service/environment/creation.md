@@ -4,15 +4,15 @@ description: App Service Environment の作成方法について説明します�
 author: ccompy
 ms.assetid: 7690d846-8da3-4692-8647-0bf5adfd862a
 ms.topic: article
-ms.date: 07/06/2021
+ms.date: 09/07/2021
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 45d2c817f579cd183337a42e252dd3e606eafefa
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: 0ed8291fd038f49e079bc3851b340bd7c9af5538
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113433216"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124836361"
 ---
 # <a name="create-an-app-service-environment"></a>App Service Environment を作成する
 > [!NOTE]
@@ -36,15 +36,43 @@ ASE 作成後は、次の変更はできません。
 
 サブネットには、ASE をスケールするときの最大サイズに対応できるだけの大きさが必要です。 作成後に変更することはできないため、最大スケールのニーズをサポートするために十分な大きさのサブネットを選択します。 推奨されるサイズは、256 のアドレスを持つ /24 です。
 
+## <a name="deployment-considerations"></a>デプロイに関する考慮事項
+
+ASE をデプロイする前に考慮する必要がある重要な点が 2 つあります。 
+
+- VIP の種類
+- 展開の種類
+
+内部と外部の 2 種類の VIP があります。 内部 VIP を使用すると、ASE 上のアプリに ASE サブネット内のアドレスで到達できます。アプリがパブリック DNS に登録されることはありません。 ポータルでの作成中に、ASE 用の Azure プライベート DNS ゾーンを作成するオプションがあります。 外部 VIP を使用すると、アプリはインターネットに接続するパブリック アドレスに配置され、パブリック DNS に登録されます。 
+
+デプロイには、次の 3 種類があります。 
+
+- 単一ゾーン 
+- ゾーン冗長
+- ホスト グループ
+
+単一ゾーン ASE は、ASEv3 が使用可能なすべてのリージョンで使用できます。 単一ゾーン ASE を使用する場合、App Service プラン インスタンスの最低料金として、Windows Isolated v2 の 1 インスタンス分の料金が発生します。 インスタンスが 1 つ以上になるとすぐに、この料金はなくなります。 これは追加の料金ではありません。 
+
+ゾーン冗長 ASE では、アプリは同じリージョンの 3 つのゾーンに分散されます。 ゾーン冗長 ASE は、可用性ゾーンをサポートするリージョンによって主に制限される ASE 対応リージョンのサブセットで使用できます。 ゾーン冗長 ASE がある場合、App Service プランの最小サイズは 3 インスタンスです。 これにより、可用性ゾーンごとに 1 つのインスタンスが確保されます。 App Service プランは、一度に 1 つ以上のインスタンスにスケールアップできます。 スケーリングが 3 単位である必要はありませんが、インスタンスの総数が 3 の倍数である場合にのみ、アプリはすべての可用性ゾーンに均等に分散されます。 ゾーン冗長 ASE はインフラストラクチャが 3 倍になり、ゾーン冗長コンポーネントで作成されているため、なんらかの理由で 3 つのゾーンのうち 2 つがダウンした場合でも、ワークロードを引き続き使用できます。 システム ニーズの増加により、ゾーン冗長 ASE の最低料金は 9 インスタンスとなっています。 ASEv3 の App Service プラン インスタンスの総数が 9 個未満の場合、差額は Windows I1v2 として請求されます。 インスタンスが 9 個以上あっても、ゾーン冗長 ASE を使用するための追加料金は発生しません。 ゾーン冗長の詳細については、[リージョンと可用性ゾーン][AZoverview]に関する記事を参照してください。
+
+ホスト グループ デプロイでは、アプリは専用ホスト グループにデプロイされます。 専用ホスト グループはゾーン冗長ではありません。 専用ホスト グループ デプロイでは、ASE を専用ハードウェアにデプロイできます。 専用ホスト グループで ASE を使用する場合、最低インスタンス料金はありませんが、ASE をプロビジョニングするときにホスト グループの料金を支払う必要があります。 さらに、プランを作成してスケールアウトするときに、割引された App Service プラン料金を支払います。App Service プランとインフラストラクチャ ロールの両方で使用される、専用ホスト デプロイで使用可能なコアの数には限りがあります。 ASE の専用ホスト デプロイでは、ASE で通常使用できるインスタンスの総数の 200 に達することはできません。 使用可能なインスタンスの総数は、App Service プラン インスタンスの総数とインフラストラクチャ ロールの負荷ベースの数の合計に関連しています。 
+
 ## <a name="creating-an-ase-in-the-portal"></a>ポータルでの ASE の作成
 
 1. ASE を作成するには、マーケットプレースで **App Service Environment v3** を検索します。  
+
 2. 基本:サブスクリプションを選択し、リソース グループを選択または作成して、ASE の名前を入力します。  仮想 IP の種類を選びます。 [Internal]\(内部\) を選んだ場合、受信 ASE アドレスは ASE サブネット内部のアドレスになります。 [External]\(外部\) を選んだ場合、受信 ASE アドレスは、インターネットに公開されるパブリック IP アドレスになります。 ASE 名は、ASE のドメインのサフィックスにも使用されます。 ASE 名が *contoso* であり、内部 VIP ASE を使用している場合、ドメインのサフィックスは *contoso.appserviceenvironment.net* になります。 ASE 名が *contoso* であり、外部 VIP ASE を使用している場合、ドメインのサフィックスは *contoso.p.azurewebsites.net* になります。 
-![App Service Environment の作成の [基本] タブ](./media/creation/creation-basics.png)
+
+    ![App Service Environment の作成の [基本] タブ](./media/creation/creation-basics.png)
+
 3. [Hosting]\(ホスティング\): Host Group のデプロイについて *[Enabbled]\(有効\)* か *[Disabled]\(無効\)* を選びます。 ホスト グループ デプロイは、専用ハードウェアを選択するために使用されます。 [Enabled]/(有効/) を選んだ場合は、ASE を専用のハードウェアにデプロイします。 専用のハードウェアにデプロイする場合、ASE 作成中は専用ホスト全体に対する料金の請求を受けます。その後は App Service プランのインスタンスに対する請求だけになって料金が下がります。 
-![App Service Environment のホスティングの選択項目](./media/creation/creation-hosting.png)
-4. [Networking]\(ネットワーク\): Virtual Network を選択または作成し、サブネットを選択または作成します。 内部 VIP ASE を作成する場合は、ドメインのサフィックスを ASE に指定するよう、ASE Azure DNS プライベート ゾーンを設定することができます。 「[App Service Environment の使用][UsingASE]」の DNS のセクションで、DNS を手動で設定する詳しい方法を説明しています。
-![App Service Environment のネットワークの選択項目](./media/creation/creation-networking.png)
+
+    ![App Service Environment のホスティングの選択項目](./media/creation/creation-hosting.png)
+
+4. [Networking]\(ネットワーク\): Virtual Network を選択または作成し、サブネットを選択または作成します。 内部 VIP ASE を作成する場合は、ドメイン サフィックスが ASE を指すように Azure DNS プライベート ゾーンを構成できます。 「[App Service Environment の使用][UsingASE]」の DNS のセクションで、DNS を手動で設定する詳しい方法を説明しています。
+
+    ![App Service Environment のネットワークの選択項目](./media/creation/creation-networking.png)
+
 5. 確認と作成: 構成が正しいことを確認し、[作成] を選択します。 ASE の作成には 2 時間近くかかる場合があります。 
 
 ASE の作成が完了したら、アプリを作成するときにそれを場所として選択できます。 新しい ASE でアプリを作成する方法、ASE の管理方法の詳しい説明は「[App Service Environment の使用][UsingASE]」を読んでください
@@ -68,3 +96,4 @@ ASE は、通常、マルチテナント ハイパーバイザーでプロビジ
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../web-application-firewall/ag/ag-overview.md
 [logalerts]: ../../azure-monitor/alerts/alerts-log.md
+[AZoverview]: ../../availability-zones/az-overview.md

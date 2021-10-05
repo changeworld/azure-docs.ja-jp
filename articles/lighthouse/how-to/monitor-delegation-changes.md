@@ -1,15 +1,15 @@
 ---
 title: 管理テナントでの委任変更を監視する
 description: 管理テナントへの Azure Lighthouse のすべての委任アクティビティを監視する方法について説明します。
-ms.date: 05/11/2021
+ms.date: 09/08/2021
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 2472e7519a6c45ff62fb0c0280f0886b4aa0ff4d
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 7eb38ac8ac7f86fd179663fe7bfb3aa1fb4e8830
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112077702"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124819585"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>管理テナントでの委任変更を監視する
 
@@ -41,7 +41,9 @@ ms.locfileid: "112077702"
 自分のアクセス権を昇格させたら、テナントレベルのアクティビティ ログ データに対してクエリを実行できるように、適切なアクセス許可をアカウントに割り当てることができます。 このアカウントには、ご利用の管理テナントのルート スコープで[監視閲覧者](../../role-based-access-control/built-in-roles.md#monitoring-reader) Azure 組み込みロールを割り当てる必要があります。
 
 > [!IMPORTANT]
-> ルート スコープでのロール割り当てを許可すると、テナント内のすべてのリソースに同じアクセス許可が適用されることになります。 これは広範なアクセス レベルであるため、[このロールをサービス プリンシパル アカウントに割り当てて、そのアカウントを使用してデータをクエリする](#use-a-service-principal-account-to-query-the-activity-log)ことができます。 [Azure portal で委任情報を直接表示](#view-delegation-changes-in-the-azure-portal)できるよう、ルート スコープの監視閲覧者ロールを個々のユーザーまたはユーザー グループに割り当てることもできます。 これを行う場合、これが広範囲にわたるアクセス レベルであり、可能な限り少数のユーザーに制限する必要があることに留意してください。
+> ルート スコープでのロール割り当てを許可すると、テナント内のすべてのリソースに同じアクセス許可が適用されることになります。 これは広範なアクセス レベルであるため、[このロールをサービス プリンシパル アカウントに割り当てて、そのアカウントを使用してデータをクエリする](#use-a-service-principal-account-to-query-the-activity-log)ことを推奨しています。
+> 
+> [Azure portal で委任情報を直接表示](#view-delegation-changes-in-the-azure-portal)できるよう、ルート スコープの監視閲覧者ロールを個々のユーザーまたはユーザー グループに割り当てることもできます。 これを行う場合、これが広範囲にわたるアクセス レベルであり、可能な限り少数のユーザーに制限する必要があることに留意してください。
 
 次のいずれかの方法を使用して、ルート スコープの割り当てを行います。
 

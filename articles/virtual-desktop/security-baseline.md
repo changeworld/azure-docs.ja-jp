@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/25/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b9a0d2b785f98555d723c81c6beecaa85313881e
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: 0adc8638eeffedf1f8b2b31357b43fc38e67773f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114728659"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128546335"
 ---
 # <a name="azure-security-baseline-for-azure-virtual-desktop"></a>Azure Virtual Desktop 用の Azure セキュリティ ベースライン
 
@@ -40,7 +40,7 @@ Azure Security Center のアダプティブ ネットワークのセキュリテ
 
 - [Azure Security Center でのアダプティブ ネットワークのセキュリティ強化機能](../security-center/security-center-adaptive-network-hardening.md) 
 
-- [Azure Virtual Desktop 用の Azure Firewall](../firewall/protect-windows-virtual-desktop.md)
+- [Azure Virtual Desktop 用の Azure Firewall](../firewall/protect-azure-virtual-desktop.md)
 
 - [セキュリティ規則を使用してネットワーク セキュリティ グループを作成する方法](../virtual-network/tutorial-filter-network-traffic.md)
 
@@ -640,9 +640,7 @@ Azure Security Center では、多数の Azure 資産について高品質のア
 
 Azure Sentinel により、事実上すべてのログソースに対して広範な Data Analytics と、インシデントのライフサイクル全体を管理するためのケース管理ポータルが提供されます。 調査中のインテリジェンス情報を、追跡とレポートのためにインシデントに関連付けることができます。 
 
-- [Windows マシンのディスクのスナップショットを作成する](../virtual-machines/windows/snapshot-copy-managed-disk.md)
-
-- [Linux マシンのディスクのスナップショットを作成する](../virtual-machines/linux/snapshot-copy-managed-disk.md)
+- [マシンのディスクのスナップショットを作成する](../virtual-machines/windows/snapshot-copy-managed-disk.md)
 
 - [Microsoft Azure サポートの診断情報とメモリ ダンプ コレクション](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/) 
 

@@ -5,16 +5,20 @@ author: johndowns
 ms.author: jodowns
 ms.topic: conceptual
 ms.date: 06/01/2021
-ms.openlocfilehash: 7dae6525b457c544c98c59ffd1195f9ec31e2ae7
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 46efbf883e6dc0409e7f8d5f8d379693079acafc
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111540848"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124788441"
 ---
 # <a name="best-practices-for-bicep"></a>Bicep に関するベスト プラクティス
 
 この記事では、Bicep ファイルの開発時に従うべき手法を推奨します。 これらの手法により、Bicep ファイルを簡単に理解して使用できるようになります。
+
+### <a name="microsoft-learn"></a>Microsoft Learn
+
+Bicep のベスト プラクティスの詳細とハンズオン ガイダンスについては、**Microsoft Learn** で「[コラボレーションのための Bicep コードの構築](/learn/modules/structure-bicep-code-collaboration/)」を参照してください。
 
 ## <a name="parameters"></a>パラメーター
 

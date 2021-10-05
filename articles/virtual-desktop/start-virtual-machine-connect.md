@@ -3,15 +3,15 @@ title: 接続時に仮想マシンを起動 - Azure
 description: 接続時に仮想マシンを起動機能を構成する方法について説明します。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 08/06/2021
+ms.date: 09/17/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 301a2b0626b6dd40f90a8b693e3284c12d948fa1
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 85110db5b3f9e11105fa27a9ed8767d3d7e9e2bd
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121728460"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128592244"
 ---
 # <a name="start-virtual-machine-on-connect"></a>接続時に仮想マシンを起動
 
@@ -51,10 +51,16 @@ Azure portal を使用して、接続時に仮想マシンを起動のカスタ�
 
 3. 次に、カスタム ロールに名前を指定し、説明を追加します。 "start VM on connect" という名前を付けることをお勧めします。
 
-4. **アクセス許可** タブで、このロールを割り当てるサブスクリプションに次のアクセス許可を追加します。 
+4. **[アクセス許可]** タブで、このロールを割り当てるサブスクリプションに、次の 2 つのアクセス許可セットのいずれかを追加します。 
  
    - Microsoft.Compute/virtualMachines/start/action
-   - Microsoft.Compute/virtualMachines/read
+   - Microsoft.Compute/virtualMachines/read 
+   - Microsoft.Compute/virtualMachines/instanceView/read 
+
+   代わりに、これらのアクセス許可を使用することもできます。
+
+   - Microsoft.Compute/virtualMachines/start/action
+   - Microsoft.Compute/virtualMachines/*/read 
 
 5. 完了したら、 **[OK]** をクリックします。
 
@@ -85,7 +91,7 @@ JSON ファイルを使用してカスタム ロールを作成する場合、�
   "Description": "Start VM on connect with AVD (Custom)",
   "Actions": [
     "Microsoft.Compute/virtualMachines/start/action",
-    "Microsoft.Compute/virtualMachines/read"
+    "Microsoft.Compute/virtualMachines/*/read"
   ],
   "NotActions": [],
   "DataActions": [],

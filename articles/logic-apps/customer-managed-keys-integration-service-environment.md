@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: mijos, rarayudu, azla
 ms.topic: conceptual
 ms.date: 01/20/2021
-ms.openlocfilehash: f3ea6476173e7be1a6239e97ef2e5fbb5257aead
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: db99be325d50f89e6e1c96c1471431815b98936d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122322215"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124824287"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>Azure Logic Apps の統合サービス環境 (ISE) の保存データを暗号化するためにカスタマー マネージド キーを設定する
 
@@ -30,6 +30,8 @@ Azure Logic Apps は Azure Storage を利用して、データを格納し、自
   * Azure Government: アリゾナ州、バージニア州、テキサス州
 
 * カスタマー マネージド キーは、 "*ISE を作成するときにのみ*" 指定でき、その後には指定できません。 ISE を作成した後に、このキーを無効にすることはできません。 現時点では、ISE でのカスタマー マネージド キーのローテーションはサポートされていません。
+
+* カスタマー マネージド キーを格納するキー コンテナーは、ISE と同じ Azure リージョンに存在する必要があります。
 
 * カスタマー マネージド キーをサポートするには、ISE で[システム割り当てまたはユーザー割り当てのマネージド ID](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) が有効になっている必要があります。 この ID により、Azure 仮想ネットワーク内にある、または仮想ネットワークに接続されている、セキュリティで保護されたリソース (仮想マシンや他のシステムまたはサービスなど) へのアクセスを ISE で認証できます。 このようにすると、資格情報を使用してサインインする必要はありません。
 

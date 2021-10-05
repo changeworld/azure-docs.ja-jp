@@ -1,22 +1,22 @@
 ---
 title: 予測データ パイプラインを作成する
+description: Azure Data Factory または Synapse Analytics で Azure Machine Learning Studio (クラシック) のバッチ実行アクティビティを使用して、予測パイプラインを作成する方法について説明します。
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Azure Data Factory で ML Studio (classic) のバッチ実行アクティビティを使用して、予測パイプラインを作成する方法について説明します。
 author: nabhishek
 ms.author: abnarain
 ms.service: data-factory
 ms.subservice: tutorials
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 07/16/2020
-ms.openlocfilehash: 340f12462a3d31b0f0da13afd43de2a24608d781
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.date: 09/09/2021
+ms.openlocfilehash: 5645dcf87906f1e88ffb5e680a3a02f59fbfdeea
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122271672"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124805987"
 ---
-# <a name="create-a-predictive-pipeline-using-ml-studio-classic-and-azure-data-factory"></a>ML Studio (classic) と Azure Data Factory を使用して予測パイプラインを作成する
+# <a name="create-a-predictive-pipeline-using-azure-machine-learning-studio-classic-with-azure-data-factory-or-synapse-analytics"></a>Azure Machine Learning Studio (クラシック) と Azure Data Factory または Synapse Analytics を使用して予測パイプラインを作成する
 
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-azure-ml-batch-execution-activity.md)
@@ -30,10 +30,10 @@ ms.locfileid: "122271672"
 2. **トレーニング実験を予測実験に変換する**。 既存のデータでモデルがトレーニングされ、それを使用して新しいデータをスコア付けする準備ができると、スコア付け用に実験を用意し、合理化します。
 3. **Web サービスとしてデプロイする**。 Azure Web サービスとしてスコア付け実験を発行できます。 この Web サービスのエンドポイントを使用して、モデルにデータを送信し、モデルの予測を受信できます。
 
-### <a name="data-factory-and-ml-studio-classic-together"></a>Data Factory と ML Studio (classic) の併用
-Azure Data Factory を使用すると、公開された [ML Studio (classic)](https://azure.microsoft.com/documentation/services/machine-learning) Web サービスを利用して予測分析を行うパイプラインを簡単に作成できます。 Azure Data Factory パイプライン内で **バッチ実行アクティビティ** を使用すると、ML Studio (classic) Web サービスを呼び出して、データの予測を一括で行うことができます。
+### <a name="using-azure-machine-learning-studio-classic-with-azure-data-factory-or-synapse-analytics"></a>Azure Machine Learning Studio (クラシック) と Azure Data Factory または Synapse Analytics の併用
+Azure Data Factory または Synapse Analytics を使用すると、発行された [Azure Machine Learning Studio (クラシック)](https://azure.microsoft.com/documentation/services/machine-learning) Web サービスを利用して予測分析を行うパイプラインを簡単に作成できます。 パイプラインで **バッチ実行アクティビティ** を使用すると、Azure Machine Learning Studio (クラシック) Web サービスを呼び出して、データの予測をバッチで行うことができます。
 
-時間の経過と共に、ML Studio (classic) スコア付け実験の予測モデルには、新しい入力データセットを使用した再トレーニングが必要になります。 次の手順を実行することで、Data Factory パイプラインからモデルを再トレーニングできます。
+時間の経過と共に、Azure Machine Learning Studio (クラシック) スコア付け実験の予測モデルには、新しい入力データセットを使用した再トレーニングが必要になります。 次の手順を実行することで、パイプラインからモデルを再トレーニングできます。
 
 1. 予測実験ではなく、トレーニング実験を Web サービスとして発行します。 前のシナリオで予測実験を Web サービスとして公開したのと同様にこの手順を ML Studio (classic) で行います。
 2. ML Studio (classic) バッチ実行アクティビティを使用して、トレーニング実験用 Web サービスを呼び出します。 基本的には、ML Studio (classic) Batch Execution アクティビティを使用して、トレーニング Web サービスとスコア付け Web サービスの両方を呼び出すことができます。
@@ -42,7 +42,7 @@ Azure Data Factory を使用すると、公開された [ML Studio (classic)](ht
 
 ## <a name="ml-studio-classic-linked-service"></a>ML Studio (classic) のリンクされたサービス
 
-**ML Studio (classic)** のリンクされたサービスを作成して、ML Studio (classic) Web サービスを Azure Data Factory にリンクします。 このリンクされたサービスは、ML Studio (classic) のバッチ実行アクティビティと[更新リソース アクティビティ](update-machine-learning-models.md)で使用されます。
+**Azure Machine Learning Studio (クラシック)** のリンクされたサービスを作成して、Azure Machine Learning Studio (classic) Web サービスをリンクします。 このリンクされたサービスは、Azure Machine Learning Studio (classic) のバッチ実行アクティビティと[更新リソース アクティビティ](update-machine-learning-models.md)で使用されます。
 
 ```JSON
 {
@@ -67,9 +67,9 @@ Azure Data Factory を使用すると、公開された [ML Studio (classic)](ht
 
 JSON 定義のプロパティについては、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。
 
-ML Studio (classic) では、予測実験用にクラシック Web サービスと新しい Web サービスの両方がサポートされています。 Data Factory から使用する適切なサービスを選択できます。 ML Studio (classic) のリンクされたサービスを作成するために必要な情報を取得するには、 https://services.azureml.net に移動します。ここには、(新しい) Web サービスとクラシック Web サービスがすべて表示されます。 アクセスする Web サービスをクリックし、 **[使用]** ページをクリックします。 **apiKey** プロパティの **主キー** と、**mlEndpoint** プロパティの **バッチ要求** をコピーします。
+Azure Machine Learning Studio (classic) では、予測実験用にクラシック Web サービスと新しい Web サービスの両方がサポートされています。 お使いの Data Factory または Synapse ワークスペースから使用する適切なサービスを選択できます。 Azure Machine Learning Studio (classic) のリンクされたサービスを作成するために必要な情報を取得するには、 https://services.azureml.net に移動します。ここには、(新しい) Web サービスとクラシック Web サービスがすべて表示されます。 アクセスする Web サービスをクリックし、 **[使用]** ページをクリックします。 **apiKey** プロパティの **主キー** と、**mlEndpoint** プロパティの **バッチ要求** をコピーします。
 
-![ML Studio (classic) Web サービス](./media/transform-data-using-machine-learning/web-services.png)
+:::image type="content" source="./media/transform-data-using-machine-learning/web-services.png" alt-text="ML Studio (classic) Web サービス":::
 
 ## <a name="ml-studio-classic-batch-execution-activity"></a>ML Studio (classic) Batch Execution アクティビティ
 
@@ -137,7 +137,7 @@ ML Studio (classic) では、予測実験用にクラシック Web サービス�
 
 ### <a name="scenario-1-experiments-using-web-service-inputsoutputs-that-refer-to-data-in-azure-blob-storage"></a>シナリオ 1:Azure Blob Storage のデータを参照する Web サービスの入力/出力の使用を実験する
 
-このシナリオの ML Studio (classic) Web サービスでは、Azure Blob Storage 内のファイルのデータを使用して予測が作成され、Blob Storage に予測結果が保存されます。 次の JSON では、AzureMLBatchExecution アクティビティを使用する Data Factory パイプラインが定義されています。 Azure Blog Storage の入出力データは、LinkedName と FilePath のペアを使用して参照されます。 サンプルのリンクされたサービスが入力と出力で異なる場合は、Data Factory が適切なファイルを選択して ML Studio (classic) Web サービスに送信できるように、入力と出力にそれぞれ異なるリンクされたサービスをご利用いただけます。
+このシナリオの Azure Machine Learning Studio (classic) Web サービスでは、Azure Blob Storage 内のファイルのデータを使用して予測が作成され、Blob Storage に予測結果が保存されます。 次の JSON では、AzureMLBatchExecution アクティビティを使用するパイプラインが定義されています。 Azure Blog Storage の入出力データは、LinkedName と FilePath のペアを使用して参照されます。 サンプルのリンクされたサービスが入力と出力で異なる場合は、サービスが適切なファイルを選択して Azure Machine Learning Studio (クラシック) Web サービスに送信できるように、入力と出力にそれぞれ異なるリンクされたサービスを使用できます。
 
 > [!IMPORTANT]
 > ML Studio (classic) の実験では、Web サービスの入力ポートおよび出力ポートとグローバル パラメーターには既定の名前 (「input1」、「input2」) がありますが、これらはカスタマイズすることができます。 webServiceInputs、webServiceOutputs、および globalParameters の設定に使用する名前は、実験での名前と厳密に一致する必要があります。 バッチ実行のヘルプ ページでサンプルの要求のペイロードを表示して、ML Studio (classic) エンドポイントで必要なマッピングを確認することができます。

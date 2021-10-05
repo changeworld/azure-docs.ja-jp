@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/28/2021
 ms.author: mitagaki
-ms.openlocfilehash: db50dba270157aa6365be359da6c9aa189c8f614
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 0f540025561b6e452371a74093133bf3e1183b1b
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123439840"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124744128"
 ---
-# <a name="backup-and-recover-speech-customization-resources"></a>音声カスタマイズ リソースをバックアップおよび回復する
+# <a name="back-up-and-recover-speech-customization-resources"></a>音声カスタマイズ リソースをバックアップおよび復旧する
 
-Speech サービスは[さまざまなリージョンで使用できます](/azure/cognitive-services/speech-service/regions)。 サービス サブスクリプション キーは、1 つのリージョンに関連付けられています。 キーを取得するときは、データ、モデル、およびデプロイが存在する特定のリージョンを選択します。
+Speech サービスは[さまざまなリージョンで使用できます](./regions.md)。 サービス サブスクリプション キーは、1 つのリージョンに関連付けられています。 キーを取得するときは、データ、モデル、およびデプロイが存在する特定のリージョンを選択します。
 
 カスタマイズされた音声モデルやカスタム音声フォントなど、顧客が作成したデータ資産のデータセットも、**サービスによってデプロイされたリージョン内でのみ使用できます**。 このような資産は次のとおりです。
 
@@ -44,14 +44,14 @@ Speech サービスは[さまざまなリージョンで使用できます](/azu
 
 エラーを監視するようにクライアントを構成するには、次の手順に従います。
 
-1.  [ドキュメントにある、リージョンで使用可能なエンドポイントのリスト](/azure/cognitive-services/speech-service/rest-speech-to-text)を参照してください。
+1.  [ドキュメントにある、リージョンで使用可能なエンドポイントのリスト](./rest-speech-to-text.md)を参照してください。
 2.  プライマリ リージョンと 1 つ以上のセカンダリ リージョンまたはバックアップ リージョンをリストから選択します。
 3. Azure portal で、リージョンごとに Speech Service リソースを作成します。
-    -  特定のクォータを設定した場合は、バックアップ リージョンにも同じクォータを設定することを検討してください。 「[Speech サービスのクォータと制限](/azure/cognitive-services/speech-service/speech-services-quotas-and-limits)」の詳細を参照してください。
+    -  特定のクォータを設定した場合は、バックアップ リージョンにも同じクォータを設定することを検討してください。 「[Speech サービスのクォータと制限](./speech-services-quotas-and-limits.md)」の詳細を参照してください。
 
 4.  各リージョンには独自の STS トークン サービスがあることに注意してください。 プライマリ リージョンとバックアップ リージョンについては、クライアント構成ファイルによって次のことが認識されている必要があります。
     -  リージョンの Speech サービス エンドポイント
-    -  [リージョンのサブスクリプション キーとリージョン コード](/azure/cognitive-services/speech-service/rest-speech-to-text)
+    -  [リージョンのサブスクリプション キーとリージョン コード](./rest-speech-to-text.md)
 
 5.  接続エラー (通常は接続タイムアウトとサービス利用不能エラー) を監視するようにコードを構成します。 [GitHub: リージョンを切り替える候補を表示するためのサンプルの追加](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/fa6428a0837779cbeae172688e0286625e340942/samples/csharp/sharedcontent/console/speech_recognition_samples.cs#L965)に関する C# のサンプル コードを参照してください。
 
@@ -72,8 +72,8 @@ Custom Speech サービスでは、自動フェールオーバーはサポート
 
 1.  1 つのメイン リージョン (プライマリ) にカスタム モデルを作成します。
 2.  [モデル コピー API](https://eastus2.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription) を実行して、準備されたすべてのリージョン (セカンダリ) にカスタム モデルをレプリケートします。
-3.  Speech Studio にアクセスして、コピーしたモデルを読み込み、セカンダリ リージョンに新しいエンドポイントを作成します。 「[Custom Speech モデルのトレーニングとデプロイ](/azure/cognitive-services/speech-service/how-to-custom-speech-train-model)」で、新しいモデルをデプロイする方法を参照してください。
-    -  特定のクォータを設定した場合は、バックアップ リージョンにも同じクォータを設定することを検討してください。 「[Speech サービスのクォータと制限](/azure/cognitive-services/speech-service/speech-services-quotas-and-limits)」の詳細を参照してください。
+3.  Speech Studio にアクセスして、コピーしたモデルを読み込み、セカンダリ リージョンに新しいエンドポイントを作成します。 「[Custom Speech モデルのトレーニングとデプロイ](./how-to-custom-speech-train-model.md)」で、新しいモデルをデプロイする方法を参照してください。
+    -  特定のクォータを設定した場合は、バックアップ リージョンにも同じクォータを設定することを検討してください。 「[Speech サービスのクォータと制限](./speech-services-quotas-and-limits.md)」の詳細を参照してください。
 4.  既定のエンドポイントの使用法と同じように、永続的なエラーでフェールオーバーするようにクライアントを構成します。
 
 クライアント コードでは、プライマリ リージョンでのデプロイ済みのモデルの可用性を監視し、プライマリに障害が発生したときに、そのオーディオ トラフィックをセカンダリ リージョンにリダイレクトすることができます。 リアルタイム フェールオーバーを必要としない場合でも、次の手順に従って手動フェールオーバーを準備できます。
@@ -82,7 +82,7 @@ Custom Speech サービスでは、自動フェールオーバーはサポート
 
 リアルタイム フェールオーバーを必要としない場合は、データをインポートし、後でセカンダリ リージョンにモデルを作成してデプロイすることができます。ただし、これらのタスクの完了には時間がかかることを理解しておく必要があります。
 
-#### <a name="failover-tests"></a>フェールオーバー テスト
+#### <a name="failover-time-requirements"></a>フェールオーバー時間の要件
 
 このセクションでは、タイミングに関する一般的なガイダンスを示します。 この時間は、[代表的なテスト データ セット](https://github.com/microsoft/Cognitive-Custom-Speech-Service)を使用してオフライン フェールオーバーを推定するために記録されています。
 
@@ -103,7 +103,7 @@ Custom Voice では自動フェールオーバーはサポートされていま�
 
 カスタム音声のリアルタイム合成に失敗した場合は、パブリック音声にフェールオーバーします (クライアントのサンプル コード: [GitHub: パブリック音声へのカスタム音声のオーバー](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/csharp/sharedcontent/console/speech_synthesis_samples.cs#L899))。
 
-[使用可能なパブリック音声](/azure/cognitive-services/speech-service/language-support#neural-voices)を確認します。 別の音声または別のリージョンにフェールオーバーする場合は、上記のサンプル コードを変更することもできます。
+[使用可能なパブリック音声](./language-support.md#neural-voices)を確認します。 別の音声または別のリージョンにフェールオーバーする場合は、上記のサンプル コードを変更することもできます。
 
 **オプション 2: 別のリージョンのカスタム音声にフェールオーバーします。**
 

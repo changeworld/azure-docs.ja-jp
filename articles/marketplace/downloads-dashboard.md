@@ -7,13 +7,13 @@ ms.topic: article
 author: shganesh-dev
 ms.author: shganesh
 ms.reviewer: sroy
-ms.date: 08/21/2020
-ms.openlocfilehash: b0771ee85fc486d4fbcc4fb181b1ce0b7b7d47dd
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/27/2021
+ms.openlocfilehash: 34d8746939b1ec4a957d72b089541eb6b5c0b5dd
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121731195"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129080230"
 ---
 # <a name="downloads-dashboard-in-commercial-marketplace-analytics"></a>コマーシャル マーケットプレース分析のダウンロード ダッシュボード
 
@@ -28,9 +28,27 @@ ms.locfileid: "121731195"
 
 1000 行を超えるデータのダウンロードを要求するたびに、 **[ダウンロード]** ダッシュボードへのリンクを含むポップアップ通知が届きます。 これらのデータのダウンロードは 30 日間可能であり、その後削除されます。
 
-## <a name="lifetime-export-of-commercial-marketplace-analytics-reports"></a>コマーシャル マーケットプレース分析レポートの有効期間エクスポート
+## <a name="access-the-downloads-dashboard"></a>[ダウンロード] ダッシュボードにアクセスする
 
-ダウンロード ダッシュボードにアクセスするには、コマーシャル マーケットプレースの **[[分析]](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** ダッシュボードを開きます。
+[!INCLUDE [Workspaces view note](./includes/preview-interface.md)]
+
+#### <a name="workspaces-view"></a>[ワークスペース ビュー](#tab/workspaces-view)
+
+1. [パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインします。
+1. ホーム ページで、 **[分析情報]** タイルを選択します。
+
+    [ ![パートナー センター ホーム ページの [分析情報] タイルの画像。](./media/workspaces/partner-center-insights-tile.png) ](./media/workspaces/partner-center-insights-tile.png#lightbox)
+
+1. 左側のメニューで **[ダウンロード]** を選択します。
+
+#### <a name="current-view"></a>[現在のビュー](#tab/current-view)
+
+1. [パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインします。
+1. 左側のナビゲーション メニューで、 **[コマーシャル マーケットプレース]**  >  **[分析]**  >  **[ダウンロード]** の順に選択します。
+
+---
+
+## <a name="lifetime-export-of-commercial-marketplace-analytics-reports"></a>コマーシャル マーケットプレース分析レポートの有効期間エクスポート
 
 [ダウンロード] ページでは、エンド ユーザーが次の操作を実行できます。
 
@@ -48,9 +66,17 @@ ms.locfileid: "121731195"
 | 使用法 | ![黒の X マーク](media/downloads-dashboard/check-black-no.png) | 最大 1 年間 |
 |
 
-ユーザーは [ダウンロード] セクションからレポートの非同期ダウンロードをスケジュールできます。
+ユーザーは、[ダウンロード] ダッシュボードからレポートの非同期ダウンロードをスケジュールできます。
+
+#### <a name="workspaces-view"></a>[ワークスペース ビュー](#tab/workspaces-view)
+
+[![[ダウンロード] ページからレポートの非同期ダウンロードをスケジュールする](media/downloads-dashboard/download-reports-workspaces.png)](media/downloads-dashboard/download-reports.png#lightbox)
+
+#### <a name="current-view"></a>[現在のビュー](#tab/current-view)
 
 [![[ダウンロード] セクションからレポートの非同期ダウンロードをスケジュールする](media/downloads-dashboard/download-reports.png)](media/downloads-dashboard/download-reports.png#lightbox)
+
+---
 
 ## <a name="next-steps"></a>次のステップ
 

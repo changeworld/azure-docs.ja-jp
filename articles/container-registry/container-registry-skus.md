@@ -2,13 +2,13 @@
 title: Registry サービス階層と機能
 description: Azure Container Registry の Basic、Standard、および Premium サービス階層 (SKU) の機能と制限 (クォータ) について説明します。
 ms.topic: article
-ms.date: 06/24/2021
-ms.openlocfilehash: 8c27426cae6d80e31aef3d7ef9b75d28a14bd923
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.date: 08/12/2021
+ms.openlocfilehash: 7f9fe5d461dede4510d3fc8069f42e7950803984
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113437542"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128582340"
 ---
 # <a name="azure-container-registry-service-tiers"></a>Azure Container Registry サービス階層
 
@@ -62,6 +62,26 @@ Basic、Standard、および Premium 階層は、すべて同じプログラム�
 レジストリで、要求のレートがレジストリのサービス レベルで許可されている制限を超えたと判断されると、プルまたはプッシュ操作の調整が発生することがあります。 `Too many requests` のような HTTP 429 エラーが表示されることがあります。
 
 読み取り操作と書き込み操作の平均レートがレジストリ制限内である場合でも、きわめて短期間でイメージのプルまたはプッシュ操作のバーストを生成すると、一時的に調整が発生する可能性があります。 コードに何らかのバックオフによる再試行ロジックを実装するか、レジストリへの要求の最大レートを引き下げる必要がある場合があります。
+
+## <a name="show-registry-usage"></a>レジストリの使用状況を表示する
+
+[az acr show-usage](/cli/az/acr#az_acr_show_usage) コマンドまたは [List Usages](/rest/api/containerregstry/registries/list-usages) REST API を使用して、ご利用のレジストリにおけるストレージおよびその他のリソースの現在の使用量をそのレジストリのサービス レベルの制限と比較したスナップショットを取得します。 ストレージの使用状況は、ポータルにあるレジストリの **[概要]** ページにも表示されます。
+
+使用状況に関する情報は、ご利用のレジストリが制限に近づいたときに[サービス レベルを変更](#changing-tiers)するかどうかを決めるのに役立ちます。 この情報はまた、[使用量を管理](container-registry-best-practices.md#manage-registry-size)するのにも役立ちます。 
+
+> [!NOTE]
+> レジストリのストレージの使用状況は、ガイドとしての使用に限定すべきであり、最近のレジストリ操作を反映していない場合があります。 レジストリの [StorageUsed](monitor-service-reference.md#container-registry-metrics) メトリックを監視すれば、最新のデータを確認できます。 
+
+レジストリのサービス レベルに応じて、使用状況に関する情報には、次の内容の一部またはすべてと、そのサービス レベルの制限が含まれます。
+
+* 使用されているストレージ (バイト単位) <sup>1</sup>
+* [Webhook](container-registry-webhook.md) の数
+* [geo レプリケーション](container-registry-geo-replication.md)の数 (ホーム レプリカを含む)
+* [プライベート エンドポイント](container-registry-private-link.md)の数
+* [IP アクセス規則](container-registry-access-selected-networks.md)の数
+* [仮想ネットワーク規則](container-registry-vnet.md)の数
+
+<sup>1</sup>geo レプリケートされたレジストリでは、ホーム リージョンのストレージ使用量が表示されます。 使用されたストレージの合計は、レプリケーション数をかけ算して求めます。
 
 ## <a name="changing-tiers"></a>階層の変更
 

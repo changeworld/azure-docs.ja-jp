@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 06/17/2021
+ms.date: 09/22/2021
 ms.author: b-juche
-ms.openlocfilehash: 44a1dd3e5d95e8ab31c9a7716f5026ceb429e084
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 2d0e323271cbc465f2f46c4904f01d5c1654426d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112287895"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128576764"
 ---
 # <a name="configure-an-nfs-client-for-azure-netapp-files"></a>Azure NetApp Files 用に NFS クライアントを構成する
 
@@ -157,6 +157,15 @@ ms.locfileid: "112287895"
     `krb5_realm = CONTOSO.COM (domain name in caps)`   
     `krb5_kpasswd = winad2016.contoso.com (same as AD address which is added in /etc/hosts)`   
     `use_fully_qualified_names = false`   
+    
+    上記の `[domain/contoso-ldap]` 構成では、次のようになります。
+    * `id_provider` は `ad` ではなく、`ldap` に設定されています。
+    * 構成では、検索ベースと、検索用のユーザー クラスおよびグループ クラスを指定しています。
+    * `ldap_sasl_authid` は、`klist -kte` からのコンピューター アカウント名です。
+    * `use_fully_qualified_names` は `false` に設定されます。  この設定は、短い名前の使用時に、この構成が使用されることを意味します。
+    * `ldap_id_mapping` は指定されていません。その既定値は `false` です。
+
+    `realm join` 構成はクライアントによって生成され、次のようになります。
  
     `[domain/contoso.com]  (Do not edit or remove any of the following information. This information is automatically generated during the realm join process.)`   
     `ad_domain = contoso.com`   
@@ -170,6 +179,11 @@ ms.locfileid: "112287895"
     `use_fully_qualified_names = True`   
     `fallback_homedir = /home/%u@%d`   
     `access_provider = ad`   
+    
+    上記の `[domain/contoso.com]` 構成では、次のようになります。
+    * `id_provider` が `ad` に設定されます。
+    * `ldap_id_mapping` が `true` に設定されます。 SSSD によって生成された ID が使用されます。 あるいは、すべてのスタイルのユーザー名に POSIX UID を使用する場合は、この値を `false` に設定することもできます。 値は、クライアント構成に基づいて決定できます。 
+    * `use_fully_qualified_names` は `true` です。 この設定は、`user@CONTOSO.COM` で、この構成が使用されることを意味しています。
 
 4. `/etc/nsswitch.conf` に `sss` エントリがあることを確認します。   
 

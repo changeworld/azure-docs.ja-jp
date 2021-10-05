@@ -4,13 +4,13 @@ metadata:
   description: この記事では、Azure Backup サービスを使用した SAP HANA データベースのバックアップに関する一般的な質問への回答を示します。
   ms.topic: article
   ms.service: backup
-  ms.date: 09/01/2021
-  ms.openlocfilehash: f216b4b9015f90a388ecbea04e514cbaf1f196d6
-  ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+  ms.date: 09/27/2021
+  ms.openlocfilehash: 2b1a7e39c1cf4a7e6c5b1da6f748c7e143608104
+  ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/03/2021
-  ms.locfileid: "123426316"
+  ms.lasthandoff: 09/27/2021
+  ms.locfileid: "129080700"
 title: よく寄せられる質問 - Azure VM 上の SAP HANA データベースをバックアップする
 summary: この記事では、Azure Backup サービスを使用した SAP HANA データベースのバックアップに関する一般的な質問への回答を示します。
 sections:
@@ -34,9 +34,16 @@ sections:
     answer: >
       現在、成功したバックアップ ジョブではアラートは生成されません。 アラートは、失敗したバックアップ ジョブに対してのみ生成されます。 Azure portal を使用してバックアップ アラートを表示する[方法を参照してください](backup-azure-monitoring-built-in-monitor.md)。
   - question: >
+      バックアップ (スケジュールまたはオンデマンド) が正常に行われるかどうかを確認するにはどうすればよいですか?
+    answer: "次のいずれかの場所から、バックアップ (スケジュールまたはオンデマンド) の状態を確認できます。\n\n1. **バックアップ ジョブ**: Azure Backup では、手動でトリガーされたすべてのジョブが Azure portal の [バックアップ ジョブ] セクションに表示されます。  <br><br>   Azure portal に表示されるジョブには、データベースの検出と登録操作、バックアップと復元操作などがあります。 スケジュールされたジョブ (ログ バックアップを含む) はこのセクションに表示されません。 また、SAP HANA ネイティブ クライアント (Studio、Cockpit、または DBA Cockpit) から手動でトリガーされたバックアップも、ここには表示されません。\n\n   :::image type=\"content\" source=\"./media/sap-hana-faq-backup-azure-vm/manually-triggered-jobs.png\" alt-text=\"Azure portal の [バックアップ ジョブ] セクションの手動でトリガーされたジョブを示すスクリーンショット。\":::\n\n   :::image type=\"content\" source=\"./media/sap-hana-faq-backup-azure-vm/jobs-and-operations-list.png\" alt-text=\"データベースの検出と登録、およびバックアップと復元の操作などのジョブを示すスクリーンショット。\":::\n \n1. **バックアップ アラート**: アラートは、SAP HANA データベースのバックアップを監視するために役立ちます。 これらを使用すると、必要なイベントに集中できるため、バックアップによって生成される多数のイベントを頻繁にチェックする手間を省くことができます。 詳細については、「[バックアップ アラートを表示する](/azure/backup/sap-hana-db-manage#view-backup-alerts)」を参照してください。\n\n1. **バックアップ レポート**: バックアップ ジョブの状態を表示するためのもう 1 つの方法がレポートです。 レポートは、次のようになります。\n\n   :::image type=\"content\" source=\"./media/sap-hana-faq-backup-azure-vm/backup-reports.png\" alt-text=\"Azure portal でのレポートの一種を示すスクリーンショット。\":::\n\n   :::image type=\"content\" source=\"./media/sap-hana-faq-backup-azure-vm/backup-reports-mabs.png\" alt-text=\"Azure portal でのもう一種のレポートを示すスクリーンショット。\":::\n\n   [Azure Backup のレポートを構成する方法](/azure/backup/configure-reports)について学習してください。\n\n1. **SAP HANA ネイティブ クライアント**: SAP HANA のユーザーの場合は、最も一般的な HANA クライアントの 1 つである HANA Studio を使用することもできます。 このクライアントで **バックアップの状態** を確認するには、**[Backup Console]\\(バックアップ コンソール\\)** -> **[Backup Catalog]\\(バックアップ カタログ\\)** の順に移動します。\n\n   :::image type=\"content\" source=\"./media/sap-hana-faq-backup-azure-vm/sap-hana-native-client-reports.png\" alt-text=\"SAP HANA ネイティブ クライアントでのレポートを示すスクリーンショット。\":::\n"
+  - question: >
       スケジュールされたバックアップ ジョブを [バックアップ ジョブ] メニューで確認できますか?
     answer: >
       [バックアップ ジョブ] メニューには、進行中か、成功したか、失敗したオンデマンド バックアップ ジョブだけが表示されます。 スケジュールされたジョブの場合は、[Azure Monitor](./backup-azure-monitoring-use-azuremonitor.md) を使用します。
+  - question: >
+      LSNValidation エラーによってトリガーされる自動修復の完全バックアップでは、保持期間はどうなっていますか?
+    answer: >
+      Azure Backup では、自動修復の完全バックアップに対して明示的な保持期間が設定されていません。 このバックアップは、依存デルタ (差分または増分) とログ バックアップを保持するまで保持されます。 この自動修復バックアップの最後の依存バックアップを削除すると、自動修復バックアップも削除されます。
   - question: >
       今後作成されるデータベースはバックアップに自動的に追加されますか?
     answer: >
@@ -106,7 +113,7 @@ sections:
 
       - プライマリで (データを保持して) [保護を停止](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database)します
 
-      - セカンダリ ノードで[事前登録スクリプト](https://aka.ms/scriptforpermsonhana)を実行します
+      - セカンダリ ノードで[事前登録スクリプト](https://go.microsoft.com/fwlink/?linkid=2173610)を実行します
 
       - セカンダリ ノードで[データベースを検出](tutorial-backup-sap-hana-db.md#discover-the-databases)し、それらに[バックアップを構成](tutorial-backup-sap-hana-db.md#configure-backup)します
 
@@ -148,7 +155,33 @@ sections:
 
       >[!Note]
 
-      >カスタム バックアップ ユーザーを入力として[事前登録スクリプトを実行する](/azure/backup/tutorial-backup-sap-hana-db#prerequisites)と、HSR のバックアップをより適切に管理することができます。 これは、HSR セットアップの両方のノードに同じバックアップ キーが確実に設定され、バックアップの同期と失敗の問題が軽減されるためです。
+      >カスタム バックアップ ユーザーを入力として[事前登録スクリプトを実行する](./tutorial-backup-sap-hana-db.md#prerequisites)と、HSR のバックアップをより適切に管理することができます。 これは、HSR セットアップの両方のノードに同じバックアップ キーが確実に設定され、バックアップの同期と失敗の問題が軽減されるためです。
+  - question: >
+      HSR セットアップのセカンダリで非アクティブのノードに対する保護を停止 (データを保持) しないと、どうなりますか?
+    answer: >
+      1. HANA システム レプリケーション (HSR) の場合、セカンダリ ノードはどのような接続も受け付けません。 バックアップが構成された後、Azure Backup サービスは定期的に ping を実行し、失敗します。 これらの失敗した試行が、プライマリ ノードに反映される場合があります。 複数のエラーが発生すると、ユーザーはロックされ、プライマリ ノードが _ODBCConnectionError_ で失敗し始めます。   <br><br>すべてのユーザーにこの問題が発生するのではないことが確認されています。 セカンダリ ノードでユーザー接続が失敗した場合には、プライマリ ノードでユーザーがロックされる原因を調査するようにお勧めします。
+
+
+      1. 事前登録スクリプトを実行すると、プライマリ ノードの新しいパスワードでユーザー情報が更新されます。 その後、バックアップを試行するための接続が再確立されます。 しかし、同じシナリオが再現される場合があります。
+
+
+      1. また、セカンダリ ノードで失敗するバックアップ (完全バックアップ) によってアラートが作成されます。
+
+
+      上の問題を回避するには、ノードがセカンダリになったら (接続が試行されず、ユーザーがロックされないように) 保護を停止し、プライマリになったら保護を再開することをお勧めします。 HSR セットアップでこのロックされる状況に直面せず、アラートが発生しても問題ない場合は、サービスが引き継ぎとフェールバックを処理するように、両方のノードでバックアップを構成できます。
+  - question: >
+      Azure Backup で提供されるバックアップと復元のスループット パフォーマンスはどのくらいですか? また、この最大スループットになるように HANA システムを設定するにはどうすればよいですか?
+    answer: >
+      Azure Backup によって HANA ワークロードに対して提供される[バックアップと復元のスループット パフォーマンス](/azure/backup/tutorial-backup-sap-hana-db#understanding-backup-and-restore-throughput-performance)に関するセクションを参照してください。 <br><br> 向上したパフォーマンスを活用するように HANA システムを設定するには、以下のリソースを使用してください。
+
+       - [Azure IaaS VM 用のディスクの種類の選択 - マネージド ディスク](/azure/virtual-machines/disks-types#premium-ssd)
+       - [Azure マネージド ディスクのパフォーマンス レベル](/azure/virtual-machines/disks-change-performance)
+       - [M シリーズ](/azure/virtual-machines/m-series)
+       - [SAP HANA Azure 仮想マシンのストレージ構成](/azure/virtual-machines/workloads/sap/hana-vm-operations-storage#solutions-with-premium-storage-and-azure-write-accelerator-for-azure-m-series-virtual-machines)
+
+      >[!Note]
+
+      >バックアップのスループット パフォーマンスを制限することもできます。 [詳細については、こちらを参照してください](/azure/backup/tutorial-backup-sap-hana-db#limiting-backup-throughput-performance)。
 - name: 復元
   questions:
   - question: >

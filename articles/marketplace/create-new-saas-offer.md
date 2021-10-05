@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 07/30/2021
-ms.openlocfilehash: 4a0ebea8d0fb8d5b9ae5fa78004c071a348615e4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/27/2021
+ms.openlocfilehash: 5da6232a9bedeeb8228caecc79c7a7160630a8cd
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121731207"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129080820"
 ---
 # <a name="create-a-saas-offer"></a>SaaS オファーを作成する
 
@@ -28,11 +28,38 @@ ms.locfileid: "121731207"
 
 ## <a name="create-a-saas-offer"></a>SaaS オファーを作成する
 
+[!INCLUDE [Workspaces view note](./includes/preview-interface.md)]
+
+#### <a name="workspaces-view"></a>[ワークスペース ビュー](#tab/workspaces-view)
+
+1. [パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインします。
+
+1. ホーム ページで、 **[Marketplace offers]\(Marketplace のオファー\)** タイルを選択します。
+
+    [ ![パートナー センターのホーム ページにある [Marketplace offers]\(Marketplace のオファー\) タイルを示しています。](./media/workspaces/partner-center-home.png) ](./media/workspaces/partner-center-home.png#lightbox)
+
+1. [Marketplace offers]\(Marketplace のオファー\) ページで、 **[+ 新しいオファー]**  >  **[サービスとしてのソフトウェア]** の順に選択します。
+
+    [ ![[新しいオファー] の一覧の SaaS オファー オプションを示しています。](./media/new-offer-saas-workspaces.png) ](./media/new-offer-saas-workspaces.png#lightbox)
+
+1. **[New Software as a Service]\(新しいサービスとしてのソフトウェア\)** ダイアログ ボックスで、 **[オファー ID]** を入力します。 この ID は、コマーシャル マーケットプレースの一覧と Azure Resource Manager テンプレートの URL に表示されます (該当する場合)。 たとえば、このボックスに「**test-offer-1**」と入力すると、オファーの Web アドレスは `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` になります。
+   + アカウント内の各オファーには、一意のオファー ID が必要です。
+   + 使用できるのは小文字と数字だけです。 ハイフンとアンダースコアを含めることができますが、スペースは使用できず、文字数は 50 文字に制限されています。
+   + **[作成]** を選択した後で、オファー ID を変更することはできません。
+
+1. **[オファーのエイリアス]** を入力します。 これは、パートナー センター内でオファーに使用される名前です。
+
+   + この名前はコマーシャル マーケットプレースには表示されず、顧客に表示されるオファー名やその他の値とは異なります。
+   + **[作成]** を選択した後で、オファーの別名を変更することはできません。
+1. オファーを生成して続行するには、 **[作成]** を選択します。
+
+#### <a name="current-view"></a>[現在のビュー](#tab/current-view)
+
 1. [パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインします。
 1. 左側のナビゲーション メニューで、 **[商業マーケットプレース]**  >  **[概要]** の順に選択します。
 1. **[概要]** タブで、 **[+ 新しいオファー]**  >  **[サービスとしてのソフトウェア]** の順に選択します。
 
-   :::image type="content" source="media/new-offer-saas.png" alt-text="左側のナビゲーション メニューと新しいオファーの一覧を示しています。":::
+   :::image type="content" source="./media/new-offer-saas.png" alt-text="左側のナビゲーション メニューと新しいオファーの一覧を示しています。":::
 
 1. **[新しいオファー]** ダイアログ ボックスで、 **[オファー ID]** を入力します。 この ID は、コマーシャル マーケットプレースの一覧と Azure Resource Manager テンプレートの URL に表示されます (該当する場合)。 たとえば、このボックスに「**test-offer-1**」と入力すると、オファーの Web アドレスは `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` になります。
    + アカウント内の各オファーには、一意のオファー ID が必要です。
@@ -44,6 +71,8 @@ ms.locfileid: "121731207"
    + この名前はコマーシャル マーケットプレースには表示されず、顧客に表示されるオファー名やその他の値とは異なります。
    + **[作成]** を選択した後で、オファーの別名を変更することはできません。
 1. オファーを生成して続行するには、 **[作成]** を選択します。
+
+---
 
 ## <a name="configure-your-saas-offer-setup-details"></a>SaaS オファーのセットアップの詳細を構成する
 
@@ -67,8 +96,8 @@ ms.locfileid: "121731207"
 
 ### <a name="to-enable-a-test-drive"></a>体験を有効にするには
 
-1.  **[体験版]** で、 **[体験版を有効にする]** チェック ボックスをオンにします。
-1.  表示される一覧から、体験版の種類を選択します。
+1. **[体験版]** で、 **[体験版を有効にする]** チェック ボックスをオンにします。
+1. 表示される一覧から、体験版の種類を選択します。
 
 ## <a name="configure-lead-management"></a>リード管理の構成
 
@@ -88,7 +117,7 @@ SaaS オファーとそれに関連する Microsoft 365 アプリ消費の[統�
 ### <a name="integrate-with-microsoft-api"></a>Microsoft API との統合
 
 1. SaaS オファーが Microsoft Graph API と統合されていない場合は、 **[いいえ]** を選択します。 引き続き、公開されている Microsoft 365 アプリ消費クライアントをリンクします。  
-1. SaaS オファーが Microsoft Graph API と統合されている場合は、 **[はい]** を選択し、Microsoft Graph API と統合するために作成して登録した Azure Active Directory アプリ ID を指定します。 
+1. SaaS オファーが Microsoft Graph API と統合されている場合は、 **[はい]** を選択し、Microsoft Graph API と統合するために作成して登録した Azure Active Directory アプリ ID を指定します。
 
 ### <a name="link-published-microsoft-365-app-consumption-clients"></a>公開された Microsoft 365 アプリ消費クライアントをリンクする
 

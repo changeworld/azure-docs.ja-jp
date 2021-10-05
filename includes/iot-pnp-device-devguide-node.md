@@ -4,12 +4,12 @@ ms.author: dobett
 ms.service: iot-develop
 ms.topic: include
 ms.date: 11/19/2020
-ms.openlocfilehash: ec395bfaf8b4d2bba235b1ce99c909b5cb81c51b
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: f5763606d289c679ea9d1883e97ab30b47368ac8
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122397864"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128580495"
 ---
 ## <a name="model-id-announcement"></a>モデル ID のアナウンス
 
@@ -44,7 +44,7 @@ await client.open();
 
 ## <a name="telemetry"></a>テレメトリ
 
-既定のコンポーネントには、特別なプロパティは必要ありません。
+既定のコンポーネントを使用する場合、テレメトリ メッセージに特別なプロパティを追加する必要はありません。
 
 入れ子になったコンポーネントを使用する場合、デバイスでは、メッセージ プロパティにコンポーネント名を設定する必要があります。
 
@@ -82,7 +82,7 @@ deviceTwin.properties.reported.update(patchThermostat, function (err) {
 });
 ```
 
-デバイス ツインは、次の報告されるプロパティを使用して更新されます。
+デバイス ツインは、次の reported プロパティで更新されます。
 
 ```json
 {
@@ -92,7 +92,7 @@ deviceTwin.properties.reported.update(patchThermostat, function (err) {
 }
 ```
 
-入れ子になったコンポーネントを使用する場合、コンポーネントの名前内にプロパティを作成する必要があります。
+入れ子になったコンポーネントを使用する場合は、コンポーネントの名前内にプロパティを作成し、マーカーを含める必要があります。
 
 ```nodejs
 helperCreateReportedPropertiesPatch = (propertiesToReport, componentName) => {
@@ -118,7 +118,7 @@ deviceTwin.properties.reported.update(patchThermostat1Info, function (err) {
 });
 ```
 
-デバイス ツインは、次の報告されるプロパティを使用して更新されます。
+デバイス ツインは、次の reported プロパティで更新されます。
 
 ```json
 {
@@ -134,6 +134,8 @@ deviceTwin.properties.reported.update(patchThermostat1Info, function (err) {
 ## <a name="writable-properties"></a>書き込み可能なプロパティ
 
 これらのプロパティは、デバイスから設定するか、ソリューションから更新することができます。 ソリューションからプロパティを更新すると、クライアントでは `Client` または `ModuleClient` でコールバックとして通知を受け取ります。 IoT プラグ アンド プレイ規則に従うために、デバイスからサービスに対して、プロパティが正常に受信されたことを通知する必要があります。
+
+プロパティの型が `Object` である場合、オブジェクトのフィールドのサブセットを更新するだけだとしても、サービスからは完全なオブジェクトをデバイスに送信する必要があります。 デバイスから送信する受信確認は、完全なオブジェクトとする必要があります。
 
 ### <a name="report-a-writable-property"></a>書き込み可能なプロパティを報告する
 
@@ -156,7 +158,7 @@ deviceTwin.properties.reported.update(patch, function (err) {
 });
 ```
 
-デバイス ツインは、次の報告されるプロパティを使用して更新されます。
+デバイス ツインは、次の reported プロパティで更新されます。
 
 ```json
 {
@@ -190,7 +192,7 @@ deviceTwin.properties.reported.update(patch, function (err) {
 });
 ```
 
-デバイス ツインは、次の報告されるプロパティを使用して更新されます。
+デバイス ツインは、次の reported プロパティで更新されます。
 
 ```json
 {
@@ -210,7 +212,7 @@ deviceTwin.properties.reported.update(patch, function (err) {
 
 ### <a name="subscribe-to-desired-property-updates"></a>必要なプロパティの更新をサブスクライブする
 
-サービスでは、接続されたデバイスで通知をトリガーする目的のプロパティを更新できます。 この通知には、更新を識別するバージョン番号など、更新された目的のプロパティが含まれます。 デバイスでは、報告されたプロパティと同じ `ack` メッセージで応答する必要があります。
+サービスでは、接続されたデバイスで通知をトリガーする目的のプロパティを更新できます。 この通知には、更新を識別するバージョン番号など、更新された目的のプロパティが含まれます。 デバイスでは、サービスに返送される `ack` メッセージにこのバージョン番号を含める必要があります。
 
 既定のコンポーネントでは、1 つのプロパティを参照し、受け取ったバージョンで報告される `ack` を作成します。
 
@@ -241,7 +243,7 @@ desiredPropertyPatchHandler = (deviceTwin) => {
 };
 ```
 
-デバイス ツインでは、目的のセクションと報告されるセクションにプロパティが表示されます。
+入れ子になったコンポーネントのデバイス ツインは、目的のセクションと報告されたセクションを次のように示します。
 
 ```json
 {

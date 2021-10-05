@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/03/2021
 ms.author: yelevin
-ms.openlocfilehash: 270e7f748f0d7fda14d93ac753ba655117f7ad36
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 247b025524a029fcb68fbe0682b365e9b7f240b5
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105044151"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128565175"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel"></a>Azure Sentinel の操作に便利なリソース
 
@@ -40,6 +40,19 @@ Azure Sentinel では、Azure Monitor Log Analytics の Kusto クエリ言語 (K
 Azure Logic Apps と増え続ける組み込みプレイブック ギャラリーを利用し、Azure Sentinel でオートメーションを作成します。 
 
 詳細については、[Azure Logic Apps コネクタ](/connectors/)に関するページを参照してください。
+
+## <a name="compare-playbooks-workbooks-and-notebooks"></a>プレイブック、ブック、ノートブックを比較する
+
+次の表では、Azure Sentinel でのプレイブック、ブック、およびノートブックの違いを説明します。
+
+|  |プレイブック  |ブック  |ノートブック  |
+|---------|---------|---------|---------|
+|**ペルソナ**     |   <ul><li>SOC エンジニア</li><li>すべてのレベルのアナリスト</li></ul>      | <ul><li> SOC エンジニア</li><li>すべてのレベルのアナリスト</li></ul>       | <ul><li>脅威の検出者と Tier-2/Tier-3 アナリスト</li><li>インシデント調査担当者</li><li>データ サイエンティスト</li><li>セキュリティ研究者</li></ul>       |
+|**用途**     | 単純で反復可能なタスクの自動化:<ul><li>外部データの取り込み </li><li>TI や GeoIP 検索などを使用したデータ エンリッチメント </li><li> 調査 </li><li>修復 </li></ul>       | <ul><li>グラフ</li></ul>        |   <ul><li>Azure Sentinel データおよび外部データに対するクエリ </li><li>TI、GeoIP 検索、WhoIs 検索などを使用したデータ エンリッチメント </li><li> 調査 </li><li> グラフ </li><li> 検出 </li><li>機械学習とビッグ データ分析 </li></ul>      |
+|**長所**     |<ul><li> 単一の反復可能なタスクに最適 </li><li>コーディングのスキルは不要  </li></ul>      |<ul><li>Azure Sentinel データの概要に最適 </li><li>コーディングのスキルは不要</li></ul>       | <ul><li>反復可能なタスクの複雑なチェーンに最適 </li><li>アドホックでより手続き型の制御</li><li>対話機能を使用したピボットがさらに容易に </li><li>データの操作および視覚化のための Python ライブラリが豊富 </li><li>機械学習とカスタム分析 </li><li>分析証拠の文書化および共有が簡単 </li></ul>       |
+|**課題**     | <ul><li>アドホックで複雑なタスク チェーンには適していない </li><li>証拠の文書化と共有には適していない</li></ul>        |   <ul><li>外部データとの統合はできない </li></ul>     |    <ul><li> 高い学習曲線、コーディングに関する知識が必要 </li></ul>   |
+|  **詳細情報**   | [Azure Sentinel のプレイブックを使用して脅威への対応を自動化する](automate-responses-with-playbooks.md)        | [収集されたデータを視覚化する](get-visibility.md)        | [Jupyter のノートブックを使用してセキュリティの脅威を検出する](notebooks.md)        |
+|     |         |         |         |
 
 ## <a name="comment-on-our-blogs-and-forums"></a>ブログとフォーラムでコメントしてください
 

@@ -1,20 +1,20 @@
 ---
 title: Azure Synapse Analytics にデータを読み込む
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Azure Data Factory または Synapse パイプラインを使用して Azure Synapse Analytics にデータをコピーします。
+description: Azure Data Factory または Azure Synapse パイプラインを使用して、Azure Synapse Analytics にデータをコピーします。
 ms.author: jianleishen
 author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 08/24/2021
-ms.openlocfilehash: b297e47e3b1cb890312b6f7a566eb4f033e6612a
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.date: 09/09/2021
+ms.openlocfilehash: e91d2dbae4f73e99a5e341330c0841e8173cedc8
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122824121"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124819919"
 ---
 # <a name="load-data-into-azure-synapse-analytics-using-azure-data-factory-or-a-synapse-pipeline"></a>Azure Data Factory または Synapse パイプラインを使用して Azure Synapse Analytics にデータを読み込む
 
@@ -71,7 +71,7 @@ Azure Data Factory と Synapse パイプラインには、Azure Synapse Analytic
 
 2. **[プロパティ]** ページで、 **[タスクの種類]** に **[組み込みコピー タスク]** を選択し、 **[次へ]** を選択します。
 
-    ![[プロパティ] ページ](./media/load-azure-sql-data-warehouse/copy-data-tool-properties-page.png)
+    :::image type="content" source="./media/load-azure-sql-data-warehouse/copy-data-tool-properties-page.png" alt-text="[プロパティ] ページ":::
 
 3. **[ソース データ ストア]** ページで、次の手順を実行します。
     >[!TIP]
@@ -82,17 +82,17 @@ Azure Data Factory と Synapse パイプラインには、Azure Synapse Analytic
 
     1. ギャラリーから **[Azure SQL Database]** を選択し、 **[続行]** を選択します。 検索ボックスに「SQL」と入力して、コネクタをフィルター処理できます。
 
-        ![Azure SQL DB の選択](./media/load-azure-sql-data-warehouse/select-azure-sql-db-source.png)
+        :::image type="content" source="./media/load-azure-sql-data-warehouse/select-azure-sql-db-source.png" alt-text="Azure SQL DB の選択":::
     
     1. **[新しい接続 (Azure SQL Database)]** ページで、ドロップダウン リストからご利用のサーバー名と DB 名を選択し、ユーザー名とパスワードを指定します。 **[テスト接続]** を選択して設定を検証し、 **[作成]** を選択します。
 
-        ![Azure SQL DB の構成](./media/load-azure-sql-data-warehouse/configure-azure-sql-db.png)
+        :::image type="content" source="./media/load-azure-sql-data-warehouse/configure-azure-sql-db.png" alt-text="Azure SQL DB の構成":::
     
     1. **[ソース データ ストア]** ページの **[接続]** セクションで、新しく作成した接続をソースとして選択します。
 
     1. **[ソース テーブル]** セクションで、テーブルをフィルター処理するために「**SalesLT**」と入力します。 **[(すべて選択)]** ボックスを選択してコピーにすべてのテーブルを使用し、 **[次へ]** を選択します。
 
-    ![[ソース データ ストア] ページの構成を示すスクリーンショット。](./media/load-azure-sql-data-warehouse/source-data-store-page.png)
+    :::image type="content" source="./media/load-azure-sql-data-warehouse/source-data-store-page.png" alt-text="[ソース データ ストア] ページの構成を示すスクリーンショット。":::
 
 4. **[フィルターの適用]** ページで、設定を指定するか、 **[次へ]** を選択します。 このページの **[データのプレビュー]** ボタンを選択することで、データをプレビューし、入力データのスキーマを表示できます。 
 
@@ -107,21 +107,21 @@ Azure Data Factory と Synapse パイプラインには、Azure Synapse Analytic
 
     1. ギャラリーから **[Azure Synapse Analytics]** を選択し、 **[続行]** を選択します。
 
-        ![Azure Synapse Analytics を選択](./media/load-azure-sql-data-warehouse/select-azure-sql-dw-sink.png)
+        :::image type="content" source="./media/load-azure-sql-data-warehouse/select-azure-sql-dw-sink.png" alt-text="Azure Synapse Analytics を選択":::
 
     1. **[新しい接続 (Azure Synapse Analytics)]** ページで、ドロップダウン リストからご利用のサーバー名と DB 名を選択し、ユーザー名とパスワードを指定します。 **[テスト接続]** を選択して設定を検証し、 **[作成]** を選択します。
 
-        ![Azure Synapse Analytics を構成](./media/load-azure-sql-data-warehouse/configure-azure-sql-dw.png)
+        :::image type="content" source="./media/load-azure-sql-data-warehouse/configure-azure-sql-dw.png" alt-text="Azure Synapse Analytics を構成":::
 
     1. **[Destination data store]\(コピー先データ ストア\)** ページの **[接続]** セクションで、新しく作成した接続をシンクとして選択します。
 
 6. **[テーブル マッピング]** セクションで、内容を確認し、 **[次へ]** を選択します。 インテリジェント テーブル マッピングが表示されます。 ソース テーブルは、テーブル名に基づくコピー先テーブルにマップされます。 コピー先にソース テーブルが存在しない場合、既定ではサービスによって同名のコピー先テーブルが作成されます。 既存のコピー先テーブルにソース テーブルをマップすることもできます。
 
-   ![[Destination data store]\(コピー先データ ストア\) ページの構成を示すスクリーンショット。](./media/load-azure-sql-data-warehouse/destination-data-store-page.png)
+   :::image type="content" source="./media/load-azure-sql-data-warehouse/destination-data-store-page.png" alt-text="[Destination data store]\(コピー先データ ストア\) ページの構成を示すスクリーンショット。":::
 
 1. **[列マッピング]** ページで、内容を確認し、 **[次へ]** を選択します。 インテリジェント テーブル マッピングは、列名に基づきます。 サービスによってテーブルが自動的に作成されるときに、コピー元とコピー先のストア間に互換性がない場合は、データ型の変換が行われます。 コピー元とコピー先の列の間でサポートされていないデータ型変換がある場合、対応するテーブルの横にエラー メッセージが表示されます。
 
-    ![[列マッピング] ページ](./media/load-azure-sql-data-warehouse/schema-mapping.png)
+    :::image type="content" source="./media/load-azure-sql-data-warehouse/schema-mapping.png" alt-text="[列マッピング] ページ":::
 
 1. **[設定]** ページで、次の手順を完了します。
 
@@ -132,7 +132,7 @@ Azure Data Factory と Synapse パイプラインには、Azure Synapse Analytic
 
     1. **[使用型の既定]** オプションを選択解除し、 **[次へ]** を選択します。
 
-    ![PolyBase の構成](./media/load-azure-sql-data-warehouse/configure-polybase.png)
+    :::image type="content" source="./media/load-azure-sql-data-warehouse/configure-polybase.png" alt-text="PolyBase の構成":::
 
 8. **[サマリー]** ページで設定を確認し、 **[次へ]** を選択します。
 
@@ -152,13 +152,13 @@ Azure Data Factory と Synapse パイプラインには、Azure Synapse Analytic
 
 12. パイプラインの実行ビューに戻るには、上部の **[すべてのパイプラインの実行]** リンクを選択します。 **[最新の情報に更新]** を選択して、一覧を更新します。
 
-    ![アクティビティの実行を監視する](./media/load-azure-sql-data-warehouse/activity-monitoring.png)
+    :::image type="content" source="./media/load-azure-sql-data-warehouse/activity-monitoring.png" alt-text="アクティビティの実行を監視する":::
 
 1. 各コピー アクティビティの実行の詳細を監視するには、アクティビティの実行ビューの **[アクティビティ名]** の下の **[詳細]** リンク (眼鏡のアイコン) を選択します。 ソースからシンクにコピーされるデータの量、データのスループット、実行ステップと対応する期間、使用される構成などの詳細を監視できます。
 
-    ![最初のアクティビティの実行の詳細の監視](./media/load-azure-sql-data-warehouse/monitor-activity-run-details-1.png)
+    :::image type="content" source="./media/load-azure-sql-data-warehouse/monitor-activity-run-details-1.png" alt-text="最初のアクティビティの実行の詳細の監視":::
 
-    ![2 回目のアクティビティの実行の詳細の監視](./media/load-azure-sql-data-warehouse/monitor-activity-run-details-2.png)
+    :::image type="content" source="./media/load-azure-sql-data-warehouse/monitor-activity-run-details-2.png" alt-text="2 回目のアクティビティの実行の詳細の監視":::
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -13,12 +13,12 @@ ms.date: 11/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: marsma, aragra, lenalepa, sureshja
-ms.openlocfilehash: c89cb9c43ae274170e0cedb01b1908a874b7317e
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 35415a42f6970a7a0aabc0fb210775a15fc1d481
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123039950"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128585448"
 ---
 # <a name="modify-the-accounts-supported-by-an-application"></a>アプリケーションによってサポートされるアカウントを変更する
 
@@ -35,7 +35,7 @@ ms.locfileid: "123039950"
 既存のアプリ登録でサポートされているアカウントの種類に別の設定を指定するには:
 
 1. <a href="https://portal.azure.com/" target="_blank">Azure portal</a> にサインインします。
-1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::を使用して、アプリケーションを登録するテナントを選択します。
+1. 複数のテナントにアクセスできる場合は、上部のメニューの **[ディレクトリとサブスクリプション]** フィルター :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: を使用して、アプリが登録されているテナントに切り替えます。
 1. **Azure Active Directory** を検索して選択します。
 1. **[管理]** で、 **[アプリの登録]** を選択してから、自分のアプリケーションを選択します。
 1. ここで、対象のアプリケーションを使用できるユーザーを指定します。これは、"*サインインの対象ユーザー*" と呼ばれる場合もあります。

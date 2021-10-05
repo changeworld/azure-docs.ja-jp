@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2021
 ms.author: duau
-ms.openlocfilehash: 6fb47cf8c3bea7080151d635620bde549070060d
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 6ccd231c69d69900f81ab91d39eada1f67c7886f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110084990"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124792469"
 ---
 # <a name="health-probes"></a>正常性プローブ
 
@@ -64,6 +64,8 @@ Azure Front Door では、すべてのアルゴリズムで次の同じ 3 段階
 
 3. Front Door は、さらに、バックエンド プール内の正常なバックエンドのセットを対象に、各バックエンドの待ち時間 (ラウンドトリップ時間) を測定し、維持します。
 
+> [!NOTE]
+> 1 つのエンドポイントが複数のバックエンド プールのメンバーである場合、Azure Front Door はバックエンドに送信される正常性プローブの数を最適化して、バックエンドの負荷を軽減します。 正常性プローブ要求は、構成されている最小のサンプル間隔に基づいて送信されます。 すべてのプールのエンドポイントの正常性は、同じ正常性プローブからの応答によって決定されます。
 
 ## <a name="complete-health-probe-failure"></a>正常性プローブの完全なエラー
 

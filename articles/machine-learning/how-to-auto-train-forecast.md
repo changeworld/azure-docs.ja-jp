@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: how-to
 ms.custom: contperf-fy21q1, automl, FY21Q4-aml-seo-hack
 ms.date: 06/11/2021
-ms.openlocfilehash: 87ee8e4b5d28628ae09eec83d7f72f44e762e34f
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 26a83b28fd6e1fdaded9884deb0d7197e0a59a6f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122182291"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124784904"
 ---
 # <a name="set-up-automl-to-train-a-time-series-forecasting-model-with-python"></a>Python で時系列予測モデルをトレーニングするために、AutoML を設定する
 
@@ -147,7 +147,7 @@ ForecastTCN (プレビュー)| ForecastTCN は、最も要求の厳しい予測�
 |`forecast_horizon`|予測する今後の期間の数を定義します。 horizon とは、時系列頻度の単位です。 単位は、月ごとや週ごとなどの予測を実行する必要があるトレーニング データの時間間隔に基づきます。|✓|
 |`enable_dnn`|[予測 DNN を有効にします]()。||
 |`time_series_id_column_names`|タイムスタンプが同じ複数の行を含むデータ内の時系列を一意に識別するために使用される列名。 時系列識別子が定義されていない場合、データ セットは 1 つの時系列であると見なされます。 単一の時系列の詳細については、[energy_demand_notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand) に関するページを参照してください。||
-|`freq`| 時系列データセットの頻度。 このパラメーターは、日ごと、週ごと、年ごとなどのイベントが発生することが予想される期間を表します。頻度は、[pandas のオフセットのエイリアス](https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#dateoffset-objects)である必要があります。 [頻度] について詳しくご覧ください。(#frequency--target-data-aggregation)||
+|`freq`| 時系列データセットの頻度。 このパラメーターは、日ごと、週ごと、年ごとなどのイベントが発生することが予想される期間を表します。頻度は、[pandas のオフセットのエイリアス](https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#dateoffset-objects)である必要があります。 [頻度] の詳細を参照してください。(#frequency-target-data-aggregation)||
 |`target_lags`|データの頻度に基づいて対象の値を遅延させる行の数。 このラグは一覧または単一の整数として表されます。 独立変数と依存変数の間のリレーションシップが既定で一致しない場合、または関連付けられていない場合、ラグを使用する必要があります。 ||
 |`feature_lags`| `target_lags` が設定され、`feature_lags` が `auto` に設定されている場合、遅延する機能が自動 ML によって自動的に決定されます。 機能のタイム ラグを有効にすると、精度の向上に役立つ場合があります。 既定では、機能のタイム ラグは無効になっています。 ||
 |`target_rolling_window_size`|予測値の生成に使用する *n* 履歴期間 (トレーニング セットのサイズ以下)。 省略した場合、*n* はトレーニング セットの全体のサイズになります。 モデルのトレーニング時に特定の量の履歴のみを考慮する場合は、このパラメーターを指定します。 [ターゲットのローリング ウィンドウ集計](#target-rolling-window-aggregation)について、詳細情報をご覧ください。||
@@ -360,7 +360,7 @@ ws = Workspace.from_config()
 experiment = Experiment(ws, "Tutorial-automl-forecasting")
 local_run = experiment.submit(automl_config, show_output=True)
 best_run, fitted_model = local_run.get_output()
-```
+``` 
  
 ## <a name="forecasting-with-best-model"></a>最適モデルによる予測
 
@@ -413,6 +413,95 @@ day_datetime,store,week_of_year
 
 > [!NOTE]
 > `target_lags` や `target_rolling_window_size` が有効になっている場合、サンプル内の予測は、自動 ML を使用した予測ではサポートされません。
+
+## <a name="forecasting-at-scale"></a>大規模な予測 
+
+機械学習モデルの数が 1 つでは不十分で、複数の機械学習モデルが必要になるシナリオがあります。 たとえば、1 つのブランドについて店舗ごとに売上を予測したり、個々のユーザーに合わせてエクスペリエンスを調整したりするような場合です。 インスタンスごとにモデルを構築すると、多くの機械学習の問題で結果が向上する可能性があります。 
+
+グループ化とは、時系列を組み合わせてグループごとに個々のモデルをトレーニングできる時系列予測の概念です。 このアプローチは、平滑化やフィリングが必要な時系列がある場合、つまりグループ内で他のエンティティの履歴や傾向が役立つ可能性があるエンティティがある場合に特に役立ちます。 多数モデルおよび階層型時系列予測は、これらの大規模な予測シナリオ向けに自動機械学習を利用したソリューションです。 
+
+### <a name="many-models"></a>多数モデル
+
+自動機械学習を備えた Azure Machine Learning 多数モデル ソリューションを使用すると、ユーザーは何百万ものモデルを並列でトレーニングおよび管理できます。 多数モデルでは、ソリューション アクセラレータは [Azure Machine Learning パイプライン](concept-ml-pipelines.md)を利用してモデルをトレーニングします。 具体的には、[Pipeline](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29) オブジェクトと [ParalleRunStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunstep) が使用されるため、[ParallelRunConfig](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunconfig) を介して設定された特定の構成パラメーターが必要です。 
+
+
+次の図は、多数モデル ソリューションのワークフローを示しています。 
+
+![多数モデルの概念図](./media/how-to-auto-train-forecast/many-models.svg)
+
+次のコードは、ユーザーが多数モデルの実行を設定するために必要な主要なパラメーターを示しています。
+
+```python
+from azureml.train.automl.runtime._many_models.many_models_parameters import ManyModelsTrainParameters
+
+partition_column_names = ['Store', 'Brand']
+automl_settings = {"task" : 'forecasting',
+                   "primary_metric" : 'normalized_root_mean_squared_error',
+                   "iteration_timeout_minutes" : 10, #This needs to be changed based on the dataset. Explore how long training is taking before setting this value 
+                   "iterations" : 15,
+                   "experiment_timeout_hours" : 1,
+                   "label_column_name" : 'Quantity',
+                   "n_cross_validations" : 3,
+                   "time_column_name": 'WeekStarting',
+                   "max_horizon" : 6,
+                   "track_child_runs": False,
+                   "pipeline_fetch_max_batch_size": 15,}
+
+mm_paramters = ManyModelsTrainParameters(automl_settings=automl_settings, partition_column_names=partition_column_names)
+
+```
+
+### <a name="hierarchical-time-series-forecasting"></a>階層型時系列予測
+
+ほとんどのアプリケーションでは、お客様はマクロ レベルとミクロ レベルでビジネスの予測を理解する必要があります。つまり、異なる地理的な場所での製品の売上を予測したり、会社のさまざまな組織に対して予想される従業員の要求を把握したりといったことです。 機械学習モデルをトレーニングして階層データをインテリジェントに予測する機能が不可欠です。 
+
+階層型時系列は、地域や製品の種類などのディメンションに基づいて、一意の各系列が階層に配置される構造です。 次の例は、階層を形成する一意の属性を含むデータを示しています。 この階層は、ヘッドフォンやタブレットなどの製品の種類、製品の種類をアクセサリーとデバイスに分割する製品カテゴリ、製品が販売されている地域によって定義されます。 
+
+![階層データを表す生データ テーブルの例](./media/how-to-auto-train-forecast/hierarchy-data-table.svg)
+ 
+これをさらに視覚化するために、階層のリーフ レベルには、属性値の一意の組み合わせを含むすべての時系列が含まれています。 階層内のレベルを 1 つ上がるごとに、時系列を定義するためのディメンションが 1 つ少なくなると考えられ、下位レベルの子ノードの各セットが親ノードに集計されます。
+ 
+![データの階層ビジュアル](./media/how-to-auto-train-forecast/data-tree.svg)
+
+階層型時系列ソリューションは、多数モデル ソリューションを基盤として構築され、同じ構成設定を共有します。
+
+次のコードは、階層型時系列予測の実行を設定するための主要なパラメーターを示しています。 
+
+```python
+
+from azureml.train.automl.runtime._hts.hts_parameters import HTSTrainParameters
+
+model_explainability = True
+
+engineered_explanations = False # Define your hierarchy. Adjust the settings below based on your dataset.
+hierarchy = ["state", "store_id", "product_category", "SKU"]
+training_level = "SKU"# Set your forecast parameters. Adjust the settings below based on your dataset.
+time_column_name = "date"
+label_column_name = "quantity"
+forecast_horizon = 7
+
+
+automl_settings = {"task" : "forecasting",
+                   "primary_metric" : "normalized_root_mean_squared_error",
+                   "label_column_name": label_column_name,
+                   "time_column_name": time_column_name,
+                   "forecast_horizon": forecast_horizon,
+                   "hierarchy_column_names": hierarchy,
+                   "hierarchy_training_level": training_level,
+                   "track_child_runs": False,
+                   "pipeline_fetch_max_batch_size": 15,
+                   "model_explainability": model_explainability,# The following settings are specific to this sample and should be adjusted according to your own needs.
+                   "iteration_timeout_minutes" : 10,
+                   "iterations" : 10,
+                   "n_cross_validations": 2}
+
+hts_parameters = HTSTrainParameters(
+    automl_settings=automl_settings,
+    hierarchy_column_names=hierarchy,
+    training_level=training_level,
+    enable_engineered_explanations=engineered_explanations
+)
+```
 
 ## <a name="example-notebooks"></a>サンプルの Notebook
 

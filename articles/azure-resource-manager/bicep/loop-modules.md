@@ -5,18 +5,22 @@ author: mumian
 ms.author: jgao
 ms.topic: conceptual
 ms.date: 08/27/2021
-ms.openlocfilehash: 44e5a4356cac0f252b344a7acf8b68a2f51d1ef1
-ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
+ms.openlocfilehash: f8893fa6716d1b106e54f7eb76002622ce5a4bc3
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123215230"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124793438"
 ---
 # <a name="module-iteration-in-bicep"></a>Bicep でのモジュールの反復処理
 
 この記事では、Bicep ファイルで[モジュール](modules.md)の複数のインスタンスをデプロイする方法について説明します。 `module` 宣言にループを追加して、そのモジュールをデプロイする回数を動的に設定することができます。 これにより、Bicep ファイルで構文を繰り返さないようにします。
 
 [resources](loop-resources.md)、[properties](loop-properties.md)、[variables](loop-variables.md) および [outputs](loop-outputs.md) でもループを使用できます。
+
+### <a name="microsoft-learn"></a>Microsoft Learn
+
+ループの詳細とハンズオン ガイダンスについては、**Microsoft Learn** の「[条件とループを使用して柔軟な Bicep テンプレートを作成する](/learn/modules/build-flexible-bicep-templates-conditions-loops/)」を参照してください。
 
 ## <a name="syntax"></a>構文
 
@@ -30,7 +34,7 @@ ms.locfileid: "123215230"
   }]
   ```
 
-  詳細については、[ループ インデックス](#loop-index)に関するページを参照してください。
+  詳細については、「[ループ インデックス](#loop-index)」を参照してください。
 
 - 配列の反復処理。
 

@@ -3,17 +3,17 @@ title: Azure IoT Central アプリケーションでデバイスを個別に管�
 description: Azure IoT Central アプリケーションでデバイスを個別に管理する方法について説明します。 デバイスを作成、削除、更新します。
 author: dominicbetts
 ms.author: dobett
-ms.date: 07/08/2021
+ms.date: 08/20/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 22d433a874e1fc53d8b034c3efe1eb2837df485c
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 0ca2190bf5994edec56dce638d7361d90d2da2de
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114442606"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124810647"
 ---
 # <a name="manage-individual-devices-in-your-azure-iot-central-application"></a>Azure IoT Central アプリケーションでデバイスを個別に管理する
 
@@ -29,13 +29,16 @@ ms.locfileid: "114442606"
 
 個々のデバイスを表示するには、次の操作を実行します。
 
-1. 左側のウィンドウで **[デバイス]** を選択します。 すべてのデバイスとデバイス テンプレートの一覧が表示されます。
+1. 左側のウィンドウで **[デバイス]** を選択します。 デバイス テンプレートの一覧と、組織でアクセスできる全デバイスの一覧が表示されます。
 
 1. デバイス テンプレートを選択します。
 
-1. **[Devices]\(デバイス\)** ページの右側のウィンドウに、そのデバイス テンプレートから作成されたデバイスの一覧が表示されます。 各デバイスを選択すると、そのデバイスのデバイス詳細ページが表示されます。
+1. **[デバイス]** ページの右側のウィンドウに、そのデバイス テンプレートから作成され、組織でアクセスできるデバイスの一覧が表示されます。 各デバイスを選択すると、そのデバイスのデバイス詳細ページが表示されます。
 
     :::image type="content" source="media/howto-manage-devices-individually/device-list.png" alt-text="デバイス一覧を示すスクリーンショット。":::
+
+    > [!TIP]
+    > このページのフィルターツールを使用すると、特定の組織のデバイスを表示できます。
 
 ## <a name="add-a-device"></a>デバイスを追加する
 
@@ -51,9 +54,30 @@ Azure IoT Central アプリケーションへ新しいデバイスを追加す�
 
 1. **[シミュレート済み]** のトグルを **[オン]** または **[オフ]** にします。 実物のデバイスとは、Azure IoT Central アプリケーションに接続する物理デバイスのことです。 シミュレートされたデバイスには、Azure IoT Central によって生成されたサンプル データが含まれています。
 
+1. アプリケーションで組織を使用する場合は、デバイスが属している組織を選択します。
+
+    > [!TIP]
+    > [既定の組織](howto-create-organizations.md#default-organization)を [組織] ドロップダウンに表示するように設定できます。
+
 1. **［作成］** を選択します
 
 1. これで、このデバイスがこのテンプレートのデバイス一覧に表示されるようになりました。 デバイスを選択すると、デバイスのすべてのビューが含まれているデバイスの詳細ページが表示されます。
+
+## <a name="change-organization"></a>組織の変更
+
+デバイスを別の組織に移動するには、移行元と移行先の両方の組織にアクセスできる必要があります。 デバイスを移動するには:
+
+1. 左側のウィンドウで **[デバイス]** を選択します。
+
+1. デバイスの一覧で、移動するデバイスを選択します。
+
+1. **[組織]** を選択します。
+
+1. デバイスの新しい組織を選択します。
+
+    :::image type="content" source="media/howto-manage-devices-individually/change-device-organization.png" alt-text="新しい組織にデバイスを移動する方法を示すスクリーンショット。":::
+
+1. **[保存]** を選択します。
 
 ## <a name="migrate-devices-to-a-template"></a>デバイスをテンプレートに移行する
 

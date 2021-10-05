@@ -1,32 +1,32 @@
 ---
 title: レガシを使用して MongoDB からデータをコピーする
+description: レガシ Azure Data Factory または Synapse Analytics パイプラインでコピー アクティビティを使用して、MongoDB からサポートされているシンク データ ストアにデータをコピーする方法について説明します。
 titleSuffix: Azure Data Factory & Azure Synapse
-description: レガシ Azure Data Factory パイプラインでコピー アクティビティを使用して、MongoDB のデータをサポートされているシンク データ ストアにコピーする方法について説明します。
 author: jianleishen
 ms.author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 08/30/2021
-ms.openlocfilehash: f4ad8489e696a903621636a361dfc8ff1f4751c1
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.date: 09/09/2021
+ms.openlocfilehash: b014cf900cccc056e09f84966a059160de930239
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123305243"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124750637"
 ---
-# <a name="copy-data-from-mongodb-using-azure-data-factory-legacy"></a>Azure Data Factory を使用して MongoDB のデータをコピーする (レガシ)
+# <a name="copy-data-from-mongodb-using-azure-data-factory-or-synapse-analytics-legacy"></a>Azure Data Factory または Synapse Analytics (レガシ) を使用して MongoDB からデータをコピーする
 
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-on-premises-mongodb-connector.md)
 > * [現在のバージョン](connector-mongodb.md)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-この記事では、Azure Data Factory のコピー アクティビティを使用して、MongoDB データベースからデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
+この記事では、Azure Data Factory または Synapse Analytics パイプラインでコピー アクティビティを使用して、MongoDB データベースからデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
 
 >[!IMPORTANT]
->ADF は、この ODBC ベースの実装と比較して、ネイティブ MongoDB のより優れたサポートを提供する新しい MongoDB コネクタをリリースしています。詳細については、[MongoDB コネクタ](connector-mongodb.md)に関する記事を参照してください。 この従来の MongoDB コネクタは、下位互換性のためにサポートが継続されますが、新しいワークロードについては、新しいコネクタを使用してください。
+>サービスでは、この ODBC ベースの実装と比較して、MongoDB をより適切にネイティブでサポートする新しい MongoDB コネクタがリリースされています。詳細については、[MongoDB コネクタ](connector-mongodb.md)に関する記事を参照してください。 この従来の MongoDB コネクタは、下位互換性のためにサポートが継続されますが、新しいワークロードについては、新しいコネクタを使用してください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -55,7 +55,7 @@ Integration Runtime には MongoDB ドライバーが組み込まれているた
 
     # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
 
-    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI を使用した新しいリンク サービスの作成を示すスクリーンショット。":::
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI で新しいリンク サービスを作成するスクリーンショット。":::
 
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
@@ -86,7 +86,7 @@ MongoDB のリンクされたサービスでは、次のプロパティがサポ
 | databaseName |アクセスする MongoDB データベースの名前。 |はい |
 | authenticationType | MongoDB データベースへの接続に使用される認証の種類です。<br/>使用できる値は、以下のとおりです。**Basic**、**Anonymous**。 |はい |
 | username |MongoDB にアクセスするためのユーザー アカウント。 |はい (基本認証が使用される場合)。 |
-| password |ユーザーのパスワード。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |はい (基本認証が使用される場合)。 |
+| password |ユーザーのパスワード。 このフィールドを SecureString とマークして安全に保存するか、[Azure Key Vault に保存されているシークレットを参照](store-credentials-in-key-vault.md)します。 |はい (基本認証が使用される場合)。 |
 | authSource |認証のために資格情報を確認する際に使用する MongoDB データベースの名前。 |いいえ。 基本認証の場合、既定では管理者アカウントと、databaseName プロパティで指定されたデータベースが使用されます。 |
 | enableSsl | サーバーへの接続が TLS を使用して暗号化されるかどうかを指定します。 既定値は false です。  | いいえ |
 | allowSelfSignedServerCert | サーバーからの自己署名証明書を許可するかどうかを指定します。 既定値は false です。  | いいえ |
@@ -198,9 +198,9 @@ Azure Data Factory サービスは、MongoDB コレクション内の **最新�
 
 ## <a name="data-type-mapping-for-mongodb"></a>MongoDB のデータ型マッピング
 
-MongoDB からデータをコピーするとき、次の MongoDB のデータ型から Azure Data Factory の中間データ型へのマッピングが使用されます。 コピー アクティビティでソースのスキーマとデータ型がシンクにマッピングされるしくみについては、[スキーマとデータ型のマッピング](copy-activity-schema-and-type-mapping.md)に関する記事を参照してください。
+MongoDB からデータをコピーするとき、MongoDB のデータ型からサービス内で内部的に使用される中間データ型への、以下のマッピングが使用されます。 コピー アクティビティでソースのスキーマとデータ型がシンクにマッピングされるしくみについては、[スキーマとデータ型のマッピング](copy-activity-schema-and-type-mapping.md)に関する記事を参照してください。
 
-| MongoDB のデータ型 | Data Factory の中間データ型 |
+| MongoDB のデータ型 | 中間サービス データ型 |
 |:--- |:--- |
 | Binary |Byte[] |
 | Boolean |Boolean |
@@ -220,12 +220,12 @@ MongoDB からデータをコピーするとき、次の MongoDB のデータ型
 
 ## <a name="support-for-complex-types-using-virtual-tables"></a>仮想テーブルを使用した複合型のサポート
 
-Azure Data Factory では、ビルトインの ODBC ドライバーを使用して、MongoDB データベースへの接続や、MongoDB データベースからのデータのコピーを行います。 複数のドキュメントのさまざまな型が含まれた配列やオブジェクトなどの複合型については、ODBC ドライバーによって、対応する仮想テーブルへのデータの再正規化が行われます。 具体的には、テーブルにそのような列が含まれている場合に、ドライバーによって次の仮想テーブルが生成されます。
+このサービスでは、組み込みの ODBC ドライバーを使用して、MongoDB データベースに接続し、MongoDB データベースからデータをコピーします。 複数のドキュメントのさまざまな型が含まれた配列やオブジェクトなどの複合型については、ODBC ドライバーによって、対応する仮想テーブルへのデータの再正規化が行われます。 具体的には、テーブルにそのような列が含まれている場合に、ドライバーによって次の仮想テーブルが生成されます。
 
 * 実テーブルと同じデータ (複合型列を除く) を含む **ベース テーブル**。 ベース テーブルには、それが表す実テーブルと同じ名前が使用されます。
 * 複合型列ごとの **仮想テーブル**。入れ子になったデータが展開されます。 仮想テーブルの名前は、実テーブルの名前、区切り文字の "_"、配列またはオブジェクトの名前を使用して付けられます。
 
-仮想テーブルは、非正規化データへのドライバーのアクセスを有効にして、実テーブルのデータを参照します。 仮想テーブルのクエリや結合によって、MongoDB の配列の内容にアクセスできます。
+仮想テーブルが実テーブルのデータを参照することで、ドライバーは非正規化データにアクセスできるようになります。 仮想テーブルのクエリや結合によって、MongoDB の配列の内容にアクセスできます。
 
 ### <a name="example"></a>例
 
@@ -267,4 +267,4 @@ Azure Data Factory では、ビルトインの ODBC ドライバーを使用し�
 | 2222 |1 |2 |
 
 ## <a name="next-steps"></a>次のステップ
-Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。
+Copy アクティビティでソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関するセクションを参照してください。

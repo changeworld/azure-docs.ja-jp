@@ -1,16 +1,16 @@
 ---
 title: Azure Blockchain Workbench Preview のデプロイ
 description: Azure Blockchain Workbench Preview のデプロイ方法
-ms.date: 07/16/2020
+ms.date: 09/15/2021
 ms.topic: how-to
 ms.reviewer: ravastra
 ms.custom: references_regions
-ms.openlocfilehash: b46a35b45a51d0cc76942c4ca142c4c7792a28b4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 09767c1270593738efaf00ea6fc0b8e35f529239
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87077013"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128581083"
 ---
 # <a name="deploy-azure-blockchain-workbench-preview"></a>Azure Blockchain Workbench Preview のデプロイ
 
@@ -20,7 +20,7 @@ Blockchain Workbench のコンポーネントについて詳しくは、「[Azur
 
 [!INCLUDE [Preview note](./includes/preview.md)]
 
-## <a name="prepare-for-deployment"></a>デプロイを準備する
+## <a name="prepare-for-deployment"></a>展開を準備する
 
 Blockchain Workbench を使用すると、ブロックチェーン台帳を、ブロックチェーンベース アプリケーションの構築に最もよく使用される関連 Azure サービスのセットと共にデプロイできます。 Blockchain Workbench をデプロイすると、Azure サブスクリプションのリソース グループ内に次の Azure サービスがプロビジョニングされます。
 
@@ -74,27 +74,14 @@ Azure Blockchain Workbench では、Azure AD 構成とアプリケーション�
 
 1. **[OK]** を選んで、基本設定の構成セクションを完了します。
 
-1. **[詳細設定]** で、新しいブロックチェーン ネットワークを作成するか、または既存の Proof-of-Authority ブロックチェーン ネットワークを使用するかを選択します。
+1. **[詳細設定]** で、既存の Ethereum Proof-of-Authority ブロックチェーン ネットワーク、Active Directory 設定、および Blockchain Workbench コンポーネントに推奨される VM サイズを選択します。
 
-    **[新規作成]** の場合:
-
-    *[新規作成]* オプションでは、既定の Basic SKU を使用して Azure Blockchain Service の Quorum 台帳がデプロイされます。
-
-    ![新しいブロック チェーン ネットワークの詳細設定](media/deploy/advanced-blockchain-settings-new.png)
-
-    | 設定 | 説明  |
-    |---------|--------------|
-    | Azure Blockchain Service pricing tier (Azure Blockchain Service の価格レベル) | Blockchain Workbench に使用される Azure Blockchain Service のレベル **[Basic]** または **[Standard]** を選択します。 |
-    | Azure Active Directory の設定 | **[後で追加]** を選択します。</br>注:[Azure AD の事前構成](#azure-ad-configuration)を選択した場合、または再デプロイしている場合は、 *[今すぐ追加]* を選択します。 |
-    | VM の選択 | お使いのブロックチェーン ネットワークに推奨されるストレージ パフォーマンスと VM サイズを選択します。 Azure Free レベルなどサービス制限のあるサブスクリプションを使用している場合は、より小さい VM サイズ (*Standard DS1 v2* など) を選択してください。 |
-
-    **[既存のものを使用]** の場合:
-
-    *[既存のものを使用]* を選択した場合、Ethereum Proof-of-Authority (PoA) ブロックチェーン ネットワークを指定できます。 エンドポイントの要件は次のとおりです。
+    Ethereum RPC エンドポイントには、次の要件があります。
 
    * エンドポイントは、Ethereum Proof-of-Authority (PoA) ブロックチェーン ネットワークであることが必要です。
    * このネットワーク上で、エンドポイントにパブリックにアクセスできることが必要です。
    * PoA ブロックチェーン ネットワークは、Gas (手数料) の設定額がゼロとなるように構成されている必要があります。
+   * エンドポイントは `https://` または `http://` で始まり、ポート番号で終わります。 たとえば、`http<s>://<network-url>:<port>` のように指定します。 
 
      > [!NOTE]
      > Blockchain Workbench の口座に資金が追加されることはありません。 資金が要求された場合、取引は失敗します。
@@ -103,7 +90,7 @@ Azure Blockchain Workbench では、Azure AD 構成とアプリケーション�
 
      | 設定 | 説明  |
      |---------|--------------|
-     | Ethereum RPC エンドポイント | 既存の PoA ブロックチェーン ネットワークの RPC エンドポイントを提供します。 エンドポイントは https:// または http:// で始まり、ポート番号で終わります。 たとえば、`http<s>://<network-url>:<port>` のように指定します。 |
+     | Ethereum RPC エンドポイント | 既存の PoA ブロックチェーン ネットワークの RPC エンドポイントを提供します。 |
      | Azure Active Directory の設定 | **[後で追加]** を選択します。</br>注:[Azure AD の事前構成](#azure-ad-configuration)を選択した場合、または再デプロイしている場合は、 *[今すぐ追加]* を選択します。 |
      | VM の選択 | お使いのブロックチェーン ネットワークに推奨されるストレージ パフォーマンスと VM サイズを選択します。 Azure Free レベルなどサービス制限のあるサブスクリプションを使用している場合は、より小さい VM サイズ (*Standard DS1 v2* など) を選択してください。 |
 

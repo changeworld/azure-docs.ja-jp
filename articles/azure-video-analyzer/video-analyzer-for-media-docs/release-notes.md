@@ -1,23 +1,16 @@
 ---
 title: Azure Video Analyzer for Media (旧称 Video Indexer) リリース ノート | Microsoft Docs
 description: 常に最新の開発情報を把握していただけるよう、この記事では Azure Video Analyzer for Media (旧称 Video Indexer) の最新の更新情報を提供します。
-services: azure-video-analyzer
-documentationcenter: ''
-author: Juliako
-manager: femila
-editor: ''
-ms.workload: na
 ms.topic: article
-ms.subservice: azure-video-analyzer-media
 ms.custom: references_regions
 ms.date: 08/01/2021
 ms.author: juliako
-ms.openlocfilehash: 69d0190454a1b5948e894c5bc5a03a235daca78d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3bfe1e7f18f50723eed9d456eac8a773f06a34bf
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121752147"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128552568"
 ---
 # <a name="video-analyzer-for-media-release-notes"></a>Video Analyzer for Media リリース ノート
 
@@ -29,6 +22,19 @@ ms.locfileid: "121752147"
 * 既知の問題
 * バグの修正
 * 非推奨の機能
+
+## <a name="august-2021"></a>2021 年 8 月
+
+### <a name="re-index-video-or-audio-files"></a>ビデオまたはオーディオ ファイルのインデックスの再作成
+
+インデックス作成プロセス中に失敗したビデオまたはオーディオ ファイルのインデックスを再作成するオプションが追加されました。
+
+### <a name="improve-accessibility-support"></a>アクセシビリティ サポートの向上
+
+CSS、テーマ、およびアクセシビリティに関連するバグを修正しました。
+
+* high contrast
+* [ポータル](https://www.videoindexer.ai)のアカウント設定と分析情報ビュー。  
 
 ## <a name="july-2021"></a>2021 年 7 月
 
@@ -106,7 +112,7 @@ Video Analyzer for Media Web サイトでビデオの分析情報の表示を選
 
 ### <a name="new-developer-portal"></a>新しい開発者ポータル 
 
-Video Analyzer for Media の[開発者ポータル](https://api-portal.videoindexer.ai/)が新しくなりました。新しい Video Analyzer for Media API をお試しください。[GitHub リポジトリ](https://github.com/Azure-Samples/media-services-video-indexer)、[スタック オーバーフロー](https://stackoverflow.com/questions/tagged/video-indexer)、関連するブログ記事が含まれた [Video Analyzer for Media の技術コミュニティ](https://techcommunity.microsoft.com/t5/azure-media-services/bg-p/AzureMediaServices/label-name/Video%20Indexer)、[Video Analyzer for Media の FAQ](faq.md)、フィードバックを提供し、機能を提案するための[ユーザーの声](https://feedback.azure.com/forums/932041-cognitive-services?category_id=399016)、およびウィジェット コード サンプルが含まれた ["CodePen" リンク](https://codepen.io/videoindexer)など、関連するすべてのリソースが 1 か所で見つかります。 
+Video Analyzer for Media の[開発者ポータル](https://api-portal.videoindexer.ai/)が新しくなりました。新しい Video Analyzer for Media API をお試しください。[GitHub リポジトリ](https://github.com/Azure-Samples/media-services-video-indexer)、[スタック オーバーフロー](https://stackoverflow.com/questions/tagged/video-indexer)、関連するブログ記事が含まれた [Video Analyzer for Media の技術コミュニティ](https://techcommunity.microsoft.com/t5/azure-media-services/bg-p/AzureMediaServices/label-name/Video%20Indexer)、[Video Analyzer for Media の FAQ](faq.yml)、フィードバックを提供し、機能を提案するための[ユーザーの声](https://feedback.azure.com/forums/932041-cognitive-services?category_id=399016)、およびウィジェット コード サンプルが含まれた ["CodePen" リンク](https://codepen.io/videoindexer)など、関連するすべてのリソースが 1 か所で見つかります。 
  
 ### <a name="advanced-customization-capabilities-for-insight-widget"></a>分析情報ウィジェットの高度なカスタマイズ機能 
 

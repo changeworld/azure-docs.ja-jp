@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2021
-ms.openlocfilehash: 37e6573e1bc26bc79477cf532ef442964f760985
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 32d5602a4f71b1e66e135fe2478f2d9b10b8424d
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123226778"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129219194"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペースとは
 
@@ -115,7 +115,12 @@ ms.locfileid: "123226778"
 
   既存の Azure Storage アカウントを使用する場合は、種類 BlobStorage や Premium アカウント (Premium_LRS と Premium_GRS) であってはいけません。 また、階層的名前空間 (Azure Data Lake Storage Gen2 で使用されます) を含めることもできません。 ワークスペースの "_既定の_" ストレージ アカウントでは、Premium Storage も階層型名前空間もサポートされていません。 "_既定以外_" のストレージ アカウントでは、Premium Storage または階層型名前空間を使用できます。
   
-+ [Azure Container Registry](https://azure.microsoft.com/services/container-registry/):トレーニング中およびモデルのデプロイ時に使用する Docker コンテナーを登録します。 コストを最小限に抑えるために、ACR は、デプロイ イメージが作成されるまで **遅延読み込み** されます。
++ [Azure Container Registry](https://azure.microsoft.com/services/container-registry/): 以下のコンポーネントに対して使用される Docker コンテナーを登録します。
+    * モデルのトレーニングおよびデプロイ時には、[Azure Machine Learning 環境](concept-environments.md)
+    * デプロイ時には [AutoML](concept-automated-ml.md)
+    * [データ プロファイル](how-to-connect-data-ui.md#data-profile-and-preview)
+
+    コストを最小限に抑えるために、ACR は、イメージが必要になるまでは **遅延読み込み** されます。
 
     > [!NOTE]
     > サブスクリプションの設定で、配下のリソースにタグを追加することが要求されている場合、Azure Machine Learning によって作成される Azure Container Registry (ACR) でエラーが発生します。Microsoft が ACR にタグを設定することはできないためです。

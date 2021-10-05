@@ -4,19 +4,19 @@ description: リソース セットのパターン ルールを作成して、�
 author: djpmsft
 ms.author: daperlov
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: how-to
-ms.date: 04/15/2021
-ms.openlocfilehash: 00b3abc14207e2cb20d61f20639bf326a426cf37
-ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
+ms.date: 09/27/2021
+ms.openlocfilehash: c2d6f90bf9a3e3b3f7c03db1ab0a4fbf258703eb
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111813611"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129218871"
 ---
 # <a name="create-resource-set-pattern-rules"></a>リソース セットのパターン ルールの作成
 
-大規模なデータ処理システムでは、通常、1 つのテーブルが複数のファイルとしてディスクに格納されます。 Azure Purview では、この概念がリソース セットを使用して表されます。 リソース セットは、データ カタログにおいて、ストレージ内の多数の資産を表す単一のオブジェクトです。 詳細については、「[リソース セットについて](concept-resource-sets.md)」を参照してください。
+大規模なデータ処理システムでは、通常、1 つのテーブルが複数のファイルとしてストレージに格納されます。 Azure Purview では、この概念がリソース セットを使用して表されます。 リソース セットは、データ カタログにおいて、ストレージ内の多数の資産を表す単一のオブジェクトです。 詳細については、「[リソース セットについて](concept-resource-sets.md)」を参照してください。
 
 Azure Purview では、ストレージ アカウントをスキャンするときに、一連の定義済みパターンを使用して、資産のグループがリソース セットであるかどうかを判断します。 場合によっては、Azure Purview のリソース セットのグループ化がデータ資産を正確に反映しないことがあります。 リソース セットのパターン ルールを使用すると、Azure Purview がリソース セットとしてグループ化される資産を検出する方法や、カタログ内でのそれらの表示方法をカスタマイズまたはオーバーライドできます。
 
@@ -26,12 +26,13 @@ Azure Purview では、ストレージ アカウントをスキャンすると�
 - Azure Files
 - Amazon S3
 
+リソース セットのパターン ルールを作成するには、高度なリソース セット機能セットを有効にする必要があります。 詳細については、[高度なリソース セットの概要](concept-resource-sets.md#advanced-resource-sets)に関するセクションを参照してください。
 
 ## <a name="how-to-create-a-resource-set-pattern-rule"></a>リソース セットのパターン ルールを作成する方法
 
 リソース セットのパターン ルールを新しく作成するには、次の手順に従います。
 
-1. 管理センターに移動します。 [リソース セット] 見出しの下にあるメニューから **[パターン ルール]** を選択します。 新しいルール セットを作成するには、 **[+ 新規]** を選択します。
+1. データ マップに移動します。 [Source management]\(ソース管理\) 見出しの下にあるメニューの **[パターン ルール]** を選択します。 新しいルール セットを作成するには、 **[+ 新規]** を選択します。
 
    :::image type="content" source="media/how-to-resource-set-pattern-rules/create-new-scoped-resource-set-rule.png" alt-text="新しいリソース セットのパターン ルールの作成" border="true":::
 
@@ -53,7 +54,7 @@ Azure Purview では、ストレージ アカウントをスキャンすると�
 
       :::image type="content" source="media/how-to-resource-set-pattern-rules/scoped-resource-set-rule-example.png" alt-text="新しい構成ルールを作成する。" border="true":::
 
-1. **[追加]** をクリックしてルールを保存します。
+1. **[追加]** を選択してルールを保存します。
 
 > [!NOTE]
 > パターン ルールが作成されると、すべての新しいスキャンでインジェスト中にルールが適用されます。 データ カタログ内の既存の資産は、バックグラウンド プロセスによって更新されます。これには最大で数時間かかる場合があります。 

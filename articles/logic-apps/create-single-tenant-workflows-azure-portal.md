@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: how-to
-ms.date: 05/25/2021
-ms.openlocfilehash: 2178b3d4ea9c1cc650685b90fa5dc2cdf6551191
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.date: 09/25/2021
+ms.openlocfilehash: 82d08db8a5686e6e13eaff5d18c6ba3afd254b2a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112116609"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128584490"
 ---
 # <a name="create-an-integration-workflow-with-single-tenant-azure-logic-apps-standard-in-the-azure-portal"></a>Azure portal でシングルテナント Azure Logic Apps (Standard) を使用して統合ワークフローを作成する
 
@@ -65,9 +65,7 @@ ms.locfileid: "112116609"
 
    ![Azure portal の検索ボックスに "logic apps" という検索用語が入力され、[ロジック アプリ (Standard)] リソースが選択されているスクリーンショット。](./media/create-single-tenant-workflows-azure-portal/find-logic-app-resource-template.png)
 
-1. **[ロジック アプリ]** ページで **[追加]**  >  **[Standard]** を選択します。
-
-   この手順では、シングルテナント Azure Logic Apps 環境で実行され、[シングルテナント課金モデル](logic-apps-pricing.md#standard-pricing)を使用するロジック アプリ リソースを作成します。
+1. **[ロジック アプリ]** ページで **[追加]** を選択します。
 
 1. **[ロジック アプリの作成]** ページの **[基本]** タブで、ロジック アプリ リソースに関する次の情報を入力します。
 
@@ -75,6 +73,7 @@ ms.locfileid: "112116609"
    |----------|----------|-------|-------------|
    | **サブスクリプション** | はい | <*Azure サブスクリプション名*> | ロジック アプリに使用する Azure サブスクリプション。 |
    | **リソース グループ** | はい | <*Azure-resource-group-name*> | ロジック アプリと関連リソースを作成する Azure リソース グループ。 このリソース名は、リージョン間で一意である必要があり、文字、数字、ハイフン ( **-** )、アンダースコア ( **_** )、かっこ ( **()** )、ピリオド ( **.** ) のみを含めることができます。 <p><p>この例では、`Fabrikam-Workflows-RG` という名前のリソース グループを作成します。 |
+   | **Type** | はい | **Standard** | このロジック アプリ リソースの種類は、シングルテナント Azure Logic Apps 環境で実行され、[Standard 使用、課金、価格モデル](logic-apps-pricing.md#standard-pricing)を使用します。 |
    | **ロジック アプリ名** | はい | <*ロジック アプリ名*> | ロジック アプリに使用する名前。 このリソース名は、リージョン間で一意である必要があり、文字、数字、ハイフン ( **-** )、アンダースコア ( **_** )、かっこ ( **()** )、ピリオド ( **.** ) のみを含めることができます。 <p><p>この例では、`Fabrikam-Workflows` という名前のロジック アプリを作成します。 <p><p>**注**:**ロジック アプリ (Standard)** リソースには Azure Functions の機能が利用され、同じアプリ名前付け規則が使用されるため、ロジック アプリの名前には `.azurewebsites.net` というサフィックスが自動的に付けられます。 |
    | **発行** | はい | <*デプロイ環境*> | ロジック アプリのデプロイ先。 既定では、シングル テナント Azure Logic Apps にデプロイするための **ワークフロー** が選択されています。 Azure により、最初のワークフローを追加する必要がある空のロジック アプリ リソースが作成されます。 <p><p>**注**: 現時点では、**Docker コンテナー** オプションを使用するには Azure Arc enabled Kubernetes クラスター上に [*カスタムの場所*](../azure-arc/kubernetes/conceptual-custom-locations.md) が必要です。これは、[Azure Arc enabled Logic Apps (プレビュー)](azure-arc-enabled-logic-apps-overview.md) で使用できます。 ロジック アプリのリソースの場所、カスタムの場所、クラスターはすべて同じである必要があります。 |
    | **[リージョン]** | はい | <*Azure-region*> | リソース グループやリソースを作成する際に使用する場所です。 **[Docker コンテナー]** を選択した場合は、カスタムの場所を選択します。 <p><p>この例では、サンプル ロジック アプリを Azure にデプロイし、**米国西部** を使用します。 |
@@ -100,14 +99,12 @@ ms.locfileid: "112116609"
 
    1. **Application Insights** の設定で、Application Insights の既存のインスタンスを選択するか、新しいインスタンスを作成する場合は、 **[新規作成]** を選択して、使用する名前を指定します。
 
-1. Azure によるロジック アプリの設定の検証が済んだら、 **[確認および作成]** タブで、 **[作成]** を選択します。
-
-   例:
+1. Azure によってロジック アプリの設定が検証されたら、 **[確認および作成]** タブで、 **[作成]** を選択します。次に例を示します。
 
    ![Azure portal と新しいロジック アプリ リソースの設定を示すスクリーンショット。](./media/create-single-tenant-workflows-azure-portal/check-logic-app-resource-settings.png)
 
    > [!TIP]
-   > **[作成]** を選択した後、検証エラーが発生する場合は、エラーの詳細を開いて確認します。 たとえば、選択したリージョンが、作成しようとしているリソースのクォータに達する場合、別のリージョンの試行が必要になることがあります。
+   > この手順の後に検証エラーが発生した場合は、エラーの詳細を開いて確認します。 たとえば、選択したリージョンが、作成しようとしているリソースのクォータに達する場合、別のリージョンの試行が必要になることがあります。
 
    Azure でデプロイが完了すると、ロジック アプリは自動的に有効になり、実行中になりますが、リソースが空で、まだワークフローを追加していないため、何も実行されません。
 

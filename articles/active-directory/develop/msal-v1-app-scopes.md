@@ -12,12 +12,12 @@ ms.date: 11/25/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev, has-adal-ref
-ms.openlocfilehash: 67273a5e0c29a8a3ba7b7fdfcc3ccba2e5105c7c
-ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
+ms.openlocfilehash: c1d9c88825dc8460c619131b8f69b5e802a8758b
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122429056"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129080752"
 ---
 # <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>v1.0 トークンを受け入れる Web API のスコープ
 
@@ -83,4 +83,6 @@ var scopes = [ ResourceId + "/.default"];
 
 ## <a name="scopes-to-request-for-a-client-credential-flowdaemon-app"></a>クライアント資格証明フロー/デーモン アプリ用に要求するスコープ
 
-クライアント資格情報フローの場合、`/.default` スコープも渡します。 これにより、管理者がアプリケーションの登録で同意したアプリレベルのすべてのアクセス許可が、Azure AD に示されます。
+標準のクライアント資格情報のフローでは、`/.default` を使用します。 たとえば、「 `https://graph.microsoft.com/.default` 」のように入力します。
+
+Azure AD によって、管理者が同意したすべてのアプリレベルのアクセス許可が、クライアント資格情報フローのアクセス トークンに自動的に含められます。

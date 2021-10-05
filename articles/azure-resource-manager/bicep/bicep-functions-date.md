@@ -4,20 +4,17 @@ description: date で作業する際に Bicep ファイルで使用する関数�
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: 3f8715dd0dc1931e9086fd94e99661fb9cfda2d1
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.date: 09/10/2021
+ms.openlocfilehash: 45e0180a11209b39b4c37f16f9940686c042ee89
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111027121"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124794122"
 ---
 # <a name="date-functions-for-bicep"></a>Bicep の Date 関数
 
-リソース マネージャーには、Bicep ファイルで日付を操作する次の関数が用意されています。
-
-* [dateTimeAdd](#datetimeadd)
-* [utcNow](#utcnow)
+この記事では、日付を操作するための Bicep 関数について説明します。
 
 ## <a name="datetimeadd"></a>dateTimeAdd
 
@@ -148,4 +145,4 @@ output utcShortOutput string = utcShort
 
 ## <a name="next-steps"></a>次のステップ
 
-* Bicep ファイルのセクションの説明については、「[Bicep ファイルの構造と構文について](./file.md)」を参照してください。
+* Bicep ファイルのセクションの説明は、[Bicep ファイルの構造と構文](./file.md)に関する記事をご覧ください。

@@ -6,12 +6,13 @@ ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: how-to
 ms.date: 08/18/2021
-ms.openlocfilehash: 731fe8f29fc4e67e2d74d46702768e642928ae09
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 228e0ac6243ae25463a81967c6d5cbcd903ad2ce
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122514569"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124824152"
 ---
 # <a name="edit-host-and-app-settings-for-logic-apps-in-single-tenant-azure-logic-apps"></a>シングルテナントの Azure Logic Apps でロジック アプリのホストとアプリの設定を編集する
 
@@ -234,7 +235,8 @@ Visual Studio Code で、ロジック アプリ プロジェクトのルート �
 | 設定 | 既定値 | 説明 |
 |---------|---------------|-------------|
 | `Runtime.Backend.DefaultAppendArrayItemsLimit` | `100000` <br>(10 万個の配列項目) | 配列型の変数内の項目の最大数を設定します。 |
-| `Runtime.Backend.VariableOperation.MaximumVariableSize` | ステートフル ワークフロー: `104857600` 文字 <p><p>ステートレス ワークフロー: `1024` 文字 | 変数に格納できるコンテンツの最大サイズを文字数で設定します。 |
+| `Runtime.Backend.VariableOperation.MaximumVariableSize` | ステートフル ワークフロー: `104857600` 文字 | ステートフル ワークフローで使用した場合に、変数に格納できるコンテンツの最大サイズを文字数で設定します。 |
+| `Runtime.Backend.VariableOperation.MaximumStatelessVariableSize` | ステートレス ワークフロー: `1024` 文字 | ステートレス ワークフローで使用した場合に、変数に格納できるコンテンツの最大サイズを文字数で設定します。 |
 ||||
 
 <a name="http-webhook"></a>

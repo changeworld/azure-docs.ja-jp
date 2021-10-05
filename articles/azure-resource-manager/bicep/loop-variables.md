@@ -5,18 +5,22 @@ author: mumian
 ms.author: jgao
 ms.topic: conceptual
 ms.date: 08/30/2021
-ms.openlocfilehash: bf182379c9cc10db11e451f908df552a16520b45
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 14721057379217ae9d14b97c94483435dde08203
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123225201"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124831981"
 ---
 # <a name="variable-iteration-in-bicep"></a>Bicep での変数の反復処理
 
 この記事では、Bicep ファイルで 1 つの変数に対して複数の値を作成する方法について説明します。 `variables` 宣言にループを追加し、変数の項目数を動的に設定できます。 これにより、Bicep ファイルで構文を繰り返さないようにします。
 
 [モジュール](loop-modules.md)、[リソース](loop-resources.md)、[リソース内のプロパティ](loop-properties.md)、[出力](loop-outputs.md)でもコピーを使用できます。
+
+### <a name="microsoft-learn"></a>Microsoft Learn
+
+ループの詳細とハンズオン ガイダンスについては、**Microsoft Learn** の「[条件とループを使用して柔軟な Bicep テンプレートを作成する](/learn/modules/build-flexible-bicep-templates-conditions-loops/)」を参照してください。
 
 ## <a name="syntax"></a>構文
 

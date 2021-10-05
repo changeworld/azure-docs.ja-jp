@@ -5,12 +5,12 @@ author: sunasing
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sunasing
-ms.openlocfilehash: 292374bcce90da042dc6bd672feaad3750759aa9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4ddbe9ff6a3dfa195d0739205c3e32070b170f30
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92674510"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128560754"
 ---
 # <a name="azure-farmbeats-apis"></a>Azure FarmBeats API
 
@@ -70,15 +70,15 @@ headers = {"Authorization": "Bearer " + **access_token**}
 
 **ヘッダー** | **説明と例**
 --- | ---
-Content-Type  | 要求の形式 (Content-Type: application/<format>)。 Azure FarmBeats Datahub API の場合、形式は JSON です。 Content-Type, application/json
-承認  | API 呼び出しを行うために必要なアクセス トークンを指定します。 Authorization:Bearer <Access-Token>
+Content-Type  | 要求の形式 (Content-Type: application/\<format\>)。 Azure FarmBeats Datahub API の場合、形式は JSON です。 Content-Type, application/json
+承認  | API 呼び出しを行うために必要なアクセス トークンを指定します。 認可: ベアラー \<Access-Token\>
 Accept | 応答形式。 Azure FarmBeats Datahub API の場合、形式は JSON です。 Accept: application/json
 
 ### <a name="api-requests"></a>API 要求
 
 REST API 要求を行うには、HTTP (GET、POST、PUT、または DELETE) メソッド、API サービスの URL、(クエリ、データの送信、更新、または削除対象の) リソースの URI を結合し、1 つ以上の HTTP 要求ヘッダーを追加します。
 
-API サービスの URL はデータ ハブの URL (例: https://\<yourdatahub-website-name>.azurewebsites.net) です。
+API サービスの URL は、データ ハブの URL (例: `https://<yourdatahub-website-name>.azurewebsites.net`) です。
 
 必要に応じて、GET 呼び出しにクエリ パラメーターを追加して、応答のデータのフィルター処理、サイズ制限、並べ替えを行うことができます。
 
@@ -158,7 +158,7 @@ Azure FarmBeats API は、Azure Active Directory のユーザーまたはアプ�
     - **[概要]** に戻り、 **[Manage Application in local directory]\(ローカルディレクトリ内のアプリケーションの管理\)** の横にあるリンクを選択します。
     - **[プロパティ]** に移動し、 **[オブジェクト ID]** を取得します。
 
-4. Datahub Swagger (https://<yourdatahub>.azurewebsites.net/swagger/index.html) にアクセスし、次の手順を実行します。
+4. Datahub Swagger (`https://<yourdatahub>.azurewebsites.net/swagger/index.html`) に移動し、次の手順を実行します。
     - **RoleAssignment API** に移動します。
     - POST を実行し、先ほど作成した **[オブジェクト ID]** の **RoleAssignment** オブジェクトを作成します。
  

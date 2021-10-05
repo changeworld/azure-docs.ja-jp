@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 07/30/2021
+ms.date: 09/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0cd1d38bf2a96e8530c9647a6b09ad55893e569a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fa34a8e5e801080f354e13b632917a1a05eabf43
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121748740"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124832642"
 ---
 # <a name="connectivity-modes-and-requirements"></a>接続モードと要件
 
@@ -72,7 +72,7 @@ Azure Defender セキュリティ サービス、Container Insights、BLOB ス�
 |**請求テレメトリ データ**|お客様の環境 -> Azure|必須|いいえ|間接または直接|請求のために、データベース インスタンスの使用率を Azure に送信する必要があります。 |
 |**監視データとログ**|お客様の環境 -> Azure|Optional|データ量によって異なる場合があります (「[Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)」を参照)|間接または直接|複数の環境にわたるデータを 1 か所に集約するために、ローカルで収集された監視データとログを Azure Monitor に送信することができます。また、Azure Machine Learning のデータを使用して、アラートなどの Azure Monitor サービスを使用することもできます。|
 |**Azure ロールベースのアクセス制御 (Azure RBAC)**|お客様の環境 -> Azure -> お客様の環境|省略可能|×|直接のみ|Azure RBAC を使用する場合は、常に Azure との接続が確立されている必要があります。  Azure RBAC を使用しない場合は、ローカルの Kubernetes RBAC を使用できます。|
-|**Azure Active Directory (AAD) (将来)**|お客様の環境 -> Azure -> お客様の環境|Optional|状況によりますが、Azure AD に対する支払いが既に発生している場合があります|直接のみ|認証に Azure AD を使用する場合は、常に Azure との接続が確立されている必要があります。 認証に Azure AD を使用しない場合は、Active Directory を介して Active Directory フェデレーション サービス (AD FS) を使用できます。 **直接接続モードの保留中の可用性**|
+|**Azure Active Directory (AAD) (将来)**|お客様の環境 -> Azure -> お客様の環境|Optional|状況によりますが、Azure AD に対する支払いが既に発生している場合があります|直接のみ|認証に Azure AD を使用する場合は、常に Azure との接続が確立されている必要があります。 認証に Azure AD を使用しない場合は、Active Directory を介して Active Directory フェデレーション サービス (ADFS) を使用できます。 **直接接続モードの保留中の可用性**|
 |**バックアップと復元**|お客様の環境 -> お客様の環境|必須|いいえ|直接または間接|バックアップと復元サービスは、ローカル ストレージ クラスをポイントするように構成できます。 **直接接続モードの保留中の可用性**|
 |**Azure Backup - 長期保有期間 (将来)**| お客様の環境 -> Azure | Optional| はい (Azure Storage の場合) | 直接のみ |バックアップをオフサイトで長期間保持するために、ローカルで取得したバックアップを Azure Backup に送信し、復元のためにローカル環境に戻すことができます。 **直接接続モードの保留中の可用性**|
 |**Azure Defender セキュリティ サービス (将来)**|お客様の環境 -> Azure -> お客様の環境|Optional|はい|直接のみ|**直接接続モードの保留中の可用性**|
@@ -102,6 +102,34 @@ Microsoft Container Registry では、Azure Arc 対応データ サービスの�
 #### <a name="connection-target"></a>接続先
 
 `mcr.microsoft.com`
+
+#### <a name="protocol"></a>Protocol
+
+HTTPS
+
+#### <a name="port"></a>Port
+
+443
+
+#### <a name="can-use-proxy"></a>プロキシを使用可能
+
+はい
+
+#### <a name="authentication"></a>認証
+
+なし
+
+### <a name="helm-chart-used-to-create-data-controller-in-direct-connected-mode"></a>直接接続モードでデータ コントローラーを作成するために使用される Helm chart
+
+Azure Arc データ コントローラーのブートストラッパーとクラスター レベルのオブジェクト (カスタム リソース定義、クラスター ロール、クラスター ロール バインディングなど) のプロビジョニングに使用される Helm chart は、Azure Container Registry からプルされます。
+
+#### <a name="connection-source"></a>接続元
+
+コンテナー イメージをプルする各 Kubernetes ノード上の Kubernetes kubelet。
+
+#### <a name="connection-target"></a>接続先
+
+`arcdataservicesrow1.azurecr.io`
 
 #### <a name="protocol"></a>Protocol
 
@@ -195,4 +223,3 @@ Azure Active Directory
 > 現時点では、コマンド `az arcdata dc export` を実行するためのデータ コントローラーと Grafana および Kibana ダッシュボードへのブラウザー HTTPS/443 接続はすべて、自己署名証明書を使用して SSL で暗号化されます。  将来的には、これらの SSL 接続の暗号化用に独自の証明書を提供するための機能が利用可能になる予定です。
 
 Azure Data Studio から Kubernetes API サーバーへの接続には、確立した Kubernetes 認証および暗号化が使用されます。  Azure Data Studio または CLI を使用している各ユーザーは、Azure Arc 対応データ サービスに関連した多くのアクションを実行するために、Kubernetes API への認証された接続を持っている必要があります。
-

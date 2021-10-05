@@ -1,26 +1,26 @@
 ---
 title: Azure Machine Learning パイプラインを実行する
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Azure Machine Learning パイプラインを Azure Data Factory パイプラインで実行する方法を説明します。
+description: Azure Machine Learning パイプラインを Azure Data Factory および Synapse Analytics パイプラインで実行する方法について説明します。
 ms.service: data-factory
 ms.subservice: tutorials
 ms.custom: synapse
 ms.topic: conceptual
 ms.author: abnarain
 author: nabhishek
-ms.date: 07/16/2020
-ms.openlocfilehash: 19456f33e13a9a472b5c42afc0a3cb3c5041efd2
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/09/2021
+ms.openlocfilehash: 0d7fe523b7300634df6c876525b1ffe47a49c205
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638126"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124806338"
 ---
-# <a name="execute-azure-machine-learning-pipelines-in-azure-data-factory"></a>Azure Machine Learning パイプラインを Azure Data Factory で実行する
+# <a name="execute-azure-machine-learning-pipelines-in-azure-data-factory-and-synapse-analytics"></a>Azure Machine Learning パイプラインを Azure Data Factory および Synapse Analytics で実行する
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Azure Machine Learning パイプラインを Azure Data Factory パイプラインのステップとして実行します。 Machine Learning パイプラインの実行アクティビティにより、ローンの債務不履行の可能性の特定、センチメントの判定、顧客行動パターンの分析といったバッチ予測シナリオが可能になります。
+Azure Machine Learning パイプラインを Azure Data Factory および Synapse Analytics パイプラインのステップとして実行します。 Machine Learning パイプラインの実行アクティビティにより、ローンの債務不履行の可能性の特定、センチメントの判定、顧客行動パターンの分析といったバッチ予測シナリオが可能になります。
 
 次の動画では、この機能の概要とデモを 6 分間で紹介しています。
 
@@ -62,7 +62,7 @@ dataPathAssignments | Azure Machine Learning でデータパスを変更する�
 continueOnStepFailure | ステップが失敗した場合に、Machine Learning パイプライン実行の他のステップの実行を続けるかどうか | boolean | いいえ
 
 > [!NOTE]
-> Machine Learning パイプライン名と ID のドロップダウン項目を設定するには、ML パイプラインを一覧表示するためのアクセス許可が必要です。 ADF UX は、ログインしているユーザーの資格情報を使用して、AzureMLService API を直接呼び出します。  
+> Machine Learning パイプライン名と ID のドロップダウン項目を設定するには、ML パイプラインを一覧表示するためのアクセス許可が必要です。 UI は、ログインしているユーザーの資格情報を使用して、AzureMLService API を直接呼び出します。  
 
 ## <a name="next-steps"></a>次のステップ
 別の手段でデータを変換する方法を説明している次の記事を参照してください。

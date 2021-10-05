@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.service: virtual-machines-sap
 ms.subservice: baremetal-sap
 ms.date: 07/08/2021
-ms.openlocfilehash: 3acbef6c8521022ae847925e48d3cd42e13dc56e
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 85cfe6887ded3844e2143754c31a3c6efee5e132
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122965400"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128579462"
 ---
 # <a name="deploy-azure-monitor-for-sap-solutions-by-using-the-azure-portal"></a>Azure portal を使用して Azure Monitor for SAP Solutions をデプロイする
 
@@ -51,77 +51,100 @@ SAP 起動サービスにより、SAP システムの監視など、サービス
 4. 適切なプロファイル (*DEFAULT.PFL*) を選択します。
 5. **[Extended Maintenance]\(拡張メンテナンス\)**  >  **[Change]\(変更\)** を選択します。 
 6. プロファイル パラメーター "service/protectedwebmethods" を選択して次の値に変更し、[Copy]\(コピー\) をクリックします。  
- 
-SDEFAULT -GetQueueStatistic -ABAPGetWPTable -EnqGetStatistic -GetProcessList 
 
-7. 戻って **[Profile]\(プロファイル\)**  >  **[Save]\(保存\)** を選択します。
-8. このパラメーターの変更を保存した後、SAP システムの各インスタンスで SAPStartSRV サービスを再起動してください。 (サービスを再起動しても SAP システムは再起動されず、SAPStartSRV サービス (Windows) またはデーモン プロセス (Unix/Linux) が再起動されるだけです) 8a. Windows システムでは、SAP Microsoft 管理コンソール (MMC) または SAP 管理コンソール (MC) を使用して、1 つのウィンドウでこれを行うことができます。  各インスタンスを右クリックし、[すべてのタスク] -> [サービスを再起動する] を選択します。
-   ![MMC](https://user-images.githubusercontent.com/75772258/126453939-daf1cf6b-a940-41f6-98b5-3abb69883520.png) 8b. Linux システムでは、コマンド "sapcontrol -nr <NN> -function RestartService" を使用します。NN は、ログインしているホストを再起動するための SAP インスタンス番号です。
-9. SAP サービスが再起動されたら、次のコマンドを実行して、更新された Web メソッド保護除外ルールが各インスタンスに適用されていることを確認します: sapcontrol -nr <NN> -function ParameterValue service/protectedwebmethods -user "<adminUser>" "<adminPassword>" 出力は次のようになる必要があります:- ![SS](https://user-images.githubusercontent.com/75772258/126454265-d73858c3-c32d-4afe-980c-8aba96a0b2a4.png)
-10. 結論と検証のため、Web メソッドに対してテスト クエリを行い、各インスタンスにログインして次のコマンドを実行することにより、接続を検証します。すべてのインスタンスについて: sapcontrol -nr <NN> -function GetProcessList。ENQUE インスタンスの場合: sapcontrol -nr <NN> -function EnqGetStatistic。ABAP インスタンスの場合: sapcontrol -nr <NN> -function ABAPGetWPTable。ABAP/J2EE/JEE インスタンスの場合: sapcontrol -nr <NN> -function GetQueueStatistic
+   ```service/protectedwebmethods instruction
+      SDEFAULT -GetQueueStatistic -ABAPGetWPTable -EnqGetStatistic -GetProcessList```
+
+7. Go back and select **Profile** > **Save**.
+8. After saving the changes for this parameter, please restart the SAPStartSRV service on each of the instances in the SAP system. (Restarting the services will not restart the SAP system; it will only restart the SAPStartSRV service (in Windows) or daemon process (in Unix/Linux))
+   8a. On Windows systems, this can be done in a single window using the SAP Microsoft Management Console (MMC) / SAP Management Console(MC).  Right-click on each instance and choose All Tasks -> Restart Service.
+![MMC](https://user-images.githubusercontent.com/75772258/126453939-daf1cf6b-a940-41f6-98b5-3abb69883520.png)
+
+   8b. On Linux systems, use the below command where NN is the SAP instance number to restart the host which is logged into.
+   
+   ```RestartService
+   sapcontrol -nr <NN> -function RestartService```
+   
+9. Once the SAP service is restarted, please check to ensure the updated web method protection exclusion rules have been applied for each instance by running the following command: 
+
+**Logged as \<sidadm\>** 
+   `sapcontrol -nr <NN> -function ParameterValue service/protectedwebmethods`
+
+**Logged as different user** 
+   `sapcontrol -nr <NN> -function ParameterValue service/protectedwebmethods -user "<adminUser>" "<adminPassword>"`
+
+   The output should look like :-
+   ![SS](https://user-images.githubusercontent.com/75772258/126454265-d73858c3-c32d-4afe-980c-8aba96a0b2a4.png)
+
+10. To conclude and validate, a test query can be done against web methods to validate the connection by logging into each instance and running the following commands:
+
+    - For all instances : `sapcontrol -nr <NN> -function GetProcessList`
+    - For the ENQUE instance : `sapcontrol -nr <NN> -function EnqGetStatistic`
+    - For ABAP instances : `sapcontrol -nr <NN> -function ABAPGetWPTable`
+    - For ABAP/J2EE/JEE instances : `sapcontrol -nr <NN> -function GetQueueStatistic`
 
 >[!Important] 
->SAPControl Web メソッドの保護を解除するには、SAP システムの各インスタンスで sapstartsrv サービスが再起動されることが重要です。  NetWeaver プロバイダーが SAP システムからメトリック データをフェッチするにはこれらの読み取り専用 SOAP API が必要であり、これらのメソッドの保護を解除できなかった場合、NetWeaver のメトリック ブックの視覚化が空になるか表示されません。
+>It is critical that the sapstartsrv service is restarted on each instance of the SAP system for the SAPControl web methods to be unprotected.  These read-only SOAP API are required for the NetWeaver provider to fetch metric data from the SAP System and failure to unprotect these methods will lead to empty or missing visualizations on the NetWeaver metric workbook.
    
 >[!Tip]
-> サーバー ポートへのアクセスをフィルター処理するには、アクセス制御リスト (ACL) を使用します。 詳細については、[こちらの SAP ノート](https://launchpad.support.sap.com/#/notes/1495075)を参照してください。
+> Use an access control list (ACL) to filter the access to a server port. For more information, see [this SAP note](https://launchpad.support.sap.com/#/notes/1495075).
 
-Azure portal で NetWeaver プロバイダーをインストールするには:
+To install the NetWeaver provider on the Azure portal:
 
-1. 前の前提条件の手順を完了していること、およびサーバーが再起動されていることを確認します。
-1. Azure portal の **Azure Monitor for SAP Solutions** で、 **[プロバイダーの追加]** を選択してから次のようにします。
+1. Make sure you've completed the earlier prerequisite steps and that the server has been restarted.
+1. On the Azure portal, under **Azure Monitor for SAP Solutions**, select **Add provider**, and then:
 
-   1. **[種類]** で、 **[SAP NetWeaver]** を選択します。
+   1. For **Type**, select **SAP NetWeaver**.
 
-   1. **[ホスト名]** に、SAP システムのホスト名を入力します。
+   1. For **Hostname**, enter the host name of the SAP system.
 
-   1. **[サブドメイン]** に、サブドメインを入力します (ある場合)。
+   1. For **Subdomain**, enter a subdomain if one applies.
 
-   1. **[Instance No]\(インスタンス番号\)** に、入力したホスト名に対応するインスタンス番号を入力します。 
+   1. For **Instance No**, enter the instance number that corresponds to the host name you entered. 
 
-   1. **[SID]** に、システム ID を入力します。
+   1. For **SID**, enter the system ID.
    
-   ![SAP NetWeaver プロバイダーを追加するための構成オプションを示すスクリーンショット。](https://user-images.githubusercontent.com/75772258/114583569-5c777d80-9c9f-11eb-99a2-8c60987700c2.png)
+   ![Screenshot showing the configuration options for adding a SAP NetWeaver provider.](https://user-images.githubusercontent.com/75772258/114583569-5c777d80-9c9f-11eb-99a2-8c60987700c2.png)
 
-1.  終わったら、 **[プロバイダーの追加]** を選択します。 必要に応じてプロバイダーの追加を続けるか、 **[確認および作成]** を選択してデプロイを完了します。
+1.    When you're finished, select **Add provider**. Continue to add providers as needed, or select **Review + create** to complete the deployment.
 
 >[!Important]
->SAP アプリケーション サーバー (つまり仮想マシン) が、Azure Active Directory によって管理されているもののように、ネットワーク ドメインの一部である場合は、対応するサブドメインを [サブドメイン] テキスト ボックスで指定することが重要です。  仮想ネットワーク内に存在する Azure Monitor for SAP コレクター VM はドメインに参加していないため、ホスト名が完全修飾ドメイン名でない限り、SAP システム内のインスタンスのホスト名を解決できません。  これを指定しなかった場合は、NetWeaver ブックに視覚化が存在しないか、不完全になります。
+>If the SAP application servers (ie. virtual machines) are part of a network domain, such as one managed by Azure Active Directory, then it is critical that the corresponding subdomain is provided in the Subdomain text box.  The Azure Monitor for SAP collector VM that exists inside the Virtual Network is not joined to the domain and as such will not be able to resolve the hostname of instances inside the SAP system unless the hostname is a fully qualified domain name.  Failure to provide this will result in missing / incomplete visualizations in the NetWeaver workbook.
  
->たとえば、SAP システムのホスト名の完全修飾ドメイン名が "myhost.mycompany.global.corp" である場合は、[ホスト名] に「myhost」と入力し、[サブドメイン] で「mycompany.global.corp」と指定します。  NetWeaver プロバイダーが SAP システムで GetSystemInstanceList API を呼び出すと、SAP からシステム内のすべてのインスタンスのホスト名が返されます。  コレクター VM でこの一覧を使用して追加の API 呼び出しが行われ、各インスタンスの機能に固有のメトリックがフェッチされます (例: ABAP、J2EE、MESSAGESERVER、ENQUE、ENQREP など)。 指定した場合は、コレクター VM でサブドメイン "mycompany" を使用して、SAP システム内の各インスタンスの完全修飾ドメイン名が作成されます。  
+>For example, if the hostname of the SAP system has a fully qualified domain name of "myhost.mycompany.global.corp" then please enter a Hostname of "myhost" and provide a Subdomain of "mycompany.global.corp".  When the NetWeaver provider invokes the GetSystemInstanceList API on the SAP system, SAP returns the hostnames of all instances in the system.  The collector VM will use this list to make additional API calls to fetch metrics specific to each instance's features (e.g.  ABAP, J2EE, MESSAGESERVER, ENQUE, ENQREP, etc…). If specified, the collector VM will then use the subdomain  "mycompany.global.corp" to build the fully qualified domain name of each instance in the SAP system.  
  
->SAP システムがネットワーク ドメインの一部である場合は、[ホスト名] フィールドで IP アドレスを指定しないでください。
+>Please DO NOT specify an IP Address for the hostname field if the SAP system is a part of network domain.
 
    
-### <a name="sap-hana-provider"></a>SAP HANA プロバイダー 
+### SAP HANA provider 
 
-1. 構成するプロバイダーを追加するには、 **[プロバイダー]** タブを選択します。 複数のプロバイダーを 1 つずつ追加することも、監視リソースをデプロイした後で追加することもできます。 
+1. Select the **Providers** tab to add the providers you want to configure. You can add multiple providers one after another, or add them after you deploy the monitoring resource. 
 
-   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-3.png" alt-text="プロバイダーを追加するタブを示すスクリーンショット。" lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-3.png":::
+   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-3.png" alt-text="Screenshot showing the tab where you add providers." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-3.png":::
 
-1. **[プロバイダーの追加]** を選択した後、次のようにします。
+1. Select **Add provider**, and then:
 
-   1. **[種類]** で、 **[SAP HANA]** を選択します。 
+   1. For **Type**, select **SAP HANA**. 
 
       > [!IMPORTANT]
-      > SAP HANA プロバイダーが SAP HANA の `master` ノード用に構成されていることを確認します。
+      > Ensure that a SAP HANA provider is configured for the SAP HANA `master` node.
 
-   1. **[IP アドレス]** に、HANA サーバーのプライベート IP アドレスを入力します。
+   1. For **IP address**, enter the private IP address for the HANA server.
 
-   1. **[データベース テナント]** に、使用するテナントの名前を入力します。 任意のテナントを選択できますが、**SYSTEMDB** を使用すると、さまざまな監視領域が有効になるため、これを使用することをお勧めします。 
+   1. For **Database tenant**, enter the name of the tenant you want to use. You can choose any tenant, but we recommend using **SYSTEMDB** because it enables a wider array of monitoring areas. 
 
-   1. **[SQL ポート]** に、HANA データベースに関連付けられているポート番号を入力します。 *[3]*  + <*インスタンス番号*> +  *[13]* という形式にする必要があります。 たとえば、**30013** のようになります。 
+   1. For **SQL port**, enter the port number associated with your HANA database. It should be in the format of *[3]* + *[instance#]* + *[13]*. An example is **30013**. 
 
-   1. **[データベース ユーザー名]** には、使用するユーザー名を入力します。 データベース ユーザーには、"*監視*" と "*カタログ読み取り*" のロールが割り当てられている必要があります。
+   1. For **Database username**, enter the username you want to use. Ensure the database user has the *monitoring* and *catalog read* roles assigned.
 
-   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-4.png" alt-text="SAP HANA プロバイダーを追加するための構成オプションを示すスクリーンショット。" lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-4.png":::
+   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-4.png" alt-text="Screenshot showing configuration options for adding an SAP HANA provider." lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-4.png":::
 
-1. 終わったら、 **[プロバイダーの追加]** を選択します。 必要に応じてプロバイダーの追加を続けるか、 **[確認および作成]** を選択してデプロイを完了します。
+1. When you're finished, select **Add provider**. Continue to add providers as needed, or select **Review + create** to complete the deployment.
 
    
-### <a name="microsoft-sql-server-provider"></a>Microsoft SQL Server プロバイダー
+### Microsoft SQL Server provider
 
-1. Microsoft SQL Server プロバイダーを追加する前に、SQL Server Management Studio で次のスクリプトを実行して、プロバイダーを構成するための適切なアクセス許可を持つユーザーを作成します。
+1. Before you add the Microsoft SQL Server provider, run the following script in SQL Server Management Studio to create a user with the appropriate permissions for configuring the provider.
 
    ```sql
    USE [<Database to monitor>]
@@ -172,7 +195,7 @@ Azure portal で NetWeaver プロバイダーをインストールするには:
 
 1. **[種類]** で、 **[High-availability cluster (Pacemaker)]\(高可用性クラスター (Pacemaker)\)** を選択します。 
    
-1. **[HA Cluster Exporter Endpoint]\(HA クラスター エクスポーター エンドポイント\)** にエンドポイント URL を入力して、クラスターの各ノード用にプロバイダーを構成します。 **SUSE** ベースのクラスターの場合は、「**http://<IP  address>:9664/metrics**」と入力します。 **RHEL** ベースのクラスターの場合は、「**http://<IP address>:44322/metrics?names=ha_cluster**」と入力します
+1. **[HA Cluster Exporter Endpoint]\(HA クラスター エクスポーター エンドポイント\)** にエンドポイント URL を入力して、クラスターの各ノード用にプロバイダーを構成します。 **SUSE** ベースのクラスターの場合は、「**http://\<IP  address\>:9664/metrics**」と入力します。 **RHEL** ベースのクラスターの場合は、「**http://\<IP address\>:44322/metrics?names=ha_cluster**」と入力します
  
 1. システム ID、ホスト名、クラスター名を各ボックスに入力します。
    

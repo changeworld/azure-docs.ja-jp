@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/28/2021
+ms.date: 09/20/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: ef1c747666b2c75567d88f440cef37a631f64064
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f77c099425aac4f6484db8745e036a6dd1833ed4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121730858"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128578947"
 ---
 # <a name="secure-your-api-used-an-api-connector-in-azure-ad-b2c"></a>Azure AD B2C で API コネクタとして使用される API をセキュリティで保護する 
 
@@ -59,7 +59,8 @@ HTTP 基本認証を使用して API コネクタを構成するには、次の�
 HTTP 基本認証を使用して REST API の技術プロファイルを構成するには、ユーザー名とパスワードを格納するために次の暗号化キーを作成します。
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
-1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、ご利用の Azure AD B2C ディレクトリを選択します。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
 1. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
 1. [概要] ページで、 **[Identity Experience Framework]** を選択します。
 1. **[ポリシー キー]** を選択し、 **[追加]** を選択します。
@@ -162,11 +163,11 @@ HTTP 基本認証を使用して構成された RESTful 技術プロファイル
 7. **[保存]** を選択します。
 
 ### <a name="perform-authorization-decisions"></a>承認の決定を実行する 
-API エンドポイントを保護するために、API では、送信されたクライアント証明書に基づいて承認が実装される必要があります。 Azure App Service と Azure Functions については、[TLS 相互認証の構成](../app-service/app-service-web-configure-tls-mutual-auth.md)に関するページで、*API コードから証明書を有効化および検証* する方法をご覧ください。  または、Azure API Management を任意の API サービスの前のレイヤーとして使用して、[クライアント証明書のプロパティを目的の値と照合する](
+API エンドポイントを保護するために、API では、送信されたクライアント証明書に基づいて承認が実装される必要があります。 Azure App Service と Azure Functions については、[TLS 相互認証の構成](../app-service/app-service-web-configure-tls-mutual-auth.md)に関するページで、*API コードから証明書を有効化および検証* する方法をご覧ください。  または、Azure API Management をすべての API サービスの前のレイヤーとして使用して、[クライアント証明書のプロパティを目的の値と照合する](
 ../api-management/api-management-howto-mutual-certificates-for-clients.md)こともできます。
 
 ### <a name="renewing-certificates"></a>証明書を書き換える
-証明書の有効期限がまもなく切れることを知らせるリマインダー アラートを設定することをお勧めします。 使用されている証明書の有効期限が迫っている場合は、新しい証明書を生成し、上記の手順を繰り返す必要があります。 新しい証明書の使用を "ロール" するために、新しい証明書がデプロイされている間、一時的に、お使いの API サービスで引き続き古い証明書と新しい証明書を受け入れることができます。 
+証明書の有効期限がまもなく切れることを知らせるリマインダー アラートを設定することをお勧めします。 使用されている証明書の有効期限が迫っている場合は、新しい証明書を生成し、上の手順を繰り返す必要があります。 新しい証明書の使用を "ロール" するために、新しい証明書がデプロイされている間、一時的に、お使いの API サービスで引き続き古い証明書と新しい証明書を受け入れることができます。 
 
 既存の API コネクタに新しい証明書をアップロードするには、 **[API コネクタ]** で API コネクタを選択し、 **[新しい証明書のアップロード]** をクリックします。 直近でアップロードされ、開始日を過ぎていて有効期限が切れていない証明書が、Azure AD B2C によって自動的に使用されます。
 
@@ -179,7 +180,8 @@ API エンドポイントを保護するために、API では、送信された
 ### <a name="add-a-client-certificate-policy-key"></a>クライアント証明書ポリシー キーを追加する
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
-1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、ご利用の Azure AD B2C ディレクトリを選択します。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
 1. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
 1. [概要] ページで、 **[Identity Experience Framework]** を選択します。
 1. **[ポリシー キー]** を選択し、 **[追加]** を選択します。
@@ -285,14 +287,14 @@ Authorization: Bearer <token>
 技術プロファイルがアクセストークンを取得するために Azure AD と対話できるようにするには、アプリケーションを登録する必要があります。 Azure AD B2C は、Azure AD プラットフォームに依存しています。 アプリは、Azure AD B2C テナント、または管理する任意の Azure AD テナントで作成できます。 アプリケーションを登録するには、以下を行います。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD またはAzure AD B2C テナントを含むディレクトリを選択します。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページの **[ディレクトリ名]** の一覧で自分の Azure AD または Azure AD B2C ディレクトリを見つけて、 **[切り替え]** を選択します。
 1. 左側のメニューで、 **[Azure Active Directory]** を選択します。 または、 **[すべてのサービス]** を選択してから、 **[Azure Active Directory]** を検索して選択します。
 1. **[アプリの登録]** を選択し、 **[新規登録]** を選択します。
 1. アプリケーションの **名前** を入力します。 たとえば、*Client_Credentials_Auth_app* のように入力します。
 1. **[サポートされているアカウントの種類]** で、 **[この組織のディレクトリ内のアカウントのみ]** を選択します。
 1. **[登録]** を選択します。
-2. **[アプリケーション (クライアント) ID]** を記録します。 
-
+1. **[アプリケーション (クライアント) ID]** を記録します。
 
 クライアント資格情報フローの場合は、アプリケーション シークレットを作成する必要があります。 クライアント シークレットは、"アプリケーション パスワード" とも呼ばれます。 このシークレットは、アクセス トークンを取得するためにアプリケーションによって使用されます。
 
@@ -308,18 +310,19 @@ Authorization: Bearer <token>
 Azure AD B2C テナントで前に記録したクライアント ID およびクライアント シークレットを格納する必要があります。
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
-2. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 上部メニューで **[ディレクトリ + サブスクリプション]** フィルターを選択し、ご利用のテナントが含まれるディレクトリを選択します。
-3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
-4. [概要] ページで、 **[Identity Experience Framework]** を選択します。
-5. **[ポリシー キー]** を選択し、 **[追加]** を選択します。
-6. **オプション** については、`Manual`を選択します。
-7. ポリシー キーの **名前** を入力します (`SecureRESTClientId`)。 プレフィックス `B2C_1A_` がキーの名前に自動的に追加されます。
-8. **[シークレット]** に、前に記録したクライアント ID を入力します。
-9. **[キー使用法]** として [`Signature`] を選択します。
-10. **［作成］** を選択します
-11. 次の設定で別のポリシー キーを作成します。
-    -   **[名前]** : `SecureRESTClientSecret`。
-    -   **[シークレット]** : 前に記録したクライアント シークレットを入力します
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
+1. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
+1. [概要] ページで、 **[Identity Experience Framework]** を選択します。
+1. **[ポリシー キー]** を選択し、 **[追加]** を選択します。
+1. **オプション** については、`Manual`を選択します。
+1. ポリシー キーの **名前** を入力します (`SecureRESTClientId`)。 プレフィックス `B2C_1A_` がキーの名前に自動的に追加されます。
+1. **[シークレット]** に、前に記録したクライアント ID を入力します。
+1. **[キー使用法]** として [`Signature`] を選択します。
+1. **［作成］** を選択します
+1. 次の設定で別のポリシー キーを作成します。
+    - **[名前]** : `SecureRESTClientSecret`。
+    - **[シークレット]** : 前に記録したクライアント シークレットを入力します
 
 ServiceUrl で、your-tenant-name を Azure AD テナントの名前に置き換えます。 使用可能なすべてのオプションについては、[RESTful 技術プロファイル](restful-technical-profile.md)のリファレンスを参照してください。
 
@@ -402,7 +405,8 @@ ServiceUrl で、your-tenant-name を Azure AD テナントの名前に置き換
 OAuth2 ベアラー トークンを使用して REST API の技術プロファイルを構成するには、REST API 所有者からアクセス トークンを取得します。 次に、ベアラー トークンを格納するための次の暗号化キーを作成します。
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
-1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、ご利用の Azure AD B2C ディレクトリを選択します。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
 1. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
 1. [概要] ページで、 **[Identity Experience Framework]** を選択します。
 1. **[ポリシー キー]** を選択し、 **[追加]** を選択します。
@@ -474,7 +478,8 @@ API キーは、REST API エンドポイントにアクセスするユーザー�
 API キー認証を使用して REST API の技術プロファイルを構成するには、API キーを格納するために次の暗号化キーを作成します。
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
-1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、ご利用の Azure AD B2C ディレクトリを選択します。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
 1. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
 1. [概要] ページで、 **[Identity Experience Framework]** を選択します。
 1. **[ポリシー キー]** を選択し、 **[追加]** を選択します。

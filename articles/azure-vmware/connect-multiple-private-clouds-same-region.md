@@ -1,16 +1,16 @@
 ---
-title: 同じリージョン内の複数の Azure VMware Solution プライベート クラウドを接続する (プレビュー)
+title: 同じリージョン内の複数の Azure VMware Solution プライベート クラウドを接続する
 description: 同じリージョンにある複数の Azure VMware Solution プライベート クラウド間にネットワーク接続を作成する方法について説明します。
 ms.topic: how-to
-ms.date: 07/02/2021
-ms.openlocfilehash: 562980ce52216f892cb10689206211e23f3c8886
-ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
+ms.date: 09/20/2021
+ms.openlocfilehash: daa4b60c0e42c77f61054d6d9a77898cc0448c37
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113586727"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128567843"
 ---
-# <a name="connect-multiple-azure-vmware-solution-private-clouds-in-the-same-region-preview"></a>同じリージョン内の複数の Azure VMware Solution プライベート クラウドを接続する (プレビュー)
+# <a name="connect-multiple-azure-vmware-solution-private-clouds-in-the-same-region"></a>同じリージョン内の複数の Azure VMware Solution プライベート クラウドを接続する
 
 **AVS Interconnect** 機能を使用すると、同じリージョンにある複数の Azure VMware Solution プライベート クラウド間にネットワーク接続を作成することができます。 これにより、プライベート クラウドの管理ネットワークとワークロード ネットワーク間にルーティング リンクが作成され、クラウド間のネットワーク通信が可能になります。
 
@@ -18,14 +18,9 @@ ms.locfileid: "113586727"
 
 同じリージョン内のプライベート クラウドのみを接続できます。 異なるリージョンにあるプライベート クラウドを接続するには、[ExpressRoute Global Reach を使用](tutorial-expressroute-global-reach-private-cloud.md)して、オンプレミス回線にプライベート クラウドを接続する場合と同じ方法で、プライベート クラウドを接続します。 
 
->[!IMPORTANT]
->AVS Interconnect (プレビュー) 機能は、現在パブリック プレビュー段階です。  
->このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
->詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-
 ## <a name="supported-regions"></a>サポートされているリージョン
 
-AVS Interconnect (プレビュー) 機能は、米国中南部 (SAT20)、北ヨーロッパ (DUB21)、東南アジア (SG2)、英国西部 (CWL20) を除くすべてのリージョンで使用できます。 
+AVS Interconnect 機能は、米国中南部 (SAT20)、北ヨーロッパ (DUB21)、東南アジア (SG2)、英国西部 (CWL20) を除くすべてのリージョンで使用できます。 
 
 ## <a name="prerequisites"></a>前提条件
 

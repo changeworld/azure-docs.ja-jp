@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.author: jgao
 ms.date: 06/23/2021
-ms.openlocfilehash: 28050d926bf5b4042ceb5b94796550bc517eb977
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 1c8817fcc6a0cf24a0983f2df60f02cc42b79200
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114289206"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124764376"
 ---
 # <a name="integrate-bicep-with-azure-pipelines"></a>Bicep を Azure Pipelines に統合する
 
@@ -87,5 +87,6 @@ Azure CLI タスクでは、次の入力を受け取ります。
 
 ## <a name="next-steps"></a>次のステップ
 
+* Azure Pipelines での Bicep の使用方法の詳細と、ハンズオン ガイダンスについては、**Microsoft Learn** で「[Azure Pipelines を使用して最初の Bicep デプロイ パイプラインを作成する](/learn/modules/build-first-bicep-deployment-pipeline-using-azure-pipelines/)」を参照してください。
 * パイプラインで What-If 操作を使用するには、「[Test ARM templates with What-If in a pipeline](https://4bes.nl/2021/03/06/test-arm-templates-with-what-if/)」 (パイプラインで What-If を使用して ARM テンプレートをテストする) を参照してください。
 * GitHub Actions で Bicep ファイルを使用する方法については、「[GitHub Actions を使用した Bicep ファイルのデプロイ](./deploy-github-actions.md)」を参照してください。

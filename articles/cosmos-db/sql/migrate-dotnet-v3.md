@@ -1,18 +1,18 @@
 ---
-title: Azure Cosmos DB .NET SDK 3.0 (com.azure.cosmos) を使用するようにアプリケーションを移行する
-description: 既存の .NET アプリケーションを v2 SDK から、コア (SQL) API 用の新しい .NET SDK v3 (com.azure.cosmos パッケージ) にアップグレードする方法について学習します。
+title: Azure Cosmos DB .NET SDK 3.0 (Microsoft.Azure.Cosmos) を使用するようにアプリケーションを移行する
+description: 既存の .NET アプリケーションを v2 SDK から、コア (SQL) API 用の新しい .NET SDK v3 (Microsoft.Azure.Cosmos パッケージ) にアップグレードする方法について学習します。
 author: stefArroyo
 ms.author: esarroyo
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 08/26/2021
-ms.openlocfilehash: 65c2ab23c98ae9b3a2c57a71e52c1df37f182139
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 9ee782734baaf8947aa4e4f930cac874e32a5df6
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123113778"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124788194"
 ---
 # <a name="migrate-your-application-to-use-the-azure-cosmos-db-net-sdk-v3"></a>Azure Cosmos DB .NET SDK v3 を使用するようにアプリケーションを移行する
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -710,5 +710,5 @@ private static async Task DeleteItemAsync(DocumentClient client)
 * v3 SDK を使用して Azure Cosmos DB SQL API データを管理するための[コンソール アプリをビルドする](sql-api-get-started.md)
 * [v3 SDK でできること](sql-api-dotnet-v3sdk-samples.md)について、さらに学習する
 * Azure Cosmos DB に移行する容量計画を実行しようとしていますか?
-    * 既存のデータベース クラスター内の仮想コアとサーバー数のみがわかっている場合は、[仮想コア数または仮想 CPU 数を使用した要求ユニットの見積もり](../convert-vcore-to-request-unit.md)に関するページを参照してください 
-    * 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB Capacity Planner を使用した要求ユニットの見積もり](estimate-ru-with-capacity-planner.md)に関するページを参照してください
+    * 知っていることが既存のデータベース クラスター内の仮想コアとサーバーの数のみである場合は、[仮想コアまたは仮想 CPU の数を使用した要求ユニットの見積もり](../convert-vcore-to-request-unit.md)に関するページを参照してください 
+    * 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB 容量計画ツールを使用した要求ユニットに見積もり](estimate-ru-with-capacity-planner.md)に関するページを参照してください

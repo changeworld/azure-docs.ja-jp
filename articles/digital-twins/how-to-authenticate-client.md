@@ -4,29 +4,29 @@ titleSuffix: Azure Digital Twins
 description: クライアント アプリケーションに認証コードを書き込む方法を説明します
 author: baanders
 ms.author: baanders
-ms.date: 8/26/2021
+ms.date: 9/1/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: a1b2465f29ae659f3e255a4843a2abd5f9ab75b2
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: a1e397acfe8118c339b45d6c786ae2c0b2cc82e8
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123224856"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124827016"
 ---
 # <a name="write-client-app-authentication-code"></a>クライアント アプリの認証コードを書き込む
 
-[Azure Digital Twins のインスタンスと認証を設定](how-to-set-up-instance-portal.md)した後、インスタンスとのやり取りに使用するクライアント アプリケーションを作成できます。 スターター クライアント プロジェクトを設定した後、Azure Digital Twins のインスタンスに対して **認証を行うためのコードをそのクライアント アプリに書き込む** 必要があります。
+[Azure Digital Twins のインスタンスと認証を設定](how-to-set-up-instance-portal.md)した後、インスタンスとのやりとりに使用するクライアント アプリケーションを作成できます。 スターター クライアント プロジェクトを設定した後、Azure Digital Twins のインスタンスに対して **認証を行うためのコードをそのクライアント アプリに書き込む** 必要があります。
 
-Azure Digital Twins では [OAUTH 2.0 に基づく Azure AD セキュリティ トークン](../active-directory/develop/security-tokens.md#json-web-tokens-and-claims)を使用して認証が実行されます。 ご使用の SDK を認証するには、Azure Digital Twins に対する適切なアクセス許可を持つベアラー トークンを取得し、API 呼び出しと共にこれを渡す必要があります。 
+Azure Digital Twins では [OAUTH 2.0 に基づく Azure AD セキュリティ トークン](../active-directory/develop/security-tokens.md#json-web-tokens-and-claims)を使用して認証します。 ご使用の SDK を認証するには、Azure Digital Twins に対する適切なアクセス許可を持つベアラー トークンを取得し、API 呼び出しと共にこれを渡す必要があります。 
 
 この記事では、`Azure.Identity` クライアント ライブラリを使用して資格情報を取得する方法について説明します。 この記事では C# のコード サンプルを示していますが ([.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) 用に記述するコードなど)、使用する SDK に関係なく `Azure.Identity` のバージョンを使用できます (Azure Digital Twins で使用できる SDK の詳細については、「[Azure Digital Twins API および SDK](concepts-apis-sdks.md)」をご覧ください)。
 
 ## <a name="prerequisites"></a>前提条件
 
-最初に、「[インスタンスと認証を設定する](how-to-set-up-instance-portal.md)」のセットアップ手順を完了します。 これにより、Azure Digital Twins インスタンスが作成され、ユーザーにアクセス許可があることが確認されます。 このセットアップが完了したら、クライアント アプリのコードを記述することができます。
+最初に、「[インスタンスと認証を設定する](how-to-set-up-instance-portal.md)」のセットアップ手順を完了します。 このセットアップにより、Azure Digital Twins インスタンスがあり、ユーザーにアクセス許可があることが確保されます。 このセットアップが完了すると、クライアント アプリのコードを記述することができます。
 
-先に進むには、コードを記述するクライアント アプリ プロジェクトが必要です。 クライアント アプリ プロジェクトをまだ設定していない場合は、このチュートリアルで使用する基本的なプロジェクトを、選択した言語で作成します。
+続行するには、コードを記述するクライアント アプリ プロジェクトが必要です。 クライアント アプリ プロジェクトをまだ設定していない場合は、このチュートリアルで使用する基本的なプロジェクトを、選択した言語で作成します。
 
 ## <a name="authenticate-using-azureidentity-library"></a>Azure.Identity ライブラリを使用して認証する
 
@@ -63,7 +63,7 @@ Azure Digital Twins では [OAUTH 2.0 に基づく Azure AD セキュリティ �
 
 既定の Azure 資格情報を使用するには、Azure Digital Twins インスタンスの URL が必要です ([確認の手順](how-to-set-up-instance-portal.md#verify-success-and-collect-important-values))。
 
-`DefaultAzureCredential` をプロジェクトに追加するためのコード サンプルを次に示します。
+`DefaultAzureCredential` をご自分のプロジェクトに追加するためのコード サンプルを次に示します。
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/authentication.cs" id="DefaultAzureCredential_full":::
 
@@ -85,7 +85,7 @@ Azure 関数で、次のようにマネージド ID の資格情報を使用で�
 
 ### <a name="interactivebrowsercredential-method"></a>InteractiveBrowserCredential メソッド
 
-[InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true) メソッドは、対話型アプリケーションを対象としており、認証用の Web ブラウザーが開きます。 対話型認証が必要な場合には、これを `DefaultAzureCredential` の代わりに使用できます。
+[InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true) メソッドは、対話型アプリケーションを対象としており、認証用の Web ブラウザーが開きます。 対話型認証が必要な場合には、このメソッドを `DefaultAzureCredential` の代わりに使用できます。
 
 対話型のブラウザー資格情報を使用するには、Azure Digital Twins API へのアクセス許可がある **アプリの登録** が必要になります。 このアプリ登録を設定する手順については、「[アプリ登録を作成する](./how-to-create-app-registration-portal.md)」をご覧ください。 アプリの登録が設定されたら、次のものが必要になります。
 * [アプリの登録のアプリケーション (クライアント) ID](./how-to-create-app-registration-portal.md#collect-client-id-and-tenant-id)
@@ -127,7 +127,7 @@ Azure 関数を記述するときは、次の変数とコードを関数に追�
 
 * **_adtInstanceUrl_ の null チェック。** adtInstanceUrl の null チェックを追加し、関数のロジックを、try/catch ブロックで囲んで例外をすべてキャッチします。
 
-これらが関数に追加されると、関数コードは次の例のようになります。
+これらの変数が関数に追加されると、関数コードは次の例のようになります。
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIngestFunctionSample.cs":::
 
@@ -155,7 +155,7 @@ Azure Digital Twins は、1 つの [Azure Active Directory (Azure AD) テナン�
 
 ## <a name="other-credential-methods"></a>その他の資格情報のメソッド
 
-上で取り上げた認証シナリオがご自身のアプリのニーズを満たしていない場合、[Microsoft ID プラットフォーム](../active-directory/develop/v2-overview.md#getting-started)で提供されている他の種類の認証を調べることができます。 このプラットフォームのドキュメントでは、アプリケーションの種類別に整理された追加の認証シナリオが取り上げられています。
+上で取り上げた認証シナリオがご自分のアプリのニーズを満たしていない場合、[Microsoft ID プラットフォーム](../active-directory/develop/v2-overview.md#getting-started)で提供されている他の種類の認証を検討することができます。 このプラットフォームのドキュメントでは、その他の認証シナリオが取り上げられており、アプリケーションの種類別に整理されています。
 
 ## <a name="next-steps"></a>次のステップ
 

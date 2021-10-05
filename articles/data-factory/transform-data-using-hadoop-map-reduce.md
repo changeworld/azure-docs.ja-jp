@@ -1,22 +1,22 @@
 ---
 title: Hadoop MapReduce アクティビティを使用してデータを変換する
+description: Azure Data Factory または Synapse Analytics を使用して Azure HDInsight クラスター上の Hadoop MapReduce プログラムを実行してデータを処理する方法について説明します。
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Azure Data Factory から Azure HDInsight クラスター上の Hadoop MapReduce プログラムを実行してデータを処理する方法について説明します。
 ms.service: data-factory
 ms.subservice: tutorials
 ms.topic: conceptual
 author: nabhishek
 ms.author: abnarain
 ms.custom: synapse
-ms.date: 05/08/2020
-ms.openlocfilehash: 20ac921650f980127f24a48a5dc4e80602b5ef91
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.date: 09/09/2021
+ms.openlocfilehash: 7b4cc518b078565735b987ca4a13fc582e16a493
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122272033"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124806159"
 ---
-# <a name="transform-data-using-hadoop-mapreduce-activity-in-azure-data-factory"></a>Azure Data Factory で Hadoop MapReduce アクティビティを使用してデータを変換する
+# <a name="transform-data-using-hadoop-mapreduce-activity-in-azure-data-factory-or-synapse-analytics"></a>Azure Data Factory または Synapse Analytics で Hadoop MapReduce アクティビティを使用してデータを変換する
 
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-map-reduce.md)
@@ -24,9 +24,9 @@ ms.locfileid: "122272033"
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Data Factory [パイプライン](concepts-pipelines-activities.md)の HDInsight MapReduce アクティビティは、[独自](compute-linked-services.md#azure-hdinsight-linked-service)の、または[オンデマンド](compute-linked-services.md#azure-hdinsight-on-demand-linked-service)の HDInsight クラスターで MapReduce プログラムを起動します。 この記事は、データ変換とサポートされる変換アクティビティの概要を説明する、 [データ変換アクティビティ](transform-data.md) に関する記事に基づいています。
+Azure Data Factory または Synapse Analytics [パイプライン](concepts-pipelines-activities.md)の HDInsight MapReduce アクティビティは、[独自の](compute-linked-services.md#azure-hdinsight-linked-service)または[オンデマンドの](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight クラスターで MapReduce プログラムを起動します。 この記事は、データ変換とサポートされる変換アクティビティの概要を説明する、 [データ変換アクティビティ](transform-data.md) に関する記事に基づいています。
 
-Azure Data Factory を初めて利用する場合は、この記事を読む前に、「[Azure Data Factory の概要](introduction.md)」を参照してから、[データの変換に関するチュートリアル](tutorial-transform-data-spark-powershell.md)を実行してください。
+詳細については、この記事を読む前に、[Azure Data Factory](introduction.md) と [Synapse Analytics](../synapse-analytics/overview-what-is.md) の概要に関する記事を参照し、[データ変換のチュートリアル](tutorial-transform-data-spark-powershell.md)を実行してください。
 
 HDInsight Pig と Hive アクティビティを使用してパイプラインから HDInsight クラスター上の Pig/Hive スクリプトを実行する方法の詳細については、[Pig](transform-data-using-hadoop-pig.md) と [Hive](transform-data-using-hadoop-hive.md) に関する記事をご覧ください。
 
@@ -66,7 +66,7 @@ HDInsight Pig と Hive アクティビティを使用してパイプラインか
 | name              | アクティビティの名前                     | はい      |
 | description       | アクティビティの用途を説明するテキストです。 | いいえ       |
 | type              | MapReduce アクティビティの場合、アクティビティの種類は HDinsightMapReduce です | はい      |
-| linkedServiceName | Data Factory のリンクされたサービスとして登録されている HDInsight クラスターへの参照。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。 | はい      |
+| linkedServiceName | リンクされたサービスとして登録されている HDInsight クラスターへの参照。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。 | はい      |
 | className         | 実行するクラスの名前         | はい      |
 | jarLinkedService  | Jar ファイルの格納に使用される Azure Storage のリンクされたサービスへの参照。 ここでは **[Azure Blob Storage](./connector-azure-blob-storage.md)** および **[ADLS Gen2](./connector-azure-data-lake-storage.md)** にリンクされたサービスのみがサポートされています。 このリンクされたサービスを指定していない場合は、HDInsight のリンクされたサービスで定義されている Azure Storage のリンクされたサービスが使用されます。 | いいえ       |
 | jarFilePath       | jarLinkedServiceで参照される Azure Storage に格納されている Jar ファイルへのパスを指定します。 ファイル名は大文字と小文字が区別されます。 | はい      |
@@ -122,5 +122,5 @@ HDInsight MapReduce アクティビティを使用して、HDInsight クラス�
 * [Hadoop Streaming アクティビティ](transform-data-using-hadoop-streaming.md)
 * [Spark アクティビティ](transform-data-using-spark.md)
 * [.NET カスタム アクティビティ](transform-data-using-dotnet-custom-activity.md)
-* [Azure Machine Learning Studio (クラシック) の Batch Execution アクティビティ](transform-data-using-machine-learning.md)
+* [ML Studio (クラシック) の Batch Execution アクティビティ](transform-data-using-machine-learning.md)
 * [ストアド プロシージャ アクティビティ](transform-data-using-stored-procedure.md)

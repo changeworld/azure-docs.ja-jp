@@ -6,12 +6,12 @@ author: vineetvikram
 ms.author: vivikram
 ms.manager: abhemraj
 ms.date: 03/18/2021
-ms.openlocfilehash: 240f87a6b3154995340830e1861c8a76e6e3557f
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 55e8efc7b49f14f6eb4cfe399866e53df29e3e36
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123259673"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124767064"
 ---
 # <a name="dependency-analysis"></a>依存関係の分析
 
@@ -31,7 +31,7 @@ ms.locfileid: "123259673"
 
 **オプション** | **詳細** | **パブリック クラウド** | **Azure Government**
 ----  |---- | ----
-**エージェントレス** | vSphere API を使用して VMware 上のサーバーのデータをポーリングします。<br/><br/> サーバーにエージェントをインストールする必要はありません。<br/><br/> このオプションは現在プレビュー段階であり、VMware 上のサーバーのみが対象です。 | サポートされています。 | サポートされています。
+**エージェントレス** | vSphere API を使用して VMware 上のサーバーのデータをポーリングします。<br/><br/> サーバーにエージェントをインストールする必要はありません。<br/><br/> このオプションは現在、VMware 上のサーバーのみが対象です。 | サポートされています。 | サポートされています。
 **エージェントベースの分析** | 依存関係の視覚化と分析を可能にするため、Azure Monitor の [Service Map ソリューション](../azure-monitor/vm/service-map.md)を使用します。<br/><br/> 分析するオンプレミスのサーバーそれぞれに、エージェントをインストールする必要があります。 | サポートされています | サポートされていません。
 
 ## <a name="agentless-analysis"></a>エージェントレスの分析

@@ -1,20 +1,15 @@
 ---
 title: オーディオ効果検出
-titleSuffix: Azure Video Analyzer
 description: オーディオ効果検出は、Azure Video Analyzer for Media AI 機能の 1 つです。 さまざまな音響イベントを検出し、それらをさまざまな音響カテゴリ (銃声、叫び声、観客の反応など) に分類できます。
-author: Juliako
-manager: femila
-ms.service: azure-video-analyzer
-ms.subservice: azure-video-analyzer-media
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/12/2021
 ms.author: juliako
-ms.openlocfilehash: d576408cc0d65cc908a24b27ae2a6a50ed7aa9ee
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: 689abf9c61c0b1a462cfafe02c461906626e516b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112121546"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128632540"
 ---
 #  <a name="audio-effects-detection-preview"></a>オーディオ効果検出 (プレビュー)
 
@@ -109,7 +104,7 @@ audioEffects: [{
 |---|---|
 |SRT |00:00:00,000  00:00:03,671<br/>[銃声]|
 |VTT |00:00:00.000  00:00:03.671<br/>[銃声]|
-|TTML|信頼度: 0.9047 <br/> <p begin="00:00:00.000" end="00:00:03.671">[銃声]</p>|
+|TTML|信頼度: 0.9047 <br/> `<p begin="00:00:00.000" end="00:00:03.671">[Gunshot]</p>`|
 |TXT |[銃声]|
 |CSV |0.9047,00:00:00.000,00:00:03.671, [銃声]|
 

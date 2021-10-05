@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 06/14/2021
 ms.author: surmb
-ms.openlocfilehash: 785741c029fa3b44fffca5140906689f478fb247
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 5ea384a580109d40dfbb072b7bad16924307873e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112081229"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124837330"
 ---
 # <a name="application-gateway-infrastructure-configuration"></a>Application Gateway インフラストラクチャの構成
 

@@ -1,7 +1,7 @@
 ---
-title: Azure Data Factory の検証アクティビティ
+title: Validation アクティビティ
 titleSuffix: Azure Data Factory & Azure Synapse
-description: 検証アクティビティは、ユーザーが指定する特定の条件でアタッチされたデータセットを検証するまで、パイプラインの実行を継続しません。
+description: Azure Data Factory と Synapse Analytics の Validation アクティビティは、ユーザーが定義した条件でデータセットが研修されるまでパイプラインの実行を遅らせます。
 author: chez-charlie
 ms.author: chez
 ms.reviewer: jburchel
@@ -9,15 +9,15 @@ ms.service: data-factory
 ms.subservice: orchestration
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 03/25/2019
-ms.openlocfilehash: 9b4c2802808defd5a252a21f17fde9a769a08fad
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/09/2021
+ms.openlocfilehash: fa98ef27b5dbcc7949f37bf548c414d015224e4c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122637758"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124750618"
 ---
-# <a name="validation-activity-in-azure-data-factory"></a>Azure Data Factory の検証アクティビティ
+# <a name="validation-activity-in-azure-data-factory-and-synapse-analytics-pipelines"></a>Azure Data Factory と Azure Synapse Analytics パイプラインの Validation アクティビティ
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 パイプラインで検証を使用すると、アタッチされたデータセット参照が存在していて、指定された条件を満たしていること、またはタイムアウトに達していることを検証した後でのみ、パイプラインが実行を継続することを確認できます。
@@ -71,7 +71,7 @@ minimumSize | ファイルの最小サイズ (バイト単位)。 値が指定�
 
 
 ## <a name="next-steps"></a>次のステップ
-Data Factory でサポートされている他の制御フロー アクティビティを参照してください。
+サポートされている他の制御フロー アクティビティを参照してください。
 
 - [If Condition アクティビティ](control-flow-if-condition-activity.md)
 - [ExecutePipeline アクティビティ](control-flow-execute-pipeline-activity.md)

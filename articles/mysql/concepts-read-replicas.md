@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 06/17/2021
 ms.custom: references_regions
-ms.openlocfilehash: 89cb9122da21887165b2330f75dd316c184de823
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: bb061fb11fbc770d751f60e15c81ce31c6a07440
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121781077"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128666328"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Azure Database for MySQL の読み取りレプリカ
 
@@ -25,7 +25,7 @@ ms.locfileid: "121781077"
 MySQL レプリケーションの機能と問題の詳細については、[MySQL レプリケーションに関するドキュメント](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html)を参照してください。
 
 > [!NOTE]
-> この記事には、Microsoft が使用しなくなった "_スレーブ_" という用語への言及が含まれています。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
+> この記事には、Microsoft が使用しなくなった "*スレーブ*" という用語への言及が含まれています。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
 >
 
 ## <a name="when-to-use-a-read-replica"></a>読み取りレプリカを使用する場合
@@ -44,7 +44,7 @@ BI ワークロードおよび分析ワークロードでレポート用のデ�
 
 任意の [Azure Database for MySQL リージョン](https://azure.microsoft.com/global-infrastructure/services/?products=mysql)にソース サーバーを作成できます。  ソース サーバーは、ペアになっているリージョンまたはユニバーサル レプリカ リージョンにレプリカを持つことができます。 次の図は、ソース リージョンに応じて使用できるレプリカ リージョンを示しています。
 
-[ :::image type="content" source="media/concepts-read-replica/read-replica-regions.png" alt-text="読み取りレプリカ リージョン":::](media/concepts-read-replica/read-replica-regions.png#lightbox)
+[:::image type="content" source="media/concepts-read-replica/read-replica-regions.png" alt-text="読み取りレプリカ リージョン":::](media/concepts-read-replica/read-replica-regions.png#lightbox)
 
 ### <a name="universal-replica-regions"></a>ユニバーサル レプリカ リージョン
 
@@ -81,7 +81,7 @@ BI ワークロードおよび分析ワークロードでレポート用のデ�
 | 南アフリカ北部* | :heavy_check_mark: |
 
 > [!Note] 
-> *パブリック プレビューで Azure Database for MySQL に General Purpose Storage v2 があるリージョン  <br /> *これらの Azure リージョンでは、General Purpose Storage v1 と v2 の両方でサーバーを作成できます。 パブリック プレビュー段階の General Purpose Storage v2 を使用して作成されたサーバーの場合、レプリカ サーバーは、General Purpose Storage v2 をサポートする Azure リージョン内でのみ作成できます。
+> *パブリック プレビューで Azure Database for MySQL に General Purpose ストレージ v2 があるリージョン  <br /> *これらの Azure リージョンでは、General Purpose Storage v1 と v2 の両方でサーバーを作成できます。 パブリック プレビュー段階の General Purpose Storage v2 を使用して作成されたサーバーの場合、レプリカ サーバーは、General Purpose Storage v2 をサポートする Azure リージョン内でのみ作成できます。
 
 ### <a name="paired-regions"></a>ペアになっているリージョン
 
@@ -99,9 +99,9 @@ BI ワークロードおよび分析ワークロードでレポート用のデ�
 ## <a name="create-a-replica"></a>レプリカの作成
 
 > [!IMPORTANT]
-> 読み取りレプリカ機能は、汎用とメモリ最適化のどちらかの価格レベルにおける Azure Database for MySQL サーバーにのみ使用可能です。 ソース サーバーがこれらの価格レベルのいずれであるかを確認します。
+> * 読み取りレプリカ機能は、汎用とメモリ最適化のどちらかの価格レベルにおける Azure Database for MySQL サーバーにのみ使用可能です。 ソース サーバーがこれらの価格レベルのいずれであるかを確認します。
+> * 使用されているストレージ (v1 または v2) によっては、ソース サーバーに既存のレプリカ サーバーが存在しない場合、レプリケーションに備えるためにソース サーバーの再起動が必要となる場合があります。 サーバーの再起動を検討して、ピーク時間外にその操作を行ってください。 詳細については、「[ソース サーバーの再起動](./concepts-read-replicas.md#source-server-restart)」を参照してください。 
 
-ソース サーバーに既存のレプリカ サーバーがない場合、まずレプリケーションの準備のためにソースが再起動されます。
 
 レプリカ作成ワークフローを開始すると、空の Azure Database for MySQL サーバーが作成されます。 新しいサーバーには、ソース サーバー上にあったデータが設定されます。 作成時間は、ソース上のデータ量と、最後の週次完全バックアップからの経過時間に依存します。 時間の範囲は、数分から数時間になる可能性があります。 レプリカ サーバーは、ソース サーバーと同じリソース グループおよび同じサブスクリプションに常に作成されます。 レプリカ サーバーを別のリソース グループや別のサブスクリプションに作成したい場合は、作成後に[レプリカ サーバーを移動](../azure-resource-manager/management/move-resource-group-and-subscription.md)します。
 
@@ -198,7 +198,9 @@ GTID を有効にして整合性動作を構成するには、[Azure portal](how
 
 ### <a name="source-server-restart"></a>ソース サーバーの再起動
 
-既存のレプリカがないソースのレプリカを作成すると、ソースは最初に、レプリケーションの準備をするために再起動します。 これを考慮して、これらの操作はオフピーク期間中に実行してください。
+汎用ストレージ v1 を使用しているサーバーでは、`log_bin` パラメーターが既定では OFF になります。 最初の読み取りレプリカを作成するとき、この値が ON になります。 ソース サーバーに既存の読み取りレプリカがない場合、まずレプリケーションの準備のためにソース サーバーが再起動されます。 サーバーの再起動を検討して、ピーク時間外にその操作を行ってください。
+
+汎用ストレージ v2 を使用しているソース サーバーでは、`log_bin` パラメーターが既定で ON になります。読み取りレプリカを追加するときに再起動する必要はありません。 
 
 ### <a name="new-replicas"></a>新しいレプリカ
 

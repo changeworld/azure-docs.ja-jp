@@ -3,13 +3,13 @@ author: dominicbetts
 ms.author: dobett
 ms.service: iot-develop
 ms.topic: include
-ms.date: 11/19/2020
-ms.openlocfilehash: 451a6f1e4b90b2e307125c6aae6d2ac03ae90c83
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.date: 09/07/2021
+ms.openlocfilehash: 0ef257d82d892f2b8eb620c96744fb5bf26d9b5e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122397910"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128580460"
 ---
 ## <a name="model-id-announcement"></a>モデル ID のアナウンス
 
@@ -45,7 +45,7 @@ iothubResult = IoTHubDeviceClient_LL_SetOption(
 
 ## <a name="telemetry"></a>テレメトリ
 
-既定のコンポーネントには、特別なプロパティは必要ありません。
+既定のコンポーネントを使用する場合、テレメトリ メッセージに特別なプロパティを追加する必要はありません。
 
 入れ子になったコンポーネントを使用する場合、デバイスでは、メッセージ プロパティにコンポーネント名を設定する必要があります。
 
@@ -108,7 +108,7 @@ IOTHUB_CLIENT_RESULT iothubClientResult = IoTHubDeviceClient_LL_SendReportedStat
     strlen(maxTemperatureSinceRebootProperty), NULL, NULL));
 ```
 
-デバイス ツインは、次の報告されるプロパティを使用して更新されます。
+デバイス ツインは、次の reported プロパティで更新されます。
 
 ```json
 {
@@ -118,7 +118,7 @@ IOTHUB_CLIENT_RESULT iothubClientResult = IoTHubDeviceClient_LL_SendReportedStat
 }
 ```
 
-入れ子になったコンポーネントを使用する場合、次のコンポーネントの名前内にプロパティを作成する必要があります。
+入れ子になったコンポーネントを使用する場合は、コンポーネントの名前内にプロパティを作成し、マーカーを含める必要があります。
 
 ```c
 STRING_HANDLE PnP_CreateReportedProperty(
@@ -199,7 +199,7 @@ void PnP_TempControlComponent_Report_MaxTempSinceLastReboot_Property(
 PnP_TempControlComponent_Report_MaxTempSinceLastReboot_Property(g_thermostatHandle1, deviceClient);
 ```
 
-デバイス ツインは、次の報告されるプロパティを使用して更新されます。
+デバイス ツインは、次の reported プロパティで更新されます。
 
 ```json
 {
@@ -215,6 +215,8 @@ PnP_TempControlComponent_Report_MaxTempSinceLastReboot_Property(g_thermostatHand
 ## <a name="writable-properties"></a>書き込み可能なプロパティ
 
 これらのプロパティは、デバイスから設定するか、ソリューションから更新することができます。 ソリューションからプロパティを更新すると、クライアントでは `DeviceClient` または `ModuleClient` でコールバックとして通知を受け取ります。 IoT プラグ アンド プレイ規則に従うために、デバイスからサービスに対して、プロパティが正常に受信されたことを通知する必要があります。
+
+プロパティの型が `Object` である場合、オブジェクトのフィールドのサブセットを更新するだけだとしても、サービスからは完全なオブジェクトをデバイスに送信する必要があります。 デバイスから送信する受信確認は、完全なオブジェクトとすることもできます。
 
 ### <a name="report-a-writable-property"></a>書き込み可能なプロパティを報告する
 
@@ -238,7 +240,7 @@ iothubClientResult = IoTHubDeviceClient_LL_SendReportedState(
     strlen(targetTemperatureResponseProperty), NULL, NULL);
 ```
 
-デバイス ツインは、次の報告されるプロパティを使用して更新されます。
+デバイス ツインは、次の reported プロパティで更新されます。
 
 ```json
 {
@@ -315,7 +317,7 @@ iothubClientResult = IoTHubDeviceClient_LL_SendReportedState(
 STRING_delete(jsonToSend);
 ```
 
-デバイス ツインは、次の報告されるプロパティを使用して更新されます。
+デバイス ツインは、次の reported プロパティで更新されます。
 
 ```json
 {
@@ -335,7 +337,7 @@ STRING_delete(jsonToSend);
 
 ### <a name="subscribe-to-desired-property-updates"></a>必要なプロパティの更新をサブスクライブする
 
-サービスでは、接続されたデバイスで通知をトリガーする目的のプロパティを更新できます。 この通知には、更新を識別するバージョン番号など、更新された目的のプロパティが含まれます。 デバイスでは、報告されたプロパティと同じ `ack` メッセージで応答する必要があります。
+サービスでは、接続されたデバイスで通知をトリガーする目的のプロパティを更新できます。 この通知には、更新を識別するバージョン番号など、更新された目的のプロパティが含まれます。 デバイスでは、サービスに返送される `ack` メッセージにこのバージョン番号を含める必要があります。
 
 既定のコンポーネントでは、1 つのプロパティを参照し、受け取ったバージョンで報告される `ack` を作成します。
 
@@ -384,7 +386,7 @@ iothubResult = IoTHubDeviceClient_LL_SetDeviceTwinCallback(
     deviceHandle, Thermostat_DeviceTwinCallback, (void*)deviceHandle))
 ```
 
-デバイス ツインでは、目的のセクションと報告されるセクションにプロパティが表示されます。
+入れ子になったコンポーネントのデバイス ツインは、目的のセクションと報告されたセクションを次のように示します。
 
 ```json
 {
@@ -590,7 +592,9 @@ deviceClient = PnP_CreateDeviceClientLLHandle(&g_pnpDeviceConfiguration);
 
 ### <a name="request-and-response-payloads"></a>要求と応答のペイロード
 
-コマンドでは、型を使用して、要求と応答のペイロードを定義します。 デバイスでは、受け取った入力パラメーターを逆シリアル化し、応答をシリアル化する必要があります。 ペイロードで定義された複合型を使用してコマンドを実装する例を次に示します。
+コマンドでは、型を使用して、要求と応答のペイロードを定義します。 デバイスでは、受け取った入力パラメーターを逆シリアル化し、応答をシリアル化する必要があります。
+
+ペイロードで定義された複合型を使用してコマンドを実装する例を次に示します。
 
 ```json
 {

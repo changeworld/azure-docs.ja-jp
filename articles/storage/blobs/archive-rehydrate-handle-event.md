@@ -10,12 +10,12 @@ ms.date: 08/11/2021
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
-ms.openlocfilehash: 658483d1479036c7cc90dbaf439dbee6706dd475
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 3ce2f92f88e24eb634222db5ffab45acaf1a5820
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122206429"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128577994"
 ---
 # <a name="run-an-azure-function-in-response-to-a-blob-rehydration-event"></a>BLOB リハイドレート イベントに応答して Azure 関数を実行する
 
@@ -118,10 +118,10 @@ Azure portal 内で新しい関数アプリを作成するには、次の手順�
     eventInfo.AppendLine(string.Format("{0} operation occurred.", eventApi));
     eventInfo.AppendLine(string.Format("Blob URL: {0}", eventBlobUrl));
     eventInfo.AppendLine($@"Additional event details:
-        Id=[{eventGridEvent.Id}] 
-        EventType=[{eventGridEvent.EventType}] 
-        EventTime=[{eventGridEvent.EventTime}] 
-        Subject=[{eventGridEvent.Subject}] 
+        Id=[{eventGridEvent.Id}]
+        EventType=[{eventGridEvent.EventType}]
+        EventTime=[{eventGridEvent.EventTime}]
+        Subject=[{eventGridEvent.Subject}]
         Topic=[{eventGridEvent.Topic}]");
 
     // If event was BlobCreated and API call was CopyBlob, respond to the event.
@@ -236,7 +236,7 @@ Azure 関数をローカルでテストした後、次の手順では、先ほ�
 
 関数を発行するには、次の手順に従います。
 
-1. ソリューション エクスプローラー内で Azure Functions プロジェクトを右クリックし、 **[発行]** を選択します。
+1. ソリューション エクスプローラー内で Azure Functions プロジェクトを選択したままとし (または右クリックし)、 **[発行]** を選択します。
 1. **[発行]** ウィンドウで **[Azure]** をターゲットとして選択し、 **[次へ]** を選択します。
 1. **[Azure Function App (Windows)]** を特定のターゲットとして選択し、 **[次へ]** を選択します。
 1. **[Functions instance]\(関数インスタンス\)** タブで、ドロップダウン メニューからサブスクリプションを選択し、使用可能な関数アプリの一覧で Azure Function App を探します。
@@ -247,7 +247,7 @@ Azure 関数をローカルでテストした後、次の手順では、先ほ�
 
     :::image type="content" source="media/archive-rehydrate-handle-event/visual-studio-publish-azure-function.png" alt-text="Visual Studio から Azure 関数を発行するためのページを示すスクリーンショット":::
 
-Azure 関数のコードに変更を加えるたびに、更新された関数を Azure に発行する必要があります。 
+Azure 関数のコードに変更を加えるたびに、更新された関数を Azure に発行する必要があります。
 
 ## <a name="subscribe-to-blob-rehydration-events-from-a-storage-account"></a>ストレージ アカウントからの BLOB のリハイドレート イベントをサブスクライブする
 
@@ -285,7 +285,7 @@ Azure 関数をテストするには、イベント サブスクリプション�
 - イベントが **Microsoft.Storage.BlobCreated** で API 操作が **[BLOB のコピー]** の場合。
 - イベントが **Microsoft.Storage.BlobTierChanged** で API 操作が **[BLOB 層の設定]** の場合。
 
-BLOB をリハイドレートして関数をテストする方法については、次の 2 つの手順のいずれかを参照してください。  
+BLOB をリハイドレートして関数をテストする方法については、次の 2 つの手順のいずれかを参照してください。
 
 - [コピー操作を使用して BLOB をリハイドレートする](archive-rehydrate-to-online-tier.md#rehydrate-a-blob-with-a-copy-operation)
 - [BLOB の階層を変更してリハイドレートする](archive-rehydrate-to-online-tier.md#rehydrate-a-blob-by-changing-its-tier)

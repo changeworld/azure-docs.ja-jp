@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 05/14/2019
 ms.custom: devx-track-csharp
 ms.reviewer: mbullwin
-ms.openlocfilehash: a22a0d112671019d73eb4c9a3853462e4e9c8c75
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2bba7516637bedf6e81747cbb27f926964c63f53
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98937353"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128556511"
 ---
 # <a name="telemetry-channels-in-application-insights"></a>Application Insights のテレメトリ チャネル
 
@@ -111,7 +111,7 @@ TelemetryConfiguration.Active.TelemetryChannel = serverTelemetryChannel;
 
 `ServerTelemetryChannel` では、到着した項目がメモリ内バッファーに保存されます。 項目は、シリアル化と圧縮処理の後、30 秒ごとまたは 500 項目がバッファー処理されるごとに `Transmission` インスタンスに格納されます。 1 つの `Transmission` インスタンスは最大 500 個の項目を保持することができ、Application Insights サービスに対する 1 回の HTTPS 呼び出しにより送信されるテレメトリのバッチを表しています。
 
-既定では、最大 10 件の `Transmission` インスタンスを並列で送信できます。 これよりも早いペースでテレメトリが到着する場合や、ネットワークまたは Application Insights のバックエンドが低速な場合は、`Transmission` インスタンスがメモリ内に保存されます。 このメモリ内 `Transmission` バッファーの既定の容量は 5 MB です。 メモリ内の容量を超過した場合には、50 MB を上限としてローカル ディスクに `Transmission` インスタンスが保存されます。 このほか、ネットワークの問題がある場合にも、`Transmission` インスタンスがローカル ディスクに保存されます。 アプリケーションがクラッシュした場合に消えずに残るのは、ローカル ディスクに保存されている項目のみです。 これらは、アプリケーションを再起動した時点で送信されます。
+既定では、最大 10 件の `Transmission` インスタンスを並列で送信できます。 これよりも早いペースでテレメトリが到着する場合や、ネットワークまたは Application Insights のバックエンドが低速な場合は、`Transmission` インスタンスがメモリ内に保存されます。 このメモリ内 `Transmission` バッファーの既定の容量は 5 MB です。 メモリ内の容量を超過した場合には、50 MB を上限としてローカル ディスクに `Transmission` インスタンスが保存されます。 このほか、ネットワークの問題がある場合にも、`Transmission` インスタンスがローカル ディスクに保存されます。 アプリケーションがクラッシュした場合に消えずに残るのは、ローカル ディスクに保存されている項目のみです。 これらは、アプリケーションを再起動した時点で送信されます。 ネットワークの問題が解決しない場合、`ServerTelemetryChannel` では、テレメトリの送信を再試行する前に、10 秒から 1 時間の範囲でエクスポネンシャル バックオフ ロジックが使用されます。 
 
 ## <a name="configurable-settings-in-channels"></a>チャネルの構成可能な設定
 

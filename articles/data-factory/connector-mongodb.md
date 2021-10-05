@@ -1,29 +1,29 @@
 ---
 title: MongoDB のデータをコピーする、または MongoDB にデータをコピーする
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Azure Data Factory パイプラインでコピー アクティビティを使用して、MongoDB からサポートされているシンク データ ストアに、またはサポートされているソース データ ストアから MongoDB にデータをコピーする方法について説明します。
-ms.author: chez
-author: chez-charlie
+description: Azure Data Factory または Synapse Analytics パイプラインでコピー アクティビティを使用して、MongoDB からサポートされているシンク データ ストアに、またはサポートされているソース データ ストアから MongoDB にデータをコピーする方法について説明します。
+author: jianleishen
+ms.author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 08/30/2021
-ms.openlocfilehash: 6788de24c3e8fc74ac69f73b5e91c13b56843eda
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.date: 09/09/2021
+ms.openlocfilehash: 5642577cf8b8e1edf741c09bf4e1968d5cd69770
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123307321"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124831724"
 ---
-# <a name="copy-data-from-or-to-mongodb-by-using-azure-data-factory"></a>Azure Data Factory を使用して MongoDB のデータをコピーする、または MongoDB にデータをコピーする
+# <a name="copy-data-from-or-to-mongodb-using-azure-data-factory-or-synapse-analytics"></a>Azure Data Factory または Synapse Analytics を使用して MongoDB との間で双方向にデータをコピーする
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-この記事では、Azure Data Factory のコピー アクティビティを使用して、MongoDB データベースからデータをコピーする、および MongoDB データベースにデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
+この記事では、Azure Data Factory および Azure Data Factory Synapse Analytics パイプラインで Copy アクティビティを使用して、MongoDB データベースとの間で双方向にデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
 
 >[!IMPORTANT]
->ADF は、MongoDB のネイティブ サポートを向上させる、この新しいバージョンの MongoDB コネクタをリリースします。 旧バージョンとの互換性のため引き続きサポートされている以前の MongoDB コネクタをソリューションで使用している場合は、「[MongoDB コネクタ (レガシ)](connector-mongodb-legacy.md)」の記事を参照してください。
+>新しい MongoDB コネクタでは、ネイティブ MongoDB サポートが強化されています。 下位互換性のためにのみ現状のままサポートされているレガシ MongoDB コネクタをソリューションで使用している場合は、[MongoDB コネクタ (レガシ)](connector-mongodb-legacy.md)に関するページを参照してください。
 
 
 ## <a name="supported-capabilities"></a>サポートされる機能
@@ -147,7 +147,7 @@ MongoDB のリンクされたサービスでは、次のプロパティがサポ
 | batchSize | MongoDB インスタンスからの応答の各バッチで返されるドキュメントの数を指定します。 ほとんどの場合、バッチ サイズを変更しても、ユーザーまたはアプリケーションへの影響はありません。 Cosmos DB では各バッチのサイズが 40 MB を超過しないように制限されていますが、これはドキュメントが batchSize の数だけ存在するときの合計サイズなので、ドキュメントのサイズが大きくなる場合はこの値を減らしてください。 | いいえ<br/>(既定値は **100**) |
 
 >[!TIP]
->ADF は、**厳格モード** での BSON ドキュメントの利用をサポートしています。 フィルター クエリがシェル モードではなく厳格モードであることを確認してください。 詳細については、[MongoDB のマニュアル](https://docs.mongodb.com/manual/reference/mongodb-extended-json/index.html)を参照してください。
+>このサービスは、**厳格モード** での BSON ドキュメントの利用をサポートしています。 フィルター クエリがシェル モードではなく厳格モードであることを確認してください。 詳細については、[MongoDB のマニュアル](https://docs.mongodb.com/manual/reference/mongodb-extended-json/index.html)を参照してください。
 
 **例:**
 
@@ -194,7 +194,7 @@ MongoDB のリンクされたサービスでは、次のプロパティがサポ
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | Copy アクティビティのシンクの **type** プロパティには **MongoDbV2Sink** を設定する必要があります。 |はい |
-| writeBehavior |MongoDB データを書き込む方法について説明します。 使用可能な値は、**Insert**、**Upsert** です。<br/><br/>**upsert** の動作は、同じ `_id` を持つドキュメントが既に存在する場合、そのドキュメントを置き換えます。それ以外の場合は、ドキュメントを挿入します。<br /><br />**注**: 元のドキュメントにも列のマッピングによっても `_id` が指定されていない場合、Data Factory によってドキュメントの `_id` が自動的に生成されます。 つまり、**upsert** が期待どおりに動作するには、ドキュメントに ID があることを確認する必要があります。 |いいえ<br />(既定値は **insert** です) |
+| writeBehavior |MongoDB データを書き込む方法について説明します。 使用可能な値は、**Insert**、**Upsert** です。<br/><br/>**upsert** の動作は、同じ `_id` を持つドキュメントが既に存在する場合、そのドキュメントを置き換えます。それ以外の場合は、ドキュメントを挿入します。<br /><br />**注**: 元のドキュメントまたは列マッピングで `_id` が指定されていない場合は、サービスによってドキュメントの `_id` が自動的に生成されます。 つまり、**upsert** が期待どおりに動作するには、ドキュメントに ID があることを確認する必要があります。 |いいえ<br />(既定値は **insert** です) |
 | writeBatchSize | **writeBatchSize** プロパティにより、各バッチで書き込むドキュメントのサイズが制御されます。 パフォーマンスを向上させるには **writeBatchSize** の値を大きくしてみて、ドキュメントのサイズが大きい場合は値を小さくしてみます。 |いいえ<br />(既定値は **10,000**) |
 | writeBatchTimeout | タイムアウトするまでに一括挿入操作の完了を待つ時間です。許容される値は期間です。 | いいえ<br/>(既定値は **00:30:00** - 30 分) |
 
@@ -238,7 +238,7 @@ MongoDB のリンクされたサービスでは、次のプロパティがサポ
 この MongoDB コネクタを使用すると、簡単に次を実行できます。
 
 * 2 つの MongoDB コレクション間でドキュメントをそのままコピーします。
-* Azure Cosmos DB、Azure Blob Storage、Azure Data Lake Store、Azure Data Factory でサポートされているその他のファイル ベースのストアなど、さまざまなソースから MongoDB に JSON ドキュメントをインポートします。
+* Azure Cosmos DB、Azure Blob Storage、Azure Data Lake Store、その他のサポートされているファイルベースのストアなど、さまざまなソースから MongoDB に JSON ドキュメントをインポートします。
 * JSON ドキュメントを MongoDB コレクションからさまざまなファイル ベースのストアにエクスポートします。
 
 このようなスキーマに依存しないコピーを実現するには、データセットの "構造" ("*スキーマ*" とも呼ばれる) のセクションと、コピー アクティビティでのスキーマ マッピングをスキップします。
@@ -250,4 +250,4 @@ MongoDB から表形式のシンクにデータをコピーする、またはシ
 
 
 ## <a name="next-steps"></a>次のステップ
-Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。
+Copy アクティビティでソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関するセクションを参照してください。

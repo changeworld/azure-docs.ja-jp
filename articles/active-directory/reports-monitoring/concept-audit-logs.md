@@ -17,12 +17,12 @@ ms.date: 04/30/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7ccca25bf140a51755c229f8c438e053a7ac7de
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 73ccb2ddb9e229faea69ae3f67ed8285b0256808
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108319264"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128581268"
 ---
 # <a name="audit-logs-in-azure-active-directory"></a>Azure Active Directory の監査ログ 
 
@@ -227,6 +227,9 @@ Graph API を使用して、すべての監査アクティビティの一覧を�
 Microsoft 365 のアクティビティ ログは、[Microsoft 365 管理センター](/office365/admin/admin-overview/about-the-admin-center)から確認できます。 Microsoft 365 のアクティビティ ログと Azure AD のアクティビティ ログでは多くのディレクトリ リソースが共有されていますが、Microsoft 365 のアクティビティ ログがすべて表示されるのは、Microsoft 365 管理センターのみです。 
 
 また、[Office 365 Management API](/office/office-365-management-api/office-365-management-apis-overview) を使用すると、Microsoft 365 のアクティビティ ログにプログラムでアクセスすることもできます。
+
+> [!NOTE]
+> ほとんどのスタンドアロンまたはバンドルされた Microsoft 365 サブスクリプションには、Microsoft 365 データセンターの境界内の一部のサブシステムへのバックエンド依存関係があります。 この依存関係には、ディレクトリの同期を維持するため、および基本的に Exchange Online のサブスクリプション オプトインで手間のかからないオンボーディングを有効にできるようにするために情報の書き戻しが必要です。 これらの書き戻しの場合、監査ログ エントリには、"Microsoft Substrate Management" によって実行されたアクションが表示されます。 これらの監査ログ エントリでは、Exchange Online によって Azure AD に対して実行された作成、更新、削除の各操作を参照します。 エントリは情報を提供するものであり、アクションは必要ありません。
 
 ## <a name="next-steps"></a>次のステップ
 

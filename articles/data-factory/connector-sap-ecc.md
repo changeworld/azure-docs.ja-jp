@@ -1,28 +1,28 @@
 ---
 title: SAP ECC からデータをコピーする
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Azure Data Factory パイプラインでコピー アクティビティを使用して、SAP ECC からサポートされているシンク データ ストアへデータをコピーする方法について説明します。
+description: Azure Data Factory または Synapse Analytics パイプラインでコピー アクティビティを使用して、SAP ECC からサポートされているシンク データ ストアにデータをコピーする方法について説明します。
 author: linda33wj
 ms.author: jingwang
 ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 10/28/2020
-ms.openlocfilehash: bf20bc4b3e796f118b829cc979af1ff4ac75a0c6
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.date: 09/09/2021
+ms.openlocfilehash: 47e7b51a75569ea1c23910b78a1b5396759381f7
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123316827"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124764072"
 ---
-# <a name="copy-data-from-sap-ecc-by-using-azure-data-factory"></a>Azure Data Factory を使用して SAP ECC からデータをコピーする
+# <a name="copy-data-from-sap-ecc-using-azure-data-factory-or-synapse-analytics"></a>Azure Data Factory または Synapse Analytics を使用して SAP ECC からデータをコピーする
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、SAP Enterprise Central Component (ECC) からデータをコピーする方法について説明します。 詳細については、[コピー アクティビティの概要](copy-activity-overview.md)に関するページを参照してください。
 
 >[!TIP]
->SAP データ統合シナリオにおける ADF の全体的なサポートについては、各 SAP コネクタの詳細な情報、比較、およびガイダンスが含まれる、[Azure Data Factory を使用した SAP データの統合に関するホワイトペーパー](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)を参照してください。
+>SAP データ統合シナリオでの全体的なサポートについては、各 SAP コネクタの詳細な説明、比較、ガイダンスが含まれた、[Azure Data Factory を使用した SAP データ統合に関するホワイトペーパー](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)を参照してください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -50,7 +50,7 @@ SAP ECC から、サポートされている任意のシンク データ スト�
 1. SAP GUI を使用して SAP システムに接続します。 
 2. **[システム]**  ->  **[ステータス]** に移動します。 
 3. SAP_BASIS のリリースを調べ、701 以上であることを確認します。  
-      ![SAP_BASIS の確認](./media/connector-sap-table/sap-basis.png)
+      :::image type="content" source="./media/connector-sap-table/sap-basis.png" alt-text="SAP_BASIS の確認":::
 
 >[!TIP]
 >SAP テーブルまたはビューを介して SAP ECC からデータをコピーするには、より高速でスケーラブルな [SAP テーブル](connector-sap-table.md) コネクタを使用します。
@@ -77,7 +77,7 @@ SAP ECC から、サポートされている任意のシンク データ スト�
 
     # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
 
-    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI を使用した新しいリンク サービスの作成を示すスクリーンショット。":::
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI で新しいリンク サービスを作成するスクリーンショット。":::
 
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
@@ -212,9 +212,9 @@ SAP ECC からデータをコピーするには、コピー アクティビテ�
 
 ## <a name="data-type-mappings-for-sap-ecc"></a>SAP ECC のデータ型マッピング
 
-SAP ECC からデータをコピーするとき、次の SAP ECC データの OData データ型から Azure Data Factory の中間データ型へのマッピングが使用されます。 コピー アクティビティでソースのスキーマとデータ型がシンクにマッピングされるしくみについては、[スキーマとデータ型のマッピング](copy-activity-schema-and-type-mapping.md)に関する記事を参照してください。
+SAP ECC からデータをコピーするとき、SAP ECC データの OData データ型から、サービスが内部的に使用する中間データ型への、以下のマッピングが使用されます。 コピー アクティビティでソースのスキーマとデータ型がシンクにマッピングされるしくみについては、[スキーマとデータ型のマッピング](copy-activity-schema-and-type-mapping.md)に関する記事を参照してください。
 
-| OData のデータ型 | Data Factory の中間データ型 |
+| OData のデータ型 | 中間サービス データ型 |
 |:--- |:--- |
 | `Edm.Binary` | `String` |
 | `Edm.Boolean` | `Bool` |
@@ -241,4 +241,4 @@ SAP ECC からデータをコピーするとき、次の SAP ECC データの OD
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関するページを参照してください。
+Copy アクティビティでソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関するセクションを参照してください。

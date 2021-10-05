@@ -10,12 +10,12 @@ ms.date: 02/17/2021
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 552d53ff0257105ff61397e281504c5270512319
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f03426ab734101657ad5609fcd7782f7c75a6f9b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103573865"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128553205"
 ---
 # <a name="use-powershell-to-manage-directories-and-files-in-azure-data-lake-storage-gen2"></a>PowerShell を使用して Azure Data Lake Storage Gen2 でディレクトリとファイルを管理する
 
@@ -27,20 +27,20 @@ ms.locfileid: "103573865"
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure サブスクリプション。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
+- Azure サブスクリプション。 詳細については、[Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 
 - 階層型名前空間が有効になっているストレージ アカウント。 作成するには、[こちら](create-data-lake-storage-account.md)の手順に従います。
 
-- .NET Framework は 4.7.2 以降がインストールされていること。 「[.NET Framework のダウンロード](https://dotnet.microsoft.com/download/dotnet-framework)」を参照してください。
+- .NET Framework は 4.7.2 以降がインストールされていること。 詳細については、「[.NET Framework のダウンロード](https://dotnet.microsoft.com/download/dotnet-framework)」参照してください。
 
 - PowerShell バージョン `5.1` 以降。
 
 ## <a name="install-the-powershell-module"></a>PowerShell モジュールをインストールする
 
-1. 次のコマンドを使用して、インストールされている PowerShell のバージョンが `5.1` 以降であることを確認します。    
+1. 次のコマンドを使用して、インストールされている PowerShell のバージョンが `5.1` 以降であることを確認します。
 
    ```powershell
-   echo $PSVersionTable.PSVersion.ToString() 
+   echo $PSVersionTable.PSVersion.ToString()
    ```
 
    お使いの PowerShell のバージョンをアップグレードするには、「[既存の Windows PowerShell をアップグレードする](/powershell/scripting/install/installing-windows-powershell#upgrading-existing-windows-powershell)」を参照してください。
@@ -55,7 +55,7 @@ ms.locfileid: "103573865"
 
 ## <a name="connect-to-the-account"></a>アカウントに接続する
 
-コマンドでストレージ アカウントに対する承認を取得する方法を選択します。 
+コマンドでストレージ アカウントに対する承認を取得する方法を選択します。
 
 ### <a name="option-1-obtain-authorization-by-using-azure-active-directory-azure-ad"></a>オプション 1: Azure Active Directory (Azure AD) を使用して認可を取得する
 
@@ -71,7 +71,7 @@ ms.locfileid: "103573865"
 
    ```powershell
    Select-AzSubscription -SubscriptionId <subscription-id>
-   ``` 
+   ```
 
 3. ストレージ アカウント コンテキストを取得します。
 
@@ -89,7 +89,7 @@ $ctx = New-AzStorageContext -StorageAccountName '<storage-account-name>' -Storag
 
 ## <a name="create-a-container"></a>コンテナーを作成する
 
-コンテナーは、ご使用のファイルのファイル システムとして機能します。 `New-AzStorageContainer` コマンドレットを使用して、ファイル システムを作成できます。 
+コンテナーは、ご使用のファイルのファイル システムとして機能します。 `New-AzStorageContainer` コマンドレットを使用して、ファイル システムを作成できます。
 
 この例では、`my-file-system` という名前のコンテナーを作成します。
 
@@ -100,7 +100,7 @@ New-AzStorageContainer -Context $ctx -Name $filesystemName
 
 ## <a name="create-a-directory"></a>ディレクトリを作成する
 
-`New-AzDataLakeGen2Item` コマンドレットを使用して、ディレクトリ参照を作成します。 
+`New-AzDataLakeGen2Item` コマンドレットを使用して、ディレクトリ参照を作成します。
 
 この例では、`my-directory` という名前のディレクトリをコンテナーに追加します。
 
@@ -110,7 +110,7 @@ $dirname = "my-directory/"
 New-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname -Directory
 ```
 
-この例では、同じディレクトリを追加しますが、アクセス許可、umask、プロパティ値、メタデータ値も設定します。 
+この例では、同じディレクトリを追加しますが、アクセス許可、umask、プロパティ値、メタデータ値も設定します。
 
 ```powershell
 $dir = New-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname -Directory -Permission rwxrwxrwx -Umask ---rwx---  -Property @{"ContentEncoding" = "UDF8"; "CacheControl" = "READ"} -Metadata  @{"tag1" = "value1"; "tag2" = "value2" }
@@ -151,7 +151,7 @@ Move-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname
 > [!NOTE]
 > プロンプトを表示せずに上書きする場合は、`-Force` パラメーターを使用します。
 
-この例では、`my-directory` という名前のディレクトリを `my-directory-2` の (`my-subdirectory` という名前の) サブディレクトリに移動します。 
+この例では、`my-directory` という名前のディレクトリを `my-directory-2` の (`my-subdirectory` という名前の) サブディレクトリに移動します。
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -169,7 +169,7 @@ Move-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname
 ```powershell
 $filesystemName = "my-file-system"
 $dirname = "my-directory/"
-Remove-AzDataLakeGen2Item  -Context $ctx -FileSystem $filesystemName -Path $dirname 
+Remove-AzDataLakeGen2Item  -Context $ctx -FileSystem $filesystemName -Path $dirname
 ```
 
 `-Force` パラメーターを使用すると、プロンプトを表示せずにファイルを削除できます。
@@ -199,7 +199,7 @@ $dirname = "my-directory/"
 Get-AzDataLakeGen2ChildItem -Context $ctx -FileSystem $filesystemName -Path $dirname -OutputUserPrincipalName
 ```
 
-次の例では、ディレクトリ内の各項目の `ACL`、`Permissions`、`Group`、および `Owner` の各プロパティを一覧表示します。 `ACL` プロパティの値を取得するには、`-FetchProperty` パラメーターが必要です。 
+次の例では、ディレクトリ内の各項目の `ACL`、`Permissions`、`Group`、および `Owner` の各プロパティを一覧表示します。 `ACL` プロパティの値を取得するには、`-FetchProperty` パラメーターが必要です。
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -218,14 +218,14 @@ $properties.Owner
 
 `New-AzDataLakeGen2Item` コマンドレットを使用して、ファイルをディレクトリにアップロードします。
 
-この例では、`upload.txt` という名前のファイルを `my-directory` という名前のディレクトリにアップロードします。 
+この例では、`upload.txt` という名前のファイルを `my-directory` という名前のディレクトリにアップロードします。
 
 ```powershell
 $localSrcFile =  "upload.txt"
 $filesystemName = "my-file-system"
 $dirname = "my-directory/"
 $destPath = $dirname + (Get-Item $localSrcFile).Name
-New-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $destPath -Source $localSrcFile -Force 
+New-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $destPath -Source $localSrcFile -Force
 ```
 
 この例では、同じファイルをアップロードしますが、その後に対象ファイルのアクセス許可、umask、プロパティ値、メタデータ値を設定します。 また、この例では、これらの値をコンソールに出力します。
@@ -262,12 +262,12 @@ $file.Properties.Metadata
 
 `Remove-AzDataLakeGen2Item` コマンドレットを使用してファイルを削除します。
 
-この例では、`upload.txt` という名前のファイルを削除します。 
+この例では、`upload.txt` という名前のファイルを削除します。
 
 ```powershell
 $filesystemName = "my-file-system"
 $filepath = "upload.txt"
-Remove-AzDataLakeGen2Item  -Context $ctx -FileSystem $filesystemName -Path $filepath 
+Remove-AzDataLakeGen2Item  -Context $ctx -FileSystem $filesystemName -Path $filepath
 ```
 
 `-Force` パラメーターを使用すると、プロンプトを表示せずにファイルを削除できます。

@@ -2,13 +2,13 @@
 title: Azure Monitor リソース ログでサポートされているサービスとカテゴリ
 description: Azure Monitor のリファレンス - Azure リソース ログでサポートされているサービスとイベント スキーマについて説明します。
 ms.topic: reference
-ms.date: 08/04/2021
-ms.openlocfilehash: 2cbe701f3fbedacf29124c823743966be1f7ba32
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.date: 09/10/2021
+ms.openlocfilehash: c92f20d4a757ef69d334345619bdc2d585648d5d
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122183894"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129211254"
 ---
 # <a name="supported-categories-for-azure-resource-logs"></a>Azure リソース ログでサポートされているカテゴリ
 
@@ -19,7 +19,7 @@ ms.locfileid: "122183894"
 
 リソース ログは、以前は診断ログと呼ばれていました。 この名前は、Azure Monitor によって収集されたログの種類が、Azure リソースだけでなくそれ以外のものも含むように移行したため、2019 年 10 月に変更されました。
 
-(`resourceId` プロパティで使用可能な) リソースの種類と `category` を組み合わせて、スキーマを一意に識別します。 サービス固有のフィールドを含むすべてのリソース ログに共通のスキーマがあり、それぞれのログ カテゴリに対して追加されています。 詳細については、[Azure リソース ログの共通のスキーマとサービス固有のスキーマ]()に関するページを参照してください
+(`resourceId` プロパティで使用可能な) リソースの種類と `category` を組み合わせて、スキーマを一意に識別します。 サービス固有のフィールドを含むすべてのリソース ログに共通のスキーマがあり、それぞれのログ カテゴリに対して追加されています。 詳細については、[Azure リソース ログの共通のスキーマとサービス固有のスキーマ](/azure/azure-monitor/essentials/resource-logs-schema)に関するページを参照してください
 
 ## <a name="costs"></a>コスト
 
@@ -58,6 +58,18 @@ ms.locfileid: "122183894"
 |サインイン|サインイン|はい|
 
 
+## <a name="microsoftagfoodplatformfarmbeats"></a>Microsoft.AgFoodPlatform/farmBeats
+
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|ApplicationAuditLogs|アプリケーションの監査ログ|はい|
+|FarmManagementLogs|ファーム管理のログ|はい|
+|FarmOperationLogs|ファーム操作のログ|はい|
+|ProviderAuthLogs|プロバイダー認証のログ|はい|
+|SatelliteLogs|衛星のログ|はい|
+|WeatherLogs|気象のログ|はい|
+
+
 ## <a name="microsoftanalysisservicesservers"></a>Microsoft.AnalysisServices/servers
 
 |カテゴリ|カテゴリの表示名|エクスポートのコスト|
@@ -71,6 +83,7 @@ ms.locfileid: "122183894"
 |カテゴリ|カテゴリの表示名|エクスポートのコスト|
 |---|---|---|
 |GatewayLogs|ApiManagement Gateway に関連するログ|いいえ|
+|WebSocketConnectionLogs|Websocket 接続に関連するログ|はい|
 
 
 ## <a name="microsoftappconfigurationconfigurationstores"></a>Microsoft.AppConfiguration/configurationStores
@@ -86,6 +99,7 @@ ms.locfileid: "122183894"
 |カテゴリ|カテゴリの表示名|エクスポートのコスト|
 |---|---|---|
 |ApplicationConsole|アプリケーション コンソール|いいえ|
+|IngressLogs|イングレスのログ|はい|
 |SystemLogs|システム ログ|いいえ|
 
 
@@ -103,9 +117,10 @@ ms.locfileid: "122183894"
 
 |カテゴリ|カテゴリの表示名|エクスポートのコスト|
 |---|---|---|
-|DscNodeStatus|DSC ノードの状態|いいえ|
-|JobLogs|ジョブ ログ|いいえ|
-|JobStreams|ジョブ ストリーム|いいえ|
+|AuditEvent|AuditEvent|はい|
+|DscNodeStatus|DscNodeStatus|いいえ|
+|JobLogs|JobLogs|いいえ|
+|JobStreams|JobStreams|いいえ|
 
 
 ## <a name="microsoftautonomousdevelopmentplatformaccounts"></a>Microsoft.AutonomousDevelopmentPlatform/accounts
@@ -117,11 +132,26 @@ ms.locfileid: "122183894"
 |要求|要求|はい|
 
 
+## <a name="microsoftavsprivateclouds"></a>microsoft.avs/privateClouds
+
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|vmwaresyslog|VMware VCenter Syslog|はい|
+
+
 ## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
 
 |カテゴリ|カテゴリの表示名|エクスポートのコスト|
 |---|---|---|
 |ServiceLog|サービス ログ|いいえ|
+
+
+## <a name="microsoftbatchaiworkspaces"></a>Microsoft.BatchAI/workspaces
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|BaiClusterEvent|BaiClusterEvent|いいえ|
+|BaiClusterNodeEvent|BaiClusterNodeEvent|いいえ|
+|BaiJobEvent|BaiJobEvent|いいえ|
 
 
 ## <a name="microsoftblockchainblockchainmembers"></a>Microsoft.Blockchain/blockchainMembers
@@ -146,6 +176,13 @@ ms.locfileid: "122183894"
 |カテゴリ|カテゴリの表示名|エクスポートのコスト|
 |---|---|---|
 |BotRequest|チャネルからボットへの要求|いいえ|
+
+
+## <a name="microsoftcacheredis"></a>Microsoft.Cache/redis
+
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|ConnectedClientList|接続済みクライアントの一覧|はい|
 
 
 ## <a name="microsoftcdncdnwebapplicationfirewallpolicies"></a>Microsoft.Cdn/cdnwebapplicationfirewallpolicies
@@ -396,6 +433,13 @@ ms.locfileid: "122183894"
 |管理|管理|いいえ|
 
 
+## <a name="microsoftdesktopvirtualizationscalingplans"></a>Microsoft.DesktopVirtualization/scalingplans
+
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|自動スケール|自動スケーリングのログ|はい|
+
+
 ## <a name="microsoftdesktopvirtualizationworkspaces"></a>Microsoft.DesktopVirtualization/workspaces
 
 |カテゴリ|カテゴリの表示名|エクスポートのコスト|
@@ -535,7 +579,16 @@ ms.locfileid: "122183894"
 
 |カテゴリ|カテゴリの表示名|エクスポートのコスト|
 |---|---|---|
+|ExPCompute|ExPCompute|はい|
 |要求|要求|いいえ|
+
+
+## <a name="microsofthealthcareapisservices"></a>Microsoft.HealthcareApis/services
+
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|AuditLogs|監査ログ|いいえ|
+|DiagnosticLogs|診断ログ|はい|
 
 
 ## <a name="microsofthealthcareapisworkspacesdicomservices"></a>Microsoft.HealthcareApis/workspaces/dicomservices
@@ -598,6 +651,7 @@ ms.locfileid: "122183894"
 |コマンド|コマンド|いいえ|
 |FailedIngestion|失敗した取り込み操作|いいえ|
 |IngestionBatching|インジェスト バッチ処理|いいえ|
+|定期刊行物|定期刊行物|はい|
 |クエリ|クエリ|いいえ|
 |SucceededIngestion|成功した取り込み操作|いいえ|
 |TableDetails|テーブル詳細|いいえ|
@@ -656,6 +710,14 @@ ms.locfileid: "122183894"
 |---|---|---|
 |KeyDeliveryRequests|キー配信要求|いいえ|
 |MediaAccount|メディア アカウントの正常性状態|はい|
+
+
+## <a name="microsoftmediavideoanalyzers"></a>Microsoft.Media/videoanalyzers
+
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|PipelineDiagnostics|パイプライン診断のログ|はい|
+|PipelineOperational|パイプライン操作のログ|はい|
 
 
 ## <a name="microsoftnetworkapplicationgateways"></a>Microsoft.Network/applicationgateways
@@ -768,6 +830,13 @@ ms.locfileid: "122183894"
 |TunnelDiagnosticLog|トンネル診断ログ|いいえ|
 
 
+## <a name="microsoftnetworkfunctionazuretrafficcollectors"></a>Microsoft.NetworkFunction/azureTrafficCollectors
+
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|ExpressRouteCircuitIpfix|Express Route 回線の IPFIX フロー レコード|はい|
+
+
 ## <a name="microsoftnotificationhubsnamespaces"></a>Microsoft.NotificationHubs/namespaces
 
 |カテゴリ|カテゴリの表示名|エクスポートのコスト|
@@ -787,6 +856,7 @@ ms.locfileid: "122183894"
 |カテゴリ|カテゴリの表示名|エクスポートのコスト|
 |---|---|---|
 |エンジン|エンジン|いいえ|
+
 
 ## <a name="microsoftpowerbitenantsworkspaces"></a>Microsoft.PowerBI/tenants/workspaces
 
@@ -808,6 +878,7 @@ ms.locfileid: "122183894"
 |---|---|---|
 |DataSensitivityLogEvent|DataSensitivity|はい|
 |ScanStatusLogEvent|ScanStatus|いいえ|
+|セキュリティ|PurviewAccountAuditEvents|はい|
 
 
 ## <a name="microsoftrecoveryservicesvaults"></a>Microsoft.RecoveryServices/Vaults
@@ -845,6 +916,14 @@ ms.locfileid: "122183894"
 |OperationLogs|[操作ログ]|いいえ|
 
 
+## <a name="microsoftsecurityinsightssettings"></a>microsoft.securityinsights/settings
+
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|Analytics|Analytics|はい|
+|DataConnectors|データ コレクション – コネクタ|はい|
+
+
 ## <a name="microsoftservicebusnamespaces"></a>Microsoft.ServiceBus/namespaces
 
 |カテゴリ|カテゴリの表示名|エクスポートのコスト|
@@ -863,7 +942,9 @@ ms.locfileid: "122183894"
 
 |カテゴリ|カテゴリの表示名|エクスポートのコスト|
 |---|---|---|
-|AllLogs|Azure Web PubSub Service ログ。|はい|
+|ConnectivityLogs|Azure Web PubSub サービスの接続性のログ。|はい|
+|HttpRequestLogs|Azure Web PubSub サービスの Http 要求のログ。|はい|
+|MessagingLogs|Azure Web PubSub サービスのメッセージング ログ。|はい|
 
 
 ## <a name="microsoftsqlmanagedinstances"></a>Microsoft.Sql/managedInstances

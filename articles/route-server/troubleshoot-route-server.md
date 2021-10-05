@@ -5,21 +5,16 @@ services: route-server
 author: duongau
 ms.service: route-server
 ms.topic: how-to
-ms.date: 08/30/2021
+ms.date: 09/23/2021
 ms.author: duau
-ms.openlocfilehash: 96e71dbd8a03e66644f0dc754d448a345978d940
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: abece146cb2394046b7f46aa96ea70dc124cade0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123255671"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128649059"
 ---
 # <a name="troubleshooting-azure-route-server-issues"></a>Azure Route Server の問題のトラブルシューティング
-
-> [!IMPORTANT]
-> Azure Route Server (プレビュー) は現在、パブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 ## <a name="connectivity-issues"></a>接続に関する問題
 
@@ -31,7 +26,7 @@ NVA が既定のルートをアドバタイズすると、Azure Route Server で
 | 0.0.0.0/0 | インターネット |
 
 
-### <a name="why-can-i-ping-from-my-nva-to-the-bgp-peer-ip-on-azure-route-server-but-after-i-set-up-the-bgp-peering-between-them-i-cant-ping-the-same-ip-anymore-why-does-the-bgp-peering-go-down"></a>NVA から Azure Route Server の BGP ピア IP に ping を実行できますが、BGP ピアリングをそれらの間に設定すると、同じ IP に ping を実行できなくなるのはなぜですか。 BGP ピアリングが停止するのはなぜですか。
+### <a name="why-can-i-ping-from-my-nva-to-the-bgp-peer-ip-on-azure-route-server-but-after-i-set-up-the-bgp-peering-between-them-i-cant-ping-the-same-ip-anymore-or-why-is-the-bgp-peering-flapping"></a>NVA から Azure Route Server の BGP ピア IP に ping を実行できますが、BGP ピアリングをそれらの間に設定すると、同じ IP に ping を実行できなくなるのはなぜですか。 また、BGP ピアリングがフラッピングするのはなぜですか。
 
 一部の NVA では、Azure Route Server サブネットに静的ルートを追加する必要があります。 たとえば、Azure Route Server が 10.0.255.0/27 にあり、お使いの NVA が 10.0.1.0/24 にある場合は、NVA のルーティング テーブルに次のルートを追加する必要があります。
 
@@ -45,10 +40,6 @@ NVA が既定のルートをアドバタイズすると、Azure Route Server で
 Azure Route Server を仮想ネットワークにデプロイするときは、ゲートウェイと仮想ネットワークの間のコントロール プレーンを更新する必要があります。 この更新中、仮想ネットワーク内の VM がオンプレミス ネットワークへの接続を失う期間があります。 運用環境に Azure Route Server をデプロイするためのメンテナンスをスケジュールすることを強くお勧めします。  
 
 ## <a name="control-plane-issues"></a>コントロール プレーンの問題
-
-### <a name="why-is-the-bgp-peering-between-my-nva-and-the-azure-route-server-going-up-and-down-flapping"></a>NVA と Azure Route Server の間で BGP ピアリングが稼働と停止を繰り返している ("フラッピング") のはなぜですか。
-
-フラッピングの原因として、BGP タイマーの設定が考えられます。 既定では、Azure Route Server のキープアライブ タイマーは 60 秒、停止タイマーは 180 秒に設定されています。
 
 ### <a name="why-does-my-on-premises-network-connected-to-azure-vpn-gateway-not-receive-the-default-route-advertised-by-azure-route-server"></a>Azure VPN ゲートウェイに接続されているオンプレミス ネットワークが、Azure Route Server によってアドバタイズされた既定のルートを受信しないのはなぜですか?
 

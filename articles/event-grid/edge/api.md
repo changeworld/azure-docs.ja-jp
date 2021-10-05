@@ -8,12 +8,12 @@ ms.reviewer: spelluru
 ms.subservice: iot-edge
 ms.date: 05/10/2021
 ms.topic: article
-ms.openlocfilehash: d3f353693aeafb3093a2a8edce017cc24c0aca49
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: d9e634597d82b6cac52237f0c800cdfc33bc883a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110370687"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128635415"
 ---
 # <a name="rest-api"></a>REST API
 この記事では、Azure Event Grid on IoT Edge の REST API について説明します
@@ -29,26 +29,26 @@ Event Grid on IoT Edge には、HTTP (ポート 5888) と HTTPS (ポート 4438)
 ### <a name="request-query-string"></a>クエリ文字列の要求
 すべての API 要求で、以下のクエリ文字列パラメーターが必要です。
 
-```?api-version=2019-01-01-preview```
+`?api-version=2019-01-01-preview`
 
 ### <a name="request-content-type"></a>コンテンツ タイプの要求
 すべての API 要求で、**Content-Type** が必要です。
 
 **EventGridSchema** または **CustomSchema** の場合、Content-Type の値は次のいずれかです。
 
-```Content-Type: application/json```
+`Content-Type: application/json`
 
-```Content-Type: application/json; charset=utf-8```
+`Content-Type: application/json; charset=utf-8`
 
 構造化モードの **CloudEventSchemaV1_0** の場合、Content-Type の値は次のいずれかです。
 
-```Content-Type: application/cloudevents+json```
+`Content-Type: application/cloudevents+json`
     
-```Content-Type: application/cloudevents+json; charset=utf-8```
+`Content-Type: application/cloudevents+json; charset=utf-8`
     
-```Content-Type: application/cloudevents-batch+json```
+`Content-Type: application/cloudevents-batch+json`
     
-```Content-Type: application/cloudevents-batch+json; charset=utf-8```
+`Content-Type: application/cloudevents-batch+json; charset=utf-8`
 
 バイナリ モードの **CloudEventSchemaV1_0** の場合は、[ドキュメント](https://github.com/cloudevents/spec/blob/master/http-protocol-binding.md)で詳細を確認してください。
 
@@ -760,19 +760,19 @@ Service Bus トピックに発行するには、`endpointType` を `serviceBusTo
 * queueName:発行先のストレージ キューの名前。
 * connectionString:ストレージ キューが存在するストレージ アカウントの接続文字列。
 
-    >[!NOTE]
-    > Event Hubs、Service Bus キュー、および Service Bus トピックとは異なり、ストレージ キューに使用される接続文字列はエンティティ固有ではありません。 その代わり、ストレージ アカウントの接続文字列である必要があります。
+  >[!NOTE]
+  > Event Hubs、Service Bus キュー、および Service Bus トピックとは異なり、ストレージ キューに使用される接続文字列はエンティティ固有ではありません。 代わりに、ストレージ アカウントの接続文字列である必要があります。
 
-    ```json
-        {
-          "properties": {
-            "destination": {
-              "endpointType": "storageQueue",
-              "properties": {
-                "queueName": "<your-storage-queue-name>",
-                "connectionString": "<your-storage-account-connection-string>"
-              }
-            }
-          }
+  ```json
+  {
+    "properties": {
+      "destination": {
+        "endpointType": "storageQueue",
+        "properties": {
+          "queueName": "<your-storage-queue-name>",
+          "connectionString": "<your-storage-account-connection-string>"
         }
-    ```
+      }
+    }
+  }
+  ```

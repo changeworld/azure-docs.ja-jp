@@ -8,48 +8,48 @@ ms.topic: conceptual
 ms.author: normesta
 ms.date: 07/30/2021
 ms.custom: monitoring
-ms.openlocfilehash: 37a916ca07a1767855b32b79ccb35722cc389f65
-ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
+ms.openlocfilehash: 98c077ff578cfbe70bfe3a871e5a1eb4d5fbd755
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122830992"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128584258"
 ---
 # <a name="best-practices-for-monitoring-azure-blob-storage"></a>Azure Blob Storage の監視に関するベスト プラクティス
 
-この記事では、一般的なストレージ監視シナリオのコレクションを取り上げ、それらを実現するためのベスト プラクティスのガイドラインを提供します。  
+この記事では、一般的なストレージ監視シナリオのコレクションを取り上げ、それらを実現するためのベスト プラクティスのガイドラインを提供します。
 
 ## <a name="identify-storage-accounts-with-no-or-low-use"></a>使用率がゼロまたは低いストレージ アカウントを特定する
 
-Storage Insights は、Azure Storage のメトリックとログの上にあるダッシュボードです。 Storage Insights を使用すると、すべてのアカウントのトランザクション ボリュームと使用済み容量を調べることができます。 その情報は、廃止するアカウントを決定するのに役立ちます。 Storage Insights を構成するには、「[Azure Monitor Storage 分析情報を使用したストレージ サービスの監視](../common/storage-insights-overview.md?toc=%2fazure%2fazure-monitor%2ftoc.json)」を参照してください。 
+Storage Insights は、Azure Storage のメトリックとログの上にあるダッシュボードです。 Storage Insights を使用すると、すべてのアカウントのトランザクション ボリュームと使用済み容量を調べることができます。 その情報は、廃止するアカウントを決定するのに役立ちます。 Storage Insights を構成するには、「[Azure Monitor Storage 分析情報を使用したストレージ サービスの監視](../common/storage-insights-overview.md?toc=%2fazure%2fazure-monitor%2ftoc.json)」を参照してください。
 
 ### <a name="analyze-transaction-volume"></a>トランザクション ボリュームを分析する
 
-[Azure Monitor の Storage Insights ビュー](../common/storage-insights-overview.md?toc=%2fazure%2fazure-monitor%2ftoc.json#view-from-azure-monitor)から、 **[トランザクション]** 列を使用してアカウントを昇順に並べ替えます。 次の画像は、指定した期間にトランザクション ボリュームが少ないアカウントを示しています。 
+[Azure Monitor の Storage Insights ビュー](../common/storage-insights-overview.md?toc=%2fazure%2fazure-monitor%2ftoc.json#view-from-azure-monitor)から、 **[トランザクション]** 列を使用してアカウントを昇順に並べ替えます。 次の画像は、指定した期間にトランザクション ボリュームが少ないアカウントを示しています。
 
 > [!div class="mx-imgBorder"]
 > ![Storage Insights でのトランザクション ボリューム](./media/blob-storage-monitoring-scenarios/storage-insights-transaction-volume.png)
 
-これらのトランザクションの詳細については、アカウントのリンクをクリックしてください。 この例では、ほとんどの要求が Blob Storage サービスに対して行われています。 
+これらのトランザクションの詳細については、アカウントのリンクをクリックしてください。 この例では、ほとんどの要求が Blob Storage サービスに対して行われています。
 
 > [!div class="mx-imgBorder"]
 > ![サービスの種類別トランザクション](./media/blob-storage-monitoring-scenarios/storage-insights-transactions-by-storage-type.png)
 
-行われている要求の種類を判別するには、**API 名別トランザクション** グラフの詳細を調べます。 
+行われている要求の種類を判別するには、**API 名別トランザクション** グラフの詳細を調べます。
 
 > [!div class="mx-imgBorder"]
 > ![ストレージ トランザクション API](./media/blob-storage-monitoring-scenarios/storage-insights-transaction-apis.png)
 
-この例では、要求はすべて、アカウント プロパティ情報に対するリスト操作または要求です。 読み取りおよび書き込みトランザクションはありません。 このことから、このアカウントがあまり使用されていないと想像できます。 
+この例では、要求はすべて、アカウント プロパティ情報に対するリスト操作または要求です。 読み取りおよび書き込みトランザクションはありません。 このことから、このアカウントがあまり使用されていないと想像できます。
 
 ### <a name="analyze-used-capacity"></a>使用済み容量を分析する
 
- [Azure Monitor の Storage Insights ビュー](../common/storage-insights-overview.md#view-from-azure-monitor)の **[容量]** タブから、 **[アカウントの使用済み容量]** 列を使用して、アカウントを昇順に並べ替えます。 次の画像は、他のアカウントよりも容量ボリュームが少ないアカウントを示しています。 
+[Azure Monitor の Storage Insights ビュー](../common/storage-insights-overview.md#view-from-azure-monitor)の **[容量]** タブから、 **[アカウントの使用済み容量]** 列を使用して、アカウントを昇順に並べ替えます。 次の画像は、他のアカウントよりも容量ボリュームが少ないアカウントを示しています。
 
 > [!div class="mx-imgBorder"]
 > ![使用済みストレージ容量](./media/blob-storage-monitoring-scenarios/storage-insights-capacity-used.png)
 
-この使用済み容量に関連する BLOB を調べるには、Storage Explorer を使用します。 BLOB の数が多い場合は、[BLOB インベントリ ポリシー](blob-inventory.md)を使用してレポートを生成することを検討してください。 
+この使用済み容量に関連する BLOB を調べるには、Storage Explorer を使用します。 BLOB の数が多い場合は、[BLOB インベントリ ポリシー](blob-inventory.md)を使用してレポートを生成することを検討してください。
 
 ## <a name="monitor-the-use-of-a-container"></a>コンテナーの使用を監視する
 
@@ -59,7 +59,6 @@ Storage Insights は、Azure Storage のメトリックとログの上にある�
 
 各コンテナーで読み取られたトランザクションの数と読み取られたバイト数を取得するクエリを次に示します。
 
-
 ```kusto
 StorageBlobLogs
 | where OperationName  == "GetBlob"
@@ -67,17 +66,17 @@ StorageBlobLogs
 | summarize ReadSize = sum(ResponseBodySize), ReadCount = count() by tostring(ContainerName)
 ```
 
-次のクエリでは、同様のクエリを使用して、書き込み操作に関する情報を取得します。 
+次のクエリでは、同様のクエリを使用して、書き込み操作に関する情報を取得します。
 
 ```kusto
 StorageBlobLogs
 | where OperationName == "PutBlob" or
   OperationName == "PutBlock" or
   OperationName == "PutBlockList" or
-  OperationName == "AppendBlock" or 
+  OperationName == "AppendBlock" or
   OperationName == "SnapshotBlob" or
-  OperationName == "CopyBlob" or 
-  OperationName == "SetBlobTier" 
+  OperationName == "CopyBlob" or
+  OperationName == "SetBlobTier"
 | extend ContainerName = split(parse_url(Uri).Path, "/")[1]
 | summarize WriteSize = sum(RequestBodySize), WriteCount = count() by tostring(ContainerName)
 ```
@@ -86,11 +85,11 @@ StorageBlobLogs
 
 ## <a name="audit-account-activity"></a>アカウントのアクティビティを監査する
 
-多くの場合、セキュリティとコンプライアンスのためにストレージ アカウントのアクティビティを監査する必要があります。 ストレージ アカウントの操作は、"*コントロール プレーン*" と "*データ プレーン*" の 2 つのカテゴリに分類されます。 
+多くの場合、セキュリティとコンプライアンスのためにストレージ アカウントのアクティビティを監査する必要があります。 ストレージ アカウントの操作は、"*コントロール プレーン*" と "*データ プレーン*" の 2 つのカテゴリに分類されます。
 
-コントロール プレーン操作は、ストレージ アカウントを作成したり既存のストレージ アカウントのプロパティを更新したりする Azure Resource Manager 要求です。 詳細については、[Azure Resource Manager](../../azure-resource-manager/management/overview.md) に関するページを参照してください。 
+コントロール プレーン操作は、ストレージ アカウントを作成したり既存のストレージ アカウントのプロパティを更新したりする Azure Resource Manager 要求です。 詳細については、[Azure Resource Manager](../../azure-resource-manager/management/overview.md) に関するページを参照してください。
 
-データ プレーン操作は、ストレージ サービス エンドポイントへの要求の結果として得られたストレージ アカウント内のデータに対する操作です。 たとえば、ストレージ アカウントに BLOB をアップロードしたり、ストレージ アカウントから BLOB をダウンロードしたりするときに、データ プレーン操作が実行されます。 詳細については、[Azure Storage API](/rest/api/storageservices/) に関するページを参照してください。 
+データ プレーン操作は、ストレージ サービス エンドポイントへの要求の結果として得られたストレージ アカウント内のデータに対する操作です。 たとえば、ストレージ アカウントに BLOB をアップロードしたり、ストレージ アカウントから BLOB をダウンロードしたりするときに、データ プレーン操作が実行されます。 詳細については、[Azure Storage API](/rest/api/storageservices/) に関するページを参照してください。
 
 このセクションでは、コントロールおよびデータ プレーン操作の "いつ"、"誰が"、"何を"、"どのように" という情報を特定する方法を示します。
 
@@ -101,13 +100,12 @@ Resource Manager の操作は、[Azure アクティビティ ログ](../../azure
 > [!div class="mx-imgBorder"]
 > ![アクティビティ ログ](./media/blob-storage-monitoring-scenarios/activity-log.png)
 
-
 任意のログ エントリを開いて、アクティビティが記述されている JSON を表示します。 次の JSON では、コントロール プレーン操作の "いつ"、"何を"、"どのように" という情報が示されています。
 
 > [!div class="mx-imgBorder"]
 > ![アクティビティ ログ JSON](./media/blob-storage-monitoring-scenarios/activity-log-json.png)
 
-"誰が" という情報の可用性は、コントロール プレーン操作の実行に使用された認証方法によって決まります。 認可が Azure AD セキュリティ プリンシパルによって実行された場合は、そのセキュリティ プリンシパルのオブジェクト識別子もこの JSON 出力に表示されます (例: `"http://schemas.microsoft.com/identity/claims/objectidentifier": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx"`)。 メール アドレスや名前など、他の ID 関連情報は必ずしも表示されるとは限らないので、セキュリティ プリンシパルを一意に識別するには、オブジェクト識別子が常に最善の方法です。 
+"誰が" という情報の可用性は、コントロール プレーン操作の実行に使用された認証方法によって決まります。 認可が Azure AD セキュリティ プリンシパルによって実行された場合は、そのセキュリティ プリンシパルのオブジェクト識別子もこの JSON 出力に表示されます (例: `"http://schemas.microsoft.com/identity/claims/objectidentifier": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx"`)。 メール アドレスや名前など、他の ID 関連情報は必ずしも表示されるとは限らないので、セキュリティ プリンシパルを一意に識別するには、オブジェクト識別子が常に最善の方法です。
 
 そのセキュリティ プリンシパルのフレンドリ名を見つけるには、オブジェクト識別子の値を取得し、Azure portal の Azure AD ページでセキュリティ プリンシパルを検索します。 次のスクリーンショットは、Azure AD での検索結果を示しています。
 
@@ -116,30 +114,30 @@ Resource Manager の操作は、[Azure アクティビティ ログ](../../azure
 
 ### <a name="auditing-data-plane-operations"></a>データ プレーン操作の監査
 
-データ プレーン操作は、[Storage の Azure リソース ログ](monitor-blob-storage.md#analyzing-logs)に取り込まれます。 ネイティブ クエリ エクスペリエンスを得るために、ログを Log Analytics ワークスペースにエクスポートするように[診断設定を構成](monitor-blob-storage.md#send-logs-to-azure-log-analytics)できます。 
+データ プレーン操作は、[Storage の Azure リソース ログ](monitor-blob-storage.md#analyzing-logs)に取り込まれます。 ネイティブ クエリ エクスペリエンスを得るために、ログを Log Analytics ワークスペースにエクスポートするように[診断設定を構成](monitor-blob-storage.md#send-logs-to-azure-log-analytics)できます。
 
-ログ エントリの一覧から "いつ"、"誰が"、"何を"、"どのように" という情報を取得する Log Analytics クエリを次に示します。 
+ログ エントリの一覧から "いつ"、"誰が"、"何を"、"どのように" という情報を取得する Log Analytics クエリを次に示します。
 
 ```kusto
-StorageBlobLogs 
-| where TimeGenerated > ago(3d) 
+StorageBlobLogs
+| where TimeGenerated > ago(3d)
 | project TimeGenerated, AuthenticationType, RequesterObjectId, OperationName, Uri
 ```
 
-監査の "いつ" 部分については、`TimeGenerated` フィールドに、ログ エントリがいつ記録されたかが表示されます。 
+監査の "いつ" 部分については、`TimeGenerated` フィールドに、ログ エントリがいつ記録されたかが表示されます。
 
-監査の "何を" 部分については、`Uri` フィールドに、項目が変更または読み取られたことが表示されます。 
+監査の "何を" 部分については、`Uri` フィールドに、項目が変更または読み取られたことが表示されます。
 
-監査の "どのように" 部分については、`OperationName` フィールドに、実行された操作が表示されます。 
+監査の "どのように" 部分については、`OperationName` フィールドに、実行された操作が表示されます。
 
-監査の "誰が" 部分については、`AuthenticationType` に、要求を行うために使用された認証の種類が表示されます。 このフィールドには、アカウント キー、SAS トークン、または Azure Active Directory (Azure AD) 認証の使用など、Azure Storage でサポートされているすべての種類の認証を表示できます。 
+監査の "誰が" 部分については、`AuthenticationType` に、要求を行うために使用された認証の種類が表示されます。 このフィールドには、アカウント キー、SAS トークン、または Azure Active Directory (Azure AD) 認証の使用など、Azure Storage でサポートされているすべての種類の認証を表示できます。
 
 要求が Azure AD を使用して認証された場合、`RequesterObjectId` フィールドには、セキュリティ プリンシパルを識別する最も信頼性の高い方法が示されます。 そのセキュリティ プリンシパルのフレンドリ名を見つけるには、`RequesterObjectId` フィールドの値を取得し、Azure portal の Azure AD ページでセキュリティ プリンシパルを検索します。 次のスクリーンショットは、Azure AD での検索結果を示しています。
 
 > [!div class="mx-imgBorder"]
 > ![Azure Active Directory を検索する](./media/blob-storage-monitoring-scenarios/search-azure-active-directory.png)
 
-場合によっては、ユーザー プリンシパル名 (*UPN*) がログに表示されることがあります。 たとえば、セキュリティ プリンシパルが Azure AD ユーザーの場合は、UPN が表示される可能性が高くなります。 ユーザー割り当てマネージド ID などの他の種類のセキュリティ プリンシパルの場合や、Azure AD テナント間認証などの特定のシナリオでは、UPN はログに表示されません。 
+場合によっては、ユーザー プリンシパル名 (*UPN*) がログに表示されることがあります。 たとえば、セキュリティ プリンシパルが Azure AD ユーザーの場合は、UPN が表示される可能性が高くなります。 ユーザー割り当てマネージド ID などの他の種類のセキュリティ プリンシパルの場合や、Azure AD テナント間認証などの特定のシナリオでは、UPN はログに表示されません。
 
 このクエリでは、OAuth セキュリティ プリンシパルによって実行されたすべての読み取り操作が表示されます。
 
@@ -155,15 +153,15 @@ StorageBlobLogs
 
 ## <a name="optimize-cost-for-infrequent-queries"></a>頻度の低いクエリのコストを最適化する
 
-Log Analytics にログをエクスポートすることで、豊富なネイティブ クエリ機能を利用できます。 ストレージ アカウントに大量のトランザクションがある場合、Log Analytics でログを使用するコストが高くなる可能性があります。 [Azure Log Analytics の価格](https://azure.microsoft.com/pricing/details/monitor/)に関するページを参照してください。 ログに対してたまにしかクエリを実行しない場合 (コンプライアンス監査のためにログに対してクエリを実行するなど)、ログをストレージ アカウントにエクスポートしてから、ログ データに対してサーバーレス クエリ ソリューション (Azure Synapse など) を使用することによって、合計コストの削減を検討することができます。
+Log Analytics にログをエクスポートすることで、豊富なネイティブ クエリ機能を利用できます。 ストレージ アカウントに大量のトランザクションがある場合、Log Analytics でログを使用するコストが高くなる可能性があります。 詳細については、[Azure Log Analytics の価格](https://azure.microsoft.com/pricing/details/monitor/)に関するページを参照してください。 ログに対してたまにしかクエリを実行しない場合 (コンプライアンス監査のためにログに対してクエリを実行するなど)、ログをストレージ アカウントにエクスポートしてから、ログ データに対してサーバーレス クエリ ソリューション (Azure Synapse など) を使用することによって、合計コストの削減を検討することができます。
 
-Azure Synapse を使用すると、サーバーレス SQL プールを作成して、必要に応じてログ データに対してクエリを実行できます。 これによってコストを大幅に削減できる可能性があります。 
+Azure Synapse を使用すると、サーバーレス SQL プールを作成して、必要に応じてログ データに対してクエリを実行できます。 これによってコストを大幅に削減できる可能性があります。
 
-1. ログをストレージ アカウントにエクスポートします。 「[診断設定の作成](monitor-blob-storage.md#creating-a-diagnostic-setting)」を参照してください。
+1. ログをストレージ アカウントにエクスポートします。 詳細については、「[診断設定の作成](monitor-blob-storage.md#creating-a-diagnostic-setting)」を参照してください。
 
-2. Synapse ワークスペースを作成して構成します。 「[クイックスタート: Synapse ワークスペースを作成する](../../synapse-analytics/quickstart-create-workspace.md)」を参照してください。
+2. Synapse ワークスペースを作成して構成します。 詳細については、「[クイックスタート: Synapse ワークスペースを作成する](../../synapse-analytics/quickstart-create-workspace.md)」を参照してください。
 
-2. ログに対してクエリを実行します。 「[Azure Synapse Analytics でサーバーレス SQL プールを使用して JSON ファイルのクエリを実行する](../../synapse-analytics/sql/query-json-files.md)」を参照してください。
+2. ログに対してクエリを実行します。 詳細については、「[Azure Synapse Analytics でサーバーレス SQL プールを使用して JSON ファイルのクエリを実行する](../../synapse-analytics/sql/query-json-files.md)」を参照してください。
 
    次に例を示します。
 
@@ -171,7 +169,7 @@ Azure Synapse を使用すると、サーバーレス SQL プールを作成し�
     select
         JSON_VALUE(doc, '$.time') AS time,
         JSON_VALUE(doc, '$.properties.accountName') AS accountName,
-        JSON_VALUE(doc, '$.identity.type') AS identityType,    
+        JSON_VALUE(doc, '$.identity.type') AS identityType,
         JSON_VALUE(doc, '$.identity.requester.objectId') AS requesterObjectId,
         JSON_VALUE(doc, '$.operationName') AS operationName,
         JSON_VALUE(doc, '$.callerIpAddress') AS callerIpAddress,
@@ -191,4 +189,3 @@ Azure Synapse を使用すると、サーバーレス SQL プールを作成し�
 - [Azure Blob Storage 監視データのリファレンス](monitor-blob-storage-reference.md)
 - [チュートリアル: Azure Data Explorer と Azure Monitor で Kusto クエリを使用する](/azure/data-explorer/kusto/query/tutorial?pivots=azuredataexplorer)。
 - [Azure Monitor でログ クエリの使用を開始する](../../azure-monitor/logs/get-started-queries.md)。
-

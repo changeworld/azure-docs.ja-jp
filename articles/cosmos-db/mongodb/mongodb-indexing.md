@@ -5,16 +5,16 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: how-to
-ms.date: 08/26/2021
+ms.date: 09/13/2021
 author: gahl-levy
 ms.author: gahllevy
 ms.custom: devx-track-js
-ms.openlocfilehash: 27b051a54fc17b0d7d65fff4d7f02e806baa3fd0
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 8e609268258142875ebbe924f3cfbdebc94911f8
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123033316"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128601724"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API でのインデックス作成を管理する
 [!INCLUDE[appliesto-mongodb-api](../includes/appliesto-mongodb-api.md)]
@@ -23,11 +23,9 @@ Azure Cosmos DB の MongoDB 用 API では、Azure Cosmos DB のコア インデ
 
 ## <a name="indexing-for-mongodb-server-version-36-and-higher"></a>MongoDB サーバー バージョン 3.6 以降のインデックス作成
 
-MongoDB サーバー バージョン 3.6 以降を対象とした Azure Cosmos DB の API では、`_id` フィールドのインデックスが自動的に作成され、これを削除することはできません。 シャード キーごとに `_id` フィールドの一意性が自動的に適用されます。 MongoDB 用の Azure Cosmos DB の API では、シャーディングとインデックス作成は別の概念です。 シャード キーにインデックスを付ける必要はありません。 ただし、ドキュメント内の他のプロパティと同様に、このプロパティがクエリの共通フィルターである場合は、シャード キーのインデックスを作成することをお勧めします。
+Azure Cosmos DB の MongoDB サーバー バージョン 3.6 以降用 API では、`_id` フィールドとシャード キー (シャード コレクションのみ) のインデックスが自動的に作成されます。 この API では、シャード キーごとに `_id` フィールドの一意性が自動的に適用されます。 
 
-その他のフィールドのインデックスを作成するには、MongoDB インデックス管理コマンドを適用します。 MongoDB の場合と同様に、Azure Cosmos DB の MongoDB 用 API では、`_id` フィールドのインデックスのみが自動的に作成されます。 この既定のインデックス作成ポリシーは Azure Cosmos DB の SQL API とは異なり、既定ですべてのフィールドのインデックスが作成されます。
-
-クエリに並べ替えを適用するには、並べ替え操作で使用されるフィールドに対してインデックスを作成する必要があります。
+MongoDB 用 API は、既定ですべてのフィールドのインデックスが作成される Azure Cosmos DB SQL API とは動作が異なります。
 
 ### <a name="editing-indexing-policy"></a>インデックス作成ポリシーの編集
 
@@ -51,11 +49,13 @@ Azure portal で `name` に対して同じ 1 つのフィールド インデッ�
 
 :::image type="content" source="./media/mongodb-indexing/add-index.png" alt-text="インデックス作成ポリシー エディターで名前インデックスを追加する":::
 
-1 つのクエリで、使用可能な場合は複数の単一フィールドのインデックスが使用されます。 コンテナーごとに最大 500 の単一フィールド インデックスを作成できます。
+1 つのクエリで、使用可能な場合は複数の単一フィールドのインデックスが使用されます。 コレクションごとに最大 500 個の単一フィールド インデックスを作成できます。
 
 ### <a name="compound-indexes-mongodb-server-version-36"></a>複合インデックス (MongoDB サーバー バージョン 3.6 以降)
+MongoDB 用 API では、クエリで一度に複数のフィールドの並べ替えを実行できる必要がある場合、複合インデックスが **必須** となります。 並べ替える必要がない、複数のフィルターを使用するクエリの場合は、複合インデックスではなく、複数の単一フィールド インデックスを作成して、インデックス作成コストを節約します。 
 
-Azure Cosmos DB の MongoDB 用 API では、バージョン 3.6 および 4.0 のワイヤ プロトコルを使用するアカウントの複合インデックスがサポートされます。 複合インデックスには、最大 8 個のフィールドを含めることができます。 MongoDB とは異なり、複合インデックスを作成する必要があるのは、一度に複数のフィールドに対してクエリを効率的に並べ替える必要がある場合のみです。 並べ替える必要がない、複数のフィルターを使用するクエリの場合は、単一の複合インデックスではなく、複数の単一フィールド インデックスを作成します。 
+複合インデックスまたは複合インデックス内のフィールドごとに単一フィールド インデックスを使用すると、クエリでのフィルター処理で同じパフォーマンスが得られます。
+
 
 > [!NOTE]
 > 入れ子になったプロパティまたは配列の複合インデックスを作成することはできません。
@@ -439,5 +439,5 @@ Azure Cosmos DB の MongoDB 用 API のバージョン 3.6 以降では、デー
 * [Time to Live を使用して Azure Cosmos DB のデータの有効期限が自動的に切れるようにする](../time-to-live.md)
 * パーティション分割とインデックス作成の関係の詳細については、「[Azure Cosmos コンテナーを照会する](../how-to-query-container.md)」の記事を参照してください。
 * Azure Cosmos DB に移行する容量計画を実行しようとしていますか? 容量計画のために、既存のデータベース クラスターに関する情報を使用できます。
-    * 既存のデータベース クラスター内の仮想コアとサーバー数のみがわかっている場合は、[仮想コア数または仮想 CPU 数を使用した要求ユニットの見積もり](../convert-vcore-to-request-unit.md)に関するページを参照してください 
-    * 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB Capacity Planner を使用した要求ユニットの見積もり](estimate-ru-capacity-planner.md)に関するページを参照してください
+    * 知っていることが既存のデータベース クラスター内の仮想コアとサーバーの数のみである場合は、[仮想コアまたは仮想 CPU の数を使用した要求ユニットの見積もり](../convert-vcore-to-request-unit.md)に関するページを参照してください 
+    * 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB 容量計画ツールを使用した要求ユニットに見積もり](estimate-ru-capacity-planner.md)に関するページを参照してください

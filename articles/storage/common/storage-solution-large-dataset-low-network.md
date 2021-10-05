@@ -8,15 +8,15 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: 9b83ba106b35a0a3abd035e85f60c4c39bbadd3b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 326b5393e8db24e175282af9bf7670e32047de9e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98704642"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128582235"
 ---
 # <a name="data-transfer-for-large-datasets-with-low-or-no-network-bandwidth"></a>ネットワーク帯域幅が低速またはない場合の大規模なデータセットのデータ転送
- 
+
 この記事では、ご利用の環境が、ネットワーク帯域幅がない状態に制限されていて、大規模なデータセットを転送する予定の場合の、データ転送ソリューションの概要を示します。 また、この記事では、推奨されるデータ転送と、このシナリオのそれぞれの主要な機能のマトリックスについても説明します。
 
 利用可能なすべてのデータ転送オプションの概要を理解するには、[Azure データ転送ソリューションの選択](storage-choose-data-transfer-solution.md)に関するページに移動します。
@@ -30,7 +30,7 @@ ms.locfileid: "98704642"
 
 上のどの場合も、物理デバイスを使用して、1 回限りの一括データ転送を行います。 Microsoft によって供給される Data Box Disk、Data Box、Data Box Heavy デバイスから選択します。または、独自のディスクを使用して Import/Export を利用します。
 
-物理デバイスが適切なオプションがかどうかを確認するには、次の表を使用します。 ここには、さまざまな使用可能帯域幅の場合の、ネットワーク データ転送の推定時間が示されています (90% の使用率と仮定)。 ネットワーク転送が低速すぎると推定される場合は、物理デバイスを使用する必要があります。  
+物理デバイスが適切なオプションがかどうかを確認するには、次の表を使用します。 ここには、さまざまな使用可能帯域幅の場合の、ネットワーク データ転送の推定時間が示されています (90% の使用率と仮定)。 ネットワーク転送が低速すぎると推定される場合は、物理デバイスを使用する必要があります。
 
 ![ネットワーク転送またはオフライン転送](media/storage-solution-large-dataset-low-network/storage-network-or-offline-transfer.png)
 
@@ -61,11 +61,10 @@ ms.locfileid: "98704642"
 | **データの移動時に使用する**     |コマース境界内|コマース境界内|コマース境界内|地理的境界を越える (US から EU など)|
 |    **料金**                      |    [料金](https://azure.microsoft.com/pricing/details/databox/disk/)                    |   [料金](https://azure.microsoft.com/pricing/details/storage/databox/)                                      |  [料金](https://azure.microsoft.com/pricing/details/storage/databox/heavy/)                               |   [料金](https://azure.microsoft.com/pricing/details/storage-import-export/)                            |
 
-
 ## <a name="next-steps"></a>次のステップ
 
 - 以下の方法を理解します
 
-    - [Data Box Edge を使用してデータを転送する](../../databox/data-box-disk-quickstart-portal.md)。
-    - [Data Box を使用してデータを転送する](../../databox/data-box-quickstart-portal.md)。
-    - [Import/Export を使用してデータを転送する](../../import-export/storage-import-export-data-to-blobs.md)。
+  - [Data Box Edge を使用してデータを転送する](../../databox/data-box-disk-quickstart-portal.md)。
+  - [Data Box を使用してデータを転送する](../../databox/data-box-quickstart-portal.md)。
+  - [Import/Export を使用してデータを転送する](../../import-export/storage-import-export-data-to-blobs.md)。

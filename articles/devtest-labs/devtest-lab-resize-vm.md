@@ -1,14 +1,14 @@
 ---
-title: ラボ内の VM を Azure DevTest Labs でサイズ変更する
+title: ラボの VM のサイズを変更する
 description: CPU、ネットワーク、またはディスク パフォーマンスのニーズに基づいて、Azure DevTest Labs の仮想マシン (VM) のサイズを変更する方法について説明します。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 592be0862bc33ead86fe43d37753fb72fde120c6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 03339a1d500611bde31ebfa14101a0dbd7d1da08
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85482022"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128649494"
 ---
 # <a name="resize-a-vm-in-a-lab-in-azure-devtest-labs"></a>ラボ内の VM を Azure DevTest Labs でサイズ変更する
 Azure 仮想マシンの重要な機能の 1 つは、CPU、ネットワーク、またはディスク パフォーマンスのニーズに基づいて仮想マシン (VM) のサイズを変更できることです。 Azure DevTest Labs は、この機能をラボ内の VM に対してサポートするようになりました。 サイズ変更機能は、ラボで許可されている VM のサイズのラボ ポリシーに準拠します。 つまり、VM のサイズを、ラボで許可されているサイズにのみ変更できます。 
@@ -40,5 +40,3 @@ Azure DevTest Labs でラボ内の VM のサイズを変更するには、次の
 
 ## <a name="next-steps"></a>次のステップ
 Azure 仮想マシンがサポートするサイズ変更機能に関する詳しい情報については[仮想マシンのサイズ変更](https://azure.microsoft.com/blog/resize-virtual-machines/)をご覧ください。
-
-

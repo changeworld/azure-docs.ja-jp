@@ -2,18 +2,18 @@
 title: Azure Managed Disks のサーバー側暗号化
 description: Azure Storage では、保存時に暗号化してデータを保護してから、ストレージ クラスターに保存します。 カスタマー マネージド キーを使用し、独自のキーを使って暗号化を管理できます。また、マネージド ディスクの暗号化には Microsoft のマネージド キーを使用できます。
 author: roygara
-ms.date: 06/29/2021
+ms.date: 09/03/2021
 ms.topic: conceptual
 ms.author: rogarana
 ms.service: storage
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 7f4ae0dfb8e03add64f450d98c15f85da33eaef3
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 98bbc2f84b0f56c4e50e98e99e7bcaf86588fb48
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122696467"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124803978"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Azure Disk Storage のサーバー側暗号化
 
@@ -92,6 +92,48 @@ Azure Storage の暗号化は、マネージド ディスクのパフォーマ�
 [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md) では、Linux の [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) 機能または Windows の [BitLocker](/windows/security/information-protection/bitlocker/bitlocker-overview) 機能を利用して、マネージド ディスクをゲスト VM 内のカスタマー マネージド キーを使用して暗号化します。  カスタマー マネージド キーを使用したサーバー側の暗号化では、ストレージ サービス内のデータを暗号化することで、VM に対して任意の OS の種類とイメージを使用できるため、ADE がさらに向上します。
 > [!IMPORTANT]
 > カスタマー マネージド キーは、Azure Active Directory (Azure AD) の 1 つの機能である Azure リソース用マネージド ID に依存します。 カスタマー マネージド キーを構成すると、内部でマネージド ID がリソースに自動的に割り当てられます。 その後、サブスクリプション、リソース グループ、またはマネージド ディスクを 1 つの Azure AD ディレクトリから別のディレクトリに移動した場合、そのマネージド ディスクに関連付けられているマネージド ID は新しいテナントに転送されないため、カスタマー マネージド キーが機能しなくなることがあります。 詳細については、「[Azure AD ディレクトリ間のサブスクリプションの転送](../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)」を参照してください。
+
+## <a name="frequently-asked-questions"></a>よく寄せられる質問
+
+**Q: サーバー側の暗号化は、マネージド ディスクを作成するときに、既定で有効になりますか?**
+
+**A:** はい。 マネージド ディスクは、サーバー側の暗号化とプラットフォーム マネージド キーを使用して暗号化されます。
+
+**Q: ブート ボリュームは、マネージド ディスク上で既定で暗号化されていますか?**
+
+**A:** はい。 既定では、OS ディスクを含むすべてのマネージド ディスクが暗号化されています。
+
+**Q:だれが暗号化キーを管理するのですか?**
+
+**A:** プラットフォーム マネージド キーは Microsoft によって管理されます。 Azure Key Vault に格納されている独自のキーを使用したり、管理したりすることもできます。
+
+**Q: 自分のマネージド ディスクのサーバー側の暗号化を無効にすることはできますか?**
+
+**A:** いいえ。
+
+**Q: サーバー側の暗号化は、特定のリージョンのみで使用可能ですか?**
+
+**A:** いいえ。 プラットフォーム マネージド キーとカスタマー マネージド キーの両方を使用するサーバー側の暗号化は、Azure Managed Disks が利用可能なすべてのリージョンで利用できます。
+
+**Q: Azure Site Recovery では、オンプレミスから Azure および Azure から Azure へのディザスター リカバリー シナリオでカスタマー マネージド キーを使用するサーバー側の暗号化をサポートしていますか?**
+
+**A:** はい。
+
+**Q: Azure Backup サービスを使用して、カスタマー マネージド キーを使用するサーバー側の暗号化によって暗号化されたマネージド ディスクをバックアップできますか?**
+
+**A:** はい。
+
+**Q: マネージド スナップショットおよびイメージは、暗号化されますか?**
+
+**A:** はい。 すべての管理スナップショットおよびイメージは、自動的に暗号化されます。
+
+**Q: VM アンマネージド ディスクが、暗号化されているストレージ アカウントまたは以前に暗号化されていたストレージ アカウントに配置されている場合、それらのディスクをマネージド ディスクに変換できますか?**
+
+**A:** はい。
+
+**Q: マネージド ディスクまたはスナップショットからエクスポートされた VHD も暗号化されますか?**
+
+**A:** いいえ。 ただし、暗号化されたマネージド ディスクまたはスナップショットから暗号化されたストレージ アカウントに VHD をエクスポートした場合は、暗号化されます。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -8,17 +8,17 @@ metadata:
   ms.author: heidist
   ms.service: cognitive-search
   ms.topic: conceptual
-  ms.date: 04/10/2020
-  ms.openlocfilehash: 2bfa41d8a68d9640995ae6989ebd79a4b44c7c24
-  ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+  ms.date: 09/24/2021
+  ms.openlocfilehash: 782c8d8801935779222903f52d3ffaa6ba6f7007
+  ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/03/2021
-  ms.locfileid: "123449087"
+  ms.lasthandoff: 09/29/2021
+  ms.locfileid: "129210918"
 title: Azure Cognitive Search - よく寄せられる質問 (FAQ)
 summary: Azure Cognitive Search に関連する概念、コード、シナリオについてよく寄せられる質問の回答を見つけることができます。
 sections:
-- name: プラットフォーム
+- name: 検索サービス
   questions:
   - question: >
       Azure Cognitive Search と DBMS の全文検索の違いは何ですか?
@@ -49,7 +49,7 @@ sections:
   - question: >
       ユーザー ID によって検索インデックス アクセスを制限できますか?
     answer: >
-      `search.in()` フィルターを使用する[セキュリティ フィルター](./search-security-trimming-for-azure-search.md)を実装できます。 このフィルターは [Azure Active Directory (AAD) などの ID 管理サービス](./search-security-trimming-for-azure-search-with-aad.md)に適切に構成でき、定義されたユーザー グループ メンバーシップに基づいて検索結果を絞り込むことができます。 現在パブリック プレビューの[ロールベース アクセス](search-security-rbac.md)にサインアップすることもできます。
+      `search.in()` フィルターを使用する[セキュリティ フィルター](./search-security-trimming-for-azure-search.md)を実装できます。 このフィルターは [Azure Active Directory (Azure AD) などの ID 管理サービス](./search-security-trimming-for-azure-search-with-aad.md)に適切に構成でき、定義されたユーザー グループ メンバーシップに基づいて検索結果を絞り込むことができます。 現在パブリック プレビューの[ロールベース アクセス](search-security-rbac.md)にサインアップすることもできます。
   - question: >
       存在するとわかっている用語でも一致数が 0 件なのはなぜですか?
     answer: >
@@ -60,7 +60,7 @@ sections:
   - question: >
       ワイルドカード検索に時間がかかります。
     answer: >
-      ほとんどのワイルドカード検索クエリ (プレフィックス、あいまい、正規表現など) は、検索インデックス内の一致する用語を使用して内部で再作成されます。 このように検索インデックスをスキャンする追加の処理のために時間がかかります。 また、`a*` のような広範な検索クエリは、多数の用語を使用して再作成される可能性が高く、非常に遅くなることがあります。 ワイルドカード検索のパフォーマンスを向上させるには、[カスタム アナライザー](/rest/api/searchservice/custom-analyzers-in-azure-search)の定義を検討してください。
+      ほとんどのワイルドカード検索クエリ (プレフィックス、あいまい、正規表現など) は、検索インデックス内の一致する用語を使用して内部で再作成されます。 この追加の処理により、待ち時間が増えます。 また、`a*` のような広範な検索クエリは、多数の用語を使用して再作成される可能性が高く、非常に遅くなることがあります。 ワイルドカード検索のパフォーマンスを向上させるには、[カスタム アナライザー](/rest/api/searchservice/custom-analyzers-in-azure-search)の定義を検討してください。
   - question: >
       毎回、検索順位が 1.0 の定数または同じスコアなのはなぜですか?
     answer: >

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: andster
 keywords: visualstudio
-ms.openlocfilehash: de2c782b7b311256e287f49f931ed6ab1de09c55
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: d77e0c04e5fac91de2142d14ba88d3188303945d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122688538"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128582146"
 ---
 # <a name="visual-studio-images-on-azure"></a>Azure 上の Visual Studio のイメージ
 **適用対象:** :heavy_check_mark: Windows VM :heavy_check_mark: フレキシブル スケール セット :heavy_check_mark: ユニフォーム スケール セット
@@ -81,7 +81,7 @@ Azure では、さまざまなサイズの仮想マシンが提供されてい�
     
 最新のマシン サイズについては、「[ Azure の Windows 仮想マシンのサイズ](../sizes.md)」をご覧ください。
 
-Azure では、VM サイズを変更して、最初の選択を再調整することもできます。 より適切なサイズで新しい VM をプロビジョニングすることもできますし、既存の VM のサイズを別の基本ハードウェアへと変更することもできます。 詳しくは、「[Windows VM のサイズ変更](./resize-vm.md)」をご覧ください。
+Azure では、VM サイズを変更して、最初の選択を再調整することもできます。 より適切なサイズで新しい VM をプロビジョニングすることもできますし、既存の VM のサイズを別の基本ハードウェアへと変更することもできます。 詳しくは、「[Windows VM のサイズ変更](../resize-vm.md)」をご覧ください。
 
 ## <a name="after-the-vm-is-running-whats-next"></a>VM を実行したら、次に何をすればよいですか。
 Visual Studio は、Azure の "ライセンス持ち込み" モデルに従って動作します。 私有するハードウェア上のインストールと同様、まずは、Visual Studio インストールのラインセンス付与を行います。 Visual Studio のロックを解除するには、次のいずれかを行います。
@@ -92,11 +92,11 @@ Visual Studio は、Azure の "ライセンス持ち込み" モデルに従っ�
 
 ## <a name="how-do-i-save-the-development-vm-for-future-or-team-use"></a>今後の使用やチームでの使用のために、開発用 VM を保存するにはどうすればよいですか。
 
-開発環境のスペクトルは幅広く、より複雑な環境の構築に関連する実質的なコストがあります。 構成済みの仮想マシンは、環境の構成に関係なく、将来使用したり、チームの他のメンバーに提供するための "基本イメージ" として保存 (またはキャプチャ) できます。 その後、新しい VM を起動する際には、Azure Marketplace イメージからではなく、基本イメージから VM をプロビジョニングします。
+開発環境のスペクトルは幅広く、より複雑な環境の構築に関連する実質的なコストがあります。 構成済みの仮想マシンは、環境の構成に関係なく、将来使用したり、チームの他のメンバーに提供するための "基本イメージ" として保存 (またはキャプチャ) したりできます。 その後、新しい VM を起動する際には、Azure Marketplace イメージからではなく、基本イメージから VM をプロビジョニングします。
 
 簡単な概要:システム準備ツール (Sysprep) を使用し、実行中の VM をシャットダウンした後、Microsoft Azure portal の UI を使用して、VM をイメージとしてキャプチャ *(図 1)* します。 Azure は、選択したストレージ アカウントのイメージを格納した `.vhd` ファイルを保存します。 その後、サブスクリプションのリソース一覧に、新しいイメージがイメージ リソースとして表示されます。
 
-<img src="media/using-visual-studio-vm/capture-vm.png" alt="Capture an image through the Azure portal UI" style="border:3px solid Silver; display: block; margin: auto;"><center> *(図 1) Azure portal の UI を使用してイメージをキャプチャする*</center>
+<img src="media/using-visual-studio-vm/capture-vm.png" alt="Capture an image through the Azure portal UI"><center> *(図 1) Azure portal の UI を使用してイメージをキャプチャする*</center>
 
 詳しくは、「[Azure で一般化された VM の管理対象イメージを作成する](./capture-image-resource.md)」をご覧ください。
 

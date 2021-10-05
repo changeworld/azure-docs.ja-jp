@@ -4,12 +4,12 @@ description: この記事では、Azure CLI を使用して、ハイブリッド
 ms.date: 08/05/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e493e035caf3a201d3670bb352c19455b3cfee72
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2e9427d714681883fd5422ab0a7d17fd337c9568
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121750242"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124807440"
 ---
 # <a name="enable-azure-vm-extensions-using-the-azure-cli"></a>Azure CLI を使用して Azure VM 拡張機能を有効にする
 
@@ -22,7 +22,7 @@ ms.locfileid: "121750242"
 
 ## <a name="install-the-azure-cli-extension"></a>Azure CLI 拡張機能をインストールする
 
-ConnectedMachine コマンドは、Azure CLI の一部として付属していません。 Azure CLI を使用して、Arc 対応サーバーで管理されているハイブリッド サーバー上の VM 拡張機能を管理するには、事前に ConnectedMachine 拡張機能を読み込む必要があります。 次のコマンドを実行して取得します。
+ConnectedMachine コマンドは、Azure CLI の一部として付属していません。 Azure CLI を使用して、Azure Arc 対応サーバーで管理されているハイブリッド サーバー上の VM 拡張機能を管理するには、事前に ConnectedMachine 拡張機能を読み込む必要があります。 次のコマンドを実行して取得します。
 
 ```azurecli
 az extension add --name connectedmachine
@@ -30,21 +30,21 @@ az extension add --name connectedmachine
 
 ## <a name="enable-extension"></a>拡張機能を有効にする
 
-Arc 対応サーバーで VM 拡張機能を有効にするには、`--machine-name`、`--extension-name`、`--location`、`--type`、`settings`、`--publisher` の各パラメーターと共に [az connectedmachine extension create](/cli/azure/connectedmachine/extension#az_connectedmachine_extension_create) を使用します。
+Azure Arc 対応サーバーで VM 拡張機能を有効にするには、`--machine-name`、`--extension-name`、`--location`、`--type`、`settings`、`--publisher` の各パラメーターと共に [az connectedmachine extension create](/cli/azure/connectedmachine/extension#az_connectedmachine_extension_create) を使用します。
 
-次の例では、Arc 対応サーバーで Log Analytics VM 拡張機能を有効にします。
+次の例では、Azure Arc 対応サーバーで Log Analytics VM 拡張機能を有効にします。
 
 ```azurecli
 az connectedmachine extension create --machine-name "myMachineName" --name "OmsAgentForLinux or MicrosoftMonitoringAgent" --location "eastus" --settings '{\"workspaceId\":\"myWorkspaceId\"}' --protected-settings '{\"workspaceKey\":\"myWorkspaceKey\"}' --resource-group "myResourceGroup" --type-handler-version "1.13" --type "OmsAgentForLinux or MicrosoftMonitoringAgent" --publisher "Microsoft.EnterpriseCloud.Monitoring" 
 ```
 
-次の例では、Arc 対応 Linux サーバーでカスタム スクリプト拡張機能を有効にします。
+次の例では、Azure Arc 対応サーバーでカスタム スクリプト拡張機能を有効にします。
 
 ```azurecli
 az connectedmachine extension create --machine-name "myMachineName" --name "CustomScriptExtension" --location "eastus" --type "CustomScriptExtension" --publisher "Microsoft.Compute" --settings "{\"commandToExecute\":\"powershell.exe -c \\\"Get-Process | Where-Object { $_.CPU -gt 10000 }\\\"\"}" --type-handler-version "1.10" --resource-group "myResourceGroup"
 ```
 
-次の例では、Arc 対応サーバーで Key Vault VM 拡張機能を有効にします。
+次の例では、Azure Arc 対応サーバーで Key Vault VM 拡張機能を有効にします。
 
 ```azurecli
 az connectedmachine extension create --resource-group "resourceGroupName" --machine-name "myMachineName" --location "regionName" --publisher "Microsoft.Azure.KeyVault" --type "KeyVaultForLinux or KeyVaultForWindows" --name "KeyVaultForLinux or KeyVaultForWindows" --settings '{"secretsManagementSettings": { "pollingIntervalInS": "60", "observedCertificates": ["observedCert1"] }, "authenticationSettings": { "msiEndpoint": "http://localhost:40342/metadata/identity" }}'
@@ -52,7 +52,7 @@ az connectedmachine extension create --resource-group "resourceGroupName" --mach
 
 ## <a name="list-extensions-installed"></a>インストールされている拡張機能を一覧表示する
 
-Arc 対応サーバー上の VM 拡張機能の一覧を取得するには、`--machine-name` および `--resource-group` パラメーターと共に [az connectedmachine extension list](/cli/azure/connectedmachine/extension#az_connectedmachine_extension_list) を使用します。
+Azure Arc 対応サーバー上の VM 拡張機能の一覧を取得するには、`--machine-name` および `--resource-group` パラメーターと共に [az connectedmachine extension list](/cli/azure/connectedmachine/extension#az_connectedmachine_extension_list) を使用します。
 
 例:
 
@@ -77,7 +77,7 @@ az connectedmachine extension list --machine-name "myMachineName" --resource-gro
 
 ## <a name="remove-an-installed-extension"></a>インストールされている拡張機能を削除する
 
-Arc 対応サーバーにインストールされている VM 拡張機能を削除するには、`--extension-name`、`--machine-name`、`--resource-group` の各パラメーターと共に [az connectedmachine extension delete](/cli/azure/connectedmachine/extension#az_connectedmachine_extension_delete) を使用します。
+Azure Arc 対応サーバーにインストールされている VM 拡張機能を削除するには、`--extension-name`、`--machine-name`、`--resource-group` の各パラメーターと共に [az connectedmachine extension delete](/cli/azure/connectedmachine/extension#az_connectedmachine_extension_delete) を使用します。
 
 たとえば、Linux 用の Log Analytics VM 拡張機能を削除するには、次のコマンドを実行します。
 

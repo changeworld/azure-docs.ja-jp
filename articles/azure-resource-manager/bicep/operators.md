@@ -4,13 +4,13 @@ description: Azure Resource Manager のデプロイに使用できる Bicep 演�
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 08/30/2021
-ms.openlocfilehash: 80fc9e4e1285d86858a476feba30621a7afe1c79
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.date: 09/10/2021
+ms.openlocfilehash: 13591112171919d6c58959c40dffa1340f3e8ebd
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123221036"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124764316"
 ---
 # <a name="bicep-operators"></a>Bicep 演算子
 
@@ -38,7 +38,9 @@ ms.locfileid: "123221036"
 | `?` `:` | 条件式 (三項) | 右から左
 | `??` | Coalesce | 左から右
 
-`(` と `)` の間に式を挿入することで、既定の Bicep 演算子の優先順位をオーバーライドできます。 たとえば、"x + y / z" という式では、最初に除算、その次に加算が評価されます。 一方、“(x + y) / z” という式では、最初に加算、2 番目に除算が評価されます。
+## <a name="parentheses"></a>かっこ
+
+式をかっこで囲むことで、既定の Bicep 演算子の優先順位をオーバーライドできます。 たとえば、`x + y / z` という式では、最初に除算、その次に加算が評価されます。 一方、`(x + y) / z` という式では、最初に加算、2 番目に除算が評価されます。
 
 ## <a name="accessor"></a>アクセサー
 
@@ -74,7 +76,7 @@ ms.locfileid: "123221036"
 | ---- | ---- | ---- |
 | `&&` | [And](./operators-logical.md#and-) | すべての値が true の場合は `true` を返します。 |
 | `||`| [Or](./operators-logical.md#or-) | どちらかの値が true の場合は `true` を返します。 |
-| `!` | [Not](./operators-logical.md#not-) | ブール値を否定します。 |
+| `!` | [Not](./operators-logical.md#not-) | ブール値を否定します。 1 つのオペランドを受け取ります。 |
 | `??` | [Coalesce](./operators-logical.md#coalesce-) | 最初の null 以外の値を返します。 |
 | `?` `:` | [条件式](./operators-logical.md#conditional-expression--) | true または false の条件を評価し、値を返します。 |
 
@@ -88,8 +90,8 @@ ms.locfileid: "123221036"
 | `/` | [除算](./operators-numeric.md#divide-) | 整数を整数で除算します。 |
 | `%` | [剰余](./operators-numeric.md#modulo-) | 整数を整数で除算し、剰余を返します。 |
 | `+` | [追加](./operators-numeric.md#add-) | 2 つの整数を加算します。 |
-| `-` | [Subtract](./operators-numeric.md#subtract--) | 整数から整数を減算します。 |
-| `-` | [Minus](./operators-numeric.md#minus--) | 整数を `-1` で乗算します。 |
+| `-` | [Subtract](./operators-numeric.md#subtract--) | 1 つの整数を別の整数から減算します。 2 つのオペランドを受け取ります。 |
+| `-` | [マイナス](./operators-numeric.md#minus--) (単項) | 整数を `-1` で乗算します。 1 つのオペランドを受け取ります。 |
 
 > [!NOTE]
 > 減算とマイナスには同じ演算子を使用します。 減算では 2 つのオペランドを使用し、マイナスでは 1 つのオペランドを使用するため、機能は異なります。

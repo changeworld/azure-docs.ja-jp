@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 07/27/2021
-ms.openlocfilehash: a3fe8707df1270f8571ad86fe07406376f71ab93
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/27/2021
+ms.openlocfilehash: 7f784773ff2f29b7f5b9c244811f818861f5ae42
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121743231"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129080626"
 ---
 # <a name="azure-consumption-commitment-enrollment"></a>Azure Consumption Commitment の登録
 
@@ -35,6 +35,27 @@ MACC プログラムに登録するには、オファーが次の要件を満た
 
 ## <a name="how-to-see-if-your-offer-is-enrolled-in-the-macc-program"></a>オファーが MACC プログラムに登録されているかどうかを確認する方法
 
+[!INCLUDE [Workspaces view note](./includes/preview-interface.md)]
+
+#### <a name="workspaces-view"></a>[ワークスペース ビュー](#tab/workspaces-view)
+
+1. [パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインします。
+1. ホーム ページで、 **[Marketplace offers]\(Marketplace のオファー\)** タイルを選択します。
+
+    [ ![パートナー センターのホーム ページにある [Marketplace offers]\(Marketplace のオファー\) タイルを示しています。](./media/workspaces/partner-center-home.png) ](./media/workspaces/partner-center-home.png#lightbox)
+
+1. [Marketplace offers]\(Marketplace のオファー\) ページで、表示するオファーを選択します。
+1. **[オファーの概要]** ページの **[Marketplace programs]\(マーケットプレース プログラム\)** セクションで、 **[Microsoft Azure Consumption Commitment]** の状態に "_登録済み_" または "_未登録_" と表示されます。
+
+    [ ![Microsoft Azure Consumption Commitment の状態を示す、パートナー センターの [オファーの概要] ページのスクリーンショット。](media/azure-benefit/enrolled-workspaces.png) ](media/azure-benefit/enrolled-workspaces.png#lightbox)
+
+    ***図 1: MACC プログラムに登録されているオファー***
+
+> [!NOTE]
+> Azure Marketplace に公開されているオファーの MACC プログラムの状態は、毎週月曜日に更新されます。 つまり、MACC プログラムの適格性要件を満たすオファーを公開しても、パートナー センターの状態には、次の月曜日まで "登録済み" と表示されません。
+
+#### <a name="current-view"></a>[現在のビュー](#tab/current-view)
+
 1. [パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインします。
 1. 左側のナビゲーション メニューで、 **[商業マーケットプレース]**  >  **[概要]** の順に選択します。
 1. **[オファー]** セクションで、確認するオファーを選択します。
@@ -46,6 +67,8 @@ MACC プログラムに登録するには、オファーが次の要件を満た
 
 > [!NOTE]
 > Azure Marketplace に公開されているオファーの MACC プログラムの状態は、毎週月曜日に更新されます。 つまり、MACC プログラムの適格性要件を満たすオファーを公開しても、パートナー センターの状態には、次の月曜日まで "登録済み" と表示されません。
+
+---
 
 ## <a name="next-steps"></a>次のステップ
 

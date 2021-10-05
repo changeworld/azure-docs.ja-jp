@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/10/2021
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: 2a76ee1c5009091247d9629bdbb0edc0b8c8a217
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d1a46cd010f0a629e787a7ebabcfe002837b7ad3
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121738076"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124811179"
 ---
 # <a name="azure-firewall-premium-features"></a>Azure Firewall Premium の機能
 
@@ -144,7 +144,7 @@ Azure Firewall Premium には、次の既知の問題があります。
 |クライアント証明書 (TLS)|クライアント証明書は、クライアントとサーバー間で相互の ID の信頼を構築するために使用されます。 クライアント証明書は、TLS ネゴシエーション中に使用されます。 Azure Firewall がサーバーとの接続を再ネゴシエートしていて、クライアント証明書の秘密キーにアクセスできません。|None|
 |QUIC/HTTP3|QUIC は、新たなメジャー バージョンの HTTP です。 これは、80 (PLAN) と 443 (SSL) を介する UDP ベースのプロトコルです。 FQDN/URL/TLS 検査はサポートされません。|ネットワーク規則として UDP 80/443 を通るように構成します。|
 顧客の署名入り証明書が信頼されない|顧客の署名入り証明書は、イントラネット ベースの Web サーバーから受信されると、ファイアウォールによって信頼されません。|解決策を調査中です。
-|HTTP (TLS 検査なし) での IDPS によるアラートの送信元 IP アドレスが間違っている。|プレーンテキスト HTTP トラフィックが使用されていて、IDPS によって新しいアラートが発行され、宛先がパブリック IP アドレスであるときに、表示される送信元の IP アドレスが間違っています (元の IP アドレスの代わりに内部 IP アドレスが表示されます)。|解決策を調査中です。|
+|HTTP (TLS 検査なし) での IDPS によるアラートの送信元 IP アドレスが間違っている。|プレーン テキスト HTTP トラフィックが使用されていて、IDPS によって新しいアラートが発行されるとき、宛先がパブリック IP アドレスであれば、間違った発信元の IP アドレスが表示されます (元の IP アドレスの代わりに内部 IP アドレスが表示されます)。|解決策を調査中です。|
 |証明書伝達|CA 証明書がファイアウォールに適用された後、証明書が有効になるまでに 5 分から 10 分かかることがあります。|解決策を調査中です。|
 |TLS 1.3 のサポート|TLS 1.3 は部分的にサポートされています。 クライアントからファイアウォールへの TLS トンネルは TLS 1.2 に基づいており、ファイアウォールから外部 Web サーバーへは TLS 1.3 に基づいています。|更新を調査中です。|
 |KeyVault のプライベート エンドポイント|KeyVault は、プライベート エンドポイント アクセスをサポートして、ネットワークへの露出を制限します。 [KeyVault のドキュメント](../key-vault/general/overview-vnet-service-endpoints.md#trusted-services)で説明されているように、例外が構成されている場合、信頼された Azure サービスはこの制限を回避できます。 Azure Firewall は現在信頼されたサービスとして列挙されていないため、KeyVault にアクセスできません。|解決策を調査中です。|

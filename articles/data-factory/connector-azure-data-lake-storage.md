@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 08/30/2021
-ms.openlocfilehash: e568c2c8056c0d33be5fe1f748092ae2639be360
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.date: 09/09/2021
+ms.openlocfilehash: abd839bdc15430b3b4936fe1d2b65826ae792da8
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123314708"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128592548"
 ---
 # <a name="copy-and-transform-data-in-azure-data-lake-storage-gen2-using-azure-data-factory-or-azure-synapse-analytics"></a>Azure Data Factory または Azure Synapse Analytics を使用した Azure Data Lake Storage Gen2 でのデータのコピーと変換
 
@@ -430,7 +430,7 @@ Data Lake Storage Gen2 では、形式ベースのコピー シンクの `storeS
 | copyBehavior             | ソースがファイル ベースのデータ ストアのファイルの場合は、コピー動作を定義します。<br/><br/>使用できる値は、以下のとおりです。<br/><b>- PreserveHierarchy (既定値)</b>:ターゲット フォルダー内でファイル階層を保持します。 ソース フォルダーへのソース ファイルの相対パスはターゲット フォルダーへのターゲット ファイルの相対パスと同じになります。<br/><b>- FlattenHierarchy</b>:ソース フォルダーのすべてのファイルをターゲット フォルダーの第一レベルに配置します。 ターゲット ファイルは、自動生成された名前になります。 <br/><b>- MergeFiles</b>:ソース フォルダーのすべてのファイルを 1 つのファイルにマージします。 ファイル名を指定した場合、マージされたファイル名は指定した名前になります。 それ以外は自動生成されたファイル名になります。 | いいえ       |
 | blockSizeInMB | ADLS Gen2 にデータを書き込むために使用するブロック サイズを MB 単位で指定します。 詳細は、[ブロック BLOB](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs) に関するページを参照してください。 <br/>指定できる値は、**4 MB から 100 MB** です。 <br/>既定では、ソース ストアの種類とデータに基づいて、ADF によってブロック サイズが自動的に決定されます。 ADLS Gen2 への非バイナリ コピーの場合、既定のブロック サイズは 100 MB なので、最大 4.95 TB のデータに収まります。 データが大きくない場合、特に、ネットワークが不十分な状態でセルフホステッド統合ランタイムを使用し、操作のタイムアウトやパフォーマンスの問題が発生する場合は、最適ではない可能性があります。 ブロック サイズは明示的に指定できますが、blockSizeInMB*50000 が確実にデータを格納するのに十分な大きさであるようにします。そうしないと、コピー アクティビティの実行は失敗します。 | いいえ |
 | maxConcurrentConnections | アクティビティの実行中にデータ ストアに対して確立されたコンカレント接続数の上限。 コンカレント接続を制限する場合にのみ、値を指定します。| いいえ       |
-| metadata |シンクにコピーするときにカスタム メタデータを設定します。 `metadata` 配列の各オブジェクトは追加列を表します。 `name` はメタデータ キー名を定義し、`value` はそのキーのデータ値を示します。 [属性の保持機能](./copy-activity-preserve-metadata.md#preserve-metadata)が使用されていると、指定されたメタデータはソース ファイルのメタデータで共用/上書きします。<br/><br/>使用できるデータ値:<br/>- `$$LASTMODIFIED`: 予約済みの変数は、ソース ファイルの最終更新時刻を格納することを示します。 バイナリ形式のファイルベースのソースにのみ適用されます。<br/><b>- 式<b><br/>- <b>静的な値<b>| いいえ       |
+| metadata |シンクにコピーするときにカスタム メタデータを設定します。 `metadata` 配列の各オブジェクトは追加列を表します。 `name` ではメタデータ キー名を定義し、`value` では、そのキーのデータ値を指定します。 [属性の保持機能](./copy-activity-preserve-metadata.md#preserve-metadata)が使用されている場合は、ソース ファイルのメタデータを使用して、指定されたメタデータの和集合の作成や上書きが行われます。<br/><br/>使用できるデータ値:<br/>- `$$LASTMODIFIED`: 予約済みの変数によって、ソース ファイルの最終更新時刻を格納することを指定します。 バイナリ形式のファイルベースのソースにのみ適用されます。<br/><b>- 式<b><br/>- <b>静的な値<b>| いいえ       |
 
 **例:**
 
@@ -544,7 +544,7 @@ Azure Data Lake Storage Gen1/Gen2 から Gen2 にファイルをコピーする�
 
 ソース変換では、Azure Data Lake Storage Gen2 内のコンテナー、フォルダー、または個々のファイルから読み取ることができます。 **[Source options]\(ソース オプション\)** タブで、ファイルの読み取り方法を管理できます。 
 
-![ソース オプション](media/data-flow/sourceOptions1.png "ソース オプション")
+:::image type="content" source="media/data-flow/sourceOptions1.png" alt-text="ソース オプション":::
 
 **[Wildcard path]\(ワイルドカード パス\)** : ワイルドカード パターンを使用すると、ADF は、単一のソース変換で一致する各フォルダーとファイルをループ処理するよう指示されます。 これは、単一のフロー内の複数のファイルを処理するのに効果的な方法です。 既存のワイルドカード パターンをポイントしたときに表示される + 記号を使って複数のワイルドカード一致パターンを追加します。
 
@@ -566,11 +566,11 @@ Azure Data Lake Storage Gen1/Gen2 から Gen2 にファイルをコピーする�
 
 最初に、ワイルドカードを設定して、パーティション分割されたフォルダーと読み取るリーフ ファイルのすべてのパスを含めます。
 
-![パーティション ソース ファイルの設定](media/data-flow/partfile2.png "パーティション ファイルの設定")
+:::image type="content" source="media/data-flow/partfile2.png" alt-text="パーティション ソース ファイルの設定":::
 
 パーティションのルート パス設定を使用して、フォルダー構造の最上位レベルを定義します。 データ プレビューを使用してデータの内容を表示すると、ADF によって、各フォルダー レベルで見つかった解決済みのパーティションが追加されることがわかります。
 
-![パーティションのルート パス](media/data-flow/partfile1.png "パーティション ルート パスのプレビュー")
+:::image type="content" source="media/data-flow/partfile1.png" alt-text="パーティションのルート パス":::
 
 **[List of files]:** これはファイル セットです。 処理する相対パス ファイルの一覧を含むテキスト ファイルを作成します。 このテキスト ファイルをポイントします。
 
@@ -582,15 +582,15 @@ Azure Data Lake Storage Gen1/Gen2 から Gen2 にファイルをコピーする�
 
 ワイルドカードを含むソース パスがある場合、構文は次のようになります。
 
-```/data/sales/20??/**/*.csv```
+`/data/sales/20??/**/*.csv`
 
 "移動元" は次のように指定できます。
 
-```/data/sales```
+`/data/sales`
 
 "移動先" は次のように指定できます。
 
-```/backup/priorSales```
+`/backup/priorSales`
 
 この場合、ソースとして指定された /data/sales の下のすべてのファイルは /backup/priorSales に移動されます。
 
@@ -603,7 +603,7 @@ Azure Data Lake Storage Gen1/Gen2 から Gen2 にファイルをコピーする�
 
 シンク変換では、Azure Data Lake Storage Gen2 内のコンテナーまたはフォルダーに書き込むことができます。 **[設定]** タブで、ファイルへの書き込み方法を管理できます。
 
-![シンクのオプション](media/data-flow/file-sink-settings.png "シンク オプション")
+:::image type="content" source="media/data-flow/file-sink-settings.png" alt-text="シンクのオプション":::
 
 **Clear the folder**\(フォルダーのクリア\):データが書き込まれる前に、書き込み先のフォルダーをクリアするかどうかを決定します。
 
@@ -615,6 +615,34 @@ Azure Data Lake Storage Gen1/Gen2 から Gen2 にファイルをコピーする�
    * **Output to a single file**(1 つのファイルに出力する):パーティション分割された出力ファイルを単一の名前付きファイルに結合します。 パスは、データセット フォルダーからの相対パスです。 このマージ操作は、ノード サイズによっては失敗する可能性があることに注意してください。 このオプションは、大規模なデータセットに対しては推奨されません。
 
 **Quote all**\(すべてを引用符で囲む\):すべての値を引用符で囲むかどうかを決定します
+    
+### ```umask```
+
+必要に応じて、所有者、ユーザー、グループに POSIX の read、write、execute フラグを使用して、ファイルの ```umask``` を設定できます。
+    
+### <a name="pre-processing-and-post-processing-commands"></a>前処理および後処理コマンド
+    
+必要に応じて、ADLS Gen2 シンクへの書き込み前または書き込み後に、Hadoop ファイルシステム コマンドを実行できます。 次のコマンドがサポートされています。
+    
+* ```cp```
+* ```mv```
+* ```rm```
+* ```mkdir```
+
+例:
+
+* ```mkdir /folder1```
+* ```mkdir -p folder1```
+* ```mv /folder1/*.* /folder2/```
+* ```cp /folder1/file1.txt /folder2```
+* ```rm -r /folder1```
+
+式ビルダーを介して、パラメーターもサポートされています。次に例を示します。
+
+`mkdir -p {$tempPath}/commands/c1/c2`
+`mv {$tempPath}/commands/*.* {$tempPath}/commands/c1/c2`
+
+既定では、フォルダーは user/root として作成されます。 "/" を使用して最上位のコンテナーを参照します。
 
 ## <a name="lookup-activity-properties"></a>Lookup アクティビティのプロパティ
 
@@ -643,7 +671,7 @@ Azure Data Lake Storage Gen1/Gen2 から Gen2 にファイルをコピーする�
 | modifiedDatetimeStart | 最終変更日時属性に基づくファイル フィルター。 最終変更日時が `modifiedDatetimeStart` から `modifiedDatetimeEnd` の範囲内にあるファイルが選択されます。 時刻は "2018-12-01T05:00:00Z" の形式で UTC タイム ゾーンに適用されます。 <br/><br/> 大量のファイルでファイル フィルターを実行する場合、この設定を有効にすることで、データ移動の全体的なパフォーマンスが影響を受けます。 <br/><br/> 各プロパティには NULL を指定できます。これは、ファイル属性フィルターをデータセットに適用しないことを意味します。 `modifiedDatetimeStart` に datetime 値が設定されており、`modifiedDatetimeEnd` が NULL の場合は、最終変更日時属性が datetime 値以上であるファイルが選択されます。 `modifiedDatetimeEnd` に datetime 値が設定されており、`modifiedDatetimeStart` が NULL の場合は、最終変更日時属性が datetime 値以下であるファイルが選択されます。| いいえ |
 | modifiedDatetimeEnd | 最終変更日時属性に基づくファイル フィルター。 最終変更日時が `modifiedDatetimeStart` から `modifiedDatetimeEnd` の範囲内にあるファイルが選択されます。 時刻は "2018-12-01T05:00:00Z" の形式で UTC タイム ゾーンに適用されます。 <br/><br/> 大量のファイルでファイル フィルターを実行する場合、この設定を有効にすることで、データ移動の全体的なパフォーマンスが影響を受けます。 <br/><br/> 各プロパティには NULL を指定できます。これは、ファイル属性フィルターをデータセットに適用しないことを意味します。 `modifiedDatetimeStart` に datetime 値が設定されており、`modifiedDatetimeEnd` が NULL の場合は、最終変更日時属性が datetime 値以上であるファイルが選択されます。 `modifiedDatetimeEnd` に datetime 値が設定されており、`modifiedDatetimeStart` が NULL の場合は、最終変更日時属性が datetime 値以下であるファイルが選択されます。| いいえ |
 | format | ファイルベースのストア間でファイルをそのままコピー (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。<br/><br/>特定の形式のファイルを解析または生成する場合、サポートされるファイル形式の種類は、**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat**。 **format** の **type** プロパティをいずれかの値に設定します。 詳細については、「[テキスト形式](supported-file-formats-and-compression-codecs-legacy.md#text-format)」、「[JSON 形式](supported-file-formats-and-compression-codecs-legacy.md#json-format)」、「[AVRO 形式](supported-file-formats-and-compression-codecs-legacy.md#avro-format)」、「[ORC 形式](supported-file-formats-and-compression-codecs-legacy.md#orc-format)」、[Parquet 形式](supported-file-formats-and-compression-codecs-legacy.md#parquet-format)」の各セクションをご覧ください。 |いいえ (バイナリ コピー シナリオのみ) |
-| compression | データの圧縮の種類とレベルを指定します。 詳細については、[サポートされるファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs-legacy.md#compression-support)に関する記事を参照してください。<br/>サポートされる種類は、**GZip**、**Deflate**、**BZip2**、および **ZipDeflate** です。<br/>サポートされるレベルは、**Optimal** と **Fastest** です。 |いいえ |
+| compression | データの圧縮の種類とレベルを指定します。 詳細については、[サポートされるファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs-legacy.md#compression-support)に関する記事を参照してください。<br/>サポートされる種類は、```**GZip**, **Deflate**, **BZip2**, and **ZipDeflate**``` です。<br/>サポートされるレベルは、**Optimal** と **Fastest** です。 |いいえ |
 
 >[!TIP]
 >フォルダーの下のすべてのファイルをコピーするには、**folderPath** のみを指定します。<br>特定の名前の単一のファイルをコピーするには、フォルダー部分で **folderPath**、ファイル名で **fileName** を指定します。<br>フォルダーの下のファイルのサブセットをコピーするには、フォルダー部分で **folderPath**、ワイルドカード フィルターで **fileName** を指定します。 
@@ -760,4 +788,4 @@ Azure Data Lake Storage Gen1/Gen2 から Gen2 にファイルをコピーする�
 
 ## <a name="next-steps"></a>次のステップ
 
-コピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関するセクションを参照してください。
+コピー アクティビティによってソース、シンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関するセクションを参照してください。

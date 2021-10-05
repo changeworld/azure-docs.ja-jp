@@ -7,12 +7,12 @@ ms.reviewers: estfan, azla
 ms.topic: conceptual
 ms.date: 08/04/2021
 tags: connectors
-ms.openlocfilehash: 8efcbac4b2cdd93c2646ad75a024df79cf5f2623
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 295cfe41e66791233ce7057a55717714902db9a7
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121722589"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124806521"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Azure Logic Apps で受信 HTTPS 要求を受信して応答する
 
@@ -29,6 +29,9 @@ ms.locfileid: "121722589"
 この記事では、ロジック アプリが受信呼び出しを受信してそれに応答できるように Request トリガーと Response アクションを使用する方法について説明します。
 
 [トランスポート層セキュリティ (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security) (以前の Secure Sockets Layer (SSL))、[Azure Active Directory Open Authentication (Azure AD OAuth)](../active-directory/develop/index.yml)、Azure API Management によるロジック アプリの公開、または受信呼び出しを発信する IP アドレスの制限などの、ロジック アプリへの受信呼び出しのセキュリティ、認可、および暗号化の詳細については、[アクセスとデータのセキュリティ保護に関するページの「要求ベースのトリガーへの受信呼び出しへのアクセス」](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests)を参照してください。
+
+> [!NOTE]
+> シングルテナント Azure Logic Apps の **ロジック アプリ (Standard)** リソースの種類の場合、要求トリガーや HTTP Webhook トリガーなどの要求ベースのトリガーへの受信呼び出しでは、Azure AD OAuth は現在使用できません。
 
 ## <a name="prerequisites"></a>前提条件
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/09/2021
 ms.reviewer: cynthn, jushiman
 ms.custom: template-how-to
-ms.openlocfilehash: 30a010f695282f6cad8757ea15fa295d645abd7f
-ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+ms.openlocfilehash: 8b6e2ba3c65b5fd521bdb6326069ce5d8be05599
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123273300"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128564887"
 ---
 # <a name="modify-a-capacity-reservation-preview"></a>容量予約を変更する (プレビュー)
 
@@ -71,17 +71,14 @@ ms.locfileid: "123273300"
 予約された数量を更新するには、更新された `capacityToReserve` プロパティを指定して `New-AzCapacityReservation` を使用します。
 
 ```powershell-interactive
-New-AzCapacityReservation
+Update-AzCapacityReservation
 -ResourceGroupName "myResourceGroup"
--Location "eastus"
--Zone "1"
 -ReservationGroupName "myCapacityReservationGroup"
 -Name "myCapacityReservation"
--Sku "Standard_D2s_v3"
 -CapacityToReserve 5
 ```
 
-詳細については、Azure PowerShell コマンドの「[New-AzCapacityReservation](/powershell/module/az.compute/new-azcapacityreservation)」を参照してください。
+詳細については、Azure PowerShell コマンド「[Update-AzCapacityReservation](/powershell/module/az.compute/update-azcapacityreservation)」を参照してください。
 
 --- 
 <!-- The three dashes above show that your section of tabbed content is complete. Don't remove them :) -->
@@ -152,7 +149,7 @@ New-AzCapacityReservation
 
 1. 以下、具体例に沿って説明します。 
     1. ターゲット VM サイズがグループの一部ではない場合は、ターゲット VM の[新しい容量予約を作成](capacity-reservation-create.md)します 
-    1. ターゲット VM サイズがグループに既に存在する場合は、[仮想マシンのサイズを変更します](.\windows\resize-vm.md) 
+    1. ターゲット VM サイズがグループに既に存在する場合は、[仮想マシンのサイズを変更します](resize-vm.md) 
 
 ### <a name="portal"></a>[ポータル](#tab/portal2)
 
@@ -162,7 +159,7 @@ New-AzCapacityReservation
 1. **[予約]** を選択します 
 1. 各予約に予約されている "*VM サイズ*" を確認します 
     1. ターゲット VM サイズがグループの一部ではない場合は、ターゲット VM の[新しい容量予約を作成](capacity-reservation-create.md)します 
-    1. ターゲット VM サイズがグループに既に存在する場合は、[仮想マシンのサイズを変更します](.\windows\resize-vm.md) 
+    1. ターゲット VM サイズがグループに既に存在する場合は、[仮想マシンのサイズを変更します](resize-vm.md) 
 
 ### <a name="powershell"></a>[PowerShell](#tab/powershell2)
 
@@ -190,7 +187,7 @@ New-AzCapacityReservation
 
 1. 以下、具体例に沿って説明します。 
     1. ターゲット VM サイズがグループの一部ではない場合は、ターゲット VM の[新しい容量予約を作成](capacity-reservation-create.md)します 
-    1. ターゲット VM サイズがグループに既に存在する場合は、[仮想マシンのサイズを変更します](.\windows\resize-vm.md) 
+    1. ターゲット VM サイズがグループに既に存在する場合は、[仮想マシンのサイズを変更します](resize-vm.md) 
 
 
 詳細については、Azure PowerShell コマンド「[Get-AzCapacityReservationGroup](/powershell/module/az.compute/get-azcapacityreservationgroup)」、「[Get-AzCapacityReservation](/powershell/module/az.compute/get-azcapacityreservation)」を参照してください。

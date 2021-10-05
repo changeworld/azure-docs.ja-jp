@@ -6,13 +6,13 @@ ms.author: viseshag
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 08/10/2021
-ms.openlocfilehash: 8bd100826564ac865a17bf869ad54ce3f9ceef5d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/27/2021
+ms.openlocfilehash: 8004ef319efc08610f9c1a5de16b7c430d51d666
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121781078"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129209181"
 ---
 # <a name="view-edit-and-delete-assets-in-purview-catalog"></a>Purview カタログで資産を表示、編集、および削除する
 
@@ -71,7 +71,7 @@ Purview で資産を検出するには、次のいずれかを使用します。
 
 ## <a name="editing-assets"></a>資産の編集
 
-資産を編集するには、資産の左上隅にある編集アイコンをクリックします。
+資産を編集するには、資産の左上隅にある編集アイコンを選択します。
 
 :::image type="content" source="media/catalog-asset-details/asset-edit-delete.png" alt-text="資産の編集と削除のボタン":::
 
@@ -89,7 +89,7 @@ Purview で資産を検出するには、次のいずれかを使用します。
 
 ## <a name="deleting-assets"></a>資産の削除
 
-資産を削除するには、資産の名前の下にある削除アイコンをクリックします。
+資産を削除するには、資産の名前の下にある削除アイコンを選択します。
 
 ### <a name="delete-behavior-explained"></a>削除動作の説明
 

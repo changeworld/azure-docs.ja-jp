@@ -8,75 +8,78 @@ metadata:
   ms.topic: article
   ms.date: 04/22/2020
   ms.author: errobin
-  ms.openlocfilehash: 912eba524c212878735a26ba7b340887e088bcbb
-  ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+  ms.openlocfilehash: 65fdc072fed31da0ad452a3ef5426b6e53f9c47f
+  ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/13/2021
-  ms.locfileid: "121744189"
+  ms.lasthandoff: 09/24/2021
+  ms.locfileid: "128556316"
 title: Load Balancer に関してよく寄せられる質問
 summary: ''
 sections:
 - name: 無視
   questions:
   - question: >
-      What types of Load Balancer exist?
-    answer: "Internal load balancers which balance traffic within a VNET and external load balancers which balance traffic to and from an internet connected endpoint. For more information, see [Load Balancer Types](./load-balancer-overview.md). \n\nFor both these types, Azure offers a Basic SKU and Standard SKU that have different functional, performance, security and health tracking capabilities. These differences are explained in our [SKU Comparison](skus.md) article.\n"
+      Azure Load Balancer には、どんな種類がありますか?
+    answer: "VNET 内のトラフィックを負荷分散する内部ロード バランサーと、インターネットに接続されたエンドポイントとの間のトラフィックを負荷分散する外部ロード バランサーがあります。 詳細については、[Load Balancer の種類](./load-balancer-overview.md)に関するページを参照してください。 \n\nこれらのどちらの種類についても、Azure では、さまざまな機能、パフォーマンス、セキュリティ、正常性の追跡機能を含む Basic SKU と Standard SKU が提供されています。 これらの違いについては、記事「[SKU の比較](skus.md)」で説明しています。\n"
   - question: >
-      How can I upgrade from a Basic to a Standard Load Balancer?
+      Basic Load Balancer から Standard Load Balancer にアップグレードするには、どうすればよいですか?
     answer: >
-      See the [upgrade from Basic to Standard](upgrade-basic-standard.md) article for an automated script and guidance on upgrading a Load Balancer SKU.
+      Load Balancer の SKU をアップグレードするための自動スクリプトとガイダンスについては、[Basic から Standard へのアップグレード](upgrade-basic-standard.md)に関する記事を参照してください。
   - question: >
-      What are the different load-balancing options in Azure?
+      Azure の負荷分散オプションには、どのような違いがありますか?
     answer: >
-      See the [load balancer technology guide](/azure/architecture/guide/technology-choices/load-balancing-overview)  for the available load-balancing services and recommended uses for each.
+      使用可能な負荷分散サービスとそれぞれの推奨される使用方法については、[ロード バランサーのテクノロジ ガイド](/azure/architecture/guide/technology-choices/load-balancing-overview)を参照してください。
   - question: >
-      Where can I find Load Balancer ARM templates?
+      Azure Load Balancer の ARM テンプレートはどこで入手できますか?
     answer: >
-      See the [list of Azure Load Balancer quickstart templates](/azure/templates/microsoft.network/loadbalancers#quickstart-templates) for ARM templates of common deployments.
+      一般的なデプロイの ARM テンプレートについては、[Azure Load Balancer クイックスタート テンプレート](/azure/templates/microsoft.network/loadbalancers#quickstart-templates)の一覧を参照してください。
   - question: >
-      How are inbound NAT rules different from load-balancing rules?
+      インバウンド NAT 規則と負荷分散規則には、どのような違いがありますか?
     answer: >
-      NAT rules are used to specify a backend resource to route traffic to. For example, configuring a specific load balancer port to send RDP traffic to a specific VM. Load-balancing rules are used to specify a pool of backend resources to route traffic to, balancing the load across each instance. For example, a load balancer rule can route TCP packets on port 80 of the load balancer across a pool of web servers.
+      NAT 規則は、トラフィックをルーティングするバックエンド リソースを指定するために使用されます。 たとえば、特定の VM に RDP トラフィックを送信するように特定のロード バランサー ポートを構成することができます。 負荷分散規則は、トラフィックをルーティングするバックエンド リソースのプールを指定して、各インスタンス間で負荷を分散します。 たとえば、負荷分散規則では、ロード バランサーのポート 80 上の TCP パケットを Web サーバーのプール全体にルーティングできます。
   - question: >
-      What is IP 168.63.129.16?
+      IP 168.63.129.16 とは何か?
     answer: >
-      The virtual IP address for the host tagged as the Azure infrastructure Load Balancer where the Azure Health Probes originate. When configuring backend instances, they must allow traffic from this IP address to successfully respond to health probes. This rule does not interact with access to your Load Balancer frontend. If you're not using the Azure Load Balancer, you can override this rule. You can learn more about service tags [here](../virtual-network/service-tags-overview.md#available-service-tags).
+      Azure の正常性プローブが開始される Azure インフラストラクチャのロード バランサーとしてタグ付けされたホストの仮想 IP アドレスです。 バックエンド インスタンスを構成するとき、正常性プローブに正常に応答するために、この IP アドレスからのトラフィックを許可する必要があります。 この規則は、Load Balancer フロントエンドへのアクセスには影響しません。 Azure ロード バランサーを使用していない場合は、この規則を無視できます。 サービス タグの詳細については、[こちら](../virtual-network/service-tags-overview.md#available-service-tags)を参照してください。
   - question: >
-      Can I use Global VNet peering with Basic Load Balancer?
+      Basic Load Balancer でグローバル VNet ピアリングを使用できますか?
     answer: >
-      No. Basic Load Balancer does not support Global VNET peering. You can use a Standard Load Balancer instead. See the [upgrade from Basic to Standard](upgrade-basic-standard.md) article for seamless upgrade.
+      いいえ。 Basic Load Balancer では、グローバル VNET ピアリングはサポートされていません。 代わりに Standard ロード バランサーを使用できます。 シームレスなアップグレードについては、[Basic から Standard へのアップグレード](upgrade-basic-standard.md)に関する記事を参照してください。
   - question: >
-      How can I discover the public IP that an Azure VM uses?
-    answer: "There are many ways to determine the public source IP address of an outbound connection. OpenDNS provides a service that can show you the public IP address of your VM.\nBy using the nslookup command, you can send a DNS query for the name myip.opendns.com to the OpenDNS resolver. The service returns the source IP address that was used to send the query. When you run the following query from your VM, the response is the public IP used for that VM:\n\n ```nslookup myip.opendns.com resolver1.opendns.com```\n \n"
+      Azure VM で使用されているパブリック IP を検出するにはどうすればよいですか?
+    answer: "送信接続のパブリック ソース IP アドレスを判別する方法は多数あります。 OpenDNS によって提供されるサービスで、VM のパブリック IP アドレスを表示できます。\nnslookup コマンドを使用することで、名前 myip.opendns.com に関する DNS クエリを OpenDNS Resolver に送信できます。 このサービスは、クエリの送信に使用されたソース IP アドレスを返します。 VM から次のクエリを実行すると、その VM で使用されるパブリック IP が応答として返されます。\n\n ```nslookup myip.opendns.com resolver1.opendns.com```\n \n"
   - question: >
-      Can I add a VM from the same availability set to different backend pools of a Load Balancer?
+      同じ可用性セットから Load Balancer の異なるバックエンド プールに VM を追加することはできますか?
     answer: >
-      No, this is not possible.
+      いいえ、それはできません。
   - question: >
-      What is the maximum data throughput that can be achieved via an Azure Load Balancer?
+      Azure Load Balancer で実現できる最大データ スループットはどのくらいですか?
     answer: >
-      Since Azure LB is a pass-through network load balancer, throughput limitations are dictated by the type of virtual machine used in the backend pool. To learn about other network throughput related information refer to [Virtual Machine network throughput](../virtual-network/virtual-machine-network-throughput.md).
+      Azure LB はパススルー ネットワーク ロード バランサーであるため、スループットの制限は、バックエンド プールで使用される仮想マシンの種類によって決まります。 その他のネットワーク スループットに関連する情報については、「[仮想マシンのネットワーク スループット](../virtual-network/virtual-machine-network-throughput.md)」を参照してください。
   - question: >
-      How do connections to Azure Storage in the same region work?
+      同じリージョン内の Azure Storage への接続はどのように機能しますか?
     answer: >
-      Having outbound connectivity via the scenarios above is not necessary to connect to Storage in the same region as the VM. If you do not want this, use network security groups (NSGs) as explained above. For connectivity to Storage in other regions, outbound connectivity is required. Please note that when connecting to Storage from a VM in the same region, the source IP address in the Storage diagnostic logs will be an internal provider address, and not the public IP address of your VM. If you wish to restrict access to your Storage account to VMs in one or more Virtual Network subnets in the same region, use [Virtual Network service endpoints](../virtual-network/virtual-network-service-endpoints-overview.md) and not your public IP address when configuring your storage account firewall. Once service endpoints are configured, you will see your Virtual Network private IP address in your Storage diagnostic logs and not the internal provider address.
+      上記のシナリオでの送信接続の使用では、VM と同じリージョン内の Storage に接続する必要はありません。 これを望まない場合は、前述のようにネットワーク セキュリティ グループ (NSG) を使用します。 他のリージョン内の Storage への接続では、送信接続が必要です。 同じリージョン内の VM から Storage に接続する場合、Storage 診断ログ内のソース IP アドレスは、VM のパブリック IP アドレスではなく、内部プロバイダー アドレスになることに注意してください。 お使いの Storage アカウントへのアクセスを、同じリージョン内の 1 つ以上の仮想ネットワーク サブネット内の VM に制限する場合は、ストレージ アカウントのファイアウォールを構成するときに、パブリック IP アドレスではなく、[仮想ネットワーク サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)を使用します。 サービス エンドポイントを構成すると、診断ログには、内部プロバイダー アドレスではなく、お使いの仮想ネットワークのプライベート IP アドレスが表示されます。
   - question: >
-      Does Azure Load Balancer support TLS/SSL termination?
+      Azure Load Balancer は TLS/SSL 終端をサポートしていますか?
     answer: >
-      No, Azure Load Balancer doesn't currently support termination as it is a pass through network load balancer. Application Gateway could be a potential solution if your application requires this.
+      いいえ。Azure Load Balancer はパススルー ネットワーク ロード バランサーであるため、現在、終端をサポートしていません。 お使いのアプリケーションでこれが必要な場合は、Application Gateway が解決策になる可能性があります。
   - question: >
-      How do I configure my Load Balancer with an Azure Firewall?
+      Azure Firewall を使用してロード バランサーを構成するには、どうすればよいですか?
     answer: >
-      Follow these [instructions](../firewall/integrate-lb.md) to configure your Load Balancer with an Azure Firewall.
+      この記事に記載されている[手順](../firewall/integrate-lb.md)に従って、Azure Firewall を使用してロード バランサーを構成してください。
   - question: >
-      What are best practices with respect to outbound connectivity?
-    answer: "Standard Load Balancer and Standard Public IP introduces abilities and different behaviors to outbound connectivity. They are not the same as Basic SKUs. If you want outbound connectivity when working with Standard SKUs, you must explicitly define it either with Standard Public IP addresses or Standard public Load Balancer. This includes creating outbound connectivity when using an internal Standard Load Balancer. We recommend you always use outbound rules on a Standard public Load Balancer. That means when an internal Standard Load Balancer is used, you need to take steps to create outbound connectivity for the VMs in the backend pool if outbound connectivity is desired. In the context of outbound connectivity,a single standalone VM, all the VM's in an Availability Set, all the instances in a virtual machine scale set behave as a group. This means, if a single VM in an Availability Set is associated with a Standard SKU, all VM instances within this Availability Set now behave by the same rules as if they are associated with Standard SKU, even if an individual instance is not directly associated with it. This behavior is also observed in the case of a standalone VM with multiple network interface cards attached to a load balancer. If one NIC is added as a standalone, it will have the same behavior. Carefully review this entire document to understand the overall concepts, review [Standard Load Balancer](./load-balancer-overview.md) for differences between SKUs, and review [outbound rules](load-balancer-outbound-connections.md#outboundrules).\n Using outbound rules allows you fine grained control over all aspects of outbound connectivity.\n \n"
-  - question: >
-      How can I view the traffic from my configured health probe(s)?
+      参加しているバックエンド プール VM から自分の内部ロード バランサーのフロントエンドにアクセスできますか?
     answer: >
-      To view the traffic sent to each backend instance from the health probe you can use IP stack statistics with a tool such as netstat. When looking through this tool, the health probe traffic will be coming from 168.63.129.16.
+      いいえ。Azure Load Balancer で、このシナリオはサポートされていません。 このトピックの詳細については、[トラブルシューティング ページ](https://docs.microsoft.com/azure/load-balancer/load-balancer-troubleshoot-backend-traffic#cause-4-accessing-the-internal-load-balancer-frontend-from-the-participating-load-balancer-backend-pool-vm)を参照してください。
   - question: >
-      If I enable DDoS Protection Standard for my load balancer frontend, what does that mean for the resources in the backend pool?
-    answer: "When enabled on the frontend IP for a load balancer, DDoS Protection Standard will apply protection for all backend pool resources that are accessible through that public IP.  Please see [Azure DDoS Protection Reference](../ddos-protection/ddos-protection-reference-architectures.md) for more details. \n"
-additionalContent: "\n## Next steps\n   If your question is not listed above, please send feedback about this page with your question. This will create a GitHub issue for the product team to ensure all of our valued customer questions are answered."
+      アウトバウンド接続に関するベスト プラクティスは何ですか。
+    answer: "Standard Load Balancer および Standard パブリック IP では、アウトバウンド接続に機能とさまざまな動作が導入されています。 これらは Basic SKU と同じではありません。 Standard SKU を操作するときにアウトバウンド接続が必要な場合は、Standard パブリック IP アドレスまたは Standard パブリック Load Balancer で明示的に定義する必要があります。 これには、内部 Standard Load Balancer を使用する場合のアウトバウンド接続の作成が含まれます。 Standard パブリック Load Balancer では常にアウトバウンド規則を使用することをお勧めします。 つまり、内部 Standard Load Balancer が使用されているときに、アウトバウンド接続が必要な場合、バックエンド プール内の VM に対してアウトバウンド接続を作成する手順を行う必要があります。 アウトバウンド接続のコンテキストでは、単一スタンドアロン VM、可用性セット内のすべての VM、仮想マシン スケール セットのすべてのインスタンスがグループとして動作します。 つまり、可用性セット内の単一 VM が Standard SKU に関連付けられている場合、この可用性セット内のすべての VM インスタンスが、Standard SKU に関連付けられている場合と同じ規則に従って動作するようになります。個々のインスタンスが直接関連付けられていない場合でも同様です。 この動作は、ロード バランサーに複数のネットワーク インターフェイスカードが接続されているスタンドアロン VM の場合にも見られます。 1 つの NIC をスタンドアロンとして追加された場合、同じ動作が行われます。 このドキュメント全体をよく読み、全体的な概念を理解し、SKU 間の違いについて [Standard Load Balancer](./load-balancer-overview.md) を確認し、[アウトバウンド規則](load-balancer-outbound-connections.md#outboundrules)を確認してください。\nアウトバウンド規則を使用することで、アウトバウンド接続のすべての側面を細かく制御できます。\n \n"
+  - question: " 自分が構成した正常性プローブからのトラフィックは、どうすれば確認できますか?\n"
+    answer: >
+      正常性プローブから各バックエンド インスタンスに送信されたトラフィックを表示するには、netstat などのツールで IP スタックの統計情報を使用してください。 このツールで見ると、正常性プローブのトラフィックは 168.63.129.16 が送信元となります。
+  - question: >
+      ロード バランサー フロントエンドに対して DDoS Protection Standard を有効にした場合、それはバックエンド プール内のリソースにとってはどのような意味がありますか?
+    answer: "ロード バランサー用のフロントエンド IP に対して DDoS Protection Standard を有効にすると、それによって、該当するパブリック IP を介してアクセスできるすべてのバックエンド プール リソースに保護が適用されます。  詳細については、[Azure DDoS Protection の参照](../ddos-protection/ddos-protection-reference-architectures.md)に関するページを参照してください。 \n"
+additionalContent: "\n## <a name=\"next-steps\"></a>次のステップ\n   ご不明な点が上記の一覧にない場合は、このページに関するフィードバックにご質問を添えてお送りください。 お送りいただくと、製品チームでは、お客様からの貴重なご質問すべてにお答えできるよう、GitHub 問題を作成しています。"

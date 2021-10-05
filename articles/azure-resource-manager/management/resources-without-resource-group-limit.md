@@ -3,12 +3,12 @@ title: 数が 800 に制限されないリソース
 description: リソース グループ内に 800 より多くのインスタンスを作成できる Azure リソースの種類の一覧を示します。
 ms.topic: conceptual
 ms.date: 07/13/2021
-ms.openlocfilehash: e9145500ade55aa8cb9061b6da125e2bd8a0f5c5
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 123148a863f74a6490a524ecc2d39bc44e65299d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113769247"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124807045"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>リソース グループあたり 800 インスタンスに制限されないリソース
 
@@ -16,6 +16,7 @@ ms.locfileid: "113769247"
 
 リソースの種類によっては、800 インスタンスの制限を解除するためにサポートに連絡する必要があります。 この記事では、それらのリソースの種類について注記されています。
 
+一部のリソースでは、リージョンあたりのインスタンス数に制限があります。 この制限は、リソース グループあたり 800 インスタンスとは異なります。 リージョンごとにインスタンスを確認するには、Azure portal を使用します。 左側のウィンドウでサブスクリプションと **[使用量 + クォータ]** を選択します。 詳細については、「[制限に照らしたリソース使用量の確認](../../networking/check-usage-against-limits.md)」を参照してください。 
 
 ## <a name="microsoftalertsmanagement"></a>Microsoft.AlertsManagement
 

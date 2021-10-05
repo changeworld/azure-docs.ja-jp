@@ -3,12 +3,12 @@ title: Azure Arc 対応サーバー エージェントの管理
 description: この記事では、Azure Arc 対応サーバー Connected Machine エージェントのライフサイクル中に通常実行する、さまざまな管理タスクについて説明します。
 ms.date: 08/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: 5e80d240c9b5ce8795de8baee3214d256d180e0f
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: d8a8613a6fc97fd2510779715d392b9534598950
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122769851"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124807453"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>Connected Machine エージェントの管理と保守
 
@@ -16,11 +16,11 @@ Windows または Linux 用 Azure Arc 対応サーバー Connected Machine エ�
 
 ## <a name="before-uninstalling-agent"></a>エージェントをアンインストールする前に
 
-Connected Machine エージェントを Arc 対応サーバーから削除する前に、次の点を考慮して、予期しない問題または Azure の課金に追加されるコストを回避してください。
+Connected Machine エージェントを Azure Arc 対応サーバーから削除する前に、予期しない問題または Azure の課金に追加されるコストを回避するため、次の点を考慮してください。
 
-* 対応サーバーに Azure VM 拡張機能をデプロイし、Connected Machine エージェントを削除した場合、またはリソース グループ内の Arc 対応サーバーを表すリソースを削除した場合、それらの拡張機能は引き続き実行され、通常の操作を実行します。
+* 対応サーバーに Azure VM 拡張機能をデプロイし、Connected Machine エージェントを削除した場合、またはリソース グループ内の Azure Arc 対応サーバーを表すリソースを削除した場合も、それらの拡張機能は引き続き実行され、通常の操作が実行されます。
 
-* リソース グループ内で Arc 対応サーバーを表すリソースを削除したが、VM 拡張機能をアンインストールしていない場合は、マシンを再登録しても、インストールされている VM 拡張機能を管理することはできません。
+* リソース グループ内で Azure Arc 対応サーバーを表すリソースを削除したが、VM 拡張機能をアンインストールしていない場合は、マシンを再登録しても、インストールされている VM 拡張機能を管理することはできません。
 
 Azure Arc 対応サーバーで管理する必要がなくなったサーバーまたはマシンについては、次の手順に従って管理を停止する必要があります。
 
@@ -30,7 +30,7 @@ Azure Arc 対応サーバーで管理する必要がなくなったサーバー�
 
     * マシンまたはサーバーで `azcmagent disconnect` コマンドを実行する。
 
-    * Azure portal で選択した登録済み Arc 対応サーバーから、上部のバーの **[削除]** を選択する。
+    * Azure portal で選択した登録済み Azure Arc 対応サーバーから、上部のバーの **[削除]** を選択する。
 
     * [Azure CLI](../../azure-resource-manager/management/delete-resource-group.md?tabs=azure-cli#delete-resource) または [Azure PowerShell](../../azure-resource-manager/management/delete-resource-group.md?tabs=azure-powershell#delete-resource) を使用する。 `ResourceType` パラメーターには `Microsoft.HybridCompute/machines` を使用します。
 
@@ -40,7 +40,7 @@ Azure Arc 対応サーバーで管理する必要がなくなったサーバー�
 
 Azure Arc 対応サーバーに接続されている Linux または Windows マシンの名前を変更しても、Azure のリソース名は変更不可であるため、新しい名前は自動的には認識されません。 他の Azure リソースと同様に、新しい名前を使用するためにリソースを削除して再作成する必要があります。
 
-Arc 対応サーバーの場合、マシンの名前を変更する前に、VM 拡張機能を削除してから続行する必要があります。
+Azure Arc 対応サーバーの場合、マシンの名前を変更する前に、VM 拡張機能を削除してから続行する必要があります。
 
 > [!NOTE]
 > インストール済みの拡張機能は引き続き実行され、この手順の完了後に通常の操作が実行されますが、管理することはできません。 マシンに拡張機能を再デプロイしようとすると、予期しない動作が発生することがあります。
@@ -52,17 +52,17 @@ Arc 対応サーバーの場合、マシンの名前を変更する前に、VM �
 
 2. [Azure portal](manage-vm-extensions-portal.md#uninstall-extensions) から、または [Azure CLI](manage-vm-extensions-cli.md#remove-an-installed-extension) を使用するか [Azure PowerShell](manage-vm-extensions-powershell.md#remove-an-installed-extension) を使用して、インストールされた VM 拡張機能を削除します。
 
-3. **azcmagent** ツールと [Disconnect](manage-agent.md#disconnect) パラメーターを使用して、Azure Arc からマシンを切断し、Azure からマシン リソースを削除します。 マシンを Arc 対応サーバーから切断しても、Connected Machine エージェントは削除されず、このプロセスの一環としてエージェントを削除する必要はありません。 azcmagent は、対話形式でログオンしているときに手動で実行できます。または、複数のエージェントのオンボードに使用したのと同じサービス プリンシパルを使用するか、Microsoft ID プラットフォームの[アクセス トークン](../../active-directory/develop/access-tokens.md)を使用して自動化できます。 サービス プリンシパルを使用してマシンを Azure Arc 対応サーバーに登録していない場合は、次の[記事](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale)を参照して、サービス プリンシパルを作成してください。
+3. **azcmagent** ツールと [Disconnect](manage-agent.md#disconnect) パラメーターを使用して、Azure Arc からマシンを切断し、Azure からマシン リソースを削除します。 マシンを Azure Arc 対応サーバーから切断しても、Connected Machine エージェントは削除されないので、このプロセスの一環としてエージェントを削除する必要はありません。 azcmagent は、対話形式でログオンしているときに手動で実行できます。または、複数のエージェントのオンボードに使用したのと同じサービス プリンシパルを使用するか、Microsoft ID プラットフォームの[アクセス トークン](../../active-directory/develop/access-tokens.md)を使用して自動化できます。 サービス プリンシパルを使用してマシンを Azure Arc 対応サーバーに登録していない場合は、次の[記事](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale)を参照して、サービス プリンシパルを作成してください。
 
 4. コンピューター名を変更します。
 
-5. もう一方のリージョンで Arc 対応サーバーに Connected Machine エージェントを再登録します。 [Connect](manage-agent.md#connect) パラメーターを指定して `azcmagent` ツールを実行し、この手順を完了します。
+5. Azure Arc 対応サーバーに Connected Machine エージェントを再登録します。 [Connect](manage-agent.md#connect) パラメーターを指定して `azcmagent` ツールを実行し、この手順を完了します。
 
-6. Arc 対応サーバーからマシンに最初にデプロイされた VM 拡張機能を再デプロイします。 Azure Policy 定義を使用して Azure Monitor for VMs (分析情報) エージェントまたは Log Analytics エージェントをデプロイした場合、それらのエージェントは、次の[評価サイクル](../../governance/policy/how-to/get-compliance-data.md#evaluation-triggers)の後に再デプロイされます。
+6. Azure Arc 対応サーバーからマシンに最初にデプロイされた VM 拡張機能を再デプロイします。 Azure Policy 定義を使用して Azure Monitor for VMs (分析情報) エージェントまたは Log Analytics エージェントをデプロイした場合、それらのエージェントは、次の[評価サイクル](../../governance/policy/how-to/get-compliance-data.md#evaluation-triggers)の後に再デプロイされます。
 
 ## <a name="upgrading-agent"></a>エージェントのアップグレード
 
-Azure Connected Machine エージェントは、バグの修正、安定性の向上、および新機能に対応するために定期的に更新されます。 [Azure Advisor](../../advisor/advisor-overview.md) を使用すると、最新バージョンのマシン エージェントを使用していないリソースが特定され、最新バージョンへのアップグレードが推奨されます。 Arc 対応サーバーを選択したときに表示される **[概要]** ページのバナーによって、または、Azure portal を介して Advisor にアクセスしたときに通知されます。
+Azure Connected Machine エージェントは、バグの修正、安定性の向上、および新機能に対応するために定期的に更新されます。 [Azure Advisor](../../advisor/advisor-overview.md) を使用すると、最新バージョンのマシン エージェントを使用していないリソースが特定され、最新バージョンへのアップグレードが推奨されます。 これは、Azure Arc 対応サーバーを選択したときに表示される **[概要]** ページのバナーによって、または、Azure portal を介して Advisor にアクセスしたときに通知されます。
 
 Windows および Linux 用の Azure Connected Machine エージェントは、要件に応じて、手動または自動で最新リリースにアップグレードできます。
 
@@ -218,7 +218,7 @@ Azcmagent ツール (Azcmagent.exe) を使用すると、インストール中�
 このパラメーターでは、マシンを表す Azure Resource Manager 内のリソースが、Azure で削除されることを指定します。 エージェントはマシンから削除されません。エージェントは個別にアンインストールします。 マシンが切断された後、Azure Arc 対応サーバーに再登録する場合は、`azcmagent connect` を使用して、Azure でその新しいリソースが作成されるようにします。
 
 > [!NOTE]
-> 1 つ以上の Azure VM 拡張機能を Arc 対応サーバーにデプロイし、その登録を Azure で削除した場合、拡張機能はまだインストールされています。 インストールされている拡張機能によっては、機能がアクティブに実行されていることを理解しておくことが重要です。 廃棄予定または Arc 対応サーバーによって管理されなくなったマシンは、最初に拡張機能を削除してから、その登録を Azure から削除する必要があります。
+> 1 つ以上の Azure VM 拡張機能を Azure Arc 対応サーバーにデプロイし、その登録を Azure で削除した場合、拡張機能はインストールされたままです。 インストールされている拡張機能によっては、機能がアクティブに実行されていることを理解しておくことが重要です。 廃止予定または Azure Arc 対応サーバーによって管理されなくなったマシンは、最初に拡張機能を削除してから、その登録を Azure から削除する必要があります。
 
 サービス プリンシパルを使用して切断するには、次のコマンドを実行します。
 
@@ -234,10 +234,10 @@ Azcmagent ツール (Azcmagent.exe) を使用すると、インストール中�
 
 ## <a name="remove-the-agent"></a>エージェントを削除する
 
-Windows または Linux の Connected Machine エージェントをマシンからアンインストールするには、次のいずれかの方法を実行します。 エージェントを削除しても、Arc 対応サーバーでマシンの登録が解除されたり、インストールしている Azure VM 拡張機能が削除されたりすることはありません。 Azure Arc 対応サーバーで管理する必要がなくなったサーバーまたはマシンについては、次の手順に従って管理を停止する必要があります。 
+Windows または Linux の Connected Machine エージェントをマシンからアンインストールするには、次のいずれかの方法を実行します。 エージェントを削除しても、Azure Arc 対応サーバーでマシンの登録が解除されたり、インストールしている Azure VM 拡張機能が削除されたりすることはありません。 Azure Arc 対応サーバーで管理する必要がなくなったサーバーまたはマシンについては、次の手順に従って管理を停止する必要があります。 
 
 1. [Azure CLI](manage-vm-extensions-cli.md#remove-an-installed-extension) を使用するか、[Azure PowerShell](manage-vm-extensions-powershell.md#remove-an-installed-extension) を使用して、コンピューターに残してきたくない、[Azure portal ](manage-vm-extensions-portal.md#uninstall-extensions) からインストールされた VM 拡張機能を削除します。
-1. `azcmagent disconnect` を実行してコンピューターの登録を解除し、Azure で Arc 対応のサーバー リソースを削除します。 それでも失敗する場合は、Azure でリソースを手動で削除できます。 そうでない場合、Azure でリソースが削除された場合は、サーバー上で `azcmagent disconnect --force-local-only` を実行してローカル構成を削除する必要があります。
+1. `azcmagent disconnect` を実行してコンピューターの登録を解除し、Azure で Azure Arc 対応のサーバー リソースを削除します。 それでも失敗する場合は、Azure でリソースを手動で削除できます。 そうでない場合、Azure でリソースが削除された場合は、サーバー上で `azcmagent disconnect --force-local-only` を実行してローカル構成を削除する必要があります。
 
 ### <a name="windows-agent"></a>Windows エージェント
 
@@ -306,7 +306,7 @@ Linux エージェントをアンインストールするために使用する�
 
 ## <a name="unregister-machine"></a>マシンの登録を解除する
 
-Azure のサポート サービスを利用してマシンの管理を行う予定がない場合は、次の手順を行って Arc 対応サーバーに対するマシンの登録を解除してください。 これらの手順を行うのは、Connected Machine エージェントをマシンから削除する前でも後でもかまいません。
+Azure のサポート サービスを利用してマシンの管理を行う予定がない場合は、次の手順を行って Azure Arc 対応サーバーに対するマシンの登録を解除してください。 これらの手順を行うのは、Connected Machine エージェントをマシンから削除する前でも後でもかまいません。
 
 1. [Azure portal](https://aka.ms/hybridmachineportal) に移動して、Azure Arc 対応サーバーを開きます。
 
@@ -317,7 +317,7 @@ Azure のサポート サービスを利用してマシンの管理を行う予�
 プロキシ サーバー経由でサービスと通信するようにエージェントを構成するか、デプロイ後にこの構成を削除するには、次のいずれかの方法を使用してこのタスクを完了します。 このシナリオでは、エージェントは HTTP プロトコルを使用してアウトバウンドの通信を行います。
 
 > [!NOTE]
-> Arc 対応サーバーでは、Connected Machine エージェントのプロキシとして [Log Analytics ゲートウェイ](../../azure-monitor/agents/gateway.md)を使用することはサポートされていません。
+> Azure Arc 対応サーバーでは、Connected Machine エージェントのプロキシとして [Log Analytics ゲートウェイ](../../azure-monitor/agents/gateway.md)を使用することはサポートされていません。
 >
 
 ### <a name="windows"></a>Windows

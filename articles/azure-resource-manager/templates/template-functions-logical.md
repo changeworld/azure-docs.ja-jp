@@ -2,13 +2,13 @@
 title: テンプレート関数 - 論理
 description: Azure Resource Manager テンプレート (ARM テンプレート) で論理値を判定するために使用する関数について説明します。
 ms.topic: conceptual
-ms.date: 05/13/2021
-ms.openlocfilehash: c69e10b660d5b7cbf768ea31fda6678d07053224
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 09/09/2021
+ms.openlocfilehash: b94f7aa38c708278f2ccf54a5592016873fcd285
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111959634"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124744357"
 ---
 # <a name="logical-functions-for-arm-templates"></a>ARM テンプレート用の論理関数
 
@@ -36,7 +36,7 @@ Resource Manager には、Azure Resource Manager テンプレート (ARM テン�
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |boolean |true かどうかを確認する最初の値。 |
 | arg2 |はい |boolean |true かどうかを確認する 2 番目の値。 |
-| 残りの引数 |いいえ |boolean |true かどうかを確認する追加の引数。 |
+| その他の引数 |いいえ |boolean |true かどうかを確認するその他の引数。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -44,29 +44,9 @@ Resource Manager には、Azure Resource Manager テンプレート (ARM テン�
 
 ### <a name="examples"></a>例
 
-次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/andornot.json)では、論理関数を使用する方法を示します。
+次の例では、論理関数を使用する方法を示します。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "resources": [],
-  "outputs": {
-    "andExampleOutput": {
-      "type": "bool",
-      "value": "[and(bool('true'), bool('false'))]"
-    },
-    "orExampleOutput": {
-      "type": "bool",
-      "value": "[or(bool('true'), bool('false'))]"
-    },
-    "notExampleOutput": {
-      "type": "bool",
-      "value": "[not(bool('true'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/logical/andornot.json":::
 
 前の例からの出力は次のようになります。
 
@@ -98,33 +78,9 @@ Resource Manager には、Azure Resource Manager テンプレート (ARM テン�
 
 ### <a name="examples"></a>例
 
-次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/bool.json)では、ブール値を文字列または整数と共に使用する方法を示します。
+次の例では、ブール値を文字列または整数と共に使用する方法を示します。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "resources": [],
-  "outputs": {
-    "trueString": {
-      "type": "bool",
-      "value": "[bool('true')]",
-    },
-    "falseString": {
-      "type": "bool",
-      "value": "[bool('false')]"
-    },
-    "trueInt": {
-      "type": "bool",
-      "value": "[bool(1)]"
-    },
-    "falseInt": {
-      "type": "bool",
-      "value": "[bool(0)]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/logical/bool.json":::
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
@@ -155,19 +111,7 @@ false 関数では、パラメーターは受け入れられません。
 
 次の例では、false の出力値が返されます。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "resources": [],
-  "outputs": {
-    "falseOutput": {
-      "type": "bool",
-      "value": "[false()]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/logical/false.json":::
 
 前の例からの出力は次のようになります。
 
@@ -201,30 +145,9 @@ false 関数では、パラメーターは受け入れられません。
 
 ### <a name="examples"></a>例
 
-次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/if.json)では、`if` 関数を使用する方法を示します。
+次の例は、`if` 関数の使用法を示しています。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "resources": [
-  ],
-  "outputs": {
-    "yesOutput": {
-      "type": "string",
-      "value": "[if(equals('a', 'a'), 'yes', 'no')]"
-    },
-    "noOutput": {
-      "type": "string",
-      "value": "[if(equals('a', 'b'), 'yes', 'no')]"
-    },
-    "objectOutput": {
-      "type": "object",
-      "value": "[if(equals('a', 'a'), json('{\"test\": \"value1\"}'), json('null'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/logical/if.json":::
 
 前の例からの出力は次のようになります。
 
@@ -302,29 +225,9 @@ false 関数では、パラメーターは受け入れられません。
 
 ### <a name="examples"></a>例
 
-次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/andornot.json)では、論理関数を使用する方法を示します。
+次の例では、論理関数を使用する方法を示します。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "resources": [],
-  "outputs": {
-    "andExampleOutput": {
-      "type": "bool",
-      "value": "[and(bool('true'), bool('false'))]",
-    },
-    "orExampleOutput": {
-      "type": "bool",
-      "value": "[or(bool('true'), bool('false'))]"
-    },
-    "notExampleOutput": {
-      "type": "bool",
-      "value": "[not(bool('true'))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/logical/andornot.json":::
 
 前の例からの出力は次のようになります。
 
@@ -334,22 +237,9 @@ false 関数では、パラメーターは受け入れられません。
 | orExampleOutput | Bool | True |
 | notExampleOutput | Bool | False |
 
-次の [テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json)では、**not** と [equals](template-functions-comparison.md#equals) を使用します。
+`not` を [equals](template-functions-comparison.md#equals) と共に使用する例を次に示します。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "resources": [
-  ],
-  "outputs": {
-    "checkNotEquals": {
-      "type": "bool",
-      "value": "[not(equals(1, 2))]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/logical/not-equals.json":::
 
 前の例からの出力は次のようになります。
 
@@ -371,7 +261,7 @@ false 関数では、パラメーターは受け入れられません。
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |boolean |true かどうかを確認する最初の値。 |
 | arg2 |はい |boolean |true かどうかを確認する 2 番目の値。 |
-| 残りの引数 |いいえ |boolean |true かどうかを確認する追加の引数。 |
+| その他の引数 |いいえ |boolean |true かどうかを確認するその他の引数。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -379,29 +269,9 @@ false 関数では、パラメーターは受け入れられません。
 
 ### <a name="examples"></a>例
 
-次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/andornot.json)では、論理関数を使用する方法を示します。
+次の例では、論理関数を使用する方法を示します。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "resources": [],
-  "outputs": {
-    "andExampleOutput": {
-      "value": "[and(bool('true'), bool('false'))]",
-      "type": "bool"
-    },
-    "orExampleOutput": {
-      "value": "[or(bool('true'), bool('false'))]",
-      "type": "bool"
-    },
-    "notExampleOutput": {
-      "value": "[not(bool('true'))]",
-      "type": "bool"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/logical/andornot.json":::
 
 前の例からの出力は次のようになります。
 
@@ -431,19 +301,7 @@ true 関数では、パラメーターは受け入れられません。
 
 次の例では、true の出力値が返されます。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "resources": [],
-  "outputs": {
-    "trueOutput": {
-      "type": "bool",
-      "value": "[true()]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/logical/true.json":::
 
 前の例からの出力は次のようになります。
 

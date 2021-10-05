@@ -5,12 +5,12 @@ services: container-service
 ms.service: container-service
 ms.topic: article
 ms.date: 10/19/2020
-ms.openlocfilehash: f46a421ae2ad1a4d9c590c7e0b47784760ebcb9f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: c943db2577de8fc1e4adc0e9cfbf408bffb5f2c6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107782803"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128585374"
 ---
 # <a name="add-a-spot-node-pool-to-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes Service (AKS) クラスターにスポット ノード プールを追加する
 
@@ -69,7 +69,7 @@ az aks nodepool add \
 このコマンドではまた、スポット ノード プールで使用することが推奨される[クラスター オートスケーラー][cluster-autoscaler]も有効になります。 クラスターで実行されているワークロードに基づいて、クラスター オートスケーラーは、ノード プール内のノードの数をスケールアップおよびスケールダウンします。 スポット ノード プールでは、追加のノードが引き続き必要な場合、クラスター オートスケーラーは排除の後にノードの数をスケールアップします。 ノード プールに含めることができるノードの最大数を変更する場合は、クラスター オートスケーラーに関連付けられている `maxCount` 値も調整する必要があります。 クラスター オートスケーラーを使用しない場合は、排除により、スポット プールが最終的に 0 まで減少し、追加のスポット ノードを受信するための手動操作が必要になります。
 
 > [!Important]
-> スポット ノード プールでは、バッチ処理ジョブやテスト環境などの、中断を処理できるワークロードのみをスケジュールしてください。 スポット ノード プールでノードの排除を処理できるワークロードのみが確実にスケジュールされるようにするには、スポット ノード プールで [taint と toleration][taints-tolerations] を設定することをお勧めします。 たとえば、上のコマンドは既定で *kubernetes.azure.com/scalesetpriority=spot:NoSchedule* の taint を追加するため、このノードでは対応する toleration を持つポッドのみがスケジュールされます。
+> スポット ノード プールでは、バッチ処理ジョブやテスト環境などの、中断を処理できるワークロードのみをスケジュールしてください。 スポット ノード プールでノードの排除を処理できるワークロードのみが確実にスケジュールされるようにするには、スポット ノード プールで [taint と toleration][taints-tolerations] を設定することをお勧めします。 たとえば、上のコマンドでは既定で *kubernetes.azure.com/scalesetpriority=spot:NoSchedule* の taint を追加するため、このノード上では対応する toleration を持つポッドのみがスケジュールされます。
 
 ## <a name="verify-the-spot-node-pool"></a>スポット ノード プールを確認する
 

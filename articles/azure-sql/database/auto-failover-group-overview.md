@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: BustosMSFT
 ms.author: robustos
 ms.reviewer: mathoma
-ms.date: 08/30/2021
-ms.openlocfilehash: 68c657b7e8e045b8756bc2db8de2b4024b7530b8
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.date: 09/14/2021
+ms.openlocfilehash: 71b2e494d8a570c38180f4dfc86bda87b23f4e95
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123256495"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128554587"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>自動フェールオーバー グループを使用して、複数のデータベースの透過的な調整されたフェールオーバーを有効にする
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -222,7 +222,7 @@ OLTP 操作を実行するときに、サーバー URL として `<fog-name>.dat
 
 ## <a name="best-practices-for-sql-managed-instance"></a>SQL Managed Instance のベスト プラクティス
 
-自動フェールオーバー グループはプライマリ インスタンスに構成する必要があり、それを別の Azure リージョンのセカンダリ インスタンスに接続します。  インスタンス内のすべてのデータベースは、セカンダリ インスタンスにレプリケートされます。
+自動フェールオーバー グループはプライマリ インスタンスに構成する必要があり、それを別の Azure リージョンのセカンダリ インスタンスに接続します。  インスタンス内のすべてのユーザー データベースは、セカンダリ インスタンスにレプリケートされます。 _master_ や _msdb_ などのシステム データベースはレプリケートされません。
 
 次の図に、マネージド インスタンスと自動フェールオーバー グループを使用する、geo 冗長クラウド アプリケーションの一般的な構成を示します。
 
@@ -320,12 +320,13 @@ OLTP 操作を実行するときに、サーバー URL として `<fog-name>.zon
 > フェールオーバー グループを削除すると、リスナー エンドポイントの DNS レコードも削除されます。 その時点では、他のユーザーが同じ名前のフェールオーバー グループまたはサーバー エイリアスを作成する可能性がゼロではなく、それが起こると、そのフェールオーバー グループやサーバー エイリアスは再び使用できなくなります。 このリスクを最小限に抑えるために、一般的なフェールオーバー グループ名は使用しないでください。
 
 ### <a name="enable-scenarios-dependent-on-objects-from-the-system-databases"></a>システム データベースのオブジェクトに依存するシナリオを実現させる
-システム データベースは、フェールオーバー グループのセカンダリ インスタンスにはレプリケートされません。 セカンダリ インスタンスで、システム データベースのオブジェクトに依存するシナリオを実現させるには、必ず、セカンダリに同じオブジェクトを作成してください。 たとえば、セカンダリ インスタンスで同じログインを使用する予定の場合は、必ず、同じ SID でそれらを作成してください。 
+システム データベースは、フェールオーバー グループのセカンダリ インスタンスにはレプリケート **されません**。 システム データベースのオブジェクトに依存するシナリオを実現するには、セカンダリ インスタンスに同じオブジェクトを作成し、プライマリ インスタンスとの同期を維持する必要があります。 たとえば、セカンダリ インスタンスで同じログインを使用する予定の場合は、必ず、同じ SID でそれらを作成してください。 
 ```SQL
 -- Code to create login on the secondary instance
 CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 ``` 
-
+### <a name="synchronize-instance-properties-and-retention-policies-between-primary-and-secondary-instance"></a>プライマリ インスタンスとセカンダリ インスタンスの間でインスタンスのプロパティと保持ポリシーを同期する
+フェールオーバー グループのインスタンスは個別の Azure リソースのままであり、プライマリ インスタンスの構成に加えた変更は、セカンダリ インスタンスに自動的にレプリケートされるわけではありません。 プライマリ インスタンス _と_ セカンダリ インスタンスの両方で、関連するすべての変更を実行する必要があります。 たとえば、プライマリ インスタンスでバックアップ ストレージの冗長性または長期的なバックアップ保持ポリシーを変更した場合は、セカンダリ インスタンスでも必ず変更してください。
 
 ## <a name="failover-groups-and-network-security"></a>フェールオーバー グループとネットワーク セキュリティ
 

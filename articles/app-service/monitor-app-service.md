@@ -7,19 +7,19 @@ ms.topic: article
 ms.service: app-service
 ms.custom: subject-monitoring
 ms.date: 04/16/2021
-ms.openlocfilehash: 537173792c4e14ac1dfdb142d8ab15e3e68e5649
-ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
+ms.openlocfilehash: 1c3ff0fb224d5c1f8fe0133f184044b8aa5b30a3
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114230588"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124837140"
 ---
 # <a name="monitoring-app-service"></a>App Service の監視
 
 Azure リソースに依存するクリティカルなアプリケーションとビジネス プロセスがある場合は、それらのリソースの可用性、パフォーマンス、操作を監視する必要があります。 この記事では、App Service によって生成され、[Azure Monitor](../azure-monitor/overview.md) に配布される監視データについて説明します。 [リソースを監視する組み込みの診断機能](troubleshoot-diagnostic-logs.md)を使用して、App Service アプリのデバッグに役立てることもできます。 Azure Monitor を使用するすべての Azure サービスに共通する Azure Monitor の機能に詳しくない場合は、「[Azure Monitor を使用した Azure リソースの監視](../azure-monitor/essentials/monitor-azure-resource.md)」を参照してください。
 
 > [!NOTE]
-> Azure Monitor と App Service の統合は[プレビュー](https://aka.ms/appsvcblog-azmon)段階です。
+> 診断設定と App Service の統合は[プレビュー](https://aka.ms/appsvcblog-azmon)段階です。
 >
 
 ## <a name="monitoring-data"></a>データの監視 

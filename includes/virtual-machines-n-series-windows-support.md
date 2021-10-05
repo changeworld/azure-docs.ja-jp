@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/11/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 999ddb3e5f97953d563660ded72716e2ef9075ea
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: a188812751552532ae1536529b12e54d55a24a2b
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123646614"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "126057112"
 ---
 ## <a name="supported-operating-systems-and-drivers"></a>サポートされているオペレーティング システムとドライバー
 
@@ -40,7 +40,7 @@ Nvidia K80 GPU を搭載した NC シリーズでは、GRID およびグラフ�
 
 Nvidia の拡張機能では、常に最新のドライバーがインストールされます。 次に、古いバージョンに依存しているお客様用に、以前のバージョンへのリンクを示します。
 
-Windows Server 2019、Windows Server 2016 1607、1709、Windows 10 (ビルド 20H2 以下):
+Windows Server 2019、Windows Server 2016 1607、1709、Windows 10 (ビルド 21H1 以下):
 - [GRID 13 (471.68)](https://go.microsoft.com/fwlink/?linkid=874181) (.exe)
 - [GRID 12.2 (462.31)](https://download.microsoft.com/download/0/0/1/001f0edf-d852-4297-9cb7-10b31b1abf45/462.31_grid_win10_server2016_server2019_64bit_azure_swl.exe) (.exe) 
 

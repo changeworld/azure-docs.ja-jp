@@ -5,14 +5,14 @@ author: dlepow
 ms.service: api-management
 ms.topic: how-to
 ms.date: 08/11/2021
-ms.author: apimpm
+ms.author: danlep
 ms.custom: references_regions
-ms.openlocfilehash: 2415a07a215c99a1775593aae403af6f84b308fa
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d43d6e7b04e117e4144356ac22ea2858408405df
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121752473"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128582844"
 ---
 # <a name="availability-zone-support-for-azure-api-management"></a>Azure API Management の可用性ゾーンのサポート 
 
@@ -63,7 +63,7 @@ API Management では、[複数リージョン デプロイ](api-management-howt
 1. 既存の場所を選択するか、上部バーで **[+ Add]\(+ 追加\)** を選択します。 この場所は、[可用性ゾーンをサポート](#supported-regions)している必要があります。
 1. その場所のスケール **[ユニット](upgrade-and-scale.md)** の数を選択します。
 1. **[可用性ゾーン]** で、1 つまたは複数のゾーンを選択します。 選択した数のユニットを、可用性ゾーン全体に均等に分散させる必要があります。 たとえば、3 つのユニットを選択した場合、3 つのゾーンを選択すると、各ゾーンが 1 つのユニットをホストします。
-1. API Management インスタンスが[仮想ネットワーク](api-management-using-with-vnet.md)にデプロイされている場合、その場所の仮想ネットワーク設定を構成します。 その場所で使用できる既存の仮想ネットワーク、サブネット、パブリック IP アドレスを選択します。
+1. API Management インスタンスが[仮想ネットワーク](api-management-using-with-vnet.md)にデプロイされている場合は、その場所で使用可能な既存の仮想ネットワーク、サブネット、およびパブリック IP アドレスを選択することで、その場所で仮想ネットワーク設定を構成します。 既存の場所の場合、仮想ネットワークとサブネットは [仮想ネットワーク] ブレードから構成する必要があります。
 1. **[適用]** を選択し、次に **[保存]** を選択します。
 
 :::image type="content" source="media/zone-redundancy/add-location-zones.png" alt-text="ゾーン冗長性を有効にする":::

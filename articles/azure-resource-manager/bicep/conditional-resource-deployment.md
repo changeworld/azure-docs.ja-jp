@@ -5,12 +5,12 @@ author: mumian
 ms.author: jgao
 ms.topic: conceptual
 ms.date: 07/30/2021
-ms.openlocfilehash: f3c845757d6cd251905e39999c9858224ee67269
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: be7e52cb093eb9920be5b6e8e9971b7f882f7f06
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121724574"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124793837"
 ---
 # <a name="conditional-deployment-in-bicep"></a>Bicep における条件付きデプロイ
 
@@ -18,6 +18,10 @@ ms.locfileid: "121724574"
 
 > [!NOTE]
 > 条件付きのデプロイは[子リソース](child-resource-name-type.md)にはカスケードされません。 リソースとその子リソースを条件付きでデプロイする場合は、リソースの種類ごとに同じ条件を適用する必要があります。
+
+### <a name="microsoft-learn"></a>Microsoft Learn
+
+条件の詳細とハンズオン ガイダンスについては、**Microsoft Learn** の「[条件とループを使用して柔軟な Bicep テンプレートを作成する](/learn/modules/build-flexible-bicep-templates-conditions-loops/)」を参照してください。
 
 ## <a name="deploy-condition"></a>デプロイの条件
 

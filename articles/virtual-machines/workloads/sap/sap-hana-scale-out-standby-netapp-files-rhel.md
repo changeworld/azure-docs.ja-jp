@@ -1,13 +1,9 @@
 ---
 title: RHEL で Azure NetApp Files を使用したスタンバイでの SAP HANA スケールアウト | Microsoft Docs
 description: SAP アプリケーション用の Azure NetApp Files を使用した Red Hat Enterprise Linux 上の SAP NetWeaver の高可用性ガイド
-services: virtual-machines-windows,virtual-network,storage
-documentationcenter: saponazure
 author: rdeltcheva
 manager: juergent
-editor: ''
 tags: azure-resource-manager
-keywords: ''
 ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
 ms.service: virtual-machines-sap
 ms.topic: article
@@ -15,12 +11,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/01/2021
 ms.author: radeltch
-ms.openlocfilehash: 4947585b1f20b8142c51d9d7e28c6d8504b6d6d5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 204760390d47547e076384da349a84f70b0f8495
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101669637"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128552991"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux 上の Azure NetApp Files を使用して Azure VM のスタンバイ ノードで SAP HANA スケールアウト システムをデプロイする 
 
@@ -28,9 +24,8 @@ ms.locfileid: "101669637"
 [deployment-guide]:deployment-guide.md
 [planning-guide]:planning-guide.md
 
-[anf-azure-doc]:https://docs.microsoft.com/azure/azure-netapp-files/
+[anf-azure-doc]:/azure/azure-netapp-files/
 [anf-avail-matrix]:https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all 
-[anf-register]:https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register
 [anf-sap-applications-azure]:https://www.netapp.com/us/media/tr-4746.pdf
 
 [2205917]:https://launchpad.support.sap.com/#/notes/2205917
@@ -127,23 +122,19 @@ Azure NetApp Files はいくつかの [Azure リージョン](https://azure.micr
 
 Azure リージョン別に Azure NetApp Files を利用できるかどうかについては、[NetApp Files を利用できる Azure リージョン][anf-avail-matrix]に関するページをご覧ください。  
 
-Azure NetApp Files をデプロイする前に、「[Azure NetApp Files に登録する][anf-register]」の手順に従って、Azure NetApp Files へのオンボードを要求してください。 
-
 ### <a name="deploy-azure-netapp-files-resources"></a>Azure NetApp Files リソースのデプロイ  
 
-以下の手順では、お使いの [Azure 仮想ネットワーク](../../../virtual-network/virtual-networks-overview.md)が既にデプロイされていることを前提としています。 Azure NetApp Files のリソースと、そのリソースがマウントされる VM は、同じ Azure 仮想ネットワーク内またはピアリングされた Azure 仮想ネットワーク内にデプロイする必要があります。  
+以下の手順では、お使いの [Azure 仮想ネットワーク](../../../virtual-network/virtual-networks-overview.md)が既にデプロイされていることを前提としています。 Azure NetApp Files のリソースと、そのリソースがマウントされる VM は、同じ Azure 仮想ネットワーク内またはピアリングされた Azure 仮想ネットワーク内にデプロイする必要があります。   
 
-1. リソースをまだデプロイしていない場合は、[Azure NetApp Files へのオンボード](../../../azure-netapp-files/azure-netapp-files-register.md)を要求してください。  
+1. 「[NetApp アカウントを作成する](../../../azure-netapp-files/azure-netapp-files-create-netapp-account.md)」の手順に従って、選択した Azure リージョンに NetApp アカウントを作成します。  
 
-2. 「[NetApp アカウントを作成する](../../../azure-netapp-files/azure-netapp-files-create-netapp-account.md)」の手順に従って、選択した Azure リージョンに NetApp アカウントを作成します。  
-
-3. [Azure NetApp Files の容量プールの設定](../../../azure-netapp-files/azure-netapp-files-set-up-capacity-pool.md)に関するページの手順に従って、Azure NetApp Files の容量プールを設定します。  
+2. [Azure NetApp Files の容量プールの設定](../../../azure-netapp-files/azure-netapp-files-set-up-capacity-pool.md)に関するページの手順に従って、Azure NetApp Files の容量プールを設定します。  
 
    この記事で示されている HANA アーキテクチャでは、"*Ultra サービス*" レベルで 1 つの Azure NetApp Files 容量プールが使用されています。 Azure 上の HANA ワークロードの場合、Azure NetApp Files の *Ultra* または *Premium* [サービス レベル](../../../azure-netapp-files/azure-netapp-files-service-levels.md)を使用することをお勧めします。  
 
-4. 「[サブネットを Azure NetApp Files に委任する](../../../azure-netapp-files/azure-netapp-files-delegate-subnet.md)」の手順に従って、サブネットを Azure NetApp Files に委任します。  
+3. 「[サブネットを Azure NetApp Files に委任する](../../../azure-netapp-files/azure-netapp-files-delegate-subnet.md)」の手順に従って、サブネットを Azure NetApp Files に委任します。  
 
-5. 「[Azure NetApp Files の NFS ボリュームを作成する](../../../azure-netapp-files/azure-netapp-files-create-volumes.md)」の手順に従って、Azure NetApp Files のボリュームをデプロイします。  
+4. 「[Azure NetApp Files の NFS ボリュームを作成する](../../../azure-netapp-files/azure-netapp-files-create-volumes.md)」の手順に従って、Azure NetApp Files のボリュームをデプロイします。  
 
    ボリュームをデプロイするときは、**NFSv4.1** バージョンを必ず選択してください。 指定された Azure NetApp Files の[サブネット](/rest/api/virtualnetwork/subnets)内にボリュームをデプロイします。 Azure NetApp ボリュームの IP アドレスは、自動的に割り当てられます。 
    
@@ -573,7 +564,7 @@ Azure NetApp Files Ultra ストレージ層を使用している、この記事�
      * **[Root User Name]\(ルート ユーザー名\)** [root]\: Enter キーを押して既定値をそのまま使用します
      * [roles for host hanadb2]\(host hanadb2 のロール\)\: 「**1**」と入力します (ワーカーの場合)
      * ホスト hanadb2 の **[Host Failover Group]\(ホスト フェールオーバー グループ\)** [既定値]\: Enter キーを押して既定値をそのまま使用します
-     * ホスト hanadb2 の **[Storage Partition Number]\(ストレージ パーティション番号\)** [<<assign automatically>>]\: Enter キーを押して既定値をそのまま使用します
+     * ホスト hanadb2 の **[Storage Partition Number]\(ストレージ パーティション番号\)** [\<\<assign automatically\>\>]: Enter キーを押して既定値をそのまま使用します
      * ホスト hanadb2 の **[Worker Group]\(ワーカー グループ\)** [既定値]: Enter キーを押して既定値をそのまま使用します
      * ホスト hanadb3 の **[Select roles]\(ロールの選択\)** : 「**2**」と入力します (スタンバイ)
      * ホスト hanadb3 の **[Host Failover Group]\(ホスト フェールオーバー グループ\)** [既定値]\: Enter キーを押して既定値をそのまま使用します

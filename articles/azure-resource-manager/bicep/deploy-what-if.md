@@ -5,18 +5,22 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 09/02/2021
 ms.author: tomfitz
-ms.openlocfilehash: 70151d70c884432c92f49e0f4b3e5e3f873b57ac
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 697a72e33b4f03f7441e51085f2519fa32f88590
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123429336"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124793685"
 ---
 # <a name="bicep-deployment-what-if-operation"></a>Bicep デプロイの What-If 操作
 
 Bicep ファイルをデプロイする前に、行われる変更をプレビューできます。 Azure Resource Manager の What-if 操作を使うと、Bicep ファイルをデプロイした場合にリソースがどのように変更されるかを確認できます。 what-if 操作では、既存のリソースに対していかなる変更も行われません。 代わりに、指定した Bicep ファイルがデプロイされた場合の変更が予測されます。
 
 what-if 操作は Azure PowerShell、Azure CLI、または REST API 操作で使用できます。 What-if は、リソース グループ、サブスクリプション、管理グループ、テナント レベルのデプロイでサポートされています。
+
+### <a name="microsoft-learn"></a>Microsoft Learn
+
+What-if 操作の詳細とハンズオン ガイダンスについては、**Microsoft Learn** の「[What-If を使用して Azure デプロイの変更をプレビューする](/learn/modules/arm-template-whatif/)」を参照してください。
 
 ## <a name="install-azure-powershell-module"></a>Azure PowerShell モジュールをインストールする
 

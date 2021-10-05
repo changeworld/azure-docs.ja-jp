@@ -6,19 +6,19 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/31/2021
+ms.date: 09/10/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 04e05f67787b285dd1286e0c6b7a6b251262ed0f
-ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+ms.openlocfilehash: 7a7ded3df993034963f06b81a0908e68821688cb
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123272243"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128584296"
 ---
 # <a name="configure-immutability-policies-for-blob-versions-preview"></a>BLOB バージョンに不変ポリシーを構成する (プレビュー)
 
-Azure Blob Storage の不変ストレージを使用すると、ユーザーはビジネスに不可欠なデータを WORM (Write Once, Read Many) 状態で保存できます。 WORM の状態では、ユーザーが指定した間隔でデータを変更したり削除したりすることはできません。 BLOB データに不変性ポリシーを構成することにより、上書きや削除からデータを保護することができます。 不変性ポリシーには、時間ベースの保持ポリシーと訴訟ホールドが含まれています。 Blob Storage の不変性ポリシーの詳細については、「[不変ストレージを使用してビジネスに不可欠な BLOB データを保存する](immutable-storage-overview.md)」を参照してください。
+Azure Blob Storage の不変ストレージを使用すると、ユーザーはビジネスに不可欠なデータを WORM (Write Once, Read Many) 状態で保存できます。 WORM の状態では、ユーザーが指定した期間、データを変更および削除できません。 BLOB データに不変ポリシーを構成することにより、上書きや削除からデータを保護することができます。 不変性ポリシーには、時間ベースの保持ポリシーと訴訟ホールドが含まれています。 Blob Storage の不変性ポリシーの詳細については、「[不変ストレージを使用してビジネスに不可欠な BLOB データを保存する](immutable-storage-overview.md)」を参照してください。
 
 不変ポリシーは、個々の BLOB バージョン (プレビュー) またはコンテナーのいずれかにスコープ設定できます。 この記事では、バージョン レベルの不変ポリシーを構成する方法について説明します。 コンテナー レベルの不変ポリシーを構成する方法については、「[コンテナーの不変ポリシーを構成する](immutable-policy-configure-container-scope.md)」を参照してください。
 
@@ -159,7 +159,7 @@ $migrationOperation.JobStateInfo.State
 if ($migrationOperation.JobStateInfo.State -eq "Failed") {
 Write-Host $migrationOperation.Error
 }
-The container <container-name> must have an immutability policy set as a default policy 
+The container <container-name> must have an immutability policy set as a default policy
 before initiating container migration to support object level immutability with versioning.
 ```
 
@@ -284,7 +284,7 @@ BLOB のバージョン管理の詳細については、「[BLOB のバージョ
 
 ### <a name="portal"></a>[ポータル](#tab/azure-portal)
 
-Azure portal でコンテナーに移動すると、BLOB の一覧が表示されます。 表示される各 BLOB は、BLOB の現在のバージョンを表します。 以前のバージョンのリストにアクセスするには、BLOB の **[詳細]** ボタンを選択し、 **[以前のバージョンを表示する]** を選択します。  
+Azure portal でコンテナーに移動すると、BLOB の一覧が表示されます。 表示される各 BLOB は、BLOB の現在のバージョンを表します。 以前のバージョンのリストにアクセスするには、BLOB の **[詳細]** ボタンを選択し、 **[以前のバージョンを表示する]** を選択します。
 
 ### <a name="configure-a-retention-policy-on-the-current-version-of-a-blob"></a>現在のバージョンの BLOB で保持ポリシーを構成する
 
@@ -321,6 +321,8 @@ BLOB のプロパティを表示して、現在のバージョンでポリシー
 
 PowerShell を使用して時間ベースの保持ポリシーを BLOB バージョンに対して構成するには、**Set-AzStorageBlobImmutabilityPolicy** コマンドを呼び出します。
 
+次の例は、現在のバージョンの BLOB でロック解除されたポリシーを構成する方法を示しています。 山かっこ内のプレースホルダーは、実際の値に置き換えてください。
+
 ```azurepowershell
 # Get the storage account context
 $ctx = (Get-AzStorageAccount `
@@ -336,7 +338,25 @@ Set-AzStorageBlobImmutabilityPolicy -Container <container> `
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-N/A
+Azure CLI を使用して BLOB バージョンで時間ベースの保持ポリシーを構成するには、まず、*storage-blob-preview* 拡張機能バージョン 0.6.1 以降をインストールする必要があります。
+
+```azurecli
+az extension add --name storage-blob-preview
+```
+
+Azure CLI 拡張機能のインストールの詳細については、[Azure CLI 拡張機能をインストールおよび管理する方法](/cli/azure/azure-cli-extensions-overview)に関する記事を参照してください。
+
+次に、**az storage blob immutability-policy set** コマンドを呼び出して、時間ベースの保持ポリシーを構成します。 次の例は、現在のバージョンの BLOB でロック解除されたポリシーを構成する方法を示しています。 山かっこ内のプレースホルダーは、実際の値に置き換えてください。
+
+```azurecli
+az storage blob immutability-policy set \
+    --expiry-time 2021-09-20T08:00:00Z \
+    --policy-mode Unlocked \
+    --container <container> \
+    --name <blob-version> \
+    --account-name <storage-account> \
+    --auth-mode login
+```
 
 ---
 
@@ -375,7 +395,7 @@ BLOB をアップロードするときに時間ベースの保持ポリシーを
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-PowerShell を使用してロック解除された時間ベースの保持ポリシーを変更するには、ポリシーの有効期限の新しい日付と時刻を指定して、BLOB バージョンで **Set-AzStorageBlobImmutabilityPolicy** コマンドを呼び出します。
+PowerShell を使用してロック解除された時間ベースの保持ポリシーを変更するには、ポリシーの有効期限の新しい日付と時刻を指定して、BLOB バージョンで **Set-AzStorageBlobImmutabilityPolicy** コマンドを呼び出します。 山かっこ内のプレースホルダーは、実際の値に置き換えてください。
 
 ```azurepowershell
 $containerName = "<container>"
@@ -388,7 +408,7 @@ $blobVersion = Get-AzStorageBlob -Container $containerName `
     -Context $ctx
 
 # Extend the retention interval by five days.
-$blobVersion = $blobVersion | 
+$blobVersion = $blobVersion |
     Set-AzStorageBlobImmutabilityPolicy -ExpiresOn (Get-Date).AddDays(5) `
 
 # View the new policy parameters.
@@ -403,7 +423,27 @@ $blobVersion = $blobVersion | Remove-AzStorageBlobImmutabilityPolicy
 
 #### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-N/A
+PowerShell を使用してロック解除された時間ベースの保持ポリシーを変更するには、ポリシーの有効期限の新しい日付と時刻を指定して、BLOB バージョンで **az storage blob immutability-policy set** コマンドを呼び出します。 山かっこ内のプレースホルダーは、実際の値に置き換えてください。
+
+```azurecli
+az storage blob immutability-policy set \
+    --expiry-time 2021-10-0T18:00:00Z \
+    --policy-mode Unlocked \
+    --container <container> \
+    --name <blob-version> \
+    --account-name <storage-account> \
+    --auth-mode login
+```
+
+ロック解除された保持ポリシーを削除するには、**az storage blob immutability-policy delete** コマンドを呼び出します。
+
+```azurecli
+az storage blob immutability-policy delete \
+    --container <container> \
+    --name <blob-version> \
+    --account-name <storage-account> \
+    --auth-mode login
+```
 
 ---
 
@@ -436,7 +476,7 @@ $blobVersion = Get-AzStorageBlob -Container $containerName `
     -VersionId "2021-08-31T00:26:41.2273852Z" `
     -Context $ctx
 
-$blobVersion = $blobVersion | 
+$blobVersion = $blobVersion |
     Set-AzStorageBlobImmutabilityPolicy `
         -ExpiresOn $blobVersion.BlobProperties.ImmutabilityPolicy.ExpiresOn `
         -PolicyMode Locked
@@ -444,7 +484,17 @@ $blobVersion = $blobVersion |
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-N/A
+PowerShell を使用してポリシーをロックするには、**az storage blob immutability-policy set** コマンドを呼び出し、`--policy-mode` パラメーターを *Locked* に設定します。 また、ポリシーをロックするときに有効期限を変更することもできます。
+
+```azurecli
+az storage blob immutability-policy set \
+    --expiry-time 2021-10-0T18:00:00Z \
+    --policy-mode Locked \
+    --container <container> \
+    --name <blob-version> \
+    --account-name <storage-account> \
+    --auth-mode login
+```
 
 ---
 
@@ -486,12 +536,30 @@ Set-AzStorageBlobLegalHold -Container <container> `
 
 #### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-該当なし
+Azure CLI を使用して BLOB バージョンの訴訟ホールドを構成またはクリアするには、**az storage blob set-legal-hold** コマンドを呼び出します。
+
+```azurecli
+# Set a legal hold
+az storage blob set-legal-hold \
+    --legal-hold \
+    --container <container> \
+    --name <blob-version> \
+    --account-name <account-name> \
+    --auth-mode login
+
+# Clear a legal hold
+az storage blob set-legal-hold \
+    --legal-hold false \
+    --container <container> \
+    --name <blob-version> \
+    --account-name <account-name> \
+    --auth-mode login
+```
 
 ---
 
 ## <a name="next-steps"></a>次のステップ
 
 - [不変ストレージを使用してビジネスに不可欠な BLOB データを保存する](immutable-storage-overview.md)
-- [不変 BLOB データの時間ベースの保持ポリシー](immutable-time-based-retention-policy-overview.md)
+- [不変 BLOB データに対する時間ベースの保持ポリシー](immutable-time-based-retention-policy-overview.md)
 - [不変 BLOB データに対する法的な保持](immutable-legal-hold-overview.md)

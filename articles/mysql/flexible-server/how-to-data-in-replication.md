@@ -6,12 +6,12 @@ ms.author: sunaray
 ms.service: mysql
 ms.topic: how-to
 ms.date: 06/08/2021
-ms.openlocfilehash: ee0bafdfe7d7caae2d4ba65e9967d9c46e6b3e3c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 05ccdc3613141e7b04c3255a6035c7a03ad25995
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121736435"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128579731"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-flexible-server-data-in-replication"></a>Azure Database for MySQL フレキシブル サーバーのデータイン レプリケーションを構成する方法
 
@@ -20,7 +20,7 @@ ms.locfileid: "121736435"
 この記事では、ソースとレプリカのサーバーを構成することによって、Azure Database for MySQL フレキシブル サーバーで[データイン レプリケーション](concepts-data-in-replication.md)を設定する方法について説明します。 この記事は、MySQL サーバーとデータベースに関して、ある程度の使用経験があることを前提としています。
 
 > [!NOTE]
-> この記事には、Microsoft が使用しなくなった "_スレーブ_" という用語への言及が含まれています。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
+> この記事には、Microsoft が使用しなくなった "*スレーブ*" という用語への言及が含まれています。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
 
 Azure Database for MySQL フレキシブル サービスでレプリカを作成するために、[データイン レプリケーション](concepts-data-in-replication.md)によって、オンプレミス、仮想マシン (VM)、またはクラウド データベース サービスのソース MySQL サーバーからデータが同期されます。 データイン レプリケーションは、バイナリ ログ (binlog) ファイルの位置ベースに基づいています。 binlog レプリケーションの詳細については、[MySQL binlog レプリケーションの概要](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html)に関する記事を参照してください。
 
@@ -28,7 +28,7 @@ Azure Database for MySQL フレキシブル サービスでレプリカを作成
 
 ## <a name="create-an-azure-database-for-mysql-flexible-server-instance-to-use-as-a-replica"></a>レプリカとして使用する Azure Database for MySQL フレキシブル サーバー インスタンスを作成する
 
-1. Azure Database for MySQL フレキシブル サーバーの新しいインスタンスを作成します (例: "replica.mysql.database.azure.com")。 サーバーの作成については、「[Azure portal を使用して Azure Database for MySQL フレキシブル サーバーを作成する](quickstart-create-server-portal.md)」を参照してください。 このサーバーは、データイン レプリケーション用の "レプリカ" サーバーです。
+1. Azure Database for MySQL フレキシブル サーバーの新しいインスタンスを作成します (例: `replica.mysql.database.azure.com`)。 サーバーの作成については、「[Azure portal を使用して Azure Database for MySQL フレキシブル サーバーを作成する](quickstart-create-server-portal.md)」を参照してください。 このサーバーは、データイン レプリケーション用の "レプリカ" サーバーです。
 
 2. 同じユーザー アカウントとそれに対応する権限を作成します。
 

@@ -3,17 +3,17 @@ title: Azure Automation の Azure PowerShell モジュールを更新する
 description: この記事では、Azure Automation に既定で用意されている一般的な Azure PowerShell モジュールを更新する方法について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 06/14/2019
+ms.date: 09/16/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c1632da35864fc6822b385adac06d7f124aea061
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: a2ff4799b335376f6f99004d45034ba6a4796059
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107830414"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128654368"
 ---
-# <a name="update-azure-powershell-modules"></a>Azure PowerShell モジュールの更新
+# <a name="update-azure-automation-powershell-modules"></a>Azure Automation PowerShell モジュールを更新する
 
 各 Automation アカウントでは、最も一般的な PowerShell モジュールが既定で提供されます。 「[既定のモジュール](shared-resources/modules.md#default-modules)」を参照してください。 Azure のモジュールは Azure チームによって定期的に更新されているため、同梱されるコマンドレットに変更が生じることがあります。 こうした変更 (パラメーター名の変更、コマンドレット全体の非推奨化など) により、Runbook に悪影響が及ぶ可能性があります。 
 
@@ -24,7 +24,7 @@ ms.locfileid: "107830414"
 
 Runbook やそれにより自動化されるプロセスに影響を与えないようにするため、更新前にテストと検証を必ず行ってください。 その目的のための専用の Automation アカウントがない場合は、アカウントの作成を検討してください。アカウントを作成すると、Runbook の開発中の多数のさまざまなシナリオについてテストを行うことができます。 このテストで、PowerShell モジュールの更新など、反復的な変更を行ってください。
 
-お使いの Automation アカウントに [Azure 実行アカウント](automation-security-overview.md#run-as-accounts)が作成されていることを確認します。
+Automation アカウントの[システム割り当てマネージド ID またはユーザー割り当てマネージド ID](quickstarts/enable-managed-identity.md) が追加されていることを確認してください。
 
 スクリプトをローカルで開発する場合、テスト時に確実に同じ結果が得られるようにするために、Automation アカウントに置いているものと同じバージョンのモジュールをローカルに用意することをお勧めします。 結果を検証し、必要な変更を適用した後、変更を運用環境に移行してください。
 

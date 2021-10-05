@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 08/25/2021
+ms.date: 09/08/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8958446f1455e486f181626139f8974bc1570a2f
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: 6596b5a61c4c65bdfd5172c4acd1c50b960097dd
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122867194"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124763160"
 ---
 # <a name="features-and-licenses-for-azure-ad-multi-factor-authentication"></a>Azure AD Multi-Factor Authentication の機能とライセンス
 
@@ -39,7 +39,7 @@ Azure AD Multi-Factor Authentication は、組織のニーズに応じて、い�
 | [すべての Microsoft 365 プラン](https://www.microsoft.com/microsoft-365/compare-microsoft-365-enterprise-plans) | Azure AD Multi-Factor Authentication は、[セキュリティの既定値群](../fundamentals/concept-fundamentals-security-defaults.md)を使用して、すべてのユーザーについて有効にすることができます。 Azure AD Multi-Factor Authentication の管理は、Microsoft 365 ポータルを通じて行います。 ユーザー エクスペリエンスを向上させるには、Azure AD Premium P1 または P2 にアップグレードし、条件付きアクセスを使用します。 詳細については、[多要素認証を使用した Microsoft 365 リソースのセキュリティ保護](/microsoft-365/admin/security-and-compliance/set-up-multi-factor-authentication)に関するページを参照してください。  |
 | [Office 365 Free](https://www.microsoft.com/microsoft-365/enterprise/compare-office-365-plans)<br>[Azure AD Free](../verifiable-credentials/how-to-create-a-free-developer-account.md) | 必要に応じて[セキュリティの既定値群](../fundamentals/concept-fundamentals-security-defaults.md)を使用して多要素認証をユーザーに要求できますが、有効となるユーザーまたはシナリオをきめ細かく制御することはできません。ただし、追加のセキュリティ措置を提供することはできます。<br /> すべてのユーザーの多要素認証を有効にするセキュリティの既定値群が使用されていない場合でも、*Azure AD 全体管理者* ロールに割り当てられたユーザーは、多要素認証を使用するように構成できます。 Free レベルのこの機能により、重要な管理者アカウントが多要素認証によって保護されます。 |
 
-## <a name="feature-comparison-of-versions"></a>バージョンごとの機能の比較
+## <a name="feature-comparison-based-on-licenses"></a>ライセンスに基づく機能比較
 
 次の表に、さまざまなバージョンの Azure AD Multi-Factor Authentication で使用できる機能の一覧を示します。 ユーザー認証のセキュリティ保護に必要なものを詳しく検討し、その要件を満たす方法を決定します。 たとえば、Azure AD Free は Azure AD Multi-Factor Authentication を提供するセキュリティの既定値群を提供しますが、認証プロンプトに使用できるのはモバイル認証アプリだけであり、電話や SMS は使用できません。 モバイル認証アプリがユーザーの個人のデバイスにインストールされていることを保証できない場合、この方法は制約を受けるかもしれません。 詳細については、後の「[Azure AD Free レベル](#azure-ad-free-tier)」を参照してください。 
 
@@ -57,6 +57,31 @@ Azure AD Multi-Factor Authentication は、組織のニーズに応じて、い�
 | 信頼できる IP | | | | ● |
 | 信頼済みデバイスの MFA の記憶 | | ● | ● | ● |
 | オンプレミス アプリケーション用の MFA | | | | ● |
+
+## <a name="compare-multi-factor-authentication-policies"></a>多要素認証ポリシーを比較する
+
+次の表に、さまざまな MFA ポリシーのデプロイに関する考慮事項を示します。
+
+| のポリシー | セキュリティの既定値群 | 条件付きアクセス | ユーザーごとの MFA |
+| --- |:---:|:---:|:---:|
+| **管理** | 
+| 会社の安全を維持するためのセキュリティ規則の標準セット | ● |  |  |
+| ワンクリックのオンまたはオフ | ● |  |  |
+| Office 365 ライセンスに含まれる ([ライセンスに関する考慮事項](#available-versions-of-azure-ad-multi-factor-authentication)に関するセクションを参照してください) | ● |  | ● |
+| Microsoft 365 管理センター ウィザードでの事前構成済みのテンプレート | ● | ● |  |
+| 構成の柔軟性 | | ● |  |
+| **機能** | 
+| ポリシーからユーザーを除外する | | ● | ● |
+| 電話または SMS による認証 | | ● | ● |
+| Microsoft Authenticator とソフトウェア トークンによる認証 | ● | ● | ● |
+| FIDO2、Windows Hello for Business、およびハードウェア トークンによる認証 | | ● | ● |
+| レガシ認証プロトコルのブロック | ● | ● | ● |
+| 新しい従業員の自動的な保護 | ● | ● | |
+| リスク イベントに基づく動的 MFA トリガー | | ● |  |
+| 認証および承認ポリシー | | ● | |
+| 場所とデバイスの状態に基づいて構成可能 | | ● | |
+| "レポート専用" モードのサポート | | ● | |
+| ユーザーまたはサービスを完全にブロックする機能 | | ● | |
 
 ## <a name="purchase-and-enable-azure-ad-multi-factor-authentication"></a>Azure AD Multi-Factor Authentication を購入して有効にする
 

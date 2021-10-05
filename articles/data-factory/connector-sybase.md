@@ -1,28 +1,28 @@
 ---
-title: Azure Data Factory を使用して Sybase からデータをコピーする
+title: Sybase からデータをコピーする
+description: Azure Data Factory または Synapse Analytics パイプラインでコピー アクティビティを使用して、Sybase からサポートされているシンク データ ストアにデータをコピーする方法について説明します。
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Sybase からサポートされているシンク データ ストアへデータをコピーする方法について説明します。
 author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/30/2021
+ms.date: 09/09/2021
 ms.author: jianleishen
-ms.openlocfilehash: 84aacb94e2367d8df3311743efaef96ce49d7e55
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: d487a862c6079272c400db964d2a8e898d3121a6
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123304338"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124820112"
 ---
-# <a name="copy-data-from-sybase-using-azure-data-factory"></a>Azure Data Factory を使用して Sybase からデータをコピーする
+# <a name="copy-data-from-sybase-using-azure-data-factory-or-synapse-analytics"></a>Azure Data Factory または Synapse Analytics を使用して Sybase からデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-onprem-sybase-connector.md)
 > * [現在のバージョン](connector-sybase.md)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-この記事では、Azure Data Factory のコピー アクティビティを使用して、Sybase データベースからデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
+この記事では、Azure Data Factory または Synapse Analytics パイプラインで Copy アクティビティを使用して、Sybase データベースからデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -89,7 +89,7 @@ Sybase のリンクされたサービスでは、次のプロパティがサポ�
 | database | Sybase データベースの名前です。 |はい |
 | authenticationType | Sybase データベースへの接続に使用される認証の種類です。<br/>使用できる値は、以下のとおりです。**Basic** および **Windows**。 |はい |
 | username | Sybase データベースに接続するユーザー名を指定します。 |はい |
-| password | ユーザー名に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |はい |
+| password | ユーザー名に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString とマークして安全に保存するか、[Azure Key Vault に保存されているシークレットを参照](store-credentials-in-key-vault.md)します。 |はい |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 「[前提条件](#prerequisites)」に記されているように、セルフホステッド統合ランタイムが必要です。 |はい |
 
 **例:**
@@ -196,9 +196,9 @@ Sybase からデータをコピーするために、コピー アクティビテ
 
 ## <a name="data-type-mapping-for-sybase"></a>Sybase のデータ型マッピング
 
-Sybase からデータをコピーするとき、Sybase のデータ型から Azure Data Factory の中間データ型への、以下のマッピングが使用されます。 コピー アクティビティでソースのスキーマとデータ型がシンクにマッピングされるしくみについては、[スキーマとデータ型のマッピング](copy-activity-schema-and-type-mapping.md)に関する記事を参照してください。
+Sybase からデータをコピーするとき、Sybase のデータ型からサービス内で内部的に使用される中間データ型への、以下のマッピングが使用されます。 コピー アクティビティでソースのスキーマとデータ型がシンクにマッピングされるしくみについては、[スキーマとデータ型のマッピング](copy-activity-schema-and-type-mapping.md)に関する記事を参照してください。
 
-Sybase では、T-SQL 型をサポートします。 SQL 型から Azure Data Factory 中間データ型へのマッピング テーブルについては、「[Azure SQL Database Connector - data type mapping (Azure SQL Database Connector - データ型マッピング)](connector-azure-sql-database.md#data-type-mapping-for-azure-sql-database)」セクションを参照してください。
+Sybase では、T-SQL 型をサポートします。 SQL 型から中間サービス データ型へのマッピング テーブルについては、[Azure SQL Database のデータ型のマッピング](connector-azure-sql-database.md#data-type-mapping-for-azure-sql-database)に関するセクションを参照してください。
 
 ## <a name="lookup-activity-properties"></a>Lookup アクティビティのプロパティ
 
@@ -207,4 +207,4 @@ Sybase では、T-SQL 型をサポートします。 SQL 型から Azure Data Fa
 
 
 ## <a name="next-steps"></a>次のステップ
-Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。
+Copy アクティビティでソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関するセクションを参照してください。

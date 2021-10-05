@@ -1,18 +1,17 @@
 ---
-title: Data Catalog の系列のユーザー ガイド (プレビュー)
+title: データ カタログ系列のユーザー ガイド
 description: この記事では、Azure Purview のカタログ系列機能の概要について説明します。
 author: chanuengg
 ms.author: csugunan
 ms.service: purview
-ms.subservice: purview-data-catalog
 ms.topic: conceptual
-ms.date: 08/25/2021
-ms.openlocfilehash: 38f150a99b2145968569e986ea158b1aa552593a
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.date: 09/27/2021
+ms.openlocfilehash: e2923e29652a92de188366168140bf9def43c082
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122968604"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129209472"
 ---
 # <a name="azure-purview-data-catalog-lineage-user-guide"></a>Azure Purview Data Catalog の系列のユーザー ガイド
 
@@ -112,7 +111,7 @@ Azure Purview では、データセットとプロセスの資産レベルの系
 
    :::image type="content" source="./media/catalog-lineage-user-guide/select-switch-to-asset.png" alt-text="系列データ資産で [資産に切り替え] を選択する方法を示すスクリーンショット。" lightbox="./media/catalog-lineage-user-guide/select-switch-to-asset.png":::
 
-2. 系列の多いデータセットでは、系列キャンバスが複雑になることがあります。 見やすくするために、既定のビューには、フォーカスされている資産の 5 レベルの系列のみが表示されます。 系列の残りの部分は、系列キャンバスのバブルをクリックすると展開できます。 データ コンシューマーは、キャンバス内の不要な資産を非表示にすることもできます。 さらに見やすくするには、系列キャンバスの上部にある **[より多くの系列]** のトグルをオフにします。 この操作により、系列キャンバスのすべてのバブルが非表示になります。
+2. 系列の多いデータセットでは、系列キャンバスが複雑になることがあります。 見やすくするために、既定のビューには、フォーカスされている資産の 5 レベルの系列のみが表示されます。 系列の残りの部分は、系列キャンバスのバブルを選択すると展開できます。 データ コンシューマーは、キャンバス内の不要な資産を非表示にすることもできます。 さらに見やすくするには、系列キャンバスの上部にある **[より多くの系列]** のトグルをオフにします。 この操作により、系列キャンバスのすべてのバブルが非表示になります。
 
    :::image type="content" source="./media/catalog-lineage-user-guide/use-toggle-to-hide-bubbles.png" alt-text="[より多くの系列] を切り替える方法を示すスクリーンショット。" lightbox="./media/catalog-lineage-user-guide/use-toggle-to-hide-bubbles.png":::
 

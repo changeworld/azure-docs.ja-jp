@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 10/14/2019
-ms.openlocfilehash: 4ef7d0146d1636a863941f4deb317149aeb48faf
-ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
+ms.openlocfilehash: fb276979530fccfb95fd9d34655573a04391e524
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122830938"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129219175"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>フィーチャーはアクションとコンテキストに関する情報です。
 
@@ -68,10 +68,10 @@ Personalizer では、フィーチャーが名前空間で整理されます。 
 有効な JSON キーである限り、自分の命名規則でフィーチャーの名前空間に名前を付けることができます。 名前空間は、フィーチャーを個別のセットに整理したり、類似した名前のフィーチャーを明確にしたりするために使用されます。 名前空間は、フィーチャー名に追加される "接頭辞" と考えることができます。 名前空間を入れ子にすることはできません。
 
 
-次の JSON では、`user`、`state`、`device` がフィーチャーの名前空間です。 
+次の JSON では、`user`、`environment`、`device`、および `activity` がフィーチャーの名前空間です。 
 
 > [!Note]
-> 現在のところ、フィーチャー名前空間には、UTF-8 ベースであり、異なる文字で始まる名前の使用を強くお勧めします。 たとえば、`user`、`state`、`device` はそれぞれ、`u`、`s`、`d` で始まります。 現在のところ、名前空間の最初の文字が同じ場合、機械学習に使用されるインデックスで競合が発生することがあります。
+> 現在のところ、フィーチャー名前空間には、UTF-8 ベースであり、異なる文字で始まる名前の使用を強くお勧めします。 たとえば、`user`、`environment`、`device`、および `activity` はそれぞれ、`u`、`e`、`d`、および `a` で始まります。 現在のところ、名前空間の最初の文字が同じ場合、機械学習に使用されるインデックスで競合が発生することがあります。
 
 JSON オブジェクトには、入れ子にした JSON オブジェクトと単純なプロパティ/値を含めることができます。 配列は、配列の項目が数値の場合にのみ含めることができます。 
 
@@ -99,7 +99,7 @@ JSON オブジェクトには、入れ子にした JSON オブジェクトと単
             }
         },
         {
-            "userActivity" : {
+            "activity" : {
                 "itemsInCart": 3,
                 "cartValue": 250,
                 "appliedCoupon": true

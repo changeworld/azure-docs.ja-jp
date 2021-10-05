@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 07/21/2021
 ms.author: thweiss
-ms.openlocfilehash: d83d6ad6834ea38b293054e59eb39a35be5c507e
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 29aeee156ee87c055a3581e9dc2fd0bd86a2064d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123111504"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128551047"
 ---
 # <a name="configure-role-based-access-control-with-azure-active-directory-for-your-azure-cosmos-db-account"></a>Azure Active Directory を使用して Azure Cosmos DB アカウントのロールベースのアクセス制御を構成する
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -40,14 +40,24 @@ Azure Cosmos DB データ プレーン RBAC は、[Azure RBAC](../role-based-acc
 ## <a name="permission-model"></a><a id="permission-model"></a> 権限モデル
 
 > [!IMPORTANT]
-> このアクセス許可モデルでは、データの読み取りと書き込みを行うことができるデータベース操作のみが対象になります。 コンテナーの作成やスループットの変更などの管理操作は、いかなるものも対象に **なりません**。 つまり、AAD ID で管理操作を認証するために、**Azure Cosmos DB データ プレーン SDK を使用することはできません**。 代わりに、次の方法で [Azure RBAC](role-based-access-control.md) を使用する必要があります。
-> - [Azure Resource Manager (ARM) テンプレート](manage-with-templates.md)
-> - [Azure PowerShell スクリプト](manage-with-powershell.md)、
-> - [Azure CLI スクリプト](sql/manage-with-cli.md)、
-> - 次で利用可能な Azure 管理ライブラリ
+> この権限モデルでは、データの読み書きをともなうデータベース操作のみが扱われます。 管理リソースに対する管理操作のようなものは "*扱われません*"。たとえば、次のようなものです。
+> - データベースの作成、置換、削除
+> - コンテナーの作成、置換、削除
+> - コンテナー スループットの置換
+> - ストアド プロシージャの作成、置換、削除、読み取り
+> - トリガーの作成、置換、削除、読み取り
+> - ユーザー定義関数の作成、置換、削除、読み取り
+>
+> Azure AD ID で管理操作を認証するために、"*Azure Cosmos DB データ プレーン SDK を使用することはできません*"。 代わりに、次のいずれかのオプションを使用して [Azure RBAC](role-based-access-control.md) を使用する必要があります。
+> - [Azure Resource Manager テンプレート (ARM テンプレート)](./sql/manage-with-templates.md)
+> - [Azure PowerShell スクリプト](./sql/manage-with-powershell.md)
+> - [Azure CLI スクリプト](./sql/manage-with-cli.md)
+> - 次で利用可能な Azure 管理ライブラリ:
 >   - [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.CosmosDB/)
 >   - [Java](https://search.maven.org/artifact/com.azure.resourcemanager/azure-resourcemanager-cosmos)
 >   - [Python](https://pypi.org/project/azure-mgmt-cosmosdb/)
+>   
+> データベースの読み取りとコンテナーの読み取りは[メタデータ要求](#metadata-requests)と見なされます。 これらの操作へのアクセスは、次のセクションで説明するように許可できます。
 
 次の表では、アクセス許可モデルによって公開されるすべてのアクションを示します。
 

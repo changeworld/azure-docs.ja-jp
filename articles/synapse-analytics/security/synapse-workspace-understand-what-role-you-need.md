@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/1/2020
 ms.author: mesrivas
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2d913d0312b75542fa52e73e68170e9a3b91cf5d
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: 88597690ca4b3bf9cfd51b6e56eb9395df8ee1ba
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122823346"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128583674"
 ---
 # <a name="understand-the-roles-required-to-perform-common-tasks-in-synapse"></a>Synapse で一般的なタスクを実行するために必要なロールについて理解する
 
@@ -27,7 +27,7 @@ ms.locfileid: "122823346"
 
 ### <a name="resource-management"></a>リソース管理
 
-- ワークスペースの Azure 所有者または共同作成者である場合は、SQL プール、Apache Spark プール、統合ランタイムを作成できます。
+- ワークスペースの Azure 所有者または共同作成者である場合は、SQL プール、Apache Spark プール、統合ランタイムを作成できます。 自動デプロイに ARM テンプレートを使用する場合は、リソース グループの Azure 共同作成者である必要があります。
 - ワークスペースまたはそのリソースの Azure 所有者または共同作成者である場合は、専用の SQL プールを一時停止またはスケーリングしたり、Spark プールまたは統合ランタイムを構成したりすることができます。
 
 ### <a name="viewing-and-editing-code-artifacts"></a>コード成果物の表示と編集

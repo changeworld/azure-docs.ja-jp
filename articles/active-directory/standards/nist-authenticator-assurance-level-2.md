@@ -13,12 +13,12 @@ ms.reviewer: martinco
 ms.date: 4/26/2021
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 168ea35d32a02d512ef088ace098d2938a57c022
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 30287957ca9d44c27f0d46efb6ae358db7d6ab44
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111889762"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128662269"
 ---
 # <a name="achieve-nist-authenticator-assurance-level-2-with-azure-active-directory"></a>Azure Active Directory を使用して NIST Authenticator Assurance Level 2 を達成する
 
@@ -41,10 +41,12 @@ Authenticator Assurance Level 2 (AAL2) の達成を試みる前に、次のリ�
 | FIDO 2 セキュリティ キー<br>Android 用の Microsoft Authenticator アプリ (パスワードレス)<br>Windows Hello for Business (ハードウェア TPM を使用)<br>スマート カード (Active Directory フェデレーション サービス) | 多要素の暗号化ハードウェア |
 | **他の方法** |  |
 | パスワード + 電話 (SMS) | 記憶シークレット + 帯域外 |
-| パスワード + Microsoft Authenticator アプリ (OTP)<br>パスワード + SF OTP | 記憶シークレット +  ‎単一要素ワンタイム パスワード |
-| パスワード + ソフトウェア TPM を搭載した Azure AD 参加済み <br>パスワード + 準拠しているモバイル デバイス<br>パスワード + ソフトウェア TPM を搭載した Hybrid Azure AD 参加済み <br>パスワード + Microsoft Authenticator アプリ (通知) | 記憶シークレット + ‎単一要素暗号化ソフトウェア |
-| パスワード + ハードウェア TPM を搭載した Azure AD 参加済み <br>パスワード + ハードウェア TPM を搭載した Hybrid Azure AD 参加済み | 記憶シークレット + ‎単一要素暗号化ハードウェア |
+| パスワード + Microsoft Authenticator アプリ (OTP)<br>パスワード + SF OTP | 記憶シークレット + 単一要素ワンタイム パスワード |
+| パスワード + ソフトウェア TPM を搭載した Azure AD 参加済み <br>パスワード + 準拠しているモバイル デバイス<br>パスワード + ソフトウェア TPM を搭載した Hybrid Azure AD 参加済み <br>パスワード + Microsoft Authenticator アプリ (通知) | 記憶シークレット + 単一要素暗号化ソフトウェア |
+| パスワード + ハードウェア TPM を搭載した Azure AD 参加済み <br>パスワード + ハードウェア TPM を搭載した Hybrid Azure AD 参加済み | 記憶シークレット + 単一要素暗号化ハードウェア |
 
+> [!NOTE]
+> 条件付きアクセス ポリシーでは、準拠または Hybrid Azure AD 参加済みとしてデバイスをマークする必要がある場合、Authenticator が、検証者の偽装耐性の機能を果たします。
 
 ### <a name="our-recommendations"></a>推奨事項
 

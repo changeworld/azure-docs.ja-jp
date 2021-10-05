@@ -5,18 +5,22 @@ author: mumian
 ms.author: jgao
 ms.topic: conceptual
 ms.date: 08/30/2021
-ms.openlocfilehash: 67c4a99dbdb370202e4bbf080f32c626b71093b1
-ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
+ms.openlocfilehash: 28aa16d5f65891df063db7b43211e466855dfeec
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123213825"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124832039"
 ---
 # <a name="output-iteration-in-bicep"></a>Bicep での出力の反復処理
 
 この記事では、Bicep ファイルで 1 つの出力に対して複数の値を作成する方法について説明します。 ファイルの `output` セクションにループを追加し、デプロイ中に複数の項目を動的に返すことができます。
 
 [モジュール](loop-modules.md)、[リソース](loop-resources.md)、[リソース内のプロパティ](loop-properties.md)、[変数](loop-variables.md)でも、ループを使用できます。
+
+### <a name="microsoft-learn"></a>Microsoft Learn
+
+ループの詳細とハンズオン ガイダンスについては、**Microsoft Learn** の「[条件とループを使用して柔軟な Bicep テンプレートを作成する](/learn/modules/build-flexible-bicep-templates-conditions-loops/)」を参照してください。
 
 ## <a name="syntax"></a>構文
 

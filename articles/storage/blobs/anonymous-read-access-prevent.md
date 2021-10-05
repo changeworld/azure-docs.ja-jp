@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: cc06556c72a992efd9f0ebd48a1a2c8585b172c7
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 884f70367c7e7edaf546b65b4e0e2825dacf0a07
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110664968"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128577937"
 ---
 # <a name="prevent-anonymous-public-read-access-to-containers-and-blobs"></a>コンテナーと BLOB への匿名パブリック読み取りアクセスを防ぐ
 
@@ -55,7 +55,7 @@ Azure Storage 内のコンテナーと BLOB への匿名パブリック読み取
 1. **[フィルター]** ダイアログで、次の値を指定します。
     1. **[プロパティ]** の値を *[認証]* に設定します。
     1. **[演算子]** フィールドを等号 (=) に設定します。
-    1. **[値]** フィールドを *[匿名]* に設定します。
+    1. **[値]** フィールドを *[匿名]* に設定します。そのためには、ドロップダウンから選択するか、入力します。
 1. 右上隅で、メトリックを表示する期間を選択します。 1 分から 1 か月の範囲で間隔を指定して、要求の集計のきめ細かさを指示することもできます。
 
 メトリックを構成すると、匿名要求がグラフに表示されるようになります。 次の図は、過去 30 分間に集計された匿名要求を示しています。

@@ -2,15 +2,15 @@
 title: Azure Automation Runbook に関する問題のトラブルシューティング
 description: この記事では、Azure Automation Runbook に関する問題のトラブルシューティングと解決方法について説明します。
 services: automation
-ms.date: 07/27/2021
+ms.date: 09/16/2021
 ms.topic: troubleshooting
 ms.custom: has-adal-ref, devx-track-azurepowershell
-ms.openlocfilehash: a7711d30a71cc5b637a1fc755609d3f5c48683d8
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 436282ad8a2816e3307d2ad270209980b2fa0427
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121738618"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129058439"
 ---
 # <a name="troubleshoot-runbook-issues"></a>Runbook の問題のトラブルシューティング
 
@@ -210,26 +210,11 @@ The subscription named <subscription name> cannot be found.
 * サブスクリプション名が有効ではない。
 * サブスクリプションの詳細を取得しようとしている Azure AD ユーザーが、サブスクリプションの管理者として構成されていない。
 * そのコマンドレットが使用できない。
+* コンテキスト切り替えが発生した。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決策
 
-次の手順に従って、Azure に対して認証されているかと、選択しようとしているサブスクリプションにアクセスできるかを確認します。
-
-1. スクリプトがスタンドアロンで動作することを確認するには、Azure Automation の外部でテストします。
-1. スクリプトで、`Select-*` コマンドレットを実行する前に [Connect-AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount) コマンドレットが実行されていることを確認します。
-1. Runbook の先頭に `Disable-AzContextAutosave -Scope Process` を追加します。 このコマンドレットにより、すべての資格情報が現在の Runbook の実行にのみ適用されるようになります。
-1. それでもエラー メッセージが表示される場合は、`Connect-AzAccount` に `AzContext` パラメーターを追加するようにコードを変更してから、コードを実行します。
-
-   ```powershell
-   Disable-AzContextAutosave -Scope Process
-
-   $Conn = Get-AutomationConnection -Name AzureRunAsConnection
-   Connect-AzAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
-
-   $context = Get-AzContext
-
-   Get-AzVM -ResourceGroupName myResourceGroup -AzContext $context
-    ```
+コンテキスト切り替えについては、「[Azure Automation でのコンテキスト切り替え](../context-switching.md)」を参照してください。
 
 ## <a name="scenario-runbooks-fail-when-dealing-with-multiple-subscriptions"></a><a name="runbook-auth-failure"></a>シナリオ:複数のサブスクリプションを処理するときに Runbook が失敗する
 
@@ -251,33 +236,19 @@ Get-AzVM : The client '<automation-runas-account-guid>' with object id '<automat
    ID : <AGuidRepresentingTheOperation> At line:51 char:7 + $vm = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $UNBV... +
 ```
 
-### <a name="resolution"></a>解像度
+次のようなエラーが表示されることもあります。
 
-1 つの Runbook で複数の Runbook を呼び出すと、サブスクリプション コンテキストが失われる可能性があります。 誤って間違ったサブスクリプションにアクセスしようとするのを避けるために、以下のガイダンスに従う必要があります。
+```error
+Get-AzureRmResource : Resource group "SomeResourceGroupName" could not be found.
+... resources = Get-AzResource -ResourceGroupName $group.ResourceGro ...
+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : CloseError: (:) [Get-AzResource], CloudException
+    + FullyQualifiedErrorId : Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.GetAzureResourceCmdlet
+```
 
-* 間違ったサブスクリプションが参照されないようにするには、各 Runbook の開始時に次のコードを使用して、Automation Runbook でコンテキストの保存を無効にします。
+### <a name="resolution"></a>解決策
 
-   ```azurepowershell-interactive
-   Disable-AzContextAutosave -Scope Process
-   ```
-
-* Azure PowerShell コマンドレットでは、`-DefaultProfile` パラメーターがサポートされています。 この機能は、すべての Az および AzureRm コマンドレットに追加され、同じプロセスで複数の PowerShell スクリプトを実行できるようになりました。コンテキストと、各コマンドレットに使用するサブスクリプションを指定できます。 Runbook を使用する場合、Runbook の作成時 (つまり、あるアカウントでサインインしたとき) と、変更のたびに、Runbook にコンテキスト オブジェクトを保存してください。また、Az コマンドレットを指定するとき、コンテキストを参照してください。
-
-   > [!NOTE]
-   > [Set-AzContext](/powershell/module/az.accounts/Set-AzContext) や [Select-AzSubscription](/powershell/module/servicemanagement/azure.service/set-azuresubscription) などのコマンドレットを使用してコンテキストを直接操作する場合でも、コンテキスト オブジェクトを渡す必要があります。
-
-   ```azurepowershell-interactive
-   $servicePrincipalConnection=Get-AutomationConnection -Name $connectionName 
-   $context = Add-AzAccount `
-             -ServicePrincipal `
-             -TenantId $servicePrincipalConnection.TenantId `
-             -ApplicationId $servicePrincipalConnection.ApplicationId `
-             -Subscription 'cd4dxxxx-xxxx-xxxx-xxxx-xxxxxxxx9749' `
-             -CertificateThumbprint $servicePrincipalConnection.CertificateThumbprint 
-   $context = Set-AzContext -SubscriptionName $subscription `
-       -DefaultProfile $context
-   Get-AzVm -DefaultProfile $context
-   ```
+誤って間違ったサブスクリプションにアクセスしようとするのを防ぐために、「[Azure Automation でのコンテキスト切り替え](../context-switching.md)」を参照してください。
   
 ## <a name="scenario-authentication-to-azure-fails-because-multifactor-authentication-is-enabled"></a><a name="auth-failed-mfa"></a>シナリオ:多要素認証が有効になっているために Azure に対する認証が失敗する
 
@@ -693,7 +664,7 @@ Operation returned an invalid status code 'Forbidden'
 
 #### <a name="not-using-a-run-as-account"></a>実行アカウントを使用していない
 
-「[手順 5 - Azure リソースを管理するための認証を追加する](../learn/automation-tutorial-runbook-textual-powershell.md#step-5---add-authentication-to-manage-azure-resources)」に従って、Key Vault へのアクセスに実行アカウントを使用するようにします。
+「[手順 5 - Azure リソースを管理するための認証を追加する](../learn/powershell-runbook-managed-identity.md#assign-permissions-to-managed-identities)」に従って、Key Vault へのアクセスに実行アカウントを使用するようにします。
 
 #### <a name="insufficient-permissions"></a>アクセス許可が不十分である
 

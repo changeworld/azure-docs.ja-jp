@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: a7022c9de1449d0c4001b1d814eeb9464b98c24a
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: c9167111a1799575b5dc0d06cb26bf7cc20002e9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122769983"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124826796"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID をサポートするサービス
 
@@ -84,8 +84,8 @@ Azure Arc 対応 Kubernetes では、現在、[システムによって割り当
 
 すべての Azure Arc 対応サーバーには、システムによって割り当てられた ID があります。 Azure Arc 対応サーバーでは、システムによって割り当てられた ID を無効化または変更することはできません。 Azure Arc 対応サーバーでマネージド ID を使用する方法の詳細については、次のリソースを参照してください。
 
-- [Arc 対応サーバーでの Azure リソースに対して認証を行う](../../azure-arc/servers/managed-identity-authentication.md)
-- [Arc 対応サーバーでのマネージド ID の使用](../../azure-arc/servers/security-overview.md#using-a-managed-identity-with-arc-enabled-servers)
+- [Azure Arc 対応サーバーでの Azure リソースに対して認証を行う](../../azure-arc/servers/managed-identity-authentication.md)
+- [Azure Arc 対応サーバーでのマネージド ID の使用](../../azure-arc/servers/security-overview.md#using-a-managed-identity-with-azure-arc-enabled-servers)
 
 ### <a name="azure-automanage"></a>Azure Automanage
 
@@ -507,7 +507,6 @@ Azure Resource Manager へのアクセスを構成するには、次の一覧を
 | --- | :-: | :-: | :-: | :-: |
 | システム割り当て済み | ![利用可能][check] | 使用不可 | 使用不可 | 使用不可 |
 | ユーザー割り当て済み | ![利用可能][check] | 使用不可 | 使用不可 | 使用不可 |
-
 
 > [!NOTE]
 > マネージド ID を使用して、[Azure Stream 分析ジョブを Power BI に](../../stream-analytics/powerbi-output-managed-identity.md)認証できます。

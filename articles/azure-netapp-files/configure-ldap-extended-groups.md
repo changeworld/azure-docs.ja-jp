@@ -12,18 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 07/19/2021
+ms.date: 09/20/2021
 ms.author: b-juche
-ms.openlocfilehash: 01d8f23331525443a9f83245b8eec2b402e92d6e
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 4b4c1e159fcd62d1d9d57b907edbfa4e5f0bfc24
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114443024"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128576829"
 ---
 # <a name="configure-adds-ldap-with-extended-groups-for-nfs-volume-access"></a>NFS ボリューム アクセスに拡張グループで ADDS LDAP を構成する
 
-[NFS ボリュームを作成する](azure-netapp-files-create-volumes.md)ときに、ボリュームの拡張グループ機能 (**LDAP** オプション) を使用して LDAP を有効にするオプションがあります。 この機能により、Active Directory LDAP ユーザーおよび拡張グループ (最大1024 グループ) がボリュームにアクセスできるようになります。 NFSv 4.1 と NFSv3 の両方のボリュームで、拡張グループ機能で LDAP を使用できます。 
+[NFS ボリュームを作成する](azure-netapp-files-create-volumes.md)ときに、ボリュームの拡張グループ機能 (**LDAP** オプション) を使用して LDAP を有効にするオプションがあります。 この機能により、Active Directory LDAP ユーザーおよび拡張グループ (最大 1024 グループ) がボリューム内のファイルおよびディレクトリにアクセスできるようになります。 NFSv 4.1 と NFSv3 の両方のボリュームで、拡張グループ機能で LDAP を使用できます。 
 
 この記事では、NFS ボリュームの作成時に拡張グループで LDAP を有効にする際の考慮事項と手順について説明します。  
 
@@ -79,15 +79,21 @@ ms.locfileid: "114443024"
 4. LDAP NFS ユーザーは、LDAP サーバー上で特定の POSIX 属性を持っている必要があります。 次のように、LDAP ユーザーと LDAP グループの属性を設定します。 
 
     * LDAP ユーザーに必要な属性:   
-        `uid: Alice`, `uidNumber: 139`, `gidNumber: 555`, `objectClass: user`
+        `uid: Alice`,  
+        `uidNumber: 139`,  
+        `gidNumber: 555`,  
+        `objectClass: user, posixAccount`
     * LDAP グループに必要な属性:   
-        `objectClass: group`, `gidNumber: 555`
+        `objectClass: group, posixGroup`,  
+        `gidNumber: 555`
 
-    Active Directory ユーザーとコンピューター MMC スナップインを使用して、POSIX 属性を管理できます。 次の例は、Active Directory の属性エディターを示しています。  
+    `objectClass` に指定された値は、個別のエントリです。 たとえば、複数値の文字列エディターでは、`objectClass` には、次のように LDAP ユーザーとして個別の値 (`user` と `posixAccount`) が指定されます。   
+
+    ![オブジェクト クラスに指定された複数の値を示している複数値の文字列エディターのスクリーンショット。](../media/azure-netapp-files/multi-valued-string-editor.png) 
+
+    Active Directory ユーザーとコンピューター MMC スナップインを使用して、POSIX 属性を管理できます。 次の例は、Active Directory の属性エディターを示しています。 詳細については、[Active Directory 属性エディターへのアクセス](create-volumes-dual-protocol.md#access-active-directory-attribute-editor)に関するセクションを参照してください。  
 
     ![Active Directory の属性エディター](../media/azure-netapp-files/active-directory-attribute-editor.png) 
-
-    詳細については、[Active Directory 属性エディターへのアクセス](create-volumes-dual-protocol.md#access-active-directory-attribute-editor)に関するセクションを参照してください。  
 
 5. LDAP 統合 NFSv4.1 Linux クライアントを構成する場合は、「[Azure NetApp Files 用に NFS クライアントを構成する](configure-nfs-clients.md)」をご覧ください。
 

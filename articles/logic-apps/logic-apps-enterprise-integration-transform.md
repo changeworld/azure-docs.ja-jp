@@ -1,5 +1,5 @@
 ---
-title: B2B エンタープライズ統合用に XML を変換する
+title: エンタープライズ統合ワークフローで XML を変換する
 description: Enterprise Integration Pack を備えた Azure Logic Apps でマップを使用して XML を変換します。
 services: logic-apps
 ms.suite: integration
@@ -7,31 +7,19 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, azla
 ms.topic: how-to
-ms.date: 08/26/2021
-ms.openlocfilehash: 30895da003122b760d6437b3cd14a270482f7a0a
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.date: 09/15/2021
+ms.openlocfilehash: 027c1f44d756494432a076ec32f06e627f916b99
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123105260"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128553734"
 ---
 # <a name="transform-xml-for-workflows-in-azure-logic-apps"></a>Azure Logic Apps でワークフロー用に XML を変換する
 
-エンタープライズ統合の企業間 (B2B) シナリオでは、XML を形式間で変換する必要がある場合があります。 Azure Logic Apps では、ロジック アプリ ワークフローで、XSLT (Extensible Stylesheet Language Transformation) マップと **XML 変換** アクションを使用して XML を変換できます。 マップとは、データを XML から別の形式に変換する方法について記述した XML ドキュメントのことです。 このドキュメントは、入力のソース XML スキーマと出力のターゲット XML スキーマで構成されています。  さまざまな組み込み関数を使用すると、文字列操作、条件付き割り当て、算術式、日時の書式設定や、ループ構造の操作などで、データを操作および制御できます。
+エンタープライズ統合の企業間 (B2B) シナリオでは、XML を形式間で変換する必要がある場合があります。 ロジック アプリ ワークフローでは、**XML 変換** アクションと定義済みの [ "*マップ*" ](logic-apps-enterprise-integration-maps.md)を使用して、XML を変換することができます。 たとえば、YearMonthDay という日付形式 (YYYYMMDD) を使用している顧客から、B2B の注文や請求書を定期的に受け取っているとします。 ただし、あなたの組織では MonthDayYear という日付形式 (MMDDYYYY) を使用しています。 そのような場合は、YearMonthDay 形式から MonthDayYear 形式に変換するマップを作成して使用できます。その後、顧客活動データベースに注文や請求書の詳細を保存できます。
 
-たとえば、YearMonthDay という日付形式 (YYYYMMDD) を使用している顧客から、B2B の注文や請求書を定期的に受け取っているとします。 ただし、あなたの組織では MonthDayYear という日付形式 (MMDDYYYY) を使用しています。 そのような場合は、YearMonthDay 形式から MonthDayYear 形式に変換するマップを作成して使用できます。その後、顧客活動データベースに注文や請求書の詳細を保存できます。
-
-[マップを作成](logic-apps-enterprise-integration-maps.md#create-maps)してマップが機能することを確認したら、マルチテナントの従量課金プランベースのロジック アプリまたは ISE プランベースのロジック アプリにリンクされている統合アカウントにこのマップを追加するか、シングルテナントの Standard プランベースのロジック アプリにマップを直接追加できます。 詳細については、[Azure Logic Apps での XML 変換用の XSLT マップの追加](logic-apps-enterprise-integration-maps.md)に関する記事を参照してください。 ワークフローに **XML 変換** アクションが含まれていると仮定すると、ワークフローがトリガーされて XML コンテンツが変換に使用できる場合に、そのアクションが実行されます。
-
-ロジック アプリを初めて使用する場合は、次のドキュメントを参照してください。
-
-* [Azure Logic Apps とは - リソースの種類とホスト環境](logic-apps-overview.md#resource-type-and-host-environment-differences)
-
-* [シングルテナントの Azure Logic Apps (Standard) で統合ワークフローを作成する](create-single-tenant-workflows-azure-portal.md)
-
-* [シングルテナントのロジック アプリのワークフローを作成する](create-single-tenant-workflows-azure-portal.md)
-
-* [Azure Logic Apps の使用量の測定、課金、価格モデル](logic-apps-pricing.md)
+ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](logic-apps-overview.md)」を参照してください。 B2B エンタープライズ統合の詳細については、「[Azure Logic Apps と Enterprise Integration Pack を使用した B2B エンタープライズ統合ワークフロー](logic-apps-enterprise-integration-overview.md)」をご確認ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,15 +27,24 @@ ms.locfileid: "123105260"
 
 * ワークフローで必要に応じて **XML 変換** アクションを追加できるように、既にトリガーで開始されているロジック アプリ ワークフロー。
 
-* **ロジック アプリ (Standard)** のリソースの種類を使用している場合、統合アカウントは必要ありません。 代わりに、Azure portal または Visual Studio Code でロジック アプリ リソースにマップを直接追加できます。 現在は XSLT 1.0 のみがサポートされています。 その後、"*同じロジック アプリ リソース*" 内の複数のワークフローでこれらのマップを使用できます。
-
-* **ロジック アプリ (従量課金)** のリソースの種類を使用している場合は、エンタープライズ統合および企業間 (B2B) ソリューションで使用するマップや他の成果物を格納できる[統合アカウント リソース](logic-apps-enterprise-integration-create-integration-account.md)が必要です。 このリソースでは、次の要件が満たされている必要があります。
+* エンタープライズ統合および B2B ワークフローで使用する成果物 (取引先、契約、証明書など) を定義して保存する[統合アカウント リソース](logic-apps-enterprise-integration-create-integration-account.md)。 このリソースでは、次の要件が満たされている必要があります。
 
   * ロジック アプリ リソースと同じ Azure サブスクリプションに関連付けられている。
 
   * **XML 変換** アクションを使用する予定のロジック アプリ リソースと同じ場所または Azure リージョンに存在する。
 
-  * **XML 変換** アクションを使用するロジック アプリ リソースに[リンク](logic-apps-enterprise-integration-create-integration-account.md#link-account)されている。
+  * [**ロジック アプリ (従量課金)** リソース タイプ](logic-apps-overview.md#resource-type-and-host-environment-differences)を使用する場合、統合アカウントには以下のアイテムが必要です。
+
+    * XML コンテンツの変換に使用する[マップ](logic-apps-enterprise-integration-maps.md)。
+
+    * [ご利用のロジック アプリ リソースへのリンク](logic-apps-enterprise-integration-create-integration-account.md#link-account)。
+
+  * [**ロジック アプリ (Standard)** というリソースの種類](logic-apps-overview.md#resource-type-and-host-environment-differences)を使用している場合は、統合アカウントにマップを保存しません。 代わりに、Azure portal または Visual Studio Code を使用して、[ロジック アプリ リソースにマップを直接追加](logic-apps-enterprise-integration-maps.md)することができます。 現在は XSLT 1.0 のみがサポートされています。 その後、"*同じロジック アプリ リソース*" 内の複数のワークフローでこれらのマップを使用できます。
+
+    取引先、契約、証明書などの他の成果物を保存すると共に、[AS2](logic-apps-enterprise-integration-as2.md)、[X12](logic-apps-enterprise-integration-x12.md)、および [EDIFACT](logic-apps-enterprise-integration-edifact.md) 操作を使用するには、引き続き統合アカウントが必要です。 ただし、ロジック アプリ リソースを統合アカウントにリンクする必要はないため、リンク機能は存在しません。 統合アカウントは、ロジック アプリ リソースと同じ Azure サブスクリプションを使用することや、ロジック アプリ リソースと同じ場所に存在することなど、他の要件も満たす必要があります。
+
+    > [!NOTE]
+    > 現在、[RosettaNet](logic-apps-enterprise-integration-rosettanet.md) 操作をサポートしているのは、**ロジック アプリ (従量課金)** というリソースの種類のみです。 **ロジック アプリ (Standard)** というリソースの種類には、[RosettaNet](logic-apps-enterprise-integration-rosettanet.md) 操作は含まれていません。
 
 ## <a name="add-transform-xml-action"></a>XML 変換アクションを追加する
 
@@ -99,6 +96,8 @@ ms.locfileid: "123105260"
    これで、**XML 変換** アクションの設定が完了しました。 実際のアプリでは、変換したデータを Salesforce などの基幹業務 (LOB) アプリに保存することが必要になる場合があります。 変換された出力を Salesforce に送信するには、Salesforce アクションを追加します。
 
 1. 変換アクションをテストするには、ワークフローをトリガーして実行します。 たとえば、要求トリガーの場合は、トリガーのエンドポイント URL に要求を送信します。
+
+   **XML 変換** アクションは、ワークフローがトリガーされた後に、XML コンテンツが変換に使用できるようになると実行されます。
 
 ## <a name="advanced-capabilities"></a>拡張機能
 

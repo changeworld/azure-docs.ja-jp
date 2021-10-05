@@ -1,15 +1,15 @@
 ---
-title: Azure DevTest Labs のコストと所有権の管理
+title: コストと所有権の管理
 description: この記事では、コストを最適化し、環境全体で所有権を整合させるのに役立つ情報を提供します。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: dfac69a055c9b0c75032622caf7fb8502fad3406
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cc3b607155655935ee1e77d82ca60b7f92b70c2a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92328268"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128623610"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---manage-cost-and-ownership"></a>Azure DevTest Labs インフラストラクチャのガバナンス - コストと所有権の管理
 コストと所有権は、開発およびテスト用の環境の構築を検討するときの主な懸案事項です。 このセクションでは、コストを最適化し、環境全体で所有権を整合させるのに役立つ情報を提供します。

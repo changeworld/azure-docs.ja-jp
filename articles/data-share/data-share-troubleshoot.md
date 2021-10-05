@@ -6,13 +6,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: troubleshooting
-ms.date: 04/22/2021
-ms.openlocfilehash: 57b5e5f483ce8076622e4705a3a5b566e2e3aa1f
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.date: 09/10/2021
+ms.openlocfilehash: da746d14d891c875c9bed49c94e8b408d956e29e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107987886"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124811246"
 ---
 # <a name="troubleshoot-common-problems-in-azure-data-share"></a>Azure Data Share での一般的な問題をトラブルシューティングする 
 
@@ -35,6 +35,8 @@ ms.locfileid: "107987886"
 * **Azure サインイン用のメール アドレスではなく、メール エイリアスに招待が送信されている。** Azure Data Share サービスを既に登録している、または Azure テナントに Data Share リソースを作成しているのに招待が表示されない場合は、メール エイリアスが受信者としてリストされている可能性があります。 データ プロバイダーに連絡して、招待がメール エイリアスではなく、Azure サインイン用のメール アドレスに送信されるようにしてください。
 
 * **招待が既に承諾されている。** メールに記載されているリンクを使用すると、Azure portal の **[Data Share Invitations]\(Data Share の招待\)** ページに移動します。 このページには、保留中の招待のみが表示されます。 承諾済みの招待は、このページに表示されません。 受信した共有を表示して、ターゲットの Azure Data Explorer クラスター設定を構成するには、招待を承諾するために使用した Data Share リソースに移動します。
+
+* **あなたはテナントのゲスト ユーザーです。** テナントのゲスト ユーザーであれば、招待を表示する前に、テナントのメール アドレスを確認する必要があります。 検証が完了すると、12 か月間有効になります。 
 
 ## <a name="creating-and-receiving-shares"></a>共有の作成と受信
 

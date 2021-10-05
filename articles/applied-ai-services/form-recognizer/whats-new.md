@@ -9,18 +9,26 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 07/01/2021
 ms.author: lajanuar
-ms.openlocfilehash: 2efc4d2c546cff172164b9416cbe5a0772167631
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: d575af739fa299cc32576bd2798eeb8165fe37c2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122326459"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128590037"
 ---
 <!-- markdownlint-disable MD024 -->
 <!-- markdownlint-disable MD036 -->
 # <a name="whats-new-in-azure-form-recognizer"></a>Azure Form Recognizer の新機能
 
 Form Recognizer サービスは、継続的に更新されます。 このページにブックマークを設定して、リリースノート、機能の強化、およびドキュメントの更新についての最新情報を入手してください。
+
+## <a name="september-2021"></a>2021 年 9 月
+
+"名前にサフィックスまたはドットが含まれている場合に、事前構築済み ID (運転免許証) で名前が正確に抽出されない問題を修正しました。"
+
+Azure portal の Form Recognizer リソースの概要ページで、[Azure メトリックス エクスプローラーの高度な機能](/azure/azure-monitor/essentials/metrics-charts)を使用できます。 
+
+:::image type="content" source="media/portal-metrics.png" alt-text="スクリーンショット: Azure portal のメトリック グラフ。":::
 
 ## <a name="july-2021"></a>2021 年 7 月
 

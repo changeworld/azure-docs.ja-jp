@@ -7,13 +7,13 @@ author: nabhishek
 ms.author: abnarain
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/04/2021
-ms.openlocfilehash: 0eb7356542eb7016cd27cc76e048857e8d7f9955
-ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
+ms.date: 09/22/2021
+ms.openlocfilehash: 06bdd49df0f8a4d79ffece298fee2ea2691b0796
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122598091"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129219213"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Azure Data Factory のソース管理
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "122598091"
 効率的に作成できるよう、Azure Data Factory では、Azure Repos または GitHub のいずれかで Git リポジトリを構成することができます。 Git はバージョン管理システムであり、変更追跡や共同作業を簡単にします。 この記事では、Git リポジトリを構成し、そこで作業する方法を簡単に説明し、ベスト プラクティスとトラブルシューティング ガイドを提示します。
 
 > [!NOTE]
-> Azure Government クラウドの場合、*GitHub Enterprise Server* のみを使用できます。
+> Azure Gov、Azure China に GitHub のパブリック サポートが追加されました。 [お知らせブログ](https://techcommunity.microsoft.com/t5/azure-data-factory/cicd-improvements-with-github-support-in-azure-government-and/ba-p/2686918)を参照してください。
 
 Azure Data Factory を Git と統合する方法の詳細については、次の 15 分のチュートリアル ビデオをご覧ください。
 
@@ -42,7 +42,7 @@ Git 統合が作成作業にもたらす利点をいくつか下の一覧にま�
     -   バグの原因となっている変更を元に戻す機能
 -   **途中保存:** データ ファクトリ サービスに対して作成するとき、変更内容を下書きとして保存することはできません。公開内容はすべて、データ ファクトリの妥当性確認に合格する必要があります。 パイプラインが完了していない場合、あるいは単純に、コンピューターがクラッシュして変更内容が失われては困るときに、Git 統合によって、データ ファクトリ リソースの状態に関係なく、データ ファクトリ リソースを増分方式で変更することができます。 Git リポジトリを構成すると、変更内容を保存できます。変更内容を満足できるまでテストしてから公開できます。
 -   **コラボレーションと統制:** 同じファクトリに多数のチーム メンバーが貢献している場合には、コード レビューのプロセスを通じてチームメイトが相互に協力して作業できるようにしたいと思うこともあるかもしれません。 共同作成者ごとにアクセス許可を変えるようにファクトリを設定することもできます。 一部のチーム メンバーに Git 経由での変更のみを許可し、チーム内の特定の人間にファクトリの変更を公開することを許可します。
--   **CI/CD の改善:** [継続的デリバリー プロセス](continuous-integration-deployment.md)で複数の環境にデプロイしている場合、Git 統合で特定のアクションが簡単になります。 そうしたアクションの例を次に示します。
+-   **CI/CD の改善:** [継続的デリバリー プロセス](continuous-integration-delivery.md)で複数の環境にデプロイしている場合、Git 統合で特定のアクションが簡単になります。 そうしたアクションの例を次に示します。
     -   "開発" ファクトリに何か変更があった時点ですぐに自動でトリガーされるようにリリース パイプラインを構成します。
     -   Resource Manager テンプレートのパラメーターとして利用可能なプロパティをファクトリ内でカスタマイズします。 これは、必要なプロパティのみをパラメーターにして、残りをすべてハード コーディングする場合に便利です。
 -   **パフォーマンスの向上:** Git 統合の平均的なファクトリでは、データ ファクトリ サービスに対し、作成が 1 つの場合に比べ、読み込み速度が 10 倍になります。 このパフォーマンスの向上は、リソースが Git 経由でダウンロードされることに起因します。
@@ -58,19 +58,19 @@ Azure Repos と GitHub の両方で Git リポジトリをデータ ファクト
 
 Azure Data Factory のホームページで、上部にある **[コード リポジトリの設定]** を選択します。
 
-![ホーム ページからコード リポジトリを構成する](media/doc-common-process/set-up-code-repository.png)
+:::image type="content" source="media/doc-common-process/set-up-code-repository.png" alt-text="ホーム ページからコード リポジトリを構成する":::
 
 ### <a name="configuration-method-2-authoring-canvas"></a>構成方法 2:作成キャンバス
 
 Azure Data Factory UX 作成キャンバスで、 **[Data Factory]** ドロップダウン メニューを選択し、 **[Set up code repository]\(コード リポジトリの設定\)** を選択します。
 
-![コード リポジトリ設定を作成から構成する](media/author-visually/configure-repo-2.png)
+:::image type="content" source="media/author-visually/configure-repo-2.png" alt-text="コード リポジトリ設定を作成から構成する":::
 
 ### <a name="configuration-method-3-management-hub"></a>構成方法 3:管理ハブ
 
 ADF UX で管理ハブに移動します。 **[ソース管理]** セクションで **[Git 構成]** を選択します。 接続されているリポジトリがない場合は、 **[構成]** をクリックします。
 
-![コード リポジトリ設定を管理ハブから構成する](media/author-visually/configure-repo-3.png)
+:::image type="content" source="media/author-visually/configure-repo-3.png" alt-text="コード リポジトリ設定を管理ハブから構成する":::
 
 ### <a name="configuration-method-4-during-factory-creation"></a>構成方法 4:ファクトリの作成時
 
@@ -79,7 +79,7 @@ Azure portal で新しいデータ ファクトリを作成するときに、 **
 > [!NOTE]
 > Azure portal で git を構成する場合は、プロジェクト名やリポジトリ名などの設定を、ドロップダウン リストの一部としてではなく、手動で入力する必要があります。
 
-![コード リポジトリ設定を Azure portal から構成する](media/author-visually/configure-repo-4.png)
+:::image type="content" source="media/author-visually/configure-repo-4.png" alt-text="コード リポジトリ設定を Azure portal から構成する":::
 
 ## <a name="author-with-azure-repos-git-integration"></a>Azure Repos Git 統合を使用した作成
 
@@ -90,7 +90,7 @@ Azure Repos Git 統合を使ったビジュアルの作成では、データ フ
 
 ### <a name="azure-repos-settings"></a>Azure Repos の設定
 
-![コード リポジトリ設定の構成](media/author-visually/repo-settings.png)
+:::image type="content" source="media/author-visually/repo-settings.png" alt-text="コード リポジトリ設定の構成":::
 
 構成ウィンドウに次の Azure Repos コード リポジトリの設定が表示されます。
 
@@ -140,7 +140,7 @@ GitHub リポジトリを構成するには、使用している Azure サブス
 
 ### <a name="github-settings"></a>GitHub の設定
 
-![GitHub リポジトリの設定](media/author-visually/github-integration-image2.png)
+:::image type="content" source="media/author-visually/github-integration-image2.png" alt-text="GitHub リポジトリの設定":::
 
 [構成] ウィンドウには、次の GitHub リポジトリの設定が表示されます。
 
@@ -176,15 +176,15 @@ GitHub 組織に接続するには、Azure Data Factory のアクセス許可を
 
 1. GitHub に移動して **[設定]** を開きます。
 
-    ![GitHub の設定を開く](media/author-visually/github-settings.png)
+    :::image type="content" source="media/author-visually/github-settings.png" alt-text="GitHub の設定を開く":::
 
 1. **[アプリケーション]** を選択します。 **[Authorized OAuth Apps]\(認可済み OAuth アプリ\)** タブに *AzureDataFactory* が表示されます。
 
-    ![OAuth アプリの選択](media/author-visually/github-organization-select-application.png)
+    :::image type="content" source="media/author-visually/github-organization-select-application.png" alt-text="OAuth アプリの選択":::
 
 1. アプリケーションを選択し、アプリケーションに組織へのアクセス権を付与します。
 
-    ![アクセス権の付与](media/author-visually/github-organization-grant.png)
+    :::image type="content" source="media/author-visually/github-organization-grant.png" alt-text="アクセス権の付与":::
 
 これらの手順に従うと、ファクトリは組織内のパブリックとプライベートの両方のリポジトリに接続できるようになります。 
 
@@ -205,13 +205,17 @@ GitHub 組織に接続するには、Azure Data Factory のアクセス許可を
 
 ### <a name="creating-feature-branches"></a>機能ブランチの作成
 
-データ ファクトリに関連付けられている各 Azure Repos Git リポジトリには、コラボレーション ブランチが存在します。 (`main`) は既定のコラボレーション ブランチです)。 ユーザーは、ブランチのドロップダウンで **[+ New Branch]\(新しいブランチ\)** をクリックして機能分岐を作成することもできます。 新しいブランチのウィンドウが表示されたら、機能ブランチの名前を入力します。
+データ ファクトリに関連付けられている各 Azure Repos Git リポジトリには、コラボレーション ブランチが存在します。 (`main` は既定のコラボレーション ブランチです)。 ユーザーは、ブランチのドロップダウンで **[+ New Branch]\(新しいブランチ\)** をクリックして機能分岐を作成することもできます。 
 
-![新しいブランチを作成する](media/author-visually/new-branch.png)
+:::image type="content" source="media/author-visually/new-branch.png" alt-text="新しいブランチを作成する":::
+
+新しいブランチ ペインが表示されたら、機能ブランチの名前を入力し、作業の基にするブランチを選択します。
+
+:::image type="content" source="media/author-visually/create-branch-from-private-branch.png" alt-text="プライベート ブランチに基づいてブランチを作成する方法を示すスクリーンショット。":::
 
 機能ブランチの変更をコラボレーション ブランチにマージする準備ができたら、ブランチのドロップダウンをクリックし、 **[Create pull request]\(pull request の作成\)** を選択します。 このアクションで Azure Repos Git に移動します。Azure Repos Git では、pull request の発行、コード レビューの実行、およびコラボレーション ブランチへの変更のマージを行うことができます。 (`main` が既定値です)。 コラボレーション ブランチからは、Data Factory サービスにのみ発行することができます。 
 
-![新しい pull request を作成する](media/author-visually/create-pull-request.png)
+:::image type="content" source="media/author-visually/create-pull-request.png" alt-text="新しい pull request を作成する":::
 
 ### <a name="configure-publishing-settings"></a>発行の設定を構成する
 
@@ -232,11 +236,11 @@ Azure Data Factory に指定できる公開ブランチは一度に 1 つとな�
 
 コラボレーション ブランチ (`main` が既定値) に変更をマージしたら、 **[発行]** をクリックして、メイン ブランチ内のコード変更を Data Factory サービスに手動で発行します。
 
-![Data Factory サービスに変更を発行する](media/author-visually/publish-changes.png)
+:::image type="content" source="media/author-visually/publish-changes.png" alt-text="Data Factory サービスに変更を発行する":::
 
 サイド ウィンドウが開き、発行ブランチと保留中の変更が正しいことを確認できます。 変更を確認したら、 **[OK]** をクリックして発行を確定します。
 
-![発行ブランチが正しいことを確認する](media/author-visually/configure-publish-branch.png)
+:::image type="content" source="media/author-visually/configure-publish-branch.png" alt-text="発行ブランチが正しいことを確認する":::
 
 > [!IMPORTANT]
 > メイン ブランチは Data Factory サービスに展開されているものを代表しているわけではありません。 メイン ブランチを Data Factory サービスに手動で発行する "*必要があります*"。
@@ -279,7 +283,7 @@ Data Factory のリンクされたサービスのすべての接続文字列ま�
 
 <u>*コード フロー:*</u> ***コラボレーション ブランチ -> ライブ モード***
 
-![コラボレーション ブランチからコードを強制的に発行する](media/author-visually/force-publish-changes-from-collaboration-branch.png)
+:::image type="content" source="media/author-visually/force-publish-changes-from-collaboration-branch.png" alt-text="コラボレーション ブランチからコードを強制的に発行する":::
 
 #### <a name="option-2-disconnect-and-reconnect-git-repository"></a>オプション 2: Git リポジトリを切断して再接続する
 
@@ -297,11 +301,11 @@ Data Factory のリンクされたサービスのすべての接続文字列ま�
 
 別の Git リポジトリに切り替えるには、 **[ソース管理]** の管理ハブにある [Git 構成] ページに移動します。 **[切断]** を選択します。 
 
-![Git アイコン](media/author-visually/remove-repository.png)
+:::image type="content" source="media/author-visually/remove-repository.png" alt-text="Git アイコン":::
 
 データ ファクトリ名を入力し、 **[confirm]\(確認\)** をクリックして、データ ファクトリに関連付けられている Git リポジトリを削除します。
 
-![現在の Git リポジトリとの関連付けを削除する](media/author-visually/remove-repository-2.png)
+:::image type="content" source="media/author-visually/remove-repository-2.png" alt-text="現在の Git リポジトリとの関連付けを削除する":::
 
 現在のリポジトリとの関連付けを削除すると、別のリポジトリを使用するように Git 設定を構成してから、既存の Data Factory リソースを新しいリポジトリにインポートできるようになります。
 
@@ -311,4 +315,4 @@ Data Factory のリンクされたサービスのすべての接続文字列ま�
 ## <a name="next-steps"></a>次のステップ
 
 * パイプラインの監視と管理について詳しくは、[プログラムでのパイプラインの監視と管理](monitor-programmatically.md)に関する記事をご覧ください。
-* 継続的インテグレーションとデプロイを実装するには、「[Azure Data Factory における継続的インテグレーションと継続的デリバリー (CI/CD)](continuous-integration-deployment.md)」を参照してください。
+* 継続的インテグレーションとデプロイを実装するには、「[Azure Data Factory における継続的インテグレーションと継続的デリバリー (CI/CD)](continuous-integration-delivery.md)」を参照してください。

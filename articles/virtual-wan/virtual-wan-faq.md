@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: troubleshooting
 ms.date: 08/18/2021
 ms.author: cherylmc
-ms.openlocfilehash: 7b0045ccfd54d956ef8ae7fd2eb1b38705aafd31
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: c4c31314ca8e559748425518258e0eec965d9c09
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122514968"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124754435"
 ---
 # <a name="virtual-wan-faq"></a>Virtual WAN の FAQ
 
@@ -34,7 +34,9 @@ Virtual WAN には、次の 2 種類があります。Basic と Standard です�
 
 ### <a name="how-are-availability-zones-and-resiliency-handled-in-virtual-wan"></a>Virtual WAN では Availability Zones と回復性はどのように処理されますか。
 
-Virtual WAN は、ハブ内で使用可能になったハブとサービスのコレクションです。 ユーザーは、必要な数だけ Virtual WAN を利用できます。 Virtual WAN ハブには、VPN や ExpressRoute などの複数のサービスがあります。Availability Zones リージョンで Availability Zones がサポートされている場合、これらのサービス (Azure Firewall を除く) はそれぞれそのリージョンにデプロイされます。 ハブでの初期デプロイ後にリージョンが可用性ゾーンになった場合、ユーザーはゲートウェイを再作成できます。これにより、可用性ゾーンのデプロイがトリガーされます。 すべてのゲートウェイがアクティブ/アクティブとしてハブにプロビジョニングされます。これは、ハブ内に回復性が組み込まれていることを意味します。 ユーザーは、複数のリージョンにわたって回復性が必要な場合、複数のハブに接続できます。
+Virtual WAN は、ハブ内で使用可能になったハブとサービスのコレクションです。 ユーザーは、必要な数だけ Virtual WAN を利用できます。 Virtual WAN ハブには、VPN や ExpressRoute などの複数のサービスがあります。リージョンで Availability Zones がサポートされている場合、これらのサービス (Azure Firewall を除く) はそれぞれ自動的に Availability Zones にまたがってデプロイされます。 ハブでの初期デプロイ後にリージョンが可用性ゾーンになった場合、ユーザーはゲートウェイを再作成できます。これにより、可用性ゾーンのデプロイがトリガーされます。 すべてのゲートウェイがアクティブ/アクティブとしてハブにプロビジョニングされます。これは、ハブ内に回復性が組み込まれていることを意味します。 ユーザーは、複数のリージョンにわたって回復性が必要な場合、複数のハブに接続できます。 
+
+Availability Zones をサポートするために、現在、Azure Firewall Manager Portal、[PowerShell](/powershell/module/az.network/new-azfirewall?view=azps-6.3.0#example-6--create-a-firewall-with-no-rules-and-with-availability-zones)、または CLI を使用して Azure Firewall をデプロイできます。 現在、既存のファイアウォールが可用性ゾーンにまたがってデプロイされるように構成する方法はありません。 Azure Firewall を削除してから再デプロイする必要があります。 
 
 Virtual WAN の概念はグローバルですが、実際の Virtual WAN リソースは Resource Manager ベースであり、リージョンでデプロイされます。 仮想 WAN リージョン自体に問題がある場合、その仮想 WAN 内のすべてのハブは引き続きそのまま機能しますが、ユーザーは、仮想 WAN リージョンが使用可能になるまで新しいハブを作成することはできません。
 

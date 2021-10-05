@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: reference
 ms.date: 09/29/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 9ae13b88d767e43c425ceb86d0be455cebc0e6ac
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bd66619c65dd39e32a11b81096d4b763430fc16c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96462532"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128553681"
 ---
 # <a name="common-error-codes-for-azure-key-vault"></a>Azure Key Vault の一般的なエラー コード
 
@@ -23,7 +23,7 @@ Azure Key Vault に対して操作を実行した結果、返される可能性�
 | エラー コード | ユーザー メッセージ |
 |--|--|
 | VaultAlreadyExists |  指定された名前で新しいキー コンテナーを作成しようとしましたが、その名前が既に使用されているため作成できませんでした。 この名前のキー コンテナーを最近削除した場合は、まだ論理的な削除状態である可能性があります。 論理的に削除された状態かどうかは、[こちら](./key-vault-recovery.md?tabs=azure-portal#list-recover-or-purge-a-soft-deleted-key-vault)で確認できます |
-| VaultNameNotValid |  コンテナー名は 24 文字の英数字で、アルファベットで始める必要があります |
+| VaultNameNotValid |  コンテナー名は、3 から 24 文字の文字列とする必要があり、含めることができるのは数字 (0-9)、文字 (a-z、A-Z)、およびハイフン (-) のみとなります。 |
 | AccessDenied |  この操作を行うためのアクセス許可がアクセス ポリシーにない可能性があります。 |
 | ForbiddenByFirewall |  クライアント アドレスは承認されておらず、呼び出し元は信頼できるサービスではありません。 |
 | ConflictError |  同じ項目に対して複数の操作を要求しています。  |

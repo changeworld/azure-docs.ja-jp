@@ -1,8 +1,6 @@
 ---
 title: AD FS 証明書の緊急ローテーション |Microsoft Docs
 description: この記事では、AD FS 証明書をただちに失効させて、更新する方法について説明します。
-services: active-directory
-documentationcenter: ''
 author: billmath
 manager: daveba
 ms.service: active-directory
@@ -11,12 +9,12 @@ ms.topic: how-to
 ms.date: 03/22/2021
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9741c2e85a7cd3523ffe7fe8262e5f5d821b62c3
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 7153b33b0019600f58ea678079b553a9ad6c6672
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108126599"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124823034"
 ---
 # <a name="emergency-rotation-of-the-ad-fs-certificates"></a>AD FS 証明書の緊急ローテーション
 AD FS 証明書をただちにローテーションする必要がある場合は、このセクションで後述する手順に従うことができます。
@@ -31,8 +29,8 @@ AD FS 証明書をただちにローテーションする必要がある場合�
 ## <a name="determine-your-token-signing-certificate-thumbprint"></a>トークン署名証明書の拇印を特定する
 現在 AD FS で使用している古いトークン署名証明書を失効させるには、トークン署名証明書の拇印を特定する必要があります。  これを行うには、次の手順を使用します。
 
- 1. Microsoft オンライン サービスに接続します。`PS C:\>Connect-MsolService`
- 2. オンプレミスとクラウドの両方のトークン署名証明書の拇印と有効期限を文書化します。
+ 1.    Microsoft オンライン サービスに接続します。`PS C:\>Connect-MsolService`
+ 2.    オンプレミスとクラウドの両方のトークン署名証明書の拇印と有効期限を文書化します。
 `PS C:\>Get-MsolFederationProperty -DomainName <domain>` 
  3.  拇印をコピーします。  これは後で既存の証明書を削除するために使用します。
 
@@ -106,7 +104,7 @@ Windows PowerShell 用 Microsoft Azure Active Directory モジュールを開き
 コマンド `Connect-MsolService` を実行して Azure AD に接続し、次に全体管理者の資格情報を入力します。
 
 >[!Note]
-> プライマリ フェデレーション サーバーでないコンピューターでこれらのコマンドを実行する場合は、まずコマンド `Set-MsolADFSContext –Computer <servername>` を入力します。 <servername> を AD FS サーバーの名前に置き換えます。 入力を求められたら、AD FS サーバーの管理者資格情報を入力します。
+> プライマリ フェデレーション サーバーでないコンピューターでこれらのコマンドを実行する場合は、まずコマンド `Set-MsolADFSContext –Computer <servername>` を入力します。 \<servername\> を AD FS サーバーの名前に置き換えます。 入力を求められたら、AD FS サーバーの管理者資格情報を入力します。
 
 オプションで、Azure AD の現在の証明書情報を確認して、更新が必要であるかどうかを確認します。 これを行うには、コマンド `Get-MsolFederationProperty` を実行します。 入力が求められたら、フェデレーション ドメインの名前を入力します。
 
@@ -122,9 +120,8 @@ SSL 証明書の失効は、証明書を発行した証明機関 (CA) で行う�
 
 古い SSL 証明書が失効し、新しいものが発行されたら、SSL 証明書を置き換えることができます。 詳細については、「[AD FS の SSL 証明書の置き換え](/windows-server/identity/ad-fs/operations/manage-ssl-certificates-ad-fs-wap#replacing-the-ssl-certificate-for-ad-fs)」を参照してください。
 
-
 ## <a name="remove-your-old-certificates"></a>古い証明書の削除
-古い証明書を置き換えたら、古い証明書はまだ使用できるため、削除する必要があります。 . これを行うには、次の手順に従います。  これを行うには、次の手順に従います。
+古い証明書を置き換えたら、古い証明書はまだ使用できるため、削除する必要があります。 これを行うには、次の手順に従います。
 
 1. プライマリ AD FS サーバーにログオンしていることを確認します。
 2. Windows PowerShell を管理者として開きます。 

@@ -2,13 +2,13 @@
 title: Azure リソースをデプロイするための Bicep 言語
 description: Azure にインフラストラクチャをデプロイするための Bicep 言語について説明します。 JSON を使用してテンプレートを開発するよりも優れた作成エクスペリエンスが提供されます。
 ms.topic: conceptual
-ms.date: 08/18/2021
-ms.openlocfilehash: 93aea8ee92d1f15ac45bd5978e7cbf68261e5a69
-ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
+ms.date: 09/09/2021
+ms.openlocfilehash: ace417bb8a71a277bbcb4ef178c6aaf24b97533b
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122429109"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124831949"
 ---
 # <a name="what-is-bicep"></a>Bicep とは
 
@@ -112,8 +112,7 @@ ARM テンプレートを選択したお客様の場合、Bicep によって作�
 
 ## <a name="known-limitations"></a>既知の制限事項
 
-- 単一行のオブジェクトと配列はサポートされていません。 たとえば、`['a', 'b', 'c']` はサポートされていません。 詳細については、「[配列](data-types.md#arrays)」および「[オブジェクト](data-types.md#objects)」を参照してください。
-- 長い行を複数の行に分割することはサポートされていません。 例:
+- Bicep では改行が識別されます。 次に例を示します。
 
     ```bicep
     resource sa 'Microsoft.Storage/storageAccounts@2019-06-01' = if (newOrExisting == 'new') {

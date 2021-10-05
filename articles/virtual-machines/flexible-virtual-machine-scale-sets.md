@@ -9,12 +9,12 @@ ms.subservice: flexible-scale-sets
 ms.date: 08/11/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli, vmss-flex
-ms.openlocfilehash: bf52db4950fd14e15cbd52d94b2e4ffbb9d225bb
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: dc687c2f3d14c2da02fa3ce5b3a3357292977771
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123314550"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128648964"
 ---
 # <a name="preview-flexible-orchestration-for-virtual-machine-scale-sets-in-azure"></a>プレビュー: Azure の仮想マシン スケール セットのフレキシブル オーケストレーション
 
@@ -54,9 +54,7 @@ Azure ではフレキシブル オーケストレーションを使用するこ�
 
 ### <a name="azure-portal"></a>Azure portal
 
-スケール セット プレビューのフレキシブル オーケストレーション モードでは、次の手順でリンクされている "*プレビュー*" の Azure portal を使用します。 
-
-1. https://preview.portal.azure.com で、Azure Portal にログインします。
+1. https://portal.azure.com で、Azure Portal にログインします。
 1. **[サブスクリプション]** に移動します。
 1. サブスクリプションの名前を選択して、フレキシブル オーケストレーション モードでスケール セットを作成するサブスクリプションの詳細ページに移動します。
 1. **[設定]** の下のメニューで、 **[プレビュー機能]** を選択します。
@@ -86,6 +84,12 @@ Register-AzProviderFeature -FeatureName SkipPublicIpWriteRBACCheckForVMNetworkIn
 Get-AzProviderFeature -FeatureName VMOrchestratorMultiFD -ProviderNamespace Microsoft.Compute
 ```
 
+サブスクリプションに対してこの機能が登録されたら、変更をコンピューティング リソース プロバイダーに伝達することによって、オプトイン プロセスを完了します。
+
+```azurepowershell-interactive
+Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
+```
+
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
 [az feature register](/cli/azure/feature#az_feature_register) を使用して、サブスクリプションでのプレビューを有効にします。
 
@@ -102,6 +106,11 @@ az feature register --namespace Microsoft.Compute --name SkipPublicIpWriteRBACCh
 az feature show --namespace Microsoft.Compute --name VMOrchestratorMultiFD
 ```
 
+サブスクリプションに対してこの機能が登録されたら、変更をコンピューティング リソース プロバイダーに伝達することによって、オプトイン プロセスを完了します。
+
+```azurecli-interactive
+az provider register --namespace Microsoft.Compute
+```
 
 ## <a name="get-started-with-flexible-orchestration-mode"></a>フレキシブル オーケストレーション モードの開始
 
@@ -123,6 +132,11 @@ az feature show --namespace Microsoft.Compute --name VMOrchestratorMultiFD
 
     VM を作成するときに、必要に応じて仮想マシン スケール セットに追加するように指定できます。 VM は、VM の作成時にのみスケール セットに追加できます。
 
+フレキシブル オーケストレーション モードは、[メモリ保持更新またはライブ マイグレーション](../virtual-machines/maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot)をサポートする VM SKU で使用でき、これには Azure にデプロイされる全 IaaS VM の 90% が含まれます。 基本的に、B、D、E、F シリーズの VM など、汎用サイズのファミリが対象となります。 G、H、L、M、N シリーズの VM など、メモリ保持更新をサポートしない VM SKU やファミリに対するオーケストレーションをフレキシブル モードで行うことは、現時点ではできません。 特定の VM SKU がサポートされているかどうかは、[Compute Resource SKU API](/rest/api/compute/resource-skus/list) を使用して調べることができます。
+
+```azurecli-interactive
+az vm list-skus -l eastus --size standard_d2s_v3 --query "[].capabilities[].[name, value]" -o table
+```
 
 ## <a name="explicit-network-outbound-connectivity-required"></a>明示的なネットワーク送信接続が必要 
 
@@ -131,13 +145,13 @@ az feature show --namespace Microsoft.Compute --name VMOrchestratorMultiFD
 - ほとんどのシナリオでは、[NAT Gateway をサブネットに接続する](../virtual-network/nat-gateway/tutorial-create-nat-gateway-portal.md)ことをお勧めします。
 - 高度なセキュリティ要件を持つシナリオの場合や、Azure Firewall またはネットワーク仮想アプライアンス (NVA) を使用する場合は、カスタムのユーザー定義ルートをファイアウォール経由のネクスト ホップとして指定できます。 
 - インスタンスは、Standard SKU Azure Load Balancer のバックエンド プールにあります。 
-- インスタンスのネットワーク インターフェイスにパブリック IP アドレスをアタッチします。 
+- インスタンス ネットワーク インターフェイスにパブリック IP アドレスを接続します。 
 
-単一インスタンスの VM と仮想マシン スケール セットで均一オーケストレーションを使用すると、送信接続が自動的に提供されます。 
+単一インスタンス VM と仮想マシン スケール セットを均一オーケストレーションで使用すると、送信接続が自動的に提供されます。 
 
 明示的な送信接続を必要とする一般的なシナリオには、次のものがあります。 
 
-- Windows VM のアクティブ化では、VM インスタンスから Windows アクティブ化キー管理サービス (KMS) への送信接続が定義されている必要がある。 詳細については、[Windows VM のアクティブ化に関する問題のトラブルシューティング](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-activation-problems)に関する記事を参照してください。  
+- Windows VM のアクティブ化では、VM インスタンスから Windows アクティブ化キー管理サービス (KMS) への送信接続が定義されている必要がある。 詳細については、[Windows VM のアクティブ化に関する問題のトラブルシューティング](/troubleshoot/azure/virtual-machines/troubleshoot-activation-problems)に関する記事を参照してください。  
 - ストレージ アカウントまたは Key Vault にアクセスする。 Azure サービスへの接続は、[プライベート リンク](../private-link/private-link-overview.md)を使用して確立することもできます。 
 
 セキュリティで保護された送信接続の定義の詳細については、「[Azure での既定の送信アクセス](https://aka.ms/defaultoutboundaccess)」を参照してください。

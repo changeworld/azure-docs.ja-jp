@@ -1,35 +1,35 @@
 ---
 title: U-SQL スクリプトを使用してデータを変換する
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Azure Data Lake Analytics コンピューティング サービスで、U-SQL スクリプトを実行してデータを処理または変換する方法について説明します。
+description: Azure Data Factory と Synapse Analytics を使用して Azure Data Lake Analytics コンピューティング サービスで U-SQL スクリプトを実行してデータを処理または変換する方法について説明します。
 ms.author: abnarain
 author: nabhishek
 ms.service: data-factory
 ms.subservice: tutorials
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 08/01/2018
-ms.openlocfilehash: abb3d151e943dd539fe7c2e349b662412ab24f7c
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.date: 09/09/2021
+ms.openlocfilehash: fae713e7998a2a5e9686b38bba1ae40b40a2bf32
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122271973"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124806314"
 ---
-# <a name="process-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Azure Data Lake Analytics で U-SQL スクリプトを実行してデータを処理する 
+# <a name="process-data-by-running-u-sql-scripts-on-azure-data-lake-analytics-with-azure-data-factory-and-synapse-analytics"></a>Azure Data Factory と Synapse Analytics を使用して Azure Data Lake Analytics で U-SQL スクリプトを実行してデータを処理する
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-usql-activity.md)
 > * [現在のバージョン](transform-data-using-data-lake-analytics.md)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Azure Data Factory のパイプラインは、リンクされたコンピューティング サービスを使用して、リンクされたストレージ サービス内のデータを処理します。 パイプラインは、一連のアクティビティで構成されます。各アクティビティは、特定の処理操作を実行します。 この記事では、**Azure Data Lake Analytics** コンピューティング リンク サービスで **U-SQL** スクリプトを実行する **Data Lake Analytics U-SQL アクティビティ** について説明します。 
+Azure Data Factory または Synapse Analytics ワークスペースのパイプラインは、リンクされたコンピューティング サービスを使用して、リンクされたストレージ サービス内のデータを処理します。 パイプラインは、一連のアクティビティで構成されます。各アクティビティは、特定の処理操作を実行します。 この記事では、**Azure Data Lake Analytics** コンピューティング リンク サービスで **U-SQL** スクリプトを実行する **Data Lake Analytics U-SQL アクティビティ** について説明します。 
 
 Data Lake Analytics U-SQL アクティビティでパイプラインを作成する前に、Azure Data Lake Analytics アカウントを作成します。 Azure Data Lake Analytics の詳細については、 [Azure Data Lake Analytics の使用開始](../data-lake-analytics/data-lake-analytics-get-started-portal.md)に関するページをご覧ください。
 
 
 ## <a name="azure-data-lake-analytics-linked-service"></a>Azure Data Lake Analytics リンク サービス
-**Azure Data Lake Analytics** リンク サービスを作成して、Azure Data Lake Analytics コンピューティング サービスを Azure Data Factory にリンクします。 パイプラインの Data Lake Analytics U-SQL アクティビティは、このリンク サービスを参照します。 
+**Azure Data Lake Analytics** リンク サービスを作成して、Azure Data Lake Analytics コンピューティング サービスを Azure Data Factory または Synapse Analytics ワークスペースにリンクします。 パイプラインの Data Lake Analytics U-SQL アクティビティは、このリンク サービスを参照します。 
 
 次の表では、JSON 定義で使用される一般的なプロパティを説明しています。 
 
@@ -87,7 +87,7 @@ Azure Data Lake Analytics のリンクされたサービスには、Azure Data L
 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。
 
 ## <a name="data-lake-analytics-u-sql-activity"></a>Data Lake Analytics U-SQL アクティビティ
-次の JSON のスニペットでは、Data Lake Analytics U-SQL アクティビティを使用してパイプラインを定義します。 このアクティビティ定義には、先ほど作成した Azure Data Lake Analytics リンク サービスへの参照が含まれています。 Data Lake Analytics U-SQL スクリプトを実行するために、指定したスクリプトがData Factory によって Data Lake Analytics に送信され、フェッチおよび出力する必須の入力と出力が Data Lake Analytics のスクリプトで定義されます。 
+次の JSON のスニペットでは、Data Lake Analytics U-SQL アクティビティを使用してパイプラインを定義します。 このアクティビティ定義には、先ほど作成した Azure Data Lake Analytics リンク サービスへの参照が含まれています。 Data Lake Analytics U-SQL スクリプトを実行するために、指定したスクリプトがサービスによって Data Lake Analytics に送信されます。必要な入力と出力は、Data Lake Analytics がフェッチおよび出力するためのスクリプトで定義されています。 
 
 ```json
 {
@@ -123,7 +123,7 @@ Azure Data Lake Analytics のリンクされたサービスには、Azure Data L
 | type                | Data Lake Analytics U-SQL アクティビティの場合、アクティビティの種類は **DataLakeAnalyticsU-SQL** です。 | はい      |
 | linkedServiceName   | Azure Data Lake Analytics にリンクされたサービス。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。  |はい       |
 | scriptPath          | U-SQL スクリプトを含むフォルダーのパス。 ファイル名は大文字と小文字が区別されます。 | はい      |
-| scriptLinkedService | データ ファクトリへのスクリプトを含む **Azure Data Lake Store** または **Azure Storage** をリンクするリンク サービス | はい      |
+| scriptLinkedService | スクリプトを含む **Azure Data Lake Store** または **Azure Storage** をリンクするリンク サービス | はい      |
 | degreeOfParallelism | ジョブを実行するために同時に使用される最大ノード数。 | いいえ       |
 | priority            | キューされているすべてのジョブのうち、先に実行するジョブを決定します。 数値が小さいほど、優先度は高くなります。 | いいえ       |
 | parameters          | U-SQL スクリプトに渡すパラメーター。    | いいえ       |
@@ -161,7 +161,7 @@ OUTPUT @rs1
       USING Outputters.Tsv(quoting:false, dateTimeFormat:null);
 ```
 
-前述のスクリプト例では、スクリプトの入力と出力は **\@in** パラメーターと **\@out** パラメーターで定義されます。 U-SQL スクリプトの **\@in** パラメーターと **\@out** パラメーターの値は、"parameters" セクションを使用して Data Factory によって動的に渡されます。 
+前述のスクリプト例では、スクリプトの入力と出力は **\@in** パラメーターと **\@out** パラメーターで定義されます。 U-SQL スクリプトの **\@in** および **\@out** パラメーターの値は、"parameters" セクションを使用してサービスによって動的に渡されます。 
 
 Azure Data Lake Analytics サービスで実行されるジョブのパイプライン定義で、他のプロパティ (degreeOfParallelism など) や優先度も指定できます。
 
@@ -195,5 +195,5 @@ Azure Data Lake Analytics サービスで実行されるジョブのパイプラ
 * [Hadoop Streaming アクティビティ](transform-data-using-hadoop-streaming.md)
 * [Spark アクティビティ](transform-data-using-spark.md)
 * [.NET カスタム アクティビティ](transform-data-using-dotnet-custom-activity.md)
-* [ML Studio (classic) Batch Execution アクティビティ](transform-data-using-machine-learning.md)
+* [ML Studio (クラシック) の Batch Execution アクティビティ](transform-data-using-machine-learning.md)
 * [ストアド プロシージャ アクティビティ](transform-data-using-stored-procedure.md)

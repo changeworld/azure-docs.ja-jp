@@ -5,15 +5,15 @@ author: vermagit
 ms.service: virtual-machines
 ms.subservice: vm-sizes-hpc
 ms.topic: conceptual
-ms.date: 10/09/2020
+ms.date: 09/11/2021
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 8f48e6bd94566922066b277553f64b25f5d55a45
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 75e3dc21c5cb5e8590b63c3382260331bb0bd844
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122696339"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124754649"
 ---
 # <a name="h-series"></a>H シリーズ
 
@@ -47,7 +47,7 @@ H シリーズ VM は、高い CPU 周波数またはコアあたり大容量メ
 
 ## <a name="software-specifications"></a>ソフトウェア仕様
 
-| ソフトウェア仕様     |HC シリーズ VM           |
+| ソフトウェア仕様     |H シリーズ VM           |
 |-----------------------------|-----------------------|
 | 最大 MPI ジョブ サイズ            | 4,800 コア (1 つの仮想マシン スケール セットに 300 の VM、singlePlacementGroup=true)  |
 | MPI のサポート                 | Intel MPI 5.x、MS-MPI  |
@@ -58,7 +58,7 @@ H シリーズ VM は、高い CPU 周波数またはコアあたり大容量メ
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
-## <a name="other-sizes"></a>その他のサイズ
+## <a name="other-sizes-and-information"></a>その他のサイズと情報
 
 - [汎用](sizes-general.md)
 - [メモリの最適化](sizes-memory.md)
@@ -66,6 +66,11 @@ H シリーズ VM は、高い CPU 周波数またはコアあたり大容量メ
 - [GPU の最適化](sizes-gpu.md)
 - [ハイ パフォーマンス コンピューティング](sizes-hpc.md)
 - [旧世代](sizes-previous-gen.md)
+
+料金計算ツール:[料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
+
+ディスクの種類の詳細については、「[Azure で利用できるディスクの種類](disks-types.md)」を参照してください
+
 
 ## <a name="next-steps"></a>次のステップ
 

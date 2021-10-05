@@ -5,14 +5,14 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: conceptual
-ms.date: 06/17/2021
+ms.date: 08/27/2021
 ms.author: cshoe
-ms.openlocfilehash: 210618ba5c49fbe0e53bd5b3fb2fe808b6b6aa03
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f2dacc8a0ed551fd92b916e25dfd87695e2576d3
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121728503"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128570839"
 ---
 # <a name="configure-azure-static-web-apps"></a>Azure Static Web Apps を構成する
 
@@ -34,7 +34,7 @@ Azure Static Web Apps の構成は、次の設定を制御する _staticwebapp.c
 
 ## <a name="file-location"></a>ファイルの場所
 
-_staticwebapp.config.json_ の推奨される場所は、[ワークフロー ファイル](./github-actions-workflow.md)で `app_location` として設定されたフォルダー内です。 ただし、このファイルは `app_location` として設定されたフォルダー内の任意のサブフォルダーに配置できます。
+_staticwebapp.config.json_ の推奨される場所は、[ワークフロー ファイル](./build-configuration.md)で `app_location` として設定されたフォルダー内です。 ただし、このファイルは `app_location` として設定されたフォルダー内の任意のサブフォルダーに配置できます。
 
 詳細については、「[構成ファイルの例](#example-configuration-file)」を参照してください。
 
@@ -271,6 +271,11 @@ _staticwebapp.config.json_ の推奨される場所は、[ワークフロー フ
 ```
 
 1 つ以上の IP アドレス ブロックが指定されている場合、`allowedIpRanges` の値と一致しない IP アドレスからの要求はアクセスを拒否されます。
+
+## <a name="authentication"></a>認証 
+
+* [既定の認証プロバイダー](authentication-authorization.md#login)には、構成ファイル内の設定が必要ありません。 
+* [カスタム認証プロバイダー](authentication-custom.md)では、設定ファイルの `authentication` プロパティを使用します。 
 
 ## <a name="example-configuration-file"></a>構成ファイルの例
 

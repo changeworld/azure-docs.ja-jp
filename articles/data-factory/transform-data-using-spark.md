@@ -1,29 +1,29 @@
 ---
 title: Spark アクティビティを使用してデータを変換する
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Spark アクティビティを使用して、Azure Data Factory パイプラインから Spark プログラムを実行することによってデータを変換する方法について説明します。
+description: Spark アクティビティを使用して、Azure Data Factory または Synapse Analytics パイプラインから Spark プログラムを実行することによってデータを変換する方法について説明します。
 ms.service: data-factory
 ms.subservice: tutorials
 ms.topic: conceptual
 author: nabhishek
 ms.author: abnarain
 ms.custom: synapse
-ms.date: 06/09/2021
-ms.openlocfilehash: 702c1a5208fae42e3704e345713f540b0e05d900
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.date: 09/09/2021
+ms.openlocfilehash: b5b877d27e04aa81e710b518d3923d438fe0afd2
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122271979"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124805969"
 ---
-# <a name="transform-data-using-spark-activity-in-azure-data-factory"></a>Azure Data Factory での Spark アクティビティを使用したデータの変換
+# <a name="transform-data-using-spark-activity-in-azure-data-factory-and-synapse-analytics"></a>Azure Data Factory と Synapse Analytics で Spark アクティビティを使用してデータを変換する
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-spark.md)
 > * [現在のバージョン](transform-data-using-spark.md)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Data Factory [パイプライン](concepts-pipelines-activities.md)の Spark アクティビティでは、[独自の](compute-linked-services.md#azure-hdinsight-linked-service)または[オンデマンドの](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight クラスターで Spark プログラムを実行します。 この記事は、データ変換とサポートされる変換アクティビティの概要を説明する、 [データ変換アクティビティ](transform-data.md) に関する記事に基づいています。 オンデマンドの Spark のリンクされたサービスを使用すると、Data Factory は自動的に Spark クラスターを作成し、ジャストインタイムでデータを処理し、処理が完了するとクラスターを削除します。 
+データ ファクトリと Synapse [パイプライン](concepts-pipelines-activities.md)の Spark アクティビティでは、[独自の](compute-linked-services.md#azure-hdinsight-linked-service)または[オンデマンドの](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight クラスターで Spark プログラムを実行します。 この記事は、データ変換とサポートされる変換アクティビティの概要を説明する、 [データ変換アクティビティ](transform-data.md) に関する記事に基づいています。 オンデマンドの Spark のリンクされたサービスを使用すると、サービスは自動的に Spark クラスターを作成し、Just-In-Time でデータを処理し、処理が完了するとクラスターを削除します。 
 
 
 ## <a name="spark-activity-properties"></a>Spark アクティビティのプロパティ
@@ -76,9 +76,9 @@ Spark アクティビティのサンプルの JSON 定義を次に示します�
 ## <a name="folder-structure"></a>フォルダー構造
 Spark ジョブは、Pig/Hive ジョブよりも拡張性に優れています。 Spark ジョブの場合、jar パッケージ (java CLASSPATH に配置)、python ファイル (PYTHONPATH に配置) など、複数の依存関係を利用できます。
 
-HDInsight のリンクされたサービスによって参照される Azure Blob Storage に、次のフォルダー構造を作成します。 その後、依存ファイルを、**entryFilePath** で表されるルート フォルダー内の適切なサブフォルダーにアップロードします。 たとえば、python ファイルはルート フォルダーの pyFiles サブフォルダーに、jar ファイルはルート フォルダーの jar サブフォルダーにアップロードします。 実行時、Data Factory サービスに必要な Azure Blob Storage のフォルダー構造を次に示します。     
+HDInsight のリンクされたサービスによって参照される Azure Blob Storage に、次のフォルダー構造を作成します。 その後、依存ファイルを、**entryFilePath** で表されるルート フォルダー内の適切なサブフォルダーにアップロードします。 たとえば、python ファイルはルート フォルダーの pyFiles サブフォルダーに、jar ファイルはルート フォルダーの jar サブフォルダーにアップロードします。 実行時にサービスに必要な Azure Blob Storage のフォルダー構造を次に示します。     
 
-| Path                  | 説明                              | 必須 | Type   |
+| パス                  | 説明                              | 必須 | Type   |
 | --------------------- | ---------------------------------------- | -------- | ------ |
 | `.` (ルート)            | ストレージのリンクされたサービスにおける Spark ジョブのルート パス | はい      | Folder |
 | &lt;user defined &gt; | Spark ジョブの入力ファイルを指定するパス | はい      | ファイル   |
@@ -129,5 +129,5 @@ SparkJob2
 * [Hadoop Streaming アクティビティ](transform-data-using-hadoop-streaming.md)
 * [Spark アクティビティ](transform-data-using-spark.md)
 * [.NET カスタム アクティビティ](transform-data-using-dotnet-custom-activity.md)
-* [Azure Machine Learning Studio (クラシック) の Batch Execution アクティビティ](transform-data-using-machine-learning.md)
+* [ML Studio (クラシック) の Batch Execution アクティビティ](transform-data-using-machine-learning.md)
 * [ストアド プロシージャ アクティビティ](transform-data-using-stored-procedure.md)

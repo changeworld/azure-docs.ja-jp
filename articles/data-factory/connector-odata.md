@@ -1,29 +1,29 @@
 ---
-title: Azure Data Factory を使用して OData ソースからデータをコピーする
+title: OData ソースからデータをコピーする
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Azure Data Factory パイプラインでコピー アクティビティを使用して、ODBC ソースからサポートされているシンク データ ストアへデータをコピーする方法について説明します。
+description: Azure Data Factory または Synapse Analytics パイプラインでコピー アクティビティを使用して、OData ソースからサポートされているシンク データ ストアにデータをコピーする方法について説明します。
 author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/30/2021
+ms.date: 09/09/2021
 ms.author: jianleishen
-ms.openlocfilehash: b08493b8b055cc013fa073dbbc7c58c5c936f22a
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 938693353505a7fb3d37c85234da429ed2367ad4
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123317434"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124787890"
 ---
-# <a name="copy-data-from-an-odata-source-by-using-azure-data-factory"></a>Azure Data Factory を使用して OData ソースからデータをコピーする
+# <a name="copy-data-from-an-odata-source-by-using-azure-data-factory-or-synapse-analytics"></a>Azure Data Factory または Synapse Analytics を使用して OData ソースからデータをコピーする
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-odata-connector.md)
 > * [現在のバージョン](connector-odata.md)
 
-この記事では、Azure Data Factory のコピー アクティビティを使用して OData ソースからデータをコピーする方法の概要について説明します。 この記事は、コピー アクティビティの概要が説明されている「[Azure Data Factory のコピー アクティビティ](copy-activity-overview.md)」を基に作成されています。
+この記事では、Azure Data Factory または Synapse Analytics パイプラインでコピー アクティビティを使用して、OData ソースからデータをコピーする方法について説明します。 この記事は、Copy アクティビティの概要を説明する [Copy アクティビティ](copy-activity-overview.md)に関する記事に基づいています。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -84,15 +84,15 @@ OData のリンクされたサービスでは、次のプロパティがサポ�
 | authenticationType | OData ソースに接続するために使用される認証の種類。 使用可能な値は、 **[匿名]** 、 **[基本]** 、 **[Windows]** 、および **[AadServicePrincipal]** です。 ユーザー ベースの OAuth はサポートされていません。 `authHeader` プロパティで認証ヘッダーを追加で構成することもできます。| はい |
 | authHeaders | 追加の認証用 HTTP 要求ヘッダー。<br/> たとえば、API キー認証を使うには、認証の種類として "匿名" を選択し、ヘッダーに API キーを指定します。 | いいえ |
 | userName | 基本認証または Windows 認証を使用する場合は、**userName** を指定します。 | いいえ |
-| password | **userName** に指定したユーザー アカウントの **password** を指定します。 Data Factory に安全に格納するには、このフィールドを **SecureString** 型として指定します。 また、[Azure Key Vault に格納されているシークレットを参照する](store-credentials-in-key-vault.md)こともできます。 | いいえ |
+| password | **userName** に指定したユーザー アカウントの **password** を指定します。 安全に保存するには、このフィールドを **SecureString** 型としてマークします。 また、[Azure Key Vault に格納されているシークレットを参照する](store-credentials-in-key-vault.md)こともできます。 | いいえ |
 | servicePrincipalId | Azure Active Directory アプリケーションのクライアント ID を指定します。 | いいえ |
 | aadServicePrincipalCredentialType | サービス プリンシパル認証に使用する資格情報の種類を指定します。 使用できる値: `ServicePrincipalKey` または `ServicePrincipalCert`。 | いいえ |
-| servicePrincipalKey | Azure Active Directory アプリケーションのキーを指定します。 このフィールドを **SecureString** としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ |
-| servicePrincipalEmbeddedCert | Azure Active Directory に登録されているアプリケーションの、Base64 でエンコードされた証明書を指定します。 このフィールドを **SecureString** としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ |
-| servicePrincipalEmbeddedCertPassword | 証明書がパスワードで保護されている場合は、証明書のパスワードを指定します。 このフィールドを **SecureString** としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。  | いいえ|
+| servicePrincipalKey | Azure Active Directory アプリケーションのキーを指定します。 このフィールドを **SecureString** とマークして安全に保存するか、[Azure Key Vault に保存されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ |
+| servicePrincipalEmbeddedCert | Azure Active Directory に登録されているアプリケーションの、Base64 でエンコードされた証明書を指定します。 このフィールドを **SecureString** とマークして安全に保存するか、[Azure Key Vault に保存されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ |
+| servicePrincipalEmbeddedCertPassword | 証明書がパスワードで保護されている場合は、証明書のパスワードを指定します。 このフィールドを **SecureString** とマークして安全に保存するか、[Azure Key Vault に保存されているシークレットを参照](store-credentials-in-key-vault.md)します。  | いいえ|
 | tenant | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure portal の右上隅にマウスを置くことで取得します。 | いいえ |
 | aadResourceId | 認可を要求する AAD リソースを指定します。| いいえ |
-| azureCloudType | サービス プリンシパル認証の場合は、AAD アプリケーションの登録先である Azure クラウド環境の種類を指定します。 <br/> 指定できる値は、**AzurePublic**、**AzureChina**、**AzureUsGovernment**、および **AzureGermany** です。 既定では、データ ファクトリのクラウド環境が使用されます。 | いいえ |
+| azureCloudType | サービス プリンシパル認証の場合は、AAD アプリケーションの登録先である Azure クラウド環境の種類を指定します。 <br/> 指定できる値は、**AzurePublic**、**AzureChina**、**AzureUsGovernment**、および **AzureGermany** です。 既定では、サービスのクラウド環境が使用されます。 | いいえ |
 | connectVia | データ ストアに接続するために使用される [Integration Runtime](concepts-integration-runtime.md)。 詳細については、「[前提条件](#prerequisites)」セクションを参照してください。 指定されていない場合は、既定の Azure Integration Runtime が使用されます。 |いいえ |
 
 **例 1: 匿名認証を使用する**
@@ -331,9 +331,9 @@ OData からデータをコピーする場合、コピー アクティビティ�
 
 ## <a name="data-type-mapping-for-odata"></a>OData のデータ型マッピング
 
-OData からデータをコピーする場合は、OData のデータ型と Azure Data Factory の中間データ型の間で次のマッピングが使用されます。 コピー アクティビティでソースのスキーマとデータ型がシンクにマッピングされる方法の詳細については、[スキーマとデータ型のマッピング](copy-activity-schema-and-type-mapping.md)に関するページを参照してください。
+OData からデータをコピーするときに、OData のデータ型とサービス内で内部的に使用される中間データ型の間で、次のマッピングが使用されます。 コピー アクティビティでソースのスキーマとデータ型がシンクにマッピングされる方法の詳細については、[スキーマとデータ型のマッピング](copy-activity-schema-and-type-mapping.md)に関するページを参照してください。
 
-| OData のデータ型 | Data Factory の中間データ型 |
+| OData のデータ型 | 中間サービス データ型 |
 |:--- |:--- |
 | Edm.Binary | Byte[] |
 | Edm.Boolean | Bool |
@@ -377,7 +377,7 @@ Project Online からデータをコピーするには、OData コネクタと�
    1. 自分のユーザー名とパスワードを使用してログインするように求められます。
    1. アクセス トークンを取得したら、次の手順のためにそれをコピーして保存してください。
    
-    [![Postman を使用してアクセス トークンを取得する](./media/connector-odata/odata-project-online-postman-access-token-inline.png)](./media/connector-odata/odata-project-online-postman-access-token-expanded.png#lightbox)
+    :::image type="content" source="./media/connector-odata/odata-project-online-postman-access-token-expanded.png#lightbox" alt-text="Postman を使用してアクセス トークンを取得する":::
 
 1. OData のリンクされたサービスを作成します。
     - **Service URL**: 「`https://<your tenant name>.sharepoint.com/sites/pwa/_api/Projectdata`」と入力します。 `<your tenant name>` は自分のテナント名に置き換えます。 
@@ -387,13 +387,13 @@ Project Online からデータをコピーするには、OData コネクタと�
         - **値**:「`Bearer <access token from step 1>`」と入力します。
     - リンクされたサービスをテストします。
 
-    ![OData のリンクされたサービスを作成する](./media/connector-odata/odata-project-online-linked-service.png)
+    :::image type="content" source="./media/connector-odata/odata-project-online-linked-service.png" alt-text="OData のリンクされたサービスを作成する":::
 
 1. OData データセットを作成します。
     1. 手順 2 で作成した、OData のリンクされたサービスを使用してデータセットを作成します。
     1. データをプレビューします。
  
-    ![データのプレビュー](./media/connector-odata/odata-project-online-preview-data.png)
+    :::image type="content" source="./media/connector-odata/odata-project-online-preview-data.png" alt-text="データのプレビュー":::
  
 
 
@@ -403,4 +403,4 @@ Project Online からデータをコピーするには、OData コネクタと�
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、「[サポートされるデータ ストアと形式](copy-activity-overview.md#supported-data-stores-and-formats)」を参照してください。
+コピー アクティビティでソースおよびシンクとしてサポートされているデータ ストアの一覧については、「[サポートされるデータ ストアと形式](copy-activity-overview.md#supported-data-stores-and-formats)」を参照してください。

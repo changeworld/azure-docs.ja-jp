@@ -4,24 +4,17 @@ description: オブジェクトを操作する際に Bicep ファイルで使用
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: cc83fcce125a045bbff05147ad22be46a085fe22
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.date: 09/10/2021
+ms.openlocfilehash: fd65cc60412d46a734764d3566fa3606a48c7bf6
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111027104"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124758448"
 ---
 # <a name="object-functions-for-bicep"></a>Bicep の object 関数
 
-Resource Manager には、Bicep ファイルでオブジェクトを操作する関数が複数用意されています。
-
-* [contains](#contains)
-* [empty](#empty)
-* [intersection](#intersection)
-* [json](#json)
-* [length](#length)
-* [union](#union)
+この記事では、オブジェクトを操作するための Bicep 関数について説明します。
 
 ## <a name="contains"></a>contains
 
@@ -333,4 +326,4 @@ output arrayOutput array = union(firstArray, secondArray)
 
 ## <a name="next-steps"></a>次のステップ
 
-* Bicep ファイルのセクションの説明については、「[Bicep ファイルの構造と構文について](./file.md)」を参照してください。
+* Bicep ファイルのセクションの説明は、[Bicep ファイルの構造と構文](./file.md)に関する記事をご覧ください。

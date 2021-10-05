@@ -5,13 +5,13 @@ author: niklarin
 ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: 50ef040f1cb7d8c533ec5ee31e9bffa2e6dca2f5
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.date: 09/10/2020
+ms.openlocfilehash: 6cb9ad127e7a13780cbd36198a1dcbcce858ac65
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107478014"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124804811"
 ---
 # <a name="scheduled-maintenance-in-azure-database-for-postgresql--flexible-server"></a>Azure Database for PostgreSQL での予定メンテナンス - フレキシブル サーバー
  
@@ -37,7 +37,7 @@ Azure Database for PostgreSQL - フレキシブル サーバーでは、管理�
 > [!IMPORTANT]
 > 通常、サーバーの正常な予定メンテナンス イベントの間隔は 30 日間以上です。
 >
-> ただし、重大な脆弱性などのクリティカルな緊急更新プログラムの場合、通知期間は 5 日未満になる可能性があります。 過去 30 日間に予定メンテナンスが正常に実行された場合でも、重要な更新プログラムがサーバーに適用されることがあります。
+> ただし、重大な脆弱性などのクリティカルな緊急更新プログラムの場合、通知期間は 5 日未満になるか、省略される可能性があります。 過去 30 日間に予定メンテナンスが正常に実行された場合でも、重要な更新プログラムがサーバーに適用されることがあります。
 
 スケジュール設定はいつでも更新できます。 フレキシブル サーバーのメンテナンスがスケジュールされている場合に、スケジュールの優先順位を更新すると、現在のロールアウトはスケジュールどおりに実行され、スケジュール設定の変更は、次のスケジュールされたメンテナンスが正常に完了した時点で有効になります。
 

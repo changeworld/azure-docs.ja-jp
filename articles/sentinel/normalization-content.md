@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/11/2021
 ms.author: ofshezaf
-ms.openlocfilehash: 6ff0d40fbfa75eb6ae40766a4be42891c11156dd
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: deb5377aef61736a14ce8110e96c16e5352096cd
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123432200"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128552257"
 ---
 # <a name="azure-sentinel-information-model-asim-security-content--public-preview"></a>Azure Sentinel 情報モデル (ASIM) セキュリティ コンテンツ (パブリック プレビュー)
 
@@ -29,6 +29,10 @@ Azure Sentinel の正規化されたセキュリティ コンテンツには、�
 <a name="builtin"></a>Azure Sentinel のギャラリーと[ソリューション](sentinel-solutions-catalog.md)で正規化された組み込みのコンテンツを見つける、独自の正規化されたコンテンツを作成する、または既存のコンテンツを変更して正規化されたデータを使用することができます。
 
 この記事では、ASIM をサポートするように構成された組み込みの Azure Sentinel コンテンツを紹介します。  Azure Sentinel GitHub リポジトリへのリンクは以下で参照として示されていますが、これらのルールは [Azure Sentinel Analytics ルール ギャラリー](detect-threats-built-in.md)でも見つけることができます。 ルールに関連するハンティング クエリをコピーするには、リンクされた GitHub ページを使用してください。
+
+> [!TIP]
+> また、Azure Sentinel の正規化パーサーと正規化されたコンテンツに関する[こちらの詳細なウェビナー](https://www.youtube.com/watch?v=zaqblyjQW6k)を視聴するか、[こちらのスライド](https://1drv.ms/b/s!AnEPjr8tHcNmjGtoRPQ2XYe3wQDz?e=R3dWeM)をご確認ください。 詳細については、「[次のステップ](#next-steps)」を参照してください。
+>
 
 > [!IMPORTANT]
 > 現在、ASIM はプレビュー段階です。 [Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)には、ベータ版、プレビュー版、またはまだ一般提供されていない Azure 機能に適用される追加の法律条項が含まれています。
@@ -41,7 +45,7 @@ ASIM の正規化では、次の組み込みの認証コンテンツがサポー
 ### <a name="analytics-rules"></a>分析ルール
 
  - [潜在的なパスワード スプレー攻撃 (認証正規化を使用)](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/ASimAuthentication/imAuthPasswordSpray.yaml)
- - [ユーザー資格情報に対するブルート フォース攻撃 (認証正規化を使用)](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/ASimAuthentication/imAuthBruteForce.yaml)
+ - [Brute force attack against user credentials (Uses Authentication Normalization) (ユーザー資格情報に対するブルート フォース攻撃 (認証正規化を使用))](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/ASimAuthentication/imAuthBruteForce.yaml)
  - [User login from different countries within 3 hours (Uses Authentication Normalization) (さまざまな国からの 3 時間以内のユーザー ログイン (認証正規化を使用))](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/ASimAuthentication/imAuthSigninsMultipleCountries.yaml)
  - [Sign-ins from IPs that attempt sign-ins to disabled accounts (Uses Authentication Normalization) (無効なアカウントへのサインインを試行する IP からのサインイン (認証正規化を使用))](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/ASimAuthentication/imSigninAttemptsByIPviaDisabledAccounts.yaml)
 
@@ -52,7 +56,10 @@ ASIM の正規化では、次の組み込みの DNS クエリ コンテンツが
 
 ### <a name="analytics-rules"></a>分析ルール
 
- - [Excessive NXDOMAIN DNS Queries (Normalized DNS) (過剰な NXDOMAIN DNS クエリ (正規化された DNS))](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/ASimDNS/imDns_ExcessiveNXDOMAINDNSQueries.yaml)
+ - (プレビュー) TI のドメイン エンティティの DNS イベントへのマッピング (正規化された DNS)
+ - (プレビュー) TI の IP エンティティの DNS イベントへのマッピング (正規化された DNS)
+ - [潜在的 DGA の検出 (ASimDNS)](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/ASimDNS/imDns_HighNXDomainCount_detection.yaml)
+  - [Excessive NXDOMAIN DNS Queries (Normalized DNS) (過剰な NXDOMAIN DNS クエリ (正規化された DNS))](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/ASimDNS/imDns_ExcessiveNXDOMAINDNSQueries.yaml)
  - [DNS events related to mining pools (Normalized DNS) (マイニング プールに関連する DNS イベント (正規化された DNS))](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/ASimDNS/imDNS_Miners.yaml)
  - [DNS events related to ToR proxies (Normalized DNS) (ToR プロキシに関連する DNS イベント (正規化された DNS))](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/ASimDNS/imDNS_TorProxies.yaml)
  - [Known Barium domains (既知の Barium ドメイン)](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/MultipleDataSources/BariumDomainIOC112020.yaml)
@@ -185,12 +192,13 @@ imDns
 | extend timestamp = TimeGenerated, IPCustomEntity = SrcIpAddr
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a><a name="next-steps"></a>次のステップ
 
 この記事では、Azure Sentinel 情報モデル (ASIM) コンテンツについて説明しています。
 
 詳細については次を参照してください:
 
+- Azure Sentinel の正規化パーサーと正規化されたコンテンツに関する[こちらの詳細なウェビナー](https://www.youtube.com/watch?v=zaqblyjQW6k)を視聴するか、[こちらのスライド](https://1drv.ms/b/s!AnEPjr8tHcNmjGtoRPQ2XYe3wQDz?e=R3dWeM)をご確認ください。
 - [Azure Sentinel 情報モデルの概要](normalization.md)
 - [Azure Sentinel 情報モデルのスキーマ](normalization-about-schemas.md)
 - [Azure Sentinel 情報モデルのパーサー](normalization-about-parsers.md)

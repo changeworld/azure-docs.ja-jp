@@ -6,12 +6,12 @@ ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/28/2020
-ms.openlocfilehash: d20f504e4c35bcb314e599b3111a3c66805568e7
-ms.sourcegitcommit: 16580bb4fbd8f68d14db0387a3eee1de85144367
+ms.openlocfilehash: f15ffe95f002ac74553363485fe90d16f8864347
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112676319"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128552529"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server の監査ログ
 
@@ -45,9 +45,15 @@ pgAudit をインストールするには、それをサーバーの共有プリ
    2. サイドバーから、 **[サーバー パラメーター]** を選択します。
    3. `shared_preload_libraries` パラメーターを検索します。
    4. **[pgaudit]** を選択します。
+     :::image type="content" source="./media/concepts-audit/share-preload-parameter.png" alt-text="Azure Database for PostgreSQL のスクリーンショット - pgaudit の shared_preload_libraries を有効にします":::
    5. サーバーを再起動して変更を適用します。
+   6. psql で次のクエリを実行することで、**pgaudit** が shared_preload_libraries に読み込まれていることを確認できます。
+        ```SQL
+      show shared_preload_libraries;
+      ```
+      shared_preload_libraries を返す **pgaudit** がクエリに表示されるはずです
 
-   6. クライアント (psql など) を使用してサーバーに接続し、pgAudit 拡張機能を有効にします。
+   7. クライアント (psql など) を使用してサーバーに接続し、pgAudit 拡張機能を有効にします。
       ```SQL
       CREATE EXTENSION pgaudit;
       ```
@@ -62,7 +68,18 @@ pgAudit では、セッションまたはオブジェクトの監査ログを構
 > [!NOTE]
 > pgAudit 設定はグローバルに指定され、データベース レベルまたはロール レベルでは指定できません。
 
-[pgAudit のインストール](#installing-pgaudit)が完了したら、ログ記録を開始するようそのパラメーターを構成できます。 [pgAudit のドキュメント](https://github.com/pgaudit/pgaudit/blob/master/README.md#settings)には、各パラメーターの定義が記載されています。 まずパラメーターをテストし、期待どおりに動作することを確認します。
+[pgAudit のインストール](#installing-pgaudit)が完了したら、ログ記録を開始するようそのパラメーターを構成できます。 pgAudit は下の手順で構成できます。 [Azure portal](https://portal.azure.com) を使用して以下を実行します。
+
+   1. Azure Database for PostgreSQL サーバーを選択します。
+   2. サイドバーから、 **[サーバー パラメーター]** を選択します。
+   3. `pg_audit` パラメーターを探します。
+   4. 編集する適切な設定パラメーターを選択してください。 たとえば、ログ記録を開始するには、`pgaudit.log` を `WRITE` に設定します。:::image type="content" source="./media/concepts-audit/pgaudit-config.png" alt-text="Azure Database for PostgreSQL のスクリーンショット - pgaudit でログ記録を構成します":::
+   5. **[保存]** ボタンをクリックして変更を保存します
+
+
+
+[pgAudit のドキュメント](https://github.com/pgaudit/pgaudit/blob/master/README.md#settings)には、各パラメーターの定義が記載されています。 まずパラメーターをテストし、期待どおりに動作することを確認します。
+
 
 > [!NOTE]
 > `pgaudit.log_client` を ON に設定すると、ログはファイルに書き込まれるのではなく、クライアント プロセス (psql など) にリダイレクトされます。 通常、この設定は無効のままにしておく必要があります。 <br> <br>

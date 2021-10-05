@@ -1,69 +1,70 @@
 ---
-title: XML 変換のための XSLT マップを追加する
-description: Azure Logic Apps で Enterprise Integration Pack を使用して、XML を変換するための XSLT マップを作成、追加します。
+title: ワークフローでの XML 変換のための XSLT マップを追加する
+description: Azure Logic Apps で Enterprise Integration Pack を使用して、ワークフローの XML を変換するための XSLT マップを作成、追加します。
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, azla
 ms.topic: how-to
-ms.date: 08/26/2021
-ms.openlocfilehash: c597a7d44b620ee33acec028812aa2d1651283ff
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.date: 09/14/2021
+ms.openlocfilehash: 71083bf7eaddb04f322245ca5e33971ff2d79c53
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123100456"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128549873"
 ---
 # <a name="add-xslt-maps-for-xml-transformation-in-azure-logic-apps"></a>Azure Logic Apps で XML 変換のための XSLT マップを追加する
 
-企業間でやりとりできるよう、Azure Logic Apps で XML データを変換するには、ロジック アプリ リソースでマップ、具体的にいうと Extensible Stylesheet Language Transformation (XSLT) マップを使用します。 マップとは、データを XML ドキュメントから別の形式に変換する方法について記述した XML ドキュメントのことです。
+XML を複数の形式間で変換する場合、ロジック アプリ ワークフローでマップと **XML の変換** アクションを使用できます。 マップとは、データを XML から別の形式に変換する方法を Extensible Stylesheet Language Transformation (XSLT) 言語を使用して記述した XML ドキュメントです。 このマップは、入力としてのソース XML スキーマと、出力としてのターゲット XML スキーマで構成されています。 あるドキュメントから別のドキュメントに名前と住所をコピーするといった、基本的な変換を設定できます。 または、設定不要なマップ操作を使用して、より複雑な変換を作成することができます。 文字列操作、条件付き割り当て、算術式、日時フォーマッタや、ループ構造の操作など、さまざまな組み込み関数を使用してデータを操作および制御できます。
 
 たとえば、YearMonthDay の年月日形式 (YYYYMMDD) を使用している顧客から、B2B の注文書または請求書を定期的に受け取るとします。 自分の組織では、MonthDayYear の年月日形式 (MMDDYYYY) を使用しています。 YYYYMMDD 形式を MMDDYYYY 形式に変換するマップを用意してこれを適用してから、注文書や請求書の詳細を顧客アクティビティ データベースに保存することができます。
 
-マップを使用すれば、あるドキュメントから別のドキュメントに名前と住所をコピーするといった、単純な変換を設定できます。 または、設定不要なマップ操作を使用して、より複雑な変換を作成することができます。
-
 > [!NOTE]
-> Azure Logic Apps では、XML 変換の処理に割り当てるメモリに上限があります。 **ロジック アプリ (従量課金)** リソースの種類に基づいてロジック アプリを作成し、マップまたはペイロードの変換でのメモリ消費量が多い場合、そのような変換は失敗し、メモ のエラーが発生する可能性があります。 このシナリオを回避するには、次のオプションを検討します。
+> Azure Logic Apps では、XML 変換の処理に割り当てるメモリに上限があります。 [**ロジック アプリ (従量課金)** ](logic-apps-overview.md#resource-type-and-host-environment-differences) というリソースの種類に基づいてロジック アプリを作成し、マップまたはペイロードの変換でのメモリ消費量が多い場合、このような変換は失敗し、メモリのエラーが発生するおそれがあります。 このシナリオを回避するには、次のオプションを検討します。
 >
 > * マップまたはペイロードを編集して、メモリ消費量を減らします。
 >
-> * 代わりに、**ロジック アプリ (Standard)** リソースの種類を使用して、ロジック アプリを作成します。
+> * 代わりに、[**ロジック アプリ (Standard)** ](logic-apps-overview.md#resource-type-and-host-environment-differences) というリソースの種類を使用して、ロジック アプリを作成します。
 >
 >   これらのワークフローはシングルテナントの Azure Logic Apps で実行され、コンピューティング リソースとメモリ リソースに専用の柔軟なオプションが提供されます。 
 >   ただし、Standard のロジック アプリ リソースでは現在、マップから外部のアセンブリを参照する操作をサポートしていません。 また、現在 Extensible Stylesheet Language Transformation (XSLT) 1.0 しかサポートしていません。
 
-はじめてロジック アプリを使うという方は、次のドキュメントをご覧ください。
-
-* [Azure Logic Apps とは - リソースの種類とホスト環境](logic-apps-overview.md#resource-type-and-host-environment-differences)
-
-* [シングルテナントの Azure Logic Apps (Standard) で統合ワークフローを作成する](create-single-tenant-workflows-azure-portal.md)
-
-* [シングルテナントのロジック アプリのワークフローの作成に関する記事](create-single-tenant-workflows-azure-portal.md)
-
-* [Azure Logic Apps の使用量の測定、課金、価格モデル](logic-apps-pricing.md)
-
-## <a name="limits"></a>制限
-
-* **Standard** のロジック アプリ リソースでは、マップ ファイルのサイズに上限はありません。
-
-* **Consumption** ロジック アプリ リソースでは、統合アカウントとマップなどのアーティファクトに対する上限があります。 詳しくは、[Azure Logic Apps の制約と構成の情報](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)に関する記事をご覧ください。
+ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](logic-apps-overview.md)」を参照してください。 B2B エンタープライズ統合の詳細については、「[Azure Logic Apps と Enterprise Integration Pack を使用した B2B エンタープライズ統合ワークフロー](logic-apps-enterprise-integration-overview.md)」をご確認ください。
 
 ## <a name="prerequisites"></a>前提条件
 
 * Azure アカウントとサブスクリプション。 サブスクリプションをまだお持ちでない場合には、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)してください。
 
-* **Logic App (Standard)** リソースを使用している場合、統合アカウントは必要ありません。 その代わり、Azure portal か Visual Studio Code で、ロジック アプリ リソースにマップを直接追加できます。 現在、XSLT 1.0 だけをサポートしています。 これらのマップは、*同一のロジック アプリ リソース* 内の複数のワークフローで共用できます。
+* マップを作成するには、次のツールを使用できます。
 
-* **Logic App (Consumption)** リソースを使用している場合は、企業間の連携および B2B ソリューションで使用するマップなどのアーティファクトを保存するための[統合アカウント リソース](logic-apps-enterprise-integration-create-integration-account.md)が必要です。 このリソースは次の要件を満たす必要があります。
+  * Visual Studio 2019 と [Microsoft Azure Logic Apps Enterprise Integration Tools 拡張機能](https://aka.ms/vsenterpriseintegrationtools)。
 
-  * 当該のロジック アプリ リソースと同じ Azure サブスクリプションに関連付けてある。
+  * Visual Studio 2015 と [Microsoft Azure Logic Apps Enterprise Integration Tools for Visual Studio 2015 2.0](https://aka.ms/vsmapsandschemas) 拡張機能。
 
-  * **Transform XML** アクションを使用する予定のロジック アプリ リソースと同じ場所または Azure リージョンに存在する。
+   > [!IMPORTANT]
+   > この拡張機能を BizTalk Server 拡張機能と同時にインストールしないでください。 両方の拡張機能をインストールすると、予期しない動作が発生する可能性があります。 これらの拡張機能のいずれかのみがインストールされていることを確認してください。
 
-  * マップを使用するロジック アプリ リソースに[リンク](logic-apps-enterprise-integration-create-integration-account.md#link-account)してある。
+   > [!NOTE]
+   > 高解像度モニターでは、Visual Studio の[マップ デザイナーで表示の問題](/visualstudio/designers/disable-dpi-awareness)が発生することがあります。 この表示の問題を解決するには、[Visual Studio を DPI 非対応モードで再起動する](/visualstudio/designers/disable-dpi-awareness#restart-visual-studio-as-a-dpi-unaware-process)か、[DPIUNAWARE レジストリ値](/visualstudio/designers/disable-dpi-awareness#add-a-registry-entry)を追加します。
 
-    Consumption のロジック アプリのワークフローで使用するマップを作成、追加するのに、ロジック アプリ リソースはまだ必要ありません。 ただし、それらのマップをワークフローで使用するときに、ロジック アプリ リソースで、それらのマップを保存するための、リンクされた統合アカウントが必要になります。
+* エンタープライズ統合および B2B ワークフローで使用する成果物 (取引先、契約、証明書など) を定義して保存する[統合アカウント リソース](logic-apps-enterprise-integration-create-integration-account.md)。 このリソースでは、次の要件が満たされている必要があります。
+
+  * ロジック アプリ リソースと同じ Azure サブスクリプションに関連付けられている。
+
+  * **XML 変換** アクションを使用する予定のロジック アプリ リソースと同じ場所または Azure リージョンに存在する。
+
+  * [**ロジック アプリ (従量課金)** というリソースの種類](logic-apps-overview.md#resource-type-and-host-environment-differences)を使用する場合、ワークフローで成果物を使用するには、[統合アカウントをロジック アプリ リソースにリンクする](logic-apps-enterprise-integration-create-integration-account.md#link-account)必要があります。
+
+    **ロジック アプリ (従量課金)** のワークフローで使用するマップを作成、追加するのに、ロジック アプリ リソースはまだ必要ありません。 ただし、それらのマップをワークフローで使用するときに、ロジック アプリ リソースで、それらのマップを保存するための、リンクされた統合アカウントが必要になります。
+
+  * [**ロジック アプリ (Standard)** というリソースの種類](logic-apps-overview.md#resource-type-and-host-environment-differences)を使用する場合、統合アカウントにマップを保存しないため、既存のロジック アプリ リソースが必要です。 代わりに、Azure portal または Visual Studio Code を使用して、ロジック アプリ リソースにマップを直接追加することができます。 現在は XSLT 1.0 のみがサポートされています。 その後、"*同じロジック アプリ リソース*" 内の複数のワークフローでこれらのマップを使用できます。
+
+    取引先、契約、証明書などの他の成果物を保存すると共に、[AS2](logic-apps-enterprise-integration-as2.md)、[X12](logic-apps-enterprise-integration-x12.md)、および [EDIFACT](logic-apps-enterprise-integration-edifact.md) 操作を使用するには、引き続き統合アカウントが必要です。 ただし、ロジック アプリ リソースを統合アカウントにリンクする必要はないため、リンク機能は存在しません。 統合アカウントは、ロジック アプリ リソースと同じ Azure サブスクリプションを使用することや、ロジック アプリ リソースと同じ場所に存在することなど、他の要件も満たす必要があります。
+
+    > [!NOTE]
+    > 現在、[RosettaNet](logic-apps-enterprise-integration-rosettanet.md) 操作をサポートしているのは、**ロジック アプリ (従量課金)** というリソースの種類のみです。 **ロジック アプリ (Standard)** というリソースの種類には、[RosettaNet](logic-apps-enterprise-integration-rosettanet.md) 操作は含まれていません。
 
 * **Logic App (Consumption)** ではマップから外部のアセンブリを参照する機能をサポートしていますが、**Logic App (Standard)** では現在この機能をサポートしていません。 アセンブリを参照すると、XSLT マップからカスタム .NET のコードへの呼び出しを直接実行できます。
 
@@ -71,16 +72,22 @@ ms.locfileid: "123100456"
 
   * 統合アカウントに、特定の順序で、*アセンブリとマップの両方* をアップロードする必要があります。 [*最初にアセンブリをアップロード*](#add-assembly)し、その後、そのアセンブリを参照するマップをアップロードするようにしてください。
 
-  * アセンブリが [2 MB 以下](#smaller-map) であれば、Azure portal で、アセンブリとマップを統合アカウントに *直接* 追加できます。 アセンブリまたはマップが 2 MB よりも大きく、[アセンブリまたはマップのサイズ上限](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits)以下である場合は、アセンブリをアップロードできる Azure Blob コンテナーと、そのコンテナーの場所を使用できます。 これにより、後でアセンブリを統合アカウントに追加する際に、その場所を指定できるようになります。 このタスクを実行するには、次の項目が必要です。
+  * アセンブリが [2 MB 以下](#smaller-map) であれば、Azure portal で、アセンブリとマップを統合アカウントに *直接* 追加できます。 アセンブリまたはマップが 2 MB よりも大きく、[アセンブリまたはマップのサイズ上限](logic-apps-limits-and-config.md#artifact-capacity-limits)以下である場合は、アセンブリをアップロードできる Azure Blob コンテナーと、そのコンテナーの場所を使用できます。 これにより、後でアセンブリを統合アカウントに追加する際に、その場所を指定できるようになります。 このタスクを実行するには、次の項目が必要です。
 
     | Item | 説明 |
     |------|-------------|
     | [Azure Storage アカウント](../storage/common/storage-account-overview.md) | このアカウントには、アセンブリの Azure BLOB コンテナーを作成します。 [ストレージ アカウントの作成方法](../storage/common/storage-account-create.md)を確認してください。 |
     | BLOB コンテナー | このコンテナーに、アセンブリをアップロードできます。 統合アカウントにアセンブリを追加するときは、このコンテナーのコンテンツ URI の場所も必要です。 [BLOB コンテナーの作成方法についてはこちら](../storage/blobs/storage-quickstart-blobs-portal.md)を参照してください。 |
-    | [Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) | このツールを使用すると、ストレージ アカウントと BLOB コンテナーをより簡単に管理できます。 Storage Explorer を使用するには、[Azure Storage Explorer をダウンロードしてインストール](https://www.storageexplorer.com/)します。 次に、「[Storage Explorer の概要](../vs-azure-tools-storage-manage-with-storage-explorer.md)」の手順に従って Storage Explorer をストレージ アカウントに接続します。 詳しくは、「[クイック スタート: Azure Storage Explorer を使用してオブジェクト ストレージ内に BLOB を作成する](../storage/blobs/storage-quickstart-blobs-storage-explorer.md)」を参照してください。 <p>または、Azure portal で、自分のストレージ アカウントを選択します。 ストレージ アカウント メニューから **[Storage Explorer]** を選択します。 |
+    | [Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) | このツールを使用すると、ストレージ アカウントと BLOB コンテナーをより簡単に管理できます。 Storage Explorer を使用するには、[Azure Storage Explorer をダウンロードしてインストール](https://www.storageexplorer.com/)します。 次に、「[Storage Explorer の概要](../vs-azure-tools-storage-manage-with-storage-explorer.md)」の手順に従って Storage Explorer をストレージ アカウントに接続します。 詳しくは、「[クイック スタート: Azure Storage Explorer を使用してオブジェクト ストレージ内に BLOB を作成する](../storage/blobs/quickstart-storage-explorer.md)」を参照してください。 <p>または、Azure portal で、自分のストレージ アカウントを選択します。 ストレージ アカウント メニューから **[Storage Explorer]** を選択します。 |
     |||
 
-  * Consumption のロジック アプリ リソースに大きなマップを追加するときは、[Azure Logic Apps REST API - Maps](/rest/api/logic/maps/createorupdate) も使用できます。 ですが、Standard のロジック アプリ リソースでは現在、Azure Logic Apps REST API は利用できません。
+  * **ロジック アプリ (従量課金)** というリソースの種類にさらに大規模なマップを追加するには、[Azure Logic Apps REST API - Maps](/rest/api/logic/maps/createorupdate) を使用することもできます。 ただし、**ロジック アプリ (Standard)** というリソースの種類の場合、Azure Logic Apps REST API は現在使用できません。
+
+## <a name="limits"></a>制限
+
+* **ロジック アプリ (Standard)** では、スキーマ ファイルのサイズに制限はありません。
+
+* **ロジック アプリ (従量課金)** では、統合アカウントの数とスキーマなどの成果物の数に制限があります。 詳細については、[Azure Logic Apps の制限と構成の情報](logic-apps-limits-and-config.md#integration-account-limits)に関する記事を参照してください。
 
 <a name="add-assembly"></a>
 
@@ -96,7 +103,7 @@ ms.locfileid: "123100456"
 
 1. **[アセンブリ]** ペインのツール バーで、 **[追加]** を選択します。
 
-アセンブリ ファイルのサイズに基づいて、[最大 2 MB](#smaller-assembly)、または [2 MB を超える最大 8 MB](#larger-assembly) のアセンブリをアップロードする手順を実行します。 統合アカウントでのアセンブリの数に関する制限については、[Azure Logic Apps の制限と構成](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)に関するページで確認してください。
+アセンブリ ファイルのサイズに基づいて、[最大 2 MB](#smaller-assembly)、または [2 MB を超える最大 8 MB](#larger-assembly) のアセンブリをアップロードする手順を実行します。 統合アカウントでのアセンブリの数に関する制限については、[Azure Logic Apps の制限と構成](logic-apps-limits-and-config.md#artifact-number-limits)に関するページで確認してください。
 
 > [!NOTE]
 > アセンブリを変更する場合、マップに変更があるかどうかに関わらず、マップも更新する必要があります。
@@ -109,7 +116,7 @@ ms.locfileid: "123100456"
 
    アセンブリを選択した後、 **[アセンブリ名]** プロパティにはアセンブリのファイル名が自動的に表示されます。
 
-1. 準備ができたら、 **[OK]** を選択します。
+1. 終了したら、 **[OK]** を選択します。
 
    アセンブリ ファイルのアップロードが完了すると、 **[アセンブリ]** の一覧にアセンブリが表示されます。 統合アカウントの **[概要]** ペインの **[成果物]** には、アップロードしたアセンブリも表示されます。
 
@@ -149,7 +156,7 @@ ms.locfileid: "123100456"
 
 1. **[コンテンツ URI]** ボックスに、アセンブリの URL を貼り付けます。 アセンブリの追加を完了します。
 
-   アセンブリのアップロードが完了すると、 **[アセンブリ]** の一覧にスキーマが表示されます。 統合アカウントの **[概要]** ペインの **[成果物]** には、アップロードしたアセンブリも表示されます。
+   アセンブリのアップロードが完了すると、 **[アセンブリ]** の一覧にそのアセンブリが表示されます。 統合アカウントの **[概要]** ペインの **[成果物]** には、アップロードしたアセンブリも表示されます。
 
 <a name="no-public-access-assemblies"></a>
 
@@ -167,7 +174,7 @@ ms.locfileid: "123100456"
 
 1. **[コンテンツ URI]** ボックスに、前に生成した SAS URI を貼り付けます。 アセンブリの追加を完了します。
 
-アセンブリのアップロードが完了すると、 **[スキーマ]** の一覧にアセンブリが表示されます。 統合アカウントの **[概要]** ページの **[成果物]** には、アップロードしたアセンブリも表示されます。
+アセンブリのアップロードが完了すると、 **[アセンブリ]** の一覧にそのアセンブリが表示されます。 統合アカウントの **[概要]** ページの **[成果物]** には、アップロードしたアセンブリも表示されます。
 
 <a name="create-maps"></a>
 
@@ -210,15 +217,17 @@ ms.locfileid: "123100456"
 
 * Visual Studio と [Enterprise Integration SDK](https://aka.ms/vsmapsandschemas) でマップを作成するときは、図で表現されたマップ上で作業します。そこには作成したすべての関係とリンクが表示されます。
 
-* スキーマ間で直接データをコピーできます。 Visual Studio 用の [Enterprise Integration SDK](https://aka.ms/vsmapsandschemas) には、ソースの XML スキーマの要素とターゲットの XML スキーマの要素を線でつなぐだけでこのタスクを実行できるマッパーが含まれています。
+* マップの作成に使用する XML スキーマ間でデータを直接コピーできます。 Visual Studio 用の [Enterprise Integration SDK](https://aka.ms/vsmapsandschemas) には、ソースの XML スキーマの要素とターゲットの XML スキーマの要素を線でつなぐだけでこのタスクを実行できるマッパーが含まれています。
 
-* 複数のマップに対する操作または文字列関数、日時関数などの関数を使用できます。  
+* 複数のマップに対する操作または文字列関数、日時関数などの関数を使用できます。
 
-* マップ テスト機能を使用して、XML メッセージのサンプルを追加できます。 作成したマップをワン クリックでテストし、生成される出力を確認できます。
+* マップ テスト機能を使用して、XML メッセージのサンプルを追加できます。 1 回のジェスチャだけで作成したマップをテストし、生成される出力を確認できます。
+
+<a name="add-map"></a>
 
 ## <a name="add-maps"></a>マップを追加する
 
-### <a name="consumption-resource"></a>[Consumption](#tab/consumption-1)
+### <a name="consumption"></a>[従量課金プラン](#tab/consumption)
 
 マップから参照するすべてのアセンブリをアップロードしたら、次にマップをアップロードできます。
 
@@ -236,7 +245,7 @@ ms.locfileid: "123100456"
 
 #### <a name="add-maps-up-to-2-mb"></a>最大 2 MB のマップを追加する
 
-1. **[マップの追加]** で、マップの一意の名前を入力します。
+1. **[マップの追加]** ペインで、マップの一意の名前を入力します。
 
 1. **[マップの種類]** で、種類を選択します。例:**Liquid**、**XSLT**、**XSLT 2.0**、**XSLT 3.0**。
 
@@ -244,7 +253,7 @@ ms.locfileid: "123100456"
 
    **[名前]** プロパティを空のままにした場合は、マップ ファイルを選択した後で、マップのファイル名がそのプロパティに自動的に表示されます。
 
-1. 準備ができたら、 **[OK]** を選択します。
+1. 終了したら、 **[OK]** を選択します。
 
    マップ ファイルのアップロードが完了すると、 **[マップ]** の一覧にマップが表示されます。 統合アカウントの **[概要]** ページの **[成果物]** には、アップロードしたマップも表示されます。
 
@@ -254,7 +263,7 @@ ms.locfileid: "123100456"
 
 現在のところ、大規模なマップを追加するには [Azure Logic Apps REST API のマップ](/rest/api/logic/maps/createorupdate)を使用します。
 
-### <a name="standard-resource"></a>[Standard](#tab/standard-1)
+### <a name="standard"></a>[Standard](#tab/standard)
 
 #### <a name="azure-portal"></a>Azure portal
 
@@ -262,11 +271,11 @@ ms.locfileid: "123100456"
 
 1. **[Maps]** ペインのツール バーで、 **[追加]** を選択します。
 
-1. **[Add map]\(マップの追加\)** で一意のマップ名を入力します。その名前には `.xslt` 拡張子を付けます。
+1. **[マップの追加]** ペインで、マップの一意の名前を入力します。その名前には `.xslt` 拡張子を付けます。
 
 1. **[マップ]** ボックスの横にあるフォルダー アイコンを選択します。 アップロードするマップを選択します。
 
-1. 準備ができたら、 **[OK]** を選択します。
+1. 終了したら、 **[OK]** を選択します。
 
    マップ ファイルのアップロードが完了すると、 **[マップ]** の一覧にマップが表示されます。 統合アカウントの **[概要]** ページの **[成果物]** には、アップロードしたマップも表示されます。
 
@@ -278,11 +287,13 @@ ms.locfileid: "123100456"
 
 ---
 
-## <a name="edit-maps"></a>マップを編集する
+<a name="edit-map"></a>
+
+## <a name="edit-a-map"></a>マップを編集する
 
 既存のマップを更新するには、目的の変更を含む新しいマップ ファイルをアップロードする必要があります。 ただし、編集対象の既存のマップをまずダウンロードすることができます。
 
-### <a name="consumption-resource"></a>[Consumption](#tab/consumption-2)
+### <a name="consumption"></a>[従量課金プラン](#tab/consumption)
 
 1. [Azure portal](https://portal.azure.com) で、統合アカウントをまだ開いていない場合は開きます。
 
@@ -296,7 +307,7 @@ ms.locfileid: "123100456"
 
    マップ ファイルのアップロードが完了すると、 **[マップ]** の一覧に更新されたマップが表示されます。
 
-### <a name="standard-resource"></a>[Standard](#tab/standard-2)
+### <a name="standard"></a>[Standard](#tab/standard)
 
 1. まだ開いていなければ、[Azure portal](https://portal.azure.com) でロジック アプリ リソースを開きます。
 
@@ -310,15 +321,17 @@ ms.locfileid: "123100456"
 
 1. **[マップ]** ボックスの横にあるフォルダー アイコンを選択します。 アップロードするマップを選択します。
 
-1. 準備ができたら、 **[OK]** を選択します。
+1. 終了したら、 **[OK]** を選択します。
 
    マップ ファイルのアップロードが完了すると、 **[マップ]** の一覧に更新されたマップが表示されます。
 
 ---
 
-## <a name="delete-maps"></a>マップを削除する
+<a name="delete-map"></a>
 
-### <a name="consumption-resource"></a>[Consumption](#tab/consumption-3)
+## <a name="delete-a-map"></a>マップを削除する
+
+### <a name="consumption"></a>[従量課金プラン](#tab/consumption)
 
 1. [Azure portal](https://portal.azure.com) で、統合アカウントをまだ開いていない場合は開きます。
 
@@ -328,7 +341,7 @@ ms.locfileid: "123100456"
 
 1. マップの削除を確定するには、 **[はい]** を選択します。
 
-### <a name="standard-resource"></a>[Standard](#tab/standard-3)
+### <a name="standard"></a>[Standard](#tab/standard)
 
 1. まだ開いていなければ、[Azure portal](https://portal.azure.com) でロジック アプリ リソースを開きます。
 
