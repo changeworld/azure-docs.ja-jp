@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit, devx-track-azurepowershell
-ms.openlocfilehash: 583af5ac74ca08815c58380ff95fc4e42b1a399a
-ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
+ms.openlocfilehash: 62330b341d2aa59f33b5f780005042d114400748
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2021
-ms.locfileid: "112377136"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128625679"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Azure Functions の関数アプリのリソース デプロイを自動化
 
@@ -258,7 +258,7 @@ Windows の場合、従量課金プランでは、サイト構成にその他の
 ```
 
 > [!IMPORTANT]
-> [`WEBSITE_CONTENTSHARE`](functions-app-settings.md#website_contentshare) 設定は、サイトが最初に作成されるときに生成されるため、設定しないでください。
+> デプロイ スロットで [`WEBSITE_CONTENTSHARE`](functions-app-settings.md#website_contentshare) 設定を行わないでください。 この設定は、アプリがデプロイ スロットで作成されると自動的に生成されます。
 
 #### <a name="linux"></a>Linux
 
@@ -799,5 +799,5 @@ Azure Functions を開発および構成する方法について学習します�
 
 <!-- LINKS -->
 
-[従量課金プランの関数アプリ]: https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.web/function-app-create-dynamic/azuredeploy.json
-[Azure App Service プランの関数アプリ]: https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.compute/vm-simple-linux/azuredeploy.json
+[従量課金プランの関数アプリ]: https://azure.microsoft.com/resources/templates/function-app-create-dynamic/
+[Azure App Service プランの関数アプリ]: https://azure.microsoft.com/resources/templates/function-app-create-dedicated/

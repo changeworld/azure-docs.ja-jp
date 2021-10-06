@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/30/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: ef4edb99ab2d6d4a25f2151c5b63c1c31ff91ef4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 4b1f2b5edf2c9efb79f84c123c0df921dbf9c259
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121724971"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128908976"
 ---
 * Azure サブスクリプションがある。 Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
@@ -27,9 +27,8 @@ ms.locfileid: "121724971"
    * 仮想ネットワークにゲートウェイ (VPN または ExpressRoute のどちらか) が既に存在する場合は、すべてのゲートウェイを削除してから先に進む必要があります。 
    * この構成では、仮想ネットワークが Virtual WAN ハブ ゲートウェイにのみ接続されている必要があります。
 
-* 仮想ハブは、仮想 WAN によって作成および使用される仮想ネットワークです。 リージョン内の Virtual WAN ネットワークの核となります。 
+* 仮想ハブのプライベート アドレス空間に使用する IP アドレスの範囲を決定します。 この情報は、仮想ハブを構成するときに使用されます。 仮想ハブは、仮想 WAN によって作成および使用される仮想ネットワークです。 リージョン内の Virtual WAN ネットワークの核となります。 アドレス空間の範囲は、次の特定の規則に準拠している必要があります。
 
-   * 仮想ハブ リージョンの IP アドレス範囲を取得します。 
    * ハブに指定するアドレス範囲が、接続先の既存の仮想ネットワークと重複することはできません。 
    * このアドレス範囲が、接続するオンプレミスのアドレス範囲と重複することはできません。 
    * オンプレミス ネットワーク構成に含まれている IP アドレス範囲になじみがない場合は、それらの詳細を提供できるだれかと調整してください。

@@ -3,14 +3,14 @@ title: Azure Functions バインド拡張機能を登録する
 description: 環境に基づく Azure Functions バインド拡張機能の登録について説明します。
 author: craigshoemaker
 ms.topic: reference
-ms.date: 08/16/2020
+ms.date: 09/14/2020
 ms.author: cshoe
-ms.openlocfilehash: bfcefb23fa68e2aa70d4680fcca2462b24322014
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 262e0fc02632465a03391dbfeaa0902d1b6b9ec3
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121730519"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128609759"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>Azure Functions バインド拡張機能を登録する
 
@@ -20,7 +20,7 @@ Azure Functions バージョン 2.x 以降では、Functions ランタイムに�
 
 次の表に、バインディングを登録するタイミングと方法を示します。
 
-| 開発環境 |登録<br/> (Functions 1.x)  |登録<br/> (Functions 3.x/2.x)  |
+| 開発環境 |登録<br/> (Functions 1.x)  |登録<br/> (Functions 2.x 以降)  |
 |-------------------------|------------------------------------|------------------------------------|
 |Azure portal|自動|自動<sup>*</sup>|
 |.NET 以外の言語|自動|[拡張機能バンドル](#extension-bundles) を使用する(推奨) または[明示的に拡張機能をインストールする](#explicitly-install-extensions)|

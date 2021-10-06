@@ -2,18 +2,18 @@
 title: Azure の予約の購入
 description: Azure の予約を購入するうえで役立つ重要なポイントについて説明します。
 author: bandersmsft
-ms.reviewer: yashar
+ms.reviewer: primattal
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 04/12/2021
+ms.date: 09/20/2021
 ms.author: banders
-ms.openlocfilehash: d9de6322ac84a86902b5ef218df9abe8528b95a9
-ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
+ms.openlocfilehash: bbd57ed54171785ab8f2aedea93fa8c56cc0319c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113231487"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128653375"
 ---
 # <a name="buy-a-reservation"></a>予約の購入
 
@@ -41,16 +41,18 @@ Enterprise Agreement (EA) のお客様は、EA Portal 内で、 **[予約イン�
     - マイクロソフト エンタープライズ契約のお客様の場合、課金コンテキストは登録です。 予約の共有スコープには、登録内の複数の Active Directory テナントが含まれます。
     - Microsoft 顧客契約のお客様の場合、課金スコープは課金プロファイルです。
     - 従量課金制料金の個々のサブスクリプションの場合、課金スコープはアカウント管理者によって作成されるすべての有効なサブスクリプションです。
+- **管理グループ** - 管理グループと課金スコープの両方の一部であるサブスクリプションの一覧にある一致するリソースに予約割引を適用します。 管理グループの予約を購入するには、その管理グループに対する少なくとも読み取りアクセス許可を持っており、課金サブスクリプション上の予約所有者または予約購入者である必要があります。
 
 使用量に予約割引を適用しつつ、Azure では次の順序で予約が処理されます。
 
 1. 単一リソース グループをスコープとする予約
 2. 単一サブスクリプションをスコープとする予約
-3. 前述の共有スコープ (複数のサブスクリプション) をスコープとする予約
+3. 管理グループにスコープ指定された予約
+4. 前述の共有スコープ (複数のサブスクリプション) をスコープとする予約
 
 スコープは、予約の購入後にいつでも更新できます。 これを行うには、予約にアクセスし、 **[構成]** をクリックして予約のスコープを再設定します。 予約のスコープの再設定は、商用トランザクションではありません。 予約期間は変更されません。 スコープの更新の詳細については、[予約購入後にスコープを更新する](manage-reserved-vm-instance.md#change-the-reservation-scope)方法に関するセクションを参照してください。
 
-![予約のスコープの変更を示す例](./media/prepare-buy-reservation/rescope-reservation-resource-group.png)
+:::image type="content" source="./media/prepare-buy-reservation/rescope-reservation-management-group.png" alt-text="予約のスコープの変更を示す例" lightbox="./media/prepare-buy-reservation/rescope-reservation-management-group.png" :::
 
 ## <a name="discounted-subscription-and-offer-types"></a>割引サブスクリプションとオファーの種類
 

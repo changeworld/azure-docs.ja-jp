@@ -1,15 +1,16 @@
 ---
-title: Azure CLI のサンプル スクリプト - Batch での Windows プール
-description: このスクリプトでは、Azure Batch で Windows コンピューティング ノードのプールを作成して管理するために、Azure CLI で使用できるコマンドの一部を示します。
+title: Azure CLI のサンプル スクリプト - Batch での Windows プール | Microsoft Docs
+description: Azure Batch で Windows 計算ノードのプールを作成して管理するために、Azure CLI で使用できるコマンドの一部について説明します。
 ms.topic: sample
-ms.date: 12/12/2019
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 773699dde9342a4b230a08471a289a56fca7e308
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 09/17/2021
+ms.custom: devx-track-azurecli, seo-azure-cli
+keywords: windows プール, azure cli サンプル, azure cli コード サンプル, azure cli スクリプト サンプル
+ms.openlocfilehash: 6c98d5ece314f6aa8603db73a0a5c0c9a420efde
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107768200"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128595166"
 ---
 # <a name="cli-example-create-and-manage-a-windows-pool-in-azure-batch"></a>CLI の例: Azure Batch での Windows プールの作成と管理
 

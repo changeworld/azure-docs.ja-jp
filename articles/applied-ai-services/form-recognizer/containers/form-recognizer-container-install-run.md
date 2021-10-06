@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/01/2021
 ms.author: lajanuar
 keywords: オンプレミス, Docker, コンテナー, 識別
-ms.openlocfilehash: 700e49f1fb635cc93797c5b39463dc3d76018c7e
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 1fb19ef8f7b4855107d089e6b0ce21673ce5b841
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123480968"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129057343"
 ---
 # <a name="install-and-run-form-recognizer-v21-preview-containers"></a>Form Recognizer v2.1-preview コンテナーのインストールと実行
 
@@ -390,32 +390,38 @@ http {
         listen 5000;
 
         location = / {
-            proxy_pass         http://docker-api/;
+            proxy_set_header Host $host:$server_port;
+            proxy_set_header Referer $scheme://$host:$server_port;
+            proxy_pass http://docker-api/;
 
         }
 
         location /status {
-            proxy_pass         http://docker-api/status;
+            proxy_pass http://docker-api/status;
 
         }
 
         location /ready {
-            proxy_pass         http://docker-api/ready;
+            proxy_pass http://docker-api/ready;
 
         }
 
         location /swagger {
-            proxy_pass         http://docker-api/swagger;
+            proxy_pass http://docker-api/swagger;
 
         }
 
         location /formrecognizer/v2.1/custom/ {
-            proxy_pass         http://docker-api/formrecognizer/v2.1/custom/;
+            proxy_set_header Host $host:$server_port;
+            proxy_set_header Referer $scheme://$host:$server_port;
+            proxy_pass http://docker-api/formrecognizer/v2.1/custom/;
 
         }
 
         location /formrecognizer/v2.1/layout/ {
-            proxy_pass         http://docker-layout/formrecognizer/v2.1/layout/;
+            proxy_set_header Host $host:$server_port;
+            proxy_set_header Referer $scheme://$host:$server_port;
+            proxy_pass http://docker-layout/formrecognizer/v2.1/layout/;
 
         }
     }

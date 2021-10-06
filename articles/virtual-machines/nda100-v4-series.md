@@ -1,18 +1,16 @@
 ---
 title: ND A100 v4-シリーズ
 description: ND A100 v4 シリーズ VM の仕様。
-author: iafinder
 ms.service: virtual-machines
 ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 05/26/2021
-ms.author: iafinder
-ms.openlocfilehash: 22883ab1053a69cc0593565eb19df46ae1852fb7
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: cb149d194bbc4ff8e5f4d263e200755c040720d7
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124774141"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129456425"
 ---
 # <a name="nd-a100-v4-series"></a>ND A100 v4-シリーズ
 

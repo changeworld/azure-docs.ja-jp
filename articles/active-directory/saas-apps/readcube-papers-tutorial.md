@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/07/2021
 ms.author: jeedes
-ms.openlocfilehash: 42d25619ef8f704e49e9001969b2b76dd921e9fb
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: a823506f47e5faa49ae736883df8aeabb122e248
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112463803"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124758688"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-readcube-papers"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と ReadCube Papers の統合
 
@@ -78,9 +78,12 @@ Microsoft Azure Active Directory SSO を ReadCube Papers と一緒に構成し�
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
 1. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
+    1. **[Reply URL (ACS URL)]\(応答 URL (ACS URL)\)** テキスト ボックスに、URL として「`https://connect.liblynx.com/saml/module.php/saml/sp/saml2-acs.php/dsrsi`」と入力します。
+    2. **[サインオン URL]** ボックスに、URL として「`https://app.readcube.com`」と入力します。
 
-    a. **[サインオン URL]** ボックスに、URL として「`https://app.readcube.com`」と入力します。
+        ![[SAML 構成] ウィンドウの設定例を示すスクリーンショット。](./media/readcube-papers-tutorial/configure-saml.png)
 
+         
 1. **[Set up single sign-on with SAML]\(SAML でシングル サインオンをセットアップします\)** ページの **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/copy-metadataurl.png)
@@ -115,7 +118,7 @@ Microsoft Azure Active Directory SSO を ReadCube Papers と一緒に構成し�
 
 ### <a name="create-readcube-papers-test-user"></a>ReadCube Papers のテスト ユーザーの作成
 
-このセクションでは、Britta Simon というユーザーを ReadCube Papers に作成します。 ReadCube Papers では、Just-In-Time ユーザー プロビジョニングがサポートされています。これは既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 ReadCube Papers にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
+このセクションでは、B.Simon というユーザーを ReadCube Papers に作成します。 ReadCube Papers では、Just-In-Time ユーザー プロビジョニングがサポートされています。これは既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 ReadCube Papers にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
 
 ## <a name="test-sso"></a>SSO のテスト 
 
@@ -128,8 +131,8 @@ Microsoft Azure Active Directory SSO を ReadCube Papers と一緒に構成し�
 
 * ReadCube Papers のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 [マイ アプリ] で [ReadCube Papers] タイルをクリックすると、ReadCube Papers のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリ ポータルで [ReadCube Papers] タイルをクリックすると、ReadCube Papers のサインオン URL にリダイレクトされます。 マイ アプリ ポータルの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 ReadCube Papers を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

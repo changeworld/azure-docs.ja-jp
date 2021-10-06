@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: tutorials
 ms.topic: tutorial
 ms.date: 07/05/2021
-ms.openlocfilehash: e884869b77398ab32987363bb85367d46a958380
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 738c60663f80fd036f50c7bd354ca0e3b1d9284e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638392"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124757822"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>Azure portal を使用して Azure SQL Database から Azure Blob Storage にデータを増分読み込みする
 
@@ -40,7 +40,7 @@ ms.locfileid: "122638392"
 ## <a name="overview"></a>概要
 ソリューションの概略図を次に示します。
 
-![データの増分読み込み](media/tutorial-Incremental-copy-portal/incrementally-load.png)
+:::image type="content" source="media/tutorial-Incremental-copy-portal/incrementally-load.png" alt-text="データの増分読み込み":::
 
 このソリューションを作成するための重要な手順を次に示します。
 
@@ -151,7 +151,7 @@ END
 1. Web ブラウザー (**Microsoft Edge** または **Google Chrome**) を起動します。 現在、Data Factory の UI がサポートされる Web ブラウザーは Microsoft Edge と Google Chrome だけです。
 2. 左側のメニューで、 **[リソースの作成]**  >  **[統合]**  >  **[Data Factory]** を選択します。
 
-   ![[新規] ウィンドウでの [Data Factory] の選択](./media/doc-common-process/new-azure-data-factory-menu.png)
+   :::image type="content" source="./media/doc-common-process/new-azure-data-factory-menu.png" alt-text="&quot;[新規]&quot; ペインでの Data Factory の選択":::
 
 3. **[新しいデータ ファクトリ]** ページで、 **[名前]** に「**ADFIncCopyTutorialDF**」と入力します。
 
@@ -179,12 +179,12 @@ END
 
 1. Data Factory UI のホーム ページで、 **[Orchestrate]\(調整\)** タイルをクリックします。
 
-   ![Data Factory UI のホーム ページを示すスクリーンショット。](./media/doc-common-process/get-started-page.png)    
+   :::image type="content" source="./media/doc-common-process/get-started-page.png" alt-text="Data Factory UI のホーム ページを示すスクリーンショット。":::    
 3. [全般] パネルの **[プロパティ]** で、 **[名前]** に「**IncrementalCopyPipeline**」を指定します。 次に、右上隅にある [プロパティ] アイコンをクリックしてパネルを折りたたみます。
 
 4. 古い基準値を取得するための最初の検索アクティビティを追加します。 **[アクティビティ]** ツールボックスで **[General]\(一般\)** を展開し、パイプライン デザイナー画面に **[検索]** アクティビティをドラッグ アンド ドロップします。 アクティビティの名前を **LookupOldWaterMarkActivity** に変更します。
 
-   ![最初の検索アクティビティ - 名前](./media/tutorial-incremental-copy-portal/first-lookup-name.png)
+   :::image type="content" source="./media/tutorial-incremental-copy-portal/first-lookup-name.png" alt-text="最初の検索アクティビティ - 名前":::
 5. **[設定]** タブに切り替えて、 **[Source Dataset]\(ソース データセット\)** の **[+ 新規]** をクリックします。 この手順では、**watermarktable** 内のデータを表すデータセットを作成します。 このテーブルには、前のコピー操作で使用されていた古い基準が含まれています。
 
 6. **[新しいデータセット]** ウィンドウで **[Azure SQL Database]** を選択し、 **[続行]** をクリックします。 データセット用の新しいウィンドウが表示されます。
@@ -201,11 +201,11 @@ END
     6. **[完了]** をクリックします。
     7. **[リンクされたサービス]** で **AzureSqlDatabaseLinkedService** が選択されていることを確認します。
 
-        ![[New linked service]\(新しいリンクされたサービス\) ウィンドウ](./media/tutorial-incremental-copy-portal/azure-sql-linked-service-settings.png)
+        :::image type="content" source="./media/tutorial-incremental-copy-portal/azure-sql-linked-service-settings.png" alt-text="[New linked service]\(新しいリンクされたサービス\) ウィンドウ":::
     8. **[完了]** を選択します。
 9. **[接続]** タブで、 **[テーブル]** に **[dbo].[watermarktable]** を選択します。 テーブル内のデータをプレビューする場合は、 **[データのプレビュー]** をクリックします。
 
-    ![基準データセット - 接続文字列](./media/tutorial-incremental-copy-portal/watermark-dataset-connection-settings.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-portal/watermark-dataset-connection-settings.png" alt-text="基準データセット - 接続文字列":::
 10. 上部のパイプライン タブをクリックするか、左側のツリー ビューでパイプラインの名前をクリックして、パイプライン エディターに切り替えます。 **[検索]** アクティビティのプロパティ ウィンドウで、 **[Source Dataset]\(ソース データセット\)** フィールドで **[WatermarkDataset]** が選択されていることを確認します。
 
 11. **[アクティビティ]** ツールボックスで **[General]\(一般\)** を展開し、パイプライン デザイナー画面にもう一つの **[検索]** アクティビティをドラッグ アンド ドロップし、プロパティ ウィンドウの **[General]\(一般\)** タブで名前を「**LookupNewWaterMarkActivity**」に設定します。 この検索アクティビティは、ターゲットにコピーされるソース データを持つテーブルから新しい基準値を取得します。
@@ -223,12 +223,12 @@ END
     select MAX(LastModifytime) as NewWatermarkvalue from data_source_table
     ```
 
-    ![2 つ目の検索アクティビティ - クエリ](./media/tutorial-incremental-copy-portal/query-for-new-watermark.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-portal/query-for-new-watermark.png" alt-text="2 つ目の検索アクティビティ - クエリ":::
 19. **[アクティビティ]** ツールボックスで **[Move & Transform]\(移動と変換\)** を展開し、[アクティビティ] ツールボックスから **[コピー]** アクティビティをドラッグ アンド ドロップして、名前を「**IncrementalCopyActivity**」に設定します。
 
 20. 検索アクティビティにアタッチされている **緑のボタン** をコピー アクティビティにドラッグして、**両方の検索アクティビティをコピー アクティビティに接続** します。 コピー アクティビティの境界線の色が青に変わったら、マウス ボタンを離します。
 
-    ![検索アクティビティのコピー アクティビティへの接続](./media/tutorial-incremental-copy-portal/connection-lookups-to-copy.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-portal/connection-lookups-to-copy.png" alt-text="検索アクティビティのコピー アクティビティへの接続":::
 21. **[コピー アクティビティ]** を選択し、 **[プロパティ]** ウィンドウにアクティビティのプロパティが表示されることを確認します。
 
 22. **[プロパティ]** ウィンドウで **[ソース]** タブに切り替え、以下の手順を実行します。
@@ -241,7 +241,7 @@ END
         select * from data_source_table where LastModifytime > '@{activity('LookupOldWaterMarkActivity').output.firstRow.WatermarkValue}' and LastModifytime <= '@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}'
         ```
 
-        ![コピー アクティビティ - ソース](./media/tutorial-incremental-copy-portal/copy-activity-source.png)
+        :::image type="content" source="./media/tutorial-incremental-copy-portal/copy-activity-source.png" alt-text="コピー アクティビティ - ソース":::
 23. **[シンク]** タブに切り替えて、 **[Sink Dataset]\(シンク データセット\)** フィールドの **[+ 新規]** をクリックします。
 
 24. このチュートリアルでは、シンク データ ストアの種類は Azure Blob Storage です。 そのため、 **[新しいデータセット]** ウィンドウで **[Azure Blob Storage]** を選択し、 **[続行]** をクリックします。
@@ -270,12 +270,12 @@ END
     1. **[ストアド プロシージャ名]** に **[usp_write_watermark]** を選択します。
     2. ストアド プロシージャのパラメーターの値を指定するには、 **[Import parameter]\(インポート パラメーター\)** をクリックし、各パラメーターに次の値を入力します。
 
-        | 名前 | Type | 値 |
+        | 名前 | 種類 | 値 |
         | ---- | ---- | ----- |
         | LastModifiedtime | DateTime | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
         | TableName | String | @{activity('LookupOldWaterMarkActivity').output.firstRow.TableName} |
 
-        ![ストアド プロシージャ アクティビティ - ストアド プロシージャの設定](./media/tutorial-incremental-copy-portal/sproc-activity-stored-procedure-settings.png)
+        :::image type="content" source="./media/tutorial-incremental-copy-portal/sproc-activity-stored-procedure-settings.png" alt-text="ストアド プロシージャ アクティビティ - ストアド プロシージャの設定":::
 27. パイプライン設定を検証するには、ツール バーの **[検証]** をクリックします。 検証エラーがないことを確認します。 [>>] をクリックして、 **[Pipeline Validation Report]\(パイプライン検証レポート\)** ウィンドウを閉じます。   
 
 28. **[すべて公開]** ボタンを選択して、エンティティ (リンクされたサービス、データセット、およびパイプライン) を Azure Data Factory サービスに発行します。 発行が成功したというメッセージが表示されるまで待機します。
@@ -296,7 +296,7 @@ END
 ## <a name="review-the-results"></a>結果の確認
 1. [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) などのツールを使用して、Azure Storage アカウントに接続します。 **adftutorial** コンテナーの **incrementalcopy** フォルダーに出力ファイルが作成されていることを確認します。
 
-    ![最初の出力ファイル](./media/tutorial-incremental-copy-portal/first-output-file.png)
+    :::image type="content" source="./media/tutorial-incremental-copy-portal/first-output-file.png" alt-text="最初の出力ファイル":::
 2. 出力ファイルを開き、すべてのデータが **data_source_table** から BLOB ファイルにコピーされていることを確認します。
 
     ```

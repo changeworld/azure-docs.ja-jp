@@ -2,28 +2,25 @@
 title: Bicep リンターの使用方法
 description: Bicep linter の使用方法について説明します。
 ms.topic: conceptual
-ms.date: 07/01/2021
-ms.openlocfilehash: 6b270a87a67235a6663a697b1329c5f86d570fdf
-ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+ms.date: 09/10/2021
+ms.openlocfilehash: cef701d9a9f64990c0afbe265c3355f9c1a850ce
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122779729"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128631174"
 ---
 # <a name="use-bicep-linter"></a>Bicep リンターの使用方法
 
-Bicep リンターを使用して、Bicep ファイルを分析できます。 Bicep ファイルをビルドまたは配置する前に、構文エラーをチェックし、カスタマイズ可能な作成のベスト プラクティスのセットを取得します。 リンターを使用すると、開発時にガイダンスを提供することで、コーディング標準を簡単に適用できます。
+Bicep リンターを使用して、Bicep ファイルを分析できます。 これにより、Bicep ファイルをビルドまたはデプロイする前に、構文エラーとベスト プラクティス違反を見つけることができます。 ファイルのチェックに使用する作成のベスト プラクティスのセットをカスタマイズできます。 リンターを使用すると、開発時にガイダンスを提供することで、コーディング標準を簡単に適用できます。
 
-## <a name="install-linter"></a>リンターのインストール
+## <a name="linter-requirements"></a>リンターの要件
 
-リンターは Visual Studio Code と Bicep CLI で使用できます。 次のようにする必要があります。
-
-- Bicep CLI バージョン 0.4 以降。
-- Visual Studio Code バージョン 0.4 以降の Bicep 拡張機能。
+リンターが Bicep CLI および VS Code 拡張機能に統合されている。 使用するには、バージョン 0.4 以降が必要です。
 
 ## <a name="customize-linter"></a>リンターのカスタマイズ
 
-bicepconfig.json を使用して、リンターを有効または無効に設定し、ルール固有の値を指定することができます。また、ルールのレベルも設定できます。 既定の bicepconfig.json を次に示します。
+bicepconfig.json を使用して、リンターを有効または無効に設定し、ルール固有の値を指定することができます。また、ルールのレベルも設定できます。 次の例で、既定の bicepconfig.json を示します。
 
 ```json
 {
@@ -105,7 +102,7 @@ bicepconfig.json を使用して、リンターを有効または無効に設定
 ```
 
 - **有効**: リンターを有効にする場合は **true** を入力し、リンターを無効にする場合は **false** を入力します。
-- **詳細**: Visual Studio Code によって使用される bicepconfig.json ファイルを表示するには、**true** を入力します。
+- **verbose**: Visual Studio Code で使用される bicepconfig.json ファイルを表示するには、**true** を入力します。
 - **ルール**: ルール固有の値を入力します。 各ルールには、少なくとも 1 つのプロパティとレベルがあります。 このプロパティは、Bicep ファイルでケースが検出されると、Bicep の動作を指示します。
 
 ルールレベルには、次のような複数の値を使用できます。
@@ -113,18 +110,18 @@ bicepconfig.json を使用して、リンターを有効または無効に設定
 | **level**  | **ビルド時の動作** | **エディターの動作** |
 |--|--|--|
 | `Error` | 違反は、コマンドラインのビルド出力にエラーとして表示され、ビルドが失敗します。 | 問題のあるコードには赤色の波線で下線が引かれ、[問題] タブに表示されます。 |
-| `Warning` | 違反は、コマンドラインのビルド出力に警告として表示され、ビルドが失敗します。 | 問題のあるコードには黄色の波線で下線が引かれ、[問題] タブに表示されます。 |
+| `Warning` | 違反は、コマンドラインのビルド出力に警告として表示されますが、ビルドは失敗しません。 | 問題のあるコードには黄色の波線で下線が引かれ、[問題] タブに表示されます。 |
 | `Info` | 違反は、コマンドラインのビルド出力に表示されません。 | 問題のあるコードには青色の波線で下線が引かれ、[問題] タブに表示されます。 |
 | `Off` | 完全に抑制されます。 | 完全に抑制されます。 |
 
 現在のリンター ルールのセットは最小限であり、[arm-ttk test cases](../templates/template-test-cases.md) から取得されます。 Visual Studio Code 拡張機能と Bicep CLI の両方が、既定で使用可能なすべてのルールを確認し、すべてのルールが警告レベルに設定されます。 ルールのレベルに基づいて、エラー、警告、または情報のメッセージがエディター内に表示されます。
 
-- [no-hardcoded-env-urls](https://github.com/Azure/bicep/blob/main/docs/linter-rules/no-hardcoded-env-urls.md)
-- [no-unused-params](https://github.com/Azure/bicep/blob/main/docs/linter-rules/no-unused-params.md)
-- [no-unused-vars](https://github.com/Azure/bicep/blob/main/docs/linter-rules/no-unused-vars.md)
-- [prefer-interpolation](https://github.com/Azure/bicep/blob/main/docs/linter-rules/prefer-interpolation.md)
-- [secure-parameter-default](https://github.com/Azure/bicep/blob/main/docs/linter-rules/secure-parameter-default.md)
-- [simplify-interpolation](https://github.com/Azure/bicep/blob/main/docs/linter-rules/simplify-interpolation.md)
+- [no-hardcoded-env-urls](./linter-rule-no-hardcoded-environment-urls.md)
+- [no-unused-params](./linter-rule-no-unused-parameters.md)
+- [no-unused-vars](./linter-rule-no-unused-variables.md)
+- [prefer-interpolation](./linter-rule-prefer-interpolation.md)
+- [secure-parameter-default](./linter-rule-secure-parameter-default.md)
+- [simplify-interpolation](./linter-rule-simplify-interpolation.md)
 
 Visual Studio Code の Bicep 拡張機能には、Bicep 構成ファイルを編集するための intellisense が用意されています。
 
@@ -138,7 +135,7 @@ Visual Studio Code の Bicep 拡張機能には、Bicep 構成ファイルを編
 
 以下のスクリーンショットに示されているように、 **[問題]** ペインには 4 つのエラーと、1 つの警告、1 つの情報メッセージがあります。  情報メッセージには、使用されている bicep 構成ファイルが表示されます。 構成ファイルで **verbose** を **true** に設定した場合、ここにはこの情報のみが表示されます。
 
-問題のある領域のいずれかに、マウス カーソルを置きます。 リンターによって、エラーまたは警告に関する詳細が示されます。 領域をクリックすると、青い電球も表示されます。
+問題のある領域のいずれかに、マウス カーソルを置きます。 リンターによって、エラーまたは警告に関する詳細が示されます。 領域を選択すると、青い電球も表示されます。
 
 :::image type="content" source="./media/linter/bicep-linter-show-quickfix.png" alt-text="Visual Studio Code での Bicep リンターの使用状況- quickfix の表示。":::
 

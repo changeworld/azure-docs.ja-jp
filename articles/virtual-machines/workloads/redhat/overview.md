@@ -1,19 +1,19 @@
 ---
 title: Azure 上の Red Hat ワークロードの概要 | Microsoft Docs
 description: Azure で利用できる Red Hat 製品オファリングについて学習します。
-author: asinn826
+author: mamccrea
 ms.service: virtual-machines
 ms.subservice: redhat
 ms.collection: linux
 ms.topic: overview
 ms.date: 02/10/2020
-ms.author: alsin
-ms.openlocfilehash: 8ccb6b9fa2d6b7e4f91f460c07789a17ad29a4ef
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.author: mamccrea
+ms.openlocfilehash: 30107ce9bfc611faaca37bf79a0b53f68c9cbd70
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122696831"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129458437"
 ---
 # <a name="red-hat-workloads-on-azure"></a>Azure 上の Red Hat ワークロード
 

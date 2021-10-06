@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 04/07/2021
+ms.date: 09/16/2021
 ms.author: aahi
 ms.reviewer: chtufts
-ms.openlocfilehash: b583caa4fdb2a1e72833d4e24c317282be041513
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: fd8347acf6f5fb67de5c011692d893416d5ac068
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122822137"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128677513"
 ---
 # <a name="data-and-rate-limits-for-the-text-analytics-api"></a>Text Analytics API のデータとレートの制限
 <a name="data-limits"></a>
@@ -31,10 +31,12 @@ ms.locfileid: "122822137"
 > * データとレートの制限は、API に送信するドキュメントの数に基づいています。 制限を超えるドキュメントを分析する必要がある場合は、テキストを小さなチャンクに分割してから API に送信することができます。 
 >   * ドキュメントとは、テキスト文字の 1 つの文字列です。  
 
+
+
 | 制限 | 値 |
 |------------------------|---------------|
 | 1 つのドキュメントの最大サイズ | [StringInfo.LengthInTextElements](/dotnet/api/system.globalization.stringinfo.lengthintextelements) によって計測された 5,120 文字。 Text Analytics for Health にも適用されます。 |
-| 1 つのドキュメントの最大サイズ (`/analyze` エンドポイント)  | [StringInfo.LengthInTextElements](/dotnet/api/system.globalization.stringinfo.lengthintextelements) によって計測された 125K 文字。 Text Analytics for Health には適用されません。 |
+| 要求あたりの最大文字数 (`/analyze` エンドポイント)  | [StringInfo.LengthInTextElements](/dotnet/api/system.globalization.stringinfo.lengthintextelements) によって計測された、送信されたドキュメント全体で 125,000 文字 (最大 25 ドキュメント)。 Text Analytics for Health には適用されません。 |
 | 要求全体の最大サイズ | 1 MB。 Text Analytics for Health にも適用されます。 |
 
 

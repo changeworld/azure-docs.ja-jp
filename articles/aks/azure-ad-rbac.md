@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) で Kubernetes のロールベース
 services: container-service
 ms.topic: article
 ms.date: 03/17/2021
-ms.openlocfilehash: 571a0153bfe56a6d3b92700eb0e40f457cf92ffc
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 74ca0618d1277c794d48afbc31c0a3577dde4d79
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123097949"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129536153"
 ---
 # <a name="control-access-to-cluster-resources-using-kubernetes-role-based-access-control-and-azure-active-directory-identities-in-azure-kubernetes-service"></a>Azure Kubernetes Service で Kubernetes のロールベースのアクセス制御と Azure Active Directory ID を使用してクラスター リソースへのアクセスを制限する
 
@@ -427,7 +427,7 @@ ID とリソース管理に関するベスト プラクティスについては�
 <!-- LINKS - internal -->
 [az-aks-get-credentials]: /cli/azure/aks#az_aks_get_credentials
 [install-azure-cli]: /cli/azure/install-azure-cli
-[azure-ad-aks-cli]: azure-ad-integration-cli.md
+[azure-ad-aks-cli]: managed-aad.md
 [az-aks-show]: /cli/azure/aks#az_aks_show
 [az-ad-group-create]: /cli/azure/ad/group#az_ad_group_create
 [az-role-assignment-create]: /cli/azure/role/assignment#az_role_assignment_create

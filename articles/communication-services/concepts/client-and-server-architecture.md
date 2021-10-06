@@ -4,16 +4,17 @@ titleSuffix: An Azure Communication Services concept document
 description: Communication Services のアーキテクチャについて説明します。
 author: probableprime
 manager: mikben
+services: azure-communication-services
 ms.author: rifox
 ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 6d1228ab412ff87f3004e6e1dd5ab1486cee67a0
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 1346c9f6505c03ccebb2d2e2dc33e899050bfe20
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129360102"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128672022"
 ---
 # <a name="client-and-server-architecture"></a>クライアントとサーバーのアーキテクチャ
 
@@ -84,7 +85,7 @@ Azure Communication Service アプリケーションは、Teams の通話に参�
 
 
 ### <a name="dataflows"></a>データフロー
-1. Call 管理サービスは、[Graph API](/graph/api/resources/onlinemeeting?view=graph-rest-1.0&preserve-view=true) を使用してグループ通話を作成します。 別のパターンとしては、エンド ユーザーが [Bookings](https://www.microsoft.com/microsoft-365/business/scheduling-and-booking-app)、Outlook、Teams、または Microsoft 365 エコシステムの別のスケジュール エクスペリエンスを使用してグループ通話を作成するケースがあります。
+1. Call 管理サービスは、[Graph API](/graph/api/resources/onlinemeeting?view=graph-rest-1.0) を使用してグループ通話を作成します。 別のパターンとしては、エンド ユーザーが [Bookings](https://www.microsoft.com/microsoft-365/business/scheduling-and-booking-app)、Outlook、Teams、または Microsoft 365 エコシステムの別のスケジュール エクスペリエンスを使用してグループ通話を作成するケースがあります。
 2. Call 管理サービスは、Teams の通話の詳細を Azure Communication Service クライアントに共有します。
 3. 通常、Teams ユーザーが必ず通話に参加し、外部ユーザーをロビー経由で参加できるようにする必要があります。 ただし、このエクスペリエンスは Teams のテナント構成および特定の会議設定の影響を受けます。
 4. Azure Communication Service ユーザーは、手順 2 で受け取った詳細情報を使用して Call クライアントを初期化し、Teams の会議に参加します。

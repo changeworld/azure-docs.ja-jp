@@ -12,12 +12,12 @@ ms.date: 07/15/2021
 ms.author: baselden
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9298c3c6f7d6c634ed5647a6473e0780cd82bf1d
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: c5d7adc35829e60f40c74f310023b2ea5a259cec
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113799442"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124754303"
 ---
 # <a name="azure-active-directory-security-operations-for-devices"></a>デバイス向けの Azure Active Directory のセキュリティ運用
 
@@ -56,17 +56,17 @@ ms.locfileid: "113799442"
 
 * [サインイン ログ](../reports-monitoring/concept-all-sign-ins.md)
 
-* [Microsoft 365 監査ログ](/microsoft-365/compliance/auditing-solutions-overview?view=o365-worldwide.md) 
+* [Microsoft 365 監査ログ](/microsoft-365/compliance/auditing-solutions-overview) 
 
 * [Azure Key Vault のログ](../..//key-vault/general/logging.md?tabs=Vault)
 
-Azure AD 監査ログは、Azure portal で確認し、コンマ区切り値 (CSV) ファイルまたは JavaScript Object Notation (JSON) ファイルとしてダウンロードできます。 Azure portal には、監視とアラートの自動化を強化できる他のツールと Azure AD ログを統合する方法がいくつかあります。
+Azure AD 監査ログは、Azure portal で確認し、コンマ区切り値 (CSV) ファイルまたは JavaScript Object Notation (JSON) ファイルとしてダウンロードできます。 Azure portal には、Azure AD ログを他のツールと統合する方法がいくつか用意されており、監視とアラートの自動化を強化することができます。
 
-* **[Azure Sentinel](../../sentinel/overview.md)** – セキュリティ情報イベント管理 (SIEM) 機能を備え、エンタープライズ レベルでのインテリジェントなセキュリティ分析を実現します。 
+* **[Azure Sentinel](../../sentinel/overview.md)** - セキュリティ情報イベント管理 (SIEM) 機能を備え、エンタープライズ レベルでのインテリジェントなセキュリティ分析を実現します。 
 
-* **[Azure Monitor](../..//azure-monitor/overview.md)** – さまざまな条件に基づいて監視とアラートを自動化します。 ブックを作成または使用して、異なるソースのデータを結合できます。
+* **[Azure Monitor](../..//azure-monitor/overview.md)** - さまざまな条件に基づいて監視とアラートを自動化します。 ブックを作成または使用して、異なるソースのデータを結合できます。
 
-* **[Azure Event Hubs](../../event-hubs/event-hubs-about.md) と SIEM の統合** - Azure Event Hubs 統合を介して、Splunk、ArcSight、QRadar、Sumo Logic などの[他の SIEM と Azure AD ログを統合できます](../reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)。
+* **[Azure Event Hubs](../../event-hubs/event-hubs-about.md) と SIEM の統合** - Azure Event Hubs 統合を介して、Splunk、ArcSight、QRadar、Sumo Logic などの [他の SIEM と Azure AD ログを統合できます](../reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)。
 
 * **[Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security) (MCAS)** – アプリの検出と管理、アプリとリソース全体のガバナンス管理、クラウド アプリのコンプライアンスの確認を行うことができます。 
 
@@ -220,11 +220,11 @@ Linux VM へのサインインに対するポリシーを設定し、未承認�
 
 [特権アカウントのためのセキュリティ運用](security-operations-privileged-accounts.md)
 
-[Privileged Identity Management 向けのセキュリティ運用](security-operations-privileged-identity-management.md)
+[Privileged Identity Management のためのセキュリティ運用](security-operations-privileged-identity-management.md)
 
 [アプリケーションのためのセキュリティ運用](security-operations-applications.md)
 
 [デバイスのためのセキュリティ運用](security-operations-devices.md)
 
  
-[インフラストラクチャ向けのセキュリティ運用](security-operations-infrastructure.md)
+[インフラストラクチャのためのセキュリティ運用](security-operations-infrastructure.md)

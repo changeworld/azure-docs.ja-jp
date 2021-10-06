@@ -6,18 +6,18 @@ ms.topic: article
 ms.date: 8/26/2021
 ms.custom: mvc, devx-track-azurecli
 ms.author: pgibson
-ms.openlocfilehash: 570305de41d190852e5acaa178d838c21fba2347
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 092e42a5f9c1779fc5968b9fc733d260d405a90a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123440087"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128625907"
 ---
 # <a name="manage-an-existing-application-with-the-open-service-mesh-osm-azure-kubernetes-service-aks-add-on"></a>Open Service Mesh (OSM) Azure Kubernetes Service (AKS) アドオンを使用して既存のアプリケーションを管理する
 
 ## <a name="before-you-begin"></a>開始する前に
 
-このチュートリアルで詳しく説明する手順では、AKS クラスターの OSM AKS アドオンを以前に有効にしたことを前提としています。 そうしていない場合、続行する前に、「[OSM AKS アドオンをデプロイする](./open-service-mesh-deploy-add-on.md)」の記事を確認してから、次に進みます。 また、AKS クラスターは Kubernetes バージョン `1.19+` 以降であること、Kubernetes RBAC が有効になっていること、クラスターとの `kubectl` 接続が確立されていること (これらの項目のいずれかについてのヘルプが必要な場合は、[AKS クイック スタート](./kubernetes-walkthrough.md)に関するページを参照してください)、および AKS OSM アドオンがインストールされていることが必要です。
+このチュートリアルで詳しく説明する手順では、AKS クラスターの OSM AKS アドオンを以前に有効にしたことを前提としています。 そうしていない場合、続行する前に、「[OSM AKS アドオンをデプロイする](./open-service-mesh-deploy-addon-az-cli.md)」の記事を確認してから、次に進みます。 また、AKS クラスターは Kubernetes バージョン `1.19+` 以降であること、Kubernetes RBAC が有効になっていること、クラスターとの `kubectl` 接続が確立されていること (これらの項目のいずれかについてのヘルプが必要な場合は、[AKS クイック スタート](./kubernetes-walkthrough.md)に関するページを参照してください)、および AKS OSM アドオンがインストールされていることが必要です。
 
 次のリソースがインストールされている必要があります。
 
@@ -84,7 +84,7 @@ spec:
     useHTTPSIngress: false
 ```
 
-**enablePermissiveTrafficPolicyMode** が **true** に構成されている場合は、サービス間の通信を中断することなく、名前空間を安全にオンボードできます。 **enablePermissiveTrafficPolicyMode** が **false** に構成されている場合は、正しい [SMI](https://smi-spec.io/) トラフィック アクセス ポリシー マニフェストがデプロイされていること、および名前空間にデプロイされている各サービスを表すサービス アカウントを持っていることを確認する必要があります。 制限の少ないトラフィック モードの詳細については、[制限の少ないトラフィック ポリシー モード](https://docs.openservicemesh.io/docs/guides/traffic_management/permissive_mode/)に関する記事を参照してください。
+**enablePermissiveTrafficPolicyMode** が **true** に構成されている場合は、サービス間の通信を中断することなく、名前空間を安全にオンボードできます。 **enablePermissiveTrafficPolicyMode** が **false** に構成されている場合は、正しい [SMI](https://smi-spec.io/) トラフィック アクセス ポリシー マニフェストがデプロイされていることを確認する必要があります。 また、名前空間にデプロイされている各サービスを表すサービス アカウントを持っていることを確認する必要もあります。 制限の少ないトラフィック モードの詳細については、[制限の少ないトラフィック ポリシー モード](https://docs.openservicemesh.io/docs/guides/traffic_management/permissive_mode/)に関する記事を参照してください。
 
 ## <a name="onboard-existing-deployed-applications-with-open-service-mesh-osm-permissive-traffic-policy-configured-as-true"></a>Open Service Mesh (OSM) の制限のないトラフィック ポリシーを True に構成して既存のデプロイ済みアプリケーションをオンボードする
 
@@ -100,7 +100,7 @@ osm namespace add bookstore
 Namespace [bookstore] successfully added to mesh [osm]
 ```
 
-次に、名前空間での現在のポッドのデプロイについて見ていきます。 次のコマンドを実行して、指定された名前空間のポッドを表示します。
+次に、名前空間での現在のポッドのデプロイについて見ていきます。 次のコマンドを実行して、`bookbuyer` 名前空間のポッドを表示します。
 
 ```azurecli-interactive
 kubectl get pod -n bookbuyer
@@ -188,7 +188,7 @@ Containers:
 
 ## <a name="onboard-existing-deployed-applications-with-open-service-mesh-osm-permissive-traffic-policy-configured-as-false"></a>Open Service Mesh (OSM) の制限のないトラフィック ポリシーを False に構成して既存のデプロイ済みアプリケーションをオンボードする
 
-制限のないトラフィック ポリシーの OSM 構成が `false` に設定されている場合、OSM では、クラスター内でサービス間の通信を行うために、明示的な [SMI](https://smi-spec.io/) トラフィック アクセス ポリシーがデプロイされている必要があります。 現在、OSM では、サービス間の通信の認可の一環として Kubernetes サービス アカウントも使用されています。 OSM メッシュによる管理時に既存のデプロイ済みのアプリケーションでの通信を保証するには、使用するサービス アカウントが存在することを確認し、サービス アカウント情報を使用してアプリケーションのデプロイを更新して、[SMI](https://smi-spec.io/) トラフィック アクセス ポリシーを適用する必要があります。
+制限のないトラフィック ポリシーの OSM 構成が `false` に設定されている場合、OSM では、クラスター内でサービス間の通信を行うために、明示的な [SMI](https://smi-spec.io/) トラフィック アクセス ポリシーがデプロイされている必要があります。 現在、OSM では、サービス間の通信の認可の一環として Kubernetes サービス アカウントも使用されています。 OSM メッシュによる管理時に既存のデプロイ済みのアプリケーションでの通信を保証するには、次に、使用するサービス アカウントが存在することを確認し、サービス アカウント情報を使用してアプリケーションのデプロイを更新して、[SMI](https://smi-spec.io/) トラフィック アクセス ポリシーを適用します。
 
 ### <a name="verify-kubernetes-service-accounts"></a>Kubernetes サービス アカウントを確認する
 
@@ -198,7 +198,7 @@ Containers:
 kubectl get serviceaccounts -n bookbuyer
 ```
 
-次では、bookbuyer 名前空間に `bookbuyer` という名前のサービス アカウントがあります。
+次では、`bookbuyer` 名前空間に `bookbuyer` という名前のサービス アカウントがあります。
 
 ```Output
 NAME        SECRETS   AGE
@@ -231,13 +231,13 @@ NAME        READY   UP-TO-DATE   AVAILABLE   AGE
 bookbuyer   1/1     1            1           25h
 ```
 
-ここでは、[Pod Template] セクションにサービス アカウントが一覧表示されているかどうかを確認するために、デプロイについて説明します。
+[ポッド テンプレート] セクションにサービス アカウントが一覧表示されているかどうかを確認するために、デプロイについて説明します。
 
 ```azurecli-interactive
 kubectl describe deployment bookbuyer -n bookbuyer
 ```
 
-この特定のデプロイでは、[Pod Template] セクションに一覧表示されているデプロイに関連付けられているサービス アカウントがあることがわかります。 このデプロイでは、サービス アカウント bookbuyer が使用されています。 **[Serivce Account:]** プロパティが表示されない場合は、サービス アカウントを使用するようにデプロイが構成されていません。
+この特定のデプロイでは、[ポッド テンプレート] セクションに一覧表示されているデプロイに関連付けられているサービス アカウントがあることがわかります。 このデプロイでは、サービス アカウント `bookbuyer` が使用されています。 **[サービス アカウント:]** プロパティが表示されない場合は、サービス アカウントを使用するようにデプロイが構成されていません。
 
 ```Output
 Pod Template:
@@ -257,7 +257,7 @@ Pod Template:
 
 認可されたトラフィックがメッシュ内で流れることができるようにするための最後の手順は、アプリケーションに必要な [SMI](https://smi-spec.io/) トラフィック アクセス ポリシーをデプロイすることです。 [SMI](https://smi-spec.io/) トラフィック アクセス ポリシーを使用して実現できる構成の量については、このチュートリアルの範囲には含まれません。ただし、仕様のいくつかの共通コンポーネントについて詳しく説明し、アプリケーションのサービス間の通信を可能にするために単純な TrafficTarget と HTTPRouteGroup の両方のポリシーを構成する方法を示します。
 
-[SMI](https://smi-spec.io/) [**トラフィック アクセス制御**](https://github.com/servicemeshinterface/smi-spec/blob/main/apis/traffic-access/v1alpha3/traffic-access.md#traffic-access-control)仕様では、ユーザーはアプリケーションのアクセス制御ポリシーを定義できます。 ここでは、**TrafficTarget** および **HTTPRoutGroup** API リソースに焦点を合わせます。
+[SMI](https://smi-spec.io/) [**トラフィック アクセス制御**](https://github.com/servicemeshinterface/smi-spec/blob/main/apis/traffic-access/v1alpha3/traffic-access.md#traffic-access-control)仕様では、ユーザーはアプリケーションのアクセス制御ポリシーを定義できます。 **TrafficTarget** および **HTTPRoutGroup** API リソースに焦点を合わせます。
 
 TrafficTarget リソースは、3 つの主要な構成設定である destination、rules、sources で構成されています。 TrafficTarget の例を下に示します。
 
@@ -284,7 +284,7 @@ spec:
     namespace: bookbuyer
 ```
 
-上記の TrafficTarget 仕様では、`destination` は、宛先ソース サービス用に構成されているサービス アカウントを表します。 前にデプロイに追加されたサービス アカウントは、アタッチ先のデプロイへのアクセスを認可するために使用されます。 この特定の例の `rules` セクションでは、接続を介して許可される HTTP トラフィックの種類を定義します。 HTTP 経由で許可されるトラフィックに固有のものになるように、HTTP ヘッダーの詳細な正規表現パターンを構成することができます。 `sources` セクションは、通信の発信元のサービスです。 この仕様は、bookbuyer が bookstore と通信する必要があることを示しています。
+上記の TrafficTarget 仕様では、`destination` は、宛先ソース サービス用に構成されているサービス アカウントを表します。 前にデプロイに追加されたサービス アカウントは、アタッチ先のデプロイへのアクセスを認可するために使用されます。 この特定の例の `rules` セクションでは、接続を介して許可される HTTP トラフィックの種類を定義します。 HTTP 経由で許可されるトラフィックに固有のものになるように、HTTP ヘッダーの詳細な正規表現パターンを構成することができます。 `sources` セクションは、通信の発信元のサービスです。 この仕様は、`bookbuyer` が bookstore と通信する必要があることを示しています。
 
 HTTPRouteGroup リソースは、HTTP ヘッダー情報の 1 つまたは複数の一致の配列で構成され、TrafficTarget 仕様の要件です。下の例では、HTTPRouteGroup が 3 つの HTTP アクション (2 つの GET と 1 つの POST) を認可していることがわかります。
 
@@ -383,7 +383,7 @@ EOF
 
 ## <a name="manage-the-applications-namespace-with-osm"></a>OSM を使用してアプリケーションの名前空間を管理する
 
-次に、名前空間を管理するように OSM を構成し、デプロイを再起動して、エンボイ サイドカー プロキシをアプリケーションに挿入します。
+次に、OSM で名前空間を管理するようにし、デプロイを再起動して、エンボイ サイドカー プロキシをアプリケーションに挿入します。
 
 次のコマンドを実行して、OSM で管理するように `azure-vote` 名前空間を構成します。
 

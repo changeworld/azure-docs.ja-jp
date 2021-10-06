@@ -13,12 +13,12 @@ ms.reviewer: martinco
 ms.date: 4/26/2021
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d95bfadd23e1a8e0d2db70952c81667d24dc4230
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: e8821d2c3390ddfd07c7230b20e27b46330e6229
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122771024"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124816160"
 ---
 # <a name="achieve-nist-authenticator-assurance-level-3-by-using-azure-active-directory"></a>Azure Active Directory を使用して NIST 認証保証レベル 3 を達成する
 
@@ -38,7 +38,7 @@ Microsoft では、必要な NIST Authenticator の種類に対応すること�
 | FIDO2 セキュリティ キー<br>or<br> スマート カード (Active Directory フェデレーション サービス [AD FS])<br>or<br>Windows Hello for Business (ハードウェア TPM を使用)| 多要素暗号化ハードウェア |
 | **他の方法**|   |
 | Password<br> and<br>(ハードウェア TPM を使用して Hybrid Azure AD に参加 <br>or <br> ハードウェア TPM を使用して Azure AD に参加)| 記憶シークレット<br>and<br> 単一要素暗号化ハードウェア |
-| Password <br>and<br>(単一要素ワンタイム パスワード ハードウェア (OTP 製造元のもの) <br>or<br>ソフトウェア TPM を使用して Hybrid Azure AD に参加 <br>or <br> ソフトウェア TPM を使用して Azure AD に参加 <br>or<br> 準拠しているマネージド デバイス)| 記憶シークレット <br>and<br>単一要素ワンタイム パスワード ハードウェア<br> and<br>単一要素暗号化ソフトウェア |
+| Password <br>and<br>単一要素ワンタイム パスワード ハードウェア (OTP 製造元のもの) <br>および<br>(ソフトウェア TPM を使用して Hybrid Azure AD に参加 <br>or <br> ソフトウェア TPM を使用して Azure AD に参加 <br>or<br> 準拠しているマネージド デバイス)| 記憶シークレット <br>and<br>単一要素ワンタイム パスワード ハードウェア<br> and<br>単一要素暗号化ソフトウェア |
 
 ### <a name="our-recommendations"></a>推奨事項 
 

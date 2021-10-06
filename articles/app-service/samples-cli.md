@@ -1,17 +1,18 @@
 ---
-title: CLI のサンプル
+title: Azure App Service 用の Azure CLI サンプル | Microsoft Docs
 description: App Service の一般的なシナリオをピックアップした Azure CLI サンプルをご覧いただけます。 App Service のデプロイまたは管理タスクを自動化する方法について説明します。
 tags: azure-service-management
 ms.assetid: 53e6a15a-370a-48df-8618-c6737e26acec
 ms.topic: sample
-ms.date: 07/07/2020
-ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 7ce4a0b6b81e54bf8a97bcd94e3c09da04d77e0d
-ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
+ms.date: 09/17/2021
+ms.custom: mvc, devx-track-azurecli, seo-azure-cli
+keywords: Azure CLI サンプル, Azure CLI の例, Azure CLI のコード サンプル
+ms.openlocfilehash: 622c26488a3a92cfd63e744246014a7e5bdaf71f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112542393"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128676411"
 ---
 # <a name="cli-samples-for-azure-app-service"></a>Azure App Service の CLI サンプル
 

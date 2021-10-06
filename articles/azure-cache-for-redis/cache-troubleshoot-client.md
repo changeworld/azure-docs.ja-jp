@@ -1,17 +1,17 @@
 ---
 title: Azure Cache for Redis のクライアント側の問題に関するトラブルシューティング
 description: Redis クライアントのメモリ負荷、トラフィック増加、高い CPU、限られた帯域幅、要求または応答の肥大化など、クライアント側で頻繁に発生する問題を Azure Cache for Redis で解決する方法について説明します。
-author: yegu-ms
-ms.author: yegu
+author: curib
+ms.author: cauribeg
 ms.service: cache
 ms.topic: troubleshooting
 ms.date: 10/18/2019
-ms.openlocfilehash: da61064fb65db85ebb41b441c228e9c77a1db6fc
-ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
+ms.openlocfilehash: a41329da9171014b0495498f8757007dbef008ef
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113136528"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129537429"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-client-side-issues"></a>Azure Cache for Redis のクライアント側の問題に関するトラブルシューティング
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: trkeya
 author: trkeya
 ms.date: 09/09/2021
-ms.openlocfilehash: 6c563b7661b62c81b6094f1a662faa1cdc28c57a
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 7825dff873afaf223cab7b86c73083027caccc72
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128632008"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129363625"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager の体験版
 
@@ -307,7 +307,7 @@ ARM テンプレートについてよく知らない場合は、「[Azure Resour
    テナント ID を持っていない場合は、Azure Active Directory で新しく作成します。 テナントの設定については、「[クイック スタート: テナントを設定する](../active-directory/develop/quickstart-create-new-tenant.md)」を参照してください。
 
 3. Microsoft Test-Drive アプリケーションをテナントにプロビジョニングします。 このアプリケーションを使用して、体験版リソースでの操作を実行します。
-    1. [Azure Az PowerShell モジュール](/powershell/azure/install-az-ps?view=azps-6.3.0)をまだお持ちではない場合はインストールしてください。
+    1. [Azure Az PowerShell モジュール](/powershell/azure/install-az-ps)をまだお持ちではない場合はインストールしてください。
     1. Microsoft Test-Drive アプリケーションのサービス プリンシパルを追加します。
         1. `Connect-AzAccount` を実行して、Azure アカウントにサインインするための資格情報を指定します。これには、Azure Active Directory の **グローバル管理者**[組み込みロール](/azure/active-directory/roles/permissions-reference#global-administrator)が必要です。 
         1. 新しいサービス プリンシパルを作成します: `New-AzADServicePrincipal -ApplicationId d7e39695-0b24-441c-a140-047800a05ede -DisplayName 'Microsoft TestDrive' -SkipAssignment`。

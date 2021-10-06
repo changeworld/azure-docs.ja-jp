@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 09/12/2018
 ms.author: cynthn
-ms.openlocfilehash: c2ceae3fbf1a59f5f148a488900e9bb88e6be4e4
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: b237c0a8cd6d242541b70f33e977287fe1a9d378
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122688281"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129454945"
 ---
 # <a name="move-a-vm-to-another-subscription-or-resource-group"></a>他のサブスクリプションまたはリソース グループへ VM を移動する
 
@@ -55,7 +55,7 @@ diag=/subscriptions/mySourceSubscriptionID/resourceGroups/mySourceResourceGroup/
 storage=/subscriptions/mySourceSubscriptionID/resourceGroups/mySourceResourceGroup/providers/Microsoft.Storage/storageAccounts/mystorageaccountname    
 
 az resource move \
-    --ids $vm,$nic,$nsg,$pip,$vnet,$storage,$diag \
+    --ids $vm $nic $nsg $pip $vnet $storage $diag \
     --destination-group "myDestinationResourceGroup"
 ```
 

@@ -2,18 +2,18 @@
 title: Azure Cache for Redis で Web アプリをプロビジョニングする
 description: Azure Resource Manager テンプレートを使用し、Web アプリと Azure Cache for Redis を展開します。
 services: app-service
-author: yegu-ms
+author: curib
 ms.service: app-service
 ms.topic: conceptual
 ms.date: 01/06/2017
-ms.author: yegu
+ms.author: cauribeg
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 26eedd9ecbd88b20d80752f379b8a6d1874217a4
-ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
+ms.openlocfilehash: 71648781edd8d202add7ce2a7cc6584173f0451b
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2021
-ms.locfileid: "112379710"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129537459"
 ---
 # <a name="create-a-web-app-plus-azure-cache-for-redis-using-a-template"></a>テンプレートを使用して Web アプリと Azure Cache for Redis を作成する
 

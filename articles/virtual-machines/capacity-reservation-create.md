@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/09/2021
 ms.reviewer: cynthn, jushiman
 ms.custom: template-how-to
-ms.openlocfilehash: db9b8b71ddbdccb2cdc4893ce7ea041304bafba9
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 360a634104b7735a90cbae4b41eae9723b723e2e
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124776616"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129532622"
 ---
 # <a name="create-a-capacity-reservation-preview"></a>容量予約を作成する (プレビュー)
 
@@ -26,11 +26,6 @@ ms.locfileid: "124776616"
 > [!IMPORTANT]
 > 容量予約は現在パブリック プレビュー段階にあります。
 > このプレビュー バージョンはサービス レベル アグリーメントなしで提供されており、運用環境のワークロードに使用することは推奨されません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-
-
-## <a name="register-for-capacity-reservation"></a>容量予約に登録する 
-
-容量予約機能を使用する前に、[プレビュー版を利用するためにサブスクリプションを登録する](capacity-reservation-overview.md#register-for-capacity-reservation)必要があります。 登録が完了するまでに数分かかる場合があります。 Azure CLI または PowerShell のいずれかを使用して、機能の登録を完了することができます。
 
 
 ## <a name="considerations"></a>考慮事項

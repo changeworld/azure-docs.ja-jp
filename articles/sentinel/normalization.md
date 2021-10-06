@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2021
 ms.author: bagol
-ms.openlocfilehash: e03f343444aed0c3aafac28deccb0f38c35e2478
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: e90171faf59daf70bde2150036fdf0a757e53979
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122515057"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128621397"
 ---
 # <a name="normalization-and-the-azure-sentinel-information-model-asim-public-preview"></a>正規化と Azure Sentinel 情報モデル (ASIM) (パブリック プレビュー)
 
@@ -91,7 +91,7 @@ Azure Sentinel Information Model では、次の用語を使用します。
 
 ASIM の使用を開始するには:
 
-1. [Azure Sentinel GitHub リポジトリ](https://github.com/Azure/Azure-Sentinel/tree/master/Parsers)と、`ASim*` で始まるフォルダーから ASIM パーサーをデプロイします。
+1. すべての ASIM パーサーを [Azure Sentinel GitHub リポジトリ](https://aka.ms/AzSentinelASim)からすばやくデプロイします。
 
 1. ASIM を使用する分析ルールのテンプレートをアクティブにします。 詳細については、「[Azure Sentinel 情報モデル (ASIM) のコンテンツ リスト](normalization-content.md#builtin)」を参照してください。
 
@@ -103,7 +103,7 @@ ASIM の使用を開始するには:
 
     - カスタム ソースの[パーサーを作成](normalization-about-parsers.md)し、それらを関連するソースに依存しないパーサーに[追加](normalization-about-parsers.md#include)することによって、カスタム データが組み込みの分析を使用できるようにします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a><a name="next-steps"></a>次のステップ
 
 この記事では、Azure Sentinel での正規化の概要と、Azure Sentinel 情報モデルについて説明しています。
 

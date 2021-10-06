@@ -6,12 +6,12 @@ ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
 author: bwren
 ms.author: bwren
 ms.date: 05/07/2021
-ms.openlocfilehash: 741f2cc4176914417b02bacc9911988a41c5827d
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: eb5766214fff67bf7e45998c9f89c640433bbe99
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123427302"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128652455"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure Monitor の Log Analytics ワークスペースのデータ エクスポート (プレビュー)
 Azure Monitor で Log Analytics ワークスペースのデータ エクスポートを使用すると、Log Analytics ワークスペースで選択したテーブルのデータを収集する際に Azure ストレージ アカウントまたは Azure Event Hubs への連続エクスポートが可能になります。 この記事では、この機能の詳細と、ワークスペースでデータ エクスポートを構成する手順について説明します。
@@ -51,33 +51,41 @@ Log Analytics ワークスペースのデータ エクスポートでは、Log A
 
 ## <a name="export-destinations"></a>エクスポート先
 
+ワークスペース内にエクスポート ルールを作成する前に、データのエクスポート先を作成する必要があります。 この宛先は、ワークスペースと同じサブスクリプションにある必要はありません。 Azure Lighthouse を使用している場合は、別の Azure Active Directory テナントにある宛先にデータを送信することもできます。
+
 ### <a name="storage-account"></a>ストレージ アカウント
-データは、Azure Monitor に到達し、1 時間ごとの追加 BLOB に格納されると、ストレージ アカウントに送信されます。 このデータ エクスポート構成により、ストレージ アカウント内の各テーブルにコンテナーが作成されます。これには、*am-* の後にテーブルの名前が続く名前が付けられます。 たとえば、テーブル *SecurityEvent* は、*am-SecurityEvent* という名前のコンテナーに送信されます。
 
-ストレージ アカウントの BLOB パスは、*WorkspaceResourceId=/subscriptions/subscription-id/resourcegroups/\<resource-group\>/providers/microsoft.operationalinsights/workspaces/\<workspace\>/y=\<four-digit numeric year\>/m=\<two-digit numeric month\>/d=\<two-digit numeric day\>/h=\<two-digit 24-hour clock hour\>/m=00/PT1H.json* です。 追加 BLOB はストレージへの書き込みが 50K に制限されているため、追加の数が多い場合はエクスポートされる BLOB の数が増える可能性があります。 このような場合の BLOB の名前付けパターンは PT1H_#.json となり、# は増分の BLOB 数です。
+データのエクスポート ルールを構成するには、ワークスペースと宛先の両方に対する '書き込み' アクセス許可を持っている必要があります。 データへのアクセスをより適切に制御して、ストレージのインジェスト率の制限や調整に達することを防止できるように、他の非監視データが格納されている既存のストレージ アカウントは使用しないでください。 
 
-ストレージ アカウントのデータ形式は [JSON 行](../essentials/resource-logs-blob-format.md)です。 つまり、各レコードは改行で区切られ、外部のレコード配列や JSON レコード間のコンマはありません。 
+データを不変ストレージに送信するには、[BLOB ストレージの不変ポリシーの設定および管理](../../storage/blobs/immutable-policy-configure-version-scope.md)に関するページの説明に従って、ストレージ アカウントの不変ポリシーを設定します。 この記事のすべての手順に従う必要があります。これには、保護された追加 BLOB の書き込みの有効化が含まれます。
+
+ストレージ アカウントは、StorageV1 以降でかつ、ワークスペースと同じリージョンにある必要があります。 データを他のリージョン内の他のストレージ アカウントにレプリケートする必要がある場合は、[Azure Storage の冗長性オプション](../../storage/common/storage-redundancy.md#redundancy-in-a-secondary-region) (GRS や GZRS など) のいずれかを使用できます。
+
+データは、Azure Monitor に到達し、1 時間ごとの追加 BLOB に格納されると、ストレージ アカウントに送信されます。 このエクスポート ルール設定によって、ストレージ アカウント内のテーブルごとに、*am-* の後にそのテーブル名が続く名前を持つコンテナーが作成されます。 たとえば、テーブル *SecurityEvent* は、*am-SecurityEvent* という名前のコンテナーに送信されます。
+
+2021 年 10 月 15 日より、BLOB は、*WorkspaceResourceId=/subscriptions/subscription-id/resourcegroups/\<resource-group\>/providers/microsoft.operationalinsights/workspaces/\<workspace\>/y=\<four-digit numeric year\>/m=\<two-digit numeric month\>/d=\<two-digit numeric day\>/h=\<two-digit 24-hour clock hour\>/m=\<two-digit 60-minute clock minute\>/PT05M.json* というパス構造の 5 分フォルダーに格納されます。 追加 BLOB はストレージへの書き込みが 50K に制限されているため、追加の数が多い場合はエクスポートされる BLOB の数が増える可能性があります。 このような場合の BLOB の名前付けパターンは PT05M_#.json* になります。ここで、# は増分型の BLOB カウントです。
+
+ストレージ アカウントのデータ形式は [JSON 行](../essentials/resource-logs-blob-format.md)です。 つまり、各レコードが改行で区切られ、外部レコードの配列や JSON レコード間のコンマはありません。 
 
 [![ストレージのサンプル データ](media/logs-data-export/storage-data.png)](media/logs-data-export/storage-data.png#lightbox)
 
-Log Analytics のデータ エクスポートでは、時間ベースのアイテム保持ポリシーで *allowProtectedAppendWrites* 設定が有効になっている場合に、不変ストレージ アカウントに追加 BLOB を書き込むことができます。 これにより、追加 BLOB への新しいブロックの書き込みが許可される一方で、不変性の保護とコンプライアンスは維持されます。 「[保護された追加 BLOB の書き込みを許可する](../../storage/blobs/immutable-time-based-retention-policy-overview.md#allow-protected-append-blobs-writes)」を参照してください。
-
 ### <a name="event-hub"></a>イベント ハブ
-データは、Azure Monitor に到達すると、ほぼリアルタイムでイベント ハブに送信されます。 イベント ハブは、エクスポートするデータ型ごとに作成され、*am-* の後にテーブルの名前が続く名前が付けられます。 たとえば、テーブル *SecurityEvent* は、*am-SecurityEvent* という名前のイベント ハブに送信されます。 エクスポートされたデータを特定のイベント ハブに到達させる場合や、47 文字の制限を超える名前の付いたテーブルがある場合は、独自のイベント ハブ名を指定して、定義されたテーブルのすべてのデータをそれにエクスポートすることができます。
+
+データのエクスポート ルールを構成するには、ワークスペースと宛先の両方に対する '書き込み' アクセス許可を持っている必要があります。 イベント ハブ名前空間の共有アクセス ポリシーによって、ストリーミング メカニズムのアクセス許可が定義されます。 イベント ハブへのストリーミングには、[管理]、[送信]、[リッスン] の各アクセス許可が必要です。 エクスポート ルールを更新するには、その Event Hubs 認可ルールに対する [ListKey] アクセス許可が必要です。
+
+イベント ハブ名前空間は、ワークスペースと同じリージョンにある必要があります。
+
+データは、Azure Monitor に到達すると、イベント ハブに送信されます。 イベント ハブは、エクスポートするデータ型ごとに作成され、*am-* の後にテーブルの名前が続く名前が付けられます。 たとえば、テーブル *SecurityEvent* は、*am-SecurityEvent* という名前のイベント ハブに送信されます。 エクスポートされたデータを特定のイベント ハブに到達させる場合や、47 文字の制限を超える名前の付いたテーブルがある場合は、独自のイベント ハブ名を指定して、定義されたテーブルのすべてのデータをそれにエクスポートすることができます。
 
 > [!IMPORTANT]
 > ['Basic' および 'Standard' 名前空間レベルごとにサポートされるイベント ハブの数は 10](../../event-hubs/event-hubs-quotas.md#common-limits-for-all-tiers) です。 10 を超えるテーブルをエクスポートする場合は、複数のエクスポート ルール間でテーブルを別のイベント ハブ名前空間に分割するか、エクスポート ルールでイベントハブ名を指定して、すべてのテーブルをそのイベント ハブにエクスポートします。
 
-考慮事項:
-1. "Basic" イベント ハブ SKU では、サポートされるイベント サイズ[制限](../../event-hubs/event-hubs-quotas.md#basic-vs-standard-vs-premium-vs-dedicated-tiers)が低く、ワークスペースの一部のログはそれを超過し、削除される可能性があります。 エクスポート先としては、"Standard" または "Dedicated" のイベント ハブを使用することをお勧めします。
+イベント ハブ名前空間に関する考慮事項:
+1. 'Basic' イベント ハブ SKU では、サポートされるイベント サイズの[制限](../../event-hubs/event-hubs-quotas.md#basic-vs-standard-vs-premium-vs-dedicated-tiers)が小さいため、ワークスペース内の一部のログがそれを超え、削除される可能性があります。 エクスポート先としては、"Standard" または "Dedicated" のイベント ハブを使用することをお勧めします。
 2. 多くの場合、エクスポートされるデータの量は時間の経過と共に増加します。そのため、より高い転送速度を処理し、調整シナリオやデータ待ち時間を回避するために、イベント ハブのスケールを拡大する必要があります。 Event Hubs の自動インフレ機能を使用して、自動的にスケールアップし、スループット ユニットの数を増やすことで、使用量のニーズを満たす必要があります。 詳細については、「[Azure Event Hubs のスループット ユニットを自動的にスケールアップする](../../event-hubs/event-hubs-auto-inflate.md)」参照してください。
 
-## <a name="prerequisites"></a>前提条件
-Log Analytics のデータ エクスポートを構成する前に、次の前提条件が満たされている必要があります。
-
-- エクスポート先は、エクスポート ルールの構成の前に作成し、Log Analytics ワークスペースと同じリージョンに配置する必要があります。 対象のデータを他のストレージ アカウントにレプリケートする必要がある場合は、GRS および GZRS を含め、[Azure Storage の冗長性オプション](../../storage/common/storage-redundancy.md#redundancy-in-a-secondary-region)のいずれかを使用できます。
-- ストレージ アカウントは StorageV1 以降である必要があります。 従来のストレージはサポートされていません。
-- 選択したネットワークからのアクセスを許可するように対象のストレージ アカウントを構成した場合は、対象のストレージへの書き込みを Azure Monitor に許可するようそのストレージ アカウントの設定に例外を追加する必要があります。
+> [!NOTE]
+> Azure Monitor のデータのエクスポートでは、仮想ネットワークが有効になっているとイベント ハブ リソースにアクセスできません。 Azure Monitor のデータのエクスポートに Event Hubs リソースへのアクセス権が付与されるように、イベント ハブで [信頼された Microsoft サービスがこのファイアウォールをバイパスすることを許可する] 設定を有効にする必要があります。 
 
 ## <a name="enable-data-export"></a>データ エクスポートを有効にする
 Log Analytics のデータ エクスポートを有効にするには、次の手順を実行する必要があります。 それぞれの詳細については、以降のセクションを参照してください。

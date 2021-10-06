@@ -13,12 +13,12 @@ ms.author: absinh
 ms.reviewer: rolyon
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ed1a0906e31691cae86547f165d5b44ac6e1f7c
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 58647d37da29066c14457ae6624763c800e6f123
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121862770"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124776420"
 ---
 # <a name="list-azure-ad-role-assignments-for-a-user"></a>ユーザーの Azure AD ロールの割り当てを一覧表示する
 
@@ -28,9 +28,9 @@ ms.locfileid: "121862770"
 
 - PowerShell を使用する場合の AzureADPreview モジュール
 - PowerShell を使用する場合の Microsoft.Graph モジュール
-- Microsoft Graph API の Graph エクスプローラーを使用する場合の管理者の同意
+- 管理者の同意 (Microsoft Graph API の Graph エクスプローラーを使用する場合)
 
-詳細については、[PowerShell または Graph エクスプローラーを使用するための前提条件](prerequisites.md)に関するページを参照してください。
+詳細については、「[PowerShell または Graph エクスプローラーを使用するための前提条件](prerequisites.md)」をご覧ください。
 
 ## <a name="azure-portal"></a>Azure portal
 ユーザーの Azure AD ロールを Azure portal を使用して一覧表示するには、これらの手順に従ってください。 [Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) が有効になっているかどうかによって、エクスペリエンスは異なります。

@@ -4,13 +4,13 @@ description: Bicep プロパティ ループを使用して、リソース プ�
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 08/30/2021
-ms.openlocfilehash: 6e9d41136401b28cf330bc828947d35a67c69a43
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.date: 09/23/2021
+ms.openlocfilehash: a845ab0b650b6b22459b3dace90bbc09a98de0a4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123225960"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128625603"
 ---
 # <a name="property-iteration-in-bicep"></a>Bicep でのプロパティの繰り返し
 
@@ -19,6 +19,10 @@ ms.locfileid: "123225960"
 ループをプロパティに適用する場合でも、最上位リソースでのみループを使用できます。 子リソースを最上位リソースに変更する方法の詳細については、「[子リソースの反復処理](loop-resources.md#iteration-for-a-child-resource)」を参照してください。
 
 [モジュール](loop-modules.md)、[リソース](loop-resources.md)、[変数](loop-variables.md)、[出力](loop-outputs.md)でもループを使用できます。
+
+### <a name="microsoft-learn"></a>Microsoft Learn
+
+ループの詳細とハンズオン ガイダンスについては、**Microsoft Learn** の[条件とループを使用した柔軟な Bicep テンプレートの構築](/learn/modules/build-flexible-bicep-templates-conditions-loops/)に関するページを参照してください。
 
 ## <a name="syntax"></a>構文
 
@@ -40,7 +44,7 @@ ms.locfileid: "123225960"
   }]
   ```
 
-  詳細については、「[配列をループする](#loop-array)」を参照してください。
+  詳細については、[ループ配列](#loop-array)に関するページを参照してください。
 
 - 配列とインデックスの反復処理。
 
@@ -52,7 +56,10 @@ ms.locfileid: "123225960"
 
 ## <a name="loop-limits"></a>ループの制限
 
-Bicep ファイルのループの反復処理に、負の数を指定したり、800 回を超える数を指定したりすることはできません。 
+Bicep ループには次の制限があります。
+
+- 複数レベルのプロパティに対してループを行うことはできません。
+- ループの反復処理に、負の数を指定したり、800 回を超える数を指定したりすることはできません。
 
 ## <a name="loop-array"></a>配列をループする
 

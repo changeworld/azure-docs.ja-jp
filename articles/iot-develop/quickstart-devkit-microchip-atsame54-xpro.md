@@ -6,13 +6,14 @@ ms.author: timlt
 ms.service: iot-develop
 ms.devlang: c
 ms.topic: quickstart
-ms.date: 06/08/2021
-ms.openlocfilehash: 9611f80c6895387e71cd6387736cb1445e6b1542
-ms.sourcegitcommit: ca38027e8298c824e624e710e82f7b16f5885951
+ms.date: 09/22/2021
+zone_pivot_groups: iot-develop-toolset
+ms.openlocfilehash: 9b99f9ce23807e617d1b909034bbf9616ed54911
+ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112575312"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128708056"
 ---
 # <a name="quickstart-connect-a-microchip-atsame54-xpro-evaluation-kit-to-iot-central"></a>クイックスタート: Microchip ATSAME54-XPro Evaluation kit を IoT Central に接続する
 
@@ -42,6 +43,18 @@ ms.locfileid: "112575312"
     * 省略可能: [Weather Click](https://www.mikroe.com/weather-click) センサー。 このセンサーをデバイスに追加して、気象条件を監視できます。 このセンサーをお持ちでない場合でも、このクイックスタートを実行できます。
     * 省略可能: [mikroBUS Xplained Pro](https://www.microchip.com/Developmenttools/ProductDetails/ATMBUSADAPTER-XPRO) アダプター。 このアダプターを使用して、Weather Click センサーを Microchip E54 に接続します。 センサーとこのアダプターをお持ちでない場合でも、このクイックスタートを実行できます。
 
+:::zone pivot="iot-toolset-iar-ewarm"
+
+* IAR の EWARM。 [IAR の EWARM の 30 日間の無料試用版をダウンロード](https://www.iar.com/products/architectures/arm/iar-embedded-workbench-for-arm/)できます。
+
+:::zone-end
+:::zone pivot="iot-toolset-mplab"
+
+* [MPLAB X IDE 5.35](https://www.microchip.com/mplab/mplab-x-ide)
+* [MPLAB XC32/32++ Compiler 2.4.0 以降](https://www.microchip.com/mplab/compilers)
+
+:::zone-end
+
 ## <a name="prepare-the-development-environment"></a>開発環境の準備
 
 開発環境を設定するには、まず、このクイックスタートに必要なすべてのアセットを含む GitHub リポジトリをクローンします。 次に、一連のプログラミング ツールをインストールします。
@@ -58,6 +71,8 @@ git clone --recursive https://github.com/azure-rtos/getting-started.git
 
 ### <a name="install-the-tools"></a>ツールのインストール
 
+:::zone pivot="iot-toolset-cmake"
+
 複製されたリポジトリには、必要なツールをインストールして構成する設定スクリプトが含まれています。 別の組み込みデバイスのクイックスタートでこれらのツールをインストールしてある場合は、もう一度行う必要はありません。
 
 > [!NOTE]
@@ -68,19 +83,24 @@ git clone --recursive https://github.com/azure-rtos/getting-started.git
 
 ツールをインストールするには:
 
-1. エクスプローラーで、リポジトリ内の次のパスに移動し、*get-toolchain.bat* という名前の設定スクリプトを実行します。
+1. エクスプローラーで、リポジトリ内の次のパスに移動し、***get-toolchain.bat*** という名前の設定スクリプトを実行します。
+> *getting-started\tools\get-toolchain.bat*
 
-    *getting-started\tools\get-toolchain.bat*
-
-1. インストールが完了したら、新しいコンソール ウィンドウを開き、設定スクリプトによって行われた構成の変更を確認します。 このコンソールを使用して、クイックスタートの残りのプログラミング タスクを実行します。 Windows CMD、PowerShell、または Git Bash for Windows を使用できます。
-1. 次のコードを実行して、CMake バージョン3.14 以降がインストールされていることを確認します。
+2. インストールが完了したら、新しいコンソール ウィンドウを開き、設定スクリプトによって行われた構成の変更を確認します。 このコンソールを使用して、クイックスタートの残りのプログラミング タスクを実行します。 Windows CMD、PowerShell、または Git Bash for Windows を使用できます。
+3. 次のコードを実行して、CMake バージョン3.14 以降がインストールされていることを確認します。
 
     ```shell
     cmake --version
     ```
-残りのツールをインストールするには:
 
-* [AVR&reg; と SAM デバイス用の Microchip Studio](https://www.microchip.com/en-us/development-tools-tools-and-software/microchip-studio-for-avr-and-sam-devices#) をインストールします。 Microchip Studio は、Microchip E54 をプログラムおよびフラッシュするためのツールを含むデバイスの開発環境です。 このチュートリアルでは、Microchip Studio のみを使用して Microchip E54 をフラッシュします。 インストールには数分かかります。コンポーネントのインストールを承認するように求めるメッセージが数回表示されます。
+4. [AVR&reg; と SAM デバイス用の Microchip Studio](https://www.microchip.com/en-us/development-tools-tools-and-software/microchip-studio-for-avr-and-sam-devices#) をインストールします。 Microchip Studio は、Microchip E54 をプログラムおよびフラッシュするためのツールを含むデバイスの開発環境です。 このチュートリアルでは、Microchip Studio のみを使用して Microchip E54 をフラッシュします。 インストールには数分かかります。コンポーネントのインストールを承認するように求めるメッセージが数回表示されます。
+
+:::zone-end
+:::zone pivot="iot-toolset-iar-ewarm, iot-toolset-mplab"
+
+ツールセットのメーカーが提供するインストールの説明書を読み、開発ツールセットをインストールし、準備します。
+
+:::zone-end
 
 [!INCLUDE [iot-develop-embedded-create-central-app-with-device](../../includes/iot-develop-embedded-create-central-app-with-device.md)]
 
@@ -90,102 +110,151 @@ Microchip E54 を Azure に接続するには、Azure IoT の設定の構成フ�
 
 ### <a name="add-configuration"></a>構成を追加する
 
+:::zone pivot="iot-toolset-cmake"
+
 1. テキスト エディターで次のファイルを開きます。
+> *getting-started\Microchip\ATSAME54-XPRO\app\azure_config.h*
 
-    *getting-started\Microchip\ATSAME54-XPRO\app\azure_config.h*
+2. Azure IoT デバイス情報の定数を、Azure リソースの作成後に保存した値に設定します。
+> |定数名|値|
+> |-------------|-----|
+> | `IOT_DPS_ID_SCOPE` | {*自分の ID スコープ値*} |
+> | `IOT_DPS_REGISTRATION_ID` | {*自分のデバイス ID 値*} |
+> | `IOT_DEVICE_SAS_KEY` | {*自分のプライマリ キー値*} |
 
-1. Azure IoT デバイス情報の定数を、Azure リソースの作成後に保存した値に設定します。
+3. ファイルを保存して閉じます。
 
-    |定数名|値|
-    |-------------|-----|
-    |`IOT_DPS_ID_SCOPE` |{*自分の ID スコープ値*}|
-    |`IOT_DPS_REGISTRATION_ID` |{*自分のデバイス ID 値*}|
-    |`IOT_DEVICE_SAS_KEY` |{*自分のプライマリ キー値*}|
+:::zone-end
+:::zone pivot="iot-toolset-iar-ewarm"
 
-1. ファイルを保存して閉じます。
+1. IAR で、解凍後の zip ファイルから ***azure_rtos.eww*** EWARM Workspace を開きます。
+
+2. Azure IoT デバイス情報の定数を、Azure リソースの作成後に保存した値に設定します。
+> |定数名|値|
+> |-------------|-----|
+> | `IOT_DPS_ID_SCOPE` | {*自分の ID スコープ値*} |
+> | `IOT_DPS_REGISTRATION_ID` | {*自分のデバイス ID 値*} |
+> | `IOT_DEVICE_SAS_KEY` | {*自分のプライマリ キー値*} |
+
+3. ファイルを保存して閉じます。
+
+:::zone-end
+:::zone pivot="iot-toolset-mplab"
+
+1. MPLab を開き、 **[ファイル]、[プロジェクトを開く]** の順に選択し、解凍後の zip ファイルから全プロジェクトを選択します。
+
+2. Azure IoT デバイス情報の定数を、Azure リソースの作成後に保存した値に設定します。
+> |定数名|値|
+> |-------------|-----|
+> | `IOT_DPS_ID_SCOPE` | {*自分の ID スコープ値*} |
+> | `IOT_DPS_REGISTRATION_ID` | {*自分のデバイス ID 値*} |
+> | `IOT_DEVICE_SAS_KEY` | {*自分のプライマリ キー値*} |
+
+3. ファイルを保存して閉じます。
+
+:::zone-end
 
 ### <a name="connect-the-device"></a>デバイスを接続する
 
 1. Microchip E54 で、**リセット** ボタン、**イーサネット** ポート、**Debug USB (デバッグ USB)** というラベルの付いたマイクロ USB ポートを見つけます。 次の図で各コンポーネントが強調表示されています。
+> ![Microchip E54 評価キット ボードで主要なコンポーネントを見つける](media/quickstart-devkit-microchip-atsame54-xpro/microchip-xpro-board.png)
 
-    :::image type="content" source="media/quickstart-devkit-microchip-atsame54-xpro/microchip-xpro-board.png" alt-text="Microchip E54 評価キット ボードで主要なコンポーネントを見つける":::
+2. マイクロ USB ケーブルを Microchip E54 の **Debug USB (デバッグ USB)** ポートに接続し、それからコンピューターに接続します。
+> [!NOTE]
+>  必要に応じて、Microchip E54 の設定と概要の詳細について、「[SAM E54 Xplained Pro User's Guide (SAM E54 Xplained Pro ユーザーズ ガイド)](http://ww1.microchip.com/downloads/en/DeviceDoc/70005321A.pdf)」を参照してください。
 
-1. マイクロ USB ケーブルを Microchip E54 の **Debug USB (デバッグ USB)** ポートに接続し、それからコンピューターに接続します。
-    > [!NOTE]
-    >  必要に応じて、Microchip E54 の設定と概要の詳細について、「[SAM E54 Xplained Pro User's Guide (SAM E54 Xplained Pro ユーザーズ ガイド)](http://ww1.microchip.com/downloads/en/DeviceDoc/70005321A.pdf)」を参照してください。
-
-1. イーサネット ケーブルを使用して Microchip E54 をイーサネット ポートに接続します。
+3. イーサネット ケーブルを使用して Microchip E54 をイーサネット ポートに接続します。
 
 ### <a name="optional-install-a-weather-sensor"></a>省略可能: 気象センサーをインストールする
 
 Weather Click センサーと mikroBUS Xplained Pro アダプターがある場合は、このセクションの手順に従います。それ以外の場合は、[イメージのビルド](#build-the-image)に進みます。 センサーをお持ちでない場合でも、このクイックスタートを実行できます。 実際のセンサーが存在しない場合、デバイスのサンプル コードを実行するとシミュレートされたデータが返されます。
 
 1. Weather Click センサーと mikroBUS Xplained Pro アダプターがある場合は、次の写真で示されているように Microchip E54 にインストールします。
+> :::image type="content" source="media/quickstart-devkit-microchip-atsame54-xpro/sam-e54-sensor.png" alt-text="Microchip ES4 に Weather Click センサーと mikroBUS Xplained Pro アダプターをインストールする":::
 
-    :::image type="content" source="media/quickstart-devkit-microchip-atsame54-xpro/sam-e54-sensor.png" alt-text="Microchip ES4 に Weather Click センサーと mikroBUS Xplained Pro アダプターをインストールする":::
+2. 前に編集した構成ファイルを再度開きます。
+> *getting-started\Microchip\ATSAME54-XPRO\app\azure_config.h*
 
-1. 前に編集した構成ファイルを再度開きます。
+3. ヘッダー ファイルの次のコードのように、定数 `__SENSOR_BME280__` の値を **1** に設定します。 この値を設定すると、デバイスは Weather Click センサーの実際のセンサー データを使用できます。
+> `#define __SENSOR_BME280__ 1`
 
-    *getting-started\Microchip\ATSAME54-XPRO\app\azure_config.h*
-
-1. ヘッダー ファイルの次のコードのように、定数 `__SENSOR_BME280__` の値を *1* に設定します。 この値を設定すると、デバイスは Weather Click センサーの実際のセンサー データを使用できます。
-
-    `#define __SENSOR_BME280__ 1`
-
-1. ファイルを保存して閉じます。
+4. ファイルを保存して閉じます。
 
 ### <a name="build-the-image"></a>イメージをビルドする
 
-1. コンソールまたはエクスプローラーで、次のパスのスクリプト *rebuild.bat* を実行してイメージをビルドします。
+:::zone pivot="iot-toolset-cmake"
 
-    *getting-started\Microchip\ATSAME54-XPRO\tools\rebuild.bat*
+1. コンソールまたはエクスプローラーで、次のパスのスクリプト ***rebuild.bat*** を実行してイメージをビルドします。
+> *getting-started\Microchip\ATSAME54-XPRO\tools\rebuild.bat*
 
 2. ビルドが完了したら、次のパスにバイナリ ファイルが作成されたことを確認します。
+> *getting-started\Microchip\ATSAME54-XPRO\build\app\atsame54_azure_iot.bin*
 
-    *getting-started\Microchip\ATSAME54-XPRO\build\app\atsame54_azure_iot.bin*
+:::zone-end
+:::zone pivot="iot-toolset-iar-ewarm"
+
+IAR で、 **[プロジェクト]、[Batch Build]\(バッチ ビルド\)** の順に選択し、 *[build_all]* を選択し、 **[作成]** を選択してすべてのプロジェクトを作成します。 すべてのサンプル プロジェクトがコンパイルされ、リンクされる様子が観察されます。
+
+:::zone-end
+:::zone pivot="iot-toolset-mplab"
+
+*[プロジェクト]* ウィンドウでプロジェクトを選択し、それを右クリックして **[ビルド]** を選択することで、必ずすべてのサンプル プロジェクトの依存ライブラリ (**azure_iot、threadx、netxduo、same54_lib**) が作成されるようにしてください。
+
+:::zone-end
 
 ### <a name="flash-the-image"></a>イメージをフラッシュする
 
+:::zone pivot="iot-toolset-cmake"
+
 1. **Windows [スタート] > [Microchip Studio Command Prompt]\(Microchip Studio コマンド プロンプト\)** コンソールを開き、ビルドした Microchip E54 バイナリ ファイルのフォルダーに移動します。
+> *getting-started\Microchip\ATSAME54-XPRO\build\app*
 
-    *getting-started\Microchip\ATSAME54-XPRO\build\app*
+2. *atprogram* ユーティリティを使用して、バイナリ イメージで Microchip E54 をフラッシュします。
 
-1. *atprogram* ユーティリティを使用して、バイナリ イメージで Microchip E54 をフラッシュします。
+> [!NOTE] 
+> Microchip E54 で Atmel-ICE ツールと atprogram ツールを使用する方法の詳細については、「[Using Atmel-ICE for AVR Programming In Mass Production (大量生産における AVR プログラミングのための Atmel-ICE の使用)](http://ww1.microchip.com/downloads/en/AppNotes/00002466A.pdf)」を参照してください。
 
-    > [!NOTE] 
-    > Microchip E54 で Atmel-ICE ツールと atprogram ツールを使用する方法の詳細については、「[Using Atmel-ICE for AVR Programming In Mass Production (大量生産における AVR プログラミングのための Atmel-ICE の使用)](http://ww1.microchip.com/downloads/en/AppNotes/00002466A.pdf)」を参照してください。
+> ```shell
+> atprogram --tool edbg --interface SWD --device ATSAME54P20A program --chiperase --file atsame54_azure_iot.bin --verify
+> ```
 
-    ```shell
-    atprogram --tool edbg --interface SWD --device ATSAME54P20A program --chiperase --file atsame54_azure_iot.bin --verify
-    ```
+> フラッシュ プロセスが完了すると、コンソールにプログラミングが成功したことが表示されます。
 
-    フラッシュ プロセスが完了すると、コンソールにプログラミングが成功したことが表示されます。
+> ```output
+> Firmware check OK
+> Programming and verification completed successfully.
+> ```
 
-    ```output
-    Firmware check OK
-    Programming and verification completed successfully.
-    ```
+:::zone-end
+:::zone pivot="iot-toolset-iar-ewarm"
+
+IAR で、ツール バーの緑色の **[Download and Debug]\(ダウンロードとデバッグ\)** ボタンを押し、プログラムをダウンロードして実行します。 次に **[Go]\(移動\)** を押します。
+
+:::zone-end
+:::zone pivot="iot-toolset-mplab"
+
+MPLAB で、 **[デバッグ]、[Debug Main Project]\(メイン プロジェクトのデバッグ\)** の順に選択します。
+
+:::zone-end
 
 ### <a name="confirm-device-connection-details"></a>デバイス接続の詳細を確認する
 
 **Termite** アプリを使用して、通信を監視し、デバイスが正しく設定されていることを確認できます。
 
 1. **Termite** を開始します。    
-    > [!TIP]
-    > フラッシュ後、デバイスを初期化または接続するときに問題が発生した場合は、追加の手順に関する[トラブルシューティング](troubleshoot-embedded-device-quickstarts.md)の記事を参照してください。
-1. **[設定]** を選択します。
-1. **[Serial port settings]\(シリアルポートの設定\)** ダイアログで、次の設定を確認し、必要に応じて更新します。
-    * **Baud rate\(ボー レート\)** : 115,200
-    * **Port (ポート)** : Microchip E54 が接続されているポート。 ドロップダウンに複数のポート オプションがある場合は、使用する適切なポートを見つけることができます。 Windows の **デバイス マネージャー** を開き、 **[ポート]** を表示して、使用するポートを特定します。
-    * **Flow control\(フロー制御\)** : DTR/DSR
+> [!TIP]
+> フラッシュ後にデバイスを初期化したり、接続したりできない場合、[トラブルシューティング](troubleshoot-embedded-device-quickstarts.md) で追加の手順を参照してください。
+2. **[設定]** を選択します。
+3. **[Serial port settings]\(シリアルポートの設定\)** ダイアログで、次の設定を確認し、必要に応じて更新します。
+> * **Baud rate\(ボー レート\)** : 115,200
+> * **Port (ポート)** : Microchip E54 が接続されているポート。 ドロップダウンに複数のポート オプションがある場合は、使用する適切なポートを見つけることができます。 Windows の **デバイス マネージャー** を開き、 **[ポート]** を表示して、使用するポートを特定します。
+> * **フロー制御**: DTR/DSR :::image type="content" source="media/quickstart-devkit-microchip-atsame54-xpro/termite-settings.png" alt-text="Termite アプリのシリアル ポート設定のスクリーンショット":::
 
-    :::image type="content" source="media/quickstart-devkit-microchip-atsame54-xpro/termite-settings.png" alt-text="Termite アプリのシリアル ポート設定のスクリーンショット":::
+4. [OK] を選択します。
+5. デバイス上の **リセット** ボタンを押します。 このボタンは、デバイス上にラベルが付いていて、マイクロ USB コネクタの近くにあります。
+6. **Termite** アプリで、次のチェックポイント値を確認して、デバイスが初期化され、Azure IoT に接続されていることを確認します。
 
-1. [OK] を選択します。
-1. デバイス上の **リセット** ボタンを押します。 このボタンは、デバイス上にラベルが付いていて、マイクロ USB コネクタの近くにあります。
-1. **Termite** アプリで、次のチェックポイント値を確認して、デバイスが初期化され、Azure IoT に接続されていることを確認します。
-
-    ```output
+```output
     Starting Azure thread
 
     Initializing DHCP
@@ -216,7 +285,7 @@ Weather Click センサーと mikroBUS Xplained Pro アダプターがある場�
         Model id: dtmi:azurertos:devkit:gsg;1
     Connected to IoT Hub
     SUCCESS: Azure IoT Hub client initialized
-    ```
+```
 
 Termite は、次の手順でデバイスの出力を監視するために開いたままにしておきます。
 
@@ -224,8 +293,8 @@ Termite は、次の手順でデバイスの出力を監視するために開い
 
 IoT Central ポータルでデバイスの状態を表示するには:
 1. アプリケーション ダッシュボードで、サイド ナビゲーション メニューの **[デバイス]** を選択します。
-1. **[デバイスの状態]** が **[プロビジョニング済み]** に更新されていることを確認します。
-1. **[デバイス テンプレート]** が **[ファースト ステップ ガイド]** に更新されていることを確認します。
+1. **[デバイスの状態]** が *[プロビジョニング済み]* に更新されていることを確認します。
+1. **[デバイス テンプレート]** が *[ファースト ステップ ガイド]* に更新されていることを確認します。
 
     :::image type="content" source="media/quickstart-devkit-microchip-atsame54-xpro/iot-central-device-view-status.png" alt-text="IoT Central のデバイスの状態のスクリーンショット":::
 
@@ -292,4 +361,3 @@ Azure IoT Central のサンプル アプリケーション全体とそのデバ�
 
 > [!IMPORTANT]
 > Azure RTOS には、通信をセキュリティで保護し、基になる MCU/MPU ハードウェア保護メカニズムを使用してコードとデータの分離を作成するためのコンポーネントを含む OEM があります。 ただし、各 OEM は最終的に、そのデバイスが進化するセキュリティ要件を確実に満たすようにする役目を負っています。
-

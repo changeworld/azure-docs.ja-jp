@@ -7,14 +7,17 @@ ms.topic: conceptual
 ms.date: 08/30/2021
 ms.author: denisgun
 ms.service: virtual-desktop
-ms.openlocfilehash: ddf70a56d3a787387d1364c88f26cd0faa5df6b3
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: ec7efa35e6b6f036935e6a81f01348f3633f83be
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123219893"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128627848"
 ---
 # <a name="screen-capture-protection"></a>画面キャプチャ保護
+
+>[!IMPORTANT]
+>スクリーン キャプチャ保護は、Microsoft 365 Government (GCC)、GCC-High、Microsoft 365 DoD の環境ではまだサポートされていません。
 
 画面キャプチャの保護機能を使用することで、機密情報がクライアント エンドポイントでキャプチャされないようにします。 この機能を有効にすると、スクリーンショットおよびスクリーン共有でリモート コンテンツが自動的にブロックまたは非表示になります。 また、リモート デスクトップ クライアントは、画面をキャプチャしている可能性のある悪意のあるソフトウェアからコンテンツを隠します。
 

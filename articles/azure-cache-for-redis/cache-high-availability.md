@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.author: yegu
-ms.openlocfilehash: e06ced47829beeab46edbc98ddeb92fa4e959ec0
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: 8796dd088df0ff297cd7ac99271bfe410fdb506b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110614764"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128620846"
 ---
 # <a name="high-availability-for-azure-cache-for-redis"></a>Azure Cache for Redis の高可用性
 
@@ -38,7 +38,7 @@ Standard または Premium レベルの Azure Cache for Redis は、既定では
 
 Redis Cache 内のプライマリ ノードが使用できない場合、レプリカは自動的に新しいプライマリになるように自身を昇格させます。 このプロセスは "*フェールオーバー*" と呼ばれます。 レプリカは十分に長い時間待機してから引き継ぎます。その場合、プライマリ ノードは迅速に回復します。 フェールオーバーが発生すると、Azure Cache for Redis によって新しい VM がプロビジョニングされ、それがレプリカ ノードとしてキャッシュに参加させられます。 レプリカによって、キャッシュ データの別のコピーを保持するために、プライマリとの完全なデータ同期が行われます。
 
-プライマリ ノードは、Redis ソフトウェアやオペレーティング システムの更新などの計画されたメンテナンス アクティビティの一部としてサービスを認識しないことがあります。 また、基になるハードウェア、ソフトウェア、またはネットワークでの障害など、計画外のイベントが原因で動作を停止することもあります。 Redis フェールオーバーの種類については、「[Azure Cache for Redis のフェールオーバーと修正プログラムの適用](cache-failover.md)」に詳しく説明されています。 Azure Cache for Redis により、その有効期間中に多くのフェールオーバーが確認されます。 高可用性アーキテクチャの設計により、キャッシュ内でのこれらの変更が、そのクライアントに対して可能な限り透過的に実行されます。
+プライマリ ノードは、Redis ソフトウェアやオペレーティング システムの更新などの計画されたメンテナンス アクティビティの一部としてサービスを認識しないことがあります。 また、基になるハードウェア、ソフトウェア、またはネットワークでの障害など、計画外のイベントが原因で動作を停止することもあります。 Redis フェールオーバーの種類については、「[Azure Cache for Redis のフェールオーバーと修正プログラムの適用](cache-failover.md)」に詳しく説明されています。 Azure Cache for Redis により、その有効期間中に多くのフェールオーバーが確認されます。 高可用性アーキテクチャの設計によって、キャッシュの内部でのこれらの変更が、そのクライアントに対して可能な限り透過的になります。
 
 また、Premium レベルの場合、Azure Cache for Redis にはより多くのレプリカ ノードが提供されます。 [複数レプリカのキャッシュ](cache-how-to-multi-replicas.md)は、最大 3 つのレプリカ ノードで構成できます。 一般に、レプリカが増えると、プライマリをバックアップするノードがあるため、回復性が向上します。 レプリカが増えても、Azure Cache for Redis インスタンスは、データセンターまたは AZ レベルの停止によって大きな影響を受ける可能性があります。 複数のレプリカを[ゾーン冗長性](#zone-redundancy)と共に使用することで、キャッシュの可用性を向上させることができます。
 

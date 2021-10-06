@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/21/2021
 ms.author: jeedes
-ms.openlocfilehash: 8dd140b65e1ad4940d207011014f4e6d4e28bc7d
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: fd1447abfeab0cd7ab77df42fff19e092713e156
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114603056"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128604748"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zeroheight"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と zeroheight の統合
 
@@ -84,15 +84,16 @@ zeroheight に対する Azure AD SSO を構成してテストするには、次�
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[zeroheight クライアント サポート チーム](mailto:support@zeroheight.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-1. zeroheight アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
+1. zeroheight アプリケーションでは、SAML アサーションを特定の形式にする必要があり、ご自分の SAML トークンの属性の構成にカスタム属性のマッピングを追加する必要があります。 次のセクションで既定の属性をご確認ください。
 
     ![image](common/default-attributes.png)
 
-1. その他に、zeroheight アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
+1. zeroheight では、いずれの既定の属性も使用されません。 代わりに、SAML 応答で返されるように次の属性を追加してください。 これらの属性も事前設定する必要がありますが、要件に従って確認することができます。
     
     | 名前 |  ソース属性|
     | ---------- | --------- |
     | email | User.mail |
+    | FirstName | User.givenname |
 
 1. **[Set up single sign-on with SAML]\(SAML でシングル サインオンをセットアップします\)** ページの **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーして、お使いのコンピューターに保存します。
 
@@ -138,7 +139,7 @@ zeroheight に対する Azure AD SSO を構成してテストするには、次�
 
 * zeroheight のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [zeroheight] タイルをクリックすると、zeroheight サインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [zeroheight] タイルをクリックすると、zeroheight サインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

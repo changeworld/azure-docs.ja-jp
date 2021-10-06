@@ -1,19 +1,17 @@
 ---
 title: Azure Automanage の一般的なオンボード エラーのトラブルシューティング
 description: Automanage の一般的なオンボード エラーとそれらをトラブルシューティングする方法
-author: asinn826
 ms.service: virtual-machines
 ms.subservice: automanage
 ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 01/14/2021
-ms.author: alsin
-ms.openlocfilehash: 7acca746acf17a6ef6dd837907a159cddb20be10
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 95d2f429c1ecb308d65aa01be0a6f3fa226b6168
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113004198"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129458171"
 ---
 # <a name="troubleshoot-common-automanage-onboarding-errors"></a>Automanage の一般的なオンボード エラーのトラブルシューティング
 Automanage は、サービスへのマシンのオンボードに失敗する場合があります。 このドキュメントでは、デプロイの失敗をトラブルシューティングする方法について説明し、デプロイが失敗する可能性があるいくつかの一般的な理由を示し、軽減策として考えられる次の手順について説明します。

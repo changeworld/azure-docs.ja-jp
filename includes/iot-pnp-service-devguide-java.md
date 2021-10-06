@@ -4,18 +4,18 @@ ms.author: dobett
 ms.service: iot-develop
 ms.topic: include
 ms.date: 10/20/2020
-ms.openlocfilehash: 1a12d49a8057dfe059cecf6fd7896fd0a1567647
-ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.openlocfilehash: 05d6284578cd9f7076873dc0f75bcb2ed9ded1bd
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2021
-ms.locfileid: "114405069"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129516591"
 ---
 次のリソースも使用できます。
 
 - [Java SDK のリファレンス ドキュメント](/java/api/com.microsoft.azure.sdk.iot.service.devicetwin.devicetwindevice)
-- [サービス クライアントのサンプル](https://github.com/Azure/azure-iot-sdk-java/blob/master/service/iot-service-samples/pnp-service-sample)
-- [Digital Twins のサンプル](https://github.com/Azure/azure-iot-sdk-java/tree/master/service/iot-service-samples/digitaltwin-service-samples)
+- [サービス クライアントのサンプル](https://github.com/Azure/azure-iot-sdk-java/blob/main/service/iot-service-samples/pnp-service-sample)
+- [Digital Twins のサンプル](https://github.com/Azure/azure-iot-sdk-java/tree/main/service/iot-service-samples/digitaltwin-service-samples)
 
 ## <a name="iot-hub-service-client-examples"></a>IoT Hub サービス クライアントの例
 

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d7424b6ad88bc7e77a4b7d191feb54658f67ff21
-ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
+ms.openlocfilehash: d2fe9cecae13cdd6ff82256466ff1fa045b73189
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114220679"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128569316"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>Windows 用の Key Vault 仮想マシン拡張機能
 
@@ -293,9 +293,9 @@ Key Vault VM 拡張機能のログは、VM 上のローカルにのみ存在し�
 |場所|説明|
 |--|--|
 | C:\WindowsAzure\Logs\WaAppAgent.log | 拡張機能の更新が発生した時間を示します。 |
-| C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.KeyVault.KeyVaultForWindows<most recent version>\ | 証明書のダウンロードの状態を示します。 ダウンロード場所は常に、Windows コンピューターの My ストア (certlm.msc) になります。 |
-| C:\Packages\Plugins\Microsoft.Azure.KeyVault.KeyVaultForWindows<most recent version>\RuntimeSettings\ |   Key Vault VM 拡張機能サービスのログには、akvvm_service サービスの状態が示されます。 |
-| C:\Packages\Plugins\Microsoft.Azure.KeyVault.KeyVaultForWindows<most recent version>\Status\  | Key Vault VM 拡張機能サービスの構成とバイナリ。 |
+| C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.KeyVault.KeyVaultForWindows\<most recent version\>\ | 証明書のダウンロードの状態を示します。 ダウンロード場所は常に、Windows コンピューターの My ストア (certlm.msc) になります。 |
+| C:\Packages\Plugins\Microsoft.Azure.KeyVault.KeyVaultForWindows\<most recent version\>\RuntimeSettings\ | Key Vault VM 拡張機能サービスのログには、akvvm_service サービスの状態が示されます。 |
+| C:\Packages\Plugins\Microsoft.Azure.KeyVault.KeyVaultForWindows\<most recent version\>\Status\    | Key Vault VM 拡張機能サービスの構成とバイナリ。 |
 |||  
 
 

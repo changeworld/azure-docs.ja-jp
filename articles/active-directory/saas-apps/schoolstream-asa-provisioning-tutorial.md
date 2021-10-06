@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/27/2021
 ms.author: thwimmer
-ms.openlocfilehash: 3f3b6fa4a1dcd87371fe2c75de2dc89b60d92eb1
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 5648c84fceb0c6d17375b712a4f3a86561296d4d
+ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123544655"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128709044"
 ---
 # <a name="tutorial-configure-schoolstream-asa-for-automatic-user-provisioning-in-schoolstream-asa"></a>チュートリアル: SchoolStream ASA を構成し、SchoolStream ASA で自動ユーザー プロビジョニングに対応させる
 
@@ -28,7 +28,8 @@ ms.locfileid: "123544655"
 > [!div class="checklist"]
 > * SchoolStream ASA でユーザーを作成する 
 > * アクセスが不要になった場合に SchoolStream ASA のユーザーを削除する。
-> * Azure AD と SchoolStream ASA の間でユーザー属性の同期を維持する
+> * Azure AD と SchoolStream ASA の間でユーザー属性の同期を維持する。
+> * SchoolStream ASA でグループとグループ メンバーシップをプロビジョニングする。
 > * SchoolStream ASA への[シングル サインオン](../manage-apps/add-application-portal-setup-oidc-sso.md) (推奨)。
 
 
@@ -56,11 +57,11 @@ ms.locfileid: "123544655"
 Azure AD で SchoolStream ASA へのプロビジョニングの管理を始めるには、Azure AD アプリケーション ギャラリーから SchoolStream ASA を追加する必要があります。 
 
 1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、Azure portal にサインインします。
-2. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
-3. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
-4. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-5. **[Azure AD ギャラリーの参照]** セクションで、検索ボックスに「**SchoolStream ASA**」と入力します。
-6. 結果のパネルから **[SchoolStream ASA]** を選択し、**アプリにサインアップ** します。 お使いのテナントにアプリが追加されるのを数秒待機します。
+1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
+1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
+1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
+1. **[Azure AD ギャラリーの参照]** セクションで、検索ボックスに「**SchoolStream ASA**」と入力します。
+1. 結果のパネルから **[SchoolStream ASA]** を選択し、**アプリにサインアップ** します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
 SSO のために以前 SchoolStream ASA を設定している場合は、同じアプリケーションを使用できます。 ただし、統合を初めてテストするときは、別のアプリを作成することをお勧めします。 ギャラリーからアプリケーションを追加する方法の詳細については、[こちら](../manage-apps/add-application-portal.md)を参照してください。 
@@ -144,7 +145,19 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
    |externalId|String|
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:organization|String| 
 
-13. **[保存]** ボタンをクリックして変更をコミットします。 **[アプリケーション]** タブに戻り、 **[Edit provisioning]\(プロビジョニングの編集\)** を選択して続行できます。
+
+1. **[マッピング]** セクションの **[Synchronize Azure Active Directory Groups to UNIFI] (Azure Active Directory グループを UNIFI に同期する)** を選択します。
+
+1. **[属性マッピング]** セクションで、Azure AD から UNIFI に同期されるグループ属性を確認します。 **[照合]** プロパティとして選択されている属性は、更新処理で UNIFI のグループとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
+
+      |属性|Type|フィルター処理のサポート|
+      |---|---|---|
+      |displayName|String|&check;
+      |members|リファレンス|
+      |externalId|String|      
+
+
+1. **[保存]** ボタンをクリックして変更をコミットします。 **[アプリケーション]** タブに戻り、 **[Edit provisioning]\(プロビジョニングの編集\)** を選択して続行できます。
 
 1. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
 
@@ -168,6 +181,10 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 * [プロビジョニング ログ](../reports-monitoring/concept-provisioning-logs.md)を使用して、正常にプロビジョニングされたユーザーと失敗したユーザーを特定します。
 * [進行状況バー](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)を確認して、プロビジョニング サイクルの状態と完了までの時間を確認します。
 * プロビジョニング構成が異常な状態になったと考えられる場合、アプリケーションは検疫されます。 検疫状態の詳細については、[こちら](../app-provisioning/application-provisioning-quarantine-status.md)を参照してください。  
+
+## <a name="change-log"></a>ログの変更
+
+* 2020 年 9 月 24 日 - グループ プロビジョニングが有効になりました。
 
 ## <a name="more-resources"></a>その他のリソース
 

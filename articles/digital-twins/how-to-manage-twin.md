@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: 個々のツインとリレーションシップを取得、更新、削除する方法について説明します。
 author: baanders
 ms.author: baanders
-ms.date: 10/21/2020
+ms.date: 9/13/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 0873d6f0bfff73fc0bdc44ce90b322af23d4df28
-ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
+ms.openlocfilehash: 4be8ef1085d6a940e7f2d95f43a75d1b4e7c11f8
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122835735"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128611693"
 ---
 # <a name="manage-digital-twins"></a>デジタル ツインを管理する
 
@@ -40,14 +40,13 @@ ms.locfileid: "122835735"
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_sample.cs" id="CreateTwinCall":::
 
 デジタル ツインを作成するには、以下を指定する必要があります。
-* この段階で定義している、デジタル ツインの必要な ID
+* デジタル ツインに割り当てる ID 値 (ツインの作成時にその ID を定義する)
 * 使用する[モデル](concepts-models.md)
-
-必要に応じて、デジタル ツインのすべてのプロパティの初期値を指定できます。 プロパティはオプションとして扱われ、後で設定できますが、**設定されるまではツインの一部として表示されません**。
-
->[!NOTE]
->ツイン プロパティは初期化する必要がありませんが、ツインの作成時にそのあらゆる [コンポーネント](concepts-models.md#elements-of-a-model)を設定する **必要があります**。 空のオブジェクトにすることができますが、コンポーネント自体は存在する必要があります。
-
+* 任意のツイン データの必要な初期化。次を含みます
+    - プロパティ (初期化オプション): 必要に応じて、デジタル ツインのプロパティの初期値を設定できます。 プロパティはオプションとして扱われ、後で設定できますが、**設定されるまではツインの一部として表示されません**。
+    - テレメトリ (初期化のために推奨): ツインでテレメトリ フィールドの初期値を設定することもできます。 テレメトリの初期化は必須ではありませんが、テレメトリ フィールドは、設定されるまでツインの一部としては表示されません。 つまり、**最初に初期化されていない限り、ツインのテレメトリ値を編集することはできません**。
+    - コンポーネント (ツインに存在する場合に初期化する必要があります): ツインに[コンポーネント](concepts-models.md#elements-of-a-model)が含まれている場合は、ツインの作成時に初期化する必要があります。 空のオブジェクトにすることができますが、コンポーネント自体は存在する必要があります。
+    
 モデルと初期プロパティ値は、`initData` パラメーターによって提供されます。これは、関連データを含む JSON 文字列です。 このオブジェクトを構造化する方法の詳細については、次のセクションに進んでください。
 
 > [!TIP]
@@ -146,7 +145,7 @@ Moon 型ツインで `object result = await client.GetDigitalTwinAsync("my-moon"
 
 ## <a name="view-all-digital-twins"></a>すべてのデジタル ツインを表示する
 
-インスタンス内のすべてのデジタル ツインを表示するには、[クエリ](how-to-query-graph.md)を使用します。 クエリは、[Query API](/rest/api/digital-twins/dataplane/query) または [CLI コマンド](/cli/azure/dt?view=azure-cli-latest&preserve-view=true)を使用して実行できます。
+インスタンス内のすべてのデジタル ツインを表示するには、[クエリ](how-to-query-graph.md)を使用します。 クエリは、[Query API](/rest/api/digital-twins/dataplane/query) または [CLI コマンド](/cli/azure/dt/twin?view=azure-cli-latest&preserve-view=true#az_dt_twin_query)を使用して実行できます。
 
 次に示すのは、インスタンス内のすべてのデジタル ツインの一覧を返す基本的なクエリの本文です。
 

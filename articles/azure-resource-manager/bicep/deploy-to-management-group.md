@@ -3,18 +3,22 @@ title: Bicep を使用して管理グループにリソースをデプロイす�
 description: 管理グループのスコープでリソースをデプロイする Bicep ファイルを作成する方法について説明します。
 ms.topic: conceptual
 ms.date: 07/19/2021
-ms.openlocfilehash: afa4a0f266eb7720a569df123c9828fd151d21e0
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 7c0e2f6682ff5da0e0cc2bd3b7f16b3ab23af476
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114453602"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128659894"
 ---
 # <a name="management-group-deployments-with-bicep-files"></a>Bicep ファイルを使用した管理グループへのデプロイ
 
 この記事では、管理グループにデプロイするときに Bicep を使用してスコープを設定する方法について説明します。
 
 成熟している組織では、Bicep ファイルをデプロイして、管理グループ レベルでリソースを作成することができます。 たとえば、場合によっては、管理グループの[ポリシー](../../governance/policy/overview.md)や [Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) を定義して、割り当てる必要があります。 管理グループ レベルのテンプレートがあれば、宣言という方法を用いて管理グループ レベルでポリシーを適用し、ロールを割り当てることができます。
+
+### <a name="microsoft-learn"></a>Microsoft Learn
+
+デプロイ スコープの詳細およびハンズオン ガイダンスについては、**Microsoft Learn** の「[Bicep を使用してサブスクリプション、管理グループ、テナントにリソースをデプロイする](/learn/modules/deploy-resources-scopes-bicep/)」を参照してください。
 
 ## <a name="supported-resources"></a>サポートされているリソース
 
@@ -269,7 +273,7 @@ param allowedLocations array = [
   'australiacentral'
 ]
 
-resource policyDefinition 'Microsoft.Authorization/policyDefinitions@2019-09-01' = {
+resource policyDefinition 'Microsoft.Authorization/policyDefinitions@2020-09-01' = {
   name: 'locationRestriction'
   properties: {
     policyType: 'Custom'
@@ -289,7 +293,7 @@ resource policyDefinition 'Microsoft.Authorization/policyDefinitions@2019-09-01'
   }
 }
 
-resource policyAssignment 'Microsoft.Authorization/policyAssignments@2019-09-01' = {
+resource policyAssignment 'Microsoft.Authorization/policyAssignments@2020-09-01' = {
   name: 'locationAssignment'
   properties: {
     policyDefinitionId: policyDefinition.id

@@ -9,13 +9,13 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: mathoma
 ms.custom: references_regions
-ms.date: 09/14/2021
-ms.openlocfilehash: bf37cfc156d45eb668a7f7da240e8a9437aa51d9
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.date: 10/05/2021
+ms.openlocfilehash: ca8ed4fa480bd394196f4ca5b37c52bcc06e41c1
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129216975"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129546173"
 ---
 # <a name="maintenance-window-preview"></a>メンテナンス期間 (プレビュー)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -78,6 +78,8 @@ Azure では、SQL Database と SQL マネージド インスタンス リソー
 
 | Azure リージョン | SQL Managed Instance | SQL Database | [Azure 可用性ゾーン](high-availability-sla.md)内の SQL Database | 
 |:---|:---|:---|:---|
+| オーストラリア中部 1 | はい | | |
+| オーストラリア中部 2 | はい | | |
 | オーストラリア東部 | はい | はい | はい |
 | オーストラリア南東部 | はい | はい | |
 | ブラジル南部 | はい | はい |  |
@@ -93,6 +95,7 @@ Azure では、SQL Database と SQL マネージド インスタンス リソー
 | フランス中部 | はい | はい | |
 | フランス南部 | はい | はい | |
 | ドイツ中西部 | はい | はい |  |
+| ドイツ北部 | はい |  |  |
 | 東日本 | はい | はい | はい |
 | 西日本 | はい | はい | |
 | 韓国中部 | はい | | |
@@ -100,15 +103,19 @@ Azure では、SQL Database と SQL マネージド インスタンス リソー
 | 米国中北部 | はい | はい | |
 | 北ヨーロッパ | はい | はい | はい |
 | 南アフリカ北部 | はい | | | 
+| 南アフリカ西部 | はい | | | 
 | 米国中南部 | はい | はい | はい |
 | インド南部 | はい | はい | |
 | 東南アジア | はい | はい | はい |
 | スイス北部 | はい | はい | |
+| スイス西部 | はい | | |
 | アラブ首長国連邦中部 | はい | | |
+| アラブ首長国連邦北部 | はい | | |
 | 英国南部 | はい | はい | はい |
 | 英国西部 | はい | Yes | |
 | 米国中西部 | はい | はい | |
 | 西ヨーロッパ | はい | はい | はい |
+| インド西部 | はい | | |
 | 米国西部 | はい | はい |  |
 | 米国西部 2 | はい | はい | はい |
 | | | | | 

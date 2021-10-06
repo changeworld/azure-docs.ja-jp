@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 06/14/2021
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, contperf-fy21q1, contperf-fy21q2, contperf-fy21q4
-ms.openlocfilehash: 340e7f1b026605a06799dcc79f9fe99e2ad080cf
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: c608856e6238844638e63c3a719b3d534b98d33b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112578957"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128615322"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>クイック スタート:Microsoft ID プラットフォームにアプリケーションを登録する
 
@@ -43,7 +43,7 @@ Microsoft ID プラットフォームは、登録済みのアプリケーショ�
 アプリ登録を作成するには、次の手順に従います。
 
 1. <a href="https://portal.azure.com/" target="_blank">Azure portal</a> にサインインします。
-1. 複数のテナントにアクセスできる場合は、トップ メニューで、 **[ディレクトリとサブスクリプション]** フィルター (:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::) を使用して、アプリケーションを登録するテナントを選択します。
+1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: を使用して、アプリケーションを登録するテナントに切り替えます。
 1. **Azure Active Directory** を検索して選択します。
 1. **[管理]** で **[アプリの登録]**  >  **[新規登録]** の順に選択します。
 1. アプリケーションの表示 **名** を入力します。 表示名は、サインイン時など、アプリケーションのユーザーがアプリを使用するときに表示されることがあります。
@@ -65,7 +65,7 @@ Microsoft ID プラットフォームは、登録済みのアプリケーショ�
 登録が完了すると、Azure portal に、アプリの登録の **[概要]** ペインが表示されます。 **[アプリケーション (クライアント) ID]** の値を確認します。 この値は、"_クライアント ID_" とも呼ばれ、Microsoft ID プラットフォーム内のアプリケーションを一意に識別します。
 
 > [!IMPORTANT]
-> 新しいアプリの登録は、既定ではユーザーに対して非表示になっています。 ユーザーがアプリを [[マイ アプリ] ページ](../user-help/my-apps-portal-end-user-access.md)で表示するための準備を整えたら、これを有効にすることができます。 アプリを有効にするには、Azure portal で、 **[Azure Active Directory]**  >  **[エンタープライズ アプリケーション]** に移動し、アプリを選択します。 次に、 **[プロパティ]** ページで **[ユーザーに表示しますか?]** を [はい] に切り替えます。
+> 新しいアプリの登録は、既定ではユーザーに対して非表示になっています。 ユーザーがアプリを [[マイ アプリ] ページ](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)で表示するための準備を整えたら、これを有効にすることができます。 アプリを有効にするには、Azure portal で、 **[Azure Active Directory]**  >  **[エンタープライズ アプリケーション]** に移動し、アプリを選択します。 次に、 **[プロパティ]** ページで **[ユーザーに表示しますか?]** を [はい] に切り替えます。
 
 アプリケーションのコード (より一般的には、アプリケーションで使用される認証ライブラリ) でも、このクライアント ID を使用します。 この ID は、ID プラットフォームから受信するセキュリティ トークンの検証過程で使用されます。
 

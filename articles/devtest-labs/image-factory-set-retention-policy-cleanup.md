@@ -1,14 +1,14 @@
 ---
-title: Azure DevTest Labs でのアイテム保持ポリシーの設定 | Microsoft Docs
+title: 保持ポリシーのセットアップ
 description: DevTest Labs でアイテム保持ポリシーの構成、ファクトリのクリーンアップ、古いイメージの削除を行う方法について説明します。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 4e642d7dc0733e55caa4ed62e3382ef4422030f9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 91baf275a1ff85cadd0e1226ceb2f1ff529189c0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105727537"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128642873"
 ---
 # <a name="set-up-retention-policy-in-azure-devtest-labs"></a>Azure DevTest Labs でのアイテム保持ポリシーの設定
 この記事では、保持ポリシーの設定、ファクトリのクリーンアップ、および組織内の他のすべての DevTest Labs からの古いイメージの回収を取り上げます。 
@@ -67,4 +67,3 @@ ms.locfileid: "105727537"
 1. イメージ ファクトリを定期的に実行するように[ビルド/リリースのスケジュール](/azure/devops/pipelines/build/triggers?tabs=designer)を設定します。 ファクトリによって生成されたイメージを定期的に更新します。
 2. ファクトリのより多くのゴールデン イメージを作成します。 追加の VM 設定タスクのスクリプトを作成し、ファクトリ イメージにアーティファクトを含めるように、[アーティファクトを作成](devtest-lab-artifact-author.md)することも検討できます。
 4. [別々のビルド/リリース](/azure/devops/pipelines/overview)を作成して、**DistributeImages** スクリプトを別々に実行します。 Labs.json に変更を加え、ターゲット ラボにイメージをコピーするときに、このスクリプトを実行でき、すべてのイメージを再作成する必要はありません。
-

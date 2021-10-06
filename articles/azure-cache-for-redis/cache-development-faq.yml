@@ -2,18 +2,18 @@
 metadata:
   title: Azure Cache for Redis 開発に関してよくあるご質問
   description: Azure Cache for Redis の開発に役立つ、よくある質問に対する回答について説明します。
-  author: yegu-ms
-  ms.author: yegu
+  author: curib
+  ms.author: cauribeg
   ms.service: cache
   ms.topic: conceptual
   ms.custom: devx-track-csharp
   ms.date: 08/06/2020
-  ms.openlocfilehash: 5963fe660a3fed4b084d94abb92b172566988c9f
-  ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+  ms.openlocfilehash: 9f033add3a8d0de5320ec7df745242b09d21cd97
+  ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/24/2021
-  ms.locfileid: "128577035"
+  ms.lasthandoff: 10/05/2021
+  ms.locfileid: "129538761"
 title: Azure Cache for Redis 開発に関してよくあるご質問
 summary: この記事では、Azure Cache for Redis の開発に役立つ、よくある質問に対する回答について説明します。
 sections:
@@ -133,4 +133,4 @@ sections:
   - question: >
       Redis データベースとは
     answer: "Redis データベースとは、単に同じ Redis インスタンス内でデータを論理的に切り離したものです。 キャッシュ メモリは、すべてのデータベースで共有され、特定のデータベースの実際のメモリ使用量は、そのデータベースに格納されているキー/値によって異なります。 たとえば、C6 キャッシュは 53 GB のメモリを備え、P5 の場合は 120 GB になります。 この 53 GB/120 GB すべてを 1 つのデータベースに配置することも、複数のデータベースに分割することもできます。 \n\n> [!NOTE]\n> クラスタリングを有効にして Premium Azure Cache for Redis を使用すると、使用できるのはデータベース 0 だけになります。 これは Redis に固有の制限事項です。Azure Cache for Redis の制限事項ではありません。 詳細については、「[クラスタリングを使用するためにクライアント アプリケーションを変更する必要がありますか](cache-how-to-premium-clustering.md#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)」を参照してください。\n"
-additionalContent: "\n## <a name=\"next-steps\"></a>次の手順\n   その他の [Azure Cache for Redis のよくあるご質問](cache-faq.yml)について。"
+additionalContent: "\n## <a name=\"next-steps\"></a>次のステップ\n   その他の [Azure Cache for Redis のよくあるご質問](cache-faq.yml)について。"

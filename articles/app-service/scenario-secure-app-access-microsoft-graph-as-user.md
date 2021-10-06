@@ -7,16 +7,16 @@ manager: CelesteDG
 ms.service: app-service-web
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 06/21/2021
+ms.date: 09/23/2021
 ms.author: ryanwi
 ms.reviewer: stsoneff
 ms.custom: azureday1
-ms.openlocfilehash: ff35dc6211992bd3d89161dede2745c2e366ee8f
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 332552d361c4c8c43b7b4bfa981050c829a79762
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112463821"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128624522"
 ---
 # <a name="tutorial-access-microsoft-graph-from-a-secured-app-as-the-user"></a>チュートリアル:セキュリティで保護されたアプリからユーザーとして Microsoft Graph にアクセスする
 
@@ -53,7 +53,7 @@ Web アプリで認証と承認を有効にしたので、その Web アプリ�
 
 ## <a name="configure-app-service-to-return-a-usable-access-token"></a>使用可能なアクセス トークンを返すように App Service を構成する
 
-これで、サインインしているユーザーとして Microsoft Graph にアクセスするために必要なアクセス許可が Web アプリに付与されました。 この手順では、Microsoft Graph にアクセスする場合に使用可能なアクセス トークンが提供されるように、App Service の認証および承認を構成します。 この手順では、ダウンストリーム サービス (Microsoft Graph) のクライアントまたはアプリ ID が必要です。 Microsoft Graph のアプリ ID は、*00000003-0000-0000-c000-000000000000* です。
+これで、サインインしているユーザーとして Microsoft Graph にアクセスするために必要なアクセス許可が Web アプリに付与されました。 この手順では、Microsoft Graph にアクセスする場合に使用可能なアクセス トークンが提供されるように、App Service の認証および承認を構成します。 この手順では、ダウンストリーム サービス (Microsoft Graph) の User.Read スコープを追加する必要があります: `https://graph.microsoft.com/User.Read`。
 
 > [!IMPORTANT]
 > 使用可能なアクセス トークンを返すように App Service を構成していない場合、コードで Microsoft Graph API を呼び出したときに ```CompactToken parsing failed with error code: 80049217``` エラーが発生します。
@@ -65,7 +65,7 @@ Web アプリで認証と承認を有効にしたので、その Web アプリ�
 
 左側のブラウザーで、**config** > **authsettingsV2** にドリルダウンします。
 
-**[authsettingsV2]** ビューで、 **[編集]** を選択します。 **identityProviders** -> **azureActiveDirectory** の **[ログイン]** セクションを見つけ、次の **loginParameters** 設定 (`"loginParameters":[ "response_type=code id_token","resource=00000003-0000-0000-c000-000000000000" ]`) を追加します。
+**[authsettingsV2]** ビューで、 **[編集]** を選択します。 **identityProviders** -> **azureActiveDirectory** の **[ログイン]** セクションを見つけ、次の **loginParameters** 設定 (`"loginParameters":[ "response_type=code id_token","scope=openid offline_access profile https://graph.microsoft.com/User.Read" ]`) を追加します。
 
 ```json
 "identityProviders": {
@@ -74,7 +74,7 @@ Web アプリで認証と承認を有効にしたので、その Web アプリ�
       "login": {
         "loginParameters":[
           "response_type=code id_token",
-          "resource=00000003-0000-0000-c000-000000000000"
+          "scope=openid offline_access profile https://graph.microsoft.com/User.Read"
         ]
       }
     }
@@ -98,7 +98,7 @@ az login
 az rest --method GET --url '/subscriptions/{SUBSCRIPTION_ID}/resourceGroups/{RESOURCE_GROUP}/providers/Microsoft.Web/sites/{WEBAPP_NAME}/config/authsettingsv2/list?api-version=2020-06-01' > authsettings.json
 ```
 
-好みのテキスト エディターを使用して、authsettings.json ファイルを開きます。 **identityProviders** -> **azureActiveDirectory** の **[ログイン]** セクションを見つけ、次の **loginParameters** 設定 (`"loginParameters":[ "response_type=code id_token","resource=00000003-0000-0000-c000-000000000000" ]`) を追加します。
+好みのテキスト エディターを使用して、authsettings.json ファイルを開きます。 **identityProviders** -> **azureActiveDirectory** の **[ログイン]** セクションを見つけ、次の **loginParameters** 設定 (`"loginParameters":[ "response_type=code id_token","scope=openid offline_access profile https://graph.microsoft.com/User.Read" ]`) を追加します。
 
 ```json
 "identityProviders": {
@@ -107,7 +107,7 @@ az rest --method GET --url '/subscriptions/{SUBSCRIPTION_ID}/resourceGroups/{RES
       "login": {
         "loginParameters":[
           "response_type=code id_token",
-          "resource=00000003-0000-0000-c000-000000000000"
+          "scope=openid offline_access profile https://graph.microsoft.com/User.Read"
         ]
       }
     }
@@ -121,13 +121,6 @@ az rest --method GET --url '/subscriptions/{SUBSCRIPTION_ID}/resourceGroups/{RES
 az rest --method PUT --url '/subscriptions/{SUBSCRIPTION_ID}/resourceGroups/{RESOURCE_GROUP}/providers/Microsoft.Web/sites/{WEBAPP_NAME}/config/authsettingsv2?api-version=2020-06-01' --body @./authsettings.json
 ```
 ---
-
-## <a name="update-the-issuer-url"></a>発行者 URL を更新する
-[Azure portal](https://portal.azure.com) に戻って、App Service アプリ、その後 **[認証]** ブレードに移動します。
-
-Microsoft ID プロバイダーの隣の **[編集]** をクリックします。
-
-**[基本]** タブで **発行者 URL** を確認します。**発行者 URL** の末尾に "/v2.0" が含まれている場合は、それを削除して **[保存]** をクリックします。 "/v2.0" を削除しない場合は、Web アプリにサインインするときに「*AADSTS901002: 'resource' 要求パラメーターがサポートされていません*」が得られます。
 
 ## <a name="call-microsoft-graph-net"></a>Microsoft Graph を呼び出す (.NET)
 

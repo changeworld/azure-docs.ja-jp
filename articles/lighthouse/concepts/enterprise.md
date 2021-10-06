@@ -1,14 +1,14 @@
 ---
 title: エンタープライズ シナリオにおける Azure Lighthouse
 description: Azure Lighthouse の機能を使用すると、複数の Azure AD テナントを使用するエンタープライズ内のクロステナント管理を簡略化できます。
-ms.date: 05/11/2021
+ms.date: 09/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: 12a6c2f03c06fbd69e77e32b236258bc6a6c8fbe
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: f83e5d84eee0c3ed7f159778630e3598274e4916
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113768302"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124768783"
 ---
 # <a name="azure-lighthouse-in-enterprise-scenarios"></a>エンタープライズ シナリオにおける Azure Lighthouse
 
@@ -20,7 +20,7 @@ ms.locfileid: "113768302"
 
 組織によっては、複数の Azure AD テナントを使用する必要がある場合があります。 これは一時的な状況の場合があります。買収が行われ、長期的なテナント統合戦略がまだ定義されていない場合などです。 また、場合によっては、組織が複数のテナントを継続的に管理する必要があります (完全に独立した子会社、地理的または法的な要件や、その他の考慮事項のため)。
 
-マルチテナント アーキテクチャが必要な場合は、Azure Lighthouse を利用することで管理操作の一元化と合理化が容易になります。 「[Azure の委任されたリソース管理](architecture.md)」を使用して、1 つの管理側テナントのユーザーが、一元管理されたスケーラブルな方法で[クロステナント管理機能](cross-tenant-management-experience.md)を実行できます。
+マルチテナント アーキテクチャが必要な場合は、Azure Lighthouse を利用することで管理操作の一元化と合理化が容易になります。 Azure Lighthouse を使用すると、ある管理テナント内のユーザーが、一元管理されたスケーラブルな方法で[テナントにまたがる管理機能](cross-tenant-management-experience.md)を実行できます。
 
 ## <a name="tenant-management-architecture"></a>テナント管理のアーキテクチャ
 

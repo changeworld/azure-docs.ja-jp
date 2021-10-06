@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/18/2021
+ms.date: 08/31/2021
 ms.author: jeedes
-ms.openlocfilehash: 721c13ea31f812dd5f5b5c335373884766764c80
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 9e542c7d9e78ea73dc96809d7d1fa06d60f15283
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108750763"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128600002"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github-ae"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と GitHub AE の統合
 
@@ -37,8 +37,9 @@ ms.locfileid: "108750763"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* GitHub AE では、**SP** Initiated SSO と **IDP** Initiated SSO がサポートされます
-* GitHub AE では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* GitHub AE では、**SP** と **IDP** Initiated SSO がサポートされています。
+* GitHub AE では、**Just-In-Time** ユーザー プロビジョニングがサポートされています。
+* GitHub AE では、[自動化されたユーザー プロビジョニング](github-ae-provisioning-tutorial.md)がサポートされています。
 
 ## <a name="adding-github-ae-from-the-gallery"></a>ギャラリーからの GitHub AE の追加
 
@@ -150,6 +151,8 @@ GitHub AE 側で SSO を構成するには、[こちら](https://docs.github.com
 
 このセクションでは、B.Simon というユーザーを GitHub AE で作成します。 GitHub AE では、Just-In-Time ユーザー プロビジョニングがサポートされており、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 GitHub AE にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
 
+GitHub AE では、自動ユーザー プロビジョニングもサポートされています。自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](./github-ae-provisioning-tutorial.md)をご覧ください。
+
 ## <a name="test-sso"></a>SSO のテスト 
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
@@ -164,7 +167,7 @@ GitHub AE 側で SSO を構成するには、[こちら](https://docs.github.com
 
 * Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した GitHub AE に自動的にサインインされます 
 
-また、Microsoft アクセス パネルを使用して、任意のモードでアプリケーションをテストすることもできます。 アクセス パネルで GitHub AE タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した GitHub AE に自動的にサインインされます。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [GitHub AE] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した GitHub AE に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

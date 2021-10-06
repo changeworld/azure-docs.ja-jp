@@ -5,12 +5,12 @@ author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 05132e4c7e644e681e2e4cfdedaa2b04a066ebeb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ed4dfc315ae953c99db2ebe2eaa009f9ef072a7c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86259964"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128620276"
 ---
 # <a name="sfctl-cluster"></a>sfctl cluster
 Service Fabric クラスターの選択、管理、および操作を行います。
@@ -259,7 +259,7 @@ Service Fabric クラスターのエンドポイントに接続します。
 | --aad | 認証に Azure Active Directory を使用します。 |
 | --ca | 有効なファイルまたは CA バンドル ファイルとして処理する CA 証明書ディレクトリの絶対パス。 CA 証明書のディレクトリを使用している場合は、証明書ハッシュを計算し、適切なシンボリック リンクを作成するために、OpenSSL によって提供される `c_rehash <directory>` を最初に実行する必要があります。 これは、クラスターから返された証明書が有効であることを確認するために使用されます。 |
 | --cert | クライアント証明書ファイルの絶対パス。 |
-| --endpoint | ポートと HTTP または HTTPS プレフィックスを含むクラスター エンドポイント URL。 通常、エンドポイントは https\://<your-url>\:19080 のようになります。 エンドポイントが指定されていない場合は、既定値の http\://localhost\:19080 になります。  既定の\: http\://localhost\:19080。 |
+| --endpoint | ポートと HTTP または HTTPS プレフィックスを含むクラスター エンドポイント URL。 通常、エンドポイントは `https\://<your-url>\:19080` のようになります。 エンドポイントが指定されていない場合は、既定値の `http\://localhost\:19080` になります。 |
 | --key | クライアント証明書キー ファイルの絶対パス。 |
 | --no-verify | HTTPS を使用する場合は、証明書の検証を無効にします。注\: これは安全でないオプションのため、運用環境では使用しないでください。 |
 | --pem | クライアント証明書 (.pem ファイル) の絶対パス。 |

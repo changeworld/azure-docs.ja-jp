@@ -7,16 +7,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: how-to
-ms.date: 07/08/2021
+ms.date: 09/09/2021
 ms.author: lajanuar
-ms.openlocfilehash: 340121b40845369fe05e36a302556543078629eb
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 688fd2391d12f74b46a16954706b3c9e0ee1fb8a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114289132"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124771848"
 ---
-# <a name="create-and-use-managed-identity-for-document-translation"></a>ドキュメント翻訳のマネージド ID を作成して使用する
+# <a name="create-and-use-managed-identity"></a>マネージド ID の作成と使用
 
 > [!IMPORTANT]
 >
@@ -24,18 +24,9 @@ ms.locfileid: "114289132"
 
 ## <a name="what-is-managed-identity"></a>マネージド ID とは
 
- Azure マネージド ID は、Azure Active Directory (Azure AD) ID と Azure マネージド リソースの特定のアクセス許可を作成する、サービス プリンシパルです。 マネージド ID を使用して、Azure AD 認証をサポートする任意のリソースへのアクセス権を付与できます。 アクセス権を付与するには、[Azure ロールベースのアクセス制御](../../../role-based-access-control/overview.md) (Azure RBAC) を使用してマネージド ID にロールを割り当てます。  Azure でマネージド ID を使用する場合、追加コストはかかりません。
+ Azure マネージド ID は、Azure Active Directory (Azure AD) ID と Azure 管理対象リソースの特定のアクセス許可を作成する、サービス プリンシパルです。 マネージド ID を使用して、Azure AD 認証をサポートする任意のリソースへのアクセス権を付与できます。 アクセス権を付与するには、[Azure ロールベースのアクセス制御](../../../role-based-access-control/overview.md) (Azure RBAC) を使用してマネージド ID にロールを割り当てます。  Azure でマネージド ID を使用する場合、追加コストはかかりません。
 
-マネージド ID では、プライベート アクセスとパブリック アクセスの Azure BLOB ストレージ アカウントの両方がサポートされます。  パブリック アクセスを持つストレージ アカウントの場合は、Shared Access Signature (SAS) を使用して制限付きアクセスを許可することを選択できます。  この記事では、システム割り当てマネージド ID を使用して、Azure BLOB ストレージ アカウント内の翻訳ドキュメントへのアクセスを管理する方法について説明します。
-
-> [!NOTE]
->
-> パブリック インターネットで使用可能な Azure BLOB ストレージ アカウントを使用するすべての操作について、限られた権限を限られた期間だけ持つ Shared Access Signature (**SAS**) URL を指定し、POST 要求に渡すことができます。
->
-> * SAS URL を取得するには、Azure portal でストレージ リソースにアクセスし、 **[Storage Explorer]** タブを選択します。
-> * コンテナーに移動して右クリックし、 **[Get shared access signature]\(Shared Access Signature の取得\)** を選択します。 ストレージ アカウント自体ではなく、コンテナー用の SAS を取得することが重要です。
-> * **[読み取り]** 、 **[書き込み]** 、 **[削除]** 、および **[表示]** 権限がオンになっていることを確認し、 **[作成]** をクリックします。
-> * 次に、**URL** セクションの値を一時的な場所にコピーします。 それは次の書式になります`https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`。
+マネージド ID では、プライベート アクセスとパブリック アクセスの Azure BLOB ストレージ アカウントの両方がサポートされます。  **パブリック アクセスを持つ** ストレージ アカウントの場合は、Shared Access Signature (SAS) を使用して制限付きアクセスを許可することを選択できます。  この記事では、システム割り当てマネージド ID を使用して、Azure BLOB ストレージ アカウント内の翻訳ドキュメントへのアクセスを管理する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -45,11 +36,21 @@ ms.locfileid: "114289132"
 
 * **グローバルではない** リージョンに割り当てられた、[**単一サービス Translator**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation) (マルチサービス Cognitive Services ではない) リソース。 詳細の手順については、「[Azure portal を使用して Cognitive Services リソースを作成する](../../cognitive-services-apis-create-account.md?tabs=multiservice%2cwindows)」を _参照してください_。
 
-* Translator リソースと同じリージョンにある [**Azure BLOB ストレージ アカウント**](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)。 ストレージ アカウント内に BLOB データを格納して整理するためのコンテナーを作成します。 アカウントにファイアウォールがある場合は、[信頼された Azure サービスの例外](../../../storage/common/storage-network-security.md?tabs=azure-portal#manage-exceptions)のチェックボックスをオンにする必要があります。
+* Azure portal で使用する [**Azure ロールベースのアクセス制御 (Azure RBAC)**](../../../role-based-access-control/role-assignments-portal.md) の概要の理解。
+
+* Translator リソースと同じリージョンにある [**Azure BLOB ストレージ アカウント**](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)。 ストレージ アカウント内に BLOB データを格納して整理するためのコンテナーを作成します。 
+
+* **ストレージ アカウントがファイアウォールの内側にある場合、次の構成を有効にする必要があります**。 </br>
+
+  * ストレージ アカウント ページで、左側のメニューから **[セキュリティとネットワーク]** → **[ネットワーク]** を選択します。
+    :::image type="content" source="../media/managed-identities/security-and-networking-node.png" alt-text="スクリーンショット: [セキュリティとネットワーク] タブ。":::
+
+  * メイン ウィンドウで、 **[選択されたネットワークからのアクセスを許可する]** を選択します。
+  :::image type="content" source="../media/managed-identities/firewalls-and-virtual-networks.png" alt-text="スクリーンショット: [選択されたネットワーク] ラジオ ボタンが選択された状態。":::
+
+  * [選択されたネットワーク] ページで、 **[例外]** カテゴリに移動し、[ **[信頼されたサービスの一覧で Azure サービスにこのストレージ アカウントへのアクセスを許可する]** ](/azure/storage/common/storage-network-security?tabs=azure-portal#manage-exceptions) チェックボックスがオンになっていることを確認します。
 
     :::image type="content" source="../media/managed-identities/allow-trusted-services-checkbox-portal-view.png" alt-text="スクリーンショット: ポータル ビューの信頼されたサービスを許可するチェックボックス":::
-
-* Azure portal で使用する [**Azure ロールベースのアクセス制御 (Azure RBAC)** ](../../../role-based-access-control/role-assignments-portal.md) の概要の理解。
 
 ## <a name="managed-identity-assignments"></a>マネージド ID の割り当て
 
@@ -81,11 +82,11 @@ ms.locfileid: "114289132"
 
     :::image type="content" source="../media/managed-identities/azure-role-assignments-page-portal.png" alt-text="スクリーンショット: Azure portal の [Azure ロールの割り当て] ページ。":::
 
->[!NOTE]
->
-> [追加] > [ロールの割り当ての追加] オプションが無効になっているか、アクセス許可エラー [you do not have permissions to add role assignment at this scope]\(このスコープでロールの割り当てを追加するためのアクセス許可がありません\) が発生したために、Azure portal でロールを割り当てることができない場合、現在ストレージ リソースのストレージ スコープで、Microsoft.Authorization/roleAssignments/write アクセス許可を持つロール ([**所有者**](../../../role-based-access-control/built-in-roles.md#owner)や [**ユーザー アクセス管理者**](../../../role-based-access-control/built-in-roles.md#user-access-administrator)など) が割り当てられたユーザーとしてサインインしていることを確認してください。
+    >[!NOTE]
+    >
+    > [追加] > [ロールの割り当ての追加] オプションが無効になっているか、アクセス許可エラー "このスコープでロールの割り当てを追加するためのアクセス許可がありません" が発生したために、Azure portal でロールを割り当てることができない場合は、現在、ストレージ リソースのストレージ スコープで、Microsoft.Authorization/roleAssignments/write アクセス許可を持つロール ([**所有者**](../../../role-based-access-control/built-in-roles.md#owner)や [**ユーザー アクセス管理者**](../../../role-based-access-control/built-in-roles.md#user-access-administrator)など) が割り当てられたユーザーとしてサインインしていることを確認してください。
 
-7. 次に、Translator サービス リソースに **ストレージ BLOB データ共同作成者** ロールを割り当てます。 **[ロールの割り当ての追加]** ポップアップ ウィンドウで、以下のようにフィールドに入力して、 **[保存]** を選択します。
+1. 次に、Translator サービス リソースに **ストレージ BLOB データ共同作成者** ロールを割り当てます。 **[ロールの割り当ての追加]** ポップアップ ウィンドウで、以下のようにフィールドに入力して、 **[保存]** を選択します。
 
     | フィールド | 値|
     |------|--------|

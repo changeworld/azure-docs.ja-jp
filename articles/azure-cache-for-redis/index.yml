@@ -6,15 +6,15 @@ metadata:
   description: アプリケーションでのデータへの高速アクセスを可能にする、セキュリティで保護されたデータ キャッシュおよびメッセージング ブローカーである Azure Cache for Redis の使用方法について説明します。 チュートリアルや API リファレンスなどを提供します。
   ms.service: cache
   ms.topic: landing-page
-  author: yegu-ms
-  ms.author: yegu
+  author: curib
+  ms.author: cauribeg
   ms.date: 12/16/2019
-  ms.openlocfilehash: a0ace54c73054eba059d268f21526fcaf44e6120
-  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+  ms.openlocfilehash: 4a42959e4f0bbae76f60e29fa86c413b3c820bc5
+  ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/13/2021
-  ms.locfileid: "124828797"
+  ms.lasthandoff: 10/05/2021
+  ms.locfileid: "129536383"
 landingContent:
 - title: Azure Cache for Redis について
   linkLists:

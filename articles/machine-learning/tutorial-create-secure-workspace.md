@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: jhirono
 ms.author: larryfr
 author: blackmist
-ms.date: 08/17/2021
+ms.date: 09/15/2021
 ms.topic: how-to
 ms.custom: subject-rbac-steps
-ms.openlocfilehash: c704064685b4096c8ee7b4a1015d82fae7c40ba9
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: f0b4f19e8c1e06aa8ab5657fd1c70a75814451ad
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122324098"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128612189"
 ---
 # <a name="how-to-create-a-secure-workspace"></a>セキュリティで保護されたワークスペースを作成する方法
 
@@ -79,22 +79,30 @@ ms.locfileid: "122324098"
     1. トレーニングに使用されるワークスペース、依存関係サービス、およびリソースを含めるサブネットを作成するために、 __[+ サブネットの追加]__ を選択し、サブネットに次の値を使用します。
         * __サブネット名:__ Training
         * __サブネット アドレス範囲__: 172.17.0.0/24
-        * __サービス__: 次のサービスを選択します。
-            * __Microsoft.Storage__
-            * __Microsoft.KeyVault__
-            * __Microsoft.ContainerRegistry__
 
         :::image type="content" source="./media/tutorial-create-secure-workspace/vnet-add-training-subnet.png" alt-text="Training サブネットのスクリーンショット":::
+
+        > [!TIP]
+        > _サービス エンドポイント_ を使用して、Azure ストレージ アカウント、Azure Key Vault、 Azure Container Registry を VNet に追加する予定の場合は、[__サービス__] で次を選択します。
+        > * __Microsoft.Storage__
+        > * __Microsoft.KeyVault__
+        > * __Microsoft.ContainerRegistry__
+        >
+        > _プライベート エンドポイント_ を使用してこれらのサービスを VNet に追加する予定の場合、これらのエントリを選択する必要はありません。 この記事の手順では、これらのサービスのプライベート エンドポイントを使用するため、次の手順を実行するときにそれらを選択する必要はありません。
 
     1. モデルのスコアリングに使用するコンピューティング リソース用のサブネットを作成するために、もう一度 __[+ サブネットの追加]__ を選択し、次の値を使用します。
         * __サブネット名:__ Scoring
         * __サブネット アドレス範囲__: 172.17.1.0/24
-        * __サービス__: 次のサービスを選択します。
-            * __Microsoft.Storage__
-            * __Microsoft.KeyVault__
-            * __Microsoft.ContainerRegistry__
 
         :::image type="content" source="./media/tutorial-create-secure-workspace/vnet-add-scoring-subnet.png" alt-text="Scoring サブネットのスクリーンショット":::
+
+        > [!TIP]
+        > _サービス エンドポイント_ を使用して、Azure ストレージ アカウント、Azure Key Vault、 Azure Container Registry を VNet に追加する予定の場合は、[__サービス__] で次を選択します。
+        > * __Microsoft.Storage__
+        > * __Microsoft.KeyVault__
+        > * __Microsoft.ContainerRegistry__
+        >
+        > _プライベート エンドポイント_ を使用してこれらのサービスを VNet に追加する予定の場合、これらのエントリを選択する必要はありません。 この記事の手順では、これらのサービスのプライベート エンドポイントを使用するため、次の手順を実行するときにそれらを選択する必要はありません。
 
 1. __[セキュリティ]__ を選択します。 __[BastionHost]__ で __[有効化]__ を選択します。 [Azure Bastion](../bastion/bastion-overview.md) により、後の手順で VNet 内に作成する VM ジャンプ ボックスに安全にアクセスする方法が提供されます。 残りのフィールドには、次の値を使用します。
 
@@ -282,21 +290,6 @@ ms.locfileid: "122324098"
 ## <a name="enable-studio"></a>スタジオを有効にする
 
 Azure Machine Learning スタジオは Web ベースのアプリケーションであり、これを使用すると、ワークスペースを簡単に管理できます。 ただし、VNet 内でセキュリティで保護されたリソースで使用するには、追加の構成が必要です。 次の手順を使用してスタジオを有効にします。
-
-1. Azure portal で、ご自分のストレージ アカウントを選択し、 __[アクセス制御 (IAM)]__ を選択します。
-1. __[+ 追加]__ 、 __[ロールの割り当ての追加 (プレビュー)]__ の順に選択します。
-
-    ![[ロールの割り当ての追加] メニューが開いている [アクセス制御 (IAM)] ページ。](../../includes/role-based-access-control/media/add-role-assignment-menu-generic.png)
-
-1. __[ロール]__ タブで __[ストレージ BLOB データ共同作成者]__ を選択します。
-
-    ![[ロール] タブが選択された [ロールの割り当ての追加] ページ。](../../includes/role-based-access-control/media/add-role-assignment-role-generic.png)
-
-1. __[メンバー]__ タブで、 __[アクセスの割り当て先]__ 領域で __[ユーザー、グループ、またはサービス プリンシパル]__ を選択し、 __[+ Select members]\(メンバーの選択\)__ を選択します。 __[Select members]\(メンバーの選択\)__ ダイアログで、Azure Machine Learning ワークスペースとしての名前を入力します。 ワークスペースのサービス プリンシパルを選択し、 __[選択]__ ボタンを使用します。
-
-    :::image type="content" source="./media/tutorial-create-secure-workspace/studio-select-service-principal.png" alt-text="サービス プリンシパルの選択のスクリーンショット":::
-
-1. **[確認と 割り当て]** タブで、 **[確認と割り当て]** を選択して ロールを割り当てます。
 
 1. プライベート エンドポイントが設定された Azure Storage アカウントを使用する場合は、ストレージのプライベート エンドポイントの __[閲覧者]__ としてワークスペースのサービス プリンシパルを追加します。 Azure portal で、ご自分のストレージ アカウントを選択し、 __[ネットワーク]__ を選択します。 次に、 __[プライベート エンドポイント接続]__ を選択します。
 

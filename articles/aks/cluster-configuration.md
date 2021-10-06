@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 02/09/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 3937e0a6c00de78acfa774ab6446d2b3d8e68206
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 6c454c23eec0bb5b0fef1ceca3ad8f8e4c52493d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110377126"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124812599"
 ---
 # <a name="configure-an-aks-cluster"></a>AKS クラスターの構成
 
@@ -19,62 +19,11 @@ AKS クラスターの作成の一環として、ニーズに合わせてクラ�
 
 ## <a name="os-configuration"></a>OS 構成
 
-AKS では現在、1.18 以降のバージョンの Kubernetes のクラスターについては、一般提供 (GA) において、既定のノードのオペレーティング システム (OS) として Ubuntu 18.04 をサポートしています。1.18 より前のバージョンの場合、AKS Ubuntu 16.04 は引き続き既定の基本イメージです。 Kubernetes v1.18 以降、既定のベースは AKS Ubuntu 18.04 です。
-
-> [!IMPORTANT]
-> Kubernetes v1.18 以降で作成されたノード プールは、`AKS Ubuntu 18.04` ノード イメージに既定で設定されます。 サポートされている 1.18 より前の Kubernetes バージョンのノード プールは、ノード イメージとして `AKS Ubuntu 16.04` を受け取りますが、ノード プールの Kubernetes バージョンが v1.18 以降に更新されると、`AKS Ubuntu 18.04` に更新されます。
-> 
-> 1\.18 以降でクラスターを使用する前に、AKS Ubuntu 18.04 ノード プールでワークロードをテストすることを強くお勧めします。
-
-
-### <a name="use-aks-ubuntu-1804-ga-on-new-clusters"></a>新しいクラスターで AKS Ubuntu 18.04 (GA) を使用する
-
-Kubernetes v1.18 以降で作成されたクラスターは、`AKS Ubuntu 18.04` ノード イメージに既定で設定されます。 1\.18 より前のサポートされている Kubernetes バージョンのノード プールでは、引き続きノード イメージとして `AKS Ubuntu 16.04` を受け取りますが、クラスターまたはノード プールの Kubernetes バージョンが v1.18 以降に更新されると、`AKS Ubuntu 18.04` に更新されます。
-
-1\.18 以降でクラスターを使用する前に、AKS Ubuntu 18.04 ノード プールでワークロードをテストすることを強くお勧めします。
-
-`AKS Ubuntu 18.04` ノード イメージを使用してクラスターを作成するには、下に示すように、kubernetes v1.18 以降を実行するクラスターを作成するだけです。
-
-```azurecli
-az aks create --name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14
-```
-
-### <a name="use-aks-ubuntu-1804-ga-on-existing-clusters"></a>既存のクラスターで AKS Ubuntu 18.04 (GA) を使用する
-
-Kubernetes v1.18 以降で作成されたクラスターは、`AKS Ubuntu 18.04` ノード イメージに既定で設定されます。 1\.18 より前のサポートされている Kubernetes バージョンのノード プールでは、引き続きノード イメージとして `AKS Ubuntu 16.04` を受け取りますが、クラスターまたはノード プールの Kubernetes バージョンが v1.18 以降に更新されると、`AKS Ubuntu 18.04` に更新されます。
-
-1\.18 以降でクラスターを使用する前に、AKS Ubuntu 18.04 ノード プールでワークロードをテストすることを強くお勧めします。
-
-クラスターまたはノード プールで `AKS Ubuntu 18.04` ノード イメージを使用する準備ができている場合は、単純に下のように 1.18 以降にアップグレードできます。
-
-```azurecli
-az aks upgrade --name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14
-```
-
-1 つのノード プールのみをアップグレードする場合は、次のようにします。
-
-```azurecli
-az aks nodepool upgrade -name ubuntu1804 --cluster-name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14
-```
-
-### <a name="test-aks-ubuntu-1804-ga-on-existing-clusters"></a>既存のクラスターで AKS Ubuntu 18.04 (GA) をテストする
-
-Kubernetes v1.18 以降で作成されたノード プールは、`AKS Ubuntu 18.04` ノード イメージに既定で設定されます。 サポートされている 1.18 より前の Kubernetes バージョンのノード プールでは、引き続きノード イメージとして `AKS Ubuntu 16.04` を受け取りますが、ノード プールの Kubernetes バージョンが v1.18 以降に更新されると、`AKS Ubuntu 18.04` に更新されます。
-
-運用ノード プールをアップグレードする前に、AKS Ubuntu 18.04 ノード プールでワークロードをテストすることを強くお勧めします。
-
-`AKS Ubuntu 18.04` ノード イメージを使用してノード プールを作成するには、kubernetes v1.18 以降を実行するノード プールを作成するだけです。 クラスターのコントロール プレーンも、少なくとも v1.18 以降である必要がありますが、他のノード プールは古い kubernetes バージョンのままでも構いません。
-下では、まずコントロール プレーンをアップグレードした後、新しいノード イメージ OS バージョンを受け取る新しいノード プールを v1.18 を使用して作成します。
-
-```azurecli
-az aks upgrade --name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14 --control-plane-only
-
-az aks nodepool add --name ubuntu1804 --cluster-name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14
-```
+AKS では、クラスターの一般提供 (GA) において、ノードの既定のオペレーティング システム (OS) として Ubuntu 18.04 をサポートしています。
 
 ## <a name="container-runtime-configuration"></a>コンテナー ランタイム構成
 
-コンテナー ランタイムは、ノードでコンテナーを実行し、コンテナー イメージを管理するソフトウェアです。 ランタイムにより、Linux または Windows 上でコンテナーを実行するためのシステム コールやオペレーティング システム (OS) 固有の機能の抽象化が容易になります。 Linux ノード プールの場合、`containerd` は Kubernetes バージョン 1.19 以降を使用しているノード プールに使用され、Docker は Kubernetes 1.18 以前を使用しているノード プールに使用されます。 Windows Server 2019 ノード プールの場合、`containerd` はプレビューで使用でき、Kubernetes 1.20 以降を使用しているノード プールで使用できますが、既定では引き続き Docker が使用されます。
+コンテナー ランタイムは、ノードでコンテナーを実行し、コンテナー イメージを管理するソフトウェアです。 ランタイムにより、Linux または Windows 上でコンテナーを実行するためのシステム コールやオペレーティング システム (OS) 固有の機能の抽象化が容易になります。 Linux ノード プールの場合、`containerd` は Kubernetes バージョン 1.19 以降を使用しているノード プールに使用されます。 Windows Server 2019 ノード プールの場合、`containerd` はプレビューで使用でき、Kubernetes 1.20 以降を使用しているノード プールで使用できますが、既定では引き続き Docker が使用されます。
 
 [`Containerd`](https://containerd.io/) は、[OCI](https://opencontainers.org/) (Open Container Initiative) 準拠のコア コンテナー ランタイムです。ノードでコンテナーを実行し、イメージを管理するために必要な最小限の機能セットを提供します。 これは、2017 年 3 月に、Cloud Native Compute Foundation (CNCF) に[寄贈](https://www.cncf.io/announcement/2017/03/29/containerd-joins-cloud-native-computing-foundation/)されました。 AKS で使用されている Moby の最新バージョン (アップストリーム Docker) では、上記のように、`containerd` が既に利用されており、その上に構築されています。
 

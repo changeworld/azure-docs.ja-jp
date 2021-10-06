@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: dde247ff3ced36b34f9746cd710af3ad2d228ec5
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: ceb7c2fcec92e89c65e03fa11db142af514090af
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108801930"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128619858"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-appneta-performance-manager"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と AppNeta Performance Manager の統合
 
@@ -38,7 +38,6 @@ ms.locfileid: "108801930"
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 - AppNeta Performance Manager では、**SP** Initiated SSO がサポートされます
-
 - AppNeta Performance Manager では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 > [!NOTE]
@@ -76,20 +75,22 @@ AppNeta Performance Manager に対して Azure AD SSO を構成してテスト�
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
 1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
-   ![基本的な SAML 構成を編集する](common/edit-urls.png)
+   ![基本的な SAML 構成を編集する](./media/appneta-tutorial/edit-urls.png)
 
 1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
 
    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<subdomain>.pm.appneta.com`
 
+   b. [応答 URL (Assertion Consumer Service URL)] フィールドに「`https://sso.connect.pingidentity.com/sso/sp/ACS.saml2`」と入力します。
+
    > [!NOTE]
-   > サインオン URL は実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 [AppNeta Performance Manager のクライアント サポート チーム](mailto:support@appneta.com)に問い合わせて、この値を入手します。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+   > 上記のサインオン URL の値は一例です。 実際のサインオン URL でこの値を更新してください。 [AppNeta Performance Manager のカスタマー サポート チーム](mailto:support@appneta.com)に問い合わせて、この値を入手します。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 1. AppNeta Performance Manager アプリケーションでは、特定の形式の SAML アサーションが求められます。そのため、SAML トークン属性の構成に、カスタム属性マッピングを追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
 
-   ![image](common/edit-attribute.png)
+   ![SAML トークンの既定の属性を示しているスクリーンショット。](./media/appneta-tutorial/edit-attribute.png)
 
-1. その他に、AppNeta Performance Manager アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
+1. その他に、AppNeta Performance Manager アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を下に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認できます。
 
    | 名前      | ソース属性       |
    | --------- | ---------------------- |
@@ -102,30 +103,22 @@ AppNeta Performance Manager に対して Azure AD SSO を構成してテスト�
    | title     | user.jobtitle          |
    |           |                        |
 
-   > [!NOTE]
-   > **groups** は、Azure AD で **Role** にマップされている Appneta のセキュリティ グループを指しています。 Azure AD でカスタム ロールを作成する方法を説明している[この](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui)ドキュメントを参照してください。
+1. "groups" SAML アサーションを適切に渡すには、アプリ ロールを構成し、AppNeta Performance Manager 内で設定されているロール マッピングと一致するように値を設定する必要があります。 **[Azure Active Directory]**  >  **[アプリの登録]**  >   **[すべてのアプリケーション]** で、 **[Appneta Performance Manager]** を選択します。
+1. 左側のウィンドウで **[アプリ ロール]** をクリックします。
+1. **[Create App role] \(アプリ ロールの作成)** をクリックします。
+1. **[Create App role]\(アプリ ロールの作成\)** ウィンドウで、こちらの手順を実行します。
+   1. **[表示名]** に、ロールの名前を入力します。
+   1. **[Allowed member types]\(許可されるメンバーの種類\)** で、 **[ユーザー/グループ]** を選択します。
+   1. **[値]** に、AppNeta Performance Manager のロール マッピングに設定されているセキュリティ グループの値を入力します。
+   1. **[説明]** に、ロールの説明を入力します。
+   1. **[適用]** をクリックします。
 
-   1. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。
-
-   1. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
-
-   1. **[名前空間]** は空白のままにします。
-
-   1. [ソース] として **[属性]** を選択します。
-
-   1. **[ソース属性]** の一覧から、その行に表示される属性値を入力します。
-
-   1. **[OK]** をクリックします。
-
-   1. **[保存]** をクリックします。
-
-1. **[SAML によるシングル サインオンのセットアップ]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
+1. ロールを作成したら、それらのロールをユーザーとグループにマップする必要があります。 **[Azure Active Directory]**  >  **[エンタープライズ アプリケーション]**  >  **[Appneta Performance Manger]**  >  **[ユーザーとグループ]** にアクセスします。
+1. ユーザーまたはグループを選択し、そのユーザーまたはグループの関連アプリ ロールを割り当てます。
+1. アプリ ロールをマップした後、 **[Azure Active Directory]**  >  **[エンタープライズ アプリケーション]**  >  **[Appneta Performance Manager]**  >  **[シングル サインオン]** にアクセスします。
+1. **[SAML によるシングル サインオンのセットアップ]** ウィンドウの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
    ![証明書のダウンロードのリンク](common/metadataxml.png)
-
-1. **[AppNeta Performance Manager のセットアップ]** セクションで、要件に基づいて適切な URL をコピーします。
-
-   ![構成 URL のコピー](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -148,16 +141,19 @@ AppNeta Performance Manager に対して Azure AD SSO を構成してテスト�
 1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
 1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
-1. 前述のロールを設定した場合、 **[ロールの選択]** ボックスの一覧からそれを選択できます。
+1. 前述のロールを設定した場合、 **[ロールの選択]** ドロップダウンからそれを選択できます。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
+
+   > [!NOTE]
+   > 実際には、個々のユーザーではなく、アプリケーションにグループを追加します。
 
 ## <a name="configure-appneta-performance-manager-sso"></a>AppNeta Performance Manager の SSO の構成
 
-**AppNeta Performance Manager** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [AppNeta Performance Manager サポート チーム](mailto:support@appneta.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**AppNeta Performance Manager** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** を [AppNeta Performance Manager のサポート チーム](mailto:support@appneta.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-appneta-performance-manager-test-user"></a>AppNeta Performance Manager のテスト ユーザーの作成
 
-このセクションでは、Britta Simon というユーザーを AppNeta Performance Manager に作成します。 AppNeta Performance Manager では、Just-In-Time ユーザー プロビジョニングがサポートされています。この設定は、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 AppNeta Performance Manager にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
+このセクションでは、B.Simon というユーザーを AppNeta Performance Manager に作成します。 AppNeta Performance Manager では、Just-In-Time ユーザー プロビジョニングがサポートされています。この設定は、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 AppNeta Performance Manager にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
 
 > [!Note]
 > ユーザーを手動で作成する必要がある場合は、[AppNeta Performance Manager サポート チーム](mailto:support@appneta.com)にお問い合わせください。
@@ -166,12 +162,12 @@ AppNeta Performance Manager に対して Azure AD SSO を構成してテスト�
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。
 
-- Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる AppNeta Performance Manager のサインオン URL にリダイレクトされます。
+- Azure portal で、 **[このアプリケーションをテストします]** を選択します。 これにより、ログイン フローを開始できる AppNeta Performance Manager のサインオン URL にリダイレクトされます。
 
 - AppNeta Performance Manager のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-- Microsoft マイ アプリを使用することができます。 マイ アプリで [AppNeta Performance Manager] タイルをクリックすると、AppNeta Performance Manager のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+- Microsoft マイ アプリを使用することができます。 マイ アプリ ポータルで [AppNeta Performance Manager] タイルをクリックすると、AppNeta Performance Manager のサインオン URL にリダイレクトされます。 マイ アプリ ポータルの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-AppNeta Performance Manager を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+AppNeta Performance Manager を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

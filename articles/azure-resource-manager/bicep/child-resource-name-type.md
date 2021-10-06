@@ -4,21 +4,55 @@ description: Bicep で子リソースの名前と種類を設定する方法に�
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: 879c325ee64307e7c548efa4ef7ba34eb68cc896
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.date: 09/13/2021
+ms.openlocfilehash: 2d928ec83559a1bd57adde3cbae98c589bb1cd15
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122444199"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128622001"
 ---
 # <a name="set-name-and-type-for-child-resources-in-bicep"></a>Bicep での子リソースの名前と種類の設定
 
 子リソースとは、別のリソースのコンテキスト内でのみ存在するリソースのことです。 たとえば[仮想マシン拡張機能](/azure/templates/microsoft.compute/virtualmachines/extensions)は、[仮想マシン](/azure/templates/microsoft.compute/virtualmachines)なしでは存在できません。 この拡張機能リソースが仮想マシンの子です。
 
-各親リソースは、子リソースとして特定のリソースの種類のみを受け取ります。 子リソースのリソースの種類には、親リソースのリソースの種類が含まれます。 たとえば、`Microsoft.Web/sites/config` と `Microsoft.Web/sites/extensions` は、どちらも `Microsoft.Web/sites` の子リソースです。 許容されるリソースの種類は、親リソースの[テンプレート スキーマ](https://github.com/Azure/azure-resource-manager-schemas)で指定されます。
+各親リソースは、子リソースとして特定のリソースの種類のみを受け取ります。 リソースの種類の階層は、[Bicep リソース リファレンス](/azure/templates/)で確認できます。
 
-Bicep では、親リソースの内側または外側に子リソースを指定できます。 リソースの名前とリソースの種類に指定する値は、子リソースが親リソースの内側で定義されているか、外側で定義されているかによって変わります。
+この記事では、子リソースを宣言するさまざまな方法を示します。
+
+### <a name="microsoft-learn"></a>Microsoft Learn
+
+子リソースの詳細とハンズオン ガイダンスについては、**Microsoft Learn** の「[Bicep を使用して子と拡張機能のリソースをデプロイする](/learn/modules/child-extension-bicep-templates)」を参照してください。
+
+## <a name="name-and-type-pattern"></a>名前と種類のパターン
+
+Bicep では、親リソースの内側または外側に子リソースを指定できます。 リソースの名前とリソースの種類に指定する値は、子リソースを宣言する方法によって異なります。 ただし、完全な名前と種類は、常に同じパターンに解決されます。 
+
+子リソースの **完全な名前** では、次のパターンが使用されます。
+
+```bicep
+{parent-resource-name}/{child-resource-name}
+```
+
+階層が 3 レベル以上ある場合は、次のように親名を繰り返します。
+
+```bicep
+{parent-resource-name}/{child-level1-resource-name}/{child-level2-resource-name}
+```
+
+子リソースの **完全な種類** では、次のパターンが使用されます。
+
+```bicep
+{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}
+```
+
+階層が 3 レベル以上ある場合は、次のように親のリソースの種類を繰り返します。
+
+```bicep
+{resource-provider-namespace}/{parent-resource-type}/{child-level1-resource-type}/{child-level2-resource-type}
+```
+
+`/` 文字間のセグメントをカウントすると、種類のセグメント数は、常に名前のセグメント数より 1 つ多くなります。 
 
 ## <a name="within-parent-resource"></a>親リソースの内側
 
@@ -36,30 +70,13 @@ resource <parent-resource-symbolic-name> '<resource-type>@<api-version>' = {
 
 入れ子になったリソース宣言は、親リソースの構文の最上位レベルに記述する必要があります。 各レベルが親リソースの子の種類である限りは、宣言を任意の深さで入れ子にすることができます。
 
-親リソースの type 内に type と name の値を定義するときは、スラッシュを使わず 1 つのセグメントとして書式設定します。 次の例は、ファイル サービスとファイル共有を持つストレージ アカウントを示しています。 ファイル サービスの名前は **defaul** に設定され、その型は **fileServices** に設定されます。 ファイル共有の名前は **exampleshare** に設定され、その種類は **shares** に設定されます。
+親リソースの type 内に type と name の値を定義するときは、スラッシュを使わず 1 つのセグメントとして書式設定します。 次の例は、ファイル サービスの子リソースを持つストレージ アカウントを示しています。ファイル サービスには、ファイル共有の子リソースがあります。 ファイル サービスの名前は `default` に設定され、その種類は `fileServices` に設定されます。 ファイル共有の名前は `exampleshare` に設定され、その種類は `shares` に設定されます。
 
-```bicep
-resource storage 'Microsoft.Storage/storageAccounts@2021-02-01' = {
-  name: 'examplestorage'
-  location: resourceGroup().location
-  kind: 'StorageV2'
-  sku: {
-    name: 'Standard_LRS'
-  }
-
-  resource service 'fileServices' = {
-    name: 'default'
-
-    resource share 'shares' = {
-      name: 'exampleshare'
-    }
-  }
-}
-```
+:::code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/child-resource-name-type/insidedeclaration.bicep" highlight="9,12":::
 
 完全なリソースの種類は、`Microsoft.Storage/storageAccounts/fileServices` と `Microsoft.Storage/storageAccounts/fileServices/shares` です。 `Microsoft.Storage/storageAccounts/` は親リソースの種類とバージョンから想定されるため不要です。 必要に応じて、入れ子になったリソースを使用すれば、構文 `<segment>@<version>` を使用して、API バージョンを宣言できます。 入れ子になったリソースで API バージョンが省略される場合は、親リソースの API バージョンが使用されます。 入れ子になったリソースに API バージョンが指定される場合は、指定されたその API バージョンが使用されます。
 
-子リソース名は **default** と **exampleshare** に設定されますが、完全な名前には親名が含まれます。 **examplestorage** または **default** は親リソースから想定されているので、指定されません。
+子リソース名は `default` と `exampleshare` に設定されますが、完全な名前には親名が含まれます。 `examplestorage` と `default` は、親リソースから想定されるので指定する必要はありません。
 
 入れ子になったリソースは、その親リソースのプロパティにアクセスできます。 同じ親リソースの本体内で宣言されたその他のリソースは、シンボリック名を使用することで互いに参照することができます。 親リソースは、それに含まれるリソースのプロパティにアクセスできない場合があり、この試行により循環依存関係が発生します。
 
@@ -90,28 +107,18 @@ resource <child-resource-symbolic-name> '<child-resource-type>@<api-version>' = 
 
 次の例は、ルート レベルで定義されているストレージ アカウント、ファイル サービス、およびファイル共有を示しています。
 
-```bicep
-resource storage 'Microsoft.Storage/storageAccounts@2021-02-01' = {
-  name: 'examplestorage'
-  location: resourceGroup().location
-  kind: 'StorageV2'
-  sku: {
-    name: 'Standard_LRS'
-  }
-}
-
-resource service 'Microsoft.Storage/storageAccounts/fileServices@2021-02-01' = {
-  name: 'default'
-  parent: storage
-}
-
-resource share 'Microsoft.Storage/storageAccounts/fileServices/shares@2021-02-01' = {
-  name: 'exampleshare'
-  parent: service
-}
-```
+:::code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/child-resource-name-type/outsidedeclaration.bicep" highlight="10,12,15,17":::
 
 子リソースのシンボリック名の参照は、親を参照する場合と同じように機能します。
+
+## <a name="full-resource-name-outside-parent"></a>親の外側の完全なリソース名
+
+親の外側で子リソースを宣言するときにも、完全なリソース名と種類を使用できます。 子リソースに親プロパティは設定しません。 依存関係は推論できないため、明示的に設定する必要があります。
+
+:::code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/child-resource-name-type/fullnamedeclaration.bicep" highlight="10,11,17,18":::
+
+> [!IMPORTANT]
+> 完全なリソース名と種類を設定する方法は推奨されません。 他の方法の 1 つを使用するほどタイプ セーフではないからです。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2021
 ms.author: jeedes
-ms.openlocfilehash: 39072747cd2e6b9daa62f02b198a201c5b1782ea
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: ef52547bb8ec27bd759a238d742173f6b8fc3994
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110451467"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128591978"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-check-point-remote-secure-access-vpn"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Check Point Remote Secure Access VPN の統合
 
@@ -270,44 +270,64 @@ Check Point Remote Secure Access VPN に対して Azure AD SSO を構成して�
 1. ID プロバイダーのブラウザー モード (オプション) を選択します。既定では、Windows クライアントはその埋め込みブラウザーを、macOS クライアントは Safari を ID プロバイダーのポータルでの認証に使用します。
 Windows クライアントで、この動作を変更して Internet Explorer を使用するには、次の手順を実行します。
 
-    1.  クライアント マシンで、プレーン テキスト エディターを管理者として開きます。
-    2.  テキスト エディターで trac.defaults ファイルを開きます。
-        * 32 ビット Windows の場合: ``%ProgramFiles%\CheckPoint\Endpoint Connect\trac.defaults``
-        * 64 ビット Windows の場合: ``%ProgramFiles(x86)%\CheckPoint\Endpoint Connect\trac.defaults``
-    3.  idp_browser_mode 属性の値を "embedded" から "IE" に変更します。
-    4.  ファイルを保存します。
-    5.  Check Point Endpoint Security VPN クライアント サービスを再起動します。
-管理者として Windows コマンド プロンプトを開き、これらのコマンドを実行します。
+   1. クライアント マシンで、プレーン テキスト エディターを管理者として開きます。
 
-        `# net stop TracSrvWrapper `
+   2. テキスト エディターで `trac.defaults` ファイルを開きます。
 
-        `# net start TracSrvWrapper`
- 
+      - 32 ビット Windows の場合: 
+
+        `%ProgramFiles%\CheckPoint\Endpoint Connect\trac.defaults`
+
+      - 64 ビット Windows の場合: 
+
+        `%ProgramFiles(x86)%\CheckPoint\Endpoint Connect\trac.defaults`
+
+    3. `idp_browser_mode` の値を `embedded` から `IE` に変更します。
+
+    4. ファイルを保存します。
+
+    5. Check Point Endpoint Security VPN クライアント サービスを再起動します。
+
+   管理者として Windows コマンド プロンプトを開き、これらのコマンドを実行します。
+
+   `# net stop TracSrvWrapper`
+
+   `# net start TracSrvWrapper`
 
 1. バックグラウンドで実行中のブラウザーを使用して認証を開始します。
 
-    1.  クライアント マシンで、プレーン テキスト エディターを管理者として開きます。
-    2.  テキスト エディターで trac.defaults ファイルを開きます。
-        * 32 ビット Windows の場合: `%ProgramFiles%\CheckPoint\Endpoint Connect\trac.defaults`
-        * 64 ビット Windows の場合: `%ProgramFiles(x86)%\CheckPoint\Endpoint Connect\trac.defaults`
+   1. クライアント マシンで、プレーン テキスト エディターを管理者として開きます。
 
-        * macOS の場合: `/Library/Application Support/Checkpoint/Endpoint Security/Endpoint Connect/Trac.defaults`
+   2. テキスト エディターで `trac.defaults` ファイルを開きます。
 
-    3.  **idp_show_browser_primary_auth_flow** の値を **false** に変更します
-    4.  ファイルを保存します。
-    5.  Check Point Endpoint Security VPN クライアント サービスを再起動します
-        * Windows クライアントで、管理者として Windows コマンド プロンプトを開き、これらのコマンドを実行します。
+      - 32 ビット Windows の場合: 
 
-            `# net stop TracSrvWrapper`
+        `%ProgramFiles%\CheckPoint\Endpoint Connect\trac.defaults`
+
+      - 64 ビット Windows の場合: 
+
+        `%ProgramFiles(x86)%\CheckPoint\Endpoint Connect\trac.defaults`
+
+      - macOS の場合:
+      
+        `/Library/Application Support/Checkpoint/Endpoint Security/Endpoint Connect/trac.defaults`
+
+    3. `idp_show_browser_primary_auth_flow` の値を `false` に変更します。
+
+    4. ファイルを保存します。
+
+    5. Check Point Endpoint Security VPN クライアント サービスを再起動します。
+       - Windows クライアントで、管理者として Windows コマンド プロンプトを開き、次のコマンドを実行します。
+
+         `# net stop TracSrvWrapper`
         
-            `# net start TracSrvWrapper`
+         `# net start TracSrvWrapper`
 
-        * macOS クライアントで
+       - macOS クライアントで、次を実行します。
 
-            `sudo launchctl stop com.checkpoint.epc.service`
+         `sudo launchctl stop com.checkpoint.epc.service`
 
-            `sudo launchctl start com.checkpoint.epc.service`
-
+         `sudo launchctl start com.checkpoint.epc.service`
 
 ### <a name="create-check-point-remote-secure-access-vpn-test-user"></a>Check Point Remote Secure Access VPN テスト ユーザーの作成
 
@@ -328,5 +348,3 @@ Windows クライアントで、この動作を変更して Internet Explorer �
 ## <a name="next-steps"></a>次のステップ
 
 Check Point Remote Secure Access VPN を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
-
-

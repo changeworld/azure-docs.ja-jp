@@ -6,15 +6,15 @@ author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: sql
-ms.date: 8/31/2021
+ms.date: 9/23/2021
 ms.author: stefanazaric
-ms.reviewer: jrasnick
-ms.openlocfilehash: 906f6a7a8e64c255c8b87219ef0549a553821783
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.reviewer: jrasnick, wiassaf
+ms.openlocfilehash: 35803ad7d63e107f71e71c6ce8292c5608740eec
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123536483"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128555256"
 ---
 # <a name="self-help-for-serverless-sql-pool"></a>サーバーレス SQL プールのセルフヘルプ
 
@@ -53,7 +53,7 @@ Synapse Studio がサーバーレス SQL プールへの接続を確立できな
 
 > [!NOTE]
 > コンテナー レベルの実行アクセス許可は、Azure Data Lake Gen2 内で設定する必要があります。
-> フォルダーに対するアクセス許可は、Synapse 内で設定できます。 
+> フォルダーに対するアクセス許可は、Azure Synapse 内で設定できます。 
 
 
 この例で data2.csv のクエリを実行する場合は、次のアクセス許可が必要です。 
@@ -63,7 +63,7 @@ Synapse Studio がサーバーレス SQL プールへの接続を確立できな
 
 ![Data Lake でのアクセス許可の構造を示す図。](./media/resources-self-help-sql-on-demand/folder-structure-data-lake.png)
 
-* アクセスしたいデータに対する完全なアクセス許可を持つ管理者ユーザーで Synapse にログインします。
+* アクセスしたいデータに対する完全なアクセス許可を持つ管理者ユーザーで Azure Synapse にログインします。
 
 * データ ペインで、ファイルを右クリックして [アクセスの管理] を選択します。
 
@@ -75,7 +75,7 @@ Synapse Studio がサーバーレス SQL プールへの接続を確立できな
 ![読み取りアクセス許可の付与 UI を示すスクリーンショット](./media/resources-self-help-sql-on-demand/grant-permission.png)
 
 > [!NOTE]
-> ゲスト ユーザーの場合は、Synapse で直接行うことはできないので、Azure Data Lake サービスを使用して直接行う必要があります。 
+> ゲスト ユーザーの場合は、Azure Synapse で直接行うことはできないので、Azure Data Lake サービスを使用して直接行う必要があります。 
 
 ### <a name="query-fails-because-it-cannot-be-executed-due-to-current-resource-constraints"></a>現在のリソース制約によりクエリを実行できないため、クエリが失敗する 
 
@@ -100,7 +100,7 @@ Synapse Studio がサーバーレス SQL プールへの接続を確立できな
 "外部ファイルの処理でエラーが発生しました: 最大エラー数に達しました" というエラー メッセージでクエリが失敗する場合は、指定した列の型と読み込む必要があるデータが一致していないことを意味します。 エラーおよび検索する行および列に関する詳細な情報を取得するには、パーサーのバージョンを "2.0" から "1.0" に変更します。 
 
 #### <a name="example"></a>例
-このクエリ 1 でファイル "names.csv" のクエリを実行した場合、Synapse SQL サーバーレスからこのようなエラーが返されます。 
+このクエリ 1 でファイル "names.csv" のクエリを実行した場合、Azure Synapse SQL サーバーレスからこのようなエラーが返されます。 
 
 names.csv
 ```csv
@@ -133,11 +133,11 @@ FROM
 ```
 原因:
 
-```Error handling external file: ‘Max error count reached’. File/External table name: [filepath].```
+`Error handling external file: ‘Max error count reached’. File/External table name: [filepath].`
 
 パーサーのバージョンをバージョン 2.0 からバージョン 1.0 に変更するとすぐに、エラー メッセージが問題の特定に役立つようになります。 新しいエラー メッセージは、代わりに次のようになります。 
 
-```Bulk load data conversion error (truncation) for row 1, column 2 (Text) in data file [filepath]```
+`Bulk load data conversion error (truncation) for row 1, column 2 (Text) in data file [filepath]`
 
 "切り捨て" は、列の型が小さすぎてデータが収まらないことを意味します。 この "names.csv" ファイルに含まれる最長の名は 7 文字です。 したがって、少なくとも VARCHAR(7) のデータ型を使用する必要があります。 エラーは、次のコード行で発生します。 
 
@@ -171,7 +171,7 @@ FROM
 たとえば、データ内は整数のみと予想したのに、行 n に文字列があった場合、このエラー メッセージが表示されます。 この問題を解決するには、ファイルと選択したデータ型を調べます。 また、行区切り記号とフィールド ターミネータの設定が正しいかどうかも確認します。 次の例では、列の型として VARCHAR を使用して検査を行う方法を示します。 フィールド ターミネータ、行区切り記号、引用符のエスケープの詳細については、[こちら](query-single-csv-file.md)を参照してください。 
 
 #### <a name="example"></a>例 
-このクエリ 1 でファイル "names.csv" のクエリを実行した場合、Synapse SQL サーバーレスからこのようなエラーが返されます。 
+このクエリ 1 でファイル "names.csv" のクエリを実行した場合、Azure Synapse SQL サーバーレスからこのようなエラーが返されます。 
 
 names.csv
 ```csv
@@ -203,7 +203,7 @@ FROM
     AS [result]
 ```
 
-このエラーの原因: ```Bulk load data conversion error (type mismatch or invalid character for the specified codepage) for row 6, column 1 (ID) in data file [filepath]```
+このエラーの原因: `Bulk load data conversion error (type mismatch or invalid character for the specified codepage) for row 6, column 1 (ID) in data file [filepath]`
 
 この問題に対処するには、データを参照し、情報に基づいて決定する必要があります。 この問題の原因になっているデータを確認するには、最初にデータ型を変更する必要があります。 列 "ID" をデータ型 "SMALLINT" でクエリする代わりに、VARCHAR (100) を使用してこの問題を分析します。 この少し変更したクエリ 2 を使用すると、データを処理して名前の一覧を表示できるようになります。 
 
@@ -247,7 +247,7 @@ five,Eva
 クエリは失敗しないが、結果のテーブルが想定どおりに読み込まれない場合は、行区切り記号またはフィールド ターミネータの選択が誤っている可能性があります。 この問題を解決するには、別のデータ検索方法に設定を変更する必要があります。 結果テーブルが表示されたら、次の例のようにこのクエリのデバッグを簡単に行うことができます。 
 
 #### <a name="example"></a>例
-このクエリ 1 でファイル "names.csv" のクエリを実行した場合、Synapse SQL サーバーレスから正しくない結果テーブルが返されます。 
+このクエリ 1 でファイル "names.csv" のクエリを実行した場合、Azure Synapse SQL サーバーレスから正しくない結果テーブルが返されます。 
 
 names.csv
 ```csv
@@ -340,7 +340,7 @@ FROM
 これを解決するには、ファイルと選択したデータ型を調べます。 こちらの[マッピング テーブル](develop-openrowset.md#type-mapping-for-parquet)は、SQL データ型の選択に役立ちます。 ベスト プラクティスのヒント: それ以外の場合は VARCHAR データ型に解決される列のマッピングのみを指定します。 可能な場合は VARCHAR を回避すると、クエリのパフォーマンスが向上します。 
 
 #### <a name="example"></a>例
-このクエリ 1 でファイル "taxi-data.parquet" のクエリを実行した場合、Synapse SQL サーバーレスからこのようなエラーが返されます。
+このクエリ 1 でファイル "taxi-data.parquet" のクエリを実行した場合、Azure Synapse SQL サーバーレスからこのようなエラーが返されます。
 
 taxi-data.parquet:
 
@@ -369,9 +369,10 @@ FROM
 
     AS [result]
 ```
+
 このエラーの原因: 
 
-```Column 'SumTripDistance' of type 'INT' is not compatible with external data type 'Parquet physical type: DOUBLE', please try with 'FLOAT'. File/External table name: '<filepath>taxi-data.parquet'.```
+`Column 'SumTripDistance' of type 'INT' is not compatible with external data type 'Parquet physical type: DOUBLE', please try with 'FLOAT'. File/External table name: '<filepath>taxi-data.parquet'.`
 
 このエラー メッセージは、データ型に互換性がないことを示し、INT ではなく FLOAT を使用することが既に提案されています。 したがって、エラーは次のコード行で発生します。 
 
@@ -480,7 +481,7 @@ WITH ( FORMAT_TYPE = PARQUET)
 
 ### <a name="query-returns-null-values"></a>クエリから `NULL` 値が返される
 
-Synapse SQL では、次の場合、トランザクション ストアにある値の代わりに `NULL` が返されます。
+Azure Synapse SQL では、次の場合、トランザクション ストアにある値の代わりに `NULL` が返されます。
 - トランザクション ストアと分析ストアの間には同期遅延があります。 Cosmos DB のトランザクション ストアに入力した値は、分析ストアに表示されるまでに 2 から 3 分かかる場合があります。
 - `WITH` 句の列名またはパス式が間違っている可能性があります。 `WITH` 句の列名 (または列の型の後のパス式) は Cosmos DB コレクションのプロパティ名と一致する必要があります。 比較では、大文字と小文字が区別されます (たとえば、`productCode` と `ProductCode` は異なるプロパティです)。 列名が Cosmos DB のプロパティ名と完全に一致することを確認します。
 - 1,000 を超えるプロパティや 127 を超える入れ子レベルなど、一部の[スキーマ制約](../../cosmos-db/analytical-store-introduction.md#schema-constraints)に違反している場合、プロパティが分析ストレージに移動されない可能性があります。
@@ -505,14 +506,12 @@ Delta Lake のサポートは、現在、サーバーレス SQL プールでの�
 - [OPENROWSET](./develop-openrowset.md) 関数または外部テーブルの場所で、ルート Delta Lake フォルダーを参照していることを確認します。
   - ルート フォルダーには、`_delta_log` という名前のサブフォルダーが必要です。 `_delta_log` フォルダーがない場合、クエリは失敗します。 そのフォルダーがない場合は、Apache Spark プールを使用して [Delta Lake に変換する](../spark/apache-spark-delta-lake-overview.md?pivots=programming-language-python#convert-parquet-to-delta)必要があるプレーンな Parquet ファイルを参照しています。
   - パーティション スキーマを記述するためにワイルドカードを指定しないでください。 Delta Lake パーティションは、Delta Lake クエリによって自動的に識別されます。 
-- Apache Spark プールで作成された Delta Lake テーブルは、サーバーレス SQL プールで自動的に使用できるようになりません。 このような Delta Lake テーブルに対して、T-SQL 言語を使用してクエリを実行するには、[CREATE EXTERNAL TABLE](https://docs.microsoft.com/azure/synapse-analytics/sql/create-use-external-tables#delta-lake-external-table) ステートメントを実行し、形式として Delta を指定します。
+- Apache Spark プールで作成された Delta Lake テーブルは、サーバーレス SQL プールで自動的に使用できるようになりません。 このような Delta Lake テーブルに対して、T-SQL 言語を使用してクエリを実行するには、[CREATE EXTERNAL TABLE](./create-use-external-tables.md#delta-lake-external-table) ステートメントを実行し、形式として Delta を指定します。
 - 外部テーブルでは、パーティション分割はサポートされていません。 パーティションの除去を利用するには、Delta Lake フォルダーの[パーティション分割されたビュー](create-use-views.md#delta-lake-partitioned-views)を使用します。 以下の既知の問題と回避策を参照してください。
 - サーバーレス SQL プールでは、タイム トラベル クエリはサポートされていません。 [Azure フィードバック サイト](https://feedback.azure.com/forums/307516-azure-synapse-analytics/suggestions/43656111-add-time-travel-feature-in-delta-lake)でこの機能に投票することができます。 [履歴データの読み取り](../spark/apache-spark-delta-lake-overview.md?pivots=programming-language-python#read-older-versions-of-data-using-time-travel)には、Azure Synapse Analytics で Apache Spark プールを使用します。
 - サーバーレス SQL プールでは、Delta Lake ファイルの更新はサポートされていません。 サーバーレス SQL プールを使用して、最新バージョンの Delta Lake のクエリを実行できます。 [Delta Lake の更新](../spark/apache-spark-delta-lake-overview.md?pivots=programming-language-python#update-table-data)には、Azure Synapse Analytics で Apache Spark プールを使用します。
-- Synapse Analytics のサーバーレス SQL プールは、[ブルーム フィルター](https://docs.microsoft.com/azure/databricks/delta/optimizations/bloom-filters)を使用したデータセットをサポートしていません。
+- Azure Synapse Analytics のサーバーレス SQL プールでは、[ブルーム フィルター](/azure/databricks/delta/optimizations/bloom-filters)を使用したデータセットはサポートされていません。
 - Delta Lake のサポートは、専用 SQL プールでは使用できません。 Delta Lake ファイルのクエリにはサーバーレス プールを使用していることを確認してください。
-
-[Azure Synapse フィードバック サイト](https://feedback.azure.com/forums/307516-azure-synapse-analytics?category_id=171048)でアイデアや機能強化を提案できます。
 
 ### <a name="content-of-directory-on-path-cannot-be-listed"></a>パス上のディレクトリの内容を一覧表示できない
 
@@ -605,7 +604,7 @@ Msg 16513, Level 16, State 0, Line 1
 Error reading external metadata.
 ```
 まず、Delta Lake データ セットが破損していないことを確認します。
-- Synapse または Databricks クラスターの Apache Spark プールを使用して、Delta Lake フォルダーの内容を読み取ることができることを確認します。 これにより、`_delta_log` ファイルが破損していないことを確認します。
+- Azure Synapse または Databricks クラスターの Apache Spark プールを使用して、Delta Lake フォルダーの内容を読み取ることができることを確認します。 これにより、`_delta_log` ファイルが破損していないことを確認します。
 - `FORMAT='PARQUET'` を指定し、URI パスの末尾に再帰的なワイルドカード `/**` を使用して、データファイルの内容を読み取ることができることを確認します。 すべての Parquet ファイルを読み取ることができる場合、問題は `_delta_log` トランザクション ログ フォルダーにあります。
 
 一般的なエラーと回避策
@@ -632,11 +631,42 @@ Azure チームは、`delta_log` ファイルの内容を調査し、考えら�
 ### <a name="resolving-delta-log-on-path--failed-with-error-cannot-parse-json-object-from-log-file"></a>"ログ ファイルから JSON オブジェクトを解析できない" エラーによりパス ... のデルタ ログの解決が失敗する
 
 このエラーは、次の理由またはサポートされていない機能が原因で発生する場合があります。
-- Delta Lake データセットに対する[ブルーム フィルター](https://docs.microsoft.com/azure/databricks/delta/optimizations/bloom-filters)。 Synapse Analytics のサーバーレス SQL プールは、[ブルーム フィルター](https://docs.microsoft.com/azure/databricks/delta/optimizations/bloom-filters)を使用したデータセットをサポートしていません。
+- Delta Lake データセットに対する[ブルーム フィルター](/azure/databricks/delta/optimizations/bloom-filters)。 Azure Synapse Analytics のサーバーレス SQL プールでは、[ブルーム フィルター](/azure/databricks/delta/optimizations/bloom-filters)を使用したデータセットはサポートされていません。
 - 統計情報を含む Delta Lake データセットの float 型の列。
 - float 型の列でパーティション分割されたデータセット。
 
-**回避策**: サーバーレス SQL プールを使用して Delta Lake フォルダーを読み取る場合は、[ブルーム フィルターを削除](https://docs.microsoft.com/azure/databricks/delta/optimizations/bloom-filters#drop-a-bloom-filter-index)します。 問題の原因となっている `float` 型の列がある場合は、データセットを再度パーティション分割するか、統計情報を削除する必要があります。
+**回避策**: サーバーレス SQL プールを使用して Delta Lake フォルダーを読み取る場合は、[ブルーム フィルターを削除](/azure/databricks/delta/optimizations/bloom-filters#drop-a-bloom-filter-index)します。 問題の原因となっている `float` 型の列がある場合は、データセットを再度パーティション分割するか、統計情報を削除する必要があります。
+
+## <a name="performance"></a>パフォーマンス
+
+サーバーレス SQL プールでは、データ セットのサイズとクエリの複雑さに基づいて、リソースがクエリに割り当てられます。 クエリに提供されるリソースに影響を与えたり、制限したりすることはできません。 場合によっては、予期しないクエリ パフォーマンスの低下が発生する場合があり、根本的な原因を特定します。
+
+### <a name="query-duration-is-very-long"></a>クエリの実行時間が非常に長い 
+
+Synapse Studio を使用している場合は、SQL Server Management Studio や Azure Data Studio など、いくつかのデスクトップ クライアントを使用してみてください。 Synapse Studio は、HTTP プロトコルを使用してサーバーレス プールに接続する Web クライアントです。これは一般的に、SQL Server Management Studio または Azure Data Studio で使用されるネイティブ SQL 接続よりも低速です。
+実行時間が 30 分を超えるクエリがある場合は、クライアントに結果を返す速度が遅いことを示しています。 サーバーレス SQL プールの実行には 30 分の制限があり、それ以上の時間は結果のストリーミングに費やされています。
+-   そのクライアント アプリケーションがサーバーレス SQL プール エンドポイントと併置されていることを確認します。 リージョンをまたいでクエリを実行すると、結果セットの待機時間が長くなり、ストリーミングが低速になることがあります。
+-   結果セットの低速ストリーミングの原因となるネットワークの問題がないことを確認します 
+-   クライアント アプリケーションに十分なリソースがあること (たとえば、CPU の使用率が 100% になっていないこと) を確認します。 [リソースを併置](best-practices-serverless-sql-pool.md#client-applications-and-network-connections)するためのベスト プラクティスを参照してください。
+
+### <a name="high-variations-in-query-durations"></a>クエリの実行時間が大きく異なる
+
+同じクエリを実行していて、クエリの実行時間に違いが見られる場合、この動作を引き起こす可能性のあるいくつかの理由が考えられます。  
+- これがクエリの最初の実行かどうかを確認します。 初めてクエリを実行するときに、プランを作成するために必要な統計情報が収集されます。 統計情報は、基になるファイルをスキャンすることによって収集されるため、クエリの実行時間が長くなる場合があります。 Synapse Studio では、クエリの前に実行される追加の "全体統計の作成" クエリが SQL 要求一覧に表示されます。
+- 統計情報はしばらくすると期限切れになる可能性があるため、サーバーレス プールによって統計がスキャンされて再構築される必要があるので、定期的にパフォーマンスへの影響が見られる可能性があります。 クエリの前に実行される追加の "全体統計の作成" クエリが SQL 要求一覧に表示されている場合があります。
+- 長時間クエリを実行したときに、同じエンドポイントで実行されている追加のワークロードがあるかどうかを確認します。 サーバーレス SQL エンドポイントによって、並列実行されているすべてのクエリに均等にリソースが割り当てられるため、クエリが遅延する可能性があります。
+
+## <a name="connections"></a>接続
+
+### <a name="sql-on-demand-is-currently-unavailable"></a>SQL オンデマンドが現在使用できない
+
+サーバーレス SQL プールのエンドポイントは、使用されていない場合は自動的に非アクティブになります。 エンドポイントは、次の SQL 要求を任意のクライアントから受信したときに自動的にアクティブ化されます。 場合によっては、最初のクエリが実行されたときにエンドポイントが正しく起動しないことがあります。 このようなケースはほとんどの場合、一時的なエラーです。 クエリを再試行すると、インスタンスがアクティブ化されます。
+
+長時間このメッセージが表示される場合は、Azure portal を通じてサポート チケットを提出してください。
+
+### <a name="cannot-connect-from-synapse-studio"></a>Synapse Studio から接続できない
+
+「[Synapse Studio](#synapse-studio)」セクションをご覧ください。
 
 ## <a name="security"></a>セキュリティ
 
@@ -645,7 +675,7 @@ Azure チームは、`delta_log` ファイルの内容を調査し、考えら�
 ```
 Login error: Login failed for user '<token-identified principal>'.
 ```
-サービス プリンシパルのログインは、SID としてアプリケーション ID を使用して作成する必要があります (オブジェクト ID ではありません)。 サービス プリンシパルには既知の制限があります。これにより、別の SPI やアプリに対してロールの割り当てを作成するときに、Synapse サービスによって Azure AD Graph からアプリケーション ID をフェッチすることができません。  
+サービス プリンシパルのログインは、SID としてアプリケーション ID を使用して作成する必要があります (オブジェクト ID ではありません)。 サービス プリンシパルには既知の制限があります。これにより、別の SPI やアプリに対してロールの割り当てを作成するときに、Azure Synapse サービスが Azure AD Graph からアプリケーション ID をフェッチできないようになっています。  
 
 #### <a name="solution-1"></a>解決策 #1
 Azure portal から [Synapse Studio] > [管理] > [アクセス制御] に移動し、目的のサービス プリンシパルに Synapse 管理者または Synapse SQL 管理者を手動で追加します。

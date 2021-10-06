@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/21/2021
+ms.date: 08/31/2021
 ms.author: jeedes
-ms.openlocfilehash: b524827585cdf652cbdda8b329754a0ed995ef24
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: c2363088479c591c97ccc17be0966dca125d38c4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114602976"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128611143"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fuze"></a>チュートリアル: Azure Active Directory と Fuze の統合
 
@@ -40,6 +40,8 @@ ms.locfileid: "114602976"
 * Fuze では、**SP** Initiated SSO がサポートされます。
 
 * Fuze では、**Just-In-Time** ユーザー プロビジョニングがサポートされます。
+
+* Fuze では、[自動化されたユーザー プロビジョニング](fuze-provisioning-tutorial.md)がサポートされます。
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -122,7 +124,9 @@ Fuze に対する Azure AD SSO を構成してテストするには、次の手�
 
 このセクションでは、B. Simon というユーザーを Fuze に作成します。 Fuze では、Just-In-Time ユーザー プロビジョニングがサポートされており、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 Fuze にユーザーがまだ存在していない場合は、認証後に新しく作成されます。
 
-## <a name="test-sso"></a>SSO のテスト 
+Fuze では、自動ユーザー プロビジョニングもサポートされます。自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](./fuze-provisioning-tutorial.md)をご覧ください。
+
+## <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
@@ -130,7 +134,7 @@ Fuze に対する Azure AD SSO を構成してテストするには、次の手�
 
 * Fuze のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Fuze] タイルをクリックすると、Fuze のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Fuze] タイルをクリックすると、Fuze のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

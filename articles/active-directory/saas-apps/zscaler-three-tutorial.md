@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/11/2021
+ms.date: 09/02/2021
 ms.author: jeedes
-ms.openlocfilehash: d30b4e60ef93b8dccc7e9ed4966eeb7d9570df43
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 2b75a4d4973a1aed74c1280dfab50753086eee37
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110096993"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124807858"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zscaler-three"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Zscaler Three の統合
 
@@ -40,6 +40,8 @@ ms.locfileid: "110096993"
 * Zscaler Three では、**SP** によって開始される SSO がサポートされます。
 
 * Zscaler Three では、**Just In Time** ユーザー プロビジョニングがサポートされます。
+
+* Zscaler Three では、[自動化されたユーザー プロビジョニング](zscaler-three-provisioning-tutorial.md)がサポートされます。
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -214,6 +216,9 @@ Zscaler Three に対して Azure AD SSO を構成してテストするには、�
 > [!Note]
 > ユーザーを手動で作成する必要がある場合は、[Zscaler Three のサポート チーム](https://www.zscaler.com/company/contact)にお問い合わせください。
 
+> [!NOTE]
+> Zscaler Three では、自動ユーザー プロビジョニングもサポートされます。自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](./zscaler-three-provisioning-tutorial.md)をご覧ください。
+
 ## <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
@@ -222,7 +227,7 @@ Zscaler Three に対して Azure AD SSO を構成してテストするには、�
 
 * Zscaler Three のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Zscaler Three] タイルをクリックすると、Zscaler Three のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Zscaler Three] タイルをクリックすると、Zscaler Three のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

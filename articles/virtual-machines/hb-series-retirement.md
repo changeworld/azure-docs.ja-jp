@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-hpc
 ms.topic: conceptual
 ms.date: 08/02/2021
 ms.author: amverma
-ms.openlocfilehash: 8a718f315324638f834316eb6dae46a9497ec48e
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: 2d14b9b3adb9905cc87408db33018746e1479a1b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122515847"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128680093"
 ---
 # <a name="migrate-your-hb-series-virtual-machines-by-august-31-2024"></a>2024 年 8 月 31 日までに HB シリーズ仮想マシンを移行する
 Microsoft Azure がハイ パフォーマンス コンピューティング (HPC) に向けて HBv2 および HBv3 シリーズの仮想マシンを導入したことに伴い、これまでの HB シリーズの仮想マシンから新しい仮想マシンにワークロードを移行することをお勧めします。  
@@ -57,4 +57,4 @@ HB シリーズの VM が配置されるすべての地域に HBv2 および HBv
 
 
 ### <a name="resize-the-current-virtual-machine"></a>現在の仮想マシンのサイズを変更する
-[PowerShell、[Azure CLI](./linux/change-vm-size.md) を使って、あるいは Azure potal を通して、仮想マシンのサイズを変更できます](./windows/resize-vm.md)。
+[仮想マシンのサイズを変更](resize-vm.md)できます。

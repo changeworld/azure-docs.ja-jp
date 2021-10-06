@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/01/2021
 ms.author: marayerm
-ms.openlocfilehash: a4afdc8897e15fcb563812bda9da378c66ca4bd9
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: 2731f4473b726e7433167fe15c9e1f29c775d9cb
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113432430"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128627883"
 ---
 # <a name="network-connections-in-storage-explorer"></a>Storage Explorer でのネットワーク接続
 
@@ -20,31 +20,32 @@ Storage Explorer では、ローカル エミュレーターに接続してい�
 
 ## <a name="hostnames-accessed-by-storage-explorer"></a>Storage Explorer によってアクセスされるホスト名
 
-Storage Explorer は、使用中にさまざまなエンドポイントに対して要求を行います。 次の一覧は、Storage Explorer が要求を行う一般的なホスト名の詳細を示しています。
+Storage Explorer は、使用中にさまざまなエンドポイントに対して要求を行います。 次の一覧は、Storage Explorer で要求する一般的なホスト名の詳細を示しています。
+
 - ARM エンドポイント:
-    - `management.azure.com` (グローバル Azure)
-    - `management.chinacloudapi.cn` (Azure China)
-    - `management.microsoftazure.de` (Azure Germany)
-    - `management.usgovcloudapi.net` (Azure US Government)
+  - `management.azure.com` (グローバル Azure)
+  - `management.chinacloudapi.cn` (Azure China)
+  - `management.microsoftazure.de` (Azure Germany)
+  - `management.usgovcloudapi.net` (Azure US Government)
 - ログイン エンドポイント:
-    - `login.microsoftonline.com` (グローバル Azure)
-    - `login.chinacloudapi.cn` (Azure China)
-    - `login.microsoftonline.de` (Azure Germany)
-    - `login.microsoftonline.us` (Azure US Government)
+  - `login.microsoftonline.com` (グローバル Azure)
+  - `login.chinacloudapi.cn` (Azure China)
+  - `login.microsoftonline.de` (Azure Germany)
+  - `login.microsoftonline.us` (Azure US Government)
 - Graph エンドポイント:
-    - `graph.windows.net` (グローバル Azure)
-    - `graph.chinacloudapi.cn` (Azure China)
-    - `graph.cloudapi.de` (Azure Germany)
-    - `graph.windows.net` (Azure US Government)
+  - `graph.windows.net` (グローバル Azure)
+  - `graph.chinacloudapi.cn` (Azure China)
+  - `graph.cloudapi.de` (Azure Germany)
+  - `graph.windows.net` (Azure US Government)
 - Azure Storage エンドポイント:
-    - `(blob|file|queue|table|dfs).core.windows.net` (グローバル Azure)
-    - `(blob|file|queue|table|dfs).core.chinacloudapi.net` (Azure China)
-    - `(blob|file|queue|table|dfs).core.cloudapi.net` (Azure Germany)
-    - `(blob|file|queue|table|dfs).core.cloudapi.net` (Azure US Government)
-- Storage Explorer の更新: `storageexplorerpublish.blob.core.windows.net` 
+  - `(blob|file|queue|table|dfs).core.windows.net` (グローバル Azure)
+  - `(blob|file|queue|table|dfs).core.chinacloudapi.cn` (Azure China)
+  - `(blob|file|queue|table|dfs).core.cloudapi.de` (Azure Germany)
+  - `(blob|file|queue|table|dfs).core.usgovcloudapi.net` (Azure US Government)
+- Storage Explorer の更新: `storageexplorerpublish.blob.core.windows.net`
 - Microsoft リンク転送:
-    - `aka.ms`
-    - `go.microsoft.com`
+  - `aka.ms`
+  - `go.microsoft.com`
 - リソースが背後にある、カスタム ドメイン、プライベート リンク、または Azure Stack インスタンス固有のエンドポイント
 - リモート エミュレーターのホスト名
 
@@ -151,55 +152,55 @@ Storage Explorer が **プロキシを使用しない** ように構成されて
 - 更新プログラムの確認とダウンロード
 - サブスクリプションの一覧表示
 - ストレージ アカウントの機能
-    - リスト
+  - リスト
 - BLOB の機能
-    - Containers
-        - 作成
-        - リスト
-        - 保存されているアクセス ポリシーの管理
-        - パブリック アクセス レベルの変更
-        - リース
-        - Properties
-        - 削除
-    - BLOB
-        - リスト
-        - 統計
-        - 削除の取り消し
-    - ADLS Gen2 BLOB
-        - リスト
-        - 統計
-        - ACL の管理 (既存のエンティティの表示および変更のみ)
-        - ACL の伝達
-        - 詳細ビュー
-        - 名前の変更
-        - フォルダーの作成
+  - Containers
+    - 作成
+    - リスト
+    - 保存されているアクセス ポリシーの管理
+    - パブリック アクセス レベルの変更
+    - リース
+    - Properties
+    - 削除
+  - BLOB
+    - リスト
+    - 統計
+    - 削除の取り消し
+  - ADLS Gen2 BLOB
+    - リスト
+    - 統計
+    - ACL の管理 (既存のエンティティの表示および変更のみ)
+    - ACL の伝達
+    - 詳細ビュー
+    - 名前の変更
+    - フォルダーの作成
 - キューの機能
-    - キュー
-        - 作成
-        - リスト
-        - アクセス ポリシーの管理
-        - Properties
-        - 削除
-        - Clear
-    - キューのメッセージ
-        - リスト
-        - 詳細ビュー
-        - 追加
-        - Dequeue
+  - キュー
+    - 作成
+    - リスト
+    - アクセス ポリシーの管理
+    - Properties
+    - 削除
+    - Clear
+  - キューのメッセージ
+    - リスト
+    - 詳細ビュー
+    - 追加
+    - Dequeue
 - ファイル共有の機能
-    - ファイルとフォルダー
-        - [新しいフォルダー]
-        - Properties
+  - ファイルとフォルダー
+    - [新しいフォルダー]
+    - Properties
 - ディスクの機能
-    - リソース グループの一覧表示
-    - ディスクの一覧表示
-    - ディスクのアップロード
-    - ディスクのダウンロード
-    - ディスクのコピー
-    - スナップショットの作成
-    - ディスクの削除
+  - リソース グループの一覧表示
+  - ディスクの一覧表示
+  - ディスクのアップロード
+  - ディスクのダウンロード
+  - ディスクのコピー
+  - スナップショットの作成
+  - ディスクの削除
 
 ## <a name="next-steps"></a>次のステップ
 
-* [プロキシの問題をトラブルシューティングする](./storage-explorer-troubleshooting.md#proxy-issues)
-* [証明書に関する問題をトラブルシューティングする](./storage-explorer-troubleshooting.md#ssl-certificate-issues)
+- [プロキシの問題をトラブルシューティングする](./storage-explorer-troubleshooting.md#proxy-issues)
+- [証明書に関する問題をトラブルシューティングする](./storage-explorer-troubleshooting.md#ssl-certificate-issues)

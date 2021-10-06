@@ -7,12 +7,12 @@ ms.service: cache
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 02/08/2021
-ms.openlocfilehash: f1cf254aa6b8f03b5ea50a0adaa83ea56ba8f44a
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 97d87ab28b4b2b000fe0e9b1517e43c79984e74e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111746755"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128563657"
 ---
 # <a name="quickstart-create-a-redis-enterprise-cache"></a>クイックスタート: Redis Enterprise キャッシュを作成する
 
@@ -35,11 +35,11 @@ Azure Cache for Redis の Enterprise レベルは、Azure 上で完全に統合�
 
 1. **[新規 Redis Cache]** ページで、新しいキャッシュの設定を構成します。
 
-   | 設定      | 推奨値  | 説明 |
+   | 設定      |  値を選択する  | 説明 |
    | ------------ |  ------- | -------------------------------------------------- |
    | **サブスクリプション** | ドロップダウンで、ご自身のサブスクリプションを選択します。 | この新しい Azure Cache for Redis インスタンスが作成されるサブスクリプション。 |
    | **リソース グループ** | ドロップ ダウンでリソース グループを選択するか、 **[新規作成]** を選択し、新しいリソース グループの名前を入力します。 | その中にキャッシュやその他のリソースを作成するリソース グループの名前。 すべてのアプリ リソースを 1 つのリソース グループに配置することで、それらをまとめて簡単に管理または削除できます。 |
-   | **DNS 名** | グローバルに一意の名前を入力します。 | キャッシュ名は 1 から 63 文字の文字列で、数字、英字、ハイフンのみを使用する必要があります。 名前の先頭と末尾には数字または文字を使用する必要があり、連続するハイフンを含めることはできません。 キャッシュ インスタンスの "*ホスト名*" は、 *\<DNS name>.<Azure region>.redisenterprise.cache.azure.net* になります。 |
+   | **DNS 名** | リージョンで一意の名前を入力します。 | キャッシュ名は 1 から 63 文字の文字列で、数字、英字、ハイフンのみを使用する必要があります。 名前の先頭と末尾には数字または文字を使用する必要があり、連続するハイフンを含めることはできません。 キャッシュ インスタンスの "*ホスト名*" は、 *\<DNS name\>.\<Azure region\>.redisenterprise.cache.azure.net* になります。 |
    | **場所** | ドロップ ダウンで場所を選択します。 | Enterprise サービス レベルは、一部の Azure リージョンでのみ利用できます。 |
    | **キャッシュの種類** | ドロップダウンして、*Enterprise* または *Enterprise Flash* レベルとサイズを選択します。 |  レベルによって、キャッシュに使用できるのサイズ、パフォーマンス、および機能が決まります。 |
 

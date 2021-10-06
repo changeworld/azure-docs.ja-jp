@@ -7,12 +7,12 @@ author: gitralf
 ms.author: ralfwi
 ms.service: germany
 ms.custom: bfmigrate
-ms.openlocfilehash: 37dde9cf2f105c3e8e8c3dc86e59340c205f9254
-ms.sourcegitcommit: f0168d80eb396ce27032aa02fe9da5a0c10b5af3
+ms.openlocfilehash: 86d6fa3c7c5552c0bb48844e543c20dc3493b15e
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "117029131"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129361487"
 ---
 # <a name="overview-of-migration-guidance-for-azure-germany"></a>Azure Germany の移行ガイダンスの概要
 
@@ -22,7 +22,7 @@ ms.locfileid: "117029131"
 
 Germany の 2 つのリージョンは、グローバル Azure から完全に分離されています。 グローバル Azure のクラウドと Germany のクラウドには、独自で個別の Azure Active Directory (Azure AD) インスタンスがあります。 このため、Azure Germany のテナントはグローバル Azure テナントから分離されています。 この記事では、*異なる* テナント間で移行するときに使用できる移行ツールについて説明します。
 
-ID/テナントに関するガイダンスは、Azure のみの顧客を対象にしています。 Azure と Microsoft 365 (または他の Microsoft 製品) に共通の Azure Active Directory (Azure AD) テナントを使用している場合、ID の移行は複雑なものとなります。まず、「[移行フェーズのアクションと Microsoft Cloud Deutschland からの移行に対する影響](/microsoft-365/enterprise/ms-cloud-germany-transition-phases?view=o365-worldwide)」を読む必要があります。 ご質問がある場合は、担当のアカウント マネージャーまたは Microsoft サポートにお問い合わせください。
+ID/テナントに関するガイダンスは、Azure のみの顧客を対象にしています。 Azure と Microsoft 365 (または他の Microsoft 製品) に共通の Azure Active Directory (Azure AD) テナントを使用している場合、ID の移行は複雑なものとなります。まず、「[移行フェーズのアクションと Microsoft Cloud Deutschland からの移行に対する影響](/microsoft-365/enterprise/ms-cloud-germany-transition-phases)」を読む必要があります。 ご質問がある場合は、担当のアカウント マネージャーまたは Microsoft サポートにお問い合わせください。
 
 Azure クラウド ソリューション プロバイダーは、新しいドイツ データセンター リージョンへの移行中と移行後に顧客をサポートするため、追加の手順を実行する必要があります。 [追加の手順](/microsoft-365/enterprise/ms-cloud-germany-transition-add-csp)の詳細を確認してください。
 

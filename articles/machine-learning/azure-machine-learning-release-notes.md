@@ -9,18 +9,57 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 08/18/2021
-ms.openlocfilehash: 1f3ed6e3c661e0238b6a29284a2da7254edab6c4
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: f4c7c43c0406ed7a6c05c3d83e467bc335c43093
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122824841"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128628111"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning のリリース ノート
 
 この記事では、Azure Machine Learning の各リリースについて説明します。  SDK リファレンス コンテンツの詳細については、Azure Machine Learning の [**メインの SDK for Python**](/python/api/overview/azure/ml/intro) のリファレンス ページを参照してください。
 
 __RSS フィード__:ご自身のフィード リーダーに次の URL をコピーして貼り付けることで、このページの更新時に通知を受け取ることができます。`https://docs.microsoft.com/api/search/rss?search=%22Azure+machine+learning+release+notes%22&locale=en-us`
+
+## <a name="2021-09-07"></a>2021-09-07
+
+### <a name="azure-machine-learning-sdk-for-python-v1340"></a>Azure Machine Learning SDK for Python v1.34.0
+  + **azureml-automl-core**
+    + 以前にトレーニングされた予測パイプラインを再適合するためのサポートが追加されました。
+    + 予測のためのトレーニング データ (サンプル内の予測) に対する予測を取得する機能が追加されました。
+  + **azureml-automl-runtime**
+    + AutoML 分類子モデルのデプロイされたエンドポイントから予測確率を返すためのサポートを追加します。
+    + すべての予測を整数にする必要があることをユーザーが指定するための予測オプションが追加されました。
+    + ターゲット列名が、training_data_label_column_name を使用したローカル実験のモデル説明機能名の一部から削除されました
+    + データセット入力として。
+    + 以前にトレーニングされた予測パイプラインを再適合するためのサポートが追加されました。
+    + 予測のためのトレーニング データ (サンプル内の予測) に対する予測を取得する機能が追加されました。
+  + **azureml-core**
+    + ストリーム列の種類の設定、表形式データセットでのストリーム列のマウントとダウンロードを行うためのサポートが追加されました。
+    + SystemAssigned または UserAssigned のいずれかの ID を使用した KubernetesCompute のアタッチを可能にする、新しい省略可能なフィールドが Kubernetes.attach_configuration(identity_type=None, identity_ids=None) に追加されました。 print(compute_target) または compute_target.serialize() を呼び出す際に、新しい ID フィールド identity_type、identity_id、principal_id、tenant_id/client_id が含められます。
+  + **azureml-dataprep**
+    + 表形式データセットのストリーム列の種類を設定するためのサポートが追加されました。 表形式データセットのストリーム列をマウントおよびダウンロードするためのサポートが追加されました。
+  + **azureml-defaults**
+    + 依存関係 `azureml-inference-server-http==0.3.1` が `azureml-defaults` に追加されました。
+  + **azureml-mlflow**
+    + 省略可能なパラメーター `max_results` と `page_token` を追加して、list_experiments API の改ページを許可します。 ドキュメントについては、MLflow の公式ドキュメントを参照してください。
+  + **azureml-sdk**
+    + azureml-sdk 内の非推奨のパッケージ (azureml-train) の依存関係が置き換えられました。
+    + azureml-responsibleai を azureml-sdk extras に追加します
+  + **azureml-train-automl-client**
+    + `AutoMLConfig` で `test_data` および `test_size` パラメーターを公開します。 これらのパラメーターを使用すると、モデルの後にテスト実行を自動的に開始できます 
+    + トレーニング フェーズが完了しました。 テスト実行では、最適なモデルを使用して予測が計算され、これらの予測を指定してメトリックが生成されます。
+
+## <a name="2021-08-24"></a>2021-08-24
+
+### <a name="azure-machine-learning-experimentation-user-interface"></a>Azure Machine Learning 実験ユーザー インターフェイス
+  + **削除の実行**
+    + [削除の実行] は、ユーザーがワークスペースから 1 つ以上の実行を削除できるようにする新しい機能です。
+    + この機能を使用すると、UI から実行と実験を直接定期的に削除することで、ストレージ コストを削減し、ストレージ容量を管理できます。
+  + **実行の一括取り消し**
+    + [実行の一括取り消し] は、ユーザーが実行リストから取り消す 1 つ以上の実行を選択できるようにする新機能です。 
+    + この機能では、ユーザーがキューに入れられた複数の実行を取り消して、クラスター上の領域を解放するのに役立ちます。
 
 ## <a name="2021-08-18"></a>2021-08-18
 

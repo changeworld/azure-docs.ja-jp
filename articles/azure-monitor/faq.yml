@@ -8,12 +8,12 @@ metadata:
   author: bwren
   ms.author: bwren
   ms.date: 10/08/2020
-  ms.openlocfilehash: 698bdf6fee3da05065ea4f918239a68bba5dc02d
-  ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+  ms.openlocfilehash: b3f18899eada6773fb8d2d78d7635bb47fa79d64
+  ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/24/2021
-  ms.locfileid: "128548696"
+  ms.lasthandoff: 09/29/2021
+  ms.locfileid: "129278863"
 title: Azure Monitor についてよくあるご質問
 summary: >
   この Microsoft FAQ では、Azure Monitor についてよくあるご質問を紹介します。 他に何かご質問がある場合は、[ディスカッション フォーラム](/answers/questions/topics/single/24223.html)にアクセスして質問を投稿してください。 よく寄せられる質問については、すばやく簡単に見つけることができるように、この記事に追加していきます。
@@ -778,7 +778,7 @@ sections:
       Azure Monitor Application Insights の既存のお客様の場合、OpenTelemetry への移行はまだお勧め **しません** ([2020 年 11 月に GA になった Microsoft の ](https://azure.microsoft.com/updates/java-agent-application-insights-ga/) [OpenTelemetry ベースのオファリング](./app/java-in-process-agent.md)をすべての人に推奨している Java アプリケーションを除く)。
 
 
-      C# ([ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) および[ASP.NET Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)) および [Javascript (Node.js)](https://docs.microsoft.com/azure/azure-monitor/app/nodejs) または [OpenCensus Python](https://docs.microsoft.com/en-us/azure/azure-monitor/app/opencensus-python) の現在の ApplicationInsights SDK では、Application Insights で最も機能豊富なエクスペリエンスが提供されます。
+      C# ([ASP.NET](app/asp-net.md) および[ASP.NET Core](app/asp-net-core.md)) および [Javascript (Node.js)](app/nodejs.md) または [OpenCensus Python](app/opencensus-python.md) の現在の ApplicationInsights SDK では、Application Insights で最も機能豊富なエクスペリエンスが提供されます。
 
 
       すぐにでも OpenTelemetry への移行を検討する可能性のあるシナリオには、Azure Monitor と別のベンダーに同時にテレメトリを送信する、[既存のインストルメンテーション プロトコル](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver)を収集して収束する、OpenTelemetry-Collector で利用可能な機能を活用するなどがあります。 たとえば、お客様は、[バッチ プロセッサ](https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor/batchprocessor)、[末尾ベースのサンプラー](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor)、[属性プロセッサ](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/attributesprocessor)の使用を報告しています。 既存の Application Insights SDK にも同様の機能が存在しますが、この処理をエージェントのダウンストリームでホストすることを好むお客様もいます。
@@ -791,7 +791,7 @@ sections:
       それはお勧めしません。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
   - question: >
       手動インストルメンテーションと自動インストルメンテーションの違いは何ですか?
-    answer: "手動インストルメンテーションは OpenTelemetry API に対するコーディングであり、通常はアプリケーションに言語固有の SDK をインストールすることで構成されます。 \"手動\" は、分散トレースのスパンを定義するために複雑なコードを記述する必要があるという意味ではありません (選択の余地は残されています)。 OpenTelemetry のコントリビューターによって管理されている豊富で[拡大しているインストルメンテーション ライブラリのセット](https://opentelemetry.io/registry/)により、共通のフレームワークとライブラリ全体でテレメトリ信号を簡単にキャプチャできます。 \n\n自動インストルメンテーションは、アプリケーションのコードに触れることなく、構成を通じてテレメトリ収集を可能にします。 非常に便利ですが、構成が難しい傾向があり、すべての言語で利用できるわけではありません。\n\nOpenTelemetry の自動インストルメンテーションの取り組みには、Microsoft が [Java 3.X](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) と呼ばれるディストリビューションを介してサポートする Java オファリングが含まれます。 [Python](https://github.com/open-telemetry/opentelemetry-python/tree/main/opentelemetry-instrumentation) と [.NET](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation) には、現在、Microsoft がサポートしていない試験段階の自動インストルメンテーションの取り組みがあります。 その他のすべての OpenTelemetry 言語は、手動インストルメンテーションにのみ重点を置いています。\n"
+    answer: "手動インストルメンテーションは OpenTelemetry API に対するコーディングであり、通常はアプリケーションに言語固有の SDK をインストールすることで構成されます。 \"手動\" は、分散トレースのスパンを定義するために複雑なコードを記述する必要があるという意味ではありません (選択の余地は残されています)。 OpenTelemetry のコントリビューターによって管理されている豊富で[拡大しているインストルメンテーション ライブラリのセット](https://opentelemetry.io/registry/)により、共通のフレームワークとライブラリ全体でテレメトリ信号を簡単にキャプチャできます。 \n\n自動インストルメンテーションは、アプリケーションのコードに触れることなく、構成を通じてテレメトリ収集を可能にします。 非常に便利ですが、構成が難しい傾向があり、すべての言語で利用できるわけではありません。\n\nOpenTelemetry の自動インストルメンテーションの取り組みには、Microsoft が [Java 3.X](app/java-in-process-agent.md) と呼ばれるディストリビューションを介してサポートする Java オファリングが含まれます。 [Python](https://github.com/open-telemetry/opentelemetry-python/tree/main/opentelemetry-instrumentation) と [.NET](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation) には、現在、Microsoft がサポートしていない試験段階の自動インストルメンテーションの取り組みがあります。 その他のすべての OpenTelemetry 言語は、手動インストルメンテーションにのみ重点を置いています。\n"
   - question: >
       OpenTelemetry-Collector を使用できますか?
     answer: "Microsoft がアプリケーション監視のためのエージェントベースのアプローチをまだ正式にサポートしていないにもかかわらず、一部のお客様は、エージェントの代替として [OpenTelemetry-Collector](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/design.md) を使用し始めています。 その間、オープン ソース コミュニティは [OpenTelemetry-Collector Azure Monitor エクスポーター](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuremonitorexporter)を提供してきました。一部のお客様は、これを使用してデータを Azure Monitor Application Insights に送信しています。\n\n詳細と予定はまだ公表されていませんが、Microsoft では将来的にエージェントベースのアプローチをサポートする予定です。 Microsoft の目的は、[OpenTelemetry プロトコル (OTLP)](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/README.md) を介して、OpenTelemetry でサポートされている任意の言語が Azure Monitor に送信するためのパスを提供することです。 これにより、お客様は、[サポートされている言語](https://review.docs.microsoft.com/azure/azure-monitor/app/platforms)以外の言語で記述されたアプリケーションを監視できるようになります。 \n"

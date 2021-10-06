@@ -1,18 +1,19 @@
 ---
-title: Azure CLI と Bicep ファイルを使用してリソースをデプロイする
+title: Azure CLI と Bicep ファイルを使用してリソースをデプロイする | Microsoft Docs
 description: Azure Resource Manager と Azure CLI を使用してリソースを Azure にデプロイします。 リソースは Bicep ファイルに定義されています。
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 07/15/2021
-ms.openlocfilehash: 38d1762faf0d9cbab70b57a79cf9d7811c9fab6b
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.date: 09/17/2021
+ms.custom: devx-track-azurecli, seo-azure-cli
+ms.openlocfilehash: 0c474a7bf1d74b44b85f108b6a7fa28bcdc48902
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123427068"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128625622"
 ---
-# <a name="deploy-resources-with-bicep-and-azure-cli"></a>Bicep と Azure CLI を使用してリソースをデプロイする
+# <a name="how-to-deploy-resources-with-bicep-and-azure-cli"></a>Bicep と Azure CLI を使用してリソースをデプロイする方法
 
 この記事では、Azure CLI と Bicep ファイルを使用して、Azure にリソースをデプロイする方法について説明します。 Azure ソリューションのデプロイと管理の概念について詳しくない場合は、[Bicep 概要](./overview.md)に関する記事を参照してください。
 
@@ -86,7 +87,7 @@ az deployment group create \
 
 ## <a name="deploy-remote-bicep-file"></a>リモートの Bicep ファイルをデプロイする
 
-現在、Azure CLI ではリモート Bicep ファイルのデプロイはサポートされていません。 [Bicep CLI](./install.md#development-environment) を使用して、Bicep ファイルを JSON テンプレートにコンパイルし、その JSON ファイルをリモートの場所に読み込みます。
+現在、Azure CLI ではリモート Bicep ファイルのデプロイはサポートされていません。 [Bicep CLI](./install.md#vs-code-and-bicep-extension) を使用して、Bicep ファイルを JSON テンプレートにコンパイルし、その JSON ファイルをリモートの場所に読み込みます。
 
 ## <a name="parameters"></a>パラメーター
 

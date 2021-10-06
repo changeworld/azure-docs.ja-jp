@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 05/25/2021
+ms.date: 09/20/2021
 ms.author: tisande
-ms.openlocfilehash: b8c2e27b7023a106815b34538f1cd3dba85354b3
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.openlocfilehash: dea28832bb607da722653c398cc234d54d2ffcc9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114667657"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128618630"
 ---
 # <a name="how-to-configure-the-azure-cosmos-db-integrated-cache-preview"></a>Azure Cosmos DB 統合キャッシュを構成する方法 (プレビュー)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -100,10 +100,10 @@ FeedIterator<Food> myQuery = container.GetItemQueryIterator<Food>(new QueryDefin
 
 -   クライアントが専用ゲートウェイ エンドポイントに接続している
 -  クライアントがゲートウェイ モードを使用している (Python と Node.js の SDK では、常にゲートウェイ モードが使用されています)
--   要求の整合性を、[eventual]\(最終的\) に設定する必要があります。
+-   要求の整合性を、session または eventual に設定する必要があります。
 
 > [!NOTE]
-> 統合キャッシュに関するフィードバックはありますか? ご意見をお待ちしています。 フィードバックは、Azure Cosmos DB エンジニアリング チーム (cosmoscachefeedback@microsoft.com) と直接共有できます
+> 統合キャッシュについてフィードバックはありますか? ご意見をお待ちしています。 フィードバックは、Azure Cosmos DB エンジニアリング チーム (cosmoscachefeedback@microsoft.com) と直接共有できます
 
 
 ## <a name="next-steps"></a>次の手順

@@ -5,15 +5,15 @@ services: app-service
 author: msangapu
 ms.service: app-service
 ms.topic: include
-ms.date: 02/27/2019
+ms.date: 09/14/2021
 ms.author: msangapu
 ms.custom: include file
-ms.openlocfilehash: d26b8d131d5a8ff54b12fc5817718ddd381b720b
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: afaacb79906c07893d835d654b00815ea97199d0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "122643262"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128577330"
 ---
 > [!NOTE]
 > `az webapp up` コマンドは、次の処理を実行します。
@@ -24,5 +24,7 @@ ms.locfileid: "122643262"
 >
 >- 指定された名前で[アプリを作成](/cli/azure/webapp#az_webapp_create)する。
 >
->- 現在の作業ディレクトリからアプリにファイルを [zip してデプロイ](../articles/app-service/deploy-zip.md)する。
+>- [ビルド自動化を有効にして](../articles/app-service/deploy-zip.md#enable-build-automation-for-zip-deploy)、現在の作業ディレクトリからすべてのファイルを [ZIP デプロイ](../articles/app-service/deploy-zip.md#deploy-a-zip-package)します。
+>
+>- 後で `az webapp up` または他の Azure CLI コマンドを使用してデプロイするときに再指定する必要がないように、パラメーターを *.azure/config* ファイルにローカルにキャッシュします。 キャッシュされた値は、既定で自動的に使用されます。
 >

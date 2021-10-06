@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: overview
-ms.date: 08/06/2021
+ms.date: 09/24/2021
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9551906dc3a80a07597fc8406228a5869688d317
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: af682b21c60c7746595383d2488e3ad064eda4b5
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121750564"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129058306"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory の動的グループ メンバーシップ ルール
 
@@ -31,7 +31,7 @@ Azure Active Directory (Azure AD) では、複雑な属性ベースのルール�
 - デバイス所有者の属性に基づいてデバイス グループを作成することはできません。 デバイス メンバーシップ ルールで参照できるのは、デバイスの属性のみです。
 
 > [!NOTE]
-> この機能を使うには、少なくとも 1 つの動的グループのメンバーである一意のユーザーごとに Azure AD Premium P1 ライセンスが必要です。 ユーザーを動的グループのメンバーにするために、そのユーザーにライセンスを割り当てる必要はありませんが、少なくともそのすべてのユーザーを対象にできるだけのライセンス数が Azure AD 組織に含まれている必要があります。 たとえば、組織のすべての動的グループに、合計 1,000 人の一意のユーザーがいる場合、ライセンス要件を満たすには、Azure AD Premium P1 に対するライセンスが 1,000 個以上必要です。
+> この機能を使うには、少なくとも 1 つの動的グループのメンバーである一意のユーザーごとに Azure AD Premium P1 ライセンスまたは Intune for Education が必要です。 ユーザーを動的グループのメンバーにするために、そのユーザーにライセンスを割り当てる必要はありませんが、少なくともそのすべてのユーザーを対象にできるだけのライセンス数が Azure AD 組織に含まれている必要があります。 たとえば、組織のすべての動的グループに、合計 1,000 人の一意のユーザーがいる場合、ライセンス要件を満たすには、Azure AD Premium P1 に対するライセンスが 1,000 個以上必要です。
 > 動的なデバイス グループのメンバーであるデバイスには、ライセンスは必要ありません。
 
 ## <a name="rule-builder-in-the-azure-portal"></a>Azure portal のルール ビルダー
@@ -133,7 +133,7 @@ user.department -eq &quot;Sales&quot;
 
 ## <a name="supported-expression-operators"></a>サポートされている式の演算子
 
-次の表は、サポートされているすべての演算子とその単一式用の構文をまとめたものです。 演算子は、ハイフン (-) のプレフィックスがあってもなくても使用できます。
+次の表は、サポートされているすべての演算子とその単一式用の構文をまとめたものです。 演算子は、ハイフン (-) のプレフィックスがあってもなくても使用できます。 **Contains** 演算子では部分文字列一致が行われますが、コレクション内の項目一致ではありません。
 
 | 演算子 | 構文 |
 | --- | --- |
@@ -204,7 +204,7 @@ null 値を参照する正しい方法は次のとおりです。
 
 ## <a name="rules-with-multiple-expressions"></a>複数の式を持つルール
 
-グループ メンバーシップ ルールは、複数の単一式を論理演算子 (-and、-or、-not) で結合して作ることができます。 論理演算子は組み合わせて使用することもできます。 
+グループ メンバーシップ ルールは、複数の単一式を論理演算子 (-and、-or、-not) で結合して作ることができます。 論理演算子は組み合わせて使用することもできます。
 
 複数の式で正しく構築されたメンバーシップ ルールの例を次に示します。
 
@@ -396,7 +396,7 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb_OfficeNumber -eq "123"
  deviceOwnership | 個人、会社、不明 | (device.deviceOwnership -eq "Company")
  enrollmentProfileName | Apple Device Enrollment プロファイル名、Android Enterprise 企業所有専用 Enrollment プロファイル名、または Windows Autopilot プロファイル名 | (device.enrollmentProfileName -eq "DEP iPhones")
  isRooted | true false | (device.isRooted -eq true)
- managementType | MDM (モバイル デバイスの場合)<br>PC (Intune PC エージェントによって管理されるコンピューターの場合) | (device.managementType -eq "MDM")
+ managementType | MDM (モバイル デバイスの場合) | (device.managementType -eq "MDM")
  deviceId | 有効な Azure AD デバイス ID | (device.deviceId -eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
  objectId | 有効な Azure AD オブジェクト ID |  (device.objectId -eq "76ad43c9-32c5-45e8-a272-7b58b58f596d")
  devicePhysicalIds | すべてのオートパイロット デバイス、OrderID、PurchaseOrderID など、オートパイロットによって使用される任意の文字列値  | (device.devicePhysicalIDs -any _ -contains "[ZTDId]") (device.devicePhysicalIds -any _ -eq "[OrderID]:179887111881") (device.devicePhysicalIds -any _ -eq "[PurchaseOrderId]:76222342342")

@@ -1,7 +1,7 @@
 ---
-title: 'クイックスタート: ARM テンプレートを使用して Any-to-Any の構成を作成する'
+title: 'クイック スタート: ARM テンプレートを使用して Any-to-Any の構成を作成する'
 titleSuffix: Azure Virtual WAN
-description: このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して Any-to-Any の構成を作成する方法について説明します。
+description: このクイック スタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して Any-to-Any の構成を作成する方法について説明します。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -9,16 +9,16 @@ ms.topic: quickstart
 ms.date: 02/02/2021
 ms.author: cherylmc
 ms.custom: subject-armqs
-ms.openlocfilehash: 8981d305fff1970b58b569d95c6f16e933b2ca10
-ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
+ms.openlocfilehash: ee1814d70395be3c084513d7bf59537ba426471a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111812894"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128559099"
 ---
-# <a name="quickstart-create-an-any-to-any-configuration-using-an-arm-template"></a>クイックスタート: ARM テンプレートを使用して Any-to-Any の構成を作成する
+# <a name="quickstart-create-an-any-to-any-configuration-using-an-arm-template"></a>クイック スタート: ARM テンプレートを使用して Any-to-Any の構成を作成する
 
-このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して、任意のスポークから他の任意のスポークに到達できる Any-to-Any のシナリオを作成する方法について説明します。
+このクイック スタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して、任意のスポークから他の別のスポークに到達できる Any-to-Any のシナリオを作成する方法について説明します。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2019
 ms.author: mbaldwin
 ms.custom: include file, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: fa16db2472daaa98f972460d691c07f700ec3447
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 1e0ec6d37990fbddcdebf7a1d2efd063cd9e4ea6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110721653"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128909163"
 ---
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
@@ -42,7 +42,7 @@ New-AzResourceGroup -Name "myResourceGroup" -Location "EastUS"
 >[!WARNING]
 > キー コンテナーと VM は、同じサブスクリプションに配置する必要があります。 また、暗号化シークレットがリージョンの境界を確実に超えないようにするため、Azure Disk Encryption では Key Vault と VM を同じリージョンに併置する必要もあります。 暗号化する VM と同じサブスクリプションとリージョン内に Key Vault を作成して使用します。 
 
-各キー コンテナーには一意の名前が必要です。 次の例では、<your-unique-keyvault-name> をお使いのキー コンテナーの名前に置き換えてください。
+各キー コンテナーには一意の名前が必要です。 次の例の \<your-unique-keyvault-name\> は、ご自分のキー コンテナーの名前に置き換えてください。
 
 ### <a name="azure-cli"></a>Azure CLI
 

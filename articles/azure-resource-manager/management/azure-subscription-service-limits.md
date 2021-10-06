@@ -2,13 +2,13 @@
 title: Azure サブスクリプションの制限とクォータ
 description: 一般的な Azure サブスクリプションとサービスの制限、クォータ、制約の一覧を示します。 この記事では、制限を引き上げる方法と、最大値に関する情報について説明します。
 ms.topic: conceptual
-ms.date: 07/29/2021
-ms.openlocfilehash: 2d3af7c035518ace6abca01b9e9e3867c49d4330
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.date: 09/21/2021
+ms.openlocfilehash: 685a66e120a1387ce71d0d2902dfa54e390d1d66
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123099386"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128645498"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure サブスクリプションとサービスの制限、クォータ、制約
 
@@ -86,7 +86,7 @@ Resource Manager API の読み取りと書き込みの制限については、�
 
 ## <a name="azure-cache-for-redis-limits"></a>Azure Cache for Redis の制限
 
-[!INCLUDE [redis-cache-service-limits](../../../includes/redis-cache-service-limits.md)]
+[!INCLUDE [redis-cache-service-limits](../../azure-cache-for-redis/includes/redis-cache-service-limits.md)]
 
 ## <a name="azure-cloud-services-limits"></a>Azure Cloud Services の制限
 
@@ -174,6 +174,11 @@ Azure Machine Learning コンピューティング クォータの最新の値�
 
 [!INCLUDE [monitoring-limits](../../../includes/application-insights-limits.md)]
 
+
+## <a name="azure-data-factory-limits"></a>Azure Data Factory の制限
+
+[!INCLUDE [azure-data-factory-limits](../../../includes/azure-data-factory-limits.md)]
+
 ## <a name="azure-netapp-files"></a>Azure NetApp Files
 
 [!INCLUDE [netapp-limits](../../../includes/netapp-service-limits.md)]
@@ -228,13 +233,14 @@ Azure Resource Manager デプロイ モデルではなくクラシック デプ�
 
 [!INCLUDE [cdn-limits](../../../includes/cdn-limits.md)]
 
-## <a name="data-factory-limits"></a>Data Factory の制限
-
-[!INCLUDE [azure-data-factory-limits](../../../includes/azure-data-factory-limits.md)]
 
 ## <a name="data-lake-analytics-limits"></a>Data Lake Analytics の制限
 
 [!INCLUDE [azure-data-lake-analytics-limits](../../../includes/azure-data-lake-analytics-limits.md)]
+
+## <a name="data-factory-limits"></a>Data Factory の制限
+
+[!INCLUDE [azure-data-factory-limits](../../../includes/azure-data-factory-limits.md)]
 
 ## <a name="data-lake-storage-limits"></a>Data Lake Storage の制限
 

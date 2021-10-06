@@ -10,12 +10,12 @@ author: julieMSFT
 ms.author: jrasnick
 ms.reviewer: jrasnick
 ms.date: 03/10/2021
-ms.openlocfilehash: 5d2dc316d5f58374792e04460f1abd8e63002243
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 601b31aa4941ba3a971ebbc9be03178593b5f565
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121726045"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129055288"
 ---
 # <a name="migrate-a-data-warehouse-to-a-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 専用 SQL プールへデータ ウェアハウスを移行する
 
@@ -108,7 +108,7 @@ Customer Advisory Team の Azure Synapse Analytics (旧称 Azure SQL Data Wareho
 
 | タイトルとリンク                              | 説明                                                                                                                       |
 | --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| [データ ワークロード評価モデルとツール](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool) | このツールを使用すると、特定のワークロードに対して、推奨される "最適な" ターゲット プラットフォーム、クラウドの準備状況、アプリケーションまたはデータベースの修復レベルがわかります。 シンプルなワンクリックの計算とレポート生成機能があり、自動化された均一なターゲット プラットフォームの決定プロセスが用意されているので、大規模な不動産評価を加速させることができます。 |
+| [データ ワークロード評価モデルとツール](https://www.microsoft.com/download/details.aspx?id=103130) | このツールを使用すると、特定のワークロードに対して、推奨される "最適な" ターゲット プラットフォーム、クラウドの準備状況、アプリケーションまたはデータベースの修復レベルがわかります。 シンプルなワンクリックの計算とレポート生成機能があり、自動化された均一なターゲット プラットフォームの決定プロセスが用意されているので、大規模な不動産評価を加速させることができます。 |
 | [Azure Synapse Analytics へのデータの読み込み中に発生するデータ エンコードに関する問題の処理](https://azure.microsoft.com/blog/handling-data-encoding-issues-while-loading-data-to-sql-data-warehouse/) | このブログ投稿は、PolyBase を使用してデータを SQL Data Warehouse に読み込むときに発生する可能性がある、いくつかのデータ エンコードに関する問題についての分析情報を提供しています。 この記事では、こうした問題を解決してデータを正常に読み込むために使用できるいくつかの選択肢についても説明しています。 |
 | [Azure Synapse Analytics 専用 SQL プールでのテーブル サイズの取得](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Getting%20table%20sizes%20in%20SQL%20DW.pdf) | アーキテクトが実行する必要のある主なタスクの 1 つは、移行後の新しい環境に関するメトリックを取得することです。 たとえば、オンプレミスからクラウドへの読み込み時間の収集、PolyBase の読み込み時間の収集などです。 最も重要なタスクの 1 つは、顧客の現在のプラットフォームと比較した SQL Data Warehouse のストレージ サイズを決定することです。 |
 | [オンプレミスの SQL Server ログインを Azure Synapse Analytics に移動するユーティリティ](https://github.com/Microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/MoveLogins) | PowerShell スクリプトは、ログインを再作成し、SQL Server のオンプレミス インスタンスから Azure SQL サービスとしてのプラットフォーム (PaaS) サービスに移行するデータベース ユーザーを選択するための T-SQL コマンド スクリプトを作成します。 このツールを使用すると、Windows Server Active Directory アカウントを Azure Active Directory アカウントに自動でマッピングでき、ログインごとにオンプレミス Windows Server Active Directory に対して UPN 参照を実行することもできます。 このツールは、必要に応じて SQL Server ネイティブ ログインも移動します。 カスタムのサーバーおよびデータベース ロールの他に、ロール メンバーシップ、データベース ロール、およびユーザー アクセス許可がスクリプト化されます。 包含データベースはサポートされていません。使用可能な SQL Server アクセス許可のサブセットのみがスクリプト化されます。 詳細についてはサポート ドキュメントをご覧ください。スクリプトには、分かりやすいようにコメントが付いています。 |

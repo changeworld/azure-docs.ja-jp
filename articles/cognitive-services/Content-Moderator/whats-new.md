@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: overview
-ms.date: 04/19/2021
+ms.date: 09/28/2021
 ms.author: pafarley
-ms.openlocfilehash: 115cd06f9909311e6009f839a5e452c49f6d6874
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: f6dd45ae1bfbcc6ce601de7247ec44265f14cd47
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112033673"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129362308"
 ---
 # <a name="whats-new-in-content-moderator"></a>Content Moderator の新機能
 

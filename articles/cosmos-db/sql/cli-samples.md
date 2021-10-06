@@ -1,19 +1,20 @@
 ---
-title: Azure Cosmos DB Core (SQL) API 用の Azure CLI サンプル
-description: Azure Cosmos DB Core (SQL) API 用の Azure CLI サンプル
+title: Azure Cosmos DB の Azure CLI サンプル | Microsoft Docs
+description: この記事では、Azure Cosmos DB を操作するための使用できるいくつかの Azure CLI サンプル コードを紹介します。 API 固有の CLI サンプルを表示します。
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
-ms.date: 10/13/2020
+ms.date: 09/17/2021
 ms.author: mjbrown
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 5f68f09b8d97e9d653f1551c2ca1fe5ed5a47b0e
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.custom: devx-track-azurecli, seo-azure-cli
+keywords: Cosmos DB, Azure CLI サンプル, Azure CLI コード サンプル, Azure CLI スクリプト サンプル
+ms.openlocfilehash: 4529b51ff5109bfa6b8814b23e7e82844e7fb95c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123117862"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128567720"
 ---
 # <a name="azure-cli-samples-for-azure-cosmos-db-core-sql-api"></a>Azure Cosmos DB Core (SQL) API 用の Azure CLI サンプル
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -41,7 +42,7 @@ ms.locfileid: "123117862"
 
 |タスク | 説明 |
 |---|---|
-| [Azure Cosmos アカウント、データベース、およびコンテナーを作成する](../scripts/cli/sql/create.md?toc=%2fcli%2fazure%2ftoc.json)| Core (SQL) API 用の Azure Cosmos DB アカウント、データベース、コンテナーを作成します。 |
+| [Azure Cosmos アカウント、データベース、コンテナーを作成する](../scripts/cli/sql/create.md?toc=%2fcli%2fazure%2ftoc.json)| Core (SQL) API 用の Azure Cosmos DB アカウント、データベース、コンテナーを作成します。 |
 | [Azure Cosmos アカウント、データベース、自動スケーリングのコンテナーを作成する](../scripts/cli/sql/autoscale.md?toc=%2fcli%2fazure%2ftoc.json)| Core (SQL) API 用に Azure Cosmos DB アカウント、データベース、自動スケーリングのコンテナーを作成します。 |
 | [スループット操作](../scripts/cli/sql/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | データベースとコンテナーに対する読み取り、更新、および自動スケーリングと標準スループット間の移行を行います。|
 | [リソースが削除されないようにロックする](../scripts/cli/sql/lock.md?toc=%2fcli%2fazure%2ftoc.json)| リソース ロックを使用してリソースが削除されないようにします。|

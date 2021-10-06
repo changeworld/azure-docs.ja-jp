@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/13/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 9896cdaf82ca508c5e6a1a444564403ef0f7e1eb
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 490b0b109e4b89b01b748d2d6aa71b4477f8a8ef
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113765461"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128560591"
 ---
 # <a name="authorize-access-to-data-in-azure-storage"></a>Azure Storage 内のデータへのアクセスを承認する
 
@@ -41,7 +41,7 @@ ms.locfileid: "113765461"
 - BLOB、ファイル、キュー、およびテーブル用の **共有キー認証**。 共有キーを使用するクライアントは、ストレージ アカウントのアクセス キーを使用して署名されたすべての要求にヘッダーを渡します。 詳細については、[共有キーによる承認](/rest/api/storageservices/authorize-with-shared-key/)に関するページを参照してください。
 
 - BLOB、ファイル、キュー、およびテーブル用の **共有アクセス署名**。 共有アクセス署名 (SAS) には、ストレージ アカウント内のリソースに対する制限付きの委任アクセス機能があります。 署名が有効な期間、または付与するアクセス許可に制約を追加すると、柔軟にアクセスを管理できます。 詳細については、「[Shared Access Signatures (SAS) の使用](storage-sas-overview.md)」をご覧ください。
-- コンテナーと BLOB 用の **匿名パブリック読み取りアクセス** 承認は必要ありません。 詳細については、「 [コンテナーと BLOB への匿名読み取りアクセスを管理する](../blobs/anonymous-read-access-configure.md)」を参照してください。  
+- コンテナーと BLOB 用の **匿名パブリック読み取りアクセス** 承認は必要ありません。 詳細については、「 [コンテナーと BLOB への匿名読み取りアクセスを管理する](../blobs/anonymous-read-access-configure.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

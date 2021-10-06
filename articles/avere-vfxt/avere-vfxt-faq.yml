@@ -8,12 +8,12 @@ metadata:
   ms.date: 12/19/2019
   ms.author: rohogue
   ms.custom: references_regions
-  ms.openlocfilehash: 1d5230119afa33c05878d11e407e80acdc10f15a
-  ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
+  ms.openlocfilehash: 241bcb1e164bf8f0233e7110ffcdd9630e870e8d
+  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/13/2021
-  ms.locfileid: "113657018"
+  ms.lasthandoff: 09/13/2021
+  ms.locfileid: "124751093"
 title: Avere vFXT for Azure の FAQ
 summary: この記事では、Avere vFXT for Azure がニーズに適しているかどうかを判断するのに役立つ質問に回答します。 Avere vFXT に関する基本情報を提供し、他の Azure コンポーネントおよび外部のベンダーの製品との連携について説明します。
 sections:
@@ -101,7 +101,7 @@ sections:
   - question: >
       Avere vFXT 環境はスケーリングできますか?
     answer: >
-      Avere vFXT クラスターは、最小 3 ノードから最大 24 ノードまでの範囲で仮想マシン ノードを構成できます。 9 個より多くのノードがクラスターに必要と思われる場合は、計画に関して Azure のテクニカル サポートにお問い合わせください。 ノードの数が多いほど、大規模なデプロイ アーキテクチャが必要になります。
+      Avere vFXT クラスターは、最小 3 ノードから最大 20 ノードまでの範囲で仮想マシン ノードを構成できます。 ワークフローの適切なクラスター サイズを検討するにあたってお困りのことがあれば、Azure テクニカル サポートにお問い合わせください。
   - question: >
       Avere vFXT 環境は "自動スケーリング" ですか?
     answer: >

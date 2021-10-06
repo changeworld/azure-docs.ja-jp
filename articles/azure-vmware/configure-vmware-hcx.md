@@ -2,13 +2,13 @@
 title: Azure VMware Solution に VMware HCX を構成する
 description: Azure VMware Solution のプライベート クラウド用にオンプレミスの VMware HCX コネクタを構成します。
 ms.topic: tutorial
-ms.date: 07/30/2021
-ms.openlocfilehash: 1249a694e01e01d4e7aa31c639c4422be2372ee4
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.date: 09/07/2021
+ms.openlocfilehash: 1fbcd8cc2cc596395f3736949f54f30ac224d060
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123255463"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124755826"
 ---
 # <a name="configure-on-premises-vmware-hcx-connector"></a>オンプレミスの VMware HCX コネクタを構成する
 
@@ -26,9 +26,15 @@ ms.locfileid: "123255463"
 
 - [VMware HCX コネクタ](install-vmware-hcx.md)がインストールされている。
 
-- VMware HCX Enterprise を使用する予定がある場合は、[サポート リクエスト](https://portal.azure.com/#create/Microsoft.Support)を通じて [VMware HCX Enterprise](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/) アドオンを有効にしてあることを確認してください。
+- VMware HCX Enterprise を使用する予定がある場合は、[サポート リクエスト](https://portal.azure.com/#create/Microsoft.Support)を通じて [VMware HCX Enterprise](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/) アドオンを有効にしてあることを確認してください。 Azure VMware Solution の無料の 12 か月間試用版です。
 
-- [ソフトウェア バージョンの要件](https://docs.vmware.com/en/VMware-HCX/4.1/hcx-user-guide/GUID-54E5293B-8707-4D29-BFE8-EE63539CC49B.html)
+- [VMware HCX MON を有効にする](https://docs.vmware.com/en/VMware-HCX/4.1/hcx-user-guide/GUID-0E254D74-60A9-479C-825D-F373C41F40BC.html)予定がある場合は、以下があることを確認してください。  
+
+   - HCX ネットワーク拡張機能用のオンプレミスの NSX-T または VDS (標準スイッチなし)
+
+   - 1 つ以上のアクティブな拡張ネットワーク セグメント
+
+- [VMware ソフトウェア バージョンの要件](https://docs.vmware.com/en/VMware-HCX/4.1/hcx-user-guide/GUID-54E5293B-8707-4D29-BFE8-EE63539CC49B.html)が満たされている。
 
 - オンプレミスの vSphere 環境 (ソース環境) が[最小要件](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-54E5293B-8707-4D29-BFE8-EE63539CC49B.html)を満たしている。
 
@@ -38,7 +44,7 @@ ms.locfileid: "123255463"
 
 - [VMware HCX のネットワーク セグメントを定義する](plan-private-cloud-deployment.md#define-vmware-hcx-network-segments)。  VMware HCX の主なユース ケースは、ワークロードの移行とディザスター リカバリーです。
 
-- HCX の使用に関する情報は、[VMware HCX のドキュメント](https://docs.vmware.com/en/VMware-HCX/4.1/hcx-user-guide/GUID-BFD7E194-CFE5-4259-B74B-991B26A51758.html)を確認してください。
+- HCX の使用に関する情報については、[VMware HCX のドキュメントを確認してください](https://docs.vmware.com/en/VMware-HCX/4.1/hcx-user-guide/GUID-BFD7E194-CFE5-4259-B74B-991B26A51758.html)。
 
 ## <a name="add-a-site-pairing"></a>サイトのペアリングを追加する
 
@@ -204,31 +210,18 @@ VMware HCX コネクタによって、複数の IP セグメントを必要と�
    >
    >:::image type="content" source="media/tutorial-vmware-hcx/hcx-service-mesh-datastore-host.png" alt-text="HCX サービス メッシュのデータストアとホストを示すスクリーンショット。" lightbox="media/tutorial-vmware-hcx/hcx-service-mesh-datastore-host.png":::
 
+HCX インターコネクト トンネルの状態は **[UP]\(アップ\)** と、緑で示されます。 これで、VMware HCX を使用して Azure VMware Solution VM を移行および保護する準備ができました。 Azure VMware Solution では、ワークロードの移行がサポートされています (ネットワーク拡張機能を使用または不使用)。 そのため vSphere 環境のワークロードも、オンプレミスにネットワークを作成し、それらのネットワークに VM をデプロイして、移行できます。 詳細については、[VMware HCX のドキュメント](https://docs.vmware.com/en/VMware-HCX/index.html)を参照してください。 
+
+
+
 この手順全体の概要については、動画「[Azure VMware Solution: サービス メッシュ](https://www.youtube.com/embed/COY3oIws108)」を参照してください。
 
-## <a name="create-a-network-extension"></a>ネットワーク拡張機能を作成する
-
-これはオプションの手順であり、オンプレミス環境から Azure VMware Solution までネットワークを拡張します。
-
-1. **[Services]\(サービス\)** で、 **[Network Extension]\(ネットワーク拡張機能\)**  >  **[Create a Network Extension]\(ネットワーク拡張機能の作成\)** の順に選択します。
-
-   :::image type="content" source="media/tutorial-vmware-hcx/create-network-extension.png" alt-text="ネットワーク拡張機能の作成を開始するための選択を示すスクリーンショット。" lightbox="media/tutorial-vmware-hcx/create-network-extension.png":::
-
-1. Azure VMware Solution へと拡張する各ネットワークを選択し、 **[Next]\(次へ\)** を選択します。
-
-   :::image type="content" source="media/tutorial-vmware-hcx/select-extend-networks.png" alt-text="ネットワークの選択を示すスクリーンショット。":::
-
-1. 拡張しようとしているネットワークごとに、オンプレミス ゲートウェイの IP を入力してから、 **[送信]** を選択します。
-
-   :::image type="content" source="media/tutorial-vmware-hcx/extend-networks-gateway.png" alt-text="ゲートウェイ IP アドレスの入力を示すスクリーンショット。":::
-
-   ネットワークの拡張が完了するまでに数分かかります。 完了すると、状態が **[Extension complete]\(拡張完了\)** に変わります。
-
-   :::image type="content" source="media/tutorial-vmware-hcx/extension-complete.png" alt-text="拡張完了の状態を示すスクリーンショット。":::
-
-この手順全体の概要については、ビデオ「[Azure VMware Solution: ネットワーク拡張機能](https://www.youtube.com/embed/gYR0nftKui0)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-HCX の相互接続トンネルの状態が **[UP]\(アップ\)** で緑色である場合は、VMware HCX を使用して、Azure VMware Solution VM の移行と保護を行う準備ができています。 Azure VMware Solution では、ワークロードの移行がサポートされています (ネットワーク拡張機能を使用または不使用)。 vSphere 環境のワークロードも、オンプレミスにネットワークを作成し、それらのネットワークに VM をデプロイして、移行できます。 詳細については、[VMware HCX のドキュメント](https://docs.vmware.com/en/VMware-HCX/index.html)を参照してください。
+HCX コネクタの構成が完了したので、以下について学習することもできます。
+
+- [HCX ネットワーク拡張機能を作成する](configure-hcx-network-extension.md)
+
+- [VMware HCX Mobility Optimized Networking (MON) のガイダンス](vmware-hcx-mon-guidance.md)
 

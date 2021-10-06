@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/16/2021
+ms.date: 08/26/2021
 ms.author: jeedes
-ms.openlocfilehash: bcbf68523fda8ccd8041d5147f9904f0b8520521
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 36829f44d818356bbe61fe3f37265c2a76ed6f8a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108147969"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128617984"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-exium"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Exium の統合
 
@@ -38,6 +38,7 @@ ms.locfileid: "108147969"
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 * Exium では、**SP** Initiated SSO がサポートされます。
+* Exium では、[自動化されたユーザー プロビジョニング](exium-provisioning-tutorial.md)がサポートされます。
 
 ## <a name="adding-exium-from-the-gallery"></a>ギャラリーからの Exium の追加
 
@@ -149,6 +150,9 @@ Exium に対して Azure AD SSO を構成してテストするには、次の手
 
     ![テスト ユーザーの作成フィールドと保存ボタンのスクリーンショット](./media/exium-tutorial/add-user-2.png)
 
+> [!NOTE]
+>Exium では、自動ユーザー プロビジョニングもサポートされます。自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](./exium-provisioning-tutorial.md)をご覧ください。
+
 ## <a name="test-sso"></a>SSO のテスト 
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
@@ -157,7 +161,7 @@ Exium に対して Azure AD SSO を構成してテストするには、次の手
 
 * Exium のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Exium] タイルをクリックすると、Exium のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Exium] タイルをクリックすると、Exium のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ

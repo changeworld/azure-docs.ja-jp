@@ -12,12 +12,12 @@ ms.date: 07/15/2021
 ms.author: baselden
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bef4e1b8f4524e9b883bfe4aa5ef7b2a0e2bcf83
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: df71173837075c786d7c8f9907e0ed3cac576b16
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121746085"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128676259"
 ---
 # <a name="azure-active-directory-security-operations-guide"></a>Azure Active Directory セキュリティ運用ガイド
 
@@ -92,7 +92,7 @@ Microsoft には、お客様のニーズに合わせて IT 環境をカスタマ
 
    * [Azure Active Directory Identity Protection を使用したリスクの調査](../identity-protection/howto-identity-protection-investigate-risk.md) 
 
-   * [Azure Sentinel に Azure AD Identity Protection データを接続する方法](../../sentinel/connect-azure-ad-identity-protection.md)
+   * [Azure Sentinel に Azure AD Identity Protection データを接続する方法](../../sentinel/data-connectors-reference.md#azure-active-directory-identity-protection)
 
 * Active Directory Domain Services (AD DS)
 
@@ -110,7 +110,7 @@ Microsoft には、お客様のニーズに合わせて IT 環境をカスタマ
 
 * [サインイン ログ](../reports-monitoring/concept-all-sign-ins.md)
 
-* [Microsoft 365 監査ログ](/microsoft-365/compliance/auditing-solutions-overview?view=o365-worldwide)
+* [Microsoft 365 監査ログ](/microsoft-365/compliance/auditing-solutions-overview)
 
 * [Azure Key Vault のログ](../../key-vault/general/logging.md?tabs=Vault)
 
@@ -158,7 +158,7 @@ Azure ハイブリッド環境の一部として、次をベースラインと�
 
 * **Azure AD Connect Sync Engine** - オンプレミスのコンポーネント。同期エンジンとも呼ばれます。 この機能の詳細については、「[Azure AD Connect 同期サービスの機能](../hybrid/how-to-connect-syncservice-features.md)」をご覧ください。
 
-* **パスワード保護 DC エージェント** – Azure パスワード保護 DC エージェントは、イベント ログ メッセージの監視とレポート作成に使用されます。 詳細については、「../authentication/concept-password-ban-bad-on-premises.md」をご覧ください。
+* **パスワード保護 DC エージェント** – Azure パスワード保護 DC エージェントは、イベント ログ メッセージの監視とレポート作成に使用されます。 詳細については、「[Active Directory Domain Services にオンプレミスの Azure AD パスワード保護を適用する](../authentication/concept-password-ban-bad-on-premises.md)」を参照してください。 
 
 * **パスワード フィルター DLL** – DC エージェントのパスワード フィルター DLL は、オペレーティング システムからユーザーのパスワード検証要求を受け取ります。 このフィルターは、DC でローカルで実行されている DC エージェント サービスにそれらを転送します。 DLL の使用の詳細については、「[Active Directory Domain Services にオンプレミスの Azure AD パスワード保護を適用する](../authentication/concept-password-ban-bad-on-premises.md)」をご覧ください。 
 
@@ -202,7 +202,7 @@ Azure クラウドベース環境の一部として、次をベースライン�
 
 * **エンタイトルメント管理** – Azure Active Directory (Azure AD) エンタイトルメント管理は、アクセス要求ワークフロー、アクセス割り当て、レビュー、および失効処理を自動化することで、ID とアクセスのライフサイクルを大規模に管理できる、[ID ガバナンス](../governance/identity-governance-overview.md)機能です。 詳細については、「[Azure AD エンタイトルメント管理とは](../governance/entitlement-management-overview.md)」を参照してください。
 
-* **アクティビティ ログ** – アクティビティ ログは、Azure の[プラットフォーム ログ](../../azure-monitor/essentials/platform-logs-overview.md)であり、サブスクリプション レベルのイベントの分析情報をもたらします。 これには、リソースが変更されたときや仮想マシンが起動されたときなどの情報が含まれます。 詳細については、「[Azure アクティビティ ログ](../../azure-monitor/essentials/activity-log.md)」をご覧ください。
+* **アクティビティ ログ** – アクティビティ ログは、Azure の [プラットフォーム ログ](../../azure-monitor/essentials/platform-logs-overview.md)であり、サブスクリプション レベルのイベントの分析情報をもたらします。 これには、リソースが変更されたときや仮想マシンが起動されたときなどの情報が含まれます。 詳細については、「[Azure アクティビティ ログ](../../azure-monitor/essentials/activity-log.md)」をご覧ください。
 
 * **セルフサービス パスワード リセット サービス** – Azure Active Directory (Azure AD) のセルフサービス パスワード リセット (SSPR) により、ユーザーは、管理者やヘルプ デスクが関与することなく、自分のパスワードを変更またはリセットできるようになります。 詳細については、[動作のしくみ:Azure AD のセルフサービス パスワード リセット のクイック スタート](../authentication/concept-sspr-howitworks.md)に関する記事をご覧ください。
 

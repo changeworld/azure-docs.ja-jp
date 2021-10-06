@@ -12,12 +12,12 @@ ms.date: 11/13/2020
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev, fasttrack-edit, contperf-fy21q2
-ms.openlocfilehash: 7ec309f016e73642262399bd75e7b5146bc5e497
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c775efa92c249904348f1ced18994c42e9ecc8eb
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98752781"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128597818"
 ---
 # <a name="application-types-for-the-microsoft-identity-platform"></a>Microsoft ID プラットフォームのアプリケーションの種類
 
@@ -44,7 +44,7 @@ https://login.microsoftonline.com/common/oauth2/v2.0/token
 
 最新アプリの多くには、主に JavaScript で記述されたシングル ページ アプリのフロントエンドがあり、Angular、React、Vue などのフレームワークと共に使用されることもあります。 Microsoft ID プラットフォームでは、認証に [OpenID Connect](v2-protocols-oidc.md) プロトコルを使用し、承認に [OAuth 2.0 の暗黙的な許可フロー](v2-oauth2-implicit-grant-flow.md)または新しい [OAuth 2.0 承認コード + PKCE フロー](v2-oauth2-auth-code-flow.md)を使用することで、これらのアプリをサポートしています (以下を参照してください)。
 
-次のフロー図は、OAuth 2.0 承認コードの許可を示しています (PKCE に関する詳細は省略しています)。この例では、アプリで Microsoft ID プラットフォーム `authorize` エンドポイントからコードを受け取り、トークンに引き換え、クロスサイト Web 要求を使用してトークンを更新しています。 更新トークンは 24 時間ごとに期限切れになるため、アプリは別のコードを要求する必要があります。 通常、アクセス トークンに加えて、クライアント アプリケーションにサインインしたユーザーを表す `id_token` も、同じフローまたは別の OpenID Connect 要求 (ここには示されていません) を介して要求されます。
+次のフロー図は、OAuth 2.0 認可コードの付与を示しています (PKCE に関する詳細は省略されています)。ここでは、アプリが Microsoft ID プラットフォームの `authorize` エンドポイントからコードを受信し、クロスサイト Web 要求を使用して、それをアクセス トークンと更新トークンと引き換えています。 アクセス トークンは 24 時間ごとに有効期限が切れるため、アプリは更新トークンを使用して別のコードを要求する必要があります。 通常、アクセス トークンに加えて、クライアント アプリケーションにサインインしたユーザーを表す `id_token` も、同じフローまたは別の OpenID Connect 要求 (ここには示されていません) を介して要求されます。
 
 :::image type="content" source="media/v2-oauth-auth-code-spa/active-directory-oauth-code-spa.svg" alt-text="シングル ページ アプリとセキュリティ トークン サービス エンドポイントの間の OAuth 2 認証コード フローを示す図。" border="false":::
 

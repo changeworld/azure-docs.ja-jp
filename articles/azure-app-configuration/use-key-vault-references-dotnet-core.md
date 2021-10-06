@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 04/08/2020
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: e02ac9d6abd3358218f268fb3da1e99b90fac7c5
-ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
+ms.openlocfilehash: 9f095bbadf8f395b809d46c8beea5f6665932d12
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113568084"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129357906"
 ---
 # <a name="tutorial-use-key-vault-references-in-an-aspnet-core-app"></a>チュートリアル:ASP.NET Core アプリで Key Vault 参照を使用する
 
@@ -203,7 +203,7 @@ App Configuration に格納されているその他のキーの場合と同様�
 
 Azure App Configuration がキー コンテナーにアクセスすることはありません。 アプリは Key Vault から直接読み取るため、キー コンテナー内のシークレットへの読み取りアクセス権をアプリに付与する必要があります。 これにより、シークレットは常にアプリに保持されます。 アクセス権を付与するには、[Key Vault アクセス ポリシー](../key-vault/general/assign-access-policy-portal.md)または [Azure のロールベースのアクセス制御](../key-vault/general/rbac-guide.md)を使用します。
 
-上のコードでは `DefaultAzureCredential` を使用しています。 これは、`EnvironmentCredential`、`ManagedIdentityCredential`、`SharedTokenCacheCredential`、`VisualStudioCredential` など、さまざまな資格情報の種類が自動的に試される、集約されたトークン資格情報です。 詳細については、「[DefaultAzureCredential クラス](/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet)」を参照してください。 `DefaultAzureCredential` は、任意の資格情報の種類に明示的に置き換えることができます。 ただし、`DefaultAzureCredential` を使用すると、ローカル環境と Azure 環境の両方で同じコードを実行できます。 たとえば、自分の資格情報にキー コンテナーへのアクセス権を付与します。 ローカル開発に Visual Studio を使用すると、`DefaultAzureCredential` は自動的に `SharedTokenCacheCredential` または `VisualStudioCredential` に戻ります。
+上のコードでは `DefaultAzureCredential` を使用しています。 これは、`EnvironmentCredential`、`ManagedIdentityCredential`、`SharedTokenCacheCredential`、`VisualStudioCredential` など、さまざまな資格情報の種類が自動的に試される、集約されたトークン資格情報です。 詳細については、「[DefaultAzureCredential クラス](/dotnet/api/azure.identity.defaultazurecredential)」を参照してください。 `DefaultAzureCredential` は、任意の資格情報の種類に明示的に置き換えることができます。 ただし、`DefaultAzureCredential` を使用すると、ローカル環境と Azure 環境の両方で同じコードを実行できます。 たとえば、自分の資格情報にキー コンテナーへのアクセス権を付与します。 ローカル開発に Visual Studio を使用すると、`DefaultAzureCredential` は自動的に `SharedTokenCacheCredential` または `VisualStudioCredential` に戻ります。
 
 または、AZURE_TENANT_ID、AZURE_CLIENT_ID、AZURE_CLIENT_SECRET の各環境変数を設定することもでき、`DefaultAzureCredential` により `EnvironmentCredential` に設定されているクライアント シークレットを使用してキー コンテナーでの認証が行われます。 マネージド ID を有効にして、Azure App Service、Azure Kubernetes Service、Azure Container Instance などの Azure サービスにアプリをデプロイした後、Azure サービスのマネージド ID に、キー コンテナーにアクセスするためのアクセス許可を付与します。 アプリが Azure で実行されているときは、`DefaultAzureCredential` により `ManagedIdentityCredential` が自動的に使用されます。 同じマネージド ID を使用して、App Configuration と Key Vault 両方での認証を行うことができます。 詳細については、[マネージド ID を使用して App Configuration にアクセスする方法](howto-integrate-azure-managed-service-identity.md)に関する記事を参照してください。
 

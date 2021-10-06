@@ -4,14 +4,14 @@ description: Azure Cosmos DB がデータベースの保護とデータのセキ
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/30/2021
+ms.date: 09/16/2021
 ms.author: mjbrown
-ms.openlocfilehash: ee5b5421ea0cb43371f790eecc31f22cc4ae7142
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 818c380d1ec2b3d7095eccec94b8e6f324cb45d0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123257857"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128615011"
 ---
 # <a name="security-in-azure-cosmos-db---overview"></a>Azure Cosmos DB のセキュリティ - 概要
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -99,7 +99,7 @@ ms.locfileid: "123257857"
 
 ### <a name="key-rotation-and-regeneration"></a><a id="key-rotation"></a> キーのローテーションと再生成
 
-キーのローテーションと再生成のプロセスは単純です。 まず、Azure Cosmos DB アカウントにアクセスするために、**アプリケーションで主キーまたはセカンダリ キーのいずれかを一貫して使用している** ことを確認します。 次に、以下に概要を示した手順に従います。
+キーのローテーションと再生成のプロセスは単純です。 まず、Azure Cosmos DB アカウントにアクセスするために、**アプリケーションが主キーかセカンダリ キーのどちらかを一貫して使用している** ことを確認します。 次に、以下に示す手順に従います。 キーの更新とキーの再生成についてアカウントを監視するには、[メトリックとアラートを使用したキーの更新の監視](monitor-account-key-updates.md)に関する記事を参照してください。
 
 # <a name="sql-api"></a>[SQL API](#tab/sql-api)
 
@@ -107,11 +107,11 @@ ms.locfileid: "123257857"
 
 1. Azure portal で Azure Cosmos DB アカウントに移動します。
 
-1. 左側のメニューから **[キー]** を選択したら、セカンダリ キーの右側にある省略記号から **[セカンダリ キーの再生成]** を選択します。
+1. 左側のメニューから **[キー]** を選択し、セカンダリ キーの右側にある省略記号から **[セカンダリ キーの再生成]** を選択します。
 
-    :::image type="content" source="./media/database-security/regenerate-secondary-key.png" alt-text="セカンダリ キーを再生成する方法を示している Azure portal のスクリーンショット" border="true":::
+    :::image type="content" source="./media/database-security/regenerate-secondary-key.png" alt-text="セカンダリ キーの再生成方法を示す Azure portal のスクリーンショット" border="true":::
 
-1. 新しいセカンダリ キーが Azure Cosmos DB アカウントに対して一貫して機能していることを確認します。 Cosmos DB アカウントのサイズに応じて、キーの再生成にかかる時間は 1 分から数時間までさまざまです。
+1. 新しいセカンダリ キーが Azure Cosmos DB アカウントに対して一貫して機能することを検証します。 キーの再生成には、Cosmos DB アカウントのサイズに応じて、1 分から数時間かかる場合があります。
 
 1. アプリケーションで、主キーをセカンダリ キーに置き換えます。
 
@@ -123,11 +123,11 @@ ms.locfileid: "123257857"
 
 1. Azure portal で Azure Cosmos DB アカウントに移動します。
 
-1. 左側のメニューから **[キー]** を選択したら、主キーの右側にある省略記号から **[主キーの再生成]** を選択します。
+1. 左側のメニューから **[キー]** を選択し、主キーの右側にある省略記号から **[主キーの再生成]** を選択します。
 
-    :::image type="content" source="./media/database-security/regenerate-primary-key.png" alt-text="主キーを再生成する方法を示している Azure portal のスクリーンショット" border="true":::
+    :::image type="content" source="./media/database-security/regenerate-primary-key.png" alt-text="主キーの再生成方法を示す Azure portal のスクリーンショット" border="true":::
 
-1. 新しい主キーが Azure Cosmos DB アカウントに対して一貫して機能していることを確認します。 Cosmos DB アカウントのサイズに応じて、キーの再生成にかかる時間は 1 分から数時間までさまざまです。
+1. 新しい主キーが Azure Cosmos DB アカウントに対して一貫して機能することを検証します。 キーの再生成には、Cosmos DB アカウントのサイズに応じて、1 分から数時間かかる場合があります。
 
 1. アプリケーションで、セカンダリ キーを主キーに置き換えます。
 
@@ -145,7 +145,7 @@ ms.locfileid: "123257857"
 
     :::image type="content" source="./media/database-security/regenerate-secondary-key-mongo.png" alt-text="セカンダリ キーを再生成する方法を示している Azure portal のスクリーンショット" border="true":::
 
-1. 新しいセカンダリ キーが Azure Cosmos DB アカウントに対して一貫して機能していることを確認します。 Cosmos DB アカウントのサイズに応じて、キーの再生成にかかる時間は 1 分から数時間までさまざまです。
+1. 新しいセカンダリ キーが Azure Cosmos DB アカウントに対して一貫して機能することを検証します。 キーの再生成には、Cosmos DB アカウントのサイズに応じて、1 分から数時間かかる場合があります。
 
 1. アプリケーションで、主キーをセカンダリ キーに置き換えます。
 
@@ -161,7 +161,7 @@ ms.locfileid: "123257857"
 
     :::image type="content" source="./media/database-security/regenerate-primary-key-mongo.png" alt-text="主キーを再生成する方法を示している Azure portal のスクリーンショット" border="true":::
 
-1. 新しい主キーが Azure Cosmos DB アカウントに対して一貫して機能していることを確認します。 Cosmos DB アカウントのサイズに応じて、キーの再生成にかかる時間は 1 分から数時間までさまざまです。
+1. 新しい主キーが Azure Cosmos DB アカウントに対して一貫して機能することを検証します。 キーの再生成には、Cosmos DB アカウントのサイズに応じて、1 分から数時間かかる場合があります。
 
 1. アプリケーションで、セカンダリ キーを主キーに置き換えます。
 
@@ -169,7 +169,7 @@ ms.locfileid: "123257857"
 
     :::image type="content" source="./media/database-security/regenerate-secondary-key-mongo.png" alt-text="セカンダリ キーを再生成する方法を示している Azure portal のスクリーンショット" border="true":::
 
-# <a name="cassandra-api"></a>[Cassandra API](#tab/Cassandra-api)
+# <a name="cassandra-api"></a>[Cassandra API](#tab/cassandra-api)
 
 #### <a name="if-your-application-is-currently-using-the-primary-key"></a>アプリケーションで現在主キーを使用中の場合
 
@@ -179,7 +179,7 @@ ms.locfileid: "123257857"
 
     :::image type="content" source="./media/database-security/regenerate-secondary-key-cassandra.png" alt-text="セカンダリ キーを再生成する方法を示している Azure portal のスクリーンショット" border="true":::
 
-1. 新しいセカンダリ キーが Azure Cosmos DB アカウントに対して一貫して機能していることを確認します。 Cosmos DB アカウントのサイズに応じて、キーの再生成にかかる時間は 1 分から数時間までさまざまです。
+1. 新しいセカンダリ キーが Azure Cosmos DB アカウントに対して一貫して機能することを検証します。 キーの再生成には、Cosmos DB アカウントのサイズに応じて、1 分から数時間かかる場合があります。
 
 1. アプリケーションで、主キーをセカンダリ キーに置き換えます。
 
@@ -195,7 +195,7 @@ ms.locfileid: "123257857"
 
     :::image type="content" source="./media/database-security/regenerate-primary-key-cassandra.png" alt-text="主キーを再生成する方法を示している Azure portal のスクリーンショット" border="true":::
 
-1. 新しい主キーが Azure Cosmos DB アカウントに対して一貫して機能していることを確認します。 Cosmos DB アカウントのサイズに応じて、キーの再生成にかかる時間は 1 分から数時間までさまざまです。
+1. 新しい主キーが Azure Cosmos DB アカウントに対して一貫して機能することを検証します。 キーの再生成には、Cosmos DB アカウントのサイズに応じて、1 分から数時間かかる場合があります。
 
 1. アプリケーションで、セカンダリ キーを主キーに置き換えます。
 
@@ -209,11 +209,11 @@ ms.locfileid: "123257857"
 
 1. Azure portal で Azure Cosmos DB アカウントに移動します。
 
-1. 左側のメニューから **[キー]** を選択したら、セカンダリ キーの右側にある省略記号から **[セカンダリ キーの再生成]** を選択します。
+1. 左側のメニューから **[キー]** を選択し、セカンダリ キーの右側にある省略記号から **[セカンダリ キーの再生成]** を選択します。
 
-    :::image type="content" source="./media/database-security/regenerate-secondary-key-gremlin.png" alt-text="セカンダリ キーを再生成する方法を示している Azure portal のスクリーンショット" border="true":::
+    :::image type="content" source="./media/database-security/regenerate-secondary-key-gremlin.png" alt-text="セカンダリ キーの再生成方法を示す Azure portal のスクリーンショット" border="true":::
 
-1. 新しいセカンダリ キーが Azure Cosmos DB アカウントに対して一貫して機能していることを確認します。 Cosmos DB アカウントのサイズに応じて、キーの再生成にかかる時間は 1 分から数時間までさまざまです。
+1. 新しいセカンダリ キーが Azure Cosmos DB アカウントに対して一貫して機能することを検証します。 キーの再生成には、Cosmos DB アカウントのサイズに応じて、1 分から数時間かかる場合があります。
 
 1. アプリケーションで、主キーをセカンダリ キーに置き換えます。
 
@@ -225,11 +225,11 @@ ms.locfileid: "123257857"
 
 1. Azure portal で Azure Cosmos DB アカウントに移動します。
 
-1. 左側のメニューから **[キー]** を選択したら、主キーの右側にある省略記号から **[主キーの再生成]** を選択します。
+1. 左側のメニューから **[キー]** を選択し、主キーの右側にある省略記号から **[主キーの再生成]** を選択します。
 
-    :::image type="content" source="./media/database-security/regenerate-primary-key-gremlin.png" alt-text="主キーを再生成する方法を示している Azure portal のスクリーンショット" border="true":::
+    :::image type="content" source="./media/database-security/regenerate-primary-key-gremlin.png" alt-text="主キーの再生成方法を示す Azure portal のスクリーンショット" border="true":::
 
-1. 新しい主キーが Azure Cosmos DB アカウントに対して一貫して機能していることを確認します。 Cosmos DB アカウントのサイズに応じて、キーの再生成にかかる時間は 1 分から数時間までさまざまです。
+1. 新しい主キーが Azure Cosmos DB アカウントに対して一貫して機能することを検証します。 キーの再生成には、Cosmos DB アカウントのサイズに応じて、1 分から数時間かかる場合があります。
 
 1. アプリケーションで、セカンダリ キーを主キーに置き換えます。
 
@@ -247,7 +247,7 @@ ms.locfileid: "123257857"
 
     :::image type="content" source="./media/database-security/regenerate-secondary-key-table.png" alt-text="セカンダリ キーを再生成する方法を示している Azure portal のスクリーンショット" border="true":::
 
-1. 新しいセカンダリ キーが Azure Cosmos DB アカウントに対して一貫して機能していることを確認します。 Cosmos DB アカウントのサイズに応じて、キーの再生成にかかる時間は 1 分から数時間までさまざまです。
+1. 新しいセカンダリ キーが Azure Cosmos DB アカウントに対して一貫して機能することを検証します。 キーの再生成には、Cosmos DB アカウントのサイズに応じて、1 分から数時間かかる場合があります。
 
 1. アプリケーションで、主キーをセカンダリ キーに置き換えます。
 
@@ -263,15 +263,30 @@ ms.locfileid: "123257857"
 
     :::image type="content" source="./media/database-security/regenerate-primary-key-table.png" alt-text="主キーを再生成する方法を示している Azure portal のスクリーンショット" border="true":::
 
-1. 新しい主キーが Azure Cosmos DB アカウントに対して一貫して機能していることを確認します。 Cosmos DB アカウントのサイズに応じて、キーの再生成にかかる時間は 1 分から数時間までさまざまです。
+1. 新しい主キーが Azure Cosmos DB アカウントに対して一貫して機能することを検証します。 キーの再生成には、Cosmos DB アカウントのサイズに応じて、1 分から数時間かかる場合があります。
 
 1. アプリケーションで、セカンダリ キーを主キーに置き換えます。
 
 1. Azure portal に戻り、セカンダリ キーの再生成をトリガーします。
 
-    :::image type="content" source="./media/database-security/regenerate-secondary-key-table.png" alt-text="セカンダリ キーを再生成する方法を示している Azure portal のスクリーンショット" border="true":::
+    :::image type="content" source="./media/database-security/regenerate-secondary-key-table.png" alt-text="セカンダリ キーの再生成方法を示す Azure portal のスクリーンショット" border="true":::
 
 ---
+
+## <a name="track-the-status-of-key-regeneration"></a>キーの再生成の状態を追跡する
+
+キーを回転させたり再生成したりしたら、アクティビティ ログからその状態を追跡できます。 状態を追跡するには、次の手順を使用します。
+
+1. [Azure portal](https://portal.azure.com/) にサインインし、Azure Cosmos DB アカウントに移動します。
+
+1. **[アクティビティ ログ]** ウィンドウを開き、次のフィルターを設定します。
+
+   * **[リソースの種類]** を **[Azure Cosmos DB アカウント]** に設定します。
+   * **[操作]** を **[キーの回転]** に設定します。
+
+   :::image type="content" source="./media/database-security/track-key-regeneration-status.png" alt-text="アクティビティ ログからのキーの再生成の状態" border="true":::
+
+1. キーの再生成イベントと、その状態、操作が実行された時刻、キーの再生成を開始したユーザーの詳細が表示されます。 キーの生成操作は **[受け入れ済み]** 状態で開始され、次に **[開始済み]** に変わり、操作が完了すると **[成功]** に変わります。
 
 ## <a name="next-steps"></a>次のステップ
 

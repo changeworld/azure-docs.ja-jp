@@ -4,16 +4,16 @@ description: Azure の予約を管理する方法について説明します。 
 ms.service: cost-management-billing
 ms.subservice: reservations
 author: bandersmsft
-ms.reviewer: yashesvi
+ms.reviewer: primittal
 ms.topic: how-to
-ms.date: 06/27/2021
+ms.date: 09/20/2021
 ms.author: banders
-ms.openlocfilehash: cee0acf851d82ba09867b8d66c09a17b21e7af45
-ms.sourcegitcommit: 1c12bbaba1842214c6578d914fa758f521d7d485
+ms.openlocfilehash: cbfe1aae48f09330a025861a82cfd8caaa878e41
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2021
-ms.locfileid: "112989059"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128621889"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Azure リソースに対する予約を管理する
 
@@ -53,6 +53,8 @@ Azure Reserved Virtual Machine Instances を購入した場合は、予約の最
 
 スコープの対象となるのは、従量課金制料金の個別サブスクリプション (オファー MS-AZR-0003P または MS-AZR-0023P)、Enterprise オファー MS-AZR-0017P または MS-AZR-0148P、または CSP サブスクリプションの種類のみです。
 
+すべてのサブスクリプションを管理グループから移動すると、予約のスコープは自動的に共有に変更されます。
+
 ## <a name="who-can-manage-a-reservation-by-default"></a>既定で予約を管理できるユーザー
 
 既定では、次のユーザーが予約を表示および管理できます。
@@ -62,7 +64,7 @@ Azure Reserved Virtual Machine Instances を購入した場合は、予約の最
 
 他のユーザーが予約を管理できるようにするには、次の 2 つのオプションがあります。
 
-- 予約注文のリソース スコープのユーザーに Owner ロールを割り当てることにより、個別の予約注文に対するアクセス管理を委任します。 制限付きアクセス権を付与する場合は、別のロールを選択します。  
+- 予約注文のリソース スコープのユーザーに Owner ロールを割り当てることにより、個別の予約注文に対するアクセス管理を委任する。 制限付きアクセス権を付与する場合は、別のロールを選択します。  
      詳細な手順については、「[Azure portal を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 - ユーザーを課金管理者としてマイクロソフト エンタープライズ契約または Microsoft 顧客契約に追加するには、次の手順を実行します。

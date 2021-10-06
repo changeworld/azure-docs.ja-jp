@@ -4,12 +4,12 @@ description: この記事では、Azure 仮想マシン バックアップ ソ�
 ms.topic: conceptual
 ms.date: 05/13/2021
 ms.custom: references_regions , devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: bc309311db421a22a845b273d3816e7c51e3ce76
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: e23c0729f44128172e4afd4902ce60e9c2ecb29c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113112826"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128613082"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>Azure 仮想マシンの選択的なディスク バックアップと復元
 
@@ -257,6 +257,9 @@ Enable-AzRecoveryServicesBackupProtection -Item $item  -ExcludeAllDataDisks -Vau
 ```azurepowershell
 Enable-AzRecoveryServicesBackupProtection -Item $item -ResetExclusionSettings -VaultId $targetVault.ID
 ```
+
+> [!NOTE]
+> ポリシー パラメーターが必要であるというエラーでコマンドが失敗した場合は、バックアップ項目の保護の状態を確認します。 保護が停止している可能性があるため、保護を再開し、以前のすべてのディスクの除外設定をリセットするためにポリシーが必要になります。
 
 ### <a name="restore-selective-disks-with-powershell"></a>PowerShell を使用して、ディスクを選択的に復元する
 

@@ -6,18 +6,22 @@ ms.topic: conceptual
 ms.date: 03/09/2021
 ms.author: tomfitz
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 73ff2c609438ead1e1fa42468e97be801a76e7e2
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: 95d07e313b5b8d970b2d8471295ed00c29961b96
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123450289"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128626097"
 ---
 # <a name="arm-template-deployment-what-if-operation"></a>ARM テンプレート デプロイの What-If 操作
 
 Azure Resource Manager テンプレート (ARM テンプレート) をデプロイする前に、発生する変更をプレビューすることができます。 Azure Resource Manager の what-if 操作を使うと、テンプレートをデプロイした場合にリソースがどのように変更されるかを確認できます。 what-if 操作では、既存のリソースに対していかなる変更も行われません。 代わりに、指定したテンプレートがデプロイされた場合の変更が予測されます。
 
 what-if 操作は Azure PowerShell、Azure CLI、または REST API 操作で使用できます。 What-if は、リソース グループ、サブスクリプション、管理グループ、テナント レベルのデプロイでサポートされています。
+
+### <a name="microsoft-learn"></a>Microsoft Learn
+
+What-If の詳細とハンズオン ガイダンスについては、**Microsoft Learn** の「[What-If を使用して Azure デプロイの変更をプレビューする](/learn/modules/arm-template-whatif)」を参照してください。
 
 ## <a name="install-azure-powershell-module"></a>Azure PowerShell モジュールをインストールする
 

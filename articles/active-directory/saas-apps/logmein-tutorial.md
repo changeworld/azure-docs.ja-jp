@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/18/2021
+ms.date: 09/01/2021
 ms.author: jeedes
-ms.openlocfilehash: 907b627a260bf552555dca63936af6495fb987c6
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: d818299a8de1983dbf3db02d9b1f53ea0499cc2a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112453756"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124783332"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-logmein"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と LogMeIn の統合
 
@@ -38,6 +38,7 @@ ms.locfileid: "112453756"
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 * LogMeIn では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます。
+* LogMeIn では、[自動化されたユーザー プロビジョニング](logmein-provisioning-tutorial.md)がサポートされます。
 
 ## <a name="adding-logmein-from-the-gallery"></a>ギャラリーからの LogMeIn の追加
 
@@ -145,6 +146,9 @@ LogMeIn に対する Azure AD SSO を構成してテストするには、次の�
 
     ![ユーザー フィールドのスクリーンショット。](./media/logmein-tutorial/create-user.png)
 
+> [!NOTE]
+> LogMeIn では、自動ユーザー プロビジョニングもサポートされます。自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](./logmein-provisioning-tutorial.md)をご覧ください。
+
 ## <a name="test-sso"></a>SSO のテスト 
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
@@ -159,7 +163,7 @@ LogMeIn に対する Azure AD SSO を構成してテストするには、次の�
 
 * Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した LogMeIn に自動的にサインインされます 
 
-また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [LogMeIn] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した LogMeIn に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [LogMeIn] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した LogMeIn に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

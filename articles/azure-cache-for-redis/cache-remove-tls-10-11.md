@@ -1,17 +1,17 @@
 ---
 title: Azure Cache for Redis での使用から TLS 1.0 と 1.1 を削除する
 description: Azure Cache for Redis と通信するときにアプリケーションから TLS 1.0 と 1.1 を削除する方法について説明します
-author: yegu-ms
+author: curib
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/22/2019
-ms.author: yegu
-ms.openlocfilehash: f9c6f8cc3c973d3172166514815018979f744173
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.author: cauribeg
+ms.openlocfilehash: 8af62a70d7c33a146c6f749be057f41a500ada58
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121744925"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129537611"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>Azure Cache for Redis での使用から TLS 1.0 と 1.1 を削除する
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/30/2021
-ms.openlocfilehash: 28017bb8649e748ddf2299748f3d718ae4896a68
-ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
+ms.openlocfilehash: 8773957a2b34851babb42c6804fc21d6a9d5112b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2021
-ms.locfileid: "112416202"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128657464"
 ---
 # <a name="plan-an-iot-edge-modules-offer"></a>IoT Edge モジュール プランの計画
 
@@ -42,7 +42,7 @@ IoT Edge モジュールが Azure Marketplace でのみ発行され、AppSource 
 
 ## <a name="technical-requirements"></a>技術的な要件
 
-Azure Marketplace で認定および発行されるためには、IoT Edge モジュールの主要な技術面の要件の詳細は、「[IoT Edge モジュールの技術アセットの準備](iot-edge-technical-asset.md)」を参照してください。
+IoT Edge モジュールを Azure Marketplace で認定および発行するための技術面の要件は、[IoT Edge モジュールの技術資産の準備](iot-edge-technical-asset.md)に関する記事に説明されています。
 
 ## <a name="eligibility-prerequisites"></a>資格の前提条件
 

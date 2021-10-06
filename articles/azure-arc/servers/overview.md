@@ -3,12 +3,12 @@ title: Azure Arc 対応サーバーの概要
 description: Azure Arc 対応サーバーを使用して、Azure の外部でホストされているサーバーを Azure リソースと同じように管理する方法について説明します。
 ms.date: 08/27/2021
 ms.topic: overview
-ms.openlocfilehash: 2a6ed9eb865ed588653cd9ce5a41863af2db6de4
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 5bca2ec2bdf46f27ca83c4747c5ecb5688fa1708
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123108718"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124807156"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>Azure Arc 対応サーバーとは
 
@@ -39,13 +39,13 @@ Azure Arc 対応サーバーを使用すると、Azure の "*外部*"、企業�
 | Azure Monitor | [VM insights](../../azure-monitor/vm/vminsights-overview.md) を使用して、接続されているマシンのゲスト オペレーティング システムのパフォーマンスを監視します。また、アプリケーション コンポーネントを検出して、そのプロセスや、他のリソースとの依存関係を監視します。 [Log Analytics エージェント](../../azure-monitor/agents/agents-overview.md#log-analytics-agent)を使用して、マシンで実行されているオペレーティング システムやワークロードから、パフォーマンス データやイベントなどの他のログ データを収集します。 このデータは、[Log Analytics ワークスペース](../../azure-monitor/logs/design-logs-deployment.md)に格納されます。 |
 
 > [!NOTE]
-> 現時点では、Azure Automation の Update Management を Arc 対応サーバーから直接有効にすることはサポートされていません。 要件とサーバーに対する有効化の方法を理解するには、「[Automation アカウントから Update Management を有効にする](../../automation/update-management/enable-from-automation-account.md)」を参照してください。
+> 現時点では、Azure Automation の Update Management を Azure Arc 対応サーバーから直接有効にすることはサポートされていません。 要件とサーバーに対する有効化の方法を理解するには、「[Automation アカウントから Update Management を有効にする](../../automation/update-management/enable-from-automation-account.md)」を参照してください。
 
 ハイブリッド マシンから収集されて Log Analytics ワークスペースに格納されるログ データには、[リソース コンテキスト](../../azure-monitor/logs/design-logs-deployment.md#access-mode)のログ アクセスをサポートするために、リソース ID など、マシンに固有のプロパティが含まれるようになりました。
 
 [!INCLUDE [azure-lighthouse-supported-service](../../../includes/azure-lighthouse-supported-service.md)]
 
-Arc 対応サーバーを使用してハイブリッドおよびマルチクラウド環境で Azure の監視、セキュリティ、更新サービスを実装する方法の詳細については、次のビデオをご覧ください。
+Azure Arc 対応サーバーを使用してハイブリッドおよびマルチクラウド環境で Azure の監視、セキュリティ、更新サービスを実装する方法の詳細については、次のビデオをご覧ください。
 
 > [!VIDEO https://www.youtube.com/embed/mJnmXBrU1ao]
 
@@ -66,10 +66,10 @@ Azure Arc 対応サーバーでサポートされているリージョンの確�
 
 ### <a name="supported-environments"></a>サポートされている環境
 
-Arc 対応サーバーでは、Azure の "*外部*" でホストされている物理サーバーと仮想マシンの管理がサポートされます。 VM をホストするハイブリッド クラウド環境のうち、サポートされている環境の詳細については、[Connected Machine エージェントの前提条件](agent-overview.md#supported-environments)に関するページを参照してください。
+Azure Arc 対応サーバーでは、Azure の "*外部*" でホストされている物理サーバーと仮想マシンの管理がサポートされます。 VM をホストするハイブリッド クラウド環境のうち、サポートされている環境の詳細については、[Connected Machine エージェントの前提条件](agent-overview.md#supported-environments)に関するページを参照してください。
 
 > [!NOTE]
-> Arc 対応サーバーは、Azure で実行される仮想マシンの管理を可能にするようには設計されておらず、サポートされていません。
+> Azure Arc 対応サーバーは、Azure で実行される仮想マシンの管理を可能にするようには設計されておらず、サポートされていません。
 
 ### <a name="agent-status"></a>エージェントの状態
 
@@ -77,6 +77,6 @@ Connected Machine エージェントは、5 分間隔でハートビート メ�
 
 ## <a name="next-steps"></a>次のステップ
 
-* 複数のハイブリッド マシンにまたがって Arc 対応サーバーを評価するか、または有効にする前に、[Connected Machine エージェントの概要](agent-overview.md)を確認して、要件、エージェントに関する技術的な詳細、デプロイ方法を理解してください。
+* 複数のハイブリッド マシンにまたがって Azure Arc 対応サーバーを評価するか、または有効にする前に、[Connected Machine エージェントの概要](agent-overview.md)に関するページを確認して、要件、エージェントに関する技術的な詳細、デプロイ方法を理解してください。
 
 * [計画と展開ガイド](plan-at-scale-deployment.md)を参照して、任意の規模で Azure Arc 対応サーバーをデプロイし、一元的な管理と監視を実装する計画を立ててください。

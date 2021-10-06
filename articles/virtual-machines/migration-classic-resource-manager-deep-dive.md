@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 12/17/2020
 ms.author: tagore
-ms.openlocfilehash: af032e52886772de6238d1f6dff456189e7e8b3e
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 90486f944c2c891415b61fd29731f6f485ca0f04
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122698123"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128673162"
 ---
 # <a name="technical-deep-dive-on-platform-supported-migration-from-classic-to-azure-resource-manager"></a>プラットフォームでサポートされているクラシックから Azure Resource Manager への移行に関する技術的な詳細
 
@@ -168,7 +168,7 @@ Azure クラシック デプロイ モデルから、Azure Resource Manager デ�
 | 仮想ネットワーク |仮想ネットワーク |仮想ネットワークとそのすべてのプロパティが Resource Manager デプロイ モデルに移行されます。 `-migrated`という名前で新しいリソース グループが作成されます。 |
 | 予約済み IP |静的割り当て方法のあるパブリック IP アドレス |ロード バランサーに関連付けられている予約済み IP が、クラウド サービスまたは仮想マシンの移行に伴って移行されます。 関連付けられていない予約済み IP は、[Move-AzureReservedIP](/powershell/module/servicemanagement/azure.service/move-azurereservedip) を使用して移行できます。  |
 | VM ごとのパブリック IP アドレス |動的割り当て方法のあるパブリック IP アドレス |VM に関連付けられているパブリック IP アドレスは、割り当て方法が静的に設定されているパブリック IP アドレス リソースとして変換されます。 |
-| NSG |NSG |サブネットに関連付けられているネットワーク セキュリティ グループは、Resource Manager デプロイ モデルへの移行の一環として複製されます。 移行中、クラシック デプロイ モデルの NSG は削除されません。 ただし、NSG の管理プレーン操作は、移行中はブロックされます。 関連付けられていない NSG は、[Move-AzureNetworkSecurityGroup](/powershell/module/servicemanagement/azure.service/move-azurenetworksecuritygroup) を使用して移行できます。|
+| NSG |NSG |仮想マシンやサブネットに関連付けられているネットワーク セキュリティ グループは、Resource Manager デプロイ モデルへの移行の一環として複製されます。 移行中、クラシック デプロイ モデルの NSG は削除されません。 ただし、NSG の管理プレーン操作は、移行中はブロックされます。 関連付けられていない NSG は、[Move-AzureNetworkSecurityGroup](/powershell/module/servicemanagement/azure.service/move-azurenetworksecuritygroup) を使用して移行できます。|
 | DNS サーバー |DNS サーバー |仮想ネットワークまたは VM に関連付けられている DNS サーバーは、該当するリソース移行の一環として、すべてのプロパティと共に移行されます。 |
 | UDR |UDR |サブネットに関連付けられているユーザー定義のルートは、Resource Manager デプロイ モデルへの移行の一環として複製されます。 移行中、クラシック デプロイ モデルの UDR は削除されません。 UDR の管理プレーン操作は、移行中はブロックされます。 関連付けられていない UDR は、[Move-AzureRouteTable](/powershell/module/servicemanagement/azure.service/Move-AzureRouteTable) を使用して移行できます。 |
 | VM のネットワーク構成の IP 転送プロパティ |NIC の IP 転送プロパティ |VM上 の IP 転送プロパティは、移行中、ネットワーク インターフェイスでプロパティに変換されます。 |

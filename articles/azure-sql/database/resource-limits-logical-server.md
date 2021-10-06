@@ -10,13 +10,13 @@ ms.topic: reference
 author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: mathoma
-ms.date: 09/28/2021
-ms.openlocfilehash: e9db19643252a94513be57c2cd3a18ee6038b742
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.date: 10/01/2021
+ms.openlocfilehash: 67983b60457d652a1e4de71c6655f7eedae40542
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129218170"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129389762"
 ---
 # <a name="resource-management-in-azure-sql-database"></a>Azure SQL Database でのリソース管理
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -36,7 +36,7 @@ ms.locfileid: "129218170"
 | :--- | :--- |
 | [論理サーバー](logical-servers.md)あたりのデータベース | 5000 |
 | 1 つのリージョンにおけるサブスクリプションあたりの既定の論理サーバー数 | 20 |
-| 1 つのリージョンにおけるサブスクリプションあたりの最大の論理サーバー数 | 200 |
+| 1 つのリージョンにおけるサブスクリプションあたりの最大の論理サーバー数 | 250 |
 | 論理サーバーあたりの DTU/eDTU クォータ | 54,000 |
 | 論理サーバーあたりの仮想コア クォータ | 540 |
 | 論理サーバーあたりの最大エラスティック プール | DTU または仮想コアの数によって制限されます。 たとえば、各プールが 1000 DTU の場合、1 つのサーバーで 54 プールをサポートできます。|

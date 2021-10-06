@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 07/14/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 773e0053512026f6a92a2981d43340b68e708186
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: f988fafbdd381c88a3f8da60fb48fa3320a82876
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113757704"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128674454"
 ---
 # <a name="what-is-azure-virtual-desktop"></a>Azure Virtual Desktop とは
 
@@ -123,6 +123,8 @@ Azure Virtual Desktop には、お客様がユーザーに配信する Windows �
 
 Azure Virtual Desktop は、[Microsoft ライフサイクル ポリシー](/lifecycle/)に従っており、次の x64 オペレーティング システム イメージをサポートしています。
 
+* Windows 11 Enterprise マルチセッション (プレビュー)
+* Windows 11 Enterprise (プレビュー)
 * Windows 10 (Enterprise マルチセッション)
 * Windows 10 Enterprise
 * Windows 7 Enterprise
@@ -136,6 +138,8 @@ Azure Virtual Desktop では、x86 (32 ビット)、Windows 10 Enterprise N、Wi
 
 |オペレーティング システム|Azure イメージ ギャラリー|手動での VM のデプロイ|Azure Resource Manager テンプレート統合|Azure Marketplace でのホスト プールのプロビジョニング|
 |--------------------------------------|:------:|:------:|:------:|:------:|
+|Windows 11 Enterprise マルチセッション (プレビュー)|はい|はい|はい|はい|
+|Windows 11 Enterprise (プレビュー)|はい|はい|はい|はい|
 |Windows 10 Enterprise マルチセッション、バージョン 1909 以降|はい|はい|はい|はい|
 |Windows 10 Enterprise、バージョン 1909 以降|はい|はい|はい|はい|
 |Windows 7 Enterprise|はい|はい|いいえ|いいえ|

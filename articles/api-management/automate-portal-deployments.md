@@ -2,17 +2,17 @@
 title: 開発者ポータルのデプロイを自動化する
 titleSuffix: Azure API Management
 description: 2 つの API Management サービス間でセルフホステッド開発者ポータル コンテンツを自動的に移行する方法について説明します。
-author: erikadoyle
-ms.author: apimpm
+author: dlepow
+ms.author: danlep
 ms.date: 04/15/2021
 ms.service: api-management
 ms.topic: how-to
-ms.openlocfilehash: e189a9339f6ca3bc81148b86206ddd052392074f
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: a2fab946179fb0bef9db0068bb8f660f91ca8c04
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107741425"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128669153"
 ---
 # <a name="automate-developer-portal-deployments"></a>開発者ポータルのデプロイを自動化する
 

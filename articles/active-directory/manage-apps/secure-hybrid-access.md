@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 8/17/2021
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 321b7ed1ee6cfc2d37547a88f3aef5be6d594e10
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: bc8d5d0b62f75d73bbe8879739069f1d28ce15bb
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122397129"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128642607"
 ---
 # <a name="secure-hybrid-access-secure-legacy-apps-with-azure-active-directory"></a>安全なハイブリッド アクセス:Azure Active Directory を使用してレガシ アプリをセキュリティで保護する
 
@@ -26,48 +26,48 @@ ms.locfileid: "122397129"
 
 - [セキュリティで保護されたハイブリッド アクセス パートナー](#secure-hybrid-access-through-azure-ad-partner-integrations)
 
-[Azure AD 条件付きアクセス](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)や [Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-identity-protection) などの Azure AD 機能を使用し、すべてのアプリケーションでお使いのセキュリティに対する姿勢間の差をなくし、強化することができます。 Azure AD を ID プロバイダー (IDP) として使用することで、[シングル サインオン (SSO)](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) や[多要素認証 (MFA)](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks) などの最新の認証および認可方式を使用し、お使いのオンプレミスのレガシ アプリケーションをセキュリティで保護することができます。
+[Azure AD 条件付きアクセス](../conditional-access/overview.md)や [Azure AD Identity Protection](../identity-protection/overview-identity-protection.md) などの Azure AD 機能を使用し、すべてのアプリケーションでお使いのセキュリティに対する姿勢間の差をなくし、強化することができます。 Azure AD を ID プロバイダー (IDP) として使用することで、[シングル サインオン (SSO)](what-is-single-sign-on.md) や[多要素認証 (MFA)](../authentication/concept-mfa-howitworks.md) などの最新の認証および認可方式を使用し、お使いのオンプレミスのレガシ アプリケーションをセキュリティで保護することができます。
 
 ## <a name="secure-hybrid-access-through-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用したセキュリティで保護されたハイブリッド アクセス
   
-[アプリケーション プロキシ](https://docs.microsoft.com/azure/active-directory/app-proxy/what-is-application-proxy)を使用すると、お使いのオンプレミスの Web アプリケーションに[セキュリティで保護されたリモート アクセス](https://docs.microsoft.com/azure/active-directory/app-proxy/application-proxy-add-on-premises-application)を提供できます。 ユーザーは VPN を使用する必要はありません。 ユーザーは [SSO](https://docs.microsoft.com/azure/active-directory/app-proxy/application-proxy-config-sso-how-to#how-to-configure-single-sign-on) の後、簡単に任意のデバイスからアプリケーションに接続できるようになります。 サービスとしてのリモート アクセスを提供するアプリケーション プロキシを使用すると、企業ネットワーク外のユーザーに[お使いのオンプレミスのアプリケーションを簡単に発行](https://docs.microsoft.com/azure/active-directory/app-proxy/application-proxy-add-on-premises-application)できるようになります。 お使いのオンプレミス アプリケーションは変更せずに、自分のクラウド アクセス管理を拡張できます。 次の手順として、「[Azure AD アプリケーション プロキシのデプロイ計画](https://docs.microsoft.com/azure/active-directory/app-proxy/application-proxy-deployment-plan)」に進みます。
+[アプリケーション プロキシ](../app-proxy/what-is-application-proxy.md)を使用すると、お使いのオンプレミスの Web アプリケーションに[セキュリティで保護されたリモート アクセス](../app-proxy/application-proxy-add-on-premises-application.md)を提供できます。 ユーザーは VPN を使用する必要はありません。 ユーザーは [SSO](../app-proxy/application-proxy-config-sso-how-to.md#how-to-configure-single-sign-on) の後、簡単に任意のデバイスからアプリケーションに接続できるようになります。 サービスとしてのリモート アクセスを提供するアプリケーション プロキシを使用すると、企業ネットワーク外のユーザーに[お使いのオンプレミスのアプリケーションを簡単に発行](../app-proxy/application-proxy-add-on-premises-application.md)できるようになります。 お使いのオンプレミス アプリケーションは変更せずに、自分のクラウド アクセス管理を拡張できます。 次の手順として、「[Azure AD アプリケーション プロキシのデプロイ計画](../app-proxy/application-proxy-deployment-plan.md)」に進みます。
 
 ## <a name="secure-hybrid-access-through-azure-ad-partner-integrations"></a>Azure AD パートナー統合を使用したセキュリティで保護されたハイブリッド アクセス  
 
-[Azure AD アプリケーション プロキシ](https://aka.ms/whyappproxy)に加えて、Microsoft では、オンプレミスのアプリケーションや、レガシ認証を使用するアプリケーションへのセキュリティで保護されたアクセスを実現するために、サードパーティのプロバイダーと提携しています。
+[Azure AD アプリケーション プロキシ](../app-proxy/what-is-application-proxy.md)に加えて、Microsoft では、オンプレミスのアプリケーションや、レガシ認証を使用するアプリケーションへのセキュリティで保護されたアクセスを実現するために、サードパーティのプロバイダーと提携しています。
 
 ![アプリ プロキシとパートナーを利用した、セキュリティで保護されたハイブリッド アクセスを示す図](./media/secure-hybrid-access/secure-hybrid-access.png)
 
-以下のパートナーから、アプリケーションごとの条件付きアクセス ポリシーをサポートするための事前構築済みソリューションと、Azure AD との統合に関する詳細なガイダンスが提供されています。 
+以下のパートナーから、**アプリケーションごとの条件付きアクセス ポリシー** をサポートするための事前構築済みソリューションと、Azure AD との統合に関する詳細なガイダンスが提供されています。 
 
-- [Citrix アプリケーション デリバリー コントローラー (ADC)](https://docs.microsoft.com/azure/active-directory/saas-apps/citrix-netscaler-tutorial)  
+- [Akamai Enterprise Application Access](../saas-apps/akamai-tutorial.md)
 
-- [Datawiza Access Broker](https://docs.microsoft.com/azure/active-directory/manage-apps/add-application-portal-setup-oidc-sso)
+- [Citrix アプリケーション デリバリー コントローラー (ADC)](../saas-apps/citrix-netscaler-tutorial.md)  
 
-- [F5 Big-IP APM ADC](https://docs.microsoft.com/azure/active-directory/manage-apps/f5-aad-integration)
+- [Datawiza Access Broker](../manage-apps/datawiza-with-azure-ad.md)
 
-- [F5 Big-IP APM VPN](https://docs.microsoft.com/azure/active-directory/manage-apps/f5-aad-password-less-vpn)
+- [F5 Big-IP APM ADC](../manage-apps/f5-aad-integration.md)
 
-- [Kemp](https://docs.microsoft.com/azure/active-directory/saas-apps/kemp-tutorial)
+- [F5 Big-IP APM VPN](../manage-apps/f5-aad-password-less-vpn.md)
 
-- [Perimeter 81](https://docs.microsoft.com/azure/active-directory/saas-apps/perimeter-81-tutorial)
+- [Kemp](../saas-apps/kemp-tutorial.md)
 
-- [Silverfort Authentication Platform](https://docs.microsoft.com/azure/active-directory/manage-apps/add-application-portal-setup-oidc-sso)
+- [Perimeter 81](../saas-apps/perimeter-81-tutorial.md)
+
+- [Silverfort Authentication Platform](../manage-apps/silverfort-azure-ad-integration.md)
 
 - [Strata](https://docs.microsoft.com/azure/active-directory/saas-apps/maverics-identity-orchestrator-saml-connector-tutorial)
 
-以下のパートナーが、Azure AD との統合のために事前に構築されたソリューションと詳細なガイダンスを提供しています。 
-
-- [Akamai Enterprise Application Access](https://docs.microsoft.com/azure/active-directory/saas-apps/akamai-tutorial)
+以下のパートナーが、Azure AD との統合のために事前に構築されたソリューションと詳細なガイダンスを提供しています。
 
 - [Cisco AnyConnect](https://docs.microsoft.com/azure/active-directory/saas-apps/cisco-anyconnect)
 
 - [Fortinet](https://docs.microsoft.com/azure/active-directory/saas-apps/fortigate-ssl-vpn-tutorial)
 
-- [Palo Alto Networks Global Protect](https://docs.microsoft.com/azure/active-directory/saas-apps/paloaltoadmin-tutorial)
+- [Palo Alto Networks Global Protect](../saas-apps/paloaltoadmin-tutorial.md)
 
-- [Pulse Secure Pulse Connect Secure (PCS)](https://docs.microsoft.com/azure/active-directory/saas-apps/pulse-secure-pcs-tutorial)
+- [Pulse Secure Pulse Connect Secure (PCS)](../saas-apps/pulse-secure-pcs-tutorial.md)
 
-- [Pulse Secure Virtual Traffic Manager (VTM)](https://docs.microsoft.com/azure/active-directory/saas-apps/pulse-secure-virtual-traffic-manager-tutorial)
+- [Pulse Secure Virtual Traffic Manager (VTM)](../saas-apps/pulse-secure-virtual-traffic-manager-tutorial.md)
 
-- [Zscaler Private Access (ZPA)](https://docs.microsoft.com/azure/active-directory/saas-apps/zscalerprivateaccess-tutorial)
+- [Zscaler Private Access (ZPA)](../saas-apps/zscalerprivateaccess-tutorial.md)

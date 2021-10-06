@@ -1,8 +1,8 @@
 ---
 title: 'クイックスタート: Java で Azure Cache for Redis を使用する'
 description: このクイック スタートでは、Azure Cache for Redis を使用する新しい Java アプリを作成します
-author: yegu-ms
-ms.author: yegu
+author: curib
+ms.author: cauribeg
 ms.date: 05/22/2020
 ms.topic: quickstart
 ms.service: cache
@@ -13,12 +13,12 @@ ms.custom:
 - seo-java-september2019
 - devx-track-java
 - mode-api
-ms.openlocfilehash: 107e56ccb105981d112ad765f95c85a884994355
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.openlocfilehash: 65848832acba8107e3a24167c1328c65222b9d3a
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112234737"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129538049"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-in-java"></a>クイックスタート: Java で Azure Cache for Redis を使用する
 
@@ -35,9 +35,9 @@ ms.locfileid: "112234737"
 
 ## <a name="create-an-azure-cache-for-redis"></a>Azure Cache for Redis を作成する
 
-[!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
+[!INCLUDE [redis-cache-create](includes/redis-cache-create.md)]
 
-[!INCLUDE [redis-cache-access-keys](../../includes/redis-cache-access-keys.md)]
+[!INCLUDE [redis-cache-access-keys](includes/redis-cache-access-keys.md)]
 
 ## <a name="setting-up-the-working-environment"></a>作業環境のセットアップ 
 

@@ -3,17 +3,17 @@ title: Azure Automation における Runbook の入力パラメーターを構�
 description: Runbook には、その開始時に、入力パラメーターを通じてデータを渡すことができます。この記事では、Runbook の入力パラメーターを構成する方法について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 02/14/2019
+ms.date: 09/13/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 95a6cc87471fcf2209d452f90e1e5f52cae122c5
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 61a5f24f66f9f7461b4993fcfba70f6be8bb9be1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107831296"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128644108"
 ---
-# <a name="configure-runbook-input-parameters"></a>Runbook の入力パラメーターを構成する
+# <a name="configure-runbook-input-parameters-in-automation"></a>Automation における Runbook の入力パラメーターを構成する
 
 Runbook の入力パラメーターを使用すると、開始時にデータを渡すことができるため、Runbook の柔軟性が向上します。 これらのパラメーターにより、Runbook アクションの対象を特定のシナリオや環境に設定できます。 この記事では、Runbook での入力パラメーターの構成と使用について説明します。
 
@@ -71,7 +71,7 @@ PowerShell と PowerShell Workflow Runbook では、`Object` や `PSCredential` 
 
 ### <a name="configure-input-parameters-in-graphical-runbooks"></a>グラフィカル Runbook の入力パラメーターを構成する
 
-グラフィカル Runbook の入力パラメーターの構成を説明するために、仮想マシン (1 台の VM またはリソース グループ内の全 VM) の詳細を出力する Runbook を作成します。 詳細については、「[初めてのグラフィカルな Runbook](./learn/automation-tutorial-runbook-graphical.md)」を参照してください。
+グラフィカル Runbook の入力パラメーターの構成を説明するために、仮想マシン (1 台の VM またはリソース グループ内の全 VM) の詳細を出力する Runbook を作成します。 詳細については、「[初めてのグラフィカルな Runbook](./learn/powershell-runbook-managed-identity.md)」を参照してください。
 
 グラフィカル Runbook では、次の主要な Runbook アクティビティが使用されます。
 
@@ -113,7 +113,7 @@ PowerShell と PowerShell Workflow Runbook では、`Object` や `PSCredential` 
 
 PowerShell、PowerShell Workflow、およびグラフィカル Runbook とは異なり、Python Runbook は名前付きパラメーターを取りません。 Runbook エディターでは、すべての入力パラメーターは引数値の配列として解析されます。 `sys` モジュールをお使いの Python スクリプトにインポートし、`sys.argv` 配列を使用することで、配列にアクセスできます。 配列の最初の要素 `sys.argv[0]` はスクリプトの名前であることに注意してください。 したがって、最初の実際の入力パラメーターは `sys.argv[1]` です。
 
-Python Runbook で入力パラメーターを使用する方法の例は、「[My first Python runbook in Azure Automation (初めての Azure Automation の Python Runbook)](./learn/automation-tutorial-runbook-textual-python2.md)」をご覧ください。
+Python Runbook で入力パラメーターを使用する方法の例は、「[My first Python runbook in Azure Automation (初めての Azure Automation の Python Runbook)](./learn/automation-tutorial-runbook-textual-python-3.md)」をご覧ください。
 
 ## <a name="assign-values-to-input-parameters-in-runbooks"></a>Runbook の入力パラメーターに値を割り当てる
 
@@ -288,7 +288,7 @@ Runbook に渡すデータを JSON ファイルに格納すると便利な場合
 
 ### <a name="create-the-runbook"></a>Runbook の作成
 
-Azure Automation で **Test-Json** という名前の新しい PowerShell Runbook を作成します。 「[初めての PowerShell Runbook](./learn/automation-tutorial-runbook-textual-powershell.md)」を参照してください。
+Azure Automation で **Test-Json** という名前の新しい PowerShell Runbook を作成します。
 
 JSON データを受け入れるには、Runbook は、入力パラメーターとしてオブジェクトを受け取る必要があります。 これにより、Runbook は JSON ファイルで定義されたプロパティを使用できるようになります。
 
@@ -298,10 +298,10 @@ Param(
      [object]$json
 )
 
-# Connect to Azure account
-$Conn = Get-AutomationConnection -Name AzureRunAsConnection
-Connect-AzAccount -ServicePrincipal -Tenant $Conn.TenantID `
-    -ApplicationID $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
+# Connect to Azure with user-assigned managed identity
+Connect-AzAccount -Identity
+$identity = Get-AzUserAssignedIdentity -ResourceGroupName <ResourceGroupName> -Name <UserAssignedManagedIdentity>
+Connect-AzAccount -Identity -AccountId $identity.ClientId
 
 # Convert object to actual JSON
 $json = $json | ConvertFrom-Json

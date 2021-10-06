@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 08/25/2021
+ms.date: 09/23/2021
 ms.author: aahi
-ms.openlocfilehash: 93c71179de0f932a583b481e14bc89dc316f5235
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: fbe502f5ee2f88fbbf91e0222981a1688b144f2a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122864877"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128672451"
 ---
 #### <a name="version-32-preview1"></a>[バージョン 3.2-preview.1](#tab/version-3-2)
 
-[v3.1 リファレンス ドキュメント](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-2-Preview-1)
+[v3.2 リファレンス ドキュメント](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-2-Preview-1)
 
 #### <a name="version-31"></a>[Version 3.1](#tab/version-3-1)
 

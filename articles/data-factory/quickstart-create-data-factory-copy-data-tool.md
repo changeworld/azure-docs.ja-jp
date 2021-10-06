@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: tutorials
 ms.topic: quickstart
 ms.date: 07/05/2021
-ms.openlocfilehash: c4b7d5f0e60d526976734a5878cf7dd0800ad322
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2bde0d03c901808e277044db035dc738bb555bb0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121749872"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124750356"
 ---
 # <a name="quickstart-use-the-copy-data-tool-to-copy-data"></a>クイック スタート:データのコピー ツールを使用してデータをコピーする
 
@@ -35,13 +35,13 @@ ms.locfileid: "121749872"
 1. [Azure ポータル](https://portal.azure.com)にアクセスします。 
 1. Azure portal のメニューで、 **[リソースの作成]**  >  **[統合]**  >  **[Data Factory]** の順に選択します。
 
-    ![新しいデータ ファクトリの作成](./media/doc-common-process/new-azure-data-factory-menu.png)
+    :::image type="content" source="./media/doc-common-process/new-azure-data-factory-menu.png" alt-text="新しいデータ ファクトリの作成":::
 
 1. **[新しいデータ ファクトリ]** ページで、 **[名前]** に「**ADFTutorialDataFactory**」と入力します。 
  
    Azure Data Factory の名前は、"*グローバルに一意*" にする必要があります。 次のエラーが発生した場合は、データ ファクトリの名前を変更して ( **&lt;yourname&gt;ADFTutorialDataFactory** など) 作成し直してください。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事を参照してください。
   
-   ![名前が使用できないときのエラー](./media/doc-common-process/name-not-available-error.png)
+   :::image type="content" source="./media/doc-common-process/name-not-available-error.png" alt-text="名前が使用できないときのエラー":::
 1. **[サブスクリプション]** で、データ ファクトリを作成する Azure サブスクリプションを選択します。 
 1. **[リソース グループ]** で、次の手順のいずれかを行います。
      
@@ -64,11 +64,11 @@ ms.locfileid: "121749872"
 
 1. Azure Data Factory のホーム ページで、 **[取り込み]** タイルを選択し、データのコピー ツールを起動します。
 
-   ![Azure Data Factory ホーム ページのスクリーンショット。](./media/doc-common-process/get-started-page.png)
+   :::image type="content" source="./media/doc-common-process/get-started-page.png" alt-text="Azure Data Factory ホーム ページのスクリーンショット。":::
 
 1. データのコピー ツールの **[プロパティ]** ページで、 **[タスクの種類]** に **[組み込みコピー タスク]** を選択して、 **[次へ]** を選択します。
 
-   ![[プロパティ] ページ](./media/quickstart-create-data-factory-copy-data-tool/copy-data-tool-properties-page.png)
+   :::image type="content" source="./media/quickstart-create-data-factory-copy-data-tool/copy-data-tool-properties-page.png" alt-text="&quot;[プロパティ]&quot; ページ":::
 
 1. **[ソース データ ストア]** ページで、次の手順を実行します。
 
@@ -76,11 +76,11 @@ ms.locfileid: "121749872"
 
     1. ソース接続用に作成するリンクされたサービスの種類を選択します。 このチュートリアルでは、**Azure Blob Storage** を使用します。 ギャラリーからそれを選択し、 **[続行]** を選択します。
     
-       ![BLOB を選択する](./media/quickstart-create-data-factory-copy-data-tool/select-blob-source.png)
+       :::image type="content" source="./media/quickstart-create-data-factory-copy-data-tool/select-blob-source.png" alt-text="BLOB を選択する":::
 
     1. **[新しい接続 (Azure Blob Storage)]** ページで、接続の名前を指定します。 **[Azure サブスクリプション]** の一覧から Azure サブスクリプションを選択し、 **[ストレージ アカウント名]** の一覧からストレージ アカウントを選択し、接続をテストしてから **[作成]** を選択します。 
 
-       ![Azure BLOB ストレージ アカウントの構成](./media/quickstart-create-data-factory-copy-data-tool/configure-blob-storage.png)
+       :::image type="content" source="./media/quickstart-create-data-factory-copy-data-tool/configure-blob-storage.png" alt-text="Azure BLOB ストレージ アカウントの構成":::
 
     1. **[接続]** ブロックで新しく作成した接続を選択します。
     1. **[ファイルまたはフォルダー]** セクションで **[参照]** を選択して、**adftutorial/input** フォルダーに移動します。**emp.txt** ファイルを選択し、 **[OK]** をクリックします。
@@ -105,11 +105,11 @@ ms.locfileid: "121749872"
 
 1. **[Deployment complete]\(デプロイ完了\)** ページで **[監視]** を選択して、作成したパイプラインを監視します。 
 
-    ![[Deployment complete]\(デプロイ完了\) ページ](./media/quickstart-create-data-factory-copy-data-tool/deployment-page.png)
+    :::image type="content" source="./media/quickstart-create-data-factory-copy-data-tool/deployment-page.png" alt-text="&quot;[Deployment complete]\(デプロイ完了\)&quot; ページ":::
 
 1. アプリケーションの **[監視]** タブに切り替えます。このタブでは、パイプラインの状態が表示されます。 **[最新の情報に更新]** を選択して、一覧を更新します。 **[パイプライン名]** の下にあるリンクをクリックして、アクティビティの実行の詳細を表示するか、パイプラインを再実行します。 
    
-    ![パイプラインを更新する](./media/quickstart-create-data-factory-copy-data-tool/refresh-pipeline.png)
+    :::image type="content" source="./media/quickstart-create-data-factory-copy-data-tool/refresh-pipeline.png" alt-text="パイプラインを更新する":::
 
 1. コピー操作の詳細については、[アクティビティの実行] ページで、 **[アクティビティ名]** 列の下にある **[詳細]** リンク (眼鏡アイコン) を選択します。 プロパティの詳細については、[コピー アクティビティの概要](copy-activity-overview.md)に関するページを参照してください。 
 
@@ -119,7 +119,7 @@ ms.locfileid: "121749872"
 
 1. **[監視]** タブの上にある **[編集]** タブに切り替えると、リンクされたサービス、データセット、パイプラインを編集できます。 Data Factory UI での編集の詳細については、[Azure Portal を使用したデータ ファクトリの作成](quickstart-create-data-factory-portal.md)に関する記事を参照してください。
 
-    ![[作成者] タブを選択する](./media/quickstart-create-data-factory-copy-data-tool/select-author.png)
+    :::image type="content" source="./media/quickstart-create-data-factory-copy-data-tool/select-author.png" alt-text="[作成者] タブを選択する":::
 
 ## <a name="next-steps"></a>次のステップ
 このサンプルのパイプラインは、Azure Blob Storage 内のある場所から別の場所にデータをコピーします。 より多くのシナリオで Data Factory を使用する方法については、[チュートリアル](tutorial-copy-data-portal.md)を参照してください。 

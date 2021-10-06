@@ -8,17 +8,17 @@ ms.assetid: ef2797d7-d440-4a9a-a648-db32ad137494
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 08/26/2021
+ms.date: 09/21/2021
 ms.subservice: hybrid
-ms.author: billmath
+ms.author: rodejo
 ms.custom: has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3336ead4259c12b2eb6f7f87d5e21fe39765e817
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 2238916ec3ea13abd342ca0156271c1e87f5ed9c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122968796"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128659098"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect:バージョンのリリース履歴
 Azure Active Directory (Azure AD) チームは、Azure AD Connect を定期的に更新し、新機能を追加しています。 すべての追加機能がすべてのユーザーに適用されるわけではありません。
@@ -34,7 +34,7 @@ Azure AD Connect からのアップグレード手順 | Azure AD Connect の [�
 
 
 >[!IMPORTANT]
-> **2022 年 8 月 31 日に、Azure Active Directory (Azure AD) Connect の 1.x バージョンはすべて廃止されます。これは、サポートされなくなる SQL Server 2012 コンポーネントが含まれているためです。** その日付までに最新バージョンの Azure AD Connect (2.x バージョン) にアップグレードするか、[Azure AD クラウド同期を評価して切り替えてください](https://docs.microsoft.com/azure/active-directory/cloud-sync/what-is-cloud-sync)。
+> **2022 年 8 月 31 日に、Azure Active Directory (Azure AD) Connect の 1.x バージョンはすべて廃止されます。これは、サポートされなくなる SQL Server 2012 コンポーネントが含まれているためです。** その日付までに最新バージョンの Azure AD Connect (2.x バージョン) にアップグレードするか、[Azure AD クラウド同期を評価して切り替えてください](../cloud-sync/what-is-cloud-sync.md)。
 > 
 > 最適なサポートエクスペリエンスを得るには、必ず最新バージョンの Azure AD Connect を実行していることを確認します。 
 > 
@@ -57,16 +57,65 @@ Azure AD Connect のすべてのリリースが自動アップグレードに対
 
 
 ## <a name="download-links"></a>ダウンロード リンク
-Windows Server 2016 以降を使用している場合は、Azure AD Connect V2.0 を使用する必要があります。 Azure AD Connect 2.0 の最新バージョンは、[こちらのリンク](https://www.microsoft.com/en-us/download/details.aspx?id=47594)からダウンロードできます。
-以前のバージョンの Windows Server を使用している場合は、Azure AD Connect V1.6 を使用する必要があります。 Azure AD Connect 1.6 の最新バージョンは、[こちらのリンク](https://www.microsoft.com/download/details.aspx?id=103336)からダウンロードできます。
+ - Windows Server 2016 以降を使用している場合は、Azure AD Connect V2.0 を使用する必要があります。 Azure AD Connect 2.0 の最新バージョンは、[こちらのリンク](https://www.microsoft.com/en-us/download/details.aspx?id=47594)からダウンロードできます。
+ - 以前のバージョンの Windows Server を使用している場合は、Azure AD Connect V1.6 を使用する必要があります。 Azure AD Connect V1 の最新バージョンは、[このリンク](https://www.microsoft.com/download/details.aspx?id=103336)を使用してダウンロードできます。 
+ - 今後、V1 バージョンには重要な変更のみを適用する予定であるため、V1 リリースでは V2 の機能や修正プログラムの一部が見つかからない場合があります。そのため、できるだけ早く V2 バージョンにアップグレードする必要があります。
+
+## <a name="16142"></a>1.6.14.2
+>[!NOTE] 
+>これは Azure AD Connect の修正プログラムのリリースです。 このバージョンは、古いバージョンの Windows Server を実行していて、この時点でサーバーを Windows Server 2016 以降にアップグレードできないお客様が使用することを目的としています。 このバージョンを使用して Azure AD Connect V2.0 サーバーを更新することはできません。
+>このバージョンのダウンロードが可能になると、対象となるテナントの自動アップグレードが開始されます。自動アップグレードが完了するまで、数週間かかります。
+
+### <a name="release-status"></a>リリースの状態
+2021 年 9 月 21 日: ダウンロードと自動アップグレード向けにリリース済み。
+
+### <a name="functional-changes"></a>機能の変更点
+ - 最新バージョンの MIM コネクタ (1.1.1610.0) を追加しました。 詳細な情報は、[MiM コネクタのリリース履歴ページ](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-version-history#1116100-september-2021)に記載されています。
+ - Azure AD Connect であいまい一致機能を無効にする構成オプションを追加しました。 あいまい一致は、クラウド専用アカウントを引き継ぐために必要でない限り無効にすることをお勧めしています。 この[記事](https://docs.microsoft.com/powershell/module/msonline/set-msoldirsyncfeature?view=azureadps-1.0#example-2--block-soft-matching-for-the-tenant)で、あいまい一致を無効にする方法を示しています。
+
+### <a name="bug-fixes"></a>バグの修正
+ - 以前のバージョンからのアップグレード後に DesktopSSO 設定が保持されないバグを修正しました。
+ - Set-ADSync\*Permission コマンドレットが失敗する原因となるバグを修正しました。
+
+## <a name="20251"></a>2.0.25.1
+
+>[!NOTE] 
+> これは Azure AD Connect の修正プログラムのリリースです。 このリリースには Windows Server 2016 以降が必要で、Azure AD Connect のバージョン 2.0 に存在するセキュリティの問題が修正されています。また、その他いくつかのバグ修正が含まれます。
+
+### <a name="release-status"></a>リリースの状態
+2021 年 9 月 14 日: ダウンロード専用にリリース。自動アップグレードには使用できません。
+
+### <a name="bug-fixes"></a>バグの修正
+
+ - Azure AD Connect サービスを指し示すために引用符で囲まれていないパスが使用された場合のセキュリティ上の問題を修正しました。 このパスは、現在では引用符で囲まれたパスです。
+ - 既存の AD コネクタ アカウントの使用時に書き戻しが有効になっている場合のインポート構成の問題を修正しています。
+ - Set-ADSyncExchangeHybridPermissions およびその他の関連コマンドレットの問題を修正しました。これらは無効な継承型のために 1.6 から破損しました。
+ - TLS バージョンを設定するために以前のリリースで公開したコマンドレットには、キーが上書きされて、その中にあったすべての値が破棄されるという問題がありました。 キーがまだ存在しない場合にのみ新しいキーを作成することで、これを修正しました。 また、TLS レジストリの変更が Azure AD Connect 専用ではなく、同じサーバー上の他のアプリケーションにも影響を及ぼす可能性があることをユーザーに知らせる警告も追加されます。
+ - Windows Server 2016 以降を必須とするために、V2.0 の自動アップグレードを強制するためのチェックを追加しました。
+ - Set-ADSyncBasicReadPermissions コマンドレットに "ディレクトリの変更のレプリケート" アクセス許可を追加しました。
+ - UseExistingDatabase とインポート構成が一緒に使用されることを防ぐための変更を加えました。これらに、競合する構成設定が含まれる可能性があるためです。
+ - アプリケーション管理者ロールを持つユーザーがアプリ プロキシ サービスの構成を変更できるように変更を加えました。
+ - [設定のインポート/エクスポート] のラベルから "(プレビュー)" ラベルを削除しました。この機能は、これまでかなりの期間、一般提供されてきました。
+ - まだ "会社の管理者" と呼ばれていたいくつかのラベルを変更します。現在は、ロール名として "グローバル管理者" を使用しています。
+ - 要求変換規則を AAD サービス プリンシパルに追加するために、新しい AAD Kerberos PowerShell コマンドレット "\*-AADKerberosServer" を作成しました。
+
+### <a name="functional-changes"></a>機能の変更点
+ - 最新バージョンの MIM コネクタ (1.1.1610.0) を追加しました。 詳細な情報は、[MiM コネクタのリリース履歴ページ](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-version-history#1116100-september-2021)に記載されています。
+ - Azure AD Connect であいまい一致機能を無効にする構成オプションを追加しました。 あいまい一致は、クラウド専用アカウントを引き継ぐために必要でない限り無効にすることをお勧めしています。 この[記事](https://docs.microsoft.com/powershell/module/msonline/set-msoldirsyncfeature?view=azureadps-1.0#example-2--block-soft-matching-for-the-tenant)で、あいまい一致を無効にする方法を示しています。
 
 ## <a name="20100"></a>2.0.10.0
+
+### <a name="release-status"></a>リリースの状態
+2021 年 8 月 19 日: ダウンロード専用にリリース。自動アップグレードには使用できません。
 
 >[!NOTE] 
 >これは Azure AD Connect の修正プログラムのリリースです。 このリリースには Windows Server 2016 以降が必要です。 この修正プログラムは、バージョン 2.0 と、Azure AD Connect バージョン 1.6 の問題を修正します。 以前の Windows Server を使用して Azure AD Connect を実行している場合は、代わりに [1.6.13.0](#16130) ビルドをインストールする必要があります。
 
 ### <a name="release-status"></a>リリースの状態
 2021 年 8 月 19 日: ダウンロード専用にリリース。自動アップグレードには使用できません。
+
+### <a name="known-issues"></a>既知の問題
+ - 特定の状況において、このバージョンのインストーラーに、TLS 1.2 が有効になっていないことを伝えるエラーが表示され、インストールが停止されます。 これは、TLS 1.2 のレジストリ設定を検証するコードのエラーが原因となっています。 これは将来のリリースで修正する予定です。 この問題が発生したお客様は、記事「[Azure AD Connect に対する TLS 1.2 の強制](reference-connect-tls-enforcement.md)」に記載されている、TLS 1.2 を有効にする手順に従う必要があります。
 
 ### <a name="bug-fixes"></a>バグの修正
 

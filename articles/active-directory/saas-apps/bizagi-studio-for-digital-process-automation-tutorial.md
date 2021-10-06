@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/15/2021
+ms.date: 08/27/2021
 ms.author: jeedes
-ms.openlocfilehash: 390f5c60ec016ab87ae62cfbc8373fc1b485adc8
-ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
+ms.openlocfilehash: 61990018951fa9dfb65ba374bac2f05363f8ce14
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112199522"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128629851"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bizagi-for-digital-process-automation"></a>チュートリアル:Azure Active Directory のシングル サインオン (SSO) と Bizagi for Digital Process Automation の統合
 
@@ -40,6 +40,7 @@ ms.locfileid: "112199522"
 このチュートリアルでは、Automation サービスまたはサーバーを使用して、Bizagi プロジェクトで Azure AD SSO を構成し、テストします。
 
 * Bizagi for Digital Process Automation では、**SP** Initiated SSO がサポートされます。
+* Bizagi for Digital Process Automation では、[自動化されたユーザー プロビジョニング](bizagi-studio-for-digital-process-automation-provisioning-tutorial.md)がサポートされます。
 
 ## <a name="add-bizagi-for-digital-process-automation-from-the-gallery"></a>ギャラリーからの Bizagi for Digital Process Automation の追加
 
@@ -126,6 +127,8 @@ Bizagi for Digital Process Automation に対する Azure AD SSO を構成して�
 
 このセクションでは、Bizagi for Digital Process Automation で Britta Simon というユーザーを作成します。 [Bizagi for Digital Process Automation サポート チーム](mailto:jarvein.rivera@bizagi.com)と連携して、Bizagi for Digital Process Automation プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
+Bizagi for Digital Process Automation では、自動ユーザー プロビジョニングもサポートされています。自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](./bizagi-studio-for-digital-process-automation-provisioning-tutorial.md)をご覧ください。
+
 ## <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
@@ -134,7 +137,7 @@ Bizagi for Digital Process Automation に対する Azure AD SSO を構成して�
 
 * Bizagi for Digital Process Automation のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Bizagi for Digital Process Automation] タイルをクリックすると、Bizagi for Digital Process Automation のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Bizagi for Digital Process Automation] タイルをクリックすると、Bizagi for Digital Process Automation のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -7,12 +7,12 @@ ms.custom: seodec18, devx-track-azurecli
 ms.author: sumuth
 author: mksuni
 ms.date: 08/09/2021
-ms.openlocfilehash: db8d8e5faaca0941e8f009a2193301cd2207669a
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: cbb44e7a3b48ec1fae928ac4de14b30b939cf975
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122515846"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129361711"
 ---
 # <a name="azure-pipelines-for-azure-database-for-mysql-flexible-server"></a>Azure Database for MySQL フレキシブル サーバーのための Azure Pipelines
 
@@ -22,7 +22,7 @@ ms.locfileid: "122515846"
 
 - Azure アカウント。 所有していない場合は、[無料試用版を入手](https://azure.microsoft.com/free/)してください。
 
-- お使いの Azure アカウントへの [Azure Resource Manager サービス接続](/azure/devops/pipelines/library/connect-to-azure?view=azure-devops)
+- お使いの Azure アカウントへの [Azure Resource Manager サービス接続](/azure/devops/pipelines/library/connect-to-azure)
 - Microsoft ホステッド エージェントには Azure CLI が事前にインストールされています。 ただし、プライベート エージェントを使用する予定の場合は、ビルドおよびリリースのエージェントを実行するコンピューターに [Azure CLI をインストール](/cli/azure/install-azure-cli)します。 Azure CLI がインストールされているマシンでエージェントが既に実行中の場合は、関連するすべてのステージ変数が確実に更新されるように、エージェントを再起動します。
   
 このクイックスタートでは、次のいずれかのガイドで作成されたリソースを出発点として使用します。
@@ -96,11 +96,11 @@ Azure Pipelines で Azure CLI タスクを使用する際のすべてのタス�
 |powerShellIgnoreLASTEXITCODE| (省略可能) これが false の場合、スクリプトの末尾に <code>if ((Test-Path -LiteralPath variable:\\LASTEXITCODE)) { exit $LASTEXITCODE }</code> という行が追加されます。 これにより、外部コマンドの最後の終了コードが、PowerShell の終了コードとして反映されます。 そうでなければ、この行はスクリプトの末尾に追加されません。 既定値は false です。 |
 
 
-CLI のタスクで問題が発生する場合は、[ビルドとリリースのトラブルシューティングを行う方法](/azure/devops/pipelines/troubleshooting/troubleshooting?view=azure-devops)に関するページを参照してください。
+CLI のタスクで問題が発生する場合は、[ビルドとリリースのトラブルシューティングを行う方法](/azure/devops/pipelines/troubleshooting/troubleshooting)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順 
 以下に、Azure にデプロイする際の関連タスクをいくつか示します。 
 
-- [Azure リソース グループのデプロイ](/azure/devops/pipelines/tasks/deploy/azure-resource-group-deployment?view=azure-devops)
-- [Azure Web アプリのデプロイ](/azure/devops/pipelines/tasks/deploy/azure-rm-web-app-deployment?view=azure-devops)
+- [Azure リソース グループのデプロイ](/azure/devops/pipelines/tasks/deploy/azure-resource-group-deployment)
+- [Azure Web アプリのデプロイ](/azure/devops/pipelines/tasks/deploy/azure-rm-web-app-deployment)
 

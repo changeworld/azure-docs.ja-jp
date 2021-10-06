@@ -7,12 +7,12 @@ ms.reviewer: estfan, azla
 ms.topic: article
 ms.date: 06/25/2021
 ms.custom: devx-track-azurepowershell, subject-rbac-steps
-ms.openlocfilehash: 76edcac6b77b70928cb2d6cd378b421b68b3d3ef
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 884decde4df80f6e8837245faad0136fe715371f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121731316"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124775203"
 ---
 # <a name="authenticate-access-to-azure-resources-using-managed-identities-in-azure-logic-apps"></a>Azure Logic Apps でマネージド ID を使用して Azure リソースへのアクセスを認証する
 
@@ -28,18 +28,14 @@ ms.locfileid: "121731316"
 
 ## <a name="where-to-use-managed-identities"></a>どのような場合にマネージド ID を使用するか
 
-Azure Logic Apps は、["*システム割り当て*" マネージド ID](../active-directory/managed-identities-azure-resources/overview.md)と [ "*ユーザー割り当て*" マネージド ID ](../active-directory/managed-identities-azure-resources/overview.md)の両方をサポートしています。これは、ロジック アプリ ワークフローの実行場所に基づいて、ロジック アプリのグループ間で共有できます。
+Azure Logic Apps は、["*システム割り当て*" マネージド ID](../active-directory/managed-identities-azure-resources/overview.md)と [ "*ユーザー割り当て*" マネージド ID](../active-directory/managed-identities-azure-resources/overview.md)の両方をサポートしています。これは、ロジック アプリ ワークフローの実行場所に基づいて、ロジック アプリのグループ間で共有できます。
 
-* マルチテナント (従量課金プラン) ベースのロジック アプリでは、システム割り当て ID と "*単一*" のユーザー割り当て ID の両方がサポートされています。 ただし、ロジック アプリ レベルまたは接続レベルでは、両方を同時に有効にすることができないため、使用できるマネージド ID の種類は 1 つだけです。
-
-  シングルテナント (Standard プラン) ベースのロジック アプリで現在サポートされているのは、システム割り当て ID だけです。
-
-  マルチテナント (従量課金プラン) とシングルテナント (Standard プラン) の詳細については、[シングルテナントとマルチテナントおよび統合サービス環境](single-tenant-overview-compare.md)に関するドキュメントを参照してください。
+* **ロジック アプリ (従量課金)** のリソースの種類では、システム割り当て ID または "*単一*" ユーザー割り当て ID のいずれかの使用がサポートされます。 ただし、ロジック アプリ レベルまたは接続レベルでは、両方を同時に有効にすることができないため、使用できるマネージド ID の種類は 1 つだけです。 現在、**ロジック アプリ (Standard)** のリソースの種類では、ユーザー割り当て ID ではなく、自動的に有効になっているシステム割り当て ID だけがサポートされています。 これらの異なるロジック アプリのリソースの種類の詳細については、[シングルテナントとマルチテナントおよび統合サービス環境](single-tenant-overview-compare.md)に関する記事を参照してください。
 
 <a name="built-in-managed-identity"></a>
 <a name="managed-connectors-managed-identity"></a>
 
-* Azure AD オープン認証をサポートする特定の組み込み型のマネージド コネクタ操作だけが、マネージド ID を認証で使用できます。 次の表は、"*一部のサンプル*" のみを示しています。 より詳細な一覧については、「[認証がサポートされているトリガーおよびアクションの認証の種類](../logic-apps/logic-apps-securing-a-logic-app.md#authentication-types-supported-triggers-actions)」を確認してください。
+* Azure AD オープン認証 (Azure AD OAuth) をサポートする特定の組み込み型のマネージド コネクタ操作だけが、マネージド ID を認証で使用できます。 次の表は、"*一部のサンプル*" のみを示しています。 より詳細な一覧については、「[認証がサポートされているトリガーおよびアクションの認証の種類](../logic-apps/logic-apps-securing-a-logic-app.md#authentication-types-supported-triggers-actions)」を確認してください。
 
   | 演算の種類 | サポート対象の操作 |
   |----------------|----------------------|
@@ -56,6 +52,12 @@ Azure Logic Apps は、["*システム割り当て*" マネージド ID](../acti
 * アクセスするターゲット Azure リソース。 このリソースでは、マネージ ID のロールを追加します。これにより、ロジック アプリはターゲット リソースへのアクセスを認証できます。
 
 * [マネージド ID がサポートされているトリガーまたはアクション](../logic-apps/logic-apps-securing-a-logic-app.md#authentication-types-supported-triggers-actions)を使用する必要があるロジック アプリ。
+
+  | ロジック アプリのリソースの種類 | マネージド ID のサポート |
+  |-------------------------|--------------------------|
+  | **ロジック アプリ (従量課金)** | システム割り当てまたはユーザー割り当て |
+  | **ロジック アプリ (Standard)** | システム割り当て ID (自動的に有効) |
+  |||
 
 ## <a name="enable-managed-identity"></a>マネージド ID の有効化
 

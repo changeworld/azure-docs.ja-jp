@@ -4,12 +4,12 @@ description: この記事では、Azure portal を使用した Azure Backup ワ�
 ms.topic: conceptual
 ms.date: 08/06/2021
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 4b20448896de05e888de33b2a680623b662b5e5a
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: ca99be06934c9eca8a762b4990e89d8818ac3f5c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122178441"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128627237"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Azure Backup ワークロードの監視
 
@@ -155,6 +155,14 @@ Azure Backup は、Azure Monitor を介してアラートを提供し、ユー�
 3. **[登録]** をクリックして、ご自身のサブスクリプションのこの機能を有効にします。
     > [!NOTE]
     > 登録が有効になるまで、最大で 24 時間かかる可能性があります。 複数のサブスクリプションに対してこの機能を有効にするには、画面上部の関連するサブスクリプションを選択して、上記のプロセスを繰り返します。 また、最初の登録後にサブスクリプション内で新しいリソースが作成された場合は、引き続きアラートを受信するために、プレビュー フラグを再登録することをお勧めします。
+
+4. ベスト プラクティスとして、機能の登録情報が Azure Backup サービスと正常に同期されるように、リソース プロバイダーを登録することをお勧めします。 リソース プロバイダーを登録するには、機能フラグを登録したサブスクリプションで、次の PowerShell コマンドを実行します。
+
+```powershell
+Register-AzResourceProvider -ProviderNamespace <ProviderNamespace>
+```
+
+Recovery Services Vault のアラートを受け取るには、_ProviderNamespace_ パラメーターに値 _Microsoft.RecoveryServices_ を使用します。 バックアップ Vault のアラートを受信するには、値 _Microsoft.DataProtection_ を使用します。
 
 ### <a name="viewing-fired-alerts-in-the-azure-portal"></a>Azure portal 内で始動したアラートを確認 
 

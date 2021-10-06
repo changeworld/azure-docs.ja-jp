@@ -1,17 +1,17 @@
 ---
 title: Azure Cache for Redis のゾーン冗長性を有効にする
 description: Premium および Enterprise の各レベルの Azure Cache for Redis インスタンス用にゾーン冗長を設定する方法について説明します
-author: yegu-ms
-ms.author: yegu
+author: curib
+ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: 522cf0ad115e1149d7746ecadef96ae9494a1d8c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fb68ea362c5b91e5c60578f63c752d1982495efb
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121744942"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129538062"
 ---
 # <a name="enable-zone-redundancy-for-azure-cache-for-redis"></a>Azure Cache for Redis のゾーン冗長性を有効にする
 この記事では、Azure portal を使用してゾーン冗長の Azure Cache インスタンスを構成する方法について説明します。

@@ -4,17 +4,17 @@ titleSuffix: Azure Machine Learning entry script authoring
 description: デプロイ時の前処理および後処理のための Azure Machine Learning のエントリ スクリプトを記述する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.topic: how-to
 ms.date: 09/17/2020
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: acdb9a371a6a49bc8d4c5475748f60d9c589d80e
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 446b6bc0ba715106dc6a727e5b5e5b7e07528e01
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128591541"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129535936"
 ---
 # <a name="advanced-entry-script-authoring"></a>高度なエントリ スクリプトの作成
 
@@ -166,7 +166,7 @@ import requests
 uri = service.scoring_uri
 image_path = 'test.jpg'
 files = {'image': open(image_path, 'rb').read()}
-response = requests.post(url, files=files)
+response = requests.post(uri, files=files)
 
 print(response.json)
 ```

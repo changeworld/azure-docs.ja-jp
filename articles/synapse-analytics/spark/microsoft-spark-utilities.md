@@ -11,12 +11,12 @@ ms.author: ruxu
 ms.reviewer: ''
 zone_pivot_groups: programming-languages-spark-all-minus-sql
 ms.custom: subject-rbac-steps
-ms.openlocfilehash: 5e0590dd524c516b2c6b909184de1f2d65f0074c
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: f5dba6b81befd569523111b997c29e54b3e82881
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123257045"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124774616"
 ---
 # <a name="introduction-to-microsoft-spark-utilities"></a>Microsoft Spark Utilities の概要
 
@@ -453,9 +453,17 @@ FS.Rm("file path", true) // Set the last parameter as True to remove all files a
 
 ::: zone-end
 
-:::zone pivot = "programming-language-python"
+
 
 ## <a name="notebook-utilities"></a>Notebook のユーティリティ 
+
+:::zone pivot = "programming-language-csharp"
+
+サポートされていません。
+
+::: zone-end
+
+:::zone pivot = "programming-language-python"
 
 MSSparkUtils Notebook ユーティリティを使用して、ノートブックを実行したり、値を持つノートブックを終了したりできます。 次のコマンドを実行して、使用可能なメソッドの概要を取得します。
 
@@ -472,8 +480,8 @@ run(path: String, timeoutSeconds: int, arguments: Map): String -> This method ru
 
 ```
 
-### <a name="run-a-notebook"></a>ノートブックの実行
-ノートブックを実行し、その終了値を返します。 関数呼び出しの入れ子は、対話形式またはパイプラインで、ノートブックで実行できます。 参照されているノートブックは、ノートブックがこの機能を呼び出す Spark プールで実行されます。  
+### <a name="reference-a-notebook"></a>ノートブックの参照
+ノートブックを参照し、その終了値を返します。 関数呼び出しの入れ子は、対話形式またはパイプラインで、ノートブックで実行できます。 参照されているノートブックは、ノートブックがこの機能を呼び出す Spark プールで実行されます。  
 
 ```python
 
@@ -537,10 +545,7 @@ Sample1 run success with input is 20
 ```
 ::: zone-end
 
-
 :::zone pivot = "programming-language-scala"
-
-## <a name="notebook-utilities"></a>Notebook のユーティリティ 
 
 MSSparkUtils Notebook ユーティリティを使用して、ノートブックを実行したり、値を持つノートブックを終了したりできます。 次のコマンドを実行して、使用可能なメソッドの概要を取得します。
 
@@ -557,8 +562,8 @@ run(path: String, timeoutSeconds: int, arguments: Map): String -> This method ru
 
 ```
 
-### <a name="run-a-notebook"></a>ノートブックの実行
-ノートブックを実行し、その終了値を返します。 関数呼び出しの入れ子は、対話形式またはパイプラインで、ノートブックで実行できます。 参照されているノートブックは、ノートブックがこの機能を呼び出す Spark プールで実行されます。  
+### <a name="reference-a-notebook"></a>ノートブックの参照
+ノートブックを参照し、その終了値を返します。 関数呼び出しの入れ子は、対話形式またはパイプラインで、ノートブックで実行できます。 参照されているノートブックは、ノートブックがこの機能を呼び出す Spark プールで実行されます。  
 
 ```scala
 
@@ -675,7 +680,7 @@ putSecret(akvName, secretName, secretValue): puts AKV secret for a given akvName
 |--|--|
 |対象ユーザーの解決の種類|'Audience'|
 |ストレージ対象ユーザー リソース|'Storage'|
-|データウェアハウス対象ユーザー リソース|'DW'|
+|専用 SQL プール (データ ウェアハウス)|'DW'|
 |Data Lake 対象ユーザー リソース|'AzureManagement'|
 |Vault 対象ユーザー リソース|'DataLakeStore'|
 |Azure OSSDB 対象ユーザー リソース|'AzureOSSDB'|
@@ -1086,6 +1091,31 @@ mssparkutils.env.getClusterId()
 Env.GetClusterId()
 ```
 
+::: zone-end
+
+
+## <a name="runtime-context"></a>ランタイム コンテキスト
+
+mssparkutils ランタイム ユーティリティでは、3 つのランタイム プロパティを公開しています。mssparkutils ランタイム コンテキストを使用して、下に示すプロパティを取得できます。
+- **Notebookname** - 現在の notbook の名前では常に、対話モードとパイプライン モードの両方の値を返します。
+- **Pipelinejobid** - パイプライン実行 ID では、パイプライン モードで値を返し、対話モードで空の文字列を返します。
+- **Activityrunid** - ノートブック アクティビティの実行 ID では、パイプライン モードで値を返し、対話モードで空の文字列を返します。
+
+現在、ランタイム コンテキストでは Python と Scala の両方をサポートしています。
+
+:::zone pivot = "programming-language-python"
+
+```python
+mssparkutils.runtime.context
+```
+::: zone-end
+
+:::zone pivot = "programming-language-scala"
+
+```scala
+%%spark
+mssparkutils.runtime.context
+```
 ::: zone-end
 
 ## <a name="next-steps"></a>次のステップ

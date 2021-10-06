@@ -1,17 +1,17 @@
 ---
 title: 仮想ネットワークの構成 - Premium レベルの Azure Cache for Redis インスタンス
 description: Premium レベルの Azure Cache for Redis インスタンスに対する仮想ネットワーク サポートを作成および管理する方法について説明します。
-author: yegu-ms
-ms.author: yegu
+author: curib
+ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.openlocfilehash: 618fc8258c2e34c482b6c11cac469de503fa0179
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0e231920a7aee35edd7a5913987ac37f0902b5fe
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121742668"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129538139"
 ---
 # <a name="configure-virtual-network-support-for-a-premium-azure-cache-for-redis-instance"></a>Premium Azure Cache for Redis インスタンスに対する仮想ネットワーク サポートの構成
 

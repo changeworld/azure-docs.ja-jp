@@ -6,12 +6,12 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 01/22/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 2918a9dc1bbf514b6ab915d9e1d691b9ae4f95d3
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7f044133c3692ef440e69ad4f0a82e5240334129
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121729333"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129360893"
 ---
 # <a name="get-started-with-azure-monitor-application-insights-agent-for-on-premises-servers"></a>オンプレミス サーバー向け Azure Monitor Application Insights Agent の概要
 
@@ -41,20 +41,20 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force
 Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
 Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
 Install-Module -Name PowerShellGet -Force
-``` 
+```    
 PowerShell を閉じます。
 
 ### <a name="install-application-insights-agent"></a>Application Insights Agent をインストールする
 PowerShell を管理者として実行します。
-```powershell   
+```powershell    
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force
 Install-Module -Name Az.ApplicationMonitor -AllowPrerelease -AcceptLicense
-``` 
+```    
 
 > [!NOTE]
 > `AllowPrerelease`switch in `Install-Module` コマンドレットを使用すると、ベータ リリースをインストールできます。 
 >
-> 詳細については、[Install-Module](/powershell/module/powershellget/install-module?view=powershell-7.1#parameters) に関するページを参照してください。
+> 詳細については、[Install-Module](/powershell/module/powershellget/install-module#parameters) に関するページを参照してください。
 >
 
 ### <a name="enable-monitoring"></a>監視を有効にする

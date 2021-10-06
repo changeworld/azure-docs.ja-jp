@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 04/1/2021
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 0327e725534f7b56171814e99098cee365785d8c
-ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
+ms.openlocfilehash: b6a430c70d59ff980063139e71daf76d1ede220a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114205015"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128610146"
 ---
 # <a name="manage-zone-redundant-high-availability-in-azure-database-for-mysql-flexible-server-with-azure-cli"></a>Azure CLI を使用して Azure Database for MySQL フレキシブル サーバーでゾーン冗長による高可用性を管理する
 
@@ -30,7 +30,9 @@ ms.locfileid: "114205015"
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
+- アクティブなサブスクリプションが含まれる Azure アカウント。 
+
+    [!INCLUDE [flexible-server-free-trial-note](../includes/flexible-server-free-trial-note.md)]
 - Azure CLI をインストールするか、最新バージョンにアップグレードします。 [Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 - [az login](/cli/azure/reference-index#az_login) コマンドを使用して Azure アカウントにログインします。 **id** プロパティに注意してください。これは、お使いの Azure アカウントの **サブスクリプション ID** を参照します。
 
@@ -46,20 +48,23 @@ ms.locfileid: "114205015"
 
 ## <a name="enable-high-availability-during-server-creation"></a>サーバーの作成時に高可用性を有効にする
 
-高可用性を備えたサーバーの作成に使用できるのは、汎用またはメモリ最適化の価格レベルのみです。 サーバーの高可用性は、作成時にのみ有効にすることができます。
+高可用性を備えたサーバーの作成に使用できるのは、汎用またはメモリ最適化の価格レベルのみです。 ゾーン冗長の高可用性をサーバーに対して有効にできるのは、作成時のみです。
 
 **使用法:**
 
    ```azurecli
-    az mysql flexible-server create [--high-availability {Disabled, Enabled}]
+    az mysql flexible-server create [--high-availability {Disabled, SameZone, ZoneRedundant}]
+                                    [--sku-name]
+                                    [--tier]
                                     [--resource-group]
+                                    [--location]
                                     [--name]
    ```
 
 **例:**
 
    ```azurecli
-    az mysql flexible-server create --name myservername --sku-name Standard-D2ds_v4 --resource-group myresourcegroup --high-availability Enabled
+    az mysql flexible-server create --name myservername --sku-name Standard_D2ds_v4 --tier Genaralpurpose --resource-group myresourcegroup --high-availability ZoneRedundant --location eastus
    ```
 
 ## <a name="disable-high-availability"></a>高可用性を無効にする
@@ -67,10 +72,12 @@ ms.locfileid: "114205015"
 高可用性を無効にするには、[az mysql flexible-server update](/cli/azure/mysql/flexible-server#az_mysql_flexible_server_update) コマンドを使用します。 高可用性の無効化は、サーバーが高可用性を備えた状態で作成された場合にのみサポートされることに注意してください。 
 
 ```azurecli
-az mysql flexible-server update [--high-availability {Disabled, Enabled}]
+az mysql flexible-server update [--high-availability {Disabled, SameZone, ZoneRedundant}]
                                 [--resource-group]
                                 [--name]
 ```
+>[!Note]
+>ZoneRedundant から SameZone に移行する場合は、まず高可用性を無効にしてから、同じゾーンを有効にする必要があります。
 
 **例:**
 

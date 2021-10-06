@@ -4,13 +4,13 @@ description: Azure Monitor ログを使って HDInsight クラスターで実行
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-azurepowershell, references_regions
-ms.date: 08/02/2021
-ms.openlocfilehash: 0627cbb6c590178c5f393cfd519fb4a4504d050f
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.date: 09/21/2021
+ms.openlocfilehash: c4fc351105c82213549fdb357d19b480c5a51ed4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122180490"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128648033"
 ---
 # <a name="use-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Azure Monitor ログを使用して HDInsight クラスターを監視する
 
@@ -189,6 +189,8 @@ HDInsight では、次の種類のログをインポートすることによっ�
 
 * Log Analytics ワークスペース。 このワークスペースは、独自のデータ リポジトリ、データ ソース、およびソリューションを備えた一意の Azure Monitor ログ環境と考えることができます。 手順については、[Log Analytics ワークスペースの作成](../azure-monitor/vm/monitor-virtual-machine.md)に関するページをご覧ください。
 
+* ファイアウォールの背後にあるクラスターで Azure Monitor 統合を使用する予定の場合は、[ファイアウォールの背後にあるクラスターの前提条件](#oms-with-firewall)を満たす必要があります。
+
 * Azure HDInsight クラスター。 現在、Azure Monitor ログは次の HDInsight クラスター タイプで使用できます。
 
   * Hadoop
@@ -285,6 +287,25 @@ az hdinsight monitor show --name $cluster --resource-group $resourceGroup
 ```azurecli
 az hdinsight monitor disable --name $cluster --resource-group $resourceGroup
 ```
+## <a name=""></a><a name="oms-with-firewall">ファイアウォールの背後にあるクラスターの前提条件</a>
+
+一部のお客様は、ファイアウォールの背後で HDInsight との Azure Monitor 統合を正常に設定するために、以下のエンドポイントを有効にする必要があります。
+
+|エージェントのリソース | Port | Direction | バイパス HTTPS 検査 |
+|---|---|---|---|
+| \*.ods.opinsights.azure.com | ポート 443 | 送信 | はい |
+| \*.oms.opinsights.azure.com |ポート 443 | 送信 | はい |
+| \*.azure-automation.net | ポート 443 | 送信 | はい |
+
+ワイルドカード ストレージ エンドポイントの有効化に関連してセキュリティ制限がある場合は、別のオプションがあります。 代わりに以下を実行できます。
+
+1. 専用のストレージ アカウントを作成します
+2. ログ分析ワークスペースで専用ストレージ アカウントを構成します
+3. ファイアウォールで専用ストレージ アカウントを有効にします
+
+### <a name="data-collection-behind-a-firewall"></a>ファイアウォール背後でのデータ収集
+設定が成功したら、データ インジェストに必要なエンドポイントを有効にすることが重要です。 データ インジェストを成功させるため、\*blob.core.windows.net エンドポイントを有効にすることをお勧めします。
+
 
 ## <a name="install-hdinsight-cluster-management-solutions"></a>HDInsight クラスター管理ソリューションをインストールする
 
@@ -317,6 +338,24 @@ HDInsight では、次の種類のログをインポートすることによっ�
 * `log_auth_CL` - このテーブルは、成功/失敗したサインイン試行が含まれる SSH のログを提供します。
 * `log_ambari_audit_CL` - このテーブルは、Ambari からの監査ログを提供します。
 * `log_ranger_audti_CL` - このテーブルは、ESP クラスター上の Apache Ranger からの監査ログを提供します。
+
+---
+
+## <a name="update-the-log-analytics-oms-agent-used-by-hdinsight-azure-monitor-integration"></a>HDInsight の Azure Monitor 統合で使用される Log Analytics (OMS) エージェントを更新する
+
+クラスターで Azure Monitor 統合が有効になっていると、Log Analytics エージェントや Operations Management Suite (OMS) エージェントは、クラスターにインストールされて、Azure Monitor 統合を無効にして再度有効にしない限り更新されません。 クラスター上の OMS エージェントを更新する必要がある場合は、下記の手順を完了します。 ファイアウォールの背後にいる場合は、[ファイアウォールの背後にあるクラスターの前提条件](#oms-with-firewall)を完了してから、これらの手順を完了する必要がある場合があります。
+
+1. [Azure portal](https://portal.azure.com/) でご自身のクラスターを選択します。 このクラスターは、新しいポータル ページで開かれます。
+1. 左側の **[監視]** で **[Azure Monitor]** を選択します。
+1. 現在の Log Analytics ワークスペースの名前を書き留めます。
+1. メイン ビューの **[Azure Monitor の統合]** で、トグルを無効にしてから **[保存]** を選択します。 
+1. 設定の保存後、 **[Azure Monitor の統合]** トグルを再度有効にして、同じ Log Analytics ワークスペースが選択されていることを確認してから **[保存]** を選択します。
+
+クラスターで Azure Monitor 統合を有効にしている場合は、OMS エージェントを更新すると Open Management Infrastructure (OMI) バージョンも更新されます。 次のコマンドを実行すると、クラスターでの OMI バージョンをチェックできます。 
+
+```
+ sudo /opt/omi/bin/omiserver –version
+```
 
 ## <a name="next-steps"></a>次のステップ
 

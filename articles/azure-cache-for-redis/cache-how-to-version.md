@@ -1,17 +1,17 @@
 ---
 title: Azure Cache for Redis で Redis のバージョンを設定する (プレビュー)
 description: Redis のバージョンを構成する方法について説明します
-author: yegu-ms
-ms.author: yegu
+author: curib
+ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 09/30/2020
-ms.openlocfilehash: d1dda6c4c414c79daf8223794c7d89846fad418f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 4bcd5b98011c5e65714c3690f90a1c1bcb52ede1
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121739856"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129538087"
 ---
 # <a name="set-redis-version-for-azure-cache-for-redis-preview"></a>Azure Cache for Redis で Redis のバージョンを設定する (プレビュー)
 この記事では、キャッシュ インスタンスで使用する Redis ソフトウェアのバージョンを構成する方法について説明します。 Azure Cache for Redis には、Redis の最新メジャー バージョンとして、少なくとも 1 つ前のバージョンが用意されています。 新しい Redis ソフトウェアがリリースされると、これらのバージョンは定期的に更新されます。 使用可能な 2 つのバージョンからいずれかを選択できます。 現在使用しているバージョンがサポートされなくなった場合は、キャッシュが自動的に次のバージョンにアップグレードされるため、注意してください。

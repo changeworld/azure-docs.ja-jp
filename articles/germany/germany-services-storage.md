@@ -7,12 +7,12 @@ author: gitralf
 ms.author: ralfwi
 ms.service: germany
 ms.custom: bfdocs
-ms.openlocfilehash: 7a82dfa03c85ecf8ad5c80a7d037431b18a28fed
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 840ac16914196a238bcf8fdaaa518799dcb104e9
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "117028983"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129275033"
 ---
 # <a name="azure-germany-storage-services"></a>Azure Germany のストレージ サービス
 
@@ -40,7 +40,7 @@ Storage Service Encryption によって、Azure ストレージ アカウント�
 | [Azure Files](../storage/common/storage-introduction.md#azure-files) | GA | GA |
 | [Table Storage](../storage/common/storage-introduction.md#table-storage) |GA  |GA |
 | [Queue Storage](../storage/common/storage-introduction.md#queue-storage) |GA | GA |
-| [ホット/クール BLOB ストレージ](../storage/blobs/storage-blob-storage-tiers.md) |GA |GA |
+| [ホット/クール BLOB ストレージ](../storage/blobs/access-tiers-overview.md) |GA |GA |
 | [Storage Service Encryption](../storage/common/storage-service-encryption.md) |GA |GA |
 | インポート/エクスポート |NA |NA |
 | StorSimple |NA |NA |

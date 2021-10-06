@@ -3,16 +3,16 @@ title: Azure Files についてよく寄せられる質問 (FAQ) | Microsoft Doc
 description: Azure Files についてよく寄せられる質問への回答を紹介します。 Azure ファイル共有は、クラウドまたはオンプレミスの Windows、Linux、macOS デプロイで同時にマウントできます。
 author: roygara
 ms.service: storage
-ms.date: 02/23/2020
+ms.date: 09/15/2021
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 3a19493657e368bf65921f4be7bdd5c9154b77a4
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: f3ce223174bc92fefd9f31c53709665749eca112
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123536781"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128627902"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Azure Files に関してよく寄せられる質問 (FAQ)
 [Azure Files](storage-files-introduction.md) では、業界標準の[サーバー メッセージ ブロック (SMB) プロトコル](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview)および[ネットワーク ファイル システム (NFS) プロトコル](https://en.wikipedia.org/wiki/Network_File_System) (プレビュー) を介してアクセスできる、フル マネージドのファイル共有がクラウド上で提供されます。 Azure ファイル共有は、クラウドまたはオンプレミスにデプロイされた Windows、Linux、macOS で同時にマウントできます。 また、データが使用される場所に近接した Windows Server マシンに、Azure File Sync で Azure ファイル共有をキャッシュすることによって、高速なアクセスを実現することもできます。
@@ -165,7 +165,7 @@ ms.locfileid: "123536781"
   **エクスプローラーで階層化されたファイルのサムネイルやプレビューが表示されないのはなぜですか。**  
     階層化されたファイルの場合、サムネイルとプレビューはサーバー エンドポイントでは表示されません。 Windows のサムネイル キャッシュ機能は、オフライン属性が設定されたファイルの読み取りを意図的にスキップするため、これは予期される動作です。 クラウドを使った階層化が有効になっている場合、階層化されたファイルを読み取ると、それらがダウンロード (呼び戻し) されます。
 
-    この動作は Azure File Sync 固有ではありません。Windows エクスプローラーでは、オフライン属性セットが設定されているすべてのファイルに対して "グレーの X" が表示されます。 この X のアイコンは、SMB 経由でファイルにアクセスすると表示されます。 この動作の詳しい説明については、[https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105](https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105) を参照してください。
+    この動作は Azure File Sync 固有ではありません。Windows エクスプローラーでは、オフライン属性セットが設定されているすべてのファイルに対して "グレーの X" が表示されます。 この X のアイコンは、SMB 経由でファイルにアクセスすると表示されます。 この動作の詳細については、[オフラインとマークされているファイルのサムネイルを取得しない理由](https://devblogs.microsoft.com/oldnewthing/20170503-00/?p=96105)に関する記事を参照してください
 
     階層化されたファイルの管理方法については、[階層化されたファイルの管理方法](../file-sync/file-sync-how-to-manage-tiered-files.md)に関する記事を参照してください。
 

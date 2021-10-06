@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/07/2021
+ms.date: 08/27/2021
 ms.author: jeedes
-ms.openlocfilehash: 4f86124a687d668359b5f51433ddb91d93cd4370
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 4c6f2e6abec3baa674123adacc0b522c1e0a01f7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111965669"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128619214"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-browserstack-single-sign-on"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と BrowserStack Single Sign-on の統合
 
@@ -38,6 +38,7 @@ ms.locfileid: "111965669"
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 * BrowserStack Single Sign-on では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます。
+* BrowserStack Single Sign-On では、[自動化されたユーザー プロビジョニング](browserstack-single-sign-on-provisioning-tutorial.md)がサポートされます。
 
 ## <a name="add-browserstack-single-sign-on-from-the-gallery"></a>ギャラリーからの BrowserStack Single Sign-on の追加
 
@@ -128,6 +129,8 @@ BrowserStack Single Sign-on で Azure AD SSO を構成してテストするに�
 
 このセクションでは、BrowserStack Single Sign-on で B.Simon というユーザーを作成します。 [BrowserStack Single Sign-on サポート チーム](mailto:support@browserstack.com)と連携して、BrowserStack Single Sign-on プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
+BrowserStack Single Sign-On では、自動ユーザー プロビジョニングもサポートされています。自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](./browserstack-single-sign-on-provisioning-tutorial.md)をご覧ください。
+
 ## <a name="test-sso"></a>SSO のテスト 
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
@@ -142,7 +145,7 @@ BrowserStack Single Sign-on で Azure AD SSO を構成してテストするに�
 
 * Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した BrowserStack Single Sign-on に自動的にサインインされます。 
 
-また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [BrowserStack Single Sign-on] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した BrowserStack Single Sign-on に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [BrowserStack Single Sign-on] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した BrowserStack Single Sign-on に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

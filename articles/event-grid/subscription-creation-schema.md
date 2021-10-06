@@ -2,13 +2,13 @@
 title: Azure Event Grid サブスクリプション スキーマ
 description: この記事では、Azure Event Grid でイベントにサブスクライブするためのプロパティについて説明します。 Event Grid サブスクリプション スキーマ。
 ms.topic: reference
-ms.date: 07/07/2020
-ms.openlocfilehash: f6e33171cbba65cfeaca49ab6a8954be8bb89acb
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.date: 09/28/2021
+ms.openlocfilehash: 5a0671bea2ef1cb6b7169ca4e2c94128d88f9f94
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102199953"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129236499"
 ---
 # <a name="event-grid-subscription-schema"></a>Event Grid サブスクリプション スキーマ
 
@@ -28,21 +28,21 @@ PUT /subscriptions/{subscription-id}/resourceGroups/examplegroup/providers/Micro
  
 ## <a name="event-subscription-properties"></a>イベント サブスクリプションのプロパティ
 
-| プロパティ | 種類 | [説明] |
+| プロパティ | Type | [説明] |
 | -------- | ---- | ----------- |
 | destination | object | エンドポイントを定義するオブジェクト。 |
 | filter | object | イベントの種類をフィルター処理するための省略可能なフィールド。 |
 
 ### <a name="destination-object"></a>対象オブジェクト
 
-| プロパティ | 種類 | 説明 |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | endpointType | string | サブスクリプションのエンドポイントの種類 (webhook/HTTP、イベント ハブ、またはキュー)。 | 
 | endpointUrl | string | このイベント サブスクリプションのイベントの送信先 URL。 | 
 
 ### <a name="filter-object"></a>フィルター オブジェクト
 
-| プロパティ | 種類 | 説明 |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | includedEventTypes | array | イベント メッセージのイベントの種類がこれらのイベントの種類名のいずれかと完全に一致した場合に、適合します。 イベント名がイベント ソースに対して登録済みのイベントの種類名と一致しない場合は、エラーを発生させます。 既定では、すべてのイベントの種類と一致します。 |
 | subjectBeginsWith | string | イベント メッセージの件名フィールドに対する、プレフィックス一致のフィルター。 既定値または空の文字列はすべて一致します。 | 

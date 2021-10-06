@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 08/17/2021
 ms.author: apedward
-ms.openlocfilehash: 9df037177aac3dd909795f18c6e903eedd1c98a6
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: bc1e6c5ad5423f48eed50c65237b0d42a4e61d7a
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122608873"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129236220"
 ---
 # <a name="tutorial-publish-azure-static-web-apps-with-azure-devops"></a>チュートリアル: Azure DevOps を使用して Azure Static Web Apps を発行する
 
@@ -34,9 +34,6 @@ ms.locfileid: "122608873"
 
   > [!NOTE]
   > リポジトリに既存のアプリがある場合は、このセクションをスキップして次のセクションにお進みください。
-  
-  > [!NOTE]
-  > パイプラインを成功させるには、アプリケーションのターゲットを .NET Core 3.1 にする必要があります。
 
 1. Azure Repos でリポジトリに移動します。
 

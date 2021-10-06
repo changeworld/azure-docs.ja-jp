@@ -8,22 +8,22 @@ ms.topic: conceptual
 ms.date: 06/21/2021
 ms.author: normesta
 ms.reviewer: yzheng
-ms.openlocfilehash: e8d024832bf74873fb56a9d41d6d27544aa701f1
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 8fb4583fbf04637c58795d6532dcce82ccb8168e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121725052"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128624977"
 ---
 # <a name="network-file-system-nfs-30-performance-considerations-in-azure-blob-storage"></a>Azure Blob Storage でのネットワーク ファイル システム (NFS) 3.0 のパフォーマンスに関する考慮事項
 
 Blob Storage では、ネットワーク ファイル システム (NFS) 3.0 プロトコルがサポートされるようになりました。 この記事には、ストレージ要求のパフォーマンスを最適化するのに役立つ推奨事項が含まれています。 Azure Blob Storage での NFS 3.0 のサポートの詳細については、「[Azure Blob Storage でのネットワーク ファイル システム (NFS) 3.0 プロトコルのサポート](network-file-system-protocol-support.md)」を参照してください。
 
-## <a name="add-clients-to-increase-throughput"></a>スループット向上のためにクライアントを追加する 
+## <a name="add-clients-to-increase-throughput"></a>スループット向上のためにクライアントを追加する
 
-Azure Blob Storage は、ストレージ アカウントのエグレスとイングレスの上限に達するまで、直線的にスケーリングします。 したがって、アプリケーションで使用するクライアントが多いほど、より高いスループットを実現できます。  ストレージ アカウントのエグレスとイングレスの制限については、「[Standard Storage アカウントのスケーラビリティとパフォーマンスのターゲット](../common/scalability-targets-standard-account.md)」を参照してください。
+Azure Blob Storage は、ストレージ アカウントのエグレスとイングレスの上限に達するまで、直線的にスケーリングします。 したがって、アプリケーションで使用するクライアントが多いほど、より高いスループットを実現できます。 ストレージ アカウントのエグレスとイングレスの制限については、「[Standard Storage アカウントのスケーラビリティとパフォーマンスのターゲット](../common/scalability-targets-standard-account.md)」を参照してください。
 
-次のグラフは、クライアントを追加すると帯域幅がどのように増加するかを示したものです。 このグラフのクライアントは仮想マシン (VM) であり、アカウントでは Standard パフォーマンス レベルが使用されています。 
+次のグラフは、クライアントを追加すると帯域幅がどのように増加するかを示したものです。 このグラフのクライアントは仮想マシン (VM) であり、アカウントでは Standard パフォーマンス レベルが使用されています。
 
 > [!div class="mx-imgBorder"]
 > ![Standard パフォーマンス](./media/network-file-system-protocol-support-performance/standard-performance-tier.png)
@@ -35,15 +35,16 @@ Azure Blob Storage は、ストレージ アカウントのエグレスとイン
 
 ## <a name="use-premium-performance-tier-for-small-scale-applications"></a>小規模なアプリケーションに Premium パフォーマンス レベルを使用する
 
-クライアントを追加することにより、すべてのアプリケーションをスケールアップできるわけではありません。 そのようなアプリケーションの場合は、[Azure Premium ブロック BLOB ストレージ アカウント](../common/storage-account-create.md)を使用することで、低遅延と高トランザクション レートが一貫して提供されます。 Premium ブロック BLOB ストレージ アカウントは、より少ないスレッドとクライアントで最大帯域幅に到達できます。 たとえば、クライアントが 1 つの場合、Standard パフォーマンスの汎用 v2 ストレージ アカウントで使用される同じセットアップと比較して、Premium ブロック BLOB ストレージ アカウントでは **2.3 倍** の帯域幅を実現できます。 
+クライアントを追加することにより、すべてのアプリケーションをスケールアップできるわけではありません。 そのようなアプリケーションの場合は、[Azure Premium ブロック BLOB ストレージ アカウント](../common/storage-account-create.md)を使用することで、低遅延と高トランザクション レートが一貫して提供されます。 Premium ブロック BLOB ストレージ アカウントは、より少ないスレッドとクライアントで最大帯域幅に到達できます。 たとえば、クライアントが 1 つの場合、Standard パフォーマンスの汎用 v2 ストレージ アカウントで使用される同じセットアップと比較して、Premium ブロック BLOB ストレージ アカウントでは **2.3 倍** の帯域幅を実現できます。
 
-次のグラフの各棒は、Premium と Standard のパフォーマンス ストレージ アカウントで実現される帯域幅の違いを示しています。 クライアントの数が増えるにつれて、その違いは小さくなります。  
+次のグラフの各棒は、Premium と Standard のパフォーマンス ストレージ アカウントで実現される帯域幅の違いを示しています。 クライアントの数が増えるにつれて、その違いは小さくなります。
 
 > [!div class="mx-imgBorder"]
 > ![相対パフォーマンス](./media/network-file-system-protocol-support-performance/relative-performance.png)
 
-## <a name="improve-read-ahead-size-to-increase-large-file-read-throughput"></a>先行読み取りサイズを改善して、大きなファイル読み取りスループットを向上させる 
-read_ahead_kb カーネル パラメーターは、特定の読み取り要求を処理した後に読み取る必要がある追加データの量を表します。 このパラメーターを 16 MB に増やして、大きなファイル読み取りスループットを向上させることができます。 
+## <a name="improve-read-ahead-size-to-increase-large-file-read-throughput"></a>先行読み取りサイズを改善して、大きなファイル読み取りスループットを向上させる
+
+read_ahead_kb カーネル パラメーターは、特定の読み取り要求を処理した後に読み取る必要がある追加データの量を表します。 このパラメーターを 16 MB に増やして、大きなファイル読み取りスループットを向上させることができます。
 
 ```
 export AZMNT=/your/container/mountpoint
@@ -53,13 +54,13 @@ echo 15728640 > /sys/class/bdi/0:$(stat -c "%d" $AZMNT)/read_ahead_kb
 
 ## <a name="avoid-frequent-overwrites-on-data"></a>データが頻繁に上書きされないようにする
 
-新規書き込み操作より、上書き操作の方が完了するまでに時間がかかります。 これは、NFS の上書き操作 (特に、部分的なインプレース ファイル編集) が、読み取り、変更、書き込み操作といういくつかの基になる BLOB 操作を組み合わせたものであるためです。 そのため、頻繁にインプレース編集が必要なアプリケーションは、NFS が有効になっている BLOB ストレージ アカウントには適していません。 
+新規書き込み操作より、上書き操作の方が完了するまでに時間がかかります。 これは、NFS の上書き操作 (特に、部分的なインプレース ファイル編集) が、読み取り、変更、書き込み操作といういくつかの基になる BLOB 操作を組み合わせたものであるためです。 そのため、頻繁にインプレース編集が必要なアプリケーションは、NFS が有効になっている BLOB ストレージ アカウントには適していません。
 
 ## <a name="deploy-azure-hpc-cache-for-latency-sensitive-applications"></a>待機時間に厳密なアプリケーションのための Azure HPC Cache をデプロイする
 
-アプリケーションによっては、高スループットに加えて待機時間の短縮が必要になることがあります。 [Azure HPC Cache](../../hpc-cache/nfs-blob-considerations.md) をデプロイすると、待機時間を大幅に向上させることができます。 [Blob Storage での待ち時間](storage-blobs-latency.md) の詳細を確認してください。 
+アプリケーションによっては、高スループットに加えて待機時間の短縮が必要になることがあります。 [Azure HPC Cache](../../hpc-cache/nfs-blob-considerations.md) をデプロイすると、待機時間を大幅に向上させることができます。 [Blob Storage での待ち時間](storage-blobs-latency.md) の詳細を確認してください。
 
-## <a name="other-best-practice-recommendations"></a>その他のベスト プラクティスの推奨事項 
+## <a name="other-best-practice-recommendations"></a>その他のベスト プラクティスの推奨事項
 
 - 十分なネットワーク帯域幅を備えた VM を使用します。
 

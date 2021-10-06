@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 119540738ac2703afd79891d9bf8a4a9ff0c7472
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 47215f936ebc43b7aa720bc68f2caba294f03d46
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104952764"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128595353"
 ---
 # <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>What If ツールを使用した条件付きアクセスのトラブルシューティング
 
@@ -67,6 +67,9 @@ ms.locfileid: "104952764"
 ### <a name="cloud-apps"></a>クラウド アプリ
 
 この設定の既定値は **[すべてのクラウド アプリ]** です。 既定の設定では、環境内で使用可能なすべてのポリシーの評価が実行されます。 特定のクラウド アプリに影響する範囲のポリシーに絞り込むことができます。
+
+> [!NOTE]
+> What If ツールを使用する場合、[条件付きアクセスのサービスの依存関係](service-dependencies.md)はテストされません。 たとえば、What If を使用して Microsoft Teams の条件付きアクセス ポリシーをテストする場合、Office 365 Exchange Online に適用されるポリシー (Microsoft Teams の条件付きアクセス サービスの依存関係) は、結果に考慮されません。
 
 ### <a name="ip-address"></a>IP アドレス
 
