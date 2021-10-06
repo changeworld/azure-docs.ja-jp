@@ -1,7 +1,7 @@
 ---
 title: マッピング データ フローのフィルター変換
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Azure Data Factory マッピング データ フローのフィルター変換を使用して行を絞り込む
+description: Azure Data Factory または Synapse Analytics のマッピング データ フローのフィルター変換を使用して行を絞り込みます。
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
@@ -9,17 +9,19 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 05/26/2020
-ms.openlocfilehash: f313791d08c625714432953363e785e6e95b321c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/09/2021
+ms.openlocfilehash: c3cf00a5ea80278973a548a19e9ef0dc82ef877f
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638359"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129060197"
 ---
 # <a name="filter-transformation-in-mapping-data-flow"></a>マッピング データ フローのフィルター変換
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+[!INCLUDE[data-flow-preamble](includes/data-flow-preamble.md)]
 
 フィルター変換を使用すると、条件に基づいて行をフィルター処理できます。 出力ストリームには、フィルター条件に一致するすべての行が含まれます。 フィルター変換は、SQL の WHERE 句と似ています。
 
@@ -29,7 +31,7 @@ ms.locfileid: "122638359"
 
 データ フローの式ビルダーを使用して、フィルター条件の式を入力します。 式ビルダーを開くには、青色のボックスをクリックします。 フィルター条件はブール型にする必要があります。 式の作成方法の詳細については、[式ビルダー](concepts-data-flow-expression-builder.md)のドキュメントを参照してください。
 
-![フィルター変換](media/data-flow/filter1.png "フィルター変換")
+:::image type="content" source="media/data-flow/filter1.png" alt-text="フィルター変換":::
 
 ## <a name="data-flow-script"></a>データ フローのスクリプト
 
@@ -46,9 +48,9 @@ ms.locfileid: "122638359"
 
 以下の例は、受信ストリーム `CleanData` を受け取る `FilterBefore1960` という名前のフィルター変換です。 フィルター条件は `year <= 1960` という式です。
 
-Data Factory UX では、この変換は次の図のようになります。
+UI では、この変換は次の図のようになります。
 
-![フィルター変換](media/data-flow/filter1.png "フィルター変換")
+:::image type="content" source="media/data-flow/filter1.png" alt-text="フィルター変換":::
 
 この変換のデータ フロー スクリプトは、次のスニペットに含まれています。
 

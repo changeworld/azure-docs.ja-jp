@@ -4,15 +4,15 @@ description: この記事では、Azure Purview で Google BigQuery プロジェ
 author: chandrakavya
 ms.author: kchandra
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: overview
-ms.date: 7/15/2021
-ms.openlocfilehash: d88df617e994f4a609b12dff0419fd673f8207d1
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/27/2021
+ms.openlocfilehash: caaf78e14669d67f525e5756efd8e2fd301f9b38
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121721937"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129218541"
 ---
 # <a name="register-and-scan-google-bigquery-source-preview"></a>Google BigQuery ソースの登録とスキャン (プレビュー)
 
@@ -56,14 +56,14 @@ BigQuery ソースでは、BigQuery プロジェクトからメタデータを�
 
 3.  コレクションを選択するか、新しいものを作成します (省略可能)
 
-4.  **[登録]** をクリックします。
+4.  **[登録]** を選択します。
     :::image type="content" source="media/register-scan-google-bigquery-source/configure-sources.png" alt-text="BigQuery ソースを構成する" border="true":::
 
 ## <a name="creating-and-running-a-scan"></a>スキャンを作成し、実行する
 
 新しいスキャンを作成して実行するには、次の操作を行います。
 
-1.  管理センターで、 [統合ランタイム] をクリックします。 セルフホステッド統合ランタイムが設定されていることを確認してください。 設定されていない場合は、[こちら](./manage-integration-runtimes.md)に記載されている手順を使用して、セルフホステッド統合ランタイムを設定します
+1.  管理センターで、[統合ランタイム] を選択します。 セルフホステッド統合ランタイムが設定されていることを確認してください。 設定されていない場合は、[こちら](./manage-integration-runtimes.md)に記載されている手順を使用して、セルフホステッド統合ランタイムを設定します
 
 2.  **[ソース]** に移動します。
 
@@ -83,7 +83,7 @@ BigQuery ソースでは、BigQuery プロジェクトからメタデータを�
     - [ユーザー名] フィールドに、サービス アカウントのメール ID を指定します。 例: xyz\@developer.gserviceaccount.com
     - サービス アカウントの秘密キー ファイルを JSON 形式でキー コンテナーのシークレットに保存します。
 
-    Google のクラウド プラットフォームから新しい秘密キーを作成するには、ナビゲーション メニューの [IAM & Admin]\(IAM と管理者\) -\> [Service Accounts]\(サービス アカウント\) をクリックし -\> プロジェクトを選択し -\> キーを作成するサービス アカウントのメール アドレスをクリックし -\> **[Keys]\(キー\)** タブをクリックし -\> **[Add key]\(キーの追加\)** ドロップダウン メニューをクリックし、[Create new key]\(新しいキーの作成\) を選択します。 次に、JSON 形式を選択します。
+    Google のクラウド プラットフォームから新しい秘密キーを作成するには、ナビゲーション メニューの [IAM & Admin]\(IAM と管理者\) -\> [Service Accounts]\(サービス アカウント\) を選択 -\> プロジェクトを選択 -\> キーを作成するサービス アカウントのメール アドレスを選択 -\> **[Keys]\(キー\)** タブを選択 -\> **[Add key]\(キーの追加\)** ドロップダウン メニューを選択して、[Create new key]\(新しいキーの作成\) を選択します。 次に、JSON 形式を選択します。
 
       > [!Note]
       > スキャン プロセスが実行されている間、秘密キーの内容は VM 上の一時ファイルに保存されます。 この一時ファイルは、スキャンが正常に完了すると削除されます。 スキャンに失敗した場合は、成功するまで再試行が繰り返されます。 SHIR が実行されている VM 上で、アクセスが適切に制限されていることを確認してください。**
@@ -107,13 +107,13 @@ NOT および特殊文字の使用は許容されません。
     f.  **[Maximum memory available]\(使用可能な最大メモリ\):** スキャン プロセスで使用される、顧客の VM で使用可能な最大メモリ (GB 単位)。 これは、スキャンされる Google BigQuery プロジェクトのサイズによって変わります。
         :::image type="content" source="media/register-scan-google-bigquery-source/scan.png" alt-text="BigQuery ソースをスキャンする" border="true":::
 
-6.  **[テスト接続]** をクリックします。
+6.  **[接続テスト]** を選択します。
 
-7.  **[続行]** をクリックします。
+7.  **[続行]** を選択します。
 
 8.  **スキャン トリガー** を選択します。 スケジュールを設定することも、1 回限りのスキャンを実行することもできます。
 
-9.  スキャンを確認し、 **[保存および実行]** をクリックします。
+9.  自分のスキャンを確認し、 **[保存および実行]** を選択します。
 
 ## <a name="viewing-your-scans-and-scan-runs"></a>スキャンとスキャンの実行を確認する
 

@@ -3,13 +3,13 @@ title: Azure VMware Solution のデプロイを計画する
 description: Azure VMware Solution のデプロイを計画する方法について説明します。
 ms.topic: tutorial
 ms.custom: contperf-fy21q4
-ms.date: 07/07/2021
-ms.openlocfilehash: 4f0f59a01ff53646a23809efa129a154bfba81ee
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.date: 09/27/2021
+ms.openlocfilehash: 6528727fda867f5f07d7d83b09df1bbf70df6b92
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122444215"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129079468"
 ---
 # <a name="plan-the-azure-vmware-solution-deployment"></a>Azure VMware Solution のデプロイを計画する
 
@@ -34,7 +34,7 @@ ms.locfileid: "122444215"
 Azure VMware Solution のデプロイに使用する予定のサブスクリプションを特定します。  新しいサブスクリプションを作成することも、既存のサブスクリプションを使用することもできます。
 
 >[!NOTE]
->サブスクリプションは、Microsoft Enterprise Agreement (EA) またはクラウド ソリューション プロバイダー (CSP) Azure プランに関連付けられている必要があります。 詳しくは、「[対象となる条件](request-host-quota-azure-vmware-solution.md#eligibility-criteria)」をご覧ください。
+>サブスクリプションは、Microsoft Enterprise Agreement (EA)、クラウド ソリューション プロバイダー (CSP) Azure プラン、またはMicrosoft 顧客契約 (MCA) に関連付けられている必要があります。 詳しくは、「[対象となる条件](request-host-quota-azure-vmware-solution.md#eligibility-criteria)」をご覧ください。
 
 ## <a name="identify-the-resource-group"></a>リソース グループを特定する
 
@@ -65,7 +65,7 @@ Azure VMware Solution のデプロイ時に使用するサイズ ホストを特
 
 
 >[!NOTE]
->クラスターあたりのホスト数、プライベート クラウドあたりのクラスター数、プライベート クラウドあたりのホスト数に関する制限については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-vmware-solution-limits)」を参照してください。
+>クラスターあたりのホスト数、プライベート クラウドあたりのクラスター数、プライベート クラウドあたりのホスト数に関する制限については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-vmware-solution-limits)」を参照してください。
 
 ## <a name="request-a-host-quota"></a>ホスト クォータをリクエストする 
 

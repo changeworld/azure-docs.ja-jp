@@ -6,16 +6,16 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 09/24/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2591e3468999bfb48fc125bd6edfe17da8eecefd
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: be0dc81d20bf62eb0033691e5d4eac5f406a7c0f
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114728146"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129214620"
 ---
-# <a name="how-to-process-and-extract-information-from-images-in-ai-enrichment-scenarios"></a>AI エンリッチメントのシナリオで画像の情報を処理し、抽出する方法
+# <a name="extract-text-and-information-from-images-in-ai-enrichment-scenarios"></a>AI エンリッチメントのシナリオで、画像からテキストや情報を抽出します
 
 Azure Cognitive Search では、画像や画像ファイルを操作するための複数の機能を利用できます。 [ドキュメント解析](search-indexer-overview.md#document-cracking)を行う際には、*imageAction* パラメーターを使用して、英数字が含まれている写真や絵からテキストを抽出することができます (停止標識から「止まれ」の文字を抽出するなど)。 また、画像のテキスト表現を生成することもできます (たんぽぽの写真から、「たんぽぽ」や「黄色」といいたテキストを生成するなど)。 さらに、画像に関するメタデータを抽出することもできます (サイズなど)。
 

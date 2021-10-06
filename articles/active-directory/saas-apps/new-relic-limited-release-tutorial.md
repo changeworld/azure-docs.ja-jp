@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/13/2021
+ms.date: 08/31/2021
 ms.author: jeedes
-ms.openlocfilehash: 96794d2ab07f9fe352f611c7d0cf511067928bee
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: b10f4c221e0fd45ee942785edfa4b6e157a20077
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111413197"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124760911"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-new-relic"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と New Relic の統合
 
@@ -38,6 +38,8 @@ ms.locfileid: "111413197"
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 * New Relic では、SP Initiated SSO または IDP Initiated SSO がサポートされています。
+
+* New Relic では、[自動化されたユーザー プロビジョニング](new-relic-by-organization-provisioning-tutorial.md)がサポートされます。
 
 ## <a name="add-new-relic-from-the-gallery"></a>ギャラリーからの New Relic の追加
 
@@ -150,6 +152,9 @@ New Relic に対して Azure AD SSO を構成してテストするには、次�
    
    1. ユーザーを保存するには、 **[Add User]\(ユーザーの追加\)** を選択します。
 
+> [!NOTE]
+> New Relic では、自動ユーザー プロビジョニングもサポートされます。自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](./new-relic-by-organization-provisioning-tutorial.md)をご覧ください。
+
 ## <a name="test-sso"></a>SSO のテスト 
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
@@ -164,7 +169,7 @@ New Relic に対して Azure AD SSO を構成してテストするには、次�
 
 * Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した New Relic に自動的にサインインされます。 
 
-また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [New Relic] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した New Relic に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [New Relic] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した New Relic に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: 独立した Azure Virtual Network (VNet) を使用して、Azure Machine Learning ワークスペース リソースとコンピューティング環境を保護します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: enterprise-readiness
+ms.subservice: core
 ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
 ms.date: 09/24/2021
 ms.topic: how-to
 ms.custom: devx-track-python, references_regions, contperf-fy21q1,contperf-fy21q4,FY21Q4-aml-seo-hack, security
-ms.openlocfilehash: 1d1389b5627f18c8772a55300a89dca9d0de4917
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 1844d9a84714231aac7cb399239c31a6af62661c
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129423521"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129093518"
 ---
 <!-- # Virtual network isolation and privacy overview -->
 # <a name="secure-azure-machine-learning-workspace-resources-using-virtual-networks-vnets"></a>仮想ネットワーク (VNet) を使用して Azure Machine Learning ワークスペース リソースを保護する
@@ -168,7 +168,7 @@ ms.locfileid: "129423521"
 
 ### <a name="limitations"></a>制限事項
 
-[ML によるデータのラベル付け](how-to-create-image-labeling-projects.md#use-ml-assisted-data-labeling)は、仮想ネットワークの背後にある既定のストレージ アカウントをサポートしていません。 代わりに、既定以外のストレージ アカウントを使用して、ML によるデータのラベル付けを行います。 
+[ML によるデータのラベル付け](how-to-create-labeling-projects.md#use-ml-assisted-data-labeling)は、仮想ネットワークの背後にある既定のストレージ アカウントをサポートしていません。 代わりに、既定以外のストレージ アカウントを使用して、ML によるデータのラベル付けを行います。 
 
 > [!TIP]
 > 既定のストレージ アカウントでない限り、データのラベル付けに使用されるアカウントは、仮想ネットワークの背後で保護できます。 

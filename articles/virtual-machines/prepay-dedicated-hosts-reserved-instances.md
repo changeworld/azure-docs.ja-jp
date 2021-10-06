@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/28/2020
 ms.author: banders
-ms.openlocfilehash: 464ffc8b5d4d04aeb7e4013f5b25d240d5ee9b06
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 1cdd083c1f3e394feea1e29434f87878ace8dbfc
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122688965"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128546227"
 ---
 # <a name="save-costs-with-azure-dedicated-host-reservations"></a>Azure Dedicated Host 予約によるコスト削減
 
@@ -43,7 +43,7 @@ Azure Dedicated Host の予約インスタンスにコミットすると、コ�
 
 - **クラウド**: ドイツまたは中国の各リージョンでは、予約購入を利用できません。
 
-- **クォータの不足** - 単一サブスクリプションをスコープとする予約の場合、新しい予約インスタンスに割り当てることのできる vCPU クォータがそのサブスクリプションに存在していることが必要です。 たとえば、ターゲット サブスクリプションに、DSv3 シリーズに対して 10 vCPU のクォータ制限がある場合、このシリーズをサポートする予約専用ホストを購入することはできません。 予約のクォータ チェックには、既にサブスクリプションにデプロイされている VM と専用のホストが含まれます。 [クォータを増やす要求を作成](../azure-portal/supportability/resource-manager-core-quotas-request.md)して、この問題を解決できます。
+- **クォータの不足** - 単一サブスクリプションをスコープとする予約の場合、新しい予約インスタンスに割り当てることのできる vCPU クォータがそのサブスクリプションに存在していることが必要です。 たとえば、ターゲット サブスクリプションに、DSv3 シリーズに対して 10 vCPU のクォータ制限がある場合、このシリーズをサポートする予約専用ホストを購入することはできません。 予約のクォータ チェックには、既にサブスクリプションにデプロイされている VM と専用のホストが含まれます。 [クォータを増やす要求を作成](../azure-portal/supportability/regional-quota-requests.md)して、この問題を解決できます。
 
 - **容量制限** - まれに、リージョンの容量が小さいことを理由に、専用ホスト SKU のサブセットに対する新しい予約の購入が Azure によって制限される場合があります。
 
@@ -85,6 +85,8 @@ EA 契約を結んでいる場合、 **[Add more option]\(さらにオプショ�
 - **単一サブスクリプション** - 選択されたサブスクリプションの一致するリソースに予約割引を適用します。
 
 - **共有スコープ** - 課金コンテキスト内にある有効なサブスクリプションの一致するリソースに予約割引を適用します。 EA の顧客の場合、課金コンテキストは課金です。 従量課金制料金の個々のサブスクリプションの場合、課金スコープはアカウント管理者によって作成されるすべての有効なサブスクリプションです。
+
+- **管理グループ** - 管理グループと課金スコープの両方の一部であるサブスクリプションの一覧にある一致するリソースに予約割引を適用します。
 
 ## <a name="usage-data-and-reservation-utilization"></a>使用状況データと予約の使用率
 

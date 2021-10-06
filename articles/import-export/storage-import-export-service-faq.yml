@@ -6,15 +6,15 @@ metadata:
   services: storage
   ms.service: storage
   ms.topic: conceptual
-  ms.date: 08/24/2021
+  ms.date: 09/07/2021
   ms.author: alkohli
   ms.subservice: common
-  ms.openlocfilehash: bfdbb966783e4f95945933c074265d8c45ee1f61
-  ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+  ms.openlocfilehash: 7a4344ed0aa7346d3c87d36d96e4772c08080327
+  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/25/2021
-  ms.locfileid: "122867613"
+  ms.lasthandoff: 09/13/2021
+  ms.locfileid: "124763559"
 title: 'Azure Import/Export サービス: よく寄せられる質問'
 summary: >
   以下では、Azure Import/Export サービスを使用してデータを Azure Storage に転送するときによくある質問と、それに対する回答を示します。
@@ -87,18 +87,7 @@ sections:
       発送パッケージではハード ドライブだけを発送してください。 電源ケーブルや USB ケーブルなどは同梱しないでください。
   - question: >
       FedEx や DHL を利用してドライブを発送する必要がありますか?
-    answer: >
-      FedEx、DHL、UPS などの既知の運送業者や、米国郵政公社を利用して Azure データ センターにドライブを発送できます。 ただし、データ センターからユーザーへのドライブの返送の場合は、以下を指定する必要があります。
-
-
-      - 米国およびヨーロッパにおける FedEx アカウント番号
-
-      - または、アジアおよびオーストラリア地域での DHL アカウント番号
-
-
-      > [!NOTE]
-
-      > インドのデータセンターでは、ドライブを返却する際にレターヘッドに申告書 (納品書) が必要になります。 また、必要な入館証を手配するために、選択した運送業者に集荷の予約を入れ、詳細をデータセンターに伝える必要があります。
+    answer: "既知の運送業者を利用して Azure データ センターにドライブを発送できます。 FedEx、DHL、またはアメリカ郵政公社を利用することをお勧めします。 アメリカ郵政公社を利用する場合、デバイスはデータセンターでなく、最寄りの郵便局に送られるため、大幅な遅れが出る可能性があるのでご注意ください。\n\nデータセンターからユーザーへのドライブの返送の場合は、以下を指定する必要があります。 \n\n- 米国およびヨーロッパにおける FedEx アカウント番号\n- または、アジアおよびオーストラリア地域での DHL アカウント番号\n\n> [!NOTE]\n> インドのデータセンターでは、ドライブを返却する際にレターヘッドに申告書 (納品書) が必要になります。 また、必要な入館証を手配するために、選択した運送業者に集荷の予約を入れ、詳細をデータセンターに伝える必要があります。\n    \n"
   - question: >
       ドライブを海外に発送したり返送したりする場合、何か制限はありますか?
     answer: >

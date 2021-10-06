@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: integration-runtime
 ms.custom: synapse
 ms.topic: troubleshooting
-ms.date: 08/24/2021
+ms.date: 09/09/2021
 ms.author: lle
-ms.openlocfilehash: b833b8b63415a36fb0ee2862c9dfa261cfeb44ef
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: d1b3770d236c7f88090840720e8f88fd453e70cf
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122864211"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124755940"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイムのトラブルシューティング
 
@@ -32,11 +32,11 @@ ms.locfileid: "122864211"
 
     # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
     
-    :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/activity-runs-page.png" alt-text="[すべてのパイプライン実行] ペインの [アクティビティの実行] セクションのスクリーンショット。":::
+    :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/activity-runs-page.png" alt-text="&quot;[すべてのパイプライン実行]&quot; ペインの &quot;[アクティビティの実行]&quot; セクションのスクリーンショット。":::
     
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
     
-    :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/activity-runs-page-synapse.png" alt-text="[すべてのパイプライン実行] ペインの [アクティビティの実行] セクションのスクリーンショット。":::
+    :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/activity-runs-page-synapse.png" alt-text="&quot;[すべてのパイプライン実行]&quot; ペインの &quot;[アクティビティの実行]&quot; セクションのスクリーンショット。":::
     
     ---
     
@@ -48,7 +48,7 @@ ms.locfileid: "122864211"
  
    **[Share the self-hosted integration runtime (IR) logs with Microsoft]\(セルフホステッド統合ランタイム (IR) ログを Microsoft と共有する\)** ウィンドウが開きます。
 
-    ![[Share the self-hosted integration runtime (IR) logs with Microsoft]\(セルフホステッド統合ランタイム (IR) ログを Microsoft と共有する\) ウィンドウのスクリーンショット。](media/self-hosted-integration-runtime-troubleshoot-guide/choose-logs.png)
+    :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/choose-logs.png" alt-text="&quot;[セルフホステッド統合ランタイム (IR) ログを Microsoft と共有する]&quot; ウィンドウのスクリーンショット。":::
 
 1. 送信するログを選択します。 
     * "*セルフホステッド IR*" では、失敗したアクティビティに関連するログ、またはセルフホステッド IR ノード上のすべてのログをアップロードできます。 
@@ -56,7 +56,7 @@ ms.locfileid: "122864211"
 
 1. ログがアップロードされたら、問題を解決するためにさらに支援が必要な場合に後で使用できるように、レポート ID を記録しておきます。
 
-    ![IR ログの [アップロードの進行状況] ウィンドウに表示されているレポート ID のスクリーンショット。](media/self-hosted-integration-runtime-troubleshoot-guide/upload-logs.png)
+    :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/upload-logs.png" alt-text="IR ログの [アップロードの進行状況] ウィンドウに表示されているレポート ID のスクリーンショット。":::
 
 > [!NOTE]
 > ログの表示とアップロードの要求は、すべてのオンライン セルフホステッド IR インスタンスで実行されます。 いずれかのログが欠落している場合は、すべてのセルフホステッド IR インスタンスがオンラインになっていることを確認してください。 
@@ -86,7 +86,7 @@ UI からコンカレント ジョブの上限数を増やそうとすると、�
 
 サンプル シナリオ: コンカレント ジョブの最大値は現在 24 に設定されていますが、ジョブの実行速度を上げるために、この数を増やしたいと考えています。 入力できる最小値は 3 で、最大値は 32 です。 値を 24 から 32 に増やしてから、 **[更新]** ボタンを選択します。 次のスクリーンショットに示すように、プロセスは *[更新中]* の状態でスタックします。 ページを更新しても、値は 24 と表示されたままです。 予期していた 32 には更新されていません。
 
-![統合ランタイムの [ノード] ペインのスクリーンショット。[更新中] 状態でスタックしているプロセスが表示されています。](media/self-hosted-integration-runtime-troubleshoot-guide/updating-status.png)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/updating-status.png" alt-text="統合ランタイムの [ノード] ペインのスクリーンショット。&quot;[更新中]&quot; 状態でスタックしているプロセスが表示されています。":::
 
 #### <a name="cause"></a>原因
 
@@ -119,7 +119,7 @@ SSL/TLS ハンドシェイクに関連したケースを処理しているとき
        
        b. エクスプローラーの左側のペインで、確認する証明書を検索し、それを右クリックしてから、 **[すべてのタスク]**  >  **[エクスポート]** を選択します。
     
-        ![[コンピューター証明書の管理] ペインでの証明書に対する [すべてのタスク] > [エクスポート] コントロールのスクリーンショット。](media/self-hosted-integration-runtime-troubleshoot-guide/export-tasks.png)
+        :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/export-tasks.png" alt-text="&quot;[コンピューター証明書の管理]&quot; ペインでの証明書に対する &quot;[すべてのタスク]&quot; > &quot;[エクスポート]&quot; コントロールのスクリーンショット。":::
 
     2. エクスポートされた証明書をクライアント マシンにコピーします。 
     3. クライアント側のコマンド プロンプト ウィンドウで、次のコマンドを実行します。 必ず、 *\<certificate path>* と *\<output txt file path>* を実際のパスに置き換えてください。
@@ -137,17 +137,17 @@ SSL/TLS ハンドシェイクに関連したケースを処理しているとき
 
         例: 
 
-        ![TXT ファイルの最後にあるエラーの概要のスクリーンショット。](media/self-hosted-integration-runtime-troubleshoot-guide/error-summary.png)
+        :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/error-summary.png" alt-text="TXT ファイルの最後にあるエラーの概要のスクリーンショット。":::
 
         次のスクリーンショットに示すように、ログ ファイルの最後にエラーがない場合は、証明書チェーンがクライアント マシンで正常に作成されたと考えることができます。
         
-        ![エラーが表示されていないログ ファイルのスクリーンショット。](media/self-hosted-integration-runtime-troubleshoot-guide/log-file.png)      
+        :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/log-file.png" alt-text="エラーが表示されていないログ ファイルのスクリーンショット。":::      
 
 - AIA (機関情報アクセス)、CDP (CRL 配布ポイント)、または OCSP (オンライン証明書状態プロトコル) のファイル名拡張子が証明書ファイルに構成されている場合は、より直観的な方法で確認できます。
  
     1. 次のスクリーンショットに示されているように、証明書の詳細を確認してこの情報を取得します。
     
-        ![証明書の詳細のスクリーンショット。](media/self-hosted-integration-runtime-troubleshoot-guide/certificate-detail.png)
+        :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/certificate-detail.png" alt-text="証明書の詳細のスクリーンショット。":::
     
     1. 次のコマンドを実行します。 *\<certificate path>* は、必ず証明書の実際のパスに置き換えてください。
     
@@ -159,7 +159,7 @@ SSL/TLS ハンドシェイクに関連したケースを処理しているとき
         
     1. AIA、CDP、および OCSP のファイル名拡張子を持つ証明書を確認するには、 **[取得]** を選択します。
 
-        ![URL 取得ツールと [取得] ボタンのスクリーンショット。](media/self-hosted-integration-runtime-troubleshoot-guide/retrieval-button.png)
+        :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/retrieval-button.png" alt-text="URL 取得ツールと [取得] ボタンのスクリーンショット。":::
  
         AIA からの証明書の状態が "*検証済み*" で、なおかつ CDP または OCSP からの証明書の状態が "*検証済み*" であれば、証明書チェーンは正常に作成されています。
 
@@ -181,7 +181,7 @@ SSL/TLS ハンドシェイクに関連したケースを処理しているとき
 
 プロセス モニターで、次の結果を表示できます。
 
-[![プロセス モニター内のパス一覧のスクリーンショット。](media/self-hosted-integration-runtime-troubleshoot-guide/process-monitor.png)](media/self-hosted-integration-runtime-troubleshoot-guide/process-monitor.png#lightbox)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/process-monitor.png#lightbox" lightbox="media/self-hosted-integration-runtime-troubleshoot-guide/process-monitor.png" alt-text="プロセス モニター内のパス一覧のスクリーンショット。":::
 
 > [!TIP] 
 > プロセス モニターで、次のスクリーンショットに示すようにフィルターを設定できます。
@@ -192,7 +192,7 @@ SSL/TLS ハンドシェイクに関連したケースを処理しているとき
 
 <br>
 
-![[プロセス モニター フィルター] ページのスクリーンショット。DLL のフィルターが一覧表示されています。](media/self-hosted-integration-runtime-troubleshoot-guide/set-filters.png)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/set-filters.png" alt-text="&quot;[プロセス モニター フィルター]&quot; ページのスクリーンショット。DLL のフィルターが一覧表示されています。":::
 
 #### <a name="resolution"></a>解決方法
 
@@ -219,7 +219,7 @@ GAC の詳細については、「[グローバル アセンブリ キャッシ�
 
 "Authentication Key is not assigned yet (認証キーがまだ割り当てられていません)"
 
-![認証キーがまだ割り当てられていないことを示す統合ランタイムのイベント ペインのスクリーンショット。](media/self-hosted-integration-runtime-troubleshoot-guide/key-missing.png)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/key-missing.png" alt-text="認証キーがまだ割り当てられていないことを示す統合ランタイムのイベント ペインのスクリーンショット。":::
 
 #### <a name="cause"></a>原因
 
@@ -230,7 +230,7 @@ GAC の詳細については、「[グローバル アセンブリ キャッシ�
 
 前述のどちらの原因も該当しない場合は、 *%programdata%\Microsoft\Data Transfer\DataManagementGateway* フォルダーに移動して、*Configurations* ファイルが削除されているかどうかを確認してください。 削除されていた場合は、[Windows ファイル サーバーからファイルを削除したユーザーの検出](https://www.netwrix.com/how_to_detect_who_deleted_file.html)に関する Netwrix の記事の指示に従ってください。
 
-![Configurations ファイルを確認するためのイベント ログの詳細ペインのスクリーンショット。](media/self-hosted-integration-runtime-troubleshoot-guide/configurations-file.png)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/configurations-file.png" alt-text="Configurations ファイルを確認するためのイベント ログの詳細ペインのスクリーンショット。":::
 
 
 ### <a name="cant-use-self-hosted-ir-to-bridge-two-on-premises-datastores"></a>セルフホステッド IR を使用して 2 つのオンプレミス データ ストアをブリッジできない
@@ -285,7 +285,7 @@ GAC の詳細については、「[グローバル アセンブリ キャッシ�
 
    "Failed to change intranet communication encryption mode. (イントラネット通信の暗号化モードを変更できませんでした。) It is likely that certificate '\<*certificate name*>' may not have a private key that is capable of key exchange or the process may not have access rights for the private key. (証明書 "\<*certificate name*>" に、キー交換が可能な秘密キーがないか、プロセスに秘密キーへのアクセス権がない可能性があります。) Please see inner exception for detail. (詳細については、内部例外を参照してください。)"
 
-    ![Integration Runtime Configuration Manager 設定ペインのスクリーンショット。"秘密キーが見つかりません" というエラー メッセージが表示されています。](media/self-hosted-integration-runtime-troubleshoot-guide/private-key-missing.png)
+    :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/private-key-missing.png" alt-text="Integration Runtime Configuration Manager 設定ペインのスクリーンショット。「&quot;秘密キーが見つかりません&quot;」というエラー メッセージが表示されています。":::
 
 #### <a name="cause"></a>原因
 
@@ -370,7 +370,7 @@ GAC の詳細については、「[グローバル アセンブリ キャッシ�
 
 "The Integration Runtime (Self-hosted) node has encountered an error during registration. (登録中に Integration Runtime (セルフホステッド) ノードでエラーが発生しました。) Cannot connect to the Integration Runtime (Self-hosted) Host Service. (Integration Runtime (セルフホステッド) ホスト サービスに接続できません。)"
 
-![IR 登録エラーを示す Integration Runtime Configuration Manager ウィンドウのスクリーンショット。](media/self-hosted-integration-runtime-troubleshoot-guide/ir-registration-error.png)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/ir-registration-error.png" alt-text="IR 登録エラーを示す Integration Runtime Configuration Manager ウィンドウのスクリーンショット。":::
 
 #### <a name="cause"></a>原因
 
@@ -380,19 +380,19 @@ GAC の詳細については、「[グローバル アセンブリ キャッシ�
 
 統合ランタイムのイベント ログにアクセスしてエラーを確認してください。
 
-![ランタイム エラーが発生したことを示す IR イベント ログのスクリーンショット。](media/self-hosted-integration-runtime-troubleshoot-guide/ir-event-log.png)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/ir-event-log.png" alt-text="ランタイム エラーが発生したことを示す IR イベント ログのスクリーンショット。":::
 
 * イベント ログのエラーが "UnauthorizedAccessException" の場合は、次の手順を実行します。
 
     1. Windows サービス パネルで *DIAHostService* ログオン サービス アカウントを確認します。
 
-        ![ログオン サービス アカウントのプロパティ ペインのスクリーンショット。](media/self-hosted-integration-runtime-troubleshoot-guide/logon-service-account.png)
+        :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/logon-service-account.png" alt-text="ログオン サービス アカウントのプロパティ ペインのスクリーンショット。":::
 
     1. ログオン サービス アカウントに、 *%programdata%\Microsoft\DataTransfer\DataManagementGateway* フォルダーへの読み取りおよび書き込みアクセス許可があるかどうかを確認します。
 
         - サービスのログオン アカウントが変更されていなければ、既定で読み取りおよび書き込みアクセス許可が割り当てられているはずです。
 
-            ![サービスのアクセス許可ペインのスクリーンショット。](media/self-hosted-integration-runtime-troubleshoot-guide/service-permission.png)
+            :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/service-permission.png" alt-text="サービスのアクセス許可ペインのスクリーンショット。":::
 
         - サービスのログオン アカウントを変更した場合は、次の手順を実行して問題を軽減してください。
  
@@ -414,11 +414,11 @@ GAC の詳細については、「[グローバル アセンブリ キャッシ�
 
     1. Windows サービス パネルで *DIAHostService* ログオン サービス アカウントを確認します。
     
-        ![サービス アカウントの [ログオン] ペインのスクリーンショット。](media/self-hosted-integration-runtime-troubleshoot-guide/logon-service-account.png)
+        :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/logon-service-account.png" alt-text="サービス アカウントの &quot;[ログオン]&quot; ペインのスクリーンショット。":::
 
     1. そのログオン サービス アカウントに、Windows サービスを開始するための **[サービスとしてログオン]** アクセス許可があるかどうかを確認します。
 
-        ![[サービスとしてログオン] プロパティ ペインのスクリーンショット。](media/self-hosted-integration-runtime-troubleshoot-guide/logon-as-service.png)
+        :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/logon-as-service.png" alt-text="&quot;[サービスとしてログオン]&quot; プロパティ ペインのスクリーンショット。":::
 
 #### <a name="more-information"></a>説明
 
@@ -432,7 +432,7 @@ GAC の詳細については、「[グローバル アセンブリ キャッシ�
 
 セルフホステッド IR を登録するときに、Configuration Manager ペインに **[登録]** ボタンが表示されません。
 
-![Configuration Manager ペインのスクリーンショット。統合ランタイム ノードが登録されていないことを示すメッセージが表示されています。](media/self-hosted-integration-runtime-troubleshoot-guide/no-register-button.png)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/no-register-button.png" alt-text="Configuration Manager ペインのスクリーンショット。統合ランタイム ノードが登録されていないことを示すメッセージが表示されています。":::
 
 #### <a name="cause"></a>原因
 
@@ -445,7 +445,7 @@ Integration Runtime 3.0 のリリース時点で、よりクリーンでセキ�
     > [!IMPORTANT] 
     > 次のプロセスで、 **[はい]** を選択します。 アンインストール プロセス中はデータを保持しないでください。
 
-    ![統合ランタイムからすべてのユーザー データを削除するための [はい] ボタンのスクリーンショット。](media/self-hosted-integration-runtime-troubleshoot-guide/delete-data.png)
+    :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/delete-data.png" alt-text="統合ランタイムからすべてのユーザー データを削除するための &quot;[はい]&quot; ボタンのスクリーンショット。":::
 
 1. 統合ランタイム インストーラーの MSI ファイルがない場合は、[ダウンロード センター](https://www.microsoft.com/en-sg/download/details.aspx?id=39717)にアクセスして、最新の統合ランタイムをダウンロードしてください。
 1. MSI ファイルをインストールし、統合ランタイムを登録します。
@@ -495,7 +495,7 @@ Microsoft Integration Runtime Configuration Manager を使用してセルフホ�
 
 "Failed to change Intranet communication encryption mode: (イントラネット通信の暗号化モードを変更できませんでした。)Failed to grant Integration Runtime service account the access of to the certificate '\<*certificate name*>'. (Integration Runtime サービス アカウントに、証明書 "\<*certificate name*>" へのアクセス権を付与できませんでした。) Error code 103 (エラー コード 103)"
 
-!["...Failed to grant Integration Runtime service account certificate access (Integration Runtime サービス アカウントに、証明書へのアクセス権を付与できませんでした)" というエラー メッセージが表示されているスクリーンショット。](media/self-hosted-integration-runtime-troubleshoot-guide/integration-runtime-service-account-certificate-error.png)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/integration-runtime-service-account-certificate-error.png" alt-text="&quot;&quot;...Failed to grant Integration Runtime service account certificate access (Integration Runtime サービス アカウントに、証明書へのアクセス権を付与できませんでした)&quot;&quot; というエラー メッセージが表示されているスクリーンショット。":::
 
 #### <a name="cause"></a>原因
 
@@ -511,7 +511,7 @@ Microsoft Integration Runtime Configuration Manager を使用してセルフホ�
 
 `Certutil.exe -CSP "CSP or KSP" -ImportPFX FILENAME.pfx`
 
-![証明書をインポートするための certutil コマンドのスクリーンショット。](media/self-hosted-integration-runtime-troubleshoot-guide/use-certutil.png)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/use-certutil.png" alt-text="証明書をインポートするための certutil コマンドのスクリーンショット。":::
 
 **解決策 2** 
 
@@ -522,9 +522,9 @@ Microsoft Integration Runtime Configuration Manager を使用してセルフホ�
 
 変換前と変換後:
 
-![証明書の変換前の結果のスクリーンショット。](media/self-hosted-integration-runtime-troubleshoot-guide/before-certificate-change.png)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/before-certificate-change.png" alt-text="証明書の変換前の結果のスクリーンショット。":::
 
-![証明書の変換後の結果のスクリーンショット。](media/self-hosted-integration-runtime-troubleshoot-guide/after-certificate-change.png)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/after-certificate-change.png" alt-text="証明書の変換後の結果のスクリーンショット。":::
 
 ### <a name="self-hosted-integration-runtime-version-5x"></a>セルフホステッド統合ランタイム バージョン 5.x
 セルフホステッド統合ランタイム バージョン 5.x にアップグレードするためには、 **.NET Framework Runtime 4.7.2** 以降が必要です。 ダウンロード ページには、最新の 4.x バージョンと 2 つの最新 5.x バージョン用のダウンロード リンクがあります。 
@@ -552,7 +552,7 @@ Azure Data Factory v1 のお客様の場合:
 
 "The Integration Runtime (Self-hosted) node has encountered an error during registration. (Integration Runtime (セルフホステッド) ノードで登録中にエラーが発生しました。)"
 
-!["The Integration Runtime (Self-hosted) node has encountered an error during registration. (Integration Runtime (セルフホステッド) ノードで登録中にエラーが発生しました。)" メッセージのスクリーンショット。](media/self-hosted-integration-runtime-troubleshoot-guide/unable-to-connect-to-cloud-service.png)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/unable-to-connect-to-cloud-service.png" alt-text="&quot;&quot;The Integration Runtime (Self-hosted) node has encountered an error during registration. (Integration Runtime (セルフホステッド) ノードで登録中にエラーが発生しました。)&quot;&quot; メッセージのスクリーンショット。":::
 
 #### <a name="cause"></a>原因 
 
@@ -562,7 +562,7 @@ Azure Data Factory v1 のお客様の場合:
 
 1. 統合ランタイム サービスが実行されているかどうかを確認します。 そうであれば、手順 2 に進みます。
     
-   ![セルフホステッド IR サービスが実行中であることを示すスクリーンショット。](media/self-hosted-integration-runtime-troubleshoot-guide/integration-runtime-service-running-status.png)
+   :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/integration-runtime-service-running-status.png" alt-text="セルフホステッド IR サービスが実行中であることを示すスクリーンショット。":::
     
 1. セルフホステッド IR にプロキシが構成されていない (既定の設定) 場合は、セルフホステッド統合ランタイムがインストールされているマシン上で次の PowerShell コマンドを実行します。
 
@@ -575,7 +575,7 @@ Azure Data Factory v1 のお客様の場合:
             
     想定される応答を次に示します。
             
-    ![PowerShell コマンド応答のスクリーンショット。](media/self-hosted-integration-runtime-troubleshoot-guide/powershell-command-response.png)
+    :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/powershell-command-response.png" alt-text="PowerShell コマンド応答のスクリーンショット。":::
             
 1. 想定していた応答が得られない場合は、適宜、次のいずれかの方法を使用します。
             
@@ -604,7 +604,7 @@ Azure Data Factory v1 のお客様の場合:
 
 想定される応答を次に示します。
             
-![想定される PowerShell コマンド応答のスクリーンショット。](media/self-hosted-integration-runtime-troubleshoot-guide/powershell-command-response.png)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/powershell-command-response.png" alt-text="想定される PowerShell コマンド応答のスクリーンショット。":::
 
 > [!NOTE] 
 > プロキシに関する考慮事項：
@@ -618,7 +618,7 @@ Azure Data Factory v1 のお客様の場合:
 
 次のスクリーンショットに示すように、セルフホステッド統合ランタイム ノードは **[非アクティブ]** 状態になる場合があります。
 
-![非アクティブ状態のセルフホステッド統合ランタイム ノードのスクリーンショット](media/self-hosted-integration-runtime-troubleshoot-guide/inactive-self-hosted-ir-node.png)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/inactive-self-hosted-ir-node.png" alt-text="非アクティブ状態のセルフホステッド統合ランタイム ノードのスクリーンショット":::
 
 この動作は、ノードが相互に通信できない場合に発生します。
 
@@ -645,7 +645,7 @@ Azure Data Factory v1 のお客様の場合:
    
 1. 次のスクリーンショットに示されている "Could not open connection to the host (ホストへの接続を開けませんでした)" というコマンドライン エラーが表示された場合は、IT 部門に連絡して、この問題を解決するための支援を要請してください。 telnet を正常に実行できた後も、統合ランタイム ノードの状態に問題がある場合は、Microsoft サポートにお問い合わせください。
         
-   !["Could not open connection to the host (ホストへの接続を開けませんでした)" というコマンドライン エラーのスクリーンショット。](media/self-hosted-integration-runtime-troubleshoot-guide/command-line-error.png)
+   :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/command-line-error.png" alt-text="&quot;&quot;Could not open connection to the host (ホストへの接続を開けませんでした)&quot;&quot; というコマンドライン エラーのスクリーンショット。":::
         
 1. エラー ログに次のエントリが含まれているかどうかを確認します。
 
@@ -665,7 +665,7 @@ Azure Data Factory v1 のお客様の場合:
 
 次のスクリーンショットに示すような、セルフホステッド IR とデータ ファクトリまたは Azure Synapse インスタンスとの間、あるいは、セルフホステッド IR とデータ ソースまたはシンクとの間における接続問題に対するトラブルシューティングが必要になる場合があります。 
 
-!["Processed HTTP request failed (処理された HTTP 要求が失敗しました)" というメッセージのスクリーンショット](media/self-hosted-integration-runtime-troubleshoot-guide/http-request-error.png)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/http-request-error.png" alt-text="&quot;&quot;Processed HTTP request failed (処理された HTTP 要求が失敗しました)&quot;&quot; というメッセージのスクリーンショット":::
 
 どちらのインスタンスでも、次のエラーが発生する可能性があります。
 
@@ -681,15 +681,15 @@ Azure Data Factory v1 のお客様の場合:
 
     1. サーバーからクライアント側へのリセットを確認するためのフィルターを設定できます。 次のスクリーンショットの例では、サーバー側が Data Factory サーバーであることを確認できます。
 
-        ![Data Factory サーバーのスクリーンショット。](media/self-hosted-integration-runtime-troubleshoot-guide/data-factory-server.png)
+        :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/data-factory-server.png" alt-text="Data Factory サーバーのスクリーンショット。":::
 
     1. リセット パッケージを取得したら、伝送制御プロトコル (TCP) を追跡してメッセージ交換を見つけることができます。
 
-        ![TCP メッセージ交換のスクリーンショット。](media/self-hosted-integration-runtime-troubleshoot-guide/find-conversation.png)
+        :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/find-conversation.png" alt-text="TCP メッセージ交換のスクリーンショット。":::
 
     1. フィルターを削除して、下のクライアントと Data Factory サーバー間のメッセージ交換を取得できます。
 
-        ![メッセージ交換の詳細のスクリーンショット。](media/self-hosted-integration-runtime-troubleshoot-guide/get-conversation.png)
+        :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/get-conversation.png" alt-text="メッセージ交換の詳細のスクリーンショット。":::
 
 - 収集した Netmon トレースの分析では、Time to Live (TTL) の合計が 64 であることが示されています。 [IP Time to Live (TTL) とホップ制限の基本](https://packetpushers.net/ip-time-to-live-and-hop-limit-basics/)に関する記事 (次の一覧に抜粋) に記載されている値によると、パッケージをリセットし、切断を発生させたのは Linux システムであることがわかります。
 
@@ -702,7 +702,7 @@ Azure Data Factory v1 のお客様の場合:
     - Windows Server 2019 (2018):TCP、UDP、および ICMP の場合は 128
     - MacOS (2001):TCP、UDP、および ICMP の場合は 64
 
-    ![TTL 値 61 を示すスクリーンショット。](media/self-hosted-integration-runtime-troubleshoot-guide/ttl-61.png)
+    :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/ttl-61.png" alt-text="TTL 値 61 を示すスクリーンショット。":::
     
     前の例では、TTL は 64 ではなく 61 と表示されています。これは、ネットワーク パッケージが宛先に到達するとき、ルーターやネットワーク デバイスなどのさまざまなホップを経由する必要があるためです。 最終的な TTL を算出するために、ルーターやネットワーク デバイスの数が差し引かれます。
     
@@ -714,7 +714,7 @@ Azure Data Factory v1 のお客様の場合:
 
 - 理想的な状況では、TTL ホップ数は 128 になります。これは、Windows オペレーティング システムによってデータ ファクトリ インスタンスが実行されていることを意味します。 次の例に示すように、"*128-107 = 21 ホップ*" です。これは、TCP 3 ハンドシェイク中に、データ ファクトリ インスタンスからセルフホステッド IR にパッケージの 21 ホップが送信されたことを意味します。
  
-    ![TTL 値 107 を示すスクリーンショット。](media/self-hosted-integration-runtime-troubleshoot-guide/ttl-107.png)
+    :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/ttl-107.png" alt-text="TTL 値 107 を示すスクリーンショット。":::
 
     このため、セルフホステッド IR からの 4 番目のホップを確認するには、ネットワーク チームと協力する必要があります。 それがファイアウォールである場合は、Linux システムと同様に、TCP 3 ハンドシェイク後にそのデバイスによってパッケージがリセットされた理由をログで確認します。 
     
@@ -727,9 +727,9 @@ Azure Data Factory v1 のお客様の場合:
 
 収集した Netmon トレースを使用して telnet **8.8.8.8 888** を実行しようとすると、次のスクリーンショットに示すトレースが表示されます。
 
-!["Could not open connection to the host on port 888" (ポート 888 でホストへの接続を開くことができませんでした) というエラー メッセージが表示されたスクリーンショット。](media/self-hosted-integration-runtime-troubleshoot-guide/netmon-trace-1.png)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/netmon-trace-1.png" alt-text="&quot;&quot;Could not open connection to the host on port 888&quot; (ポート 888 でホストへの接続を開くことができませんでした)&quot;&quot; というエラー メッセージが表示されたスクリーンショット。":::
 
-![Netmon トレースの説明を示すスクリーンショット。](media/self-hosted-integration-runtime-troubleshoot-guide/netmon-trace-2.png)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/netmon-trace-2.png" alt-text="Netmon トレースの説明を示すスクリーンショット。":::
  
 
 前の図は、ポート **888** で **8.8.8.8** サーバー側に TCP 接続を確立できなかったことを示しています。そのため、そこに 2 つの **SynReTransmit** 追加パッケージがあるのを確認できます。 ソース **SELF-HOST2** は、最初のパッケージを使用して **8.8.8.8** に接続できなかったため、接続を試行し続けます。
@@ -739,33 +739,33 @@ Azure Data Factory v1 のお客様の場合:
 > 1. **[フィルターの読み込み]**  >  **[標準フィルター]**  >  **[アドレス]**  >  **[IPv4 アドレス]** を選択します。
 > 1. フィルターを適用するには、**IPv4.Address == 8.8.8.8** を入力し、 **[適用]** を選択します。 これにより、ローカル マシンから宛先 **8.8.8.8** への通信を確認できます。
 
-![フィルター アドレスを示すスクリーンショット。](media/self-hosted-integration-runtime-troubleshoot-guide/filter-addresses-1.png)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/filter-addresses-1.png" alt-text="フィルター アドレスを示すスクリーンショット。":::
         
-![その他のフィルター アドレスを示すスクリーンショット。](media/self-hosted-integration-runtime-troubleshoot-guide/filter-addresses-2.png)
+:::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/filter-addresses-2.png" alt-text="その他のフィルター アドレスを示すスクリーンショット。":::
 
 次の例では成功したシナリオを示します。 
 
 - 問題なく telnet **8.8.8.8 53** を実行できる場合は、TCP 3 ハンドシェイクが正常に行われ、セッションは TCP 4 ハンドシェイクで終了します。
 
-    ![成功した接続シナリオを示すスクリーンショット。](media/self-hosted-integration-runtime-troubleshoot-guide/good-scenario-1.png)
+    :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/good-scenario-1.png" alt-text="成功した接続シナリオを示すスクリーンショット。":::
      
-    ![成功した接続シナリオの詳細を示すスクリーンショット。](media/self-hosted-integration-runtime-troubleshoot-guide/good-scenario-2.png)
+    :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/good-scenario-2.png" alt-text="成功した接続シナリオの詳細を示すスクリーンショット。":::
 
 - 前述の TCP 3 ハンドシェイクでは、次のワークフローが生成されます。
 
-    ![TCP 3 ハンドシェイク ワークフローの図。](media/self-hosted-integration-runtime-troubleshoot-guide/tcp-3-handshake-workflow.png)
+    :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/tcp-3-handshake-workflow.png" alt-text="TCP 3 ハンドシェイク ワークフローの図。":::
  
 - セッションを完了するための TCP 4 ハンドシェイクは、次のワークフローで示されています。
 
-    ![TCP 4 ハンドシェイクの詳細のスクリーンショット。](media/self-hosted-integration-runtime-troubleshoot-guide/tcp-4-handshake.png)
+    :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/tcp-4-handshake.png" alt-text="TCP 4 ハンドシェイクの詳細のスクリーンショット。":::
 
-    ![TCP 4 ハンドシェイク ワークフローの図。](media/self-hosted-integration-runtime-troubleshoot-guide/tcp-4-handshake-workflow.png) 
+    :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/tcp-4-handshake-workflow.png" alt-text="TCP 4 ハンドシェイク ワークフローの図。"::: 
 
 ### <a name="microsoft-email-notification-about-updating-your-network-configuration"></a>ネットワーク構成の更新に関する Microsoft 電子メール通知
 
 次のような電子メール通知を受信することがあります。これは、2020 年 11 月 8 日までに Azure Data Factory で新しい IP アドレスでの通信を許可するようにネットワーク構成を更新することを推奨しています。
 
-   ![ネットワーク構成の更新を求める Microsoft 電子メール通知のスクリーンショット。](media/self-hosted-integration-runtime-troubleshoot-guide/email-notification.png)
+   :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/email-notification.png" alt-text="ネットワーク構成の更新を求める Microsoft 電子メール通知のスクリーンショット。":::
 
 #### <a name="determine-whether-this-notification-affects-you"></a>この通知が自分に影響があるものかどうかを判断する
 
@@ -789,7 +789,7 @@ Azure Data Factory v1 のお客様の場合:
 
 - アウトバウンド規則の制限がある場合は、サービス タグを使用しているかどうかを確認します。 サービス タグを使用している場合は、影響を受けません。 新しい IP 範囲は既存のサービス タグの下にあるため、変更や追加を行う必要はありません。 
 
-  ![DataFactory が宛先として表示されている宛先チェックのスクリーンショット。](media/self-hosted-integration-runtime-troubleshoot-guide/destination-check.png)
+  :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/destination-check.png" alt-text="DataFactory が宛先として表示されている宛先チェックのスクリーンショット。":::
 
 - Azure 仮想ネットワークの NSG 規則設定で送信 IP アドレスの許可リストを明示的に有効にしている場合は、影響を *受けます*。
 
@@ -819,9 +819,9 @@ Azure Data Factory v1 のお客様の場合:
 
 サービスのサーバー証明書を確認する最も簡単な方法は、ブラウザーでサービスの URL を開くことです。 たとえば、セルフホステッド IR がインストールされているマシンで[サーバー証明書の確認リンク](https://eu.frontend.clouddatahub.net/)を開き、サーバー証明書情報を表示します。
 
-  ![Azure Data Factory サービスの [check server certificate]\(サーバー証明書の確認\) ペインのスクリーンショット。](media/self-hosted-integration-runtime-troubleshoot-guide/server-certificate.png)
+  :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/server-certificate.png" alt-text="Azure Data Factory サービスの [check server certificate]\(サーバー証明書の確認\) ペインのスクリーンショット。":::
 
-  ![サーバー証明のパスを確認するためのウィンドウのスクリーンショット。](media/self-hosted-integration-runtime-troubleshoot-guide/certificate-path.png)
+  :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/certificate-path.png" alt-text="サーバー証明のパスを確認するためのウィンドウのスクリーンショット。":::
 
 #### <a name="cause"></a>原因
 
@@ -840,7 +840,7 @@ Windows での証明書の信頼の詳細については、[信頼されたル�
 #### <a name="additional-information"></a>関連情報
 DigiCert から署名されている新しい SSL 証明書がロールアウトされました。 DigiCert Global Root G2 が、信頼されたルート CA にあるかどうかを確認してください。
 
-  ![[信頼されたルート証明機関] ディレクトリ内の [DigiCert Global Root G2] フォルダーを示すスクリーンショット。](media/self-hosted-integration-runtime-troubleshoot-guide/trusted-root-ca-check.png)
+  :::image type="content" source="media/self-hosted-integration-runtime-troubleshoot-guide/trusted-root-ca-check.png" alt-text="[信頼されたルート証明機関] ディレクトリ内の [DigiCert Global Root G2] フォルダーを示すスクリーンショット。":::
 
 信頼されたルート CA に含まれていない場合は、[こちらからダウンロード](http://cacerts.digicert.com/DigiCertGlobalRootG2.crt )してください。 
 

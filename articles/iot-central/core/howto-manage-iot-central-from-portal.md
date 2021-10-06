@@ -7,12 +7,12 @@ author: dominicbetts
 ms.author: dobett
 ms.date: 07/06/2021
 ms.topic: how-to
-ms.openlocfilehash: 53d93bf202e896a8c2678e78917c15cdd39d80fb
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: 57486312b380fc18cfdb399343535e5e12245bff
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122015618"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129091603"
 ---
 # <a name="manage-and-monitor-iot-central-from-the-azure-portal"></a>Azure portal で IoT Central を管理して監視する
 
@@ -33,13 +33,17 @@ ms.locfileid: "122015618"
 * **[テンプレート]** は、作成する IoT Central アプリケーションの種類です。 アプリケーションを作成するには、業界に関連するテンプレートの一覧を参照して、すばやく作業を開始するか、 **[カスタム アプリケーション]** テンプレートを使用してゼロから始めることができます。
 
 * "**場所**" は、アプリケーションを作成する [地域](https://azure.microsoft.com/global-infrastructure/geographies/)です。 通常、最適なパフォーマンスを得るには、ご利用のデバイスに物理的に最も近い場所を選択する必要があります。 Azure IoT Central は現在、次の場所でご利用いただけます。
-
-  * アジア太平洋
-  * オーストラリア
-  * ヨーロッパ
-  * 日本
-  * イギリス
-  * United States
+    
+    * オーストラリア
+    * 米国中東部
+    * 米国東部
+    * 米国東部 2
+    * 東日本
+    * 北ヨーロッパ
+    * 東南アジア
+    * 英国南部
+    * 西ヨーロッパ
+    * 米国西部
 
   いったん場所を選択すると、後でアプリケーションを別の場所に移動することはできません。
 

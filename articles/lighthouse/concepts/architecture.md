@@ -1,14 +1,14 @@
 ---
 title: Azure Lighthouse のアーキテクチャ
 description: Azure Lighthouse のテナントと、そのリレーションシップを有効にする顧客のテナントで作成されたリソースとの関係について説明します。
-ms.date: 05/11/2021
+ms.date: 09/13/2021
 ms.topic: conceptual
-ms.openlocfilehash: bdcd1057d4ba2adfe8ab312228acd562b384b09d
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 92890199b11da69fac58ec4ff2bccc1ab347d076
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109795517"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128629125"
 ---
 # <a name="azure-lighthouse-architecture"></a>Azure Lighthouse のアーキテクチャ
 
@@ -51,7 +51,7 @@ Azure Lighthouse を使用すると、あるテナントから別のテナント
 
 ## <a name="how-azure-lighthouse-works"></a>Azure Lighthouse のしくみ
 
-Azure Lighthouse の大まかなしくみは以下の通りです。
+管理テナントに対する Azure Lighthouse の大まかなしくみは以下のとおりです。
 
 1. 顧客の Azure リソースを管理するために必要なグループ、サービス プリンシパル、またはユーザーの[ロール](tenants-users-roles.md#role-support-for-azure-lighthouse)を特定します。
 2. このアクセス権を指定し、[Azure Marketplace にマネージド サービス オファーを公開する](../how-to/publish-managed-services-offers.md)か、[Azure Resource Manager テンプレートを展開](../how-to/onboard-customer.md)して、顧客を Azure Lighthouse にオンボードします。 このオンボード プロセスによって、前述した 2 つのリソース (登録定義と登録割り当て) が顧客のテナントに作成されます。
@@ -61,6 +61,6 @@ Azure Lighthouse の大まかなしくみは以下の通りです。
 
 ## <a name="next-steps"></a>次のステップ
 
-- 登録定義と登録割り当てを操作するための [Azure CLI](/cli/azure/managedservices/assignment) および [Azure Powershell](/powershell/module/az.managedservices/new-azmanagedservicesdefinition) コマンドを確認します。
+- 登録定義と登録割り当てを操作するための [Azure CLI](/cli/azure/managedservices) および [Azure Powershell](/powershell/module/az.managedservices) コマンドを確認します。
 - Azure Lighthouse 用の[拡張サービスとシナリオ](cross-tenant-management-experience.md#enhanced-services-and-scenarios)について確認します。
 - Azure Lighthouse における[テナント、ユーザー、およびロール](tenants-users-roles.md)のしくみについて確認します。

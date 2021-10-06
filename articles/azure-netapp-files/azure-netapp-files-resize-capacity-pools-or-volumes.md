@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 04/30/2021
 ms.author: b-juche
-ms.openlocfilehash: b57997408112466c45d6ce1364e1ac0a2c358cd1
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: fcba2424c457d97a45096af9a35b5f2afa4086ba
+ms.sourcegitcommit: f3f2ec7793ebeee19bd9ffc3004725fb33eb4b3f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108321035"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129407249"
 ---
 # <a name="resize-a-capacity-pool-or-a-volume"></a>容量プールまたはボリュームをサイズ変更する
 ボリュームまたは容量プールがいっぱいになったときなど、必要に応じて容量プールまたはボリュームのサイズを変更できます。 
@@ -84,7 +84,7 @@ Azure NetApp Files 用の REST API の仕様とコード例は、[resource-manag
 
 ## <a name="next-steps"></a>次のステップ
 
-- [容量プールを設定する](azure-netapp-files-set-up-capacity-pool.md)
+- [容量プールの作成](azure-netapp-files-set-up-capacity-pool.md)
 - [手動 QoS 容量プールを管理する](manage-manual-qos-capacity-pool.md)
 - [ボリュームのサービス レベルを動的に変更する](dynamic-change-volume-service-level.md) 
 - [ボリューム クォータについて](volume-quota-introduction.md)

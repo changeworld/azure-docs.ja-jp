@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: tutorials
 ms.topic: overview
 ms.date: 06/08/2021
-ms.openlocfilehash: 745a0b67bf2ac225f62b0e18cadc009a16007ab6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e9925b8c01cbaaeaf28815a7188118ff2060d507
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121740947"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129208022"
 ---
 # <a name="what-is-azure-data-factory"></a>Azure Data Factory とは何ですか。
 
@@ -32,7 +32,7 @@ Azure Data Factory は、このようなデータ シナリオを解決するプ
 
 さらに、ビジネス インテリジェンス (BI) アプリケーションから利用できるよう、Azure Synapse Analytics などのデータ ストアに、変換済みのデータを公開することもできます。 Azure Data Factory を使うと、最終的に、生データを意味のあるデータ ストアとデータ レイクに整理し、より的確な意思決定に活用できます。
 
-![Data Factory の最上位ビュー](media/data-flow/overview.png)
+:::image type="content" source="media/data-flow/overview.png" alt-text="Data Factory の最上位ビュー":::
 
 ## <a name="how-does-it-work"></a>それはどのように機能しますか?
 
@@ -60,7 +60,7 @@ Data Factory を使用すれば、データ パイプラインの[コピー ア�
 変換を手動でコーディングしたい場合でも、ADF は、HDInsight Hadoop、Spark、Data Lake Analytics、Machine Learning などのコンピューティング サービス上で目的の変換を実行するための外部アクティビティをサポートしています。
 
 ### <a name="cicd-and-publish"></a>CI/CD と公開
-Data Factory では、Azure DevOps と GitHub を使用して、データ パイプラインの [CI/CD の完全なサポートを提供](continuous-integration-deployment.md)します。 ETL プロセスの開発とデリバリを段階的に進めたうえで、完成した製品を公開することが可能です。 生データが変換されてビジネスに即応して利用できる形態になったら、このデータを、ビジネス ユーザーがビジネス インテリジェンス ツールから参照できる Azure Data Warehouse、Azure SQL Database、Azure CosmosDB、またはその他の分析エンジンに読み込みます。
+Data Factory では、Azure DevOps と GitHub を使用して、データ パイプラインの [CI/CD の完全なサポートを提供](continuous-integration-delivery.md)します。 ETL プロセスの開発とデリバリを段階的に進めたうえで、完成した製品を公開することが可能です。 生データが変換されてビジネスに即応して利用できる形態になったら、このデータを、ビジネス ユーザーがビジネス インテリジェンス ツールから参照できる Azure Data Warehouse、Azure SQL Database、Azure CosmosDB、またはその他の分析エンジンに読み込みます。
 ### <a name="monitor"></a>モニター
 データ統合パイプラインを正常に構築してデプロイし、変換したデータからビジネス価値を生み出せるようになったなら、スケジュール化したアクティビティとパイプラインを監視して、成功率と失敗率を確認することができます。 Azure Data Factory には、Azure Monitor、API、PowerShell、Azure Monitor ログ、Azure portal の正常性パネルを利用してパイプラインを監視する、ビルトイン サポートが用意されています。
 

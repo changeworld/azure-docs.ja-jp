@@ -5,18 +5,21 @@ services: route-server
 author: duongau
 ms.service: route-server
 ms.topic: overview
-ms.date: 09/01/2021
+ms.date: 09/27/2021
 ms.author: duau
-ms.openlocfilehash: f2c4a31f4c1c0ec53e76ffaf6f4670d9179e9505
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 34835f8f3e536b875c7eb4afd176ab00fb1f417c
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123436790"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129091428"
 ---
 # <a name="what-is-azure-route-server"></a>Azure Route Server とは何ですか。 
 
 Azure Route Server を使用すると、ネットワーク仮想アプライアンス (NVA) と仮想ネットワークの間の動的ルーティングが簡単になります。 これにより、ルート テーブルを手動で構成したり管理したりすることなく、BGP ルーティング プロトコルをサポートする NVA と Azure Virtual Network (VNET) 内の Azure ソフトウェア定義ネットワーク (SDN) 間で Border Gateway Protocol (BGP) ルーティング プロトコルを介して、ルーティング情報を直接交換することができます。 Azure Route Server は高可用性を使用して構成されたフル マネージド サービスです。
+
+> [!IMPORTANT]
+> 9 月 1 日より前に作成した Azure Route Server があり、パブリック IP アドレスが関連付けられていない場合は、管理目的で IP アドレスを取得できるようにするため、Route Server を再作成する必要があります。
 
 ## <a name="how-does-it-work"></a>それはどのように機能しますか?
 

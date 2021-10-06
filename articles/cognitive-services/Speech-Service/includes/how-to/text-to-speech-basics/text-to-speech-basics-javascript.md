@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 07/02/2021
 ms.author: pafarley
 ms.custom: devx-track-js
-ms.openlocfilehash: 02b4341d9eddb039eb44ba964ca2e4a25c4835a7
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 5a599e80dea9d172ddb42cdfe76325ff5e807fbc
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123539402"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129378431"
 ---
 このクイックスタートでは、Speech SDK を使用してテキスト読み上げ合成を行うための一般的な設計パターンについて説明します。 まずは基本的な構成と合成を行った後、次のようなより高度なカスタム アプリケーション開発の例に進みます。
 
@@ -30,9 +30,8 @@ ms.locfileid: "123539402"
 ## <a name="install-the-speech-sdk"></a>Speech SDK のインストール
 
 何らかの操作を行うには、事前に <a href="https://www.npmjs.com/package/microsoft-cognitiveservices-speech-sdk" target="_blank">Speech SDK for JavaScript </a> をインストールしておく必要があります。 ご利用のプラットフォームに応じて、次の手順を行います。
-- <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=nodejs#get-the-speech-sdk" target="_blank">Node.js <span
-class="docon docon-navigate-external x-hidden-focus"></span></a>
-- <a href="/azure/cognitive-services/speech-service/speech-sdk?tabs=browser#get-the-speech-sdk" target="_blank">Web ブラウザー </a>
+- [Node.js](../../../speech-sdk.md?tabs=nodejs#get-the-speech-sdk)
+- [Web ブラウザー](../../../speech-sdk.md?tabs=browser#get-the-speech-sdk)
 
 また、ターゲット環境によっては、次のいずれかを使用します。
 

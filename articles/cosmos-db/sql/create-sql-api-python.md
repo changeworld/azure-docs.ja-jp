@@ -13,12 +13,12 @@ ms.custom:
 - seo-javascript-september2019
 - seo-python-october2019
 - devx-track-python
-ms.openlocfilehash: 190f1eeb27d4e9a86b3104b977f1068a3da4d3b1
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: d8f2176065b8a9726cc0496756a22ccefbf0f0c8
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123117711"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129155460"
 ---
 # <a name="quickstart-build-a-python-application-using-an-azure-cosmos-db-sql-api-account"></a>クイック スタート:Azure Cosmos DB SQL API アカウントを使用して Python アプリケーションを構築する
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -50,6 +50,10 @@ ms.locfileid: "123117711"
 - [Visual Studio Code 用の Python 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-python.python#overview)。
 - [Git](https://www.git-scm.com/downloads). 
 - [Azure Cosmos DB SQL API SDK for Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos)
+
+## <a name="important-update-on-python-2x-support"></a>Python 2.x サポートに関する重要な更新
+
+この SDK の新しいリリースでは、2022 年 1 月 1 日以降は Python 2.x はサポートされません。 詳細については、[変更ログ](./sql-api-sdk-python.md)に関する記事を確認してください。
 
 ## <a name="create-a-database-account"></a>データベース アカウントの作成
 
@@ -219,7 +223,7 @@ ms.locfileid: "123117711"
 このクイックスタートでは、Azure Cosmos DB アカウントを作成し、データ エクスプローラーを使用してコンテナーを作成し、Visual Studio Code で Python アプリを実行する方法を説明しました。 これで、Azure Cosmos DB アカウントに追加のデータをインポートできるようになりました。 
 
 Azure Cosmos DB への移行のための容量計画を実行しようとしていますか? 容量計画のために、既存のデータベース クラスターに関する情報を使用できます。
-* 既存のデータベース クラスター内の仮想コアとサーバーの数のみがわかっている場合は、[仮想コア数または仮想 CPU 数を使用した要求ユニットの見積もり](../convert-vcore-to-request-unit.md)に関するページを参照してください 
+* 知っていることが既存のデータベース クラスター内の仮想コアとサーバーの数のみである場合は、[仮想コアまたは仮想 CPU の数を使用した要求ユニットの見積もり](../convert-vcore-to-request-unit.md)に関するページを参照してください 
 * 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB Capacity Planner を使用した要求ユニットの見積もり](estimate-ru-with-capacity-planner.md)に関するページを参照してください
 
 > [!div class="nextstepaction"]

@@ -1,20 +1,20 @@
 ---
-title: Azure Purview に Erwin Mart を登録してスキャンを設定する
+title: Erwin Mart を登録してスキャンを設定する
 description: この記事では、Azure Purview に Erwin Mart を登録し、スキャンを設定する方法について、概要を説明します。
 author: chandrakavya
 ms.author: kchandra
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: overview
-ms.date: 7/16/2021
-ms.openlocfilehash: 2b6c9f621c4c18a172e12bc93387eb75451cb851
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/27/2021
+ms.openlocfilehash: 8077658b644853f9ce0789a1d0863b3bde902818
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121736335"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129211533"
 ---
-# <a name="register-and-scan-erwin-mart-server-preview"></a>erwin Mart サーバーの登録とスキャン (プレビュー)
+# <a name="register-and-scan-erwin-mart-server-preview"></a>Erwin Mart サーバーの登録とスキャン (プレビュー)
 
 この記事では、Azure Purview に Erwin Mart サーバーを登録し、スキャンを設定する方法について、概要を説明します。
 
@@ -71,7 +71,7 @@ erwin Mart ソースでサポートされている認証は、ユーザー名と
 4.  **アプリケーション名** を入力します
 
     >[!Note]
-    > 上記の詳細は、erwin Data Modeler に移動することで確認できます。 [Mart] -\> [接続] をクリックして、サーバー名、ポート、アプリケーション名に関連した詳細を確認します。
+    > 上記の詳細は、erwin Data Modeler に移動することで確認できます。 [Mart]、[接続] の順にクリックし、サーバー名、ポート、アプリケーション名に関連した詳細を確認します。
 
     :::image type="content" source="media/register-scan-erwin-source/erwin-details.png" alt-text="erwin の詳細の確認" border="true":::
     
@@ -86,7 +86,7 @@ erwin Mart ソースでサポートされている認証は、ユーザー名と
 
 新しいスキャンを作成して実行するには、次の操作を行います。
 
-1.  管理センターで、 [統合ランタイム] をクリックします。 erwin Mart インスタンスが実行されている VM にセルフホステッド統合ランタイムが設定されている必要があります。 設定されていない場合は、[こちら](./manage-integration-runtimes.md)に記載されている手順を使用して、セルフホステッド統合ランタイムを設定します
+1.  管理センターで、[統合ランタイム] を選択します。 erwin Mart インスタンスが実行されている VM にセルフホステッド統合ランタイムが設定されている必要があります。 設定されていない場合は、[こちら](./manage-integration-runtimes.md)に記載されている手順を使用して、セルフホステッド統合ランタイムを設定します
 
 2.  **[ソース]** に移動します。
 
@@ -124,13 +124,13 @@ erwin Mart ソースでサポートされている認証は、ユーザー名と
     :::image type="content" source="media/register-scan-erwin-source/setup-scan.png" alt-text="スキャンのトリガー" border="true":::
    
 
-6.  **[テスト接続]** をクリックします。
+6.  **[テスト接続]** を選択します。
 
-7.  **[続行]** をクリックします。
+7.  **[続行]** を選択します。
 
 8.  **スキャン トリガー** を選択します。 スケジュールを設定することも、1 回限りのスキャンを実行することもできます。
 
-9.  スキャンを確認し、 **[保存および実行]** をクリックします。
+9.  自分のスキャンを確認し、 **[保存および実行]** を選択します。
 
 ## <a name="viewing-your-scans-and-scan-runs"></a>スキャンとスキャンの実行を確認する
 

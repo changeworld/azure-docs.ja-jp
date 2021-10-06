@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 01/14/2021
 ms.author: b-juche
-ms.openlocfilehash: 759759b67582b241d0bab1e043dd15e54a804faf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7ca7f042aaa97967d47dd9f35afaa647e0d37361
+ms.sourcegitcommit: f3f2ec7793ebeee19bd9ffc3004725fb33eb4b3f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98251541"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129407268"
 ---
 # <a name="troubleshoot-capacity-pool-issues"></a>容量プールに関する問題のトラブルシューティング
 
@@ -43,7 +43,7 @@ ms.locfileid: "98251541"
 
 ## <a name="next-steps"></a>次のステップ  
 
-* [容量プールを設定する](azure-netapp-files-set-up-capacity-pool.md)
+* [容量プールの作成](azure-netapp-files-set-up-capacity-pool.md)
 * [手動 QoS 容量プールを管理する](manage-manual-qos-capacity-pool.md)
 * [ボリュームのサービス レベルを動的に変更する](dynamic-change-volume-service-level.md)
 * [容量プールまたはボリュームをサイズ変更する](azure-netapp-files-resize-capacity-pools-or-volumes.md)

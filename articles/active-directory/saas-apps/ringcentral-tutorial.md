@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/09/2021
+ms.date: 08/31/2021
 ms.author: jeedes
-ms.openlocfilehash: 3c8126c051457d740d1a5414a130b4ee3fffcd8c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6f18ebeb71f597bc7988c8f97840ac1a1e38ebb9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104954124"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124830317"
 ---
 # <a name="tutorial-integrate-ringcentral-with-azure-active-directory"></a>チュートリアル:Azure Active Directory と RingCentral の統合
 
@@ -41,6 +41,8 @@ ms.locfileid: "104954124"
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 * RingCentral では、**IDP** Initiated SSO がサポートされます。
+
+* RingCentral では、[自動化されたユーザー プロビジョニング](ringcentral-provisioning-tutorial.md)がサポートされます。
 
 ## <a name="add-ringcentral-from-the-gallery"></a>ギャラリーから RingCentral を追加する
 
@@ -183,13 +185,15 @@ RingCentral に対して Azure AD SSO を構成してテストするには、次
 
 このセクションでは、RingCentral で Britta Simon というユーザーを作成します。 [RingCentral クライアント サポート チーム](https://success.ringcentral.com/RCContactSupp)と連携し、RingCentral プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
+RingCentral では、自動ユーザー プロビジョニングもサポートされます。自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](./ringcentral-provisioning-tutorial.md)をご覧ください。
+
 ## <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した RingCentral に自動的にサインインされます。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [RingCentral] タイルをクリックすると、SSO を設定した RingCentral に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [RingCentral] タイルをクリックすると、SSO を設定した RingCentral に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

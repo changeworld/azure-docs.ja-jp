@@ -3,12 +3,12 @@ title: 'クイックスタート: 概要'
 description: このクイックスタートでは、Defender for IoT のデプロイに関する基本的なワークフローを理解して作業を開始する方法について学習します。
 ms.topic: quickstart
 ms.date: 06/06/2021
-ms.openlocfilehash: cae5b1db400cebe341463dbc752fe5559b779380
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 32565bfcf87facb957dc4e8b1fc73f52eb1c7ac2
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123437669"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124836418"
 ---
 # <a name="quickstart-get-started-with-defender-for-iot"></a>クイックスタート: Defender for IoT での作業を開始する
 
@@ -63,6 +63,8 @@ Azure Defender for IoT では、物理的な配置と仮想デプロイの両方
 - コミット済みデバイスの定義。
 - オンプレミス管理コンソールのアクティブ化ファイルのダウンロード。
 
+試用版サブスクリプションを使用して、30 日間無料で 1,000 デバイスを監視することもできます。 詳細については、[試用版サブスクリプションのオンボード](how-to-manage-subscriptions.md#onboard-a-trial-subscription)に関するページを参照してください。
+
 **登録するには**:
 
 1. Azure Defender for IoT ポータルに移動します。
@@ -74,6 +76,8 @@ Azure Defender for IoT では、物理的な配置と仮想デプロイの両方
 1. **[Download the on-premises management console]\(オンプレミス管理コンソールのダウンロード\)** タブを選択し、ダウンロードしたアクティブ化ファイルを保存します。 このファイルには、定義したコミット済みデバイスがまとめられています。 このファイルは、最初のサインイン後に管理コンソールにアップロードされます。
 
 サブスクリプションをオフボードする方法について詳しくは、「[サブスクリプションをオフボードする](how-to-manage-subscriptions.md#offboard-a-subscription)」を参照してください。
+
+
 
 ## <a name="install-and-set-up-the-on-premises-management-console"></a>オンプレミス管理コンソールをインストールして設定する
 

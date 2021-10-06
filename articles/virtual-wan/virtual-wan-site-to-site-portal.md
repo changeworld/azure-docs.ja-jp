@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: tutorial
 ms.date: 08/18/2021
 ms.author: cherylmc
-ms.openlocfilehash: 544275ce4c9ab31fa65fe17351eed495895569e2
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: ece8300ee9d44699dfcce8fd89b1e07b94d99df9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123432164"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124823268"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>チュートリアル:Azure Virtual WAN を使用してサイト間接続を作成する
 
@@ -53,25 +53,25 @@ ms.locfileid: "123432164"
 
 [!INCLUDE [Create a hub](../../includes/virtual-wan-tutorial-s2s-hub-include.md)]
 
-## <a name="create-site-to-site-vpn-gateway"></a><a name="gateway"></a>サイト間 VPN ゲートウェイを作成する
+## <a name="configure-a-site-to-site-gateway"></a><a name="gateway"></a>サイト間ゲートウェイを構成する
 
-このセクションでは、サイト間接続の設定を構成してから、ハブと S2S VPN ゲートウェイの作成に進みます。 ハブとゲートウェイの作成には約 30 分かかります。
+このセクションでは、サイト間接続の設定を構成してから、ハブとサイト間 VPN ゲートウェイの作成に進みます。 ハブとゲートウェイの作成には約 30 分かかります。
 
 [!INCLUDE [Create a gateway](../../includes/virtual-wan-tutorial-s2s-gateway-include.md)]
 
-## <a name="create-site"></a><a name="site"></a>サイトを作成する
+## <a name="create-a-site"></a><a name="site"></a>サイトを作成する
 
 このセクションでは、サイトを作成します。 サイトは、物理的な場所に対応します。 必要な数のサイトを作成します。 たとえば、NY、ロンドン、および LA にブランチ オフィスがある場合は、3 つの別個のサイトを作成します。 これらのサイトには、オンプレミス VPN デバイスのエンドポイントが含まれています。 仮想 WAN 内の仮想ハブあたり最大 1,000 個のサイトを作成できます。 複数のハブがある場合は、それらの各ハブあたり 1000 個作成できます。 仮想 WAN パートナーの CPE デバイスがある場合は、そのパートナーに Azure へのオートメーションについて確認してください。 通常、オートメーションとは、単純なクリック操作で、大規模なブランチ情報を Azure にエクスポートし、CPE から Azure Virtual WAN VPN ゲートウェイへの接続性を設定できることを意味します。 詳細については、[Azure から CPE パートナーへのオートメーション ガイダンス](virtual-wan-configure-automation-providers.md)を参照してください。
 
 [!INCLUDE [Create a site](../../includes/virtual-wan-tutorial-s2s-site-include.md)]
 
-## <a name="connect-vpn-site-to-hub"></a><a name="connectsites"></a>VPN サイトをハブに接続する
+## <a name="connect-the-vpn-site-to-a-hub"></a><a name="connectsites"></a>VPN サイトをハブに接続する
 
 このセクションでは、VPN サイトをハブに接続します。
 
 [!INCLUDE [Connect VPN sites](../../includes/virtual-wan-tutorial-s2s-connect-vpn-site-include.md)]
 
-## <a name="connect-vnet-to-hub"></a><a name="vnet"></a>VNet をハブに接続する
+## <a name="connect-a-vnet-to-the-hub"></a><a name="vnet"></a>VNet をハブに接続する
 
 このセクションでは、ハブと VNet の間の接続を作成します。
 

@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.date: 05/25/2021
 ms.author: duau
 ms.custom: references_regions
-ms.openlocfilehash: 8208f6fbbd3efd70b2bb33e2c1163665326cec63
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: aa0419910c57f6bee218fb8558c6213eb267bb8b
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110482365"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129091846"
 ---
 # <a name="azure-front-door-standardpremium-edge-locations-by-metro"></a>Azure Front Door の Standard および Premium に関する都市別のエッジ ロケーション
 > [!div class="op_single_selector"]
@@ -22,7 +22,7 @@ ms.locfileid: "110482365"
 > * [略称別のエッジ ロケーション](edge-locations-by-abbreviation.md)
 > 
 
-この記事では、現在、Azure Front Door のエッジ ロケーションがある都市の一覧をリージョン別に示します。 各都市には、複数のエッジ ロケーションがある場合があります。 現在、Azure Front Door には、100 の都市にわたって 116 のエッジ ロケーションがあります。
+この記事では、現在、Azure Front Door のエッジ ロケーションを含む都市の一覧をリージョン別に示します。 各都市には、複数のエッジ ロケーションが含まれる場合があります。 現在、100 都市に 117 の Azure Front Door のエッジ ロケーションがあります。
 
 ## <a name="microsoft-edge-locations"></a>Microsoft エッジ ロケーション
 
@@ -30,6 +30,6 @@ ms.locfileid: "110482365"
 
 ## <a name="next-steps"></a>次のステップ
 
-* [略称別の Azure Front Door エッジ ロケーション](edge-locations-by-abbreviation.md)を表示します。
-* Azure Front Door のエッジ ノードの最新の一覧を取得するには、[エッジ ノードの一覧 - REST API](/rest/api/cdn/cdn/edgenodes/list) に関するページを参照してください。
+* [Azure Front Door エッジ ロケーションを略称別に表示する](edge-locations-by-abbreviation.md)。
+* Azure Front Door のエッジ ノードの最新の一覧を取得するには、[エッジ ノードの一覧 - REST API](/rest/api/cdn/edge-nodes/list) に関するページを参照してください。
 * [Azure Front Door の Standard および Premium プロファイルを作成する](create-front-door-portal.md)方法を学習します。

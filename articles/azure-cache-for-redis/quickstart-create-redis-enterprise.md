@@ -1,18 +1,18 @@
 ---
 title: 'クイックスタート: Redis Enterprise キャッシュを作成する'
 description: このクイックスタートでは、Azure Cache for Redis の Enterprise レベルのインスタンスを作成する方法について学習します
-author: yegu-ms
-ms.author: yegu
+author: curib
+ms.author: cauribeg
 ms.service: cache
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 02/08/2021
-ms.openlocfilehash: 97d87ab28b4b2b000fe0e9b1517e43c79984e74e
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 7733f9df7f314dfdc0369075b96477e301825ce6
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128563657"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129537327"
 ---
 # <a name="quickstart-create-a-redis-enterprise-cache"></a>クイックスタート: Redis Enterprise キャッシュを作成する
 

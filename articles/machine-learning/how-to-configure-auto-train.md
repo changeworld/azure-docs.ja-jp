@@ -8,31 +8,21 @@ ms.reviewer: nibaccam
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 07/01/2021
+ms.date: 09/27/2021
 ms.topic: how-to
-ms.custom: devx-track-python,contperf-fy21q1, automl, contperf-fy21q4, FY21Q4-aml-seo-hack
-ms.openlocfilehash: 2da9b19bb0d2bcdf09cb478898590d55398b2cc9
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.custom: devx-track-python,contperf-fy21q1, automl, contperf-fy21q4, FY21Q4-aml-seo-hack, contperf-fy22q1
+ms.openlocfilehash: c445ee7d2567595d1602e2e895f0c3203f16dff6
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122180068"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129079620"
 ---
 # <a name="set-up-automl-training-with-python"></a>Python で AutoML トレーニングを設定する
 
-このガイドでは、[Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro) で Azure Machine Learning 自動 ML を使用して AutoML トレーニングを設定する方法を説明します。 自動 ML では、ユーザーに代わってアルゴリズムとハイパーパラメーターを選択し、デプロイ可能なモデルを生成します。 これらの実験を構成するときは、いくつかのオプションを使用できます。
+このガイドでは、[Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro) で Azure Machine Learning 自動 ML を使用して自動機械学習 (AutoML) トレーニング実行を設定する方法を説明します。 自動 ML では、ユーザーに代わってアルゴリズムとハイパーパラメーターを選択し、デプロイ可能なモデルを生成します。 このガイドでは、自動 ML 実験の構成に使用できるさまざまなオプションについて詳しく説明しています。
 
 エンドツーエンドの例は、[AutoML による回帰モデルのトレーニングのチュートリアル](tutorial-auto-train-models.md)に関する記事をご覧ください。
-
-自動 ML で使用できる構成オプション
-
-* 実験の種類を選択する:分類、回帰、または時系列予測
-* データ ソース、形式、およびデータのフェッチ
-* コンピューティング先を選択する: ローカルまたはリモート
-* 自動機械学習の実験の設定
-* 自動 ML の実験を実行する
-* モデル メトリックを探索する
-* モデルを登録して展開する
 
 ノーコードで行いたい場合は、[Azure Machine Learning スタジオでノーコードの Auto ML トレーニングを設定する](how-to-use-automated-ml-for-ml-models.md)こともできます。
 
@@ -86,7 +76,8 @@ Azure Machine Learning のデータセットによって、次の機能が公開
 from azureml.core.dataset import Dataset
 data = "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/creditcard.csv"
 dataset = Dataset.Tabular.from_delimited_files(data)
-  ```
+```
+
 **ローカル コンピューティングの実験の場合**、より高速な処理時間を実現するために、pandas dataframes をお勧めします。
 
   ```python
@@ -133,7 +124,7 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 
 * ローカル デスクトップやノート PC などの **ローカル** コンピューター – 一般に、データセットが小さく、まだ探索ステージにいる場合。 ローカル コンピューティングの例については、[このノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/local-run-classification-credit-card-fraud/auto-ml-classification-credit-card-fraud-local.ipynb)を参照してください。 
  
-* クラウド上の **リモート** マシン – [Azure Machine Learning Managed Compute](concept-compute-target.md#amlcompute) は、Azure 仮想マシンのクラスター上で機械学習モデルをトレーニングできるようにするマネージド サービスです。 
+* クラウド上の **リモート** マシン – [Azure Machine Learning Managed Compute](concept-compute-target.md#amlcompute) は、Azure 仮想マシンのクラスター上で機械学習モデルをトレーニングできるようにするマネージド サービスです。 コンピューティング インスタンスは、コンピューティング先としてもサポートされます。
 
     Azure Machine Learning Managed Compute を使用したリモートの例については、[このノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)を参照してください。 
 
@@ -145,42 +136,28 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 
 自動 ML 実験を構成するときは、いくつかのオプションを使用できます。 これらのパラメーターは、`AutoMLConfig` オブジェクトをインスタンス化することによって設定します。 パラメーターの完全な一覧については、「[AutoMLConfig クラス](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)」をご覧ください。
 
-次に例をいくつか示します。
+次に分類タスクの例を示します。 実験では、[主要メトリック](#primary-metric)として重み付けされた AUC が使用され、実験のタイムアウトが 30 分に設定され、クロス検証フォールドは 2 つあります。
 
-1. プライマリ メトリックとして重み付けされた AUC を使用する分類の実験。実験のタイムアウトの分数は 30 分間、クロス検証フォールドは 2 つに設定されます。
+```python
+    automl_classifier=AutoMLConfig(task='classification',
+                                   primary_metric='AUC_weighted',
+                                   experiment_timeout_minutes=30,
+                                   blocked_models=['XGBoostClassifier'],
+                                   training_data=train_data,
+                                   label_column_name=label,
+                                   n_cross_validations=2)
+```
+予測タスクを構成することもできますが、追加の設定が必要です。 詳細については、[時系列予測用に AutoML を設定する](how-to-auto-train-forecast.md)方法に関する記事をご覧ください。 
 
-   ```python
-       automl_classifier=AutoMLConfig(task='classification',
-                                      primary_metric='AUC_weighted',
-                                      experiment_timeout_minutes=30,
-                                      blocked_models=['XGBoostClassifier'],
-                                      training_data=train_data,
-                                      label_column_name=label,
-                                      n_cross_validations=2)
-   ```
-1. 次の例は、60 分後に、検証交差の分割を 5 つ使って終了するよう設定された回帰実験です。
-
-   ```python
-      automl_regressor = AutoMLConfig(task='regression',
-                                      experiment_timeout_minutes=60,
-                                      allowed_models=['KNN'],
-                                      primary_metric='r2_score',
-                                      training_data=train_data,
-                                      label_column_name=label,
-                                      n_cross_validations=5)
-   ```
-
-
-1. 予測タスクには追加の設定が必要です。詳しくは、[時系列予測用に AutoML を設定する](how-to-auto-train-forecast.md)方法に関する記事をご覧ください。 
-
-    ```python
+```python
     time_series_settings = {
-        'time_column_name': time_column_name,
-        'time_series_id_column_names': time_series_id_column_names,
-        'forecast_horizon': n_test_periods
-    }
+                            'time_column_name': time_column_name,
+                            'time_series_id_column_names': time_series_id_column_names,
+                            'forecast_horizon': n_test_periods
+                           }
     
-    automl_config = AutoMLConfig(task = 'forecasting',
+    automl_config = AutoMLConfig(
+                                 task = 'forecasting',
                                  debug_log='automl_oj_sales_errors.log',
                                  primary_metric='normalized_root_mean_squared_error',
                                  experiment_timeout_minutes=20,
@@ -189,8 +166,9 @@ dataset = Dataset.Tabular.from_delimited_files(data)
                                  n_cross_validations=5,
                                  path=project_folder,
                                  verbosity=logging.INFO,
-                                 **time_series_settings)
-    ```
+                                 **time_series_settings
+                                )
+```
     
 ### <a name="supported-models"></a>サポートされているモデル
 
@@ -224,22 +202,16 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 ||| [ExponentialSmoothing](https://www.statsmodels.org/v0.10.2/generated/statsmodels.tsa.holtwinters.ExponentialSmoothing.html)
 
 ### <a name="primary-metric"></a>主要メトリック
-`primary metric` パラメーターによって、モデルのトレーニング中に最適化のために使用されるメトリックが決まります。 選択できるメトリックは、選択したタスクの種類によって決まります。次の表に、各タスクの種類に有効な主要メトリックを示します。
 
-自動 ML で何を primary metric (主要メトリック) に選ぶべきかは、多くの要素に左右されます。 最優先の考慮事項としてお勧めするのは、ビジネス ニーズを最も適切に表すメトリックを選択することです。 次に、メトリックがデータセット プロファイル (データのサイズ、範囲、クラスの分布など) に適しているかどうかを考慮します。
+`primary_metric` パラメーターによって、モデルのトレーニング中に最適化のために使用されるメトリックが決まります。 選択できる使用可能メトリックは、選択したタスクの種類によって決まります。
+
+自動 ML で何を primary metric (主要メトリック) に選ぶべきかは、多くの要素に左右されます。 最優先の考慮事項としてお勧めするのは、ビジネス ニーズを最も適切に表すメトリックを選択することです。 次に、メトリックがデータセット プロファイル (データのサイズ、範囲、クラスの分布など) に適しているかどうかを考慮します。 次のセクションでは、タスクの種類とビジネス シナリオに基づいて、推奨される主要メトリックをまとめています。 
 
 これらのメトリックの具体的な定義については、「[自動化機械学習の結果の概要](how-to-understand-automated-ml.md)」を参照してください。
 
-|分類 | 回帰 | 時系列予測
-|--|--|--
-|`accuracy`| `spearman_correlation` | `normalized_root_mean_squared_error`
-|`AUC_weighted` | `normalized_root_mean_squared_error` | `r2_score`
-|`average_precision_score_weighted` | `r2_score` | `normalized_mean_absolute_error`
-|`norm_macro_recall` | `normalized_mean_absolute_error` | 
-|`precision_score_weighted` |
-
 #### <a name="metrics-for-classification-scenarios"></a>分類シナリオのメトリック 
-`accuracy`、`average_precision_score_weighted`、`norm_macro_recall`、`precision_score_weighted` などのしきい値化された後のメトリックでは、小さいデータセット、非常に大きいクラス傾斜 (クラスの不均衡) があるデータセットに対して、または予期されるメトリック値が 0.0 または 1.0 に非常に近い場合に、適切に最適化されない可能性があります。 このような場合、主要メトリックには `AUC_weighted` が適しています。 自動 ML が完了したら、業務上の必要に最も適したメトリックを基準にして、最適なモデルを選ぶことができます。
+
+`accuracy`、`average_precision_score_weighted`、`norm_macro_recall`、`precision_score_weighted` などのしきい値化された後のメトリックでは、データセットが小さい場合や非常に大きいクラス傾斜 (クラスの不均衡) がある場合、または予期されるメトリック値が 0.0 または 1.0 に非常に近い場合に、適切に最適化されないことがあります。 このような場合、主要メトリックには `AUC_weighted` が適しています。 自動 ML が完了したら、業務上の必要に最も適したメトリックを基準にして、最適なモデルを選ぶことができます。
 
 | メトリック | ユース ケースの例 |
 | ------ | ------- |
@@ -263,6 +235,7 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 | `normalized_mean_absolute_error` |  |
 
 #### <a name="metrics-for-time-series-forecasting-scenarios"></a>時系列予測シナリオのメトリック
+
 推奨事項は、回帰シナリオのものと似ています。 
 
 | メトリック | ユース ケースの例 |
@@ -300,15 +273,15 @@ ONNX モデルを使用している場合、**または** モデルの説明を�
 
 ```python
 automl_classifier = AutoMLConfig(
-        task='classification',
-        primary_metric='AUC_weighted',
-        experiment_timeout_minutes=30,
-        training_data=data_train,
-        label_column_name=label,
-        n_cross_validations=5,
-        enable_voting_ensemble=False,
-        enable_stack_ensemble=False
-        )
+                                 task='classification',
+                                 primary_metric='AUC_weighted',
+                                 experiment_timeout_minutes=30,
+                                 training_data=data_train,
+                                 label_column_name=label,
+                                 n_cross_validations=5,
+                                 enable_voting_ensemble=False,
+                                 enable_stack_ensemble=False
+                                )
 ```
 
 既定のアンサンブル動作を変更するために、`AutoMLConfig` オブジェクトに `kwargs` として提供できる既定の引数が複数あります。
@@ -333,27 +306,27 @@ automl_classifier = AutoMLConfig(
 
 ```python
 ensemble_settings = {
-    "ensemble_download_models_timeout_sec": 600
-    "stack_meta_learner_type": "LogisticRegressionCV",
-    "stack_meta_learner_train_percentage": 0.3,
-    "stack_meta_learner_kwargs": {
-        "refit": True,
-        "fit_intercept": False,
-        "class_weight": "balanced",
-        "multi_class": "auto",
-        "n_jobs": -1
-    }
-}
+                     "ensemble_download_models_timeout_sec": 600
+                     "stack_meta_learner_type": "LogisticRegressionCV",
+                     "stack_meta_learner_train_percentage": 0.3,
+                     "stack_meta_learner_kwargs": {
+                                                    "refit": True,
+                                                    "fit_intercept": False,
+                                                    "class_weight": "balanced",
+                                                    "multi_class": "auto",
+                                                    "n_jobs": -1
+                                                  }
+                    }
 
 automl_classifier = AutoMLConfig(
-        task='classification',
-        primary_metric='AUC_weighted',
-        experiment_timeout_minutes=30,
-        training_data=train_data,
-        label_column_name=label,
-        n_cross_validations=5,
-        **ensemble_settings
-        )
+                                 task='classification',
+                                 primary_metric='AUC_weighted',
+                                 experiment_timeout_minutes=30,
+                                 training_data=train_data,
+                                 label_column_name=label,
+                                 n_cross_validations=5,
+                                 **ensemble_settings
+                                )
 ```
 
 <a name="exit"></a> 
@@ -405,7 +378,8 @@ run = experiment.submit(automl_config, show_output=True)
 
 子実行とそれが実行されるタイミングを管理するには、実験ごとに専用のクラスターを作成し、実験の `max_concurrent_iterations` 数をクラスター内のノード数と一致させることをお勧めします。 このようにして、必要な同時子実行とイテレーションの数で、クラスターのノードをすべて同時に使用します。
 
-`AutoMLConfig` オブジェクトで `max_concurrent_iterations` を構成します。 構成されていない場合は、1 回の実験につき 1 回の同時子実行とイテレーションのみが既定で許可されます。  
+`AutoMLConfig` オブジェクトで `max_concurrent_iterations` を構成します。 構成されていない場合は、1 回の実験につき 1 回の同時子実行とイテレーションのみが既定で許可されます。
+コンピューティング インスタンスの場合は、`max_concurrent_iterations` をコンピューティング インスタンス VM 上のコア数と同じに設定できます。
 
 ## <a name="explore-models-and-metrics"></a>モデルとメトリックを探索する
 
@@ -559,9 +533,9 @@ model = run.register_model(model_name = model_name,
 
 モデルの解釈機能を使用すると、モデルで予測が行われた理由や、基になる特徴の重要度の値を把握できます。 SDK には、トレーニングと推論時間の両方で、ローカル モデルとデプロイされたモデルについて、モデルの解釈可能性の特徴を有効にするためのさまざまなパッケージが含まれています。
 
-自動 ML の実験で解釈可能性の機能を有効にする方法を示すサンプル コードは、[説明記事](how-to-machine-learning-interpretability-automl.md)に掲載しています。
+自動 ML の実験で特に[解釈可能性の機能を有効にする](how-to-machine-learning-interpretability-automl.md)方法を参照してください。
 
-自動機械学習ではない SDK の他の領域で、モデルの説明と特徴の重要度を有効にする方法の一般情報については、解釈可能性の[概念](how-to-machine-learning-interpretability.md)に関する記事を参照してください。
+自動機械学習ではない SDK の他の領域で、モデルの説明と特徴量の重要度を有効にする方法の一般情報については、[解釈可能性の概念に関する記事](how-to-machine-learning-interpretability.md)を参照してください。
 
 > [!NOTE]
 > 現在、ForecastTCN モデルは説明クライアントではサポートされていません。 このモデルが最適なモデルとして返された場合、説明ダッシュボードは返されず、オンデマンドでの説明の実行はサポートされません。

@@ -8,12 +8,12 @@ ms.author: chez
 ms.reviewer: jburchel
 ms.topic: conceptual
 ms.date: 05/07/2021
-ms.openlocfilehash: 046d94202769845f58c7f528bddb37e29e0c312a
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: dcad59c6434f6751cba8633868a9dc9969ffc0ac
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122514427"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128610543"
 ---
 # <a name="create-a-custom-event-trigger-to-run-a-pipeline-in-azure-data-factory"></a>Azure Data Factory でカスタム イベント トリガーを作成してパイプラインを実行する
 
@@ -96,7 +96,7 @@ Data Factory は、イベントが [Event Grid イベント スキーマ](../eve
 
 ## <a name="advanced-filtering"></a>高度なフィルター処理
 
-カスタム イベント トリガーでは、[Event Grid の高度なフィルター処理](../event-grid/event-filtering.md#advanced-filtering)と同様の高度なフィルター処理機能がサポートされています。 これらの条件付きフィルターを使用すると、イベント ペイロードの _値_ に基づいてパイプラインをトリガーできます。 たとえば、イベント ペイロードに _Department という名前のフィールドがあり、_Department_ が _Finance_ の場合にのみパイプラインをトリガーするとします。 _date_ フィールドにはリスト [1, 2, 3, 4, 5] を、_month_ フィールドの __not__ 条件にはリスト [11, 12] を、_tag_ フィールドは ['Fiscal Year 2021', 'FiscalYear2021', 'FY2021'] のいずれかを含む、というように複雑なロジックを指定することもできます。
+カスタム イベント トリガーでは、[Event Grid の高度なフィルター処理](../event-grid/event-filtering.md#advanced-filtering)と同様の高度なフィルター処理機能がサポートされています。 これらの条件付きフィルターを使用すると、イベント ペイロードの _値_ に基づいてパイプラインをトリガーできます。 たとえば、イベント ペイロードに _Department_ という名前のフィールドがあり、_Department_ が _Finance_ である場合にのみパイプラインをトリガーする必要があるとします。 _date_ フィールドにはリスト [1, 2, 3, 4, 5] を、_month_ フィールドの __not__ 条件にはリスト [11, 12] を、_tag_ フィールドは ['Fiscal Year 2021', 'FiscalYear2021', 'FY2021'] のいずれかを含む、というように複雑なロジックを指定することもできます。
 
  :::image type="content" source="media/how-to-create-custom-event-trigger/custom-event-5-advanced-filters.png" alt-text="顧客イベント トリガーの高度なフィルターの設定のスクリーンショット":::
 

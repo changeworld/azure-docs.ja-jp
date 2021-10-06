@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: overview
 ms.date: 06/23/2021
-ms.openlocfilehash: 2aa4fe3e7e2f7637060996b53748391da03879ec
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 07a47b432470b683680c315f2d1d741cc607774f
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123032284"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129214601"
 ---
 # <a name="whats-new-in-anomaly-detector"></a>Anomaly Detector の新機能
 
@@ -19,6 +19,10 @@ ms.locfileid: "123032284"
 また、ユーザーが生成したコンテンツへのリンクも追加されています。 そのような項目には、 **[UGC]** というタグが付いています。 その一部は、Microsoft の外部の Web サイトでホストされており、Microsoft はそのコンテンツに責任を負いません。 これらのリソースを参照するときは慎重に行ってください。 コンテンツを削除する場合は、AnomalyDetector@microsoft.com に問い合わせるか、GitHub で問題を報告します。
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="september-2021"></a>2021 年 9 月
+* Anomaly Detector (一変量) が、JIO インド西部で利用できるようになりました。
+* 多変量異常検出 API が、さらに次の 5 つのリージョンにデプロイされました: 東アジア、米国西部、インド中部、韓国中部、ドイツ中西部。
 
 ### <a name="august-2021"></a>2021 年 8 月
 
@@ -70,9 +74,6 @@ ms.locfileid: "123032284"
 * 2019 年 8 月 20 日、「[Bring Anomaly Detector on-premises with containers support (コンテナー サポートを使用して Anomaly Detector をオンプレミスで利用する)](https://channel9.msdn.com/Shows/AI-Show/Bring-Anomaly-Detector-on-premise-with-containers-support)」 - Qun Ying と Seth Juarez による AI ショー
 * 2019 年 8 月 13 日、「[Introducing Azure Anomaly Detector (Azure Anomaly Detector の概要)](https://channel9.msdn.com/Shows/AI-Show/Introducing-Azure-Anomaly-Detector?WT.mc_id=ai-c9-niner)」 - Qun Ying と Seth Juarez による AI ショー
 
-## <a name="open-source-projects"></a>オープンソース プロジェクト
-
-* 2019 年 6 月 3 日、 **[UGC]** 「[Jupyter notebook demonstrating Anomaly Detection and streaming to Power BI (異常検出と Power BI へのストリーミングの方法を示す Jupyter ノートブック)](https://github.com/marvinbuss/MS-AnomalyDetector)」 - Marvin Buss
 
 ## <a name="service-updates"></a>サービスの更新情報
 

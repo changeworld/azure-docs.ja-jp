@@ -1,20 +1,20 @@
 ---
-title: Azure Purview に Cassandra をソースとして登録してスキャンを設定する
+title: Cassandra をソースとして登録してスキャンを設定する
 description: この記事では、Azure Purview に Cassandra サーバーを登録し、スキャンを設定する方法について、概要を説明します。
 author: chandrakavya
 ms.author: kchandra
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: overview
-ms.date: 8/06/2021
-ms.openlocfilehash: 8e2136cdb4cca53d81412335f7f5878fd8d70b86
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/27/2021
+ms.openlocfilehash: dcc0ef65654d8100a1c96cdb0c84a6ac758587a2
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121788063"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129212735"
 ---
-# <a name="register-and-scan-a-cassandra-source"></a>Cassandra ソースの登録とスキャン 
+# <a name="register-and-scan-a-cassandra-source-preview"></a>Cassandra ソースの登録とスキャン (プレビュー)
 
 この記事では、Azure Purview に Cassandra サーバーを登録し、スキャンを設定する方法について、概要を説明します。
 
@@ -52,14 +52,14 @@ Cassandra ソースではフル スキャンがサポートされており、Cas
 3. Cassandra サーバーによって使用されるポートを **[ポート]** フィールドに入力します。
 4. コレクションを選択するか、新しいものを作成します (省略可能)
 
-5.  **[登録]** をクリックします。
+5.  **[登録]** を選択します。
     :::image type="content" source="media/register-scan-cassandra-source/configure-sources.png" alt-text="Cassandra ソースの構成" border="true":::
 
 ## <a name="creating-and-running-a-scan"></a>スキャンを作成し、実行する
 
 新しいスキャンを作成して実行するには、次の操作を行います。
 
-1.  管理センターで、 [統合ランタイム] をクリックします。 セルフホステッド統合ランタイムが設定されていることを確認してください。 設定されていない場合は、[こちら](./manage-integration-runtimes.md)に記載されている手順を使用して、セルフホステッド統合ランタイムを設定します
+1.  管理センターで、[統合ランタイム] を選択します。 セルフホステッド統合ランタイムが設定されていることを確認してください。 設定されていない場合は、[こちら](./manage-integration-runtimes.md)に記載されている手順を使用して、セルフホステッド統合ランタイムを設定します
 
 2.  **[ソース]** に移動します。
 
@@ -96,13 +96,13 @@ NOT および特殊文字の使用は許容されません。
     g. **[Maximum memory available]\(使用可能な最大メモリ\):** スキャン プロセスで使用される、顧客の VM で使用可能な最大メモリ (GB 単位)。 これは、スキャンする Cassandra サーバーのサイズによって異なります。
         :::image type="content" source="media/register-scan-cassandra-source/scan.png" alt-text="Cassandra ソースのスキャン" border="true":::
 
-6.  **[テスト接続]** をクリックします。
+6.  **[接続テスト]** を選択します。
 
-7.  **[続行]** をクリックします。
+7.  **[続行]** を選択します。
 
 8.  **スキャン トリガー** を選択します。 スケジュールを設定することも、1 回限りのスキャンを実行することもできます。
 
-9.  スキャンを確認し、 **[保存および実行]** をクリックします。
+9.  自分のスキャンを確認し、 **[保存および実行]** を選択します。
 
 ## <a name="viewing-your-scans-and-scan-runs"></a>スキャンとスキャンの実行を確認する
 

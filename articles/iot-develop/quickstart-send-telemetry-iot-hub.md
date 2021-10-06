@@ -1,6 +1,6 @@
 ---
 title: Azure IoT Hub にデバイス テレメトリを送信するクイックスタート
-description: このクイックスタートでは、デバイス開発者がデバイスを Azure IoT Hub に安全に接続する方法について説明します。 C、C#、Python、Node.js、または Java 用の Azure IoT device SDK を使用して、シミュレートされたデバイスでクライアント アプリを実行し、IoT Hub に接続してテレメトリを送信します。
+description: このクイックスタートでは、デバイス開発者がデバイスを Azure IoT Hub に安全に接続する方法について説明します。 C、C#、Python、Node.js、または Java 用の Azure IoT device SDK を使用し、Windows、Linux、Raspberry Pi OS (Raspian) 用のシミュレートされたデバイス クライアントを構築します。 最後に、デバイスを Azure IoT Hub に接続し、テレメトリを送信します。
 author: timlt
 ms.author: timlt
 ms.service: iot-develop
@@ -8,14 +8,14 @@ ms.topic: quickstart
 ms.date: 08/03/2021
 ms.collection: embedded-developer, application-developer
 zone_pivot_groups: iot-develop-set1
-ms.openlocfilehash: 0ac38398f31c2256761c0f1b75d03f2fafeb65f8
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f7b1543b91d604b6640bf97877bf2c134deee866
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121744356"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129094073"
 ---
-# <a name="quickstart-send-telemetry-from-a-device-to-azure-iot-hub"></a>クイックスタート: デバイスから Azure IoT Hub にテレメトリを送信する
+# <a name="quickstart-send-telemetry-from-an-iot-plug-and-play-device-to-azure-iot-hub"></a>クイックスタート: IoT プラグ アンド プレイ デバイスから Azure IoT Hub にテレメトリを送信する
 
 **適用対象**: [デバイス アプリケーション開発者](about-iot-develop.md#device-application-development)
 

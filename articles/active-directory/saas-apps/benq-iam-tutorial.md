@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory シングル サインオン (SSO) と BenQ IAM の統合 | Microsoft Docs'
+title: 'チュートリアル: Azure AD SSO と BenQ IAM の統合'
 description: Azure Active Directory と BenQ IAM の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/30/2021
+ms.date: 09/16/2021
 ms.author: jeedes
-ms.openlocfilehash: cbe0dbe25956c097abd780f8f8da6213d231a3c4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 1adfc67567176be0d5cda6124392f8069e7b962e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121786197"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128630000"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-benq-iam"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と BenQ IAM の統合
+# <a name="tutorial-azure-ad-sso-integration-with-benq-iam"></a>チュートリアル: Azure AD SSO と BenQ IAM の統合
 
 このチュートリアルでは、BenQ IAM と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と BenQ IAM を統合すると、次のことができます。
 
@@ -75,9 +75,9 @@ BenQ IAM に対して Azure AD SSO を構成してテストするには、次の
 
 1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
-    a. **[識別子]** ボックスに、`https://service-portaltest.benq.com/saml/init/<ID>` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`https://service-portal.benq.com/saml/init/<ID>` の形式で URL を入力します。
 
-    b. **[応答 URL]** ボックスに、`https://service-portaltest.benq.com/saml/consume/<ID>` のパターンを使用して URL を入力します
+    b. **[応答 URL]** ボックスに、`https://service-portal.benq.com/saml/consume/<ID>` のパターンを使用して URL を入力します
 
 1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
@@ -131,7 +131,30 @@ BenQ IAM に対して Azure AD SSO を構成してテストするには、次の
 
 ## <a name="configure-benq-iam-sso"></a>BenQ IAM の SSO の構成
 
-**BenQ IAM** 側でシングル サインオンを構成するには、ダウンロードした **証明書 (Base64)** と Azure portal からコピーした適切な URL を [BenQ IAM サポート チーム](mailto:benqcare.us@benq.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+1. BenQ 管理者アカウントで BenQ IAM にログインし、[アカウント管理] セクションで **[SSO 設定]** をクリックします。
+
+    ![[SSO 設定] のスクリーンショット](./media/benq-iam-tutorial/sso-setting.png)
+
+1. ポップアップで SSO 設定として **[SSO by SAML]\(SAML による SSO\)** を選択し、 **[次へ]** をクリックします。
+
+    ![SAML による SSO のスクリーンショット](./media/benq-iam-tutorial/sso-by-saml.png)
+
+1. **[SSO 設定]** ページで次の手順を実行します。
+
+    ![SSO 構成のスクリーンショット](./media/benq-iam-tutorial/saml-configuration.png)
+
+    a. **[ログイン/SSO URL]** テキスト ボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
+
+    b. **[Identifier/Entity ID]\(識別子/エンティティ ID\)** テキストボックスに、Azure portal からコピーした **ID** の値を貼り付けます。
+
+    c. Azure portal からダウンロードした **証明書 (Base64)** をメモ帳で開き、その内容を **[証明書 (Base64)]** テキスト ボックスに貼り付けます。
+
+    d. **[Identifier]\(識別子\)** の値をコピーし、Azure portal の **[基本的な SAML 構成]** セクションの **[識別子]** テキスト ボックスに貼り付けます。
+
+    e. **[Reply URL]\(応答 URL\)** の値をコピーし、Azure portal の **[基本的な SAML 構成]** セクションの **[応答 URL]** テキスト ボックスにこの値を貼り付けます。
+
+    f. **[次へ]** をクリックします。
+
 
 ### <a name="create-benq-iam-test-user"></a>BenQ IAM のテスト ユーザーの作成
 
@@ -151,7 +174,7 @@ BenQ IAM に対して Azure AD SSO を構成してテストするには、次の
 
 * Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した BenQ IAM に自動的にサインインされます。 
 
-また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [BenQ IAM] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した BenQ IAM に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [BenQ IAM] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した BenQ IAM に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

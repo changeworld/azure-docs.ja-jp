@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/14/2021
 ms.author: b-juche
-ms.openlocfilehash: 49cc885976e022e8b7c4c44c3546febc217e2d7c
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.openlocfilehash: 3ff9ed36800c60d50e70b328ab37606ddea09508
+ms.sourcegitcommit: f3f2ec7793ebeee19bd9ffc3004725fb33eb4b3f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112071823"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129407572"
 ---
 # <a name="manual-qos-capacity-pool"></a>手動 QoS 容量プール
 
@@ -48,7 +48,7 @@ QoS の種類に関する考慮事項については、「[Azure NetApp Files �
 ## <a name="next-steps"></a>次のステップ
 
 * [手動 QoS 容量プールを管理する](manage-manual-qos-capacity-pool.md)
-* [容量プールを設定する](azure-netapp-files-set-up-capacity-pool.md)
+* [容量プールの作成](azure-netapp-files-set-up-capacity-pool.md)
 * [ストレージの階層](azure-netapp-files-understand-storage-hierarchy.md) 
 * [Azure NetApp Files のサービス レベル](azure-netapp-files-service-levels.md)
 * [Azure NetApp Files のパフォーマンスに関する考慮事項](azure-netapp-files-performance-considerations.md)

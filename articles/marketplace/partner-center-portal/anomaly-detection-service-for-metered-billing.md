@@ -4,15 +4,15 @@ description: 異常検出のしくみ、通知が送信されるタイミング�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: saasguide
-ms.author: souchak
+ms.author: mingshen
+author: mingshen-ms
 ms.date: 09/27/2021
-ms.openlocfilehash: 8e8989eabc08b98b8b0bac922d7c998496c74a1c
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: ff4600cd1b107fb041123191f80f9da4f50af5ac
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129455154"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129081181"
 ---
 # <a name="anomaly-detection-service-for-metered-billing"></a>従量制課金に対する異常検出サービス
 
@@ -74,7 +74,7 @@ ms.locfileid: "129455154"
 
     [ ![パートナー センターのホーム ページの [ヘルプとサポート] タイルが表示されます。](../media/workspaces/partner-center-help-support-tile.png) ](../media/workspaces/partner-center-help-support-tile.png#lightbox)
 
-1. **[My support requests]\(サポート リクエスト\)** の下で、 **[+ 新しいサポート リクエスト]** を選択します。
+1. **[サポート リクエスト]** の下で、 **[+ 新しいサポート リクエスト]** を選びます。
 1. **[問題の概要]** ボックスに、「**従量制課金**」と入力します。
 1. **[問題の種類]** ボックスで、次のいずれかを選択します。
     - **[コマーシャル マーケットプレース] > [Metered Billing]\(従量制課金\) > [Wrong usage sent for Azure Applications offer]\(送信された Azure アプリケーション プランの使用量が間違っている\)**

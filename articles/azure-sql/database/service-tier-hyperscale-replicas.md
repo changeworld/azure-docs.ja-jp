@@ -8,13 +8,13 @@ ms.topic: overview
 author: yorek
 ms.author: damauri
 ms.reviewer: ''
-ms.date: 7/27/2021
-ms.openlocfilehash: 9fa0a964033439a4b1c5276bf4310528dd345ff8
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 9/24/2021
+ms.openlocfilehash: e2785f965cdbb94af081e937f0b2290578c04796
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121722899"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129059532"
 ---
 # <a name="hyperscale-secondary-replicas"></a>Hyperscale セカンダリ レプリカ
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -22,13 +22,13 @@ ms.locfileid: "121722899"
 [分散機能アーキテクチャ](service-tier-hyperscale.md)に関するページで説明したように、Azure SQL Database Hyperscale には、2 種類のコンピューティング ノード (レプリカとも呼ばれます) があります。
 
 - プライマリ: 読み取り操作と書き込み操作を処理
-- セカンダリ: 読み取りスケールアウト、高可用性、geo レプリケーションを提供
+- セカンダリ: [読み取りスケールアウト](read-scale-out.md)、[高可用性](high-availability-sla.md)、[geo レプリケーション](active-geo-replication-overview.md)を提供
 
 セカンダリ レプリカは常に読み取り専用で、次の 3 種類があります。
 
 - 高可用性レプリカ
-- 名前付きレプリカ (プレビュー)
-- geo レプリカ (プレビュー)
+- 名前付きレプリカ ([プレビュー](https://azure.microsoft.com/support/legal/preview-supplemental-terms/))
+- geo レプリカ ([プレビュー](https://azure.microsoft.com/support/legal/preview-supplemental-terms/))
 
 アーキテクチャ、機能セット、目的、コストは種類ごとに異なります。 必要な機能に応じて、1 つだけ使用することも、3 つすべてを組み合わせて使用することもできます。
 
@@ -63,7 +63,7 @@ HA レプリカと同様、名前付きレプリカでも、プライマリ レ�
 - (プライマリ レプリカ 1 つにつき) 最大 30 個の名前付きレプリカがサポートされます。
 - 名前付きレプリカのホストとなる論理サーバーに複数の異なるログインを作成することで、名前付きレプリカごとに異なる認証を使用できます。
 
-名前付きレプリカの主な目標は、大量の OLTP 読み取りスケールアウト シナリオへの対応と、Hybrid Transactional and Analytical Processing (HTAP) ワークロードの向上です。 こうしたソリューションを作成する方法の例を次に示します。
+名前付きレプリカの主な目標は、大量の OLTP [読み取りスケールアウト](read-scale-out.md) シナリオへの対応と、Hybrid Transactional and Analytical Processing (HTAP) ワークロードの向上です。 こうしたソリューションを作成する方法の例を次に示します。
 
 - [OLTP スケールアウト サンプル](https://github.com/Azure-Samples/azure-sql-db-named-replica-oltp-scaleout)
 - [HTAP スケールアウト サンプル](https://github.com/Azure-Samples/azure-sql-db-named-replica-htap)

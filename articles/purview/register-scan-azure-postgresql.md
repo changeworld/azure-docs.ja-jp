@@ -1,18 +1,18 @@
 ---
 title: Azure database for PostgreSQL の登録とスキャン
-description: このチュートリアルでは、Azure database for PostgreSQL データベースをスキャンする方法について説明します
+description: このチュートリアルでは、Azure Purview で Azure database for PostgreSQL データベースをスキャンする方法について説明します。
 author: evwhite
 ms.author: evwhite
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: tutorial
 ms.date: 06/30/2021
-ms.openlocfilehash: 622e89392dc10f12fe81ed1c1085e5b9cc524999
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: abc676fbff551781f720db5937a9c35c7c8f81ea
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122181300"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129209807"
 ---
 # <a name="register-and-scan-an-azure-database-for-postgresql"></a>Azure database for PostgreSQL の登録とスキャン
 
@@ -73,7 +73,7 @@ Azure Database for PostgreSQL データベースに接続するには、完全�
 
 新しいスキャンを作成して実行するには、次の操作を行います。
 
-1. Purview Studio の左側にあるペインで **[Data Map]** タブを選択します。
+1. [Purview Studio](https://web.purview.azure.com/resource/) の左側のペインで **[Data Map]** タブを選択します。
 
 1. 登録した Azure Database for PostgreSQL ソースを選択します。
 

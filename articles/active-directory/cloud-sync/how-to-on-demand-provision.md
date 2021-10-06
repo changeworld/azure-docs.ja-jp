@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/14/2020
+ms.date: 09/10/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5048b78c7d59b3358dbffe2e3e6eedf41decabb8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 20719182a9b97bc783ef2bdc16ccad327dba79aa
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102554277"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124742567"
 ---
 # <a name="on-demand-provisioning-in-azure-ad-connect-cloud-sync"></a>Azure AD Connect クラウド同期のオンデマンド プロビジョニング
 
@@ -24,6 +24,10 @@ Azure Active Directory (Azure AD) Connect のクラウド同期機能を使用�
 
 > [!IMPORTANT] 
 > オンデマンド プロビジョニングを使用した場合、選択したユーザーにはスコープ フィルターは適用されません。 オンデマンド プロビジョニングは、指定した組織単位外のユーザーに使用できます。
+
+詳細と例については、次のビデオをご覧ください。
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RWK5mW]
 
 ## <a name="validate-a-user"></a>ユーザーを検証する
 オンデマンド プロビジョニングを使用するには、次の手順を実行します。

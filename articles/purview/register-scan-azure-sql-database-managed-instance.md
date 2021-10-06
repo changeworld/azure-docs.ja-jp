@@ -1,18 +1,18 @@
 ---
 title: Azure SQL Database Managed Instance の登録とスキャン
-description: このチュートリアルでは、Azure SQL Database Managed Instance をスキャンする方法について説明します
+description: このチュートリアルでは、Azure Purview で Azure SQL Database Managed Instance をスキャンする方法について説明します。
 author: hophanms
 ms.author: hophan
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: tutorial
 ms.date: 05/08/2021
-ms.openlocfilehash: 06f3ee8b820d732c0f605adc3201cff57fa70b42
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c633d95c615298876a8bedd76ecbd9c96a4f54da
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121739086"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129209694"
 ---
 # <a name="register-and-scan-an-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance の登録とスキャン
 
@@ -31,8 +31,9 @@ Azure SQL Database Managed Instance データ ソースでは、以下の機能�
 - Purview アカウントをまだお持ちでない場合は、新たに作成します。
 
 - [Azure SQL マネージド インスタンスのパブリック エンドポイントを構成する](../azure-sql/managed-instance/public-endpoint-configure.md)
+
     > [!Note]
-    > Purview では **プライベート エンドポイントはまだサポートされていない** ため、組織はパブリック エンドポイントを許可できる必要があります。 プライベート エンドポイントを使用する場合、スキャンは正常に実行されません。
+    > Azure Purview インジェスト プライベート エンドポイントとセルフホステッド統合ランタイム VM を使用してプライベート エンドポイントで構成されている、Azure SQL Database Managed Instances のスキャンがサポートされるようになりました。 前提条件に関する詳細については、「[プライベートかつ安全な Azure Purview への接続とデータ ソースのスキャン](./catalog-private-link-end-to-end.md)」を参照してください
 
 ### <a name="setting-up-authentication-for-a-scan"></a>スキャンの認証の設定
 

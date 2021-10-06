@@ -8,15 +8,15 @@ ms.service: role-based-access-control
 ms.subservice: conditions
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/07/2021
+ms.date: 09/24/2021
 ms.author: rolyon
 ms.custom: subject-rbac-steps
-ms.openlocfilehash: 57a4c866681f9970982a34545081549a407377db
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: 7401b7369d766df5513100b30b7b65c324517fbe
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111592036"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129091991"
 ---
 # <a name="add-or-edit-azure-role-assignment-conditions-using-the-azure-portal-preview"></a>Azure portal で Azure ロール割り当ての条件を追加または編集する (プレビュー)
 
@@ -50,9 +50,9 @@ ms.locfileid: "111592036"
 
 1. 「[Azure portal を使用して Azure ロールを割り当てる](role-assignments-portal.md)」の手順を実行します。
 
-1. **[条件]** タブで **[条件の追加]** をクリックします。
+1. **[条件 (省略可能)]** タブで、 **[条件の追加]** をクリックします。
 
-    [条件] タブが表示されない場合は、選択したのが、条件の使用をサポートしているロールであることを確認します。
+    [条件 (省略可能)] タブが表示されない場合は、これらの条件をサポートするロールを選択したことを確認してください。
 
    ![ロール割り当て追加ページのスクリーンショット。プレビュー機能である [条件の追加] タブが表示されています。](./media/shared/condition.png)
 

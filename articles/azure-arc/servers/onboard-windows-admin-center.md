@@ -3,12 +3,12 @@ title: Windows Admin Center からハイブリッド マシンを Azure に接�
 description: この記事では、Windows Admin Center から Azure Arc 対応サーバーを使用して、エージェントをインストールし、マシンを Azure に接続する方法について説明します。
 ms.date: 08/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: 1abfe2e69a8f3e7b2ab1abcc2d34c79877b750d3
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: cc5e47c1f52f0a35048cc796015184d2a0d2dda7
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122323269"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124788954"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-windows-admin-center"></a>Windows Admin Center からハイブリッド マシンを Azure に接続する
 
@@ -16,7 +16,7 @@ ms.locfileid: "122323269"
 
 ## <a name="prerequisites"></a>前提条件
 
-* Arc 対応サーバー - [前提条件](agent-overview.md#prerequisites)を確認し、ご利用のサブスクリプション、Azure アカウント、リソースが要件を満たしていることを確認します。
+* Azure Arc 対応サーバー - [前提条件](agent-overview.md#prerequisites)を確認し、ご利用のサブスクリプション、Azure アカウント、リソースが要件を満たしていることを確認します。
 
 * Windows Admin Center - [Azure の統合をデプロイおよび構成](/windows-server/manage/windows-admin-center/azure/azure-integration)するように[環境を準備する](/windows-server/manage/windows-admin-center/deploy/prepare-environment)ための要件を確認します。
 
@@ -30,7 +30,7 @@ ms.locfileid: "122323269"
 
 ## <a name="deploy"></a>デプロイ
 
-Arc 対応サーバーを使用して Windows サーバーを構成するには、次の手順を実行します。
+Azure Arc 対応サーバーを使用して Windows サーバーを構成するには、次の手順を実行します。
 
 1. Windows Admin Center にサインインします。
 
@@ -69,4 +69,4 @@ Connected Machine エージェントのインストールを確認するには�
 
 * [計画と展開ガイド](plan-at-scale-deployment.md)を参照して、任意の規模で Azure Arc 対応サーバーをデプロイし、一元的な管理と監視を実装する計画を立ててください。
 
-* [Azure Policy](../../governance/policy/overview.md) を使用してマシンを管理する方法を確認します。VM の[ゲスト構成](../../governance/policy/concepts/guest-configuration.md)、予期された Log Analytics ワークスペースがマシンの報告先であることの確認、[VM 分析情報](../../azure-monitor/vm/vminsights-enable-policy.md)を使用した監視の有効化などの方法です。
+* [Azure Policy](../../governance/policy/overview.md) を使用してマシンを管理する方法を確認します。VM の[ゲスト構成](../../governance/policy/concepts/guest-configuration.md)、マシンの報告先が、予期された Log Analytics ワークスペースであることの確認、[VM 分析情報](../../azure-monitor/vm/vminsights-enable-policy.md)を使用した監視の有効化などの方法です。

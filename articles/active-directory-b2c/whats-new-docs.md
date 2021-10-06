@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory Business-to-Customer (B2C) の新機能
 description: Azure Active Directory Business-to-Customer (B2C) の新規および更新されたドキュメント。
-ms.date: 08/03/2021
+ms.date: 09/08/2021
 ms.service: active-directory
 ms.subservice: B2C
 ms.topic: reference
@@ -9,16 +9,55 @@ ms.workload: identity
 ms.author: mimart
 author: msmimart
 manager: CelesteDG
-ms.openlocfilehash: 2b28828cfd21d6847bcf5ebfe4fce1e5f144c118
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a0c5ff9f91f436e7a5ede0c84e1cf5578fc5d500
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121724891"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124761374"
 ---
 # <a name="azure-active-directory-b2c-whats-new"></a>Azure Active Directory B2C:新機能
 
 Azure Active Directory B2C のドキュメントの最新情報にようこそ。 この記事では、過去 3 か月間に追加された新しいドキュメントと、重要な更新があったものの一覧を示します。 B2C サービスの新機能については、「[Azure Active Directory の新着情報](../active-directory/fundamentals/whats-new.md)」を参照してください。
+
+## <a name="august-2021"></a>2021 年 8 月
+
+### <a name="new-articles"></a>新しい記事
+
+- [GitHub Actions を使用してカスタム ポリシーをデプロイする](deploy-custom-policies-github-action.md)
+- [Azure AD B2C を使ってサンプル WPF デスクトップ アプリで認証を構成する](configure-authentication-sample-wpf-desktop-app.md)
+- [Azure AD B2C を使用して WPF デスクトップ アプリの認証オプションを有効にする](enable-authentication-wpf-desktop-app-options.md)
+- [Azure Active Directory B2C でカスタム ポリシーを使用して SAML ID プロバイダーとして AD FS を追加する](identity-provider-adfs-saml.md)
+- [Azure Active Directory B2C を使ってサンプル Python Web アプリケーションで認証を構成する](configure-authentication-sample-python-web-app.md)
+- [Azure Active Directory B2C を使用して Python Web アプリケーションで認証オプションを構成する](enable-authentication-python-web-app-options.md)
+- [チュートリアル: Azure Sentinel を使用して Azure AD B2C データのセキュリティ分析を実行する方法](azure-sentinel.md)
+- [API コネクタを使用して外部ソースからの要求でトークンを強化する](add-api-connector-token-enrichment.md)
+
+### <a name="updated-articles"></a>更新された記事
+
+- [Azure Active Directory B2C で HTML テンプレートを使用してユーザー インターフェイスをカスタマイズする](customize-ui-with-html.md)
+- [Azure AD B2C を使ってサンプル WPF デスクトップ アプリで認証を構成する](configure-authentication-sample-wpf-desktop-app.md)
+- [Azure AD B2C を使用して WPF デスクトップ アプリの認証オプションを有効にする](enable-authentication-wpf-desktop-app-options.md)
+- [Azure AD B2C を使用してサンプル iOS Swift アプリケーションで認証を構成する](configure-authentication-sample-ios-app.md)
+- [Azure AD B2C を使用して iOS Swift アプリの認証オプションを有効にする](enable-authentication-ios-app-options.md)
+- [Azure AD B2C を使用して独自の iOS Swift アプリケーションで認証を有効にする](enable-authentication-ios-app.md)
+- [Azure Active Directory B2C テナントに Web API アプリケーションを追加する](add-web-api-application.md)
+- [Azure AD B2C を使用して サンプル Android アプリで認証オプションを構成する](configure-authentication-sample-android-app.md)
+- [Azure AD B2C を使用して Android アプリで認証オプションを構成する](enable-authentication-android-app-options.md)
+- [Azure AD B2C を使用して独自の Android アプリで認証を有効にする](enable-authentication-android-app.md)
+- [Azure AD B2C を使ってサンプル web アプリケーションで認証を構成する](configure-authentication-sample-web-app.md)
+- [Azure AD B2C を使用して Web アプリの認証オプションを有効にする](enable-authentication-web-application-options.md)
+- [Azure AD B2C を使用して独自の Web アプリで認証を有効にする](enable-authentication-web-application.md)
+- [Azure AD B2C を使用してシングルページ アプリケーションで認証オプションを構成する](enable-authentication-spa-app-options.md)
+- [Azure Active Directory B2C のカスタム ドメインを有効にする](custom-domain.md)
+- [Azure Active Directory B2C でカスタム ポリシーを使用して AD FS を OpenID Connect プロバイダーとして追加する](identity-provider-adfs.md)
+- [Azure Active Directory B2C を使用して SAML ID プロバイダー オプションを構成する](identity-provider-generic-saml-options.md)
+- [チュートリアル: Azure Active Directory B2C でユーザー フローとカスタム ポリシーを作成する](tutorial-create-user-flows.md)
+- [チュートリアル: パスワードレス認証のために Azure Active Directory B2C と BlokSec を構成する](partner-bloksec.md)
+- [API コネクタをサインアップ ユーザー フローに追加する](add-api-connector.md)
+- [API コネクタを使用してサインアップ ユーザー フローをカスタマイズおよび拡張する](api-connectors-overview.md)
+- [ユーザー フローの電話でのサインアップとサインインを設定する](phone-authentication-user-flows.md)
+
 
 ## <a name="july-2021"></a>2021 年 7 月
 

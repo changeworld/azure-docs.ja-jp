@@ -3,13 +3,13 @@ title: Azure portal を使用して VM を復元する
 description: Azure Portal を使用して復旧ポイントから Azure 仮想マシンを復元します。たとえば、リージョンをまたがる復元機能があります。
 ms.reviewer: geg
 ms.topic: conceptual
-ms.date: 08/06/2021
-ms.openlocfilehash: 75320c54c9496b1c978fdabb8a0a7560087f777c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/27/2021
+ms.openlocfilehash: cbe511388755e31a2d295a4cf8ed58e78c9afdc2
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121738457"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129079525"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Azure portal で Azure VM データを復元する方法
 
@@ -85,7 +85,10 @@ VM を復元する (新しい VM を作成する) には、VM の復元操作の
 1. **[仮想マシンの復元]**  >  **[新規作成]**  >  **[復元の種類]** で、 **[仮想マシンの作成]** を選択します。
 1. **[仮想マシン名]** で、サブスクリプションに存在しない VM を指定します。
 1. **[リソース グループ]** で、新しい VM の既存のリソース グループを選択するか、グローバルに一意の名前を持つ新しいリソース グループを作成します。 既に存在している名前を割り当てると、Azure は VM と同じ名前をグループに割り当てます。
-1. **[仮想ネットワーク]** で、VM が配置される VNet を選択します。 サブスクリプションに関連付けられているすべての VNet が表示されます。 サブネットを選択します。 最初のサブネットが既定で選択されています。
+1. **[仮想ネットワーク]** で、VM が配置される VNet を選択します。 コンテナーと同じ場所のサブスクリプションに関連付けられていて、アクティブであり、どのアフィニティ グループとも接続されていない VNet がすべて表示されます。 サブネットを選択します。
+
+   最初のサブネットが既定で選択されています。
+
 1. **[ステージングの場所]** で、VM のストレージ アカウントを指定します。 [詳細については、こちらを参照してください](#storage-accounts)。
 
     ![復元の構成ウィザード - 復元オプションを選択する](./media/backup-azure-arm-restore-vms/recovery-configuration-wizard1.png)

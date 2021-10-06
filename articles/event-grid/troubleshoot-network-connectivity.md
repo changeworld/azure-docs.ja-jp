@@ -3,14 +3,14 @@ title: ネットワーク接続の問題のトラブルシューティング - A
 description: この記事では、Azure Event Grid でのネットワーク接続の問題のトラブルシューティングについて説明します。
 author: batrived
 ms.topic: article
-ms.date: 06/21/2020
+ms.date: 09/28/2021
 ms.author: batrived
-ms.openlocfilehash: fa119784715b8c88ef3c9f2700b2cac1cc467234
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c565a465dbab683295cf42248640bbbf8242412c
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96339747"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129229945"
 ---
 # <a name="troubleshoot-connectivity-issues---azure-event-grid"></a>接続に関する問題のトラブルシューティング - Azure Event Grid
 

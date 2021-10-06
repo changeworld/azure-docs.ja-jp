@@ -6,12 +6,12 @@ ms.author: deseelam
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 02/22/2021
-ms.openlocfilehash: c16b4a91f297621fa96e0e18f816d77e9f3b4e2a
-ms.sourcegitcommit: 6a3096e92c5ae2540f2b3fe040bd18b70aa257ae
+ms.openlocfilehash: a1752e1ea264f8abacfee575546f7bdf6b5eb966
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112322406"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128624085"
 ---
 # <a name="replicate-data-over-expressroute-with-azure-migrate-server-migration"></a>Azure Migrate: Server Migration を使用して ExpressRoute 経由でデータをレプリケートする
 
@@ -156,7 +156,7 @@ VMware 仮想マシンを Azure に移行するエージェントレス方式で
 
 キャッシュ ストレージ アカウントの DNS 解決の具体的な例 
 
-- nslookup _storageaccountname_.blob.core.windows.net を入力します。 <storage-account-name> は、Azure Migrate で作成するキャッシュ ストレージ アカウントの名前に置き換えてください。  
+- nslookup _storageaccountname_.blob.core.windows.net を入力します。 \<storage-account-name\> を Azure Migrate によって作成されたキャッシュ ストレージ アカウントの名前に置き換えます。  
 
     このようなメッセージが返されます。  
 

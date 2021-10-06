@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81e40a295d9572fb38a1289d4bdf661095b9ca7a
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 2bb017cd4532d4739b563d4a22a50a731268407f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114449125"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124759721"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>オンプレミスの Azure Active Directory パスワード保護を計画してデプロイする
 
@@ -95,6 +95,9 @@ Azure AD パスワード保護を複数のフォレストに展開するため�
     | --- | --- |
     |`https://login.microsoftonline.com`|認証要求|
     |`https://enterpriseregistration.windows.net`|Azure AD パスワード保護機能|
+
+> [!NOTE]
+> CRL エンドポイントなどの一部のエンドポイントについては、この記事では扱いません。 サポートされているすべてのエンドポイントの一覧については、「[Office 365 URL および IP アドレス範囲](/microsoft-365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online)」を参照してください。
 
 ### <a name="azure-ad-password-protection-dc-agent"></a>Azure AD パスワード保護 DC エージェント
 

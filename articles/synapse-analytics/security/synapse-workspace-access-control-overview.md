@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 12/03/2020
 ms.author: mesrivas
 ms.reviewer: jrasnick
-ms.openlocfilehash: b92603e5aa9f7c42a2e4789353077058b1fc6ea9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 6ee619e6036b9d8bc3b0323bc793903dab0a2735
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121730929"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129207331"
 ---
 # <a name="azure-synapse-access-control"></a>Azure Synapse アクセス制御 
 
@@ -48,7 +48,7 @@ Azure ロールは、次のものの管理を制御するために使用され�
 Synapse では、次の 2 つの開発モデルがサポートされています。
 
 - **Synapse ライブ開発**。 Synapse Studio でコードを開発およびデバッグした後、**発行** して保存および実行します。  Synapse サービスが、コードの編集と実行に関する信頼できるソースになります。  Synapse Studio を終了すると、発行されていない作業はすべて失われます。  
-- **Git 対応の開発**。 Synapse Studio でコードを開発およびデバッグし、Git リポジトリの作業ブランチに変更を **コミット** します。 1 つ以上のブランチからの作業はコラボレーション ブランチに統合されます。そしてそこからサービスに **発行** します。 Git リポジトリがコード編集に関する信頼できるソースとなり、サービスが実行に関する信頼できるソースとなります。 Synapse Studio を終了する前に、変更を Git リポジトリにコミットするか、サービスに発行する必要があります。 Synapse Analytics を Git と共に使用する方法の[詳細を確認](../cicd/continuous-integration-deployment.md)してください。
+- **Git 対応の開発**。 Synapse Studio でコードを開発およびデバッグし、Git リポジトリの作業ブランチに変更を **コミット** します。 1 つ以上のブランチからの作業はコラボレーション ブランチに統合されます。そしてそこからサービスに **発行** します。 Git リポジトリがコード編集に関する信頼できるソースとなり、サービスが実行に関する信頼できるソースとなります。 Synapse Studio を終了する前に、変更を Git リポジトリにコミットするか、サービスに発行する必要があります。 Synapse Analytics を Git と共に使用する方法の[詳細を確認](../cicd/continuous-integration-delivery.md)してください。
 
 どちらの開発モデルでも、Synapse Studio にアクセスできるすべてのユーザーがコード成果物を作成できます。 ただし、サービスへの成果物の発行、発行された成果物の読み取り、Git への変更のコミット、コードの実行、資格情報で保護されているリンクされたデータへのアクセスを行うには、追加のアクセス許可が必要です。
 
@@ -76,7 +76,7 @@ Git モードでの Git 対応の開発を採用した場合は、Git アクセ�
 
 **サーバーレス SQL プール**: Synapse 管理者には、"組み込み" サーバーレス SQL プールに対する `db_owner` (`DBO`) アクセス許可が付与されます。 サーバーレス SQL プールへのアクセス権を他のユーザーに付与するには、Synapse 管理者が各サーバーレス プールで SQL スクリプトを実行する必要があります。  
 
-**専用 SQL プール**: Active Directory 管理者のアクセス許可は、ワークスペースとワークスペース MSI の作成者に付与されます。  それ以外、専用 SQL プールにアクセスするためのアクセス許可は自動的には付与されません。 専用 SQL プールへのアクセス権を他のユーザーまたはグループに付与するには、Active Directory 管理者が各専用 SQL プールに対して SQL スクリプトを実行する必要があります。
+**専用 SQL プール**: Synapse 管理者には、専用 SQL プールに対する `db_owner` (`DBO`) アクセス許可が付与されます。 Active Directory 管理者のアクセス許可は、ワークスペースとワークスペース MSI の作成者に付与されます。  それ以外、専用 SQL プールにアクセスするためのアクセス許可は自動的には付与されません。 専用 SQL プールへのアクセス権を他のユーザーまたはグループに付与するには、Active Directory 管理者が各専用 SQL プールに対して SQL スクリプトを実行する必要があります。
 
 SQL プールで SQL アクセス許可を付与するための SQL スクリプトの例については、[Synapse アクセス制御の設定方法](./how-to-set-up-access-control.md)に関するページを参照してください。  
 

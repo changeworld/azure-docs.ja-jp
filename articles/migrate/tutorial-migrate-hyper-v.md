@@ -9,12 +9,12 @@ ms.date: 03/18/2021
 ms.custom:
 - MVC
 - fasttrack-edit
-ms.openlocfilehash: aa745b9a5c19f45563b6fe30b80f67a776660d39
-ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+ms.openlocfilehash: 7998ca4d84fb5d64131917769a00e3c03bd4e1dd
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123272423"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129536566"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>Hyper-V VM を Azure に移行する
 

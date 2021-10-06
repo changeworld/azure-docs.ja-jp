@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 08/26/2021
 ms.author: duau
-ms.openlocfilehash: 7703c1bba0faf69ee5d2640497df64cc1a418564
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: c0738fcc9011de7102ecbb60f4834bed910843ec
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128665266"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129363517"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>ExpressRoute 接続パートナーとピアリングの場所
 
@@ -124,7 +124,7 @@ ExpressRoute の場所 (ピアリングの場所や meet-me-locations と呼ば�
 | **[NTT EAST](https://business.ntt-east.co.jp/service/crossconnect/)** |サポートされています |サポートされています |東京 |
 | **[NTT Global DataCenters EMEA](https://hello.global.ntt/)** |サポートされています |サポートされています |アムステルダム 2、ベルリン、フランクフルト、ロンドン 2 |
 | **[NTT SmartConnect](https://cloud.nttsmc.com/cxc/azure.html)** |サポートされています |サポートされています |大阪 |
-| **[Ooredoo Cloud Connect](https://www.ooredoo.qa/portal/OoredooQatar/cloud-connect-expressroute)** |サポートされています |サポートされています |マルセイユ |
+| **[Ooredoo Cloud Connect](https://www.ooredoo.com.kw/portal/en/b2bOffConnAzureExpressRoute)** |サポートされています |サポートされています |マルセイユ |
 | **[Optus](https://www.optus.com.au/enterprise/)** |サポートされています |サポートされています |メルボルン、シドニー |
 | **[Orange](https://www.orange-business.com/en/products/business-vpn-galerie)** |サポートされています |サポートされています |アムステルダム、アムステルダム 2、ドバイ 2、フランクフルト、香港特別行政区、ヨハネスブルグ、ロンドン、パリ、サンパウロ、シリコン バレー、シンガポール、シドニー、東京、ワシントン DC |
 | **[Orixcom](https://www.orixcom.com/cloud-solutions/)** | サポートされています | サポートされています | ドバイ 2 |

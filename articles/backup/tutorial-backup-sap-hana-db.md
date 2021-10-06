@@ -2,13 +2,13 @@
 title: チュートリアル - Azure VM での SAP HANA データベースのバックアップ
 description: このチュートリアルでは、Azure VM 上で稼働している SAP HANA データベースを Azure Backup Recovery Services コンテナーにバックアップする方法について学習します。
 ms.topic: tutorial
-ms.date: 09/01/2021
-ms.openlocfilehash: 3cfbd89e9df6cf2d0d30d744ee8e437e3c364094
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.date: 09/27/2021
+ms.openlocfilehash: 629465100106ff3a2403a27cae9bb00e1350bf5e
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123434252"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129082728"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>チュートリアル:Azure VM での SAP HANA データベースのバックアップ
 
@@ -38,8 +38,8 @@ ms.locfileid: "123434252"
   * ユーザーを追加したり削除したりするための資格情報があること。
   * このキーは、事前登録スクリプトを正常に実行した後に削除できることに注意してください
 * また、上記の手順に従ってカスタム キーを作成する代わりに、**hdbuserstore** の既存の HANA SYSTEM ユーザーのキーを作成することも選択できます。
-* HANA がインストールされている仮想マシンで、SAP HANA バックアップ構成スクリプト (事前登録スクリプト) をルート ユーザーとして実行します。 [このスクリプト](https://aka.ms/scriptforpermsonhana)で、バックアップに備えて HANA システムの準備を行い、上記の手順で作成したキーを入力として渡すように求めます。 この入力をパラメーターとしてスクリプトに渡す方法については、「[事前登録スクリプトで実行される処理](#what-the-pre-registration-script-does)」セクションを参照してください。 ここでは、事前登録スクリプトで実行される処理の詳細についても説明されています。
-* HANA セットアップでプライベート エンドポイントが使用されている場合は、 [事前登録スクリプト](https://aka.ms/scriptforpermsonhana)を *-sn* または *--skip-network-checks* パラメーターを指定して実行します。
+* HANA がインストールされている仮想マシンで、SAP HANA バックアップ構成スクリプト (事前登録スクリプト) をルート ユーザーとして実行します。 [このスクリプト](https://go.microsoft.com/fwlink/?linkid=2173610)で、バックアップに備えて HANA システムの準備を行い、上記の手順で作成したキーを入力として渡すように求めます。 この入力をパラメーターとしてスクリプトに渡す方法については、「[事前登録スクリプトで実行される処理](#what-the-pre-registration-script-does)」セクションを参照してください。 ここでは、事前登録スクリプトで実行される処理の詳細についても説明されています。
+* HANA セットアップでプライベート エンドポイントが使用されている場合は、 [事前登録スクリプト](https://go.microsoft.com/fwlink/?linkid=2173610)を *-sn* または *--skip-network-checks* パラメーターを指定して実行します。
 
 >[!NOTE]
 >事前登録スクリプトは、RHEL (7.4、7.6、および 7.7) 上で実行されている SAP HANA ワークロードには **compat-unixODBC234** をインストールし、RHEL 8.1 には **unixODBC** をインストールします。 [このパッケージは、RHEL for SAP HANA (RHEL 7 Server の場合) の SAP ソリューション用更新サービス (RPM) リポジトリ](https://access.redhat.com/solutions/5094721)にあります。  Azure Marketplace RHEL イメージの場合、リポジトリは **rhui-rhel-sap-hana-for-rhel-7-server-rhui-e4s-rpms** になります。
@@ -57,12 +57,14 @@ ms.locfileid: "123434252"
 | Azure Firewall の FQDN タグ          | 必要な FQDN が自動的に管理されるため管理しやすい | Azure Firewall でのみ使用可能                         |
 | サービスの FQDN/IP へのアクセスを許可する | 追加のコストが発生しない   <br><br>  すべてのネットワーク セキュリティ アプライアンスとファイアウォールで動作する | 広範な IP または FQDN のセットへのアクセスが必要になる場合がある   |
 | HTTP プロキシを使用する                 | VM に対するインターネット アクセスを単一の場所で実現                       | プロキシ ソフトウェアで VM を実行するための追加のコストが発生する         |
+| [仮想ネットワーク サービス エンドポイント](/azure/virtual-network/virtual-network-service-endpoints-overview)    |     Azure Storage (= Recovery Services コンテナー) に使用できます。     <br><br>     データ プレーン トラフィックのパフォーマンスを最適化する上で大きなメリットがあります。          |         Azure AD、Azure Backup サービスには使用できません。    |
+| ネットワーク仮想アプライアンス      |      Azure Storage、Azure AD、Azure Backup サービスに使用できます。 <br><br> **データ プレーン**   <ul><li>      Azure Storage: `*.blob.core.windows.net`、`*.queue.core.windows.net`  </li></ul>   <br><br>     **管理プレーン**  <ul><li>  Azure AD:「[Microsoft 365 Common および Office Online](/microsoft-365/enterprise/urls-and-ip-address-ranges?view=o365-worldwide&preserve-view=true#microsoft-365-common-and-office-online)」のセクション 56 および 59 に記載されている FQDN へのアクセスを許可します。 </li><li>   Azure Backup サービス: `.backup.windowsazure.com` </li></ul> <br>[Azure Firewall のサービス タグ](/azure/firewall/fqdn-tags#:~:text=An%20FQDN%20tag%20represents%20a%20group%20of%20fully,the%20required%20outbound%20network%20traffic%20through%20your%20firewall.)の詳細をご覧ください。       |  データ プレーン トラフィックにオーバーヘッドが追加され、スループットとパフォーマンスが低下します。  |
 
 これらのオプションを使用する方法の詳細については、以下を参照してください。
 
 ### <a name="private-endpoints"></a>プライベート エンドポイント
 
-プライベート エンドポイントを使用すると、仮想ネットワーク内のサーバーから Recovery Services コンテナーに安全に接続できます。 プライベート エンドポイントでは、お使いのコンテナーの VNET アドレス空間からの IP アドレスが使用されます。 仮想ネットワーク内のリソースとコンテナー間のネットワーク トラフィックは、仮想ネットワークと Microsoft のバックボーン ネットワーク上のプライベート リンクを経由します。 これにより、パブリック インターネットへの露出が排除されます。 [こちら](./private-endpoints.md)から、Azure Backup のプライベート エンドポイントの詳細を参照してください。
+プライベート エンドポイントを使用すると、仮想ネットワーク内のサーバーから Recovery Services コンテナーに安全に接続できます。 プライベート エンドポイントでは、お使いのコンテナーの VNET アドレス空間からのプライベート IP が使用されます。 仮想ネットワーク内のリソースとコンテナー間のネットワーク トラフィックは、仮想ネットワークと Microsoft のバックボーン ネットワーク上のプライベート リンクを経由します。 これにより、パブリック インターネットへの露出が排除されます。 プライベート エンドポイントは仮想ネットワークの特定のサブネットに割り当てられ、Azure Active Directory には使用できません。 [こちら](./private-endpoints.md)から、Azure Backup のプライベート エンドポイントの詳細を参照してください。
 
 ### <a name="nsg-tags"></a>NSG タグ
 
@@ -102,17 +104,19 @@ Azure VM で実行されている SAP HANA データベースをバックアッ�
 
 ## <a name="understanding-backup-and-restore-throughput-performance"></a>バックアップと復元のスループット パフォーマンスについて
 
-SAP HANA Azure VM では、Backint によってバックアップ (ログとそれ以外) が実現されますが、このバックアップは Azure Recovery Services コンテナーへのストリームであるため、このストリーミング手法について理解することが重要となります。
+SAP HANA Azure VM では、Backint によってバックアップ (ログとそれ以外) が実現されますが、このバックアップは (Azure Storage Blob を内部で使用する) Azure Recovery Services コンテナーへのストリームであるため、このストリーミング手法について理解することが重要となります。
 
-HANA の Backint コンポーネントは、ディスクに接続された "パイプ" (情報を読み取るためのパイプと書き込むためのパイプ) の役割を果たします。基になるディスクには、データベース ファイルが存在します。それらが Azure Backup サービスによって読み取られて、Azure Recovery Services コンテナーに転送されます。 Azure Backup サービスでは、Backint のネイティブ検証チェックとは別に、チェックサムによってストリームが検証されます。 これらの検証によって、Azure Recovery Services コンテナーにあるデータが確かに信頼できるものであり、回復可能であることが確認されます。
+HANA の Backint コンポーネントは、ディスクに接続された "パイプ" (情報を読み取るためのパイプと書き込むためのパイプ) の役割を果たします。基になるディスクには、データベース ファイルが存在します。それらが Azure Backup サービスによって読み取られて、リモート Azure Storage アカウントである Azure Recovery Services コンテナーに転送されます。 Azure Backup サービスでは、Backint のネイティブ検証チェックとは別に、チェックサムによってストリームが検証されます。 これらの検証によって、Azure Recovery Services コンテナーにあるデータが確かに信頼できるものであり、回復可能であることが確認されます。
 
-ストリームの処理対象になるのは主にディスクであるため、バックアップと復元のパフォーマンスを正確に測定するためには、ディスクのパフォーマンスを把握する必要があります。 Azure VM におけるディスクのスループットとパフォーマンスを深く理解するために、[こちらの記事](../virtual-machines/disks-performance.md)を参照してください。 これらはバックアップと復元のパフォーマンスにも当てはまります。
+ストリームの処理対象になるのは主にディスクであるため、バックアップと復元のパフォーマンスを正確に測定するためには、ディスクの読み取りパフォーマンスとバックアップ データを転送するためのネットワーク パフォーマンスを把握する必要があります。 Azure VM におけるディスクまたはネットワークのスループットとパフォーマンスを深く理解するために、[こちらの記事](../virtual-machines/disks-performance.md)を参照してください。 これらはバックアップと復元のパフォーマンスにも当てはまります。
 
 **Azure Backup サービスは、ログ バックアップ以外 (完全、差分、増分など) で最大約 420 MBps を、HANA のログ バックアップで最大 100 MBps を達成しようと試みます**。 前述のように、これらの速度は保証されているわけではなく、次の要因に左右されます。
 
-* キャッシュ不使用時の VM の最大ディスク スループット
-* 基になるディスクの種類とそのスループット
-* 同じディスクに対して同時に読み取りと書き込みを試行するプロセスの数。
+- VM のキャッシュ不使用時の最大ディスク スループット - データまたはログ領域から読み取ります。
+- 基になるディスクの種類とそのスループット - データまたはログ領域から読み取ります。
+- VM の最大ネットワーク スループット - Recovery Services コンテナーに書き込みます。
+- VNET に NVA またはファイアウォールがある場合はそのネットワーク スループット
+- Azure NetApp Files にデータまたはログがある場合 - ANF からの読み取りとコンテナーへの書き込みの両方により VM のネットワークが使用されます。
 
 > [!IMPORTANT]
 > キャッシュ不使用時のディスク スループットが 400 MBps を超えないまでも、それに限りなく近いような小さな VM では、ディスク全体の IOPS がバックアップ サービスによって消費されるおそれがあり、ディスクに対する読み取り/書き込みに関連した SAP HANA の動作に影響を及ぼす可能性があります。 そのようなケースで、バックアップ サービスの消費をスロットル (制限) して上限を超えないようにしたい場合は、次のセクションを参照してください。
@@ -176,13 +180,19 @@ hdbuserstore list
 
 事前登録スクリプトの実行を完了するために必要な手順の概要を次に示します。 このフローでは、事前登録スクリプトへの入力パラメーターとして SYSTEM ユーザー キーを提供していることに注意してください。
 
-|担当者  |ソース  |実行対象  |説明  |
-|---------|---------|---------|---------|
-|```<sid>```adm (OS)     |  HANA OS       |   チュートリアルを読み、事前登録スクリプトをダウンロードする      |   [上記の前提条件](#prerequisites)を読み、[こちら](https://aka.ms/scriptforpermsonhana)から事前登録スクリプトをダウンロードします  |
-|```<sid>```adm (OS) と SYSTEM ユーザー (HANA)    |      HANA OS   |   hdbuserstore Set コマンドを実行する      |   例: hdbuserstore Set SYSTEM hostname>:3```<Instance#>```13 SYSTEM ```<password>``` **注:**  IP アドレスまたは FQDN ではなく、必ずホスト名を使用ください      |
-|```<sid>```adm (OS)    |   HANA OS      |  hdbuserstore List コマンドを実行する       |   結果に次のような既定のストアが含まれているかどうかを確認します: ```KEY SYSTEM  ENV : <hostname>:3<Instance#>13  USER: SYSTEM```      |
-|root (OS)     |   HANA OS        |    Azure Backup HANA 事前登録スクリプトを実行する      |    ```./msawb-plugin-config-com-sap-hana.sh -a --sid <SID> -n <Instance#> --system-key SYSTEM```     |
-|```<sid>```adm (OS)    |  HANA OS       |   hdbuserstore List コマンドを実行する      |    結果に次のような新しい行が結果に含まれているかどうかを確認します: ```KEY AZUREWLBACKUPHANAUSER  ENV : localhost: 3<Instance#>13   USER: AZUREWLBACKUPHANAUSER```     |
+| 担当者     |    ソース    |    実行対象    |    説明    |
+| --- | --- | --- | --- |
+| `<sid>`adm (OS) |    HANA OS   | チュートリアルを読み、事前登録スクリプトをダウンロードします。  |    チュートリアル: [Azure VM での SAP HANA データベースのバックアップ](/azure/backup/tutorial-backup-sap-hana-db)   <br><br>    [事前登録スクリプト](https://go.microsoft.com/fwlink/?linkid=2173610)をダウンロードします |
+| `<sid>`adm (OS)    |    HANA OS    |   HANA を開始します (HDB start)    |   セットアップの前に、HANA が稼働していることを確認します。   |
+| `<sid>`adm (OS)   |   HANA OS  |    次のコマンドを実行します。 <br>  `hdbuserstore Set`   |  `hdbuserstore Set SYSTEM <hostname>:3<Instance#>13 SYSTEM <password>`  <br><br>   **注:** <br>  IP アドレスまたは FQDN ではなく、ホスト名を必ず使用してください。   |
+| `<sid>`adm (OS)   |  HANA OS    |   次のコマンドを実行します。<br> `hdbuserstore List`   |  結果に次のような既定のストアが含まれているかどうかを確認します。 <br><br> `KEY SYSTEM`  <br> `ENV : <hostname>:3<Instance#>13`    <br>  `USER : SYSTEM`   |
+| root (OS)   |   HANA OS    |    [Azure Backup HANA 事前登録スクリプト](https://go.microsoft.com/fwlink/?linkid=2173610)を実行します。     | `./msawb-plugin-config-com-sap-hana.sh -a --sid <SID> -n <Instance#> --system-key SYSTEM`    |
+| `<sid>`adm (OS)   |   HANA OS   |    次のコマンドを実行します。 <br> `hdbuserstore List`   |   結果に次のような新しい行が結果に含まれているかどうかを確認します。 <br><br>  `KEY AZUREWLBACKUPHANAUSER` <br>  `ENV : localhost: 3<Instance#>13`   <br> `USER: AZUREWLBACKUPHANAUSER`    |
+| Azure 共同作成者     |    Azure portal    |   Azure Backup サービス、Azure AD、および Azure Storage への送信トラフィックを許可するように、NSG、NVA、Azure Firewall などを構成します。     |    [ネットワーク接続を設定する](/azure/backup/tutorial-backup-sap-hana-db#set-up-network-connectivity)    |
+| Azure 共同作成者 |   Azure portal    |   Recovery Services コンテナーを作成するかまたは開いて、HANA バックアップを選択します。   |   バックアップするすべてのターゲット HANA VM を検出します。   |
+| Azure 共同作成者    |   Azure portal    |   HANA データベースを検出し、バックアップ ポリシーを構成します。   |  例: <br><br>  週次バックアップ: 毎週日曜日午前 2 時、保持期間は週単位で 12 週間、月単位で 12 か月、年単位で 3 年間   <br>   差分または増分: 日曜日を除く毎日    <br>   ログ: 15 分ごと、保持期間は 35 日間    |
+| Azure 共同作成者  |   Azure portal    |    Recovery Service コンテナー – バックアップ項目 – SAP HANA     |   バックアップ ジョブ (Azure ワークロード) を確認します。    |
+| HANA 管理者    | HANA Studio   | Backup Console、Backup カタログ、backup.log、backint.log、および globa.ini を確認します   |    SYSTEMDB とテナント データベースの両方。   |
 
 事前登録スクリプトが正常に実行されたことを確認したら、[接続要件](#set-up-network-connectivity)の確認に進み、次に Recovery Services コンテナーから[バックアップを構成](#discover-the-databases)できます。
 
@@ -221,6 +231,12 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
    ![[確認および作成] を選択する](./media/tutorial-backup-sap-hana-db/review-create.png)
 
 これで、Recovery Services コンテナーが作成されました。
+
+## <a name="enable-cross-region-restore"></a>リージョンをまたがる復元を有効にする
+
+Recovery Services コンテナーでは、リージョンをまたがる復元を有効にできます。 HANA データベースでバックアップを構成および保護する前に、リージョンをまたがる復元を有効にする必要があります。 [リージョンをまたがる復元を有効にする方法](/azure/backup/backup-create-rs-vault#set-cross-region-restore)に関する記事をご覧ください。
+
+リージョンをまたがる復元について、[詳しくご確認ください](/azure/backup/backup-azure-recovery-services-vault-overview)。
 
 ## <a name="discover-the-databases"></a>データベースを検出する
 

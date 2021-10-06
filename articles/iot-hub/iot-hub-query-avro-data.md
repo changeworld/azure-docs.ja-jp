@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: 3cfe75edcf338f5248baf396147a5b77803fbfb3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 46f2811fa3f5a57add9af0b67444d236e3b18519
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97655936"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129231047"
 ---
 # <a name="query-avro-data-by-using-azure-data-lake-analytics"></a>Azure Data Lake Analytics を使用して Avro データのクエリを実行する
 
@@ -66,13 +66,13 @@ U-SQL には Avro 用の "エクストラクター" があります。 詳細に
 
     ```sql
         DROP ASSEMBLY IF EXISTS [Avro];
-        CREATE ASSEMBLY [Avro] FROM @"/Assemblies/Avro/Avro.dll";
+        CREATE ASSEMBLY [Avro] FROM @"/Assemblies/Avro/Avro.dll&quot;;
         DROP ASSEMBLY IF EXISTS [Microsoft.Analytics.Samples.Formats];
-        CREATE ASSEMBLY [Microsoft.Analytics.Samples.Formats] FROM @"/Assemblies/Avro/Microsoft.Analytics.Samples.Formats.dll";
+        CREATE ASSEMBLY [Microsoft.Analytics.Samples.Formats] FROM @&quot;/Assemblies/Avro/Microsoft.Analytics.Samples.Formats.dll&quot;;
         DROP ASSEMBLY IF EXISTS [Newtonsoft.Json];
-        CREATE ASSEMBLY [Newtonsoft.Json] FROM @"/Assemblies/Avro/Newtonsoft.Json.dll";
+        CREATE ASSEMBLY [Newtonsoft.Json] FROM @&quot;/Assemblies/Avro/Newtonsoft.Json.dll&quot;;
         DROP ASSEMBLY IF EXISTS [log4net];
-        CREATE ASSEMBLY [log4net] FROM @"/Assemblies/Avro/log4net.dll";
+        CREATE ASSEMBLY [log4net] FROM @&quot;/Assemblies/Avro/log4net.dll&quot;;
 
         REFERENCE ASSEMBLY [Newtonsoft.Json];
         REFERENCE ASSEMBLY [log4net];
@@ -80,8 +80,8 @@ U-SQL には Avro 用の "エクストラクター" があります。 詳細に
         REFERENCE ASSEMBLY [Microsoft.Analytics.Samples.Formats];
 
         // Blob container storage account filenames, with any path
-        DECLARE @input_file string = @"wasb://hottubrawdata@kevinsayazstorage/kevinsayIoT/{*}/{*}/{*}/{*}/{*}/{*}";
-        DECLARE @output_file string = @"/output/output.csv";
+        DECLARE @input_file string = @&quot;wasb://hottubrawdata@kevinsayazstorage/kevinsayIoT/{*}/{*}/{*}/{*}/{*}/{*}&quot;;
+        DECLARE @output_file string = @&quot;/output/output.csv&quot;;
 
         @rs =
         EXTRACT
@@ -89,35 +89,35 @@ U-SQL には Avro 用の "エクストラクター" があります。 詳細に
         Body byte[]
         FROM @input_file
 
-        USING new Microsoft.Analytics.Samples.Formats.ApacheAvro.AvroExtractor(@"
+        USING new Microsoft.Analytics.Samples.Formats.ApacheAvro.AvroExtractor(@&quot;
         {
-            ""type"":""record"",
-            ""name"":""Message"",
-            ""namespace"":""Microsoft.Azure.Devices"",
-            ""fields"":
+            &quot;&quot;type&quot;&quot;:&quot;&quot;record&quot;&quot;,
+            &quot;&quot;name&quot;&quot;:&quot;&quot;Message&quot;&quot;,
+            &quot;&quot;namespace&quot;&quot;:&quot;&quot;Microsoft.Azure.Devices&quot;&quot;,
+            &quot;&quot;fields&quot;&quot;:
            [{
-                ""name"":""EnqueuedTimeUtc"",
-                ""type"":""string""
+                &quot;&quot;name&quot;&quot;:&quot;&quot;EnqueuedTimeUtc&quot;&quot;,
+                &quot;&quot;type&quot;&quot;:&quot;&quot;string&quot;&quot;
             },
             {
-                ""name"":""Properties"",
-                ""type"":
+                &quot;&quot;name&quot;&quot;:&quot;&quot;Properties&quot;&quot;,
+                &quot;&quot;type&quot;&quot;:
                 {
-                    ""type"":""map"",
-                    ""values"":""string""
+                    &quot;&quot;type&quot;&quot;:&quot;&quot;map&quot;&quot;,
+                    &quot;&quot;values&quot;&quot;:&quot;&quot;string&quot;&quot;
                 }
             },
             {
-                ""name"":""SystemProperties"",
-                ""type"":
+                &quot;&quot;name&quot;&quot;:&quot;&quot;SystemProperties&quot;&quot;,
+                &quot;&quot;type&quot;&quot;:
                 {
-                    ""type"":""map"",
-                    ""values"":""string""
+                    &quot;&quot;type&quot;&quot;:&quot;&quot;map&quot;&quot;,
+                    &quot;&quot;values&quot;&quot;:&quot;&quot;string&quot;&quot;
                 }
             },
             {
-                ""name"":""Body"",
-                ""type"":[""null"",""bytes""]
+                &quot;&quot;name&quot;&quot;:&quot;&quot;Body&quot;&quot;,
+                &quot;&quot;type&quot;&quot;:[&quot;&quot;null&quot;&quot;,&quot;&quot;bytes&quot;&quot;]
             }]
         }"
         );
@@ -170,8 +170,6 @@ U-SQL には Avro 用の "エクストラクター" があります。 詳細に
 ## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure IoT Hub から Azure サービスにメッセージを効率的にルーティングするために Avro データに対してクエリを実行する方法について説明しました。
-
-IoT Hub を使用する完全なエンド ツー エンド ソリューションの例については、[Azure IoT ソリューション アクセラレータのドキュメント](../iot-accelerators/index.yml)を参照してください。
 
 IoT Hub を使用したソリューションの開発に関する詳細については、[IoT Hub 開発者ガイド](iot-hub-devguide.md)をご覧ください。
 

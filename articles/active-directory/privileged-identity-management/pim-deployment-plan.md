@@ -10,20 +10,20 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: pim
 ms.topic: conceptual
-ms.date: 07/26/2021
+ms.date: 09/28/2021
 ms.author: baselden
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: afb94b9589171a5715b1e7bdf9a80ceb0a8b7f45
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: e00d6d6486ea5977a38e5e860f2bcd28dbe749fb
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124771177"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129230116"
 ---
 # <a name="plan-a-privileged-identity-management-deployment"></a>Privileged Identity Management のデプロイを計画する
 
-**Privileged Identity Management (PIM)** によって、時間ベースおよび承認ベースのロールのアクティブ化が提供され、重要なリソースに対する過剰、不要、または誤用であるアクセス許可のリスクが軽減されます。 これらのリソースには、Azure Active Directory (Azure AD)、Azure、他の Microsoft Online Services (Microsoft 365 や Microsoft Intune など) 内のリソースが含まれます。 PIM をサービス (SaaS) アプリケーションで使用することもできます。
+**Privileged Identity Management (PIM)** によって、時間ベースおよび承認ベースのロールのアクティブ化が提供され、重要なリソースに対する過剰、不要、または誤用であるアクセス許可のリスクが軽減されます。 これらのリソースには、Azure Active Directory (Azure AD)、Azure、他の Microsoft Online Services (Microsoft 365 や Microsoft Intune など) 内のリソースが含まれます。
 
 PIM を使用すると、特定のスコープで特定のアクション セットを許可することができます。 組み込まれている主な機能は次のとおりです。
 

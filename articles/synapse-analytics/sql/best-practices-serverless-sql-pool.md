@@ -10,27 +10,27 @@ ms.subservice: sql
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 655294aaf575dd828c3be6f135984eaf8c851fb6
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: ba56b46f28eda42e7de0fcaa090d0cc309410cdb
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123479762"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129091333"
 ---
 # <a name="best-practices-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics のサーバーレス SQL プールのベスト プラクティス
 
-この記事では、サーバーレス SQL プールの使用に関する一連のベスト プラクティスについて説明します。 サーバーレス SQL プールは、Azure Synapse Analytics 内のリソースです。
+この記事では、サーバーレス SQL プールの使用に関する一連のベスト プラクティスについて説明します。 サーバーレス SQL プールは、Azure Synapse Analytics 内のリソースです。 専用 SQL プールを使用している場合は、[専用 SQL プールのベスト プラクティス](best-practices-dedicated-sql-pool.md)に関するページの特定のガイダンスを参照してください。
 
-サーバーレス SQL プールを使用すると、Azure ストレージ アカウント内のファイルに対してクエリを実行できます。 ローカル ストレージやインジェストの機能は備えていません。 したがって、クエリが対象とするすべてのファイルは、サーバーレス SQL プールの外部にあります。 ストレージからのファイルの読み取りに関連するものはすべて、クエリのパフォーマンスに影響を与える可能性があります。
+サーバーレス SQL プールを使用すると、Azure ストレージ アカウント内のファイルに対してクエリを実行できます。 ローカル ストレージやインジェストの機能は備えていません。 クエリの対象となるすべてのファイルは、サーバーレス SQL プールの外部にあります。 ストレージからのファイルの読み取りに関連するものはすべて、クエリのパフォーマンスに影響を与えるおそれがあります。
 
 一般的なガイドラインを次に示します。
 - クライアント アプリケーションがサーバーレス SQL プールと併置されていることを確認します。
-  - Azure の外部でクライアント アプリケーション (Power BI Desktop、SSMS、ADS など) を使用している場合は、クライアント コンピューターに近いリージョンでサーバーレス プールを使用していることを確認してください。
+  - Azure の外部でクライアント アプリケーション (Power BI Desktop、SSMS、ADS など) を使用している場合は、自分のクライアント コンピューターに近いリージョンでサーバーレス プールを使用していることを確認します。
 - ストレージ (Azure Data Lake、Cosmos DB) とサーバーレス SQL プールが同じリージョンにあることを確認します。
 - パーティション分割を使用して[ストレージ レイアウトを最適化](#prepare-files-for-querying)し、100 MB ～ 10 GB の範囲のファイルを保持します。
 - 多数の結果が返される場合は、Synapse Studio ではなく、SSMS または ADS を使用していることを確認してください。 Synapse Studio は、大規模な結果セットを想定して設計されていない Web ツールです。 
-- 文字列の列で結果をフィルター処理する場合は、いくつかの `BIN2_UTF8` 照合順序を使用してください。
-- Power BI インポート モードまたは Azure Analysis Services を使用してクライアント側に結果をキャッシュし、定期的に更新してみてください。 サーバーレス SQL プールでは、複雑なクエリを使用している場合や大量のデータを処理している場合に、Power BI Direct Query モードで対話型のエクスペリエンスを提供することはできません。
+- 文字列の列で結果をフィルター処理する場合は、`BIN2_UTF8` 照合順序を使用するようにします。
+- Power BI インポート モードまたは Azure Analysis Services を使用してクライアント側に結果をキャッシュし、定期的に更新するようにします。 サーバーレス SQL プールでは、複雑なクエリを使用している場合や大量のデータを処理している場合に、Power BI Direct Query モードで対話型のエクスペリエンスを提供することはできません。
 
 ## <a name="client-applications-and-network-connections"></a>クライアント アプリケーションとネットワーク接続
 

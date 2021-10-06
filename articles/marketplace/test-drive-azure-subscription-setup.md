@@ -7,12 +7,12 @@ ms.topic: article
 author: trkeya
 ms.author: trkeya
 ms.date: 03/16/2020
-ms.openlocfilehash: 3fe1862f951b83c6514bda061650b912e9230e46
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: ae8bbad9d99837bd1cd0d21b66a37c895b816f2a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122071571"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128642666"
 ---
 # <a name="set-up-an-azure-marketplace-subscription-for-hosted-test-drives"></a>ホストされた体験版用に Azure Marketplace サブスクリプションを設定する
 
@@ -57,10 +57,13 @@ ms.locfileid: "122071571"
     13. Azure AD アプリのシークレットを作成するには、次のようにします。
         1. **[アプリケーションの管理]** から、 **[Certificate and secrets]\(証明書とシークレット\)** を選択します。
         2. [クライアント シークレット] で、 **[新しいクライアント シークレット]** を選択します。
-        3. 説明 ("*体験版*" など) を入力し、適切な期間を選択します。 このキーの有効期限が切れると、体験版は中断されます。その時点で、新しいキーを生成して AppSource に提供する必要があります。
+
+             :::image type="content" source="./media/test-drive/new-client-secret.png" alt-text="新しいクライアント シークレットの追加":::
+
+        3. 説明 ("*体験版*" など) を入力し、適切な期間を選択します。 このキーの有効期限が切れると体験版が中断され、その時点で新しいキーを生成して AppSource に提供する必要があるため、最大期間として 24 か月を使用することをお勧めします。
         4. **[追加]** を選択して、Azure アプリのシークレットを生成します。 このブレードを離れるとすぐに非表示になるため、この値をコピーします。 この値は、後で体験版を構成するときに必要になります。
 
-            :::image type="content" source="./media/test-drive/add-client-secret.png" alt-text="クライアント シークレットの追加。":::
+            :::image type="content" source="./media/test-drive/add-client-secret-customer.png" alt-text="クライアント シークレットの追加。":::
 
 5. アプリケーションにサービス プリンシパルの役割を追加して、Azure AD アプリで Azure テナントからユーザーを削除できるようにします。
     1. 管理レベルの PowerShell コマンド プロンプトを開きます。
@@ -99,22 +102,20 @@ ms.locfileid: "122071571"
             > - SharePoint を開き、データ テーブルをセキュリティ グループと共有します。
 
 7. 作成したばかりの Azure アプリをアプリケーション ユーザーとして体験版 CRM インスタンスに追加します。 この手順は、Dynamics 365 Customer Engagement オファーにのみ適用されます。
-    1. **Azure Active Directory** に新しいユーザーを追加します。 このユーザーを作成するには、(同じテナントに属している) **[名前]** と **[ユーザー名]** の値のみが必要です。他のフィールドは既定値のままにしておきます。 ユーザー名の値をコピーします。
-    2. **CRM インスタンス** にサインインし、 **[設定]**  >  **[セキュリティ]**  >  **[ユーザー]** を選択します。
-    3. ビューを **[アプリケーション ユーザー]** に変更します。
+    1. **CRM インスタンス** にサインインし、 **[設定]**  >  **[セキュリティ]**  >  **[ユーザー]** を選択します。
+    2. ビューを **[アプリケーション ユーザー]** に変更します。
 
         :::image type="content" source="./media/test-drive/application-users.png" alt-text="ユーザーのアカウント情報の設定。":::
 
-    4. 新しいユーザーを追加します (フォームがアプリケーション ユーザー用であることを確認してください)。
-    5. **[プライマリ電子メール]** と **[ユーザー名]** フィールドに同じユーザー名を入力します。 **[アプリケーション ID]** に「**Azure ApplicationId**」を追加します。
-    6. 任意の **[フル ネーム]** を指定します。
-    7. **[保存]** を選択します。
-    8. **[ロールの管理]** を選択します。
-    9. "*システム管理者*" など、読み取り、書き込み、およびロールの割り当ての特権を含むカスタムまたは OOB のセキュリティ ロールを割り当てます。
+    3. 新しいユーザーを追加します (フォームがアプリケーション ユーザー用であることを確認してください)。
+    4. 上記で作成した **Azure ApplicationId** を **[アプリケーション ID]** に追加します。
+    5. **[保存]** を選択します。
+    6. **[ロールの管理]** を選択します。
+    7. "*システム管理者*" など、読み取り、書き込み、およびロールの割り当ての特権を含むカスタムまたは OOB のセキュリティ ロールを割り当てます。
 
         :::image type="content" source="./media/test-drive/security-roles-selection.png" alt-text="ロールの特権の選択。":::
 
-    10. また、 **[別のユーザーの代わりに操作します]** 特権を有効にします。
+    10. **[別のユーザーの代わりに操作します]** 特権を有効にします。
     11. 体験版用に作成したカスタム セキュリティ ロールをアプリケーション ユーザーに割り当てます。
 
 ## <a name="set-up-for-dynamics-365-for-operations"></a>Dynamics 365 for Operations の設定
@@ -156,7 +157,7 @@ ms.locfileid: "122071571"
         3. 説明 ("*体験版*" など) を入力し、適切な期間を選択します。 このキーの有効期限が切れると、体験版は中断されます。その時点で、新しいキーを生成して AppSource に提供する必要があります。
         4. **[追加]** を選択して、Azure アプリのシークレットを生成します。 このブレードを離れるとすぐに非表示になるため、この値をコピーします。 この値は、後で体験版を構成するときに必要になります。
 
-            :::image type="content" source="./media/test-drive/add-client-secret.png" alt-text="クライアント シークレットの追加。":::
+            :::image type="content" source="./media/test-drive/add-client-secret-operations.png" alt-text="クライアント シークレットの追加を示します。":::
 
 4. アプリケーションにサービス プリンシパルの役割を追加して、Azure AD アプリで Azure テナントからユーザーを削除できるようにします。
     1. 管理レベルの PowerShell コマンド プロンプトを開きます。

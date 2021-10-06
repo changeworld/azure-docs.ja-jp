@@ -1,18 +1,18 @@
 ---
-title: カスタム分類と分類ルールの作成 (プレビュー)
+title: カスタム分類と分類ルールを作成する
 description: Azure Purview で組織に固有のデータ資産のデータの種類を定義する、カスタム分類を作成する方法について説明します。
 author: viseshag
 ms.author: viseshag
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 3/24/2021
-ms.openlocfilehash: fff9f128e6a533d8a8926093ca58a79ef2e974d3
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/27/2021
+ms.openlocfilehash: 12af9165b8393291b67fd0cbe4cb2ced6ae77a17
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121748123"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129212190"
 ---
 # <a name="custom-classifications-in-azure-purview"></a>Azure Purview でのカスタム分類
 
@@ -33,9 +33,9 @@ Azure Purview Data Catalog には、データ資産に含まれている可能�
 
 カスタム分類ルールを作成するには、次の手順に従います。
 
-1. カタログで、左側のメニューから **[管理センター]** を選択します。
+1. カタログで、左側のメニューから **[Data Map]** を選択します。
 
-2. **[メタデータ管理]** の下にある **[分類]** を選択します。
+2. **[注釈の管理]** の下にある **[分類]** を選択します。
 
 3. **[+新規]** を選択します
 
@@ -85,15 +85,15 @@ Contoso は、カスタム分類ルールを作成することによって、こ
 
 1. 前のセクションの手順に従って、カスタム分類を作成します。 分類ルールの構成にこのカスタム分類を追加して、列内で一致が検出されたときにシステムによって適用されるようにします。
 
-2. **管理センター** のアイコンを選択します。
+2. **[Data Map]** アイコンを選択します。
 
 3. **[Classifications rules]\(分類ルール\)** セクションを選択します。
 
-   :::image type="content" source="media/create-a-custom-classification-and-classification-rule/classificationrules.png" alt-text="分類ルール タイル" border="true":::
+   :::image type="content" source="media/create-a-custom-classification-and-classification-rule/classification-rules.png" alt-text="分類ルール タイル" border="true":::
 
 4. **[新規]** を選択します。
 
-   :::image type="content" source="media/create-a-custom-classification-and-classification-rule/newclassificationrule.png" alt-text="新しい分類ルールの追加" border="true":::
+   :::image type="content" source="media/create-a-custom-classification-and-classification-rule/new-classification-rule.png" alt-text="新しい分類ルールの追加" border="true":::
 
 5. **[New classification rule]\(新しい分類ルール\)** ダイアログ ボックスが表示されます。 フィールドに入力し、**正規表現ルール** と **辞書ルール** のどちらを作成するかを決定します。
 

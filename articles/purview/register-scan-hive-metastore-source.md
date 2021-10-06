@@ -4,15 +4,15 @@ description: この記事では、Azure Purview で Hive メタストア デー�
 author: chandrakavya
 ms.author: kchandra
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: overview
-ms.date: 5/17/2021
-ms.openlocfilehash: 0a7d8a22cf8f9dcdaac9d3fe07bd6ab006e61818
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/27/2021
+ms.openlocfilehash: 7552b562e930e39ba4a0f848ba095762d3838c22
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121751899"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129214107"
 ---
 # <a name="register-and-scan-hive-metastore-database"></a>Hive メタストア データベースを登録してスキャンする
 
@@ -75,7 +75,7 @@ Hive メタストア データベース用にサポートされている認証�
 
 新しいスキャンを作成して実行するには、次の操作を行います。
 
-1.  管理センターで、 [統合ランタイム] をクリックします。 セルフホステッド統合ランタイムが設定されていることを確認してください。 設定されていない場合は、[こちら](./manage-integration-runtimes.md)に記載されている手順を使用して、セルフホステッド統合ランタイムを設定します
+1.  管理センターで、[統合ランタイム] を選択します。 セルフホステッド統合ランタイムが設定されていることを確認してください。 設定されていない場合は、[こちら](./manage-integration-runtimes.md)に記載されている手順を使用して、セルフホステッド統合ランタイムを設定します
 
 2.  **[ソース]** に移動します。
 
@@ -161,11 +161,11 @@ Hive メタストア データベース用にサポートされている認証�
 
         :::image type="content" source="media/register-scan-hive-metastore-source/scan.png" alt-text="Hive ソースをスキャンします" border="true":::
 
-6.  **[続行]** をクリックします。
+6.  **[続行]** を選択します。
 
 7.  **スキャン トリガー** を選択します。 スケジュールを設定することも、1 回限りのスキャンを実行することもできます。
 
-8.  スキャンを確認し、 **[保存および実行]** をクリックします。
+8.  自分のスキャンを確認し、 **[保存および実行]** を選択します。
 
 ## <a name="viewing-your-scans-and-scan-runs"></a>スキャンとスキャンの実行を確認する
 

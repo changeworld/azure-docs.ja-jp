@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/28/2021
+ms.date: 08/31/2021
 ms.author: jeedes
-ms.openlocfilehash: b7a4ca6b6ece95f2f7270e2de6fc72ec8fc6ca04
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: 778916c50909e62d6bc7dfa8a6daddc0de7ffa02
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111568981"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124821633"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rollbar"></a>チュートリアル: Azure Active Directory と Rollbar の統合
 
@@ -38,6 +38,7 @@ Rollbar と Azure AD の統合を構成するには、次のものが必要で�
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
 * Rollbar では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます。
+* Rollbar では、[自動化されたユーザー プロビジョニング](rollbar-provisioning-tutorial.md)がサポートされます。
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -149,8 +150,7 @@ Rollbar に対する Azure AD SSO を構成してテストするには、次の�
 
     > [!NOTE]
     > 次の手順を行うには、最初に、Azure で自分自身を Rollbar アプリにユーザーとして追加する必要があります。
-    >
-
+    
     a. Azure による認証をすべてのユーザーに要求する場合は、 **[log in via your identity provider]\(ID プロバイダーを使用してログインする\)** をクリックして Azure で再認証します。  
 
     b.  画面に戻った後、 **[Require login via SAML Identity Provider]\(SAML ID プロバイダーによるログインを要求する\)** チェック ボックスをオンにします。
@@ -183,6 +183,9 @@ Azure AD ユーザーが Rollbar にサインインできるようにするに�
 
 1. ユーザーが招待状を受け取り、承認すると、システムにそのユーザーが作成されます。
 
+> [!NOTE]
+> Rollbar では、自動ユーザー プロビジョニングもサポートされます。自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](./rollbar-provisioning-tutorial.md)をご覧ください。
+
 ## <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
@@ -197,7 +200,7 @@ Azure AD ユーザーが Rollbar にサインインできるようにするに�
 
 * Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した Rollbar に自動的にサインインされます。 
 
-また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [Rollbar] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Rollbar に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [Rollbar] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Rollbar に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

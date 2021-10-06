@@ -1,19 +1,19 @@
 ---
 title: チュートリアル - IoT プラグ アンド プレイの複数コンポーネントのデバイス アプリケーションを IoT Hub に接続する | Microsoft Docs
 description: チュートリアル - 複数のコンポーネントを使用し、IoT ハブに接続する、IoT プラグ アンド プレイのサンプル デバイス コード (C、C#、Java、JavaScript、Python) をビルドして実行します。 Azure IoT Explorer ツールを使用して、デバイスからハブに送信された情報を表示します。
-author: lizross
-ms.author: lizross
+author: danhellem
+ms.author: dahellem
 ms.date: 07/22/2020
 ms.topic: tutorial
 ms.service: iot-develop
 services: iot-develop
 zone_pivot_groups: programming-languages-set-twenty-six
-ms.openlocfilehash: 9bc8e41f3977777cc0d3af03805c6fcc0c9415e9
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: 458235577ba892f2524a18105839193907743cab
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129093081"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129364159"
 ---
 # <a name="tutorial-connect-an-iot-plug-and-play-multiple-component-device-applications-running-on-linux-or-windows-to-iot-hub"></a>チュートリアル:Linux または Windows 上で実行されている IoT プラグ アンド プレイの複数コンポーネントのデバイス アプリケーションを IoT Hub に接続する
 

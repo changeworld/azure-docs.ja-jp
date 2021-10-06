@@ -8,12 +8,13 @@ ms.author: bobazile
 ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 079ef0c70641100e0b2efe7d08d79dc218a83abc
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.subservice: pstn
+ms.openlocfilehash: b6fa8523a347f9191c607ce3ba50b32f2d088886
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123259034"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128636023"
 ---
 # <a name="session-border-controllers-and-voice-routing"></a>セッション ボーダー コントローラーと音声ルーティング
 Azure Communication Services のダイレクト ルーティングを使用すると、既存のテレフォニー インフラストラクチャを Azure に接続できます。 この記事では、サポートされているセッション ボーダー コントローラー (SBC) をダイレクト ルーティングに接続するために必要な手順の概要と、対応する通信リソースで音声ルーティングがどのように機能するかについて説明します。 
@@ -48,6 +49,9 @@ Azure Communication Services のダイレクト ルーティングには、呼�
 ## <a name="voice-routing-examples"></a>音声ルーティングの例
 次の例では、呼び出しフローでの音声ルーティングを示します。
 
+> [!NOTE]
+> どの例でも、音声ルートが上位であるほど優先順位が高くなりますが、ルート内の SBC はランダムな順序で試みられます。
+
 ### <a name="one-route-example"></a>1 つのルートの例:
 パターン `^\+1(425|206)(\d{7})$` を使用して 1 つの音声ルートを作成し、それに `sbc1.contoso.biz` と `sbc2.contoso.biz` を追加した場合、ユーザーが `+1 425 XXX XX XX` または `+1 206 XXX XX XX` に対して呼び出しを行うと、その呼び出しは最初に SBC `sbc1.contoso.biz` または `sbc2.contoso.biz` にルーティングされます。 どちらの SBC も使用できない場合、呼び出しは削除されます。
 
@@ -58,7 +62,7 @@ Azure Communication Services のダイレクト ルーティングには、呼�
 パターン `^\+1(425|206)(\d{7})$` を使用して 1 つの音声ルートを作成し、それに `sbc1.contoso.biz` と `sbc2.contoso.biz` を追加し、さらに `sbc3.contoso.biz` と `sbc4.contoso.biz` で同じパターンを使用して 2 番目のルートを作成し、`^+1(\d[10])$` と `sbc5.contoso.biz` で 3 番目のルートを作成した場合です。 この場合、ユーザーが `+1 425 XXX XX XX` または `+1 206 XXX XX XX` に対して呼び出しを行うと、その呼び出しは最初に SBC `sbc1.contoso.biz` または `sbc2.contoso.biz` にルーティングされます。 sbc1 と sbc2 がどちらも使用できない場合、優先順位の低いルート (`sbc3.contoso.biz` と `sbc4.contoso.biz`) が試みられます。 2 番目のルートの SBC がどれも使用できない場合は、3 番目のルートが試みられます。sbc5 も使用できない場合、呼び出しは削除されます。 また、ユーザーが `+1 321 XXX XX XX` をダイヤルすると、呼び出しが `sbc5.contoso.biz` に進み、それが使用できない場合、呼び出しは削除されます。
 
 > [!NOTE]
-> どの例でも、音声ルートが上位であるほど優先順位が高くなりますが、ルート内の SBC はランダムな順序で試みられます。
+> 音声ルーティングの次の SBC へのフェールオーバーは、応答コード 408、503、504 に対してのみ機能します。
 
 > [!NOTE]
 > どの例でも、ダイヤル番号がパターンに一致しない場合、その呼び出しは削除されます。ただし、その通信リソース用に購入された番号が存在し、その番号がアプリケーションの `alternateCallerId` として使用されていた場合を除きます。 

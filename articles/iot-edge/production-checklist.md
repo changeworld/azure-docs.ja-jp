@@ -10,12 +10,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 964c3f0bb346b3c2606af1227b558d06071bfe20
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 69d6cae5ccb26ef35fd121c32a9f111ff64b7a11
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121728820"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129215284"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>IoT Edge ソリューションを運用環境にデプロイするための準備を行う
 
@@ -165,12 +165,12 @@ IoT Edge エージェントおよび IoT Edge ハブ イメージには、関連
 
 あなたはカスタム コード モジュールのコンテナー イメージをプライベート Azure レジストリに格納する方法は理解していますが、それを使用して、edgeAgent や edgHub ランタイム モジュールなどのパブリック コンテナー イメージを格納することもできます。 このような処理が必要になるのは、これらのランタイム コンテナーが Microsoft Container Registry (MCR) に格納されているため、ファイアウォールの制限が非常に厳しい場合です。
 
-docker pull コマンドを使用してイメージを取得し、プライベート レジストリに配置します。 IoT Edge ランタイムの新しいリリースごとにイメージを更新する必要があることに注意してください。
+docker pull コマンドを使用してイメージを取得し、プライベート レジストリに配置します。 プル操作中にコンテナーのバージョンを指定し、下記のようにコンテナーの説明ページで最新のコンテナー バージョンを見つけて、必要に応じて pull コマンドでバージョンを置換する必要があります。 IoT Edge ランタイムの新しいリリースごとにイメージを更新する必要があることに注意してください。
 
 | IoT Edge ランタイム コンテナー | docker pull コマンド |
 | --- | --- |
-| [Azure IoT Edge エージェント](https://hub.docker.com/_/microsoft-azureiotedge-agent) | `docker pull mcr.microsoft.com/azureiotedge-agent` |
-| [Azure IoT Edge ハブ](https://hub.docker.com/_/microsoft-azureiotedge-hub) | `docker pull mcr.microsoft.com/azureiotedge-hub` |
+| [Azure IoT Edge エージェント](https://hub.docker.com/_/microsoft-azureiotedge-agent) | `docker pull mcr.microsoft.com/azureiotedge-agent:<VERSION_TAG>` |
+| [Azure IoT Edge ハブ](https://hub.docker.com/_/microsoft-azureiotedge-hub) | `docker pull mcr.microsoft.com/azureiotedge-hub:<VERSION_TAG>` |
 
 次に、edgeAgent および edgeHub システム モジュールの deployment.template.json ファイル内のイメージ参照を必ず更新します。 `mcr.microsoft.com` を、両方のモジュールのレジストリ名とサーバーに置き換えます。
 

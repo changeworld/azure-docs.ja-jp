@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と RFPIO の統合 | Microsoft Docs'
+title: 'チュートリアル: Azure AD SSO と RFPIO の統合'
 description: Azure Active Directory と RFPIO の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/27/2021
+ms.date: 09/27/2021
 ms.author: jeedes
-ms.openlocfilehash: f3bed54fb44e73742f05796e98984519462d9123
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 1a4786945c388c1b81b7e36c8d155f92968e04ac
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121728321"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129093309"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-rfpio"></a>チュートリアル: Azure Active Directory と RFPIO の統合
+# <a name="tutorial-azure-ad-sso-integration-with-rfpio"></a>チュートリアル: Azure AD SSO と RFPIO の統合
 
 このチュートリアルでは、RFPIO と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と RFPIO を統合すると、次のことが可能になります。
 
@@ -38,6 +38,8 @@ RFPIO と Azure AD の統合を構成するには、次のものが必要です�
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
 * RFPIO では、**SP と IDP** によって開始される SSO がサポートされます。
+
+* RFPIO では、[自動化されたユーザー プロビジョニング](rfpio-provisioning-tutorial.md)がサポートされます。
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -76,7 +78,7 @@ RFPIO 用に Azure AD SSO を構成してテストするには、次の手順を
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-4. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
+1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
     a. **[識別子]** ボックスに、`https://www.rfpio.com` という URL を入力します。
 
@@ -84,15 +86,26 @@ RFPIO 用に Azure AD SSO を構成してテストするには、次の手順を
 
     c. **[リレー状態]** テキストボックスに文字列値を入力します。 この値を取得するには、[RFPIO サポート チーム](https://www.rfpio.com/contact/)に問い合わせてください。
 
-5. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
+1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
     **[サインオン URL]** テキスト ボックスに、URL として「`https://www.app.rfpio.com`」と入力します。
 
-6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから **フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+1. RFPIO アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
+
+    ![image](common/default-attributes.png)
+
+1. その他に、RFPIO アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
+
+    | 名前 | ソース属性|
+    | ------- | --------- |
+    | first_name | User.givenname |
+    | last_name | User.surname |
+
+1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから **フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
-7. **[RFPIO のセットアップ]** セクションで、要件どおりの適切な URL をコピーします。
+1. **[RFPIO のセットアップ]** セクションで、要件どおりの適切な URL をコピーします。
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
@@ -188,6 +201,9 @@ RFPIO 用に Azure AD SSO を構成してテストするには、次の手順を
     > [!NOTE]
     > Azure Active Directory アカウント所有者が電子メールを受信し、リンクに従ってアカウントを確認すると、そのアカウントがアクティブになります。
 
+> [!NOTE]
+> RFPIO では、自動ユーザー プロビジョニングもサポートされます。自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](./rfpio-provisioning-tutorial.md)をご覧ください。  
+
 ## <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
@@ -202,7 +218,7 @@ RFPIO 用に Azure AD SSO を構成してテストするには、次の手順を
 
 * Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した RFPIO に自動的にサインインされます。 
 
-また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [RFPIO] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した RFPIO に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [RFPIO] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した RFPIO に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

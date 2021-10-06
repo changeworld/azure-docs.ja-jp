@@ -9,12 +9,12 @@ ms.date: 10/16/2020
 ms.custom: subject-armqs
 zone_pivot_groups: app-service-platform-windows-linux
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: f0412b6e67ff62247feb3f8643553c5a6101ad73
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 7d6111a68be8bc195b7268a778a77facdd944772
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111892672"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129084134"
 ---
 # <a name="quickstart-create-app-service-app-using-an-arm-template"></a>クイックスタート: ARM テンプレートを使用して App Service アプリを作成する
 
@@ -106,7 +106,7 @@ ms.locfileid: "111892672"
 ::: zone pivot="platform-windows"
 Windows に .NET Framework アプリをデプロイするには、Azure CLI を使用して次のコードを実行します。 
 
-Replace <abbr title="有効な文字は、`a-z`、`0-9`、`-` です。">`<app-name>`</abbr> グローバルに一意のアプリ名 その他の <abbr title="Azure portal、Azure PowerShell、REST API を使用することもできます。">展開方法</abbr>については、[テンプレートのデプロイ](../azure-resource-manager/templates/deploy-powershell.md)に関するページを参照してください。 [その他の Azure App Service テンプレートのサンプルについてはこちら](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Sites)を参照してください。
+Replace <abbr title="有効な文字は、`a-z`、`0-9`、`-` です。"> \<app-name> </abbr> グローバルに一意のアプリ名 その他の <abbr title="Azure portal、Azure PowerShell、REST API を使用することもできます。">展開方法</abbr>については、[テンプレートのデプロイ](../azure-resource-manager/templates/deploy-powershell.md)に関するページを参照してください。 [その他の Azure App Service テンプレートのサンプルについてはこちら](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Sites)を参照してください。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location "southcentralus" &&
@@ -118,7 +118,7 @@ az deployment group create --resource-group myResourceGroup \
 ::: zone pivot="platform-linux"
 Linux で Python アプリを作成するには、次のコードを実行します。 
 
-Replace <abbr title="有効な文字は、`a-z`、`0-9`、`-` です。">`<app-name>`</abbr> グローバルに一意のアプリ名
+\<app-name\> は、グローバルに一意のアプリ名に置き換えてください。 有効な文字は、`a-z`、`0-9`、`-` です。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location "southcentralus" &&
@@ -153,6 +153,7 @@ az deployment group create --resource-group myResourceGroup --parameters webAppN
 ::: zone pivot="platform-linux"
 <details>
 <summary>異なる言語スタックはどのようにしてデプロイすればよいですか?</summary>
+ 
 別の言語スタックをデプロイするには、`linuxFxVersion` を適切な値で更新します。 次に示すのは例です。 現在のバージョンを表示するには、Cloud Shell で次のコマンドを実行します: `az webapp config show --resource-group myResourceGroup --name <app-name> --query linuxFxVersion`
 
 | Language    | 例:                                               |

@@ -1,23 +1,20 @@
 ---
-title: Azure Purview MSI のデータ ソースへのアクセスを大規模に構成する (プレビュー)
+title: Azure Purview MSI のデータ ソースへのアクセスを大規模に構成する
 description: このチュートリアルでは、Azure データ ソースのサブスクリプションで Azure MSI の設定を構成します。
 author: zeinam
 ms.author: zeinam
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: tutorial
-ms.date: 05/28/2021
-ms.openlocfilehash: 952f69d7d33ae695103ee42de4462bdaa30c2538
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.date: 09/27/2021
+ms.openlocfilehash: 101d18cdecdc4fc7d4fb33b824500350f53b7b3f
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113109199"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129213396"
 ---
-# <a name="tutorial-configure-access-to-data-sources-for-azure-purview-msi-at-scale-preview"></a>チュートリアル: Azure Purview MSI のデータ ソースへのアクセスを大規模に構成する (プレビュー)
-
-> [!IMPORTANT]
-> Azure Purview は現在プレビュー段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、[[Microsoft Azure プレビューの追加使用条件]](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) に記載されています。
+# <a name="tutorial-configure-access-to-data-sources-for-azure-purview-msi-at-scale"></a>チュートリアル: Azure Purview MSI のデータ ソースへのアクセスを大規模に構成する
 
 データ ソースをスキャンするには、Azure Purview からアクセスできるようにする必要があります。 このチュートリアルは、Azure サブスクリプションの所有者と Azure Purview データ ソース管理者を対象としています。 これにより、必要なアクセスを特定し、Azure データ ソース全体で Azure Purview に必要な認証およびネットワーク規則を設定することができます。
 
@@ -70,7 +67,7 @@ ms.locfileid: "113109199"
 
 1. [Azure Purview MSI Configuration](https://github.com/Azure/Purview-Samples/tree/master/Data-Source-MSI-Configuration) スクリプトを任意の場所にダウンロードします。
 
-2. ご使用のコンピューターで、Windows タスク バーの検索ボックスに「**PowerShell**」と入力します。 検索リストで **[Windows PowerShell]** を右クリックし、 **[管理者として実行]** を選択します。
+2. ご使用のコンピューターで、Windows タスク バーの検索ボックスに「**PowerShell**」と入力します。 検索一覧で、 **[Windows PowerShell]** を選択したまま (または、右クリックして) **[管理者として実行]** を選択します。
 
 3. PowerShell ウィンドウに、次のコマンドを入力します。 (`<path-to-script>` は、抽出したスクリプト ファイルがあるフォルダーのパスに置き換えてください)。
 
@@ -238,7 +235,7 @@ Azure 環境でスクリプトを実行するには、少なくとも次のア�
   - ファイアウォール。 プライベート エンドポイントがオフの場合は、ファイアウォール規則を確認し、 **[Azure サービスおよびリソースにこのサーバーへのアクセスを許可する]** を有効にします。
   - Azure AD の管理。 Azure SQL Database に対する Azure AD 認証を有効にします。
 
-- SQL データベース:
+- SQL データベース
   - SQL ロール。 Azure Purview MSI に **db_datareader** ロールを割り当てます。
 
 ## <a name="next-steps"></a>次のステップ

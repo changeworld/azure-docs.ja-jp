@@ -4,40 +4,35 @@ description: Python を使用して Azure Purview アカウントを作成しま
 author: nayenama
 ms.author: nayenama
 ms.service: purview
-ms.subservice: purview-data-catalog
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 04/02/2021
-ms.openlocfilehash: ec1f8890d9626ca1ed96f538bd464da7c30caf17
-ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
+ms.date: 09/27/2021
+ms.openlocfilehash: 7a6d13da2ee3138e6dfc5eca4a5b75f454f90457
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2021
-ms.locfileid: "112983790"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129212488"
 ---
 # <a name="quickstart-create-a-purview-account-using-python"></a>クイックスタート: Python を使用して Purview アカウントを作成する
 
-このクイックスタートでは、Python を使用して Purview アカウントを作成します。 
+このクイックスタートでは、Python を使用してプログラムで Purview アカウントを作成します。 [Purview に関する Python リファレンス](/python/api/azure-mgmt-purview/)を利用できますが、この記事では、Python を使用してアカウントを作成するために必要なすべての手順について説明します。
 
-## <a name="prerequisites"></a>前提条件
+Azure Purview は、データ環境の管理と制御に役立つデータ ガバナンス サービスです。 Purview では、オンプレミス、マルチクラウド、サービスとしてのソフトウェア (SaaS) のソース全体のデータに接続することで、情報の最新のマップが作成されます。 これにより、機密データが識別されて分類され、エンドツーエンドの系列が提供されます。 データ コンシューマーは組織全体のデータを検出でき、データ管理者はデータを監査し、セキュリティで保護し、データの適切な使用を確保することができます。
 
-* アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+Purview の詳細については、[概要ページを参照してください](overview.md)。 組織全体に Purview をデプロイする方法の詳細については、[デプロイのベスト プラクティスを参照してください](deployment-best-practices.md)。
 
-* 所有する [Azure Active Directory テナント](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)。
-
-* ご使用のアカウントには、サブスクリプションにリソースを作成するためのアクセス許可が必要です。
-
-* **ストレージ アカウント** および **EventHub 名前空間** の作成をすべてのアプリケーションに禁止する **Azure Policy** がある場合は、タグを使用してポリシーの例外を作成する必要があります。これは、Purview アカウントを作成する過程で入力できます。 その主な理由は、作成した各 Purview アカウントでマネージド リソース グループを作成し、また、そのリソース グループ内にストレージ アカウントと EventHub 名前空間を作成する必要があるためです。 詳細については、[Catalog ポータルの作成](create-catalog-portal.md)に関する記事をご覧ください
-
+[!INCLUDE [purview-quickstart-prerequisites](includes/purview-quickstart-prerequisites.md)]
 
 ## <a name="install-the-python-package"></a>Python パッケージをインストールする
 
-1. 管理者特権でターミナルまたはコマンド プロンプトを開きます。 
+1. 管理者特権でターミナルまたはコマンド プロンプトを開きます。
 2. まず、Azure 管理リソースの Python パッケージをインストールします。
 
     ```python
     pip install azure-mgmt-resource
     ```
+
 3. Purview 用の Python パッケージをインストールするには、次のコマンドを実行します。
 
     ```python
@@ -51,9 +46,10 @@ ms.locfileid: "112983790"
     ```python
     pip install azure-identity
     ```
-    > [!NOTE] 
-    > "azure-identity" パッケージは、いくつかの共通の依存関係に関して、"azure-cli" と競合する可能性があります。 認証の問題が発生した場合は、"azure-cli" とその依存関係を削除するか、"azure-cli" パッケージがインストールされていないクリーン マシンを使用して解決してください。
-    
+
+    > [!NOTE]
+    > "azure-identity" パッケージは、いくつかの共通の依存関係に関して、"azure-cli" と競合する可能性があります。 認証の問題が発生した場合は、"azure-cli" とその依存関係を削除するか、"azure-cli" パッケージがインストールされていないクリーン マシンを使用してください。
+
 ## <a name="create-a-purview-client"></a>Purview クライアントを作成する
 
 1. **purview.py** という名前のファイルを作成します。 次のステートメントを追加して、名前空間への参照を追加します。
@@ -68,7 +64,7 @@ ms.locfileid: "112983790"
     ```
 
 2. PurviewManagementClient クラスのインスタンスを作成する次のコードを **Main** メソッドに追加します。 このオブジェクトを使用して、Purview アカウントの作成と削除、名前の可用性やその他のリソース プロバイダー操作の確認を行います。
- 
+
     ```python
     def main():
     
@@ -184,10 +180,7 @@ main()
 
 ## <a name="run-the-code"></a>コードの実行
 
-アプリケーションをビルドして起動し、パイプラインの実行を確認します。
-
-コンソールに、データ ファクトリ、リンクされたサービス、データセット、パイプライン、およびパイプラインの実行の作成の進捗状況が表示されます。 コピー アクティビティの実行の詳細と、データの読み取り/書き込みのサイズが表示されるまで待ちます。 次に、[Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) などのツールを使用して、変数で指定したように BLOB が "inputBlobPath" から "outputBlobPath" にコピーされていることを確認します。
-
+アプリケーションをビルドして起動します。 コンソールにより、Purview アカウントの作成の進行状況が出力されます。 完了するまで待機してください。
 出力例を次に示します。
 
 ```console
@@ -199,11 +192,11 @@ Succeeded
 
 ## <a name="verify-the-output"></a>出力を検証する
 
-Azure portal の **[Purview アカウント]** ページに移動し、上記のコードを使用して作成されたアカウントを確認します。 
+Azure portal の **[Purview アカウント]** ページに移動し、上記のコードを使用して作成されたアカウントを確認します。
 
 ## <a name="delete-purview-account"></a>Purview アカウントを削除する
 
-Purview アカウントを削除するには、プログラムに次のコードを追加します。
+Purview アカウントを削除するには、プログラムに次のコードを追加して実行します。
 
 ```python
 pa = purview_client.accounts.begin_delete(rg_name, purview_name).result()
@@ -213,7 +206,8 @@ pa = purview_client.accounts.begin_delete(rg_name, purview_name).result()
 
 このチュートリアルのコードでは、Purview アカウントを作成し、Purview アカウントを削除します。 これで、Python SDK をダウンロードし、Purview アカウントに対して実行できるその他のリソース プロバイダー アクションについて学習することができます。
 
-次の記事に進んで、Azure Purview アカウントへのアクセスをユーザーに許可する方法を学習してください。 
+次の記事に従い、Purview Studio を操作する方法、コレクションを作成する方法、Purview にアクセス権を付与する方法について学習してください。
 
-> [!div class="nextstepaction"]
-> [Azure Purview アカウントにユーザーを追加する](catalog-permissions.md)
+* [Purview Studio の使用方法](use-purview-studio.md)
+* [コレクションの作成](quickstart-create-collection.md)
+* [Azure Purview アカウントにユーザーを追加する](catalog-permissions.md)

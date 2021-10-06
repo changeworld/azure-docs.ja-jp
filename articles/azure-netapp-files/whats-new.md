@@ -12,18 +12,28 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 08/18/2021
+ms.date: 09/27/2021
 ms.author: b-juche
-ms.openlocfilehash: 0bf972cd5b597d4cf0fb608eee8481cb72080425
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: cae4e16f42d9031040060a33bb8a5795f7695f56
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122769343"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129092131"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Azure NetApp Files の新機能
 
 Azure NetApp Files は定期的に更新されています。 この記事では、最新の新機能と機能強化の概要について説明します。 
+
+## <a name="september-2021"></a>2021 年 9 月
+
+* [Azure NetApp Files バックアップ](backup-introduction.md) (プレビュー)
+
+    Azure NetApp Files オンライン スナップショットが、スナップショットのバックアップによって拡張されました。 この新しいバックアップ機能を使用すると、Azure NetApp Files スナップショットを、コスト効率が高く ZRS 対応の Azure Storage に迅速かつコスト効率の高い方法で保管できます。これにより、データを誤って削除しないように保護できます。 Azure NetApp Files バックアップにより、ONTAP の組み込みスナップショット テクノロジが拡張されます。 スナップショットが Azure Storage に保管されると、以前に保管されたスナップショットと比較して変更されたブロックのみが、効率的な形式でコピーおよび格納されます。 ただし、保管されたスナップショットは依然として完全な形で表現され、新しいボリュームに直接かつ個別に復元できます。これにより、反復的な完全増分回復プロセスが不要になります。 この高度なテクノロジにより、Azure Storage との間でデータを格納、取得するために必要なデータ量が最小限に抑えられるため、データ転送とストレージのコストを抑えることができます。 また、バックアップの保管にかかる時間が短縮されるため、より小さい回復ポイントの目標 (RPO) を実現できます。 Azure NetApp Files サービスで、ほぼ瞬時にデータを回復する必要がある場合に備えて最小数のスナップショットをオンラインで維持でき、また Azure NetApp Files バックアップ コンテナーで長期保存するために、これまでより長いスナップショットの履歴をより低いコストで作成することができるようになりました。 詳細については、「[Azure NetApp Files スナップショットのしくみ](snapshots-introduction.md)」を参照してください。
+
+* Active Directory 接続の [ **[管理者]** ](create-active-directory-connections.md#create-an-active-directory-connection) オプション (プレビュー)
+
+    [Active Directory 接続] ページに **[管理者]** フィールドが追加されました。 ボリュームに対する管理者権限が付与されるユーザーまたはグループを指定できます。
 
 ## <a name="august-2021"></a>2021 年 8 月
 
@@ -31,7 +41,7 @@ Azure NetApp Files は定期的に更新されています。 この記事では
 
     [新しい SMB ボリュームを作成する](azure-netapp-files-create-volumes-smb.md#continuous-availability)ときに、既に SMB 継続的可用性 (CA) 機能を有効にすることができます。 既存の SMB ボリュームでも SMB CA を有効にできるようになりました。 「[既存の SMB ボリュームで継続的可用性を有効にする](enable-continuous-availability-existing-SMB.md)」をご覧ください。
 
-* [スナップショット ポリシー](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies)が一般提供 (GA) になりました  
+* [スナップショット ポリシー](snapshots-manage-policy.md)が一般提供 (GA) になりました  
 
     スナップショット ポリシー機能が一般提供になりました。 この機能を使用する前に登録する必要がなくなりました。
 
@@ -148,7 +158,7 @@ Azure NetApp Files は定期的に更新されています。 この記事では
 
 ## <a name="november-2020"></a>2020 年 11 月
 
-* [スナップショットの復元](azure-netapp-files-manage-snapshots.md#revert-a-volume-using-snapshot-revert)
+* [スナップショットの復元](snapshots-revert-volume.md)
 
     スナップショットを元に戻す機能を使用すると、特定のスナップショットが作成されたときの状態にボリュームをすばやく戻すことができます。 ほとんどの場合、ボリュームを元に戻す方が、個々のファイルをスナップショットからアクティブなファイル システムに復元するよりもはるかに高速です。 また、スナップショットを新しいボリュームに復元する場合と比べて、スペース効率が高くなります。
 
@@ -192,15 +202,15 @@ Azure NetApp Files は定期的に更新されています。 この記事では
 
     クラウドでは IT の支出における柔軟性が期待されています。 ボリュームに必要なサービス レベルを使用している別の容量プールにボリュームを移動することで、既存の Azure NetApp Files ボリュームのサービス レベルを変更できるようになりました。 ボリュームのサービス レベルのインプレース変更では、データを移行する必要はありません。 ボリュームに対するデータ プレーン アクセスにも影響はありません。 既存のボリュームを変更し、パフォーマンス向上のために上位のサービス レベルを使用することも、コスト最適化のために下位のサービス レベルを使用することもできます。 この機能は無料です (通常の [Azure NetApp Files のストレージ コスト](https://azure.microsoft.com/pricing/details/netapp/)は適用されます)。 これは現在プレビューの段階です。 機能のプレビューに登録するには、[ボリュームのサービス レベルの動的な変更に関するドキュメント](dynamic-change-volume-service-level.md)を参照してください。
 
-* [ボリュームのスナップショット ポリシー](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies) (プレビュー) 
+* [ボリュームのスナップショット ポリシー](snapshots-manage-policy.md) (プレビュー) 
 
-    Azure NetApp Files を利用すると、ボリュームの特定の時点のスナップショットを作成できます。 今後は、選択した頻度で Azure NetApp Files によってボリュームのスナップショットが自動的に作成されるよう指定するスナップショット ポリシーを作成できます。 スナップショットが毎時、毎日、毎週、または毎月のサイクルで作成されるようにスケジュールを設定できます。 スナップショット ポリシーの一環として、保持するスナップショットの最大数を指定することもできます。 この機能は無料で (通常の [Azure NetApp Files のストレージ コスト](https://azure.microsoft.com/pricing/details/netapp/)は適用されます)、プレビューになっています。 [ボリュームのスナップショット ポリシーのドキュメント](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies)に従って、機能のプレビューに登録できます。
+    Azure NetApp Files を利用すると、ボリュームの特定の時点のスナップショットを作成できます。 今後は、選択した頻度で Azure NetApp Files によってボリュームのスナップショットが自動的に作成されるよう指定するスナップショット ポリシーを作成できます。 スナップショットが毎時、毎日、毎週、または毎月のサイクルで作成されるようにスケジュールを設定できます。 スナップショット ポリシーの一環として、保持するスナップショットの最大数を指定することもできます。 この機能は無料で (通常の [Azure NetApp Files のストレージ コスト](https://azure.microsoft.com/pricing/details/netapp/)は適用されます)、プレビューになっています。 [ボリュームのスナップショット ポリシーのドキュメント](snapshots-manage-policy.md)に従って、機能のプレビューに登録できます。
 
 * [NFS ルート アクセスのエクスポート ポリシー](azure-netapp-files-configure-export-policy.md)
 
     Azure NetApp Files で、ルート アカウントからボリュームにアクセスできるかどうかを指定できるようになりました。 
 
-* [スナップショット パスの非表示](azure-netapp-files-manage-snapshots.md#restore-a-file-from-a-snapshot-using-a-client)
+* [スナップショット パスの非表示](snapshots-edit-hide-path.md)
 
     マウントされたボリューム上の `.snapshot` ディレクトリ (NFS クライアント) または `~snapshot` フォルダー (SMB クライアント) をユーザーが参照してアクセスできるかどうかを Azure NetApp Files で指定できるようになりました。
 

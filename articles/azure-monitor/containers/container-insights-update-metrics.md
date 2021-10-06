@@ -4,12 +4,12 @@ description: この記事では、集計したメトリックの探索とアラ�
 ms.topic: conceptual
 ms.date: 10/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1921a0cc0aa15a5e877d64cbe2c7ad094f9e144f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: cff5933db1d74e9853120a07444e399005b2e498
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121745849"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128620827"
 ---
 # <a name="how-to-update-container-insights-to-enable-metrics"></a>メトリックを有効にするように Container insights を更新する方法
 
@@ -77,6 +77,7 @@ Azure CLI を使用してサブスクリプション内の特定のクラスタ�
 
 1. Azure CLI を使用して、次のコマンドを実行します。 AKS クラスターの **[AKS の概要]** ページの値を使用して、**subscriptionId** **resourceGroupName** 、および **clusterName** の値を編集します。  **clientIdOfSPN** の値を取得する場合、次の例に示すように、コマンド `az aks show` を実行すると値が返されます。
 
+
     ```azurecli
     az login
     az account set --subscription "<subscriptionName>"
@@ -84,7 +85,9 @@ Azure CLI を使用してサブスクリプション内の特定のクラスタ�
     az role assignment create --assignee <clientIdOfSPN> --scope <clusterResourceId> --role "Monitoring Metrics Publisher" 
     ```
 
+
     **clientIdOfSPNOrMsi** の値を取得するには、次の例に示すように、コマンド `az aks show` を実行します。 **servicePrincipalProfile** オブジェクトに有効な *clientid* 値がある場合は、その値を使用できます。 そうではなく、*msi* に設定されている場合は、`addonProfiles.omsagent.identity.clientId` から clientid を渡す必要があります。
+
 
     ```azurecli
     az login
@@ -92,6 +95,11 @@ Azure CLI を使用してサブスクリプション内の特定のクラスタ�
     az aks show -g <resourceGroupName> -n <clusterName> 
     az role assignment create --assignee <clientIdOfSPNOrMsi> --scope <clusterResourceId> --role "Monitoring Metrics Publisher"
     ```
+
+
+
+>[!NOTE]
+>自分のユーザー アカウントを使用していて、ロールの割り当てを実行したい場合は、下の例に示すように --assignee パラメーターを使用します。 その他、SPN でログインしていてロールの割り当てを実行したい場合は、--assignee パラメーターの代わりに --assignee-object-id --assignee-principal-type パラメーターを使用します。
 
 ## <a name="upgrade-all-clusters-using-azure-powershell"></a>Azure PowerShell を使用してすべてのクラスターをアップグレードする
 

@@ -2,7 +2,6 @@
 title: Azure ロールベースのアクセス制御 - Custom Vision
 titleSuffix: Azure Cognitive Services
 description: この記事では、Custom Vision プロジェクトに対して Azure ロールベースのアクセス制御を構成する方法について説明します。
-services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -10,12 +9,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: pafarley
-ms.openlocfilehash: 050b4011dbc46b6b6567965ed94847dbaf3560c6
-ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
+ms.openlocfilehash: e2f59dc309181308f409b3533d58d3b6b4b1fdd8
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2021
-ms.locfileid: "112982314"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129361892"
 ---
 # <a name="azure-role-based-access-control"></a>Azure ロールベースのアクセス制御
 
@@ -34,7 +33,7 @@ Azure RBAC は、Custom Vision リソースに割り当てることができま�
 1. **[メンバー]** タブで、ユーザー、グループ、サービス プリンシパル、またはマネージド ID を選択します。
 1. **[確認と 割り当て]** タブで、 **[確認と割り当て]** を選択して ロールを割り当てます。
 
-数分以内に、選択したスコープで選択したロールがターゲットに割り当てられます。 これらの手順については、「[Azure portal を使用して Azure ロールを割り当てる](https://review.docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)」を参照してください。
+数分以内に、選択したスコープで選択したロールがターゲットに割り当てられます。 これらの手順については、「[Azure portal を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 ## <a name="custom-vision-role-types"></a>Custom Vision ロールの種類
 

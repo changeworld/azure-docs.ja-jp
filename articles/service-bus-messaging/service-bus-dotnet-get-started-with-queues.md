@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
 ms.date: 08/16/2021
 ms.custom: contperf-fy21q4
-ms.openlocfilehash: e315542d8d58a58fa4e2cea8bbab4768af0596eb
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: b84ff908404c2d18f86ddd63fa14a9854fdf72d6
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122252392"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129079335"
 ---
 # <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-net"></a>Azure Service Bus キューとの間でメッセージを送受信する (.NET)
 このクイックスタートでは、[Azure.Messaging.ServiceBus](https://www.nuget.org/packages/Azure.Messaging.ServiceBus/) .NET ライブラリを使用して、Service Bus キューとの間でメッセージを送受信する方法について説明します。
@@ -25,7 +25,7 @@ ms.locfileid: "122252392"
 - **Service Bus 名前空間とキューを作成する**。 [Azure portal を使用した Service Bus キューの作成](service-bus-quickstart-portal.md)に関する記事の手順に従って、Service Bus 名前空間とキューを作成します。 
 
     > [!IMPORTANT]
-    > Service Bus 名前空間の **接続文字列** と、作成した **キュー** の名前をメモしておいてください。 これらは、このチュートリアルで後ほど使用します。 
+    > Service Bus 名前空間の [**プライマリ接続文字列**](./service-bus-quickstart-topics-subscriptions-portal.md#get-the-connection-string)と、作成した **キュー** の名前をメモしておいてください。 これらは、このチュートリアルで後ほど使用します。 
 
 
 ## <a name="send-messages"></a>メッセージを送信する
@@ -59,7 +59,7 @@ ms.locfileid: "122252392"
 ### <a name="add-code-to-send-messages-to-the-queue"></a>キューにメッセージを送信するコードを追加する
 
 1. **Program.cs** のコードを次のコードに置き換えます。 コードの重要な手順を次に示します。  
-    1. 名前空間への接続文字列を使用して [ServiceBusClient](/dotnet/api/azure.messaging.servicebus.servicebusclient) オブジェクトを作成します。 
+    1. 名前空間へのプライマリ接続文字列を使用して [ServiceBusClient](/dotnet/api/azure.messaging.servicebus.servicebusclient) オブジェクトを作成します。 
     1. [ServiceBusClient](/dotnet/api/azure.messaging.servicebus.servicebusclient) オブジェクトの [CreateSender](/dotnet/api/azure.messaging.servicebus.servicebusclient.createsender) メソッドを呼び出して、特定の Service Bus キュー用の [ServiceBusSender](/dotnet/api/azure.messaging.servicebus.servicebussender) オブジェクトを作成します。     
     1. [ServiceBusSender.CreateMessageBatchAsync](/dotnet/api/azure.messaging.servicebus.servicebussender.createmessagebatchasync) メソッドを使用して [ServiceBusMessageBatch](/dotnet/api/azure.messaging.servicebus.servicebusmessagebatch) オブジェクトを作成します。
     1. [ServiceBusMessageBatch.TryAddMessage](/dotnet/api/azure.messaging.servicebus.servicebusmessagebatch.tryaddmessage) を使用して、メッセージをバッチに追加します。 
@@ -134,7 +134,7 @@ ms.locfileid: "122252392"
             }
         }   
         ``` 
-1. `<NAMESPACE CONNECTION STRING>` を Service Bus 名前空間の接続文字列に置き換えます。 また、`<QUEUE NAME>` を実際のキューの名前に置き換えます。
+1. `<NAMESPACE CONNECTION STRING>` を Service Bus 名前空間のプライマリ接続文字列に置き換えます。 また、`<QUEUE NAME>` を実際のキューの名前に置き換えます。
 1. プロジェクトをビルドし、エラーがないことを確認します。 
 1. プログラムを実行し、確認メッセージが表示されるまで待ちます。
     
@@ -182,7 +182,7 @@ ms.locfileid: "122252392"
 
 1. **Program.cs** のコードを次のコードに置き換えます。 コードの重要な手順を次に示します。
     コードの重要な手順を次に示します。
-    1. 名前空間への接続文字列を使用して [ServiceBusClient](/dotnet/api/azure.messaging.servicebus.servicebusclient) オブジェクトを作成します。 
+    1. 名前空間へのプライマリ接続文字列を使用して [ServiceBusClient](/dotnet/api/azure.messaging.servicebus.servicebusclient) オブジェクトを作成します。 
     1. [ServiceBusClient](/dotnet/api/azure.messaging.servicebus.servicebusclient) オブジェクトの [CreateProcessor](/dotnet/api/azure.messaging.servicebus.servicebusclient.createprocessor) メソッドを呼び出し、指定した Service Bus キュー用の [ServiceBusProcessor](/dotnet/api/azure.messaging.servicebus.servicebusprocessor) オブジェクトを作成します。 
     1. [ServiceBusProcessor](/dotnet/api/azure.messaging.servicebus.servicebusprocessor) オブジェクトの [ProcessMessageAsync](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.processmessageasync) および [ProcessErrorAsync](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.processerrorasync) の各イベントのハンドラーを指定します。 
     1. [ServiceBusProcessor](/dotnet/api/azure.messaging.servicebus.servicebusprocessor) オブジェクトの [StartProcessingAsync](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.startprocessingasync) を呼び出して、メッセージの処理を開始します。 
@@ -272,7 +272,7 @@ ms.locfileid: "122252392"
             }
         }
         ```
-1. `<NAMESPACE CONNECTION STRING>` を Service Bus 名前空間の接続文字列に置き換えます。 また、`<QUEUE NAME>` を実際のキューの名前に置き換えます。 
+1. `<NAMESPACE CONNECTION STRING>` を Service Bus 名前空間のプライマリ接続文字列に置き換えます。 また、`<QUEUE NAME>` を実際のキューの名前に置き換えます。 
 1. プロジェクトをビルドし、エラーがないことを確認します。
 1. 受信側アプリを実行します。 受信メッセージが表示されます。 任意のキーを押して、受信側とアプリケーションを停止します。 
 
@@ -293,7 +293,7 @@ ms.locfileid: "122252392"
         :::image type="content" source="./media/service-bus-dotnet-get-started-with-queues/queue-messages-size-final.png" alt-text="受信後のアクティブなメッセージとサイズ" lightbox="./media/service-bus-dotnet-get-started-with-queues/queue-messages-size-final.png":::
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 次のドキュメントおよびサンプルを参照してください。
 
 - [.NET 用の Azure Service Bus クライアント ライブラリ - Readme](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/servicebus/Azure.Messaging.ServiceBus)

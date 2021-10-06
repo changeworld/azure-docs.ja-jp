@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 07/27/2021
-ms.openlocfilehash: fc7c9bceb32797d620a865d08c8b02cd2ab533c7
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.date: 09/22/2021
+ms.openlocfilehash: af7069aae9412f7964cca82c034d0e0966220ada
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123471662"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129081132"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Azure Machine Learning コンピューティング インスタンスとは
 
@@ -39,15 +39,17 @@ Azure Machine Learning コンピューティング インスタンスは、デ�
 
 |主な利点|説明|
 |----|----|
-|生産性|統合ノートブックや次のツールを Azure Machine Learning Studio で使用して、モデルを構築およびデプロイすることができます。<br/>-  Jupyter<br/>-  JupyterLab<br/>- VS Code (プレビュー)<br/>-  RStudio (プレビュー)<br/>コンピューティング インスタンスは Azure Machine Learning ワークスペースおよびスタジオと完全に統合されています。 ワークスペース内の他のデータ サイエンティストとノートブックやデータを共有できます。<br/> コンピューティング インスタンスで [VS Code](https://techcommunity.microsoft.com/t5/azure-ai/power-your-vs-code-notebooks-with-azml-compute-instances/ba-p/1629630) を使用することもできます。
-|マネージドおよび安全|セキュリティ占有領域を削減し、エンタープライズ セキュリティ要件へのコンプライアンスを追加できます。 コンピューティング インスタンスでは、厳格な管理ポリシーと安全なネットワーク構成が提供されます。<br/><br/>- Resource Manager テンプレートまたは Azure Machine Learning SDK からの自動プロビジョニング<br/>- [Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md)<br/>- [仮想ネットワークのサポート](./how-to-secure-training-vnet.md#compute-instance)<br/>- SSH アクセスを有効または無効にする SSH ポリシー<br/>TLS 1.2 対応 |
+|生産性|統合ノートブックや次のツールを Azure Machine Learning Studio で使用して、モデルを構築およびデプロイすることができます。<br/>-  Jupyter<br/>-  JupyterLab<br/>- VS Code (プレビュー)<br/>-  RStudio (プレビュー)<br/>コンピューティング インスタンスは Azure Machine Learning ワークスペースおよびスタジオと完全に統合されています。 ワークスペース内の他のデータ サイエンティストとノートブックやデータを共有できます。<br/> コンピューティング インスタンスで VS Code を使用することもできます。
+|マネージドおよび安全|セキュリティ占有領域を削減し、エンタープライズ セキュリティ要件へのコンプライアンスを追加できます。 コンピューティング インスタンスでは、厳格な管理ポリシーと安全なネットワーク構成が提供されます。<br/><br/>- Resource Manager テンプレートまたは Azure Machine Learning SDK からの自動プロビジョニング<br/>- [Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md)<br/>- [仮想ネットワークのサポート](./how-to-secure-training-vnet.md#compute-cluster)<br/> - SSH アクセスを有効または無効にする SSH ポリシー<br/>- [[パブリック IP なし]](./how-to-secure-training-vnet.md#no-public-ip) では、パブリック IP アドレスに依存せずに、セキュリティで保護された接続ソリューションを有効にすることができます</br>- TLS 1.2 が有効 |
 |ML &nbsp;用&nbsp;に事前構成済み|事前に構成された最新の ML パッケージ、ディープ ラーニング フレームワーク、GPU ドライバーを使用して、セットアップ タスクの時間を節約できます。|
 |フル カスタマイズが可能|Azure VM の種類 (GPU を含む) や永続的な低レベル カスタマイズ (パッケージやドライバーのインストールなど) が広範にサポートされているので、高度なシナリオに簡単に対応できます。 |
 
+* **[[パブリック IP なし (プレビュー)]](./how-to-secure-training-vnet.md#no-public-ip)** を使用してコンピューティング インスタンスをセキュリティで保護します
 * コンピューティング インスタンスは、コンピューティング クラスターに似た安全なトレーニング コンピューティング先でもありますが、これは単一ノードです。
 * 自分で [コンピューティング インスタンスを作成する](how-to-create-manage-compute-instance.md?tabs=python#create)ことも、管理者が **[代わりにコンピューティング インスタンスを作成する](how-to-create-manage-compute-instance.md?tabs=python#on-behalf)** こともできます。
 * また、ニーズに応じてコンピューティング インスタンスを自動的にカスタマイズして構成する方法として、 **[セットアップ スクリプト (プレビュー)](how-to-create-manage-compute-instance.md#setup-script)** を使用することもできます。
 * コストを節約するには、コンピューティング インスタンスを自動的に開始および停止 (プレビュー) するために **[スケジュールを作成します](how-to-create-manage-compute-instance.md#schedule)** 。
+
 
 ## <a name="tools-and-environments"></a><a name="contents"></a>ツールと環境
 
@@ -109,7 +111,7 @@ Python パッケージはすべて、**Python 3.8 - AzureML** 環境にインス
 
 また、コンピューティング インスタンスを自動的にカスタマイズして構成する方法として、 **[セットアップ スクリプト (プレビュー)](how-to-create-manage-compute-instance.md#setup-script)** を使用することもできます。
 
-自分でコンピューティング インスタンスを作成するには、Azure Machine Learning スタジオのワークスペースを使用して、いずれかのノートブックを実行する準備ができたら、 **[計算]** セクションまたは **[ノートブック]** セクションから[新しいコンピューティング インスタンスを作成](how-to-create-manage-compute-instance.md?tabs=azure-studio#create)します。
+自分でコンピューティング インスタンスを作成するには、Azure Machine Learning スタジオのワークスペースを使用して、いずれかのノートブックを実行する準備ができたら、 **[計算]** セクションまたは **[ノートブック]** セクションから [新しいコンピューティング インスタンスを作成](how-to-create-manage-compute-instance.md?tabs=azure-studio#create)します。
 
 インスタンスを作成することもできます
 * [統合ノートブックのエクスペリエンス](tutorial-train-models-with-aml.md#azure)から直接

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/08/2021
+ms.date: 08/31/2021
 ms.author: jeedes
-ms.openlocfilehash: 52fd113bbcc4f8d0bbd6a9637aefc3d03fa2c6cd
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 56ff81bcdb78031a23988df6b7e8417782b356ea
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111893808"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124821674"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-robin"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Robin の統合
 
@@ -39,6 +39,7 @@ ms.locfileid: "111893808"
 
 * Robin では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます。
 * Robin では、**Just-In-Time** ユーザー プロビジョニングがサポートされます。
+* Robin では、[自動化されたユーザー プロビジョニング](robin-provisioning-tutorial.md)がサポートされます。
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -135,6 +136,8 @@ Robin に対して Azure AD SSO を構成してテストするには、次の手
 
 このセクションでは、Britta Simon というユーザーを Robin に作成します。 Robin では、Just-In-Time ユーザー プロビジョニングがサポートされており、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 Robin にユーザーがまだ存在していない場合は、認証後に新しく作成されます。
 
+Robin では、自動ユーザー プロビジョニングもサポートされます。自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](./robin-provisioning-tutorial.md)をご覧ください。
+
 ## <a name="test-sso"></a>SSO のテスト 
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
@@ -149,7 +152,7 @@ Robin に対して Azure AD SSO を構成してテストするには、次の手
 
 * Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した Robin に自動的にサインインされます。 
 
-また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [Robin] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Robin に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [Robin] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Robin に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -4,47 +4,61 @@ description: インクルード ファイル
 author: timlt
 ms.service: iot-develop
 ms.topic: include
-ms.date: 08/03/2021
+ms.date: 09/17/2021
 ms.author: timlt
 ms.custom: include file
-ms.openlocfilehash: 7241fcd0026d33518bdbaa99b7f08c64a437c70d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e19743a7ae754296992f4cb281c10c1d44cbe25c
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121744358"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129094066"
 ---
 [![コードを参照](../articles/iot-develop/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples/pnp)
 
-このクイックスタートでは、基本的な Azure IoT アプリケーション開発のワークフローについて説明します。 Azure CLI を使用して、Azure IoT ハブとデバイスを作成します。 次に、Azure IoT device SDK サンプルを使用して、シミュレートされた温度コントローラーを実行し、それをハブに安全に接続して、テレメトリを送信します。
+このクイックスタートでは、基本的な Azure IoT アプリケーション開発のワークフローについて説明します。 Azure CLI と IoT エクスプローラーを使用して、Azure IoT ハブとデバイスを作成します。 次に、Azure IoT device SDK サンプルを使用して、シミュレートされた温度コントローラーを実行し、それをハブに安全に接続して、テレメトリを送信します。
 
 ## <a name="prerequisites"></a>前提条件
+このクイックスタートは、Windows、Linux、Raspberry Pi で実行できます。 これは、次の OS およびデバイス バージョンでテストされています。
+
+- Windows 10
+- Linux 用 Windows サブシステム (WSL) で実行されている Ubuntu 20.04 LTS
+- Raspberry Pi 3 Model B+ で実行されている Raspberry Pi OS バージョン 10 (Raspian)
+
+Raspberry Pi に関する説明がある場合を除き、開発マシンに次の前提条件をインストールします。
+
 - Azure サブスクリプションをお持ちでない場合は、開始する前に [無料でアカウントを 1 つ](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)作成してください。
 - [Git](https://git-scm.com/downloads).
 - [Node.js](https://nodejs.org) バージョン 10 以降。 ノードのバージョンを確認するには、`node --version` を実行します。
-- [Azure IoT エクスプローラー](https://github.com/Azure/azure-iot-explorer/releases): Azure IoT を監視および管理するためのクロスプラットフォーム ユーティリティ 
+- [Azure IoT エクスプローラー](https://github.com/Azure/azure-iot-explorer/releases): Azure IoT を監視および管理するための GUI ベースのクロスプラットフォーム ユーティリティ。 開発プラットフォームとして Raspberry Pi を使用している場合は、別のコンピューターに IoT エクスプローラーをインストールすることをお勧めします。 IoT エクスプローラーをインストールしない場合は、Azure CLI を使用して同じ手順を実行できます。 
 - Azure CLI。 このクイックスタートで Azure CLI コマンドを実行するには、2 つのオプションがあります。
     - ブラウザーで CLI コマンドを実行する対話型シェルである Azure Cloud Shell を使用します。 何もインストールする必要がないため、このオプションをお勧めします。 Cloud Shell を初めて使用する場合は、[Azure portal](https://portal.azure.com) にログインします。 [Cloud Shell のクイックスタート](../articles/cloud-shell/quickstart.md)の手順に従って、**Cloud Shell を起動** し、**Bash 環境を選択** します。
-    - 必要に応じて、お使いのローカル コンピューターで Azure CLI を実行します。 Azure CLI が既にインストールされている場合は、`az upgrade` を実行して、CLI と拡張機能を最新バージョンにアップグレードします。 Azure CLI のインストール方法については、「[Azure CLI をインストールする]( /cli/azure/install-azure-cli)」をご覧ください。
+    - 必要に応じて、お使いのローカル コンピューターで Azure CLI を実行します。 Azure CLI が既にインストールされている場合は、`az upgrade` を実行して、CLI と拡張機能を最新バージョンにアップグレードします。 Azure CLI のインストール方法については、「[Azure CLI をインストールする]( /cli/azure/install-azure-cli)」をご覧ください。 開発プラットフォームとして Raspberry Pi を使用している場合は、Azure Cloud Shell を使用するか、または別のコンピューターに Azure CLI をインストールすることをお勧めします。
 
 [!INCLUDE [iot-hub-include-create-hub-iot-explorer](iot-hub-include-create-hub-iot-explorer.md)]
 
 ## <a name="run-a-simulated-device"></a>シミュレートされたデバイスを実行する
 このセクションでは、Node.js SDK を使用して、シミュレートされたデバイスから対象の IoT ハブにメッセージを送信します。 2 つのサーモスタット センサーを備えた温度コントローラーを実装するサンプルを実行します。
 
-1. 新しいコンソール ウィンドウを開きます。 このコンソールを使用して Node.js SDK をインストールし、Node.js のサンプル コードを操作します。
+1. Windows CMD、PowerShell、または Bash などの新しいコンソールを開きます。 以下の手順では、このコンソールを使用して Node.js SDK をインストールし、Node.js のサンプル コードを操作します。
 
     > [!NOTE]
     > Azure CLI のローカル インストールを使用している場合は、次の 2 つのコンソール ウィンドウが開きます。 このセクションのコマンドは、CLI で使用していたものではなく、必ずこの開いたコンソールに入力してください。
 
-1. Node コンソールで、[Azure IoT Node.js SDK デバイス サンプル](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples)を、お使いのローカル コンピューターに複製します。
+1. [Azure IoT Node.js SDK デバイス サンプル](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples)をローカル コンピューターにクローンします。
 
     ```console
     git clone https://github.com/Azure/azure-iot-sdk-node
     ```
 
-1. *azure-iot-sdk-node/device/samples/pnp* フォルダーに移動します。
+1. sample ディレクトリに移動します。
 
+    **Windows**
+    ```console
+    cd azure-iot-sdk-node\device\samples\pnp
+    ```
+
+    **Linux または Raspberry Pi OS**
     ```console
     cd azure-iot-sdk-node/device/samples/pnp
     ```
@@ -61,7 +75,7 @@ ms.locfileid: "121744358"
     * `IOTHUB_DEVICE_CONNECTION_STRING` という環境変数を設定します。 変数の値には、前のセクションで保存したデバイス接続文字列を使用します。
     * `IOTHUB_DEVICE_SECURITY_TYPE` という環境変数を設定します。 変数には、リテラル文字列値 `connectionString` を使用します。
 
-    **Windows (cmd)**
+    **CMD (Windows)**
 
     ```console
     set IOTHUB_DEVICE_CONNECTION_STRING=<your connection string here>
@@ -78,15 +92,14 @@ ms.locfileid: "121744358"
     $env:IOTHUB_DEVICE_SECURITY_TYPE='connectionString'
     ```
 
-    **Bash (Linux または Windows)**
+    **Bash**
 
     ```bash
     export IOTHUB_DEVICE_CONNECTION_STRING="<your connection string here>"
     export IOTHUB_DEVICE_SECURITY_TYPE="connectionString"
     ```
-1. Node コンソールで、次のサンプル ファイルのコードを実行します。 
+1. 次のサンプル コードを実行します。
 
-    Node.js サンプルをターミナルから実行するには、次のようにします。
     ```console
     node pnpTemperatureController.js
     ```
@@ -120,7 +133,7 @@ Azure IoT エクスプローラーでテレメトリを表示するには:
 
 Azure CLI を使用してデバイス テレメトリを表示するには:
 
-1. お使いの CLI アプリで [az iot hub monitor-events](/cli/azure/iot/hub#az_iot_hub_monitor_events) コマンドを実行して、シミュレートされたデバイスから IoT ハブに送信されるイベントを監視します。 Azure IoT で以前に作成した、デバイスと IoT ハブの名前を使用します。
+1. [az iot hub monitor-events](/cli/azure/iot/hub#az_iot_hub_monitor_events) コマンドを実行して、シミュレートされたデバイスから IoT ハブに送信されるイベントを監視します。 Azure IoT で以前に作成した、デバイスと IoT ハブの名前を使用します。
 
     ```azurecli
     az iot hub monitor-events --output table --device-id mydevice --hub-name {YourIoTHubName}

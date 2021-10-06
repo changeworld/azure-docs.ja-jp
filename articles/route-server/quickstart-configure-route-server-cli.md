@@ -5,14 +5,14 @@ services: route-server
 author: duongau
 ms.service: route-server
 ms.topic: quickstart
-ms.date: 08/17/2021
+ms.date: 09/01/2021
 ms.author: duau
-ms.openlocfilehash: 91ad4ce80a8e61b06b3597fe8088a0eb7f002d5e
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: ca21e367752451f01c7ee8d1fc9596cfcb74029b
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122968234"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129094445"
 ---
 # <a name="quickstart-create-and-configure-route-server-using-azure-cli"></a>クイック スタート: Azure CLI を使用してルート サーバーを作成および構成する 
 
@@ -21,9 +21,7 @@ ms.locfileid: "122968234"
 :::image type="content" source="media/quickstart-configure-route-server-portal/environment-diagram.png" alt-text="Azure CLI を使用した Route Server デプロイ環境の図。" border="false":::
 
 > [!IMPORTANT]
-> Azure Route Server (プレビュー) は現在、パブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+> 9 月 1 日より前に作成した Azure Route Server があり、パブリック IP アドレスが関連付けられていない場合は、管理目的で IP アドレスを取得できるようにするため、Route Server を再作成する必要があります。
 
 ##  <a name="prerequisites"></a>前提条件 
 

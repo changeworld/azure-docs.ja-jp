@@ -8,12 +8,12 @@ ms.date: 10/20/2019
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: b8d1e962c9f25d2a26a8c8e537390028795844b9
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 7497db682cd8fac12cd93a83c3765862898455ee
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110671532"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124763483"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-java"></a>クイックスタート: Java 用 Azure Key Vault シークレット クライアント ライブラリ
 Java 用 Azure Key Vault シークレット クライアント ライブラリを使ってみます。 以下の手順に従ってパッケージをインストールし、基本タスクのコード例を試してみましょう。
@@ -154,9 +154,9 @@ import com.azure.security.keyvault.secrets.models.KeyVaultSecret;
 ```
 
 ### <a name="authenticate-and-create-a-client"></a>クライアントの認証と作成
-このクイックスタートでは、ログイン ユーザーを使用して Key Vault に対する認証を行います。ローカル開発では、これが推奨される方法となります。 Azure にデプロイされるアプリケーションの場合は、App Service または仮想マシンにマネージド ID を割り当てる必要があります。 詳細については、[マネージド ID の概要](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)に関するページを参照してください。
+このクイックスタートでは、ログイン ユーザーを使用して Key Vault に対する認証を行います。ローカル開発では、これが推奨される方法となります。 Azure にデプロイされるアプリケーションの場合は、App Service または仮想マシンにマネージド ID を割り当てる必要があります。 詳細については、[マネージド ID の概要](../../active-directory/managed-identities-azure-resources/overview.md)に関するページを参照してください。
 
-以下の例では、キー コンテナーの名前は、"https://\<your-key-vault-name\>.vault.azure.net" という形式で、キー コンテナーの URI に展開されます。 この例では、["DefaultAzureCredential()"](https://docs.microsoft.com/java/api/com.azure.identity.defaultazurecredential) クラスを使用しています。環境や使用するオプションが変わっても、同じコードを使用して ID を提供することができます。 詳細については、[DefaultAzureCredential 認証](https://docs.microsoft.com/java/api/overview/azure/identity-readme)に関するセクションを参照してください。
+以下の例では、キー コンテナーの名前は、`https://\<your-key-vault-name\>.vault.azure.net` という形式で、キー コンテナーの URI に展開されます。 この例では、["DefaultAzureCredential()"](/java/api/com.azure.identity.defaultazurecredential) クラスを使用しています。環境や使用するオプションが変わっても、同じコードを使用して ID を提供することができます。 詳細については、[DefaultAzureCredential 認証](/java/api/overview/azure/identity-readme)に関するセクションを参照してください。
 
 ```java
 String keyVaultName = System.getenv("KEY_VAULT_NAME");

@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 05/08/2020
+ms.date: 09/27/2021
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 2b658cdc58777274bb14f9e8069cef2facdb0479
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bb1347b0dfcb2be5c485e503fb87c5a70dd7d30c
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92363455"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129153788"
 ---
 # <a name="mark-your-app-as-publisher-verified"></a>アプリを発行者確認済みとしてマークする
 
@@ -46,9 +46,9 @@ Microsoft Partner Network (MPN) に既に登録していて、[前提条件](pub
 
     - パートナー センターでは、このユーザーには次のいずれかの[ロール](/partner-center/permissions-overview)が必要です: MPN 管理者、アカウント管理者、全体管理者 (これは、Azure AD で管理されている共有ロールです)。 
 
-1. アプリ登録ポータルに移動します。  
+1. **[アプリの登録]** ブレードに移動します。  
 
-1. 発行者確認済みとしてマークするアプリをクリックし、[Branding]\(ブランド化\) ブレードを開きます。 
+1. 発行者確認済みとしてマークするアプリをクリックし、 **[ブランド化]** ブレードを開きます。 
 
 1. アプリの[パブリッシャー ドメイン](howto-configure-publisher-domain.md)が設定されていることを確認します。 
 

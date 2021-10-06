@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 03/11/2021
 ms.custom: mvc
-ms.openlocfilehash: f925eb888c1955212a762eb46c63300afd17d77d
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 89548cf1c98e360569255b9028b26230fedf5ed2
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123427731"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129092340"
 ---
 # <a name="tutorial-discover-physical-servers-with-azure-migrate-discovery-and-assessment"></a>チュートリアル: Azure Migrate: Discovery and Assessment を使用して物理サーバーを検出する
 
@@ -194,26 +194,28 @@ Azure Migrate アプライアンスによって、サーバー検出が実行さ
 ### <a name="3-run-the-azure-migrate-installer-script"></a>3. Azure Migrate インストーラー スクリプトを実行する
 
 1. アプライアンスをホストするサーバー上のフォルダーに ZIP ファイルを抽出します。  既存の Azure Migrate アプライアンスが存在するサーバー上でスクリプトを実行しないよう注意してください。
-2. 管理 (昇格された) 特権を使用して上記のサーバーで PowerShell を起動します。
-3. PowerShell ディレクトリを、ダウンロードした ZIP ファイルの内容が抽出されたフォルダーに変更します。
-4. 次のコマンドを実行して、**AzureMigrateInstaller.ps1** という名前のスクリプトを実行します。
 
-    
-    ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> .\AzureMigrateInstaller.ps1 ```
+2. 管理 (昇格された) 特権を使用して上記のサーバーで PowerShell を起動します。
+
+3. PowerShell ディレクトリを、ダウンロードした ZIP ファイルの内容が抽出されたフォルダーに変更します。
+
+4. 次のコマンドを実行して、`AzureMigrateInstaller.ps1` という名前のスクリプトを実行します。
+
+   `PS C:\Users\administrator\Desktop\AzureMigrateInstaller> .\AzureMigrateInstaller.ps1`
 
 5. シナリオ、クラウド、接続性からそれぞれオプションを選択して、必要な構成でアプライアンスをデプロイします。 たとえば、以下に示す選択内容の場合は、**Azure パブリック クラウド** 上の **既定の _(パブリック エンドポイント)_ 接続性** を使用して、**物理サーバー** _(または AWS、GCP、Xen などの他のクラウドで実行されているサーバー)_ を検出し、Azure Migrate プロジェクトに評価するようにアプライアンスが設定されます。
 
-    :::image type="content" source="./media/tutorial-discover-physical/script-physical-default-inline.png" alt-text="必要な構成でアプライアンスを設定する方法を示すスクリーンショット" lightbox="./media/tutorial-discover-physical/script-physical-default-expanded.png":::
+   :::image type="content" source="./media/tutorial-discover-physical/script-physical-default-inline.png" alt-text="必要な構成でアプライアンスを設定する方法を示すスクリーンショット" lightbox="./media/tutorial-discover-physical/script-physical-default-expanded.png":::
 
 6. インストーラー スクリプトでは以下が実行されます。
 
- - エージェントと Web アプリケーションをインストールします。
- - Windows の役割 (Windows Activation Service、IIS、PowerShell ISE など) をインストールする。
- - IIS 書き込み可能モジュールをダウンロードしてインストールする。
- - Azure Migrate の永続的な設定の詳細でレジストリ キー (HKLM) を更新する。
- - パスに次のファイルを作成する。
-    - **構成ファイル**: %Programdata%\Microsoft Azure\Config
-    - **ログ ファイル**: %Programdata%\Microsoft Azure\Logs
+   - エージェントと Web アプリケーションをインストールします。
+   - Windows の役割 (Windows Activation Service、IIS、PowerShell ISE など) をインストールする。
+   - IIS 書き込み可能モジュールをダウンロードしてインストールする。
+   - Azure Migrate の永続的な設定の詳細でレジストリ キー (HKLM) を更新する。
+   - パスに次のファイルを作成する。
+     - **構成ファイル:** `%ProgramData%\Microsoft Azure\Config`
+     - **ログ ファイル:** `%ProgramData%\Microsoft Azure\Logs`
 
 スクリプトが正常に実行されると、アプライアンス構成マネージャーが自動的に起動します。
 
@@ -231,15 +233,15 @@ Azure Migrate アプライアンスによって、サーバー検出が実行さ
 1. アプライアンスに接続できる任意のサーバー上でブラウザーを開き、アプライアンス Web アプリの URL (**https://*アプライアンス名または IP アドレス*: 44368**) を開きます。
 
    または、アプリのショートカットをクリックして、デスクトップからアプリを開くこともできます。
-2. **ライセンス条項** に同意し、サード パーティの情報を確認します。
+1. **ライセンス条項** に同意し、サード パーティの情報を確認します。
 1. Web アプリの **[前提条件のセットアップ]** で、以下を実行します。
-    - **接続**:サーバーがインターネットにアクセスできることが、アプリによって確認されます。 サーバーでプロキシを使用する場合は、次の操作を行います。
-        - **[プロキシの設定]** をクリックし、プロキシ アドレス (http://ProxyIPAddress または http://ProxyFQDN) の形式) とリッスン ポートを指定します。
-        - プロキシで認証が必要な場合は、資格情報を指定します。
-        - サポートされるのは HTTP プロキシのみです。
-        - プロキシの詳細を追加した場合、またはプロキシまたは認証を無効にした場合は、 **[保存]** をクリックして接続チェックを再度トリガーします。
-    - **時刻同期**:時刻が確認されます。 サーバーの検出を正常に機能させるには、アプライアンス上の時刻がインターネットの時刻と同期している必要があります。
-    - **更新プログラムのインストール**: Azure Migrate の検出および評価によって、アプライアンスに最新の更新プログラムがインストールされていることが確認されます。 確認が完了したら、 **[View appliance services]\(アプライアンス サービスを表示\)** をクリックして、アプライアンスで実行されているコンポーネントの状態とバージョンを確認できます。
+   - **接続**:サーバーがインターネットにアクセスできることが、アプリによって確認されます。 サーバーでプロキシを使用する場合は、次の操作を行います。
+     - **[プロキシの設定]** をクリックし、プロキシ アドレス (http://ProxyIPAddress または http://ProxyFQDN) の形式) とリッスン ポートを指定します。
+     - プロキシで認証が必要な場合は、資格情報を指定します。
+     - サポートされるのは HTTP プロキシのみです。
+     - プロキシの詳細を追加した場合、またはプロキシまたは認証を無効にした場合は、 **[保存]** をクリックして接続チェックを再度トリガーします。
+   - **時刻同期**:時刻が確認されます。 サーバーの検出を正常に機能させるには、アプライアンス上の時刻がインターネットの時刻と同期している必要があります。
+   - **更新プログラムのインストール**: Azure Migrate の検出および評価によって、アプライアンスに最新の更新プログラムがインストールされていることが確認されます。 確認が完了したら、 **[View appliance services]\(アプライアンス サービスを表示\)** をクリックして、アプライアンスで実行されているコンポーネントの状態とバージョンを確認できます。
 
 ### <a name="register-the-appliance-with-azure-migrate"></a>Azure Migrate にアプライアンスを登録する
 
@@ -249,14 +251,11 @@ Azure Migrate アプライアンスによって、サーバー検出が実行さ
     ![デバイス コードを示すモーダル](./media/tutorial-discover-vmware/device-code.png)
 
 1. **[Copy code & Login]\(コードのコピーとログイン\)** をクリックしてデバイス コードをコピーし、新しいブラウザー タブで Azure ログイン プロンプトを開きます。表示されない場合は、ブラウザーでポップアップ ブロックを無効にしてあることを確認します。
-1. 新しいタブで、デバイス コードを貼り付け、Azure のユーザー名とパスワードを使用してサインインします。
-   
-   PIN を使用したサインインはサポートされていません。
-3. ログインせずにログイン タブを誤って閉じた場合は、アプライアンス構成マネージャーのブラウザー タブを最新の情報に更新して、[ログイン] ボタンを再度有効にする必要があります。
+1. 新しいタブで、デバイス コードを貼り付け、Azure のユーザー名とパスワードを使用してサインインします。 PIN を使用したサインインはサポートされていません。
+1. ログインせずにログイン タブを誤って閉じた場合は、アプライアンス構成マネージャーのブラウザー タブを最新の情報に更新して、[ログイン] ボタンを再度有効にする必要があります。
 1. 正常にログインしたら、アプライアンス構成マネージャーで前のタブに戻ります。
-4. ログに使用した Azure ユーザー アカウントに、キーの生成時に作成した Azure リソースに対する正しい[アクセス許可]()が付与されている場合、アプライアンスの登録が開始されます。
+1. ログに使用した Azure ユーザー アカウントに、キーの生成時に作成した Azure リソースに対する正しい[アクセス許可]()が付与されている場合、アプライアンスの登録が開始されます。
 1. アプライアンスが正常に登録された後は、 **[詳細の表示]** をクリックすることで登録の詳細を確認できるようになります。
-
 
 ## <a name="start-continuous-discovery"></a>継続的な検出を開始する
 
@@ -289,8 +288,7 @@ Azure Migrate アプライアンスによって、サーバー検出が実行さ
 1. 検出を開始する前に、サーバーへの接続はいつでも **再検証** できます。
 1. 正常に検証されたサーバーの検出を開始するには **[Start discovery]\(検出の開始\)** をクリックします。 検出が正常に開始されたら、各サーバーに対する検出の状態を表で確認できます。
 
-
-これで検出が開始されます。 検出されたサーバーのメタデータが Azure portal に表示されるまでにサーバーあたり約 2 分かかります。
+100 台のサーバーとそのメタデータがすべて検出され、Azure portal に表示されるまでに、約 2 分かかります。
 
 ## <a name="verify-servers-in-the-portal"></a>ポータルでサーバーを確認する
 
@@ -298,6 +296,13 @@ Azure Migrate アプライアンスによって、サーバー検出が実行さ
 
 1. Azure Migrate ダッシュボードを開きます。
 2. **[Azure Migrate - サーバー]**  >  **[Azure Migrate: Discovery and Assessment]** ページで、 **[検出済みサーバー]** の数を表示するアイコンをクリックします。
+
+## <a name="delete-servers"></a>サーバーを削除する
+検出が開始されたら、追加されたサーバーをアプライアンス構成マネージャーから削除できます。このためには、 **[Add discovery source]\(検出ソースの追加\)** テーブルでサーバー名を検索し、 **[削除]** をクリックします。
+
+>[!NOTE]
+> 検出が開始されているサーバーの削除を選択すると、実行中の検索と評価が停止し、このサーバーを含む評価の信頼度評価に影響する可能性があります。 [詳細情報](https://go.microsoft.com/fwlink/?linkid=2171565)
+
 ## <a name="next-steps"></a>次のステップ
 
 - Azure VM への移行のために[物理サーバーを評価](tutorial-assess-physical.md)します。

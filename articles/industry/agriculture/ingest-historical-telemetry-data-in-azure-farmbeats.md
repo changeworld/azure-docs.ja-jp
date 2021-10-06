@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: riyazp
 ms.custom: ''
-ms.openlocfilehash: 1eb74fc900ebbf70f8938c31721f717117a4fdd6
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: 0028bced72633c1544f6c53fa0f429ca570026c1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122397495"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128621625"
 ---
 # <a name="ingest-historical-telemetry-data"></a>過去のテレメトリ データの取り込み
 
@@ -192,7 +192,7 @@ access_token = token_response.get('access_token')
 FarmBeats Datahub への API 呼び出しを行うときに指定する必要がある、最も一般的な要求ヘッダーを次に示します。
 
 - **Content-Type**: application/json
-- **承認**: Bearer <Access-Token>
+- **Authorization**: ベアラー \<Access-Token\>
 - **Accept**: application/json
 
 ### <a name="input-payload-to-create-metadata"></a>メタデータを作成するための入力ペイロード

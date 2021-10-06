@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: MVC
-ms.openlocfilehash: be43dda1e1fdf6d23031f2d2bf75a7f126ddef7a
-ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+ms.openlocfilehash: 7e16fd0d1c6370cb0ab973760c988c600f42888c
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123272837"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129153522"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>VMware VM を Azure に移行する (エージェントベース)
 
@@ -103,7 +103,7 @@ Azure Migrate Server Migration は、移行対象の VM を検出するために
 アカウントを次のように準備します。
 
 1. VM にインストールするアクセス許可を持つドメイン アカウントまたはローカル アカウントを準備します。
-2. Windows VM の場合、ドメイン アカウントを使用していないときはローカル コンピューターでリモート ユーザーのアクセス制御を無効にします。レジストリで、**HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** の下に DWORD エントリ **LocalAccountTokenFilterPolicy** を追加し、値を設定します。
+2. Windows VM の場合、ドメイン アカウントを使用していないときはローカル コンピューターでリモート ユーザーのアクセス制御を無効にします。これを行うには、レジストリで、**HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** の下に DWORD エントリ **LocalAccountTokenFilterPolicy** を追加し、値 1 を設定します。
 3. Linux VM の場合、ソースの Linux サーバーにルート アカウントを準備します。
 
 
@@ -354,7 +354,7 @@ OVF テンプレートのダウンロード後、それを VMware にインポ�
 
 ## <a name="complete-the-migration"></a>移行を完了する
 
-1. 移行が完了したら、VM を右クリックして、 **[移行を停止する]** を選択します。 次の処理が実行されます。
+1. 移行が完了したら、VM を右クリックして、 **[レプリケーションの停止]** を選択します。 次の処理が実行されます。
     - オンプレミス マシンのレプリケーションを停止します。
     - Azure Migrate: Server Migration の **[サーバーをレプリケートしています]** のカウントからマシンを削除します。Server Migration に関するエラーのトラブルシューティングに役立つ情報を提供しています。
     - VM のレプリケーション状態情報をクリーンアップします。

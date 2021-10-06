@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 09/28/2021
 ms.author: alkohli
-ms.openlocfilehash: 7dfc80ba0117e5481370bacd18941bf622a99edb
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: eec1c595119e225468bdbbe76f506b5b330a1beb
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 09/29/2021
-ms.locfileid: "129274351"
+ms.locfileid: "129212401"
 ---
 # <a name="use-cases-for-azure-data-box-gateway"></a>Azure Data Box Gateway のユース ケース
 
@@ -40,7 +40,7 @@ Data Box Gateway の主な利点の 1 つは、データ サイズに関係な�
 
 お客様のデータをクラウドで長期的に保持したい場合、Data Box Gateway を使用します。 長期保有にはストレージのアーカイブ層を使用できます。
 
-アーカイブ層は、ほとんどアクセスされることのないデータを 180 日間以上格納するために最適化されています。 アーカイブ層は、ストレージ コストが最も低くなりますが、アクセス コストが最も高くなります。 詳細については、「[アーカイブ アクセス層](../storage/blobs/access-tiers-overview.md#archive-access-tier)」を参照してください。
+アーカイブ層は、ほとんどアクセスされることのないデータを 180 日間以上格納するために最適化されています。 アーカイブ層は、ストレージ コストが最も低くなりますが、アクセス コストが最も高くなります。 詳細については、「[アーカイブ アクセス層](../storage/blobs/storage-blob-storage-tiers.md#archive-access-tier)」を参照してください。
 
 ### <a name="move-data-to-the-archive-tier"></a>データをアーカイブ層に移動する
 

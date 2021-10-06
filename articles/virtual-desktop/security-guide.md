@@ -1,17 +1,19 @@
 ---
 title: Azure Virtual Desktop のセキュリティに関するベスト プラクティス - Azure
+titleSuffix: Azure
 description: Azure Virtual Desktop 環境のセキュリティを確保するためのベスト プラクティス。
 author: heidilohr
 ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: helohr
+ms.service: virtual-desktop
 manager: femila
-ms.openlocfilehash: 771674a3c8d4023b307982f8460f956dd422eb04
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: b6161ab2b6c07e0da9a5f676a15598ca1bb103e9
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128567152"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129402112"
 ---
 # <a name="security-best-practices"></a>セキュリティの運用方法
 

@@ -3,19 +3,16 @@ title: Azure Functions と共に Monitor メトリックを使用する
 description: Azure Monitor メトリックを使用して、Azure Application Insights によって収集と格納が行われた Azure Functions テレメトリ データを表示し、クエリを実行する方法について説明します。
 ms.topic: how-to
 ms.date: 07/4/2021
-ms.openlocfilehash: b5f0b483295cccff8caf97503233e1e7881173cf
-ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
+ms.openlocfilehash: 8f9e80a50e3041ea37d765938613563b31f16af0
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113568616"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129215759"
 ---
 # <a name="using-azure-monitor-metric-with-azure-functions"></a>Azure Functions と共に Azure Monitor メトリックを使用する
 
 Azure Functions は Azure Monitor Metric と統合されているので、実行中の関数アプリによって生成されたメトリックを分析できます。 詳細については、「[Azure Monitor メトリックの概要](../azure-monitor/essentials/data-platform-metrics.md)」を参照してください。 これらのメトリックは、関数アプリが App Service プラットフォーム上でどのように実行されているかを示します。 従量課金プランのコスト見積もりに使用されるリソース消費データを確認できます。 ログ データを含め、関数実行からの詳細なテレメトリを調査するには、Azure Monitor で [Application Insights](functions-monitoring.md) も使用する必要があります。 
-
-> [!NOTE]
-> Linux 上で従量課金プランを使用して関数アプリを実行している場合、Azure Monitor メトリックは現在サポートされていません。
 
 ## <a name="available-metrics"></a>使用可能なメトリック
 

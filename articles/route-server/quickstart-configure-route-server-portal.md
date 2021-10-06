@@ -5,20 +5,23 @@ services: route-server
 author: duongau
 ms.service: route-server
 ms.topic: quickstart
-ms.date: 09/01/2021
+ms.date: 09/08/2021
 ms.author: duau
-ms.openlocfilehash: 36be075345dcacdf8246f46462a2665718f27e7e
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: a6714867b5b863f608e3282c5e6f3bb0d2425969
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123424800"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129091485"
 ---
 # <a name="quickstart-create-and-configure-route-server-using-the-azure-portal"></a>クイックスタート: Azure portal を使用してルート サーバーを作成および構成する
 
 この記事は、Azure portal を使用して、仮想ネットワーク内のネットワーク仮想アプライアンス (NVA) とピアリングするように Azure Route Server を構成するのに役立ちます。 Azure Route Server では、NVA からルートを学習し、仮想ネットワーク内の仮想マシン上でそれらをプログラムします。 また、Azure Route Server は NVA に仮想ネットワーク ルートをアドバタイズします。 詳細については、[Azure Route Server](overview.md) に関するページを参照してください。
 
 :::image type="content" source="media/quickstart-configure-route-server-portal/environment-diagram.png" alt-text="Azure portal を使用した Route Server デプロイ環境の図。" border="false":::
+
+> [!IMPORTANT]
+> 9 月 1 日より前に作成した Azure Route Server があり、パブリック IP アドレスが関連付けられていない場合は、管理目的で IP アドレスを取得できるようにするため、Route Server を再作成する必要があります。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -33,7 +36,7 @@ ms.locfileid: "123424800"
 
 ### <a name="create-a-route-server"></a>ルート サーバーを作成する
 
-1. https://aka.ms/routeserver にアクセスします。
+1. [Azure portal](https://portal.azure.com) にサインインし、 **[Route Server]\(ルート サーバー\)** を検索して選択します。
 
 1. **[+ Create new route server]\(+ 新しいルート サーバーの作成\)** を選択します。
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/23/2021
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: 9b74ccacdb239b7e413d6b21b29da1218d1d5747
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: c45be7452d71002c2120e37999c2ecfacb8608b0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122769410"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124800006"
 ---
 # <a name="preview-azure-automanage-for-virtual-machines"></a>プレビュー: Azure Automanage for virtual machines
 
@@ -139,7 +139,7 @@ VM に対して Automanage を初めて有効にする場合は、Azure portal �
 既定の環境の設定は、基本設定を使用して調整できます。 基本設定の作成方法については、[こちら](virtual-machines-custom-preferences.md)を参照してください。
 
 > [!NOTE]
-> Automanage が有効になっている間は、ご利用の VM の環境構成を変更できません。 その VM の Automanage を無効にしてから、必要な環境と基本設定を使用して Automanage を再度有効にする必要があります。
+> Automanage が有効になっている間は、使用中の VM で環境構成を変更することはできません。 その VM の Automanage を無効にしてから、必要な環境と基本設定を使用して Automanage を再度有効にする必要があります。
 
 対象となる Azure サービスの完全な一覧と、それらによって基本設定がサポートされているかどうかについては、次をご覧ください。
 - [Linux 用 Automanage](automanage-windows-server.md)

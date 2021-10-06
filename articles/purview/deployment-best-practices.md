@@ -4,15 +4,14 @@ description: この記事では、Azure Purview をデプロイするための�
 author: shsandeep123
 ms.author: sandeepshah
 ms.service: purview
-ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/23/2020
-ms.openlocfilehash: 4aa2a22f6e7bfef4a04eb65ac6063c81077b6153
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d357a85449a6ae734b3311f2649180b36646d4f4
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121739101"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129214334"
 ---
 # <a name="azure-purview-deployment-best-practices"></a>Azure Purview のデプロイのベスト プラクティス
 
@@ -168,7 +167,6 @@ Purview では、カタログ管理者がライフ サイクルを通じて整�
 |タスク|Detail|Duration|
 |---------|---------|---------|
 |要件を収集して合意する|すべての利害関係者と話し合い、完全な要件を収集します。 プロジェクトの各フェーズで完了する要件のサブセットに合意するには、さまざまなペルソナが参加している必要があります。|1 週間|
-|スタート キットをセットアップする|[Purview クイック スタート](create-catalog-portal.md)を実行し、[Purview スタート キット](tutorial-scan-data.md)をセットアップして、すべての関係者に Purview のデモを行います。|1 日|
 |Purview のナビゲート|ホーム ページから Purview を使用する方法を理解します。|1 日|
 |系列の ADF を構成する|主要なパイプラインとデータ資産を識別します。 内部 ADF アカウントに接続するために必要なすべての情報を収集します。|1 日|
 |Azure Data Lake Storage などのデータ ソースをスキャンする|データ ソースを追加し、スキャンを設定します。 すべての資産がスキャンによって正常に検出されたことを確認します。|2 日|
@@ -199,7 +197,7 @@ Purview では、カタログ管理者がライフ サイクルを通じて整�
 |[Power BI をスキャンする](register-scan-power-bi-tenant.md)|組織で Power BI を使用している場合は、データ サイエンティストまたはデータ アナリストが使用しているすべてのデータ資産を収集するために、Power BI をスキャンできます。これには、ストレージ レイヤーの系列を含めるための要件があります。|1 ～ 2 週間|
 |[用語集の用語をインポートする](how-to-create-import-export-glossary.md)|ほとんどの場合、組織は、用語集の用語と資産への用語の割り当てのコレクションを既に作成しています。 これには、.csv ファイルを使用した Purview へのインポート プロセスが必要です。|1 週間|
 |資産に連絡先を追加する|上位の資産については、他のペルソナが連絡先を割り当てたり、REST API 経由でインポートしたりできるようにするプロセスを確立できます。|1 週間|
-|秘密度ラベルとスキャンを追加する|これは、M365 からのラベル付けの使用状況によっては、一部の組織では省略可能な場合があります。|1 ～ 2 週間|
+|秘密度ラベルとスキャンを追加する|これは、 Microsoft 365 からのラベル付けの使用状況によっては、一部の組織では省略可能な場合があります。|1 ～ 2 週間|
 |分類と機微な洞察を得る|Purview のレポートと洞察を得るためにこの機能にアクセスしてさまざまなレポートを取得し、経営陣にプレゼンテーションを行うことができます。|1 日|
 |Purview 管理対象ユーザーを使用して追加のユーザーをオンボードする|この手順では、Purview 管理者が Azure Active Directory 管理者と連携して、Purview へのアクセスを許可する新しいセキュリティ グループを確立する必要があります。|1 週間|
 
@@ -267,5 +265,5 @@ MVP フェーズが成功したら、実稼働前のマイルストーンを計�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [チュートリアル: スタート キットの実行とデータのスキャン](tutorial-scan-data.md)
-- [チュートリアル: ホーム ページを閲覧して資産を検索する](tutorial-asset-search.md)
+- [コレクションのベスト プラクティス](concept-best-practices-collections.md)
+- [ホーム ページを閲覧して資産を検索する](tutorial-asset-search.md)

@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-js
-ms.openlocfilehash: fc1e7bd2f82755f94469dc9feece7351f1ba0a32
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 75473561ecb827f12aeb02cb69b12259862da10b
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121729842"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129229660"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-nodejs"></a>IoT Hub を使用したクラウドからデバイスへのメッセージの送信 (Node.js)
 
@@ -202,7 +202,5 @@ cloud-to-device メッセージのライフサイクルの詳細など、IoT Hub
 ## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、クラウドからデバイスへのメッセージを送受信する方法を学習しました。
-
-IoT Hub を使用する完全なエンド ツー エンド ソリューションの例については、[Azure IoT リモート監視ソリューション アクセラレータ](https://azure.microsoft.com/documentation/suites/iot-suite/)に関するページをご覧ください。
 
 IoT Hub を使用したソリューションの開発に関する詳細については、[IoT Hub 開発者ガイド](iot-hub-devguide.md)をご覧ください。

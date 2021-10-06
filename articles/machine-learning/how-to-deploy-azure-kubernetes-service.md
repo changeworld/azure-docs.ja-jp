@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: Azure Kubernetes Service を使用して Web サービスとして Azure Machine Learning のモデルをデプロイする方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.topic: how-to
 ms.custom: contperf-fy21q1, deploy
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/28/2021
-ms.openlocfilehash: 67d28d7f218debde1bd29abf0e4bbdaa0c7c49dd
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: fbacf4317defe999563a936b6c263ea2619f1eab
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122867599"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129428409"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service クラスターにモデルをデプロイする
 
@@ -60,9 +60,6 @@ Azure Kubernetes Service にデプロイするときは、__ご利用のワー�
 - ワークスペースに接続された Azure Kubernetes Service クラスターです。 詳細については、「[Azure Kubernetes Service クラスターを作成してアタッチする](how-to-create-attach-kubernetes.md)」を参照してください。
 
     - GPU ノードまたは FPGA ノード (または特定の SKU) にモデルをデプロイする場合は、特定の SKU でクラスターを作成する必要があります。 既存のクラスターにセカンダリ ノード プールを作成し、そのセカンダリ ノード プールにモデルをデプロイすることはサポートされていません。
-
-> [!IMPORTANT]
-> 現在、Azure Machine Learning では、AKS バージョン **1.21.x** へのモデルのデプロイはサポートされません
 
 ## <a name="understand-the-deployment-processes"></a>デプロイ プロセスについて
 

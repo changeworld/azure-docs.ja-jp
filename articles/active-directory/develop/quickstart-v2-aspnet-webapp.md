@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, contperf-fy21q1
-ms.openlocfilehash: 08c53f816b151026c03068451aa440f12a2cbc15
-ms.sourcegitcommit: 16580bb4fbd8f68d14db0387a3eee1de85144367
+ms.openlocfilehash: 0c648ae229db1ebe6ae50131c23e292c616b2820
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112677806"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128633490"
 ---
 # <a name="quickstart-aspnet-web-app-that-signs-in-azure-ad-users"></a>クイック スタート: Azure AD ユーザーをサインインさせる ASP.NET Web アプリ
 
@@ -50,7 +50,7 @@ ms.locfileid: "112677806"
 > #### <a name="step-1-register-your-application"></a>手順 1:アプリケーションの登録
 >
 > 1. <a href="https://portal.azure.com/" target="_blank">Azure portal</a> にサインインします。
-> 1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: を使用して、アプリケーションを登録するテナントを選択します。
+> 1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: を使用して、アプリケーションを登録するテナントに切り替えます。
 > 1. **Azure Active Directory** を検索して選択します。
 > 1. **[管理]** で **[アプリの登録]**  >  **[新規登録]** の順に選択します。
 > 1. **[名前]** に、アプリケーションの名前を入力します。 たとえば、「**ASPNET-Quickstart**」と入力します。 この名前は、アプリのユーザーに表示される場合があります。また、後で変更することができます。

@@ -1,20 +1,20 @@
 ---
-title: Power BI テナントの登録とスキャン (プレビュー)
+title: Power BI テナントの登録とスキャンを行う
 description: Azure Purview portal を使用して Power BI テナントの登録とスキャンを行う方法について説明します。
 author: chanuengg
 ms.author: csugunan
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: how-to
-ms.date: 07/28/2021
-ms.openlocfilehash: c29070f85fe0024113b6d5d4857733b23b522615
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.date: 09/27/2021
+ms.openlocfilehash: 8290c4c31cca383692a4ce5908d56e1b686c4213
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122271439"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129211482"
 ---
-# <a name="register-and-scan-a-power-bi-tenant-preview"></a>Power BI テナントの登録とスキャン (プレビュー)
+# <a name="register-and-scan-a-power-bi-tenant"></a>Power BI テナントの登録とスキャンを行う
 
 この記事では、Azure Purview portal を使用して Power BI テナントの登録とスキャンを行う方法について説明します。
 
@@ -60,13 +60,16 @@ ms.locfileid: "122271439"
 
     :::image type="content" source="./media/setup-power-bi-scan-PowerShell/allow-service-principals-power-bi-admin.png" alt-text="サービス プリンシパルが読み取り専用 Power BI Admin API のアクセス許可を取得できるようにする方法を示す画像。":::
 
-1. **[Admin API settings]\(管理 API の設定\)**  >  **[Enhance admin APIs responses with detailed metadata]\(詳細メタデータを使用して管理 API の応答を強化する\)** を選択し、トグルを有効にして、Purview の Data Map がスキャンの一環として Power BI データセットの詳細メタデータを自動的に検出できるようにします。
+1. **[管理 API の設定]**  >  **[詳細メタデータを使用して管理 API の応答を強化する]** の順に選択し、トグルを有効にして、Purview Data Map が、そのスキャンの一部として Power BI データセットの詳細メタデータを自動的に検出できるようにします。
+
+    > [!IMPORTANT]
+    > Power BI テナントで管理 API の設定を更新した後、スキャンの登録の前に約 15 分待ってから接続をテストします。
 
     :::image type="content" source="media/setup-power-bi-scan-catalog-portal/power-bi-scan-sub-artifacts.png" alt-text="サブ成果物のスキャンを有効にする Power BI 管理ポータル構成を示す画像。":::
 
     > [!Caution]
     > 作成したセキュリティ グループ (Purview のマネージド ID をメンバーとして持つ) に読み取り専用 Power BI Admin API の使用を許可するときは、このテナント内のすべての Power BI 成果物のメタデータ (ダッシュボードやレポートの名前、所有者、説明など) へのアクセスも許可します。 メタデータが Azure Purview に取り込まれると、Purview のアクセス許可 (Power BI のアクセス許可ではない) によって、そのメタデータを表示できるユーザーが決まります。
-
+  
     > [!Note]
     > 開発者向け設定からセキュリティ グループを削除することはできますが、以前に抽出されたメタデータは Purview アカウントから削除されません。 これは、必要に応じて個別に削除することができます。
 
@@ -126,7 +129,7 @@ Power BI テナントがある Azure AD テナントが、Azure Purview アカ�
 
 1. [Managed Scanning PowerShell モジュール](https://github.com/Azure/Purview-Samples/blob/master/Cross-Tenant-Scan-PowerBI/ManagedScanningPowerShell.zip)をダウンロードし、その内容を任意の場所に抽出します。
 
-2. ご使用のコンピューターで、Windows タスク バーの検索ボックスに「**PowerShell**」と入力します。 検索リストで **[Windows PowerShell]** を右クリックし、 **[管理者として実行]** を選択します。
+2. ご使用のコンピューターで、Windows タスク バーの検索ボックスに「**PowerShell**」と入力します。 検索一覧で、 **[Windows PowerShell]** を選択したまま (または、右クリックして) **[管理者として実行]** を選択します。
 
 
 3. まだインストールされていない場合は、マシンにモジュールをインストールしてインポートします。
@@ -181,7 +184,7 @@ Power BI テナントがある Azure AD テナントが、Azure Purview アカ�
    
    4. Web ブラウザーで次の URL を実行して、サービス プリンシパルのテナント固有のサインイン URL を作成します。
    
-     https://login.microsoftonline.com/<purview_tenant_id>/oauth2/v2.0/authorize?client_id=<client_id_to_delegate_the_pbi_admin>&scope=openid&response_type=id_token&response_mode=fragment&state=1234&nonece=67890
+     https://login.microsoftonline.com/<purview_tenant_id>/oauth2/v2.0/authorize?client_id=<client_id_to_delegate_the_pbi_admin>&scope=openid&response_type=id_token&response_mode=fragment&state=1234&nonce=67890
     
     パラメーターを正しい情報に置き換えてください。<purview_tenant_id> は、Azure Purview アカウントがプロビジョニングされている Azure Active Directory テナントの ID (GUID) です。
     <client_id_to_delegate_the_pbi_admin> は、サービス プリンシパルに対応するアプリケーション ID です
@@ -224,6 +227,7 @@ Power BI テナントがある Azure AD テナントが、Azure Purview アカ�
 
 -   テナント間のシナリオでは、現在、テナント間の Power BI テナントの登録とスキャンに使用できる UX エクスペリエンスはありません。
 -   Purview Studio を使用して PowerShell により登録されている Power BI クロス テナントを編集すると、データ ソース登録が一貫性のないスキャン動作で改ざんされます。
+-   [Power BI メタデータのスキャンの制限](/power-bi/admin/service-admin-metadata-scanning)に関するページを確認してください。
 
         
 ## <a name="next-steps"></a>次のステップ

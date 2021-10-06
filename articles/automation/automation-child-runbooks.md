@@ -3,21 +3,21 @@ title: Azure Automation でモジュラー Runbook を作成する
 description: この記事では、別の Runbook によって呼び出される Runbook を作成する方法について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 01/17/2019
-ms.topic: conceptual
+ms.date: 09/13/2021
+ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: eeca2c5ed3e1d428d7ab521160604f588e5b0b4a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: cbbf9be820d46875618cae76edb5f76bbfbb5e0f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121725697"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128675366"
 ---
-# <a name="create-modular-runbooks"></a>モジュラー Runbook を作成する
+# <a name="create-modular-runbooks-in-automation"></a>Automation でモジュラー Runbook を作成する
 
 Azure Automation では、他の Runbook によって呼び出される個別の関数を使用して、再利用可能なモジュール型 Runbook を記述する手法が推奨されます。 多くの場合、必要な機能を実行する 1 つまたは複数の子 Runbook が親 Runbook によって呼び出されます。 
 
-子 Runbook を呼び出すには 2 つの方法があります。それぞれの特徴的な相違点を理解しておくと、ご自分のシナリオでどちらが適しているかを判断できるようになります。 次の表は、Runbook を別の Runbook から呼び出すための 2 つの方法の相違点をまとめたものです。
+子 Runbook を呼び出すには 2 つの方法があります。ご自分のシナリオでどちらが適しているかを判断するには、それぞれの特徴的な相違点を理解しておく必要があります。 次の表は、Runbook を別の Runbook から呼び出すための 2 つの方法の相違点をまとめたものです。
 
 |  | インライン | コマンドレット |
 |:--- |:--- |:--- |
@@ -56,14 +56,14 @@ Runbook の発行順序は、PowerShell ワークフロー Runbook とグラフ�
 
 次の例では、複合オブジェクト、整数値、およびブール値を受け入れるテスト用の子 Runbook を開始します。 子 Runbook の出力は、変数に割り当てられます。 この場合は、子 Runbook は PowerShell ワークフロー Runbook です。
 
-```azurepowershell-interactive
+```powershell
 $vm = Get-AzVM -ResourceGroupName "LabRG" -Name "MyVM"
 $output = PSWF-ChildRunbook -VM $vm -RepeatCount 2 -Restart $true
 ```
 
 次に示すのは、子として PowerShell Runbook を使用する場合の例です。
 
-```azurepowershell-interactive
+```powershell
 $vm = Get-AzVM -ResourceGroupName "LabRG" -Name "MyVM"
 $output = .\PS-ChildRunbook.ps1 -VM $vm -RepeatCount 2 -Restart $true
 ```
@@ -91,20 +91,16 @@ $output = .\PS-ChildRunbook.ps1 -VM $vm -RepeatCount 2 -Restart $true
 
 次の例では、`Wait` パラメーターを指定した `Start-AzAutomationRunbook` コマンドレットを使用し、パラメーターを指定して子 Runbook を開始し、完了まで待機します。 この例では、完了すると、子 Runbook からコマンドレットの出力が収集されます。 `Start-AzAutomationRunbook` を使用するには、スクリプトで Azure サブスクリプションに対して認証を行う必要があります。
 
-```azurepowershell-interactive
+```powershell
 # Ensure that the runbook does not inherit an AzContext
 Disable-AzContextAutosave -Scope Process
 
-# Connect to Azure with Run As account
-$ServicePrincipalConnection = Get-AzAutomationConnection -Name 'AzureRunAsConnection'
+# Connect to Azure with user-assigned managed identity
+Connect-AzAccount -Identity
+$identity = Get-AzUserAssignedIdentity -ResourceGroupName <ResourceGroupName> -Name <UserAssignedManagedIdentity>
+Connect-AzAccount -Identity -AccountId $identity.ClientId
 
-Connect-AzAccount `
-    -ServicePrincipal `
-    -Tenant $ServicePrincipalConnection.TenantId `
-    -ApplicationId $ServicePrincipalConnection.ApplicationId `
-    -CertificateThumbprint $ServicePrincipalConnection.CertificateThumbprint
-
-$AzureContext = Set-AzContext -SubscriptionId $ServicePrincipalConnection.SubscriptionID
+$AzureContext = Set-AzContext -SubscriptionId ($identity.id -split "/")[2]
 
 $params = @{"VMName"="MyVM";"RepeatCount"=2;"Restart"=$true}
 

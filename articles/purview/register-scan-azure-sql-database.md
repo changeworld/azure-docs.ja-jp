@@ -1,18 +1,18 @@
 ---
 title: Azure SQL Database の登録とスキャン
-description: このチュートリアルでは、Azure SQL Database をスキャンする方法について説明します
+description: このチュートリアルでは、Azure Purview で Azure SQL Database をスキャンする方法について説明します。
 author: hophanms
 ms.author: hophan
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: tutorial
-ms.date: 06/08/2021
-ms.openlocfilehash: 83fd36ca1f352371e4d0717968512d791443d590
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.date: 09/27/2021
+ms.openlocfilehash: a84de6dcdf3abebad1267382fa990fcc1cb0b3a4
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122515537"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129209765"
 ---
 # <a name="register-and-scan-an-azure-sql-database"></a>Azure SQL Database の登録とスキャン
 
@@ -35,7 +35,6 @@ Azure SQL Database データ ソースでは、以下の機能がサポートさ
 1. Purview アカウントをまだお持ちでない場合は、新たに作成します。
 
 1. Purview アカウントと Azure SQL Database の間のネットワーク アクセス。
-
 
 ### <a name="set-up-authentication-for-a-scan"></a>スキャンの認証の設定
 
@@ -101,7 +100,7 @@ Purview でサービス プリンシパルまたは Purview の **マネージ�
 
     > [!Note]
     > `Username` は、独自のサービス プリンシパルか、Purview のマネージド ID です。 [固定データベース ロールとその機能](/sql/relational-databases/security/authentication-access/database-level-roles#fixed-database-roles)を確認してください。
-    
+
 ##### <a name="add-service-principal-to-key-vault-and-purviews-credential"></a>キー コンテナーおよび Purview の資格情報にサービス プリンシパルを追加する
 
 > [!Note]

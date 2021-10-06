@@ -10,12 +10,13 @@ ms.date: 06/30/2021
 ms.topic: conceptual
 ms.custom: references_regions
 ms.service: azure-communication-services
-ms.openlocfilehash: fef4972271046f7435140fd2d9ba3d18c7c3b11c
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.subservice: calling
+ms.openlocfilehash: a6e5f1ecb5686145718d83febf3faf5c520db6fe
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123254756"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128609519"
 ---
 # <a name="calling-recording-overview"></a>通話録音の概要
 
@@ -55,7 +56,7 @@ ms.locfileid: "123254756"
 Event Grid の通知 `Microsoft.Communication.RecordingFileStatusUpdated` は、録音を取得する準備ができたときに発行されます。通常は、録音プロセスが完了 (たとえば、会議が終了して録音が停止) してから 1、2 分後になります。 録音のイベント通知には `contentLocation` と `metadataLocation` が含まれます。これらは、録音されたメディアと録音メタデータ ファイルの両方を取得するために使用できます。
 
 ### <a name="notification-schema-reference"></a>通知スキーマ リファレンス
-```
+```typescript
 {
     "id": string, // Unique guid for event
     "topic": string, // Azure Communication Services resource id
@@ -89,6 +90,6 @@ Event Grid の通知 `Microsoft.Communication.RecordingFileStatusUpdated` は、
 個人データの管理に関する規制では、ユーザー データをエクスポートできることが求められます。 これらの要件をサポートするために、録音メタデータ ファイルでは、`participants` 配列に各通話参加者の participantId が格納されています。 `participants` 配列内の MRI を内部ユーザー ID と相互参照して、通話の参加者を識別することができます。 録音メタデータ ファイルの例は、参照用に以下に示します。
 
 ## <a name="next-steps"></a>次のステップ
-詳細については、[通話録音機能のクイックスタート サンプル](../../quickstarts/voice-video-calling/call-recording-sample.md) ページを参照してください。
+詳細については、[通話録音機能のクイックスタート](../../quickstarts/voice-video-calling/call-recording-sample.md)を参照してください。
 
 [Call Automation API](./call-automation-apis.md) について学習してください。

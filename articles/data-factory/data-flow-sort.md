@@ -1,7 +1,7 @@
 ---
 title: マッピング データ フローでの並べ替え変換
+description: Azure Data Factory と Synapse Analytics のパイプライン内でのマッピング データの並べ替え変換について説明します。
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Azure Data Factory の Mapping Data の並べ替え変換
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
@@ -9,17 +9,19 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 04/14/2020
-ms.openlocfilehash: 88253393820892f20544f5cbf6a83b21e24e8ec8
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/09/2021
+ms.openlocfilehash: 8781836be58403dfef130f55fa698b281360e641
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638644"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129059889"
 ---
 # <a name="sort-transformation-in-mapping-data-flow"></a>マッピング データ フローでの並べ替え変換
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+[!INCLUDE[data-flow-preamble](includes/data-flow-preamble.md)]
 
 並べ替え変換を使用すると、現在のデータ ストリームで受信した行を並べ替えることができます。 個々の列を選択し、昇順または降順に並べ替えることができます。
 
@@ -28,7 +30,7 @@ ms.locfileid: "122638644"
 
 ## <a name="configuration"></a>構成
 
-![並べ替えの設定](media/data-flow/sort.png "並べ替え")
+:::image type="content" source="media/data-flow/sort.png" alt-text="並べ替えの設定":::
 
 **大文字と小文字の区別をしない:** 文字列やテキスト フィールドを並べ替えるときに大文字と小文字を区別するかどうか
 
@@ -55,7 +57,7 @@ ms.locfileid: "122638644"
 
 ### <a name="example"></a>例
 
-![並べ替えの設定](media/data-flow/sort.png "並べ替え")
+:::image type="content" source="media/data-flow/sort.png" alt-text="並べ替えの設定":::
 
 次のコード スニペットには、上記の並べ替え構成に対するデータ フロー スクリプトが含まれています。
 

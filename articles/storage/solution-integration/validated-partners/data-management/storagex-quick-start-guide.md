@@ -8,12 +8,12 @@ ms.date: 06/15/2021
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: partner
-ms.openlocfilehash: 8613d641f305f93598ac070c5eaaeee5fed81b8d
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 4b3f85c06c8dccd5873556c8c1ebfe1f0087b11e
+ms.sourcegitcommit: f3f2ec7793ebeee19bd9ffc3004725fb33eb4b3f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114290234"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129407610"
 ---
 # <a name="migrate-data-to-azure-with-data-dynamics-storagex"></a>Data Dynamics StorageX を使用して Azure にデータを移行する
 
@@ -124,7 +124,7 @@ NFS アクセスには、StorageX サーバーの IP に対するエクスポー
 すべての SMB 移行では、リソースを追加する前に、Active Directory が適切に設定されている必要があります。 移行先では、既存の Azure NetApp Files の実装に新しいボリュームを使用する予定です。 新しい Azure NetApp Files ボリュームを作成する前に、次を行う必要があります。
 
 - [Azure NetApp Files アカウントを作成する](../../../../azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes.md?tabs=azure-portal#create-a-netapp-account)
-- [容量プールの作成](../../../../azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes.md?tabs=azure-portal#set-up-a-capacity-pool)
+- [容量プールの作成](../../../../azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes.md?tabs=azure-portal#create-a-capacity-pool)
 - [Active Directory ドメインに Azure NetApp Files アカウントを参加させる](../../../../azure-netapp-files/create-active-directory-connections.md)
 
 Azure NetApp Files の構成が完了したら、移行に使用する共有を作成します。 

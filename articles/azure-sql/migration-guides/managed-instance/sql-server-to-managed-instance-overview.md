@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: cawrites
 ms.date: 09/07/2021
-ms.openlocfilehash: 8c44d6e92f2943f3c565e80d42d9d0c474fddd4f
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 62f895fdea75ff97154910c177cda04413663d68
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123542253"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129352051"
 ---
 # <a name="migration-overview-sql-server-to-azure-sql-managed-instance"></a>移行の概要: SQL Server から Azure SQL Managed Instance
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -171,7 +171,7 @@ SQL ログインは、オフライン モードで Database Migration Service �
 
 サービスを再起動すると、Windows ユーザーまたはグループのログインが、移行可能なログインの一覧に表示されます。 移行する Windows ユーザーまたはグループのログインについて、関連付けられているドメイン名を指定するように求められます。 サービス ユーザー アカウント (ドメイン名 NT AUTHORITY を含むアカウント) と仮想ユーザー アカウント (ドメイン名 NT SERVICE を含むアカウント) はサポートされていません。 詳細については、[T-SQL を使用して SQL Server インスタンスの Windows ユーザーとグループを Azure SQL Managed Instance に移行する方法](../../managed-instance/migrate-sql-server-users-to-instance-transact-sql-tsql-tutorial.md)に関する記事を参照してください。
 
-または、Microsoft データ移行アーキテクトが特別に設計した [PowerShell ユーティリティ](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/MoveLogins)を使用できます。 このユーティリティでは、ログインを再作成し、ソースからターゲットへのデータベース ユーザーを選択するために、PowerShell を使用して T-SQL スクリプトが作成されます。 
+または、Microsoft データ移行アーキテクトが特別に設計した [PowerShell ユーティリティ](https://www.microsoft.com/download/details.aspx?id=103111)を使用できます。 このユーティリティでは、ログインを再作成し、ソースからターゲットへのデータベース ユーザーを選択するために、PowerShell を使用して T-SQL スクリプトが作成されます。 
 
 PowerShell ユーティリティでは、Windows Server Active Directory アカウントが Azure AD アカウントに自動的にマップされ、ソースの Active Directory インスタンスに対してログインごとに UPN 参照を実行できます。 このユーティリティでは、ロール メンバーシップおよびユーザー アクセス許可と共に、カスタム サーバーとデータベース ロールのスクリプトが作成されます。 包含データベースはまだサポートされていません。使用可能な SQL Server アクセス許可のサブセットのみがスクリプト化されます。 
 

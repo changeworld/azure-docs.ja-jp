@@ -1,5 +1,5 @@
 ---
-title: Azure Cache for Redis のサーバー負荷を使用して監視するためのベスト プラクティス
+title: サーバー負荷の使用と監視に関するベスト プラクティス
 titleSuffix: Azure Cache for Redis
 description: Azure Cache for Redis のサーバー負荷を使用して監視する方法について説明します。
 author: shpathak-msft
@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/25/2021
 ms.author: shpathak
-ms.openlocfilehash: ceeff68f65ace76f4fe9060edeb775085508c969
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 51a0a5ede1c9d978fcc7eea98c7519c70bd9126e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123113427"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128626135"
 ---
 # <a name="manage-server-load-for-azure-cache-for-redis"></a>Azure Cache for Redis のサーバー負荷を管理する
 
@@ -34,7 +34,7 @@ ms.locfileid: "123113427"
 
 ## <a name="memory-pressure"></a>メモリ不足
 
-サーバーのメモリ使用率が高いと、システムでデータをディスクにページングする必要が生じ、システムの処理速度が大幅に低下するおそれがあります。
+サーバーのメモリ使用率が高いと、システムでデータをディスクにページングする必要が生じ、ページ フォールトによってシステムの処理速度が大幅に低下するおそれがあります。
 
 ## <a name="avoid-long-running-commands"></a>実行時間の長いコマンドを回避する
 
@@ -47,6 +47,10 @@ Redis サーバーはシングル スレッド システムです。 実行時�
 ## <a name="plan-for-server-maintenance"></a>サーバー メンテナンスを計画する
 
 キャッシュ サーバーのメンテナンス中は、ピーク時の負荷を処理するのに十分なサーバー容量があることを確認します。 ピーク時の負荷の下でノードを再起動して、システムをテストします。 パッチのデプロイをシミュレートする方法の詳細については、「[再起動](cache-administration.md#reboot)」を参照してください。
+
+## <a name="test-for-increased-server-load-after-failover"></a>フェールオーバー後のサーバー負荷の増加をテストする
+
+Standard と Premium の SKU では、各キャッシュは 2 つのノードでホストされます。 ロード バランサーによってクライアント接続はそれらの 2 つのノードに分散されます。 計画または計画外のメンテナンスがプライマリ ノードで行われると、そのノードですべてのクライアント接続が終了されます。 このような状況では、すべてのクライアント接続が 1 つのノードに対して行われ、残っている 1 つのノードでサーバー負荷が増加する場合があります。 このシナリオをテストするため、プライマリ ノードを再起動し、1 つのノードでもサーバー負荷が高くなりすぎることなく、すべてのクライアント接続を処理できることを確認するようお勧めします。
 
 ## <a name="next-steps"></a>次のステップ
 

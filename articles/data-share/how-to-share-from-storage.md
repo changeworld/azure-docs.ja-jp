@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: how-to
-ms.date: 04/20/2021
-ms.openlocfilehash: 59c1ca67c9e93b62890512cda647ffcdf7712f9a
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.date: 09/10/2021
+ms.openlocfilehash: 61189ba63c072f2c08acc55047d494b076288953
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107819270"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124743251"
 ---
 # <a name="share-and-receive-data-from-azure-blob-storage-and-azure-data-lake-storage"></a>Azure Blob Storage と Azure Data Lake Storage からデータを共有および受信する
 
@@ -143,6 +143,8 @@ Azure リソース グループに Azure Data Share リソースを作成しま�
 1. 招待をメールから開くには、受信トレイでデータ プロバイダーからの招待を確認します。 招待は Microsoft Azure からで、件名は " *\<yourdataprovider\@domain.com>* からの Azure Data Share の招待" になっています。 **[招待を表示]** を選択して、Azure で招待を確認します。 
 
    Azure portal から招待を開くには、 *[データ共有への招待]* を検索します。 データ共有の招待の一覧が表示されます。
+
+   テナントのゲスト ユーザーの場合、Data Share の招待を初めて表示する前に、テナントの自分のメール アドレスを確認するよう求められます。 検証が完了すると、12 か月間有効になります。
 
    ![Azure portal の招待状の一覧を示すスクリーンショット。](./media/invitations.png "招待の一覧。") 
 

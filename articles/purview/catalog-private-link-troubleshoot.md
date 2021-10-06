@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 09/27/2021
-ms.openlocfilehash: 073b4bf8c1be14aa26141e20d5f6d6f4abdf9ff1
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: c077eb0c1639089fcc7196693a617e32c01d9a9a
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 09/29/2021
-ms.locfileid: "129208796"
+ms.locfileid: "129230458"
 ---
 # <a name="troubleshooting-private-endpoint-configuration-for-purview-accounts"></a>Purview アカウントのプライベート エンドポイント構成のトラブルシューティング
 
@@ -164,7 +164,7 @@ ms.locfileid: "129208796"
   `message: Unable to setup config overrides for this scan. Exception:'Type=Microsoft.WindowsAzure.Storage.StorageException,Message=The remote server returned an error: (404) Not Found.,Source=Microsoft.WindowsAzure.Storage,StackTrace= at Microsoft.WindowsAzure.Storage.Core.Executor.Executor.EndExecuteAsync[T](IAsyncResult result)`
 
 ### <a name="cause"></a>原因 
-これは、以前のバージョンのセルフホステッド統合ランタイムが実行されていることを示している場合があります。 2021 年 8 月 18 日以降に Azure Purview アカウントを作成した場合は、セルフホステッド統合ランタイムのバージョン 5.9.7885.3 を使用する必要があります。
+これは、以前のバージョンのセルフホステッド統合ランタイムが実行されていることを示している場合があります。 2021 年 8 月 18 日より後に Azure Purview アカウントを作成した場合は、セルフホステッド統合ランタイムのバージョン 5.9.7885.3 を使用する必要があります。
 
 ### <a name="resolution"></a>解像度 
 セルフホステッド統合ランタイムを 5.9.7885.3 にアップグレードします。

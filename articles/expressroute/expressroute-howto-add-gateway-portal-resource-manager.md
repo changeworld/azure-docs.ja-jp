@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/03/2021
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 0ab04c21cb904baf7ede72fd69f6d6b8375b07cc
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 872f6efb6cc8df8ed63fec23af3807a18dde6201
+ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114289881"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128708486"
 ---
 # <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>チュートリアル:Azure Portal を使用して ExpressRoute の仮想ネットワーク ゲートウェイを構成する
 > [!div class="op_single_selector"]
@@ -87,9 +87,10 @@ ms.locfileid: "114289881"
     | 仮想ネットワーク | *[TestVNET]* を選択します。 |
     | パブリック IP アドレス | **[新規作成]** を選択します。|
     | パブリック IP アドレス名 | パブリック IP アドレスの名前を指定します。 |
+    | パブリック IP アドレスの SKU | パブリック IP アドレスの SKU を指定します。 デュアルスタック ゲートウェイの場合は [標準] を選択します。 |
 
     > [!IMPORTANT]
-    > ExpressRoute で IPv6 ベースのプライベート ピアリングを使用する予定の場合は、標準の静的な種類のパブリック IP アドレスを使用してゲートウェイを作成する方法について [PowerShell のドキュメント](./expressroute-howto-add-gateway-resource-manager.md)を参照してください。
+    > ExpressRoute で IPv6 ベースのプライベート ピアリングを使用する予定の場合は、必ず [標準]、[静的] タイプのパブリック IP アドレスを使用してゲートウェイを作成してください。
     > 
     > 
 

@@ -7,12 +7,15 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/01/2021
 keywords: java, jakartaee, javaee, microprofile, open-liberty, websphere-liberty, aks, kubernetes
-ms.openlocfilehash: dc84317ce923731e7eb46e24ed98db4fdd594bd3
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.custom:
+- devx-track-java
+- devx-track-javaee
+ms.openlocfilehash: fd36c92764f8acd9526fdd04f7ef60e4219839f3
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128658053"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129350769"
 ---
 # <a name="deploy-a-java-application-with-open-liberty-or-websphere-liberty-on-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes Service (AKS) クラスターに、Open Liberty または WebSphere Liberty を使用する Java アプリケーションをデプロイする
 

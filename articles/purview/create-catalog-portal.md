@@ -1,34 +1,29 @@
 ---
-title: 'クイックスタート: Azure portal で Azure Purview アカウントを作成する'
+title: 'クイックスタート: Azure portal で Purview アカウントを作成する'
 description: このクイックスタートでは、Azure Purview アカウントを作成し、アクセス許可を構成して、その使用を開始する方法について説明します。
 author: nayenama
 ms.author: nayenama
-ms.date: 08/18/2021
+ms.date: 09/27/2021
 ms.topic: quickstart
 ms.service: purview
-ms.subservice: purview-data-catalog
 ms.custom:
 - mode-portal
-ms.openlocfilehash: 4f0ef5010a0862b1fa5514d83f6570eefa2c4e10
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: c1a8b47df487cb3159ee1ac7492cf5eb04c1dec6
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123102535"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129217431"
 ---
 # <a name="quickstart-create-an-azure-purview-account-in-the-azure-portal"></a>クイックスタート: Azure portal で Azure Purview アカウントを作成する
 
-Azure Purview は、データ環境の管理に役立つ統合データ ガバナンス ツールです。 このクイックスタートでは、Azure portal で Azure Purview アカウントを作成し、Purview でデータを分類、保護、検出するプロセスを開始する手順について説明します。
+このクイックスタートでは、Azure portal で Azure Purview アカウントを作成し、Purview でデータを分類、保護、検出するプロセスを開始する手順について説明します。
 
-## <a name="prerequisites"></a>前提条件
+Azure Purview は、データ環境の管理と制御に役立つデータ ガバナンス サービスです。 Purview では、オンプレミス、マルチクラウド、サービスとしてのソフトウェア (SaaS) のソース全体のデータに接続することで、情報の最新のマップが作成されます。 これにより、機密データが識別されて分類され、エンドツーエンドの系列が提供されます。 データ コンシューマーは組織全体のデータを検出でき、データ管理者はデータを監査し、セキュリティで保護し、データの適切な使用を確保することができます。
 
-* アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+Purview の詳細については、[概要ページを参照してください](overview.md)。 組織全体に Purview をデプロイする方法の詳細については、[デプロイのベスト プラクティスを参照してください](deployment-best-practices.md)。
 
-* Azure へのサインインに使用するユーザー アカウントは、Azure サブスクリプションの共同作成者、所有者、または管理者である必要があります。
-
-* 独自の [Azure Active Directory テナント](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)。
-
-* **ストレージ アカウント** または **イベント ハブの名前空間** の作成を防止する [Azure ポリシー](../governance/policy/overview.md)がないこと。 マネージド ストレージ アカウントおよびイベント ハブが作成されると、Purview によりそれらがデプロイされます。 ブロック ポリシーが存在し、維持する必要がある場合は、[Purview 例外タグ ガイド](create-purview-portal-faq.md)に従って環境を準備してください。
+[!INCLUDE [purview-quickstart-prerequisites](includes/purview-quickstart-prerequisites.md)]
 
 ## <a name="create-an-azure-purview-account"></a>Azure Purview アカウントを作成する
 

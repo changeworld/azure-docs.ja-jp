@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 08/11/2021
 ms.topic: how-to
 ms.custom: devx-track-python
-ms.openlocfilehash: 1588dedad6778993bc2db6307103e614a8f772ef
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3b722cecc932370af8bcde7e374263a25d40c347
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121739109"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129094673"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>Azure Machine Learning でソフトウェア環境を作成して使用する
 
@@ -91,6 +91,7 @@ env = Environment.get(workspace=ws, name="AzureML-sklearn-0.24-ubuntu18.04-py37-
 curated_clone = env.clone("customize_curated")
 ```
 
+
 ### <a name="use-conda-dependencies-or-pip-requirements-files"></a>Conda の依存関係または PIP 要件ファイルを使用する
 
 環境は、Conda の仕様または pip 要件ファイルから作成することができます。 [`from_conda_specification()`](/python/api/azureml-core/azureml.core.environment.environment#from-conda-specification-name--file-path-) メソッド、または [`from_pip_requirements()`](/python/api/azureml-core/azureml.core.environment.environment#from-pip-requirements-name--file-path-) メソッドを使用します。 メソッドの引数に、ご利用の環境の名前と、必要なファイルのファイル パスを含めます。 
@@ -107,14 +108,7 @@ myenv = Environment.from_pip_requirements(name = "myenv",
 
 ### <a name="enable-docker"></a>Docker を有効にする
 
-Docker を有効にすると、Azure Machine Learning によって Docker イメージがビルドされ、指定に従って、そのコンテナー内に Python 環境が作成されます。 Docker イメージはキャッシュされて再利用されます。通常、新しい環境での最初の実行時には、イメージがビルドされるため時間がかかります。
-
-Azure Machine Learning `Environment` クラスの [`DockerSection`](/python/api/azureml-core/azureml.core.environment.dockersection) では、トレーニングを実行するゲスト オペレーティング システムを細かくカスタマイズおよび制御できます。 `arguments` 変数を使用すると、Docker の実行コマンドに渡す追加の引数を指定できます。
-
-```python
-# Creates the environment inside a Docker container.
-myenv.docker.enabled = True
-```
+Azure Machine Learning によって Docker イメージをビルドし、指定に従って、そのコンテナー内に Python 環境が作成されます。 Docker イメージはキャッシュされて再利用されます。通常、新しい環境での最初の実行時には、イメージがビルドされるため時間がかかります。 ローカル実行の場合は、[RunConfiguration](/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py#variables) 内で Docker を指定します。 
 
 既定では、新しくビルドされた Docker イメージは、ワークスペースに関連付けられているコンテナー レジストリに表示されます。  リポジトリ名の形式は *azureml/azureml_\<uuid\>* です。 名前の一意識別子 (*uuid*) の部分は、環境構成から計算されたハッシュに対応します。 この対応により、サービスでは、特定の環境のイメージが既に存在していて再利用できるかどうかを判断できます。
 
@@ -262,12 +256,6 @@ conda_dep.add_pip_package("pillow")
 
 # Adds dependencies to PythonSection of myenv
 myenv.python.conda_dependencies=conda_dep
-```
-
-自分の環境に環境変数を追加することもできます。 そうすると、これらは、トレーニング スクリプトで os.environ.get を使用して利用できるようになります。
-
-```python
-myenv.environment_variables = {"MESSAGE":"Hello from Azure Machine Learning"}
 ```
 
 >[!IMPORTANT]

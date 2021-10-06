@@ -1,17 +1,17 @@
 ---
 title: Azure Cache for Redis の高可用性
 description: Azure Cache for Redis の高可用性の機能とオプションについて学習する
-author: yegu-ms
+author: curib
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.author: yegu
-ms.openlocfilehash: 8796dd088df0ff297cd7ac99271bfe410fdb506b
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.author: cauribeg
+ms.openlocfilehash: 2fb0440ed6946f9595f1c78c5528fdb3c627de0b
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128620846"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129538541"
 ---
 # <a name="high-availability-for-azure-cache-for-redis"></a>Azure Cache for Redis の高可用性
 

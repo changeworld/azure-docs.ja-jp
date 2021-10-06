@@ -13,12 +13,12 @@ ms.date: 06/09/2021
 ms.author: jmprieur
 ms.reviewer: saeeda, shermanouko
 ms.custom: devx-track-csharp, aaddev, has-adal-ref
-ms.openlocfilehash: 39c8f669b8577278a7654db92ae87d55758505ff
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 3c9af18a00d4880c34307525b735f8cef4d2685c
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124787170"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129230838"
 ---
 # <a name="differences-between-adalnet-and-msalnet-apps"></a>ADAL.NET アプリと MSAL.NET アプリの違い
 
@@ -52,7 +52,7 @@ Grant                             | MSAL.NET                                    
 --------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 Interactive                       | [MSAL.NET での対話型のトークンの取得](scenario-desktop-acquire-token-interactive.md)    | [対話型認証](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-interactively---Public-client-application-flows)                                              |
 統合 Windows 認証 | [統合 Windows 認証](scenario-desktop-acquire-token-integrated-windows-authentication.md)         | [Windows での統合認証 (Kerberos)](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AcquireTokenSilentAsync-using-Integrated-authentication-on-Windows-(Kerberos))  |
-ユーザー名/パスワード               | [ユーザー名とパスワードによる認証](scenario-desktop-acquire-token-username-password.md)                      | [ユーザー名とパスワードでのトークンの取得](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-with-username-and-password)                                        |
+ユーザー名/パスワード               | [ユーザー名とパスワード認証](scenario-desktop-acquire-token-username-password.md)                      | [ユーザー名とパスワードでのトークンの取得](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-with-username-and-password)                                        |
 デバイス コード フロー                  | [デバイス コード フロー](scenario-desktop-acquire-token-device-code-flow.md)                    | [Web ブラウザーを使用しないデバイスのデバイス プロファイル](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Device-profile-for-devices-without-web-browsers)                                |
 
 ### <a name="confidential-client-applications"></a>機密クライアント アプリケーション

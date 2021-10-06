@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: MaraSteiu
 ms.author: masteiu
 ms.reviewer: mathoma
-ms.date: 08/20/2019
-ms.openlocfilehash: f0ec1d641fc78e4fde612f987ad319d62bd9eeaf
-ms.sourcegitcommit: fd83264abadd9c737ab4fe85abdbc5a216467d8b
+ms.date: 09/09/2021
+ms.openlocfilehash: de90958966fed08b33cf7236384c082e332719fd
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112914231"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129059494"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Azure の SQL データ同期とは
 
@@ -61,7 +61,7 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 | シナリオ | 推奨されるソリューション例 |
 |----------|----------------------------|
 | ディザスター リカバリー | [Azure 地理冗長のバックアップ](automated-backups-overview.md) |
-| 読み取りスケール | [読み取り専用レプリカを使用して読み取り専用クエリ ワークロードを負荷分散する (プレビュー)](read-scale-out.md) |
+| 読み取りスケール | [読み取り専用レプリカを使用して読み取り専用クエリ ワークロードを負荷分散する](read-scale-out.md) |
 | ETL (OLTP から OLAP へ) | [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) または [SQL Server Integration Services](/sql/integration-services/sql-server-integration-services) |
 | SQL Server から Azure SQL Database への移行。 ただし、移行の完了後に SQL データ同期を使用して、ソースとターゲットの同期を確実に維持することができます。  | [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) |
 |||
@@ -81,8 +81,8 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 | **長所** | - アクティブ/アクティブのサポート<br/>- オンプレミスと Azure SQL Database 間で双方向 | - 待ち時間の短縮<br/>- トランザクションの整合性<br/>- 移行後に既存のトポロジの再利用 <br/>\- Azure SQL Managed Instance のサポート |
 | **短所** | - トランザクションの整合性なし<br/>- パフォーマンスへの影響が大きい | - Azure SQL Database からは発行できない <br/>- 高いメンテナンス コスト |
 
-## <a name="private-link-for-data-sync-preview"></a>データ同期用のプライベート リンク (プレビュー)
-新しいプライベート リンク (プレビュー) 機能を使用すると、サービス マネージド プライベート エンドポイントを選択して、データの同期処理中に同期サービスとメンバー/ハブ データベースの間にセキュリティで保護された接続を確立できます。 サービス マネージド プライベート エンドポイントは、特定の仮想ネットワークおよびサブネット内のプライベート IP アドレスです。 データ同期では、サービス マネージド プライベート エンドポイントが Microsoft によって作成され、特定の同期操作でデータ同期サービスによって排他的に使用されます。 プライベート リンクを設定する前に、この機能の[一般的な要件](sql-data-sync-data-sql-server-sql-database.md#general-requirements)を確認してください。 
+## <a name="private-link-for-data-sync"></a>データ同期用のプライベート リンク
+新しいプライベート リンク機能を使用すると、サービス マネージド プライベート エンドポイントを選択して、データの同期処理中に同期サービスとメンバー/ハブ データベースの間にセキュリティで保護された接続を確立できます。 サービス マネージド プライベート エンドポイントは、特定の仮想ネットワークおよびサブネット内のプライベート IP アドレスです。 データ同期では、サービス マネージド プライベート エンドポイントが Microsoft によって作成され、特定の同期操作でデータ同期サービスによって排他的に使用されます。 プライベート リンクを設定する前に、この機能の[一般的な要件](sql-data-sync-data-sql-server-sql-database.md#general-requirements)を確認してください。 
 
 ![データ同期用のプライベート リンク](./media/sql-data-sync-data-sql-server-sql-database/sync-private-link-overview.png)
 
@@ -154,7 +154,6 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 - テーブルの切り捨ては、データ同期でサポートされている操作ではありません (変更は追跡されません)。
 - ハイパースケール データベースはサポートされていません。 
 - メモリ最適化テーブルはサポートされません。
-- ハブとメンバー データベースが仮想ネットワーク内にある場合、データ同期は機能しません。これは、ハブとメンバー間の同期を実行する責任がある同期アプリで、お客様のプライベート リンク内のハブまたはメンバー データベースへのアクセスがサポートされていないためです。 この制限は、お客様もデータ同期のプライベート リンク機能を使用している場合にも適用されます。 
 
 #### <a name="unsupported-data-types"></a>サポートされていないデータ型
 
@@ -188,7 +187,7 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 ### <a name="network-requirements"></a>ネットワークの要件
 
 > [!NOTE]
-> プライベート リンクを使用する場合、これらのネットワーク要件は適用されません。 
+> 同期プライベート リンクを使用する場合、これらのネットワーク要件は適用されません。 
 
 同期グループが確立されるときに、データ同期サービスはハブ データベースに接続する必要があります。 同期グループを確立する時点で、Azure SQL サーバーの `Firewalls and virtual networks` 設定は次のように構成されている必要があります。
 
@@ -224,10 +223,10 @@ SQL データ同期はすべてのリージョンでご利用いただけます�
 
 ### <a name="can-i-use-data-sync-to-sync-between-databases-in-sql-database-that-belong-to-different-subscriptions"></a>データ同期を使用して、異なるサブスクリプションに属している SQL Database のデータベース間で同期できますか?
 
-はい。 異なるサブスクリプションが所有するリソース グループに属しているデータベース間で同期できます。
+はい。 サブスクリプションが異なるテナントに属している場合でも、異なるサブスクリプションによって所有されているリソース グループに属するデータベース間で同期できます。
 
 - サブスクリプションが同じテナントに属していて、すべてのサブスクリプションへのアクセス許可がある場合、Azure Portal 上で同期グループを構成できます。
-- それ以外の場合、PowerShell を使用して、異なるサブスクリプションに属している同期メンバーを追加する必要があります。
+- それ以外の場合、PowerShell を使用して、同期メンバーを追加する必要があります。
 
 ### <a name="can-i-use-data-sync-to-sync-between-databases-in-sql-database-that-belong-to-different-clouds-like-azure-public-cloud-and-azure-china-21vianet"></a>データ同期を使用して、異なるクラウド (Azure パブリック クラウドと Azure China 21Vianet など) に属している SQL Database のデータベース間で同期できますか?
 

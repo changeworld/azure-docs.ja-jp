@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 06/22/2021
 ms.author: bagol
-ms.openlocfilehash: 2f7425d987e878d843271b7222d00f4e326d6478
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: dd9f0c69b610b54ae6f07661ba15d9f0cf22b3ea
+ms.sourcegitcommit: f3f2ec7793ebeee19bd9ffc3004725fb33eb4b3f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122515696"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129407211"
 ---
 # <a name="azure-sentinel-process-event-normalization-schema-reference-public-preview"></a>Azure Sentinel プロセス イベント正規化スキーマ リファレンス (パブリック プレビュー)
 
@@ -108,6 +108,7 @@ KQL 関数を `imProcess<Type>` と `imProcess` のソースに依存しない�
 | ------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
 | <a name="timegenerated"></a>**TimeGenerated** | DATETIME | イベントがレポート デバイスによって生成された時刻。|
 | **_ResourceId**   | guid     | レポート デバイスまたはサービスの Azure リソース ID。Syslog、CEF、WEF を使用して転送されたイベントの場合はログ フォワーダー リソース ID。 |
+| **Type** | String | レコードがフェッチされた元のテーブル。 このフィールドは、同じイベントを複数のチャネルを通じて異なるテーブルで受信できるときに、同じ EventVendor 値と EventProduct 値を設定する場合に役に立ちます。<br><br>たとえば、Sysmon イベントを、イベント テーブルにも WindowsEvent テーブルにも収集できます。 |
 | | | |
 
 > [!NOTE]
@@ -174,9 +175,9 @@ KQL 関数を `imProcess<Type>` と `imProcess` のソースに依存しない�
 | **ActingProcessFileVersion**       | オプション     | String     |               実行プロセス イメージ ファイルのバージョン情報からの製品バージョン。 <br><br>例: `7.9.5.0`   |
 | **ActingProcessFileInternalName**  | オプション     | String     |      実行プロセス イメージ ファイルのバージョン情報からの製品内部ファイル名。 |
 | **ActingProcessFileOriginalName** | オプション     | String     |実行プロセス イメージ ファイルのバージョン情報からの製品の元のファイル名。       <br><br> 例: `Notepad++.exe` |
-| **ActingProcessIsHidden**          | オプション     | Boolean    |      実行プロセスが非表示モードかどうかを示します。  |
+| **ActingProcessIsHidden**          | オプション     | ブール型    |      実行プロセスが非表示モードかどうかを示します。  |
 | **ActingProcessInjectedAddress**   | オプション     | String     |      責任ある実行プロセスが格納されているメモリ アドレス。           |
-| **ActingProcessId**| Mandatory    | INT        | 実行プロセスのプロセス ID (PID)。<br><br>例: `48610176`           <br><br>**注**: さまざまなシステムに対応するために、型は "*文字列*" として定義されますが、Windows と Linux ではこの値は数値である必要があります。 <br><br>Windows または Linux のマシンを使用しており、かつ別の型を使用した場合は、必ず値を変換してください。 たとえば、16 進数の値を使用した場合は、10 進数の値に変換します。    |
+| **ActingProcessId**| Mandatory    | String        | 実行プロセスのプロセス ID (PID)。<br><br>例: `48610176`           <br><br>**注**: さまざまなシステムに対応するために、型は "*文字列*" として定義されますが、Windows と Linux ではこの値は数値である必要があります。 <br><br>Windows または Linux のマシンを使用しており、かつ別の型を使用した場合は、必ず値を変換してください。 たとえば、16 進数の値を使用した場合は、10 進数の値に変換します。    |
 | **ActingProcessGuid**              | 省略可能     | string     |  実行プロセスの生成された一意識別子 (GUID)。 システム間でプロセスを識別できます。  <br><br> 例: `EF3BD0BD-2B74-60C5-AF5C-010000001E00`            |
 | **ActingProcessIntegrityLevel**    | オプション     | String     |       すべてのプロセスには、トークンで表される整合性レベルがあります。 整合性レベルは、保護またはアクセスのプロセス レベルを決定します。 <br><br> Windows では、整合性レベルとして **low**、**medium**、**high**、**system** を定義します。 標準ユーザーには **medium** の整合性レベルが指定され、管理者特権ユーザーには **high** の整合性が指定されます。 <br><br> 詳細については、[必須の整合性コントロール - Win32 アプリ](/windows/win32/secauthz/mandatory-integrity-control)に関するページを参照してください。 |
 | **ActingProcessMD5**               | オプション     | String     |実行プロセス イメージ ファイルの MD5 ハッシュ。  <br><br>例: `75a599802f1fa166cdadb360960b1dd0`|
@@ -186,24 +187,24 @@ KQL 関数を `imProcess<Type>` と `imProcess` のソースに依存しない�
 | **ActingProcessIMPHASH**           | オプション     | String     |       実行プロセスで使用されるすべてのライブラリ DLL のインポート ハッシュ。    |
 | **ActingProcessCreationTime**      | オプション     | DateTime   |       実行プロセスが開始された日時。 |
 | **ActingProcessTokenElevation**    | オプション     | String     | 実行プロセスに適用されたユーザー アクセス制御 (UAC) 特権の昇格の有無を示すトークン。   <br><br>例: `None`|
-| **ActingProcessFileSize**          | Optional     | Long       |      処理プロセスを実行したファイルのサイズ。   |
+| **ActingProcessFileSize**          | 省略可能     | Long       |      処理プロセスを実行したファイルのサイズ。   |
 | **ParentProcessName**              | 省略可能     | string     | 親プロセスの名前。 この名前は通常、プロセスの仮想アドレス空間にマップされる初期コードとデータを定義するために使用される、イメージまたは実行可能ファイルから派生します。<br><br>例: `C:\Windows\explorer.exe` |
 | **ParentProcessFileCompany**       | オプション     | String     |親プロセス イメージ ファイルを作成した会社の名前。            <br><br>    例: `Microsoft`   |
 | **ParentProcessFileDescription**   | オプション     | String     |  親プロセス イメージ ファイルのバージョン情報からの説明。    <br><br>例: `Notepad++ : a free (GPL) source code editor`|
 | **ParentProcessFileProduct**       | オプション     | String     |親プロセス イメージ ファイルのバージョン情報からの製品名。    <br><br>  例: `Notepad++`  |
 | **ParentProcessFileVersion**       | オプション     | String     | 親プロセス イメージ ファイルのバージョン情報からの製品バージョン。    <br><br> 例: `7.9.5.0` |
-| **ParentProcessIsHidden**          | オプション     | Boolean    |   親プロセスが非表示モードかどうかを示します。  |
+| **ParentProcessIsHidden**          | オプション     | ブール型    |   親プロセスが非表示モードかどうかを示します。  |
 | **ParentProcessInjectedAddress**   | オプション     | String     |    責任ある親プロセスが格納されているメモリ アドレス。           |
-| **ParentProcessId**| Mandatory    | 整数 (integer)    | 親プロセスのプロセス ID (PID)。   <br><br>     例: `48610176`    |
+| **ParentProcessId**| Mandatory    | String    | 親プロセスのプロセス ID (PID)。   <br><br>     例: `48610176`    |
 | **ParentProcessGuid**              | オプション     | String     |  親プロセスの生成された一意識別子 (GUID)。  システム間でプロセスを識別できます。    <br><br> 例: `EF3BD0BD-2B74-60C5-AF5C-010000001E00` |
 | **ParentProcessIntegrityLevel**    | オプション     | String     |   すべてのプロセスには、トークンで表される整合性レベルがあります。 整合性レベルは、保護またはアクセスのプロセス レベルを決定します。 <br><br> Windows では、整合性レベルとして **low**、**medium**、**high**、**system** を定義します。 標準ユーザーには **medium** の整合性レベルが指定され、管理者特権ユーザーには **high** の整合性が指定されます。 <br><br> 詳細については、[必須の整合性コントロール - Win32 アプリ](/windows/win32/secauthz/mandatory-integrity-control)に関するページを参照してください。 |
 | **ParentProcessMD5**               | オプション     | MD5        | 親プロセス イメージ ファイルの MD5 ハッシュ。  <br><br>例: `75a599802f1fa166cdadb360960b1dd0`|
 | **ParentProcessSHA1**              | オプション     | SHA1       | 親プロセス イメージ ファイルの SHA-1 ハッシュ。       <br><br> 例: `d55c5a4df19b46db8c54c801c4665d3338acdab0`   |
 | **ParentProcessSHA256**            | Optional     | SHA256     |親プロセス イメージ ファイルの SHA-256 ハッシュ。      <br><br>  例: <br> `e81bb824c4a09a811af17deae22f22dd`<br>`2e1ec8cbb00b22629d2899f7c68da274` |
-| **ParentProcessSHA512**            | Optional     | SHA512     |    親プロセス イメージ ファイルの SHA-512 ハッシュ。       |
+| **ParentProcessSHA512**            | 省略可能     | SHA512     |    親プロセス イメージ ファイルの SHA-512 ハッシュ。       |
 | **ParentProcessIMPHASH**           | オプション     | String     |    親プロセスで使用されるすべてのライブラリ DLL のインポート ハッシュ。    |
 | **ParentProcessTokenElevation**    | オプション     | String     |親プロセスに適用されたユーザー アクセス制御 (UAC) 特権の昇格の有無を示すトークン。     <br><br>  例: `None` |
-| **ParentProcessCreationTime**      | Optional    | DateTime   |    親プロセスが開始された日時。 |
+| **ParentProcessCreationTime**      | 省略可能    | DateTime   |    親プロセスが開始された日時。 |
 | <a name="targetusername"></a>**TargetUsername** | プロセス作成イベントの場合は必須です。 | String     | ターゲット ユーザーのユーザー名。  <br><br>例: `CONTOSO\WIN-GG82ULGC9GO$`      |
 | **TargetUsernameType**             | プロセス作成イベントの場合は必須です。   | Enumerated | [TargetUsername](#targetusername) フィールドに格納されているユーザー名の種類を指定します。 詳細については、「[ユーザー エンティティ](normalization-about-schemas.md#the-user-entity)」を参照してください。          <br><br>  例: `Windows`        |
 |<a name="targetuserid"></a> **TargetUserId**   | 推奨 | String     | ターゲット ユーザーの一意の ID。 具体的な ID は、イベントが生成されるシステムによって異なります。 詳細については、「[ユーザー エンティティ](normalization-about-schemas.md#the-user-entity)」を参照してください。            <br><br> 例: `S-1-5-18`    |
@@ -217,7 +218,7 @@ KQL 関数を `imProcess<Type>` と `imProcess` のソースに依存しない�
 | **TargetProcessFileVersion**       | オプション     | String     |ターゲット プロセス イメージ ファイルのバージョン情報の製品バージョン。   <br><br>  例: `7.9.5.0` |
 | **TargetProcessFileInternalName**  |    オプション          | String  |   ターゲット プロセスのイメージ ファイルのバージョン情報の製品内部ファイル名。 |
 | **TargetProcessFileOriginalName** |       オプション       | String   |   ターゲット プロセスのイメージ ファイルのバージョン情報からの製品の元のファイル名。 |
-| **TargetProcessIsHidden**          | オプション     | Boolean    |   ターゲット プロセスが非表示モードかどうかを示します。  |
+| **TargetProcessIsHidden**          | オプション     | ブール型    |   ターゲット プロセスが非表示モードかどうかを示します。  |
 | **TargetProcessInjectedAddress**   | オプション     | String     |    責任あるターゲット プロセスが格納されているメモリ アドレス。           |
 | **TargetProcessMD5**               | オプション     | MD5        | ターゲット プロセス イメージ ファイルの MD5 ハッシュ。   <br><br> 例: `75a599802f1fa166cdadb360960b1dd0`|
 | **TargetProcessSHA1**              | オプション     | SHA1       | ターゲット プロセス イメージ ファイルの SHA-1 ハッシュ。       <br><br>  例: `d55c5a4df19b46db8c54c801c4665d3338acdab0`   |

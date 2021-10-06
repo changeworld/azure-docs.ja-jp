@@ -1,7 +1,7 @@
 ---
 title: マッピング データ フローのフラット化変換
 titleSuffix: Azure Data Factory & Azure Synapse
-description: フラット化変換を使用して階層データを非正規化します
+description: Azure Data Factory および Synapse Analytics パイプラインのフラット化変換を使用して階層データを非正規化します。
 author: kromerm
 ms.author: makromer
 ms.review: daperlov
@@ -9,17 +9,19 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 03/09/2020
-ms.openlocfilehash: e632260e8af6e4bac9fac9ec43f25bf636b98b4d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/09/2021
+ms.openlocfilehash: 17bac4e1efc514440943cb474f2f86a7148d2ef4
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638356"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129060140"
 ---
 # <a name="flatten-transformation-in-mapping-data-flow"></a>マッピング データ フローのフラット化変換
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+[!INCLUDE[data-flow-preamble](includes/data-flow-preamble.md)]
 
 フラット化変換を使用して、JSON などの階層構造内の配列値を取得し、それらを個々の行にアンロールします。 このプロセスは非正規化と呼ばれるものです。
 
@@ -27,7 +29,7 @@ ms.locfileid: "122638356"
 
 フラット化変換には、次の構成設定が含まれます
 
-![フラット化の設定](media/data-flow/flatten1.png "フラット化の設定")
+:::image type="content" source="media/data-flow/flatten1.png" alt-text="フラット化の設定":::
 
 ### <a name="unroll-by"></a>アンロール
 
@@ -47,7 +49,7 @@ ms.locfileid: "122638356"
 
 フラット化変換では、ルールベースのマッピングがサポートされており、ルールに基づいて配列をフラット化し、階層レベルに基づいて構造体をフラット化する、動的で柔軟な変換を作成できます。
 
-![パターンのフラット化](media/data-flow/flatten-pattern.png "フラット化のパターン")
+:::image type="content" source="media/data-flow/flatten-pattern.png" alt-text="パターンのフラット化":::
 
 ### <a name="matching-condition"></a>Matching condition (一致条件)
 
@@ -55,7 +57,7 @@ ms.locfileid: "122638356"
 
 ### <a name="deep-column-traversal"></a>Deep column traversal (ディープ列トラバーサル)
 
-複合オブジェクト全体を列として処理するのではなく、複合オブジェクトのすべてのサブ列を個別に処理するよう ADF に指示するオプションの設定。
+複合オブジェクト全体を列として処理するのではなく、複合オブジェクトのすべてのサブ列を個別に処理するようサービスに指示するオプションの設定。
 
 ### <a name="hierarchy-level"></a>階層レベル
 

@@ -1,14 +1,14 @@
 ---
-title: Azure DevTest Labs でのイメージの保存と配布 | Microsoft Docs
+title: イメージの保存と配布
 description: この記事では、Azure DevTest Labs で、作成済みの仮想マシン (VM) からカスタム イメージを保存する手順について説明します。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: a5278626f8cdd4299912f3c952786422436fe916
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d89a792e66d227eaeb20e48c80d432aa0cf56871
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85476242"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128623572"
 ---
 # <a name="save-custom-images-and-distribute-to-multiple-labs"></a>カスタム イメージを保存して複数のラボに配布する
 この記事では、作成済みの仮想マシン (VM) からカスタム イメージを保存する手順について説明します。 また、これらのカスタム イメージを組織内の他の DevTest Labs に配布する方法についても説明します。

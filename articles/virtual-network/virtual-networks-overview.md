@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/03/2020
 ms.author: kumud
-ms.openlocfilehash: 927ff80a544ef8fbff348aeb8781f8a55c84e109
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 57d719f5ea56123c4b237e48f07f1e82fd885b3b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106061895"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128624806"
 ---
 # <a name="what-is-azure-virtual-network"></a>Azure Virtual Network とは
 
@@ -74,6 +74,9 @@ Azure 仮想ネットワークに Azure サービスを統合すると、仮想�
 ## <a name="azure-vnet-limits"></a>Azure VNet の制限
 
 デプロイできる Azure リソースの数について特定の制限があります。 Azure のネットワークの制限のほとんどは、最大値です。 ただし、[VNet の制限に関するページ](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)に記載されているように、[特定のネットワークの上限を引き上げる](../azure-portal/supportability/networking-quota-requests.md)ことができます。 
+
+## <a name="virtual-networks-and-availability-zones"></a>仮想ネットワークと可用性ゾーン
+仮想ネットワークとサブネットは、リージョン内のすべての可用性ゾーンにまたがっています。 ゾーン リソースに対応するために、可用性ゾーンでそれらを分割する必要はありません。 たとえば、ゾーン VM を構成する場合、VM の可用性ゾーンを選択するときに仮想ネットワークを考慮する必要はありません。 他のゾーン リソースについても同様です。
 
 ## <a name="pricing"></a>価格
 

@@ -11,12 +11,12 @@ ms.author: sgilley
 ms.date: 06/10/2021
 adobe-target: true
 ms.custom: FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: a5bc3ebfb58a41761b4a41439b6482592c58a7b0
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: c20c5f96820ae4cbf8aa361b29483fac260ec5ae
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123037313"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124824173"
 ---
 # <a name="quickstart-create-workspace-resources-you-need-to-get-started-with-azure-machine-learning"></a>クイックスタート: Azure Machine Learning の利用を開始するために必要なワークスペース リソースを作成する
 

@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 01/02/2021
 ms.custom: MVC
-ms.openlocfilehash: a3ff769b8f879246a47228f03f5a1b9a5b5fb84d
-ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+ms.openlocfilehash: 6c392d1af427c7a9837519ea8443efc5773aa6db
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123272477"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129154814"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>マシンを物理サーバーとして Azure に移行する
 
@@ -340,7 +340,7 @@ Azure Migrate: Server Migration では、レプリケーション アプライ�
 
 ## <a name="complete-the-migration"></a>移行を完了する
 
-1. 移行が完了したら、VM を右クリックして、 **[移行を停止する]** を選択します。 次の処理が実行されます。
+1. 移行が完了したら、VM を右クリックして、 **[レプリケーションの停止]** を選択します。 次の処理が実行されます。
     - オンプレミス マシンのレプリケーションを停止します。
     - Azure Migrate: Server Migration の **[サーバーをレプリケートしています]** のカウントからマシンを削除します。Server Migration に関するエラーのトラブルシューティングに役立つ情報を提供しています。
     - マシンのレプリケーション状態情報をクリーンアップします。

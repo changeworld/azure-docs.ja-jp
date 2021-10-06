@@ -9,17 +9,18 @@ ms.author: tchladek
 ms.date: 06/30/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 8718573de0742e69bee723f34ff94fcb20656be4
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.subservice: identity
+ms.openlocfilehash: 5fb6632fa31143c26d3cad84d42d1417aaf97496
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123251136"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129081341"
 ---
 # <a name="quickstart-set-up-and-manage-teams-access-tokens"></a>クイックスタート: Teams アクセス トークンを設定して管理する
 
 > [!IMPORTANT]
-> カスタム Teams エンドポイント エクスペリエンスを有効または無効にするには、[このフォームを完成させて送信してください](https://forms.office.com/r/B8p5KqCH19)。
+> この機能はプレビューでのみご利用いただけます。 カスタム Teams エンドポイント エクスペリエンスを有効または無効にするには、[このフォームを完成させて送信してください](https://forms.office.com/r/B8p5KqCH19)。
 
 このクイックスタートでは、Microsoft Authentication Library (MSAL) を使用して、Azure Active Directory (Azure AD) ユーザー トークンを取得することにより、Microsoft 365 ユーザーを認証する .NET コンソール アプリケーションを構築します。 次に、Azure Communication Services Identity SDK を使用して、そのトークンを Teams アクセス トークンと交換します。 その後、Teams アクセス トークンを Communication Services Calling SDK で使用して、カスタム Teams エンドポイントを構築できます。
 
@@ -191,6 +192,9 @@ dotnet build
 dotnet add package Azure.Communication.Identity
 dotnet add package Microsoft.Identity.Client
 ```
+
+> [!NOTE]
+> プライベート プレビューのパッケージは NPM または NuGet.org として公式のパッケージ リポジトリで利用できません。SDK はパッケージ リポジトリの [.net](https://dev.azure.com/azure-sdk/public/_packaging?_a=package&feed=azure-sdk-for-net&package=Azure.Communication.Identity&protocolType=NuGet&version=1.1.0-alpha.20210531.2) と [javascript](https://www.npmjs.com/package/@azure/communication-identity/v/1.1.0-alpha.20210531.1) にあります。
 
 #### <a name="set-up-the-app-framework"></a>アプリのフレームワークを設定する
 

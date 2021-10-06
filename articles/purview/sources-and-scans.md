@@ -4,16 +4,16 @@ description: この記事では、Purview でサポートされているデー�
 author: viseshag
 ms.author: viseshag
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: conceptual
-ms.date: 11/24/2020
+ms.date: 09/27/2021
 ms.custom: references_regions
-ms.openlocfilehash: e5b2c5eaca13b26504c4229ef990abc4adce23c9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 1d484bce594d5894052ffeb4f1ff4a1dbf202d50
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121724187"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129215246"
 ---
 # <a name="supported-data-sources-and-file-types-in-azure-purview"></a>Azure Purview でサポートされているデータ ソースとファイルの種類
 
@@ -35,7 +35,7 @@ Purview では、[こちら](purview-connector-overview.md)に示すすべての
 > すべての Gzip ファイルは、内部の 1 つの csv ファイルにマップする必要があります。 Gzip ファイルは、システムおよびカスタムの分類ルールの対象となります。 現在、内部の複数のファイルにマップされた gzip ファイル、または csv 以外の任意のファイルの種類のスキャンはサポートされていません。 また、Purview スキャナーでは、スキーマの抽出と分類のために、スナップ圧縮された PARQUET 型のスキャンがサポートされています。 
 
 > [!Note]
-> Purview スキャナーでは、ファイルの種類が AVRO、ORC、PARQUET の複雑なデータ型のスキーマ抽出はサポートされていません。   
+> Purview スキャナーでは、ファイルの種類が AVRO、ORC、PARQUET の複雑なデータ型 (MAP、LIST、STRUCT など) のスキーマ抽出はサポートされていません。   
 
 ## <a name="sampling-within-a-file"></a>ファイル内のサンプリング
 
@@ -69,5 +69,5 @@ Purview の用語では、
 
 ## <a name="next-steps"></a>次のステップ
 
-- [チュートリアル: スタート キットの実行とデータのスキャン](tutorial-scan-data.md)
-- [Azure Purview でデータ ソースを管理する (プレビュー)](manage-data-sources.md)
+- [Purview でのスキャンとインジェスト](concept-scans-and-ingestion.md)
+- [Azure Purview でデータ ソースを管理する](manage-data-sources.md)

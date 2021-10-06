@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: integration-services
 ms.topic: conceptual
 ms.date: 1/10/2020
-ms.openlocfilehash: 35094effcef3ff773b708e65f234ee1409a8970a
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: a79229537b76dc62bca48985720f9c911de0c68c
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124798239"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129400669"
 ---
 # <a name="configure-an-azure-sql-server-integration-services-ssis-integration-runtime-ir-to-join-a-virtual-network"></a>仮想ネットワークに参加するように Azure-SQL Server Integration Services (SSIS) 統合ランタイム (IR) を構成する
 
@@ -60,7 +60,7 @@ ms.locfileid: "124798239"
     - Azure ExpressRoute またはユーザー定義ルート (UDR) を使用する。
     - カスタマイズされた Azure-SSIS IR を使用する。
     
-    詳細については、[仮想ネットワークの構成](join-azure-ssis-integration-runtime-virtual-network.md#virtual-network-configuration)に関するページをご覧ください。
+    詳細については、[仮想ネットワークの構成](azure-ssis-integration-runtime-virtual-network-configuration.md)に関するページをご覧ください。
 
 ## <a name="configure-a-virtual-network"></a>仮想ネットワークを構成する
 

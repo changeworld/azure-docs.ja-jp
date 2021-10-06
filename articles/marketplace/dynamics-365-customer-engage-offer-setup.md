@@ -6,15 +6,15 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
-ms.date: 04/30/2021
-ms.openlocfilehash: 1a4bd560603b16a1a2b9fe0a66bc4f1adce25a73
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.date: 09/27/2021
+ms.openlocfilehash: 72505a4e3c9003032c29b55e8cfa2152617bc928
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122867473"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129080106"
 ---
-# <a name="how-to-create-a-dynamics-365-for-customer-engagement--power-apps-offer"></a>Dynamics 365 for Customer Engagement & Power Apps オファーを作成する方法
+# <a name="create-a-dynamics-365-for-customer-engagement--powerapps-offer"></a>Dynamics 365 for Customer Engagement & PowerApps オファーの作成
 
 この記事では、Dynamics 365 for Customer Engagement & Power Apps オファーの作成方法について説明します。 Dynamics 365 のすべてのオファーは、弊社の認定プロセスを通過する必要があります。 試用版エクスペリエンスでは、ユーザーがソリューションをライブの Dynamics 365 環境にデプロイできます。
 
@@ -26,6 +26,24 @@ ms.locfileid: "122867473"
 
 ## <a name="create-a-new-offer"></a>新しいオファーを作成する
 
+[!INCLUDE [Workspaces view note](./includes/preview-interface.md)]
+
+#### <a name="workspaces-view"></a>[ワークスペース ビュー](#tab/workspaces-view)
+
+1. [パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインします。
+1. ホーム ページで、 **[Marketplace のオファー]** タイルを選択します。
+
+    [ ![パートナー センターのホーム ページにある Marketplace オファーのタイルを示す図。](./media/workspaces/partner-center-home.png) ](./media/workspaces/partner-center-home.png#lightbox)
+
+1. [Marketplace オファー] のページで、 **[+ 新しいプラン]**  >  **[Dynamics 365 for Customer Engagement & Power Apps]** を選択します。
+
+    [ ![[新しいオファー] ボタンが表示され、オファーのタイプとして [Customer Engagement & Power Apps] が選択されます。](./media/dynamics-365/new-offer-dynamics-365-customer-engagement-workspaces.png) ](./media/dynamics-365/new-offer-dynamics-365-customer-engagement-workspaces.png#lightbox)
+
+> [!IMPORTANT]
+> オファーが公開された後にパートナー センターで行った編集は、そのオファーを再公開した後にのみ Microsoft AppSource に反映されます。 変更後は必ずオファーを再公開するようにしてください。
+
+#### <a name="current-view"></a>[現在のビュー](#tab/current-view)
+
 1. [パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインします。
 2. 左側のナビゲーション メニューで、 **[コマーシャル マーケットプレース]**  >  **[概要]** の順に選択します。
 3. [概要] ページで、 **[+ 新しいオファー]**  >  **[Dynamics 365 for Customer Engagement & Power Apps]** の順に選択します。
@@ -34,6 +52,8 @@ ms.locfileid: "122867473"
 
 > [!IMPORTANT]
 > オファーが公開された後にパートナー センターで行った編集は、そのオファーを再公開した後にのみ Microsoft AppSource に反映されます。 変更後は必ずオファーを再公開するようにしてください。
+
+---
 
 ## <a name="new-offer"></a>新しいプラン
 

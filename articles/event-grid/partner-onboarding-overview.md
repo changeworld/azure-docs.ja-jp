@@ -2,13 +2,13 @@
 title: パートナーのオンボードの概要 (Azure Event Grid)
 description: Event Grid パートナーとしてオンボードする方法の概要について説明します。
 ms.topic: conceptual
-ms.date: 10/29/2020
-ms.openlocfilehash: 9af80efc1ba342768f9bb6d504f921b52494d955
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.date: 09/28/2021
+ms.openlocfilehash: 0c4c43673a0ae2f8094f176e57c203051fd0bea4
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107890710"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129233145"
 ---
 # <a name="partner-onboarding-overview-azure-event-grid"></a>パートナーのオンボードの概要 (Azure Event Grid)
 

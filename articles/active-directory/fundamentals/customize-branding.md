@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: kexia
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39855746d6cfc52ada19850d6bc9650b3e95a54a
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 11da4de1ec4629971f6c0b3836ed38440942ace1
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123437366"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129231332"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>組織の Azure Active Directory のサインイン ページにブランドを追加する
 組織のロゴとカスタム カラー スキーマを使用して、Azure Active Directory (Azure AD) のサインイン ページの外観に一貫性を持たせます。 サインイン ページは、Azure AD を ID プロバイダーとして使用している組織の Web ベースのアプリ (Microsoft 365 など) にユーザーが サインインするときに表示されます。
@@ -83,7 +83,7 @@ Azure AD のサインイン ページをカスタマイズできます。この�
 
         - **サインイン ページの背景色**。 帯域幅が小さい接続状況で背景画像の代わりに表示される 16 進数の色を指定します (たとえば、白は #FFFFFF)。 バナー ロゴまたは組織のプライマリ カラーを使用することをお勧めします。
 
-        - **正方形のロゴ イメージ**。 新しい Windows 10 Enterprise デバイスのセットアップ プロセス中にユーザーに表示される組織のロゴの .png (推奨) または .jpg 画像を選択します。 この画像は Windows 認証でのみ使用され、デプロイで [Windows Autopilot]( /windows/deployment/windows-autopilot/windows-10-autopilot) を使用しているテナント、または他の Windows 10 エクスペリエンスのパスワード入力ページにのみ表示されます。 場合によっては、同意ダイアログに表示されることもあります。
+        - **正方形のロゴ イメージ**。 新しい Windows 10 Enterprise デバイスのセットアップ プロセス中にユーザーに表示される組織のロゴの .png (推奨) または .jpg 画像を選択します。 この画像は Windows 認証でのみ使用され、デプロイで [Windows Autopilot](/windows/deployment/windows-autopilot/windows-10-autopilot) を使用しているテナント、または他の Windows 10 エクスペリエンスのパスワード入力ページにのみ表示されます。 場合によっては、同意ダイアログに表示されることもあります。
         
             この画像のサイズは 240 x 240 ピクセルを超えることはできず、ファイル サイズは 10 KB 未満である必要があります。 背景とロゴの背景が調和しない可能性があるため、透過画像を使用することをお勧めします。 さらに、画像の周囲にパディングを追加しないことをお勧めします。これを行うとロゴが小さくなる可能性があります。
     

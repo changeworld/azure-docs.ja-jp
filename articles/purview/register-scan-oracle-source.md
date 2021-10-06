@@ -4,15 +4,15 @@ description: この記事では、Azure Purview に Oracle ソースを登録し
 author: chandrakavya
 ms.author: kchandra
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: overview
-ms.date: 2/25/2021
-ms.openlocfilehash: a9234a2bcce6a754a96d1f323af9f08a9697ff03
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/27/2021
+ms.openlocfilehash: 1a8956971e48529c75f07db54c196867a6c5955e
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121725230"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129216948"
 ---
 # <a name="register-and-scan-oracle-source"></a>Oracle ソースの登録とスキャン
 
@@ -104,7 +104,7 @@ Oracle ソースでサポートされている認証は **基本認証** のみ�
 
 新しいスキャンを作成して実行するには、次の操作を行います。
 
-1.  管理センターで、 [統合ランタイム] をクリックします。 セルフホステッド統合ランタイムが設定されていることを確認してください。 設定されていない場合は、[こちら](./manage-integration-runtimes.md)に記載されている手順を使用して、セルフホステッド統合ランタイムを作成します。
+1.  管理センターで、[統合ランタイム] を選択します。 セルフホステッド統合ランタイムが設定されていることを確認してください。 設定されていない場合は、[こちら](./manage-integration-runtimes.md)に記載されている手順を使用して、セルフホステッド統合ランタイムを作成します。
 
 2.  **[ソース]** に移動します。
 
@@ -143,11 +143,11 @@ Oracle ソースでサポートされている認証は **基本認証** のみ�
 
     :::image type="content" source="media/register-scan-oracle-source/scan.png" alt-text="oracle をスキャンする" border="true":::
 
-8.  **[続行]** をクリックします。
+8.  **[続行]** を選択します。
 
 9.  **スキャン トリガー** を選択します。 スケジュールを設定することも、1 回限りのスキャンを実行することもできます。
 
-10.  スキャンを確認し、 **[保存および実行]** をクリックします。
+10.  自分のスキャンを確認し、 **[保存および実行]** を選択します。
 
 ## <a name="viewing-your-scans-and-scan-runs"></a>スキャンとスキャンの実行を確認する
 

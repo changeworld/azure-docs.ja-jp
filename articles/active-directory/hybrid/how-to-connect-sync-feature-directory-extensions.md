@@ -16,12 +16,12 @@ ms.date: 08/09/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2415ad3109863a9cd80df413723b317e880a7063
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3ab5eba7cebe03ff59cfa442c454da855788ebad
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121751618"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124768612"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect 同期: ディレクトリ拡張機能
 ディレクトリ拡張機能を使用すると、オンプレミスの Active Directory から独自の属性を使用して、Azure Active Directory (Azure AD) のスキーマを拡張できます。 この機能により、オンプレミスで引き続き管理する属性を使用して LOB アプリを構築できます。 これらの属性は、[拡張機能](/graph/extensibility-overview
@@ -47,9 +47,8 @@ ms.locfileid: "121751618"
 * 単一値の属性: 文字列、ブール値、整数、バイナリ
 * 複数値の属性: 文字列、バイナリ
 
-
->[!NOTE]
-> Azure AD Connect によって Active Directory の複数値属性が複数値属性拡張機能として Azure AD に同期された後、属性を SAML 要求に含めることができます。 しかし、API 呼び出しを通じてこのデータを使用することはできません。
+> [!NOTE]
+> Azure Active Directory のすべての機能で複数値の拡張属性がサポートされているわけではありません。 これらの属性の使用を予定している機能のドキュメントを参照して、これらがサポートされていることを確認してください。
 
 属性の一覧は、Azure AD Connect のインストール中に作成されたスキーマ キャッシュから読み取られます。 その他の属性で Active Directory スキーマを拡張した場合、このような新しい属性が表示されるようにするには、[スキーマを更新する](how-to-connect-installation-wizard.md#refresh-directory-schema)必要があります。
 

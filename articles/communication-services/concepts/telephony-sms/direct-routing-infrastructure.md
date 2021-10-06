@@ -8,12 +8,13 @@ ms.author: bobazile
 ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: a840aa9ac67ff751ef6889c5375c5b79880e79b9
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.subservice: pstn
+ms.openlocfilehash: b03779f9c56d2ebcc4d070165cdf29a54e78d269
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123251213"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129060955"
 ---
 # <a name="azure-direct-routing-infrastructure-requirements"></a>Azure 直接ルーティングのインフラストラクチャ要件 
 
@@ -155,16 +156,13 @@ SBC は DNS クエリを実行して、sip.pstnhub.microsoft.com を解決しま
 
 ## <a name="media-traffic-media-processors-geography"></a>メディア トラフィック: メディア プロセッサの地理的位置
 
-メディア トラフィックは、メディア プロセッサと呼ばれるコンポーネントを経由します。 メディア プロセッサは、SIP プロキシと同じデータセンターに配置されます。 また、メディア フローを最適化するためのメディア プロセッサもあります。 たとえば、SIP プロキシ コンポーネントは現在オーストラリアに存在しません (SIP はシンガポールや香港特別行政区を経由します) が、メディア プロセッサはオーストラリア国内に存在します。 国内にメディア プロセッサが必要かどうかは、長距離トラフィック (オーストラリアからシンガポール、オーストラリアから香港特別行政区など) を送信する際にユーザーが体感する待ち時間によって決まります。 オーストラリアから香港特別行政区またはオーストラリアからシンガポールに流れるトラフィックの例で言えば、良好な通話品質を維持するうえで、SIP トラフィックの待ち時間は許容されますが、リアルタイム メディア トラフィックの待ち時間は許容されません。
-
-SIP プロキシとメディア プロセッサの両方のコンポーネントがデプロイされている場所は次のとおりです。
+メディア トラフィックは、メディア プロセッサと呼ばれるコンポーネントを経由します。 メディア プロセッサは、SIP プロキシと同じデータセンターに配置されます。
 - 米国 (米国西部と米国東部データセンターの 2 つ)
 - ヨーロッパ (アムステルダムとダブリンのデータセンター)
 - アジア (シンガポールと香港特別行政区のデータセンター)
 - オーストラリア (オーストラリア東部と南東部のデータセンター)
-
-メディア プロセッサのみがデプロイされている場所は次のとおりです (SIP は、上記のうち最も近いデータセンターを経由します)。
 - 日本 (東日本と西日本のデータセンター)
+
 
 
 ## <a name="media-traffic-codecs"></a>メディア トラフィック: コーデック

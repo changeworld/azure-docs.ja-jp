@@ -2,13 +2,13 @@
 title: チュートリアル:Azure Event Grid を使用して、アップロードされたイメージのサイズ変更を自動化する
 description: チュートリアル:Azure Event Grid は、Azure Storage での BLOB アップロードをトリガーできます。 これを使って、Azure Storage にアップロードされたイメージ ファイルを、サイズ変更や他の改善のために Azure Functions などの他のサービスに送信することができます。
 ms.topic: tutorial
-ms.date: 07/07/2020
-ms.openlocfilehash: 46e0f9a0b6d98c91f2de203061597c9172f502aa
-ms.sourcegitcommit: 149815030568fb4d4dd2e2025a18dc64fc190d07
+ms.date: 09/28/2021
+ms.openlocfilehash: 74e7905bbf548b0864a9b871eba964a5759a91a6
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129062104"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129234131"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>チュートリアル:Event Grid を使用して、アップロードされたイメージのサイズ変更を自動化する
 

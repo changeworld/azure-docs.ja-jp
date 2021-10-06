@@ -5,15 +5,15 @@ author: mgoedtel
 ms.author: magoedte
 ms.service: azure-arc
 ms.topic: quickstart
-ms.date: 06/30/2021
+ms.date: 09/09/2021
 ms.custom: template-quickstart
 keywords: Kubernetes, Arc, Azure, クラスター
-ms.openlocfilehash: 16e271cf6183dce74fad3075a2e8336030960a08
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: bcc4d9183bf60e37c1d024462d7ab924df1f671e
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122966641"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129210772"
 ---
 # <a name="quickstart-connect-an-existing-kubernetes-cluster-to-azure-arc"></a>クイックスタート: 既存の Kubernetes クラスターを Azure Arc に接続する
 
@@ -49,10 +49,9 @@ ms.locfileid: "122966641"
 * `kubeconfig` ファイルと、クラスターを指すコンテキスト。
 * Azure Arc 対応 Kubernetes リソースの種類 (`Microsoft.Kubernetes/connectedClusters`) に対する "読み取り" および "書き込み" アクセス許可。
 
-* [Helm 3 の最新リリース](https://helm.sh/docs/intro/install)をインストールします。
+* [Helm 3](https://helm.sh/docs/intro/install) をインストールします。 Helm 3 のバージョンが &lt; 3.7.0 であることを確認します。
 
 ### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
-
 
 * [Azure PowerShell バージョン 5.9.0 以降](/powershell/azure/install-az-ps)
 
@@ -81,7 +80,7 @@ ms.locfileid: "122966641"
 * `kubeconfig` ファイルと、クラスターを指すコンテキスト。
 * Azure Arc 対応 Kubernetes リソースの種類 (`Microsoft.Kubernetes/connectedClusters`) に対する "読み取り" および "書き込み" アクセス許可。
 
-* [Helm 3 の最新リリース](https://helm.sh/docs/intro/install)をインストールします。
+* [Helm 3](https://helm.sh/docs/intro/install) をインストールします。 Helm 3 のバージョンが &lt; 3.7.0 であることを確認します。
 
 ---
 
@@ -96,9 +95,9 @@ ms.locfileid: "122966641"
 | `https://management.azure.com` (Azure Cloud の場合)、`https://management.usgovcloudapi.net` (Azure US Government の場合) | エージェントが Azure に接続し、クラスターを登録するために必要です。 |
 | `https://<region>.dp.kubernetesconfiguration.azure.com` (Azure Cloud の場合)、`https://<region>.dp.kubernetesconfiguration.azure.us` (Azure US Government の場合) | エージェントが状態をプッシュして構成情報をフェッチするためのデータ プレーン エンドポイント。 |
 | `https://login.microsoftonline.com`、`login.windows.net` (Azure Cloud の場合)、`https://login.microsoftonline.us` (Azure US Government の場合) | Azure Resource Manager トークンをフェッチし、更新するために必要です。 |
-| `https://mcr.microsoft.com` | Azure Arc エージェント用のコンテナー イメージをプルするために必要です。                                                                  |
+| `https://mcr.microsoft.com`, `https://*.data.mcr.microsoft.com` | Azure Arc エージェント用のコンテナー イメージをプルするために必要です。                                                                  |
 | `https://gbl.his.arc.azure.com` |  システム割り当て管理サービス ID (MSI) 証明書をプルするためリージョン エンドポイントを取得するために必要です。 |
-| `https://*.his.arc.azure.com` (Azure Cloud の場合)、`https://usgv.his.arc.azure.us` (Azure US Government の場合) |  システムによって割り当てられたマネージド サービス ID (MSI) 証明書をプルするために必要です。 |
+| `https://*.his.arc.azure.com` (Azure Cloud の場合)、`https://usgv.his.arc.azure.us` および `https://gbl.his.arc.azure.us` (Azure US Government の場合) |  システム割り当てマネージド ID 証明書をプルするために必須。 |
 |`*.servicebus.windows.net`, `guestnotificationservice.azure.com`, `*.guestnotificationservice.azure.com`, `sts.windows.net` | [クラスター接続](cluster-connect.md)ベース シナリオの場合と、[カスタムの場所](custom-locations.md)ベースのシナリオの場合。 |
 
 ## <a name="1-register-providers-for-azure-arc-enabled-kubernetes"></a>1. Azure Arc 対応 Kubernetes 用のプロバイダーを登録する
@@ -247,21 +246,11 @@ eastus   AzureArcTest1 microsoft.kubernetes/connectedclusters
 
 1. 送信プロキシ サーバーを使用するには、Azure CLI に必要な環境変数を設定します。
 
-    * bash を使用している場合、適切な値で次のコマンドを実行します。
-
-        ```bash
-        export HTTP_PROXY=<proxy-server-ip-address>:<port>
-        export HTTPS_PROXY=<proxy-server-ip-address>:<port>
-        export NO_PROXY=<cluster-apiserver-ip-address>:<port>
-        ```
-
-    * PowerShell を使用している場合、適切な値で次のコマンドを実行します。
-
-        ```powershell
-        $Env:HTTP_PROXY = "<proxy-server-ip-address>:<port>"
-        $Env:HTTPS_PROXY = "<proxy-server-ip-address>:<port>"
-        $Env:NO_PROXY = "<cluster-apiserver-ip-address>:<port>"
-        ```
+    ```bash
+    export HTTP_PROXY=<proxy-server-ip-address>:<port>
+    export HTTPS_PROXY=<proxy-server-ip-address>:<port>
+    export NO_PROXY=<cluster-apiserver-ip-address>:<port>
+    ```
 
 2. プロキシ パラメーターを指定して connect コマンドを実行します。
 
@@ -270,8 +259,9 @@ eastus   AzureArcTest1 microsoft.kubernetes/connectedclusters
     ```
 
     > [!NOTE]
-    > * 一部のネットワーク要求 (たとえばクラスター内のサービス間通信を含むもの) は、送信方向の通信でプロキシ サーバーを介してルーティングされるトラフィックから切り離す必要があります。 `--proxy-skip-range` パラメーターを使用して、CIDR 範囲とエンドポイントをコンマで区切って指定することで、エージェントからこれらのエンドポイントへの通信が送信プロキシ経由で行われないようにすることができます。 少なくとも、クラスター内のサービスの CIDR 範囲は、このパラメーターの値として指定する必要があります。 たとえば、`kubectl get svc -A` が返すサービスの一覧で、すべてのサービスの ClusterIP 値が `10.0.0.0/16` の範囲であるとします。 この場合、`--proxy-skip-range` で指定する値は '10.0.0.0/16,kubernetes.default.svc' になります。
+    > * 一部のネットワーク要求 (たとえばクラスター内のサービス間通信を含むもの) は、送信方向の通信でプロキシ サーバーを介してルーティングされるトラフィックから切り離す必要があります。 `--proxy-skip-range` パラメーターを使用して、CIDR 範囲とエンドポイントをコンマで区切って指定することで、エージェントからこれらのエンドポイントへの通信が送信プロキシ経由で行われないようにすることができます。 少なくとも、クラスター内のサービスの CIDR 範囲は、このパラメーターの値として指定する必要があります。 たとえば、`kubectl get svc -A` が返すサービスの一覧で、すべてのサービスの ClusterIP 値が `10.0.0.0/16` の範囲であるとします。 その場合、`--proxy-skip-range` に指定する値は `10.0.0.0/16,kubernetes.default.svc,.svc.cluster.local,.svc` です。
     > * `--proxy-http`、`--proxy-https`、および `--proxy-skip-range` は、ほとんどの送信プロキシ環境に必要です。 `--proxy-cert` は、プロキシが求める信頼された証明書を、エージェント ポッドの信頼された証明書ストアに挿入する必要がある場合に "*のみ*" 必要となります。
+    > * 送信プロキシは、websocket 接続を許可するように構成する必要があります。
 
 ### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
@@ -279,13 +269,11 @@ eastus   AzureArcTest1 microsoft.kubernetes/connectedclusters
 
 1. 送信プロキシ サーバーを使用するには、Azure PowerShell に必要な環境変数を設定します。
 
-    * 適切な値で次のコマンドを実行します。
-
-        ```powershell
-        $Env:HTTP_PROXY = "<proxy-server-ip-address>:<port>"
-        $Env:HTTPS_PROXY = "<proxy-server-ip-address>:<port>"
-        $Env:NO_PROXY = "<cluster-apiserver-ip-address>:<port>"
-        ```
+    ```powershell
+    $Env:HTTP_PROXY = "<proxy-server-ip-address>:<port>"
+    $Env:HTTPS_PROXY = "<proxy-server-ip-address>:<port>"
+    $Env:NO_PROXY = "<cluster-apiserver-ip-address>:<port>"
+    ```
 
 2. 指定されたプロキシ パラメーターで connect コマンドを実行します。
 
@@ -328,7 +316,7 @@ eastus   AzureArcTest1 microsoft.kubernetes/connectedclusters
 ---
 
 > [!NOTE]
-> クラスターをオンボードした後、Azure portal の Azure Arc 対応 Kubernetes リソースの概要ページで、クラスターのメタデータ (クラスターのバージョン、エージェントのバージョン、ノードの数など) が画面に表示されるまでに約 5 ～ 10 分かかります。
+> クラスターをオンボードした後、Azure portal の Azure Arc 対応の Kubernetes リソースの概要ページで、クラスターのメタデータ (クラスターのバージョン、エージェントのバージョン、ノードの数など) が画面に表示されるまでに約 5 ～ 10 分かかります。
 
 ## <a name="6-view-azure-arc-agents-for-kubernetes"></a>6. Kubernetes 用 Azure Arc エージェントを表示する
 

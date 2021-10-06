@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.custom: references_regions
-ms.openlocfilehash: 82b40680d5f9aa46514273d8a147971b19cae9c8
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: bc405fa293eec4f991ca5cab51d3d8f2a4c3c816
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123438554"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129233260"
 ---
 # <a name="basic-concepts"></a>基本的な概念
 
@@ -46,7 +46,12 @@ Azure Attestation には、利用可能なリージョンごとにその共有�
 | 北ヨーロッパ | `https://sharedneu.neu.attest.azure.net` | 
 | 西ヨーロッパ| `https://sharedweu.weu.attest.azure.net` | 
 | 米国東部 2 | `https://sharedeus2.eus2.attest.azure.net` | 
-| 米国中部 | `https://sharedcus.cus.attest.azure.net` | 
+| 米国中部 | `https://sharedcus.cus.attest.azure.net` |
+| 東南アジア | `https://sharedsasia.sasia.attest.azure.net` | 
+| 米国中北部 | `https://sharedncus.ncus.attest.azure.net` | 
+| 米国中南部 | `https://sharedscus.scus.attest.azure.net` | 
+| US Gov バージニア州 | `https://sharedugv.ugv.attest.azure.us` | 
+| US Gov アリゾナ | `https://shareduga.uga.attest.azure.us` | 
 
 ## <a name="attestation-request"></a>構成証明要求
 

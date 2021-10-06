@@ -11,12 +11,12 @@ author: MarkusVi
 manager: mtillman
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dad33236812329014851a7397488025a4df558cd
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.openlocfilehash: 267c7ae20f9d424d03897e0ee31b7ad990ed261d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111528790"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124754089"
 ---
 # <a name="quickstart-access-azure-ad-logs-with-the-microsoft-graph-api"></a>クイック スタート: Microsoft Azure AD API を使用して Azure AD ログにアクセスする 
 
@@ -47,7 +47,7 @@ Azure AD のサインイン ログの情報を使用すると、ユーザーの�
 
 このセクションでは、Graph API を使用してサインインに関する情報を取得する手順について説明します。
 
- ![Graph エクスプローラー クエリ](./media/quickstart-access-log-with-graph-api/graph-explorer-query.png)   
+ ![Microsoft Graph Explorer クエリ](./media/quickstart-access-log-with-graph-api/graph-explorer-query.png)   
 
 **失敗したサインインを確認するには:**
 
@@ -55,7 +55,7 @@ Azure AD のサインイン ログの情報を使用すると、ユーザーの�
 
 2. グローバル管理者としてテナントにサインインします。
 
-    ![Microsoft Graph エクスプローラー認証](./media/quickstart-access-log-with-graph-api/graph-explorer-authentication.png)   
+    ![Microsoft Graph Explorer 認証](./media/quickstart-access-log-with-graph-api/graph-explorer-authentication.png)   
 
 3. **HTTP 動詞ドロップダウン リスト** で **[GET]** を選択します。
 
@@ -67,7 +67,7 @@ Azure AD のサインイン ログの情報を使用すると、ユーザーの�
 
 クエリの結果を確認します。
 
- ![Microsoft Graph エクスプローラー応答プレビュー](./media/quickstart-access-log-with-graph-api/response-preview.png)   
+ ![Microsoft Graph Explorer 応答プレビュー](./media/quickstart-access-log-with-graph-api/response-preview.png)   
 
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする

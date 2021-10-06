@@ -8,12 +8,12 @@ ms.subservice: security
 ms.topic: quickstart
 ms.date: 05/08/2020
 ms.reviewer: mariozi
-ms.openlocfilehash: 3580ae78497426f1399981035e861bc51c912144
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 725ebc0dbb8b037dcfcde8d154353fd7cf0a1a59
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122697558"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129208100"
 ---
 # <a name="encrypt-azure-data-factory-with-customer-managed-keys"></a>カスタマー マネージド キーを使用した Azure Data Factory の暗号化
 
@@ -149,7 +149,7 @@ Data Factory の暗号化に使用するキーを変更するには、Data Facto
 
   :::image type="content" source="media/enable-customer-managed-key/07-include-in-template.png" alt-text="ARM テンプレートにカスタマー マネージド キーを含める設定のスクリーンショット。":::
 
-次の設定が ARM テンプレートに追加されます。 これらのプロパティは、[Azure Resource Manager のパラメーターの構成](continuous-integration-deployment.md#use-custom-parameters-with-the-resource-manager-template)を編集することによって、継続的インテグレーションと継続的デリバリー パイプラインでパラメーター化できます
+次の設定が ARM テンプレートに追加されます。 これらのプロパティは、[Azure Resource Manager のパラメーターの構成](continuous-integration-delivery-resource-manager-custom-parameters.md)を編集することによって、継続的インテグレーションと継続的デリバリー パイプラインでパラメーター化できます
 
   :::image type="content" source="media/enable-customer-managed-key/08-template-with-customer-managed-key.png" alt-text="Azure Resource Manager テンプレートにカスタマー マネージド キーを含める設定のスクリーンショット。":::
 

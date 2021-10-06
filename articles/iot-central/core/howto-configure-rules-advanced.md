@@ -7,12 +7,12 @@ ms.date: 08/26/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: b90e96975dadc1f7fb168345aa89b98bb6a22b9c
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 1068bd5f5a97c4eeab702add9c305b38a8084464
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123473588"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129079673"
 ---
 # <a name="use-workflows-to-integrate-your-azure-iot-central-application-with-other-cloud-services"></a>ワークフローを使用して Azure IoT Central アプリケーションを他のクラウド サービスと統合する
 
@@ -22,6 +22,7 @@ Power Automate と Azure Logic Apps 用の Azure IoT Central V3 コネクタを�
 
 - Azure IoT Central アプリでルールが起動された際に、Power Automate または Azure Logic Apps でワークフローがトリガーされるようにすることができます。 これらのワークフローにより、他のクラウド サービス (Microsoft 365 など) や、サードパーティのサービスでアクションを実行できます。
 - 別のクラウド サービス内 (Microsoft 365 など) のイベントにより、Power Automate または Azure Logic Apps でワークフローをトリガーすることができます。 これらのワークフローにより、アクションを実行したり、IoT Central アプリケーションからデータを取得したりできます。
+- Azure IoT Central V3 コネクタは、一般提供されている [1.0 REST API](/rest/api/iotcentral/) サーフェスと適合しています。 すべてのコネクタ アクションは [DTDLv2 形式](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md) をサポートしており、DTDLv1 ベース モデルのサポートは非推奨になります。 最新情報と最新の更新プログラムの詳細については、現在のコネクタ バージョンの [リリース ノート](/connectors/azureiotcentral/#release-notes) を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -36,18 +37,17 @@ Power Automate と Azure Logic Apps 用の Azure IoT Central V3 コネクタを�
 
 Power Automate または Azure Logic Apps でワークフローがトリガーされるようにするには、まず IoT Central アプリケーションでルールを構成する必要があります。 詳細については、「[Azure IoT Central でルールとアクションを構成する](./howto-configure-rules.md)」を参照してください。
 
-Power Automate のトリガーとして **Azure IoT Central V3 - preview** コネクタを追加するには:
+Power Automate のトリガーとして **Azure IoT Central V3** コネクタを追加するには:
 
 1. Power Automate で **[+ 作成]** を選択し、 **[カスタム]** タブを選択します。
-1. *IoT Central* を検索し、**Azure IoT Central V3 - preview** コネクタを選択します。
+1. *IoT Central* を検索し、**Azure IoT Central V3** コネクタを選択します。
 1. トリガーの一覧で、 **[ルールが起動されたとき (プレビュー)]** を選択します。
 1. **[ルールが起動されたとき]** のステップで、IoT Central アプリケーションと、使用するルールを選択します。
 
-Azure Logic Apps のトリガーとして **Azure IoT Central V3 - preview** コネクタを追加するには:
+Azure Logic Apps のトリガーとして **Azure IoT Central V3** コネクタを追加するには:
 
 1. **Logic Apps デザイナー** で、 **[空のロジック アプリ]** テンプレートを選択します。
-1. デザイナーで、 **[カスタム]** タブを選択します。
-1. *IoT Central* を検索し、**Azure IoT Central V3 - preview** コネクタを選択します。
+1. デザイナーで、*IoT Central* を検索し、**Azure IoT Central V3** コネクタを選択します。
 1. トリガーの一覧で、 **[ルールが起動されたとき (プレビュー)]** を選択します。
 1. **[ルールが起動されたとき]** のステップで、IoT Central アプリケーションと、使用するルールを選択します。
 
@@ -57,12 +57,12 @@ Azure Logic Apps のトリガーとして **Azure IoT Central V3 - preview** コ
 
 ## <a name="run-an-action"></a>アクションを実行する
 
-Power Automate と Azure Logic Apps のワークフローから、IoT Central アプリケーションのアクションを実行することができます。 まずは、ワークフローを作成し、コネクタを使用して、ワークフローを開始するためのトリガーを定義します。 その後、**Azure IoT Central V3 - preview** コネクタをアクションとして使用します。
+Power Automate と Azure Logic Apps のワークフローから、IoT Central アプリケーションのアクションを実行することができます。 まずは、ワークフローを作成し、コネクタを使用して、ワークフローを開始するためのトリガーを定義します。 その後、**Azure IoT Central V3** コネクタをアクションとして使用します。
 
-Power Automate のアクションとして **Azure IoT Central V3 - preview** コネクタを追加するには:
+Power Automate のアクションとして **Azure IoT Central V3** コネクタを追加するには:
 
 1. Power Automate の **[アクションを選択してください]** パネルで、 **[カスタム]** タブを選択します。
-1. *IoT Central* を検索し、**Azure IoT Central V3 - preview** コネクタを選択します。
+1. *IoT Central* を検索し、**Azure IoT Central V3** コネクタを選択します。
 1. アクションの一覧で、使用する IoT Central アクションを選択します。
 1. アクション ステップで、選択したアクションの構成を完了します。 次に、 **[保存]** を選択します。
 
@@ -77,7 +77,8 @@ Azure Logic Apps のアクションとして **Azure IoT Central V3 - preview** 
 
 ## <a name="list-of-actions"></a>アクションの一覧
 
-次の一覧は、**Azure IoT Central V3 - preview** コネクタで使用できるすべての IoT Central アクションと、その構成オプションを示したものです。 フィールドの多くでは、コンテンツが動的に生成されることがあります。 たとえば、前の手順によって、現在のステップの対象となるデバイス ID が特定されることもあります。
+コネクタでサポートされているアクションの完全な一覧については、「[アクション](/connectors/azureiotcentral/#actions)」を参照してください。
+
 
 ### <a name="create-or-update-a-device"></a>ドメインを作成または更新する
 

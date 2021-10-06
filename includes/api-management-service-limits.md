@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 08/20/2021
 ms.author: vlvinogr
 ms.custom: include file
-ms.openlocfilehash: d3317bafa2ff03e83bd79e9a3efa0ecfaffd4124
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 43358ec8c79e09d0701a098a2bd992f2cee8b23f
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122752753"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129378369"
 ---
 | リソース | 制限 |
 | ---------------------------------------------------------------------- | -------------------------- |
@@ -49,4 +49,4 @@ ms.locfileid: "122752753"
 <sup>8</sup>この制限は、従量課金レベルにのみ適用されます。 他のレベルについては、これらのカテゴリに制限はありません。<br/>
 <sup>9</sup>従量課金レベルにのみ適用されます。 最大 2,048 バイト長のクエリ文字列を含みます。<br/>
 <sup>10</sup> この制限を増やすには、[サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。<br/>
-<sup>11</sup>セルフホステッド ゲートウェイは、Developer レベルと Premium レベルでのみサポートされています。 この制限は、[セルフホステッド ゲートウェイ リソース](/rest/api/apimanagement/2020-06-01-preview/gateway)の数に適用されます。 この制限を引き上げるには、[サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。 セルフホステッド ゲートウェイ リソースに関連付けられるノード (またはレプリカ) の数は、Premium レベルでは無制限であり、Developer レベルでは単一のノードに制限されることに注意してください。
+<sup>11</sup>セルフホステッド ゲートウェイは、Developer レベルと Premium レベルでのみサポートされています。 この制限は、[セルフホステッド ゲートウェイ リソース](/rest/api/apimanagement/2021-04-01-preview/gateway)の数に適用されます。 この制限を引き上げるには、[サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。 セルフホステッド ゲートウェイ リソースに関連付けられるノード (またはレプリカ) の数は、Premium レベルでは無制限であり、Developer レベルでは単一のノードに制限されることに注意してください。

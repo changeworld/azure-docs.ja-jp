@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/1/2020
 ms.author: mesrivas
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6b6c2cbf04b0e68f86bd11b8295c54b8c65d0360
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 9d898bc4fe0afa268f9aef3ab4282ebb249e61b4
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129352776"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129081455"
 ---
 # <a name="synapse-rbac-roles"></a>Synapse RBAC ロール
 
@@ -93,8 +93,8 @@ workspaces/pipelines/write、delete|Synapse 管理者</br>Synapse 共同作成�
 workspaces/triggers/write、delete|Synapse 管理者</br>Synapse 共同作成者</br>Synapse 成果物発行元
 workspaces/datasets/write、delete|Synapse 管理者</br>Synapse 共同作成者</br>Synapse 成果物発行元
 workspaces/libraries/write、delete|Synapse 管理者</br>Synapse Apache Spark 管理者</br>Synapse 共同作成者</br>Synapse 成果物発行元
-workspaces/linkedServices/write、delete|Synapse 管理者</br>Synapse Apache Spark 管理者</br>Synapse SQL 管理者</br>Synapse 共同作成者</br>Synapse 成果物発行元</br>Synapse のリンクされた Data Manager
-workspaces/credentials/write、delete|Synapse 管理者</br>Synapse Apache Spark 管理者</br>Synapse SQL 管理者</br>Synapse 共同作成者</br>Synapse 成果物発行元</br>Synapse のリンクされた Data Manager
+workspaces/linkedServices/write、delete|Synapse 管理者</br>Synapse 共同作成者</br>Synapse 成果物発行元</br>Synapse のリンクされた Data Manager
+workspaces/credentials/write、delete|Synapse 管理者</br>Synapse 共同作成者</br>Synapse 成果物発行元</br>Synapse のリンクされた Data Manager
 workspaces/notebooks/viewOutputs/action|Synapse 管理者</br>Synapse Apache Spark 管理者</br>Synapse 共同作成者</br>Synapse 成果物発行元</br>Synapse 成果物ユーザー
 workspaces/pipelines/viewOutputs/action|Synapse 管理者</br>Synapse 共同作成者</br>Synapse 成果物発行元</br>Synapse 成果物ユーザー
 workspaces/linkedServices/useSecret/action|Synapse 管理者</br>Synapse 資格情報ユーザー
