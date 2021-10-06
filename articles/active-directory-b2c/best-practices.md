@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 06/06/2020
+ms.date: 10/01/2021
 ms.author: vigunase
 ms.subservice: B2C
-ms.openlocfilehash: 51f4bd3be4334d65504e8e72bc7595989e8b6be7
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 174eeb48855502af6ae0418fae6c6bf443572e9d
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114443877"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129350916"
 ---
 # <a name="recommendations-and-best-practices-for-azure-active-directory-b2c"></a>Azure Active Directory B2C の推奨事項とベスト プラクティス
 

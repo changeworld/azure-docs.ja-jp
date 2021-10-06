@@ -3,12 +3,12 @@ title: クエリ言語を理解する
 description: Resource Graph テーブルと、Azure Resource Graph で使用可能な Kusto データ型、演算子、関数について説明します。
 ms.date: 09/03/2021
 ms.topic: conceptual
-ms.openlocfilehash: 8d537d0816ef4d32d6ce85cf363e08bece28ec84
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: a66bc9167ff3417b6f88442403232490b20733ff
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123536087"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129425698"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Azure Resource Graph クエリ言語の概要
 
@@ -35,7 +35,7 @@ Resource Graph には、Azure Resource Manager のリソースの種類とその
 |DesktopVirtualizationResources |はい |`Microsoft.DesktopVirtualization` に "_関連する_" リソースが含まれています。 |
 |ExtendedLocationResources |No |`Microsoft.ExtendedLocation` に "_関連する_" リソースが含まれています。 |
 |GuestConfigurationResources |No |`Microsoft.GuestConfiguration` に "_関連する_" リソースが含まれています。 |
-|HealthResources|はい |`Microsoft.ResourceHealth/availabilitystatuses` に "_関連する_" リソースが含まれています。 |
+|HealthResources|はい (プレビュー) |`Microsoft.ResourceHealth/availabilitystatuses` に "_関連する_" リソースが含まれています。 |
 |IoTSecurityResources |No |`Microsoft.IoTSecurity` に "_関連する_" リソースが含まれています。 |
 |KubernetesConfigurationResources |No |`Microsoft.KubernetesConfiguration` に "_関連する_" リソースが含まれています。 |
 |MaintenanceResources |一部、join _to_ のみ。 (プレビュー) |`Microsoft.Maintenance` に "_関連する_" リソースが含まれています。 |

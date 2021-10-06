@@ -4,15 +4,15 @@ description: 異常検出のしくみ、通知が送信されるタイミング�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.author: mingshen
-author: mingshen-ms
-ms.date: 06/10/2020
-ms.openlocfilehash: 8c0cba39c2fe299a2cc822309b0063d2d4fe2f71
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+author: saasguide
+ms.author: souchak
+ms.date: 09/27/2021
+ms.openlocfilehash: 8e8989eabc08b98b8b0bac922d7c998496c74a1c
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113431521"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129455154"
 ---
 # <a name="anomaly-detection-service-for-metered-billing"></a>従量制課金に対する異常検出サービス
 
@@ -67,7 +67,26 @@ ms.locfileid: "113431521"
 
 従量制課金の異常に関連するサポート チケットを送信するには、次のようにします。
 
-1. 職場アカウントを使用して[パートナー センター](https://go.microsoft.com/fwlink/?linkid=2165290)にサインインします。
+#### <a name="workspaces-view"></a>[ワークスペース ビュー](#tab/workspaces-view)
+
+1. 職場アカウントを使用して[パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインします。
+1. ホーム ページで、 **[ヘルプとサポート]** タイルを選択します。
+
+    [ ![パートナー センターのホーム ページの [ヘルプとサポート] タイルが表示されます。](../media/workspaces/partner-center-help-support-tile.png) ](../media/workspaces/partner-center-help-support-tile.png#lightbox)
+
+1. **[My support requests]\(サポート リクエスト\)** の下で、 **[+ 新しいサポート リクエスト]** を選択します。
+1. **[問題の概要]** ボックスに、「**従量制課金**」と入力します。
+1. **[問題の種類]** ボックスで、次のいずれかを選択します。
+    - **[コマーシャル マーケットプレース] > [Metered Billing]\(従量制課金\) > [Wrong usage sent for Azure Applications offer]\(送信された Azure アプリケーション プランの使用量が間違っている\)**
+    - **[コマーシャル マーケットプレース] > [Metered Billing]\(従量制課金\) > [Wrong usage sent for SaaS offer]\(送信された SaaS プランの使用量が間違っている\)**
+1. **[次のステップ]** で、 **[ソリューションの確認]** を選択します。
+1. 推奨されるドキュメントがあればそれを確認するか、 **[問題の詳細を指定]** を選択して、サポート チケットを送信します。
+
+発行元サポート オプションについては、「[パートナー センターでのコマーシャル マーケットプレース プログラムのサポート](../support.md)」をご覧ください。
+
+#### <a name="current-view"></a>[現在のビュー](#tab/current-view)
+
+1. 職場アカウントを使用して[パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインします。
 1. ページの右上にあるメニューで **[サポート]** アイコンを選択します。 ページの右側に **[ヘルプとサポート]** ウィンドウが表示されます。
 1. コマーシャル マーケットプレースに関するヘルプの場合は、 **[Commercial Marketplace]\(コマーシャル マーケットプレース\)** を選択します。
    ![サポート ウィンドウを示しています。](../media/support/commercial-marketplace-support-pane.png)
@@ -79,6 +98,8 @@ ms.locfileid: "113431521"
 1. 推奨されるドキュメントがあればそれを確認するか、 **[問題の詳細を指定]** を選択して、サポート チケットを送信します。
 
 発行元サポート オプションについては、「[パートナー センターでのコマーシャル マーケットプレース プログラムのサポート](../support.md)」をご覧ください。
+
+---
 
 ## <a name="next-steps"></a>次のステップ
 

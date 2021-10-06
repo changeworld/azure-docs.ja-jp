@@ -8,15 +8,15 @@ ms.topic: tutorial
 ms.date: 05/20/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ea75273694eb5c13b5cd8c4812aa58508fa9f62
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: c6a9b193983d58bb8e9cc2964e3ae45160056c4c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108130682"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128592852"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>チュートリアル:フェデレーション ドメイン用のハイブリッド Azure Active Directory 参加の構成
 
@@ -192,6 +192,8 @@ Azure AD Connect を使用してハイブリッド Azure AD 参加を構成す�
 2. 「`dsregcmd /status`」と入力します。
 3. **AzureAdJoined** と **DomainJoined** の両方が **YES** に設定されていることを確認します。
 4. **DeviceId** を使用すると、Azure portal または PowerShell のいずれかで、サービスの状態を比較できます。
+
+ダウンレベル デバイスについては、「[ハイブリッド Azure Active Directory 参加済みダウンレベル デバイスのトラブルシューティング](troubleshoot-hybrid-join-windows-legacy.md#step-1-retrieve-the-registration-status)」の記事を参照してください。
 
 ### <a name="using-the-azure-portal"></a>Azure ポータルの使用
 

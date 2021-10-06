@@ -9,12 +9,12 @@ ms.date: 08/26/2021
 author: gahl-levy
 ms.author: gahllevy
 ms.custom: seodec18, devx-track-js
-ms.openlocfilehash: 4e5abd957f65fd62bd3933c9f67288b063a6274f
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 39e2e9c0258be13698d3569dcc6e64d02bff8f42
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123039731"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128554506"
 ---
 # <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>Node.js Mongoose アプリケーションを Azure Cosmos DB に接続する
 [!INCLUDE[appliesto-mongodb-api](../includes/appliesto-mongodb-api.md)]
@@ -54,12 +54,14 @@ Cosmos アカウントを作成しましょう。 使用するアカウントが
 
 1. 選択したフォルダーに Node.js アプリケーションを作成するには、ノードのコマンド プロンプトで次のコマンドを実行します。
 
-    ```npm init```
+   `npm init`
 
-    質問に回答すると、プロジェクトが準備完了になります。
+   質問に回答すると、プロジェクトが準備完了になります。
 
 2. 新しいファイルをフォルダーに追加し、名前を ```index.js``` にします。
+
 3. 次の ```npm install``` オプションのいずれかを使用して、必要なパッケージをインストールします。
+
    * Mongoose: ```npm install mongoose@5 --save```
 
      > [!Note]
@@ -70,7 +72,7 @@ Cosmos アカウントを作成しましょう。 使用するアカウントが
      >[!Note]
      > ```--save``` フラグによって、package.json ファイルに依存関係が追加されます。
 
-4. index.js ファイルに依存関係をインポートします。
+4. `index.js` ファイルに依存関係をインポートします。
 
     ```JavaScript
    var mongoose = require('mongoose');
@@ -327,7 +329,7 @@ Cosmos アカウントを作成しましょう。 使用するアカウントが
 - Azure Cosmos DB の MongoDB 用 API と共に [Robo 3T を使用する](connect-using-robomongo.md)方法を学びます。
 - Azure Cosmos DB の MongoDB 用 API を使用した MongoDB の[サンプル](nodejs-console-app.md)を調査します。
 - Azure Cosmos DB への移行のための容量計画を実行しようとしていますか? 容量計画のために、既存のデータベース クラスターに関する情報を使用できます。
-    - 既存のデータベース クラスター内の仮想コアとサーバーの数のみがわかっている場合は、[仮想コア数または仮想 CPU 数を使用した要求ユニットの見積もり](../convert-vcore-to-request-unit.md)に関するページを参照してください 
-    - 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB Capacity Planner を使用した要求ユニットの見積もり](estimate-ru-capacity-planner.md)に関するページを参照してください
+    - 知っていることが既存のデータベース クラスター内の仮想コアとサーバーの数のみである場合は、[仮想コアまたは仮想 CPU の数を使用した要求ユニットの見積もり](../convert-vcore-to-request-unit.md)に関するページを参照してください 
+    - 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB 容量計画ツールを使用した要求ユニットに見積もり](estimate-ru-capacity-planner.md)に関するページを参照してください
 
 [dbleveltp]: ./media/connect-using-mongoose/db-level-throughput.png

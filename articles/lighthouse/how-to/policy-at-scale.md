@@ -1,15 +1,15 @@
 ---
 title: 委任されたサブスクリプションに Azure Policy を大規模にデプロイする
 description: Azure Lighthouse を使えば、複数のテナントにポリシー定義とポリシー割り当てをデプロイできます。
-ms.date: 05/11/2021
+ms.date: 06/13/2021
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d1a14a7f4db1fe70949f0e1caf41479b159ac86c
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: e45feb45da482aa960516abec8c339d61016c758
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112075531"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128673580"
 ---
 # <a name="deploy-azure-policy-to-delegated-subscriptions-at-scale"></a>委任されたサブスクリプションに Azure Policy を大規模にデプロイする
 
@@ -22,7 +22,7 @@ ms.locfileid: "112075531"
 
 ## <a name="use-azure-resource-graph-to-query-across-customer-tenants"></a>Azure Resource Graph を使用して複数の顧客テナントにわたるクエリを実行する
 
-[Azure Resource Graph](../../governance/resource-graph/index.yml) を使用して、管理対象の顧客テナントに含まれるすべてのサブスクリプションにわたってクエリを実行できます。 この例では、現在 HTTPS トラフィックを必要としていないサブスクリプションに含まれるすべてのストレージ アカウントを特定します。  
+[Azure Resource Graph](../../governance/resource-graph/overview.md) を使用して、管理対象の顧客テナントに含まれるすべてのサブスクリプションにわたってクエリを実行できます。 この例では、現在 HTTPS トラフィックを必要としていないサブスクリプションに含まれるすべてのストレージ アカウントを特定します。  
 
 ```powershell
 $MspTenant = "insert your managing tenantId here"

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 1b4b3e85323e2023afb67b2175377cb9b2d13a4f
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 7f327e0eecbfe51095f3f533dc787cc9aeedfb1e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108177514"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128638313"
 ---
 # <a name="migrate-workloads-using-layer-2-stretched-networks"></a>レイヤー 2 拡張済みネットワークを使用したワークロードの移行
 
@@ -414,7 +414,7 @@ ENCAP       : GENEVE
 
 ## <a name="obtain-the-peer-code-for-l2vpn-on-the-nsx-t-side"></a>NSX-T 側で L2VPN のピア コードを取得する
 
-NSX-T エンドポイントのピア コードを取得します。 ピア コードは、リモート エンドポイントを構成するときに必要です。 L2VPN <session-id> は、前のセクションから取得できます。 詳細については、[NSX-T 2.3 の API ガイド](https://www.vmware.com/support/nsxt/doc/nsxt_23_api.html)を参照してください。
+NSX-T エンドポイントのピア コードを取得します。 ピア コードは、リモート エンドポイントを構成するときに必要です。 L2VPN \<session-id\> は、前のセクションから取得できます。 詳細については、[NSX-T 2.3 の API ガイド](https://www.vmware.com/support/nsxt/doc/nsxt_23_api.html)を参照してください。
 
 ```
 GET https://192.168.110.201/api/v1/vpn/l2vpn/sessions/<session-id>/peer-codes

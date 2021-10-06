@@ -8,12 +8,12 @@ ms.subservice: purview-data-map
 ms.topic: conceptual
 ms.date: 08/18/2021
 ms.custom: template-concept
-ms.openlocfilehash: 80706316490cde805ef19b0f1c90f2870dc195ab
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: 00b6429e14dcb04a76abbc1a8d49a29b220c7c06
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122445791"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128607077"
 ---
 # <a name="elastic-data-map-in-azure-purview"></a>Azure Purview のエラスティック データ マップ
 
@@ -21,7 +21,7 @@ ms.locfileid: "122445791"
 
 ## <a name="elastic-data-map"></a>エラスティック データ マップ
 
-Azure Purview のすべてのアカウントには、1 つの容量ユニットから柔軟に拡張できるデータ マップがあります。 これらは、柔軟性ウィンドウ内の要求の負荷に基づいてスケールアップおよびスケールダウンします ([現在の制限を確認](how-to-manage-quotas.md))。 非常に大規模なデータセットまたは大規模な環境で作業しており、さらに高い容量が必要な場合は、[こちらのアンケート](https://aka.ms/PurviewProdSurvey)を完了すると、柔軟性ウィンドウの容量を増やすように依頼できます。
+Azure Purview のすべてのアカウントには、1 つの容量ユニットから柔軟に拡張できるデータ マップがあります。 これらは、柔軟性ウィンドウ内の要求の負荷に基づいてスケールアップおよびスケールダウンします ([現在の制限を確認](how-to-manage-quotas.md))。 これらの制限で、ほとんどのデータ ランドスケープがカバーされるはずです。 ただし、さらに大きな容量が必要な場合は、[サポート チケットを作成できます](#request-capacity)。
 
 ## <a name="data-map-capacity-unit"></a>データ マップの容量ユニット
 
@@ -36,7 +36,7 @@ Azure Purview のすべてのアカウントには、1 つの容量ユニット�
 - 資産を編集して、説明、用語集の用語などのビジネス メタデータを追加する
 - 検索結果ページに結果を返すキーワード検索。
 
-### <a name="storage"></a>記憶域
+### <a name="storage"></a>ストレージ
 
 ストレージは、データ マップの 2 番目のコンポーネントであり、技術、ビジネス、操作、セマンティック メタデータが含まれます。
 
@@ -47,8 +47,6 @@ Azure Purview のすべてのアカウントには、1 つの容量ユニット�
 - **自動スケールを使用したエラスティック データ マップ** – 負荷に基づいて自動スケールできる、最小単位の 1 つの容量ユニットからデータ マップを開始します。 ほとんどの組織では、この機能によって、データ ガバナンス プロジェクトを開始するための価格を低く抑えることができるため、節減効果が高まります。 この機能は価格に影響します。
 
 - **高度なスキャンとインジェスト** – スキャンとインジェストの両方のプロセスで、データ資産の作成、分類、データ系列を追跡して制御できます。 この機能は価格に影響します。
-
-- **高度なリソース セット** – [リソース セット](concept-resource-sets.md)と呼ばれる 1 つのデータ資産として扱われるように、データ レイクでパーティション分割されたファイルを処理して、データ マップのサイズを縮小できます。 これは、価格に影響するオプションの機能です。
 
 ## <a name="scenario"></a>シナリオ
 
@@ -109,6 +107,16 @@ Claudia は、Azure Monitor のメトリック ページで、データ マッ�
 
 >[!Important]
 >Purview Data Map では、柔軟性ウィンドウ内で自動的にスケールアップまたはスケールダウンできます ([現在の制限を確認](how-to-manage-quotas.md))。 次のレベルの柔軟性ウィンドウを取得するには、サポート チケットを作成する必要があります。
+
+## <a name="request-capacity"></a>容量を要求する
+
+非常に大規模なデータセットや大規模な環境で作業をしていて、エラスティック データ マップの容量がさらに必要な場合は、[サポート チケットを作成する](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)ことにより、より容量の大きな柔軟性ウィンドウを要求できます。
+
+**[サービスとサブスクリプションの制限 (クォータ)]** を選択し、より大きな容量を要求する Purview アカウントを選択して、画面の指示を完了します。
+
+:::image type="content" source="./media/concept-elastic-data-map/increase-limit.png" alt-text="サポート ケースの作成を示す画面。上限の引き上げオプションが選択されている。":::
+
+[説明] に、使用している環境と要求する追加の容量に関する情報をできるだけ詳しく入力します。
 
 ## <a name="summary"></a>まとめ
 

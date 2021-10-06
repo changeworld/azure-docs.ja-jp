@@ -3,23 +3,26 @@ title: Azure VMware Solution 用の DHCP の構成
 description: NSX-T Manager を使用して DHCP サーバーをホストするか、サードパーティの外部 DHCP サーバーを使用して、DHCP を構成する方法について説明します。
 ms.topic: how-to
 ms.custom: contperf-fy21q2, contperf-fy22q1
-ms.date: 07/13/2021
-ms.openlocfilehash: d781a7cc0ced6df4f5ad1e562a78f00e023ea10a
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.date: 09/13/2021
+ms.openlocfilehash: 10234147303ab9959fa1a907b0c558be9e3fe0f6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122323624"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128600963"
 ---
 # <a name="configure-dhcp-for-azure-vmware-solution"></a>Azure VMware Solution 用の DHCP の構成
 
 [!INCLUDE [dhcp-dns-in-azure-vmware-solution-description](includes/dhcp-dns-in-azure-vmware-solution-description.md)]
 
-このハウツー記事では、次の2つの方法のいずれかで、NSX-T Manager を使用して Azure VMware Solution 用の DHCP を構成します。 
+このハウツー記事では、次のいずれかの方法で、NSX-T Manager を使用して Azure VMware Solution 用の DHCP を構成します。 
 
-- [ NSX-T で DHCP サーバーをホストする](#use-nsx-t-to-host-your-dhcp-server)
 
-- [サードパーティの外部 DHCP サーバー](#use-a-third-party-external-dhcp-server)
+- [Azure portal を使用して DHCP サーバーまたはリレーを作成する](#use-the-azure-portal-to-create-a-dhcp-server-or-relay)
+
+- [NSX-T を使用して DHCP サーバーをホストする](#use-nsx-t-to-host-your-dhcp-server)
+
+- [サードパーティの外部 DHCP サーバーを使用する](#use-a-third-party-external-dhcp-server)
 
 >[!TIP]
 >NSX-T 操作の簡略化されたビューを使用して DHCP を構成する場合は、「[Azure VMware Solution 用の DHCP の構成](configure-dhcp-azure-vmware-solution.md)」を参照してください。
@@ -29,6 +32,22 @@ ms.locfileid: "122323624"
 >2021 年 7 月 1 日以降に作成されたクラウドの場合、ご使用の環境の既定の第 1 層ゲートウェイで DHCP を構成するには、NSX-T 操作の簡略化されたビューを使用する必要があります。
 >
 >DHCP サーバーがオンプレミスのデータセンターにある場合、VMware HCX L2 ストレッチ ネットワーク上の仮想マシン (VM) に対して DHCP は機能しません。  NSX では、既定ですべての DHCP 要求が L2 ストレッチを通過するときにブロックされます。 解決策については、「[L2 拡張 VMware HCX ネットワークで DHCP を構成する](configure-l2-stretched-vmware-hcx-networks.md)」の手順をご覧ください。
+
+## <a name="use-the-azure-portal-to-create-a-dhcp-server-or-relay"></a>Azure portal を使用して DHCP サーバーまたはリレーを作成する
+
+Azure portal の Azure VMware Solution から、DHC サーバーまたはリレーを直接作成できます。 DHCP サーバーまたはリレーは、Azure VMware Solution をデプロイすると作成される Tier-1 ゲートウェイに接続されます。 DHCP 範囲を指定したすべてのセグメントが、この DHCP の一部になります。 DHCP サーバーまたは DHCP リレーを作成した後、それを使用するには、セグメント レベルでサブネットまたは範囲を定義する必要があります。
+
+1. Azure VMware Solution プライベート クラウドで、 **[ワークロード ネットワーク]** の下にある **[DHCP]**  >  **[追加]** を選択します。
+
+2. **[DHCP サーバー]** または **[DHCP リレー]** を選択してから、サーバーまたはリレーの名前と 3 つの IP アドレスを指定します。 
+
+   >[!NOTE]
+   >DHCP リレーの場合、構成を成功させるために必要な IP アドレスは 1 つだけです。
+
+   :::image type="content" source="media/networking/add-dhcp-server-relay.png" alt-text="Azure VMware Solution に DHCP サーバーまたは DHCP リレーを追加する方法を示すスクリーンショット。":::
+
+4. [論理セグメントに DHCP 範囲を指定](tutorial-nsx-t-network-segment.md#use-azure-portal-to-add-an-nsx-t-segment)して DHCP 構成を完了し、 **[OK]** を選択します。
+
 
 
 ## <a name="use-nsx-t-to-host-your-dhcp-server"></a>NSX-T を使用して DHCP サーバーをホストする

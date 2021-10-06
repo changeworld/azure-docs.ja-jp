@@ -4,12 +4,12 @@ description: Azure にプライベート クラウドをデプロイするため
 ms.topic: tutorial
 ms.custom: contperf-fy22q1
 ms.date: 07/30/2021
-ms.openlocfilehash: 61a1c1c45455c9edc402aca1e5471f3ed95a8d66
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: 99389c55ab13b6c6c181a4d7d1bcf14c3b8ba08d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122069559"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128597799"
 ---
 # <a name="tutorial-configure-networking-for-your-vmware-private-cloud-in-azure"></a>チュートリアル:Azure で VMware プライベート クラウド用のネットワークを構成する
 
@@ -27,8 +27,9 @@ Azure VMware Solution プライベート クラウドには、Azure Virtual Netw
 
 >[!NOTE]
 >新しい vNet を作成する前に、Azure に既存の vNet が既にあり、それを Azure VMware Solution への接続に使用することを計画しているか、または、まったく新しい vNet を作成するかどうかを評価します。  
->* 既存の vNet を使用するには、 **[接続]** の下にある **[[Azure vNet connect]\(Azure vNet 接続\)](#select-an-existing-vnet)** タブを使用します。 
->* 新しい vNet を作成するには、 **[[Azure vNet connect]\(Azure vNet 接続\)](#create-a-new-vnet)** タブを使用するか、[手動で](#create-a-vnet-manually)作成します。
+>* Azure VMware Solution と同じ Azure サブスクリプションの既存の VNet を使用するには、 **[接続]** タブの下の **[[Azure VNet connect]](#select-an-existing-vnet)** \(Azure VNet 接続\) を使用します。 
+>* Azure VMware Solution とは異なる Azure サブスクリプションの既存の VNet を使用するには、「 **[プライベート クラウドに手動で接続する](#connect-to-the-private-cloud-manually)** 」の手順を使用します。 
+>* Azure VMware Solution と同じ Azure サブスクリプションに新しい VNet を作成するには、 **[[Azure VNet connect]](#create-a-new-vnet)** \(Azure VNet 接続\) タブを使用するか、それを[手動](#create-a-vnet-manually)で作成します。
 
 ## <a name="connect-with-the-azure-vnet-connect-feature"></a>Azure vNet 接続機能を使用して接続する
 

@@ -7,12 +7,12 @@ ms.author: mbaldwin
 ms.service: key-vault
 ms.custom: subject-monitoring
 ms.date: 07/07/2021
-ms.openlocfilehash: 53adbd28ad0b24b224f2427de0b108ce7f123dfd
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: d3404dbd28c662734fe7319f83b69b4c45234332
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129092530"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129356184"
 ---
 # <a name="monitoring-key-vault-data-reference"></a>Key Vault データ参照の監視
 
@@ -25,12 +25,12 @@ Key Vault の監視データの収集と分析の詳細については、[Key Va
 
 |メトリックの種類 | リソース プロバイダー/種類の名前空間<br/> および個々のメトリックへのリンク |
 |-------|-----|
-| Key Vault | [Microsoft.KeyVault/vaults](/azure-monitor/essentials/metrics-supported#microsoftkeyvaultvaults) |
-| Managed HSM | [Microsoft.KeyVault/managedhsms](/azure-monitor/platform/resource-logs-categories.#microsoftkeyvaultmanagedhsms) 
+| Key Vault | [Microsoft.KeyVault/vaults](/azure/azure-monitor/essentials/metrics-supported#microsoftkeyvaultvaults) |
+| Managed HSM | [Microsoft.KeyVault/managedhsms](/azure/azure-monitor/essentials/resource-logs-categories#microsoftkeyvaultmanagedhsms) 
 
 ### <a name="key-vault-metrics"></a>Key Vault メトリック
 
-リソース プロバイダーと種類: [Microsoft.KeyVault/vaults](/azure-monitor/essentials/metrics-supported#microsoftkeyvaultvaults)
+リソース プロバイダーと種類: [Microsoft.KeyVault/vaults](/azure/azure-monitor/essentials/metrics-supported#microsoftkeyvaultvaults)
 
 | 名前 | メトリック | ユニット | 種類 | 説明 |
 |:-------|:-----|:------------|:------------------|
@@ -40,11 +40,11 @@ Key Vault の監視データの収集と分析の詳細については、[Key Va
 | サービス API の全体的な待機時間 | ServiceApiLatency | MilliSeconds | Average | サービス API 要求の全体的な待機時間 |
 | サービス API 結果数の合計 | ServiceApiResult | Count | Count | サービス API 結果数の合計 |
 
-詳細については、[Azure Monitor でサポートされているすべてのプラットフォーム メトリック](/azure-monitor/platform/metrics-supported)の一覧を参照してください。
+詳細については、[Azure Monitor でサポートされているすべてのプラットフォーム メトリック](/azure/azure-monitor/essentials/metrics-supported)の一覧を参照してください。
 
 ## <a name="metric-dimensions"></a>メトリック ディメンション
 
-メトリック ディメンションの詳細については、「[多次元メトリック](/azure-monitor/platform/data-platform-metrics#multi-dimensional-metrics)」を参照してください。
+メトリック ディメンションの詳細については、「[多次元メトリック](/azure/azure-monitor/essentials/data-platform-metrics#multi-dimensional-metrics)」を参照してください。
 
 Key Vault では、次のディメンションがそのメトリックに関連付けられています。
 
@@ -58,12 +58,12 @@ Key Vault では、次のディメンションがそのメトリックに関連�
 
 このセクションでは、Key Vault 用に収集できるリソース ログの種類を示します。
 
-参照については、[Microsoft.KeyVault/vault](/azure-monitor/essentials/resource-logs-categories#microsoftkeyvaultvaults) の一覧を参照してください。  詳細については、[Azure Key Vault のログ記録](logging.md)に関する記事を参照してください。
+参照については、[Microsoft.KeyVault/vault](/azure/azure-monitor/essentials/resource-logs-categories#microsoftkeyvaultvaults) の一覧を参照してください。  詳細については、[Azure Key Vault のログ記録](logging.md)に関する記事を参照してください。
 
 |リソース ログの種類 | リソース プロバイダー/種類の名前空間<br/> および個々のメトリックへのリンク |
 |-------|-----|
-| Key Vault | [Microsoft.KeyVault/vaults](/azure-monitor/essentials/resource-logs-categories#microsoftkeyvaultmanagedhsms) |
-| Managed HSM | [Microsoft.KeyVault/managedhsms](/azure-monitor/essentials/resource-logs-categories#microsoftkeyvaultvaults) 
+| Key Vault | [Microsoft.KeyVault/vaults](/azure/azure-monitor/essentials/resource-logs-categories#microsoftkeyvaultmanagedhsms) |
+| Managed HSM | [Microsoft.KeyVault/managedhsms](/azure/azure-monitor/essentials/resource-logs-categories#microsoftkeyvaultvaults) 
 
 ## <a name="azure-monitor-logs-tables"></a>Azure Monitor ログ テーブル
 
@@ -73,11 +73,11 @@ Key Vault では、次のディメンションがそのメトリックに関連�
 |-------|-----|
 | [Key Vault](/azure/azure-monitor/reference/tables/tables-resourcetype#key-vaults) | |
 
-すべての Azure Monitor ログ/Log Analytics テーブルのリファレンスについては、[Azure Monitor ログ テーブル リファレンス](/azure-monitor/reference/tables/tables-resourcetype)に関するページを参照してください。
+すべての Azure Monitor ログ/Log Analytics テーブルのリファレンスについては、[Azure Monitor ログ テーブル リファレンス](/azure/azure-monitor/reference/tables/tables-resourcetype)に関するページを参照してください。
 
 ### <a name="diagnostics-tables"></a>診断テーブル
 
-Key Vault では、[Azure Diagnostics](/azure-monitor/reference/tables/azurediagnostics)、[Azure Activity](/azure-monitor/reference/tables/azureactivity) テーブル、[Azure Metrics](/azure-monitor/reference/tables/azuremetrics) テーブルを使用し、リソース ログ情報を格納します。 関係する列を次に示します。
+Key Vault では、[Azure Diagnostics](/azure/azure-monitor/reference/tables/azurediagnostics)、[Azure Activity](/azure/azure-monitor/reference/tables/azureactivity) テーブル、[Azure Metrics](/azure/azure-monitor/reference/tables/azuremetrics) テーブルを使用し、リソース ログ情報を格納します。 関係する列を次に示します。
 
 **Azure Diagnostics**
 
@@ -100,4 +100,4 @@ Key Vault では、[Azure Diagnostics](/azure-monitor/reference/tables/azurediag
 ## <a name="see-also"></a>関連項目
 
 - Azure Key Vault 監視の詳細については、「[Azure Key Vault の監視](monitor-key-vault.md)」を参照してください。
-- Azure リソースの監視の詳細については、「[Azure Monitor を使用した Azure リソースの監視](/azure/azure-monitor/insights/monitor-azure-resources)」を参照してください。
+- Azure リソースの監視の詳細については、「[Azure Monitor を使用した Azure リソースの監視](/azure/azure-monitor/essentials/monitor-azure-resource)」を参照してください。

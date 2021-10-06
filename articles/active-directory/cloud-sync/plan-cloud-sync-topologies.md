@@ -7,22 +7,26 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/26/2020
+ms.date: 09/10/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fd14ed8d149cdc5296229c52ceb74afb2ce7b23
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 70a480fba6b7923ffb327b22822e4baa3a54acdc
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98612595"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124749948"
 ---
 # <a name="azure-ad-connect-cloud-sync-supported-topologies-and-scenarios"></a>Azure AD Connect クラウド同期がサポートされているトポロジとシナリオ
 この記事では、Azure AD Connect クラウド同期を使用する、さまざまなオンプレミス トポロジおよび Azure Active Directory (Azure AD) トポロジについて説明します。この記事には、サポートされている構成とシナリオのみが含まれています。
 
 > [!IMPORTANT]
 > 公式に文書化されている構成やアクションを除き、Microsoft は Azure AD Connect クラウド同期の変更や操作をサポートしません。 このような構成やアクションを行うと、Azure AD Connect クラウド同期が整合性のない、またはサポートされていない状態になる可能性があります。結果的に、Microsoft ではこのようなデプロイについてテクニカル サポートを提供できなくなります。
+
+詳細については、次のビデオをご覧ください。
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RWJ8l5]
 
 ## <a name="things-to-remember-about-all-scenarios-and-topologies"></a>すべてのシナリオとトポロジに関する注意事項
 ソリューションを選択するときに注意すべき情報の一覧を次に示します。

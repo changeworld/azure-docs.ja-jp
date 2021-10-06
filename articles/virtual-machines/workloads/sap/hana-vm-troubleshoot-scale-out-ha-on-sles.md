@@ -2,22 +2,20 @@
 title: Azure VM 上の SLES での SAP HANA の HSR-Pacemaker のスケールアウトに関するトラブルシューティング | Microsoft Docs
 description: Azure 仮想マシンで実行されている SLES 12 SP3 での SAP HANA システム レプリケーション (HSR) と Pacemaker に基づく複雑な SAP HANA スケールアウトの高可用性構成の確認とトラブルシューティングのガイド
 services: virtual-machines-linux
-documentationcenter: ''
 author: hermanndms
 manager: juergent
-editor: ''
 ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
-ms.openlocfilehash: e64abc008433c895e21690ccab8cc532ec1b34b1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3bdc19d9bd9208744173735399551bfc6f0fe93f
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105543858"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129359280"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>SLES 12 SP3 での SAP HANA スケールアウトの高可用性セットアップの確認とトラブルシューティング 
 
@@ -25,7 +23,7 @@ ms.locfileid: "105543858"
 [sles-hana-scale-out-ha-paper]:https://www.suse.com/documentation/suse-best-practices/singlehtml/SLES4SAP-hana-scaleOut-PerfOpt-12/SLES4SAP-hana-scaleOut-PerfOpt-12.html
 [sap-hana-iaas-list]:https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html
 [suse-pacemaker-support-log-files]:https://www.suse.com/support/kb/doc/?id=7022702
-[azure-linux-multiple-nics]:https://docs.microsoft.com/azure/virtual-machines/linux/multiple-nics
+[azure-linux-multiple-nics]:../../linux/multiple-nics.md
 [suse-cloud-netconfig]:https://www.suse.com/c/multi-nic-cloud-netconfig-ec2-azure/
 [sap-list-port-numbers]:https://help.sap.com/viewer/ports
 [sles-12-ha-paper]:https://www.suse.com/documentation/sle-ha-12/pdfdoc/book_sleha/book_sleha.pdf

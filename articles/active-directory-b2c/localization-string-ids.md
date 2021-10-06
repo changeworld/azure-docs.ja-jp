@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 03/10/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7e0f3e2ab306c46851e4c2ffcb6acf5824326282
-ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
+ms.openlocfilehash: 88c320d8296972ee84776aa232d688cc9e981f83
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113564372"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129349650"
 ---
 # <a name="localization-string-ids"></a>ローカライズ文字列 ID
 
@@ -28,7 +28,7 @@ ms.locfileid: "113564372"
 次の ID は、`api.signuporsignin` の ID を持つコンテンツ定義と、[セルフアサート技術プロファイル](self-asserted-technical-profile.md)に使用されます。
 
 | id | 既定値 | ページ レイアウト バージョン |
-| -- | ------------- | ------ |
+| --- | ------------- | ------ |
 | **forgotpassword_link** | パスワードを忘れた場合 | `All` |
 | **createaccount_intro** | アカウントをお持ちでない場合は、 | `All` |
 | **button_signin** | サインイン | `All` |
@@ -96,7 +96,7 @@ ID プロバイダーの ID は、ユーザー体験  **ClaimsExchange** 要素�
 ### <a name="sign-up-or-sign-in-error-messages"></a>サインアップまたはサインインのエラー メッセージ
 
 | id | 既定値 |
-| -- | ------------- |
+| --- | ------------- |
 | **UserMessageIfInvalidPassword** | パスワードが正しくありません。 |
 | **UserMessageIfPasswordExpired**| パスワードが期限切れです。|
 | **UserMessageIfClaimsPrincipalDoesNotExist** | ご利用のアカウントが見つからないようです。 |
@@ -146,7 +146,7 @@ ID プロバイダーの ID は、ユーザー体験  **ClaimsExchange** 要素�
 以下は、`api.localaccountsignup` の ID を持つコンテンツ定義、または `api.selfasserted` で始まるコンテンツ定義の ID (`api.selfasserted.profileupdate` や `api.localaccountpasswordreset` など)、および[セルフアサート技術プロファイル](self-asserted-technical-profile.md)です。
 
 | id | 既定値 |
-| -- | ------------- |
+| --- | ------------- |
 | **ver_sent** | 次の場所に確認コードが送信されました: |
 | **ver_but_default** | Default |
 | **cancel_message** | セルフ アサート情報の入力がユーザーによって取り消されました |
@@ -185,7 +185,7 @@ ID プロバイダーの ID は、ユーザー体験  **ClaimsExchange** 要素�
 ### <a name="sign-up-and-self-asserted-pages-error-messages"></a>サインアップとセルフアサート ページ エラー メッセージ
 
 | id | 既定値 |
-| -- | ------------- |
+| --- | ------------- |
 | **UserMessageIfClaimsPrincipalAlreadyExists** | 指定した ID を持つユーザーは既に存在します。 別の ID を選択してください。 |
 | **UserMessageIfClaimNotVerified** | 要求が確認されていません: {0} |
 | **UserMessageIfIncorrectPattern** | {0} のパターンが正しくありません: |
@@ -259,7 +259,7 @@ ID プロバイダーの ID は、ユーザー体験  **ClaimsExchange** 要素�
 以下は、`api.phonefactor` の ID を持つコンテンツ定義用の ID と、[電話ファクター技術プロファイル](phone-factor-technical-profile.md)です。
 
 | id | 既定値 | ページ レイアウト バージョン |
-| -- | ------------- | ------ |
+| --- | ------------- | ------ |
 | **button_verify** | 電話する | `All` |
 | **country_code_label** | 国番号 | `All` |
 | **cancel_message** | ユーザーが多要素認証を取り消しました | `All` |
@@ -283,7 +283,7 @@ ID プロバイダーの ID は、ユーザー体験  **ClaimsExchange** 要素�
 | **invalid_number** | 有効な電話番号を入力してください | `All` |
 | **intro_sms** | レコードに次の番号があります。 認証するために SMS を介してコードを送信します。 | `All` |
 | **intro_entry_mixed** | 認証用に SMS でコードを受け取る、または電話を受けることを希望する番号を以下に入力してください。 | `All` |
-| **number_pattern** | ^\\+(?:[0-9][\\x20-]?){6,14}[0-9]$ | `All` |
+| **number_pattern** | `^\\+(?:[0-9][\\x20-]?){6,14}[0-9]$` | `All` |
 | **intro_sms_p** |レコードに、次の番号があります。 認証用に SMS でコードを受け取ることを希望する番号を以下に入力してください。 | `All` |
 | **requiredField_countryCode** | 国コードを選択してください | `All` |
 | **requiredField_number** | 電話番号を入力してください | `All` |
@@ -361,7 +361,7 @@ ID プロバイダーの ID は、ユーザー体験  **ClaimsExchange** 要素�
 [ページ レイアウト バージョン](page-layout.md)が 2.1.0 以上の[検証表示コントロール](display-control-verification.md)の ID を次に示します。
 
 | id | 既定値 |
-| -- | ------------- |
+| --- | ------------- |
 |intro_msg <sup>*</sup>| 確認が必要です。 [送信] ボタンをクリックしてください。|
 |success_send_code_msg | 確認コードが送信されました。 次の入力ボックスにコピーしてください。|
 |failure_send_code_msg | ご使用のメールアドレスの確認に問題があります。 有効なメール アドレスを入力して、もう一度やり直してください。|
@@ -402,7 +402,7 @@ ID プロバイダーの ID は、ユーザー体験  **ClaimsExchange** 要素�
 [ページ レイアウト バージョン](page-layout.md)が 2.0.0 の[検証表示コントロール](display-control-verification.md)の ID を次に示します。
 
 | id | 既定値 |
-| -- | ------------- |
+| --- | ------------- |
 |verification_control_but_change_claims |Change |
 |verification_control_fail_send_code |コードを送信できませんでした。しばらくしてから、もう一度お試しください。 |
 |verification_control_fail_verify_code |コードを検証できませんでした。しばらくしてから、もう一度お試しください。 |
@@ -432,7 +432,7 @@ ID プロバイダーの ID は、ユーザー体験  **ClaimsExchange** 要素�
 [RESTful サービスの技術プロファイル](restful-technical-profile.md)のエラー メッセージ用 ID を次に示します。
 
 | id | 既定値 |
-| -- | ------------- |
+| --- | ------------- |
 |DefaultUserMessageIfRequestFailed | RESTful サービス エンド ポイントへの接続を確立できませんでした。 RESTful サービスの URL: {0} |
 |UserMessageIfCircuitOpen | {0}RESTful サービスの URL: {1} |
 |UserMessageIfDnsResolutionFailed | RESTful サービス エンドポイントのホスト名を解決できませんでした。 RESTful サービスの URL: {0} |
@@ -457,7 +457,7 @@ ID プロバイダーの ID は、ユーザー体験  **ClaimsExchange** 要素�
 [Azure AD MFA の技術プロファイル](multi-factor-auth-technical-profile.md)のエラー メッセージ用 ID を次に示します。
 
 | id | 既定値 |
-| -- | ------------- |
+| --- | ------------- |
 |UserMessageIfCouldntSendSms | 電話に SMS を送信できません。別の電話番号をお試しください。 |
 |UserMessageIfInvalidFormat | 電話番号の形式が正しくありません。修正してから、もう一度お試しください。|
 |UserMessageIfMaxAllowedCodeRetryReached | 間違ったコードの入力回数が多くなりすぎました。後でもう一度お試しください。|
@@ -485,7 +485,7 @@ ID プロバイダーの ID は、ユーザー体験  **ClaimsExchange** 要素�
 [Azure AD SSPR の技術プロファイル](aad-sspr-technical-profile.md)のエラー メッセージ用 ID を次に示します。
 
 | id | 既定値 |
-| -- | ------------- |
+| --- | ------------- |
 |UserMessageIfChallengeExpired | コードの有効期限が切れています。|
 |UserMessageIfInternalError | 電子メール サービスで内部エラーが発生しました。後でもう一度お試しください。|
 |UserMessageIfThrottled | 送信された要求が多すぎます。後でもう一度お試しください。|
@@ -511,8 +511,8 @@ ID プロバイダーの ID は、ユーザー体験  **ClaimsExchange** 要素�
 
 [ワンタイム パスワードの技術プロファイル](one-time-password-technical-profile.md)のエラー メッセージ用 ID を次に示します
 
-| id | 既定値 |
-| -- | ------------- |
+| id | 既定値 | 説明 | 
+| --- | ------------- | ----------- |
 | UserMessageIfSessionDoesNotExist | いいえ | コード確認セッションの有効期限が切れた場合にユーザーに表示するメッセージ。 コードの有効期限が切れているか、指定された識別子に対してコードが生成されたことがないかのいずれかです。 |
 | UserMessageIfMaxRetryAttempted | いいえ | 許容される確認の最大試行回数を超えた場合に、ユーザーに表示するメッセージ。 |
 | UserMessageIfMaxNumberOfCodeGenerated | いいえ | コード生成が許容される最大試行回数を超えた場合にユーザーに表示するメッセージ。 |
@@ -540,7 +540,7 @@ ID プロバイダーの ID は、ユーザー体験  **ClaimsExchange** 要素�
 要求の変換のエラー メッセージの ID を次に示します。
 
 | id | 要求の変換 | 既定値 |
-| -- | ------------- |------------- |
+| --- | ------------- |------------- |
 |UserMessageIfClaimsTransformationBooleanValueIsNotEqual |[AssertBooleanClaimIsEqualToValue](boolean-transformations.md#assertbooleanclaimisequaltovalue) | 要求の種類 "inputClaim" のブール値の要求値の比較に失敗しました。| 
 |DateTimeGreaterThan |[AssertDateTimeIsGreaterThan](date-transformations.md#assertdatetimeisgreaterthan) | 要求値の比較に失敗しました。指定された左オペランドが右オペランドを超えています。|
 |UserMessageIfClaimsTransformationStringsAreNotEqual |[AssertStringClaimsAreEqual](string-transformations.md#assertstringclaimsareequal) | StringComparison "OrdinalIgnoreCase" を使用した要求値の比較に失敗しました。|

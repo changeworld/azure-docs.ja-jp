@@ -1,18 +1,18 @@
 ---
 title: ISV シナリオにおける Azure Lighthouse
 description: ISV は、Azure Lighthouse の機能を使用して、顧客へのオファリングの柔軟性を高めることができます。
-ms.date: 05/11/2021
+ms.date: 09/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: 9fc8c261f49e8a12189708ada1d0da31965e5159
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 9266b8d026446600cf25d2f141785c3a461ad0e8
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109788681"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124768688"
 ---
 # <a name="azure-lighthouse-in-isv-scenarios"></a>ISV シナリオにおける Azure Lighthouse
 
-[Azure Lighthouse](../overview.md) の一般的なシナリオは、顧客の Azure Active Directory (Azure AD) テナントのリソースを管理するサービス プロバイダーです。 Azure Lighthouse の機能は、SaaS ベースのオファリングを使用して、独立系ソフトウェア ベンダー (ISV) がその顧客と共に使用することもできます。 Azure Lighthouse は、サブスクリプションのスコープへのアクセスを必要とする管理されたサービスまたはサポートを提供する ISV で特に役立ちます。
+[Azure Lighthouse](../overview.md) の一般的なシナリオは、サービス プロバイダーがその顧客の Azure Active Directory (Azure AD) テナント内のリソースを管理する状況です。 Azure Lighthouse の機能は、SaaS ベースのオファリングを使用して、独立系ソフトウェア ベンダー (ISV) がその顧客と共に使用することもできます。 Azure Lighthouse は、サブスクリプションのスコープへのアクセスを必要とする管理されたサービスまたはサポートを提供する ISV で特に役立ちます。
 
 ## <a name="managed-service-offers-in-azure-marketplace"></a>Azure Marketplace のマネージド サービス オファー
 
@@ -28,7 +28,7 @@ ISV は、Azure Marketplace にソリューションを既に発行している�
 
 ## <a name="saas-based-multi-tenant-offerings"></a>SaaS ベースのマルチテナント オファリング
 
-その他のシナリオとしては、ISV が独自のテナントのサブスクリプションでリソースをホストし、Azure Lighthouse を使用して、顧客がこれらのリソースにアクセスできるようにします。 その後、顧客は独自のテナントにログインし、必要に応じてこれらのリソースにアクセスできます。 ISV は独自のテナントで自社の IP を維持し、顧客のプランを使用するのではなく、独自のサポート プランを使用して、テナントでホストされているソリューションに関連するチケットを登録することができます。 リソースは ISV のテナント内にあるため、ISV がすべてのアクションを直接実行できます (VM へのログイン、アプリのインストール、メンテナンス タスクの実行など)。
+その他のシナリオとして、ISV が独自のテナント内のサブスクリプションでリソースをホストした後、Azure Lighthouse を使用して顧客がこれらのリソースにアクセスできるようにする状況があります。 その後、顧客は独自のテナントにログインし、必要に応じてこれらのリソースにアクセスできます。 ISV は自身の IP を独自のテナントに保持するため、顧客のプランではなく独自のサポート プランを使用して、そのテナントでホストされているソリューションに関連したチケットを作成できます。 リソースは ISV のテナント内にあるため、ISV がすべてのアクションを直接実行できます (VM へのログイン、アプリのインストール、メンテナンス タスクの実行など)。
 
 このシナリオでは、顧客は ISV のリソースを管理していませんが、顧客のテナントのユーザーには基本的に "テナント管理" としてのアクセス権が付与されます。 顧客は ISV のテナントに直接アクセスしているため、顧客がソリューションや他の ISV リソースを誤って変更しないように、必要最小限のアクセス許可のみを付与することが重要です。
 

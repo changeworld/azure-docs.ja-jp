@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/14/2021
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: 5c19cfd69352d898c6f47c7256b8433164cd7eb9
-ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
+ms.openlocfilehash: 0014c28b57480e8da301c57823cdba79cea67e96
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2021
-ms.locfileid: "112982998"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129274900"
 ---
 # <a name="index-data-from-azure-blob-storage"></a>Azure Blob Storage にあるデータのインデックスを作成する
 
@@ -32,7 +32,7 @@ BLOB インデクサーは [AI エンリッチメント](cognitive-search-concep
 
 ## <a name="supported-access-tiers"></a>サポートされているアクセス層
 
-Blob Storage の[アクセス層](../storage/blobs/storage-blob-storage-tiers.md)には、ホット、クール、アーカイブがあります。 インデクサーがアクセスできるのは、ホットとクールのみです。 
+Blob Storage の[アクセス層](../storage/blobs/access-tiers-overview.md)には、ホット、クール、アーカイブがあります。 インデクサーがアクセスできるのは、ホットとクールのみです。 
 
 <a name="SupportedFormats"></a>
 

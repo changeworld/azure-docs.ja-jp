@@ -4,17 +4,17 @@ titleSuffix: Azure Machine Learning
 description: オープンソースの Python 機械学習フレームワークを使用して、Azure Machine Learning でエンドツーエンドの機械学習ソリューションをトレーニング、デプロイ、管理する方法について学習します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
 ms.date: 01/14/2020
-ms.openlocfilehash: 8ec9aaf2222924718ad21cf0654d138be22c2d19
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: d8c765bbf006d02ec2c5bdf87a621119c922b02b
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114293391"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129430119"
 ---
 # <a name="open-source-integration-with-azure-machine-learning-projects"></a>オープンソースと Azure Machine Learning プロジェクトとの統合
 

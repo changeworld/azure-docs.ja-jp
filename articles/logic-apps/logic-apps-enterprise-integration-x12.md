@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, divswa, azla
 ms.topic: how-to
 ms.date: 07/16/2021
-ms.openlocfilehash: 5328fad1530ee8dd7b4a2c79581d443488c44b28
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 4b1c6d33146233882dd4ee0656c2d1ee7ee6ec79
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114453843"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128589722"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-using-azure-logic-apps-and-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack を使用して B2B エンタープライズ統合用の X12 メッセージを交換する
 
@@ -348,7 +348,7 @@ HIPAA スキーマと 277 または 837 のメッセージ型を操作する場�
 
    スキーマを更新するには、次の手順を実行します。
 
-   1. Azure portal で統合アカウントに移動します。 スキーマを検索してダウンロードします。 メッセージ型を置き換えて、スキーマ ファイルの名前を変更し、変更したスキーマを統合アカウントにアップロードします。 詳細については、「[スキーマの編集](../logic-apps/logic-apps-enterprise-integration-schemas.md#edit-schemas)」を参照してください｡
+   1. Azure portal で統合アカウントに移動します。 スキーマを検索してダウンロードします。 メッセージ型を置き換えて、スキーマ ファイルの名前を変更し、変更したスキーマを統合アカウントにアップロードします。 詳細については、「[スキーマを編集する](logic-apps-enterprise-integration-schemas.md#edit-schema)」を参照してください｡
 
    1. 契約のメッセージ設定で、変更後のスキーマを選択します。
 

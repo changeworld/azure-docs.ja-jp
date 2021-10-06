@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: バッチ予測パイプラインを作成する方法について説明します。 このパイプラインは、パラメータ化された Web サービスとしてデプロイし、HTTP ライブラリからトリガーします。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.author: keli19
 author: likebupt
 ms.date: 02/05/2021
 ms.topic: how-to
 ms.custom: designer
-ms.openlocfilehash: 9a766e3ff67a1ea76c396c304ead55ce0578739f
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 85562dd33031ae0f392efac6aed6d5e4ecc5c2e5
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114458781"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129428276"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーを使用してバッチ予測を実行する
 

@@ -8,12 +8,12 @@ ms.date: 09/01/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 0d549190558f54137a410808967abc206ed43ad1
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 9ba814b4188984f3a0f6dbe16e866d6184d8cf2b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123433370"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128547663"
 ---
 # <a name="azcopy-sync"></a>azcopy sync
 
@@ -66,7 +66,7 @@ azcopy sync <source> <destination> [flags]
 azcopy sync "/path/to/file.txt" "https://[account].blob.core.windows.net/[container]/[path/to/blob]"
 ```
 
-上記と同じですが、ファイル コンテンツの MD5 ハッシュも計算し、その MD5 ハッシュを BLOB の Content-MD5 プロパティとして保存します。 
+上記と同じですが、ファイル コンテンツの MD5 ハッシュも計算し、その MD5 ハッシュを BLOB の Content-MD5 プロパティとして保存します。
 
 ```azcopy
 azcopy sync "/path/to/file.txt" "https://[account].blob.core.windows.net/[container]/[path/to/blob]" --put-md5
@@ -120,10 +120,10 @@ BLOB と同じ名前の仮想ディレクトリを同期します (あいまい�
 azcopy sync "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]/?[SAS]" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]/" --recursive=true
 ```
 
-Azure ファイル ディレクトリを同期する (BLOB と同じ構文):
+Azure File Directory を同期する:
 
 ```azcopy
-azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]" "https://[account].file.core.windows.net/[share]/[path/to/dir]" --recursive=true
+azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]" "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]" --recursive=true
 ```
 
 > [!NOTE]
@@ -157,7 +157,7 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 
 **--include-pattern** string   名前がパターンの一覧と一致するファイルをのみを含めます。 例: `*.jpg;*.pdf;exactName`
 
-**--log-level** string     ログ ファイルのログ詳細度を定義します。指定可能なレベルは、`INFO` (すべての要求と応答)、`WARNING` (低速な応答)、`ERROR` (失敗した要求のみ)、`NONE` (出力ログなし) です。 (既定値は `INFO` です。) 
+**--log-level** string     ログ ファイルのログ詳細度を定義します。指定可能なレベルは、`INFO` (すべての要求と応答)、`WARNING` (低速な応答)、`ERROR` (失敗した要求のみ)、`NONE` (出力ログなし) です。 (既定値は `INFO` です。)
 
 **--mirror-mode**          このフラグが `true` に設定されている場合、最終変更時刻に基づく比較が無効になり、転送先で競合するファイルと BLOB が上書きされます。 既定値は `false` です。
 
@@ -167,9 +167,9 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 
 **--put-md5**     各ファイルの MD5 ハッシュを作成し、ハッシュを同期先の BLOB またはファイルの Content-MD5 プロパティとして保存します。 (既定では、ハッシュは作成されません)。アップロード時にのみ使用できます。
 
-**--recursive**    既定では `True` で、ディレクトリ間で同期するときに、サブディレクトリ内を再帰的に調べます。 (既定値は `True` です。) 
+**--recursive**    既定では `True` で、ディレクトリ間で同期するときに、サブディレクトリ内を再帰的に調べます。 (既定値は `True` です。)
 
-**--s2s-preserve-access-tier**  サービス間のコピー中にアクセス層を保持します。 「[Azure Blob Storage: ホット、クール、アーカイブ アクセス層](../blobs/storage-blob-storage-tiers.md)」を参照して、同期先のストレージ アカウントで、アクセス層の設定がサポートされていることを確認してください。 アクセス層の設定がサポートされていない場合は、s2sPreserveAccessTier = false を使用してアクセス層のコピーをバイパスしてください。 (既定値は `true` です。) 
+**--s2s-preserve-access-tier**  サービス間のコピー中にアクセス層を保持します。 「[Azure Blob Storage: ホット、クール、アーカイブ アクセス層](../blobs/storage-blob-storage-tiers.md)」を参照して、同期先のストレージ アカウントで、アクセス層の設定がサポートされていることを確認してください。 アクセス層の設定がサポートされていない場合は、s2sPreserveAccessTier = false を使用してアクセス層のコピーをバイパスしてください。 (既定値は `true` です。)
 
 **--s2s-preserve-blob-tags**      BLOB ストレージ間でサービス間の同期中にインデックス タグを保持します。
 

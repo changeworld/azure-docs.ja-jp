@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: tutorial
-ms.date: 08/30/2021
+ms.date: 09/07/2021
 ms.author: cherylmc
-ms.openlocfilehash: cd6f2de9d440309662ef47a950f6c1331e30d5fb
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 0aa2efb84c207592131d3b7c3060aebc22cc49f6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123221096"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128668901"
 ---
 # <a name="tutorial-configure-bastion-and-connect-to-a-windows-vm"></a>チュートリアル:Bastion を構成し、Windows VM に接続する
 
@@ -29,7 +29,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ## <a name="prerequisites"></a>前提条件
 
-* 仮想ネットワーク。
+* [仮想ネットワーク](../virtual-network/quick-create-portal.md)。
 * 仮想ネットワーク内の Windows 仮想マシン。 VM がない場合は、[VM の作成に関するクイックスタート](../virtual-machines/windows/quick-create-portal.md)を参照して作成してください。
 * 次は、リソースに必要なロールです。
    * 必要な VM ロール:
@@ -94,7 +94,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 * **名前**: 新しい Bastion リソースの名前です。
 
-* **リージョン**: リソースが作成される Azure パブリック リージョンです。
+* **リージョン**: リソースが作成される Azure パブリック リージョンです。 仮想ネットワークが存在するリージョンを選択します。
 
 * **価格レベル:** 価格レベルは **SKU** とも呼ばれます。 このチュートリアルでは、ドロップダウンから **Standard** SKU を選択します。 Standard SKU を選択すると、ホスト スケーリングのインスタンス数を構成できます。 Basic SKU では、ホストのスケーリングはサポートされていません。 詳細については、[構成設定 - SKU](configuration-settings.md#skus) に関するページを参照してください。 Standard SKU は、プレビュー段階にあります。
 
@@ -104,9 +104,9 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 * **仮想ネットワーク**:Bastion リソースが作成される仮想ネットワークです。 このプロセス中にポータルで新しい仮想ネットワークを作成したり、既存の仮想ネットワークを使用したりすることができます。 既存の仮想ネットワークを使用している場合、Bastion サブネットの要件を反映するために、既存の仮想ネットワークに十分な空きアドレス空間があることを確認してくます。 ドロップダウンに仮想ネットワークが表示されない場合は、適切なリソースグループを選択していることを確認してください。
 
-* **サブネット**: 仮想ネットワークを作成または選択すると、ページに [サブネット] フィールドが表示されます。 これは、Bastion インスタンスをデプロイするサブネットです。 
+* **サブネット**: 仮想ネットワークを作成または選択すると、ページに [サブネット] フィールドが表示されます。 これは、Bastion インスタンスをデプロイするサブネットです。 名前は **AzureBastionSubnet** にしてください。 サブネットを追加するには、次の手順を参照してください。
 
-#### <a name="add-the-azurebastionsubnet"></a>AzureBastionSubnet を追加する
+#### <a name="manage-subnet-configuration"></a>サブネット構成の管理
 
 ほとんどの場合、AzureBastionSubnet はまだ構成されていません。 Bastion サブネットを構成するには、次のようにします。 
 

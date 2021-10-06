@@ -1,15 +1,15 @@
 ---
-author: wesmc7777
+author: curib
 ms.service: redis-cache
 ms.topic: include
 ms.date: 11/09/2018
-ms.author: wesmc
-ms.openlocfilehash: e5166934c4f7e1ecc917d2a5afcbb26ea9a637a2
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.author: cauribeg
+ms.openlocfilehash: 0e4adb1df1186fe9fa912745356bf92c8c643a67
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128582782"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129532716"
 ---
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ 
 

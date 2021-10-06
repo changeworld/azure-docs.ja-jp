@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: article
-ms.date: 07/30/2021
+ms.date: 09/28/2021
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bebba34e8d323bc60d83151e7b211388776b7b76
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5f85ab5960aea247a8b47b20d2552cec6e2e534f
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121741694"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129235328"
 ---
 # <a name="use-azure-ad-groups-to-manage-role-assignments"></a>Azure AD グループを使用してロールの割り当てを管理する
 
@@ -41,7 +41,7 @@ Azure Active Directory (Azure AD) を使用すると、Azure AD グループを�
 - 新しいグループには、`isAssignableToRole` プロパティまたは **[グループに Azure AD ロールを割り当てることができる]** オプションのみを設定できます。
 - `isAssignableToRole` プロパティは **変更できません**。 このプロパティを設定してグループを作成した後に、これを変更することはできません。
 - 既存のグループを、ロール割り当て可能なグループにすることはできません。
-- 1 つの Azure AD 組織 (テナント) には、最大 300 個のロール割り当て可能なグループを作成できます。
+- 1 つの Azure AD 組織 (テナント) には、最大 400 個のロール割り当て可能なグループを作成できます。
 
 ## <a name="how-are-role-assignable-groups-protected"></a>ロール割り当て可能グループはどのように保護されているか
 
@@ -61,9 +61,6 @@ Azure Active Directory (Azure AD) を使用すると、Azure AD グループを�
 ## <a name="use-pim-to-make-a-group-eligible-for-a-role-assignment"></a>PIM を使用して、グループをロール割り当ての対象にする
 
 グループのメンバーにロールへの継続的なアクセスを許可したくない場合は、[Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) を使用して、グループをロール割り当ての対象にすることができます。 その後、グループの各メンバーは定められた期間、ロール割り当てのアクティブ化の対象となります。
-
-> [!Note]
-> グループに Azure AD ロールを割り当てられるようになるためには、更新されたバージョンの PIM を使用する必要があります。 Azure AD 組織で使用している PIM API のバージョンが古いために、以前のバージョンの PIM が使用されている可能性があります。 pim_preview@microsoft.com にメールを送信して組織を動かし、API を更新してください。 詳細については、[PIM における Azure AD のロールと機能](../privileged-identity-management/pim-configure.md)に関するページを参照してください。
 
 ## <a name="scenarios-not-supported"></a>サポートされていないシナリオ
 

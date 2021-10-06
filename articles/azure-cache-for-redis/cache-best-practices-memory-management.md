@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/25/2021
 ms.author: shpathak
-ms.openlocfilehash: 613d5dd906795b59465458565a00cd37b7374e65
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 36fe87e03a78a4dee34c2016b8f4723cb8aa95be
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123114081"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128598729"
 ---
 # <a name="memory-management"></a>メモリ管理
 
@@ -43,3 +43,10 @@ ms.locfileid: "123114081"
 *  `maxfragmentationmemory-reserved`  設定では、メモリの断片化に対応するために予約されるメモリ量をクラスター内のインスタンスあたりの MB 単位で構成します。 この値を設定すると、キャッシュがいっぱいになった場合や、キャッシュがほとんどいっぱいで断片化の割合が高い場合でも、Redis サーバーの動作がより安定します。 そのような操作に予約されているメモリは、キャッシュ データの保存には使用できません。
 
 * 新しいメモリ予約値 (`maxmemory-reserved`  または  `maxfragmentationmemory-reserved`) を選択する際には、この変更によって既に大量のデータが入っているキャッシュがどのような影響を受けるのかを考慮する必要があります。 たとえば、53 GB のキャッシュに 49 GB のデータが入っているときに、予約値を 8 GB に変更すると、システムで利用可能な最大メモリは 45 GB まで低下します。 現在の  `used_memory`  または  `used_memory_rss`  が新しい上限値の 45 GB よりも大きい場合、システムでは、 `used_memory`  と  `used_memory_rss`  の両方が 45 GB を下回るまでデータを削除しなければならなくなります。 削除することによってサーバーの負荷やメモリの断片化が増える可能性もあります。  `used_memory`  や  `used_memory_rss` [ などのキャッシュに関するメトリックの詳細については、「](cache-how-to-monitor.md#available-metrics-and-reporting-intervals)使用可能なメトリックとレポート期間」を参照してください。
+
+## <a name="next-steps"></a>次のステップ
+
+* [開発のベスト プラクティス](cache-best-practices-development.md)
+* [Azure Cache for Redis 開発に関してよくあるご質問](cache-development-faq.yml)
+* [maxmemory-reserved の設定](cache-configure.md#maxmemory-policy-and-maxmemory-reserved)
+* [スケーリングに関するベスト プラクティス](cache-best-practices-scale.md)

@@ -3,12 +3,12 @@ title: Azure Lab Services - 物理ラボ環境から Linux カスタム イメ�
 description: 物理ラボ環境から Linux カスタム イメージを取り込む方法を説明します。
 ms.date: 07/27/2021
 ms.topic: how-to
-ms.openlocfilehash: 919505e31526c3d17d42bd29d9cef3b46758c959
-ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
+ms.openlocfilehash: 9a8591d383ac5230085bc83d1d791e9de830a99e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122831397"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124771367"
 ---
 # <a name="bring-a-linux-custom-image-from-your-physical-lab-environment"></a>物理ラボ環境から Linux カスタム イメージを取り込む
 
@@ -18,7 +18,7 @@ Azure では、さまざまな[ディストリビューションとバージョ�
 
 この記事では、カスタム Ubuntu 16.04\18.04\20.04 イメージを VHD から取り込む手順について説明します。 VHD を使用して他のディストリビューション用のカスタムイメージを作成する方法については、[Linux ディストリビューションの一般的な手順](../virtual-machines/linux/create-upload-generic.md)に関するページを参照してください。
 
-## <a name="prerequisites"></a>[前提条件]
+## <a name="prerequisites"></a>前提条件
 
 この記事の手順を完了するには、学校の Azure サブスクリプションで [Azure マネージド ディスク](../virtual-machines/managed-disks-overview.md)を作成するためのアクセス許可が必要です。
 
@@ -36,9 +36,9 @@ Azure では、さまざまな[ディストリビューションとバージョ�
 
 1. ご自分のイメージから作成されたご自分の物理ラボ環境の Hyper-V VM から始めます。 詳細については、[Hyper-V で仮想マシンを作成する方法](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v)に関する記事を参照してください。 次に示すように設定を行います。
     - VM は **第 1 世代** の VM として作成されている必要があります。
-    - ネットワーク構成の **[既定のスイッチ]** オプションを使用すると、VM がインターネットに接続できます。
+    - ネットワーク 構成の **[既定のスイッチ]** オプションを使用すると、VM がインターネットに接続できます。
     - **[仮想ハード ディスクの接続]** 設定では、次の図に示すように、ディスクの **サイズ** を 128 GB より大きくすることは "*できません*"。
-       
+
         :::image type="content" source="./media/upload-custom-image-shared-image-gallery/connect-virtual-hard-disk.png" alt-text="[仮想ハード ディスクの接続] 画面を示すスクリーンショット。":::
 
     - **[インストール オプション]** 設定で、以前に Ubuntu からダウンロードした **.iso** ファイルを選択します。
@@ -52,7 +52,7 @@ Azure では、さまざまな[ディストリビューションとバージョ�
     上記の手順に従うときに、強調すべきいくつかの重要な点があります。
     - **deprovision+user** コマンドを実行すると、[一般化](../virtual-machines/shared-image-galleries.md#generalized-and-specialized-images)されたイメージが作成されます。 ただし、イメージからすべての機密情報が削除されることや、イメージが再配布に適した状態になることが保証されるわけではありません。
     - 最後の手順は、**VHDX** ファイルを **VHD** ファイルに変換することです。 **Hyper-V マネージャー** を使用してこれを行う同等の手順を次に示します。
-        
+
         1. **[Hyper-V マネージャー]**  >  **[操作]**  >  **[ディスクの編集]** に移動します。
         1. 次に、ディスクを VHDX から VHD に **変換** します。
         1. **[ディスクの種類]** で、 **[固定サイズ]** を選択します。
@@ -61,48 +61,47 @@ Azure では、さまざまな[ディストリビューションとバージョ�
 
 VHD のサイズ変更と VHDX への変換を支援するために、次の PowerShell コマンドレットを使用することもできます。
 
-- [Resize-VHD](/powershell/module/hyper-v/resize-vhd?view=windowsserver2019-ps)
-- [Convert-VHD](/powershell/module/hyper-v/convert-vhd?view=windowsserver2019-ps)
+- [Resize-VHD](/powershell/module/hyper-v/resize-vhd)
+- [Convert-VHD](/powershell/module/hyper-v/convert-vhd)
 
 ## <a name="upload-the-custom-image-to-a-shared-image-gallery"></a>カスタム イメージを共有イメージ ギャラリーにアップロードする
 
 1. VHD を Azure にアップロードして、マネージド ディスクを作成します。
     1. Storage Explorer またはコマンド ラインから AzCopy を使用することができます。「[VHD を Azure にアップロードするか、他のリージョンにマネージド ディスクをコピーする](../virtual-machines/windows/disks-upload-vhd-to-managed-disk-powershell.md)」を参照してください。
 
-    1. VHD をアップロードすると、マネージド ディスクが作成されて Azure portal に表示されます。 
-    
+    1. VHD をアップロードすると、マネージド ディスクが作成されて Azure portal に表示されます。
+
     コンピューターがスリープ状態またはロック状態になった場合、アップロード プロセスが中断され、失敗するおそれがあります。 また、AzCopy が完了したら、ディスクへの SAS アクセスを取り消していることを確認してください。 そうせずに、ディスクからイメージを作成しようとすると、次のエラーが表示されます。"操作 'イメージの作成' は、ディスク 'ディスク名' が 'アクティブ アップロード' 状態ではサポートされません。 エラー コード: OperationNotAllowed*。"
-    
+
     Azure portal のマネージド ディスクの **[サイズおよびパフォーマンス]** タブを使用して、ディスク サイズを変更します。 前に説明したように、サイズは 128 GB を "*超えない*" ようにしてください。
 
 1. 共有イメージ ギャラリーで、イメージの定義とバージョンを作成します。
-    1. [イメージの定義を作成します](../virtual-machines/windows/shared-images-portal.md#create-an-image-definition)。
+    1. [イメージの定義を作成します](../virtual-machines/image-version.md)。
         - **VM の世代** として **[Gen 1]** を選択します。
         - **[オペレーティング システム]** として **[Linux]** を選択します。
         - **[オペレーティング システムの状態]** として **[一般化]** を選択します。
-     
-    イメージ定義に指定できる値の詳細については、[イメージ定義](../virtual-machines/shared-image-galleries.md#image-definitions)に関するページを参照してください。 
-    
+
+    イメージ定義に指定できる値の詳細については、[イメージ定義](../virtual-machines/shared-image-galleries.md#image-definitions)に関するページを参照してください。
+
     既存のイメージ定義を使用して、カスタム イメージの新しいバージョンを作成することも選択できます。
-    
-1. [イメージ バージョンを作成します](../virtual-machines/windows/shared-images-portal.md#create-an-image-version)。
-   - **[バージョン番号]** プロパティで使用する形式は *MajorVersion.MinorVersion.Patch* です。 Lab Services を使用してラボを作成してカスタム イメージを選択すると、最新バージョンのイメージが自動的に使用されます。 最新バージョンは、MajorVersion、MinorVersion、Patch の順で最高値に基づいて選択されます。
+
+1. [イメージ バージョンを作成します](../virtual-machines/image-version.md)。
+    - **[バージョン番号]** プロパティで使用する形式は *MajorVersion.MinorVersion.Patch* です。 Lab Services を使用してラボを作成してカスタム イメージを選択すると、最新バージョンのイメージが自動的に使用されます。 最新バージョンは、MajorVersion、MinorVersion、Patch の順で最高値に基づいて選択されます。
     - **[ソース]** で、 **[ディスクやスナップショット]** をドロップダウン リストから選択します。
     - **[OS ディスク]** プロパティで、前の手順で作成したディスクを選択します。
-    
+
     イメージ定義に指定できる値の詳細については、[イメージ バージョン](../virtual-machines/shared-image-galleries.md#image-versions)に関するページを参照してください。
 
 ## <a name="create-a-lab"></a>ラボを作成する
-   
+
 Lab Services で[ラボを作成](tutorial-setup-classroom-lab.md)し、共有イメージ ギャラリーからカスタム イメージを選択します。
 
-元の Hyper-V VM に OS をインストールした "*後*" でディスクを拡張した場合は、未割り当てのディスク領域を使用するように Linux のファイルシステムのパーティションを拡張する必要がある場合もあります。
-- ラボのテンプレート VM にログインし、[ディスク パーティションとファイル システムの拡張](../virtual-machines/linux/expand-disks.md#expand-a-disk-partition-and-filesystem)に関する記事に示されているような手順に従います。
-    
+元の Hyper-V VM に OS をインストールした "*後*" でディスクを拡張した場合は、未割り当てのディスク領域を使用するように Linux のファイル システムのパーティションの拡張も必要になる可能性があります。  ラボのテンプレート VM にログインし、[ディスク パーティションとファイル システムの拡張](../virtual-machines/linux/expand-disks.md#expand-a-disk-partition-and-filesystem)に関する記事に示されているような手順に従います。
+
 OS ディスクは、通常、 **/dev/sad2** パーティションに存在します。 OS ディスクのパーティションの現在のサイズを表示するには、**df -h** コマンドを使用します。
-    
+
 ## <a name="next-steps"></a>次のステップ
 
-* [共有イメージ ギャラリーの概要](../virtual-machines/shared-image-galleries.md)
-* [共有イメージ ギャラリーをアタッチまたはデタッチする](how-to-attach-detach-shared-image-gallery.md)
-* [共有イメージ ギャラリーを使用する](how-to-use-shared-image-gallery.md)
+- [共有イメージ ギャラリーの概要](../virtual-machines/shared-image-galleries.md)
+- [共有イメージ ギャラリーをアタッチまたはデタッチする](how-to-attach-detach-shared-image-gallery.md)
+- [共有イメージ ギャラリーを使用する](how-to-use-shared-image-gallery.md)

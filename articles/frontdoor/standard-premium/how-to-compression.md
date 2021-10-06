@@ -7,12 +7,12 @@ ms.service: frontdoor
 ms.topic: article
 ms.date: 02/18/2021
 ms.author: yuajia
-ms.openlocfilehash: 4b526d82465862b1c0d27aed6443c6d7199bfb5b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ca9c2e3b4e9873d4880385479b701d36c92238b0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101097908"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124750173"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-front-door-standardpremium-preview"></a>Azure Front Door Standard/Premium (プレビュー) でのファイル圧縮によるパフォーマンスの向上
 
@@ -29,6 +29,9 @@ ms.locfileid: "101097908"
 
 - 配信元サーバーで圧縮を有効にします。 Azure Front Door は圧縮ファイルを受け渡し、要求したクライアントに配信します。
 - Azure Front Door POP サーバーで直接、圧縮を有効にします (*即時圧縮*)。 この場合、Azure Front Door によってファイルが圧縮され、エンド ユーザーに送信されます。
+
+> [!NOTE]
+> 範囲要求は、さまざまなサイズに圧縮できます。 Azure Front Door では、どの GET HTTP 要求でも content-length 値を同じにする必要があります。 クライアントが `accept-encoding` ヘッダーを使用してバイト範囲要求を送信し、その結果、配信元からさまざまなコンテンツの長さで応答があった場合、Azure Front Door により 503 エラーが返されます。 配信元または Azure Front Door で圧縮を無効にするか、バイト範囲要求の要求から `accept-encoding` を削除するルール セット ルールを作成します。
 
 > [!IMPORTANT]
 > Azure Front Door 構成の変更は、ネットワーク全体に反映されるまでに最大で 10 分かかります。 今回初めて CDN エンドポイントの圧縮を設定した場合は、トラブルシューティングの前に、圧縮設定が確実にすべての POP に反映されるように 1 ～ 2 時間待機することを検討してください。

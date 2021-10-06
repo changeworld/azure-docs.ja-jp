@@ -11,12 +11,12 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-js
-ms.openlocfilehash: 92e1a38e962c80de53971523320cd168cfc66d06
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 8385d046a57fe5bb4faab1f31daaa05c9f207e9f
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121740659"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129456539"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>ダウンストリーム デバイスを Azure IoT Edge ゲートウェイに接続する
 
@@ -197,7 +197,7 @@ Windows ホストで OpenSSL または別の TLS ライブラリを使用して�
 
 このセクションでは、Azure IoT Java デバイス クライアントを IoT Edge ゲートウェイに接続するサンプル アプリケーションを示します。
 
-1. **Send-event** のサンプルを [Java 用 Azure IoT device SDK サンプル](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples)のページから入手します。
+1. **Send-event** のサンプルを [Java 用 Azure IoT device SDK サンプル](https://github.com/Azure/azure-iot-sdk-java/tree/main/device/iot-device-samples)のページから入手します。
 2. **readme.md** ファイルを読み、サンプルを実行するための前提として必要なものがすべて揃っていることを確認します。
 3. お使いのデバイス上でサンプルを実行する方法を示す手順については、SDK ドキュメントを参照してください。
 

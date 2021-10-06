@@ -11,12 +11,12 @@ ms.author: danil
 ms.reviewer: mathoma, bonova, danil
 ms.date: 8/18/2021
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 801bfe634281ffc795bd0f9c56089f915be52ac6
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.openlocfilehash: 7f9067d2f568c3f3d65b89508d85046970c9e334
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129083792"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129273421"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server と Azure SQL Managed Instance での T-SQL の相違点
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -60,7 +60,7 @@ SQL Managed Instance には自動バックアップがあるので、ユーザ�
   - サポートされるのは <ph id="ph1">`BACKUP TO URL`</ph> のみです。
   - <ph id="ph1">`FILE`</ph>、<ph id="ph2">`TAPE`</ph>、およびバックアップ デバイスはサポートされていません。
 - ほとんどの一般的な <ph id="ph1">`WITH`</ph> オプションがサポートされています。
-  - <ph id="ph1">`COPY_ONLY`</ph> は必須です。
+  - `COPY_ONLY` は必須です。
   - <ph id="ph1">`FILE_SNAPSHOT`</ph> はサポートされていません。
   - テープ オプション: <ph id="ph1">`REWIND`</ph>、<ph id="ph2">`NOREWIND`</ph>、<ph id="ph3">`UNLOAD`</ph>、<ph id="ph4">`NOUNLOAD`</ph> はサポートされていません。
   - ログ固有のオプション: <ph id="ph1">`NORECOVERY`</ph>、<ph id="ph2">`STANDBY`</ph>、<ph id="ph3">`NO_TRUNCATE`</ph> はサポートされていません。
@@ -70,7 +70,7 @@ SQL Managed Instance には自動バックアップがあるので、ユーザ�
 - SQL Managed Instance では、最大 32 個のストライプを使用するバックアップにインスタンス データベースをバックアップできます。バックアップの圧縮を使用した場合、このバックアップで最大 4 TB のデータベースに十分対応できます。
 - サービス管理 Transparent Data Encryption (TDE) を使用して暗号化されたデータベースでは、<ph id="ph1">`BACKUP DATABASE ... WITH COPY_ONLY`</ph> は実行できません。 サービス管理 TDE では、バックアップを内部の TDE のキーで暗号化するように強制します。 キーはエクスポートできないので、バックアップを復元することはできません。 自動バックアップとポイントインタイム リストアを使用するか、代わりに<bpt id="p1">[</bpt>顧客管理 (BYOK) TDE<ept id="p1">](../database/transparent-data-encryption-tde-overview.md#customer-managed-transparent-data-encryption---bring-your-own-key)</ept> を使用します。 また、データベースで暗号化を無効にすることができます。
 - Managed Instance 上で行われたネイティブ バックアップを SQL Server に復元することはできません。 これは、SQL Server のどのバージョンと比べても、Managed Instance の内部データベース バージョンが高いためです。
-- Azure ストレージとの間でデータベースのバックアップまたは復元を行うには、Azure Storage リソースへの制限付きアクセス権が付与される Shared Access Signature (SAS) URI を作成する必要があります。[詳細についてはこちらを参照してください](https://docs.microsoft.com/azure/azure-sql/managed-instance/restore-sample-database-quickstart#restore-from-a-backup-file-using-t-sql)。 これらのシナリオでのアクセス キーの使用はサポートされていません。
+- Azure ストレージとの間でデータベースのバックアップまたは復元を行うには、Azure Storage リソースへの制限付きアクセス権が付与される Shared Access Signature (SAS) URI を作成する必要があります。[詳細についてはこちらを参照してください](restore-sample-database-quickstart.md#restore-from-a-backup-file-using-t-sql)。 これらのシナリオでのアクセス キーの使用はサポートされていません。
 - SQL Managed Instance で <ph id="ph1">`BACKUP`</ph> コマンドを使用した場合の最大バックアップ ストライプ サイズは、最大 BLOB サイズである 195 GB です。 バックアップ コマンドでストライプ サイズを増やして、個々のストライプ サイズを減らし、この制限内に収まるようにします。
 
     > [!TIP]
@@ -84,7 +84,7 @@ SQL Managed Instance には自動バックアップがあるので、ユーザ�
 
 T-SQL を使用したバックアップについては、<bpt id="p1">[</bpt>BACKUP<ept id="p1">](/sql/t-sql/statements/backup-transact-sql)</ept> に関する記事をご覧ください。
 
-## <a name="security"></a>Security
+## <a name="security"></a>セキュリティ
 
 ### <a name="auditing"></a>監査
 
@@ -404,7 +404,7 @@ SQL Managed Instance のリンク サーバーがサポートするターゲッ�
 - <bpt id="p1">[</bpt>インスタンス間<ept id="p1">](../database/elastic-transactions-overview.md)</ept>書き込みトランザクションは、マネージド インスタンスでのみサポートされています。
 - リンク サーバーの削除で <ph id="ph1">`sp_dropserver`</ph> がサポートされています。 <bpt id="p1">[</bpt>sp_dropserver<ept id="p1">](/sql/relational-databases/system-stored-procedures/sp-dropserver-transact-sql)</ept> に関する記事をご覧ください。
 - SQL Server インスタンスでのみ、<ph id="ph1">`OPENROWSET`</ph> 関数を使用してクエリを実行できます。 これらは、マネージド、オンプレミス、仮想マシンのいずれかで配置できます。 <bpt id="p1">[</bpt>OPENROWSET<ept id="p1">](/sql/t-sql/functions/openrowset-transact-sql)</ept> に関する記事をご覧ください。
-- SQL Server インスタンスでのみ、<ph id="ph1">`OPENDATASOURCE`</ph> 関数を使用してクエリを実行できます。 これらは、マネージド、オンプレミス、仮想マシンのいずれかで配置できます。 プロバイダーとしてサポートされる値は、<ph id="ph1">`SQLNCLI`</ph>、<ph id="ph2">`SQLNCLI11`</ph>、<ph id="ph3">`SQLOLEDB`</ph> だけです。 たとえば <ph id="ph1">`SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee`</ph> です。 <bpt id="p1">[</bpt>OPENDATASOURCE<ept id="p1">](/sql/t-sql/functions/opendatasource-transact-sql)</ept> に関する記事をご覧ください。
+- SQL Server インスタンスでのみ、<ph id="ph1">`OPENDATASOURCE`</ph> 関数を使用してクエリを実行できます。 これらは、マネージド、オンプレミス、仮想マシンのいずれかで配置できます。 プロバイダーとしてサポートされる値は、<ph id="ph1">`SQLNCLI`</ph>、<ph id="ph2">`SQLNCLI11`</ph>、<ph id="ph3">`SQLOLEDB`</ph> だけです。 たとえば `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee` です。 <bpt id="p1">[</bpt>OPENDATASOURCE<ept id="p1">](/sql/t-sql/functions/opendatasource-transact-sql)</ept> に関する記事をご覧ください。
 - リンク サーバーを使用してネットワーク共有からファイル (Excel、CSV) を読み取ることはできません。 <bpt id="p1">[</bpt>BULK INSERT<ept id="p1">](/sql/t-sql/statements/bulk-insert-transact-sql#e-importing-data-from-a-csv-file)</ept>、<bpt id="p2">[</bpt>OPENROWSET<ept id="p2">](/sql/t-sql/functions/openrowset-transact-sql#g-accessing-data-from-a-csv-file-with-a-format-file)</ept> (Azure Blob Storage から CSV ファイルを読み取る)、または <bpt id="p3">[</bpt>Synapse Analytics 内のサーバーレス SQL プールを参照するリンク サーバー<ept id="p3">](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/)</ept>の使用を試行します。 この要求は、<bpt id="p1">[</bpt>SQL Managed Instance フィードバック項目<ept id="p1">](https://feedback.azure.com/forums/915676-sql-managed-instance/suggestions/35657887-linked-server-to-non-sql-sources)</ept><ph id="ph1">|</ph>で追跡します
 
 Azure SQL Managed Instance のリンク サーバーでは、SQL 認証のみがサポートされています。 AAD 認証はまだサポートされていません。

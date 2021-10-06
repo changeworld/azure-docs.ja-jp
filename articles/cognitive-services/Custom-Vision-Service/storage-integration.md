@@ -9,12 +9,12 @@ ms.subservice: custom-vision
 ms.topic: how-to
 ms.date: 06/25/2021
 ms.author: pafarley
-ms.openlocfilehash: f21313a357c5c86087d3505cfdf654d9958d3893
-ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
+ms.openlocfilehash: d247626607f5fd4b517d7436c21ae33ed5727220
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2021
-ms.locfileid: "112982368"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129353324"
 ---
 # <a name="integrate-azure-storage-for-notifications-and-backup"></a>通知とバックアップのために Azure Storage を統合する
 
@@ -39,7 +39,7 @@ Azure portal で Custom Vision トレーニング リソースに移動し、 **
 * モデルのバックアップ機能を使用する場合は、 **[ストレージ BLOB データ共同作成者]** ロールを選択し、Custom Vision トレーニング リソースをメンバーとして追加します。 **[Review + assign]\(確認と割り当て\)** を選択して完了します。
 * 通知キュー機能を使用する場合は、 **[ストレージ キュー データ共同作成者]** ロールを選択し、Custom Vision トレーニング リソースをメンバーとして追加します。 **[Review + assign]\(確認と割り当て\)** を選択して完了します。
 
-ロールの割り当てについては、「[Azure portal を使用して Azure ロールを割り当てる](https://review.docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)」を参照してください。
+ロールの割り当てについては、「[Azure portal を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 ### <a name="get-integration-urls"></a>統合 URL を取得する
 

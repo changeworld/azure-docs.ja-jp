@@ -2,17 +2,91 @@
 title: Azure Monitor のドキュメントの最新情報
 description: Azure Monitor のドキュメントの最新情報
 ms.topic: conceptual
-ms.date: 08/15/2021
-ms.openlocfilehash: 1db9662322c6e4d8ba16eb29b13689a44ad1278b
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.date: 09/07/2021
+ms.openlocfilehash: ff893ade0664df13c8e849957cb7d7877d91a910
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122252417"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124788422"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure Monitor のドキュメントの最新情報
 
 この記事では、Azure Monitor ドキュメントに対する重要な変更点を示します。
+
+## <a name="august-2021"></a>2021 年 8 月
+
+### <a name="agents"></a>エージェント
+
+**更新された記事**
+
+- [Log Analytics エージェントからの移行](agents/azure-monitor-agent-migration.md)
+- [Azure Monitor エージェントの概要](agents/azure-monitor-agent-overview.md)
+
+### <a name="alerts"></a>警告
+
+**更新された記事**
+
+- [Azure Monitor のメトリック警告に関する問題のトラブルシューティング](alerts/alerts-troubleshoot-metric.md)
+- [Azure CLI でメトリック アラートの監視を作成する](azure-cli-metrics-alert-sample.md)
+- [Azure Monitor を使用してアクティビティ ログ アラートを作成、表示、管理する](alerts/alerts-activity-log.md)
+
+
+### <a name="application-insights"></a>Application Insights
+
+**更新された記事**
+
+- [Azure Monitor Application Insights で Azure Functions を監視する](app/monitor-functions.md)
+- [Azure App Service のアプリケーション監視](app/azure-web-apps.md)
+- [ASP.NET Web サイトに Application Insights を構成する](app/asp-net.md)
+- [Application Insights 可用性テスト](app/availability-overview.md)
+- [.NET を使用した Application Insights のログ](app/ilogger.md)
+- [位置情報と IP アドレスの処理](app/ip-collection.md)
+- [URL ping テストを使用して可用性を監視する](app/monitor-web-app-availability.md)
+
+### <a name="essentials"></a>Essentials
+
+**更新された記事**
+
+- [Azure Monitor のサポートされるメトリック](essentials/metrics-supported.md)
+- [Azure リソース ログでサポートされているカテゴリ](essentials/resource-logs-categories.md)
+- [Linux VM のカスタム メトリックを InfluxData Telegraf エージェントを使用して収集する](essentials/collect-custom-metrics-linux-telegraf.md)
+
+### <a name="insights"></a>洞察
+
+**更新された記事**
+
+- [Azure Monitor Network Insights](insights/network-insights-overview.md)
+
+### <a name="logs"></a>ログ
+
+**新しい記事**
+
+- [ログのための Azure AD 認証](logs/azure-ad-authentication-logs.md)
+- [Azure portal を使用して Log Analytics ワークスペースを別のリージョンに移動する](logs/move-workspace-region.md)
+- [Azure Monitor の可用性ゾーン](logs/availability-zones.md)
+- [Azure CLI での Azure Monitor ログの管理](logs/azure-cli-log-analytics-workspace-sample.md)
+
+**更新された記事**
+
+- [Private Link のセットアップ設計](logs/private-link-design.md)
+- [Azure Monitor ログ専用クラスター](logs/logs-dedicated-clusters.md)
+- [Azure portal を使用して Log Analytics ワークスペースを別のリージョンに移動する](logs/move-workspace-region.md)
+- [プライベート リンクを構成する](logs/private-link-configure.md)
+- [Azure Private Link を使用して、ネットワークを Azure Monitor に接続する](logs/private-link-security.md)
+- [Azure Monitor ログ内の標準列](logs/log-standard-columns.md)
+- [Azure Monitor のカスタマー マネージド キー](logs/customer-managed-keys.md)
+- [Azure Monitor ログのデータ セキュリティ](logs/data-security.md)
+- [HTTP データ コレクター API を使用して Azure Monitor にログ データを送信する (プレビュー)](logs/data-collector-api.md)
+- [Azure Monitor でログ クエリの使用を開始する](logs/get-started-queries.md)
+- [Azure Monitor ログの概要](logs/data-platform-logs.md)
+- [Log Analytics のチュートリアル](logs/log-analytics-tutorial.md)
+
+### <a name="virtual-machines"></a>Virtual Machines
+
+**更新された記事**
+
+- [Azure Monitor を使用して仮想マシンを監視する: アラート](vm/monitor-virtual-machine-alerts.md)
 
 ## <a name="july-2021"></a>2021 年 7 月
 

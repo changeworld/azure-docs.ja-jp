@@ -8,16 +8,16 @@ author: shashankbarsin
 ms.author: shasb
 description: Kubernetes ディストリビューションの Arc 検証プログラムについて説明します
 keywords: Kubernetes, Arc, Azure, K8s, 検証
-ms.openlocfilehash: 6ebce59a16c994c676cfe81df4df4e9433d1fb70
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: f5057a7785ec77109d8fe8efb44e1015976786c8
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122966249"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128672858"
 ---
 # <a name="azure-arc-enabled-kubernetes-validation"></a>Azure Arc 対応 Kubernetes の検証
 
-Azure Arc 対応 Kubernetes は、すべての Cloud Native Computing Foundation (CNCF) 認定 Kubernetes クラスターで動作します。 また、Azure Arc チームは、主要な業界の Kubernetes オファリング プロバイダーと協力して、それらの Kubernetes ディストリビューションで Azure Arc 対応 Kubernetes を検証しています。 これらのプロバイダーによって将来リリースされる Kubernetes ディストリビューションのメジャーおよびマイナー バージョンは、Azure Arc 対応 Kubernetes との互換性が検証されます。
+Azure Arc 対応 Kubernetes は、すべての Cloud Native Computing Foundation (CNCF) 認定 Kubernetes クラスターで動作します。 また、Azure Arc チームは業界の主要な Kubernetes オファリング プロバイダーと協力して、それらの Kubernetes ディストリビューションでも Azure Arc 対応 Kubernetes を検証しています。 これらのプロバイダーによって将来リリースされる Kubernetes ディストリビューションのメジャーおよびマイナー バージョンは、Azure Arc 対応 Kubernetes との互換性が検証されることになります。
 
 ## <a name="validated-distributions"></a>検証済みのディストリビューション
 
@@ -33,7 +33,7 @@ Microsoft が提供する次の Kubernetes ディストリビューションお�
 | プロバイダー名 | ディストリビューション名 | Version |
 | ------------ | ----------------- | ------- |
 | RedHat       | [OpenShift Container Platform](https://www.openshift.com/products/container-platform) | [4.5.41 以降](https://docs.openshift.com/container-platform/4.5/release_notes/ocp-4-5-release-notes.html)、[4.6.35 以降](https://docs.openshift.com/container-platform/4.6/release_notes/ocp-4-6-release-notes.html)、[4.7.18 以降](https://docs.openshift.com/container-platform/4.7/release_notes/ocp-4-7-release-notes.html) |
-| VMware       | [Tanzu Kubernetes Grid](https://tanzu.vmware.com/kubernetes-grid) | Kubernetes バージョン: v1.17.5 |
+| VMware       | [Tanzu Kubernetes Grid](https://tanzu.vmware.com/kubernetes-grid) | TKGm 1.4.0; upstream K8s v1.21.2+vmware.1 <br>TKGm 1.3.1; upstream K8s v1.20.5_vmware.2 <br>TKGm 1.2.1; upstream K8s v1.19.3+vmware.1 |
 | Canonical    | [Charmed Kubernetes](https://ubuntu.com/kubernetes) | [1.19](https://ubuntu.com/kubernetes/docs/1.19/components) |
 | SUSE Rancher      | [Rancher Kubernetes Engine](https://rancher.com/products/rke/) | RKE CLI バージョン: [v 1.2.4](https://github.com/rancher/rke/releases/tag/v1.2.4)、Kubernetes バージョン: [1.19.6](https://github.com/kubernetes/kubernetes/releases/tag/v1.19.6))、[1.18.14](https://github.com/kubernetes/kubernetes/releases/tag/v1.18.14))、[1.17.16](https://github.com/kubernetes/kubernetes/releases/tag/v1.17.16))  |
 | Nutanix      | [Karbon](https://www.nutanix.com/products/karbon)    | バージョン 2.2.1 |
@@ -48,10 +48,10 @@ Azure Arc チームは、次のパブリック クラウド プロバイダー�
 
 ## <a name="scenarios-validated"></a>検証されたシナリオ
 
-準拠テストは、次のシナリオをカバーする Azure Arc 対応 Kubernetes 検証の一部として実行されます。
+Azure Arc 対応 Kubernetes 検証の一部として実行される準拠テストは、以下のシナリオをカバーします。
 
 1. Kubernetes クラスターを Azure Arc に接続する: 
-    * Azure Arc 対応 Kubernetes エージェント Helm Chart をクラスターにデプロイします。
+    * Azure Arc 対応 Kubernetes エージェント Helm chart をクラスターにデプロイします。
     * クラスターでマネージド システム ID (MSI) 証明書を設定します。
     * エージェントによってクラスターのメタデータが Azure に送信されます。
 

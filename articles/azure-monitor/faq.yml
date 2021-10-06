@@ -8,12 +8,12 @@ metadata:
   author: bwren
   ms.author: bwren
   ms.date: 10/08/2020
-  ms.openlocfilehash: 280a020b66ce20f8efdf124b92afa24bab0c9c13
-  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+  ms.openlocfilehash: 698bdf6fee3da05065ea4f918239a68bba5dc02d
+  ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/17/2021
-  ms.locfileid: "122252829"
+  ms.lasthandoff: 09/24/2021
+  ms.locfileid: "128548696"
 title: Azure Monitor についてよくあるご質問
 summary: >
   この Microsoft FAQ では、Azure Monitor についてよくあるご質問を紹介します。 他に何かご質問がある場合は、[ディスカッション フォーラム](/answers/questions/topics/single/24223.html)にアクセスして質問を投稿してください。 よく寄せられる質問については、すばやく簡単に見つけることができるように、この記事に追加していきます。
@@ -218,8 +218,8 @@ sections:
     answer: >
       「[Log Analytics エージェントからの移行](./agents/azure-monitor-agent-migration.md)」を参照してください
   - question: >
-      System Center Operations Manager (SCOM) を監視するにあたり、Log Analytics エージェント (MMA) から Azure Monitor エージェント (AMA) へのアップグレード パスを教えてください。 SCOM のシナリオに AMA を使用できますか?
-    answer: "AMA が 2 つの System Center Operations Manager (SCOM) 関連の監視シナリオに与える影響をこちらに示します。\n- **シナリオ 1**: 監視の対象が SCOM の Windows オペレーティング システムである場合、アップグレード パスは、他のマシンと同じです。この場合は、必要な機能パリティが AMA で満たされた時点ですぐに、MMA (バージョン 2016、2019) から AMA に移行することができます。\n- **シナリオ 2**: SCOM を Log Analytics ワークスペースにオンボーディングまたは接続する場合、Log Analytics または Azure Monitor の SCOM コネクタによって実現されるため、SCOM 管理サーバーには MMA も AMA もインストールする必要はありません。 そのため、AMA の観点から見れば、このユース ケースへの影響はありません。  \n\n> [!NOTE] \n> MMA と AMA がサイド バイ サイドで実行されていても、上記の 2 つのシナリオには一切影響しません。\n"
+      System Center Operations Manager を監視するにあたり、Log Analytics エージェント (MMA) から Azure Monitor エージェント (AMA) へのアップグレード パスを教えてください。 System Center Operations Manager シナリオに AMA を使用できますか?
+    answer: "AMA が 2 つの System Center Operations Manager 関連の監視シナリオに与える影響をこちらに示します。\n- **シナリオ 1**: 監視の対象が System Center Operations Manager の Windows オペレーティング システムである場合、アップグレード パスは、他のマシンと同じです。この場合は、必要な機能パリティが AMA で満たされた時点ですぐに、MMA (バージョン 2016、2019) から AMA に移行することができます。\n- **シナリオ 2**: System Center Operations Manager を Log Analytics ワークスペースにオンボーディングまたは接続する場合、Log Analytics または Azure Monitor の System Center Operations Manager コネクタによって実現されるため、SCOM 管理サーバーには MMA も AMA もインストールする必要はありません。 そのため、AMA の観点から見れば、このユース ケースへの影響はありません。  \n\n> [!NOTE] \n> MMA と AMA がサイド バイ サイドで実行されていても、上記の 2 つのシナリオには一切影響しません。\n"
   - question: >
       新しい Azure Monitor エージェントは各種の Log Analytics ソリューションと Azure サービス (Security Center、Sentinel など) のデータ収集をサポートしますか?
     answer: "[プレビューで現在利用可能な AMA 拡張機能](./agents/azure-monitor-agent-overview.md#supported-services-and-features)の一覧をご確認ください。 こちらは、新しい Azure Monitor エージェントを代わりに使用した場合に現在利用できるのと同じソリューションとサービスです。 追加の拡張機能がソリューション/サービス用にインストールされる場合があります。これは、ソリューション/サービスで必要とされる追加のデータ収集または変換/処理を実行してから、AMA を使用して最終的なデータを Azure Monitor にルーティングするためです。 \n\n以下の図は、**新しい拡張アーキテクチャ** を説明したものです。\n\n![拡張機能アーキテクチャ](agents/media/azure-monitor-agent/extensibility-arch-new.png)\n"
@@ -745,45 +745,56 @@ sections:
 - name: OpenTelemetry
   questions:
   - question: >
-      OpenTelemetry とは
+      OpenTelemetry とは何ですか?
     answer: >
       監視のための新しいオープンソース標準です。 詳細については、[https://opentelemetry.io/](https://opentelemetry.io/) をご覧ください。
   - question: >
-      Microsoft/Azure Monitor が OpenTelemetry に投資しているのはなぜですか?
+      Microsoft/Azure Monitor Application Insights が OpenTelemetry に投資しているのはなぜですか?
     answer: >
-      次の 3 つの理由から、お客様により良いサービスを提供できると確信しています。
-         1. より多くの顧客シナリオのサポートを可能にする。
-         2. ベンダー ロックインの心配をせずにインストルメント化する。
-         3. 顧客の透明性とエンゲージメントを向上させる。
+      Microsoft は、OpenTelemetry への最大のコントリビューターの 1 つです。
 
-      また、[オープン ソースを採用する](https://opensource.microsoft.com/)という Microsoft の戦略とも一致しています。
+
+      OpenTelemetry の重要な価値提案は、ベンダーに中立であることと、言語間で一貫した API/SDK を提供することです。
+
+
+      時間が経つにつれ、OpenTelemetry により、Azure Monitor のお客様は、Microsoft が[サポートしている言語](https://review.docs.microsoft.com/azure/azure-monitor/app/platforms)以外の言語で記述されたアプリケーションを監視できるようになり、お客様が使用できる[インストルメンテーション ライブラリ](https://opentelemetry.io/docs/concepts/components/#instrumentation-libraries)の数が増加すると確信してています。 特に、OpenTelemetry .NET SDK は、前身である Application Insights SDK よりも大幅にパフォーマンスが向上しています。
+
+
+      最後に、OpenTelemetry は[オープン ソースを採用する](https://opensource.microsoft.com/)という Microsoft の戦略に一致しています。
   - question: >
-      OpenTelemetry で提供される付加価値は何ですか?
+      OpenTelemetry の状態はどうなっていますか?
     answer: >
-      上記の理由に加えて、OpenTelemetry は、より効率的かつ大規模であり、言語間で一貫した設計または構成が提供されます。
+      完全な監視ソリューションには、監視の 3 つの柱すべてが含まれています。 OpenTelemetry コミュニティは[分散トレース](https://medium.com/opentelemetry/opentelemetry-specification-v1-0-0-tracing-edition-72dd08936978)に熱心に取り組んでおり、仕様とサポートされている言語の実装は stable (安定) としてマークされています。 [メトリック](https://medium.com/opentelemetry/opentelemetry-metrics-roadmap-f4276fd070cf)と[ログ](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/logs/overview.md)はまだ進行中です。 Azure Monitor は、OpenTelemetry ベースのサポートされているテレメトリ ソリューションに取り組んでいます。これには分散トレースのみが含まれていますが、他の柱が OpenTelemetry コミュニティで成熟するにつれて、他の柱を追加することを予定しています。
   - question: >
       OpenTelemetry をテストするにはどうしたらよいですか?
     answer: >
       [https://aka.ms/AzMonOtel](https://aka.ms/AzMonOtel) で Azure Monitor Application Insights 早期導入者コミュニティにサインアップして参加してください。
   - question: >
-      OpenTelemetry のコンテキストで GA はどういう意味ですか?
+      操作方法 OpenTelemetry が自分に適しているかどうかを判断するにはどうすればよいですか?
     answer: >
-      OpenTelemetry コミュニティは、[ここで](https://medium.com/opentelemetry/ga-planning-f0f6d7b5302)一般提供 (GA) を定義しています。 ただし、OpenTelemetry の "GA" は、既存の Application Insights SDK との機能パリティを意味するものではありません。 Azure Monitor では、[事前に集計されたメトリック](app/pre-aggregated-metrics-log-metrics.md#pre-aggregated-metrics)、[ライブ メトリック](app/live-stream.md)、[アダプティブ サンプリング](app/sampling.md#adaptive-sampling)、[プロファイラー](app/profiler-overview.md)、[スナップショット デバッガー](app/snapshot-debugger.md)などの機能を必要とするお客様に対しては、OpenTelemetry SDK の機能が成熟するまで、現在の Application Insights SDK が今後も推奨されます。
+      OpenTelemetry コミュニティでは、[stable (安定版) または experimental (試験段階)](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/versioning-and-stability.md) を使用して、ソフトウェアの成熟度を示します。 これとは別に、Azure Monitor では "パブリック プレビュー" と "GA" を使用して安定性を示し、コミットメントをサポートします。
+
+
+      Azure Monitor Application Insights の既存のお客様の場合、OpenTelemetry への移行はまだお勧め **しません** ([2020 年 11 月に GA になった Microsoft の ](https://azure.microsoft.com/updates/java-agent-application-insights-ga/) [OpenTelemetry ベースのオファリング](./app/java-in-process-agent.md)をすべての人に推奨している Java アプリケーションを除く)。
+
+
+      C# ([ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) および[ASP.NET Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)) および [Javascript (Node.js)](https://docs.microsoft.com/azure/azure-monitor/app/nodejs) または [OpenCensus Python](https://docs.microsoft.com/en-us/azure/azure-monitor/app/opencensus-python) の現在の ApplicationInsights SDK では、Application Insights で最も機能豊富なエクスペリエンスが提供されます。
+
+
+      すぐにでも OpenTelemetry への移行を検討する可能性のあるシナリオには、Azure Monitor と別のベンダーに同時にテレメトリを送信する、[既存のインストルメンテーション プロトコル](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver)を収集して収束する、OpenTelemetry-Collector で利用可能な機能を活用するなどがあります。 たとえば、お客様は、[バッチ プロセッサ](https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor/batchprocessor)、[末尾ベースのサンプラー](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor)、[属性プロセッサ](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/attributesprocessor)の使用を報告しています。 既存の Application Insights SDK にも同様の機能が存在しますが、この処理をエージェントのダウンストリームでホストすることを好むお客様もいます。
+
+
+      オープンソース リポジトリで、[C#](https://github.com/Azure/azure-sdk-for-net/tree/main/sdk/monitor/Azure.Monitor.OpenTelemetry.Exporter)、[JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/monitor/monitor-opentelemetry-exporter)、および [Python](https://github.com/Azure/azure-sdk-for-python/blob/main/sdk/monitor/azure-monitor-opentelemetry-exporter/) の OpenTelemetry ベースの Azure Monitor エクスポーター向けの進捗状況を確認できます。
   - question: >
       運用環境でプレビュー ビルドを使用できますか?
     answer: >
       それはお勧めしません。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
   - question: >
-      OpenTelemetry SDK と自動インストルメンテーションの違いは何ですか?
-    answer: >
-      OpenTelemetry の仕様で [SDK](https://github.com/open-telemetry/opentelemetry-specification/blob/master/specification/glossary.md#telemetry-sdk) は定義されています。 つまり、"SDK" は、アプリケーションのさまざまなコンポーネントにわたってテレメトリ データを収集し、エクスポーターを介して Azure Monitor にデータを送信する、言語固有のパッケージです。
-
-
-      自動インストルメンテーション (バイトコード インジェクション、コード不要、またはエージェントベースと呼ばれることもあります) の概念は、コードを変更せずにアプリケーションをインストルメント化する機能を指します。 例については、[OpenTelemetry Java 自動インストルメンテーションの Readme](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/master/README.md) で詳細を確認してください。
+      手動インストルメンテーションと自動インストルメンテーションの違いは何ですか?
+    answer: "手動インストルメンテーションは OpenTelemetry API に対するコーディングであり、通常はアプリケーションに言語固有の SDK をインストールすることで構成されます。 \"手動\" は、分散トレースのスパンを定義するために複雑なコードを記述する必要があるという意味ではありません (選択の余地は残されています)。 OpenTelemetry のコントリビューターによって管理されている豊富で[拡大しているインストルメンテーション ライブラリのセット](https://opentelemetry.io/registry/)により、共通のフレームワークとライブラリ全体でテレメトリ信号を簡単にキャプチャできます。 \n\n自動インストルメンテーションは、アプリケーションのコードに触れることなく、構成を通じてテレメトリ収集を可能にします。 非常に便利ですが、構成が難しい傾向があり、すべての言語で利用できるわけではありません。\n\nOpenTelemetry の自動インストルメンテーションの取り組みには、Microsoft が [Java 3.X](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) と呼ばれるディストリビューションを介してサポートする Java オファリングが含まれます。 [Python](https://github.com/open-telemetry/opentelemetry-python/tree/main/opentelemetry-instrumentation) と [.NET](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation) には、現在、Microsoft がサポートしていない試験段階の自動インストルメンテーションの取り組みがあります。 その他のすべての OpenTelemetry 言語は、手動インストルメンテーションにのみ重点を置いています。\n"
   - question: >
-      OpenTelemetry コレクターとは何ですか?
-    answer: >
-      OpenTelemetry コレクターについては、[GitHub の readme](https://github.com/open-telemetry/opentelemetry-collector#opentelemetry-collector) で説明されています。 現在、Microsoft は OpenTelemetry コレクターを利用しておらず、Azure Monitor の Application Insights に送信するダイレクト エクスポーターに依存しています。
+      OpenTelemetry-Collector を使用できますか?
+    answer: "Microsoft がアプリケーション監視のためのエージェントベースのアプローチをまだ正式にサポートしていないにもかかわらず、一部のお客様は、エージェントの代替として [OpenTelemetry-Collector](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/design.md) を使用し始めています。 その間、オープン ソース コミュニティは [OpenTelemetry-Collector Azure Monitor エクスポーター](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuremonitorexporter)を提供してきました。一部のお客様は、これを使用してデータを Azure Monitor Application Insights に送信しています。\n\n詳細と予定はまだ公表されていませんが、Microsoft では将来的にエージェントベースのアプローチをサポートする予定です。 Microsoft の目的は、[OpenTelemetry プロトコル (OTLP)](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/README.md) を介して、OpenTelemetry でサポートされている任意の言語が Azure Monitor に送信するためのパスを提供することです。 これにより、お客様は、[サポートされている言語](https://review.docs.microsoft.com/azure/azure-monitor/app/platforms)以外の言語で記述されたアプリケーションを監視できるようになります。 \n"
   - question: >
       OpenCensus と OpenTelemetry の違いは何ですか?
     answer: >
@@ -1078,5 +1089,5 @@ sections:
   - question: >
       データはどのくらいの頻度で収集されますか
     answer: >
-      データ収集の頻度はカスタマイズできます。 既定の頻度の詳細については、「[SQL Insights によって収集されたデータ](../insights/../azure-monitor/insights/sql-insights-overview.md#data-collected-by-sql-insights)」を参照してください。頻度をカスタマイズする手順については、 「[SQL 監視プロファイルの作成](../insights/../azure-monitor/insights/sql-insights-enable.md#create-sql-monitoring-profile)」を参照してください。
+      データ収集の頻度はカスタマイズできます。 既定の頻度の詳細については、「[SQL Insights によって収集されたデータ](../insights/../azure-monitor/insights/sql-insights-overview.md#collected-data)」を参照してください。頻度をカスタマイズする手順については、 「[SQL 監視プロファイルの作成](../insights/../azure-monitor/insights/sql-insights-enable.md#create-sql-monitoring-profile)」を参照してください。
 additionalContent: "\n## <a name=\"next-steps\"></a>次のステップ\n\n質問の回答がここで見つからない場合は、次のフォーラムで他の質問と回答を参照できます。\n\n- [Log Analytics](/answers/topics/azure-monitor.html)\n- [Application Insights](/answers/topics/azure-monitor.html)\n\nAzure Monitor に関する一般的なフィードバックについては、[フィードバック フォーラム](https://feedback.azure.com/forums/34192--general-feedback)にアクセスしてください。"

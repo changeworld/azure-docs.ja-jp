@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.devlang: php
 ms.date: 9/21/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 3a2f51d0d15ebd00335f7685d3983e527a3e8b7d
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 8e85133b8c476f2de046a8396ba171d563751bd7
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "122643383"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "128579767"
 ---
 # <a name="tutorial-build-a-php-laravel-and-mysql-flexible-server-preview-app-in-azure-app-service"></a>チュートリアル:Azure App Service で PHP (Laravel) と MySQL フレキシブル サーバー (プレビュー) のアプリを構築する
 
@@ -33,7 +33,8 @@ ms.locfileid: "122643383"
 > * データ モデルを更新し、アプリを再デプロイする
 > * Azure Portal でアプリを管理する
 
-[Azure サブスクリプション](../../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing)をお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)を作成してください。
+
+[!INCLUDE [flexible-server-free-trial-note](../includes/flexible-server-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -284,7 +285,7 @@ FTP およびローカルの Git では、"デプロイ ユーザー" を使用�
 
 デプロイ ユーザーを構成するには、Azure Cloud Shell で [az webapp deployment user set](/cli/azure/webapp/deployment/user#az_webapp_deployment_user_set) コマンドを実行します。 _&lt;username>_ と _&lt;password>_ を、デプロイ ユーザーのユーザー名とパスワードに置き換えます。
 
-ユーザー名は、Azure 内で一意である必要があり、ローカル Git プッシュの場合は "\@" シンボルを含めることはできません。
+ユーザー名は、Azure 内で一意である必要があります。ローカル Git プッシュの場合、"@" 記号を含めることはできません。
 パスワードは長さが 8 文字以上で、文字、数字、記号のうち 2 つを含む必要があります。
 
 ```bash
@@ -332,7 +333,7 @@ Local git is configured with url of 'https://<username>@<app-name>.scm.azurewebs
 Git デプロイが有効な、空の新しい Web アプリが作成されました。
 
 > [!NOTE]
-> Git リモートの URL は、deploymentLocalGitUrl プロパティに、 https://<username>@<app-name>.scm.azurewebsites.net/<app-name>.git という形式で表示されます。 この URL は後で必要になるので保存しておいてください。
+> Git リモートの URL は deploymentLocalGitUrl プロパティに `https://<username>@<app-name>.scm.azurewebsites.net/<app-name>.git` 形式で出力されます。 この URL は後で必要になるので保存しておいてください。
 
 ### <a name="configure-database-settings"></a>データベース設定を構成する
 

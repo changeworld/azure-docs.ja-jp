@@ -1,6 +1,6 @@
 ---
 title: Azure Media Services の規制コンプライアンス
-description: Azure Media Services は Azure Government に準拠しています。
+description: Azure Media Services は、Azure Government のお客様がコンプライアンス義務を果たすのに役立ちます。
 services: media-services
 documentationcenter: ''
 author: IngridAtMicrosoft
@@ -9,36 +9,42 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 09/11/2021
 ms.author: inhenkel
-ms.openlocfilehash: 978af4754e6e083e8bf5375ade84891019abccca
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 6e2276fcf06909d46808ebd7971096831dc4d094
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106068583"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128641324"
 ---
 # <a name="media-services-regulatory-compliance"></a>Azure Media Services の規制コンプライアンス
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-Azure Media Services は、米国連邦政府の Risk & Authorization Management Program (FedRAMP) と米国国防総省の厳しい要件の情報の影響レベル 2 から 5 までを満たしています。 Azure Government、Office 365 U.S.Government、Dynamics 365 Government などの保護されたサービスをデプロイすることで、連邦機関と防衛機関は豊富な準拠サービスを使用できます。
+Media Services は、米国連邦政府の Risk & Authorization Management Program (FedRAMP) と米国国防総省 (DoD) クラウド コンピューティング セキュリティ要件ガイド (SRG) 影響レベル (IL) 2、IL4、IL5 の厳しい要件を満たしています。 認可されたサービスを Azure Government、Office 365 GCC High および DoD、Dynamics 365 US Government にデプロイすると、連邦機関と防衛機関は、コンプライアンス義務を果たしながら、豊富なクラウド サービスを使用できます。
 
-## <a name="fedramp-and-us-department-of-defense-compliance"></a>FedRAMP と米国国防総省のコンプライアンス
+## <a name="fedramp-and-dod-compliance"></a>FedRAMP および DoD コンプライアンス
 
-Azure Media Services Public サービスは、国防総省のクラウド コンピューティング セキュリティ要件ガイド 2 (DoD CC SRG IL 2) と FedRAMP High に準拠しています。
+Azure Public の Media Services では、次が管理されます。
 
-Azure Media Services Government サービスは、DoD CC SRG IL 2、DoD CC SRG IL 4、DoD CC SRG IL 5、FedRAMP High に準拠しています。
+- FedRAMP High Provisional Authorization to Operate (P-ATO)
+- DoD IL2 Provisional Authorization (PA)
 
-2020 年は、3PAO と JAB による Azure Media Services のレビューが計画されていません。
+Azure Government の Media Services では、次が管理されます。
 
-Azure サービスのコンプライアンスの詳細については、「[FedRAMP および DoD CC SRG 監査スコープ別の Azure サービス](../../azure-government/compliance/azure-services-in-fedramp-auditscope.md)」を参照してください。
+- FedRAMP High P-ATO
+- DoD IL2 PA
+- DoD IL4 PA
+- DoD IL5 PA
+
+米国政府機関向けの Azure コンプライアンス対応の詳細については、Azure [Fedramp High](/azure/compliance/offerings/offering-fedramp)、[DoD IL2](/azure/compliance/offerings/offering-dod-il2)、[DoD IL4](/azure/compliance/offerings/offering-dod-il4)、[DoD IL5](/azure/compliance/offerings/offering-dod-il5) のドキュメントを参照してください。 FedRAMP および DoD 監査スコープについては、[監査スコープ別のクラウド サービス](../../azure-government/compliance/azure-services-in-fedramp-auditscope.md)に関するページを参照してください。
 
 ## <a name="azure-compliance-documentation"></a>Azure コンプライアンス ドキュメント
 
-組織がグローバル、米国政府、地域、金融サービス、健康、メディア、および製造に関する法律または規制基準に準拠する必要がある場合は、[Azure コンプライアンス ドキュメント](../../compliance/index.yml)を参照してください。
+規制の対象となる業界や世界中の市場における各自のコンプライアンス義務を満たすことを支援するために、Azure では、その幅の広さ ([コンプライアンス認証](/azure/compliance/offerings/)の総数) と深さ (評価対象である[顧客向けサービス](https://azure.microsoft.com/services/)の数) の両方に関して、業界最大のコンプライアンス ポートフォリオを保持しています。 サービスの提供状況については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」を参照してください。
 
-また、監査レポート、プライバシーと一般データ保護規則 (GDPR) のチェックリスト、コンプライアンスのブループリント、国と地域のガイドライン、実装とマッピング、ホワイト ペーパーとアナリスト レポートなど、追加のコンプライアンス リソースも紹介します。
+Azure のコンプライアンス認証は、4 つのセグメント (グローバルに適用可能、米国政府、業界固有、地域/国に固有) にグループ化されています。  コンプライアンス認証は、独立したサードパーティの監査企業による正式な認証、証明、検証、承認、および評価の他に、Microsoft による契約の修正、自己評価、顧客向けのガイダンス ドキュメントを含むさまざまな種類の保証に基づいています。 詳細については、[Azure コンプライアンスのドキュメント](../../compliance/index.yml)を参照してください。 また、監査レポート、プライバシーと一般データ保護規則 (GDPR) のチェックリスト、コンプライアンスのブループリント、国と地域のガイドライン、実装とマッピング、ホワイト ペーパーとアナリスト レポートなど、追加のコンプライアンス リソースも紹介します。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: Azure Machine Learning のコンピューティングとデータ ストアが保存時および転送中のデータの暗号化を提供する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: enterprise-readiness
 ms.topic: conceptual
 ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
 ms.date: 08/02/2021
-ms.openlocfilehash: 2a838d2c1206cbc1a73e00d3ff41337400a08676
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e367f6685e73cb6cdfd9e777e6cb554c186c616c
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121742074"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129429226"
 ---
 # <a name="data-encryption-with-azure-machine-learning"></a>Azure Machine Learning を使用したデータの暗号化
 
@@ -36,6 +36,8 @@ Azure Machine Learning は、モデルをトレーニングし、推論を実行
 * そのサブスクリプションで以前にクラスターを作成していない場合に、Azure Machine Learning コンピューティング クラスターでローカル スクラッチ ディスクの暗号化を開始します。 それ以外の場合は、コンピューティング クラスターのスクラッチ ディスクの暗号化を有効にするためにサポート チケットを作成する必要があります。 
 * 実行間でローカル スクラッチ ディスクをクリーンアップします
 * Key Vault を使用して、ストレージ アカウント、コンテナー レジストリ、SSH アカウントの資格情報を実行層からコンピューティング クラスターに安全に渡します。
+
+このフラグが True に設定されていると、1 つの影響として、問題のトラブルシューティングが困難になる可能性があります。 これは、このフラグが True である場合は、一部のテレメトリが Microsoft に送信されず、成功率または問題の種類への可視性が低下し、それによって事前に対応できなくなる可能性があるために発生することがあります。
 
 > [!TIP]
 > `hbi_workspace` フラグは、転送中の暗号化には影響せず、保存時の暗号化だけです。

@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: aa51a489fd1dc7a3e7188239ea200b6fb95b3ed1
-ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+ms.openlocfilehash: 534ea1a7a4e1356f44c97dc69e1a6dabbf9cae12
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123271973"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128637144"
 ---
 # <a name="discover-assess-and-migrate-google-cloud-platform-gcp-vms-to-azure"></a>Google Cloud Platform (GCP) VM の検出、評価、および Azure への移行
 
@@ -138,7 +138,7 @@ Azure Migrate: Server Migration では、レプリケーション アプライ�
 
 2. **[マシンの検出]**  >  **[マシンは仮想化されていますか?]** で、 **[非仮想化/その他]** をクリックします。
 3. **[ターゲット リージョン]** で、マシンの移行先にする Azure リージョンを選択します。
-4. **[移行先のリージョンが <リージョン名> であることを確認してください]** を選択します。
+4. **[移行先のリージョンが \<region-name\> であることを確認してください]** を選択します。
 5. **[リソースの作成]** をクリックします。 これで、Azure Site Recovery コンテナーがバックグラウンドで作成されます。
     - Azure Migrate Server Migration を使用した移行を既に設定してある場合は、リソースが以前に設定されているため、ターゲット オプションを構成できません。
     - このボタンのクリック後は、このプロジェクトのターゲット リージョンを変更することはできません。

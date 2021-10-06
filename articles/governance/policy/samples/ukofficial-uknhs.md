@@ -1,15 +1,15 @@
 ---
 title: UK OFFICIAL および UK NHS に関する規制コンプライアンスの詳細
 description: UK OFFICIAL および UK NHS 規制コンプライアンスの組み込みイニシアティブの詳細。 それぞれのコントロールは、評価を支援する 1 つまたは複数の Azure Policy 定義に対応します。
-ms.date: 09/03/2021
+ms.date: 09/17/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: aa822b546937534c35cee97fcad0a7b7b38c2e31
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 272b6050bc5c680108591ebca31c81949bb8068c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123475676"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128602804"
 ---
 # <a name="details-of-the-uk-official-and-uk-nhs-regulatory-compliance-built-in-initiative"></a>UK OFFICIAL および UK NHS 規制コンプライアンスの組み込みイニシアティブの詳細
 
@@ -51,7 +51,7 @@ ms.locfileid: "123475676"
 |[Automation アカウント変数は、暗号化する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3657f5a0-770e-44a3-b44e-9431ba1e9735) |機密データを格納するときには、Automation アカウント変数資産の暗号化を有効にすることが重要です |Audit、Deny、Disabled |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Automation/Automation_AuditUnencryptedVars_Audit.json) |
 |[Service Fabric クラスターでは、ClusterProtectionLevel プロパティを EncryptAndSign に設定する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F617c02be-7f02-4efd-8836-3180d47b6c68) |Service Fabric では、プライマリ クラスターの証明書を使用して、ノード間通信に 3 つのレベルの保護 (None、Sign、EncryptAndSign) が提供されます。 すべてのノード間メッセージが暗号化され、デジタル署名されるように保護レベルを設定します |Audit、Deny、Disabled |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Service%20Fabric/ServiceFabric_AuditClusterProtectionLevel_Audit.json) |
 |[Transparent Data Encryption を SQL データベース上で有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F17k78e20-9358-41c9-923c-fb736d382a12) |保存データを保護し、コンプライアンス要件を満たすには、Transparent Data Encryption を有効にする必要があります |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlDBEncryption_Audit.json) |
-|[コンピューティングとストレージのリソース間で一時ディスク、キャッシュ、データ フローを仮想マシンによって暗号化する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0961003e-5a0a-4549-abde-af6a37f2724d) |ディスク暗号化が有効になっていない仮想マシンが、推奨設定として Azure Security Center によって監視されます。 |AuditIfNotExists、Disabled |[2.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_UnencryptedVMDisks_Audit.json) |
+|[コンピューティングとストレージのリソース間で一時ディスク、キャッシュ、データ フローを仮想マシンによって暗号化する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0961003e-5a0a-4549-abde-af6a37f2724d) |既定では、仮想マシンの OS とデータのディスクは、保存時にプラットフォーム マネージド キーを使用して暗号化されます。 一時ディスク、データ キャッシュ、コンピューティングとストレージの間を流れているデータは暗号化されません。 次のような場合は、この推奨事項を無視してください。1. ホストでの暗号化を使用している場合。または 2. マネージド ディスクでのサーバー側暗号化がセキュリティ要件を満たしている場合。 詳細については、「[Azure Disk Storage のサーバー側暗号化](../../../virtual-machines/disk-encryption.md)」および[さまざまなディスク暗号化オファリング](../../../virtual-machines/disk-encryption-overview.md#comparison)に関する記事を参照してください。 |AuditIfNotExists、Disabled |[2.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_UnencryptedVMDisks_Audit.json) |
 
 ## <a name="operational-security"></a>運用上のセキュリティ
 

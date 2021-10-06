@@ -7,12 +7,12 @@ ms.date: 06/29/2021
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: c1c4490b89a960d89cb1678c96391faf0ac4cc5b
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 3d3f8ee754f371680cf5e3420946a732e5060f37
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113108542"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129456216"
 ---
 # <a name="how-to-do-proof-of-possession-for-x509-ca-certificates-with-your-device-provisioning-service"></a>デバイス プロビジョニング サービスで X.509 CA 証明書の所有証明を行う方法
 
@@ -73,7 +73,7 @@ ms.locfileid: "113108542"
 Microsoft では、署名された検証証明書の作成に役立つツールとサンプルが提供されています。 
 
 - **Azure IoT Hub C SDK** は、開発用の CA 証明書とリーフ証明書を作成し、確認コードを使って所有証明を実行するための、PowerShell (Windows) スクリプトと Bash (Linux) スクリプトを提供します。 システムに関連する[ファイル](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates)を作業フォルダーにダウンロードし、[CA 証明書の管理の readme](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) の説明に従って、CA 証明書で所有証明を実行します。 
-- **Azure IoT Hub C# SDK** には [グループ証明書の検証のサンプル](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/service/GroupCertificateVerificationSample)が含まれており、所有証明に使うことができます。
+- **Azure IoT Hub C# SDK** には [グループ証明書の検証のサンプル](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/main/provisioning/Samples/service/GroupCertificateVerificationSample)が含まれており、所有証明に使うことができます。
  
 > [!IMPORTANT]
 > 所有証明の実行に加えて、前に示した PowerShell スクリプトと Bash スクリプトでは、デバイスの認証とプロビジョニングに使うことができるルート証明書、中間証明書、およびリーフ証明書も作成できます。 これらの証明書は開発にのみ使ってください。 運用環境では使わないでください。 
@@ -92,4 +92,4 @@ Microsoft では、署名された検証証明書の作成に役立つツール�
 ## <a name="next-steps"></a>次のステップ
 
 - ポータルを使って登録グループを作成する方法について詳しくは、「[Azure Portal でデバイス登録を管理する方法](how-to-manage-enrollments.md)」をご覧ください。
-- サービス SDK を使って登録グループを作成する方法について詳しくは、「[Azure デバイス プロビジョニング サービス SDK でデバイスの登録を管理する方法](./quick-enroll-device-x509-java.md)」をご覧ください。
+- サービス SDK を使って登録グループを作成する方法について詳しくは、「[Azure デバイス プロビジョニング サービス SDK でデバイスの登録を管理する方法](./quick-enroll-device-x509.md)」をご覧ください。

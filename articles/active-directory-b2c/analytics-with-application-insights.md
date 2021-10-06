@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
-ms.date: 01/29/2021
+ms.date: 08/24/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: a296babaafdee7939d462a356b9a3087e5e8990f
-ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+ms.openlocfilehash: f58b114431ba1e402afa26a2c63409bd69ab1599
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122777776"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128570219"
 ---
 # <a name="track-user-behavior-in-azure-ad-b2c-by-using-application-insights"></a>Application Insights を使用して Azure AD B2C でのユーザーの動作を追跡する
 

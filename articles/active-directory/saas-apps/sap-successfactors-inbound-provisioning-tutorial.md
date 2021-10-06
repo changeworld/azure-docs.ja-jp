@@ -1,7 +1,6 @@
 ---
-title: チュートリアル:AD と Azure AD での SuccessFactors インバウンド プロビジョニングの構成 | Microsoft Docs
+title: 'チュートリアル: AD と Azure AD での SuccessFactors インバウンド プロビジョニングの構成'
 description: SuccessFactors からの受信プロビジョニングを構成する方法について説明します
-services: active-directory
 author: cmmdesai
 manager: CelesteDG
 ms.service: active-directory
@@ -10,12 +9,12 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 01/19/2021
 ms.author: chmutali
-ms.openlocfilehash: 7b59e0ae2fbb73f341d5254fd2804d50ad141a19
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d4a1350999258b47db4a5188fa9eab92aa56e567
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98953803"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128604948"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning"></a>チュートリアル:SAP SuccessFactors から Active Directory へのユーザー プロビジョニングを構成する 
 このチュートリアルでは、SuccessFactors Employee Central から Active Directory (AD) と Azure AD にユーザーをプロビジョニングするために必要な手順と、SuccessFactors にメール アドレスを書き戻すオプションについて説明します。 
@@ -199,7 +198,7 @@ SuccessFactors 管理チームまたは実装パートナーと協力して、OD
 
    * **管理パスワード** - SuccessFactors API ユーザー アカウントのパスワードを入力します。 
 
-   * **テナント URL** - SuccessFactors OData API サービス エンドポイントの名前を入力します。 http または https なしでサーバーのホスト名のみを入力してください。 この値は、 **<api-server-name>.successfactors.com** のようになります。
+   * **テナント URL** - SuccessFactors OData API サービス エンドポイントの名前を入力します。 http または https なしでサーバーのホスト名のみを入力してください。 この値は、 **\<api-server-name\>.successfactors.com** のようになります。
 
    * **Active Directory フォレスト** - エージェントに登録されている Active Directory ドメインの "名前"。 ドロップダウンを使用して、プロビジョニングのターゲット ドメインを選択します。 通常、この値は *contoso.com* のような文字列です。
 

@@ -6,13 +6,13 @@ ms.author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: overview
-ms.date: 06/10/2021
-ms.openlocfilehash: 52ecc8a66dfa13747daf2b4b7fd227ef7ab5a3b2
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.date: 09/19/2021
+ms.openlocfilehash: 3e76d298d30d2e191edf218e85a8fc64758f8359
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112237167"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128560790"
 ---
 # <a name="azure-security-center-free-vs-azure-defender-enabled"></a>Azure Security Center (無料) と有効化された Azure Defender
 Azure Defender は、最初の 30 日間は無料で利用できます。 30 日経過した時点で、サービスの利用を継続することを選択した場合、使用量に応じた課金が自動的に開始されます。
@@ -31,6 +31,7 @@ Security Center は、次の 2 つのモードで提供されます。
     - **仮想マシンとコンテナー レジストリの脆弱性スキャン** - 業界で最も高度な脆弱性管理ソリューションを提供するスキャナーを、すべての仮想マシンに簡単にデプロイできます。 結果の表示、調査、修復を Security Center 内で直接実行できます。 
     - **ハイブリッド セキュリティ** - オンプレミスとクラウドのすべてのワークロードのセキュリティを、統合された 1 つのビューで確認できます。 セキュリティ ポリシーを適用し、ハイブリッド クラウドのワークロードのセキュリティを継続的に評価することで、セキュリティ標準に確実に準拠できます。 ファイアウォールやその他のパートナー ソリューションなどのさまざまなソースから、セキュリティ データを収集、検索、分析します。
     - **脅威防止アラート** - 高度な行動分析と Microsoft インテリジェント セキュリティ グラフを使用して、巧妙化するサイバー攻撃に対応します。 組み込みの行動分析と機械学習により、各種攻撃やゼロデイ攻撃を特定することができます。 ネットワーク、マシン、クラウド サービスに対する攻撃や侵害後のアクティビティを監視します。 対話型のツールと状況に応じた脅威インテリジェンスにより、調査を効率化します。
+    - **さまざまな標準でのコンプライアンスの追跡** - Security Center では、お使いのハイブリッド クラウド環境を継続的に評価して、[Azure セキュリティ ベンチマーク](/security/benchmark/azure/introduction)の制御とベスト プラクティスに従ってリスク要因を分析します。 Azure Defender を有効にすると、ご自分の組織のニーズに応じて、他の業界標準、規制標準、ベンチマークを広範に適用できます。 [規制コンプライアンス ダッシュボード](update-regulatory-compliance-packages.md)から、標準を追加したり、コンプライアンスを追跡したりすることができます。
     - **アクセスとアプリケーションの制御** (AAC) - 特定のワークロードに適応する、機械学習を活用した推奨事項を適用して、許可および拒否リストを作成することで、マルウェアや他の望ましくないアプリケーションをブロックします。 Azure VM の管理ポートに対するジャスト イン タイムの制御されたアクセスで、ネットワーク攻撃対象領域を減らします。 ブルート フォースなどのネットワーク攻撃に対する露出が、AAC によって劇的に減少します。
     - **コンテナーのセキュリティ機能** - コンテナー化された環境で、脆弱性管理とリアルタイムの脅威の防止が利用できます。 **コンテナー レジストリ用 Azure Defender** を有効にした場合、すべての機能が有効になるまで最大 12 時間かかることがあります。 料金は、接続されたレジストリにプッシュされた一意のコンテナー イメージの数に基づいています。 イメージのスキャンが 1 回完了すると、変更されてもう 1 度プッシュされない限り、再度課金されることはありません。
     - **Azure 環境に接続されているリソースに対する広範な脅威の防止** - Azure Defender には、すべてのリソースに共通の Azure サービス (Azure Resource Manager、Azure DNS、Azure ネットワーク レイヤー、Azure Key Vault) に対する Azure ネイティブの広範な脅威の防止機能が含まれています。 Azure Defender は、Azure 管理レイヤーと Azure DNS レイヤーの独自の可視性を備えているため、これらのレイヤーに接続されているクラウド リソースを保護できます。
@@ -70,7 +71,7 @@ Security Center には 2 つのプランがあります。
 ### <a name="how-do-i-enable-azure-defender-for-my-subscription"></a>サブスクリプションで Azure Defender を有効にするにはどうすればよいですか? 
 以下に示すどの方法でも、ご利用のサブスクリプションに対して Azure Defender を有効にすることができます。 
 
-| Method                                          | 手順                                                                                                                                       |
+| メソッド                                          | 手順                                                                                                                                       |
 |-------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
 | Azure portal の Azure Security Center ページ | [Azure Defender を有効にする](enable-azure-defender.md)                                                                                                  |
 | REST API                                        | [Pricings API](/rest/api/securitycenter/pricings)                                                                                                  |
@@ -87,7 +88,7 @@ Security Center には 2 つのプランがあります。
 ### <a name="if-i-already-have-a-license-for-microsoft-defender-for-endpoint-can-i-get-a-discount-for-azure-defender"></a>Microsoft Defender for Endpoint のライセンスが既にある場合、Azure Defender の割引を受けることができますか?
 Microsoft Defender for Endpoint のライセンスを既に取得している場合は、Azure Defender ライセンスのその部分について料金を支払う必要はありません。
 
-割引をリクエストするには、Security Center のサポート チームに連絡し、関連するワークスペース ID、リージョン、および該当するワークスペース内のマシンに適用される Microsoft Defender for Endpoint ライセンスの数をお伝えください。
+割引を依頼するには、Security Center のサポート チームに連絡し、割引の対象となるワークスペースの ID、リージョン、および、そのワークスペースのマシンに対して申請した Microsoft Defender for Endpoint ライセンスの数をお伝えください。
 
 割引は承認日から有効となり、さかのぼって適用されることはありません。
 
@@ -106,7 +107,7 @@ Microsoft Defender for Endpoint のライセンスを既に取得している場
 :::image type="content" source="media/security-center-pricing/deallocated-virtual-machines.png" alt-text="割り当て解除状態のマシンを示す Azure Virtual Machines。":::
 
 ### <a name="will-i-be-charged-for-machines-without-the-log-analytics-agent-installed"></a>Log Analytics エージェントがインストールされていないマシンは課金されますか?
-はい。 サブスクリプションで[サーバー用 Azure Defender](defender-for-servers-introduction.md) を有効にすると、そのサブスクリプション内のマシンには、Log Analytics エージェントがインストールされていなくても一連の保護が適用されます。
+はい。 サブスクリプションで[サーバー用 Azure Defender](defender-for-servers-introduction.md) を有効にすると、そのサブスクリプション内のマシンには、Log Analytics エージェントがインストールされていなくても一連の保護が適用されます。 これは、Azure 仮想マシン、Azure 仮想マシン スケール セット インスタンス、Azure Arc 対応サーバーに適用されます。
 
 ### <a name="if-a-log-analytics-agent-reports-to-multiple-workspaces-will-i-be-charged-twice"></a>Log Analytics エージェントが複数のワークスペースにレポートする場合、二重に課金されるのですか? 
 はい。 2 つ以上の異なる Log Analytics ワークスペース (マルチホーム) にデータを送信するように Log Analytics エージェントを構成した場合、"セキュリティ" または "マルウェア対策" ソリューションがインストールされている各ワークスペースが課金の対象となります。 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/14/2021
-ms.openlocfilehash: 07f208753265e35bbc51c74f74a87a1742fa52ff
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: 14d6aedf282819e8fcd7c5f03ff182a991954607
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114727481"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129279167"
 ---
 # <a name="search-over-azure-blob-storage-content"></a>Azure Blob Storage のコンテンツを検索する
 
@@ -54,7 +54,7 @@ BLOB インデクサーでは、構成パラメーターが用意されている
 
 ### <a name="supported-access-tiers"></a>サポートされているアクセス層
 
-Blob Storage の[アクセス層](../storage/blobs/storage-blob-storage-tiers.md)には、ホット、クール、アーカイブがあります。 インデクサーがアクセスできるのは、ホットとクールのみです。 
+Blob Storage の[アクセス層](../storage/blobs/access-tiers-overview.md)には、ホット、クール、アーカイブがあります。 インデクサーがアクセスできるのは、ホットとクールのみです。 
 
 ### <a name="supported-content-types"></a>サポートされているコンテンツの種類
 

@@ -10,12 +10,12 @@ author: rajeshsetlem
 ms.author: rsetlem
 ms.reviewer: mathoma, cawrites
 ms.date: 12/15/2020
-ms.openlocfilehash: ab030e8e4b86fc669325099e13650f8e1c178986
-ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
+ms.openlocfilehash: 17b3cd2c0257989a220be6b35e93d88db7225188
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122835336"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129457470"
 ---
 # <a name="assessment-rules-for-sql-server-to-azure-sql-database-migration"></a>SQL Server から Azure SQL Database に移行するための評価ルール
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -133,9 +133,6 @@ Azure SQL Managed Instance でデータベース互換レベルを 100 にアッ
 
 **推奨事項**   
 データベース メールをサポートする Azure SQL Managed Instance に移行することを検討します。  または、Azure Functions と Sendgrid を使用して Azure SQL Database でメール機能を実現することを検討します。
-
-詳細情報: [Azure Functions のスクリプトを使用して Azure SQL Database から電子メールを送信する](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/AF%20SendMail)
-
 
 ## <a name="database-principal-alias"></a>データベース プリンシパルの別名<a id="DatabasePrincipalAlias"></a>
 

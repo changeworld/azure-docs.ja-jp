@@ -11,12 +11,12 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 2fbb03ae08d1146b51a4a73f1b2260443c1609d7
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 08e68fc4a5aa2de2c2b0e0bbd326620fadc11022
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121722124"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129455838"
 ---
 # <a name="connect-a-downstream-iot-edge-device-to-an-azure-iot-edge-gateway"></a>ダウンストリーム IoT Edge デバイスを Azure IoT Edge ゲートウェイに接続する
 
@@ -90,7 +90,7 @@ Azure CLI の [azure-iot](/cli/azure/iot) 拡張機能には、IoT リソース�
 >[!NOTE]
 >プログラムで親子関係を確立する場合は、C#、Java、または Node.js の [IoT Hub Service SDK](../iot-hub/iot-hub-devguide-sdks.md) を使用できます。
 >
->C# SDK を使用した子デバイスの割り当て例は、[こちら](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/e2e/test/iothub/service/RegistryManagerE2ETests.cs)です。 タスク `RegistryManager_AddAndRemoveDeviceWithScope()` は、プログラムで 3 層階層を作成する方法を示しています。 第 1 層にある IoT Edge デバイスは、親として機能します。 第 2 層にある別の IoT Edge デバイスは、子と親の両方として機能します。 最後の第 3 層にある IoT デバイスは、最下層の子デバイスとして機能します。
+>C# SDK を使用した子デバイスの割り当て例は、[こちら](https://github.com/Azure/azure-iot-sdk-csharp/blob/main/e2e/test/iothub/service/RegistryManagerE2ETests.cs)です。 タスク `RegistryManager_AddAndRemoveDeviceWithScope()` は、プログラムで 3 層階層を作成する方法を示しています。 第 1 層にある IoT Edge デバイスは、親として機能します。 第 2 層にある別の IoT Edge デバイスは、子と親の両方として機能します。 最後の第 3 層にある IoT デバイスは、最下層の子デバイスとして機能します。
 
 ## <a name="prepare-certificates"></a>証明書の準備
 

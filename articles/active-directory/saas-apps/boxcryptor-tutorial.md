@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/09/2021
+ms.date: 08/27/2021
 ms.author: jeedes
-ms.openlocfilehash: d1c479bf51536d89d0705cd585870638b23f1ceb
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: cce864b104b421a205c8a1231f49a2abf707f55e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111892456"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128650498"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-boxcryptor"></a>チュートリアル: Azure Active Directory と Boxcryptor の統合
 
@@ -39,6 +39,7 @@ ms.locfileid: "111892456"
 
 * Boxcryptor では、**SP** によって開始される SSO がサポートされます。
 * Boxcryptor では、**Just-In-Time** ユーザー プロビジョニングがサポートされます。
+* Boxcryptor では、[自動化されたユーザー プロビジョニング](boxcryptor-provisioning-tutorial.md)がサポートされます。
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -123,6 +124,8 @@ Boxcryptor に対する Azure AD SSO を構成してテストするには、次�
 
 このセクションでは、B. Simon というユーザーを Boxcryptor に作成します。 Boxcryptor では、Just-In-Time ユーザー プロビジョニングがサポートされています。この設定は既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 Boxcryptor にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
 
+Boxcryptor では、自動ユーザー プロビジョニングもサポートされます。自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](./boxcryptor-provisioning-tutorial.md)をご覧ください。
+
 ## <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
@@ -131,7 +134,7 @@ Boxcryptor に対する Azure AD SSO を構成してテストするには、次�
 
 * Boxcryptor のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Boxcryptor] タイルをクリックすると、Boxcryptor のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Boxcryptor] タイルをクリックすると、Boxcryptor のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

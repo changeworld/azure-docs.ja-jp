@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 59eb3874a7f0de9eba1f5b75204618c887cb9bb2
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: d206e92eeea06b8e8a95a74c7a253eae5280eb5f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122184116"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128607807"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) の独自の IP アドレス範囲で kubenet ネットワークを使用する
 
@@ -224,6 +224,8 @@ Kubernet ネットワークで要求を正常にルーティングするには�
 * AKS クラスターを作成する前に、カスタム ルート テーブルをサブネットに関連付ける必要があります。
 * クラスターを作成した後で、関連付けられているルート テーブル リソースを更新することはできません。 ルート テーブル リソースは更新できませんが、カスタム ルールはルート テーブルで変更できます。
 * 各 AKS クラスターでは、クラスターに関連付けられているすべてのサブネットに対して、一意のルート テーブルを 1 つだけ使用する必要があります。 ポッドの CIDR が重複してルーティング規則が競合する可能性があるため、複数のクラスターでルート テーブルを再利用することはできません。
+* システム割り当てマネージド ID では、独自のサブネットとルート テーブルを提供できません。 独自のサブネットとルートテーブルを提供するには、[ユーザー割り当てマネージド ID][user-assigned managed identity] を使用し、クラスターの作成前にアクセス許可を割り当て、ユーザー割り当て ID にカスタム サブネットおよびカスタム ルート テーブルへの書き込みアクセス許可があることを確認する必要があります。
+* 複数の AKS クラスターで同じルートテーブルを使用することはサポートされていません。
 
 カスタム ルート テーブルを作成し、仮想ネットワーク内のサブネットにそれを関連付けた後は、ルート テーブルを使用する新しい AKS クラスターを作成できます。
 AKS クラスターをデプロイする予定の場所に対するサブネット ID を使用する必要があります。 このサブネットは、カスタム ルート テーブルに関連付けられている必要もあります。
@@ -267,3 +269,4 @@ az aks create -g MyResourceGroup -n MyManagedCluster --vnet-subnet-id MySubnetID
 [express-route]: ../expressroute/expressroute-introduction.md
 [network-comparisons]: concepts-network.md#compare-network-models
 [custom-route-table]: ../virtual-network/manage-route-table.md
+[user-assigned managed identity]: use-managed-identity.md#bring-your-own-control-plane-mi

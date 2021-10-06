@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 04/21/2021
+ms.date: 09/09/2021
 ms.author: memildin
-ms.openlocfilehash: 9f1fdfeadd56b070c942c023a7373b43363a1916
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ef37d84d2fcef851e13837ae40da14db9fb2412f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121734967"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124777452"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>適応型アプリケーション制御を使用して、マシンの攻撃対象領域を減らす
 
@@ -30,12 +30,12 @@ Azure Security Center の適応型アプリケーション制御の利点と、�
 
 ## <a name="what-are-the-benefits-of-adaptive-application-controls"></a>適応型アプリケーション制御の利点とは
 
-既知の安全なアプリケーションのリストを定義し、それ以外のものが実行されたときにアラートを生成すると、以下のような複数のセキュリティ強化の目標を達成できます。
+既知の安全なアプリケーションのリストを定義し、それ以外のものが実行されたときにアラートを生成すると、次のような複数の監視とコンプライアンスの目標を達成できます。
 
 - 潜在的なマルウェア (マルウェア対策ソリューションでは見逃される可能性のあるものを含む) を識別する
 - ライセンスのあるソフトウェアのみの使用を規定するローカル セキュリティ ポリシーのコンプライアンスを強化する
-- 古い、あるいはサポートされていないアプリケーションの実行を避ける
-- 組織で禁止されている特定のソフトウェアが使用されないようにする
+- 古くなったかサポートされていないバージョンのアプリケーションを特定する 
+- 組織によって禁止されているが、コンピューターで実行されているソフトウェアを特定する
 - 機密データにアクセスするアプリの監視を強化する
 
 現時点では、利用できる強制オプションはありません。 適応型アプリケーション制御では、安全なものとして定義したもの以外のアプリケーションが実行されると、セキュリティ アラートが表示されることを想定しています。

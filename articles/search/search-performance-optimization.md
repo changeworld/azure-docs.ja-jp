@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/06/2021
 ms.custom: references_regions
-ms.openlocfilehash: 169f0b76e1009931d51339fe6b058ca24608af30
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: ad59bae5d0d5309dea15effefd29a23e8029cd5b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110061050"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128587710"
 ---
 # <a name="availability-and-business-continuity-in-azure-cognitive-search"></a>Azure Cognitive Search の可用性とビジネス継続性
 
@@ -106,9 +106,7 @@ Azure Cognitive Search では、リージョン間で検索インデックスを
 
 ## <a name="disaster-recovery-and-service-outages"></a>障害復旧とサービスの停止
 
-Microsoft はユーザーのデータを回収できますが、Azure Cognitive Search では、クラスターまたはデータ センターのレベルで障害が発生した場合のサービスの即時フェールオーバーは提供されません。 データ センターでクラスターの障害が発生した場合、運用チームは障害を検出してサービスの復元を行います。 サービスの復元中にダウンタイムが発生しますが、[サービス レベル アグリーメント (SLA)](https://azure.microsoft.com/support/legal/sla/search/v1_0/) に従い、サービス使用不可に対する補償としてサービス クレジットを要求できます。 
-
-Microsoft の管理が及ばない外部の壊滅的災害の際にサービスを継続する必要がある場合は、異なるリージョンに[追加のサービスをプロビジョニング](search-create-service-portal.md)し、geo レプリケーション戦略を導入して、インデックスがすべてのサービスで完全に冗長になるようにする必要があります。
+[サービス レベル アグリーメント (SLA)](https://azure.microsoft.com/support/legal/sla/search/v1_0/) のページで説明されているように、Azure Cognitive Search サービス インスタンスが 2 つ以上のレプリカで構成されている場合はインデックス クエリ要求の可用性が高くなり、Azure Cognitive Search サービス インスタンスが 3 つ以上のレプリカで構成されている場合はインデックス更新要求の可用性が高くなります。 ただし、ディザスター リカバリーのための組み込みのメカニズムはありません。 Microsoft の管理が及ばない外部の壊滅的災害の際にサービスを継続する必要がある場合は、異なるリージョンに 2 番目のサービスをプロビジョニングし、geo レプリケーション戦略を導入して、インデックスがすべてのサービスで完全に冗長になるようにすることをお勧めします。
 
 インデックスの作成と更新に[インデクサー](search-indexer-overview.md)を使っているお客様は、同じデータ ソースを利用する geo 固有のインデクサーによってディザスター リカバリーを処理できます。 異なるリージョンにある 2 つのサービスそれぞれでインデクサーを実行し、同じデータ ソースのインデックスを作成すると、geo 冗長性を実現できます。 geo 冗長性も備えたデータ ソースからインデックスを作成する場合、Azure Cognitive Search インデクサーは、プライマリ レプリカからの (新規、変更、または削除されたドキュメントの更新をマージする) 増分インデックスの作成のみを実行できることに注意してください。 フェールオーバー イベントでは、新しいプライマリ レプリカをポイントするように再度インデクサーを設定してください。 
 

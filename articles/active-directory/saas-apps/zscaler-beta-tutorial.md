@@ -9,37 +9,38 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/18/2020
+ms.date: 09/02/2021
 ms.author: jeedes
-ms.openlocfilehash: 080217c511470422d563b64f7609d71a4f9a6594
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: 7670be8fa34a304d0c7bce3f6a6f3d456d2be397
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108802740"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124800319"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-beta"></a>チュートリアル: Azure Active Directory と Zscaler Beta の統合
 
 このチュートリアルでは、Zscaler Beta と Azure Active Directory (Azure AD) を統合する方法について説明します。
 Zscaler Beta を Azure AD に統合すると、次のことを実行できます。
 
-- Zscaler Beta にアクセスするユーザーを Azure AD で管理する。
-- ユーザーが Azure AD アカウントを使用して Zscaler Beta に自動的にサインインできるようにする。 このアクセス制御はシングル サインオン (SSO) と呼ばれます。
-- Azure portal を使用して 1 つの中央サイトでアカウントを管理する。
+* Zscaler Beta にアクセスするユーザーを Azure AD で管理する。
+* ユーザーが Azure AD アカウントを使用して Zscaler Beta に自動的にサインインできるようにする。 このアクセス制御はシングル サインオン (SSO) と呼ばれます。
+* Azure portal を使用して 1 つの中央サイトでアカウントを管理する。
 
 ## <a name="prerequisites"></a>前提条件
 
 Zscaler Beta と Azure AD の統合を構成するには、次の項目が必要です。
 
-- Azure AD サブスクリプション。 Azure AD の環境がない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
-- シングル サインオンを使用する Zscaler Beta サブスクリプション。
+* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
+* シングル サインオンを使用する Zscaler Beta サブスクリプション。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-- Zscaler Beta では、**SP** Initiated SSO がサポートされます。
-- Zscaler Beta では、**Just In Time** ユーザー プロビジョニングがサポートされます。
+* Zscaler Beta では、**SP** Initiated SSO がサポートされます。
+* Zscaler Beta では、**Just In Time** ユーザー プロビジョニングがサポートされます。
+* Zscaler Beta では、[自動化されたユーザー プロビジョニング](zscaler-beta-provisioning-tutorial.md)がサポートされます。
 
 ## <a name="adding-zscaler-beta-from-the-gallery"></a>ギャラリーからの Zscaler Beta の追加
 
@@ -155,13 +156,13 @@ Zscaler Beta に対する Azure AD SSO を構成してテストするには、�
 
 4. **[Administration]\(管理\)**  >  **[Authentication]\(認証\)**  >  **[Authentication Settings]\(認証設定\)** の順に選択し、次の手順を実行します。
 
-   ![管理](./media/zscaler-beta-tutorial/ic800206.png "管理")
+   ![管理](./media/zscaler-beta-tutorial/settings.png "管理")
 
    a. **[Authentication Type]\(認証タイプ\)** で **[SAML]** を選択します。
 
    b. **[Configure SAML]\(SAML の構成\)** を選択します。
 
-5. **[Edit SAML]\(SAML の編集\)** ウィンドウで、次の手順に従います。![ユーザーと認証の管理](./media/zscaler-beta-tutorial/ic800208.png "[ユーザーと認証の管理]")
+5. **[Edit SAML]\(SAML の編集\)** ウィンドウで、次の手順に従います。![ユーザーと認証の管理](./media/zscaler-beta-tutorial/certificate.png "[ユーザーと認証の管理]")
 
    a. **[SAML Portal URL]\(SAML ポータル URL\)** ボックスに、Azure portal からコピーした **ログイン URL** を貼り付けます。
 
@@ -181,7 +182,7 @@ Zscaler Beta に対する Azure AD SSO を構成してテストするには、�
 
 6. **[ユーザー認証の構成]** ダイアログ ページで、次の手順に従います。
 
-   ![[アクティブ化] メニューと [アクティブ化] ボタン](./media/zscaler-beta-tutorial/ic800207.png)
+   ![[アクティブ化] メニューと [アクティブ化] ボタン](./media/zscaler-beta-tutorial/status.png)
 
    a. 左下の **[Activation]\(アクティブ化\)** メニューにポインターを置きます。
 
@@ -195,17 +196,17 @@ Internet Explorer でプロキシ設定を構成するには、次の手順に�
 
 2. **[ツール]** メニューの **[インターネット オプション]** を選択し、**[インターネット オプション]** ダイアログ ボックスを開きます。
 
-   ![[インターネット オプション] ダイアログ ボックス](./media/zscaler-beta-tutorial/ic769492.png "[インターネット オプション]")
+   ![[インターネット オプション] ダイアログ ボックス](./media/zscaler-beta-tutorial/connection.png "[インターネット オプション]")
 
 3. **[接続]** タブを選択します。
 
-   ![[接続] タブ](./media/zscaler-beta-tutorial/ic769493.png "接続")
+   ![[接続] タブ](./media/zscaler-beta-tutorial/server.png "接続")
 
 4. **[LAN の設定]** を選択して **[ローカル エリア ネットワーク (LAN) の設定]** ダイアログ ボックスを開きます。
 
 5. **[プロキシ サーバー]** セクションで、次の手順に従います。
 
-   ![[プロキシ サーバー] セクション](./media/zscaler-beta-tutorial/ic769494.png "プロキシ サーバー")
+   ![[プロキシ サーバー] セクション](./media/zscaler-beta-tutorial/network.png "プロキシ サーバー")
 
    a. **[LAN にプロキシ サーバーを使用する]** チェック ボックスを選択します。
 
@@ -226,15 +227,18 @@ Internet Explorer でプロキシ設定を構成するには、次の手順に�
 > [!Note]
 > ユーザーを手動で作成するには、[Zscaler Beta サポート チーム](https://www.zscaler.com/company/contact)にお問い合わせください。
 
+> [!NOTE]
+> Zscaler Beta では、自動ユーザー プロビジョニングもサポートされます。自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](./zscaler-beta-provisioning-tutorial.md)をご覧ください。
+
 ## <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。
 
-- Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Zscaler Beta のサインオン URL にリダイレクトされます。
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Zscaler Beta のサインオン URL にリダイレクトされます。
 
-- Zscaler Beta のサインオン URL に直接移動し、そこからログイン フローを開始します。
+* Zscaler Beta のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-- Microsoft マイ アプリを使用することができます。 マイ アプリで [Zscaler Beta] タイルをクリックすると、Zscaler Beta のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Zscaler Beta] タイルをクリックすると、Zscaler Beta のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

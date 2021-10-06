@@ -3,20 +3,21 @@ title: テキスト読み上げの概要 - 音声サービス
 titleSuffix: Azure Cognitive Services
 description: 音声サービスのテキスト読み上げ機能を使用すると、アプリケーション、ツール、またはデバイスでテキストを人間のような自然な合成音声に変換できます。 この記事は、テキスト読み上げサービスの利点と機能の概要になっています。
 services: cognitive-services
-author: laujan
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 08/31/2021
-ms.author: lajanuar
+ms.date: 09/01/2020
+ms.author: pafarley
+ms.custom: cog-serv-seo-aug-2020
 keywords: テキスト読み上げ
-ms.openlocfilehash: 84eb522123e5a77de667231b5f91d96a0e7c6a56
-ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+ms.openlocfilehash: 7be06937cf9f3117d426fd9c19cbb6059826e6ec
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123272963"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124736899"
 ---
 # <a name="what-is-neural-text-to-speech"></a>ニューラル テキスト読み上げとは
 
@@ -84,7 +85,7 @@ Microsoft のニューラル テキスト読み上げでは、ディープ ニ�
 
 ## <a name="migrate-to-neural-voice"></a>ニューラル音声への移行
 
-標準音声は **2024 年 8 月 31 日** に廃止され、その日以降はサポートされなくなります。この発表は、**2021 年 8 月 31 日** より前のすべての既存の音声サブスクリプションに送信されています。 既存のユーザーは、廃止期間 (**2021 年 8 月 31 日から 2024 年 8 月 31 日まで**) 中は引き続き標準音声を使用できますが、すべての新しいユーザーと新しい音声リソースはニューラル音声に移行してください。
+標準音声は **2024 年 8 月 31 日** に廃止され、その日以降はサポートされなくなります。この発表は、**2021 年 8 月 31 日** より前のすべての既存の音声サブスクリプションに送信されています。 既存のユーザーは、廃止期間 (**2021 年 8 月 31 日から 2024 年 8 月 31 日まで**) 中は、既存の標準音声ユーザーは引き続き標準音声を使用できますが、すべての新しいユーザーと新しい音声リソースはニューラル音声に移行してください。
 
 **必要な操作**
 

@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: tutorial
-ms.date: 08/26/2019
+ms.date: 09/08/2021
 ms.author: alkohli
 ms.localizationpriority: high
 ms.custom: contperf-fy22q1
-ms.openlocfilehash: d5334314626d29dc9e3047bc382d41fcfa318a1d
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 0bf9eb2eab829e22e72f19fc4da4575166ea2755
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123469520"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124743348"
 ---
 # <a name="tutorial-order-azure-data-box-heavy"></a>チュートリアル:Azure Data Box Heavy を注文する
 
@@ -62,6 +62,8 @@ Azure Data Box Heavy は、迅速かつ簡単な信頼性の高い方法でオ�
 ## <a name="order-data-box-heavy"></a>Data Box Heavy を注文する
 
 [!INCLUDE [order-data-box-via-portal](../../includes/data-box-order-portal.md)]
+
+お客様の要件について詳しい情報を把握し、Data Box Heavy サービスが目的の場所で利用できるかどうかを確認するために、Data Box チームから連絡を差し上げます。 注文はその確認中、 **[Ordered]\(注文済み\)** 状態のままとなります。 何かの理由で注文を履行できない場合はお客様に通知が届きます。
 
 ## <a name="track-the-order"></a>注文を追跡する
 

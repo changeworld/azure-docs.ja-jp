@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 08/26/2021
+ms.date: 09/20/2021
 ms.author: tisande
-ms.openlocfilehash: 7fee5b4133cc048576ff0b794d441fac3ee162e6
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: a8d1dc69ef64726f55dffd20221a19c3f3114964
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123035945"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128595144"
 ---
 # <a name="azure-cosmos-db-integrated-cache-frequently-asked-questions"></a>Azure Cosmos DB 統合キャッシュについてよく寄せられる質問
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -56,11 +56,15 @@ Azure Cosmos DB 統合キャッシュは、Azure Cosmos DB に組み込まれて
 
 SQL API 以外への統合キャッシュの拡張は、長期的なロードマップにおいては計画されていますが、統合キャッシュの初期パブリック プレビューでは行われません。
 
+### <a name="what-consistency-does-the-integrated-cache-support"></a>統合キャッシュではどのような整合性がサポートされますか?
+
+統合キャッシュでは、セッションと最終的な整合性の両方がサポートされます。 また、オプションの [MaxIntegratedCacheStaleness](integrated-cache.md#maxintegratedcachestaleness) を構成することもできます。これにより、キャッシュされたデータに上限が設定されます。
+
 ## <a name="next-steps"></a>次の手順
 
 - [統合キャッシュ](integrated-cache.md)
 - [統合キャッシュの構成](how-to-configure-integrated-cache.md)
 - [専用ゲートウェイ](dedicated-gateway.md)
 - Azure Cosmos DB への移行のための容量計画を実行しようとしていますか? 容量計画のために、既存のデータベース クラスターに関する情報を使用できます。
-    - 既存のデータベース クラスター内の仮想コアとサーバーの数のみがわかっている場合は、[仮想コア数または仮想 CPU 数を使用した要求ユニットの見積もり](convert-vcore-to-request-unit.md)に関するページを参照してください 
-    - 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB Capacity Planner を使用した要求ユニットの見積もり](estimate-ru-with-capacity-planner.md)に関するページを参照してください
+    - 知っていることが既存のデータベース クラスター内の仮想コアとサーバーの数のみである場合は、[仮想コアまたは仮想 CPU の数を使用した要求ユニットの見積もり](convert-vcore-to-request-unit.md)に関するページを参照してください 
+    - 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB 容量計画ツールを使用した要求ユニットに見積もり](estimate-ru-with-capacity-planner.md)に関するページを参照してください

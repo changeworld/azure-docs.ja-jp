@@ -8,12 +8,12 @@ metadata:
   ms.topic: article
   ms.date: 04/22/2020
   ms.author: errobin
-  ms.openlocfilehash: 65fdc072fed31da0ad452a3ef5426b6e53f9c47f
-  ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+  ms.openlocfilehash: 0a855bf66c705e07d556831b60f7f4ec391e29fd
+  ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/24/2021
-  ms.locfileid: "128556316"
+  ms.lasthandoff: 09/29/2021
+  ms.locfileid: "129272309"
 title: Load Balancer に関してよく寄せられる質問
 summary: ''
 sections:
@@ -72,7 +72,7 @@ sections:
   - question: >
       参加しているバックエンド プール VM から自分の内部ロード バランサーのフロントエンドにアクセスできますか?
     answer: >
-      いいえ。Azure Load Balancer で、このシナリオはサポートされていません。 このトピックの詳細については、[トラブルシューティング ページ](https://docs.microsoft.com/azure/load-balancer/load-balancer-troubleshoot-backend-traffic#cause-4-accessing-the-internal-load-balancer-frontend-from-the-participating-load-balancer-backend-pool-vm)を参照してください。
+      いいえ。Azure Load Balancer で、このシナリオはサポートされていません。 このトピックの詳細については、[トラブルシューティング ページ](load-balancer-troubleshoot-backend-traffic.md#cause-4-accessing-the-internal-load-balancer-frontend-from-the-participating-load-balancer-backend-pool-vm)を参照してください。
   - question: >
       アウトバウンド接続に関するベスト プラクティスは何ですか。
     answer: "Standard Load Balancer および Standard パブリック IP では、アウトバウンド接続に機能とさまざまな動作が導入されています。 これらは Basic SKU と同じではありません。 Standard SKU を操作するときにアウトバウンド接続が必要な場合は、Standard パブリック IP アドレスまたは Standard パブリック Load Balancer で明示的に定義する必要があります。 これには、内部 Standard Load Balancer を使用する場合のアウトバウンド接続の作成が含まれます。 Standard パブリック Load Balancer では常にアウトバウンド規則を使用することをお勧めします。 つまり、内部 Standard Load Balancer が使用されているときに、アウトバウンド接続が必要な場合、バックエンド プール内の VM に対してアウトバウンド接続を作成する手順を行う必要があります。 アウトバウンド接続のコンテキストでは、単一スタンドアロン VM、可用性セット内のすべての VM、仮想マシン スケール セットのすべてのインスタンスがグループとして動作します。 つまり、可用性セット内の単一 VM が Standard SKU に関連付けられている場合、この可用性セット内のすべての VM インスタンスが、Standard SKU に関連付けられている場合と同じ規則に従って動作するようになります。個々のインスタンスが直接関連付けられていない場合でも同様です。 この動作は、ロード バランサーに複数のネットワーク インターフェイスカードが接続されているスタンドアロン VM の場合にも見られます。 1 つの NIC をスタンドアロンとして追加された場合、同じ動作が行われます。 このドキュメント全体をよく読み、全体的な概念を理解し、SKU 間の違いについて [Standard Load Balancer](./load-balancer-overview.md) を確認し、[アウトバウンド規則](load-balancer-outbound-connections.md#outboundrules)を確認してください。\nアウトバウンド規則を使用することで、アウトバウンド接続のすべての側面を細かく制御できます。\n \n"

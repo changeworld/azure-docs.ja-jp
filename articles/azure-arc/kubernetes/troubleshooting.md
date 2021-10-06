@@ -6,14 +6,14 @@ ms.date: 05/21/2021
 ms.topic: article
 author: mlearned
 ms.author: mlearned
-description: Arc 対応 Kubernetes クラスターに関する一般的な問題のトラブルシューティング。
+description: Azure Arc 対応 Kubernetes クラスターに関する一般的な問題のトラブルシューティング。
 keywords: Kubernetes, Arc, Azure, コンテナー
-ms.openlocfilehash: e1a04e95924f4a217cdceca383637bcee7ea368a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f6f29b30f3a62653c032b7aae40cac5afdcf96b9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121743825"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128546511"
 ---
 # <a name="azure-arc-enabled-kubernetes-troubleshooting"></a>Azure Arc 対応 Kubernetes のトラブルシューティング
 
@@ -77,6 +77,19 @@ pod/resource-sync-agent-5cf85976c7-522p5        3/3     Running  0       16h
 
 クラスターを Azure に接続するには、Azure サブスクリプションへのアクセスと、ターゲット クラスターへの `cluster-admin` アクセスの両方が必要です。 クラスターに接続できない場合、またはアクセス許可が不十分な場合は、クラスターの Azure Arc への接続は失敗します。
 
+### <a name="azure-cli-is-unable-to-download-helm-chart-for-azure-arc-agents"></a>Azure CLI で Azure Arc エージェントの Helm グラフをダウンロードできない
+
+3\.7.0 以上のバージョンの Helm を使用している場合は、`az connectedk8s connect` を実行してクラスターを Azure Arc に接続するときに次のエラーが発生します。
+
+```console
+$ az connectedk8s connect -n AzureArcTest -g AzureArcTest
+
+Unable to pull helm chart from the registry 'mcr.microsoft.com/azurearck8s/batch1/stable/azure-arc-k8sagents:1.4.0': Error: unknown command "chart" for "helm"
+Run 'helm --help' for usage.
+```
+
+この場合は、バージョン &lt; 3.7.0 である、以前のバージョンの [Helm 3](https://helm.sh/docs/intro/install/) をインストールする必要があります。 その後、`az connectedk8s connect` コマンドをもう一度実行して、クラスターを Azure Arc に接続します。
+
 ### <a name="insufficient-cluster-permissions"></a>クラスターのアクセス許可が不十分
 
 指定された kubeconfig ファイルに、Azure Arc エージェントをインストールするための十分なアクセス許可が含まれていない場合、Azure CLI コマンドはエラーを返します。
@@ -119,7 +132,7 @@ This operation might take a while...
 Helm バージョン `v3.3.0-rc.1` には、helm install または helm upgrade を実行すると (`connectedk8s` CLI 拡張機能で使用) すべてのフックが実行され、以下のエラーが発生するという[問題](https://github.com/helm/helm/pull/8527)があります。
 
 ```console
-$ az connectedk8s connect -n shasbakstest -g shasbakstest
+$ az connectedk8s connect -n AzureArcTest -g AzureArcTest
 Ensure that you have the latest helm version installed before proceeding.
 This operation might take a while...
 
@@ -198,6 +211,7 @@ metadata:
   resourceVersion: ""
   selfLink: ""
 ```
+
 ## <a name="monitoring"></a>監視
 
 コンテナー用の Azure Monitor では、その DaemonSet を特権モードで実行する必要があります。 監視のために Canonical Charmed Kubernetes クラスターを正常に設定するには、次のコマンドを実行します。
@@ -229,7 +243,7 @@ Unable to fetch oid of 'custom-locations' app. Proceeding without enabling the f
         az connectedk8s connect -n <cluster-name> -g <resource-group-name> --custom-locations-oid <objectId>   
         ```
 
-    - 既存の Arc 対応 Kubernetes クラスターでカスタムの場所機能を有効にする場合は、次のコマンドを実行します。
+    - 既存の Azure Arc 対応 Kubernetes クラスターでカスタムの場所機能を有効にする場合は、次のコマンドを実行します。
 
         ```console
         az connectedk8s enable-features -n <cluster-name> -g <resource-group-name> --custom-locations-oid <objectId> --features cluster-connect custom-locations
@@ -237,7 +251,7 @@ Unable to fetch oid of 'custom-locations' app. Proceeding without enabling the f
 
 このアクセス許可が付与されると、クラスターで ["カスタムの場所" 機能の有効化](custom-locations.md#enable-custom-locations-on-cluster)に進めるようになります。
 
-## <a name="arc-enabled-open-service-mesh"></a>Arc 対応 Open Service Mesh
+## <a name="azure-arc-enabled-open-service-mesh"></a>Azure Arc 対応 Open Service Mesh
 
 次のトラブルシューティングの手順では、クラスター上のすべての Open Service Mesh 拡張コンポーネントのデプロイを検証する方法について説明します。
 

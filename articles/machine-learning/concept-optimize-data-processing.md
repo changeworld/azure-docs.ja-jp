@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.author: sgilley
 author: sdgilley
-ms.subservice: core
+ms.subservice: mldata
 ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 06/26/2020
 ms.custom: data4ml
-ms.openlocfilehash: 7ee51288e3c0ced3d12ed7f4e7ba63692d650591
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: ecd2e128d40693696eb70eb0bd7f45de3a8b07ed
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108279084"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129429131"
 ---
 # <a name="optimize-data-processing-with-azure-machine-learning"></a>Azure Machine Learning を使用したデータ処理の最適化
 

@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: 4fde975c0649a0ba9da32ed53983e3632d5535ca
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 9b41b546b80106956221b39274501d33cc5fdaf9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122690528"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128603887"
 ---
 # <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>Azure 仮想マシン スケール セットでの自動スケールの概要
 
@@ -106,7 +106,7 @@ VM インスタンスから使用できるホスト メトリックを組み込�
 | パーセントを増やす量 | VM インスタンスのパーセンテージべースの増加量。 固定量の増加ではパフォーマンスの目立った改善が見込まれない大規模なスケール セットに適しています。 |
 | 増やした後のカウント   | 目的の最大量に達するために必要な数だけ VM インスタンスを作成します。                                                            |
 | カウントを減らす量   | 削除する VM インスタンスの固定数。 VM の数が少ないスケール セットで便利です。                                           |
-| パーセントを減らす量 | VM インスタンスのパーセンテージべースの減少量。 固定量の増加では使用量やコストの目立った減少が見込まれない大規模なスケール セットに適しています。 |
+| パーセントを減らす量 | VM インスタンスのパーセンテージべースの減少量。 固定量の減少で使用量やコストの目立った減少が見込まれない大規模なスケール セットに適しています。 |
 | 減らした後のカウント値   | 目的の最小量に達するために必要な数だけ VM インスタンスを削除します。                                                            |
 
 

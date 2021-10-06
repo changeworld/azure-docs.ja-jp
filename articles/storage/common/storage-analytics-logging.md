@@ -9,16 +9,16 @@ ms.date: 01/29/2021
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: c536e8749ce41f51f161d9659beca3ab0ccd30ae
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: d15a3c20be365f994f219e5ea74c7aee5b0c5b28
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123032255"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128560413"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure Storage Analytics のログ
 
-Storage Analytics は、ストレージ サービスに対する要求の成功と失敗についての詳細な情報をログに記録します。 この情報を使って個々の要求を監視したり、ストレージ サービスに関する問題を診断したりできます。 要求は、ベスト エフォートでログに記録されます。 これは、ほとんどの要求ではログ レコードが生成されますが、Storage Analytics ログの完全性と適時性は保証されないことを意味します。 
+Storage Analytics は、ストレージ サービスに対する要求の成功と失敗についての詳細な情報をログに記録します。 この情報を使って個々の要求を監視したり、ストレージ サービスに関する問題を診断したりできます。 要求は、ベスト エフォートでログに記録されます。 これは、ほとんどの要求ではログ レコードが生成されますが、Storage Analytics ログの完全性と適時性は保証されないことを意味します。
 
 > [!NOTE]
 > Microsoft では、Storage Analytics ログの代わりに、Azure Monitor の Azure Storage ログを使用することをお勧めしています。 Azure Monitor の Azure Storage ログはパブリック プレビュー段階にあり、すべてのパブリック クラウド リージョンでプレビュー テスト用に使用できます。 このプレビューでは、BLOB (Azure Data Lake Storage Gen2 を含む)、ファイル、キュー、およびテーブルに対してログが有効になります。 詳細については、以下のいずれかの記事をお読みください。
@@ -28,7 +28,7 @@ Storage Analytics は、ストレージ サービスに対する要求の成功�
 > - [Azure Queue Storage の監視](../queues/monitor-queue-storage.md)
 > - [Azure Table Storage の監視](../tables/monitor-table-storage.md)
 
- 既定では、お使いのストレージ アカウントで Storage Analytics のログは有効になっていません。 これは、[Azure portal](https://portal.azure.com/) で、または PowerShell や Azure CLI を使用して有効にすることができます。 ステップ バイ ステップ ガイダンスについては、「[Azure Storage Analytics ログを有効にして管理する (クラシック)](manage-storage-analytics-logs.md)」を参照してください。 
+ 既定では、お使いのストレージ アカウントで Storage Analytics のログは有効になっていません。 これは、[Azure portal](https://portal.azure.com/) で、または PowerShell や Azure CLI を使用して有効にすることができます。 ステップ バイ ステップ ガイダンスについては、「[Azure Storage Analytics ログを有効にして管理する (クラシック)](manage-storage-analytics-logs.md)」を参照してください。
 
 また、プログラムから REST API またはクライアント ライブラリを使用して Storage Analytics ログを有効にすることもできます。 各サービスで Storage Analytics を有効にするには、[Get Blob Service Properties](/rest/api/storageservices/Blob-Service-REST-API)、[Get Queue Service Properties](/rest/api/storageservices/Get-Queue-Service-Properties)、および [Get Table Service Properties](/rest/api/storageservices/Get-Table-Service-Properties) の各操作を使用します。 .NET を使用して Storage Analytics ログを有効にする例については、[ログの有効化](manage-storage-analytics-logs.md)に関するページを参照してください
 
@@ -38,6 +38,8 @@ Storage Analytics は、ストレージ サービスに対する要求の成功�
 >  現在、Storage Analytics のログは、BLOB、Queue、Table の各サービスでのみ使用できます。 Storage Analytics のログは、Premium パフォーマンス [BlockBlobStorage](./storage-account-create.md) アカウントでも使用できます。 ただし、Premium パフォーマンスを持つ汎用 v2 アカウントでは使用できません。
 
 ## <a name="requests-logged-in-logging"></a>ログで記録される要求
+
+
 ### <a name="logging-authenticated-requests"></a>認証済み要求のログ記録
 
  次のタイプの認証済み要求が記録されます。
@@ -59,7 +61,7 @@ Storage Analytics は、ストレージ サービスに対する要求の成功�
 - エラー コード 304 (変更されていません) で失敗した GET 要求
 
   その他の失敗した匿名要求は一切記録されません。 ログに記録されるデータの一覧については、「[Storage Analytics によって記録される操作およびステータス メッセージ](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)」および「[Storage Analytics のログの形式](/rest/api/storageservices/storage-analytics-log-format)」をご覧ください。
-  
+
 > [!NOTE]
 > Storage Analytics では、データ プレーンへの内部呼び出しをすべてログに記録します。 Azure Storage リソース プロバイダーからの呼び出しもログに記録されます。 これらの要求を識別するには、要求 URL でクエリ文字列 `<sk=system-1>` を探します。
 
@@ -74,7 +76,7 @@ Storage Analytics は、ストレージ サービスに対する要求の成功�
 
 複数のファイルに及ぶ大量のログ データが毎時間発生する場合、BLOB メタデータを使用して BLOB メタデータ フィールドを検査すると、ログに含まれているデータを確認できます。 これが便利であるのは、データがログ ファイルに書き込まれる間に遅延が発生することもあるためです。BLOB メタデータを見ると、BLOB 名を見たときよりも正確に BLOB の内容がわかります。
 
-通常、ストレージ閲覧ツールでは、BLOB のメタデータを表示できます。この情報は、PowerShell やプログラムを使用して読み取ることもできます。 以下の PowerShell スニペットは、ログ BLOB の一覧をフィルタリングする例を示しています。名前でフィルタリングして時間を指定する部分と、メタデータでフィルタリングして **write** 操作を含むログのみを識別する部分が含まれています。  
+通常、ストレージ閲覧ツールでは、BLOB のメタデータを表示できます。この情報は、PowerShell やプログラムを使用して読み取ることもできます。 以下の PowerShell スニペットは、ログ BLOB の一覧をフィルタリングする例を示しています。名前でフィルタリングして時間を指定する部分と、メタデータでフィルタリングして **write** 操作を含むログのみを識別する部分が含まれています。
 
  ```powershell
  Get-AzStorageBlob -Container '$logs' |  
@@ -88,9 +90,9 @@ Storage Analytics は、ストレージ サービスに対する要求の成功�
      $_.ICloudBlob.Metadata.EndTime,   
      $_.ICloudBlob.Metadata.LogType  
  }  
- ```  
+ ```
 
-プログラムで BLOB を一覧表示する方法については、「[Enumerating Blob Resources (Blob リソースの列挙)](/rest/api/storageservices/Enumerating-Blob-Resources)」と「[Setting and Retrieving Properties and Metadata for Blob Resources (BLOB リソースのプロパティとメタデータの設定および取得)](/rest/api/storageservices/Setting-and-Retrieving-Properties-and-Metadata-for-Blob-Resources)」を参照してください。  
+プログラムで BLOB を一覧表示する方法については、「[Enumerating Blob Resources (Blob リソースの列挙)](/rest/api/storageservices/Enumerating-Blob-Resources)」と「[Setting and Retrieving Properties and Metadata for Blob Resources (BLOB リソースのプロパティとメタデータの設定および取得)](/rest/api/storageservices/Setting-and-Retrieving-Properties-and-Metadata-for-Blob-Resources)」を参照してください。
 
 ### <a name="log-naming-conventions"></a>ログの名前付け規則
 
@@ -138,10 +140,9 @@ Storage Analytics は、ストレージ サービスに対する要求の成功�
 -   `EndTime=2011-07-31T18:22:09Z`
 -   `LogVersion=1.0`
 
-
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Storage Analytics ログを有効にして管理する (クラシック)](manage-storage-analytics-logs.md)
-* [Storage Analytics のログの形式](/rest/api/storageservices/storage-analytics-log-format)
-* [Storage Analytics によって記録される操作やステータス メッセージ](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)
-* [Storage Analytics のメトリック (クラシック)](storage-analytics-metrics.md)
+- [Azure Storage Analytics ログを有効にして管理する (クラシック)](manage-storage-analytics-logs.md)
+- [Storage Analytics のログの形式](/rest/api/storageservices/storage-analytics-log-format)
+- [Storage Analytics によって記録される操作やステータス メッセージ](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)
+- [Storage Analytics のメトリック (クラシック)](storage-analytics-metrics.md)

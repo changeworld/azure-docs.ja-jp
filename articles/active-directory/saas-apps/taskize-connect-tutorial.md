@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Taskize Connect の統合 | Microsoft Docs
+title: 'チュートリアル: Azure AD SSO と Taskize Connect の統合'
 description: Azure Active Directory と Taskize Connect の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/16/2021
+ms.date: 09/23/2021
 ms.author: jeedes
-ms.openlocfilehash: a2b61d82a54770b820ec6c23b160fa78dcf9810b
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: bf6046b92e65a1184fe39657d359e0381aa9f7f4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114455882"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128553152"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-taskize-connect"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Taskize Connect の統合
+# <a name="tutorial-azure-ad-sso-integration-with-taskize-connect"></a>チュートリアル: Azure AD SSO と Taskize Connect の統合
 
 このチュートリアルでは、Taskize Connect と Azure Active Directory (Azure AD) を統合する方法について説明します。 Taskize Connect を Azure AD と統合すると、次のことができるようになります。
 
@@ -38,6 +38,7 @@ ms.locfileid: "114455882"
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 * Taskize Connect では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます。
+* Taskize Connect では、[自動化されたユーザー プロビジョニング](taskize-connect-provisioning-tutorial.md)がサポートされています。
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -142,6 +143,8 @@ Taskize Connect に対して Azure AD SSO を構成してテストするには�
 >[!Note]
 >ユーザーを手動で作成する必要がある場合は、[Taskize Connect サポート チーム](mailto:support@taskize.com)にお問い合わせください。
 
+Taskize Connect では、自動ユーザー プロビジョニングもサポートされています。自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](./taskize-connect-provisioning-tutorial.md)をご覧ください。
+
 ## <a name="test-sso"></a>SSO のテスト 
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
@@ -156,7 +159,7 @@ Taskize Connect に対して Azure AD SSO を構成してテストするには�
 
 * Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した Taskize Connect に自動的にサインインされるはずです。 
 
-また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [Taskize Connect] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Taskize Connect に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [Taskize Connect] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Taskize Connect に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

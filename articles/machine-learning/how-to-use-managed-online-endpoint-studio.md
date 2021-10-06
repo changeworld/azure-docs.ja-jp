@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: Azure Machine Learning スタジオを使用して、マネージド オンライン エンドポイント (プレビュー) を作成および使用する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.topic: how-to
 ms.custom: how-to, managed online endpoints, devplatv2
 ms.author: ssambare
 author: shivanissambare
 ms.reviewer: peterlu
 ms.date: 05/25/2021
-ms.openlocfilehash: 4f2b69a4a4009784e7943d57b0ec5653528a418e
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 764532fd06a26810dcee7c9d348aaf04abc037a4
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114448180"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129428865"
 ---
 # <a name="create-and-use-managed-online-endpoints-preview-in-the-studio"></a>スタジオでマネージド オンライン エンドポイント (プレビュー) を作成および使用する
 

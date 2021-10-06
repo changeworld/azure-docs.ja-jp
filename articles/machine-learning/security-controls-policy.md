@@ -6,13 +6,14 @@ ms.topic: sample
 author: BlackMist
 ms.author: larryfr
 ms.service: machine-learning
+ms.subservice: enterprise-readiness
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 406ba5a979a54c5867ba1a5be1fe993231a84f23
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 2ab7da8ed2000a78e71dd976ca1cdaaab530f637
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128643721"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129428637"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-machine-learning"></a>Azure Machine Learning 用の Azure Policy 規制コンプライアンス コントロール
 

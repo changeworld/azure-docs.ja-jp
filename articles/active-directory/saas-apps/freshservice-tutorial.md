@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/15/2021
+ms.date: 08/31/2021
 ms.author: jeedes
-ms.openlocfilehash: fb8b12cdb8fd9ed37ac4086d213183e800d6febc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6c45c00354d0bc60b5a9656c24dd998e324294b2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101651757"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128581610"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-freshservice"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Freshservice の統合
 
@@ -40,7 +40,8 @@ ms.locfileid: "101651757"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Freshservice では、**SP** によって開始される SSO がサポートされます
+* Freshservice では、**SP** によって開始される SSO がサポートされます。
+* Freshservice では、[自動化されたユーザー プロビジョニング](freshservice-provisioning-tutorial.md)がサポートされます。
 
 ## <a name="add-freshservice-from-the-gallery"></a>ギャラリーからの Freshservice の追加
 
@@ -187,6 +188,9 @@ Azure AD ユーザーが Freshservice にサインインできるようにする
 
     > [!NOTE]
     > 他の FreshService ユーザー アカウント作成ツールや、FreshService から提供されている API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。
+   
+> [!NOTE]
+>Freshservice では、自動ユーザー プロビジョニングもサポートされます。自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](./freshservice-provisioning-tutorial.md)をご覧ください。
 
 ## <a name="test-sso"></a>SSO のテスト
 
@@ -196,7 +200,7 @@ Azure AD ユーザーが Freshservice にサインインできるようにする
 
 * Freshservice のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Freshservice] タイルをクリックすると、SSO を設定した Freshservice に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Freshservice] タイルをクリックすると、SSO を設定した Freshservice に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

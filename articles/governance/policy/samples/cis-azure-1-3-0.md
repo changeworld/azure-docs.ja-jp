@@ -1,15 +1,15 @@
 ---
 title: CIS Microsoft Azure Foundations Benchmark 1.3.0 の規制コンプライアンスの詳細
 description: CIS Microsoft Azure Foundations Benchmark 1.3.0 規制コンプライアンスの組み込みイニシアチブの詳細。 それぞれのコントロールは、評価を支援する 1 つまたは複数の Azure Policy 定義に対応します。
-ms.date: 08/27/2021
+ms.date: 09/17/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 0d433943b49dfcca45d98e46b3521e11953f45c9
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: c61e62ca4e65167d4f939d3cebae4ff67c78ade3
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123112207"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128586216"
 ---
 # <a name="details-of-the-cis-microsoft-azure-foundations-benchmark-130-regulatory-compliance-built-in-initiative"></a>CIS Microsoft Azure Foundations Benchmark 1.3.0 規制コンプライアンスの組み込みイニシアチブの詳細
 
@@ -166,7 +166,7 @@ ms.locfileid: "123112207"
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[ストレージ アカウントのパブリック アクセスを禁止する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4fa4b6c0-31ca-4c0d-b10d-24b96f62a751) |Azure Storage 内のコンテナーと BLOB への匿名パブリック読み取りアクセスは、データを共有するための便利な方法ですが、セキュリティ上のリスクが生じる場合があります。 好ましくない匿名アクセスによるデータ侵害を防ぐために、Microsoft では、シナリオで必要でない限り、ストレージ アカウントへのパブリック アクセスを禁止することをお勧めします。 |audit、deny、disabled |[2.0.1-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/ASC_Storage_DisallowPublicBlobAccess_Audit.json) |
+|[ストレージ アカウントのパブリック アクセスを禁止する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4fa4b6c0-31ca-4c0d-b10d-24b96f62a751) |Azure Storage 内のコンテナーと BLOB への匿名パブリック読み取りアクセスは、データを共有するための便利な方法ですが、セキュリティ上のリスクが生じる場合があります。 好ましくない匿名アクセスによるデータ侵害を防ぐために、Microsoft では、シナリオで必要でない限り、ストレージ アカウントへのパブリック アクセスを禁止することをお勧めします。 |audit、deny、disabled |[3.0.1-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/ASC_Storage_DisallowPublicBlobAccess_Audit.json) |
 
 ### <a name="ensure-default-network-access-rule-for-storage-accounts-is-set-to-deny"></a>ストレージ アカウントの既定のネットワーク アクセス ルールが拒否に設定されていることを確認する
 
@@ -318,7 +318,7 @@ ms.locfileid: "123112207"
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[ストレージ アカウントのパブリック アクセスを禁止する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4fa4b6c0-31ca-4c0d-b10d-24b96f62a751) |Azure Storage 内のコンテナーと BLOB への匿名パブリック読み取りアクセスは、データを共有するための便利な方法ですが、セキュリティ上のリスクが生じる場合があります。 好ましくない匿名アクセスによるデータ侵害を防ぐために、Microsoft では、シナリオで必要でない限り、ストレージ アカウントへのパブリック アクセスを禁止することをお勧めします。 |audit、deny、disabled |[2.0.1-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/ASC_Storage_DisallowPublicBlobAccess_Audit.json) |
+|[ストレージ アカウントのパブリック アクセスを禁止する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4fa4b6c0-31ca-4c0d-b10d-24b96f62a751) |Azure Storage 内のコンテナーと BLOB への匿名パブリック読み取りアクセスは、データを共有するための便利な方法ですが、セキュリティ上のリスクが生じる場合があります。 好ましくない匿名アクセスによるデータ侵害を防ぐために、Microsoft では、シナリオで必要でない限り、ストレージ アカウントへのパブリック アクセスを禁止することをお勧めします。 |audit、deny、disabled |[3.0.1-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/ASC_Storage_DisallowPublicBlobAccess_Audit.json) |
 
 ### <a name="ensure-the-storage-account-containing-the-container-with-activity-logs-is-encrypted-with-byok-use-your-own-key"></a>アクティビティ ログがあるコンテナーを含むストレージ アカウントが BYOK (独自のキーの使用) を使用して暗号化されていることを確認する
 
@@ -469,7 +469,7 @@ ms.locfileid: "123112207"
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[コンピューティングとストレージのリソース間で一時ディスク、キャッシュ、データ フローを仮想マシンによって暗号化する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0961003e-5a0a-4549-abde-af6a37f2724d) |ディスク暗号化が有効になっていない仮想マシンが、推奨設定として Azure Security Center によって監視されます。 |AuditIfNotExists、Disabled |[2.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_UnencryptedVMDisks_Audit.json) |
+|[コンピューティングとストレージのリソース間で一時ディスク、キャッシュ、データ フローを仮想マシンによって暗号化する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0961003e-5a0a-4549-abde-af6a37f2724d) |既定では、仮想マシンの OS とデータのディスクは、保存時にプラットフォーム マネージド キーを使用して暗号化されます。 一時ディスク、データ キャッシュ、コンピューティングとストレージの間を流れているデータは暗号化されません。 次のような場合は、この推奨事項を無視してください。1. ホストでの暗号化を使用している場合。または 2. マネージド ディスクでのサーバー側暗号化がセキュリティ要件を満たしている場合。 詳細については、「[Azure Disk Storage のサーバー側暗号化](../../../virtual-machines/disk-encryption.md)」および[さまざまなディスク暗号化オファリング](../../../virtual-machines/disk-encryption-overview.md#comparison)に関する記事を参照してください。 |AuditIfNotExists、Disabled |[2.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_UnencryptedVMDisks_Audit.json) |
 
 ### <a name="ensure-that-unattached-disks-are-encrypted-with-cmk"></a>"アタッチされていないディスク" が CMK で暗号化されていることを確認する
 
@@ -511,7 +511,7 @@ ms.locfileid: "123112207"
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[Key Vault キーには有効期限が必要である](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F152b15f7-8e1f-4c1f-ab71-8c010ba5dbc0) |暗号化キーには有効期限を定義する必要があり、永続的なものにしてはいけません。 無期限に有効なキーを使用すると、攻撃者がキーを侵害できる時間がそれだけ長くなります。 セキュリティ プラクティスとして、暗号化キーには有効期限を設定することをお勧めします。 |Audit、Deny、Disabled |[1.0.1-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Keys_ExpirationSet.json) |
+|[Key Vault キーには有効期限が必要である](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F152b15f7-8e1f-4c1f-ab71-8c010ba5dbc0) |暗号化キーには有効期限を定義する必要があり、永続的なものにしてはいけません。 無期限に有効なキーを使用すると、攻撃者がキーを侵害できる時間がそれだけ長くなります。 セキュリティ プラクティスとして、暗号化キーには有効期限を設定することをお勧めします。 |Audit、Deny、Disabled |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Keys_ExpirationSet.json) |
 
 ### <a name="ensure-that-the-expiration-date-is-set-on-all-secrets"></a>すべてのシークレットに有効期限が設定されていることを確認する
 
@@ -519,7 +519,7 @@ ms.locfileid: "123112207"
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[Key Vault シークレットには有効期限が必要である](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F98728c90-32c7-4049-8429-847dc0f4fe37) |シークレットには有効期限を定義する必要があり、永続的なものにしてはいけません。 シークレットを無期限に有効にすると、潜在的な攻撃者にそれを侵害する時間を多く与えることになります。 セキュリティ プラクティスとして、シークレットには有効期限を設定することをお勧めします。 |Audit、Deny、Disabled |[1.0.1-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Secrets_ExpirationSet.json) |
+|[Key Vault シークレットには有効期限が必要である](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F98728c90-32c7-4049-8429-847dc0f4fe37) |シークレットには有効期限を定義する必要があり、永続的なものにしてはいけません。 シークレットを無期限に有効にすると、潜在的な攻撃者にそれを侵害する時間を多く与えることになります。 セキュリティ プラクティスとして、シークレットには有効期限を設定することをお勧めします。 |Audit、Deny、Disabled |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Secrets_ExpirationSet.json) |
 
 ### <a name="ensure-the-key-vault-is-recoverable"></a>キー コンテナーが回復可能であることを確認する
 

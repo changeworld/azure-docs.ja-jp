@@ -7,17 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 08/10/2021
+ms.date: 09/20/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 836802e65c8eb76f17bbf053e54ed9dbedf54049
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3e3cb266e9da128e9379d6868d189ac72408c4f7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121740031"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128605831"
 ---
 # <a name="define-custom-attributes-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム属性を定義する
 
@@ -75,7 +75,8 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
 アプリケーション ID を取得するには:
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
 1. 左側のメニューで、 **[Azure AD B2C]** を選択します。 または、 **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
 1. **[アプリの登録]** を選択してから、 **[すべてのアプリケーション]** を選択します。
 1. `b2c-extensions-app. Do not modify. Used by AADB2C for storing user data.` アプリケーションを選択します。
@@ -88,7 +89,8 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
 次の手順でアプリケーション プロパティを取得します。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
 1. 左側のメニューで、 **[Azure AD B2C]** を選択します。 または、 **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
 1. **[アプリの登録]** を選択してから、 **[すべてのアプリケーション]** を選択します。
 1. `b2c-extensions-app. Do not modify. Used by AADB2C for storing user data.` アプリケーションを選択します。
@@ -128,10 +130,11 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
 ## <a name="upload-your-custom-policy"></a>カスタム ポリシーのアップロード
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-2. ご利用の Azure AD テナントを含むディレクトリを使用していることを確認してください。そのためには、トップ メニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択して、ご利用の Azure AD B2C テナントを含むディレクトリを選択します。
-3. Azure portal の左上隅にある **[すべてのサービス]** を選択し、 **[アプリの登録]** を検索して選択します。
-4. **[Identity Experience Framework]** を選択します。
-5. **[カスタム ポリシーのアップロード]** を選択し、変更した TrustFrameworkExtensions.xml ポリシー ファイルをアップロードします。
+1. 自分の Azure B2C AD テナントを含むディレクトリを使用していることを確認します。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
+1. Azure portal の左上隅にある **[すべてのサービス]** を選択し、 **[アプリの登録]** を検索して選択します。
+1. **[Identity Experience Framework]** を選択します。
+1. **[カスタム ポリシーのアップロード]** を選択し、変更した TrustFrameworkExtensions.xml ポリシー ファイルをアップロードします。
 
 > [!NOTE]
 > Azure AD 技術プロファイルで要求がディレクトリに最初に保持される際には、カスタム属性が存在するかどうかがチェックされます。 ない場合は、カスタム属性を作成します。  

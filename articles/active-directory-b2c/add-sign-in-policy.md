@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/07/2021
+ms.date: 08/24/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 71784aa5e40cc7af96faa60d0779a779e99f3425
-ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+ms.openlocfilehash: 78556d5f6d6a203a3d105f971cb7850109daa01a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122777848"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128570276"
 ---
 # <a name="set-up-a-sign-in-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でサインイン フローを設定する
 
@@ -58,7 +58,7 @@ ms.locfileid: "122777848"
    * **[ローカル アカウント]** で、 **[Email signin]\(メールでのサインイン\)** 、 **[User ID signin]\(ユーザー ID でのサインイン\)** 、 **[Phone signin]\(電話でのサインイン\)** 、 **[Phone/Email signin]\(電話とメールでのサインイン\)** 、 **[User ID/Email signin]\(ユーザー ID とメールでのサインイン\)** 、 **[None]\(なし\)** のいずれかを選択します。 [詳細については、こちらを参照してください](sign-in-options.md)。
    * **[ソーシャル ID プロバイダ]** で、既に設定してある外部のソーシャル ID プロバイダまたはエンタープライズ ID プロバイダーをどれか選択します。 [詳細については、こちらを参照してください](add-identity-provider.md)。
 1. 第 2 の認証方法で ID を証明することをユーザーに要求したい場合は、 **[多要素認証]** で、認証方法の種類を選択し、さらに、いつ多要素認証 (MFA) を適用するかを選択します。 [詳細については、こちらを参照してください](multi-factor-authentication.md)。
-1. Azure AD B2C テナントに対して条件付きアクセス ポリシーを構成してある場合で、なおかつ、このユーザー フローでそれらを有効にしたい場合は、 **[条件付きアクセス]** の **[Enforce conditional access policies]\(条件付きアクセス ポリシーを強制\)** チェック ボックスをオンにします。 ポリシー名を指定する必要はありません。 [詳細については、こちらを参照してください](conditional-access-user-flow.md?pivots=b2c-user-flow)。
+1. Azure AD B2C テナントに条件付きアクセス ポリシーを設定していて、それをこのユーザー フローで有効にする場合は、 **[Conditional access]\(条件付きアクセス\)** の **[Enforce conditional access policies]\(条件付きアクセス ポリシーを有効にする\)** チェック ボックスに印を入れます。 ポリシー名を指定する必要はありません。 [詳細については、こちらを参照してください](conditional-access-user-flow.md?pivots=b2c-user-flow)。
 1. アプリケーションにトークンで返す要求を **[アプリケーション要求]** で選択します。 すべての値を表示するために **[Show more]\(詳細表示\)** を選択して値を選び、 **[OK]** を選択します。
    > [!NOTE]
    > Azure AD B2C テナントで使用するための[カスタム属性を作成](user-flow-custom-attributes.md?pivots=b2c-user-flow)することもできます。
@@ -117,8 +117,8 @@ ms.locfileid: "122777848"
 ## <a name="update-and-test-your-policy"></a>ポリシーを更新してテストする
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-1. ポータルのツール バーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択して、自分の Azure AD B2C テナントが含まれるディレクトリを使用していることを確認します。
-1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページの **[ディレクトリ名]** の一覧で自分の Azure AD ディレクトリを見つけて、 **[切り替え]** を選択します。
+1. ポータルのツールバーにある **[ディレクトリ + サブスクリプション]** アイコンを選択して、Azure AD テナントを含むディレクトリを使っていることを確認します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[スイッチ]** を選択します。
 1. Azure portal の左上隅にある **[すべてのサービス]** を選択し、 **[アプリの登録]** を検索して選択します。
 1. **[Identity Experience Framework]** を選択します。
 1. **[カスタム ポリシーのアップロード]** を選択し、変更したポリシー ファイルである *TrustFrameworkExtensions.xml* をアップロードします。

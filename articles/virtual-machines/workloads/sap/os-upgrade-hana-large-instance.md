@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 06/24/2021
 ms.author: madhukan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3a7f066a350eae18b9c847d206310cfc3ab8bd57
-ms.sourcegitcommit: fd83264abadd9c737ab4fe85abdbc5a216467d8b
+ms.openlocfilehash: 4e980417c2c48455e43143fb2f870a63d6395f94
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112913385"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128546208"
 ---
 # <a name="operating-system-upgrade"></a>オペレーティング システムのアップグレード
 この記事では、BareMetal Infrastructure とも呼ばれる、HANA Large Instances (HLI) のオペレーティング システム (OS) のアップグレードについて詳しく説明します。
@@ -28,7 +28,7 @@ ms.locfileid: "112913385"
 >OS をアップグレードすることはお客様の責任となります。 Microsoft の運用サポートはアップグレードの主要な領域についてご案内できますが、アップグレードを計画する際はオペレーティング システムのベンダーにもご相談ください。
 
 HLI のプロビジョニング中に、Microsoft の運用チームによってオペレーティング システムがインストールされます。
-お客様は、オペレーティング システムを保守する必要があります。 たとえば、HLI に対する修正プログラム、チューニング、アップグレードなどを実行する必要があります。 オペレーティング システムの大幅な変更 (SP1 から SP2 へのアップグレードなど) を行う前に、サポート チケットを開いて Microsoft の運用チームに連絡してください。 その後、お客様との相談が可能になります。 アップグレードの少なくとも 1 週間前にはこのチケットを開くことをお勧めします。 
+お客様は、オペレーティング システムを保守する必要があります。 たとえば、HLI に対する修正プログラム、チューニング、アップグレードなどを実行する必要があります。 オペレーティング システムの大幅な変更 (SP1 から SP2 へのアップグレードなど) を行う前に、サポート チケットを開いて Microsoft の運用チームに連絡してください。 お客様と相談します。 アップグレードの少なくとも 1 週間前にはこのチケットを開くことをお勧めします。 
 
 チケットに含める:
 

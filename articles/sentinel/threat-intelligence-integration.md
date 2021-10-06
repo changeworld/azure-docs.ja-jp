@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/13/2021
 ms.author: yelevin
-ms.openlocfilehash: 82a2dca4c38a8d8602bf41ee36760e846edb5d78
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: ba9d853b6c4bcbe43b81463870a06821dc34d665
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124774749"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129277615"
 ---
 # <a name="threat-intelligence-integration-in-azure-sentinel"></a>Azure Sentinel への脅威インテリジェンスの統合
 
@@ -67,7 +67,7 @@ TAXII 脅威インテリジェンスフィードに接続するには、以下�
 ### <a name="threatconnect"></a>ThreatConnect
 
 - [STIX と TAXII に関する詳細情報 @ThreatConnect](https://threatconnect.com/stix-taxii/)
-- [TAXII Services のドキュメント @ThreatConnect](https://docs.threatconnect.com/en/latest/rest_api/taxii/taxii.html)
+- [TAXII Services のドキュメント @ThreatConnect](https://docs.threatconnect.com/en/latest/rest_api/v2/taxii/taxii.html)
 
 ## <a name="integrated-threat-intelligence-platform-products"></a>統合された脅威インテリジェンス プラットフォーム製品
 

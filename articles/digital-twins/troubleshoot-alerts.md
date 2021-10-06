@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: Azure Digital Twins メトリックでアラートを有効にする方法を確認します。
 author: baanders
 ms.author: baanders
-ms.date: 7/28/2020
+ms.date: 9/15/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 55dcda4c323700caa030fb87768d36a702d1c501
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 6a5397a2387b7fb55b0e03664ddb9f52ec8baf59
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110476756"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128642770"
 ---
 # <a name="troubleshooting-azure-digital-twins-alerts"></a>Azure Digital Twins のトラブルシューティング: 警告
 
@@ -28,15 +28,19 @@ Azure Digital Twins インスタンスに対してアラートを有効にする
 
 2. メニューから **[アラート]** を選択した後、 **[+ 新しいアラート ルール]** を選択します。
 
+   :::image type="content" source="media/troubleshoot-alerts/alerts-pre.png" alt-text="Azure Digital Twin インスタンスの [アラート] セクションにある新しいアラート ルールを作成するためのボタンを示す Azure portal のスクリーンショット。" lightbox="media/troubleshoot-alerts/alerts-pre.png":::
+
 3. 続いて表示される *[アラート ルールの作成]* ページで、画面の指示に従って条件、トリガーされるアクション、アラートの詳細を定義できます。     
     * **[スコープ]** の詳細には、インスタンスの詳細が自動的に入力されます。
     * アラートのトリガーと応答をカスタマイズするには、**条件** と **アクション グループ** の詳細を定義します。
-    * **[アラート ルールの詳細]** セクションで、ルールの名前と説明 (省略可能) を入力します。 アラートが作成されるとすぐにアクティブになるようにするには、 _[作成時にアラート ルールを有効にする]_ チェックボックスをオンにします。
-        - ここでも、 _[リソース グループ]_ と _[重大度]_ レベルを選択します。
+    * **[アラート ルールの詳細]** セクションで、ルールの名前と説明 (省略可能) を入力します。 
+        - アラートが作成されるとすぐにアクティブになるようにするには、 _[作成時にアラート ルールを有効にする]_ チェックボックスをオンにします。
+        - 条件が満たされなくなったときにアラートが解決されるようにしたい場合は、 _[自動的にアラートを解決する]_ チェックボックスをオンにします。
+        - このセクションは、 _[サブスクリプション]_ 、 _[リソース グループ]_ 、 _[重大度]_ レベルの選択にも使用します。
 
 4. _[アラート ルールの作成]_ ボタンを選択して、アラート ルールを作成します。
 
-:::image type="content" source="media/troubleshoot-alerts/create-alert-rule.png" alt-text="スコープ、条件、アクション グループ、アラート ルールの詳細に関するセクションが表示された [アラート ルールの作成] ページを示す Azure portal のスクリーンショット。" lightbox="media/troubleshoot-alerts/create-alert-rule.png":::
+   :::image type="content" source="media/troubleshoot-alerts/create-alert-rule.png" alt-text="スコープ、条件、アクション グループ、アラート ルールの詳細に関するセクションが表示された [アラート ルールの作成] ページを示す Azure portal のスクリーンショット。" lightbox="media/troubleshoot-alerts/create-alert-rule.png":::
 
 これらのフィールドへの入力方法のガイド付きチュートリアルについては、「[Microsoft Azure のアラートの概要](../azure-monitor/alerts/alerts-overview.md)」をご覧ください。 以下に、Azure Digital Twins の手順の例をいくつか示します。
 

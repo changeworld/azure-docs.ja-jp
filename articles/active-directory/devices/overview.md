@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: sandeo, ravenn, spunukol, jogro, jploegert
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76c997cc1f4ed2be18e06838f6c30864456f7539
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 4b689e27e6b65f5ace628d1f7cf12b246e6e516d
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128588240"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129354810"
 ---
 # <a name="what-is-a-device-identity"></a>デバイス ID とは
 
@@ -39,7 +39,7 @@ ms.locfileid: "128588240"
 - [Azure AD の登録](concept-azure-ad-register.md) 
    - Bring Your Own Device (BYOD)
    - モバイル デバイス (携帯電話とタブレット)
-- [Azure AD 参加](concept-azure-ad-register.md)
+- [Azure AD 参加](concept-azure-ad-join.md)
    - 組織が所有する Windows 10 デバイス
    - [Azure で VM として実行されている組織内の Windows Server 2019 以降のサーバー](howto-vm-sign-in-azure-ad-windows.md)
 

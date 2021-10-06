@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 07/06/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: d342565972b051dcd5362f192d15678e1817ce78
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: c18e242694d5f4d02ce9111d852a66bf49e48bcd
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124818856"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129275489"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>Azure ファイル共有のパフォーマンスに関する問題のトラブルシューティング
 
@@ -82,7 +82,7 @@ ms.locfileid: "124818856"
 
 - メタデータ操作の数を減らすようにアプリケーションを変更できるかどうかを確認します。
 - ファイル共有に仮想ハード ディスク (VHD) を追加し、クライアントから SMB を介して VHD をマウントして、データに対するファイル操作を実行します。 このアプローチは、単一のライター/リーダーのシナリオ、またはリーダーが複数でライターが存在しないシナリオで機能します。 ファイル システムは Azure Files ではなくクライアントが所有するため、これによってメタデータ操作をローカルにすることができます。 セットアップすると、ローカルに直接アタッチされているストレージの場合と同様のパフォーマンスが実現されます。
-    -   Windows クライアントに VHD をマウントするには、[Mount-DiskImage](https://docs.microsoft.com/powershell/module/storage/mount-diskimage) PowerShell コマンドレットを使用します。
+    -   Windows クライアントに VHD をマウントするには、[Mount-DiskImage](/powershell/module/storage/mount-diskimage) PowerShell コマンドレットを使用します。
     -   Linux に VHD をマウントするには、Linux ディストリビューションのドキュメントを参照してください。     
 
 ### <a name="cause-3-single-threaded-application"></a>原因 3:シングル スレッド アプリケーション

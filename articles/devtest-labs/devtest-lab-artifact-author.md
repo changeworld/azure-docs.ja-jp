@@ -1,14 +1,14 @@
 ---
-title: DevTest Labs 仮想マシンのカスタム アーティファクトの作成 | Microsoft Docs
+title: Azure DevTest Labs 仮想マシンのカスタム アーティファクトの作成
 description: 仮想マシンのプロビジョニング後、アプリケーションをデプロイおよび設定するために、Azure DevTest Labs で使用する成果物を作成する方法について説明します。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 85acfcc3811e671e58fadab08a23951778e1323d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e19cd5002c150346661654930c22943d5cbc2523
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88270684"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128662948"
 ---
 # <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>DevTest Labs 仮想マシンのカスタム アーティファクトの作成
 

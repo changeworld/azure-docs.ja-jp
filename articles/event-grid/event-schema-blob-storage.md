@@ -2,13 +2,13 @@
 title: Event Grid ソースとしての Azure Blob Storage
 description: Blob Storage イベントに関して Azure Event Grid に用意されているプロパティについて説明します。
 ms.topic: conceptual
-ms.date: 05/12/2021
-ms.openlocfilehash: 37637a486bd80e9d0018495e6fd4713bab36e8ff
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.date: 09/08/2021
+ms.openlocfilehash: fcd8ff40e8a31c3329f6526a488a6a6a5261383e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111541965"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124797631"
 ---
 # <a name="azure-blob-storage-as-an-event-grid-source"></a>Event Grid ソースとしての Azure Blob Storage
 
@@ -32,6 +32,7 @@ ms.locfileid: "111541965"
  |**Microsoft.Storage.BlobCreated** |BLOB が作成または置換されたときにトリガーされます。 <br>具体的には、このイベントは、BLOB REST API で使用可能な `PutBlob`、`PutBlockList`、または `CopyBlob` 操作をクライアントが使用し、**なおかつ** ブロック BLOB が完全にコミットされたときにトリガーされます。 <br>クライアントが、**階層型名前空間** 機能が有効になっているアカウントで `CopyBlob` 操作を使用した場合は、`CopyBlob` 操作の動作が少し異なります。 その場合、 **Microsoft.Storage.BlobCreated** イベントは、ブロック BLOB が完全にコミットされたときではなく、`CopyBlob` 操作が **開始された** ときにトリガーされます。   |
  |**Microsoft.Storage.BlobDeleted** |BLOB が削除されたときにトリガーされます。 <br>具体的には、クライアントが BLOB REST API で使用可能な `DeleteBlob` 操作を呼び出した場合に、このイベントがトリガーされます。 |
  |**Microsoft.Storage.BlobTierChanged** |BLOB のアクセス層が変更されたときにトリガーされます。 具体的には、BLOB REST API で使用可能な `Set Blob Tier` 操作をクライアントが呼び出したときに、層の変更が完了すると、このイベントがトリガーされます。 |
+|**Microsoft.Storage.AsyncOperationInitiated** |アーカイブ層からホット層またはクール層へのデータの移動またはコピーを伴う操作が開始されたときにトリガーされます。 具体的には、クライアントが `Set Blob Tier` API を呼び出して、アーカイブ層からホット層またはクール層に BLOB を移動するとき、またはクライアントが `Copy Blob` API を呼び出して、アーカイブ層の BLOB からホット層またはクール層の BLOB にデータをコピーするときに、このイベントがトリガーされます。|
 
 ### <a name="list-of-the-events-for-azure-data-lake-storage-gen-2-rest-apis"></a>Azure Data Lake Storage Gen 2 REST API のイベント一覧
 
@@ -210,6 +211,34 @@ BLOB ストレージ アカウントに階層型名前空間がある場合、�
     "eventTime": "2021-05-04T15:00:00.8350154Z"
 }
 ```
+
+### <a name="microsoftstorageasyncoperationinitiated-event"></a>Microsoft.Storage.AsyncOperationInitiated イベント
+
+```json
+{
+    "topic": "/subscriptions/{subscription-id}/resourceGroups/Storage/providers/Microsoft.Storage/storageAccounts/my-storage-account",
+    "subject": "/blobServices/default/containers/testcontainer/blobs/00000.avro",
+    "eventType": "Microsoft.Storage.AsyncOperationInitiated",
+    "id": "8ea4e3f2-101e-003d-5ff4-4053b2061016",
+    "data": {
+        "api": "SetBlobTier",
+        "clientRequestId": "777fb4cd-f890-4c5b-b024-fb47300bae62",
+        "requestId": "8ea4e3f2-101e-003d-5ff4-4053b2000000",
+        "contentType": "application/octet-stream",
+        "contentLength": 3660,
+        "blobType": "BlockBlob",
+        "url": "https://my-storage-account.blob.core.windows.net/testcontainer/00000.avro",
+        "sequencer": "000000000000000000000000000089A4000000000018c6d7",
+        "storageDiagnostics": {
+            "batchId": "34128c8a-7006-0014-00f4-406dc6000000"
+        }
+    },
+    "dataVersion": "",
+    "metadataVersion": "1",
+    "eventTime": "2021-05-04T14:44:59.3204652Z"
+}
+```
+
 
 ### <a name="microsoftstorageblobrenamed-event"></a>Microsoft.Storage.BlobRenamed イベント
 

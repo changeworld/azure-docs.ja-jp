@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: Azure Kubernetes Service (AKS) クラスターにデプロイされた Azure Machine Learning モデルからデータを収集する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.reviewer: sgilley
 ms.author: copeters
 author: lostmygithubaccount
 ms.date: 07/14/2020
 ms.topic: how-to
 ms.custom: data4ml
-ms.openlocfilehash: 2319e513cf223118e043ba11702301f8a2796ff3
-ms.sourcegitcommit: 0ab53a984dcd23b0a264e9148f837c12bb27dac0
+ms.openlocfilehash: a629b2ca07b9b807ba42e4e071b7f9430ace2108
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2021
-ms.locfileid: "113504983"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129427573"
 ---
 # <a name="collect-data-from-models-in-production"></a>実稼働環境のモデルからデータを収集する
 

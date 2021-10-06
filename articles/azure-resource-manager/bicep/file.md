@@ -2,13 +2,13 @@
 title: Bicep ファイルの構造と構文
 description: 宣言型の構文を使用した Bicep ファイルの構造とプロパティについて説明します。
 ms.topic: conceptual
-ms.date: 07/02/2021
-ms.openlocfilehash: 5401aebb0b0a82a04a2b78f9af1dc6d133915c0b
-ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
+ms.date: 09/21/2021
+ms.openlocfilehash: f0fb7214d261c686273e275cb0d3d18b1d393f6b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/04/2021
-ms.locfileid: "113286630"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128654330"
 ---
 # <a name="understand-the-structure-and-syntax-of-bicep-files"></a>Bicep ファイルの構造と構文について
 
@@ -191,7 +191,7 @@ var uniqueStorageName = '${storagePrefix}${uniqueString(resourceGroup().id)}'
 
 ## <a name="resource"></a>リソース
 
-デプロイするリソースを定義するには `resource` キーワードを使用します。 リソース宣言には、リソースのシンボリック名が含まれます。 このシンボリック名を、リソースから値を取得する必要がある場合に Bicep ファイルの他の部分で使用します。
+デプロイするリソースを定義するには `resource` キーワードを使用します。 リソース宣言には、リソースのシンボリック名が含まれます。 このシンボリック名を、リソースから値を取得する必要がある場合に Bicep ファイルの他の部分で使用します。 シンボリック名には、a-z、A-Z、0-9、'_' を含めることができます。名前の先頭を数字にすることはできません。
 
 リソース宣言には、リソースの種類と API バージョンも含まれます。
 
@@ -261,7 +261,7 @@ module webModule './webApp.bicep' = {
 }
 ```
 
-シンボリック名を使用すると、ファイル内の別の場所からモジュールを参照できます。 たとえば、シンボリック名および出力値の名前を使用して、モジュールから出力値を取得できます。
+シンボリック名を使用すると、ファイル内の別の場所からモジュールを参照できます。 たとえば、シンボリック名および出力値の名前を使用して、モジュールから出力値を取得できます。 シンボリック名には、a-z、A-Z、0-9、'_' を含めることができます。名前の先頭を数字にすることはできません。
 
 モジュールの名前を、パラメーター、変数、またはリソースと同じにすることはできません。
 

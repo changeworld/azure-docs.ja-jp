@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/28/2021
+ms.date: 09/02/2021
 ms.author: jeedes
-ms.openlocfilehash: d0c8364cc85cfce900021272d17456527919122b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b65a5cb4e202f2610613003b6d4339e0bb5354ce
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99050806"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124733764"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-timeclock-365-saml"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Timeclock 365 SAML の統合
 
@@ -37,7 +37,8 @@ ms.locfileid: "99050806"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Timeclock 365 SAML では、**SP** Initiated SSO がサポートされます
+* Timeclock 365 SAML では、**SP** Initiated SSO がサポートされます。
+* Timeclock 365 SAML では、[自動化されたユーザー プロビジョニング](timeclock-365-provisioning-tutorial.md)がサポートされます。
 
 ## <a name="adding-timeclock-365-saml-from-the-gallery"></a>ギャラリーからの Timeclock 365 SAML の追加
 
@@ -49,7 +50,6 @@ Azure AD への Timeclock 365 SAML の統合を構成するには、ギャラリ
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Timeclock 365 SAML**」と入力します。
 1. 結果パネルから **[Timeclock 365 SAML]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-timeclock-365-saml"></a>Timeclock 365 SAML の Azure AD SSO の構成とテスト
 
@@ -143,6 +143,9 @@ Timeclock 365 SAML に対して Azure AD SSO を構成してテストするに�
 
 1. **[Create]\(作成\)** ボタンをクリックして、テスト ユーザーを作成します。
 
+> [!NOTE]
+> Timeclock 365 SAML では、自動ユーザー プロビジョニングもサポートされます。自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](./timeclock-365-provisioning-tutorial.md)をご覧ください。
+
 ## <a name="test-sso"></a>SSO のテスト 
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
@@ -151,8 +154,7 @@ Timeclock 365 SAML に対して Azure AD SSO を構成してテストするに�
 
 * Timeclock 365 SAML のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Timeclock 365 SAML] タイルをクリックすると、Timeclock 365 SAML サインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
-
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Timeclock 365 SAML] タイルをクリックすると、Timeclock 365 SAML サインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

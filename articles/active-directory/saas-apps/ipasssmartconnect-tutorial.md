@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory シングル サインオン (SSO) と iPass SmartConnect の統合 | Microsoft Docs'
+title: 'チュートリアル: Azure AD SSO と iPass SmartConnect の統合'
 description: Azure Active Directory と iPass SmartConnect の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/09/2021
+ms.date: 09/01/2021
 ms.author: jeedes
-ms.openlocfilehash: 0d69ec14182e1ab69ddaad6351fdc267ee0fa2cd
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: a2f25f25add82568b33bd5c8bfc9466b0c26580b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112063146"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128650897"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ipass-smartconnect"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と iPass SmartConnect の統合
+# <a name="tutorial-azure-ad-sso-integration-with-ipass-smartconnect"></a>チュートリアル: Azure AD SSO と iPass SmartConnect の統合
 
 このチュートリアルでは、iPass SmartConnect と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と iPass SmartConnect を統合すると、次のことができます。
 
@@ -26,13 +26,11 @@ ms.locfileid: "112063146"
 * ユーザーが自分の Azure AD アカウントを使用して iPass SmartConnect に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
-
 ## <a name="prerequisites"></a>前提条件
 
 開始するには、次が必要です。
 
-* Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
+* Azure AD サブスクリプション。 サブスクリプションがない場合は、<bpt id="p1">[</bpt>無料アカウント<ept id="p1">](https://azure.microsoft.com/free/)</ept>を取得できます。
 * iPass SmartConnect でのシングル サインオン (SSO) が有効なサブスクリプション。
 
 > [!NOTE]
@@ -42,8 +40,10 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* iPass SmartConnect では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
-* iPass SmartConnect では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* iPass SmartConnect では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます。
+* iPass SmartConnect では、**Just-In-Time** ユーザー プロビジョニングがサポートされます。
+* iPass SmartConnect では、[自動ユーザー プロビジョニング](ipass-smartconnect-provisioning-tutorial.md)がサポートされます。
+
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -52,43 +52,43 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 Azure AD への iPass SmartConnect の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に iPass SmartConnect を追加する必要があります。
 
-1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
-1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
-1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
-1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**iPass SmartConnect**」と入力します。
-1. 結果ウィンドウで **[iPass SmartConnect]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、Azure portal にサインインします。
+1. 左のナビゲーション ウィンドウで <bpt id="p1">**</bpt>[Azure Active Directory]<ept id="p1">**</ept> サービスを選択します。
+1. <bpt id="p1">**</bpt>[エンタープライズ アプリケーション]<ept id="p1">**</ept> に移動し、 <bpt id="p2">**</bpt>[すべてのアプリケーション]<ept id="p2">**</ept> を選択します。
+1. 新しいアプリケーションを追加するには、 <bpt id="p1">**</bpt>[新しいアプリケーション]<ept id="p1">**</ept> を選択します。
+1. <bpt id="p1">**</bpt>[ギャラリーから追加する]<ept id="p1">**</ept> セクションで、検索ボックスに「<bpt id="p2">**</bpt>iPass SmartConnect<ept id="p2">**</ept>」と入力します。
+1. 結果ウィンドウで <bpt id="p1">**</bpt>[iPass SmartConnect]<ept id="p1">**</ept> を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-ipass-smartconnect"></a>iPass SmartConnect に使用する Azure AD シングル サインオンの構成とテスト
+## <a name="configure-and-test-azure-ad-sso-for-ipass-smartconnect"></a>iPass SmartConnect の Azure AD SSO の構成とテスト
 
-**B.Simon** というテスト ユーザーを使用して、iPass SmartConnect に対する Azure AD SSO を構成してテストします。 SSO が機能するためには、Azure AD ユーザーと iPass SmartConnect の関連ユーザーとの間にリンク関係を確立する必要があります。
+<bpt id="p1">**</bpt>B.Simon<ept id="p1">**</ept> というテスト ユーザーを使用して、iPass SmartConnect に対する Azure AD SSO を構成してテストします。 SSO が機能するためには、Azure AD ユーザーと iPass SmartConnect の関連ユーザーとの間にリンク関係を確立する必要があります。
 
-iPass SmartConnect に対する Azure AD SSO を構成してテストするには、次の構成要素を完了します。
+iPass SmartConnect に対して Azure AD SSO を構成してテストするには、次の手順を行います。
 
-1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
-    * **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
-    * **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
-1. **[iPass SmartConnect の SSO の構成](#configure-ipass-smartconnect-sso)** - アプリケーション側でシングル サインオン設定を構成します。
-    * **[iPass SmartConnect のテスト ユーザーの作成](#create-ipass-smartconnect-test-user)** - iPass SmartConnect で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
-1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
+1. <bpt id="p1">**</bpt><bpt id="p2">[</bpt>Azure AD SSO の構成<ept id="p2">](#configure-azure-ad-sso)</ept><ept id="p1">**</ept> - ユーザーがこの機能を使用できるようにします。
+    1. <bpt id="p1">**</bpt><bpt id="p2">[</bpt>Azure AD のテスト ユーザーの作成<ept id="p2">](#create-an-azure-ad-test-user)</ept><ept id="p1">**</ept> - B.Simon で Azure AD のシングル サインオンをテストします。
+    1. <bpt id="p1">**</bpt><bpt id="p2">[</bpt>Azure AD テスト ユーザーの割り当て<ept id="p2">](#assign-the-azure-ad-test-user)</ept><ept id="p1">**</ept> - B.Simon が Azure AD シングル サインオンを使用できるようにします。
+1. <bpt id="p1">**</bpt><bpt id="p2">[</bpt>iPass SmartConnect の SSO の構成<ept id="p2">](#configure-ipass-smartconnect-sso)</ept><ept id="p1">**</ept> - アプリケーション側でシングル サインオン設定を構成します。
+    1. <bpt id="p1">**</bpt><bpt id="p2">[</bpt>iPass SmartConnect のテスト ユーザーの作成<ept id="p2">](#create-ipass-smartconnect-test-user)</ept><ept id="p1">**</ept> - iPass SmartConnect で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
+1. <bpt id="p1">**</bpt><bpt id="p2">[</bpt>SSO のテスト<ept id="p2">](#test-sso)</ept><ept id="p1">**</ept> - 構成が機能するかどうかを確認します。
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **iPass SmartConnect** アプリケーション統合ページで、**[管理]** セクションを見つけて、**[シングル サインオン]** を選択します。
-1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
+1. Azure portal の **iPass SmartConnect** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+1. <bpt id="p1">**</bpt>[シングル サインオン方式の選択]<ept id="p1">**</ept> ページで、 <bpt id="p2">**</bpt>[SAML]<ept id="p2">**</ept> を選択します。
+1. <bpt id="p1">**</bpt>[SAML によるシングル サインオンのセットアップ]<ept id="p1">**</ept> ページで、 <bpt id="p2">**</bpt>[基本的な SAML 構成]<ept id="p2">**</ept> の鉛筆アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **IDP** 開始モードでアプリケーションを構成する場合は、Azure と既に統合されているため、 **[基本的な SAML 構成]** セクションで実行する必要がある手順はありません。
+1. <bpt id="p2">**</bpt>IDP<ept id="p2">**</ept> 開始モードでアプリケーションを構成する場合は、Azure と既に統合されているため、 <bpt id="p1">**</bpt>[基本的な SAML 構成]<ept id="p1">**</ept> セクションで実行する必要がある手順はありません。
 
-1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
+1. アプリケーションを <bpt id="p2">**</bpt>SP<ept id="p2">**</ept> 開始モードで構成する場合は、 <bpt id="p1">**</bpt>[追加の URL を設定します]<ept id="p1">**</ept> をクリックして次の手順を実行します。
 
-    **[サインオン URL]** テキスト ボックスに URL として「`https://om-activation.ipass.com/ClientActivation/ssolanding.go`」と入力します。
+    <bpt id="p1">**</bpt>[サインオン URL]<ept id="p1">**</ept> テキスト ボックスに URL として「<ph id="ph1">`https://om-activation.ipass.com/ClientActivation/ssolanding.go`</ph>」と入力します。
 
-1. **[保存]** をクリックします。
+1. <bpt id="p1">**</bpt>[保存]<ept id="p1">**</ept> をクリックします。
 
 1. iPass SmartConnect アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
 
@@ -103,11 +103,11 @@ iPass SmartConnect に対する Azure AD SSO を構成してテストするに�
     | email | user.userprincipalname |
     | username | user.userprincipalname |
 
-1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
+1. <bpt id="p1">**</bpt>[SAML でシングル サインオンをセットアップします]<ept id="p1">**</ept> ページの <bpt id="p2">**</bpt>[SAML 署名証明書]<ept id="p2">**</ept> セクションで、 <bpt id="p3">**</bpt>[フェデレーション メタデータ XML]<ept id="p3">**</ept> を探して <bpt id="p4">**</bpt>[ダウンロード]<ept id="p4">**</ept> を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
-1. **[iPass SmartConnect のセットアップ]** セクションで、要件に基づいて適切な URL をコピーします。
+1. <bpt id="p1">**</bpt>[iPass SmartConnect のセットアップ]<ept id="p1">**</ept> セクションで、要件に基づいて適切な URL をコピーします。
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
@@ -115,52 +115,50 @@ iPass SmartConnect に対する Azure AD SSO を構成してテストするに�
 
 このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
 
-1. Azure portal の左側のウィンドウから、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
-1. 画面の上部にある **[新しいユーザー]** を選択します。
-1. **[ユーザー]** プロパティで、以下の手順を実行します。
-   1. **[名前]** フィールドに「`B.Simon`」と入力します。  
-   1. **[ユーザー名]** フィールドに「username@companydomain.extension」と入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
-   1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
-   1. **Create** をクリックしてください。
+1. Azure portal の左側のウィンドウから、 <bpt id="p1">**</bpt>[Azure Active Directory]<ept id="p1">**</ept> 、 <bpt id="p2">**</bpt>[ユーザー]<ept id="p2">**</ept> 、 <bpt id="p3">**</bpt>[すべてのユーザー]<ept id="p3">**</ept> の順に選択します。
+1. 画面の上部にある <bpt id="p1">**</bpt>[新しいユーザー]<ept id="p1">**</ept> を選択します。
+1. <bpt id="p1">**</bpt>[ユーザー]<ept id="p1">**</ept> プロパティで、以下の手順を実行します。
+   1. <bpt id="p1">**</bpt>[名前]<ept id="p1">**</ept> フィールドに「<ph id="ph1">`B.Simon`</ph>」と入力します。  
+   1. <bpt id="p1">**</bpt>[ユーザー名]<ept id="p1">**</ept> フィールドに「<ph id="ph1">username@companydomain.extension</ph>」と入力します。 たとえば、「 <ph id="ph1">`B.Simon@contoso.com`</ph> 」のように入力します。
+   1. <bpt id="p1">**</bpt>[パスワードを表示]<ept id="p1">**</ept> チェック ボックスをオンにし、 <bpt id="p2">**</bpt>[パスワード]<ept id="p2">**</ept> ボックスに表示された値を書き留めます。
+   1. <bpt id="p1">**</bpt>Create<ept id="p1">**</ept> をクリックしてください。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
 このセクションでは、B.Simon に iPass SmartConnect へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
-1. アプリケーションの一覧で **[iPass SmartConnect]** を選択します。
-1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
-
-   ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
-
-1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
-
-    ![[ユーザーの追加] リンク](common/add-assign-user.png)
-
-1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
-1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
-1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
+1. Azure portal で <bpt id="p1">**</bpt>[エンタープライズ アプリケーション]<ept id="p1">**</ept> を選択し、 <bpt id="p2">**</bpt>[すべてのアプリケーション]<ept id="p2">**</ept> を選択します。
+1. アプリケーションの一覧で <bpt id="p1">**</bpt>[iPass SmartConnect]<ept id="p1">**</ept> を選択します。
+1. アプリの概要ページで、 <bpt id="p1">**</bpt>[管理]<ept id="p1">**</ept> セクションを見つけて、 <bpt id="p2">**</bpt>[ユーザーとグループ]<ept id="p2">**</ept> を選択します。
+1. <bpt id="p1">**</bpt>[ユーザーの追加]<ept id="p1">**</ept> を選択し、 <bpt id="p3">**</bpt>[割り当ての追加]<ept id="p3">**</ept> ダイアログで <bpt id="p2">**</bpt>[ユーザーとグループ]<ept id="p2">**</ept> を選択します。
+1. <bpt id="p1">**</bpt>[ユーザーとグループ]<ept id="p1">**</ept> ダイアログの [ユーザー] の一覧から <bpt id="p2">**</bpt>[B.Simon]<ept id="p2">**</ept> を選択し、画面の下部にある <bpt id="p3">**</bpt>[選択]<ept id="p3">**</ept> ボタンをクリックします。
+1. ユーザーにロールが割り当てられることが想定される場合は、 <bpt id="p1">**</bpt>[ロールの選択]<ept id="p1">**</ept> ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
+1. <bpt id="p1">**</bpt>[割り当ての追加]<ept id="p1">**</ept> ダイアログで、 <bpt id="p2">**</bpt>[割り当て]<ept id="p2">**</ept> をクリックします。
 
 ## <a name="configure-ipass-smartconnect-sso"></a>iPass SmartConnect の SSO の構成
 
-**iPass SmartConnect** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [iPass SmartConnect サポート チーム](mailto:help@ipass.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+<bpt id="p1">**</bpt>iPass SmartConnect<ept id="p1">**</ept> 側でシングル サインオンを構成するには、ダウンロードした<bpt id="p2">**</bpt>フェデレーション メタデータ XML<ept id="p2">**</ept> と Azure portal からコピーした適切な URL を <bpt id="p3">[</bpt>iPass SmartConnect サポート チーム<ept id="p3">](mailto:help@ipass.com)</ept>に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-ipass-smartconnect-test-user"></a>iPass SmartConnect のテスト ユーザーの作成
 
-このセクションでは、iPass SmartConnect で Britta Simon というユーザーを作成します。 [iPass SmartConnect サポート チーム](mailto:help@ipass.com)と協力して、iPass SmartConnect プラットフォームで許可リストに追加する必要のあるユーザーまたはドメインを追加します。 ドメインがチームによって追加された場合、ユーザーは iPass SmartConnect プラットフォームに自動的にプロビジョニングされます。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、iPass SmartConnect で Britta Simon というユーザーを作成します。 <bpt id="p1">[</bpt>iPass SmartConnect サポート チーム<ept id="p1">](mailto:help@ipass.com)</ept>と協力して、iPass SmartConnect プラットフォームで許可リストに追加する必要のあるユーザーまたはドメインを追加します。 ドメインがチームによって追加された場合、ユーザーは iPass SmartConnect プラットフォームに自動的にプロビジョニングされます。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
-## <a name="test-sso"></a>SSO のテスト 
+## <a name="test-sso"></a>SSO のテスト
 
-このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
+このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [iPass SmartConnect] タイルをクリックすると、SSO を設定した iPass SmartConnect に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+#### <a name="sp-initiated"></a>SP Initiated:
 
-## <a name="additional-resources"></a>その他のリソース
+* Azure portal で <bpt id="p1">**</bpt>[このアプリケーションをテストします]<ept id="p1">**</ept> をクリックします。 これにより、ログイン フローを開始できる iPass SmartConnect のサインオン URL にリダイレクトされます。
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
+* iPass SmartConnect のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
+#### <a name="idp-initiated"></a>IDP Initiated:
 
-- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
+* Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した iPass SmartConnect に自動的にサインインします
 
-- [Azure AD で iPass SmartConnect を試す](https://aad.portal.azure.com/)
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリの [iPass SmartConnect] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した iPass SmartConnect に自動的にサインインします。 マイ アプリの詳細については、<bpt id="p1">[</bpt>マイ アプリの概要<ept id="p1">](../user-help/my-apps-portal-end-user-access.md)</ept>に関するページを参照してください。
+
+## <a name="next-steps"></a>次のステップ
+
+iPass SmartConnect を構成したら、組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 <bpt id="p1">[</bpt>Microsoft Cloud App Security でセッション制御を強制する方法<ept id="p1">](/cloud-app-security/proxy-deployment-any-app)</ept>をご覧ください。

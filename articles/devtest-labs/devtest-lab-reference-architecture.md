@@ -1,15 +1,15 @@
 ---
-title: Azure DevTest Labs の企業向け参照アーキテクチャ
+title: 企業向け参照アーキテクチャ
 description: この記事では、企業内の Azure DevTest Labs の参照アーキテクチャに関するガイダンスを提供します。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 2a7c98784e230292afdb5cd217c2f0455034ad70
-ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
+ms.openlocfilehash: e76219222db1dbe6aa7cdc7d7a2ef5be995109e1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111814586"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128652360"
 ---
 # <a name="azure-devtest-labs-reference-architecture-for-enterprises"></a>Azure DevTest Labs の企業向け参照アーキテクチャ
 この記事では、企業内の Azure DevTest Labs に基づくソリューションをデプロイするための参照アーキテクチャを提供します。 含まれる内容は次のとおりです。

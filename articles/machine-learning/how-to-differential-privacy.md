@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: SmartNoise オープンソース ライブラリを使用して、Azure Machine Learning モデルに差分プライバシーのベスト プラクティスを適用する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: enterprise-readiness
 ms.topic: how-to
 ms.custom: responsible-ml
 ms.author: slbird
 author: slbird
 ms.reviewer: luquinta
 ms.date: 01/21/2020
-ms.openlocfilehash: 58716b6a1d25c52447fc1bf277986787db08ca1c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 907d31ee7e4dd3278ab3712a6ab0142b56462a1b
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121729800"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129426190"
 ---
 # <a name="use-differential-privacy-in-azure-machine-learning-preview"></a>Azure Machine Learning で差分プライバシーを使用する (プレビュー)
 

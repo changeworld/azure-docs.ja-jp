@@ -11,17 +11,17 @@ ms.date: 04/19/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 顔認識, 顔認識ソフトウェア, 顔分析, 顔照合, 顔認識アプリ, 画像による顔検索, 顔認識検索
-ms.openlocfilehash: 15d8043beb32d8f3c7fa1b237e1ba25310983b86
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: 9375b8b482076da9e308c9309c4f264118cccfa0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122822290"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128663328"
 ---
 # <a name="what-is-the-azure-face-service"></a>Azure Face サービスとは
 
 > [!WARNING]
-> 2020 年 6 月 11 日に、Microsoft は、人権に基づく厳格な法令が制定されない限り、米国内の警察に顔認識テクノロジを販売しないことを発表しました。 このため、顧客は、米国内の警察である場合、または警察による顔認識機能および Azure サービスに含まれる機能 (Face や Video Indexer など) の使用を許可する場合、これらの機能を使用できません。 新しい Face リソースを作成する際には、Azure portal で、サービスを米国の警察で、もしくは警察のために使用しないこと、および[責任ある AI (RAI) のドキュメント](https://go.microsoft.com/fwlink/?linkid=2164191)を確認し、それに従ってこのサービスを使用することに同意する必要があります。
+> 2020 年 6 月 11 日に、Microsoft は、人権に基づく厳格な法令が制定されない限り、米国内の警察に顔認識テクノロジを販売しないことを発表しました。 このため、顧客は、米国内の警察である場合、または警察による顔認識機能および Azure サービスに含まれる機能 (Face や Video Indexer など) の使用を許可する場合、これらの機能を使用できません。 新しい Face リソースを作成する際には、Azure portal で、サービスを米国の警察で、もしくは警察のために使用しないこと、および[責任ある AI (RAI) のドキュメント](../cognitive-services-apis-create-account-cli.md#prerequisites)を確認し、それに従ってこのサービスを使用することに同意する必要があります。
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
@@ -57,7 +57,7 @@ Azure Face サービスは、画像に含まれている人の顔の検出、認
 
 ### <a name="identification"></a>識別
 
-顔識別は、"一対多" の照合と考えられます。 一致候補は、顔データがクエリの顔とどれだけ一致しているかに基づいて返されます。 このシナリオは、特定のユーザー グループに建物へのアクセス権を付与したり、デバイスのユーザーを検証したりするために使用されます。
+顔識別では、画像内の 1 つの顔を、安全なリポジトリ内の一連の顔と "一対多" で照合できます。 一致候補は、顔データがクエリの顔とどれだけ一致しているかに基づいて返されます。 このシナリオは、特定のユーザー グループに建物へのアクセス権を付与したり、デバイスのユーザーを検証したりするために使用されます。
 
 次の画像は、`"myfriends"` という名前のデータベースの例を示しています。 各グループは、最大で 100 万個の異なる person オブジェクトを含むことができます。 各 person オブジェクトには最大で 248 個の顔を登録できます。
 
@@ -67,7 +67,11 @@ Azure Face サービスは、画像に含まれている人の顔の検出、認
 
 ### <a name="verification"></a>検証
 
-検証操作は、"これら 2 つの顔は同じ人物のものでしょうか?" という質問に答えます。 プローブ顔データは登録済みの 1 つの顔のみに対して比較されることから、検証は "一対一" の照合とも呼ばれます。 検証は、特定の一致が正確であることを再度確認するために、識別シナリオで使用されます。 
+検証操作は、"これら 2 つの顔は同じ人物のものでしょうか?" という質問に答えます。 
+
+また、検証では、画像内の 1 つの顔を、安全なリポジトリまたは写真内の 1 つの顔と "一対一" で照合します。
+
+本人確認や出入管理のシナリオで、前もって撮影された画像 (政府発行の ID カードの写真など) と写真が一致していることを確認する目的に検証を使用できます。
 
 本人確認の詳細については、[顔認識](concepts/face-recognition.md)の概念ガイドまたは [Identify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) および [Verify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a) の API リファレンス ドキュメントを参照してください。
 

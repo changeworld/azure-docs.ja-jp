@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/22/2021
+ms.date: 08/27/2021
 ms.author: jeedes
-ms.openlocfilehash: b0c73206d69f8902fdd9ef9306a35b3fccacc8ec
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: c9addd08254ceedd0938448084120456f20a9d4e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111888293"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128598120"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-clebex"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Clebex の統合
 
@@ -41,8 +41,10 @@ ms.locfileid: "111888293"
 
 * Clebex では、**Just-In-Time** ユーザー プロビジョニングがサポートされます。
 
+* Clebex では、[自動化されたユーザー プロビジョニング](clebex-provisioning-tutorial.md)がサポートされます。
 
-## <a name="adding-clebex-from-the-gallery"></a>ギャラリーからの Clebex の追加
+
+## <a name="add-clebex-from-the-gallery"></a>ギャラリーから Clebex を追加する
 
 Azure AD への Clebex の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に Clebex を追加する必要があります。
 
@@ -148,6 +150,8 @@ Clebex に対して Azure AD SSO を構成してテストするには、次の�
 
 このセクションでは、Britta Simon というユーザーを Clebex に作成します。 Clebex では、Just-In-Time ユーザー プロビジョニングがサポートされています。この設定は既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 Clebex にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
 
+Clebex では、自動ユーザー プロビジョニングもサポートされます。自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](./clebex-provisioning-tutorial.md)をご覧ください。
+
 ## <a name="test-sso"></a>SSO のテスト 
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
@@ -156,7 +160,7 @@ Clebex に対して Azure AD SSO を構成してテストするには、次の�
 
 * Clebex のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Clebex] タイルをクリックすると、Clebex のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Clebex] タイルをクリックすると、Clebex のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ

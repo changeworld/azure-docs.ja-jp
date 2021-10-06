@@ -10,26 +10,24 @@ ms.topic: quickstart
 ms.custom: mvc,subject-armqs, devx-track-azurepowershell
 ms.date: 10/14/2020
 ms.author: sebansal
-ms.openlocfilehash: 4994e345b55e5b7fe77e116475fa2e5a29a9751f
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 8e8a0e931a2c33883bf18ad92a367110d9be093e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110669998"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128572965"
 ---
 # <a name="quickstart-create-an-azure-key-vault-and-a-key-by-using-arm-template"></a>クイックスタート: ARM テンプレートを使用して Azure キー コンテナーとキーを作成する 
 
 [Azure Key Vault](../general/overview.md) は、キー、パスワード、証明書、その他のシークレットなど、シークレットのための安全な保管場所を提供するクラウド サービスです。 このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) をデプロイしてキー コンテナーとキーを作成する過程を中心に取り上げます。
 
-> [!NOTE]
-> この機能は、Azure Government では使用できません。
 
 ## <a name="prerequisites"></a>前提条件
 
 この記事を完了するには:
 
 - Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
-- ユーザーには、Azure の組み込みロールが割り当てられている必要があります (共同作成者など)。 [詳細については、こちらを参照してください](../../role-based-access-control/role-assignments-portal.md)
+- ユーザーには、Azure の組み込みロールが割り当てられている必要があります (**共同作成者** ロールが推奨)。 [詳細については、こちらを参照してください](../../role-based-access-control/role-assignments-portal.md)
 - Azure AD ユーザーオブジェクト ID は、
 テンプレートによるアクセス許可の設定で必要です。 次の手順を使用してオブジェクト ID (GUID) を取得します。
 
@@ -172,7 +170,7 @@ ms.locfileid: "110669998"
 
 |パラメーター  |定義  |
 |---------|---------|
-|**Keysize**  | 実行できる操作をキーを使用して指定します。 このパラメーターを指定しない場合、すべての操作を実行できます。 このパラメーターの値には、[JSON Web Key (JWK) 仕様](https://tools.ietf.org/html/draft-ietf-jose-json-web-key-41)で定義されたキー操作のリストをコンマ区切りで指定できます。 <br> `["sign", "verify", "encrypt", "decrypt", " wrapKey", "unwrapKey"]` |
+|**keyOps**  | 実行できる操作をキーを使用して指定します。 このパラメーターを指定しない場合、すべての操作を実行できます。 このパラメーターの値には、[JSON Web Key (JWK) 仕様](https://tools.ietf.org/html/draft-ietf-jose-json-web-key-41)で定義されたキー操作のリストをコンマ区切りで指定できます。 <br> `["sign", "verify", "encrypt", "decrypt", " wrapKey", "unwrapKey"]` |
 |**CurveName**  |  EC キー タイプに使用される楕円曲線の名前。 「[JsonWebKeyCurveName](/rest/api/keyvault/createkey/createkey#jsonwebkeycurvename)」を参照してください |
 |**Kty**  |  作成するキーの種類。 有効な値については、「[JsonWebKeyType](/rest/api/keyvault/createkey/createkey#jsonwebkeytype)」を参照してください。 |
 |**タグ** | キーと値のペアの形式による、アプリケーション固有のメタデータ。  |

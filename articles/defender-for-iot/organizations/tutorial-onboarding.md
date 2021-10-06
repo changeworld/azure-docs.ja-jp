@@ -4,14 +4,14 @@ description: このチュートリアルでは、Azure Defender for IoT の試�
 author: ElazarK
 ms.author: v-ekrieg
 ms.topic: tutorial
-ms.date: 09/06/2021
+ms.date: 09/23/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 66d95f5700cb3445aa5e2facabe12ea7c70ef92e
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: cd62dfaa3a90c6efde1f758bec3e7062ce3e858c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123544668"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128642151"
 ---
 # <a name="tutorial-azure-defender-for-iot-trial-setup"></a>チュートリアル: Azure Defender for IoT の試用版のセットアップ
 
@@ -247,6 +247,8 @@ ESXi または Hyper-V のいずれかを使用して、仮想センサーのソ
 ## <a name="configure-a-span-port"></a>SPAN ポートを構成する
 
 vSwitch にはミラーリング機能がありませんが、対処法を使用して SPAN ポートを実装できます。 この対処法は、ESXi または Hyper-V で実装できます。
+
+:::image type="content" source="media/tutorial-onboarding/purdue-model.png" alt-text="アーキテクチャ内でセンサーを配置する場所を示すスクリーンショット。":::
 
 ### <a name="configure-a-span-port-with-esxi"></a>ESXi で SPAN ポートを構成する
 

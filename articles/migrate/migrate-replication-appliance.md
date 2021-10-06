@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: 5f63b033c3995932662fc9b68c1397bf57b0326e
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: 4a06267aae473ecc1b42812f7ed07405faafd7aa
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107714976"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128607472"
 ---
 # <a name="replication-appliance"></a>レプリケーション アプライアンス
 
@@ -58,7 +58,7 @@ RAM | 16 GB
 オペレーティング システムのロケール | 英語 (en-us)
 TLS | TLS 1.2 を有効にする必要があります。
 .NET Framework | .NET Framework 4.6 以降が (強力な暗号が有効にされた) マシンにインストールされている必要があります。
-MySQL | MySQL をアプライアンスでインストールする必要があります。<br/> MySQL をインストールする必要があります。 手動でインストールするか、アプライアンスのデプロイ中に Site Recovery でインストールすることができます。
+MySQL | MySQL をアプライアンスでインストールする必要があります。<br/> MySQL をインストールする必要があります。 手動でインストールするか、アプライアンスのデプロイ中に Azure Migrate でインストールすることができます。
 その他のアプリ | レプリケーション アプライアンスで他のアプリを実行しないでください。
 Windows Server の役割 | これらの役割を有効にしないでください。 <br> - Active Directory Domain Services <br>- インターネット インフォメーション サービス <br> - Hyper-V
 グループ ポリシー | これらのグループ ポリシーを有効にしないでください。 <br> - コマンド プロンプトへのアクセス禁止。 <br> - レジストリ編集ツールへのアクセス禁止。 <br> - ファイル添付の信頼ロジック。 <br> - スクリプト実行の有効化。 <br> [詳細情報](/previous-versions/windows/it-pro/windows-7/gg176671(v=ws.10))

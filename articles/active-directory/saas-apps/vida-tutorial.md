@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory シングル サインオン (SSO) と VIDA の統合 | Microsoft Docs'
+title: 'チュートリアル: Azure AD SSO と VIDA の統合'
 description: Azure Active Directory と VIDA の間でシングル サインオンを構成する方法について確認します。
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/16/2021
+ms.date: 09/17/2021
 ms.author: jeedes
-ms.openlocfilehash: 6d75ea3bae1561df1d60beb068c352131ff565fa
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 6d1850ce3c0f8e9fb69159f6677bad3e3bfd0d57
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112305778"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129351561"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-vida"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と VIDA の統合
+# <a name="tutorial-azure-ad-sso-integration-with-vida"></a>チュートリアル: Azure AD SSO と VIDA の統合
 
 このチュートリアルでは、VIDA と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と VIDA を統合すると、次のことができます。
 
@@ -78,10 +78,16 @@ VIDA に対する Azure AD SSO を構成してテストするには、次の手�
 
 1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
 
-    **[サインオン URL]** ボックスに、`https://vitruevida.com/?teamid=<ID>&idp=<IDP_NAME>` という形式で URL を入力します。
+    a. **[識別子 (エンティティ ID)]** ボックスに、`urn:amazon:cognito:sp:eu-west-2_IDmTxjGr6` という値を入力します。
+    
+    b. **[応答 URL]** ボックスに、URL として「`https://vitruevida.auth.eu-west-2.amazoncognito.com/saml2/idpresponse`」と入力します。
+    
+    c. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。
+    
+    `https://vitruevida.com/?teamid=<ID>&idp=<IDP_NAME>`
 
     > [!NOTE]
-    > この値は実際のものではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[VIDA クライアント サポート チーム](mailto:support@vitruehealth.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > サインオン URL は実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[VIDA クライアント サポート チーム](mailto:support@vitruehealth.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 1. VIDA アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
 
@@ -92,9 +98,6 @@ VIDA に対する Azure AD SSO を構成してテストするには、次の手�
     | 名前 | ソース属性|
     | ---------------- | --------- |
     | assignedroles | user.assignedroles |
-
-    > [!NOTE]
-    > VIDA では、アプリケーションに対してユーザーのロールが割り当てられていることを想定しています。 ユーザーに適切なロールを割り当てることができるように、Azure AD でこれらのロールを設定してください。 Azure AD でロールを構成する方法については、[こちら](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui)を参照してください。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -128,6 +131,105 @@ VIDA に対する Azure AD SSO を構成してテストするには、次の手�
 1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
+## <a name="configure-role-based-single-sign-on-in-vida"></a>VIDA でロールベースのシングル サインオンを構成する
+
+1. VIDA ロールと Azure AD ユーザーを関連付けるには、次の手順で Azure AD でロールを作成する必要があります。
+
+    a. [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) にサインオンします。
+
+    b. **[アクセス許可の変更]** をクリックし、ロールの作成に必要なアクセス許可を取得します。
+
+    ![Graph の構成 1](./media/vida-tutorial/graph.png)
+
+    c. 次の画像のように、一覧から次のアクセス許可を選択し、 **[アクセス許可の変更]** をクリックします。
+
+    ![Graph の構成 2](./media/vida-tutorial/modify-permissions.png)
+
+    >[!NOTE]
+    >アクセス許可が付与されたら、Graph Explorer に再度ログオンします。
+
+    d. Graph Explorer ページで、最初のドロップダウン リストから **[GET]** を選択し、2 つ目のドロップダウン リストから **[ベータ]** を選択します。 ドロップダウン リストの横にあるフィールドに「`https://graph.microsoft.com/beta/servicePrincipals`」と入力し、 **[クエリの実行]** を実行します。
+
+    ![Graph の構成。](./media/vida-tutorial/get-beta.png)
+
+    >[!NOTE]
+    >複数のディレクトリを使用している場合、クエリのフィールドに「`https://graph.microsoft.com/beta/contoso.com/servicePrincipals`」と入力できます。
+
+    e. **[Response Preview]\(応答プレビュー\)** セクションで、後で使用するために "Service Principal" から appRoles プロパティを抽出します。
+
+    ![応答のプレビュー。](./media/vida-tutorial/preview.png)
+
+    >[!NOTE]
+    >クエリのフィールドに「`https://graph.microsoft.com/beta/servicePrincipals/<objectID>`」と入力することで appRoles プロパティを見つけることができます。 `objectID` は Azure AD **プロパティ** ページからコピーしたオブジェクト ID であることにご注目ください。
+
+    f. Graph Explorer に戻り、メソッドを **GET** から **PATCH** に変更し、 **[要求本文]** セクションに次のコンテンツを貼り付け、 **[クエリの実行]** をクリックします。
+    
+   ```
+   { 
+   "appRoles": [
+       {
+           "allowedMemberTypes": [
+           "User"
+           ],
+           "description": "User",
+           "displayName": "User",
+           "id": "18d14569-c3bd-439b-9a66-3a2aee01****",
+           "isEnabled": true,
+           "origin": "Application",
+           "value": null
+       },
+       {
+           "allowedMemberTypes": [
+           "User"
+           ],
+           "description": "msiam_access",
+           "displayName": "msiam_access",
+           "id": "b9632174-c057-4f7e-951b-be3adc52****",
+           "isEnabled": true,
+           "origin": "Application",
+           "value": null
+       },
+       {
+       "allowedMemberTypes": [
+           "User"
+       ],
+       "description": "VIDACompanyAdmin",
+       "displayName": "VIDACompanyAdmin",
+       "id": "293414bb-2215-48b4-9864-64520937d437",
+       "isEnabled": true,
+       "origin": "ServicePrincipal",
+       "value": "VIDACompanyAdmin"
+       },
+       {
+       "allowedMemberTypes": [
+           "User"
+       ],
+       "description": "VIDATeamAdmin",
+       "displayName": "VIDATeamAdmin",
+       "id": "2884f1ae-5c0d-4afd-bf28-d7d11a3d7b2c",
+       "isEnabled": true,
+       "origin": "ServicePrincipal",
+       "value": "VIDATeamAdmin"
+       },
+       {
+       "allowedMemberTypes": [
+           "User"
+       ],
+       "description": "VIDAUser",
+       "displayName": "VIDAUser",
+       "id": "37b3218c-0c06-484f-90e6-4390ce5a8787",
+       "isEnabled": true,
+       "origin": "ServicePrincipal",
+       "value": "VIDAUser"
+       }
+   ]
+   }
+   ```
+   > [!NOTE]
+   > Azure AD では、SAML 応答の要求値として、これらのロールの値を送信します。 ただし、パッチ操作では、`msiam_access` 部分の後にのみ、新しいロールを追加できます。 作成過程を速やかに進めるため、GUID Generator など、ID ジェネレーターを使用してリアルタイムで ID を生成することをお勧めします。
+
+   g. 必要なロールで "Service Principal" にパッチを適用したら、チュートリアルの「**Azure AD テスト ユーザーの割り当て**」セクションの手順に従い、Azure AD ユーザー (B.Simon) とロールを関連付けます。
+
 ## <a name="configure-vida-sso"></a>VIDA SSO の構成
 
 **VIDA** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [VIDA サポート チーム](mailto:support@vitruehealth.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
@@ -149,5 +251,4 @@ VIDA に対する Azure AD SSO を構成してテストするには、次の手�
 ## <a name="next-steps"></a>次のステップ
 
 VIDA を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
-
 

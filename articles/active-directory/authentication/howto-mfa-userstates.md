@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: cd22b7068507358b3b9cff0b97ce9bf6f3cabc1e
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 066e0a48442825785bc2c413c0e7d40ca470f45d
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124762951"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129353244"
 ---
 # <a name="enable-per-user-azure-ad-multi-factor-authentication-to-secure-sign-in-events"></a>ユーザーごとの Azure AD Multi-Factor Authentication を有効にしてサインイン イベントのセキュリティを確保する
 
@@ -83,7 +83,7 @@ Azure AD ライセンスに条件付きアクセスが含まれておらず、�
 
 ユーザーごとの MFA の使用が有効になっていたユーザーが Azure AD Multi-Factor Authentication を強制された場合は、次の PowerShell が、条件付きアクセス ベースの Azure AD Multi-Factor Authentication への変換に役立ちます。
 
-この PowerShell を ISE ウィンドウで実行するか、`.PS1` ファイルとして保存し、ローカルで実行します。 この操作は、[MSOnline モジュール](/powershell/module/msonline/?view=azureadps-1.0#msonline)を使用することによってのみ実行できます。 
+この PowerShell を ISE ウィンドウで実行するか、`.PS1` ファイルとして保存し、ローカルで実行します。 この操作は、[MSOnline モジュール](/powershell/module/msonline#msonline)を使用することによってのみ実行できます。 
 
 ```PowerShell
 # Sets the MFA requirement state

@@ -1,22 +1,20 @@
 ---
 title: アクティブな地理的レプリケーション
 description: アクティブ geo レプリケーションを使用して、同じデータ センター リージョンまたは異なるデータ センター リージョン内の Azure SQL Database に、個々のデータベースの読み取り可能なセカンダリ データベースを作成します。
-services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
 ms.custom: sqldbrb=1
-ms.devlang: ''
 ms.topic: conceptual
 author: BustosMSFT
 ms.author: robustos
 ms.reviewer: mathoma
 ms.date: 04/28/2021
-ms.openlocfilehash: 1ab4655df0233fdea13f507f8b80b5caa92dc9d6
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 071947c4e0e3989abd4aaa4c68b860d99a8a0c43
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112284349"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129357842"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>アクティブ geo レプリケーションの作成と使用 - Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -27,7 +25,7 @@ ms.locfileid: "112284349"
 > Azure SQL Hyperscale のアクティブ geo レプリケーションは[現在、パブリック プレビュー](https://aka.ms/hsgeodr)段階です。 現在、次のような制限があります。geo セカンダリは同じまたは異なるリージョンに 1 つのみです。強制および計画されたフェールオーバーは現在サポートされていません。geo セカンダリからのデータベース復元はサポートされていません。データベース コピーのソース データベースとして、あるいは、別の geo セカンダリのためのプライマリとして geo セカンダリを使用することはサポートされていません。
 > 
 > geo セカンダリをプライマリ (書き込み可能なデータベース) にする必要がある場合は、次の手順に従ってください。
-> 1. PowerShell の [Remove-AzSqlDatabaseSecondary](/powershell/module/az.sql/remove-azsqldatabasesecondary) コマンドレットまたは Azure CLI 向けの [az sql db replica delete-link](/cli/azure/sql/db/replica?view=azure-cli-latest#az_sql_db_replica_delete_link) を使用して、geo レプリケーション リンクを解除します。これにより、セカンダリ データベースが読み取りと書き込みが可能なスタンドアロン データベースになります。 プライマリにコミットされていてもまだセカンダリにレプリケートされていないトランザクションは失われます。 これらの変更は、古いプライマリが使用可能な場合に復旧できます。また、古いプライマリを利用可能な最新の時点に復元することで復旧できる場合があります。
+> 1. PowerShell の [Remove-AzSqlDatabaseSecondary](/powershell/module/az.sql/remove-azsqldatabasesecondary) コマンドレットまたは Azure CLI 向けの [az sql db replica delete-link](/cli/azure/sql/db/replica#az_sql_db_replica_delete_link) を使用して、geo レプリケーション リンクを解除します。これにより、セカンダリ データベースが読み取りと書き込みが可能なスタンドアロン データベースになります。 プライマリにコミットされていてもまだセカンダリにレプリケートされていないトランザクションは失われます。 これらの変更は、古いプライマリが使用可能な場合に復旧できます。また、古いプライマリを利用可能な最新の時点に復元することで復旧できる場合があります。
 > 2. 古いプライマリが使用可能な場合はそれを削除し、新しいプライマリの geo レプリケーションを設定します (新しいセカンダリがシードされます)。 
 > 3. これに応じて、アプリケーション内の接続文字列を更新します。
 

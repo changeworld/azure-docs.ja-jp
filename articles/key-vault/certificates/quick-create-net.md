@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9188079a93c9c2688a310413401e90014b278bf8
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 47f3bc4082edf64a66fbc90e4f9838040220f3f0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107813418"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124782387"
 ---
 # <a name="quickstart-azure-key-vault-certificate-client-library-for-net-sdk-v4"></a>クイックスタート: .NET 用 Azure Key Vault 証明書クライアント ライブラリ (SDK v4)
 
@@ -134,9 +134,9 @@ using Azure.Security.KeyVault.Certificates;
 
 ### <a name="authenticate-and-create-a-client"></a>クライアントの認証と作成
 
-このクイックスタートでは、ログイン ユーザーを使用してキー コンテナーに対する認証を行います。ローカル開発では、これが推奨される方法となります。 Azure にデプロイされるアプリケーションの場合は、App Service または仮想マシンにマネージド ID を割り当てる必要があります。詳細については、[マネージド ID の概要](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)に関するページを参照してください。
+このクイックスタートでは、ログイン ユーザーを使用してキー コンテナーに対する認証を行います。ローカル開発では、これが推奨される方法となります。 Azure にデプロイされるアプリケーションの場合は、App Service または仮想マシンにマネージド ID を割り当てる必要があります。詳細については、[マネージド ID の概要](../../active-directory/managed-identities-azure-resources/overview.md) を参照してください。
 
-以下の例では、キー コンテナーの名前は、"https://\<your-key-vault-name\>.vault.azure.net" という形式で、キー コンテナーの URI に展開されます。 この例では、[Azure ID ライブラリ](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme)の ["DefaultAzureCredential()"](/dotnet/api/azure.identity.defaultazurecredential) クラスを使用しています。環境や使用するオプションが変わっても、同じコードを使用して ID を提供することができます。 キー コンテナーに対する認証の詳細については、[開発者ガイド](https://docs.microsoft.com/azure/key-vault/general/developers-guide#authenticate-to-key-vault-in-code)を参照してください。
+以下の例では、キー コンテナーの名前は、"https://\<your-key-vault-name\>.vault.azure.net" という形式で、キー コンテナーの URI に展開されます。 この例では、[Azure ID ライブラリ](/dotnet/api/overview/azure/identity-readme)の ["DefaultAzureCredential()"](/dotnet/api/azure.identity.defaultazurecredential) クラスを使用しています。環境や使用するオプションが変わっても、同じコードを使用して ID を提供することができます。 キー コンテナーに対する認証の詳細については、[開発者ガイド](../general/developers-guide.md#authenticate-to-key-vault-in-code)を参照してください。
 
 ```csharp
 string keyVaultName = Environment.GetEnvironmentVariable("KEY_VAULT_NAME");
@@ -147,7 +147,7 @@ var client = new CertificateClient(new Uri(kvUri), new DefaultAzureCredential())
 
 ### <a name="save-a-certificate"></a>証明書の保存
 
-この例では、わかりやすくするために、既定の発行ポリシーを含む自己署名証明書を使用できます。 このタスクでは、[StartCreateCertificateAsync](/dotnet/api/azure.security.keyvault.certificates.certificateclient.startcreatecertificateasync) メソッドを使用します。 このメソッドは、パラメーターで、証明書名と[証明書ポリシー](https://docs.microsoft.com/dotnet/api/azure.security.keyvault.certificates.certificatepolicy)を受け取ります。
+この例では、わかりやすくするために、既定の発行ポリシーを含む自己署名証明書を使用できます。 このタスクでは、[StartCreateCertificateAsync](/dotnet/api/azure.security.keyvault.certificates.certificateclient.startcreatecertificateasync) メソッドを使用します。 このメソッドは、パラメーターで、証明書名と[証明書ポリシー](/dotnet/api/azure.security.keyvault.certificates.certificatepolicy)を受け取ります。
 
 ```csharp
 var operation = await client.StartCreateCertificateAsync("myCertificate", CertificatePolicy.Default);

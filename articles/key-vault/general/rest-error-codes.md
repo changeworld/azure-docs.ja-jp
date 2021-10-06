@@ -10,12 +10,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: reference
 ms.date: 12/16/2019
-ms.openlocfilehash: 30b7e34f2a791cfd8dec1a6d8e81d706fa07939f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: de0aa3f3149141ddacd7906297656d58b8fad24c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91631224"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128634003"
 ---
 # <a name="azure-key-vault-rest-api-error-codes"></a>Azure Key Vault REST API のエラー コード
  
@@ -131,6 +131,8 @@ HTTP 403 は、要求は認証されました (要求元の ID は認識され�
 - 要求しているリソースの IP アドレスが、キー コンテナーのファイアウォール設定で承認されていない。
 
 HTTP 403 は、顧客のアプリケーションが、顧客が考えているクライアント ID を使用していない場合によく発生します。 通常、これは実際の呼び出し ID に対してアクセス ポリシーが正しく設定されていないことを意味します。
+
+アクセス ポリシーに ID を追加した直後に 403 エラーが発生した場合は、定期的な再試行を追加することで処理できます。
 
 ### <a name="troubleshooting-403"></a>403 のトラブルシューティング
 

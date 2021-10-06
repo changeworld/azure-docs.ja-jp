@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 1f7537790c22bf09da89cd02ba213b1573f19d9c
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: a14d99a81aaad48c8daf0c0bf0d49b3a7e229f3d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108177424"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128600287"
 ---
 # <a name="configure-dns-for-name-resolution-for-private-cloud-vcenter-access-from-on-premises-workstations"></a>オンプレミスのワークステーションからのプライベート クラウドの vCenter にアクセスするための名前解決用に DNS を構成する
 
@@ -43,10 +43,10 @@ DNS の構成には、次のどちらかのオプションを使用します。
 
 構成する具体的なファイルおよびパラメーターは、個々の DNS セットアップによって異なる場合があります。
 
-たとえば、既定の BIND サーバー構成の場合、DNS サーバー上の /etc/named.conf ファイルを編集し、次のゾーン情報を追加します。
+たとえば、既定の BIND サーバー構成の場合、DNS サーバー上の `/etc/named.conf` ファイルを編集し、次のゾーン情報を追加します。
 
 > [!NOTE]
->この記事には、Microsoft が使用しなくなった "スレーブ" という用語への言及が含まれています。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
+>この記事には、Microsoft が使用しなくなった "*スレーブ*" という用語への言及が含まれています。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
 
 ```
 zone "az.cloudsimple.io"

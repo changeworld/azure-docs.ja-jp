@@ -11,12 +11,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - devx-track-azurecli
 ms.date: 03/04/2020
-ms.openlocfilehash: fdcc56bb60622c6dec587be8ad7be63efdd08015
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: dfca5613659969485a97b0c9ff50c7739821df5d
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114732220"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129516555"
 ---
 このクイック スタートでは、あらかじめ作成されている次の 2 つの .NET アプリケーションを使います。
 
@@ -37,7 +37,7 @@ ms.locfileid: "114732220"
     ```cmd/sh
     dotnet --version
     ```
-* まだ行っていない場合は、https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip から Azure IoT C# サンプルをダウンロードし、ZIP アーカイブを展開します。
+* まだ行っていない場合は、https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/main.zip から Azure IoT C# サンプルをダウンロードし、ZIP アーカイブを展開します。
 
 * ポート 8883 がファイアウォールで開放されていることを確認してください。 このクイックスタートのデバイス サンプルでは、ポート 8883 を介して通信する MQTT プロトコルを使用しています。 このポートは、企業や教育用のネットワーク環境によってはブロックされている場合があります。 この問題の詳細と対処方法については、「[IoT Hub への接続 (MQTT)](../articles/iot-hub/iot-hub-mqtt-support.md#connecting-to-iot-hub)」を参照してください。
 
@@ -101,7 +101,7 @@ az iot hub connection-string show --policy-name service --hub-name {YourIoTHubNa
 
 ## <a name="listen-for-direct-method-calls"></a>ダイレクト メソッドの呼び出しをリッスンする
 
-シミュレートされたデバイス アプリケーションは、IoT Hub 上のデバイス固有エンドポイントに接続し、シミュレートされた利用統計情報を送信して、Hub からのダイレクト メソッド呼び出しをリッスンします。 このクイック スタートでは、Hub からのダイレクト メソッド呼び出しは、利用統計情報の送信間隔を変更するようデバイスに指示します。 シミュレートされたデバイスでは、ダイレクト メソッドを実行した後、ハブに受信確認が返送されます。
+シミュレートされたデバイス アプリケーションは、IoT Hub 上のデバイス固有エンドポイントに接続し、シミュレートされた利用統計情報を送信して、Hub からのダイレクト メソッド呼び出しをリッスンします。 このクイック スタートでは、ハブからのダイレクト メソッド呼び出しは、利用統計情報の送信間隔を変更するようデバイスに指示します。 シミュレートされたデバイスでは、ダイレクト メソッドを実行した後、ハブに受信確認が返送されます。
 
 1. ローカル ターミナル ウィンドウで、サンプルの C# プロジェクトのルート フォルダーに移動します。 次に、**iot-hub\Quickstarts\SimulatedDeviceWithCommand** フォルダーに移動します。
 

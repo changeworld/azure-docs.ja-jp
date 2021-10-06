@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: 45489d25256d049467dd946922d30606c53f9bed
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: a754656db58b1cc3c1414eb36601c873d8ecc785
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109750953"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128671106"
 ---
 # <a name="install-log-analytics-agent-on-linux-computers"></a>Linux コンピューターに Log Analytics エージェントをインストールする
 この記事では、次の方法を使用して Linux コンピューターに Log Analytics エージェントをインストールする方法の詳細を説明します。
@@ -75,10 +75,11 @@ OMS エージェントでは、Linux のカスタマイズおよびセキュリ�
 
 現在、以下がサポートされています。 
 - FIPS
+- SELINUX (CENTOS および RHEL の Marketplace イメージと既定の設定)
 
 次の要素はサポートされていません。
 - CIS
-- SELINUX
+- SELINUX (MLS のようなカスタム セキュリティ強化)
 
 [Azure Monitor エージェント](./azure-monitor-agent-overview.md)では、CIS と SELINUX のセキュリティ強化のサポートが予定されています。 その他のセキュリティ強化とカスタマイズの手段は、OMS エージェントではサポートされておらず、その計画もありません。  
 

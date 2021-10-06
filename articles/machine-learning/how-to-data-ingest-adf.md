@@ -4,7 +4,7 @@ titleSuffix: Azure Machine Learning
 description: Azure Data Factory を使用したデータ インジェスト パイプラインの作成に使用できるオプションと、それぞれの利点について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mldata
 ms.author: iefedore
 author: eedorenko
 manager: davete
@@ -12,12 +12,12 @@ ms.reviewer: larryfr
 ms.date: 01/26/2021
 ms.topic: how-to
 ms.custom: devx-track-python, data4ml
-ms.openlocfilehash: 401b565d69797bc4880729dd5f5c4af3e0012f6f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b7a0e63e04bd7890d06e10a1f8815d8bab567ccc
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121736523"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129426323"
 ---
 # <a name="data-ingestion-with-azure-data-factory"></a>Azure Data Factory を使用したデータ インジェスト
 

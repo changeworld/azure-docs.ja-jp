@@ -5,12 +5,12 @@ description: Windows Server ノード プールとアプリケーション ワ�
 services: container-service
 ms.topic: article
 ms.date: 10/12/2020
-ms.openlocfilehash: b278be45af62d50c8df85ed833ebbeb99dd5c35d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c11ca69e11ee3f9b429414c2caf5b71a947d6a31
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121747800"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128595296"
 ---
 # <a name="frequently-asked-questions-for-windows-server-node-pools-in-aks"></a>AKS の Windows Server ノード プールに関してよく寄せられる質問
 
@@ -191,6 +191,13 @@ Set-TimeZone -Id "Russian Standard Time"
 ```
 
 実行中のコンテナーの現在のタイム ゾーンまたは使用可能なタイム ゾーンの一覧を表示するには、[Get-TimeZone](/powershell/module/microsoft.powershell.management/get-timezone) を使用します。
+
+## <a name="can-i-maintain-session-affinity-from-client-connections-to-pods-with-windows-containers"></a>Windows コンテナーを使用してポッドへのクライアント接続からセッション アフィニティを管理できますか?
+これは WS2022 OS バージョンでサポートされる予定ですが、現時点でクライアント IP でセッション アフィニティを実現するには、ノードあたり 1 つのインスタンスを実行するように必要なポッドを制限し、ローカル ノードでのポッドにトラフィックを転送するように Kubernetes サービスを構成します。 このためには、次の構成を使用できます。
+1. 1\.20 以上のバージョンを実行している AKS クラスター。
+1. Windows ノードあたり 1 つのインスタンスのみを許可するようにポッドを制限します。 これは、デプロイ構成でアンチアフィニティを使用して実現できます。
+1. Kubernetes サービス構成で、"externalTrafficPolicy=Local" を設定します。 これにより、Kubernetes サービスでローカル ノード内のポッドにのみトラフィックが送信されます。
+1. Kubernetes サービス構成で、"sessionAffinity: ClientIP" を設定します。 これにより、Azure Load Balancer がセッション アフィニティで構成されます。
 
 ## <a name="what-if-i-need-a-feature-thats-not-supported"></a>サポートされていない機能が必要な場合はどうすればよいですか?
 

@@ -1,16 +1,16 @@
 ---
-title: Azure DevTest Labs で Service Fabric クラスター環境を作成する
+title: Service Fabric クラスター環境を作成する
 description: 自己完結型 Service Fabric クラスターがある環境を作成し、そのクラスターをスケジュールを使用して開始および停止する方法について説明します。
 author: EMaher
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
 ms.author: enewman
-ms.openlocfilehash: e85e4dd34a63500b569b75bb953a4c6061aefe5e
-ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
+ms.openlocfilehash: 42a8c3b11f2da5910ff3aed1a1eface827100289
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113586007"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128593840"
 ---
 # <a name="create-an-environment-with-self-contained-service-fabric-cluster-in-azure-devtest-labs"></a>Azure DevTest Labs で Service Fabric クラスターがある環境を作成する
 この記事では、Azure DevTest Labs で自己完結型 Service Fabric クラスターがある環境を作成する方法について説明します。 

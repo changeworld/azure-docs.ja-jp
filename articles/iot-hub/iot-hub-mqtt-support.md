@@ -15,12 +15,12 @@ ms.custom:
 - contperf-fy21q1
 - fasttrack-edit
 - iot
-ms.openlocfilehash: ab706018e7c38e43ae75d5af49c3bd6c0a78d783
-ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.openlocfilehash: 8628683dafbc16a657bf7c8c04beecdc60e2506d
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2021
-ms.locfileid: "114403487"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129455382"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>MQTT プロトコルを使用した IoT Hub との通信
 
@@ -55,9 +55,9 @@ MQTT プロトコルをサポートする[デバイス SDK](https://github.com/A
 | Language | MQTT プロトコルのパラメーター | MQTT over WebSocket プロトコルのパラメーター
 | --- | --- | --- |
 | [Node.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device.js) | azure-iot-device-mqtt.Mqtt | azure-iot-device-mqtt.MqttWs |
-| [Java](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java) |[IotHubClientProtocol](/java/api/com.microsoft.azure.sdk.iot.device.iothubclientprotocol).MQTT | IotHubClientProtocol.MQTT_WS |
+| [Java](https://github.com/Azure/azure-iot-sdk-java/blob/main/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java) |[IotHubClientProtocol](/java/api/com.microsoft.azure.sdk.iot.device.iothubclientprotocol).MQTT | IotHubClientProtocol.MQTT_WS |
 | [C](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iothub_client_sample_mqtt_dm) | [MQTT_Protocol](/azure/iot-hub/iot-c-sdk-ref/iothubtransportmqtt-h/mqtt-protocol) | [MQTT_WebSocket_Protocol](/azure/iot-hub/iot-c-sdk-ref/iothubtransportmqtt-websockets-h/mqtt-websocket-protocol) |
-| [C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples) | [TransportType](/dotnet/api/microsoft.azure.devices.client.transporttype).Mqtt | MQTT が失敗した場合、TransportType.Mqtt は MQTT over WebSocket にフォールバックします。 MQTT over WebSocket のみを指定するには、TransportType.Mqtt_WebSocket_Only を使用します |
+| [C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/main/iothub/device/samples) | [TransportType](/dotnet/api/microsoft.azure.devices.client.transporttype).Mqtt | MQTT が失敗した場合、TransportType.Mqtt は MQTT over WebSocket にフォールバックします。 MQTT over WebSocket のみを指定するには、TransportType.Mqtt_WebSocket_Only を使用します |
 | [Python](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples) | 既定で MQTT をサポートします | 呼び出しに `websockets=True` を追加してクライアントを作成します |
 
 次のフラグメントでは、Azure IoT Node.js SDK を使用しているときに MQTT over WebSocket プロトコルを指定する方法を示しています。
@@ -84,7 +84,7 @@ device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectio
 |Node.js     |   180 秒      |     いいえ    |
 |Java     |    230 秒     |     いいえ    |
 |C     | 240 秒 |  [はい](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md#mqtt-transport)   |
-|C#     | 300 秒 |  [はい](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/src/Transport/Mqtt/MqttTransportSettings.cs#L89)   |
+|C#     | 300 秒 |  [はい](https://github.com/Azure/azure-iot-sdk-csharp/blob/main/iothub/device/src/Transport/Mqtt/MqttTransportSettings.cs#L89)   |
 |Python   | 60 秒 |  いいえ   |
 
 [MQTT 仕様](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718081)に従って、IoT Hub のキープアライブ ping の間隔は、クライアントのキープアライブ値の 1.5 倍です。 ただし、IoT Hub では、すべての Azure サービスは Azure ロードバランサーの TCP アイドル タイムアウト (29.45 分) にバインドされているため、サーバー側のタイムアウトの最大値は 29.45 分 (1,767 秒) に制限されます。 

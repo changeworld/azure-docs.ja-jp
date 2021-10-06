@@ -1,19 +1,19 @@
 ---
-title: Azure Monitor メトリックによるメトリックの集計と表示の説明
+title: Azure Monitor メトリックによる集計と表示の説明
 description: Azure Monitor でのメトリックの集計方法に関する詳細情報
 author: rboucher
 ms.author: robb
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 03/10/2021
-ms.openlocfilehash: 9c543b1bebfdeb47c1a1e1326f49247d8103191f
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.date: 08/31/2021
+ms.openlocfilehash: 71c348d313c236d438521d70ca135feee647bb32
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121861257"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124744522"
 ---
-# <a name="azure-monitor-metrics-metrics-aggregation-and-display-explained"></a>Azure Monitor メトリックによるメトリックの集計と表示の説明
+# <a name="azure-monitor-metrics-aggregation-and-display-explained"></a>Azure Monitor メトリックによる集計と表示の説明
 
 この記事では、Azure Monitor の[プラットフォーム メトリック](../data-platform.md)および[カスタム メトリック](../essentials/metrics-custom-overview.md)の基盤となる Azure Monitor 時系列データベースでのメトリックの集計について説明します。 この記事は、標準の [Application Insights のメトリック](../app/app-insights-overview.md)にも適用されます。 
 

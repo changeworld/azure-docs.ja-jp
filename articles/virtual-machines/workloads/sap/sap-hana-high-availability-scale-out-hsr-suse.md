@@ -1,13 +1,9 @@
 ---
 title: SLES での HSR と Pacemaker を使用した SAP HANA スケールアウト | Microsoft Docs
 description: SLES での HSR と Pacemaker を使用した SAP HANA スケールアウト。
-services: virtual-machines-windows,virtual-network,storage
-documentationcenter: saponazure
 author: rdeltcheva
 manager: juergent
-editor: ''
 tags: azure-resource-manager
-keywords: ''
 ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
 ms.service: virtual-machines-sap
 ms.topic: article
@@ -15,12 +11,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/26/2021
 ms.author: radeltch
-ms.openlocfilehash: 211fa45626a8ca4db8e555795adccc55bc6c0a3e
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: ab66bcdc834fd894d7d258ab9c7c08a0049b07ed
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110534464"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128673143"
 ---
 # <a name="high-availability-for-sap-hana-scale-out-system-with-hsr-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server での HSR を使用した SAP HANA スケールアウト システムの高可用性 
 
@@ -30,7 +26,6 @@ ms.locfileid: "110534464"
 
 [anf-azure-doc]:../../../azure-netapp-files/index.yml
 [anf-avail-matrix]:https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all 
-[anf-register]:https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register
 [anf-sap-applications-azure]:https://www.netapp.com/us/media/tr-4746.pdf
 
 [2205917]:https://launchpad.support.sap.com/#/notes/2205917
@@ -622,11 +617,11 @@ Azure NetApp ボリュームは、[Azure NetApp Files に委任された](../../
      * **[Enter Root User Name]\(ルート ユーザー名を入力\) [root]** : Enter キーを押して既定値をそのまま使用します
      * **[Select roles for host 'hana-s1-db2']\(ホスト 'hana-s1-db2' のロールを選択\) [1]** :1 (worker)
      * **[Enter Host Failover Group for host 'hana-s1-db2']\(ホスト 'hana-s1-db2' のホスト フェールオーバー グループを入力\) [既定値]** : Enter キーを押して既定値をそのまま使用します
-     * **[Enter Storage Partition Number for host 'hana-s1-db2']\(ホスト 'hana-s1-db2' のストレージ パーティション番号を入力\) [<<assign automatically>>]** : Enter キーを押して既定値をそのまま使用します
+     * **[Enter Storage Partition Number for host 'hana-s1-db2']\(ホスト 'hana-s1-db2' のストレージ パーティション番号を入力\) [\<\<assign automatically\>\>]** : Enter キーを押して既定値をそのまま使用します
      * **[Enter Worker Group for host 'hana-s1-db2']\(ホスト 'hana-s1-db2' のワーカー グループを入力\) [既定値]** : Enter キーを押して既定値をそのまま使用します
      * **[Select roles for host 'hana-s1-db3']\(ホスト 'hana-s1-db3' のロールを選択\) [1]** :1 (worker)
      * **[Enter Host Failover Group for host 'hana-s1-db3']\(ホスト 'hana-s1-db3' のホスト フェールオーバー グループを入力\) [既定値]** : Enter キーを押して既定値をそのまま使用します
-     * **[Enter Storage Partition Number for host 'hana-s1-db3']\(ホスト 'hana-s1-db3' のストレージ パーティション番号を入力\) [<<assign automatically>>]** : Enter キーを押して既定値をそのまま使用します
+     * **[Enter Storage Partition Number for host 'hana-s1-db3']\(ホスト 'hana-s1-db3' のストレージ パーティション番号を入力\) [\<\<assign automatically\>\>]** : Enter キーを押して既定値をそのまま使用します
      * **[Enter Worker Group for host 'hana-s1-db3']\(ホスト 'hana-s1-db3' のワーカー グループを入力\) [既定値]** : Enter キーを押して既定値をそのまま使用します
      * **[System Administrator (hn1adm) Password]\(システム管理者 (hn1adm) のパスワード\)** : パスワードを入力します
      * **[Enter SAP Host Agent User (sapadm) Password]\(SAP ホスト エージェント ユーザー (sapadm) のパスワードを入力\)** : パスワードを入力します

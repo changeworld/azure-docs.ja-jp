@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 1/28/2021
-ms.openlocfilehash: 9b8699598a9bac4781346ff939736b2bd6ee72f2
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: d38c2518b3504b79f70c58aff1e6cf832d05c8a5
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113429946"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128633927"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL のコンピューティングとストレージのオプション - フレキシブル サーバー (プレビュー)
 
@@ -40,7 +40,7 @@ Azure Database for MySQL フレキシブル サーバーは、次の 3 つのコ
 | General Purpose | 負荷分散されたコンピューティングとメモリ、およびスケーラブルな I/O スループットを必要とする大部分のビジネス ワークロード。 たとえば、Web アプリやモバイル アプリ、その他のエンタープライズ アプリケーションをホストするためのサーバーが挙げられます。|
 | メモリ最適化 | 高速トランザクション処理と高いコンカレンシーを実現するためのインメモリ パフォーマンスを必要とする、高パフォーマンス データベース ワークロード。 たとえば、リアルタイム データと高パフォーマンスなトランザクション アプリや分析アプリを処理するためのサーバーが挙げられます。|
 
-サーバーを作成した後に、コンピューティング レベル、コンピューティング サイズ、およびストレージ サイズが変更されました。 コンピューティングのスケーリングには再起動が必要で、これに 60 ～ 120 秒かかるのに対し、ストレージのスケーリングには再起動は不要です。 また、他の調整とは関係なく、バックアップの保持期間の長さを調整することもできます。 詳細については、「[リソースのスケール](#scale-resources)」セクションを参照してください。
+サーバーを作成した後に、コンピューティング レベル、コンピューティング サイズ、およびストレージ サイズを変更できます。 コンピューティングのスケーリングには再起動が必要で、これに 60 ～ 120 秒かかるのに対し、ストレージのスケーリングには再起動は不要です。 また、他の調整とは関係なく、バックアップの保持期間の長さを調整することもできます。 詳細については、「[リソースのスケール](#scale-resources)」セクションを参照してください。
 
 ## <a name="compute-tiers-size-and-server-types"></a>コンピューティング レベル、サイズ、およびサーバーの種類
 

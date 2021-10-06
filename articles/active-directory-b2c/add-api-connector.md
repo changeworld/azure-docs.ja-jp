@@ -5,18 +5,18 @@ services: active-directory-b2c
 ms.service: active-directory
 ms.subservice: B2C
 ms.topic: how-to
-ms.date: 05/03/2021
+ms.date: 08/24/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 1e0af1080a2d56fc01bdeb4bfb5f6475c477b685
-ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+ms.openlocfilehash: 288cffbaa90db2725d2aa2985c003474b2c7eb7b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122777740"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128570731"
 ---
 # <a name="add-an-api-connector-to-a-sign-up-user-flow"></a>API コネクタをサインアップ ユーザー フローに追加する
 
@@ -45,18 +45,18 @@ API エンドポイントは、[サンプル](api-connector-samples.md#api-conne
 [API コネクタ](api-connectors-overview.md)を使用するには、まず API コネクタを作成してから、ユーザー フローで有効にします。
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
-2. **[Azure サービス]** で、 **[Azure AD B2C]** を選択します。
-4. **[API コネクタ]** を選択し、 **[新しい API コネクタ]** を選択します。
+1. **[Azure サービス]** で、 **[Azure AD B2C]** を選択します。
+1. **[API コネクタ]** を選択し、 **[新しい API コネクタ]** を選択します。
 
    ![API コネクタの基本構成のスクリーンショット](media/add-api-connector/api-connector-new.png)
 
-5. 呼び出しの表示名を指定します。 例: **ユーザー情報の検証**。
-6. API 呼び出しの **[エンドポイント URL]** を指定します。
-7. **[認証の種類]** を選択し、API を呼び出すための認証情報を構成します。 [API コネクタのセキュリティ保護](secure-rest-api.md)の方法を参照してください。
+1. 呼び出しの表示名を指定します。 例: **ユーザー情報の検証**。
+1. API 呼び出しの **[エンドポイント URL]** を指定します。
+1. **[認証の種類]** を選択し、API を呼び出すための認証情報を構成します。 [API コネクタのセキュリティ保護](secure-rest-api.md)の方法を参照してください。
 
    ![API コネクタの認証構成のスクリーンショット](media/add-api-connector/api-connector-config.png)
 
-8. **[保存]** を選択します。
+1. **[保存]** を選択します。
 
 ## <a name="the-request-sent-to-your-api&quot;></a>API に送信される要求
 API コネクタによってユーザー属性 (&quot;要求") が **HTTP POST** 要求として具体化され、JSON 本文のキーと値のペアとして送信されます。 属性は [Microsoft Graph](/graph/api/resources/user#properties) ユーザー プロパティと同様にシリアル化されます。 
@@ -103,7 +103,7 @@ Content-type: application/json
   - `PostAttributeCollection` - "ユーザーを作成する前" に対応します。
   - `PreTokenIssuance` - "トークン (プレビュー) を送信する前に" に対応します。 [このステップについて説明します。](add-api-connector-token-enrichment.md)
 - **クライアント ID ('client_id')** - エンド ユーザーがユーザー フローで認証しているアプリケーションの `appId` 値。 これは、アクセス トークンのリソース アプリケーションの `appId` では *ありません*。
-- **メールアドレス ('email')** または [**ID ('identities')** ](/graph/api/resources/objectidentity) - これらの要求は、アプリケーションに対して認証を行っているエンド ユーザーを識別するために API で使用できます。
+- **メールアドレス ('email')** または [**ID ('identities')**](/graph/api/resources/objectidentity) - これらの要求は、アプリケーションに対して認証を行っているエンド ユーザーを識別するために API で使用できます。
   
 > [!IMPORTANT]
 > API エンドポイントが呼び出されたときに要求に値がない場合、要求は API に送信されません。 API は、要求に要求が含まれていないケースを明示的に確認して処理するように設計する必要があります。
@@ -113,9 +113,9 @@ Content-type: application/json
 サインアップ ユーザー フローに API コネクタを追加するには、次の手順を実行します。
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
-2. **[Azure サービス]** で、 **[Azure AD B2C]** を選択します。
-4. **[ユーザー フロー]** を選択し、API コネクタを追加するユーザー フローを選択します。
-5. **[API connectors]\(API コネクタ\)** を選択し、ユーザー フローの次の手順で呼び出す API エンドポイントを選択します。
+1. **[Azure サービス]** で、 **[Azure AD B2C]** を選択します。
+1. **[ユーザー フロー]** を選択し、API コネクタを追加するユーザー フローを選択します。
+1. **[API connectors]\(API コネクタ\)** を選択し、ユーザー フローの次の手順で呼び出す API エンドポイントを選択します。
 
    - **サインアップ時に ID プロバイダーとのフェデレーションを行った後**
    - **ユーザーを作成する前**
@@ -123,7 +123,7 @@ Content-type: application/json
 
    ![ユーザー フローのステップに対して API コネクタを選択する](media/add-api-connector/api-connectors-user-flow-select.png)
 
-6. **[保存]** を選択します。
+1. **[保存]** を選択します。
 
 これらの手順は、**サインアップとサインイン (推奨)** と **サインアップ (推奨)** 用ですが、エクスペリエンスのサインアップ部分のみに適用されます。
 
@@ -681,7 +681,7 @@ REST API をデプロイした後、`REST-ValidateProfile` 技術プロファイ
 
 ::: zone-end
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ::: zone pivot="b2c-user-flow"
 

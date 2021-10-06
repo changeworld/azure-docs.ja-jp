@@ -6,14 +6,14 @@ metadata:
   ms.subservice: partnercenter-marketplace-publisher
   ms.topic: conceptual
   ms.date: 06/01/2020
-  author: mingshen-ms
-  ms.author: mingshen
-  ms.openlocfilehash: 5bd37158df12320e9a28a0a4adc5e7d3ba02f980
-  ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+  author: saasguide
+  ms.author: souchak
+  ms.openlocfilehash: 0abeb7dd6573293a72e8b6aede6f5e281b553049
+  ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/07/2021
-  ms.locfileid: "113439143"
+  ms.lasthandoff: 10/05/2021
+  ms.locfileid: "129455306"
 title: マーケットプレースの従量制課金 API - FAQ
 summary: 顧客が、従量制課金が含まれる SaaS サービスまたはマネージド アプリ プランの Azure アプリケーションをサブスクライブしたら、パートナーは使用されている請求ディメンションごとに使用量を追跡します。  顧客が選択した条件に対して設定されている含まれる数量を消費量が超えた場合、サービスでは Microsoft に対する使用状況イベントが生成されます。
 sections:

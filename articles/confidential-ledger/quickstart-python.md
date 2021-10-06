@@ -7,12 +7,12 @@ ms.date: 04/27/2021
 ms.service: confidential-ledger
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-azurepowershell
-ms.openlocfilehash: 552e8a4565710cb22f65ee5abf493c5471d89f3c
-ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
+ms.openlocfilehash: 1fd69155a6131565b81ba9684e5c2c077a5420d9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113585521"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128671528"
 ---
 # <a name="quickstart-microsoft-azure-confidential-ledger-client-library-for-python"></a>クイックスタート: Python 用 Microsoft Azure Confidential Ledger クライアント ライブラリ
 
@@ -99,7 +99,7 @@ credential = DefaultAzureCredential()
 アプリケーションで使用するいくつかの変数 (リソース グループ (myResourceGroup)、作成する台帳の名前、およびデータ プレーン クライアント ライブラリで使用される 2 つの URL) を設定して、セットアップを完了します。
 
   > [!Important]
-  > 各台帳には、グローバルに一意の名前が必要です。 次の例では、<your-unique-keyvault-name> を自分の台帳の名前に置き換えてください。
+  > 各台帳には、グローバルに一意の名前が必要です。 次の例の \<your-unique-keyvault-name\> は、台帳の名前で置き換えてください。
 
 ```python
 resource_group = "myResourceGroup"

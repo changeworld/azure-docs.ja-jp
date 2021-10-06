@@ -2,13 +2,14 @@
 title: バックアップ コンテナーの概要
 description: バックアップ コンテナーの概要。
 ms.topic: conceptual
-ms.date: 04/19/2021
-ms.openlocfilehash: 6748121bd85fe6dc26a09c038ab305bcf06e3902
-ms.sourcegitcommit: 89c889a9bdc2e72b6d26ef38ac28f7a6c5e40d27
+ms.date: 09/08/2021
+ms.custom: references_regions
+ms.openlocfilehash: 8d617dd2d2b1fa61a797d14c709ce285dc28b9bf
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111565962"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124799533"
 ---
 # <a name="backup-vaults-overview"></a>バックアップ コンテナーの概要
 
@@ -121,6 +122,129 @@ Azure Portal ( <https://portal.azure.com> ) にサインインします。
 **[Backup Instances]\(バックアップ インスタンス\)** タイルには、バックアップ コンテナーのすべてのバックアップ インスタンスの概要が表示されます。 このタイルで数字を選択すると、バックアップ インスタンスの詳細情報を表示でき、特定のデータ ソースの種類と保護の状態を確認できます。
 
 ![バックアップ ジョブ](./media/backup-vault-overview/backup-jobs.png)
+
+## <a name="move-a-backup-vault-across-azure-subscriptionsresource-groups-public-preview"></a>Azure サブスクリプション/リソース グループ間でバックアップ コンテナーを移動する (パブリック プレビュー)
+
+このセクションでは、Azure サブスクリプションとリソース グループ間で、Azure portal を使用してバックアップ コンテナー (Azure Backup 用に構成) を移動する方法について説明します。
+
+>[!Note]
+>[PowerShell](/powershell/module/az.resources/move-azresource?view=azps-6.3.0&preserve-view=true) および [CLI](/cli/azure/resource?view=azure-cli-latest&preserve-view=true#az_resource_move) を使用して、別のリソース グループやサブスクリプションにバックアップ コンテナーを移動することもできます。
+
+### <a name="supported-regions"></a>サポートされているリージョン
+
+コンテナーのサブスクリプションとリソース グループ間の移動は現在、次のリージョンでサポートされています:米国西部、米国中南部、東アジア、スイス北部、南アフリカ北部、英国西部、米国中北部、アラブ首長国連邦北部、ノルウェー東部、オーストラリア南東部、西日本、カナダ東部、韓国中部、オーストラリア中部、米国中西部、インド南部、アラブ首長国連邦中部、 南アフリカ西部、ノルウェー西部、スイス西部
+
+### <a name="use-azure-portal-to-move-backup-vault-to-a-different-resource-group"></a>Azure portal を使用してバックアップ コンテナーを別のリソース グループに移動する
+
+1. [Azure portal](https://portal.azure.com/) にサインインします。
+
+1. バックアップ コンテナーの一覧を開き、移動するコンテナーを選択します。
+
+   コンテナー ダッシュボードには、コンテナーの詳細が表示されます。
+
+   :::image type="content" source="./media/backup-vault-overview/vault-dashboard-to-move-to-resource-group-inline.png" alt-text="別のリソース グループに移動するコンテナーのダッシュボードを示すスクリーンショット。" lightbox="./media/backup-vault-overview/vault-dashboard-to-move-to-resource-group-expanded.png"::: 
+
+1. コンテナーの **[概要]** メニューで **[移動]** をクリックし、 **[別のリソース グループに移動する]** を選択します。
+
+   :::image type="content" source="./media/backup-vault-overview/select-move-to-another-resource-group-inline.png" alt-text="バックアップ コンテナーを別のリソース グループに移動するオプションを示すスクリーンショット。" lightbox="./media/backup-vault-overview/select-move-to-another-resource-group-expanded.png":::
+   >[!Note]
+   >管理者のサブスクリプションのみが、コンテナーを移動するのに必要なアクセス許可を持ちます。
+
+1. **[リソース グループ]** ドロップダウン リストで、既存のリソース グループを選択するか、 **[新規作成]** を選択して、新しいリソース グループを作成します。
+
+   サブスクリプションは同じままで、自動的に設定されます。
+
+   :::image type="content" source="./media/backup-vault-overview/select-existing-or-create-resource-group-inline.png" alt-text="既存のリソース グループの選択または新しいリソース グループの作成を示すスクリーンショット。" lightbox="./media/backup-vault-overview/select-existing-or-create-resource-group-expanded.png":::
+
+1. **[移動するリソース]** タブで、移動する必要のあるバックアップ コンテナーが検証されます。 このプロセスは数分かかることがあります。 検証が完了するまで待ってください。
+
+   :::image type="content" source="./media/backup-vault-overview/move-validation-process-to-move-to-resource-group-inline.png" alt-text="バックアップ コンテナーの検証状態を示すスクリーンショット。" lightbox="./media/backup-vault-overview/move-validation-process-to-move-to-resource-group-expanded.png"::: 
+
+1. _[移動されたリソースに関連付けられているツールとスクリプトは、新しいリソース ID を使用するように更新するまで動作しないことを理解しました。]_ チェックボックスを選択して確定し、 **[移動]** を選択します。
+ 
+   >[!Note]
+   >リソース グループまたはサブスクリプション間でコンテナーを移動すると、リソース パスが変更されます。 移動操作が完了した後で、ツールとスクリプトを新しいリソース パスで更新してください。
+
+移動操作が完了するまで待って、コンテナーに対して他の操作を実行します。 移動中にバックアップ コンテナーに対して実行された操作は失敗します。 プロセスが完了すると、バックアップ コンテナーがターゲット リソース グループに表示されます。
+
+>[!Important]
+>コンテナーの移動中にエラーが発生した場合は、「[エラー コードとトラブルシューティング](#error-codes-and-troubleshooting)」セクションを参照してください。  
+
+### <a name="use-azure-portal-to-move-backup-vault-to-a-different-subscription"></a>Azure portal を使用してバックアップ コンテナーを別のサブスクリプションに移動する
+
+1. [Azure portal](https://portal.azure.com/) にサインインします。
+
+1. バックアップ コンテナーの一覧を開き、移動するコンテナーを選択します。
+   
+   コンテナー ダッシュボードには、コンテナーの詳細が表示されます。
+
+   :::image type="content" source="./media/backup-vault-overview/vault-dashboard-to-move-to-another-subscription-inline.png" alt-text="別の Azure サブスクリプションに移動するコンテナーのダッシュボードを示すスクリーンショット。" lightbox="./media/backup-vault-overview/vault-dashboard-to-move-to-another-subscription-expanded.png"::: 
+
+1. コンテナーの **[概要]** メニューで **[移動]** をクリックし、 **[別のサブスクリプションに移動する]** を選択します。
+
+   :::image type="content" source="./media/backup-vault-overview/select-move-to-another-subscription-inline.png" alt-text="バックアップ コンテナーを別の Azure サブスクリプションに移動するオプションを示すスクリーンショット。" lightbox="./media/backup-vault-overview/select-move-to-another-subscription-expanded.png"::: 
+   >[!Note]
+   >管理者のサブスクリプションのみが、コンテナーを移動するのに必要なアクセス許可を持ちます。
+
+1. **[サブスクリプション]** ドロップダウン リストから既存のサブスクリプションを選択します。
+
+   サブスクリプション間でコンテナーを移動する場合、ターゲット サブスクリプションがソース サブスクリプションと同じテナントに存在する必要があります。 コンテナーを別のテナントに移動するには、「[サブスクリプションを別のディレクトリに転送する](/azure/role-based-access-control/transfer-subscription)」を参照してください。
+
+1. **[リソース グループ]** ドロップダウン リストで、既存のリソース グループを選択するか、 **[新規作成]** を選択して、新しいリソース グループを作成します。
+
+   :::image type="content" source="./media/backup-vault-overview/select-existing-or-create-resource-group-to-move-to-other-subscription-inline.png" alt-text="別の Azure サブスクリプションでの既存のリソース グループの選択または新しいリソース グループの作成を示すスクリーンショット。" lightbox="./media/backup-vault-overview/select-existing-or-create-resource-group-to-move-to-other-subscription-expanded.png":::
+
+1. **[移動するリソース]** タブで、移動する必要のあるバックアップ コンテナーが検証されます。 このプロセスは数分かかることがあります。 検証が完了するまで待ってください。
+
+   :::image type="content" source="./media/backup-vault-overview/move-validation-process-to-move-to-another-subscription-inline.png" alt-text="別の Azure サブスクリプションに移動するバックアップ コンテナーの検証状態を示すスクリーンショット。" lightbox="./media/backup-vault-overview/move-validation-process-to-move-to-another-subscription-expanded.png"::: 
+
+1. _[移動されたリソースに関連付けられているツールとスクリプトは、新しいリソース ID を使用するように更新するまで動作しないことを理解しました。]_ チェックボックスを選択して確定し、 **[移動]** を選択します。
+ 
+   >[!Note]
+   >リソース グループまたはサブスクリプション間でコンテナーを移動すると、リソース パスが変更されます。 移動操作が完了した後で、ツールとスクリプトを新しいリソース パスで更新してください。
+
+移動操作が完了するまで待って、コンテナーに対して他の操作を実行します。 移動中にバックアップ コンテナーに対して実行された操作は失敗します。 プロセスが完了すると、バックアップ コンテナーがターゲットのサブスクリプションとリソース グループに表示されます。
+
+>[!Important]
+>コンテナーの移動中にエラーが発生した場合は、「[エラー コードとトラブルシューティング](#error-codes-and-troubleshooting)」セクションを参照してください。
+
+### <a name="error-codes-and-troubleshooting"></a>エラー コードとトラブルシューティング
+
+バックアップ コンテナーの移動中に発生する可能性がある次の一般的な問題のトラブルシューティングを行います。
+
+#### <a name="backupvaultmoveresourcespartiallysucceeded"></a>BackupVaultMoveResourcesPartiallySucceeded   
+
+**原因**: バックアップ コンテナーの移動が一部しか成功しなければ、このエラーが発生する可能性があります。
+
+**推奨事項**: 問題は 36 時間以内に自動的に解決されます。 問題が解決しない場合は、Microsoft サポートに連絡してください。
+
+#### <a name="backupvaultmoveresourcescriticalfailure"></a>BackupVaultMoveResourcesCriticalFailure 
+
+**原因**: バックアップ コンテナーの移動が非常に失敗すると、このエラーが発生する可能性があります。 
+
+**推奨事項**: 問題は 36 時間以内に自動的に解決されます。 問題が解決しない場合は、Microsoft サポートに連絡してください。 
+
+#### <a name="usererrorbackupvaultresourcemoveinprogress"></a>UserErrorBackupVaultResourceMoveInProgress 
+
+**原因**: 移動中にバックアップ コンテナーに対して操作を実行しようとすると、このエラーが発生する可能性があります。 
+
+**推奨事項**: 移動操作が完了するまで待ち、再試行します。 
+#### <a name="usererrorbackupvaultresourcemovenotallowedformultipleresources"></a>UserErrorBackupVaultResourceMoveNotAllowedForMultipleResources
+
+**原因**: 1 回の試行で複数のバックアップ コンテナーを移動しようとすると、このエラーが発生する可能性があります。 
+
+**推奨事項**: 移動操作ごとに 1 つのバックアップ コンテナーのみが選択されるようにします。 
+#### <a name="usererrorbackupvaultresourcemovenotalloweduntilresourceprovisioned"></a>UserErrorBackupVaultResourceMoveNotAllowedUntilResourceProvisioned
+
+**原因**: コンテナーがまだプロビジョニングされていない場合、このエラーが発生する可能性があります。 
+
+**推奨事項**: しばらく待ってから、操作を再試行してください。
+
+#### <a name="backupvaultresourcemoveisnotenabled"></a>BackupVaultResourceMoveIsNotEnabled 
+
+**原因**: バックアップ コンテナーのリソース移動は、現在、選択した Azure リージョンではサポートされていません。
+
+**推奨事項**: バックアップ コンテナーを移動するために、サポートされているリージョンのいずれかを選択してください。 「 [サポートされているリージョン](#supported-regions)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

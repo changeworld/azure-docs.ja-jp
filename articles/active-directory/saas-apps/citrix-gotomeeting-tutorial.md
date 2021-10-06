@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/16/2021
+ms.date: 08/20/2021
 ms.author: jeedes
-ms.openlocfilehash: ce4e1942bc2b61a874a57d5ffefb388922f6e806
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 27e8c3bf2f54541d8c96528472fbcb8d092aeca3
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112293979"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128670616"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-gotomeeting"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と GoToMeeting の統合
 
@@ -38,6 +38,7 @@ ms.locfileid: "112293979"
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 * GoToMeeting では、**IDP** Initiated SSO がサポートされます。
+* GoToMeeting では、[自動化されたユーザー プロビジョニング](citrixgotomeeting-provisioning-tutorial.md)がサポートされます。
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -143,15 +144,17 @@ GoToMeeting に対する Azure AD SSO を構成してテストするには、次
 > [!NOTE]
 > ユーザーを手動で作成する必要がある場合は、[GoToMeeting サポート チーム](https://support.logmeininc.com/gotomeeting)にお問い合わせください。
 
+> [!NOTE]
+>GoToMeeting では、自動ユーザー プロビジョニングもサポートされます。自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](./citrixgotomeeting-provisioning-tutorial.md)をご覧ください。
+
 ## <a name="test-sso"></a>SSO のテスト 
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した GoToMeeting に自動的にサインインされます。
 
-* Microsoft マイ アプリを使用することができます。 [マイ アプリ] で [GoToMeeting] タイルをクリックすると、SSO を設定した GoToMeeting に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 [マイ アプリ] で [GoToMeeting] タイルをクリックすると、SSO を設定した GoToMeeting に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 GoToMeeting を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
-

@@ -11,12 +11,12 @@ ms.date: 06/25/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: cbbaf7d3698a1027ae310f73041e906a55117258
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a67cdd9ba92e3c78c5cb29a827cf537ba2e372ae
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121723217"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124740199"
 ---
 # <a name="enable-authentication-in-your-own-web-api-by-using-azure-ad-b2c"></a>Azure AD B2C を使用して独自の Web API で認証を有効にする
 
@@ -533,6 +533,10 @@ Example app listening on port 6000!
 アクセス トークンを使用せずに、保護された Web API エンドポイントの呼び出しを試みます。 ブラウザーを開き、`http://localhost:6000/hello` に移動します。 API から、許可されていない HTTP のエラー メッセージが返されるので、Web API がベアラー トークンによって保護されていることを確認できます。
 
 Web API を呼び出すために引き続きアプリを構成します。 ガイダンスについては、「[前提条件](#prerequisites)」セクションを参照してください。
+
+Azure AD B2C を API と統合する場合のベスト プラクティスについては、このビデオをご覧ください。
+
+>[!Video https://www.youtube.com/embed/wuUu71RcsIo]
 
 ## <a name="next-steps"></a>次のステップ
 

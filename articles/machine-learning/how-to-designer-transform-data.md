@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: Azure Machine Learning デザイナーでデータをインポートおよび変換して、独自のデータセットを作成する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mldata
 author: peterclu
 ms.author: peterlu
 ms.date: 06/28/2020
 ms.topic: how-to
 ms.custom: designer
-ms.openlocfilehash: 322408dac79b7ef113c6b0b51a25d5836688baea
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 3d658421d392032e4425a3f87f8f59f9baab2ce4
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107889432"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129427611"
 ---
 # <a name="transform-data-in-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーでデータを変換する
 
@@ -24,7 +24,7 @@ ms.locfileid: "107889432"
 
 サンプルの[国勢調査の成人収入に関する二項分類](./samples-designer.md)データセットを使用して、2 つのデータセットを準備します。1 つのデータセットには米国のみの成人の国勢調査情報が含まれ、もう 1 つのデータセットには米国以外の成人の国勢調査情報が含まれています。
 
-この記事では、次のことについて説明します。
+この記事では、次の方法について説明します。
 
 1. データセットを変換し、トレーニング用に準備します。
 1. 結果のデータセットをデータストアにエクスポートします。

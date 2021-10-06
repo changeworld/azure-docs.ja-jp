@@ -1,7 +1,7 @@
 ---
-title: Azure Data Factory を使用して Azure Machine Learning Studio (classic) モデルを更新する
+title: Azure Machine Learning Studio (クラシック) モデルを更新する
+description: Azure Data Factory または Synapse Analytics と共に Azure Machine Learning Studio (クラシック) を使用して予測パイプラインを作成する方法について説明します。
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Azure Data Factory と Azure Machine Learning Studio (classic) を使用して予測パイプラインを作成する方法について説明します。
 author: dcstwh
 ms.author: weetok
 ms.reviewer: jburchel
@@ -9,30 +9,30 @@ ms.service: data-factory
 ms.subservice: tutorials
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 07/16/2020
-ms.openlocfilehash: 0afbd758022805735231b415e0e06643722488cd
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/09/2021
+ms.openlocfilehash: 2d8db7d24ac11d4024a990a201086633133aeb89
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122637950"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124769581"
 ---
 # <a name="update-azure-machine-learning-studio-classic-models-by-using-update-resource-activity"></a>更新リソース アクティビティを使用して Azure Machine Learning Studio (classic) モデルを更新する
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-これは、Azure Data Factory と Azure Machine Learning Studio (classic) の統合に関するメインの記事「[Azure Machine Learning Studio (classic) と Azure Data Factory を使用して予測パイプラインを作成する](transform-data-using-machine-learning.md)」を補足する記事です。 メインの記事をまだ呼んでいない場合は、この記事を読む前にお読みください。
+この記事は、Azure Machine Learning Studio (クラシック) の統合に関するメインの記事である [Azure Machine Learning Studio (クラシック) を使用した予測パイプラインの作成](transform-data-using-machine-learning.md)に関する記事を補完するものです。 メインの記事をまだ呼んでいない場合は、この記事を読む前にお読みください。
 
 ## <a name="overview"></a>概要
 Azure Machine Learning Studio (classic) モデルの運用化プロセスの一環として、モデルのトレーニングと保存が行われます。 その後、このモデルを使用して、予測 Web サービスを作成します。 これによって、Web サイト、ダッシュボード、モバイル アプリでこの Web サービスを使用できます。
 
 Azure Machine Learning Studio (classic) を使って作成するモデルは、通常、静的ではありません。 新しいデータが使用可能になるか、API のコンシューマーに独自のデータがある場合は、モデルを再トレーニングする必要があります。 
 
-再トレーニングは頻繁に発生する可能性があります。 バッチ実行アクティビティと更新リソース アクティビティを使用すると、Data Factory を使って予測 Web サービスの再トレーニングと更新を行う Azure Machine Learning Studio (classic) モデルを運用可能にできます。
+再トレーニングは頻繁に発生する可能性があります。 バッチ実行アクティビティと更新リソース アクティビティを使用すると、Azure Machine Learning Studio (クラシック) モデルを運用化して予測 Web サービスを再トレーニングおよび更新できます。
 
 次の図は、トレーニングと予測 Web サービスの関係を示しています。
 
-![[Web サービス]](./media/update-machine-learning-models/web-services.png)
+:::image type="content" source="./media/update-machine-learning-models/web-services.png" alt-text="[Web サービス]":::
 
 ## <a name="azure-machine-learning-studio-classic-update-resource-activity"></a>Azure Machine Learning Studio (classic) の更新リソース アクティビティ
 
@@ -72,14 +72,14 @@ Azure Machine Learning Studio (classic) を使って作成するモデルは、�
 
 モデルの再トレーニングと予測 Web サービスの更新を運用可能にするプロセス全体では、次の手順を実行する必要があります。
 
-- **バッチ実行アクティビティ** を使用して、**トレーニング Web サービス** を呼び出します。 トレーニング Web サービスの呼び出しは、[Azure Machine Learning Studio (classic) および Data Factory のバッチ実行のアクティビティを使用した予測パイプラインの作成](transform-data-using-machine-learning.md)に関するページで説明されている予測 Web サービスの呼び出しと同じです。 トレーニング Web サービスの出力は、予測 Web サービスの更新に使用できる iLearner ファイルです。
+- **バッチ実行アクティビティ** を使用して、**トレーニング Web サービス** を呼び出します。 トレーニング Web サービスの呼び出しは、[Azure Machine Learning Studio (クラシック) とバッチ実行アクティビティを使用した予測パイプラインの作成](transform-data-using-machine-learning.md)に関するページで説明されている予測 Web サービスの呼び出しと同じです。 トレーニング Web サービスの出力は、予測 Web サービスの更新に使用できる iLearner ファイルです。
 - **更新リソース アクティビティ** を使用して **予測 Web サービス** の **更新リソース エンドポイント** を呼び出し、新しくトレーニングを行ったモデルでこの Web サービスを更新します。
 
 ## <a name="azure-machine-learning-studio-classic-linked-service"></a>Azure Machine Learning Studio (classic) のリンクされたサービス
 
 作業対象となる上記のエンド ツー エンドのワークフローでは、次の 2 つの Azure Machine Learning Studio (classic) のリンクされたサービスを作成する必要があります。
 
-1. トレーニング Web サービスへの Azure Machine Learning Studio (classic) のリンクされたサービス。このリンクされたサービスは、[Azure Machine Learning Studio (classic) および Data Factory のバッチ実行のアクティビティを使用した予測パイプラインの作成](transform-data-using-machine-learning.md)に関するページで説明されているのと同じ方法で、バッチ実行アクティビティによって使用されます。 相違点は、トレーニング Web サービスの出力が、予測 Web サービスを更新する更新リソース アクティビティでその後に使用される iLearner ファイルであることです。
+1. トレーニング Web サービスへの Azure Machine Learning Studio (クラシック) のリンクされたサービス。このリンクされたサービスは、[Azure Machine Learning Studio (クラシック) とバッチ実行アクティビティを使用した予測パイプラインの作成](transform-data-using-machine-learning.md)に関するページで説明されているのと同じ方法で、バッチ実行アクティビティによって使用されます。 相違点は、トレーニング Web サービスの出力が、予測 Web サービスを更新する更新リソース アクティビティでその後に使用される iLearner ファイルであることです。
 2. 予測 Web サービスの更新リソース エンドポイントへの Azure Machine Learning Studio (classic) のリンクされたサービス。 このリンクされたサービスは、上記の手順から返された iLearner ファイルを使用して予測 Web サービスを更新する更新リソース アクティビティで使用されます。
 
 2 番目の Azure Machine Learning Studio (classic) のリンクされたサービスの場合、構成は、Azure Machine Learning Studio (classic) Web サービスが従来の Web サービスであるか、新しい Web サービスであるかによって異なります。 相違点については、以降のセクションで個別に説明します。
@@ -126,7 +126,7 @@ https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{reso
 }
 ```
 
-次のシナリオで詳細を説明します。 ここでは、Azure Data Factory パイプラインから Azure Machine Learning Studio (classic) モデルの再トレーニングと更新を行う例を示します。
+次のシナリオで詳細を説明します。 ここには、パイプラインから Azure Machine Learning Studio (クラシック) モデルを再トレーニングおよび更新する例が含まれています。
 
 
 ## <a name="sample-retraining-and-updating-an-azure-machine-learning-studio-classic-model"></a>サンプル:Azure Machine Learning Studio (classic) モデルの再トレーニングと更新
@@ -175,7 +175,7 @@ Azure Storage には次のデータが格納されています。
 2. Web サービスの一覧で、 **[トレーニング Web サービス]** をクリックします。
 3. **[API キー]** ボックスの隣にあるコピー ボタンをクリックします。 クリップボードにコピーされた API キーを Data Factory JSON エディターに貼り付けます。
 4. **Azure Machine Learning Studio (クラシック)** で、 **[バッチ実行]** リンクをクリックします。
-5. **[要求]** セクションの **要求 URI** をコピーして、Data Factory JSON エディターに貼り付けます。
+5. **[要求]** セクションから **要求 URI** をコピーし、それを JSON エディターに貼り付けます。
 
 ### <a name="linked-service-for-azure-machine-learning-studio-classic-updatable-scoring-endpoint"></a>Azure Machine Learning Studio (classic) の更新可能なスコア付けエンドポイント用のリンクされたサービス:
 次の JSON スニペットは、スコア付け Web サービスの更新可能なエンドポイントを示す Azure Machine Learning Studio (classic) のリンクされたサービスを定義します。

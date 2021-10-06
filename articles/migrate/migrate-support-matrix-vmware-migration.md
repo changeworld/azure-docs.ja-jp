@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 6365499aff4508e40d8e2aa2ed61471f4fbff2fe
-ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
+ms.openlocfilehash: 1217acb5911366b8e3943d414aeeeaf8a9e5e1e1
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114721261"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129357245"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>VMware 移行のサポートマトリックス
 
@@ -73,15 +73,12 @@ VMware VM は、次のいくつかの方法で移行できます。
 > [!Note]
 > インターネット接続に加えて、Linux VM の場合は、Microsoft Azure Linux エージェント (waagent) を正常にインストールするために次のパッケージがインストールされていることを確認します。
 >- Python 2.6+
->- Python-setuptool
->- systemmd
 >- OpenSSL 1.0+
 >- OpenSSH 5.3+
 >- ファイルシステム ユーティリティ: sfdisk、fdisk、mkfs、parted
 >- パスワード ツール: chpasswd、sudo
 >- テキスト処理ツール: sed、grep
 >- ネットワーク ツール: ip-route
->- ソース VM で rc.local サービスを有効にする
 
 > [!TIP]
 >  Azure portal を使用すると、最大 10 個の VM を一度に選択してレプリケーションを構成できます。 より多くの VM をレプリケートするために、ポータルを使用して、レプリケートする VM を 10 個の VM の複数のバッチで追加するか、Azure Migrate PowerShell インターフェイスを使用してレプリケーションを構成することができます。 同時レプリケーションがサポートされている VM の最大数を超えて同時レプリケーションを構成しないようにしてください。

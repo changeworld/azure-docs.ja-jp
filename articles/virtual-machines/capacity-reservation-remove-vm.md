@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/09/2021
 ms.reviewer: cynthn, jushiman
 ms.custom: template-how-to
-ms.openlocfilehash: 546215d70341402fcc66d2865d291211960cb4a1
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 0ac1f38d65542ac6c8a892a6469cd8c9301dd463
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128557064"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129532596"
 ---
 # <a name="remove-a-vm-association-from-a-capacity-reservation-group-preview"></a>容量予約グループから VM の関連付けを削除する (プレビュー)
 
@@ -28,11 +28,6 @@ VM と基になる容量予約の両方で容量が論理的に消費される�
 > [!IMPORTANT]
 > 容量予約は現在パブリック プレビュー段階にあります。
 > このプレビュー バージョンはサービス レベル アグリーメントなしで提供されており、運用環境のワークロードに使用することは推奨されません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-
-## <a name="register-for-capacity-reservation"></a>容量予約に登録する 
-
-容量予約機能を使用する前に、[プレビュー版を利用するためにサブスクリプションを登録する](capacity-reservation-overview.md#register-for-capacity-reservation)必要があります。 登録が完了するまでに数分かかる場合があります。 Azure CLI または PowerShell のいずれかを使用して、機能の登録を完了することができます。
-
 
 ## <a name="deallocate-the-vm"></a>VM の割り当てを解除する
 

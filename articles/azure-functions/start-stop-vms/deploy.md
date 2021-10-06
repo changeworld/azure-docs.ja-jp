@@ -5,19 +5,16 @@ services: azure-functions
 ms.subservice: start-stop-vms
 ms.date: 06/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: c0b3984629376f11692b727bb28b34c15708c596
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: dc44fc58b8832c30ed1b740eb6637f1fc8ed1413
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121733477"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129454964"
 ---
 # <a name="deploy-startstop-vms-v2-preview"></a>Start/Stop VMs v2 (プレビュー) のデプロイ
 
 Start/Stop VMs v2 (プレビュー) 機能をインストールするには、このトピックの手順を順番に実行します。 セットアップ プロセスが完了したら、要件に合わせてカスタマイズするスケジュールを構成します。
-
-> [!NOTE]
-> デプロイ中に問題が発生した場合、Start/Stop VMs v2 (プレビュー) を使用しているときに問題が発生します。または、関連する質問がある場合、[GitHub](https://github.com/microsoft/startstopv2-deployments/issues) で問題を送信できます。 このプレビュー バージョンでは、[Azure サポート サイト](https://azure.microsoft.com/support/options/)から Azure サポート インシデントを提出することはできません。 
 
 ## <a name="permissions-considerations"></a>アクセス許可に関する考慮事項
 デプロイの前および最中に、次の点に留意してください。
@@ -32,6 +29,10 @@ Start/Stop VMs v2 (プレビュー) 機能をインストールするには、�
 
 > [!NOTE]
 > 現在、このプレビューでは、既存のストレージ アカウントまたは Application Insights リソースの指定はサポートされていません。
+
+
+> [!NOTE]
+> 関数アプリとストレージアカウントの名前付け形式が変更されました。 グローバルな一意性を保証するため、ランダムで一意の文字列が、これらのリソースの名前に追加されるようになりました。
 
 1. ブラウザーを開いて、Start/Stop VMs v2 の [GitHub 組織](https://github.com/microsoft/startstopv2-deployments/blob/main/README.md)に移動します。
 1. お使いの Azure VM が作成されている Azure クラウド環境に基づいて、デプロイ オプションを選択します。 これにより、Azure portal にカスタムの Azure Resource Manager のデプロイ ページが開きます。
@@ -57,9 +58,6 @@ Start/Stop VMs v2 (プレビュー) 機能をインストールするには、�
 1. 通知ウィンドウで **[リソース グループに移動]** を選択します。 次のような画面が表示されます。
 
     :::image type="content" source="media/deploy/deployment-results-resource-list.png" alt-text="Start/Stop VMs テンプレートのデプロイ リソース一覧":::
-
-> [!NOTE]
-> 関数アプリとストレージアカウントの名前付け形式が変更されました。 グローバルな一意性を保証するため、ランダムで一意の文字列が、これらのリソースの名前に追加されるようになりました。
 
 > [!NOTE]
 > お客様がトラブルシューティングのためにサポート チームに連絡してきたときにより良く支援できるよう、運用およびハートビートのテレメトリが収集されています。 また、サービスの有効性を判断できるよう、仮想マシンでサービスが動作した時間と、仮想マシンが再通知された期間を確認するため、仮想マシンのイベント履歴も収集されています。
@@ -190,8 +188,11 @@ VM を起動するだけのロジック アプリの構成はサポートされ�
           "/subscriptions/11111111-0000-1111-2222-444444444444/resourceGroups/rg2/providers/Microsoft.ClassicCompute/virtualMachines/vm30"
           
         ]
+      }
     }
     ```
+
+1. ロジック アプリの [概要] ウィンドウで、 **[有効]** を選択します。  
 
 ## <a name="sequenced-start-and-stop-scenario"></a>シーケンス処理された起動と停止のシナリオ
 

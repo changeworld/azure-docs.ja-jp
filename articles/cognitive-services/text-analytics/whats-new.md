@@ -8,19 +8,24 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 08/27/2021
+ms.date: 09/21/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 8752a80eb4b5faae3566ce1e7bbd70dd61b26ba1
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 35b4d70ae5e1b7e93b08c7ebe16e5707172ed792
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123219609"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128672345"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Text Analytics API の新機能
 
 Text Analytics API は継続的に更新されます。 常に最新の開発情報を把握していただけるよう、この記事では新しいリリースと機能に関する情報を提供します。
+
+## <a name="september-2021"></a>2021 年 9 月
+
+* バージョン `3.0.017010001-onprem-amd64` 以降では、クライアント ライブラリを使用して正常性コンテナーの Text Analytics を呼び出すことができるようになりました。 詳細については、[Text Analytics コンテナーのインストールおよび実行方法](how-tos/text-analytics-how-to-install-containers.md?tabs=healthcare#run-the-container-with-client-library-support)に関するページを参照してください。
+
 
 ## <a name="august-2021"></a>2021 年 8 月
 

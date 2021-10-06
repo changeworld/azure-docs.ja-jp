@@ -6,13 +6,13 @@ ms.author: srranga
 ms.custom: references_regions
 ms.service: postgresql
 ms.topic: overview
-ms.date: 07/30/2021
-ms.openlocfilehash: 5423af2f148a56e978bfbe6a1584b3e281f9a1a4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/21/2021
+ms.openlocfilehash: f5b1caaef90a25e6635c30d1e3272438a408393b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121740295"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128589627"
 ---
 # <a name="release-notes---azure-database-for-postgresql---flexible-server"></a>リリース ノート - Azure Database for PostgreSQL - フレキシブル サーバー
 
@@ -20,6 +20,15 @@ ms.locfileid: "121740295"
 
 > [!IMPORTANT]
 > Azure Database for PostgreSQL - フレキシブル サーバーはプレビュー段階です
+
+## <a name="release-september-2021"></a>リリース: 2021 年 9 月
+
+* [Terraform](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/postgresql_flexible_server) のサポート。
+* [新しいリージョン](overview.md#azure-regions)のサポート: インド中部、西日本。
+* 新しい `require_secure_transport` サーバー パラメーターを使用した非 SSL モードの接続のサポート。
+* 各ログ行の先頭に文字列を追加する `log_line_prefix` サーバー パラメーターのサポート。
+* フレキシブル サーバーの正常性診断およびサポートを受けるための [Azure Resource Health](../../service-health/resource-health-overview.md) のサポート。
+* 複数のバグ修正、安定性とパフォーマンスの向上。
 
 ## <a name="release-july-2021"></a>リリース: 2021 年 7 月
 
@@ -29,7 +38,7 @@ ms.locfileid: "121740295"
 * `pg_stat_bgwriter` および `pg_stat_archiver` のビューに表示されるカウンターをリセットする、`pg_stat_reset_shared('bgwriter');` と `pg_stat_reset_shared('archiver');` のサポート<sup>$</sup>。
 * 複数のバグ修正、安定性とパフォーマンスの向上<sup>$</sup>。
 
-<sup> **$** </sup> 新しいサーバーでは、これらの機能が自動的に取得されます。 既存のサーバーでは、これらの機能は、サーバーの今後のメンテナンス期間中に有効になります。
+<sup> **$**</sup> 新しいサーバーでは、これらの機能が自動的に取得されます。 既存のサーバーでは、これらの機能は、サーバーの今後のメンテナンス期間中に有効になります。
 
 ## <a name="release-june-2021"></a>リリース: 2021 年 6 月
 
@@ -41,7 +50,7 @@ ms.locfileid: "121740295"
 * lo 拡張機能のサポート。 各メジャー バージョンでサポートされているバージョンについては、[拡張機能のページ](./concepts-extensions.md)を参照してください<sup>$</sup>。
 * 複数のバグ修正、安定性とパフォーマンスの向上<sup>$</sup>。
   
-<sup> **$** </sup> 新しいサーバーでは、これらの機能が自動的に取得されます。  既存のサーバーは、サポートされる最新のマイナー バージョンに自動的にアップグレードされ、サーバーの今後のメンテナンス期間中にも新しい機能が有効になります。
+<sup> **$**</sup> 新しいサーバーでは、これらの機能が自動的に取得されます。  既存のサーバーは、サポートされる最新のマイナー バージョンに自動的にアップグレードされ、サーバーの今後のメンテナンス期間中にも新しい機能が有効になります。
 
 ## <a name="release-may-2021"></a>リリース: 2021 年 5 月
 

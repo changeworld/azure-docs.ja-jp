@@ -1,7 +1,6 @@
 ---
 title: Azure Key Vault でマネージド キーの属性を作成し、取得する - Azure PowerShell
 description: Azure PowerShell を使用して Azure Key Vault との間でマネージド キーの設定と取得を行う方法を紹介するクイックスタート
-services: key-vault
 author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 01/26/2021
@@ -11,12 +10,12 @@ ms.subservice: keys
 tags:
 - azure-resource-manager
 ms.custom: devx-track-azurepowershell - mode-api
-ms.openlocfilehash: 6f2588ce3dc2add87b845d5c4ff6255171b6af08
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 0658d715c7d7b2e7a34cd8fbd9ec3f76d9a67d10
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110670016"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128550461"
 ---
 # <a name="quickstart-set-and-retrieve-a-managed-key-from-azure-key-vault-using-powershell"></a>クイックスタート: PowerShell を使用して Azure Key Vault との間でマネージド キーの設定と取得を行う
 
@@ -56,7 +55,7 @@ Get-AzADUser -UserPrincipalName "<your@email.address>"
 - マネージド HSM 名: 数字 (0-9)、文字 (a-z、A-Z)、ハイフン (-) のみを含んだ 3 から 24 文字の文字列
 
   > [!Important]
-  > 各マネージド HSM には一意の名前が必要です。 次の例の <your-unique-managed-hsm-name> は、お使いのマネージド HSM の名前に置き換えてください。
+  > 各マネージド HSM には一意の名前が必要です。 次の例で、\<your-unique-managed-hsm-name\> をご自分のマネージド HSM の名前と置き換えます。
 
 - リソース グループ名: **myResourceGroup**
 - 場所: **EastUS**。

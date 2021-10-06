@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 04/13/2021
 ms.author: wellee
 Customer intent: As someone with a networking background using Virtual WAN, I want to perform a packet capture on my Site-to-site VPN Gateway.
-ms.openlocfilehash: 765285a8b7c2434c64d1513e510f1cf06b513291
-ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
+ms.openlocfilehash: 8970a275e295a54581876f13a2d4b0112c0116d9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122598063"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128581987"
 ---
 # <a name="perform-packet-capture-on-the-azure-virtual-wan-site-to-site-vpn-gateway"></a>Azure Virtual WAN のサイト間 VPN ゲートウェイでパケット キャプチャを実行する 
 
@@ -78,7 +78,16 @@ Start-AzVpnGatewayPacketCapture -ResourceGroupName $rg -Name "<name of the Gatew
 > 同時にパケット キャプチャを実行できる VPN 接続は 5 つに制限されることに注意してください。
 
 
-次のコマンドを実行してください。 サイト間 VPN 接続の名前は、仮想ハブに移動し、[接続] の [VPN (サイト間)] をクリックすると見つかります。 次に、パケット キャプチャを実行したい VPN サイトに移動し、右側の 3 つのドットをクリックします。 ポップアップ表示されたメニューの **[VPN 接続を編集する]** をクリックします。
+VPN サイト接続の名前を見つけるには、次の PowerShell コマンドを使用してください。
+
+   ```azurepowershell-interactive
+$connections = Get-AzVpnConnection -ResourceGroupName $rg -ParentResourceName "<name of the Gateway"
+$connections
+$connections.name
+   ```
+上記の PowerShell ブロックで、ローカル変数 *connections* には、サイト間 VPN ゲートウェイに接続されているすべての VPN サイトの配列が含まれます。 パケット キャプチャを実行する VPN サイトに対応するエントリを探してください。 *name* フィールドをコピーし、下の Start-AzVpnConnectionPacketCapture コマンドで *-Name* パラメーターとして使用します。 または、*connections.name* にアクセスして、すべての接続の名前を表示することもできます。 
+
+リンクの名前を見つけるには、次の手順に従ってください。 仮想ハブに移動し、[接続] の [VPN (サイト間)] をクリックします。 次に、パケット キャプチャを実行したい VPN サイトに移動し、右側の 3 つのドットをクリックします。 ポップアップ表示されたメニューの **[VPN 接続を編集する]** をクリックします。
 
 :::image type="content" source="./media/virtual-wan-pcap-screenshots/sample-connection.png" alt-text="VPN 接続の名前の見つけ方を示す画像。" lightbox="./media/virtual-wan-pcap-screenshots/sample-connection.png":::
 

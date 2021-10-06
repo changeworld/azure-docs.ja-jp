@@ -4,15 +4,15 @@ description: コマーシャル マーケットプレースでの体験版の種
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 06/19/2020
 ms.author: trkeya
 author: trkeya
-ms.openlocfilehash: b1ca1b1caa1da1c38e0a7af8ec714c3734ca1191
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.date: 09/09/2021
+ms.openlocfilehash: 6c563b7661b62c81b6094f1a662faa1cdc28c57a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113110297"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128632008"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager の体験版
 
@@ -306,39 +306,46 @@ ARM テンプレートについてよく知らない場合は、「[Azure Resour
 
    テナント ID を持っていない場合は、Azure Active Directory で新しく作成します。 テナントの設定については、「[クイック スタート: テナントを設定する](../active-directory/develop/quickstart-create-new-tenant.md)」を参照してください。
 
-3. **Azure AD アプリ ID** – 新しいアプリケーションを作成して登録します。 このアプリケーションを使用して、体験版インスタンスでの操作を実行します。
+3. Microsoft Test-Drive アプリケーションをテナントにプロビジョニングします。 このアプリケーションを使用して、体験版リソースでの操作を実行します。
+    1. [Azure Az PowerShell モジュール](/powershell/azure/install-az-ps?view=azps-6.3.0)をまだお持ちではない場合はインストールしてください。
+    1. Microsoft Test-Drive アプリケーションのサービス プリンシパルを追加します。
+        1. `Connect-AzAccount` を実行して、Azure アカウントにサインインするための資格情報を指定します。これには、Azure Active Directory の **グローバル管理者**[組み込みロール](/azure/active-directory/roles/permissions-reference#global-administrator)が必要です。 
+        1. 新しいサービス プリンシパルを作成します: `New-AzADServicePrincipal -ApplicationId d7e39695-0b24-441c-a140-047800a05ede -DisplayName 'Microsoft TestDrive' -SkipAssignment`。
+        1. サービス プリンシパルが作成されたことを確認します: `Get-AzADServicePrincipal -DisplayName 'Microsoft TestDrive'`。
+      ![サービス プリンシパルを確認するコードを示す](media/test-drive/commands-to-verify-service-principal.png)
 
-   1. 新しく作成したディレクトリまたは既存のディレクトリに移動し、フィルター ペインで Azure Active Directory を選択します。
-   2. **[アプリの登録]** を探して、 **[追加]** を選択します。
-   3. アプリケーション名を指定します。
-   4. **[種類]** として **[Web アプリ/API]** を選択します。
-   5. [サインオン URL] の値は何でもかまいません。このフィールドは使用されません。
-   6. **［作成］** を選択します
-   7. アプリケーションが作成された後、 **[プロパティ]**  >  **[Set the application as multi-tenant]\(アプリケーションをマルチテナントとして設定する\)** を選択して、 **[保存]** を選択します。
+4. **[Azure AD アプリ ID]** には次のアプリケーション ID を貼り付けます: `d7e39695-0b24-441c-a140-047800a05ede`。
+5. **[Azure AD アプリ キー]** には、シークレットが不要なため、"no-secret" などのダミー シークレットを挿入します。
+6. サブスクリプションにデプロイするためにこのアプリケーションを使用しているので、Azure portal か PowerShell から、そのアプリケーションをサブスクリプションでの共同作成者として追加する必要があります。
 
-4. **[保存]** を選択します。
+   1. Azure ポータルで次の手順を実行します。
 
-5. この登録済みアプリのアプリケーション ID をコピーして、体験版のフィールドに貼り付けます。
+       1. 体験版に使用している **サブスクリプション** を選択します。
+       1. **[アクセス制御 (IAM)]** を選択します。<br>
 
-   ![Azure AD アプリケーション ID の詳細](media/test-drive/azure-ad-application-id-detail.png)
+          ![新しいアクセス制御 (IAM) 共同作成者の追加](media/test-drive/access-control-principal.png)
 
-6. アプリケーションを使用してサブスクリプションにデプロイするので、サブスクリプションで共同作成者としてアプリケーションを追加する必要があります。
+       1. **[ロールの割り当て]** タブ、次いで **[+ ロールの割り当ての追加]** を選択します。
 
-   1. 体験版に使用している **[サブスクリプション]** の種類を選択します。
-   1. **[アクセス制御 (IAM)]** を選択します。
-   1. **[ロールの割り当て]** タブを選択して、 **[ロールの割り当ての追加]** を選択します。
+          ![[アクセス制御 (IAM)] ウィンドウの選択で、[ロールの割り当て] タブを選択し、[+ ロールの割り当ての追加] を選択する方法を示す。](media/test-drive/access-control-principal-add-assignments.jpg)
 
-      ![新しいアクセス制御プリンシパルを追加する](media/test-drive/access-control-principal.jpg)
+       1. 次の Azure AD アプリケーション名を入力します: `Microsoft TestDrive`。 **共同作成者** ロールを割り当てるアプリケーションを選択します。
 
-   1. 示されているように、 **[ロール]** および **[アクセスの割り当て先]** を設定します。 **[選択]** フィールドに、Azure AD アプリケーションの名前を入力します。 **共同作成者** ロールを割り当てるアプリケーションを選択します。
+          ![共同作成者ロールの割り当て方法を示します](media/test-drive/access-control-permissions.jpg)
 
-      ![アクセス許可を追加する](media/test-drive/access-control-permissions.jpg)
+       1. **[保存]** を選択します。
+   1. PowerShell を使用する場合:
+      1. 次を実行して、ServicePrincipal object-id を取得します: `(Get-AzADServicePrincipal -DisplayName 'Microsoft TestDrive').id`。
+      1. その ObjectId とサブスクリプション ID を指定して、次を実行します: `New-AzRoleAssignment -ObjectId <objectId> -RoleDefinitionName Contributor -Scope /subscriptions/<subscriptionId>`。
 
-   1. **[保存]** を選択します。
-
-7. **[Azure AD アプリ]** の認証キーを生成します。 **[キー]** で、 **[キーの説明]** を追加し、期間を **[期限なし]** (キーの有効期限が切れると、運用環境の体験版を使用できなくなります) を設定して、 **[保存]** を選択します。 この値をコピーし、必要な体験版のフィールドに貼り付けます。
-
-![Azure AD アプリケーションのキーを表示する](media/test-drive/azure-ad-app-keys.png)
+> [!NOTE]
+> 元の appID を削除する前に、Azure portal に移動し、 **[リソース グループ]** に移動して、`CloudTry_` を検索します。 **[イベント開始者]** 列を確認します。
+>
+> :::image type="content" source="media/test-drive/event-initiated-by-field.png" lightbox="media/test-drive/event-initiated-by-field.png" alt-text="&quot;イベント開始者&quot; フィールドを示す":::
+>
+> 少なくとも 1 つのリソース ( **[操作の名前]** ) が **Microsoft TestDrive** に設定されていない限り、元の appID を削除しないでください。
+>
+> appID を削除するには、左側のナビゲーション メニューで **[Azure Active Directory]**  >  **[アプリの登録]** の順に選択し、次に **[すべてのアプリケーション]** タブを選択します。アプリケーションを選択し、 **[削除]** を選択します。
 
 ## <a name="republish"></a>再発行
 

@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 07/05/2017
+ms.date: 09/15/2021
 ms.author: alkohli
-ms.openlocfilehash: 9ec2bbef88ed185c3927676ad2596269783d1850
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2fde4e0784e81c2127dd8097495b48ce506059bf
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85515635"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128589380"
 ---
 # <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-manage-backup-policies"></a>Azure ポータルで StorSimple デバイス マネージャー サービスを使用してバックアップ ポリシーを管理する
 
@@ -76,6 +76,23 @@ StorSimple デバイスで、既存のバックアップ ポリシーに関連�
 
 [!INCLUDE [storsimple-8000-add-modify-backup-schedule](../../includes/storsimple-8000-add-modify-backup-schedule-u2.md)]
 
+## <a name="disable-a-schedule"></a>スケジュールを無効にする
+
+バックアップ ポリシーを無効にする必要がある場合は、次の手順を使用します。 たとえば、最大 64 のバックアップに達したスケジュールを無効にした後、さらに多くのバックアップを取得するための新しいスケジュールを追加することもできます。
+
+バックアップ ポリシーを無効にするには、次の手順を実行します。
+
+1.  StorSimple デバイスに移動し、 **[バックアップ ポリシー]** をクリックします。
+
+1.  バックアップ ポリシーから、無効にするスケジュールにドリルダウンします。
+
+    1. バックアップ ポリシーをクリックして、そのポリシーの **[スケジュール]** を開きます。 
+
+    1. そのポリシーを再びクリックして、 **[スケジュール]** ダイアログ ボックスを開きます。
+
+    1. 無効にするスケジュールをクリックして、 **[スケジュールの構成]** を開きます。 **[状態]** フィールドで、 **[無効]** を選択します。
+
+  [ ![StorSimple デバイスでバックアップ ポリシーのスケジュールを無効にする手順を示す図。各手順には番号が付いており、画面のラベルと実行する項目が強調表示されています。](./media/storsimple-8000-manage-backup-policies-u2/modify-schedule-illustration.png) ](./media/storsimple-8000-manage-backup-policies-u2/modify-schedule-illustration.png#lightbox)
 
 ## <a name="add-or-remove-a-volume"></a>ボリュームの追加または削除
 

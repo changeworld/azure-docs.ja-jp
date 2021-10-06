@@ -4,13 +4,13 @@ description: Bicep リソースのアクセス演算子とプロパティ アク
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 08/30/2021
-ms.openlocfilehash: b5eebb9b5dd6d39ae790b8fda7133e94ecd0cdb5
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.date: 09/10/2021
+ms.openlocfilehash: f3ed1ca46c2dfbcab8bfbdc720ff7ab448cbc742
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123224279"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124744452"
 ---
 # <a name="bicep-accessor-operators"></a>Bicep アクセサー演算子
 
@@ -25,11 +25,15 @@ ms.locfileid: "123224279"
 
 ## <a name="index-accessor"></a>インデックス アクセサー
 
-`array[index]`
+`array[integerIndex]`
 
-`object['index']`
+`object['stringIndex']`
 
-配列内の要素を取得するには、`[index]` を使用し、インデックスの整数を指定します。
+インデックス アクセサーを使用して、配列から要素を取得するか、オブジェクトからプロパティを取得します。
+
+**配列** の場合は、インデックスを **整数** として指定します。 整数は、取得する要素の 0 から始まる位置と一致します。
+
+**オブジェクト** の場合は、インデックスを **文字列** として指定します。 文字列は、取得するオブジェクトの名前と一致します。
 
 次の例では、配列内の要素を取得します。
 
@@ -45,11 +49,11 @@ output accessorResult string = arrayVar[1]
 
 例の出力を次に示します。
 
-| 名前 | 型 | 値 |
+| 名前 | 種類 | 値 |
 | ---- | ---- | ---- |
 | accessorResult | string | 'Contoso' |
 
-また、インデックス アクセサーを使用して、名前指定によりオブジェクト プロパティを取得することもできます。 インデックスには、整数ではなく、文字列を使用する必要があります。 次の例では、オブジェクトのプロパティを取得します。
+次の例では、オブジェクトのプロパティを取得します。
 
 ```bicep
 var environmentSettings = {
@@ -66,7 +70,7 @@ output accessorResult string = environmentSettings['dev'].name
 
 例の出力を次に示します。
 
-| 名前 | 型 | 値 |
+| 名前 | 種類 | 値 |
 | ---- | ---- | ---- |
 | accessorResult | string | 'Development' |
 
@@ -160,7 +164,7 @@ output outputQ int = x.q
 
 例の出力を次に示します。
 
-| 名前 | Type | 値 |
+| 名前 | 種類 | 値 |
 | ---- | ---- | ---- |
 | `outputZ` | string | 'Hello' |
 | `outputQ` | 整数 (integer) | 42 |

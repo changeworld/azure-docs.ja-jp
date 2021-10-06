@@ -2,13 +2,13 @@
 title: リソースの種類別の移動操作のサポート
 description: 新しいリソース グループ、サブスクリプション、またはリージョンに移動できる Azure リソースの種類を一覧表示します。
 ms.topic: conceptual
-ms.date: 09/08/2021
-ms.openlocfilehash: 14ef825ec2e11d76b90161dc7cf3d8814c8daa04
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 10/04/2021
+ms.openlocfilehash: b5086256142c4ce72111dddcacaf19c4a40cdc35
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124764338"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129429340"
 ---
 # <a name="move-operation-support-for-resources"></a>リソースの操作のサポートの移動
 
@@ -1183,7 +1183,7 @@ ms.locfileid: "124764338"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション | リージョンの移動 |
 > | ------------- | ----------- | ---------- | ----------- |
-> | connectedclusters | はい | はい | いいえ |
+> | connectedclusters | いいえ | いいえ | いいえ |
 > | registeredsubscriptions | いいえ | いいえ | いいえ |
 
 ## <a name="microsoftkubernetesconfiguration"></a>Microsoft.KubernetesConfiguration

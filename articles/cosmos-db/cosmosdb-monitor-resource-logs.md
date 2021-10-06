@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/20/2021
 ms.author: sngun
-ms.openlocfilehash: 2f25cfa8f2c9c70b6cc97dc96d504b41078f5b5f
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.openlocfilehash: 55e84478d8744aae05f8f3a0df89aac605d6de12
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114667674"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124779922"
 ---
 # <a name="monitor-azure-cosmos-db-data-by-using-diagnostic-settings-in-azure"></a>Azure の診断設定を使用して Azure Cosmos DB データを監視する
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -48,7 +48,7 @@ Azure の診断設定は、リソース ログの収集に使用されます。 
    |CassandraRequests     |   Cassandra      |    Azure Cosmos DB の Cassandra 用 API への要求を処理するために、ユーザーがフロントエンドから開始した要求をログに記録します。 このカテゴリを有効にするときは、必ず DataPlaneRequests を無効にしてください。     |     `operationName`, `requestCharge`, `piiCommandText`    |
    |GremlinRequests     |    Gremlin    |     Azure Cosmos DB の Gremlin 用 API への要求を処理するために、ユーザーがフロントエンドから開始した要求をログに記録します。 このカテゴリを有効にするときは、必ず DataPlaneRequests を無効にしてください。    |   `operationName`, `requestCharge`, `piiCommandText`, `retriedDueToRateLimiting`       |
    |QueryRuntimeStatistics     |   SQL      |     このテーブルは、SQL API アカウントに対して実行されるクエリ操作の詳細を示します。 既定では、クエリ テキストとそのパラメーターは難読化されるため、要求によって利用可能なフル テキスト クエリ ログ記録に個人データがログ記録されることが防止されます。    |    `databasename`, `partitionkeyrangeid`, `querytext`    |
-   |PartitionKeyStatistics     |    すべての API     |   論理パーティション キーの統計情報を、パーティション キーのストレージ サイズ (KB) を示すことにより、ログ記録します。 この表は、ストレージ スキューをトラブルシューティングするときに便利です。 この PartitionKeyStatistics ログは、次の条件に該当する場合にのみ出力されます。 <br/><ul><li> ドキュメントの少なくとも 1% が同じ論理パーティション キーを持っている。 </li><li> すべてのキーのうち、ストレージ サイズが最も大きい上位 3 つのキーが PartitionKeyStatistics ログによってキャプチャされる。 </li></ul> 前の条件が満たされていない場合、パーティション キーの統計データは使用できません。 アカウントで上記の条件が満たされていなくても問題ありません。通常、これは論理パーティションのストレージ スキューがないことを示しています。 |   `subscriptionId`, `regionName`, `partitionKey`, `sizeKB`      |
+   |PartitionKeyStatistics     |    すべての API     |   論理パーティション キーの統計情報を、パーティション キーの推定ストレージ サイズ (KB) を示すことにより、ログ記録します。 この表は、ストレージ スキューをトラブルシューティングするときに便利です。 この PartitionKeyStatistics ログは、次の条件に該当する場合にのみ出力されます。 <br/><ul><li> 物理パーティション内のドキュメントの少なくとも 1% が同じ論理パーティション キーを持っている。 </li><li> 物理パーティション内のすべてのキーのうち、ストレージ サイズが最も大きい上位 3 つのキーが PartitionKeyStatistics ログによってキャプチャされる。 </li></ul> 前の条件が満たされていない場合、パーティション キーの統計データは使用できません。 アカウントで上記の条件が満たされていなくても問題ありません。通常、これは論理パーティションのストレージ スキューがないことを示しています。 <br/><br/>注: パーティション キーの推定サイズは、物理パーティション内のドキュメントが概ね同じサイズであると想定するサンプリング アプローチを使用して計算されます。 物理パーティション内のドキュメントのサイズが均一でない場合、パーティション キーの推定サイズが正確でなくなる可能性があります。  |   `subscriptionId`, `regionName`, `partitionKey`, `sizeKB`      |
    |PartitionKeyRUConsumption     |   SQL API    |     パーティション キーの RU (秒単位) の合計消費量をログに記録します。 この表は、ホット パーティションのトラブルシューティングで役立ちます。 現在のところ Azure Cosmos DB では、SQL API アカウントのみについて、およびポイントの読み取りまたは書き込みとストアド プロシージャ操作について、パーティション キーが報告されます。   |     `subscriptionId`, `regionName`, `partitionKey`, `requestCharge`, `partitionKeyRangeId`   |
    |ControlPlaneRequests     |   すべての API       |    アカウントの作成、リージョンの追加または削除、アカウントのレプリケーション設定の更新など、コントロール プレーンの操作に関する詳細をログに記録します。     |    `operationName`, `httpstatusCode`, `httpMethod`, `region`       |
    |TableApiRequests     |   テーブル API    |     Azure Cosmos DB の Table 用 API への要求を処理するために、ユーザーがフロントエンドから開始した要求をログに記録します。 このカテゴリを有効にするときは、必ず DataPlaneRequests を無効にしてください。       |    `operationName`, `requestCharge`, `piiCommandText`     |

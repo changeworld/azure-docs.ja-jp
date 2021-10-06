@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 08/10/2021
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 7b5aff80acca790f1ae8c4a852f8b353dfa7312a
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 91e95bd6b269558353d74cbaa51dce94539001c1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123433838"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128606401"
 ---
 # <a name="tutorial-connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>チュートリアル:ポータルを使用して仮想ネットワークを ExpressRoute 回線に接続する
 
@@ -86,6 +86,9 @@ ms.locfileid: "123433838"
 複数のサブスクリプションで ExpressRoute 回線を共有できます。 下図に、複数のサブスクリプションで ExpressRoute 回線を共有するしくみについて概略を示します。
 
 :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/cross-subscription.png" alt-text="サブスクリプション間接続":::
+
+> [!NOTE]
+> Azure ソブリン クラウドとパブリック Azure クラウドの間での仮想ネットワーク接続はサポートされていません。 仮想ネットワークをリンクできるのは、同じクラウド内の異なるサブスクリプションからに限られます。
 
 大規模クラウド内のそれぞれの小規模クラウドは、組織内のさまざまな部門に属するサブスクリプションを表すために使用されています。 組織内の各部門は、サービスのデプロイを目的として、固有のサブスクリプションを使用できますが、1 つの ExpressRoute 回線を共有することで、オンプレミス ネットワークに接続し直すことができます。 1 つの部門 (この例では IT) で ExpressRoute 回線を所有できます。 組織内の他のサブスクリプションを使用する場合も、ExpressRoute 回線を使用できます。
 

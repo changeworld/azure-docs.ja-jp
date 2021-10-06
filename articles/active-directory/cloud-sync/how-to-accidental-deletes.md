@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/25/2021
+ms.date: 09/10/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0da54bd28c1d9ea933e88b6c86cf6092c10d036a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5055b847eab1ee53688abfa308b5969f7526f668
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98785187"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124742672"
 ---
 # <a name="accidental-delete-prevention"></a>誤削除防止
 
@@ -27,6 +27,10 @@ ms.locfileid: "98785187"
 - 問題の同期ジョブが隔離されたら電子メールで通知を受け取ることができるように、このシナリオのために通知の電子メールアドレスを設定します 
 
 この機能を使用するには、削除された場合に同期を停止する必要があるオブジェクト数のしきい値を設定します。  この数に達すると、同期が停止し、指定された電子メールに通知が送信されます。  この通知により、何が起こっているかを調べることができます。
+
+詳細と例については、次のビデオをご覧ください。
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RWK5mV]
 
 
 ## <a name="configure-accidental-delete-prevention"></a>誤削除防止の構成

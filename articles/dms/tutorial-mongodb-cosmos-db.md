@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
-ms.date: 08/26/2021
-ms.openlocfilehash: 87f211976f74fef5ed2c0cef992d82099e141a29
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.date: 09/21/2021
+ms.openlocfilehash: 6714446d42a256f6948b8e0f6e69b6bc2be60b6e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123038173"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128664354"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-db-api-for-mongodb-offline"></a>チュートリアル: MongoDB を Azure Cosmos DB の MongoDB 用 API にオフラインで移行する
 [!INCLUDE[appliesto-mongodb-api](../cosmos-db/includes/appliesto-mongodb-api.md)]
@@ -50,6 +50,10 @@ Azure Database Migration Service を使用して、MongoDB のオンプレミス
 
 * スループットの見積もりやパーティション キーの選択など、[移行前の手順を完了](../cosmos-db/mongodb-pre-migration.md)します。
 * [Azure Cosmos DB の MongoDB 用 API アカウントを作成します](https://ms.portal.azure.com/#create/Microsoft.DocumentDB)。
+
+  > [!NOTE]
+  > サーバーレス モードでプロビジョニングされた MongoDB 用 API アカウントに移行する場合、DMS は現在サポートされていません。
+
 * Azure Resource Manager を使用して、Azure Database Migration Service 用の Microsoft Azure 仮想ネットワークを作成します。 このデプロイ モデルにより、[ExpressRoute](../expressroute/expressroute-introduction.md) または [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) のどちらかを使用して、オンプレミスのソース サーバーへのサイト間接続が提供されます。 仮想ネットワークの作成方法の詳細については、[Azure Virtual Network のドキュメント](../virtual-network/index.yml)を参照してください。特に、詳細な手順が記載された "クイックスタート" の記事を参照してください。
 
     > [!NOTE]
@@ -236,7 +240,7 @@ MongoDB データベースの格納データを Azure Cosmos DB の MongoDB 用 
 ## <a name="additional-resources"></a>その他のリソース
 
 * Azure Cosmos DB への移行のための容量計画を実行しようとしていますか?
-    * 既存のデータベース クラスターの仮想コアとサーバーの数のみを把握している場合は、[仮想コア数または vCPU 数を使用した要求ユニットの見積もり](../cosmos-db/convert-vcore-to-request-unit.md)に関するページを参照してください 
+    * 知っていることが既存のデータベース クラスター内の仮想コアとサーバーの数のみである場合は、[仮想コアまたは仮想 CPU の数を使用した要求ユニットの見積もり](../cosmos-db/convert-vcore-to-request-unit.md)に関するページを参照してください 
     * 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB Capacity Planner を使用した要求ユニットの見積もり](../cosmos-db/mongodb/estimate-ru-capacity-planner.md)に関するページを参照してください
 
 ## <a name="next-steps"></a>次のステップ

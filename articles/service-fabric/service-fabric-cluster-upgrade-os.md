@@ -1,15 +1,14 @@
 ---
 title: Azure Service Fabric の Linux OS のアップグレード
 description: Azure Service Fabric クラスターを別の Linux OS に移行するためのオプションについて説明します。
-manager: tassb
 ms.topic: conceptual
 ms.date: 09/14/2021
-ms.openlocfilehash: 4a5b1a97fde977fa4ba64a4a23d0c57725595c37
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 8f52481e7c457445dc842e86f7b05c3568502da4
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128699284"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129278013"
 ---
 # <a name="upgrading-linux-os-for-azure-service-fabric"></a>Azure Service Fabric の Linux OS のアップグレード
 
@@ -31,7 +30,7 @@ ms.locfileid: "128699284"
 
     * 新しいターゲット OS ノード タイプの作成後、既存のワークロードが引き続き正しく動作することを確認します。 問題が確認された場合は、アプリまたはプレインストールされたマシン パッケージに必要な変更を行ってから、以前のノード タイプを削除する手順に進んでください。
 3. 以前のプライマリ ノード タイプを "isPrimary": false としてマークします。 これにより、すべてのシード ノードを移行するための、時間のかかる一連のアップグレードが実行されます。
-4. (Bronze 持続性ノードタイプのみ): [sfctl](https://docs.microsoft.com/azure/service-fabric/service-fabric-sfctl) / [PowerShell](https://docs.microsoft.com/powershell/module/ServiceFabric/?view=azureservicefabricps) / [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient?view=azure-dotnet) でクラスターに接続し、古いノード タイプのノードをすべて無効にします。
+4. (Bronze 持続性ノードタイプのみ): [sfctl](service-fabric-sfctl.md) / [PowerShell](/powershell/module/ServiceFabric) / [FabricClient](/dotnet/api/system.fabric.fabricclient) でクラスターに接続し、古いノード タイプのノードをすべて無効にします。
 5. 以前のノード タイプを削除します。
 
 > [!NOTE]
@@ -43,9 +42,9 @@ ms.locfileid: "128699284"
 > [!NOTE]
 > 以下の手順は、Az PowerShell コマンドレットを使用したノード タイプ移行をテスト専用クラスターで手軽に試行する方法を示しています。 実際のビジネス トラフィックにさらされる運用環境のクラスターの場合は、再現性、そして宣言型の信頼できる情報源の一貫性を維持するために、同じ手順を ARM アップグレードによって行うことになるでしょう。
 
-1. [Update-AzServiceFabricVmImage](https://docs.microsoft.com/powershell/module/az.servicefabric/update-azservicefabricvmimage) を使用して Service Fabric クラスター リソースの vmImage 設定を更新します。
+1. [Update-AzServiceFabricVmImage](/powershell/module/az.servicefabric/update-azservicefabricvmimage) を使用して Service Fabric クラスター リソースの vmImage 設定を更新します。
 
-    [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps):
+    [Azure PowerShell](/powershell/azure/install-az-ps):
     ```powershell
     # Replace subscriptionId, resourceGroup, clusterName with ones corresponding to your cluster.
     $subscriptionId="cea219db-0593-4b27-8bfa-a703332bf433"

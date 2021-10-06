@@ -7,18 +7,17 @@ author: rastala
 ms.author: roastala
 ms.reviewer: larryfr
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: enterprise-readiness
 ms.date: 08/24/2021
 ms.topic: how-to
-ms.openlocfilehash: 397f22711eadc38c82625a8b6a899f6485d798cf
-ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+ms.openlocfilehash: 0966d85fcab33752359c5174f6205c5556f2a137
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122778235"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129427934"
 ---
 # <a name="use-authentication-credential-secrets-in-azure-machine-learning-training-runs"></a>Azure Machine Learning トレーニングの実行で認証資格情報シークレットを使用する
-
 
 この記事では、トレーニングの実行でシークレットを安全に使用する方法について説明します。 ユーザー名やパスワードなどの認証情報はシークレットです。 たとえば、トレーニング データを問い合わせる目的で外部データベースに接続する場合、リモート実行コンテキストにユーザー名とパスワードを渡す必要があります。 このような値をクリアテキストでトレーニング スクリプトにコーディングすると、シークレットが公開されるので安全ではありません。 
 

@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 08/27/2021
 ms.author: lajanuar
 zone_pivot_groups: programming-languages-cs-cpp-py
-ms.openlocfilehash: e7ad9593ddc77947c3d5c48afa04723e33a261a2
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 6830ded4b6a074a29de9741eee957b0a4a1ff4b3
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123537042"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128588126"
 ---
-# <a name="language-identification"></a>言語識別
+# <a name="language-identification-preview"></a>言語識別 (プレビュー)
 
 言語識別は、提供された言語一覧と照合する際に、Speech SDK に渡されたオーディオで話されている言語を判断するために使用されます。 
 
-言語識別は、[音声翻訳](./get-started-speech-translation.md#multi-lingual-translation-with-language-identification)の実行中に使用できるほか、[音声認識時に言語識別](/azure/cognitive-services/speech-service/how-to-automatic-language-detection)を行う際にも使用できます。 
+言語識別は、[音声翻訳](./get-started-speech-translation.md#multi-lingual-translation-with-language-identification)の実行中に使用できるほか、[音声認識時に言語識別](./how-to-automatic-language-detection.md)を行う際にも使用できます。 
 
 利用できる言語については、[言語サポート](language-support.md)に関するページを参照してください。
 

@@ -1,15 +1,16 @@
 ---
-title: Azure CLI のサンプル スクリプト - Batch へのアプリケーションの追加
-description: このサンプルでは、Azure Batch プールまたはタスクで使用するアプリケーションを追加する方法について説明します。
+title: Azure CLI のサンプル スクリプト - Batch へのアプリケーションの追加 | Microsoft Docs
+description: Azure CLI を使用して Azure Batch プールまたはタスクで使用するアプリケーションを追加する方法について説明します。
 ms.topic: sample
-ms.date: 01/29/2018
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 06afb59a76e763c25e943c3be1531372a6bd2aa1
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.date: 09/17/2021
+ms.custom: devx-track-azurecli, seo-azure-cli
+keywords: Batch, Azure CLI サンプル, Azure CLI コード サンプル, Azure CLI スクリプト サンプル
+ms.openlocfilehash: 1c20adef86e30df79a5de2d6229ca099875c98f0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107765269"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128595201"
 ---
 # <a name="cli-example-add-an-application-to-an-azure-batch-account"></a>CLI の例: Azure Batch アカウントへのアプリケーションの追加
 

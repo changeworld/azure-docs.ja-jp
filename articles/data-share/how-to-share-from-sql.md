@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: how-to
-ms.date: 02/24/2021
-ms.openlocfilehash: ef8c1a50cd3568c6cec9bdb053b02e6e14741eb0
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 09/10/2021
+ms.openlocfilehash: 7dcf326ea0834bdf644e2b717517f67d41d330e0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105644683"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124743266"
 ---
 # <a name="share-and-receive-data-from-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Database と Azure Synapse Analytics からのデータの共有と受信
 
@@ -260,6 +260,8 @@ Azure SQL Database、Azure Synapse Analytics へのデータを受信するこ�
 
    Azure portal から直接招待を開くには、Azure portal で **[データ共有への招待]** を検索します。 Data Share の招待が一覧表示されます。
 
+   テナントのゲスト ユーザーの場合、Data Share の招待を初めて表示する前に、テナントの自分のメール アドレスを確認するよう求められます。 検証が完了すると、12 か月間有効になります。
+
    ![招待の一覧](./media/invitations.png "招待の一覧") 
 
 1. 表示する共有を選択します。 
@@ -319,27 +321,27 @@ SQL ソースからデータを共有するとき、スナップショットの�
 |:--- |:--- |
 | bigint |Int64 |
 | binary |Byte[] |
-| bit |Boolean |
+| bit |ブール型 |
 | char |String, Char[] |
 | date |DateTime |
 | Datetime |DateTime |
 | datetime2 |DateTime |
 | Datetimeoffset |DateTimeOffset |
-| Decimal |Decimal (10 進数型) |
+| Decimal |Decimal |
 | FILESTREAM attribute (varbinary(max)) |Byte[] |
 | Float |Double |
 | image |Byte[] |
 | INT |Int32 |
-| money |Decimal (10 進数型) |
+| money |Decimal |
 | nchar |String, Char[] |
 | ntext |String, Char[] |
-| numeric |Decimal (10 進数型) |
+| numeric |Decimal |
 | nvarchar |String, Char[] |
 | real |Single |
 | rowversion |Byte[] |
 | smalldatetime |DateTime |
 | smallint |Int16 |
-| smallmoney |Decimal (10 進数型) |
+| smallmoney |Decimal |
 | sql_variant |Object |
 | text |String, Char[] |
 | time |TimeSpan |

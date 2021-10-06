@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: sideeksh
 ms.custom: MVC
-ms.openlocfilehash: a76ebf95b92b6e1251a04daa9ffb48a9abe15b50
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 24f3d5bfa5883477b436956d90b7af70142311aa
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89425349"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128587748"
 ---
 # <a name="move-azure-vms-between-azure-government-and-public-regions"></a>Azure Government とパブリック リージョンの間で Azure VM を移動する 
 
@@ -79,7 +79,7 @@ VM を Azure にレプリケートするアクセス許可がお使いの Azure 
 
 - ドメイン アカウントまたはローカル アカウントを使用できます。
 - Windows VM の場合、ドメイン アカウントを使用していなければ、次のようにしてローカル マシンでのリモート ユーザー アクセス制御を無効にします。 無効にするには、レジスタで、**HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** の下に、値 1 を指定した DWORD エントリの **LocalAccountTokenFilterPolicy** を追加します。
-- CLI からレジストリ エントリを追加し、設定を無効にするには、次のように入力します。       ``REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1.``
+- CLI からレジストリ エントリを追加し、設定を無効にするには、次のように入力します。`REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1.`
 - Linux の場合、アカウントは、ソース Linux サーバーの root である必要があります。
 
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/09/2021
 ms.reviewer: cynthn, jushiman
 ms.custom: template-how-to
-ms.openlocfilehash: fe9b445a1eccb6c897a1fd7f383e487714c23966
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: e2563f7addb773b256a56dc67b2ec892b7231372
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128575936"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129532635"
 ---
 # <a name="associate-a-virtual-machine-scale-set-to-a-capacity-reservation-group-preview"></a>仮想マシン スケール セットを容量予約グループに関連付ける (プレビュー)
 
@@ -28,9 +28,6 @@ Virtual Machine Scale Sets には次の 2 つのモードがあります。
 > 容量予約は現在パブリック プレビュー段階にあります。
 > このプレビュー バージョンはサービス レベル アグリーメントなしで提供されており、運用環境のワークロードに使用することは推奨されません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
-## <a name="register-for-capacity-reservation"></a>容量予約に登録する 
-
-容量予約機能を使用する前に、[プレビュー版を利用するためにサブスクリプションを登録する](capacity-reservation-overview.md#register-for-capacity-reservation)必要があります。 登録が完了するまでに数分かかる場合があります。 Azure CLI または PowerShell のいずれかを使用して、機能の登録を完了することができます。
 
 ## <a name="limitations-of-scale-sets-in-uniform-orchestration"></a>均一オーケストレーションでのスケール セットの制限 
 

@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 services: iot-fundamentals
 ms.topic: conceptual
 ms.date: 03/08/2021
-ms.openlocfilehash: 91604758ad2e53b3715a5b5c746959b3fe124ba6
-ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.openlocfilehash: ff8726ff95bd8e5e3c24fecb90d52ec48529ef7b
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2021
-ms.locfileid: "114403399"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129236012"
 ---
 # <a name="glossary-of-iot-terms"></a>IoT 用語集
 
@@ -367,10 +367,6 @@ IoT プラグ アンド プレイ [デバイス](#iot-plug-and-play-device)は�
 ### <a name="iot-plug-and-play-device"></a>IoT プラグ アンド プレイ デバイス
 
 IoT プラグ アンド プレイ デバイスは、データの収集や他のデバイスの制御を行い、[デバイス モデル](#device-model)を実装するソフトウェアまたはファームウェアを実行する、一般的には小規模なスタンドアロンのコンピューティング デバイスです。  環境監視デバイス (スマート農業灌漑システムのコントローラー) は、IoT プラグ アンド プレイ デバイスの一例です。 IoT プラグ アンド プレイ デバイスは、直接または IoT Edge モジュールとして実装できます。 IoT プラグ アンド プレイ デバイスに対する命令と制御を行い、そのデバイスからのデータを受信する、クラウドでホストされる IoT ソリューションを作成できます。
-
-### <a name="iot-solution-accelerators"></a>IoT ソリューション アクセラレータ
-
-Azure IoT ソリューション アクセラレータは、複数の Azure サービスをソリューションにパッケージ化します。 これらのソリューションを使用すると、一般的な IoT シナリオをエンド ツー エンドで実装して、すぐに使い始めることができます。 詳しくは、[Azure IoT ソリューション アクセラレータの概要](../iot-accelerators/about-iot-accelerators.md)に関するページをご覧ください。
 
 ## <a name="j"></a>J
 

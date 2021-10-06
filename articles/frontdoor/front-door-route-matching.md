@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: 67940db973f494cd4a12c2f16db528e0b113d656
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1aaabce5dc13098d183ee595d27b5b45a3fd0caa
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91449210"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128586290"
 ---
 # <a name="how-requests-are-matched-to-a-routing-rule"></a>ルーティング規則に対する要求の照合方法
 
@@ -69,8 +69,8 @@ Front Door のルーティング規則の構成は、大きく分けて「左側
 ### <a name="path-matching"></a>Path の照合
 Front Door は、フロント エンド ホストを特定し、そのフロント エンド ホストへのルートのみに関するルーティング規則のフィルター処理をした後、要求されたパスに基づきルーティング規則のフィルター処理をします。 フロント エンド ホストと同様のロジックを使用します。
 
-1. 当該 Path 上で、完全に一致するルーティング規則を探します
-2. 完全に一致する Path が存在しない場合、一致するワイルドカード パスが含まれるルーティング規則を探します
+1. 当該パス上で、完全に一致するルーティング規則を探します。
+2. 完全に一致するパスが存在しない場合、一致するワイルドカード パスが含まれるルーティング規則を探します。
 3. Path が一致するルーティング規則が存在しない場合、要求を拒否し、400: Bad Request エラー HTTP 応答を返します。
 
 >[!NOTE]
@@ -123,7 +123,8 @@ Front Door は、フロント エンド ホストを特定し、そのフロン�
 > | profile.domain.com/other | [なし] : Error 400: 正しくない要求 |
 
 ### <a name="routing-decision"></a>ルーティングの決定
-一つの Front Door のルーティング規則と一致した場合、次にその要求の処理方法を選択する必要があります。 一致したルーティング規則に対して、Front Door にキャッシュされたレスポンスがある場合、そのレスポンスがクライアントに送信されます。 ない場合は、一致したルーティング規則に対して、[URL Rewrite (カスタム フォワーディング パス)](front-door-url-rewrite.md) が構成されているかどうかの確認がおこなわれます。 カスタム フォワーディング パスが定義されていない場合、その要求は、構成されたバックエンド プール内の適切なバックエンドにそのまま転送されます。 それ以外の場合、要求パスは、定義された[カスタム フォワーディング パス](front-door-url-rewrite.md)に従って更新された後、バックエンドに転送されます。
+
+Front Door の 1 つのルーティング規則に一致したら、その要求を処理する方法を選択します。 Front Door に、一致したルーティング規則に使用できるキャッシュされた応答が存在する場合は、そのキャッシュされた応答がクライアントに戻されます。 Front Door に、一致したルーティング規則に対するキャッシュされた応答が存在しない場合は、次に、一致したルーティング規則に対して [URL 書き換え (カスタム転送パス)](front-door-url-rewrite.md) が構成されているかどうかが評価されます。 カスタム転送パスが定義されていない場合、その要求は、構成されたバックエンド プール内の適切なバックエンドにそのまま転送されます。 カスタム転送パスが定義されている場合、その要求パスは、定義された[カスタム転送パス](front-door-url-rewrite.md)に従って更新された後、バックエンドに転送されます。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/09/2021
+ms.date: 08/31/2021
 ms.author: jeedes
-ms.openlocfilehash: d10ff0f9ca4fde80557341c0b5d29b3f7c26c970
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: d1e3f0b9b7d61a2984914cbbbe0b9d3b2832f7b1
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111982830"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124780397"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-solarwinds-service-desk-previously-samanage"></a>チュートリアル:Azure Active Directory と SolarWinds Service Desk (旧称 Samanage) の統合
 
@@ -41,6 +41,7 @@ ms.locfileid: "111982830"
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
 * SolarWinds では、**SP**-Initiated SSO がサポートされます。
+* SolarWinds では[自動化されたユーザー プロビジョニング](samanage-provisioning-tutorial.md)がサポートされます。
 
 ## <a name="add-solarwinds-from-the-gallery"></a>ギャラリーからの SolarWinds の追加
 
@@ -179,6 +180,9 @@ SolarWinds の場合、プロビジョニングは手動で行います。
    >[!NOTE]
    >Azure Active Directory アカウント所有者がメールを受信し、リンクに従ってアカウントを確認するとそのアカウントがアクティブになります。 SolarWinds から提供されている他の SolarWinds ユーザー アカウント作成ツールまたは API を使用して、Azure Active Directory ユーザー アカウントをプロビジョニングできます。
 
+> [!NOTE]
+> SolarWinds では、自動ユーザー プロビジョニングもサポートされます。自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](./samanage-provisioning-tutorial.md)をご覧ください。
+
 ## <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
@@ -187,7 +191,7 @@ SolarWinds の場合、プロビジョニングは手動で行います。
 
 * SolarWinds のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [SolarWinds] タイルをクリックすると、SolarWinds のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [SolarWinds] タイルをクリックすると、SolarWinds のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

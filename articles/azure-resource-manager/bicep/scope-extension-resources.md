@@ -5,12 +5,12 @@ author: mumian
 ms.author: jgao
 ms.topic: conceptual
 ms.date: 07/30/2021
-ms.openlocfilehash: dbc349b907e8141af30012271c22c9c99d5a0298
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2b1fb9960caf81a51c80dae312979d90f6eb5f4d
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121722973"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124733432"
 ---
 # <a name="set-scope-for-extension-resources-in-bicep"></a>Bicep で拡張リソースのスコープを設定する
 
@@ -22,6 +22,10 @@ ms.locfileid: "121722973"
 
 > [!NOTE]
 > スコープ プロパティは、拡張リソースの種類でのみ使用できます。 拡張の種類ではないリソースの種類に別のスコープを指定するには、[モジュール](modules.md)を使用します。
+
+### <a name="microsoft-learn"></a>Microsoft Learn
+
+拡張リソースの詳細とハンズオン ガイダンスについては、**Microsoft Learn** の「[Bicep を使用して子と拡張機能のリソースをデプロイする](/learn/modules/child-extension-bicep-templates)」を参照してください。
 
 ## <a name="apply-at-deployment-scope"></a>展開スコープで適用する
 
@@ -119,9 +123,6 @@ resource roleAssignStorage 'Microsoft.Authorization/roleAssignments@2020-04-01-p
     principalId: principalId
   }
   scope: demoStorageAcct
-  dependsOn: [
-    demoStorageAcct
-  ]
 }
 ```
 

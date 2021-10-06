@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 03/18/2021
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 1131b42b58e1ed751a7563b4c59e71981b722305
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 0d95def7048b3077232bb728a97c28107ec80313
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "122643376"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "128654467"
 ---
 # <a name="tutorial-create-an-azure-database-for-mysql---flexible-server-preview-with-app-services-web-app-in-virtual-network"></a>チュートリアル:仮想ネットワークに Azure Database for MySQL - フレキシブル サーバー (プレビュー) と App Service Web アプリを作成する
 
@@ -21,7 +21,7 @@ ms.locfileid: "122643376"
 
 
 > [!IMPORTANT]
-> Azure Database for MySQL - フレキシブル サーバーは、現在パブリック プレビュー段階にあります。
+> Azure Database for MySQL - フレキシブル サーバーは現在、パブリック プレビュー段階にあります。
 
 
 このチュートリアルでは、MySQL フレキシブル サーバー (プレビュー) を使用して、[仮想ネットワーク](../../virtual-network/virtual-networks-overview.md)に Azure App Service Web アプリを作成する方法について説明します。
@@ -36,7 +36,7 @@ ms.locfileid: "122643376"
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
+[!INCLUDE [flexible-server-free-trial-note](../includes/flexible-server-free-trial-note.md)]
 
 この記事では、Azure CLI バージョン 2.0 以降をローカルで実行している必要があります。 インストールされているバージョンを確認するには、`az --version` コマンドを実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
@@ -89,7 +89,7 @@ az webapp up --resource-group myresourcegroup --location westus2 --plan testapps
 
 > [!NOTE]
 > - --location 引数には、前のセクションでデータベースに使用したのと同じ場所を使用します。
-> - _&lt;app-name>_ を、Azure 全体で一意の名前に置き換えます (サーバー エンドポイントは https://\<app-name>.azurewebsites.net)。 <app-name> に使用できる有効な文字は A から Z、0 から 9、および - です。 会社名とアプリ識別子を組み合わせて使用すると、適切なパターンになります。
+> - _\<app-name\>_ は、すべての Azure で一意の名前に置き換えます (サーバー エンドポイントは `https://\<app-name>.azurewebsites.net`)。 \<app-name\> に使用できる文字は A から Z、0 から 9、および - です。 会社名とアプリ識別子を組み合わせて使用すると、適切なパターンになります。
 > - App Service の Basic レベルでは、VNET 統合はサポートされていません。 Standard または Premium を使用してください。 
 
 このコマンドによって次の操作が実行されます。これには数分かかる場合があります。

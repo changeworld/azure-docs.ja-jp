@@ -4,13 +4,13 @@ description: 既存の Azure HDInsight 外部 Hive Metastore を Azure Synapse S
 keywords: 外部 Hive メタストア、共有、Synapse
 ms.service: hdinsight
 ms.topic: how-to
-ms.date: 08/22/2020
-ms.openlocfilehash: 69168ff4bd02800115560e2a91988289d0ca2d67
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.date: 09/09/2021
+ms.openlocfilehash: ae48734d19b200386a0750d0756cc774bc003c68
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123440163"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124736851"
 ---
 # <a name="share-hive-metastore-with-synapse-spark-pool-preview"></a>Hive Metastore を Synapse Spark Pool と共有する (プレビュー)
 
@@ -20,10 +20,11 @@ Azure Synapse Analytics では、同じワークスペース上の Apache Spark 
 
 この機能は、Spark 2.4 と Spark 3.0 のどちらでも利用できます。 次のテーブルに、Spark の各バージョンでサポートしている Hive メタストア サービス (HMS) のバージョンを記載します。
 
-|Spark バージョン|HMS 1.2.X|HMS 2.1.X|HMS 3.1.X|
-|--|--|--|--|
-|2.4|はい|はい|いいえ|
-|3|はい|はい|はい|
+
+|Spark バージョン|HMS 1.2.X|HMS 2.1.X|HMS 2.3.X|HMS 3.1.X|
+|--|--|--|--|--|
+|2.4|はい|はい|はい|いいえ|
+|3|はい|はい|はい|はい|
 
 > [!NOTE]
 > 3\.6 と 4.0 のどちらのバージョンの HDInsight クラスターでも、既存の外部 Hive メタストアを使用できます。 「[Azure HDInsight での外部メタデータ ストアの使用](./hdinsight-use-external-metadata-stores.md)」をご覧ください。
@@ -74,6 +75,9 @@ try {
 外部 Hive メタストアのリンク サービスを作成したら、その外部 Hive メタストアを使用するために、Spark でいくつかの構成を設定する必要があります。 Spark プール単位でも、Spark セッション単位でも、構成を設定できます。 
 
 以下は、構成とその説明です。
+
+> [!NOTE]
+> 既定の Hive メタストア バージョンは 2.3 です。 Hive メタストア バージョンが 2.3 の場合、`spark.sql.hive.metastore.version` と `spark.sql.hive.metastore.jars` を設定する必要はありません。 `spark.hadoop.hive.synapse.externalmetastore.linkedservice.name` のみが必要です。
 
 |Spark の構成|説明|
 |--|--|
@@ -163,7 +167,7 @@ spark.conf.set('fs.azure.sas.%s.%s.blob.core.windows.net' % (blob_container_name
 - Synapse Studio オブジェクト エクスプローラーでは当面、外部 HMS の代わりにマネージド Synapse メタストアのオブジェクトを表示します。この機能は現在改善中です。
 - [SQL <-> spark 同期](../synapse-analytics/sql/develop-storage-files-spark-tables.md)は、外部 HMS の使用中は機能しません。  
 - 外部 Hive Metastore データベースには、Azure SQL Database だけをサポートしています。 認証には、SQL 認証だけをサポートしています。
-- 現在 Spark では、外部 Hive テーブルと、一時テーブルでも ACID テーブルでもないマネージド Hive テーブルだけを使用できます。 Hive の ACID テーブルとトランザクション テーブルは現在サポートしていません。
+- 現在 Spark では、外部 Hive テーブルと、トランザクション以外の ACID マネージド以外の Hive テーブルのみを使用できます。 Hive の ACID テーブルとトランザクション テーブルは現在サポートしていません。
 - Apache Ranger との連携機能は現時点で実装していません。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
@@ -214,4 +218,4 @@ HMS バージョンを変更する必要がある場合は、[hive スキーマ 
 Hive カタログを HDInsiht 4.0 の spark クラスターで共有する場合は、Synapse spark の `spark.hadoop.metastore.catalog.default` プロパティが HDInsight spark の値に正しく対応していることを確認してください。 既定値は `Spark` です。
 
 ### <a name="when-sharing-the-hive-metastore-with-hdinsight-40-hive-clusters-i-can-list-the-tables-successfully-but-only-get-empty-result-when-i-query-the-table"></a>Hive メタストアを HDInsight 4.0 Hive クラスターで共有したときに、テーブルのリストは表示されるが、テーブルに対するクエリを実行すると空の結果しか取得できない
-制限事項のセクションで述べたとおり、Synapse Spark プールでは、外部 hive テーブルと、一時テーブルでも ACID テーブルでもないマネージド テーブルだけをサポートしており、Hive の ACID テーブルとトランザクション テーブルは現在サポートしていません。 既定では、HDInsight 4.0 Hive クラスターで作成するすべてのマネージド テーブルは ACID テーブルかトランザクション テーブルになるため、それらのテーブルに対するクエリを実行すると空の結果が返ります。 
+制限事項のセクションで述べたとおり、Synapse Spark プールでは、外部 hive テーブルと、トランザクション以外の ACID マネージド テーブル以外のハイブ テーブルのみをサポートしており、Hive の ACID テーブルとトランザクション テーブルは現在サポートしていません。 既定では、HDInsight 4.0 Hive クラスターで作成するすべてのマネージド テーブルは ACID テーブルかトランザクション テーブルになるため、それらのテーブルに対するクエリを実行すると空の結果が返ります。 

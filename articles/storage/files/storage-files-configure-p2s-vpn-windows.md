@@ -8,12 +8,12 @@ ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 2b5abad1e83f33acb32fbba97616c81f47677295
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: 7e73d987ad8029d1ee65af0f92173561230af599
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112118369"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128589247"
 ---
 # <a name="configure-a-point-to-site-p2s-vpn-on-windows-for-use-with-azure-files"></a>Windows 上で Azure Files で使用するポイント対サイト (P2S) VPN を構成する
 ポイント対サイト (P2S) VPN 接続を使用すると、ポート 445 を開くことなく、Azure の外部から SMB 経由で Azure ファイル共有をマウントできます。 ポイント対サイト VPN 接続は、Azure と個々のクライアントの間の VPN 接続です。 Azure Files で P2S VPN 接続を使用するには、接続したいクライアントごとに P2S VPN 接続を構成する必要があります。 オンプレミス ネットワークから Azure ファイル共有に接続する必要のある多数のクライアントが存在する場合は、クライアントごとのポイント対サイト接続の代わりにサイト間 (S2S) VPN 接続を使用できます。 詳細については、「[Azure Files で使用するサイト間 VPN を構成する](storage-files-configure-s2s-vpn.md)」を参照してください。
@@ -333,6 +333,65 @@ Invoke-Command `
     }
 ```
 
+## <a name="rotate-vpn-root-certificate"></a>VPN ルート証明書のローテーション
+有効期限または新しい要件のためにルート証明書をローテーションする必要がある場合は、仮想ネットワークゲートウェイを再デプロイしなくても、既存の仮想ネットワークゲートウェイに新しいルート証明書を追加できます。  次のサンプルスクリプトを使用してルート証明書を追加したら、[VPN クライアント証明書](#create-client-certificate)を再作成する必要があります。  
+
+スクリプトを実行する前に、`<resource-group-name>`、`<desired-vpn-name-here>`、および `<new-root-cert-name>` を実際の値に置き換えます。
+
+```PowerShell
+#Creating the new Root Certificate
+$ResourceGroupName = "<resource-group-name>"
+$vpnName = "<desired-vpn-name-here>"
+$NewRootCertName = "<new-root-cert-name>"
+
+$rootcertname = "CN=$NewRootCertName"
+$certLocation = "Cert:\CurrentUser\My"
+$date = get-date -Format "MM_yyyy"
+$vpnTemp = "C:\vpn-temp_$date\"
+$exportedencodedrootcertpath = $vpnTemp + "P2SRootCertencoded.cer"
+$exportedrootcertpath = $vpnTemp + "P2SRootCert.cer"
+
+if (-Not (Test-Path $vpnTemp)) {
+    New-Item -ItemType Directory -Force -Path $vpnTemp | Out-Null
+}
+
+$rootcert = New-SelfSignedCertificate `
+    -Type Custom `
+    -KeySpec Signature `
+    -Subject $rootcertname `
+    -KeyExportPolicy Exportable `
+    -HashAlgorithm sha256 `
+    -KeyLength 2048 `
+    -CertStoreLocation $certLocation `
+    -KeyUsageProperty Sign `
+    -KeyUsage CertSign
+
+Export-Certificate `
+    -Cert $rootcert `
+    -FilePath $exportedencodedrootcertpath `
+    -NoClobber | Out-Null
+
+certutil -encode $exportedencodedrootcertpath $exportedrootcertpath | Out-Null
+
+$rawRootCertificate = Get-Content -Path $exportedrootcertpath
+
+[System.String]$rootCertificate = ""
+foreach($line in $rawRootCertificate) { 
+    if ($line -notlike "*Certificate*") { 
+        $rootCertificate += $line 
+    } 
+}
+
+#Fetching gateway details and adding the newly created Root Certificate.
+$gateway = Get-AzVirtualNetworkGateway -Name $vpnName -ResourceGroupName $ResourceGroupName
+
+Add-AzVpnClientRootCertificate `
+    -PublicCertData $rootCertificate `
+    -ResourceGroupName $ResourceGroupName `
+    -VirtualNetworkGatewayName $gateway `
+    -VpnClientRootCertificateName $NewRootCertName
+
+```
 ## <a name="see-also"></a>関連項目
 - [直接 Azure ファイル共有アクセスに関するネットワークの考慮事項](storage-files-networking-overview.md)
 - [Linux 上で Azure Files で使用するポイント対サイト (P2S) VPN を構成する](storage-files-configure-p2s-vpn-linux.md)

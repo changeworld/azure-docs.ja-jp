@@ -5,32 +5,35 @@ author: ginamr
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 03/04/2020
+ms.date: 09/14/2021
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 4aa1d9abc694df026beeb233edcbfd4a799a698a
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: ea47e95a3b47f50613c954c95f3f5fd306e9c729
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122206549"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128638826"
 ---
 # <a name="trim-azure-cosmos-db"></a>TRIM (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
 
- 文字列式の先頭と末尾の空白を削除して返します。  
+先頭と末尾の空白または指定された文字を削除した後の文字列式を返します。  
   
 ## <a name="syntax"></a>構文
   
 ```sql
-TRIM(<str_expr>)  
+TRIM(<str_expr1>[, <str_expr2>])  
 ```  
   
 ## <a name="arguments"></a>引数
   
-*str_expr*  
-   文字列式です。  
-  
+*str_expr1*  
+   文字列式
+
+*str_expr2*  
+   str_expr1 からトリムされる省略可能な文字列式。 設定されていない場合、既定値は空白です。
+
 ## <a name="return-types"></a>戻り値の型
   
   文字列式を返します。  
@@ -40,13 +43,27 @@ TRIM(<str_expr>)
   次の例は、クエリ内での `TRIM` の使用方法を示しています。  
   
 ```sql
-SELECT TRIM("   abc") AS t1, TRIM("   abc   ") AS t2, TRIM("abc   ") AS t3, TRIM("abc") AS t4
+SELECT TRIM("   abc") AS t1, 
+TRIM("   abc   ") AS t2, 
+TRIM("abc   ") AS t3, 
+TRIM("abc") AS t4,
+TRIM("abc", "ab") AS t5,
+TRIM("abc", "abc") AS t6
 ```  
   
  結果セットは次のようになります。  
   
 ```json
-[{"t1": "abc", "t2": "abc", "t3": "abc", "t4": "abc"}]  
+[
+    {
+        "t1": "abc",
+        "t2": "abc",
+        "t3": "abc",
+        "t4": "abc",
+        "t5": "c",
+        "t6": ""
+    }
+]
 ``` 
 
 ## <a name="remarks"></a>解説

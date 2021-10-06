@@ -1,15 +1,15 @@
 ---
 title: FedRAMP Moderate (Azure Government) の規制コンプライアンスの詳細
 description: FedRAMP Moderate (Azure Government) 規制コンプライアンスの組み込みイニシアチブの詳細。 それぞれのコントロールは、評価を支援する 1 つまたは複数の Azure Policy 定義に対応します。
-ms.date: 09/03/2021
+ms.date: 09/17/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: bbd094bfc66a0dc7b486269c7795fe1681043e9b
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 59cab5f31b36aa2ca92be1687d99d0d5ad7994d9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123468026"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128666364"
 ---
 # <a name="details-of-the-fedramp-moderate-azure-government-regulatory-compliance-built-in-initiative"></a>FedRAMP Moderate (Azure Government) 規制コンプライアンスの組み込みイニシアチブの詳細
 
@@ -27,7 +27,7 @@ ms.locfileid: "123468026"
 
 ### <a name="account-management"></a>アカウント管理
 
-**ID**: NIST SP 800-53 Rev. 4 AC-2
+**ID**: FedRAMP (中) AC-2
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -47,7 +47,7 @@ ms.locfileid: "123468026"
 
 ### <a name="automated-system-account-management"></a>システム アカウント管理の自動化
 
-**ID**: NIST SP 800-53 Rev. 4 AC-2 (1)
+**ID**: FedRAMP (中) AC-2 (1)
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -57,7 +57,7 @@ ms.locfileid: "123468026"
 
 ### <a name="role-based-schemes"></a>ロールベースのスキーム
 
-**ID**: NIST SP 800-53 Rev. 4 AC-2 (7)
+**ID**: FedRAMP (中) AC-2 (7)
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -69,7 +69,7 @@ ms.locfileid: "123468026"
 
 ### <a name="account-monitoring--atypical-usage"></a>アカウントの監視/一般的でない使用法
 
-**ID**: NIST SP 800-53 Rev. 4 AC-2 (12)
+**ID**: FedRAMP (中) AC-2 (12)
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -86,7 +86,7 @@ ms.locfileid: "123468026"
 
 ### <a name="access-enforcement"></a>アクセスの適用
 
-**ID**: NIST SP 800-53 Rev. 4 AC-3
+**ID**: FedRAMP (中) AC-3
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -108,7 +108,7 @@ ms.locfileid: "123468026"
 
 ### <a name="information-flow-enforcement"></a>情報フローの適用
 
-**ID**: NIST SP 800-53 Rev. 4 AC-4
+**ID**: FedRAMP (中) AC-4
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -154,7 +154,7 @@ ms.locfileid: "123468026"
 
 ### <a name="separation-of-duties"></a>職務の分離
 
-**ID**: NIST SP 800-53 Rev. 4 AC-5
+**ID**: FedRAMP (中) AC-5
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -162,7 +162,7 @@ ms.locfileid: "123468026"
 
 ### <a name="least-privilege"></a>最小限の特権
 
-**ID**: NIST SP 800-53 Rev. 4 AC-6
+**ID**: FedRAMP (中) AC-6
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -171,7 +171,7 @@ ms.locfileid: "123468026"
 
 ### <a name="remote-access"></a>リモート アクセス
 
-**ID**: NIST SP 800-53 Rev. 4 AC-17
+**ID**: FedRAMP (中) AC-17
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -208,7 +208,7 @@ ms.locfileid: "123468026"
 
 ### <a name="automated-monitoring--control"></a>監視または制御の自動化
 
-**ID**: NIST SP 800-53 Rev. 4 AC-17 (1)
+**ID**: FedRAMP (中) AC-17 (1)
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -247,7 +247,7 @@ ms.locfileid: "123468026"
 
 ### <a name="audit-review-analysis-and-reporting"></a>監査の確認、分析、および報告
 
-**ID**: NIST SP 800-53 Rev. 4 AU-6
+**ID**: FedRAMP (中) AU-6
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -267,7 +267,7 @@ ms.locfileid: "123468026"
 
 ### <a name="audit-record-retention"></a>監査レコードの保持
 
-**ID**: NIST SP 800-53 Rev. 4 AU-11
+**ID**: FedRAMP (中) AU-11
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -275,7 +275,7 @@ ms.locfileid: "123468026"
 
 ### <a name="audit-generation"></a>監査の生成
 
-**ID**: NIST SP 800-53 Rev. 4 AU-12
+**ID**: FedRAMP (中) AU-12
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -315,7 +315,7 @@ ms.locfileid: "123468026"
 
 ### <a name="configuration-settings"></a>構成設定
 
-**ID**: NIST SP 800-53 Rev. 4 CM-6
+**ID**: FedRAMP (中) CM-6
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -327,18 +327,18 @@ ms.locfileid: "123468026"
 |[Web アプリで "クライアント証明書 (着信クライアント証明書)" が [オン] に設定されていることを確認する](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5bb220d9-2698-4ee4-8404-b9c30c9df609) |クライアント証明書を使用すると、アプリは受信要求に対して証明書を要求できます。 有効な証明書を持つクライアントのみがアプリにアクセスできます。 |Audit、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_Webapp_Audit_ClientCert.json) |
 |[関数アプリでは、"クライアント証明書 (着信クライアント証明書)" が有効になっている必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Feaebaea7-8013-4ceb-9d14-7eb32271373c) |クライアント証明書を使用すると、アプリは受信要求に対して証明書を要求できます。 有効な証明書を持つクライアントのみが、そのアプリにアクセスできるようになります。 |Audit、Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_FunctionApp_Audit_ClientCert.json) |
 |[Kubernetes クラスター コンテナーの CPU およびメモリ リソースの制限は、指定された制限を超えないようにする必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe345eecc-fa47-480f-9e88-67dcc122b164) |コンテナーの CPU とメモリ リソースの制限を適用して、Kubernetes クラスターでのリソース枯渇攻撃を防ぎます。 このポリシーは、Kubernetes Service (AKS)、AKS Engine のプレビュー、および Azure Arc 対応 Kubernetes で一般提供されています。 詳細については、「[https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)」を参照してください。 |audit、deny、disabled |[7.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Kubernetes/ContainerResourceLimits.json) |
-|[Kubernetes クラスター コンテナーでは、ホスト プロセス ID またはホスト IPC 名前空間を共有してはいけない](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F47a1ee2f-2a2a-4576-bf2a-e0e36709c2b8) |ポッド コンテナーが Kubernetes クラスターでホスト プロセス ID 名前空間とホスト IPC 名前空間を共有できないようにします。 この推奨事項は、Kubernetes 環境のセキュリティを強化することを目的とした CIS 5.2.2 と CIS 5.2.3 の一部です。 このポリシーは、Kubernetes Service (AKS)、AKS Engine のプレビュー、および Azure Arc 対応 Kubernetes で一般提供されています。 詳細については、「[https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)」を参照してください。 |audit、deny、disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Kubernetes/BlockHostNamespace.json) |
+|[Kubernetes クラスター コンテナーでは、ホスト プロセス ID またはホスト IPC 名前空間を共有してはいけない](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F47a1ee2f-2a2a-4576-bf2a-e0e36709c2b8) |ポッド コンテナーが Kubernetes クラスターでホスト プロセス ID 名前空間とホスト IPC 名前空間を共有できないようにします。 この推奨事項は、Kubernetes 環境のセキュリティを強化することを目的とした CIS 5.2.2 と CIS 5.2.3 の一部です。 このポリシーは、Kubernetes Service (AKS)、AKS Engine のプレビュー、および Azure Arc 対応 Kubernetes で一般提供されています。 詳細については、「[https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)」を参照してください。 |audit、deny、disabled |[3.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Kubernetes/BlockHostNamespace.json) |
 |[Kubernetes クラスター コンテナーは、許可されたポートでのみリッスンする必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F440b515e-a580-421e-abeb-b159a61ddcbc) |Kubernetes クラスターへのアクセスをセキュリティで保護するために、許可されたポートでのみリッスンするようにコンテナーを制限します。 このポリシーは、Kubernetes Service (AKS)、AKS Engine のプレビュー、および Azure Arc 対応 Kubernetes で一般提供されています。 詳細については、「[https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)」を参照してください。 |audit、deny、disabled |[6.1.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Kubernetes/ContainerAllowedPorts.json) |
-|[Kubernetes クラスター コンテナーでは、許可されている AppArmor プロファイルのみを使用する必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F511f5417-5d12-434d-ab2e-816901e72a5e) |コンテナーでは、Kubernetes クラスターで許可されている AppArmor プロファイルのみを使用する必要があります。 この推奨事項は、Kubernetes 環境のセキュリティを強化することを目的としたポッド セキュリティ ポリシーの一部です。 このポリシーは、Kubernetes Service (AKS)、AKS Engine のプレビュー、および Azure Arc 対応 Kubernetes で一般提供されています。 詳細については、「[https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)」を参照してください。 |audit、deny、disabled |[4.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Kubernetes/EnforceAppArmorProfile.json) |
-|[Kubernetes クラスター コンテナーでは、許可されている機能のみを使用する必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc26596ff-4d70-4e6a-9a30-c2506bd2f80c) |Kubernetes クラスター内のコンテナーの攻撃面を縮小するために、機能を制限します。 この推奨事項は、Kubernetes 環境のセキュリティを強化することを目的とした CIS 5.2.8 と CIS 5.2.9 の一部です。 このポリシーは、Kubernetes Service (AKS)、AKS Engine のプレビュー、および Azure Arc 対応 Kubernetes で一般提供されています。 詳細については、「[https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)」を参照してください。 |audit、deny、disabled |[4.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Kubernetes/ContainerAllowedCapabilities.json) |
+|[Kubernetes クラスター コンテナーでは、許可されている AppArmor プロファイルのみを使用する必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F511f5417-5d12-434d-ab2e-816901e72a5e) |コンテナーでは、Kubernetes クラスターで許可されている AppArmor プロファイルのみを使用する必要があります。 この推奨事項は、Kubernetes 環境のセキュリティを強化することを目的としたポッド セキュリティ ポリシーの一部です。 このポリシーは、Kubernetes Service (AKS)、AKS Engine のプレビュー、および Azure Arc 対応 Kubernetes で一般提供されています。 詳細については、「[https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)」を参照してください。 |audit、deny、disabled |[4.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Kubernetes/EnforceAppArmorProfile.json) |
+|[Kubernetes クラスター コンテナーでは、許可されている機能のみを使用する必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc26596ff-4d70-4e6a-9a30-c2506bd2f80c) |Kubernetes クラスター内のコンテナーの攻撃面を縮小するために、機能を制限します。 この推奨事項は、Kubernetes 環境のセキュリティを強化することを目的とした CIS 5.2.8 と CIS 5.2.9 の一部です。 このポリシーは、Kubernetes Service (AKS)、AKS Engine のプレビュー、および Azure Arc 対応 Kubernetes で一般提供されています。 詳細については、「[https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)」を参照してください。 |audit、deny、disabled |[4.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Kubernetes/ContainerAllowedCapabilities.json) |
 |[Kubernetes クラスター コンテナーでは、許可されているイメージのみを使用する必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffebd0533-8e55-448f-b837-bd0e06f16469) |信頼できるレジストリのイメージを使用して、不明な脆弱性、セキュリティの問題、悪意のあるイメージに対する Kubernetes クラスターの露出リスクを削減します。 このポリシーは、Kubernetes Service (AKS)、AKS Engine のプレビュー、および Azure Arc 対応 Kubernetes で一般提供されています。 詳細については、「[https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)」を参照してください。 |audit、deny、disabled |[7.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Kubernetes/ContainerAllowedImages.json) |
-|[Kubernetes クラスターコンテナーは、読み取り専用のルート ファイル システムを使用して実行する必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fdf49d893-a74c-421d-bc95-c663042e5b80) |Kubernetes クラスター内のパスに悪意のあるバイナリを追加する実行時の変更から保護するために、読み取り専用のルート ファイル システムでコンテナーを実行します。 このポリシーは、Kubernetes Service (AKS)、AKS Engine のプレビュー、および Azure Arc 対応 Kubernetes で一般提供されています。 詳細については、「[https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)」を参照してください。 |audit、deny、disabled |[4.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Kubernetes/ReadOnlyRootFileSystem.json) |
-|[Kubernetes クラスター ポッドの hostPath ボリュームでは、許可されているホスト パスのみを使用する必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F098fc59e-46c7-4d99-9b16-64990e543d75) |ポッドの HostPath ボリューム マウントを、Kubernetes クラスター内の許可されているホスト パスに制限します。 この推奨事項は、Kubernetes 環境のセキュリティを強化することを目的としたポッド セキュリティ ポリシーの一部です。 このポリシーは、Kubernetes Service (AKS)、AKS Engine のプレビュー、および Azure Arc 対応 Kubernetes で一般提供されています。 詳細については、「[https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)」を参照してください。 |audit、deny、disabled |[4.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Kubernetes/AllowedHostPaths.json) |
-|[Kubernetes クラスターのポッドとコンテナーは、承認されたユーザーとグループの ID のみを使用して実行する必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff06ddb64-5fa3-4b77-b166-acb36f7f6042) |Kubernetes クラスターでポッドとコンテナーを実行する際に使用できるユーザー、プライマリ グループ、補助グループ、およびファイル システム グループの ID を制御します。 この推奨事項は、Kubernetes 環境のセキュリティを強化することを目的としたポッド セキュリティ ポリシーの一部です。 このポリシーは、Kubernetes Service (AKS)、AKS Engine のプレビュー、および Azure Arc 対応 Kubernetes で一般提供されています。 詳細については、「[https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)」を参照してください。 |audit、deny、disabled |[4.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Kubernetes/AllowedUsersGroups.json) |
-|[Kubernetes クラスターのポッドでは、承認されているホスト ネットワークとポート範囲のみを使用する必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F82985f06-dc18-4a48-bc1c-b9f4f0098cfe) |ポッドのアクセスを、Kubernetes クラスター内のホスト ネットワークおよび許容されるホスト ポート範囲に制限します。 この推奨事項は、Kubernetes 環境のセキュリティを強化することを目的とした CIS 5.2.4 の一部です。 このポリシーは、Kubernetes Service (AKS)、AKS Engine のプレビュー、および Azure Arc 対応 Kubernetes で一般提供されています。 詳細については、「[https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)」を参照してください。 |audit、deny、disabled |[4.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Kubernetes/HostNetworkPorts.json) |
+|[Kubernetes クラスターコンテナーは、読み取り専用のルート ファイル システムを使用して実行する必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fdf49d893-a74c-421d-bc95-c663042e5b80) |Kubernetes クラスター内のパスに悪意のあるバイナリを追加する実行時の変更から保護するために、読み取り専用のルート ファイル システムでコンテナーを実行します。 このポリシーは、Kubernetes Service (AKS)、AKS Engine のプレビュー、および Azure Arc 対応 Kubernetes で一般提供されています。 詳細については、「[https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)」を参照してください。 |audit、deny、disabled |[4.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Kubernetes/ReadOnlyRootFileSystem.json) |
+|[Kubernetes クラスター ポッドの hostPath ボリュームでは、許可されているホスト パスのみを使用する必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F098fc59e-46c7-4d99-9b16-64990e543d75) |ポッドの HostPath ボリューム マウントを、Kubernetes クラスター内の許可されているホスト パスに制限します。 この推奨事項は、Kubernetes 環境のセキュリティを強化することを目的としたポッド セキュリティ ポリシーの一部です。 このポリシーは、Kubernetes Service (AKS)、AKS Engine のプレビュー、および Azure Arc 対応 Kubernetes で一般提供されています。 詳細については、「[https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)」を参照してください。 |audit、deny、disabled |[4.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Kubernetes/AllowedHostPaths.json) |
+|[Kubernetes クラスターのポッドとコンテナーは、承認されたユーザーとグループの ID のみを使用して実行する必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff06ddb64-5fa3-4b77-b166-acb36f7f6042) |Kubernetes クラスターでポッドとコンテナーを実行する際に使用できるユーザー、プライマリ グループ、補助グループ、およびファイル システム グループの ID を制御します。 この推奨事項は、Kubernetes 環境のセキュリティを強化することを目的としたポッド セキュリティ ポリシーの一部です。 このポリシーは、Kubernetes Service (AKS)、AKS Engine のプレビュー、および Azure Arc 対応 Kubernetes で一般提供されています。 詳細については、「[https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)」を参照してください。 |audit、deny、disabled |[4.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Kubernetes/AllowedUsersGroups.json) |
+|[Kubernetes クラスターのポッドでは、承認されているホスト ネットワークとポート範囲のみを使用する必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F82985f06-dc18-4a48-bc1c-b9f4f0098cfe) |ポッドのアクセスを、Kubernetes クラスター内のホスト ネットワークおよび許容されるホスト ポート範囲に制限します。 この推奨事項は、Kubernetes 環境のセキュリティを強化することを目的とした CIS 5.2.4 の一部です。 このポリシーは、Kubernetes Service (AKS)、AKS Engine のプレビュー、および Azure Arc 対応 Kubernetes で一般提供されています。 詳細については、「[https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)」を参照してください。 |audit、deny、disabled |[4.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Kubernetes/HostNetworkPorts.json) |
 |[Kubernetes クラスター サービスでは、許可されているポートでのみリッスンする必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F233a2a17-77ca-4fb1-9b6b-69223d272a44) |Kubernetes クラスターへのアクセスをセキュリティで保護するために、許可されたポートでのみリッスンするようにサービスを制限します。 このポリシーは、Kubernetes Service (AKS)、AKS Engine のプレビュー、および Azure Arc 対応 Kubernetes で一般提供されています。 詳細については、「[https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)」を参照してください。 |audit、deny、disabled |[6.1.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Kubernetes/ServiceAllowedPorts.json) |
 |[Kubernetes クラスターで特権コンテナーを許可しない](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F95edb821-ddaf-4404-9732-666045e056b4) |Kubernetes クラスターでの特権コンテナーの作成を許可しません。 この推奨事項は、Kubernetes 環境のセキュリティを強化することを目的とした CIS 5.2.1 の一部です。 このポリシーは、Kubernetes Service (AKS)、AKS Engine のプレビュー、および Azure Arc 対応 Kubernetes で一般提供されています。 詳細については、「[https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)」を参照してください。 |audit、deny、disabled |[7.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Kubernetes/ContainerNoPrivilege.json) |
-|[Kubernetes クラスターでは、コンテナーの特権エスカレーションを許可してはいけない](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1c6e92c9-99f0-4e55-9cf2-0c234dc48f99) |Kubernetes クラスターにおいて、ルートへの特権エスカレーションでのコンテナーの実行を許可しないでください。 この推奨事項は、Kubernetes 環境のセキュリティを強化することを目的とした CIS 5.2.5 の一部です。 このポリシーは、Kubernetes Service (AKS)、AKS Engine のプレビュー、および Azure Arc 対応 Kubernetes で一般提供されています。 詳細については、「[https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)」を参照してください。 |audit、deny、disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Kubernetes/ContainerNoPrivilegeEscalation.json) |
+|[Kubernetes クラスターでは、コンテナーの特権エスカレーションを許可してはいけない](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1c6e92c9-99f0-4e55-9cf2-0c234dc48f99) |Kubernetes クラスターにおいて、ルートへの特権エスカレーションでのコンテナーの実行を許可しないでください。 この推奨事項は、Kubernetes 環境のセキュリティを強化することを目的とした CIS 5.2.5 の一部です。 このポリシーは、Kubernetes Service (AKS)、AKS Engine のプレビュー、および Azure Arc 対応 Kubernetes で一般提供されています。 詳細については、「[https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)」を参照してください。 |audit、deny、disabled |[3.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Kubernetes/ContainerNoPrivilegeEscalation.json) |
 |[Linux マシンは Azure のコンピューティング セキュリティ ベースラインの要件を満たしている必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffc9b3da7-8347-4380-8e70-0a0361d8dedd) |前提条件がポリシーの割り当てスコープにデプロイされていることが要求されます。 詳細については、[https://aka.ms/gcpol](../concepts/guest-configuration.md) を参照してください。 Azure Compute セキュリティ ベースラインの推奨事項のいずれかについて、マシンが正しく構成されていない場合、マシンは非準拠となります。 |AuditIfNotExists、Disabled |[1.1.1-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Guest%20Configuration/GuestConfiguration_AzureLinuxBaseline_AINE.json) |
 |[API アプリでリモート デバッグを無効にする必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe9c8d085-d9cc-4b17-9cdc-059f1f01f19e) |リモート デバッグを実行するには、受信ポートが API アプリ上で開かれている必要があります。 リモート デバッグを無効にする必要があります。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_DisableRemoteDebugging_ApiApp_Audit.json) |
 |[関数アプリでリモート デバッグを無効にする必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0e60b895-3786-45da-8377-9c6b4b6ac5f9) |リモート デバッグを実行するには、受信ポートが関数アプリ上で開かれている必要があります。 リモート デバッグを無効にする必要があります。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_DisableRemoteDebugging_FunctionApp_Audit.json) |
@@ -347,7 +347,7 @@ ms.locfileid: "123468026"
 
 ### <a name="least-functionality"></a>最小限の機能
 
-**ID**: NIST SP 800-53 Rev. 4 CM-7
+**ID**: FedRAMP (中) CM-7
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -357,7 +357,7 @@ ms.locfileid: "123468026"
 
 ### <a name="prevent-program-execution"></a>プログラムの実行禁止
 
-**ID**: NIST SP 800-53 Rev. 4 CM-7 (2)
+**ID**: FedRAMP (中) CM-7 (2)
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -366,7 +366,7 @@ ms.locfileid: "123468026"
 
 ### <a name="authorized-software--whitelisting"></a>認可されたソフトウェア/ホワイトリスト登録
 
-**ID**: NIST SP 800-53 Rev. 4 CM-7 (5)
+**ID**: FedRAMP (中) CM-7 (5)
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -375,7 +375,7 @@ ms.locfileid: "123468026"
 
 ### <a name="software-usage-restrictions"></a>ソフトウェアの使用制限
 
-**ID**: NIST SP 800-53 Rev. 4 CM-10
+**ID**: FedRAMP (中) CM-10
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -384,7 +384,7 @@ ms.locfileid: "123468026"
 
 ### <a name="user-installed-software"></a>ユーザーがインストールするソフトウェア
 
-**ID**: NIST SP 800-53 Rev. 4 CM-11
+**ID**: FedRAMP (中) CM-11
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -395,7 +395,7 @@ ms.locfileid: "123468026"
 
 ### <a name="alternate-storage-site"></a>代替ストレージ サイト
 
-**ID**: NIST SP 800-53 Rev. 4 CP-6
+**ID**: FedRAMP (中) CP-6
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -407,7 +407,7 @@ ms.locfileid: "123468026"
 
 ### <a name="separation-from-primary-site"></a>プライマリ サイトからの分離
 
-**ID**: NIST SP 800-53 Rev. 4 CP-6 (1)
+**ID**: FedRAMP (中) CP-6 (1)
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -419,7 +419,7 @@ ms.locfileid: "123468026"
 
 ### <a name="alternate-processing-site"></a>代替処理サイト
 
-**ID**: NIST SP 800-53 Rev. 4 CP-7
+**ID**: FedRAMP (中) CP-7
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -427,7 +427,7 @@ ms.locfileid: "123468026"
 
 ### <a name="information-system-backup"></a>情報システムのバックアップ
 
-**ID**: NIST SP 800-53 Rev. 4 CP-9
+**ID**: FedRAMP (中) CP-9
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -442,7 +442,7 @@ ms.locfileid: "123468026"
 
 ### <a name="identification-and-authentication-organizational-users"></a>識別と認証 (組織のユーザー)
 
-**ID**: NIST SP 800-53 Rev. 4 IA-2
+**ID**: FedRAMP (中) IA-2
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -459,7 +459,7 @@ ms.locfileid: "123468026"
 
 ### <a name="network-access-to-privileged-accounts"></a>特権アカウントへのネットワーク アクセス
 
-**ID**: NIST SP 800-53 Rev. 4 IA-2 (1)
+**ID**: FedRAMP (中) IA-2 (1)
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -468,7 +468,7 @@ ms.locfileid: "123468026"
 
 ### <a name="network-access-to-non-privileged-accounts"></a>非特権アカウントへのネットワーク アクセス
 
-**ID**: NIST SP 800-53 Rev. 4 IA-2 (2)
+**ID**: FedRAMP (中) IA-2 (2)
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -476,7 +476,7 @@ ms.locfileid: "123468026"
 
 ### <a name="identifier-management"></a>識別子の管理
 
-**ID**: NIST SP 800-53 Rev. 4 IA-4
+**ID**: FedRAMP (中) IA-4
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -490,7 +490,7 @@ ms.locfileid: "123468026"
 
 ### <a name="authenticator-management"></a>認証子の管理
 
-**ID**: NIST SP 800-53 Rev. 4 IA-5
+**ID**: FedRAMP (中) IA-5
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -503,7 +503,7 @@ ms.locfileid: "123468026"
 
 ### <a name="password-based-authentication"></a>パスワードベースの認証
 
-**ID**: NIST SP 800-53 Rev. 4 IA-5 (1)
+**ID**: FedRAMP (中) IA-5 (1)
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -523,7 +523,7 @@ ms.locfileid: "123468026"
 
 ### <a name="incident-handling"></a>インシデント処理
 
-**ID**: NIST SP 800-53 Rev. 4 IR-4
+**ID**: FedRAMP (中) IR-4
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -542,7 +542,7 @@ ms.locfileid: "123468026"
 
 ### <a name="incident-monitoring"></a>インシデント監視
 
-**ID**: NIST SP 800-53 Rev. 4 IR-5
+**ID**: FedRAMP (中) IR-5
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -563,7 +563,7 @@ ms.locfileid: "123468026"
 
 ### <a name="vulnerability-scanning"></a>脆弱性のスキャン
 
-**ID**: NIST SP 800-53 Rev. 4 RA-5
+**ID**: FedRAMP (中) RA-5
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -589,7 +589,7 @@ ms.locfileid: "123468026"
 
 ### <a name="denial-of-service-protection"></a>サービス拒否の防止
 
-**ID**: NIST SP 800-53 Rev. 4 SC-5
+**ID**: FedRAMP (中) SC-5
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -600,7 +600,7 @@ ms.locfileid: "123468026"
 
 ### <a name="boundary-protection"></a>境界保護
 
-**ID**: NIST SP 800-53 Rev. 4 SC-7
+**ID**: FedRAMP (中) SC-7
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -647,7 +647,7 @@ ms.locfileid: "123468026"
 
 ### <a name="access-points"></a>アクセス ポイント
 
-**ID**: NIST SP 800-53 Rev. 4 SC-7 (3)
+**ID**: FedRAMP (中) SC-7 (3)
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -694,7 +694,7 @@ ms.locfileid: "123468026"
 
 ### <a name="transmission-confidentiality-and-integrity"></a>送信の機密性と整合性
 
-**ID**: NIST SP 800-53 Rev. 4 SC-8
+**ID**: FedRAMP (中) SC-8
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -717,7 +717,7 @@ ms.locfileid: "123468026"
 
 ### <a name="cryptographic-or-alternate-physical-protection"></a>暗号化または代替の物理的保護
 
-**ID**: NIST SP 800-53 Rev. 4 SC-8 (1)
+**ID**: FedRAMP (中) SC-8 (1)
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -740,7 +740,7 @@ ms.locfileid: "123468026"
 
 ### <a name="cryptographic-key-establishment-and-management"></a>暗号化キーの確立と管理
 
-**ID**: NIST SP 800-53 Rev. 4 SC-12
+**ID**: FedRAMP (中) SC-12
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -776,7 +776,7 @@ ms.locfileid: "123468026"
 
 ### <a name="protection-of-information-at-rest"></a>保存情報の保護
 
-**ID**: NIST SP 800-53 Rev. 4 SC-28
+**ID**: FedRAMP (中) SC-28
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -793,11 +793,11 @@ ms.locfileid: "123468026"
 |[Azure Kubernetes Service クラスターのエージェント ノード プールのための一時ディスクおよびキャッシュは、ホストで暗号化する必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F41425d9f-d1a5-499a-9932-f8ed8453932c) |データ セキュリティを強化するために、Azure Kubernetes Service ノード仮想マシン (VM) の VM ホストに格納されているデータは、保存時に暗号化する必要があります。 これは、さまざまな規制や業界のコンプライアンス標準での一般的な要件です。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AKS_EncryptionAtHost_Deny.json) |
 |[Transparent Data Encryption を SQL データベース上で有効にする必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F17k78e20-9358-41c9-923c-fb736d382a12) |保存データを保護し、コンプライアンス要件を満たすには、Transparent Data Encryption を有効にする必要があります |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlDBEncryption_Audit.json) |
 |[仮想マシンおよび仮想マシン スケール セットでは、ホストでの暗号化が有効になっている必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffc4d8e41-e223-45ea-9bf5-eada37891d87) |ホストで暗号化を使用して、仮想マシンと仮想マシン スケール セットのデータのためのエンドツーエンドの暗号化を取得します。 ホストでの暗号化を使用すると、一時ディスクと OS およびデータ ディスクのキャッシュの保存時の暗号化が有効になります。 ホストでの暗号化が有効になっている場合、一時およびエフェメラル OS ディスクはプラットフォーム マネージド キーを使用して暗号化されます。 OS とデータ ディスクのキャッシュは、ディスクで選択された暗号化の種類に応じて、カスタマー マネージドまたはプラットフォーム マネージド キーのいずれかを使用して保存時に暗号化されます。 詳細については、[https://aka.ms/vm-hbe](../../../virtual-machines/disks-enable-host-based-encryption-portal.md) をご覧ください。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/HostBasedEncryptionRequired_Deny.json) |
-|[コンピューティングとストレージのリソース間で一時ディスク、キャッシュ、データ フローを仮想マシンによって暗号化する必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0961003e-5a0a-4549-abde-af6a37f2724d) |ディスク暗号化が有効になっていない仮想マシンが、推奨設定として Azure Security Center によって監視されます。 |AuditIfNotExists、Disabled |[2.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_UnencryptedVMDisks_Audit.json) |
+|[コンピューティングとストレージのリソース間で一時ディスク、キャッシュ、データ フローを仮想マシンによって暗号化する必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0961003e-5a0a-4549-abde-af6a37f2724d) |既定では、仮想マシンの OS とデータのディスクは、保存時にプラットフォーム マネージド キーを使用して暗号化されます。 一時ディスク、データ キャッシュ、およびコンピューティングとストレージの間を流れているデータは暗号化されません。 次のような場合は、この推奨事項を無視してください。1. ホストでの暗号化を使用している場合。または 2. マネージド ディスクでのサーバー側暗号化がセキュリティ要件を満たしている場合。 詳細については、「[Azure Disk Storage のサーバー側暗号化](../../../virtual-machines/disk-encryption.md)」および[さまざまなディスク暗号化オファリング](../../../virtual-machines/disk-encryption-overview.md#comparison)に関する記事を参照してください。 |AuditIfNotExists、Disabled |[2.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_UnencryptedVMDisks_Audit.json) |
 
 ### <a name="cryptographic-protection"></a>暗号化による保護
 
-**ID**: NIST SP 800-53 Rev. 4 SC-28 (1)
+**ID**: FedRAMP (中) SC-28 (1)
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -814,13 +814,13 @@ ms.locfileid: "123468026"
 |[Azure Kubernetes Service クラスターのエージェント ノード プールのための一時ディスクおよびキャッシュは、ホストで暗号化する必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F41425d9f-d1a5-499a-9932-f8ed8453932c) |データ セキュリティを強化するために、Azure Kubernetes Service ノード仮想マシン (VM) の VM ホストに格納されているデータは、保存時に暗号化する必要があります。 これは、さまざまな規制や業界のコンプライアンス標準での一般的な要件です。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AKS_EncryptionAtHost_Deny.json) |
 |[Transparent Data Encryption を SQL データベース上で有効にする必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F17k78e20-9358-41c9-923c-fb736d382a12) |保存データを保護し、コンプライアンス要件を満たすには、Transparent Data Encryption を有効にする必要があります |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlDBEncryption_Audit.json) |
 |[仮想マシンおよび仮想マシン スケール セットでは、ホストでの暗号化が有効になっている必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffc4d8e41-e223-45ea-9bf5-eada37891d87) |ホストで暗号化を使用して、仮想マシンと仮想マシン スケール セットのデータのためのエンドツーエンドの暗号化を取得します。 ホストでの暗号化を使用すると、一時ディスクと OS およびデータ ディスクのキャッシュの保存時の暗号化が有効になります。 ホストでの暗号化が有効になっている場合、一時およびエフェメラル OS ディスクはプラットフォーム マネージド キーを使用して暗号化されます。 OS とデータ ディスクのキャッシュは、ディスクで選択された暗号化の種類に応じて、カスタマー マネージドまたはプラットフォーム マネージド キーのいずれかを使用して保存時に暗号化されます。 詳細については、[https://aka.ms/vm-hbe](../../../virtual-machines/disks-enable-host-based-encryption-portal.md) をご覧ください。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/HostBasedEncryptionRequired_Deny.json) |
-|[コンピューティングとストレージのリソース間で一時ディスク、キャッシュ、データ フローを仮想マシンによって暗号化する必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0961003e-5a0a-4549-abde-af6a37f2724d) |ディスク暗号化が有効になっていない仮想マシンが、推奨設定として Azure Security Center によって監視されます。 |AuditIfNotExists、Disabled |[2.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_UnencryptedVMDisks_Audit.json) |
+|[コンピューティングとストレージのリソース間で一時ディスク、キャッシュ、データ フローを仮想マシンによって暗号化する必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0961003e-5a0a-4549-abde-af6a37f2724d) |既定では、仮想マシンの OS とデータのディスクは、保存時にプラットフォーム マネージド キーを使用して暗号化されます。 一時ディスク、データ キャッシュ、およびコンピューティングとストレージの間を流れているデータは暗号化されません。 次のような場合は、この推奨事項を無視してください。1. ホストでの暗号化を使用している場合。または 2. マネージド ディスクでのサーバー側暗号化がセキュリティ要件を満たしている場合。 詳細については、「[Azure Disk Storage のサーバー側暗号化](../../../virtual-machines/disk-encryption.md)」および[さまざまなディスク暗号化オファリング](../../../virtual-machines/disk-encryption-overview.md#comparison)に関する記事を参照してください。 |AuditIfNotExists、Disabled |[2.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_UnencryptedVMDisks_Audit.json) |
 
 ## <a name="system-and-information-integrity"></a>システムと情報の整合性
 
 ### <a name="flaw-remediation"></a>欠陥の修復
 
-**ID**: NIST SP 800-53 Rev. 4 SI-2
+**ID**: FedRAMP (中) SI-2
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -851,7 +851,7 @@ ms.locfileid: "123468026"
 
 ### <a name="malicious-code-protection"></a>悪意のあるコードからの保護
 
-**ID**: NIST SP 800-53 Rev. 4 SI-3
+**ID**: FedRAMP (中) SI-3
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -862,7 +862,7 @@ ms.locfileid: "123468026"
 
 ### <a name="central-management"></a>中央管理
 
-**ID**: NIST SP 800-53 Rev. 4 SI-3 (1)
+**ID**: FedRAMP (中) SI-3 (1)
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -873,7 +873,7 @@ ms.locfileid: "123468026"
 
 ### <a name="information-system-monitoring"></a>情報システムの監視
 
-**ID**: NIST SP 800-53 Rev. 4 SI-4
+**ID**: FedRAMP (中) SI-4
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -899,7 +899,7 @@ ms.locfileid: "123468026"
 
 ### <a name="memory-protection"></a>メモリの保護
 
-**ID**: NIST SP 800-53 Rev. 4 SI-16
+**ID**: FedRAMP (中) SI-16
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|

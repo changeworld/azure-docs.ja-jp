@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/31/2021
 ms.service: storage
 ms.subservice: common
-ms.openlocfilehash: 1d0459e8ac0002f69ac0e4d33a921bd64fc385d5
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 2d02399daf6a7ea56c41f936544697f9df91a62c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122178109"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128601275"
 ---
 # <a name="azure-storage-migration-overview"></a>Azure Storage の移行の概要
 
@@ -53,8 +53,7 @@ ms.locfileid: "122178109"
 |--------------------------------------------|----------------------------------------------------------------------------------|
 | **ターゲット ストレージ サービスを選択する**            | - Azure Blob Storage および Data Lake Storage<br>- Azure Files<br>- Azure NetApp Files<br>- ISV ソリューション |
 | **移行方式を選択する**                  | - オンライン<br>- オフライン<br> - 両方の組み合わせ                                  |
-| **ジョブに最適な移行ツールを選択する** | - 商用ツール (Azure および ISV)<br> - オープンソース                             
-
+| **ジョブに最適な移行ツールを選択する** | - 商用ツール (Azure および ISV)<br> - オープンソース
 
 評価フェーズに役立つ商用 (ISV) ツールがいくつかあります。 [比較表](../solution-integration/validated-partners/data-management/migration-tools-comparison.md)を参照してください。
 
@@ -116,7 +115,9 @@ ms.locfileid: "122178109"
 
 ブロックベース デバイスの移行は、通常、仮想マシンまたは物理ホストの移行の一部として行われます。 ブロック ストレージの決定を移行後まで遅らせるのは、よくある誤解です。 ワークロード要件を適切に考慮してこれらの決定を事前に行うことで、クラウドへの移行がスムーズになります。
 
-移行するワークロードと実行方法について調べるには、[Azure Disk Storage に関するドキュメント](../../virtual-machines/disks-types.md)と、[Disk Storage の製品ページ](https://azure.microsoft.com/services/storage/disks/#resources)にあるリソースを参照してください。 要件に適したディスクと、[ディスク バースト](../../virtual-machines/disk-bursting.md)などの最新機能について確認できます。 基になるブロックベース デバイスと共に仮想マシンを移行する方法の詳細については、「[Azure Migrate のドキュメント](../../migrate/index.yml)」を参照してください。
+移行するワークロードと実行方法について調べるには、[Azure Disk Storage に関するドキュメント](../../virtual-machines/disks-types.md)と、[Disk Storage の製品ページ](https://azure.microsoft.com/services/storage/disks/#resources)にあるリソースを参照してください。 要件に適したディスクと、[ディスク バースト](../../virtual-machines/disk-bursting.md)などの最新機能について確認できます。 ブロック ベースのデバイスの移行は、次の 2 つの方法で行うことができます。
+- 基になるブロックベース デバイスと共に仮想マシン全体を移行する方法については、「[Azure Migrate のドキュメント](../../migrate/index.yml)」をご覧ください
+- ブロック ベースのデバイスのみを移行する場合や、複雑なユース ケースの場合は、[Cirrus Migrate Cloud](../solution-integration/validated-partners/data-management/cirrus-data-migration-guide.md) を使用します。
 
 ## <a name="see-also"></a>関連項目
 

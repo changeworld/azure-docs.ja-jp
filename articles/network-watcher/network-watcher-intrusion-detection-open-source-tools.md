@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: 90d2a146665fc34fe4bd287b2753e99a770d13b1
-ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
+ms.openlocfilehash: e138a3afc84b65d13c0c4ce3dcbeec0f70e6eda9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/04/2021
-ms.locfileid: "113285892"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128569513"
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>Network Watcher とオープン ソース ツールを使用したネットワーク不正侵入検出の実行
 
@@ -45,7 +45,7 @@ ms.locfileid: "113285892"
     ```
     sudo add-apt-repository ppa:oisf/suricata-stable
     sudo apt-get update
-    sudo sudo apt-get install suricata
+    sudo apt-get install suricata
     ```
 
 1. インストールを確認するには、コマンド `suricata -h` を実行して、コマンドの完全な一覧を表示します。

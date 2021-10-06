@@ -11,12 +11,12 @@ ms.reviewer: cephalin
 ms.custom: seodec18, devx-track-java, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
 adobe-target: true
-ms.openlocfilehash: 1e62937a4240448f85cc7ab147d642b29bb0a2a9
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 47e9e221bd57453a0c799318f939de59b84feb86
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123226059"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129356074"
 ---
 # <a name="configure-a-java-app-for-azure-app-service"></a>Azure App Service 向けの Java アプリを構成する
 
@@ -60,24 +60,109 @@ az webapp list-runtimes --linux | grep "JAVA\|TOMCAT\|JBOSSEAP"
 
 ## <a name="deploying-your-app"></a>アプリのデプロイ
 
-[Maven 用 Azure Web アプリ プラグイン](https://github.com/microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md)を使用して、.war ファイルまたは .jar ファイルをデプロイできます。 一般的な IDE を使用したデプロイは、[Azure Toolkit for IntelliJ](/azure/developer/java/toolkit-for-intellij/) または [Azure Toolkit for Eclipse](/azure/developer/java/toolkit-for-eclipse) でもサポートされています。
+### <a name="build-tools"></a>ビルド ツール
 
-それ以外の場合、デプロイの方法はアーカイブの種類によって異なります。
+#### <a name="maven"></a>Maven
+[Azure Web アプリ用の Maven プラグイン](https://github.com/microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin)を使用すると、プロジェクト ルートで 1 つのコマンドを使用して、Azure Web アプリ用の Maven Java プロジェクトを簡単に準備できます。
 
-### <a name="java-se"></a>Java SE
+```shell
+mvn com.microsoft.azure:azure-webapp-maven-plugin:2.2.0:config
+```
+
+このコマンドによって、既存の Azure Web アプリを選択するか、新しいアプリを作成するかを選択するメッセージが表示され、`azure-webapp-maven-plugin` プラグインと関連する構成が追加されます。 次のコマンドを使用して、Java アプリを Azure にデプロイできます。
+```shell
+mvn package azure-webapp:deploy
+```
+
+`pom.xml` の構成例を次に示します。
+```xml
+<plugin> 
+  <groupId>com.microsoft.azure</groupId>  
+  <artifactId>azure-webapp-maven-plugin</artifactId>  
+  <version>2.2.0</version>  
+  <configuration>
+    <subscriptionId>111111-11111-11111-1111111</subscriptionId>
+    <resourceGroup>spring-boot-xxxxxxxxxx-rg</resourceGroup>
+    <appName>spring-boot-xxxxxxxxxx</appName>
+    <pricingTier>B2</pricingTier>
+    <region>westus</region>
+    <runtime>
+      <os>Linux</os>      
+      <webContainer>Java SE</webContainer>
+      <javaVersion>Java 11</javaVersion>
+    </runtime>
+    <deployment>
+      <resources>
+        <resource>
+          <type>jar</type>
+          <directory>${project.basedir}/target</directory>
+          <includes>
+            <include>*.jar</include>
+          </includes>
+        </resource>
+      </resources>
+    </deployment>
+  </configuration>
+</plugin> 
+```
+
+#### <a name="gradle"></a>Gradle
+1. プラグインを `build.gradle` に追加して、[Azure Web アプリ用の Gradle プラグイン](https://github.com/microsoft/azure-gradle-plugins/tree/master/azure-webapp-gradle-plugin) をセットアップします。
+    ```groovy
+    plugins {
+      id "com.microsoft.azure.azurewebapp" version "1.2.0"
+    }
+    ```
+
+1. Web アプリの詳細を構成します。対応する Azure リソースが存在しない場合は作成されます。
+構成例を次に示します。詳細については、この[ドキュメント](https://github.com/microsoft/azure-gradle-plugins/wiki/Webapp-Configuration)をご覧ください。
+    ```groovy
+    azurewebapp {
+        subscription = '<your subscription id>'
+        resourceGroup = '<your resource group>'
+        appName = '<your app name>'
+        pricingTier = '<price tier like 'P1v2'>'
+        region = '<region like 'westus'>'
+        runtime {
+          os = 'Linux'
+          webContainer = 'Tomcat 9.0' // or 'Java SE' if you want to run an executable jar
+          javaVersion = 'Java 8'
+        }
+        appSettings {
+            <key> = <value>
+        }
+        auth {
+            type = 'azure_cli' // support azure_cli, oauth2, device_code and service_principal
+        }
+    }
+    ```
+
+1. 1 つのコマンドでデプロイします。
+    ```shell
+    gradle azureWebAppDeploy
+    ```
+    
+### <a name="ides"></a>IDE
+Azure では、次のような一般的な Java IDE でシームレスな Java App Service 開発エクスペリエンスを提供しています。
+- *VS コード*: [Visual Studio Code を使用した Java Web アプリ](https://code.visualstudio.com/docs/java/java-webapp#_deploy-web-apps-to-the-cloud)
+- *IntelliJ IDEA*:[ IntelliJ を使用して Azure App Service 用の Hello World Web アプリを作成します](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app)
+- *Eclipse*:[Eclipse を使用して Azure App Service 用の Hello World Web アプリを作成します](/azure/developer/java/toolkit-for-eclipse/create-hello-world-web-app)
+
+### <a name="kudu-api"></a>Kudu API
+#### <a name="java-se"></a>Java SE
 
 Java SE に .jar ファイルをデプロイするには、Kudu サイトの `/api/publish/` エンドポイントを使用します。 この API の詳細については、[このドキュメント](./deploy-zip.md#deploy-warjarear-packages)を参照してください。 
 
 > [!NOTE]
 >  App Service でアプリケーションを識別して実行するには、.jar アプリケーションの名前を `app.jar` にする必要があります。 (上記で説明した) Maven プラグインを使用すると、デプロイ中にアプリケーションの名前が自動的に変更されます。 JAR の名前を *app.jar* に変更しない場合は、.jar アプリを実行するコマンドが含まれるシェル スクリプトをアップロードできます。 ポータルの構成セクションで [[スタートアップ ファイル]](/azure/app-service/faq-app-service-linux#built-in-images) テキスト ボックスにこのスクリプトの絶対パスを貼り付けます。 スタートアップ スクリプトは、配置先のディレクトリからは実行されません。 そのため、スタートアップ スクリプトでファイルを参照するには、常に絶対パスを使用します (例: `java -jar /home/myapp/myapp.jar`)。
 
-### <a name="tomcat"></a>Tomcat
+#### <a name="tomcat"></a>Tomcat
 
 .war ファイルを Tomcat にデプロイするには、`/api/wardeploy/` エンドポイントを使用してアーカイブ ファイルを POST します。 この API の詳細については、[このドキュメント](./deploy-zip.md#deploy-warjarear-packages)を参照してください。
 
 ::: zone pivot="platform-linux"
 
-### <a name="jboss-eap"></a>JBoss EAP
+#### <a name="jboss-eap"></a>JBoss EAP
 
 .war ファイルを JBoss にデプロイするには、`/api/wardeploy/` エンドポイントを使用してアーカイブ ファイルを POST します。 この API の詳細については、[このドキュメント](./deploy-zip.md#deploy-warjarear-packages)を参照してください。
 

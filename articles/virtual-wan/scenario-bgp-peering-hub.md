@@ -8,14 +8,21 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 08/06/2021
 ms.author: cherylmc
-ms.openlocfilehash: 1f57d48d2fecded727e4087a138fa67c514bea0e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e570e5f06af814a6d0cbb581275d1c70ebf0df8a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121781137"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124780796"
 ---
 # <a name="scenario-bgp-peering-with-a-virtual-hub-preview"></a>シナリオ: 仮想ハブとの BGP ピアリング (プレビュー)
+
+> [!IMPORTANT]
+> Virtual WAN ハブを使用した BGP ピアリング機能は、現在、限定パブリック プレビュー段階にあります。 この機能を試したい場合は、 **previewbgpwithvhub@microsoft.com** まで、Virtual WAN リソースのリソース ID と共に電子メールを送信してください。 機能が有効化されたことを示す通知を受け取ったら、主な考慮事項と詳細な構成手順について、以下の文書の[ページ](create-bgp-peering-hub-portal.md)を確認してください。 
+>
+> リソース ID を見つけるには、Azure portal を開いて Virtual WAN リソースにナビゲートし、 **[設定] > [プロパティ] > [リソース ID]** をクリックします。<br> 例: `/subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>/providers/Microsoft.Network/virtualWans/<virtualWANname>`
+>
+
 
 Azure Virtual WAN ハブ ルーター (仮想ハブ ルーターとも呼ばれます) は、ルート マネージャーとして機能し、仮想ハブ内および仮想ハブ間のルーティング操作を簡略化します。 つまり、仮想ハブ ルーターには以下の機能があります。
 

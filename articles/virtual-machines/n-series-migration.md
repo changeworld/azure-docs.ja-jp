@@ -1,18 +1,16 @@
 ---
 title: Azure での GPU コンピューティング ワークロードの移行ガイド
 description: NC、ND、NCv2 シリーズの移行ガイド。
-author: iafinder
 ms.service: virtual-machines
 ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 08/15/2020
-ms.author: iafinder
-ms.openlocfilehash: 574118d9bd8c400eccb48ed551d6059c0dfc7bf2
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 1f148ad07137f6384a9752d2321836601a6bd996
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128551683"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129458777"
 ---
 # <a name="migration-guide-for-gpu-compute-workloads-in-azure"></a>Azure での GPU コンピューティング ワークロードの移行ガイド
 

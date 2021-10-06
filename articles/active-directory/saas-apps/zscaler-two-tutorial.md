@@ -9,37 +9,39 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/06/2021
+ms.date: 09/02/2021
 ms.author: jeedes
-ms.openlocfilehash: d440a765ba9504ecae351477c1583a45f293b967
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: 8e8395fc16d4228969d8fd90eccbc50ceeddfc36
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108804415"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124794825"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-two"></a>チュートリアル: Azure Active Directory と Zscaler Two の統合
 
 このチュートリアルでは、Zscaler Two と Azure Active Directory (Azure AD) を統合する方法について説明します。 Zscaler Two を Azure AD に統合すると、次のことを実行できます。
 
-- Zscaler Two にアクセスできるユーザーを Azure AD で制御できます。
-- ユーザーが自分の Azure AD アカウントを使用して Zscaler Two に自動的にサインインできるように設定できます。
-- 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
+* Zscaler Two にアクセスできるユーザーを Azure AD で制御できます。
+* ユーザーが自分の Azure AD アカウントを使用して Zscaler Two に自動的にサインインできるように設定できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 ## <a name="prerequisites"></a>前提条件
 
 Zscaler Two と Azure AD の統合を構成するには、次の項目が必要です。
 
-- Azure AD サブスクリプション。 Azure AD の環境がない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
-- Zscaler Two でのシングル サインオンが有効なサブスクリプション。
+* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
+* Zscaler Two でのシングル サインオンが有効なサブスクリプション。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-- Zscaler Two では、**SP** Initiated SSO がサポートされます。
+* Zscaler Two では、**SP** Initiated SSO がサポートされます。
 
-- Zscaler Two では、**Just In Time** ユーザー プロビジョニングがサポートされます。
+* Zscaler Two では、**Just In Time** ユーザー プロビジョニングがサポートされます。
+
+* Zscaler Two では、[自動化されたユーザー プロビジョニング](zscaler-two-provisioning-tutorial.md)がサポートされます。
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -91,7 +93,7 @@ Zscaler Two に対して Azure AD SSO を構成してテストするには、次
 
 1. その他に、Zscaler Two アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。
 
-   | Name     | ソース属性   |
+   | 名前     | ソース属性   |
    | -------- | ------------------ |
    | memberOf | user.assignedroles |
 
@@ -233,15 +235,18 @@ Zscaler Two に対して Azure AD SSO を構成してテストするには、次
 > [!Note]
 > ユーザーを手動で作成する必要がある場合は、[Zscaler Two のサポート チーム](https://www.zscaler.com/company/contact)にお問い合わせください。
 
+> [!NOTE]
+> Zscaler Two では、自動ユーザー プロビジョニングもサポートされます。自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](./zscaler-two-provisioning-tutorial.md)をご覧ください。
+
 ## <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。
 
-- Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Zscaler Two のサインオン URL にリダイレクトされます。
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Zscaler Two のサインオン URL にリダイレクトされます。
 
-- Zscaler Two のサインオン URL に直接移動し、そこからログイン フローを開始します。
+* Zscaler Two のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-- Microsoft マイ アプリを使用することができます。 マイ アプリで [Zscaler Two] タイルをクリックすると、Zscaler Two のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Zscaler Two] タイルをクリックすると、Zscaler Two のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

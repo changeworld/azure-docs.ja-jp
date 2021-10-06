@@ -1,19 +1,19 @@
 ---
 title: Azure の容量予約で Azure Synapse Analytics 料金を節約する
 description: 予約容量を使用したコスト削減によって Azure Synapse Analytics 料金のコストを節約する方法について説明します。
-author: yashesvi
-ms.reviewer: yashar
+author: bandersmsft
+ms.reviewer: primittal
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: bd43b668c318b825c5c5b6f36fc1da1055863bed
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: f738b2e551ecb26426ef25603969fb471ecfa437
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98599096"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128666592"
 ---
 # <a name="save-costs-for-azure-synapse-analytics-charges-with-reserved-capacity"></a>予約容量を使用して Azure Synapse Analytics 料金のコストを節約する
 
@@ -52,8 +52,9 @@ Azure Synapse Analytics の予約サイズは、使用するコンピューテ�
    - **単一のリソース グループのスコープ** - 選択されたリソース グループ内の一致するリソースにのみ、予約割引を適用します。
    - **単一サブスクリプション** - 選択されたサブスクリプションの一致するリソースに予約割引を適用します。
    - **共有スコープ** - 課金コンテキスト内にある有効なサブスクリプションの一致するリソースに予約割引を適用します。 マイクロソフト エンタープライズ契約のお客様の場合、課金コンテキストは登録です。 従量課金制料金の個々のサブスクリプションの場合、課金スコープはアカウント管理者によって作成されるすべての有効なサブスクリプションです。
-   - エンタープライズのお客様の場合、課金コンテキストは EA 登録です。
-   - 従量課金制のお客様の場合、共有スコープは、アカウント管理者が作成するすべての従量課金制サブスクリプションです。
+       - エンタープライズのお客様の場合、課金コンテキストは EA 登録です。
+       - 従量課金制のお客様の場合、共有スコープは、アカウント管理者が作成するすべての従量課金制サブスクリプションです。
+   - **管理グループ** - 管理グループと課金スコープの両方の一部であるサブスクリプションの一覧にある一致するリソースに予約割引を適用します。
 5. リージョンを選択して、予約容量でカバーされる Azure リージョンを選びます。
 6. 数量を選択します。 購入する 100 Data Warehouse ユニット (cDWU) の数量を入力します。    
    たとえば、数量として 30 を入力すると、毎時間 3,000 cDWU の予約容量が割り当てられることになります。

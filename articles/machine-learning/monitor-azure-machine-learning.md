@@ -3,19 +3,19 @@ title: Azure Machine Learning の監視 | Microsoft Docs
 description: Azure Monitor を使用して Azure Machine Learning のメトリックを表示し、分析し、それに関するアラートを作成する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.custom: subject-monitoring
 ms.date: 10/01/2020
-ms.openlocfilehash: c0f35290aa653d5b9e9be9f1a9a0184854509889
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 9c6cb28bd55038f06992d6423785d03ecf30205f
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121862214"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129424957"
 ---
 # <a name="monitor-azure-machine-learning"></a>Azure Machine Learning の監視
 

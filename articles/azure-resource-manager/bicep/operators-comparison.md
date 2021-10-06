@@ -4,13 +4,13 @@ description: 値を比較する Bicep の比較演算子について説明しま
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: db9c01cf87fcf2c268e9685589bf13674af27184
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.date: 09/07/2021
+ms.openlocfilehash: 1a28da26a3c97982bb0e06deebae6ae68b1eb7d9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111027329"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124744422"
 ---
 # <a name="bicep-comparison-operators"></a>Bicep の比較演算子
 
@@ -61,7 +61,7 @@ output stringGtE bool = firstString >= secondString
 
 例の出力を次に示します。
 
-| Name | 種類 | 値 |
+| 名前 | 種類 | 値 |
 | ---- | ---- | ---- |
 | `intGtE` | boolean | true |
 | `stringGtE` | boolean | true |
@@ -141,7 +141,7 @@ output stringLtE bool = firstString <= secondString
 
 例の出力を次に示します。
 
-| Name | 種類 | 値 |
+| 名前 | 種類 | 値 |
 | ---- | ---- | ---- |
 | `intLtE` | boolean | true |
 | `stringLtE` | boolean | true |
@@ -225,11 +225,87 @@ output boolEqual bool = firstBool == secondBool
 
 例の出力を次に示します。
 
-| Name | 種類 | 値 |
+| 名前 | 種類 | 値 |
 | ---- | ---- | ---- |
 | `intEqual` | boolean | true |
 | `stringEqual` | boolean | true |
 | `boolEqual` | boolean | true |
+
+配列を比較する場合、2 つの配列の要素と順序は同じである必要があります。 配列を互いに割り当てる必要はありません。
+
+```bicep
+var array1 = [
+  1
+  2
+  3
+]
+
+var array2 = [
+  1
+  2
+  3
+]
+
+var array3 = array2
+
+var array4 = [
+  3
+  2
+  1
+]
+
+output sameElements bool = array1 == array2 // returns true because arrays are defined with same elements
+output assignArray bool = array2 == array3 // returns true because one array was defined as equal to the other array
+output differentOrder bool = array4 == array1 // returns false because order of elements is different
+```
+
+例の出力を次に示します。
+
+| 名前 | 種類 | 値 |
+| ---- | ---- | ---- |
+| sameElements | bool | true |
+| assignArray | bool | true |
+| differentOrder | [bool] | false |
+
+オブジェクトを比較する場合、プロパティ名と値は同じである必要があります。 プロパティを同じ順序で定義する必要はありません。
+
+```bicep
+var object1 = {
+  prop1: 'val1'
+  prop2: 'val2'
+}
+
+var object2 = {
+  prop1: 'val1'
+  prop2: 'val2'
+}
+
+var object3 = {
+  prop2: 'val2'
+  prop1: 'val1'
+}
+
+var object4 = object3
+
+var object5 = {
+  prop1: 'valX'
+  prop2: 'valY'
+}
+
+output sameObjects bool = object1 == object2 // returns true because both objects defined with same properties
+output differentPropertyOrder bool = object3 == object2 // returns true because both objects have same properties even though order is different
+output assignObject bool = object4 == object1 // returns true because one object was defined as equal to the other object
+output differentValues bool = object5 == object1 // returns false because values are different
+```
+
+例の出力を次に示します。
+
+| 名前 | 種類 | 値 |
+| ---- | ---- | ---- |
+| sameObjects | bool | true |
+| differentPropertyOrder | bool | true |
+| assignObject | bool | true |
+| differentValues | [bool] | false |
 
 ## <a name="not-equal-"></a>等しくない !=
 
@@ -269,11 +345,13 @@ output boolNotEqual bool = firstBool != secondBool
 
 例の出力を次に示します。
 
-| Name | 種類 | 値 |
+| 名前 | 種類 | 値 |
 | ---- | ---- | ---- |
 | `intNotEqual` | boolean | true |
 | `stringNotEqual` | boolean | true |
 | `boolNotEqual` | boolean | true |
+
+配列とオブジェクトについては、「[等しい](#equals-)」の例を参照してください。
 
 ## <a name="equal-case-insensitive-"></a>大文字と小文字の区別を無視し、等しい =~
 
@@ -309,7 +387,7 @@ output strEqual2 bool = thirdString =~ fourthString
 
 例の出力を次に示します。
 
-| Name | 種類 | 値 |
+| 名前 | 種類 | 値 |
 | ---- | ---- | ---- |
 | `strEqual1` | boolean | true |
 | `strEqual2` | boolean | false |
@@ -348,7 +426,7 @@ output strEqual2 bool = thirdString !~ fourthString
 
 例の出力を次に示します。
 
-| Name | 種類 | 値 |
+| 名前 | 種類 | 値 |
 | ---- | ---- | ---- |
 | `strNotEqual1` | boolean | true |
 | `strNotEqual2` | boolean | false |

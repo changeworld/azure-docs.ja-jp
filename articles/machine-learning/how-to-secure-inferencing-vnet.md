@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: 分離された Azure Virtual Network を使用して、Azure Machine Learning 推論環境をセキュリティで保護します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: enterprise-readiness
 ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: jhirono
 author: jhirono
 ms.date: 07/13/2021
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: 27c2b5d5af181aea982a6aed735997f5ac866b6d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d16c42f7f50d8b9270cabf136a0c3080e678f862
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121739139"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129425318"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>仮想ネットワークを使用して Azure Machine Learning 推論環境をセキュリティで保護する
 
@@ -59,6 +59,10 @@ ms.locfileid: "121739139"
 * 仮想ネットワークで Azure Container Instances を使用する場合、仮想ネットワークは、Azure Machine Learning ワークスペースと同じリソース グループに含まれている必要があります。 それ以外の場合、仮想ネットワークは異なるリソース グループ内に配置することができます。
 * ワークスペースに __プライベート エンドポイント__ がある場合、Azure Container Instances に使用される仮想ネットワークは、ワークスペースのプライベート エンドポイントで使用されているものと同じである必要があります。
 * 仮想ネットワーク内で Azure Container Instances を使用する場合、ご使用のワークスペースの Azure Container Registry (ACR) をその仮想ネットワーク内に配置することはできません。
+
+### <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
+
+* ワークスペースに __プライベート エンドポイント__ がある場合、Azure Kubernetes Service クラスターは、ワークスペースと同じ Azure リージョンに存在する必要があります。
 
 <a id="aksvnet"></a>
 

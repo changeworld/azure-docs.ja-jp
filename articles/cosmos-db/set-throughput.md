@@ -5,13 +5,13 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 01/25/2021
-ms.openlocfilehash: 3c2e900090b3f3908318bfbc3f1ea1e6f2588dee
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.date: 09/16/2021
+ms.openlocfilehash: aa10c93b63fd621397318c701deef8c3912b05da
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123431280"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128601723"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Azure Cosmos DB におけるスループットのプロビジョニングの概要
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -110,7 +110,7 @@ Azure Cosmos コンテナーまたはデータベースを作成した後に、�
 
 * 400 RU/秒 
 * 現在のストレージ (GB * 10 RU/秒) (この制約は、場合によっては緩和できます。「[高ストレージ/低スループット プログラム](#high-storage-low-throughput-program)」を参照してください)
-* データベースまたはコンテナーでプロビジョニングされた最高 RU ÷ 100
+* データベースまたはコンテナーでこれまでにプロビジョニングされた最高 RU ÷ 100
 
 ### <a name="changing-the-provisioned-throughput"></a>プロビジョニング済みのスループットの変更
 
@@ -163,5 +163,5 @@ Azure Cosmos コンテナーまたはデータベースを作成した後に、�
 * [Azure Cosmos データベースで標準 (手動) のスループットをプロビジョニングする](how-to-provision-database-throughput.md)方法について学習する。
 * [Azure Cosmos データベースまたはコンテナー上で自動スケーリングのスループットをプロビジョニングする](how-to-provision-autoscale-throughput.md)方法を確認する。
 * Azure Cosmos DB への移行のための容量計画を実行しようとしていますか? 容量計画のために、既存のデータベース クラスターに関する情報を使用できます。
-    * 既存のデータベース クラスター内の仮想コアとサーバーの数のみがわかっている場合は、[仮想コア数または仮想 CPU 数を使用した要求ユニットの見積もり](convert-vcore-to-request-unit.md)に関するページを参照してください 
-    * 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB Capacity Planner を使用した要求ユニットの見積もり](estimate-ru-with-capacity-planner.md)に関するページを参照してください
+    * 知っていることが既存のデータベース クラスター内の仮想コアとサーバーの数のみである場合は、[仮想コアまたは仮想 CPU の数を使用した要求ユニットの見積もり](convert-vcore-to-request-unit.md)に関するページを参照してください 
+    * 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB 容量計画ツールを使用した要求ユニットに見積もり](estimate-ru-with-capacity-planner.md)に関するページを参照してください

@@ -6,12 +6,12 @@ ms.author: v-condav
 ms.service: industrial-iot
 ms.topic: tutorial
 ms.date: 6/16/2021
-ms.openlocfilehash: 4ab409c067d83e44cb22c3a22589eca0a4a7785a
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 4abf1d9236d236f9d19d9336bb3173ca14bb3c61
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114291283"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128665171"
 ---
 # <a name="tutorial-using-industrial-iot-to-pull-data-into-azure-data-explorer"></a>チュートリアル: 産業用 IoT を使用して Azure Data Explorer にデータをプルする
 
@@ -165,7 +165,7 @@ opcua_telemetry
 
 ## <a name="create-line-graph-of-the-data"></a>データの折れ線グラフを作成する
 
-では、データをすべて浮動小数点数にキャストして折れ線グラフを作成しましょう。 キャストが失敗した場合、データは無視されます。 このためには、ホストされている Azure Data Explorer ダッシュボードを使用します。 **[Web UI で開く]** をクリックし、新しいウィンドウで **[ダッシュボード]** をクリックして、 **[新しいダッシュボードの作成]** を選択し、 **[タイルの追加]** を選択します。 次に、 **[データ ソース]** を選択し、Azure Data Explorer インスタンスの名前を https://<YourInstanceName>.<Your RegionName>.kusto.windows.net の形式で入力します。 データベースを選択し、 **[適用]** をクリックします。 次のクエリを入力します。
+では、データをすべて浮動小数点数にキャストして折れ線グラフを作成しましょう。 キャストが失敗した場合、データは無視されます。 このためには、ホストされている Azure Data Explorer ダッシュボードを使用します。 **[Web UI で開く]** をクリックし、新しいウィンドウで **[ダッシュボード]** をクリックして、 **[新しいダッシュボードの作成]** を選択し、 **[タイルの追加]** を選択します。 次に、 **[データ ソース]** を選択し、Azure Data Explorer インスタンスの名前を `https://<YourInstanceName>.<Your RegionName>.kusto.windows.net` の形式で入力します。 データベースを選択し、 **[適用]** をクリックします。 次のクエリを入力します。
 
 ```
 opcua_telemetry

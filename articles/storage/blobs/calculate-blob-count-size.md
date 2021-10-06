@@ -9,12 +9,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.custom: subject-rbac-steps
-ms.openlocfilehash: ffdb6dd0d998cfe12b50dab85f49f06e30903d6f
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.openlocfilehash: f4a03a73a85fa265517b421c2179a077d73a75be
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122270952"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128600344"
 ---
 # <a name="calculate-blob-count-and-total-size-per-container-using-azure-storage-inventory"></a>Azure Storage インベントリを使用してコンテナーあたりの BLOB の数と合計サイズを計算する
 
@@ -50,7 +50,7 @@ Azure Synapse ワークスペースを作成したら、次の手順を行いま
     `bulk` パラメーターには、分析するインベントリ レポート CSV ファイルの URL を使用します。
 
     ```sql
-    SELECT LEFT([Name], CHARINDEX('/', [Name]) - 1) AS Container, 
+    SELECT LEFT([Name], CHARINDEX('/', [Name]) - 1) AS Container,
             COUNT(*) As TotalBlobCount,
             SUM([Content-Length]) As TotalBlobSize
     FROM OPENROWSET(

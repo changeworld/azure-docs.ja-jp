@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-java
-ms.openlocfilehash: a280e7b156ebb31269e4a65508596f8ba03c3caf
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f375c8cf49d3bdc230e589f6a816eb9615468946
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121779065"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129458948"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-java"></a>IoT Hub を使用してデバイスからクラウドにファイルをアップロードする (Java)
 
@@ -32,7 +32,7 @@ ms.locfileid: "121779065"
 * 高頻度でサンプリングされる振動データ
 * 何らかの形式の前処理済みデータ
 
-これらのファイルは通常、[Azure Data Factory](../data-factory/introduction.md) や [Hadoop](../hdinsight/index.yml) スタックなどのツールを使用してクラウドでバッチ処理されます。 ただし、デバイスからファイルをアップロードする必要がある場合でも、IoT Hub のセキュリティと信頼性を利用できます。 このサンプルではその方法を示します。 また、GitHub の [https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples/file-upload-sample/src/main/java/samples/com/microsoft/azure/sdk/iot](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples/file-upload-sample/src/main/java/samples/com/microsoft/azure/sdk/iot) には 2 つのサンプルがあります。
+これらのファイルは通常、[Azure Data Factory](../data-factory/introduction.md) や [Hadoop](../hdinsight/index.yml) スタックなどのツールを使用してクラウドでバッチ処理されます。 ただし、デバイスからファイルをアップロードする必要がある場合でも、IoT Hub のセキュリティと信頼性を利用できます。 このサンプルではその方法を示します。 また、GitHub の [https://github.com/Azure/azure-iot-sdk-java/tree/main/device/iot-device-samples/file-upload-sample/src/main/java/samples/com/microsoft/azure/sdk/iot](https://github.com/Azure/azure-iot-sdk-java/tree/main/device/iot-device-samples/file-upload-sample/src/main/java/samples/com/microsoft/azure/sdk/iot) には 2 つのサンプルがあります。
 
 > [!NOTE]
 > IoT Hub は、Azure IoT Device SDK を介して多数のデバイス プラットフォームと言語 (C、.NET、Javascript など) をサポートしています。 Azure IoT Hub にデバイスを接続するための詳しい手順については、[Azure IoT デベロッパー センター](https://azure.microsoft.com/develop/iot)を参照してください。

@@ -3,12 +3,12 @@ title: Azure Video Analyzer のアクセス ポリシー
 description: この記事では、Azure Video Analyzer のアクセス ポリシーで JWT トークンを使用してビデオをセキュリティで保護する方法について説明します。
 ms.topic: reference
 ms.date: 06/01/2021
-ms.openlocfilehash: 3cf450249567d07bf6855d115a0e39640074eeb0
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: fe421e429357000bf6380cdf18f3a029fea4f7c9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114604191"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128670483"
 ---
 # <a name="access-policies"></a>アクセス ポリシー
 
@@ -130,31 +130,84 @@ RSA と ECC の 2 種類のキーがサポートされています。
 > [!NOTE]  
 > Video Analyzer では、最大 20 のポリシーがサポートされます。  ${System.Runtime.BaseResourceUrlPattern} を使用すると、1 つのアクセス ポリシーと複数のトークンを使用して、特定のリソースにより柔軟にアクセスできます。  これらのトークンを使用すると、対象ユーザーに基づいて異なる Video Analyzer リソースにアクセスできます。 
 
+## <a name="creating-a-token"></a>トークンを作成する
+
+このセクションでは、この記事で後ほど使用する JWT トークンを作成します。  JWT トークンを生成し、アクセス ポリシーを作成するために必要なすべてのフィールドを提供するサンプル アプリケーションを使用します。
+
+> [!NOTE] 
+> RSA または ECC 証明書に基づいて JWT トークンを生成する方法についてよく理解している場合は、このセクションを省略できます。
+
+1. [AVA C# サンプル リポジトリ](https://github.com/Azure-Samples/video-analyzer-iot-edge-csharp)を複製します。 次に、JWTTokenIssuer アプリケーション フォルダー *src/jwt-token-issuer* に移動して、JWTTokenIssuer アプリケーションを見つけます。
+2. Visual Studio Code を開き、JWTTokenIssuer アプリケーションをダウンロードしたフォルダーに移動します。 このフォルダーには、 *\*.csproj* ファイルが含まれています。
+3. エクスプローラー ペインで *program.cs* ファイルに移動します。
+4. 77 行目で、対象ユーザーをお使いの Video Analyzer エンドポイントに変更し、/videos/\* と続けます。その結果、次のようになります。
+
+   ```
+   https://{Azure Video Analyzer Account ID}.api.{Azure Long Region Code}.videoanalyzer.azure.net/videos/*
+   ```
+
+   > [!NOTE] 
+   > Video Analyzer エンドポイントは、Azure portal の Video Analyzer リソースの概要セクションで確認できます。
+
+   :::image type="content" source="media/player-widget/client-api-url.png" alt-text="プレーヤー ウィジェットのエンドポイントを示すスクリーンショット。":::
+    
+5. 行 78 で、発行者を証明書の発行者の値に変更します。 例: `https://contoso.com`
+6. ファイルを保存します。    
+
+   > [!NOTE]
+   > 「`Required assets to build and debug are missing from 'jwt token issuer'. Add them?` Select `Yes`」というメッセージが表示される場合があります。
+   
+   :::image type="content" source="media/player-widget/visual-studio-code-required-assets.png" alt-text="必要なアセット示す Visual Studio Code のプロンプトのスクリーンショット。":::
+   
+7. コマンド プロンプト ウィンドウを開き、JWTTokenIssuer ファイルが格納されているフォルダーに移動します。 `dotnet build` と `dotnet run` の 2 つのコマンドを続けて実行します。 Visual Studio Code に C# の拡張機能がある場合は、F5 キーを押して JWTTokenIssuer アプリケーションを実行することもできます。
+
+アプリケーションがビルドされ、実行されます。 ビルドが完了すると、自己署名証明書が作成され、その証明書から JWT トークンの情報が生成されます。 JWTTokenIssuer がビルドされたディレクトリのデバッグ フォルダーにある JWTTokenIssuer.exe ファイルを実行することもできます。 アプリケーションを実行するメリットは、次のように入力オプションを指定できるという点です。
+
+- `JwtTokenIssuer [--audience=<audience>] [--issuer=<issuer>] [--expiration=<expiration>] [--certificatePath=<filepath> --certificatePassword=<password>]`
+
+JWTTokenIssuer によって、JWT トークンと、次の必要なコンポーネントが作成されます。
+
+- `Issuer`, `Audience`, `Key Type`, `Algorithm`, `Key Id`, `RSA Key Modulus`, `RSA Key Exponent`, `Token`
+
+後で使用するためにこれらの値をコピーしておいてください。
+
+
 ## <a name="creating-an-access-policy"></a>アクセス ポリシーを作成する
 
 アクセス ポリシーを作成する方法は 2 つあります。
 
 ### <a name="in-the-azure-portal"></a>Azure Portal で次の操作を行います。
 
-1. Azure portal にログインし、ご自分の Video Analyzer アカウントがあるリソース グループに移動します。
-2. Video Analyzer リソースを選択します。
-3. Video Analyzer の [アクセス ポリシー] を選択します
+1. Azure portal にサインインし、ご自身の Video Analyzer アカウントがあるリソース グループに移動します。
+1. Video Analyzer リソースを選択します。
+1. **Video Analyzer** の **[アクセス ポリシー]** を選択します。
 
-   :::image type="content" source="./media/access-policies/access-policies-menu.png" alt-text="Azure portal の [アクセス ポリシー] メニュー":::
-4. [新規] をクリックし、次を入力します。
+   :::image type="content" source="./media/player-widget/portal-access-policies.png" alt-text="プレーヤー ウィジェット - ポータル アクセス ポリシー。":::
+   
+1. **[新規]** を選択し、次の情報を入力します。
+
+   > [!NOTE] 
+   > これらの値は、前の手順で作成した JWTTokenIssuer アプリケーションから取得されます。
 
    - アクセス ポリシー名 - 任意の名前
+
    - 発行者 - JWT トークン発行者と一致する必要があります 
-   - 対象ユーザー - JWT トークンの対象ユーザー -- ${System.Runtime.BaseResourceUrlPattern} が既定値です。 
-   - キーの種類 - kty 
-   - アルゴリズム - alg
-   - キー ID - kid 
-   - N/X 値 
-   - E/Y 値 
 
-   :::image type="content" source="./media/access-policies/access-policies-portal.png" alt-text="Azure portal のアクセス ポリシー":::
-5. [`Save`] をクリックします。
+   - 対象ユーザー - JWT トークンの対象ユーザー - `${System.Runtime.BaseResourceUrlPattern}` が既定値です。
 
+   - キーの種類 - RSA 
+
+   - アルゴリズム - サポートされる値は RS256、RS384、RS512 です
+
+   - キー ID - 証明書から生成されます。 詳細については、「[トークンを作成する](#creating-a-token)」を参照してください。
+
+   - RSA キー モジュラス - 証明書から生成されます。 詳細については、「[トークンを作成する](#creating-a-token)」を参照してください。
+
+   - RSA キー指数 - 証明書から生成されます。 詳細については、「[トークンを作成する](#creating-a-token)」を参照してください。
+
+   :::image type="content" source="./media/player-widget/access-policies-portal.png" alt-text="プレーヤー ウィジェット - ポータルのアクセス ポリシー"::: 
+   
+1. **[保存]** を選択します。
 ### <a name="create-access-policy-via-api"></a>アクセス ポリシーを API を使用して作成する
 
 Azure Resource Manager (ARM) API を参照してください 

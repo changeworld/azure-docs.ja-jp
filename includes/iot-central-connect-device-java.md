@@ -4,14 +4,14 @@ ms.author: dobett
 ms.service: iot-develop
 ms.topic: include
 ms.date: 03/31/2021
-ms.openlocfilehash: 86329b17a437846c3a5c4a29dd901ac1b1ca5902
-ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.openlocfilehash: 16ce672e03b2d0ad049d53d9819c8ed02094abc6
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2021
-ms.locfileid: "114407917"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129516646"
 ---
-[![コードを参照](../articles/iot-central/core/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples/pnp-device-sample)
+[![コードを参照](../articles/iot-central/core/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-java/tree/main/device/iot-device-samples/pnp-device-sample)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -23,7 +23,7 @@ ms.locfileid: "114407917"
 
 - [Apache Maven 3](https://maven.apache.org/download.cgi)。
 
-- サンプル コードが格納された [Microsoft Azure IoT SDK for Java](https://github.com/Azure/azure-iot-sdk-java) GitHub リポジトリのローカル コピー。 このリンク ([ZIP のダウンロード](https://github.com/Azure/azure-iot-sdk-java/archive/master.zip)) を使用してリポジトリのコピーをダウンロードしてください。 次に、ローカル コンピューター上の適切な場所にファイルを解凍します。
+- サンプル コードが格納された [Microsoft Azure IoT SDK for Java](https://github.com/Azure/azure-iot-sdk-java) GitHub リポジトリのローカル コピー。 このリンク ([ZIP のダウンロード](https://github.com/Azure/azure-iot-sdk-java/archive/main.zip)) を使用してリポジトリのコピーをダウンロードしてください。 次に、ローカル コンピューター上の適切な場所にファイルを解凍します。
 
 ## <a name="review-the-code"></a>コードの確認
 

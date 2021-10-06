@@ -12,12 +12,12 @@ ms.date: 09/01/2021
 ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: オンプレミス、Docker、コンテナー
-ms.openlocfilehash: 75f0f8bb61c14f826addca3df41a0c568c92b510
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: da62c081a79211eb6eb56229eab856c89841746c
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123429372"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129533704"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>Speech サービス API 向けの Docker コンテナーをインストールし、実行する 
 
@@ -26,15 +26,15 @@ ms.locfileid: "123429372"
 Speech コンテナーでは、堅牢なクラウド機能とエッジの局所性の両方のために最適化された音声アプリケーション アーキテクチャを構築できます。 利用できるコンテナーはいくつかあり、クラウド ベースの Azure Speech Services と同じ[価格](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)が使用されます。
 
 > [!IMPORTANT]
-> 2021 年 8 月 31 日に、標準の音声合成の音声とテキスト読み上げコンテナーを廃止しました。 代わりに、ニューラル テキスト読み上げコンテナーを使用するようにアプリケーションを移行することを検討してください。 アプリケーションの更新の詳細については、[次の手順](https://aka.ms/sttsretirement)に従ってください。
+> 2021 年 8 月 31 日に、標準の音声合成の音声とテキスト読み上げコンテナーを廃止しました。 代わりに、ニューラル テキスト読み上げコンテナーを使用するようにアプリケーションを移行することを検討してください。 アプリケーションの更新の詳細については、[次の手順](./text-to-speech.md#migrate-to-neural-voice)に従ってください。
 
 | コンテナー | 特徴 | 最新 | リリースの状態 |
 |--|--|--|--|
-| 音声テキスト変換 | 中間結果を使用して、センチメントを分析し、リアルタイムの音声録音またはバッチ音声録音を文字起こしします。  | 2.13.0 | 一般公開 |
-| カスタム音声変換 | [Custom Speech ポータル](https://speech.microsoft.com/customspeech)のカスタム モデルを利用し、連続するリアルタイムの音声またはバッチ音声録音を、中間結果を含むテキストに文字起こしします。 | 2.13.0 | 一般公開 |
-| テキスト読み上げ | テキストを、プレーンテキストの入力または音声合成マークアップ言語 (SSML) を含む自然な音声に変換します。 | 1.14.1 | 一般公開 |
+| 音声テキスト変換 | 中間結果を使用して、センチメントを分析し、リアルタイムの音声録音またはバッチ音声録音を文字起こしします。  | 2.15.0 | 一般公開 |
+| カスタム音声変換 | [Custom Speech ポータル](https://speech.microsoft.com/customspeech)のカスタム モデルを利用し、連続するリアルタイムの音声またはバッチ音声録音を、中間結果を含むテキストに文字起こしします。 | 2.15.0 | 一般公開 |
+| テキスト読み上げ | テキストを、プレーンテキストの入力または音声合成マークアップ言語 (SSML) を含む自然な音声に変換します。 | 1.15.0 | 一般公開 |
 | 音声言語識別 | オーディオ ファイルで話されている言語を検出します。 | 1.3.0 | preview |
-| Neural Text-to-speech | ディープ ニューラル ネットワーク テクノロジを使用してテキストを自然な響きの音声に変換することで、合成音声がより自然なものになります。 | 1.8.0 | 一般公開 |
+| Neural Text-to-speech | ディープ ニューラル ネットワーク テクノロジを使用してテキストを自然な響きの音声に変換することで、合成音声がより自然なものになります。 | 1.9.0 | 一般公開 |
 
 ## <a name="prerequisites"></a>前提条件
 

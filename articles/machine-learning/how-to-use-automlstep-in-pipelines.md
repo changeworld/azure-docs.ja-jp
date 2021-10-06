@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: AutoMLStep では、パイプラインで自動機械学習を使用することができます。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: automl
 ms.author: laobri
 author: lobrien
 manager: cgronlun
 ms.date: 02/28/2020
 ms.topic: how-to
 ms.custom: devx-track-python, automl
-ms.openlocfilehash: 821661a225591e4f92aa15855da6259f2eb3735b
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: bb110a12c3ca84905ea7907675fc10261c641f39
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112462705"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129428808"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>Python の Azure Machine Learning パイプラインで自動 ML を使用する
 

@@ -1,10 +1,10 @@
 ---
 title: Azure AD エンタイトルメント管理でのアクセス パッケージのアクセスのレビュー
-description: Azure Active Directory アクセス レビュー (プレビュー) で、エンタイトルメント管理アクセス パッケージのアクセス レビューを行う方法について説明します。
+description: Azure Active Directory アクセス レビューで、エンタイトルメント管理アクセス パッケージのアクセス レビューを行う方法について説明します。
 services: active-directory
 documentationCenter: ''
 author: amsliu
-manager: daveba
+manager: KarenH444
 editor: ''
 ms.service: active-directory
 ms.workload: identity
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 07/22/2021
+ms.date: 09/15/2021
 ms.author: amsliu
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1d034d3e64e6c74b076ba636822bbd6e04ad1f5
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 9b86ddd01b155b54eaa954df2a67df907901b288
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114440225"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128639681"
 ---
 # <a name="review-access-of-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でのアクセス パッケージのアクセスのレビュー
 
@@ -31,7 +31,7 @@ ms.locfileid: "114440225"
 
 ユーザーのアクティブなアクセス パッケージの割り当てをレビューするには、レビューの作成者がこれらの前提条件を満たしている必要があります。
 - Azure AD Premium P2
-- グローバル管理者、ID ガバナンス管理者、ユーザー管理者、カタログ所有者、またはアクセス パッケージ マネジャー
+- グローバル管理者、ID ガバナンス管理者、またはユーザー管理者
 
 詳細については、「[License requirements ライセンスの要件](entitlement-management-overview.md#license-requirements)」を参照してください。
 
@@ -89,7 +89,7 @@ ms.locfileid: "114440225"
 レビュー担当者が複数いる場合、最後に送信された応答内容が記録されます。 管理者が Alice と Bob という 2 人のレビュー担当者を指名した場合を考えてみましょう。 最初に Alice がレビューを開いて、アクセスを承認します。 レビューが終了する前に、Bob がレビューを開き、アクセスを拒否します。 この場合、最後のアクセス拒否の決定が記録されます。
 
 >[!NOTE]
->ユーザーは、アクセスを拒否されても、すぐにアクセス パッケージから削除されるわけではありません。 レビューが終了するか、管理者がレビューを終了すると、ユーザーがアクセス パッケージから削除されます。 ただし、ユーザーがアクセスを承認されると、承認は瞬時に行われ、レビュー期間がまだ終わっていない場合でも許可されます。
+>ユーザーは、レビューでアクセスを拒否されても、すぐにアクセス パッケージから削除されるわけではありません。 レビューが閉じられた後にレビュー結果が適用されると、ユーザーはアクセス パッケージから削除されます。 レビューは、管理者が手動でレビューを停止した場合、レビュー期間の最後またはそれ以前に自動的に閉じられます。 
 
 ### <a name="approve-or-deny-access-using-the-system-generated-recommendations"></a>システムによって生成された推奨事項を使用してアクセスを承認または拒否する
 

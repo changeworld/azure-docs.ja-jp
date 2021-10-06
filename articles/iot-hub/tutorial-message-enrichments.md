@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/20/2019
 ms.author: robinsh
 ms.custom: mqtt, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 0d6c90120d050b6896161f50332faf447c3ed67b
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: aca884ebbfc10cc847bade34ea1a9bd73ada18c9
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107788873"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129458399"
 ---
 # <a name="tutorial-use-azure-iot-hub-message-enrichments"></a>チュートリアル: Azure IoT Hub のメッセージ エンリッチメントを使用する
 
@@ -48,7 +48,7 @@ ms.locfileid: "107788873"
 
 ## <a name="retrieve-the-iot-c-samples-repository"></a>IoT C# サンプル リポジトリを取得する
 
-GitHub から [IoT C# サンプル](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)をダウンロードして解凍します。 このリポジトリには、いくつかのアプリケーション、スクリプト、および Resource Manager テンプレートが含まれています。 このチュートリアルで使用するものは次のとおりです。
+GitHub から [IoT C# サンプル](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/main.zip)をダウンロードして解凍します。 このリポジトリには、いくつかのアプリケーション、スクリプト、および Resource Manager テンプレートが含まれています。 このチュートリアルで使用するものは次のとおりです。
 
 * 手動による方法では、リソースの作成に使用される CLI スクリプトがあります。 このスクリプトは /azure-iot-samples-csharp/iot-hub/Tutorials/Routing/SimulatedDevice/resources/iothub_msgenrichment_cli.azcli にあります。 このスクリプトは、リソースを作成し、メッセージ ルーティングを構成します。 このスクリプトを実行した後、[Azure portal](https://portal.azure.com) を使用して、手動でメッセージ エンリッチメントを作成します。
 * 自動化された方法では、Azure Resource Manager テンプレートがあります。 テンプレートは /azure-iot-samples-csharp/iot-hub/Tutorials/Routing/SimulatedDevice/resources/template_msgenrichments.json にあります。 このテンプレートは、リソースを作成し、メッセージ ルーティングを構成した後、メッセージ エンリッチメントを構成します。

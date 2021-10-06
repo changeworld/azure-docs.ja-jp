@@ -2,13 +2,13 @@
 title: Azure CLI を使用して Azure マネージド ディスクをバックアップする
 description: Azure CLI を使用して Azure マネージド ディスクをバックアップする方法について説明します。
 ms.topic: conceptual
-ms.date: 06/18/2021
-ms.openlocfilehash: 42bbc54a545cdddf049163b3040d9701f4304a52
-ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
+ms.date: 09/17/2021
+ms.openlocfilehash: ce1e4b3f88e844165581c95f74955de04686855b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2021
-ms.locfileid: "112381209"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128659701"
 ---
 # <a name="back-up-azure-managed-disks-using-azure-cli"></a>Azure CLI を使用して Azure マネージド ディスクをバックアップする
 
@@ -283,7 +283,7 @@ az dataprotection backup-vault update -g testBkpVaultRG --vault-name TestBkpVaul
 
 ### <a name="assign-permissions"></a>アクセス許可を割り当てる
 
-コンテナー (コンテナーの MSI で表される) や関連するディスク、ディスク RG には、RBAC を介していくつかのアクセス許可を割り当てる必要があります。 この操作は、Azure portal または CLI で行うことができます。 関連するすべてのアクセス許可については、「[バックアップの構成](backup-managed-disks.md#configure-backup)」のポイント 1、2、3 で詳しく説明しています。
+コンテナー (コンテナーの MSI で表される) や関連するディスク、ディスク RG には、RBAC を介していくつかのアクセス許可を割り当てる必要があります。 この操作は、Azure portal または CLI で行うことができます。 関連するアクセス許可を割り当てるには、[マネージド ディスクのバックアップを構成するための前提条件](backup-managed-disks-ps.md#assign-permissions)に関する記事を参照してください。
 
 ### <a name="prepare-the-request"></a>要求を準備する
 

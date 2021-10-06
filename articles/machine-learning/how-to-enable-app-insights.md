@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: Azure Kubernetes Service (AKS) または Azure Container Instances (ACI) で Web サービス エンドポイントにデプロイされたモデルからデータを収集する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.author: larryfr
 author: blackmist
 ms.date: 09/15/2020
 ms.topic: how-to
 ms.custom: devx-track-python, data4ml
-ms.openlocfilehash: d254e434bd8cb9d45338507c1b88f99eca681729
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 250fae39090153e8f1016bcf85a6e04ae4877bfb
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112460767"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129423654"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>ML Web サービス エンドポイントからのデータを監視および収集する
 

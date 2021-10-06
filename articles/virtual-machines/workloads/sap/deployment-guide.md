@@ -2,12 +2,9 @@
 title: SAP NetWeaver のための Azure Virtual Machines のデプロイ | Microsoft Docs
 description: Azure の Linux 仮想マシンに SAP ソフトウェアをデプロイする方法について説明します。
 services: virtual-machines-linux,virtual-machines-windows
-documentationcenter: ''
 author: MSSedusch
 manager: juergent
-editor: ''
 tags: azure-resource-manager
-keywords: ''
 ms.assetid: 1c4f1951-3613-4a5a-a0af-36b85750c84e
 ms.service: virtual-machines-sap
 ms.topic: article
@@ -15,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/16/2020
 ms.author: sedusch
-ms.openlocfilehash: 6f8d58388715b6bd43676ca7e98cf47901f6409a
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 25efde22194816630b81eba43e5b8b93524681a6
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112285052"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129350884"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>SAP NetWeaver のための Azure Virtual Machines のデプロイ
 
@@ -189,7 +186,7 @@ ms.locfileid: "112285052"
 [Logo_Linux]:media/virtual-machines-shared-sap-shared/Linux.png
 [Logo_Windows]:media/virtual-machines-shared-sap-shared/Windows.png
 
-[msdn-set-Azvmaemextension]:https://docs.microsoft.com/powershell/module/az.compute/set-azvmaemextension
+[msdn-set-Azvmaemextension]:/powershell/module/az.compute/set-azvmaemextension
 
 [planning-guide]:planning-guide.md (SAP のための Azure Virtual Machines の計画と実装)
 [planning-guide-1.2]:planning-guide.md#e55d1e22-c2c8-460b-9897-64622a34fdff (リソース)

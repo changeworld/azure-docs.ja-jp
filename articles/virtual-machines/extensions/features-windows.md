@@ -9,12 +9,12 @@ ms.author: amjads
 ms.collection: windows
 ms.date: 03/30/2018
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c4f2da1bd955f9a0b47519c913f656aa6e8bdce4
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 8ab6b3d00f748fb5b3935988522191c749fa4fd9
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122179652"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129275280"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Windows 用の仮想マシン拡張機能とその機能
 
@@ -73,8 +73,8 @@ Windows ゲスト エージェントには、エージェントのトラフィ�
 Azure VM と共に、多くのさまざまな VM 拡張機能を使用できます。 完全な一覧を表示するには、[Get-AzVMExtensionImage](/powershell/module/az.compute/get-azvmextensionimage) を使用します。 次の例では、*WestUS* の場所で利用できるすべての拡張機能が表示されています。
 
 ```powershell
-Get-AzVmImagePublisher -Location "WestUS" | `
-Get-AzVMExtensionImageType | `
+Get-AzVmImagePublisher -Location "WestUS" |
+Get-AzVMExtensionImageType |
 Get-AzVMExtensionImage | Select Type, Version
 ```
 
@@ -349,7 +349,7 @@ AutoUpgradeMinorVersion     : True
 
 1. Windows ゲスト エージェント ログをチェックするには、*C:\WindowsAzure\Logs\WaAppAgent.log* で拡張機能がプロビジョニングされたときのアクティビティを確認します
 
-2. *C:\WindowsAzure\Logs\Plugins\\<extensionName>* の実際の拡張機能ログで詳細を確認します
+2. `C:\WindowsAzure\Logs\Plugins\<extensionName>` で、実際の拡張機能のログを詳細にチェックします
 
 3. エラーコードや既知の問題などについて、拡張機能固有のドキュメントのトラブルシューティングのセクションを確認します。
 

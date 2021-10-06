@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.date: 07/22/2021
-ms.openlocfilehash: 890330700e21c34b1a3d9ae78068f577f5f64c6b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 28b616d0e0e4730fe96e5366a590ea84e5fa39cf
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121739164"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124777756"
 ---
 # <a name="run-jupyter-notebooks-in-your-workspace"></a>ワークスペースで Jupyter Notebook を実行する
 
@@ -313,7 +313,7 @@ Jupyter Notebook と同様に、Azure Machine Learning Studio ノートブック
 
 * ノートブックに接続できない場合は、Web ソケット通信が無効になって **いない** ことを確認してください。 コンピューティング インスタンスの Jupyter 機能を動作させるには、Web ソケット通信を有効にする必要があります。 お使いのネットワークで、*. instances.azureml.net と *. instances.azureml.ms への WebSocket 接続が許可されていることを確認してください。 
 
-* プライベート エンドポイントのあるワークスペースにデプロイされたコンピューティング インスタンスには、[仮想ネットワーク内からのみアクセスする](./how-to-secure-training-vnet.md#compute-instance)ことができます。 カスタム DNS またはホスト ファイルを使用している場合は、ワークスペースのプライベート エンドポイントのプライベート IP アドレスを使用して < instance-name >.< region >.instances.azureml.ms のエントリを追加してください。 詳細については、[カスタム DNS](./how-to-custom-dns.md?tabs=azure-cli)に関する記事をご覧ください。
+* プライベート エンドポイントのあるワークスペースにデプロイされたコンピューティング インスタンスには、[仮想ネットワーク内からのみアクセスする](./how-to-secure-training-vnet.md)ことができます。 カスタム DNS またはホスト ファイルを使用している場合は、ワークスペースのプライベート エンドポイントのプライベート IP アドレスを使用して < instance-name >.< region >.instances.azureml.ms のエントリを追加してください。 詳細については、[カスタム DNS](./how-to-custom-dns.md?tabs=azure-cli)に関する記事をご覧ください。
 
 * カーネルがクラッシュして再起動された場合は、次のコマンドを実行して jupyter ログを表示し、詳細を確認することができます: `sudo journalctl -u jupyter`。 カーネルの問題が解決しない場合は、さらに大きなメモリでコンピューティング インスタンスを使用することを検討してください。
 
@@ -323,4 +323,4 @@ Jupyter Notebook と同様に、Azure Machine Learning Studio ノートブック
 
 * [最初の実験を実行する](tutorial-1st-experiment-sdk-train.md)
 * [スナップショットを使用してファイル ストレージをバックアップする](../storage/files/storage-snapshots-files.md)
-* [セキュリティで保護された環境での作業](./how-to-secure-training-vnet.md#compute-instance)
+* [セキュリティで保護された環境での作業](./how-to-secure-training-vnet.md#compute-cluster)

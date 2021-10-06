@@ -17,12 +17,12 @@ ms.date: 04/09/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e21e22e231ea5998cf15c7b2982180da91fe49aa
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: e7d66bd74263bd23c02cf465b1483ffe610179ee
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113733432"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128657920"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure Monitor の Azure AD アクティビティ ログ
 
@@ -41,7 +41,7 @@ Azure Active Directory (Azure AD) のアクティビティ ログを複数のエ
 
 この機能を使用して、Azure AD 監査ログとサインイン ログを Azure ストレージ アカウント、イベント ハブ、Azure Monitor ログ、またはカスタム ソリューションにルーティングすることができます。 
 
-* **[監査ログ]** :テナント内で実行されたすべてのタスクの履歴は、[監査ログ アクティビティ レポート](concept-audit-logs.md)で把握できます。
+* **監査ログ**: ユーザーとグループの管理や、テナントのリソースに適用される更新プログラムなど、テナントに適用される変更に関する情報は、[監査ログ アクティビティ レポート](concept-audit-logs.md)で把握できます。
 * **サインイン ログ**:監査ログによって報告されたタスクをだれが実行したかは、[サインイン アクティビティ レポート](concept-sign-ins.md)で判断することができます。
 
 > [!NOTE]

@@ -4,12 +4,12 @@ description: Azure Site Recovery サービスを使用して Azure にオンプ�
 ms.service: site-recovery
 ms.topic: article
 ms.date: 07/14/2021
-ms.openlocfilehash: 6811511cf45d342691a76ddb14b631601db56c36
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 93a7d3274dbe682a6a08763302804c250545ec47
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114290260"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128591256"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Azure にオンプレミス物理サーバーのディザスター リカバリーを設定する
 
@@ -82,7 +82,7 @@ VM を Azure にレプリケートするアクセス許可がお使いの Azure 
 
 - ドメイン アカウントまたはローカル アカウントを使用できます。
 - Windows VM の場合、ドメイン アカウントを使用していなければ、次のようにしてローカル マシンでのリモート ユーザー アクセス制御を無効にします。 無効にするには、レジスタで、**HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** の下に、値 1 を指定した DWORD エントリの **LocalAccountTokenFilterPolicy** を追加します。
-- CLI からレジストリ エントリを追加し、設定を無効にするには、次のように入力します。       ``REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1.``
+- CLI からレジストリ エントリを追加して、設定を無効にするには、次のように入力します: `REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1.`
 - Linux の場合、アカウントは、ソース Linux サーバーの root である必要があります。
 
 

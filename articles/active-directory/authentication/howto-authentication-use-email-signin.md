@@ -10,12 +10,12 @@ ms.author: justinha
 author: calui
 manager: daveba
 ms.reviewer: calui
-ms.openlocfilehash: 0a4ad5d9aaa9bb851a651ddc77bd1acb773b6019
-ms.sourcegitcommit: 0fd913b67ba3535b5085ba38831badc5a9e3b48f
+ms.openlocfilehash: 0e925e520b5136750dc7ef9151d7e5741176525c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113485709"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128595619"
 ---
 # <a name="sign-in-to-azure-ad-with-email-as-an-alternate-login-id-preview"></a>代替ログイン ID としてメール アドレスを使用して Azure AD にサインインする (プレビュー)
 
@@ -70,7 +70,8 @@ ms.locfileid: "113485709"
     * Skype for Business
     * macOS 上の Microsoft Office
     * Web 上の Microsoft Teams
-    * OneDrive (サインイン フローに多要素認証が関係しない場合)
+    * OneDrive (サインイン フローに多要素認証が関係しない場合)。
+    * Microsoft 365 管理者ポータル
 
 * **サポートされていないアプリ** - `unique_name` または `preferred_username` クレームが不変であると想定する場合、または UPN などの特定のユーザー属性に常に一致する場合は、一部のサードパーティアプリケーションが期待どおりに動作しないことがあります。
 

@@ -7,16 +7,16 @@ ms.author: nibaccam
 ms.reviewer: nibaccam
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: automl
 ms.topic: how-to
 ms.custom: automl,contperf-fy21q2
 ms.date: 12/18/2020
-ms.openlocfilehash: d9a213ee9889d5e778c2037a67974d3b3da5f4c4
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 4931b6a1b13390813cee09e906ceaea64205bd70
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122183599"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129426399"
 ---
 # <a name="data-featurization-in-automated-machine-learning"></a>自動機械学習でのデータの特徴量化
 

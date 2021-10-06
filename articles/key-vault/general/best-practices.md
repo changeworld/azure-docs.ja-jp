@@ -9,18 +9,22 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/29/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 7cfa2059cc03b96db39183cfa5056c9934a02290
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 0461228678762adbc4db936c35849f16a482c1a9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107814354"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128605508"
 ---
 # <a name="best-practices-to-use-key-vault"></a>Key Vault を使用するためのベスト プラクティス
 
 ## <a name="use-separate-key-vaults"></a>別々のキー コンテナーを使用する
 
 環境 (開発、実稼働前、および実稼働) ごとにアプリケーションごとのコンテナーを使用することをお勧めします。 これにより複数の環境でシークレットを共有することがなくなり、セキュリティ違反が発生した際の脅威を軽減するのにも役立ちます。
+
+### <a name="why-we-recommend-separate-key-vaults"></a>別々のキー コンテナーをお勧めする理由
+
+Azure Key Vault では、アクセス ポリシーは、"オール オア ナッシング" の概念です。 ID に特定のアクセス許可 (たとえば **Get**) がある場合、その ID はコンテナー内の "*任意の*" シークレット、キー、または証明書を取得できます。 これは、機密データを同じコンテナーにグループ化すると、攻撃によってさまざまな事項にわたる機密情報にアクセスできるおそれがあるため、セキュリティ イベントの "*爆発半径*" が大きくなることを意味します。 これを軽減するには、特定のアプリケーションがアクセス権限を持つ "*必要がある*" 機密情報を検討し、この説明に基づいてキー コンテナーを分離します。 アプリ別にキー コンテナーを分離するのが最も一般的な境界です。
 
 ## <a name="control-access-to-your-vault"></a>コンテナーへのアクセスの制御
 
@@ -57,3 +61,6 @@ Azure Key Vault は、暗号化キーとシークレット (証明書、接続�
 
 1. [論理的な削除](soft-delete-overview.md)を有効にします。
 2. 論理的な削除が有効になってもシークレットまたはコンテナーの強制削除を防ぐには、パージ保護を有効にします。
+
+## <a name="learn-more"></a>詳細情報
+- [Key Vault でのシークレットの管理に関するベスト プラクティス](../secrets/secrets-best-practices.md)

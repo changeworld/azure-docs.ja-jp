@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 9/01/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 894d16e1a72243bee9aff1fff2778ec75c2af6ec
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 0e1193dea6826e4188a7d8f933d2c0a2637a72c1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123227154"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128650156"
 ---
 # <a name="automatic-registration-with-sql-iaas-agent-extension"></a>SQL IaaS Agent 拡張機能への自動登録
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -94,13 +94,17 @@ PowerShell を使用すると、複数の Azure サブスクリプションの�
 1. [このスクリプト](https://github.com/microsoft/tigertoolbox/blob/master/AzureSQLVM/EnableBySubscription.ps1)を保存します。
 1. 管理コマンド プロンプトまたは PowerShell ウィンドウを使用して、スクリプトを保存した場所に移動します。 
 1. Azure に接続します (`az login`)。
-1. スクリプトを実行し、SubscriptionIds を次のようなパラメーターとして渡します。   
-   `.\EnableBySubscription.ps1 -SubscriptionList SubscriptionId1,SubscriptionId2`
+1. スクリプトを実行し、パラメーターとして SubscriptionIds を渡します。 サブスクリプションが指定されていない場合、スクリプトによって、ユーザー アカウント内のすべてのサブスクリプションの自動登録が有効になります。    
 
-   次に例を示します。 
+   次のコマンドを実行すると、2 つのサブスクリプションの自動登録が有効になります。 
 
    ```console
    .\EnableBySubscription.ps1 -SubscriptionList a1a1a-aa11-11aa-a1a1-a11a111a1,b2b2b2-bb22-22bb-b2b2-b2b2b2bb
+   ```
+   次のコマンドを実行すると、すべてのサブスクリプションの自動登録が有効になります。 
+
+   ```console
+   .\EnableBySubscription.ps1
    ```
 
 登録の失敗エラーは、`.ps1` スクリプトの保存と実行に使用したものと同じディレクトリ内にある `RegistrationErrors.csv` に格納されます。 

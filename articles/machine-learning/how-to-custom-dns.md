@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: Azure Machine Learning ワークスペースおよびプライベート エンドポイントを使用するようにカスタム DNS サーバーを構成する方法。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: enterprise-readiness
 ms.reviewer: larryfr
 ms.author: jhirono
 author: jhirono
 ms.date: 08/03/2021
 ms.topic: how-to
 ms.custom: contperf-fy21q3, devx-track-azurepowershell
-ms.openlocfilehash: 74c8fd2c096d8a4b236d9f26bdd27737fac897ca
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: bbe9f19bcf5925ef6e08829fde75bc2f9032b031
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128632996"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129429872"
 ---
 # <a name="how-to-use-your-workspace-with-a-custom-dns-server"></a>カスタム DNS サーバーでワークスペースを使用する方法
 

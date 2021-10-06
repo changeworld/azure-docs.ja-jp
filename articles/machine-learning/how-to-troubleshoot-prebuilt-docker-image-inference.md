@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: 推論用の事前構築済み Docker イメージを使用する際のトラブルシューティング手順。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.author: ssambare
 author: shivanissambare
 ms.date: 05/25/2021
 ms.topic: how-to
 ms.reviewer: larryfr
 ms.custom: deploy, docker, prebuilt, troubleshoot
-ms.openlocfilehash: c4949000cee07e2280d9edc018ff07f20f37a352
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 209a9ffe884fd772fde30bd7a6d4995a15d97f02
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123427662"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129423483"
 ---
 # <a name="troubleshooting-prebuilt-docker-images-for-inference-preview"></a>推論用の事前構築済み Docker イメージに関するトラブルシューティング (プレビュー)
 

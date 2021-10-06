@@ -12,12 +12,12 @@ ms.date: 01/12/2021
 ms.author: yulili
 ms.custom: references_regions
 zone_pivot_groups: programming-languages-speech-services-nomore-variant
-ms.openlocfilehash: f9f787af8cad8dffa728e29fd3a13defc8e160ca
-ms.sourcegitcommit: bb9a6c6e9e07e6011bb6c386003573db5c1a4810
+ms.openlocfilehash: 2335b1e85290cdea805c3a77754a5843da6cbbda
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110494871"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128672364"
 ---
 # <a name="pronunciation-assessment"></a>発音評価
 
@@ -28,7 +28,7 @@ ms.locfileid: "110494871"
 この記事では、`PronunciationAssessmentConfig` を設定し、Speech SDK を利用して `PronunciationAssessmentResult` を取得する方法について説明します。
 
 > [!NOTE]
-> 発音評価機能では現在、すべての[音声テキスト変換のリージョン](regions.md#speech-to-text-text-to-speech-and-translation)で使用できる `en-US` 言語がサポートされています。 `en-GB` および `zh-CN` 言語のサポートはプレビュー段階です。これは `westus`、`eastasia`、`centralindia` の各リージョンで利用できます。
+> 発音評価機能では現在、すべての[音声テキスト変換のリージョン](regions.md#speech-to-text-text-to-speech-and-translation)で使用できる `en-US` 言語がサポートされています。 `en-GB` 言語と `zh-CN` 言語のサポートは、プレビュー段階です。
 
 ## <a name="pronunciation-assessment-with-the-speech-sdk"></a>Speech SDK による発音評価
 

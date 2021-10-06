@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/31/2021
+ms.date: 08/31/2021
 ms.author: jeedes
-ms.openlocfilehash: 1c656df5f301e5f5ea65be100b80c7f06da67435
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 7d6b297f0075de0b6a5550f58978150ada2411d5
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111556408"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128607598"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hootsuite"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Hootsuite の統合
 
@@ -38,6 +38,7 @@ ms.locfileid: "111556408"
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 * Hootsuite では、**SP および IDP** Initiated SSO がサポートされています。
+* Hootsuite では、[自動化されたユーザー プロビジョニング](hootsuite-provisioning-tutorial.md)がサポートされます。
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -133,6 +134,8 @@ Hootsuite に対して Azure AD SSO を構成してテストするには、次�
 
 このセクションでは、Hootsuite で Britta Simon というユーザーを作成します。 [Hootsuite サポート チーム](https://hootsuite.com/about/contact-us#)と連携して、Hootsuite プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
+Hootsuite では、自動ユーザー プロビジョニングもサポートされます。自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](./hootsuite-provisioning-tutorial.md)をご覧ください。
+
 ## <a name="test-sso"></a>SSO のテスト 
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
@@ -147,7 +150,7 @@ Hootsuite に対して Azure AD SSO を構成してテストするには、次�
 
 * Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した Hootsuite に自動的にサインインされます。 
 
-また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [Hootsuite] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Hootsuite に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [Hootsuite] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Hootsuite に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

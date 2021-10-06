@@ -11,12 +11,12 @@ metadata:
   author: memildin
   ms.author: memildin
   ms.date: 05/12/2021
-  ms.openlocfilehash: 6559d16fc9314ff134eb92f540e4b6ff4acd1f96
-  ms.sourcegitcommit: 6ea4d4d1cfc913aef3927bef9e10b8443450e663
+  ms.openlocfilehash: e8f2db04945768b1c89eb09f02f6c248053dedaa
+  ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/05/2021
-  ms.locfileid: "113297516"
+  ms.lasthandoff: 10/04/2021
+  ms.locfileid: "129425109"
 landingContent:
 - title: Security Center について
   linkLists:
@@ -34,8 +34,8 @@ landingContent:
     links:
     - text: Security Center のリリース ノート
       url: release-notes.md
-    - text: 概要ダッシュボードを探索する
-      url: overview-page.md
+    - text: マシンに Azure セキュリティ ベースラインを適用する
+      url: apply-security-baseline.md
     - text: 統合ブック レポートを使用する
       url: custom-dashboards-azure-workbooks.md
     - text: ハイブリッドおよびマルチクラウド Kubernetes クラスターを保護する

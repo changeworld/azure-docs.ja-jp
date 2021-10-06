@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/08/2021
+ms.date: 09/01/2021
 ms.author: jeedes
-ms.openlocfilehash: 71a2ad9d9a9b3c4f8c2be23859782cdb7a38e13f
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 946aa1a6a177dd89c851e977ac783806e8a9dcc5
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112464883"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128652227"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zenya"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Zenya の統合
 
@@ -38,6 +38,7 @@ ms.locfileid: "112464883"
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 * Zenya では、**SP** Initiated SSO がサポートされます
+* Zenya では、[自動化されたユーザー プロビジョニング](iprova-provisioning-tutorial.md)がサポートされます。
 
 ## <a name="add-zenya-from-the-gallery"></a>ギャラリーから Zenya を追加する
 
@@ -198,6 +199,9 @@ Zenya に対して Azure AD SSO を構成してテストするには、次の手
 
 10. ページの一番下までスクロールし、**[Finish]\(完了\)** を選択します。
 
+> [!NOTE]
+> Zenya では、自動ユーザー プロビジョニングもサポートされます。自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](./iprova-provisioning-tutorial.md)をご覧ください。
+
 ## <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
@@ -206,7 +210,7 @@ Zenya に対して Azure AD SSO を構成してテストするには、次の手
 
 * Zenya のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Zenya] タイルをクリックすると、Zenya のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Zenya] タイルをクリックすると、Zenya のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -1,20 +1,20 @@
 ---
 title: Red Hat Update Infrastructure | Microsoft Docs
 description: Microsoft Azure のオンデマンド Red Hat Enterprise Linux インスタンス用の Red Hat Update Infrastructure について説明します
-author: asinn826
+author: mamccrea
 ms.service: virtual-machines
 ms.subservice: redhat
 ms.collection: linux
 ms.topic: article
 ms.date: 02/10/2020
-ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 9e40c1085458140204a1632824e9ac550caae27d
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.author: mamccrea
+ms.openlocfilehash: 46e13297938cc9a291cd68d020d26a143f94191c
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122696755"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129458323"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Azure のオンデマンド Red Hat Enterprise Linux VM 用 Red Hat Update Infrastructure
 

@@ -1,18 +1,20 @@
 ---
-title: Azure CLI とテンプレートを使用してリソースをデプロイする
-description: Azure Resource Manager と Azure CLI を使用してリソースを Azure にデプロイします。 リソースは Resource Manager テンプレートで定義されます。
+title: Azure CLI を使用した Azure デプロイ テンプレート– Azure Resource Manager |Microsoft Docs
+description: Azure Resource Manager と Azure CLI を使用してリソース グループを作成し、Azure にデプロイします。 リソースは Azure デプロイ テンプレートで定義されます。
 ms.topic: conceptual
-ms.date: 07/15/2021
-ms.openlocfilehash: 8ecb8bb2e6b24571d91e97157ff91ba931b0719d
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.date: 09/17/2021
+ms.custom: devx-track-azurecli, seo-azure-cli
+keywords: azure cli デプロイ arm テンプレート, リソースグループの作成 azure, azure デプロイ テンプレート, デプロイ リソース, arm テンプレート, azure arm テンプレート
+ms.openlocfilehash: 5b7734e3b91f7e842f17888f3f3c67d05655fc97
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114296775"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128585016"
 ---
-# <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>ARM テンプレートと Azure CLI でリソースをデプロイする
+# <a name="how-to-use-azure-resource-manager-arm-deployment-templates-with-azure-cli"></a>Azure CLI で Azure Resource Manager (ARM) のデプロイ テンプレートを使用する方法
 
-この記事では、Azure CLI と Azure Resource Manager テンプレート (ARM テンプレート) を使用して、Azure にリソースをデプロイする方法について説明します。 Azure ソリューションのデプロイと管理の概念について詳しくない場合、「[テンプレートのデプロイの概要](overview.md)」をご覧ください。
+この記事では、Azure CLI と Azure Resource Manager テンプレート (ARM テンプレート) を使用して、Azure にリソースをデプロイする方法について説明します。  Azure ソリューションのデプロイと管理の概念について詳しくない場合、「[テンプレートのデプロイの概要](overview.md)」をご覧ください。
 
 デプロイ コマンドは Azure CLI バージョン 2.2.0 で変更されました。 この記事の例には、[Azure CLI バージョン 2.20.0 以降](/cli/azure/install-azure-cli)が必要です。
 
@@ -22,7 +24,7 @@ Azure CLI がインストールされていない場合は、Azure Cloud Shell �
 
 ## <a name="deployment-scope"></a>デプロイのスコープ
 
-リソース グループ、サブスクリプション、管理グループ、またはテナントをデプロイのターゲットにすることができます。 使用するコマンドは、デプロイのスコープに応じて異なります。
+リソース グループ、サブスクリプション、管理グループ、またはテナントを Azure デプロイのターゲットにすることができます。 使用するコマンドは、デプロイのスコープに応じて異なります。
 
 * **リソース グループ** にデプロイするには、[az deployment group create](/cli/azure/deployment/group#az_deployment_group_create) を使用します。
 
@@ -58,7 +60,7 @@ Azure CLI がインストールされていない場合は、Azure Cloud Shell �
 
 ## <a name="deploy-local-template"></a>ローカル テンプレートのデプロイ
 
-ローカル コンピューターから、または外部に格納されているテンプレートを使用して、テンプレートをデプロイできます。 ここでは、ローカル テンプレートのデプロイについて説明します。
+ローカル コンピューターからの ARM テンプレートまたは外部に格納されているものをデプロイできます。 ここでは、ローカル テンプレートのデプロイについて説明します。
 
 存在しないリソース グループにデプロイする場合、リソース グループを作成する必要があります。 リソース グループ名には、英数字、ピリオド、アンダースコア、ハイフン、かっこのみを含めることができます。 最大長は 90 文字です。 名前の末尾をピリオドにすることはできません。
 
@@ -76,7 +78,7 @@ az deployment group create \
   --parameters storageAccountType=Standard_GRS
 ```
 
-デプロイが完了するまでに数分かかる場合があります。 デプロイが完了すると、次のような結果を含むメッセージが表示されます。
+Azure デプロイ テンプレートが完了するまでに数分かかる場合があります。 デプロイが完了すると、次のような結果を含むメッセージが表示されます。
 
 ```output
 "provisioningState": "Succeeded",
@@ -118,9 +120,9 @@ az deployment group create \
 
 詳細については、[リンクされているテンプレートの相対パスを使用する](./linked-templates.md#linked-template)方法に関するページを参照してください。
 
-## <a name="deployment-name"></a>デプロイ名
+## <a name="azure-deployment-template-name"></a>Azure デプロイ テンプレート名
 
-ARM テンプレートをデプロイするときに、デプロイに名前を付けることができます。 この名前は、デプロイ履歴からデプロイを取得するのに役立ちます。 デプロイの名前を指定しない場合は、テンプレート ファイルの名前が使用されます。 たとえば、_azuredeploy.json_ という名前のテンプレートをデプロイするときにデプロイ名を指定しない場合、デプロイの名前は `azuredeploy` になります。
+ARM テンプレートをデプロイするときに、Azure デプロイ テンプレートに名前を付けることができます。 この名前は、デプロイ履歴からデプロイを取得するのに役立ちます。 デプロイの名前を指定しない場合は、テンプレート ファイルの名前が使用されます。 たとえば、_azuredeploy.json_ という名前のテンプレートをデプロイするときにデプロイ名を指定しない場合、デプロイの名前は `azuredeploy` になります。
 
 デプロイを実行するたびに、リソース グループのデプロイ履歴にデプロイ名のエントリが追加されます。 別のデプロイを実行するときに同じ名前を付けると、現在のデプロイによって前のエントリが置き換えられます。 デプロイ履歴に一意のエントリを保持する場合は、デプロイごとに一意の名前を付けます。
 
@@ -175,7 +177,7 @@ az deployment group create \
 
 ## <a name="preview-changes"></a>変更のプレビュー
 
-テンプレートをデプロイする前に、テンプレートが環境に与える変更をプレビューすることができます。 [what-if 操作](./deploy-what-if.md)を使用して、テンプレートによって必要な変更が行われるかどうかを確認します。 What-if はまた、テンプレートのエラーも検証します。
+ARM テンプレートをデプロイする前に、テンプレートが環境に与える変更をプレビューすることができます。 [what-if 操作](./deploy-what-if.md)を使用して、テンプレートによって必要な変更が行われるかどうかを確認します。 What-if はまた、テンプレートのエラーも検証します。
 
 ## <a name="parameters"></a>パラメーター
 

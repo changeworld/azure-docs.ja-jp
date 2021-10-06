@@ -4,17 +4,17 @@ titleSuffix: Azure Machine Learning
 description: Azure Machine Learning 向けの開発時に遭遇する可能性のあるセキュリティ上の脅威、軽減策、ベスト プラクティスについて説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: enterprise-readiness
 ms.topic: conceptual
 ms.author: cgronlun
 author: cjgronlund
 ms.date: 11/12/2019
-ms.openlocfilehash: 37cb70bdbd1e3c87eeb994e0959c6214822d22ad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: db0696afe7a3b6ba0f28abd4c68f677e90e894b5
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "93322973"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129430024"
 ---
 # <a name="secure-code-best-practices-with-azure-machine-learning"></a>Azure Machine Learning での安全なコードのベスト プラクティス
 

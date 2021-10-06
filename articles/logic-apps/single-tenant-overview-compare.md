@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: conceptual
-ms.date: 08/18/2021
-ms.openlocfilehash: 61dbf2f83ad135cfdef6fffcc3a8c162d0a4c0cd
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.date: 09/13/2021
+ms.openlocfilehash: fa1ea33e2e7987daa79267fb197981931ce1c2fd
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123111455"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128606268"
 ---
 # <a name="single-tenant-versus-multi-tenant-and-integration-service-environment-for-azure-logic-apps"></a>Azure Logic Apps でのシングルテナント、マルチテナント、統合サービス環境の比較
 
@@ -121,12 +121,16 @@ Azure 内で実行されている既存のりソースに対して開発を行�
 
   前のイベントのデータを保持、確認、または参照する必要がある場合は、ステートフル ワークフローを作成します。 これらのワークフローでは、各アクションとその状態のすべての入出力が外部ストレージに転送されて保存されます。これにより、各実行が完了した後にその実行の詳細と履歴を確認できます。 ステートフル ワークフローでは、サービス停止が発生した場合に高い回復性を実現できます。 サービスとシステムが復元された後に、中断された実行を保存済みの状態から再構築し、ワークフローを再実行して完了することができます。 ステートフル ワークフローは、ステートレス ワークフローよりもはるかに長い間実行を継続できます。
 
+  既定では、マルチテナントとシングルテナントの両方の Azure Logic Apps のステートフル ワークフローが非同期に実行されます。 HTTP ベースのすべてのアクションは、標準的な[非同期操作パターン](/azure/architecture/patterns/async-request-reply)に従います。 このパターンでは、HTTP アクションがエンドポイント、サービス、システム、または API に対して要求を呼び出す、または送信した後、受信側が直ちに ["202 ACCEPTED"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.3) 応答を返すよう規定されます。 このコードは、受信側が要求を受け入れたが、処理が完了していないことを確認します。 応答には、受信側が処理を停止して ["200 OK"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) 成功応答またはその他の 202 以外の応答を返すまで、呼び出し元が非同期要求の状態をポーリングまたは確認するために使用できる URI およびリフレッシュ ID を指定する `location` ヘッダーを含めることができます。 ただし、呼び出し元は要求の処理が完了するまで待機する必要はなく、次のアクションの実行を継続できます。 詳細については、[マイクロサービスの非同期統合によるマイクロサービスの自律性の強制](/azure/architecture/microservices/design/interservice-communication#synchronous-versus-asynchronous-messaging)に関するページを参照してください。
+
 * *ステートレス*
 
-  後で確認するために、各実行が完了した後に外部ストレージに前のイベントのデータを保持、確認、参照する必要がない場合は、ステートレス ワークフローを作成します。 これらのワークフローでは、各アクションとその状態の入出力を外部ストレージにではなく、"*メモリ内にのみ*" 保存します。 その結果、ステートレス ワークフローでは、実行時間が短縮され (通常は 5 分未満)、パフォーマンスが高速化されて応答時間が短くなり、スループットが向上し、実行コストが削減されます。これは、実行の詳細と履歴が外部ストレージに保存されないためです。 しかし、サービス停止が発生した場合、中断された実行は自動的には復元されないため、呼び出し元は中断された実行を手動で再送信する必要があります。 これらのワークフローは同期的にのみ実行できます。
+  後で確認するために、各実行が完了した後に外部ストレージに前のイベントのデータを保持、確認、参照する必要がない場合は、ステートレス ワークフローを作成します。 これらのワークフローでは、各アクションとその状態の入出力を外部ストレージにではなく、"*メモリ内にのみ*" 保存します。 その結果、ステートレス ワークフローでは、実行時間が短縮され (通常は 5 分未満)、パフォーマンスが高速化されて応答時間が短くなり、スループットが向上し、実行コストが削減されます。これは、実行の詳細と履歴が外部ストレージに保存されないためです。 しかし、サービス停止が発生した場合、中断された実行は自動的には復元されないため、呼び出し元は中断された実行を手動で再送信する必要があります。
 
   > [!IMPORTANT]
   > ステートレス ワークフローは、"*合計*" サイズが 64 KB を超えないファイルなどのデータやコンテンツを処理する際に、最高のパフォーマンスを発揮します。 サイズの大きな添付ファイルが複数ある場合など、コンテンツのサイズが大きくなると、ワークフローのパフォーマンスが著しく低下し、メモリ不足の例外によってワークフローのクラッシュが引き起こされることもあります。 ワークフローでより大きなサイズのコンテンツを処理する必要がある場合は、代わりにステートフル ワークフローを使用してください。
+
+  ステートレス ワークフローは同期的にのみ実行されるため、ステートフル ワークフローで使用される標準の[非同期操作パターン](/azure/architecture/patterns/async-request-reply)は使用されません。 代わりに、["202 ACCEPTED"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.3) 応答を返す HTTP ベースのすべてのアクションは、ワークフロー実行の次のステップに進みます。 応答に `location` ヘッダーが含まれる場合、ステートレス ワークフローでは、指定された URI をポーリングして状態を確認することはありません。 標準の非同期操作パターンに従うには、代わりにステートフル ワークフローを使用します。
 
   デバッグをより容易にするために、ステートレス ワークフローの実行履歴を有効にし (この場合、パフォーマンスに何らかの影響があります)、その後、完了時に実行履歴を無効にすることができます。 詳細については、[Visual Studio Code でのシングルテナント ベースのワークフローの作成](create-single-tenant-workflows-visual-studio-code.md#enable-run-history-stateless)または [Azure portal でのシングルテナント ベースのワークフローの作成](create-single-tenant-workflows-visual-studio-code.md#enable-run-history-stateless)に関するページを参照してください。
 
@@ -137,19 +141,19 @@ Azure 内で実行されている既存のりソースに対して開発を行�
 
 ### <a name="nested-behavior-differences-between-stateful-and-stateless-workflows"></a>ステートフルおよびステートレス ワークフローの入れ子になった動作の違い
 
-[Request トリガー](../connectors/connectors-native-reqres.md)、[HTTP Webhook トリガー](../connectors/connectors-native-webhook.md)、または [ApiConnectionWebhook 型](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-trigger)であり HTTPS 要求を受信できるマネージド コネクタ トリガーを使用することによって、同じ **ロジック アプリ (Standard)** リソースに存在する他のワークフローから [ワークフローを呼び出せるようにする](../logic-apps/logic-apps-http-endpoint.md)ことができます。
+[Request トリガー](../connectors/connectors-native-reqres.md)、[HTTP Webhook トリガー](../connectors/connectors-native-webhook.md)、または [ApiConnectionWebhook 型](logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-trigger)であり HTTPS 要求を受信できるマネージド コネクタ トリガーを使用することによって、同じ **ロジック アプリ (Standard)** リソースに存在する他のワークフローから [ワークフローを呼び出せるようにする](logic-apps-http-endpoint.md)ことができます。
 
 親ワークフローで子ワークフローが呼び出された後、入れ子になったワークフローで従うことができる動作パターンを次に示します。
 
 * 非同期ポーリング パターン
 
-  親は最初の呼び出しに対する応答を待機せず、子が実行を終了するまで、子の実行履歴を継続的にチェックします。 既定では、ステートフルなワークフローはこのパターンに従います。これは、[要求タイムアウト制限](../logic-apps/logic-apps-limits-and-config.md)を超える可能性がある、長時間実行される子ワークフローに適しています。
+  親は最初の呼び出しに対する応答を待機せず、子が実行を終了するまで、子の実行履歴を継続的にチェックします。 既定では、ステートフルなワークフローはこのパターンに従います。これは、[要求タイムアウト制限](logic-apps-limits-and-config.md)を超える可能性がある、長時間実行される子ワークフローに適しています。
 
 * 同期パターン ("ファイア アンド フォーゲット")
 
   子は `202 ACCEPTED` 応答を直ちに返すことによって呼び出しを確認し、親は子の結果を待たずに次のアクションに進みます。 代わりに、子の実行が終了すると、親は結果を受信します。 応答アクションを含まない子のステートフルなワークフローは、常に同期パターンに従います。 子ワークフローがステートフルである場合は、実行履歴を確認することができます。
 
-  この動作を有効にするには、ワークフローの JSON 定義で、`operationOptions` プロパティを `DisableAsyncPattern` に設定します。 詳細については、[トリガーとアクションの種類 (操作オプション)](../logic-apps/logic-apps-workflow-actions-triggers.md#operation-options) に関するページを参照してください。
+  この動作を有効にするには、ワークフローの JSON 定義で、`operationOptions` プロパティを `DisableAsyncPattern` に設定します。 詳細については、[トリガーとアクションの種類 (操作オプション)](logic-apps-workflow-actions-triggers.md#operation-options) に関するページを参照してください。
 
 * トリガーと待機
 
@@ -173,7 +177,7 @@ Azure 内で実行されている既存のりソースに対して開発を行�
 
 * サービスとしてのソフトウェア (SaaS) およびサービスとしてのプラットフォーム (PaaS) のアプリとサービス用の [400 以上のマネージド コネクタ](/connectors/connector-reference/connector-reference-logicapps-connectors)や、オンプレミス システム用のコネクタから、ロジック アプリとそのワークフローを作成します。
 
-  * 組み込み操作として利用できるマネージド コネクタの数は増加しており、他の組み込み操作 (Azure Functions など) と同様に実行できます。 組み込み操作は、シングルテナント Azure Logic Apps ランタイムでネイティブに実行されます。 たとえば、新しい組み込み操作には Azure Service Bus、Azure Event Hubs、SQL Server、MQ などが含まれます。
+  * 組み込み操作として利用できるマネージド コネクタの数は増加しており、他の組み込み操作 (Azure Functions など) と同様に実行できます。 組み込み操作は、シングルテナント Azure Logic Apps ランタイムでネイティブに実行されます。 たとえば、新しい組み込み操作には Azure Service Bus、Azure Event Hubs、SQL Server、MQ、DB2、IBM ホスト ファイルなどが含まれます。
 
     > [!NOTE]
     > 組み込みの SQL Server バージョンの場合、 **[クエリの実行]** アクションのみが、[オンプレミス データ ゲートウェイ](logic-apps-gateway-connection.md)を使用せずに Azure 仮想ネットワークに直接接続できます。
@@ -194,7 +198,9 @@ Azure 内で実行されている既存のりソースに対して開発を行�
   * Azure Logic Apps によって、ロジック アプリでクラウド接続ランタイム エンドポイントに要求を送信するために使用できる Shared Access Signature (SAS) 接続文字列が生成されるため、**ロジック アプリ (Standard)** リソースはどこでも実行できます。 Azure Logic Apps サービスによって、これらの接続文字列が他のアプリケーション設定とともに保存されるため、Azure にデプロイするときにこれらの値を Azure Key Vault に簡単に格納できます。
 
     > [!NOTE]
-    > 既定では、**ロジック アプリ (Standard)** リソースには、実行時に接続を認証するために自動的に有効にされる [システム割り当てマネージド ID](../logic-apps/create-managed-service-identity.md) があります。 この ID は、接続の作成時に使用する認証資格情報または接続文字列とは異なります。 この ID を無効にした場合、接続は実行時に機能しません。 この設定を表示するには、ロジック アプリのメニューの **[設定]** で、 **[ID]** を選択します。
+    > 既定では、**ロジック アプリ (Standard)** のリソースの種類には、実行時に接続を認証するために自動的に有効にされる[システム割り当てマネージド ID](create-managed-service-identity.md) があります。 この ID は、接続の作成時に使用する認証資格情報または接続文字列とは異なります。 この ID を無効にした場合、接続は実行時に機能しません。 この設定を表示するには、ロジック アプリのメニューの **[設定]** で、 **[ID]** を選択します。
+    >
+    > 現在、ユーザー割り当てマネージド ID は **ロジック アプリ (Standard)** のリソースの種類では使用できません。
 
 * Visual Studio Code 開発環境でローカルにロジック アプリとそのワークフローを実行、テスト、デバッグできます。
 
@@ -218,7 +224,7 @@ Azure 内で実行されている既存のりソースに対して開発を行�
 
 **ロジック アプリ (Standard)** リソースでは、これらの機能は変更されているか、現在制限されているか、使用できないか、またはサポートされていません。
 
-* **トリガーとアクション**: 組み込みのトリガーとアクションは、シングルテナント Azure Logic Apps ランタイムでネイティブに実行されますが、マネージド コネクタは Azure 内でホストされて実行されます。 スライディング ウィンドウやバッチなど、一部の組み込みトリガーは使用できません。 ステートフルまたはステートレス　ワークフローを開始するには、[組み込みの Recurrence、Request、HTTP、HTTP Webhook、Event Hubs、または Service Bus トリガー](../connectors/apis-list.md)を使用します。 デザイナーで、組み込みのトリガーとアクションは、 **[組み込み]** タブの下に表示されます。
+* **トリガーとアクション**: 組み込みのトリガーとアクションは、Azure Logic Apps でネイティブに実行されますが、マネージド コネクタは Azure 内でホストされて実行されます。 スライディング ウィンドウ、Batch、Azure App Services、Azure API Management などの一部の組み込みトリガーとアクションは使用できません。 ステートフルまたはステートレス　ワークフローを開始するには、[組み込みの Recurrence、Request、HTTP、HTTP Webhook、Event Hubs、または Service Bus トリガー](../connectors/apis-list.md)を使用します。 デザイナーで、組み込みのトリガーとアクションは、 **[組み込み]** タブの下に表示されます。
 
   "*ステートフル*" ワークフローの場合、[マネージド コネクタのトリガーとアクション](../connectors/managed.md)は、以下に示す使用できない操作を除き、 **[Azure]** タブの下に表示されます。 "*ステートレス*" ワークフローの場合、トリガーを選択したいときに **[Azure]** タブは表示されません。 選択できるのは、[マネージド コネクタの "*アクション*" のみで、トリガーはできません](../connectors/managed.md)。 Azure でホストされているマネージド コネクタをステートレス ワークフローに対して有効にすることはできますが、デザイナーには、追加できるマネージド コネクタのトリガーは表示されません。
 
@@ -242,11 +248,17 @@ Azure 内で実行されている既存のりソースに対して開発を行�
 
     * 組み込みアクションである [[Azure Logic Apps - Choose a Logic App workflow]\([Azure Logic Apps] - [ロジック アプリ ワークフローを選択する]\)](logic-apps-http-endpoint.md) は、 **[Workflow Operations - Invoke a workflow in this workflow app]\([ワークフロー操作] - [このワークフロー アプリでワークフローを呼び出す]\)** になりました。
 
-    * [統合アカウントに対する組み込みのトリガーとアクション](../connectors/managed.md#integration-account-connectors)の一部は使用できません。たとえば、**フラット ファイル** のエンコードやデコード アクションです。
+    * フラット ファイル アクション、AS2 (V2) アクション、RosettaNet アクションなどの一部の[統合アカウント用トリガーとアクション](../connectors/managed.md#integration-account-connectors)は使用できません。
 
     * 現在、[カスタムのマネージド コネクタ](../connectors/apis-list.md#custom-apis-and-connectors)はサポートされていません。 ただし、Visual Studio Code を使用する場合は、"*カスタムの組み込み操作*" を作成できます。 詳細については、[Visual Studio Code を使用したシングルテナント ベースのワークフローの作成](create-single-tenant-workflows-visual-studio-code.md#enable-built-in-connector-authoring)に関するページを参照してください。
 
-* XML 変換では、マップからのアセンブリ参照のサポートは現在使用できません。 また、現在は XSLT 1.0 のみがサポートされています。
+* **認証**: 現在、次の認証の種類は、**ロジック アプリ (Standard)** のリソースの種類では使用できません。
+
+  * 要求トリガーや HTTP Webhook トリガーなど、要求ベースのトリガーへの受信呼び出しに対する Azure Active Directory Open Authorization (Azure AD OAuth)。
+
+  * ユーザー割り当てマネージド ID。 現時点では、システム割り当てマネージド ID のみが使用でき、自動的に有効になります。
+
+* **XML 変換**: マップからのアセンブリ参照のサポートは現在使用できません。 また、現在は XSLT 1.0 のみがサポートされています。
 
 * **Visual Studio Code でのデバッグのブレークポイント**: ワークフローの **workflow.json** ファイル内にブレークポイントを追加して使用することはできますが、ブレークポイントは現時点ではトリガーではなく、アクションに対してのみサポートされます。 詳細については、[Visual Studio Code でのシングルテナント ベースのワークフローの作成](create-single-tenant-workflows-visual-studio-code.md#manage-breakpoints)に関するページを参照してください。
 
@@ -254,7 +266,7 @@ Azure 内で実行されている既存のりソースに対して開発を行�
 
 * **ズーム コントロール**: 現在、デザイナーでズーム コントロールは使用できません。
 
-* **デプロイ ターゲット**: **ロジック アプリ (Standard)** のリソースの種類は、[統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) にも Azure デプロイ スロットにもデプロイできません。
+* **デプロイ ターゲット**: **ロジック アプリ (Standard)** のリソースの種類は、[統合サービス環境 (ISE)](connect-virtual-network-vnet-isolated-environment-overview.md) にも Azure デプロイ スロットにもデプロイできません。
 
 * **Azure API Management**: 現在、**ロジック アプリ (Standard)** のリソースの種類を Azure API Management にインポートすることはできません。 ただし、**ロジックアプリ (従量課金)** のリソースの種類はインポートできます。
 

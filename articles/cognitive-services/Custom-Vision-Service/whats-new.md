@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: overview
-ms.date: 05/24/2021
+ms.date: 09/27/2021
 ms.author: pafarley
-ms.openlocfilehash: 78986eca3d1db65afb8ac4e0ca8ff76a0e3201eb
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 677a5ff8214c8f43ec5dfe1d6d6e73b1d03b2650
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110451964"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129356952"
 ---
 # <a name="whats-new-in-custom-vision"></a>Custom Vision の新機能
 

@@ -10,12 +10,13 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
-ms.openlocfilehash: 6f59bc46ee5b8fb8f14693a0c30350213641be1e
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ROBOTS: NOINDEX
+ms.openlocfilehash: 7679c10a5b40edb163974c246fe7fb219ec8effa
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122691705"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129274636"
 ---
 # <a name="deprecated-login-to-a-linux-virtual-machine-in-azure-with-azure-active-directory-using-device-code-flow-authentication"></a>非推奨: デバイス コード フロー認証を使用して Azure Active Directory で Azure の Linux 仮想マシンにログインする
 

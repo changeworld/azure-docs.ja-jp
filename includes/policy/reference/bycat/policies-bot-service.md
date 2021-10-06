@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 09/03/2021
+ms.date: 09/17/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 877315ef266dbd877aa8223c985ee8f77a070112
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 84e64159a53f8df5a311c2e8a3cc930f1e17cbf7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123477116"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128655136"
 ---
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -18,3 +18,6 @@ ms.locfileid: "123477116"
 |[Bot Service は、カスタマー マネージド キーを使用して暗号化する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F51522a96-0869-4791-82f3-981000c2c67f) |Azure Bot Service は、リソースを自動的に暗号化してデータを保護し、組織のセキュリティとコンプライアンスのコミットメントを満たします。 既定では、Microsoft マネージド暗号化キーが使用されます。 キーの管理やサブスクリプションへのアクセスの制御の柔軟性を高めるには、カスタマー マネージド キーを選択します。これは、Bring Your Own Key (BYOK) とも呼ばれます。 Azure Bot Service 暗号化の詳細については、[https://docs.microsoft.com/azure/bot-service/bot-service-encryption](/azure/bot-service/bot-service-encryption) を参照してください。 |audit、deny、disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Bot%20Service/BotService_CMKEnabled_Audit.json) |
 |[Bot Service で分離モードが有効になっている必要があります](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F52152f42-0dda-40d9-976e-abb1acdd611e) |ボットは "分離のみ" モードに設定されている必要があります。 この設定により、パブリック インターネット経由のトラフィックを必要とする Bot Service チャンネルは無効となるように構成されます。 |audit、deny、disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Bot%20Service/BotService_NetworkIsolatedEnabled_Audit.json) |
 |[Bot Service では、ローカル認証方法を無効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fffea632e-4e3a-4424-bf78-10e179bb2e1a) |ローカル認証方法を無効にすると、ボットが認証のために AAD のみ使用するようになり、セキュリティが強化されます。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Bot%20Service/BotService_DisableLocalAuth_Audit.json) |
+|[BotService リソースでは、プライベート リンクを使用する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fad5621d6-a877-4407-aa93-a950b428315e) |Azure Private Link を使用すると、接続元または接続先にパブリック IP アドレスを使用せずに、仮想ネットワークを Azure サービスに接続できます。 Private Link プラットフォームでは、Azure のバックボーン ネットワークを介してコンシューマーとサービスの間の接続が処理されます。 BotService リソースにプライベート エンドポイントをマッピングすると、データ漏えいのリスクが軽減されます。 |Audit、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Bot%20Service/BotService_PrivateEndpoint_Audit.json) |
+|[プライベート DNS ゾーンを使用するように BotService リソースを構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6a4e6f44-f2af-4082-9702-033c9e88b9f8) |プライベート DNS ゾーンを使用して、プライベート エンドポイントの DNS 解決をオーバーライドします。 プライベート DNS ゾーンは、BotService 関連リソースに解決するために、仮想ネットワークにリンクします。 詳細については、[https://aka.ms/privatednszone](../../../../articles/private-link/private-endpoint-dns.md) を参照してください。 |DeployIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Bot%20Service/BotService_PrivateDNSZone_DeployIfNotExists.json) |
+|[プライベート エンドポイントを使用して BotService リソースを構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F29261f8e-efdb-4255-95b8-8215414515d6) |プライベート エンドポイントを使用すると、接続元または接続先にパブリック IP アドレスを使用せずに、仮想ネットワークが Azure サービスに接続されます。 BotService リソースにプライベート エンドポイントをマッピングすると、データ漏えいのリスクを軽減できます。 |DeployIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Bot%20Service/BotService_PrivateEndpoint_DeployIfNotExists.json) |

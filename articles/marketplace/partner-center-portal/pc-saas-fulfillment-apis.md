@@ -5,14 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/18/2020
-author: mingshen-ms
-ms.author: mingshen
-ms.openlocfilehash: 2e6381afb19018822f6f37171a5ca4b3d929b42e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+author: saasguide
+ms.author: souchak
+ms.openlocfilehash: 50bb572d7fc9c05bb22c8ab35851df7a58dc2562
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88037526"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129455940"
 ---
 # <a name="saas-fulfillment-apis-in-the-microsoft-commercial-marketplace"></a>Microsoft コマーシャル マーケットプレースの SaaS Fulfillment API
 

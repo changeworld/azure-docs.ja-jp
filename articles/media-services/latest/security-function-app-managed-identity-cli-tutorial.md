@@ -6,14 +6,14 @@ author: IngridAtMicrosoft
 manager: femila
 ms.service: media-services
 ms.topic: tutorial
-ms.date: 05/18/2021
+ms.date: 09/13/2021
 ms.author: inhenkel
-ms.openlocfilehash: 6352c86581da356f4b2bab1a80dd463d502a9ae3
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: dc05d6488978004eebee68b901214ab71f0fffd4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110481791"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128656647"
 ---
 # <a name="tutorial-give-an-azure-function-app-access-to-a-media-services-account"></a>チュートリアル: Azure 関数アプリに Media Services アカウントへのアクセス権を付与する
 
@@ -61,7 +61,7 @@ ms.locfileid: "110481791"
 > 00000000-0000-0000-0000000000 で表されるものは、リソースの一意の識別子です。  通常、この値は JSON 応答によって返されます。 また、JSON 応答には、後の CLI コマンドに必要な値が含まれているため、これらの応答をコピーしてメモ帳または他のテキスト エディターに貼り付けることをお勧めします。<br/><br/>
 > また、リージョン名は作成しないでください。  リージョン名は Azure によって決定されます。
 
-### <a name="list-azure-regions"></a>Azure リージョンの一覧表示
+### <a name="list-azure-regions"></a>Azure リージョンを一覧表示する
 
 使用する実際のリージョン名が不明な場合は、次のコマンドを使用して一覧を取得します。
 
@@ -69,11 +69,11 @@ ms.locfileid: "110481791"
 
 ## <a name="sequence"></a>シーケンス
 
-JSON 応答から 1 つ以上の値がシーケンスの次のステップで使用されるため、下の各ステップは特定の順序で実行されます。
+JSON 応答から 1 つまたは複数の値がシーケンスの次の手順で使用されるため、下の各手順は特定の順序で行われます。
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-作成するリソースは、リソース グループに属している必要があります。 まず、リソース グループを作成します。 Media Services アカウントの作成ステップと後続のステップには、`your-resource-group-name` を使用します。
+作成するリソースは、リソース グループに属している必要があります。 まず、リソース グループを作成します。 Media Services アカウントの作成手順と後続の手順には、`your-resource-group-name` を使用します。
 
 [!INCLUDE [Create a resource group with the CLI](./includes/task-create-resource-group-cli.md)]
 
@@ -117,34 +117,35 @@ func new --name OnAir --template "HTTP trigger" --authlevel "anonymous"
 
 ## <a name="configure-the-functions-project"></a>関数プロジェクトを構成する
 
-### <a name="add-items-to-the-csproj-file"></a>項目を .csproj ファイルに追加する
+### <a name="install-media-services-and-other-extensions"></a>Media Services とその他の拡張機能をインストールする
 
-自動生成された ".csproj" ファイルで、最初の `<ItemGroup>` に次の行を追加します。
+ターミナル ウィンドウで dotnet add package コマンドを実行して、プロジェクトに必要な拡張機能パッケージをインストールします。 次のコマンドを実行すると、Media Services と Azure ID パッケージがインストールされます。
 
-```xml
-<PackageReference Include="Microsoft.Azure.Management.Fluent" Version="1.37.0" />
-<PackageReference Include="Microsoft.Azure.Management.Media" Version="3.0.4" />
+```bash
+dotnet add package Microsoft.Azure.Management.Media
+dotnet add package Azure.Identity
 ```
 
 ### <a name="edit-the-onaircs-code"></a>OnAir.cs コードを編集する
 
 `OnAir.cs` ファイルを変更します。 `subscriptionId`、`resourceGroup`、`mediaServicesAccountName` の各変数を、前に決定したものに変更します。
 
-```aspx-csharp
-using System.Threading.Tasks;
+```csharp
+using Azure.Core;
+using Azure.Identity;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Azure.Management.Media;
+using Microsoft.Azure.Management.Media.Models;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
-using Microsoft.Azure.Management.Media;
-using Microsoft.Azure.Management.ResourceManager.Fluent.Authentication;
-using Microsoft.Azure.Management.ResourceManager.Fluent;
-using Microsoft.Azure.Management.Media.Models;
+using Microsoft.Rest;
+using System.Threading.Tasks;
 
 namespace MediaServicesLiveMonitor
 {
-    public static class LatestAsset
+    public static class OnAir
     {
         [FunctionName("OnAir")]
         public static async Task<IActionResult> Run(
@@ -159,14 +160,18 @@ namespace MediaServicesLiveMonitor
             {
                 return new BadRequestObjectResult("Missing 'name' URL parameter");
             }
-            
-            var credentials = SdkContext.AzureCredentialsFactory.FromSystemAssignedManagedServiceIdentity(
-                MSIResourceType.AppService,
-                AzureEnvironment.AzureGlobalCloud);
 
-            var subscriptionId = "00000000-0000-0000-000000000000";    // Update
-            var resourceGroup = "<your-resource-group-name>";                                    // Update
-            var mediaServicesAccountName = "<your-media-services-account-name>";                    // Update
+            var credential = new ManagedIdentityCredential();
+            var accessTokenRequest = await credential.GetTokenAsync(
+                new TokenRequestContext(
+                    scopes: new string[] { "https://management.core.windows.net" + "/.default" }
+                    )
+                );
+            ServiceClientCredentials credentials = new TokenCredentials(accessTokenRequest.Token, "Bearer");
+
+            var subscriptionId = "00000000-0000-0000-000000000000";                 // Update
+            var resourceGroup = "<your-resource-group-name>";                       // Update
+            var mediaServicesAccountName = "<your-media-services-account-name>";    // Update
 
             var mediaServices = new AzureMediaServicesClient(credentials)
             {
@@ -179,7 +184,7 @@ namespace MediaServicesLiveMonitor
             {
                 return new NotFoundResult();
             }
-            
+
             return new OkObjectResult(liveEvent.ResourceState == LiveEventResourceState.Running ? "On air" : "Off air");
         }
     }

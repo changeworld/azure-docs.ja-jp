@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/11/2021
+ms.date: 09/02/2021
 ms.author: jeedes
-ms.openlocfilehash: c88ff4b65e9655ec931ee663641a446a1838772b
-ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+ms.openlocfilehash: 22206e91842a71e4dd41102a4ba9a86e11649201
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112062549"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124785650"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-spaceiq"></a>チュートリアル: Azure Active Directory と SpaceIQ の統合
 
@@ -38,6 +38,7 @@ SpaceIQ と Azure AD の統合を構成するには、次のものが必要で�
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
 * SpaceIQ では、**IDP** Initiated SSO がサポートされます。
+* SpaceIQ では、[自動化されたユーザー プロビジョニング](spaceiq-provisioning-tutorial.md)がサポートされます。
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -147,13 +148,15 @@ SpaceIQ に対して Azure AD SSO を構成してテストするには、次の�
 
 このセクションでは、SpaceIQ で Britta Simon というユーザーを作成します。 [SpaceIQ サポート チーム](mailto:eng@spaceiq.com) と協力して、SpaceIQ プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
+SpaceIQ では、自動ユーザー プロビジョニングもサポートされます。自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](./spaceiq-provisioning-tutorial.md)をご覧ください。
+
 ## <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した SpaceIQ に自動的にサインインされます。
 
-* Microsoft マイ アプリを使用することができます。 マイアプリで [SpaceIQ] タイルをクリックすると、SSO を設定した SpaceIQ に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイアプリで [SpaceIQ] タイルをクリックすると、SSO を設定した SpaceIQ に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

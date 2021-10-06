@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: この記事では、Azure Machine Learning を使用して、GPU 対応の Tensorflow ディープ ラーニング モデルを Web サービスとしてデプロイし、推論要求をスコア付けする方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
 ms.date: 06/17/2020
 ms.topic: how-to
 ms.custom: devx-track-python, deploy
-ms.openlocfilehash: 58518d921ac728901258e5335d045dfd4262dd0e
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: eec009303938195fffe6c2ddb0ad6d44a2e1a8b0
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114446599"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129425394"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>GPU を使用した推論のためのディープ ラーニング モデルをデプロイする
 

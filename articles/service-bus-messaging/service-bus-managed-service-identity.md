@@ -4,12 +4,12 @@ description: この記事では、Azure Service Bus エンティティ (キュ�
 ms.topic: article
 ms.date: 06/14/2021
 ms.custom: subject-rbac-steps
-ms.openlocfilehash: ed6f7d495466139a7d1a98aed7d5323f7ad4c074
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: dad610902514849db33ca00b2da3f328d233260e
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112123204"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129358069"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Azure Service Bus リソースにアクセスするために Azure Active Directory を使用してマネージド ID を認証する
 [Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) は、デプロイに関連付けられ、その下でアプリケーション コードが実行されるセキュリティ保護された ID を作成できる Azure 間機能です。 この ID は、アプリケーションに必要な特定の Azure リソースにアクセスするためのカスタム アクセス許可を付与するアクセス制御ロールに関連付けることができます。
@@ -61,7 +61,7 @@ Azure Service Bus の場合、名前空間およびそれに関連するすべ�
 > [!NOTE]
 > Azure ロールの割り当ての反映には最大で 5 分かかる場合があることに留意してください。 
 
-組み込みのロールの定義方法の詳細については、[ロール定義](../role-based-access-control/role-definitions.md#management-and-data-operations)に関するページを参照してください。 Azure カスタム ロールの作成については、「[Azure カスタム ロール](../role-based-access-control/custom-roles.md)」を参照してください。
+組み込みのロールの定義方法の詳細については、[ロール定義](../role-based-access-control/role-definitions.md#control-and-data-actions)に関するページを参照してください。 Azure カスタム ロールの作成については、「[Azure カスタム ロール](../role-based-access-control/custom-roles.md)」を参照してください。
 
 ## <a name="enable-managed-identities-on-a-vm"></a>VM 上のマネージド ID を有効にする
 Azure リソースのマネージド ID を使用して、ご利用の VM から Service Bus リソースを承認するには、最初に VM 上で Azure リソースのマネージド ID を有効にする必要があります。 Azure リソースのマネージド ID を有効にする方法については、次の記事のいずれかを参照してください。

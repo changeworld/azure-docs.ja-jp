@@ -15,16 +15,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/11/2021
 ms.author: ofshezaf
-ms.openlocfilehash: a08fff90197315edbfb78cb76a1c41bc84f90d69
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: b3dc1575258c495a2be63eced6aa141c60bb6631
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123538347"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128659440"
 ---
 # <a name="azure-sentinel-information-model-asim-parsers-public-preview"></a>Azure Sentinel Information Model (ASIM) パーサー (パブリック プレビュー)
 
 Azure Sentinel では、解析と[正規化](normalization.md)はクエリ時に行われます。 パーサーは [KQL ユーザー定義関数](/azure/data-explorer/kusto/query/functions/user-defined-functions)として構築され、**CommonSecurityLog**、カスタム ログテーブル、Syslog などの既存のテーブルのデータを正規化されたスキーマに変換します。 パーサーをワークスペース関数として保存すると、すべての Azure Sentinel テーブルと同じように使用できます。
+
+> [!TIP]
+> また、[Azure Sentinel の正規化パーサーと正規化されたコンテンツに関する詳細なウェビナー](https://www.youtube.com/watch?v=zaqblyjQW6k)を視聴するか、[スライド](https://1drv.ms/b/s!AnEPjr8tHcNmjGtoRPQ2XYe3wQDz?e=R3dWeM)を確認してください。 詳細については、「[次のステップ](#next-steps)」を参照してください。
+>
 
 > [!IMPORTANT]
 > 現在、ASIM はプレビュー段階です。 [Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)には、ベータ版、プレビュー版、またはまだ一般提供されていない Azure 機能に適用される追加の法律条項が含まれています。
@@ -277,12 +281,13 @@ let DnsGeneric=(starttime:datetime=datetime(null), endtime:datetime=datetime(nul
 >
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a><a name="next-steps"></a>次のステップ
 
 この記事では、Azure Sentinel Information Model (ASIM) のパーサーについて説明します。
 
 詳細については、次を参照してください。
 
+- [Azure Sentinel の正規化パーサーと正規化されたコンテンツに関する詳細なウェビナー](https://www.youtube.com/watch?v=zaqblyjQW6k)を視聴するか、[スライド](https://1drv.ms/b/s!AnEPjr8tHcNmjGtoRPQ2XYe3wQDz?e=R3dWeM)を確認してください。
 - [Azure Sentinel 情報モデルの概要](normalization.md)
 - [Azure Sentinel Information Model のスキーマ](normalization-about-schemas.md)
 - [Azure Sentinel Information Model のコンテンツ](normalization-content.md)

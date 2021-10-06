@@ -1,131 +1,124 @@
 ---
-title: Application Gateway の一般的な Key Vault エラー
+title: Application Gateway の一般的なキー コンテナー エラー
 titleSuffix: Azure Application Gateway
-description: この記事は、Key Vault に関連する問題を特定し、それらを解決して Application Gateway の円滑な運用を行うために役立ちます。
+description: この記事では、キー コンテナー関連の問題を識別し、Application Gateway のスムーズな操作のためにユーザーがこれらの問題を解決できるように支援します。
 services: application-gateway
 author: jaesoni
 ms.service: application-gateway
 ms.topic: reference
 ms.date: 07/12/2021
 ms.author: jaysoni
-ms.openlocfilehash: 9be1caf74a7eeaa225c2025767eeef86053c17a9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 4f873e6fb751f3b368d86413c201b70634d9c7ce
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121748798"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128644089"
 ---
-# <a name="common-key-vault-errors-in-application-gateway"></a>Application Gateway の一般的な Key Vault エラー
+# <a name="common-key-vault-errors-in-azure-application-gateway"></a>Azure Application Gateway の一般的なキー コンテナー エラー
 
-このトラブルシューティング ガイドは、Key Vault エラー コード、その原因、および問題の原因となっている関連する Key Vault リソースの詳細を理解するのに役立ちます。 また、このような構成の誤りを解決するステップ バイ ステップ ガイドも含まれています。
-
-> [!NOTE]
-> Application Gateway の Key Vault の診断のログは、4 時間間隔で生成されます。 そのため、構成を修正した後も診断でエラーが引き続き表示される場合は、ログが更新されるのを待つ必要がある場合があります。
+この記事では、発生する可能性のあるキー コンテナー エラー コードの詳細 (これらのエラーの原因を含む) をユーザーが理解できるように支援します。 この記事にはまた、このような構成の誤りを解決する手順も含まれています。
 
 > [!TIP]
-> バージョンレスのシークレット識別子を使用することをお勧めします。 これにより、Key Vault で新しいバージョンが利用可能な場合は、Application Gateway は証明書を自動的にローテーションします。  バージョンのないシークレット URI の例: `https://myvault.vault.azure.net/secrets/mysecret/`。
+> バージョンを指定しないシークレット識別子を使用してください。 これにより、Azure Key Vault で新しいバージョンが使用できる場合、Azure Application Gateway は証明書を自動的にローテーションします。 バージョンのないシークレット URI の例には `https://myvault.vault.azure.net/secrets/mysecret/` があります。
 
-### <a name="list-of-error-codes-and-their-details"></a>エラー コードとその詳細の一覧
+## <a name="list-of-error-codes-and-their-details"></a>エラー コードとその詳細の一覧
+
+以降のセクションには、発生する可能性のあるさまざまなエラーが含まれています。 これらの詳細は Azure Advisor で確認できるため、このトラブルシューティングに関する記事はこれらの問題を解決するために使用してください。 詳細については、「[Azure portal を使用して新しい推奨事項に合わせて Azure Advisor アラートを作成する](https://docs.microsoft.com/azure/advisor/advisor-alerts-portal)」を参照してください。
+
+> [!NOTE]
+> Azure Application Gateway では、キー コンテナーの診断に関するログを 4 時間ごとに生成します。 構成を修正した後も診断で引き続きエラーが表示される場合は、ログが更新されるまで待つことが必要になる可能性があります。
 
 [comment]: # (エラー コード 1)
-#### <a name="1-error-code-userassignedidentitydoesnothavegetpermissiononkeyvault"></a>**1) エラー コード:** UserAssignedIdentityDoesNotHaveGetPermissionOnKeyVault 
+### <a name="error-code-userassignedidentitydoesnothavegetpermissiononkeyvault"></a>エラー コード: UserAssignedIdentityDoesNotHaveGetPermissionOnKeyVault 
 
-**説明:** 関連付けられたユーザー割り当てマネージド ID に GET アクセス許可が付与されていません。 
+**説明:** 関連付けられているユーザー割り当てマネージド ID に "Get" アクセス許可がありません。 
 
-**解決方法:** Key Vault のアクセス ポリシーを構成し、関連付けられた ユーザー割り当てマネージド ID にシークレットに対する GET アクセス許可を付与します。 
-1. Azure portal で、リンクされた Key Vault に移動します
-2. [アクセス ポリシー] ブレードを開きます
-3. アクセス許可モデルの [コンテナー アクセス ポリシー] を選択します
-4. 該当のユーザー割り当てマネージド ID でシークレットで "Get" アクセス許可を選択します
-5. 構成を保存する
+**解決方法:** ユーザー割り当てマネージド ID にシークレットに対するこのアクセス許可を付与するように Key Vault のアクセス ポリシーを構成します。 
+1. Azure portal で、リンクされたキー コンテナーに移動します。
+1. **[アクセス ポリシー]** ペインを開きます。
+1. **[アクセス許可モデル]** で、 **[コンテナー アクセス ポリシー]** を選択します。
+1. **[シークレットの管理操作]** で、 **[取得]** アクセス許可を選択します。
+1. **[保存]** を選択します。
 
+:::image type="content" source="./media/application-gateway-key-vault-common-errors/no-get-permssion-for-managed-identity.png " alt-text="Get アクセス許可のエラーを解決する方法を示すスクリーンショット。":::
 
-:::image type="content" source="./media/application-gateway-key-vault-common-errors/no-get-permssion-for-managed-identity.png " alt-text="ユーザー割り当て ID に Key Vault の Get アクセス許可がありません。":::
-
-Key Vault のアクセス ポリシーに関する完全なガイドについては、この[記事](../key-vault/general/assign-access-policy-portal.md)を参照してください。
-</br></br>
-
-
+詳細については、[Azure portal を使用した Key Vault アクセス ポリシーの割り当て](../key-vault/general/assign-access-policy-portal.md)に関するページを参照してください。
 
 [comment]: # (エラー コード 2)
-#### <a name="2-error-code-secretdisabled"></a>**2) エラー コード:** SecretDisabled 
+### <a name="error-code-secretdisabled"></a>エラー コード: SecretDisabled 
 
-**説明:** Key Vault で、関連付けられている証明書が無効になっています。 
+**説明:** 関連付けられている証明書が Key Vault で無効になっています。 
 
 **解決方法:** Application Gateway に現在使用されている証明書のバージョンを再び有効にします。
-1. Azure portal で、リンクされた Key Vault に移動します
-2. [証明書] ブレードを開きます
-3. 必要な証明書名をクリックし、無効なバージョンをクリックします
-4. 管理ページのトグルを使用して、その証明書のバージョンを有効にします
+1. Azure portal で、リンクされたキー コンテナーに移動します。
+1. **[証明書]** ペインを開きます。
+1. 必要な証明書名を選択してから、無効になっているバージョンを選択します。
+1. 管理ページで、トグルを使用して、その証明書バージョンを有効にします。
 
-:::image type="content" source="./media/application-gateway-key-vault-common-errors/secret-disabled.png" alt-text="シークレットを再び有効にします。":::
-</br></br>
-
+:::image type="content" source="./media/application-gateway-key-vault-common-errors/secret-disabled.png" alt-text="シークレットを再び有効にする方法を示すスクリーンショット。":::
 
 [comment]: # (エラー コード 3)
-#### <a name="3-error-code-secretdeletedfromkeyvault"></a>**3) エラー コード:** SecretDeletedFromKeyVault 
+### <a name="error-code-secretdeletedfromkeyvault"></a>エラー コード: SecretDeletedFromKeyVault 
 
 **説明:** 関連付けられている証明書が Key Vault から削除されています。 
 
-**解決方法:** Key Vault 内の削除された証明書オブジェクトは、論理的な削除の回復機能を使用して復旧できます。 削除された証明書を復旧するには、 
-1. Azure portal で、リンクされた Key Vault に移動します
-2. [証明書] ブレードを開きます
-3. [Manage Deleted Certificates]\(削除された証明書の管理\) タブを使用して、削除された証明書を復旧します。
+**解決方法:** 削除された証明書を復旧するには、次の手順を実行します。 
+1. Azure portal で、リンクされたキー コンテナーに移動します。
+1. **[証明書]** ペインを開きます。
+1. **[マネージド削除された証明書]** タブを使用して、削除された証明書を復旧します。
 
-一方、証明書オブジェクトが完全に削除された場合は、新しい証明書を作成し、新しい証明書の詳細で Application Gateway を更新する必要があります。 Azure CLI または Azure PowerShell を使用して構成する場合は、バージョンレスのシークレット識別子 URI を使用し、インスタンスが証明書の更新されたバージョン (存在する場合) を取得できるようにすることをお勧めします。
+これに対して、その証明書オブジェクトが永続的に削除されている場合は、新しい証明書を作成し、その新しい証明書の詳細で Application Gateway を更新する必要があります。 Azure CLI または Azure PowerShell を使用して構成している場合は、バージョンのないシークレット識別子 URI を使用します。 この選択により、インスタンスで、更新されたバージョンの証明書 (存在する場合) を取得できるようになります。
 
-:::image type="content" source="./media/application-gateway-key-vault-common-errors/secret-deleted.png " alt-text="Key Vault で削除された証明書を復旧します。":::
-</br></br>
-
+:::image type="content" source="./media/application-gateway-key-vault-common-errors/secret-deleted.png " alt-text="Key Vault の削除された証明書を復旧する方法を示すスクリーンショット。":::
 
 [comment]: # (エラー コード 4)
-#### <a name="4-error-code-userassignedmanagedidentitynotfound"></a>**4) エラー コード:** UserAssignedManagedIdentityNotFound 
+### <a name="error-code-userassignedmanagedidentitynotfound"></a>エラー コード: UserAssignedManagedIdentityNotFound 
 
-**説明:** 関連付けられたユーザー割り当てマネージド ID が削除されています。 
+**説明:** 関連付けられているユーザー割り当てマネージド ID が削除されています。 
 
-**解決策:** 以下のガイダンスに従ってこの問題を解決します。
-1. 以前と同じリソース グループの下で、以前と同じ名前を使用して、マネージド ID を再作成します。 詳細については、リソースのアクティビティ ログを参照してください。 
-2. 作成したら、その新しいマネージド ID に、Application Gateway - Access Control (IAM) の下で少なくとも閲覧者ロールを割り当てる必要があります。
-3. 最後に、目的の Key Vault リソースに移動し、そのアクセス ポリシーを設定して、この新しいマネージド ID に対する GET シークレット アクセス許可を付与します。 
+**解決方法:** その ID を再び使用するには、次の手順を実行します。
+1. 以前使用されていたのと同じ名前を持つマネージド ID を同じリソース グループに再作成します。 リソース アクティビティ ログには、さらに多くの詳細が含まれています。 
+1. ID を作成したら、 **[Application Gateway - アクセス制御 (IAM)]** に移動します。 その ID に、少なくとも **閲覧者** ロールを割り当てます。
+1. 最後に、目的の Key Vault リソースに移動し、この新しいマネージド ID に **Get** シークレット アクセス許可を付与するようにそのアクセス ポリシーを設定します。 
 
-[詳細情報](./key-vault-certs.md#how-integration-works)
-</br></br>
+詳細については、「[統合のしくみ](./key-vault-certs.md#how-integration-works)」を参照してください。
 
 [comment]: # (エラー コード 5)
-#### <a name="5-error-code-keyvaulthasrestrictedaccess"></a>**5) エラー コード:** KeyVaultHasRestrictedAccess
+### <a name="error-code-keyvaulthasrestrictedaccess"></a>エラー コード: KeyVaultHasRestrictedAccess
 
-**説明:** Key Vault の制限付きネットワーク設定。 
+**説明:** Key Vault の制限されたネットワーク設定が存在します。 
 
-**解決方法:** アクセスを制限するために、Key Vault ファイアウォールを有効にするとこの問題が発生します。 次の方法で、Key Vault の制限されたネットワークで Application Gateway を引き続き構成できます。
-1. Key Vault の [ネットワーク] ブレードで
-2. [ファイアウォールと仮想ネットワーク] タブで [Private endpoint and selected networks]\(プライベート エンドポイントと選択したネットワーク\) を選択します
-3. 最後に [はい] を選択し、信頼されたサービスが Key Vault のファイアウォールをバイパスできるようにします。
+**解決方法:** このエラーは、制限されたアクセスのために Key Vault ファイアウォールを有効にした場合に発生します。 次の手順に従うことによって、引き続き Key Vault の制限されたネットワークで Application Gateway を構成できます。
+1. Key Vault で、 **[ネットワーク]** ペインを開きます。
+1. **[ファイアウォールと仮想ネットワーク]** タブを選択し、 **[プライベート エンドポイントと選択されたネットワーク]** を選択します。
+1. 次に、[仮想ネットワーク] を使用して、Application Gateway の仮想ネットワークとサブネットを追加します。 このプロセス中に、チェックボックスをオンにして 'Microsoft.KeyVault' サービス エンドポイントも構成します。
+1. 最後に、 **[はい]** を選択して、信頼されたサービスが Key Vault のファイアウォールをバイパスできるようにします。
 
-:::image type="content" source="./media/application-gateway-key-vault-common-errors/key-vault-restricted-access.png" alt-text="Key Vaultアクセスが制限されています。":::
-</br></br>
-
+:::image type="content" source="./media/application-gateway-key-vault-common-errors/key-vault-restricted-access.png" alt-text="制限されたネットワークのエラーを回避する方法を示すスクリーンショット。":::
 
 [comment]: # (エラー コード 6)
-#### <a name="6-error-code-keyvaultsoftdeleted"></a>**6) エラー コード:** KeyVaultSoftDeleted 
+### <a name="error-code-keyvaultsoftdeleted"></a>エラー コード: KeyVaultSoftDeleted 
 
-**説明:** 関連付けられた Key Vault が論理的な削除の状態にあります。 
+**説明:** 関連付けられているキー コンテナーが論理的な削除の状態にあります。 
 
-**解決策:** 論理的に削除された Key Vault の復旧は容易です。 Azure portal で、Key Vault のサービス ページにアクセスします。
+**解決方法:** Azure portal で、*キー コンテナー* を検索します。 **[サービス]** で、 **[キー コンテナー]** を選択します。
 
-:::image type="content" source="./media/application-gateway-key-vault-common-errors/key-vault-soft-deleted-1.png" alt-text="Key Vault サービスを検索します。":::
-</br></br>
-[Manage Deleted Vaults]\(削除されたコンテナーの管理\) タブをクリックします。ここから、削除された Key Vault リソースを見つけて復旧できます。
-:::image type="content" source="./media/application-gateway-key-vault-common-errors/key-vault-soft-deleted-2.png" alt-text="論理的な削除を使用して、削除された Key Vault を復旧します。":::
-</br></br>
+:::image type="content" source="./media/application-gateway-key-vault-common-errors/key-vault-soft-deleted-1.png" alt-text="Key Vault サービスを検索する方法を示すスクリーンショット。":::
 
+**[マネージド削除されたコンテナー]** を選択します。 ここから、削除された Key Vault リソースを見つけ、それを復旧することができます。
+:::image type="content" source="./media/application-gateway-key-vault-common-errors/key-vault-soft-deleted-2.png" alt-text="削除されたキー コンテナーを復旧する方法を示すスクリーンショット。":::
 
 [comment]: # (エラー コード 7)
-#### <a name="7-error-code-customerkeyvaultsubscriptiondisabled"></a>**7) エラー コード:** CustomerKeyVaultSubscriptionDisabled 
+### <a name="error-code-customerkeyvaultsubscriptiondisabled"></a>エラー コード: CustomerKeyVaultSubscriptionDisabled 
 
 **説明:** Key Vault のサブスクリプションが無効になっています。 
 
-**解決方法:** さまざまな理由により、Azure サブスクリプションが無効化されることがあります。 [無効な Azure サブスクリプションを再度有効にする](../cost-management-billing/manage/subscription-disabled.md)ためのガイドを参照し、必要な作業を実行してください。
-</br></br>
+**解決方法:** Azure サブスクリプションは、さまざまな理由で無効になることがあります。 解決するために必要なアクションを実行するには、[無効になっている Azure サブスクリプションの再アクティブ化](../cost-management-billing/manage/subscription-disabled.md)に関するページを参照してください。
 
+## <a name="next-steps"></a>次のステップ
 
+Application Gateway を引き続き使用する場合は、次のトラブルシューティングに関する記事が役立つことがあります。
 
+- [Azure Application Gateway の Resource Health の概要](https://docs.microsoft.com/azure/application-gateway/resource-health-overview)
+- [Azure Application Gateway のセッション アフィニティに関する問題をトラブルシューティングする](https://docs.microsoft.com/azure/application-gateway/how-to-troubleshoot-application-gateway-session-affinity-issues)

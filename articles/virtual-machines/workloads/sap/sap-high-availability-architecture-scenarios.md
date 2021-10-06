@@ -1,13 +1,10 @@
 ---
 title: SAP NetWeaver での Azure VM の HA アーキテクチャとシナリオ | Microsoft Docs
 description: Azure Virtual Machines での SAP NetWeaver のための高可用性のアーキテクチャとシナリオ
-services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: rdeltcheva
 manager: juergent
-editor: ''
 tags: azure-resource-manager
-keywords: ''
 ms.assetid: 887caaec-02ba-4711-bd4d-204a7d16b32b
 ms.service: virtual-machines-sap
 ms.topic: article
@@ -16,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c75808b674a9188331f6e8399617e8138c180139
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 886be320de9a086af532afe5613c04a124d1e591
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112294843"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129359627"
 ---
 # <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>SAP NetWeaver のための高可用性のアーキテクチャとシナリオ
 
@@ -97,7 +94,7 @@ ms.locfileid: "112294843"
 [azure-sla]:https://azure.microsoft.com/support/legal/sla/
 [azure-virtual-machines-manage-availability]:../../windows/manage-availability.md
 [azure-storage-redundancy]:https://azure.microsoft.com/documentation/articles/storage-redundancy/
-[azure-storage-managed-disks-overview]:https://docs.microsoft.com/azure/storage/storage-managed-disks-overview
+[azure-storage-managed-disks-overview]:../../../virtual-machines/managed-disks-overview.md
 
 [planning-guide-figure-100]:media/virtual-machines-shared-sap-planning-guide/100-single-vm-in-azure.png
 [planning-guide-figure-1300]:media/virtual-machines-shared-sap-planning-guide/1300-ref-config-iaas-for-sap.png

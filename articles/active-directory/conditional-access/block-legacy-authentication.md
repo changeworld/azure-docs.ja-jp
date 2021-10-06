@@ -8,15 +8,15 @@ ms.topic: how-to
 ms.date: 01/26/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: calebb, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a289d39140b559636378184d10ac8b90557fc3a1
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 3952dca4cbe7dfd3ea255b4ad1d6483057ff5cb6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108176056"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128568398"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>方法:条件付きアクセスを使用して Azure AD へのレガシ認証をブロックする   
 

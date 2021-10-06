@@ -6,15 +6,14 @@ ms.author: v-stharr
 ms.date: 12/07/2020
 ms.topic: tutorial
 ms.service: azure-maps
-services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: 8d429785c87b7dbbbd4ea8eb4c6a24fea021b214
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: f3eba06b40ef9f96dc5b94b6d21b43e6fecccce1
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123439562"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129358079"
 ---
 # <a name="tutorial-migrate-a-web-app-from-google-maps"></a>チュートリアル:Google Maps から Web アプリを移行する
 
@@ -1675,7 +1674,7 @@ Google Maps の移行に関連するその他のコード サンプルを以下�
 |---------------|-------------|
 | `google.maps.Map` | [atlas.Map](/javascript/api/azure-maps-control/atlas.map)  |
 | `google.maps.InfoWindow` | [atlas.Popup](/javascript/api/azure-maps-control/atlas.popup)  |
-| `google.maps.InfoWindowOptions` | [atlas.PopupOptions](https://docs.microsoft.com/) |
+| `google.maps.InfoWindowOptions` | [atlas.PopupOptions](/javascript/api/azure-maps-control/atlas.popupoptions) |
 | `google.maps.LatLng`  | [atlas.data.Position](/javascript/api/azure-maps-control/atlas.data.position)  |
 | `google.maps.LatLngBounds` | [atlas.data.BoundingBox](/javascript/api/azure-maps-control/atlas.data.boundingbox) |
 | `google.maps.MapOptions`  | [atlas.CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions)<br/>[atlas.CameraBoundsOptions](/javascript/api/azure-maps-control/atlas.cameraboundsoptions)<br/>[atlas.ServiceOptions](/javascript/api/azure-maps-control/atlas.serviceoptions)<br/>[atlas.StyleOptions](/javascript/api/azure-maps-control/atlas.styleoptions)<br/>[atlas.UserInteractionOptions](/javascript/api/azure-maps-control/atlas.userinteractionoptions) |

@@ -8,12 +8,12 @@ ms.date: 05/12/2021
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: partner
-ms.openlocfilehash: 334ae28c160a01032d5403e06f40846e8b9d9ed5
-ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
+ms.openlocfilehash: e55a9d0bb21a3eded7454f74787f8be9f2f02ece
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109839187"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129273630"
 ---
 # <a name="backup-to-azure-with-veeam"></a>Veeam を使用した Azure へのバックアップ
 
@@ -90,7 +90,7 @@ Azure への初期ベースライン転送の変更率とバックアップ セ�
 
 ### <a name="choose-the-right-storage-options"></a>適切なストレージ オプションを選択する
 
-Azure をバックアップ ターゲットとして使用する場合は、[Azure Blob Storage](../../../../blobs/storage-blobs-introduction.md)を使用します。 Blob Storage は、Microsoft のオブジェクト ストレージ ソリューションです。 Blob Storage は、いずれのデータ モデルや定義にも準拠していないデータである、非構造化データを大量に格納するために最適化されています。 また、Azure Storage はセキュリティで保護されており、スケーラブルであり、持続性や高可用性を備えています。 ワークロードに適したストレージを選択して、内部 SLA を満たすための[回復性レベル](../../../../common/storage-redundancy.md)を提供できます。 Blob Storage は従量課金制のサービスです。 格納データの量、そのデータへのアクセス、およびクールおよびアーカイブ層の場合は最低限必要な保有期間について、[月単位で課金されます](../../../../blobs/storage-blob-storage-tiers.md#pricing-and-billing)。 バックアップ データに適用できる回復性と階層化のオプションは以下の表にまとめられています。
+Azure をバックアップ ターゲットとして使用する場合は、[Azure Blob Storage](../../../../blobs/storage-blobs-introduction.md)を使用します。 Blob Storage は、Microsoft のオブジェクト ストレージ ソリューションです。 Blob Storage は、いずれのデータ モデルや定義にも準拠していないデータである、非構造化データを大量に格納するために最適化されています。 また、Azure Storage はセキュリティで保護されており、スケーラブルであり、持続性や高可用性を備えています。 ワークロードに適したストレージを選択して、内部 SLA を満たすための[回復性レベル](../../../../common/storage-redundancy.md)を提供できます。 Blob Storage は従量課金制のサービスです。 格納データの量、そのデータへのアクセス、およびクールおよびアーカイブ層の場合は最低限必要な保有期間について、[月単位で課金されます](../../../../blobs/access-tiers-overview.md#pricing-and-billing)。 バックアップ データに適用できる回復性と階層化のオプションは以下の表にまとめられています。
 
 **Blob Storage の回復性オプション:**
 
@@ -99,7 +99,7 @@ Azure をバックアップ ターゲットとして使用する場合は、[Azu
 |**コピーの有効数**     | 3         | 3         | 6         | 6 |
 |**可用性ゾーンの数**     | 1         | 3         | 2         | 4 |
 |**リージョンの数**     | 1         | 1         | 2         | 2 |
-|**セカンダリ リージョンへの手動フェールオーバー**     | 該当なし         | N/A         | はい         | はい |
+|**セカンダリ リージョンへの手動フェールオーバー**     | 該当なし         | 該当なし         | はい         | はい |
 
 **Blob Storage の層:**
 

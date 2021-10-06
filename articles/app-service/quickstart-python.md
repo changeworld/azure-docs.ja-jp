@@ -9,12 +9,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–393165–A/B–Docs/PythonQuickstart–CLIvsPortal–FY21Q4
 adobe-target-experience: Experience B
 adobe-target-content: ./quickstart-python-portal
-ms.openlocfilehash: aad4765dbfeeec7c0be6f7565573937a092864b1
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: a148cf813ff2a3fcf5e9815dff01ef836d725ef9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "122643259"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128577331"
 ---
 # <a name="quickstart-create-a-python-app-using-azure-app-service-on-linux"></a>クイックスタート: Azure App Service on Linux を使用して Python アプリを作成する
 
@@ -24,7 +24,7 @@ ms.locfileid: "122643259"
 
 1. アクティブなサブスクリプションが含まれる Azure アカウントを用意します。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 1. <a href="https://www.python.org/downloads/" target="_blank">Python 3.6 以降</a>をインストールします。
-1. <a href="/cli/azure/install-azure-cli" target="_blank">Azure CLI</a> 2.0.80 以降をインストールします。それを任意のシェルから使用してコマンドを実行することで、Azure リソースのプロビジョニングと構成を行います。
+1. <a href="/cli/azure/install-azure-cli" target="_blank">Azure CLI</a> をインストールします。これを任意のシェルで使用してコマンドを実行し、Azure リソースのプロビジョニングと構成を行います。
 
 ターミナル ウィンドウを開き、Python のバージョンが 3.6 以降であることを確認します。
 

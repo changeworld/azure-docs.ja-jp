@@ -1,13 +1,9 @@
 ---
 title: SLES マルチ SID 上の SAP NetWeaver に対する Azure VM の高可用性に関するガイド | Microsoft Docs
 description: SUSE Linux Enterprise Server for SAP Applications 上の SAP NetWeaver のマルチ SID 高可用性ガイド
-services: virtual-machines-windows,virtual-network,storage
-documentationcenter: saponazure
 author: rdeltcheva
 manager: juergent
-editor: ''
 tags: azure-resource-manager
-keywords: ''
 ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
 ms.service: virtual-machines-sap
 ms.topic: article
@@ -15,12 +11,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/16/2020
 ms.author: radeltch
-ms.openlocfilehash: 6d60ea09896d42fa43a650e210ed3c19d3a99ef4
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 8442418896f0ce07e601d89a9a1b42ca5b62404a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114450638"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128569297"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications-multi-sid-guide"></a>SUSE Linux Enterprise Server for SAP Applications マルチ SID 上の Azure VM での SAP NetWeaver の高可用性ガイド
 
@@ -582,7 +578,7 @@ SAP NFS 共有のアーキテクチャが決まったら、対応するドキュ
 
 1. HAGetFailoverConfig と HACheckFailoverConfig をテストします
 
-   ASCS インスタンスが現在実行されているノードで、次のコマンドを <sapsid>adm として実行します。 これらのコマンドが「失敗: メモリ不足」で失敗する場合は、ホスト名に含まれているダッシュが原因である可能性があります。 これは既知の問題であり、SUSE によって ap-suse-cluster-connector パッケージで修正される予定です。
+   ASCS インスタンスが現在実行されているノードで、次のコマンドを \<sapsid\>adm として実行します。 これらのコマンドが「失敗: メモリ不足」で失敗する場合は、ホスト名に含まれているダッシュが原因である可能性があります。 これは既知の問題であり、SUSE によって ap-suse-cluster-connector パッケージで修正される予定です。
 
    ```
     slesmsscl1:nw1adm 57> sapcontrol -nr 00 -function HAGetFailoverConfig

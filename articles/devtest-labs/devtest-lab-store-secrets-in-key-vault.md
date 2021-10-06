@@ -1,14 +1,14 @@
 ---
-title: Azure DevTest Labs でキー コンテナーにシークレットを格納する | Microsoft Docs
+title: キー コンテナーにシークレットを格納する
 description: Azure Key Vault にシークレットを格納し、仮想マシン、数式、または環境の作成時にそれらを使用する方法について説明します。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 5714279ef183cb930d643575466dae3d6cb69bba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2aaa177c895b57a07ed94de48081de69beedcda8
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85481648"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128596025"
 ---
 # <a name="store-secrets-in-a-key-vault-in-azure-devtest-labs"></a>Azure DevTest Labs でキー コンテナーにシークレットを格納する
 Azure DevTest Labs の使用時には複雑なシークレット (Windows 仮想マシンのパスワード、Linux 仮想マシンの SSH 公開キー、または成果物を使用して Git リポジトリを複製するための個人用アクセス トークン) の入力が必要な場合があります。 通常、シークレットは長いランダムな文字列です。 そのため、シークレットの入力は面倒で、特に同じシークレットを複数回使用する場合は注意が必要です。

@@ -1,18 +1,18 @@
 ---
 title: チュートリアル - 汎用 Azure IoT プラグ アンド プレイのモジュールを接続する | Microsoft Docs
 description: チュートリアル - 汎用モジュールでサンプルの C# IoT プラグ アンド プレイ デバイス コードを使用します。
-author: lizross
-ms.author: lizross
+author: RamIoTMalhotra
+ms.author: ramal
 ms.date: 9/22/2020
 ms.topic: tutorial
 ms.service: iot-develop
 services: iot-develop
-ms.openlocfilehash: 3ff845e1ef74e8bf1f98da519d8d2d9657755e96
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: 44dca3cd3cd7803271fba6abae72de5c54782c1f
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129091124"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129457413"
 ---
 # <a name="tutorial-connect-an-iot-plug-and-play-module-c"></a>チュートリアル:IoT プラグ アンド プレイ モジュールを接続する (C#)
 
@@ -108,7 +108,7 @@ git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
     | IOTHUB_DEVICE_SECURITY_TYPE | connectionString |
     | IOTHUB_MODULE_CONNECTION_STRING | 以前に書き留めたモジュール接続文字列 |
 
-    サンプル構成の詳細については、[サンプルの readme](https://github.com/Azure-Samples/azure-iot-samples-csharp/blob/master/iot-hub/Samples/device/PnpDeviceSamples/readme.md) を参照してください。
+    サンプル構成の詳細については、[サンプルの readme](https://github.com/Azure-Samples/azure-iot-samples-csharp/blob/main/iot-hub/Samples/device/PnpDeviceSamples/readme.md) を参照してください。
 
 ## <a name="modify-the-code"></a>コードを変更する
 

@@ -5,13 +5,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.author: esarroyo
 author: StefArroyo
-ms.date: 04/07/2020
-ms.openlocfilehash: 883552a556ce0cde191cb3dfeccca0ac09c96a10
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.date: 09/16/2021
+ms.openlocfilehash: bd1dcc24533e7d537a350d7f8fd516e697b3fdb5
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113359625"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128593821"
 ---
 # <a name="how-to-monitor-the-server-side-latency-for-operations-in-an-azure-cosmos-db-container-or-account"></a>Azure Cosmos DB のコンテナーまたはアカウントでの操作に対するサーバー側の待機時間を監視する方法
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -30,17 +30,17 @@ Azure Monitor for Azure Cosmos DB では、アカウントを監視したり、�
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
    
-2. 左側のナビゲーション バーから **[監視]** を選択し、 **[メトリック]** を選択します。
+1. 左側のナビゲーション バーから **[監視]** を選択し、 **[メトリック]** を選択します。
 
-   :::image type="content" source="./media/monitor-server-side-latency/monitor-metrics-blade.png" alt-text="Azure Monitor のメトリック ウィンドウ":::
+   :::image type="content" source="./media/monitor-server-side-latency/monitor-metrics-blade.png" alt-text="Azure Monitor のメトリック ウィンドウ" border="true":::
 
-3. **[メトリック]** ウィンドウから、 **[リソースの選択]** を選択し、必要な **サブスクリプション** と **リソース グループ** を選択します。 **[リソースの種類]** で、 **[Azure Cosmos DB accounts]\(Azure Cosmos DB アカウント\)** を選択し、既存の Azure Cosmos アカウントの一つを選択し、 **[適用]** を選択します。
+1. **[メトリック]** ウィンドウから、 **[リソースの選択]** を選択し、必要な **サブスクリプション** と **リソース グループ** を選択します。 **[リソースの種類]** で、 **[Azure Cosmos DB accounts]\(Azure Cosmos DB アカウント\)** を選択し、既存の Azure Cosmos アカウントの一つを選択し、 **[適用]** を選択します。
    
-   :::image type="content" source="./media/monitor-server-side-latency/select-cosmos-db-account.png" alt-text="メトリックを表示する Azure Cosmos DB アカウントを選択する":::
+   :::image type="content" source="./media/monitor-account-key-updates/select-account-scope.png" alt-text="メトリックを表示するアカウント スコープを選択する" border="true":::
 
-4. 次に、使用可能なメトリックの一覧から **[Server Side Latency]\(サーバー側待機時間\)** メトリックを選択します。 この一覧で使用可能なすべてのメトリックの詳細については、「[カテゴリ別のメトリック](monitor-cosmos-db-reference.md)」の記事を参照してください。 この例では、 **[Server Side Latency]\(サーバー側待機時間\)** および集計値として **[平均]** を選択します。 これらの詳細に加えて、メトリックの **[時間の範囲]** と **[時間の粒度]** を選択することもできます。 最大で、過去 30 日間のメトリックを表示できます。  フィルターを適用すると、そのフィルターに基づいてグラフが表示されます。 選択された期間の 1 分あたりのサーバー側の待機時間を確認できます。  
+1. 次に、使用可能なメトリックの一覧から **[Server Side Latency]\(サーバー側待機時間\)** メトリックを選択します。 この一覧で使用可能なすべてのメトリックの詳細については、「[カテゴリ別のメトリック](monitor-cosmos-db-reference.md)」の記事を参照してください。 この例では、 **[Server Side Latency]\(サーバー側待機時間\)** および集計値として **[平均]** を選択します。 これらの詳細に加えて、メトリックの **[時間の範囲]** と **[時間の粒度]** を選択することもできます。 最大で、過去 30 日間のメトリックを表示できます。  フィルターを適用すると、そのフィルターに基づいてグラフが表示されます。 選択された期間の 1 分あたりのサーバー側の待機時間を確認できます。  
 
-   :::image type="content" source="./media/monitor-server-side-latency/server-side-latency-metric.png" alt-text="Azure portal からサーバー側待機時間メトリックを選択する":::
+   :::image type="content" source="./media/monitor-server-side-latency/server-side-latency-metric.png" alt-text="Azure portal からサーバー側待機時間メトリックを選択する" border="true":::
 
 ## <a name="filters-for-server-side-latency"></a>サーバー側の待機時間のフィルター
 
@@ -50,7 +50,7 @@ Azure Monitor for Azure Cosmos DB では、アカウントを監視したり、�
 
 次の図に示すように、各操作に対する **サーバー側待機時間** メトリックが表示されます。
 
-:::image type="content" source="./media/monitor-server-side-latency/server-side-latency-filters.png" alt-text="サーバー側待機時間メトリックのフィルター":::
+:::image type="content" source="./media/monitor-server-side-latency/server-side-latency-filters.png" alt-text="サーバー側待機時間メトリックのフィルター" border="true":::
 
 **[Apply splitting]\(分割の適用\)** オプションを使用して、メトリックをグループ化することもできます。  
 

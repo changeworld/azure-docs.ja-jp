@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: thwimmer
-ms.openlocfilehash: 1dd3f9d7462dc8594cf8b6e37db6df725196b899
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 9e8385faadc4c3c9d34471741cc238e964ed67a2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113760078"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128589171"
 ---
 # <a name="tutorial-configure-ringcentral-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に RingCentral を構成する
 
@@ -47,6 +47,10 @@ ms.locfileid: "113760078"
 ## <a name="step-2-configure-ringcentral-to-support-provisioning-with-azure-ad"></a>手順 2. Azure AD でのプロビジョニングをサポートするように RingCentral を構成する
 
 手順 5. の [管理者資格情報] セクションで承認を行うためには、[RingCentral](https://www.ringcentral.com/office/plansandpricing.html) 管理者アカウントが必要です。
+
+RingCentral の管理ポータルの [Account Settings]\(アカウント設定\) -> [Directory Integrations]\(ディレクトリの統合\) で、 *[Directory Provider]* \(ディレクトリ プロバイダー\) 設定を *[SCIM]* 
+![画像](https://user-images.githubusercontent.com/49566142/134523440-20320d8e-3c25-4358-9ace-d4888ce8e4ea.png) に設定します。
+
 
 > [!NOTE]
 > ユーザーにライセンスを割り当てる方法については、[こちら](https://support.ringcentral.com/s/article/5-10-Adding-Extensions-via-Web?language)のビデオ リンクをご覧ください。

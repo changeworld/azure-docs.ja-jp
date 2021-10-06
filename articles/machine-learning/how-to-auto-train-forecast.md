@@ -6,16 +6,16 @@ services: machine-learning
 author: nibaccam
 ms.author: nibaccam
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: automl
 ms.topic: how-to
 ms.custom: contperf-fy21q1, automl, FY21Q4-aml-seo-hack
 ms.date: 06/11/2021
-ms.openlocfilehash: 26a83b28fd6e1fdaded9884deb0d7197e0a59a6f
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: f8e036a77603c1e0833117a4562ad9dfd93c7ac9
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124784904"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129427193"
 ---
 # <a name="set-up-automl-to-train-a-time-series-forecasting-model-with-python"></a>Python で時系列予測モデルをトレーニングするために、AutoML を設定する
 

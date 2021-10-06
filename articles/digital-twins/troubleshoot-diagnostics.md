@@ -1,28 +1,27 @@
 ---
-title: 診断ログの有効化とクエリ
+title: 診断ログを使用する
 titleSuffix: Azure Digital Twins
-description: 診断設定を使用したログ記録を有効にし、ログに対してクエリを実行してすぐに表示する方法を確認する。
+description: 診断設定を使用したログ記録を有効にし、ログに対してクエリを実行してすぐに表示する方法を確認する。 また、ログ カテゴリとそのスキーマについて学習します。
 author: baanders
 ms.author: baanders
-ms.date: 8/24/2021
+ms.date: 9/15/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1479e2b6b715e8f80ea9e02b0b57a3995da2bfd9
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.custom: contperf-fy22q1
+ms.openlocfilehash: c868f0c8418f6b265e3de5b4d8ea0c6b7312a33e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123219719"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128593651"
 ---
 # <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>Azure Digital Twins のトラブルシューティング: 診断ログ
 
-Azure Digital Twins を使用すると、サービス インスタンスのログを収集し、そのパフォーマンス、アクセス、およびその他のデータを監視できます。 これらのログを使用して、Azure Digital Twins インスタンスで何が起こっているかを把握し、問題の根本原因を分析できます。Azure サポートに連絡する必要はありません。
+Azure Digital Twins では、サービス インスタンスの **ログ** を収集し、そのパフォーマンス、アクセス、その他のデータを監視できます。 これらのログを使用して、Azure Digital Twins インスタンスで何が起こっているかを把握し、問題の根本原因を分析できます。Azure サポートに連絡する必要はありません。
 
-この記事には、Azure Digital Twins インスタンスからのログの収集を開始するために、Azure portal で[[診断設定を構成する](#turn-on-diagnostic-settings)](https://portal.azure.com)方法が示されています。 また、ログの保存場所 (Log Analytics や任意のストレージ アカウントなど) を指定することもできます。
+この記事では、[Azure portal](https://portal.azure.com) で診断設定を構成する方法について説明します。これには、収集するログの種類と、それらを保存する場所 (Log Analytics や選択したストレージ アカウントなど) が含まれます。 その後、ログに対してクエリを実行し、カスタム分析情報をすばやく収集することができます。
 
-この記事には、Azure Digital Twins で収集されるすべての[ログ カテゴリ](#log-categories)と[ログ スキーマ](#log-schemas)の一覧も含まれています。
-
-ログを設定した後、[ログに対してクエリを実行](#view-and-query-logs)し、カスタム分析情報をすばやく収集することもできます。
+この記事には、Azure Digital Twins で収集できるすべての **ログ カテゴリ** と、それらの **スキーマ** に関する情報も含まれています。
 
 ## <a name="turn-on-diagnostic-settings"></a>診断設定を有効にする 
 
@@ -58,6 +57,32 @@ Azure Digital Twins を使用すると、サービス インスタンスのロ�
 新しい設定は、10 分ほどで有効になります。 その後、インスタンスの **[診断設定]** ページ上の構成されたターゲットにログが表示されます。 
 
 診断設定とそれらの設定オプションの詳細については、「[プラットフォーム ログとメトリックを異なる宛先に送信するための診断設定を作成する](../azure-monitor/essentials/diagnostic-settings.md)」を参照してください。
+
+## <a name="view-and-query-logs"></a>ログを表示してクエリを実行する
+
+Azure Digital Twins ログのストレージの詳細を構成したら、**カスタム クエリ** を記述して分析情報を生成し、問題のトラブルシューティングを行うことができます。 また、このサービスには、顧客からのインスタンスに関する一般的な質問に対処することで、開始に役立つクエリの例もいくつか用意されています。
+
+ここでは、インスタンスのログに対してクエリを実行する方法を示します。
+
+1. [Azure portal](https://portal.azure.com) にサインインし、Azure Digital Twins インスタンスに移動します。 その名前をポータルの検索バーに入力して、検索することができます。 
+
+2. メニューから **[ログ]** を選択して、ログ クエリ ページを開きます。 ページが開き、 *[クエリ]* というウィンドウが表示されます。
+
+    :::image type="content" source="media/troubleshoot-diagnostics/logs.png" alt-text="Azure portal で Azure Digital Twins インスタンスの [ログ] ページが表示されたスクリーンショット。[クエリ] ウィンドウが重ねて表示され、事前構築済みクエリが表示されています。" lightbox="media/troubleshoot-diagnostics/logs.png":::
+
+    これらのクエリは、さまざまなログ用に記述された構築済みのサンプルです。 クエリの 1 つを選択してクエリ エディターに読み込み、それを実行してインスタンスのこれらのログを確認できます。
+
+    また、カスタム クエリ コードを記述したり編集したりできる、クエリ エディター ページに直接移動するために何も実行せずに *[クエリ]* ウィンドウを閉じることもできます。
+
+3. *[クエリ]* ウィンドウを閉じた後、クエリ エディターのメイン ページが表示されます。 ここでは、サンプル クエリのテキストを表示および編集したり、独自のクエリを最初から記述したりすることができます。
+    :::image type="content" source="media/troubleshoot-diagnostics/logs-query.png" alt-text="Azure portal で Azure Digital Twins インスタンスの [ログ] ページが表示されたスクリーンショット。これには、ログ、クエリ コード、クエリ履歴の一覧が含まれます。" lightbox="media/troubleshoot-diagnostics/logs-query.png":::
+
+    左側のペインでは、 
+    - *[テーブル]* タブに、クエリで使用できるさまざまな Azure Digital Twins の [ログ カテゴリ](#log-categories)が表示されています。 
+    - *[クエリ]* タブには、エディターに読み込むことができるクエリの例が含まれています。
+    - *[フィルター]* タブでは、クエリによって返されるデータのフィルター処理されたビューをカスタマイズできます。
+
+ログ クエリとその記述方法の詳細については、[Azure Monitor のログ クエリの概要](../azure-monitor/logs/log-query-overview.md)に関するページを参照してください。
 
 ## <a name="log-categories"></a>ログのカテゴリ
 
@@ -338,34 +363,6 @@ API ログのフィールドおよびプロパティの説明を次に示しま�
   }
 },
 ```
-
-## <a name="view-and-query-logs"></a>ログを表示してクエリを実行する
-
-この記事の前半では、保存するログの種類を構成し、それらの保存場所を指定しました。
-
-問題のトラブルシューティングを行い、これらのログから分析情報を生成するために、**カスタム クエリ** を生成することができます。 作業を開始するために、サービスによって提供されるいくつかのサンプル クエリを活用することもできます。これにより、インスタンスについて顧客から寄せられる可能性のあるよくある質問に対処できます。
-
-ここでは、インスタンスのログに対してクエリを実行する方法を示します。
-
-1. [Azure portal](https://portal.azure.com) にサインインし、Azure Digital Twins インスタンスに移動します。 その名前をポータルの検索バーに入力して、検索することができます。 
-
-2. メニューから **[ログ]** を選択して、ログ クエリ ページを開きます。 ページが開き、 *[クエリ]* というウィンドウが表示されます。
-
-    :::image type="content" source="media/troubleshoot-diagnostics/logs.png" alt-text="Azure portal で Azure Digital Twins インスタンスの [ログ] ページが表示されたスクリーンショット。[クエリ] ウィンドウが重ねて表示され、事前構築済みクエリが表示されています。" lightbox="media/troubleshoot-diagnostics/logs.png":::
-
-    これらのクエリは、さまざまなログ用に記述された構築済みのサンプルです。 クエリの 1 つを選択してクエリ エディターに読み込み、それを実行してインスタンスのこれらのログを確認できます。
-
-    また、カスタム クエリ コードを記述したり編集したりできる、クエリ エディター ページに直接移動するために何も実行せずに *[クエリ]* ウィンドウを閉じることもできます。
-
-3. *[クエリ]* ウィンドウを閉じた後、クエリ エディターのメイン ページが表示されます。 ここでは、サンプル クエリのテキストを表示および編集したり、独自のクエリを最初から記述したりすることができます。
-    :::image type="content" source="media/troubleshoot-diagnostics/logs-query.png" alt-text="Azure portal で Azure Digital Twins インスタンスの [ログ] ページが表示されたスクリーンショット。これには、ログ、クエリ コード、クエリ履歴の一覧が含まれます。" lightbox="media/troubleshoot-diagnostics/logs-query.png":::
-
-    左側のペインでは、 
-    - *[テーブル]* タブに、クエリで使用できるさまざまな Azure Digital Twins の [ログ カテゴリ](#log-categories)が表示されています。 
-    - *[クエリ]* タブには、エディターに読み込むことができるクエリの例が含まれています。
-    - *[フィルター]* タブでは、クエリによって返されるデータのフィルター処理されたビューをカスタマイズできます。
-
-ログ クエリとその記述方法の詳細については、[Azure Monitor のログ クエリの概要](../azure-monitor/logs/log-query-overview.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

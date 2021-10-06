@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 08/30/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a2cf8ef27efb6e368390f23d4011e5dcb7c1e939
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 10c914847da1f466ae88ea4ec7ffe269560c8e5d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123425070"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128671091"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Azure Cosmos DB のデータへのアクセスをセキュリティで保護する
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -36,6 +36,8 @@ Azure Cosmos DB には、データへのアクセスを制御する方法が 3 �
 
 > [!NOTE]
 > 次のセクションでは、SQL API のキーをローテーションする手順と再生成する手順について説明します。 別の API を使用している場合は、[Mongo DB 向け Azure Cosmos DB API](database-security.md?tabs=mongo-api#key-rotation)、[Cassandra API](database-security.md?tabs=cassandra-api#key-rotation)、[Gremlin API](database-security.md?tabs=gremlin-api#key-rotation)、または[Table API](database-security.md?tabs=table-api#key-rotation) のセクションを参照してください。
+>
+> キーの更新とキーの再生成についてアカウントを監視するには、[メトリックとアラートを使用したキーの更新の監視](monitor-account-key-updates.md)に関する記事を参照してください。
 
 キーのローテーションと再生成のプロセスは単純です。 まず、Azure Cosmos DB アカウントにアクセスするために、**アプリケーションが主キーかセカンダリ キーのどちらかを一貫して使用している** ことを確認します。 次に、以下に示す手順に従います。
 

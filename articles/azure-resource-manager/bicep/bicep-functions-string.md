@@ -4,51 +4,17 @@ description: 文字列を操作する際に Bicep ファイルで使用する関
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: 879ea209fd0d645ba0f5045002ee32cc288acd18
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.date: 09/10/2021
+ms.openlocfilehash: d94f2b97a9ff78b715682052a647f02af6286af3
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111026912"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124794084"
 ---
 # <a name="string-functions-for-bicep"></a>Bicep の string 関数
 
-Resource Manager には、Bicep ファイルで文字列を操作する次の関数が用意されています。
-
-* [base64](#base64)
-* [base64ToJson](#base64tojson)
-* [base64ToString](#base64tostring)
-* [concat](#concat)
-* [contains](#contains)
-* [dataUri](#datauri)
-* [dataUriToString](#datauritostring)
-* [empty](#empty)
-* [endsWith](#endswith)
-* [first](#first)
-* [format](#format)
-* [guid](#guid)
-* [indexOf](#indexof)
-* [json](#json)
-* [last](#last)
-* [lastIndexOf](#lastindexof)
-* [length](#length)
-* [newGuid](#newguid)
-* [padLeft](#padleft)
-* [replace](#replace)
-* [skip](#skip)
-* [split](#split)
-* [startsWith](#startswith)
-* [string](#string)
-* [substring](#substring)
-* [take](#take)
-* [toLower](#tolower)
-* [toUpper](#toupper)
-* [trim](#trim)
-* [uniqueString](#uniquestring)
-* [uri](#uri)
-* [uriComponent](#uricomponent)
-* [uriComponentToString](#uricomponenttostring)
+この記事では、文字列を操作するための Bicep 関数について説明します。
 
 ## <a name="base64"></a>base64
 
@@ -1390,6 +1356,6 @@ output toStringOutput string = uriComponentToString(uriEncoded)
 
 ## <a name="next-steps"></a>次のステップ
 
-* Bicep ファイルのセクションの説明については、「[Bicep ファイルの構造と構文について](./file.md)」を参照してください。
+* Bicep ファイルのセクションの説明は、[Bicep ファイルの構造と構文](./file.md)に関する記事をご覧ください。
 * 1 種類のリソースを指定した回数分繰り返し作成するには、[Bicep でリソースの複数のインスタンスをデプロイする方法](./loop-resources.md)に関するページを参照してください。
 * 作成した Bicep ファイルをデプロイする方法については、「[Bicep ファイルと Azure PowerShell を使用してリソースをデプロイする](./deploy-powershell.md)」を参照してください。

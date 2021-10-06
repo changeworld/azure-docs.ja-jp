@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: ce24fa1e3956d1ebfe7365a89e312bf8586ce770
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 4ca662f2d6b0a03f6487e4c4e4452aaaade08151
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122695437"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129357173"
 ---
 # <a name="deploy-openshift-container-platform-or-okd-in-azure-stack"></a>Azure Stack で OpenShift Container Platform または OKD をデプロイする
 
@@ -49,9 +49,9 @@ Resource Manager テンプレートを使用している場合、適切なブラ
 
 OpenShift クラスターをデプロイするには、RHEL イメージ (OpenShift Container Platform) または CentOS イメージ (OKD) を Azure Stack 環境に追加する必要があります。 Azure Stack 管理者に連絡し、これらのイメージを追加してください。 手順は次の場所にあります。
 
-- https://docs.microsoft.com/azure/azure-stack/azure-stack-add-vm-image
-- https://docs.microsoft.com/azure/azure-stack/azure-stack-marketplace-azure-items
-- https://docs.microsoft.com/azure/azure-stack/azure-stack-redhat-create-upload-vhd
+- [Azure Stack Hub に対してカスタム VM イメージを追加または削除する](/azure-stack/operator/azure-stack-add-vm-image)
+- [Azure Stack Hub で使用できる Azure Marketplace 項目](/azure-stack/operator/azure-stack-marketplace-azure-items)
+- [Azure Stack Hub 用の Red Hat ベースの仮想マシンを提供する](/azure-stack/operator/azure-stack-redhat-create-upload-vhd)
 
 ## <a name="deploy-by-using-the-openshift-container-platform-or-okd-resource-manager-template"></a>OpenShift Container Platform または OKD Resource Manager テンプレートを使用したデプロイ
 

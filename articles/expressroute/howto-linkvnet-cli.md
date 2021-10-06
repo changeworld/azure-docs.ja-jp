@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: tutorial
 ms.date: 08/10/2021
 ms.author: duau
-ms.openlocfilehash: 892cf772559b445a6ebb7103ff5a65582700b70f
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: b7a6cf1bdb490683faa5285811c83d220ac80cca
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122864334"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128662884"
 ---
 # <a name="tutorial-connect-a-virtual-network-to-an-expressroute-circuit-using-cli"></a>チュートリアル:CLI を使用して仮想ネットワークを ExpressRoute 回線に接続する
 
@@ -59,6 +59,9 @@ az network vpn-connection create --name ERConnection --resource-group ExpressRou
 ## <a name="connect-a-virtual-network-in-a-different-subscription-to-a-circuit"></a>別のサブスクリプション内の仮想ネットワークを回線に接続する
 
 複数のサブスクリプションで ExpressRoute 回線を共有できます。 下図に、複数のサブスクリプションで ExpressRoute 回線を共有するしくみについて概略を示します。
+
+> [!NOTE]
+> Azure ソブリン クラウドとパブリック Azure クラウドの間での仮想ネットワーク接続はサポートされていません。 仮想ネットワークのリンクは、同じクラウド内の異なるサブスクリプション間に限られます。
 
 大規模クラウド内のそれぞれの小規模クラウドは、組織内のさまざまな部門に属するサブスクリプションを表すために使用されています。 組織内の各部門は、サービスのデプロイを目的として、固有のサブスクリプションを使用できますが、1 つの ExpressRoute 回線を共有することで、オンプレミス ネットワークに接続し直すことができます。 1 つの部門 (この例では IT) で ExpressRoute 回線を所有できます。 組織内の他のサブスクリプションを使用する場合も、ExpressRoute 回線を使用できます。
 
@@ -180,7 +183,8 @@ az network vpn-connection update --name ERConnection --resource-group ExpressRou
 FastPath の仮想ネットワーク ピアリングのサポートは、現在パブリック プレビュー中です。 登録は Azure PowerShell を通じてのみ可能です。 登録方法については、[FastPath プレビュー機能](expressroute-howto-linkvnet-arm.md#enroll-in-expressroute-fastpath-features-preview)に関するページを参照してください。
 
 > [!NOTE] 
-> FastPath が既に構成されていて、プレビュー機能に登録したい場合は、次の手順を実行する必要があります。
+> ターゲット サブスクリプションで FastPath 用に構成されたすべての接続が、このプレビューに登録されます。 実稼働サブスクリプションでこのプレビューを有効にすることはお勧めしません。
+> FastPath が既に構成されていて、プレビュー機能への登録を希望される場合は、次の手順を実行する必要があります。
 > 1. 上の Azure PowerShell コマンドを使用して、FastPath プレビュー機能に登録します。
 > 1. ターゲット接続で FastPath を無効にしてから再度有効にします。
 

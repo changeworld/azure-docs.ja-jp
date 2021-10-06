@@ -127,6 +127,9 @@
         - name: サーバー用 Azure Defender の概要
           displayName: VM
           href: defender-for-servers-introduction.md
+        - name: Azure セキュリティ ベースラインを適用する
+          displayName: 'VM, guest configuration, vulnerabilities, ASB, benchmark'
+          href: apply-security-baseline.md
         - name: 脆弱性のスキャン
           items:
             - name: 統合 VA スキャナーでコンピューターをスキャンする
@@ -297,7 +300,7 @@
         - name: アラートへの応答を自動化する
           displayName: workflow
           href: workflow-automation.md
-- name: 関連項目
+- name: リファレンス
   items:
     - name: アーカイブされたリリース ノート (6 か月以上前)
       displayName: 'changelog, news'

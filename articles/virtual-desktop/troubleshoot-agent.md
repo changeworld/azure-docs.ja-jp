@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 12/16/2020
 ms.author: sefriend
 manager: clarkn
-ms.openlocfilehash: 718648be0f4a5ec9dd3520127552138b8471d57c
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: 31a65c31558940ba7e39e21c8b6e33ffa8e7c9b9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114710482"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128633659"
 ---
 # <a name="troubleshoot-common-azure-virtual-desktop-agent-issues"></a>Azure Virtual Desktop エージェントに関する一般的な問題をトラブルシューティングする
 
@@ -113,7 +113,7 @@ Azure Virtual Desktop エージェントでは、次の複数の要因のため�
 **[イベント ビューアー]**  >  **[Windows ログ]**  >  **[アプリケーション]** の順に移動します。 ID 3703 のイベント (説明では "RD Gateway Url: is not accessible" (RD ゲートウェイ URL にアクセスできません) と示されます) が表示されている場合は、エージェントのゲートウェイ URL へのアクセスを有効にできません。 セッション ホストに正常に接続し、これらのエンドポイントへのネットワーク トラフィックを許可して制限をバイパスするには、「[必要な URL リスト](safe-url-list.md)」にある URL のブロックを解除する必要があります。 また、ファイアウォールまたはプロキシの設定によってこれらの URL がブロックされていないことも確認してください。 これらの URL のブロックの解除は、Azure Virtual Desktop を使用するために必要です。
 
 この問題を解決するには、ファイアウォールまたは DNS の設定によってこれらの URL がブロックされていないことを確認します。
-1. [Azure Firewall を使用して Azure Virtual Desktop のデプロイを保護します。](../firewall/protect-windows-virtual-desktop.md)
+1. [Azure Firewall を使用して Azure Virtual Desktop のデプロイを保護します。](../firewall/protect-azure-virtual-desktop.md)
 2. [Azure Firewall の DNS 設定](../firewall/dns-settings.md)を構成します。
 
 ## <a name="error-3019"></a>エラー: 3019
@@ -243,7 +243,7 @@ Get-AzWvdSessionHost -ResourceGroupName <resourcegroupname> -HostPoolName <hostp
 3. **[コントロール パネル]**  >  **[プログラム]**  >  **[プログラムと機能]** に移動します。
 4. **リモート デスクトップ サービス SxS ネットワーク スタック** の最新バージョン、または **[HKEY_LOCAL_MACHINE]**  >  **[SYSTEM]**  >  **[CurrentControlSet]**  >  **[Control]**  >  **[Terminal Server]**  >  **[WinStations]** の **[ReverseConnectListener]** に示されているバージョンをアンインストールします。
 5. 管理者としてコンソール ウィンドウを開き、 **[プログラム ファイル]**  >  **[Microsoft RDInfra]** の順に移動します。
-6. **SxSStack** コンポーネントを選択するか、または **msiexec /i SxsStack-<version>.msi** コマンドを実行して MSI をインストールします。
+6. **SxSStack** コンポーネントを選択するか、または **`msiexec /i SxsStack-<version>.msi`** コマンドを実行して MSI をインストールします。
 8. VM を再起動する。
 9. コマンド プロンプトに戻り、**qwinsta** コマンドを実行します。
 10. 手順 6. でインストールされたスタック コンポーネントの横に **[リッスン]** が表示されていることを確認します。
@@ -381,5 +381,5 @@ VM をホスト プールとサービスに再登録するために使用され�
 - Azure Virtual Desktop で PowerShell を使用しているときに発生した問題を解決するには、「[Azure Virtual Desktop PowerShell](troubleshoot-powershell.md)」を参照してください。
 - サービスの詳細については、[Azure Virtual Desktop 環境](environment-setup.md)に関するページを参照してください。
 - トラブルシューティング チュートリアルについては、「[Tutorial:Resource Manager テンプレート デプロイのトラブルシューティング](../azure-resource-manager/templates/template-tutorial-troubleshoot.md)」を参照してください。
-- 監査アクションについては、「 [リソース マネージャーの監査操作](../azure-resource-manager/management/view-activity-logs.md)」をご覧ください。
+- 監査アクションについては、「 [リソース マネージャーの監査操作](../azure-monitor/essentials/activity-log.md)」をご覧ください。
 - デプロイ時にエラーが発生した場合の対応については、 [デプロイ操作の確認](../azure-resource-manager/templates/deployment-history.md)に関するページを参照してください。

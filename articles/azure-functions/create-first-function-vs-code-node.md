@@ -7,12 +7,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./create-first-function-vs-code-node_uiex
-ms.openlocfilehash: 09c028d71d7cef4b83220a7c93a24c6bc3c256d4
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: 2ceaa4173de4c4e997f2942308a2af733ea7fcfb
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113732567"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128667789"
 ---
 # <a name="quickstart-create-a-javascript-function-in-azure-using-visual-studio-code"></a>クイックスタート: Visual Studio Code を使用して Azure に JavaScript 関数を作成する
 
@@ -120,8 +120,8 @@ Visual Studio Code を使用して、HTTP 要求に応答する JavaScript 関�
             context.log('JavaScript HTTP trigger function processed a request.');
     
             // Read incoming data
-            const name = req.query.name;
-            const sport = req.query.sport;
+            const name = (req.query.name || (req.body && req.body.name));
+            const sport = (req.query.sport || (req.body && req.body.sport));
         
             // fail if incoming data is required
             if (!name || !sport) {
@@ -185,13 +185,11 @@ Visual Studio Code を使用して、HTTP 要求に応答する JavaScript 関�
 
 ## <a name="next-steps"></a>次のステップ
 
-[Visual Studio Code](functions-develop-vs-code.md?tabs=javascript) を使用して、HTTP によってトリガーされる単純な関数を含む関数アプリを作成しました。 次の記事では、Azure Cosmos DB または Azure Storage に接続することによってその関数を拡張します。 他の Azure サービスへの接続について詳しくは、「[Azure Functions の既存の関数にバインドを追加する](add-bindings-existing-function.md?tabs=javascript)」を参照してください。  
+[Visual Studio Code](functions-develop-vs-code.md?tabs=javascript) を使用して、HTTP によってトリガーされる単純な関数を含む関数アプリを作成しました。 次の記事では、Azure Cosmos DB または Azure Storage に接続することによってその関数を拡張します。 他の Azure サービスへの接続について詳しくは、「[Azure Functions の既存の関数にバインドを追加する](add-bindings-existing-function.md?tabs=javascript)」を参照してください。 セキュリティの詳細については、「[Azure Functions のセキュリティ保護](security-concepts.md)」を参照してください。
 
 > [!div class="nextstepaction"]
-> [データベースに接続する](functions-add-output-binding-cosmos-db-vs-code.md?pivots=programming-language-javascript)
-> [!div class="nextstepaction"]
-> [Azure Storage キューに接続する](functions-add-output-binding-storage-queue-vs-code.md?pivots=programming-language-javascript)
-> [関数のセキュリティ保護](security-concepts.md)
+> [Azure Cosmos DB に接続する](functions-add-output-binding-cosmos-db-vs-code.md?pivots=programming-language-javascript)
+> [Azure Queue Storage に接続する](functions-add-output-binding-storage-queue-vs-code.md?pivots=programming-language-javascript)
 
 [Azure Functions Core Tools]: functions-run-local.md
 [Azure Functions extension for Visual Studio Code]: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions

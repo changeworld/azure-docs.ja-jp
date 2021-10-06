@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 04/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: d98b7050b2472c1dd0405c213b450c719bcd8572
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: e045a7df3389dc58fe8ac2298f2f51b0337a5f94
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122322447"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124775514"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint"></a>クイック スタート:Azure CDN プロファイルとエンドポイントの作成
 
@@ -62,6 +62,9 @@ CDN プロファイルを作成したら、これを使用してエンドポイ�
    ![CDN エンドポイント](./media/cdn-create-new-endpoint/cdn-endpoint-success.png)
     
    エンドポイントが伝達されるまでの所要時間は、プロファイルの作成時に選択した価格レベルによって異なります。 通常、**Standard Akamai** では 1 分以内、**Standard Microsoft** では 10 分、**Standard Verizon** と **Premium Verizon** では最大 30 分となります。
+
+> [!NOTE]
+> "*Verizon CDN エンドポイント*" の場合、あるエンドポイントが何らかの理由で **[無効]** や **[停止]** になっていると、その Verizon 補助ポータルを使用して構成されたすべてのリソースがクリーンアップされます。 これらの構成は、エンドポイントを再起動しても自動的に復元できません。 構成の変更をもう一度行うことが必要になります。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

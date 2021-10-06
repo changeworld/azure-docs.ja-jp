@@ -4,23 +4,25 @@ description: モジュールを定義して使用する方法、およびモジ�
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 07/15/2021
-ms.openlocfilehash: 5e092a0b7f27379cf9fdc488c7a56a295ce17d25
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/14/2021
+ms.openlocfilehash: 53bc8d80f1954694b8bdb262cdec25bb4506b221
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121752251"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128672839"
 ---
 # <a name="use-bicep-modules"></a>Bicep モジュールを使用する
 
-Bicep を使用すると、複雑なソリューションをモジュールに分割できます。 Bicep モジュールは、まとめてデプロイされる 1 つ以上のリソースのセットです。 モジュールは、未加工のリソース宣言の複雑な詳細を取り除くことで、読みやすさ向上させます。 これらのモジュールは、再利用したり、他のユーザーと共有したりすることができます。 Bicep モジュールは、デプロイ用に[入れ子になったテンプレート](../templates/linked-templates.md#nested-template)で単一の ARM テンプレートにトランスパイルされます。
+Bicep を使用すると、複雑なソリューションをモジュールに分割できます。 Bicep モジュールとは、別の Bicep ファイルからデプロイされた単なる Bicep ファイルです。 リソース宣言の複雑な詳細をモジュールにカプセル化することができるので、そのモジュールを使用するファイルの読みやすさが向上します。 これらのモジュールは、再利用したり、他のユーザーと共有したりすることができます。 Bicep モジュールは、[入れ子になったテンプレート](../templates/linked-templates.md#nested-template)を持つ単一の Azure Resource Manager テンプレートに変換されて、デプロイされます。
+
+この記事では、モジュールを定義して使用する方法について説明します。
 
 チュートリアルについては、[Bicep テンプレートを使用した Azure リソースのデプロイ](/learn/modules/deploy-azure-resources-by-using-bicep-templates/)の記事を参照してください。
 
 ## <a name="define-modules"></a>モジュールを定義する
 
-すべての Bicep ファイルをモジュールとして使用できます。 モジュールは、他の Bicep ファイルへのコントラクトとしてパラメーターと出力のみを公開します。 パラメーターと出力はどちらも省略可能です。
+すべての Bicep ファイルをモジュールとして使用できます。 モジュールは、他の Bicep ファイルへのコントラクトとしてパラメーターと出力のみを公開します。 パラメーターと出力は省略可能です。
 
 次の Bicep ファイルを直接デプロイすると、ストレージ アカウントを作成したり、モジュールとして使用したりできます。  次のセクションでは、モジュールを使用する方法について説明します。
 
@@ -71,7 +73,7 @@ output storageEndpoint object = stg.properties.primaryEndpoints
 param namePrefix string
 param location string = resourceGroup().location
 
-module stgModule './storageAccount.bicep' = {
+module stgModule 'storageAccount.bicep' = {
   name: 'storageDeploy'
   params: {
     storagePrefix: namePrefix
@@ -118,22 +120,11 @@ module dnsZone 'dnszones.bicep' = if (deployZone) {
 }
 ```
 
+ループを使用すると、モジュールを複数回デプロイできます。 詳細については、「[Bicep でのモジュールの反復処理](loop-modules.md)」を参照してください。
+
 ## <a name="configure-module-scopes"></a>モジュールのスコープを構成する
 
-モジュールを宣言するときに、_scope_ プロパティを指定して、モジュールをデプロイするスコープを設定できます。
-
-```bicep
-module stgModule './storageAccount.bicep' = {
-  name: 'storageDeploy'
-  scope: resourceGroup('someOtherRg') // pass in a scope to a different resourceGroup
-  params: {
-    storagePrefix: namePrefix
-    location: location
-  }
-}
-```
-
-_scope_ プロパティは、モジュールのターゲット スコープと親のターゲット スコープが同じ場合には省略できます。 scope プロパティが指定されていない場合、モジュールは親のターゲット スコープにデプロイされます。
+モジュールを宣言するとき、そのモジュールのスコープとして、中に含まれている Bicep ファイルとは異なるスコープを設定できます。 モジュールのスコープを設定するには、`scope` プロパティを使用します。 scope プロパティが指定されていない場合、モジュールは親のターゲット スコープにデプロイされます。
 
 次の Bicep ファイルは、リソース グループを作成し、そのリソース グループにモジュールをデプロイする方法を示しています。
 
@@ -166,15 +157,59 @@ module stgModule './storageAccount.bicep' = {
 output storageEndpoint object = stgModule.outputs.storageEndpoint
 ```
 
-scope プロパティには、有効なスコープ オブジェクトを設定する必要があります。 Bicep ファイルを使用してリソース グループ、サブスクリプション、または管理グループをデプロイする場合、モジュールのスコープをそのリソースのシンボリック名に設定することができます。 このアプローチについては、前の例を参照してください。リソース グループを作成し、モジュールのスコープに使用しています。
+次の例では、既存のリソース グループにデプロイします。
 
-また、スコープ関数を使用して有効なスコープを取得することもできます。 以下がその関数です。
+```bicep
+targetScope = 'subscription'
+
+resource firstRG 'Microsoft.Resources/resourceGroups@2021-04-01' existing = {
+  name: 'demogroup1'
+}
+
+resource secondRG 'Microsoft.Resources/resourceGroups@2021-04-01' existing = {
+  name: 'demogroup2'
+}
+
+module storage1 'storageAccount.bicep' = {
+  name: 'westusdeploy'
+  scope: firstRG
+  params: {
+    storagePrefix: 'stg1'
+    location: 'westus'
+  }
+}
+
+module storage2 'storageAccount.bicep' = {
+  name: 'eastusdeploy'
+  scope: secondRG
+  params: {
+    storagePrefix: 'stg2'
+    location: 'eastus'
+  }
+}
+```
+
+scope プロパティには、有効なスコープ オブジェクトを設定する必要があります。 Bicep ファイルを使用してリソース グループ、サブスクリプション、または管理グループをデプロイする場合、モジュールのスコープをそのリソースのシンボリック名に設定することができます。 また、スコープ関数を使用して有効なスコープを取得することもできます。 
+
+以下がその関数です。
 
 - [resourceGroup](bicep-functions-scope.md#resourcegroup)
 - [subscription](bicep-functions-scope.md#subscription)
 - [managementGroup](bicep-functions-scope.md#managementgroup)
 - [tenant](bicep-functions-scope.md#tenant)
 
+次の例では、`managementGroup` 関数を使用してスコープを設定します。
+
+```bicep
+param managementGroupName string
+
+module  'module.bicep' = {
+  name: 'deployToMG'
+  scope: managementGroup(managementGroupName)
+}
+```
+
 ## <a name="next-steps"></a>次のステップ
 
-- チュートリアルについては、[Bicep テンプレートを使用した Azure リソースのデプロイ](/learn/modules/deploy-azure-resources-by-using-bicep-templates/)の記事を参照してください。
+- 機密値をモジュールに渡すには、[getSecret](bicep-functions-resource.md#getsecret) 関数を使用します。
+- ループを使用すると、モジュールを複数回デプロイできます。 詳細については、「[Bicep でのモジュールの反復処理](loop-modules.md)」を参照してください。

@@ -10,12 +10,12 @@ ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5d5e34ee5013a6f4ad28779e92536ff2d8ef868
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: 449a0ecd02e12816a9a9952fad0446f392ff4af7
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114730770"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129352885"
 ---
 # <a name="authentication-methods-in-azure-active-directory---oath-tokens"></a>Azure Active Directory の認証方法 - OATH トークン 
 
@@ -58,6 +58,9 @@ CSV ファイルのサイズによって異なりますが、この処理には�
 すべてのエラーが修正されたら、管理者は各キーをアクティブにすることができます。トークンの **[アクティブ化]** を選択し、トークンに表示されている OTP を入力します。 5 分ごとに最大 200 の OATH トークンをアクティブにできます。 
 
 ユーザーは、最大 5 つの OATH ハードウェア トークンまたはいつでも使用されるように構成された認証アプリケーション (Microsoft Authenticator アプリなど) を組み合わせることもできます。 ハードウェア OATH トークンは、リソース テナントのゲスト ユーザーに割り当てることはできません。
+
+>[!IMPORTANT]
+>このプレビューは、Azure Government やソブリン クラウドではサポートされていません。
 
 ## <a name="next-steps"></a>次の手順
 

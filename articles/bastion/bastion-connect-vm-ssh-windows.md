@@ -8,12 +8,12 @@ ms.service: bastion
 ms.topic: how-to
 ms.date: 09/20/2021
 ms.author: cherylmc
-ms.openlocfilehash: ca2425aad93d5878060c723d4c43f41765483a65
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 4e08aed1b1b91f55a12f5920dfff898cd0109bae
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128699226"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129278597"
 ---
 # <a name="create-an-ssh-connection-to-a-windows-vm-using-azure-bastion-preview"></a>Azure Bastion (プレビュー) を使用して Windows VM への SSH 接続を作成する
 
@@ -38,7 +38,7 @@ VM が存在する仮想ネットワークの Azure Bastion ホストが設定�
 
 Windows の仮想マシンに SSH 接続するには、次のことも確認する必要があります。
 * Windows 仮想マシンが Windows Server 2019 以降を実行している
-* Windows 仮想マシンに OpenSSH サーバーがインストールされ、実行されている。 これを行う方法については、[OpenSSH のインストール](https://docs.microsoft.com/windows-server/administration/openssh/openssh_install_firstuse)に関する記事を参照してください。
+* Windows 仮想マシンに OpenSSH サーバーがインストールされ、実行されている。 これを行う方法については、[OpenSSH のインストール](/windows-server/administration/openssh/openssh_install_firstuse)に関する記事を参照してください。
 * Azure Bastion は、Standard SKU を使用するように構成されています。
 
 ### <a name="required-roles"></a>必要なロール

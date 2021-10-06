@@ -7,14 +7,14 @@ tags: azure-resource-manager
 ms.service: security
 ms.subservice: security-fundamentals
 ms.topic: article
-ms.date: 11/10/2020
+ms.date: 09/13/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 9e4edbcfd9e4180e727cd885902d9f0150a967ca
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 01acde63371fea6a8c3f752caf31fa883e5e617e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100389401"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128641220"
 ---
 # <a name="azure-tls-certificate-changes"></a>Azure TLS 証明書の変更  
 
@@ -28,13 +28,13 @@ Microsoft では、異なるルート証明機関 (CA) のセットからの TLS
 
 - 2020 年 7 月 7 日に、[Azure Active Directory](../../active-directory/index.yml) (Azure AD) サービスでこの移行が開始されました。
 - [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub) と [DPS](../../iot-dps/index.yml) は Baltimore CyberTrust ルート CA に残りますが、中間 CA は変更されます。 詳細については、[こちら](https://techcommunity.microsoft.com/t5/internet-of-things/azure-iot-tls-changes-are-coming-and-why-you-should-care/ba-p/1658456)をクリックしてください。
-- [Azure Storage](../../storage/index.yml) は Baltimore CyberTrust ルート CA に残りますが、中間 CA は変更されます。 詳細については、[こちら](https://techcommunity.microsoft.com/t5/azure-storage/azure-storage-tls-changes-are-coming-and-why-you-care/ba-p/1705518)をクリックしてください。
+- [Azure Storage](../../storage/index.yml) の詳細については、[こちらをクリックしてください](https://techcommunity.microsoft.com/t5/azure-storage/azure-storage-tls-critical-changes-are-almost-here-and-why-you/ba-p/2741581)。
 - [Azure Cache for Redis](../../azure-cache-for-redis/index.yml) は Baltimore CyberTrust ルート CA に残りますが、中間 CA は変更されます。 詳細については、[こちら](../../azure-cache-for-redis/cache-whats-new.md)をクリックしてください。
 - Azure Instance Metadata Service は Baltimore CyberTrust ルート CA に残りますが、中間 CA は変更されます。 詳細については、[こちら](/answers/questions/172717/action-required-for-attested-data-tls-with-azure-i.html)をクリックしてください。
 
 > [!IMPORTANT]
-> お客様は、Azure サービスに接続しようとしたときの接続エラーを防ぐため、この変更後にアプリケーションを更新することが必要になる場合があります。
-
+> お客様は、Azure Storage に接続しようとしたときの接続エラーを防ぐため、この変更後にアプリケーションを更新することが必要になる場合があります。
+https://techcommunity.microsoft.com/t5/azure-storage/azure-storage-tls-critical-changes-are-almost-here-and-why-you/ba-p/2741581
 ## <a name="what-is-changing"></a>何が変わるのですか?
 
 現在、Azure サービスで使用されている TLS 証明書のほとんどは、次のルート CA にチェーンされています。
