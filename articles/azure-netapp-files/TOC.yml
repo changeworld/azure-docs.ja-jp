@@ -149,6 +149,8 @@
               href: azure-netapp-files-configure-export-policy.md
             - name: Unix のアクセス許可を構成して所有権モードを変更する
               href: configure-unix-permissions-change-ownership-mode.md
+            - name: ボリュームのネットワーク機能を構成する
+              href: configure-network-features.md
         - name: ボリュームをマウントまたはマウント解除する
           items:
             - name: ボリュームをマウントまたはマウント解除する
@@ -221,6 +223,8 @@
           href: troubleshoot-capacity-pools.md
         - name: リージョン間レプリケーションのトラブルシューティング
           href: troubleshoot-cross-region-replication.md
+        - name: ボリュームのエラーのトラブルシューティング
+          href: troubleshoot-volumes.md
         - name: SMB またはデュアルプロトコル ボリュームのトラブルシューティング
           href: troubleshoot-dual-protocol-volumes.md
         - name: NFSv4.1 Kerberos ボリュームのトラブルシューティング

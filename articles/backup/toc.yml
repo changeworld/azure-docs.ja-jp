@@ -256,6 +256,14 @@
               href: backup-managed-disks-cli.md
             - name: 復元
               href: restore-managed-disks-cli.md
+        - name: REST API を使用する
+          items:
+            - name: ポリシー
+              href: backup-azure-dataprotection-use-rest-api-create-update-disk-policy.md
+            - name: バックアップ
+              href: backup-azure-dataprotection-use-rest-api-backup-disks.md
+            - name: 復元
+              href: backup-azure-dataprotection-use-rest-api-restore-disks.md
     - name: Azure Blob のバックアップ
       items:
         - name: 概要
@@ -280,7 +288,7 @@
               href: restore-blobs-storage-account-cli.md
         - name: REST API を使用する
           items:
-            - name: BLOB ポリシー
+            - name: ポリシー
               href: backup-azure-dataprotection-use-rest-api-create-update-blob-policy.md
             - name: バックアップ
               href: backup-azure-dataprotection-use-rest-api-backup-blobs.md
@@ -490,7 +498,7 @@
           href: query-backups-using-azure-resource-graph.md
         - name: Resource Manager テンプレート
           href: backup-rm-template-samples.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: 概要
           href: security-overview.md

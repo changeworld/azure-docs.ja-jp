@@ -730,6 +730,8 @@
           href: howto-hyperscale-restart.md
         - name: モニター
           items:
+            - name: メトリックを表示する
+              href: howto-hyperscale-monitoring.md
             - name: メトリックに基づいたアラートの作成
               href: howto-hyperscale-alert-on-metric.md
               dispalyName: alerts on hyperscale

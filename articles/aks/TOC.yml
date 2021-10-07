@@ -388,6 +388,8 @@
                   href: open-service-mesh-nginx-ingress.md
                 - name: Prometheus、Grafana、Jaeger を使用して監視を構成する
                   href: open-service-mesh-open-source-observability.md
+                - name: OSM CLI のエクスペリエンスをカスタマイズする
+                  href: open-service-mesh-customize-add-on-experience.md
             - name: Azure Monitor を構成する
               href: open-service-mesh-azure-monitor.md
             - name: OSM のトラブルシューティング

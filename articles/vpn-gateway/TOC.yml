@@ -259,8 +259,6 @@
           href: vpn-gateway-activeactive-rm-powershell.md
     - name: ゾーン冗長ゲートウェイの構成
       href: create-zone-redundant-vnet-gateway.md
-    - name: パケット キャプチャの構成
-      href: packet-capture.md
     - name: 監視
       items:
         - name: VPN Gateway の監視
@@ -269,6 +267,8 @@
           href: vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md
         - name: リソース ログに基づいたアラートの設定
           href: vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md
+        - name: パケット キャプチャの構成
+          href: packet-capture.md
     - name: トラブルシューティング
       items:
         - name: VPN Gateway のトラブルシューティング

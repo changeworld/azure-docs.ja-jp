@@ -439,8 +439,6 @@
         - name: データベースとユーザーを作成する
           href: howto-create-users.md
           displayName: users
-        - name: 監視サーバー
-          href: flexible-server/how-to-alert-on-metric.md
     - name: 概念
       items:
         - name: Server Management
@@ -472,7 +470,7 @@
               href: flexible-server/concepts-business-continuity.md
             - name: 高可用性
               href: flexible-server/concepts-high-availability.md
-        - name: 監視とログ
+        - name: 監視
           items:
             - name: 監視の概要
               href: flexible-server/concepts-monitoring.md
@@ -480,6 +478,8 @@
               href: flexible-server/concepts-slow-query-logs.md
             - name: 監査ログ
               href: flexible-server/concepts-audit-logs.md
+            - name: Workbooks
+              href: flexible-server/concepts-workbooks.md
         - name: レプリケーション
           items:
             - name: データイン レプリケーション
@@ -553,20 +553,14 @@
                   href: flexible-server/how-to-configure-high-availability.md
                 - name: Azure CLI
                   href: flexible-server/how-to-configure-high-availability-cli.md
-        - name: 監視とログ
+        - name: 監視
           items:
-            - name: 低速クエリ ログを構成する
-              items:
-                - name: Azure portal
-                  href: flexible-server/how-to-configure-slow-query-logs-portal.md
-                - name: Azure CLI
-                  href: flexible-server/how-to-configure-slow-query-log-cli.md
-            - name: 監査ログの構成
-              items:
-                - name: Azure portal
-                  href: flexible-server/how-to-configure-audit-logs-portal.md
-                - name: Azure CLI
-                  href: flexible-server/how-to-configure-audit-log-cli.md
+            - name: クエリ パフォーマンスの分析情報
+              href: flexible-server/tutorial-query-performance-insights.md
+            - name: 監査
+              href: flexible-server/tutorial-configure-audit.md
+            - name: 警告
+              href: flexible-server/how-to-alert-on-metric.md
         - name: レプリケーション
           items:
             - name: データイン レプリケーションの構成

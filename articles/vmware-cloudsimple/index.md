@@ -1,8 +1,8 @@
 ---
 title: Azure VMware Solution by CloudSimple
 description: 概要、クイックスタート、概念、チュートリアル、攻略ガイドなど、Azure VMware Solutions by CloudSimple について学習します。
-author: shortpatti
-ms.author: v-hborys
+author: suzizuber
+ms.author: v-szuber
 ms.date: 08/20/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
@@ -10,12 +10,12 @@ ms.reviewer: cynthn
 manager: dikamath
 ms.custom: seo-azure-migrate
 keywords: vm サポート, azure vmware solution by cloudsimple, cloudsimple azure, vm ツール, vmware ドキュメント
-ms.openlocfilehash: 26e9b825e50e0d2783404cf58ab553bd4b99f3b9
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 2a6c43e3000593af0726a472082be80fb2ac0b1c
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108175030"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129616400"
 ---
 # <a name="azure-vmware-solution-by-cloudsimple"></a>Azure VMware Solution by CloudSimple
 

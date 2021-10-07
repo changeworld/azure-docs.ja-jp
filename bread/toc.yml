@@ -1005,6 +1005,9 @@
         - name: Microsoft 顧客契約
           tocHref: /azure/cost-management-billing/microsoft-customer-agreement/
           topicHref: /azure/cost-management-billing/microsoft-customer-agreement/
+        - name: スコープ レベルの Azure ハイブリッド特典
+          tocHref: /azure/cost-management-billing/scope-level
+          topicHref: /azure/cost-management-billing/scope-level
     - name: Purview
       tocHref: /azure/purview/
       topicHref: /azure/purview/

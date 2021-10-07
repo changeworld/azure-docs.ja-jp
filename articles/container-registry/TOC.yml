@@ -145,6 +145,8 @@
                       href: authenticate-aks-cross-tenant.md
                     - name: Kubernetes プル シークレットを使用した認証
                       href: container-registry-auth-kubernetes.md
+                - name: 認証されていないプル アクセスを有効にする
+                  href: anonymous-pull-access.md
             - name: Azure ロールベースのアクセス制御
               href: container-registry-roles.md
               displayName: 'permissions, authorization'

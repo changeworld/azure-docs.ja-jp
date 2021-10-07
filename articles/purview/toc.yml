@@ -38,7 +38,7 @@ items:
     items:
       - name: Purview Studio の使用
         href: use-purview-studio.md
-      - name: ベスト プラクティスおよびガイドライン
+      - name: ベスト プラクティスとガイドライン
         items:
           - name: デプロイのベスト プラクティス
             href: deployment-best-practices.md

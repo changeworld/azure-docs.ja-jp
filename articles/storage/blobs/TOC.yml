@@ -157,7 +157,7 @@ items:
                     href: ../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
               - name: 管理操作の承認
                 href: ../common/authorization-resource-provider.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-          - name: Security
+          - name: セキュリティ
             items:
               - name: セキュリティに関する推奨事項
                 href: security-recommendations.md
@@ -176,7 +176,7 @@ items:
                 href: ../common/storage-private-endpoints.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
               - name: ネットワーク ルーティング設定の構成
                 href: ../common/network-routing-preference.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-          - name: データ保護
+          - name: データの保護
             items:
               - name: 概要
                 href: data-protection-overview.md
@@ -293,6 +293,8 @@ items:
             href: storage-blob-pageblob-overview.md
           - name: 静的な Web サイト
             href: storage-blob-static-website.md
+          - name: Data Lake Storage Gen2 へのアップグレード
+            href: upgrade-to-data-lake-storage-gen2.md
           - name: Blob Storage 機能のサポート
             href: storage-feature-support-in-storage-accounts.md
       - name: 方法
@@ -550,6 +552,8 @@ items:
                     href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-azure-storage
           - name: リージョン間で移動する
             href: ../common/storage-account-move.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+          - name: Data Lake Storage Gen2 にアップグレードする
+            href: upgrade-to-data-lake-storage-gen2-how-to.md
           - name: Monitor
             items:
               - name: シナリオとベスト プラクティス
@@ -754,7 +758,7 @@ items:
                 href: data-lake-storage-introduction-abfs-uri.md
               - name: 階層型名前空間について
                 href: data-lake-storage-namespace.md
-          - name: Security
+          - name: セキュリティ
             items:
               - name: セキュリティに関する推奨事項
                 href: security-recommendations.md

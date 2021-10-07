@@ -31,6 +31,8 @@
           displayName: 'codec,codecs,compression,compressed,mp3,flac,mulaw,alaw,mp4,mp4a,wav,opus,ogg,pcm,silk'
         - name: 特定のマイク入力デバイスを選択する
           href: how-to-select-audio-input-devices.md
+        - name: 言語識別
+          href: language-identification.md
         - name: 言語識別を使用する
           href: how-to-automatic-language-detection.md
         - name: バッチ文字起こし API を使用する
@@ -330,8 +332,6 @@
       href: keyword-recognition-guidelines.md
     - name: リージョンのサポート
       href: keyword-recognition-region-support.md
-- name: 言語識別
-  href: language-identification.md
 - name: シナリオの詳細
   items:
     - name: 会話のシナリオ

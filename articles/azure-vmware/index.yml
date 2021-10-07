@@ -6,15 +6,15 @@ metadata:
   description: Azure VMware Solution を使用して VMware プライベート クラウドを Azure にデプロイする方法について説明します
   ms.service: azure-vmware
   ms.topic: landing-page
-  author: shortpatti
-  ms.author: v-patsho
-  ms.date: 09/13/2021
-  ms.openlocfilehash: 2cecf4d25be4d3062005b865c8fefd2c5bfe4bac
-  ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+  author: suzizuber
+  ms.author: v-szuber
+  ms.date: 10/06/2021
+  ms.openlocfilehash: b6a2adc66a594ec46920bae2bcda9add69cf8a21
+  ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/29/2021
-  ms.locfileid: "129215740"
+  ms.lasthandoff: 10/06/2021
+  ms.locfileid: "129618458"
 landingContent:
 - title: Azure VMware Solution について
   linkLists:

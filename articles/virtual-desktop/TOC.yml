@@ -134,8 +134,12 @@
       href: configure-automatic-updates.md
     - name: マルチメディア リダイレクトを設定する (プレビュー)
       href: multimedia-redirection.md
-    - name: 言語パックをインストールする
-      href: language-packs.md
+    - name: 言語パッケージをインストールする
+      items:
+        - name: Windows 10 マルチセッション イメージ
+          href: language-packs.md
+        - name: Windows 11 Enterprise イメージ
+          href: windows-11-language-packs.md
     - name: Azure Advisor を使用する
       href: azure-advisor.md
     - name: 推奨事項を解決する
