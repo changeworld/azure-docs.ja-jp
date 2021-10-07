@@ -7,16 +7,16 @@ author: gregorybchris
 ms.author: chgrego
 ms.reviewer: nibaccam
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: automl
 ms.date: 12/09/2020
 ms.topic: how-to
 ms.custom: contperf-fy21q2, automl
-ms.openlocfilehash: fc07c5bf61e1ef80fdcb574580f626eb46394564
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: db8d9a8130db868a53fefd4e72967657f272f8fe
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112462903"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129423464"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>自動機械学習実験の結果を評価
 

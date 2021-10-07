@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/02/2021
 ms.author: cherylmc
 ms.custom: references_pricing
-ms.openlocfilehash: 88a9c96cd2888f738251439df4d5da5343e8bf1d
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: 853005cdc9e44357661cdb0b3b50e7f6ba5a0bbf
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123451339"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124730105"
 ---
 # <a name="about-virtual-wan-pricing"></a>Virtual WAN の価格について
 
@@ -179,7 +179,7 @@ Virtual WAN には、次の 2 種類があります。
 
 * **Basic Virtual WAN** では、ユーザーが複数のハブをデプロイし、VPN サイト間接続を利用できます。 Basic Virtual WAN には、フル メッシュ ハブ、ExpressRoute 接続、ユーザー VPN またはポイント対サイト VPN 接続、VNet 間のトランジット接続、VPN と ExpressRoute のトランジット接続、または Azure Firewall のような高度な機能はありません。 Basic Virtual WAN では、ハブに対して基本料金やデータ処理料金は発生しません。
 
-* **Standard Virtual WAN** には、フル メッシュ ハブ、ExpressRoute 接続、ユーザー VPN またはポイント対サイト VPN 接続、VNet 間のトランジット接続、VPN と ExpressRoute のトランジット接続、および Azure Firewall などの高度な機能が備わっています。仮想ハブのルーティングはすべて、仮想ハブ内で複数のサービスを実現するルーターによって提供されます。 ハブには 1 時間あたり $0.25 の基本料金がかかります。 また、VNet 間のトランジット接続に対する仮想ハブ ルーター内でのデータ処理にも料金がかかります。 仮想ハブ ルーターのデータ処理にかかる料金は、本記事のブランチ間転送 (シナリオ 2、3)、および同じ vWAN ハブを経由した VNet からブランチへの転送 (シナリオ 1) には適用されません。 
+* **Standard Virtual WAN** には、フル メッシュ ハブ、ExpressRoute 接続、ユーザー VPN またはポイント対サイト VPN 接続、VNet 間のトランジット接続、VPN と ExpressRoute のトランジット接続、および Azure Firewall などの高度な機能が備わっています。仮想ハブのルーティングはすべて、仮想ハブ内で複数のサービスを実現するルーターによって提供されます。 ハブには 1 時間あたり $0.25 の基本料金がかかります。 また、VNet 間のトランジット接続に対する仮想ハブ ルーター内でのデータ処理にも料金がかかります。 仮想ハブ ルーターのデータ処理にかかる料金は、「[価格の構成要素](#pricing)」に示すブランチ間転送 (シナリオ 2、2'、3)、または同じ vWAN ハブを経由した VNet からブランチへの転送 (シナリオ 1、1') には適用されません。 
 
 ## <a name="next-steps"></a>次のステップ
 

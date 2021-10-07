@@ -7,16 +7,16 @@ ms.author: sacartac
 ms.reviewer: nibaccam
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: automl
 ms.date: 09/27/2021
 ms.topic: how-to
 ms.custom: devx-track-python,contperf-fy21q1, automl, contperf-fy21q4, FY21Q4-aml-seo-hack, contperf-fy22q1
-ms.openlocfilehash: c445ee7d2567595d1602e2e895f0c3203f16dff6
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.openlocfilehash: 340c558d695a9a63bc5fe818e48b6f6ed76df144
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129079620"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129429169"
 ---
 # <a name="set-up-automl-training-with-python"></a>Python で AutoML トレーニングを設定する
 

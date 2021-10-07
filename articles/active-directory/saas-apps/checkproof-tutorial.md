@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/06/2021
+ms.date: 08/20/2021
 ms.author: jeedes
-ms.openlocfilehash: 1d6e1c99bd70cedd678cbf3dcef4ef66a594d969
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 631d65b7119d071961b6fd48bd13e152ac7f2321
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121728403"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128661547"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-checkproof"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と CheckProof の統合
 
@@ -38,6 +38,7 @@ ms.locfileid: "121728403"
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 * CheckProof では、**IDP** によって開始される SSO がサポートされます。
+* CheckProof では、[自動化されたユーザー プロビジョニング](checkproof-provisioning-tutorial.md)がサポートされます。
 
 ## <a name="add-checkproof-from-the-gallery"></a>ギャラリーからの CheckProof の追加
 
@@ -135,13 +136,16 @@ CheckProof で Azure AD SSO を構成してテストするには、次の手順�
 
     ![CheckProof の [CREATE USER]\(ユーザーの作成\) ページ。](./media/checkproof-tutorial/user.png)
 
+> [!NOTE]
+>CheckProof では、自動ユーザー プロビジョニングもサポートされます。自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](./checkproof-provisioning-tutorial.md)をご覧ください。
+
 ## <a name="test-sso"></a>SSO のテスト 
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した CheckProof に自動的にサインインされます。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [CheckProof] タイルをクリックすると、SSO を設定した CheckProof に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [CheckProof] タイルをクリックすると、SSO を設定した CheckProof に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

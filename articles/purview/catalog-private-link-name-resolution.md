@@ -7,17 +7,17 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 09/27/2021
-ms.openlocfilehash: 72d24309fdf122ea6aba8c74e11f511870290070
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 26667d513e0bd2bf849361f6c7e5cbce2ca5d245
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 09/29/2021
-ms.locfileid: "129208995"
+ms.locfileid: "129277729"
 ---
 # <a name="configure-and-verify-dns-name-resolution-for-azure-purview-private-endpoints"></a>Azure Purview プライベート エンドポイントの DNS 名前解決の構成と検証
 
 > [!IMPORTANT]
-> **2021 年 9 月 27 日 15:30 UTC より前に** Purview アカウントの "_ポータル_" プライベート エンドポイントを作成した場合は、「[ポータル プライベート エンドポイント用に DNS を再構成する](/catalog-private-link.md#reconfigure-dns-for-portal-private-endpoints)」で詳しく説明されているように、必要なアクションを実行する必要があります。 **これらのアクションは、2021 年 10 月 11 日より前に完了する必要があります。そうしない場合、既存のポータルのプライベート エンドポイントの機能が停止します**。
+> **2021 年 9 月 27 日 15:30 UTC より前に** Purview アカウントの "_ポータル_" プライベート エンドポイントを作成した場合は、「[ポータル プライベート エンドポイント用に DNS を再構成する](./catalog-private-link.md#reconfigure-dns-for-portal-private-endpoints)」で詳しく説明されているように、必要なアクションを実行する必要があります。 **これらのアクションは、2021 年 10 月 11 日より前に完了する必要があります。そうしない場合、既存のポータルのプライベート エンドポイントの機能が停止します**。
 
 ## <a name="conceptual-overview"></a>概念の概要
 Azure Purview アカウントのプライベート エンドポイントを設定する場合、正確な名前解決は重要な要件です。 
@@ -49,7 +49,7 @@ Azure Purview アカウントにプライベート エンドポイントを使�
 
 インジェスト、ポータル、およびアカウントのプライベート エンドポイントを作成すると、Azure Purview の DNS CNAME リソース レコードは、`privatelink` というプレフィックスを持ついくつかのサブドメイン内で自動的に別名に更新されます。
 
-- 既定では、Purview アカウントの "_アカウント_" プライベート エンドポイントのデプロイ中に、プライベート エンドポイントの DNS A リソース レコードを含む `privatelink.purview.azure.com` として Azure Purview の `privatelink` サブドメインに対応する[プライベート DNS ゾーン](../dns/private-dns-overview.md)も作成されます。
+- 既定では、Purview アカウントの "_アカウント_" プライベート エンドポイントのデプロイ中に、プライベート エンドポイントの DNS A リソース レコードを含む `privatelink.purview.azure.com` として Azure Purview の `privatelink` サブドメインに対応する [プライベート DNS ゾーン](../dns/private-dns-overview.md)も作成されます。
 
 - Purview アカウントの "_ポータル_" プライベート エンドポイントのデプロイ中に、_Web_ の DNS A リソース レコードを含む `privatelink.purviewstudio.azure.com` として Azure Purview の `privatelink` サブドメインに対応する新しいプライベート DNS ゾーンも作成されます。
 
@@ -79,7 +79,7 @@ Azure Purview アカウントにプライベート エンドポイントを使�
 
 たとえば、Azure Purview アカウント名が "Contoso-Purview" の場合、プライベート エンドポイントをホストする仮想ネットワークの外部から解決されると、次のようになります。
 
-| 名前 | 種類 | 値 |
+| 名前 | Type | 値 |
 | ---------- | -------- | --------------- |
 | `Contoso-Purview.purview.azure.com` | CNAME | `Contoso-Purview.privatelink.purview.azure.com` |
 | `Contoso-Purview.privatelink.purview.azure.com` | CNAME | \<Purview public endpoint\> |
@@ -88,7 +88,7 @@ Azure Purview アカウントにプライベート エンドポイントを使�
 
 Contoso-Purview の DNS リソース レコードは、プライベート エンドポイントをホストしている仮想ネットワーク内で解決されると、次のようになります。
 
-| 名前 | 種類 | 値 |
+| 名前 | Type | 値 |
 | ---------- | -------- | --------------- |
 | `Contoso-Purview.purview.azure.com` | CNAME | `Contoso-Purview.privatelink.purview.azure.com` |
 | `Contoso-Purview.privatelink.purview.azure.com` | A | \<Purview account private endpoint IP address\> |
@@ -148,7 +148,7 @@ Azure Purview プライベート エンドポイントのデプロイ時に、�
 
 たとえば、Azure Purview アカウント名が "Contoso-Purview" の場合、プライベート エンドポイントをホストする仮想ネットワークの外部から解決されると、次のようになります。
 
-| 名前 | 種類 | 値 |
+| 名前 | Type | 値 |
 | ---------- | -------- | --------------- |
 | `Contoso-Purview.purview.azure.com` | CNAME | `Contoso-Purview.privatelink.purview.azure.com` |
 | `Contoso-Purview.privatelink.purview.azure.com` | CNAME | \<Purview public endpoint\> |
@@ -157,7 +157,7 @@ Azure Purview プライベート エンドポイントのデプロイ時に、�
 
 Contoso-Purview の DNS リソース レコードは、プライベート エンドポイントをホストしている仮想ネットワーク内で解決されると、次のようになります。
 
-| 名前 | 種類 | 値 |
+| 名前 | Type | 値 |
 | ---------- | -------- | --------------- |
 | `Contoso-Purview.purview.azure.com` | CNAME | `Contoso-Purview.privatelink.purview.azure.com` |
 | `Contoso-Purview.privatelink.purview.azure.com` | A | \<Purview account private endpoint IP address\> |
@@ -170,7 +170,7 @@ DNS フォワーダーを使用しないで、代わりにオンプレミスの 
 > [!NOTE]
 > `Contoso-Purview`、`scaneastusabcd1234`、`atlas-12345678-1234-1234-abcd-123456789abc` のすべての名前を、環境内の対応する Azure リソース名に更新します。 たとえば、`scaneastusabcd1234` ではなく、Azure Purview マネージド ストレージ アカウントの名前を使用します。
 
-| Name | 種類 | 値 |
+| Name | Type | 値 |
 | ---------- | -------- | --------------- |
 | `web.purview.azure.com` | A | \<portal private endpoint IP address of Azure Purview> |
 | `scaneastusabcd1234.blob.core.windows.net` | A | \<blob-ingestion private endpoint IP address of Azure Purview> |

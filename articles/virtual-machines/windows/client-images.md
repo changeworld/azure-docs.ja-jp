@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: mimckitt
-ms.openlocfilehash: 1fc0b3b628256f5ecbc0361ee2294e70e1619160
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: e75b06655fc6fe34be24b295be3d9255bc2b27fc
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122698349"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128600249"
 ---
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>Azure で Windows クライアントを開発/テスト シナリオに使用する
 
@@ -33,7 +33,7 @@ ms.locfileid: "122698349"
 次の表に、Azure Marketplace から Windows クライアント イメージをデプロイするための対象となるプラン ID の詳細を示します。 Windows クライアント イメージは、次のプランにのみ表示されます。 
 
 > [!NOTE]
-> イメージ プランは、Azure Marketplace の **[Windows クライアント]** の下にあります。 Visual Studio サブスクライバーで使用できるクライアント イメージを検索する場合は、 **[Windows クライアント]** を使用します。 
+> イメージ プランは、Azure Marketplace の **[Windows クライアント]** の下にあります。 Visual Studio サブスクライバーで使用できるクライアント イメージを検索する場合は、 **[Windows クライアント]** を使用します。 Visual Stuido サブスクリプションを購入する必要がある場合は、「[Visual Studio の購入](https://visualstudio.microsoft.com/vs/pricing/?tab=business)」で各種オプションを参照してください
 
 | プラン名 | プラン番号 | 使用可能なクライアント イメージ | 
 |:--- |:---:|:---:|
@@ -41,7 +41,6 @@ ms.locfileid: "122698349"
 | [Visual Studio Enterprise (MPN) サブスクライバー](https://azure.microsoft.com/offers/ms-azr-0029p/) |0029P | Windows 10 Enterprise N (x64) <br> Windows 8.1 Enterprise N (x64) <br> Windows 7 Enterprise N SP1 (x64) |
 | [Visual Studio Professional サブスクライバー](https://azure.microsoft.com/offers/ms-azr-0059p/) |0059P | Windows 10 Enterprise N (x64) <br> Windows 8.1 Enterprise N (x64) <br> Windows 7 Enterprise N SP1 (x64) |
 | [Visual Studio Test Professional サブスクライバー](https://azure.microsoft.com/offers/ms-azr-0060p/) |0060P | Windows 10 Enterprise N (x64) <br> Windows 8.1 Enterprise N (x64) <br> Windows 7 Enterprise N SP1 (x64) |
-| [Visual Studio Premium with MSDN (特典)](https://azure.microsoft.com/offers/ms-azr-0061p/) |0061P | Windows 10 Enterprise N (x64) <br> Windows 8.1 Enterprise N (x64) <br> Windows 7 Enterprise N SP1 (x64) |
 | [Visual Studio Enterprise サブスクライバー](https://azure.microsoft.com/offers/ms-azr-0063p/) |0063P | Windows 10 Enterprise N (x64) <br> Windows 8.1 Enterprise N (x64) <br> Windows 7 Enterprise N SP1 (x64) |
 | [Visual Studio Enterprise (BizSpark) サブスクライバー](https://azure.microsoft.com/offers/ms-azr-0064p/) |0064P | Windows 10 Enterprise N (x64) <br> Windows 8.1 Enterprise N (x64) <br> Windows 7 Enterprise N SP1 (x64) |
 | [Enterprise Dev/Test](https://azure.microsoft.com/offers/ms-azr-0148p/) |0148P | Windows 10 Enterprise N (x64) <br> Windows 8.1 Enterprise N (x64) <br> Windows 7 Enterprise N SP1 (x64) |

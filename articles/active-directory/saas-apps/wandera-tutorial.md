@@ -1,7 +1,6 @@
 ---
-title: チュートリアル:Azure Active Directory と Wandera RADAR Admin の統合 | Microsoft Docs
+title: 'チュートリアル: Azure Active Directory と Wandera RADAR Admin の統合'
 description: Azure Active Directory と Wandera RADAR Admin の間でシングル サインオンを構成する方法について確認します。
-services: active-directory
 author: jeevansd
 manager: CelesteDG
 ms.reviewer: celested
@@ -11,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/10/2021
 ms.author: jeedes
-ms.openlocfilehash: 7f2658261e89ab82c59cdb9b3491766e95491c92
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: c6606494bcdcc006634d4bbb4405933e0adb8ebb
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111985196"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128653799"
 ---
 # <a name="tutorial-integrate-wandera-radar-admin-with-azure-active-directory"></a>チュートリアル:Wandera RADAR Admin と Azure Active Directory の統合
 
@@ -81,7 +80,7 @@ Wandera RADAR Admin に対して Azure AD SSO を構成してテストするに�
     **[応答 URL]** ボックスに、`https://radar.wandera.com/saml/acs/<TENANT_ID>` のパターンを使用して URL を入力します
 
     > [!NOTE]
-    > この値は実際のものではありません。 実際の応答 URL でこの値を更新します。 この値を取得するには、[Wandera RADAR Admin クライアント サポート チーム](https://www.wandera.com/about-wandera/contact/#supportsection)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。 上記の URL の <tenant id> 部分を、Wandera アカウント内の **[Settings]\(設定\)**  >  **[Administration]\(管理\)**  >  **[Single Sign-On]\(シングル サインオン\)** ページに表示されているテナント ID に慎重に置き換えます。
+    > この値は実際のものではありません。 実際の応答 URL でこの値を更新します。 この値を取得するには、[Wandera RADAR Admin クライアント サポート チーム](https://www.wandera.com/about-wandera/contact/#supportsection)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。 上記の URL の \<tenant id\> 部分を、Wandera アカウント内の **[Settings]\(設定\)**  >  **[Administration]\(管理\)**  >  **[Single Sign-On]\(シングル サインオン\)** ページに表示されているテナント ID に慎重に置き換えます。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -157,7 +156,7 @@ Wandera RADAR Admin に対して Azure AD SSO を構成してテストするに�
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した Wandera RADAR Admin に自動的にサインインされます。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Wandera RADAR Admin] タイルをクリックすると、SSO を設定した Wandera RADAR Admin に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Wandera RADAR Admin] タイルをクリックすると、SSO を設定した Wandera RADAR Admin に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

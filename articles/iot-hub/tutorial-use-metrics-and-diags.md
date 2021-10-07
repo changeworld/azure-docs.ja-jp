@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - devx-track-azurecli
 - devx-track-csharp
-ms.openlocfilehash: beab67a209c177c91a1c4fcfa44934234b6dbc06
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 139244b8519dcbbc02800b8e22e9c438d1cc2b80
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114294801"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129458929"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-logs-with-an-iot-hub"></a>チュートリアル:IoT ハブでメトリックとログを設定して使用する
 
@@ -319,7 +319,7 @@ IoT Hub のクォータと調整制限の詳細については、[クォータ�
 >
 > アラートが IoT Hub によって完全に構成され、有効になるまでに最大 10 分かかることがあります。 最後のアラートを構成してから、シミュレートされたデバイス アプリを実行するまで、少なくとも 10 分お待ちください。
 
-[IoT デバイス シミュレーション](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)のソリューションをダウンロードします。 このリンクにより、複数のアプリケーションを含むリポジトリがダウンロードされます。探しているものは、iot-hub/Quickstarts/simulated-device/ にあります。
+[IoT デバイス シミュレーション](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/main.zip)のソリューションをダウンロードします。 このリンクにより、複数のアプリケーションを含むリポジトリがダウンロードされます。探しているものは、iot-hub/Quickstarts/simulated-device/ にあります。
 
 1. ローカル ターミナル ウィンドウで、ソリューションのルート フォルダーに移動します。 **iot-hub\Quickstarts\simulated-device** フォルダーに移動します。
 

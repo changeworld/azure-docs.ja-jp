@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/26/2021
 ms.author: v-doeris
 ms.custom: has-adal-ref
-ms.openlocfilehash: f40168f7f95aaad7975fe7f32fa18ef9e4ca488d
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 663898ea4c1bc4a881a84956c227a4ca7719b55b
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123480950"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124786866"
 ---
 # <a name="how-to-migrate-a-nodejs-app-from-adal-to-msal"></a>Node.js アプリを ADAL から MSAL に移行する方法
 
@@ -297,7 +297,7 @@ var authorityURI = "https://login.microsoftonline.com/common";
 var context = new AuthenticationContext(authorityURI, true, cache);
 ```
 
-MSAL Node は、既定ではインメモリ トークン キャッシュを使用します。 これは明示的にインポートする必要はなく、`ConfidentialClientApplication` および `PublicClientApplication` クラスの一部として公開されています。
+MSAL Node は、既定ではインメモリ トークン キャッシュを使用します。 これは明示的にインポートする必要はありません。インメモリ トークン キャッシュは `ConfidentialClientApplication` および `PublicClientApplication` クラスの一部として公開されています。
 
 ```javascript
 const msalTokenCache = publicClientApplication.getTokenCache();

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/23/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 216ebdeb843f2faa76751f333e838c3cc32a6664
-ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
+ms.openlocfilehash: 7fc4bb71327b2621d60a525ab277305ef13f40c7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112539270"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128673238"
 ---
 # <a name="optimize-costs-for-azure-files-with-reserved-capacity"></a>予約容量を使用して Azure Files のコストを最適化する
 容量予約を使用して Azure ファイル共有のストレージ コストを削減できます。 Azure Files 予約容量を使用して 1 年または 3 年予約すると、ストレージ コストの容量に対して割引を受けることができます。 予約を行うと、予約期間に一定量のストレージ容量が提供されます。
@@ -37,7 +37,7 @@ Azure Files の予約容量の料金情報については、「[Azure Files の�
 Azure Files の予約容量は、1 年間または 3 年間の期間で、月あたり 10 TiB および100 TiB 単位で購入できます。
 
 ### <a name="reservation-scope"></a>予約スコープ
-Azure Files の予約容量は、単一サブスクリプションまたは複数のサブスクリプション (共有スコープ) で使用できます。 単一サブスクリプションを範囲としている場合、予約割引は選択したサブスクリプションにのみ適用されます。 複数のサブスクリプションを範囲としている場合、予約割引は顧客の請求コンテキスト内のサブスクリプションとの間で共有されます。 予約は購入した範囲内の使用量に対して適用され、サブスクリプション内の特定のストレージ アカウント、コンテナー、オブジェクトに限定されるものではありません。
+Azure Files の予約容量は、単一サブスクリプション、複数のサブスクリプション (共有スコープ)、管理グループで使用できます。 単一サブスクリプションを範囲としている場合、予約割引は選択したサブスクリプションにのみ適用されます。 複数のサブスクリプションを範囲としている場合、予約割引は顧客の請求コンテキスト内のサブスクリプションとの間で共有されます。 管理グループを範囲としている場合、予約割引は、管理グループと課金スコープの両方の一部となっているサブスクリプションに適用されます。 予約は購入した範囲内の使用量に対して適用され、サブスクリプション内の特定のストレージ アカウント、コンテナー、オブジェクトに限定されるものではありません。
 
 Azure Files の容量予約は、サブスクリプションまたは共有リソース グループに格納されているデータ量のみを対象としています。 トランザクション、帯域幅、およびデータ転送の料金は予約に含まれていません。 予約を購入するとすぐに、予約の属性に一致する容量料金は、従量課金制ではなく割引価格で課金されるようになります。 Azure の予約の詳細については、「[Azure の予約とは](../../cost-management-billing/reservations/save-compute-costs-reservations.md)」を参照してください。
 

@@ -6,12 +6,12 @@ ms.author: valls
 ms.date: 2/11/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 7381d7f233bc813118f310b08352d1642904a907
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: d5a860455a66dc7db137b8d0eb7aad942271ef90
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109753797"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128566314"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-ubuntu-1804-x64-simulator-reference-agent"></a>Ubuntu (18.04 x64) Simulator Reference Agent を使用した Device Update for Azure IoT Hub のチュートリアル
 
@@ -128,7 +128,7 @@ IoT デバイスでデバイス更新エージェントを実行するには、�
 
 `<device connection string>` を対象の接続文字列に置き換えてください
 ```shell
-./AducIotAgentSim-microsoft-swupdate -c '<device connection string>'
+sudo ./AducIotAgentSim-microsoft-swupdate "<device connection string>"
 ```
 
 or
@@ -161,7 +161,7 @@ Agent running. [main]
 
 ## <a name="import-update"></a>更新プログラムをインポートする
 
-1. [サンプル インポート マニフェスト](https://github.com/Azure/iot-hub-device-update/releases/download/0.7.0-rc1/TutorialImportManifest.json)と[サンプル イメージ更新プログラム](https://github.com/Azure/iot-hub-device-update/releases/download/0.7.0-rc1/adu-update-image-raspberrypi3-0.6.5073.1.swu)をダウンロードします。
+1. [サンプル インポート マニフェスト](https://github.com/Azure/iot-hub-device-update/releases/download/0.7.0/TutorialImportManifest_Sim.json)と[サンプル イメージ更新プログラム](https://github.com/Azure/iot-hub-device-update/releases/download/0.7.0-rc1/adu-update-image-raspberrypi3-0.6.5073.1.swu)をダウンロードします。 _注_: これらは、Raspberry Pi チュートリアルから再利用された更新プログラム ファイルです。このチュートリアルの更新プログラムはシミュレートされるため、特定のファイルの内容は重要ではないためです。 
 2. [Azure portal](https://portal.azure.com/) にログインし、Device Update がある IoT Hub に移動します。 次に、左側のナビゲーション バーの [自動デバイス管理] にある [デバイスの更新] オプションを選択します。
 
 3. [更新プログラム] タブを選択します。

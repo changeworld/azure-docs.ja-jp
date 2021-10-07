@@ -7,12 +7,12 @@ ms.date: 07/10/2020
 ms.topic: conceptual
 ms.service: iot-develop
 services: iot-develop
-ms.openlocfilehash: 26ed060e7cc0ccf8bf4e35ddd5ab62b8ba8eef09
-ms.sourcegitcommit: 8669087bcbda39e3377296c54014ce7b58909746
+ms.openlocfilehash: fc8992e8e602f4a92d870328b6da14dde06af087
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2021
-ms.locfileid: "114406698"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128670825"
 ---
 # <a name="iot-plug-and-play-conventions"></a>IoT プラグ アンド プレイ規則
 
@@ -188,9 +188,84 @@ reported プロパティのペイロードの例:
 }
 ```
 
+### <a name="object-type"></a>オブジェクトの種類
+
+書き込み可能なプロパティがオブジェクトとして定義されている場合、サービスでは完全なオブジェクトをデバイスに送信する必要があります。 デバイスでは、デバイスが更新に対してどのように動作したかをサービスが認識できるように、サービスに十分な情報を返送して、更新を受信確認する必要があります。 この応答には次のものが含まれる可能性があります。
+
+- オブジェクト全体。
+- デバイスが更新したフィールドだけ。
+- フィールドのサブセット。
+
+大きなオブジェクトの場合、受信確認に含めるオブジェクトのサイズを最小限に抑えることを検討してください。
+
+次の例は、4 つのフィールドがある `Object` として定義された書き込み可能プロパティを示しています。
+
+DTDL:
+
+```json
+{
+  "@type": "Property",
+  "name": "samplingRange",
+  "schema": {
+    "@type": "Object",
+    "fields": [
+      {
+        "name": "startTime",
+        "schema": "dateTime"
+      },
+      {
+        "name": "lastTime",
+        "schema": "dateTime"
+      },
+      {
+        "name": "count",
+        "schema": "integer"
+      },
+      {
+        "name": "errorCount",
+        "schema": "integer"
+      }
+    ]
+  },
+  "displayName": "Sampling range"
+  "writable": true
+}
+```
+
+この書き込み可能プロパティを更新するには、サービスから次のように見える完全なオブジェクトを送信します。
+
+```json
+{
+  "samplingRange": {
+    "startTime": "2021-08-17T12:53:00.000Z",
+    "lastTime": "2021-08-17T14:54:00.000Z",
+    "count": 100,
+    "errorCount": 5
+  }
+}
+```
+
+デバイスは、次のように見える受信確認で応答します。
+
+```json
+{
+  "samplingRange": {
+    "ac": 200,
+    "av": 5,
+    "ad": "Weighing status updated",
+    "value": {
+      "startTime": "2021-08-17T12:53:00.000Z",
+      "lastTime": "2021-08-17T14:54:00.000Z",
+      "count": 100,
+      "errorCount": 5
+    }
+  }
+}
+```
+
 ### <a name="sample-no-component-writable-property"></a>コンポーネントなしの書き込み可能プロパティのサンプル
 
-デバイスは、1 つのペイロードで複数の reported プロパティを受け取ると、reported プロパティ応答を複数のペイロードに送信できます。
+デバイスでは、1 つのペイロードで複数の必要なプロパティを受け取ると、reported プロパティ応答を複数のペイロードに送信するか、または応答を 1 つのペイロードに組み合わせることができます。
 
 デバイスまたはモジュールからは、DTDL v2 の規則に従う有効な JSON を送信できます。
 
@@ -205,6 +280,12 @@ DTDL:
     {
       "@type": "Property",
       "name": "targetTemperature",
+      "schema": "double",
+      "writable": true
+    },
+    {
+      "@type": "Property",
+      "name": "targetHumidity",
       "schema": "double",
       "writable": true
     }
@@ -249,13 +330,16 @@ reported プロパティの 2 番目のペイロードの例:
 }
 ```
 
+> [!NOTE]
+> これら 2 つの reported プロパティ ペイロードを 1 つのペイロードに結合するように選択することもできます。
+
 ### <a name="sample-multiple-components-writable-property"></a>複数のコンポーネントの書き込み可能プロパティのサンプル
 
 この要素からコンポーネントを参照していることを示すために、デバイスまたはモジュールは `{"__t": "c"}` マーカーを追加する必要があります。
 
 マーカーは、コンポーネントで定義されたプロパティの更新についてのみ送信されます。 既定のコンポーネントで定義されているプロパティの更新には、マーカーは含まれません。[コンポーネントなしの書き込み可能プロパティのサンプル](#sample-no-component-writable-property)を参照してください。
 
-デバイスは、1 つのペイロードで複数の reported プロパティを受け取ると、reported プロパティ応答を複数のペイロードに送信できます。
+デバイスでは、1 つのペイロードで複数の reported プロパティを受け取ると、複数のペイロードで reported プロパティ応答を送信するか、または応答を 1 つのペイロードに組み合わせることができます。
 
 デバイスまたはモジュールでは、reported プロパティを送信することで、プロパティを受け取ったことを確認する必要があります。
 
@@ -339,6 +423,9 @@ reported プロパティの 2 番目のペイロードの例:
   }
 }
 ```
+
+> [!NOTE]
+> これら 2 つの reported プロパティ ペイロードを 1 つのペイロードに結合するように選択することもできます。
 
 ## <a name="commands"></a>コマンド
 

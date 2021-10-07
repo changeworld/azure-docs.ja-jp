@@ -11,12 +11,12 @@ manager: eliotgra
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 1c5fd2416c37743dc48544da4bcfd23fc6928cdd
-ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
+ms.openlocfilehash: d65ef555ff0f05ca8020b3598bc6ac3022a708dd
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112539011"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129272720"
 ---
 # <a name="what-is-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub Device Provisioning Service とは
 Microsoft Azure には、すべての IoT ソリューションのニーズに合う豊富な統合されたパブリック クラウド サービス セットがあります。 IoT Hub Device Provisioning Service (DPS) は、IoT Hub のヘルパー サービスです。適切な IoT Hub へのゼロタッチの Just-In-Time プロビジョニングを人間の介入を必要とせずに行うことができます。 DPS を使用すると、膨大な数のデバイスを、安全かつスケーラブルな方法でプロビジョニングすることができます。
@@ -126,6 +126,6 @@ DPS は Azure IoT Hub を使用してデバイス プロビジョニングを自
 
 [Azure portal で IoT Hub Device Provisioning Service を設定する](quick-setup-auto-provision.md)
 
-[シミュレートされたデバイスの作成とプロビジョニング](quick-create-simulated-device.md)
+[シミュレートされたデバイスの作成とプロビジョニング](quick-create-simulated-device-tpm.md)
 
 [プロビジョニングするデバイスを設定する](tutorial-set-up-device.md)

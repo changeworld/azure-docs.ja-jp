@@ -8,12 +8,12 @@ ms.date: 02/25/2020
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: f7bd58361a4943ce295ab0f0b78f386079f0bba6
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 34484c501a95379194ad2147fbcb553bf3f06980
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128577863"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129277691"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 の概要
 
@@ -70,7 +70,7 @@ Data Lake Storage Gen2 は Azure Blob Storage の上に構築されているた�
 
 ## <a name="supported-blob-storage-features"></a>Blob Storage のサポートされている機能
 
-[診断ログ](../common/storage-analytics-logging.md)、[アクセス層](storage-blob-storage-tiers.md)、[Blob Storage ライフサイクル管理ポリシー](./lifecycle-management-overview.md)などの Blob Storage の機能を、ご利用のアカウントで使用できます。 Blob Storage のほとんど機能は完全にサポートされていますが、一部の機能は、プレビュー レベルでのみサポートされているか、まだサポートされていません。
+[診断ログ](../common/storage-analytics-logging.md)、[アクセス層](access-tiers-overview.md)、[Blob Storage ライフサイクル管理ポリシー](./lifecycle-management-overview.md)などの Blob Storage の機能を、ご利用のアカウントで使用できます。 Blob Storage のほとんど機能は完全にサポートされていますが、一部の機能は、プレビュー レベルでのみサポートされているか、まだサポートされていません。
 
 Data Lake Storage Gen2 での各 Blob Storage 機能のサポート状況を確認するには、「[Azure Storage アカウントにおける Blob Storage 機能のサポート](storage-feature-support-in-storage-accounts.md)」を参照してください。
 

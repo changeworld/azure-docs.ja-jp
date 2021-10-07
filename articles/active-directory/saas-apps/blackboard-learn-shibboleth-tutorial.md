@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/04/2021
 ms.author: jeedes
-ms.openlocfilehash: 8c6fef9319416c902f9c334453bd4a3a2fe4f93a
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 936398f324448abfa46b381fc19154117b8d4771
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124809988"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129232548"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-blackboard-learn---shibboleth"></a>チュートリアル: Azure Active Directory と Blackboard Learn - Shibboleth との統合
 
@@ -86,7 +86,7 @@ Blackboard Learn - Shibboleth で Azure AD シングル サインオンを構成
     c. **[応答 URL]** ボックスに、`https://<yourblackoardlearnserver>.blackboardlearn.com/Shibboleth.sso/SAML2/POST` のパターンを使用して URL を入力します
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際のサインオン URL、識別子、および応答 URL で値を更新します。 これらの値を取得するには、[Blackboard Learn - Shibboleth クライアント サポート チーム](https://www.blackboard.com/forms/contact-us_form.aspx)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 実際のサインオン URL、識別子、および応答 URL で値を更新します。 これらの値を取得するには、[Blackboard Learn - Shibboleth クライアント サポート チーム](https://www.blackboard.com/contact-us)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから **フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
@@ -127,7 +127,7 @@ Blackboard Learn - Shibboleth シングル サインオンを構成するには�
 
 ### <a name="create-blackboard-learn---shibboleth-test-user"></a>Blackboard Learn - Shibboleth のテスト ユーザーの作成
 
-このセクションでは、Blackboard Learn - Shibboleth で Britta Simon というユーザーを作成します。 [Blackboard Learn - Shibboleth サポート チーム](https://www.blackboard.com/forms/contact-us_form.aspx)と協力して、Blackboard Learn - Shibboleth プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Blackboard Learn - Shibboleth で Britta Simon というユーザーを作成します。 [Blackboard Learn - Shibboleth サポート チーム](https://www.blackboard.com/contact-us)と協力して、Blackboard Learn - Shibboleth プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ## <a name="test-sso"></a>SSO のテスト
 

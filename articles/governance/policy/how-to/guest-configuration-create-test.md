@@ -3,12 +3,12 @@ title: ゲスト構成パッケージの成果物をテストする方法
 description: マシンに対する監査または構成の適用を行うパッケージを作成およびテストする経験。
 ms.date: 07/20/2021
 ms.topic: how-to
-ms.openlocfilehash: 216cd207033b3bddd4960b85d8943e3842f8041f
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.openlocfilehash: efa2fbd49509b323cbf0cf442cb0a29bbc51c8b7
+ms.sourcegitcommit: 079426f4980fadae9f320977533b5be5c23ee426
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129080653"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129418729"
 ---
 # <a name="how-to-test-guest-configuration-package-artifacts"></a>ゲスト構成パッケージの成果物をテストする方法
 
@@ -35,7 +35,7 @@ Linux で PowerShell を "ルート" として実行するには、[Su コマン
 
 ## <a name="validate-the-configuration-package-meets-requirements"></a>構成パッケージが要件を満たしていることを検証する
 
-最初に、`Get-GuestConfigurationPacakgeComplianceStatus ` を使用して、構成パッケージが基本要件を満たしていることをテストします。 コマンドにより、以下のパッケージ要件が検証されます。
+最初に、`Get-GuestConfigurationPackageComplianceStatus ` を使用して、構成パッケージが基本要件を満たしていることをテストします。 コマンドにより、以下のパッケージ要件が検証されます。
 
 - MOF は存在していて有効であり、正しい場所にある
 - 必須のモジュールや依存関係は正しいバージョンのものが存在していて、重複はない

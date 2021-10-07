@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 04/08/2021
 ms.author: barclayn
-ms.openlocfilehash: 07b106630cffae75c5e4588d14de7ae938945614
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 7d2f09d3990f9e71e55b29b1eac771266627237a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107534116"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124791291"
 ---
 # <a name="managed-identities-for-azure-resources-frequently-asked-questions---azure-ad"></a>Azure リソースのマネージド ID に関してよく寄せられる質問 - Azure AD
 
@@ -38,11 +38,12 @@ ms.locfileid: "107534116"
 az resource list --query "[?identity.type=='SystemAssigned'].{Name:name,  principalId:identity.principalId}" --output table
 ```
 
+### <a name="what-azure-rbac-permissions-are-required-to-work-with-managed-identities"></a>マネージド ID を操作するにはどのような Azure RBAC アクセス許可が必要ですか? 
 
-### <a name="what-azure-rbac-permissions-are-required-to-managed-identity-on-a-resource"></a>リソースのマネージド ID に必要な Azure RBAC アクセス許可は何ですか? 
-
-- システム割り当てマネージド ID:リソースに対する書き込みアクセス許可が必要です。 たとえば、仮想マシンには Microsoft.Compute/virtualMachines/write が必要です。 このアクションは、[Virtual Machine Contributor](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) などのリソース固有の組み込みロールに含まれています。
-- ユーザー割り当てマネージド ID:リソースに対する書き込みアクセス許可が必要です。 たとえば、仮想マシンには Microsoft.Compute/virtualMachines/write が必要です。 さらにマネージド ID に対する [Managed Identity Operator](../../role-based-access-control/built-in-roles.md#managed-identity-operator) ロールの割り当て。
+- システム割り当てマネージド ID:リソースに対する書き込みアクセス許可が必要です。 たとえば、仮想マシンの場合は `Microsoft.Compute/virtualMachines/write` が必要です。 このアクションは、[Virtual Machine Contributor](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) などのリソース固有の組み込みロールに含まれています。
+- リソースへのユーザー割り当てマネージド ID の割り当て: そのリソースに対する書き込みアクセス許可が必要です。 たとえば、仮想マシンの場合は `Microsoft.Compute/virtualMachines/write` が必要です。 また、ユーザー割り当て ID に対する `Microsoft.ManagedIdentity/userAssignedIdentities/*/assign/action` アクションも必要です。 このアクションは、[マネージド ID オペレーター](../../role-based-access-control/built-in-roles.md#managed-identity-operator)組み込みロールに含まれています。
+- ユーザー割り当て ID の管理: ユーザー割り当てマネージド ID を作成または削除するには、[マネージド ID 共同作成者](../../role-based-access-control/built-in-roles.md#managed-identity-contributor)ロールの割り当てが必要です。
+- マネージド ID のロールの割り当ての管理: アクセスを付与しようとしているリソースに対する[所有者](../../role-based-access-control/built-in-roles.md#all)または[ユーザー アクセス管理者](../../role-based-access-control/built-in-roles.md#all)ロールの割り当てが必要です。 システム割り当て ID を持つリソース、またはロールの割り当てが与えられるユーザー割り当て ID に対する[閲覧者](../../role-based-access-control/built-in-roles.md#all)ロールの割り当てが必要になります。 読み取りアクセスがない場合は、ロールの割り当ての追加中にマネージド ID で検索するのではなく、"ユーザー、グループ、またはサービス プリンシパル" で検索してその ID のバッキング サービス プリンシパルを見つけることができます。 [Azure ロールの割り当ての詳細を参照してください](../../role-based-access-control/role-assignments-portal.md)。
 
 ### <a name="how-do-i-prevent-the-creation-of-user-assigned-managed-identities"></a>ユーザー割り当てマネージド ID を作成できないようにするにはどうすればよいですか。
 

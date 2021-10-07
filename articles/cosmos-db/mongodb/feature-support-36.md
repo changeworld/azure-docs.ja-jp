@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 03/02/2021
 author: gahl-levy
 ms.author: gahllevy
-ms.openlocfilehash: 08e9b63c8ec56ddba1899372d0d6b1d2c8bc423f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2fcaaf038ec7a619ec36a68fdd720ac7599da25f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121786365"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128649721"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>Azure Cosmos DB の MongoDB (3.6 バージョン) 用 API: サポートされる機能と構文
 [!INCLUDE[appliesto-mongodb-api](../includes/appliesto-mongodb-api.md)]
@@ -295,9 +295,9 @@ Azure Cosmos DB の MongoDB 用 API では、次のデータベース コマン�
 | $dateToString | はい |
 | $isoDayOfWeek | はい |
 | $isoWeek | はい |
-| $dateFromParts | いいえ | 
-| $dateToParts | いいえ |
-| $dateFromString | いいえ |
+| $dateFromParts | はい | 
+| $dateToParts | はい |
+| $dateFromString | はい |
 | $isoWeekYear | はい |
 
 ### <a name="conditional-expressions"></a>条件式
@@ -417,7 +417,7 @@ $regex クエリでは、左固定の式でインデックス検索が可能で�
 
 '$' または '|' を含める必要がある場合、2 つ (以上) の正規表現クエリを作成することをお勧めします。 たとえば、元のクエリとして ```find({x:{$regex: /^abc$/})``` がある場合、次のように変更する必要があります:
 
-```find({x:{$regex: /^abc/, x:{$regex:/^abc$/}})```
+`find({x:{$regex: /^abc/, x:{$regex:/^abc$/}})`
 
 最初の部分では、インデックスを使用して検索を ^abc で始まるドキュメントに制限し、2 番目の部分で入力そのものを照合します。 バー演算子 '|' は "or" 関数として機能します。そのためクエリ ```find({x:{$regex: /^abc |^def/})``` は、フィールド 'x' の値が "abc" または "def" で始まるドキュメントに一致します。 インデックスを利用するには、```find( {$or : [{x: $regex: /^abc/}, {$regex: /^def/}] })``` のように、クエリを 2 つの異なるクエリに分割し、$or 演算子で結合することをお勧めします。
 
@@ -513,34 +513,8 @@ $polygon | いいえ |
 
 `findOneAndUpdate` 操作を使用する場合、単一フィールドに対する並べ替え操作はサポートされていますが、複数フィールドに対する並べ替え操作はサポートされていません。
 
-## <a name="unique-indexes"></a>一意なインデックス
-
-[一意なインデックス](mongodb-indexing.md#unique-indexes)によって、特定のフィールドの値が、コレクション内のすべてのドキュメントにわたって重複していないことが保証されます。これは、既定の "_id" キーで一意性が保持される方法と似ています。 Cosmos DB で一意なインデックスを作成するには、`unique` 制約パラメーターを指定して `createIndex` コマンドを実行します。
-
-```javascript
-globaldb:PRIMARY> db.coll.createIndex( { "amount" : 1 }, {unique:true} )
-{
-        "_t" : "CreateIndexesResponse",
-        "ok" : 1,
-        "createdCollectionAutomatically" : false,
-        "numIndexesBefore" : 1,
-        "numIndexesAfter" : 4
-}
-```
-
-## <a name="compound-indexes"></a>複合インデックス
-
-[複合インデックス](mongodb-indexing.md#compound-indexes-mongodb-server-version-36)では、最大 8 つのフィールドから成るフィールド グループにインデックスを付けることができます。 この種のインデックスは、ネイティブの MongoDB 複合インデックスとは異なります。 Azure Cosmos DB の複合インデックスは、複数のフィールドに適用される並べ替え操作に使用されます。 複合インデックスを作成するには、パラメーターとして複数のプロパティを指定する必要があります。
-
-```javascript
-globaldb:PRIMARY> db.coll.createIndex({"amount": 1, "other":1})
-{
-        "createdCollectionAutomatically" : false, 
-        "numIndexesBefore" : 1,
-        "numIndexesAfter" : 2,
-        "ok" : 1
-}
-```
+## <a name="indexing"></a>インデックス作成
+MongoDB 用 API では、複数のフィールドでの並べ替えを有効にし、クエリのパフォーマンスを向上させ、一意性を適用するための[さまざまなインデックスがサポートされています](mongodb-indexing.md)。
 
 ## <a name="gridfs"></a>GridFS
 
@@ -549,10 +523,6 @@ Azure Cosmos DB では、GridFS と互換性のある MongoDB ドライバーを
 ## <a name="replication"></a>レプリケーション
 
 Cosmos DB では、最下位のレイヤーで、自動のネイティブ レプリケーションがサポートされています。 このロジックは、低待機時間のグローバルなレプリケーションも実現するために拡張されています。 Cosmos DB Cosmos では、手動のレプリケーション コマンドはサポートされていません。
-
-
-
-
 
 ## <a name="retryable-writes"></a>再試行可能書き込み
 

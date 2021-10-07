@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.author: rolyon
 ms.reviewer: ''
 ms.subservice: common
-ms.date: 05/06/2021
-ms.openlocfilehash: 3e5e46e15a7885eb5e3f4828cb8298355a116fd8
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.date: 09/24/2021
+ms.openlocfilehash: 0ab670b9ef6309b8db01f4a53f41c703dea69423
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112300491"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129092283"
 ---
 # <a name="tutorial-add-a-role-assignment-condition-to-restrict-access-to-blobs-using-the-azure-portal-preview"></a>チュートリアル: Azure portal を使用してロールの割り当て条件を追加し、BLOB へのアクセスを制限する (プレビュー)
 
@@ -29,8 +29,8 @@ ms.locfileid: "112300491"
 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
-> * ロールの割り当てに条件を追加する
-> * BLOB インデックス タグに基づいて BLOB に対するアクセスを制限する
+> - ロールの割り当てに条件を追加する
+> - BLOB インデックス タグに基づいて BLOB に対するアクセスを制限する
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -67,7 +67,7 @@ Chandra が Project=Cascade タグの設定されていない BLOB を読み取�
 1. サブスクリプションの所有者として Azure portal にサインインします。
 
 1. **[Azure Active Directory]** をクリックします。
-    
+
 1. ユーザーを作成するか、既存のユーザーを探します。 このチュートリアルでは、例として Chandra を使用しています。
 
 ## <a name="step-2-set-up-storage"></a>手順 2: ストレージを設定する
@@ -87,7 +87,7 @@ Chandra が Project=Cascade タグの設定されていない BLOB を読み取�
     [Blob index tags]\(BLOB インデックス タグ\) セクションが表示されず、サブスクリプションを登録したばかりの場合は、数分待つと変更が反映されることがあります。 詳細については、「[BLOB インデックス タグ (プレビュー) を使用して Azure Blob Storage でデータを管理および検索する](../blobs/storage-blob-index-how-to.md)」を参照してください。
 
     > [!NOTE]
-    > BLOB ではほかにも、ユーザー定義による任意のキー値メタデータを格納する機能がサポートされています。 メタデータと BLOB インデックス タグはよく似ていますが、条件では BLOB インデックス タグを使用する必要があります。 
+    > BLOB ではほかにも、ユーザー定義による任意のキー値メタデータを格納する機能がサポートされています。 メタデータと BLOB インデックス タグはよく似ていますが、条件では BLOB インデックス タグを使用する必要があります。
 
     | キー | 値 |
     | --- | --- |
@@ -133,7 +133,7 @@ Chandra が Project=Cascade タグの設定されていない BLOB を読み取�
 
 ## <a name="step-4-add-a-condition"></a>手順 4: 条件を追加する
 
-1. **[条件]** タブで、 **[条件を追加する]** をクリックします。
+1. **[条件 (省略可能)]** タブで **[条件の追加]** をクリックします。
 
     ![新しい条件の [ロールの割り当て条件を追加する] ページのスクリーンショット。](./media/storage-auth-abac-portal/condition-add-new.png)
 
@@ -141,7 +141,7 @@ Chandra が Project=Cascade タグの設定されていない BLOB を読み取�
 
 1. [アクションの追加] セクションで、 **[操作の選択]** をクリックします。
 
-    [アクションを選択します] ペインが表示されます。 このペインは、条件の対象となるロールの割り当てに基づいてデータに対するアクションをフィルター処理した一覧になっています。 
+    [アクションを選択します] ペインが表示されます。 このペインは、条件の対象となるロールの割り当てに基づいてデータに対するアクションをフィルター処理した一覧になっています。
 
     ![[アクションを選択します] ペインでアクションを 1 件選択した状態のスクリーンショット。](./media/storage-auth-abac-portal/condition-actions-select.png)
 
@@ -213,7 +213,7 @@ Chandra が Project=Cascade タグの設定されていない BLOB を読み取�
     ```
 
     出力の例を次に示します。 追加した条件が原因となってファイルを読み取ることが **できない** ことがわかります。
-    
+
     ```azurepowershell
     Get-AzStorageBlob: This request is not authorized to perform this operation using this permission. HTTP Status Code: 403 - HTTP Error Message: This request is not authorized to perform this operation using this permission.
     ErrorCode: AuthorizationPermissionMismatch
@@ -221,7 +221,7 @@ Chandra が Project=Cascade タグの設定されていない BLOB を読み取�
     RequestId: <requestId>
     Time: Sun, 13 Sep 2020 12:33:42 GMT
     ```
-    
+
 1. Cascade プロジェクトに関連するファイルを読み取ります。
 
     ```azurepowershell
@@ -229,10 +229,10 @@ Chandra が Project=Cascade タグの設定されていない BLOB を読み取�
     ```
 
     出力の例を次に示します。 ファイルに Project=Cascade タグが設定されているため、読み取ることができます。
-    
+
     ```azurepowershell
        AccountName: <storageAccountName>, ContainerName: <containerName>
-    
+
     Name                 BlobType  Length          ContentType                    LastModified         AccessTier SnapshotT
                                                                                                                   ime
     ----                 --------  ------          -----------                    ------------         ---------- ---------

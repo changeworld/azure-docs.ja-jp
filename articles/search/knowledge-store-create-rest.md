@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 09/02/2021
-ms.openlocfilehash: acad54727ecb441cce64021ecba395d41820659a
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: a19fd4aad4ee8e5bac7dc7cde2a5be4609a346fc
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123535269"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124796573"
 ---
 # <a name="create-a-knowledge-store-using-rest-and-postman"></a>REST と Postman を使用してナレッジ ストアを作成する
 
@@ -38,9 +38,9 @@ ms.locfileid: "123535269"
 
    **[StorageV2 (general purpose V2)]\(StorageV2 (汎用 V2)\)** のアカウントの種類を選択します。
 
-1. Azure Storage リソースで、**Storage Explorer** を使用して、**hotel-reviews** という名前の BLOB コンテナーを作成します。
+1. Azure Storage リソースで、**Storage Explorer** を使用して **hotel-reviews** という名前の BLOB コンテナーを作成します。
 
-1. ページ上部の **[アップロード]** を選択して、前の手順でダウンロードした **HotelReviews-Free.csv** ファイルを読み込みます。
+1. ページの上部にある **[アップロード]** を選択して、前の手順でダウンロードした **HotelReviews-Free.csv** ファイルを読み込みます。
 
    :::image type="content" source="media/knowledge-store-create-portal/blob-container-storage-explorer.png" alt-text="アップロードしたファイルと左側のナビゲーション ペインが示された Storage Explorer のスクリーンショット" border="true":::
 
@@ -380,7 +380,7 @@ Azure portal で Azure Storage アカウントに切り替え、**Storage Explor
 
    :::image type="content" source="media/knowledge-store-create-rest/knowledge-store-tables.png" alt-text="Storage Explorer のナレッジ ストア テーブルのスクリーンショット" border="true":::
 
-このチュートリアルでは、ナレッジ ストアは、テーブルのさまざまな整形と構造化方法を示すさまざまなテーブルで構成されています。 最初の 3 つのセットは、Shaper スキルの出力を使用して列と行を決定するテーブルを示しています。 2 番目のセットは、プロジェクション自体に埋め込まれたインライン整形コマンドを示しています。 どちらの方法を使用しても、同じ結果を得られます。
+このチュートリアルでは、ナレッジ ストアは、テーブルのさまざまな整形と構造化方法を示すさまざまなテーブルで構成されています。 テーブル 1 から 3 は、Shaper スキルの出力を使用して列と行を決定します。 テーブル 4 から 6 は、プロジェクション自体に埋め込まれたインライン整形命令から作成されます。 どちらの方法を使用しても、同じ結果を得られます。
 
 | テーブル | 説明 |
 |-------|-------------|

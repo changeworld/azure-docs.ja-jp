@@ -15,12 +15,12 @@ ms.date: 10/29/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5fe6c04cf29a4c45436948eaea6fc8d0276ec16f
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: ff1b95ac26be1697e5211c024bc148222823e36d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111895786"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128622096"
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>同期中のエラーのトラブルシューティング
 エラーが発生する可能性があるのは、Windows Server Active Directory (AD DS) と Azure Active Directory (Azure AD) で ID データが同期されているときです。 この記事では、さまざまな種類の同期エラーの概要、これらのエラーを引き起こすシナリオ、エラーを修正する方法について説明します。 この記事では一般的なエラーの種類を取り上げます。発生する可能性があるすべてのエラーについて説明するものではありません。
@@ -180,6 +180,15 @@ a. userPrincipalName 属性の文字がサポートされており、必要な�
 
 #### <a name="related-articles"></a>関連記事
 * [Microsoft 365 へのディレクトリ同期を通してユーザーをプロビジョニングするための準備](https://support.office.com/article/Prepare-to-provision-users-through-directory-synchronization-to-Office-365-01920974-9e6f-4331-a370-13aea4e82b3e)
+
+## <a name="deletion-access-violation-and-password-access-violation-errors"></a>削除アクセス違反とパスワード アクセス違反エラー
+
+Azure Active Directory では、クラウド限定オブジェクトが Azure AD Connect から更新されないように保護します。 Azure AD Connect からこれらのオブジェクトを更新することはできませんが、AADConnect クラウド側のバックエンドに直接、クラウド限定オブジェクトの変更を試みる呼び出しを行うことができます。 これを行う際は、次のエラーが返されることがあります。
+
+* この同期操作 (削除) は無効です。 ご購入元に問い合わせてください。
+* 1 つ以上のクラウド限定ユーザーの資格情報の更新が現在の要求に含まれているため、この更新を処理できません。
+* クラウド限定オブジェクトの削除はサポートされていません。 Microsoft カスタマー サポートに問い合わせてください。
+* サポートされていない 1 つ以上のクラウド限定ユーザー オブジェクトに対する変更が含まれており、パスワード変更要求を実行できません。これはサポートされていません。 Microsoft カスタマー サポートに問い合わせてください。
 
 ## <a name="largeobject"></a>LargeObject
 ### <a name="description"></a>説明

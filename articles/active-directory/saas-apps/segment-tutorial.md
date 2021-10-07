@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/28/2021
+ms.date: 09/01/2021
 ms.author: jeedes
-ms.openlocfilehash: ab3afec6b849288a87ba8aa194d5b180a49dc184
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 52b944e60edbdc3eb784fcc91736bfca531340a0
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111557682"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124801640"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-segment"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) とセグメントの統合
 
@@ -39,6 +39,7 @@ ms.locfileid: "111557682"
 
 * セグメントでは、**SP および IDP**  Initiated SSO がサポートされています。
 * セグメントでは、**Just-In-Time** ユーザー プロビジョニングがサポートされています。
+* Segment では、[自動化されたユーザー プロビジョニング](segment-provisioning-tutorial.md)がサポートされます。
 
 ## <a name="add-segment-from-the-gallery"></a>ギャラリーからのセグメントの追加
 
@@ -76,7 +77,7 @@ Azure AD へのセグメントの統合を構成するには、ギャラリー�
 
 1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
-    a. **[識別子]** ボックスに、`urn:auth0:segment-prod:samlp-<CUSTOMER_VALUE>` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`urn:auth0:segment-prod:samlp-<CUSTOMER_VALUE>` の形式で値を入力します。
 
     b. **[応答 URL]** ボックスに、`https://segment-prod.auth0.com/login/callback?connection=<CUSTOMER_VALUE>` のパターンを使用して URL を入力します
 
@@ -85,7 +86,7 @@ Azure AD へのセグメントの統合を構成するには、ギャラリー�
     **[サインオン URL]** テキスト ボックスに、URL として「`https://app.segment.com`」と入力します。
 
     > [!NOTE]
-    > これらの値はプレースホルダーです。 実際の識別子、応答 URL、サインオン URL を使用する必要があります。 これらの値を取得する手順については、このチュートリアルの後半で説明します。
+    > これらの値はプレースホルダーです。 実際の識別子と応答 URL を使用する必要があります。 これらの値を取得する手順については、このチュートリアルの後半で説明します。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -157,6 +158,8 @@ Azure AD へのセグメントの統合を構成するには、ギャラリー�
 
 このセクションでは、B.Simon というユーザーをセグメントに作成します。 セグメントでは、Just-In-Time ユーザー プロビジョニングがサポートされています。この設定は既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 セグメントにユーザーがまだ存在していない場合は、認証後に新規に作成されます。
 
+Segment では、自動ユーザー プロビジョニングもサポートされます。自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](./segment-provisioning-tutorial.md)をご覧ください。
+
 ## <a name="test-sso"></a>SSO のテスト 
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
@@ -171,7 +174,7 @@ Azure AD へのセグメントの統合を構成するには、ギャラリー�
 
 * Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定したセグメントに自動的にサインインされます。 
 
-また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [セグメント] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定したセグメントに自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [セグメント] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定したセグメントに自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

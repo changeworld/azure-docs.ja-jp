@@ -11,20 +11,20 @@ ms.author: rohitna
 ms.reviewer: mathoma, vanto
 ms.date: 08/03/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 77b629f5fb354ee94d06055999ece59aea05e592
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: de6af2c8581c157634ee1f8676e3dbc84ccd1803
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121750142"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128590679"
 ---
 # <a name="azure-sql-connectivity-settings"></a>Azure SQL の接続設定
-[!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
+[!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa-formerly-sqldw.md)]
 
 この記事では、Azure SQL Database のサーバーと、Azure Synapse Analytics の[専用 SQL プール (以前の SQL DW)](../../synapse-analytics\sql-data-warehouse\sql-data-warehouse-overview-what-is.md) への接続を制御する設定について説明します。 これらの設定は、このサーバーに関連するすべての SQL Database と専用 SQL プール (以前の SQL DW) データベースに適用されます。
 
 > [!IMPORTANT]
-> この記事は、Azure SQL Managed Instance には適用されません。
+> この記事は、Azure SQL Managed Instance には適用されません。 この記事は、Azure Synapse Analytics ワークスペースの専用 SQL プールにも適用されません。 ワークスペースを使用する Azure Synapse Analytics のために IP ファイアウォール規則を構成する方法のガイダンスについては、「[Azure Synapse Analytics の IP ファイアウォール規則](../../synapse-analytics/security/synapse-workspace-ip-firewall.md)」を参照してください。
 
 接続設定は、次のスクリーンショットに示すように、 **[ファイアウォールと仮想ネットワーク]** ブレードからアクセスできます。
 

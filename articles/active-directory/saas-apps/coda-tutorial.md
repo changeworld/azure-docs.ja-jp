@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/20/2021
+ms.date: 08/20/2021
 ms.author: jeedes
-ms.openlocfilehash: 5e2f5689b476e4b6bf1c707c2c630879af4962fc
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 0717ed4934bd2a8ff9c0dbc4b893710aaaff870b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110471763"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128650802"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-coda"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Coda の統合
 
@@ -40,6 +40,8 @@ ms.locfileid: "110471763"
 * Coda では、**IDP** Initiated SSO がサポートされます。
 
 * Coda では、**Just-In-Time** ユーザー プロビジョニングがサポートされます。
+
+* Coda では、[自動化されたユーザー プロビジョニング](coda-provisioning-tutorial.md)がサポートされます。
 
 ## <a name="add-coda-from-the-gallery"></a>ギャラリーからの Coda の追加
 
@@ -155,13 +157,15 @@ Coda で次の手順に従って開始します。
 
 このセクションでは、Britta Simon というユーザーを Coda に作成します。 Coda では、Just-In-Time ユーザー プロビジョニングがサポートされています。この設定は既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 Coda にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
 
+Coda では、自動ユーザー プロビジョニングもサポートされます。自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](./coda-provisioning-tutorial.md)をご覧ください。
+
 ## <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した Coda に自動的にサインインされます。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Coda] タイルをクリックすると、SSO を設定した Coda に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Coda] タイルをクリックすると、SSO を設定した Coda に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

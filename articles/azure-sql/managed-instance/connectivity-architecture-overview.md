@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: mathoma, bonova
 ms.date: 04/29/2021
-ms.openlocfilehash: d9958d30fff09ba0d6c66b71143ea68468dd0363
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0a9775691780a855824569f77a0bf4a1d3bf295b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121751258"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128657768"
 ---
 # <a name="connectivity-architecture-for-azure-sql-managed-instance"></a>Azure SQL Managed Instance の接続アーキテクチャ
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -105,6 +105,11 @@ SQL Managed Instance を、仮想ネットワーク内の専用サブネット�
 - **ネットワーク セキュリティ グループ (NSG):** NSG は、SQL Managed Instance サブネットに関連付けられている必要があります。 SQL Managed Instance がリダイレクト接続用に構成されている場合は、NSG を使用してポート 1433 およびポート 11000 から 11999 上のトラフィックをフィルター処理することで、SQL Managed Instance のデータ エンドポイントへのアクセスを制御できます。 サービスによって、管理トラフィックのフローが中断されないようにするために必要な[規則](#mandatory-inbound-security-rules-with-service-aided-subnet-configuration)が自動的にプロビジョニングされ、最新に維持されます。
 - **ユーザー定義ルート (UDR) テーブル:** UDR テーブルは、SQL Managed Instance サブネットに関連付けられている必要があります。 オンプレミスのプライベート IP 範囲が宛先として含まれるトラフィックを、仮想ネットワーク ゲートウェイまたは仮想ネットワーク アプライアンス (NVA) 経由でルーティングするルート テーブルにエントリを追加することもできます。 サービスは、管理トラフィックが中断されないようにするために必要な[エントリ](#mandatory-user-defined-routes-with-service-aided-subnet-configuration)を自動的にプロビジョニングし、最新に維持します。
 - **十分な IP アドレス**: SQL Managed Instance サブネットには、少なくとも 32 個の IP アドレスが必要です。 詳細については、[SQL Managed Instance 用のサブネットのサイズの決定](vnet-subnet-determine-size.md)に関する記事を参照してください。 [SQL Managed Instance のネットワーク要件](#network-requirements)を満たすように[既存のネットワーク](vnet-existing-add-subnet.md)を構成した後、そのネットワークにマネージド インスタンスをデプロイできます。 それ以外の場合は、[新しいネットワークとサブネット](virtual-network-subnet-create-arm-template.md)を作成します。
+- **ロック解除されたリソース:** SQL Managed Instance に委任されたサブネットを含む仮想ネットワークでは、仮想ネットワーク リソース、その親リソース グループ、またはサブスクリプションに対して[書き込みまたは削除ロック](../../azure-resource-manager/management/lock-resources.md)を設定してはなりません。 仮想ネットワークまたはその親リソースにロックを設定すると、SQL Managed Instance が定期的なメンテナンスを完了できなくなるおそれがあります。また、パフォーマンスの低下、バグ修正の遅延、規制コンプライアンスの喪失、SLO 外の操作、インスタンスの使用不能が発生するおそれがあります。
+- **Azure ポリシーによる許可:** [Azure Policy](../../governance/policy/overview.md) を利用して、サブネットが SQL Managed Instance に委任されている仮想ネットワークを含むスコープ内の拒否の効果を介してリソースの作成、変更、削除を制御する場合は、そのようなポリシーが SQL Managed Instance によるデプロイまたは定期的なメンテナンスの実行を妨げないようにする手順を実行する必要があります。 これらのリソースの種類のリソースを SQL Managed Instance で作成または管理できない場合は、デプロイが失敗したり、メンテナンス操作後に使用できなくなったりするおそれがあります。 拒否の効果から除外する必要があるリソースの種類は次のとおりです。  
+  - Microsoft.Network/serviceEndpointPolicies
+  - Microsoft.Network/networkIntentPolicies
+  - Microsoft.Network/virtualNetworks/subnets/contextualServiceEndpointPolicies
 
 > [!IMPORTANT]
 > マネージド インスタンスを作成すると、ネットワーク設定に対する非準拠の変更を防止するために、ネットワーク インテント ポリシーが適用されます。 最後のインスタンスがサブネットから削除されると、ネットワーク インテント ポリシーも削除されます。 下のルールは情報提供のみを目的としています。ARM テンプレート、PowerShell、または CLI を使用してこれらをデプロイしないでください。 最新の公式テンプレートを使用する場合は、常に[ポータルから取得](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)できます。
@@ -112,7 +117,7 @@ SQL Managed Instance を、仮想ネットワーク内の専用サブネット�
 ### <a name="mandatory-inbound-security-rules-with-service-aided-subnet-configuration"></a>サービス支援サブネット構成を使用した必須の受信セキュリティ規則
 これらの規則は、受信管理トラフィック フローを確認するために必要です。 接続アーキテクチャと管理トラフィックの詳細については、[上の段落](#high-level-connectivity-architecture)を参照してください。
 
-| 名前       |Port                        |Protocol|ソース           |宛先|アクション|
+| 名前       |Port                        |Protocol|source           |宛先|アクション|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |management  |9000、9003、1438、1440、1452|TCP     |SqlManagement    |MI SUBNET  |Allow |
 |            |9000、9003                  |TCP     |CorpNetSaw       |MI SUBNET  |Allow |
@@ -123,7 +128,7 @@ SQL Managed Instance を、仮想ネットワーク内の専用サブネット�
 ### <a name="mandatory-outbound-security-rules-with-service-aided-subnet-configuration"></a>サービス支援サブネット構成を使用した必須の送信セキュリティ規則
 これらの規則は、送信管理トラフィック フローを確認するために必要です。 接続アーキテクチャと管理トラフィックの詳細については、[上の段落](#high-level-connectivity-architecture)を参照してください。
 
-| 名前       |Port          |Protocol|ソース           |宛先|アクション|
+| 名前       |Port          |Protocol|source           |宛先|アクション|
 |------------|--------------|--------|-----------------|-----------|------|
 |management  |443、12000    |TCP     |MI SUBNET        |AzureCloud |Allow |
 |mi_subnet   |Any           |Any     |MI SUBNET        |MI SUBNET  |Allow |

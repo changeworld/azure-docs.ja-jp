@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 6/1/2021
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 26e90482ad03406bbf586c7c9a8f2fdcc31cad7c
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 50e5a8fb09a3bd54dd4131f6c60de6b315233e86
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122254026"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128557668"
 ---
 # <a name="tutorial-create-an-azure-digital-twins-graph-using-the-azure-cli"></a>チュートリアル: Azure CLI を使用して Azure Digital Twins グラフを作成する
 
@@ -161,6 +161,8 @@ Azure Digital Twins インスタンスにいくつかのモデルをアップロ
     
     :::image type="content" source="media/tutorial-command-line/cli/output-query-all.png" alt-text="ツイン クエリの部分的な結果 (room0 と room1 を含む) を示す Cloud Shell のスクリーンショット。" lightbox="media/tutorial-command-line/cli/output-query-all.png":::
 
+[!INCLUDE [digital-twins-query-latency-note.md](../../includes/digital-twins-query-latency-note.md)]
+
 ### <a name="modify-a-digital-twin"></a>デジタル ツインに変更を加える
 
 作成したツインのプロパティを変更することもできます。 
@@ -217,7 +219,7 @@ Azure Digital Twins インスタンスにいくつかのモデルをアップロ
     
     各コマンドの出力には、正常に作成されたリレーションシップに関する情報が表示されます。
 
-1. 次のいずれかのコマンドを使用し、Azure Digital Twins インスタンスでリレーションシップのクエリを実行することで、リレーションシップを確認できます。
+1. リレーションシップは、ご自分の Azure Digital Twins インスタンスのリレーションシップを出力する、次の任意のコマンドを使用して確認できます。
     * 各フロアを接続元とするすべてのリレーションシップを確認するには (一方の側からリレーションシップを表示):
         ```azurecli-interactive
         az dt twin relationship list --dt-name <Azure-Digital-Twins-instance-name> --twin-id floor0
@@ -241,6 +243,8 @@ Azure Digital Twins インスタンスにいくつかのモデルをアップロ
 ## <a name="query-the-twin-graph-to-answer-environment-questions"></a>環境についての質問をツイン グラフに照会する
 
 Azure Digital Twins の主な機能は、環境についての質問に答える[クエリ](concepts-query-language.md)をツイン グラフに対して容易に、かつ効率よく実行できることです。 Azure CLI では、[az dt twin query](/cli/azure/dt/twin?view=azure-cli-latest&preserve-view=true#az_dt_twin_query) コマンドを使用してこれを行います。
+
+[!INCLUDE [digital-twins-query-latency-note.md](../../includes/digital-twins-query-latency-note.md)]
 
 サンプル環境に関するいくつかの質問に回答するには、Cloud Shell で次のクエリを実行します。
 
@@ -278,7 +282,7 @@ Azure Digital Twins の主な機能は、環境についての質問に答える
     :::image type="content" source="media/tutorial-command-line/cli/output-query-relationship.png" alt-text="リレーションシップ クエリの結果 (room0 を含む) を示す Cloud Shell のスクリーンショット。" lightbox="media/tutorial-command-line/cli/output-query-relationship.png":::
 
     > [!NOTE]
-    > ツインの ID (上記のクエリの floor0 など) には、メタデータ フィールド `$dtId` を使用してクエリが実行されることに注意してください。 
+    > ツインの ID (上記のクエリの floor0 など) は、メタデータ フィールド `$dtId` を使用してクエリされています。 
     >
     >Cloud Shell を使用して、このような `$` で始まるメタデータ フィールドでクエリを実行する場合は、バッククォートで `$` をエスケープして、それが変数ではなく、クエリ テキスト内のリテラルとして使用する必要があることを CloudShell に認識させる必要があります。 これは、上のスクリーンショットに反映されています。
 

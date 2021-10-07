@@ -10,12 +10,12 @@ ms.date: 05/06/2021
 ms.author: santoshc
 ms.reviewer: jiacfan
 ms.subservice: common
-ms.openlocfilehash: 895f53ca3e8e1c68fa01ef44ffc47d88604bbea5
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 46be6327052aa280b9d23bc05764550a05739c5e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110070860"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128627921"
 ---
 # <a name="security-considerations-for-azure-role-assignment-conditions-in-azure-storage-preview"></a>Azure Storage での Azure ロールの割り当て条件についてのセキュリティ上の考慮事項 (プレビュー)
 
@@ -28,7 +28,7 @@ ms.locfileid: "110070860"
 
 この記事では、ロールの割り当て条件について考慮する際に、念頭に置いておくべきセキュリティ上の考慮事項について説明します。
 
-## <a name="use-of-other-authorization-mechanisms"></a>その他の承認メカニズムを使用する 
+## <a name="use-of-other-authorization-mechanisms"></a>その他の承認メカニズムを使用する
 
 ロールの割り当て条件は、承認のために Azure RBAC を使用している場合にのみ評価されます。 代替の承認方法を使用してアクセスを許可する場合、これらの条件はバイパスできます。
 - [共有キー](/rest/api/storageservices/authorize-with-shared-key)認可
@@ -116,4 +116,3 @@ API の `prevsnapshot` URI パラメーターで指定された BLOB へのア�
 - [Azure ロールの割り当て条件を使用して BLOB へのアクセスを承認する (プレビュー)](storage-auth-abac.md)
 - [Azure Storage での Azure のロールの割り当て条件のアクションと属性 (プレビュー)](storage-auth-abac-attributes.md)
 - [Azure 属性ベースのアクセス制御 (Azure ABAC) とは (プレビュー)](../../role-based-access-control/conditions-overview.md)
-

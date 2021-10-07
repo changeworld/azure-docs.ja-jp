@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/04/2021
+ms.date: 09/01/2021
 ms.author: jeedes
-ms.openlocfilehash: 59e7d6dcf8a5b384b82c5d3294d5f627d990fb7b
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: d6925b0f4e9f871444e85a1369be541fd1172af9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111745495"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128573651"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iris-intranet"></a>チュートリアル: Azure Active Directory と Iris Intranet の統合
 
@@ -40,6 +40,8 @@ ms.locfileid: "111745495"
 * Iris Intranet では、**SP** Initiated SSO がサポートされます。
 
 * Iris Intranet では、**Just-In-Time** ユーザー プロビジョニングがサポートされています。
+
+* Iris Intranet では、[自動化されたユーザー プロビジョニング](iris-intranet-provisioning-tutorial.md)がサポートされています。
 
 ## <a name="add-iris-intranet-from-the-gallery"></a>ギャラリーからの Iris Intranet の追加
 
@@ -120,6 +122,8 @@ Iris Intranet に対する Azure AD SSO を構成してテストするには、�
 
 このセクションでは、Britta Simon というユーザーを Iris Intranet に作成します。 Iris Intranet では、Just-In-Time ユーザー プロビジョニングがサポートされています。この設定は既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 Iris Intranet にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
 
+Iris Intranet では、自動ユーザー プロビジョニングもサポートされています。自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](./iris-intranet-provisioning-tutorial.md)をご覧ください。
+
 ## <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
@@ -128,7 +132,7 @@ Iris Intranet に対する Azure AD SSO を構成してテストするには、�
 
 * Iris Intranet のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Iris Intranet] タイルをクリックすると、Iris Intranet のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Iris Intranet] タイルをクリックすると、Iris Intranet のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

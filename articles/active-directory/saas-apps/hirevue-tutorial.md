@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と HireVue の統合 | Microsoft Docs'
+title: 'チュートリアル: Azure AD SSO と HireVue の統合'
 description: Azure Active Directory と HireVue の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/03/2021
+ms.date: 09/13/2021
 ms.author: jeedes
-ms.openlocfilehash: e5305a5abbddc6db68925d1c5a7abffb5e949193
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: 073b6bde981bd9395470aca9e77e44674d2a546f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111572252"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128573920"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-hirevue"></a>チュートリアル: Azure Active Directory と HireVue の統合
+# <a name="tutorial-azure-ad-sso-integration-with-hirevue"></a>チュートリアル: Azure AD SSO と HireVue の統合
 
 このチュートリアルでは、HireVue と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と HireVue を統合すると、次のことが可能になります。
 
@@ -32,6 +32,9 @@ ms.locfileid: "111572252"
 
 * Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
 * HireVue でのシングル サインオン (SSO) が有効なサブスクリプション。
+
+> [!NOTE]
+> この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
 
 ## <a name="scenario-description"></a>シナリオの説明
 

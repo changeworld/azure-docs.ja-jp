@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
-ms.date: 03/24/2021
-ms.openlocfilehash: d063a0870616b5b977df18c56d9d66515b03d0a5
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.date: 09/10/2021
+ms.openlocfilehash: 035b6c9b12df69395409c1c0aa70be219bc2533e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107870861"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124760196"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>チュートリアル:Azure Data Share を使用したデータの受け入れと受信  
 
@@ -94,9 +94,11 @@ Azure SQL Database、Azure Synapse Analytics へのデータを受信するこ�
 
    Azure portal から直接招待を開くには、Azure portal で **[データ共有への招待]** を検索します。 この操作により、Data Share の招待の一覧が表示されます。
 
+   テナントのゲスト ユーザーの場合、Data Share の招待を初めて表示する前に、テナントの自分のメール アドレスを確認するよう求められます。 検証が完了すると、12 か月間有効になります。
+
    ![招待の一覧](./media/invitations.png "招待の一覧") 
 
-1. 表示する共有を選択します。 
+1. 表示する招待を選択します。 
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

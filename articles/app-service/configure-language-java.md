@@ -11,12 +11,12 @@ ms.reviewer: cephalin
 ms.custom: seodec18, devx-track-java, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
 adobe-target: true
-ms.openlocfilehash: 47e9e221bd57453a0c799318f939de59b84feb86
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: c7cf2aaeaaf9907ff87ab4805aebe04c3098b8f8
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129356074"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128657141"
 ---
 # <a name="configure-a-java-app-for-azure-app-service"></a>Azure App Service 向けの Java アプリを構成する
 
@@ -66,7 +66,7 @@ az webapp list-runtimes --linux | grep "JAVA\|TOMCAT\|JBOSSEAP"
 [Azure Web アプリ用の Maven プラグイン](https://github.com/microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin)を使用すると、プロジェクト ルートで 1 つのコマンドを使用して、Azure Web アプリ用の Maven Java プロジェクトを簡単に準備できます。
 
 ```shell
-mvn com.microsoft.azure:azure-webapp-maven-plugin:2.2.0:config
+mvn com.microsoft.azure:azure-webapp-maven-plugin:2.1.0:config
 ```
 
 このコマンドによって、既存の Azure Web アプリを選択するか、新しいアプリを作成するかを選択するメッセージが表示され、`azure-webapp-maven-plugin` プラグインと関連する構成が追加されます。 次のコマンドを使用して、Java アプリを Azure にデプロイできます。
@@ -74,12 +74,12 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:2.2.0:config
 mvn package azure-webapp:deploy
 ```
 
-`pom.xml` の構成例を次に示します。
+`pom/xml` の構成例を次に示します。
 ```xml
 <plugin> 
   <groupId>com.microsoft.azure</groupId>  
   <artifactId>azure-webapp-maven-plugin</artifactId>  
-  <version>2.2.0</version>  
+  <version>2.1.0</version>  
   <configuration>
     <subscriptionId>111111-11111-11111-1111111</subscriptionId>
     <resourceGroup>spring-boot-xxxxxxxxxx-rg</resourceGroup>
@@ -110,7 +110,7 @@ mvn package azure-webapp:deploy
 1. プラグインを `build.gradle` に追加して、[Azure Web アプリ用の Gradle プラグイン](https://github.com/microsoft/azure-gradle-plugins/tree/master/azure-webapp-gradle-plugin) をセットアップします。
     ```groovy
     plugins {
-      id "com.microsoft.azure.azurewebapp" version "1.2.0"
+      id "com.microsoft.azure.azurewebapp" version "1.1.0"
     }
     ```
 

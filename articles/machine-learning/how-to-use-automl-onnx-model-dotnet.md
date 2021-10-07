@@ -8,14 +8,14 @@ ms.date: 10/30/2020
 ms.topic: how-to
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: automl
 ms.custom: automl
-ms.openlocfilehash: 2764623142ce09a248ee1b9c0efa1e409c3c8a8c
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: e37f1a26b348772acbf3af0154bb5eb04fb8436a
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107884356"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129428846"
 ---
 # <a name="make-predictions-with-an-automl-onnx-model-in-net"></a>.NET で AutoML ONNX モデルを使用して予測を行う
 

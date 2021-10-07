@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/13/2020
-ms.openlocfilehash: 3693fcf7783bd66bebe5b7d792a12eefaad66286
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: a63eaf3047dec956755616e06e1c250d88825772
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123437150"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128609785"
 ---
 # <a name="azure-monitor-logs-connector-for-logic-apps-and-power-automate"></a>Logic Apps および Power Automate の Azure Monitor Logs コネクタ
 [Azure Logic Apps](../../logic-apps/index.yml) と [Power Automate](https://flow.microsoft.com) を使用すると、各種サービス用の何百ものアクションを使用して自動化されたワークフローを作成できます。 Azure Monitor Logs コネクタを使用すると、Azure Monitor 内の Log Analytics ワークスペースまたは Application Insights アプリケーションからデータを取得するワークフローを作成できます。 この記事では、コネクタに含まれるアクションについて説明し、このデータを使用してワークフローを作成するためのチュートリアルを提供します。
@@ -25,7 +25,7 @@ Azure Monitor Logs コネクタには次の制限があります。
 * クエリの最大タイムアウト 110 秒
 * 現在、コネクタと [ログ] ページで同じグラフ ライブラリが使用されていないため、グラフの視覚エフェクトは、[ログ] ページでは使用できますが、[コネクタ] ページにはありません。
 
-使用するクエリと結果のサイズによっては、コネクタが上限に達する可能性があります。 このようなケースは多くの場合、フローの繰り返しを調整することで回避できます。時間の範囲を短くして実行頻度を高めるか、データを集約して結果のサイズを縮小します。 キャッシュの関係上、間隔が 100 秒未満の頻繁なクエリは推奨されません。
+使用するクエリと結果のサイズによっては、コネクタが上限に達する可能性があります。 このようなケースは多くの場合、フローの繰り返しを調整することで回避できます。時間の範囲を短くして実行頻度を高めるか、データを集約して結果のサイズを縮小します。 キャッシュの関係上、間隔が 120 秒未満の頻繁なクエリは推奨されません。
 
 ## <a name="actions"></a>Actions
 次の表では、Azure Monitor Logs コネクタに含まれるアクションについて説明します。 両方とも、Log Analytics ワークスペースまたは Application Insights アプリケーションに対してログ クエリを実行できます。 違いは、データが返される方法です。

@@ -6,12 +6,12 @@ ms.service: azure-australia
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: yvettep
-ms.openlocfilehash: 169ce346fa9023b43e46c92f010ea24630c4e63d
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 98554997056f8d09e4b6dde8751432b72fa6a8be
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "117029218"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129232811"
 ---
 # <a name="secure-remote-administration-of-your-gateway-in-azure-australia"></a>Azure Australia におけるゲートウェイの安全なリモート管理
 

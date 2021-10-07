@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 12/03/2020
 ms.author: mbullwin
-ms.openlocfilehash: 21dd554388616b2cd4882a5a550b4de74f5d9be3
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: f1ef5d40ccf6339d909f2cad6388186ddb5a0a04
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129059212"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129355957"
 ---
 # <a name="deploy-an-anomaly-detector-univariate-module-to-iot-edge"></a>Anomaly Detector 一変量モジュールを IoT Edge にデプロイする
 
@@ -58,7 +58,7 @@ Cognitive Services [Anomaly Detector](../anomaly-detector-container-howto.md) �
 
 6. **[Update]\(更新\)** を選択します。
 
-7. **Next:ルート** を選択して、ルートを定義します。 すべてのモジュールから、すべてのメッセージが Azure IoT Hub に送信されるように定義します。 ルートを宣言する方法については、[IoT Edge でのルートの確立](../../../iot-edge/module-composition.md?view=iotedge-2020-11)に関する記事を参照してください。
+7. **Next:ルート** を選択して、ルートを定義します。 すべてのモジュールから、すべてのメッセージが Azure IoT Hub に送信されるように定義します。 ルートを宣言する方法については、[IoT Edge でのルートの確立](../../../iot-edge/module-composition.md?view=iotedge-2020-11&preserve-view=true)に関する記事を参照してください。
 
 8. **[次へ: 確認および作成]** を選択します。 IoT Edge デバイスにデプロイされるすべてのモジュールを定義した JSON ファイルをプレビューできます。
     

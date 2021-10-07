@@ -3,12 +3,12 @@ title: Event Grid ソースとしての Azure Event Hub
 description: Azure Event Grid の Event Hubs イベントに対して用意されているプロパティについて説明します
 ms.topic: conceptual
 ms.date: 09/15/2021
-ms.openlocfilehash: 48d982e27d9da83d16bfbaad1a24ad1c8991a065
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: b29f7f104ca0616a27abb5009e5ec27262169f00
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128647425"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129358827"
 ---
 # <a name="azure-event-hubs-as-an-event-grid-source"></a>Event Grid ソースとしての Azure Event Hub
 
@@ -86,7 +86,7 @@ Event Hubs は、キャプチャ ファイルが作成されたときに、種�
 # <a name="event-grid-event-schema"></a>[Event Grid イベント スキーマ](#tab/event-grid-event-schema)
 イベントのトップレベルのデータを次に示します。
 
-| プロパティ | 種類 | 説明 |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | `topic` | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
 | `subject` | string | 発行元が定義したイベントの対象のパス。 |
@@ -101,7 +101,7 @@ Event Hubs は、キャプチャ ファイルが作成されたときに、種�
 
 イベントのトップレベルのデータを次に示します。
 
-| プロパティ | 種類 | 説明 |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | `source` | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
 | `subject` | string | 発行元が定義したイベントの対象のパス。 |
@@ -115,7 +115,7 @@ Event Hubs は、キャプチャ ファイルが作成されたときに、種�
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | 種類 | 説明 |
+| プロパティ | Type | 説明 |
 | -------- | ---- | ----------- |
 | `fileUrl` | string | キャプチャ ファイルのパス。 |
 | `fileType` | string | キャプチャ ファイルのファイルの種類。 |
@@ -126,6 +126,7 @@ Event Hubs は、キャプチャ ファイルが作成されたときに、種�
 | `lastSequenceNumber` | 整数 (integer) | キューの最後のシーケンス番号。 |
 | `firstEnqueueTime` | string | キューの最初の時間。 |
 | `lastEnqueueTime` | string | キューの最後の時間。 |
+
 
 ## <a name="tutorials-and-how-tos"></a>チュートリアルと方法
 

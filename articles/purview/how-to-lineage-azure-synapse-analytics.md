@@ -6,13 +6,13 @@ ms.author: csugunan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 08/25/2021
-ms.openlocfilehash: b47efc959518b7a4d35fb5ef79cd04f18cdfaa22
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.date: 09/27/2021
+ms.openlocfilehash: 02ea61356157c7e2a421c736a1af5bd87a1bcb5c
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123433514"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129212363"
 ---
 # <a name="how-to-get-lineage-from-azure-synapse-analytics-into-azure-purview"></a>Azure Synapse Analytics から Azure Purview に系列を取得する方法
 
@@ -46,7 +46,7 @@ Azure Synapse ワークスペースで Copy アクティビティを使用して
 
 ### <a name="step-3-monitor-lineage-reporting-status"></a>手順 3: 系列のレポートの状態を監視する
 
-Azure Synapse パイプラインを実行した後、Synapse パイプライン監視ビューで次の **[Lineage status]\(系列の状態\)** ボタンをクリックして、系列のレポートの状態を確認できます。 同じ情報を、アクティビティ出力 JSON -> `reportLineageToPurvew` セクションでも取得できます。
+Azure Synapse パイプラインの実行後は、Synapse パイプライン監視ビューで次の **[系列の状態]** ボタンをクリックすると、系列のレポートの状態を確認できます。 同じ情報を、アクティビティ出力 JSON -> `reportLineageToPurvew` セクションでも取得できます。
 
 :::image type="content" source="../data-factory/media/data-factory-purview/monitor-lineage-reporting-status.png" alt-text="パイプライン監視ビューで、系列のレポートの状態を監視する。":::
 

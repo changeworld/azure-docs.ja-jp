@@ -8,12 +8,12 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 09/15/2020
-ms.openlocfilehash: 5a631d9ae7a7d1792e3c4e4a2cbf8281e1168283
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f7d62b6fa3523accbeba9a083c74330ff344e2ae
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99226019"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124786372"
 ---
 # <a name="tutorial-create-a-blazor-server-app-that-uses-the-microsoft-identity-platform-for-authentication"></a>チュートリアル:認証に Microsoft ID プラットフォームを使用する Blazor Server アプリを作成する
 
@@ -40,7 +40,7 @@ ms.locfileid: "99226019"
 - **[サポートされているアカウントの種類]** で、 **[この組織のディレクトリ内のアカウントのみ]** を選択します。
 - **[リダイレクト URI]** ドロップ ダウンは **[Web]** に設定したままにして、「`https://localhost:5001/signin-oidc`」と入力します。 Kestrel で実行されているアプリの既定のポートは 5001 です。 アプリが別のポートで使用可能な場合は、`5001` ではなく、そのポート番号を指定します。
 
-**[管理]** で、 **[認証]**  >  **[Implicit grant and hybrid flows]\(暗黙的な許可およびハイブリッド フロー\)** を選択します。 **[アクセス トークン]** と **[ID トークン]** を選択し、 **[保存]** を選択します。
+**[管理]** で、 **[認証]**  >  **[Implicit grant and hybrid flows]\(暗黙的な許可およびハイブリッド フロー\)** を選択します。 **[ID トークン]** を選択し、 **[保存]** を選択します。
 
 最後に、アプリが保護された API (この場合 Microsoft Graph) を呼び出すので、その API を呼び出すためのアクセス トークンを要求するときに、その ID を確認するためにクライアント シークレットが必要になります。
 
@@ -53,13 +53,13 @@ ms.locfileid: "99226019"
 次のコマンドを実行して、このチュートリアルで使用する、Microsoft.Identity.Web のテンプレートをダウンロードします。
 
 ```dotnetcli
-dotnet new --install Microsoft.Identity.Web.ProjectTemplates::0.4.0-preview
+dotnet new --install Microsoft.Identity.Web.ProjectTemplates
 ```
 
 それから、次のコマンドを実行してアプリケーションを作成します。 コマンドのプレースホルダーをアプリの [概要] ページの適切な情報に置き換え、コマンド シェルでコマンドを実行します。 `-o|--output` オプションで指定した出力場所にプロジェクト フォルダーが存在しない場合は作成されて、アプリの名前の一部になります。
 
 ```dotnetcli
-dotnet new blazorserver2 --auth SingleOrg --calls-graph -o {APP NAME} --client-id "{CLIENT ID}" --tenant-id "{TENANT ID}"
+dotnet new blazorserver2 --auth SingleOrg --calls-graph -o {APP NAME} --client-id "{CLIENT ID}" --tenant-id "{TENANT ID}" --domain "{DOMAIN}"
 ```
 
 | プレースホルダー   | Azure portal での名前       | 例                                |
@@ -67,6 +67,7 @@ dotnet new blazorserver2 --auth SingleOrg --calls-graph -o {APP NAME} --client-i
 | `{APP NAME}`  | &mdash;                 | `BlazorSample`                         |
 | `{CLIENT ID}` | アプリケーション (クライアント) ID | `41451fa7-0000-0000-0000-69eff5a761fd` |
 | `{TENANT ID}` | ディレクトリ (テナント) ID   | `e86c78e2-0000-0000-0000-918e0565a45e` |
+| `{DOMAIN}`    | プライマリ ドメイン          | `tenantname.onmicrosoft.com`           |
 
 次に、エディターで新しい Blazor アプリに移動し、"secret-from-app-registration" というテキストを置き換えて、クライアント シークレットを *appsettings.json* ファイルに追加します。
 

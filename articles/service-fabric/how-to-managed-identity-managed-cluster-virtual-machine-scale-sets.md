@@ -4,12 +4,12 @@ description: この記事では、Service Fabric マネージド クラスター
 ms.topic: how-to
 ms.date: 5/10/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6cf2d65fe90656fe3025e438a57ea60fe17abd0d
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 75f421ef750907a172ac3cf5c846b6b35f448521
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112453100"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129544927"
 ---
 # <a name="add-a-managed-identity-to-a-service-fabric-managed-cluster-node-type"></a>Service Fabric マネージド クラスターのノード　タイプにマネージド ID を追加する
 
@@ -38,18 +38,18 @@ Service Fabric 管理対象クラスター内の各ノード タイプは、仮�
 ユーザー割り当てのマネージド ID は、デプロイ時に作成するために、Azure Resource Manager (ARM) テンプレートのリソース セクションで定義できます。
 
 ```JSON
-{ 
-    "type": "Microsoft.ManagedIdentity/userAssignedIdentities", 
-    "name": "[parameters('userAssignedIdentityName')]", 
-    "apiVersion": "2018-11-30", 
-    "location": "[resourceGroup().location]"  
-},
+{
+  "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
+  "name": "[parameters('userAssignedIdentityName')]",
+  "apiVersion": "2018-11-30",
+  "location": "[resourceGroup().location]"
+}
 ```
 
 または PowerShell を使用して作成されます。
 
 ```powershell
- New-AzResourceGroup -Name <managedIdentityRGName> -Location <location>
+New-AzResourceGroup -Name <managedIdentityRGName> -Location <location>
 New-AzUserAssignedIdentity -ResourceGroupName <managedIdentityRGName> -Name <userAssignedIdentityName>
 ```
 
@@ -85,20 +85,20 @@ Id                    : 00000000-0000-0000-0000-000000000000
 
 このロールの割り当てを、プリンシパル ID とロール定義 ID を使用するリソース セクション テンプレートに定義できます。
 
-```JSON
+```json
 {
-    "type": "Microsoft.Authorization/roleAssignments", 
-    "apiVersion": "2020-04-01-preview",
-    "name": "[parameters('vmIdentityRoleNameGuid')]",
-    "scope": "[concat('Microsoft.ManagedIdentity/userAssignedIdentities', '/', parameters('userAssignedIdentityName'))]",
-    "dependsOn": [ 
-        "[concat('Microsoft.ManagedIdentity/userAssignedIdentities/', parameters('userAssignedIdentityName'))]"
-    ], 
-    "properties": {
-        "roleDefinitionId": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', 'f1a07417-d97a-45cb-824c-7a7467783830')]",
-        "principalId": "00000000-0000-0000-0000-000000000000" 
-    } 
-}, 
+  "type": "Microsoft.Authorization/roleAssignments",
+  "apiVersion": "2020-04-01-preview",
+  "name": "[parameters('vmIdentityRoleNameGuid')]",
+  "scope": "[concat('Microsoft.ManagedIdentity/userAssignedIdentities', '/', parameters('userAssignedIdentityName'))]",
+  "dependsOn": [
+    "[concat('Microsoft.ManagedIdentity/userAssignedIdentities/', parameters('userAssignedIdentityName'))]"
+  ],
+  "properties": {
+    "roleDefinitionId": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', 'f1a07417-d97a-45cb-824c-7a7467783830')]",
+    "principalId": "00000000-0000-0000-0000-000000000000"
+  }
+}
 ```
 > [!NOTE]
 > vmIdentityRoleNameGuid は、有効な GUID である必要があります。 このロールの割り当てを含む同じテンプレートを再びデプロイする場合は、GUID が最初に使用したものと同じであることを確認します。また、このリソースを 1 回だけ作成する必要がある場合は削除します。
@@ -123,26 +123,24 @@ New-AzResourceGroupDeployment -ResourceGroupName <managedIdentityRGName> -Templa
 最後に、最初の手順で作成した ID の完全なリソース ID を使用して、マネージド クラスターのノード タイプ定義に `vmManagedIdentity` プロパティと `userAssignedIdentities` プロパティを追加します。 `apiVersion` には、必ず **2021-05-01** 以降を使用してください。
 
 ```json
-
- {
-    "type": "Microsoft.ServiceFabric/managedclusters/nodetypes",
-    "apiVersion": "2021-05-01",
-    ...
-    "properties": {
-        "isPrimary" : true,
-        "vmInstanceCount": 5,
-        "dataDiskSizeGB": 100,
-        "vmSize": "Standard_D2_v2",
-        "vmImagePublisher" : "MicrosoftWindowsServer",
-        "vmImageOffer" : "WindowsServer",
-        "vmImageSku" : "2019-Datacenter",
-        "vmImageVersion" : "latest",
-        "vmManagedIdentity": {
-            "userAssignedIdentities": [
-                "[parameters('userAssignedIdentityResourceId')]"
-            ]
-        }
+{
+  "type": "Microsoft.ServiceFabric/managedclusters/nodetypes",
+  "apiVersion": "2021-05-01",
+  "properties": {
+    "isPrimary": true,
+    "vmInstanceCount": 5,
+    "dataDiskSizeGB": 100,
+    "vmSize": "Standard_D2_v2",
+    "vmImagePublisher": "MicrosoftWindowsServer",
+    "vmImageOffer": "WindowsServer",
+    "vmImageSku": "2019-Datacenter",
+    "vmImageVersion": "latest",
+    "vmManagedIdentity": {
+      "userAssignedIdentities": [
+        "[parameters('userAssignedIdentityResourceId')]"
+      ]
     }
+  }
 }
 ```
 

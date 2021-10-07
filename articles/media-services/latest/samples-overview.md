@@ -8,12 +8,12 @@ ms.service: media-services
 ms.topic: overview
 ms.date: 03/24/2021
 ms.author: inhenkel
-ms.openlocfilehash: 6dd82d635199e4aa47a07e09b3c4649dbc4ef7cd
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: e17ec995ad9d8171d1d6a0b51b5112e4597d618f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "122643445"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128656679"
 ---
 # <a name="media-services-v3-samples"></a>Media Services v3 のサンプル
 
@@ -31,7 +31,10 @@ ms.locfileid: "122643445"
 |-------------|-------------|
 | [Account/CreateAccount](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/Account/CreateAccount)|このサンプルでは、キー配信 IP 許可リスト、マネージド ID、ストレージ認証、自分の暗号化キーの持ち込みなどの高度な構成設定に加え、Media Services アカウントを作成してプライマリ ストレージ アカウントを設定する方法を示します。|
 | [VideoEncoding/Encoding_PredefinedPreset](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/Encoding_PredefinedPreset)|このサンプルでは、組み込みのプリセットと HTTP URL 入力を使用したジョブの送信、ストリーミング用の出力アセットの発行、検証用の結果のダウンロードを行う方法を示します。|
+| [VideoEncoding/Encoding_H264_ContentAware](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/Encoding_H264_ContentAware) | 制約のない H.264 コンテンツ対応エンコードの最も基本的な使用方法を示します |
+| [VideoEncoding/Encoding_H264_ContentAware_Constrained](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/Encoding_H264_ContentAware_Constrained) | PresetConfigurations クラスを使用して、プリセットの出力動作を制限する方法を示します|
 | [VideoEncoding/Encoding_H264](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/Encoding_H264)|このサンプルでは、カスタム H.264 エンコード プリセットと HTTP URL 入力を使用したジョブの送信、ストリーミング用の出力アセットの発行、検証用の結果のダウンロードを行う方法を示します。|
+| [VideoEncoding/Encoding_HEVC_ContentAware](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/Encoding_HEVC_ContentAware) | コンテンツ対応エンコードを使用した、制約のない HEVC コーデックの基本的な使用方法を示します。  PresetConfigurations クラスは HEVC でもサポートされ、このサンプルに追加できます。|
 | [VideoEncoding/Encoding_HEVC](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/Encoding_HEVC)|このサンプルでは、カスタム HEVC エンコード プリセットと HTTP URL 入力を使用したジョブの送信、ストリーミング用の出力アセットの発行、検証用の結果のダウンロードを行う方法を示します。|
 | [VideoEncoding/Encoding_StitchTwoAssets](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/Encoding_StitchTwoAssets)|このサンプルでは、JobInputSequence を使用したジョブの送信、開始または終了時間でクリップできる複数のアセットの合成を行う方法を示します。 最終的にエンコードされたファイルは、すべてのアセットが合成された単一の動画になります。  また、このサンプルでは、ストリーミング用に出力アセットを発行し、検証用に結果をダウンロードします。|
 | [VideoEncoding/Encoding_SpriteThumbnail](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/Encoding_SpriteThumbnail)|このサンプルでは、カスタム プリセットとサムネイル スプライト、および HTTP URL 入力を使用したジョブの送信、ストリーミング用の出力アセットの発行、検証用の結果のダウンロードを行う方法を示します。|
@@ -45,6 +48,7 @@ ms.locfileid: "122643445"
 | [Streaming/AssetFilters](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/Streaming/AssetFilters)|このサンプルでは、組み込みの AdaptiveStreaming プリセットを使用した変換の作成、ジョブの送信、アセットフィルターとアカウントフィルターの作成、ストリーミング ロケーターへのフィルターの関連付け、再生用の URL の出力を行う方法を示します。|
 | [Streaming/StreamHLSAndDASH](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/Streaming/StreamHLSAndDASH)|このサンプルでは、組み込みの AdaptiveStreaming プリセットを使用した変換の作成、ジョブの送信、HLS および DASH ストリーミング用の出力アセットの発行を行う方法を示します。|
 | [HighAvailabilityEncodingStreaming](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/HighAvailabilityEncodingStreaming/) | このサンプルでは、オンデマンドのエンコードまたは分析を使用する運用システム向けのガイダンスとベスト プラクティスを提供します。 [Media Services と VOD を使用した高可用性](architecture-high-availability-encoding-concept.md)に関する記事を先にお読みください。 [HighAvailabilityEncodingStreaming](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/main/HighAvailabilityEncodingStreaming/README.md) サンプル用に別個のソリューション ファイルが用意されています。 |
+| [Media Services 用の Azure Functions](https://github.com/xpouyat/media-services-v3-dotnet-core-functions-integration/tree/main/Functions)|このプロジェクトには、ビデオ処理のために Azure Media Services v3 に接続する Azure Functions の例が含まれています。 Visual Studio 2019 または Visual Studio Code を使用して、関数を作成して実行できます。 Azure Resource Manager (ARM) テンプレートと GitHub Actions ワークフローが、Function リソースのデプロイのために用意されており、継続的なデプロイが可能になっています。|
 
 ## <a name="nodejs"></a>[Node.JS](#tab/node/)
 
@@ -89,6 +93,6 @@ ms.locfileid: "122643445"
 
 ## <a name="rest-postman-collection"></a>REST Postman コレクション
 
-[REST Postman](https://github.com/Azure-Samples/media-services-v3-rest-postman) サンプルには、Postman クライアントにインポートするための Postman コレクションと Postman 環境が含まれています。 API の構造と Azure Resource Management (ARM) での動作、およびクライアント SDK からの呼び出しの構造をよく理解するために、Postman コレクションのサンプルをお勧めします。 
+[REST Postman](https://github.com/Azure-Samples/media-services-v3-rest-postman) のサンプルには、Postman クライアントにインポートするための Postman の環境とコレクションが含まれています。 API の構造と Azure Resource Management (ARM) での動作、およびクライアント SDK からの呼び出しの構造をよく理解するために、Postman コレクションのサンプルをお勧めします。 
 
 [!INCLUDE [warning-rest-api-retry-policy.md](./includes/warning-rest-api-retry-policy.md)]

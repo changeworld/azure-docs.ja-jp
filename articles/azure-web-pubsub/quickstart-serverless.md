@@ -6,12 +6,12 @@ ms.author: yajin1
 ms.service: azure-web-pubsub
 ms.topic: tutorial
 ms.date: 03/11/2021
-ms.openlocfilehash: e4dd54ef01cf93ffa0bb47d4bbdccb1d14695934
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 787a0e4990988f35ca8e2c98eab1d9c77bea9c1b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123434953"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128576355"
 ---
 # <a name="tutorial-create-a-serverless-real-time-chat-app-with-azure-functions-and-azure-web-pubsub-service"></a>チュートリアル: Azure Functions と Azure Web PubSub サービスを使用してサーバーレスのリアルタイム チャット アプリを作成する
 
@@ -151,7 +151,7 @@ Azure Web PubSub サービスは、WebSocket とパブリッシュ-サブスク�
     func new -n negotiate -t HttpTrigger
     ```
     > [!NOTE]
-    > このサンプルでは、[AAD](/azure/app-service/configure-authentication-user-identities) ユーザー ID ヘッダー `x-ms-client-principal-name` を使用して `userId` を取得します。 また、これはローカル関数では機能しません。 ローカルで実行する際には、これを空にするか他の方法に変えることで `userId` を取得または生成できます。 たとえば、`negotiate` 関数を呼び出してサービスの接続 URL を取得する際に、クライアントがユーザー名を入力し、それを `?user={$username}` のようなクエリで渡すようにします。 また、`negotiate` 関数で `userId` を値 `{query.user}` に設定します。
+    > このサンプルでは、[AAD](../app-service/configure-authentication-user-identities.md) ユーザー ID ヘッダー `x-ms-client-principal-name` を使用して `userId` を取得します。 また、これはローカル関数では機能しません。 ローカルで実行する際には、これを空にするか他の方法に変えることで `userId` を取得または生成できます。 たとえば、`negotiate` 関数を呼び出してサービスの接続 URL を取得する際に、クライアントがユーザー名を入力し、それを `?user={$username}` のようなクエリで渡すようにします。 また、`negotiate` 関数で `userId` を値 `{query.user}` に設定します。
     
     # <a name="javascript"></a>[JavaScript](#tab/javascript)
    - `negotiate/function.json` を更新して次の json コードをコピーします。
@@ -374,14 +374,14 @@ Use the following commands to create these items.
 
 1. Azure に関数プロジェクトをデプロイする:
 
-    Azure への関数アプリの作成に成功したら、[func azure functionapp publish](/azure-functions/functions-run-local) コマンドを使用して、ローカル関数プロジェクトをデプロイすることができます。
+    Azure への関数アプリの作成に成功したら、[func azure functionapp publish](./../azure-functions/functions-run-local.md) コマンドを使用して、ローカル関数プロジェクトをデプロイすることができます。
 
     ```bash
-    func azure functionapp publish <FUNCIONAPP_NAME> --publish-local-settings
+    func azure functionapp publish <FUNCIONAPP_NAME>
     ```
+1. 関数アプリ用に `WebPubSubConnectionString` を構成します。
 
-    > [!NOTE]
-    > ここでは、ローカル設定 `local.settings.json` をコマンド パラメーター `--publish-local-settings` と共にデプロイしています。 Microsoft Azure ストレージ エミュレーターを使用している場合は、プロンプト メッセージ `App setting AzureWebJobsStorage is different between azure and local.settings.json, Would you like to overwrite value in azure? [yes/no/show]` に続いて「`no`」と入力して、 Azure でこの値の上書きをスキップできます。 さらに、Function App の設定を **[Azure portal]**  ->  **[設定]**  ->  **[構成]** で更新できます。
+   最初に、**Azure portal** から Web PubSub リソースを見つけ、 **[キー]** から接続文字列をコピーします。 次に、**Azure portal** ->  **[設定]**  ->  **[構成]** の [関数アプリの設定] に移動します。 **[アプリケーション設定]** の下に新しい項目を追加します。名前は `WebPubSubConnectionString` にし、値は Web PubSub リソースの接続文字列とします。
 
 ## <a name="configure-the-web-pubsub-service-event-handler"></a>Web PubSub サービス `Event Handler` を構成する
 
@@ -409,10 +409,10 @@ Azure Web PubSub サービスに `Event Handler` を設定します。 **Azure p
 
 ここでは、ID プロバイダーとして `Microsoft` を選択します。これにより、`negotiate` 関数で `userId` として `x-ms-client-principal-name` が使用されます。 なお、下のリンクから他の ID プロバイダーを構成することもできます。それに応じて `negotiate` 関数の `userId` 値を忘れずに更新してください。
 
-* [Microsoft (Azure AD)](/azure/app-service/configure-authentication-provider-aad)
-* [Facebook](/azure/app-service/configure-authentication-provider-facebook)
-* [Google](/azure/app-service/configure-authentication-provider-google)
-* [Twitter](/azure/app-service/configure-authentication-provider-twitter)
+* [Microsoft (Azure AD)](../app-service/configure-authentication-provider-aad.md)
+* [Facebook](../app-service/configure-authentication-provider-facebook.md)
+* [Google](../app-service/configure-authentication-provider-google.md)
+* [Twitter](../app-service/configure-authentication-provider-twitter.md)
 
 ## <a name="try-the-application"></a>アプリケーションを試す
 

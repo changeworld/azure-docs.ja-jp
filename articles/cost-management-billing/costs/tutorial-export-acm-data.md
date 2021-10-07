@@ -3,18 +3,18 @@ title: チュートリアル - Azure Cost Management からデータをエクス
 description: この記事では、外部システムで使用できるように Azure Cost Management データをエクスポートし、管理する方法を紹介します。
 author: bandersmsft
 ms.author: banders
-ms.date: 08/05/2021
+ms.date: 09/16/2021
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18, devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: f6d640d40b586e435e1484fce8d6560a961ba6ac
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5c27f34adcf427a82f425f7ef4cf24a4ae843bc4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121731953"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128648774"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>チュートリアル:データをエクスポートし、管理する
 
@@ -295,6 +295,14 @@ Microsoft 顧客契約、Microsoft Partner Agreement、Enterprise Agreement の�
   ]
 }
 ```
+
+### <a name="export-versions"></a>エクスポート バージョン
+
+スケジュールされたエクスポートを Azure portal で、または API を使用して作成すると、作成時に使用されるエクスポート バージョンで常に実行されます。 Azure では、以前に作成したエクスポートが、更新しない限り、同じバージョンで保持されます。 これにより、エクスポート バージョンが変更された場合に、料金と CSV フィールドの変更が防止されます。 エクスポート機能が時間の経過に伴い変化すると、フィールド名が変更され、新しいフィールドが追加される場合があります。
+
+使用可能な最新のデータとフィールドを使用したい場合は、Azure portal で新しいエクスポートを作成することをお勧します。 既存のエクスポートを最新バージョンに更新するには、Azure portal または最新の Export API バージョンを使用して更新します。 既存のエクスポートを更新すると、その後生成されるファイルのフィールドと料金にわずかな違いが生じる可能性があります。
+
+
 ## <a name="verify-that-data-is-collected"></a>データが収集されたことを確認する
 
 コスト管理データが収集されていることは簡単に確認できます。また、Azure Storage Explorer を利用し、エクスポートした CSV データを簡単に表示できます。

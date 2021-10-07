@@ -2,13 +2,13 @@
 title: テンプレート関数 - デプロイ
 description: Azure Resource Manager テンプレート (ARM テンプレート) で、デプロイ情報を取得するために使用する関数について説明します。
 ms.topic: conceptual
-ms.date: 05/13/2021
-ms.openlocfilehash: 27b800510da7bed15d6853683a026704e2b45698
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.date: 09/09/2021
+ms.openlocfilehash: 12f449cd70f0ccbeeb0d232299f38fb814a8cb24
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123449074"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124733336"
 ---
 # <a name="deployment-functions-for-arm-templates"></a>ARM テンプレートのデプロイ関数
 
@@ -142,21 +142,9 @@ Azure サブスクリプション、管理グループ、またはテナント�
 
 ### <a name="example"></a>例
 
-次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deployment.json)では、デプロイ オブジェクトが返されます。
+次の例では、デプロイ オブジェクトが返されます。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "resources": [],
-  "outputs": {
-    "deploymentOutput": {
-      "type": "object",
-      "value": "[deployment()]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/deployment/deployment.json":::
 
 前の例では、次のオブジェクトが返されます。
 
@@ -183,7 +171,9 @@ Azure サブスクリプション、管理グループ、またはテナント�
 }
 ```
 
-サブスクリプションのデプロイでは、この[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deploymentsubscription.json)からデプロイ オブジェクトが返されます。
+サブスクリプションのデプロイの場合、次の例ではデプロイ オブジェクトが返されます。
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/deployment/deploymentsubscription.json":::
 
 ## <a name="environment"></a>環境
 
@@ -233,19 +223,7 @@ Azure サブスクリプション、管理グループ、またはテナント�
 
 次のテンプレート例では、環境オブジェクトが返されます。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "resources": [],
-  "outputs": {
-    "environmentOutput": {
-      "type": "object",
-      "value": "[environment()]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/deployment/environment.json":::
 
 前の例では、グローバル Azure にデプロイされる場合は、次のオブジェクトが返されます。
 
@@ -293,7 +271,7 @@ Bicep では、シンボリック名を使用してパラメーターを直接�
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | parameterName |はい |string |返されるパラメーターの名前。 |
 
@@ -322,67 +300,13 @@ Bicep では、シンボリック名を使用してパラメーターを直接�
 
 ### <a name="example"></a>例
 
-次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/parameters.json)では、parameters 関数の簡単な使用方法を示しています。
+次の例では、parameters 関数の簡単な使用方法を示しています。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "stringParameter": {
-      "type": "string",
-      "defaultValue": "option 1"
-    },
-    "intParameter": {
-      "type": "int",
-      "defaultValue": 1
-    },
-    "objectParameter": {
-      "type": "object",
-      "defaultValue": {
-        "one": "a",
-        "two": "b"
-      }
-    },
-    "arrayParameter": {
-      "type": "array",
-      "defaultValue": [ 1, 2, 3 ]
-    },
-    "crossParameter": {
-      "type": "string",
-      "defaultValue": "[parameters('stringParameter')]"
-    }
-  },
-  "variables": {},
-  "resources": [],
-  "outputs": {
-    "stringOutput": {
-      "value": "[parameters('stringParameter')]",
-      "type": "string"
-    },
-    "intOutput": {
-      "value": "[parameters('intParameter')]",
-      "type": "int"
-    },
-    "objectOutput": {
-      "value": "[parameters('objectParameter')]",
-      "type": "object"
-    },
-    "arrayOutput": {
-      "value": "[parameters('arrayParameter')]",
-      "type": "array"
-    },
-    "crossOutput": {
-      "value": "[parameters('crossParameter')]",
-      "type": "string"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/deployment/parameters.json":::
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | Type | 値 |
+| 名前 | 種類 | 値 |
 | ---- | ---- | ----- |
 | stringOutput | String | option 1 |
 | intOutput | int | 1 |
@@ -402,7 +326,7 @@ Bicep では、シンボリック名を使用して変数を直接参照しま�
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | variableName |はい |String |返す変数の名前。 |
 
@@ -437,47 +361,13 @@ Bicep では、シンボリック名を使用して変数を直接参照しま�
 
 ### <a name="example"></a>例
 
-次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/variables.json)は異なる変数値を返します。
+次の例は異なる変数値を返します。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {},
-  "variables": {
-    "var1": "myVariable",
-    "var2": [ 1, 2, 3, 4 ],
-    "var3": "[ variables('var1') ]",
-    "var4": {
-      "property1": "value1",
-      "property2": "value2"
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "exampleOutput1": {
-      "value": "[variables('var1')]",
-      "type": "string"
-    },
-    "exampleOutput2": {
-      "value": "[variables('var2')]",
-      "type": "array"
-    },
-    "exampleOutput3": {
-      "value": "[variables('var3')]",
-      "type": "string"
-    },
-    "exampleOutput4": {
-      "value": "[variables('var4')]",
-      "type": "object"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/functions/deployment/variables.json":::
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | Type | 値 |
+| 名前 | 種類 | 値 |
 | ---- | ---- | ----- |
 | exampleOutput1 | String | myVariable |
 | exampleOutput2 | Array | [1, 2, 3, 4] |

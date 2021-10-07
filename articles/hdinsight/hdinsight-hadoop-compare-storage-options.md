@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: b6dd0fd95280a65615d38ab11a2f9814f58586f5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4d58bfc14e4b61860d239cc3dcfd0ad276aec781
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98945858"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129273516"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで使用するストレージ オプションを比較する
 
@@ -40,7 +40,7 @@ HDInsight クラスターを作成する際、次のいくつかの異なる Azu
 
 ストレージ アカウントの種類について詳しくは、「[Azure ストレージ アカウントの概要](../storage/common/storage-account-overview.md)」をご覧ください。
 
-Azure Storage アクセス層の詳細については、「[Azure Blob Storage:Premium ストレージ層 (プレビュー)、ホット ストレージ層、クール ストレージ層、アーカイブ ストレージ層](../storage/blobs/storage-blob-storage-tiers.md)」を参照してください。
+Azure Storage アクセス層の詳細については、「[Azure Blob Storage:Premium ストレージ層 (プレビュー)、ホット ストレージ層、クール ストレージ層、アーカイブ ストレージ層](../storage/blobs/access-tiers-overview.md)」を参照してください。
 
 プライマリと省略可能なセカンダリ ストレージ用のサービスの組み合わせを使用してクラスターを作成することができます。 次の表に、HDInsight で現在サポートされているクラスター ストレージの構成をまとめています。
 

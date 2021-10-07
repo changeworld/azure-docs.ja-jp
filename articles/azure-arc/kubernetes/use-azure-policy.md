@@ -8,16 +8,16 @@ author: mlearned
 ms.author: mlearned
 description: Azure Policy を使用してクラスター構成を大規模に適用する
 keywords: Kubernetes, Arc, Azure, K8s, コンテナー
-ms.openlocfilehash: 7a6892c4b89128abe698573960b61d08c2ac2f35
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: 986af919b4cd61f6f180232598a74561c00a6954
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122609630"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124799797"
 ---
 # <a name="use-azure-policy-to-apply-gitops-configurations-at-scale"></a>Azure Policy を使用して GitOps 構成を大規模に適用する
 
-Azure Policy を使用すると、Azure Arc 対応 Kubernetes クラスター (`Microsoft.Kubernetes/connectedclusters`) に構成 (`Microsoft.KubernetesConfiguration/sourceControlConfigurations`) を大規模に適用できます。
+Azure Policy を使用すると、Azure Arc 対応 Kubernetes クラスター (`Microsoft.Kubernetes/connectedclusters`) に構成 (`Microsoft.KubernetesConfiguration/sourceControlConfigurations` のリソースの種類) を大規模に適用できます。
 
 Azure Policy を使用するには、組み込みの GitOps ポリシー定義を選択して、ポリシーの割り当てを作成します。 ポリシー割り当てを作成する場合は、次の手順を実行します。
 1. 割り当てのスコープを設定します。
@@ -74,4 +74,4 @@ Azure Policy を使用するには、組み込みの GitOps ポリシー定義�
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure Arc 対応 Kubernetes クラスターを使用して Azure Monitor for Containers を設定する](../../azure-monitor/containers/container-insights-enable-arc-enabled-clusters.md)。
+[Azure Arc 対応 Kubernetes クラスターを使用して Azure Monitor for Containers を設定します](../../azure-monitor/containers/container-insights-enable-arc-enabled-clusters.md)。

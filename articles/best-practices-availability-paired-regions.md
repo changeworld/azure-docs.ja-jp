@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/21/2021
 ms.author: martinek
 ms.custom: references_regions
-ms.openlocfilehash: 4fe0b913c003ccf4247833ba1dc12c4ec1e7248a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 030197a39ef10193887e3fc9966acd1979137291
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121730204"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129233126"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>ビジネス継続性とディザスター リカバリー (BCDR):Azure のペアになっているリージョン
 
@@ -96,7 +96,7 @@ Azure 地域とは、少なくとも 1 つの Azure リージョンを含む、�
 ## <a name="cross-region-activities"></a>リージョン間アクティビティ
 図 2 を参照してください。
 
-1. **Azure Compute (IaaS)** – 災害発生中に別のリージョンでリソースを確実に使用できるように、追加のコンピューティング リソースを事前にプロビジョニングする必要があります。 詳細については、「[Azure の回復性技術ガイダンス](https://github.com/uglide/azure-content/blob/master/articles/resiliency/resiliency-technical-guidance.md)」をご覧ください。 
+1. **Azure Compute (IaaS)** – 災害発生中に別のリージョンでリソースを確実に使用できるように、追加のコンピューティング リソースを事前にプロビジョニングする必要があります。 
 
 2. **Azure Storage** - マネージド ディスクを使用している場合は、Azure Backup を使用した [リージョン間のバックアップ](/azure/architecture/resiliency/recovery-loss-azure-region#virtual-machines)、および Azure Site Recovery を使用したリージョン間での [VM のレプリケーション](./site-recovery/azure-to-azure-tutorial-enable-replication.md)について確認してください。 ストレージ アカウントを使用している場合は、Azure Storage アカウントの作成時に、geo 冗長ストレージ (GRS) が既定で構成されます。 GRS を使用すると、データはプライマリ リージョン内で 3 回、ペア リージョンで 3 回、自動的にレプリケートされます。 詳細については、「 [Azure Storage 冗長オプション](storage/common/storage-redundancy.md)」をご覧ください。
 

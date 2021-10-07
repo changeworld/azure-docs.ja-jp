@@ -3,12 +3,12 @@ title: Availability Zones をまたがる Service Fabric マネージド クラ�
 description: Availability Zones をまたがって Service Fabric マネージド クラスターをデプロイする方法と、ARM テンプレートで構成する方法について説明します。
 ms.topic: how-to
 ms.date: 5/10/2021
-ms.openlocfilehash: 5278ea170e0a60907813b9a79b151dde44ab4a12
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: b3c4e01ea66aa3a69b14806f2701020f1f529a5e
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111956774"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129544377"
 ---
 # <a name="deploy-a-service-fabric-managed-cluster-across-availability-zones"></a>Availability Zones をまたがる Service Fabric マネージド クラスターのデプロイ
 
@@ -58,10 +58,9 @@ Azure Service Fabric 可用性ゾーン Availability Zone のアーキテクチ�
 
 ```json
 {
-    "apiVersion": "2021-05-01",
-    "type": "Microsoft.ServiceFabric/managedclusters",
-    "ZonalResiliency": "true"
-    
+  "apiVersion": "2021-05-01",
+  "type": "Microsoft.ServiceFabric/managedclusters",
+  "zonalResiliency": "true"
 }
 ```
 [sf-architecture]: ./media/service-fabric-cross-availability-zones/sf-cross-az-topology.png

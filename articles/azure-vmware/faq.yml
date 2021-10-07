@@ -6,12 +6,12 @@ metadata:
   ms.service: azure-vmware
   ms.custom: contperf-fy21q4
   ms.date: 08/19/2021
-  ms.openlocfilehash: 716605f2a617d5f02d93596e760156b58f9ddcb2
-  ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+  ms.openlocfilehash: 536dfd9fa71c2f6eaefe25ada08f537868cf3f58
+  ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/20/2021
-  ms.locfileid: "122514666"
+  ms.lasthandoff: 09/26/2021
+  ms.locfileid: "129061715"
 title: Azure VMware Solution についてよく寄せられる質問
 summary: この記事では、Azure VMware Solution についてよく寄せられる質問に回答します。
 sections:
@@ -43,7 +43,7 @@ sections:
   - question: Azure VMware Solution の価格体系はどのようになっていますか?
     answer: 価格に関する一般的な質問については、Azure VMware Solution の[価格](https://azure.microsoft.com/pricing/details/azure-vmware)に関するページを参照してください。
   - question: VMware HCX Enterprise を利用できますか? 利用できる場合、コストはどのくらいですか?
-    answer: VMware HCX Enterprise は、Azure VMware Solution で、*プレビュー* の機能/サービスとして使用できます。 Azure VMware Solution 向けの VMware HCX Enterprise はプレビュー段階ですが、プレビュー サービスの利用規約が適用される無料の機能またはサービスです。 VMware HCX Enterprise サービスが GA になると、課金が切り替わるという通知が 30 日間前に届きます。 その後、サービスを停止またはオプトアウトできます。
+    answer: VMware HCX Enterprise を使用する予定がある場合は、サポート リクエストを通じて [VMware HCX Enterprise](https://rc.portal.azure.com/#create/Microsoft.Support) アドオンを有効にしてあることを確認してください。 Azure VMware Solution の無料の 12 か月間試用版です。
   - question: オンプレミスと ExpressRoute 経由の Azure VMware Solution 間のトラフィックでは、従量制課金接続プランでの送信データ転送料金が発生しますか?
     answer: "Azure VMware Solution の ExpressRoute 回線のトラフィックは、どのような方法でも課金されません。 オンプレミスに接続している ExpressRoute 回線から Azure へのトラフィックは、ExpressRoute 価格プランに従って課金されます。\n\n- **Azure VMware Solution から vNet** へは、内部の ExpressRoute 回線を経由します。Azure VMware Solution と同じリージョン内の場合、コストはかかりません。 ただし、内部の ExpressRoute 回線がリージョン間で接続されている場合は、データ転送料金が適用されます。\n\n- **Azure VMware Solution からオンプレミス** へは、vNet または ExpressRoute Global Reach (内部の ExpressRoute と外部の ExpressRoute の間) を介して行われます。 vNet への接続 (前述) または ExpressRoute Global Reach の使用が、Azure VMware Solution がデプロイされているリージョン内である場合は引き続き無料です。 \n"
   - question: 試用版 Azure VMware Solution クラスターの使用状況測定は、いつ開始され、いつ終了しますか?

@@ -2,19 +2,17 @@
 title: 'チュートリアル: Azure VMware Solution のプライベート クラウドをデプロイする'
 description: Azure VMware Solution のプライベート クラウドを作成してデプロイする方法を説明します
 ms.topic: tutorial
-ms.date: 06/11/2021
-ms.openlocfilehash: d91e9fe9261aa4a04f5e5dffd3505742d9886623
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/29/2021
+ms.openlocfilehash: 164795bddcd7557a90f2d087cdd5a239a95d3a71
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121730352"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129274085"
 ---
 # <a name="tutorial-deploy-an-azure-vmware-solution-private-cloud"></a>チュートリアル: Azure VMware Solution のプライベート クラウドをデプロイする
 
 Azure VMware Solution のプライベートを使用すると、Azure に vSphere クラスターをデプロイできます。 作成された各プライベート クラウドには、既定で 1 つの vSAN クラスターがあります。 クラスターは、追加したり、削除したり、スケーリングしたりすることができます。  クラスターあたりのホストの最小数は 3 です。 さらに増やす場合は、クラスターあたり最大 16 個まで、一度に 1 つずつホストを追加できます。 プライベート クラウドあたりのクラスターの最大数は 4 です。  Azure VMware Solution の初期デプロイには、3 つのホストがあります。 
-
-試用版クラスターは評価用に利用でき、3 台のホストに制限されます。 プライベート クラウドごとに 1 つの試用版クラスターがあります。 試用版クラスターは、評価期間中、1 つのホストによってスケーリングできます。
 
 クラスターの構成や操作のその他ほとんどの側面を管理するには、vSphere と NSX-T Manager を使用します。 クラスター内の各ホストのローカル ストレージはすべて、vSAN の管理下にあります。
 

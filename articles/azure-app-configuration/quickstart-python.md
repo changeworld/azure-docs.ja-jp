@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: devx-track-python
 ms.date: 9/17/2020
 ms.author: drewbat
-ms.openlocfilehash: 36b840cb851ef544d0956ff0dec969ce251855d4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 046f845906845dbf1bf01a1a24de6e65da8a2a7c
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121748760"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129233183"
 ---
 # <a name="quickstart-create-a-python-app-with-azure-app-configuration"></a>クイックスタート: Azure App Configuration を使用した Python アプリの作成
 
@@ -22,7 +22,7 @@ ms.locfileid: "121748760"
 ## <a name="prerequisites"></a>前提条件
 
 - Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
-- Python 2.7 または 3.6 以降 - Windows での Python の設定について詳しくは、[Windows での Python に関するドキュメント]( https://docs.microsoft.com/windows/python/)を参照してください
+- Python 2.7 または 3.6 以降 - Windows での Python の設定について詳しくは、[Windows での Python に関するドキュメント](/windows/python/)を参照してください
 
 ## <a name="create-an-app-configuration-store"></a>App Configuration ストアを作成する
 

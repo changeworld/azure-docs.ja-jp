@@ -17,12 +17,12 @@ ms.date: 07/16/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9ed7b31625275c808555534fcd49314444ab0ad
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: 4ce1aecb88f595b7edba2e1f89d82c06e1fbbc69
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114388149"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128622286"
 ---
 # <a name="sign-in-logs-in-azure-active-directory"></a>Azure Active Directory のサインイン ログ
 
@@ -69,7 +69,7 @@ IT 管理者は、IT 環境がどのように動作しているかを知る必�
 
 ## <a name="what-azure-ad-license-do-you-need"></a>必要な Azure AD ライセンス
 
-サインイン アクティビティ レポートは、[Azure AD のすべてのエディション](reference-reports-data-retention.md#how-long-does-azure-ad-store-the-data)で使用でき、Microsoft Graph API を使用してアクセスすることもできます。
+サインイン アクティビティ レポートは、[Azure AD のすべてのエディション](reference-reports-data-retention.md#how-long-does-azure-ad-store-the-data)で使用できます。 Azure Active Directory P1 または P2 ライセンスがある場合は、Microsoft Graph API からアクティビティ レポートにアクセスすることもできます。
 
 
 ## <a name="where-can-you-find-it-in-the-azure-portal"></a>Azure portal での閲覧方法

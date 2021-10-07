@@ -2,14 +2,14 @@
 title: サブスクリプションにリソースをデプロイする
 description: Azure Resource Manager テンプレートでリソース グループを作成する方法について説明します。 Azure サブスクリプション スコープでリソースをデプロイする方法も示します。
 ms.topic: conceptual
-ms.date: 01/13/2021
+ms.date: 09/14/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: a2b9fedbd2916953b0ff2166bc7fddb5f877ee07
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 2afcd6fa4598a881f0adc5f82c43c8d9c8021064
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109754088"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128672820"
 ---
 # <a name="subscription-deployments-with-arm-templates"></a>ARM テンプレートを使用したサブスクリプションのデプロイ
 
@@ -73,8 +73,8 @@ Azure のロールベースのアクセス制御 (Azure RBAC) では、以下を
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
-    ...
+  "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+  ...
 }
 ```
 
@@ -82,8 +82,8 @@ Azure のロールベースのアクセス制御 (Azure RBAC) では、以下を
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
-    ...
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  ...
 }
 ```
 
@@ -99,7 +99,7 @@ Azure CLI の場合は、[az deployment sub create](/cli/azure/deployment/sub#az
 az deployment sub create \
   --name demoSubDeployment \
   --location centralus \
-  --template-uri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/emptyRG.json" \
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/emptyrg.json" \
   --parameters rgName=demoResourceGroup rgLocation=centralus
 ```
 
@@ -111,7 +111,7 @@ PowerShell デプロイ コマンドについては、[New-AzDeployment](/powers
 New-AzSubscriptionDeployment `
   -Name demoSubDeployment `
   -Location centralus `
-  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/emptyRG.json" `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/emptyrg.json" `
   -rgName demoResourceGroup `
   -rgLocation centralus
 ```
@@ -210,7 +210,7 @@ ARM テンプレートでリソース グループを作成するには、[Micro
   "resources": [
     {
       "type": "Microsoft.Resources/resourceGroups",
-      "apiVersion": "2020-10-01",
+      "apiVersion": "2021-04-01",
       "name": "[parameters('rgName')]",
       "location": "[parameters('rgLocation')]",
       "properties": {}
@@ -241,7 +241,7 @@ ARM テンプレートでリソース グループを作成するには、[Micro
   "resources": [
     {
       "type": "Microsoft.Resources/resourceGroups",
-      "apiVersion": "2020-10-01",
+      "apiVersion": "2021-04-01",
       "location": "[parameters('rgLocation')]",
       "name": "[concat(parameters('rgNamePrefix'), copyIndex())]",
       "copy": {
@@ -285,14 +285,14 @@ ARM テンプレートでリソース グループを作成するには、[Micro
   "resources": [
     {
       "type": "Microsoft.Resources/resourceGroups",
-      "apiVersion": "2020-10-01",
+      "apiVersion": "2021-04-01",
       "name": "[parameters('rgName')]",
       "location": "[parameters('rgLocation')]",
       "properties": {}
     },
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2020-10-01",
+      "apiVersion": "2021-04-01",
       "name": "storageDeployment",
       "resourceGroup": "[parameters('rgName')]",
       "dependsOn": [
@@ -308,7 +308,7 @@ ARM テンプレートでリソース グループを作成するには、[Micro
           "resources": [
             {
               "type": "Microsoft.Storage/storageAccounts",
-              "apiVersion": "2019-06-01",
+              "apiVersion": "2021-04-01",
               "name": "[variables('storageName')]",
               "location": "[parameters('rgLocation')]",
               "sku": {
@@ -352,7 +352,7 @@ ARM テンプレートでリソース グループを作成するには、[Micro
   "resources": [
     {
       "type": "Microsoft.Authorization/policyAssignments",
-      "apiVersion": "2018-03-01",
+      "apiVersion": "2020-09-01",
       "name": "[parameters('policyName')]",
       "properties": {
         "scope": "[subscription().id]",
@@ -407,7 +407,7 @@ New-AzSubscriptionDeployment `
   "resources": [
     {
       "type": "Microsoft.Authorization/policyDefinitions",
-      "apiVersion": "2018-05-01",
+      "apiVersion": "2020-09-01",
       "name": "locationpolicy",
       "properties": {
         "policyType": "Custom",
@@ -425,7 +425,7 @@ New-AzSubscriptionDeployment `
     },
     {
       "type": "Microsoft.Authorization/policyAssignments",
-      "apiVersion": "2018-05-01",
+      "apiVersion": "2020-09-01",
       "name": "location-lock",
       "dependsOn": [
         "locationpolicy"
@@ -485,7 +485,7 @@ New-AzSubscriptionDeployment `
 
 ## <a name="access-control"></a>アクセス制御
 
-ロールの割り当ての詳細については、「[Azure Resource Manager テンプレートを使用して Azure でのロールの割り当てを追加する](../../role-based-access-control/role-assignments-template.md)」を参照してください。
+ロールの割り当ての詳細については、「[Azure Resource Manager テンプレートを使用して Azure でのロールを割り当てる](../../role-based-access-control/role-assignments-template.md)」を参照してください。
 
 次の例では、リソース グループを作成し、そのグループにロックを適用して、プリンシパルにロールを割り当てます。
 

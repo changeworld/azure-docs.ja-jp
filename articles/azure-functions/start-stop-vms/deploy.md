@@ -5,16 +5,19 @@ services: azure-functions
 ms.subservice: start-stop-vms
 ms.date: 06/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: dc44fc58b8832c30ed1b740eb6637f1fc8ed1413
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: 51488a6694b843821110127640281a2da9986862
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129454964"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124744762"
 ---
 # <a name="deploy-startstop-vms-v2-preview"></a>Start/Stop VMs v2 (プレビュー) のデプロイ
 
 Start/Stop VMs v2 (プレビュー) 機能をインストールするには、このトピックの手順を順番に実行します。 セットアップ プロセスが完了したら、要件に合わせてカスタマイズするスケジュールを構成します。
+
+> [!NOTE]
+> デプロイ中に問題が発生した場合、Start/Stop VMs v2 (プレビュー) を使用しているときに問題が発生します。または、関連する質問がある場合、[GitHub](https://github.com/microsoft/startstopv2-deployments/issues) で問題を送信できます。 このプレビュー バージョンでは、[Azure サポート サイト](https://azure.microsoft.com/support/options/)から Azure サポート インシデントを提出することはできません。 
 
 ## <a name="permissions-considerations"></a>アクセス許可に関する考慮事項
 デプロイの前および最中に、次の点に留意してください。

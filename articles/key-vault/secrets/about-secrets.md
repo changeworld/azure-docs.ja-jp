@@ -9,12 +9,12 @@ ms.subservice: secrets
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 232a3293d6529955a768ed8d7700289ddbed5177
-ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
+ms.openlocfilehash: e32e6ecacb2de646314be237c6b7bce973a0ed4e
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113136366"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129213479"
 ---
 # <a name="about-azure-key-vault-secrets"></a>Azure Key Vault のシークレットについて
 
@@ -119,18 +119,18 @@ Key Vault では、[Azure ストレージ アカウント](../../storage/common/
 
 詳しくは、[Key Vault REST API リファレンス内のストレージ アカウントの操作](/rest/api/keyvault)に関するページをご覧ください。 アクセス許可の設定については、「[Vaults - Create or Update](/rest/api/keyvault/vaults/createorupdate)」(コンテナー - 作成または更新) および「[Vaults - Update Access Policy](/rest/api/keyvault/vaults/updateaccesspolicy)」(コンテナー -アクセス ポリシーの更新) をご覧ください。
 
-Key Vault でアクセスを制御するための攻略ガイドについては、次の記事をご覧ください。
-- [CLI を使用して Key Vault アクセス ポリシーを割り当てる](../general/assign-access-policy-cli.md)
-- [PowerShell を使用して Key Vault アクセス ポリシーを割り当てる](../general/assign-access-policy-powershell.md)
-- [Azure portal を使用して Key Vault アクセス ポリシーを割り当てる](../general/assign-access-policy-portal.md)
-- [Azure のロールベースのアクセス制御を使用して Key Vault のキー、証明書、シークレットへのアクセス権を付与する](../general/rbac-guide.md)
+## <a name="usage-scenarios"></a>使用シナリオ
 
+| 使用する場合 | 例 |
+|--------------|-------------|
+|パスワード、アクセス キー、サービス プリンシパル クライアント シークレットなどのサービス間通信の資格情報を安全に格納し、ライフサイクルを管理し、監視します。  | - [仮想マシンで Azure Key Vault を使用する](../general/tutorial-net-virtual-machine.md)<br> - [Azure Web アプリで Azure Key Vault を使用する](../general/tutorial-net-create-vault-azure-web-app.md) |
 
 ## <a name="next-steps"></a>次のステップ
 
+- [Key Vault でのシークレットの管理に関するベスト プラクティス](secrets-best-practices.md)
 - [Key Vault について](../general/overview.md)
 - [キー、シークレット、証明書について](../general/about-keys-secrets-certificates.md)
-- [キーについて](../keys/about-keys.md)
-- [証明書について](../certificates/about-certificates.md)
+- [Key Vault アクセス ポリシーを割り当てる](../general/assign-access-policy.md)
+- [Azure のロールベースのアクセス制御を使用して Key Vault のキー、証明書、シークレットへのアクセス権を付与する](../general/rbac-guide.md)
 - [キー コンテナーへのアクセスをセキュリティで保護する](../general/security-features.md)
 - [Key Vault 開発者ガイド](../general/developers-guide.md)

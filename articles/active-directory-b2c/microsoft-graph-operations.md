@@ -12,12 +12,12 @@ ms.date: 06/22/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9157b6212adac3c9bfa5f5c00a9c580a615bf8cf
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 216123a60a69fc696423ac9d129201201cac8fbc
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121724892"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124739918"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Microsoft Graph を使用して Azure AD B2C を管理する
 
@@ -25,6 +25,10 @@ Microsoft Graph では、お使いの Azure AD B2C ディレクトリ内のリ�
 
 > [!NOTE]
 > また、Azure サブスクリプションにリンクされている対応の Azure リソースと共に、Azure AD B2C ディレクトリ自体をプログラムによって作成することもできます。 この機能は Microsoft Graph API ではなく、Azure REST API を通じて公開されます。 詳細については、「[B2C テナント - 作成](/rest/api/activedirectory/b2ctenants/create)」を参照してください。
+
+Microsoft Graph API を使用した Azure AD B2C ユーザーの移行については、こちらのビデオをご覧ください。
+
+>[!Video https://www.youtube.com/embed/9BRXBtkBzL4]
 
 ## <a name="prerequisites"></a>[前提条件]
 

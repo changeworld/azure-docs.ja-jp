@@ -5,12 +5,12 @@ ms.service: container-service
 ms.topic: how-to
 ms.date: 09/01/2021
 ms.custom: template-how-to
-ms.openlocfilehash: a5eef5304c8bceac2bd26d6ccf0e90974641a9ff
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: eb2f85064413f3d4700fea01aa4ead81508dd8c9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123433001"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128631497"
 ---
 # <a name="secure-your-cluster-with-azure-policy"></a>Azure Policy でクラスターをセキュリティで保護する
 
@@ -52,7 +52,7 @@ Azure Kubernetes Service (AKS) クラスターのセキュリティを強化す�
 > [!NOTE]
 > Azure Policy では、*templateInfo* と呼ばれる新しいプロパティを利用して、ユーザーが制約テンプレートのソースの種類を定義できるようになりました。 ポリシー定義で *templateInfo* を定義すれば、*constraintTemplate* や *constraint* プロパティを定義する必要はありません。 その場合でも、*apiGroups* と *kinds* の定義は必要です。 詳細については、[Azure Policy の効果について][azure-policy-effects-audit]のページを参照してください。
 
-カスタム ポリシー定義を作成したら、[ポリシー定義の割り当て][azure-policy-tutorial-assign] に関するページの Kubernetes クラスターにポリシーを割り当てる手順のチュートリアルを参照してください。
+カスタム ポリシー定義を作成したら、「[ポリシー定義の割り当て][custom-policy-tutorial-assign]」に関するページを参照し、Kubernetes クラスターにポリシーを割り当てる手順を確認してください。
 
 ## <a name="validate-a-azure-policy-is-running"></a>Azure Policy が実行されていることを検証する
 
@@ -197,6 +197,6 @@ Azure Policy のしくみの詳細については、次を参照してくださ�
 [kubernetes-policy-reference]: ../governance/policy/concepts/policy-for-kubernetes.md
 [azure-policy-effects-audit]: ../governance/policy/concepts/effects.md#audit-properties
 [custom-policy-tutorial-create]: ../governance/policy/tutorials/create-custom-policy-definition.md
-[custom-policy-tutorial-assign]: https://docs.microsoft.com/en-us/azure/governance/policy/concepts/policy-for-kubernetes.md#assign-a-policy-definition
+[custom-policy-tutorial-assign]: ../governance/policy/concepts/policy-for-kubernetes.md#assign-a-policy-definition
 [azure-policy-samples]: ../governance/policy/samples/index.md
 [azure-policy-definition-structure]: ../governance/policy/concepts/definition-structure.md

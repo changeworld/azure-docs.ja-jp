@@ -1,26 +1,26 @@
 ---
 title: 制約と構成の参考ガイド
-description: Azure Logic Apps の制限と構成情報のリファレンス ガイド
+description: Azure Logic Apps の制限と構成情報のリファレンス ガイド。
 services: logic-apps
 ms.suite: integration
 ms.reviewer: rohithah, rarayudu, azla
 ms.topic: reference
-ms.date: 08/30/2021
-ms.openlocfilehash: da7c4b159111165b1dabb6ff3ca45715b442daba
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.date: 09/16/2021
+ms.openlocfilehash: 77bbfb886f04c7917154ee5817b21ee1b2053d79
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123219908"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128675803"
 ---
 # <a name="limits-and-configuration-reference-for-azure-logic-apps"></a>Azure Logic Apps の制約と構成の参考文献
 
-> Power Automate については、[Power Automate の制限と構成](/power-automate/limits-and-config)に関するページを参照してください。
+> Power Automate については、[Power Automate の制限と構成](/power-automate/limits-and-config)に関するページを確認してください。
 
 この記事では、Azure Logic Apps と関連リソースの制限と構成情報について説明します。 ロジック アプリ ワークフローを作成するには、使用する状況、ソリューションの要件、必要な機能、ワークフローを実行する環境に適した種類の **Locig App** リソースを選択します。
 
 > [!NOTE]
-> これらのホスト環境における制約の多くは共通ですが、異なる制約が存在する場合は改めて説明します。 通常と異なる制約が存在する場合は、[Logic Apps チーム](mailto://logicappspm@microsoft.com)に問い合わせて、皆さまの要件についてご相談ください。
+> 多くの制限は、Azure Logic Apps の実行に使用できる複数の環境にわたって同一ですが、違いがある場合は指摘されます。 
 
 次の表で、標準の **Logic App (Consumption)** のリソースの種類と、**Logic App (Standard)** のリソースの種類の違いを要約します。 ロジック アプリ ワークフローを展開、ホスト、実行する際の、*シングルテナント* 環境と、*マルチテナント* および *統合サービス環境 (ISE)* との違いも分かります。
 
@@ -359,13 +359,14 @@ Azure Logic Apps では、オンプレミス データ ゲートウェイ経由�
 
 ## <a name="custom-connector-limits"></a>カスタム コネクタの制限
 
-マルチテナントおよび統合サービス環境の場合のみ、既存の REST API または SOAP API のラッパーである[カスタム マネージド コネクタ](/connectors/custom-connectors)を作成して使用できます。 シングルテナントでのみ、[カスタム組み込みコネクタ](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-built-in-connector/ba-p/1921272)を作成、使用できます。
+マルチテナントの Azure Logic Apps および統合サービス環境でのみ、既存の REST API または SOAP API のラッパーである[カスタム マネージド コネクタ](/connectors/custom-connectors)を作成して使用できます。 シングル テナントの Azure Logic Apps では、[カスタム組み込みコネクタ](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-built-in-connector/ba-p/1921272)のみを作成して使用できます。
 
 カスタム コネクタの値の一覧を次の表に示します。
 
 | 名前 | マルチテナント | シングルテナント | 統合サービス環境 | Notes |
 |------|--------------|---------------|---------------------------------|-------|
 | カスタム コネクタ | Azure サブスクリプションあたり 1,000 | 無制限 | Azure サブスクリプションあたり 1,000 ||
+| カスタム コネクタ - API の数 | SOAP ベース: 50 | 適用できません | SOAP ベース: 50 ||
 | カスタム コネクタの 1 分あたりの要求数 | 接続ごとに、1 分あたり 500 の要求 | 実装に基づく | *カスタム コネクタ* ごとに、1 分あたり 2,000 の要求 ||
 | [接続タイムアウト] | 2 分 | アイドル接続: <br>4 分 <p><p>アクティブ接続: <br>10 分 | 2 分 ||
 ||||||
@@ -507,7 +508,7 @@ IP アドレスを使用してファイアウォールを設定する前に、�
 
 * [ファイアウォールとファイアウォール規則](../storage/common/storage-network-security.md)を使用する Azure ストレージ アカウントへのアクセスに関する問題がロジック アプリにある場合は、[アクセスを有効にするためのさまざまなその他のオプション](../connectors/connectors-create-api-azureblobstorage.md#access-storage-accounts-behind-firewalls)があります。
 
-  たとえば、ロジック アプリは、ファイアウォール規則を使用し、同じリージョンに存在するストレージ アカウントに直接アクセスすることはできません。 ただし、[ご利用のリージョンでマネージド コネクタに送信 IP アドレス](../logic-apps/logic-apps-limits-and-config.md#outbound)を許可する場合、Azure Table Storage または Azure Queue Storage コネクタの使用時を除き、ロジック アプリでは別のリージョンにあるストレージ アカウントにアクセスできます。 Table Storage または Queue Storage にアクセスするには、代わりに HTTP のトリガーとアクションを利用できます。 その他のオプションについては、[ファイアウォールの内側でストレージ アカウントにアクセスする](../connectors/connectors-create-api-azureblobstorage.md#access-storage-accounts-behind-firewalls)方法に関する記事を参照してください。
+  たとえば、ロジック アプリは、ファイアウォール規則を使用し、同じリージョンに存在するストレージ アカウントに直接アクセスすることはできません。 ただし、[ご利用のリージョンでマネージド コネクタに送信 IP アドレス](/connectors/common/outbound-ip-addresses)を許可する場合、Azure Table Storage または Azure Queue Storage コネクタの使用時を除き、ロジック アプリでは別のリージョンにあるストレージ アカウントにアクセスできます。 Table Storage または Queue Storage にアクセスするには、代わりに HTTP のトリガーとアクションを利用できます。 その他のオプションについては、[ファイアウォールの内側でストレージ アカウントにアクセスする](../connectors/connectors-create-api-azureblobstorage.md#access-storage-accounts-behind-firewalls)方法に関する記事を参照してください。
 
 <a name="inbound"></a>
 
@@ -589,7 +590,10 @@ IP アドレスを使用してファイアウォールを設定する前に、�
 
 ### <a name="outbound-ip-addresses"></a>送信 IP アドレス
 
-このセクションには、Azure Logic Apps サービスの送信 IP アドレスが一覧表示されています。 Azure Government をご使用の場合は、「[Azure Government - 送信 IP アドレス](#azure-government-outbound)」を参照してください。
+このセクションには、Azure Logic Apps サービスの送信 IP アドレスが一覧表示されています。 Azure Government をご使用の場合は、「[Azure Government - 送信 IP アドレス](#azure-government-outbound)」を参照してください。 ワークフローで Office 365 Outlook コネクタや SQL コネクタなどの [マネージド コネクタ](../connectors/managed.md)が使用されている場合、または [カスタム コネクタ](/connectors/custom-connectors/)が使用されている場合、そのファイアウォールでは、ロジック アプリの Azure リージョン内にある "*すべて*" の [マネージド コネクタ送信 IP アドレス](/connectors/common/outbound-ip-addresses)に対するアクセスも許可する必要があります。 [Azure のオンプレミス データ ゲートウェイ リソース](logic-apps-gateway-connection.md)によってオンプレミスのリソースにアクセスするカスタム コネクタをワークフローで使用する場合、対応する "[*マネージド コネクタ*" の送信 IP アドレス](/connectors/common/outbound-ip-addresses)のアクセスを許可するように、インストールされたゲートウェイをセットアップする必要があります。 ゲートウェイでの通信設定の設定の詳細については、次のトピックを参照してください。
+
+* [オンプレミス データ ゲートウェイの通信設定を調整する](/data-integration/gateway/service-gateway-communication)
+* [オンプレミス データ ゲートウェイのプロキシ設定を構成する](/data-integration/gateway/service-gateway-proxy)
 
 > [!TIP]
 > セキュリティ規則を作成する際の複雑さを軽減するために、必要に応じて、各リージョンの送信 Logic Apps IP アドレスのプレフィックスを指定するのではなく、[サービス タグ](../virtual-network/service-tags-overview.md) **LogicApps** を使用することもできます。 必要に応じて、各リージョンに対して送信マネージド コネクタの IP アドレス プレフィックスを指定するのでなく、**AzureConnectors** サービス タグを、Microsoft Azure Storage または Azure Event Hubs などのそれぞれのサービスに対する送信呼び出しを行うマネージド コネクタに対して使用することもできます。 これらのタグは、Logic Apps サービスが使用可能なリージョン全体で動作します。

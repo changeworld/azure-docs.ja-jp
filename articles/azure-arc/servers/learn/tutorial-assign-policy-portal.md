@@ -3,16 +3,16 @@ title: チュートリアル - Azure portal を使用した新しいポリシー
 description: このチュートリアルでは、Azure portal を使用して、Azure Policy の割り当てを作成し、準拠していないリソースを特定します。
 ms.topic: tutorial
 ms.date: 04/21/2021
-ms.openlocfilehash: be7752b5ccf73269b1e4715fc05c85162b4ea546
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: e1d131c6419fcc0bed866a3334a065e46e399c78
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122770345"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124807500"
 ---
 # <a name="tutorial-create-a-policy-assignment-to-identify-non-compliant-resources"></a>チュートリアル:準拠していないリソースを識別するためのポリシー割り当てを作成する
 
-Azure のコンプライアンスを理解する第一歩は、リソースの状態を特定することです。 Azure Policy では、ゲスト構成ポリシーを使用した、Arc 対応サーバーの状態の監査がサポートされています。 Azure Policy のゲスト構成定義により、マシン内の設定を監査または適用できます。 このチュートリアルでは、ポリシーの作成と割り当て、およびどの Arc 対応サーバーで Log Analytics エージェントがインストールされていないかを特定するプロセスの手順を説明します。
+Azure のコンプライアンスを理解する第一歩は、リソースの状態を特定することです。 Azure Policy では、ゲスト構成ポリシーを使用した、Azure Arc 対応サーバーの状態の監査がサポートされています。 Azure Policy のゲスト構成定義により、マシン内の設定を監査または適用できます。 このチュートリアルでは、ポリシーの作成と割り当て、および Log Analytics エージェントがインストールされていない Azure Arc 対応サーバーを特定するプロセスの手順を説明します。
 
 この手順を終えると、Windows 用または Linux 用の Log Analytics エージェントがインストールされていないマシンが正しく特定されます。 これらはポリシーの割り当てに "_準拠していません_"。
 

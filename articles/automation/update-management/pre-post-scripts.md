@@ -3,19 +3,19 @@ title: Azure での Update Management のデプロイで事前スクリプトと
 description: この記事では、更新プログラムのデプロイのための事前スクリプトおよび事後スクリプトを構成および管理する方法について説明します。
 services: automation
 ms.subservice: update-management
-ms.date: 07/20/2021
+ms.date: 09/16/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 57a8158dca53f4f60bc4405e1b95aa0ad9d2cf9b
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: f94a21268625adf3df4dda2f022868f7cc40f72f
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114472096"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129060322"
 ---
 # <a name="manage-pre-scripts-and-post-scripts"></a>事前スクリプトと事後スクリプトを管理する
 
-事前スクリプトと事後スクリプトは、更新プログラムのデプロイの前 (事前タスク) と後 (事後タスク) に Azure Automation アカウントで実行する Runbook です。 事前スクリプトと事後スクリプトは、ローカルではなく、Azure コンテキストで実行されます。 事前スクリプトは、更新プログラムのデプロイの開始時に実行されます。 事後スクリプトは、展開の最後に、構成されているすべての再起動の後で実行されます。
+事前スクリプトと事後スクリプトは、更新プログラムのデプロイの前 (事前タスク) と後 (事後タスク) に Azure Automation アカウントで実行する Runbook です。 事前スクリプトと事後スクリプトは、ローカルではなく、Azure コンテキストで実行されます。 事前スクリプトは、更新プログラムのデプロイの開始時に実行されます。 Windows では、事後スクリプトはデプロイの最後で、かつ構成されているすべての再起動の後に実行されます。 Linux の場合、事後スクリプトはマシンの再起動の後ではなく、デプロイの終了後に実行されます。 
 
 ## <a name="pre-script-and-post-script-requirements"></a>事前スクリプトと事後スクリプトの要件
 
@@ -45,7 +45,7 @@ Runbook を事前スクリプトまたは事後スクリプトとして使用す
 
 ### <a name="softwareupdateconfigurationruncontext-properties"></a>SoftwareUpdateConfigurationRunContext プロパティ
 
-|プロパティ  |Type |説明  |
+|プロパティ  |種類 |説明  |
 |---------|---------|---------|
 |SoftwareUpdateConfigurationName     |String | ソフトウェア更新構成の名前。        |
 |SoftwareUpdateConfigurationRunId     |GUID | 実行の一意の ID。        |
@@ -181,7 +181,7 @@ Python 2 では、例外処理は [try](https://www.python-course.eu/exception_h
 
 事前タスクと事後タスクは、Runbook として実行され、デプロイ内の Azure VM でネイティブに実行されることはありません。 Azure VM と対話するには、次のものが必要です。
 
-* 実行アカウント
+* [マネージド ID](../automation-security-overview.md#managed-identities-preview) または実行アカウント
 * 実行する Runbook
 
 Azure マシンを操作するには、[Invoke-AzVMRunCommand](/powershell/module/az.compute/invoke-azvmruncommand) コマンドレットを使用して、Azure VM を操作する必要があります。 この方法を示した例については、「[Update Management - スクリプトを実行コマンドで実行する](https://github.com/azureautomation/update-management-run-script-with-run-command)」にある Runbook の例を参照してください。
@@ -190,7 +190,7 @@ Azure マシンを操作するには、[Invoke-AzVMRunCommand](/powershell/modul
 
 事前タスクと事後タスクは Azure コンテキストで実行され、Azure 以外のマシンにはアクセスできません。 Azure 以外のマシンと対話するには、次のものが必要です。
 
-* 実行アカウント
+* [マネージド ID](../automation-security-overview.md#managed-identities-preview) または実行アカウント
 * コンピューターにインストールされた Hybrid Runbook Worker
 * ローカルで実行する Runbook
 * 親 Runbook
@@ -242,7 +242,7 @@ If (<My custom error logic>)
 
 .DESCRIPTION
   This script is intended to be run as a part of Update Management pre/post-scripts.
-  It requires a RunAs account.
+  It requires the Automation account's system-assigned managed identity.
 
 .PARAMETER SoftwareUpdateConfigurationRunContext
   This is a system variable which is automatically passed in by Update Management during a deployment.
@@ -251,21 +251,20 @@ If (<My custom error logic>)
 param(
     [string]$SoftwareUpdateConfigurationRunContext
 )
+
 #region BoilerplateAuthentication
-#This requires a RunAs account
-$ServicePrincipalConnection = Get-AutomationConnection -Name 'AzureRunAsConnection'
+# Ensures you do not inherit an AzContext in your runbook
+Disable-AzContextAutosave -Scope Process
 
-Add-AzAccount `
-    -ServicePrincipal `
-    -TenantId $ServicePrincipalConnection.TenantId `
-    -ApplicationId $ServicePrincipalConnection.ApplicationId `
-    -CertificateThumbprint $ServicePrincipalConnection.CertificateThumbprint
+# Connect to Azure with system-assigned managed identity
+$AzureContext = (Connect-AzAccount -Identity).context
 
-$AzureContext = Select-AzSubscription -SubscriptionId $ServicePrincipalConnection.SubscriptionID
+# set and store context
+$AzureContext = Set-AzContext -SubscriptionName $AzureContext.Subscription -DefaultProfile $AzureContext
 #endregion BoilerplateAuthentication
 
 #If you wish to use the run context, it must be converted from JSON
-$context = ConvertFrom-Json  $SoftwareUpdateConfigurationRunContext
+$context = ConvertFrom-Json $SoftwareUpdateConfigurationRunContext
 #Access the properties of the SoftwareUpdateConfigurationRunContext
 $vmIds = $context.SoftwareUpdateConfigurationSettings.AzureVirtualMachines | Sort-Object -Unique
 $runId = $context.SoftwareUpdateConfigurationRunId
@@ -285,6 +284,11 @@ Set-AutomationVariable -Name $runId -Value $vmIds
 $variable = Get-AutomationVariable -Name $runId
 #>
 ```
+
+Runbook をシステム割り当てマネージド ID で実行する場合は、コードをそのままにしておきます。 ユーザー割り当てマネージド ID を使用する場合は、次のようにします。
+1. 22 行目から `$AzureContext = (Connect-AzAccount -Identity).context` を削除し、
+1. それを `$AzureContext = (Connect-AzAccount -Identity -AccountId <ClientId>).context` に置き換えた後、
+1. クライアント ID を入力します。
 
 > [!NOTE]
 > 非グラフィカル PowerShell Runbook の場合、`Add-AzAccount` と `Add-AzureRMAccount` は [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) のエイリアスです。 これらのコマンドレットを使用するか、Automation アカウントの[モジュール最新バージョンに更新](../automation-update-azure-modules.md)することができます。 Automation アカウントを作成したばかりのときでも、モジュールを更新する必要がある場合があります。

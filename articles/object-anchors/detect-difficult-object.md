@@ -4,15 +4,15 @@ description: 難しい物体を検出するために構成できるメカニズ�
 author: rgarcia
 manager: vrivera
 ms.author: rgarcia
-ms.date: 05/28/2021
-ms.topic: overview
+ms.date: 09/08/2021
+ms.topic: troubleshooting
 ms.service: azure-object-anchors
-ms.openlocfilehash: f7ebff2a9fb45831842b9390e3e72cdbfe58e794
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: cbdf29aa7bb9c342e08b64af0745c689910b26bd
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111987888"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124791975"
 ---
 # <a name="how-to-detect-a-difficult-object"></a>難しい物体を検出する方法
 
@@ -21,6 +21,8 @@ ms.locfileid: "111987888"
 - 物体が壁際にあるため、広い表面積にアクセスできない場合
 - 物体が大きすぎて、一周するのに時間がかかりすぎる場合
 - デバイス センサーによって物体の表面が検出されない場合
+
+## <a name="adjusting-object-query-values"></a>物体クエリ値の調整
 
 Azure Object Anchors SDK には、このような状況で役立つメカニズムが用意されています。
 
@@ -40,3 +42,11 @@ Azure Object Anchors SDK には、このような状況で役立つメカニズ�
   - 球体 (`ObjectSearchArea.FromSphere` を使用)。
 
 詳細については、[Unity](/dotnet/api/microsoft.azure.objectanchors.objectquery) または [HoloLens C++/WinRT](/cpp/api/object-anchors/winrt/objectquery) の `ObjectQuery` クラスを参照してください。
+
+## <a name="next-steps"></a>次のステップ
+
+このトラブルシューティング ガイドでは、検出が難しい物体の検出をトラブルシューティングする方法を学習しました。
+関連記事を次に示します。
+
+> [!div class="nextstepaction"]
+> [オブジェクト検出のトラブルシューティング](./troubleshoot/object-detection.md)

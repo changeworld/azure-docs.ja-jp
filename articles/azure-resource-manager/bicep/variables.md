@@ -4,13 +4,13 @@ description: Bicep で変数を定義する方法について説明します
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 09/02/2021
-ms.openlocfilehash: a652d2efb3f97791d075f078637801e4d20aad47
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.date: 09/10/2021
+ms.openlocfilehash: 040e40d20fe81bb72493f087c9d0583a911b1ee7
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123425059"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124733353"
 ---
 # <a name="variables-in-bicep"></a>Bicep の変数
 
@@ -49,6 +49,8 @@ var storageName = '${toLower(storageNamePrefix)}${uniqueString(resourceGroup().i
 
 :::code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/variables/variables.bicep":::
 
+ループを使用して、動的な数の要素を含む配列変数を宣言できます。 詳細については、「[Bicep での変数の反復処理](loop-variables.md)」を参照してください。
+
 ## <a name="use-variable"></a>変数を使用する
 
 次の例は、リソース プロパティに変数を使用する方法を示しています。 変数名 `storageName` を指定することによって変数の値を参照します。
@@ -83,3 +85,4 @@ output stgOutput string = storageName
 ## <a name="next-steps"></a>次の手順
 
 - 変数に使用できるプロパティの詳細については、「[Bicep ファイルの構造と構文について](file.md)」をご覧ください。
+- 変数宣言でのループの使用については、「[Bicep での変数の反復処理](loop-variables.md)」を参照してください。

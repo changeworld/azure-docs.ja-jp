@@ -12,12 +12,12 @@ manager: karenhoran
 ms.reviewer: jlu
 ms.custom: has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18cc593e3aa1f50dcdaeaea32d7ac584f8bd4a24
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: a5e3804ae4fd386668f4c34d11172e7f3dd1ae62
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129354067"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128595403"
 ---
 # <a name="continuous-access-evaluation"></a>継続的アクセス評価
 
@@ -144,7 +144,7 @@ CAE 対応クライアントを使用していない場合、既定のアクセ�
 このページで、必要に応じて、プレビューの対象となるユーザーとグループを制限できます。
 
 > [!NOTE]
-> [**continuousAccessEvaluationPolicy**](/graph/api/continuousaccessevaluationpolicy-get?view=graph-rest-beta&preserve-view=true&tabs=http#request-body) を使用して Microsoft Graph のクエリを実行し、テナント内の CAE の構成を確認できます。 HTTP 200 応答と関連する応答の本文を見ると、テナント内で CAE が有効か無効かがわかります。 Microsoft Graph から HTTP 404 応答が返される場合、CAE は構成されていません。
+> [**continuousAccessEvaluationPolicy**](/graph/api/continuousaccessevaluationpolicy-get?view=graph-rest-beta&tabs=http#request-body) を使用して Microsoft Graph のクエリを実行し、テナント内の CAE の構成を確認できます。 HTTP 200 応答と関連する応答の本文を見ると、テナント内で CAE が有効か無効かがわかります。 Microsoft Graph から HTTP 404 応答が返される場合、CAE は構成されていません。
 
 ![Azure portal で CAE プレビューを有効にする](./media/concept-continuous-access-evaluation/enable-cae-preview.png)
 
@@ -206,7 +206,7 @@ Office 更新プログラム チャネルの詳細については、[Microsoft 3
 - Office アプリを閉じる
 - 10 時間の期間後
 
-この時間を短縮するために、SharePoint 管理者は、[SharePoint Online でネットワークの場所のポリシーを構成する](/sharepoint/control-access-based-on-network-location)ことで、SharePoint Online および OneDrive for Business に保存されているドキュメントの共同編集セッションの最大有効期間を短縮できます。 この構成が変更されると、共同編集セッションの最長有効期間は 15 分に短縮されます。また、SharePoint Online の PowerShell コマンド "[Set-SPOTenant –IPAddressWACTokenLifetime](/powershell/module/sharepoint-online/set-spotenant)" を使用してさらに調整できます。
+この時間を短縮するために、SharePoint 管理者は、[SharePoint Online でネットワークの場所のポリシーを構成する](/sharepoint/control-access-based-on-network-location)ことで、SharePoint Online および OneDrive for Business に保存されているドキュメントの共同編集セッションの最大有効期間を短縮できます。 この構成が変更されると、共同編集セッションの最長有効期間は 15 分に短縮されます。また、SharePoint Online の PowerShell コマンド "[Set-SPOTenant –IPAddressWACTokenLifetime](/powershell/module/sharepoint-online/set-spotenant?view=sharepoint-ps)" を使用してさらに調整できます。
 
 ### <a name="enable-after-a-user-is-disabled"></a>ユーザーが無効になった後にそのユーザーを有効にする
 

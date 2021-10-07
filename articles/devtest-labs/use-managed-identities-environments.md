@@ -1,14 +1,14 @@
 ---
-title: Azure マネージド ID を使用して DevTest Labs で環境を作成する | Microsoft Docs
+title: Azure マネージド ID を使用した環境の作成
 description: Azure でマネージ ID を使用して、Azure DevTest Labs のラボに環境をデプロイする方法について説明します。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 4a8afd74014cb940be17d9a84168e8bfe7daff67
-ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
+ms.openlocfilehash: 29ebda2920dc6fce5596d9b8b535ef014fd2240e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111854686"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128595968"
 ---
 # <a name="use-azure-managed-identities-to-deploy-environments-in-a-lab"></a>Azure マネージド ID を使用してラボに環境をデプロイする 
 

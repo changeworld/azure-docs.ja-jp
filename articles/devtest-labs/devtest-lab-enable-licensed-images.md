@@ -1,14 +1,14 @@
 ---
-title: Azure DevTest Labs でのラボのライセンスされたイメージの有効化 | Microsoft Docs
+title: ラボのライセンスされたイメージを有効にする
 description: Azure Portal を使って Azure DevTest Labs でライセンスされたイメージを有効にする方法について説明します
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 32ecbfc37d47835766d863b54d823be95fffb008
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 4c96661688d7b64884f0a02e15eb2c7b208bdfba
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121750900"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128643956"
 ---
 # <a name="enable-a-licensed-image-in-your-lab-in-azure-devtest-labs"></a>Azure DevTest Labs でのラボのライセンスされたイメージの有効化
 

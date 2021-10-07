@@ -4,29 +4,31 @@ description: インクルード ファイル
 author: timlt
 ms.service: iot-develop
 ms.topic: include
-ms.date: 05/06/2021
+ms.date: 09/10/2021
 ms.author: timlt
 ms.custom: include file
-ms.openlocfilehash: 9b383086eb9a53f061f445b26fe2bcd1242524ae
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0665035b31142f5be7fa825a83d8575b49e8e717
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121801422"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128908575"
 ---
 [![コードを参照](../articles/iot-develop/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/pnp)
 
 このクイックスタートでは、基本的な Azure IoT アプリケーション開発のワークフローについて説明します。 最初に、デバイスをホストするための Azure IoT Central アプリケーションを作成します。 次に、Azure IoT device SDK サンプルを使用して、シミュレートされた温度コントローラーを実行し、それを IoT Central に安全に接続して、テレメトリを送信します。
 
 ## <a name="prerequisites"></a>前提条件
-- このクイックスタートは、Linux または Windows で実行できます。 シェル コマンドでは標準の Linux パス区切り記号 `/` を使用します。 Windows を使用する場合は、これらの区切り記号を Windows パス区切り記号 `\` に置き換えてください。
+このクイックスタートは、Windows、Linux、および Raspberry Pi で実行できます。 これは、次の OS およびデバイス バージョンでテストされています。
+
+- Windows 10
+- Linux 用 Windows サブシステム (WSL) で実行されている Ubuntu 20.04 LTS
+- Raspberry Pi 3 Model B+ で実行されている Raspberry Pi OS バージョン 10 (buster)
 
 お使いのオペレーティング システムの残りの前提条件をインストールします。
 
-### <a name="linux"></a>Linux
-このチュートリアルの手順は、Ubuntu Linux 18.04 を使用してテストされました。
-
-このクイックスタートを Linux で完了するには、ご利用のローカルの Linux 環境に以下のソフトウェアをインストールする必要があります。
+### <a name="linux-or-raspberry-pi-os"></a>Linux または Raspberry Pi OS
+このクイックスタートを Linux および Raspberry Pi OS で完了するには、次のソフトウェアをインストールします。
 
 `apt-get` コマンドを使用して、**GCC**、**Git**、**cmake**、および必要な依存関係をインストールします。
 
@@ -59,7 +61,7 @@ gcc --version
 
 ### <a name="configure-your-environment"></a>環境を構成する
 
-1. コンソールを開き、Azure IoT C device SDK をインストールし、コード サンプルを実行します。 Windows の場合は、 **[スタート]** を選択し、「*VS 2019 用開発者コマンド プロンプト*」と入力して、コンソールを開きます。 Linux の場合は、Bash を開きます。 
+1. コンソールを開き、Azure IoT C device SDK をインストールし、コード サンプルを実行します。 Windows の場合は、 **[スタート]** を選択し、「*VS 2019 用開発者コマンド プロンプト*」と入力して、コンソールを開きます。 Linux および Raspberry Pi OS の場合は、Bash コマンドのターミナルを開きます。 
 
 1. コンソールに適したコマンドを使用して、次の環境変数を設定します。 シミュレートされたデバイスは、これらの値を使用して IoT Central に接続します。 `IOTHUB_DEVICE_DPS_ID_SCOPE`、`IOTHUB_DEVICE_DPS_DEVICE_KEY`、`IOTHUB_DEVICE_DPS_DEVICE_ID` には、前に保存したデバイス接続の値を使用してください。
 
@@ -87,6 +89,8 @@ gcc --version
     ```
 
 ### <a name="install-the-sdk-and-samples"></a>SDK とサンプルをインストールする
+
+1. サンプル リポジトリをクローンするローカル フォルダーに移動します。
 
 1. Azure IoT C device SDK を、お使いのローカル コンピューターにコピーします。
 
@@ -119,7 +123,7 @@ gcc --version
 
     **Bash**
     ```bash
-    cmake/iothub_client/samples/pnp/pnp_temperature_controller/Debug/pnp_temperature_controller
+    cmake/iothub_client/samples/pnp/pnp_temperature_controller/pnp_temperature_controller
     ```
 
     シミュレートされたデバイスは、IoT Central アプリケーションに接続した後、アプリケーション内で作成されたデバイス インスタンスに接続して、テレメトリの送信を開始します。 接続の詳細とテレメトリの出力がコンソールに表示されます。 

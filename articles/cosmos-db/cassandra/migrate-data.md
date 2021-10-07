@@ -9,12 +9,12 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: tutorial
 ms.date: 12/03/2018
 ms.custom: seodec18
-ms.openlocfilehash: 7cf1a8f329ff735e9c82ca6361bedbcb8e25f4ac
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 937a42d6ebdf3d2ccb87451a2db07df199655005
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121786317"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128586781"
 ---
 # <a name="tutorial-migrate-your-data-to-a-cassandra-api-account"></a>チュートリアル: Cassandra API アカウントにデータを移行する
 [!INCLUDE[appliesto-cassandra-api](../includes/appliesto-cassandra-api.md)]
@@ -77,7 +77,13 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 [CQL COPY コマンド](https://cassandra.apache.org/doc/latest/cassandra/tools/cqlsh.html#cqlshrc)を使用して、ローカル データを Azure Cosmos DB の Cassandra API アカウントにコピーします。
 
-1. Cassandra API アカウントの接続文字列情報を取得します。
+1. csv ファイルに正しいファイル構造が確実に含まれるようにするために、`COPY TO` コマンドを使用して、ソースの Cassandra テーブルから csv ファイルにデータを直接エクスポートします (cqlsh が適切な資格情報を使用してソース テーブルに接続されていることを確認します)。
+
+   ```bash
+   COPY exampleks.tablename TO 'data.csv' WITH HEADER = TRUE;   
+   ```
+
+1. 次に、Cassandra API アカウントの接続文字列情報を取得します。
 
    * [Azure portal](https://portal.azure.com) にサインインし、Azure Cosmos DB アカウントに移動します。
 
@@ -85,11 +91,13 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 1. ポータルからの接続情報を使用して `cqlsh` にサインインします。
 
-1. `CQL` `COPY` コマンドを使用して、ローカル データを Cassandra API アカウントにコピーします。
+1. `CQL``COPY FROM` コマンドを使用して、`data.csv` をコピーします (`cqlsh` がインストールされているユーザー ルート ディレクトリに引き続き存在します)。
 
    ```bash
-   COPY exampleks.tablename FROM filefolderx/*.csv 
+   COPY exampleks.tablename FROM 'data.csv' WITH HEADER = TRUE;
    ```
+
+
 
 ### <a name="migrate-data-by-using-spark"></a>Spark を使用してデータを移行する 
 

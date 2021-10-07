@@ -1,5 +1,6 @@
 ---
-title: Azure AD のエンタープライズ アプリケーションのユーザー サインインを無効にする
+title: ユーザーがサインインする方法を無効にする
+titleSuffix: Azure AD
 description: Azure Active Directory で、ユーザーがサインインできないようにエンタープライズ アプリケーションを無効にする方法
 services: active-directory
 author: davidmu1
@@ -8,33 +9,42 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/12/2019
+ms.date: 09/23/2021
 ms.author: davidmu
 ms.reviewer: alamaral
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ca695fc0e84f3db3b98c3e25333d58279ad53f1
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e1c07d650ee3b04099a4e4e41cdd7ee7db200bff
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121738786"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129061810"
 ---
-# <a name="disable-user-sign-ins-for-an-enterprise-app-in-azure-active-directory"></a>Azure Active Directory でエンタープライズ アプリのユーザー サインインを無効にする
+# <a name="disable-how-a-user-signs-in-for-an-application-in-azure-active-directory"></a>Azure Active Directory でユーザーがアプリケーションにサインインする方法を無効にする
 
-Azure Active Directory (Azure AD) で、ユーザーがサインインできないようにエンタープライズ アプリケーションを簡単に無効にすることができます。 エンタープライズ アプリを管理するには、適切なアクセス許可が必要です。 また、ディレクトリの全体管理者である必要があります。
+この記事では、ユーザーが Azure Active Directory でアプリケーションにサインインする方法を無効にします。
 
-## <a name="how-do-i-disable-user-sign-ins"></a>ユーザー サインインを無効にする方法
+## <a name="prerequisites"></a>前提条件
 
-1. ディレクトリの全体管理者であるアカウントで [Azure Portal](https://portal.azure.com) にサインインします。
-1. **[すべてのサービス]** を選択し、テキスト ボックスに「**Azure Active Directory**」と入力して、**Enter** キーを押します。
-1. **[Azure Active Directory** -  **_directoryname]_ *_ ウィンドウ (管理対象のディレクトリの Azure AD ウィンドウ) で、_* [エンタープライズ アプリケーション]** を選択します。
-1. **[エンタープライズ アプリケーション - すべてのアプリケーション]** ウィンドウには、管理できるアプリのリストが表示されます。 アプリを選択します。
-1. * **[appname]** _ ウィンドウ (選択したアプリの名前がタイトルに含まれている) で、[プロパティ] を選択します。
-1. ***appname** _ - _ *[プロパティ]* * ウィンドウで、 **[ユーザーのサインインが有効になっていますか?]** に対して **[いいえ]** を選択します。
-1. **[保存]** をクリックします。
+ユーザーがサインインする方法を無効にするには、以下が必要です。
+
+- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+- 次のいずれかのロール: グローバル管理者、クラウド アプリケーション管理者、アプリケーション管理者、またはサービス プリンシパルの所有者。
+
+## <a name="disable-how-a-user-signs-in"></a>ユーザーがサインインする方法を無効にする
+
+1. ディレクトリのグローバル管理者として [Azure portal](https://portal.azure.com) にサインインします。
+1. **Azure Active Directory** を検索して選択します。
+1. **[エンタープライズ アプリケーション]** を選択します。
+1. ユーザーがサインインすることを無効にするアプリケーションを検索し、そのアプリケーションを選択します。
+1. **[プロパティ]** を選択します。
+1. **[ユーザーのサインインが有効になっていますか?]** では **[いいえ]** を選択します。
+1. **[保存]** を選択します。
 
 ## <a name="use-azure-ad-powershell-to-disable-an-unlisted-app"></a>Azure AD PowerShell を使用して、一覧にないアプリを無効にする
+
+AzureAD モジュールをインストール済みであることを確認します (コマンド Install-Module-Name AzureAD を使用します)。 NuGet モジュールまたは新しい Azure Active Directory V2 PowerShell モジュールをインストールするように求められたら、「Y」と入力して Enter キーを押します。
 
 Enterprise アプリの一覧に表示されていないアプリの AppId が分かっている場合 (たとえば、アプリを削除したか、アプリが Microsoft によって事前承認されているためにサービスプリンシパルがまだ作成されていないため)、アプリのサービス プリンシパルを手動で作成してから、[AzureAD PowerShell コマンドレット](/powershell/module/azuread/New-AzureADServicePrincipal)を使用して無効にすることができます。
 
@@ -55,7 +65,4 @@ if ($servicePrincipal) {
 
 ## <a name="next-steps"></a>次のステップ
 
-* [自分のグループをすべて表示する](../fundamentals/active-directory-groups-view-azure-portal.md)
-* [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](assign-user-or-group-access-portal.md)
-* [エンタープライズ アプリケーションからユーザーまたはグループの割り当てを削除する](./assign-user-or-group-access-portal.md)
-* [エンタープライズ アプリケーションの名前またはロゴを変更する](./add-application-portal-configure.md)
+- [エンタープライズ アプリケーションからユーザーまたはグループの割り当てを削除する](./assign-user-or-group-access-portal.md)
