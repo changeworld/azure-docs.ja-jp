@@ -1,20 +1,18 @@
 ---
 title: 共有ギャラリーを使用して VM イメージを共有する
 description: 共有イメージ ギャラリーを使用して、組織全体で Linux VM イメージを共有する方法について説明します。
-author: axayjo
 ms.service: virtual-machines
 ms.subservice: shared-image-gallery
 ms.topic: conceptual
 ms.workload: infrastructure
 ms.date: 6/8/2021
-ms.author: olayemio
 ms.reviewer: cynthn
-ms.openlocfilehash: 1886015d88fb292de64c9e124fbd7609c6a27abe
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: a62c7c80ad2e785e9f09b68d9a5ec9ca7d355800
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124780873"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129455002"
 ---
 # <a name="shared-image-galleries-overview"></a>共有イメージ ギャラリーの概要
 

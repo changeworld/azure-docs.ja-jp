@@ -3,13 +3,13 @@ title: Azure Site Recovery レプリケーション アプライアンスのデ�
 description: この記事では、Azure Site Recovery - プレビューを使用して、VMware のディザスター リカバリー用レプリケーション アプライアンスを Azure にデプロイするときのサポートと要件について説明します
 ms.service: site-recovery
 ms.topic: article
-ms.date: 08/19/2021
-ms.openlocfilehash: e4021aa0f5572a51ca4d3ddda37f64f4da46a3b4
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.date: 09/01/2021
+ms.openlocfilehash: 940cfb52985e956a283e8278c572569e4f350f55
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122446707"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129084191"
 ---
 # <a name="deploy-azure-site-recovery-replication-appliance---preview"></a>Azure Site Recovery レプリケーション アプライアンスのデプロイ - プレビュー
 
@@ -19,7 +19,10 @@ ms.locfileid: "122446707"
 >[!NOTE]
 > プレビュー アプライアンスの設定用に、必ず新しい Recovery Services コンテナーを作成してください。 既存のコンテナーを使用しないでください。
 
-Azure への VMware 仮想マシンと物理サーバーのディザスター リカバリーに [Azure Site Recovery](site-recovery-overview.md) を使うときは、オンプレミスのレプリケーション アプライアンスを展開します。
+>[!NOTE]
+> 物理マシンのレプリケーションの有効化は、このプレビューではサポートされていません。 
+
+Azure への VMware VM のディザスター リカバリーに [Azure Site Recovery](site-recovery-overview.md) を使うときは、オンプレミスのレプリケーション アプライアンスを展開します。
 
 - レプリケーション アプライアンスは、オンプレミスの VMware と Azure の間の通信を調整します。 データのレプリケーションも管理します。
 - Azure Site Recovery レプリケーション アプライアンスのコンポーネントとプロセスの詳細については、[こちらをご覧ください](vmware-azure-architecture-preview.md)。
@@ -47,7 +50,7 @@ FIPS (連邦情報処理標準) | FIPS モードを有効にしない|
 
 |**コンポーネント** | **要件**|
 |--- | ---|
-|IP アドレスの種類 | 静的|
+|完全修飾ドメイン名 (FQDN) | 静的|
 |Port | 443 (コントロール チャネルのオーケストレーション)<br>9443 (データ転送)|
 |NIC の種類 | VMXNET3 (アプライアンスが VMware VM である場合)|
 
@@ -67,13 +70,37 @@ FIPS (連邦情報処理標準) | FIPS モードを有効にしない|
   |aka.ms |aka リンクへのアクセスを許可します。 Azure Site Recovery アプライアンスの更新に使用されます。 |
   |download.microsoft.com/download |Microsoft ダウンロードからのダウンロードを許可します。 |
   |`*.servicebus.windows.net `|アプライアンスと Azure Site Recovery サービスの間の通信。 |
-  |`*.discoverysrv.windowsazure.com `|Azure Site Recovery 検出サービスの URL に接続します。 |
-  |`*.hypervrecoverymanager.windowsazure.com `|Azure Site Recovery マイクロサービスの URL に接続します  |
-  |`*.blob.core.windows.net `|ターゲット ディスクの作成に使用される Azure Storage にデータをアップロードします |
-  |`*.backup.windowsazure.com `|保護サービスの URL - Azure でレプリケートされたディスクを処理および作成するために Azure Site Recovery によって使用されるマイクロサービス |
+  |`*.discoverysrv.windowsazure.com `<br><br>`*.hypervrecoverymanager.windowsazure.com `<br><br> `*.backup.windowsazure.com ` |Azure Site Recovery マイクロサービスの URL に接続します。
+  |`*.blob.core.windows.net `|ターゲット ディスクの作成に使用される Azure Storage にデータをアップロードします。 |
+
 
 > [!NOTE]
 > プライベート リンクは、プレビュー リリースではサポートされていません。
+
+## <a name="folder-exclusions-from-antivirus-program"></a>ウイルス対策プログラムからのフォルダーの除外
+
+### <a name="if-antivirus-software-is-active-on-appliance"></a>ウイルス対策ソフトウェアがアプライアンスでアクティブな場合
+
+スムーズなレプリケーションを実現し、接続の問題を回避するために、ウイルス対策ソフトウェアから次のフォルダーを除外します。
+
+C:\ProgramData\Microsoft Azure <br>
+C:\ProgramData\ASRLogs <br>
+C:\Windows\Temp\MicrosoftAzure C:\Program Files\Microsoft Azure Appliance Auto Update <br>
+C:\Program Files\Microsoft Azure Appliance Configuration Manager <br>
+C:\Program Files\Microsoft Azure Push Install Agent <br>
+C:\Program Files\Microsoft Azure RCM Proxy Agent <br>
+C:\Program Files\Microsoft Azure Recovery Services Agent <br>
+C:\Program Files\Microsoft Azure Server Discovery Service <br>
+C:\Program Files\Microsoft Azure Site Recovery Process Server <br>
+C:\Program Files\Microsoft Azure Site Recovery Provider <br>
+C:\Program Files\Microsoft Azure to On-Premise Reprotect agent <br>
+C:\Program Files\Microsoft Azure VMware Discovery Service <br>
+C:\Program Files\Microsoft On-Premise to Azure Replication agent <br>
+E:\ <br>
+
+### <a name="if-antivirus-software-is-active-on-source-machine"></a>ウイルス対策ソフトウェアがソース マシンでアクティブな場合
+
+ソース マシンにアクティブなウイルス対策ソフトウェアがある場合、インストール フォルダーを除外する必要があります。 そのため、スムーズなレプリケーションのために、フォルダー C:\ProgramData\ASR\agent を除外します。
 
 ## <a name="prepare-azure-account"></a>Azure アカウントの準備
 
@@ -148,6 +175,9 @@ OVF テンプレートにより、必要な仕様のマシンが起動します�
 4. **[Finalize]\(確定\)** を選択すると、システムが再起動され、管理者ユーザー アカウントでログインできます。
 
 ### <a name="set-up-the-appliance-through-powershell"></a>PowerShell を使用してアプライアンスを設定する
+
+>[!NOTE]
+> 物理マシンのレプリケーションの有効化は、このプレビューではサポートされていません。 
 
 組織の制限がある場合は、PowerShell を使用して Site Recovery レプリケーション アプライアンスを手動で設定できます。 次の手順のようにします。
 
@@ -240,6 +270,9 @@ OVF テンプレートにより、必要な仕様のマシンが起動します�
 
     構成の進行中にブラウザーを閉じないでください。
 
+    >[!NOTE]
+    > アプライアンスの複製は、このプレビューではサポートされていません。 複製しようとすると、復旧フローが中断されるおそれがあります。
+
 
 ## <a name="view-azure-site-recovery-replication-appliance-in-azure-portal"></a>Azure portal で Azure Site Recovery レプリケーション アプライアンスを表示する
 
@@ -267,4 +300,4 @@ Azure Site Recovery レプリケーション アプライアンスの構成が�
 複数のアプライアンスを使用して、レプリケーション アプライアンスをフェールオーバーする方法の詳細については、[こちらの記事](switch-replication-appliance-preview.md)をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
-Azure への [VMware VM](vmware-azure-tutorial.md) のディザスター リカバリーを設定する。
+Azure への [VMware VM](vmware-azure-set-up-replication-tutorial-preview.md) のディザスター リカバリーを設定する。

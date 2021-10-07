@@ -4,12 +4,12 @@ description: この記事には、Azure Arc 対応サーバー エージェン�
 ms.topic: overview
 ms.date: 09/01/2021
 ms.custom: references_regions
-ms.openlocfilehash: d4008a41629ac2e71e1abdb91e30f2d6b9350538
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 027d682a6f9727edb7ce39ac1eeea9947b2e4957
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123431606"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128628536"
 ---
 # <a name="whats-new-with-azure-arc-enabled-servers-agent"></a>Azure Arc 対応サーバー エージェントの新機能
 
@@ -20,6 +20,16 @@ Azure Arc 対応サーバーの Connected Machine エージェントは、継続
 - バグの修正
 
 このページは毎月更新されるため、定期的にアクセスしてご確認ください。 6 か月以上前の項目を探す場合は、「[Azure Arc 対応サーバー エージェントの新着情報のアーカイブ](agent-release-notes-archive.md)」を参照してください。
+
+## <a name="september-2021"></a>2021 年 9 月
+
+バージョン 1.11
+
+### <a name="fixed"></a>固定
+
+- エージェントは、[System objects: Require case insensitivity for non-Windows subsystems](/windows/security/threat-protection/security-policy-settings/system-objects-require-case-insensitivity-for-non-windows-subsystems) (システム オブジェクト: Windows 以外のサブシステムに対して大文字小文字を区別しないことを要求する) ポリシーを [無効] に設定して、Windows システムにインストールできるようになりました。
+- サービスの開始または再起動イベント中にエラーが発生した場合、ゲスト構成ポリシー エージェントで自動的に再試行が行われるようになりました。
+- Linux マシンでゲスト構成の監査ポリシーを正常に実行できない問題を修正しました。
 
 ## <a name="august-2021"></a>2021 年 8 月
 
@@ -81,19 +91,8 @@ Azure Arc 対応サーバーの Connected Machine エージェントは、継続
    - 拡張機能検証用の V2 署名サポートが追加されました。
    - データ ログのマイナーな更新。
 
-## <a name="april-2021"></a>2021 年 4 月
-
-バージョン 1.5
-
-### <a name="new-features"></a>新機能
-
-- Red Hat Enterprise Linux 8 および CentOS Linux 8 のサポートが追加されました。
-- エラーおよび詳細出力を stderr に送る新しい `-useStderr` パラメーター。
-- 出力結果を JSON 形式 (-useStderr と共に使用するとき) で送る新しい `-json` パラメーター。
-- 他のインスタンス メタデータとして製造元、モデル、クラスター リソース ID (Azure Stack HCI ノードの場合) を収集します。
- 
 ## <a name="next-steps"></a>次のステップ
 
-- 複数のハイブリッド マシンにまたがって Arc 対応サーバーを評価するか、または有効にする前に、[Connected Machine エージェントの概要](agent-overview.md)を確認して、要件、エージェントに関する技術的な詳細、デプロイ方法を理解してください。
+- 複数のハイブリッド マシンにまたがって Azure Arc 対応サーバーを評価または有効にする前に、[Connected Machine エージェントの概要](agent-overview.md)に関するページを確認して、要件、エージェントに関する技術的な詳細、デプロイ方法を理解してください。
 
 - [計画と展開ガイド](plan-at-scale-deployment.md)を参照して、任意の規模で Azure Arc 対応サーバーをデプロイし、一元的な管理と監視を実装する計画を立ててください。

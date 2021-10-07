@@ -3,12 +3,12 @@ title: Azure VM のバックアップを管理および監視する
 description: Azure Backup サービスを使用して Azure VM のバックアップを管理および監視する方法について説明します。
 ms.topic: conceptual
 ms.date: 09/17/2021
-ms.openlocfilehash: 1fe5b1511147b8db3b0c46504ee88d99dd272287
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: d1040c1261c3edff3010403a63c856ff1c0200fa
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129271804"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128605622"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Azure Backup サービスで Azure VM のバックアップを管理する
 
@@ -142,7 +142,7 @@ VM の保護を停止するには、次の 2 つの方法があります。
 保護を停止して VM のデータを削除するには、次の手順を実行します。
 
 >[!Note]
->アーカイブ層で 180 日間経過していないアーカイブの復旧ポイントを削除すると、早期削除コストが発生します。 [詳細については、こちらを参照してください](../storage/blobs/access-tiers-overview.md)。
+>アーカイブ層で 180 日間経過していないアーカイブの復旧ポイントを削除すると、早期削除コストが発生します。 [詳細については、こちらを参照してください](../storage/blobs/storage-blob-storage-tiers.md#cool-and-archive-early-deletion)。
 
 
 1. [コンテナー項目のダッシュボード](#view-vms-on-the-dashboard)で **[バックアップの停止]** を選択します。

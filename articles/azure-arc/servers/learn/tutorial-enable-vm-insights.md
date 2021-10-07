@@ -3,16 +3,16 @@ title: チュートリアル - Azure Monitor VM insights を使用してハイ�
 description: Azure Monitor でハイブリッド マシンからデータを収集して分析する方法について説明します。
 ms.topic: tutorial
 ms.date: 04/21/2021
-ms.openlocfilehash: 8ab801885e86ed90d5f28c2ce90a994828b358a0
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 5489e459bc4d407b818c1f55afe0f7fa3c9acbb8
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122772625"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124807524"
 ---
 # <a name="tutorial-monitor-a-hybrid-machine-with-vm-insights"></a>チュートリアル: VM insights を使用してハイブリッド マシンを監視する
 
-[Azure Monitor](../../../azure-monitor/overview.md) は、詳細な分析と相関のために、ハイブリッド マシンから Log Analytics ワークスペースに直接データを収集できます。 通常、この作業には、スクリプト、手動、自動のいずれかの方法で、実際の構成管理基準に従って [Log Analytics エージェント](../../../azure-monitor/agents/agents-overview.md#log-analytics-agent)をマシンにインストールする作業が伴います。 最近、Arc 対応サーバーが、Windows と Linux 用の [VM 拡張機能](../manage-vm-extensions.md)である Log Analytics エージェントと Dependency Agent のインストールに対応するようになったため、[VM insights](../../../azure-monitor/vm/vminsights-overview.md) で Azure 以外の VM からデータを収集することが可能になりました。
+[Azure Monitor](../../../azure-monitor/overview.md) は、詳細な分析と相関のために、ハイブリッド マシンから Log Analytics ワークスペースに直接データを収集できます。 通常、この作業には、スクリプト、手動、自動のいずれかの方法で、実際の構成管理基準に従って [Log Analytics エージェント](../../../azure-monitor/agents/agents-overview.md#log-analytics-agent)をマシンにインストールする作業が伴います。 最近、Azure Arc 対応サーバーで Windows と Linux 用の [VM 拡張機能](../manage-vm-extensions.md)である Log Analytics エージェントと Dependency Agent のインストールがサポートされるようになったため、[VM insights](../../../azure-monitor/vm/vminsights-overview.md) で Azure 以外の VM からデータを収集することが可能になりました。
 
 このチュートリアルでは、簡単な一連の手順に従って VM insights を有効にし、Linux マシンまたは Windows マシンを構成して、それらの VM からデータを収集する方法について説明します。こうすることによって、エクスペリエンスが効率化され、所要時間が短縮されます。  
 
@@ -34,7 +34,7 @@ ms.locfileid: "122772625"
 
 1. Azure portal で Azure Arc サービスを起動します。 **[すべてのサービス]** をクリックし、 **[マシン - Azure Arc]** を探して選択してください。
 
-    :::image type="content" source="./media/quick-enable-hybrid-vm/search-machines.png" alt-text="[すべてのサービス] で Arc 対応サーバーを検索する" border="false":::
+    :::image type="content" source="./media/quick-enable-hybrid-vm/search-machines.png" alt-text="[すべてのサービス] で Azure Arc 対応サーバーを検索する" border="false":::
 
 1. **[マシン - Azure Arc]** ページで、[クイックスタート](quick-enable-hybrid-vm.md)記事で作成した接続済みのマシンを選択します。
 

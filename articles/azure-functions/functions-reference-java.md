@@ -4,12 +4,12 @@ description: Java を使用して関数を開発する方法について説明�
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: fc827c8c03edecbdb10769f7830806ff01596bd1
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d03a4121394141b7b39ae441d7eb3cf653a0b374
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121742640"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129232149"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions の Java 開発者向けガイド
 
@@ -187,7 +187,7 @@ Maven アーキタイプでは、指定された Java バージョンを対象�
 
 | 要素 |  Windows | Linux | Docker |
 | ---- | ---- | ---- | --- |
-| **`os`** | Windows | linux | docker |
+| **`os`** | `windows` | `linux` | `docker` |
 
 次の例は、pom.xml ファイルの `runtime` セクションのオペレーティング システム設定を示しています。
 

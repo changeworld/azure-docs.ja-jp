@@ -1,15 +1,15 @@
 ---
-title: Azure CLI スクリプト サンプル - ラボの仮想マシンを起動する | Microsoft Docs
+title: Azure CLI スクリプト サンプル - ラボの仮想マシンを起動する
 description: この Azure CLI スクリプトは、Azure DevTest Labs のラボの仮想マシンを起動します。
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 08/11/2020
-ms.openlocfilehash: f82d43fc212da034d978ee3d65236d806daeb008
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: f28427c13587af7654f56fb728a44ea42cce5f5a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107764983"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128557564"
 ---
 # <a name="use-azure-cli-to-start-a-virtual-machine-in-a-lab-in-azure-devtest-labs"></a>Azure CLI を使用して Azure DevTest Labs のラボの仮想マシンを起動する
 

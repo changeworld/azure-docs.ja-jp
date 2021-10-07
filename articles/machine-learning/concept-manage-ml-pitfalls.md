@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: Azure Machine Learning の自動機械学習ソリューションを使用して、ML モデルの一般的な落とし穴を特定し、管理します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: automl
 ms.topic: conceptual
 ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 04/09/2020
-ms.openlocfilehash: 8945a5766865f4df6175e7330d3bf9c947e1fa0d
-ms.sourcegitcommit: 9caa850a2b26773e238f8ba6f4ca151c47260915
+ms.openlocfilehash: b942cbb0ada2419dadd71e93a39d069d29225f35
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2021
-ms.locfileid: "113600498"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129426724"
 ---
 # <a name="prevent-overfitting-and-imbalanced-data-with-automated-machine-learning"></a>自動機械学習でのオーバーフィット データと不均衡データを防止する
 

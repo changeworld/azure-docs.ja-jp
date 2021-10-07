@@ -3,17 +3,17 @@ title: Azure Virtual Desktop の最新情報 - Azure
 description: Azure Virtual Desktop の新機能と製品の更新情報。
 author: Heidilohr
 ms.topic: overview
-ms.date: 07/30/2021
+ms.date: 09/27/2021
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: femila
 ms.custom: references_regions
-ms.openlocfilehash: 88c94a3f1b6329c80cddcec49c7ebb445a21d8e0
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 438a3f4091afbfb885e2f585196193ce91f13f4a
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123318143"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129154548"
 ---
 # <a name="whats-new-in-azure-virtual-desktop"></a>Azure Virtual Desktop の最新情報
 
@@ -42,6 +42,10 @@ Azure Virtual Desktop エージェントは、少なくとも 1 か月に 1 回�
 
 Azure Virtual Desktop エージェントの変更内容は次のとおりです。
 
+- バージョン 1.0.3373.2600: この更新プログラムは 2021 年 9 月にリリースされ、次の変更が加えられました。
+    - 一般的なエージェントの機能強化。
+    - Windows 7 VM でエージェントを再起動する際の問題を修正。
+    - WVDAgentHealthStatus テーブルのフィールドが正しく表示されない問題を修正。
 - バージョン 1.0.3130.2900: この更新プログラムは 2021 年 7 月にリリースされ、次の変更が加えられました。
     - 一般的な機能強化とバグの修正。
     - Intune 登録のホスト プール パスを取得する際の問題を修正します。
@@ -67,33 +71,51 @@ Azure Virtual Desktop エージェントの変更内容は次のとおりです�
 
 FSLogix に対して行われた最新の更新については、 [FSLogix の最新情報](/fslogix/whats-new)に関するページを参照してください。
 
+## <a name="september-2021"></a>2021 年 9 月
+
+2021 年 9 月における変更点は次のとおりです。
+
+### <a name="azure-portal-updates"></a>Azure portal の更新
+
+デプロイ後にセッション ホストに適用するすべての更新プログラムに対して、Azure Resource Manager テンプレートを使用できるようになりました。 この機能にアクセスするには、ホスト プールの作成中に **[仮想マシン]** タブを選択します。
+
+また、ホスト プール、アプリ グループ、およびワークスペースの診断設定を、後からではなくホスト プールの作成時に設定できます。 ホスト プールの作成プロセス中にこれらの設定を構成すると、Azure Virtual Desktop 分析情報のレポート データも自動的に設定されます。
+
+### <a name="azure-active-directory-domain-join"></a>Azure Active Directory ドメイン参加
+
+Azure Active Directory ドメイン参加が一般提供されました。 このサービスを使用すると、セッション ホストを Azure Active Directory に参加させることができます。 ドメイン参加により、Microsoft エンドポイント マネージャーの一部として Intune に自動登録することもできます。 この機能は Azure パブリック クラウドで利用できますが、Government Cloud または Azure China ではアクセスできません。 詳細については、こちらの[ブログ記事](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/announcing-general-availability-of-azure-ad-joined-vms-support/ba-p/2751083)を参照してください。
+
+### <a name="azure-china"></a>Azure 中国
+
+Azure Virtual Desktop が Azure China クラウドで一般提供されました。 詳細については、こちらの[ブログ記事](https://azure.microsoft.com/updates/general-availability-azure-virtual-desktop-is-now-available-in-the-azure-china-cloud/)を参照してください。
+
+### <a name="automatic-migration-module-tool"></a>自動移行モジュール ツール
+
+自動移行ツールを使用すると、いくつかの PowerShell コマンドを使うだけで、組織を Azure Virtual Desktop (クラシック) から Azure Virtual Desktop に移行できます。 この機能は現在パブリック プレビュー段階にあります。自動移行の詳細については、[こちら](automatic-migration.md)を参照してください。
+
 ## <a name="august-2021"></a>2021 年 8 月
 
 2021 年 8 月における変更点は次のとおりです。
 
-### <a name="windows-11-preview-on-avd"></a>AVD での Windows 11 (プレビュー)
+### <a name="windows-11-preview-for-azure-virtual-desktop"></a>Azure Virtual Desktop 用の Windows 11 (プレビュー)
 
 Windows 11 (プレビュー) イメージを Azure Marketplace で入手できるようになりました。お客様は、これを Azure Virtual Desktop でテストおよび検証することができます。 詳しくは、[こちらのお知らせ](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/windows-11-preview-is-now-available-on-azure-virtual-desktop/ba-p/2666468)をご覧ください。
 
-### <a name="multimedia-redirection-mmr-is-now-in-public-preview"></a>マルチメディア リダイレクト (MMR) がパブリック プレビューになりました
+### <a name="multimedia-redirection-is-now-in-public-preview"></a>マルチメディア リダイレクトがパブリック プレビューになりました
 
-マルチメディア リダイレクト (MMR) を使用すると、Azure Virtual Desktop の Web ブラウザーでビデオを視聴する際のビデオ再生がスムーズになります。これは、Microsoft Edge と Google Chrome で動作します。 詳細については、[ブログ記事](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/public-preview-announcing-public-preview-of-multimedia/m-p/2663244#M7692)をご覧ください。
+マルチメディア リダイレクトを使用すると、Azure Virtual Desktop の Web ブラウザーでビデオを視聴する際のビデオ再生がスムーズになります。これは、Microsoft Edge と Google Chrome で動作します。 詳細については、[ブログ記事](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/public-preview-announcing-public-preview-of-multimedia/m-p/2663244#M7692)をご覧ください。
 
-### <a name="ip-virtualization-support-for-windows-server-2019"></a>Windows Server 2019 の IP 仮想化のサポート
+### <a name="windows-defender-application-control-and-azure-disk-encryption-support"></a>Windows Defender Application Control と Azure Disk Encryption のサポート
 
-IP 仮想化は Windows Server 2008 R2 以降でサポートされています。 Windows Server 2019 で IP 仮想化を使用するには、追加の手順が必要です。 詳しくは、[こちらのお知らせ](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/ip-virtualization-support-for-windows-server-2019/m-p/2658650)をご覧ください。
-
-### <a name="windows-defender-application-control-and-azure-disk-encryption-is-now-supported"></a>Windows Defender Application Control Azure Disk Encryption がサポートされるようになりました
-
-Azure Virtual Desktop で、Windows VM で実行できるドライバーとアプリケーションを制御するための Windows Defender Application Control と、VM の OS とデータ ディスクのボリューム暗号化を提供するために Windows BitLocker を使用する Azure Disk Encryption がサポートされるようになりました。 詳しくは、[こちらのお知らせ](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/support-for-windows-defender-application-control-and-azure-disk/m-p/2658633#M7685)をご覧ください。
+Azure Virtual Desktop で、Windows 仮想マシン (VM) で実行できるドライバーとアプリケーションを制御するための Windows Defender Application Control と、VM の OS とデータ ディスクのボリューム暗号化を提供するために Windows BitLocker を使用する Azure Disk Encryption がサポートされるようになりました。 詳しくは、[こちらのお知らせ](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/support-for-windows-defender-application-control-and-azure-disk/m-p/2658633#M7685)をご覧ください。
  
 ### <a name="signing-into-azure-ad-using-smart-cards-are-now-supported-in-azure-virtual-desktop"></a>スマート カードを使用した Azure AD へのサインインが Azure Virtual Desktop でサポートされるようになりました。
 
-これは Azure AD の新機能ではありませんが、スマート カードを使用してサインインするように Active Directory フェデレーションサービス (AD FS) を構成することが、Azure Virtual Desktop でサポートされるようになりました。 詳しくは、[こちらのお知らせ](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/signing-in-to-azure-ad-using-smart-cards-now-supported-in-azure/m-p/2654209#M7671)をご覧ください。
+これは Azure AD の新機能ではありませんが、Azure Virtual Desktop で、スマート カードを使用してサインインするように Active Directory フェデレーション サービス (AD FS) を構成することがサポートされるようになりました。 詳しくは、[こちらのお知らせ](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/signing-in-to-azure-ad-using-smart-cards-now-supported-in-azure/m-p/2654209#M7671)をご覧ください。
 
 ### <a name="screen-capture-protection-is-now-generally-available"></a>画面キャプチャ保護の一般提供が開始されました
 
-AVD の画面キャプチャ保護を使用して、クライアント エンドポイントで実行されているソフトウェアによって、機密情報の画面がキャプチャされないようにします。 詳細については、こちらの[ブログ記事](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/announcing-general-availability-of-screen-capture-protection-for/m-p/2699684)を参照してください。
+Azure Virtual Desktop の画面キャプチャ保護を使用して、クライアント エンドポイントで実行されているソフトウェアによって、機密情報の画面がキャプチャされないようにします。 詳細については、こちらの[ブログ記事](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/announcing-general-availability-of-screen-capture-protection-for/m-p/2699684)を参照してください。
 
 ## <a name="july-2021"></a>2021 年 7 月
 
@@ -540,7 +562,7 @@ Azure Resource Management と統合された Azure Virtual Desktop の一般提�
 
 ### <a name="autoscaling-tool-update"></a>自動スケーリング ツールの更新
 
-プレビュー段階だった自動スケーリング ツールの最新バージョンが一般提供となりました。 このツールは、Azure Automation アカウントと Azure Logic Apps を使用して、ホスト プール内のセッション ホスト仮想マシン (VM) を自動的にシャットダウン、再起動することで、インフラストラクチャ コストを抑えています。 詳細については、「[Azure Automation を使用してセッション ホストをスケーリングする](set-up-scaling-script.md)」を参照してください。
+プレビュー段階だった自動スケーリング ツールの最新バージョンが一般提供となりました。 このツールは、Azure Automation アカウントと Azure Logic Apps を使用して、ホスト プール内のセッション ホスト VM を自動的にシャットダウン、再起動することで、インフラストラクチャ コストを抑えています。 詳細については、「[Azure Automation を使用してセッション ホストをスケーリングする](set-up-scaling-script.md)」を参照してください。
 
 ### <a name="azure-portal"></a>Azure portal
 
@@ -581,7 +603,7 @@ Azure Virtual Desktop が Azure Resource Manager と統合されました。 最
 
 - この更新プログラムでは、ホスト プールを拡張するために Azure Marketplace または GitHub テンプレートを繰り返し実行する必要がなくなりました。 ホスト プールを拡張するために必要なのは、Azure portal で対象のホスト プールに移動し、 **[+ 追加]** を選択して追加のセッション ホストをデプロイすることだけです。
 
-- ホスト プールのデプロイは、[Azure Shared Image Gallery](../virtual-machines/shared-image-galleries.md) と完全に統合されました。 Shared Image Gallery は、イメージのバージョン管理を含む仮想マシン (VM) イメージ定義を格納する、別の Azure サービスです。 また、グローバル レプリケーションを使用して、イメージをコピーし、ローカル デプロイ用に他の Azure リージョンに送信することもできます。
+- ホスト プールのデプロイは、[Azure Shared Image Gallery](../virtual-machines/shared-image-galleries.md) と完全に統合されました。 Shared Image Gallery は、イメージのバージョン管理を含む VM イメージ定義を格納する、別の Azure サービスです。 また、グローバル レプリケーションを使用して、イメージをコピーし、ローカル デプロイ用に他の Azure リージョンに送信することもできます。
 
 - 従来 PowerShell または診断サービス Web アプリを通じて実行されていた監視機能は、Azure portal の Log Analytics に移動されました。 また、レポートを視覚化するための 2 つのオプションも用意されました。 Kusto クエリを実行し、Workbooks を使用すると、ビジュアル レポートを作成できます。
 

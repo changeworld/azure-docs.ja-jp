@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 08/26/2021
+ms.date: 09/20/2021
 ms.author: tisande
-ms.openlocfilehash: 29a97d3f68d9b097bfe5c67f0b5832271fa983e1
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 39b385096fadb5d410520889c0aa8f1a07f1a67a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123031119"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128616557"
 ---
 # <a name="azure-cosmos-db-integrated-cache---overview-preview"></a>Azure Cosmos DB 統合キャッシュ - 概要 (プレビュー)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -88,13 +88,17 @@ Azure Cosmos DB 統合キャッシュはインメモリ キャッシュで、要
 
 ## <a name="integrated-cache-consistency"></a>統合キャッシュの一貫性
 
-統合キャッシュでは、最終的な[整合性](consistency-levels.md)のみがサポートされます。 一貫したプレフィックス、セッション、有界整合性制約、厳密な一貫性が設定されている読み取りの場合、統合キャッシュは常にバイパスされます。
+統合キャッシュでは、セッションと最終的な[整合性](consistency-levels.md)の両方のみがサポートされます。 一貫したプレフィックス、有界整合性制約、厳密な一貫性が設定されている読み取りの場合、統合キャッシュは常にバイパスされます。
 
-すべての読み取りの最終的な整合性を構成する最も簡単な方法は、[アカウントレベルでこれを設定する](consistency-levels.md#configure-the-default-consistency-level)ことです。 ただし、一部の読み取りにのみ最終的な整合性を設定する場合は、[要求レベル](how-to-manage-consistency.md#override-the-default-consistency-level)で整合性を構成することもできます。
+すべての読み取りのセッションまたは最終的な整合性のいずれかを構成する最も簡単な方法は、[アカウントレベルでこれを設定する](consistency-levels.md#configure-the-default-consistency-level)ことです。 ただし、一部の読み取りにのみ最終的な整合性を設定する場合は、[要求レベル](how-to-manage-consistency.md#override-the-default-consistency-level)で整合性を構成することもできます。
+
+### <a name="session-consistency"></a>"セッション" 整合性
+
+[セッション整合性](consistency-levels.md#session-consistency)は、1 つのリージョンのアプリケーションと世界中に分散された Azure Cosmos DB アカウントの両方で最も広く使用されている整合性レベルです。 セッションの整合性を使用する場合、単一のクライアント セッションで独自の書き込みを読み取ることができます。 統合されたキャッシュを使用すると、書き込みを実行しているセッションの外部のクライアントは、最終的な整合性を確認できます。
 
 ## <a name="maxintegratedcachestaleness"></a>MaxIntegratedCacheStaleness
 
-`MaxIntegratedCacheStaleness` は、キャッシュされているポイント読み取りおよびクエリに許容される最長失効期限です。 `MaxIntegratedCacheStaleness` は、要求レベルで構成できます。 たとえば、`MaxIntegratedCacheStaleness` を 2 時間に設定した場合、データの経過時間が 2 時間未満であれば、要求からは、キャッシュされているデータのみが返されます。 繰り返し読み取りで統合キャッシュを使用する可能性を高めるには、`MaxIntegratedCacheStaleness` を、ビジネス要件で許容される限り最大の長さに設定する必要があります。
+`MaxIntegratedCacheStaleness` は、選択した整合性に関係なく、キャッシュされたポイントの読み取りとクエリに対して許容される最大の staleness です。 `MaxIntegratedCacheStaleness` は、要求レベルで構成できます。 たとえば、`MaxIntegratedCacheStaleness` を 2 時間に設定した場合、データの経過時間が 2 時間未満であれば、要求からは、キャッシュされているデータのみが返されます。 繰り返し読み取りで統合キャッシュを使用する可能性を高めるには、`MaxIntegratedCacheStaleness` を、ビジネス要件で許容される限り最大の長さに設定する必要があります。
 
 `MaxIntegratedCacheStaleness` は、最終的にキャッシュに保存する要求で構成された場合、その要求がキャッシュされる期間に影響を与えないことを理解することが重要です。 `MaxIntegratedCacheStaleness` により、キャッシュされたデータを使用しようとするときに整合性が適用されます。 グローバル TTL またはキャッシュ リテンション期間設定がないため、統合キャッシュがいっぱいであるか、現在キャッシュされているエントリの経過時間よりも短い `MaxIntegratedCacheStaleness` で新しい読み取りが実行された場合にのみ、データがキャッシュから削除されます。
 
@@ -154,7 +158,7 @@ Azure Cosmos DB 統合キャッシュはインメモリ キャッシュで、要
 
 ### <a name="i-cant-tell-if-my-requests-are-hitting-the-integrated-cache"></a>要求が統合キャッシュにヒットしているどうかを判断できない
 
-`IntegratedCacheItemHitRate` と `IntegratedCacheQueryHitRate` を確認します。 これらの値が両方とも 0 の場合、要求は統合キャッシュにヒットしていません。 専用ゲートウェイの接続文字列を使用していること、[ゲートウェイ モードで接続している](sql-sdk-connection-modes.md)こと、[最終的な整合性が設定されている](consistency-levels.md#configure-the-default-consistency-level)ことをご確認ください。
+`IntegratedCacheItemHitRate` と `IntegratedCacheQueryHitRate` を確認します。 これらの値が両方とも 0 の場合、要求は統合キャッシュにヒットしていません。 専用ゲートウェイの接続文字列を使用していること、[ゲートウェイ モードで接続している](sql-sdk-connection-modes.md)こと、[セッションまたは最終的な整合性が設定されている](consistency-levels.md#configure-the-default-consistency-level)ことをご確認ください。
 
 ### <a name="i-want-to-understand-if-my-dedicated-gateway-is-too-small"></a>専用ゲートウェイが小さすぎるかどうかを確認したい
 
@@ -177,6 +181,6 @@ LRU ではなく `MaxIntegratedCacheStaleness` を超過したことが原因で
 - [統合キャッシュに関する FAQ](integrated-cache-faq.md)
 - [統合キャッシュの構成](how-to-configure-integrated-cache.md)
 - [専用ゲートウェイ](dedicated-gateway.md)
-- Azure Cosmos DB に移行する容量計画を実行しようとしていますか? 容量計画のために、既存のデータベース クラスターに関する情報を使用できます。
-    - 既存のデータベース クラスター内の仮想コアとサーバー数のみがわかっている場合は、[仮想コア数または仮想 CPU 数を使用した要求ユニットの見積もり](convert-vcore-to-request-unit.md)に関するページを参照してください 
-    - 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB Capacity Planner を使用した要求ユニットの見積もり](estimate-ru-with-capacity-planner.md)に関するページを参照してください
+- Azure Cosmos DB への移行のための容量計画を実行しようとしていますか? 容量計画のために、既存のデータベース クラスターに関する情報を使用できます。
+    - 知っていることが既存のデータベース クラスター内の仮想コアとサーバーの数のみである場合は、[仮想コアまたは仮想 CPU の数を使用した要求ユニットの見積もり](convert-vcore-to-request-unit.md)に関するページを参照してください 
+    - 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB 容量計画ツールを使用した要求ユニットに見積もり](estimate-ru-with-capacity-planner.md)に関するページを参照してください

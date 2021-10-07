@@ -2,38 +2,38 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: notification-hubs
-author: jwargo
+author: sethmanheim
 ms.service: notification-hubs
 ms.topic: include
-ms.date: 01/17/2019
-ms.author: jowargo
+ms.date: 09/07/2021
+ms.author: sethm
 ms.custom: include file
-ms.openlocfilehash: 2ec602f056b339a1b1dcb78d6b8d7583aeaf0434
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9d33df05e54d9cdeb97631ca479dd8ac9869343c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96009113"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "126057231"
 ---
-1. [Azure portal](https://portal.azure.com) にサインインする
+1. [Azure portal](https://portal.azure.com) にサインインします。
 
 1. 左側のメニューで **[すべてのサービス]** を選択し、 **[モバイル]** セクションの **[Notification Hubs]** を選択します。 サービス名の横にある星のアイコンを選択して、左側のメニューにある **[お気に入り]** セクションにサービスを追加します。 **Notification Hubs** を **[お気に入り]** に追加した後、左側のメニューでそれを選択します。
 
       ![Azure portal - Notification Hubs を選択する](./media/notification-hubs-portal-create-new-hub/all-services-select-notification-hubs.png)
 
-1. **[Notification Hubs]** ページで、ツール バーの **[追加]** を選択します。
+1. **[Notification Hubs]** ページで、ツール バーの **[作成]** を選択します。
 
-      ![Notification Hubs - [追加] ツール バー ボタン](./media/notification-hubs-portal-create-new-hub/add-toolbar-button.png)
+      ![Notification Hubs - [追加] ツール バー ボタン](./media/notification-hubs-portal-create-new-hub/create-toolbar-button.png)
 
-1. **[Notification Hub]** ページで、次の手順のようにします。
+1. **[Notification Hub]** ページの **[基本]** タブで、次の手順を行います。
 
-    1. **[通知ハブ]** に名前を入力します。  
+    1. **[サブスクリプション]** で、使用する Azure サブスクリプションの名前を選択し、既存のリソース グループを選択するか、新しいリソース グループを作成します。  
 
-    1. **[新しい名前空間の作成]** に名前を入力します。 名前空間には、少なくとも 1 つのハブが存在します。
+    1. **[名前空間の詳細]** に新しい名前空間の一意の名前を入力します。 
+    
+    1. 名前空間には 1 つ以上の通知ハブが含まれているので、 **[通知ハブの詳細]** にそのハブの名前を入力します。 または、ドロップダウンから既存の名前空間を選択します。
 
     1. **[場所]** ドロップダウン リスト ボックスで値を選択します。 この値には、ハブを作成する場所を指定します。
-
-    1. **[リソース グループ]** で既存のリソース グループを選択します。または、新しいリソース グループに名前を作成します。
 
     1. **作成** を選択します。
 

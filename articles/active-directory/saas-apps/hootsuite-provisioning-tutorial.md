@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.author: thwimmer
-ms.openlocfilehash: c60f2ccc9325183fdcbc4edc533c7418e36eb6bf
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 34d1d765dbb5f2267c4c56d4dd91daa31f8799a7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113763620"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128629884"
 ---
 # <a name="tutorial-configure-hootsuite-for-automatic-user-provisioning"></a>チュートリアル:Hootsuite を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -45,7 +45,7 @@ ms.locfileid: "113763620"
 
 ## <a name="step-2-configure-hootsuite-to-support-provisioning-with-azure-ad"></a>手順 2. Azure AD でのプロビジョニングをサポートするように Hootsuite を構成する
 
-dev.support@hootsuite.com に連絡して、後の手順で必要になる、長期間使用できるシークレット トークンを取得します。 
+後の手順で必要な長期トークンについては、Hootsuite の CSM にアクセスしてください。
 
 ## <a name="step-3-add-hootsuite-from-the-azure-ad-application-gallery"></a>手順 3. Azure AD アプリケーション ギャラリーから Hootsuite を追加する
 

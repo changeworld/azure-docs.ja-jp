@@ -7,13 +7,13 @@ ms.topic: tutorial
 ms.author: abnarain
 author: nabhishek
 ms.custom: seo-lt-2019
-ms.date: 08/31/2021
-ms.openlocfilehash: 15e08069be22cc71e228a1ad878e5f2b5424ce89
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.date: 09/08/2021
+ms.openlocfilehash: a2086feece0bb37068c57534740b2c58d072d0ea
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123541826"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124806393"
 ---
 # <a name="run-a-databricks-notebook-with-the-databricks-notebook-activity-in-azure-data-factory"></a>Azure Data Factory で Databricks Notebook アクティビティを使用して Databricks Notebook を実行する
 
@@ -87,15 +87,15 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1.  ホーム ページの左側のパネルで **[管理]** タブに切り替えます。
 
-    ![[管理] タブを示すスクリーンショット。](media/doc-common-process/get-started-page-manage-button.png)
+    :::image type="content" source="media/doc-common-process/get-started-page-manage-button.png" alt-text="[管理] タブを示すスクリーンショット。":::
 
 1.  **[接続]** で **[リンク サービス]** を選択して、 **[+ 新規]** を選択します。
     
-    ![新しい接続を作成する方法を示すスクリーンショット。](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image-6.png)
+    :::image type="content" source="media/transform-data-using-databricks-notebook/databricks-notebook-activity-image-6.png" alt-text="新しい接続を作成する方法を示すスクリーンショット。":::
 
 1.  **[新しいリンク サービス]** ウィンドウで、 **[コンピューティング]** &gt; **[Azure Databricks]** の順に選択し、 **[続行]** を選択します。
     
-    ![Databricks リンク サービスを指定する方法を示すスクリーンショット。](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image-7.png)
+    :::image type="content" source="media/transform-data-using-databricks-notebook/databricks-notebook-activity-image-7.png" alt-text="Databricks リンク サービスを指定する方法を示すスクリーンショット。":::
 
 1.  **[新しいリンク サービス]** ウィンドウで、次の手順を完了します。
     
@@ -109,7 +109,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     1.  **[アクセス トークン]** で、Azure Databricks ワークスペースからトークンを生成します。 手順については、[こちら](https://docs.databricks.com/api/latest/authentication.html#generate-token)を参照してください。
 
-    1.  **[クラスター バージョン]** で、 **[4.2]** (Apache Spark 2.3.1、Scala 2.11 を含む) を選択します。
+    1.  **[クラスターのバージョン]** で、使用するバージョンを選択します。
 
     1.  このチュートリアルでは、 **[Cluster node type]\(クラスター ノードの種類)** で、 **[General Purpose (HDD)]\(一般的な目的 (HDD))** カテゴリの **[Standard\_D3\_v2]** を選択します。 
     
@@ -117,23 +117,23 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     
     1.  **［作成］** を選択します
 
-        ![新しい Azure Databricks のリンク サービスの構成を示すスクリーンショット。](media/transform-data-using-databricks-notebook/new-databricks-linked-service.png)
+        :::image type="content" source="media/transform-data-using-databricks-notebook/new-databricks-linked-service.png" alt-text="新しい Azure Databricks のリンク サービスの構成を示すスクリーンショット。":::
 
 ## <a name="create-a-pipeline"></a>パイプラインを作成する
 
 1.  **+** (正符号) ボタンを選択し、メニューの **[パイプライン]** を選択します。
 
-    ![新しいパイプラインを作成するためのボタンを示すスクリーンショット。](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image-9.png)
+    :::image type="content" source="media/transform-data-using-databricks-notebook/databricks-notebook-activity-image-9.png" alt-text="新しいパイプラインを作成するためのボタンを示すスクリーンショット。":::
 
 1.  **パイプライン** で使用される **パラメーター** を作成します。 後で、このパラメーターを Databricks Notebook アクティビティに渡します。 空のパイプラインで **[パラメーター]** タブをクリックし、次に **[+ 新規]** をクリックして、"**name**" という名前を付けます。
 
-    ![新しいパラメーターの作成方法を示すスクリーンショット。](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image-10.png)
+    :::image type="content" source="media/transform-data-using-databricks-notebook/databricks-notebook-activity-image-10.png" alt-text="新しいパラメーターの作成方法を示すスクリーンショット。":::
 
-    ![name パラメーターの作成方法を示すスクリーンショット。](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image-11.png)
+    :::image type="content" source="media/transform-data-using-databricks-notebook/databricks-notebook-activity-image-11.png" alt-text="name パラメーターの作成方法を示すスクリーンショット。":::
 
 1.  **[アクティビティ]** ツールボックスで **[Databricks]** を展開します。 **[アクティビティ]** ツールボックスからパイプライン デザイナー画面に **Notebook** アクティビティをドラッグします。
 
-    ![デザイナー画面にノートブックをドラッグする方法を示すスクリーンショット。](media/transform-data-using-databricks-notebook/new-adf-pipeline.png)
+    :::image type="content" source="media/transform-data-using-databricks-notebook/new-adf-pipeline.png" alt-text="デザイナー画面にノートブックをドラッグする方法を示すスクリーンショット。":::
 
 1.  下部の **Databricks** **Notebook** アクティビティ ウィンドウのプロパティで、次の手順を完了します。
 
@@ -149,26 +149,26 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
        1. ワークスペースで **新しいフォルダー** を作成し、**adftutorial** という名前にします。
 
-          ![新しいフォルダーを作成する方法を示すスクリーンショット。](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image13.png)
+          :::image type="content" source="media/transform-data-using-databricks-notebook/databricks-notebook-activity-image13.png" alt-text="新しいフォルダーを作成する方法を示すスクリーンショット。":::        
 
        1. [新しいノートブックの作成方法を示すスクリーンショット。](https://docs.databricks.com/user-guide/notebooks/index.html#creating-a-notebook) (Python)、**adftutorial** フォルダーの下で **mynotebook** という名前にして、 **[作成]** をクリックします。
 
-          ![新しいノートブックの作成方法を示すスクリーンショット。](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image14.png)
+          :::image type="content" source="media/transform-data-using-databricks-notebook/databricks-notebook-activity-image14.png" alt-text="新しいノートブックの作成方法を示すスクリーンショット。":::  
 
-          ![新しいノートブックのプロパティを設定する方法を示すスクリーンショット。](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image15.png)
+          :::image type="content" source="media/transform-data-using-databricks-notebook/databricks-notebook-activity-image15.png" alt-text="新しいノートブックのプロパティを設定する方法を示すスクリーンショット。":::
 
-       1. 新しく作成されたノートブック "mynotebook&quot; に次のコードを追加します。
+       1. 新しく作成されたノートブック "mynotebook" に次のコードを追加します。
 
            ```
            # Creating widgets for leveraging parameters, and printing the parameters
 
-           dbutils.widgets.text(&quot;input&quot;, &quot;&quot;,&quot;")
+           dbutils.widgets.text("input", "","")
            y = dbutils.widgets.get("input")
            print ("Param -\'input':")
            print (y)
            ```
 
-           ![パラメーターのウィジェットを作成する方法を示すスクリーンショット。](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image16.png)
+          :::image type="content" source="media/transform-data-using-databricks-notebook/databricks-notebook-activity-image16.png" alt-text="パラメーターのウィジェットを作成する方法を示すスクリーンショット。"::: 
 
        1. ここでの **Notebook パス** は、 **/adftutorial/mynotebook** です。
 
@@ -176,51 +176,51 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     a.  Notebook アクティビティに **パラメーター** を追加します。 前に **パイプライン** に追加したのと同じパラメーターを使用します。
 
-       ![パラメーターを追加する方法を示すスクリーンショット。](media/transform-data-using-databricks-notebook/new-adf-parameters.png)
+       :::image type="content" source="media/transform-data-using-databricks-notebook/new-adf-parameters.png" alt-text="パラメーターを追加する方法を示すスクリーンショット。":::
 
     b.  パラメーターの名前を **input** にして、値を式 **\@pipeline().parameters.name** として指定します。
 
 1.  パイプラインを検証するために、ツール バーの **[検証]** ボタンを選択します。 検証ウィンドウを閉じるには、 **[閉じる]** ボタンを選択します。
 
-    ![パイプラインを検証する方法を示すスクリーンショット。](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image-18.png)
+    :::image type="content" source="media/transform-data-using-databricks-notebook/databricks-notebook-activity-image-18.png" alt-text="パイプラインを検証する方法を示すスクリーンショット。":::
 
 1.  **[すべて公開]** を選択します。 Data Factory UI により、エンティティ (リンクされたサービスとパイプライン) が Azure Data Factory サービスに公開されます。
 
-    ![新しいデータ ファクトリ エンティティを公開する方法を示すスクリーンショット。](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image-19.png)
+    :::image type="content" source="media/transform-data-using-databricks-notebook/databricks-notebook-activity-image-19.png" alt-text="新しいデータ ファクトリ エンティティを公開する方法を示すスクリーンショット。":::
 
 ## <a name="trigger-a-pipeline-run"></a>パイプラインの実行をトリガーする
 
 ツール バーで **[トリガーの追加]** を選択し、 **[Trigger now]\(今すぐトリガー\)** を選択します。
 
-![[Trigger now]\(今すぐトリガー\) コマンドを選択する方法を示すスクリーンショット。](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image-20.png)
+:::image type="content" source="media/transform-data-using-databricks-notebook/databricks-notebook-activity-image-20.png" alt-text="[Trigger now]\(今すぐトリガー\) コマンドを選択する方法を示すスクリーンショット。":::
 
 **[パイプライン実行]** ダイアログ ボックスで、**name** パラメーターの指定を求められます。 ここでは、パラメーターとして **/path/filename** を使用します。 **[OK]** を選択します。
 
-![name パラメーターの値を指定する方法を示すスクリーンショット。](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image-21.png)
+:::image type="content" source="media/transform-data-using-databricks-notebook/databricks-notebook-activity-image-21.png" alt-text="name パラメーターの値を指定する方法を示すスクリーンショット。":::
 
 ## <a name="monitor-the-pipeline-run"></a>パイプラインの実行を監視します
 
 1.  **[監視]** タブに切り替えます。パイプラインが実行されていることを確認します。 ノートブックが実行される Databricks ジョブ クラスターを作成するには、5 分から 8 分ほどかかります。
 
-    ![パイプラインを監視する方法を示すスクリーンショット。](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image22.png)
+    :::image type="content" source="media/transform-data-using-databricks-notebook/databricks-notebook-activity-image-22.png" alt-text="パイプラインを監視する方法を示すスクリーンショット。"::: 
 
 1.  **[最新の情報に更新]** を定期的にクリックして、パイプラインの実行の状態を確認します。
 
-1.  パイプラインの実行に関連付けられているアクティビティの実行を表示するために、 **[アクション]** 列の **[View Activity Runs]\(アクティビティの実行の表示\)** を選択します。
+1.  パイプラインの実行に関連付けられているアクティビティの実行を表示するには、 **[パイプライン名]** 列の **pipeline1** リンクを選択します。
 
-    ![アクティビティの実行を表示する方法を示すスクリーンショット。](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image23.png)
+1. **[アクティビティの実行]** ページで、 **[アクティビティ名]** 列の **[出力]** を選択して各アクティビティの出力を表示します。さらに詳細な Spark ログについては、 **[出力]** ウィンドウの Databricks ログへのリンクを参照してください。
 
-上部の **[パイプライン]** リンクを選択すると、パイプラインの実行ビューに戻ることができます。
+1. 上部の階層リンク メニューの **[すべてのパイプラインの実行]** リンクを選択して、[パイプラインの実行] ビューに戻ることができます。
 
 ## <a name="verify-the-output"></a>出力を検証する
 
 **Azure Databricks ワークスペース** にログオンし、 **[クラスター]** に移動すると、**ジョブ** の状態 (*実行の保留中、実行中、または終了*) を確認できます。
 
-![ジョブ クラスターとジョブを表示する方法を示すスクリーンショット。](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image24.png)
+:::image type="content" source="media/transform-data-using-databricks-notebook/databricks-notebook-activity-image24.png" alt-text="ジョブ クラスターとジョブを表示する方法を示すスクリーンショット。"::: 
 
 **ジョブ名** をクリックすると、より詳しい情報が表示されます。 正常に実行されると、渡されたパラメーターと、Python ノートブックの出力を検証できます。
 
-![実行の詳細と出力を表示する方法を示すスクリーンショット。](media/transform-data-using-databricks-notebook/databricks-output.png)
+:::image type="content" source="media/transform-data-using-databricks-notebook/databricks-output.png" alt-text="実行の詳細と出力を表示する方法を示すスクリーンショット。"::: 
 
 ## <a name="next-steps"></a>次のステップ
 

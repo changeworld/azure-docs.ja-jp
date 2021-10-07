@@ -1,18 +1,18 @@
 ---
 title: Azure PowerShell を使用した Azure Cache for Redis の管理
 description: Azure PowerShell を使用して Azure Cache for Redis の管理タスクを実行する方法について説明します。
-author: yegu-ms
+author: curib
 ms.service: cache
 ms.topic: conceptual
 ms.date: 07/13/2017
-ms.author: yegu
+ms.author: cauribeg
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a2d3ee3df3d83307bed781cd8625dab8c07a5cfe
-ms.sourcegitcommit: 70ce9237435df04b03dd0f739f23d34930059fef
+ms.openlocfilehash: ffef2de3825f86bd6bbd3d2e82ee9aeb45c1d5e6
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111526922"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129538427"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>Azure PowerShell を使用した Azure Cache for Redis の管理
 

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 06/11/2021
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 15b5974aff53303ca0245fc6100ea22eebc70c6d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 381cc0d1114e60cbb9678c0df9a66176f3b51e99
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121752470"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128627598"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>App Service と Azure Functions の Key Vault 参照を使用する
 
@@ -42,6 +42,9 @@ Key Vault からシークレットを読み取るには、Key Vault を作成し
     ```
 
 2. アプリがアクセスするネットワークまたはサブネットに対するコンテナーの構成アカウントがあることを確認します。
+
+> [!NOTE]
+> Windows コンテナーでは、現在のところ、VNet 統合を介した Key Vault の参照はサポートされていません。
 
 ### <a name="access-vaults-with-a-user-assigned-identity"></a>ユーザー割り当て ID を使用してコンテナーにアクセスする
 

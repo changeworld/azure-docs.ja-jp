@@ -4,22 +4,17 @@ description: Bicep ファイルでデプロイ情報の取得に使用する関�
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: 53e9f34e2d04f68add7babd8c12b4fd583015847
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.date: 09/10/2021
+ms.openlocfilehash: e909ea77da32675beec6d5117430717acf274ab1
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111027120"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124731108"
 ---
 # <a name="deployment-functions-for-bicep"></a>Bicep のデプロイ関数
 
-Resource Manager では、Bicep ファイルの現在のデプロイに関連する値を取得するために、次の関数を用意しています。
-
-* [デプロイ](#deployment)
-* [environment](#environment)
-
-リソース、リソース グループ、サブスクリプションから値を取得する方法については、「 [リソース関数](./bicep-functions-resource.md)」を参照してください。
+この記事では、現在のデプロイに関連する値を取得するための Bicep 関数について説明します。
 
 ## <a name="deployment"></a>deployment
 
@@ -200,4 +195,4 @@ output environmentOutput object = environment()
 
 ## <a name="next-steps"></a>次のステップ
 
-* Bicep ファイルのセクションの説明は、[Bicep ファイルの構造と構文](./file.md)に関する記事をご覧ください。
+* リソース、リソース グループ、サブスクリプションから値を取得する方法については、「 [リソース関数](./bicep-functions-resource.md)」を参照してください。

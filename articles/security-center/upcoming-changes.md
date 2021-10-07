@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: overview
-ms.date: 08/19/2021
+ms.date: 09/12/2021
 ms.author: memildin
-ms.openlocfilehash: 0e9988aa7779d85714d6e1562af78c3a5bf0e1ff
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: 2d78588e900becc8fc802f1e4665b4fe533f0f6a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122444693"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124766846"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Azure Security Center に対する今後の重要な変更
 
@@ -28,7 +28,7 @@ ms.locfileid: "122444693"
 
 | 計画されている変更       | 変更予定日 |
 |----------------------|---------------------------|
-| [ISO 27001 のレガシ実装を新しい ISO 27001:2013 で置き換え予定](#legacy-implementation-of-iso-27001-is-being-replaced-with-new-iso-270012013)| 2021 年 8 月|
+| [ISO 27001 のレガシ実装を新しい ISO 27001:2013 で置き換え予定](#legacy-implementation-of-iso-27001-is-being-replaced-with-new-iso-270012013)| 2021 年 9 月|
 | [一部のアラートの種類のプレフィックスを "ARM_" から "VM_" に変更](#changing-prefix-of-some-alert-types-from-arm_-to-vm_)                                          | 2021 年 10 月|
 | [エンドポイント保護ソリューションを管理するための推奨事項の変更](#changes-to-recommendations-for-managing-endpoint-protection-solutions)             | Q4 2021    |
 | [SQL データベースで機密データを分類するための推奨事項の強化](#enhancements-to-recommendation-to-classify-sensitive-data-in-sql-databases)   | Q1 2022    |
@@ -36,7 +36,7 @@ ms.locfileid: "122444693"
 
 ### <a name="legacy-implementation-of-iso-27001-is-being-replaced-with-new-iso-270012013"></a>ISO 27001 のレガシ実装を新しい ISO 27001:2013 で置き換え予定
 
-**変更予定日:** 2021 年 8 月
+**変更予定日:** 2021 年 9 月
 
 ISO 27001 のレガシ実装は Security Center の規制コンプライアンス ダッシュボードから削除されます。 Security Center で ISO 27001 へのコンプライアンスを追跡している場合は、関連するすべての管理グループまたはサブスクリプションに対して新しい ISO 27001:2013 標準をオンボードすると、現在のレガシ ISO 27001 が間もなくダッシュボードから削除されます。
 

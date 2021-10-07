@@ -3,13 +3,13 @@ title: Azure Kubernetes Service に関する一般的な問題のトラブルシ
 description: Azure Kubernetes Service (AKS) を使用するときに発生する一般的な問題をトラブルシューティングおよび解決する方法について説明します
 services: container-service
 ms.topic: troubleshooting
-ms.date: 06/20/2020
-ms.openlocfilehash: 6b115971104699775e9a58a7b25addefe4d12d1d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/24/2021
+ms.openlocfilehash: 10f30ccd5efbc612c3b51c273347c872bfae1c17
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121730733"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129058474"
 ---
 # <a name="aks-troubleshooting"></a>AKS のトラブルシューティング
 
@@ -22,7 +22,7 @@ Microsoft のエンジニアによって公開された、ポッド、ノード�
 
 ## <a name="im-getting-a-quota-exceeded-error-during-creation-or-upgrade-what-should-i-do"></a>作成時またはアップグレード中に `quota exceeded` エラーが発生します。 どうすればよいですか。 
 
- [さらに多くのコアを要求します](../azure-portal/supportability/resource-manager-core-quotas-request.md)。
+ [さらに多くのコアを要求します](../azure-portal/supportability/regional-quota-requests.md)。
 
 ## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>高度なネットワークを使用して AKS クラスターをデプロイしているときに `insufficientSubnetSize` エラーが発生します。 どうすればよいですか。
 
@@ -104,7 +104,7 @@ AKS クラスター内のエージェント ノードのタグを変更したこ
 このエラーは、複数の理由でクラスターがエラー状態になったときに発生します。 以前に失敗した操作を再試行する前に、次の手順に従ってクラスターのエラー状態を解決してください。
 
 1. クラスターが `failed` 状態から回復するまで、`upgrade` 操作と `scale` 操作は成功しません。 一般的な根本問題と解決策は次のとおりです。
-    * **計算 (CRP) クォータが不足** している状態でのスケーリング。 これを解決するには、まず、クォータの範囲内で安定した目標状態にクラスターをスケールバックします。 次に、最初のクォータ制限を超えて再度スケールアップを試みる前に、[こちらの手順](../azure-portal/supportability/resource-manager-core-quotas-request.md)に従って計算クォータの引き上げを依頼します。
+    * **計算 (CRP) クォータが不足** している状態でのスケーリング。 これを解決するには、まず、クォータの範囲内で安定した目標状態にクラスターをスケールバックします。 次に、最初のクォータ制限を超えて再度スケールアップを試みる前に、[こちらの手順](../azure-portal/supportability/regional-quota-requests.md)に従って計算クォータの引き上げを依頼します。
     * 高度なネットワーク リソースと **不十分なサブネット (ネットワーク) リソース** を使用したクラスターのスケーリング。 これを解決するには、まず、クォータの範囲内で安定した目標状態にクラスターをスケールバックします。 次に、最初のクォータ制限を超えて再度スケールアップを試みる前に、[こちらの手順](../azure-resource-manager/templates/error-resource-quota.md#solution)に従ってリソース クォータの引き上げを依頼します。
 2. アップグレードの失敗の根本原因が解決されると、クラスターは成功状態になるはずです。 成功状態が確認されたら、元の操作を再試行します。
 
@@ -264,39 +264,15 @@ initContainers:
     mountPath: /data
 ```
 
-### <a name="azure-disk-detach-failure-leading-to-potential-race-condition-issue-and-invalid-data-disk-list"></a>競合状態の問題および無効なデータ ディスク リストにつながるAzure ディスクのデタッチの失敗
-
-Azure Disk のデタッチに失敗すると、エクスポネンシャル バックオフを使用してディスクのデタッチを最大 6 回再試行します。 また、データ ディスク リストにノード レベルのロックを約 3 分間保持します。 ディスク リストがその間に手動で更新された場合、ノード レベルのロックによって保持されていたディスク リストが古くなり、ノードが不安定になる可能性があります。
-
-この問題は、次のバージョンの Kubernetes で修正されました。
-
-| Kubernetes バージョン | 修正済みのバージョン |
-|--|:--:|
-| 1.12 | 1.12.9 以上 |
-| 1.13 | 1.13.6 以上 |
-| 1.14 | 1.14.2 以上 |
-| 1.15 以上 | 該当なし |
-
-この問題の修正プログラムがインストールされていないバージョンの Kubernetes を使用していて、ノードのディスク リストが古くなっている場合は、一括操作として VM からすべての存在しないディスクをデタッチすることで、軽減することが可能です。 **存在しないディスクを個別にデタッチすると失敗する場合があります。**
-
 ### <a name="large-number-of-azure-disks-causes-slow-attachdetach"></a>多数の Azure ディスクによってアタッチ/デタッチが遅くなる
 
-単一のノード VM を対象とする Azure ディスクのアタッチ/デタッチ操作の数が 10 を超える場合、またはその数が 3 を超え、単一の仮想マシン スケール セット プールを対象とする場合には、操作が順次実行されるために、予想よりも低速になることがあります。 この問題は既知の制限であり、現時点では回避策はありません。 [数を超える並列アタッチ/デタッチをサポートするための、ユーザーの声の項目はこちらです](https://feedback.azure.com/forums/216843-virtual-machines/suggestions/40444528-vmss-support-for-parallel-disk-attach-detach-for)。
+単一のノード VM を対象とする Azure ディスクのアタッチ/デタッチ操作の数が 10 を超える場合、またはその数が 3 を超え、単一の仮想マシン スケール セット プールを対象とする場合には、操作が順次実行されるために、予想よりも低速になることがあります。 この問題は、ツリー内 Azure Disk ドライバーの既知の制限です。 [Azure Disk CSI ドライバー](https://github.com/kubernetes-sigs/azuredisk-csi-driver)によって、バッチ操作でのディスクのアタッチ/デタッチに関するこの問題が解決されました。
 
 ### <a name="azure-disk-detach-failure-leading-to-potential-node-vm-in-failed-state"></a>エラー状態のノード VM につながる Azure Disk デタッチ エラー
 
 一部のエッジ ケースでは、Azure Disk のデタッチが部分的に失敗し、ノード VM がエラー状態のままになる場合があります。
 
-この問題は、次のバージョンの Kubernetes で修正されました。
-
-| Kubernetes バージョン | 修正済みのバージョン |
-|--|:--:|
-| 1.12 | 1.12.10 以上 |
-| 1.13 | 1.13.8 以上 |
-| 1.14 | 1.14.4 以上 |
-| 1.15 以上 | 該当なし |
-
-この問題の修正プログラムがインストールされていないバージョンの Kubernetes を使用していて、ノードがエラー状態である場合は、次のいずれかを使用して VM の状態を手動で更新することで、軽減が可能です。
+ノードがエラー状態である場合は、次のいずれかを使用して VM の状態を手動で更新することで、軽減できます。
 
 * 可用性セットベースのクラスターの場合:
     ```azurecli
@@ -310,21 +286,12 @@ Azure Disk のデタッチに失敗すると、エクスポネンシャル バ�
 
 ## <a name="azure-files-and-aks-troubleshooting"></a>Azure Files および AKS のトラブルシューティング
 
-### <a name="what-are-the-recommended-stable-versions-of-kubernetes-for-azure-files"></a>推奨される Kubernetes for Azure File の安定したバージョンは何ですか。
- 
-| Kubernetes バージョン | 推奨されるバージョン |
-|--|:--:|
-| 1.12 | 1.12.6 以上 |
-| 1.13 | 1.13.4 以上 |
-| 1.14 | 1.14.0 以上 |
-
 ### <a name="what-are-the-default-mountoptions-when-using-azure-files"></a>Azure Files を使用する場合の既定の mountOptions は何ですか。
 
 推奨設定
 
 | Kubernetes バージョン | fileMode および dirMode の値|
 |--|:--:|
-| 1.12.0 - 1.12.1 | 0755 |
 | 1.12.2 以上 | 0777 |
 
 ストレージ クラス オブジェクトでマウント オプションを指定できます。 次の例では、*0777* が設定されます。
@@ -387,24 +354,6 @@ persistentvolume-controller (combined from similar events): Failed to provision 
 
 [Azure Files で静的プロビジョニング](azure-files-volume.md)を使用することによって、この問題を軽減できます。
 
-### <a name="azure-files-fails-to-remount-in-windows-pod"></a>Windows ポッドで Azure Files を再マウントできない
-
-Azure Files がマウントされている Windows ポッドが削除され、同じノードで再作成されるようにスケジュールされている場合、マウントは失敗します。 このエラーは、Azure Files マウントが既にノードにマウントされているために `New-SmbGlobalMapping` コマンドが失敗することが原因で発生します。
-
-例えば、次のようなエラー メッセージが表示される場合があります。
-
-```console
-E0118 08:15:52.041014    2112 nestedpendingoperations.go:267] Operation for "\"kubernetes.io/azure-file/42c0ea39-1af9-11e9-8941-000d3af95268-pvc-d7e1b5f9-1af3-11e9-8941-000d3af95268\" (\"42c0ea39-1af9-11e9-8941-000d3af95268\")" failed. No retries permitted until 2019-01-18 08:15:53.0410149 +0000 GMT m=+732.446642701 (durationBeforeRetry 1s). Error: "MountVolume.SetUp failed for volume \"pvc-d7e1b5f9-1af3-11e9-8941-000d3af95268\" (UniqueName: \"kubernetes.io/azure-file/42c0ea39-1af9-11e9-8941-000d3af95268-pvc-d7e1b5f9-1af3-11e9-8941-000d3af95268\") pod \"deployment-azurefile-697f98d559-6zrlf\" (UID: \"42c0ea39-1af9-11e9-8941-000d3af95268\") : azureMount: SmbGlobalMapping failed: exit status 1, only SMB mount is supported now, output: \"New-SmbGlobalMapping : Generic failure \\r\\nAt line:1 char:190\\r\\n+ ... ser, $PWord;New-SmbGlobalMapping -RemotePath $Env:smbremotepath -Cred ...\\r\\n+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\\r\\n    + CategoryInfo          : NotSpecified: (MSFT_SmbGlobalMapping:ROOT/Microsoft/...mbGlobalMapping) [New-SmbGlobalMa \\r\\n   pping], CimException\\r\\n    + FullyQualifiedErrorId : HRESULT 0x80041001,New-SmbGlobalMapping\\r\\n \\r\\n\""
-```
-
-この問題は、次のバージョンの Kubernetes で修正されました。
-
-| Kubernetes バージョン | 修正済みのバージョン |
-|--|:--:|
-| 1.12 | 1.12.6 以上 |
-| 1.13 | 1.13.4 以上 |
-| 1.14 以上 | 該当なし |
-
 ### <a name="azure-files-mount-fails-because-of-storage-account-key-changed"></a>ストレージ アカウント キーが変更されたため Azure Files マウントが失敗する
 
 ストレージ アカウント キーが変更されている場合、Azure Files マウント エラーが発生することがあります。
@@ -435,10 +384,6 @@ E1114 09:58:55.367731 1 static_autoscaler.go:239] Failed to fix node group sizes
 ```
 
 このエラーは、上流クラスターのオートスケーラー競合状態が原因で発生します。 このような場合、クラスター オートスケーラーは実際にクラスター内にあるものとは異なる値で終了します。 この状態を修正するには、[クラスター オートスケーラー][cluster-autoscaler]を無効にしてから再度有効にします。
-
-### <a name="slow-disk-attachment-getazuredisklun-takes-10-to-15-minutes-and-you-receive-an-error"></a>低速のディスクの接続では、`GetAzureDiskLun` の実行に 10 分から 15 分かかり、エラーが発生します
-
-Kubernetes の **1.15.0 より古いバージョン** では、**WaitForAttach でディスクの LUN を見つけることができない** などのエラーが発生する場合があります。  この問題を回避するには、約 15 分間待機してから再試行します。
 
 
 ### <a name="why-do-upgrades-to-kubernetes-116-fail-when-using-node-labels-with-a-kubernetesio-prefix"></a>kubernetes.io プレフィックスでノード ラベルを使用すると、Kubernetes 1.16 へのアップグレードが失敗するのはなぜですか

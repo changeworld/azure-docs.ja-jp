@@ -38,12 +38,14 @@ items:
     items:
       - name: Purview Studio の使用
         href: use-purview-studio.md
-      - name: ベスト プラクティス
+      - name: ベスト プラクティスおよびガイドライン
         items:
           - name: デプロイのベスト プラクティス
             href: deployment-best-practices.md
           - name: コレクションのアーキテクチャ
             href: concept-best-practices-collections.md
+          - name: Purview の価格ガイドライン
+            href: concept-guidelines-pricing.md
       - name: Purview のアクセス許可
         href: catalog-permissions.md
       - name: データ マップ

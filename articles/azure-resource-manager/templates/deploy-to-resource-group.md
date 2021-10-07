@@ -2,14 +2,14 @@
 title: リソースをリソース グループにデプロイする
 description: Azure Resource Manager テンプレートでリソースをデプロイする方法について説明します。 複数のリソース グループを対象にする方法について説明します。
 ms.topic: conceptual
-ms.date: 09/14/2021
+ms.date: 10/01/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a2378baf84b5c86c16580304c994f012db51c3dc
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 818ace7b20ed1c4a21748c9c734da4bace100523
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128654149"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129390047"
 ---
 # <a name="resource-group-deployments-with-arm-templates"></a>ARM テンプレートを使用したリソース グループへのデプロイ
 
@@ -64,7 +64,7 @@ New-AzResourceGroupDeployment `
   -Name demoRGDeployment `
   -ResourceGroupName ExampleGroup `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.storage/storage-account-create/azuredeploy.json `
-  -storageAccountType Standard_GRS `
+  -storageAccountType Standard_GRS
 ```
 
 ---

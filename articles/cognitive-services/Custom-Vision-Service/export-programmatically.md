@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 06/28/2021
 ms.author: pafarley
-ms.openlocfilehash: 0a9a804c98dc40c34ec8747df9eee7705d25a99b
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: b67c4e6165b90a580a3a29583bdfe93a98d327c8
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114285530"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129361387"
 ---
 # <a name="export-a-model-programmatically"></a>プログラムを使用してモデルをエクスポートする
 
@@ -54,7 +54,7 @@ flavor = "ONNX10"
 export = trainer.export_iteration(project_id, iteration_id, platform, flavor, raw=False)
 ```
 
-詳細については、 **[export_iteration](/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.training.operations.customvisiontrainingclientoperationsmixin?view=azure-python#export-iteration-project-id--iteration-id--platform--flavor-none--custom-headers-none--raw-false----operation-config-)** メソッドを参照してください。
+詳細については、 **[export_iteration](/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.training.operations.customvisiontrainingclientoperationsmixin#export-iteration-project-id--iteration-id--platform--flavor-none--custom-headers-none--raw-false----operation-config-)** メソッドを参照してください。
 
 ## <a name="download-the-exported-model"></a>エクスポートしたモデルのダウンロード
 
@@ -73,7 +73,7 @@ while (export.status == "Exporting"):
     print("Export status is: ", export.status)
 ```
 
-詳細については、 **[get_exports](/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.training.operations.customvisiontrainingclientoperationsmixin?view=azure-python#get-exports-project-id--iteration-id--custom-headers-none--raw-false----operation-config-)** メソッドを参照してください。
+詳細については、 **[get_exports](/python/api/azure-cognitiveservices-vision-customvision/azure.cognitiveservices.vision.customvision.training.operations.customvisiontrainingclientoperationsmixin#get-exports-project-id--iteration-id--custom-headers-none--raw-false----operation-config-)** メソッドを参照してください。
 
 その後、プログラムによって、エクスポートされたモデルをデバイス上の場所にダウンロードできます。
 

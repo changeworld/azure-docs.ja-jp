@@ -9,17 +9,19 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/24/2021
-ms.openlocfilehash: 39c8ed3f8d8b11839964ac376ac35badd6546411
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.date: 09/10/2021
+ms.openlocfilehash: afdc363c53790f1710ee274d5430416e415059fd
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122824625"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129059950"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>マッピング データ フローでのシンク変換
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+[!INCLUDE[data-flow-preamble](includes/data-flow-preamble.md)]
 
 データの変換を完了したら、シンク変換を利用してそれを変換先ストアに書き込みます。 各データ フローには少なくとも 1 つのシンク変換が必要ですが、変換フローを完了するために必要な数だけのシンクに書き込むことができます。 追加のシンクに書き込むには、新しい分岐と条件分割によって新しいストリームを作成します。
 
@@ -35,7 +37,7 @@ ms.locfileid: "122824625"
 
 インライン データセットを使用するには、 **[シンクの種類]** セレクターで目的の形式を選択します。 シンク データセットを選択するのでなく、接続先にするリンクされたサービスを選択します。
 
-![インラインが選択されていることを示すスクリーンショット。](media/data-flow/inline-selector.png "インラインが選択されていることを示すスクリーンショット。")
+:::image type="content" source="media/data-flow/inline-selector.png" alt-text="インラインが選択されていることを示すスクリーンショット。":::
 
 ## <a name="workspace-db-synapse-workspaces-only"></a>ワークスペース DB (Synapse ワークスペースのみ)
 
@@ -44,7 +46,7 @@ Azure Synapse ワークスペースでデータ フローを使用する場合�
 > [!NOTE]
 > Azure Synapse ワークスペース DB コネクタは現在パブリック プレビュー段階にあり、現時点では Spark Lake データベースでのみ機能します
 
-![選択されたワークスペース DB を示すスクリーンショット。](media/data-flow/syms-sink.png "インラインが選択されていることを示すスクリーンショット。")
+:::image type="content" source="media/data-flow/syms-sink.png" alt-text="選択されたワークスペース DB を示すスクリーンショット。":::
 
 ##  <a name="supported-sink-types"></a><a name="supported-sinks"></a> サポートされているシンクの種類
 
@@ -76,11 +78,12 @@ Azure Synapse ワークスペースでデータ フローを使用する場合�
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4tf7T]
 
-![[シンク] の設定を示すスクリーンショット。](media/data-flow/sink-settings.png "[シンク] の設定を示すスクリーンショット。")
+:::image type="content" source="media/data-flow/sink-settings.png" alt-text="[シンク] の設定を示すスクリーンショット。":::
 
 **[スキーマの誤差]** : [[スキーマの誤差]](concepts-data-flow-schema-drift.md) は、データ フロー内の柔軟なスキーマをネイティブに処理するこのサービスの機能であり、列の変更を明示的に定義する必要はありません。 シンク データ スキーマで定義されている内容の上に追加の列を記述するには、 **[Allow schema drift]\(スキーマの誤差を許可する\)** を有効にします。
 
-**スキーマの検証**: [スキーマの検証] を選択すると、受信ソース スキーマの列がソース プロジェクション内で見つからない場合、またはデータ型が一致しない場合にデータ フローは失敗します。 この設定を使用して、ソース データが定義済みのプロジェクションのコントラクトを満たすように強制します。 これは、列の名前または型が変更されたことを通知する、データベース ソースのシナリオにおいて便利です。
+**[スキーマの検証]** : [スキーマの検証] を選択すると、シンク プロジェクションの列がシンク ストアで見つからない場合、またはデータ型が一致しない場合にデータ フローは失敗します。 この設定を使用して、シンク スキーマが定義済みのプロジェクションのコントラクトを満たすように強制できます。 これは、列の名前または型が変更されたことを通知する、データベース シンクのシナリオにおいて便利です。
+
 
 ## <a name="cache-sink"></a>キャッシュ シンク
 
@@ -90,11 +93,11 @@ Azure Synapse ワークスペースでデータ フローを使用する場合�
 
 キャッシュ シンクに書き込むには、シンク変換を追加し、シンクの種類として **[キャッシュ]** を選択します。 他のシンクの種類とは異なり、外部ストアに書き込むのではないため、データセットやリンクされたサービスを選択する必要はありません。 
 
-![キャッシュ シンクの選択](media/data-flow/select-cache-sink.png "キャッシュ シンクの選択")
+:::image type="content" source="media/data-flow/select-cache-sink.png" alt-text="キャッシュ シンクの選択":::
 
 シンクの設定で、必要に応じてキャッシュ シンクのキー列を指定できます。 これは、キャッシュ参照で `lookup()` 関数を使用する場合に、一致条件として使用されます。 キー列を指定する場合は、キャッシュ参照で `outputs()` 関数は使用できません。 キャッシュ参照構文の詳細については、[キャッシュされた参照](concepts-data-flow-expression-builder.md#cached-lookup)に関する記事を参照してください。
 
-![キャッシュ シンクのキー列](media/data-flow/cache-sink-key-columns.png "キャッシュ シンクのキー列")
+:::image type="content" source="media/data-flow/cache-sink-key-columns.png" alt-text="キャッシュ シンクのキー列":::
 
 たとえば、`cacheExample` というキャッシュ シンクに 1 つのキー列 `column1` を指定する場合、`cacheExample#lookup()` の呼び出しに、キャッシュ シンク内のどの行と照合するかを指定する 1 つのパラメーターを含めます。 この関数によって、マップされた各列のサブ列を含む 1 つの複合列が出力されます。
 
@@ -113,12 +116,12 @@ Azure Synapse ワークスペースでデータ フローを使用する場合�
 
 既定では、データが複数のシンクに書き込まれる順序は決まっていません。 変換ロジックが完了すると、実行エンジンによってデータは並列に書き込まれます。シンクの順序は実行ごとに異なる場合があります。 シンクの順序を正確に指定するには、データフローの **[全般]** タブで **[カスタム シンクの順序付け]** を有効にします。 有効にすると、シンクは昇順で連続して書き込まれます。
 
-![[カスタム シンクの順序付け] を示すスクリーンショット。](media/data-flow/custom-sink-ordering.png "[カスタム シンクの順序付け] を示すスクリーンショット。")
+:::image type="content" source="media/data-flow/custom-sink-ordering.png" alt-text="[カスタム シンクの順序付け] を示すスクリーンショット。":::
 
 > [!NOTE]
 > [キャッシュされた参照](./concepts-data-flow-expression-builder.md#cached-lookup)を使用する場合は、シンクの順序付けで、キャッシュされたシンクが順序付けの一番下 (または最初) である 1 に設定されるようにしてください。
 
-![カスタム シンクの順序付け](media/data-flow/cache-2.png "カスタム シンクの順序付け")
+:::image type="content" source="media/data-flow/cache-2.png" alt-text="カスタム シンクの順序付け":::
 
 ### <a name="sink-groups"></a>シンク グループ
 

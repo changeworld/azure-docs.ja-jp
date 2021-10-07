@@ -8,12 +8,13 @@ ms.author: bobazile
 ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 8b2468b13f7093129c137019d8ec7f60e4fd5e4f
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.subservice: pstn
+ms.openlocfilehash: 9d9b08435f0f3a114a726acc26582a44b32b97ff
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123258013"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129060974"
 ---
 # <a name="list-of-session-border-controllers-certified-for-azure-communication-services-direct-routing"></a>Azure Communication Services ダイレクト ルーティングの認定を受けたセッション ボーダー コントローラーの一覧
 このドキュメントには、Azure Communication Services ダイレクト ルーティングの認定を受けたセッション ボーダー コントローラーの一覧が含まれています。 また、既知の制限事項も含まれています。
@@ -37,8 +38,11 @@ Communication Services ダイレクト ルーティングの SBC 認定プログ
 
 |ベンダー|Product|ソフトウェア バージョン|
 |:--- |:--- |:--- 
-|AudioCodes|Mediant SBC|7.40A
+|[AudioCodes](https://www.audiocodes.com/media/lbjfezwn/mediant-sbc-with-microsoft-azure-communication-services.pdf)|Mediant SBC|7.40A
 |Metaswitch|Perimeta SBC|4.9|
+|[Oracle](https://www.oracle.com/technical-resources/documentation/acme-packet.html)|Oracle Acme Packet SBC|8.4|
+|リボン コミュニケーションズ|SBC SWe / SBC 5400 / SBC 7000|9.02|
+||SBC SWe Lite / SBC 1000 / SBC 2000|9.0
 
 メジャー バージョンに付与されている認定に注意してください。 つまり、SBC のファームウェアで、メジャー バージョンに続く任意の数字を持つファームウェアはサポートされます。
 

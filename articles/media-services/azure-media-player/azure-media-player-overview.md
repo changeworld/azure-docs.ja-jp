@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 04/05/2021
-ms.openlocfilehash: ec36f6bd19728d47b73a0186fb1fb192ba57f4cf
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: faf5bc8a96cb3781ed1d48e9d7f0d1fd7cbc386e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106449819"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128679581"
 ---
 # <a name="azure-media-player-overview"></a>Azure Media Player の概要 #
 
@@ -19,7 +19,7 @@ Azure Media Player は、さまざまなブラウザーやデバイス上で [Mi
 
 Microsoft Azure Media Services では、DASH、スムーズ ストリーミング、HLS ストリーミングなどの形式でコンテンツを提供して再生できます。 Azure Media Player はこれらの多用な形式を考慮し、プラットフォームやブラウザーの性能に基づいて最適なリンクを自動的に再生します。 また、Microsoft Azure Media Services では Common Encryption (PlayReady または Widevine) や AES-128 ビットエンベロープ暗号化を使用した資産の動的暗号化も可能です。 Azure Media Player では、コンテンツが適切に構成されていれば、PlayReady 暗号化や AES-128 ビットエンベロープ暗号化されたコンテンツの暗号化を解除できます。  プレーヤーの構成方法については、「[保護されたコンテンツ](azure-media-player-protected-content.md)」セクションを参照してください。
 
-新機能のリクエスト、アイデアの提供、またはフィードバックは、[Azure Media Player の UserVoice](https://aka.ms/ampuservoice) までお送りください。 特定の問題や質問がある場合、またはバグを発見した場合は、ampinfo@microsoft.com にご連絡ください。
+特定の問題や質問がある場合、またはバグを見つけた場合は、クライアントの再生カテゴリを使用して[サポート チケットを提出](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)してください。
 
 > [!NOTE]
 > Azure Media Player でサポートされるのは、Azure Media Services からのメディア ストリームのみであることに注意してください。

@@ -7,12 +7,13 @@ ms.author: baanders
 ms.date: 8/25/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: bfcaa516485b5ab1320db859f00a6f1709b7ef79
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 792ddf3f3ca57b16112de78a6ecf2c2d887494ef
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123224879"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129535850"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Azure Digital Twins のツイン モデルについて
 
@@ -114,7 +115,7 @@ Azure Digital Twins API からテレメトリ イベントを発行すること�
 
 ### <a name="schema"></a>スキーマ
 
-DTDL によると、**プロパティ** および **テレメトリ** 属性のスキーマは、標準プリミティブ型の `integer`、`double`、`string`、および `Boolean` と、`DateTime`、`Duration` などのその他の型にすることができます。 
+DTDL によると、**プロパティ** および **テレメトリ** 属性のスキーマは、標準プリミティブ型の `integer`、`double`、`string`、および `boolean` と、`dateTime`、`duration` などのその他の型にすることができます。 
 
 プリミティブ型のほか、プロパティおよびテレメトリ フィールドは、これらの[複合型](#complex-object-type-example)を含むことができます。
 * `Object`

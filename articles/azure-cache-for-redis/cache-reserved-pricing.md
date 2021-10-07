@@ -1,17 +1,17 @@
 ---
 title: 予約容量を使用したコンピューティングの前払い - Azure Cache for Redis
 description: 予約容量を使用した計算リソースの Azure Cache for RedisRedis を使用した前払い
-author: yegu-ms
-ms.author: yegu
+author: curib
+ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: 5967ec90974bb1a11e05200c2096a98b604d896c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: ce88d3e6916a2b8a802fe390ac256e00dfc29aec
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128606629"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129537653"
 ---
 # <a name="prepay-for-azure-cache-for-redis-compute-resources-with-reserved-capacity"></a>予約容量を使用した計算リソースの Azure Cache for RedisRedis を使用した前払い
 

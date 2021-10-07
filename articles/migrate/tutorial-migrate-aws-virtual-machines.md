@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: 2a8f8c4a1cda62c4267f7a0f38f4dc9f9654404f
-ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+ms.openlocfilehash: 6b4b15362d1fe2371f181fb4ee46c30e8237dea0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123272459"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128598111"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>アマゾン ウェブ サービス (AWS) の VM を検出して評価し、Azure に移行する
 
@@ -141,7 +141,7 @@ Azure Migrate: Server Migration では、レプリケーション アプライ�
 
 2. **[マシンの検出]**  >  **[マシンは仮想化されていますか?]** で、 **[非仮想化/その他]** をクリックします。
 3. **[ターゲット リージョン]** で、マシンの移行先にする Azure リージョンを選択します。
-4. **[移行先のリージョンが <リージョン名> であることを確認してください]** を選択します。
+4. **[移行先のリージョンが \<region-name\> であることを確認してください]** を選択します。
 5. **[リソースの作成]** をクリックします。 これで、Azure Site Recovery コンテナーがバックグラウンドで作成されます。
     - Azure Migrate Server Migration を使用した移行を既に設定してある場合は、リソースが以前に設定されているため、ターゲット オプションを構成できません。
     - このボタンのクリック後は、このプロジェクトのターゲット リージョンを変更することはできません。

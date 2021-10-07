@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 08/24/2021
-ms.openlocfilehash: 9bb3bdc7254fb3f9da62936df6429d8cba6b3bd5
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: f9dacea4d80591b6ec5b83ae93564cd8b03aff9c
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123450066"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129212458"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>クイック スタート:Azure portal で Azure Cognitive Search インデックスを作成する
 
@@ -200,7 +200,7 @@ Bing や Google 検索で行うように用語や語句を入力するか、完�
 
 + ファセットできるのは、フィルター可能なフィールドのみです。 結果として返されるのは、取得可能なフィールドのみです。
 
-+ *Rating* フィールドは倍精度浮動小数点数であり、グループ化は正確な値によります。 間隔によるグループ化 (たとえば、"三つ星評価"、"四つ星評価" など) について詳しくは、[Azure Cognitive Search でファセット ナビゲーションを実装する方法](./search-faceted-navigation.md#filter-based-on-a-range)に関するページを参照してください。
++ *Rating* フィールドは倍精度浮動小数点数であり、グループ化は正確な値によります。 間隔によるグループ化 (たとえば、"三つ星評価"、"四つ星評価" など) について詳しくは、[REST API の「クエリ パラメーター」](/rest/api/searchservice/search-documents#query-parameters)を参照してください。
 
 ### <a name="highlight-search-results"></a><a name="highlight-query"></a> 検索結果の強調表示
 

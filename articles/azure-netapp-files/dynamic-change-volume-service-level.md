@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 05/06/2021
 ms.author: b-juche
-ms.openlocfilehash: d75bd3580f66d7948d28b0d9ff34e247bc51c6b5
-ms.sourcegitcommit: 89c4843ec85d1baea248e81724781d55bed86417
+ms.openlocfilehash: 7c9704549c68dce72c16f0b5386cdb76edb5fe90
+ms.sourcegitcommit: f3f2ec7793ebeee19bd9ffc3004725fb33eb4b3f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108795026"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129407002"
 ---
 # <a name="dynamically-change-the-service-level-of-a-volume"></a>ボリュームのサービス レベルを動的に変更する
 
@@ -73,5 +73,5 @@ ms.locfileid: "108795026"
 ## <a name="next-steps"></a>次のステップ  
 
 * [Azure NetApp Files のサービス レベル](azure-netapp-files-service-levels.md)
-* [容量プールを設定する](azure-netapp-files-set-up-capacity-pool.md)
+* [容量プールの作成](azure-netapp-files-set-up-capacity-pool.md)
 * [ボリュームの容量プールの変更に関する問題のトラブルシューティング](troubleshoot-capacity-pools.md#issues-when-changing-the-capacity-pool-of-a-volume)

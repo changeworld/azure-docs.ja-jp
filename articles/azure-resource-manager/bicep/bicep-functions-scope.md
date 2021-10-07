@@ -2,22 +2,17 @@
 title: Bicep の関数 - scopes
 description: デプロイのスコープに関する値を取得するために、Bicep ファイル内で使用する関数について説明します。
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: 2bf09aef4e3b59f6718a96c6ce2650d508872106
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.date: 09/10/2021
+ms.openlocfilehash: 4432aa528dbdd565128a15eb79d4b4c01572c924
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111027097"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124827441"
 ---
 # <a name="scope-functions-for-bicep"></a>Bicep の Scope 関数
 
-Resource Manager には、お使いの Bicep ファイル内に、スコープ値を取得するための次の関数が用意されています。
-
-* [managementGroup](#managementgroup)
-* [resourceGroup](#resourcegroup)
-* [subscription](#subscription)
-* [tenant](#tenant)
+この記事では、スコープの値を取得するための Bicep 関数について説明します。
 
 ## <a name="managementgroup"></a>managementGroup
 
@@ -35,7 +30,7 @@ Resource Manager には、お使いの Bicep ファイル内に、スコープ�
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 型 | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | name |いいえ |string |デプロイ先の管理グループの一意識別子。 管理グループの表示名は使用しないでください。 値を指定しない場合は、現在の管理グループが返されます。 |
 
@@ -80,7 +75,7 @@ resourceGroup 関数には、2 つの異なる用途があります。 1 つは�
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 型 | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | resourceGroupName |いいえ |string | デプロイ先のリソース グループの名前。 値を指定しない場合は、現在のリソース グループが返されます。 |
 | subscriptionId |いいえ |string |デプロイ先のサブスクリプションの一意識別子。 値を指定しない場合は、現在のサブスクリプションが返されます。 |
@@ -171,7 +166,7 @@ subscription 関数には、2 つの異なる用途があります。 1 つは�
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 型 | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |いいえ |string |デプロイ先のサブスクリプションの一意識別子。 値を指定しない場合は、現在のサブスクリプションが返されます。 |
 

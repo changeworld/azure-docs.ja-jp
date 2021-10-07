@@ -1,17 +1,17 @@
 ---
 title: Redis クラスタリングの構成 - Premium Azure Cache for Redis
 description: Premium レベルの Azure Cache for Redis インスタンス用に Redis を作成して管理する方法について説明します
-author: yegu-ms
-ms.author: yegu
+author: curib
+ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.openlocfilehash: c4812bb6b352ad57fa07ad766329644ef6af9c57
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: be90a868ca4ef738f0275b06fb49abec761c7a0c
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122323576"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129538173"
 ---
 # <a name="configure-redis-clustering-for-a-premium-azure-cache-for-redis-instance"></a>Premium Azure Cache for Redis インスタンス用の Redis クラスタリングを構成する
 

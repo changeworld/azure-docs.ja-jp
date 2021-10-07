@@ -1,23 +1,20 @@
 ---
-title: データ ソースの準備状況を大規模に確認する (プレビュー)
+title: データ ソースの準備状況を大規模に確認する
 description: このチュートリアルでは、Azure データ ソースを Azure Purview に登録してスキャンする前に、その準備状況を確認します。
 author: zeinam
 ms.author: zeinam
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: tutorial
-ms.date: 05/28/2021
-ms.openlocfilehash: d7dc8ab7987f149747df30834f426ce6d119eb5c
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.date: 09/27/2021
+ms.openlocfilehash: 1eaca951a5abe43bda2621043321537cee2daa13
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113105923"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129213415"
 ---
-# <a name="tutorial-check-data-source-readiness-at-scale-preview"></a>チュートリアル: データ ソースの準備状況を大規模に確認する (プレビュー)
-
-> [!IMPORTANT]
-> Azure Purview は現在プレビュー段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、[Microsoft Azure プレビューの追加利用規約](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に記載されています。
+# <a name="tutorial-check-data-source-readiness-at-scale"></a>チュートリアル: データ ソースの準備状況を大規模に確認する
 
 データ ソースをスキャンするには、Azure Purview がそれらにアクセスする必要があります。 このアクセス権を取得するために、資格情報が使用されます。 "*資格情報*" は、Azure Purview で、登録済みのデータ ソースに対する認証に使用できる認証情報です。 Azure Purview の資格情報を設定するには、次のようないくつかの方法があります。 
 - Azure Purview アカウントに割り当てられたマネージド ID。
@@ -54,10 +51,10 @@ Azure Purview アカウントをデプロイした後、Azure データ ソー�
 
 |列名|説明|例|
 |----|----|----|
-|`SubscriptionId`|データ ソースに対応する Azure サブスクリプション ID。|12345678-aaaa-bbbb-cccc-1234567890ab|
+|`SubscriptionId`|データ ソースの Azure サブスクリプション ID。|12345678-aaaa-bbbb-cccc-1234567890ab|
 |`KeyVaultName`|データ ソース サブスクリプションにデプロイされている既存のキー コンテナーの名前。|ContosoDevKeyVault|
-|`SecretNameSQLUserName`|Azure AD 認証を使用して Azure Synapse、Azure SQL Database、または Azure SQL Managed Instance にサインインできる Azure Active Directory (Azure AD) ユーザーの名前を含む既存の Azure Key Vault シークレットの名前。|ContosoDevSQLAdmin|
-|`SecretNameSQLPassword`|Azure AD 認証を使用して Azure Synapse、Azure SQL Database、または Azure SQL Managed Instance にサインインできる Azure AD ユーザーのパスワードを含む既存の Azure Key Vault シークレットの名前。|ContosoDevSQLPassword|
+|`SecretNameSQLUserName`|Azure AD 認証を使用して Azure Synapse、Azure SQL Database、または Azure SQL Managed Instance にサインインできる Azure Active Directory (Azure AD) ユーザー名を含む既存の Azure Key Vault シークレットの名前。|ContosoDevSQLAdmin|
+|`SecretNameSQLPassword`|Azure AD 認証を使用して Azure Synapse、Azure SQL Database、または Azure SQL Managed Instance にサインインできる Azure AD ユーザー パスワードを含む既存の Azure Key Vault シークレットの名前。|ContosoDevSQLPassword|
    
 
 **サンプル .csv ファイル:**
@@ -75,9 +72,9 @@ Azure Purview アカウントをデプロイした後、Azure データ ソー�
 
 1. [Azure Purview データ ソースの準備状況チェックリスト](https://github.com/Azure/Purview-Samples/tree/master/Data-Source-Readiness) スクリプトを任意の場所にダウンロードします。
 
-2. ご使用のコンピューターで、Windows タスク バーの検索ボックスに「**PowerShell**」と入力します。 検索リストで **[Windows PowerShell]** を右クリックし、 **[管理者として実行]** を選択します。
+2. ご使用のコンピューターで、Windows タスク バーの検索ボックスに「**PowerShell**」と入力します。 検索一覧で、 **[Windows PowerShell]** を選択したまま (または、右クリックして) **[管理者として実行]** を選択します。
 
-3. PowerShell ウィンドウで、次のコマンドを実行します (`<path-to-script>` は、抽出したスクリプト ファイルがあるフォルダーのパスに置き換えてください)。
+3. PowerShell ウィンドウに、次のコマンドを入力します。 (`<path-to-script>` は、抽出したスクリプト ファイルがあるフォルダーのパスに置き換えてください)。
 
    ```powershell
    dir -Path <path-to-script> | Unblock-File
@@ -88,20 +85,20 @@ Azure Purview アカウントをデプロイした後、Azure データ ソー�
    ```powershell
    Install-Module -Name Az -AllowClobber -Scope CurrentUser
    ```
-6. "*続行するには NuGet プロバイダーが必要です*" というプロンプトが表示された場合は、「**Y**」と入力し、**Enter** キーを押します。
+6. *[続行するには NuGet プロバイダーが必要です]* というプロンプトが表示された場合は、 **[Y]** と入力し、**Enter** を押します。
 
-7. "*信頼されていないリポジトリ*" というプロンプトが表示された場合は、「**A**」と入力し、**Enter** キーを押します。
+7. *[信頼されていないリポジトリ]* というプロンプトが表示された場合は、 **[A]** と入力し、**Enter** を押します。
 
-5. 前の手順を繰り返して、`Az.Synapse` モジュールと `AzureAD` モジュールをインストールします。
+5. 前の手順を繰り返して、`Az.Synapse` と `AzureAD` モジュールをインストールします。
 
 PowerShell によって必要なモジュールがインストールされるまでに 1 分ほどかかる場合があります。
 
 
 ## <a name="collect-other-data-needed-to-run-the-script"></a>スクリプトの実行に必要なその他のデータを収集する
 
-データ ソース サブスクリプションの準備状況を確認するための PowerShell スクリプトを実行する前に、スクリプトで使用する次の引数の値を取得します。
+PowerShell スクリプトを実行してデータ ソース サブスクリプションの準備状況を確認する前に、スクリプトで使用する次の引数の値を取得します。
 
-- `AzureDataType`: データソースの種類として次のオプションのいずれかを選択して、全サブスクリプションを対象に、その種類のデータの準備状況を確認します。 
+- `AzureDataType`: データソースの種類として次のオプションのいずれかを選択して、サブスクリプション全体でのそのデータ型の準備状況を確認します。 
     
     - `BlobStorage`
 
@@ -136,15 +133,15 @@ PowerShell によって必要なモジュールがインストールされるま
 
 ## <a name="run-the-client-side-readiness-script"></a>クライアント側で準備状況スクリプトを実行する
 
-これらの手順を実行して、スクリプトを実行します。
+次の手順を実行して、スクリプトを実行します。
 
-1. 次のコマンドを使用して、スクリプトのフォルダーに移動します。 `<path-to-script>` は、抽出したファイルがあるフォルダーのパスに置き換えてください。
+1. 次のコマンドを使用して、スクリプトのフォルダーにアクセスします。 `<path-to-script>` は、抽出したファイルがあるフォルダーのパスに置き換えてください。
 
    ```powershell
    cd <path-to-script>
    ```
 
-2. 次のコマンドを実行して、ローカル コンピューターの実行ポリシーを設定します。 実行ポリシーを変更するように求められたら、 *[すべてはい]* を示す「**A**」を入力します。
+2. 次のコマンドを実行して、ローカル コンピューターの実行ポリシーを設定します。 実行ポリシーを変更するように求められたら、 *[すべてはい]* を示す **[A]** を入力します。
 
    ```powershell
    Set-ExecutionPolicy -ExecutionPolicy Unrestricted
@@ -166,9 +163,9 @@ PowerShell によって必要なモジュールがインストールされるま
 
 ## <a name="more-information"></a>説明を見る
 
-### <a name="what-data-sources-are-supported-by-the-script"></a>スクリプトではどのようなデータ ソースがサポートされていますか?
+### <a name="what-data-sources-are-supported-by-the-script"></a>どのようなデータ ソースがスクリプトでサポートされていますか?
 
-現在、スクリプトでは次のデータ ソースがサポートされています。
+現在、次のデータ ソースがスクリプトでサポートされています。
 
 - Azure Blob Storage (BlobStorage)
 - Azure Data Lake Storage Gen2 (ADLSGen2)
@@ -202,7 +199,7 @@ PowerShell によって必要なモジュールがインストールされるま
 
 #### <a name="azure-sql-database-azuresqldb"></a>Azure SQL Database (AzureSQLDB)
 
-- SQL Server インスタンス:
+- SQL Server インスタンス
   - ネットワーク。 パブリック エンドポイントまたはプライベート エンドポイントが有効になっているかどうかを確認します。
   - ファイアウォール。 **[Azure サービスおよびリソースにこのサーバーへのアクセスを許可する]** が有効になっているかどうかを確認します。
   - Azure AD の管理。 Azure SQL Server で Azure AD 認証が使用されているかどうかを確認します。

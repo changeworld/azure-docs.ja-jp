@@ -1,19 +1,19 @@
 ---
-title: 'チュートリアル: GitHub Actions を使用して App Service for Containers にデプロイし、データベースに接続する'
+title: 'チュートリアル: GitHub Actions を使用して App Service カスタム コンテナーにデプロイし、データベースに接続する'
 description: GitHub Actions を使用して ASP.NET Core アプリを Azure と Azure SQL Database にデプロイする方法について説明します
 ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 04/22/2021
 ms.author: jukullam
 ms.custom: github-actions-azure
-ms.openlocfilehash: f8048dab26451fea85b52caa3ffdc27d7e0a677a
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 24001d71721f2e3ee243248705ed8d4b64571c83
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111894148"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128675404"
 ---
-# <a name="tutorial-use-github-actions-to-deploy-to-app-service-for-containers-and-connect-to-a-database"></a>チュートリアル: GitHub Actions を使用して App Service for Containers にデプロイし、データベースに接続する
+# <a name="tutorial-use-github-actions-to-deploy-to-an-app-service-custom-container-and-connect-to-a-database"></a>チュートリアル: GitHub Actions を使用して App Service カスタム コンテナーにデプロイし、データベースに接続する
 
 このチュートリアルでは、GitHub Actions ワークフローを設定して、[Azure SQL Database](../azure-sql/database/sql-database-paas-overview.md) バックエンドでコンテナー化された ASP.NET Core アプリケーションをデプロイする手順について説明します。 これが完了すると、ASP.NET アプリは Azure 内で実行され、SQL Database に接続された状態になります。 まず、[ARM テンプレート](../azure-resource-manager/templates/overview.md) の GitHub Actions ワークフローを使用して Azure リソースを作成します。
 

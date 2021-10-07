@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 07/05/2021
 ms.author: jianleishen
-ms.openlocfilehash: ed91fcaf566e31df2a1c9b57178c2e60d9206ad5
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: dd7a38070b13cb762bc22e954c47703ef5366b84
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122637722"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124805483"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-database-in-azure-sql-database-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Blob Storage から Azure SQL Database のデータベースにデータをコピーする
 
@@ -111,13 +111,13 @@ ms.locfileid: "122637722"
 
 1. ホーム ページで **[調整]** を選択します。
 
-   ![ADF のホーム ページを示すスクリーンショット。](./media/doc-common-process/get-started-page.png)
+   :::image type="content" source="./media/doc-common-process/get-started-page.png" alt-text="ADF のホーム ページを示すスクリーンショット。":::
 
-1. [全般] パネルの **[プロパティ]** の下で、 **[名前]** に **CopyPipeline** を指定します。 次に、右上隅にある [プロパティ] アイコンをクリックしてパネルを折りたたみます。
+1. [全般] パネルの **[プロパティ]** 下で、 **[名前]** に **CopyPipeline** を指定します。 次に、右上隅にある [プロパティ] アイコンをクリックしてパネルを折りたたみます。
 
 1. **[アクティビティ]** ツール ボックスで **[Move and Transform]\(移動と変換\)** カテゴリを展開し、ツール ボックスからパイプライン デザイナー画面に **[データのコピー]** アクティビティをドラッグ アンド ドロップします。 **[名前]** に「**CopyFromBlobToSql**」と指定します。
 
-    ![コピー アクティビティ](./media/tutorial-copy-data-portal/drag-drop-copy-activity.png)
+    :::image type="content" source="./media/tutorial-copy-data-portal/drag-drop-copy-activity.png" alt-text="コピー アクティビティ":::
 
 ### <a name="configure-source"></a>ソースの構成
 
@@ -141,7 +141,7 @@ ms.locfileid: "122637722"
 
 1. **[OK]** を選択します。 自動的にパイプライン ページに移動します。 **[ソース]** タブで、 **[SourceBlobDataset]** が選択されていることを確認します。 このページのデータをプレビューするには、 **[データのプレビュー]** を選択します。
 
-    ![ソース データセット](./media/tutorial-copy-data-portal/source-dataset-selected.png)
+    :::image type="content" source="./media/tutorial-copy-data-portal/source-dataset-selected.png" alt-text="ソース データセット":::
 
 ### <a name="configure-sink"></a>シンクの構成
 >[!TIP]
@@ -170,13 +170,13 @@ ms.locfileid: "122637722"
 
     g. **[作成]** を選択して、リンクされたサービスをデプロイします。
 
-    ![新しいリンクされたサービスの保存](./media/tutorial-copy-data-portal/new-azure-sql-linked-service-window.png)
+    :::image type="content" source="./media/tutorial-copy-data-portal/new-azure-sql-linked-service-window.png" alt-text="新しいリンクされたサービスの保存":::
 
 1. **[プロパティの設定]** ダイアログ ボックスに自動的に移動します。 **[テーブル]** で **[dbo].[emp]** を選択します。 **[OK]** をクリックします。
 
 1. パイプラインがあるタブに移動し、 **[Sink Dataset]\(シンク データセット\)** で **OutputSqlDataset** が選択されていることを確認します。
 
-    ![パイプラインのタブ](./media/tutorial-copy-data-portal/pipeline-tab-2.png)       
+    :::image type="content" source="./media/tutorial-copy-data-portal/pipeline-tab-2.png" alt-text="パイプラインのタブ":::       
 
 必要に応じて「[コピー アクティビティでのスキーマ マッピング](copy-activity-schema-and-type-mapping.md)」に従い、コピー元のスキーマをコピー先の対応するスキーマにマッピングすることができます。
 
@@ -201,11 +201,11 @@ Data Factory または独自の Azure Repos Git リポジトリにアーティ�
 
 1. 左側の **[監視]** タブに移動します。 手動トリガーによってトリガーされたパイプラインの実行が表示されます。 **[パイプライン名]** 列のリンクを使用して、アクティビティの詳細を表示したりパイプラインを再実行したりできます。
 
-    [![パイプラインの実行を監視する](./media/tutorial-copy-data-portal/monitor-pipeline-inline-and-expended.png)](./media/tutorial-copy-data-portal/monitor-pipeline-inline-and-expended.png#lightbox)
+    [:::image type="content" source="./media/tutorial-copy-data-portal/monitor-pipeline-inline-and-expended.png#lightbox" alt-text="パイプラインの実行の監視](./media/tutorial-copy-data-portal/monitor-pipeline-inline-and-expended.png)":::
 
 1. パイプラインの実行に関連付けられているアクティビティの実行を表示するには、 **[パイプライン名]** 列の **[CopyPipeline]** リンクを選択します。 この例では、アクティビティが 1 つだけなので、一覧に表示されるエントリは 1 つのみです。 コピー操作の詳細を確認するには、 **[ACTIVITY NAME]\(アクティビティ名\)** 列の **[詳細]** リンク (眼鏡アイコン) を選択します。 再度パイプラインの実行ビューに移動するには、一番上にある **[すべてのパイプラインの実行]** を選択します。 表示を更新するには、 **[最新の情報に更新]** を選択します。
 
-    [![アクティビティの実行を監視する](./media/tutorial-copy-data-portal/view-activity-runs-inline-and-expended.png)](./media/tutorial-copy-data-portal/view-activity-runs-inline-and-expended.png#lightbox)
+    [:::image type="content" source="./media/tutorial-copy-data-portal/view-activity-runs-inline-and-expended.png#lightbox" alt-text="アクティビティの実行の監視](./media/tutorial-copy-data-portal/view-activity-runs-inline-and-expended.png)":::
 
 1. データベースの **emp** テーブルに 2 つの行が追加されていることを確認します。
 
@@ -243,7 +243,7 @@ Data Factory または独自の Azure Repos Git リポジトリにアーティ�
 
 1. 左側の **[モニター]** タブに移動して、トリガーされたパイプラインの実行を確認します。
 
-    [![トリガーされたパイプラインの実行](./media/tutorial-copy-data-portal/triggered-pipeline-runs-inline-and-expended.png)](./media/tutorial-copy-data-portal/triggered-pipeline-runs-inline-and-expended.png#lightbox)
+    [:::image type="content" source="./media/tutorial-copy-data-portal/triggered-pipeline-runs-inline-and-expended.png#lightbox" alt-text="トリガーされたパイプラインの実行](./media/tutorial-copy-data-portal/triggered-pipeline-runs-inline-and-expended.png)":::
 
 1. **パイプラインの実行** ビューから **トリガーの実行** ビューに切り替えるには、ウィンドウの左側の **[Trigger Runs]\(トリガーの実行\)** を選択します。
 

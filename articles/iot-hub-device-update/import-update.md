@@ -6,12 +6,12 @@ ms.author: andbrown
 ms.date: 4/19/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 790d363a3bd0e961b184cc2511c39833f0eac3d7
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: f616fee894c1eb436770cdafbab7b60d7a1417db
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122253978"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129537134"
 ---
 # <a name="add-an-update-to-device-update-for-iot-hub"></a>Device Update for IoT Hub に更新プログラムを追加する
 新しい更新プログラムを Device Update for IoT Hub に追加する方法について説明します。
@@ -162,18 +162,15 @@ OEM またはソリューション インテグレーターからデバイスを
 
    :::image type="content" source="media/import-update/update-ready.png" alt-text="ジョブの状態" lightbox="media/import-update/update-ready.png":::
 
-## <a name="if-youre-importing-via-apis-instead"></a>代わりに API を使用してインポートしている場合
-
-上記の手順に従い、Azure portal を使用してインポートが完了している場合は、下の [次の手順] に進んでください。
-
-Azure portal 経由でインポートするのではなく、[Device Update for IoT Hub の更新 API](/rest/api/deviceupdate/updates) を使用して更新プログラムをインポートする場合は、次の点にご注意ください。
-  - 更新 API を呼び出す前に、更新プログラム ファイルを Azure Blob Storage の場所にアップロードする必要があります。
-  - 先ほど作成したインポート マニフェストを使用する、この[サンプル API 呼び出し](import-schema.md#example-import-request-body)を参照できます。
-  - テスト中に同じ SAS URL を再利用すると、トークンの有効期限が切れたときにエラーが発生することがあります。 これは、更新プログラムのコンテンツ自体だけでなくインポート マニフェストも送信する場合に当てはまります。
-
-
 ## <a name="next-steps"></a>次の手順
 
 [グループを作成する](create-update-group.md)
 
 [インポートの概念について学習する](import-concepts.md)
+
+## <a name="if-youre-importing-via-apis-instead"></a>代わりに API を使用してインポートしている場合
+
+Azure portal 経由でインポートするのではなく、[Device Update for IoT Hub の更新 API](/rest/api/deviceupdate/updates) を使用して更新プログラムをインポートする場合は、次の点にご注意ください。
+  - 更新 API を呼び出す前に、更新プログラム ファイルを Azure Blob Storage の場所にアップロードする必要があります。
+  - 先ほど作成したインポート マニフェストを使用する、この[サンプル API 呼び出し](import-schema.md#example-import-request-body)を参照できます。
+  - テスト中に同じ SAS URL を再利用すると、トークンの有効期限が切れたときにエラーが発生することがあります。 これは、更新プログラムのコンテンツ自体だけでなくインポート マニフェストも送信する場合に当てはまります。
