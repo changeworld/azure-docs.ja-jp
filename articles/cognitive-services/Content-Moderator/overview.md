@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: overview
-ms.date: 04/16/2021
+ms.date: 09/29/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: コンテンツ モデレーター, azure コンテンツ モデレーター, オンライン モデレーター, コンテンツ フィルター ソフトウェア, コンテンツ モデレーション サービス, コンテンツ モデレーション
-ms.openlocfilehash: 931b57b35cfca94b35a2b5c267d4469d5ca5ec07
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: ed674cd293681fd34d6ff53d25e136863f88ee6a
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112031711"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129356695"
 ---
 # <a name="what-is-azure-content-moderator"></a>Azure Content Moderator とは
 

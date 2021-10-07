@@ -6,14 +6,14 @@ ms.service: virtual-machines
 ms.collection: linux
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 04/30/2021
+ms.date: 09/03/2021
 ms.author: cynthn
-ms.openlocfilehash: e5ceb8e4db1d2b94d746303a2185bea2015467a0
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 324373fc56ae1a57adfb522ca77f06f2c080074c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122691013"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124776521"
 ---
 # <a name="time-sync-for-linux-vms-in-azure"></a>Azure での Linux VM の時刻同期
 
@@ -112,17 +112,12 @@ cat /sys/class/ptp/ptp0/clock_name
 Ubuntu 19.10 以降のバージョン、Red Hat Enterprise Linux、および CentOS 8.x では、PTP ソース クロックを使用するように [chrony](https://chrony.tuxfamily.org/) が構成されています。 以前の Linux リリースでは、chrony ではなく、PTP ソースがサポートされない ntpd (Network Time Protocol Daemon) が使用されています。 これらのリリースで PTP を有効にするには、chrony.conf で次のステートメントを使用して chrony を手動でインストールして構成する必要があります。
 
 ```bash
-refclock PHC /dev/ptp0 poll 3 dpoll -2 offset 0
+refclock PHC /dev/ptp0 poll 3 dpoll -2 offset 0 stratum 2
 ```
-前述のように、/dev/ptp_hyperv シンボリックリンクが使用可能な場合は、 /dev/ptp0 の代わりに使用して、Mellanox mlx5 ドライバーによって作成された /dev/ptp デバイスとの混同を避けてください。
 
-Ubuntu および NTP の詳細については、[時刻同期](https://ubuntu.com/server/docs/network-ntp)に関するページを参照してください。
+/dev/ptp_hyperv シンボリックリンクが使用可能な場合は、/dev/ptp0 の代わりに使用して、Mellanox mlx5 ドライバーによって作成された /dev/ptp デバイスとの混同を避けてください。
 
-Red Hat および NTP の詳細については、[NTP の構成](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-configuring_ntp_using_ntpd#s1-Configure_NTP)に関するページを参照してください。 
-
-chrony の詳細については、[chrony の使用](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-configuring_ntp_using_the_chrony_suite#sect-Using_chrony)に関するページを参照してください。
-
-chrony および VMICTimeSync ソースの両方が同時に有効になっている場合は、一方を **優先** としてマークし、もう一方のソースをバックアップとして設定することができます。 NTP サービスでは、長時間の経過後を除き、大きなスキューが発生した場合にクロックが更新されないため、VMICTimeSync によって、NTP ベースのツールを単独で使用する場合よりはるかに早く一時停止した VM イベントからクロックが回復されます。
+階層情報は、Azure ホストから Linux ゲストに自動的には伝達されません。 前の構成行では、Azure ホスト タイム ソースが階層 2 として扱われることを指定しています。これで、Linux ゲストではそれ自体を階層 3 として報告します。 Linux ゲストでそれ自体を異なる方法で報告するように必要がある場合は、構成行の階層設定を変更できます。
 
 既定では、chronyd は、時間の誤差を修正するために、システム クロックを加速または減速します。 誤差が大きすぎる場合、chrony は誤差の修正に失敗します。 これを解決するために、 **/etc/chrony.conf** の `makestep` パラメーターを変更して、誤差が、指定されたしきい値を超えた場合に時刻同期を強制的に適用することができます。
 
@@ -135,6 +130,12 @@ makestep 1.0 -1
 ```bash
 systemctl restart chronyd
 ```
+
+Ubuntu および NTP の詳細については、[時刻同期](https://ubuntu.com/server/docs/network-ntp)に関するページを参照してください。
+
+Red Hat および NTP の詳細については、[NTP の構成](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-configuring_ntp_using_ntpd#s1-Configure_NTP)に関するページを参照してください。 
+
+chrony の詳細については、[chrony の使用](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-configuring_ntp_using_the_chrony_suite#sect-Using_chrony)に関するページを参照してください。
 
 ### <a name="systemd"></a>systemd 
 

@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 06/30/2021
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 58e7357552be9c209dec81cc9ace23fcfd82ea2d
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 146a3a252a0f8105245c2a6826876e1400efdc13
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114467136"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124766988"
 ---
 # <a name="tutorial-create-an-azure-database-for-postgresql---flexible-server-with-app-services-web-app-in-virtual-network"></a>チュートリアル:仮想ネットワークに Azure Database for PostgreSQL - フレキシブル サーバーと App Service Web アプリを作成する
 
@@ -96,8 +96,8 @@ az webapp up --resource-group demoresourcegroup --location westus2 --plan testap
 ```
 
 > [!NOTE]
-> - --location 引数には、前のセクションでデータベースに使用したのと同じ場所を使用します。
-> - <app-name> は、すべての Azure で一意の名前に置き換えます。 <app-name> に使用できる有効な文字は A から Z、0 から 9、および - です。 会社名とアプリ識別子を組み合わせて使用すると、適切なパターンになります。
+> - _--location_ 引数には、前のセクションでデータベースに使用したのと同じ場所を使用します。
+> - \<app-name\> は、すべての Azure で一意の名前に置き換えます。 \<app-name\> に使用できる文字は A から Z、0 から 9、および - です。 会社名とアプリ識別子を組み合わせて使用すると、適切なパターンになります。
 
 このコマンドによって次の操作が実行されます。これには数分かかる場合があります。
 
@@ -135,7 +135,7 @@ az webapp vnet-integration add --resource-group demoresourcegroup -n  mywebapp -
 az webapp config appsettings set  --name mywebapp --settings DBHOST="<postgres-server-name>.postgres.database.azure.com" DBNAME="postgres" DBUSER="<username>" DBPASS="<password>" 
 ```
 - 新しく作成されるフレキシブル サーバー コマンドに合わせて、**postgres-server-name**、**username**、**password** を置き換えます。
-- **<username>** と **<password>** も、そのコマンドで生成された資格情報に置き換えます。
+- **\<username\>** と **\<password\>** も、そのコマンドで生成された資格情報に置き換えます。
 - リソース グループとアプリ名は、 .azure/config ファイル内のキャッシュされた値から取得されます。
 - コマンドによって、**DBHOST**、**DBNAME**、**DBUSER** _、_*DBPASS** という名前の設定が作成されます。 アプリケーション コードでデータベース情報に別の名前を使用している場合は、コードで使用されている名前をアプリ設定で使用します。
 

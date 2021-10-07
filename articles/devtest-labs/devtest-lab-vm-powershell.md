@@ -1,15 +1,15 @@
 ---
-title: Azure PowerShell を使用して DevTest Labs で仮想マシンを作成する
+title: Azure PowerShell を使用して Azure DevTest Labs で仮想マシンを作成する
 description: Azure DevTest Labs で Azure PowerShell を使用して仮想マシンを作成および管理する方法を説明します。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f5be9c6e11bb5037c3dbecfa256ba6a6b8058805
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 128962ae54ef5dbbcc9578cb5dbff9d1531336ea
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110703728"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128600591"
 ---
 # <a name="create-a-virtual-machine-with-devtest-labs-using-azure-powershell"></a>Azure PowerShell を使用して DevTest Labs で仮想マシンを作成する
 この記事では、Azure PowerShell を使用して Azure DevTest Labs で仮想マシンを作成する方法について説明します。 PowerShell スクリプトを使用して、Azure DevTest Labs のラボで仮想マシンの作成を自動化できます。 

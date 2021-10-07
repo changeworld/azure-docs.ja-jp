@@ -1,14 +1,14 @@
 ---
 title: Palo Alto を Azure Defender for IoT と統合する
 description: Defender for IoT は、その継続的な ICS 脅威監視プラットフォームが Palo Alto の次世代ファイアウォールと統合され、重大な脅威をより迅速かつ効率的にブロックできるようになりました。
-ms.date: 09/29/2021
+ms.date: 09/26/2021
 ms.topic: tutorial
-ms.openlocfilehash: ca6160920a19fc653132d6fdc8cccd878da7cee5
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 6579c69d5ab789c97972a81f00dc56d19ce1f9f8
+ms.sourcegitcommit: 149815030568fb4d4dd2e2025a18dc64fc190d07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129236798"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129062048"
 ---
 # <a name="tutorial-integrate-palo-alto-with-azure-defender-for-iot"></a>チュートリアル: Palo Alto を Azure Defender for IoT と統合する
 
@@ -22,7 +22,7 @@ Defender for IoT は、その継続的な ICS 脅威監視プラットフォー�
 
 - ブロックに関する推奨事項を中央管理システムに送信する: Defender for IoT と Panorama の統合。
 
-このチュートリアルでは、以下の内容を学習します。
+このチュートリアルでは、次の作業を行う方法について説明します。
 
 > [!div class="checklist"]
 > - 指定された Palo Alto ファイアウォールによる即時ブロックを構成する
@@ -69,7 +69,7 @@ Defender for IoT では、重大な脅威を識別するときに、感染した
 
     :::image type="content" source="media/tutorial-palo-alto/edit.png" alt-text="転送ルールの編集画面のスクリーンショット。":::
 
-1. <bpt id="p1">**</bpt>[Submit]\(送信\)<ept id="p1">**</ept> をクリックします。
+1. **[送信]** を選択します。
 
 その後、疑わしいソースをブロックする必要があります。
 
@@ -184,7 +184,7 @@ DNS 設定が正しいことを確認するには、 **[参照テスト]** を�
 
     :::image type="content" source="media/tutorial-palo-alto/details.png" alt-text="アクションの選択画面のスクリーンショット。":::
 
-1. <bpt id="p1">**</bpt>[Submit]\(送信\)<ept id="p1">**</ept> をクリックします。
+1. **[送信]** を選択します。
 
 その後、疑わしいソースをブロックする必要があります。
 

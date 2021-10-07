@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/27/2021
+ms.date: 08/31/2021
 ms.author: jeedes
-ms.openlocfilehash: 2c711188343be5ee52e1bac217f8b31dc6756d3d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 45ec57871be8160c2bfde34c20137bd6c7afd6c7
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101654393"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124738596"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-olfeo-saas"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Olfeo SAAS の統合
 
@@ -37,7 +37,9 @@ ms.locfileid: "101654393"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Olfeo SAAS では、**SP** Initiated SSO がサポートされます
+* Olfeo SAAS では、**SP** Initiated SSO がサポートされます。
+
+* Olfeo SAAS では、[自動化されたユーザー プロビジョニング](olfeo-saas-provisioning-tutorial.md)がサポートされます。
 
 ## <a name="adding-olfeo-saas-from-the-gallery"></a>ギャラリーからの Olfeo SAAS の追加
 
@@ -49,7 +51,6 @@ Azure AD への Olfeo SAAS の統合を構成するには、ギャラリーか�
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Olfeo SAAS**」と入力します。
 1. 結果のパネルから **[Olfeo SAAS]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-olfeo-saas"></a>Olfeo SAAS の Azure AD SSO の構成とテスト
 
@@ -121,6 +122,8 @@ Olfeo SAAS に対して Azure AD SSO を構成してテストするには、次�
 
 このセクションでは、Olfeo SAAS で Britta Simon というユーザーを作成します。 [Olfeo SAAS サポート チーム](mailto:equipe-rd@olfeo.com)と連携して、Olfeo SAAS プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
+Olfeo SAAS では、自動ユーザー プロビジョニングもサポートされます。自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](./olfeo-saas-provisioning-tutorial.md)をご覧ください。
+
 ## <a name="test-sso"></a>SSO のテスト 
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
@@ -129,8 +132,7 @@ Olfeo SAAS に対して Azure AD SSO を構成してテストするには、次�
 
 * Olfeo SAAS のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Olfeo SAAS] タイルをクリックすると、Olfeo SAAS のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
-
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Olfeo SAAS] タイルをクリックすると、Olfeo SAAS のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

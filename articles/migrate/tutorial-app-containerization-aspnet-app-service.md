@@ -2,17 +2,17 @@
 title: 'Azure App Containerization ASP.NET: ASP.NET アプリケーションのコンテナー化と Azure App Service への移行'
 description: 'チュートリアル: ASP.NET アプリケーションをコンテナー化し、Azure App Service に移行します。'
 services: ''
-author: rahugup
+author: rahug1190
 manager: bsiva
 ms.topic: tutorial
 ms.date: 07/02/2021
 ms.author: rahugup
-ms.openlocfilehash: fd0a7d3e1af6bb0a0dad10f9a92194b495b13b91
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: e574b7b71f9ea2c968020a11c7b18c3ff4f0a64b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123253109"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128621447"
 ---
 # <a name="aspnet-app-containerization-and-migration-to-azure-app-service"></a>ASP.NET アプリのコンテナー化と Azure App Service への移行
 
@@ -153,6 +153,7 @@ App Containerization ヘルパー ツールは、指定された資格情報を�
 1. ASP.NET アプリケーションを実行するサーバーの **IP アドレス/FQDN と資格情報** を指定します。アプリケーション検出のために、これらを使用してサーバーにリモート接続する必要があります。
     - 指定する資格情報は、アプリケーション サーバーのローカル管理者 (Windows) のものである必要があります。
     - ドメイン アカウントの場合 (ユーザーはアプリケーション サーバーの管理者である必要があります)、 *<ドメイン\ユーザー名>* の形式で、ユーザー名の前にドメイン名をプレフィックスとして付加します。
+    - ローカル アカウントの場合 (ユーザーはアプリケーション サーバーの管理者である必要があります)、 *<ホスト名\ユーザー名>* の形式で、ユーザー名の前にホスト名をプレフィックスとして付加します。
     - アプリケーションの検出は、最大 5 台のサーバーに対して同時に実行できます。
 
 2. **[検証]** をクリックして、ツールを実行するコンピューターからアプリケーション サーバーに到達できること、および資格情報が有効であることを確認します。 検証が正常に完了すると、状態列に **[マップ済み]** として状態が表示されます。  
@@ -166,8 +167,8 @@ App Containerization ヘルパー ツールは、指定された資格情報を�
     ![検出された ASP.NET アプリケーションのスクリーンショット。](./media/tutorial-containerize-apps-aks/discovered-app-asp.png)
 
 
-4. チェックボックスを使用して、コンテナー化するアプリケーションを選択します。
-5. **コンテナー名を指定する**: 選択した各アプリケーションのターゲット コンテナーの名前を指定します。 コンテナー名は <*名前:タグ*> として指定する必要があります。タグはコンテナー イメージに使用されます。 たとえば、*appname:v1* というターゲット コンテナー名を指定できます。   
+5. チェックボックスを使用して、コンテナー化するアプリケーションを選択します。
+6. **コンテナー名を指定する**: 選択した各アプリケーションのターゲット コンテナーの名前を指定します。 コンテナー名は <*名前:タグ*> として指定する必要があります。タグはコンテナー イメージに使用されます。 たとえば、*appname:v1* というターゲット コンテナー名を指定できます。   
 
 ### <a name="parameterize-application-configurations"></a>アプリケーションの構成をパラメーター化する
 構成をパラメーター化すると、デプロイ時のパラメーターとしてその構成を使用できます。 これにより、アプリケーションをデプロイするときに、この設定を構成できます。これは、コンテナー イメージで設定を特定の値にハードコーディングするのとは対照的です。 たとえば、このオプションは、データベース接続文字列などのパラメーターに便利です。

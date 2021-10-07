@@ -9,12 +9,12 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 53ea8657535cb353b2da0f2a5b35398aa972128a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 75b89acff320b3083c098a0546882d80bdcfc5ad
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121745336"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129060898"
 ---
 # <a name="retrieve-logs-from-iot-edge-deployments"></a>IoT Edge の展開からログを取得する
 
@@ -78,7 +78,7 @@ IoT Edge エージェント モジュールに含まれているダイレクト 
     }
 ```
 
-| 名前 | 型 | 説明 |
+| 名前 | 種類 | 説明 |
 |-|-|-|
 | schemaVersion | string | `1.0` |
 | items | JSON 配列 | `id` および `filter` の組を含む配列。 |
@@ -187,7 +187,7 @@ az iot hub invoke-module-method \
     }
 ```
 
-| 名前 | 型 | 説明 |
+| 名前 | 種類 | 説明 |
 |-|-|-|
 | sasURL | string (URI) | [Azure Blob Storage コンテナーへの書き込みアクセスを含む共有アクセス署名 URL](/archive/blogs/jpsanders/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer)。 |
 
@@ -201,7 +201,7 @@ az iot hub invoke-module-method \
     }
 ```
 
-| 名前 | 型 | 説明 |
+| 名前 | 種類 | 説明 |
 |-|-|-|
 | status | string | `NotStarted`、`Running`、`Completed`、`Failed`、または `Unknown`の 1 つ。 |
 | message | string | エラーの場合はメッセージ、それ以外の場合は空の文字列。 |
@@ -304,7 +304,7 @@ Azure portal で、次の情報を含めた sasURL を指定した後に、メ�
     }
 ```
 
-| 名前 | 型 | 説明 |
+| 名前 | 種類 | 説明 |
 |-|-|-|
 | schemaVersion | string | `1.0` |
 | sasURL | string (URI) | [Azure Blob Storage コンテナーへの書き込みアクセスを含む共有アクセス署名 URL](/archive/blogs/jpsanders/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer) |
@@ -325,7 +325,7 @@ Azure portal で、次の情報を含めた sasURL を指定した後に、メ�
     }
 ```
 
-| 名前 | 型 | 説明 |
+| 名前 | 種類 | 説明 |
 |-|-|-|
 | status | string | `NotStarted`、`Running`、`Completed`、`Failed`、または `Unknown`の 1 つ。 |
 | message | string | エラーの場合はメッセージ、それ以外の場合は空の文字列。 |
@@ -383,9 +383,9 @@ Azure portal で、次の情報を含めた sasURL を指定した後に、メ�
     }
 ```
 
-| 名前 | 型 | 説明 |
+| 名前 | 種類 | 説明 |
 |-|-|-|
-| status | string | `NotStarted`、`Running`、`Completed`、`Failed`、または `Unknown`の 1 つ。 |
+| status | string | `NotStarted`、`Running`、`Completed`、`Failed`、'Cancelled'、`Unknown` のいずれか。 |
 | message | string | エラーの場合はメッセージ、それ以外の場合は空の文字列。 |
 | correlationId | string   | アップロード要求の状態を照会するための ID。 |
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 09/01/2021
 ms.author: qpetraroia
 author: qpetraroia
-ms.openlocfilehash: 2d14a624b62e47a7abbbb1718efbe3be350b110a
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 6bd1f4c70d9c427d7f6487040453e7ecae199717
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123440157"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124800120"
 ---
 # <a name="use-scale-down-mode-to-deletedeallocate-nodes-in-azure-kubernetes-service-aks-preview"></a>スケールダウン モードを使用して、Azure Kubernetes Service (AKS) のノードを削除したり割り当て解除を行う (プレビュー)
 
@@ -91,6 +91,9 @@ az aks nodepool scale --node-count 5 --name nodepool2 --cluster-name myAKSCluste
 ```azurecli-interactive
 az aks nodepool update --scale-down-mode Delete --name nodepool2 --cluster-name myAKSCluster --resource-group myResourceGroup
 ```
+
+> [!NOTE]
+> スケールダウン モードを `Deallocate` から `Delete` に変更してから `Deallocate` に戻ると、ノード プールは `Deallocate` スケールダウン モードに維持されたまま、割り当てが解除されたすべてのノードが削除されます。
 
 ## <a name="using-scale-down-mode-to-delete-nodes-on-scale-down"></a>スケールダウン モードを使用してスケールダウン時にノードを削除する
 

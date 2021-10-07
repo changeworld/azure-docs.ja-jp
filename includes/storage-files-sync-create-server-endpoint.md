@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 6/01/2021
 ms.author: fauhse
 ms.custom: include file
-ms.openlocfilehash: 47b520fb4817f8fb8e780d52ef7a040617fdd759
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 9d8d983b5ac7082ff3037d465f43ea9a2ad47fb4
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113768584"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129300335"
 ---
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 サーバー エンドポイントを追加するには、新しく作成した同期グループに移動し、 **[サーバー エンドポイントの追加]** を選びます。
@@ -38,8 +38,8 @@ $serverEndpointPath = "<your-server-endpoint-path>"
 $cloudTieringDesired = $true
 $volumeFreeSpacePercentage = <your-volume-free-space>
 # Optional property. Choose from: [NamespaceOnly] default when cloud tiering is enabled. [NamespaceThenModifiedFiles] default when cloud tiering is disabled. [AvoidTieredFiles] only available when cloud tiering is disabled.
-$initialDownloadPolicy = NamespaceOnly
-$initialUploadPolicy = Merge
+$initialDownloadPolicy = "NamespaceOnly"
+$initialUploadPolicy = "Merge"
 # Optional property. Choose from: [Merge] default for all new server endpoints. Content from the server and the cloud merge. This is the right choice if one location is empty or other server endpoints already exist in the sync group. [ServerAuthoritative] This is the right choice when you seeded the Azure file share (e.g. with Data Box) AND you are connecting the server location you seeded from. This enables you to catch up the Azure file share with the changes that happened on the local server since the seeding.
 
 if ($cloudTieringDesired) {

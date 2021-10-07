@@ -1,20 +1,18 @@
 ---
 title: 切断された Azure Automanage アカウントの修復
 description: 最近、Automanage アカウントを含むサブスクリプションを新しいテナントに移動した場合は、そのアカウントを再構成する必要があります。 この記事では、その方法について説明します。
-author: asinn826
 ms.service: virtual-machines
 ms.subservice: automanage
 ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 11/05/2020
-ms.author: alsin
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: fdfeae56ba1ef46b58fdb8f5beb32f85a6e2fcb4
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: 2ce8bc5c26eb99ed19578a036a4569829bc44879
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109752321"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129458304"
 ---
 # <a name="repair-an-automanage-account"></a>Automanage アカウントの修復
 [Azure Automanage アカウント](./automanage-virtual-machines.md#automanage-account)は、自動化された操作が行われるセキュリティ コンテキストまたは ID です。 最近、Automanage アカウントを含むサブスクリプションを新しいテナントに移動した場合は、そのアカウントを再構成する必要があります。 再構成するには、ID の種類をリセットし、アカウントに適切なロールを割り当てる必要があります。

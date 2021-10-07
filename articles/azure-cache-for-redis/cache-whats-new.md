@@ -1,17 +1,17 @@
 ---
 title: Azure Cache for Redis の新機能
 description: Azure Cache for Redis の最近の更新
-author: yegu-ms
+author: curib
 ms.service: cache
 ms.topic: reference
 ms.date: 09/28/2020
-ms.author: yegu
-ms.openlocfilehash: 21ee51ac53147482210aa0bda410e11d12e5f479
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.author: cauribeg
+ms.openlocfilehash: 2ab3a60a4ce5034bc2c0b389d6a541eed6594671
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111413791"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129534597"
 ---
 # <a name="whats-new-in-azure-cache-for-redis"></a>Azure Cache for Redis の新機能
 

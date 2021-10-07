@@ -9,17 +9,18 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 02/01/2019
-ms.openlocfilehash: bc97781091f29c4d900e24b8211e4ee9d8422841
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: 872e55781a55ac15f960e0111f4b197ab380598d
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112581396"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129279129"
 ---
 # <a name="import-your-training-data-into-machine-learning-studio-classic-from-various-data-sources"></a>さまざまなデータ ソースから Machine Learning Studio (クラシック) にトレーニング データをインポートする
 
 **適用対象:** ![適用対象: ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![適用対象外: ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
+[!INCLUDE [ML Studio (classic) retirement](../../../includes/machine-learning-studio-classic-deprecation.md)]
 
 Machine Learning Studio (クラシック) で独自のデータを使用して予測分析ソリューションを開発し、トレーニングする場合、次の場所のデータを使用できます。 
 
@@ -152,7 +153,7 @@ Studio (クラシック) の実験でオンライン データ ソースにア�
 > 一般的に、このサービス オプションが利用可能になる前に作成された可能性のある Azure ストレージ アカウントに、影響が及ぶことはありません。
 > 新しいアカウントを作成する必要がある場合は、デプロイメント モデルとして **[クラシック]** を選択するか、Resource Manager を使用して、 **[アカウントの種類]** に **[Blob ストレージ]** ではなく **[General (汎用)]** を選択します。
 >
-> 詳細については、[Azure Blob Storage のホット ストレージ層とクール ストレージ層](../../storage/blobs/storage-blob-storage-tiers.md)に関するページを参照してください。
+> 詳細については、[Azure Blob Storage のホット ストレージ層とクール ストレージ層](../../storage/blobs/access-tiers-overview.md)に関するページを参照してください。
 
 ### <a name="supported-online-data-sources"></a>サポートされるオンライン データ ソース
 Machine Learning Studio (クラシック) の **Import Data** モジュールでは、次のデータ ソースがサポートされています。

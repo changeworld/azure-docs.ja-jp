@@ -5,19 +5,19 @@ description: このページでは、Web アプリケーション ファイア�
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 08/23/2021
+ms.date: 09/02/2021
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: a3908710febab64b8f4bb41692397f87eaee5613
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: ad8b70e7a5b07b2e933bc01af42dca0e89683959
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123434504"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128638009"
 ---
 # <a name="web-application-firewall-crs-rule-groups-and-rules"></a>Web アプリケーション ファイアウォールの CRS 規則グループと規則
 
-Application Gateway Web アプリケーション ファイアウォール (WAF) は、一般的な脆弱性や悪用から Web アプリケーションを保護します。 これには、OWASP コア ルール セット 3.2、3.1、3.0、または 2.2.9 に基づいて定義されている規則が使用されます。 これらの規則は、個別に無効にすることができます。 この記事には、現在提供されている規則とルール セットが含まれています。
+Application Gateway Web アプリケーション ファイアウォール (WAF) は、一般的な脆弱性や悪用から Web アプリケーションを保護します。 これには、OWASP コア ルール セット 3.2、3.1、3.0、または 2.2.9 に基づいて定義されている規則が使用されます。 これらの規則は、個別に無効にすることができます。 この記事には、現在提供されている規則とルール セットが含まれています。 まれに、公開されたルール セットを更新する必要がある場合は、ここに記載されます。
 
 ## <a name="core-rule-sets"></a>コア ルール セット
 
@@ -805,7 +805,7 @@ WAF は、次の Web の脆弱性から保護します。
 
 # <a name="owasp-229"></a>[OWASP 2.2.9](#tab/owasp2)
 
-## <a name="29-rule-sets"></a><a name="owasp229"></a> 2.9 ルール セット
+## <a name="229-rule-sets"></a><a name="owasp229"></a> 2.2.9 ルール セット
 
 ### <a name="crs_20_protocol_violations"></a><a name="crs20"></a> crs_20_protocol_violations
 

@@ -5,12 +5,12 @@ ms.date: 02/12/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6bfe1a2d7fb993e51c82f14b508d697900b7a333
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 9b9f8f594fbc85c69a546a82f2857802382eea28
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108319757"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128556473"
 ---
 # <a name="tutorial-deploy-a-linked-template"></a>チュートリアル:リンク済みテンプレートをデプロイする
 
@@ -48,7 +48,7 @@ ms.locfileid: "108319757"
 **[使ってみる]** を選択して Cloud Shell を開き、 **[コピー]** を選択して PowerShell スクリプトをコピーしたら、シェル ペインを右クリックしてスクリプトを貼り付けます。
 
 > [!IMPORTANT]
-> ストレージ アカウント名の長さは 3 ～ 24 文字で、数字と小文字のみを使用する必要があります。 名前は一意である必要があります。 このテンプレートでは、プロジェクト名に **store** を追加したものがストレージ アカウント名になります。プロジェクト名は 3 文字を超え、11 文字未満であることが必要です。 そのためプロジェクト名は、ストレージ アカウント名の要件を満たしていること、また 11 文字未満であることが必要となります。
+> ストレージ アカウント名は、一意で、長さが 3 から 24 文字で、**数字** と **小文字** のみを使用する必要があります。 サンプル テンプレートの `storageAccountName` 変数では、`projectName` パラメーターの最大 11 文字と、13 文字の [uniqueString](./template-functions-string.md#uniquestring) が結合されています。
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter a project name:"   # This name is used to generate names for Azure resources, such as storage account name.

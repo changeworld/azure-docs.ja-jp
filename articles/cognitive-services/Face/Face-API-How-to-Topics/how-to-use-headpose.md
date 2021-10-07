@@ -10,12 +10,12 @@ ms.topic: sample
 ms.date: 02/23/2021
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c53686338ae45971519735edce0ac62a0544ac2e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: bbb43768aee85d5c3cde83563645fa649a4cbcc4
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121744780"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129092188"
 ---
 # <a name="use-the-headpose-attribute"></a>HeadPose 属性を使用する
 
@@ -25,7 +25,7 @@ ms.locfileid: "121744780"
 
 顔矩形は、検出される顔ごとに返されますが、これはイメージ内の顔の位置とサイズをマーク付けします。 既定では、この四角形は常に (辺は垂直方向および水平方向) イメージに揃えますが、顔が傾斜している場合は合わせるのが非効率になります。 プログラムでイメージ内の顔をトリミングする場合、トリミングする四角形を回転する方が良いでしょう。
 
-[Cognitive Services Face WPF](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/Cognitive-Services-Face-WPF) サンプル アプリでは、HeadPose 属性を使用して、検出された顔の長方形を回転します。
+[Cognitive Services Face WPF (Windows Presentation Foundation)](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/Cognitive-Services-Face-WPF) サンプル アプリでは、HeadPose 属性を使用して、検出された顔の長方形を回転します。
 
 ### <a name="explore-the-sample-code"></a>サンプル コードの検証
 

@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: Azure Machine Learning ワークスペースがセキュリティで保護された仮想ネットワーク内にある場合に、コンポーネント間のネットワーク トラフィックがどのように流れるかについて学習します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: enterprise-readiness
 ms.topic: conceptual
 ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
 ms.date: 09/22/2021
-ms.openlocfilehash: 6265d433e20cfc5d1ee1bc9ae87c5c764f9eff60
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: 033bd5a96c75a1097438e01390ba800089d89d1d
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129092549"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129426927"
 ---
 # <a name="network-traffic-flow-when-using-a-secured-workspace"></a>セキュリティで保護されたワークスペースを使用する場合のネットワーク トラフィック フロー
 

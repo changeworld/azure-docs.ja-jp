@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, azla
 ms.topic: how-to
 ms.date: 09/17/2021
-ms.openlocfilehash: 4b8907b9a50be3bd6021b72dd05c7d5445da03f7
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 6c9580a051a7473e7009cf8df8d2ea8759834683
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128660205"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129351173"
 ---
 # <a name="exchange-b2b-messages-between-partners-using-workflows-in-azure-logic-apps"></a>Azure Logic Apps のワークフローを使用してパートナー間で B2B メッセージを交換する
 
@@ -33,16 +33,16 @@ ms.locfileid: "128660205"
 
   * ロジック アプリ リソースと同じ場所または Azure リージョンに存在する。
 
-  * [**ロジック アプリ (従量課金)** のリソースの種類](logic-apps-overview.md#resource-type-and-host-environment-differences)を使用している場合、ワークフローで成果物を使用するには、統合アカウントに[ロジック アプリ リソースへのリンク](logic-apps-enterprise-integration-create-integration-account.md#link-account)が必要です。
+  * [**ロジック アプリ (従量課金)** のリソースの種類](logic-apps-overview.md#resource-type-and-host-environment-differences)を使用している場合、ワークフローで成果物を使用するには、統合アカウントに [ロジック アプリ リソースへのリンク](logic-apps-enterprise-integration-create-integration-account.md#link-account)が必要です。
 
-  * [**ロジック アプリ (Standard)** のリソースの種類](logic-apps-overview.md#resource-type-and-host-environment-differences)を使用している場合、統合アカウントにロジック アプリ リソースへのリンクは必要ありませんが、[AS2](logic-apps-enterprise-integration-as2.md)、[X12](logic-apps-enterprise-integration-x12.md)、または [EDIFACT](logic-apps-enterprise-integration-edifact.md) の操作を使用すると共に、パートナー、契約、証明書などの他の成果物を格納する必要があります。 統合アカウントは他の要件も満たす必要があります。たとえば、使用する Azure サブスクリプションや、存在する場所が、ロジック アプリ リソースと同じでなければならないというものです。
+  * [**ロジック アプリ (Standard)** のリソースの種類](logic-apps-overview.md#resource-type-and-host-environment-differences)を使用している場合、統合アカウントにロジック アプリ リソースへのリンクは必要ありませんが、[AS2](logic-apps-enterprise-integration-as2.md)、[X12](logic-apps-enterprise-integration-x12.md)、または [EDIFACT](logic-apps-enterprise-integration-edifact.md) の操作を使用すると共に、パートナー、契約、証明書などの他の成果物を格納する必要があります。 統合アカウントは、ロジック アプリ リソースと同じ Azure サブスクリプションを使用することや、ロジック アプリ リソースと同じ場所に存在することなど、他の要件も満たす必要があります。
 
   > [!NOTE]
-  > 現時点では、[RosettaNet](logic-apps-enterprise-integration-rosettanet.md) 操作をサポートしているのは、**ロジック アプリ (従量課金)** のリソースの種類のみです。 **ロジック アプリ (Standard)** のリソースの種類には、[RosettaNet](logic-apps-enterprise-integration-rosettanet.md) 操作は含まれていません。
+  > 現時点では、[RosettaNet](logic-apps-enterprise-integration-rosettanet.md) の操作をサポートしているのは、**ロジック アプリ (従量課金)** のリソースの種類のみです。 **ロジック アプリ (Standard)** のリソースの種類には、[RosettaNet](logic-apps-enterprise-integration-rosettanet.md) の操作が含まれていません。
 
 * 統合アカウント内の少なくとも 2 つの[取引先](logic-apps-enterprise-integration-partners.md)。 両方の取引先の定義では、同じ "*ビジネス ID*" 修飾子 (AS2、X12、EDIFACT、または RosettaNet) を使用する必要があります。
 
-* このワークフローで使用している、パートナー向けの [AS2 契約および X12 契約](logic-apps-enterprise-integration-agreements.md)。 各契約には、ホスト パートナーとゲスト パートナーが必要です。
+* このワークフローで使用している、パートナー向けの [AS2 契約および X12 契約](logic-apps-enterprise-integration-agreements.md)。 契約には、ホスト パートナーとゲスト パートナーが必要です。
 
 * 空のワークフローを含むロジック アプリ リソース。これに、[要求](../connectors/connectors-native-reqres.md)トリガーを追加した後に、次のアクションを追加できます。
 
@@ -375,7 +375,7 @@ ms.locfileid: "128660205"
 
 これで、B2B ロジック アプリ ワークフローの設定が完了しました。 実際のアプリでは、デコードした X12 データを基幹業務 (LOB) アプリやデータ ストアに保存できます。 例として、次のドキュメントを参照してください。
 
-* [Azure Logic Apps から SAP システムに接続する](/logic-apps-using-sap-connector.md)
+* [Azure Logic Apps から SAP システムに接続する](logic-apps-using-sap-connector.md)
 
 * [SSH と Azure Logic Apps を使用して SFTP ファイルの監視、作成、および管理を行う](../connectors/connectors-sftp-ssh.md)
 

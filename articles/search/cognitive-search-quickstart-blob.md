@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 08/17/2021
-ms.openlocfilehash: d29f434e1ac8b5fa8b96dcf4ad4f1125c20eb4db
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: d39ee872024cc3eb301e59d45e276843bb886340
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123451765"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129210556"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-skillset-in-the-azure-portal"></a>クイック スタート: Azure Cognitive Search スキルセットを Azure portal で作成する
 
@@ -171,7 +171,7 @@ ms.locfileid: "123451765"
 
 出力は、検索インデックスに送られます。また、インデックス作成時に作成される名前と値の組と、インデックス内の個々のフィールドとの間にはマッピングが存在します。 内部的には、Portal が[注釈](cognitive-search-concept-annotations-syntax.md)を設定し、[スキルセット](cognitive-search-defining-skillset.md)を定義して、操作と一般的なフローの順序を確立します。 これらの手順は Portal には表示されませんが、コードの記述を開始するときは、これらの概念が重要になります。
 
-最後に、インデックスに対してクエリを実行することで内容を確認できることを学習しました。 最終的に、Azure Cognitive Search が提供するものは、[単純](/rest/api/searchservice/simple-query-syntax-in-azure-search)または[完全に拡張されたクエリ構文](/rest/api/searchservice/lucene-query-syntax-in-azure-search)のいずれかを使用してクエリを実行できる、検索可能なインデックスです。 エンリッチされたフィールドを含むインデックスは、他のフィールドと同様です。 標準または[カスタム アナライザー](search-analyzers.md)、[スコアリング プロファイル](/rest/api/searchservice/add-scoring-profiles-to-a-search-index)、[シノニム](search-synonyms.md)、[ファセット フィルター](search-filters-facets.md)、地理空間検索、またはその他の Azure Cognitive Search 機能を組み込みたい場合は、確実に実行できます。
+最後に、インデックスに対してクエリを実行することで内容を確認できることを学習しました。 最終的に、Azure Cognitive Search が提供するものは、[単純](/rest/api/searchservice/simple-query-syntax-in-azure-search)または[完全に拡張されたクエリ構文](/rest/api/searchservice/lucene-query-syntax-in-azure-search)のいずれかを使用してクエリを実行できる、検索可能なインデックスです。 エンリッチされたフィールドを含むインデックスは、他のフィールドと同様です。 標準または[カスタム アナライザー](search-analyzers.md)、[スコアリング プロファイル](/rest/api/searchservice/add-scoring-profiles-to-a-search-index)、[シノニム](search-synonyms.md)、[ファセット ナビゲーション](search-faceted-navigation.md)、地理空間検索、またはその他の Azure Cognitive Search 機能を組み込みたい場合は、確実に実行できます。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

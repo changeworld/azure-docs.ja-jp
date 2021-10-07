@@ -3,15 +3,15 @@ author: v-dalc
 ms.service: databox
 ms.subservice: databox
 ms.topic: include
-ms.date: 08/26/2021
+ms.date: 09/08/2021
 ms.author: alkohli
 ms.custom: contperf-fy22q1
-ms.openlocfilehash: cce8075187517377efc406ce3b452e8a5c33a817
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 6f784c075d24fe26b7ec1ea9d5921dfb460e5298
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123468555"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124743334"
 ---
 デバイスを注文するには、Azure portal で次の手順を実行します。
 
@@ -36,9 +36,13 @@ ms.locfileid: "123468555"
 
     [ ![Azure Data Box インポート注文の開始](media/data-box-order-portal/data-box-import-03.png) ](media/data-box-order-portal/data-box-import-03.png#lightbox)
 
-5. 注文する **Data Box** 製品を選択します。下記に示すように、Data Box、Data Box Heavy のいずれかを選択します。 Data Box の場合、1 回の注文で使用可能な最大容量は 80 TB です。 Data Box Heavy の場合、1 回の注文で使用可能な最大容量は 770 TB です。 データ サイズがこれより大きい場合は、複数の注文を作成できます。
+5. 注文する **Data Box** 製品を選択します。下記に示すように、Data Box、Data Box Heavy のいずれかを選択します。 
 
     [ ![Azure Data Box 製品を選択する画面を示すスクリーンショット。Data Box の [選択] ボタンが強調表示されています。](media/data-box-order-portal/data-box-import-04.png) ](media/data-box-order-portal/data-box-import-04.png#lightbox)
+
+    Data Box の場合、1 回の注文で使用可能な最大容量は 80 TB です。 Data Box Heavy の場合、1 回の注文で使用可能な最大容量は 770 TB です。 データ サイズがこれより大きい場合は、複数の注文を作成できます。
+
+    **[Data Box Heavy]** を選択した場合、ご利用のリージョンにおけるデバイスの利用の可否が Data Box チームによってチェックされます。 注文を続行できる場合は通知されます。
 
 6. **[注文]** で、 **[基本]** タブに移動します。次の情報を入力または選択します。 次に、 **[次へ: データの格納先 >]** を選択します。
 

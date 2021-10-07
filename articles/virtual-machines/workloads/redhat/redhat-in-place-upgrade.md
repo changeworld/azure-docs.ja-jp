@@ -1,19 +1,19 @@
 ---
 title: Azure 上の Red Hat Enterprise Linux イメージのインプレース アップグレード
 description: Red Hat Enterprise 7.x イメージから最新の 8.x バージョンへのインプレース アップグレードを実行する方法について説明します。
-author: mathapli
+author: mamccrea
 ms.service: virtual-machines
 ms.subservice: redhat
 ms.collection: linux
 ms.topic: article
 ms.date: 04/16/2020
-ms.author: alsin
-ms.openlocfilehash: ccd3e58babc6627a384636dbea28ef82969be9fc
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.author: mamccrea
+ms.openlocfilehash: e127ec753a6db0556c901aff737656da47883c7a
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122696746"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129454869"
 ---
 # <a name="red-hat-enterprise-linux-in-place-upgrades"></a>インプレース アップグレードの Red Hat Enterprise Linux
 

@@ -5,16 +5,16 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 06/27/2019
 ms.author: lajanuar
-ms.openlocfilehash: fbf4fc405c92700f993a488d94334338ab2757b4
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 262cde08f93ca7d56a454effe17579dd086c3d7a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122326374"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128909491"
 ---
-Form Recognizer は、次の要件を満たす入力ドキュメントを処理します。
+Form Recognizer は、これらの要件を満たす入力ドキュメントを処理します。
 
-* 形式は、JPG、PNG、PDF (テキストまたはスキャン済み)、TIFF のいずれかである必要があります。 テキストが埋め込まれている PDF は、文字の抽出と場所にエラーが生じる可能性がないため、最適です。
+* サポートされているファイル形式: JPEG、PNG、BMP、TIFF、および PDF (テキスト埋め込みまたはスキャン済み)。 文字の抽出と位置に関するエラーが発生する可能性を排除するには、テキストが埋め込まれている PDF が最適です。
 * ファイル サイズは 50 MB 未満である必要があります。
 * 画像の寸法は、50 x 50 ピクセルから 10,000 x 10,000 ピクセルの間である必要があります。
 * PDF の寸法は、最大で 17 x 17 インチにする必要があります (リーガル サイズまたは A3 サイズ以下の用紙に対応します)。

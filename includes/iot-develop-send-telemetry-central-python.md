@@ -7,21 +7,28 @@ ms.topic: include
 ms.date: 04/28/2021
 ms.author: timlt
 ms.custom: include file
-ms.openlocfilehash: d4a571e1553e3a9e3dd9f5df63c8ecc16fa07abf
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: 29b0785f1656620be4e497b80c855d109cf522cd
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114712989"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128908910"
 ---
 [![コードを参照](../articles/iot-develop/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/pnp)
 
 このクイックスタートでは、基本的な Azure IoT アプリケーション開発のワークフローについて説明します。 最初に、デバイスをホストするための Azure IoT Central アプリケーションを作成します。 次に、Azure IoT device SDK サンプルを使用して、シミュレートされた温度コントローラーを実行し、それを IoT Central に安全に接続して、テレメトリを送信します。
 
 ## <a name="prerequisites"></a>前提条件
-- [Python](https://www.python.org/downloads/) バージョン 3.7 以降。 Python のバージョンを確認するには、`python --version` を実行します。
+このクイックスタートは、Windows、Linux、および Raspberry Pi で実行できます。 これは、次の OS およびデバイス バージョンでテストされています。
+
+- Windows 10
+- Linux 用 Windows サブシステム (WSL) で実行されている Ubuntu 20.04 LTS
+- Raspberry Pi 3 Model B+ で実行されている Raspberry Pi OS バージョン 10 (buster)
+
+次に示す前提条件を開発マシンにインストールします。
+
+- [Python](https://www.python.org/downloads/) バージョン 3.7 以降。 Python のバージョンを確認するには、`python3 --version` を実行します。
 - [Git](https://git-scm.com/downloads).
-- このクイックスタートは、Linux または Windows で実行できます。 シェル コマンドでは標準の Linux パス区切り記号 `/` を使用します。 Windows を使用する場合は、これらの区切り記号を Windows パス区切り記号 `\` に置き換えてください。
 
 [!INCLUDE [iot-develop-create-central-app-with-device](iot-develop-create-central-app-with-device.md)]
 
@@ -30,11 +37,11 @@ ms.locfileid: "114712989"
 
 ### <a name="configure-your-environment"></a>環境を構成する
 
-1. Windows CMD、PowerShell、または Bash を使用してコンソールを開きます。
+1. Windows CMD、PowerShell、または Bash などのコンソールを開きます。
 
 1. コンソールに適したコマンドを使用して、次の環境変数を設定します。 シミュレートされたデバイスは、これらの値を使用して IoT Central に接続します。 `IOTHUB_DEVICE_DPS_ID_SCOPE`、`IOTHUB_DEVICE_DPS_DEVICE_KEY`、`IOTHUB_DEVICE_DPS_DEVICE_ID` には、前に保存したデバイス接続の値を使用してください。
 
-    **Windows CMD**
+    **CMD (Windows)**
 
     ```console
     set IOTHUB_DEVICE_SECURITY_TYPE=DPS
@@ -57,7 +64,7 @@ ms.locfileid: "114712989"
     $env:IOTHUB_DEVICE_DPS_ENDPOINT='global.azure-devices-provisioning.net'
     ```
 
-    **Bash (Linux または Windows)**
+    **Bash**
 
     ```bash
     export IOTHUB_DEVICE_SECURITY_TYPE='DPS'
@@ -74,10 +81,18 @@ ms.locfileid: "114712989"
     ```console
     git clone https://github.com/Azure/azure-iot-sdk-python
     ```
-1. samples ディレクトリに移動します。
+1. sample ディレクトリに移動します。
+
+    **Windows**
+    ```console
+    cd azure-iot-sdk-python\azure-iot-device\samples\pnp
+    ```
+
+    **Linux または Raspberry Pi OS**
     ```console
     cd azure-iot-sdk-python/azure-iot-device/samples/pnp
     ```
+
 1. Azure IoT Python SDK をインストールします。
     ```console
     pip3 install azure-iot-device
@@ -87,7 +102,7 @@ ms.locfileid: "114712989"
 
 1. コンソールで、SDK の次のコード サンプルを実行します。 このサンプルは、サーモスタット センサーを備えたシミュレートされた温度コントローラーを作成します。
     ```console
-    python temp_controller_with_thermostats.py
+    python3 temp_controller_with_thermostats.py
     ```
 
     シミュレートされたデバイスは、IoT Central アプリケーションに接続した後、アプリケーション内で作成されたデバイス インスタンスに接続して、テレメトリの送信を開始します。 接続の詳細とテレメトリの出力がコンソールに表示されます。 

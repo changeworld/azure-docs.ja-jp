@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/13/2021
+ms.date: 09/02/2021
 ms.author: jeedes
-ms.openlocfilehash: 0223b78ac34d2cfffa6a307f220c4d207c7f8b15
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 450eca8a589f6184bcac5e5d986fc7a5f4d49128
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110068568"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124745131"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-one"></a>チュートリアル: Azure Active Directory と Zscaler One の統合
 
@@ -40,6 +40,8 @@ ms.locfileid: "110068568"
 * Zscaler One では、**SP** initiated SSO がサポートされます。
 
 * Zscaler One では、**Just In Time** ユーザー プロビジョニングがサポートされます。
+
+* Zscaler One では、[自動化されたユーザー プロビジョニング](zscaler-one-provisioning-tutorial.md)がサポートされます。
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -229,6 +231,9 @@ Zscaler One に対して Azure AD SSO を構成してテストするには、次
 > [!Note]
 > ユーザーを手動で作成する必要がある場合は、[Zscaler One のサポート チーム](https://www.zscaler.com/company/contact)にお問い合わせください。
 
+> [!NOTE]
+> Zscaler One では、自動ユーザー プロビジョニングもサポートされます。自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](./zscaler-one-provisioning-tutorial.md)をご覧ください。
+
 ## <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
@@ -237,7 +242,7 @@ Zscaler One に対して Azure AD SSO を構成してテストするには、次
 
 * Zscaler One のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Zscaler One] タイルをクリックすると、Zscaler One のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Zscaler One] タイルをクリックすると、Zscaler One のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

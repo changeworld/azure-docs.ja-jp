@@ -6,12 +6,12 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/12/2021
-ms.openlocfilehash: 8e512c06901a533ef381bc389def45f07e8a028d
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 6d13f5f79da2906d1b994d4ab83e06d0593eaefe
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123101999"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128586644"
 ---
 # <a name="choose-an-api-in-azure-cosmos-db"></a>Azure Cosmos DB で API を選択する
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -51,8 +51,8 @@ Oracle、DynamoDB、HBase などの他のデータベースから移行する場
 ### <a name="capacity-planning-for-migration-to-api-for-mongodb"></a>MongoDB 用 API への移行のための容量計画
 
 既存のデータベース クラスターから Azure Cosmos DB SQL API への移行のための容量計画を行おうとしていますか? 容量計画のために、既存のデータベース クラスターに関する情報を使用できます。
-    * 既存のシャード化およびレプリケートされたデータベース クラスター内の仮想コアとサーバーの数のみがわかっている場合は、[仮想コア数または仮想 CPU 数を使用した要求ユニットの見積もり](convert-vcore-to-request-unit.md)に関するページをご覧ください。 
-    * 現在のデータベース ワークロードの通常の要求レートがわかっている場合は、[Azure Cosmos DB Capacity Planner を使用した要求ユニットの見積もり](estimate-ru-with-capacity-planner.md)に関するページをご覧ください
+* 既存のシャード化およびレプリケートされたデータベース クラスター内の仮想コアとサーバーの数のみがわかっている場合は、[仮想コアまたは vCPU を使用した要求ユニットの見積もり](convert-vcore-to-request-unit.md)に関するページを参照してください。
+* 現在のデータベース ワークロードの標準的な要求レートがわかっている場合は、[Azure Cosmos DB Capacity Planner を使用した要求ユニットの見積もり](estimate-ru-with-capacity-planner.md)に関するページを参照してください。
 
 ## <a name="api-for-mongodb"></a>MongoDB 用 API
 
@@ -65,8 +65,8 @@ MongoDB 用 API は、MongoDB サーバー バージョン 4.0、3.6、3.2 と�
 ### <a name="capacity-planning-for-migration-to-api-for-mongodb"></a>MongoDB 用 API への移行のための容量計画
 
 既存のデータベース クラスターから Azure Cosmos DB MongoDB 用 API への移行のための容量計画を行おうとしていますか? 容量計画のために、既存のデータベース クラスターに関する情報を使用できます。
-    * 既存のデータベース クラスター内の仮想コアとサーバーの数のみがわかっている場合は、[仮想コア数または仮想 CPU 数を使用した要求ユニットの見積もり](convert-vcore-to-request-unit.md)に関するページをご覧ください 
-    * 現在のデータベース ワークロードの通常の要求レートがわかっている場合は、[Azure Cosmos DB Capacity Planner を使用した要求ユニットの見積もり](./mongodb/estimate-ru-capacity-planner.md)に関するページをご覧ください
+* 既存のデータベース クラスター内の仮想コアとサーバーの数のみがわかっている場合は、[仮想コアまたは vCPU を使用した要求ユニットの見積もり](convert-vcore-to-request-unit.md)に関するページを参照してください。
+* 現在のデータベース ワークロードの標準的な要求レートがわかっている場合は、[Azure Cosmos DB Capacity Planner を使用した要求ユニットの見積もり](./mongodb/estimate-ru-capacity-planner.md)に関するページを参照してください。
 
 ## <a name="cassandra-api"></a>Cassandra API
 
@@ -84,7 +84,7 @@ Azure Cosmos DB の Gremlin API は、[Apache TinkerPop](https://tinkerpop.apach
 
 この API では、データをキー/値形式で格納します。 現在、Azure Table Storage を使用している場合は、待機時間、スケーリング、スループット、グローバル配布、インデックス管理、低クエリ パフォーマンスにいくつかの制限がある可能性があります。 Table API によってこれらの制限が克服されます。Azure Cosmos DB のベネフィットを活用する場合は、アプリを移行することをお勧めします。 Table API でサポートされているのは、OLTP シナリオのみです。
 
-Azure Table Storage 用に作成されたアプリケーションを Table API に移行することができます。これにより、コードにほとんど変更を加えることなく、高度な機能を利用できるようになります。 詳細については、[Table API](introduction.md) に関する記事を参照してください。
+Azure Table Storage 用に作成されたアプリケーションを Table API に移行することができます。これにより、コードにほとんど変更を加えることなく、高度な機能を利用できるようになります。 詳細については、[Table API](table/introduction.md) に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -93,6 +93,6 @@ Azure Table Storage 用に作成されたアプリケーションを Table API �
 * [Azure Cosmos DB Cassandra API を使ってみる](cassandra/manage-data-dotnet.md)
 * [Azure Cosmos DB Gremlin API を使ってみる](create-graph-dotnet.md)
 * [Azure Cosmos DB Table API を使ってみる](create-table-dotnet.md)
-* Azure Cosmos DB への移行のための容量計画を行おうとしていますか? 容量計画のために、既存のデータベース クラスターに関する情報を使用できます。
-    * 既存のデータベース クラスター内の仮想コアとサーバーの数のみがわかっている場合は、[仮想コア数または仮想 CPU 数を使用した要求ユニットの見積もり](convert-vcore-to-request-unit.md)に関するページをご覧ください 
-    * 現在のデータベース ワークロードの通常の要求レートがわかっている場合は、[Azure Cosmos DB Capacity Planner を使用した要求ユニットの見積もり](estimate-ru-with-capacity-planner.md)に関するページをご覧ください
+* Azure Cosmos DB への移行のための容量計画を実行しようとしていますか? 容量計画のために、既存のデータベース クラスターに関する情報を使用できます。
+    * 知っていることが既存のデータベース クラスター内の仮想コアとサーバーの数のみである場合は、[仮想コアまたは仮想 CPU の数を使用した要求ユニットの見積もり](convert-vcore-to-request-unit.md)に関するページを参照してください 
+    * 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB 容量計画ツールを使用した要求ユニットに見積もり](estimate-ru-with-capacity-planner.md)に関するページを参照してください

@@ -1,19 +1,19 @@
 ---
 title: 事前購入を利用して Azure Databricks のコストを最適化する
 description: コスト削減のために容量が予約された Azure Databricks 料金を前払いする方法について説明します。
-author: yashesvi
-ms.reviewer: yashar
+author: bandersmsft
+ms.reviewer: primittal
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 09/20/2021
 ms.author: banders
-ms.openlocfilehash: 390a8b421a7b34391bde689e4b968fa98cdbaf76
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 8047c57c929deeffcb69943ce17fa5fe81d31af1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98599165"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128645058"
 ---
 # <a name="optimize-azure-databricks-costs-with-a-pre-purchase"></a>事前購入を利用して Azure Databricks のコストを最適化する
 
@@ -53,6 +53,7 @@ Databricks プランは [Azure portal](https://portal.azure.com/#blade/Microsoft
     - **単一のリソース グループのスコープ** - 選択されたリソース グループ内の一致するリソースにのみ、予約割引を適用します。
     - **単一サブスクリプション** - 選択されたサブスクリプションの一致するリソースに予約割引を適用します。
     - **共有スコープ** - 課金コンテキスト内にある有効なサブスクリプションの一致するリソースに予約割引を適用します。 マイクロソフト エンタープライズ契約のお客様の場合、課金コンテキストは登録です。
+    - **管理グループ** - 管理グループと課金スコープの両方の一部であるサブスクリプションの一覧にある一致するリソースに、予約割引を適用します。
 1. 購入する Azure Databricks コミット ユニット数を選択し、購入を完了します。
 
 

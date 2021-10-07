@@ -14,12 +14,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - devx-track-csharp
-ms.openlocfilehash: 10e149218eb783b8cdb36412cca66bc7cd642df7
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e7e7f8979ac07502f0e50f59b612f63b3e9a7240
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121737765"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129236825"
 ---
 # <a name="send-messages-from-the-cloud-to-your-device-with-iot-hub-net"></a>デバイスに IoT Hub でクラウドからメッセージを送信する (.NET)
 
@@ -226,7 +226,5 @@ cloud-to-device メッセージのライフサイクルの詳細など、IoT Hub
 ## <a name="next-steps"></a>次のステップ
 
 このハウツー記事では、cloud-to-device メッセージを送受信する方法を学習しました。
-
-IoT Hub を使用する完全なエンド ツー エンド ソリューションの例については、[Azure IoT リモート監視ソリューション アクセラレータ](/azure/iot-suite/)に関するページをご覧ください。
 
 IoT Hub を使用したソリューションの開発に関する詳細については、[IoT Hub 開発者ガイド](iot-hub-devguide.md)をご覧ください。

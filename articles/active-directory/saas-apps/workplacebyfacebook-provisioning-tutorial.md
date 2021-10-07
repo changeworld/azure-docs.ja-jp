@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/22/2021
 ms.author: jeedes
-ms.openlocfilehash: 5e4091138f51fdd5af4052895cdb75c2390f7ce5
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: a927232bab058ff461ff1158739a6b4d390e1c56
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114459733"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128679467"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>チュートリアル:Workplace by Facebook を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -168,6 +168,7 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 ## <a name="troubleshooting-tips"></a>トラブルシューティングのヒント
 *  ユーザーが作成に失敗し、コード "1789003" の監査ログイ ベントがあることが確認された場合は、ユーザーが未検証のドメインに由来していることを意味します。
 *  次のようなエラーが表示される場合があります。「エラー: 電子メール フィールドがありません: 電子メールを提供する必要があります Facebook からエラーが返されました: HTTP 要求の処理中に例外が発生しました。 詳細については、この例外の 'Response' プロパティによって返される HTTP 応答を参照してください。 この操作は 0 回再試行されました。 この日より後に再試行されます」。 このエラーの原因は、メールを userPrincipalName ではなく Facebook の電子メールにマップしているが、一部のユーザーにメール属性がないためです。 このエラーを回避して、エラーが発生したユーザーを Workplace from Facebook に正常にプロビジョニングするには、Workplace from Facebook の電子メール属性への属性マッピングを結合 ([mail]、[userPrincipalName]) に変更するか、Workplace from Facebook からユーザーの割り当てを解除するか、ユーザーの電子メール アドレスをプロビジョニングします。  
+*  [メール アドレスのないユーザー](https://www.workplace.com/resources/tech/account-management/email-less#enable)の存在を許可するオプションが Workplace にあります。 Workplace 側でこの設定を切り替えた場合、メールのないユーザーを Workplace で正常に作成するには、Azure 側のプロビジョニングを再起動する必要があります。  
 
 
 ## <a name="change-log"></a>ログの変更

@@ -2,18 +2,18 @@
 metadata:
   title: Azure Cache for Redis 管理に関してよくあるご質問
   description: Azure Cache for Redis の管理に役立つ、よくある質問に対する回答について説明します。
-  author: yegu-ms
-  ms.author: yegu
+  author: curib
+  ms.author: cauribeg
   ms.service: cache
   ms.topic: conceptual
   ms.custom: devx-track-csharp
   ms.date: 08/06/2020
-  ms.openlocfilehash: 312d9c83eed96c646c5897270f3058e5a097b4b7
-  ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
+  ms.openlocfilehash: ddfb4f2005c982d56a4eb7c572bd7c8709be4aee
+  ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/01/2021
-  ms.locfileid: "113137427"
+  ms.lasthandoff: 10/05/2021
+  ms.locfileid: "129537878"
 title: Azure Cache for Redis 管理に関してよくあるご質問
 summary: この記事では、Azure Cache for Redis の管理に役立つ、よくある質問に対する回答について説明します。
 sections:

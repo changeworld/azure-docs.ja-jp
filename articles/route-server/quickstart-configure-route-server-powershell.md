@@ -8,18 +8,21 @@ ms.date: 09/01/2021
 ms.topic: quickstart
 ms.service: route-server
 ms.custom: devx-track-azurepowershell - mode-api
-ms.openlocfilehash: 65f5957d52dcf510601f4a4773cde4c8a477dc97
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 8fe644edd7b08a5f18787b16abfe5e0a1951df40
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123475622"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129094407"
 ---
 # <a name="quickstart-create-and-configure-route-server-using-azure-powershell"></a>クイック スタート: Azure PowerShell を使用してルート サーバーを作成および構成する
 
 この記事は、Azure PowerShell を使用して、仮想ネットワーク内のネットワーク仮想アプライアンス (NVA) とピアリングするように Azure Route Server を構成するのに役立ちます。 Route Server では、NVA からルートを学習し、仮想ネットワーク内の仮想マシン上にそれらをプログラムします。 また、Azure Route Server は NVA に仮想ネットワーク ルートをアドバタイズします。 詳細については、[Azure Route Server](overview.md) に関するページを参照してください。
 
 :::image type="content" source="media/quickstart-configure-route-server-portal/environment-diagram.png" alt-text="Azure PowerShell を使用した Route Server デプロイ環境の図。" border="false":::
+
+> [!IMPORTANT]
+> 9 月 1 日より前に作成した Azure Route Server があり、パブリック IP アドレスが関連付けられていない場合は、管理目的で IP アドレスを取得できるようにするため、Route Server を再作成する必要があります。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -126,7 +129,7 @@ NVA の構成を完了して BGP セッションを有効にするには、Azure
 ```azurepowershell-interactive
 $routeserver = @{
     RouteServerName = 'myRouteServer'
-    ResourcGroupName = 'myRouteServerRG'
+    ResourceGroupName = 'myRouteServerRG'
 } 
 Get-AzRouteServer @routeserver
 ```
@@ -147,7 +150,7 @@ RouteServerIps : {10.5.10.4, 10.5.10.5}
 ```azurepowershell-interactive
 $routeserver = @{
     RouteServerName = 'myRouteServer'
-    ResourcGroupName = 'myRouteServerRG'
+    ResourceGroupName = 'myRouteServerRG'
     AllowBranchToBranchTraffic
 }  
 Update-AzRouteServer @routeserver 
@@ -158,7 +161,7 @@ Update-AzRouteServer @routeserver
 ```azurepowershell-interactive
 $routeserver = @{
     RouteServerName = 'myRouteServer'
-    ResourcGroupName = 'myRouteServerRG'
+    ResourceGroupName = 'myRouteServerRG'
 }  
 Update-AzRouteServer @routeserver 
 ```
@@ -170,7 +173,7 @@ Azure Route Server によってアドバタイズされたルートを表示す�
 ```azurepowershell-interactive
 $remotepeer = @{
     RouteServerName = 'myRouteServer'
-    ResourcGroupName = 'myRouteServerRG'
+    ResourceGroupName = 'myRouteServerRG'
     PeerName = 'myNVA'
 }
 Get-AzRouteServerPeerAdvertisedRoute @routeserver
@@ -181,7 +184,7 @@ Azure Route Server によって学習されたルートを表示するには、[
 ```azurepowershell-interactive
 $routeserver = @{
     RouteServerName = 'myRouteServer'
-    ResourcGroupName = 'myRouteServerRG'
+    ResourceGroupName = 'myRouteServerRG'
     AllowBranchToBranchTraffic
 }  
 Get-AzRouteServerPeerLearnedRoute @routeserver

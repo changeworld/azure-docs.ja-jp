@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/25/2021
+ms.date: 08/25/2021
 ms.author: jeedes
-ms.openlocfilehash: 3342198600c3549a7ce5e1e52111233d4fa920d8
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 2b28456a15227ab41a2e4c3c07c6df9125409ca9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113110183"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128645362"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-envoy"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Envoy の統合
 
@@ -40,6 +40,8 @@ ms.locfileid: "113110183"
 * Envoy では、**SP** Initiated SSO がサポートされます。
 
 * Envoy では、**Just-In-Time** ユーザー プロビジョニングがサポートされます。
+
+* Envoy では、[自動化されたユーザー プロビジョニング](envoy-provisioning-tutorial.md)がサポートされます。
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -154,6 +156,8 @@ Envoy に対して Azure AD SSO を構成してテストするには、次の手
 
 このセクションでは、Britta Simon というユーザーを Envoy に作成します。 Envoy では、Just-In-Time ユーザー プロビジョニングがサポートされており、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 Envoy にユーザーがまだ存在していない場合は、認証後に新しく作成されます。
 
+Envoy では、自動ユーザー プロビジョニングもサポートされます。自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](./envoy-provisioning-tutorial.md)をご覧ください。
+
 ## <a name="test-sso"></a>SSO のテスト 
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
@@ -162,7 +166,7 @@ Envoy に対して Azure AD SSO を構成してテストするには、次の手
 
 * Envoy のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Envoy] タイルをクリックすると、Envoy のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Envoy] タイルをクリックすると、Envoy のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

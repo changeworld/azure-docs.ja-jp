@@ -3,12 +3,12 @@ title: Windows PowerShell DSC を使用して Connected Machine エージェン�
 description: この記事では、Windows PowerShell DSC を使用して、Azure Arc 対応サーバーを使用してマシンを Azure に接続する方法について説明します。
 ms.date: 08/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0a6e955df43e3589c97091cb111699ce402723d0
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 357d89a989efbc3b8deded193808d47753b722d9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122323798"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124789087"
 ---
 # <a name="how-to-install-the-connected-machine-agent-using-windows-powershell-dsc"></a>Windows PowerShell DSC を使用して Connected Machine エージェントをインストールする方法
 
@@ -20,7 +20,7 @@ ms.locfileid: "122323798"
 
 - [AzureConnectedMachineDsc](https://www.powershellgallery.com/packages/AzureConnectedMachineDsc) DSC モジュール
 
-- マシンを Azure Arc 対応サーバーに非対話形式で接続するためのサービス プリンシパル。 Arc 対応サーバー用のサービス プリンシパルをまだ作成していない場合は、「[大規模なオンボーディング用にサービス プリンシパルを作成する](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale)」のセクションにある手順に従ってください。
+- マシンを Azure Arc 対応サーバーに非対話形式で接続するためのサービス プリンシパル。 Azure Arc 対応サーバー用のサービス プリンシパルをまだ作成していない場合は、「[大規模なオンボーディング用にサービス プリンシパルを作成する](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale)」のセクションにある手順に従ってください。
 
 ## <a name="install-the-connectedmachine-dsc-module"></a>ConnectedMachine DSC モジュールをインストールする
 
@@ -90,4 +90,4 @@ PowerShell ギャラリーの [CompositeResource](https://www.powershellgallery.
 
 * [計画と展開ガイド](plan-at-scale-deployment.md)を参照して、任意の規模で Azure Arc 対応サーバーをデプロイし、一元的な管理と監視を実装する計画を立ててください。
 
-* [Azure Policy](../../governance/policy/overview.md) を使用してマシンを管理する方法について学習します。これには、VM の[ゲスト構成](../../governance/policy/concepts/guest-configuration.md)、マシンが予期された Log Analytics ワークスペースに報告していることの確認、[VM 分析情報](../../azure-monitor/vm/vminsights-enable-policy.md)による監視の有効化などがあります。
+* [Azure Policy](../../governance/policy/overview.md) を使用してマシンを管理する方法を確認します。VM の[ゲスト構成](../../governance/policy/concepts/guest-configuration.md)、マシンの報告先が、予期された Log Analytics ワークスペースであることの確認、[VM 分析情報](../../azure-monitor/vm/vminsights-enable-policy.md)を使用した監視の有効化などの方法です。

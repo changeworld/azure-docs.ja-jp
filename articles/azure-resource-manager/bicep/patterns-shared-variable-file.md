@@ -5,12 +5,12 @@ author: johndowns
 ms.author: jodowns
 ms.topic: conceptual
 ms.date: 08/18/2021
-ms.openlocfilehash: 812cb0b861418d3bd3d13959cf074442d9a81538
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: eb9a24c0c5b6b7bd037fe5da13fe108878f55a15
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122446697"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128648318"
 ---
 # <a name="shared-variable-file-pattern"></a>共有変数ファイル パターン
 
@@ -24,7 +24,7 @@ Bicep コードを記述するときには、一連の Bicep ファイルにわ�
 
 ## <a name="solution"></a>解決策
 
-共有する必要がある変数を含む JSON ファイルを作成します。 Bicep 関数の `json()` および `loadTextContent()` を使用してファイルを読み込み、変数にアクセスします。 配列変数の場合は、`concat()` 関数を使用して、共有値を特定のリソースの任意のカスタム値と組み合わせます。
+共有する必要がある変数を含む JSON ファイルを作成します。 [`json()` 関数](bicep-functions-object.md#json)と [`loadTextContent()` 関数](bicep-functions-files.md#loadtextcontent)を使用して、ファイルを読み込み、変数にアクセスします。 配列変数の場合は、[`concat()` 関数](bicep-functions-array.md#concat)を使用して、共有値を特定のリソースの任意のカスタム値と組み合わせます。
 
 ## <a name="example-1-naming-prefixes"></a>例 1: 名前付けのプレフィックス
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/01/2021
 ms.author: danlep
-ms.openlocfilehash: d5f15b6d3ba1b006c3495c6c7db693814f68a823
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: f63a8e9f083256cb68a23d69e49d44d9bbfd57de
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128601047"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129429473"
 ---
 # <a name="api-management-cross-domain-policies"></a>API Management cross domain policies (API Management のクロス ドメイン ポリシー)
 このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](./api-management-policies.md)」をご覧ください。
@@ -37,7 +37,7 @@ ms.locfileid: "128601047"
 ```xml
 <cross-domain>
     <!-Policy configuration is in the Adobe cross-domain policy file format,
-        see https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html-->
+        see https://www.adobe.com/devnet-docs/acrobatetk/tools/AppSec/CrossDomain_PolicyFile_Specification.pdf-->
 </cross-domain>
 ```
 
@@ -53,7 +53,7 @@ ms.locfileid: "128601047"
 
 |名前|説明|必須|
 |----------|-----------------|--------------|
-|cross-domain|ルート要素。 子要素は、[Adobe cross-domain ポリシー ファイルの仕様](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html)に従う必要があります。|はい|
+|cross-domain|ルート要素。 子要素は、[Adobe cross-domain ポリシー ファイルの仕様](https://www.adobe.com/devnet-docs/acrobatetk/tools/AppSec/CrossDomain_PolicyFile_Specification.pdf)に従う必要があります。|はい|
 
 ### <a name="usage"></a>使用法
 このポリシーは、次のポリシー [セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。

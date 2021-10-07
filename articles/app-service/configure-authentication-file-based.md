@@ -3,12 +3,12 @@ title: AuthN/AuthZ のファイルベースの構成
 description: 構成ファイルを使用して App Service で認証と認可を構成し、特定のプレビュー機能を有効にします。
 ms.topic: article
 ms.date: 07/15/2021
-ms.openlocfilehash: 54fa47055a1f0bba3075d6e77c4fa27d63caf2b6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2875c529e644b46d08251ae57ee9f424492a2433
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121730689"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128657217"
 ---
 # <a name="file-based-configuration-in-azure-app-service-authentication"></a>Azure App Service 認証でのファイルベースの構成
 
@@ -21,7 +21,7 @@ ms.locfileid: "121730689"
 
 1. 構成用の新しい JSON ファイルをプロジェクトのルートに作成します (Web/関数アプリでは D:\home\site\wwwroot にデプロイされます)。 [ファイルベースの構成リファレンス](#configuration-file-reference)に従って、必要な構成を入力します。 既存の Azure Resource Manager 構成を変更する場合は、必ず、`authsettings` コレクションにキャプチャされたプロパティを構成ファイルに変換してください。
 
-2. [Azure Resource Manager](../azure-resource-manager/management/overview.md) API で `Microsoft.Web/sites/<siteName>/config/authsettingsV2` にキャプチャされた既存の構成を変更します。 これを変更するには、[Azure Resource Manager テンプレート](../azure-resource-manager/templates/overview.md)や、[Azure Resource Explorer](https://resources.azure.com/) などのツールを使用できます。 authsettingsV2 コレクション内で、3 つのプロパティを設定する必要があります (他のプロパティは削除してもかまいません)。
+2. [Azure Resource Manager](../azure-resource-manager/management/overview.md) API で `Microsoft.Web/sites/<siteName>/config/authsettingsV2` にキャプチャされた既存の構成を変更します。 これを変更するには、[Azure Resource Manager テンプレート](../azure-resource-manager/templates/overview.md)や、[Azure Resource Explorer](https://resources.azure.com/) などのツールを使用できます。 authsettingsV2 コレクション内で、2 つのプロパティを設定する必要があります (他のものは削除してもかまいません)。
 
     1. `platform.enabled` を "true" に設定します
     2. `platform.configFilePath` をファイルの名前に設定します ("auth.json" など)

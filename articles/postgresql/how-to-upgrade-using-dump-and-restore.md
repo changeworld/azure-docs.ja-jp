@@ -5,13 +5,13 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 08/26/2021
-ms.openlocfilehash: 7e8e1db98ac79c2be6dbb399a14368ce3e2f898c
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.date: 09/21/2021
+ms.openlocfilehash: b2216754cbdb6081a82f71392aee6e5f8ce2d3ba
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123033498"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128648413"
 ---
 # <a name="upgrade-your-postgresql-database-using-dump-and-restore"></a>ダンプと復元を使用した PostgreSQL データベースのアップグレード
 
@@ -96,10 +96,10 @@ ms.locfileid: "123033498"
 ソース サーバーからすべてのロールをダンプするには:
 
 ```azurecli-interactive
-pg_dumpall -r --host=mySourceServer --port=5432 --username=myUser -- dbname=mySourceDB > roles.sql
+pg_dumpall -r --host=mySourceServer --port=5432 --username=myUser --database=mySourceDB > roles.sql
 ```
 
-さらに、psql を使用してそれをターゲット サーバーに復元します。
+ターゲット サーバーで psql を使用してコンテンツを復元する前に、`roles.sql` を編集し、`NOSUPERUSER` および `NOBYPASSRLS` の参照を削除します。
 
 ```azurecli-interactive
 psql -f roles.sql --host=myTargetServer --port=5432 --username=myUser
@@ -198,6 +198,14 @@ PostgreSQL クライアントがない場合、または Azure Cloud Shell を�
 
 > [!TIP]
 > このドキュメントで説明するプロセスは、Azure Database for PostgreSQL - フレキシブル サーバーのアップグレードにも使用できます。これはプレビュー段階です。 主要な違いは、フレキシブル サーバーのターゲットの接続文字列に `@dbName` がないことです。  たとえば、ユーザー名が `pg` の場合、接続文字列の単一サーバーのユーザー名は `pg@pg-95` ですが、フレキシブル サーバーでは、`pg` だけが使用されます。
+
+## <a name="post-upgrademigrate"></a>アップグレード後/移行
+メジャー バージョンのアップグレードが完了したら、各データベースで `ANALYZE` コマンドを実行して、`pg_statistic` テーブルを更新することをお勧めします。 そうしなければ、パフォーマンスの問題が発生する可能性があります。
+
+```SQL
+postgres=> analyze;
+ANALYZE
+```
 
 ## <a name="next-steps"></a>次のステップ
 

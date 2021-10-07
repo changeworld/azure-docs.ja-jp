@@ -6,12 +6,12 @@ ms.author: nayenama
 ms.service: purview
 ms.topic: conceptual
 ms.date: 09/27/2021
-ms.openlocfilehash: 8c2628922391f3b8f6570c011dbc2220b1e7f815
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 2e3bcd7e51226f437f42f03fa43b144bee434f33
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129212863"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129456140"
 ---
 # <a name="use-purview-studio"></a>Purview Studio の使用
 
@@ -59,7 +59,7 @@ ms.locfileid: "129212863"
    > Azure Purview ロールの詳細については「[Azure Purview でのアクセスの制御](catalog-permissions.md)」を参照してください。
 
 5. 左側のナビゲーション バーは、アプリケーションのメイン ページを見つける場合に役立ちます。   
-6. **[最近アクセス]** タブには、最近アクセスしたデータ資産の一覧が表示されます。 資産へのアクセス方法について詳しくは、[Data Catalog の検索](how-to-search-catalog.md)および[資産の種類での参照](how-to-browse-catalog.md#browse-experience)に関する記事をご覧ください。  **[マイ アイテム]** タブは、ログオンしているユーザーが所有するデータ資産の一覧です。
+6. **[最近アクセス]** タブには、最近アクセスしたデータ資産の一覧が表示されます。 資産へのアクセス方法について詳しくは、[Data Catalog の検索](how-to-search-catalog.md)および[資産の種類での参照](how-to-browse-catalog.md)に関する記事をご覧ください。  **[マイ アイテム]** タブは、ログオンしているユーザーが所有するデータ資産の一覧です。
 7. **[リンク]** には、リージョンの状態、ドキュメント、価格、概要、Purview の状態へのリンクが含まれています
 8. 上部のナビゲーション バーには、リリース ノートや更新プログラム、Purview アカウントの変更、通知、ヘルプ、フィードバックの各セクションに関する情報が含まれています。
 

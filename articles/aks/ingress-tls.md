@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) クラスターで、自動的に TL
 services: container-service
 ms.topic: article
 ms.date: 04/23/2021
-ms.openlocfilehash: e93cfd95464d43b70ef8ade7b6380ba2c67cd9d4
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 8c83e3bd2cb9243744c13cb70ed0488a108bc979
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122323325"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128588183"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で HTTPS イングレス コントローラーを作成する
 
@@ -38,11 +38,11 @@ Helm の構成および使用方法の詳細については、「[Azure Kubernet
 
 この記事ではまた、Azure CLI バージョン 2.0.64 以降を実行していることも必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli-install]に関するページを参照してください。
 
-また、この記事では、ACR が統合された既存の AKS クラスターがあることを前提としています。 ACR が統合された AKS クラスターを作成する方法の詳細については、「[Azure Kubernetes サービスから Azure Container Registry の認証を受ける][aks-integrated-acr]」を参照してください。
+また、この記事では、ACR が統合された既存の AKS クラスターがあることを前提としています。 ACR が統合された AKS クラスターを作成する方法の詳細については、[Azure Kubernetes Service からの Azure Container Registry による認証][aks-integrated-acr]に関する記事を参照してください。
 
-## <a name="import-the-images-used-by-the-helm-chart-into-your-acr"></a>Helm グラフで使用されるイメージを ACR にインポートする
+## <a name="import-the-images-used-by-the-helm-chart-into-your-acr"></a>Helm Chart で使用されるイメージを ACR にインポートする
 
-この記事では、3 つのコンテナー イメージに依存する [NGINX イングレス コントローラー Helm グラフ][ingress-nginx-helm-chart]を使用します。 これらのイメージを ACR にインポートするには、`az acr import` を使用します。
+この記事では、3 つのコンテナー イメージに依存する [NGINX イングレス コントローラー Helm Chart][ingress-nginx-helm-chart] を使用します。 これらのイメージを ACR にインポートするには、`az acr import` を使用します。
 
 ```azurecli
 REGISTRY_NAME=<REGISTRY_NAME>
@@ -70,7 +70,7 @@ az acr import --name $REGISTRY_NAME --source $CERT_MANAGER_REGISTRY/$CERT_MANAGE
 ```
 
 > [!NOTE]
-> コンテナー イメージを ACR にインポートするだけでなく、Helm グラフを ACR にインポートすることもできます。 詳細については、「[Azure コンテナー レジストリに対する Helm グラフのプッシュおよびプル][acr-helm]」を参照してください。
+> コンテナー イメージを ACR にインポートするだけでなく、Helm Chart を ACR にインポートすることもできます。 詳細については、「[Azure コンテナー レジストリに対する Helm グラフのプッシュおよびプル][acr-helm]」を参照してください。
 
 ## <a name="create-an-ingress-controller"></a>イングレス コントローラーを作成する
 
@@ -79,7 +79,7 @@ az acr import --name $REGISTRY_NAME --source $CERT_MANAGER_REGISTRY/$CERT_MANAGE
 イングレス コントローラーも Linux ノード上でスケジュールする必要があります。 Windows Server ノードでは、イングレス コントローラーを実行しないでください。 ノード セレクターは、`--set nodeSelector` パラメーターを使用して指定され、Linux ベース ノード上で NGINX イングレス コントローラーを実行するように Kubernetes スケジューラに指示されます。
 
 > [!TIP]
-> 次の例では、*ingress-basic* という名前のイングレス リソースの Kubernetes 名前空間を作成し、その名前空間内での動作を想定しています。 必要に応じて、ご自身の環境の名前空間を指定できます。
+> 次の例では、*ingress-basic* という名前のイングレス リソースの Kubernetes 名前空間が作成され、その名前空間内で動作することを想定しています。 必要に応じて、ご自身の環境の名前空間を指定できます。
 
 > [!TIP]
 > クラスター内のコンテナーへの要求で[クライアント ソース IP の保持][client-source-ip]を有効にする場合は、Helm インストール コマンドに `--set controller.service.externalTrafficPolicy=Local` を追加します。 クライアント ソース IP が要求ヘッダーの *X-Forwarded-For* の下に格納されます。 クライアント ソース IP の保持が有効になっているイングレス コントローラーを使用する場合、TLS パススルーは機能しません。

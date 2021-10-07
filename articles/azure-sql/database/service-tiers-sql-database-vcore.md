@@ -8,14 +8,14 @@ ms.topic: conceptual
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sashan, moslake
-ms.date: 07/14/2021
+ms.date: 09/10/2021
 ms.custom: references_regions
-ms.openlocfilehash: 3e80c1153737514575017685310b6e5306a47167
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: a92dd67011d7ef7d5ad162983de51b98839c4a84
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113730847"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128621984"
 ---
 # <a name="vcore-purchase-model-overview---azure-sql-database"></a>仮想コア購入モデルの概要 - Azure SQL Database 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -39,11 +39,14 @@ Azure SQL Database によって使用される仮想コア購入モデルには�
 |最適な用途|ほとんどのビジネス ワークロード。 予算重視で、バランスのとれた、スケーラブルなコンピューティングおよびストレージ オプションを提供します。 |複数の分離されたレプリカを使用して、障害に対する最大の回復性をビジネス アプリケーションに提供し、データベース レプリカあたりの最大の I/O パフォーマンスを実現します。|高度にスケーラブルなストレージと読み取りスケールの要件を持つほとんどのビジネス ワークロード。  複数の分離されたデータベース レプリカを構成できるようにして、障害に対するより高い回復性を提供します。 |
 |ストレージ|リモート ストレージを使用します。<br/>**SQL Database がプロビジョニングされたコンピューティング**:<br/>5 GB – 4 TB<br/>**サーバーレス コンピューティング**:<br/>5 GB - 3 TB|ローカル SSD ストレージを使用します。<br/>**SQL Database がプロビジョニングされたコンピューティング**:<br/>5 GB – 4 TB|必要に応じた、ストレージの柔軟な自動拡張。 最大 100 TB のストレージをサポートします。 ローカル バッファー プール キャッシュとローカル データ ストレージにローカル SSD ストレージを使用します。 最終的な長期間のデータ ストアとして Azure リモート ストレージを使用します。 |
 |IOPS とスループット (概算)|**SQL Database**:[単一データベース](resource-limits-vcore-single-databases.md)と [エラスティック プール](resource-limits-vcore-elastic-pools.md)に関するリソース制限を参照してください。|[単一データベース](resource-limits-vcore-single-databases.md)と[エラスティック プール](resource-limits-vcore-elastic-pools.md)に関するリソース制限を参照してください。|Hyperscale は、複数のレベルのキャッシュが存在する複数レベル アーキテクチャです。 有効な IOPS とスループットはワークロードによって異なります。|
-|可用性|1 レプリカ、読み取りスケール レプリカなし|3 レプリカ、1 [読み取りスケール レプリカ](read-scale-out.md)、<br/>ゾーン冗長高可用性 (HA)|1 読み取り/書き込みレプリカ、および 0 ～ 4 [ 読み取りスケール レプリカ ](read-scale-out.md)|
-|バックアップ|[読み取りアクセス geo 冗長ストレージ (RA-GRS)](../../storage/common/geo-redundant-design.md)、1 ～ 35 日 (既定では 7 日)|[RA-GRS](../..//storage/common/geo-redundant-design.md)、1 ～ 35 日 (既定では 7 日)|Azure リモート ストレージでのスナップショット ベースのバックアップ。 このようなスナップショットを使用して復元することで、高速復元が可能になります。 バックアップは瞬時であり、コンピューティング I/O パフォーマンスには影響を与えません。 復元は高速であり、データ サイズに左右される操作ではありません (数時間または数日ではなく、数分で完了)。|
+|可用性|1 レプリカ、読み取りスケール レプリカなし、 <br/>ゾーン冗長高可用性 (HA) (プレビュー)|3 レプリカ、1 [読み取りスケール レプリカ](read-scale-out.md)、<br/>ゾーン冗長高可用性 (HA)|1 読み取り/書き込みレプリカ、および 0 ～ 4 [ 読み取りスケール レプリカ ](read-scale-out.md)|
+|バックアップ|geo 冗長、ゾーン冗長\*、またはローカル冗長\*のバックアップ ストレージから選択、1 から 35 日の保持期間 (既定値は 7 日)|geo 冗長、ゾーン冗長\*、またはローカル冗長\*のバックアップ ストレージから選択、1 から 35 日の保持期間 (既定値は 7 日)|geo 冗長、ゾーン冗長\*\*、またはローカル冗長\*\*のバックアップ ストレージから選択、7 日の保持期間。<p>Azure リモート ストレージでのスナップショット ベースのバックアップ。 スナップショットを使用して復元することで、高速復旧が可能になります。 バックアップは瞬時であり、コンピューティング I/O パフォーマンスには影響を与えません。 復元は高速であり、データ サイズに左右される操作ではありません (数時間ではなく、数分で完了)。|
 |メモリ内|サポートされていません|サポートされています|部分的なサポート。 メモリ最適化テーブル型、テーブル変数、ネイティブ コンパイル モジュールがサポートされています。|
 |||
 
+\* プレビュー段階
+
+\*\* プレビュー段階、新しい Hyperscale データベースのみ
 
 ### <a name="choosing-a-service-tier"></a>サービス階層の選択
 

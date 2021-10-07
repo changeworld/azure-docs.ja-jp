@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.author: sharrai
 ms.date: 05/27/2021
-ms.openlocfilehash: b8264221db1fcfee8d47ac0d8f159d6b7a6140fe
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.openlocfilehash: d766903d6de975a10dfd29bdf367ac2831321e50
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110577089"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124777433"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>フェールバック用の Linux マスター ターゲット サーバーをインストールする
 仮想マシンを Azure にフェールオーバー後、仮想マシンをオンプレミス サイトにフェールバックできます。 フェールバックするには、Azure からオンプレミス サイトへの仮想マシンを再保護する必要があります。 このプロセスには、トラフィックを受信するオンプレミス マスター ターゲット サーバーが必要です。 
@@ -195,7 +195,12 @@ Azure Site Recovery マスター ターゲット サーバーには特定バー�
 
 #### <a name="download-the-master-target-installation-packages"></a>マスター ターゲットのインストール パッケージをダウンロードする
 
-[最新の Linux マスター ターゲット インストール ビットをダウンロードします](https://aka.ms/latestlinuxmobsvc)。
+Ubuntu 20.04 用の最新の Linux マスター ターゲット インストール ビットを[ダウンロードします](https://aka.ms/latestlinuxmobsvc)。
+
+Ubuntu 16.04 用の以前の Linux マスター ターゲット インストール ビットを[ダウンロードします](https://aka.ms/oldlinuxmobsvc)。
+
+> [!NOTE]
+> マスター ターゲット サーバーの設定には、Ubuntu オペレーティング システムの最新バージョンを使用することをお勧めします。
 
 Linux を使用してこれをダウンロードするには、次のように入力します。
 

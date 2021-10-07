@@ -7,24 +7,31 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 06/30/2021
 ms.author: cherylmc
-ms.openlocfilehash: d3cffbe9ebaa71ca5c4dfd8681159f83ff06eb38
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: d1ac031b79372987561651044e81da2e3d2d2779
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122821466"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128636537"
 ---
 # <a name="monitoring-virtual-wan"></a>Virtual WAN の監視
 
-Azure Monitor を使用して、Azure Virtual WAN を監視できます。 Virtual WAN は、ネットワーク、セキュリティ、およびルーティングのさまざまな機能をまとめて、1 つの運用インターフェイスを提供するネットワーク サービスです。 Virtual WAN VPN ゲートウェイ、ExpressRoute ゲートウェイ、および Azure Firewall には、Azure Monitor 経由で利用可能なログ記録とメトリックがあります。
+Azure Monitor を使用して、Azure Virtual WAN を監視できます。 Virtual WAN は、ネットワーク、セキュリティ、およびルーティングのさまざまな機能をまとめて、1 つの運用インターフェイスを提供するネットワーク サービスです。 Virtual WAN VPN ゲートウェイ、ExpressRoute ゲートウェイ、および Azure Firewall には、Azure Monitor 経由で利用可能なログ記録とメトリックがあります。 
 
 この記事では、ポータル経由で利用可能なメトリックと診断について取り上げます。 メトリックは軽量で、ほぼリアルタイムのシナリオをサポートできるため、アラートや迅速な問題の検出に役立ちます。
 
 ### <a name="monitoring-secured-hub-azure-firewall"></a>セキュリティ保護付きハブの監視 (Azure Firewall) 
 
-Azure Firewall のログを使用して、セキュリティ保護付きハブを監視できます。 また、アクティビティ ログを使用して、Azure Firewall リソースに対する操作を監査することもできます。
-
 Azure Firewall を使用して仮想ハブをセキュリティで保護することを選択した場合、関連するログとメトリックはこちらで入手できます。[Azure Firewall のログとメトリック](../firewall/logs-and-metrics.md)。
+Azure Firewall のログとメトリックを使用して、セキュリティ保護付きハブを監視できます。 また、アクティビティ ログを使用して、Azure Firewall リソースに対する操作を監査することもできます。
+セキュリティ保護してセキュリティ保護付きハブに変換する Azure 仮想 WAN ごとに、ハブがあるリソース グループに明示的なファイアウォール リソース オブジェクトが作成されます。 
+
+:::image type="content" source="./media/monitor-virtual-wan/firewall-resources-portal.png" alt-text="スクリーンショットは、vWAN ハブ リソース グループ内のファイアウォール リソースを示しています。":::
+
+診断とログ記録の構成は、そこから **[診断設定]** タブにアクセスして行う必要があります。
+
+:::image type="content" source="./media/monitor-virtual-wan/firewall-diagnostic-settings.png" alt-text="スクリーンショットは、ファイアウォール診断設定を示しています。":::
+
 
 ## <a name="metrics"></a>メトリック
 
@@ -57,7 +64,7 @@ Azure サイト間 VPN ゲートウェイでは、次のメトリックを利用
 | **学習された BGP ルート** | ピアごとおよびインスタンスごとの学習されたルートの数。|
 | **VNET アドレス プレフィックス数** | ゲートウェイによって使用またはアドバタイズされた VNET アドレス プレフィックスの数。|
 
-**[分割の適用]** を選択し、推奨値を選択することで、ピアとインスタンスごとのメトリックを確認できます。 
+**[分割を適用する]** を選択し、推奨値を選択することで、ピアとインスタンスごとのメトリックを確認できます。 
 
 #### <a name="traffic-flow-metrics"></a>トラフィック フロー メトリック
 | メトリック | 説明|
@@ -78,7 +85,7 @@ Azure ポイント対サイト VPN ゲートウェイでは、次のメトリッ
 | メトリック | 説明|
 | --- | --- |
 | **ゲートウェイの P2S 帯域幅** | ゲートウェイのポイント対サイトでの平均総帯域幅 (バイト/秒)。 |
-| **P2S 接続数** |ゲートウェイのポイント対サイト接続の数。 ゲートウェイのポイント対サイト接続の数。 Azure Monitor で正確なメトリックを表示していることを確認するには、 **[P2S 接続数]** の **[集計の種類]** として **[合計]** を選択してください。 また、 **[インスタンス]** ごとにも分割する場合は、 **[最大]** を選択することもできます。 |
+| **P2S 接続数** |ゲートウェイのポイント対サイト接続の数。 ゲートウェイのポイント対サイト接続の数。 Azure Monitor で正確なメトリックが表示されるように、 **[P2S 接続数]** の **[集計の種類]** として **[合計]** を選択してください。 また、 **[インスタンス]** ごとにも分割する場合は、 **[最大]** を選択することもできます。 |
 | **ユーザー VPN ルート数** | VPN ゲートウェイに構成されているユーザー VPN ルートの数。 このメトリックは、**静的** ルートと **動的** ルートに分けることができます。
 
 ### <a name="azure-expressroute-gateways"></a>Azure ExpressRoute ゲートウェイ
@@ -96,11 +103,11 @@ Azure ExpressRoute ゲートウェイでは、次のメトリックを利用で�
 
 1. ポータル上で、ゲートウェイがある仮想ハブに移動します。
 
-2. サイト間ゲートウェイを検索するには **[VPN (サイト間)]** を、ExpressRoute ゲートウェイを検索するには **[ExpressRoute]** を、ポイント対サイト ゲートウェイを検索するには **[ユーザー VPN (ポイントからサイトへ)]** を選択します。 ページ上で、ゲートウェイの情報を確認できます。 この情報をコピーします。 Azure Monitor を使用して診断を表示するために、後で使用します。
+2. サイト間ゲートウェイを検索するには **[VPN (サイト間)]** を、ExpressRoute ゲートウェイを検索するには **[ExpressRoute]** を、ポイント対サイト ゲートウェイを検索するには **[ユーザー VPN (ポイントからサイトへ)]** を選択します。
 
 3. **[メトリック]** を選びます。
 
-   :::image type="content" source="./media/monitor-virtual-wan/metrics.png" alt-text="スクリーンショットには、Azure Monitor で [表示] が選択されたサイト間 VPN ペインが示されています。":::
+   :::image type="content" source="./media/monitor-virtual-wan/view-metrics.png" alt-text="スクリーンショットは、[Azure Monitor で表示] が選択されたサイト間 VPN ペインを示しています。":::
 
 4. **[メトリック]** ページ上で、関心のあるメトリックを閲覧できます。
 
@@ -127,37 +134,53 @@ Azure ポイント対サイト VPN ゲートウェイでは、次の診断を利
 | --- | --- |
 | **ゲートウェイ診断ログ** | 正常性、構成、サービス更新、その他の診断など、ゲートウェイ固有の診断。 |
 | **IKE 診断ログ** | IPsec 接続に対する IKE 固有の診断。|
-| **P2S 診断ログ** | ユーザー VPN (ポイント対サイト) P2S の構成とクライアント イベントです。 クライアントの接続/切断、VPN クライアント アドレスの割り当て、およびその他の診断が含まれます。|
+| **P2S 診断ログ** | ユーザー VPN (ポイント対サイト) P2S の構成とクライアント イベントです。 クライアントの接続または切断、VPN クライアント アドレスの割り当て、その他の診断が含まれます。|
 
-### <a name="view-diagnostic-logs"></a><a name="diagnostic-steps"></a>診断ログを表示する
+### <a name="express-route-gateways"></a>Express Route ゲートウェイ
 
-次の手順に従い、診断を検索して表示できます。
+Azure Virtual WAN 内の Express Route ゲートウェイの診断ログはサポートされていません。
 
-1. ポータル上で、Virtual WAN リソースに移動します。 ポータル上の [Virtual WAN] ページの **[概要]** セクションで、 **[Essentials]** を選択してビューを展開し、リソース グループ情報を取得します。 リソース グループ情報をコピーします。
+### <a name="view-diagnostic-logs-configuration"></a><a name="diagnostic-steps"></a>診断ログの構成の表示
 
-   :::image type="content" source="./media/monitor-virtual-wan/3.png" alt-text="[コピー] ボタンを指す矢印の付いた [概要] セクションを示すスクリーンショット。":::
+次の手順を使用すると、診断設定の作成、編集、表示を行うことができます。
 
-2. 検索バーから **[モニター]** に移動し、[設定] セクションで **[診断設定]** を選択した後、リソース グループ、リソースの種類、リソース情報を入力します。 これは、この記事で前述した「[ゲートウェイ メトリックを表示する](#metrics-steps)」の手順 2 でコピーしたリソース グループ情報です。
+1. ポータルで、Virtual WAN リソースに移動し、 **[接続]** グループで **[ハブ]** を選択します。 
 
-   :::image type="content" source="./media/monitor-virtual-wan/4.png" alt-text="[リソース] ドロップダウンを指す矢印の付いた [監視] セクションを示すスクリーンショット。":::
+   :::image type="content" source="./media/monitor-virtual-wan/select-hub.png" alt-text="vWAN ポータルでのハブの選択を示すスクリーンショット。":::
 
-3. [結果] ページで、 **[+ 診断設定を追加する]** を選択してから、オプションを選択します。 Log Analytics への送信、イベント ハブへのストリーム、またはストレージ アカウントへの単純なアーカイブから選ぶことができます。
+2. 左側の **[接続]** グループで、診断を調べるゲートウェイを選択します。
 
-   :::image type="content" source="./media/monitor-virtual-wan/5.png" alt-text="メトリック ページ":::
+   :::image type="content" source="./media/monitor-virtual-wan/select-hub-gateway.png" alt-text="ハブの [接続] セクションを示すスクリーンショット。":::
+
+3. ページの右側の **[ログ]** の右にある **[Azure Monitor で表示]** リンクをクリックして、オプションを選択します。 Log Analytics への送信、イベント ハブへのストリーム、またはストレージ アカウントへの単純なアーカイブから選ぶことができます。
+
+   :::image type="content" source="./media/monitor-virtual-wan/view-hub-gateway-logs.png" alt-text="[ログ] の [Azure Monitor で表示] の選択を示すスクリーンショット。":::
+
+4. このページで、新しい診断設定の作成 ( **[+診断設定を追加する]** ) や既存の診断設定の編集 ( **[設定の編集]** ) を行えます。 診断ログを Log Analytics に送信するか (次の例を参照)、イベント ハブにストリーム配信するか、サード パーティのソリューションに送信するか、ストレージ アカウントにアーカイブするかを選択できます。
+
+    :::image type="content" source="./media/monitor-virtual-wan/select-gateway-settings.png" alt-text="[診断ログの設定] の選択を示すスクリーンショット。":::
 
 ### <a name="log-analytics-sample-query"></a><a name="sample-query"></a>Log Analytics サンプル クエリ
 
-ログは、 **[Azure Log Analytics ワークスペース]** で検索されます。 Log Analytics 内でクエリを設定できます。 次の例には、サイト間でのルート診断を取得するためのクエリが含まれています。
+Log Analytics ワークスペースに診断データを送信することを選択した場合は、次の例のような SQL 系のクエリを使用してデータを調べることができます。 詳細については、「[Log Analytics クエリ言語](/services-hub/health/log_analytics_query_language)」を参照してください。
 
-```AzureDiagnostics | where Category == "RouteDiagnosticLog"```
+次の例には、サイト間でのルート診断を取得するためのクエリが含まれています。
 
-必要に応じて、 **= =** の後ろにある以下の値を置き換えます。
+`AzureDiagnostics | where Category == "RouteDiagnosticLog"`
+
+この記事の前のセクションに示した表に基づいて、必要に応じて、 **= =** の後の以下の値を置き換えます。
 
 * "GatewayDiagnosticLog"
 * "IKEDiagnosticLog"
 * "P2SDiagnosticLog”
 * "TunnelDiagnosticLog"
 * "RouteDiagnosticLog"
+
+クエリを実行するには、診断ログを受信するように構成した Log Analytics リソースを開き、ペインの左側の **[全般]** タブで **[ログ]** を選択する必要があります。
+
+:::image type="content" source="./media/monitor-virtual-wan/log-analytics-query-samples.png" alt-text="Log Analytics クエリの例。":::
+
+サイト間およびポイント対サイトの Azure VPN Gateway の追加の Log Analytics クエリ サンプルについては、「[診断ログを使用した Azure VPN Gateway のトラブルシューティング](../vpn-gateway/troubleshoot-vpn-with-azure-diagnostics.md)」のページを参照してください。 Azure Firewall では、ログ分析を容易にする[ブック](../firewall/firewall-workbook.md)が用意されています。 そのグラフィカル インターフェイスを使用すると、Log Analytics クエリを手動で作成しなくても、診断データを調べることができます。 
 
 ## <a name="activity-logs"></a><a name="activity-logs"></a>アクティビティ ログ
 

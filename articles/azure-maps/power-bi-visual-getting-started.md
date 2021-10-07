@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 9dda6433f5f16ec71b086f606927d9f27c83098b
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 6a26361cc09a4dd420930725b29a1d346769270a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123430470"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124744628"
 ---
 # <a name="getting-started-with-the-azure-maps-power-bi-visual"></a>Azure Maps Power BI ビジュアルの概要
 
-<Token>**適用対象:** ![緑のチェック マーク。](media/power-bi-visual/yes.png)Power BI サービス **_(コンシューマー)_** ![緑色のチェックマーク。](media/power-bi-visual/yes.png)Power BI サービス (デザイナーおよび開発者) ![緑色のチェックマーク。](media/power-bi-visual/yes.png)Power BI Desktop ![X "いいえ" を示す X。](media/power-bi-visual/no.png)Pro または Premium ライセンスが必要</Token>
+**適用対象:** ![緑色のチェック マーク。](media/power-bi-visual/yes.png) Power BI サービス **(_コンシューマー_)** ![緑色のチェックマーク。](media/power-bi-visual/yes.png) Power BI サービス (デザイナーおよび開発者) ![緑色のチェックマーク。](media/power-bi-visual/yes.png) Power BI Desktop X !["いいえ" を示す X。](media/power-bi-visual/no.png) Pro または Premium ライセンスが必要
 
 この記事では、Power BI で Microsoft Azure Maps ビジュアルを使用する方法を示します。
 

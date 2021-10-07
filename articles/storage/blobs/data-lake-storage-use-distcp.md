@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: e69a97a86a357fb36dde572f292b5cac7963d14a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2a1e14e0c0ea8f2a58234d7f36b5dad14bd9968c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95912486"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128605470"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen2"></a>Distcp を使用して Azure Storage Blob と Azure Data Lake Storage Gen2 の間でデータをコピーする
 
@@ -23,22 +23,22 @@ DistCp にはさまざまなコマンド ライン パラメーターが用意�
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
-* Data Lake Storage Gen2 の機能 (階層型名前空間) が有効になっていない既存の Azure Storage アカウント。
-* Data Lake Storage Gen2 の機能 (階層型名前空間) が有効になっている Azure Storage アカウント。 Azure Storage アカウントの作成方法については、「[Azure Storage アカウントの作成](../common/storage-account-create.md)」を参照してください
-* 階層型名前空間が有効になっているストレージ アカウントで作成されたコンテナー。
-* 階層型名前空間機能が有効になっているストレージ アカウントにアクセスできる Azure HDInsight クラスター。 「[Use Azure Data Lake Storage Gen2 with Azure HDInsight clusters](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」 (Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する) を参照してください。 クラスターのリモート デスクトップが有効になっていることを確認します。
+- Azure サブスクリプション。 詳細については、[Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
+- Data Lake Storage Gen2 の機能 (階層型名前空間) が有効になっていない既存の Azure Storage アカウント。
+- Data Lake Storage Gen2 の機能 (階層型名前空間) が有効になっている Azure Storage アカウント。 Azure Storage アカウントの作成方法については、「[Azure Storage アカウントの作成](../common/storage-account-create.md)」を参照してください
+- 階層型名前空間が有効になっているストレージ アカウントで作成されたコンテナー。
+- 階層型名前空間機能が有効になっているストレージ アカウントにアクセスできる Azure HDInsight クラスター。 詳しくは、「[Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」をご覧ください。 クラスターのリモート デスクトップが有効になっていることを確認します。
 
 ## <a name="use-distcp-from-an-hdinsight-linux-cluster"></a>HDInsight Linux クラスターから DistCp を使用する
 
 HDInsight クラスターには DistCp ユーティリティが付属しています。これを使用してさまざまなソースから HDInsight クラスターにデータをコピーできます。 Azure Blob Storage と Azure Data Lake Storage を一緒に使用するように HDInsight クラスターが構成されている場合は、DistCp ユーティリティを使用して、両者の間で簡単にデータをコピーすることもできます。 このセクションでは、DistCp ユーティリティを使用する方法について説明します。
 
-1. HDI クラスターに SSH セッションを作成します。 「 [Linux ベースの HDInsight クラスターへの接続](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)」を参照してください。
+1. HDI クラスターに SSH セッションを作成します。 詳細については、[Linux ベースの HDInsight クラスターへの接続](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)に関する記事を参照してください。
 
 2. (階層型名前空間が有効になっていない) 既存の汎用 V2 アカウントにアクセスできるかどうかを確認します。
 
     ```bash
-    hdfs dfs –ls wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/
+    hdfs dfs -ls wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/
     ```
 
    出力には、コンテナーの内容の一覧が表示されます。
@@ -81,9 +81,9 @@ hadoop distcp -m 100 wasbs://<container-name>@<storage-account-name>.blob.core.w
 
 使用できるガイダンスがいくつかあります。
 
-* **ステップ 1:'既定' の YARN アプリ キューに使用できる合計メモリを決定する** - 最初の手順では、'既定' の YARN アプリ キューに使用可能なメモリを決定します。 この情報は、クラスターに関連付けられている Ambari ポータルで確認できます。 YARN に移動し、[Configs]\(構成\) タブで '既定' の YARN アプリ キューに使用可能な YARN メモリを確認します。 これは、DistCp ジョブ (実際には MapReduce ジョブ) に使用可能なメモリの合計です。
+- **ステップ 1:'既定' の YARN アプリ キューに使用できる合計メモリを決定する** - 最初の手順では、'既定' の YARN アプリ キューに使用可能なメモリを決定します。 この情報は、クラスターに関連付けられている Ambari ポータルで確認できます。 YARN に移動し、[Configs]\(構成\) タブで '既定' の YARN アプリ キューに使用可能な YARN メモリを確認します。 これは、DistCp ジョブ (実際には MapReduce ジョブ) に使用可能なメモリの合計です。
 
-* **手順 2:マッパーの数を計算する** - **m** の値は、合計 YARN メモリを YARN コンテナーのサイズで割った値と等しくなります。 YARN コンテナー サイズの情報は、Ambari ポータルでも入手できます。 YARN に移動し、[Configs] \(構成) タブを表示します。YARN コンテナーのサイズは、このウィンドウに表示されます。 マッパーの数 (**m**) を求めるための式を次に示します
+- **手順 2:マッパーの数を計算する** - **m** の値は、合計 YARN メモリを YARN コンテナーのサイズで割った値と等しくなります。 YARN コンテナー サイズの情報は、Ambari ポータルでも入手できます。 YARN に移動し、[Configs] \(構成) タブを表示します。YARN コンテナーのサイズは、このウィンドウに表示されます。 マッパーの数 (**m**) を求めるための式を次に示します
 
     m = (ノードの数 * YARN の各ノードのメモリ) / YARN コンテナーのサイズ
 
@@ -91,11 +91,11 @@ hadoop distcp -m 100 wasbs://<container-name>@<storage-account-name>.blob.core.w
 
 4x D14v2s クラスターがあり、10 個のフォルダーから 10 TB のデータを転送しようとしているとします。 各フォルダーに含まれるデータ量はさまざまです。また、各フォルダー内のファイル サイズも異なります。
 
-* **合計 YARN メモリ**:Ambari ポータルから、D14 ノードの YARN メモリが 96 GB であることがわかります。 したがって、4 ノード クラスターの合計 YARN メモリは次のとおりです。 
+- **合計 YARN メモリ:** Ambari ポータルから、D14 ノードの YARN メモリが 96 GB であることがわかります。 したがって、4 ノード クラスターの合計 YARN メモリは次のとおりです。
 
     YARN メモリ = 4 * 96 GB = 384 GB
 
-* **マッパーの数**:Ambari ポータルから、D14 ノードの YARN コンテナー サイズが 3,072 MB であることがわかります。 したがって、マッパーの数は次のとおりです。
+- **マッパーの数:** Ambari ポータルから、D14 クラスター ノードの YARN コンテナー サイズが 3,072 MB であることがわかります。 したがって、マッパーの数は次のとおりです。
 
     m = (4 ノード * 96 GB) / 3072 MB = 128 マッパー
 
@@ -107,8 +107,8 @@ hadoop distcp -m 100 wasbs://<container-name>@<storage-account-name>.blob.core.w
 
 ### <a name="limitations"></a>制限事項
 
-* DistCp では、パフォーマンスを最適化するために、同じようなサイズのマッパーを作成しようとします。 マッパー数を増やしても、必ずしもパフォーマンスが向上するとは限りません。
+- DistCp では、パフォーマンスを最適化するために、同じようなサイズのマッパーを作成しようとします。 マッパー数を増やしても、必ずしもパフォーマンスが向上するとは限りません。
 
-* DistCp では、ファイルあたりのマッパーの数が 1 つに制限されています。 したがって、ファイル数よりも多くのマッパーを持つことはできません。 DistCp がファイルに割り当てることができるマッパーの数は 1 つだけのため、大きなファイルのコピーに使用できるコンカレンシー量は制限されます。
+- DistCp では、ファイルあたりのマッパーの数が 1 つに制限されています。 したがって、ファイル数よりも多くのマッパーを持つことはできません。 DistCp がファイルに割り当てることができるマッパーの数は 1 つだけのため、大きなファイルのコピーに使用できるコンカレンシー量は制限されます。
 
-* 大きなファイルが少数だけ存在する場合は、潜在的なコンカレンシーを高めるために、そのファイルを 256 MB ファイル チャンクに分割します。
+- 大きなファイルが少数だけ存在する場合は、潜在的なコンカレンシーを高めるために、そのファイルを 256 MB ファイル チャンクに分割します。

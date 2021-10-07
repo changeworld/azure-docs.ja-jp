@@ -5,14 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/10/2020
-author: mingshen-ms
-ms.author: mingshen
-ms.openlocfilehash: 1c769cdac870c7384495d41158bd7ad516608575
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+author: saasguide
+ms.author: souchak
+ms.openlocfilehash: 3e2c92d5fed23480f102f1c96631c3a8c9a2e2c8
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128632958"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129456501"
 ---
 # <a name="register-a-saas-application"></a>SaaS アプリケーションを登録する
 
@@ -89,7 +89,7 @@ Post<br>
 
 ##### <a name="response"></a>*Response*
 
-|  名前     |  種類         |  説明 |
+|  名前     |  Type         |  説明 |
 |  ------   |  ---------------  | ------------ |
 |  200 OK   |  TokenResponse    |  要求成功。 |
 

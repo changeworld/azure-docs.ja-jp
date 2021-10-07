@@ -5,15 +5,15 @@ titleSuffix: Azure Machine Learning
 author: luisquintanilla
 ms.author: luquinta
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.date: 06/18/2021
 ms.topic: how-to
-ms.openlocfilehash: 81d4d17b4efdc1dd7d59cb566f8a9ef2e6742aac
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 9ce41f22fd90acd8ef7e41ec07bce1d7758ab452
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122966768"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129427706"
 ---
 # <a name="configure-azure-arc-enabled-machine-learning-preview"></a>Azure Arc 対応機械学習を構成する (プレビュー)
 

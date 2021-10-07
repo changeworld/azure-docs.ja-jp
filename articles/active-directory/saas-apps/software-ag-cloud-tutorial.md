@@ -1,7 +1,6 @@
 ---
-title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Software AG Cloud の統合 | Microsoft Docs
+title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Software AG Cloud の統合
 description: Azure Active Directory と Software AG Cloud の間でシングル サインオンを構成する方法について説明します。
-services: active-directory
 author: jeevansd
 manager: CelesteDG
 ms.reviewer: CelesteDG
@@ -11,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/09/2020
 ms.author: jeedes
-ms.openlocfilehash: c2a2446da0e1ccf1b3dab88fe898b179291ddaba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 900cb7892331db3e78314a5de6bfb432f40990c6
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98726141"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128558483"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-software-ag-cloud"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Software AG Cloud の統合
 
@@ -151,7 +150,7 @@ Software AG Cloud に対して Azure AD SSO を構成してテストするには
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-Software AG Cloud で Microsoft Azure がプロバイダーとして構成されていることを前提として、`www.softwareag.cloud` に移動し、[Login]\(ログイン\) ボタンをクリックして、環境名を入力します。 次の画面で、[Log in with <IDP NAME>]\(<IDP 名> でログイン\) リンクをクリックし、資格情報を入力します。 認証されると、ログインされ、Software AG Cloud のホーム ページが表示されます。
+Software AG Cloud で Microsoft Azure がプロバイダーとして構成されていることを前提として、`www.softwareag.cloud` に移動し、[Login]\(ログイン\) ボタンをクリックして、環境名を入力します。 次の画面で、[Log in with \<IDP NAME\>]\(<IDP 名> でログイン\) リンクをクリックし、資格情報を入力します。 認証されると、ログインされ、Software AG Cloud のホーム ページが表示されます。
 
 ## <a name="next-steps"></a>次の手順
 

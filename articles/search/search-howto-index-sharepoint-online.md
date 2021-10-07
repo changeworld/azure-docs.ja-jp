@@ -7,12 +7,12 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/01/2021
-ms.openlocfilehash: 61e9787c0a85ad412d3e70cfb2452d288a48d36a
-ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
+ms.openlocfilehash: 3a6bb0fd360b334299c6cd1be2795121a3b53203
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2021
-ms.locfileid: "112983052"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124777528"
 ---
 # <a name="index-data-from-sharepoint-online"></a>SharePoint Online からのデータのインデックスを作成する
 
@@ -28,7 +28,6 @@ ms.locfileid: "112983052"
 
 Azure Cognitive Search のインデクサーは、データ ソースから検索可能なデータとメタデータを抽出するクローラーです。 SharePoint Online インデクサーは、SharePoint Online サイトに接続し、1 つ以上のドキュメント ライブラリにあるドキュメントのインデックスを作成します。 インデクサーには以下の機能があります。
 + 1 つ以上の SharePoint Online ドキュメント ライブラリにあるコンテンツのインデックスを作成する。
-+ Azure Cognitive Search サービスと同じテナントに属する SharePoint Online ドキュメント ライブラリにあるコンテンツのインデックスを作成する。 インデクサーは、Azure Cognitive Search サービスとは異なるテナントに属する SharePoint サイトでは機能しません。 
 + インデクサーは、インデックスの増分作成をサポートします。そのため、ドキュメント ライブラリ内の変更されたコンテンツが特定され、それ以降のインデックス作成の実行時には更新されたコンテンツのインデックスのみが作成されます。 たとえば、最初に 5 つの PDF のインデックスがインデクサーによって作成され、その後に 1 つが更新され、それからインデクサーが再度実行された場合、更新された 1 つの PDF のインデックスのみがインデクサーによって作成されます。
 + インデックスが作成されるドキュメントからは、既定でテキストおよび正規化された画像が抽出されます。 必要に応じて、さらにコンテンツをエンリッチするためにスキルセットをパイプラインに追加できます。 スキルセットの詳細については、記事「[Azure Cognitive Search のスキルセットの概念](cognitive-search-working-with-skillsets.md)」を参照してください。
 
@@ -50,8 +49,11 @@ SharePoint Online インデクサーを設定するには、Azure portal 内で�
  
 > [!VIDEO https://www.youtube.com/embed/QmG65Vgl0JI]
 
-### <a name="step-1-enable-system-assigned-managed-identity"></a>手順 1: システム割り当てマネージド ID を有効にする
-システム割り当てマネージド ID が有効になると、Azure によって検索サービス用の ID が作成され、インデクサーで使用することができるようになります。
+### <a name="step-1-optional-enable-system-assigned-managed-identity"></a>手順 1 (省略可能): システム割り当てマネージド ID を有効にする
+
+システム割り当てマネージド ID が有効になると、Azure によって検索サービス用の ID が作成され、インデクサーで使用することができるようになります。 この ID は、検索サービスがプロビジョニングされているテナントを自動的に検出するために使用されます。
+
+SharePoint Online サイトが検索サービスと同じテナント内にある場合は、検索サービスに対してシステム割り当てマネージド ID を有効にする必要があります。 SharePoint Online サイトが検索サービスとは別のテナント内にある場合、システム割り当てマネージド ID を有効にする必要はありません。
 
 ![システム割り当てマネージド ID を有効にする](media/search-howto-index-sharepoint-online/enable-managed-identity.png "システム割り当てマネージド ID を有効にする")
 
@@ -117,10 +119,13 @@ api-key: [admin key]
 {
     "name" : "sharepoint-datasource",
     "type" : "sharepoint",
-    "credentials" : { "connectionString" : "SharePointOnlineEndpoint=[SharePoint Online site url];ApplicationId=[AAD App ID]" },
+    "credentials" : { "connectionString" : "SharePointOnlineEndpoint=[SharePoint Online site url];ApplicationId=[AAD App ID];TenantId=[SharePoint Online site tenant id]" },
     "container" : { "name" : "defaultSiteLibrary", "query" : null }
 }
 ```
+
+> [!NOTE]
+> SharePoint Online サイトが検索サービスと同じテナント内にあり、システム割り当てマネージド ID が有効になっている場合は、`TenantId` を接続文字列に含める必要はありません。 SharePoint Online サイトが検索サービスとは異なるテナント内にある場合は、`TenantId` を含める必要があります。
 
 ### <a name="step-4-create-an-index"></a>手順 4: インデックスを作成する
 インデックスでは、検索に使用する、ドキュメント内のフィールド、属性、およびその他の構成要素を指定します。

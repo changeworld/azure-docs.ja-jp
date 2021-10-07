@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 09/08/2021
 ms.author: normesta
-ms.openlocfilehash: 758a89e8366e338fe5aaaee7fd6b89d9f7daa588
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: e22e7dcfde1782600cdb53814014e6080ffbbfa1
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128604020"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129271633"
 ---
 # <a name="blob-storage-feature-support-in-azure-storage-accounts"></a>Azure ストレージ アカウントにおける Blob Storage 機能のサポート
 
@@ -24,9 +24,9 @@ ms.locfileid: "128604020"
 
 | ストレージ機能 | BLOB Storage (既定のサポート) | Data Lake Storage Gen2 <sup>1</sup>   | NFS 3.0 <sup>1</sup>  |
 |---------------|-------------------|---|---|
-| [アクセス層 - アーカイブ](storage-blob-storage-tiers.md) | ![はい](../media/icons/yes-icon.png) | ![はい](../media/icons/yes-icon.png) | ![はい](../media/icons/yes-icon.png) |
-| [アクセス層 - コールド](storage-blob-storage-tiers.md)   | ![はい](../media/icons/yes-icon.png) | ![はい](../media/icons/yes-icon.png) | ![はい](../media/icons/yes-icon.png)|
-| [アクセス層 - ホット](storage-blob-storage-tiers.md) | ![はい](../media/icons/yes-icon.png) | ![はい](../media/icons/yes-icon.png) | ![はい](../media/icons/yes-icon.png) |
+| [アクセス層 - アーカイブ](access-tiers-overview.md) | ![はい](../media/icons/yes-icon.png) | ![はい](../media/icons/yes-icon.png) | ![はい](../media/icons/yes-icon.png) |
+| [アクセス層 - コールド](access-tiers-overview.md)    | ![はい](../media/icons/yes-icon.png) | ![はい](../media/icons/yes-icon.png) | ![はい](../media/icons/yes-icon.png)|
+| [アクセス層 - ホット](access-tiers-overview.md) | ![はい](../media/icons/yes-icon.png) | ![はい](../media/icons/yes-icon.png) | ![はい](../media/icons/yes-icon.png) |
 | [匿名パブリック アクセス](anonymous-read-access-configure.md) | ![はい](../media/icons/yes-icon.png) | ![はい](../media/icons/yes-icon.png) | ![はい](../media/icons/yes-icon.png)|
 | [Azure Active Directory セキュリティ](authorize-access-azure-active-directory.md) | ![はい](../media/icons/yes-icon.png) | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
 | [BLOB インベントリ](blob-inventory.md) | ![はい](../media/icons/yes-icon.png) | ![はい](../media/icons/yes-icon.png)  <sup>2</sup> | ![はい](../media/icons/yes-icon.png)  <sup>2</sup> |
@@ -70,9 +70,9 @@ ms.locfileid: "128604020"
 
 | ストレージ機能 | BLOB Storage (既定のサポート) | Data Lake Storage Gen2 <sup>1</sup> | NFS 3.0 <sup>1</sup> |
 |---------------|-------------------|---|---|
-| [アクセス層 - アーカイブ](storage-blob-storage-tiers.md)  | ![いいえ](../media/icons/no-icon.png) | ![いいえ](../media/icons/no-icon.png) | ![いいえ](../media/icons/no-icon.png) |
-| [アクセス層 - コールド](storage-blob-storage-tiers.md) | ![いいえ](../media/icons/no-icon.png) | ![いいえ](../media/icons/no-icon.png) | ![いいえ](../media/icons/no-icon.png) |
-| [アクセス層 - ホット](storage-blob-storage-tiers.md) | ![いいえ](../media/icons/no-icon.png) | ![いいえ](../media/icons/no-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| [アクセス層 - アーカイブ](access-tiers-overview.md)  | ![いいえ](../media/icons/no-icon.png) | ![いいえ](../media/icons/no-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| [アクセス層 - コールド](access-tiers-overview.md) | ![いいえ](../media/icons/no-icon.png) | ![いいえ](../media/icons/no-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| [アクセス層 - ホット](access-tiers-overview.md) | ![いいえ](../media/icons/no-icon.png) | ![いいえ](../media/icons/no-icon.png) | ![いいえ](../media/icons/no-icon.png) |
 | [匿名パブリック アクセス](anonymous-read-access-configure.md) | ![はい](../media/icons/yes-icon.png) | ![はい](../media/icons/yes-icon.png) | ![はい](../media/icons/yes-icon.png) |
 | [Azure Active Directory セキュリティ](authorize-access-azure-active-directory.md) | ![はい](../media/icons/yes-icon.png) | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) |
 | [BLOB インベントリ](blob-inventory.md) | ![はい](../media/icons/yes-icon.png) | ![はい](../media/icons/yes-icon.png)  <sup>2</sup> | ![はい](../media/icons/yes-icon.png)  <sup>2</sup> |

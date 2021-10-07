@@ -1,20 +1,20 @@
 ---
 title: Azure Cache for Redis の詳細を取得する - Azure CLI
 description: この Azure CLI のコード サンプルでは、プロビジョニング状態など、Azure Cache for Redis インスタンスの詳細を取得する方法を示します。
-author: yegu-ms
-ms.author: yegu
+author: curib
+ms.author: cauribeg
 tags: azure-service-management
 ms.service: cache
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 08/30/2017
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8901847a1c214b257243c4da0a74897061409bee
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0e41b432fe7259fac9769a70a89bb6357c3d550e
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96184248"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129535363"
 ---
 # <a name="get-details-of-an-azure-cache-for-redis"></a>Azure Cache for Redis の詳細を取得する
 

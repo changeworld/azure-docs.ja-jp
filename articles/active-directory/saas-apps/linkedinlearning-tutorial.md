@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と LinkedIn Learning の統合 | Microsoft Docs
+title: 'チュートリアル: Azure AD SSO と LinkedIn Learning の統合'
 description: Azure Active Directory と LinkedIn Learning の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/29/2021
+ms.date: 09/01/2021
 ms.author: jeedes
-ms.openlocfilehash: c5f43467a281f9c7fdca20f49750a0ac81307237
-ms.sourcegitcommit: 47ac63339ca645096bd3a1ac96b5192852fc7fb7
+ms.openlocfilehash: 1a80caceb0edbb5e297ff70726843d838d0937df
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114363071"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124832979"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-linkedin-learning"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と LinkedIn Learning の統合
+# <a name="tutorial-azure-ad-sso-integration-with-linkedin-learning"></a>チュートリアル: Azure AD SSO と LinkedIn Learning の統合
 
 このチュートリアルでは、LinkedIn Learning と Azure Active Directory (Azure AD) を統合する方法について説明します。 LinkedIn Learning を Azure AD と統合すると、次のことができます。
 
@@ -39,6 +39,7 @@ ms.locfileid: "114363071"
 
 * LinkedIn Learning では、**SP と IDP** によって開始される SSO がサポートされます。
 * LinkedIn Learning では、**Just-In-Time** ユーザー プロビジョニングがサポートされます。
+* LinkedIn Learning では、[自動化されたユーザー プロビジョニング](linkedin-learning-provisioning-tutorial.md)がサポートされます。
 
 ## <a name="add-linkedin-learning-from-the-gallery"></a>LinkedIn Learning をギャラリーから追加する
 
@@ -195,7 +196,7 @@ SSO を有効にすると、 **[Automatically provision licenses]\(ライセン�
 
 * Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した LinkedIn Learning に自動的にサインインされます。 
 
-また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [LinkedIn Learning] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した LinkedIn Learning に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [LinkedIn Learning] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した LinkedIn Learning に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

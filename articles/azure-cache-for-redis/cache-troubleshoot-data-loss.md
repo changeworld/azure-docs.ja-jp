@@ -1,17 +1,17 @@
 ---
 title: Azure Cache for Redis でのデータ損失のトラブルシューティング
 description: 部分的なキーの損失、キーの有効期限、完全なキーの損失など、Azure Cache for Redis のデータ損失に関する問題を解決する方法について説明します。
-author: yegu-ms
-ms.author: yegu
+author: curib
+ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: 3ae2d392e7349124012d782112ac873808512dbd
-ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
+ms.openlocfilehash: 02424338967d9a8bb376ba72938f30a4e217a83d
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113136510"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129537445"
 ---
 # <a name="troubleshoot-data-loss-in-azure-cache-for-redis"></a>Azure Cache for Redis でのデータ損失のトラブルシューティング
 

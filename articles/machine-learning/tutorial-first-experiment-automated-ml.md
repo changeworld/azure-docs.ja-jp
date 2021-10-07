@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: スタジオ UI で Azure Machine Learning 自動 ML を使用して、コードを 1 行も記述せずに分類モデルをトレーニングします。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: automl
 ms.topic: tutorial
 author: cartacioS
 ms.author: sacartac
 ms.reviewer: nibaccam
 ms.date: 07/01/2021
 ms.custom: automl, FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: 69cbb3923f3a29085b0999bdce44efe99245b3eb
-ms.sourcegitcommit: bc29cf4472118c8e33e20b420d3adb17226bee3f
+ms.openlocfilehash: e3664e9a42a502509e74c43643d47f18e153ff6e
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2021
-ms.locfileid: "113491373"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129429967"
 ---
 # <a name="tutorial-train-a-classification-model-with-no-code-automl-in-the-azure-machine-learning-studio"></a>チュートリアル: Azure Machine Learning スタジオでコードなし AutoML を使用して分類モデルをトレーニングする
 

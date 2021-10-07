@@ -3,12 +3,12 @@ title: チュートリアル - Azure VM での SAP HANA データベースのバ
 description: このチュートリアルでは、Azure VM 上で稼働している SAP HANA データベースを Azure Backup Recovery Services コンテナーにバックアップする方法について学習します。
 ms.topic: tutorial
 ms.date: 09/27/2021
-ms.openlocfilehash: 629465100106ff3a2403a27cae9bb00e1350bf5e
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.openlocfilehash: 5469c10bb62164e7feea33a1b56cef3457d46efb
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129082728"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129349695"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>チュートリアル:Azure VM での SAP HANA データベースのバックアップ
 
@@ -21,9 +21,6 @@ ms.locfileid: "129082728"
 > * バックアップを構成する
 
 現在サポートされているすべてのシナリオについては、[こちら](sap-hana-backup-support-matrix.md#scenario-support)を参照してください。
-
->[!NOTE]
->2020 年 8 月 1 日の時点で、RHEL (7.4、7.6、7.7、8.1) 用の SAP HANA バックアップは一般提供されています。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -50,31 +47,31 @@ ms.locfileid: "129082728"
 
 次の表に、接続の確立に使用できるさまざまな選択肢を示します。
 
-| **オプション**                        | **長所**                                               | **短所**                                            |
+| **オプション**                        | **長所**                                               | <bpt id="p1">**</bpt>短所<ept id="p1">**</ept>                                            |
 | --------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| プライベート エンドポイント                 | 仮想ネットワーク内のプライベート IP 経由でのバックアップを可能にする  <br><br>   ネットワークとコンテナーの側で詳細な制御を提供する | 標準のプライベート エンドポイント [コスト](https://azure.microsoft.com/pricing/details/private-link/)が発生する |
+| プライベート エンドポイント                 | 仮想ネットワーク内のプライベート IP 経由でのバックアップを可能にする  <br><br>   ネットワークとコンテナーの側で詳細な制御を提供する | 標準のプライベート エンドポイント <bpt id="p1">[</bpt>コスト<ept id="p1">](https://azure.microsoft.com/pricing/details/private-link/)</ept>が発生する |
 | NSG サービス タグ                  | 範囲の変更が自動的にマージされるため管理しやすい   <br><br>   追加のコストが発生しない | NSG でのみ使用可能  <br><br>    サービス全体へのアクセスを提供する |
 | Azure Firewall の FQDN タグ          | 必要な FQDN が自動的に管理されるため管理しやすい | Azure Firewall でのみ使用可能                         |
 | サービスの FQDN/IP へのアクセスを許可する | 追加のコストが発生しない   <br><br>  すべてのネットワーク セキュリティ アプライアンスとファイアウォールで動作する | 広範な IP または FQDN のセットへのアクセスが必要になる場合がある   |
 | HTTP プロキシを使用する                 | VM に対するインターネット アクセスを単一の場所で実現                       | プロキシ ソフトウェアで VM を実行するための追加のコストが発生する         |
 | [仮想ネットワーク サービス エンドポイント](/azure/virtual-network/virtual-network-service-endpoints-overview)    |     Azure Storage (= Recovery Services コンテナー) に使用できます。     <br><br>     データ プレーン トラフィックのパフォーマンスを最適化する上で大きなメリットがあります。          |         Azure AD、Azure Backup サービスには使用できません。    |
-| ネットワーク仮想アプライアンス      |      Azure Storage、Azure AD、Azure Backup サービスに使用できます。 <br><br> **データ プレーン**   <ul><li>      Azure Storage: `*.blob.core.windows.net`、`*.queue.core.windows.net`  </li></ul>   <br><br>     **管理プレーン**  <ul><li>  Azure AD:「[Microsoft 365 Common および Office Online](/microsoft-365/enterprise/urls-and-ip-address-ranges?view=o365-worldwide&preserve-view=true#microsoft-365-common-and-office-online)」のセクション 56 および 59 に記載されている FQDN へのアクセスを許可します。 </li><li>   Azure Backup サービス: `.backup.windowsazure.com` </li></ul> <br>[Azure Firewall のサービス タグ](/azure/firewall/fqdn-tags#:~:text=An%20FQDN%20tag%20represents%20a%20group%20of%20fully,the%20required%20outbound%20network%20traffic%20through%20your%20firewall.)の詳細をご覧ください。       |  データ プレーン トラフィックにオーバーヘッドが追加され、スループットとパフォーマンスが低下します。  |
+| ネットワーク仮想アプライアンス      |      Azure Storage、Azure AD、Azure Backup サービスに使用できます。 <br><br> <bpt id="p1">**</bpt>データ プレーン<ept id="p1">**</ept>   <ul><li>      Azure Storage: `*.blob.core.windows.net`、`*.queue.core.windows.net`  </li></ul>   <br><br>     <bpt id="p1">**</bpt>管理プレーン<ept id="p1">**</ept>  <ul><li>  Azure AD:「[Microsoft 365 Common および Office Online](/microsoft-365/enterprise/urls-and-ip-address-ranges?view=o365-worldwide&preserve-view=true#microsoft-365-common-and-office-online)」のセクション 56 および 59 に記載されている FQDN へのアクセスを許可します。 </li><li>   Azure Backup サービス: `.backup.windowsazure.com` </li></ul> <br>[Azure Firewall のサービス タグ](/azure/firewall/fqdn-tags#:~:text=An%20FQDN%20tag%20represents%20a%20group%20of%20fully,the%20required%20outbound%20network%20traffic%20through%20your%20firewall.)の詳細を参照してください。       |  データ プレーン トラフィックにオーバーヘッドが追加され、スループットとパフォーマンスが低下します。  |
 
 これらのオプションを使用する方法の詳細については、以下を参照してください。
 
 ### <a name="private-endpoints"></a>プライベート エンドポイント
 
-プライベート エンドポイントを使用すると、仮想ネットワーク内のサーバーから Recovery Services コンテナーに安全に接続できます。 プライベート エンドポイントでは、お使いのコンテナーの VNET アドレス空間からのプライベート IP が使用されます。 仮想ネットワーク内のリソースとコンテナー間のネットワーク トラフィックは、仮想ネットワークと Microsoft のバックボーン ネットワーク上のプライベート リンクを経由します。 これにより、パブリック インターネットへの露出が排除されます。 プライベート エンドポイントは仮想ネットワークの特定のサブネットに割り当てられ、Azure Active Directory には使用できません。 [こちら](./private-endpoints.md)から、Azure Backup のプライベート エンドポイントの詳細を参照してください。
+プライベート エンドポイントを使用すると、仮想ネットワーク内のサーバーから Recovery Services コンテナーに安全に接続できます。 プライベート エンドポイントでは、お使いのコンテナーの VNET アドレス空間からのプライベート IP が使用されます。 仮想ネットワーク内のリソースとコンテナー間のネットワーク トラフィックは、仮想ネットワークと Microsoft のバックボーン ネットワーク上のプライベート リンクを経由します。 これにより、パブリック インターネットへの露出が排除されます。 プライベート エンドポイントは仮想ネットワークの特定のサブネットに割り当てられ、Azure Active Directory には使用できません。 <bpt id="p1">[</bpt>こちら<ept id="p1">](./private-endpoints.md)</ept>から、Azure Backup のプライベート エンドポイントの詳細を参照してください。
 
 ### <a name="nsg-tags"></a>NSG タグ
 
-ネットワーク セキュリティ グループ (NSG) を使用する場合は、*AzureBackup* サービス タグを使用して、Azure Backup への発信アクセスを許可します。 Azure Backup タグに加えて、Azure AD (*AzureActiveDirectory*) および Azure Storage (*Storage*) に対して同様の [NSG 規則](../virtual-network/network-security-groups-overview.md#service-tags)を作成することによって、認証とデータ転送のための接続を許可する必要もあります。 次の手順では、Azure Backup タグの規則を作成するプロセスについて説明します。
+ネットワーク セキュリティ グループ (NSG) を使用する場合は、<bpt id="p1">*</bpt>AzureBackup<ept id="p1">*</ept> サービス タグを使用して、Azure Backup への発信アクセスを許可します。 Azure Backup タグに加えて、Azure AD (<bpt id="p2">*</bpt>AzureActiveDirectory<ept id="p2">*</ept>) および Azure Storage (<bpt id="p3">*</bpt>Storage<ept id="p3">*</ept>) に対して同様の <bpt id="p1">[</bpt>NSG 規則<ept id="p1">](../virtual-network/network-security-groups-overview.md#service-tags)</ept>を作成することによって、認証とデータ転送のための接続を許可する必要もあります。 次の手順では、Azure Backup タグの規則を作成するプロセスについて説明します。
 
-1. **[すべてのサービス]** で、 **[ネットワーク セキュリティ グループ]** に移動して、ネットワーク セキュリティ グループを選択します。
+1. <bpt id="p1">**</bpt>[すべてのサービス]<ept id="p1">**</ept> で、 <bpt id="p2">**</bpt>[ネットワーク セキュリティ グループ]<ept id="p2">**</ept> に移動して、ネットワーク セキュリティ グループを選択します。
 
-1. **[設定]** で **[送信セキュリティ規則]** を選択します。
+1. <bpt id="p2">**</bpt>[設定]<ept id="p2">**</ept> で <bpt id="p1">**</bpt>[送信セキュリティ規則]<ept id="p1">**</ept> を選択します。
 
-1. **[追加]** を選択します。 [セキュリティ規則の設定](../virtual-network/manage-network-security-group.md#security-rule-settings)の説明に従って、新しい規則を作成するために必要なすべての詳細を入力します。 オプション **[宛先]** が *[サービス タグ]* に、 **[宛先サービス タグ]** が *[AzureBackup]* に設定されていることを確認します。
+1. **[追加]** を選択します。 <bpt id="p1">[</bpt>セキュリティ規則の設定<ept id="p1">](../virtual-network/manage-network-security-group.md#security-rule-settings)</ept>の説明に従って、新しい規則を作成するために必要なすべての詳細を入力します。 オプション <bpt id="p1">**</bpt>[宛先]<ept id="p1">**</ept> が <bpt id="p2">*</bpt>[サービス タグ]<ept id="p2">*</ept> に、 <bpt id="p3">**</bpt>[宛先サービス タグ]<ept id="p3">**</ept> が <bpt id="p4">*</bpt>[AzureBackup]<ept id="p4">*</ept> に設定されていることを確認します。
 
 1. **[追加]** を選択して、新しく作成した送信セキュリティ規則を保存します。
 
@@ -82,11 +79,11 @@ Azure Storage と Azure AD に対する [NSG 送信セキュリティ規則](../
 
 ### <a name="azure-firewall-tags"></a>Azure Firewall タグ
 
-Azure Firewall を使用している場合は、*AzureBackup* [Azure Firewall FQDN タグ](../firewall/fqdn-tags.md)を使用してアプリケーション規則を作成します。 これにより、Azure Backup へのすべての発信アクセスが許可されます。
+Azure Firewall を使用している場合は、<bpt id="p1">*</bpt>AzureBackup<ept id="p1">*</ept> <bpt id="p2">[</bpt>Azure Firewall FQDN タグ<ept id="p2">](../firewall/fqdn-tags.md)</ept>を使用してアプリケーション規則を作成します。 これにより、Azure Backup へのすべての発信アクセスが許可されます。
 
 ### <a name="allow-access-to-service-ip-ranges"></a>サービスの IP 範囲へのアクセスを許可する
 
-サービスの IP へのアクセスを許可することを選択した場合は、[こちら](https://www.microsoft.com/download/confirmation.aspx?id=56519)から利用可能な IP 範囲の JSON ファイルを参照してください。 Azure Backup、Azure Storage、および Azure Active Directory に対応する IP へのアクセスを許可する必要があります。
+サービスの IP へのアクセスを許可することを選択した場合は、<bpt id="p1">[</bpt>こちら<ept id="p1">](https://www.microsoft.com/download/confirmation.aspx?id=56519)</ept>から利用可能な IP 範囲の JSON ファイルを参照してください。 Azure Backup、Azure Storage、および Azure Active Directory に対応する IP へのアクセスを許可する必要があります。
 
 ### <a name="allow-access-to-service-fqdns"></a>サービスの FQDN へのアクセスを許可する
 
@@ -96,7 +93,7 @@ Azure Firewall を使用している場合は、*AzureBackup* [Azure Firewall FQ
 | -------------- | ------------------------------------------------------------ |
 | Azure Backup  | `*.backup.windowsazure.com`                             |
 | Azure Storage | `*.blob.core.windows.net` <br><br> `*.queue.core.windows.net` |
-| Azure AD      | [この記事](/office365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online)に従って、セクション 56 および 59 の FQDN へのアクセスを許可します |
+| Azure AD      | <bpt id="p1">[</bpt>この記事<ept id="p1">](/office365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online)</ept>に従って、セクション 56 および 59 の FQDN へのアクセスを許可します |
 
 ### <a name="use-an-http-proxy-server-to-route-traffic"></a>トラフィックをルーティングするために HTTP プロキシ サーバーを使用する
 
@@ -190,7 +187,7 @@ hdbuserstore list
 | `<sid>`adm (OS)   |   HANA OS   |    次のコマンドを実行します。 <br> `hdbuserstore List`   |   結果に次のような新しい行が結果に含まれているかどうかを確認します。 <br><br>  `KEY AZUREWLBACKUPHANAUSER` <br>  `ENV : localhost: 3<Instance#>13`   <br> `USER: AZUREWLBACKUPHANAUSER`    |
 | Azure 共同作成者     |    Azure portal    |   Azure Backup サービス、Azure AD、および Azure Storage への送信トラフィックを許可するように、NSG、NVA、Azure Firewall などを構成します。     |    [ネットワーク接続を設定する](/azure/backup/tutorial-backup-sap-hana-db#set-up-network-connectivity)    |
 | Azure 共同作成者 |   Azure portal    |   Recovery Services コンテナーを作成するかまたは開いて、HANA バックアップを選択します。   |   バックアップするすべてのターゲット HANA VM を検出します。   |
-| Azure 共同作成者    |   Azure portal    |   HANA データベースを検出し、バックアップ ポリシーを構成します。   |  例: <br><br>  週次バックアップ: 毎週日曜日午前 2 時、保持期間は週単位で 12 週間、月単位で 12 か月、年単位で 3 年間   <br>   差分または増分: 日曜日を除く毎日    <br>   ログ: 15 分ごと、保持期間は 35 日間    |
+| Azure 共同作成者    |   Azure portal    |   HANA データベースを検出し、バックアップ ポリシーを構成します。   |  次に例を示します。 <br><br>  週次バックアップ: 毎週日曜日午前 2 時、保持期間は週単位で 12 週間、月単位で 12 か月、年単位で 3 年間   <br>   差分または増分: 日曜日を除く毎日    <br>   ログ: 15 分ごと、保持期間は 35 日間    |
 | Azure 共同作成者  |   Azure portal    |    Recovery Service コンテナー – バックアップ項目 – SAP HANA     |   バックアップ ジョブ (Azure ワークロード) を確認します。    |
 | HANA 管理者    | HANA Studio   | Backup Console、Backup カタログ、backup.log、backint.log、および globa.ini を確認します   |    SYSTEMDB とテナント データベースの両方。   |
 
@@ -234,14 +231,14 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
 
 ## <a name="enable-cross-region-restore"></a>リージョンをまたがる復元を有効にする
 
-Recovery Services コンテナーでは、リージョンをまたがる復元を有効にできます。 HANA データベースでバックアップを構成および保護する前に、リージョンをまたがる復元を有効にする必要があります。 [リージョンをまたがる復元を有効にする方法](/azure/backup/backup-create-rs-vault#set-cross-region-restore)に関する記事をご覧ください。
+Recovery Services コンテナーでは、リージョンをまたがる復元を有効にできます。 HANA データベースでバックアップを構成および保護する前に、リージョンをまたがる復元を有効にする必要があります。 [リージョンをまたがる復元を有効にする方法](/azure/backup/backup-create-rs-vault#set-cross-region-restore)に関する記事を参照してください。
 
-リージョンをまたがる復元について、[詳しくご確認ください](/azure/backup/backup-azure-recovery-services-vault-overview)。
+リージョンをまたがる復元に関する[詳細情報を参照してください](/azure/backup/backup-azure-recovery-services-vault-overview)。
 
 ## <a name="discover-the-databases"></a>データベースを検出する
 
-1. コンテナーの **[作業の開始]** で、 **[バックアップ]** を選択します。 **[ワークロードはどこで実行されていますか?]** で、 **[Azure VM の SAP HANA]** を選択します。
-2. **[検出の開始]** を選択します。 これで、コンテナー リージョン内の保護されていない Linux VM の検出が開始されます。 保護する Azure VM が表示されます。
+1. コンテナーの <bpt id="p1">**</bpt>[作業の開始]<ept id="p1">**</ept> で、 <bpt id="p2">**</bpt>[バックアップ]<ept id="p2">**</ept> を選択します。 <bpt id="p1">**</bpt>[ワークロードはどこで実行されていますか?]<ept id="p1">**</ept> で、 <bpt id="p2">**</bpt>[Azure VM の SAP HANA]<ept id="p2">**</ept> を選択します。
+2. <bpt id="p1">**</bpt>[検出の開始]<ept id="p1">**</ept> を選択します。 これで、コンテナー リージョン内の保護されていない Linux VM の検出が開始されます。 保護する Azure VM が表示されます。
 3. **[仮想マシンの選択]** で、リンクを選択して、データベースの検出のために SAP HANA VM へのアクセス許可を Azure Backup サービスに与えるスクリプトをダウンロードします。
 4. バックアップする SAP HANA データベースをホストしている VM 上でスクリプトを実行します。
 5. VM 上でスクリプトを実行した後、 **[仮想マシンの選択]** で VM を選択します。 次に、 **[Discover DBs]\(データベースを検出\)** を選択します。
@@ -303,13 +300,13 @@ Recovery Services コンテナーでは、リージョンをまたがる復元�
    >[!NOTE]
    >毎日のバックアップとしては、差分バックアップまたは増分バックアップのどちらかを選択できます。両方を選択することはできません。
 
-7. **[増分バックアップ ポリシー]** で、 **[有効]** を選択して頻度と保有期間の制御を開きます。
+7. <bpt id="p1">**</bpt>[増分バックアップ ポリシー]<ept id="p1">**</ept> で、 <bpt id="p2">**</bpt>[有効]<ept id="p2">**</ept> を選択して頻度と保有期間の制御を開きます。
     * 最多で、1 日に 1 回の増分バックアップをトリガーできます。
     * 増分バックアップは、最大 180 日間保持できます。 より長いリテンション期間が必要な場合は、完全バックアップを使用する必要があります。
 
     ![増分バックアップ ポリシー](./media/backup-azure-sap-hana-database/incremental-backup-policy.png)
 
-8. **[OK]** を選択してポリシーを保存し、 **[バックアップ ポリシー]** のメイン メニューに戻ります。
+8. <bpt id="p1">**</bpt>[OK]<ept id="p1">**</ept> を選択してポリシーを保存し、 <bpt id="p2">**</bpt>[バックアップ ポリシー]<ept id="p2">**</ept> のメイン メニューに戻ります。
 9. **[ログ バックアップ]** を選択し、トランザクション ログ バックアップ ポリシーを追加します。
    * **[ログ バックアップ]** は既定で **[有効]** に設定されています。 SAP HANA ではすべてのログ バックアップが管理されるため、これを無効にすることはできません。
    * ここでは、バックアップのスケジュールとして **2 時間** を設定し、保持期間として **15 日間** を設定しています。

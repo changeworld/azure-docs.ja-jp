@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/16/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: c189c850d0db5965823c531d86c243d209c8db34
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: ca3559d262420ee6c7ba935a0986340d2d475d8d
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122694128"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129533201"
 ---
 # <a name="set-up-message-passing-interface-for-hpc"></a>HPC の Message Passing Interface を設定する
 
@@ -62,7 +62,7 @@ make -j 8 && make install
 ```bash
 HPCX_VERSION="v2.6.0"
 HPCX_DOWNLOAD_URL=https://azhpcstor.blob.core.windows.net/azhpc-images-store/hpcx-v2.6.0-gcc-MLNX_OFED_LINUX-5.0-1.0.0.0-redhat7.7-x86_64.tbz
-get --retry-connrefused --tries=3 --waitretry=5 $HPCX_DOWNLOAD_URL
+wget --retry-connrefused --tries=3 --waitretry=5 $HPCX_DOWNLOAD_URL
 tar -xvf hpcx-${HPCX_VERSION}-gcc-MLNX_OFED_LINUX-5.0-1.0.0.0-redhat7.7-x86_64.tbz
 mv hpcx-${HPCX_VERSION}-gcc-MLNX_OFED_LINUX-5.0-1.0.0.0-redhat7.7-x86_64 ${INSTALL_PREFIX}
 HPCX_PATH=${INSTALL_PREFIX}/hpcx-${HPCX_VERSION}-gcc-MLNX_OFED_LINUX-5.0-1.0.0.0-redhat7.7-x86_64

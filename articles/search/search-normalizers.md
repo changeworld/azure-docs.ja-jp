@@ -8,12 +8,12 @@ ms.author: ishansri
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/23/2021
-ms.openlocfilehash: 9142f03f5f23e843018f7d9b702ef8da3d650758
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: c050023c9cb859f3100f7e2165ba3a069ff4e372
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112578686"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124784549"
 ---
 # <a name="text-normalization-for-case-insensitive-filtering-faceting-and-sorting"></a>大文字と小文字を区別しないフィルター処理、ファセット、並べ替えのためのテキスト正規化
 

@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/1/2021
 ms.author: miwithro
-ms.openlocfilehash: 7a5bea7e555bf4f388a06668b2e349045692a941
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: a4739276cd05ffae6015fb2464e464d0a9f15955
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123106628"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129272050"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>AKS マネージド Azure Active Directory 統合
 
@@ -394,6 +394,15 @@ aks-nodepool1-61156405-vmss000000   Ready    agent   6m36s   v1.18.14
 aks-nodepool1-61156405-vmss000001   Ready    agent   6m42s   v1.18.14
 aks-nodepool1-61156405-vmss000002   Ready    agent   6m33s   v1.18.14
 ```
+### <a name="apply-just-in-time-access-at-the-namespace-level"></a>名前空間レベルで Just-In-Time アクセスを適用する
+
+1. AKS クラスターを [Azure RBAC](manage-azure-rbac.md) と統合します。
+2. Just-In-Time アクセスと統合したいグループを、ロールの割り当てを使用してクラスター内の名前空間と関連付けます。
+
+```azurecli-interactive
+az role assignment create --role "Azure Kubernetes Service RBAC Reader" --assignee <AAD-ENTITY-ID> --scope $AKS_ID/namespaces/<namespace-name>
+```
+3. 名前空間レベルで構成したグループを PIM と関連付けて、構成を完了します。
 
 ### <a name="troubleshooting"></a>トラブルシューティング
 

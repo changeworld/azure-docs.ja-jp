@@ -2,20 +2,20 @@
 title: Bicep の開発およびデプロイ環境のセットアップ
 description: Bicep の開発環境とデプロイ環境の構成方法
 ms.topic: conceptual
-ms.date: 08/26/2021
+ms.date: 09/10/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: c95c05923d9685232c50d694f2b858e2de9e4776
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 545ed61de0499904c728293e472ce3101f4e7350
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123099566"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124793666"
 ---
 # <a name="install-bicep-tools"></a>Bicep ツールのインストール
 
 Bicep ファイルの開発とデプロイ用に環境が設定されていることを確認しましょう。
 
-## <a name="development-environment"></a>開発環境
+## <a name="vs-code-and-bicep-extension"></a>VS Code と Bicep 拡張
 
 Bicep ファイルを作成するには、適切な Bicep エディターが必要です。 以下のことが推奨されます。
 
@@ -34,13 +34,11 @@ Bicep ファイルを作成するには、適切な Bicep エディターが必�
 
 ## <a name="deployment-environment"></a>デプロイ環境
 
-Bicep ファイルをデプロイするために必要なコマンドを取得する最も簡単な方法は、最新バージョンの Azure CLI をインストールする方法です。 PowerShell も使用できますが、追加のインストールが必要です。
+開発環境を設定したら、デプロイ環境用のツールをインストールする必要があります。 ローカル デプロイ環境をセットアップするには、[Azure CLI](#azure-cli) または [Azure PowerShell](#azure-powershell) を使用して Bicep CLI をインストールします。 これらの手順については、次のセクションで示されています。
 
-- [Azure CLI](#azure-cli)
-- [Azure PowerShell](#azure-powershell)
-- [手動でインストールする](#install-manually)
+Azure パイプラインから Bicep ファイルをデプロイするには、「[Bicep と Azure Pipelines の統合](add-template-to-azure-pipelines.md)」をご覧ください。 GitHub Actions で Bicep ファイルをデプロイする方法については、「[GitHub Actions を使用した Bicep ファイルのデプロイ](deploy-github-actions.md)」をご覧ください。
 
-### <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure CLI
 
 Azure CLI バージョン 2.20.0 以降がインストールされている必要があります。 Azure CLI をインストールまたは更新するには、以下を参照してください。
 
@@ -79,7 +77,114 @@ az bicep version
 > [!IMPORTANT]
 > Azure CLI によって、Bicep CLI の自己完結型インスタンスがインストールされます。 このインスタンスは、手動でインストールしたバージョンと競合することはありません。 Azure CLI は、Bicep CLI を PATH に追加しません。
 
-#### <a name="install-on-an-air-gapped-cloud"></a>エアギャップ クラウドへのインストール
+## <a name="azure-powershell"></a>Azure PowerShell
+
+Azure PowerShell モジュール バージョン 5.6.0 以降がインストールされている必要があります。 更新またはインストールする方法については、[Azure PowerShell のインストール](/powershell/azure/install-az-ps)に関するページを参照してください。
+
+Azure PowerShell では、Bicep CLI は自動的にインストールされません。 代わりに、[Bicep CLI を手動でインストールする必要があります](#install-manually)。
+
+> [!IMPORTANT]
+> Azure CLI によってインストールされた Bicep CLI の自己完結型インスタンスは、PowerShell コマンドでは使用できません。 Bicep CLI を手動でインストールしていない場合、Azure PowerShell のデプロイは失敗します。
+
+Bicep CLI を手動でインストールする場合は、Azure CLI の `az bicep` 構文ではなく、`bicep` 構文を使用して Bicep コマンドを実行します。
+
+Bicep ファイルをデプロイするには、Bicep CLI バージョン 0.3.1 以降を使用します。 Bicep CLI のバージョンを確認するには、次を実行します。
+
+```cmd
+bicep --version
+```
+
+## <a name="install-manually"></a>手動でインストールする
+
+次のメソッドでは、Bicep CLI をインストールし、PATH に追加します。 Azure CLI 以外を使用する場合は、手動でインストールする必要があります。
+
+- [Linux](#linux)
+- [macOS](#macos)
+- [Windows](#windows)
+
+### <a name="linux"></a>Linux
+
+```sh
+# Fetch the latest Bicep CLI binary
+curl -Lo bicep https://github.com/Azure/bicep/releases/latest/download/bicep-linux-x64
+# Mark it as executable
+chmod +x ./bicep
+# Add bicep to your PATH (requires admin)
+sudo mv ./bicep /usr/local/bin/bicep
+# Verify you can now access the 'bicep' command
+bicep --help
+# Done!
+```
+
+> [!NOTE]
+> [Alpine](https://alpinelinux.org/) のような軽量 Linux ディストリビューションの場合は、前のスクリプトで **bicep-linux-x64** ではなく **bicep-linux-musl-x64** を使用します。
+
+### <a name="macos"></a>macOS
+
+#### <a name="via-homebrew"></a>homebrew を使用
+
+```sh
+# Add the tap for bicep
+brew tap azure/bicep
+
+# Install the tool
+brew install bicep
+```
+
+#### <a name="via-bash"></a>BASH 経由
+
+```sh
+# Fetch the latest Bicep CLI binary
+curl -Lo bicep https://github.com/Azure/bicep/releases/latest/download/bicep-osx-x64
+# Mark it as executable
+chmod +x ./bicep
+# Add Gatekeeper exception (requires admin)
+sudo spctl --add ./bicep
+# Add bicep to your PATH (requires admin)
+sudo mv ./bicep /usr/local/bin/bicep
+# Verify you can now access the 'bicep' command
+bicep --help
+# Done!
+
+```
+
+### <a name="windows"></a>Windows
+
+#### <a name="windows-installer"></a>Windows インストーラー
+
+[最新の Windows インストーラー](https://github.com/Azure/bicep/releases/latest/download/bicep-setup-win-x64.exe)をダウンロードして実行します。 インストーラーには管理者特権は必要ありません。 インストールが完了すると、Bicep CLI がユーザーの PATH に追加されます。 PATH の変更を有効にするために、開いているコマンド シェル ウィンドウを閉じてから再度開きます。
+
+#### <a name="chocolatey"></a>Chocolatey
+
+```powershell
+choco install bicep
+```
+
+#### <a name="winget"></a>Winget
+
+```powershell
+winget install -e --id Microsoft.Bicep
+```
+
+#### <a name="manual-with-powershell"></a>PowerShell での手動
+
+```powershell
+# Create the install folder
+$installPath = "$env:USERPROFILE\.bicep"
+$installDir = New-Item -ItemType Directory -Path $installPath -Force
+$installDir.Attributes += 'Hidden'
+# Fetch the latest Bicep CLI binary
+(New-Object Net.WebClient).DownloadFile("https://github.com/Azure/bicep/releases/latest/download/bicep-win-x64.exe", "$installPath\bicep.exe")
+# Add bicep to your PATH
+$currentPath = (Get-Item -path "HKCU:\Environment" ).GetValue('Path', '', 'DoNotExpandEnvironmentNames')
+if (-not $currentPath.Contains("%USERPROFILE%\.bicep")) { setx PATH ($currentPath + ";%USERPROFILE%\.bicep") }
+if (-not $env:path.Contains($installPath)) { $env:path += ";$installPath" }
+# Verify you can now access the 'bicep' command.
+bicep --help
+# Done!
+```
+
+## <a name="install-on-air-gapped-cloud"></a>エアギャップ クラウドへのインストール
 
 エアギャップ環境に Bicep CLI をインストールするには、Bicep CLI の実行可能ファイルを手動でダウンロードし、特定の場所に保存する必要があります。
 
@@ -100,114 +205,7 @@ az bicep version
 
 `bicep install` および `bicep upgrade` コマンドは、エアギャップ環境では機能しません。
 
-### <a name="azure-powershell"></a>Azure PowerShell
-
-Azure PowerShell モジュール バージョン 5.6.0 以降がインストールされている必要があります。 更新またはインストールする方法については、[Azure PowerShell のインストール](/powershell/azure/install-az-ps)に関するページを参照してください。
-
-Azure PowerShell では、Bicep CLI は自動的にインストールされません。 代わりに、[Bicep CLI を手動でインストールする必要があります](#install-manually)。
-
-> [!IMPORTANT]
-> Azure CLI によってインストールされた Bicep CLI の自己完結型インスタンスは、PowerShell コマンドでは使用できません。 Bicep CLI を手動でインストールしていない場合、Azure PowerShell のデプロイは失敗します。
-
-Bicep CLI を手動でインストールする場合は、Azure CLI の `az bicep` 構文ではなく、`bicep` 構文を使用して Bicep コマンドを実行します。
-
-Bicep ファイルをデプロイするには、Bicep CLI バージョン 0.3.1 以降を使用します。 Bicep CLI のバージョンを確認するには、次を実行します。
-
-```cmd
-bicep --version
-```
-
-### <a name="install-manually"></a>手動でインストールする
-
-次のメソッドでは、Bicep CLI をインストールし、PATH に追加します。 Azure CLI 以外を使用する場合は、手動でインストールする必要があります。
-
-- [Linux](#linux)
-- [macOS](#macos)
-- [Windows](#windows)
-
-#### <a name="linux"></a>Linux
-
-```sh
-# Fetch the latest Bicep CLI binary
-curl -Lo bicep https://github.com/Azure/bicep/releases/latest/download/bicep-linux-x64
-# Mark it as executable
-chmod +x ./bicep
-# Add bicep to your PATH (requires admin)
-sudo mv ./bicep /usr/local/bin/bicep
-# Verify you can now access the 'bicep' command
-bicep --help
-# Done!
-```
-
-> [!NOTE]
-> [Alpine](https://alpinelinux.org/) のような軽量 Linux ディストリビューションの場合は、前のスクリプトで **bicep-linux-x64** ではなく **bicep-linux-musl-x64** を使用します。
-
-#### <a name="macos"></a>macOS
-
-##### <a name="via-homebrew"></a>homebrew を使用
-
-```sh
-# Add the tap for bicep
-brew tap azure/bicep
-
-# Install the tool
-brew install bicep
-```
-
-##### <a name="via-bash"></a>BASH 経由
-
-```sh
-# Fetch the latest Bicep CLI binary
-curl -Lo bicep https://github.com/Azure/bicep/releases/latest/download/bicep-osx-x64
-# Mark it as executable
-chmod +x ./bicep
-# Add Gatekeeper exception (requires admin)
-sudo spctl --add ./bicep
-# Add bicep to your PATH (requires admin)
-sudo mv ./bicep /usr/local/bin/bicep
-# Verify you can now access the 'bicep' command
-bicep --help
-# Done!
-
-```
-
-#### <a name="windows"></a>Windows
-
-##### <a name="windows-installer"></a>Windows インストーラー
-
-[最新の Windows インストーラー](https://github.com/Azure/bicep/releases/latest/download/bicep-setup-win-x64.exe)をダウンロードして実行します。 インストーラーには管理者特権は必要ありません。 インストールが完了すると、Bicep CLI がユーザーの PATH に追加されます。 PATH の変更を有効にするために、開いているコマンド シェル ウィンドウを閉じてから再度開きます。
-
-##### <a name="chocolatey"></a>Chocolatey
-
-```powershell
-choco install bicep
-```
-
-##### <a name="winget"></a>Winget
-
-```powershell
-winget install -e --id Microsoft.Bicep
-```
-
-##### <a name="manual-with-powershell"></a>PowerShell での手動
-
-```powershell
-# Create the install folder
-$installPath = "$env:USERPROFILE\.bicep"
-$installDir = New-Item -ItemType Directory -Path $installPath -Force
-$installDir.Attributes += 'Hidden'
-# Fetch the latest Bicep CLI binary
-(New-Object Net.WebClient).DownloadFile("https://github.com/Azure/bicep/releases/latest/download/bicep-win-x64.exe", "$installPath\bicep.exe")
-# Add bicep to your PATH
-$currentPath = (Get-Item -path "HKCU:\Environment" ).GetValue('Path', '', 'DoNotExpandEnvironmentNames')
-if (-not $currentPath.Contains("%USERPROFILE%\.bicep")) { setx PATH ($currentPath + ";%USERPROFILE%\.bicep") }
-if (-not $env:path.Contains($installPath)) { $env:path += ";$installPath" }
-# Verify you can now access the 'bicep' command.
-bicep --help
-# Done!
-```
-
-### <a name="install-the-nightly-builds"></a>夜間ビルドのインストール
+## <a name="install-the-nightly-builds"></a>夜間ビルドのインストール
 
 リリース前に Bicep の最新プレリリース ビットを試す場合は、[夜間ビルドのインストール](https://github.com/Azure/bicep/blob/main/docs/installing-nightly.md)に関する記事を参照してください。
 

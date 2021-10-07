@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/11/2021
+ms.date: 09/02/2021
 ms.author: jeedes
-ms.openlocfilehash: 1ab437afbd8e0dd3035837da47bbbb89e358103f
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.openlocfilehash: 38ab873af949d2cf648ba0a129fd548cd6dbc534
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122272309"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124800500"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-travelperk"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と TravelPerk の統合
 
@@ -40,6 +40,8 @@ ms.locfileid: "122272309"
 * TravelPerk では、**SP** によって開始される SSO がサポートされます。
 
 * TravelPerk では、**Just-In-Time** ユーザー プロビジョニングがサポートされます。
+
+* TravelPerk では、[自動化されたユーザー プロビジョニング](travelperk-provisioning-tutorial.md)がサポートされます。
 
 ## <a name="add-travelperk-from-the-gallery"></a>ギャラリーからの TravelPerk の追加
 
@@ -130,6 +132,8 @@ TravelPerk に対して Azure AD SSO を構成してテストするには、次�
 
 このセクションでは、B.Simon というユーザーを TravelPerk に作成します。 TravelPerk では、Just-In-Time プロビジョニングがサポートされており、これは既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 ユーザーがまだ TravelPerk に存在していない場合は、TravelPerk にアクセスしようとしたときに新しいユーザーが作成されます。
 
+TravelPerk では、自動ユーザー プロビジョニングもサポートされます。自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](./travelperk-provisioning-tutorial.md)をご覧ください。
+
 ## <a name="test-sso"></a>SSO のテスト 
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
@@ -138,7 +142,7 @@ TravelPerk に対して Azure AD SSO を構成してテストするには、次�
 
 * TravelPerk のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [TravelPerk] タイルをクリックすると、TravelPerk のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [TravelPerk] タイルをクリックすると、TravelPerk のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

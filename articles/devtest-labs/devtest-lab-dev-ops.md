@@ -1,14 +1,14 @@
 ---
-title: Azure DevTest Labs と DevOps の統合 |Microsoft Docs
+title: Azure DevTest Labs と DevOps の統合
 description: エンタープライズ環境の継続的インテグレーション (CI)/継続的デリバリー (CD) パイプライン内で Azure DevTest Labs のラボを使用する方法について説明します。
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/26/2020
-ms.openlocfilehash: 8a5d35a541e079b7d39cae2ec43da608274533f5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9c18df3c651dc3f11bbaaec4e71aea38644dffe1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85481070"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128595087"
 ---
 # <a name="integration-of-azure-devtest-labs-and-azure-devops"></a>Azure DevTest Labs と Azure DevOps の統合
 DevOps とは、ソフトウェア開発 (Dev) とシステムの運用 (Ops) を統合するソフトウェア開発方法論です。 このシステムでは、ビジネス目標に沿って新しい機能、更新プログラム、修正プログラムを提供できます。 この方法論は、目標、使用パターン、お客様からのフィードバックに基づいた新しい機能の設計から、問題が発生したときにシステムを修正、回復、強化することまで、あらゆる分野を網羅しています。 この手法で容易に識別されるコンポーネントは、継続的インテグレーション (CI)/継続的デリバリー (CD) パイプラインです。 CI/CD パイプラインは、構築、テスト、デプロイを含む一連のステップを通じてコミットから情報、コード、リソースを取得し、システムを作成します。 この記事では、エンタープライズ環境のパイプライン内でラボを効果的に使用するためのさまざまな方法について重点的に説明します。 

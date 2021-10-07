@@ -5,13 +5,13 @@ ms.service: data-share
 author: jifems
 ms.author: jife
 ms.topic: conceptual
-ms.date: 04/20/2021
-ms.openlocfilehash: def73d137f3cc2c79ae8417995ec6bdf6c519b7d
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.date: 09/10/2021
+ms.openlocfilehash: 605405965e4c6bc17321401245866f9b21f3a988
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107812626"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124760063"
 ---
 # <a name="supported-data-stores-in-azure-data-share"></a>Azure Data Share でサポートされているデータ ストア
 
@@ -68,7 +68,7 @@ Azure Data Share では、Azure SQL Database および Azure Synapse Analytics (
 詳細については、「[Azure SQL Database と Azure Synapse Analytics からのデータの共有と受信](how-to-share-from-sql.md)」を参照してください。
 
 ## <a name="share-from-data-explorer"></a>Data Explorer からの共有
-Azure Data Share では、Azure Data Explorer クラスターからデータベースをインプレース共有する機能がサポートされています。 データ プロバイダーは、データベースまたはクラスターのレベルで共有することができます。 
+Azure Data Share では、Azure Data Explorer クラスターからデータベースをインプレース共有する機能がサポートされています。 データ プロバイダーは、データベースまたはクラスターのレベルで共有することができます。 Data Share API を使用してデータを共有している場合は、特定のテーブルも共有できます。  
 
 データがデータベース レベルで共有されている場合、データ コンシューマーは、データ プロバイダーが共有したデータベースにのみアクセスできます。 プロバイダーがデータをクラスター レベルで共有した場合、データ コンシューマーは、データ プロバイダーが今後作成するデータベースも含めて、プロバイダーのクラスターからすべてのデータベースにアクセスできます。
 

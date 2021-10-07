@@ -1,17 +1,17 @@
 ---
 title: データ永続化を構成する - Premium Azure Cache for Redis
 description: Premium レベルの Azure Cache for Redis インスタンス用にデータの永続化を構成して管理する方法について説明します
-author: yegu-ms
-ms.author: yegu
+author: curib
+ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.openlocfilehash: e167abee5bd98e5dcef702ae4629cd886cb75967
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 472f06a10e76cb557bd5e9350c94a352ebad17b3
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114465732"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129538126"
 ---
 # <a name="configure-data-persistence-for-a-premium-azure-cache-for-redis-instance"></a>Premium Azure Cache for Redis インスタンスのデータ永続化の構成
 

@@ -7,15 +7,15 @@ ms.author: larryfr
 author: BlackMist
 ms.reviewer: aashishb
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: enterprise-readiness
 ms.date: 11/16/2020
 ms.topic: how-to
-ms.openlocfilehash: ba66cee38341fb212e189d69872a3e4af406dd43
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 2ebc7681ebe0c3ed8ea0aa5045d554ebdf5f1fd7
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110378722"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129425134"
 ---
 # <a name="use-azure-ad-identity-with-your-machine-learning-web-service-in-azure-kubernetes-service"></a>Azure Kubernetes Service の Machine Learning Web サービスで Azure AD ID を使用する
 

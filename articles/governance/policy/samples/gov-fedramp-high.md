@@ -1,15 +1,15 @@
 ---
 title: FedRAMP High の規制コンプライアンスの詳細 (Azure Government)
 description: FedRAMP High (Azure Government) 規制コンプライアンスの組み込みイニシアティブの詳細。 それぞれのコントロールは、評価を支援する 1 つまたは複数の Azure Policy 定義に対応します。
-ms.date: 08/27/2021
+ms.date: 09/17/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 717d7dd1234fb90fd950e9a1a30e988802a1ea9e
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 441610d2f500969be5ba56ee94c6d9fd332fbc1a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123104638"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128675936"
 ---
 # <a name="details-of-the-fedramp-high-azure-government-regulatory-compliance-built-in-initiative"></a>FedRAMP High (Azure Government) 規制コンプライアンスの組み込みイニシアティブの詳細
 
@@ -27,7 +27,7 @@ ms.locfileid: "123104638"
 
 ### <a name="account-management"></a>アカウント管理
 
-**ID**: NIST SP 800-53 Rev. 4 AC-2
+**ID**: FedRAMP High AC-2
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -47,7 +47,7 @@ ms.locfileid: "123104638"
 
 ### <a name="automated-system-account-management"></a>システム アカウント管理の自動化
 
-**ID**: NIST SP 800-53 Rev. 4 AC-2 (1)
+**ID**: FedRAMP High AC-2 (1)
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -57,7 +57,7 @@ ms.locfileid: "123104638"
 
 ### <a name="role-based-schemes"></a>ロールベースのスキーム
 
-**ID**: NIST SP 800-53 Rev. 4 AC-2 (7)
+**ID**: FedRAMP High AC-2 (7)
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -69,11 +69,11 @@ ms.locfileid: "123104638"
 
 ### <a name="account-monitoring--atypical-usage"></a>アカウントの監視/一般的でない使用法
 
-**ID**: NIST SP 800-53 Rev. 4 AC-2 (12)
+**ID**: FedRAMP High AC-2 (12)
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[Azure Arc 対応 Kubernetes クラスターには、Azure Defender の拡張機能がインストールされている必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8dfab9c4-fe7b-49ad-85e4-1e9be085358f) |Azure Defender の Azure Arc 拡張機能により、Arc 対応 Kubernetes クラスターの脅威保護が提供されます。 拡張機能は、クラスター内のノードからデータを収集し、それを詳しく分析するためにクラウド内の Azure Defender for Kubernetes バックエンドに送信します。 詳細については、「[https://docs.microsoft.com/azure/security-center/defender-for-kubernetes-azure-arc](../../../security-center/defender-for-kubernetes-azure-arc.md)」を参照してください。 |AuditIfNotExists、Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Kubernetes/ASC_Azure_Defender_Kubernetes_Arc_Extension_Audit.json) |
+|[Azure Arc 対応 Kubernetes クラスターには、Azure Defender の拡張機能がインストールされている必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8dfab9c4-fe7b-49ad-85e4-1e9be085358f) |Azure Defender の Azure Arc 拡張機能により、Arc 対応 Kubernetes クラスターの脅威保護が提供されます。 拡張機能は、クラスター内のノードからデータを収集し、それを詳しく分析するためにクラウド内の Azure Defender for Kubernetes バックエンドに送信します。 詳細については、「[https://docs.microsoft.com/azure/security-center/defender-for-kubernetes-azure-arc](../../../security-center/defender-for-kubernetes-azure-arc.md)」を参照してください。 |AuditIfNotExists、Disabled |[2.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Kubernetes/ASC_Azure_Defender_Kubernetes_Arc_Extension_Audit.json) |
 |[Azure Defender for Azure SQL Database サーバーを有効にする必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7fe3b40f-802b-4cdd-8bd4-fd799c948cc2) |Azure Defender for SQL により、潜在的なデータベースの脆弱性を明示および軽減するための機能が提供され、SQL データベースへの脅威を示す可能性のある異常なアクティビティが検出され、機密データの検出と分類が行われます。 |AuditIfNotExists、Disabled |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Security%20Center/ASC_EnableAdvancedDataSecurityOnSqlServers_Audit.json) |
 |[コンテナー レジストリ用 Azure Defender を有効にする必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc25d9a16-bc35-4e15-a7e5-9db606bf9ed4) |コンテナー レジストリ用の Azure Defender では、過去 30 日間にプルされたイメージ、レジストリにプッシュされたイメージ、またはインポートされたイメージの脆弱性をスキャンする機能が提供され、イメージごとの詳細な結果が公開されます。 |AuditIfNotExists、Disabled |[1.0.3](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Security%20Center/ASC_EnableAdvancedThreatProtectionOnContainerRegistry_Audit.json) |
 |[Azure Defender for DNS を有効にする必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fbdc59948-5574-49b3-bb91-76b7c986428d) |Azure Defender for DNS では、Azure リソースからすべての DNS クエリを継続的に監視することにより、クラウド リソースに対して追加の保護層を提供します。 Azure Defender では、DNS 層での不審なアクティビティについて警告します。 Azure Defender for DNS の機能に関する詳細については、[https://aka.ms/defender-for-dns](../../../security-center/defender-for-dns-introduction.md) を参照してください。 この Azure Defender プランを有効にすると、料金が発生します。 リージョンごとの料金の詳細については、Security Center の価格に関するページを参照してください: [https://aka.ms/pricing-security-center](https://aka.ms/pricing-security-center)。 |AuditIfNotExists、Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableAzureDefenderOnDns_Audit.json) |
@@ -86,7 +86,7 @@ ms.locfileid: "123104638"
 
 ### <a name="access-enforcement"></a>アクセスの適用
 
-**ID**: NIST SP 800-53 Rev. 4 AC-3
+**ID**: FedRAMP High AC-3
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -108,7 +108,7 @@ ms.locfileid: "123104638"
 
 ### <a name="information-flow-enforcement"></a>情報フローの適用
 
-**ID**: NIST SP 800-53 Rev. 4 AC-4
+**ID**: FedRAMP High AC-4
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -154,7 +154,7 @@ ms.locfileid: "123104638"
 
 ### <a name="separation-of-duties"></a>職務の分離
 
-**ID**: NIST SP 800-53 Rev. 4 AC-5
+**ID**: FedRAMP High AC-5
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -162,7 +162,7 @@ ms.locfileid: "123104638"
 
 ### <a name="least-privilege"></a>最小限の特権
 
-**ID**: NIST SP 800-53 Rev. 4 AC-6
+**ID**: FedRAMP High AC-6
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -171,7 +171,7 @@ ms.locfileid: "123104638"
 
 ### <a name="review-of-user-privileges"></a>ユーザー特権のレビュー
 
-**ID**: NIST SP 800-53 Rev. 4 AC-6 (7)
+**ID**: FedRAMP High AC-6 (7)
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -180,7 +180,7 @@ ms.locfileid: "123104638"
 
 ### <a name="remote-access"></a>リモート アクセス
 
-**ID**: NIST SP 800-53 Rev. 4 AC-17
+**ID**: FedRAMP High AC-17
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -217,7 +217,7 @@ ms.locfileid: "123104638"
 
 ### <a name="automated-monitoring--control"></a>監視または制御の自動化
 
-**ID**: NIST SP 800-53 Rev. 4 AC-17 (1)
+**ID**: FedRAMP High AC-17 (1)
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -256,11 +256,11 @@ ms.locfileid: "123104638"
 
 ### <a name="audit-review-analysis-and-reporting"></a>監査の確認、分析、および報告
 
-**ID**: NIST SP 800-53 Rev. 4 AU-6
+**ID**: FedRAMP High AU-6
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[Azure Arc 対応 Kubernetes クラスターには、Azure Defender の拡張機能がインストールされている必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8dfab9c4-fe7b-49ad-85e4-1e9be085358f) |Azure Defender の Azure Arc 拡張機能により、Arc 対応 Kubernetes クラスターの脅威保護が提供されます。 拡張機能は、クラスター内のノードからデータを収集し、それを詳しく分析するためにクラウド内の Azure Defender for Kubernetes バックエンドに送信します。 詳細については、「[https://docs.microsoft.com/azure/security-center/defender-for-kubernetes-azure-arc](../../../security-center/defender-for-kubernetes-azure-arc.md)」を参照してください。 |AuditIfNotExists、Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Kubernetes/ASC_Azure_Defender_Kubernetes_Arc_Extension_Audit.json) |
+|[Azure Arc 対応 Kubernetes クラスターには、Azure Defender の拡張機能がインストールされている必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8dfab9c4-fe7b-49ad-85e4-1e9be085358f) |Azure Defender の Azure Arc 拡張機能により、Arc 対応 Kubernetes クラスターの脅威保護が提供されます。 拡張機能は、クラスター内のノードからデータを収集し、それを詳しく分析するためにクラウド内の Azure Defender for Kubernetes バックエンドに送信します。 詳細については、「[https://docs.microsoft.com/azure/security-center/defender-for-kubernetes-azure-arc](../../../security-center/defender-for-kubernetes-azure-arc.md)」を参照してください。 |AuditIfNotExists、Disabled |[2.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Kubernetes/ASC_Azure_Defender_Kubernetes_Arc_Extension_Audit.json) |
 |[Azure Defender for Azure SQL Database サーバーを有効にする必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7fe3b40f-802b-4cdd-8bd4-fd799c948cc2) |Azure Defender for SQL により、潜在的なデータベースの脆弱性を明示および軽減するための機能が提供され、SQL データベースへの脅威を示す可能性のある異常なアクティビティが検出され、機密データの検出と分類が行われます。 |AuditIfNotExists、Disabled |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Security%20Center/ASC_EnableAdvancedDataSecurityOnSqlServers_Audit.json) |
 |[コンテナー レジストリ用 Azure Defender を有効にする必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc25d9a16-bc35-4e15-a7e5-9db606bf9ed4) |コンテナー レジストリ用の Azure Defender では、過去 30 日間にプルされたイメージ、レジストリにプッシュされたイメージ、またはインポートされたイメージの脆弱性をスキャンする機能が提供され、イメージごとの詳細な結果が公開されます。 |AuditIfNotExists、Disabled |[1.0.3](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Security%20Center/ASC_EnableAdvancedThreatProtectionOnContainerRegistry_Audit.json) |
 |[Azure Defender for DNS を有効にする必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fbdc59948-5574-49b3-bb91-76b7c986428d) |Azure Defender for DNS では、Azure リソースからすべての DNS クエリを継続的に監視することにより、クラウド リソースに対して追加の保護層を提供します。 Azure Defender では、DNS 層での不審なアクティビティについて警告します。 Azure Defender for DNS の機能に関する詳細については、[https://aka.ms/defender-for-dns](../../../security-center/defender-for-dns-introduction.md) を参照してください。 この Azure Defender プランを有効にすると、料金が発生します。 リージョンごとの料金の詳細については、Security Center の価格に関するページを参照してください: [https://aka.ms/pricing-security-center](https://aka.ms/pricing-security-center)。 |AuditIfNotExists、Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableAzureDefenderOnDns_Audit.json) |
@@ -276,13 +276,13 @@ ms.locfileid: "123104638"
 
 ### <a name="central-review-and-analysis"></a>一元的なレビューと分析
 
-**ID**: NIST SP 800-53 Rev. 4 AU-6 (4)
+**ID**: FedRAMP High AU-6 (4)
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[SQL Server の監査を有効にする必要があります](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa6fb4358-5bf4-4ad7-ba82-2cd2f41ce5e9) |サーバー上のすべてのデータベースについてデータベースのアクティビティを追跡して、監査ログに保存するには、お使いの SQL サーバーに対する監査を有効にする必要があります。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServerAuditing_Audit.json) |
 |[サブスクリプションで Log Analytics エージェントの自動プロビジョニングを有効にする必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F475aae12-b88a-4572-8b36-9b712b2b3a17) |Azure Security Center では、セキュリティの脆弱性と脅威を監視するために、Azure 仮想マシンからデータを収集します。 データは、以前は Microsoft Monitoring Agent (MMA) と呼ばれていた Log Analytics エージェントによって収集されます。これがセキュリティ関連のさまざまな構成とイベント ログをマシンから読み取り、分析のためにデータを Log Analytics ワークスペースにコピーします。 自動プロビジョニングを有効にして、サポートされているすべての Azure VM と新しく作成された VM にこのエージェントを自動的にデプロイすることをお勧めします。 |AuditIfNotExists、Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Security%20Center/ASC_Automatic_provisioning_log_analytics_monitoring_agent.json) |
-|[Azure Arc 対応 Kubernetes クラスターには、Azure Defender の拡張機能がインストールされている必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8dfab9c4-fe7b-49ad-85e4-1e9be085358f) |Azure Defender の Azure Arc 拡張機能により、Arc 対応 Kubernetes クラスターの脅威保護が提供されます。 拡張機能は、クラスター内のノードからデータを収集し、それを詳しく分析するためにクラウド内の Azure Defender for Kubernetes バックエンドに送信します。 詳細については、「[https://docs.microsoft.com/azure/security-center/defender-for-kubernetes-azure-arc](../../../security-center/defender-for-kubernetes-azure-arc.md)」を参照してください。 |AuditIfNotExists、Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Kubernetes/ASC_Azure_Defender_Kubernetes_Arc_Extension_Audit.json) |
+|[Azure Arc 対応 Kubernetes クラスターには、Azure Defender の拡張機能がインストールされている必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8dfab9c4-fe7b-49ad-85e4-1e9be085358f) |Azure Defender の Azure Arc 拡張機能により、Arc 対応 Kubernetes クラスターの脅威保護が提供されます。 拡張機能は、クラスター内のノードからデータを収集し、それを詳しく分析するためにクラウド内の Azure Defender for Kubernetes バックエンドに送信します。 詳細については、「[https://docs.microsoft.com/azure/security-center/defender-for-kubernetes-azure-arc](../../../security-center/defender-for-kubernetes-azure-arc.md)」を参照してください。 |AuditIfNotExists、Disabled |[2.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Kubernetes/ASC_Azure_Defender_Kubernetes_Arc_Extension_Audit.json) |
 |[Azure Defender for Azure SQL Database サーバーを有効にする必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7fe3b40f-802b-4cdd-8bd4-fd799c948cc2) |Azure Defender for SQL により、潜在的なデータベースの脆弱性を明示および軽減するための機能が提供され、SQL データベースへの脅威を示す可能性のある異常なアクティビティが検出され、機密データの検出と分類が行われます。 |AuditIfNotExists、Disabled |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Security%20Center/ASC_EnableAdvancedDataSecurityOnSqlServers_Audit.json) |
 |[コンテナー レジストリ用 Azure Defender を有効にする必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc25d9a16-bc35-4e15-a7e5-9db606bf9ed4) |コンテナー レジストリ用の Azure Defender では、過去 30 日間にプルされたイメージ、レジストリにプッシュされたイメージ、またはインポートされたイメージの脆弱性をスキャンする機能が提供され、イメージごとの詳細な結果が公開されます。 |AuditIfNotExists、Disabled |[1.0.3](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Security%20Center/ASC_EnableAdvancedThreatProtectionOnContainerRegistry_Audit.json) |
 |[Azure Defender for DNS を有効にする必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fbdc59948-5574-49b3-bb91-76b7c986428d) |Azure Defender for DNS では、Azure リソースからすべての DNS クエリを継続的に監視することにより、クラウド リソースに対して追加の保護層を提供します。 Azure Defender では、DNS 層での不審なアクティビティについて警告します。 Azure Defender for DNS の機能に関する詳細については、[https://aka.ms/defender-for-dns](../../../security-center/defender-for-dns-introduction.md) を参照してください。 この Azure Defender プランを有効にすると、料金が発生します。 リージョンごとの料金の詳細については、Security Center の価格に関するページを参照してください: [https://aka.ms/pricing-security-center](https://aka.ms/pricing-security-center)。 |AuditIfNotExists、Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableAzureDefenderOnDns_Audit.json) |
@@ -314,13 +314,13 @@ ms.locfileid: "123104638"
 
 ### <a name="integration--scanning-and-monitoring-capabilities"></a>統合またはスキャンと監視機能
 
-**ID**: NIST SP 800-53 Rev. 4 AU-6 (5)
+**ID**: FedRAMP High AU-6 (5)
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[SQL Server の監査を有効にする必要があります](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa6fb4358-5bf4-4ad7-ba82-2cd2f41ce5e9) |サーバー上のすべてのデータベースについてデータベースのアクティビティを追跡して、監査ログに保存するには、お使いの SQL サーバーに対する監査を有効にする必要があります。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServerAuditing_Audit.json) |
 |[サブスクリプションで Log Analytics エージェントの自動プロビジョニングを有効にする必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F475aae12-b88a-4572-8b36-9b712b2b3a17) |Azure Security Center では、セキュリティの脆弱性と脅威を監視するために、Azure 仮想マシンからデータを収集します。 データは、以前は Microsoft Monitoring Agent (MMA) と呼ばれていた Log Analytics エージェントによって収集されます。これがセキュリティ関連のさまざまな構成とイベント ログをマシンから読み取り、分析のためにデータを Log Analytics ワークスペースにコピーします。 自動プロビジョニングを有効にして、サポートされているすべての Azure VM と新しく作成された VM にこのエージェントを自動的にデプロイすることをお勧めします。 |AuditIfNotExists、Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Security%20Center/ASC_Automatic_provisioning_log_analytics_monitoring_agent.json) |
-|[Azure Arc 対応 Kubernetes クラスターには、Azure Defender の拡張機能がインストールされている必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8dfab9c4-fe7b-49ad-85e4-1e9be085358f) |Azure Defender の Azure Arc 拡張機能により、Arc 対応 Kubernetes クラスターの脅威保護が提供されます。 拡張機能は、クラスター内のノードからデータを収集し、それを詳しく分析するためにクラウド内の Azure Defender for Kubernetes バックエンドに送信します。 詳細については、「[https://docs.microsoft.com/azure/security-center/defender-for-kubernetes-azure-arc](../../../security-center/defender-for-kubernetes-azure-arc.md)」を参照してください。 |AuditIfNotExists、Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Kubernetes/ASC_Azure_Defender_Kubernetes_Arc_Extension_Audit.json) |
+|[Azure Arc 対応 Kubernetes クラスターには、Azure Defender の拡張機能がインストールされている必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8dfab9c4-fe7b-49ad-85e4-1e9be085358f) |Azure Defender の Azure Arc 拡張機能により、Arc 対応 Kubernetes クラスターの脅威保護が提供されます。 拡張機能は、クラスター内のノードからデータを収集し、それを詳しく分析するためにクラウド内の Azure Defender for Kubernetes バックエンドに送信します。 詳細については、「[https://docs.microsoft.com/azure/security-center/defender-for-kubernetes-azure-arc](../../../security-center/defender-for-kubernetes-azure-arc.md)」を参照してください。 |AuditIfNotExists、Disabled |[2.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Kubernetes/ASC_Azure_Defender_Kubernetes_Arc_Extension_Audit.json) |
 |[Azure Defender for Azure SQL Database サーバーを有効にする必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7fe3b40f-802b-4cdd-8bd4-fd799c948cc2) |Azure Defender for SQL により、潜在的なデータベースの脆弱性を明示および軽減するための機能が提供され、SQL データベースへの脅威を示す可能性のある異常なアクティビティが検出され、機密データの検出と分類が行われます。 |AuditIfNotExists、Disabled |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Security%20Center/ASC_EnableAdvancedDataSecurityOnSqlServers_Audit.json) |
 |[コンテナー レジストリ用 Azure Defender を有効にする必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc25d9a16-bc35-4e15-a7e5-9db606bf9ed4) |コンテナー レジストリ用の Azure Defender では、過去 30 日間にプルされたイメージ、レジストリにプッシュされたイメージ、またはインポートされたイメージの脆弱性をスキャンする機能が提供され、イメージごとの詳細な結果が公開されます。 |AuditIfNotExists、Disabled |[1.0.3](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Security%20Center/ASC_EnableAdvancedThreatProtectionOnContainerRegistry_Audit.json) |
 |[Azure Defender for DNS を有効にする必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fbdc59948-5574-49b3-bb91-76b7c986428d) |Azure Defender for DNS では、Azure リソースからすべての DNS クエリを継続的に監視することにより、クラウド リソースに対して追加の保護層を提供します。 Azure Defender では、DNS 層での不審なアクティビティについて警告します。 Azure Defender for DNS の機能に関する詳細については、[https://aka.ms/defender-for-dns](../../../security-center/defender-for-dns-introduction.md) を参照してください。 この Azure Defender プランを有効にすると、料金が発生します。 リージョンごとの料金の詳細については、Security Center の価格に関するページを参照してください: [https://aka.ms/pricing-security-center](https://aka.ms/pricing-security-center)。 |AuditIfNotExists、Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableAzureDefenderOnDns_Audit.json) |
@@ -352,7 +352,7 @@ ms.locfileid: "123104638"
 
 ### <a name="audit-record-retention"></a>監査レコードの保持
 
-**ID**: NIST SP 800-53 Rev. 4 AU-11
+**ID**: FedRAMP High AU-11
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -360,13 +360,13 @@ ms.locfileid: "123104638"
 
 ### <a name="audit-generation"></a>監査の生成
 
-**ID**: NIST SP 800-53 Rev. 4 AU-12
+**ID**: FedRAMP High AU-12
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[SQL Server の監査を有効にする必要があります](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa6fb4358-5bf4-4ad7-ba82-2cd2f41ce5e9) |サーバー上のすべてのデータベースについてデータベースのアクティビティを追跡して、監査ログに保存するには、お使いの SQL サーバーに対する監査を有効にする必要があります。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServerAuditing_Audit.json) |
 |[サブスクリプションで Log Analytics エージェントの自動プロビジョニングを有効にする必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F475aae12-b88a-4572-8b36-9b712b2b3a17) |Azure Security Center では、セキュリティの脆弱性と脅威を監視するために、Azure 仮想マシンからデータを収集します。 データは、以前は Microsoft Monitoring Agent (MMA) と呼ばれていた Log Analytics エージェントによって収集されます。これがセキュリティ関連のさまざまな構成とイベント ログをマシンから読み取り、分析のためにデータを Log Analytics ワークスペースにコピーします。 自動プロビジョニングを有効にして、サポートされているすべての Azure VM と新しく作成された VM にこのエージェントを自動的にデプロイすることをお勧めします。 |AuditIfNotExists、Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Security%20Center/ASC_Automatic_provisioning_log_analytics_monitoring_agent.json) |
-|[Azure Arc 対応 Kubernetes クラスターには、Azure Defender の拡張機能がインストールされている必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8dfab9c4-fe7b-49ad-85e4-1e9be085358f) |Azure Defender の Azure Arc 拡張機能により、Arc 対応 Kubernetes クラスターの脅威保護が提供されます。 拡張機能は、クラスター内のノードからデータを収集し、それを詳しく分析するためにクラウド内の Azure Defender for Kubernetes バックエンドに送信します。 詳細については、「[https://docs.microsoft.com/azure/security-center/defender-for-kubernetes-azure-arc](../../../security-center/defender-for-kubernetes-azure-arc.md)」を参照してください。 |AuditIfNotExists、Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Kubernetes/ASC_Azure_Defender_Kubernetes_Arc_Extension_Audit.json) |
+|[Azure Arc 対応 Kubernetes クラスターには、Azure Defender の拡張機能がインストールされている必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8dfab9c4-fe7b-49ad-85e4-1e9be085358f) |Azure Defender の Azure Arc 拡張機能により、Arc 対応 Kubernetes クラスターの脅威保護が提供されます。 拡張機能は、クラスター内のノードからデータを収集し、それを詳しく分析するためにクラウド内の Azure Defender for Kubernetes バックエンドに送信します。 詳細については、「[https://docs.microsoft.com/azure/security-center/defender-for-kubernetes-azure-arc](../../../security-center/defender-for-kubernetes-azure-arc.md)」を参照してください。 |AuditIfNotExists、Disabled |[2.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Kubernetes/ASC_Azure_Defender_Kubernetes_Arc_Extension_Audit.json) |
 |[Azure Defender for Azure SQL Database サーバーを有効にする必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7fe3b40f-802b-4cdd-8bd4-fd799c948cc2) |Azure Defender for SQL により、潜在的なデータベースの脆弱性を明示および軽減するための機能が提供され、SQL データベースへの脅威を示す可能性のある異常なアクティビティが検出され、機密データの検出と分類が行われます。 |AuditIfNotExists、Disabled |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Security%20Center/ASC_EnableAdvancedDataSecurityOnSqlServers_Audit.json) |
 |[コンテナー レジストリ用 Azure Defender を有効にする必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc25d9a16-bc35-4e15-a7e5-9db606bf9ed4) |コンテナー レジストリ用の Azure Defender では、過去 30 日間にプルされたイメージ、レジストリにプッシュされたイメージ、またはインポートされたイメージの脆弱性をスキャンする機能が提供され、イメージごとの詳細な結果が公開されます。 |AuditIfNotExists、Disabled |[1.0.3](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Security%20Center/ASC_EnableAdvancedThreatProtectionOnContainerRegistry_Audit.json) |
 |[Azure Defender for DNS を有効にする必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fbdc59948-5574-49b3-bb91-76b7c986428d) |Azure Defender for DNS では、Azure リソースからすべての DNS クエリを継続的に監視することにより、クラウド リソースに対して追加の保護層を提供します。 Azure Defender では、DNS 層での不審なアクティビティについて警告します。 Azure Defender for DNS の機能に関する詳細については、[https://aka.ms/defender-for-dns](../../../security-center/defender-for-dns-introduction.md) を参照してください。 この Azure Defender プランを有効にすると、料金が発生します。 リージョンごとの料金の詳細については、Security Center の価格に関するページを参照してください: [https://aka.ms/pricing-security-center](https://aka.ms/pricing-security-center)。 |AuditIfNotExists、Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableAzureDefenderOnDns_Audit.json) |
@@ -398,13 +398,13 @@ ms.locfileid: "123104638"
 
 ### <a name="system-wide--time-correlated-audit-trail"></a>システム全体または時間相関の監査証跡
 
-**ID**: NIST SP 800-53 Rev. 4 AU-12 (1)
+**ID**: FedRAMP High AU-12 (1)
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[SQL Server の監査を有効にする必要があります](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa6fb4358-5bf4-4ad7-ba82-2cd2f41ce5e9) |サーバー上のすべてのデータベースについてデータベースのアクティビティを追跡して、監査ログに保存するには、お使いの SQL サーバーに対する監査を有効にする必要があります。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServerAuditing_Audit.json) |
 |[サブスクリプションで Log Analytics エージェントの自動プロビジョニングを有効にする必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F475aae12-b88a-4572-8b36-9b712b2b3a17) |Azure Security Center では、セキュリティの脆弱性と脅威を監視するために、Azure 仮想マシンからデータを収集します。 データは、以前は Microsoft Monitoring Agent (MMA) と呼ばれていた Log Analytics エージェントによって収集されます。これがセキュリティ関連のさまざまな構成とイベント ログをマシンから読み取り、分析のためにデータを Log Analytics ワークスペースにコピーします。 自動プロビジョニングを有効にして、サポートされているすべての Azure VM と新しく作成された VM にこのエージェントを自動的にデプロイすることをお勧めします。 |AuditIfNotExists、Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Security%20Center/ASC_Automatic_provisioning_log_analytics_monitoring_agent.json) |
-|[Azure Arc 対応 Kubernetes クラスターには、Azure Defender の拡張機能がインストールされている必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8dfab9c4-fe7b-49ad-85e4-1e9be085358f) |Azure Defender の Azure Arc 拡張機能により、Arc 対応 Kubernetes クラスターの脅威保護が提供されます。 拡張機能は、クラスター内のノードからデータを収集し、それを詳しく分析するためにクラウド内の Azure Defender for Kubernetes バックエンドに送信します。 詳細については、「[https://docs.microsoft.com/azure/security-center/defender-for-kubernetes-azure-arc](../../../security-center/defender-for-kubernetes-azure-arc.md)」を参照してください。 |AuditIfNotExists、Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Kubernetes/ASC_Azure_Defender_Kubernetes_Arc_Extension_Audit.json) |
+|[Azure Arc 対応 Kubernetes クラスターには、Azure Defender の拡張機能がインストールされている必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8dfab9c4-fe7b-49ad-85e4-1e9be085358f) |Azure Defender の Azure Arc 拡張機能により、Arc 対応 Kubernetes クラスターの脅威保護が提供されます。 拡張機能は、クラスター内のノードからデータを収集し、それを詳しく分析するためにクラウド内の Azure Defender for Kubernetes バックエンドに送信します。 詳細については、「[https://docs.microsoft.com/azure/security-center/defender-for-kubernetes-azure-arc](../../../security-center/defender-for-kubernetes-azure-arc.md)」を参照してください。 |AuditIfNotExists、Disabled |[2.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Kubernetes/ASC_Azure_Defender_Kubernetes_Arc_Extension_Audit.json) |
 |[Azure Defender for Azure SQL Database サーバーを有効にする必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7fe3b40f-802b-4cdd-8bd4-fd799c948cc2) |Azure Defender for SQL により、潜在的なデータベースの脆弱性を明示および軽減するための機能が提供され、SQL データベースへの脅威を示す可能性のある異常なアクティビティが検出され、機密データの検出と分類が行われます。 |AuditIfNotExists、Disabled |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Security%20Center/ASC_EnableAdvancedDataSecurityOnSqlServers_Audit.json) |
 |[コンテナー レジストリ用 Azure Defender を有効にする必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc25d9a16-bc35-4e15-a7e5-9db606bf9ed4) |コンテナー レジストリ用の Azure Defender では、過去 30 日間にプルされたイメージ、レジストリにプッシュされたイメージ、またはインポートされたイメージの脆弱性をスキャンする機能が提供され、イメージごとの詳細な結果が公開されます。 |AuditIfNotExists、Disabled |[1.0.3](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Security%20Center/ASC_EnableAdvancedThreatProtectionOnContainerRegistry_Audit.json) |
 |[Azure Defender for DNS を有効にする必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fbdc59948-5574-49b3-bb91-76b7c986428d) |Azure Defender for DNS では、Azure リソースからすべての DNS クエリを継続的に監視することにより、クラウド リソースに対して追加の保護層を提供します。 Azure Defender では、DNS 層での不審なアクティビティについて警告します。 Azure Defender for DNS の機能に関する詳細については、[https://aka.ms/defender-for-dns](../../../security-center/defender-for-dns-introduction.md) を参照してください。 この Azure Defender プランを有効にすると、料金が発生します。 リージョンごとの料金の詳細については、Security Center の価格に関するページを参照してください: [https://aka.ms/pricing-security-center](https://aka.ms/pricing-security-center)。 |AuditIfNotExists、Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableAzureDefenderOnDns_Audit.json) |
@@ -438,7 +438,7 @@ ms.locfileid: "123104638"
 
 ### <a name="configuration-settings"></a>構成設定
 
-**ID**: NIST SP 800-53 Rev. 4 CM-6
+**ID**: FedRAMP High CM-6
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -449,19 +449,19 @@ ms.locfileid: "123104638"
 |[API アプリで "クライアント証明書 (着信クライアント証明書)" が [オン] に設定されていることを確認する](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0c192fe8-9cbb-4516-85b3-0ade8bd03886) |クライアント証明書を使用すると、アプリは受信要求に対して証明書を要求できます。 有効な証明書を持つクライアントのみがアプリにアクセスできます。 |Audit、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_ClientCert.json) |
 |[Web アプリで "クライアント証明書 (着信クライアント証明書)" が [オン] に設定されていることを確認する](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5bb220d9-2698-4ee4-8404-b9c30c9df609) |クライアント証明書を使用すると、アプリは受信要求に対して証明書を要求できます。 有効な証明書を持つクライアントのみがアプリにアクセスできます。 |Audit、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_Webapp_Audit_ClientCert.json) |
 |[関数アプリでは、"クライアント証明書 (着信クライアント証明書)" が有効になっている必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Feaebaea7-8013-4ceb-9d14-7eb32271373c) |クライアント証明書を使用すると、アプリは受信要求に対して証明書を要求できます。 有効な証明書を持つクライアントのみが、そのアプリにアクセスできるようになります。 |Audit、Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_FunctionApp_Audit_ClientCert.json) |
-|[Kubernetes クラスター コンテナーの CPU およびメモリ リソースの制限は、指定された制限を超えないようにする必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe345eecc-fa47-480f-9e88-67dcc122b164) |コンテナーの CPU とメモリ リソースの制限を適用して、Kubernetes クラスターでのリソース枯渇攻撃を防ぎます。 このポリシーは、Kubernetes Service (AKS)、AKS Engine のプレビュー、および Azure Arc 対応 Kubernetes で一般提供されています。 詳細については、「[https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)」を参照してください。 |audit、deny、disabled |[6.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Kubernetes/ContainerResourceLimits.json) |
-|[Kubernetes クラスター コンテナーでは、ホスト プロセス ID またはホスト IPC 名前空間を共有してはいけない](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F47a1ee2f-2a2a-4576-bf2a-e0e36709c2b8) |ポッド コンテナーが Kubernetes クラスターでホスト プロセス ID 名前空間とホスト IPC 名前空間を共有できないようにします。 この推奨事項は、Kubernetes 環境のセキュリティを強化することを目的とした CIS 5.2.2 と CIS 5.2.3 の一部です。 このポリシーは、Kubernetes Service (AKS)、AKS Engine のプレビュー、および Azure Arc 対応 Kubernetes で一般提供されています。 詳細については、「[https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)」を参照してください。 |audit、deny、disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Kubernetes/BlockHostNamespace.json) |
+|[Kubernetes クラスター コンテナーの CPU およびメモリ リソースの制限は、指定された制限を超えないようにする必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe345eecc-fa47-480f-9e88-67dcc122b164) |コンテナーの CPU とメモリ リソースの制限を適用して、Kubernetes クラスターでのリソース枯渇攻撃を防ぎます。 このポリシーは、Kubernetes Service (AKS)、AKS Engine のプレビュー、および Azure Arc 対応 Kubernetes で一般提供されています。 詳細については、「[https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)」を参照してください。 |audit、deny、disabled |[7.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Kubernetes/ContainerResourceLimits.json) |
+|[Kubernetes クラスター コンテナーでは、ホスト プロセス ID またはホスト IPC 名前空間を共有してはいけない](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F47a1ee2f-2a2a-4576-bf2a-e0e36709c2b8) |ポッド コンテナーが Kubernetes クラスターでホスト プロセス ID 名前空間とホスト IPC 名前空間を共有できないようにします。 この推奨事項は、Kubernetes 環境のセキュリティを強化することを目的とした CIS 5.2.2 と CIS 5.2.3 の一部です。 このポリシーは、Kubernetes Service (AKS)、AKS Engine のプレビュー、および Azure Arc 対応 Kubernetes で一般提供されています。 詳細については、「[https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)」を参照してください。 |audit、deny、disabled |[3.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Kubernetes/BlockHostNamespace.json) |
 |[Kubernetes クラスター コンテナーは、許可されたポートでのみリッスンする必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F440b515e-a580-421e-abeb-b159a61ddcbc) |Kubernetes クラスターへのアクセスをセキュリティで保護するために、許可されたポートでのみリッスンするようにコンテナーを制限します。 このポリシーは、Kubernetes Service (AKS)、AKS Engine のプレビュー、および Azure Arc 対応 Kubernetes で一般提供されています。 詳細については、「[https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)」を参照してください。 |audit、deny、disabled |[6.1.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Kubernetes/ContainerAllowedPorts.json) |
-|[Kubernetes クラスター コンテナーでは、許可されている AppArmor プロファイルのみを使用する必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F511f5417-5d12-434d-ab2e-816901e72a5e) |コンテナーでは、Kubernetes クラスターで許可されている AppArmor プロファイルのみを使用する必要があります。 この推奨事項は、Kubernetes 環境のセキュリティを強化することを目的としたポッド セキュリティ ポリシーの一部です。 このポリシーは、Kubernetes Service (AKS)、AKS Engine のプレビュー、および Azure Arc 対応 Kubernetes で一般提供されています。 詳細については、「[https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)」を参照してください。 |audit、deny、disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Kubernetes/EnforceAppArmorProfile.json) |
-|[Kubernetes クラスター コンテナーでは、許可されている機能のみを使用する必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc26596ff-4d70-4e6a-9a30-c2506bd2f80c) |Kubernetes クラスター内のコンテナーの攻撃面を縮小するために、機能を制限します。 この推奨事項は、Kubernetes 環境のセキュリティを強化することを目的とした CIS 5.2.8 と CIS 5.2.9 の一部です。 このポリシーは、Kubernetes Service (AKS)、AKS Engine のプレビュー、および Azure Arc 対応 Kubernetes で一般提供されています。 詳細については、「[https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)」を参照してください。 |audit、deny、disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Kubernetes/ContainerAllowedCapabilities.json) |
+|[Kubernetes クラスター コンテナーでは、許可されている AppArmor プロファイルのみを使用する必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F511f5417-5d12-434d-ab2e-816901e72a5e) |コンテナーでは、Kubernetes クラスターで許可されている AppArmor プロファイルのみを使用する必要があります。 この推奨事項は、Kubernetes 環境のセキュリティを強化することを目的としたポッド セキュリティ ポリシーの一部です。 このポリシーは、Kubernetes Service (AKS)、AKS Engine のプレビュー、および Azure Arc 対応 Kubernetes で一般提供されています。 詳細については、「[https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)」を参照してください。 |audit、deny、disabled |[4.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Kubernetes/EnforceAppArmorProfile.json) |
+|[Kubernetes クラスター コンテナーでは、許可されている機能のみを使用する必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc26596ff-4d70-4e6a-9a30-c2506bd2f80c) |Kubernetes クラスター内のコンテナーの攻撃面を縮小するために、機能を制限します。 この推奨事項は、Kubernetes 環境のセキュリティを強化することを目的とした CIS 5.2.8 と CIS 5.2.9 の一部です。 このポリシーは、Kubernetes Service (AKS)、AKS Engine のプレビュー、および Azure Arc 対応 Kubernetes で一般提供されています。 詳細については、「[https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)」を参照してください。 |audit、deny、disabled |[4.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Kubernetes/ContainerAllowedCapabilities.json) |
 |[Kubernetes クラスター コンテナーでは、許可されているイメージのみを使用する必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffebd0533-8e55-448f-b837-bd0e06f16469) |信頼できるレジストリのイメージを使用して、不明な脆弱性、セキュリティの問題、悪意のあるイメージに対する Kubernetes クラスターの露出リスクを削減します。 このポリシーは、Kubernetes Service (AKS)、AKS Engine のプレビュー、および Azure Arc 対応 Kubernetes で一般提供されています。 詳細については、「[https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)」を参照してください。 |audit、deny、disabled |[7.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Kubernetes/ContainerAllowedImages.json) |
-|[Kubernetes クラスターコンテナーは、読み取り専用のルート ファイル システムを使用して実行する必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fdf49d893-a74c-421d-bc95-c663042e5b80) |Kubernetes クラスター内のパスに悪意のあるバイナリを追加する実行時の変更から保護するために、読み取り専用のルート ファイル システムでコンテナーを実行します。 このポリシーは、Kubernetes Service (AKS)、AKS Engine のプレビュー、および Azure Arc 対応 Kubernetes で一般提供されています。 詳細については、「[https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)」を参照してください。 |audit、deny、disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Kubernetes/ReadOnlyRootFileSystem.json) |
-|[Kubernetes クラスター ポッドの hostPath ボリュームでは、許可されているホスト パスのみを使用する必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F098fc59e-46c7-4d99-9b16-64990e543d75) |ポッドの HostPath ボリューム マウントを、Kubernetes クラスター内の許可されているホスト パスに制限します。 この推奨事項は、Kubernetes 環境のセキュリティを強化することを目的としたポッド セキュリティ ポリシーの一部です。 このポリシーは、Kubernetes Service (AKS)、AKS Engine のプレビュー、および Azure Arc 対応 Kubernetes で一般提供されています。 詳細については、「[https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)」を参照してください。 |audit、deny、disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Kubernetes/AllowedHostPaths.json) |
-|[Kubernetes クラスターのポッドとコンテナーは、承認されたユーザーとグループの ID のみを使用して実行する必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff06ddb64-5fa3-4b77-b166-acb36f7f6042) |Kubernetes クラスターでポッドとコンテナーを実行する際に使用できるユーザー、プライマリ グループ、補助グループ、およびファイル システム グループの ID を制御します。 この推奨事項は、Kubernetes 環境のセキュリティを強化することを目的としたポッド セキュリティ ポリシーの一部です。 このポリシーは、Kubernetes Service (AKS)、AKS Engine のプレビュー、および Azure Arc 対応 Kubernetes で一般提供されています。 詳細については、「[https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)」を参照してください。 |audit、deny、disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Kubernetes/AllowedUsersGroups.json) |
-|[Kubernetes クラスターのポッドでは、承認されているホスト ネットワークとポート範囲のみを使用する必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F82985f06-dc18-4a48-bc1c-b9f4f0098cfe) |ポッドのアクセスを、Kubernetes クラスター内のホスト ネットワークおよび許容されるホスト ポート範囲に制限します。 この推奨事項は、Kubernetes 環境のセキュリティを強化することを目的とした CIS 5.2.4 の一部です。 このポリシーは、Kubernetes Service (AKS)、AKS Engine のプレビュー、および Azure Arc 対応 Kubernetes で一般提供されています。 詳細については、「[https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)」を参照してください。 |audit、deny、disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Kubernetes/HostNetworkPorts.json) |
+|[Kubernetes クラスターコンテナーは、読み取り専用のルート ファイル システムを使用して実行する必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fdf49d893-a74c-421d-bc95-c663042e5b80) |Kubernetes クラスター内のパスに悪意のあるバイナリを追加する実行時の変更から保護するために、読み取り専用のルート ファイル システムでコンテナーを実行します。 このポリシーは、Kubernetes Service (AKS)、AKS Engine のプレビュー、および Azure Arc 対応 Kubernetes で一般提供されています。 詳細については、「[https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)」を参照してください。 |audit、deny、disabled |[4.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Kubernetes/ReadOnlyRootFileSystem.json) |
+|[Kubernetes クラスター ポッドの hostPath ボリュームでは、許可されているホスト パスのみを使用する必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F098fc59e-46c7-4d99-9b16-64990e543d75) |ポッドの HostPath ボリューム マウントを、Kubernetes クラスター内の許可されているホスト パスに制限します。 この推奨事項は、Kubernetes 環境のセキュリティを強化することを目的としたポッド セキュリティ ポリシーの一部です。 このポリシーは、Kubernetes Service (AKS)、AKS Engine のプレビュー、および Azure Arc 対応 Kubernetes で一般提供されています。 詳細については、「[https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)」を参照してください。 |audit、deny、disabled |[4.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Kubernetes/AllowedHostPaths.json) |
+|[Kubernetes クラスターのポッドとコンテナーは、承認されたユーザーとグループの ID のみを使用して実行する必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff06ddb64-5fa3-4b77-b166-acb36f7f6042) |Kubernetes クラスターでポッドとコンテナーを実行する際に使用できるユーザー、プライマリ グループ、補助グループ、およびファイル システム グループの ID を制御します。 この推奨事項は、Kubernetes 環境のセキュリティを強化することを目的としたポッド セキュリティ ポリシーの一部です。 このポリシーは、Kubernetes Service (AKS)、AKS Engine のプレビュー、および Azure Arc 対応 Kubernetes で一般提供されています。 詳細については、「[https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)」を参照してください。 |audit、deny、disabled |[4.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Kubernetes/AllowedUsersGroups.json) |
+|[Kubernetes クラスターのポッドでは、承認されているホスト ネットワークとポート範囲のみを使用する必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F82985f06-dc18-4a48-bc1c-b9f4f0098cfe) |ポッドのアクセスを、Kubernetes クラスター内のホスト ネットワークおよび許容されるホスト ポート範囲に制限します。 この推奨事項は、Kubernetes 環境のセキュリティを強化することを目的とした CIS 5.2.4 の一部です。 このポリシーは、Kubernetes Service (AKS)、AKS Engine のプレビュー、および Azure Arc 対応 Kubernetes で一般提供されています。 詳細については、「[https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)」を参照してください。 |audit、deny、disabled |[4.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Kubernetes/HostNetworkPorts.json) |
 |[Kubernetes クラスター サービスでは、許可されているポートでのみリッスンする必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F233a2a17-77ca-4fb1-9b6b-69223d272a44) |Kubernetes クラスターへのアクセスをセキュリティで保護するために、許可されたポートでのみリッスンするようにサービスを制限します。 このポリシーは、Kubernetes Service (AKS)、AKS Engine のプレビュー、および Azure Arc 対応 Kubernetes で一般提供されています。 詳細については、「[https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)」を参照してください。 |audit、deny、disabled |[6.1.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Kubernetes/ServiceAllowedPorts.json) |
 |[Kubernetes クラスターで特権コンテナーを許可しない](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F95edb821-ddaf-4404-9732-666045e056b4) |Kubernetes クラスターでの特権コンテナーの作成を許可しません。 この推奨事項は、Kubernetes 環境のセキュリティを強化することを目的とした CIS 5.2.1 の一部です。 このポリシーは、Kubernetes Service (AKS)、AKS Engine のプレビュー、および Azure Arc 対応 Kubernetes で一般提供されています。 詳細については、「[https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)」を参照してください。 |audit、deny、disabled |[7.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Kubernetes/ContainerNoPrivilege.json) |
-|[Kubernetes クラスターでは、コンテナーの特権エスカレーションを許可してはいけない](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1c6e92c9-99f0-4e55-9cf2-0c234dc48f99) |Kubernetes クラスターにおいて、ルートへの特権エスカレーションでのコンテナーの実行を許可しないでください。 この推奨事項は、Kubernetes 環境のセキュリティを強化することを目的とした CIS 5.2.5 の一部です。 このポリシーは、Kubernetes Service (AKS)、AKS Engine のプレビュー、および Azure Arc 対応 Kubernetes で一般提供されています。 詳細については、「[https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)」を参照してください。 |audit、deny、disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Kubernetes/ContainerNoPrivilegeEscalation.json) |
+|[Kubernetes クラスターでは、コンテナーの特権エスカレーションを許可してはいけない](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1c6e92c9-99f0-4e55-9cf2-0c234dc48f99) |Kubernetes クラスターにおいて、ルートへの特権エスカレーションでのコンテナーの実行を許可しないでください。 この推奨事項は、Kubernetes 環境のセキュリティを強化することを目的とした CIS 5.2.5 の一部です。 このポリシーは、Kubernetes Service (AKS)、AKS Engine のプレビュー、および Azure Arc 対応 Kubernetes で一般提供されています。 詳細については、「[https://aka.ms/kubepolicydoc](../concepts/policy-for-kubernetes.md)」を参照してください。 |audit、deny、disabled |[3.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Kubernetes/ContainerNoPrivilegeEscalation.json) |
 |[Linux マシンは Azure のコンピューティング セキュリティ ベースラインの要件を満たしている必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffc9b3da7-8347-4380-8e70-0a0361d8dedd) |前提条件がポリシーの割り当てスコープにデプロイされていることが要求されます。 詳細については、[https://aka.ms/gcpol](../concepts/guest-configuration.md) を参照してください。 Azure Compute セキュリティ ベースラインの推奨事項のいずれかについて、マシンが正しく構成されていない場合、マシンは非準拠となります。 |AuditIfNotExists、Disabled |[1.1.1-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Guest%20Configuration/GuestConfiguration_AzureLinuxBaseline_AINE.json) |
 |[API アプリでリモート デバッグを無効にする必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe9c8d085-d9cc-4b17-9cdc-059f1f01f19e) |リモート デバッグを実行するには、受信ポートが API アプリ上で開かれている必要があります。 リモート デバッグを無効にする必要があります。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_DisableRemoteDebugging_ApiApp_Audit.json) |
 |[関数アプリでリモート デバッグを無効にする必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0e60b895-3786-45da-8377-9c6b4b6ac5f9) |リモート デバッグを実行するには、受信ポートが関数アプリ上で開かれている必要があります。 リモート デバッグを無効にする必要があります。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_DisableRemoteDebugging_FunctionApp_Audit.json) |
@@ -470,7 +470,7 @@ ms.locfileid: "123104638"
 
 ### <a name="least-functionality"></a>最小限の機能
 
-**ID**: NIST SP 800-53 Rev. 4 CM-7
+**ID**: FedRAMP High CM-7
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -480,7 +480,7 @@ ms.locfileid: "123104638"
 
 ### <a name="prevent-program-execution"></a>プログラムの実行禁止
 
-**ID**: NIST SP 800-53 Rev. 4 CM-7 (2)
+**ID**: FedRAMP High CM-7 (2)
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -489,7 +489,7 @@ ms.locfileid: "123104638"
 
 ### <a name="authorized-software--whitelisting"></a>認可されたソフトウェア/ホワイトリスト登録
 
-**ID**: NIST SP 800-53 Rev. 4 CM-7 (5)
+**ID**: FedRAMP High CM-7 (5)
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -498,7 +498,7 @@ ms.locfileid: "123104638"
 
 ### <a name="software-usage-restrictions"></a>ソフトウェアの使用制限
 
-**ID**: NIST SP 800-53 Rev. 4 CM-10
+**ID**: FedRAMP High CM-10
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -507,7 +507,7 @@ ms.locfileid: "123104638"
 
 ### <a name="user-installed-software"></a>ユーザーがインストールするソフトウェア
 
-**ID**: NIST SP 800-53 Rev. 4 CM-11
+**ID**: FedRAMP High CM-11
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -518,7 +518,7 @@ ms.locfileid: "123104638"
 
 ### <a name="alternate-storage-site"></a>代替ストレージ サイト
 
-**ID**: NIST SP 800-53 Rev. 4 CP-6
+**ID**: FedRAMP High CP-6
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -530,7 +530,7 @@ ms.locfileid: "123104638"
 
 ### <a name="separation-from-primary-site"></a>プライマリ サイトからの分離
 
-**ID**: NIST SP 800-53 Rev. 4 CP-6 (1)
+**ID**: FedRAMP High CP-6 (1)
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -542,7 +542,7 @@ ms.locfileid: "123104638"
 
 ### <a name="alternate-processing-site"></a>代替処理サイト
 
-**ID**: NIST SP 800-53 Rev. 4 CP-7
+**ID**: FedRAMP High CP-7
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -550,7 +550,7 @@ ms.locfileid: "123104638"
 
 ### <a name="information-system-backup"></a>情報システムのバックアップ
 
-**ID**: NIST SP 800-53 Rev. 4 CP-9
+**ID**: FedRAMP High CP-9
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -565,7 +565,7 @@ ms.locfileid: "123104638"
 
 ### <a name="identification-and-authentication-organizational-users"></a>識別と認証 (組織のユーザー)
 
-**ID**: NIST SP 800-53 Rev. 4 IA-2
+**ID**: FedRAMP High IA-2
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -582,7 +582,7 @@ ms.locfileid: "123104638"
 
 ### <a name="network-access-to-privileged-accounts"></a>特権アカウントへのネットワーク アクセス
 
-**ID**: NIST SP 800-53 Rev. 4 IA-2 (1)
+**ID**: FedRAMP High IA-2 (1)
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -591,7 +591,7 @@ ms.locfileid: "123104638"
 
 ### <a name="network-access-to-non-privileged-accounts"></a>非特権アカウントへのネットワーク アクセス
 
-**ID**: NIST SP 800-53 Rev. 4 IA-2 (2)
+**ID**: FedRAMP High IA-2 (2)
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -599,7 +599,7 @@ ms.locfileid: "123104638"
 
 ### <a name="identifier-management"></a>識別子の管理
 
-**ID**: NIST SP 800-53 Rev. 4 IA-4
+**ID**: FedRAMP High IA-4
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -613,7 +613,7 @@ ms.locfileid: "123104638"
 
 ### <a name="authenticator-management"></a>認証子の管理
 
-**ID**: NIST SP 800-53 Rev. 4 IA-5
+**ID**: FedRAMP High IA-5
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -626,7 +626,7 @@ ms.locfileid: "123104638"
 
 ### <a name="password-based-authentication"></a>パスワードベースの認証
 
-**ID**: NIST SP 800-53 Rev. 4 IA-5 (1)
+**ID**: FedRAMP High IA-5 (1)
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -646,7 +646,7 @@ ms.locfileid: "123104638"
 
 ### <a name="incident-handling"></a>インシデント処理
 
-**ID**: NIST SP 800-53 Rev. 4 IR-4
+**ID**: FedRAMP High IR-4
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -665,7 +665,7 @@ ms.locfileid: "123104638"
 
 ### <a name="incident-monitoring"></a>インシデント監視
 
-**ID**: NIST SP 800-53 Rev. 4 IR-5
+**ID**: FedRAMP High IR-5
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -686,7 +686,7 @@ ms.locfileid: "123104638"
 
 ### <a name="vulnerability-scanning"></a>脆弱性のスキャン
 
-**ID**: NIST SP 800-53 Rev. 4 RA-5
+**ID**: FedRAMP High RA-5
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -712,18 +712,18 @@ ms.locfileid: "123104638"
 
 ### <a name="security-function-isolation"></a>セキュリティ機能の分離
 
-**ID**: NIST SP 800-53 Rev. 4 SC-3
+**ID**: FedRAMP High SC-3
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[サーバー用 Azure Defender を有効にする必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4da35fc9-c9e7-4960-aec9-797fe7d9051d) |サーバー用 Azure Defender では、サーバーのワークロードに対するリアルタイムの脅威の防止が提供され、セキュリティ強化の推奨事項と、不審なアクティビティに関するアラートが生成されます。 |AuditIfNotExists、Disabled |[1.0.3](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Security%20Center/ASC_EnableAdvancedThreatProtectionOnVM_Audit.json) |
 |[エンドポイント保護ソリューションを仮想マシン スケール セットにインストールする必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F26a828e1-e88f-464e-bbb3-c134a282b9de) |脅威と脆弱性から保護するため、お使いの仮想マシン スケール セットでのエンドポイント保護ソリューションの存在と正常性を監査します。 |AuditIfNotExists、Disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Security%20Center/ASC_VmssMissingEndpointProtection_Audit.json) |
-|[Endpoint Protection の不足を Azure Security Center で監視する](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Faf6cd1bd-1635-48cb-bde7-5b15693900b9) |Endpoint Protection エージェントがインストールされていないサーバーが、推奨設定として Azure Security Center で監視されます |AuditIfNotExists、Disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Security%20Center/ASC_MissingEndpointProtection_Audit.json) |
+|[Endpoint Protection の不足を Azure Security Center で監視する](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Faf6cd1bd-1635-48cb-bde7-5b15693900b9) |Endpoint Protection エージェントがインストールされていないサーバーが、推奨設定として Azure Security Center で監視されます |AuditIfNotExists、Disabled |[3.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Security%20Center/ASC_MissingEndpointProtection_Audit.json) |
 |[マシンで Windows Defender Exploit Guard を有効にする必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fbed48b13-6647-468e-aa2f-1af1d3f4dd40) |Windows Defender Exploit Guard では、Azure Policy ゲスト構成エージェントを使用します。 Exploit Guard には、さまざまな攻撃ベクトルに対してデバイスをロックダウンし、マルウェア攻撃でよく使用される動作をブロックするよう設計された 4 つのコンポーネントがありますが、企業がセキュリティ リスクと生産性の要件のバランスをとれるようになっています (Windows のみ)。 |AuditIfNotExists、Disabled |[1.1.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Guest%20Configuration/GuestConfiguration_WindowsDefenderExploitGuard_AINE.json) |
 
 ### <a name="denial-of-service-protection"></a>サービス拒否の防止
 
-**ID**: NIST SP 800-53 Rev. 4 SC-5
+**ID**: FedRAMP High SC-5
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -734,7 +734,7 @@ ms.locfileid: "123104638"
 
 ### <a name="boundary-protection"></a>境界保護
 
-**ID**: NIST SP 800-53 Rev. 4 SC-7
+**ID**: FedRAMP High SC-7
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -781,7 +781,7 @@ ms.locfileid: "123104638"
 
 ### <a name="access-points"></a>アクセス ポイント
 
-**ID**: NIST SP 800-53 Rev. 4 SC-7 (3)
+**ID**: FedRAMP High SC-7 (3)
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -828,7 +828,7 @@ ms.locfileid: "123104638"
 
 ### <a name="transmission-confidentiality-and-integrity"></a>送信の機密性と整合性
 
-**ID**: NIST SP 800-53 Rev. 4 SC-8
+**ID**: FedRAMP High SC-8
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -851,7 +851,7 @@ ms.locfileid: "123104638"
 
 ### <a name="cryptographic-or-alternate-physical-protection"></a>暗号化または代替の物理的保護
 
-**ID**: NIST SP 800-53 Rev. 4 SC-8 (1)
+**ID**: FedRAMP High SC-8 (1)
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -874,7 +874,7 @@ ms.locfileid: "123104638"
 
 ### <a name="cryptographic-key-establishment-and-management"></a>暗号化キーの確立と管理
 
-**ID**: NIST SP 800-53 Rev. 4 SC-12
+**ID**: FedRAMP High SC-12
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -887,7 +887,7 @@ ms.locfileid: "123104638"
 |[Azure データ ファクトリは、カスタマー マネージド キーを使用して暗号化する必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4ec52d6d-beb7-40c4-9a9e-fe753254690e) |カスタマー マネージド キーを使用して、Azure データ ファクトリの保存時の暗号化を管理します。 既定では、顧客データはサービス マネージド キーを使用して暗号化されますが、規制コンプライアンス標準を満たすには、一般にカスタマー マネージド キーが必要です。 カスタマー マネージド キーを使用すると、自分が作成して所有する Azure Key Vault キーを使用してデータを暗号化できます。 ローテーションや管理など、キーのライフサイクルを完全に制御し、責任を負うことになります。 詳細については、[https://aka.ms/adf-cmk](../../../data-factory/enable-customer-managed-key.md) をご覧ください。 |Audit、Deny、Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Data%20Factory/DataFactory_CustomerManagedKey_Audit.json) |
 |[Azure HDInsight クラスターでは、カスタマー マネージド キーを使用して保存データを暗号化する必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F64d314f6-6062-4780-a861-c23e8951bee5) |カスタマー マネージド キーを使用して、Azure HDInsight クラスターの保存時の暗号化を管理します。 既定では、顧客データはサービス マネージド キーを使用して暗号化されますが、規制コンプライアンス標準を満たすには、一般にカスタマー マネージド キーが必要です。 カスタマー マネージド キーを使用すると、自分が作成して所有する Azure Key Vault キーを使用してデータを暗号化できます。 ローテーションや管理など、キーのライフサイクルを完全に制御し、責任を負うことになります。 詳細については、[https://aka.ms/hdi.cmk](../../../hdinsight/disk-encryption.md) をご覧ください。 |Audit、Deny、Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/HDInsight/HDInsight_CMK_Audit.json) |
 |[Azure HDInsight クラスターでは、ホストでの暗号化を使用して保存データを暗号化する必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1fd32ebd-e4c3-4e13-a54a-d7422d4d95f6) |ホストでの暗号化を有効にすると、データを保護して、組織のセキュリティとコンプライアンスのコミットメントを満たすことができます。 ホストでの暗号化を有効にすると、VM ホスト上の格納データは、保存時に暗号化され、暗号化された状態でストレージ サービスに送られます。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/HDInsight/HDInsight_EncryptionAtHost_Audit.json) |
-|[Azure Machine Learning ワークスペースは、カスタマー マネージド キーを使用して暗号化する必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fba769a63-b8cc-4b2d-abf6-ac33c7204be8) |カスタマー マネージド キーを使用して、Azure Machine Learning ワークスペース データの保存時の暗号化を管理します。 既定では、顧客データはサービス マネージド キーを使用して暗号化されますが、規制コンプライアンス標準を満たすには、一般にカスタマー マネージド キーが必要です。 カスタマー マネージド キーを使用すると、自分が作成して所有する Azure Key Vault キーを使用してデータを暗号化できます。 ローテーションや管理など、キーのライフサイクルを完全に制御し、責任を負うことになります。 詳細については、[https://aka.ms/azureml-workspaces-cmk](/azure/machine-learning/how-to-create-workspace-template#deploy-an-encrypted-workspace") をご覧ください。 |Audit、Deny、Disabled |[1.0.3](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Machine%20Learning/Workspace_CMKEnabled_Audit.json) |
+|[Azure Machine Learning ワークスペースは、カスタマー マネージド キーを使用して暗号化する必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fba769a63-b8cc-4b2d-abf6-ac33c7204be8) |カスタマー マネージド キーを使用して、Azure Machine Learning ワークスペース データの保存時の暗号化を管理します。 既定では、顧客データはサービス マネージド キーを使用して暗号化されますが、規制コンプライアンス標準を満たすには、一般にカスタマー マネージド キーが必要です。 カスタマー マネージド キーを使用すると、自分が作成して所有する Azure Key Vault キーを使用してデータを暗号化できます。 ローテーションや管理など、キーのライフサイクルを完全に制御し、責任を負うことになります。 詳細については、[https://aka.ms/azureml-workspaces-cmk](../../../machine-learning/how-to-create-workspace-template.md) をご覧ください。 |Audit、Deny、Disabled |[1.0.3](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Machine%20Learning/Workspace_CMKEnabled_Audit.json) |
 |[Azure Monitor ログ クラスターは、カスタマー マネージド キーを使用して暗号化する必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1f68a601-6e6d-4e42-babf-3f643a047ea2) |Azure Monitor ログ クラスターは、カスタマー マネージド キー暗号化を使用して作成します。 既定では、ログ データはサービス マネージド キーを使用して暗号化されますが、規制コンプライアンスを満たすには、一般にカスタマー マネージド キーが必要です。 Azure Monitor にカスタマー マネージド キーを使用することで、データへのアクセスをより細かく制御することができます。[https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys](../../../azure-monitor/logs/customer-managed-keys.md) を参照してください。 |audit、deny、disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/LogAnalyticsClusters_CMKEnabled_Deny.json) |
 |[Azure Recovery Services コンテナーは、バックアップ データを暗号化するために、カスタマー マネージド キーを使用する必要があります](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2e94d99a-8a36-4563-bc77-810d8893b671) |カスタマー マネージド キーを使用して、バックアップ データの保存時の暗号化を管理します。 既定では、顧客データはサービス マネージド キーを使用して暗号化されますが、規制コンプライアンス標準を満たすには、一般にカスタマー マネージド キーが必要です。 カスタマー マネージド キーを使用すると、自分が作成して所有する Azure Key Vault キーを使用してデータを暗号化できます。 ローテーションや管理など、キーのライフサイクルを完全に制御し、責任を負うことになります。 詳細については、[https://aka.ms/AB-CmkEncryption](../../../backup/encryption-at-rest-with-cmk.md) をご覧ください。 |Audit、Deny、Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Backup/AzBackupRSVault_CMKEnabled_Audit.json) |
 |[Azure Stream Analytics ジョブでは、データの暗号化にカスタマー マネージド キーを使用する必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F87ba29ef-1ab3-4d82-b763-87fcd4f531f7) |ストレージ アカウントに Stream Analytics ジョブのメタデータとプライベート データ資産を安全に格納したい場合は、カスタマー マネージド キーを使用します。 これで、Stream Analytics データが暗号化される方法を完全に制御できるようになります。 |audit、deny、disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Stream%20Analytics/StreamAnalytics_CMK_Audit.json) |
@@ -899,7 +899,7 @@ ms.locfileid: "123104638"
 |[イベント ハブの名前空間では、暗号化のためにカスタマー マネージド キーを使用する必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa1ad735a-e96f-45d2-a7b2-9a4932cab7ec) |Azure Event Hubs では、Microsoft マネージド キー (既定) またはカスタマー マネージド キーのいずれかを使用した保存データの暗号化のオプションがサポートされています。 カスタマー マネージド キーを使用してデータを暗号化することを選択すると、名前空間内のデータを暗号化するためにイベント ハブで使用するキーへのアクセスを割り当て、ローテーション、無効化、および取り消すことができます。 イベント ハブでは、専用クラスター内の名前空間のカスタマー マネージド キーを使用した暗号化のみをサポートしていることに注意してください。 |Audit、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Event%20Hub/EventHub_CustomerManagedKeyEnabled_Audit.json) |
 |[IoT Hub Device Provisioning サービスのデータはカスタマー マネージド キー (CMK) を使用して暗号化する必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F47031206-ce96-41f8-861b-6a915f3de284) |カスタマー マネージド キーを使用して、IoT Hub Device Provisioning Service の保存時の暗号化を管理します。 データはサービス マネージド キーを使用して保存時に自動的に暗号化されますが、規制コンプライアンス標準を満たすためには一般に、カスタマー マネージド キー (CMK) が必要です。 CMK を使用すると、自分が作成して所有する Azure Key Vault キーを使用してデータを暗号化できます。 CMK 暗号化の詳細については、[https://aka.ms/dps/CMK](../../../iot-dps/iot-dps-customer-managed-keys.md) を参照してください。 |Audit、Deny、Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Internet%20of%20Things/IoTDps_CMKEncryptionEnabled_AuditDeny.json) |
 |[Logic Apps 統合サービス環境は、カスタマー マネージド キーを使用して暗号化する必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1fafeaf6-7927-4059-a50a-8eb2a7a6f2b5) |統合サービス環境にデプロイし、カスタマー マネージド キーを使用して Logic Apps データの保存時の暗号化を管理します。 既定では、顧客データはサービス マネージド キーを使用して暗号化されますが、規制コンプライアンス標準を満たすには、一般にカスタマー マネージド キーが必要です。 カスタマー マネージド キーを使用すると、自分が作成して所有する Azure Key Vault キーを使用してデータを暗号化できます。 ローテーションや管理など、キーのライフサイクルを完全に制御し、責任を負うことになります。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Logic%20Apps/LogicApps_ISEWithCustomerManagedKey_AuditDeny.json) |
-|[マネージド ディスクはプラットフォーム マネージドおよびカスタマー マネージド キーの両方を使用して二重暗号化する必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fca91455f-eace-4f96-be59-e6e2c35b4816) |セキュリティに対する要件が高く、特定の暗号化アルゴリズム、実装、または侵害されたキーに関連するリスクを懸念しているお客様は、プラットフォーム マネージド暗号化キーを使用してインフラストラクチャ レイヤーに異なる暗号化アルゴリズムまたはモードを使用することにより、暗号化の追加レイヤーを設けることを選ぶことができます。 二重暗号化を使用するには、ディスク暗号化セットが必要です。 詳細については、[https://aka.ms/disks-doubleEncryption](/azure/virtual-machines/disk-encryption#double-encryption-at-rest) をご覧ください。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/DoubleEncryptionRequired_Deny.json) |
+|[マネージド ディスクはプラットフォーム マネージドおよびカスタマー マネージド キーの両方を使用して二重暗号化する必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fca91455f-eace-4f96-be59-e6e2c35b4816) |セキュリティに対する要件が高く、特定の暗号化アルゴリズム、実装、または侵害されたキーに関連するリスクを懸念しているお客様は、プラットフォーム マネージド暗号化キーを使用してインフラストラクチャ レイヤーに異なる暗号化アルゴリズムまたはモードを使用することにより、暗号化の追加レイヤーを設けることを選ぶことができます。 二重暗号化を使用するには、ディスク暗号化セットが必要です。 詳細については、[https://aka.ms/disks-doubleEncryption](../../../virtual-machines/disk-encryption.md) をご覧ください。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/DoubleEncryptionRequired_Deny.json) |
 |[OS およびデータ ディスクはカスタマー マネージド キーで暗号化する必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F702dd420-7fcc-42c5-afe8-4026edd20fe0) |カスタマー マネージド キーを使用して、マネージド ディスクのコンテンツ保存時の暗号化を管理します。 既定では、データはプラットフォーム マネージド キーを使用して保存時に暗号化されますが、規制コンプライアンス標準を満たすには、一般にカスタマー マネージド キーが必要です。 カスタマー マネージド キーを使用すると、自分が作成して所有する Azure Key Vault キーを使用してデータを暗号化できます。 ローテーションや管理など、キーのライフサイクルを完全に制御し、責任を負うことになります。 詳細については、[https://aka.ms/disks-cmk](../../../virtual-machines/disk-encryption.md) をご覧ください。 |Audit、Deny、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/OSAndDataDiskCMKRequired_Deny.json) |
 |[Azure Monitor 内の保存されたクエリはログ暗号化のためにカスタマー ストレージ アカウントに保存する必要があります](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffa298e57-9444-42ba-bf04-86e8470e32c7) |保存済みのクエリをストレージ アカウントの暗号化によって保護するには、Log Analytics ワークスペースにストレージ アカウントをリンクします。 一般に、規制コンプライアンスを満たすと共に、Azure Monitor の保存済みのクエリに対するアクセスをより細かく制御するためには、カスタマー マネージド キーが必要です。 上記の点について詳しくは、[https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys?tabs=portal](../../../azure-monitor/logs/customer-managed-keys.md?tabs=portal) を参照してください。 |audit、deny、disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/LogAnalyticsWorkspaces_CMKBYOSQueryEnabled_Deny.json) |
 |[Service Bus Premium の名前空間では、暗号化のためにカスタマー マネージド キーを使用する必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F295fc8b1-dc9f-4f53-9c61-3f313ceab40a) |Azure Service Bus では、Microsoft マネージド キー (既定) またはカスタマー マネージド キーのいずれかを使用した保存データの暗号化のオプションがサポートされています。 カスタマー マネージド キーを使用してデータを暗号化することを選択すると、名前空間内のデータを暗号化するために Service Bus で使用するキーへのアクセスを割り当て、ローテーション、無効化、および取り消すことができます。 Service Bus では、Premium 名前空間のカスタマー マネージド キーを使用した暗号化のみをサポートしていることに注意してください。 |Audit、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Service%20Bus/ServiceBus_CustomerManagedKeyEnabled_Audit.json) |
@@ -910,7 +910,7 @@ ms.locfileid: "123104638"
 
 ### <a name="protection-of-information-at-rest"></a>保存情報の保護
 
-**ID**: NIST SP 800-53 Rev. 4 SC-28
+**ID**: FedRAMP High SC-28
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -927,11 +927,11 @@ ms.locfileid: "123104638"
 |[Azure Kubernetes Service クラスターのエージェント ノード プールのための一時ディスクおよびキャッシュは、ホストで暗号化する必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F41425d9f-d1a5-499a-9932-f8ed8453932c) |データ セキュリティを強化するために、Azure Kubernetes Service ノード仮想マシン (VM) の VM ホストに格納されているデータは、保存時に暗号化する必要があります。 これは、さまざまな規制や業界のコンプライアンス標準での一般的な要件です。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AKS_EncryptionAtHost_Deny.json) |
 |[Transparent Data Encryption を SQL データベース上で有効にする必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F17k78e20-9358-41c9-923c-fb736d382a12) |保存データを保護し、コンプライアンス要件を満たすには、Transparent Data Encryption を有効にする必要があります |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlDBEncryption_Audit.json) |
 |[仮想マシンおよび仮想マシン スケール セットでは、ホストでの暗号化が有効になっている必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffc4d8e41-e223-45ea-9bf5-eada37891d87) |ホストで暗号化を使用して、仮想マシンと仮想マシン スケール セットのデータのためのエンドツーエンドの暗号化を取得します。 ホストでの暗号化を使用すると、一時ディスクと OS およびデータ ディスクのキャッシュの保存時の暗号化が有効になります。 ホストでの暗号化が有効になっている場合、一時およびエフェメラル OS ディスクはプラットフォーム マネージド キーを使用して暗号化されます。 OS とデータ ディスクのキャッシュは、ディスクで選択された暗号化の種類に応じて、カスタマー マネージドまたはプラットフォーム マネージド キーのいずれかを使用して保存時に暗号化されます。 詳細については、[https://aka.ms/vm-hbe](../../../virtual-machines/disks-enable-host-based-encryption-portal.md) をご覧ください。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/HostBasedEncryptionRequired_Deny.json) |
-|[コンピューティングとストレージのリソース間で一時ディスク、キャッシュ、データ フローを仮想マシンによって暗号化する必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0961003e-5a0a-4549-abde-af6a37f2724d) |ディスク暗号化が有効になっていない仮想マシンが、推奨設定として Azure Security Center によって監視されます。 |AuditIfNotExists、Disabled |[2.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_UnencryptedVMDisks_Audit.json) |
+|[コンピューティングとストレージのリソース間で一時ディスク、キャッシュ、データ フローを仮想マシンによって暗号化する必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0961003e-5a0a-4549-abde-af6a37f2724d) |既定では、仮想マシンの OS とデータのディスクは、保存時にプラットフォーム マネージド キーを使用して暗号化されます。 一時ディスク、データ キャッシュ、およびコンピューティングとストレージの間を流れているデータは暗号化されません。 次のような場合は、この推奨事項を無視してください。1. ホストでの暗号化を使用している場合。または 2. マネージド ディスクでのサーバー側暗号化がセキュリティ要件を満たしている場合。 詳細については、「[Azure Disk Storage のサーバー側暗号化](../../../virtual-machines/disk-encryption.md)」および[さまざまなディスク暗号化オファリング](../../../virtual-machines/disk-encryption-overview.md#comparison)に関する記事を参照してください。 |AuditIfNotExists、Disabled |[2.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_UnencryptedVMDisks_Audit.json) |
 
 ### <a name="cryptographic-protection"></a>暗号化による保護
 
-**ID**: NIST SP 800-53 Rev. 4 SC-28 (1)
+**ID**: FedRAMP High SC-28 (1)
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -948,13 +948,13 @@ ms.locfileid: "123104638"
 |[Azure Kubernetes Service クラスターのエージェント ノード プールのための一時ディスクおよびキャッシュは、ホストで暗号化する必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F41425d9f-d1a5-499a-9932-f8ed8453932c) |データ セキュリティを強化するために、Azure Kubernetes Service ノード仮想マシン (VM) の VM ホストに格納されているデータは、保存時に暗号化する必要があります。 これは、さまざまな規制や業界のコンプライアンス標準での一般的な要件です。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AKS_EncryptionAtHost_Deny.json) |
 |[Transparent Data Encryption を SQL データベース上で有効にする必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F17k78e20-9358-41c9-923c-fb736d382a12) |保存データを保護し、コンプライアンス要件を満たすには、Transparent Data Encryption を有効にする必要があります |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlDBEncryption_Audit.json) |
 |[仮想マシンおよび仮想マシン スケール セットでは、ホストでの暗号化が有効になっている必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffc4d8e41-e223-45ea-9bf5-eada37891d87) |ホストで暗号化を使用して、仮想マシンと仮想マシン スケール セットのデータのためのエンドツーエンドの暗号化を取得します。 ホストでの暗号化を使用すると、一時ディスクと OS およびデータ ディスクのキャッシュの保存時の暗号化が有効になります。 ホストでの暗号化が有効になっている場合、一時およびエフェメラル OS ディスクはプラットフォーム マネージド キーを使用して暗号化されます。 OS とデータ ディスクのキャッシュは、ディスクで選択された暗号化の種類に応じて、カスタマー マネージドまたはプラットフォーム マネージド キーのいずれかを使用して保存時に暗号化されます。 詳細については、[https://aka.ms/vm-hbe](../../../virtual-machines/disks-enable-host-based-encryption-portal.md) をご覧ください。 |Audit、Deny、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/HostBasedEncryptionRequired_Deny.json) |
-|[コンピューティングとストレージのリソース間で一時ディスク、キャッシュ、データ フローを仮想マシンによって暗号化する必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0961003e-5a0a-4549-abde-af6a37f2724d) |ディスク暗号化が有効になっていない仮想マシンが、推奨設定として Azure Security Center によって監視されます。 |AuditIfNotExists、Disabled |[2.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_UnencryptedVMDisks_Audit.json) |
+|[コンピューティングとストレージのリソース間で一時ディスク、キャッシュ、データ フローを仮想マシンによって暗号化する必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0961003e-5a0a-4549-abde-af6a37f2724d) |既定では、仮想マシンの OS とデータのディスクは、保存時にプラットフォーム マネージド キーを使用して暗号化されます。 一時ディスク、データ キャッシュ、およびコンピューティングとストレージの間を流れているデータは暗号化されません。 次のような場合は、この推奨事項を無視してください。1. ホストでの暗号化を使用している場合。または 2. マネージド ディスクでのサーバー側暗号化がセキュリティ要件を満たしている場合。 詳細については、「[Azure Disk Storage のサーバー側暗号化](../../../virtual-machines/disk-encryption.md)」および[さまざまなディスク暗号化オファリング](../../../virtual-machines/disk-encryption-overview.md#comparison)に関する記事を参照してください。 |AuditIfNotExists、Disabled |[2.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_UnencryptedVMDisks_Audit.json) |
 
 ## <a name="system-and-information-integrity"></a>システムと情報の整合性
 
 ### <a name="flaw-remediation"></a>欠陥の修復
 
-**ID**: NIST SP 800-53 Rev. 4 SI-2
+**ID**: FedRAMP High SI-2
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -985,34 +985,34 @@ ms.locfileid: "123104638"
 
 ### <a name="malicious-code-protection"></a>悪意のあるコードからの保護
 
-**ID**: NIST SP 800-53 Rev. 4 SI-3
+**ID**: FedRAMP High SI-3
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[サーバー用 Azure Defender を有効にする必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4da35fc9-c9e7-4960-aec9-797fe7d9051d) |サーバー用 Azure Defender では、サーバーのワークロードに対するリアルタイムの脅威の防止が提供され、セキュリティ強化の推奨事項と、不審なアクティビティに関するアラートが生成されます。 |AuditIfNotExists、Disabled |[1.0.3](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Security%20Center/ASC_EnableAdvancedThreatProtectionOnVM_Audit.json) |
 |[エンドポイント保護ソリューションを仮想マシン スケール セットにインストールする必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F26a828e1-e88f-464e-bbb3-c134a282b9de) |脅威と脆弱性から保護するため、お使いの仮想マシン スケール セットでのエンドポイント保護ソリューションの存在と正常性を監査します。 |AuditIfNotExists、Disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Security%20Center/ASC_VmssMissingEndpointProtection_Audit.json) |
-|[Endpoint Protection の不足を Azure Security Center で監視する](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Faf6cd1bd-1635-48cb-bde7-5b15693900b9) |Endpoint Protection エージェントがインストールされていないサーバーが、推奨設定として Azure Security Center で監視されます |AuditIfNotExists、Disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Security%20Center/ASC_MissingEndpointProtection_Audit.json) |
+|[Endpoint Protection の不足を Azure Security Center で監視する](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Faf6cd1bd-1635-48cb-bde7-5b15693900b9) |Endpoint Protection エージェントがインストールされていないサーバーが、推奨設定として Azure Security Center で監視されます |AuditIfNotExists、Disabled |[3.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Security%20Center/ASC_MissingEndpointProtection_Audit.json) |
 |[マシンで Windows Defender Exploit Guard を有効にする必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fbed48b13-6647-468e-aa2f-1af1d3f4dd40) |Windows Defender Exploit Guard では、Azure Policy ゲスト構成エージェントを使用します。 Exploit Guard には、さまざまな攻撃ベクトルに対してデバイスをロックダウンし、マルウェア攻撃でよく使用される動作をブロックするよう設計された 4 つのコンポーネントがありますが、企業がセキュリティ リスクと生産性の要件のバランスをとれるようになっています (Windows のみ)。 |AuditIfNotExists、Disabled |[1.1.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Guest%20Configuration/GuestConfiguration_WindowsDefenderExploitGuard_AINE.json) |
 
 ### <a name="central-management"></a>中央管理
 
-**ID**: NIST SP 800-53 Rev. 4 SI-3 (1)
+**ID**: FedRAMP High SI-3 (1)
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[サーバー用 Azure Defender を有効にする必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4da35fc9-c9e7-4960-aec9-797fe7d9051d) |サーバー用 Azure Defender では、サーバーのワークロードに対するリアルタイムの脅威の防止が提供され、セキュリティ強化の推奨事項と、不審なアクティビティに関するアラートが生成されます。 |AuditIfNotExists、Disabled |[1.0.3](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Security%20Center/ASC_EnableAdvancedThreatProtectionOnVM_Audit.json) |
 |[エンドポイント保護ソリューションを仮想マシン スケール セットにインストールする必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F26a828e1-e88f-464e-bbb3-c134a282b9de) |脅威と脆弱性から保護するため、お使いの仮想マシン スケール セットでのエンドポイント保護ソリューションの存在と正常性を監査します。 |AuditIfNotExists、Disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Security%20Center/ASC_VmssMissingEndpointProtection_Audit.json) |
-|[Endpoint Protection の不足を Azure Security Center で監視する](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Faf6cd1bd-1635-48cb-bde7-5b15693900b9) |Endpoint Protection エージェントがインストールされていないサーバーが、推奨設定として Azure Security Center で監視されます |AuditIfNotExists、Disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Security%20Center/ASC_MissingEndpointProtection_Audit.json) |
+|[Endpoint Protection の不足を Azure Security Center で監視する](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Faf6cd1bd-1635-48cb-bde7-5b15693900b9) |Endpoint Protection エージェントがインストールされていないサーバーが、推奨設定として Azure Security Center で監視されます |AuditIfNotExists、Disabled |[3.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Security%20Center/ASC_MissingEndpointProtection_Audit.json) |
 |[マシンで Windows Defender Exploit Guard を有効にする必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fbed48b13-6647-468e-aa2f-1af1d3f4dd40) |Windows Defender Exploit Guard では、Azure Policy ゲスト構成エージェントを使用します。 Exploit Guard には、さまざまな攻撃ベクトルに対してデバイスをロックダウンし、マルウェア攻撃でよく使用される動作をブロックするよう設計された 4 つのコンポーネントがありますが、企業がセキュリティ リスクと生産性の要件のバランスをとれるようになっています (Windows のみ)。 |AuditIfNotExists、Disabled |[1.1.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Guest%20Configuration/GuestConfiguration_WindowsDefenderExploitGuard_AINE.json) |
 
 ### <a name="information-system-monitoring"></a>情報システムの監視
 
-**ID**: NIST SP 800-53 Rev. 4 SI-4
+**ID**: FedRAMP High SI-4
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[自分のサブスクリプションで Log Analytics エージェントの自動プロビジョニングを有効にする必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F475aae12-b88a-4572-8b36-9b712b2b3a17) |Azure Security Center では、セキュリティの脆弱性と脅威を監視するために、Azure 仮想マシンからデータを収集します。 データは、以前は Microsoft Monitoring Agent (MMA) と呼ばれていた Log Analytics エージェントによって収集されます。これがセキュリティ関連のさまざまな構成とイベント ログをマシンから読み取り、分析のためにデータを Log Analytics ワークスペースにコピーします。 自動プロビジョニングを有効にして、サポートされているすべての Azure VM と新しく作成された VM にこのエージェントを自動的にデプロイすることをお勧めします。 |AuditIfNotExists、Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Security%20Center/ASC_Automatic_provisioning_log_analytics_monitoring_agent.json) |
-|[Azure Arc 対応 Kubernetes クラスターには、Azure Defender の拡張機能がインストールされている必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8dfab9c4-fe7b-49ad-85e4-1e9be085358f) |Azure Defender の Azure Arc 拡張機能により、Arc 対応 Kubernetes クラスターの脅威保護が提供されます。 拡張機能は、クラスター内のノードからデータを収集し、それを詳しく分析するためにクラウド内の Azure Defender for Kubernetes バックエンドに送信します。 詳細については、「[https://docs.microsoft.com/azure/security-center/defender-for-kubernetes-azure-arc](../../../security-center/defender-for-kubernetes-azure-arc.md)」を参照してください。 |AuditIfNotExists、Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Kubernetes/ASC_Azure_Defender_Kubernetes_Arc_Extension_Audit.json) |
+|[Azure Arc 対応 Kubernetes クラスターには、Azure Defender の拡張機能がインストールされている必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8dfab9c4-fe7b-49ad-85e4-1e9be085358f) |Azure Defender の Azure Arc 拡張機能により、Arc 対応 Kubernetes クラスターの脅威保護が提供されます。 拡張機能は、クラスター内のノードからデータを収集し、それを詳しく分析するためにクラウド内の Azure Defender for Kubernetes バックエンドに送信します。 詳細については、「[https://docs.microsoft.com/azure/security-center/defender-for-kubernetes-azure-arc](../../../security-center/defender-for-kubernetes-azure-arc.md)」を参照してください。 |AuditIfNotExists、Disabled |[2.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Kubernetes/ASC_Azure_Defender_Kubernetes_Arc_Extension_Audit.json) |
 |[Azure Defender for Azure SQL Database サーバーを有効にする必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7fe3b40f-802b-4cdd-8bd4-fd799c948cc2) |Azure Defender for SQL により、潜在的なデータベースの脆弱性を明示および軽減するための機能が提供され、SQL データベースへの脅威を示す可能性のある異常なアクティビティが検出され、機密データの検出と分類が行われます。 |AuditIfNotExists、Disabled |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Security%20Center/ASC_EnableAdvancedDataSecurityOnSqlServers_Audit.json) |
 |[コンテナー レジストリ用 Azure Defender を有効にする必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc25d9a16-bc35-4e15-a7e5-9db606bf9ed4) |コンテナー レジストリ用の Azure Defender では、過去 30 日間にプルされたイメージ、レジストリにプッシュされたイメージ、またはインポートされたイメージの脆弱性をスキャンする機能が提供され、イメージごとの詳細な結果が公開されます。 |AuditIfNotExists、Disabled |[1.0.3](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Government/Security%20Center/ASC_EnableAdvancedThreatProtectionOnContainerRegistry_Audit.json) |
 |[Azure Defender for DNS を有効にする必要がある](https://portal.azure.us/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fbdc59948-5574-49b3-bb91-76b7c986428d) |Azure Defender for DNS では、Azure リソースからすべての DNS クエリを継続的に監視することにより、クラウド リソースに対して追加の保護層を提供します。 Azure Defender では、DNS 層での不審なアクティビティについて警告します。 Azure Defender for DNS の機能に関する詳細については、[https://aka.ms/defender-for-dns](../../../security-center/defender-for-dns-introduction.md) を参照してください。 この Azure Defender プランを有効にすると、料金が発生します。 リージョンごとの料金の詳細については、Security Center の価格に関するページを参照してください: [https://aka.ms/pricing-security-center](https://aka.ms/pricing-security-center)。 |AuditIfNotExists、Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableAzureDefenderOnDns_Audit.json) |
@@ -1033,7 +1033,7 @@ ms.locfileid: "123104638"
 
 ### <a name="memory-protection"></a>メモリの保護
 
-**ID**: NIST SP 800-53 Rev. 4 SI-16
+**ID**: FedRAMP High SI-16
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|

@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 07/06/2021
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 35e98fcbd1be87e471152d0760ca375e46770a81
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f97f01ecb1b11af6ca4292c8b2bfd3ebdb50e943
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121747638"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129360247"
 ---
 # <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>チュートリアル:Computer Vision を使用して Azure Storage に画像メタデータを生成する
 
@@ -197,7 +197,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     }
     ```
 
-    新しい **Index** メソッドでは、`"photos"` コンテナー内の BLOB を列挙し、ASP.NET MVC の **ViewBag** プロパティを使用して、これらの BLOB を表す **BlobInfo** オブジェクトの配列をビューに渡します。 後で、ビューを変更してこれらのオブジェクトを列挙し、写真のサムネイルのコレクションを表示します。 ストレージ アカウントにアクセスし、BLOB を列挙するために使用するクラス &mdash; **[CloudStorageAccount](/dotnet/api/microsoft.azure.storage.cloudstorageaccount?view=azure-dotnet)** 、 **[CloudBlobClient](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient?view=azure-dotnet-legacy)** 、および **[CloudBlobContainer](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer?view=azure-dotnet-legacy)** &mdash; は、NuGet を通じてインストールした **WindowsAzure.Storage** パッケージから取得されます。
+    新しい **Index** メソッドでは、`"photos"` コンテナー内の BLOB を列挙し、ASP.NET MVC の **ViewBag** プロパティを使用して、これらの BLOB を表す **BlobInfo** オブジェクトの配列をビューに渡します。 後で、ビューを変更してこれらのオブジェクトを列挙し、写真のサムネイルのコレクションを表示します。 ストレージ アカウントにアクセスし、BLOB を列挙するために使用するクラス &mdash; **[CloudStorageAccount](/dotnet/api/microsoft.azure.storage.cloudstorageaccount?view=azure-dotnet&preserve-view=true)** 、 **[CloudBlobClient](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient?view=azure-dotnet-legacy&preserve-view=true)** 、および **[CloudBlobContainer](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer?view=azure-dotnet-legacy&preserve-view=true)** &mdash; は、NuGet を通じてインストールした **WindowsAzure.Storage** パッケージから取得されます。
 
 1. *HomeController.cs* の **HomeController** クラスに次のメソッドを追加します。
 

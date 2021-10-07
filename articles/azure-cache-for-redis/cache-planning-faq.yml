@@ -2,17 +2,17 @@
 metadata:
   title: Azure Cache for Redis 計画に関するよくあるご質問
   description: Azure Cache for Redis の計画に役立つ、よくある質問に対する回答について説明します。
-  author: yegu-ms
-  ms.author: yegu
+  author: curib
+  ms.author: cauribeg
   ms.service: cache
   ms.topic: conceptual
   ms.date: 08/06/2020
-  ms.openlocfilehash: d7aeffcbe1e6e08f6a7e6bcffb3fea52555b4aa4
-  ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
+  ms.openlocfilehash: 1412776ea900bae35223b653173cd5b9e280820f
+  ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/01/2021
-  ms.locfileid: "113134408"
+  ms.lasthandoff: 10/05/2021
+  ms.locfileid: "129537742"
 title: Azure Cache for Redis 計画に関するよくあるご質問
 summary: >
   この記事では、Azure Cache for Redis の計画に役立つ、よくある質問に対する回答について説明します。

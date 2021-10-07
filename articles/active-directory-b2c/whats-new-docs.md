@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory Business-to-Customer (B2C) の新機能
 description: Azure Active Directory Business-to-Customer (B2C) の新規および更新されたドキュメント。
-ms.date: 09/08/2021
+ms.date: 10/05/2021
 ms.service: active-directory
 ms.subservice: B2C
 ms.topic: reference
@@ -9,16 +9,56 @@ ms.workload: identity
 ms.author: mimart
 author: msmimart
 manager: CelesteDG
-ms.openlocfilehash: a0c5ff9f91f436e7a5ede0c84e1cf5578fc5d500
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 48e2e033062126345f66387529485ee143489a24
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124761374"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129536164"
 ---
 # <a name="azure-active-directory-b2c-whats-new"></a>Azure Active Directory B2C:新機能
 
 Azure Active Directory B2C のドキュメントの最新情報にようこそ。 この記事では、過去 3 か月間に追加された新しいドキュメントと、重要な更新があったものの一覧を示します。 B2C サービスの新機能については、「[Azure Active Directory の新着情報](../active-directory/fundamentals/whats-new.md)」を参照してください。
+
+## <a name="september-2021"></a>2021 年 9 月
+
+### <a name="updated-articles"></a>更新された記事
+
+- [ページ レイアウト バージョン](page-layout.md)
+- [チュートリアル: Azure Active Directory B2C テナントを作成する](tutorial-create-tenant.md)
+- [API コネクタをサインアップ ユーザー フローに追加する](add-api-connector.md)
+- [Azure AD B2C で API コネクタとして使用される API をセキュリティで保護する](secure-rest-api.md)
+- [Azure Active Directory B2C でセッションの動作を構成する](session-behavior.md)
+- [Azure Active Directory B2C テナントを管理する](tenant-management.md)
+- [リソースをクリーンアップしてテナントを削除する](tutorial-delete-tenant.md)
+- [Azure Active Directory B2C でカスタム属性を定義する](user-flow-custom-attributes.md)
+- [チュートリアル: パスワードレス認証のために Azure Active Directory B2C と BlokSec を構成する](partner-bloksec.md)
+- [Azure Active Directory B2C を使用して itsme OpenID Connect を構成する](partner-itsme.md)
+- [チュートリアル:Azure Active Directory B2C を使用して Keyless を構成する](partner-keyless.md)
+- [チュートリアル: パスワードレス FIDO2 認証を有効にするために Azure Active Directory B2C で Nok Nok を構成する](partner-nok-nok.md)
+- [Saviynt と Azure Active Directory B2C を構成するチュートリアル](partner-saviynt.md)
+- [Trusona と Azure Active Directory B2C の統合](partner-trusona.md)
+- [Twilio Verify App と Azure Active Directory B2C の統合](partner-twilio.md)
+- [Azure Active Directory B2C でパスワードの複雑さの要件を構成する](password-complexity.md)
+- [ユーザー フローの電話でのサインアップとサインインを設定する](phone-authentication-user-flows.md)
+- [Azure Active Directory B2C を使用して Google アカウントでのサインアップおよびサインインを設定する](identity-provider-google.md)
+- [Azure Active Directory B2C を使用して ID.me アカウントでのサインアップおよびサインインを設定する](identity-provider-id-me.md)
+- [Azure Active Directory B2C を使用して LinkedIn アカウントでのサインアップおよびサインインを設定する](identity-provider-linkedin.md)
+- [Azure Active Directory B2C を使用して QQ アカウントでのサインアップおよびサインインを設定する](identity-provider-qq.md)
+- [Azure Active Directory B2C で SAML プロトコルを使用して Salesforce SAML プロバイダーでのサインインを設定する](identity-provider-salesforce-saml.md)
+- [Azure Active Directory B2C を使用して Salesforce アカウントでのサインアップおよびサインインを設定する](identity-provider-salesforce.md)
+- [Azure Active Directory B2C を使用して Twitter アカウントでのサインアップおよびサインインを設定する](identity-provider-twitter.md)
+- [Azure Active Directory B2C を使用して WeChat アカウントでのサインアップおよびサインインを設定する](identity-provider-wechat.md)
+- [Azure Active Directory B2C を使用して Weibo アカウントでのサインアップおよびサインインを設定する](identity-provider-weibo.md)
+- [Azure Active Directory B2C で ID プロバイダーのアクセス トークンをアプリケーションに渡す](idp-pass-through-user-flow.md)
+- [Azure Active Directory B2C でカスタム ポリシーを使用して SAML ID プロバイダーとして AD FS を追加する](identity-provider-adfs-saml.md)
+- [Azure Active Directory B2C を使用して Amazon アカウントでのサインアップおよびサインインを設定する](identity-provider-amazon.md)
+- [Azure Active Directory B2C を使用して Facebook アカウントでのサインアップおよびサインインを設定する](identity-provider-facebook.md)
+- [Azure Monitor で Azure AD B2C を監視する](azure-monitor.md)
+- [Azure Active Directory B2C の課金モデル](billing.md)
+- [Azure Active Directory B2C のユーザー フローに条件付きアクセスを追加する](conditional-access-user-flow.md)
+- [Azure Active Directory B2C のカスタム ドメインを有効にする](custom-domain.md)
+
 
 ## <a name="august-2021"></a>2021 年 8 月
 

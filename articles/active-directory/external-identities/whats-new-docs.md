@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory External Identities の新機能
 description: Azure Active Directory External Identities の新規および更新されたドキュメント。
-ms.date: 09/08/2021
+ms.date: 10/05/2021
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: reference
@@ -9,16 +9,26 @@ ms.workload: identity
 ms.author: mimart
 author: msmimart
 manager: CelesteDG
-ms.openlocfilehash: b6346a9e8ff776143b6e000f945fcd9400e03a0d
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 3247f9e13e50a9fb7b4792be518af5b85767822a
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124776483"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129533641"
 ---
 # <a name="azure-active-directory-external-identities-whats-new"></a>Azure Active Directory External Identities:新機能
 
 Azure Active Directory External Identities のドキュメントの最新情報にようこそ。 この記事では、過去 3 か月間に追加された新しいドキュメントと、重要な更新があったものの一覧を示します。 External Identities サービスの新機能については、「[Azure Active Directory の新着情報](../fundamentals/whats-new.md)」を参照してください。
+
+## <a name="september-2021"></a>2021 年 9 月
+
+### <a name="updated-articles"></a>更新された記事
+
+- [ゲスト ユーザーの SAML/WS-Fed ID プロバイダーとのフェデレーション (プレビュー)](direct-federation.md)
+- [Azure Portal で Azure Active Directory B2B コラボレーション ユーザーを追加する](add-users-administrator.md)
+- [ゲスト ユーザーとして組織を脱退する](leave-the-organization.md)
+- [内部ユーザーを B2B コラボレーションに招待する](invite-internal-users.md)
+
 
 ## <a name="august-2021"></a>2021 年 8 月
 

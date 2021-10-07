@@ -9,12 +9,12 @@ metadata:
   ms.date: 02/19/2020
   ms.author: alkemper
   ms.custom: references_regions
-  ms.openlocfilehash: 6dd7cff8408d89cfca117241ebb434f6976a32fb
-  ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+  ms.openlocfilehash: fdfc62b4b5c61cd1b064e6623464147d01dbc58e
+  ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/27/2021
-  ms.locfileid: "123112042"
+  ms.lasthandoff: 09/24/2021
+  ms.locfileid: "128603108"
 title: Azure App Configuration の FAQ
 summary: この記事では、Azure App Configuration についてよく寄せられる質問に回答します。
 sections:
@@ -107,6 +107,8 @@ sections:
 
       - 米国西部 2
 
+      - 米国西部 3
+
       - カナダ中部
 
       - フランス中部
@@ -138,20 +140,25 @@ sections:
 
       * Free レベルのストアの 1 日あたりの要求上限を超えている。
 
-      * Standard レベルのストアに対する要求レートが高いための一時的な調整。
+      * Standard レベルのストアの 1 時間あたりの要求上限を超えている。
+
+      * 要求のバーストが大量にあったため、一時調整されている†。
 
       * 過剰な帯域幅の使用。
 
-      * ストレージの見積もりを超えたときにキーを作成または変更しようとしている。
+      * ストレージ クォータを超過しているときに、キーを作成または変更しようとしている。
 
 
       要求が失敗した具体的な理由について、429 応答の本文を確認します。
+
+
+      †構成ストアに要求のバーストが大量にあった場合、一時調整が発生するおそれがあります。 App Configuration の Azure SDK、構成プロバイダー ライブラリ、Azure Pipeline タスクなどのクライアントでは、要求の調整で再試行が自動的に行われます。 これらのクライアントのいずれかを使用しているアプリケーション、または要求の調整で再試行されるカスタム クライアントでは、この一時調整が発生した場合でも気付くことはありません。
   - question: 削除したものと同じ名前の App Configuration ストアを作成できないのはなぜですか。
     answer: >
       Standard レベルの App Configuration ストアが削除された場合、その名前は削除後 7 日間予約されます。 予約期間が経過する前に同じ名前のストアを再作成することはできますが、元のストアと同じサブスクリプション、リソース グループ、およびリージョンに存在する必要があります。 ストアを含むリソース グループが削除されている場合は、その中にストアを再作成する前に、最初に同じサブスクリプションで再作成する必要があります。
 
 
-      保有期間を過ぎるまでは、App Configuration ストアを別のサブスクリプション/リソース グループで作成することはできません。 ただし、[こちらの手順](/azure/azure-resource-manager/management/move-resource-group-and-subscription#use-the-portal)に従うことで、元のサブスクリプション/リソース グループでリソースを再作成し、その後、それらを新しいサブスクリプション/リソース グループに移動できます。
+      保有期間を過ぎるまでは、App Configuration ストアを別のサブスクリプション/リソース グループで作成することはできません。 ただし、[こちらの手順](../azure-resource-manager/management/move-resource-group-and-subscription.md#use-the-portal)に従うことで、元のサブスクリプション/リソース グループでリソースを再作成し、その後、それらを新しいサブスクリプション/リソース グループに移動できます。
 
 
       保有期間中の App Configuration ストアの再作成は、現在、Azure CLI で `az appconfig create` コマンド (詳細については、[こちら](/cli/azure/appconfig?view=azure-cli-latest#az_appconfig_create)を参照) を使用した場合にのみサポートされます。

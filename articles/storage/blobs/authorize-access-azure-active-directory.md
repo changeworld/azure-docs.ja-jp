@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/13/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 55e3f464f4494f6afa52b90eb50a1c1c66e6756f
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: aefbd7c64ba243166a2122426a31f8a3996dd97d
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128674625"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129361364"
 ---
 # <a name="authorize-access-to-blobs-using-azure-active-directory"></a>Azure Active Directory を使用して BLOB へのアクセスを認可する
 
@@ -67,7 +67,7 @@ Azure RBAC には、Azure AD と OAuth を使用して BLOB データへのア�
 
 Azure 組み込みロールをセキュリティ プリンシパルに割り当てる方法については、「[BLOB データにアクセスするための Azure ロールを割り当てる](../blobs/assign-azure-role-data-access.md)」を参照してください。 Azure RBAC ロールとそのアクセス許可を一覧表示する方法については、「[Azure ロールの定義を一覧表示する](../../role-based-access-control/role-definitions-list.md)」を参照してください。
 
-Azure Storage の組み込みロールの定義方法については、「[ロール定義について](../../role-based-access-control/role-definitions.md#management-and-data-operations)」を参照してください。 Azure カスタム ロールの作成については、「[Azure カスタム ロール](../../role-based-access-control/custom-roles.md)」を参照してください。
+Azure Storage の組み込みロールの定義方法については、「[ロール定義について](../../role-based-access-control/role-definitions.md#control-and-data-actions)」を参照してください。 Azure カスタム ロールの作成については、「[Azure カスタム ロール](../../role-based-access-control/custom-roles.md)」を参照してください。
 
 データ アクセスに対して明示的に定義されたロールによってのみ、セキュリティ プリンシパルによる BLOB データへのアクセスが許可されます。 **所有者**、**共同作成者**、**ストレージ アカウント共同作成者** などの組み込みロールでは、セキュリティ プリンシパルによるストレージ アカウントの管理は許可されますが、Azure AD を介したそのアカウント内の BLOB データへのアクセスは提供されません。 ただし、ロールに **Microsoft.Storage/storageAccounts/listKeys/action** が含まれている場合、そのロールが割り当てられているユーザーは、アカウント アクセス キーを使った共有キーによる承認を介してストレージ アカウントのデータにアクセスできます。 詳細については、「[Azure portal で BLOB データへのアクセスの承認方法を選択する](../../storage/blobs/authorize-data-operations-portal.md)」を参照してください。
 

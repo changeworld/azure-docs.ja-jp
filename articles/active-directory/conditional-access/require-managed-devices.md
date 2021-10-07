@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 10/16/2020
+ms.date: 09/13/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: daveba
+manager: karenhoran
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e39a6bbde587e543afcb10cb910a675bf4c69fc
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: 61b5bb4a8cdfa8dddcbdb08283245a6e8d7c93cd
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122867563"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128601199"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>方法:条件付きアクセスを使用してクラウド アプリへのアクセスにマネージド デバイスを要求する
 
@@ -31,7 +31,7 @@ ms.locfileid: "122867563"
 - **[Azure Active Directory の条件付きアクセス](./overview.md)** - この記事は、条件付きアクセスと関連する用語の概念的な概要を説明しています。
 - **[Azure Active Directory のデバイス管理の概要](../devices/overview.md)** - この記事は、組織の管理下にあるデバイスを取得する際に使用できるさまざまなオプションの概要を説明しています。 
 - **Windows 10 Creators Update (バージョン 1703)** 以降で Chrome をサポートするには、[Windows 10 Accounts 拡張機能](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji)をインストールしてください。 条件付きアクセス ポリシーでデバイス固有の詳細が必要な場合は、この拡張機能が必要です。
-- **Windows 10 バージョン 1809 以降** で Firefox (**Firefox 91** 以降) をサポートするには、[Windows SSO](https://support.mozilla.org/en-US/kb/windows-sso) を構成します。
+- **Windows 10 バージョン 1809 以降** で Firefox (**Firefox 91** 以降) をサポートするには、[Windows SSO](https://support.mozilla.org/kb/windows-sso) を構成します。
 
 >[!NOTE] 
 > Azure AD デバイスベースの条件付きアクセス ポリシーを使用して、最初のデバイス認証後に最適な実施を行うことをお勧めします。 これには、デバイスが準拠していない場合のセッションの終了とデバイス コード フローが含まれます。

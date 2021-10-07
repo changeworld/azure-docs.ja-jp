@@ -1,18 +1,18 @@
 ---
 title: 'クイックスタート: オープンソースの Redis キャッシュを作成する'
 description: このクイックスタートでは、Azure Cache for Redis の Basic、Standard、Premium レベルのインスタンスを作成する方法について説明します
-author: yegu-ms
-ms.author: yegu
+author: curib
+ms.author: cauribeg
 ms.service: cache
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 02/08/2021
-ms.openlocfilehash: 32ad04c46989816b86a644925f8727e21deb38c4
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: c7f58eafda0a08d0ddd4aabc93528836a66dde63
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128582863"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129534303"
 ---
 # <a name="quickstart-create-an-open-source-redis-cache"></a>クイックスタート: オープンソースの Redis キャッシュを作成する
 

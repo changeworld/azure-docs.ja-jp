@@ -1,7 +1,6 @@
 ---
-title: Azure Data Box Disk からストレージ アカウントへのデータのアップロードの確認に関するチュートリアル | Microsoft Docs
+title: Azure Data Box Disk からストレージ アカウントへのデータのアップロードの確認に関するチュートリアル
 description: このチュートリアルを使用して、Azure Data Box Disk から Azure Storage アカウントにアップロードされたデータを確認する方法を学習します。
-services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
@@ -9,12 +8,12 @@ ms.topic: tutorial
 ms.localizationpriority: high
 ms.date: 09/17/2019
 ms.author: alkohli
-ms.openlocfilehash: abe09cf10e241ec95ceed767e7038cde07667fc9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 53e2db3728d92a862fce64ba1fc379a2ae2205ce
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322735"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128591636"
 ---
 ::: zone target="docs"
 
@@ -85,9 +84,9 @@ Azure データセンター内のサーバーにディスクが接続される�
 
 - お使いの Azure Storage アカウント。 データを Data Box にコピーする場合は、そのデータがタイプに応じて Azure Storage アカウントの次のいずれかのパスにアップロードされます。
 
-    - **ブロック BLOB とページ BLOB の場合**: https://<storage_account_name>.blob.core.windows.net/<containername>/files/a.txt
+    - **ブロック BLOB およびページ BLOB の場合**: `https://<storage_account_name>.blob.core.windows.net/<containername>/files/a.txt`
 
-    - **Azure Files の場合**: https://<storage_account_name>.file.core.windows.net/<sharename>/files/a.txt
+    - **Azure Files の場合**: `https://<storage_account_name>.file.core.windows.net/<sharename>/files/a.txt`
 
 - マネージド ディスク リソース グループ。 マネージド ディスクを作成するとき、VHD はページ BLOB としてアップロードされた後、マネージド ディスクに変換されます。 マネージド ディスクは、注文の作成時に指定されたリソース グループに接続されています。
 

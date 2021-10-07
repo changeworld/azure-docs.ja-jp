@@ -4,12 +4,12 @@ description: このトピックでは、Azure Video Analyzer を使用してレ�
 ms.service: azure-video-analyzer
 ms.topic: how-to
 ms.date: 06/01/2021
-ms.openlocfilehash: 95e5decc8092c6a40e368c395da61fd8b9904e30
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: e4d05733db5739087ac1f6b64f87436a018c5883
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124762001"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129277842"
 ---
 # <a name="manage-recording-policy-with-video-analyzer"></a>Video Analyzer を使用してレコーディング ポリシーを管理する
 
@@ -43,7 +43,7 @@ Video Analyzer アカウントは Azure Storage アカウントにリンクさ�
 上記のルールは:
 
 * ストレージ アカウントのすべてのブロック BLOB に適用されます。
-* BLOB の期間が 30 日を超えたら、[ホット アクセス層からクール アクセス層](../../storage/blobs/storage-blob-storage-tiers.md?tabs=azure-portal)に移動することを指定します。
+* BLOB の期間が 30 日を超えたら、[ホット アクセス層からクール アクセス層](../../storage/blobs/access-tiers-overview.md?tabs=azure-portal)に移動することを指定します。
 * また、期間が 90 日を超えると、その BLOB は削除されます。
 
 Video Analyzer を使用してビデオ リソースに記録する場合は、ストレージ アカウントに書き込まれる前に集計するビデオの最小再生時間 (秒) を指定する `segmentLength` プロパティを指定します。 ビデオ リソースには一連のセグメントが含まれ、各セグメントの作成タイムスタンプは前のものより `segmentLength` だけ新しくなります。 ライフサイクル管理ポリシーが開始されると、指定したしきい値よりも古いセグメントは削除されます。 ただし、引き続き Video Analyzer API を使用して、残りのセグメントにアクセスして再生することができます。 詳細については、「[記録の再生](playback-recordings-how-to.md)」を参照してください。 

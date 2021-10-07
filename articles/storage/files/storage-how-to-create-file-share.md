@@ -9,12 +9,12 @@ ms.date: 07/27/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, references_regions, devx-track-azurepowershell
-ms.openlocfilehash: f1eae19bda4fae0744483a647eed47104e366e52
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: ac4d4ba50b9da33040fc1da27775d72c0156cba2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122867050"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128547769"
 ---
 # <a name="create-an-azure-file-share"></a>Azure ファイル共有を作成する
 Azure ファイル共有を作成するには、その使用方法について 3 つの質問に答える必要があります。
@@ -211,9 +211,9 @@ Standard ファイル共有は、Standard の層であるトランザクショ�
 
 **クォータ** プロパティの意味は、Premium と Standard のファイル共有の間で若干異なります。
 
-- Standard ファイル共有の場合、それはエンド ユーザーがアクセスできない Azure ファイル共有の上限です。 クォータが指定されていない場合、Standard ファイル共有は最大 100 TiB (ストレージ アカウントに対して大きいファイルの共有プロパティが設定されていない場合は 5 TiB) にまたがることができます。 大きいファイル共有を有効にしてストレージ アカウントを作成していなかった場合、「[既存のアカウントで大きなファイル共有を有効にする](#enable-large-files-shares-on-an-existing-account)」を参照し、100 TiB のファイル共有を有効にする方法を確認してください。 受信するパフォーマンス (IOP/Mbps) は、設定したクォータによって異なります。
+- Standard ファイル共有の場合、それはエンド ユーザーがアクセスできない Azure ファイル共有の上限です。 クォータが指定されていない場合、Standard ファイル共有は最大 100 TiB (ストレージ アカウントに対して大きいファイルの共有プロパティが設定されていない場合は 5 TiB) にまたがることができます。 大きいファイル共有を有効にしてストレージ アカウントを作成していなかった場合、「[既存のアカウントで大きなファイル共有を有効にする](#enable-large-files-shares-on-an-existing-account)」を参照し、100 TiB のファイル共有を有効にする方法を確認してください。 
 
-- Premium ファイル共有の場合、クォータは **プロビジョニング済みのサイズ** を意味します。 実際の使用量に関係なく、プロビジョニング済みのサイズが課金される容量です。 Premium ファイル共有を計画する方法の詳細については、[Premium ファイル共有のプロビジョニング](understanding-billing.md#provisioned-model)に関するセクションを参照してください。
+- Premium ファイル共有の場合、クォータは **プロビジョニング済みのサイズ** を意味します。 実際の使用量に関係なく、プロビジョニング済みのサイズが課金される容量です。 Premium ファイル共有で使用可能な IOPS とスループットは、プロビジョニング済みのサイズに基づいています。 Premium ファイル共有を計画する方法の詳細については、[Premium ファイル共有のプロビジョニング](understanding-billing.md#provisioned-model)に関するセクションを参照してください。
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 ストレージ アカウントを作成したばかりの場合は、[デプロイ] 画面から **[リソースに移動]** を選択して移動できます。 ストレージ アカウントに移動したら、ストレージ アカウントの目録で **[ファイル共有]** を選択します。

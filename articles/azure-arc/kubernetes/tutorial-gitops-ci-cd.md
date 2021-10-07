@@ -1,21 +1,20 @@
 ---
 title: 'チュートリアル: Azure Arc 対応 Kubernetes クラスターを使用して GitOps で CI/CD を実装する'
-description: このチュートリアルでは、Azure Arc enabled Kubernetes クラスターで GitOps を使用して CI/CD ソリューションを設定する手順について説明します。 このワークフローの概念については、「GitOps を使用した CI/CD ワークフロー - Azure Arc 対応 Kubernetes」記事を参照してください。
+description: このチュートリアルでは、Azure Arc 対応 Kubernetes クラスターで GitOps を使用して CI/CD ソリューションを設定する手順について説明します。 このワークフローの概念については、「GitOps を使用した CI/CD ワークフロー - Azure Arc 対応 Kubernetes」の記事を参照してください。
 author: tcare
 ms.author: tcare
 ms.service: azure-arc
 ms.topic: tutorial
 ms.date: 03/03/2021
 ms.custom: template-tutorial, devx-track-azurecli
-ms.openlocfilehash: 8b62437fc8bcad406750101eb72b1ef8d48c102f
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: a325f248a4f634657d9b73e3d4b7929e0614a023
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122322207"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124820731"
 ---
 # <a name="tutorial-implement-cicd-with-gitops-using-azure-arc-enabled-kubernetes-clusters"></a>チュートリアル: Azure Arc 対応 Kubernetes クラスターを使用して GitOps で CI/CD を実装する
-
 
 このチュートリアルでは、Azure Arc 対応 Kubernetes クラスターで GitOps を使用して CI/CD ソリューションを設定します。 サンプルの Azure Vote アプリを使用して、次のことを行います。
 
@@ -40,7 +39,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 * [前のチュートリアル](./tutorial-use-gitops-connected-cluster.md)を完了し、CI/CD 環境用に GitOps をデプロイする方法を学習します。
 * この機能の[利点とアーキテクチャ](./conceptual-configurations.md)について理解します。
 * 以下が用意されていることを確認します。
-  * **arc-cicd-cluster** という名前の [接続済みの Azure Arc 対応 Kubernetes クラスター](./quickstart-connect-cluster.md#3-connect-an-existing-kubernetes-cluster)。
+  * **arc-cicd-cluster** という名前の[接続済みの Azure Arc 対応 Kubernetes クラスター](./quickstart-connect-cluster.md#3-connect-an-existing-kubernetes-cluster)。
   * [AKS 統合](../../aks/cluster-container-registry-integration.md)または[非 AKS クラスター認証](../../container-registry/container-registry-auth-kubernetes.md)を使用して接続された Azure Container Registry (ACR)。
   * [Azure Repos](/azure/devops/repos/get-started/what-is-repos) および [Azure Pipelines](/azure/devops/pipelines/get-started/pipelines-get-started) に対する "ビルド管理者" および "プロジェクト管理者" アクセス許可。
 * 次の Azure Arc 対応 Kubernetes CLI 拡張機能 (バージョン 1.0.0 以上) をインストールします。
@@ -350,7 +349,7 @@ CI パイプラインの実行が成功すると、デプロイ プロセスを�
 
 このチュートリアルでは、アプリケーション開発からデプロイまでの DevOps を実装する完全な CI/CD ワークフローを設定しました。 アプリを変更すると、自動的に検証とデプロイがトリガーされ、手動の承認によって制御されます。
 
-概念に関する記事に進み、Azure Arc 対応 Kubernetes での GitOps と構成の詳細を確認してください。
+Azure Arc 対応 Kubernetes での GitOps と構成の詳細については、概念に関する記事に進んでください。
 
 > [!div class="nextstepaction"]
 > [GitOps を使用した CI/CD ワークフロー - Azure Arc 対応 Kubernetes](./conceptual-gitops-ci-cd.md)

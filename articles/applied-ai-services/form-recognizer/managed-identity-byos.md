@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 07/08/2021
 ms.author: lajanuar
-ms.openlocfilehash: 8ecd6ae9578f719707c3d52ba8348cda5af3e08d
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 43220ce85bf02919a0ccf069bc9646a16c3a0a26
+ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122326383"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129155355"
 ---
 # <a name="create-and-use-managed-identity-for-your-form-recognizer-resource"></a>Form Recognizer リソース用のマネージド ID を作成して使用する
 
@@ -33,7 +33,7 @@ Azure マネージド ID は、Azure Active Directory (Azure AD) ID と Azure �
 
 > [!NOTE]
 >
-> * [**Form Recognizer サンプル ラベル付けツール (FOTT)** ](https://fott-2-1.azurewebsites.net/) を使用してストレージ データを分析する場合は、VNet またはファイアウォールの背後にツールをデプロイする必要があります。
+> * [**Form Recognizer サンプル ラベル付けツール (FOTT)**](https://fott-2-1.azurewebsites.net/) を使用してストレージ データを分析する場合は、VNet またはファイアウォールの背後にツールをデプロイする必要があります。
 >
 > * Analyze [**Receipt**](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeReceiptAsync)、[**Business Card**](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeBusinessCardAsync)、[**Invoice**](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/5ed8c9843c2794cbb1a96291)、[**Identity Document**](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/5f74a7738978e467c5fb8707)、および [**Custom Form**](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeWithCustomForm) の API では、要求を生のバイナリ コンテンツとして送信することによって、1 つのドキュメントからデータを抽出できます。 これらのシナリオでは、マネージド ID 資格情報の要件はありません。
 
@@ -45,11 +45,20 @@ Azure マネージド ID は、Azure Active Directory (Azure AD) ID と Azure �
 
 * Azure portal 内の [**Form Recognizer**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation) または [**Cognitive Services**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne) リソース。 詳細の手順については、「[Azure portal を使用して Cognitive Services リソースを作成する](../../cognitive-services/cognitive-services-apis-create-account.md?tabs=multiservice%2cwindows)」を _参照してください_。
 
-* [**Azure Blob Storage アカウント**](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)。 ストレージ アカウント内に BLOB データを格納して整理するためのコンテナーを作成します。 アカウントにファイアウォールがある場合は、[信頼された Azure サービスの例外](../../storage/common/storage-network-security.md?tabs=azure-portal#manage-exceptions)のチェックボックスをオンにする必要があります。
+* Form Recognizer リソースと同じリージョンにある [**Azure BLOB ストレージ アカウント**](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)。 ストレージ アカウント内に BLOB データを格納して整理するためのコンテナーを作成します。 
+
+  * ストレージ アカウントがファイアウォールの内側にある場合、**次の構成を有効にする必要があります**。 </br></br>
+
+  * ストレージ アカウント ページで、 **[セキュリティ + ネットワーク]** → **[ネットワーク]** を選択します。
+    :::image type="content" source="media/managed-identities/security-and-networking-node.png" alt-text="スクリーンショット: [セキュリティとネットワーク] タブ。":::
+
+  * メイン ウィンドウで、 **[選択したネットワークからのアクセスを許可する]** を選択します。
+  :::image type="content" source="media/managed-identities/firewalls-and-virtual-networks.png" alt-text="スクリーンショット: [選択されたネットワーク] のラジオ ボタンが選択された状態。":::
+
+  * 選択されたネットワーク ページで、 **[例外]** カテゴリに移動し、[[**信頼されたサービスの一覧で Azure サービスにこのストレージ アカウントへのアクセスを許可する**](/azure/storage/common/storage-network-security?tabs=azure-portal#manage-exceptions) チェックボックスがオンになっていることを確認します。
 
     :::image type="content" source="media/managed-identities/allow-trusted-services-checkbox-portal-view.png" alt-text="スクリーンショット: ポータル ビューの信頼されたサービスを許可するチェックボックス":::
-
-* Azure portal で使用する [**Azure ロールベースのアクセス制御 (Azure RBAC)** ](../../role-based-access-control/role-assignments-portal.md) の概要の理解。
+* Azure portal で使用する [**Azure ロールベースのアクセス制御 (Azure RBAC)**](../../role-based-access-control/role-assignments-portal.md) の概要の理解。
 
 ## <a name="managed-identity-assignments"></a>マネージド ID の割り当て
 

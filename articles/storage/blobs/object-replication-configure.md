@@ -10,12 +10,12 @@ ms.date: 09/02/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 395b3d14571b9cf8ab2080c77aadf686dc8aea29
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 7f0c0928a32807844d57eb91a903994a0264e460
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128599281"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129534385"
 ---
 # <a name="configure-object-replication-for-block-blobs"></a>ブロック BLOB のオブジェクト レプリケーションを構成する
 
@@ -45,7 +45,7 @@ Azure portal でオブジェクト レプリケーションを構成する場合
 Azure portal でレプリケーション ポリシーを作成するには、次の手順を実行します。
 
 1. Azure portal でソース ストレージ アカウントに移動します。
-1. **[Blob service]** で、 **[オブジェクト レプリケーション]** を選択します。
+1. **[データ管理]** で、 **[オブジェクト レプリケーション]** を選択します。
 1. **[レプリケーション規則の設定]** を選択します。
 1. 宛先サブスクリプションとストレージ アカウントを選択します。
 1. **[Container pairs]\(コンテナー ペア\)** セクションで、ソース アカウントからソース コンテナーを選択し、宛先アカウントから宛先コンテナーを選択します。 1 つのレプリケーション ポリシーにつき最大 10 個のコンテナー ペアを作成できます。

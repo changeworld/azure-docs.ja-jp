@@ -4,27 +4,27 @@ titleSuffix: Azure Digital Twins
 description: カスタム コネクタを使用して Logic Apps を Azure Digital Twins に接続する方法について説明します
 author: baanders
 ms.author: baanders
-ms.date: 9/11/2020
+ms.date: 9/1/2021
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 7aca72097e1d6aee40e5e9ead0c60be34d3e65d5
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: aa8ea41233cad42bcad9fc387b8f984503c6e75e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114437840"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124797766"
 ---
 # <a name="integrate-with-logic-apps-using-a-custom-connector"></a>カスタム コネクタを使用して Logic Apps と統合する
 
 [Azure Logic Apps](../logic-apps/logic-apps-overview.md) は、アプリとサービス全体のワークフローを自動化するのに役立つクラウド サービスです。 Logic Apps を Azure Digital Twins API に接続すると、Azure Digital Twins とそのデータに関するそのような自動化されたフローを作成できます。
 
-現在、Azure Digital Twins に、Logic Apps 用の認定された (構築済みの) コネクタはありません。 代わりに、Azure Digital Twins で Logic Apps を使用するための現在のプロセスでは、Logic Apps で動作するように変更されたカスタム Azure Digital Twins Swagger を使用して、[[カスタム Logic Apps コネクタ](../logic-apps/custom-connector-overview.md)](/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/)を作成します。
+現在、Azure Digital Twins に、Logic Apps 用に認定された (構築済みの) コネクタはありません。 代わりに、Azure Digital Twins で Logic Apps を使用するための現在のプロセスでは、Logic Apps で動作するように変更された[カスタム Azure Digital Twins Swagger](/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/) 定義ファイルを使用して、[カスタム Logic Apps コネクタ](../logic-apps/custom-connector-overview.md)を作成します。
 
 > [!NOTE]
-> 上記のリンクされたカスタム Swagger サンプルには、複数のバージョンの Swagger が含まれています。 最新バージョンは、最新の日付のサブフォルダーにありますが、サンプルに含まれていた以前のバージョンも引き続きサポートされます。
+> 上記のリンクされたカスタム Swagger サンプルには、複数のバージョンの Swagger 定義ファイルが含まれています。 最新バージョンは、最新の日付のサブフォルダーにありますが、サンプルに含まれていた以前のバージョンも引き続きサポートされます。
 
-この記事では、[Azure portal](https://portal.azure.com) を使用して、Azure Digital Twins インスタンスに Logic Apps を接続するために使用できる **カスタム コネクタを作成** します。 その後、シナリオの例にこの接続を使用する **ロジック アプリを作成** します。ここでは、タイマーによってトリガーされるイベントにより、Azure Digital Twins インスタンスのツインが自動的に更新されます。 
+この記事では、[Azure portal](https://portal.azure.com) を使用して、Azure Digital Twins インスタンスに Logic Apps を接続するために使用できる **カスタム コネクタを作成** します。 その後、シナリオの例に対してこの接続を使用する **ロジック アプリを作成** します。ここでは、タイマーによってトリガーされるイベントにより、Azure Digital Twins インスタンスのツインが自動的に更新されます。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -46,7 +46,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [DigitalTwins API](/rest/api/digital-twins/dataplane/twins)、[NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)、または [Azure Digital Twins CLI](/cli/azure/dt?view=azure-cli-latest&preserve-view=true) を使用してツインを追加できます。 これらの方法を使用してツインを作成する方法に関する詳細な手順については、「[デジタル ツインを管理する](how-to-manage-twin.md)」を参照してください。
 
-作成したインスタンス内のツインの "**ツイン ID**" が必要になります。
+作成したインスタンス内のツインの **ツイン ID** が必要になります。
 
 ### <a name="set-up-app-registration"></a>アプリ登録を設定する
 
@@ -54,21 +54,21 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-custom-logic-apps-connector"></a>カスタム Logic Apps コネクタを作成する
 
-これで Azure Digital Twins API 用の[カスタム Logic Apps コネクタ](../logic-apps/custom-connector-overview.md)を作成する準備ができました。 これを行った後は、次のセクションでロジック アプリを作成するときに、Azure Digital Twins を接続できるようになります。
+これで Azure Digital Twins API 用の[カスタム Logic Apps コネクタ](../logic-apps/custom-connector-overview.md)を作成する準備ができました。 それを実行すると、次のセクションでロジック アプリを作成するときに Azure Digital Twins を接続できるようになります。
 
-Azure portal の [[Logic Apps カスタム コネクタ]](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Web%2FcustomApis) ページに移動します (このリンクを使用しても、ポータルの検索バーで検索してもかまいません)。 *[+ 追加]* を選択します。
+Azure portal の [[Logic Apps カスタム コネクタ]](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Web%2FcustomApis) ページに移動します (このリンクを使用しても、ポータルの検索バーで検索してもかまいません)。 *[+ 作成]* を選択します。
 
 :::image type="content" source="media/how-to-integrate-logic-apps/logic-apps-custom-connector.png" alt-text="Azure portal の [Logic Apps カスタム コネクタ] ページのスクリーンショット。[追加] ボタンが強調表示されています。":::
 
-次の **[Logic Apps カスタム コネクタの作成]** ページで、お使いのサブスクリプション、リソース グループ、新しいコネクタの名前とデプロイの場所を選択します。 **[Review + create]\(レビュー + 作成\)** を選択します。 
+次の **[ロジック アプリ カスタム コネクタの作成]** ページで、お使いのサブスクリプション、リソース グループ、新しいコネクタの名前とデプロイの場所を選択します。 **[Review + create]\(レビュー + 作成\)** を選択します。 
 
-:::image type="content" source="media/how-to-integrate-logic-apps/create-logic-apps-custom-connector.png" alt-text="Azure portal の [Logic Apps カスタム コネクタの作成] ページのスクリーンショット。":::
+:::image type="content" source="media/how-to-integrate-logic-apps/create-logic-apps-custom-connector.png" alt-text="Azure portal の [ロジック アプリ カスタム コネクタの作成] ページのスクリーンショット。":::
 
-これにより表示される **[確認および作成]** タブによって、下部にある **[作成]** を選択してリソースを作成できます。
+それを実行すると **[確認および作成]** タブが表示されて、下部にある **[作成]** を選択してリソースを作成できます。
 
 :::image type="content" source="media/how-to-integrate-logic-apps/review-logic-apps-custom-connector.png" alt-text="Azure portal の [Logic Apps カスタム コネクタの確認] ページの [確認と作成] タブのスクリーンショット。":::
 
-コネクタのデプロイ ページが表示されます。 デプロイが完了したら、 **[リソースに移動]** ボタンを選択して、ポータルでコネクタの詳細を表示します。
+コネクタのデプロイ ページが表示されます。 デプロイが終了したら、 **[リソースに移動]** ボタンを選択して、ポータルでコネクタの詳細を表示します。
 
 ### <a name="configure-connector-for-azure-digital-twins"></a>Azure Digital Twins 用にコネクタを構成する
 
@@ -76,10 +76,10 @@ Azure portal の [[Logic Apps カスタム コネクタ]](https://portal.azure.c
 
 まず、Logic Apps で動作するように変更されたカスタム Azure Digital Twins Swagger をダウンロードします。 **[ZIP のダウンロード]** ボタンを選択して、[Azure Digital Twins Custom Swaggers (Logic Apps コネクタ)](/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/) サンプルをダウンロードします。 ダウンロードした *Azure_Digital_Twins_custom_Swaggers__Logic_Apps_connector_.zip* フォルダーに移動し、解凍します。 
 
-このチュートリアル用のカスタム Swagger は、*Azure_Digital_Twins_custom_Swaggers__Logic_Apps_connector_\LogicApps* フォルダー内に配置されます。 このフォルダーには、*stable* と *preview* という名前のサブフォルダーが含まれています。どちらも、日付別に編成された異なるバージョンの Swagger を保持しています。 最新の日付のフォルダーには、Swagger の最新のコピーが含まれます。 どちらのバージョンを選択した場合でも、Swagger ファイルには _digitaltwins.json_ という名前が付けられています。
+このチュートリアル用のカスタム Swagger は、*digital-twins-custom-swaggers-main\LogicApps* フォルダーに配置されます。 このフォルダーには、*stable* と *preview* という名前のサブフォルダーが含まれています。どちらも、日付別に編成された異なるバージョンの Swagger を保持しています。 最新の日付のフォルダーには、Swagger 定義ファイルの最新のコピーが含まれます。 どちらのバージョンを選択した場合でも、Swagger ファイルには _digitaltwins.json_ という名前が付けられています。
 
 > [!NOTE]
-> プレビュー機能を使用している場合を除き、一般的には、最新の "*安定した*" バージョンの Swagger を使用することをお勧めします。 ただし、以前のバージョンとプレビュー バージョンの Swagger も、引き続きサポートされます。 
+> プレビュー機能を使用している場合を除き、一般的には、最新の *stable* バージョンの Swagger ファイルを使用することをお勧めします。 ただし、以前のバージョンとプレビュー バージョンの Swagger ファイルも引き続きサポートされます。 
 
 次に、[Azure portal](https://portal.azure.com) のコネクタの [概要] ページに進み、 **[編集]** を選択します。
 
@@ -89,11 +89,12 @@ Azure portal の [[Logic Apps カスタム コネクタ]](https://portal.azure.c
 * **カスタム コネクタ**
     - API エンドポイント: REST (既定値のまま)
     - インポート モード: OpenAPI ファイル (既定値のまま)
-    - ファイル: これは、前にダウンロードしたカスタム Swagger ファイルです。 **[インポート]** を選択し、マシン上のファイル (*Azure_Digital_Twins_custom_Swaggers__Logic_Apps_connector_\LogicApps\...\digitaltwins.json*) を見つけて、 **[開く]** を選択します。
+    - ファイル: この構成は、前にダウンロードしたカスタム Swagger ファイルとなります。 **[インポート]** を選択し、マシン上のファイル (*Azure_Digital_Twins_custom_Swaggers__Logic_Apps_connector_\LogicApps\...\digitaltwins.json*) を見つけて、 **[開く]** を選択します。
 * **一般情報**
-    - アイコン: 使用するアイコンをアップロードします
+    - アイコン: 好みのアイコンをアップロードします
     - アイコンの背景色:'#xxxxxx' という形式で、色の 16 進コードを入力します。
     - 説明: 必要な値を入力します。
+    - オンプレミス データ ゲートウェイ経由で接続する: トグルがオフ (既定値のまま)
     - スキーム: HTTPS (既定値のまま)
     - [Host]\(ホスト\):Azure Digital Twins インスタンスの "**ホスト名**"。
     - ベース URL: / (既定値のまま)
@@ -114,15 +115,15 @@ Azure portal の [[Logic Apps カスタム コネクタ]](https://portal.azure.c
     - スコープ:Directory.AccessAsUser.All
     - リダイレクト URL: (現時点では既定のまま)
 
-[リダイレクト URL] フィールドに *[カスタム コネクタを保存してリダイレクト URL を生成します]* と表示されていることにご注意ください。 ウィンドウの上部にある **[コネクタの更新]** を選択してこれを行い、コネクタの設定を確認します。
+[リダイレクト URL] フィールドに *[カスタム コネクタを保存してリダイレクト URL を生成します]* と表示されます。 ここで、ペインの上部にある **[コネクタの更新]** を選択してそれを生成し、コネクタの設定を確認します。
 
 :::image type="content" source="media/how-to-integrate-logic-apps/update-connector.png" alt-text="[Logic Apps カスタム コネクタの編集] ページの上部のスクリーンショット。[コネクタの更新] ボタンが強調表示されています。":::
 
-[リダイレクト URL] フィールドに戻り、生成された値をコピーします。 次の手順で使用します。
+[リダイレクト URL] フィールドに戻り、生成された値をコピーします。 これは、次の手順で使用します。
 
 :::image type="content" source="media/how-to-integrate-logic-apps/copy-redirect-url.png" alt-text="[Logic Apps カスタム コネクタの編集] ページの [リダイレクト URL] フィールドのスクリーンショット。値をコピーするボタンが強調表示されています。":::
 
-コネクタを作成するために必要な情報は、これですべてです ([セキュリティ] に続けて [定義] ステップを行う必要はありません)。 **[Logic Apps カスタム コネクタの編集]** ペインを閉じてかまいません。
+これで、コネクタを作成するために必要な情報をすべて入力しました ([セキュリティ] から [定義] の手順を続行する必要はありません)。 **[Logic Apps カスタム コネクタの編集]** ペインを閉じてかまいません。
 
 >[!NOTE]
 >最初に **[編集]** を選択したコネクタの [概要] ページに戻ります。 [編集] を再びクリックすると、構成選択入力プロセス全体が再び始まるのでご注意ください。 前回の設定値は残っていないので、変更した値で更新した構成を保存したい場合は、既定値で上書きされないように、他の値もすべて再入力する必要があります。
@@ -147,17 +148,17 @@ Azure portal の [[アプリの登録]](https://portal.azure.com/#blade/Microsof
 
 次に、新しいコネクタを使用して Azure Digital Twins の更新を自動化するロジック アプリを作成します。
 
-[Azure portal](https://portal.azure.com) の検索バーで、「**Logic Apps**」を検索します。 それを選択すると、 **[Logic Apps]** ページが表示されます。 **[ロジック アプリの作成]** ボタンを選択して新しいロジック アプリを作成します。
+[Azure portal](https://portal.azure.com) の検索バーで、「**Logic Apps**」を検索します。 それを選択すると、 **[Logic Apps]** ページが表示されます。 **[+ 追加]** を選択して新しいロジック アプリを作成します。
 
 :::image type="content" source="media/how-to-integrate-logic-apps/create-logic-app.png" alt-text="Azure portal の [Logic Apps] ページのスクリーンショット。[ロジック アプリの作成] ボタンが強調表示されています。":::
 
-続いて表示される **[Logic Apps]** ページで、サブスクリプションとリソース グループを入力します。 また、ロジック アプリの名前を選択し、デプロイの場所を選択します。
+続いて表示される **[Logic Apps]** ページで、サブスクリプションとリソース グループを入力します。 **[インスタンスの詳細]** で、インスタンスの種類として **[消費]** を選択し、ロジック アプリの名前を選択したら、デプロイの場所を選択します。 ログ分析を有効にするか無効にするかを選択します。
 
 _[確認および作成]_ ボタンを選択します。
 
-これにより表示される **[確認と作成]** タブで、詳細を確認し、下部にある **[作成]** を選択してリソースを作成できます。
+それを行うと **[確認と作成]** タブが表示されるので、そこで詳細を確認し、下部にある **[作成]** を選択してリソースを作成できます。
 
-ロジック アプリのデプロイ ページが表示されます。 デプロイが完了したら、 **[リソースに移動]** ボタンを選択して **[Logic Apps デザイナー]** に進み、そこでワークフローのロジックを入力します。
+ロジック アプリのデプロイ ページが表示されます。 デプロイが終了したら、 **[リソースに移動]** ボタンを選択して **[Logic Apps デザイナー]** に進み、そこでワークフローのロジックを入力します。
 
 ### <a name="design-workflow"></a>ワークフローを設計する
 
@@ -165,15 +166,15 @@ Logic Apps デザイナーの **[一般的なトリガーで開始する]** で�
 
 :::image type="content" source="media/how-to-integrate-logic-apps/logic-apps-designer-recurrence.png" alt-text="Azure portal の [Logic Apps デザイナー] ページのスクリーンショット。[繰り返し] 一般トリガーが強調表示されています。":::
 
-次の [Logic Apps デザイナー] ページで、 **[繰り返し]** 頻度を **[秒]** に変更して、イベントが 3 秒ごとにトリガーされるようにします。 これにより、後で非常に長い時間待つことなく、簡単に結果を確認できるようになります。
+次の [Logic Apps デザイナー] ページで、 **[繰り返し]** 頻度を **[秒]** に変更して、イベントが 3 秒ごとにトリガーされるようにします。 この頻度を選択すると、後で長時間待つことなく結果を簡単に確認できるようになります。
 
 **[+ New step (+ 新しいステップ)]** を選択します。
 
-これにより、 [アクションの選択] ボックスが開きます。 **[カスタム]** タブに切り替えます。上部のボックスに、前に作成したカスタム コネクタが表示されます。
+それを行うと [アクションの選択] ボックスが開かれます。 **[カスタム]** タブに切り替えます。上部のボックスに、前に作成したカスタム コネクタが表示されます。
 
 :::image type="content" source="media/how-to-integrate-logic-apps/custom-action.png" alt-text="Azure portal の Logic Apps デザイナーでフローを作成するスクリーンショット。カスタム コネクタが強調表示されています。":::
 
-それを選択して、そのコネクタに含まれる API の一覧を表示します。 検索バーを使用するか、一覧をスクロールして、**DigitalTwins_Add** を選択します。 (この記事ではこの API が使用されていますが、他の API を Logic Apps の接続用に選択してもかまいません)。
+それを選択して、そのコネクタに含まれる API の一覧を表示します。 検索バーを使用するか、一覧をスクロールして、**DigitalTwins_Add** を選択します。 (この記事で使用されている API 呼び出しは **DigitalTwins_Add** アクションですが、Logic Apps の接続用に有効な選択肢として、他の任意の API を選択してもかまいません)。
 
 コネクタに接続するために、Azure の資格情報でサインインするように求められる場合があります。 **[要求されているアクセス許可]** ダイアログが表示される場合は、画面の指示に従ってアプリに同意して受け入れます。
 
@@ -190,7 +191,7 @@ Logic Apps デザイナーで **[保存]** を選択します。
 
 ## <a name="query-twin-to-see-the-update"></a>ツインのクエリを実行して更新を確認する
 
-ロジック アプリを作成したので、Logic Apps デザイナーで定義したツイン更新イベントが、3 秒ごとに繰り返し発生するようになります。 つまり、3 秒後には、ツインに対してクエリを実行し、新しくパッチが適用された値が反映されていることを確認できるはずです。
+ロジック アプリを作成したので、Logic Apps デザイナーで定義したツイン更新イベントが、3 秒ごとに繰り返し発生するようになります。 このように構成された頻度は、3 秒後にはツインに対してクエリを実行し、新しくパッチが適用された値が反映されていることを確認できるはずであることを意味します。
 
 任意の方法 ([カスタム クライアント アプリ](tutorial-command-line-app.md)、[Azure Digital Twins Explorer](concepts-azure-digital-twins-explorer.md)、[SDK と API](concepts-apis-sdks.md)、[CLI](concepts-cli.md) など) を選択して、ツインのクエリを実行できます。 
 
@@ -198,6 +199,6 @@ Azure Digital Twins インスタンスに対するクエリ実行の詳細につ
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、指定したパッチを使用して、Azure Digital Twins インスタンス内のツインを定期的に更新するロジック アプリを作成しました。 カスタム コネクタで他の API を選択して、インスタンスに対するさまざまなアクションのロジック アプリを作成することができます。
+この記事では、指定したパッチを使用して、Azure Digital Twins インスタンス内のツインを定期的に更新するロジック アプリを作成しました。 カスタム コネクタで他の API を選択して、インスタンスに対するさまざまなアクションのためにロジック アプリを作成してみることができます。
 
 使用可能な API 操作の詳細と、それに必要な詳細事項については、「[Azure Digital Twins API および SDK](concepts-apis-sdks.md)」を参照してください。

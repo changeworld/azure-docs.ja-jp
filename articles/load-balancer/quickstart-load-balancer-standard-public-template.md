@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 12/09/2020
 ms.author: allensu
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: 2feee9beb6232320cc5265227754b0803d248bae
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: a5cb80924daf3328da6a3a9fd7fc1c7c7212bed6
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112028237"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129090934"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-by-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して VM の負荷を分散するパブリック ロード バランサーを作成する
 
@@ -54,7 +54,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 - [**Microsoft.Network/bastionHosts**](/azure/templates/microsoft.network/bastionhosts)
 - [**Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups)
 - [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
-- [**Microsoft.Compute/virutalMachines**](/azure/templates/microsoft.compute/virtualmachines) (3)。
+- [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines) (3)。
 - [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces) (3)。
 - [**Microsoft.Compute/virtualMachine/extensions**](/azure/templates/microsoft.compute/virtualmachines/extensions) (3): Internet Information Server (IIS) と Web ページの構成に使用。
 
@@ -140,4 +140,4 @@ Azure portal に移動し、ロード バランサーを含むリソース グ�
 さらに学習するには、Azure Load Balancer に関するチュートリアルに進みます。
 
 > [!div class="nextstepaction"]
-> [Azure Load Balancer のチュートリアル](tutorial-load-balancer-standard-public-zone-redundant-portal.md)
+> [Azure Load Balancer のチュートリアル](./quickstart-load-balancer-standard-public-portal.md)

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/03/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, has-adal-ref
-ms.openlocfilehash: d016d7b5a88aa5413652fa3ed032c04680030142
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: a5e4f3cb33451b8668b4212fca248d0b7d9c1438
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122419162"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124734850"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>認証フローとアプリケーションのシナリオ
 
@@ -133,11 +133,11 @@ Windows ドメインに参加しているか、Azure Active Directory (Azure AD)
 
 ![デバイス コード フロー](media/scenarios/device-code-flow-app.svg)
 
-パブリック クライアント アプリケーションであれば[ユーザー名とパスワードを使ったフロー](scenario-desktop-acquire-token.md#username-and-password)を使用することもできますが、お勧めはしません。 もっとも、DevOps などの一部のシナリオではこのフローが必要になります。
+パブリック クライアント アプリケーションであれば[ユーザー名とパスワードを使ったフロー](scenario-desktop-acquire-token-username-password.md)を使用することもできますが、お勧めはしません。 もっとも、DevOps などの一部のシナリオではこのフローが必要になります。
 
 ユーザー名とパスワードを使ったフローを使用すると、アプリケーションに制約が発生します。 たとえば、アプリケーションでは、Azure AD の多要素認証や条件付きアクセス ツールを使用する必要があるユーザーをサインインさせることができなくなります。 また、アプリケーションでシングル サインオン (SSO) のメリットを享受することもできません。 ユーザー名とパスワードを使った認証は先進認証の原則に反しており、レガシへの対応のためにのみ提供されています。
 
-デスクトップ アプリでトークン キャッシュを永続的にする場合は、[トークン キャッシュのシリアル化](scenario-desktop-acquire-token.md#file-based-token-cache)をカスタマイズすることができます。 [デュアル トークン キャッシュのシリアル化](scenario-desktop-acquire-token.md#dual-token-cache-serialization-msal-unified-cache--adal-v3)を実装すると、後方互換性と前方互換性を備えたトークン キャッシュを利用できるようになります。 これらのトークンでは、以前の世代の認証ライブラリがサポートされます。 ライブラリの具体例としては、.NET 用 Azure AD 認証ライブラリ (ADAL.NET) のバージョン 3 とバージョン 4 などがあります。
+デスクトップ アプリでトークン キャッシュを永続的にする場合は、[トークン キャッシュのシリアル化](msal-net-token-cache-serialization.md)をカスタマイズすることができます。 [デュアル トークン キャッシュのシリアル化](msal-net-token-cache-serialization.md#dual-token-cache-serialization-msal-unified-cache-and-adal-v3)を実装すると、後方互換性と前方互換性を備えたトークン キャッシュを利用できるようになります。 これらのトークンでは、以前の世代の認証ライブラリがサポートされます。 ライブラリの具体例としては、.NET 用 Azure AD 認証ライブラリ (ADAL.NET) のバージョン 3 とバージョン 4 などがあります。
 
 詳細については、[Web API を呼び出すデスクトップ アプリ](scenario-desktop-overview.md)に関するページを参照してください。
 
@@ -224,7 +224,7 @@ ASP.NET または ASP.NET Core Web API を保護する場合は、アクセス �
  </tr>
 
   <tr>
-   <td rowspan="3"><a href="scenario-desktop-overview.md"><img alt=Desktop app that calls web APIs" src="media/scenarios/desktop-app.svg"></a></td>
+   <td rowspan="3"><a href="scenario-desktop-overview.md"><img alt="Desktop app that calls web APIs" src="media/scenarios/desktop-app.svg"></a></td>
    <td rowspan="4"><a href="scenario-desktop-overview.md">Web API を呼び出すデスクトップ アプリ</a></td>
    <td>対話型 (PKCE を使用した<a href="v2-oauth2-auth-code-flow.md">認可コード</a>を利用)</td>
    <td>職場または学校アカウント、個人用アカウント、Azure AD B2C</td>
@@ -241,7 +241,7 @@ ASP.NET または ASP.NET Core Web API を保護する場合は、アクセス �
  </tr>
 
   <tr>
-   <td><a href="scenario-desktop-acquire-token.md#command-line-tool-without-a-web-browser"><img alt="Browserless application" src="media/scenarios/device-code-flow-app.svg"></a></td>
+   <td><a href="scenario-desktop-acquire-token-device-code-flow.md"><img alt="Browserless application" src="media/scenarios/device-code-flow-app.svg"></a></td>
    <td><a href="v2-oauth2-device-code.md">デバイス コード</a></td>
    <td>Azure AD B2C でない職場または学校アカウント、個人用アカウント</td>
  </tr>
@@ -277,7 +277,7 @@ ASP.NET または ASP.NET Core Web API を保護する場合は、アクセス �
 
 ## <a name="scenarios-and-supported-platforms-and-languages"></a>シナリオとサポートされているプラットフォームと言語
 
-Microsoft の認証ライブラリは、さまざまなプラットフォームをサポートしています。
+Microsoft 認証ライブラリでは、さまざまなプラットフォームをサポートしています。
 
 - .NET Core
 - .NET Framework
