@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: 分離された Azure Virtual Network を使用して、Azure Machine Learning ワークスペースおよび関連付けられているリソースを保護します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: enterprise-readiness
 ms.reviewer: larryfr
 ms.author: jhirono
 author: jhirono
 ms.date: 09/22/2021
 ms.topic: how-to
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1, security
-ms.openlocfilehash: 10cd246d0a60184616facb799f9dc079cb5cf30d
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 7200c13d5ad4157afeb2c0dd1d7ab7445670609d
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129216785"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129425337"
 ---
 # <a name="secure-an-azure-machine-learning-workspace-with-virtual-networks"></a>仮想ネットワークを使用して Azure Machine Learning ワークスペースをセキュリティで保護する
 

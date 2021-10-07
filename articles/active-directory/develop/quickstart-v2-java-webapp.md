@@ -3,21 +3,21 @@ title: 'クイックスタート: Java Web アプリに "Microsoft でサイン�
 titleSuffix: Microsoft identity platform
 description: このクイックスタートでは、OpenID Connect を使用して、Java Web アプリケーションに "Microsoft でサインイン" を追加する方法について説明します。
 services: active-directory
-author: sangonzal
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/09/2019
-ms.author: sagonzal
+ms.author: marsma
 ms.custom: aaddev, scenarios:getting-started, languages:Java, devx-track-java
-ms.openlocfilehash: 6ba0052aec7e0938443560f5f0868431907c1b27
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: 196500eb70a559339bd237670434ad8f562eda8c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112580856"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128551172"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>クイック スタート:Java Web アプリに "Microsoft でサインイン" を追加する
 
@@ -49,7 +49,7 @@ ms.locfileid: "112580856"
 > アプリケーションを登録し、それにアプリの登録情報を手動で追加するには、次の手順を実行します。
 >
 > 1. <a href="https://portal.azure.com/" target="_blank">Azure portal</a> にサインインします。
-> 1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: を使用して、アプリケーションを登録するテナントを選択します。
+> 1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: を使用して、アプリケーションを登録するテナントに切り替えます。
 > 1. **Azure Active Directory** を検索して選択します。
 > 1. **[管理]** の **[アプリの登録]** を選択します。
 > 1. **[新規登録]** を選択します。

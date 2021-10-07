@@ -7,15 +7,15 @@ ms.author: sgilley
 ms.custom: subject-cost-optimization, devx-track-azurecli
 ms.reviewer: nigup
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.topic: conceptual
 ms.date: 06/08/2021
-ms.openlocfilehash: e48cdb3792a314166a29ced4d3828ba77de46621
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2dab204d2d4767c9edef4f65eadde8eea035c7b0
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121742061"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129429207"
 ---
 # <a name="plan-to-manage-costs-for-azure-machine-learning"></a>Azure Machine Learning のコストの管理を計画する
 
@@ -165,7 +165,7 @@ Azure Machine Learning のみのコストが表示される例を次に示しま
 - 自動的にシャットダウンおよび起動するようにコンピューティング インスタンスのスケジュールを設定する
 - Azure 予約 VM インスタンスを使用する
 - ローカルでトレーニングする
-- トレーニングを並列化する
+- トレーニングの並列化
 - データ保持と削除のポリシーを設定する
 - リソースを同じリージョンにデプロイする
 - インスタンスとクラスターを当面使用する予定がない場合は削除する

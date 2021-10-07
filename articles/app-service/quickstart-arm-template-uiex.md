@@ -9,12 +9,12 @@ ms.date: 10/16/2020
 ms.custom: subject-armqs
 zone_pivot_groups: app-service-platform-windows-linux
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 7d6111a68be8bc195b7268a778a77facdd944772
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.openlocfilehash: 2940e407e88239aa1afec84137e72073b7a5028a
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129084134"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129533227"
 ---
 # <a name="quickstart-create-app-service-app-using-an-arm-template"></a>クイックスタート: ARM テンプレートを使用して App Service アプリを作成する
 
@@ -55,7 +55,7 @@ ms.locfileid: "129084134"
 
 次の表は、既定のパラメーターとその説明です。
 
-| パラメーター | 種類    | 既定値                | 説明 |
+| パラメーター | Type    | 既定値                | 説明 |
 |------------|---------|------------------------------|-------------|
 | webAppName | string  | "webApp- **[`<uniqueString>`](../azure-resource-manager/templates/template-functions-string.md#uniquestring)** " | アプリの名前 |
 | location   | string  | "[[resourceGroup().location](../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)]" | アプリのリージョン |
@@ -85,7 +85,7 @@ ms.locfileid: "129084134"
 
 次の表は、既定のパラメーターとその説明です。
 
-| パラメーター | 種類    | 既定値                | 説明 |
+| パラメーター | Type    | 既定値                | 説明 |
 |------------|---------|------------------------------|-------------|
 | webAppName | string  | "webApp- **[`<uniqueString>`](../azure-resource-manager/templates/template-functions-string.md#uniquestring)** " | アプリの名前 |
 | location   | string  | "[[resourceGroup().location](../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)]" | アプリのリージョン |
@@ -142,7 +142,7 @@ az deployment group create --resource-group myResourceGroup --parameters webAppN
 <summary>異なる言語スタックはどのようにしてデプロイすればよいですか?</summary>
 別の言語スタックをデプロイするには、 <abbr title="このテンプレートは、.NET Core、.NET Framework、PHP、Node.js、静的 HTML アプリと互換性があります。">言語パラメーター</abbr> 適切な値 Java の場合は、<a href="/azure/app-service/quickstart-java-uiex">Java アプリの作成</a>に関する記事を参照してください。
 
-| パラメーター | 種類    | 既定値                | 説明 |
+| パラメーター | Type    | 既定値                | 説明 |
 |------------|---------|------------------------------|-------------|
 | language   | string  | ".net"                       | プログラミング言語スタック (.net、php、node、html) |
 
@@ -191,4 +191,3 @@ az deployment group create --resource-group myResourceGroup --parameters webAppN
 - Python と Postgres
 - [PHP と MySQL](tutorial-php-mysql-app.md)
 - [Java を使用して Azure SQL データベースに接続する](../azure-sql/database/connect-query-java.md?toc=%2fazure%2fjava%2ftoc.json)
-- [カスタム ドメインをマップする](app-service-web-tutorial-custom-domain-uiex.md)

@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 05/24/2021
+ms.date: 09/28/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: Content Moderator, コンテンツ モデレーション
-ms.openlocfilehash: 8b0645b93a7adcc583c010b9bb7524fcd77b7aac
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 0f600e2c0a7364088e68c70cd6eac90ee31c1b70
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112033745"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129361152"
 ---
 # <a name="quickstart-try-content-moderator-on-the-web"></a>クイック スタート:Web 上で Content Moderator を試す
 

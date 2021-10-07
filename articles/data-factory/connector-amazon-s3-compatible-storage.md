@@ -1,28 +1,27 @@
 ---
 title: Amazon Simple Storage Service (S3) 対応ストレージからデータをコピーする
+description: Azure Data Factory または Synapse Analytics パイプラインを使用して、Amazon S3 Compatible Storage のデータをサポートされているシンク データ ストアにコピーする方法について説明します。
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Azure Data Factory を使用して、Amazon S3 対応ストレージのデータをサポートされているシンク データ ストアにコピーする方法について説明します。
 ms.author: jianleishen
 author: jianleishen
 ms.service: data-factory
+ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 08/30/2021
-ms.openlocfilehash: 98191eb2e958510fe01fc5a02e0490bf7c2d41ae
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.date: 09/09/2021
+ms.openlocfilehash: 82abc8fcfacc09621b66192c1f40b8c33d73ae50
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123306999"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128563462"
 ---
-# <a name="copy-data-from-amazon-s3-compatible-storage-by-using-azure-data-factory"></a>Azure Data Factory を使用した Amazon S3 対応ストレージからのデータのコピー
+# <a name="copy-data-from-amazon-s3-compatible-storage-by-using-azure-data-factory-or-synapse-analytics"></a>Azure Data Factory または Synapse Analytics を使用した Amazon S3 対応ストレージからのデータのコピー
 
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-この記事では、Amazon Simple Storage Service (Amazon S3) 対応ストレージからデータをコピーする方法を概説します。 Azure Data Factory については、[入門記事で](introduction.md)をご覧ください。
-
-
+この記事では、Amazon Simple Storage Service (Amazon S3) 対応ストレージからデータをコピーする方法を概説します。 詳細については、[Azure Data Factory](introduction.md) と [Synapse Analytics](../synapse-analytics/overview-what-is.md) の概要記事を参照してください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -41,7 +40,7 @@ ms.locfileid: "123306999"
 
 Amazon S3 対応ストレージからデータをコピーするには、Amazon S3 オブジェクト操作に対する次のアクセス許可が付与されている必要があります: `s3:GetObject` および `s3:GetObjectVersion`。
 
-Data Factory UI を使用して作成する場合は、リンクされたサービスへの接続のテストやルートからの参照などの操作に対して、追加の `s3:ListAllMyBuckets` および `s3:ListBucket`/`s3:GetBucketLocation` アクセス許可が必要です。 これらのアクセス許可を付与しない場合は、UI から [ファイル パスへの接続をテスト] または [指定されたパスから参照] オプションを選択できます。
+UI を使用して作成する場合は、リンクされたサービスへの接続のテストやルートからの参照などの操作に対して、追加の `s3:ListAllMyBuckets` および `s3:ListBucket`/`s3:GetBucketLocation` アクセス許可が必要です。 これらのアクセス許可を付与しない場合は、UI から [ファイル パスへの接続をテスト] または [指定されたパスから参照] オプションを選択できます。
 
 Amazon S3 のアクセス許可の完全な一覧については、[ポリシーでのアクセス許可の指定](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html)に関する AWS サイトのページを参照してください。
 
@@ -57,7 +56,7 @@ Amazon S3 のアクセス許可の完全な一覧については、[ポリシー
 
     # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
 
-    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI を使用して新しいリンク サービスを作成します。":::
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI で新しいリンク サービスを作成する。":::
 
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
@@ -74,7 +73,7 @@ Amazon S3 のアクセス許可の完全な一覧については、[ポリシー
 
 ## <a name="connector-configuration-details"></a>コネクタの構成の詳細 
 
-以下のセクションで、Amazon S3 対応ストレージに固有の Data Factory エンティティを定義するために使用されるプロパティについて詳しく説明します。
+以下のセクションで、Amazon S3 対応ストレージに固有のエンティティを定義するために使用されるプロパティについて詳しく説明します。
 
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
 
@@ -84,7 +83,7 @@ Amazon S3 互換のリンクされたサービスでは、次のプロパティ�
 |:--- |:--- |:--- |
 | type | **type** プロパティは **AmazonS3Compatible** に設定する必要があります。 | はい |
 | accessKeyId | シークレット アクセス キーの ID。 |はい |
-| secretAccessKey | シークレット アクセス キー自体。 このフィールドを **SecureString** としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |はい |
+| secretAccessKey | シークレット アクセス キー自体。 このフィールドを **SecureString** とマークして安全に保存するか、[Azure Key Vault に保存されているシークレットを参照](store-credentials-in-key-vault.md)します。 |はい |
 | serviceUrl | カスタム S3 エンドポイント `https://<service url>` を指定します。 | いいえ |
 | forcePathStyle | 仮想ホスト形式のアクセスではなく、S3 の[パス形式のアクセス](https://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html#path-style-access)を使用するかどうかを示します。 指定できる値は **false** (既定値)、**true** です。<br> パス形式のアクセスが必要かどうかについては、各データ ストアのドキュメントを確認してください。 |いいえ |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 データ ストアがプライベート ネットワーク内にある場合、Azure Integration Runtime またはセルフホステッド統合ランタイムを使用できます。 このプロパティが指定されていない場合は、サービスでは、既定の Azure Integration Runtime が使用されます。 |いいえ |
@@ -244,7 +243,7 @@ Amazon S3 互換ストレージでは、形式ベースのコピー ソースの
 
 次のソース フォルダー構造があり、太字のファイルをコピーするとします。
 
-| サンプルのソース構造                                      | FileListToCopy.txt のコンテンツ                             | Data Factory の構成                                            |
+| サンプルのソース構造                                      | FileListToCopy.txt のコンテンツ                             | 構成 |
 | ------------------------------------------------------------ | --------------------------------------------------------- | ------------------------------------------------------------ |
 | bucket<br/>&nbsp;&nbsp;&nbsp;&nbsp;FolderA<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File2.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4.json<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Metadata<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileListToCopy.txt | File1.csv<br>Subfolder1/File3.csv<br>Subfolder1/File5.csv | **データセット内:**<br>- バケット: `bucket`<br>- フォルダー パス: `FolderA`<br><br>**コピー アクティビティ ソース内:**<br>- ファイル リストのパス: `bucket/Metadata/FileListToCopy.txt` <br><br>ファイル リストのパスは、コピーするファイルの一覧を含む同じデータ ストア内のテキスト ファイルをポイントします。データセットで構成されているパスへの相対パスで 1 行につき 1 つのファイルを指定します。 |
 
@@ -263,4 +262,4 @@ Amazon S3 互換ストレージでは、形式ベースのコピー ソースの
 
 
 ## <a name="next-steps"></a>次のステップ
-Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)をご覧ください。
+Copy アクティビティでソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関するページを参照してください。

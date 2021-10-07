@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: milismsft
 ms.author: adrianmi
 ms.date: 09/21/2020
-ms.openlocfilehash: 23abc9cd391548a4a97622e6cb7110de828498f2
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: ca9606f3e4a431a60b1373cae72f1f1b4e427938
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122180262"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124736933"
 ---
 # <a name="azure-cosmos-db-emulator---release-notes-and-download-information"></a>Azure Cosmos DB Emulator - リリース ノートとダウンロード情報
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -26,6 +26,10 @@ ms.locfileid: "122180262"
 |**開始するには**|[Azure Cosmos DB Emulator を使用してローカルで開発する](local-emulator.md)|
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="2143-8-september-2021"></a>2.14.3 (2021 年 9 月 8 日)
+
+ - このリリースでは、Azure Cosmos DB の最新のオンライン機能に一致するように Cosmos Emulator バックグラウンド サービスが更新され、収集されるテレメトリ データに関するいくつかの問題が修正され、Linux Cosmos エミュレーターの Docker イメージの基本イメージがリセットされます。
 
 ### <a name="2142-12-august-2021"></a>2.14.2 (2021 年 8 月 12 日)
 

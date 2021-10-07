@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/26/2019
 ms.author: jeedes
-ms.openlocfilehash: a1033799be8a01462ea065dc09499fb02a8dc61c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a719487f991784d2641fd92c9ada4b7d45bd30c7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92457233"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128610904"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-betterworks"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と BetterWorks の統合
 
@@ -89,7 +89,10 @@ BetterWorks で Azure AD SSO を構成してテストするには、次の構成
 
     **[サインオン URL]** テキスト ボックスに URL として「`https://app.betterworks.com`」と入力します。
 
-1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
+   > [!NOTE]
+   > BetterWorks の欧州連合でご利用のお客様は、これらの URL でドメイン名として `app.betterworks.com` ではなく `eu.betterworks.com` を使用してください。
+
+1. **[SAML によるシングル サインオンのセットアップ]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -139,7 +142,7 @@ BetterWorks で Azure AD SSO を構成してテストするには、次の構成
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [BetterWorks] タイルをクリックすると、SSO を設定した BetterWorks に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+アクセス パネル上で [BetterWorks] タイルをクリックすると、SSO を設定した BetterWorks に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

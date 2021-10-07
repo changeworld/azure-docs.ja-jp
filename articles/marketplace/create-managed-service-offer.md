@@ -7,13 +7,13 @@ ms.reviewer: anbene
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 07/12/2021
-ms.openlocfilehash: 0d5c178010012546bfcf786be7106f980289d6eb
-ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
+ms.date: 09/27/2021
+ms.openlocfilehash: 545e868a902390929254ae6c03d668f8e0d1d10f
+ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114204484"
+ms.lasthandoff: 09/27/2021
+ms.locfileid: "129079726"
 ---
 # <a name="create-a-managed-service-offer-for-the-commercial-marketplace"></a>コマーシャル マーケットプレース向けのマネージド サービス オファーを作成する
 
@@ -23,20 +23,47 @@ ms.locfileid: "114204484"
 
 ## <a name="create-a-new-offer"></a>新しいオファーを作成する
 
-1. [パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインします。
-2. 左側のナビゲーション メニューで、 **[商業マーケットプレース]**  >  **[概要]** の順に選択します。
-3. [概要] タブで、 **[+ 新しいオファー]**  >  **[マネージド サービス]** の順に選択します。
+[!INCLUDE [Workspaces view note](./includes/preview-interface.md)]
 
-:::image type="content" source="./media/new-offer-managed-service.png" alt-text="左側のナビゲーション メニューの画像。":::
+#### <a name="workspaces-view"></a>[ワークスペース ビュー](#tab/workspaces-view)
 
-4. **[新しいオファー]** ダイアログ ボックスで、 **[オファー ID]** を入力します。 これは、アカウントのオファーごとに一意の識別子です。 この ID は、コマーシャル マーケットプレースの一覧と Azure Resource Manager テンプレートの URL に表示されます (該当する場合)。 たとえば、このボックスに「test-offer-1」と入力すると、オファーの Web アドレスは `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` になります。
+1. [パートナー センター](https://go.microsoft.com/fwlink/?linkid=2166002)にサインインします。
+
+1. ホーム ページで、 **[マーケットプレースのオファー]** タイルを選択します。
+
+    [ ![パートナー センターのホーム ページにある [マーケットプレースのオファー] タイルを示す図。](./media/workspaces/partner-center-home.png) ](./media/workspaces/partner-center-home.png#lightbox)
+
+1. [マーケットプレースのオファー] ページで、 **[+ 新しいオファー]**  >  **[マネージド サービス]** の順に選択します。
+
+    [ ![マネージド サービスのオファーの種類オプションを示す図。](./media/new-offer-managed-service-workspaces.png) ](./media/new-offer-managed-service-workspaces.png#lightbox)
+
+1. **[New Managed service]\(新しいマネージド サービス\)** ダイアログ ボックスに、**オファー ID** を入力します。 これは、アカウントのオファーごとに一意の識別子です。 この ID は、コマーシャル マーケットプレースの一覧と Azure Resource Manager テンプレートの URL に表示されます (該当する場合)。 たとえば、このボックスに「test-offer-1」と入力すると、オファーの Web アドレスは `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` になります。
 
     - アカウント内の各オファーには、一意のオファー ID が必要です。
     - 使用できるのは小文字と数字だけです。 ハイフンとアンダースコアを含めることができますが、スペースは使用できず、文字数は 50 文字に制限されています。
     - **[作成]** を選択した後で、オファー ID を変更することはできません。
 
-5. **[オファーのエイリアス]** を入力します。 これは、パートナー センター内でオファーに使用される名前です。 オンライン ストアには表示されず、顧客に表示されるオファー名とは異なります。
-6. オファーを生成して続行するには、 **[作成]** を選択します。
+1. **[オファーのエイリアス]** を入力します。 これは、パートナー センター内でオファーに使用される名前です。 オンライン ストアには表示されず、顧客に表示されるオファー名とは異なります。
+1. オファーを生成して続行するには、 **[作成]** を選択します。
+
+#### <a name="current-view"></a>[現在のビュー](#tab/current-view)
+
+1. [パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインします。
+1. 左側のナビゲーション メニューで、 **[商業マーケットプレース]**  >  **[概要]** の順に選択します。
+1. [概要] タブで、 **[+ 新しいオファー]**  >  **[マネージド サービス]** の順に選択します。
+
+    :::image type="content" source="./media/new-offer-managed-service.png" alt-text="左側のナビゲーション メニューの画像。":::
+
+1. **[新しいオファー]** ダイアログ ボックスで、 **[オファー ID]** を入力します。 これは、アカウントのオファーごとに一意の識別子です。 この ID は、コマーシャル マーケットプレースの一覧と Azure Resource Manager テンプレートの URL に表示されます (該当する場合)。 たとえば、このボックスに「test-offer-1」と入力すると、オファーの Web アドレスは `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` になります。
+
+    - アカウント内の各オファーには、一意のオファー ID が必要です。
+    - 使用できるのは小文字と数字だけです。 ハイフンとアンダースコアを含めることができますが、スペースは使用できず、文字数は 50 文字に制限されています。
+    - **[作成]** を選択した後で、オファー ID を変更することはできません。
+
+1. **[オファーのエイリアス]** を入力します。 これは、パートナー センター内でオファーに使用される名前です。 オンライン ストアには表示されず、顧客に表示されるオファー名とは異なります。
+1. オファーを生成して続行するには、 **[作成]** を選択します。
+
+---
 
 ## <a name="setup-details"></a>セットアップの詳細
 

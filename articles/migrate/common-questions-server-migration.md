@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 08/28/2020
-ms.openlocfilehash: 33e332b05cbb6c0d20b73a13134590ed3cda4f38
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 8d5feae71fc6b901f761e6a52805a7ac5fad04a4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112298783"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128673542"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Azure Migrate Server Migration:一般的な質問
 
@@ -181,7 +181,7 @@ VM のレプリケーションが開始されると、初期レプリケーシ�
 
 ### <a name="how-do-i-throttle-replication-in-using-azure-migrate-appliance-for-agentless-vmware-replication"></a>エージェントレス VMware レプリケーションに対する Azure Migrate アプライアンスの使用においてレプリケーションを調整するにはどうすればよいですか?  
 
-NetQosPolicy を使用して調整できます。 次に例を示します。
+NetQosPolicy を使用して調整できます。 この調整は、Azure Migrate アプライアンスからの送信接続にのみ適用されることに注意してください。 次に例を示します。
 
 NetQosPolicy で使用する AppNamePrefix は "GatewayWindowsService.exe" です。 Azure Migrate アプライアンスで次のようなポリシーを作成することによって、アプライアンスからのレプリケーション トラフィックを調整できます:
 

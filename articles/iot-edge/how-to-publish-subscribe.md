@@ -10,12 +10,12 @@ ms.date: 11/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: f798f8be2989140711cb9122c9d59e7b91248f61
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 899a6c1f0e5f2eb7441ea2035cdb12bed13a4b85
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128600382"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129457318"
 ---
 # <a name="publish-and-subscribe-with-azure-iot-edge-preview"></a>Aure IoT Edge を使用した発行とサブスクライブ (プレビュー)
 
@@ -417,7 +417,7 @@ TLS を有効にするには、ポートを 1883 (MQTT) から 8883 (MQTTS) に�
 
 ### <a name="send-direct-methods"></a>ダイレクト メソッドを送信する
 
-ダイレクト メソッドの送信は HTTP 呼び出しであるため、MQTT ブローカーを通過しません。 ダイレクト メソッドを IoT ハブに送信する方法については、[ダイレクト メソッドの概要と呼び出し](../iot-hub/iot-hub-devguide-direct-methods.md)に関するページを参照してください。 ダイレクト メソッドを別のモジュールにローカルで送信する方法については、こちらの [Azure IoT C# SDK ダイレクト メソッドの呼び出しの例](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/src/ModuleClient.cs#L597)を参照してください。
+ダイレクト メソッドの送信は HTTP 呼び出しであるため、MQTT ブローカーを通過しません。 ダイレクト メソッドを IoT ハブに送信する方法については、[ダイレクト メソッドの概要と呼び出し](../iot-hub/iot-hub-devguide-direct-methods.md)に関するページを参照してください。 ダイレクト メソッドを別のモジュールにローカルで送信する方法については、こちらの [Azure IoT C# SDK ダイレクト メソッドの呼び出しの例](https://github.com/Azure/azure-iot-sdk-csharp/blob/main/iothub/device/src/ModuleClient.cs#L597)を参照してください。
 
 ## <a name="publish-and-subscribe-between-mqtt-brokers"></a>MQTT ブローカー間での発行とサブスクライブ
 

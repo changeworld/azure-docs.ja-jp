@@ -2,13 +2,13 @@
 title: 連続録画と再生に関するチュートリアル - Azure Video Analyzer
 description: このチュートリアルでは、Azure Video Analyzer を使用してクラウドに連続録画し、その録画を再生する方法について説明します。
 ms.topic: tutorial
-ms.date: 06/01/2021
-ms.openlocfilehash: 2f3fc2421a2341974aa7ea7bdafeaf0123ea983e
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.date: 09/14/2021
+ms.openlocfilehash: 1ecba5892c3112ae12916c8b831eee994d4b5766
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114602929"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128644146"
 ---
 # <a name="tutorial-continuous-video-recording-and-playback"></a>チュートリアル: 連続録画と再生
 
@@ -69,8 +69,46 @@ ms.locfileid: "114602929"
 1. リソースをクリーンアップする。
 
 ## <a name="set-up-your-development-environment"></a>開発環境を設定する
-[!INCLUDE [setup development environment](./includes/set-up-dev-environment/csharp/csharp-set-up-dev-env.md)]
-  
+
+
+### <a name="get-the-sample-code"></a>サンプル コードを入手する
+
+1. [AVA C# サンプル リポジトリ](https://github.com/Azure-Samples/video-analyzer-iot-edge-csharp)を複製します。
+1. Visual Studio Code を開始して、リポジトリをダウンロードしたフォルダーを開きます。
+1. Visual Studio Code で、src/cloud-to-device-console-app フォルダーに移動し、**appsettings.json** という名前のファイルを作成します。 このファイルには、プログラムを実行するために必要な設定が格納されています。
+1. 上記のセットアップ手順で作成したストレージ アカウントのファイル共有を参照し、"deployment-output" ファイル共有の下にある **appsettings.json** を見つけます。 そのファイルをクリックし、[ダウンロード] ボタンをクリックします。 コンテンツは新しいブラウザー タブで開きます。これは次のようになっています。
+
+   ```
+   {
+       "IoThubConnectionString" : "HostName=xxx.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX",
+       "deviceId" : "avasample-iot-edge-device",
+       "moduleId" : "avaedge"
+   }
+   ```
+
+   IoT Hub 接続文字列を使用すると、Visual Studio Code を使用して Azure IoT Hub 経由でエッジ モジュールにコマンドを送信できます。 上記の JSON を **src/cloud-to-device-console-app/appsettings.json** ファイルにコピーします。
+
+### <a name="connect-to-the-iot-hub"></a>IoT ハブに接続します
+
+1. Visual Studio Code で、左下隅の **[Azure IoT Hub]** ペインの横にある **[その他のアクション]** アイコンを選択して、IoTHub 接続文字列を設定します。 src/cloud-to-device-console-app/appsettings.json ファイルからその文字列をコピーします。
+
+    <!-- commenting out the image for now ![Set IoT Hub connection string]()./media/quickstarts/set-iotconnection-string.png-->
+    [!INCLUDE [provide-builtin-endpoint](./includes/common-includes/provide-builtin-endpoint.md)]
+1. 30 秒ほど経過したら、左下のセクションで Azure IoT Hub を更新します。 次のモジュールがデプロイされているエッジ デバイス `avasample-iot-edge-device` が表示されます。
+    - Edge ハブ (モジュール名: **edgeHub**)
+    - Edge エージェント (モジュール名: **edgeAgent**)
+    - Video Analyzer (モジュール名: **avaedge**)
+    - RTSP シミュレーター (モジュール名: **rtspsim**)
+
+### <a name="prepare-to-monitor-the-modules"></a>モジュールの監視の準備をする
+
+このクイックスタートまたはチュートリアルを実行すると、イベントが IoT Hub に送信されます。 それらのイベントを確認するには、次の手順に従います。
+
+1. Visual Studio Code の [エクスプローラー] ペインを開き、左下隅にある **[Azure IoT Hub]** を探します。
+1. **[デバイス]** ノードを展開します。
+1. `avasample-iot-edge-device` を右クリックし、 **[Start Monitoring Built-in Event Endpoint]\(組み込みイベント エンドポイントの監視を開始する\)** を選択します。
+
+    [!INCLUDE [provide-builtin-endpoint](./includes/common-includes/provide-builtin-endpoint.md)]
 
 ## <a name="examine-the-sample-files"></a>サンプル ファイルを詳しく調べる
 
@@ -95,7 +133,7 @@ Visual Studio Code で、src/cloud-to-device-console-app フォルダーを参�
     `"topologyName" : "CVRToVideoSink"`  
 1. ブラウザーで[パイプライン トポロジ](https://raw.githubusercontent.com/Azure/video-analyzer/main/pipelines/live/topologies/cvr-video-sink/topology.json)を開き、videoName を確認します。これは `sample-cvr-video` にハードコーディングされています。 これはチュートリアルでは問題ありません。 運用環境では、それぞれの一意の RTSP カメラが必ず一意の名前を持つビデオ リソースに録画されるように注意してください。
 1. F5 キーを押して、デバッグ セッションを開始します。 **[ターミナル]** ウィンドウにいくつかのメッセージが出力されます。
-1. operations.json ファイルは、`pipelineTopologyList` および `livePipelineList` の呼び出しから始まります。 前回のクイックスタートまたはチュートリアルの後に、リソースをクリーンアップした場合は、このアクションによって空のリストが返された後、一時停止して、以下のように **Enter** キーの入力待ち状態になります。
+1. operations.json ファイルは、`pipelineTopologyList` および `livePipelineList` の呼び出しから始まります。 以前のクイックスタートまたはチュートリアルの後にリソースをクリーンアップした場合は、このアクションによって次のような空のリストが返されます。
 
     ```
     --------------------------------------------------------------------------
@@ -109,11 +147,10 @@ Visual Studio Code で、src/cloud-to-device-console-app フォルダーを参�
       "value": []
     }
     --------------------------------------------------------------------------
-    Executing operation WaitForInput
-    Press Enter to continue
+
     ```
 
-1. **[ターミナル]** ウィンドウで **Enter** キーを押すと、次に示す一連のダイレクト メソッド呼び出しが実行されます。
+1. その後、次の一連のダイレクト メソッド呼び出しが実行されます。
    * 前の `topologyUrl` を使用した `pipelineTopologySet` への呼び出し
    * 次の本文を使用した `livePipelineSet` への呼び出し
      
@@ -141,21 +178,18 @@ Visual Studio Code で、src/cloud-to-device-console-app フォルダーを参�
        }
      }
      ```
-   * ライブ パイプラインを開始し、ビデオのフローを開始する `livePipelineActivate` への呼び出し
-   * ライブ パイプラインが実行状態であることを示す `livePipelineList` への 2 回目の呼び出し 
+   * ライブ パイプラインを開始し、ビデオのフローを開始した後、ユーザーが **[ターミナル]** ウィンドウで **Enter** キーを選択するまで一時停止する `livePipelineActivate` への呼び出し
 1. **[ターミナル]** ウィンドウの出力が、今度は **[続行するには Enter キーを押してください]** というプロンプトで一時停止状態となります。 この時点では **Enter** キーを選択しないでください。 上へスクロールして、呼び出したダイレクト メソッドの JSON 応答のペイロードを確認します。
-1. ここで Visual Studio Code の **[出力]** ウィンドウに切り替えると、Video Analyzer エッジ モジュールから IoT Hub にメッセージが送信されているのを確認できます。
-
-
-   これらのメッセージについては、次のセクションで説明します。
+1. ここで Visual Studio Code の **[出力]** ウィンドウに切り替えると、Video Analyzer エッジ モジュールから IoT Hub にメッセージが送信されているのを確認できます。 これらのメッセージについては、次のセクションで説明します。
 1. ライブ パイプラインは引き続き実行されてビデオを録画します。 RTSP シミュレーターによって、ソース ビデオがループ処理され続けます。 記録を停止するには、 **[ターミナル]** ウィンドウに戻って **Enter** キーを押します。 次の一連の呼び出しが行われて、リソースがクリーンアップされます。
 
    * ライブ パイプラインを非アクティブ化する `livePipelineDeactivate` への呼び出し。
    * ライブ パイプラインを削除する `livePipelineDelete` への呼び出し。
+   * ライブ パイプラインが実行状態であることを示す `livePipelineList` への 2 回目の呼び出し。
    * トポロジを削除する `pipelineTopologyDelete` への呼び出し。
    * リストが空になったことを示す `pipelineTopologyList` への最後の呼び出し。
 
-## <a name="interpret-the-results"></a>結果を解釈する 
+## <a name="interpret-the-results"></a>結果を解釈する
 
 ライブ パイプラインを実行すると、Video Analyzer エッジ モジュールによって、特定の診断と操作のイベントが IoT Edge ハブに送信されます。 これらのイベントは Visual Studio Code の **出力** ウィンドウに表示されるメッセージです。 それには、`body` セクションと `applicationProperties` セクションが含まれています。 これらのセクションが表す内容については、「[IoT Hub メッセージを作成し、読み取る](../../iot-hub/iot-hub-devguide-messages-construct.md)」を参照してください。
 

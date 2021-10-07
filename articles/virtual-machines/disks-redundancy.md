@@ -7,13 +7,13 @@ ms.date: 09/01/2021
 ms.topic: how-to
 ms.service: storage
 ms.subservice: disks
-ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: 5bb77a9a5c7a1a33fe1d95213d9ceb3f83406ac2
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.custom: references_regions
+ms.openlocfilehash: 3748b896956e058e9dc6c01083c19aa8e9c327e7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123429984"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128569354"
 ---
 # <a name="redundancy-options-for-managed-disks"></a>マネージド ディスクの冗長性オプション
 
@@ -34,7 +34,7 @@ Azure マネージド ディスクには、ゾーン冗長ストレージ (ZRS) 
 
 ## <a name="zone-redundant-storage-for-managed-disks"></a>マネージド ディスクのゾーン冗長ストレージ
 
-ゾーン冗長ストレージ (ZRS) では、選択したリージョンにある 3 つの Azure 可用性ゾーン間で Azure マネージド ディスクを同期的にレプリケートします。 各可用性ゾーンは、独立した電源、冷却装置、ネットワークを備えた独立した物理的な場所です。 
+ゾーン冗長ストレージ (ZRS) では、選択したリージョンにある 3 つの Azure 可用性ゾーン間で Azure マネージド ディスクを同期的にレプリケートします。 各可用性ゾーンは、独立した電源、冷却装置、ネットワークを備えた独立した物理的な場所です。
 
 ZRS ディスクを使用すると、可用性ゾーンの障害から復旧できます。 ゾーンが停止した場合は、ZRS ディスクを別のゾーン内の仮想マシン (VM) にアタッチできます。 ZRS ディスクを VM 間で共有することで、SQL FCI、SAP ASCS/SCS、GFS2 などのクラスター化または分散化されたアプリケーションの可用性を向上させることもできます。 共有 ZRS ディスクを異なるゾーン内のプライマリおよびセカンダリ VM にアタッチすると、ZRS と[可用性ゾーン](../availability-zones/az-overview.md)の両方を利用できます。 プライマリ ゾーンで障害が発生した場合は、[SCSI 永続的予約](disks-shared-enable.md#supported-scsi-pr-commands)を使用して、セカンダリ VM にすばやくフェールオーバーできます。
 
@@ -44,7 +44,7 @@ ZRS ディスクを使用すると、可用性ゾーンの障害から復旧で�
 
 ### <a name="comparison-with-other-disk-types"></a>他のディスクの種類との比較
 
-書き込みの待機時間が長いことを除けば、ZRS を使用するディスクは LRS を使用するディスクと同じであり、スケール ターゲットは同じです。 [ディスクのベンチマークを実行](disks-benchmarks.md)してアプリケーションのワークロードをシミュレートし、LRS と ZRS のディスクの待機時間を比較してください。 
+書き込みの待機時間が長いことを除けば、ZRS を使用するディスクは LRS を使用するディスクと同じであり、スケール ターゲットは同じです。 [ディスクのベンチマークを実行](disks-benchmarks.md)してアプリケーションのワークロードをシミュレートし、LRS と ZRS のディスクの待機時間を比較してください。
 
 ### <a name="limitations"></a>制限事項
 

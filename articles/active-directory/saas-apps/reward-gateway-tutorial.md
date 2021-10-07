@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/18/2021
+ms.date: 08/31/2021
 ms.author: jeedes
-ms.openlocfilehash: 9d7c018319003ef9671d9403c2e17642ec70a5d4
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: bd6b11956ffe32a2ae59cd6d6ab262ab3013832f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110476421"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124753090"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-reward-gateway"></a>チュートリアル: Azure Active Directory と Reward Gateway の統合
 
@@ -38,6 +38,8 @@ Azure AD と Reward Gateway の統合を構成するには、次のものが必�
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
 * Reward Gateway では、**IDP** Initiated SSO がサポートされます。
+
+* Reward Gateway では、[自動化されたユーザー プロビジョニング](reward-gateway-provisioning-tutorial.md)がサポートされます。
 
 ## <a name="add-reward-gateway-from-the-gallery"></a>ギャラリーからの Reward Gateway の追加
 
@@ -138,13 +140,15 @@ Reward Gateway に対する Azure AD SSO を構成してテストするには、
 
 このセクションでは、Reward Gateway で Britta Simon というユーザーを作成します。 [Reward Gateway サポート チーム](mailto:clientsupport@rewardgateway.com)と連携して、Reward Gateway プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
+Reward Gateway では、自動ユーザー プロビジョニングもサポートされます。自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](./reward-gateway-provisioning-tutorial.md)をご覧ください。
+
 ## <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した Reward Gateway に自動的にサインインします。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Reward Gateway] タイルをクリックすると、SSO を設定した Reward Gateway に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Reward Gateway] タイルをクリックすると、SSO を設定した Reward Gateway に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

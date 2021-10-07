@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-java
-ms.openlocfilehash: 1509fc725f9b2b486f75b69b4d9cb1509abe097f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 1493e9166e9d9b1584187fe6d7210936db7cc038
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121728773"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129234435"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-java"></a>IoT Hub を使用したクラウドからデバイスへのメッセージの送信 (Java)
 
@@ -223,7 +223,5 @@ cloud-to-device メッセージのライフサイクルの詳細など、IoT Hub
 ## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、クラウドからデバイスへのメッセージを送受信する方法を学習しました。
-
-IoT Hub を使用する完全なエンド ツー エンド ソリューションの例については、 [Azure IoT ソリューション アクセラレータ](https://azure.microsoft.com/documentation/suites/iot-suite/)に関するドキュメントをご覧ください。
 
 IoT Hub を使用したソリューションの開発に関する詳細については、[IoT Hub 開発者ガイド](iot-hub-devguide.md)をご覧ください。

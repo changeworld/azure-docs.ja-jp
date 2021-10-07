@@ -3,12 +3,12 @@ title: Live Video Analytics を使用して記録ポリシーを管理する - A
 description: このトピックでは、Live Video Analytics を使用して記録ポリシーを管理する方法について説明します。
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: a8301b97e571370d498fba9a8d46cf3fc545ff29
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: c9ec5a2efd56a0a2872f946dd23db72d2e7836b9
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124740366"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129273649"
 ---
 # <a name="manage-recording-policy-with-live-video-analytics"></a>Live Video Analytics を使用して記録ポリシーを管理する
 
@@ -44,7 +44,7 @@ Live Video Analytics on IoT Edge を使用して、クラウドにビデオを�
 上記のルールは:
 
 * ストレージ アカウントのすべてのブロック BLOB に適用されます。
-* BLOB の期間が 30 日を超えたら、[ホット アクセス層からクール アクセス層](../../storage/blobs/storage-blob-storage-tiers.md?tabs=azure-portal)に移動することを指定します。
+* BLOB の期間が 30 日を超えたら、[ホット アクセス層からクール アクセス層](../../storage/blobs/access-tiers-overview.md?tabs=azure-portal)に移動することを指定します。
 * また、期間が 90 日を超えると、その BLOB は削除されます。
 
 Live Video Analytics を使用してアセットに記録する場合は、`segmentLength` プロパティを指定して、クラウドに書き込まれるまでのビデオの最小期間 (秒単位) を集計するようにモジュールに指示します。 アセットには一連のセグメントが含まれ、各セグメントの作成タイムスタンプは前のものより `segmentLength` だけ新しくなります。 ライフサイクル管理ポリシーが開始されると、指定したしきい値よりも古いセグメントは削除されます。 ただし、引き続き Media Service API を使用して、残りのセグメントにアクセスして再生することができます。 詳細については、「[記録の再生](playback-recordings-how-to.md)」を参照してください。 

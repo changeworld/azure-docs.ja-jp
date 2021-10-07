@@ -3,12 +3,12 @@ title: Azure Functions のストレージに関する考慮事項
 description: Azure Functions のストレージ要件と、格納済みデータの暗号化について説明します。
 ms.topic: conceptual
 ms.date: 07/27/2020
-ms.openlocfilehash: ad9e7979eddac3fc102d9fddae68c230a7418762
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: dfbaf2947dd3eaacd155a240541a6abae3894b35
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123259557"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128599983"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Azure Functions のストレージに関する考慮事項
 
@@ -78,7 +78,7 @@ Azure Files を使わない場合、次のことを考慮する必要があり�
 * アプリで Functions のランタイム v1 を使用できません。
 * Azure portal などのクライアントのログ ストリーミングで、既定のログがファイル システムのログになります。 これの代わりに、Application Insights のログを使用するべきです。
 
-上の点に問題がなければ、Azure Files を使用せずにアプリを作成できます。 アプリケーションの設定 `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` と `WEBSITE_CONTENTSHARE` を指定せずに、関数アプリを作成してください。
+上の点に問題がなければ、Azure Files を使用せずにアプリを作成できます。 アプリケーションの設定 `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` と `WEBSITE_CONTENTSHARE` を指定せずに、関数アプリを作成してください。 これを行うには、標準のデプロイ用の ARM テンプレートを生成し、これらの 2 つの設定を削除し、テンプレートをデプロイします。 
 
 ## <a name="mount-file-shares"></a>ファイル共有をマウントする
 

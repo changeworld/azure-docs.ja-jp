@@ -7,12 +7,12 @@ ms.date: 01/25/2021
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: d704e8f9687f3987d80018d84b41c0fd519da172
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 43e0d3228937e507f988aa241b6fa0b619892c10
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98791898"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129273687"
 ---
 # <a name="how-to-reprovision-devices"></a>デバイスを再プロビジョニングする方法
 
@@ -79,7 +79,7 @@ IoT ソリューションのライフサイクル中に、デバイスを IoT �
 
 登録エントリの再プロビジョニング ポリシーによって、Device Provisioning Service インスタンスでこれらのプロビジョニング要求を処理する方法と、再プロビジョニング中にデバイス状態データを移行する必要があるかどうかが決定されます。 同じポリシーを個別の登録と登録グループに利用できます。
 
-ブート シーケンス中にデバイスからプロビジョニング要求を送信する場合のコード例については、[シミュレートされたデバイスの自動プロビジョニング](quick-create-simulated-device.md)に関するページを参照してください。
+ブート シーケンス中にデバイスからプロビジョニング要求を送信する場合のコード例については、[シミュレートされたデバイスの自動プロビジョニング](quick-create-simulated-device-tpm.md)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ

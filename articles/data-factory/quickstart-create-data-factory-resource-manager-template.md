@@ -10,12 +10,12 @@ ms.reviewer: jburchel, jingwang
 ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-azurepowershell
 ms.date: 07/05/2021
-ms.openlocfilehash: b6489f692dc8fabf63daab0cf13f1036e944e77e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9a567c5b61449cdfd72fac1a946760bccce2bebe
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121731527"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124769714"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-arm-template"></a>クイック スタート:ARM テンプレートを使用して Azure Data Factory を作成する
 
@@ -34,7 +34,7 @@ ms.locfileid: "121731527"
 
 環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
 
-[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.datafactory%2Fdata-factory-v2-blob-to-blob-copy%2Fazuredeploy.json)
+[:::image type="content" source="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.datafactory%2Fdata-factory-v2-blob-to-blob-copy%2Fazuredeploy.json" alt-text="Azure にデプロイする](../media/template-deployments/deploy-to-azure.svg)":::
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -73,7 +73,7 @@ Jane, Doe
 
 1. Azure にサインインし、テンプレートを開くには次のイメージを選択します。 テンプレートによって、Azure Data Factory アカウント、ストレージ アカウント、および BLOB コンテナーが作成されます。
 
-    [![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.datafactory%2Fdata-factory-v2-blob-to-blob-copy%2Fazuredeploy.json)
+    [:::image type="content" source="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.datafactory%2Fdata-factory-v2-blob-to-blob-copy%2Fazuredeploy.json" alt-text="Azure にデプロイする](../media/template-deployments/deploy-to-azure.svg)":::
 
 2. 次の値を選択または入力します。
 

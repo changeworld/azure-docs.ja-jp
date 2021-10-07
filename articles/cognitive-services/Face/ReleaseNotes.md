@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: overview
-ms.date: 09/27/2021
+ms.date: 09/08/2021
 ms.author: pafarley
 ms.custom: contperf-fy21q3, contperf-fy22q1
-ms.openlocfilehash: f727846a13566832d8549b5fa76ae5011a1be2ee
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: d68ff884063f81eccccbd2dcd4d3bd05485f5ef9
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129351851"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124750848"
 ---
 # <a name="whats-new-in-azure-face-service"></a>Azure Face サービスの最新情報
 
@@ -26,8 +26,7 @@ Azure Face サービスは、継続的に更新されます。 この記事で�
 
 ### <a name="persondirectory-data-structure"></a>PersonDirectory のデータ構造
 
-* 類似の識別や検索といった顔認識操作を実行するために、Face API のお客様は、**Person** オブジェクトの類別された一覧を作成する必要があります。 新しい **PersonDirectory** は、ディレクトリに追加された **Person** の各 ID について、一意の ID、オプションの名前文字列、およびオプションのユーザー メタデータ文字列が格納されたデータ構造です。 現在、Face API には同様の機能を持つ **LargePersonGroup** 構造が用意されていますが、100 万の ID に制限されています。 **PersonDirectory** 構造は、最大 7,500 万の ID までスケールアップできます。 
-* **PersonDirectory** と以前のデータ構造のもう 1 つの大きな違いは、顔を **Person** オブジェクトに追加した後にトレーニングの呼び出しを行う必要がなくなったことです。更新プロセスは自動的に行われます。 詳細については、「[PersonDirectory 構造を使用する](Face-API-How-to-Topics/use-persondirectory.md)」を参照してください。
+* 類似の識別や検索といった顔認識操作を実行するために、Face API のお客様は、**Person** オブジェクトの類別された一覧を作成する必要があります。 新しい **PersonDirectory** は、ディレクトリに追加された **Person** の各 ID について、一意の ID、オプションの名前文字列、およびオプションのユーザー メタデータ文字列が格納されたデータ構造です。 現在、Face API には同様の機能を持つ **LargePersonGroup** 構造が用意されていますが、100 万の ID に制限されています。 **PersonDirectory** 構造は、最大 7,500 万の ID までスケールアップできます。 **PersonDirectory** と以前のデータ構造のもう 1 つの大きな違いは、顔を **Person** オブジェクトに追加した後にトレーニングの呼び出しを行う必要がなくなったことです。更新プロセスは自動的に行われます。 詳細については、「[PersonDirectory 構造を使用する](Face-API-How-to-Topics/use-persondirectory.md)」を参照してください。
 
 
 ## <a name="february-2021"></a>2021 年 2 月

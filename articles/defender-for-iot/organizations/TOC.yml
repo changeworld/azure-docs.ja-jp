@@ -25,6 +25,8 @@
   items:
     - name: Azure Defender for IoT の試用版のセットアップ
       href: tutorial-onboarding.md
+    - name: ClearPass を統合する
+      href: tutorial-clearpass.md
     - name: CyberArk を統合する
       href: tutorial-cyberark.md
     - name: Forescout を統合する

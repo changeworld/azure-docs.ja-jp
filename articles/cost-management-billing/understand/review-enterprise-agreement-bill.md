@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.topic: tutorial
-ms.date: 08/20/2020
+ms.date: 09/08/2021
 ms.author: banders
-ms.openlocfilehash: 5d945c421dc0a4abed17b3a355339c131dd922df
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 60c7acf1f88f37d44ef38516480640eeebd220b9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107728052"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128662041"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>Azure Enterprise Agreement 請求書を理解する
 
@@ -42,7 +42,7 @@ Enterprise Agreement による Azure カスタマーは、組織のクレジッ�
 請求サイクル中に、次のいずれかのイベントが発生すると、Azure の請求書が発行されます。
 
 - **サービスの超過**:組織の利用料金がクレジットの残高を超過した場合。
-- **個別請求の料金**:組織が使用したサービスにクレジットが対応していない場合。 以下のサービスについては、クレジットの残高にかかわらず請求書が発行されます。
+- **個別請求の料金**:組織が使用したサービスにクレジットが対応していない場合。 以下のサービスについては、クレジットの残高にかかわらず請求書が発行されます。 表示されているサービスは個別に請求される料金の例です。 料金が個別に請求されるサービスの完全な一覧を取得するには、[サポート リクエスト](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)を送信してください。
     - Canonical
     - Citrix XenApp Essentials
     - Citrix XenDesktop
@@ -75,7 +75,7 @@ Enterprise Portal の **[レポート]**  >  **[使用状況の要約]** に表�
 お客様は、以下の状況に 1 つでも該当すると、1 枚以上の請求書を受け取ります。
 
 - **サービスの超過**:組織の利用料金がクレジットの残高を超過した場合。
-- **個別請求の料金**:組織が使用したサービスにクレジットが対応していない場合。 以下のサービスについて請求書が発行されます。
+- **個別請求の料金**:組織が使用したサービスにクレジットが対応していない場合。 以下のサービスについて請求書が発行されます。 表示されているサービスは個別に請求される料金の例です。 料金が個別に請求されるサービスの完全な一覧を取得するには、[サポート リクエスト](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)を送信してください。
     - Canonical
     - Citrix XenApp Essentials
     - Citrix XenDesktop
@@ -368,7 +368,7 @@ See [Power BI self-service sign up](https://powerbi.microsoft.com/documentation/
 
 ### <a name="to-access-microsoft-azure-consumption-insights"></a>Microsoft Azure Consumption Insights にアクセスするには、次のようにします。
 
-1. [Microsoft Azure Consumption Insights](https://app.powerbi.com/getdata/services/azureconsumption?cpcode=MicrosoftAzureConsumptionInsights&amp;getDataForceConnect=true&amp;WT.mc_id=azurebg_email_Trans_33675_1378_Service_Notice_EA_Customer_Power_BI_EA_Content_Pack_Apr26) に移動します。
+1. Microsoft Azure Consumption Insights に移動します。
 1. **[今すぐ入手する]** を選択します。
 1. 加入契約番号と月数を指定し、 **[次へ]** を選択します。
 1. 接続するための API アクセス キーを指定します。 加入契約用のキーは、[エンタープライズ ポータル](https://ea.azure.com/?WT.mc_id=azurebg_email_Trans_33675_1378_Service_Notice_EA_Customer_Power_BI_EA_Content_Pack_Apr26)で確認できます。

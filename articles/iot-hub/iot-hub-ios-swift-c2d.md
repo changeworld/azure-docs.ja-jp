@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/19/2018
 ms.author: kgremban
 ms.custom: mqtt
-ms.openlocfilehash: 627342bb4ee7a6192b6dd7b9fdce71a87158ec39
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: b7ff769a6ce8bae8ac6e99a2fff89f65a0d164a3
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114287696"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129231142"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-ios"></a>IoT Hub (iOS) を使用した cloud-to-device メッセージの送信
 
@@ -177,7 +177,5 @@ pod install
 ## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、クラウドからデバイスへのメッセージを送受信する方法を学習しました。
-
-IoT Hub を使用する完全なエンドツーエンド ソリューションの例については、[Azure IoT ソリューション アクセラレータ](https://azure.microsoft.com/documentation/suites/iot-suite/)に関するドキュメントを参照してください。
 
 IoT Hub を使用したソリューションの開発に関する詳細については、[IoT Hub 開発者ガイド](iot-hub-devguide.md)をご覧ください。

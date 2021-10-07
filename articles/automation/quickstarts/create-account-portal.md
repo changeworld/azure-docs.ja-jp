@@ -6,12 +6,12 @@ ms.date: 09/07/2021
 ms.topic: quickstart
 ms.subservice: process-automation
 ms.custom: mvc
-ms.openlocfilehash: 5d73da041b5ecb5dd2b7089ee898b5bffbe4f512
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: f0f93a43fd74ba38b8be17636b695e287354ed5a
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123543000"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129218277"
 ---
 # <a name="quickstart-create-an-automation-account-using-the-azure-portal"></a>クイックスタート: Azure portal を使用して Automation アカウントを作成する
 
@@ -27,7 +27,7 @@ Azure [Automation アカウント](../automation-security-overview.md)は、さ�
 
 1. 上部のメニューで、 **[+ リソースの作成]** を選択します。
 
-1. [カテゴリ]** で、 **[IT & Management Tools]\(IT & 管理ツール\)** 、 **[Automation]** の順に選択します。
+1. **[カテゴリ]** で、 **[IT & Management Tools]\(IT & 管理ツール\)** 、 **[Automation]** の順に選択します。
 
    :::image type="content" source="./media/create-account-portal/automation-account-portal.png" alt-text="ポータルでの Automation アカウントの検索。":::
 
@@ -38,7 +38,7 @@ Azure [Automation アカウント](../automation-security-overview.md)は、さ�
    |名前| 場所とリソース グループに対して一意である名前を入力します。 削除された Automation アカウントの名前はすぐには使用できない場合があります。 一度ユーザー インターフェイスで入力されたアカウント名を変更することはできません。 |
    |サブスクリプション| ドロップダウン リストから、アカウントの Azure サブスクリプションを選択します。|
    |Resource group|ドロップダウン リストから既存のリソース グループを選択するか、 **[新規作成]** を選択します。|
-   |場所| ドロップダウン リストから、アカウントの場所を選択します。 Automation アカウントをデプロイできる場所の最新の一覧については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=automation&regions=all)」を参照してください|
+   |場所| ドロップダウン リストから、アカウントの場所を選択します。 Automation アカウントをデプロイできる場所の最新の一覧については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=automation&regions=all)」を参照してください。|
    |Azure 実行アカウントの作成| このため、 **[いいえ]** を選択します。  Automation アカウントの Azure 実行アカウントは Azure での認証に役立ちます。ただし、Automation のマネージド ID が使用できるようになっています。 [マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) により、Azure Active Directory (Azure AD) 認証をサポートするリソースに接続するときに使用される ID がアプリケーションに提供されます。 |
 
    :::image type="content" source="./media/create-account-portal/add-automation-account-portal.png" alt-text="Automation アカウントを追加するために必要なフィールド":::

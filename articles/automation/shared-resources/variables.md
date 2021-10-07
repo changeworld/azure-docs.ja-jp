@@ -6,12 +6,12 @@ ms.subservice: shared-capabilities
 ms.date: 03/28/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9f1ace00356583dbb6102317e3d157fb58682710
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: c97d046208b2a2364b38ffd1e01ff0a9d25f7eeb
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107832581"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129271936"
 ---
 # <a name="manage-variables-in-azure-automation"></a>Azure Automation で変数を管理する
 
@@ -53,7 +53,7 @@ Azure portal を使用して、複合型の変数の値を作成したり変更�
 
 ## <a name="powershell-cmdlets-to-access-variables"></a>変数にアクセスするための PowerShell コマンドレット
 
-PowerShell を使用して Automation 変数を作成および管理するためのコマンドレットを次の表に示します。 これらは、[Az モジュール](modules.md#az-modules)の一部として出荷されます。
+PowerShell を使用して Automation 変数を作成および管理するためのコマンドレットを次の表に示します。 これらは、Az モジュールの一部として出荷されます。
 
 | コマンドレット | 説明 |
 |:---|:---|

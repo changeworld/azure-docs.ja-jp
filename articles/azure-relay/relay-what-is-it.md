@@ -1,15 +1,15 @@
 ---
 title: Azure Relay とは | Microsoft Docs
 description: この記事では、Azure Relay サービスの概要について説明します。このサービスを使用すると、ファイアウォール接続を開いたり、ネットワーク インフラストラクチャ内に及ぶような変更を加えたりせずに、企業ネットワーク内で実行されるオンプレミスのサービスを利用するクラウド アプリケーションを開発できます。
-ms.topic: conceptual
+ms.topic: overview
 ms.date: 09/02/2021
 ms.custom: contperf-fy22q1
-ms.openlocfilehash: af12067cd73b8767beb243e9e098d2cbbf9c456a
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.openlocfilehash: e7555e44af9192141e9588361b905773cd56e2e6
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129081873"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129545060"
 ---
 # <a name="what-is-azure-relay"></a>Azure Relay とは
 Azure Relay サービスでは、企業ネットワーク内で実行されているサービスをパブリック クラウドに安全に公開することができます。 ファイアウォールでポートを開放したり、企業ネットワーク インフラストラクチャ内に及ぶような変更を加えたりすることなく、それが可能です。 

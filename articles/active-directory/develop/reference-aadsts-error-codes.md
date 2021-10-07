@@ -12,12 +12,12 @@ ms.date: 07/28/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 3b1d7d8b658e0a0ac01789ca8a13ce0a2f779767
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3a530dae026ffe87efe06fb413966df43ce32314
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121734531"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128588293"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD 認証と承認のエラー コード
 
@@ -206,6 +206,7 @@ Azure Active Directory (Azure AD) セキュリティ トークン サービス (
 | AADSTS700054 | Response_type 'id_token' がアプリケーションに対して有効になっていません。  アプリケーションが承認エンドポイントから ID トークンを要求しましたが、ID トークンの暗黙的な許可が有効になっていませんでした。  [Azure Portal] > [Azure Active Directory] > [アプリの登録] > アプリケーションを選択します > [認証] > [暗黙的な許可およびハイブリッド フロー] で、[ID トークン] が選択されていることを確認してください。|
 | AADSTS70007 | UnsupportedResponseMode - アプリが、トークンを要求するときに、`response_mode` のサポートされていない値を返しました。  |
 | AADSTS70008 | ExpiredOrRevokedGrant - 非アクティブのため、更新トークンの有効期限が切れました。 トークンは XXX に発行され、一定期間、非アクティブでした。 |
+| AADSTS700084 | この更新トークンは、シングル ページ アプリ (SPA) に発行されたため、延長できない、制限された固定の有効期間 {time} が割り当てられています。 これは既に有効期限が切れているため、SPA がサインイン ページに新しいサインイン要求を送信する必要があります。 このトークンは {issueDate} に発行されました。|
 | AADSTS70011 | InvalidScope - アプリによって要求されたスコープが無効です。 |
 | AADSTS70012 | MsaServerError - MSA (コンシューマー) ユーザーの認証中にサーバー エラーが発生しました。 やり直してください。 まだ失敗する場合は、[サポート チケットを開いてください](../fundamentals/active-directory-troubleshooting-support-howto.md) |
 | AADSTS70016 | AuthorizationPending - OAuth 2.0 デバイス フロー エラー。 承認は保留中です。 デバイスは要求のポーリングを再試行します。 |

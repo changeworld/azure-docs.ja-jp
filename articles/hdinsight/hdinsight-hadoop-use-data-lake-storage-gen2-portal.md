@@ -6,13 +6,13 @@ ms.author: guyhay
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
-ms.date: 09/17/2020
-ms.openlocfilehash: 372eb428c1ddde52cb557265052bc9fee27d7c83
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.date: 09/07/2021
+ms.openlocfilehash: 2014f0cde340b0070b8c8e5e7fbbd7c2ab6667fa
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112280407"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124797574"
 ---
 # <a name="create-a-cluster-with-data-lake-storage-gen2-using-the-azure-portal"></a>Azure portal を使用して Data Lake Storage Gen2 を使用するクラスターを作成する
 
@@ -86,6 +86,7 @@ Azure Data Lake Storage Gen2 を使用するストレージ アカウントを�
     > [!NOTE]
     > * Data Lake Storage Gen2 を使用するセカンダリ ストレージ アカウントを追加するには、ストレージ アカウント レベルで、先ほど作成したマネージド ID を、追加する新しい Data Lake Storage Gen2 に割り当てます。 Data Lake Storage Gen2 を使用するセカンダリ ストレージ アカウントの追加は、HDInsight の [追加のストレージ アカウント] ブレードからはサポートされていないことに注意してください。
     > * HDInsight で使用する Azure Blob Storage アカウントで、RA-GRS または RA-ZRS を有効にすることができます。 ただし、RA-GRS または RA-ZRS セカンダリ エンドポイントに対するクラスターの作成はサポートされていません。
+    > * HDInsight では、Data Lake Storage Gen2 を読み取りアクセス geo ゾーン冗長ストレージ (RA-GZRS) または geo ゾーン冗長ストレージ (GZRS) として設定することはサポートされていません。
 
 ## <a name="delete-the-cluster"></a>クラスターを削除する
 

@@ -9,19 +9,19 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 01/14/2021
+ms.date: 09/09/2021
 ms.author: jamesmantu
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 1ce5a7e2532fd150b5445e3b243c841d797b4157
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: ca3f20e3d59b993056684773025fd21661879924
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123226859"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128639111"
 ---
 # <a name="quickstart-sign-in-and-get-an-access-token-in-a-react-spa-using-the-auth-code-flow"></a>クイックスタート: 認可コード フローを使用して React SPA 内でユーザーをサインインさせ、アクセス トークンを取得する
 
-このクイックスタートでは、認可コード フローを使用して、JavaScript React シングルページ アプリケーション (SPA) でユーザーをサインインさせ、Microsoft Graph を呼び出す方法を示すコード サンプルをダウンロードして実行します。 このコード サンプルでは、Microsoft Graph API または任意の Web API を呼び出すためのアクセス トークンを取得する方法を示します。 
+このクイックスタートでは、認可コード フローを使用して、JavaScript React シングルページ アプリケーション (SPA) でユーザーをサインインさせ、Microsoft Graph を呼び出す方法を示すコード サンプルをダウンロードして実行します。 このコード サンプルでは、Microsoft Graph API または任意の Web API を呼び出すためのアクセス トークンを取得する方法を示します。
 
 図については、「[このサンプルのしくみ](#how-the-sample-works)」を参照してください。
 
@@ -49,7 +49,7 @@ ms.locfileid: "123226859"
 > #### <a name="step-1-register-your-application"></a>手順 1:アプリケーションの登録
 >
 > 1. <a href="https://portal.azure.com/" target="_blank">Azure portal</a> にサインインします。
-> 1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::を使用して、アプリケーションを登録するテナントを選択します。
+> 1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: を使用して、アプリケーションを登録するテナントに切り替えます。
 > 1. **Azure Active Directory** を検索して選択します。
 > 1. **[管理]** で **[アプリの登録]**  >  **[新規登録]** の順に選択します。
 > 1. **[アプリケーションの登録]** ページが表示されたら、アプリケーションの名前を入力します。
@@ -57,7 +57,7 @@ ms.locfileid: "123226859"
 > 1. **[登録]** を選択します。 後で使用するために、アプリの **[概要]** ページで、 **[アプリケーション (クライアント) ID]** の値を書き留めます。
 > 1. **[管理]** で、 **[認証]** を選択します。
 > 1. **[プラットフォーム構成]** で **[プラットフォームを追加]** を選択します。 表示されたウィンドウで **[シングルページ アプリケーション]** を選択します。
-> 1. **[リダイレクト URI]** の値を `http://localhost:3000/` に設定します。 これは NodeJS がローカル コンピューターでリッスンする既定のポートです。 ユーザー認証が成功すると、この URI に認証応答が返されます。 
+> 1. **[リダイレクト URI]** の値を `http://localhost:3000/` に設定します。 これは NodeJS がローカル コンピューターでリッスンする既定のポートです。 ユーザー認証が成功すると、この URI に認証応答が返されます。
 > 1. **[構成]** を選択して変更を適用します。
 > 1. **[プラットフォーム構成]** の **[シングルページ アプリケーション]** を展開します。
 > 1. **[許可の種類]** ![構成済み](media/quickstart-v2-javascript/green-check.png)で、自分のリダイレクト URI が PKCE を使用した認可コード フローの対象になっていることを確認します。
@@ -89,14 +89,14 @@ ms.locfileid: "123226859"
 >
 > ```javascript
 > /**
-> * Configuration object to be passed to MSAL instance on creation. 
+> * Configuration object to be passed to MSAL instance on creation.
 > * For a full list of MSAL.js configuration parameters, visit:
-> * https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser/docs/configuration.md 
+> * https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser/docs/configuration.md
 > */
 > export const msalConfig = {
 >    auth: {
 >        clientId: "Enter_the_Application_Id_Here",
->        authority: "Enter_the_Cloud_Instance_Id_HereEnter_the_Tenant_Info_Here",
+>        authority: "Enter_the_Cloud_Instance_Id_Here/Enter_the_Tenant_Info_Here",
 >        redirectUri: "Enter_the_Redirect_Uri_Here"
 >    },
 >    cache: {
@@ -116,7 +116,7 @@ ms.locfileid: "123226859"
 > - `Enter_the_Application_Id_Here` は、登録したアプリケーションの **アプリケーション (クライアント) ID** です。
 >
 >    **[アプリケーション (クライアント) ID]** の値を見つけるには、Azure portal でアプリ登録の **[概要]** ページに移動します。
-> - `Enter_the_Cloud_Instance_Id_Here` は、Azure クラウドのインスタンスです。 メイン (グローバル) Azure クラウドの場合は、「`https://login.microsoftonline.com/`」と入力します。 **各国** のクラウド (中国など) の場合は、「[各国のクラウド](authentication-national-cloud.md)」を参照してください。
+> - `Enter_the_Cloud_Instance_Id_Here` は、Azure クラウドのインスタンスです。 メイン (グローバル) Azure クラウドの場合は、「`https://login.microsoftonline.com`」と入力します。 **各国** のクラウド (中国など) の場合は、「[各国のクラウド](authentication-national-cloud.md)」を参照してください。
 > - `Enter_the_Tenant_info_here` には、次のいずれかが設定されます。
 >   - お使いのアプリケーションで "*この組織のディレクトリ内のアカウント*" がサポートされる場合は、この値を **テナント ID** または **テナント名** に置き換えます。 たとえば、「 `contoso.microsoft.com` 」のように入力します。
 >
@@ -140,7 +140,7 @@ ms.locfileid: "123226859"
 
 > [!div renderon="docs"]
 >
-> 同じファイル内で下へスクロールし、`graphMeEndpoint` を更新します。 
+> 同じファイル内で下へスクロールし、`graphMeEndpoint` を更新します。
 > - 文字列 `Enter_the_Graph_Endpoint_Herev1.0/me` を `https://graph.microsoft.com/v1.0/me` に置き換えます。
 > - `Enter_the_Graph_Endpoint_Herev1.0/me` は、API 呼び出しの対象となるエンドポイントです。 メイン (グローバル) Microsoft Graph API サービスの場合は、「`https://graph.microsoft.com/`」 (末尾のスラッシュを含める) と入力します。 詳細については、[ドキュメント](/graph/deployments)を参照してください。
 >

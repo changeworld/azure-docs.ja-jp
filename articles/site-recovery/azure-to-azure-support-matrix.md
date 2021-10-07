@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 11/29/2020
 author: Sharmistha-Rai
 ms.author: sharrai
-ms.openlocfilehash: a960064aa9ee23c5d82c605aa551cdc0a4e07c49
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 49abd2f167eb51cfaf4a431488b1e85c68bc7b5d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129363451"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128591313"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Azure リージョン間での Azure VM ディザスター リカバリーに関するサポート マトリックス
 
@@ -239,7 +239,6 @@ Tags  | サポートされています | ソース仮想マシンに適用され
 レプリケートされた VM のディスク サイズの変更 | ソース VM での、より大きなサイズへの変更はサポートされています。 ソース VM での、より小さなサイズへの変更はサポートされていません。 サイズ変更は、フェールオーバーの前に実行する必要があります。 レプリケーションを無効にしたり、もう一度有効にしたりする必要はありません。<br/><br/> フェールオーバー後にソース VM を変更した場合、変更はキャプチャされません。<br/><br/> フェールオーバー後に Azure VM のディスク サイズを変更した場合、変更は Site Recovery によってキャプチャされず、元の VM サイズにフェールバックされます。<br/><br/> 4 TB 以上にサイズ変更する場合は、[こちら](../virtual-machines/premium-storage-performance.md)のディスク キャッシュに関する Azure のガイダンスにご注意ください。 
 レプリケートされた VM にディスクを追加する | サポートされています
 保護されたディスクへのオフラインでの変更 | ディスクの接続を解除し、それらをオフラインで変更する場合、完全な再同期をトリガーする必要があります。
-ディスク キャッシュ | 4 TiB 以上のディスクでは、ディスク キャッシュはサポートされていません。 複数のディスクが VM に接続されている場合、4 TiB 未満の各ディスクでは、キャッシュがサポートされます。 Azure ディスクのキャッシュ設定を変更すると、対象となるディスクをデタッチして再アタッチします。 オペレーティング システム ディスクの場合は、VM が再起動されます。 ディスク キャッシュの設定を変更する前に、この中断の影響を受ける可能性があるすべてのアプリケーションまたはサービスを停止します。 これらの推奨事項に従っていないと、データが破損する可能性があります。
 
 ## <a name="replicated-machines---storage"></a>レプリケートされるマシン - ストレージ
 

@@ -1,17 +1,17 @@
 ---
 title: Azure Cache for Redis を監視する
 description: Azure Cache for Redis のインスタンスの正常性とパフォーマンスを監視する方法を学習します
-author: yegu-ms
-ms.author: yegu
+author: curib
+ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.openlocfilehash: 80290a9214e7d4b2715251f49b407d7456bd1fb6
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 64234292051c5f780c33fd55fabf3305f45b756d
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114293959"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129538409"
 ---
 # <a name="monitor-azure-cache-for-redis"></a>Azure Cache for Redis を監視する
 
@@ -163,14 +163,16 @@ Azure Monitor を使用してメトリックを操作する方法について詳
 
 アラートを構成して使用する方法について詳しくは、[アラートの概要](../azure-monitor/alerts/alerts-classic-portal.md)に関する記事をご覧ください。
 
-## <a name="activity-logs"></a>アクティビティ ログ
+<!-- 
+## Activity Logs
 
-アクティビティ ログは、Azure Cache for Redis インスタンスで実行された操作に関する分析情報を提供します。 以前は "監査ログ" や "操作ログ" と呼ばれていました。 アクティビティ ログを使用すると、Azure Cache for Redis インスタンスで発生した書き込み操作 (PUT、POST、DELETE) について、"いつだれが何を" 行ったのかを確認できます。
+Activity logs provide insight into the operations that completed on your Azure Cache for Redis instances. It was previously known as "audit logs" or "operational logs". Using activity logs, you can determine the "what, who, and when" for any write operations (PUT, POST, DELETE) taken on your Azure Cache for Redis instances.
 
 > [!NOTE]
-> アクティビティ ログには、読み取り (GET) 操作は含まれません。
->
+> Activity logs do not include read (GET) operations.
+> 
 
-対象のキャッシュのアクティビティ ログを表示するには、 **[リソース] メニュー** で **[アクティビティ ログ]** を選択します。
+To view activity logs for your cache, select **Activity logs** from the **Resource menu**.
 
-アクティビティ ログについて詳しくは、「[Azure アクティビティ ログの概要](../azure-monitor/essentials/platform-logs-overview.md)」をご覧ください。
+For more information about Activity logs, see [Overview of the Azure Activity Log](../azure-monitor/essentials/platform-logs-overview.md).
+-->

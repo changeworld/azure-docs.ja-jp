@@ -4,34 +4,17 @@ description: 配列で作業する際に Bicep ファイルで使用する関数
 author: mumian
 ms.topic: conceptual
 ms.author: jgao
-ms.date: 06/01/2021
-ms.openlocfilehash: e782ec0d77930651346cc0fc97e52d5c473b9245
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.date: 09/10/2021
+ms.openlocfilehash: 69a937a68e2f73eaf911f2cb80cf09bab7d78eed
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111027128"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124794103"
 ---
 # <a name="array-functions-for-bicep"></a>Bicep の配列関数
 
-リソース マネージャーには、Bicep で配列を操作する関数が複数用意されています。
-
-* [array](#array)
-* [concat](#concat)
-* [contains](#contains)
-* [empty](#empty)
-* [first](#first)
-* [intersection](#intersection)
-* [last](#last)
-* [length](#length)
-* [max](#max)
-* [min](#min)
-* [range](#range)
-* [skip](#skip)
-* [take](#take)
-* [union](#union)
-
-文字列値の配列をある値で区切られた状態にするには、「 [split](./bicep-functions-string.md#split)」を参照してください。
+この記事では、配列を操作するための Bicep 関数について説明します。
 
 ## <a name="array"></a>array
 
@@ -85,7 +68,7 @@ output objectOutput array = array(objectToConvert)
 | パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |array |連結の最初の配列。 |
-| 残りの引数 |いいえ |array |連結する順の追加の配列。 |
+| その他の引数 |いいえ |array |連結する順のその他の配列。 |
 
 この関数は、任意の数の配列を受け取り、それらを結合します。
 
@@ -259,11 +242,11 @@ output stringOutput string = first('One Two Three')
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |配列またはオブジェクト |共通の要素の検索に使用する 1 番目の値。 |
 | arg2 |はい |配列またはオブジェクト |共通の要素の検索に使用する 2 番目の値。 |
-| 残りの引数 |いいえ |配列またはオブジェクト |共通の要素の検索に使用する残りの値。 |
+| その他の引数 |いいえ |配列またはオブジェクト |共通の要素の検索に使用するその他の値。 |
 
 ### <a name="return-value"></a>戻り値
 
-共通の要素を持つ配列またはオブジェクト。
+共通の要素を持つ配列またはオブジェクト。 要素の順序は、最初の配列パラメーターによって決まります。
 
 ### <a name="example"></a>例
 
@@ -303,6 +286,40 @@ output arrayOutput array = intersection(firstArray, secondArray)
 | ---- | ---- | ----- |
 | objectOutput | Object | {"one": "a", "three": "c"} |
 | arrayOutput | Array | ["two", "three"] |
+
+最初の配列パラメーターによって、交差する要素の順序が決まります。 次の例は、最初の配列に基づいて、返される要素の順序がどのようになるかを示しています。
+
+```bicep
+var array1 = [
+  1
+  2
+  3
+  4
+]
+
+var array2 = [
+  3
+  2
+  1
+]
+
+var array3 = [
+  4
+  1
+  3
+  2
+]
+
+output commonUp array = intersection(array1, array2, array3)
+output commonDown array = intersection(array2, array3, array1)
+```
+
+前の例からの出力は次のようになります。
+
+| 名前 | 種類 | 値 |
+| ---- | ---- | ----- |
+| commonUp | array | [1, 2, 3] |
+| commonDown | array | [3, 2, 1] |
 
 ## <a name="last"></a>last
 
@@ -517,7 +534,7 @@ output rangeOutput array = range(startingInt, numberOfElements)
 | パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | originalValue |はい |配列または文字列 |スキップ対象の配列または文字列。 |
-| numberToSkip |はい |INT |スキップする要素または文字の数。 この値が 0 以下である場合は、値内のすべての要素または文字が返されます。 配列または文字列の長さを超える場合は、空の配列または文字列が返されます。 |
+| numberToSkip |はい |INT |スキップする要素または文字の数。 この値が 0 以下である場合は、値内のすべての要素または文字が返されます。 配列または文字列の長さを超過している場合は、空の配列または文字列が返されます。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -559,7 +576,7 @@ output stringOutput string = skip(testString, charactersToSkip)
 | パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | originalValue |はい |配列または文字列 |要素の取得元となる配列または文字列。 |
-| numberToTake |はい |INT |取得する要素または文字の数。 この値が 0 以下である場合、空の配列または文字列が返されます。 指定された配列または文字列の長さを超える場合は、その配列または文字列のすべての要素が返されます。 |
+| numberToTake |はい |INT |取得する要素または文字の数。 この値が 0 以下である場合、空の配列または文字列が返されます。 指定された配列または文字列の長さを超過している場合は、その配列または文字列のすべての要素が返されます。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -602,7 +619,7 @@ output stringOutput string = take(testString, charactersToTake)
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |配列またはオブジェクト |要素の結合に使用される 1 番目の値。 |
 | arg2 |はい |配列またはオブジェクト |要素の結合に使用される 2 番目の値。 |
-| 残りの引数 |いいえ |配列またはオブジェクト |要素の結合に使用される残りの値。 |
+| その他の引数 |いいえ |配列またはオブジェクト |要素の結合に使用されるその他の値。 |
 
 ### <a name="return-value"></a>戻り値
 
@@ -649,4 +666,4 @@ output arrayOutput array = union(firstArray, secondArray)
 
 ## <a name="next-steps"></a>次のステップ
 
-* Bicep ファイルのセクションの説明については、「[Bicep ファイルの構造と構文について](./file.md)」を参照してください。
+* 文字列値の配列をある値で区切られた状態にするには、「 [split](./bicep-functions-string.md#split)」を参照してください。

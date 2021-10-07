@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: Azure Synapse Analytics と Azure Machine Learning のデータ ラングリング用に Apache Spark プールをアタッチして起動する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mldata
 ms.topic: how-to
 ms.author: nibaccam
 author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 03/02/2021
 ms.custom: devx-track-python, data4ml, synapse-azureml, contperf-fy21q4
-ms.openlocfilehash: 3cd6a3243b4bfb4441f6be82f3957c325ceec3d2
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 927b672aa4bd17efcfa491b0ec0092db9a2118c0
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123433568"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129429796"
 ---
 # <a name="data-wrangling-with-apache-spark-pools-preview"></a>Apache Spark プールを使用したデータ ラングリング (プレビュー) 
 
@@ -272,6 +272,7 @@ input1 = train_ds.as_mount()
 
 ```Python
 from azureml.core import Dataset, HDFSOutputDatasetConfig
+from azureml.core.environment import CondaDependencies
 from azureml.core import RunConfiguration
 from azureml.core import ScriptRunConfig 
 from azureml.core import Experiment
@@ -287,6 +288,9 @@ run_config.spark.configuration["spark.driver.cores"] = 2
 run_config.spark.configuration["spark.executor.memory"] = "1g" 
 run_config.spark.configuration["spark.executor.cores"] = 1 
 run_config.spark.configuration["spark.executor.instances"] = 1 
+
+conda_dep = CondaDependencies()
+conda_dep.add_pip_package("azureml-core==1.20.0")
 
 run_config.environment.python.conda_dependencies = conda_dep
 

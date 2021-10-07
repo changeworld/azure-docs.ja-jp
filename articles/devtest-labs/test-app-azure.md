@@ -1,14 +1,14 @@
 ---
-title: Azure でアプリをテストする方法 | Microsoft Docs
+title: Azure でご自分のアプリをテストする方法
 description: ラボでファイル共有を作成し、ラボ内のローカル コンピューターと仮想マシンにマウントし、デスクトップまたは web アプリケーションをファイル共有にデプロイしてテストする方法について説明します。
-ms.topic: article
+ms.topic: tutorial
 ms.date: 06/26/2020
-ms.openlocfilehash: b2dbbf349da4e352fe20a22db03cc9063d801990
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e9d4e78bf0ebe5e28ac9bb180acafae3fcdd0f08
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87282247"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128604381"
 ---
 # <a name="test-your-app-in-azure"></a>Azure でアプリをテストする 
 このアーティクルでは、DevTest Labs を使用して Azure のアプリケーションをテストするための手順を提供します。 最初に、ラボ内のファイル共有を設定して、ローカル開発用コンピューターとラボ内の VM にドライブとしてマウントします。 次に、Visual Studio 2019 を使用して、ラボの VM でアプリを実行できるように、ファイル共有にアプリをデプロイします。  

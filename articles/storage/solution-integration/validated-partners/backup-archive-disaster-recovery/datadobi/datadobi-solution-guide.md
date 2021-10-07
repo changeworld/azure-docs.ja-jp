@@ -8,12 +8,12 @@ ms.date: 04/12/2021
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: partner
-ms.openlocfilehash: ef74136627f7f7e90e94b91f212438d8e9daf0d6
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: cdeff15125a9af306e04baae5efaf758e8cf0b11
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109489723"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129278219"
 ---
 # <a name="backup-to-azure-with-dobiprotect"></a>DobiProtect を使用して Azure にバックアップする
 
@@ -74,7 +74,7 @@ Azure Data Box によって、追加の帯域幅を必要とすることなく�
 
 ### <a name="choose-the-right-storage-options"></a>適切なストレージ オプションを選択する
 
-Azure をバックアップ ターゲットとして使用する場合は、[Azure Blob Storage](../../../../blobs/storage-blobs-introduction.md)を使用します。 Blob Storage は、Microsoft のオブジェクト ストレージ ソリューションです。 Blob Storage は、いずれのデータ モデルや定義にも準拠していないデータである、非構造化データを大量に格納するために最適化されています。 また、Azure Storage はセキュリティで保護されており、スケーラブルであり、持続性や高可用性を備えています。 ワークロードに適したストレージを選択して、内部 SLA を満たすための[回復性レベル](../../../../common/storage-redundancy.md)を提供できます。 Blob Storage は従量課金制のサービスです。 格納データの量、そのデータへのアクセス、およびクールおよびアーカイブ層の場合は最低限必要な保有期間について、[月単位で課金されます](../../../../blobs/storage-blob-storage-tiers.md#pricing-and-billing)。 バックアップ データに適用できる回復性と階層化のオプションは以下の表にまとめられています。
+Azure をバックアップ ターゲットとして使用する場合は、[Azure Blob Storage](../../../../blobs/storage-blobs-introduction.md)を使用します。 Blob Storage は、Microsoft のオブジェクト ストレージ ソリューションです。 Blob Storage は、いずれのデータ モデルや定義にも準拠していないデータである、非構造化データを大量に格納するために最適化されています。 また、Azure Storage はセキュリティで保護されており、スケーラブルであり、持続性や高可用性を備えています。 ワークロードに適したストレージを選択して、内部 SLA を満たすための[回復性レベル](../../../../common/storage-redundancy.md)を提供できます。 Blob Storage は従量課金制のサービスです。 格納データの量、そのデータへのアクセス、およびクールおよびアーカイブ層の場合は最低限必要な保有期間について、[月単位で課金されます](../../../../blobs/access-tiers-overview.md#pricing-and-billing)。 バックアップ データに適用できる回復性と階層化のオプションは以下の表にまとめられています。
 
 **Blob Storage の回復性オプション:**
 
