@@ -4,15 +4,15 @@ description: App Service の認証と承認を使用して、App Service アプ�
 keywords: App Service, Azure App Service, authN, authZ, 保護, セキュリティ, 多層, Azure Active Directory, Azure Ad
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 04/26/2021
+ms.date: 09/23/2021
 ms.custom: devx-track-csharp, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 4b5244766769255a74becaa7c8893db45532dc4f
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 0c07d17269911043c71fc0d89a5a290f053e39a4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123227130"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128639776"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>チュートリアル:Azure App Service でユーザーをエンド ツー エンドで認証および承認する
 
@@ -260,13 +260,7 @@ ID プロバイダーとして Azure Active Directory を使用します。 詳�
 
 1. **[ID プロバイダーの追加]** ページで、Microsoft および Azure AD ID にサインインするための **ID プロバイダー** として **[Microsoft]** を選択します。
 
-1. **[アプリの登録]**  >  **[App registration type]\(アプリの登録の種類\)** で、 **[Create new app registration]\(新しいアプリの登録を作成する\)** を選択します。
-
-1. **[アプリの登録]**  >  **[サポートされているアカウントの種類]** で、 **[現在のテナント - 単一テナント]** を選択します。
-
-1. **[App Service authentication settings]\(App Service 認証の設定\)** セクションで、 **[認証]** を **[認証が必要]** のままにし、 **[Unauthenticated requests]\(認証されていない要求\)** を **[HTTP 302 Found redirect: recommended for websites]\(HTTP 302 Found リダイレクト: Web サイトに推奨\)** のままにします。
-
-1. **[ID プロバイダーの追加]** ページの下部にある **[追加]** をクリックして、対象の Web アプリの認証を有効にします。
+1. 既定の設定をそのままにして **[追加]** をクリックします。
 
     :::image type="content" source="./media/tutorial-auth-aad/configure-auth-back-end.png" alt-text="[認証/承認] が選択され、右側のメニューで設定が選択されている、バックエンド アプリの左側のメニューのスクリーンショット。":::
 
@@ -278,7 +272,7 @@ ID プロバイダーとして Azure Active Directory を使用します。 詳�
 
 ### <a name="enable-authentication-and-authorization-for-front-end-app"></a>フロントエンド アプリの認証と承認を有効にする
 
-フロントエンド アプリに対して同じ手順を行いますが、最後の手順はスキップします。 フロントエンド アプリでは、クライアント ID は必要ありません。
+フロントエンド アプリに対して同じ手順を行いますが、最後の手順はスキップします。 フロントエンド アプリでは、クライアント ID は必要ありません。 ただし、次の手順で使用するので、フロントエンド アプリの **[認証]** ページにとどまってください。
 
 必要に応じて、`http://<front-end-app-name>.azurewebsites.net` に移動します。 セキュリティで保護されたサインイン ページにリダイレクトされるようになったはずです。 サインインした後も、"*バックエンド アプリからはデータにアクセスできません*"。これは、バックエンド アプリでは、フロントエンド アプリからの Azure Active Directory サインインが必要になっているためです。 次の 3 つの手順を実行する必要があります。
 
@@ -293,13 +287,9 @@ ID プロバイダーとして Azure Active Directory を使用します。 詳�
 
 両方のアプリに対する認証と承認を有効にしたので、それぞれのアプリは AD アプリケーションによってサポートされています。 この手順では、ユーザーの代わりにバックエンドにアクセスするアクセス許可をフロントエンド アプリに付与します (技術的には、ユーザーの代わりにバックエンドの "_AD アプリケーション_" にアクセスするためのアクセス許可をフロントエンドの "_AD アプリケーション_" に付与します)。
 
-1. [[Azure portal]](https://portal.azure.com) メニューで **[Azure Active Directory]** を選択するか、任意のページから *[Azure Active Directory]* を検索して選択します。
+1. フロントエンド アプリの **[認証]** ページで、 **[ID プロバイダー]** の下からフロントエンド アプリ名を選択します。 このアプリの登録は自動的に生成されました。 左側のメニューから **[API のアクセス許可]** を選択します。
 
-1. **[アプリの登録]**  >  **[所有しているアプリケーション]**  >  **[View all applications in this directory]\(このディレクトリのすべてのアプリケーションを表示\)** の順に選択します。 フロントエンド アプリ名を選択し、 **[API のアクセス許可]** を選択します。
-
-    :::image type="content" source="./media/tutorial-auth-aad/add-api-access-front-end.png" alt-text="[所有しているアプリケーション]、フロントエンド アプリ名、および [API のアクセス許可] が選択されている、[Microsoft - アプリの登録] ウィンドウのスクリーンショット。":::
-
-1. **[アクセス許可の追加]** を選択し、 **[所属する組織で使用している API]**  >  **\<back-end-app-name>** の順に選択します。
+1. **[アクセス許可の追加]** を選択し、 **[自分の API]**  >  **\<back-end-app-name>** を選択します。
 
 1. バックエンド アプリの **[API アクセス許可の要求]** ページで、 **[委任されたアクセス許可]** と **[user_impersonation]** を選択し、次に **[アクセス許可の追加]** を選択します。
 
@@ -315,18 +305,35 @@ ID プロバイダーとして Azure Active Directory を使用します。 詳�
 
     :::image type="content" source="./media/tutorial-auth-aad/resources-enable-write.png" alt-text="[読み取り/書き込み] ボタンが選択されている、[Azure Resource Explorer] ページの上部の [読み取り専用] および [読み取り/書き込み] ボタンのスクリーンショット。":::
 
-1. 左側のブラウザーで、**config** > **authsettings** にドリルダウンします。
+1. 左側のブラウザーで、**config** > **authsettingsV2** にドリルダウンします。
 
-1. **[authsettings]** ビューで、 **[編集]** をクリックします。 コピーしたクライアント ID を使用して、`additionalLoginParams` を次の JSON 文字列に設定します。 
+1. **[authsettingsV2]** ビューで、 **[編集]** をクリックします。 コピーしたクライアント ID を使用して、`properties.identityProviders.azureActiveDirectory.login` にドリルダウンし、`loginParameters` を次の JSON 文字列に追加します。 
 
     ```json
-    "additionalLoginParams": ["response_type=code id_token","resource=<back-end-client-id>"],
+    "loginParameters": ["response_type=code id_token","scope=openid api://<back-end-client-id>/user_impersonation"],
     ```
 
-    :::image type="content" source="./media/tutorial-auth-aad/additional-login-params-front-end.png" alt-text="additionalLoginParams 文字列とクライアント ID の例を示す、[authsettings] ビューのコード例のスクリーンショット。":::
+    :::image type="content" source="./media/tutorial-auth-aad/add-loginparameters.png" alt-text="loginParameters 文字列とクライアント ID 例を示す、[authsettings V2] ビューのコード例のスクリーンショット。":::
+
+    > [!TIP]
+    > スコープ `api://<back-end-client-id>/user_impersonation` は既定でバックエンド アプリのアプリ登録に追加されます。 Azure portal でそれを表示するには、バックエンド アプリの **[認証]** ページに移動し、 **[ID プロバイダー]** の下のリンクをクリックし、左側のメニューの **[API の公開]** をクリックします。
+    >
+    > スコープには管理者またはユーザーの同意が必要であることに注意してください。 この要件により、ユーザーがブラウザーでフロントエンド アプリにサインインすると、同意要求ページが表示されます。 この同意ページが表示されないようにするには、 **[クライアント アプリケーションの追加]** をクリックし、フロントエンドのアプリ登録のクライアント ID を指定して、 **[API の公開]** ページで、フロントエンドのアプリ登録を、承認されたクライアント アプリケーションとして追加します。
 
 1. **[PUT]** をクリックして、設定を保存します。
 
+    ::: zone pivot="platform-linux"
+    
+    > [!NOTE]
+    > Linux アプリの場合、バックエンド アプリ登録のバージョン管理設定を構成するための一時的な要件があります。 Cloud Shell で、次のコマンドを使用して構成します。 *\<back-end-client-id>* は必ず、バックエンドのクライアント ID に置き換えてください。
+    >
+    > ```azurecli-interactive
+    > id=$(az ad app show --id <back-end-client-id> --query objectId --output tsv)
+    > az rest --method PATCH --url https://graph.microsoft.com/v1.0/applications/$id --body "{'api':{'requestedAccessTokenVersion':2}}" 
+    > ```    
+
+    ::: zone-end
+    
     これでアプリの構成は完了です。 フロントエンドが適切なアクセス トークンを使用してバックエンドにアクセスする準備ができました。
 
 他のプロバイダー用にアクセス トークンを構成する方法については、「[ID プロバイダー トークンの更新](configure-authentication-oauth-tokens.md#refresh-auth-tokens)」を参照してください。

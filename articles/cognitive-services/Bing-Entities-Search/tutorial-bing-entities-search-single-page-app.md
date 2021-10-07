@@ -2,21 +2,19 @@
 title: チュートリアル:Bing Entity Search シングルページ Web アプリ
 titleSuffix: Azure Cognitive Services
 description: このチュートリアルでは、単一ページの Web アプリケーションで Bing Entity Search API を使用する方法を説明します。
-services: cognitive-services
 author: aahill
-manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: f2c15221268635ca1892a9292d5b0c208c13dd34
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 49ac0daf08e2b279396b12fa5fee74e8cdbbed7e
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102426809"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129363549"
 ---
 # <a name="tutorial-single-page-web-app"></a>チュートリアル:単一ページの Web アプリ
 
@@ -564,7 +562,7 @@ cors-proxy-server
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [Bing Entity Search API リファレンス](//docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)
+> [Bing Entity Search API リファレンス](/rest/api/cognitiveservices/bing-entities-api-v7-reference)
 
 > [!div class="nextstepaction"]
-> [Bing Maps API ドキュメント](//msdn.microsoft.com/library/dd877180.aspx)
+> [Bing Maps API ドキュメント](/bingmaps/)

@@ -1,18 +1,18 @@
 ---
-title: Azure Purview に Teradata ソースを登録してスキャンを設定する
+title: Teradata ソースを登録し、スキャンを設定する
 description: この記事では、Azure Purview に Teradata ソースを登録し、スキャンを設定する方法について、概要を説明します。
 author: chandrakavya
 ms.author: kchandra
 ms.service: purview
-ms.subservice: purview-data-catalog
+ms.subservice: purview-data-map
 ms.topic: overview
-ms.date: 2/25/2021
-ms.openlocfilehash: 3d6f30e3d50fa79ac394460f9b13e1127cf16168
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/27/2021
+ms.openlocfilehash: 5ba69e4b20edc74dfd9de43f19b2ba582b196353
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121740271"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129211314"
 ---
 # <a name="register-and-scan-teradata-source"></a>Teradata ソースを登録してスキャンする
 
@@ -70,9 +70,9 @@ Teradata ソースでサポートされている認証は **基本認証** の�
 
 新しいスキャンを作成して実行するには、次の操作を行います。
 
-1.  管理センターで、 **[統合ランタイム]** をクリックします。 セルフホステッド統合ランタイムが設定されていることを確認してください。 設定されていない場合は、[こちら](./manage-integration-runtimes.md)に記載されている手順を使用して、セルフホステッド統合ランタイムを設定します
+1.  管理センターで、 **[統合ランタイム]** を選択します。 セルフホステッド統合ランタイムが設定されていることを確認してください。 設定されていない場合は、[こちら](./manage-integration-runtimes.md)に記載されている手順を使用して、セルフホステッド統合ランタイムを設定します
 
-2.  Purview Studio の左側にあるウィンドウで **[Data Map]** タブを選択します。
+2.  [Purview Studio](https://web.purview.azure.com/resource/) の左側のペインで **[Data Map]** タブを選択します。
 
 3.  登録されている Teradata ソースを選択します。
 
@@ -111,11 +111,11 @@ Teradata ソースでサポートされている認証は **基本認証** の�
 
     :::image type="content" source="media/register-scan-teradata-source/setup-scan.png" alt-text="スキャンを設定する" border="true":::
 
-6.  **[続行]** をクリックします。
+6.  **[続行]** を選択します。
 
 7.  **スキャン トリガー** を選択します。 スケジュールを設定することも、1 回限りのスキャンを実行することもできます。
 
-8.  スキャンを確認し、 **[保存および実行]** をクリックします。
+8.  自分のスキャンを確認し、 **[保存および実行]** を選択します。
 
 ## <a name="viewing-your-scans-and-scan-runs"></a>スキャンとスキャンの実行を確認する
 

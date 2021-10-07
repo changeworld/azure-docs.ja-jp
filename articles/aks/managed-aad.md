@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/1/2021
 ms.author: miwithro
-ms.openlocfilehash: a4739276cd05ffae6015fb2464e464d0a9f15955
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 79193066e8733ebc8b614e7735eed402e1124fda
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129272050"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128642132"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>AKS マネージド Azure Active Directory 統合
 
@@ -396,7 +396,7 @@ aks-nodepool1-61156405-vmss000002   Ready    agent   6m33s   v1.18.14
 ```
 ### <a name="apply-just-in-time-access-at-the-namespace-level"></a>名前空間レベルで Just-In-Time アクセスを適用する
 
-1. AKS クラスターを [Azure RBAC](manage-azure-rbac.md) と統合します。
+1. AKS クラスターを [Azure RBAC](https://docs.microsoft.com/azure/aks/manage-azure-rbac) と統合します。
 2. Just-In-Time アクセスと統合したいグループを、ロールの割り当てを使用してクラスター内の名前空間と関連付けます。
 
 ```azurecli-interactive

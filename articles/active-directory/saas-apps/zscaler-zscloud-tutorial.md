@@ -9,37 +9,39 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/21/2020
+ms.date: 09/02/2021
 ms.author: jeedes
-ms.openlocfilehash: 74c65a28688906b4c9cfecf786f5862e31143ead
-ms.sourcegitcommit: 2cb7772f60599e065fff13fdecd795cce6500630
+ms.openlocfilehash: ac32f01849054017394d420668d1361e7c597dfb
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108804342"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124751483"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-zscloud"></a>チュートリアル: Azure Active Directory と Zscaler ZSCloud の統合
 
 このチュートリアルでは、Zscaler ZSCloud と Azure Active Directory (Azure AD) を統合する方法について説明します。 Zscaler ZSCloud を Azure AD に統合すると、次のことができます。
 
-- Zscaler ZSCloud にアクセスできるユーザーを Azure AD で制御できます。
-- ユーザーが自分の Azure AD アカウントを使用して Zscaler ZSCloud に自動的にサインインできるように設定できます。
-- 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
+* Zscaler ZSCloud にアクセスできるユーザーを Azure AD で制御できます。
+* ユーザーが自分の Azure AD アカウントを使用して Zscaler ZSCloud に自動的にサインインできるように設定できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 ## <a name="prerequisites"></a>前提条件
 
 Zscaler ZSCloud と Azure AD の統合を構成するには、次の項目が必要です。
 
-- Azure AD サブスクリプション。 Azure AD の環境がない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
-- Zscaler ZSCloud でのシングル サインオンが有効なサブスクリプション。
+* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
+* Zscaler ZSCloud でのシングル サインオンが有効なサブスクリプション。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-- Zscaler ZSCloud では、**SP** Initiated SSO がサポートされます
+* Zscaler ZSCloud では、**SP** Initiated SSO がサポートされます。
 
-- Zscaler ZSCloud では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Zscaler ZSCloud では、**Just-In-Time** ユーザー プロビジョニングがサポートされます。
+
+* Zscaler ZSCloud では、[自動化されたユーザー プロビジョニング](zscaler-zscloud-provisioning-tutorial.md)がサポートされます。
 
 ## <a name="adding-zscaler-zscloud-from-the-gallery"></a>ギャラリーからの Zscaler ZSCloud の追加
 
@@ -88,7 +90,7 @@ Zscaler ZSCloud に対して Azure AD SSO を構成してテストするには�
 
 1. その他に、Zscaler ZSCloud アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。
 
-   | Name     | ソース属性   |
+   | 名前     | ソース属性   |
    | -------- | ------------------ |
    | memberOf | user.assignedroles |
 
@@ -141,15 +143,15 @@ Zscaler ZSCloud に対して Azure AD SSO を構成してテストするには�
 4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 5. **[ユーザーとグループ]** ダイアログの一覧から **[Britta Simon]** などのユーザーを選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-   ![[ユーザーとグループ] ダイアログ ボックスを示すスクリーンショット。ここでユーザーを選択できます。](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_users.png)
+   ![[ユーザーとグループ] ダイアログ ボックスを示すスクリーンショット。ここでユーザーを選択できます。](./media/zscaler-zscloud-tutorial/users.png)
 
 6. **[ロールの選択]** ダイアログで、一覧から適切なユーザー ロールを選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-   ![[ロールの選択] ダイアログ ボックスを示すスクリーンショット。ここでユーザー ロールを選択できます。](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_roles.png)
+   ![[ロールの選択] ダイアログ ボックスを示すスクリーンショット。ここでユーザー ロールを選択できます。](./media/zscaler-zscloud-tutorial/roles.png)
 
 7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンを選択します。
 
-   ![[割り当ての追加] ダイアログ ボックスを示すスクリーンショット。ここで [割り当て] を選択できます。](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_assign.png)
+   ![[割り当ての追加] ダイアログ ボックスを示すスクリーンショット。ここで [割り当て] を選択できます。](./media/zscaler-zscloud-tutorial/assignment.png)
 
    > [!NOTE]
    > 既定のアクセス ロールは、プロビジョニングに支障をきたすためサポートされません。ユーザーの割り当て時に既定のロールを選択することはできません。
@@ -168,7 +170,7 @@ Zscaler ZSCloud に対して Azure AD SSO を構成してテストするには�
 
 4. **[Administration]\(管理\) > [Authentication]\(認証\) > [Authentication Settings]\(認証の設定\)** に移動し、次の手順を実行します。
 
-   ![Zscaler サイトのスクリーンショット。説明されている手順が示されています。](./media/zscaler-zscloud-tutorial/ic800206.png "管理")
+   ![Zscaler サイトのスクリーンショット。説明されている手順が示されています。](./media/zscaler-zscloud-tutorial/setting.png "管理")
 
    a. [Authentication Type]\(認証の種類\)で **[SAML]** を選択します。
 
@@ -176,7 +178,7 @@ Zscaler ZSCloud に対して Azure AD SSO を構成してテストするには�
 
 5. **[Edit SAML]\(SAML の編集)** ウィンドウで次の手順を実行して、[保存] をクリックします。  
 
-   ![ユーザーと認証の管理](./media/zscaler-zscloud-tutorial/ic800208.png "[ユーザーと認証の管理]")
+   ![ユーザーと認証の管理](./media/zscaler-zscloud-tutorial/attributes.png "[ユーザーと認証の管理]")
 
    a. **[SAML Portal URL]\(SAML ポータル URL\)** テキスト ボックスに、Azure portal からコピーした **ログイン URL** を貼り付けます。
 
@@ -196,7 +198,7 @@ Zscaler ZSCloud に対して Azure AD SSO を構成してテストするには�
 
 6. **[ユーザー認証の構成]** ダイアログ ページで、次の手順に従います。
 
-   ![[Activate]\(アクティブ化\) が選択された [Configure User Authentication]\(ユーザー認証の構成\) ダイアログ ボックスを示すスクリーンショット。](./media/zscaler-zscloud-tutorial/ic800207.png)
+   ![[Activate]\(アクティブ化\) が選択された [Configure User Authentication]\(ユーザー認証の構成\) ダイアログ ボックスを示すスクリーンショット。](./media/zscaler-zscloud-tutorial/active.png)
 
    a. 左下の **[Activation]\(アクティブ化\)** メニューにポインターを置きます。
 
@@ -210,17 +212,17 @@ Zscaler ZSCloud に対して Azure AD SSO を構成してテストするには�
 
 2. **[ツール]** メニューの **[インターネット オプション]** を選択し、 **[インターネット オプション]** ダイアログを開きます。
 
-   ![[インターネット オプション]](./media/zscaler-zscloud-tutorial/ic769492.png "[インターネット オプション]")
+   ![[インターネット オプション]](./media/zscaler-zscloud-tutorial/network.png "[インターネット オプション]")
 
 3. **[接続]** タブをクリックします。
 
-   ![接続](./media/zscaler-zscloud-tutorial/ic769493.png "接続")
+   ![接続](./media/zscaler-zscloud-tutorial/server.png "接続")
 
 4. **[LAN の設定]** をクリックして **[LAN の設定]** ダイアログを開きます。
 
 5. [プロキシ サーバー] セクションで、次の手順を実行します。
 
-   ![[プロキシ サーバー]](./media/zscaler-zscloud-tutorial/ic769494.png "プロキシ サーバー")
+   ![[プロキシ サーバー]](./media/zscaler-zscloud-tutorial/internet-options.png "プロキシ サーバー")
 
    a. **[LAN にプロキシ サーバーを使用する]** をオンにします。
 
@@ -241,15 +243,18 @@ Zscaler ZSCloud に対して Azure AD SSO を構成してテストするには�
 > [!Note]
 > ユーザーを手動で作成する必要がある場合は、[Zscaler ZSCloud のサポート チーム](https://help.zscaler.com/)にお問い合わせください。
 
+> [!NOTE]
+> Zscaler ZSCloud では、自動ユーザー プロビジョニングもサポートされます。自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](./zscaler-zscloud-provisioning-tutorial.md)をご覧ください。
+
 ### <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。
 
-- Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Zscaler ZSCloud のサインオン URL にリダイレクトされます。
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Zscaler ZSCloud のサインオン URL にリダイレクトされます。
 
-- Zscaler ZSCloud のサインオン URL に直接移動し、そこからログイン フローを開始します。
+* Zscaler ZSCloud のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-- Microsoft マイ アプリを使用することができます。 マイ アプリで [Zscaler ZSCloud] タイルをクリックすると、Zscaler ZSCloud のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Zscaler ZSCloud] タイルをクリックすると、Zscaler ZSCloud のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -4,14 +4,14 @@ description: Azure HPC Cache サービスにクライアントを接続する方
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 09/30/2020
+ms.date: 09/20/2021
 ms.author: v-erkel
-ms.openlocfilehash: 7f1d8d34d6351fc344fdb101ac8e9a96678df9d5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4e3c2a336d58e90bc446c77b164148359f9588fd
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91651430"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128675909"
 ---
 # <a name="mount-the-azure-hpc-cache"></a>Azure HPC Cache をマウントする
 
@@ -91,6 +91,8 @@ mount コマンドを作成するには、次の手順に従います。
 
    ![[クリップボードにコピー] ボタンのホバー テキストが表示されているプロトタイプ マウント コマンド フィールドのスクリーンショット](media/mount-command-copy.png)
 
+   その下に、同じクライアント パスと名前空間パスが含まれているが、異なるキャッシュ マウント アドレスを使用する代替のマウント コマンドが表示されます。 最高のパフォーマンスを得るには、HPC Cache 上の使用可能なすべてのアドレス間で均等にクライアントをマウントする必要があります。
+
 1. コピーした mount コマンドをクライアント マシンで使用して、それを Azure HPC Cache に接続します。 コマンドをクライアントのコマンド ラインから直接発行することも、クライアントのセットアップ スクリプトまたはテンプレートに mount コマンドを含めることもできます。
 
 ## <a name="understand-mount-command-syntax"></a>mount コマンドの構文について
@@ -135,6 +137,13 @@ root@test-client:/tmp#
 
 ![テーブルの以下の最初の列に強調のボックスが表示されている、ポータルの [設定] > [名前空間] ページのスクリーンショット: "名前空間のパス"](media/view-namespace-paths.png)
 
+## <a name="use-all-available-mount-addresses"></a>使用可能なすべてのマウント アドレスを使用する
+
+キャッシュ用に一覧表示されているすべての IP アドレス間でクライアント トラフィックを分散させる必要があります。 すべてのクライアントを 1 つのアドレスにのみマウントすると、キャッシュのパフォーマンスが低下します。
+
+クライアントごとに異なるマウント アドレスを手動で、またはスクリプトを作成することによって選択できます。 また、ラウンドロビン DNS (RRDNS) 用に構成された DNS サーバーを使用して、使用可能なすべてのアドレス間でクライアント マウントを自動的にローテーションすることもできます。 詳細については、[HPC Cache トラフィックの負荷分散](client-load-balancing.md)に関するページを参照してください。
+
 ## <a name="next-steps"></a>次のステップ
 
+* [クライアントの負荷を分散する](client-load-balancing.md)ことによってキャッシュのすべてのスループットを使用する方法の詳細について学習します。
 * キャッシュのストレージ ターゲットを移動する方法については、[新しい Azure Blob Storage へのデータの事前設定](hpc-cache-ingest.md)に関するページを参照してください。

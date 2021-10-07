@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/10/2021
+ms.date: 08/20/2021
 ms.author: jeedes
-ms.openlocfilehash: fbe50ecdc116a203b09d023312a18686f43b7aef
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 928aa9bc71fefce85ffea5dbf230a9b072b7070c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110100002"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128650783"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-auditboard"></a>チュートリアル:Azure Active Directory と AuditBoard の統合
 
@@ -38,6 +38,7 @@ AuditBoard と Azure AD の統合を構成するには、次のものが必要�
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
 * AuditBoard により、**SP および IDP** Initiated SSO がサポートされます。
+* AuditBoard では、[自動化されたユーザー プロビジョニング](auditboard-provisioning-tutorial.md)がサポートされます。
 
 ## <a name="add-auditboard-from-the-gallery"></a>ギャラリーから AuditBoard を追加する
 
@@ -122,6 +123,8 @@ Azure AD SSO と AuditBoard を構成してテストするには、次の手順�
 
 このセクションでは、AuditBoard で Britta Simon というユーザーを作成します。 [AuditBoard サポート チーム](mailto:support@auditboard.com)と連携し、AuditBoard プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
+AuditBoard では、自動ユーザー プロビジョニングもサポートされます。自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](./auditboard-provisioning-tutorial.md)をご覧ください。
+
 ## <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
@@ -136,7 +139,7 @@ Azure AD SSO と AuditBoard を構成してテストするには、次の手順�
 
 * Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した AuditBoard に自動的にサインインされます。 
 
-また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで AuditBoard タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した AuditBoard に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで AuditBoard タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した AuditBoard に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

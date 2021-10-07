@@ -4,12 +4,12 @@ description: Azure Resource Manager を使用し、Azure Service Fabric マネ�
 ms.topic: how-to
 ms.date: 8/23/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f2f2f47e9cdcef54be9c78513fbb57cd20ddde5f
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: ae57620dda49494f90bb0bf78f629722edd5e653
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122864778"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129546389"
 ---
 # <a name="manage-application-lifecycle-on-a-managed-cluster-using-azure-resource-manager"></a>Azure Resource Manager を使用し、マネージド クラスターでアプリケーション ライフサイクルを管理する
 
@@ -84,7 +84,7 @@ Resource Manager テンプレートからアプリケーションをデプロイ
 
 ### <a name="create-the-resource-manager-template"></a>Resource Manager テンプレートの作成
 
-サンプル アプリケーションには、アプリケーションのデプロイに使用できる [Azure Resource Manager テンプレート](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/master/ARM)が含まれています。 テンプレート ファイルの名前は、*UserApp.json* と *UserApp.Parameters.json* です。
+サンプル アプリケーションには、アプリケーションのデプロイに使用できる [Azure Resource Manager テンプレート](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/master/ARM-Managed-Cluster)が含まれています。 テンプレート ファイルの名前は、*UserApp.json* と *UserApp.Parameters.json* です。
 
 > [!NOTE]
 > *UserApp.Parameters.json* ファイルを、クラスターの名前で更新する必要があります。
@@ -143,7 +143,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "sf-cluster-rg" -TemplateParame
 
 次のいずれかの理由により、Service Fabric クラスターに既にデプロイされているアプリケーションをアップグレードする場合があります。
 
-* 新しいサービスがアプリケーションに追加されます。 サービス定義は、サービスがアプリケーションに追加されるときに *service-manifest.xml* と *application-manifest.xml* ファイルに追加する必要があります。 アプリケーションの新しいバージョンを反映するために、[UserApp.parameters.json](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/blob/master/ARM/UserApp.Parameters.json) でアプリケーションの種類のバージョンを 1.0.0 から 1.0.1 に変更する必要もあります。
+* 新しいサービスがアプリケーションに追加されます。 サービス定義は、サービスがアプリケーションに追加されるときに *service-manifest.xml* と *application-manifest.xml* ファイルに追加する必要があります。 アプリケーションの新しいバージョンを反映するために、[UserApp.parameters.json](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/blob/master/ARM-Managed-Cluster/UserApp.Parameters.json) でアプリケーションの種類のバージョンを 1.0.0 から 1.0.1 に変更する必要もあります。
 
     ```json
     "applicationTypeVersion": {
@@ -162,7 +162,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "sf-cluster-rg" -TemplateParame
     ```json
      "applicationTypeVersion": {
         "value": "1.0.1"
-    },
+    }
     ```
 ## <a name="delete-service-fabric-application-resources"></a>Service Fabric アプリケーション リソース リソースを削除する
 > [!NOTE]

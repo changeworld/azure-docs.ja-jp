@@ -12,12 +12,12 @@ ms.date: 07/15/2021
 ms.author: baselden
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce43a9b518224e7458551139dc1f708dabc5b3e3
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e0a3c2b380160ef68655f0727f4d47280cd5cd02
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121746087"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124754287"
 ---
 # <a name="security-operations-for-infrastructure"></a>インフラストラクチャのためのセキュリティ運用
 
@@ -39,13 +39,13 @@ ms.locfileid: "121746087"
 
 ## <a name="where-to-look"></a>確認先
 
-調査とモニタリングに使用するログ ファイルは次の通りです。 
+調査と監視に使用するログ ファイルは次のとおりです。 
 
 * [Azure AD 監査ログ](../reports-monitoring/concept-audit-logs.md)
 
 * [サインイン ログ](../reports-monitoring/concept-all-sign-ins.md)
 
-* [Microsoft 365 監査ログ](/microsoft-365/compliance/auditing-solutions-overview?view=o365-worldwide) 
+* [Microsoft 365 監査ログ](/microsoft-365/compliance/auditing-solutions-overview) 
 
 * [Azure Key Vault のログ](../../key-vault/general/logging.md?tabs=Vault)
 
@@ -97,7 +97,7 @@ Azure Active Directory (Azure AD) パススルー認証では、オンプレミ�
 
 具体的な項目について以下で説明します。
 
-| [What to monitor] (監視対象)| リスク レベル| Where| フィルター/サブフィルター| メモ |
+| [What to monitor] (監視対象)| リスク レベル| Where| フィルターまたはサブフィルター| メモ |
 | - | - | - | - | - |
 | Azure AD パススルー認証エラー|Medium | Application and ‎Service Logs\Microsoft\A‎zureAdConnec‎t\Authenticatio‎nAgent\Admin| AADSTS80001 - Unable to connect to Active Directory (Active Directory に接続できません)| エージェント サーバーが、パスワードを検証する必要のあるユーザーと同じ AD フォレストのメンバーであり、Active Directory に接続できることを確認します。 |
 | Azure AD パススルー認証エラー| Medium| Application and ‎Service Logs\Microsoft\A‎zureAdConnec‎t\Authenticatio‎nAgent\Admin| AADSTS8002 - A timeout occurred connecting to Active Directory (Active Directory への接続中にタイムアウトが発生しました)| Active Directory が使用可能で、エージェントからの要求に応答していることを確認します。 |
@@ -126,7 +126,7 @@ Azure AD と Azure AD アプリケーション プロキシを使用すると、
 
 アプリケーション プロキシの監視を構成するには、「[アプリケーション プロキシの問題とエラー メッセージのトラブルシューティング](../app-proxy/application-proxy-troubleshoot.md)」を参照してください。 情報を記録するデータ ファイルは、Application and Services Logs\Microsoft\AadApplicationProxy\Connector\Admin にあります。監査アクティビティの完全なリファレンス ガイドについては、「[Azure AD 監査アクティビティのリファレンス](../reports-monitoring/reference-audit-activities.md)」を参照してください。 具体的な監視項目は次の通りです。
 
-| [What to monitor] (監視対象)| リスク レベル| Where| フィルター/サブフィルター| メモ |
+| [What to monitor] (監視対象)| リスク レベル| Where| フィルターまたはサブフィルター| メモ |
 | - | - | - | - | - |
 | Kerberos のエラー| Medium | 各種のツール| Medium | 「[アプリケーション プロキシの問題とエラー メッセージのトラブルシューティング](../app-proxy/application-proxy-troubleshoot.md)」の「Kerberos エラー」に Kerberos 認証エラーのガイダンスがあります。 |
 | DC セキュリティに関する問題| 高| DC セキュリティ監査ログ| Event ID 4742(S): コンピューター アカウントが変更されました<br>および<br>フラグ - 委任に対して信頼されている<br>または<br>フラグ – 委任の認証に対して信頼されている| フラグの変更を調査します。 |
@@ -139,7 +139,7 @@ Azure AD と Azure AD アプリケーション プロキシを使用すると、
 
 レガシ認証は、イベントの詳細の一部として Azure AD サインイン ログに取得されます。 Azure Monitor ブックを使用して、レガシ認証の使用状況を識別できます。 詳細情報については、「[Azure Active Directory レポートに Azure Monitor ブックを使用する方法](../reports-monitoring/howto-use-azure-monitor-workbooks.md)」の「[レガシ認証を使用したサインイン](../reports-monitoring/howto-use-azure-monitor-workbooks.md)」を参照してください。 Azure Sentinel の安全でないプロトコル ブックを使用することもできます。 詳細については、「[Azure Sentinel の安全でないプロトコル ブックの実装ガイド](https://techcommunity.microsoft.com/t5/azure-sentinel/azure-sentinel-insecure-protocols-workbook-implementation-guide/ba-p/1197564)」を参照してください。 監視する具体的なアクティビティは次の通りです。
 
-| [What to monitor] (監視対象)| リスク レベル| Where| フィルター/サブフィルター| メモ |
+| [What to monitor] (監視対象)| リスク レベル| Where| フィルターまたはサブフィルター| メモ |
 | - | - | - | - | - |
 | レガシ認証|高 | Azure AD サインイン ログ| ClientApp: POP<br>ClientApp: IMAP<br>ClientApp: MAPI<br>ClientApp: SMTP<br>ClientApp: ActiveSync go to EXO<br>Other Clients = SharePoint and EWS| フェデレーション ドメイン環境では、失敗した認証は記録されないため、ログには表示されません。 |
 
@@ -174,18 +174,18 @@ Azure AD は Microsoft SQL Server データ エンジンまたは SQL を使用�
 
 | [What to monitor] (監視対象)| Where| メモ |
 | - | - | - |
-| mms_management_agent| SQL サービス監査レコード| 「[SQL Server 監査レコード](/sql/relational-databases/security/auditing/sql-server-audit-records?view=sql-server-ver15)」を参照してください |
-| mms_partition| SQL サービス監査レコード| 「[SQL Server 監査レコード](/sql/relational-databases/security/auditing/sql-server-audit-records?view=sql-server-ver15)」を参照してください |
-| mms_run_profile| SQL サービス監査レコード| 「[SQL Server 監査レコード](/sql/relational-databases/security/auditing/sql-server-audit-records?view=sql-server-ver15)」を参照してください |
-| mms_server_configuration| SQL サービス監査レコード| 「[SQL Server 監査レコード](/sql/relational-databases/security/auditing/sql-server-audit-records?view=sql-server-ver15)」を参照してください |
-| mms_synchronization_rule| SQL サービス監査レコード| 「[SQL Server 監査レコード](/sql/relational-databases/security/auditing/sql-server-audit-records?view=sql-server-ver15)」を参照してください |
+| mms_management_agent| SQL サービス監査レコード| 「[SQL Server 監査レコード](/sql/relational-databases/security/auditing/sql-server-audit-records)」を参照してください |
+| mms_partition| SQL サービス監査レコード| 「[SQL Server 監査レコード](/sql/relational-databases/security/auditing/sql-server-audit-records)」を参照してください |
+| mms_run_profile| SQL サービス監査レコード| 「[SQL Server 監査レコード](/sql/relational-databases/security/auditing/sql-server-audit-records)」を参照してください |
+| mms_server_configuration| SQL サービス監査レコード| 「[SQL Server 監査レコード](/sql/relational-databases/security/auditing/sql-server-audit-records)」を参照してください |
+| mms_synchronization_rule| SQL サービス監査レコード| 「[SQL Server 監査レコード](/sql/relational-databases/security/auditing/sql-server-audit-records)」を参照してください |
 
 
 監視すべき構成情報とその方法の詳細については、次を参照してください。
 
-* SQL Server の場合は、「[SQL Server 監査レコード](/sql/relational-databases/security/auditing/sql-server-audit-records?view=sql-server-ver15)」を参照してください。
+* SQL Server の場合は、「[SQL Server 監査レコード](/sql/relational-databases/security/auditing/sql-server-audit-records)」を参照してください。
 
-* Azure Sentinel の場合は、[セキュリティ イベントを収集するための Windows サーバーへの接続](/sql/relational-databases/security/auditing/sql-server-audit-records?view=sql-server-ver15)に関する記事を参照して下さい。 
+* Azure Sentinel の場合は、[セキュリティ イベントを収集するための Windows サーバーへの接続](/sql/relational-databases/security/auditing/sql-server-audit-records)に関する記事を参照して下さい。 
 
 * Azure AD Connect の構成と使用の詳細については、「[Azure AD Connect とは](../hybrid/whatis-azure-ad-connect.md)」を参照してください
 
@@ -208,14 +208,14 @@ Azure AD は Microsoft SQL Server データ エンジンまたは SQL を使用�
 
 **以下を監視します**。 
 
-| [What to monitor] (監視対象)| リスク レベル| Where| フィルター/サブフィルター| メモ |
+| [What to monitor] (監視対象)| リスク レベル| Where| フィルターまたはサブフィルター| メモ |
 | - | - | - | - | - |
 | スケジューラの変更|高 | PowerShell| Set-ADSyncScheduler| スケジュールへの変更を検索する |
 | スケジュールされたタスクの変更| 高 | Azure AD 監査ログ| Activity = 4699(S): スケジュールされたタスクが削除されました<br>または<br>Activity = 4701(s): スケジュールされたタスクが無効化されました<br>または<br>Activity = 4701(s): スケジュールされたタスクが更新されました| すべてを監視する |
 
 
 
-* PowerShell スクリプト操作のログの詳細については、PowerShell リファレンス ドキュメントの一部である「[スクリプト ブロックのログ記録を有効にする](/powershell/module/microsoft.powershell.core/about/about_logging_windows?view=powershell-7.1)」を参照してください。
+* PowerShell スクリプト操作のログの詳細については、PowerShell リファレンス ドキュメントの一部である「[スクリプト ブロックのログ記録を有効にする](/powershell/module/microsoft.powershell.core/about/about_logging_windows)」を参照してください。
 
 * Splunk による解析のために PowerShell のログを構成する方法の詳細については、「[Get Data into Splunk User Behavior Analytics](https://docs.splunk.com/Documentation/UBA/5.0.4.1/GetDataIn/AddPowerShell)」を参照してください。
 
@@ -225,7 +225,7 @@ Azure Active Directory (Azure AD) シームレス シングル サインオン (
 
 シングル サインオンと Kerberos アクティビティの監視は、資格情報の盗用に関する一般的な攻撃パターンを検出するのに役立ちます。 次の情報を使用して監視してください。
 
-| [What to monitor] (監視対象)| リスク レベル| Where| フィルター/サブフィルター| メモ |
+| [What to monitor] (監視対象)| リスク レベル| Where| フィルターまたはサブフィルター| メモ |
 | - | - | - | - | - |
 | SSO および Kerberos 検証の失敗に関連するエラー|Medium | Azure AD サインイン ログ| | シングル サインオンに関するエラー コードの一覧は、[シングル サインオン](../hybrid/tshoot-connect-sso.md)に関する記事を参照してください。 |
 | エラーのトラブルシューティングに関するクエリ|Medium | PowerShell| 表の下にあるクエリを参照してください。 SSO を有効化してフォレストにチェックインします。| SSO を有効化してフォレストにチェックインします。 |

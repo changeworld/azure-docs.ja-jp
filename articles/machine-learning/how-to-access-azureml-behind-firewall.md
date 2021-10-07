@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: セキュリティで保護された Azure Machine Learning ワークスペースを使用するときに必要な受信および送信ネットワーク トラフィックを構成する方法。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: enterprise-readiness
 ms.topic: how-to
 ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
 ms.date: 09/14/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: 2207ac32595d3780bf662d9a4124b7cbf74ce6a7
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 50c8a38a5acbfea119770a5ea81a21d51fd4ea83
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128633977"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129424542"
 ---
 # <a name="configure-inbound-and-outbound-network-traffic"></a>ネットワークの着信トラフィックおよび送信トラフィックを構成する
 
@@ -60,7 +60,7 @@ ms.locfileid: "128633977"
 
 1. 次のサービス タグ __への__、またサービス タグ __からの__ トラフィックを許可する __ネットワーク規則__ を追加します。
 
-    | サービス タグ | プロトコル | Port |
+    | サービス タグ | Protocol | Port |
     | ----- |:-----:|:-----:|
     | AzureActiveDirectory | TCP | * |
     | AzureMachineLearning | TCP | 443 |

@@ -6,13 +6,13 @@ ms.author: danlep
 ms.topic: how-to
 ms.custom: subject-monitoring
 ms.service: container-registry
-ms.date: 03/19/2021
-ms.openlocfilehash: 1b7f8a13a7d372fe67e5ca7c235febfa52294432
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.date: 08/13/2021
+ms.openlocfilehash: ff82571b791f20cf46150be06e583af29f13dbd5
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114294948"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128586970"
 ---
 # <a name="monitor-azure-container-registry"></a>Azure Container Registry を監視する
 
@@ -20,7 +20,7 @@ Azure リソースに依存するクリティカルなアプリケーション�
 
 ## <a name="monitor-overview"></a>監視の概要
 
-Azure portal の各レジストリ の **[概要]** ページには、プッシュ操作やプル操作など、最近のリソースの使用状況とアクティビティの簡単なビューが含まれています。 この概要情報は役立ちますが、そこに表示される監視データはごくわずかです。 
+Azure portal の各レジストリ の **[概要]** ページには、プッシュ操作やプル操作など、最近のリソースの使用状況とアクティビティの簡単なビューが含まれています。 この概要情報は役立ちますが、そこに表示されるデータはごくわずかです。 
 
 :::image type="content" source="media/monitor-service/metrics-overview.png" alt-text="レジストリ メトリックの概要"::: 
 
@@ -55,7 +55,7 @@ Azure portal、CLI、または PowerShell を使用して診断設定を作成�
 > [!TIP]
 > ポータルでレジストリに移動することで、レジストリの診断設定を作成することもできます。 メニューで、 **[監視]** の **[診断設定]** を選択します。
 
-次の図は、レジストリの診断設定を有効にするときのオプションを示したものです。
+次の図は、レジストリの診断設定を有効にするときのオプションを示しています。
 
 :::image type="content" source="media/monitor-service/diagnostic-settings.png" alt-text="Container Registry の診断設定":::
 
@@ -76,7 +76,6 @@ Azure Container Registry について収集されるプラットフォーム メ
 
 次の Azure CLI コマンドを使用して、Azure Container Registry のメトリックに関する情報を取得できます。
 
-* [az acr show-usage](/cli/azure/acr/#az_acr_show_usage) - Azure コンテナー レジストリによって使用されている現在のストレージが表示されます
 * [az monitor metrics list-definitions](/cli/azure/monitor/metrics#az_monitor_metrics_list_definitions) - メトリックの定義とディメンションの一覧が表示されます
 * [az monitor metrics list](/cli/azure/monitor/metrics#az_monitor_metrics_list) - メトリックの値が取得されます
 
@@ -208,3 +207,4 @@ If you are creating or running an application which run on <*service*> [Azure Mo
 
 - Azure Container Registry によって作成されるメトリック、ログ、その他の重要な値のリファレンスについては、「[Azure Container Registry の監視データのリファレンス](monitor-service-reference.md)」を参照してください。
 - Azure リソースの監視の詳細については、「[Azure Monitor を使用した Azure リソースの監視](../azure-monitor/essentials/monitor-azure-resource.md)」を参照してください。
+- レジストリ内のストレージ使用量やその他のリソース消費のスナップショットを取得する方法については、[レジストリの使用量の表示](container-registry-skus.md#show-registry-usage)に関するページを参照してください。

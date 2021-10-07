@@ -7,15 +7,15 @@ ms.author: aashishb
 ms.date: 05/10/2021
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: enterprise-readiness
 ms.topic: how-to
 ms.reviewer: larryfr
-ms.openlocfilehash: e26fbf9168d0c94666969721af70dde30f3e7ef9
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: e9a532ca4a4bf87bfb4569c03d367cb4d3d2ea2d
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129058863"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129428238"
 ---
 # <a name="audit-and-manage-azure-machine-learning"></a>Azure Machine Learning の監査と管理
 

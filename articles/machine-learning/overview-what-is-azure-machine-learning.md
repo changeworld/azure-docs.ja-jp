@@ -10,12 +10,12 @@ author: cjgronlund
 ms.date: 08/03/2021
 ms.custom: devx-track-python
 adobe-target: true
-ms.openlocfilehash: 6709309bed5546dacdadc1ba412954e83310e183
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: f0b798db68ee15ffeb393c30f7a7ccc81e4cf386
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122446563"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128606249"
 ---
 # <a name="what-is-azure-machine-learning"></a>Azure Machine Learning とは
 
@@ -52,7 +52,7 @@ Microsoft Azure クラウドを導入している企業向けには、インフ�
 
 ### <a name="studio-ui"></a>スタジオ UI 
 
-Azure Machine Learning スタジオは、プロジェクト ワークスペース用のグラフィカル ユーザー インターフェイスです。 スタジオでは、次のことが可能です。
+[Azure Machine Learning スタジオ](https://ml.azure.com)は、プロジェクト ワークスペース用のグラフィカル ユーザー インターフェイスです。 スタジオでは、次のことが可能です。
 
 - 実行、メトリック、ログ、出力などを表示する。
 - ノートブックとファイルを作成および編集する。
@@ -65,6 +65,8 @@ Azure Machine Learning スタジオは、プロジェクト ワークスペー�
 - AutoML ジョブを作成する。
 
 さらに、デザイナーには、モデルのトレーニングとデプロイを行うことができる、ドラッグ アンド ドロップ インターフェイスがあります。 
+
+ML Studio (クラシック) ユーザーの場合は、[Studio (クラシック) の非推奨化と、Azure Machine Learning スタジオとの違いについて学習してください](overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)。
 
 ## <a name="enterprise-readiness-and-security"></a>エンタープライズ対応とセキュリティ
 

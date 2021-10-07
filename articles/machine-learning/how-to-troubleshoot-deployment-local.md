@@ -4,17 +4,17 @@ titleSuffix: Azure Machine Learning
 description: モデル デプロイ エラーのトラブルシューティングの最初の手順として、ローカルでのモデル デプロイを試してください。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.reviewer: luquinta
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: ca06d475544cb45045d751ede1abe743a3a012ab
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: a40072af2fccd6005b3eb716c2c7dccbe86c3b45
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128553444"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129424201"
 ---
 # <a name="troubleshooting-with-a-local-model-deployment"></a>ローカルでのモデル デプロイを使用したトラブルシューティング
 

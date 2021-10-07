@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: conceptual
-ms.date: 8/24/2021
+ms.date: 9/13/2021
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: fbd02fb70a16250d427afc2f60343ad6758ea8dc
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 0662431d950e0b65cce749697597e5ef9e9e8f3f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123258681"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128589228"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure File Sync エージェントのリリース ノート
 Azure ファイル同期を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 お使いの Windows Server のインストール済み環境が、Azure ファイル共有の高速キャッシュに生まれ変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -67,8 +67,8 @@ Azure ファイル同期を使用すると、オンプレミスのファイル �
 - サーバー名の変更のサポート  
     - 登録済みサーバーの名前を変更すると、Azure File Syn ではポータルに新しいサーバー名が表示されるようになります。 V13 リリースより前にサーバーの名前を変更した場合、ポータルのサーバー名が更新され、正しいサーバー名が表示されるようになります。
 
-- Windows Server 2022 Preview のサポート  
-    - Azure File Sync エージェントは、Windows Server 2022 Preview ビルド 20348 以降でサポートされるようになりました。
+- Windows Server 2022 のサポート  
+    - Azure File Sync エージェントは、Windows Server 2022 でサポートされるようになりました。
 
     > [!Note]  
     > Windows サーバー 2022 では、Azure File Sync で現在サポートされていない TLS 1.3 のサポートが追加されています。[TLS 設定](/windows-server/security/tls/tls-ssl-schannel-ssp-overview)がグループ ポリシーによって管理されている場合は、TLS 1.2 をサポートするようにサーバーを構成する必要があります。 
@@ -90,7 +90,7 @@ Windows Server で Azure File Sync エージェントをインストールして
 - エージェントのバージョンが 12.0 より前の場合は、Azure File Sync エージェントが既にインストールされているサーバーでは再起動が必要です。
 - エージェント インストール パッケージは、引き上げられた (管理者) 特権でインストールする必要があります。
 - Nano Server のデプロイ オプションでは、このエージェントはサポートされません。
-- このエージェントがサポートされるのは、Windows Server 2019、Windows Server 2016、Windows Server 2012 R2、および Windows Server 2022 Preview です。
+- このエージェントは、Windows Server 2019、Windows Server 2016、Windows Server 2012 R2、Windows Server 2022 でのみサポートされます。
 - エージェントには、少なくとも 2 GiB のメモリが必要です。 動的メモリを有効にした仮想マシンでサーバーが実行されている場合は、2048 MiB 以上のメモリで VM を構成する必要があります。 詳細については、「[推奨されるシステム リソース](file-sync-planning.md#recommended-system-resources)」を参照してください。
 - Storage Sync Agent (FileSyncSvc) サービスは、システム ボリューム情報 (SVI) ディレクトリが圧縮されているボリュームに配置されたサーバーのエンドポイントをサポートしません。 この構成は、予期しない結果になります。
 

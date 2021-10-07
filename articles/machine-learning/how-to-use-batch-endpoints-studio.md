@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: この記事では、Azure Machine Learning スタジオでバッチ エンドポイントを作成する方法について説明します。 バッチ エンドポイントは、大規模なデータを継続的にバッチ スコアリングするために使用されます。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.topic: how-to
 author: shivanissambare
 ms.author: ssambare
 ms.reviewer: larryfr
 ms.date: 08/16/2021
 ms.custom: how-to, studio, managed-batch-endpoints
-ms.openlocfilehash: f5f5d71b22c505580ed4e6b339f5b9c30e19eb89
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 290d13c050a624c660174e3d8e272c67e90a9207
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122868600"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129424144"
 ---
 # <a name="how-to-use-batch-endpoints-preview-in-azure-machine-learning-studio"></a>Azure Machine Learning スタジオでバッチ エンドポイント (プレビュー) を使用する方法
 

@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 01/20/2021
+ms.date: 09/20/2021
 ms.author: tisande
-ms.openlocfilehash: 7468b544f36645609e1da344aef583c33157da7d
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 680b383cee86ec4233579b9305c47e60ad4d5ff4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122206409"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128625347"
 ---
 # <a name="keywords-in-azure-cosmos-db"></a>Azure Cosmos DB でのキーワード
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -102,11 +102,30 @@ FROM f
 ]
 ```
 
-集計システム関数を使用したクエリと `DISTINCT` を使用したサブクエリはサポートされていません。 たとえば、次のクエリはサポートされません。
+集計システム関数を使用したクエリと `DISTINCT` を使用したサブクエリは、特定の SDK バージョンでのみサポートされます。 たとえば、次の図形を使用したクエリは、下の特定の SDK バージョンでのみサポートされます。
 
 ```sql
 SELECT COUNT(1) FROM (SELECT DISTINCT f.lastName FROM f)
 ```
+
+**サポートされている SDK バージョン:**
+
+|**SDK**|**サポートされているバージョン**|
+|-------|----------------------|
+|.NET SDK|3.18.0 以降|
+|Java SDK|4.19.0 以降|
+|Node.js SDK|サポートされていない|
+|Python SDK|サポートされていない|
+
+集計システム関数を使用したクエリと `DISTINCT` を使用したサブクエリには、いくつかの追加の制限があります。
+
+|**制限**|**例**|
+|-------|----------------------|
+|外部クエリの WHERE 句|SELECT COUNT(1) FROM (SELECT DISTINCT VALUE c.lastName FROM c) AS lastName WHERE lastName = "Smith"|
+|外部クエリの ORDER BY 句|SELECT VALUE COUNT(1) FROM (SELECT DISTINCT VALUE c.lastName FROM c) AS lastName ORDER BY lastName|
+|外部クエリの GROUP BY 句|SELECT COUNT(1) as annualCount, d.year FROM (SELECT DISTINCT c.year, c.id FROM c) AS d GROUP BY d.year|
+|入れ子になったサブクエリ|SELECT COUNT(1) FROM (SELECT y FROM (SELECT VALUE StringToNumber(SUBSTRING(d.date, 0, 4 FROM (SELECT DISTINCT c.date FROM c) d) AS y WHERE y > 2012)|
+|複数の集計|SELECT COUNT(1) as AnnualCount, SUM(d.sales) as TotalSales FROM (SELECT DISTINCT c.year, c.sales, c.id FROM c) AS d|
 
 ## <a name="like"></a>LIKE
 

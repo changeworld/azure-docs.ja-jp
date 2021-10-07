@@ -8,12 +8,12 @@ ms.date: 07/13/2021
 ms.service: storage
 ms.reviewer: rukmani-msft
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 390ddb50c7a1ec13f654ae78fa022dcd8b1944da
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 932e3e0cc51c5b74e10d86bffa5785e5f65564cf
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128633889"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129278654"
 ---
 # <a name="migrate-azure-data-lake-storage-from-gen1-to-gen2"></a>Azure Data Lake Storage を Gen1 から Gen2 に移行する
 
@@ -49,7 +49,7 @@ Gen2 に移行するには、次の方法が推奨されます。
 
 3. [既知の問題](data-lake-storage-known-issues.md)の一覧を確認して、機能のギャップを評価します。
 
-4. Gen2 では、[診断ログ](../common/storage-analytics-logging.md)、[アクセス レベル](storage-blob-storage-tiers.md)、[Blob Storage ライフサイクル管理ポリシー](./lifecycle-management-overview.md)などの Blob Storage の機能がサポートされています。 これらの機能を使用することに興味がある場合は [現在のサポート レベル](./storage-feature-support-in-storage-accounts.md)を確認してください。
+4. Gen2 では、[診断ログ](../common/storage-analytics-logging.md)、[アクセス レベル](access-tiers-overview.md)、[Blob Storage ライフサイクル管理ポリシー](./lifecycle-management-overview.md)などの Blob Storage の機能がサポートされています。 これらの機能を使用することに興味がある場合は [現在のサポート レベル](./storage-feature-support-in-storage-accounts.md)を確認してください。
 
 5. [Azure エコシステムのサポート](./data-lake-storage-multi-protocol-access.md) の現状を確認し、ソリューションが依存するすべてのサービスが Gen2 でサポートされていることを確認します。
 

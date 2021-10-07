@@ -13,12 +13,12 @@ ms.date: 04/30/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 3e2ffebf0b414d4b59178fe04fb109530365786b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 68f4437ce75bfe2a9017133ed523bb5e9ce10a8c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98064710"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124787132"
 ---
 # <a name="instantiate-a-public-client-application-with-configuration-options-using-msalnet"></a>MSAL.NET を使用して、構成オプションでパブリック クライアント アプリケーションをインスタンス化する
 
@@ -30,6 +30,25 @@ ms.locfileid: "98064710"
 - ID プロバイダーの URL (名前付きインスタンス) とアプリケーションのサインイン対象ユーザー。 これら 2 つのパラメーターは機関と総称されます。
 - 組織専用の基幹業務アプリケーション (および名前付きシングル テナント アプリケーション) を作成している場合はテナント ID。
 - Web アプリ、および場合によってはパブリック クライアント アプリの場合 (特に、アプリでブローカーを使用する必要がある場合)、ID プロバイダーがセキュリティ トークンを使用してアプリケーションに連絡する redirectUri も設定します。
+
+## <a name="default-reply-uri"></a>既定の応答 URI
+
+MSAL.NET 4.1 以上では、`public PublicClientApplicationBuilder WithDefaultRedirectUri()` メソッドを使用して既定のリダイレクト URI (応答 URI) を設定できるようになりました。 このメソッドは、パブリック クライアント アプリケーションのリダイレクト URI プロパティを推奨される既定値に設定します。
+
+このメソッドの動作は、その時点で使用しているプラットフォームによって異なります。 特定のプラットフォームで設定されるリダイレクト URI について説明した表を次に示します。
+
+プラットフォーム  | リダイレクト URI  
+---------  | --------------
+デスクトップ アプリ (.NET FW) | `https://login.microsoftonline.com/common/oauth2/nativeclient` 
+UWP | `WebAuthenticationBroker.GetCurrentApplicationCallbackUri()` の値
+.NET Core | `http://localhost`
+
+UWP プラットフォームの場合、`WebAuthenticationBroker.GetCurrentApplicationCallbackUri()` の結果に値を設定して、ブラウザーでの SSO を有効にすることで、エクスペリエンスが強化されます。 
+
+.NET Core の場合、MSAL.Net では、値がローカル ホストに設定され、ユーザーは対話型認証にシステム ブラウザーを使用できます。
+
+> [!NOTE]
+> デスクトップ シナリオの埋め込みブラウザーの場合、使用されるリダイレクト URI は、認証コードが返されているという応答が ID プロバイダーから返されたことを検出するために、MSAL によって傍受されます。 したがって、この URI への実際のリダイレクトを確認せずに、この URI をどのクラウドでも使用できます。 つまり、どのクラウドでも `https://login.microsoftonline.com/common/oauth2/nativeclient` を使用でき、使用する必要があります。 必要に応じて、MSAL を使用しアプリの登録においてリダイレクト URI を正しく構成する限り、他の URI を使用することもできます。 アプリケーション登録で既定の URI を指定すると、MSAL に最低限のセットアップがあることになります。
 
 
 .NET Core コンソール アプリケーションでは次の *appsettings.json* 構成ファイルを使用することができました。

@@ -3,14 +3,14 @@ title: Azure Automation Update Management の概要
 description: この記事では、Windows および Linux マシンの更新プログラムを実装する Update Management 機能について概要を説明します。
 services: automation
 ms.subservice: update-management
-ms.date: 06/24/2021
+ms.date: 09/27/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0190d5501b95c0c70606978586edf30ff3d39b79
-ms.sourcegitcommit: 16580bb4fbd8f68d14db0387a3eee1de85144367
+ms.openlocfilehash: fed1ce7f236b568458f1eb1b25ce5420c2ad5501
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112676610"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129092162"
 ---
 # <a name="update-management-overview"></a>Update Management の概要
 
@@ -30,19 +30,21 @@ Update Management をデプロイしてマシンを管理できるようにす�
 
 次の図に、接続されたすべての Windows Server と Linux サーバーに対する、Update Management によるセキュリティ更新プログラムの評価と適用の実行方法を示します。
 
-![Update Management ワークフロー](./media/overview/update-mgmt-updateworkflow.png)
+![Update Management ワークフロー](./media/overview/update-mgmt-workflow.png)
 
-Update Management では Azure Monitor ログと連携して、割り当てられている Azure と Azure 以外のマシンから収集された更新プログラムの評価と更新プログラムのデプロイの結果が、ログ データとして保存されます。 このデータを収集するために、Automation アカウントと Log Analytics ワークスペースがリンクされ、マシン上にこのワークスペースに報告するように構成された Windows および Linux 用の Log Analytics エージェントが必要です。 Update Management では、ワークスペースに接続されている System Center Operations Manager 管理グループのエージェントからのシステムの更新に関する情報の収集がサポートされています。 1 つのマシンを複数の Log Analytics ワークスペースに Update Management 用に登録すること (マルチホームとも言われます) は、サポートされていません。
+Update Management では Azure Monitor ログと連携して、割り当てられている Azure と Azure 以外のマシンから収集された更新プログラムの評価と更新プログラムのデプロイの結果が、ログ データとして保存されます。 このデータを収集するために、Automation アカウントと Log Analytics ワークスペースがリンクされ、マシン上にこのワークスペースに報告するように構成された Windows および Linux 用の Log Analytics エージェントが必要です。 
+
+Update Management では、ワークスペースに接続されている System Center Operations Manager 管理グループのエージェントからのシステムの更新に関する情報の収集がサポートされています。 1 つのマシンを複数の Log Analytics ワークスペースに Update Management 用に登録すること (マルチホームとも言われます) は、サポートされていません。
 
 次の表に、Update Management でサポートされている接続先ソースの概要を示します。
 
 | 接続先ソース | サポートされています | 説明 |
 | --- | --- | --- |
-| Windows |はい |Update Management によって、Log Analytics エージェントを使用して Windows マシンからシステムの更新プログラムと、必要な更新プログラムのインストールに関する情報が収集されます。 |
-| Linux |はい |Update Management によって、Log Analytics エージェントを使用して Linux マシンからシステムの更新プログラムと、サポートされているディストリビューションに関する必要な更新プログラムのインストールに関する情報が収集されます。 |
+| Windows |はい |Update Management によって、Log Analytics エージェントを使用して Windows マシンからシステムの更新プログラムと、必要な更新プログラムのインストールに関する情報が収集されます。<br> マシンは、Microsoft Update または Windows Server Update Services (WSUS) に報告する必要があります。 |
+| Linux |はい |Update Management によって、Log Analytics エージェントを使用して Linux マシンからシステムの更新プログラムと、サポートされているディストリビューションに関する必要な更新プログラムのインストールに関する情報が収集されます。<br> マシンは、ローカルまたはリモートのリポジトリに報告する必要があります。 |
 | Operations Manager 管理グループ |はい |Update Management によって、接続されている管理グループ内のエージェントからソフトウェアの更新に関する情報が収集されます。<br/><br/>Operations Manager エージェントから Azure Monitor ログへの直接接続は必要ありません。 ログ データは、管理グループから Log Analytics ワークスペースに転送されます。 |
 
-Update Management に割り当てられたマシンによって、同期するように構成されているソースに基づいて、各自の最新の状態が報告されます。 Windows マシンの場合は、Windows Server Update Services または Microsoft Update に報告するように構成でき、Linux マシンの場合は、ローカルまたはパブリック リポジトリに報告するように構成できます。 Update Management と Microsoft Endpoint Configuration Manager を使用することもできます。詳細については、「[Microsoft Endpoint Configuration Manager と Update Management を統合する](mecmintegration.md)」を参照してください。 
+Update Management に割り当てられたマシンによって、同期するように構成されているソースに基づいて、各自の最新の状態が報告されます。 Windows マシンは、[Windows Server Update Services](/windows-server/administration/windows-server-update-services/get-started/windows-server-update-services-wsus) または [Microsoft Update](https://www.update.microsoft.com) に報告するように構成する必要があり、Linux マシンは、ローカルまたはパブリックのリポジトリに報告するように構成する必要があります。 Update Management と Microsoft Endpoint Configuration Manager を使用することもできます。詳細については、「[Microsoft Endpoint Configuration Manager と Update Management を統合する](mecmintegration.md)」を参照してください。 
 
 Windows マシン上の Windows Update Agent (WUA) が WSUS に報告するように構成されている場合は、WSUS の Microsoft Update との最後の同期のタイミングによっては、Microsoft Update で示されるものと結果が一致しないことがあります。 この動作は、パブリック リポジトリではなくローカル リポジトリに報告するように構成されている Linux マシンにも当てはまります。 Windows マシンでは、コンプライアンス スキャンは既定で 12 時間ごとに実行されます。 Linux マシンでは、コンプライアンス スキャンは既定で 1 時間ごとに実行されます。 Log Analytics エージェントを再起動した場合、コンプライアンス スキャンは 15 分以内に開始されます。 マシンで更新プログラムのコンプライアンスのためのスキャンが完了すると、エージェントによって情報が Azure Monitor ログに一括転送されます。 
 
@@ -77,6 +79,14 @@ Update Management を有効にすると、Log Analytics ワークスペースに
 Update Management で管理されている各 Windows マシンは、Automation アカウントの [システム ハイブリッド worker グループ] として、[ハイブリッド worker グループ] ペインに表示されます。 グループでは、`Hostname FQDN_GUID` の名前付け規則が使用されます。 アカウントの Runbook でこれらのグループを対象として指定することはできません。 指定しようとすると、失敗します。 これらのグループは、Update Management のみをサポートすることを目的としています。 Hybrid Runbook Worker として構成されている Windows マシンの一覧を表示する方法の詳細については、「[Hybrid Runbook Workers の表示](../automation-hybrid-runbook-worker.md#view-system-hybrid-runbook-workers)」を参照してください。
 
 Update Management と Hybrid Runbook Worker グループ メンバーシップの両方に同じアカウントを使用すると、Windows マシンを Automation アカウント内のユーザー Hybrid Runbook Worker グループに追加して Automation Runbook をサポートできます。 この機能は、Hybrid Runbook Worker のバージョン 7.2.12024.0 で追加されました。
+
+### <a name="external-dependencies"></a>外部依存関係
+
+Azure Automation Update Management は、ソフトウェア更新プログラムを配信するために、以下の外部依存関係に依存しています。
+
+* ソフトウェア更新プログラム パッケージと、Windows ベースのマシンでのソフトウェア更新プログラムの適用性スキャンのために、Windows Server Update Services (WSUS) または Microsoft Update が必要です。
+* マシンが WSUS サーバーまたは Microsoft Update に接続できるように、Windows ベースのマシン上に Windows Update エージェント (WUA) クライアントが必要です。
+* Linux ベースのマシンで OS 更新プログラムを取得してインストールするための、ローカルまたはリモートのリポジトリ。
 
 ### <a name="management-packs"></a>管理パック
 

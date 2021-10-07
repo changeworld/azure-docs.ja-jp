@@ -10,16 +10,16 @@ ms.subservice: sql
 ms.date: 03/17/2021
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 4d37cabb8b74fea3a72ddafdf3322d20379f8d29
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: c0c436a2e36edbd6feb433074efc2d746ee38f18
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121860982"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129091827"
 ---
 # <a name="best-practices-for-dedicated-sql-pools-in-azure-synapse-analytics"></a>Azure Synapse Analytics での専用 SQL プールのベスト プラクティス
 
-この記事には、Azure Synapse Analytics で専用 SQL プールの最適なパフォーマンスを実現するのに役立つベスト プラクティスがまとめられています。 ここでは、ソリューションを構築するときに重視すべき基本的なガイダンスと重要な領域について説明します。 各セクションでは、概念と、その概念について詳しく説明している詳細な記事を紹介します。
+この記事には、Azure Synapse Analytics で専用 SQL プールの最適なパフォーマンスを実現するのに役立つベスト プラクティスがまとめられています。  サーバーレス SQL プールを使用している場合の具体的なガイダンスについては、[サーバーレス SQL プールのベスト プラクティス](best-practices-serverless-sql-pool.md)に関する記事を参照してください。ここでは、ソリューションを構築するときに重視すべき基本的なガイダンスと重要な領域について説明します。 各セクションでは、概念と、その概念について詳しく説明している詳細な記事を紹介します。
 
 ## <a name="dedicated-sql-pools-loading"></a>専用 SQL プールの読み込み
 
@@ -39,12 +39,11 @@ ms.locfileid: "121860982"
 
 統計の追加情報については、[テーブルの統計の管理](develop-tables-statistics.md)、[CREATE STATISTICS](/sql/t-sql/statements/create-statistics-transact-sql?view=azure-sqldw-latest&preserve-view=true)、[UPDATE STATISTICS](/sql/t-sql/statements/update-statistics-transact-sql?view=azure-sqldw-latest&preserve-view=true) に関する記事をご覧ください。
 
-## <a name="tune-query-performance-with-new-product-enhancements"></a>新しい製品の機能強化でクエリのパフォーマンスを調整する
+## <a name="tune-query-performance"></a>クエリ パフォーマンスの調整
 
 - [具体化されたビューを使用したパフォーマンスのチューニング](../sql-data-warehouse/performance-tuning-materialized-views.md)
 - [順序指定クラスター化列ストア インデックスを使用したパフォーマンスのチューニング](../sql-data-warehouse/performance-tuning-ordered-cci.md)
 - [結果セットのキャッシュを使用したパフォーマンスのチューニング](../sql-data-warehouse/performance-tuning-result-set-caching.md)
-
 
 ## <a name="group-insert-statements-into-batches"></a>INSERT ステートメントをバッチにグループ化する
 
@@ -79,7 +78,7 @@ Polybase はクエリには適していません。 専用 SQL プールの Poly
 
 ## <a name="hash-distribute-large-tables"></a>ハッシュで大規模なテーブルを分散させる
 
-既定では、テーブルはラウンド ロビン分散です。   この既定値により、ユーザーはテーブルの分散方法を決定しなくてもテーブルの作成を簡単に開始できます。 ラウンド ロビン テーブルは、一部のワークロードでは十分なパフォーマンスを示す可能性があります。 しかし、多くの場合、分散列の方がより優れたパフォーマンスを得られます。  
+既定では、テーブルはラウンド ロビン分散です。 この既定値により、ユーザーはテーブルの分散方法を決定しなくてもテーブルの作成を簡単に開始できます。 ラウンド ロビン テーブルは、一部のワークロードでは十分なパフォーマンスを示す可能性があります。 しかし、多くの場合、分散列の方がより優れたパフォーマンスを得られます。  
 
 列で分散したテーブルのパフォーマンスがラウンド ロビン テーブルを上回る最も一般的な例として、2 つの大規模なファクト テーブルが結合されている場合が挙げられます。  
 
@@ -115,7 +114,7 @@ INSERT、UPDATE、DELETE の各ステートメントはトランザクション�
 
 ロールバックを回避するもう 1 つの方法としては、データ管理のためのパーティション切り替えなど、メタデータのみの操作を使用します。  たとえば、DELETE ステートメントを実行して、テーブル内の order_date が 2001 年 10 月のすべての行を削除するのではなく、データを月単位でパーティション分割できます。 その後、データを含むパーティションを別のテーブルの空のパーティションに切り替えることができます (ALTER TABLE の例をご覧ください)。  
 
-パーティション分割されていないテーブルについては、DELETE を使用する代わりに、CTAS を使用して、テーブルに保持するデータを書き込むことを検討してください。  CTAS にかかる時間が同じ場合でも、トランザクション ログが最小限に抑えられ、必要なときにすばやく取り消すことができるため、CTAS の方がはるかに安全に実行できます。
+パーティション分割されていないテーブルでは、DELETE を使用する代わりに、CTAS を使用して、テーブルに保持するデータを書き込むことをご検討ください。  CTAS にかかる時間が同じ場合でも、トランザクション ログが最小限に抑えられ、必要なときにすばやく取り消すことができるため、CTAS の方がはるかに安全に実行できます。
 
 このセクションに関連する内容について詳しくは、以下の記事をご覧ください。
 
@@ -205,4 +204,3 @@ SQL プールでは、クエリにメモリを割り当てる方法としてリ�
 
 Microsoft では、このフォーラムを積極的に監視し、お客様からの質問に他のユーザーや Microsoft のスタッフが回答しているかどうかを確認しています。  Stack Overflow で質問したい方のために、[Azure Synapse Analytics Stack Overflow フォーラム](https://stackoverflow.com/questions/tagged/azure-synapse)も用意しています。
 
-機能に関する要望については、[Azure Synapse Analytics のフィードバック](https://feedback.azure.com/forums/307516-sql-data-warehouse)に関するページを使用してください。  ご要望の追加や他の要望への投票は、最も需要のある機能に集中して取り組むために役立ちます。

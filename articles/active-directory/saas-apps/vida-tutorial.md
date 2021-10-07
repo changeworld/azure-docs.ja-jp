@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/17/2021
 ms.author: jeedes
-ms.openlocfilehash: 6d1850ce3c0f8e9fb69159f6677bad3e3bfd0d57
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 7d7c07227741487bc62b1a6ef01680ccf326efd7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129351561"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128672900"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-vida"></a>チュートリアル: Azure AD SSO と VIDA の統合
 
@@ -98,6 +98,9 @@ VIDA に対する Azure AD SSO を構成してテストするには、次の手�
     | 名前 | ソース属性|
     | ---------------- | --------- |
     | assignedroles | user.assignedroles |
+
+    > [!NOTE]
+    > VIDA では、アプリケーションに対してユーザーのロールが割り当てられていることを想定しています。 ユーザーに適切なロールを割り当てることができるように、Azure AD でこれらのロールを設定してください。 Azure AD でロールを構成する方法については、[こちら](../develop/howto-add-app-roles-in-azure-ad-apps.md#app-roles-ui)を参照してください。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 

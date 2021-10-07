@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 08/11/2021
+ms.date: 09/23/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: inbarckms
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6eb911bb58413e6551224d98371cf56ecbd8e01f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e8b0279e0f97f3440bdef04046c2cb6eb35b6573
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121737322"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128605793"
 ---
 # <a name="configure-temporary-access-pass-in-azure-ad-to-register-passwordless-authentication-methods-preview"></a>パスワードレスの認証方法を登録するように Azure AD で一時アクセス パスを構成する (プレビュー)
 
@@ -26,7 +26,6 @@ ms.locfileid: "121737322"
 - 一時アクセス パス (TAP) を使用する 
 
 一時アクセス パスは、管理者によって発行される期間限定のパスコードであり、強力な認証要件を満たし、パスワードレスの方法を含む他の認証方法をオンボードするために使用できます。 また、一時アクセス パスを使用すると、ユーザーが FIDO2 セキュリティ キーや Microsoft Authenticator アプリなどの強力な認証要素を紛失したり忘れたりした場合でも簡単に回復することができます。しかし、新しい強力な認証方法を登録するには、サインインする必要があります。
-
 
 この記事では、Azure portal を使用して Azure AD で一時アクセス パスを有効にして使用する方法を示します。 これらのアクションは、REST API を使用して実行することもできます。 
 
@@ -120,13 +119,23 @@ c5dbd20a-8b8f-4791-a23f-488fcbde3b38 9/03/2021 11:19:17 PM False    True        
 これでユーザーがサインインし、FIDO2 セキュリティ キーなどの方法を更新または登録できるようになりました。 資格情報やデバイスを紛失したために認証方法を更新するユーザーは、古い認証方法を必ず削除する必要があります。
 また、ユーザーは、引き続き自分のパスワードを使用してサインインできます。TAP はユーザーのパスワードに代わるものではありません。
 
-ユーザーは一時アクセス パスを使用して、Authenticator アプリから直接パスワードレスの電話によるサインインに登録することもできます。 詳細については、「[Microsoft Authenticator アプリに職場または学校アカウントを追加する](../user-help/user-help-auth-app-add-work-school-account.md)」を参照してください。
+### <a name="passwordless-phone-sign-in"></a>パスワードレスの電話によるサインイン
+
+ユーザーは一時アクセス パスを使用して、Authenticator アプリから直接パスワードレスの電話によるサインインに登録することもできます。 詳細については、「[Microsoft Authenticator アプリに職場または学校アカウントを追加する](https://support.microsoft.com/account-billing/add-your-work-or-school-account-to-the-microsoft-authenticator-app-43a73ab5-b4e8-446d-9e54-2a4cb8e4e93c)」を参照してください。
 
 ![職場または学校アカウントを使用して一時アクセス パスを入力する方法のスクリーンショット](./media/how-to-authentication-temporary-access-pass/enter-work-school.png)
 
-## <a name="delete-a-temporary-access-pass"></a>一時アクセス パスを削除する
+### <a name="guest-access"></a>ゲスト アクセス
 
-期限切れの一時アクセス パスは使用できません。 ユーザーの **[認証方法]** の **[詳細]** 列に、一時アクセス パスがいつ期限切れになったかが表示されます。 次の手順を使用して、期限切れの一時アクセス パスを削除することができます。
+ゲスト ユーザーはホーム テナントによって発行された一時アクセス パスを使用してリソース テナントにサインインできますが、そのためにはこの一時アクセス パスがホーム テナントの認証要件を満たしていることが必要です。 リソース テナントに MFA が必要な場合、ゲスト ユーザーはリソースにアクセスするために MFA を実行する必要があります。
+
+### <a name="expiration"></a>有効期限
+
+有効期限が切れたか、または削除された一時アクセス パスを、対話型または非対話型認証に使用することはできません。 一時アクセス パスの有効期限が切れたか、または削除された後、ユーザーは別の認証方法で再認証する必要があります。 
+
+## <a name="delete-an-expired-temporary-access-pass"></a>期限切れの一時アクセス パスを削除する
+
+ユーザーの **[認証方法]** の **[詳細]** 列に、一時アクセス パスがいつ期限切れになったかが表示されます。 次の手順を使用して、期限切れの一時アクセス パスを削除することができます。
 
 1. Azure AD ポータルで、 **[ユーザー]** を参照し、 *[TAP ユーザー]* などのユーザーを選択してから、 **[認証方法]** を選択します。
 1. 一覧に表示されている **[一時アクセス パス (プレビュー)]** の認証方法の右側で、 **[削除]** を選択します。
@@ -152,7 +161,6 @@ Remove-MgUserAuthenticationTemporaryAccessPassMethod -UserId user3@contoso.com -
 以下の制限事項に留意してください。
 
 - 1 回限りの一時アクセス パスを使用して FIDO2 や電話によるサインインなどのパスワードレスの方法を登録する場合、ユーザーは 1 回限りの一時アクセス パスでのサインインの登録を 10 分以内に完了する必要があります。 この制限は、複数回使用できる一時アクセス パスには適用されません。
-- ゲスト ユーザーは一時アクセス パスを使用してサインインすることはできません。
 - 一時アクセス パスはパブリック プレビューの段階にあり、現在のところ、Azure for US Government ではご利用いただけません。
 - セルフサービス パスワード リセット (SSPR) 登録ポリシー *または* [Identity Protection の多要素認証登録ポリシー](../identity-protection/howto-identity-protection-configure-mfa-policy.md)の対象ユーザーは、一時アクセス パスを使用してサインインした後、認証方法を登録する必要があります。 これらのポリシーの対象ユーザーは、[統合された登録の中断モード](concept-registration-mfa-sspr-combined.md#combined-registration-modes)にリダイレクトされます。 現在、このエクスペリエンスでは、FIDO2 と電話によるサインインの登録はサポートされていません。 
 - 一時アクセス パスは、ネットワーク ポリシー サーバー (NPS) 拡張機能と Active Directory フェデレーション サービス (AD FS) アダプターでは使用できません。また、Windows の設定および Out-of-Box-Experience (OOBE) や、オートパイロットの間は使用できません。Windows Hello for Business のデプロイにも使用できません。 
@@ -173,4 +181,3 @@ Remove-MgUserAuthenticationTemporaryAccessPassMethod -UserId user3@contoso.com -
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Active Directory でパスワードレス認証のデプロイを計画する](howto-authentication-passwordless-deployment.md)
-

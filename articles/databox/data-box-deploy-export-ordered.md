@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: how-to
-ms.date: 09/21/2021
+ms.date: 10/01/2021
 ms.author: alkohli
 ms.custom: contperf-fy22q1
-ms.openlocfilehash: db5b98170446e93737fd625671f5351cc11da337
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 298d935b9b673e0b77bdd3e66cc3d348e2d52a07
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128591921"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129361530"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box"></a>チュートリアル:Azure Data Box のエクスポート注文を作成する
 
@@ -346,8 +346,8 @@ XML ファイルで XML タグを正しく作成するには、パスとプレ�
 |------------------------|--------------------------------------------------------------------------------|------------------------------------|
 |/                       |ストレージ アカウント内のすべての BLOB をエクスポートします。                                       |`<BlobPathPrefix>/</BlobPathPrefix>`|
 |/$root/                 |ルート コンテナー内のすべての BLOB をエクスポートします。                                        |`<BlobPathPrefix>/$root/</BlobPathPrefix>`|
-|/container2/            |コンテナー **container2** 内のすべての BLOB をエクスポートします。                              |`<BlobPathPrefix>/container1/</BlobPathPrefix>`|
-|/container          |プレフィックス **container** で始まる任意のコンテナー内にあるすべての BLOB をエクスポートします。      |`<BlobPathPrefix>/containers</BlobPathPrefix>`|
+|/container2/            |コンテナー **container2** 内のすべての BLOB をエクスポートします。                              |`<BlobPathPrefix>/container2/</BlobPathPrefix>`|
+|/container          |プレフィックス **container** で始まる任意のコンテナー内にあるすべての BLOB をエクスポートします。      |`<BlobPathPrefix>/container</BlobPathPrefix>`|
 |/container1/2021Q2      |コンテナー **container1** 内にあり、プレフィックス **2021Q2** で始まるすべての BLOB をエクスポートします。|`<BlobPathPrefix>/container1/2021Q2</BlobPathPrefix>`|
 
 エクスポートする "*1 つの*" BLOB を選択するには、&lt;BlobPath&gt; タグを使用して、コンテナー パスと BLOB 名を指定します。 たとえば、**container1** コンテナー内の **blob.txt** を選択するには、次のタグを使用します: `<BlobPath>/container1/blob.txt</BlobPath>`。
@@ -358,10 +358,10 @@ XML ファイルで XML タグを正しく作成するには、パスとプレ�
 
 |ファイル パス プレフィックス        |説明                                                                                          |タグの例|
 |------------------------|-----------------------------------------------------------------------------------------------------|-----------|
-|/                       |ストレージ アカウント内のすべてのファイルとディレクトリをエクスポートします。 |`<FilePathPrefix>/</FilePath>Prefix`|
-|/fileshare1/            |**fileshare1** という名前の共有内にあるすべてのファイルとディレクトリをエクスポートします。                                                 |`<FilePathPrefix>/fileshare1/</FilePath>Prefix`|
-|/fileshare              |プレフィックス **fileshare** で始まる任意のファイル共有内にあるすべてのファイルとディレクトリをエクスポートします。 |`<FilePathPrefix>/fileshare</FilePath>Prefix`|
-|/fileshare2/contosowest |ファイル共有 **fileshare2** 内にあり、プレフィックス **contosowest** で始まるすべてのファイルとディレクトリをエクスポートします。|`<FilePathPrefix>/fileshare1/contosowest</FilePath>Prefix`|
+|/                       |ストレージ アカウント内のすべてのファイルとディレクトリをエクスポートします。 |`<FilePathPrefix>/</FilePath>Prefix>`|
+|/fileshare1/            |**fileshare1** という名前の共有内にあるすべてのファイルとディレクトリをエクスポートします。                                                 |`<FilePathPrefix>/fileshare1/</FilePath>Prefix>`|
+|/fileshare              |プレフィックス **fileshare** で始まる任意のファイル共有内にあるすべてのファイルとディレクトリをエクスポートします。 |`<FilePathPrefix>/fileshare</FilePath>Prefix>`|
+|/fileshare2/contosowest |ファイル共有 **fileshare2** 内にあり、プレフィックス **contosowest** で始まるすべてのファイルとディレクトリをエクスポートします。|`<FilePathPrefix>/fileshare2/contosowest</FilePath>Prefix>`|
 
 エクスポートする "*1 つの*" ファイルを選択するには、&lt;FilePath&gt; タグを使用して、共有パスとファイル名を指定します。 たとえば、**fileshare1** 内の **file.txt** を選択するには、次のタグを使用します: `<FilePath>/fileshare1/file.txt</FilePath>`
 

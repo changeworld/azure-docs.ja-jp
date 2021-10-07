@@ -2,14 +2,14 @@
 title: Azure Backup のサポート マトリックス
 description: Azure Backup サービスのサポート設定と制限事項の概要を説明します。
 ms.topic: conceptual
-ms.date: 08/23/2021
+ms.date: 09/21/2021
 ms.custom: references_regions
-ms.openlocfilehash: f6101485f7dfab8d956a552edc2e77d85a6e2d9e
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 7448b8c5fa4882f9579b60d7d723d88e98ca7683
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123425865"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128658623"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup のサポート マトリックス
 
@@ -163,7 +163,7 @@ Azure Backup に、データの可用性と回復性の機能を強化するた�
 |     |     |
 | --- | --- |
 | **サポートされているリソース** | Recovery Services コンテナー |
-| **サポートされているリージョン** | 米国東部 2、米国中部、北ヨーロッパ、フランス中部、東アジア、東日本、西日本、オーストラリア東部、南アフリカ北部。 |
+| **サポートされているリージョン** | 米国東部、米国東部 2、米国中部、米国中南部、米国中北部、米国中西部、米国西部、米国西部 2、米国西部 3、カナダ東部、カナダ中部、北ヨーロッパ、西ヨーロッパ、英国西部、英国南部、フランス中部、フランス南部、スウェーデン中部、スウェーデン南部、東アジア、東南アジア、東日本、西日本、韓国中部、韓国南部、オーストラリア東部、オーストラリア中部、オーストラリア中部 2、オーストラリア東南部、南アフリカ北部、南アフリカ西部、アラブ首長国連邦北部、アラブ首長国連邦中部、ブラジル南東部、ブラジル南部、スイス北部、スイス西部、ノルウェー東部、ノルウェー西部、ドイツ北部、ドイツ中西部、インド西部、インド中部、インド南部、JIO インド西部、JIO インド中部。 |
 | **サポートされていないリージョン** | リソースの正常性状態は "不明" と表示されます。 |
 
 

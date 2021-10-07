@@ -8,12 +8,12 @@ metadata:
   ms.date: 12/19/2019
   ms.author: rohogue
   ms.custom: references_regions
-  ms.openlocfilehash: 241bcb1e164bf8f0233e7110ffcdd9630e870e8d
-  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+  ms.openlocfilehash: a826f96396a4275b07598564281060dea0bf7b1a
+  ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/13/2021
-  ms.locfileid: "124751093"
+  ms.lasthandoff: 10/01/2021
+  ms.locfileid: "129351412"
 title: Avere vFXT for Azure の FAQ
 summary: この記事では、Avere vFXT for Azure がニーズに適しているかどうかを判断するのに役立つ質問に回答します。 Avere vFXT に関する基本情報を提供し、他の Azure コンポーネントおよび外部のベンダーの製品との連携について説明します。
 sections:
@@ -80,15 +80,6 @@ sections:
       Avere vFXT は高可用性ですか?
     answer: >
       はい、Avere vFXT は HA ソリューションとしてのみ実行されます。
-  - question: >
-      Avere vFXT for Azure では他のクラウド サービスもサポートされていますか?
-    answer: >
-      はい、お客様は Avere vFXT クラスターで複数のクラウド プロバイダーを使用できます。 AWS S3 標準バケットと Google Cloud Services 標準バケットおよび Azure BLOB コンテナーがサポートされています。
-
-
-      > [!NOTE]
-
-      > AWS または Google Cloud ストレージでの Avere vFXT の使用にはソフトウェア料金がかかります。 Azure Blob Storage を使用する場合は、追加のソフトウェア料金は発生しません。
 - name: '技術: Compute'
   questions:
   - question: >
@@ -214,7 +205,7 @@ sections:
       Avere vFXT はストレージではありません。 Avere vFXT は、コア ファイラーと呼ばれる複数のターゲット ストレージのデータを読み書きするキャッシュです。 Avere vFXT の Premium SSD ディスクに格納されるデータは一時的であり、最終的にはバックエンドのコア ファイラー ストレージにフラッシュされます。
   - question: >
       Avere vFXT ではどのようなコア ファイラーがサポートされますか?
-    answer: "一般に、Avere vFXT for Azure ではコア ファイラーとして次のシステムがサポートされています。\n\n* Dell EMC Isilon (OneFS 7.1、7.2、8.0、8.1) \n* NetApp ONTAP (Clustered Mode 9.4、9.3、9.2、9.1P1、8.0 から 8.3) および (7-Mode 7.*、8.0 から 8.3)\n\n* Azure Blob コンテナー (ローカル冗長ストレージのみ)\n* AWS S3 バケット\n* Google Cloud バケット\n"
+    answer: "一般に、Avere vFXT for Azure ではコア ファイラーとして次のシステムがサポートされています。\n\n* Dell EMC Isilon (OneFS 7.1、7.2、8.0、8.1) \n* NetApp ONTAP (Clustered Mode 9.4、9.3、9.2、9.1P1、8.0 から 8.3) および (7-Mode 7.*、8.0 から 8.3)\n\n* Azure Blob コンテナー (ローカル冗長ストレージのみ)\n"
   - question: >
       Avere vFXT ですべての NFS ファイラーがサポートされていないのはなぜですか?
     answer: >
@@ -248,7 +239,7 @@ sections:
       通常、クール層の Blob ストレージは、Avere vFXT for Azure コア ファイラーには推奨されません。 クール層では、ストレージコストはより低くなりますが、運用コストはより高くなります。 (詳細については、「[ブロック BLOB の価格](<https://azure.microsoft.com/pricing/details/storage/blobs/>)」を参照してください。)頻繁にデータにアクセスし、変更または削除する場合は、ホット層の使用を検討してください。
 
 
-      「[アクセス層](../storage/blobs/storage-blob-storage-tiers.md#cool-access-tier)」では、vFXT コア ファイラーとしてクール層ストレージを使用すると便利な場合の詳細情報を提供します。
+      「[アクセス層](../storage/blobs/access-tiers-overview.md)」では、vFXT コア ファイラーとしてクール層ストレージを使用すると便利な場合の詳細情報を提供します。
   - question: >
       BLOB コンテナーはどのようにして暗号化すればよいですか?
     answer: "BLOB 暗号化は Azure で構成するか (推奨)、または vFXT コア ファイラー レベルで構成できます。  \n"

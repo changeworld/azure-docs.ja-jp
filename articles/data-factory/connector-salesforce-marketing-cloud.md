@@ -1,26 +1,26 @@
 ---
 title: Salesforce Marketing Cloud からデータをコピーする
+description: Azure Data Factory または Synapse Analytics パイプラインでコピー アクティビティを使用して、Salesforce Marketing Cloud からサポートされているシンク データ ストアにデータをコピーする方法について説明します。
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Salesforce Marketing Cloud からサポートされているシンク データ ストアにデータをコピーする方法について説明します。
 ms.author: jianleishen
 author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 08/30/2021
-ms.openlocfilehash: 448ef9ebc2147fa23716bda6441a0196c0c003b3
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.date: 09/09/2021
+ms.openlocfilehash: 7a9a8daa8e5464af3d58ba46544b28f5fec39520
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123307930"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124782800"
 ---
-# <a name="copy-data-from-salesforce-marketing-cloud-using-azure-data-factory"></a>Azure Data Factory を使用して Salesforce Marketing Cloud からデータをコピーする
+# <a name="copy-data-from-salesforce-marketing-cloud-using-azure-data-factory-or-synapse-analytics"></a>Azure Data Factory または Synapse Analytics を使用して Salesforce Marketing Cloud からデータをコピーする
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-この記事では、Azure Data Factory のコピー アクティビティを使用して、Salesforce Marketing Cloud からデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
+この記事では、Azure Data Factory または Synapse Analytics パイプラインで Copy アクティビティを使用して、Salesforce Marketing Cloud からデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -79,7 +79,7 @@ Salesforce Marketing Cloud のリンクされたサービスでは、次のプ�
 | authenticationType | 使用する認証方法を指定します。 使用できる値は `Enhanced sts OAuth 2.0` または `OAuth_2.0` です。<br><br>Salesforce Marketing Cloud レガシ パッケージでは `OAuth_2.0` のみがサポートされていますが、拡張パッケージでは `Enhanced sts OAuth 2.0` が必要です。 <br>2019 年 8 月 1 日以降、レガシ パッケージを作成する機能が Salesforce Marketing Cloud から削除されました。 新しいパッケージはすべて、拡張パッケージです。 | はい |
 | host | 拡張パッケージの場合、ホストは[サブドメイン](https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/your-subdomain-tenant-specific-endpoints.htm)である必要があります。これは、"mc" という文字で始まる 28 文字の文字列で表されます (例: `mc563885gzs27c5t9-63k636ttgm`)。 <br>レガシ パッケージの場合は、`www.exacttargetapis.com` を指定します。 | はい |
 | clientId | Salesforce Marketing Cloud アプリケーションに関連付けられたクライアント ID。  | はい |
-| clientSecret | Salesforce Marketing Cloud アプリケーションに関連付けられたクライアント シークレット。 このフィールドを SecureString としてマークして ADF に安全に格納するか、Azure Key Vault にシークレットを格納し、データ コピーの実行時に ADF コピー アクティビティでそこからプルするかを選択できます。詳細については、「[Key Vault に資格情報を格納する](store-credentials-in-key-vault.md)」を参照してください。 | はい |
+| clientSecret | Salesforce Marketing Cloud アプリケーションに関連付けられたクライアント シークレット。 このフィールドを SecureString としてマークしてサービスに安全に格納するか、Azure Key Vault にシークレットを格納し、データ コピーの実行時にサービスのコピー アクティビティでそこからプルするかを選択できます。詳しくは、[Key Vault への資格情報の格納](store-credentials-in-key-vault.md)に関するページをご覧ください。 | はい |
 | useEncryptedEndpoints | データ ソースのエンドポイントが HTTPS を使用して暗号化されるかどうかを指定します。 既定値は、true です。  | いいえ |
 | useHostVerification | TLS 経由で接続するときに、サーバーの証明書内のホスト名がサーバーのホスト名と一致する必要があるかどうか指定します。 既定値は、true です。  | いいえ |
 | usePeerVerification | TLS 経由で接続するときに、サーバーの ID を検証するかどうかを指定します。 既定値は、true です。  | いいえ |
@@ -236,4 +236,4 @@ Salesforce Marketing Cloud からデータをコピーするには、コピー �
 プロパティの詳細については、[Lookup アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。
+Copy アクティビティでソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関するセクションを参照してください。

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/26/2021
 ms.author: hobruche
-ms.openlocfilehash: 6e486623db264ec02c0a15abf11366acfcba8d5c
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: 71dde25230c2a474a42872f7b2830c60439738c7
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122072461"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128630776"
 ---
 # <a name="sap-cloud-appliance-library"></a>SAP Cloud Appliance Library
 
@@ -31,14 +31,18 @@ ms.locfileid: "122072461"
 
 | 解決策 | リンク |
 | -------------- | :--------- | 
-| **SAP S/4HANA 2020 FPS02, Fully-Activated Appliance** 2021 年 4 月 20 日 | [Create Instance]\(基本モード: インスタンスの作成\)](https://cal.sap.com/registration?sguid=d48af08b-e2c6-4409-82f8-e42d5610e918&provider=208b780d-282b-40ca-9590-5dd5ad1e52e8) |
-|このアプライアンスには SAP S/4HANA 2020 (FPS02) が含まれていて、SAP S/4HANA コア機能向けの SAP Best Practices のほか、サービス、マスター データ管理 (MDG)、輸送管理 (TM)、ポートフォリオ管理 (PPM)、人材管理 (HCM)、分析、移行コックピットなど、その他のシナリオが事前にアクティブ化されています。 ユーザー アクセスは、SAP Fiori、SAP GUI、SAP HANA Studio、Windows リモート デスクトップ、または完全な管理者アクセス用のバックエンド オペレーティング システムを介して行われます。 |  [詳細](https://cal.sap.com/catalog?provider=208b780d-282b-40ca-9590-5dd5ad1e52e8#/solutions/d48af08b-e2c6-4409-82f8-e42d5610e918) | 
+| **SAP S/4HANA 2020 FPS02, Fully-Activated Appliance**  2021 年 7 月 27 日 | [Create Instance]\(基本モード: インスタンスの作成\)](https://cal.sap.com/registration?sguid=d48af08b-e2c6-4409-82f8-e42d5610e918&provider=208b780d-282b-40ca-9590-5dd5ad1e52e8) |
+|このアプライアンスには SAP S/4HANA 2020 (FPS02) が含まれていて、SAP S/4HANA コア機能向けの SAP Best Practices のほか、サービス、マスター データ管理 (MDG)、輸送管理 (TM)、ポートフォリオ管理 (PPM)、人材管理 (HCM)、分析、移行コックピットなど、その他のシナリオが事前にアクティブ化されています。 ユーザー アクセスは、SAP Fiori、SAP GUI、SAP HANA Studio、Windows リモート デスクトップ、または完全な管理者アクセス用のバックエンド オペレーティング システムを介して行われます。 |  [詳細]( https://cal.sap.com/catalog?provider=208b780d-282b-40ca-9590-5dd5ad1e52e8#/solutions/d48af08b-e2c6-4409-82f8-e42d5610e918) |
 | **SAP S/4HANA 2020 FPS01, Fully-Activated Appliance** 2021 年 4 月 20 日 | [Create Instance]\(基本モード: インスタンスの作成\)](https://cal.sap.com/registration?sguid=a0b63a18-0fd3-4d88-bbb9-4f02c13dc343&provider=208b780d-282b-40ca-9590-5dd5ad1e52e8) |
 |このアプライアンスには SAP S/4HANA 2020 (FPS01) が含まれていて、SAP S/4HANA コア機能向けの SAP Best Practices のほか、サービス、マスター データ管理 (MDG)、輸送管理 (TM)、ポートフォリオ管理 (PPM)、人材管理 (HCM)、分析、移行コックピットなど、その他のシナリオが事前にアクティブ化されています。 ユーザー アクセスは、SAP Fiori、SAP GUI、SAP HANA Studio、Windows リモート デスクトップ、または完全な管理者アクセス用のバックエンド オペレーティング システムを介して行われます。 |  [詳細](https://cal.sap.com/catalog?provider=208b780d-282b-40ca-9590-5dd5ad1e52e8#/solutions/a0b63a18-0fd3-4d88-bbb9-4f02c13dc343) | 
 | **SAP S/4HANA 2020 FPS02** 2021 年 6 月 10 日 | [Create Instance]\(基本モード: インスタンスの作成\)](https://cal.sap.com/registration?sguid=c7cff775-cbf7-4cd1-a907-6eeca95a0946&provider=208b780d-282b-40ca-9590-5dd5ad1e52e8) |
 | このソリューションは、フロントエンド アクセスを容易にするリモート デスクトップが含まれた標準の S/4HANA システム インストールとして提供されます。 これには、クライアント 100 で事前構成およびアクティブ化された SAP S/4HANA Fiori UI が含まれています。必須コンポーネントは SAP ノート 3045635「SAP S/4HANA 2020 FPS02 での SAP Fiori の高速アクティブ化」に従ってアクティブ化されています。 詳細については、リンクを参照してください。 | [詳細](https://cal.sap.com/catalog?provider=208b780d-282b-40ca-9590-5dd5ad1e52e8#/solutions/c7cff775-cbf7-4cd1-a907-6eeca95a0946) | 
 | **SAP BW/4HANA 2.0 SP07 including BW/4HANA Content 2.0 SP06** 2020 年 2 月 24 日 | [Create Instance]\(基本モード: インスタンスの作成\)](https://cal.sap.com/registration?sguid=0f2f20f4-d012-4f76-81af-6ff15063db66&provider=208b780d-282b-40ca-9590-5dd5ad1e52e8) |
 |このソリューションは、SAP BW/4HANA の分析情報を提供します。 SAP BW/4HANA は、HANA 向けに最適化された次世代のデータ ウェアハウスです。 このソリューションは基本の BW/4HANA オプションに加え、HANA に対して最適化された一連の BW/4HANA コンテンツと、SAP Data Warehouse Cloud による次段階のハイブリッド シナリオを提供します。 システムが事前構成済みのため、シナリオの実装を直接開始できます。| [詳細](https://cal.sap.com/catalog?provider=208b780d-282b-40ca-9590-5dd5ad1e52e8#/solutions/0f2f20f4-d012-4f76-81af-6ff15063db66) | 
+| **SAP Business One 10.0 PL02, version for SAP HANA** 2020 年 8 月 4 日  | [Create Instance]\(基本モード: インスタンスの作成\)](https://cal.sap.com/registration?sguid=371edc8c-56c6-4d21-acb4-2d734722c712&provider=208b780d-282b-40ca-9590-5dd5ad1e52e8) |
+|SAP Business One は、SAP HANA の機能を活用した柔軟で手頃な拡張性の高い ERP ソリューションで、170 か国以上の 7 万を超える小規模および中規模企業に信頼されています。 このソリューションは、31 日間の試用版ライセンスを使用して事前構成され、お客様が選択したデモ データベースがプレインストールされています。 ソリューションのスコープと、新しいデモ データベースを簡単に追加する方法については、ファースト ステップ ガイドを参照してください。 |  [詳細](https://cal.sap.com/catalog?provider=208b780d-282b-40ca-9590-5dd5ad1e52e8#/solutions/371edc8c-56c6-4d21-acb4-2d734722c712) |
+| **Information Detector for SAP Data Custodian v2106** 2021 年 8 月 30 日  | [Create Instance]\(基本モード: インスタンスの作成\)](https://cal.sap.com/registration?sguid=db44680c-8a2a-405d-8963-838db38fa7dd&provider=208b780d-282b-40ca-9590-5dd5ad1e52e8) |
+|Information Detector for SAP Data Custodian を使用すると、クラウド リソースのデータのラベル付けを自動化できます。 Information Detector では、ご使用のインフラストラクチャ リソースを検索し、特定の種類の情報が含まれているかどうかを判断します。 |  [詳細](https://cal.sap.com/catalog?provider=208b780d-282b-40ca-9590-5dd5ad1e52e8#/solutions/db44680c-8a2a-405d-8963-838db38fa7dd) |
 | **SAP Yard Logistics 2009 for SAP S/4HANA** 2021 年 7 月 28 日 | [Create Instance]\(基本モード: インスタンスの作成\)](https://cal.sap.com/registration?sguid=9cdf4f13-73a5-4743-a213-82e0d1a68742&provider=208b780d-282b-40ca-9590-5dd5ad1e52e8) |
 |SAP Yard Logistics アプリケーションを使用して、より効率的で収益性の高いサプライ チェーン ロジスティクスを実行します。 さまざまな視覚化およびレポート ツールを使用して、すべてのヤード プロセスを最大限に可視化し、計画されたワークロードをプレビューします。これにより、単一のシステムを使用してリソースの利用を最適化し、計画、実行、課金をサポートできます。|  [詳細](https://cal.sap.com/catalog?provider=208b780d-282b-40ca-9590-5dd5ad1e52e8#/solutions/9cdf4f13-73a5-4743-a213-82e0d1a68742) | 
 | **SAP S/4HANA 2020 FPS02, Fully-Activated Appliance** 2021 年 7 月 27 日 | [Create Instance]\(基本モード: インスタンスの作成\)](https://cal.sap.com/registration?sguid=d48af08b-e2c6-4409-82f8-e42d5610e918&provider=208b780d-282b-40ca-9590-5dd5ad1e52e8) | 

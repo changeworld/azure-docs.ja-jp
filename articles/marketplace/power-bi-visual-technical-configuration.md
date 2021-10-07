@@ -8,12 +8,12 @@ ms.service: powerbi
 ms.subservice: powerbi-custom-visuals
 ms.topic: how-to
 ms.date: 09/21/2021
-ms.openlocfilehash: f544e9b98204f48defee59e614f395c879ecc8e4
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 94f1a884eb2fbb10ced8c343d0408845f0ff34ba
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128699666"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129273024"
 ---
 # <a name="set-up-power-bi-visual-offer-technical-configuration"></a>Power BI ビジュアル プランの技術的な構成を設定する
 
@@ -23,7 +23,7 @@ ms.locfileid: "128699666"
 
 ## <a name="pbiviz-package"></a>PBIVIZ パッケージ
 
-[Power BI ビジュアル](https://docs.microsoft.com/power-bi/developer/visuals/package-visual)を、必要なすべてのメタデータが含まれている PBIVIZ パッケージにパックします。
+[Power BI ビジュアル](/power-bi/developer/visuals/package-visual)を、必要なすべてのメタデータが含まれている PBIVIZ パッケージにパックします。
 
 - ビジュアル名
 - 表示名

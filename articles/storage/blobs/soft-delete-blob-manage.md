@@ -10,12 +10,12 @@ ms.date: 07/23/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f3125852edd149f6daf7589248be54bafcc1ca2d
-ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
+ms.openlocfilehash: 9c66b970a99ad6dd69b9336d1638b2c156868324
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114688193"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128627940"
 ---
 # <a name="manage-and-restore-soft-deleted-blobs"></a>論理的に削除された BLOB を管理および復元する
 
@@ -57,7 +57,7 @@ BLOB のバージョン管理が有効になっていない場合に論理的に
 
 #### <a name="restore-soft-deleted-blobs-when-versioning-is-enabled"></a>バージョン管理が有効になっている場合に論理的に削除された BLOB を復元する
 
-バージョン管理が有効になっている場合に論理的に削除された BLOB を Azure portal で復元するには、論理的に削除された BLOB を選択してプロパティを表示し、 **[バージョン]** タブを選択します。現在のバージョンとして昇格させるバージョンを選択し、 **[現在のバージョンに変更する]** を選択します。  
+バージョン管理が有効になっている場合に論理的に削除された BLOB を Azure portal で復元するには、論理的に削除された BLOB を選択してプロパティを表示し、 **[バージョン]** タブを選択します。現在のバージョンとして昇格させるバージョンを選択し、 **[現在のバージョンに変更する]** を選択します。
 
 :::image type="content" source="media/soft-delete-blob-manage/soft-deleted-blob-promote-version-portal.png" alt-text="Azure portal で BLOB を復元するためにバージョンを昇格させる方法を示すスクリーンショット":::
 
@@ -112,13 +112,13 @@ IEnumerable<IListBlobItem> allBlobSnapshots = container.ListBlobs(
 CloudBlockBlob copySource = allBlobSnapshots.First(snapshot => ((CloudBlockBlob)version).IsSnapshot &&
     ((CloudBlockBlob)snapshot).Name == blockBlob.Name) as CloudBlockBlob;
 blockBlob.StartCopy(copySource);
-```  
+```
 
 ---
 
 #### <a name="restore-soft-deleted-blobs-when-versioning-is-enabled"></a>バージョン管理が有効になっている場合に論理的に削除された BLOB を復元する
 
-バージョン管理が有効になっている場合に論理的に削除された BLOB を復元するには、[[BLOB のコピー]](/rest/api/storageservices/copy-blob) または [[BLOB を URL からコピーする]](/rest/api/storageservices/copy-blob-from-url) 操作を使用して、ベース BLOB に以前のバージョンをコピーします。  
+バージョン管理が有効になっている場合に論理的に削除された BLOB を復元するには、[[BLOB のコピー]](/rest/api/storageservices/copy-blob) または [[BLOB を URL からコピーする]](/rest/api/storageservices/copy-blob-from-url) 操作を使用して、ベース BLOB に以前のバージョンをコピーします。
 
 ##### <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
@@ -132,7 +132,7 @@ blockBlob.StartCopy(copySource);
 
 ## <a name="manage-soft-deleted-blobs-and-directories-hierarchical-namespace"></a>論理的に削除された BLOB とディレクトリを管理する (階層型名前空間)
 
-階層型名前空間が使用されたアカウントの論理的に削除された BLOB とディレクトリを復元できます。 
+階層型名前空間が使用されたアカウントの論理的に削除された BLOB とディレクトリを復元できます。
 
 > [!IMPORTANT]
 > 階層型名前空間機能が有効になっているアカウントでの論理的な削除は、現在プレビュー段階であり、すべての Azure リージョンでグローバルに利用できます。
@@ -150,31 +150,31 @@ Azure portal を使用して、論理的に削除された BLOB とディレク�
 論理的に削除された BLOB またはディレクトリは、既定では Azure portal に表示されません。 論理的に削除された BLOB とディレクトリを表示するには、コンテナーの **[概要]** ページに移動し、 **[削除された Blob を表示]** 設定を切り替えます。 論理的に削除された BLOB とディレクトリは、 **[削除済み]** の状態で表示されます。 次の図は、論理的に削除されたディレクトリを示しています。
 
 > [!div class="mx-imgBorder"]
-> ![Azure portal で論理的に削除された BLOB を一覧表示する方法を示すスクリーンショット (階層型名前空間が有効なアカウント)](media/soft-delete-blob-manage/soft-deleted-blobs-list-portal-hns.png)
+> ![Azure portal で論理的に削除された BLOB を一覧表示する方法を示すスクリーンショット (階層型名前空間が有効なアカウント)。](media/soft-delete-blob-manage/soft-deleted-blobs-list-portal-hns.png)
 
 > [!NOTE]
-> 論理的に削除された項目 (サブディレクトリと BLOB) を含むディレクトリの名前を変更すると、それらの論理的に削除された項目はディレクトリから切断されるため、 **[削除された Blob を表示]** 設定を切り替えたときに Azure portal に表示されなくなります。 Azure portal でそれらを表示するには、ディレクトリの名前を元の名前に戻すか、元のディレクトリ名を使用する別のディレクトリを作成する必要があります。 
+> 論理的に削除された項目 (サブディレクトリと BLOB) を含むディレクトリの名前を変更すると、それらの論理的に削除された項目はディレクトリから切断されるため、 **[削除された Blob を表示]** 設定を切り替えたときに Azure portal に表示されなくなります。 Azure portal でそれらを表示するには、ディレクトリの名前を元の名前に戻すか、元のディレクトリ名を使用する別のディレクトリを作成する必要があります。
 
 次に、一覧から削除済みのディレクトリまたは BLOB を選択して、そのプロパティを表示します。 **[概要]** タブで、状態が **[削除済み]** に設定されていることを確認します。 ポータルには、BLOB が完全に削除されるまでの日数も表示されます。
 
 > [!div class="mx-imgBorder"]
-> ![Azure portal での論理的に削除された BLOB のプロパティの表示を示すスクリーンショット (階層型名前空間が有効なアカウント)](media/soft-delete-blob-manage/soft-deleted-blob-properties-portal-hns.png)
+> ![Azure portal で論理的に削除された BLOB のプロパティを示すスクリーンショット (階層型名前空間が有効なアカウント)。](media/soft-delete-blob-manage/soft-deleted-blob-properties-portal-hns.png)
 
 #### <a name="restore-soft-delete-blobs-and-directories"></a>論理的に削除された BLOB とディレクトリを復元する
 
 Azure portal で論理的に削除された BLOB またはディレクトリを復元するには、最初に BLOB またはディレクトリのプロパティを表示し、次に **[概要]** タブの **[削除の取り消し]** ボタンを選択します。次の図は、論理的に削除されたディレクトリの [削除の取り消し] ボタンを示しています。
 
 > [!div class="mx-imgBorder"]
-> ![Azure portal で論理的に削除された BLOB を復元する方法を示すスクリーンショット (階層型名前空間が有効なアカウント)](media/soft-delete-blob-manage/undelete-soft-deleted-blob-portal-hns.png)
+> ![Azure portal で論理的に削除された BLOB を復元する方法を示すスクリーンショット (階層型名前空間が有効なアカウント)。](media/soft-delete-blob-manage/undelete-soft-deleted-blob-portal-hns.png)
 
 ### <a name="restore-soft-deleted-blobs-and-directories-by-using-powershell"></a>PowerShell を使用して論理的に削除された BLOB とディレクトリを復元する
 
->[!IMPORTANT]
+> [!IMPORTANT]
 > このセクションは、階層型名前空間があるアカウントにのみ適用されます。
 
-1. **Az.Storage** プレビュー モジュールがインストールされていることを確認します。 [PowerShell を使用して BLOB の論理的な削除を有効にする](soft-delete-blob-enable.md?tabs=azure-powershell#enable-blob-soft-delete-hierarchical-namespace)方法に関するセクションを参照してください。
+1. **Az.Storage** プレビュー モジュールがインストールされていることを確認します。 詳細については、[PowerShell 経由での論理的な削除の有効化](soft-delete-blob-enable.md?tabs=azure-powershell#enable-blob-soft-delete-hierarchical-namespace)に関するページを参照してください。
 
-2. ストレージ アカウント キー、接続文字列、Azure Active Directory (Azure AD) のいずれかを使用して、ストレージ アカウントの承認を取得します。 「[アカウントに接続する](data-lake-storage-directory-file-acl-powershell.md#connect-to-the-account)」を参照してください。
+2. ストレージ アカウント キー、接続文字列、Azure Active Directory (Azure AD) のいずれかを使用して、ストレージ アカウントの承認を取得します。 詳細については、「[アカウントに接続する](data-lake-storage-directory-file-acl-powershell.md#connect-to-the-account)」を参照してください。
 
    次の例では、ストレージ アカウント キーを使用して承認を取得します。
 
@@ -195,10 +195,10 @@ Azure portal で論理的に削除された BLOB またはディレクトリを�
 
 ### <a name="restore-soft-deleted-blobs-and-directories-by-using-azure-cli"></a>Azure CLI を使用して論理的に削除された BLOB とディレクトリを復元する
 
->[!IMPORTANT]
+> [!IMPORTANT]
 > このセクションは、階層型名前空間があるアカウントにのみ適用されます。
 
-1. `storage-preview` 拡張機能がインストールされていることを確認します。 [PowerShell を使用して BLOB の論理的な削除を有効にする](soft-delete-blob-enable.md?tabs=azure-CLI#enable-blob-soft-delete-hierarchical-namespace)方法に関するセクションを参照してください。
+1. `storage-preview` 拡張機能がインストールされていることを確認します。 詳細については、[PowerShell を使用した論理的な削除の有効化](soft-delete-blob-enable.md?tabs=azure-CLI#enable-blob-soft-delete-hierarchical-namespace)に関するページを参照してください。
 
 2. 削除された項目の一覧を取得します。
 
@@ -211,14 +211,14 @@ Azure portal で論理的に削除された BLOB またはディレクトリを�
 
    ```azurecli
    $dirName="my-directory"
-   az storage fs undelete-path -f $filesystemName --deleted-path-name $dirName —deletion-id "<deletionId>" --auth-mode login
+   az storage fs undelete-path -f $filesystemName --deleted-path-name $dirName -deletion-id "<deletionId>" --auth-mode login
    ```
 
    論理的に削除された項目が含まれているディレクトリの名前を変更すると、それらの項目はディレクトリから切断されます。 それらの項目を復元するには、ディレクトリの名前を元の名前に戻すか、元のディレクトリ名を使用する別のディレクトリを作成する必要があります。 そうしないと、これらの論理的に削除された項目を復元しようとしたときにエラーが発生します。
 
 ### <a name="restore-soft-deleted-blobs-and-directories-by-using-net"></a>.NET を使用して論理的に削除された BLOB とディレクトリを復元する
 
->[!IMPORTANT]
+> [!IMPORTANT]
 > このセクションは、階層型名前空間があるアカウントにのみ適用されます。
 
 1. コマンド プロンプトを開き、ディレクトリ (`cd`) をプロジェクト フォルダーに変更します。次に例を示します。
@@ -227,7 +227,7 @@ Azure portal で論理的に削除された BLOB またはディレクトリを�
    cd myProject
    ```
 
-2. `dotnet add package` コマンドを使用して、[Azure.Storage.Files.DataLake](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/) NuGet パッケージの `Azure.Storage.Files.DataLake -v 12.7.0` バージョンをインストールします。 
+2. `dotnet add package` コマンドを使用して、[Azure.Storage.Files.DataLake](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/) NuGet パッケージの `Azure.Storage.Files.DataLake -v 12.7.0` バージョンをインストールします。
 
    ```console
    dotnet add package Azure.Storage.Files.DataLake -v -v 12.7.0 -s https://pkgs.dev.azure.com/azure-sdk/public/_packaging/azure-sdk-for-net/nuget/v3/index.json
@@ -253,26 +253,26 @@ Azure portal で論理的に削除された BLOB またはディレクトリを�
    ```csharp
       public void RestoreDirectory(DataLakeServiceClient serviceClient)
       {
-          DataLakeFileSystemClient fileSystemClient = 
+          DataLakeFileSystemClient fileSystemClient =
              serviceClient.GetFileSystemClient("my-container");
 
-          DataLakeDirectoryClient directory = 
+          DataLakeDirectoryClient directory =
               fileSystem.GetDirectoryClient("my-directory");
 
           // Delete the Directory
           await directory.DeleteAsync();
- 
+
           // List Deleted Paths
           List<PathHierarchyDeletedItem> deletedItems = new List<PathHierarchyDeletedItem>();
           await foreach (PathHierarchyDeletedItem deletedItem in fileSystemClient.GetDeletedPathsAsync())
           {
             deletedItems.Add(deletedItem);
           }
- 
+
           Assert.AreEqual(1, deletedItems.Count);
           Assert.AreEqual("my-directory", deletedItems[0].Path.Name);
           Assert.IsTrue(deletedItems[0].IsPath);
- 
+
           // Restore deleted directory.
           Response<DataLakePathClient> restoreResponse = await fileSystemClient.RestorePathAsync(
           deletedItems[0].Path.Name,
@@ -286,7 +286,7 @@ Azure portal で論理的に削除された BLOB またはディレクトリを�
 
 ### <a name="restore-soft-deleted-blobs-and-directories-by-using-java"></a>Java を使用して論理的に削除された BLOB とディレクトリを復元する
 
->[!IMPORTANT]
+> [!IMPORTANT]
 > このセクションは、階層型名前空間があるアカウントにのみ適用されます。
 
 1. 開始するには、テキスト エディターで *pom.xml* ファイルを開きます。 依存関係のグループに、次の dependency 要素を追加します。
@@ -305,7 +305,7 @@ Azure portal で論理的に削除された BLOB またはディレクトリを�
    Put imports here
    ```
 
-3. 次のスニペットでは、`my-file` という名前の論理的に削除されたファイルを復元します。 
+3. 次のスニペットでは、`my-file` という名前の論理的に削除されたファイルを復元します。
 
    この方法では、**DataLakeServiceClient** インスタンスが作成されていることを前提としています。 **DataLakeServiceClient** インスタンスを作成する方法については、「[アカウントに接続する](data-lake-storage-directory-file-acl-java.md#connect-to-the-account)」を参照してください。
 
@@ -313,16 +313,16 @@ Azure portal で論理的に削除された BLOB またはディレクトリを�
 
    public void RestoreFile(DataLakeServiceClient serviceClient){
 
-       DataLakeFileSystemClient fileSystemClient = 
+       DataLakeFileSystemClient fileSystemClient =
            serviceClient.getFileSystemClient("my-container");
-       
-       DataLakeFileClient fileClient = 
+
+       DataLakeFileClient fileClient =
            fileSystemClient.getFileClient("my-file");
 
        String deletionId = null;
 
        for (PathDeletedItem item : fileSystemClient.listDeletedPaths()) {
-    
+
            if (item.getName().equals(fileClient.getFilePath())) {
               deletionId = item.getDeletionId();
            }
@@ -337,7 +337,7 @@ Azure portal で論理的に削除された BLOB またはディレクトリを�
 
 ### <a name="restore-soft-deleted-blobs-and-directories-by-using-python"></a>Python を使用して論理的に削除された BLOB とディレクトリを復元する
 
->[!IMPORTANT]
+> [!IMPORTANT]
 > このセクションは、階層型名前空間があるアカウントにのみ適用されます。
 
 1. [pip](https://pypi.org/project/pip/) を使用して、Python 向けの Azure Data Lake Storage クライアント ライブラリのバージョン `12.4.0` 以降をインストールします。 このコマンドでは、Python 向けの Azure Data Lake Storage クライアント ライブラリの最新バージョンをインストールします。
@@ -369,12 +369,12 @@ Azure portal で論理的に削除された BLOB またはディレクトリを�
             directory_path = 'my-directory'
             directory_client = file_system_client.create_directory(directory_path)
             resp = directory_client.delete_directory()
-        
+
             restored_directory_client = file_system_client.undelete_path(directory_client, resp['deletion_id'])
             props = restored_directory_client.get_directory_properties()
-        
+
             print(props)
-   
+
         except Exception as e:
             print(e)
 

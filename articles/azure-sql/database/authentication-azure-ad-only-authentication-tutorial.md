@@ -1,19 +1,20 @@
 ---
-title: Azure SQL を使用して Azure Active Directory 専用認証を有効にする
+title: Azure Active Directory 認証を有効にする
 description: この記事では、Azure SQL Database と Azure SQL Managed Instance で Azure Active Directory (Azure AD) 専用認証機能を有効にする手順について説明します。
+titleSuffix: Azure SQL Database & Azure SQL Managed Instance
 ms.service: sql-db-mi
 ms.subservice: security
 ms.topic: tutorial
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 06/30/2021
-ms.openlocfilehash: 6ea0da3b8a6ddcc2f41bd9e779742f3e2d9cbe4d
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.date: 08/31/2021
+ms.openlocfilehash: 76425e37c83ea5ac44653e20753e35606b89d370
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114470765"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128643234"
 ---
 # <a name="tutorial-enable-azure-active-directory-only-authentication-with-azure-sql"></a>チュートリアル: Azure SQL を使用して Azure Active Directory 専用認証を有効にする
 
@@ -184,7 +185,7 @@ API を使用した Azure AD 専用認証の管理の詳細については、「
 
 # <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-これらのコマンドは、SQL Database 論理サーバーまたは SQL Managed Instance に対して Azure AD 専用認証が有効になっているかどうかを確認するために使用できます。 [SQL Server 共同作成者](../../role-based-access-control/built-in-roles.md#sql-server-contributor)および [SQL Managed Instance 共同作成者](../../role-based-access-control/built-in-roles.md#sql-managed-instance-contributor)ロールのメンバーは、これらのコマンドを使用して Azure AD 専用認証の状態を確認できますが、この機能を有効または無効にすることはできません。
+これらのコマンドは、Azure SQL Database の[論理サーバー](logical-servers.md)または SQL Managed Instance に対して Azure AD 専用認証が有効になっているかどうかを確認するために使用できます。 [SQL Server 共同作成者](../../role-based-access-control/built-in-roles.md#sql-server-contributor)および [SQL Managed Instance 共同作成者](../../role-based-access-control/built-in-roles.md#sql-managed-instance-contributor)ロールのメンバーは、これらのコマンドを使用して Azure AD 専用認証の状態を確認できますが、この機能を有効または無効にすることはできません。
 
 ## <a name="check-status-in-sql-database"></a>SQL Database で状態を確認する
 
@@ -240,7 +241,7 @@ API を使用した Azure AD 専用認証の管理の詳細については、「
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-これらのコマンドは、SQL Database 論理サーバーまたは SQL Managed Instance に対して Azure AD 専用認証が有効になっているかどうかを確認するために使用できます。 [SQL Server 共同作成者](../../role-based-access-control/built-in-roles.md#sql-server-contributor)および [SQL Managed Instance 共同作成者](../../role-based-access-control/built-in-roles.md#sql-managed-instance-contributor)ロールのメンバーは、これらのコマンドを使用して Azure AD 専用認証の状態を確認できますが、この機能を有効または無効にすることはできません。
+これらのコマンドは、Azure SQL Database の[論理サーバー](logical-servers.md)または SQL Managed Instance に対して Azure AD 専用認証が有効になっているかどうかを確認するために使用できます。 [SQL Server 共同作成者](../../role-based-access-control/built-in-roles.md#sql-server-contributor)および [SQL Managed Instance 共同作成者](../../role-based-access-control/built-in-roles.md#sql-managed-instance-contributor)ロールのメンバーは、これらのコマンドを使用して Azure AD 専用認証の状態を確認できますが、この機能を有効または無効にすることはできません。
 
 この機能が有効になっている場合は、状態として **True** が返され、無効になっている場合は、**False** が返されます。
 
@@ -401,3 +402,4 @@ Azure AD 専用認証を無効にした後、SQL 認証ログインを使用し�
 
 - [Azure SQL を使用した Azure AD 専用認証](authentication-azure-ad-only-authentication.md)
 - [Azure SQL で Azure AD 専用認証を有効にしたサーバーを作成する](authentication-azure-ad-only-authentication-create-server.md)
+- [Azure Policy を使用して Azure SQL で Azure Active Directory のみの認証を適用するには](authentication-azure-ad-only-authentication-policy-how-to.md)

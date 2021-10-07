@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 5cc264171c6c2dc5588156af2d3d0deb21e4fe94
-ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
+ms.openlocfilehash: e9a5b288976d375d9f773fee3dc1ea671ed902b4
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114228087"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124786524"
 ---
 # <a name="a-web-app-that-calls-web-apis-code-configuration"></a>Web API を呼び出す Web アプリ: コード構成
 
@@ -382,7 +382,7 @@ def authorized():
 ## <a name="token-cache"></a>トークンのキャッシュ
 
 > [!IMPORTANT]
-> Web アプリまたは Web API でのトークン キャッシュの実装は、[ファイル ベース](scenario-desktop-acquire-token.md#file-based-token-cache)であることが多いデスクトップ アプリケーションでの実装とは異なります。
+> Web アプリまたは Web API でのトークン キャッシュの実装は、[ファイル ベース](msal-net-token-cache-serialization.md)であることが多いデスクトップ アプリケーションでの実装とは異なります。
 > セキュリティとパフォーマンスのため、Web アプリと Web API では、ユーザー アカウントごとに 1 つのトークン キャッシュが存在することが重要です。 アカウントごとにトークン キャッシュをシリアル化する必要があります。
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
@@ -420,13 +420,13 @@ services.AddDistributedSqlServerCache(options =>
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-Web アプリまたは Web API でのトークン キャッシュの実装は、[ファイル ベース](scenario-desktop-acquire-token.md#file-based-token-cache)であることが多いデスクトップ アプリケーションでの実装とは異なります。
+Web アプリまたは Web API でのトークン キャッシュの実装は、[ファイル ベース](msal-net-token-cache-serialization.md)であることが多いデスクトップ アプリケーションでの実装とは異なります。
 
 Web アプリの実装では、ASP.NET セッションまたはサーバー メモリを使用できます。 たとえば、[MsalAppBuilder.cs#L39-L51](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/79e3e1f084cd78f9170a8ca4077869f217735a1a/WebApp/Utils/MsalAppBuilder.cs#L57-L58) で MSAL.NET アプリケーションの作成後にキャッシュの実装をフックする方法を参照してください。
 
 
 まず、これらの実装を使用するには:
-- Microsoft.Identity.Web Nuget パッケージを追加します。 これらのトークン キャッシュ シリアライザーは、不要な依存関係を避けるため、MSAL.NET に直接取り込まれません。 ASP.NET Core の上位レベルに加えて、Microsoft.Identity.Web により、MSAL.NET のヘルパーであるクラスが取り込まれます。 
+- Microsoft.Identity.Web NuGet パッケージを追加します。 これらのトークン キャッシュ シリアライザーは、不要な依存関係を避けるため、MSAL.NET に直接取り込まれません。 ASP.NET Core の上位レベルに加えて、Microsoft.Identity.Web により、MSAL.NET のヘルパーであるクラスが取り込まれます。 
 - コードで、Microsoft.Identity.Web 名前空間を使用します。
 
   ```csharp

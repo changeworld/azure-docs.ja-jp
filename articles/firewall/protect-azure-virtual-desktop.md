@@ -7,12 +7,12 @@ services: firewall
 ms.topic: how-to
 ms.date: 08/09/2021
 ms.author: victorh
-ms.openlocfilehash: 254a81e9fe5f3f0d3e98d7db6a7f70778f9746a3
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 5c165dc8f00bb21894de06e541c02788bd7b51e5
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128699209"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129424995"
 ---
 # <a name="use-azure-firewall-to-protect-azure-virtual-desktop-deployments"></a>Azure Firewall を使用して Azure Virtual Desktop のデプロイを保護する
 
@@ -24,9 +24,8 @@ Azure Virtual Desktop は、Azure で実行されるデスクトップおよび�
 
 ## <a name="prerequisites"></a>前提条件
 
-
  - デプロイされた Azure Virtual Desktop 環境とホスト プール
- - 少なくとも 1 つの Firewall Manager ポリシーを使用してデプロイされた Azure Firewall 
+ - 少なくとも 1 つの Firewall Manager ポリシーを使用してデプロイされた Azure Firewall
 
    詳細については、[Azure portal を使用したホスト プールの作成方法に関するチュートリアル](../virtual-desktop/create-host-pools-azure-marketplace.md)を参照してください。
 
@@ -36,26 +35,25 @@ Azure Virtual Desktop 環境の詳細については、「[Azure Virtual Desktop
 
 Azure Virtual Desktop 用に作成する Azure 仮想マシンが正常に機能するためには、いくつかの完全修飾ドメイン名 (FQDN) へのアクセス権が必要です。 Azure Firewall には、この構成を簡略化するための Azure Virtual Desktop FQDN タグが用意されています。 Azure Virtual Desktop プラットフォームの送信トラフィックを許可するには、次の手順に従います。
 
-Azure Firewall ポリシーを作成し、ネットワーク ルールとアプリケーション ルールのルール コレクションを作成することが必要になります。 ルール コレクションに優先順位と許可アクションまたは拒否アクションを指定します。 
+Azure Firewall ポリシーを作成し、ネットワーク ルールとアプリケーション ルールのルール コレクションを作成することが必要になります。 ルール コレクションに優先順位と許可アクションまたは拒否アクションを指定します。
 
 ### <a name="create-network-rules"></a>ネットワーク ルールを作成する
 
-| 名前 | 送信元の種類 | source | プロトコル | 宛先ポート | 変換先の型 | 宛先 |
-| --- | --- | --- | --- | --- | --- | --- |
-| 規則の名前 | IP アドレス | VNet またはサブネットの IP アドレス | 80 | TCP |  IP アドレス | 169.254.169.254、168.63.129.16 |
-| 規則の名前 | IP アドレス | VNet またはサブネットの IP アドレス | 443 | TCP | サービス タグ | AzureCloud、WindowsVirtualDesktop |
-| 規則の名前 | IP アドレス | VNet またはサブネットの IP アドレス | 53 | TCP、UDP | IP アドレス | * |
+| 名前      | 送信元の種類 | source                    | Protocol | 宛先ポート | 変換先の型 | 宛先                       |
+| --------- | ----------- | ------------------------- | -------- | ----------------- | ---------------- | --------------------------------- |
+| 規則の名前 | IP アドレス  | VNet またはサブネットの IP アドレス | TCP      | 80                | IP アドレス       | 169.254.169.254、168.63.129.16    |
+| 規則の名前 | IP アドレス  | VNet またはサブネットの IP アドレス | TCP      | 443               | サービス タグ      | AzureCloud、WindowsVirtualDesktop |
+| 規則の名前 | IP アドレス  | VNet またはサブネットの IP アドレス | TCP、UDP | 53                | IP アドレス       | *                                 |
 
 > [!NOTE]
 > 一部のデプロイでは、DNS 規則を必要としない場合があります。 たとえば、Azure Active Directory ドメイン コントローラーは、DNS クエリを 168.63.129.16 の Azure DNS に転送します。
 
-### <a name="create-application-rules"></a>アプリケーション ルールを作成する 
+### <a name="create-application-rules"></a>アプリケーション ルールを作成する
 
-| 名前 | 送信元の種類 | source | プロトコル | 変換先の型 | 宛先|
-| --- | --- | --- | --- | --- | --- |
-| 規則の名前 | IP アドレス | VNet またはサブネットの IP アドレス | Https:443 | FQDN タグ | WindowsVirtualDesktop、WindowsUpdate、Windows Diagnostics、MicrosoftActiveProtectionService |
-| 規則の名前 | IP アドレス | VNet またはサブネットの IP アドレス | Https:1688 | FQDN | kms.core.windows.net |
-
+| 名前      | 送信元の種類 | source                    | Protocol   | 変換先の型 | 宛先                                                                                 |
+| --------- | ----------- | ------------------------- | ---------- | ---------------- | ------------------------------------------------------------------------------------------- |
+| 規則の名前 | IP アドレス  | VNet またはサブネットの IP アドレス | Https:443  | FQDN タグ         | WindowsVirtualDesktop、WindowsUpdate、Windows Diagnostics、MicrosoftActiveProtectionService |
+| 規則の名前 | IP アドレス  | VNet またはサブネットの IP アドレス | Https:1688 | FQDN             | kms.core.windows.net                                                                        |
 
 > [!IMPORTANT]
 > Azure Virtual Desktop では TLS 検査を使用しないことが推奨されます。 詳細については、[プロキシ サーバー ガイドライン](../virtual-desktop/proxy-server-support.md#dont-use-ssl-termination-on-the-proxy-server)に関するページをご覧ください。
@@ -64,11 +62,11 @@ Azure Firewall ポリシーを作成し、ネットワーク ルールとアプ�
 
 組織のニーズによっては、エンド ユーザーに対して安全な送信インターネット アクセスを使用できるようにすることが必要になる場合があります。 許可される送信先の一覧が適切に定義されている場合 ([Microsoft 365 アクセス](/microsoft-365/enterprise/microsoft-365-ip-web-service)用のものなど)、Azure Firewall アプリケーションとネットワーク ルールを使用して必要なアクセスを構成できます。 これにより、最適なパフォーマンスを得るため、エンド ユーザーのトラフィックがインターネットに直接ルーティングされます。 Windows 365 または Intune に対してネットワーク接続を許可する必要がある場合は、[Windows 365 のネットワーク要件](/windows-365/requirements-network#allow-network-connectivity)、および [Intune のネットワーク エンドポイント](/mem/intune/fundamentals/intune-endpoints)に関する記事を参照してください。
 
-セキュリティで保護された既存のオンプレミスの Web ゲートウェイを使用して送信ユーザー インターネット トラフィックをフィルター処理する場合は、明示的なプロキシ構成を使用して、Azure Virtual Desktop ホスト プールで実行されている Web ブラウザーやその他のアプリケーションを構成できます。 例については、「[Microsoft Edge コマンド ライン オプションを使用してプロキシ設定を構成する方法](/deployedge/edge-learnmore-cmdline-options-proxy-settings)」を参照してください。 これらのプロキシ設定は、エンド ユーザーのインターネット アクセスにのみ影響し、Azure Firewall 経由で直接 Azure Virtual Desktop プラットフォームの送信トラフィックを許可します。 
+セキュリティで保護された既存のオンプレミスの Web ゲートウェイを使用して送信ユーザー インターネット トラフィックをフィルター処理する場合は、明示的なプロキシ構成を使用して、Azure Virtual Desktop ホスト プールで実行されている Web ブラウザーやその他のアプリケーションを構成できます。 例については、「[Microsoft Edge コマンド ライン オプションを使用してプロキシ設定を構成する方法](/deployedge/edge-learnmore-cmdline-options-proxy-settings)」を参照してください。 これらのプロキシ設定は、エンド ユーザーのインターネット アクセスにのみ影響し、Azure Firewall 経由で直接 Azure Virtual Desktop プラットフォームの送信トラフィックを許可します。
 
 ## <a name="control-user-access-to-the-web"></a>Web へのユーザー アクセスを制御する
 
-管理者は、別の Web サイト カテゴリへのユーザー アクセスを許可または拒否できます。 アプリケーション コレクションに、特定の IP アドレスから、許可または拒否する Web カテゴリに対するルールを追加します。 すべての [Web カテゴリ](web-categories.md)をご確認ください。 
+管理者は、別の Web サイト カテゴリへのユーザー アクセスを許可または拒否できます。 アプリケーション コレクションに、特定の IP アドレスから、許可または拒否する Web カテゴリに対するルールを追加します。 すべての [Web カテゴリ](web-categories.md)をご確認ください。
 
 ## <a name="additional-considerations"></a>その他の注意点
 

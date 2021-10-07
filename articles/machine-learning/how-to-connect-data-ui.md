@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: データストアとデータセットを作成し、Azure Machine Learning スタジオを使用して Azure のストレージ サービス内のデータに安全に接続します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mldata
 ms.topic: how-to
 ms.author: yogipandey
 author: ynpandey
 ms.reviewer: nibaccam
 ms.date: 07/06/2021
 ms.custom: data4ml
-ms.openlocfilehash: 8764f237d3e5304df95357cb770738e32d8395dd
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 9453e2894f833fbedb1022d2326bd3423e78d94a
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114441884"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129423635"
 ---
 # <a name="connect-to-data-with-the-azure-machine-learning-studio"></a>Azure Machine Learning スタジオを使用してデータに接続する
 
@@ -116,7 +116,7 @@ Studio でデータセットを作成するには、次の手順を実行しま�
 
 |統計|説明
 |------|------
-|機能| 集約されている列の名前。
+|特徴量| 集約されている列の名前。
 |プロファイル| 推論された型に基づくインライン視覚化。 たとえば、文字列、ブール値、日付には値の数が示される一方、10 進数 (数値) は近似されたヒストグラムが示されます。 これにより、データの分布を簡単に把握できます。
 |型の分布| 列内の型のインライン値カウント。 Null は独自の型であるため、この視覚化は変則値または欠損値を検出するために便利です。
 |Type|推論される列の型。 使用可能な値には、文字列、ブール値、日付、10 進数が含まれます。

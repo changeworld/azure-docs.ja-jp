@@ -1,15 +1,15 @@
 ---
 title: チュートリアル:カスタム イベントをハイブリッド接続に送信する - Event Grid
 description: チュートリアル:Azure Event Grid と Azure CLI を使用して、トピックを発行したり、そのイベントをサブスクライブしたりします。 ハイブリッド接続はエンドポイントに使用されます｡
-ms.date: 07/07/2020
+ms.date: 09/29/2021
 ms.topic: tutorial
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7fcbc76f3ab58aac6beca3e142eba3a9b62c28a3
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: b4f4b82e590095c866d4c7a8ee016910d2e11383
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107770408"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129277767"
 ---
 # <a name="tutorial-route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>チュートリアル:Azure CLI および Azure Event Grid を利用した Azure Relay Hybrid Connections へのカスタム イベントの転送
 

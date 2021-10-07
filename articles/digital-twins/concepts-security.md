@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 6/1/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: a2d81d9ffbb79d0f05c8e0bf44fbe9d8967cf02f
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 253d763cffc8b70d134182c13678320f4ac50f4c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122253771"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128586326"
 ---
 # <a name="secure-azure-digital-twins"></a>Azure Digital Twins をセキュリティで保護する
 
@@ -84,7 +84,7 @@ Azure には、Azure Digital Twins [データ プレーン API](concepts-apis-sd
 
 ユーザーが自分のロールで許可されていないアクションの実行を試みた場合、`403 (Forbidden)` と書かれた、サービス要求からのエラーが表示されることがあります。 詳細とトラブルシューティングの手順については、"[Azure Digital Twins 要求が失敗しました: 状態 403 (許可されていません)](troubleshoot-error-403.md) " といったエラーのトラブルシューティングに関するページを参照してください。
 
-## <a name="managed-identity-for-accessing-other-resources-preview"></a>他のリソースにアクセスするためのマネージド ID (プレビュー)
+## <a name="managed-identity-for-accessing-other-resources"></a>他のリソースにアクセスするためのマネージド ID
 
 Azure Digital Twins インスタンスの [Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) **マネージド ID** を設定することで、Azure AD で保護されている他のリソース ([Azure Key Vault](../key-vault/general/overview.md) など) に簡単にアクセスできます。 ID は Azure プラットフォームによって管理され、ユーザーがシークレットをプロビジョニングまたはローテーションする必要はありません。 Azure AD のマネージド ID について詳しくは、「 [Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/overview.md)」をご覧ください。 
 
