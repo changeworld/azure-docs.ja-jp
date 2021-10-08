@@ -100,6 +100,10 @@
           href: scripts/event-grid-powershell-resource-group.md
         - name: リソース グループのイベントのサブスクライブとフィルター
           href: scripts/event-grid-powershell-resource-group-filter.md
+        - name: Azure Event Grid の Azure AD アプリを使用して WebHook 配信をセキュリティで保護する
+          href: scripts/event-grid-powershell-webhook-secure-delivery-azure-ad-app.md
+        - name: Azure Event Grid の Azure AD ユーザーを使用して WebHook 配信をセキュリティで保護する
+          href: scripts/event-grid-powershell-webhook-secure-delivery-azure-ad-user.md
     - name: Resource Manager テンプレート
       href: template-samples.md
     - name: コード サンプル

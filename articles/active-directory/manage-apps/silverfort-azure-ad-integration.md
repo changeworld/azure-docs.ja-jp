@@ -1,6 +1,7 @@
 ---
 title: Azure AD と Silverfort で安全にハイブリッド アクセスを行う
 description: このチュートリアルでは、Silverfort を Azure AD と連携させて、安全にハイブリッド アクセスを行う方法を説明します
+services: active-directory
 author: gargi-sinha
 manager: martinco
 ms.service: active-directory
@@ -10,12 +11,12 @@ ms.workload: identity
 ms.date: 9/13/2021
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0429b00a03aaf39fa5eb5657253ee6ee51190049
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: ce68bde35f817d17f1278f6826ffe38284bf6c1a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129274560"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128699738"
 ---
 # <a name="tutorial-configure-silverfort-with-azure-active-directory-for-secure-hybrid-access"></a>チュートリアル: Azure Active Directory と連携するよう Silverfort を構成し、安全にハイブリッド アクセスを行う
 
@@ -133,7 +134,7 @@ Azure AD テナントに追加したアプリケーションで SSO を設定す
 
     ![ポリシーを追加する画面の画像](./media/silverfort-azure-ad-integration/add-policy.png)
 
-14. Azure AD コンソールに戻り、 **[Enterprise applications]\(エンタープライズ アプリケーション\)** に移動します。 新しい Silverfort アプリケーションが表示されます。 このアプリケーションを [[CA policies]\(CA ポリシー\)](../authentication/tutorial-enable-azure-mfa.md?bc=/azure/active-directory/conditional-access/breadcrumb/toc.json&toc=/azure/active-directory/conditional-access/toc.json%23create-a-conditional-access-policy) に追加できるようになりました。
+14. Azure AD コンソールに戻り、 **[Enterprise applications]\(エンタープライズ アプリケーション\)** に移動します。 新しい Silverfort アプリケーションが表示されます。 このアプリケーションを [[CA policies]\(CA ポリシー\)](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-azure-mfa?bc=/azure/active-directory/conditional-access/breadcrumb/toc.json&toc=/azure/active-directory/conditional-access/toc.json%23create-a-conditional-access-policy) に追加できるようになりました。
 
 ## <a name="next-steps"></a>次のステップ
 

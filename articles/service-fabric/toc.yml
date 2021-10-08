@@ -420,6 +420,8 @@
           href: how-to-managed-cluster-app-deployment-template.md
         - name: マネージド ID を使用してアプリケーションを管理対象クラスターにデプロイする
           href: how-to-managed-cluster-application-managed-identity.md
+        - name: 管理対象クラスターの他の Azure リソースへのアクセス権を付与する
+          href: how-to-managed-cluster-grant-access-other-resources.md
         - name: 管理対象クラスターにステートレス専用のノードの種類をデプロイする
           href: how-to-managed-cluster-stateless-node-type.md
         - name: 管理されたクラスターで大規模なスケーリングのためにセカンダリ ノードの種類を構成する

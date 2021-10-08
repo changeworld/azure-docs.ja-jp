@@ -664,6 +664,8 @@ items:
             href: data-flow-sort.md
           - name: source
             href: data-flow-source.md
+          - name: Stringify
+            href: data-flow-stringify.md
           - name: 代理キー
             href: data-flow-surrogate-key.md
           - name: Union

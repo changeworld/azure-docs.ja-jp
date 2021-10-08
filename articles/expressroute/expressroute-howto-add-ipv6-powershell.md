@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 03/02/2021
 ms.author: duau
-ms.openlocfilehash: 67010d698c51e0eb66abcfa35fc629ec58d28789
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 62616465b98feca1052ac3e45932120fdf0ffd42
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123424224"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128584510"
 ---
 # <a name="add-ipv6-support-for-private-peering-using-azure-powershell-preview"></a>Azure PowerShell を使用してプライベート ピアリングに対する IPv6 サポートを追加する (プレビュー)
 
@@ -154,7 +154,7 @@ IPv6 プライベート ピアリングを使用して新しい Azure リソー�
 ## <a name="limitations"></a>制限事項
 IPv6 サポートは、パブリック Azure リージョン内のデプロイへの接続に使用できますが、次のユース ケースはサポートされていません。
 
-* ゾーン冗長 "*ではない*" 既存の ExpressRoute ゲートウェイへの接続
+* ゾーン冗長ではない "*既存の*" ExpressRoute ゲートウェイへの接続。 標準の静的 IP アドレスを使用して "*新しく*" 作成された任意の SKU の ExpressRoute ゲートウェイは (ゾーン冗長かどうかを問わず)、デュアルスタック ExpressRoute 接続に使用できることに注意してください
 * ExpressRoute 回線間の Global Reach 接続
 * ExpressRoute と仮想 WAN の使用
 * ExpressRoute Direct 以外の回線の FastPath

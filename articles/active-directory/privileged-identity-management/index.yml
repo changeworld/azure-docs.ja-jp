@@ -11,13 +11,13 @@ metadata:
   ms.collection: 
   author: curtand
   ms.author: curtand
-  ms.date: 08/28/2019
-  ms.openlocfilehash: 80b562ff3f5fba7c57253e3761802dd3379b017b
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.date: 10/07/2021
+  ms.openlocfilehash: a2d4fadc112885e387eff4a524ad9c602e6b3a8c
+  ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "72554319"
+  ms.lasthandoff: 10/07/2021
+  ms.locfileid: "129668829"
 landingContent:
 - title: Privileged Identity Management について
   linkLists:
@@ -33,7 +33,7 @@ landingContent:
     links:
     - text: お客様の領域でキーを保護する
       url: https://www.youtube.com/embed/w7wTpZYJJeQ
-- title: 作業開始
+- title: はじめに
   linkLists:
   - linkListType: how-to-guide
     links:

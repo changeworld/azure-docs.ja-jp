@@ -394,6 +394,8 @@
           href: manage/ea-portal-troubleshoot.md
         - name: サポートにお問い合せください
           href: ../azure-portal/supportability/how-to-create-azure-support-request.md
+        - name: EA サポート リクエストを作成する
+          href: manage/how-to-create-azure-support-request-ea.md
 - name: リファレンス
   items:
     - name: Azure CLI

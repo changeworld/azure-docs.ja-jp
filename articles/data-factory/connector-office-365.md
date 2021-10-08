@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 09/30/2021
+ms.date: 09/09/2021
 ms.author: jianleishen
-ms.openlocfilehash: edd54b8b6f96244bef4b78ab191e4b265a753e69
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 45f4f771d2cb289b9893bb8243add86df36ac915
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129360491"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124815024"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory-or-synapse-analytics"></a>Azure Data Factory または Synapse Analytics を使用して Office 365 から Azure にデータをコピーする
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -51,6 +51,9 @@ Office 365 から Azure にデータをコピーするには、前提条件と�
 
 承認者がデータ アクセス要求を承認する方法については[こちら](/graph/data-connect-faq#how-can-i-approve-pam-requests-via-microsoft-365-admin-portal)を、Privileged Access Management との統合に関する概要 (データ アクセス承認者グループの設定を含む) については[こちら](/graph/data-connect-pam)をご覧ください。
 
+## <a name="policy-validation"></a>ポリシー検証
+
+ADF がマネージド アプリの一部として作成され、管理リソース グループ内のリソースに対して Azure ポリシーの割り当てが行われた場合は、コピー アクティビティが実行されるたびに、ポリシー割り当てが適用されるかどうかが ADF によってチェックされます。 サポートされているポリシーの一覧については、[こちら](/graph/data-connect-policies#policies)をご覧ください。
 
 ## <a name="getting-started"></a>作業の開始
 

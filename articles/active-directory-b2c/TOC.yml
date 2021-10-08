@@ -7,6 +7,8 @@
       href: overview.md
     - name: 技術と機能の概要
       href: technical-overview.md
+    - name: サポートされる Azure AD の機能
+      href: supported-azure-ad-features.md
     - name: ドキュメントの最新情報
       href: whats-new-docs.md
 - name: クイックスタート
@@ -26,7 +28,9 @@
       href: tutorial-register-applications.md
     - name: 3 - ユーザー フローとカスタム ポリシーの作成
       href: tutorial-create-user-flows.md
-    - name: テナントのクリーンアップと削除
+    - name: 4 - テナントの管理
+      href: tenant-management.md
+    - name: 5 - テナントのクリーンアップと削除
       href: tutorial-delete-tenant.md
 - name: サンプル
   items:
@@ -82,14 +86,14 @@
       href: user-overview.md
     - name: ユーザー プロファイルの属性
       href: user-profile-attributes.md
+    - name: ロールとリソースのアクセス制御
+      href: roles-resource-access-control.md
     - name: Identity Protection と条件付きアクセス
       href: conditional-access-identity-protection-overview.md
     - name: ポリシー キー
       href: policy-keys-overview.md
 - name: 操作方法ガイド
   items:
-    - name: テナントの管理
-      href: tenant-management.md
     - name: アプリの統合
       items:
         - name: ASP.NET Core Web アプリ

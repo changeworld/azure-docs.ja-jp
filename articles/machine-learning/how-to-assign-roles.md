@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、Azure Machine Learning ワークスペースにアクセスする方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: enterprise-readiness
+ms.subservice: core
 ms.topic: how-to
 ms.reviewer: Blackmist
 ms.author: johwu
 author: johnwu0604
 ms.date: 03/26/2021
 ms.custom: how-to, seodec18, devx-track-azurecli, contperf-fy21q2
-ms.openlocfilehash: 1089589dabd91d9f273b71f0b89bbf0ad3488e95
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 51846db6f54baaec89a6a9a1164e2d5001c9dbb9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129427782"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128679635"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペースへのアクセスの管理
 

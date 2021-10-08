@@ -4,14 +4,20 @@
       href: 'https://azure.microsoft.com/features/resiliency'
     - name: 回復性に優れた Azure 用アプリケーションの設計
       href: /azure/architecture/framework/resiliency/app-design
+- name: Availability Zones の基礎
+  items:
+    - name: Azure のリージョンと Availability Zones
+      href: az-overview.md
+    - name: Azure サービス
+      href: region-types-service-categories-azure.md
+    - name: Availability Zones をサポートする Azure サービス
+      href: az-region.md
+    - name: 用語
+      href: glossary.md
 - name: 高可用性
   items:
-    - name: リージョンと Availability Zones
-      href: az-overview.md
-    - name: 可用性ゾーンのドキュメント
+    - name: クイックスタート ガイド
       items:
-        - name: Availability Zones をサポートする Azure サービス
-          href: az-region.md
         - name: 仮想マシン
           items:
             - name: CLI を使用して可用性ゾーン内に Linux VM を作成する

@@ -13,6 +13,8 @@
       href: flexible-server/whats-new.md
     - name: フレキシブル サーバーを無料で試す
       href: flexible-server/how-to-deploy-on-azure-free-account.md
+    - name: 予約容量の前払い
+      href: concept-reserved-pricing.md
     - name: バージョンのサポート ポリシー
       href: concepts-version-policy.md
       displayName: version policy
@@ -31,8 +33,6 @@
           items:
             - name: 価格レベル
               href: concepts-pricing-tiers.md
-            - name: 予約容量の前払い
-              href: concept-reserved-pricing.md
     - name: クイックスタート
       expanded: true
       items:

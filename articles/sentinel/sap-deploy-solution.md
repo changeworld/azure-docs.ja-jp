@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.custom: mvc
 ms.date: 07/06/2021
 ms.subservice: azure-sentinel
-ms.openlocfilehash: 7b6f68eea2c177ad4e6776723ae0387c0e0da6a1
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 301181b291521b8a8b19a7d7266e90fa2c542e49
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129361828"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128562933"
 ---
 #  <a name="deploy-sap-continuous-threat-monitoring-public-preview"></a>SAP の継続的な脅威監視をデプロイする (パブリック プレビュー)
 
@@ -136,7 +136,7 @@ SAP データ コネクタをデプロイしたら、SAP ソリューション�
 1. 次のコマンドを例として使用し、リソース グループと VM 名の値を挿入します。
 
     ```azurecli
-    az vm create  --resource-group [resource group name]   --name [VM Name] --image UbuntuLTS  --admin-username azureuser --data-disk-sizes-gb 10 – --size Standard_DS2 --generate-ssh-keys  --assign-identity
+    az vm create  --resource-group [resource group name]   --name [VM Name] --image UbuntuLTS  --admin-username AzureUser --data-disk-sizes-gb 10 – --size Standard_DS2_– --generate-ssh-keys  --assign-identity
     ```
 
 1. 新しい VM に、次をインストールします。
@@ -293,13 +293,23 @@ SAP 関連のウォッチリストを Azure Sentinel ワークスペースに手
 
 以前のバージョンの SAP データ コネクタで既に実行されている Docker コンテナーがある場合は、SAP データ コネクタの更新スクリプトを実行して、使用可能な最新の機能を取得します。
 
-Azure Sentinel GitHub リポジトリから、関連するデプロイ スクリプトの最新バージョンがインストールされていることを確認します。 
+1. Azure Sentinel GitHub リポジトリから、関連するデプロイ スクリプトの最新バージョンがインストールされていることを確認します。 次を実行します。
 
-次を実行します。
+    ```azurecli
+    wget -O sapcon-instance-update.sh https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/Solutions/SAP/sapcon-instance-update.sh && bash ./sapcon-instance-update.sh
+    ```
 
-```azurecli
-wget -O sapcon-instance-update.sh https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/Solutions/SAP/sapcon-instance-update.sh && bash ./sapcon-instance-update.sh
-```
+1. お使いの SAP データ コネクタ マシンで次のコマンドを実行します。
+
+    ```azurecli
+    ./ sapcon-instance-update.sh
+    ```
+
+1. Docker コンテナーを再起動します。
+
+    ```bash
+    docker restart sapcon-[SID]
+    ```
 
 マシン上の SAP データ コネクタ Docker コンテナーが更新されます。 
 

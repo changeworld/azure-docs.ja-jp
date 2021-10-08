@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: rarayudu, azla
 ms.topic: how-to
 ms.date: 09/13/2021
-ms.openlocfilehash: ed101e95a8580274661fd19d752a478677359641
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 0fedae22564d9bb393952e65a737d73e1fd254f9
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128647197"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129350486"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Azure Logic Apps におけるアクセスとデータのセキュリティ保護
 
@@ -146,7 +146,7 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 ロジック アプリで、OAuth アクセス トークンを含む外部からの要求を受け取る場合、Azure Logic Apps では、トークンのクレームを、各認証ポリシーで指定するクレームと照合します。 トークンのクレームと、少なくとも 1 つのポリシーに含まれるすべてのクレームが一致した場合、受信要求に対して承認が成功します。 トークンは、承認ポリシーで指定された数よりも多くのクレームを持つことができます。
 
 > [!NOTE]
-> シングルテナントの Azure Logic Apps の **Logic App (Standard)** では現在、Request トリガーや HTTP Webhook トリガーなど、要求によって動作するトリガーに対する外部からの呼び出しには、Azure AD OAuth を利用できません。
+> シングルテナント Azure Logic Apps の **ロジック アプリ (Standard)** リソースの種類の場合、要求トリガーや HTTP Webhook トリガーなどの要求ベースのトリガーへの受信呼び出しでは、Azure AD OAuth は現在使用できません。
 
 #### <a name="considerations-before-you-enable-azure-ad-oauth"></a>Azure AD OAuth を有効にする前の考慮事項
 
@@ -897,7 +897,7 @@ TLS/SSL 自己署名証明書に関する情報を次に示します。
 
 * グローバルなマルチテナント Azure Logic Apps 環境内のロジック アプリの場合、HTTP 操作は自己署名の TLS/SSL 証明書を許可しません。 ロジック アプリがサーバーに対して HTTP 呼び出しを行い、TLS/SSL 自己署名証明書を提示すると、`TrustFailure` エラーが発生して HTTP 呼び出しは失敗します。
 
-* シングルテナント Azure Logic Apps 環境内のロジック アプリの場合、HTTP 操作は自己署名の TLS/SSL 証明書をサポートします。 ただし、この認証の種類に対して追加の手順をいくつか完了する必要があります。 そうしない場合、呼び出しは失敗します。 詳細については、[シングルテナント Azure Logic Apps 用の TSL/SSL 証明書の認証](../connectors/connectors-native-http.md#tsl-ssl-certificate-authentication)に関するページをご覧ください。
+* シングルテナント Azure Logic Apps 環境内のロジック アプリの場合、HTTP 操作は自己署名の TLS/SSL 証明書をサポートします。 ただし、この認証の種類に対して追加の手順をいくつか完了する必要があります。 そうしない場合、呼び出しは失敗します。 詳細については、[シングルテナント Azure Logic Apps 用の TSL/SSL 証明書の認証](../connectors/connectors-native-http.md#tlsssl-certificate-authentication)に関するページをご覧ください。
 
   代わりに、クライアント証明書、または資格情報の種類が "Certificate" の Azure Active Directory Open Authentication (Azure AD OAuth) を使用する場合でも、この認証の種類に対して追加の手順をいくつか完了する必要があります。 そうしない場合、呼び出しは失敗します。 詳細については、[シングルテナント Azure Logic Apps 用のクライアント証明書または資格情報の種類が "Certificate" の Azure Active Directory Open Authentication (Azure AD OAuth)](../connectors/connectors-native-http.md#client-certificate-authentication) に関するページをご覧ください。
 

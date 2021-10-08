@@ -7,12 +7,12 @@ ms.date: 08/28/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 471a9e0fd68678b0fc09c05bb47ad40affb7d9f9
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 052dc4d0d275c120d7bb9379937fadfe0e005bdd
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123470168"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128656723"
 ---
 # <a name="how-to-use-the-iot-central-rest-api-to-control-devices"></a>IoT Central REST API を使用してデバイスを制御する方法
 
@@ -30,6 +30,9 @@ IoT Central REST API を使用して、IoT Central アプリケーションと�
 すべての IoT Central REST API 呼び出しに承認ヘッダーが必要です。 詳細については、「[IoT Central REST API 呼び出しを認証および承認する方法](howto-authorize-rest-api.md)」を参照してください。
 
 IoT Central REST API のリファレンス ドキュメントについては、「[Azure IoT Central REST API リファレンス](/rest/api/iotcentral/)」をご覧ください。
+
+> [!TIP]
+> [プレビュー API](/rest/api/iotcentral/1.1-previewdataplane/devices) には、新しい[組織機能](howto-create-organizations.md)のサポートが含まれています。
 
 ## <a name="components-and-modules"></a>コンポーネントとモジュール
 

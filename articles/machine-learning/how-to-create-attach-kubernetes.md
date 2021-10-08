@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: Azure Machine Learning を使用して新しい Azure Kubernetes Service クラスターを作成する方法、または既存の AKS クラスターをワークスペースに接続する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.topic: how-to
 ms.custom: devx-track-azurecli
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/16/2021
-ms.openlocfilehash: 7a0b2f24b10ace50d1e994284cb48b50799dfd57
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: f7e2a3311f9540413880d20839f56a4932519f1c
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128618193"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129426361"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service クラスターを作成してアタッチする
 
@@ -83,9 +83,6 @@ Azure Kubernetes Service では、さまざまな Kubernetes バージョンを�
 これらの方法で AKS クラスターを作成するには、クラスターの __既定の__ バージョンを使用します。 Kubernetes の新しいバージョンが利用可能になると、"*既定のバージョンは時間とともに変化します*"。
 
 既存の AKS クラスターを **アタッチする** 場合、現在サポートされているすべての AKS バージョンがサポートされています。
-
-> [!IMPORTANT]
-> 現在、Azure Machine Learning では、AKS バージョン **1.21.x** へのモデルのデプロイはサポートされません
 
 > [!IMPORTANT]
 > Azure Kubernetes Service では、[Blobfuse FlexVolume ドライバー](https://github.com/Azure/kubernetes-volume-drivers/blob/master/flexvolume/blobfuse/README.md) (バージョン 1.16 以下の場合) および [Blob CSI ドライバー](https://github.com/kubernetes-sigs/blob-csi-driver/blob/master/README.md) (バージョン 1.17 以上の場合) が使用されます。 そのため、クラスターのバージョンに合った正しい blobfuse 方式にデプロイするためには、クラスターのアップグレード後、[Web サービスを更新](how-to-deploy-update-web-service.md)または再デプロイすることが重要です。

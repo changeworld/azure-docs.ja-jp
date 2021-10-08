@@ -147,6 +147,8 @@
           href: azure-app-test-publish.md
         - name: オファーを販売する
           href: azure-app-marketing.md
+        - name: マネージド アプリの従量制課金
+          href: azure-app-metered-billing.md
         - name: 従量制課金
           href: marketplace-metering-service-apis.md
         - name: 使用量ベースの月次請求の価格を構成する

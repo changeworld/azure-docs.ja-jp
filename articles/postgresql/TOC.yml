@@ -30,6 +30,8 @@
       displayName: 'version, postgresql'
     - name: メジャー バージョンのアップグレード
       href: how-to-upgrade-using-dump-and-restore.md
+    - name: 予約容量の前払い
+      href: concept-reserved-pricing.md
     - name: 既知の問題と制限事項
       href: concepts-known-issues-limitations.md
       displayName: 'issues, limitations, postgresql'
@@ -133,9 +135,7 @@
           items:
             - name: 価格レベル
               href: concepts-pricing-tiers.md
-            - name: 予約容量の前払い
-              href: concept-reserved-pricing.md
-        - name: セキュリティ
+        - name: Security
           items:
             - name: セキュリティの概要
               href: concepts-security.md
