@@ -9,12 +9,12 @@ ms.devlang: java
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.custom: devx-track-java
-ms.openlocfilehash: 678161e4eee7e954f1507c370560e6891850750b
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 54f0796d52d150db272e00c5cb66aa0c68a2e51c
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123113917"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129090991"
 ---
 # <a name="troubleshoot-issues-when-you-use-azure-cosmos-db-java-sdk-v4-with-sql-api-accounts"></a>SQL API アカウントで Azure Cosmos DB Java SDK v4 を使用する場合の問題のトラブルシューティング
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -148,6 +148,14 @@ Netty IO スレッドは、非ブロッキング Netty IO 作業のためだけ�
 * **GetRetryAfterInMilliseconds の間隔でバックオフを実装する**
 
     パフォーマンス テストでは、調整される要求の割合がわずかになるまで負荷を上げる必要があります。 スロットル状態になった場合は、クライアント アプリケーションでバックオフ値を適用し、サーバー側によって指定された再試行間隔を後退させる必要があります。 バックオフにより、再試行までの待ち時間を最小限に抑えることができます。
+
+### <a name="error-handling-from-java-sdk-reactive-chain"></a>Java SDK リアクティブ チェーンからのエラー処理
+
+Cosmos DB Java SDK からのエラー処理は、クライアントのアプリケーション ロジックの観点で重要です。 [リアクター コア フレームワーク](https://projectreactor.io/docs/core/release/reference/#error.handling)はまざまなエラー処理メカニズムを提供しており、これはさまざまなシナリオで使用できます。 これらのエラー処理演算子の詳細を理解し、再試行ロジックのシナリオに最適なものを使用することをお勧めします。
+
+> [!IMPORTANT]
+> [`onErrorContinue()`](https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html#onErrorContinue-java.util.function.BiConsumer-) 演算子は、すべてのシナリオでサポートされているわけではないため、使用しないことをお勧めします。
+> `onErrorContinue()` は、リアクティブ チェーンの動作を不明瞭にする可能性のある特殊な演算子であることに注意してください。 これは、ダウンストリームではなくアップストリームで動作する演算子であり、機能するには特定の演算子のサポートを必要とします。スコープは容易に上流に伝播し、これを想定していないライブラリ コードに届く可能性があります (その結果、意図しない動作が発生します)。 この特殊なオペレーターの詳細については、`onErrorContinue()` の[資料](https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html#onErrorContinue-java.util.function.BiConsumer-)を参照してください。
 
 ### <a name="failure-connecting-to-azure-cosmos-db-emulator"></a>Azure Cosmos DB エミュレーターへの接続の失敗
 

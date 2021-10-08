@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: 9015e3ce69042a2e7d96588956becff889827ab3
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 3feae35a4b7c98ea317bb9cec5dd54ca3f5db63c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123225175"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128562516"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage Explorer トラブルシューティング ガイド
 
@@ -23,7 +23,7 @@ Microsoft Azure Storage Explorer は、Windows、macOS、Linux での Azure Stor
 
 ## <a name="azure-rbac-permissions-issues"></a>Azure RBAC のアクセス許可に関する問題
 
-Azure のロールベースのアクセス制御 ([Azure RBAC](../../role-based-access-control/overview.md)) を使用すると、アクセス許可のセットを "_ロール_" に結び付けることで、Azure リソースの非常にきめ細かなアクセス管理が可能になります。 ここでは、Storage Explorer で Azure RBAC を最適に動作させる方法について説明します。
+Azure のロールベースのアクセス制御 ([Azure RBAC](../../role-based-access-control/overview.md)) を使用すると、アクセス許可のセットを "*ロール*" に結び付けることで、Azure リソースの非常にきめ細かなアクセス管理が可能になります。 ここでは、Storage Explorer で Azure RBAC を最適に動作させる方法について説明します。
 
 ### <a name="how-do-i-access-my-resources-in-storage-explorer"></a>Storage Explorer で自分のリソースにアクセスするにはどうすればいいですか?
 
@@ -31,22 +31,22 @@ Azure RBAC を使用したストレージ リソースへのアクセスに問�
 
 #### <a name="read-listget-storage-accounts-permissions-issue"></a>"読み取り:ストレージ アカウントの一覧表示/取得" アクセス許可の問題
 
-ストレージ アカウントを一覧表示するためのアクセス許可が必要です。 このアクセス許可を取得するには、_閲覧者_ ロールが割り当てられている必要があります。
+ストレージ アカウントを一覧表示するためのアクセス許可が必要です。 このアクセス許可を取得するには、*閲覧者* ロールが割り当てられている必要があります。
 
 #### <a name="list-storage-account-keys"></a>ストレージ アカウント キーの一覧表示
 
-Storage Explorer では、アカウント キーを使用して要求を認証することもできます。 _共同作成者_ ロールなどのより強力なロールを使用してアカウント キーにアクセスすることができます。
+Storage Explorer では、アカウント キーを使用して要求を認証することもできます。 *共同作成者* ロールなどのより強力なロールを使用してアカウント キーにアクセスすることができます。
 
 > [!NOTE]
 > アクセス キーは、それらを保持するすべてのユーザーに無制限のアクセス許可を付与します。 そのため、これらのキーをアカウント ユーザーに渡すことはお勧めしません。 アクセス キーを取り消す必要がある場合は、[Azure portal](https://portal.azure.com/) で再生成できます。
 
 #### <a name="data-roles"></a>データ ロール
 
-リソースからデータを読み取るためのアクセス権を付与するロールが少なくとも 1 つ割り当てられている必要があります。 たとえば、BLOB を一覧表示したりダウンロードしたりする場合は、少なくとも _ストレージ BLOB データ閲覧者_ ロールが必要になります。
+リソースからデータを読み取るためのアクセス権を付与するロールが少なくとも 1 つ割り当てられている必要があります。 たとえば、BLOB を一覧表示したりダウンロードしたりする場合は、少なくとも *ストレージ BLOB データ閲覧者* ロールが必要になります。
 
 ### <a name="why-do-i-need-a-management-layer-role-to-see-my-resources-in-storage-explorer"></a>Storage Explorer でリソースを表示するには、管理レイヤーのロールが必要ですか?
 
-Azure Storage には、_管理_ と _データ_ という 2 つのアクセスのレイヤーがあります。 サブスクリプションとストレージ アカウントには管理レイヤーを介してアクセスします。 コンテナー、BLOB、およびその他のデータ リソースには、データ レイヤーを介してアクセスします。 たとえば、Azure からストレージ アカウントの一覧を取得する場合は、管理エンドポイントに要求を送信します。 アカウント内の BLOB コンテナーの一覧が必要な場合は、適切なサービス エンドポイントに要求を送信します。
+Azure Storage には、*管理* と *データ* という 2 つのアクセスのレイヤーがあります。 サブスクリプションとストレージ アカウントには管理レイヤーを介してアクセスします。 コンテナー、BLOB、およびその他のデータ リソースには、データ レイヤーを介してアクセスします。 たとえば、Azure からストレージ アカウントの一覧を取得する場合は、管理エンドポイントに要求を送信します。 アカウント内の BLOB コンテナーの一覧が必要な場合は、適切なサービス エンドポイントに要求を送信します。
 
 Azure ロールでは、管理レイヤーまたはデータ レイヤーにアクセスするためのアクセス許可を与えることができます。 たとえば、閲覧者ロールは、管理レイヤー リソースへの読み取り専用アクセス権を付与します。
 
@@ -54,7 +54,7 @@ Azure ロールでは、管理レイヤーまたはデータ レイヤーにア�
 
 Storage Explorer を使用すると、Azure リソースに接続するために必要な情報を収集することで、リソースに簡単にアクセスできます。 たとえば、BLOB コンテナーを表示するために、Storage Explorer は BLOB サービス エンドポイントに "コンテナーの一覧表示" 要求を送信します。 そのエンドポイントを取得するために、Storage Explorer は、アクセスできるサブスクリプションとストレージ アカウントの一覧を検索します。 サブスクリプションとストレージ アカウントを検索するには、Storage Explorer は管理レイヤーにもアクセスする必要があります。
 
-管理レイヤーのアクセス許可を付与するロールを持っていない場合、Storage Explorer は、データ レイヤーに接続するために必要な情報を取得できません。
+管理レイヤー権限のあるロールがないと、Storage Explorer で、データ レイヤーへの接続に必要な情報が取得できません。
 
 ### <a name="what-if-i-cant-get-the-management-layer-permissions-i-need-from-my-administrator"></a>管理レイヤーのアクセス許可を取得できない場合、管理者からは何が必要でしょうか?
 
@@ -72,7 +72,7 @@ BLOB コンテナー、ADLS Gen2 コンテナーまたはディレクトリ、�
 1. 接続先のリソースの種類を選択します。
 1. **[Shared Access Signature (SAS)]** を選択します。 **[次へ]** を選択します。
 1. 受け取った SAS URL を入力し、接続の一意の表示名を入力します。 **[次へ]** 、 **[接続]** の順に選択します。
- 
+
 リソースへのアタッチの詳細については、「[個々のリソースにアタッチする](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=linux#attach-to-an-individual-resource)」を参照してください。
 
 ### <a name="recommended-azure-built-in-roles"></a>推奨される Azure 組み込みロール
@@ -115,11 +115,11 @@ Storage Explorer を使用するために必要なアクセス許可を提供で
 自分で見つけるには、次の手順を試してください。
 
 1. OpenSSL をインストールします。
-    * [Windows](https://slproweb.com/products/Win32OpenSSL.html):任意の Light バージョンで十分です。
-    * Mac と Linux:お使いのオペレーティング システムに付属しているはずです。
+    - [Windows](https://slproweb.com/products/Win32OpenSSL.html):任意の Light バージョンで十分です。
+    - Mac と Linux:お使いのオペレーティング システムに付属しているはずです。
 2. OpenSSL を実行します。
-    * Windows: インストール ディレクトリを開き、 **/bin/** を選択し、**openssl.exe** をダブルクリックします。
-    * Mac と Linux:ターミナルから `openssl` を実行します。
+    - Windows: インストール ディレクトリを開き、 **/bin/** を選択し、**openssl.exe** をダブルクリックします。
+    - Mac と Linux:ターミナルから `openssl` を実行します。
 3. ストレージ リソースがある Microsoft または Azure ホスト名を対象に、`s_client -showcerts -connect <hostname>:443` コマンドを実行します。 Storage Explorer によって頻繁にアクセスされる一連のホスト名がここで見つかります。
 4. 自己署名証明書を検索します。 サブジェクト `("s:")` と発行者 `("i:")` が同じである場合、まず間違いなく証明書は自己署名されています。
 5. 自己署名証明書が見つかったら、証明書ごとに、`-----BEGIN CERTIFICATE-----` から `-----END CERTIFICATE-----` までのすべての内容をコピーして、新しい .cer ファイルに貼り付けます。
@@ -192,7 +192,7 @@ Web ブラウザーで Storage Explorer によってサインインが行われ�
 1. Storage Explorer を開きます
 2. すべてのアカウントを削除した後、Storage Explorer を閉じます。
 3. マシンから `.IdentityService` フォルダーを削除します。 Windows では、このフォルダーは `C:\users\<username>\AppData\Local` にあります。 Mac と Linux では、このフォルダーは、ユーザー ディレクトリのルートで見つけることができます。
-4. Mac または Linux を実行している場合は、オペレーティング システムのキーストアから Microsoft.Developer.IdentityService エントリも削除する必要があります。 Mac では、キーストアは *Gnome Keychain* アプリケーションです。 Linux では、このアプリケーションは通常は _Keyring_ という名前ですが、お使いのディストリビューションによっては名前が違うことがあります。
+4. Mac または Linux を実行している場合は、オペレーティング システムのキーストアから Microsoft.Developer.IdentityService エントリも削除する必要があります。 Mac では、キーストアは *Gnome Keychain* アプリケーションです。 Linux では、このアプリケーションは通常は *Keyring* という名前ですが、お使いのディストリビューションによっては名前が違うことがあります。
 6. Storage Explorer を再起動して、もう一度サインインしてみてください。
 
 ### <a name="macos-keychain-errors-or-no-sign-in-window"></a>macOS: キーチェーン エラー、またはサインイン ウィンドウが表示されない
@@ -225,19 +225,19 @@ macOS のキーチェーンは、Storage Explorer 認証ライブラリの問題
 
 サインインに成功した後もサブスクリプションを取得できない場合は、次のトラブルシューティング方法を試してください。
 
-* お使いのアカウントに必要なサブスクリプションへのアクセス権があることを確認します。 使用しようとしている Azure 環境のポータルにサインインすることによって、アクセス権を確認できます。
-* 適切な Azure 環境 (Azure、Azure China 21Vianet、Azure Germany、Azure US Government、またはカスタム環境) を使用してサインインしていることを確認します。
-* プロキシ サーバーの背後にいる場合は、Storage Explorer プロキシを正しく構成していることを確認します。
-* アカウントを削除してから再度追加します。
-* [詳細] または [エラーの詳細] リンクがある場合は、障害が発生しているテナントに対してどのエラー メッセージが報告されているかを確認します。 エラー メッセージへの対処方法がわからない場合は、遠慮なく [GitHub でイシューを開いてください](https://github.com/Microsoft/AzureStorageExplorer/issues)。
+- お使いのアカウントに必要なサブスクリプションへのアクセス権があることを確認します。 使用しようとしている Azure 環境のポータルにサインインすることによって、アクセス権を確認できます。
+- 適切な Azure 環境 (Azure、Azure China 21Vianet、Azure Germany、Azure US Government、またはカスタム環境) を使用してサインインしていることを確認します。
+- プロキシ サーバーの背後にいる場合は、Storage Explorer プロキシを正しく構成していることを確認します。
+- アカウントを削除してから再度追加します。
+- [詳細] または [エラーの詳細] リンクがある場合は、障害が発生しているテナントに対してどのエラー メッセージが報告されているかを確認します。 エラー メッセージへの対処方法がわからない場合は、遠慮なく [GitHub でイシューを開いてください](https://github.com/Microsoft/AzureStorageExplorer/issues)。
 
 ## <a name="cant-remove-an-attached-storage-account-or-resource"></a>アタッチされているストレージ アカウントまたはリソースを削除できない
 
 アタッチされているアカウントまたはストレージのリソースを UI 経由で削除できない場合は、次のフォルダーを削除することにより、接続されているすべてのリソースを手動で削除できます。
 
-* Windows: `%AppData%/StorageExplorer`
-* macOS: `/Users/<your_name>/Library/Application Support/StorageExplorer`
-* Linux: `~/.config/StorageExplorer`
+- Windows: `%AppData%/StorageExplorer`
+- macOS: `/Users/<your_name>/Library/Application Support/StorageExplorer`
+- Linux: `~/.config/StorageExplorer`
 
 > [!NOTE]
 > これらのフォルダーを削除する前に、Storage Explorer を閉じます。
@@ -280,9 +280,9 @@ Fiddler などのネットワーク ツールを使用すると、問題の診�
 1. ネットワーク ツールを、ローカル ホスト上で実行されるプロキシ サーバーとして構成します。 実際のプロキシの内側で作業を続ける必要がある場合は、プロキシ経由で接続するようにネットワーク ツールを構成することが必要な場合があります。
 2. ネットワーク ツールで使用されるポート番号を確認します。
 3. ローカル ホストとネットワーク ツールのポート番号 ("localhost:8888" など) を使用するように Storage Explorer のプロキシ設定を構成します。
- 
+
 設定が正しく行われると、Storage Explorer によって生成されたネットワーク要求が管理およびサービス エンドポイントにネットワーク ツールによってログされます。
- 
+
 ネットワーク ツールによって Storage Explorer のトラフィックがログされていないようである場合は、そのツールを別のアプリケーションでテストしてみてください。 たとえば、ご利用のストレージ リソースのいずれかのエンドポイント URL (`https://contoso.blob.core.windows.net/` など) を入力すると、次のような応答が送られてきます。
 
   ![コード サンプル](./media/storage-explorer-troubleshooting/4022502_en_2.png)
@@ -295,8 +295,8 @@ Fiddler などのネットワーク ツールを使用すると、問題の診�
 
 プロキシの設定が正しい場合、プロキシ サーバー管理者に連絡して次のことを行うことが必要な場合があります。
 
-* プロキシによって Azure の管理エンドポイントまたはリソース エンドポイントへのトラフィックがブロックされていないことを確認します。
-* プロキシ サーバーで使用されている認証プロトコルを確認します。 Storage Explorer では、基本認証プロトコルのみがサポートされます。 Storage Explorer で NTLM プロキシはサポートされていません。
+- プロキシによって Azure の管理エンドポイントまたはリソース エンドポイントへのトラフィックがブロックされていないことを確認します。
+- プロキシ サーバーで使用されている認証プロトコルを確認します。 Storage Explorer では、基本認証プロトコルのみがサポートされます。 Storage Explorer で NTLM プロキシはサポートされていません。
 
 ## <a name="unable-to-retrieve-children-error-message"></a>"子を取得できません" エラー メッセージ
 
@@ -317,17 +317,17 @@ Fiddler などのネットワーク ツールを使用すると、問題の診�
 1. Storage Explorer を開始します。 メニューから、 **[ヘルプ]**  >  **[開発者ツールの切り替え]** に移動します。
 2. 開いたウィンドウの **[アプリケーション]** タブで、 **[ローカル ストレージ]** (左側) > **[file://]** に移動します。
 3. 問題が発生している接続の種類に応じて、そのキーを検索し、その値をテキスト エディターにコピーします。 値は、次のようなカスタム接続名の配列です。
-    * ストレージ アカウント
-        * `StorageExplorer_CustomConnections_Accounts_v1`
-    * BLOB コンテナー
-        * `StorageExplorer_CustomConnections_Blobs_v1`
-        * `StorageExplorer_CustomConnections_Blobs_v2`
-    * ファイル共有
-        * `StorageExplorer_CustomConnections_Files_v1`
-    * キュー
-        * `StorageExplorer_CustomConnections_Queues_v1`
-    * テーブル
-        * `StorageExplorer_CustomConnections_Tables_v1`
+    - ストレージ アカウント
+        - `StorageExplorer_CustomConnections_Accounts_v1`
+    - BLOB コンテナー
+        - `StorageExplorer_CustomConnections_Blobs_v1`
+        - `StorageExplorer_CustomConnections_Blobs_v2`
+    - ファイル共有
+        - `StorageExplorer_CustomConnections_Files_v1`
+    - キュー
+        - `StorageExplorer_CustomConnections_Queues_v1`
+    - テーブル
+        - `StorageExplorer_CustomConnections_Tables_v1`
 4. 現在の接続名を保存したら、開発者ツールの値を `[]` に設定します。
 
 破損していない接続を維持する場合は、次の手順を使用して、破損した接続を特定できます。 既存の接続がすべて失われてもかまわない場合は、この手順を省略し、プラットフォーム固有の指示に従って接続データを消去できます。
@@ -366,9 +366,9 @@ Fiddler などのネットワーク ツールを使用すると、問題の診�
 
 SAS URL を使用してサービスに接続し、エラーが発生する場合は、次の手順を実行してください。
 
-* リソースの読み取りまたは一覧表示に必要なアクセス許可が URL で提供されているかを確認します。
-* URL の有効期限が切れていないかを確認します。
-* SAS URL がアクセス ポリシーに基づいている場合は、このアクセス ポリシーが失効されていないかを確認します。
+- リソースの読み取りまたは一覧表示に必要なアクセス許可が URL で提供されているかを確認します。
+- URL の有効期限が切れていないかを確認します。
+- SAS URL がアクセス ポリシーに基づいている場合は、このアクセス ポリシーが失効されていないかを確認します。
 
 無効な SAS URL を使用して誤ってアタッチし、デタッチできなくなった場合は、次の手順を実行します。
 
@@ -400,49 +400,53 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 - Ubuntu 18.04 x64
 - Ubuntu 16.04 x64
 
-Storage Explorer を使用するには、お使いのシステムに .NET Core をインストールする必要があります。 .NET Core 2.1 を推奨していますが、Storage Explorer は 2.2 でも動作します。
+Storage Explorer をシステムにインストールするには .NET Core 3.1 が必要です。
 
 > [!NOTE]
-> Storage Explorer バージョン 1.7.0 以前には .NET Core 2.0 が必要です。 新しいバージョンの .NET Core がインストールされている場合は、[Storage Explorer に修正プログラムを適用](#patching-storage-explorer-for-newer-versions-of-net-core)する必要があります。 Storage Explorer 1.8.0 以降を実行している場合は、少なくとも .NET Core 2.1 が必要になります。
+> Storage Explorer のバージョン 1.8.0 から 1.20.1 では .NET Core 2.1 が必要です。 Storage Explorer バージョン 1.7.0 以前には .NET Core 2.0 が必要です。
 
 ### <a name="ubuntu-2004"></a>[Ubuntu 20.04](#tab/2004)
 
 1. Storage Explorer .tar.gz ファイルをダウンロードします。
 2. [.NET Core Runtime](/dotnet/core/install/linux) をインストールします。
+
    ```bash
    wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; \
      sudo dpkg -i packages-microsoft-prod.deb; \
      sudo apt-get update; \
      sudo apt-get install -y apt-transport-https && \
      sudo apt-get update && \
-     sudo apt-get install -y dotnet-runtime-2.1
+     sudo apt-get install -y dotnet-runtime-3.1
    ```
 
 ### <a name="ubuntu-1804"></a>[Ubuntu 18.04](#tab/1804)
 
 1. Storage Explorer .tar.gz ファイルをダウンロードします。
 2. [.NET Core Runtime](/dotnet/core/install/linux) をインストールします。
+
    ```bash
    wget https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; \
      sudo dpkg -i packages-microsoft-prod.deb; \
      sudo apt-get update; \
      sudo apt-get install -y apt-transport-https && \
      sudo apt-get update && \
-     sudo apt-get install -y dotnet-runtime-2.1
+     sudo apt-get install -y dotnet-runtime-3.1
    ```
 
 ### <a name="ubuntu-1604"></a>[Ubuntu 16.04](#tab/1604)
 
 1. Storage Explorer .tar.gz ファイルをダウンロードします。
 2. [.NET Core Runtime](/dotnet/core/install/linux) をインストールします。
+
    ```bash
    wget https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb; \
      sudo dpkg -i packages-microsoft-prod.deb; \
      sudo apt-get update; \
      sudo apt-get install -y apt-transport-https && \
      sudo apt-get update && \
-     sudo apt-get install -y dotnet-runtime-2.1
+     sudo apt-get install -y dotnet-runtime-3.1
    ```
+
 ---
 
 Storage Explorer で必要なライブラリの多くは、Canonical の標準 Ubuntu インストールにプレインストールされています。 カスタム環境の場合、一部のライブラリが不足することがあります。 Storage Explorer を起動できない場合、お使いのシステムに次のパッケージがインストールされていることを確認することをお勧めします。
@@ -470,16 +474,16 @@ Storage Explorer 1.7.0 以前の場合は、Storage Explorer で使用されて�
 3. パッケージを解凍します。
 4. `streamjsonrpc.1.5.43/lib/netstandard1.1/` フォルダーを開きます。
 5. `StreamJsonRpc.dll` を Storage Explorer フォルダー内の次の場所にコピーします。
-   * `StorageExplorer/resources/app/ServiceHub/Services/Microsoft.Developer.IdentityService/`
-   * `StorageExplorer/resources/app/ServiceHub/Hosts/ServiceHub.Host.Core.CLR.x64/`
+   - `StorageExplorer/resources/app/ServiceHub/Services/Microsoft.Developer.IdentityService/`
+   - `StorageExplorer/resources/app/ServiceHub/Hosts/ServiceHub.Host.Core.CLR.x64/`
 
 ## <a name="open-in-explorer-from-the-azure-portal-doesnt-work"></a>Azure portal で [Explorer で開く] が機能しない
 
 Azure portal の **[Explorer で開く]** ボタンが機能しない場合は、互換性があるブラウザーを使用していることを確認してください。 互換性についてテスト済みのブラウザーは、次のとおりです｡
-* Microsoft Edge
-* Mozilla Firefox
-* Google Chrome
-* Microsoft Internet Explorer
+- Microsoft Edge
+- Mozilla Firefox
+- Google Chrome
+- Microsoft Internet Explorer
 
 ## <a name="gathering-logs"></a>ログの収集
 
@@ -538,7 +542,7 @@ GitHub に問題を報告するときに、問題の診断に役立つ特定の�
 6. [Action]\(アクション\) ボタンをクリックします
 7. 次のダイアログで [Trust Root Certificate]\(ルート証明書を信頼する\) を選択してから [Yes]\(はい\) を選択します
 8. [Action]\(アクション\) ボタンをもう一度クリックします
-9. [Export Root Certificate to Desktop]\(ルート証明書をデスクトップにエクスポートする\) を選択します
+9. [Export Root Certificate to Desktop]\(ルート証明書をデスクトップにエクスポート\) を選択します
 10. デスクトップに移動します
 11. FiddlerRoot.cer ファイルを検索します
 12. ダブルクリックして開きます
@@ -558,7 +562,7 @@ GitHub に問題を報告するときに、問題の診断に役立つ特定の�
 パート 2: 問題を再現する
 1. Fiddler を除くすべてのアプリを閉じます
 2. Fiddler ログをクリアします ([View]\(表示\) メニューの近くにある右上の X アイコン)
-3. 省略可能または推奨: Fiddler を数分間放置し、ネットワーク呼び出しが表示されたらそれを右クリックして、[Filter Now]\(今すぐフィルター\) > [Hide <process name>]\(<process name> を非表示にする\) の順に選択します。
+3. オプション、推奨: Fiddler を数分間放置して処理を行う時間を確保します。Storage Explorer と無関係なネットワーク呼び出しが表示される場合は、それらを右クリックして [Filter Now]\(今すぐフィルター\) > [Hide (process name)]\(非表示 \(プロセス名\)\) を選択します
 4. Storage Explorer を開始します
 5. 問題を再現します
 6. [File]\(ファイル\) > [Save]\(保存\) > [All Sessions...]\(すべてのセッション\) の順にクリックして、どこか忘れない場所に保存します

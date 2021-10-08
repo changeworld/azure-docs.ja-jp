@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/07/2021
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: ec09ac444999be23fa0caed741e1e1534117fa0c
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 5fdde23875d49d6bf4329a57081f12f517692062
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123105620"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128618650"
 ---
 # <a name="how-does-azure-cosmos-db-provide-high-availability"></a>Azure Cosmos DB で高可用性を実現する方法
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -41,7 +41,7 @@ Azure Cosmos DB はグローバルに分散されたデータベース サービ
 
 * すべてのリージョンで、各パーティションがレプリケートされます。 各リージョンには Azure Cosmos コンテナーのすべてのデータ パーティションが含まれており、複数リージョンの書き込みが有効になっている場合は読み取りと書き込みの両方が可能です。  
 
-Azure Cosmos アカウントが *N* 個の Azure リージョンに分散している場合は、すべてのデータの少なくとも *N* x 4 個のコピーが存在します。 2 つ以上のリージョンで Azure Cosmos アカウントを用意すると、アプリケーションの可用性が向上し、関連するリージョン全体で低待機時間を実現できます。
+Azure Cosmos アカウントが *N* 個の Azure リージョンに分散している場合は、すべてのデータの *N* x 4 個のコピーが存在します。 データ分散に関する詳細については、[内部でのグローバル データ分散](global-dist-under-the-hood.md)に関するページを参照してください。 2 つ以上のリージョンで Azure Cosmos アカウントを用意すると、アプリケーションの可用性が向上し、関連するリージョン全体で低待機時間を実現できます。
 
 ## <a name="slas-for-availability"></a>可用性に関する SLA
 

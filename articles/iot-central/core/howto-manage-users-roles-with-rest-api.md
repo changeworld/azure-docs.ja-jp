@@ -7,12 +7,12 @@ ms.date: 08/30/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 97f97206b5071824f8bde8733d208078ddaf72bb
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 54917fced3fb561add82d8e1f78078e7562858e1
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123473318"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128680454"
 ---
 # <a name="how-to-use-the-iot-central-rest-api-to-manage-users-and-roles"></a>IoT Central REST API を使用してユーザーとロールを管理する方法
 
@@ -21,6 +21,9 @@ IoT Central REST API を使用して、IoT Central アプリケーションと�
 すべての IoT Central REST API 呼び出しに承認ヘッダーが必要です。 詳細については、「[IoT Central REST API 呼び出しを認証および承認する方法](howto-authorize-rest-api.md)」を参照してください。
 
 IoT Central REST API のリファレンス ドキュメントについては、「[Azure IoT Central REST API リファレンス](/rest/api/iotcentral/)」をご覧ください。
+
+> [!TIP]
+> [プレビュー API](/rest/api/iotcentral/1.1-previewdataplane/users) には、新しい[組織機能](howto-create-organizations.md)のサポートが含まれています。
 
 ## <a name="manage-roles"></a>ロールの管理
 
@@ -183,7 +186,7 @@ PUT https://{your app subdomain}.azureiotcentral.com/api/users/user-001?api-vers
 }
 ```
 
-また、REST API 呼び出しにサービス プリンシパル認証を使用する必要がある場合に役立つサービス プリンシパル ユーザーを追加することもできます。 詳細については、[サービス プリンシパル ユーザーの追加または更新](/rest/api/iotcentral/1.0/users/create#add-or-update-a-service-principal-user)に関するページを参照してください。
+また、REST API 呼び出しにサービス プリンシパル認証を使用する必要がある場合に役立つサービス プリンシパル ユーザーを追加することもできます。 詳細については、[サービス プリンシパル ユーザーの追加または更新](/rest/api/iotcentral/1.0dataplane/users/create#add-or-update-a-service-principal-user)に関するページを参照してください。
 
 ### <a name="change-the-role-of-a-user"></a>ユーザーのロールを変更する
 

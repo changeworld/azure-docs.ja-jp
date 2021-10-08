@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/23/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: cbc2f30384dc410df56995afd83f7d8c0f964176
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 1c645e50a49a268d762b1195e91484783a73367c
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123469610"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128562552"
 ---
 # <a name="soft-delete-for-blobs"></a>BLOB の論理的な削除
 
@@ -26,7 +26,6 @@ BLOB の論理的な削除を使用すると、削除されたデータがシス
 >
 >
 > プレビューに登録するには、[こちらのフォーム](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR4mEEwKhLjlBjU3ziDwLH-pUOVRVOUpDRUtHVUtDUUtMVTZUR0tUMjZWNy4u)を参照してください。
-
 
 ## <a name="recommended-data-protection-configuration"></a>推奨されるデータ保護の構成
 
@@ -69,13 +68,13 @@ BLOB にスナップショットがある場合、スナップショットも削
 
 ベース BLOB を削除せずに、アクティブなスナップショットを 1 つ以上削除することもできます。 この場合、スナップショットは論理的に削除されます。
 
-階層型名前空間機能が有効になっているアカウントでディレクトリが削除された場合、ディレクトリとそのすべての内容は、論理的な削除としてマークされます。 
+階層型名前空間機能が有効になっているアカウントでディレクトリが削除された場合、ディレクトリとそのすべての内容は、論理的な削除としてマークされます。
 
 論理的に削除されたオブジェクトは、明示的に表示または一覧表示されない限り、非表示になります。 論理的に削除されたオブジェクトを一覧表示する方法の詳細については、「[論理的に削除された BLOB を管理および復元する](soft-delete-blob-manage.md)」を参照してください。
 
 ### <a name="how-overwrites-are-handled-when-soft-delete-is-enabled"></a>論理的な削除が有効になっているときに上書きが処理される方法
 
->[!IMPORTANT]
+> [!IMPORTANT]
 > このセクションは、階層型名前空間を持つアカウントには適用されません。
 
 [Put Blob](/rest/api/storageservices/put-blob)、[Put Block List](/rest/api/storageservices/put-block-list)、[Copy Blob](/rest/api/storageservices/copy-blob) などの操作を呼び出すと、BLOB 内のデータが上書きされます。 BLOB の論理的な削除が有効になっている場合、BLOB を上書きすると、書き込み操作の前に、BLOB の状態の論理的に削除されたスナップショットが自動的に作成されます。 保持期間が終了すると、論理的に削除されたスナップショットは完全に削除されます。
@@ -106,7 +105,7 @@ Premium Storage アカウントの場合、論理的に削除されたスナッ�
 
 ## <a name="blob-soft-delete-and-versioning"></a>BLOB の論理的な削除とバージョン管理
 
->[!IMPORTANT]
+> [!IMPORTANT]
 > バージョン管理は、階層型名前空間があるアカウントではサポートされていません。
 
 ストレージ アカウントで BLOB のバージョン管理と BLOB の論理的な削除の両方が有効になっている場合、BLOB を上書きすると、新しいバージョンが自動的に作成されます。 新しいバージョンは論理的に削除されず、論理的な削除の保有期間が過ぎても削除されません。 論理的に削除されたスナップショットは作成されません。 ある BLOB を削除すると、その BLOB の現在のバージョンが前のバージョンになり、現在のバージョンは存在しなくなります。 新しいバージョンは作成されず、論理的に削除されたスナップショットは作成されません。
@@ -122,7 +121,7 @@ Premium Storage アカウントの場合、論理的に削除されたスナッ�
 
 ## <a name="blob-soft-delete-protection-by-operation"></a>操作による BLOB の論理的な削除の保護
 
-次の表は、BLOB の論理的な削除が有効にされていて、BLOB のバージョン管理が有効または無効にされている場合の、削除操作と書き込み操作の想定される動作を示しています。 
+次の表は、BLOB の論理的な削除が有効にされていて、BLOB のバージョン管理が有効または無効にされている場合の、削除操作と書き込み操作の想定される動作を示しています。
 
 ### <a name="storage-account-no-hierarchical-namespace"></a>ストレージ アカウント (階層型名前空間なし)
 
@@ -150,16 +149,18 @@ Premium Storage アカウントの場合、論理的に削除されたスナッ�
 
 ## <a name="feature-support"></a>機能サポート
 
-次の表は、アカウントでのこの機能のサポートと、特定の機能を有効にした場合のサポートへの影響を示しています。 
+この表は、アカウントでのこの機能のサポート状況と、特定の機能を有効にした場合のサポートへの影響を示しています。
 
-| ストレージ アカウントの種類                | BLOB Storage (既定のサポート)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+| ストレージ アカウントの種類                | Blob Storage (既定のサポート)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>
 |-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
-| Standard 汎用 v2 | ![はい](../media/icons/yes-icon.png) |![はい](../media/icons/yes-icon.png)  <sup>2</sup>              | ![いいえ](../media/icons/no-icon.png) | 
-| Premium ブロック BLOB          | ![はい](../media/icons/yes-icon.png) |![はい](../media/icons/yes-icon.png)  <sup>2</sup>              | ![いいえ](../media/icons/no-icon.png) |
+| Standard 汎用 v2 | ![はい](../media/icons/yes-icon.png) |![はい](../media/icons/yes-icon.png)  <sup>2</sup>  <sup>3</sup>            | ![いいえ](../media/icons/no-icon.png) |
+| Premium ブロック BLOB          | ![はい](../media/icons/yes-icon.png) |![はい](../media/icons/yes-icon.png)  <sup>2</sup>  <sup>3</sup>            | ![いいえ](../media/icons/no-icon.png) |
 
 <sup>1</sup>    Data Lake Storage Gen2 とネットワーク ファイル システム (NFS) 3.0 プロトコルの両方で、階層型名前空間が有効になっているストレージ アカウントが必要です。
 
 <sup>2</sup>    機能はプレビュー レベルでサポートされています。
+
+<sup>3</sup>    詳細については、「[Azure Data Lake Storage Gen2 に関する既知の問題](data-lake-storage-known-issues.md)」を参照してください。 これらの問題は、階層型名前空間機能が有効になっているすべてのアカウントに適用されます。
 
 ## <a name="pricing-and-billing"></a>価格と課金
 
@@ -173,7 +174,7 @@ BLOB が上書きまたは削除されるとき、スナップショットまた
 
 Blob Storage の料金の詳細については、[Blob Storage の価格](https://azure.microsoft.com/pricing/details/storage/blobs/)に関するページを参照してください。
 
-## <a name="blob-soft-delete-and-virtual-machine-disks"></a>BLOB の論理的な削除と仮想マシンのディスク  
+## <a name="blob-soft-delete-and-virtual-machine-disks"></a>BLOB の論理的な削除と仮想マシンのディスク
 
 BLOB の論理的な削除は、内部のページ BLOB である Premium と Standard の両方のアンマネージド ディスクで使用できます。 論理的な削除は、[Delete Blob](/rest/api/storageservices/delete-blob)、[Put Blob](/rest/api/storageservices/put-blob)、[Put Block List](/rest/api/storageservices/put-block-list)、[Copy Blob](/rest/api/storageservices/copy-blob) の各操作についてのみ、削除または上書きされたデータの復旧に役立ちます。
 

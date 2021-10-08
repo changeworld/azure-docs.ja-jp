@@ -7,14 +7,14 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, daviburg, azla
 ms.topic: how-to
-ms.date: 08/31/2021
+ms.date: 09/13/2021
 tags: connectors
-ms.openlocfilehash: 32f51d110f1ebb8d7b0a39a3183665c65d2b1367
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: d973276781a1664680a3dec08eb894fc362911a5
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123469556"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129211178"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Azure Logic Apps から SAP システムに接続する
 
@@ -30,7 +30,7 @@ ms.locfileid: "123469556"
 
   * マルチテナント Azure でロジック アプリ ワークフローを実行している場合は、「[マルチテナントの前提条件](#multi-tenant-azure-prerequisites)」を参照してください。
 
-  * Premium レベルの[統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) でロジック アプリ ワークフローを実行している場合は、「[ISE の前提条件](#ise-prerequisites)」を参照してください。
+  * Premium レベルの[統合サービス環境 (ISE)](connect-virtual-network-vnet-isolated-environment-overview.md) でロジック アプリ ワークフローを実行している場合は、「[ISE の前提条件](#ise-prerequisites)」を参照してください。
 
 * Azure Logic Apps からアクセスする [SAP アプリケーション サーバー](https://wiki.scn.sap.com/wiki/display/ABAP/ABAP+Application+Server)または [SAP メッセージ サーバー](https://help.sap.com/saphelp_nw70/helpdata/en/40/c235c15ab7468bb31599cc759179ef/frameset.htm)。 このコネクタをサポートする SAP サーバーの詳細については、「[SAP の互換性](#sap-compatibility)」を参照してください。
 
@@ -146,7 +146,7 @@ SAP コネクタでは、[SAP .NET Connector (NCo) ライブラリ](https://supp
 
 ISE では、Azure 仮想ネットワークによって保護されているリソースへのアクセスが提供されます。また、オンプレミス データ ゲートウェイを使用せずにロジック アプリ ワークフローからオンプレミスのリソースに直接アクセスできるようにするその他の ISE ネイティブのコネクタが提供されます。
 
-1. BLOB コンテナーがある Azure Storage アカウントをまだお持ちでない場合は、[Azure portal](../storage/blobs/storage-quickstart-blobs-portal.md) または [Azure Storage Explorer](../storage/blobs/storage-quickstart-blobs-storage-explorer.md) のいずれかを使用して、コンテナーを作成します。
+1. BLOB コンテナーがある Azure Storage アカウントをまだお持ちでない場合は、[Azure portal](../storage/blobs/storage-quickstart-blobs-portal.md) または [Azure Storage Explorer](../storage/blobs/quickstart-storage-explorer.md) のいずれかを使用して、コンテナーを作成します。
 
 1. ローカル コンピューターに、[最新の SAP クライアント ライブラリをダウンロードしてインストールします](#sap-client-library-prerequisites)。 次のアセンブリ ファイルがあるはずです。
 
@@ -479,14 +479,14 @@ ISE バージョンの SAP コネクタは、SNC X.509 をサポートしてい�
 
 XML エンベロープにラップすることによって、フラット ファイル スキーマを持つ IDoc を使用することができます。 フラット ファイル IDoc を送信するには、[IDoc メッセージを送信する SAP アクションを作成する](#create-sap-action-to-send-message)ための一般的な手順を次のように変更して使用します。
 
-1. **SAP にメッセージを送信する** アクションには、SAP アクション URI `http://microsoft.lobservices.sap/2007/03/Idoc/SendIdoc` を使用します。
+1. **SAP にメッセージを送信する** アクションには、SAP アクション URI `http://Microsoft.LobServices.Sap/2007/03/Idoc/SendIdoc` を使用します。
 
 1. XML エンベロープを使用して入力メッセージの書式を設定します。
 
 例については、次のXML ペイロードの例を参照してください。
 
 ```xml
-<ReceiveIdoc xmlns="http://Microsoft.LobServices.Sap/2007/03/Idoc/">
+<SendIdoc xmlns="http://Microsoft.LobServices.Sap/2007/03/Idoc/">
 <idocData>EDI_DC 3000000001017945375750 30INVOIC011BTSVLINV30KUABCABCFPPC LDCA X004010810 4 SAPMSX LSEDI ABCABCFPPC 000d3ae4-723e-1edb-9ca4-cc017365c9fd 20210217054521INVOICINVOIC01ZINVOIC2RE 20210217054520
 E2EDK010013000000001017945375000001E2EDK01001000000010 ABCABC1.00000 0060 INVO9988298128 298.000 298.000 LB Z4LR EN 0005065828 L
 E2EDKA1 3000000001017945375000002E2EDKA1 000000020 RS ABCABCFPPC 0005065828 ABCABCABC ABCABC Inc. Limited Risk Distributor ABCABC 1950 ABCABCABCA Blvd ABCABAABCAB L5N8L9 CA ABCABC E ON V-ABCABC LDCA
@@ -599,7 +599,7 @@ E2EDS01 3000000001017945375000108E2EDS01 000000020 EXT
 Z2XSK010003000000001017945375000109Z2XSK01000000108030 Z400 52269.20
 Z2XSK010003000000001017945375000110Z2XSK01000000108030 XR1 13.000 6795.00 CX
 </idocData>
-</ReceiveIdoc>
+</SendIdoc>
 ```
 
 ### <a name="create-http-response-action"></a>HTTP 応答アクションの作成
@@ -856,13 +856,13 @@ SAP コネクタを使用してロジック アプリ ワークフローの非�
 
     ```xml
     <setting name="SapTraceLevel" serializeAs="String">
-       <value>"Verbose"</value>
+       <value>Verbose</value>
     </setting>
     ```
 
 ### <a name="extended-sap-logging-in-on-premises-data-gateway"></a>オンプレミス データ ゲートウェイでの拡張 SAP ログ
 
-[Azure Logic Apps 用のオンプレミス データ ゲートウェイ](../logic-apps/logic-apps-gateway-install.md)を使用する場合は、SAP コネクタ用に拡張ログ ファイルを構成できます。 オンプレミス データ ゲートウェイを使用して、Event Tracing for Windows (ETW) イベントをゲートウェイの .zip 形式のログ ファイルに含まれているローテーション ログ ファイルにリダイレクトできます。
+[Azure Logic Apps 用のオンプレミス データ ゲートウェイ](logic-apps-gateway-install.md)を使用する場合は、SAP コネクタ用に拡張ログ ファイルを構成できます。 オンプレミス データ ゲートウェイを使用して、Event Tracing for Windows (ETW) イベントをゲートウェイの .zip 形式のログ ファイルに含まれているローテーション ログ ファイルにリダイレクトできます。
 
 ゲートウェイ アプリの設定から、[ゲートウェイの構成とサービス ログをすべて](/data-integration/gateway/service-gateway-tshoot#collect-logs-from-the-on-premises-data-gateway-app) .zip ファイルにエクスポート ことができます。
 
@@ -1649,7 +1649,7 @@ SAP テレメトリを Application insights に送信できるようにするに
 
    [![クエリを作成するための [ログ] ペインが開いている Application Insights が表示された Azure portal を示しているスクリーンショット。](./media/logic-apps-using-sap-connector/application-insights-query-panel.png)](./media/logic-apps-using-sap-connector/application-insights-query-panel.png#lightbox)
 
-1. **[ログ]** ペインでは、[Kusto クエリ言語 (KQL)](/azure/data-explorer/kusto/concepts/) を使用して、特定の要件に基づく[クエリ](/azure/data-explorer/kusto/query/)を作成できます。
+1. **[ログ]** ペインでは、[Kusto クエリ言語 (KQL)](/azure/data-explorer/kusto/concepts/) を使用して、特定の要件に基づく [クエリ](/azure/data-explorer/kusto/query/)を作成できます。
 
    次のクエリ例のようなクエリ パターンを使用できます。
 
@@ -1818,7 +1818,9 @@ Logic Apps から SAP にトランザクションを送信する場合、この�
 
 * 現在、SAP コネクタは SAP ルーター文字列をサポートしていない。 オンプレミス データ ゲートウェイは、接続する SAP システムと同じ LAN 上に存在する必要があります。
 
-* [ISE のロジック アプリ](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)の場合、このコネクタの ISE のラベルが付いたバージョンでは、代わりに [ISE メッセージ制限](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)が使用されます。
+* **\[BAPI] SAP でのメソッドの呼び出し** アクションでは、アクションから返される **CallBapiResponse** オブジェクトに少なくとも 1 つの警告が存在する場合、自動コミット機能によって BAPI の変更はコミットされません。 警告を無視して BAPI の変更をコミットするには、 **\[BAPI - RFC] ステートフル セッションの作成** アクションで明示的にセッションを作成し、 **\[BAPI] SAP でのメソッドの呼び出し** アクションの自動コミット機能を無効にして、代わりに **\[BAPI] トランザクションのコミット** アクションを呼び出します。
+
+* [ISE のロジック アプリ](connect-virtual-network-vnet-isolated-environment-overview.md)の場合、このコネクタの ISE のラベルが付いたバージョンでは、代わりに [ISE メッセージ制限](logic-apps-limits-and-config.md#message-size-limits)が使用されます。
 
 ## <a name="connector-reference"></a>コネクタのレファレンス
 
@@ -2015,5 +2017,5 @@ SAP コネクタの詳細については、[コネクタのリファレンス](/
 ## <a name="next-steps"></a>次のステップ
 
 * Azure Logic Apps から[オンプレミス システムに接続します](logic-apps-gateway-connection.md)
-* [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md) を使用して、検証、変換、およびその他のメッセージ操作を使用する方法を確認します。
+* [Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md) を使用して、検証、変換、およびその他のメッセージ操作を使用する方法を確認します。
 * 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。

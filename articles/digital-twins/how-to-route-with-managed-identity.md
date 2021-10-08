@@ -1,5 +1,5 @@
 ---
-title: マネージド ID を使用してイベントをルーティングする (プレビュー)
+title: マネージド ID を使用してイベントをルーティングする
 titleSuffix: Azure Digital Twins
 description: Azure portal または CLI を使用して、Azure Digital Twins のシステム割り当て ID を有効にし、それを使用してイベントを転送する方法を説明します。
 author: baanders
@@ -8,16 +8,16 @@ ms.date: 6/15/2021
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: subject-rbac-steps, contperf-fy21q4
-ms.openlocfilehash: 8990536b4ddc09f5673fe00a70bc4f12f4f4a169
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 4d50c40426d5fb687b28a965b9d921ef6fc4df38
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114468795"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128651923"
 ---
-# <a name="enable-a-managed-identity-for-routing-azure-digital-twins-events-preview"></a>Azure Digital Twins のイベントをルーティングするためにマネージド ID を有効にする (プレビュー)
+# <a name="enable-a-managed-identity-for-routing-azure-digital-twins-events"></a>マネージド ID を有効にして、Azure Digital Twins イベントをルーティングできるようにします
 
-この記事では、[Azure Digital Twins インスタンスのシステム割り当て ID](concepts-security.md#managed-identity-for-accessing-other-resources-preview) (現時点ではプレビュー段階) を有効にし、サポートされているルーティング先にイベントを転送するときにその ID を使用する方法について説明します。 ルーティングにはマネージド ID の設定は必要ありませんが、[イベント ハブ](../event-hubs/event-hubs-about.md)、[Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)  宛先、[Azure Storage Container](../storage/blobs/storage-blobs-introduction.md) など、他の Azure AD で保護されたリソースにインスタンスが簡単にアクセスするのに役立ちます。
+この記事では [Azure Digital Twins のインスタンスでシステム割り当て ID](concepts-security.md#managed-identity-for-accessing-other-resources) を有効にし、その ID を使用して、ルーティングでサポートしている宛先にイベントを転送する方法を説明します。 ルーティングにはマネージド ID の設定は必要ありませんが、[イベント ハブ](../event-hubs/event-hubs-about.md)、[Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)  宛先、[Azure Storage Container](../storage/blobs/storage-blobs-introduction.md) など、他の Azure AD で保護されたリソースにインスタンスが簡単にアクセスするのに役立ちます。
 
 この記事では、次の手順を説明します。 
 
@@ -45,7 +45,7 @@ Azure Digital Twins インスタンスでシステム割り当て ID を有効�
 
 このタブで、 **[System managed identity]\(システム マネージド ID\)** の **[オン]** オプションを選択して、この機能を有効にします。
 
-:::image type="content" source="media/how-to-enable-managed-identities/create-instance-advanced.png" alt-text="Azure Digital Twins の [リソースの作成] ダイアログの [詳細] タブが表示されている Azure portal のスクリーンショット。システム マネージド ID はオンになっています。":::
+:::image type="content" source="media/how-to-route-with-managed-identity/create-instance-advanced.png" alt-text="Azure Digital Twins の [リソースの作成] ダイアログの [詳細] タブが表示されている Azure portal のスクリーンショット。システム マネージド ID はオンになっています。":::
 
 その後、下部にあるナビゲーション ボタンを使用して、インスタンスの残りのセットアップを続けることができます。
    
@@ -71,13 +71,13 @@ az dt create --dt-name <new-instance-name> --resource-group <resource-group> --a
 
 1. ポータルの検索バーでお使いのインスタンスの名前を検索し、それを選択して詳細を表示します。
 
-1. 左側のメニューの **[ID (プレビュー)]** を選択します。
+1. 左側のメニューで **[Identity]\(ID\)** を選択します。
 
 1. このページで、 **[オン]** オプションを選択してこの機能を有効にします。
 
 1. **[保存]** ボタンを選択し、 **[はい]** を選択して確定します。
 
-    :::image type="content" source="media/how-to-enable-managed-identities/identity-digital-twins.png" alt-text="Azure Digital Twins インスタンスの [ID (プレビュー)] ページが表示されている Azure portal のスクリーンショット。":::
+    :::image type="content" source="media/how-to-route-with-managed-identity/identity-digital-twins.png" alt-text="Azure portal のスクリーンショット。Azure Digital Twins のインスタンスの Identity (ID) ページが表示されている。":::
 
 変更が保存されると、新しい ID の **[オブジェクト ID]** と **[アクセス許可]** のフィールドがこのページに表示されます。
 

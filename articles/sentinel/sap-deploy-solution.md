@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.custom: mvc
 ms.date: 07/06/2021
 ms.subservice: azure-sentinel
-ms.openlocfilehash: 555bc5c14a769c6e2ec309347fd40e4e9aa9e1e3
-ms.sourcegitcommit: deb5717df5a3c952115e452f206052737366df46
+ms.openlocfilehash: 7b6f68eea2c177ad4e6776723ae0387c0e0da6a1
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122681410"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129361828"
 ---
 #  <a name="deploy-sap-continuous-threat-monitoring-public-preview"></a>SAP の継続的な脅威監視をデプロイする (パブリック プレビュー)
 
@@ -136,7 +136,7 @@ SAP データ コネクタをデプロイしたら、SAP ソリューション�
 1. 次のコマンドを例として使用し、リソース グループと VM 名の値を挿入します。
 
     ```azurecli
-    az vm create  --resource-group [resource group name]   --name [VM Name] --image UbuntuLTS  --admin-username AzureUser --data-disk-sizes-gb 10 – --size Standard_DS2_– --generate-ssh-keys  --assign-identity
+    az vm create  --resource-group [resource group name]   --name [VM Name] --image UbuntuLTS  --admin-username azureuser --data-disk-sizes-gb 10 – --size Standard_DS2 --generate-ssh-keys  --assign-identity
     ```
 
 1. 新しい VM に、次をインストールします。
@@ -171,26 +171,29 @@ SAP データ コネクタをデプロイしたら、SAP ソリューション�
       --resource-group $kvgp
     ```
 
-1. GET、LIST、SET のアクセス許可を含むアクセス ポリシーを VM のマネージド ID に割り当てます。
+1. GET、LIST、SET のアクセス許可を含むアクセス ポリシーを、以下のいずれかのメソッドを使用して VM のマネージド ID に割り当てます。
 
-    Azure Key Vault で、 **[アクセス ポリシー]**  >  **[アクセス ポリシーの追加 - シークレットのアクセス許可: Get、List、Set]**  >  **[プリンシパルの選択]** の順に選択します。 自分の [VM の名前](#deploy-a-linux-vm-for-your-sap-data-connector)を入力し、 **[追加]**  >  **[保存]** の順に選択します。
+    - **Azure portal の使用**:
 
-    詳細については、[Key Vault](../key-vault/general/assign-access-policy-portal.md) のドキュメントを参照してください。
+        Azure Key Vault で、 **[アクセス ポリシー]**  >  **[アクセス ポリシーの追加 - シークレットのアクセス許可: Get、List、Set]**  >  **[プリンシパルの選択]** の順に選択します。 自分の [VM の名前](#deploy-a-linux-vm-for-your-sap-data-connector)を入力し、 **[追加]**  >  **[保存]** の順に選択します。
 
-1. 次のコマンドを実行して、[VM のプリンシパル ID](#deploy-a-linux-vm-for-your-sap-data-connector) を取得し、Azure リソース グループの名前を入力します。
+        詳細については、[Key Vault](../key-vault/general/assign-access-policy-portal.md) のドキュメントを参照してください。
 
-    ```azurecli
-    VMPrincipalID=$(az vm show -g [resource group] -n [Virtual Machine] --query identity.principalId -o tsv)
-    ```
+    - **Azure CLI を使用**:
 
-    次の手順で使用するプリンシパル ID が表示されます。
+        1. 次のコマンドを実行して、[VM のプリンシパル ID](#deploy-a-linux-vm-for-your-sap-data-connector) を取得し、Azure リソース グループの名前を入力します。
 
-1. VM のアクセス許可を Key Vault に割り当てるには、リソース グループの名前と、前の手順で返されたプリンシパル ID 値を入力して、次のコマンドを実行します。
+            ```azurecli
+            VMPrincipalID=$(az vm show -g [resource group] -n [Virtual Machine] --query identity.principalId -o tsv)
+            ```
 
-    ```azurecli
-    az keyvault set-policy -n [key vault] -g [resource group] --object-id $VMPrincipalID --secret-permissions get list set
-    ```
+            次の手順で使用するプリンシパル ID が表示されます。
 
+        1. VM のアクセス許可を Key Vault に割り当てるには、リソース グループの名前と、前の手順で返されたプリンシパル ID 値を入力して、次のコマンドを実行します。
+
+            ```azurecli
+            az keyvault set-policy -n [key vault] -g [resource group] --object-id $VMPrincipalID --secret-permissions get list set
+            ```
 ## <a name="deploy-your-sap-data-connector"></a>SAP データ コネクタをデプロイする
 
 Azure Sentinel SAP データ コネクタのデプロイ スクリプトを使用すると、[必要なソフトウェア](#automatically-installed-software)がインストールされ、次にコネクタが[新しく作成された VM](#deploy-a-linux-vm-for-your-sap-data-connector) にインストールされます。資格情報は[専用のキー コンテナー](#create-key-vault-for-your-sap-credentials)に格納されます。
@@ -290,23 +293,13 @@ SAP 関連のウォッチリストを Azure Sentinel ワークスペースに手
 
 以前のバージョンの SAP データ コネクタで既に実行されている Docker コンテナーがある場合は、SAP データ コネクタの更新スクリプトを実行して、使用可能な最新の機能を取得します。
 
-1. Azure Sentinel GitHub リポジトリから、関連するデプロイ スクリプトの最新バージョンがインストールされていることを確認します。 次を実行します。
+Azure Sentinel GitHub リポジトリから、関連するデプロイ スクリプトの最新バージョンがインストールされていることを確認します。 
 
-    ```azurecli
-    wget -O sapcon-instance-update.sh https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/Solutions/SAP/sapcon-instance-update.sh && bash ./sapcon-instance-update.sh
-    ```
+次を実行します。
 
-1. お使いの SAP データ コネクタ マシンで次のコマンドを実行します。
-
-    ```azurecli
-    ./ sapcon-instance-update.sh
-    ```
-
-1. Docker コンテナーを再起動します。
-
-    ```bash
-    docker restart sapcon-[SID]
-    ```
+```azurecli
+wget -O sapcon-instance-update.sh https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/Solutions/SAP/sapcon-instance-update.sh && bash ./sapcon-instance-update.sh
+```
 
 マシン上の SAP データ コネクタ Docker コンテナーが更新されます。 
 

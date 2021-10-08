@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 8/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 88ac65c35b29c2113576594788f820973331d64b
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: 5f92ecca8ccecda0f4ba6e7e87dc0287c75ed41b
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122515010"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124761621"
 ---
 # <a name="migrate-from-vault-access-policy-to-an-azure-role-based-access-control-permission-model"></a>コンテナー アクセス ポリシーから Azure ロールベースのアクセス制御のアクセス許可モデルへの移行
 
@@ -31,7 +31,7 @@ Azure RBAC に移行する前に、その利点と制限事項を理解してお
 
 Azure RBAC の短所は以下のとおりです。
 - ロールの割り当ての待機時間 - ロールの割り当てが適用されるまでに数分かかることがあります。 コンテナー アクセス ポリシーはすぐに割り当てられます。
-- ロールの割り当て数が制限 - サブスクリプションあたり 2000 のロール割り当てと Key Vault あたり 1024 のアクセス ポリシー
+- ロールの割り当て数の制限 - Azure RBAC では、サブスクリプションごとにすべてのサービスに対して 2000 のロールのみを割り当てることができますが、Key Vault では 1024 のアクセス ポリシーが可能です
 
 ## <a name="access-policies-to-azure-roles-mapping"></a>Azure ロール マッピングへのアクセス ポリシー
 

@@ -1,18 +1,17 @@
 ---
-title: カタログのアクセス許可 (プレビュー)
-description: この記事では、Azure Purview でロールベースのアクセス制御 (RBAC) を構成する方法の概要について説明します。
+title: アクセスおよびアクセス許可の概要
+description: この記事では、Azure Purview のアクセス許可、アクセス制御、コレクションの概要について説明します。 ロールベースのアクセス制御 (RBAC) は Azure Purview 自体で管理されているので、このガイドでは、情報を保護するための基本について説明します。
 author: viseshag
 ms.author: viseshag
 ms.service: purview
-ms.subservice: purview-data-catalog
 ms.topic: conceptual
-ms.date: 08/18/2020
-ms.openlocfilehash: 2d9b9aaa6cfd0236a6bc990da5b3ec0870adcd87
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.date: 09/27/2021
+ms.openlocfilehash: fc2ea92f8e5a3d727db130cc4dce7c13c449a9fa
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123478196"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129209055"
 ---
 # <a name="access-control-in-azure-purview"></a>Azure Purview でのアクセスの制御
 
@@ -31,10 +30,10 @@ Azure Purview では、**コレクション** を使用して、ソース、資�
 
 Azure Purview では、定義済みのロールのセットを使用して、アカウント内で誰が何にアクセスできるかを制御します。 現時点でのこれらのロールは次のとおりです。
 
-- **コレクション管理者** - Purview コレクションとその詳細を編集し、サブコレクションを追加できます。 自分が管理者であるコレクションの他の Purview ロールにユーザーを追加することもできます。
-- **データ ソース管理者** - データ ソースとデータ スキャンを管理できます。
-- **データ キュレーター** - カタログ データ資産を作成、読み取り、変更、削除し、資産間のリレーションシップを確立できます。
-- **データ リーダー** - カタログ データ資産にアクセスできますが、変更はできません。
+- **コレクション管理者** - Azure Purview で他のユーザーにロールを割り当てたり、コレクションを管理する必要があるユーザー用のロールです。 コレクション管理者は、自分が管理者であるコレクションのロールにユーザーを追加することができます。 また、コレクションとその詳細を編集し、サブコレクションを追加することもできます。
+- **データ キュレーター** - 資産の管理、カスタム分類の構成、用語集の用語の設定、分析情報のレビューを行うためにデータ カタログへのアクセスを提供するロールです。 データ キュレーターは、資産の作成、読み取り、変更、移動、注釈の適用、および削除を行うことができます。
+- **データ ソース管理者** - データ ソースとスキャンを管理できるロールです。 データ ソース管理者ロールのユーザーだけでは、Azure Purview Studio にアクセスすることはできません。 このロールをデータ閲覧者やデータ キュレーター ロールと組み合わせることで、より広範囲のアクセス許可が提供されます。
+- **データ閲覧者** - データ資産、分類、分類ルール、コレクション、用語集、分析情報への読み取り専用アクセスを提供するロールです。
 
 ## <a name="who-should-be-assigned-to-what-role"></a>ロールに割り当てられるユーザー
 
@@ -52,7 +51,7 @@ Azure Purview では、定義済みのロールのセットを使用して、ア
 
 ## <a name="understand-how-to-use-azure-purviews-roles-and-collections"></a>Azure Purview のロールとコレクションを使用する方法を理解する
 
-すべてのアクセスの制御は、Purview のコレクションで管理されます。 Purview のコレクションは、[Purview Studio で確認できます](use-purview-studio.md)。 [Azure portal](https://portal.azure.com) で Purview アカウントを開き、[概要] ページで [Purview Studio] タイルを選択します。 そこから、左側のメニューのデータ マップに移動し、[コレクション] タブを選択します。
+すべてのアクセスの制御は、Purview のコレクションで管理されます。 Purview のコレクションは、[Purview Studio で確認できます](https://web.purview.azure.com/resource/)。 [Azure portal](https://portal.azure.com) で Purview アカウントを開き、[概要] ページで [Purview Studio] タイルを選択します。 そこから、左側のメニューのデータ マップに移動し、[コレクション] タブを選択します。
 
 Azure Purview アカウントが作成されると、Purview アカウント自体と同じ名前のルート コレクションで始まります。 Purview アカウントの作成者は、このルート コレクションのコレクション管理者、データ ソース管理者、データ キュレーター、データ リーダーとして自動的に追加され、このコレクションを編集および管理できます。
 
@@ -91,7 +90,7 @@ Azure Purview アカウントを作成したら、まずコレクションを作
 
 ### <a name="add-users-to-roles"></a>ユーザーをロールに割り当てる
 
-ロールの割り当ては、コレクションで管理されます。 [コレクション管理者ロール](#roles)を持つユーザーだけが、そのコレクションの他のユーザーにアクセス許可を付与できます。 新しいアクセス許可を追加する必要がある場合、コレクション管理者は Purview Studio にアクセスし、データ マップ、[コレクション] タブの順に移動して、ユーザーを追加する必要があるコレクションを選択します。 [ロールの割り当て] タブから、アクセス許可を必要とするユーザーを追加および管理できます。
+ロールの割り当ては、コレクションで管理されます。 [コレクション管理者ロール](#roles)を持つユーザーだけが、そのコレクションの他のユーザーにアクセス許可を付与できます。 新しいアクセス許可を追加する必要がある場合、コレクション管理者は [Purview Studio](https://web.purview.azure.com/resource/) にアクセスし、データ マップ、[コレクション] タブの順に移動して、ユーザーを追加する必要があるコレクションを選択します。 [ロールの割り当て] タブから、アクセス許可を必要とするユーザーを追加および管理できます。
 
 詳細な手順については、[ロールの割り当てを追加する方法に関するガイド](how-to-create-and-manage-collections.md#add-role-assignments)を参照してください。
 
@@ -136,7 +135,7 @@ Azure Purview アカウントを作成した後に最初にすることは、ユ
 #### <a name="an-example-of-assigning-someone-to-a-legacy-role"></a>ユーザーをレガシ ロールに割り当てる例
 
 1. https://portal.azure.com にアクセスし、Azure Purview アカウントに移動します。
-1. 左側の [アクセス制御 (IAM)] をクリックします。
+1. 左側で **[アクセス制御 (IAM)]** を選択します。
 1. 次に、[こちら](../role-based-access-control/quickstart-assign-role-user-portal.md#create-a-resource-group)に記載されている一般的な手順に従います。
 
 ### <a name="legacy-role-definitions-and-actions"></a>レガシ ロールの定義とアクション
@@ -147,7 +146,7 @@ Azure Purview アカウントを作成した後に最初にすることは、ユ
 
 Azure Purview アカウントへのアクセス権を付与され、そのスタジオを使用する、またはその API を呼び出すことができるようになるには、Azure Purview データ プレーン ロールに追加してもらう必要があります。 これを行うことができるのは、Azure Purview アカウントの所有者またはユーザー アクセス管理者であるユーザーだけです。 ほとんどのユーザーの場合、次の手順は、アクセス権を付与できるユーザーを見つけるのを手助けしてくれる、ローカル管理者を見つけることです。
 
-会社の [Azure portal](https://portal.azure.com) にアクセスできるユーザーの場合は、参加する Azure Purview アカウントを見つけ、その [アクセス制御 (IAM)] タブをクリックして、所有者またはユーザー アクセス管理者 (UAA) が誰かを確認します。 ただし、Azure Active Directory グループまたはサービス プリンシパルが所有者または UAA となっている場合があります。その場合、直接連絡することはできません。 代わりに、支援してくれる管理者を見つける必要があります。
+会社の [Azure portal](https://portal.azure.com) にアクセスできるユーザーの場合は、参加する Azure Purview アカウントを見つけ、その **[アクセス制御 (IAM)]** タブを選択して、所有者またはユーザー アクセス管理者 (UAA) が誰かを確認します。 ただし、Azure Active Directory グループまたはサービス プリンシパルが所有者または UAA となっている場合があります。その場合、直接連絡することはできません。 代わりに、支援してくれる管理者を見つける必要があります。
 
 ### <a name="legacy---who-should-be-assigned-to-what-role"></a>レガシ - ロールに割り当てられるユーザー
 

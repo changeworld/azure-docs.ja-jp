@@ -3,17 +3,17 @@ title: Azure portal を使用した Azure 仮想マシンのメンテナンス �
 description: メンテナンス コントロールを使用して、ご利用の Azure VM にメンテナンスを適用するタイミングを制御する方法について説明します。
 author: cynthn
 ms.service: virtual-machines
-ms.subservice: maintenance-control
+ms.subservice: maintenance
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 11/19/2020
 ms.author: cynthn
-ms.openlocfilehash: 01152d1e422088503621e684f8908182c5caa3a4
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 741a7a73fc7ac4ac468febfd9beec77c3a8c9946
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122691678"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129216530"
 ---
 # <a name="managing-platform-updates-with-maintenance-control"></a>メンテナンス コントロールによるプラットフォームの更新の管理 
 
@@ -32,7 +32,7 @@ ms.locfileid: "122691678"
 ## <a name="limitations"></a>制限事項
 
 - VM は、[専用ホスト](./dedicated-hosts.md)上にあるか、[分離された VM サイズ](isolation.md)を使用して作成される必要があります。
-- メンテナンス期間は 2 時間以上に設定する必要があります。 メンテナンス期間は、顧客が更新を開始してから完了するまでの時間です。 
+- メンテナンス期間は月ごとに異なる場合があり、ユーザーが開始した保留中の更新プログラムが適用されるまでに最大 2 時間かかることがあります。  
 - 35 日後に、更新プログラムが自動的に適用されます。
 - ユーザーは、**リソース共同作成者** のアクセス権を持っている必要があります。
 

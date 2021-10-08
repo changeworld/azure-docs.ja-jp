@@ -1,5 +1,5 @@
 ---
-title: Azure Cache for Redis をスケーリングするためのベスト プラクティス
+title: スケーリングに関するベスト プラクティス
 titleSuffix: Azure Cache for Redis
 description: Azure Cache for Redis の拡張方法を確認します。
 author: shpathak-msft
@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/25/2021
 ms.author: shpathak
-ms.openlocfilehash: 01fbebb06ba408232add1f0f05c5b715816e9e69
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 7aa65bbddc03eaf7c80717aa83fe41054617d116
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123114064"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128598672"
 ---
 # <a name="scaling"></a>Scaling
 
@@ -33,3 +33,8 @@ ms.locfileid: "123114064"
 TLS を使用し、接続数が多い場合は、負荷をより多くのコアに分散できるようにスケール アウトすることを検討してください。 一部のキャッシュ サイズは、4 つ以上のコアを持つ VM でホストされます。
 
 TLS の暗号化と解読および TLS の接続と切断のワークロードを複数のコアに分散させて、キャッシュ VM の全体的な CPU 使用率を下げます。 詳細は、「[VM のサイズとコアの詳細](./cache-planning-faq.yml#azure-cache-for-redis-performance)」を参照してください。
+
+## <a name="next-steps"></a>次のステップ
+
+- [[maxmemory-reserved] の設定を構成する](cache-best-practices-memory-management.md#configure-your-maxmemory-reserved-setting)
+- [Azure Cache for Redis インスタンスのスケーリング](cache-how-to-scale.md)

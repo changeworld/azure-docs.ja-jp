@@ -1,19 +1,18 @@
 ---
 title: Azure Stack Hub 適合性チェッカー ツールを使用して Azure Stack Edge Pro GPU の証明書を作成する
 description: Azure Stack Hub 適合性チェッカー ツールを使用して証明書要求を作成し、Azure Stack Edge Pro GPU デバイスで証明書を取得してインストールする方法について説明します。
-services: Azure Stack Edge Pro
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
 ms.date: 06/01/2021
 ms.author: alkohli
-ms.openlocfilehash: 7b167efdc0b1edaa1f09b0b85a1abbf86ef77037
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: 08201fafa3f69803e15a02c1535159101a1ecfea
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113353919"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128660996"
 ---
 # <a name="create-certificates-for-your-azure-stack-edge-pro-gpu-using-azure-stack-hub-readiness-checker-tool"></a>Azure Stack Hub 適合性チェッカー ツールを使用して Azure Stack Edge Pro GPU の証明書を作成する 
 
@@ -118,7 +117,7 @@ Azure Stack Edge Pro デバイスのデプロイ用の CSR を作成するには
     |`wildcard` 以降     |BLOB ストレージ証明書要求。 これには、デバイス上に作成できるすべてのストレージ アカウントに対応するため、ワイルドカードが含まれています。          |
     |`AzureStackEdgeVPNCertificate` 以降     |VPN クライアント証明書要求。         |
 
-    INF フォルダーも表示されます。 ここには証明書の詳細を説明するクリア テキストの management.<edge-devicename> という情報ファイルが含まれています。  
+    INF フォルダーも表示されます。 これには、証明書の詳細を説明するクリア テキストの\<edge-devicename\> management.<edge-devicename> 情報ファイルが含まれています。  
 
 
 6. これらのファイルを証明機関 (内部またはパブリックのいずれか) に送信します。 CA によって、生成された要求が使用され、[ノード証明書](azure-stack-edge-gpu-certificates-overview.md#node-certificates)、[エンドポイント証明書](azure-stack-edge-gpu-certificates-overview.md#endpoint-certificates)、[ローカル UI 証明書](azure-stack-edge-gpu-certificates-overview.md#local-ui-certificates)に対する Azure Stack Edge Pro 証明書要件を満たす証明書が生成されることを確認してください。

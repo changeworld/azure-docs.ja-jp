@@ -2,18 +2,18 @@
 title: 購入すべき Azure の予約を判断する
 description: この記事は、購入すべき予約を判断するのに役立ちます。
 author: bandersmsft
-ms.reviewer: yashar
+ms.reviewer: primittal
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 05/25/2021
+ms.date: 09/20/2021
 ms.author: banders
-ms.openlocfilehash: 80c0627cdc2169ce3301ee56a449442387d8f6e1
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 7482835f09ec5de0beff6b97b190c5eedfb11b7f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110481104"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128604324"
 ---
 # <a name="determine-what-reservation-to-purchase"></a>購入する予約を判断する
 
@@ -86,6 +86,7 @@ Azure portal の [予約] に移動し、100 DWU の倍数単位で Azure Synaps
 - 推奨量は、インスタンス サイズ ファミリーではなく個々のサイズについて計算されます。
 - スコープに対する推奨数量は、そのスコープの予約購入日と同日に減じられます。
     - ただし複数のスコープにまたがる予約の推奨数量については、更新に最大 25 日かかることがあります。 たとえば共有スコープの推奨量に基づいて予約を購入した場合、単一サブスクリプション スコープの推奨量が調整されて減じられるまでに最大 25 日かかる場合があります。
+- 現在 Azure では、管理グループのスコープに対する推奨値の生成は行っていません。
 
 ## <a name="recommendations-in-the-azure-portal"></a>Azure portal における推奨情報
 

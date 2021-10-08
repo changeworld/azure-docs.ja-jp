@@ -3,15 +3,15 @@ title: Azure Automation で Runbook を管理する
 description: この記事では、Azure Automation で Runbook を管理する方法について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 05/03/2021
+ms.date: 09/13/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c33b4dfdcecf64c692ad5e0df5de3ea80cc34d84
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: f30f2ea398404821face86470a43bbf6f86ffd7f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108737569"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128652018"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Azure Automation で Runbook を管理する
 
@@ -19,10 +19,10 @@ Azure Automation には、新しい Runbook を作成するか、ファイルま
 
 ## <a name="create-a-runbook"></a>Runbook を作成する
 
-Azure portal または Windows PowerShell を使用して、Azure Automation に新しい Runbook を作成します。 作成した Runbook は、次の情報を使用して編集できます。
+Azure portal または PowerShell を使用して、Azure Automation に新しい Runbook を作成します。 作成した Runbook は、次の情報を使用して編集できます。
 
 * [Azure Automation でのテキスト形式の Runbook の編集](automation-edit-textual-runbook.md)
-* [Automation Runbook 向けの Windows PowerShell ワークフローの基本的な概念の説明](automation-powershell-workflow.md)
+* [Automation Runbook 向けの PowerShell ワークフローの基本的な概念の説明](automation-powershell-workflow.md)
 * [Azure Automation で Python 2 パッケージを管理する](python-packages.md)
 * [Azure Automation で Python 3 パッケージ (プレビュー) を管理する](python-3-packages.md)
 
@@ -84,7 +84,7 @@ PowerShell または PowerShell ワークフロー ( **.ps1**) スクリプト�
 > [!NOTE]
 > グラフィカル Runbook は、インポート後、他の種類に変換することができます。 ただし、グラフィカル Runbook をテキスト形式の Runbook に変換することはできません。
 
-### <a name="import-a-runbook-with-windows-powershell"></a>Windows PowerShell を使用して Runbook をインポートする
+### <a name="import-a-runbook-with-powershell"></a>PowerShell で Runbook をインポートする
 
 Runbook のドラフトとしてスクリプト ファイルをインポートするには、[Import-AzAutomationRunbook](/powershell/module/az.automation/import-azautomationrunbook) コマンドレットを使用します。 Runbook が既に存在する場合、コマンドレットで `Force` パラメーターを使用しないと、インポートは失敗します。
 
@@ -167,16 +167,12 @@ Runbook の進行状況は、ストレージ アカウント、データベー�
 一部の Runbook は、同時に複数のジョブで実行されると、おかしな動作をすることがあります。 この場合は、既に実行中のジョブがあるかどうかをチェックするロジックを Runbook に実装することが重要です。 基本的な例を次に示します。
 
 ```powershell
-# Authenticate to Azure
-$connection = Get-AutomationConnection -Name AzureRunAsConnection
-$cnParams = @{
-    ServicePrincipal      = $true
-    Tenant                = $connection.TenantId
-    ApplicationId         = $connection.ApplicationId
-    CertificateThumbprint = $connection.CertificateThumbprint
-}
-Connect-AzAccount @cnParams
-$AzureContext = Set-AzContext -SubscriptionId $connection.SubscriptionID
+# Connect to Azure with user-assigned managed identity
+Connect-AzAccount -Identity
+$identity = Get-AzUserAssignedIdentity -ResourceGroupName <ResourceGroupName> -Name <UserAssignedManagedIdentity>
+Connect-AzAccount -Identity -AccountId $identity.ClientId
+
+$AzureContext = Set-AzContext -SubscriptionId ($identity.id -split "/")[2]
 
 # Check for already running or new runbooks
 $runbookName = "RunbookName"
@@ -195,16 +191,6 @@ if (($jobs.Status -contains 'Running' -and $runningCount -gt 1 ) -or ($jobs.Stat
     # Insert Your code here
 }
 ```
-または、PowerShell のスプラッティング機能を使用して、接続情報を `Connect-AzAccount` に渡すこともできます。 その場合、前のサンプルの最初の数行は次のようになります。
-
-```powershell
-# Authenticate to Azure
-$connection = Get-AutomationConnection -Name AzureRunAsConnection
-Connect-AzAccount @connection
-$AzureContext = Set-AzContext -SubscriptionId $connection.SubscriptionID
-```
-
-詳しくは、[スプラッティング](/powershell/module/microsoft.powershell.core/about/about_splatting)に関する記事をご覧ください。
 
 ## <a name="handle-transient-errors-in-a-time-dependent-script"></a>時間に依存するスクリプトの一時的なエラーを処理する
 
@@ -222,14 +208,10 @@ Runbook は、[サブスクリプション](automation-runbook-execution.md#subs
 ```powershell
 Disable-AzContextAutosave -Scope Process
 
-$connection = Get-AutomationConnection -Name AzureRunAsConnection
-$cnParams = @{
-    ServicePrincipal      = $true
-    Tenant                = $connection.TenantId
-    ApplicationId         = $connection.ApplicationId
-    CertificateThumbprint = $connection.CertificateThumbprint
-}
-Connect-AzAccount @cnParams
+# Connect to Azure with user-assigned managed identity
+Connect-AzAccount -Identity
+$identity = Get-AzUserAssignedIdentity -ResourceGroupName <ResourceGroupName> -Name <UserAssignedManagedIdentity>
+Connect-AzAccount -Identity -AccountId $identity.ClientId
 
 $childRunbookName = 'ChildRunbookDemo'
 $accountName = 'MyAutomationAccount'
@@ -257,7 +239,7 @@ Start-AzAutomationRunbook @startParams
 
 ## <a name="test-a-runbook"></a>Runbook をテストする
 
-Runbook のテスト時には [ドラフト バージョン](#publish-a-runbook) が実行され、そのバージョンで行われるすべてのアクションが完了します。 ジョブ履歴は作成されませんが、 **[テスト出力]** ペインに[出力](automation-runbook-output-and-messages.md#use-the-output-stream)および[警告とエラー](automation-runbook-output-and-messages.md#working-with-message-streams)のストリームが表示されます。 [VerbosePreference](automation-runbook-output-and-messages.md#work-with-preference-variables) 変数が `Continue` に設定されている場合のみ、[詳細ストリーム](automation-runbook-output-and-messages.md#write-output-to-verbose-stream)に対するメッセージが [出力] ペインに表示されます。
+Runbook のテスト時には [ドラフト バージョン](#publish-a-runbook) が実行され、そのバージョンで行われるすべてのアクションが完了します。 ジョブ履歴は作成されませんが、 **[テスト出力]** ペインに [出力](automation-runbook-output-and-messages.md#use-the-output-stream)および [警告とエラー](automation-runbook-output-and-messages.md#working-with-message-streams)のストリームが表示されます。 [VerbosePreference](automation-runbook-output-and-messages.md#work-with-preference-variables) 変数が `Continue` に設定されている場合のみ、[詳細ストリーム](automation-runbook-output-and-messages.md#write-output-to-verbose-stream)に対するメッセージが [出力] ペインに表示されます。
 
 ドラフト バージョンを実行している場合も、Runbook は通常どおり実行され、環境中のリソースに対するすべての操作が実行されます。 このため、Runbook をテストするのは非運用環境のリソースのみにしてください。
 

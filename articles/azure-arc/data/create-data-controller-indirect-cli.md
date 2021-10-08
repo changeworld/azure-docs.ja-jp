@@ -9,12 +9,12 @@ ms.author: dinethi
 ms.reviewer: mikeray
 ms.date: 07/30/2021
 ms.topic: how-to
-ms.openlocfilehash: c2d67cd8e62a0b74ed5959cebfe691ffb044d975
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 195325ff9bad726ed62c5955b393d31e4c457f2e
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121737168"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124836779"
 ---
 # <a name="create-azure-arc-data-controller-using-the-cli"></a>CLI を使用した Azure Arc データ コントローラーの作成
 
@@ -117,10 +117,7 @@ az arcdata dc create --profile-name azure-arc-aks-default-storage --k8s-namespac
 
 #### <a name="configure-storage-azure-stack-hci-with-aks-hci"></a>ストレージを構成する (Azure Stack HCI と AKS-HCI)
 
-AKS-HCI で Azure Stack HCI を使用している場合は、Azure Stack HCA AKS-HCI バージョンに応じて、次のいずれかの操作を行います。
-
-- バージョン 1.20 以降では、`fsGroupPolicy:File` を使用してカスタム ストレージ クラスを作成します (詳細については、 https://kubernetes-csi.github.io/docs/support-fsgroup.html) を参照してください)。 
-- バージョン 1.19 の場合は、次を使用します。 
+AKS-HCI で Azure Stack HCI を使用している場合は、`fsType` を使用してカスタム ストレージ クラスを作成します。
 
    ```json
    fsType: ext4
@@ -232,7 +229,7 @@ az arcdata dc create --path ./custom  --k8s-namespace <namespace> --use-k8s --na
 デプロイ プロファイルをカスタマイズして特定のストレージ クラスやサービス タイプを指定する場合は、まず次のコマンドを実行して、kubeadm デプロイ プロファイルに基づいて新しいカスタムのデプロイ プロファイル ファイルを作成します。 このコマンドでは、`custom` というディレクトリが現在の作業ディレクトリに作成され、カスタムのデプロイ プロファイル ファイル `control.json` がそのディレクトリに作成されます。
 
 ```azurecli
-az arcdata dc config init --source azure-arc-kubeadm --path ./custom --k8s-namespace <namespace> --use-k8s
+az arcdata dc config init --source azure-arc-kubeadm --path ./custom 
 ```
 
 次のコマンドを実行して、使用可能なストレージ クラスを検索できます。

@@ -5,15 +5,15 @@ author: ginamr
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 02/17/2021
+ms.date: 09/21/2021
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 8529eae920fdef90c5dd36fc39f0e99635478adf
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: ac3ba6ec00dc617d434026a6693c6c4554421140
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122206468"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128647769"
 ---
 # <a name="st_intersects-azure-cosmos-db"></a>ST_INTERSECTS (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -57,6 +57,9 @@ WHERE ST_INTERSECTS(a.location, {
 ## <a name="remarks"></a>解説
 
 このシステム関数は、集計を使用したクエリを除き、[地理空間インデックス](../index-policy.md#spatial-indexes)の恩恵を受けます。
+
+> [!NOTE]
+> GeoJSON 仕様では、Polygon 内のポイントを反時計回りの順序で指定する必要があります。 時計回りに指定された Polygon は、その中の領域を逆にしたものを表します。
 
 ## <a name="next-steps"></a>次のステップ
 

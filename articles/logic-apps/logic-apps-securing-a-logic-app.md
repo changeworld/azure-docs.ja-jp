@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: rarayudu, azla
 ms.topic: how-to
-ms.date: 07/29/2021
-ms.openlocfilehash: 296a743924de2093ff9418333bdf8ef7e2f6f0f1
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/13/2021
+ms.openlocfilehash: ed101e95a8580274661fd19d752a478677359641
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121731289"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128647197"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Azure Logic Apps におけるアクセスとデータのセキュリティ保護
 
@@ -143,7 +143,10 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 要求ベースのトリガーによって作成されたエンドポイントへの受信呼び出しの場合、ロジック アプリのために承認ポリシーを定義または追加することによって、[Azure AD OAuth](../active-directory/develop/index.yml) を有効にできます。 このように、受信呼び出しでは、承認のために OAuth [アクセス トークン](../active-directory/develop/access-tokens.md)を使用します。
 
-ロジック アプリが OAuth アクセス トークンを含む受信要求を受信すると、Azure Logic Apps サービスによって、トークンのクレームが、各承認ポリシーによって指定されたクレームと比較されます。 トークンのクレームと、少なくとも 1 つのポリシーに含まれるすべてのクレームが一致した場合、受信要求に対して承認が成功します。 トークンは、承認ポリシーで指定された数よりも多くのクレームを持つことができます。
+ロジック アプリで、OAuth アクセス トークンを含む外部からの要求を受け取る場合、Azure Logic Apps では、トークンのクレームを、各認証ポリシーで指定するクレームと照合します。 トークンのクレームと、少なくとも 1 つのポリシーに含まれるすべてのクレームが一致した場合、受信要求に対して承認が成功します。 トークンは、承認ポリシーで指定された数よりも多くのクレームを持つことができます。
+
+> [!NOTE]
+> シングルテナントの Azure Logic Apps の **Logic App (Standard)** では現在、Request トリガーや HTTP Webhook トリガーなど、要求によって動作するトリガーに対する外部からの呼び出しには、Azure AD OAuth を利用できません。
 
 #### <a name="considerations-before-you-enable-azure-ad-oauth"></a>Azure AD OAuth を有効にする前の考慮事項
 
@@ -476,13 +479,17 @@ ARM テンプレートで、ロジック アプリのリソース定義で許可
 
 ## <a name="access-to-logic-app-operations"></a>ロジック アプリの操作へのアクセス
 
-ロジック アプリの管理、編集、表示など、特定のタスクの実行を特定のユーザーまたはグループのみに許可することができます。 それらのアクセス許可を制御するには、カスタマイズされたロールまたは組み込みロールを Azure サブスクリプションのメンバーに割り当てることができるように、[Azure のロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) を使用します。
+ロジック アプリの管理、編集、表示など、特定のタスクの実行を特定のユーザーまたはグループのみに許可することができます。 権限を制御するには [Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) を使用します。 Azure サブスクリプションへのアクセス権を持つメンバーに、組み込みまたはカスタムのロールを割り当てることができます。 Azure Logic Apps にはこれらの特定のロールが存在します。
 
 * [ロジック アプリの共同作成者](../role-based-access-control/built-in-roles.md#logic-app-contributor): ロジック アプリを管理できますが、アクセス権を変更することはできません。
 
 * [ロジック アプリのオペレーター](../role-based-access-control/built-in-roles.md#logic-app-operator):ロジック アプリの読み取り、有効化、無効化ができますが、編集または更新はできません。
 
-他のユーザーがお客様のロジック アプリを変更したり削除したりしないようにするには、[Azure のリソース ロック](../azure-resource-manager/management/lock-resources.md)を使用できます。 この機能を使用すると、他のユーザーは運用リソースを変更または削除できなくなります。
+* [共同作成者](../role-based-access-control/built-in-roles.md#contributor): すべてのリソースを管理する完全な権限がありますが、Azure RBAC のロールを割り当てること、Azure Blueprints の割り当てを管理すること、イメージのギャラリーを共有することはできません。
+
+  たとえば、自分で作成していないロジック アプリを使用し、そのロジック アプリのワークフローで使用する接続を認証する必要がある場合を考えてください。 Azure サブスクリプションでは、そのロジック アプリ リソースが存在するリソース グループに対する共同作成者権限が必要です。 ロジック アプリを自分で作成した場合は、自動的に共同作成者権限が得られます。
+
+他のユーザーがお客様のロジック アプリを変更したり削除したりしないようにするには、[Azure のリソース ロック](../azure-resource-manager/management/lock-resources.md)を使用できます。 この機能を使用すると、他のユーザーは運用リソースを変更または削除できなくなります。 接続のセキュリティの詳細は、[Azure Logic Apps の接続の構成](../connectors/apis-list.md#connection-configuration)に関する記事と、[接続のセキュリティと暗号化](../connectors/apis-list.md#connection-security-encyrption)に関する記事をご確認ください。
 
 <a name="secure-run-history"></a>
 
@@ -1135,7 +1142,11 @@ Raw 認証をサポートするトリガーまたはアクションでは、次�
 
 #### <a name="managed-identity-authentication"></a>マネージド ID の認証
 
-[マネージド ID 認証がサポートされているトリガーまたはアクション](#add-authentication-outbound)で [マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) オプションが使用できる場合、ロジック アプリでは、Azure Active Directory (Azure AD) で保護された Azure リソースへのアクセスの認証用に、資格情報、シークレット、Azure AD トークンではなく、 システム割り当て ID または手動で作成した *1 つ* のユーザー割り当て ID を使用できます。 この ID は、ユーザーに代わって Azure が管理します。ユーザーがシークレットを管理したり、Azure AD トークンを直接使用したりする必要がないため、資格情報の保護に役立ちます。 [Azure AD 認証用のマネージド ID がサポートされているサービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)の詳細をご覧ください。
+[マネージド ID 認証をサポートしているトリガーまたはアクション](#add-authentication-outbound)で[マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) オプションが利用できるときは、ロジック アプリでこの ID を使用して、認証情報、シークレット、Azure AD トークンではなく、Azure Active Directory (Azure AD) によって保護された Azure リソースへのアクセスを認証できます。 この ID は、ユーザーに代わって Azure が管理します。ユーザーがシークレットを管理したり、Azure AD トークンを直接使用したりする必要がないため、資格情報の保護に役立ちます。 [Azure AD 認証用のマネージド ID がサポートされているサービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)の詳細をご覧ください。
+
+* **Logic App (Consumption)** では、システム割り当て ID または、手動で作成した *単一の* ユーザー割り当て ID を使用できます。
+
+* **Logic App (Standard)** では、システム割り当て ID だけを使用でき、これが自動的に有効になります。 現在、ユーザー割り当て ID は利用できません。
 
 1. ロジック アプリでマネージド ID を使用するには、その前に「[Azure Logic Apps でマネージド ID を使用して認証し、リソースにアクセスする](../logic-apps/create-managed-service-identity.md)」の手順に従います。 これらの手順により、ロジック アプリでマネージド ID が有効になり、ターゲットの Azure リソースに対するその ID のアクセスが設定されます。
 
@@ -1177,7 +1188,6 @@ Raw 認証をサポートするトリガーまたはアクションでは、次�
    | **接続名** | はい | <*connection-name*> ||
    | **管理対象 ID** | はい | **システム割り当てマネージド ID** <br>or <br> <*user-assigned-managed-identity-name*> | 使用する認証の種類 |
    |||||
-
 
 <a name="block-connections"></a>
 

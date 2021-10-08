@@ -1,14 +1,14 @@
 ---
-title: Azure DevTest Labs でのラボのクォータと制限のスケール | Microsoft Docs
+title: ラボでのクォータと制限のスケール
 description: この記事では、Azure DevTest Labs でラボをスケーリングする方法について説明します。 使用量のクォータと制限を確認し、増加を要求します。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 2166eaab073e2abc24ca24494ae13eb876db1fcf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 357e8b4746aa5be368ecf87d12c86014cc525704
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87533956"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128666554"
 ---
 # <a name="scale-quotas-and-limits-in-devtest-labs"></a>DevTest Labs でのクォータと制限のスケール
 お気づきかもしれませんが、DevTest Labs での作業時に、一部の Azure リソースに一定の既定の制限があります。これは、DevTest Labs サービスに影響する場合があります。 これらの制限は、**クォータ** と呼ばれます。

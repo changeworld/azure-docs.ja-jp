@@ -4,12 +4,12 @@ description: カスタム イメージ プールは、Batch ワークロード�
 ms.topic: conceptual
 ms.date: 03/04/2021
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: ab3affbfff9039689354763080abfb1dc5b15af2
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: 19a6168c2d6d2a37458dbbe9d8917f6e679da47f
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123450235"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124827482"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-image-pool"></a>Shared Image Gallery を使用してカスタム イメージ プールを作成する
 
@@ -81,7 +81,7 @@ VM を作成するときは、次のガイドラインに従ってください�
 
 ### <a name="create-a-vm-snapshot"></a>VM スナップショットを作成する
 
-スナップショットは、VHD の完全な読み取り専用コピーです。 VM の OS やデータ ディスクのスナップショットを作成するには、Azure portal またはコマンドライン ツールを使用できます。 スナップショットを作成するための手順とオプションについては、[Linux](../virtual-machines/linux/snapshot-copy-managed-disk.md) または [Windows](../virtual-machines/windows/snapshot-copy-managed-disk.md) VM のガイドをご覧ください。
+スナップショットは、VHD の完全な読み取り専用コピーです。 VM の OS やデータ ディスクのスナップショットを作成するには、Azure portal またはコマンドライン ツールを使用できます。 スナップショットを作成するための手順とオプションについては、[VM](../virtual-machines/snapshot-copy-managed-disk.md) のガイダンスをご覧ください。
 
 ### <a name="create-an-image-from-one-or-more-snapshots"></a>1 つ以上のスナップショットからイメージを作成する
 

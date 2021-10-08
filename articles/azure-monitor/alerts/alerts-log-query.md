@@ -5,12 +5,12 @@ author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: e15b3f81cf5f29efa739939fe29df25f338187cc
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 82f40d33d0465a7981105472ccd0487e7e24da80
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110475260"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128635130"
 ---
 # <a name="optimizing-log-alert-queries"></a>ログ アラート クエリの最適化
 この記事では、最適なパフォーマンスを実現するために[ログ アラート](./alerts-unified-log.md) クエリを記述して変換する方法について説明します。 最適化されたクエリを使用すると、頻繁に実行されるアラートの待機時間と負荷が軽減されます。
@@ -47,7 +47,7 @@ SecurityEvent
 
 ログ アラート ルールのクエリは、常に明確な範囲を定義するテーブルで始める必要があります。これにより、クエリのパフォーマンスと結果の関連性の両方が向上します。 アラート ルール内のクエリは頻繁に実行されるので、`search` と `union` を使用すると、複数のテーブルにわたるスキャンが必要になるため、アラートの待機時間が増加するオーバーヘッドが過剰に生じる可能性があります。 また、これらの演算子は、アラート サービスがクエリを最適化する機能を低下させます。
 
-リソース間のクエリが想定される `search` 演算子または `union` 演算子を使用するログ アラート ルールの作成または変更は、サポートされていません。
+リソース間のクエリを除き、`search` 演算子または `union` 演算子を使用するログ アラート ルールの作成または変更は、サポートされていません。
 
 たとえば、次のアラート クエリは _SecurityEvent_ テーブルが対象であり、特定のイベント ID を検索します。 これは、このクエリが処理する必要のある唯一のテーブルです。
 

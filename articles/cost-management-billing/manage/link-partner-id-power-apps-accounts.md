@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/16/2021
 ms.author: banders
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: eb6608e03debb7811497a1347c718bb2845cf87c
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: c7bc61691f0035c9f1aa0361ae3439cfb1e1485e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110688199"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128604400"
 ---
 # <a name="link-a-partner-id-to-your-power-apps-accounts"></a>パートナー ID を Power Apps アカウントにリンクする
 
@@ -39,7 +39,7 @@ PAL を使用すると、Microsoft が Power Apps の顧客を持つパートナ
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 1. Azure portal で [[パートナー ID へリンク]](https://portal.azure.com/#blade/Microsoft_Azure_Billing/managementpartnerblade) に移動します。
-1. 貴社の [Microsoft Partner Network](https://partner.microsoft.com/) ID を入力します。 必ず、パートナー プロファイルに表示されている **関連付けられている MPN ID** を使用してください。  
+1. 貴社の [Microsoft Partner Network](https://partner.microsoft.com/) ID を入力します。 必ず、パートナー センターのプロファイルに表示されている **関連付けられている MPN ID** を使用してください。 これは通常、ユーザーの[パートナー拠点アカウントの MPN ID](/partner-center/account-structure) として知られています。  
     :::image type="content" source="./media/link-partner-id-power-apps-accounts/link-partner-id.png" alt-text="[パートナー ID へリンク] ウィンドウを示すスクリーンショット。" lightbox="./media/link-partner-id-power-apps-accounts/link-partner-id.png" :::
 1. パートナー ID を別の顧客にリンクするには、ディレクトリを切り替えます。 **[ディレクトリの切り替え]** で適切なディレクトリを選びます。  
     :::image type="content" source="./media/link-partner-id-power-apps-accounts/switch-directory.png" alt-text="ディレクトリを切り替えられる [ディレクトリ + サブスクリプション] ウィンドウを示すスクリーンショット。" lightbox="./media/link-partner-id-power-apps-accounts/switch-directory.png" :::

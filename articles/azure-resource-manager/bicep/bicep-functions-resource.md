@@ -4,27 +4,17 @@ description: Bicep ファイルでリソースの値取得に使用する関数�
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 08/16/2021
-ms.openlocfilehash: a83c0f442e88bc2fe0320fe8affe5b114a28a897
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.date: 09/10/2021
+ms.openlocfilehash: 23d205f44b23b71f476f86d8d589f5d99a417a85
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123314328"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124827546"
 ---
 # <a name="resource-functions-for-bicep"></a>Bicep のリソース関数
 
-Azure Resource Manager には、Bicep ファイルでリソース値を取得する次の関数が用意されています。
-
-* [extensionResourceId](#extensionresourceid)
-* [getSecret](#getsecret)
-* [list*](#list)
-* [pickZones](#pickzones)
-* [providers (非推奨)](#providers)
-* [reference](#reference)
-* [resourceId](#resourceid)
-* [subscriptionResourceId](#subscriptionresourceid)
-* [tenantResourceId](#tenantresourceid)
+この記事では、リソースの値を取得するための Bicep 関数について説明します。
 
 現在のデプロイから値を取得するには、「[Deployment value functions](./bicep-functions-deployment.md) (デプロイ値関数)」を参照してください。
 
@@ -122,7 +112,7 @@ Azure Key Vault からシークレットを返します。 `getSecret` 関数は
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 型 | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | secretName | はい | string | Key Vault に格納されているシークレットの名前。 |
 
@@ -186,7 +176,7 @@ module sql './sql.bicep' = {
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 型 | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | apiVersion |いいえ |string |このパラメーターを指定しない場合は、リソースの API バージョンが使用されます。 特定のバージョンで関数を実行する必要がある場合にのみ、カスタム API バージョンを指定します。 **yyyy-mm-dd** の形式を使用します。 |
 | functionValues |いいえ |object | 関数の値を持つオブジェクト。 このオブジェクトは、ストレージ アカウントの **listAccountSas** など、パラメーター値を持つオブジェクトの受信をサポートする関数に対してのみ指定します。 関数値を渡す例をこの記事で紹介します。 |
@@ -423,7 +413,7 @@ list* の使用例を次の表にまとめています。
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 型 | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | providerNamespace | はい | string | ゾーンのサポートについて確認するためのリソースの種類のリソース プロバイダーの名前空間。 |
 | resourceType | はい | string | ゾーンのサポートについて確認するためのリソースの種類。 |
@@ -470,7 +460,7 @@ output notSupportedType array = pickZones('Microsoft.Cdn', 'profiles', 'westus2'
 
 前の例からの出力は、3 つの配列を返します。
 
-| 名前 | 型 | 値 |
+| 名前 | 種類 | 値 |
 | ---- | ---- | ----- |
 | サポート対象 | array | [ "1" ] |
 | notSupportedRegion | array | [] |
@@ -666,6 +656,5 @@ resource myPolicyAssignment 'Microsoft.Authorization/policyAssignments@2019-09-0
 
 ## <a name="next-steps"></a>次のステップ
 
-* Bicep ファイルのセクションの説明は、[Bicep ファイルの構造と構文](./file.md)に関する記事をご覧ください。
+* 現在のデプロイから値を取得するには、「[Deployment value functions](./bicep-functions-deployment.md) (デプロイ値関数)」を参照してください。
 * 1 種類のリソースを指定した回数分繰り返し作成するには、[Bicep でリソースの複数のインスタンスをデプロイする方法](./loop-resources.md)に関するページを参照してください。
-* 作成した Bicep ファイルをデプロイする方法については、「[Bicep ファイルと Azure PowerShell を使用してリソースをデプロイする](./deploy-powershell.md)」を参照してください。

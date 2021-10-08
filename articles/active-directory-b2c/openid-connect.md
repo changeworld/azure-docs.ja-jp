@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/04/2021
+ms.date: 09/20/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 32154904a78062f5e3afdb6217351f39151b36b8
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ab62cae223b60103043df0c9dd79acf64e552358
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121729401"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128588943"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Azure Active Directory B2C での OpenID Connect による Web サインイン
 
@@ -282,7 +282,7 @@ GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/
 | パラメーター | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | {tenant} | はい | Azure AD B2C テナントの名前。 |
-| {policy} | はい | ご利用のアプリケーションからユーザーをサインアウトさせるために使用するユーザー フロー。 |
+| {policy} | はい | 承認要求で使用されたユーザー フロー。 たとえば、ユーザーが `b2c_1_sign_in` ユーザー フローでサインインした場合は、サインアウト要求で `b2c_1_sign_in` を指定します。 |
 | id_token_hint| いいえ | エンド ユーザーのクライアントとの現在の認証済みセッションに関するヒントとしてログアウトエンド ポイントに渡される発行済みの ID トークン。 `id_token_hint` によって、`post_logout_redirect_uri` が Azure AD B2C アプリケーション設定に登録済みの応答 URL であることが確認されます。 詳細については、「[ログアウトのリダイレクトをセキュリティで保護する](#secure-your-logout-redirect)」を参照してください。 |
 | client_id | いいえ* | [Azure portal](https://portal.azure.com/) によってアプリケーションに割り当てられたアプリケーション ID。<br><br>\**これは、`Application` の分離の SSO 構成を使用し、 _[ログアウト要求に ID トークンが必要]_ が `No` に設定されている場合に必要となります。* |
 | post_logout_redirect_uri | いいえ | サインアウトの正常終了後にユーザーをリダイレクトする URL。これが含まれていない場合、Azure AD B2C では、ユーザーに対して一般的なメッセージが表示されます。 `id_token_hint` を指定しない限り、この URL を Azure AD B2C アプリケーション設定に応答 URL として登録することはできません。 |

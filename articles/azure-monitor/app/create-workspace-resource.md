@@ -1,15 +1,15 @@
 ---
-title: 新しい Azure Monitor Application Insights のワークスペース ベースのリソースを作成する | Microsoft Docs
+title: Azure Monitor Application Insights の新しいワークスペース ベースのリソースを作成する
 description: 新しい Azure Monitor Application Insights のワークスペース ベースのリソースを有効にするために必要な手順について説明します。
 ms.topic: conceptual
 ms.date: 10/06/2020
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 21cf89c7d89e310f98fea4421076d298405b6fc3
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 42025ec3e2c509e2fcf7aa4874d9d5363f134a97
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114464462"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128604495"
 ---
 # <a name="workspace-based-application-insights-resources"></a>ワークスペース ベースの Application Insights リソース
 
@@ -208,8 +208,7 @@ Application Insights リソース ウィンドウで **[プロパティ]**  >  *
 従来の連続エクスポート機能は、ワークスペース ベースのリソースではサポートされていません。 代わりに、Application Insights リソースから **[診断設定]**  >  **[診断設定を追加する]** を選択します。 すべてのテーブルまたはテーブルのサブセットを選択して、ストレージ アカウントにアーカイブしたり、Azure Event Hub にストリーミングしたりすることができます。
 
 > [!NOTE]
-> 現在、テレメトリのエクスポートに追加料金は発生しません。 この機能の価格情報については、「[Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)」ページを参照してください。  課金が開始される前に、通知が送信されます。 通知期間後も <feature name> を引き続き使用することを選択した場合は、該当する料金が適用されます。 
- 
+> 現在、テレメトリのエクスポートに追加料金は発生しません。 この機能の価格情報については、「[Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)」ページを参照してください。  課金が開始される前に、通知が送信されます。 通知期間後もテレメトリ エクスポートを引き続き使用する場合は、該当する料金が適用されます。 
 
 ## <a name="next-steps"></a>次のステップ
 

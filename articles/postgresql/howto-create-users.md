@@ -6,12 +6,12 @@ ms.author: sunila
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2019
-ms.openlocfilehash: c2d0cfc15457d45701f129ae329295064d773a09
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a91b334b5494d8db44c86352c95fd7b4d1ea2c14
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105604109"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128604077"
 ---
 # <a name="create-users-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server でユーザーを作成する
 
@@ -75,6 +75,14 @@ Azure Database for PostgreSQL サーバーを作成すると、3 つの既定の
    ```sql
    GRANT ALL PRIVILEGES ON DATABASE <newdb> TO <db_user>;
    ```
+
+   ユーザーがテーブルに "ロール" を作成すると、このテーブルはそのユーザーの所有になります。 他のユーザーからそのテーブルにアクセスする必要がある場合は、このユーザーに対してテーブル単位で権限を与える必要があります。
+
+   次に例を示します。 
+
+    ```sql
+    GRANT SELECT ON ALL TABLES IN SCHEMA <schema_name> TO <db_user>;
+    ```
 
 5. 指定したデータベースを指定し、新しいユーザー名とパスワードを使って、サーバーにログインします。 この例は、psql のコマンド ラインです。 このコマンドでは、ユーザー名のパスワード入力が求められます。 実際のサーバー名、データベース名、およびユーザー名に置き換えます。
 

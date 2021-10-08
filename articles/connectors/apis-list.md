@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: conceptual
-ms.date: 07/01/2021
+ms.date: 09/13/2021
 ms.custom: contperf-fy21q4
-ms.openlocfilehash: f8db25d79784b1a2ca2b63ace57f729271271a43
-ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+ms.openlocfilehash: cccd744e8c123cd9441ff9aca47d2341ea9d80fb
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113218873"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128679865"
 ---
 # <a name="about-connectors-in-azure-logic-apps"></a>Azure Logic Apps のカスタム コネクタの概要
 
@@ -46,7 +46,7 @@ Azure Logic Apps を使用してワークフローを構築する場合、"*コ�
 
 ## <a name="connector-categories"></a>コネクタのカテゴリ
 
-Logic Apps では、ほとんどのトリガーとアクションが "*組み込み*" バージョンまたは "*マネージド コネクタ*" バージョンのどちらかで使用できます。 両方のバージョンで使用できるトリガーとアクションは少数です。 使用できるバージョンは、マルチテナント ロジック アプリと (現在[シングルテナントの Azure Logic Apps](../logic-apps/single-tenant-overview-compare.md) でのみ使用可能な) シングルテナント ロジック アプリのどちらを作成するかによって異なります。
+Azure Logic Apps では、ほとんどのトリガーとアクションが "*組み込み*" バージョンまたは "*マネージド コネクタ*" バージョンのどちらかで使用できます。 両方のバージョンで使用できるトリガーとアクションは少数です。 使用できるバージョンは、マルチテナント ロジック アプリと (現在[シングルテナントの Azure Logic Apps](../logic-apps/single-tenant-overview-compare.md) でのみ使用可能な) シングルテナント ロジック アプリのどちらを作成するかによって異なります。
 
 [組み込みのトリガーとアクション](built-in.md)は Logic Apps ランタイムでネイティブに実行され、接続を作成する必要はなく、次の種類のタスクを実行します。
 
@@ -61,13 +61,27 @@ Logic Apps では、ほとんどのトリガーとアクションが "*組み込
 - [統合アカウント コネクタ](managed.md#integration-account-connectors)。企業間 (B2B) 通信のシナリオをサポートします。
 - [統合サービス環境 (ISE) コネクタ](managed.md#ise-connectors)。[ISE でのみ使用できるマネージド コネクタ](#ise-and-connectors)の小さなグループです。
 
+<a name="connection-configuration"></a>
+
 ## <a name="connection-configuration"></a>接続の構成
 
-ほとんどのコネクタでは、ワークフローでそのトリガーまたはアクションを使用するには、まずターゲット サービスまたはシステムへの *接続* を作成しておく必要があります。 接続を作成するには、アカウントの資格情報と、場合によっては他の接続情報を使用してご自分の ID を認証する必要があります。 たとえば、ワークフローで Office 365 Outlook 電子メール アカウントにアクセスしてそれを操作するには、そのアカウントへの接続を認可しておく必要があります。
+ロジック アプリのリソースや接続を作成または管理するには、[Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) を使用したロールを通じて付与される、特定の権限が必要です。 Azure サブスクリプションにアクセスできるメンバーには、組み込みまたはカスタマイズされたロールを割り当てることができます。 Azure Logic Apps の具体的なロールは以下のとおりです。
+
+* [ロジック アプリの共同作成者](../role-based-access-control/built-in-roles.md#logic-app-contributor): ロジック アプリを管理できますが、アクセス権を変更することはできません。
+
+* [ロジック アプリのオペレーター](../role-based-access-control/built-in-roles.md#logic-app-operator):ロジック アプリの読み取り、有効化、無効化ができますが、編集または更新はできません。
+
+* [共同作成者](../role-based-access-control/built-in-roles.md#contributor): すべてのリソースを管理するためのフル アクセスが付与されますが、Azure RBAC でロールを割り当てたり、Azure Blueprints で割り当てを管理したり、イメージ ギャラリーを共有したりすることはできません。
+
+  たとえば、ロジック アプリのワークフローで使用する接続の作成と認証を自身で行っていないロジック アプリを使用する必要があるとします。 Azure サブスクリプションには、そのロジック アプリ リソースを含むリソース グループに対する共同作成者のアクセス許可が付与されている必要があります。 ロジック アプリ リソースの作成者には、自動的に共同作成者のアクセス許可が付与されます。
+
+ワークフローでコネクタのトリガーまたはアクションを使用するには、ほとんどのコネクタの場合、まずターゲット サービスまたはシステムへの *接続* を作成しておく必要があります。 ロジック アプリ ワークフロー内で接続を作成するには、アカウントの資格情報、および場合によっては他の接続情報を使用してご自分の ID を認証する必要があります。 たとえば、ワークフローで Office 365 Outlook 電子メール アカウントにアクセスしてそれを操作するには、そのアカウントへの接続を認可しておく必要があります。 組み込み操作とマネージド コネクタの数が少ない場合は、認証情報を提供する代わりに、[マネージド ID を設定して認証に使用する](../logic-apps/create-managed-service-identity.md#triggers-actions-managed-identity)ことができます。
+
+<a name="connection-security-encyrption"></a>
 
 ### <a name="connection-security-and-encryption"></a>接続のセキュリティと暗号化
 
-Office 365、Salesforce、GitHub など、Azure Active Directory (Azure AD) OAuth を使用するコネクタの場合、アクセス トークンが[暗号化](../security/fundamentals/encryption-overview.md)され、Azure シークレットに安全に保存されるサービスにサインインする必要があります。 FTP や SQL などのその他のコネクタでは、サーバーのアドレス、ユーザー名、およびパスワードなどの構成の詳細を含む接続が必要です。 これらの接続構成の詳細も[暗号化され、Azure に安全に保存されます](../security/fundamentals/encryption-overview.md)。
+サーバー アドレス、ユーザー名、パスワード、資格情報、シークレットなどの接続構成の詳細は[暗号化され、セキュリティで保護された Azure 環境](../security/fundamentals/encryption-overview.md)に格納されます。 この情報は、ロジック アプリ リソースでのみ使用することができ、リンクされたアクセス確認を使用して適用される接続リソースに対するアクセス許可を持つクライアントによってのみ使用できます。 Office 365、Salesforce、GitHub など、Azure Active Directory Open Authentication (Azure AD OAuth) を使用する接続では、サインインが必要ですが、Azure Logic Apps ではアクセス トークンと更新トークンだけがシークレットとして格納され、サインイン資格情報は格納されません。
 
 サービスまたはシステムが許可する限り、確立された接続から、対象のサービスまたはシステムにアクセスできます。 Azure AD OAuth 接続を使用するサービス (Office 365 や Dynamics など) の場合、Logic Apps サービスではアクセス トークンを無期限に更新します。 その他のサービスでは、Logic Apps が更新なしでトークンを使用できる期間が制限されることがあります。 一部のアクション (パスワードの変更など) では、すべてのアクセス トークンが無効になります。
 
@@ -76,11 +90,13 @@ Office 365、Salesforce、GitHub など、Azure Active Directory (Azure AD) OAut
 > [!TIP]
 > 組織が Logic Apps コネクタを介して特定のリソースにアクセスすることを許可していない場合は、[Azure Policy](../governance/policy/overview.md) を使用して、[そのような接続を作成する機能をブロックする](../logic-apps/block-connections-connectors.md)ことができます。
 
+ロジック アプリと接続をセキュリティで保護する方法の詳細については、「[Azure Logic Apps におけるアクセスとデータのセキュリティ保護](../logic-apps/logic-apps-securing-a-logic-app.md)」を参照してください。
+
 <a name="firewall-access"></a>
 
 ### <a name="firewall-access-for-connections"></a>接続のためのファイアウォール アクセス
 
-トラフィックを制限するファイアウォールを使用しており、かつロジック アプリ ワークフローがそのファイアウォール経由で通信する必要がある場合は、そのロジック アプリ ワークフローが存在する Azure リージョン内の Logic Apps サービスまたはランタイムによって使用される[受信](../logic-apps/logic-apps-limits-and-config.md#inbound) IP アドレスと[送信](../logic-apps/logic-apps-limits-and-config.md#outbound) IP アドレスの両方のアクセスを許可するようにファイアウォールを設定する必要があります。 また、ワークフローでマネージド コネクタ (Office 365 Outlook コネクタや SQL コネクタなど) を使用する場合や、カスタム コネクタを使用する場合は、ファイアウォールで、ロジック アプリの Azure リージョン内の "*すべての*" [マネージド コネクタ送信 IP アドレス](../logic-apps/logic-apps-limits-and-config.md#outbound)のアクセスも許可する必要があります。 詳細については、[ファイアウォールの構成](../logic-apps/logic-apps-limits-and-config.md#firewall-configuration-ip-addresses-and-service-tags)に関するページを確認してください。
+トラフィックを制限するファイアウォールを使用しており、かつロジック アプリ ワークフローがそのファイアウォール経由で通信する必要がある場合は、そのロジック アプリ ワークフローが存在する Azure リージョン内の Logic Apps サービスまたはランタイムによって使用される[受信](../logic-apps/logic-apps-limits-and-config.md#inbound) IP アドレスと[送信](../logic-apps/logic-apps-limits-and-config.md#outbound) IP アドレスの両方のアクセスを許可するようにファイアウォールを設定する必要があります。 また、ワークフローでマネージド コネクタ (Office 365 Outlook コネクタや SQL コネクタなど) を使用する場合や、カスタム コネクタを使用する場合は、ファイアウォールで、ロジック アプリの Azure リージョン内の "*すべての*" [マネージド コネクタ送信 IP アドレス](/connectors/common/outbound-ip-addresses#azure-logic-apps)のアクセスも許可する必要があります。 詳細については、[ファイアウォールの構成](../logic-apps/logic-apps-limits-and-config.md#firewall-configuration-ip-addresses-and-service-tags)に関するページを確認してください。
 
 ## <a name="recurrence-behavior"></a>繰り返しの動作
 

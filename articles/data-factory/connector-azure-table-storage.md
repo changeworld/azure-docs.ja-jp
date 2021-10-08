@@ -1,22 +1,22 @@
 ---
 title: Azure Table Storage との間でデータをコピーする
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Data Factory を使用して、サポートされるソース ストアから Azure Table Storage にデータをコピーしたり、Table Storage からサポートされるシンク ストアにコピーしたりする方法を説明します。
+description: Azure Data Factory または Synapse Analytics パイプラインを使用して、サポートされるソース ストアから Azure Table Storage にデータをコピーしたり、Table Storage からサポートされるシンク ストアにコピーしたりする方法を説明します。
 ms.author: jianleishen
 author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell, synapse
-ms.date: 08/30/2021
-ms.openlocfilehash: d61d2b7799ab715532b703b5c73ad045e8be6226
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.date: 09/09/2021
+ms.openlocfilehash: e88b4cfc2d49aa072021ed81dc4c1eb7105c6112
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123313962"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124811959"
 ---
-# <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Table Storage との間でのデータのコピー
+# <a name="copy-data-to-and-from-azure-table-storage-using-azure-data-factory-or-synapse-analytics"></a>Azure Data Factory または Synapse Analytics を使用した Azure Table Storage との間でのデータのコピー
 
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-azure-table-connector.md)
@@ -24,7 +24,7 @@ ms.locfileid: "123313962"
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-この記事では、Azure Data Factory のコピー アクティビティを使用して、Azure Table Storage をコピー先またはコピー元としてデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
+この記事では、Azure Data Factory および Azure Synapse Analytics パイプラインで Copy アクティビティを使用して、Azure Table Storage との間でデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -51,7 +51,7 @@ Table Storage には、サポートされているソース データ ストア�
 
     # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
 
-    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI を使用した新しいリンク サービスの作成を示すスクリーンショット。":::
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI で新しいリンク サービスを作成するスクリーンショット。":::
 
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
@@ -73,7 +73,7 @@ Table Storage には、サポートされているソース データ ストア�
 
 ### <a name="use-an-account-key"></a>アカウント キーの使用
 
-Azure Storage のリンクされたサービスは、アカウント キーを使用して作成できます。 これによりデータ ファクトリは、Storage にグローバルにアクセスすることができます。 次のプロパティがサポートされています。
+Azure Storage のリンクされたサービスは、アカウント キーを使用して作成できます。 これにより、サービスは Storage にグローバルにアクセスすることができます。 次のプロパティがサポートされています。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
@@ -130,12 +130,12 @@ Azure Storage のリンクされたサービスは、アカウント キーを�
 
 ### <a name="use-shared-access-signature-authentication"></a>Shared Access Signature 認証を使用する
 
-Shared Access Signature を使用して、Storage のリンクされたサービスを作成することもできます。 これによって、Data Factory は、ストレージ内のすべてまたは特定のリソースへのアクセスが制限付きまたは期限付きになります。
+Shared Access Signature を使用して、Storage のリンクされたサービスを作成することもできます。 これによって、サービスは、ストレージ内のすべてまたは特定のリソースへのアクセスが制限付きまたは期限付きになります。
 
 Shared Access Signature を使用すると、ストレージ アカウント内のリソースへの委任アクセスが可能になります。 ストレージ アカウントのオブジェクトへの制限付きアクセス許可を、期間とアクセス許可セットを指定してクライアントに付与できます。 アカウントのアクセス キーを共有する必要はありません。 Shared Access Signature とは、ストレージ リソースへの認証アクセスに必要なすべての情報をクエリ パラメーター内に含む URI です。 クライアントは、Shared Access Signature 内で適切なコンストラクターまたはメソッドに渡すだけで、Shared Access Signature でストレージ リソースにアクセスできます。 Shared Access Signature について詳しくは、[Shared Access Signature のモデルの概要](../storage/common/storage-sas-overview.md)に関するページをご覧ください。
 
 > [!NOTE]
-> Data Factory で、**サービスの Shared Access Signature** と **アカウントの Shared Access Signature** がサポートされるようになりました。 Shared Access Signature の詳細については、「[Shared Access Signatures (SAS) を使用して Azure Storage リソースへの制限付きアクセスを許可する](../storage/common/storage-sas-overview.md)」を参照してください。 
+> **サービスの Shared Access Signature** と **アカウントの Shared Access Signature** の両方がサポートされるようになりました。 Shared Access Signature の詳細については、「[Shared Access Signatures (SAS) を使用して Azure Storage リソースへの制限付きアクセスを許可する](../storage/common/storage-sas-overview.md)」を参照してください。 
 
 > [!TIP]
 > ストレージ アカウントに使用するサービスの Shared Access Signature を生成するには、次の PowerShell コマンドを実行します。 プレースホルダーを置き換えたうえで、必要なアクセス許可を付与してください。
@@ -147,7 +147,7 @@ Shared Access Signature 認証を使用するために、次のプロパティ�
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | type プロパティを **AzureTableStorage** に設定する必要があります。 |はい |
-| sasUri | テーブルへの共有アクセス署名 URI の SAS URI を指定します。 <br/>Data Factory に安全に格納するには、このフィールドを SecureString として指定します。 自動ローテーションを活用してトークン部分を削除するために、SAS トークンを Azure Key Vault に配置することもできます。 詳細については、下記の例と、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」の記事を参照してください。 | はい |
+| sasUri | テーブルへの共有アクセス署名 URI の SAS URI を指定します。 <br/>安全に格納するには、このフィールドを SecureString とマークします。 自動ローテーションを活用してトークン部分を削除するために、SAS トークンを Azure Key Vault に配置することもできます。 詳細については、下記の例と、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」の記事を参照してください。 | はい |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイムを使用できます (データ ストアがプライベート ネットワークにある場合)。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
 
 >[!NOTE]
@@ -205,7 +205,7 @@ Shared Access Signature 認証を使用するために、次のプロパティ�
 
 Shared Access Signature の URI を作成する際は、次の点に注意してください。
 
-- リンクされたサービス (読み取り、書き込み、読み取り/書き込み) がデータ ファクトリ内でどのように使用されているかに応じて、オブジェクトに対する適切な読み取り/書き込みアクセス許可を設定します。
+- リンク サービス (読み取り、書き込み、読み取り/書き込み) がどのように使用されているかに応じて、オブジェクトに対する適切な読み取り/書き込みアクセス許可を設定します。
 - **有効期限** を適切に設定します。 Storage オブジェクトへのアクセスがパイプラインのアクティブな期間内に期限切れにならないことを確認します。
 - URI は、必要に応じて、適切なテーブル レベルで作成する必要があります。
 
@@ -240,12 +240,12 @@ Azure Table をコピー先またはコピー元としてデータをコピー�
 }
 ```
 
-### <a name="schema-by-data-factory"></a>Data Factory によるスキーマ
+### <a name="schema-inference-by-the-service"></a>サービスによるスキーマの推論
 
-Azure Table などのスキーマのないデータ ストアの場合、Data Factory は次のいずれかの方法でスキーマを推論します。
+Azure Table などのスキーマのないデータ ストアの場合、サービスは次のいずれかの方法でスキーマの推論を行います。
 
-* コピー アクティビティで列マッピングを指定した場合、Data Factory により、ソース側の列の一覧を使用してデータが取得されます。 この場合、行に列の値が含まれていないと、null 値が指定されます。
-* コピー アクティビティで列マッピングを指定しない場合、Data Factory は、データの最初の行を使用してスキーマを推論します。 この場合、最初の行に完全なスキーマが含まれていない場合 (たとえば、一部の列に null 値がある場合)、コピー操作の結果で一部の列が欠落します。
+* Copy アクティビティで列マッピングを指定した場合、サービスはソース側の列の一覧を使用してデータの取得を行います。 この場合、行に列の値が含まれていないと、null 値が指定されます。
+* Copy アクティビティで列マッピングを指定しない場合、サービスは、データの最初の行を使用してスキーマを推論します。 この場合、最初の行に完全なスキーマが含まれていない場合 (たとえば、一部の列に null 値がある場合)、コピー操作の結果で一部の列が欠落します。
 
 ## <a name="copy-activity-properties"></a>コピー アクティビティのプロパティ
 
@@ -266,7 +266,7 @@ Azure Table からデータをコピーする場合は、コピー アクティ�
 >[!NOTE]
 >Azure Table のクエリ操作は、[Azure Table サービスによって適用される](/rest/api/storageservices/setting-timeouts-for-table-service-operations)とおり、30 秒でタイムアウトとなります。 クエリの最適化方法については、「[クエリに対応した設計](../storage/tables/table-storage-design-for-query.md)」という記事をご覧ください。
 
-Azure Data Factory では、datetime 型の列に対してデータをフィルタリングする場合、この例を参照してください。
+datetime 型の列に対してデータをフィルタリングする場合は、この例を参照してください。
 
 ```json
 "azureTableSourceQuery": "LastModifiedTime gt datetime'2017-10-01T00:00:00' and LastModifiedTime le datetime'2017-10-02T00:00:00'"
@@ -352,11 +352,11 @@ azureTablePartitionKeyName として宛先列を使用する前に、 **"transla
 
 ## <a name="data-type-mapping-for-azure-table"></a>Azure Table のデータ型のマッピング
 
-Azure Table をコピー元またはコピー先としてデータをコピーするとき、次の Azure Table のデータ型から Data Factory の中間データ型へのマッピングが使用されます。 コピー アクティビティでソースのスキーマとデータ型がシンクにマッピングされるしくみについては、[スキーマとデータ型のマッピング](copy-activity-schema-and-type-mapping.md)に関する記事を参照してください。
+Azure Table をコピー元またはコピー先としてデータをコピーするとき、Azure Table のデータ型からサービス内部で使用される中間データ型へのマッピングは、以下を使用して行われます。 コピー アクティビティでソースのスキーマとデータ型がシンクにマッピングされるしくみについては、[スキーマとデータ型のマッピング](copy-activity-schema-and-type-mapping.md)に関する記事を参照してください。
 
 Azure テーブル間でデータの移動時に、次の [Azure Table により定義されたマッピング](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model)が Azure Table の OData 型と .NET 型との間の移動に利用されます。
 
-| Azure Table のデータ型 | Data Factory の中間データ型 | 詳細 |
+| Azure Table のデータ型 | 中間サービス データ型 | 詳細 |
 |:--- |:--- |:--- |
 | Edm.Binary |byte[] |バイトの配列 (最大 64 KB)。 |
 | Edm.Boolean |[bool] |ブール値です。 |
@@ -372,4 +372,4 @@ Azure テーブル間でデータの移動時に、次の [Azure Table により
 プロパティの詳細については、[Lookup アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。
+コピー アクティビティによってソース、シンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関するセクションを参照してください。

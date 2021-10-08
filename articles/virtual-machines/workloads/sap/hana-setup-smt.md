@@ -14,18 +14,18 @@ ms.workload: infrastructure
 ms.date: 06/25/2021
 ms.author: madhukan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b8793e5d8badc6ef19462651e1e039cdae1e8bac
-ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
+ms.openlocfilehash: 9350b6d2a8b593e224da817bcbc3142605276248
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2021
-ms.locfileid: "112981378"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128599128"
 ---
 # <a name="set-up-smt-server-for-suse-linux"></a>SUSE Linux 用 SMT サーバーの設定
 
 この記事では、SAP HANA on Azure Large Instances (別名 BareMetal インフラストラクチャ) 用の SMT サーバーの設定手順について説明します。
 
-SAP HANA の L インスタンスは、インターネットに直接接続していません。 このようなユニットをオペレーティング システム プロバイダーに登録し、更新プログラムをダウンロードして適用するのは、簡単ではありません。 SUSE Linux の場合の解決策は、Azure 仮想マシン (VM) に SMT サーバーを設定することです。 この仮想マシンを、HANA L インスタンス (HLI) に接続される Azure 仮想ネットワークでホストします。 このような SMT サーバーを使用して、HANA L インスタンスの登録と更新プログラムのダウンロードを実行できます。 
+SAP HANA の L インスタンスは、インターネットに直接接続していません。 その結果、このようなユニットをオペレーティング システム プロバイダーに登録し、更新プログラムをダウンロードして適用するのは、簡単ではありません。 SUSE Linux の場合の解決策は、Azure 仮想マシン (VM) に SMT サーバーを設定することです。 この仮想マシンを、HANA L インスタンス (HLI) に接続される Azure 仮想ネットワークでホストします。 SMT サーバーを設定したら、HANA L インスタンスによる登録と更新プログラムのダウンロードを実行できます。 
 
 SUSE の詳細については、[Subscription Management Tool for SLES 12 SP2](https://www.suse.com/documentation/sles-12/pdfdoc/book_smt/book_smt.pdf) に関する記事を参照してください。 
 
@@ -71,7 +71,7 @@ HANA L インスタンス用の SMT サーバーをインストールするに�
     Successfully registered system.
     ```
     
-8. 仮想マシンが SUSE サイトに接続されたら、smt パッケージをインストールします。 smt パッケージをインストールするには、次の putty コマンドを使用します。
+8. 仮想マシンが SUSE サイトに接続されたら、SMT パッケージをインストールします。 SMT パッケージをインストールするには、次の putty コマンドを使用します。
 
     ```
     smtserver:~ # zypper in smt
@@ -81,28 +81,28 @@ HANA L インスタンス用の SMT サーバーをインストールするに�
     Resolving package dependencies...
     ```
     
-    また、YAST ツールを使用して smt パッケージをインストールすることもできます。 YAST で **[Software Maintenance]** に移動し、smt を検索します。 **smt** を選択すると、yast2-smt に自動的に切り替わります。
+    また、YAST ツールを使用して SMT パッケージをインストールすることもできます。 YAST で **[Software Maintenance]** に移動し、smt を検索します。 **smt** を選択すると、yast2-smt に自動的に切り替わります。
 
-    ![YAST での SMT のスクリーンショット。](./media/hana-installation/image5_smt_in_yast.PNG)
+    [![YAST での SMT のスクリーンショット。](./media/hana-installation/image5_smt_in_yast.PNG)](./media/hana-installation/image5_smt_in_yast.PNG#lightbox)
 
     smtserver にインストールするための選択内容をそのまま使用します。 
 
 
 9. インストールが完了したら、SMT サーバー構成に移動します。 SUSE Customer Center で先ほど取得した組織の資格情報を入力します。 また、SMT サーバーの URL として、Azure 仮想マシンのホスト名を入力します。 この例では、https:\//smtserver です。
 
-    ![SMT サーバー構成のスクリーンショット。](./media/hana-installation/image6_configuration_of_smtserver1.png)
+    [![SMT サーバー構成のスクリーンショット。](./media/hana-installation/image6_configuration_of_smtserver1.png)](./media/hana-installation/image6_configuration_of_smtserver1.png#lightbox)
 
 10. ここで、SUSE Customer Center への接続が機能しているかどうかをテストします。 次のスクリーンショットでおわかりのように、この例では、それは機能しています。
 
-    ![SUSE Customer Center への接続のテストのスクリーンショット。](./media/hana-installation/image7_test_connect.png)
+    [![SUSE Customer Center への接続のテストのスクリーンショット。](./media/hana-installation/image7_test_connect.png)](./media/hana-installation/image7_test_connect.png#lightbox)
 
 11. SMT セットアップが開始されたら、データベースのパスワードを入力します。 これは新規インストールであるため、次の画像のように、パスワードを定義する必要があります。
 
-    ![データベースのパスワードの定義のスクリーンショット。](./media/hana-installation/image8_define_db_passwd.PNG)
+    [![データベースのパスワードの定義のスクリーンショット。](./media/hana-installation/image8_define_db_passwd.PNG)](./media/hana-installation/image8_define_db_passwd.PNG#lightbox)
 
 12. 証明書を作成する。
 
-    ![SMT サーバーの証明書の作成のスクリーンショット。](./media/hana-installation/image9_certificate_creation.PNG)
+    [![SMT サーバーの証明書の作成のスクリーンショット。](./media/hana-installation/image9_certificate_creation.PNG)](./media/hana-installation/image9_certificate_creation.PNG#lightbox)
 
     構成の最後の同期チェックの実行には、数分かかることがあります。 SMT サーバーのインストールと構成が完了すると、マウント ポイント /srv/www/htdocs/ の下に repo ディレクトリが作成されていることがわかります。 repo の下にはいくつかのサブディレクトリもあります。 
 
@@ -118,11 +118,11 @@ HANA L インスタンス用の SMT サーバーをインストールするに�
 
 1. すべてのサービスが再起動したら、YAST を使用して SMT Management の適切なパッケージを選択します。 パッケージの選択は、HANA L インスタンス サーバーのオペレーティング システム イメージによって異なります。 パッケージの選択は、SMT サーバーを実行している仮想マシンの SLES リリースまたはバージョンには依存しません。 次のスクリーンショットは、この選択画面の例です。
 
-    ![パッケージの選択のスクリーンショット。](./media/hana-installation/image10_select_packages.PNG)
+    [![パッケージの選択のスクリーンショット。](./media/hana-installation/image10_select_packages.PNG)](./media/hana-installation/image10_select_packages.PNG#lightbox)
 
 2. 設定した SMT サーバーへの選択したパッケージの初期コピーを開始します。 このコピーは、シェルで smt-mirror コマンドを使用することでトリガーされます。
 
-    ![SMT サーバーへのパッケージのダウンロードのスクリーンショット](./media/hana-installation/image11_download_packages.PNG)
+   [ ![SMT サーバーへのパッケージのダウンロードを示すスクリーンショット](./media/hana-installation/image11_download_packages.PNG)](./media/hana-installation/image11_download_packages.PNG#lightbox)
 
     マウント ポイント /srv/www/htdocs の下に作成されたディレクトリにパッケージがコピーされます。 このプロセスは、選択したパッケージの数によっては 1 時間以上かかる場合があります。 このプロセスが完了したら、SMT クライアントの設定に移ります。 
 
@@ -132,11 +132,11 @@ HANA L インスタンス用の SMT サーバーをインストールするに�
 
 SMT サーバーに接続する HANA L インスタンスにこのスクリプトをコピーします。 -h オプションを使用してスクリプトを開始し、SMT サーバーの名前をパラメーターとして渡します。 この例では、*smtserver* です。
 
-![SMT クライアントの構成のスクリーンショット。](./media/hana-installation/image12_configure_client.PNG)
+[![SMT クライアントの構成のスクリーンショット。](./media/hana-installation/image12_configure_client.PNG)](./media/hana-installation/image12_configure_client.PNG#lightbox)
 
 クライアントによるサーバーからの証明書の読み込みを成功させることは可能です。 ただし、この例では、次のスクリーンショットに示すように、登録は失敗します。
 
-![クライアントの登録の失敗のスクリーンショット。](./media/hana-installation/image13_registration_failed.PNG)
+[![クライアントの登録の失敗のスクリーンショット。](./media/hana-installation/image13_registration_failed.PNG)](./media/hana-installation/image13_registration_failed.PNG#lightbox)
 
 登録に失敗した場合は、[SUSE サポート ドキュメント](https://www.suse.com/de-de/support/kb/doc/?id=7006024)を参照し、そこに記載されている手順を実行します。
 
@@ -154,7 +154,7 @@ SUSEConnect –cleanup
 
 SUSE の記事の手順に基づいて修正する必要がある問題が発生した場合は、HANA L インスタンスで clientSetup4SMT.sh をもう一度開始します。 これで、正常に完了します。
 
-![クライアントの登録の成功のスクリーンショット。](./media/hana-installation/image14_finish_client_config.PNG)
+[![クライアントの登録の成功のスクリーンショット。](./media/hana-installation/image14_finish_client_config.PNG)](./media/hana-installation/image14_finish_client_config.PNG#lightbox)
 
 HLI の SMT クライアントを、Azure VM にインストールされている SMT サーバーに接続するように構成しました。 ここで、HANA L インスタンスに OS の更新プログラムをインストールするか、他のパッケージをインストールするために、"zypper up" または "zypper in" を使用します。 SMT サーバーでダウンロード済みの更新プログラムのみを取得できます。
 

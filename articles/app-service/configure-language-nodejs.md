@@ -6,12 +6,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 04/23/2021
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 14ac7953654941de176bf74bd38787b33b9c864c
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 8f65fff40419ef11dcb5d90c670d10573a114fd4
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123225762"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128657065"
 ---
 # <a name="configure-a-nodejs-app-for-azure-app-service"></a>Azure App Service 向けの Node.js アプリを構成する
 
@@ -351,7 +351,7 @@ if (req.secure) {
 
 ## <a name="monitor-with-application-insights"></a>Application Insights での監視
 
-Application Insights を使用すると、コードを変更することなく、アプリケーションのパフォーマンス、例外、使用状況を監視できます。 App Insights エージェントをアタッチするには、ポータルで自分の Web アプリにアクセスし、 **[設定]** で **[Application Insights]** を選択してから、 **[Turn on Application Insights]\(Application Insights を有効にする\)** を選択します。 次に、既存の App Insights リソースを選択するか、新しいものを作成します。 最後に、下部にある **[適用]** を選択します。 PowerShell を使用して Web アプリをインストルメント化するには、[これらの手順](../azure-monitor/app/azure-web-apps.md?tabs=netcore#enabling-through-powershell)を参照してください。
+Application Insights を使用すると、コードを変更することなく、アプリケーションのパフォーマンス、例外、使用状況を監視できます。 App Insights エージェントをアタッチするには、ポータルで自分の Web アプリにアクセスし、 **[設定]** で **[Application Insights]** を選択してから、 **[Turn on Application Insights]\(Application Insights を有効にする\)** を選択します。 次に、既存の App Insights リソースを選択するか、新しいものを作成します。 最後に、下部にある **[適用]** を選択します。 PowerShell を使用して Web アプリをインストルメント化するには、[これらの手順](../azure-monitor/app/azure-web-apps-nodejs.md#enable-through-powershell)を参照してください。
 
 このエージェントは、サーバー側の Node.js アプリケーションを監視します。 クライアント側の JavaScript を監視するには、[JavaScript SDK をプロジェクトに追加します](../azure-monitor/app/javascript.md)。 
 
@@ -369,6 +369,23 @@ Application Insights を使用すると、コードを変更することなく�
     - 特定の Web フレームワークでは、実稼働モードで静的ファイルを別にデプロイすることがあります。
     - 特定の Web フレームワークでは、実稼働モードで実行しているときにカスタム スタートアップ スクリプトを使用することがあります。
 - 開発モードの App Service でアプリを実行します。 たとえば、[MEAN.js](https://meanjs.org/) で、[`NODE_ENV` アプリ設定を指定する](configure-common.md)ことによって、実行時に開発モードにアプリを設定できます。
+
+::: zone pivot="platform-windows"
+
+#### <a name="you-do-not-have-permission-to-view-this-directory-or-page"></a>このディレクトリまたはページを表示するアクセス許可がない
+
+App Service でネイティブ Windows アプリに Node.js コードをデプロイした後、アプリの URL に移動すると、ブラウザーに `You do not have permission to view this directory or page.` というメッセージが表示される場合があります。 これは、*web.config* ファイルが見つからないことが原因である可能性があります ([テンプレート](https://github.com/projectkudu/kudu/blob/master/Kudu.Core/Scripts/iisnode.config.template)と[例](https://github.com/Azure-Samples/nodejs-docs-hello-world/blob/master/web.config)を参照してください)。
+
+Git を使用してファイルをデプロイした場合、または [ビルドの自動化を有効にして](deploy-zip.md#enable-build-automation-for-zip-deploy) ZIP デプロイを使用した場合、以下のいずれかの条件が満たされると、展開エンジンによって、アプリの Web ルート ( *) に、* web.config`%HOME%\site\wwwroot` が自動的に生成されます。
+
+- プロジェクト ルートに、JavaScript ファイルのパスを含む `start` スクリプトを定義する、*package.json* が含まれている。
+- プロジェクト ルートに、*server.js* または *app.js* のいずれかが含まれている。
+
+生成された *web.config* は、検出された開始スクリプトに合わせて調整されています。 その他のデプロイ方法の場合は、この *web.config* を手動で追加してください。 ファイルが適切に書式設定されていることを確認します。 
+
+(Visual Studio Code などで) [ZIP デプロイ](deploy-zip.md)を使用する場合は、[ビルドの自動化を有効にする](deploy-zip.md#enable-build-automation-for-zip-deploy)ようにしてください (既定では有効になっていないため)。 [`az webapp up`](/cli/azure/webapp#az_webapp_up) では、ビルドの自動化が有効になっている ZIP デプロイを使用します。
+
+::: zone-end
 
 ::: zone pivot="platform-linux"
 

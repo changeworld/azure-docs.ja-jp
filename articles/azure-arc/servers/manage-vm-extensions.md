@@ -3,12 +3,12 @@ title: Azure Arc 対応サーバーを使用した VM 拡張機能の管理
 description: Azure Arc 対応サーバーを使用すると、Azure 以外の VM でのデプロイ後構成と自動化タスクを提供する仮想マシン拡張機能のデプロイを管理できます。
 ms.date: 08/24/2021
 ms.topic: conceptual
-ms.openlocfilehash: b09a5ecc2121d2ff1cc377bde7619b834a58e474
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: bc19255d7e234b3ca4ada1bc2f9356dc52b3e4dc
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122824643"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124807261"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>Azure Arc 対応サーバーを使用した仮想マシン拡張機能の管理
 
@@ -50,7 +50,7 @@ VM 拡張機能は、[サポートされているリージョン](overview.md#su
 Azure Connected Machine エージェント パッケージと拡張機能エージェント コンポーネントの詳細については、[エージェントの概要](agent-overview.md#agent-component-details)に関する記事を参照してください。
 
 > [!NOTE]
-> Arc 対応サーバーでは、最近 DSC VM 拡張機能のサポートがなくなりました。 代わりに、カスタム スクリプト拡張機能を使用してサーバーやマシンの展開後の構成を管理することをお勧めします。
+> Azure Arc 対応サーバーでは、最近 DSC VM 拡張機能のサポートがなくなりました。 代わりに、カスタム スクリプト拡張機能を使用してサーバーやマシンの展開後の構成を管理することをお勧めします。
 
 Arc 対応サーバーでは、リソース グループまたは別の Azure サブスクリプションの間に 1 つ以上の VM 拡張機能がインストールされたマシンの移動がサポートされ、このときに構成への影響は発生しません。 移動元と移動先のサブスクリプションが同じ [Azure Active Directory テナント](../../active-directory/develop/quickstart-create-new-tenant.md)内に存在している必要があります。 このサポートは、Connected Machine エージェントのバージョン **1.8.21197.005** から有効になります。 リソースの移動に進む前の詳細情報と考慮事項については、「[リソースを新しいリソース グループまたはサブスクリプションに移動する](../../azure-resource-manager/management/move-resource-group-and-subscription.md)」を参照してください。
 

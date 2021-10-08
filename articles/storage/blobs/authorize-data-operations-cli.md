@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 513cea632fa9d31231093a775a0269b983e3e42d
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: b8dd3f6a81317abff79dce906c4a9c8ef6ea6484
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113727169"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128680245"
 ---
 # <a name="choose-how-to-authorize-access-to-blob-data-with-azure-cli"></a>Azure CLI で BLOB データへのアクセスの承認方法を選択する
 
@@ -35,7 +35,7 @@ BLOB データの読み取りと書き込みのための Azure CLI コマンド�
 `--auth-mode` パラメーターを使用するには、 Azure CLI バージョン 2.0.46 以降がインストールされていることを確認してください。 `az --version` を実行し、インストールされたバージョンを確認します。
 
 > [!NOTE]
-> ストレージ アカウントが Azure Resource Manager の **ReadOnly** ロックでロックされている場合、そのストレージ アカウントに対して [キーの一覧表示](/rest/api/storagerp/storageaccounts/listkeys)操作は許可されません。 **キーの一覧表示** は POST 操作であり、アカウントに対して **ReadOnly** ロックが構成されている場合、すべての POST 操作が禁止されます。 このため、アカウントが **ReadOnly** ロックでロックされている場合、アカウント キーをまだ所有していないユーザーは、Azure AD 資格情報を使用して BLOB データにアクセスする必要があります。
+> ストレージ アカウントが Azure Resource Manager の **ReadOnly** ロックでロックされている場合、そのストレージ アカウントに対して [キーの一覧表示](/rest/api/storagerp/storageaccounts/listkeys)操作は許可されません。 **キーの一覧表示** は POST 操作であり、アカウントに対して **ReadOnly** ロックが設定されている場合、すべての POST 操作が禁止されます。 このため、アカウントが **ReadOnly** ロックでロックされている場合、アカウント キーをまだ所有していないユーザーは、Azure AD 資格情報を使用して BLOB データにアクセスする必要があります。
 
 > [!IMPORTANT]
 > `--auth-mode` パラメーターを省略した場合、または `key` に設定した場合、Azure CLI はアカウント アクセス キーを使用して承認を試みます。 この場合、コマンドまたは **AZURE_STORAGE_KEY** 環境変数のいずれかでアクセス キーを指定することをお勧めします。 環境変数の詳細については、「 [承認パラメーターの環境変数を設定する](#set-environment-variables-for-authorization-parameters)」セクションを参照してください。
@@ -52,11 +52,11 @@ BLOB データへのアクセス許可を Azure ロールベースのアクセ�
 
 Azure Storage 拡張機能は、BLOB データの操作でサポートされています。 呼び出す操作は、Azure CLI にサインインする Azure AD セキュリティ プリンシパルに与えられているアクセス許可に依存します。 Azure Storage のコンテナーへのアクセス許可は、Azure RBAC を介して割り当てられます。 たとえば、**Storage BLOB データ閲覧者** ロールが割り当てられている場合、コンテナーからデータを読み取るスクリプト コマンドを実行できます。 **Storage BLOB データ共同作成者** ロールが割り当てられている場合、コンテナー、またはそれらに含まれているデータの読み取り、書き込み、削除を行うスクリプト コマンドを実行できます。
 
-コンテナーでの各 Azure Storage 操作に必要なアクセス許可の詳細については、「[OAuth トークンを使用したストレージ操作の呼び出し](/rest/api/storageservices/authorize-with-azure-active-directory#call-storage-operations-with-oauth-tokens)」を参照してください。  
+コンテナーでの各 Azure Storage 操作に必要なアクセス許可の詳細については、「[OAuth トークンを使用したストレージ操作の呼び出し](/rest/api/storageservices/authorize-with-azure-active-directory#call-storage-operations-with-oauth-tokens)」を参照してください。
 
 ### <a name="example-authorize-an-operation-to-create-a-container-with-azure-ad-credentials"></a>例:Azure AD 資格情報を使用してコンテナーを作成する操作を承認する
 
-次の例では、Azure AD の資格情報を使用して Azure CLI からコンテナーを作成する方法を示しています。 コンテナーを作成するには、Azure CLI にログインする必要があります。また、リソース グループとストレージ アカウントが必要になります。 これらのリソースの作成方法については、次をご覧ください。 [クイック スタート:Azure CLI を使用して BLOB を作成、ダウンロード、リストする ](../blobs/storage-quickstart-blobs-cli.md)。
+次の例では、Azure AD の資格情報を使用して Azure CLI からコンテナーを作成する方法を示しています。 コンテナーを作成するには、Azure CLI にサインインする必要があります。また、リソース グループとストレージ アカウントが必要になります。 これらのリソースの作成方法については、次をご覧ください。 [クイック スタート:Azure CLI を使用して BLOB を作成、ダウンロード、リストする ](../blobs/storage-quickstart-blobs-cli.md)。
 
 1. コンテナーを作成する前に、[ストレージ BLOB データ共同作成者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)ロールを自分に割り当てます。 自分がアカウント オーナーである場合でも、ストレージ アカウントに対してデータ操作を実行するための明示的なアクセス許可が必要となります。 Azure ロールの割り当ての詳細については、「[BLOB データにアクセスするための Azure ロールを割り当てる](assign-azure-role-data-access.md)」を参照してください。
 

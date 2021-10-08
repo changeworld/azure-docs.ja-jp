@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: bonova, mathoma, danil
-ms.date: 08/26/2021
-ms.openlocfilehash: 451dd198b5507b99400d4e1c8e1670e596016af1
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.date: 09/21/2021
+ms.openlocfilehash: 1b503462b7ff6abd1000e96fa2f3cfd6f15d33fc
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123308295"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128658965"
 ---
 # <a name="features-comparison-azure-sql-database-and-azure-sql-managed-instance"></a>機能の比較:Azure SQL Database と Azure SQL Managed Instance
 
@@ -52,7 +52,7 @@ Azure がデータベースを管理し、高可用性を保証します。 高�
 | [組み込み関数](/sql/t-sql/functions/functions) | ほとんどの場合 - 個々の関数に関する記事を参照してください | はい - [ストアド プロシージャ、関数、トリガーの相違点](../managed-instance/transact-sql-tsql-differences-sql-server.md#stored-procedures-functions-and-triggers)に関するページを参照してください |
 | [BULK INSERT ステートメント](/sql/relational-databases/import-export/import-bulk-data-by-using-bulk-insert-or-openrowset-bulk-sql-server) | はい、ただし、ソースとしての Azure Blob Storage からのみとなります。 | はい、ただし、ソースとしての Azure Blob Storage からのみとなります - [相違点](../managed-instance/transact-sql-tsql-differences-sql-server.md#bulk-insert--openrowset)に関する記述を参照してください。 |
 | [証明書と非対称キー](/sql/relational-databases/security/sql-server-certificates-and-asymmetric-keys) | はい、ただし、`BACKUP` および `CREATE` 操作のためにファイル システムにアクセスすることはできません。 | はい、ただし、`BACKUP` および `CREATE` 操作のためにファイル システムにアクセスすることはできません - [証明書の相違点](../managed-instance/transact-sql-tsql-differences-sql-server.md#certificates)に関する記述を参照してください。 |
-| [変更データ キャプチャ - CDC](/sql/relational-databases/track-changes/about-change-data-capture-sql-server) | いいえ | はい |
+| [変更データ キャプチャ - CDC](/sql/relational-databases/track-changes/about-change-data-capture-sql-server) | S3 レベル以上の場合は、はい (プレビュー)。 Basic、S0、S1、S2 はサポートされていません。 | はい |
 | [照合順序 - サーバー/インスタンス](/sql/relational-databases/collations/set-or-change-the-server-collation) | いいえ、既定のサーバーの照合順序である `SQL_Latin1_General_CP1_CI_AS` が常に使用されます。 | はい、[インスタンスが作成される](../managed-instance/create-template-quickstart.md)ときに設定できます。後で更新することはできません。 |
 | [列ストア インデックス](/sql/relational-databases/indexes/columnstore-indexes-overview) | はい - [Premium レベル、Standard レベル - S3 以上、General Purpose レベル、Business Critical、および HyperScale レベル](/sql/relational-databases/indexes/columnstore-indexes-overview) |はい |
 | [共通言語ランタイム - CLR](/sql/relational-databases/clr-integration/common-language-runtime-clr-integration-programming-concepts) | いいえ | はい、ただし、`CREATE ASSEMBLY` ステートメントでファイル システムにアクセスすることはできません - [CLR の相違点](../managed-instance/transact-sql-tsql-differences-sql-server.md#clr)に関する記述を参照してください |

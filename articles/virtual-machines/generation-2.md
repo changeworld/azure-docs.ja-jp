@@ -3,17 +3,17 @@ title: 第 2 世代 VM に対する Azure のサポート
 description: 第 2 世代 VM に対する Azure のサポートの概要
 author: ju-shim
 ms.service: virtual-machines
-ms.subservice: generation-2-vm
+ms.subservice: sizes
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/26/2021
 ms.author: jushiman
-ms.openlocfilehash: 6135d675f2f719f7fa471a886715bce5d6036eb7
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 48dd300148cdcccc9caf754a5e5bcc69e7c5c0e7
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123425605"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129216557"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure での第 2 世代 VM のサポート
 
@@ -27,7 +27,7 @@ ms.locfileid: "123425605"
 
 ## <a name="generation-2-vm-sizes"></a>第 2 世代 VM のサイズ
 
-第 1 世代の VM は、Azure のすべての VM サイズでサポートされています (Mv2 と Msv2 と Mdsv2 ミディアム メモリ シリーズの VM を除く)。 Azure では、次の選択された VM シリーズに対して第 2 世代のサポートが提供されるようになりました。
+Azure では、次の選択された VM シリーズに対して第 2 世代のサポートが提供されるようになりました。
 
 
 * [B シリーズ](sizes-b-series-burstable.md)
@@ -53,11 +53,13 @@ ms.locfileid: "123425605"
 * [NCv2 シリーズ](ncv2-series.md) 
 * [NCv3 シリーズ](ncv3-series.md)
 * [ND シリーズ](nd-series.md)
+* [ND A100 v4-シリーズ](nda100-v4-series.md)
+* [NDv2 シリーズ](ndv2-series.md)
 * [NVv3 シリーズ](nvv3-series.md)
 * [NVv4 シリーズ](nvv4-series.md)
 * [NCasT4_v3 シリーズ](nct4-v3-series.md)
 
-<sup>1</sup> Mv2 シリーズ、Msv2 および Mdsv2 シリーズ ミディアム メモリは、第 1 世代 VM のイメージをサポートしておらず、第 2 世代のイメージのサブセットのみをサポートしています。 詳細については、[Mv2 シリーズのドキュメント](mv2-series.md)と[Msv2 および Mdsv2 ミディアム メモリ シリーズ](msv2-mdsv2-series.md)に関するページを参照してください。
+<sup>1</sup> Mv2 シリーズ、DC シリーズ、NDv2 シリーズ、Msv2 および Mdsv2 シリーズ ミディアム メモリは、第 1 世代 VM のイメージをサポートしておらず、第 2 世代のイメージのサブセットのみをサポートしています。 詳細については、[Mv2 シリーズのドキュメント](mv2-series.md)、[DSv2 シリーズ](dv2-dsv2-series.md)、[ND A100 v4 シリーズ](nda100-v4-series.md)、[NDv2 シリーズ](ndv2-series.md)、および [Msv2 および Mdsv2 ミディアム メモリ シリーズ](msv2-mdsv2-series.md)に関するページを参照してください。
 
 
 ## <a name="generation-2-vm-images-in-azure-marketplace"></a>Azure Marketplace の第 2 世代 VM のイメージ
@@ -74,7 +76,7 @@ ms.locfileid: "123425605"
 * Oracle Linux 7.7, 7.7-CI, 7.8
 
 > [!NOTE]
-> Mv2 シリーズのような特定の仮想マシンのサイズでは、これらのイメージのサブセットのみがサポートされている場合があります。詳細については、関連する仮想マシンのサイズに関するドキュメントを参照してください。
+> Mv2 シリーズ、DC シリーズ、ND A100 v4 シリーズ、NDv2 シリーズ、Msv2 および Mdsv2 シリーズのような特定の仮想マシンのサイズでは、これらのイメージのサブセットのみがサポートされている場合があります。詳細については、関連する仮想マシンのサイズに関するドキュメントを参照してください。
 
 ## <a name="on-premises-vs-azure-generation-2-vms"></a>オンプレミスと Azure 第 2 世代 VM の比較
 

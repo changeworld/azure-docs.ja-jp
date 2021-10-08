@@ -16,12 +16,12 @@ ms.date: 06/01/2021
 ms.author: dpless
 ms.custom: contperf-fy21q3
 ms.reviewer: jroth
-ms.openlocfilehash: 474954faebe62138e234f5bb7a7c1bee7bdcf95b
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: f5c6a0864790003e115d201c1a50b181df63c5ac
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122397174"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128666706"
 ---
 # <a name="checklist-best-practices-for-sql-server-on-azure-vms"></a>チェックリスト: Azure VM 上の SQL Server のベスト プラクティス
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -62,7 +62,7 @@ Azure VM で SQL Server を実行する場合のストレージ構成に関す�
     - ログ ドライブについては、[Premium P30 から P80 のディスク](../../../virtual-machines/disks-types.md#premium-ssd)を評価しながら、コストと対比して容量の計画とパフォーマンスのテストを行います。
       - ミリ秒未満のストレージの待機時間が求められる場合は、トランザクション ログに [Azure Ultra ディスク](../../../virtual-machines/disks-types.md#ultra-disk)を使用します。 
       - M シリーズの仮想マシン デプロイに対しては、Azure Ultra ディスクの使用よりも[書き込みアクセラレータ](../../../virtual-machines/how-to-enable-write-accelerator.md)を検討します。
-    - 最適な VM サイズを選択した後、ほとんどの SQL Server ワークロード用に、ローカル エフェメラル SSD `D:\` ドライブに [tempdb](/sql/relational-databases/databases/tempdb-database) を配置します。 
+    - 最適な VM サイズを選択した後、大半の SQL Server ワークロード用のローカル エフェメラル SSD (既定は `D:\`) ドライブに [tempdb](/sql/relational-databases/databases/tempdb-database) を配置します。 
       - ローカル ドライブの容量が tempdb に対して十分でない場合は、VM のサイズを増やすことを検討します。 詳細については、「[データ ファイルのキャッシュ ポリシー](performance-guidelines-best-practices-storage.md#data-file-caching-policies)」を参照してください。
 - [記憶域スペース](/windows-server/storage/storage-spaces/overview)を使用して複数の Azure データ ディスクをストライピングし、ターゲット仮想マシンの IOPS およびスループットの上限まで I/O 帯域幅を増やします。
 - データ ファイル ディスクの場合は、[[ホスト キャッシュ]](../../../virtual-machines/disks-performance.md#virtual-machine-uncached-vs-cached-limits) を [読み取り専用] に設定します。
@@ -146,8 +146,9 @@ SQL Server の可用性グループまたはフェールオーバー クラス�
 * SQL Server VM のパフォーマンスを最適化しても予期しないフェールオーバーが解決されない場合は、可用性グループまたフェールオーバー クラスター インスタンスの[監視を緩和](hadr-cluster-best-practices.md#relaxed-monitoring)することを検討してください。 ただし、そうすることで問題の根底にある原因に対処できない場合があり、障害の可能性を減らすことで症状が表に現れない可能性があります。 その場合でも、根底にある根本原因を調査して対処しなければならない場合があります。 Windows Server 2012 以降の場合は、次の推奨値を使用します。 
    - **リース タイムアウト**: こちらの式を使用して、リース タイムアウトの最大値を計算します。   
     `Lease timeout < (2 * SameSubnetThreshold * SameSubnetDelay)`.    
-    40 秒から始めます。 先ほど推奨した緩和されている `SameSubnetThreshold` と `SameSubnetDelay` の値を使用している場合は、リース タイムアウト値が 80 秒を超えないようにしてください。    
-   - **指定した期間の最大エラー数**: この値は 6 に設定します。 
+    40 秒から始めます。 先ほど推奨した緩和されている `SameSubnetThreshold` と `SameSubnetDelay` の値を使用している場合は、リース タイムアウト値が 80 秒を超えないようにしてください。 
+   - **指定した期間の最大エラー数**: この値は 6 に設定できます。
+   - **正常性チェック タイムアウト**: 最初は 60,000 に設定しておき、必要に応じて調整できます。 
 * 仮想ネットワーク名 (VNN) を使用して HADR ソリューションに接続する場合は、お使いのクラスターが 1 つのサブネットにしかまたがっていない場合でも、接続文字列に `MultiSubnetFailover = true` を指定します。 
    - クライアントで `MultiSubnetFailover = True` がサポートされていない場合は、`RegisterAllProvidersIP = 0` および `HostRecordTTL = 300` を設定して、クライアント資格情報をより短期間だけキャッシュすることが必要になる可能性があります。 ただし、そうすることで、DNS サーバーに対して追加のクエリが発生する場合があります。 
 - 分散ネットワーク名 (DNN) を使用して HADR ソリューションに接続する場合は、以下を検討してください。

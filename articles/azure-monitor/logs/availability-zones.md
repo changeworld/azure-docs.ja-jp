@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 08/18/2021
 ms.custom: references_regions
-ms.openlocfilehash: c01e83fbbf117c5491e9e12ac24aa0d5d2fa8b67
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: 6e10ace3ca0932cf5803719429a68b89a4118dfa
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122446682"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129059323"
 ---
 # <a name="availability-zones-in-azure-monitor"></a>Azure Monitor の可用性ゾーン
 
@@ -49,9 +49,9 @@ Azure Monitor での可用性ゾーンのサポートを利用するには、[Az
 ワークスペースに対するクエリでは、必要に応じて両方のクラスターに対してクエリが実行され、統合された 1 つの結果セットが提供されます。 つまり、ワークスペースに依存する、ブックやダッシュボードなどのすべての Azure Monitor 機能では、両方のクラスターのデータに基づいて統合された完全な結果セットの取得を続けることになります。
 
 ## <a name="billing"></a>課金
-[専用クラスターの使用にはコスト](logs-dedicated-clusters.md#create-a-dedicated-cluster)がかかります。 1 日あたりの容量予約として 1000 GB 必要です。 これは 2021 年 8 月 4 日に 500 GB に削減されます。 
+[専用クラスターの使用にはコスト](logs-dedicated-clusters.md#create-a-dedicated-cluster)がかかります。 1 日あたりの容量予約として 500 GB 必要です。 
 
-専用クラスターが既にあり、そのデータにアクセスするためにそれを保持することを選択すると、両方の専用クラスターに対して課金されます。 2021 年 8 月 4 日から、専用クラスターに必要な最小限の容量予約は 1 日あたり 500 GB に削減されます。そのため、料金を削減するために、古いクラスターにはその最小値を適用することをお勧めします。
+専用クラスターが既にあり、そのデータにアクセスするためにそれを保持することを選択すると、両方の専用クラスターに対して課金されます。 2021 年 8 月 4 日から、専用クラスターに必要な最小限の容量予約は 1 日あたり 1000 GB から 1 日あたり 500 GB に削減されます。そのため、料金を削減するために、古いクラスターにはその最小値を適用することをお勧めします。
 
 構成中の二重請求を回避するため、新しいクラスターへの課金は最初の日には行われません。 移行日に引き続き請求されるのは、移行の完了前に取り込まれたデータだけになります。 
 

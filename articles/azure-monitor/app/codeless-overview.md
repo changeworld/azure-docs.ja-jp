@@ -5,13 +5,12 @@ ms.topic: conceptual
 author: MS-jgol
 ms.author: jgol
 ms.date: 08/31/2021
-ms.reviewer: mbullwin
-ms.openlocfilehash: f7193489c35384a9ede10606a9ad335ea69bb974
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 3f6af0beb887f66f4696707dcc0e0f408004509a
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123434882"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124827619"
 ---
 # <a name="what-is-auto-instrumentation-for-azure-monitor-application-insights"></a>Azure Monitor Application Insights の自動インストルメンテーションとは
 
@@ -41,15 +40,15 @@ Application Insights は、さまざまなリソース プロバイダーと統�
 
 ### <a name="windows"></a>Windows
 
-Azure App Service on Windows でのアプリケーション監視は、 **[.NET](./azure-web-apps.md?tabs=net)** (既定で有効)、 **[.NET Core](./azure-web-apps.md?tabs=netcore)** 、 **[Java](./azure-web-apps.md?tabs=java)** 、 **[Node.js](./azure-web-apps.md?tabs=nodejs)** アプリケーションで使用できます。 Python アプリを監視するには、[SDK](./opencensus-python.md) をコードに追加します。
+Azure App Service on Windows でのアプリケーション監視は、 **[ASP.NET](./azure-web-apps-net.md)** (既定で有効)、 **[ASP.NET Core](./azure-web-apps-net-core.md)** 、 **[Java](./azure-web-apps-java.md)** (パブリック プレビュー)、 **[Node.js](./azure-web-apps-nodejs.md)** アプリケーションで使用できます。 Python アプリを監視するには、[SDK](./opencensus-python.md) をコードに追加します。
 
 > [!NOTE]
 > Windows の場合、App Service におけるアプリケーションの監視は、現在コードベースまたはマネージド サービスで使用できます。 App Service における Windows コンテナーのアプリの監視は、Application Insights との統合を通してまだサポートされていません。
 
 ### <a name="linux"></a>Linux
-App Service 内で Linux で実行されている **[Java](./azure-web-apps.md?tabs=java)** および **[Node.js](./azure-web-apps.md?tabs=nodejs)** アプリの監視は、ポータルを使用して有効にできます。この 2 つの言語用の機能は GA であり、すべてのリージョンで利用できます。 
+App Service 内で Linux で実行されている **[Java](./azure-web-apps-java.md?)** 、 **[Node.js](./azure-web-apps-nodejs.md?tabs=linux)** 、および **[ASP.NET Core](./azure-web-apps-net-core.md?tabs=linux) (プレビュー)** アプリの監視は、ポータルを使用して有効にできます。 
 
-その他の言語 ([.NET Core](./asp-net-core.md) と [Python](./opencensus-python.md)) の場合は、SDK を使用します。
+[Python](./opencensus-python.md) の場合は、SDK を使用します。
 
 ## <a name="azure-functions"></a>Azure Functions
 

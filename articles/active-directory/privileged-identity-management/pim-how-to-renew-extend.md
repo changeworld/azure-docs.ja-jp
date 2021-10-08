@@ -16,12 +16,12 @@ ms.date: 08/06/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2988d846001876185d377672db1910e783aa3f8
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: b061c98b0e961d60d8edd9b0275c70ce3b005044
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122398081"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128647938"
 ---
 # <a name="extend-or-renew-azure-ad-role-assignments-in-privileged-identity-management"></a>Privileged Identity Management で Azure AD ロールの割り当てを延長または更新する
 
@@ -89,6 +89,74 @@ Privileged Identity Management は、14 日以内に期限切れになるロー�
 ロールの割り当てを延長するには、Privileged Identity Management のロールまたは割り当てビューを参照します。 延長する必要がある割り当てを探します。 そして、[アクション] 列の **延長** をクリックします。
 
 ![資格のあるロールと延長のためのリンクが一覧表示されている [Azure AD ロール] - [割り当て] ページ](./media/pim-how-to-renew-extend/extend-admin-extend.png)
+
+## <a name="extend-role-assignments-using-graph-api"></a>Graph API を使用したロールの割り当ての延長
+
+Graph API を使用してアクティブな割り当てを延長します。
+
+#### <a name="http-request"></a>HTTP 要求
+
+````HTTP
+POST https://graph.microsoft.com/beta/roleManagement/directory/roleAssignmentScheduleRequests 
+ 
+{ 
+    "action": "AdminExtend", 
+    "justification": "abcde", 
+    "roleDefinitionId": "<definition-ID-GUID>", 
+    "directoryScopeId": "/", 
+    `"principalId": "<principal-ID-GUID>", 
+    "scheduleInfo": { 
+        "startDateTime": "2021-07-15T19:15:08.941Z", 
+        "expiration": { 
+            "type": "AfterDuration", 
+            "duration": "PT3H" 
+        } 
+    } 
+}
+````
+
+#### <a name="http-response"></a>HTTP 応答
+
+````HTTP
+{ 
+    "@odata.context": "https://graph.microsoft.com/beta/$metadata#roleManagement/directory/roleAssignmentScheduleRequests/$entity", 
+    "id": "<assignment-ID-GUID>", 
+    "status": "Provisioned", 
+    "createdDateTime": "2021-07-15T20:26:44.865248Z", 
+    "completedDateTime": "2021-07-15T20:26:47.9434068Z", 
+    "approvalId": null, 
+    "customData": null, 
+    "action": "AdminExtend", 
+    "principalId": "<principal-ID-GUID>", 
+    "roleDefinitionId": "<definition-ID-GUID>", 
+    "directoryScopeId": "/", 
+    "appScopeId": null, 
+    "isValidationOnly": false, 
+    "targetScheduleId": "<schedule-ID-GUID>", 
+    "justification": "test", 
+    "createdBy": { 
+        "application": null, 
+        "device": null, 
+        "user": { 
+            "displayName": null, 
+            "id": "<user-ID-GUID>" 
+        } 
+    }, 
+    "scheduleInfo": { 
+        "startDateTime": "2021-07-15T20:26:47.9434068Z", 
+        "recurrence": null, 
+        "expiration": { 
+            "type": "afterDuration", 
+            "endDateTime": null, 
+            "duration": "PT3H" 
+        } 
+    }, 
+    "ticketInfo": { 
+        "ticketNumber": null, 
+        "ticketSystem": null 
+    } 
+} 
+````
 
 ## <a name="renew-role-assignments"></a>ロールの割り当ての更新
 

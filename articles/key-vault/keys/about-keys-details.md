@@ -9,12 +9,12 @@ ms.subservice: keys
 ms.topic: conceptual
 ms.date: 10/22/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 7dc8d113b8d47ea75938cc7fcd7c24c8a132a3b4
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 3f3db4b694dd825b15cf80be247bf43780e1d381
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114471755"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128563003"
 ---
 # <a name="key-types-algorithms-and-operations"></a>キーの種類、アルゴリズム、および操作
 
@@ -75,7 +75,7 @@ Key Vault では、コンテナーとマネージド HSM という 2 つのリ�
 
 ##  <a name="key-operations"></a>キーの操作
 
-Managed HSM では、キー オブジェクトに対する以下の操作がサポートされています。  
+Managed HSM などの Key Vault では、キー オブジェクトに対する以下の操作がサポートされています。  
 
 -   **作成**:クライアントは、Key Vault にキーを作成できます。 キーの値は、Key Vault によって生成されて格納され、クライアントにはリリースされません。 Key Vault では非対称キーを作成できます。  
 -   **Import**:クライアントは、既存のキーを Key Vault にインポートできます。 JWK コンストラクト内の複数のパッケージング方法を使用して、非対称キーを Key Vault にインポートできます。 

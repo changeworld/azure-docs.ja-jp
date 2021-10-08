@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 862c21e162ce43e6d7de6aa6485b01925edbe465
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 5edab35023afeca68cff20a82307afaf4bbad535
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114288186"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124784244"
 ---
 # <a name="azure-security-baseline-for-virtual-network-nat"></a>Virtual Network NAT 用の Azure セキュリティ ベースライン
 
@@ -28,9 +28,9 @@ Virtual Network NAT を完全に Azure セキュリティ ベンチマークに�
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-nics"></a>1.2:仮想ネットワーク、サブネット、NIC の構成とトラフィックを監視してログに記録する
 
-**ガイダンス**:Virtual Network NAT は、ネットワーク セキュリティ グループ (NSG) を使用した送信トラフィックの制御をサポートしていません。  受信トラフィックは、送信元のフローに応答する場合にのみ許可されます。
+**ガイダンス**: Virtual Network NAT は、ネットワーク セキュリティ グループ (NSG) を使用した送信トラフィックの制御に対応しています。  受信トラフィックは、送信元のフローに応答する場合にのみ許可されます。
 
-ただし、ネットワーク セキュリティ グループ (NSG) のフロー ログを NAT ゲートウェイ リソースと共に使用して、送信元のトラフィックを監視することができます。
+ネットワーク セキュリティ グループ (NSG) のフロー ログは、NAT ゲートウェイ リソースと共に使用して、送信元のトラフィックを監視することもできます。
 
 Azure Security Center を使用し、ネットワークの保護に関する推奨事項に従って、Azure のネットワーク リソースを保護します。 ネットワーク セキュリティ グループ フロー ログを有効にし、監査のためにログを Azure Storage アカウントに送信します。 また、フロー ログを Log Analytics ワークスペースに送信してから、Traffic Analytics を使用して Azure クラウド内のトラフィック フローに関する分析情報を提供することもできます。 Traffic Analytics のいくつかの利点として、ネットワーク アクティビティを視覚化したり、ホット スポットやセキュリティの脅威を識別したり、トラフィック フロー パターンを把握したり、ネットワークの誤った構成の正確な場所を特定したりする機能が挙げられます。 
 

@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 01/12/2020
 ms.author: vikancha
-ms.openlocfilehash: 3fc9607a6882ddae42c2606abb60903dbcb05108
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 3f37a9c14a66156b908eb1d046f98301add07c20
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123436466"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128562385"
 ---
 # <a name="nv-series-migration-guide"></a>NV シリーズ移行ガイド
 
@@ -90,7 +90,7 @@ NVv4 シリーズ VM は AMD Radeon Instinct MI25 GPU および AMD EPYC 7V12 (R
 
 ### <a name="resize-the-current-vm"></a>現在の VM のサイズを変更する
 
-[Azure portal または PowerShell を通じて VM をサイズ変更](./windows/resize-vm.md)できます。 [Azure CLI を使用して VM のサイズを変更する](./linux/change-vm-size.md)こともできます。 
+[VM はサイズ変更](resize-vm.md)することができます。
 
 ## <a name="faq"></a>よく寄せられる質問
 **Q:** ターゲット VM サイズにはどの GPU ドライバーを使用する必要がありますか? 

@@ -1,25 +1,25 @@
 ---
 title: Azure Monitor ログ専用クラスター
-description: 1 日に 1 TB を超える監視データを取り込むお客様は、共有クラスターではなく専用クラスターを使用できます
+description: 最小コミットメント レベルを満たすお客様は、専用クラスターを使用できます
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
+author: yossi-y
+ms.author: yossiy
 ms.date: 07/29/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: ffef89736038d2dc9977b908959207d8dafd8acc
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 3aafeacbd07e386a23b289db0452a7425e18f567
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123540237"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128632616"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor ログ専用クラスター
 
 Azure Monitor ログ専用クラスターは、Azure Monitor ログのお客様向けの高度な機能を有効にするデプロイ オプションです。 お客様は、専用クラスターでホストする必要がある Log Analytics ワークスペースを選択できます。
 
-専用クラスターでは、1 日あたり少なくとも 1 TB のデータ インジェストの容量を使用してコミットを行う必要があります。 データの損失やサービスの中断を発生させることなく、既存のワークスペースを専用クラスターに移行できます。 
+専用クラスターを使用するには、少なくとも 1 日 に 500 GB のデータ インジェストを行うコミットメントが必要です。 データの損失やサービスの中断を発生させることなく、既存のワークスペースを専用クラスターに移行できます。 
 
-専用クラスターを必要とする機能は次のとおりです。
+専用クラスターが必要な機能
 
 - **[カスタマー マネージド キー](../logs/customer-managed-keys.md)** - お客様によって指定、管理されるキーを利用してクラスター データを暗号化します。
 - **[Lockbox](../logs/customer-managed-keys.md#customer-lockbox-preview)** - Microsoft サポート エンジニアのデータ アクセス要求を制御します。
@@ -30,7 +30,7 @@ Azure Monitor ログ専用クラスターは、Azure Monitor ログのお客様�
 
 ## <a name="management"></a>管理 
 
-専用クラスターは、Azure Monitor ログ クラスターを表す Azure リソースで管理されます。 [CLI](https://docs.microsoft.com/cli/azure/monitor/log-analytics/cluster?view=azure-cli-latest)、[PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights) [REST](https://docs.microsoft.com/rest/api/loganalytics/clusters) のいずれかを使用してプログラムから操作が実行されます。
+専用クラスターは、Azure Monitor ログ クラスターを表す Azure リソースで管理されます。 [CLI](/cli/azure/monitor/log-analytics/cluster?view=azure-cli-latest)、[PowerShell](/powershell/module/az.operationalinsights) [REST](/rest/api/loganalytics/clusters) のいずれかを使用してプログラムから操作が実行されます。
 
 クラスターの作成後、そこにワークスペースをリンクさせると、新しく取り込まれたデータがクラスターに格納されます。 ワークスペースとクラスターのリンクはいつでも解除できます。リンクの解除後は、新しいデータが共有 Log Analytics クラスターに格納されます。 リンクとリンク解除の操作はクエリに影響せず、ワークスペースに保有されている限り、操作の前後でデータへのアクセスにも影響しません。 クラスターとワークスペースとの間にリンクを設定するには、両者が同じリージョンに存在する必要があります。
 
@@ -83,13 +83,16 @@ Authorization: Bearer <token>
 
 リージョンごと、サブスクリプションごとに最大 2 つのアクティブ クラスターを使用できます。 クラスターは、削除されても、14 日間は予約されています。 リージョンごと、サブスクリプションごとに最大 4 つの (アクティブな、または最近削除された) 予約済みクラスターを使用できます。
 
-> [!INFORMATION] クラスターの作成によって、リソース割り当てとプロビジョニングがトリガーされます。 この操作が完了するまで数時間かかることがあります。
+> [!NOTE]
+> クラスターの作成によって、リソース割り当てとプロビジョニングがトリガーされます。 この操作が完了するまで数時間かかることがあります。
 > 専用クラスターは、データ インジェストに関係なくプロビジョニング後に課金されます。プロビジョニングおよびクラスターへのワークスペースのリンクを効率よく行えるようデプロイを準備することをお勧めします。 次の点を確認します。
 > - クラスターにリンクさせる初期ワークスペースのリストが明らかになっていること
 > - リンクさせるワークスペースとクラスターに使用するサブスクリプションへのアクセス許可があること
 
 **CLI**
 ```azurecli
+Set-AzContext -SubscriptionId "cluster-subscription-id"
+
 az monitor log-analytics cluster create --no-wait --resource-group "resource-group-name" --name "cluster-name" --location "region-name" --sku-capacity "daily-ingestion-gigabyte"
 
 # Wait for job completion
@@ -99,6 +102,8 @@ az resource wait --created --ids /subscriptions/subscription-id/resourceGroups/r
 **PowerShell**
 
 ```powershell
+Select-AzSubscription "cluster-subscription-id"
+
 New-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -Location "region-name" -SkuCapacity "daily-ingestion-gigabyte" -AsJob
 
 # Check when the job is done
@@ -140,12 +145,16 @@ Log Analytics クラスターのプロビジョニングは、完了するまで
 **CLI**
 
 ```azurecli
+Set-AzContext -SubscriptionId "cluster-subscription-id"
+
 az monitor log-analytics cluster show --resource-group "resource-group-name" --name "cluster-name"
 ```
 
 **PowerShell**
 
 ```powershell
+Select-AzSubscription "cluster-subscription-id"
+
 Get-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name"
 ```
  
@@ -220,8 +229,12 @@ Log Analytics ワークスペースが専用クラスターにリンクされて
 
 **CLI**
 ```azurecli
+Set-AzContext -SubscriptionId "cluster-subscription-id"
+
 # Find cluster resource ID
 $clusterResourceId = az monitor log-analytics cluster list --resource-group "resource-group-name" --query "[?contains(name, "cluster-name")]" --query [].id --output table
+
+Set-AzContext -SubscriptionId "workspace-subscription-id"
 
 az monitor log-analytics workspace linked-service create --no-wait --name cluster --resource-group "resource-group-name" --workspace-name "workspace-name" --write-access-resource-id $clusterResourceId
 
@@ -232,8 +245,12 @@ az resource wait --created --ids /subscriptions/subscription-id/resourceGroups/r
 **PowerShell**
 
 ```powershell
+Select-AzSubscription "cluster-subscription-id"
+
 # Find cluster resource ID
 $clusterResourceId = (Get-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name").id
+
+Select-AzSubscription "workspace-subscription-id"
 
 # Link the workspace to the cluster
 Set-AzOperationalInsightsLinkedService -ResourceGroupName "resource-group-name" -WorkspaceName "workspace-name" -LinkedServiceName cluster -WriteAccessResourceId $clusterResourceId -AsJob
@@ -275,12 +292,16 @@ Content-type: application/json
 
 **CLI**
 ```azurecli
+Set-AzContext -SubscriptionId "workspace-subscription-id"
+
 az monitor log-analytics workspace show --resource-group "resource-group-name" --workspace-name "workspace-name"
 ```
 
 **PowerShell**
 
 ```powershell
+Select-AzSubscription "workspace-subscription-id"
+
 Get-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Name "workspace-name"
 ```
 
@@ -330,7 +351,7 @@ Authorization: Bearer <token>
 
 ## <a name="change-cluster-properties"></a>クラスターのプロパティを変更する
 
-クラスター リソースを作成し、完全にプロビジョニングされたら、PowerShell または REST API を使用して追加のプロパティを編集できます。 クラスターのプロビジョニング後に設定できる追加のプロパティは次のとおりです。
+クラスター リソースを作成してプロビジョニングを完了したら、CLI、PowerShell または REST API で追加のプロパティを編集できます。 クラスターのプロビジョニング後に設定できる追加のプロパティは次のとおりです。
 
 - **keyVaultProperties** - 次のパラメーターを使用して Azure Key Vault 内のキーが格納されます: *KeyVaultUri*、*KeyName*、*KeyVersion*。 「[キー識別子の詳細を使用してクラスターを更新する](../logs/customer-managed-keys.md#update-cluster-with-key-identifier-details)」をご覧ください。
 - **Identity** - キー コンテナーへの認証に使用される ID。 System-assigned (システム割り当て) または User-assigned (ユーザー割り当て) のいずれかです。
@@ -350,12 +371,16 @@ Authorization: Bearer <token>
 **CLI**
 
 ```azurecli
+Set-AzContext -SubscriptionId "cluster-subscription-id"
+
 az monitor log-analytics cluster list --resource-group "resource-group-name"
 ```
 
 **PowerShell**
 
 ```powershell
+Select-AzSubscription "cluster-subscription-id"
+
 Get-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name"
 ```
 
@@ -414,12 +439,16 @@ Authorization: Bearer <token>
 **CLI**
 
 ```azurecli
+Set-AzContext -SubscriptionId "cluster-subscription-id"
+
 az monitor log-analytics cluster list
 ```
 
 **PowerShell**
 
 ```powershell
+Select-AzSubscription "cluster-subscription-id"
+
 Get-AzOperationalInsightsCluster
 ```
 **REST API**
@@ -445,12 +474,16 @@ Authorization: Bearer <token>
 **CLI**
 
 ```azurecli
+Set-AzContext -SubscriptionId "cluster-subscription-id"
+
 az monitor log-analytics cluster update --resource-group "resource-group-name" --name "cluster-name"  --sku-capacity 500
 ```
 
 ### <a name="powershell"></a>PowerShell
 
 ```powershell
+Select-AzSubscription "cluster-subscription-id"
+
 Update-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -SkuCapacity 500
 ```
 
@@ -508,12 +541,16 @@ Content-type: application/json
 **CLI**
 
 ```azurecli
+Set-AzContext -SubscriptionId "workspace-subscription-id"
+
 az monitor log-analytics workspace linked-service delete --resource-group "resource-group-name" --workspace-name "workspace-name" --name cluster
 ```
 
 **PowerShell**
 
 ```powershell
+Select-AzSubscription "workspace-subscription-id"
+
 # Unlink a workspace from cluster
 Remove-AzOperationalInsightsLinkedService -ResourceGroupName "resource-group-name" -WorkspaceName {workspace-name} -LinkedServiceName cluster
 ```
@@ -538,12 +575,16 @@ Remove-AzOperationalInsightsLinkedService -ResourceGroupName "resource-group-nam
 
 **CLI**
 ```azurecli
+Set-AzContext -SubscriptionId "cluster-subscription-id"
+
 az monitor log-analytics cluster delete --resource-group "resource-group-name" --name $clusterName
 ```
 
 **PowerShell**
 
 ```powershell
+Select-AzSubscription "cluster-subscription-id"
+
 Remove-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name"
 ```
 

@@ -1,28 +1,28 @@
 ---
-title: Azure Data Factory を使用して Web テーブルからデータをコピーする
+title: Web テーブルからデータをコピーする
+description: Web テーブルから、Azure Data Factory および Synapse Analytics でシンクとしてサポートされているデータ ストアにデータをコピーすることができる Web テーブル コネクタについて説明します。
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Azure Data Factory の Web Table コネクタについて説明します。このコネクタを使用すると、Web テーブルから、Data Factory でシンクとしてサポートされているデータ ストアにデータをコピーすることができます。
 author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/30/2021
+ms.date: 09/09/2021
 ms.author: jianleishen
-ms.openlocfilehash: 680ea9139a17f20038b78f0399fe849ca0990532
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: af6423b58cb2eba4fca0d902270afee03a733637
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123311167"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124782686"
 ---
-# <a name="copy-data-from-web-table-by-using-azure-data-factory"></a>Azure Data Factory を使用して Web テーブルからデータをコピーする
+# <a name="copy-data-from-web-table-by-using-azure-data-factory-or-synapse-analytics"></a>Azure Data Factory または Synapse Analytics を使用して Web テーブルからデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-web-table-connector.md)
 > * [現在のバージョン](connector-web-table.md)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-この記事では、Azure Data Factory のコピー アクティビティを使用して、Web テーブル データベースからデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
+この記事では、Azure Data Factory または Synapse Analytics パイプラインで Copy アクティビティを使用して、Web テーブル データベースからデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
 
 この Web テーブル コネクタ、[REST コネクタ](connector-rest.md)および [HTTP コネクタ](connector-http.md)の違いは次のとおりです。
 
@@ -57,7 +57,7 @@ Web テーブル データベースから、サポートされている任意の
 
     # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
 
-    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI を使用して新しいリンク サービスを作成します。":::
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI で新しいリンク サービスを作成する。":::
 
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
@@ -184,24 +184,24 @@ Web テーブルからデータをコピーするには、コピー アクティ
 1. **Excel 2016** を起動し、 **[データ]** タブに切り替えます。
 2. ツール バーの **[新しいクエリ]** をクリックし、 **[その他のソースから]** をポイントし、 **[Web から]** をクリックします。
 
-    ![Power Query メニュー](./media/copy-data-from-web-table/PowerQuery-Menu.png)
+    :::image type="content" source="./media/copy-data-from-web-table/PowerQuery-Menu.png" alt-text="Power Query メニュー":::
 3. **[Web から]** ダイアログ ボックスで、リンクされたサービスの JSON で使用する **URL** を入力し (例: https://en.wikipedia.org/wiki/) 、データセットに指定するパスを入力し (例: AFI%27s_100_Years...100_Movies)、 **[OK]** をクリックします。
 
-    ![Web ダイアログから](./media/copy-data-from-web-table/FromWeb-DialogBox.png)
+    :::image type="content" source="./media/copy-data-from-web-table/FromWeb-DialogBox.png" alt-text="Web ダイアログから":::
 
     この例で使用される URL は https://en.wikipedia.org/wiki/AFI%27s_100_Years...100_Movies です。
 4. **[Web コンテンツへのアクセス]** ダイアログ ボックスが表示された場合、適切な **URL** と **認証** を選択し、 **[接続]** をクリックします。
 
-   ![[Access Web コンテンツ] ダイアログ ボックス](./media/copy-data-from-web-table/AccessWebContentDialog.png)
+   :::image type="content" source="./media/copy-data-from-web-table/AccessWebContentDialog.png" alt-text="[Access Web コンテンツ] ダイアログ ボックス":::
 5. ツリー ビューの **テーブル** アイテムをクリックしてテーブルのコンテンツを表示し、一番下にある **[編集]** をクリックします。  
 
-   ![[ナビゲーター] ダイアログ](./media/copy-data-from-web-table/Navigator-DialogBox.png)
+   :::image type="content" source="./media/copy-data-from-web-table/Navigator-DialogBox.png" alt-text="[ナビゲーター] ダイアログ":::
 6. **[クエリ エディター]** ウィンドウで、ツール バーの **[詳細エディター]** をクリックします。
 
-    ![[詳細エディター] ボタン](./media/copy-data-from-web-table/QueryEditor-AdvancedEditorButton.png)
+    :::image type="content" source="./media/copy-data-from-web-table/QueryEditor-AdvancedEditorButton.png" alt-text="[詳細エディター] ボタン":::
 7. [詳細エディター] ダイアログ ボックスで、"Source" の横にある数字はインデックスです。
 
-    ![詳細エディター - インデックス](./media/copy-data-from-web-table/AdvancedEditor-Index.png)
+    :::image type="content" source="./media/copy-data-from-web-table/AdvancedEditor-Index.png" alt-text="詳細エディター - インデックス":::
 
 Excel 2013 を使用している場合、 [Microsoft Power Query for Excel](https://www.microsoft.com/download/details.aspx?id=39379) を使用してインデックスを取得します。 詳細については、「 [Web ページに接続する](https://support.office.com/article/Connect-to-a-web-page-Power-Query-b2725d67-c9e8-43e6-a590-c0a175bd64d8) 」を参照してください。 [Microsoft Power BI for Desktop](https://powerbi.microsoft.com/desktop/)の使用時と手順は同じです。
 
@@ -211,4 +211,4 @@ Excel 2013 を使用している場合、 [Microsoft Power Query for Excel](http
 プロパティの詳細については、[Lookup アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。
+Copy アクティビティでソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関するセクションを参照してください。

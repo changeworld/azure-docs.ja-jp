@@ -5,31 +5,34 @@ author: ginamr
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 03/03/2020
+ms.date: 09/14/2021
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 46cb4a25e591e4664f326a04e7eb597e98f2c0b0
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: f1dfaa8de0f6fa6d04fe91618a68a79d4121b7bd
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122206376"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128647778"
 ---
 # <a name="rtrim-azure-cosmos-db"></a>RTRIM (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
 
- 文字列式の末尾の空白を削除して返します。  
+ 末尾の空白または指定された文字を削除した後の文字列式を返します。  
   
 ## <a name="syntax"></a>構文
   
 ```sql
-RTRIM(<str_expr>)  
+RTRIM(<str_expr1>[, <str_expr2>])  
 ```  
   
 ## <a name="arguments"></a>引数
   
-*str_expr*  
-   任意の有効な文字列式です。  
+*str_expr1*  
+   文字列式です
+
+*str_expr2*  
+   str_expr1 からトリムされる省略可能な文字列式です。 設定されていない場合、既定値は空白です。  
   
 ## <a name="return-types"></a>戻り値の型
   
@@ -40,14 +43,28 @@ RTRIM(<str_expr>)
   次の例は、クエリ内での `RTRIM` の使用方法を示しています。  
   
 ```sql
-SELECT RTRIM("  abc") AS r1, RTRIM("abc") AS r2, RTRIM("abc   ") AS r3  
+SELECT RTRIM("   abc") AS t1, 
+RTRIM("   abc   ") AS t2, 
+RTRIM("abc   ") AS t3, 
+RTRIM("abc") AS t4,
+RTRIM("abc", "bc") AS t5,
+RTRIM("abc", "abc") AS t6
 ```  
   
  結果セットは次のようになります。  
   
 ```json
-[{"r1": "   abc", "r2": "abc", "r3": "abc"}]  
-```  
+[
+    {
+        "t1": "   abc",
+        "t2": "   abc",
+        "t3": "abc",
+        "t4": "abc",
+        "t5": "a",
+        "t6": ""
+    }
+]
+``` 
 
 ## <a name="remarks"></a>解説
 

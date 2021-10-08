@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 12/09/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 9cd193eb6ff2858440f1cd9a62bdd53d58d6047d
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: fb4ff79e1115086ef84694485cd9e7978295a9c0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107256295"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128598843"
 ---
 # <a name="tutorial-configure-zscaler-private-access-with-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C で Zscaler Private Access を構成する
 
@@ -117,11 +117,13 @@ Azure AD B2C で SAML アプリケーションを構成するには、「[SAML �
 
 次に、次の形式で SAML メタデータ URL を取得する必要があります。
 
-```https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/<policy-name>/Samlp/metadata```
+`https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/<policy-name>/Samlp/metadata`
 
 `<tenant-name>` は Azure AD B2C テナントの名前、`<policy-name>` は前の手順で作成したカスタム SAML ポリシーの名前であることに注意してください。
 
-たとえば、URL は `https://safemarch.b2clogin.com/safemarch.onmicrosoft.com/B2C_1A_signup_signin_saml//Samlp/metadata` になります。
+たとえば、URL は次のようになります:
+
+`https://safemarch.b2clogin.com/safemarch.onmicrosoft.com/B2C_1A_signup_signin_saml/Samlp/metadata`.
 
 Web ブラウザーを開き、SAML メタデータ URL に移動します。 ページ上の任意の場所を右クリックし、 **[名前を付けて保存]** を選択して、次の手順で使用するためにコンピューターにファイルを保存します。
 

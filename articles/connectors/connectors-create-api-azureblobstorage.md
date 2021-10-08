@@ -3,20 +3,20 @@ title: Azure Blob Storage に接続する
 description: Azure Logic Apps を使用して Azure ストレージ アカウントに BLOB を作成して管理します。
 services: logic-apps
 ms.suite: integration
-ms.reviewer: logicappspm
-ms.topic: conceptual
+ms.reviewer: estfan, azla
+ms.topic: how-to
 ms.date: 06/23/2021
 tags: connectors
-ms.openlocfilehash: e3d8730976d623b5304a50341bcf257f35047e25
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: 7fc6b33248af8b638218858c95d1c0de8b056e76
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113359553"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124824861"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して Azure Blob Storage に BLOB を作成して管理する
 
-自分の Azure ストレージ アカウントに BLOB として格納されているファイルは、Azure Logic Apps 内から [Azure Blob Storage コネクタ](/connectors/azureblobconnector/)を使用してアクセス、管理することができます。 ロジック アプリ ワークフロー内の BLOB 操作に使用されるトリガーとアクションが、このコネクタから得られます。 これらの操作を使用して、自分のストレージ アカウント内のファイルを管理するためのタスクとワークフローを自動化できます。 [利用できるコネクタのアクション](/connectors/azureblobconnector/#actions)としては、BLOB のチェック、削除、読み取り、アップロードなどがあります。 BLOB が追加または変更されると、[利用可能なトリガー](/connectors/azureblobconnector/#triggers)が作動します。 
+自分の Azure ストレージ アカウントに BLOB として格納されているファイルは、Azure Logic Apps 内から [Azure Blob Storage コネクタ](/connectors/azureblobconnector/)を使用してアクセス、管理することができます。 ロジック アプリ ワークフロー内の BLOB 操作に使用されるトリガーとアクションが、このコネクタから得られます。 これらの操作を使用して、自分のストレージ アカウント内のファイルを管理するためのタスクとワークフローを自動化できます。 [利用できるコネクタのアクション](/connectors/azureblobconnector/#actions)としては、BLOB のチェック、削除、読み取り、アップロードなどがあります。 BLOB が追加または変更されると、[利用可能なトリガー](/connectors/azureblobconnector/#triggers)が作動します。
 
 Blob Storage には、Standard と従量課金プランの両方のタイプのロジック アプリ リソースから接続することができます。 コネクタは、シングルテナント、マルチテナント、または統合サービス環境 (ISE) のロジック アプリで使用できます。 シングルテナント環境のロジック アプリでは、Blob Storage の組み込みの操作のほか、マネージド コネクタの操作を利用できます。
 
@@ -40,14 +40,14 @@ Blob Storage コネクタの代わりに、[HTTP トリガーまたは HTTP ア�
 
 - 既定では、Blob Storage アクションで "*50 MB 以下*" のファイルの読み取りまたは書き込みが可能です。 Blob Storage のアクションは、50 MB から 1,024 MB までのファイルを処理するために、[メッセージ チャンク](../logic-apps/logic-apps-handle-large-messages.md)をサポートしています。 [**BLOB コンテンツの取得** アクションは](/connectors/azureblobconnector/#get-blob-content)、暗黙的にチャンクを使用します。
 - Blob Storage トリガーではチャンクはサポートされていません。 ファイルのコンテンツを要求すると、トリガーによって 50 MB 以下のファイルのみが選択されます。 50 MB より大きいファイルを取得するには、次のパターンに従います。
-  - [**BLOB が追加または変更されたとき (プロパティのみ)** ](/connectors/azureblobconnector/#when-a-blob-is-added-or-modified-(properties-only)) といった、ファイルのプロパティを返す Blob Storage トリガーを使用します。
+  - [**BLOB が追加または変更されたとき (プロパティのみ)**](/connectors/azureblobconnector/#when-a-blob-is-added-or-modified-(properties-only)) といった、ファイルのプロパティを返す Blob Storage トリガーを使用します。
   - Blob Storage トリガーの [**BLOB コンテンツの取得** アクション](/connectors/azureblobconnector/#get-blob-content)に従います。これは、暗黙的にチャンクを使用してファイル全体を読み取ります。
 
 ## <a name="add-blob-storage-trigger"></a>Blob Storage トリガーを追加する
 
 Logic Apps では、すべてのロジック アプリは、必ず[トリガー](../logic-apps/logic-apps-overview.md#logic-app-concepts)から起動されます。トリガーは、特定のイベントが起こるか特定の条件が満たされたときに発生します。 
 
-このコネクタに用意されているトリガーは 1 つで、[ **[When a blob is Added or Modified in Azure Storage]\(Azure Storage 内の BLOB が追加または変更されたとき\)** または **[BLOB が追加または変更されたとき (プロパティのみ)]** ](/connectors/azureblobconnector/#when-a-blob-is-added-or-modified-(properties-only)) という名前が付けられています。 ストレージ コンテナー内で BLOB のプロパティが追加されるか更新されたときに、このトリガーが作動します。 そのたびに、Logic Apps エンジンによってロジック アプリ インスタンスが作成されてワークフローが開始されます。
+このコネクタに用意されているトリガーは 1 つで、[ **[When a blob is Added or Modified in Azure Storage]\(Azure Storage 内の BLOB が追加または変更されたとき\)** または **[BLOB が追加または変更されたとき (プロパティのみ)]**](/connectors/azureblobconnector/#when-a-blob-is-added-or-modified-(properties-only)) という名前が付けられています。 ストレージ コンテナー内で BLOB のプロパティが追加されるか更新されたときに、このトリガーが作動します。 そのたびに、Logic Apps エンジンによってロジック アプリ インスタンスが作成されてワークフローが開始されます。
 
 ### <a name="single-tenant"></a>[シングルテナント](#tab/single-tenant)
 
@@ -169,7 +169,7 @@ Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md#logic
 
 ## <a name="access-storage-accounts-behind-firewalls"></a>ファイアウォールの背後にあるストレージ アカウントにアクセスする
 
-[ファイアウォールとファイアウォール規則](../storage/common/storage-network-security.md)を使用してアクセスを制限することで、Azure ストレージ アカウントにネットワーク セキュリティを追加できます。 ただし、この設定では、ストレージ アカウントへのアクセスを必要とする Azure およびその他の Microsoft サービスにおいて問題が生じます。 データセンター内のローカル通信では内部 IP アドレスが抽象化されるため、IP 制限を使用してファイアウォール規則を設定することはできません。 
+[ファイアウォールとファイアウォール規則](../storage/common/storage-network-security.md)を使用してアクセスを制限することで、Azure ストレージ アカウントにネットワーク セキュリティを追加できます。 ただし、この設定では、ストレージ アカウントへのアクセスを必要とする Azure およびその他の Microsoft サービスにおいて問題が生じます。 データセンター内のローカル通信では内部 IP アドレスが抽象化されるため、IP 制限を使用してファイアウォール規則を設定することはできません。
 
 Blob Storage コネクタを使用してファイアウォールの背後にあるストレージ アカウントにアクセスするには:
 
@@ -183,19 +183,24 @@ Blob Storage コネクタを使用してファイアウォールの背後にあ�
 
 ### <a name="access-storage-accounts-in-other-regions"></a>他のリージョンにあるストレージ アカウントにアクセスする
 
-ロジック アプリは、同じリージョンにある場合、ファイア ウォールの背後にあるストレージ アカウントに直接アクセスできません。 回避策として、ストレージ アカウントとは異なるリージョンにロジック アプリを配置してください。 そのうえで、[リージョン内のマネージド コネクタのアウトバウンド IP アドレス](../logic-apps/logic-apps-limits-and-config.md#outbound)にアクセスを許可します。
+ロジック アプリは、同じリージョンにある場合、ファイア ウォールの背後にあるストレージ アカウントに直接アクセスできません。 回避策として、ストレージ アカウントとは異なるリージョンにロジック アプリを配置してください。 そのうえで、[リージョン内のマネージド コネクタのアウトバウンド IP アドレス](/connectors/common/outbound-ip-addresses#azure-logic-apps)にアクセスを許可します。
 
 > [!NOTE]
-> このソリューションは、Azure Table Storage コネクタと Azure Queue Storage コネクタには該当しません。 お使いの Table Storage または Queue Storage にアクセスするには、代わりに[組み込みの HTTP トリガーとアクションを使用](../logic-apps/logic-apps-http-endpoint.md)してください。
+> このソリューションは、Azure Table Storage コネクタと Azure Queue Storage コネクタには該当しません。 代わりに、[組み込み HTTP トリガーとアクションを使用して](../logic-apps/logic-apps-http-endpoint.md)、Table Storage または Queue Storage にアクセスします。
 
 ストレージ アカウントのファイアウォールにアウトバウンド IP アドレスを追加するには:
 
-1. ロジック アプリのリージョンの[アウトバウンド IP アドレス](../logic-apps/logic-apps-limits-and-config.md#outbound)をメモします。
-1. [Azure portal](https://portal.azure.com) にサインインします。
-1. ストレージ アカウントのページを開きます。 ナビゲーション メニューの **[セキュリティとネットワーク]** で **[ネットワーク]** を選択します。 
-1. **[許可するアクセス元]** で、**[選択されたネットワーク]** オプションを選択します。 関連する設定がページに表示されます。
-1. **[ファイアウォール]** に、アクセスする必要のある IP アドレスまたは範囲を追加します。 
-    :::image type="content" source="./media/connectors-create-api-azureblobstorage/storage-ip-configure.png" alt-text="Azure portal における BLOB ストレージ アカウントのネットワーク ページのスクリーンショット。許可リストに IP アドレスおよびアドレス範囲を追加するためのファイアウォール設定が表示されている。":::
+1. ロジック アプリのリージョンの[マネージド コネクタ送信 IP アドレス](/connectors/common/outbound-ip-addresses#azure-logic-apps)を確認します。
+
+1. [Azure portal](https://portal.azure.com) にサインインして、目的のストレージ アカウント リソースを見つけます。
+
+1. ストレージ アカウント リソース メニューの **[Security + networking]\(セキュリティ + ネットワーク\)** で **[Networking]\(ネットワーク\)** を選択します。
+
+1. **[許可するアクセス元]** の **[選択されたネットワーク]** を選択します。 関連する設定がページに表示されます。
+
+1. **[ファイアウォール]** に、アクセスする必要のある IP アドレスまたは範囲を追加します。
+
+   :::image type="content" source="./media/connectors-create-api-azureblobstorage/storage-ip-configure.png" alt-text="Azure portal における BLOB ストレージ アカウントのネットワーク ページのスクリーンショット。許可リストに IP アドレスおよびアドレス範囲を追加するためのファイアウォール設定が表示されている。":::
 
 ### <a name="access-storage-accounts-through-trusted-virtual-network"></a>信頼された仮想ネットワーク経由でストレージ アカウントにアクセスする
 
@@ -270,7 +275,7 @@ Blob Storage コネクタを使用してファイアウォールの背後にあ�
     1. **[ヘッダー]** で、BLOB タイプ ヘッダー `x-ms-blob-type` を `BlockBlob` という値で追加します。
     1. また、 **[ヘッダー]** で、API バージョン ヘッダー `x-ms-version` を適切な値で追加します。 詳細については、「[マネージド ID を使用してアクセスを認証する](../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity)」と「[Azure Storage サービスのバージョン管理](/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests)」を参照してください。
     :::image type="content" source="./media/connectors-create-api-azureblobstorage/managed-identity-connect.png" alt-text="必要な HTTP PUT アクションのパラメーターを示す Logic Apps デザイナーのスクリーンショット。":::
-1. **[新しいパラメーターの追加]** を選択し、 **[認証]** を選択して[マネージド ID を構成](../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity)します。
+1. **[新しいパラメーターの追加]** を選択し、 **[認証]** を選択して [マネージド ID を構成](../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity)します。
     1. **[認証]** の **[認証の種類]** で、 **[マネージド ID]** を選択します。
     1. **[マネージド ID]** で **[システム割り当てマネージド ID]** を選択します。
     :::image type="content" source="./media/connectors-create-api-azureblobstorage/managed-identity-authenticate.png" alt-text="Logic Apps デザイナーのスクリーンショット。HTTP アクションのマネージド ID に使用する認証パラメーターの設定が表示されている。":::

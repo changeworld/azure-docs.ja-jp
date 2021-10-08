@@ -6,12 +6,12 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 03/13/2021
-ms.openlocfilehash: 97980d07d7dc597b5bfb4b093495b2cb74c4569e
-ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+ms.openlocfilehash: 84bb24daf4586f874c0caf3994bc59773e663337
+ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122777915"
+ms.lasthandoff: 09/28/2021
+ms.locfileid: "129093594"
 ---
 # <a name="set-up-an-appliance-for-azure-government-cloud"></a>Azure Government クラウドでアプライアンスを設定する
 
@@ -61,40 +61,40 @@ ms.locfileid: "122777915"
 
     **ダウンロード** | **ハッシュ値**
     --- | ---
-    [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2140337) | CA8CEEE4C7AC13328ECA56AE9EB35137336CD3D73B1F867C4D736286EF61A234
+    [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2140337) | BA84B58E88DDFE23E5D4CE73530227EBBC187B3634B66A3E0F0B3E5DF5F0A94F
 
 
 ### <a name="run-the-script"></a>スクリプトを実行する
 
 1. アプライアンスをホストするサーバー上のフォルダーに ZIP ファイルを抽出します。  既存の Azure Migrate アプライアンスが存在するサーバー上でスクリプトを実行しないよう注意してください。
+
 2. 管理 (昇格された) 特権を使用して上記のサーバーで PowerShell を起動します。
+
 3. PowerShell ディレクトリを、ダウンロードした ZIP ファイルの内容が抽出されたフォルダーに変更します。
+
 4. 次のコマンドを実行して、**AzureMigrateInstaller.ps1** という名前のスクリプトを実行します。
 
-    
-    ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> .\AzureMigrateInstaller.ps1 ```
+   `PS C:\Users\administrator\Desktop\AzureMigrateInstaller> .\AzureMigrateInstaller.ps1 `
 
 5. シナリオ、クラウド、接続性からそれぞれオプションを選択して、必要な構成でアプライアンスをデプロイします。 たとえば、以下に示す選択内容の場合は、**Azure Government クラウド** 上の **既定の _(パブリック エンドポイント)_ 接続性** を使用して、**VMware 環境で実行されているサーバー** を検出、評価して Azure Migrate プロジェクトに移行するようにアプライアンスが設定されます。
 
-    :::image type="content" source="./media/deploy-appliance-script-government/script-vmware-gov-inline.png" alt-text="必要な Vmware 向けの構成でアプライアンスを設定する方法を示すスクリーンショット。" lightbox="./media/deploy-appliance-script-government/script-vmware-gov-expanded.png":::
+   :::image type="content" source="./media/deploy-appliance-script-government/script-vmware-gov-inline.png" alt-text="必要な Vmware 向けの構成でアプライアンスを設定する方法を示すスクリーンショット。" lightbox="./media/deploy-appliance-script-government/script-vmware-gov-expanded.png":::
 
 6. インストーラー スクリプトでは以下が実行されます。
 
-- エージェントと Web アプリケーションをインストールします。
-- Windows の役割 (Windows Activation Service、IIS、PowerShell ISE など) をインストールする。
-- IIS 書き込み可能モジュールをダウンロードしてインストールする。
-- Azure Migrate の永続的な設定の詳細でレジストリ キー (HKLM) を更新する。
-- パスに次のファイルを作成する。
-    - **構成ファイル**: %Programdata%\Microsoft Azure\Config
-    - **ログ ファイル**: %Programdata%\Microsoft Azure\Logs
+   - エージェントと Web アプリケーションをインストールします。
+   - Windows の役割 (Windows Activation Service、IIS、PowerShell ISE など) をインストールする。
+   - IIS 書き込み可能モジュールをダウンロードしてインストールする。
+   - Azure Migrate の永続的な設定の詳細でレジストリ キー (HKLM) を更新する。
+   - パスに次のファイルを作成する。
+     - **構成ファイル**: %Programdata%\Microsoft Azure\Config
+     - **ログ ファイル**: %Programdata%\Microsoft Azure\Logs
 
 スクリプトが正常に実行されると、アプライアンス構成マネージャーが自動的に起動します。
-
 
 ### <a name="verify-access"></a>アクセスを確認する
 
 [政府機関向け](migrate-appliance.md#government-cloud-urls)クラウドの Azure URL にアプライアンスから接続できることを確認します。
-
 
 ## <a name="set-up-the-appliance-for-hyper-v"></a>Hyper-V のアプライアンスを設定する
 
@@ -122,17 +122,19 @@ ms.locfileid: "122777915"
 
     **ダウンロード** | **ハッシュ値**
     --- | ---
-    [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2140424) | CA8CEEE4C7AC13328ECA56AE9EB35137336CD3D73B1F867C4D736286EF61A234
+    [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2140424) | BA84B58E88DDFE23E5D4CE73530227EBBC187B3634B66A3E0F0B3E5DF5F0A94F
 
 ### <a name="run-the-script"></a>スクリプトを実行する
 
 1. アプライアンスをホストするサーバー上のフォルダーに ZIP ファイルを抽出します。  既存の Azure Migrate アプライアンスが存在するサーバー上でスクリプトを実行しないよう注意してください。
+
 2. 管理 (昇格された) 特権を使用して上記のサーバーで PowerShell を起動します。
+
 3. PowerShell ディレクトリを、ダウンロードした ZIP ファイルの内容が抽出されたフォルダーに変更します。
+
 4. 次のコマンドを実行して、**AzureMigrateInstaller.ps1** という名前のスクリプトを実行します。
 
-    
-    ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> .\AzureMigrateInstaller.ps1 ```
+   `PS C:\Users\administrator\Desktop\AzureMigrateInstaller> .\AzureMigrateInstaller.ps1`
 
 5. シナリオ、クラウド、接続性からそれぞれオプションを選択して、必要な構成でアプライアンスをデプロイします。 たとえば、以下に示す選択内容の場合は、**Azure Government クラウド** 上の **既定の _(パブリック エンドポイント)_ 接続性** を使用して、**Hyper-V 環境で実行されているサーバー** を検出し、Azure Migrate プロジェクトに評価するようにアプライアンスが設定されます。
 
@@ -180,7 +182,7 @@ ms.locfileid: "122777915"
 
     **ダウンロード** | **ハッシュ値**
     --- | ---
-    [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2140338) | CA8CEEE4C7AC13328ECA56AE9EB35137336CD3D73B1F867C4D736286EF61A234
+    [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2140338) | BA84B58E88DDFE23E5D4CE73530227EBBC187B3634B66A3E0F0B3E5DF5F0A94F
 
 > [!NOTE]
 > 同じスクリプトを使用して、パブリックまたはプライベート エンドポイント接続性を備えた Azure Government クラウドに対して物理アプライアンスを設定できます。
@@ -188,12 +190,14 @@ ms.locfileid: "122777915"
 ### <a name="run-the-script"></a>スクリプトを実行する
 
 1. アプライアンスをホストするサーバー上のフォルダーに ZIP ファイルを抽出します。  既存の Azure Migrate アプライアンスが存在するサーバー上でスクリプトを実行しないよう注意してください。
+
 2. 管理 (昇格された) 特権を使用して上記のサーバーで PowerShell を起動します。
+
 3. PowerShell ディレクトリを、ダウンロードした ZIP ファイルの内容が抽出されたフォルダーに変更します。
+
 4. 次のコマンドを実行して、**AzureMigrateInstaller.ps1** という名前のスクリプトを実行します。
 
-    
-    ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> .\AzureMigrateInstaller.ps1 ```
+    `PS C:\Users\administrator\Desktop\AzureMigrateInstaller> .\AzureMigrateInstaller.ps1 `
 
 5. シナリオ、クラウド、接続性からそれぞれオプションを選択して、必要な構成でアプライアンスをデプロイします。 たとえば、以下に示す選択内容の場合は、**Azure Government クラウド** 上の **既定の _(パブリック エンドポイント)_ 接続性** を使用して、**物理サーバー** _(または AWS、GCP、Xen などの他のクラウドで実行されているサーバー)_ を検出し、Azure Migrate プロジェクトに評価するようにアプライアンスが設定されます。
 

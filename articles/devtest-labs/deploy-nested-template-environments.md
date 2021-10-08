@@ -1,14 +1,14 @@
 ---
-title: Azure DevTest Labs で入れ子になったテンプレート環境をデプロイする
+title: 入れ子になったテンプレート環境をデプロイする
 description: 入れ子になった Azure Resource Manager テンプレートをデプロイして Azure DevTest Labs に環境を提供する方法について説明します。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 39002e286fafd4f813333a14ed86256a517897e9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 170c9adac15de9e8429ce994021e94fd80b347aa
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85481342"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128662986"
 ---
 # <a name="deploy-nested-azure-resource-manager-templates-for-testing-environments"></a>テスト環境向けに入れ子になったAzure Resource Manager テンプレートをデプロイする
 入れ子になったデプロイを使用すると、メインの Azure Resource Manager テンプレート内から別の Resource Manager テンプレートを実行できます。 これを使用することにより、デプロイを、目的別に的を絞った一連のテンプレートに分解できます。 これには、テスト、再利用、読みやすさの点でメリットがあります。 [Azure リソースのデプロイ時のリンクされたテンプレートの使用](../azure-resource-manager/templates/linked-templates.md)に関する記事では、このソリューションの概要とコード サンプルが紹介されています。 この記事では、Azure DevTest Labs に固有の例を示します。 

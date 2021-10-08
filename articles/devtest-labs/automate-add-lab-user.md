@@ -1,15 +1,15 @@
 ---
-title: Azure DevTest Labs でのラボ ユーザーの追加を自動化する | Microsoft Docs
+title: ラボ ユーザーの追加の自動化
 description: この記事では、Azure Resource Manager テンプレート、PowerShell、および CLI を使用して、Azure DevTest Labs でのラボへのユーザー追加を自動化する方法について説明します。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 70f8e2740a53c7bb855d3796efa438e9c9ff0ffa
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 8582c6cf807a9a96f2cc7da78c93de988d14792b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111965227"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128592263"
 ---
 # <a name="automate-adding-a-lab-user-to-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs でのラボへのラボ ユーザーの追加を自動化する
 Azure DevTest Labs によって、Azure portal を使用することにより、セルフサービスの開発テスト環境をすばやく作成できます。 しかし、複数のチームがあり、いくつかの DevTest Labs インスタンスがある場合、作成プロセスの自動化によって時間を節約できます。 [Azure Resource Manager テンプレート](https://github.com/Azure/azure-devtestlab/tree/master/Environments)では、ラボ、ラボ VM、カスタム イメージ、数式を作成し、自動でユーザーを追加できます。 この記事では、DevTest Labs インスタンスにユーザーを追加することに特に焦点を絞って説明します。
@@ -160,7 +160,8 @@ $userObjectId = (Get-AzureRmADUser -UserPrincipalName 'email@company.com').Id
 New-AzureRmResourceGroupDeployment -Name "MyLabResourceGroup-$(New-Guid)" -ResourceGroupName 'MyLabResourceGroup' -TemplateParameterFile .\azuredeploy.parameters.json -TemplateFile .\azuredeploy.json
 ```
 
-グループのデプロイ名とロールの割り当て GUID が一意である必要があることに注意してください。 非一意の GUID のリソースの割り当てをデプロイしようとすると、`RoleAssignmentUpdateNotPermitted` エラーを受け取ります。
+> [!NOTE] 
+> グループのデプロイ名とロールの割り当て GUID は、一意である必要があります。 一意ではない GUID を使用してリソースの割り当てをデプロイしようとすると、`RoleAssignmentUpdateNotPermitted` エラーが発生します。
 
 いくつかの Active Directory オブジェクトを自分のラボに対する DevTest Labs ユーザー ロールに追加するために、テンプレートを数回使用する場合は、PowerShell コマンドで動的オブジェクトを使用することを検討してください。 次の例では、[New-Guid](/powershell/module/Microsoft.PowerShell.Utility/New-Guid) コマンドレットを使用して、リソース グループのデプロイ名とロールの割り当て GUID を動的に指定します。
 

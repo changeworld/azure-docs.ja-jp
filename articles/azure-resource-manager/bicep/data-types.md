@@ -2,13 +2,13 @@
 title: Bicep のデータ型
 description: Bicep で使用可能なデータ型について説明します
 ms.topic: conceptual
-ms.date: 08/30/2021
-ms.openlocfilehash: f520e314aff783a78e1656c16721f0fb8504215b
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.date: 09/22/2021
+ms.openlocfilehash: 936f17273a95ceb77030497b27f7f73defc37896
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123221683"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128624400"
 ---
 # <a name="data-types-in-bicep"></a>Bicep のデータ型
 
@@ -49,7 +49,7 @@ var mixedArray = [
 ]
 ```
 
-Bicep の配列は 0 が基準です。 次の例では、`exampleArray[0]` は 1 に評価され、`exampleArray[2]` は 3 に評価されます。 インデクサーのインデックス自体が別の式である場合があります。 式 `exampleArray[index]` は 2 に評価されます。 整数インデクサーは、配列型の式でのみ使用できます。
+Bicep の配列は 0 オリジンです。 次の例では、`exampleArray[0]` は 1 に評価され、`exampleArray[2]` は 3 に評価されます。 インデクサーのインデックス自体が別の式である場合があります。 式 `exampleArray[index]` は 2 に評価されます。 整数インデクサーは、配列型の式でのみ使用できます。
 
 ```bicep
 var index = 1
@@ -77,7 +77,7 @@ param exampleBool bool = true
 param exampleInt int = 1
 ```
 
-インライン パラメーターとして渡される整数の場合、値の範囲はデプロイに使用する SDK またはコマンドライン ツールによって制限されることがあります。 たとえば、PowerShell を使用して Bicep をデプロイする場合、整数型は -2147483648 から 2147483647 の範囲で指定できます。 この制限を回避するには、[パラメーター ファイル](parameter-files.md)で大きな整数値を指定します。 リソースの種類によって、整数プロパティに独自の制限が適用されます。
+Bicep の整数は 64 ビット整数です。 デプロイに使用する SDK またはコマンドライン ツールによっては、インライン パラメーターとして使用できる値の範囲に制約がある場合があります。 たとえば、PowerShell を使用して Bicep をデプロイする場合、整数型は -2147483648 から 2147483647 の範囲で指定できます。 この制限を回避するには、[パラメーター ファイル](parameter-files.md)で大きな整数値を指定します。 リソースの種類によって、整数プロパティに独自の制限が適用されます。
 
 浮動小数点、10 進数、またはバイナリ形式は現在サポートされていません。
 
@@ -107,7 +107,7 @@ var a = {
   }
 }
 
-output result1 string = a.b // returns 'Dev' 
+output result1 string = a.b // returns 'Dev'
 output result2 int = a.c // returns 42
 output result3 bool = a.d.e // returns true
 ```
@@ -131,7 +131,7 @@ output accessorResult string = environmentSettings['dev'].name
 
 ## <a name="strings"></a>文字列
 
-Bicep では、文字列は単一引用符でマークされ、1 行で宣言する必要があります。 コード ポイントが *0* から *10FFFF* までのすべての Unicode 文字が許可されます。
+Bicep では、文字列は単一引用符でマークされ、1 行で宣言する必要があります。 *0* から *10FFFF* のコード ポイントの Unicode 文字をすべて使用できます。
 
 ```bicep
 param exampleString string = 'test value'
@@ -141,20 +141,20 @@ param exampleString string = 'test value'
 
 | エスケープ シーケンス | 表される値 | Notes |
 |:-|:-|:-|
-| \\ | \ ||
-| \' | ' ||
-| \n | ライン フィード (LF) ||
-| \r | キャリッジ リターン (CR) ||
-| \t | タブ文字 ||
-| \u{x} | Unicode コード ポイント *x* | *x* は、*0* から *10FFFF* (両端を含む) の間の 16 進数コード ポイントの値を表します。 先頭に 0 を指定できます。 *FFFF* を超えるコード ポイントは、サロゲート ペアとして生成されます。
-| \$ | $ | エスケープする必要があるのは、 *{* が続く場合のみです。 |
+| `\\` | `\` ||
+| `\'` | `'` ||
+| `\n` | ライン フィード (LF) ||
+| `\r` | キャリッジ リターン (CR) ||
+| `\t` | タブ文字 ||
+| `\u{x}` | Unicode コード ポイント `x` | **x** は、*0* から *10FFFF* の範囲にある 16 進数のコード ポイント を表します (0 と 10FFFF を含む)。 先頭に 0 を指定できます。 *FFFF* より大きいコード ポイントはサロゲート ペアとして出力されます。
+| `\$` | `$` | `{` が後に続く場合のみエスケープします。 |
 
 ```bicep
 // evaluates to "what's up?"
 var myVar = 'what\'s up?'
 ```
 
-Bicep 内のすべての文字列は、補間をサポートしています。 式を挿入するには、 *${* と *}` で囲みます。 参照される式は、複数の行にまたがることはできません。
+Bicep 内のすべての文字列は、補間をサポートしています。 式を挿入するには、その式を `${` と `}` で囲みます。 参照される式は、複数の行にまたがることはできません。
 
 ```bicep
 var storageName = 'storage${uniqueString(resourceGroup().id)}
@@ -162,7 +162,7 @@ var storageName = 'storage${uniqueString(resourceGroup().id)}
 
 ## <a name="multi-line-strings"></a>複数行の文字列
 
-Bicep では、複数行の文字列は、3 つの単一引用符 (`'''`) の後に、必要に応じて改行 (開始シーケンス) と、3 つの単一引用符文字 (`'''` - 終了シーケンス) を指定して定義されます。 開始シーケンスと終了シーケンスの間に入力された文字は逐語的に読み取られ、エスケープは必要ありません。
+Bicep では、連続した 3 つのシングル クォーテーション記号 2 組ではさんだ部分が複数行文字列となります。最初の 3 つのシングル クォーテーション (`'''`) を開始シーケンスと呼び、必要に応じてこの後に改行を挿入します。最後の 3 つのシングル クォーテーション (`'''`) は終了シーケンスと呼びます。 開始シーケンスと終了シーケンスの間に入力された文字は逐語的に読み取られ、エスケープは必要ありません。
 
 > [!NOTE]
 > Bicep パーサーでは、Bicep ファイルの行の終わりに従って、すべての文字がそのまま読み取られるため、改行は `\r\n` または `\n` として解釈される可能性があります。
@@ -216,6 +216,27 @@ param password string
 @secure()
 param configValues object
 ```
+
+## <a name="data-type-assignability"></a>データ型の割り当て可否
+
+Bicep では、ある型 (ソース型) の値をもう 1 つの別の型 (ターゲット型) に割り当てることができます。 次のテーブルは、どのソース型 (横向きに配置) をどのターゲット型 (縦向きに配置) に割り当てられるかを示しています。 このテーブルで、`X` は割り当てられることを、空欄は割り当てられないことを、`?` は互換性がある場合に限り割り当てられることを表します。
+
+| 種類 | `any` | `error` | `string` | `number` | `int` | `bool` | `null` | `object` | `array` | 名前付きリソース | 名前付きモジュール | `scope` |
+|-|-|-|-|-|-|-|-|-|-|-|-|-|
+| `any`          |X| |X|X|X|X|X|X|X|X|X|X|
+| `error`        | | | | | | | | | | | | |
+| `string`       |X| |X| | | | | | | | | |
+| `number`       |X| | |X|X| | | | | | | |
+| `int`          |X| | | |X| | | | | | | |
+| `bool`         |X| | | | |X| | | | | | |
+| `null`         |X| | | | | |X| | | | | |
+| `object`       |X| | | | | | |X| | | | |
+| `array`        |X| | | | | | | |X| | | |
+| `resource`     |X| | | | | | | | |X| | |
+| `module`       |X| | | | | | | | | |X| |
+| `scope`        | | | | | | | | | | | |?|
+| **名前付きリソース** |X| | | | | | |?| |?| | |
+| **名前付きモジュール**   |X| | | | | | |?| | |?| |
 
 ## <a name="next-steps"></a>次のステップ
 

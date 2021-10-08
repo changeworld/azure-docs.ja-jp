@@ -9,12 +9,12 @@ ms.subservice: blobs
 ms.topic: how-to
 ms.reviewer: klaasl
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c9d16093b19fbcf1b8f0f60799c268d206fe956d
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 51bad8290bea95374349bfd00b69a4c6474b226a
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122179350"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128596944"
 ---
 # <a name="manage-the-access-tier-of-a-blob-in-an-azure-storage-account"></a>Azure Storage アカウントの BLOB のアクセス層を管理する
 
@@ -60,7 +60,7 @@ $ctx = $storageAccount.Context
 #Select the blob from a container
 $blob = Get-AzStorageBlob -Container $containerName -Blob $blobName -Context $ctx
 
-#Change the blob’s access tier to archive
+#Change the blob's access tier to archive
 $blob.ICloudBlob.SetStandardBlobTier("Archive")
 ```
 
@@ -69,5 +69,5 @@ $blob.ICloudBlob.SetStandardBlobTier("Archive")
 ## <a name="next-steps"></a>次の手順
 
 - [Azure Storage アカウントの既定のアカウント アクセス層を変更する方法](../common/manage-account-default-access-tier.md)
-- [アーカイブ層から BLOB データをリハイドレートする方法を確認する](archive-rehydrate-overview.md)
+- [アーカイブ層から BLOB データをリハイドレートする](archive-rehydrate-overview.md)方法を確認する
 - [Blob Storage アカウントと GPv2 アカウントのホット、クール、アーカイブのリージョンごとの料金を確認する](https://azure.microsoft.com/pricing/details/storage/)

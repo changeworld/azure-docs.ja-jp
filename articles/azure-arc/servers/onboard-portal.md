@@ -1,16 +1,16 @@
 ---
-title: Azure portal からハイブリッド マシンを Azure に接続する
-description: この記事では、Azure portal から Azure Arc 対応サーバーを使用して、エージェントをインストールし、マシンを Azure に接続する方法について説明します。
+title: デプロイ スクリプトを使用してハイブリッド マシンを Azure に接続する
+description: この記事では、Azure Arc 対応サーバーと、Azure portal で作成したデプロイ スクリプトを使用して、エージェントをインストールし、マシンを Azure に接続する方法を説明します。
 ms.date: 08/17/2021
 ms.topic: conceptual
-ms.openlocfilehash: bcccb9bbc4db14c2bc5553b1c88099f7b0d7f5d1
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 832e54538c6eb44e90dbd7ccb8ef804e0b0c45b9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122322305"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128651980"
 ---
-# <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>Azure portal からハイブリッド マシンを Azure に接続する
+# <a name="connect-hybrid-machines-to-azure-using-a-deployment-script"></a>デプロイ スクリプトを使用してハイブリッド マシンを Azure に接続する
 
 手動で一連の手順を実行することで、環境内の 1 つまたは少数の Windows マシンまたは Linux マシン用に、Azure Arc 対応サーバーを有効にすることができます。 または、提供されているテンプレート スクリプトを実行することで、自動化された方法を使用することもできます。 このスクリプトは、両方のエージェントのダウンロードとインストールを自動化するものです。
 

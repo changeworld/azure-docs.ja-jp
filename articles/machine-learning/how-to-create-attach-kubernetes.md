@@ -10,13 +10,13 @@ ms.custom: devx-track-azurecli
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 04/08/2021
-ms.openlocfilehash: 62e7f1b770db05f4dcd5d84cdc5f6a769566a4bd
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.date: 09/16/2021
+ms.openlocfilehash: 7a0b2f24b10ace50d1e994284cb48b50799dfd57
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122867590"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128618193"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service クラスターを作成してアタッチする
 
@@ -44,7 +44,7 @@ Azure Machine Learning では、トレーニング済みの機械学習モデル
 
     承認済みの IP 範囲は、Standard Load Balancer でのみ機能します。
 
-- > __別の Azure サブスクリプション__ から AKS クラスターをアタッチするには、AKS クラスター上で、ご自身 (ご自身の Azure AD アカウント) に **共同作成者** ロールが許可されている必要があります。 [Azure portal](https://ms.portal.azure.com/) でご自身のアクセス権を確認してください。
+- __別の Azure サブスクリプション__ から AKS クラスターをアタッチするには、AKS クラスター上で、ご自身 (ご自身の Azure AD アカウント) に **共同作成者** ロールが許可されている必要があります。 [Azure portal](https://ms.portal.azure.com/) でご自身のアクセス権を確認してください。
 
 - (Azure Private Link を使用して) プライベート AKS クラスターを使用する場合は、最初にクラスターを作成してから、ワークスペースにそれを **アタッチ** する必要があります。 詳細については、「[プライベート Azure Kubernetes Service クラスターを作成する](../aks/private-clusters.md)」を参照してください。
 
@@ -57,9 +57,7 @@ Azure Machine Learning では、トレーニング済みの機械学習モデル
     > [!IMPORTANT]
     > __開発テスト__ クラスターは、運用レベルのトラフィックに適していないため、推論時間が長くなる可能性があります。 開発/テスト クラスターでは、フォールト トレランスも保証されません。
 
-- クラスターを __運用__ に使用する場合は、クラスターを作成またはアタッチするときに、少なくとも 12 個の __仮想 CPU__ が含まれている必要があります。 仮想 CPU の数は、クラスター内の __ノード数__ に、選択した VM サイズで提供される __コア数__ を掛けることで計算できます。 たとえば、4 個の仮想コアを持つ "Standard_D3_v2" の VM サイズを使用する場合は、ノードの数として 3 以上を選択する必要があります。
-
-    __開発テスト__ クラスターの場合は、少なくとも 2 つの仮想 CPU を使用することをお勧めします。
+- クラスターを __運用__ に使用する場合は、クラスターを作成またはアタッチするときに、少なくとも __3 つのノード__ が含まれている必要があります。 __dev-test__ クラスターの場合は、少なくとも 1 つのノードを含める必要があります。
 
 - Azure Machine Learning SDK では、AKS クラスターのスケーリングのサポートは提供されません。 クラスター内のノードをスケーリングするには、Azure Machine Learning Studio 内でご自分の AKS クラスターの UI を使用します。 クラスターの VM サイズではなく、ノード数のみを変更できます。 AKS クラスターにおけるノードのスケーリングの詳細については、次の記事を参照してください。
 

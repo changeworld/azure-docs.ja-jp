@@ -8,20 +8,20 @@ ms.date: 07/13/2021
 ms.service: storage
 ms.reviewer: rukmani-msft
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 1a9e3606d516ee28d681b488a8aa129d28c102de
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3d78ba06112fce8dff64f2091e434d8f502634d2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121749329"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128662744"
 ---
 # <a name="migrate-azure-data-lake-storage-from-gen1-to-gen2-by-using-the-azure-portal-preview"></a>Azure portal を使用して、Gen1 から Gen2 に Azure Data Lake Storage を移行する (プレビュー)
 
-Azure portal を使用することで、移行を完了するのに必要な手順の数を減らせます。 データとメタデータ (タイムスタンプや ACL など) は、自動的に Gen2 対応アカウントに移動されます。 完全な移行を行う場合、要求は自動的にリダイレクトされるため、ワークロードを Gen2 にポイントする必要はありません。 
+Azure portal を使用することで、移行を完了するのに必要な手順の数を減らせます。 データとメタデータ (タイムスタンプや ACL など) は、自動的に Gen2 対応アカウントに移動されます。 完全な移行を行う場合、要求は自動的にリダイレクトされるため、ワークロードを Gen2 にポイントする必要はありません。
 
 > [!IMPORTANT]
 > Azure portal を使用した Gen1 から Gen2 への移行は、現在プレビュー段階です。
-> ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用される法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。 
+> ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用される法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
 この記事では、次のタスクについて説明します。
 
@@ -37,20 +37,20 @@ Azure portal を使用することで、移行を完了するのに必要な手�
 
 - 手順 6: 移行を完了する
 
-必ず、Gen1 から Gen2 への移行方法に関する一般的なガイダンスをお読みください。 「[Azure Data Lake Storage を Gen1 から Gen2 に移行する](data-lake-storage-migrate-gen1-to-gen2.md)」を参照してください。
+必ず、Gen1 から Gen2 への移行方法に関する一般的なガイダンスをお読みください。 詳細については、「[Azure Data Lake Storage を Gen1 から Gen2 に移行する](data-lake-storage-migrate-gen1-to-gen2.md)」を参照してください。
 
 > [!NOTE]
-> 読みやすくするため、この記事では、Azure Data Lake Storage Gen1 を *Gen1* と呼び、Azure Data Lake Storage Gen2 を *Gen2* と呼びます。 
+> 読みやすくするため、この記事では、Azure Data Lake Storage Gen1 を *Gen1* と呼び、Azure Data Lake Storage Gen2 を *Gen2* と呼びます。
 
 ## <a name="enroll-in-the-preview"></a>プレビューに登録する
 
-プレビューに登録するには、[こちらのフォーム](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR4SeyCfCfrtBlHWFupvoz_BUMEFNQzBSQTE0OU1aM0hXMDlBNEwzVTYyRy4u&wdLOR=cBC075B83-9324-4399-B94E-05A919D007C9)を参照してください。 登録後に、Gen2 機能を持つストレージ アカウントを作成します (次のセクションを参照)。 
+プレビューに登録するには、[こちらのフォーム](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR4SeyCfCfrtBlHWFupvoz_BUMEFNQzBSQTE0OU1aM0hXMDlBNEwzVTYyRy4u&wdLOR=cBC075B83-9324-4399-B94E-05A919D007C9)を参照してください。 登録後に、Gen2 機能を持つストレージ アカウントを作成します (次のセクションを参照)。
 
 新しいアカウントが移行のために有効になっていることを確かめるため、約 7 日後に Microsoft からご連絡いたします。
 
 ## <a name="create-a-storage-account-with-gen2-capabilities"></a>Gen2 機能を持つストレージ アカウントを作成する
 
-Azure Data Lake Storage Gen2 は、専用のストレージ アカウントやサービスの種類ではありません。 これは、Azure ストレージ アカウントの **階層的な名前空間** 機能を有効にすることによって取得できる一連の機能です。 Gen2 機能を持つアカウントを作成する場合は、「[Azure Data Lake Storage Gen2 で使用するストレージ アカウントを作成する](create-data-lake-storage-account.md)」を参照してください。 
+Azure Data Lake Storage Gen2 は、専用のストレージ アカウントやサービスの種類ではありません。 これは、Azure ストレージ アカウントの **階層的な名前空間** 機能を有効にすることによって取得できる一連の機能です。 Gen2 機能を持つアカウントを作成する場合は、「[Azure Data Lake Storage Gen2 で使用するストレージ アカウントを作成する](create-data-lake-storage-account.md)」を参照してください。
 
 アカウントを作成するときは、必ず次の値を使用して設定を構成してください。
 
@@ -64,17 +64,17 @@ Azure Data Lake Storage Gen2 は、専用のストレージ アカウントや�
 | **階層構造の名前空間** | Enabled |
 
 > [!NOTE]
-> Azure portal の移行ツールでは、アカウントの設定は移動されません。 そのため、アカウントを作成した後に、暗号化、ネットワーク ファイアウォール、データ保護などの設定を手動で構成する必要があります。 
+> Azure portal の移行ツールでは、アカウントの設定は移動されません。 そのため、アカウントを作成した後に、暗号化、ネットワーク ファイアウォール、データ保護などの設定を手動で構成する必要があります。
 
 ## <a name="verify-rbac-role-assignments"></a>RBAC ロールの割り当てを確認する
 
-Gen2 の場合は、[ストレージ BLOB データ所有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)ロールが、ストレージ アカウント、親リソース グループ、またはサブスクリプションのスコープ内の Azure Active Directory (Azure AD) ユーザー ID に割り当てられていることを確かめます。 
+Gen2 の場合は、[ストレージ BLOB データ所有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)ロールが、ストレージ アカウント、親リソース グループ、またはサブスクリプションのスコープ内の Azure Active Directory (Azure AD) ユーザー ID に割り当てられていることを確かめます。
 
 Gen1 の場合は、[所有者](../../role-based-access-control/built-in-roles.md#owner)ロールが、Gen1 アカウント、親リソース グループ、またはサブスクリプションのスコープ内の Azure AD ID に割り当てられていることを確かめます。
 
 ## <a name="perform-the-migration"></a>移行する
 
-作業を開始する前に、データのみをコピーするか、完全な移行を行うかを決定します。 
+作業を開始する前に、データのみをコピーするか、完全な移行を行うかを決定します。
 
 データのみをコピーする場合は、移行が完了した後も両方のアカウントがアクティブなままになります。 移行中、Gen1 アカウントは読み取り専用になります。 その後、新しい Gen2 対応のストレージ アカウントを使用するようにコンピューティング ワークロードを更新できます。 アプリケーションとワークロードが予期したとおりに動作することを確認したら、Gen1 アカウントを削除できます。 Microsoft ではこのオプションをお勧めします。
 
@@ -89,7 +89,7 @@ Gen1 の場合は、[所有者](../../role-based-access-control/built-in-roles.m
 
 2. Data Lake Storage Gen1 アカウントを見つけて、そのアカウントの概要を表示します。
 
-3. **[データの移行]** ボタンを選択します。  
+3. **[データの移行]** ボタンを選択します。
 
    > [!div class="mx-imgBorder"]
    > ![移行するためのボタン](./media/data-lake-storage-migrate-gen1-to-gen2-azure-portal/migration-tool.png)
@@ -117,7 +117,7 @@ Gen1 の場合は、[所有者](../../role-based-access-control/built-in-roles.m
 
 2. Data Lake Storage Gen1 アカウントを見つけて、そのアカウントの概要を表示します。
 
-3. **[データの移行]** ボタンを選択します。  
+3. **[データの移行]** ボタンを選択します。
 
    > [!div class="mx-imgBorder"]
    > ![移行ボタン](./media/data-lake-storage-migrate-gen1-to-gen2-azure-portal/migration-tool.png)
@@ -132,8 +132,8 @@ Gen1 の場合は、[所有者](../../role-based-access-control/built-in-roles.m
    > [!div class="mx-imgBorder"]
    > ![同意チェックボックス](./media/data-lake-storage-migrate-gen1-to-gen2-azure-portal/migration-consent.png)
 
-   - データの移行中に、Gen1 アカウントが読み取り専用になり、Gen2 対応アカウントが無効になります。 
-   - Gen1 URI のリダイレクト中は、両方のアカウントが無効になります。 
+   - データの移行中に、Gen1 アカウントが読み取り専用になり、Gen2 対応アカウントが無効になります。
+   - Gen1 URI のリダイレクト中は、両方のアカウントが無効になります。
    - 移行の完了後に、Gen1 アカウントは無効になり、Gen2 対応アカウントに対して読み取りと書き込みを行うことができます。
 
    **[移行の停止]** ボタンを選択することで、URI がリダイレクトされる前にいつでも移行を停止できます。
@@ -143,8 +143,8 @@ Gen1 の場合は、[所有者](../../role-based-access-control/built-in-roles.m
 
 ## <a name="migrate-workloads-and-applications"></a>ワークロードとアプリケーションを移行する
 
-1. Gen2 エンドポイントを指し示すように、[ワークロード内のサービス](./data-lake-storage-supported-azure-services.md)を構成します。 
-   
+1. Gen2 エンドポイントを指し示すように、[ワークロード内のサービス](./data-lake-storage-supported-azure-services.md)を構成します。
+
 2. Gen2 API を使用するようにアプリケーションを更新します。 これらのガイドを参照してください。
 
    | 環境 | [アーティクル] |
@@ -155,14 +155,14 @@ Gen1 の場合は、[所有者](../../role-based-access-control/built-in-roles.m
    |Python|[Python を使用して Azure Data Lake Storage Gen2 でディレクトリとファイルを管理する](data-lake-storage-directory-file-acl-python.md)|
    |JavaScript (Node.js)|[Node.js の JavaScript SDK を使用して Azure Data Lake Storage Gen2 でディレクトリとファイルを管理する](data-lake-storage-directory-file-acl-javascript.md)|
    |REST API |[Azure Data Lake Store REST API](/rest/api/storageservices/data-lake-storage-gen2)|
- 
+
 3. Data Lake Storage Gen2 の [PowerShell コマンドレット](data-lake-storage-directory-file-acl-powershell.md)および [Azure CLI コマンド](data-lake-storage-directory-file-acl-cli.md)を使用するようにスクリプトを更新します。
-   
-4. コード ファイル、Databricks ノートブック、Apache Hive HQL ファイル、またはワークロードの一部として使用されるその他のファイルで、文字列 `adl://` が含まれる URI 参照を検索します。 これらの参照を、新しいストレージ アカウントの [Gen2 形式の URI](data-lake-storage-introduction-abfs-uri.md) に置き換えます。 たとえば、Gen1 の URI `adl://mydatalakestore.azuredatalakestore.net/mydirectory/myfile` は、`abfss://myfilesystem@mydatalakestore.dfs.core.windows.net/mydirectory/myfile` になる可能性があります。 
+
+4. コード ファイル、Databricks ノートブック、Apache Hive HQL ファイル、またはワークロードの一部として使用されるその他のファイルで、文字列 `adl://` が含まれる URI 参照を検索します。 これらの参照を、新しいストレージ アカウントの [Gen2 形式の URI](data-lake-storage-introduction-abfs-uri.md) に置き換えます。 たとえば、Gen1 の URI `adl://mydatalakestore.azuredatalakestore.net/mydirectory/myfile` は、`abfss://myfilesystem@mydatalakestore.dfs.core.windows.net/mydirectory/myfile` になる可能性があります。
 
 ## <a name="leverage-the-gen1-compatibility-layer-optional"></a>Gen1 互換性レイヤーを活用する (省略可能)
 
-Microsoft では、アプリケーションで引き続き Gen1 API を使用して Gen2 対応アカウントのデータを操作できるように、機能を制限してアプリケーションの互換性を提供しています。 互換性レイヤーはサーバー上で実行されるため、インストールするものはありません。 
+Microsoft では、アプリケーションで引き続き Gen1 API を使用して Gen2 対応アカウントのデータを操作できるように、機能を制限してアプリケーションの互換性を提供しています。 互換性レイヤーはサーバー上で実行されるため、インストールするものはありません。
 
 > [!IMPORTANT]
 > Microsoft では、ワークロードとアプリケーションを移行する代替手段として、この機能をお勧めしていません。 2024 年 2 月 29 日に Gen1 が廃止されると、Gen1 互換性レイヤーのサポートが終了します。
@@ -191,20 +191,20 @@ Microsoft では、アプリケーションで引き続き Gen1 API を使用し
 
 #### <a name="how-much-does-the-data-migration-cost"></a>データの移行にはどのくらいのコストがかかりますか?
 
-データの移行中は、Gen1 アカウントのデータ ストレージとトランザクションに対して課金されます。 データのみをコピーするオプションを選択した場合は、移行が完了した後、両方のアカウントのデータ ストレージとトランザクションに対して課金されます。 Gen1 アカウントに対して課金されないようにするには、Gen1 アカウントを削除する必要があります。 アプリケーションの更新が完了した後に、Gen1 アカウントを削除します。 完全な移行を行うことを選択した場合は、移行後に Gen2 対応アカウントのデータ ストレージとトランザクションに対してのみ課金されます。 
+データの移行中は、Gen1 アカウントのデータ ストレージとトランザクションに対して課金されます。 データのみをコピーするオプションを選択した場合は、移行が完了した後、両方のアカウントのデータ ストレージとトランザクションに対して課金されます。 Gen1 アカウントに対して課金されないようにするには、Gen1 アカウントを削除する必要があります。 アプリケーションの更新が完了した後に、Gen1 アカウントを削除します。 完全な移行を行うことを選択した場合は、移行後に Gen2 対応アカウントのデータ ストレージとトランザクションに対してのみ課金されます。
 
 #### <a name="after-the-migration-completes-can-i-choose-to-go-back-to-using-the-gen1-account"></a>移行の完了後に、Gen1 アカウントの使用に戻すことを選択できますか?
 
-これはサポートされていません。移行の完了後は、Gen1 アカウントのデータにアクセスできなくなります。 Azure portal では引き続き Gen1 アカウントを表示でき、準備ができたら、アカウントを削除できます。 
+これはサポートされていません。移行の完了後は、Gen1 アカウントのデータにアクセスできなくなります。 Azure portal では引き続き Gen1 アカウントを表示でき、準備ができたら、アカウントを削除できます。
 
 #### <a name="i-would-like-to-enable-geo-redundant-storage-grs-on-the-gen2-account-how-do-i-do-that"></a>Gen2 アカウントで Geo 冗長ストレージ (GRS) を有効にしたいのですが、どうすればよいですか?
 
-[データのコピー] と [移行の完了] オプションの両方での移行が完了したら、先に進み、アプリケーションの互換性レイヤーを使用する予定がない限り、冗長性オプションを GRS に変更できます。 アプリケーションの互換性は、GRS 冗長性を使用するアカウントでは機能しません。  
+[データのコピー] と [移行の完了] オプションの両方での移行が完了したら、先に進み、アプリケーションの互換性レイヤーを使用する予定がない限り、冗長性オプションを GRS に変更できます。 アプリケーションの互換性は、GRS 冗長性を使用するアカウントでは機能しません。
 
-#### <a name="gen1-doesnt-have-containers-and-gen2-has-them--what-should-i-expect"></a>Gen1 にコンテナーがなく、Gen2 にある場合はどうなりますか?
+#### <a name="gen1-doesnt-have-containers-and-gen2-has-them---what-should-i-expect"></a>Gen1 にコンテナーがなく、Gen2 にある場合はどうなりますか?
 
-Gen2 対応アカウントにデータをコピーすると、`Gen1` という名前のコンテナーが自動的に作成されます。 データのみをコピーすることを選択した場合は、データのコピーが完了した後にそのコンテナーの名前を変更できます。 完全な移行を行い、アプリケーションの互換性レイヤーを使用する予定がある場合は、コンテナー名を変更しないようにする必要があります。 互換性レイヤーを使用する必要がなくなった場合は、コンテナーの名前を変更できます。 
+Gen2 対応アカウントにデータをコピーすると、`Gen1` という名前のコンテナーが自動的に作成されます。 データのみをコピーすることを選択した場合は、データのコピーが完了した後にそのコンテナーの名前を変更できます。 完全な移行を行い、アプリケーションの互換性レイヤーを使用する予定がある場合は、コンテナー名を変更しないようにする必要があります。 互換性レイヤーを使用する必要がなくなった場合は、コンテナーの名前を変更できます。
 
 ## <a name="next-steps"></a>次のステップ
 
-- 一般的な移行について学習します。 「[Azure Data Lake Storage を Gen1 から Gen2 に移行する](data-lake-storage-migrate-gen1-to-gen2.md)」を参照してください。
+- 一般的な移行について学習します。 詳細については、「[Azure Data Lake Storage を Gen1 から Gen2 に移行する](data-lake-storage-migrate-gen1-to-gen2.md)」を参照してください。
