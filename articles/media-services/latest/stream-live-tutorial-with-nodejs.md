@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc, devx-track-nodejs
 ms.date: 04/15/2021
 ms.author: inhenkel
-ms.openlocfilehash: 5b7c080e532a7a8cb220a501fb7239300b3f2d3e
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: 2b553548111c732ca778c439232e949b0abb4707
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109712876"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129388605"
 ---
 # <a name="tutorial-stream-live-with-media-services-by-using-nodejs-and-typescript"></a>チュートリアル: Node.js と TypeScript を使用して Media Services でライブ ストリーム配信を行う
 
@@ -145,7 +145,7 @@ npm install @azure/arm-mediaservices
 
 ### <a name="create-a-live-event"></a>ライブ イベントを作成する
 
-このセクションでは、"*パススルー*" タイプのライブ イベント (`LiveEventEncodingType` を `None` に設定) を作成する方法について説明します。 使用可能なライブ イベントの種類については、「[ライブ イベントの種類](live-event-outputs-concept.md#live-event-types)」のセクションを参照してください。 パススルーのほかには、720p または 1080p のアダプティブ ビットレート クラウド エンコードのためのライブ エンコーディング イベントを使用できます。
+このセクションでは、基本 "*パススルー*" タイプのライブ イベント (`LiveEventEncodingType` を `PassthroughBasic` に設定) を作成する方法について説明します。 使用可能なライブ イベントの種類については、「[ライブ イベントの種類](live-event-outputs-concept.md#live-event-types)」のセクションを参照してください。 基本または標準のパススルーのほかには、720p または 1080p のアダプティブ ビットレート クラウド エンコードのためのライブ エンコーディング イベントを使用できます。
  
 ライブ イベントを作成するときに、次の項目を指定したい場合もあります。
 

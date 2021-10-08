@@ -10,12 +10,12 @@ ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
 ms.subservice: calling
-ms.openlocfilehash: 0dc539a5f649ed4a894e92e579fdbd15d4d2b4be
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 410b0926faf2e5c6b8885c91cdf08343c3000469
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128635795"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129362334"
 ---
 # <a name="calling-sdk-overview"></a>Calling SDK の概要
 
@@ -88,8 +88,8 @@ Communication Services Calling SDK では、次のストリーミング構成が
 
 | 制限                                                         | Web                         | Windows/Android/iOS        |
 | ------------------------------------------------------------- | --------------------------- | -------------------------- |
-| **同時に送信できる発信ストリームの数**     | 1 つのビデオまたは 1 つの画面の共有 | 1 つのビデオと 1 つの画面の共有 |
-| **同時に表示できる着信ストリームの数** | 1 つのビデオまたは 1 つの画面の共有 | 6 つのビデオと 1 つの画面の共有 |
+| **同時に送信できる発信ローカル ストリームの最大数**     | 1 つのビデオまたは 1 つの画面の共有 | 1 つのビデオと 1 つの画面の共有 |
+| **同時に表示できる着信リモート ストリームの最大数** | 4 つのビデオと 1 つの画面の共有 | 6 つのビデオと 1 つの画面の共有 |
 
 Calling SDK ではこれらの制限は適用されませんが、これらを超えた場合、パフォーマンスの低下が生じる場合があります。
 
@@ -119,7 +119,6 @@ Communication Services Calling SDK では、次のタイムアウトが適用さ
 | Windows      | ✔️      | ❌      | ✔️           |
 | Ubuntu、Linux | ✔️      | ❌      | ❌           |    
 
-* Safari では、1:1 通話はサポートされていません。
 * iOS および Android では、画面共有の発信側になることはサポートされていません。
 * [Safari 上の iOS アプリでは、マイクおよびスピーカー デバイス (Bluetooth など) を列挙または選択できません](../known-issues.md#enumerating-devices-isnt-possible-in-safari-when-the-application-runs-on-ios-or-ipados)。これはこの OS の制限であり、デバイスは常に 1 つのみで、選択された既定のデバイスは OS によって制御されています。
 

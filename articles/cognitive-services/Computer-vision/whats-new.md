@@ -10,16 +10,31 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 05/24/2021
 ms.author: pafarley
-ms.openlocfilehash: b7292206aacbbca5c8e76ce573dc6fd0b3e32578
-ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
+ms.openlocfilehash: 1a27bfac347480591a67bf2c164b9ff41fe3b18d
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122835758"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129426437"
 ---
 # <a name="whats-new-in-computer-vision"></a>Computer Vision の新機能
 
 サービス内の新機能について説明します。 以下の項目には、リリース ノート、ビデオ、ブログの投稿、およびその他の種類の情報が含まれる可能性があります。 このページをブックマークして、常にサービスの最新情報を確認してください。
+
+## <a name="september-2021"></a>2021 年 9 月
+
+### <a name="ocr-read-api-public-preview-supports-122-languages"></a>OCR (Read) API パブリック プレビューが 122 の言語に対応
+Computer Vision の [OCR (Read) API](overview-ocr.md) は、[対応する言語](language-support.md)が最新のプレビューで 122 に拡張されます。
+* 49 の新しい言語 (ロシア語、ブルガリア語、その他のキリル語系やラテン語系など) での印刷テキストに対する OCR サポート。
+* 6 つの新しい言語 (英語、簡体中国語、フランス語、ドイツ語、イタリア語、ポルトガル語、スペイン語など) での手書きテキストに対する OCR サポート。
+* ID ドキュメント内の機械読み取り可能ゾーン (MRZ) テキストおよびデジタル PDF を処理する機能の強化。
+* 一般的なパフォーマンスと AI の品質の向上
+
+新しいプレビュー機能を使用する方法については、[OCR ハウツー ガイド](Vision-API-How-to-Topics/call-read-api.md)を参照してください。
+
+> [!div class="nextstepaction"]
+> [Read API の概要](./quickstarts-sdk/client-library.md)
+
 
 ## <a name="august-2021"></a>2021 年 8 月
 

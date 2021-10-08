@@ -3,19 +3,17 @@ title: Teams の会議の相互運用性
 titleSuffix: An Azure Communication Services concept document
 description: Teams の会議に参加する
 author: chpalm
-manager: chpalm
-services: azure-communication-services
 ms.author: chpalm
 ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
 ms.subservice: teams-interop
-ms.openlocfilehash: 15936b796e677f913e6814b29c68394a9560285d
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 85616e754df0eebc76dd3dceea48dfefe4acf971
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128609728"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129362369"
 ---
 # <a name="teams-interoperability"></a>Teams の相互運用性
 
@@ -60,9 +58,11 @@ Teams 匿名ユーザーは、Teams ユーザーである必要はありませ�
 
 独自の ID の使用 (BYOI) は、Azure Communication Services と Teams 相互運用性を使用するための一般的なモデルです。 これは、あらゆる ID プロバイダーと認証方式をサポートしています。 使用可能な最初のシナリオでは、アプリケーションが Microsoft Teams 会議に参加できます。Teams はこれらのユーザーを匿名外部アカウントとして扱います。Teams 匿名 Web アプリケーションを使用して参加するユーザーと同様です。 これは、(Teams を使い慣れている) 従業員と (カスタム アプリケーション エクスペリエンスを使用している) 外部ユーザーを 1 つの会議エクスペリエンスにまとめる B2C アプリケーションに最適です。 今後は、直接通話やチャットなどの追加のシナリオを使用できるようにして、アプリケーションが Teams 会議のコンテキスト外で Teams ユーザーとの通話やチャットを開始できるようにする予定です。
 
-Communication Services ユーザーが Teams 会議に匿名ユーザーとして参加する機能は、既存の "匿名での会議への参加を許可する" 構成によって制御されます。これは、既存の Teams の匿名での会議への参加も制御します。  この設定は、(https://admin.teams.microsoft.com/meetings/settings) または Teams の PowerShell コマンドレット Set-CsTeamsMeetingConfiguration (https://docs.microsoft.com/powershell/module/skype/set-csteamsmeetingconfiguration) を使用して、Teams の管理センターで更新できます。 Teams の匿名での会議への参加と同様に、アプリケーションには参加用の会議リンクが必要です。これは、Graph API または Microsoft Teams のカレンダーから取得できます。  Teams に表示される Communication Services ユーザーの名前は、Communication Services Calling SDK を使用して構成できます。
+Communication Services ユーザーが Teams 会議に匿名ユーザーとして参加する機能は、既存の "匿名での会議への参加を許可する" 構成によって制御されます。これは、既存の Teams の匿名での会議への参加も制御します。  この設定は、[Teams の管理センター](https://admin.teams.microsoft.com/meetings/settings)で、または Teams の PowerShell コマンドレット [Set-CsTeamsMeetingConfiguration](/powershell/module/skype/set-csteamsmeetingconfiguration) を使用して更新できます。 Teams の匿名での会議への参加と同様に、アプリケーションには参加用の会議リンクが必要です。これは、Graph API または Microsoft Teams のカレンダーから取得できます。  Teams に表示される Communication Services ユーザーの名前は、Communication Services Calling SDK を使用して構成できます。
 
-外部ユーザーは、Azure Communication Services SDK を使用して、基本的なオーディオ、ビデオ、画面共有、チャット機能を使用できます。 挙手、集合モード、ブレイクアウト ルームなどの機能は、Teams ユーザーのみが使用できます。 Communication Services ユーザーは、Teams 会議に出席中で、かつ会議がチャネルに対してスケジュールされていない場合にのみメッセージを送受信できます。
+外部ユーザーは、Azure Communication Services SDK を使用して、基本的なオーディオ、ビデオ、画面共有、チャット機能を使用できます。 挙手、集合モード、ブレイクアウト ルームなどの機能は、Teams ユーザーのみが使用できます。 Communication Services ユーザーは、Teams 会議に出席中で、かつ会議がチャネルに対してスケジュールされていない場合にのみメッセージを送受信できます。 
+
+Communication Services ユーザー用にサポートされているメッセージの種類の一覧は、[チャットの概念](./chat/concepts.md#message-types)に関する記事にあります。 サポートされていないメッセージの種類は無視できます。
 
 カスタム アプリケーションでは、Teams の会議を保護するためにユーザー認証などのセキュリティ対策について考慮する必要があります。 匿名ユーザーを会議に参加させることによって生じるセキュリティへの影響に留意し、[Teams のセキュリティ ガイド](/microsoftteams/teams-security-guide#addressing-threats-to-teams-meetings)を利用して、匿名ユーザーに提供する機能を構成してください。
 
