@@ -80,7 +80,7 @@ HDInsight アプリケーションは、ユーザーが HDInsight クラスタ�
     :::image type="content" source="./media/hdinsight-apps-install-applications/hdinsight-apps-installed-apps-with-apps.png" alt-text="HDInsight アプリケーションのインストールされたアプリ":::
 5. インストール済みのアプリケーションのいずれかを選択し、プロパティを表示します。 プロパティには次の項目が一覧表示されます。
 
-    |プロパティ | [説明] |
+    |プロパティ | 説明 |
     |---|---|
     |アプリ名 |アプリケーション名。 |
     |Status |アプリケーション ステータス。 |
