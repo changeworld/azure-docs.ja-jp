@@ -7,12 +7,12 @@ metadata:
   ms.topic: landing-page
   ms.service: app-service
   ms.date: 08/06/2020
-  ms.openlocfilehash: a1d7e11716478fd061104667f9adeb2511b4721e
-  ms.sourcegitcommit: 5be51a11c63f21e8d9a4d70663303104253ef19a
+  ms.openlocfilehash: 921a298c9f410bb17d100556ecc36b1472578d4b
+  ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/25/2021
-  ms.locfileid: "112895303"
+  ms.lasthandoff: 10/09/2021
+  ms.locfileid: "129713661"
 landingContent:
 - title: App Service について
   linkLists:
@@ -20,9 +20,11 @@ landingContent:
     links:
     - text: App Service とは
       url: overview.md
+    - text: App Service プランとは
+      url: overview-hosting-plans.md
     - text: App Service Environment
       url: environment/intro.md
-    - text: ホスティング オプションの比較
+    - text: Web アプリに対する Azure のホスティング オプションを比較する
       url: /azure/architecture/guide/technology-choices/compute-decision-tree
   - linkListType: whats-new
     links:
@@ -105,7 +107,7 @@ landingContent:
   - linkListType: concept
     links:
     - text: App Service プランの管理
-      url: overview-hosting-plans.md
+      url: app-service-plan-manage.md
   - linkListType: tutorial
     links:
     - text: マネージド ID を利用してリソースへのアクセスを保護する

@@ -9,12 +9,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/02/2021
   ms.author: shasb
-  ms.openlocfilehash: fe4ab5420bdc985d2ec197482f86a6ae2cbc0eb1
-  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+  ms.openlocfilehash: 2b0eb9bc6d0f410afcef5a56a87983d2b0232244
+  ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/13/2021
-  ms.locfileid: "124744728"
+  ms.lasthandoff: 10/09/2021
+  ms.locfileid: "129707051"
 landingContent:
 - title: Azure Arc 対応 Kubernetes について
   linkLists:
