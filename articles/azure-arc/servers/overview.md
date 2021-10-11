@@ -1,14 +1,14 @@
 ---
 title: Azure Arc 対応サーバーの概要
 description: Azure Arc 対応サーバーを使用して、Azure の外部でホストされているサーバーを Azure リソースと同じように管理する方法について説明します。
-ms.date: 08/27/2021
+ms.date: 09/30/2021
 ms.topic: overview
-ms.openlocfilehash: 5bca2ec2bdf46f27ca83c4747c5ecb5688fa1708
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: c064abb4258f36207e8bd4f02f7cb68d8ce1fce1
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124807156"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129355377"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>Azure Arc 対応サーバーとは
 
@@ -32,8 +32,8 @@ Azure Arc 対応サーバーを使用すると、Azure の "*外部*"、企業�
 | Azure Security Center | Azure 以外のサーバーを [Microsoft Defender for Endpoint](/microsoft-365/security/defender-endpoint) で保護します。たとえば、[Azure Defender](../../security-center/defender-for-servers-introduction.md) を利用したり、脅威を検出したり、脆弱性を管理したり、セキュリティ上の潜在的脅威がないか、積極的に監視したりします。 Azure Security Center は、検出された脅威からアラートと修復の提案を提示します。 |
 | Azure Sentinel | Arc 対応サーバーに接続されているマシンを [Azure Sentinel で構成](scenario-onboard-azure-sentinel.md)して、セキュリティ関連のイベントを収集し、それらを他のデータ ソースと関連付けることができます。 |
 |**構成** ||
-| Azure Automation |[変更履歴とインベントリ](../../automation/change-tracking/overview.md)を使用して、インストールされているソフトウェア、Microsoft サービス、Windows レジストリとファイル、および Linux デーモンに関する構成変更を評価します。<br> [Update Management](../../automation/update-management/overview.md) を使用して、Windows と Linux サーバーのオペレーティング システム用の更新プログラムを管理します。 |
-| Azure Automanage | [Arc 対応サーバーで Automanage マシン](../../automanage/automanage-arc.md)を使用するときに、一連の Azure サービスをオンボードします。 |
+| Azure Automation |PowerShell と Python [Runbook](../../automation/automation-runbook-execution.md) を使用して、頻繁で時間のかかる管理タスクを自動化します。<br> [変更履歴とインベントリ](../../automation/change-tracking/overview.md)を使用して、インストールされているソフトウェア、Microsoft サービス、Windows レジストリとファイル、および Linux デーモンに関する構成変更を評価します。<br> [Update Management](../../automation/update-management/overview.md) を使用して、Windows と Linux サーバーのオペレーティング システム用の更新プログラムを管理します。 |
+| Azure Automanage (プレビュー) | [Arc 対応サーバーで Automanage マシン](../../automanage/automanage-arc.md)を使用するときに、一連の Azure サービスのオンボードと構成が自動化されます。 |
 | VM 拡張機能 | Azure 以外の Windows または Linux マシンに、サポートされている [Arc 対応サーバーの VM 拡張機能](manage-vm-extensions.md)を使用して、デプロイ後の構成および自動化タスクを提供します。 |
 |**監視**|
 | Azure Monitor | [VM insights](../../azure-monitor/vm/vminsights-overview.md) を使用して、接続されているマシンのゲスト オペレーティング システムのパフォーマンスを監視します。また、アプリケーション コンポーネントを検出して、そのプロセスや、他のリソースとの依存関係を監視します。 [Log Analytics エージェント](../../azure-monitor/agents/agents-overview.md#log-analytics-agent)を使用して、マシンで実行されているオペレーティング システムやワークロードから、パフォーマンス データやイベントなどの他のログ データを収集します。 このデータは、[Log Analytics ワークスペース](../../azure-monitor/logs/design-logs-deployment.md)に格納されます。 |
@@ -77,6 +77,6 @@ Connected Machine エージェントは、5 分間隔でハートビート メ�
 
 ## <a name="next-steps"></a>次のステップ
 
-* 複数のハイブリッド マシンにまたがって Azure Arc 対応サーバーを評価するか、または有効にする前に、[Connected Machine エージェントの概要](agent-overview.md)に関するページを確認して、要件、エージェントに関する技術的な詳細、デプロイ方法を理解してください。
+* 複数のハイブリッド マシンにまたがって Azure Arc 対応サーバーを評価または有効にする前に、[Connected Machine エージェントの概要](agent-overview.md)に関するページを確認して、要件、エージェントに関する技術的な詳細、デプロイ方法を理解してください。
 
 * [計画と展開ガイド](plan-at-scale-deployment.md)を参照して、任意の規模で Azure Arc 対応サーバーをデプロイし、一元的な管理と監視を実装する計画を立ててください。

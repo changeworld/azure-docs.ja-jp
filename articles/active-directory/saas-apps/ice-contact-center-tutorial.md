@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と ice Contact Center の統合 | Microsoft Docs
+title: 'チュートリアル: Azure AD SSO と ice Contact Center の統合'
 description: Azure Active Directory と ice Contact Center の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/09/2021
+ms.date: 09/24/2021
 ms.author: jeedes
-ms.openlocfilehash: cf9e228769531095ae4e8b6629b2377af2df3a0c
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: df556e930bd570960080233bc17e77c0bcc5510f
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124790664"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129401049"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ice-contact-center"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と ice Contact Center の統合
+# <a name="tutorial-azure-ad-sso-integration-with-ice-contact-center"></a>チュートリアル: Azure AD SSO と ice Contact Center の統合
 
 このチュートリアルでは、ice Contact Center と Azure Active Directory (Azure AD) を統合する方法について説明します。 ice Contact Center と Azure AD を統合すると、次のことができます。
 
@@ -32,6 +32,9 @@ ms.locfileid: "124790664"
 
 * Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
 * ice Contact Center でのシングル サインオン (SSO) が有効なサブスクリプション。
+
+> [!NOTE]
+> この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
 
 ## <a name="scenario-description"></a>シナリオの説明
 

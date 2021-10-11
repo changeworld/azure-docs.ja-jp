@@ -5,16 +5,16 @@ author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 152494ef7d24d3e39af63fcb549a26c78bb27bc6
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: b7e4fa06db063538c801b01225818c4c9311e3d6
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111959424"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129400783"
 ---
 # <a name="tutorial-create-arm-templates-with-dependent-resources"></a>チュートリアル:依存リソースを含む ARM テンプレートを作成する
 
-Azure Resource Manager テンプレート (ARM テンプレート) を作成して、複数のリソースをデプロイしたりデプロイ順序を構成したりする方法を説明します。 テンプレートを作成したら、Azure portal から Cloud Shell を使用してテンプレートをデプロイします。
+Azure Resource Manager テンプレート (ARM テンプレート) を作成して、複数のリソースをデプロイしたりデプロイ順序を構成したりする方法を説明します。 テンプレートを作成したら、Azure portal から Azure Cloud Shell を使用してテンプレートをデプロイします。
 
 このチュートリアルでは、ストレージ アカウント、仮想マシン、仮想ネットワーク、およびその他の依存リソースを作成します。 別のリソースが存在するまではデプロイできないリソースもあります。 たとえば、仮想マシンを作成するには、そのストレージ アカウントとネットワーク インターフェイスが存在している必要があります。 このリレーションシップは、一方のリソースと他方のリソースに依存関係を持たせることにより定義します。 Resource Manager により、リソース間の依存関係が評価され、リソースは依存する順にデプロイされます。 相互依存していないリソースは、平行してデプロイされます。 詳細については、「[Azure Resource Manager テンプレートでのリソース デプロイ順序の定義](./resource-dependency.md)」を参照してください。
 
@@ -36,11 +36,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 この記事を完了するには、以下が必要です。
 
 * Visual Studio Code と Resource Manager ツール拡張機能。 「[クイック スタート:Visual Studio Code を使用して ARM テンプレートを作成する](quickstart-create-templates-use-visual-studio-code.md)」を参照してください。
-* セキュリティを向上させるには、生成されたパスワードを仮想マシンの管理者アカウントに対して使用します。 パスワードを生成するためのサンプルを次に示します。
+* セキュリティを向上させるには、生成されたパスワードを仮想マシンの管理者アカウントに対して使用します。 [Azure Cloud Shell](../../cloud-shell/overview.md) を使用して、PowerShell または Bash で次のコマンドを実行できます。
 
-    ```console
+    ```shell
     openssl rand -base64 32
     ```
+
+    詳細については、`man openssl rand` を実行して man ページを開きます。
 
     Azure Key Vault は、暗号化キーおよびその他のシークレットを保護するために設計されています。 詳細については、[ARM テンプレートのデプロイで Azure Key Vault を統合する](./template-tutorial-use-key-vault.md)」を参照してください。 パスワードは 3 か月ごとに更新することをお勧めします。
 
@@ -120,7 +122,7 @@ Azure クイックスタート テンプレートは、ARM テンプレートの
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
-1. [Azure Cloud Shell](https://shell.azure.com) にサインインします。
+1. [Cloud Shell](https://shell.azure.com) にサインインします。
 
 1. 左上の **[PowerShell]** または **[Bash]** (CLI の場合) を選択して、希望の環境を選択します。  切り替えた場合は、シェルを再起動する必要があります。
 

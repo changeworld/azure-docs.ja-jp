@@ -9,12 +9,12 @@ ms.author: nmurav
 ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: d8938a437db42a2d1cb5dd88f6102ce7f5facb3a
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: d2ea2c510aa9e6225de215da128670514f1dba3b
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123259067"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129360437"
 ---
 # <a name="pricing-scenarios"></a>価格シナリオ
 
@@ -190,10 +190,10 @@ Rose はメッセージを表示し、チャットを開始します。 その�
 
 ### <a name="sms"></a>SMS
 
-SMS の価格は従量課金制です。 価格は、メッセージの宛先に基づく、メッセージごとの料金となっています。 メッセージは、無料電話番号から米国内の電話番号に送信することができます。 SMS メッセージの送信にローカル (固定) 電話番号は使用できないので注意してください。
+SMS の価格は従量課金制です。 価格は、メッセージの宛先に基づく、メッセージ セグメントごとの料金となっています。 メッセージ セグメントの詳細については、[こちら](./telephony-sms/sms-faq.md#what-is-the-sms-character-limit)を参照してください。 メッセージは、無料電話番号から米国内の電話番号に送信することができます。 SMS メッセージの送信にローカル (固定) 電話番号は使用できないので注意してください。
 
 次の価格には、通信に必要な税と料金が含まれています。
 
 |国   |メッセージを送信する|メッセージを受信する|
 |-----------|------------|------------|
-|USA (無料電話番号)    |$0.0075/メッセージ   | $0.0075/メッセージ |
+|USA (無料電話番号)    |$0.0075/メッセージ セグメント  | $0.0075/メッセージ セグメント |

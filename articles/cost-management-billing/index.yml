@@ -2,7 +2,7 @@
 title: Azure Cost Management および Billing のドキュメント
 summary: Azure Cost Management + Billing は、Azure の請求書 (課金) の把握、課金アカウントとサブスクリプションの管理、Azure での支出の監視と制御、リソース使用の最適化に役立ちます。 コストを分析する方法、予算を作成および管理する方法、推奨事項を確認して対処する方法についてご確認ください。
 metadata:
-  title: Azure Cost Management および Billing
+  title: Cost Management と Billing
   description: Azure Cost Management + Billing は、Azure の請求書 (課金) の把握、課金アカウントとサブスクリプションの管理、Azure での支出の監視と制御、リソース使用の最適化に役立ちます。 コストを分析する方法、予算を作成および管理する方法、推奨事項を確認して対処する方法についてご確認ください。
   ms.service: cost-management-billing
   ms.subservice: common
@@ -10,13 +10,13 @@ metadata:
   ms.collection: collection
   author: bandersmsft
   ms.author: banders
-  ms.date: 07/14/2021
-  ms.openlocfilehash: ee7f65921165d9649dafd0a2ee2c3934849914d8
-  ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
+  ms.date: 10/07/2021
+  ms.openlocfilehash: 4dab44a6129c2e6bb6d810ec820cfb459ddb89df
+  ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/15/2021
-  ms.locfileid: "114203424"
+  ms.lasthandoff: 10/09/2021
+  ms.locfileid: "129711254"
 landingContent:
 - title: コストの分析
   linkLists:
@@ -28,9 +28,9 @@ landingContent:
       url: https://azure.microsoft.com/blog/tag/cost-management/
   - linkListType: get-started
     links:
-    - text: 自分のペースで学習する
+    - text: 自分のペースで学ぶ
       url: /learn/paths/control-spending-manage-bills/?WT.mc_id=ignite2020_collections
-    - text: Azure Cost Management のビデオ
+    - text: コスト管理のビデオ
       url: https://www.youtube.com/c/AzureCostManagement
     - text: コストの分析を開始する
       url: costs/quick-acm-cost-analysis.md
@@ -82,7 +82,7 @@ landingContent:
   linkLists:
   - linkListType: concept
     links:
-    - text: Azure Cost Management のベスト プラクティス
+    - text: Cost Management のベスト プラクティス
       url: costs/cost-mgt-best-practices.md
     - text: Azure の予約による節約
       url: reservations/save-compute-costs-reservations.md

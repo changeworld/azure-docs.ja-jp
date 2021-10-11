@@ -13,16 +13,16 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
-ms.openlocfilehash: 8b1815e7598410cd709572d93082d5dee5e0b0fb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a4fac2cde6f18e504dc2866cc479ce51e3b70b2a
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97369244"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129362002"
 ---
 # <a name="tutorial-create-an-azure-custom-role-using-azure-powershell"></a>チュートリアル:Azure PowerShell を使用して Azure カスタム ロールを作成する
 
-[Azure の組み込みロール](built-in-roles.md)が組織の特定のニーズを満たさない場合は、独自のカスタム ロールを作成することができます。 このチュートリアルでは、Azure PowerShell を使用して、Reader Support Tickets というカスタム ロールを作成します。 このカスタム ロールが割り当てられたユーザーは、サブスクリプションの管理プレーンにすべてを表示することができ、サポート チケットを開くこともできます。
+[Azure の組み込みロール](built-in-roles.md)が組織の特定のニーズを満たさない場合は、独自のカスタム ロールを作成することができます。 このチュートリアルでは、Azure PowerShell を使用して、Reader Support Tickets というカスタム ロールを作成します。 このカスタム ロールを使用すると、ユーザーはサブスクリプションのコントロール プレーンにすべてを表示できるほか、サポート チケットを開くこともできます。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -93,7 +93,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     }
     ```
     
-1. JSON ファイルを編集して、`Actions` プロパティに `"Microsoft.Support/*"` 操作を追加します。 read 操作の後に必ずコンマを追加してください。 このアクションによって、ユーザーがサポート チケットを作成できるようになります。
+1. JSON ファイルを編集して `Actions` プロパティに `"Microsoft.Support/*"` アクションを追加します。 読み取りアクションの後に必ずコンマを含めてください。 このアクションによって、ユーザーがサポート チケットを作成できるようになります。
 
 1. [Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription) コマンドを使用して、サブスクリプションの ID を取得します。
 
@@ -179,7 +179,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. このファイルをエディターで開きます。
 
-1. `Actions` に、リソース グループのデプロイを作成および管理するための操作を追加します (`"Microsoft.Resources/deployments/*"`)。
+1. `Actions` で、リソース グループのデプロイを作成および管理するアクション `"Microsoft.Resources/deployments/*"` を追加します。
 
     更新後の JSON ファイルは次のようになります。
 
@@ -227,7 +227,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     $role = Get-AzRoleDefinition "Reader Support Tickets"
     ```
     
-1. `Add` メソッドを呼び出して、診断設定を読み取るための操作を追加します。
+1. `Add` メソッドを呼び出して、診断設定を読み取るアクションを追加します。
 
     ```azurepowershell
     $role.Actions.Add("Microsoft.Insights/diagnosticSettings/*/read")

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/28/2020
+ms.date: 09/28/2021
 ms.author: jeedes
-ms.openlocfilehash: 0cc51035a8bdb0ee12d27763b1d03e6b08494b66
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 5adf1f5c2c811bdc2b48e03c1e2892746d36da4b
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124795775"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129402917"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-meraki-dashboard"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Meraki Dashboard の統合
 
@@ -37,7 +37,7 @@ ms.locfileid: "124795775"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-- Meraki Dashboard では、**IDP** Initiated SSO がサポートされます
+- Meraki Dashboard では、**IDP** Initiated SSO がサポートされます。
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -63,7 +63,7 @@ Meraki Dashboard に対して Azure AD SSO を構成してテストするには�
    1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
    1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
 1. **[Meraki Dashboard SSO の構成](#configure-meraki-dashboard-sso)** - アプリケーション側でシングル サインオン設定を構成します。
-   1. **[Meraki Dashboard のテスト ユーザーの作成](#create-meraki-dashboard-test-user)** - Meraki Dashboard で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
+   1. **[Meraki Dashboard の管理者ロールの作成](#create-meraki-dashboard-admin-roles)** - Meraki Dashboard で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
 1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
@@ -169,7 +169,7 @@ Meraki Dashboard に対して Azure AD SSO を構成してテストするには�
 
    ![Meraki Dashboard の構成](./media/meraki-dashboard-tutorial/configure-4.png)
 
-### <a name="create-meraki-dashboard-test-user"></a>Meraki Dashboard のテスト ユーザーの作成
+### <a name="create-meraki-dashboard-admin-roles"></a>Meraki Dashboard の管理者ロールを作成する
 
 1. 別の Web ブラウザー ウィンドウで、管理者として Meraki Dashboard にサインインします。
 
@@ -184,6 +184,26 @@ Meraki Dashboard に対して Azure AD SSO を構成してテストするには�
 1. ロール **meraki_full_admin** を入力し、 **[Organization access]\(組織アクセス\)** を **[Full]\(完全\)** としてマークします。次に、 **[Create role]\(ロールの作成\)** をクリックします。 **meraki_readonly_admin** に対してこの手順を繰り返します。今回は **[Organization access]\(組織アクセス\)** を **[Read-only]\(読み取り専用\)** ボックスとしてマークします。
 
    ![Meraki Dashboard のユーザーの作成](./media/meraki-dashboard-tutorial/user-3.png)
+
+1. 次の手順に従って、Meraki Dashboard のロールを Azure AD SAML のロールにマップします。
+
+   ![アプリ ロールのスクリーンショット。](./media/meraki-dashboard-tutorial/app-role.png)
+
+   a. Azure portal で、 **[アプリの登録]** をクリックします。
+
+   b. [すべてのアプリケーション] を選択し、 **[Meraki Dashboard]** をクリックします。
+
+   c. **[アプリ ロール]** をクリックし、 **[アプリ ロールの作成]** をクリックします。
+
+   d. [表示名] を `Meraki Full Admin` として入力します。
+   
+   e. [許可されたメンバー] を `Users/Groups` として選択します。
+
+   f. [値] を `meraki_full_admin` として入力します。
+
+   g. [説明] を `Meraki Full Admin` として入力します。
+
+   h. **[保存]** をクリックします。 
 
 ## <a name="test-sso"></a>SSO のテスト
 

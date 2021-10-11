@@ -5,20 +5,20 @@ author: sunilagarwal
 ms.author: sunila
 ms.service: postgresql
 ms.topic: overview
-ms.date: 08/24/2021
+ms.date: 10/04/2021
 ms.custom: mvc, references_regions
-ms.openlocfilehash: 4f125035bdb71302681f84fd04b25767828f1490
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: d1d33a526ef2dfff4709b994c77396a4db1b2a5e
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128589665"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129457546"
 ---
 # <a name="overview---azure-database-for-postgresql---flexible-server"></a>概要 - Azure Database for PostgreSQL - フレキシブル サーバー
 
-PostgreSQL コミュニティ エディションを使用する [Azure Database for PostgreSQL](../overview.md) は、次の 3 つのデプロイ モードで利用できます。
+PostgreSQL コミュニティ エディションを使用する <bpt id="p1">[</bpt>Azure Database for PostgreSQL<ept id="p1">](../overview.md)</ept> は、次の 3 つのデプロイ モードで利用できます。
 
-- [単一サーバー](../overview-single-server.md)
+- <bpt id="p1">[</bpt>単一サーバー<ept id="p1">](../overview-single-server.md)</ept>
 - フレキシブル サーバー (プレビュー)
 - Hyperscale (Citus)
 
@@ -29,7 +29,7 @@ PostgreSQL コミュニティ エディションを使用する [Azure Database 
 
 ## <a name="overview"></a>概要
 
-Azure Database for PostgreSQL - フレキシブル サーバーは、データベース管理機能と構成設定のよりきめ細かな制御と柔軟性を提供するように設計されたフル マネージド データベース サービスです。 一般には、ユーザーの要件に基づいて、より高い柔軟性とサーバー構成のカスタマイズがサービスによって提供されます。 フレキシブル サーバー アーキテクチャを使用すると、ユーザーはクライアント層を使用してデータベース エンジンを併置することで待機時間を短縮でき、1 つの可用性ゾーン内および複数の可用性ゾーン内で高可用性を選択できます。 フレキシブル サーバーには、より優れたコスト最適化制御も用意されています、これは、サーバーを停止/開始する機能や、完全なコンピューティング容量を継続的には必要としないワークロードに最適なバースト可能なコンピューティング レベルを備えています。 現在、このサービスでは、PostgreSQL 11、12 および 13 のコミュニティ バージョンがサポートされています。 このサービスは現時点でプレビュー段階にあり、現在さまざまな [Azure リージョン](https://azure.microsoft.com/global-infrastructure/services/)で利用できます。
+Azure Database for PostgreSQL - フレキシブル サーバーは、データベース管理機能と構成設定のよりきめ細かな制御と柔軟性を提供するように設計されたフル マネージド データベース サービスです。 一般には、ユーザーの要件に基づいて、より高い柔軟性とサーバー構成のカスタマイズがサービスによって提供されます。 フレキシブル サーバー アーキテクチャを使用すると、ユーザーはクライアント層を使用してデータベース エンジンを併置することで待機時間を短縮でき、1 つの可用性ゾーン内および複数の可用性ゾーン内で高可用性を選択できます。 フレキシブル サーバーには、より優れたコスト最適化制御も用意されています、これは、サーバーを停止/開始する機能や、完全なコンピューティング容量を継続的には必要としないワークロードに最適なバースト可能なコンピューティング レベルを備えています。 現在、このサービスでは、PostgreSQL 11、12 および 13 のコミュニティ バージョンがサポートされています。 このサービスは現時点でプレビュー段階にあり、現在さまざまな <bpt id="p1">[</bpt>Azure リージョン<ept id="p1">](https://azure.microsoft.com/global-infrastructure/services/)</ept>で利用できます。
 
 ![フレキシブル サーバー - 概要](./media/overview/overview-flexible-server.png)
 
@@ -52,13 +52,13 @@ Azure Database for PostgreSQL - フレキシブル サーバーは、データ�
 
 次の図は、VM とストレージの障害の遷移を示しています。
 
- :::image type="content" source="./media/overview/overview-azure-postgres-flex-virtualmachine.png" alt-text="フレキシブル サーバー - VM とストレージの障害":::
+ <bpt id="p1">:::image type="content" source="./media/overview/overview-azure-postgres-flex-virtualmachine.png" alt-text="</bpt>フレキシブル サーバー - VM とストレージの障害<ept id=&quot;p1&quot;>":::</ept>
 
 ゾーン冗長の高可用性が構成されている場合は、サービスによって同じ Azure リージョン内の可用性ゾーンにホット スタンバイ サーバーがプロビジョニングされ、管理されます。 データ損失をゼロにするために、ソース サーバー上でのデータの変更は、スタンバイ サーバーに同期的にレプリケートされます。 ゾーン冗長の高可用性により、計画済みまたは計画外のフェールオーバー イベントがトリガーされると、スタンバイ サーバーが直ちにオンラインになり、受信トランザクションを処理できるようになります。 これにより、次の図に示すように、複数の可用性ゾーンをサポートする Azure リージョン内の可用性ゾーンの障害からサービスを回復できます。
 
- :::image type="content" source="./media/business-continuity/concepts-zone-redundant-high-availability-architecture.png" alt-text="ゾーン冗長の高可用性":::
+ <bpt id="p1">:::image type="content" source="./media/business-continuity/concepts-zone-redundant-high-availability-architecture.png" alt-text="</bpt>ゾーン冗長の高可用性<ept id=&quot;p1&quot;>":::</ept>
 
- 詳細については、[高可用性のドキュメント](./concepts-high-availability.md)を参照してください。
+ 詳細については、<bpt id="p1">[</bpt>高可用性のドキュメント<ept id="p1">](./concepts-high-availability.md)</ept>を参照してください。
 
 ## <a name="automated-patching-with-managed-maintenance-window"></a>マネージド メンテナンス期間によるパッチの自動適用
 
@@ -66,7 +66,7 @@ Azure Database for PostgreSQL - フレキシブル サーバーは、データ�
 
 ## <a name="automatic-backups"></a>自動バックアップ
 
-フレキシブル サーバー サービスによってサーバー バックアップが自動的に作成され、ゾーン冗長 (ZRS) 上のユーザーがローカルに構成した場所に保存されます。 バックアップを使用すると、サーバーを、バックアップのリテンション期間内の任意の時点に復元できます。 バックアップの既定のリテンション期間は 7 日です。 必要に応じて、リテンション期間を最大 35 日に構成できます。 すべてのバックアップが、AES 256 ビット暗号化を使用して暗号化されます。 詳細は、[バックアップ](./concepts-backup-restore.md)に関するページを参照してください。
+フレキシブル サーバー サービスによってサーバー バックアップが自動的に作成され、ゾーン冗長 (ZRS) 上のユーザーがローカルに構成した場所に保存されます。 バックアップを使用すると、サーバーを、バックアップのリテンション期間内の任意の時点に復元できます。 バックアップの既定のリテンション期間は 7 日です。 必要に応じて、リテンション期間を最大 35 日に構成できます。 すべてのバックアップが、AES 256 ビット暗号化を使用して暗号化されます。 詳細は、<bpt id="p1">[</bpt>バックアップ<ept id="p1">](./concepts-backup-restore.md)</ept>に関するページを参照してください。
 
 ## <a name="adjust-performance-and-scale-within-seconds"></a>数秒以内でのパフォーマンスの調整とスケール
 
@@ -94,11 +94,11 @@ Azure Database for PostgreSQL - フレキシブル サーバーは、データ�
 
 Azure でワークロードを実行する利点の 1 つは、グローバルに展開できることです。 フレキシブル サーバーは現在、次の Azure リージョンでご利用いただけます。
 
-| Region | 可用性 | ゾーン冗長 HA | 
+| Region | V3/V4 コンピューティングの可用性 | ゾーン冗長 HA | 
 | --- | --- | --- |
 | オーストラリア東部 | :heavy_check_mark: | :heavy_check_mark: | 
 | オーストラリア南東部 | :heavy_check_mark: | :x: | 
-| Brazil South | :heavy_check_mark: | :x: |
+| Brazil South | :heavy_check_mark: (v3 のみ) | :x: |
 | カナダ中部 | :heavy_check_mark: | :heavy_check_mark: | 
 | インド中部 | :heavy_check_mark: | :x: |
 | 米国中部 | :heavy_check_mark: | :heavy_check_mark: | 
@@ -130,19 +130,19 @@ Azure でワークロードを実行する利点の 1 つは、グローバル�
 
 このサービスでは、PostgreSQL のコミュニティ バージョンが実行されます。 これにより、完全なアプリケーションの互換性が確保され、PostgreSQL エンジン上で開発された既存のアプリケーションをフレキシブル サーバーに移行するために必要なリファクタリング コストが最小限に抑えられます。 
 
-- **ダンプと復元** – ユーザーがある程度のダウンタイムを許容できるオフライン移行の場合、pg_dump や pg_restore などのコミュニティ ツールを使用してダンプと復元を行うことで、最も迅速に移行することができます。 詳細については、[ダンプと復元を使用した移行](../howto-migrate-using-dump-and-restore.md)に関するページを参照してください。
-- **Azure Database Migration Service** – 最小限のダウンタイムでフレキシブル サーバーへのシームレスかつ簡素化された移行を行うために、Azure Database Migration Service を利用できます。 [ポータル経由の DMS](../../dms/tutorial-postgresql-azure-postgresql-online-portal.md) および [CLI を介した DMS](../../dms/tutorial-postgresql-azure-postgresql-online.md) に関するページを参照してください。 Azure Database for PostgreSQL - 単一サーバーからフレキシブル サーバーに移行することができます。 詳細については、こちらの [DMS に関する記事](../../dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal.md)を参照してください。
+- <bpt id="p1">**</bpt>ダンプと復元<ept id="p1">**</ept> – ユーザーがある程度のダウンタイムを許容できるオフライン移行の場合、pg_dump や pg_restore などのコミュニティ ツールを使用してダンプと復元を行うことで、最も迅速に移行することができます。 詳細については、<bpt id="p1">[</bpt>ダンプと復元を使用した移行<ept id="p1">](../howto-migrate-using-dump-and-restore.md)</ept>に関するページを参照してください。
+- <bpt id="p1">**</bpt>Azure Database Migration Service<ept id="p1">**</ept> – 最小限のダウンタイムでフレキシブル サーバーへのシームレスかつ簡素化された移行を行うために、Azure Database Migration Service を利用できます。 <bpt id="p1">[</bpt>ポータル経由の DMS<ept id="p1">](../../dms/tutorial-postgresql-azure-postgresql-online-portal.md)</ept> および <bpt id="p2">[</bpt>CLI を介した DMS<ept id="p2">](../../dms/tutorial-postgresql-azure-postgresql-online.md)</ept> に関するページを参照してください。 Azure Database for PostgreSQL - 単一サーバーからフレキシブル サーバーに移行することができます。 詳細については、こちらの <bpt id="p1">[</bpt>DMS に関する記事<ept id="p1">](../../dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal.md)</ept>を参照してください。
 
 ## <a name="contacts"></a>連絡先
-Azure Database for PostgreSQL フレキシブル サーバーについての質問や提案は、Azure Database for PostgreSQL チームにメール ([@Ask Azure DB for PostgreSQL](mailto:AskAzureDBforPostgreSQL@service.microsoft.com)) でお送りください。 このメール アドレスはテクニカル サポートのエイリアスではないのでご注意ください。
+Azure Database for PostgreSQL フレキシブル サーバーについての質問や提案は、Azure Database for PostgreSQL チームにメール (<bpt id="p1">[</bpt><ph id="ph1">@Ask</ph> Azure DB for PostgreSQL<ept id="p1">](mailto:AskAzureDBforPostgreSQL@service.microsoft.com)</ept>) でお送りください。 このメール アドレスはテクニカル サポートのエイリアスではないのでご注意ください。
 
 さらに、適切な連絡先について次の点を考慮してください。
 
-- Azure サポートに問い合わせる場合は、[Azure portal からチケットを申請します](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
-- アカウントを使用して問題を修正するには、Azure Portal で[サポート要求](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)を提出します。
-- フィードバックを提供したり、新しい機能を要求したりするには、[UserVoice](https://feedback.azure.com/forums/597976-azure-database-for-postgresql) でエントリを作成します。
+- Azure サポートに問い合わせる場合は、<bpt id="p1">[</bpt>Azure portal からチケットを申請します<ept id="p1">](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)</ept>。
+- アカウントを使用して問題を修正するには、Azure Portal で<bpt id="p1">[</bpt>サポート要求<ept id="p1">](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)</ept>を提出します。
+- フィードバックを提供したり、新しい機能を要求したりするには、<bpt id="p1">[</bpt>UserVoice<ept id="p1">](https://feedback.azure.com/forums/597976-azure-database-for-postgresql)</ept> でエントリを作成します。
   
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Database for PostgreSQL フレキシブル サーバー デプロイ モードの概要を確認したので、最初のサーバーを作成する準備ができました。[Azure portal を使用して Azure Database for PostgreSQL - フレキシブル サーバーを作成する](./quickstart-create-server-portal.md)
+Azure Database for PostgreSQL フレキシブル サーバー デプロイ モードの概要を確認したので、最初のサーバーを作成する準備ができました。<bpt id="p1">[</bpt>Azure portal を使用して Azure Database for PostgreSQL - フレキシブル サーバーを作成する<ept id="p1">](./quickstart-create-server-portal.md)</ept>

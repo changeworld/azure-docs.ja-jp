@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory シングル サインオン (SSO) と Create!Webフローの統合 | Microsoft Docs'
+title: 'チュートリアル: Azure AD SSO と Create!Web フローの統合 '
 description: Azure Active Directory と Create!Webフローの間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/31/2021
+ms.date: 09/27/2021
 ms.author: jeedes
-ms.openlocfilehash: 1aaabacff8e1512931aa18c7fe6db20708425096
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 38fab4d4e1dff8f9916693442926312d81409884
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124802855"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129401999"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-createweb"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Create!Webフローの統合
+# <a name="tutorial-azure-ad-sso-integration-with-createweb"></a>チュートリアル: Azure AD SSO と Create!Web フローの統合
 
 このチュートリアルでは、Create!Webフローと Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と Create!Webフローを統合すると、次のことが可能になります。
 
@@ -94,7 +94,7 @@ Create!Webフロー用に Azure AD SSO を構成してテストするには、�
     **[サインオン URL]** ボックスに、`https://<user-hostname>:8443/XFV20` という形式で URL を入力します。
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 この値を取得するには、[Create!Webフロー クライアント サポート チーム](mailto:solution-cwf@iftc.co.jp)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 この値を取得するには、[Create!Webフロー クライアント サポート チーム](https://support.createwebflow.jp/contact/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -130,11 +130,11 @@ Create!Webフロー用に Azure AD SSO を構成してテストするには、�
 
 ## <a name="configure-createweb-sso"></a>Create!Webフロー SSO の構成
 
-**Create!Webフロー** 側でシングル サインオンを構成するには、ダウンロードした **証明書 (Base64)** と Azure portal からコピーした適切な URL を [Create!Webフロー サポート チーム](mailto:solution-cwf@iftc.co.jp)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Create!Webフロー** 側でシングル サインオンを構成するには、ダウンロードした **証明書 (Base64)** と Azure portal からコピーした適切な URL を [Create!Webフロー サポート チーム](https://support.createwebflow.jp/contact/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-createweb-test-user"></a>Create!Webフローのテスト ユーザーの作成
 
-このセクションでは、Create!Webフローで Britta Simon というユーザーを作成します。 [Create!Webフロー サポート チーム](mailto:solution-cwf@iftc.co.jp)と連携し、Create!Webフロー プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Create!Webフローで Britta Simon というユーザーを作成します。 [Create!Webフロー サポート チーム](https://support.createwebflow.jp/contact/)と連携し、Create!Webフロー プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ## <a name="test-sso"></a>SSO のテスト 
 

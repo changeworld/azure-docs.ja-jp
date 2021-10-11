@@ -11,12 +11,12 @@ ms.date: 09/22/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management, has-adal-ref
-ms.openlocfilehash: 5f70c401799fb0b67f9f4013713eb89525072f45
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 06b982a43c5155ce5a111bafbac41862363ec07d
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128670730"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129355509"
 ---
 # <a name="introduction-to-azure-ad-connect-v20"></a>Azure AD Connect v2.0 について 
 
@@ -77,7 +77,7 @@ PowerShell の前提条件の詳細については、[こちら](/powershell/scr
 いいえ。このリリースには、新しい機能は含まれません。 このリリースには、Azure AD Connect 上の一部の基本コンポーネントの更新プログラムのみが含まれています。 
 
 **以前のバージョンから V2.0 にアップグレードすることはできますか?** </br>
-はい–以前のバージョンの Azure AD Connect から Azure AD Connect v2.0 へのアップグレードがサポートされています。 この記事のガイダンスに従って、最適なアップグレード方法を決定してください。 
+はい–以前のバージョンの Azure AD Connect から Azure AD Connect v2.0 へのアップグレードがサポートされています。 [この記事](how-to-upgrade-previous-version.md)のガイダンスに従って、最適なアップグレード方法を決定してください。 
 
 **現在のサーバーの構成をエクスポートして Azure AD Connect v2.0 にインポートすることはできますか?** </br>
 はい、できます。これは、特に新しいオペレーティング システムのバージョンにアップグレードする場合なら特に、Azure AD Connect v2.0 に移行するための優れた方法です。 インポート/エクスポートの構成機能の詳細と、この[記事](how-to-connect-import-export-config.md)での使用方法については、こちらを参照してください。 

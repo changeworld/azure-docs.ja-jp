@@ -91,7 +91,7 @@
       items:
         - name: Azure Arc 対応 Logic Apps について
           href: azure-arc-enabled-logic-apps-overview.md
-        - name: Arc 対応のロジック アプリを作成してデプロイする
+        - name: Azure Arc 対応のロジック アプリを作成してデプロイする
           href: azure-arc-enabled-logic-apps-create-deploy-workflows.md
     - name: 開発
       items:

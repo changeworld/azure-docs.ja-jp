@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: f2e6918e6cdc6eb87fe80e9110183ed5a0a3693b
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: d431e91eb71d5befe71f134e634fe5ad3c7b392d
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113106715"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129274476"
 ---
 # <a name="tutorial-provision-multiple-x509-devices-using-enrollment-groups"></a>チュートリアル:登録グループを使って複数の X.509 デバイスをプロビジョニングする
 
@@ -318,7 +318,7 @@ Windows ベースのデバイスの証明書ストアに署名証明書を追加
 
 ## <a name="create-an-enrollment-group"></a>登録グループを作成する
 
-1. Azure portal にサインインし、左側のメニューの **[すべてのリソース]** を選択して、Device Provisioning Service を開きます。
+1. Azure portal にサインインし、左側のメニューの **[すべてのリソース]** ボタンを選択して、Device Provisioning Service を開きます。
 
 2. **[登録を管理します]** タブを選択し、上部にある **[登録グループの追加]** を選択します。
 
@@ -339,9 +339,9 @@ Windows ベースのデバイスの証明書ストアに署名証明書を追加
 
 このセクションでは、Device Provisioning Service インスタンス情報を使用してサンプル コードを更新します。 デバイスは認証されると、このセクションで構成された Device Provisioning Service インスタンスにリンクされている IoT ハブに割り当てられます。
 
-1. Azure portal で、Device Provisioning Service の **[概要]** タブを選択し、**[_ID スコープ_]** の値をメモします。
+1. Azure portal で、Device Provisioning Service の **[概要]** タブを選択し、 **[_ID スコープ_]** の値をメモします。
 
-    ![ポータルのブレードから Device Provisioning サービスのエンドポイント情報を抽出](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
+    ![ポータルのブレードから Device Provisioning サービスのエンドポイント情報を抽出](./media/quick-create-simulated-device-x509/copy-id-scope.png) 
 
 2. Visual Studio を起動し、Git リポジトリ azure-iot-sdk-c のルートに作成した `cmake` ディレクトリに作成された新しいソリューション ファイルを開きます。 ソリューション ファイルの名前は `azure_iot_sdks.sln` です。
 

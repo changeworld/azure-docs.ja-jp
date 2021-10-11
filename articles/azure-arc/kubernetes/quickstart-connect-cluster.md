@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 09/09/2021
 ms.custom: template-quickstart
 keywords: Kubernetes, Arc, Azure, クラスター
-ms.openlocfilehash: bcc4d9183bf60e37c1d024462d7ab924df1f671e
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 10c97945a78867d92b9ed4887e9655d49b195e33
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 09/29/2021
-ms.locfileid: "129210772"
+ms.locfileid: "129273763"
 ---
 # <a name="quickstart-connect-an-existing-kubernetes-cluster-to-azure-arc"></a>クイックスタート: 既存の Kubernetes クラスターを Azure Arc に接続する
 
@@ -96,8 +96,8 @@ ms.locfileid: "129210772"
 | `https://<region>.dp.kubernetesconfiguration.azure.com` (Azure Cloud の場合)、`https://<region>.dp.kubernetesconfiguration.azure.us` (Azure US Government の場合) | エージェントが状態をプッシュして構成情報をフェッチするためのデータ プレーン エンドポイント。 |
 | `https://login.microsoftonline.com`、`login.windows.net` (Azure Cloud の場合)、`https://login.microsoftonline.us` (Azure US Government の場合) | Azure Resource Manager トークンをフェッチし、更新するために必要です。 |
 | `https://mcr.microsoft.com`, `https://*.data.mcr.microsoft.com` | Azure Arc エージェント用のコンテナー イメージをプルするために必要です。                                                                  |
-| `https://gbl.his.arc.azure.com` |  システム割り当て管理サービス ID (MSI) 証明書をプルするためリージョン エンドポイントを取得するために必要です。 |
-| `https://*.his.arc.azure.com` (Azure Cloud の場合)、`https://usgv.his.arc.azure.us` および `https://gbl.his.arc.azure.us` (Azure US Government の場合) |  システム割り当てマネージド ID 証明書をプルするために必須。 |
+| `https://gbl.his.arc.azure.com` (Azure Cloud の場合)、`https://gbl.his.arc.azure.us` (Azure US Government の場合) |  システム割り当て管理 ID 証明書をプルするためリージョン エンドポイントを取得するために必要です。 |
+| `https://*.his.arc.azure.com` (Azure Cloud の場合)、`https://usgv.his.arc.azure.us` (Azure US Government の場合) |  システム割り当てマネージド ID 証明書をプルするために必須。 |
 |`*.servicebus.windows.net`, `guestnotificationservice.azure.com`, `*.guestnotificationservice.azure.com`, `sts.windows.net` | [クラスター接続](cluster-connect.md)ベース シナリオの場合と、[カスタムの場所](custom-locations.md)ベースのシナリオの場合。 |
 
 ## <a name="1-register-providers-for-azure-arc-enabled-kubernetes"></a>1. Azure Arc 対応 Kubernetes 用のプロバイダーを登録する

@@ -51,6 +51,12 @@
       href: marketplace-criteria-content-validation.md
     - name: リードの管理
       href: partner-center-portal/commercial-marketplace-get-customer-leads.md
+    - name: プライベート オファー
+      items:
+        - name: クラウド リセラー向け
+          href: isv-csp-reseller.md
+        - name: FAQ
+          href: isv-csp-faq.yml
     - name: 体験版
       items:
         - name: 体験版とは
@@ -80,6 +86,8 @@
         - name: OCP GTM からの共同販売ソリューションの移行
           href: co-sell-solution-migration.md
         - name: CSP パートナーによる再販
+          href: cloud-solution-providers.md
+        - name: ISV からパートナー リセラーへのプライベート プラン
           href: cloud-solution-providers.md
         - name: コネクト プログラムのオンボード ガイド
           href: business-applications-isv-program.md

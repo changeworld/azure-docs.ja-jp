@@ -11,12 +11,12 @@ metadata:
   author: HeidiSteen
   ms.author: heidist
   ms.date: 03/02/2021
-  ms.openlocfilehash: 2cdb36e2cc141c440ab933ea77e4ef2e480a691e
-  ms.sourcegitcommit: 096e7972e2a1144348f8d648f7ae66154f0d4b39
+  ms.openlocfilehash: d0fbe222a6128604e5ed98d467f60cecbeeeebcf
+  ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/23/2021
-  ms.locfileid: "112518772"
+  ms.lasthandoff: 10/09/2021
+  ms.locfileid: "129706840"
 landingContent:
 - title: Cognitive Search について
   linkLists:
@@ -36,6 +36,38 @@ landingContent:
     links:
     - text: 検索ソリューションで AI を使用する
       url: https://youtu.be/M4Rf1s0WcWQ?t=19
+- title: アプリの開発
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Web アプリに検索を追加する
+      url: tutorial-csharp-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: .NET での開発
+      url: search-howto-dotnet-sdk.md
+    - text: Postman で REST API を呼び出す
+      url: search-get-started-rest.md
+  - linkListType: reference
+    links:
+    - text: Azure SDK for .NET
+      url: /dotnet/api/overview/azure/search.documents-readme
+    - text: Azure SDK for Python
+      url: /python/api/overview/azure/search-documents-readme
+- title: 開始
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: サービスの作成
+      url: search-create-service-portal.md
+    - text: インデックスを作成する
+      url: search-get-started-portal.md
+    - text: デモ アプリを作成する
+      url: search-create-app-portal.md
+    - text: テキストを翻訳してエンティティを認識する
+      url: cognitive-search-quickstart-blob.md
+    - text: OCR と画像分析を適用する
+      url: cognitive-search-quickstart-ocr.md
 - title: データのインデックス作成
   linkLists:
   - linkListType: overview
@@ -54,40 +86,6 @@ landingContent:
       url: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
     - text: Cosmos DB のインデックス
       url: search-howto-index-cosmosdb.md
-- title: 開始
-  linkLists:
-  - linkListType: quickstart
-    links:
-    - text: サービスの作成
-      url: search-create-service-portal.md
-    - text: インデックスを作成する
-      url: search-get-started-portal.md
-    - text: デモ アプリを作成する
-      url: search-create-app-portal.md
-    - text: 画像およびアプリ ファイルからテキストを抽出する
-      url: cognitive-search-quickstart-blob.md
-- title: アプリの開発
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: Web アプリに検索を追加する
-      url: tutorial-csharp-overview.md
-  - linkListType: how-to-guide
-    links:
-    - text: .NET での開発
-      url: search-howto-dotnet-sdk.md
-    - text: VS Code で REST API を呼び出す
-      url: search-get-started-vs-code.md
-    - text: Postman で REST API を呼び出す
-      url: search-get-started-rest.md
-  - linkListType: reference
-    links:
-    - text: Azure SDK for .NET
-      url: /dotnet/api/overview/azure/search.documents-readme
-    - text: Azure SDK for Python
-      url: /python/api/overview/azure/search-documents-readme
-    - text: REST API リファレンス
-      url: /rest/api/searchservice/index
 - title: AI によるエンリッチ
   linkLists:
   - linkListType: concept
@@ -106,10 +104,6 @@ landingContent:
       url: cognitive-search-defining-skillset.md
     - text: ナレッジ ストアの作成
       url: knowledge-store-create-portal.md
-  - linkListType: reference
-    links:
-    - text: 組み込みのスキル
-      url: cognitive-search-predefined-skills.md
 - title: クエリ データ
   linkLists:
   - linkListType: concept
@@ -132,13 +126,3 @@ landingContent:
       url: query-odata-filter-orderby-syntax.md
     - text: ドキュメントを検索する (REST)
       url: /rest/api/searchservice/search-documents
-- title: ヘルプとフィードバック
-  linkLists:
-  - linkListType: reference
-    links:
-    - text: よく寄せられる質問
-      url: search-faq-frequently-asked-questions.yml
-    - text: Stack Overflow で質問する
-      url: https://stackoverflow.com/questions/tagged/azure-search
-    - text: 機能をリクエストする
-      url: https://feedback.azure.com/forums/263029-azure-search

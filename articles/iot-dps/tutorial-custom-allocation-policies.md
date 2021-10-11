@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 823c154a07fed2bc3734993c25accb37aa33a228
-ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
+ms.openlocfilehash: 108e73334ec51e05530bd7b0fa7a273cff326bdc
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2021
-ms.locfileid: "107929941"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129274715"
 ---
 # <a name="tutorial-use-custom-allocation-policies-with-device-provisioning-service-dps"></a>チュートリアル:Device Provisioning Service (DPS) でカスタム割り当てポリシーを使用する
 
@@ -342,9 +342,9 @@ contoso-heatpump-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
 
 このサンプル コードでは、Device Provisioning Service のインスタンスにプロビジョニング要求を送信するデバイス ブート シーケンスがシミュレートされます。 ブート シーケンスにより、トースター デバイスが認識され、カスタム割り当てポリシーを使用して IoT ハブに割り当てられます。
 
-1. Azure portal で、Device Provisioning Service の **[概要]** タブをクリックし、**[_ID スコープ_]** の値を書き留めます。
+1. Azure portal で、Device Provisioning Service の **[概要]** タブを選択し、 **[_ID スコープ_]** の値を書き留めます。
 
-    ![ポータルのブレードから Device Provisioning サービスのエンドポイント情報を抽出](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
+    ![ポータルのブレードから Device Provisioning サービスのエンドポイント情報を抽出](./media/quick-create-simulated-device-x509/copy-id-scope.png) 
 
 2. 前に CMake を実行して生成された **azure_iot_sdks.sln** ソリューション ファイルを Visual Studio で開きます。 ソリューション ファイルは次の場所にあります。
 

@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.author: inhenkel
 author: IngridAtMicrosoft
 ms.date: 03/20/2021
-ms.openlocfilehash: 0e425cddea1adaec8bfb8f0055b55bb0c45fb168
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 43f1602b22a761461f84761ed3a3806397011ae2
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106123174"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129389516"
 ---
 # <a name="create-an-azure-media-services-live-stream-with-obs"></a>OBS を使用して Azure Media Services のライブ ストリームを作成する
 
@@ -63,7 +63,7 @@ Web ブラウザーを開き、[Microsoft Azure portal](https://portal.azure.com
 
    ![[ライブ イベント名] ボックス。](media/live-events-obs-quickstart/live-event-name.png)
 1. **[説明]** ボックスにイベントの説明 (省略可) を入力します。
-1. **[パススルー - クラウド エンコードなし]** を選択します。
+1. 基本的な **[パススルー - クラウド エンコードなし]** オプションを選択します。
 
    ![[クラウド エンコード] オプション。](media/live-events-obs-quickstart/cloud-encoding.png)
 1. **[RTMP]** オプションを選択します。
@@ -151,7 +151,7 @@ OBS は既定のシーンで開始しますが、入力は選択されていま�
 
 #### <a name="x264-encoder-settings"></a>X264 エンコーダーの設定
 
-1. **X264** エンコード オプションを選択した場合は、 **[Rescale Output]\(出力を再スケーリングする\)** ボックスをオンにします。 1920 x 1080 (Media Services で Premium ライブ イベントを使用している場合) または 1280x720 (Standard (720P) ライブ イベントを使用している場合) を選択します。  パススルー ライブ イベントを使用している場合は、使用可能な任意の解像度を選択できます。
+1. **X264** エンコード オプションを選択した場合は、 **[Rescale Output]\(出力を再スケーリングする\)** ボックスをオンにします。 1920 x 1080 (Media Services で Premium ライブ イベントを使用している場合) または 1280x720 (Standard (720P) ライブ イベントを使用している場合) を選択します。  基本的な、または標準のパススルー ライブ イベントを使用している場合は、使用可能な任意の解像度を選択できます。
 
 1. **[ビットレート]** を 1,500 kbps から 4,000 kbps までの任意の値に設定します。 720P Standard エンコード ライブ イベントを使用している場合は、2,500 Kbps にすることをお勧めします。 1080P Premium ライブ イベントを使用している場合は、4,000 Kbps にすることをお勧めします。 目的の品質設定を実現するために、ネットワーク上で使用可能な CPU 能力と帯域幅に基づいてビットレートを調整することができます。
 
@@ -165,7 +165,7 @@ OBS は既定のシーンで開始しますが、入力は選択されていま�
 
 #### <a name="nvidia-nvenc-encoder-settings"></a>Nvidia NVENC エンコーダーの設定
 
-1. **NVENC** GPU エンコード オプションを選択している場合は、 **[Rescale Output]\(出力を再スケーリングする\)** ボックスをオンにし、1920x1080 (Media Services で Premium ライブ イベントを使用している場合) または 1280x720 (Standard (720P) ライブ イベントを使用している場合) を選択します。 パススルー ライブ イベントを使用している場合は、使用可能な任意の解像度を選択できます。
+1. **NVENC** GPU エンコード オプションを選択している場合は、 **[Rescale Output]\(出力を再スケーリングする\)** ボックスをオンにし、1920x1080 (Media Services で Premium ライブ イベントを使用している場合) または 1280x720 (Standard (720P) ライブ イベントを使用している場合) を選択します。 基本的な、または標準のパススルー ライブ イベントを使用している場合は、使用可能な任意の解像度を選択できます。
 
 1. **[レート制御]** を、一定のビットレートのレート制御を表す CBR に設定します。
 
@@ -189,7 +189,7 @@ OBS は既定のシーンで開始しますが、入力は選択されていま�
 
 #### <a name="intel-quicksync-encoder-settings"></a>Intel QuickSync エンコーダーの設定
 
-1. Intel **QuickSync** GPU エンコード オプションを選択している場合は、 **[Rescale Output]\(出力を再スケーリングする\)** ボックスをオンにし、1920x1080 (Media Services で Premium ライブ イベントを使用している場合) または 1280x720 (Standard (720P) ライブ イベントを使用している場合) を選択します。 パススルー ライブ イベントを使用している場合は、使用可能な任意の解像度を選択できます。
+1. Intel **QuickSync** GPU エンコード オプションを選択している場合は、 **[Rescale Output]\(出力を再スケーリングする\)** ボックスをオンにし、1920x1080 (Media Services で Premium ライブ イベントを使用している場合) または 1280x720 (Standard (720P) ライブ イベントを使用している場合) を選択します。 基本的な、または標準のパススルー ライブ イベントを使用している場合は、使用可能な任意の解像度を選択できます。
 
 1. **[ターゲットの使用法]** を "balanced" に設定するか、CPU と GPU の合計負荷に基づいて必要に応じて調整します。 必要に応じて調整し、実験を行って、お使いのハードウェアで実現できる品質で、平均での最大 CPU 使用率 80% を達成します。 より制限のあるハードウェアを使用している場合、パフォーマンスの問題が発生していれば、"fast" または "very fast"にしてテストしてください。
 

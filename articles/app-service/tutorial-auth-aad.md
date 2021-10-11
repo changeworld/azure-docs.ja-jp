@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 09/23/2021
 ms.custom: devx-track-csharp, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 0c07d17269911043c71fc0d89a5a290f053e39a4
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: e7ee0deb84b6b7ef7c10c296eab236524a3ee487
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128639776"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129357332"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>チュートリアル:Azure App Service でユーザーをエンド ツー エンドで認証および承認する
 
@@ -299,42 +299,36 @@ ID プロバイダーとして Azure Active Directory を使用します。 詳�
 
 これで、フロントエンド アプリに、サインインしたユーザーとしてバックエンド アプリにアクセスするために必要なアクセス許可が与えられました。 この手順では、バックエンドにアクセスするための使用可能なアクセス トークンを提供するように、App Service の認証および承認を構成します。 この手順では、バックエンドのクライアント ID が必要です。この ID は、「[バックエンド アプリの認証と承認を有効にする](#enable-authentication-and-authorization-for-back-end-app)」でコピーしたものです。
 
-1. [Azure Resource Explorer](https://resources.azure.com) に移動し、リソース ツリーを使用してフロントエンド Web アプリを見つけます。
+Cloud Shell のフロントエンド アプリで次のコマンドを実行して、`scope` パラメーターを認証設定 `identityProviders.azureActiveDirectory.login.loginParameters` に追加します。 *\<front-end-app-name>* 、 *\<back-end-client-id>* は、適宜置き換えてください。
 
-1. リソース ツリーでフロントエンド アプリが選択された状態で、[Azure Resource Explorer](https://resources.azure.com) が開きます。 ページの上部にある **[読み取り/書き込み]** をクリックして、Azure リソースの編集を有効にします。
+```azurecli-interactive
+az webapp auth set --resource-group myAuthResourceGroup --name <front-end-app-name> --body '{"identityProviders":{"azureActiveDirectory":{"login":{"loginParameters":["scope=openid profile email offline_access api://<back-end-client-id>/user_impersonation"]}}}}'
+```
 
-    :::image type="content" source="./media/tutorial-auth-aad/resources-enable-write.png" alt-text="[読み取り/書き込み] ボタンが選択されている、[Azure Resource Explorer] ページの上部の [読み取り専用] および [読み取り/書き込み] ボタンのスクリーンショット。":::
+要求するスコープの説明を次に示します。
 
-1. 左側のブラウザーで、**config** > **authsettingsV2** にドリルダウンします。
+- `openid`、`profile`、`email` は、既に既定で App Service によって要求されています。 詳細については、「[OpenID Connect のスコープ](../active-directory/develop/v2-permissions-and-consent.md#openid-connect-scopes)」を参照してください。
+- `api://<back-end-client-id>/user_impersonation` は、バックエンド アプリの登録で公開される API です。 これは、バックエンド アプリを[トークンの対象ユーザー](https://wikipedia.org/wiki/JSON_Web_Token)として含む JWT トークンが得られるスコープです。 
+- [offline_access](../active-directory/develop/v2-permissions-and-consent.md#offline_access) は、便宜上ここに含まれています ([トークンを更新](#when-access-tokens-expire)したい場合)。
 
-1. **[authsettingsV2]** ビューで、 **[編集]** をクリックします。 コピーしたクライアント ID を使用して、`properties.identityProviders.azureActiveDirectory.login` にドリルダウンし、`loginParameters` を次の JSON 文字列に追加します。 
+> [!TIP]
+> - Azure portal で `api://<back-end-client-id>/user_impersonation` スコープを表示するには、バックエンド アプリの **[認証]** ページに移動し、 **[ID プロバイダー]** の下のリンクをクリックし、左側のメニューの **[API の公開]** をクリックします。
+> - 代わりに Web インターフェイスを使用して要求するスコープを構成するには、「[認証トークンを更新する](configure-authentication-oauth-tokens.md#refresh-auth-tokens)」の Microsoft の手順を参照してください。
+> - スコープによっては、管理者またはユーザーの同意が必要な場合があります。 この要件により、ユーザーがブラウザーでフロントエンド アプリにサインインすると、同意要求ページが表示されます。 この同意ページが表示されないようにするには、 **[クライアント アプリケーションの追加]** をクリックし、フロントエンドのアプリ登録のクライアント ID を指定して、 **[API の公開]** ページで、フロントエンドのアプリ登録を、承認されたクライアント アプリケーションとして追加します。
 
-    ```json
-    "loginParameters": ["response_type=code id_token","scope=openid api://<back-end-client-id>/user_impersonation"],
-    ```
+::: zone pivot="platform-linux"
 
-    :::image type="content" source="./media/tutorial-auth-aad/add-loginparameters.png" alt-text="loginParameters 文字列とクライアント ID 例を示す、[authsettings V2] ビューのコード例のスクリーンショット。":::
+> [!NOTE]
+> Linux アプリの場合、バックエンド アプリ登録のバージョン管理設定を構成するための一時的な要件があります。 Cloud Shell で、次のコマンドを使用して構成します。 *\<back-end-client-id>* は必ず、バックエンドのクライアント ID に置き換えてください。
+>
+> ```azurecli-interactive
+> id=$(az ad app show --id <back-end-client-id> --query objectId --output tsv)
+> az rest --method PATCH --url https://graph.microsoft.com/v1.0/applications/$id --body "{'api':{'requestedAccessTokenVersion':2}}" 
+> ```    
 
-    > [!TIP]
-    > スコープ `api://<back-end-client-id>/user_impersonation` は既定でバックエンド アプリのアプリ登録に追加されます。 Azure portal でそれを表示するには、バックエンド アプリの **[認証]** ページに移動し、 **[ID プロバイダー]** の下のリンクをクリックし、左側のメニューの **[API の公開]** をクリックします。
-    >
-    > スコープには管理者またはユーザーの同意が必要であることに注意してください。 この要件により、ユーザーがブラウザーでフロントエンド アプリにサインインすると、同意要求ページが表示されます。 この同意ページが表示されないようにするには、 **[クライアント アプリケーションの追加]** をクリックし、フロントエンドのアプリ登録のクライアント ID を指定して、 **[API の公開]** ページで、フロントエンドのアプリ登録を、承認されたクライアント アプリケーションとして追加します。
-
-1. **[PUT]** をクリックして、設定を保存します。
-
-    ::: zone pivot="platform-linux"
+::: zone-end
     
-    > [!NOTE]
-    > Linux アプリの場合、バックエンド アプリ登録のバージョン管理設定を構成するための一時的な要件があります。 Cloud Shell で、次のコマンドを使用して構成します。 *\<back-end-client-id>* は必ず、バックエンドのクライアント ID に置き換えてください。
-    >
-    > ```azurecli-interactive
-    > id=$(az ad app show --id <back-end-client-id> --query objectId --output tsv)
-    > az rest --method PATCH --url https://graph.microsoft.com/v1.0/applications/$id --body "{'api':{'requestedAccessTokenVersion':2}}" 
-    > ```    
-
-    ::: zone-end
-    
-    これでアプリの構成は完了です。 フロントエンドが適切なアクセス トークンを使用してバックエンドにアクセスする準備ができました。
+これでアプリの構成は完了です。 フロントエンドが適切なアクセス トークンを使用してバックエンドにアクセスする準備ができました。
 
 他のプロバイダー用にアクセス トークンを構成する方法については、「[ID プロバイダー トークンの更新](configure-authentication-oauth-tokens.md#refresh-auth-tokens)」を参照してください。
 

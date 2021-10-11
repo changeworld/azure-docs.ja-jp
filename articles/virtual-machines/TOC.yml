@@ -297,20 +297,6 @@
               href: h-series-retirement.md
             - name: HB シリーズの提供終了
               href: hb-series-retirement.md
-        - name: 状態と課金
-          href: states-billing.md
-        - name: vCPU のクォータ
-          items:
-            - name: CLI
-              displayName: 'vCPU, quota, limit'
-              href: ./linux/quotas.md
-            - name: PowerShell
-              displayName: 'vCPU, quota, limit'
-              href: ./windows/quotas.md
-        - name: 一時ディスクを使用しない Azure VM
-          href: azure-vms-no-temp-disk.yml
-        - name: Azure VM のサイズの名前付け規則
-          href: vm-naming-conventions.md
         - name: 旧世代
           displayName: 'older, retired, expired, deprecated'
           href: sizes-previous-gen.md
@@ -320,9 +306,6 @@
         - name: Isolated のサイズ
           displayName: 'isolated VM, sole-tenant, sole'
           href: isolation.md
-        - name: 旧世代
-          displayName: 'older, retired, expired, deprecated'
-          href: sizes-previous-gen.md
         - name: Azure コンピューティング ユニット (ACU)
           href: acu.md
         - name: ベンチマーク スコア

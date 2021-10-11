@@ -4,12 +4,12 @@ description: この記事では、Azure Event Hubs での Schema Registry のサ
 ms.topic: overview
 ms.date: 05/10/2021
 ms.custom: references_regions
-ms.openlocfilehash: 43380ccd4f20616676f4eeb53fb2231b4f76f4e9
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 6ac6361643d9baafb41259e6db69f816d747b1d8
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110371207"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129534821"
 ---
 # <a name="azure-schema-registry-in-event-hubs-preview"></a>Event Hubs の Azure スキーマ レジストリ (プレビュー)
 多くのイベント ストリーミングおよびメッセージング シナリオでは、イベントまたはメッセージのペイロードに、Apache Avro のようなスキーマ駆動型の形式を使用してシリアル化または逆シリアル化された構造化データが含まれています。 送信側と受信側のどちらであっても、JSON スキーマのようなスキーマ ドキュメントでデータの整合性を検証したい場合があります。 スキーマ駆動型の形式の場合、メッセージ コンシューマーでスキーマを使用できるようにすることは、コンシューマーでデータを逆シリアル化できるようにするための前提条件です。 

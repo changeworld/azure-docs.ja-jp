@@ -6,12 +6,12 @@ ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 38567f89e550f5b97599f823e8963f603785c665
-ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
+ms.openlocfilehash: 4f6255c0a59a57677c4ff4119611630a4169133f
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113650194"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129400745"
 ---
 # <a name="tutorial-use-condition-in-arm-templates"></a>チュートリアル:ARM テンプレートでの条件の使用
 
@@ -45,11 +45,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 この記事を完了するには、以下が必要です。
 
 * Visual Studio Code と Resource Manager ツール拡張機能。 「[クイック スタート:Visual Studio Code を使用して ARM テンプレートを作成する](quickstart-create-templates-use-visual-studio-code.md)」を参照してください。
-* セキュリティを向上させるには、生成されたパスワードを仮想マシンの管理者アカウントに対して使用します。 パスワードを生成するためのサンプルを次に示します。
+* セキュリティを向上させるには、生成されたパスワードを仮想マシンの管理者アカウントに対して使用します。 [Azure Cloud Shell](../../cloud-shell/overview.md) を使用して、PowerShell または Bash で次のコマンドを実行できます。
 
-    ```console
+    ```shell
     openssl rand -base64 32
     ```
+
+    詳細については、`man openssl rand` を実行して man ページを開きます。
 
     Azure Key Vault は、暗号化キーおよびその他のシークレットを保護するために設計されています。 詳細については、[ARM テンプレートのデプロイで Azure Key Vault を統合する](./template-tutorial-use-key-vault.md)」を参照してください。 パスワードは 3 か月ごとに更新することをお勧めします。
 
@@ -137,7 +139,7 @@ Azure クイックスタート テンプレートは、ARM テンプレートの
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
-1. [Azure Cloud Shell](https://shell.azure.com) にサインインします。
+1. [Cloud Shell](https://shell.azure.com) にサインインします。
 
 1. 左上の **[PowerShell]** または **[Bash]** (CLI の場合) を選択して、希望の環境を選択します。 切り替えた場合は、シェルを再起動する必要があります。
 

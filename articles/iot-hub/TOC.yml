@@ -2,10 +2,8 @@
   href: index.yml
 - name: 概要
   items:
-    - name: Azure IoT Hub とは
-      href: about-iot-hub.md
-    - name: IoT の概念
-      href: iot-concepts.md
+    - name: IoT の概念と Azure IoT Hub
+      href: iot-concepts-and-iot-hub.md
 - name: クイックスタート
   expanded: true
   items:

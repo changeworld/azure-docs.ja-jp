@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Tableau Online の統合 | Microsoft Docs
+title: 'チュートリアル: Azure AD SSO と Tableau Online の統合'
 description: Azure Active Directory と Tableau Online の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/28/2020
+ms.date: 09/24/2021
 ms.author: jeedes
-ms.openlocfilehash: cb3efdc1bc03535abcf1f50ed4cd7a5c847ed957
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 3f3aaf5f24a08fa2941701005a6c38957ee7a3da
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124751699"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129402400"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tableau-online"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Tableau Online の統合
+# <a name="tutorial-azure-ad-sso-integration-with-tableau-online"></a>チュートリアル: Azure AD SSO と Tableau Online の統合
 
 このチュートリアルでは、Tableau Online と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と Tableau Online を統合すると、次のことができます。
 
@@ -33,14 +33,17 @@ ms.locfileid: "124751699"
 * Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
 * Tableau Online でのシングル サインオン (SSO) が有効なサブスクリプション。
 
+> [!NOTE]
+> この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
+
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Tableau Online では、**SP** Initiated SSO がサポートされます
+* Tableau Online では、**SP** Initiated SSO がサポートされます。
 * Tableau Online では、[**自動化されたユーザー プロビジョニングとプロビジョニング解除**](tableau-online-provisioning-tutorial.md) (推奨) がサポートされます。
 
-## <a name="adding-tableau-online-from-the-gallery"></a>ギャラリーからの Tableau Online の追加
+## <a name="add-tableau-online-from-the-gallery"></a>ギャラリーからの Tableau Online の追加
 
 Azure AD への Tableau Online の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Tableau Online を追加する必要があります。
 
@@ -65,17 +68,17 @@ Tableau Online で Azure AD SSO を構成してテストするには、次の手
     1. **[Tableau Online のテスト ユーザーの作成](#create-tableau-online-test-user)** - Tableau Online で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
 1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
 1. Azure portal の **Tableau Online** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
+1. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
     a. **[サインオン URL]** ボックスに、URL として「`https://sso.online.tableau.com/public/sp/login?alias=<entityid>`」と入力します。
 
@@ -111,9 +114,7 @@ Tableau Online で Azure AD SSO を構成してテストするには、次の手
 1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
 1. アプリケーションの一覧で **[Tableau Online]** を選択します。
 1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
-
 1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
-
 1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
@@ -132,15 +133,15 @@ Tableau Online で Azure AD SSO を構成してテストするには、次の手
 
 1. **[設定]** 、 **[認証]** の順にクリックします。
 
-    ![[設定] メニューから [認証] が選択された画面のスクリーンショット。](./media/tableauonline-tutorial/tutorial_tableauonline_09.png)
+    ![[設定] メニューから [認証] が選択された画面のスクリーンショット。](./media/tableauonline-tutorial/menu.png)
 
 2. SAML を有効にするには、 **[Authentication types]\(認証の種類\)** セクションで、 **[Enable an additional authentication method]\(追加の認証方法を有効にする\)** をオンにし、 **[SAML]** チェック ボックスをオンにします。
 
-    ![[Authentication types]\(認証の種類\) セクションのスクリーンショット。ここで値を選択することができます。](./media/tableauonline-tutorial/tutorial_tableauonline_12.png)
+    ![[Authentication types]\(認証の種類\) セクションのスクリーンショット。ここで値を選択することができます。](./media/tableauonline-tutorial/authentication.png)
 
 3. 下へスクロールして、 **[Import metadata file into Tableau Online (Tableau Online にメタデータ ファイルをインポートする)]** セクションを表示します。  [Browse]\(参照\) をクリックし、Azure AD からダウンロードしたメタデータ ファイルをインポートします。 次に、 **[Apply (適用)]** をクリックします。
 
-   ![メタデータ ファイルをインポートするためのセクションのスクリーンショット。](./media/tableauonline-tutorial/tutorial_tableauonline_13.png)
+   ![メタデータ ファイルをインポートするためのセクションのスクリーンショット。](./media/tableauonline-tutorial/metadata.png)
 
 4. **[Match assertions (アサーションの一致)]** セクションで、**メール アドレス**、**名**、**姓** に対応する ID プロバイダーのアサーション名を挿入します。 Azure AD から情報を取得するには、以下の手順に従います。 
   
@@ -148,17 +149,17 @@ Tableau Online で Azure AD SSO を構成してテストするには、次の手
 
     b. **[User Attributes & Claims]\(ユーザー属性とクレーム\)** セクションで、編集アイコンをクリックします。
 
-   ![編集アイコンを選択できる [User Attributes & Claims]\(ユーザー属性とクレーム\) セクションのスクリーンショット。](./media/tableauonline-tutorial/attributesection.png)
+   ![編集アイコンを選択できる [User Attributes & Claims]\(ユーザー属性とクレーム\) セクションのスクリーンショット。](./media/tableauonline-tutorial/attribute-section.png)
 
     c. 以下の手順で、属性 givenname、email、surname の名前空間の値をコピーします。
 
-   ![Givenname、Surname、Emailaddress の各属性を示すスクリーンショット。](./media/tableauonline-tutorial/tutorial_tableauonline_10.png)
+   ![Givenname、Surname、Emailaddress の各属性を示すスクリーンショット。](./media/tableauonline-tutorial/name.png)
 
     d. **user.givenname** 値をクリックします
 
     e. **[名前空間]** ボックスの値をコピーします。
 
-    ![[Manage user claims]\(ユーザー要求の管理\) セクションのスクリーンショット。ここに名前空間を入力できます。](./media/tableauonline-tutorial/attributesection2.png)
+    ![[Manage user claims]\(ユーザー要求の管理\) セクションのスクリーンショット。ここに名前空間を入力できます。](./media/tableauonline-tutorial/attributes.png)
 
     f. email、surname の名前空間の値をコピーするには、上の手順を繰り返します。
 
@@ -170,7 +171,7 @@ Tableau Online で Azure AD SSO を構成してテストするには、次の手
 
     * Last name (姓): **surname**
 
-    ![[Match attributes]\(属性の対応付け\) セクションのスクリーンショット。ここに値を入力することができます。](./media/tableauonline-tutorial/tutorial_tableauonline_14.png)
+    ![[Match attributes]\(属性の対応付け\) セクションのスクリーンショット。ここに値を入力することができます。](./media/tableauonline-tutorial/claims.png)
 
 ### <a name="create-tableau-online-test-user"></a>Tableau Online テスト ユーザーの作成
 
@@ -178,15 +179,15 @@ Tableau Online で Azure AD SSO を構成してテストするには、次の手
 
 1. **Tableau Online** で、 **[設定]** 、 **[認証]** セクションの順にクリックします。 下へスクロールして、 **[Manage Users]\(ユーザーの管理\)** セクションを表示します。 **[Add Users]\(ユーザーの追加\)** をクリックし、 **[Enter email addresses]\(メール アドレスを入力\)** をクリックします。
   
-    ![[Manage users]\(ユーザーの管理\) セクションのスクリーンショット。ここで [Add users]\(ユーザーの追加\) を選択できます。](./media/tableauonline-tutorial/tutorial_tableauonline_15.png)
+    ![[Manage users]\(ユーザーの管理\) セクションのスクリーンショット。ここで [Add users]\(ユーザーの追加\) を選択できます。](./media/tableauonline-tutorial/users.png)
 
 2. **[Add users for (SAML) authentication]\((SAML) 認証用にユーザーを追加する\)** を選択します。 **[Enter email addresses]\(メール アドレスを入力\)** テキスト ボックスに「britta.simon\@contoso.com」と入力します
   
-    ![[Add Users]\(ユーザーの追加\) ページのスクリーンショット。ここでメール アドレスを入力することができます。](./media/tableauonline-tutorial/tutorial_tableauonline_11.png)
+    ![[Add Users]\(ユーザーの追加\) ページのスクリーンショット。ここでメール アドレスを入力することができます。](./media/tableauonline-tutorial/add-users.png)
 
 3. **[ユーザーの追加]** をクリックします。
 
-### <a name="test-sso"></a>SSO のテスト
+## <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。
 

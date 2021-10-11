@@ -17,7 +17,7 @@
           href: automanage-windows-server-services-overview.md
         - name: 新しい仮想マシンのホットパッチ
           href: automanage-hotpatch.md
-    - name: Arc 対応サーバー用 Automanage
+    - name: Azure Arc 対応サーバー用 Automanage
       href: automanage-arc.md
     - name: Automanage アカウント
       href: automanage-account.md

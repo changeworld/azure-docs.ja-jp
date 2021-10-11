@@ -737,6 +737,8 @@ items:
                 href: monitor-install-analytics.md
           - name: SDK を使用した監視
             href: monitor-programmatically.md
+          - name: メール通知を使用してパイプラインを監視する
+            href: how-to-send-email.md
           - name: Microsoft Teams 通知を使用してパイプラインを監視する
             href: how-to-send-notifications-to-teams.md
           - name: 統合ランタイムの監視
@@ -876,7 +878,9 @@ items:
             href: how-to-discover-explore-purview-data.md
       - name: シナリオ
         items:
-          - name: Microsoft Teams 通知を使用してパイプラインを監視する
+          - name: パイプラインからメールを送信する
+            href: how-to-send-email.md
+          - name: パイプラインから Microsoft Teams 通知を送信する
             href: how-to-send-notifications-to-teams.md
           - name: データ レイクおよび EDW のデータ移行
             items:

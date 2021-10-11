@@ -3,20 +3,20 @@ title: Azure Automation でマネージド ID を使用して PowerShelll Runboo
 description: このチュートリアルでは、Azure Automation の PowerShell Runbook でマネージド ID を使用する方法について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 08/16/2021
+ms.date: 09/28/2021
 ms.topic: tutorial
-ms.openlocfilehash: 0620aacb1b4f2a6cb7c6214c1ce92add3bec8f63
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: f335df520b8d47a9439575a5d2f337d28a9bebc6
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128610676"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129357542"
 ---
 # <a name="tutorial-create-automation-powershell-runbook-using-managed-identity"></a>チュートリアル: マネージド ID を使用して Automation PowerShell Runbook を作成する
 
 このチュートリアルでは、Azure Automation で [PowerShell Runbook](../automation-runbook-types.md#powershell-runbooks) を作成し、リソースの操作に実行アカウントではなく、[マネージド ID](../automation-security-overview.md#managed-identities-preview) を使用する方法を説明します。 PowerShell Runbook は、Windows PowerShell に基づきます。 Azure Active Directory (Azure AD) のマネージド ID を使用すると、Runbook が Azure AD で保護された他のリソースに簡単にアクセスできます。
 
-このチュートリアルでは、次の作業を行う方法について説明します。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * マネージド ID にアクセス許可を割り当てる
@@ -28,7 +28,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 * 少なくとも 1 つのユーザー割り当てマネージド ID を持つ Azure Automation アカウント。 詳細については、「[Azure Automation アカウントのユーザー割り当てマネージド ID を使用する](../add-user-assigned-identity.md)」を参照してください。
 * Az モジュール: `Az.Accounts`、`Az.Automation`、`Az.ManagedServiceIdentity`、および `Az.Compute` が Automation アカウントにインポートされている。 詳細については、「[Az モジュールをインポートする](../shared-resources/modules.md#import-az-modules)」を参照してください。
-* [Azure Az PowerShell モジュール](/powershell/azure/new-azureps-module-az)がマシンにインストールされている。 インストールまたはアップグレードするには、[Azure Az PowerShell モジュールをインストールする方法](/powershell/azure/install-az-ps)に関するページを参照してください。
+* [Azure Az PowerShell モジュール](/powershell/azure/new-azureps-module-az)がマシンにインストールされている。 インストールまたはアップグレードするには、[Azure Az PowerShell モジュールをインストールする方法](/powershell/azure/install-az-ps)に関するページを参照してください。 `Az.ManagedServiceIdentity` はプレビュー モジュールであり、Az モジュールの一部としてインストールされません。 インストールするには、`Install-Module -Name Az.ManagedServiceIdentity` を実行します。
 * [Azure 仮想マシン](../../virtual-machines/windows/quick-create-powershell.md)。 マシンを停止して起動するので、運用 VM は使用しないでください。
 * [Automation Runbook](../manage-runbooks.md) に関する一般的な理解。
 
@@ -122,7 +122,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     
     # Connect using a Managed Service Identity
     try {
-            Connect-AzAccount -Identity -ErrorAction stop -WarningAction SilentlyContinue | Out-Null
+            $AzureContext = (Connect-AzAccount -Identity).context
         }
     catch{
             Write-Output "There is no system-assigned user identity. Aborting."; 
@@ -130,8 +130,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
         }
     
     # set and store context
-    $subID = (Get-AzContext).Subscription.Id
-    $AzureContext = Set-AzContext -SubscriptionId $subID
+    $AzureContext = Set-AzContext -SubscriptionName $AzureContext.Subscription `
+        -DefaultProfile $AzureContext
     
     if ($method -eq "SA")
         {
@@ -142,15 +142,18 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
             Write-Output "Using user-assigned managed identity"
     
             # Connects using the Managed Service Identity of the named user-assigned managed identity
-            $identity = Get-AzUserAssignedIdentity -ResourceGroupName $resourceGroup -Name $UAMI -DefaultProfile $AzureContext
+            $identity = Get-AzUserAssignedIdentity -ResourceGroupName $resourceGroup `
+                -Name $UAMI -DefaultProfile $AzureContext
     
             # validates assignment only, not perms
-            if ((Get-AzAutomationAccount -ResourceGroupName $resourceGroup -Name $automationAccount -DefaultProfile $AzureContext).Identity.UserAssignedIdentities.Values.PrincipalId.Contains($identity.PrincipalId))
+            if ((Get-AzAutomationAccount -ResourceGroupName $resourceGroup `
+                    -Name $automationAccount `
+                    -DefaultProfile $AzureContext).Identity.UserAssignedIdentities.Values.PrincipalId.Contains($identity.PrincipalId))
                 {
-                    Connect-AzAccount -Identity -AccountId $identity.ClientId | Out-Null
+                    $AzureContext = (Connect-AzAccount -Identity -AccountId $identity.ClientId).context
     
                     # set and store context
-                    $AzureContext = Set-AzContext -SubscriptionId ($identity.id -split "/")[2]
+                    $AzureContext = Set-AzContext -SubscriptionName $AzureContext.Subscription -DefaultProfile $AzureContext
                 }
             else {
                     Write-Output "Invalid or unassigned user-assigned managed identity"
@@ -163,7 +166,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
          }
     
     # Get current state of VM
-    $status = (Get-AzVM -ResourceGroupName $resourceGroup -Name $VMName -Status -DefaultProfile $AzureContext).Statuses[1].Code
+    $status = (Get-AzVM -ResourceGroupName $resourceGroup -Name $VMName `
+        -Status -DefaultProfile $AzureContext).Statuses[1].Code
     
     Write-Output "`r`n Beginning VM status: $status `r`n"
     
@@ -178,7 +182,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
         }
     
     # Get new state of VM
-    $status = (Get-AzVM -ResourceGroupName $resourceGroup -Name $VMName -Status -DefaultProfile $AzureContext).Statuses[1].Code  
+    $status = (Get-AzVM -ResourceGroupName $resourceGroup -Name $VMName -Status `
+        -DefaultProfile $AzureContext).Statuses[1].Code  
     
     Write-Output "`r`n Ending VM status: $status `r`n `r`n"
     

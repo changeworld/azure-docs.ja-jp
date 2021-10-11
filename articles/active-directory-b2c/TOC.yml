@@ -398,15 +398,13 @@
           displayName: rest claims exchange
         - name: API コネクタをセキュリティで保護する
           href: secure-rest-api.md
-    - name: カスタム ポリシー
+    - name: トラブルシューティング
       items:
-        - name: トラブルシューティング
-          items:
-            - name: Application Insights を使用したログの収集
-              href: troubleshoot-with-application-insights.md
-              displayName: 'troubleshooting, app insights'
-            - name: カスタム ポリシーのトラブルシューティング
-              href: troubleshoot-custom-policies.md
+        - name: Application Insights を使用したログの収集
+          href: troubleshoot-with-application-insights.md
+          displayName: 'troubleshooting, app insights'
+        - name: トラブルシューティングとエラー処理
+          href: troubleshoot.md
     - name: UserInfo エンドポイント
       href: userinfo-endpoint.md
     - name: パートナー統合

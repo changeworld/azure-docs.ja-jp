@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 8/20/2021
 ms.author: robinsh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 117b2cee63e8defb53e21cf05c76c344006ddae3
-ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
+ms.openlocfilehash: bbcc5e60396f3c2e7265378291c5bde5135b8c37
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122829323"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129457382"
 ---
 # <a name="tutorial-use-the-azure-cli-to-configure-iot-hub-message-routing"></a>チュートリアル:Azure CLI を使用して IoT Hub のメッセージ ルーティングを構成する
 
@@ -25,7 +25,7 @@ ms.locfileid: "122829323"
 
 このチュートリアルのパート 2 では、IoT ハブにメッセージを送信する Visual Studio アプリケーションをダウンロードして実行します。 ダウンロード内のフォルダーには、Azure Resource Manager テンプレートとパラメーター ファイルのほか、Azure CLI と PowerShell のスクリプトが含まれています。
 
-完成したスクリプトを確認したい場合は、[Azure IoT C# サンプル](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)をダウンロードしてください。 master.zip ファイルを解凍します。 Azure CLI スクリプトは、**iothub_routing_cli.azcli** という名前で /iot-hub/Tutorials/Routing/SimulatedDevice/resources/ に存在します。
+完成したスクリプトを確認したい場合は、[Azure IoT C# サンプル](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/main.zip)をダウンロードしてください。 main.zip ファイルを解凍します。 Azure CLI スクリプトは、**iothub_routing_cli.azcli** という名前で /iot-hub/Tutorials/Routing/SimulatedDevice/resources/ に存在します。
 
 ## <a name="use-the-azure-cli-to-create-your-resources"></a>Azure CLI を使用したリソースの作成
 

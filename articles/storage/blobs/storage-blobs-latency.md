@@ -8,18 +8,18 @@ ms.topic: overview
 ms.date: 09/05/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 20a1fd8b222da14eb70206d4a9e3b087d4b20690
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: e3ed432e1c0c6b9fbe602720935e5c549437587a
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128662592"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129277121"
 ---
 # <a name="latency-in-blob-storage"></a>Blob Storage での待ち時間
 
 待ち時間とは、要求の完了をアプリケーションが待機しなければならない時間であり、応答時間と呼ばれることもあります。 待ち時間はアプリケーションのパフォーマンスに直接的な影響を及ぼすことがあります。 クレジット カード トランザクションの実行や Web ページの読み込みなど、人間が介在するシナリオでは多くの場合、低遅延が重要となります。 また、テレメトリのログ記録や IoT イベントなど、受信イベントを高速に処理する必要のあるシステムでも低遅延が要求されます。 この記事では、ブロック BLOB に対する操作の待ち時間を把握、測定する方法のほか、低遅延を実現するアプリケーションの設計方法について説明します。
 
-Azure Storage では、ブロック BLOB に関して Premium と Standard の 2 種類のパフォーマンス オプションが用意されています。 Premium ブロック BLOB は、ハイパフォーマンスの SSD ディスクにより、Standard ブロック BLOB と比較してきわめて短い待ち時間と高い一貫性を備えています。 詳細については、「[Azure Blob Storage: ホット、クール、アーカイブ ストレージ層](storage-blob-storage-tiers.md)」の「**Premium パフォーマンス ブロック BLOB ストレージ**」を参照してください。
+Azure Storage では、ブロック BLOB に関して Premium と Standard の 2 種類のパフォーマンス オプションが用意されています。 Premium ブロック BLOB は、ハイパフォーマンスの SSD ディスクにより、Standard ブロック BLOB と比較してきわめて短い待ち時間と高い一貫性を備えています。 詳細については、「[BLOB データのホット、クール、アーカイブのアクセス層](access-tiers-overview.md)」の「**Premium パフォーマンス ブロック BLOB ストレージ**」を参照してください。
 
 ## <a name="about-azure-storage-latency"></a>Azure Storage の待ち時間について
 

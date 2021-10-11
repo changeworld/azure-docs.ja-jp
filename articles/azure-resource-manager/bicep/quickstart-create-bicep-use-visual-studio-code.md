@@ -1,15 +1,15 @@
 ---
 title: Bicep ファイルを作成する - Visual Studio Code
 description: Visual Studio Code と Bicep 拡張機能を使用して、Azure リソースをデプロイするための Bicepファイルを作成します
-ms.date: 07/30/2021
+ms.date: 10/01/2021
 ms.topic: quickstart
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 4f76d18c756855798651e0c129fd4f0caec15984
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 95e7a601da5c8a9976d2341c2964df0f4d9718d0
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121750150"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129354939"
 ---
 # <a name="quickstart-create-bicep-files-with-visual-studio-code"></a>クイックスタート: Visual Studio Code を使用して Bicep ファイルを作成する
 
@@ -30,6 +30,9 @@ VS Code と Bicep 拡張機能を使用すると、事前に定義されたス�
 *main.bicep* に「**vnet**」と入力します。 リストから **[res-vnet]** を選択し、Tab キーまたは Enter キーを押します。
 
 :::image type="content" source="./media/quickstart-create-bicep-use-visual-studio-code/add-snippet.png" alt-text="仮想ネットワークのスニペットを追加する":::
+
+> [!TIP]
+> これらの IntelliSense オプションが VS Code に表示されない場合は、「[前提条件](#prerequisites)」で指定されている Bicep 拡張機能をインストールしていることを確認してください。 この拡張機能をインストールしている場合は、Bicep ファイルを開いた後、Bicep 言語サービスが起動されるまで少し時間を置いてください。 通常はすぐに起動されますが、起動されるまでは IntelliSense オプションが表示されません。 右下隅の通知は、このサービスが起動中であることを示します。 その通知が消えたとき、このサービスが実行されています。
 
 これで、Bicep ファイルには次のコードが追加されました。
 

@@ -1165,7 +1165,9 @@ items:
             items:
               - name: パイプライン実行
                 href: monitoring/how-to-monitor-pipeline-runs.md
-              - name: Microsoft Teams 通知を使用してパイプラインを監視する
+              - name: パイプラインからメールを送信する
+                href: ../data-factory/how-to-send-email.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
+              - name: パイプラインから Microsoft Teams 通知を送信する
                 href: ../data-factory/how-to-send-notifications-to-teams.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
           - name: 統合ランタイムの作成
             items:

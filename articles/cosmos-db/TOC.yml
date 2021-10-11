@@ -1303,6 +1303,8 @@
           href: graph/powershell-samples.md
         - name: Azure CLI を使用して管理する
           href: graph/cli-samples.md
+        - name: サプライチェーン トレーサビリティ ソリューション
+          href: graph/supply-chain-traceability-solution.md
     - name: リファレンス
       items:
         - name: レスポンス ヘッダー

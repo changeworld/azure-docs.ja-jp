@@ -1,0 +1,34 @@
+### YamlMime:Landing
+title: Azure Fluid Relay のドキュメント
+summary: Azure Fluid Relay は Fluid Framework クライアントをサポートするマネージド クラウド サービスです
+metadata:
+  title: Azure Fluid Relay
+  description: Azure Fluid Relay は Fluid Framework クライアントをサポートするマネージド クラウド サービスです
+  ms.service: azure-fluid
+  ms.topic: landing-page
+  author: hickeys
+  ms.author: hickeys
+  ms.date: 08/19/2021
+  ms.openlocfilehash: 86238a56af7d5d5e7f8e105bbe487994dffa207f
+  ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 10/07/2021
+  ms.locfileid: "129661463"
+landingContent:
+- title: Azure Fluid Relay について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Fluid Relay の概要
+      url: overview/overview.md
+    - text: Azure Fluid Relay のアーキテクチャ
+      url: concepts/architecture.md
+- title: 操作方法とクイック スタート
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Azure Fluid Relay サービスをプロビジョニングする
+      url: how-tos/provision-fluid-azure-portal.md
+    - text: 'クイック スタート: ダイス ローラー'
+      url: quickstarts/quickstart-dice-roll.md

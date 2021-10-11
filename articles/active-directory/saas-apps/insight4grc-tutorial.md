@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Insight4GRC の統合 | Microsoft Docs'
+title: 'チュートリアル: Azure AD SSO と Insight4GRC の統合'
 description: Azure Active Directory と Insight4GRC の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/31/2021
+ms.date: 09/30/2021
 ms.author: jeedes
-ms.openlocfilehash: 9c5de8d0444012d7c10f35740f524ae0621eee3c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 47356ee5c3c67b417db24325b2250e42cb7fb5d9
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128676240"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129402211"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-insight4grc"></a>チュートリアル: Azure Active Directory と Insight4GRC の統合
+# <a name="tutorial-azure-ad-sso-integration-with-insight4grc"></a>チュートリアル: Azure AD SSO と Insight4GRC の統合
 
 このチュートリアルでは、Insight4GRC と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と Insight4GRC を統合すると、次のことができます。
 
@@ -33,6 +33,9 @@ ms.locfileid: "128676240"
 * Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
 * Insight4GRC でのシングル サインオン (SSO) が有効なサブスクリプション。
 
+> [!NOTE]
+> この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
+
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
@@ -41,7 +44,7 @@ ms.locfileid: "128676240"
 * Insight4GRC では、**Just-In-Time** ユーザー プロビジョニングがサポートされます。
 * Insight4GRC では、[自動化されたユーザー プロビジョニング](insight4grc-provisioning-tutorial.md)がサポートされます。
 
-## <a name="adding-insight4grc-from-the-gallery"></a>ギャラリーからの Insight4GRC の追加
+## <a name="add-insight4grc-from-the-gallery"></a>ギャラリーから Insight4GRC を追加する
 
 Azure AD への Insight4GRC の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Insight4GRC を追加する必要があります。
 
@@ -51,7 +54,6 @@ Azure AD への Insight4GRC の統合を構成するには、ギャラリーか�
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Insight4GRC**」と入力します。
 1. 結果のパネルから **[Insight4GRC]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-insight4grc"></a>Insight4GRC のための Azure AD SSO の構成とテスト
 

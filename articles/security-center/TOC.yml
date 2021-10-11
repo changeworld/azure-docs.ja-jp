@@ -130,19 +130,25 @@
         - name: Azure セキュリティ ベースラインを適用する
           displayName: 'VM, guest configuration, vulnerabilities, ASB, benchmark'
           href: apply-security-baseline.md
-        - name: 脆弱性のスキャン
+        - name: 脆弱性の評価
           items:
-            - name: 統合 Qualys スキャナーでマシンをスキャンする
-              displayName: 'qualys, vulnerability, arc, hybrid'
+            - name: 脅威と脆弱性の管理で脆弱性を見つける
+              displayName: 'mde, tvm, vulnerability, va, arc, hybrid'
+              href: deploy-vulnerability-assessment-tvm.md
+            - name: 統合された Qualys スキャナーで脆弱性を見つける
+              displayName: 'qualys, va, vulnerability, arc, hybrid'
               href: deploy-vulnerability-assessment-vm.md
-            - name: BYOL VA ソリューションで VM をスキャンする
+            - name: BYOL VA ソリューションで脆弱性を見つける
               displayName: 'qualys, rapid7, vulnerability'
               href: deploy-vulnerability-assessment-byol-vm.md
+            - name: 脆弱性評価ソリューションを自動的に有効にする
+              displayName: 'qualys, rapid7, vulnerability, auto provision'
+              href: auto-deploy-vulnerability-assessment.md
             - name: 脆弱性をレビューして修復する
-              displayName: 'qualys, rapid7, vulnerability'
+              displayName: 'qualys, va, rapid7, vulnerability'
               href: remediate-vulnerability-findings-vm.md
             - name: 特定の脆弱性の発見を無効にする
-              displayName: 'qualys, rapid7'
+              displayName: 'qualys, rapid7, va'
               href: remediate-vulnerability-findings-vm.md#disable-specific-findings-preview
         - name: Just-In-Time VM アクセスを使用して管理ポートをセキュリティで保護する
           items:

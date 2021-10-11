@@ -8,17 +8,17 @@ items:
   - name: クイックスタート
     expanded: true
     items:
-      - name: Purview アカウントを作成する
+      - name: Azure Purview アカウントを作成する
         items:
-          - name: Purview アカウントの作成 - ポータル
+          - name: アカウントを作成する - Azure portal
             href: create-catalog-portal.md
-          - name: Purview アカウントの作成 - PowerShell
+          - name: アカウントを作成する - PowerShell/CLI
             href: create-catalog-powershell.md
-          - name: Purview アカウントの作成 - .NET SDK
+          - name: アカウントを作成する - .NET SDK
             href: create-purview-dotnet.md
-          - name: Purview アカウントの作成 - Python
+          - name: アカウントを作成する - Python
             href: create-purview-python.md
-      - name: コレクションの作成 - ポータル
+      - name: コレクションの作成 - Azure portal
         href: quickstart-create-collection.md
   - name: チュートリアル
     items:
@@ -26,17 +26,17 @@ items:
         items:
           - name: 大規模な Azure ソースの準備
             href: tutorial-data-sources-readiness.md
-          - name: 大規模な Purview MSI 構成
+          - name: 大規模な Azure Purview MSI 構成
             href: tutorial-msi-configuration.md
-      - name: オンプレミスの SQL Server をオンボードする
+      - name: オンプレミスの SQL Server インスタンスのオンボード
         href: tutorial-register-scan-on-premises-sql-server.md
-      - name: Purview データ プレーンに REST API を使用する
+      - name: データ プレーンに REST API を使用する
         href: tutorial-using-rest-apis.md
-      - name: コレクション管理に REST API を使用する
+      - name: コレクションに REST API を使用する
         href: tutorial-metadata-policy-collections-apis.md
   - name: 概念
     items:
-      - name: Purview Studio の使用
+      - name: Azure Purview Studio を使用する
         href: use-purview-studio.md
       - name: ベスト プラクティスとガイドライン
         items:
@@ -44,9 +44,11 @@ items:
             href: deployment-best-practices.md
           - name: コレクションのアーキテクチャ
             href: concept-best-practices-collections.md
-          - name: Purview の価格ガイドライン
+          - name: 価格のガイドライン
             href: concept-guidelines-pricing.md
-      - name: Purview のアクセス許可
+          - name: ネットワーク アーキテクチャ
+            href: concept-best-practices-network.md
+      - name: Azure Purview のアクセス許可
         href: catalog-permissions.md
       - name: データ マップ
         items:
@@ -68,7 +70,7 @@ items:
             href: concept-asset-normalization.md
       - name: データの分析情報
         href: concept-insights.md
-      - name: アップグレードされた Purview アカウント
+      - name: アップグレードされた Azure Purview アカウント
         href: concept-account-upgrade.md
   - name: 操作方法ガイド
     items:
@@ -80,9 +82,9 @@ items:
             href: purview-connector-overview.md
           - name: データ ソースを管理する
             href: manage-data-sources.md
-          - name: '[資格情報の管理]'
+          - name: 資格情報を管理する
             href: manage-credentials.md
-            displayName: Create and manage Credentials
+            displayName: Create and manage credentials
       - name: 変換元
         items:
           - name: Azure Multiple Source

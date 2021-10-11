@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
-ms.date: 06/30/2021
+ms.topic: overview
+ms.date: 09/01/2021
 ms.author: alkohli
-ms.openlocfilehash: 558b31262a74a351ef17e42eb79772645f9a4641
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: e082ae9343ff935ceeda168573be9648c6cee631
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114290378"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129358832"
 ---
 # <a name="what-are-certificates-on-azure-stack-edge-pro-gpu"></a>Azure Stack Edge Pro GPU の証明書とは
 
@@ -33,12 +33,12 @@ Azure Stack Edge デバイスでは、自己署名証明書を使用するか、
 
 - **独自の証明書の導入**: 必要に応じて、独自の証明書を導入することができます。 独自の証明書を導入する場合は、従わなければならないガイドラインがあります。
 
-- 最初に、この記事で、お使いの Azure Stack Edge デバイスで使用できる証明書の種類を理解します。
-- 次に、[証明書の種類ごとの証明書要件](azure-stack-edge-gpu-certificate-requirements.md)を確認します。  
-- その後、[Azure PowerShell で証明書を作成する](azure-stack-edge-gpu-create-certificates-powershell.md)か、[適合性チェッカー ツールで証明書を作成する](azure-stack-edge-gpu-create-certificates-tool.md)ことができます。
-- 最後に、[証明書を適切な形式に変換](azure-stack-edge-gpu-prepare-certificates-device-upload.md)して、デバイスにアップロードできるようにします。
-- デバイスに[証明書をアップロード](azure-stack-edge-gpu-manage-certificates.md#upload-certificates-on-your-device)します。
-- デバイスにアクセスする[クライアントに証明書をインポート](azure-stack-edge-gpu-manage-certificates.md#import-certificates-on-the-client-accessing-the-device)します。
+    - 最初に、この記事で、お使いの Azure Stack Edge デバイスで使用できる証明書の種類を理解します。
+    - 次に、[証明書の種類ごとの証明書要件](azure-stack-edge-gpu-certificate-requirements.md)を確認します。  
+    - その後、[Azure PowerShell で証明書を作成する](azure-stack-edge-gpu-create-certificates-powershell.md)か、[適合性チェッカー ツールで証明書を作成する](azure-stack-edge-gpu-create-certificates-tool.md)ことができます。
+    - 最後に、[証明書を適切な形式に変換](azure-stack-edge-gpu-prepare-certificates-device-upload.md)して、デバイスにアップロードできるようにします。
+    - デバイスに[証明書をアップロード](azure-stack-edge-gpu-manage-certificates.md#upload-certificates-on-your-device)します。
+    - デバイスにアクセスする[クライアントに証明書をインポート](azure-stack-edge-gpu-manage-certificates.md#import-certificates-on-the-client-accessing-the-device)します。
 
 ## <a name="types-of-certificates"></a>証明書の種類
 
@@ -58,6 +58,9 @@ Azure Stack Edge デバイスでは、自己署名証明書を使用するか、
 - IoT デバイス証明書
     
 - Kubernetes 証明書
+
+    - Edge コンテナー レジストリ証明書
+    - Kubernetes ダッシュボード証明書
     
 - Wi-Fi 証明書
 - VPN 証明書  
@@ -155,19 +158,31 @@ Azure Stack Edge デバイスでは、自己署名証明書を使用するか、
 
 - IoT Edge 証明書は `.pem` 形式でアップロードします。 
 
-IoT Edge 証明書の詳細については、[Azure IoT Edge 証明書の詳細](../iot-edge/iot-edge-certs.md#iot-edge-certificates)および [IoT Edge 運用証明書の作成](../iot-edge/how-to-manage-device-certificates.md?preserve-view=true&view=iotedge-2020-11#create-production-certificates)に関するページを参照してください。
+IoT Edge 証明書の詳細については、[Azure IoT Edge 証明書の詳細](../iot-edge/iot-edge-certs.md#iot-edge-certificates)および [IoT Edge 運用証明書の作成](/azure/iot-edge/how-to-manage-device-certificates?view=iotedge-2020-11&preserve-view=true#create-production-certificates)に関するページを参照してください。
 
 ## <a name="kubernetes-certificates"></a>Kubernetes 証明書
 
-デバイスに Edge コンテナー レジストリがある場合は、デバイス上のレジストリにアクセスしているクライアントとのセキュリティ保護された通信のために、Edge Container Registry 証明書が必要です。
+次の Kubernetes 証明書を、お使いの Azure Stack Edge デバイスで使用できます。
+
+- **Edge コンテナー レジストリ証明書**: デバイスに Edge コンテナー レジストリがある場合は、デバイス上のレジストリにアクセスしているクライアントとのセキュリティ保護された通信のために、Edge Container Registry 証明書が必要です。
+- **ダッシュボード エンドポイント証明書**: デバイス上の Kubernetes ダッシュボードにアクセスするには、ダッシュボード エンドポイント証明書が必要です。
+
 
 #### <a name="caveats"></a>注意事項
 
-- Edge Container Registry 証明書は、プライベート キーを使用して *.pfx* 形式としてアップロードする必要があります。
+- Edge コンテナー レジストリ証明書は次である必要があります。 
+    - PEM 形式の証明書である。
+    - 型 (`*.<endpoint suffix>` または `ecr.<endpoint suffix>`) のサブジェクト代替名 (SAN) または CName (CN) のいずれかを含む。 例: `*.dbe-1d6phq2.microsoftdatabox.com OR ecr.dbe-1d6phq2.microsoftdatabox.com`
+
+
+- ダッシュボード証明書は次である必要があります。
+    - PEM 形式の証明書である。
+    - 型 (`*.<endpoint-suffix>` または `kubernetes-dashboard.<endpoint-suffix>`) のサブジェクト代替名 (SAN) または CName (CN) のいずれかを含む。 たとえば、`*.dbe-1d6phq2.microsoftdatabox.com` や `kubernetes-dashboard.dbe-1d6phq2.microsoftdatabox.com` などです。 
+
 
 ## <a name="vpn-certificates"></a>VPN 証明書
 
-デバイスで VPN (ポイント対サイト) が構成されている場合は、独自の VPN 証明書を導入して、通信が信頼されていることを確認できます。 ルート証明書は Azure VPN Gateway にインストールされ、クライアント証明書はポイント対サイトを使用して VNet に接続する各クライアント コンピューターにインストールされます。
+デバイスで VPN (ポイント対サイト) が構成されている場合は、独自の VPN 証明書を導入して、通信が信頼されていることを確認できます。 ルート証明書は Azure VPN Gateway にインストールされ、クライアント証明書はポイント対サイトを使用して仮想ネットワークに接続する各クライアント コンピューターにインストールされます。
 
 #### <a name="caveats"></a>注意事項
 

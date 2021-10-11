@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と 10,000ft Plans の統合 | Microsoft Docs'
+title: 'チュートリアル: Azure AD SSO と 10,000ft Plans の統合'
 description: Azure Active Directory と 10,000ft Plans の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/23/2021
+ms.date: 09/29/2021
 ms.author: jeedes
-ms.openlocfilehash: b8d7e7045e76ceb193a0060a3c83db172f788f6d
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 1d4e4ce25a34e722b86d9bfa9824b81625f1aa69
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124748298"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129400399"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-10000ft-plans"></a>チュートリアル: Azure Active Directory と 10,000ft Plans の統合
+# <a name="tutorial-azure-ad-sso-integration-with-10000ft-plans"></a>チュートリアル: Azure AD SSO と 10,000ft Plans の統合
 
 このチュートリアルでは、10,000ft Plans と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と 10,000ft Plans を統合すると、次のことが可能になります。
 
@@ -76,20 +76,18 @@ Azure AD への 10,000ft Plans の統合を構成するには、ギャラリー�
 
 4. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
-    a. **[サインオン URL]** テキスト ボックスに、URL として「`https://app.10000ft.com`」と入力します。
+    a. **[識別子 (エンティティ ID)]** ボックスに `https://rm.smartsheet.com/saml/metadata` という URL を入力します。
 
-    b. **[識別子 (エンティティ ID)]** ボックスに `https://app.10000ft.com/saml/metadata` という URL を入力します。
+    b. **[応答 URL]** ボックスに、URL として「`https://rm.smartsheet.com/saml/acs`」と入力します。
+    
+    c. **[サインオン URL]** テキスト ボックスに、URL として「` https://rm.smartsheet.com`」と入力します。
 
     > [!NOTE]
     > カスタム ドメインがある場合は、 **[識別子]** の値が異なります。 この値を取得するには、[10,000ft Plans クライアント サポート チーム](https://www.10000ft.com/plans/support)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの **証明書 (未加工)** をダウンロードして、お使いのコンピューターに保存します。
+1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、コピー アイコンを選択して **[アプリのフェデレーション メタデータ URL]** をコピーします。 それを自分のコンピューターに保存します。
 
-    ![証明書のダウンロードのリンク](common/certificateraw.png)
-
-6. **[10,000ft Plans のセットアップ]** セクションで、要件に従って適切な URL をコピーします。
-
-    ![構成 URL のコピー](common/copy-configuration-urls.png)
+    ![コピー アイコンが強調表示された [SAML 署名証明書] セクションのスクリーンショット](common/copy-metadataurl.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -117,7 +115,23 @@ Azure AD への 10,000ft Plans の統合を構成するには、ギャラリー�
 
 ## <a name="configure-10000ft-plans-sso"></a>10,000ft Plans の SSO の構成
 
-**10,000ft Plans** 側でシングル サインオンを構成するには、ダウンロードした **証明書 (未加工)** と Azure portal からコピーした適切な URL を [10,000ft Plans サポート チーム](https://www.10000ft.com/plans/support)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+1. 10000ft Plans の Web サイトに管理者としてサインインします。
+
+1. **[設定]** をクリックし、ドロップダウンから **[アカウント設定]** を選択します。
+
+    ![設定アイコンのスクリーンショット。](./media/10000ftplans-tutorial/settings.png)
+
+1. 左側のメニューで **[SSO]** をクリックし、次の手順を実行します。
+
+    ![SSO の設定ページのスクリーンショット。](./media/10000ftplans-tutorial/setup-sso.png)
+
+    a. [SSO の設定]セクションで、 **[自動構成]** を選択します。
+
+    b. **[IdP メタデータ URL]** テキスト ボックスに、Azure portal からコピーした **アプリのフェデレーション メタデータ URL** の値を入力します。
+
+    c. **[アカウントにない認証されたユーザーを自動プロビジョニングする]** チェックボックスをオンにします。
+
+    d. **[保存]** をクリックします。
 
 ### <a name="create-10000ft-plans-test-user"></a>10000ft Plans のテスト ユーザーの作成
 

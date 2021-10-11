@@ -9,16 +9,16 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 84fe935c1122d3d5c65423341b8760643257f992
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: 19f36e926ada75f36ddb34f1ad8d98cdf531fd22
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107868573"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129457432"
 ---
 # <a name="tutorial-enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>チュートリアル: Azure IoT Hub Device Provisioning Service Client (.NET) を使用して IoT ハブにデバイスを登録する
 
-前のチュートリアルでは、Device Provisioning Service に接続するデバイスを設定する方法を説明しました。 このチュートリアルでは、このサービスで "**_個別の登録_**" と "**_登録グループ_**" の両方を使用して、1 つの IoT ハブにデバイスをプロビジョニングする方法について説明します。 このチュートリアルでは、次の操作方法について説明します。
+前のチュートリアルでは、Device Provisioning Service に接続するようにデバイスを設定する方法を学習しました。 このチュートリアルでは、このサービスで "**_個別の登録_**" と "**_登録グループ_**" の両方を使用して、1 つの IoT ハブにデバイスをプロビジョニングする方法について説明します。 このチュートリアルでは、次の操作方法について説明します。
 
 > [!div class="checklist"]
 > * デバイスを登録する
@@ -229,7 +229,7 @@ ms.locfileid: "107868573"
 
 ## <a name="verify-the-device-is-registered"></a>デバイスが登録されていることを確認する
 
-デバイスが起動すると、次のアクションが実行されます。 詳細については、[プロビジョニング デバイス クライアントのサンプル](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/device)に関するページを参照してください。 
+デバイスが起動すると、次のアクションが実行されます。 詳細については、[プロビジョニング デバイス クライアントのサンプル](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/main/provisioning/Samples/device)に関するページを参照してください。 
 
 1. デバイスが Device Provisioning Service に登録要求を送信します。
 2. TPM デバイスの場合、Device Provisioning Service が登録チャレンジを送信し、デバイスがこれに応答します。 

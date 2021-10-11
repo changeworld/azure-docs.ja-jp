@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/21/2021
 ms.author: thwimmer
-ms.openlocfilehash: f08ee68a3ee51e7d42b1939cf3e4ecee03808f93
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 16f9124abf34892f00ebb1dadde229ef6d140e55
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122324544"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129355149"
 ---
 # <a name="tutorial-configure-smallstep-ssh-for-automatic-user-provisioning"></a>チュートリアル:Smallstep SSH を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -54,7 +54,7 @@ ms.locfileid: "122324544"
 
 2. **[Users]\(ユーザー\)** タブに移動し、ID プロバイダーとして **Azure AD** を選択します。
 
-3. 次のページで、**Azure AD テナント ID** と **ドメイン ホワイトリスト** を指定し、OIDC を構成します。
+3. 次のページで、**Azure AD テナント ID** と許可リストを指定して OIDC を構成します。
 
 4. [SCIM Details]\(SCIM の詳細\) で、SCIM の **テナント URL** と **シークレット トークン** をコピーして保存します。 これらの値を、Azure portal の Smallstep SSH アプリケーションの [プロビジョニング] タブの **[テナント URL]** および **[シークレット トークン]** フィールドに入力します。
 

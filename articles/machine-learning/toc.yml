@@ -290,6 +290,8 @@
             - name: Resource Manager テンプレートの使用
               displayName: arm
               href: how-to-create-workspace-template.md
+            - name: Terraform を使用する
+              href: how-to-manage-workspace-terraform.md
             - name: REST の使用
               href: how-to-manage-rest.md
             - name: Azure Synapse Analytics ワークスペースへのリンク
@@ -569,11 +571,11 @@
               href: how-to-deploy-azure-container-instance.md
             - name: GPU 推論
               href: how-to-deploy-inferencing-gpus.md
+            - name: Azure Cognitive Search
+              href: how-to-deploy-model-cognitive-search.md
             - name: Azure Functions
               displayName: functions app
               href: how-to-deploy-functions.md
-            - name: Azure Cognitive Search
-              href: how-to-deploy-model-cognitive-search.md
             - name: FPGA 推論
               href: how-to-deploy-fpga-web-service.md
         - name: 事前構築済み Docker イメージ

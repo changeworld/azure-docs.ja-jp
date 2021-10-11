@@ -10,13 +10,13 @@ metadata:
   ms.author: wiassaf
   ms.reviewer: mathoma
   ms.custom: 
-  ms.date: 09/15/2021
-  ms.openlocfilehash: ba903b2ed34877a05b5993095b65d537416486ca
-  ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+  ms.date: 09/30/2021
+  ms.openlocfilehash: 608c13253f93f18a8bb1ef59b7af1501077f2c95
+  ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/24/2021
-  ms.locfileid: "128677722"
+  ms.lasthandoff: 10/01/2021
+  ms.locfileid: "129358459"
 title: メンテナンス期間に関する FAQ
 summary: この記事では、[Azure SQL データベース](sql-database-paas-overview.md)と [SQL マネージド インスタンス](../managed-instance/sql-managed-instance-paas-overview.md)のメンテナンス期間に関してよく寄せられる質問に回答します。
 sections:
@@ -83,6 +83,8 @@ sections:
   - question: 既定のメンテナンス期間が選択されています。 そのメンテナンスの事前通知を有効にできますか?
     answer: >
       いいえ。事前通知は、既定のメンテナンス期間オプションに対して構成することはできません。 事前通知を構成して有効にするには、メンテナンス期間を選択するとき、**システムの既定** 以外のオプションを選択します。
+  - question: 計画メンテナンスの事前通知を設定できない場合でも、Service Health ダッシュボードに計画メンテナンス イベントは表示されますか。
+    answer: "いいえ。事前通知が構成されていない場合、Service Health に計画メンテナンス イベントは表示されません。 \n"
 additionalContent: >-
   ## <a name="see-also"></a>参照
 

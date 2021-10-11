@@ -280,8 +280,8 @@
       href: 'https://support.microsoft.com/help/4563049/how-to-videos-about-windows-virtual-desktop'
     - name: 技術コミュニティ サポート グループ
       href: 'https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop'
-    - name: Microsoft 365 のロードマップ
-      href: 'https://aka.ms/wvdroadmap'
+    - name: Azure 更新ロードマップ
+      href: 'https://aka.ms/avdroadmap'
     - name: Azure Resource Manager のテンプレート
       href: 'https://github.com/Azure/RDS-Templates/tree/master/wvd-templates'
     - name: Azure コンプライアンス認証

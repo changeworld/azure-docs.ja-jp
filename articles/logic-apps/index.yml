@@ -10,12 +10,12 @@ metadata:
   author: ecfan
   ms.author: estfan; logicappspm
   ms.date: 03/24/2021
-  ms.openlocfilehash: 89a61d7ed018ebfd72a64661da1bad9671a39c53
-  ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+  ms.openlocfilehash: b395e3f8039c4eca72e8dccc1330696ae6a21f3d
+  ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/22/2021
-  ms.locfileid: "114456671"
+  ms.lasthandoff: 10/09/2021
+  ms.locfileid: "129705489"
 landingContent:
 - title: Azure Logic Apps について
   linkLists:

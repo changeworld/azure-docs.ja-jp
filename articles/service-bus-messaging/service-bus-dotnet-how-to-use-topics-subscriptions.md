@@ -3,24 +3,27 @@ title: Azure Service Bus のトピックとサブスクリプションの概要
 description: このクイックスタートでは、azure-messaging-servicebus パッケージを使用して、Azure Service Bus トピックにメッセージを送信する方法について説明します。
 ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
-ms.date: 06/29/2021
+ms.date: 09/16/2021
 ms.custom: contperf-fy22q1
-ms.openlocfilehash: 05772a7e4fbb2717dd34cbdaf82ae47162d4f149
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: 330a69d437ffb58cb0e47ab6f9fe6a76fda9b8a6
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123451729"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129533516"
 ---
 # <a name="send-messages-to-an-azure-service-bus-topic-and-receive-messages-from-its-subscriptions-net"></a>Azure Service Bus トピックへのメッセージ送信とそのサブスクリプションからのメッセージ受信 (.NET)
 このクイックスタートでは、[Azure.Messaging.ServiceBus](https://www.nuget.org/packages/Azure.Messaging.ServiceBus/) .NET ライブラリを使用して、Service Bus トピックにメッセージを送信し、トピックへのサブスクリプションからメッセージを受信する方法について説明します。
 
-## <a name="prerequisites"></a>前提条件
-このサービスを初めて使用する場合は、このクイックスタートを実行する前に、[Service Bus の概要](service-bus-messaging-overview.md)に関する記事を参照してください。 
+> [!NOTE]
+> <bpt id="p1">[</bpt>GitHub の Azure SDK for .NET リポジトリ<ept id="p1">](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/servicebus/Azure.Messaging.ServiceBus/samples)</ept>には、Azure Service Bus の .NET サンプルが他にもあります。
 
-- **Azure サブスクリプション**。 Azure Service Bus など、Azure の各種サービスを使用するには、サブスクリプションが必要です。  既存の Microsoft Azure アカウントをお持ちでない場合は、[アカウントを作成する](https://azure.microsoft.com)際に、[無料試用版](https://azure.microsoft.com/free/)にサインアップするか、MSDN サブスクライバー特典を利用できます。
-- **Microsoft Visual Studio 2019**。 Azure Service Bus クライアント ライブラリでは、C# 8.0 で導入された新機能を使用します。  以前のバージョンの C# 言語でライブラリを使用することもできますが、新しい構文は使用できません。 完全な構文を使用するには、[.NET Core SDK](https://dotnet.microsoft.com/download) 3.0 以上で、[言語バージョン](/dotnet/csharp/language-reference/configure-language-version#override-a-default)を `latest` に設定してコンパイルすることをお勧めします。 Visual Studio を使用している場合、Visual Studio 2019 より前のバージョンには、C# 8.0 プロジェクトをビルドするために必要なツールとの互換性がありません。 無料の Community エディションを含む Visual Studio 2019 は、[こちら](https://visualstudio.microsoft.com/vs/)からダウンロードできます。
-- こちらの[クイック スタート](service-bus-quickstart-topics-subscriptions-portal.md)の手順に従って、Service Bus トピックとトピックへのサブスクリプションを作成します。 
+## <a name="prerequisites"></a>前提条件
+このサービスを初めて使用する場合は、このクイックスタートを実行する前に、<bpt id="p1">[</bpt>Service Bus の概要<ept id="p1">](service-bus-messaging-overview.md)</ept>に関する記事を参照してください。 
+
+- <bpt id="p1">**</bpt>Azure サブスクリプション<ept id="p1">**</ept>。 Azure Service Bus など、Azure の各種サービスを使用するには、サブスクリプションが必要です。  既存の Microsoft Azure アカウントをお持ちでない場合は、<bpt id="p2">[</bpt>アカウントを作成する<ept id="p2">](https://azure.microsoft.com)</ept>際に、<bpt id="p1">[</bpt>無料試用版<ept id="p1">](https://azure.microsoft.com/free/)</ept>にサインアップするか、MSDN サブスクライバー特典を利用できます。
+- <bpt id="p1">**</bpt>Microsoft Visual Studio 2019<ept id="p1">**</ept>。 Azure Service Bus クライアント ライブラリでは、C# 8.0 で導入された新機能を使用します。  以前のバージョンの C# 言語でライブラリを使用することもできますが、新しい構文は使用できません。 完全な構文を使用するには、<bpt id="p1">[</bpt>.NET Core SDK<ept id="p1">](https://dotnet.microsoft.com/download)</ept> 3.0 以上で、<bpt id="p2">[</bpt>言語バージョン<ept id="p2">](/dotnet/csharp/language-reference/configure-language-version#override-a-default)</ept>を <ph id="ph1">`latest`</ph> に設定してコンパイルすることをお勧めします。 Visual Studio を使用している場合、Visual Studio 2019 より前のバージョンには、C# 8.0 プロジェクトをビルドするために必要なツールとの互換性がありません。 無料の Community エディションを含む Visual Studio 2019 は、<bpt id="p1">[</bpt>こちら<ept id="p1">](https://visualstudio.microsoft.com/vs/)</ept>からダウンロードできます。
+- こちらの<bpt id="p1">[</bpt>クイック スタート<ept id="p1">](service-bus-quickstart-topics-subscriptions-portal.md)</ept>の手順に従って、Service Bus トピックとトピックへのサブスクリプションを作成します。 
 
     > [!IMPORTANT]
     > 名前空間への接続文字列、トピック名、トピックへのいずれかのサブスクリプションの名前を書き留めてください。 このチュートリアルで後ほど使用します。
@@ -31,21 +34,21 @@ ms.locfileid: "123451729"
 ### <a name="create-a-console-application"></a>コンソール アプリケーションの作成
 
 1. Visual Studio 2019 を起動します。 
-1. **[新しいプロジェクトの作成]** を選択します。 
-1. **[新しいプロジェクトの作成]** ダイアログ ボックスで、次の手順に従います。このダイアログ ボックスが表示されない場合は、メニューで **[ファイル]** 、 **[新規]** 、 **[プロジェクト]** の順に選択します。 
-    1. プログラミング言語として **[C#]** を選択します。
-    1. アプリケーションの種類として **[コンソール]** を選択します。 
-    1. 結果リストから **[コンソール アプリケーション]** を選択します。 
-    1. 次に、 **[次へ]** を選択します。 
+1. <bpt id="p1">**</bpt>[新しいプロジェクトの作成]<ept id="p1">**</ept> を選択します。 
+1. <bpt id="p1">**</bpt>[新しいプロジェクトの作成]<ept id="p1">**</ept> ダイアログ ボックスで、次の手順に従います。このダイアログ ボックスが表示されない場合は、メニューで <bpt id="p2">**</bpt>[ファイル]<ept id="p2">**</ept> 、 <bpt id="p3">**</bpt>[新規]<ept id="p3">**</ept> 、 <bpt id="p4">**</bpt>[プロジェクト]<ept id="p4">**</ept> の順に選択します。 
+    1. プログラミング言語として <bpt id="p1">**</bpt>[C#]<ept id="p1">**</ept> を選択します。
+    1. アプリケーションの種類として <bpt id="p1">**</bpt>[コンソール]<ept id="p1">**</ept> を選択します。 
+    1. 結果リストから <bpt id="p1">**</bpt>[コンソール アプリケーション]<ept id="p1">**</ept> を選択します。 
+    1. 次に、 <bpt id="p1">**</bpt>[次へ]<ept id="p1">**</ept> を選択します。 
 
-        :::image type="content" source="./media/service-bus-dotnet-get-started-with-queues/new-send-project.png" alt-text="[C#] と [コンソール] が選択された [新しいプロジェクトの作成] ダイアログ ボックスを示す画像":::
-1. プロジェクト名に「**TopicSender**」、ソリューション名に「**ServiceBusTopicQuickStart**」と入力し、 **[次へ]** を選択します。 
-1. **[追加情報]** ページで、 **[作成]** を選択してソリューションとプロジェクトを作成します。
+        <bpt id="p1">:::image type="content" source="./media/service-bus-dotnet-get-started-with-queues/new-send-project.png" alt-text="</bpt>[C#] と [コンソール] が選択された [新しいプロジェクトの作成] ダイアログ ボックスを示す画像<ept id=&quot;p1&quot;>":::</ept>
+1. プロジェクト名に「<bpt id="p1">**</bpt>TopicSender<ept id="p1">**</ept>」、ソリューション名に「<bpt id="p2">**</bpt>ServiceBusTopicQuickStart<ept id="p2">**</ept>」と入力し、 <bpt id="p3">**</bpt>[次へ]<ept id="p3">**</ept> を選択します。 
+1. <bpt id="p1">**</bpt>[追加情報]<ept id="p1">**</ept> ページで、 <bpt id="p2">**</bpt>[作成]<ept id="p2">**</ept> を選択してソリューションとプロジェクトを作成します。
 
 ### <a name="add-the-service-bus-nuget-package"></a>Service Bus NuGet パッケージの追加
 
-1. メニューから **[ツール]**  >  **[NuGet パッケージ マネージャー]**  >  **[パッケージ マネージャー コンソール]** の順に選択します。 
-1. 次のコマンドを実行して、[Azure.Messaging.ServiceBus](https://www.nuget.org/packages/Azure.Messaging.ServiceBus/) NuGet パッケージをインストールします。
+1. メニューから <bpt id="p1">**</bpt>[ツール]<ept id="p1">**</ept> <ph id="ph1"> > </ph> <bpt id="p2">**</bpt>[NuGet パッケージ マネージャー]<ept id="p2">**</ept> <ph id="ph2"> > </ph> <bpt id="p3">**</bpt>[パッケージ マネージャー コンソール]<ept id="p3">**</ept> の順に選択します。 
+1. 次のコマンドを実行して、<bpt id="p1">[</bpt>Azure.Messaging.ServiceBus<ept id="p1">](https://www.nuget.org/packages/Azure.Messaging.ServiceBus/)</ept> NuGet パッケージをインストールします。
 
     ```cmd
     Install-Package Azure.Messaging.ServiceBus
@@ -53,12 +56,12 @@ ms.locfileid: "123451729"
 
 ### <a name="add-code-to-send-messages-to-the-topic"></a>トピックにメッセージを送信するためのコードを追加する 
 
-1. **Program.cs** のコードを次のコードに置き換えます。 コードの重要な手順を次に示します。  
-    1. 名前空間への接続文字列を使用して [ServiceBusClient](/dotnet/api/azure.messaging.servicebus.servicebusclient) オブジェクトを作成します。 
-    1. `ServiceBusClient` オブジェクトで [CreateSender](/dotnet/api/azure.messaging.servicebus.servicebusclient.createsender) メソッドを呼び出して、特定の Service Bus トピックに対して [ServiceBusSender](/dotnet/api/azure.messaging.servicebus.servicebussender) オブジェクトを作成します。     
-    1. [ServiceBusSender.CreateMessageBatchAsync](/dotnet/api/azure.messaging.servicebus.servicebussender.createmessagebatchasync) を使用して [ServiceBusMessageBatch](/dotnet/api/azure.messaging.servicebus.servicebusmessagebatch) オブジェクトを作成します。
-    1. [ServiceBusMessageBatch.TryAddMessage](/dotnet/api/azure.messaging.servicebus.servicebusmessagebatch.tryaddmessage) を使用して、メッセージをバッチに追加します。 
-    1. [ServiceBusSender.SendMessagesAsync](/dotnet/api/azure.messaging.servicebus.servicebussender.sendmessagesasync) メソッドを使用して、メッセージのバッチを Service Bus トピックに送信します。
+1. <bpt id="p1">**</bpt>Program.cs<ept id="p1">**</ept> のコードを次のコードに置き換えます。 コードの重要な手順を次に示します。  
+    1. 名前空間への接続文字列を使用して <bpt id="p1">[</bpt>ServiceBusClient<ept id="p1">](/dotnet/api/azure.messaging.servicebus.servicebusclient)</ept> オブジェクトを作成します。 
+    1. <ph id="ph1">`ServiceBusClient`</ph> オブジェクトで <bpt id="p1">[</bpt>CreateSender<ept id="p1">](/dotnet/api/azure.messaging.servicebus.servicebusclient.createsender)</ept> メソッドを呼び出して、特定の Service Bus トピックに対して <bpt id="p2">[</bpt>ServiceBusSender<ept id="p2">](/dotnet/api/azure.messaging.servicebus.servicebussender)</ept> オブジェクトを作成します。     
+    1. <bpt id="p2">[</bpt>ServiceBusSender.CreateMessageBatchAsync<ept id="p2">](/dotnet/api/azure.messaging.servicebus.servicebussender.createmessagebatchasync)</ept> を使用して <bpt id="p1">[</bpt>ServiceBusMessageBatch<ept id="p1">](/dotnet/api/azure.messaging.servicebus.servicebusmessagebatch)</ept> オブジェクトを作成します。
+    1. <bpt id="p1">[</bpt>ServiceBusMessageBatch.TryAddMessage<ept id="p1">](/dotnet/api/azure.messaging.servicebus.servicebusmessagebatch.tryaddmessage)</ept> を使用して、メッセージをバッチに追加します。 
+    1. <bpt id="p1">[</bpt>ServiceBusSender.SendMessagesAsync<ept id="p1">](/dotnet/api/azure.messaging.servicebus.servicebussender.sendmessagesasync)</ept> メソッドを使用して、メッセージのバッチを Service Bus トピックに送信します。
     
         詳細については、コードのコメントを参照してください。
 
@@ -129,7 +132,7 @@ ms.locfileid: "123451729"
             }
         }    
         ```
-1. `<NAMESPACE CONNECTION STRING>` を Service Bus 名前空間の接続文字列に置き換えます。 また、`<TOPIC NAME>` を実際の Service Bus トピックの名前に置き換えます。 
+1. <ph id="ph1">`<NAMESPACE CONNECTION STRING>`</ph> を Service Bus 名前空間の接続文字列に置き換えます。 また、<ph id="ph1">`<TOPIC NAME>`</ph> を実際の Service Bus トピックの名前に置き換えます。 
 1. プロジェクトをビルドし、エラーがないことを確認します。 
 1. プログラムを実行し、確認メッセージが表示されるまで待ちます。
     
@@ -138,45 +141,44 @@ ms.locfileid: "123451729"
     ```
 1. Azure portal で次の手順を実行します。
     1. 自分の Service Bus 名前空間に移動します。 
-    1. **[概要]** ページ中央下のペインで、 **[トピック]** タブに切り替えてから、Service Bus トピックを選択します。 次の例では、`mytopic` になっています。
+    1. <bpt id="p1">**</bpt>[概要]<ept id="p1">**</ept> ページ中央下のペインで、 <bpt id="p2">**</bpt>[トピック]<ept id="p2">**</ept> タブに切り替えてから、Service Bus トピックを選択します。 次の例では、<ph id="ph1">`mytopic`</ph> になっています。
     
-        :::image type="content" source="./media/service-bus-dotnet-how-to-use-topics-subscriptions/select-topic.png" alt-text="トピックの選択":::
-    1. **[Service Bus トピック]** ページ下部の **[Metrics]\(メトリック\)** セクションの **[メッセージ]** グラフで、トピックに 3 つの受信メッセージがあることがわかります。 値が表示されない場合は、数分待ってページを最新の情報に更新すると、最新のグラフが表示されます。 
+        <bpt id="p1">:::image type="content" source="./media/service-bus-dotnet-how-to-use-topics-subscriptions/select-topic.png" alt-text="</bpt>トピックの選択<ept id=&quot;p1&quot;>":::</ept>
+    1. <bpt id="p1">**</bpt>[Service Bus トピック]<ept id="p1">**</ept> ページ下部の <bpt id="p3">**</bpt>[Metrics]\(メトリック\)<ept id="p3">**</ept> セクションの <bpt id="p2">**</bpt>[メッセージ]<ept id="p2">**</ept> グラフで、トピックに 3 つの受信メッセージがあることがわかります。 値が表示されない場合は、数分待ってページを最新の情報に更新すると、最新のグラフが表示されます。 
 
-        :::image type="content" source="./media/service-bus-dotnet-how-to-use-topics-subscriptions/sent-messages-essentials.png" alt-text="トピックに送信されたメッセージ" lightbox="./media/service-bus-dotnet-how-to-use-topics-subscriptions/sent-messages-essentials.png":::
-    4. 下のペインでサブスクリプションを選択します。 次の例では、**S1** になっています。 **[Service Bus Subscription]\(Service Bus サブスクリプション\)** ページには、 **[アクティブなメッセージ数]** が **3** と表示されます。 トピックに送信した 3 つのメッセージはサブスクリプションで受信されています。しかし、それらはどの受信者によっても取り出されていません。 
+        <bpt id="p1">:::image type="content" source="./media/service-bus-dotnet-how-to-use-topics-subscriptions/sent-messages-essentials.png" alt-text="</bpt>トピックに送信されたメッセージ<ept id=&quot;p1&quot;>" lightbox="./media/service-bus-dotnet-how-to-use-topics-subscriptions/sent-messages-essentials.png":::</ept>
+    4. 下のペインでサブスクリプションを選択します。 次の例では、<bpt id="p1">**</bpt>S1<ept id="p1">**</ept> になっています。 <bpt id="p1">**</bpt>[Service Bus Subscription]\(Service Bus サブスクリプション\)<ept id="p1">**</ept> ページには、 <bpt id="p2">**</bpt>[アクティブなメッセージ数]<ept id="p2">**</ept> が <bpt id="p3">**</bpt>3<ept id="p3">**</ept> と表示されます。 トピックに送信した 3 つのメッセージはサブスクリプションで受信されています。しかし、それらはどの受信者によっても取り出されていません。 
     
-        :::image type="content" source="./media/service-bus-dotnet-how-to-use-topics-subscriptions/subscription-page.png" alt-text="サブスクリプションで受信されたメッセージ" lightbox="./media/service-bus-dotnet-how-to-use-topics-subscriptions/subscription-page.png":::
+        <bpt id="p1">:::image type="content" source="./media/service-bus-dotnet-how-to-use-topics-subscriptions/subscription-page.png" alt-text="</bpt>サブスクリプションで受信されたメッセージ<ept id=&quot;p1&quot;>" lightbox="./media/service-bus-dotnet-how-to-use-topics-subscriptions/subscription-page.png":::</ept>
     
 ## <a name="receive-messages-from-a-subscription"></a>サブスクリプションからメッセージを受信する
 このセクションでは、サブスクリプションから Service Bus トピックへのメッセージを受信する .NET Core コンソール アプリケーションを作成します。 
 
 ### <a name="create-a-project-for-the-receiver"></a>受信側のプロジェクトを作成する
 
-1. ソリューション エクスプローラー ウィンドウで、 **[ServiceBusTopicQuickStart]** ソリューションを右クリックし、 **[追加]** をポイントして、 **[新しいプロジェクト]** を選択します。 
-1. **[コンソール アプリケーション]** を選択し、 **[次へ]** を選択します。 
-1. **[プロジェクト名]** に「**SubscriptionReceiver**」と入力し、 **[次へ]** を選択します。 
-1. **[追加情報]** ページで **[作成]** を選択します。 
-1. **ソリューション エクスプローラー** ウィンドウで、 **[SubscriptionReceiver]** を右クリックし、 **[Set as a Startup Project]\(スタートアップ プロジェクトとして設定\)** を選択します。 
+1. ソリューション エクスプローラー ウィンドウで、 <bpt id="p1">**</bpt>[ServiceBusTopicQuickStart]<ept id="p1">**</ept> ソリューションを右クリックし、 <bpt id="p2">**</bpt>[追加]<ept id="p2">**</ept> をポイントして、 <bpt id="p3">**</bpt>[新しいプロジェクト]<ept id="p3">**</ept> を選択します。 
+1. <bpt id="p1">**</bpt>[コンソール アプリケーション]<ept id="p1">**</ept> を選択し、 <bpt id="p2">**</bpt>[次へ]<ept id="p2">**</ept> を選択します。 
+1. <bpt id="p2">**</bpt>[プロジェクト名]<ept id="p2">**</ept> に「<bpt id="p1">**</bpt>SubscriptionReceiver<ept id="p1">**</ept>」と入力し、 <bpt id="p3">**</bpt>[次へ]<ept id="p3">**</ept> を選択します。 
+1. <bpt id="p1">**</bpt>[追加情報]<ept id="p1">**</ept> ページで <bpt id="p2">**</bpt>[作成]<ept id="p2">**</ept> を選択します。 
+1. <bpt id="p1">**</bpt>ソリューション エクスプローラー<ept id="p1">**</ept> ウィンドウで、 <bpt id="p2">**</bpt>[SubscriptionReceiver]<ept id="p2">**</ept> を右クリックし、 <bpt id="p3">**</bpt>[Set as a Startup Project]\(スタートアップ プロジェクトとして設定\)<ept id="p3">**</ept> を選択します。 
 
 ### <a name="add-the-service-bus-nuget-package"></a>Service Bus NuGet パッケージの追加
 
-1. メニューから **[ツール]**  >  **[NuGet パッケージ マネージャー]**  >  **[パッケージ マネージャー コンソール]** の順に選択します。 
-1. **[パッケージ マネージャー コンソール]** ウィンドウで、 **[既定のプロジェクト]** に **[SubscriptionReceiver]** が選択されていることを確認します。 そうでない場合は、ドロップダウン リストを使用して **[SubscriptionReceiver]** を選択します。
-1. 次のコマンドを実行して、**Azure.Messaging.ServiceBus** NuGet パッケージをインストールします。
+1. メニューから <bpt id="p1">**</bpt>[ツール]<ept id="p1">**</ept> <ph id="ph1"> > </ph> <bpt id="p2">**</bpt>[NuGet パッケージ マネージャー]<ept id="p2">**</ept> <ph id="ph2"> > </ph> <bpt id="p3">**</bpt>[パッケージ マネージャー コンソール]<ept id="p3">**</ept> の順に選択します。 
+1. <bpt id="p1">**</bpt>[パッケージ マネージャー コンソール]<ept id="p1">**</ept> ウィンドウで、 <bpt id="p3">**</bpt>[既定のプロジェクト]<ept id="p3">**</ept> に <bpt id="p2">**</bpt>[SubscriptionReceiver]<ept id="p2">**</ept> が選択されていることを確認します。 そうでない場合は、ドロップダウン リストを使用して <bpt id="p1">**</bpt>[SubscriptionReceiver]<ept id="p1">**</ept> を選択します。
+1. 次のコマンドを実行して、<bpt id="p1">**</bpt>Azure.Messaging.ServiceBus<ept id="p1">**</ept> NuGet パッケージをインストールします。
 
     ```cmd
     Install-Package Azure.Messaging.ServiceBus
     ```
 
 ### <a name="add-code-to-receive-messages-from-the-subscription"></a>サブスクリプションからメッセージを受信するコードを追加する
-1. **Program.cs** のコードを次のコードに置き換えます。 コードの重要な手順を次に示します。
-    コードの重要な手順を次に示します。
-    1. 名前空間への接続文字列を使用して [ServiceBusClient](/dotnet/api/azure.messaging.servicebus.servicebusclient) オブジェクトを作成します。 
-    1. `ServiceBusClient` オブジェクトで [CreateProcessor](/dotnet/api/azure.messaging.servicebus.servicebusclient.createprocessor) メソッドを呼び出し、指定した Service Bus キューに対して [ServiceBusProcessor](/dotnet/api/azure.messaging.servicebus.servicebusprocessor) オブジェクトを作成します。 
-    1. `ServiceBusProcessor` オブジェクトの [ProcessMessageAsync](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.processmessageasync) および [ProcessErrorAsync](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.processerrorasync) イベントのハンドラーを指定します。 
-    1. `ServiceBusProcessor` オブジェクトで [StartProcessingAsync](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.startprocessingasync) を呼び出して、メッセージの処理を開始します。 
-    1. ユーザーがキーを押して処理を終了すると、`ServiceBusProcessor` オブジェクトで [StopProcessingAsync](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.stopprocessingasync) が呼び出されます。 
+1. <bpt id="p1">**</bpt>Program.cs<ept id="p1">**</ept> のコードを次のコードに置き換えます。 コードの重要な手順を次に示します。
+    1. 名前空間への接続文字列を使用して <bpt id="p1">[</bpt>ServiceBusClient<ept id="p1">](/dotnet/api/azure.messaging.servicebus.servicebusclient)</ept> オブジェクトを作成します。 
+    1. <ph id="ph1">`ServiceBusClient`</ph> オブジェクトで <bpt id="p1">[</bpt>CreateProcessor<ept id="p1">](/dotnet/api/azure.messaging.servicebus.servicebusclient.createprocessor)</ept> メソッドを呼び出し、指定した Service Bus キューに対して <bpt id="p2">[</bpt>ServiceBusProcessor<ept id="p2">](/dotnet/api/azure.messaging.servicebus.servicebusprocessor)</ept> オブジェクトを作成します。 
+    1. <ph id="ph1">`ServiceBusProcessor`</ph> オブジェクトの <bpt id="p1">[</bpt>ProcessMessageAsync<ept id="p1">](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.processmessageasync)</ept> および <bpt id="p2">[</bpt>ProcessErrorAsync<ept id="p2">](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.processerrorasync)</ept> イベントのハンドラーを指定します。 
+    1. <ph id="ph1">`ServiceBusProcessor`</ph> オブジェクトで <bpt id="p1">[</bpt>StartProcessingAsync<ept id="p1">](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.startprocessingasync)</ept> を呼び出して、メッセージの処理を開始します。 
+    1. ユーザーがキーを押して処理を終了すると、<ph id="ph1">`ServiceBusProcessor`</ph> オブジェクトで <bpt id="p1">[</bpt>StopProcessingAsync<ept id="p1">](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.stopprocessingasync)</ept> が呼び出されます。 
 
         詳細については、コードのコメントを参照してください。
 
@@ -264,9 +266,9 @@ ms.locfileid: "123451729"
         }
         ```
 1. プレースホルダーを適切な値に置き換えます。
-    - `<NAMESPACE CONNECTION STRING>`: Service Bus 名前空間の接続文字列
-    - `<TOPIC NAME>`: Service Bus トピックの名前
-    - `<SERVICE BUS - TOPIC SUBSCRIPTION NAME>`: トピックのサブスクリプションの名前。 
+    - <ph id="ph1">`<NAMESPACE CONNECTION STRING>`</ph>: Service Bus 名前空間の接続文字列
+    - <ph id="ph1">`<TOPIC NAME>`</ph>: Service Bus トピックの名前
+    - <ph id="ph1">`<SERVICE BUS - TOPIC SUBSCRIPTION NAME>`</ph>: トピックのサブスクリプションの名前。 
 1. プロジェクトをビルドし、エラーがないことを確認します。
 1. 受信側アプリを実行します。 受信メッセージが表示されます。 任意のキーを押して、受信側とアプリケーションを停止します。 
 
@@ -280,18 +282,18 @@ ms.locfileid: "123451729"
     Stopped receiving messages
     ```
 1. もう一度ポータルを確認します。 
-    - **[Service Bus トピック]** ページの **[メッセージ]** グラフに、3 つの受信メッセージと 3 つの送信メッセージが表示されます。 これらの数値が表示されない場合は、数分待ってページを最新の情報に更新すると、最新のグラフが表示されます。 
+    - <bpt id="p1">**</bpt>[Service Bus トピック]<ept id="p1">**</ept> ページの <bpt id="p2">**</bpt>[メッセージ]<ept id="p2">**</ept> グラフに、3 つの受信メッセージと 3 つの送信メッセージが表示されます。 これらの数値が表示されない場合は、数分待ってページを最新の情報に更新すると、最新のグラフが表示されます。 
     
-        :::image type="content" source="./media/service-bus-dotnet-how-to-use-topics-subscriptions/messages-size-final.png" alt-text="送受信されたメッセージ" lightbox="./media/service-bus-dotnet-how-to-use-topics-subscriptions/messages-size-final.png":::
-    - **[Service Bus Subscription]\(Service Bus サブスクリプション\)** ページには、 **[アクティブなメッセージ数]** がゼロと表示されます。 これは受信者が、このサブスクリプションからのメッセージを受け取って、そのメッセージを完了したためです。 
+        <bpt id="p1">:::image type="content" source="./media/service-bus-dotnet-how-to-use-topics-subscriptions/messages-size-final.png" alt-text="</bpt>送受信されたメッセージ<ept id=&quot;p1&quot;>" lightbox="./media/service-bus-dotnet-how-to-use-topics-subscriptions/messages-size-final.png":::</ept>
+    - <bpt id="p1">**</bpt>[Service Bus Subscription]\(Service Bus サブスクリプション\)<ept id="p1">**</ept> ページには、 <bpt id="p2">**</bpt>[アクティブなメッセージ数]<ept id="p2">**</ept> がゼロと表示されます。 これは受信者が、このサブスクリプションからのメッセージを受け取って、そのメッセージを完了したためです。 
     
-        :::image type="content" source="./media/service-bus-dotnet-how-to-use-topics-subscriptions/subscription-page-final.png" alt-text="サブスクリプション側におけるアクティブなメッセージ数 (処理後)" lightbox="./media/service-bus-dotnet-how-to-use-topics-subscriptions/subscription-page-final.png":::
+        <bpt id="p1">:::image type="content" source="./media/service-bus-dotnet-how-to-use-topics-subscriptions/subscription-page-final.png" alt-text="</bpt>サブスクリプション側におけるアクティブなメッセージ数 (処理後)<ept id=&quot;p1&quot;>" lightbox="./media/service-bus-dotnet-how-to-use-topics-subscriptions/subscription-page-final.png":::</ept>
         
 
 
 ## <a name="next-steps"></a>次のステップ
 次のドキュメントおよびサンプルを参照してください。
 
-- [.NET 用の Azure Service Bus クライアント ライブラリ - Readme](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/servicebus/Azure.Messaging.ServiceBus)
-- [GitHub にある Azure Service Bus 用の .NET サンプル](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/servicebus/Azure.Messaging.ServiceBus/samples)
-- [.NET API リファレンス](/dotnet/api/azure.messaging.servicebus?preserve-view=true)
+- <bpt id="p1">[</bpt>.NET 用の Azure Service Bus クライアント ライブラリ - Readme<ept id="p1">](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/servicebus/Azure.Messaging.ServiceBus)</ept>
+- <bpt id="p1">[</bpt>GitHub にある Azure Service Bus 用の .NET サンプル<ept id="p1">](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/servicebus/Azure.Messaging.ServiceBus/samples)</ept>
+- <bpt id="p1">[</bpt>.NET API リファレンス<ept id="p1">](/dotnet/api/azure.messaging.servicebus?preserve-view=true)</ept>

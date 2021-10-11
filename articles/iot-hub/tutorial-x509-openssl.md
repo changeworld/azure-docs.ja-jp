@@ -11,12 +11,12 @@ ms.custom:
 - mvc
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: adbb2979fc9e097fa0abf2675759ba1f7aad8a0c
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: fffd56c05fc3389a6f10ade5b565a760b842a2ca
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123310563"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129358219"
 ---
 # <a name="tutorial-using-openssl-to-create-test-certificates"></a>チュートリアル: OpenSSL を使用してテスト証明書を作成する
 
@@ -285,10 +285,10 @@ openssl x509 -in mycert.crt -out mycert.pem -outform PEM
  
   ```
 
-10. ルート CA の構成ファイルと、所有証明証明書の CSR を使用して証明書を作成します。
+10. 下位 CA 構成ファイルと所有証明証明書の CSR を使用して証明書作成します。
 
   ```bash
-    openssl ca -config rootca.conf -in pop.csr -out pop.crt -extensions client_ext
+    openssl ca -config subca.conf -in pop.csr -out pop.crt -extensions client_ext
 
   ```
 
@@ -314,7 +314,7 @@ Azure portal で自分の IoT ハブに移動し、次の値を使って新し�
 openssl genpkey -out device.key -algorithm RSA -pkeyopt rsa_keygen_bits:2048
 ```
 
-キーの証明書署名要求 (CSR) を作成します。 チャレンジ パスワードやオプションの会社名を入力する必要はありません。 ただし、Common Name フィールドにデバイス ID を入力する必要があります。
+キーの証明書署名要求 (CSR) を作成します。 チャレンジ パスワードやオプションの会社名を入力する必要はありません。 ただし、Common Name フィールドにデバイス ID を入力する必要があります。 また、他のパラメーター (**Country** や **Organization Name** など) の独自の値を入力することもできます。
 
 ```bash
 openssl req -new -key device.key -out device.csr
@@ -349,4 +349,8 @@ openssl ca -config subca.conf -in device.csr -out device.crt -extensions client_
 
 ## <a name="next-steps"></a>次の手順
 
-「[証明書認証のテスト](tutorial-x509-test-certificate.md)」を参照し、証明書を使ってデバイスを IoT ハブに認証できるかどうかを確認します。
+「[証明書認証のテスト](tutorial-x509-test-certificate.md)」を参照し、証明書を使ってデバイスを IoT ハブに認証できるかどうかを確認します。 そのページのコードでは、PFX 証明書を使用する必要があります。 デバイスの .crt 証明書を .pfx 形式に変換するには、次の OpenSSL コマンドを使用します。
+
+```bash
+openssl pkcs12 -export -in device.crt -inkey device.key -out device.pfx
+```

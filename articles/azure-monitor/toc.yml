@@ -1111,7 +1111,7 @@
               href: containers/container-insights-enable-new-cluster.md
             - name: 既存の AKS クラスターでの有効化
               href: containers/container-insights-enable-existing-clusters.md
-            - name: Arc 対応クラスターでの有効化
+            - name: Azure Arc 対応クラスターでの有効化
               href: containers/container-insights-enable-arc-enabled-clusters.md
             - name: ハイブリッド クラスターでの有効化
               href: containers/container-insights-hybrid-setup.md
@@ -1131,7 +1131,7 @@
               href: containers/container-insights-agent-config.md
             - name: 更新によるメトリックの有効化
               href: containers/container-insights-update-metrics.md
-        - name: モニター
+        - name: Monitor
           items:
             - name: パフォーマンスの監視
               href: containers/container-insights-analyze.md

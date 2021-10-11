@@ -1004,6 +1004,8 @@
           href: ./domain-joined/apache-domain-joined-architecture.md
         - name: HDInsight 仮想ネットワーク アーキテクチャ
           href: ./hdinsight-virtual-network-architecture.md
+        - name: パブリック接続を制限する
+          href: ./hdinsight-restrict-public-connectivity.md
         - name: プライベート リンク
           href: ./hdinsight-private-link.md
         - name: トランスポート層セキュリティ
