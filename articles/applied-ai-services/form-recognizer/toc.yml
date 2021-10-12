@@ -16,19 +16,19 @@ items:
     items:
       - name: Form Recognizer v2.1
         items:
-          - name: '概要: Form Recognizer ラベル付けツール'
+          - name: Form Recognizer ラベル付けツール
             href: quickstarts/try-sample-label-tool.md
-          - name: '概要: クライアント ライブラリと REST API'
+          - name: クライアント ライブラリと REST API
             href: quickstarts/try-sdk-rest-api.md
       - name: Form Recognizer v3.0 | プレビュー
         items:
-          - name: '概要: Form Recognizer Studio (プレビュー)'
+          - name: Form Recognizer Studio (プレビュー)
             href: quickstarts/try-v3-form-recognizer-studio.md
-          - name: '概要: REST API (プレビュー)'
+          - name: REST API (プレビュー)
             href: quickstarts/try-v3-rest-api.md
-          - name: '概要: C# SDK (プレビュー)'
+          - name: C# SDK (プレビュー)
             href: quickstarts/try-v3-csharp-sdk.md
-          - name: '概要: Python SDK (プレビュー)'
+          - name: Python SDK (プレビュー)
             href: quickstarts/try-v3-python-sdk.md
   - name: サンプル
     items:
@@ -133,6 +133,8 @@ items:
         href: tutorial-azure-function.md
   - name: 関連項目
     items:
+      - name: エラー コードとメッセージ v3.0 (プレビュー)
+        href: preview-error-guide.md
       - name: Azure Form Recognizer REST API v2.1
         items:
           - name: REST API v2.1 リファレンス

@@ -108,6 +108,8 @@
       href: publish-azure-resource-manager.md
     - name: Azure Front Door を追加する
       href: front-door-manual.md
+    - name: プログラムを使用してユーザー ロールを設定する
+      href: assign-roles-microsoft-graph.md
 - name: リファレンス
   items:
     - name: Azure CLI

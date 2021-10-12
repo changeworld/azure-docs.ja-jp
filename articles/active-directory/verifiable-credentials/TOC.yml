@@ -8,14 +8,12 @@
 - name: チュートリアル
   expanded: true
   items:
-    - name: 検証可能な資格情報のスタート ガイド
-      href: get-started-verifiable-credentials.md
-    - name: テナントで検証可能な資格情報を構成する
-      items:
-        - name: 1 - 自分自身の Azure AD で検証可能な資格情報の発行者を設定する
-          href: enable-your-tenant-verifiable-credentials.md
-        - name: 2 - 検証可能な資格情報の発行者を自分自身の Azure AD に接続する
-          href: issue-verify-verifiable-credentials-your-tenant.md
+    - name: 検証可能な資格情報サービスを設定する
+      href: verifiable-credentials-configure-tenant.md
+    - name: 検証可能な資格情報を発行する
+      href: verifiable-credentials-configure-issuer.md
+    - name: 検証可能な資格情報を検証する
+      href: verifiable-credentials-configure-verifier.md
 - name: 概念
   expanded: true
   items:
@@ -32,6 +30,8 @@
           href: plan-issuance-solution.md
         - name: 検証ソリューションの計画
           href: plan-verification-solution.md
+    - name: 要求サービス REST API の使用
+      href: get-started-request-api.md
     - name: 資格情報をカスタマイズする方法
       href: credential-design.md
     - name: 資格情報の失効を管理する
@@ -49,6 +49,15 @@
       href: 'https://didvc-issuer-sample.azurewebsites.net/'
     - name: サンプルの検証ツール
       href: 'https://didvc-verifier-sample.azurewebsites.net/'
+- name: リファレンス
+  expanded: true
+  items:
+    - name: 新機能
+      href: whats-new.md
+    - name: API の発行の仕様
+      href: issuance-request-api.md
+    - name: API のプレゼンテーションの仕様
+      href: presentation-request-api.md
 - name: リソース
   expanded: true
   items:

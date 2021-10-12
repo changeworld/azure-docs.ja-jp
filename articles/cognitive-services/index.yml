@@ -11,24 +11,24 @@ metadata:
   ms.author: nitinme
   manager: nitinme
   ms.custom: custom-portals-hub
-  ms.date: 08/28/2020
+  ms.date: 10/08/2021
 highlightedContent:
   items:
     - title: Cognitive Services とは
       itemType: overview
       url: ./what-are-cognitive-services.md
-    - title: ドキュメントの最新情報
-      itemType: whats-new
-      url: whats-new-docs.md
+    - title: Cognitive Services のオンプレミス コンテナー
+      itemType: concept
+      url: ./containers/index.yml
+    - title: AI の責任ある使用
+      itemType: concept
+      url: responsible-use-of-ai-overview.md
     - title: 開発オプション
       itemType: concept
       url: ./cognitive-services-development-options.md
     - title: Cognitive Services と機械学習
       itemType: concept
       url: ./cognitive-services-and-machine-learning.md
-    - title: Cognitive Services のオンプレミス コンテナー
-      itemType: concept
-      url: ./containers/index.yml
     - title: データベースでの Cognitive Services
       itemType: concept
       url: ./big-data/cognitive-services-for-big-data.md
@@ -130,12 +130,6 @@ conceptualContent:
         - url: ./big-data/samples-python.md
           itemType: reference
           text: Python サンプル
-    - title: AI の責任ある使用
-      summary: Azure Cognitive Services は、アプリケーションで AI サービスを責任ある方法で使用するための情報とガイドラインを提供します。
-      links:
-        - url: responsible-use-of-ai-overview.md
-          itemType: overview
-          text: AI の責任ある使用
 additionalContent:
   sections:
     - title: その他のリソース

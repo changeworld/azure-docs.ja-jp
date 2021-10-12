@@ -16,6 +16,8 @@
       href: concepts/container-management.md
     - name: 分散データ構造
       href: concepts/data-structures.md
+    - name: Azure Fluid Relay でのデータの暗号化
+      href: concepts/data-encryption.md
     - name: アプリの認証と承認
       href: concepts/authentication-authorization.md
     - name: バージョンの互換性

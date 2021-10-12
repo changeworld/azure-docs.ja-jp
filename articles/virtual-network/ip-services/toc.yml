@@ -59,7 +59,7 @@ items:
       - name: セキュリティ
         items:
           - name: パブリック IP のセキュリティ ベースライン
-        href: /security/benchmark/azure/baselines/public-ip-security-baseline?toc=/azure/virtual-network/toc.json?toc=/azure/virtual-network/toc.json?toc=/azure/virtual-network/toc.json
+            href: /security/benchmark/azure/baselines/public-ip-security-baseline?toc=/azure/virtual-network/ip-services/toc.json
   - name: 操作方法
     items:
       - name: Azure ネットワーク インターフェイスの IP アドレスの構成

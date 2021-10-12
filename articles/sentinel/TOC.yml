@@ -188,6 +188,8 @@
               href: import-export-analytics-rules.md
             - name: SOC-ML 異常規則の使用
               href: work-with-anomaly-rules.md
+            - name: 分析ルールのテンプレート バージョンを管理する
+              href: manage-analytics-rule-templates.md
         - name: ユーザーとエンティティの行動分析 (UEBA) を有効にする
           href: enable-entity-behavior-analytics.md
         - name: SOC-ML 異常規則の使用

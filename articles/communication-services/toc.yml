@@ -150,7 +150,11 @@ items:
       - name: プッシュ通知
         href: concepts/notifications.md
       - name: Teams の相互運用性
-        href: concepts/teams-interop.md
+        items:
+          - name: 概要
+            href: concepts/teams-interop.md
+          - name: Teams 会議に参加する
+            href: concepts/join-teams-meeting.md
       - name: サービス イベント (EventGrid)
         href: ../event-grid/event-schema-communication-services.md
         maintainContext: true
