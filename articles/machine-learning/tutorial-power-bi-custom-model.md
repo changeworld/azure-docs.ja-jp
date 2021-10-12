@@ -10,12 +10,12 @@ ms.author: samkemp
 author: samuel100
 ms.reviewer: sdgilley
 ms.date: 12/11/2020
-ms.openlocfilehash: 409936f98dab0fa975c1314a84096b7b46df7613
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 6e71116d79496340c306628a29504aa140e9d5f5
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112459408"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129429910"
 ---
 # <a name="tutorial-power-bi-integration---create-the-predictive-model-with-a-jupyter-notebook-part-1-of-2"></a>チュートリアル:Power BI 統合 - Jupyter Notebook を使用して予測モデルを作成する (パート 1/2)
 

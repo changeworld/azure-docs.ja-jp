@@ -12,12 +12,12 @@ ms.date: 08/27/2021
 ms.author: marsma
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: fb8cf19f3b266d2cc7c3a1569f964acdc934ba7b
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 3c3d6a4ed060f26e523bc29f2afe843352b6ee2b
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124786771"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129229869"
 ---
 # <a name="microsoft-identity-platform-code-samples"></a>Microsoft ID プラットフォームのコード サンプル
 

@@ -1,14 +1,14 @@
 ---
-title: Azure DevTest Labs でリモート デスクトップ ゲートウェイを使用するようにラボを構成する
+title: リモート デスクトップ ゲートウェイを使用するためにラボを構成する
 description: RDP ポートを公開せずにラボ VM に安全にアクセスできるようにするために、リモート デスクトップ ゲートウェイを使用して Azure DevTest Labs でラボを構成する方法について説明します。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: b15d4d39199c1a30eae292ece67f4553b656f530
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: fcafc9f035d57e7685ffc3646cecaf27b60684f8
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105639602"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128652417"
 ---
 # <a name="configure-your-lab-in-azure-devtest-labs-to-use-a-remote-desktop-gateway"></a>リモート デスクトップ ゲートウェイを使用するように Azure DevTest Labs でラボを構成します
 Azure DevTest Labs では、RDP ポートを公開することなくラボ仮想マシン (VM) に安全にアクセスできるようにするために、ラボ用のリモート デスクトップ ゲートウェイを構成できます。 ラボは、ラボ ユーザーがアクセスできるすべての仮想マシンを表示および接続するための中央の場所を提供します。 **[仮想マシン]** ページの **[接続]** ボタンにより、そのマシンに接続するために開くことができるマシン固有の RDP ファイルが作成されます。 ラボをリモート デスクトップ ゲートウェイに接続することで、RDP 接続をさらにカスタマイズして保護できます。 

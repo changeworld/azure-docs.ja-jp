@@ -40,13 +40,13 @@ ms.locfileid: "98251958"
 
 このチュートリアルで使用する[サンプル アプリケーション][sample-application]は、フロントエンド Web コンポーネントとバックエンド Redis インスタンスで構成される基本的な投票アプリです。 Web コンポーネントは、カスタム コンテナー イメージにパッケージ化されています。 Redis インスタンスでは、Docker Hub から変更されていないイメージを使用します。
 
-サンプル アプリケーションを開発環境に複製するには、[git][] を使用します。
+サンプル アプリケーションを開発環境にクローンするには、[git][] を使用します。
 
 ```console
 git clone https://github.com/Azure-Samples/azure-voting-app-redis.git
 ```
 
-複製されたディレクトリに移動します。
+クローンされたディレクトリに移動します。
 
 ```console
 cd azure-voting-app-redis

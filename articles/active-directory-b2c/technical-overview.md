@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 06/07/2021
+ms.date: 10/01/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7fb3dcb07b8b868dda7bfef587b930765c4f661e
-ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
+ms.openlocfilehash: 0aad268f8721d2f4747c4e3dec3860e52dd7112a
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112199240"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129352804"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Azure Active Directory B2C の技術と機能の概要
 
@@ -32,7 +32,7 @@ Azure AD B2C テナントで使用する主なリソースは次のとおりで�
 * **ユーザー フロー** と **カスタム ポリシー** - 組み込みのユーザー フローと完全に構成可能なカスタム ポリシーを使用して、アプリケーションの ID エクスペリエンスを作成します。
   * **ユーザー フロー** では、サインアップ、サインイン、プロファイルの編集など、一般的な ID タスクをすばやく実行できます。
   * **カスタム ポリシー** では、組織、顧客、従業員、パートナー、市民に固有の複雑な ID ワークフローを作成できます。
-* **サインイン オプション** - Azure AD B2C には、アプリケーションのユーザー向けに、さまざまな[サインアップ オプションとサインイン オプション](sign-in-options.md)が用意されています。
+* **サインイン オプション** - Azure AD B2C には、アプリケーションのユーザー向けに、さまざまな [サインアップ オプションとサインイン オプション](sign-in-options.md)が用意されています。
   * **ユーザー名、メール、電話のサインイン** - ユーザー名、メール アドレス、電話番号のほか、複数の方法の組み合わせを使用したサインアップとサインインに対応できるように Azure AD B2C ローカル アカウントを構成します。
   * **ソーシャル ID プロバイダ** - Facebook、LinkedIn、Twitter のようなソーシャル プロバイダーとフェデレーションします。
   * **外部 ID プロバイダー** - OAuth 2.0、OpenID Connect などの標準 ID プロトコルとフェデレーションします。
@@ -60,11 +60,14 @@ Azure AD B2C では、複数の種類のユーザー アカウントが定義さ
 コンシューマー アカウントは、次の種類の ID に関連付けることができます。
 
 * **ローカル** ID。ユーザー名とパスワードは、Azure AD B2C ディレクトリにローカルに格納されます。 これらの ID は、"ローカル アカウント" とよく呼ばれます。
-* **ソーシャル** ID または **エンタープライズ** ID。ユーザーの ID は、フェデレーション ID プロバイダーによって管理されます。 たとえば、Facebook、Microsoft、ADFS、Salesforce などです。
+* **ソーシャル** ID または **エンタープライズ** ID。ユーザーの ID は、フェデレーション ID プロバイダーによって管理されます。 たとえば、Facebook、Google、Microsoft、ADFS、Salesforce などです。
 
 コンシューマー アカウントを持つユーザーは、複数の ID でサインインできます。 たとえば、ユーザー名、電子メール、従業員 ID、政府 ID などです。 1 つのアカウントで、ローカルとソーシャル両方の ID を持つことができます。
 
-![コンシューマーアカウントの ID](media/technical-overview/identities.png)<br/>*図:Azure AD B2C に複数の ID を持つ単一のコンシューマー アカウント*
+
+
+:::image type="content" source="media/technical-overview/identities.png" alt-text="コンシューマー アカウントの ID。":::
+<br/>*図:Azure AD B2C に複数の ID を持つ単一のコンシューマー アカウント*
 
 詳細については、「[Azure Active Directory B2C のユーザー アカウントの概要](user-overview.md)」をご覧ください。
 
@@ -87,13 +90,17 @@ Azure AD B2C を使用すると、コンシューマー アカウント プロ�
 
 ユーザーがソーシャルおよびエンタープライズの ID プロバイダーの資格情報を使用してアプリケーションにサインインできるように、Azure AD B2C を構成できます。 Azure AD B2C は、OAuth 1.0、OAuth 2.0、OpenID Connect、SAML の各プロトコルをサポートする ID プロバイダーとフェデレーションできます。 たとえば、Facebook、Microsoft アカウント、Google、Twitter、AD FS などです。
 
-![外部 ID プロバイダー](media/technical-overview/external-idps.png)
+
+
+:::image type="content" source="media/technical-overview/external-idps.png" alt-text="外部 ID プロバイダー。":::
 
 外部 ID プロバイダーのフェデレーションを使用すると、アプリケーション用だけに新しいアカウントを作成する必要なしに、既存のソーシャルまたはエンタープライズ アカウントを使用してサインインする機能を、コンシューマーに提供できます。
 
 サインアップまたはサインイン ページには、Azure AD B2C によって、ユーザーがサインインのために選択できる外部 ID プロバイダーの一覧が表示されます。 外部 ID プロバイダーの 1 つを選択すると、選択したプロバイダーの Web サイトに誘導 (リダイレクト) されるので、そこでサインイン プロセスを完了します。 正常にサインインしたユーザーは、お使いのアプリケーションでアカウントを認証するために、Azure AD B2C に戻されます。
 
-![ソーシャル アカウント (Facebook) でのモバイル サインインの例](media/technical-overview/external-idp.png)
+
+
+:::image type="content" source="media/technical-overview/external-idp.png" alt-text="ソーシャル アカウント (Facebook) でのモバイル サインインの例。":::
 
 Azure AD B2C で ID プロバイダーを追加する方法については、[Azure Active Directory B2C でアプリケーションに ID プロバイダーを追加する方法](add-identity-provider.md)に関するページを参照してください。
 
@@ -117,7 +124,9 @@ Azure AD B2C では、次の 2 つの方法で ID ユーザーのエクスペリ
 
 Azure AD B2C では、ユーザーに表示されるページがブランドのルック アンド フィールとシームレスに融合されるように、ユーザーの ID エクスペリエンスを作成できます。 アプリケーションの ID 体験の過程でユーザーに表示される HTML および CSS コンテンツを、ほぼ完全に制御できます。 この柔軟性により、アプリケーションと Azure AD B2C との間で、ブランドと視覚的な一貫性を維持することができます。
 
-![ブランドでカスタマイズされたサインアップおよびサインイン ページのスクリーンショット](media/technical-overview/seamless-ux.png)
+
+
+:::image type="content" source="media/technical-overview/seamless-ux.png" alt-text="ブランドでカスタマイズされたサインアップおよびサインイン ページのスクリーンショット。":::
 
 UI のカスタマイズについては、以下を参照してください。
 
@@ -165,7 +174,9 @@ REST API 呼び出しに対する Azure AD B2C のサポートによって有効
 
 返されたデータは、Azure AD B2C のユーザーのディレクトリ アカウントに保存できます。 その後、そのデータをポリシーの後続の手順でさらに評価したり、アクセス トークンに含めたりすることができます。
 
-![モバイル アプリケーションでの基幹業務統合](media/technical-overview/lob-integration.png)
+
+
+:::image type="content" source="media/technical-overview/lob-integration.png" alt-text="モバイル アプリケーションでの基幹業務統合。":::
 
 カスタム ポリシーによって定義されているユーザー体験の任意のステップで、REST API 呼び出しを追加できます。 たとえば、次のタイミングで REST API を呼び出すことができます。
 
@@ -195,7 +206,7 @@ Azure AD B2C で RESTful API 統合に対してカスタム ポリシーを使�
 
 ユーザーがアプリケーションにサインインしようとすると、アプリケーションによって、ユーザー フローまたはカスタム ポリシーで提供されるエンドポイントへの認可要求が開始されます。 ユーザー フローまたはカスタム ポリシーによって、ユーザーのエクスペリエンスが定義および制御されます。 ユーザー フロー (たとえば、"*サインアップまたはサインイン*" のフロー)が完了すると、Azure AD B2C によってトークンが生成され、ユーザーはアプリケーションにリダイレクトされます。
 
-![モバイル アプリと、Azure AD B2C のサインイン ページ間のフローを示す矢印](media/technical-overview/app-integration.png)
+:::image type="content" source="media/technical-overview/app-integration.png" alt-text="モバイル アプリと、Azure AD B2C のサインイン ページ間のフローを示す矢印。":::
 
 複数のアプリケーションで、同じユーザー フローまたはカスタム ポリシーを使用できます。 1 つのアプリケーションで、複数のユーザー フローまたはカスタム ポリシーを使用できます。
 
@@ -229,7 +240,9 @@ Azure AD B2C では、各サインイン イベントが評価され、すべて
 
 ユーザーが自分のパスワードを忘れた場合は、Azure AD B2C テナント管理者が[ユーザーのパスワードをリセットする](manage-users-portal.md#reset-a-users-password)ことができます。 または、ユーザーにパスワードを定期的にリセットさせることができます。 詳細については、[パスワードの強制リセット フローの設定](force-password-reset.md)に関する記事を参照してください。
 
-![パスワードの強制リセット フロー](media/technical-overview/force-password-reset-flow.png)
+
+
+:::image type="content" source="media/technical-overview/force-password-reset-flow.png" alt-text="パスワードの強制リセット フロー。":::
 
 ## <a name="smart-account-lockout"></a>スマート アカウント ロックアウト
 
@@ -245,7 +258,8 @@ Azure AD B2C は、[Microsoft Azure セキュリティ センター](https://www
 
 セッションは暗号化されたデータとしてモデル化され、解読キーは Azure AD B2C のセキュリティ トークン サービスのみが認識しています。 強力な暗号化アルゴリズムである AES-192 が使用されます。 すべての通信パスは、機密性と整合性のために TLS で保護されます。 セキュリティ トークン サービスでは、TLS に拡張検証 (EV) 証明書が使用されます。 一般に、セキュリティ トークン サービスにより、信頼されていない入力を提供しないことでクロスサイト スクリプティング (XSS) 攻撃が軽減されます。
 
-![転送中および保存中の安全なデータの図](media/technical-overview/user-data.png)
+
+:::image type="content" source="media/technical-overview/user-data.png" alt-text="転送中および保存中の安全なデータの図。":::
 
 ### <a name="access-to-user-data"></a>ユーザー データにアクセスする
 
@@ -286,6 +300,12 @@ Azure Application Insights を Azure AD B2C カスタム ポリシーに統合�
 
 詳細については、「[Application Insights を使用して Azure AD B2C でのユーザーの動作を追跡する](analytics-with-application-insights.md)」をご覧ください。
 
+## <a name="azure-ad-b2c-service-limits-and-restrictions"></a>Azure AD B2C サービスの制限と制約
+「[Azure AD B2C サービスの制限と制約](service-limits.md)」の詳細を確認します。
+
 ## <a name="next-steps"></a>次のステップ
 
-Azure Active Directory B2C の機能と技術的な側面について詳しく見てきたので、[Azure Active Directory B2C テナントの作成に関するチュートリアル](tutorial-create-tenant.md)に取り組んでみましょう。
+Azure Active Directory B2C の機能と技術的な側面について詳しく見てきました。
+- 次はまず、[Azure Active Directory B2C テナントを作成](tutorial-create-tenant.md)します。
+- [Azure Active Directory B2C を使用してシングルページ アプリのサインインを設定](quickstart-single-page-app.md)します。
+- [Azure Active Directory B2C 概念](application-types.md) 

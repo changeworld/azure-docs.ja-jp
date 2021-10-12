@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 06/16/2021
 ms.author: cshoe
-ms.openlocfilehash: b543831ceead6d386de0617b02db93a99d9507a6
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: 167d6a2fbe6ec782a83c8dc3cb7f3ea57832a594
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122609130"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129275907"
 ---
 # <a name="quickstart-building-your-first-static-site-with-azure-static-web-apps"></a>クイックスタート: Azure Static Web Apps を使用して静的サイトを初めて構築する
 
@@ -62,17 +62,20 @@ Azure サブスクリプションを持っていない場合は、[無料試用�
 
     :::image type="content" source="media/getting-started/extension-create-app.png" alt-text="静的 Web アプリを作成する":::
 
+1. 近くのリージョンを選択します。
+
+    > [!NOTE]
+    > Azure Static Web Apps によって静的アセットはグローバルに分散されます。 選択したリージョンによって、オプションのステージング環境と API 関数アプリが配置される場所が決まります。
+
 1. アプリケーションの種類に一致するプリセットを選択します。
 
     # <a name="no-framework"></a>[フレームワークなし](#tab/vanilla-javascript)
 
     :::image type="content" source="media/getting-started/extension-presets-no-framework.png" alt-text="アプリケーション プリセット: フレームワークなし":::
 
-    アプリケーション ファイルの場所として「 **./src**」を入力し、<kbd>Enter</kbd> キーを押します。
+    アプリケーション ファイルの場所として「 **/src**」を入力し、<kbd>Enter</kbd> キーを押します。
 
-    :::image type="content" source="media/getting-started/extension-build-location.png" alt-text="アプリケーション ビルドの出力場所":::
-
-    ビルドの出力場所として「 **./src**」を入力し、<kbd>Enter</kbd> キーを押します。
+    このアプリでは、ビルド出力は生成されません。 ビルド出力場所が空であることを確認し、<kbd>Enter</kbd> キーを押します。
 
     # <a name="angular"></a>[Angular](#tab/angular)
 
@@ -80,7 +83,7 @@ Azure サブスクリプションを持っていない場合は、[無料試用�
 
     :::image type="content" source="media/getting-started/extension-presets-no-framework.png" alt-text="アプリケーションプ リセット: Angular":::
 
-    アプリケーション ファイルの場所として「 **./** 」と入力します。
+    アプリケーション ファイルの場所として「 **/** 」と入力します。
 
     :::image type="content" source="media/getting-started/extension-app-location.png" alt-text="アプリケーション ファイルの場所: Angular":::
 
@@ -92,9 +95,17 @@ Azure サブスクリプションを持っていない場合は、[無料試用�
 
     :::image type="content" source="media/getting-started/extension-presets-react.png" alt-text="アプリケーションプ リセット: React":::
 
+    アプリケーション ファイルの場所として「 **/** 」と入力します。
+
+    ビルドの出力場所として「**build**」と入力します。
+
     # <a name="vue"></a>[Vue](#tab/vue)
 
     :::image type="content" source="media/getting-started/extension-presets-vue.png" alt-text="アプリケーションプ リセット: Vue":::
+
+    アプリケーション ファイルの場所として「 **/** 」と入力します。
+
+    ビルドの出力場所として「**dist**」と入力します。
 
     ---
 

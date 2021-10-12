@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: fce098767fffd36376399bbd9396699e3d9fbfd3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 548593a3b3c4548fbf1f037cd15c302a68df9845
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93392080"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129235081"
 ---
 # <a name="deploy-azure-sql-edge-with-docker"></a>Docker を使用して Azure SQL Edge をデプロイする
 
@@ -43,7 +43,7 @@ ms.locfileid: "93392080"
         ```
 
 > [!NOTE]
-> この記事の bash コマンドには、`sudo` が使用されています。 macOS と Windows では、sudo は不要な場合があります。 Linux では、Docker を実行するのに sudo を使いたくない場合は、docker グループを構成し、そのグループにユーザーを追加できます。 詳細については、「[Linux でのインストール後の手順](https://docs.docker.com/engine/install/linux-postinstall/)」を参照してください。
+> この記事の bash コマンドには、`sudo` が使用されています。 macOS と Windows では、`sudo` は不要な場合があります。 Linux では、`sudo` を使用して Docker を実行したくない場合は、Docker グループを構成して、そのグループにユーザーを追加できます。 詳細については、「[Linux でのインストール後の手順](https://docs.docker.com/engine/install/linux-postinstall/)」を参照してください。
 
 前のコマンドでは、最新の Azure SQL Edge のコンテナー イメージがプルされます。 利用可能なすべてのイメージを確認するには、[azure-sql-egde Docker Hub のページ](https://hub.docker.com/_/microsoft-azure-sql-edge)を参照してください。
 

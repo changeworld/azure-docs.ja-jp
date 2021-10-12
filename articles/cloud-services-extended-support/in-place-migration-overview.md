@@ -9,12 +9,12 @@ ms.author: hirshah
 ms.reviewer: mimckitt
 ms.date: 2/08/2021
 ms.custom: ''
-ms.openlocfilehash: ef2d8b68d6fb56f5d9b3508d550303aa9d9526d1
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 1542a8dd6c36c2a623f11179c0871a9fef2e3619
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121860485"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128665513"
 ---
 # <a name="migrate-azure-cloud-services-classic-to-azure-cloud-services-extended-support"></a>Azure Cloud Services (クラシック) を Azure Cloud Services (延長サポート) に移行する
 
@@ -63,7 +63,7 @@ Cloud Services (クラシック) から Cloud Services (延長サポート) へ�
 プラットフォームによってサポートされた移行には、次のような主な利点があります。
 
 - ほとんどのシナリオで、ダウンタイムがなくシームレスな、プラットフォームで調整された移行が可能です。 [サポートされるシナリオ](in-place-migration-technical-details.md)に関する詳細情報を参照してください。  
-- 既存のクラウド サービスを、検証、準備、コミット (または中止) の 3 つの簡単な手順で移行します。 [migration tool works]in-place-migration-overview.md#migration-steps) の詳細をご覧ください。
+- 既存のクラウド サービスを、検証、準備、コミット (または中止) の 3 つの簡単な手順で移行します。 [移行ツールのしくみ](in-place-migration-overview.md#migration-steps)の詳細を確認してください。
 - 準備が成功した後、移行されたデプロイをテストする機能を提供します。 中止によって移行がロールバックされる間に、移行をコミットして仕上げます。
 
 移行ツールで利用される API とそのエクスペリエンスは、[仮想マシン (クラシック) の移行](../virtual-machines/migration-classic-resource-manager-overview.md)と同じです。 

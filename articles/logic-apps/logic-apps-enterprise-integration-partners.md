@@ -1,88 +1,84 @@
 ---
-title: B2B 統合の取引先を追加する
-description: Azure Logic Apps で使用する統合アカウントに取引先を作成します
+title: ワークフローの取引先を定義する
+description: Enterprise Integration Pack を使用して、Azure Logic Apps のワークフロー用の統合アカウントに取引先を追加します。
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, logicappspm
-ms.topic: article
-ms.date: 06/22/2019
-ms.openlocfilehash: 8e3805fae5bf6cc5ad8cf759d3ba75220c6ddbd8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.reviewer: estfan, azla
+ms.topic: how-to
+ms.date: 09/16/2021
+ms.openlocfilehash: f0e0fed5bf7e3354cffa8d6799c4d3e5d39595d9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91565073"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128549837"
 ---
-# <a name="add-trading-partners-to-integration-accounts-for-azure-logic-apps"></a>Azure Logic Apps の統合アカウントに取引先を追加する
+# <a name="add-trading-partners-to-integration-accounts-for-workflows-in-azure-logic-apps"></a>Azure Logic Apps のワークフローの統合アカウントに取引先を追加する
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) では、対象のロジック アプリで[統合アカウント](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)を使用して、自動化された企業間 (B2B) 統合ワークフローを作成できます。 自身の組織と別の組織を表すには、取引先を作成して統合アカウントの成果物として追加します。 パートナーとは、企業間 (B2B) のトランザクションに参加し、互いにメッセージを交換するエンティティです。
+企業間 (B2B) エンタープライズ統合ワークフローで自身の組織と別の組織を表すために、ビジネス リレーションシップにおける各参加者を表す "*取引先*" を[統合アカウント](logic-apps-enterprise-integration-create-integration-account.md)に作成します。 パートナーとは、企業間 (B2B) のトランザクションに参加し、互いにメッセージを交換するビジネス エンティティです。
 
-これらのパートナーを作成する前に、相手が送信するメッセージを識別して検証する方法について、必ずパートナーと話し合い、情報を共有してください。 これらの詳細に同意できたら、統合アカウントにパートナーを作成する準備が整います。
+> [!IMPORTANT]
+> これらのパートナーを定義する前に、互いに送信するメッセージを識別して検証する方法についてパートナーと話し合います。 契約に参加し、互いにメッセージを交換するために、統合アカウントのパートナーは、同じまたは互換性のある "*ビジネス修飾子*" を使用する必要があります。 これらの詳細に同意できたら、統合アカウントにパートナーを作成する準備が整います。
 
-## <a name="partner-roles-in-integration-accounts"></a>統合アカウントのパートナーの役割
+この記事では、パートナー間でメッセージを交換するための特定の業界標準プロトコルを定義する契約を後で作成するために使用できる、パートナーを作成して管理する方法について説明します。
 
-パートナーと交換するメッセージの詳細を定義するには、[契約](../logic-apps/logic-apps-enterprise-integration-agreements.md)を作成して統合アカウントに成果物として追加します。 契約には、統合アカウントに 2 つ以上のパートナーが必要です。 自身の組織は、常に契約の "*ホスト パートナー*" になります。 自身の組織組織とメッセージを交換する組織は、"*ゲスト パートナー*" です。 ゲスト パートナーには、別の会社のほか、自身の組織内の部署も指定できます。 これらのパートナーを追加したら、契約を作成できます。
-
-契約には、受信メッセージと送信メッセージを処理するための詳細を、ホスト パートナーの観点から指定します。 受信メッセージについては、 **[受信設定]** を使用して、ホスト パートナーが契約内のゲスト パートナーからメッセージを受信する方法を指定します。 送信メッセージについては、 **[送信設定]** を使用して、ホスト パートナーがゲスト パートナーにメッセージを送信する方法を指定します。
+ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](logic-apps-overview.md)」を参照してください。 B2B エンタープライズ統合の詳細については、[Azure Logic Apps を使用した B2B エンタープライズ統合ワークフロー](logic-apps-enterprise-integration-overview.md)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
+* Azure アカウントとサブスクリプション。 サブスクリプションをまだお持ちでない場合には、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)してください。
 
-* 対象のパートナー、ご利用の契約、およびその他の B2B 成果物を格納するための[統合アカウント](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)。 この統合アカウントは、ご利用の Azure サブスクリプションに関連付けられている必要があります。
+* エンタープライズ統合および B2B ワークフローで使用する成果物 (取引先、契約、証明書など) を定義して保存する[統合アカウント リソース](logic-apps-enterprise-integration-create-integration-account.md)。 このリソースでは、次の要件が満たされている必要があります。
 
-## <a name="create-partner"></a>パートナーの作成
+  * ロジック アプリ リソースと同じ Azure サブスクリプションに関連付けられている。
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
+  * ロジック アプリ リソースと同じ場所または Azure リージョンに存在する。
 
-1. Azure のメイン メニューで、 **[すべてのサービス]** を選びます。 検索ボックスに「統合」と入力し、 **[統合アカウント]** を選びます。
+  * [**ロジック アプリ (従量課金)** のリソースの種類](logic-apps-overview.md#resource-type-and-host-environment-differences)を使用している場合、ワークフローで成果物を使用するには、統合アカウントに[ロジック アプリ リソースへのリンク](logic-apps-enterprise-integration-create-integration-account.md#link-account)が必要です。
 
-   ![[統合アカウント] を選択する](./media/logic-apps-enterprise-integration-partners/find-integration-accounts.png)
+  * [**ロジック アプリ (Standard)** のリソースの種類](logic-apps-overview.md#resource-type-and-host-environment-differences)を使用している場合、統合アカウントにロジック アプリ リソースへのリンクは必要ありませんが、[AS2](logic-apps-enterprise-integration-as2.md)、[X12](logic-apps-enterprise-integration-x12.md)、および [EDIFACT](logic-apps-enterprise-integration-edifact.md) の操作を使用すると共に、パートナー、契約、証明書などの他の成果物を保存する必要があります。 統合アカウントは、ロジック アプリ リソースと同じ Azure サブスクリプションを使用することや、ロジック アプリ リソースと同じ場所に存在することなど、他の要件も満たす必要があります。
 
-1. **[統合アカウント]** で、パートナーを追加する統合アカウントを選びます。
+  > [!NOTE]
+  > 現時点では、[RosettaNet](logic-apps-enterprise-integration-rosettanet.md) の操作をサポートしているのは、**ロジック アプリ (従量課金)** のリソースの種類のみです。 **ロジック アプリ (Standard)** のリソースの種類には、[RosettaNet](logic-apps-enterprise-integration-rosettanet.md) の操作が含まれていません。
 
-   ![統合アカウントを選択する](./media/logic-apps-enterprise-integration-partners/select-integration-account.png)
+<a name="add-partner"></a>
 
-1. **[パートナー]** タイルを選びます。
+## <a name="add-a-partner"></a>パートナーを追加する
 
-   ![[パートナー] タイルを示すスクリーンショット。](./media/logic-apps-enterprise-integration-partners/choose-partners.png)
+1. [Azure portal](https://portal.azure.com) の検索ボックスに「`integration accounts`」と入力し、 **[統合アカウント]** を選択します。
 
-1. **[パートナー]** で **[追加]** を選びます。 **[パートナーの追加]** で、次の表の説明に従ってパートナーの詳細を入力します。
+1. **[統合アカウント]** で、パートナーを追加する統合アカウントを選択します。
 
-   ![[追加] を選択し、パートナーの詳細を入力する](./media/logic-apps-enterprise-integration-partners/add-partners.png)
+1. 統合アカウント メニューの **[設定]** で、 **[パートナー]** を選択します。
+
+1. **[パートナー]** ペインで、 **[追加]** を選択します。
+
+1. **[パートナーの追加]** ペインで、パートナーに関する次の情報を指定します。
 
    | プロパティ | 必須 | 説明 |
    |----------|----------|-------------|
    | **名前** | はい | パートナーの名前 |
-   | **修飾子** | はい | 組織に固有のビジネス ID を提供する認証機関。たとえば、**D-U-N-S (Dun & Bradstreet)** 。 <p>パートナーは、相互に定義されたビジネス ID を選ぶことができます。 これらのシナリオでは、EDIFACT に対して **[相互定義]** を選び、X12 に対して **[相互定義 (X12)]** を選びます。 <p>RosettaNet の場合は、標準の **[DUNS]** のみを選びます。 |
-   | **Value** | はい | 自分のロジック アプリが受け取るドキュメントを識別する値。 <p>RosettaNet の場合、この値は DUNS 番号に対応する 9 桁の数字である必要があります。 |
+   | **修飾子** | はい | 組織に固有のビジネス ID を提供する認証機関。たとえば、**D-U-N-S (Dun & Bradstreet)** 。 <p>パートナーは、相互に定義されたビジネス ID を選ぶことができます。 これらのシナリオでは、EDIFACT に対して **[相互定義]** を選び、X12 に対して **[相互定義 (X12)]** を選びます。 <p>RosettaNet の場合は、標準の **[DUNS]** のみを選びます。 <p>**重要**: 統合アカウントのパートナーが契約に参加し、互いにメッセージを交換するには、同じまたは互換性のある修飾子を使用する必要があります。 |
+   | **Value** | はい | 自分のロジック アプリが受け取るドキュメントを識別する値。 <p>RosettaNet を使用するパートナーの場合、この値は DUNS 番号に対応する 9 桁の数字である必要があります。 最初にパートナーを作成してから、[それらパートナーの定義を後で編集する](#edit-partner)ことで、RosettaNet パートナーの分類や連絡先情報などの追加情報を指定できます。 |
    ||||
 
-   > [!NOTE]
-   > RosettaNet を使用するパートナーの場合は、最初にこれらのパートナーを作成し、[それを後で編集する](#edit-partner)ことによって、追加情報を指定することができます。
+1. 終了したら、 **[OK]** を選択します。
 
-1. 完了したら、 **[OK]** を選びます。
-
-   新しいパートナーが **[パートナー]** の一覧に表示されます。 さらに、 **[パートナー]** タイル上の現在のパートナー数が更新されます。
-
-   ![新しいパートナー](./media/logic-apps-enterprise-integration-partners/new-partner.png)
+   パートナーが **[パートナー]** の一覧に表示されます。
 
 <a name="edit-partner"></a>
 
-## <a name="edit-partner"></a>パートナーを編集する
+## <a name="edit-a-partner"></a>パートナーを編集する
 
-1. [Azure ポータル](https://portal.azure.com)で、統合アカウントを検索して選択します。
-**[パートナー]** タイルを選びます。
+1. [Azure portal](https://portal.azure.com) で、統合アカウントを開きます。
 
-   ![[パートナー] タイルを選ぶ](./media/logic-apps-enterprise-integration-partners/edit.png)
+1. 統合アカウント メニューの **[設定]** で、 **[パートナー]** を選択します。
 
-1. **[パートナー]** で、編集するパートナーを選び、 **[編集]** を選びます。 **[編集]** で、変更を加えます。
+1. **[パートナー]** ペインでパートナーを選択し、 **[編集]** を選択して変更を加えます。
 
-   ![変更して保存する](./media/logic-apps-enterprise-integration-partners/edit-partner.png)
-
-   RosettaNet の場合、 **[RosettaNet パートナーのプロパティ]** で、次の追加情報を指定できます。
+   RosettaNet を使用するパートナーの場合は、 **[RosettaNet パートナーのプロパティ]** の下で、次の表に示す詳細を指定できます。
 
    | プロパティ | 必須 | 説明 |
    |----------|----------|-------------|
@@ -94,18 +90,20 @@ ms.locfileid: "91565073"
    | **電話** | いいえ | パートナーの電話番号 |
    ||||
 
-1. 完了したら、 **[OK]** を選択して変更を保存します。
+1. 終了したら、 **[OK]** を選択します。
 
-## <a name="delete-partner"></a>パートナーを削除する
+<a name="delete-partner"></a>
 
-1. [Azure ポータル](https://portal.azure.com)で、統合アカウントを検索して選択します。 **[パートナー]** タイルを選びます。
+## <a name="delete-a-partner"></a>パートナーを削除する
 
-   ![パートナーを削除するときに選択した [パートナー] タイルを示すスクリーンショット。](./media/logic-apps-enterprise-integration-partners/choose-partners-to-delete.png)
+1. [Azure portal](https://portal.azure.com) で、統合アカウントを開きます。
 
-1. **[パートナー]** で、削除するパートナーを選びます。 **[削除]** を選択します。
+1. 統合アカウント メニューの **[設定]** で、 **[パートナー]** を選択します。
 
-   ![パートナーを削除する](./media/logic-apps-enterprise-integration-partners/delete-partner.png)
+1. **[パートナー]** ペインで削除するパートナーを選択し、 **[削除]** を選択します。
 
-## <a name="next-steps"></a>次のステップ
+1. パートナーの削除を確定するには、 **[はい]** を選択します。
 
-* [契約](../logic-apps/logic-apps-enterprise-integration-agreements.md)の詳細について学習します
+## <a name="next-steps"></a>次の手順
+
+* [パートナー間に契約を追加する](logic-apps-enterprise-integration-agreements.md)

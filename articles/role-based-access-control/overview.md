@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 05/17/2021
 ms.author: rolyon
 ms.custom: contperf-fy21q1, azuread-video-2020
-ms.openlocfilehash: 9126b3a915f9d457b51a69a4cef9a79003597c31
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 3b731b83264802884bba01ed3c32db6152d0a4f9
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110091138"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129356120"
 ---
 # <a name="what-is-azure-role-based-access-control-azure-rbac"></a>Azure ロールベースのアクセス制御 (Azure RBAC) とは
 
@@ -48,7 +48,7 @@ Azure RBAC を使用してリソースへのアクセスを制御するには、
 
 ### <a name="role-definition"></a>ロール定義
 
-*ロール定義* はアクセス許可のコレクションです。 通常は単に "*ロール*" と呼ばれます。 ロール定義には、実行できる操作 (読み取り、書き込み、削除など) が登録されています。 ロールは、所有者のように高レベルにすることも、仮想マシン リーダーのように限定することもできます。
+*ロール定義* はアクセス許可のコレクションです。 通常は単に "*ロール*" と呼ばれます。 ロール定義には、実行できるアクション (読み取り、書き込み、削除など) が登録されています。 ロールは、所有者のように高レベルにすることも、仮想マシン リーダーのように限定することもできます。
 
 ![ロールの割り当てのためのロール定義の例を示す図](./media/shared/rbac-role-definition.png)
 
@@ -58,7 +58,7 @@ Azure には複数の[組み込みロール](built-in-roles.md)があり、使�
 
 >[!VIDEO https://www.youtube.com/embed/I1mefHptRgo]
 
-Azure には、オブジェクト内のデータへのアクセスを許可できるようにするデータ操作が用意されています。 たとえば、ユーザーがあるストレージ アカウントへのデータの読み取りアクセス許可を持っている場合、そのユーザーはそのストレージ アカウント内の BLOB またはメッセージを読み取ることができます。
+Azure には、オブジェクト内のデータへのアクセスを許可できるようにするデータ アクションが用意されています。 たとえば、ユーザーがあるストレージ アカウントへのデータの読み取りアクセス許可を持っている場合、そのユーザーはそのストレージ アカウント内の BLOB またはメッセージを読み取ることができます。
 
 詳細については、[Azure ロールの定義の概要](role-definitions.md)に関するページを参照してください。
 

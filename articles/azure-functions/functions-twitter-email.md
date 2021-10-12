@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/10/2021
 ms.author: cshoe
 ms.custom: devx-track-csharp, mvc, cc996988-fb4f-47
-ms.openlocfilehash: f4f911feef354e4f2bd1f947bef6418615b74ca2
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0ff31245f739085ac2c8c1381df93a52e837d3a1
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121750231"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129232111"
 ---
 # <a name="tutorial-create-a-function-to-integrate-with-azure-logic-apps"></a>チュートリアル: Azure Logic Apps と統合される関数を作成する
 

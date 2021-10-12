@@ -53,7 +53,7 @@ Azure Sentinel には、Microsoft 365 Defender (旧 Microsoft Threat Protection)
     | ヨーロッパ<br>フランス | ヨーロッパ |
     | オーストラリア | オーストラリア |
     | イギリス | イギリス |
-    | Canada | Canada |
+    | カナダ | カナダ |
     | 日本 | 日本 |
     | アジア太平洋 | アジア太平洋 * |
     | ブラジル | ブラジル * |

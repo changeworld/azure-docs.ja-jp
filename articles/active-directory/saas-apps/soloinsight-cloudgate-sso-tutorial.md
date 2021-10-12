@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/24/2021
+ms.date: 09/01/2021
 ms.author: jeedes
-ms.openlocfilehash: 7c52a14ce1115be6efcaf99a29f9ee7ca1836c71
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: f21c120374a7e6a42c5bb98a1db8687f00aba548
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110452672"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124778478"
 ---
 # <a name="tutorial-integrate-soloinsight-cloudgate-sso-with-azure-active-directory"></a>チュートリアル: Soloinsight-CloudGate SSO と Azure Active Directory の統合
 
@@ -38,6 +38,7 @@ ms.locfileid: "110452672"
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 * Soloinsight-CloudGate SSO では、**SP** によって開始される SSO がサポートされます。
+* Soloinsight-CloudGate SSO では、[自動化されたユーザー プロビジョニング](soloinsight-cloudgate-sso-provisioning-tutorial.md)がサポートされます。
 
 ## <a name="add-soloinsight-cloudgate-sso-from-the-gallery"></a>ギャラリーから Soloinsight-CloudGate SSO を追加する
 
@@ -67,13 +68,13 @@ Soloinsight-CloudGate SSO に対して Azure AD SSO を構成してテストす�
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **Soloinsight-CloudGate SSO** アプリケーション統合ページで、**[管理]** セクションを見つけて、**[シングル サインオン]** を選択します。
+1. Azure portal の **Soloinsight-CloudGate SSO** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集/ペン アイコンをクリックして設定を編集します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[基本的な SAML 構成]** ページで、次のフィールドの値を入力します。
+1. **[基本的な SAML 構成]** ページで、次の手順を実行します。
 
     1. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<SUBDOMAIN>.sigateway.com/login`
 
@@ -172,6 +173,9 @@ Soloinsight-CloudGate SSO に対して Azure AD SSO を構成してテストす�
 
 ![テスト用の従業員](./media/soloinsight-cloudgate-sso-tutorial/employee-test.png)
 
+> [!NOTE]
+> Soloinsight-CloudGate SSO では、自動ユーザー プロビジョニングもサポートされます。自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](./soloinsight-cloudgate-sso-provisioning-tutorial.md)をご覧ください。
+
 ## <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
@@ -180,7 +184,7 @@ Soloinsight-CloudGate SSO に対して Azure AD SSO を構成してテストす�
 
 * Soloinsight-CloudGate SSO のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで Soloinsight-CloudGate SSO タイルをクリックすると、Soloinsight-CloudGate SSO のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで Soloinsight-CloudGate SSO タイルをクリックすると、Soloinsight-CloudGate SSO のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

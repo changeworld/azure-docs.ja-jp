@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/06/2020
 ms.author: pafarley
-ms.openlocfilehash: 644fa7a26a2bfed80f14ded790dff2aff02392ee
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 5d1604c0b7e9f9dff3b52e3666c024a58fe14ed1
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123542895"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129378539"
 ---
 Speech Service の中核となる機能の 1 つは、人間の音声を認識して文字起こしをする機能です (多くの場合、音声テキスト変換と呼ばれます)。 このクイックスタートでは、アプリや製品で Speech SDK を使用し、高品質の音声テキスト変換を実行する方法について説明します。
 
@@ -233,7 +233,7 @@ config->SetSpeechRecognitionLanguage("de-DE");
 >
 > フレーズ リスト機能は、数百個以下のフレーズで使用する必要があります。 リストが大きい場合、または現在サポートされていない言語の場合は、精度を向上させるために[カスタム モデルをトレーニングする](../../../custom-speech-overview.md)方が適している可能性があります。
 >
-> カスタム エンドポイントでフレーズ リスト機能を使用しないでください。 代わりに、フレーズを含むカスタム モデルをトレーニングします。
+> フレーズ リスト機能は、カスタム エンドポイントではサポートされていません。 カスタム エンドポイントではこれを使用しないでください。 代わりに、フレーズを含むカスタム モデルをトレーニングします。
 
 フレーズ リストを使用するには、まず [`PhraseListGrammar`](/cpp/cognitive-services/speech/phraselistgrammar) オブジェクトを作成します。次に、[`AddPhrase`](/cpp/cognitive-services/speech/phraselistgrammar#addphrase) を使用して特定の単語と語句を追加します。
 

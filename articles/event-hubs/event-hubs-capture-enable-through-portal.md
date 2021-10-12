@@ -2,13 +2,13 @@
 title: Event Hubs - Azure portal を使用してストリーミング イベントをキャプチャする
 description: この記事では、Azure portal を使用し、Azure Event Hubs からストリーム配信されるイベントのキャプチャを有効にする方法について説明します。
 ms.topic: quickstart
-ms.date: 06/23/2020
-ms.openlocfilehash: b603af17ca4e46b8004b7b2550cddd87164da157
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.date: 09/16/2021
+ms.openlocfilehash: e11eb8aedce9d0ae447e7b6908d17e4c70671f7d
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122253639"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129273055"
 ---
 # <a name="enable-capturing-of-events-streaming-through-azure-event-hubs"></a>Azure Event Hubs からストリーム配信されるイベントのキャプチャを有効にする
 
@@ -81,18 +81,16 @@ Capture は、Event Hubs 名前空間内の既存のイベント ハブに対し
 
 ### <a name="azure-blob-storage"></a>Azure Blob Storage
 
-![Azure Blob Storage の構成][2]
+:::image type="content" source="./media/event-hubs-capture-enable-through-portal/event-hubs-capture2.png" alt-text="既存のイベント ハブに対して Azure ストレージへのキャプチャを構成します。":::
 
 ### <a name="azure-data-lake-storage-gen-2"></a>Azure Data Lake Storage Gen 2
-
-![Azure Data Lake Storage Gen 2 の構成](./media/event-hubs-capture-enable-through-portal/configure-data-lake-storage-gen2.png)
+Azure Data Lake Storage Gen 2 アカウントからコンテナーを選択することを除き、上の (Azure Blob Storage の場合) と同じです。 
 
 ### <a name="azure-data-lake-storage-gen-1"></a>Azure Data Lake Storage Gen 1 
 
 ![Azure Data Lake Storage の構成][4]
 
 [1]: ./media/event-hubs-capture-enable-through-portal/event-hubs-capture1.png
-[2]: ./media/event-hubs-capture-enable-through-portal/event-hubs-capture2.png
 [3]: ./media/event-hubs-capture-enable-through-portal/event-hubs-capture3.png
 [4]: ./media/event-hubs-capture-enable-through-portal/event-hubs-capture4.png
 

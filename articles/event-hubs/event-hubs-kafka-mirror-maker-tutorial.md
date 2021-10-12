@@ -25,7 +25,7 @@ ms.locfileid: "113286414"
 このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
 > * Event Hubs 名前空間を作成します
-> * サンプル プロジェクトを複製する
+> * サンプル プロジェクトをクローンする
 > * Kafka クラスターを設定する
 > * Kafka MirrorMaker を構成する
 > * Kafka MirrorMaker を実行する
@@ -57,7 +57,7 @@ Event Hubs サービスとの間で送受信を行うには、イベント ハ�
 
 ## <a name="clone-the-example-project"></a>サンプル プロジェクトを複製する
 
-Event Hubs の接続文字列が用意できたので、Kafka 用 Azure Event Hubs リポジトリを複製し、`mirror-maker` サブフォルダーに移動します。
+Event Hubs の接続文字列が用意できたので、Kafka 用 Azure Event Hubs リポジトリをクローンし、`mirror-maker` サブフォルダーに移動します。
 
 ```shell
 git clone https://github.com/Azure/azure-event-hubs-for-kafka.git
@@ -91,7 +91,7 @@ client.id=mirror_maker_consumer
 
 #### <a name="producer-configuration"></a>プロデューサーの構成
 
-次に、プロデューサー構成ファイル `mirror-eventhub.config` を更新し、複製された (つまり "ミラーリングされた") データを Event Hubs サービスに送るよう MirrorMaker に指示します。 具体的には、`bootstrap.servers` と `sasl.jaas.config` を、Event Hubs Kafka エンドポイントを指すように変更します。 Event Hubs サービスにはセキュリティで保護された (SASL) 通信が必要であり、これは次の構成の最後の 3 つのプロパティを設定することによって実現します。 
+次に、プロデューサー構成ファイル `mirror-eventhub.config` を更新し、クローンされた (つまり "ミラーリングされた") データを Event Hubs サービスに送るよう MirrorMaker に指示します。 具体的には、`bootstrap.servers` と `sasl.jaas.config` を、Event Hubs Kafka エンドポイントを指すように変更します。 Event Hubs サービスにはセキュリティで保護された (SASL) 通信が必要であり、これは次の構成の最後の 3 つのプロパティを設定することによって実現します。 
 
 ##### <a name="mirror-eventhubconfig"></a>mirror-eventhub.config
 

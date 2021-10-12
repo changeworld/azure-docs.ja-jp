@@ -5,12 +5,12 @@ metadata:
   ms.topic: article
   ms.service: backup
   ms.date: 04/05/2021
-  ms.openlocfilehash: ff157a3d8e744dffd314525a053b8c3ca1ab8999
-  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+  ms.openlocfilehash: d4877b7346e9854748f6106ca881732c549e98a1
+  ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/17/2021
-  ms.locfileid: "122252499"
+  ms.lasthandoff: 09/29/2021
+  ms.locfileid: "129271671"
 title: よく寄せられる質問 - Microsoft Azure Recovery Services (MARS) エージェント
 summary: >
   この記事では、[Azure Backup](backup-overview.md) サービスにある Microsoft Azure Recovery Services (MARS) エージェントを使ったデータのバックアップに関する一般的な質問への回答を示します。
@@ -84,6 +84,10 @@ sections:
   - question: >
       コンテナーのサブスクリプションを別の Azure AD ディレクトリに転送した場合の MARS エージェントのバックアップには、どのような影響がありますか?
     answer: "Azure AD ディレクトリの変更は、MARS エージェントのバックアップに影響しません。 \n"
+  - question: >
+      予定の週間、月間、年間バックアップが失敗した場合はどうなりますか?
+    answer: >
+      バックアップに失敗した場合、予定の週間、月間、年間バックアップの後、次に成功したバックアップが、バックアップ ポリシーに基づき、それぞれ週間、月間、年間の復旧ポイント (Long Term Retention (LTR) ポイント) の保持期間に従って保持されます。 この正常なバックアップは、MARS Agent の場合、アドホック バックアップまたはスケジュールされたバックアップになることがあります。
 - name: バックアップの管理
   questions:
   - question: >

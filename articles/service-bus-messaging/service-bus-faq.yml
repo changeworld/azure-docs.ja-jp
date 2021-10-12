@@ -5,12 +5,12 @@ metadata:
   ms.topic: article
   ms.service: service-bus
   ms.date: 01/20/2021
-  ms.openlocfilehash: 8502e0b908133432ebffbb27108e45a8a605cc17
-  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+  ms.openlocfilehash: e364e9719962263e52aa404d8656729b27c72406
+  ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/17/2021
-  ms.locfileid: "122254234"
+  ms.lasthandoff: 10/01/2021
+  ms.locfileid: "129359432"
 title: Azure Service Bus - よく寄せられる質問 (FAQ)
 summary: >
   この記事では、Microsoft Azure Service Bus についてよく寄せられる質問 (FAQ) とその回答について説明します。 Azure の価格およびサポートに関する一般的な情報については、「[Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq/)」も参照してください。
@@ -43,7 +43,7 @@ sections:
 
       Azure Service Bus の Premium レベルでは、選択されたリージョンにメタデータとデータが格納されます。 Azure Service Bus の Premium 名前空間に対して geo ディザスター リカバリーを設定すると、メタデータは、選択されたセカンダリ リージョンにコピーされます。
   - question: "ファイアウォールで開く必要があるのはどのポートですか。 \n"
-    answer: "Azure Service Bus でメッセージを送受信する場合、次のプロトコルを使用できます。\n\n- Advanced Message Queuing Protocol 1.0 (AMQP)\n- TLS を使用したハイパーテキスト転送プロトコル 1.1 (HTTPS)\n\nこれらのプロトコルを使用して Azure Service Bus と通信するために開く必要がある送信 TCP ポートについては、次の表を参照してください。\n\n| Protocol | ポート | 詳細 | \n| -------- | ----- | ------- | \n| AMQP | 5671 | TLS を使用した AMQP。 [AMQP プロトコル ガイド](service-bus-amqp-protocol-guide.md)に関するページを参照してください | \n| HTTPS | 443 | このポートは、HTTP/REST API と AMQP (WebSocket 経由) で使用されます。 |\n\n通常、HTTPS ポートは、ポート 5671 で AMQP が使用されている場合に送信通信にも必要です。これは、クライアント SDK によって実行されるいくつかの管理操作と Azure Active Directory からのトークンの取得 (使用する場合) が HTTPS 経由で実行されるためです。 \n\n公式の Azure SDK では、通常、Service Bus に対するメッセージの送受信で AMQP プロトコルが使用されます。 \n\n[!INCLUDE [service-bus-websockets-options](./includes/service-bus-websockets-options.md)]\n\n.NET Framework の以前の WindowsAzure.ServiceBus パッケージには、従来の \"Service Bus Messaging Protocol\" (SBMP) を使用するオプションがあります。これは \"NetMessaging\" とも呼ばれます。 このプロトコルでは、TCP ポート 9350 から 9354 が使用されます。 このパッケージの既定のモードでは、これらのポートが通信に使用できるかどうかが自動的に検出されます。そうでない場合は、ポート 443 経由での TLS を使用した WebSocket に切り替えられます。 この設定をオーバーライドきして、このモードを強制するには、[`ServiceBusEnvironment.SystemConnectivity`](/dotnet/api/microsoft.servicebus.servicebusenvironment.systemconnectivity) 設定に `Https` [CConnectivityMode](/dotnet/api/microsoft.servicebus.connectivitymode) を設定します。これは、アプリケーションにグローバルに適用されます。\n"
+    answer: "Azure Service Bus でメッセージを送受信する場合、次のプロトコルを使用できます。\n\n- Advanced Message Queuing Protocol 1.0 (AMQP)\n- TLS を使用したハイパーテキスト転送プロトコル 1.1 (HTTPS)\n\nこれらのプロトコルを使用して Azure Service Bus と通信するために開く必要がある送信 TCP ポートについては、次の表を参照してください。\n\n| Protocol | ポート | 詳細 | \n| -------- | ----- | ------- | \n| AMQP | 5671 | TLS を使用した AMQP。 [AMQP プロトコル ガイド](service-bus-amqp-protocol-guide.md)に関するページを参照してください | \n| HTTPS | 443 | このポートは、HTTP/REST API と AMQP (WebSocket 経由) で使用されます。 |\n\n通常、HTTPS ポートは、ポート 5671 で AMQP が使用されている場合に送信通信にも必要です。これは、クライアント SDK によって実行されるいくつかの管理操作と Azure Active Directory からのトークンの取得 (使用する場合) が HTTPS 経由で実行されるためです。 \n\n公式の Azure SDK では、通常、Service Bus に対するメッセージの送受信で AMQP プロトコルが使用されます。 \n\n[!INCLUDE [service-bus-websockets-options](./includes/service-bus-websockets-options.md)]          \n"
   - question: >
       どのような IP アドレスを許可リストに追加する必要がありますか。
     answer: "接続の許可リストに追加する適切な IP アドレスを検索するには、次の手順を実行します。\n\n1. コマンド プロンプトで、次のコマンドを実行します。 \n\n    ```\n    nslookup <YourNamespaceName>.servicebus.windows.net\n    ```\n2. `Non-authoritative answer` で返された IP アドレスをメモします。 \n\n名前空間に **ゾーン冗長性** を使用している場合は、次の追加手順を実行する必要があります。 \n\n1. まず、名前空間に対して nslookup を実行します。\n\n    ```\n    nslookup <yournamespace>.servicebus.windows.net\n    ```\n2. **non-authoritative answer** セクションの名前をメモします。これは、次のいずれかの形式になります。 \n\n    ```\n    <name>-s1.cloudapp.net\n    <name>-s2.cloudapp.net\n    <name>-s3.cloudapp.net\n    ```\n3. s1、s2、s3 のサフィックスが付いているそれぞれについて nslookup を実行し、3 つの可用性ゾーンで実行されている 3 つのインスタンスすべての IP アドレスを取得します。 \n\n    > [!NOTE]\n    > `nslookup` コマンドによって返された IP アドレスは、静的 IP アドレスではありません。 ただし、基になるデプロイが削除されるか別のクラスターに移動されるまでは変わりません。\n"

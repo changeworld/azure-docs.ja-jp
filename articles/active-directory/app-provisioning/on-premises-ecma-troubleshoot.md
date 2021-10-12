@@ -11,12 +11,12 @@ ms.date: 08/24/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe1da3615d835b6a2d828fdbca989c805a9f9b17
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: cae6f7285618771f2486c62bfbd3d532db146c8a
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122823082"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129350617"
 ---
 # <a name="troubleshoot-ecma-connector-host-issues"></a>ECMA Connector Host に関する問題のトラブルシューティング
 
@@ -187,7 +187,7 @@ Azure AD からプロビジョニング エージェントやコネクタ ホス
 
 この問題は、通常、ローカルの PowerShell 実行ポリシーのせいで、エージェントで PowerShell 登録スクリプトを実行できないことが原因で発生します。
 
-この問題を解決するには、サーバー上の PowerShell 実行ポリシーを変更します。 マシンとユーザーのポリシーを *Undefined* または *RemoteSigned* に設定する必要があります。 *Unrestricted* として設定されている場合、このエラーが表示されます。 詳細については、[PowerShell 実行ポリシー](/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6)に関する記事を参照してください。 
+この問題を解決するには、サーバー上の PowerShell 実行ポリシーを変更します。 マシンとユーザーのポリシーを *Undefined* または *RemoteSigned* に設定する必要があります。 *Unrestricted* として設定されている場合、このエラーが表示されます。 詳細については、[PowerShell 実行ポリシー](/powershell/module/microsoft.powershell.core/about/about_execution_policies)に関する記事を参照してください。 
 
 ### <a name="log-files"></a>ログ ファイル
 
@@ -227,7 +227,4 @@ Azure AD を使用することにより、クラウドでプロビジョニン�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure AD ECMA Connector Host のインストール](on-premises-ecma-install.md)
-- [Azure AD ECMA Connector Host の構成](on-premises-ecma-configure.md)
-- [汎用 SQL コネクタ](on-premises-sql-connector-configure.md)
 - [チュートリアル: ECMA Connector Host の汎用 SQL コネクタ](tutorial-ecma-sql-connector.md)

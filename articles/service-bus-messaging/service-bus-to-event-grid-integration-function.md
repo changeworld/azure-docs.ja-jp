@@ -4,15 +4,15 @@ description: この記事では、Azure Functions を使用して Event Grid 経
 documentationcenter: .net
 author: spelluru
 ms.topic: tutorial
-ms.date: 06/23/2020
+ms.date: 09/29/2021
 ms.author: spelluru
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fb18eb5df675690a6bb5b796349c140a61949df1
-ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
+ms.openlocfilehash: 46dc7a9ac1b985c116162f60c58afb0e8dff9c3a
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2021
-ms.locfileid: "122207429"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129273161"
 ---
 # <a name="tutorial-respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-functions"></a>チュートリアル:Azure Functions を使用して、Azure Event Grid 経由で受信した Azure Service Bus のイベントに応答する
 このチュートリアルでは、Azure Functions と Azure Logic Apps を使用して、Azure Event Grid 経由で受信した Azure Service Bus イベントに応答する方法について説明します。 
@@ -44,6 +44,8 @@ ms.locfileid: "122207429"
 1. **発行** ウィザードの **[Target]\(ターゲット\)** ページで、 **[Target]\(ターゲット\)** に **[Azure]** を選択します。 
 1. **[特定のターゲット]** ページで **[Azure Function App (Windows)]** を選択します。 
 1. **[Functions インスタンス]** ページで **[新しい Azure 関数の作成]** を選択します。 
+
+    :::image type="content" source="./media/service-bus-to-event-grid-integration-example/add-function-button.png" alt-text="Visual Studio - [発行] ダイアログ ボックスの関数の追加ボタンの画像。":::
 1. **[Function App (Windows)]** ページで、以下の手順に従います。
     1. 関数アプリの **名前** を入力します。
     1. Azure **サブスクリプション** を選択します。

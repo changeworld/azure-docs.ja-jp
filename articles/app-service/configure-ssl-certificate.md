@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 05/13/2021
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 27e17c5adeb7ab5a55b4783bac86301ba4237f45
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: cf15fd428c7e487b82823586be6edfd21f6cab48
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123538203"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129057400"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>Azure App Service で TLS/SSL 証明書を追加する
 
@@ -70,12 +70,13 @@ TLS バインドでカスタム ドメインをセキュリティで保護する
 - ワイルドカード証明書はサポートされません。
 - 証明書拇印別にクライアント証明書として使用することはできません (証明書拇印の削除が予定されています)。
 - エクスポートはできません。
+- パブリック アクセスできない App Service ではサポートされていません。
 - App Service Environment (ASE) ではサポートされません。
 - Traffic Manager と統合されたルート ドメインではサポートされません。
 - 証明書が CNAME でマップされるドメイン向けの場合、CNAME を `<app-name>.azurewebsites.net` に直接マップする必要があります。
 
 > [!NOTE]
-> 無料の証明書は DigiCert によって発行されます。 一部のトップレベル ドメインでは、[CAA ドメイン レコード](https://wikipedia.org/wiki/DNS_Certification_Authority_Authorization)を `0 issue digicert.com` の値を使用して作成することによって、DigiCert を証明書の発行者として明示的に許可する必要があります。
+> 無料の証明書は DigiCert によって発行されます。 一部のドメインでは、[CAA ドメイン レコード](https://wikipedia.org/wiki/DNS_Certification_Authority_Authorization)を `0 issue digicert.com` の値を使用して作成することによって、DigiCert を証明書の発行者として明示的に許可する必要があります。
 > 
 
 <a href="https://portal.azure.com" target="_blank">Azure portal</a> で、左側のメニューから **[App Services]**  >  **\<app-name>** を選択します。
@@ -131,7 +132,7 @@ App Service 証明書を購入するには、「[証明書の注文を開始す�
 | 法律条項 | クリックして法律条項に同意したことを確認します。 証明書は GoDaddy から取得されます。 |
 
 > [!NOTE]
-> Azure から購入した App Service 証明書は、GoDaddy によって発行されます。 一部のトップレベル ドメインでは、[CAA ドメイン レコード](https://wikipedia.org/wiki/DNS_Certification_Authority_Authorization)を `0 issue godaddy.com` の値を使用して作成することによって、GoDaddy を証明書の発行者として明示的に許可する必要があります。
+> Azure から購入した App Service 証明書は、GoDaddy によって発行されます。 一部のドメインでは、[CAA ドメイン レコード](https://wikipedia.org/wiki/DNS_Certification_Authority_Authorization)を `0 issue godaddy.com` の値を使用して作成することによって、GoDaddy を証明書の発行者として明示的に許可する必要があります。
 > 
 
 ### <a name="store-in-azure-key-vault"></a>Azure Key Vault に格納する
@@ -331,6 +332,9 @@ IIS または _Certreq.exe_ を使用して証明書の要求を生成した場�
 3. 既存の証明書を削除します。
 
 ### <a name="renew-an-app-service-certificate"></a>App Service 証明書を更新する
+
+> [!NOTE]
+> 2021 年 9 月 23 日以降、App Service 証明書では、395 日おきにドメイン検証が必要になります。 App Service マネージド証明書とは異なり、App Service 証明書のドメイン再検証は自動化されません。
 
 > [!NOTE]
 > 更新プロセスでは、[App Service の既知のサービスプリンシパルが key vault に対して必要なアクセス許可を持っている](deploy-resource-manager-template.md#deploy-web-app-certificate-from-key-vault)必要があります。 このアクセス許可はポータルから App Service 証明書をインポートするときに構成されます。キー コンテナーから削除することはできません。

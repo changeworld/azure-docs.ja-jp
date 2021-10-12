@@ -1,15 +1,15 @@
 ---
 title: 'クイックスタート: カスタム イベントを Event Hubs に送信する - Event Grid、Azure CLI'
 description: クイック スタート:Azure Event Grid と Azure CLI を使用して、トピックを発行したり、そのイベントをサブスクライブしたりします。 イベント ハブは、エンドポイントで使用されます。
-ms.date: 07/07/2020
+ms.date: 09/28/2021
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 37523e907eb891a326c8dbe975593554958a44b9
-ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
+ms.openlocfilehash: f725af009f8c2b8f8c4595865d6d746ff9f55849
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107897921"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129230165"
 ---
 # <a name="quickstart-route-custom-events-to-azure-event-hubs-with-azure-cli-and-event-grid"></a>クイックスタート: Azure CLI と Event Grid を使用してカスタム イベントを Azure Event Hubs にルーティングする
 
@@ -37,6 +37,9 @@ Event Grid のトピックは、イベントの送信先となるユーザー定
 
 ```azurecli-interactive
 topicname=<your-topic-name>
+```
+
+```azurecli-interactive
 az eventgrid topic create --name $topicname -l westus2 -g gridResourceGroup
 ```
 
@@ -46,6 +49,9 @@ az eventgrid topic create --name $topicname -l westus2 -g gridResourceGroup
 
 ```azurecli-interactive
 namespace=<unique-namespace-name>
+```
+
+```azurecli-interactive
 hubname=demohub
 
 az eventhubs namespace create --name $namespace --resource-group gridResourceGroup
@@ -94,7 +100,7 @@ done
 
 ポータルでイベント ハブに移動し、Event Grid によって 3 つのイベントがイベント ハブに送信されたことを確認します。
 
-![メッセージを表示する](./media/custom-event-to-eventhub/show-result.png)
+:::image type="content" source="./media/custom-event-to-eventhub/show-result.png" lightbox="./media/custom-event-to-eventhub/show-result.png" alt-text="受信メッセージ数が 3 になっている、ポータル ページの画像。":::
 
 通常は、イベント ハブからイベントを取得するアプリケーションを作成します。 イベント ハブからメッセージを取得するアプリケーションを作成するには、以下を参照してください。
 

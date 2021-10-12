@@ -10,12 +10,12 @@ ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d3a1fe8f4b06601ed6b3e77ffa5743506e923ec4
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 9e610e7ec02ec16d077087dab4742721c4209bfa
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122771752"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129234853"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics でサーバーレス SQL プールのストレージ アカウント アクセスを制御する
 
@@ -36,7 +36,7 @@ Synapse Analytics ワークスペースのサーバーレス SQL プールでは
 
 ## <a name="supported-storage-authorization-types"></a>サポートされているストレージ承認の種類
 
-サーバーレス SQL プールにログインしたユーザーには、Azure Storage 内のファイルにアクセスしてクエリを実行する権限が必要です (ファイルが一般公開されていない場合)。 3 種類の承認 ([ユーザー ID](?tabs=user-identity)、[Shared access signature](?tabs=shared-access-signature)、[マネージド ID](?tabs=managed-identity)) を使用して、非パブリック ストレージにアクセスできます。
+サーバーレス SQL プールにログインしたユーザーには、Azure Storage 内のファイルにアクセスしてクエリを実行する権限が必要です (ファイルが一般公開されていない場合)。 4 種類の認可 ([ユーザー ID](?tabs=user-identity)、[Shared Access Signature](?tabs=shared-access-signature)、[サービス プリンシパル](?tab/service-principal)、[マネージド ID](?tabs=managed-identity)) を使用して、非パブリック ストレージにアクセスできます。
 
 > [!NOTE]
 > **Azure AD パススルー** は、ワークスペースを作成するときの既定の動作です。
@@ -46,7 +46,7 @@ Synapse Analytics ワークスペースのサーバーレス SQL プールでは
 **ユーザー ID** ("Azure AD パススルー" とも呼ばれる) は、サーバーレス SQL プールにログインしている Azure AD ユーザーの ID がデータ アクセスの承認に使用される承認の種類です。 データにアクセスする前に、Azure Storage の管理者が Azure AD ユーザーにアクセス許可を付与する必要があります。 下の表に示されているように、これは SQL ユーザーの種類ではサポートされていません。
 
 > [!IMPORTANT]
-> AAD 認証トークンは、クライアント アプリケーションによってキャッシュされる場合があります。 たとえば、PowerBI は AAD トークンをキャッシュし、1 時間にわたって同じトークンを再利用します。 実行時間の長いクエリの場合、クエリ実行の途中でトークンの有効期限が切れると、失敗する可能性があります。 クエリの途中で AAD アクセス トークンの有効期限が切れたことによってクエリ エラーが発生している場合は、[マネージド ID](develop-storage-files-storage-access-control.md?tabs=managed-identity#supported-storage-authorization-types) または [Shared Access Signature](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#supported-storage-authorization-types) に切り替えることを検討してください。
+> AAD 認証トークンは、クライアント アプリケーションによってキャッシュされる場合があります。 たとえば、PowerBI は AAD トークンをキャッシュし、1 時間にわたって同じトークンを再利用します。 実行時間の長いクエリの場合、クエリ実行の途中でトークンの有効期限が切れると、失敗する可能性があります。 クエリの途中で AAD アクセス トークンの有効期限が切れたことによってクエリ エラーが発生している場合は、[サービス プリンシパル](develop-storage-files-storage-access-control.md?tabs=service-principal#supported-storage-authorization-types)、[マネージド ID](develop-storage-files-storage-access-control.md?tabs=managed-identity#supported-storage-authorization-types)、または [Shared Access Signature](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#supported-storage-authorization-types) に切り替えることを検討してください。
 
 ID を使用してデータにアクセスするには、Storage Blob データの所有者/共同作成者/閲覧者のロールを持っている必要があります。 または、細かい設定が可能な ACL 規則を指定して、ファイルやフォルダーにアクセスすることもできます。 ストレージ アカウントの所有者であっても、Storage Blob データのいずれかのロールに自分自身を追加する必要があります。
 Azure Data Lake Store Gen2 でのアクセス制御の詳細については、「[Azure Data Lake Storage Gen2 のアクセス制御](../../storage/blobs/data-lake-storage-access-control.md)」という記事をご覧ください。
@@ -69,6 +69,14 @@ SAS トークンを使用したアクセスを有効にするには、データ�
 > [!IMPORTANT]
 > SAS トークンを使用してプライベート ストレージ アカウントにアクセスすることはできません。 保護されたストレージにアクセスするには、[マネージド ID](develop-storage-files-storage-access-control.md?tabs=managed-identity#supported-storage-authorization-types) または [Azure AD パススルー](develop-storage-files-storage-access-control.md?tabs=user-identity#supported-storage-authorization-types)認証に切り替えることを検討してください。
 
+
+### <a name="service-principal"></a>[サービス プリンシパル](#tab/service-principal)
+**サービス プリンシパル** は、特定の Azure AD テナント内のグローバル アプリケーション オブジェクトのローカル表現です。 この認証方法は、ユーザー アプリ、サービス、または自動化ツールに対してストレージ アクセスを認可する場合に適しています。 
+
+アプリケーションは Azure Active Directory に登録する必要があります。 登録プロセスについては、「[クイックスタート: Microsoft ID プラットフォームにアプリケーションを登録する](../../active-directory/develop/quickstart-register-app.md)」を参照してください。 アプリケーションが登録されると、そのサービス プリンシパルを認可に使用できるようになります。 
+
+アプリケーションからデータにアクセスできるようにするために、サービス プリンシパルにストレージ BLOB データの所有者、共同作成者、閲覧者ロールを割り当てる必要があります。 サービス プリンシパルがストレージ アカウントの所有者であっても、ストレージ BLOB データの適切なロールが付与されている必要があります。 ストレージ ファイルとフォルダーへのアクセスを許可する別の方法として、サービス プリンシパルに対するきめ細かな ACL 規則を定義できます。 Azure Data Lake Store Gen2 でのアクセス制御の詳細については、「[Azure Data Lake Storage Gen2 のアクセス制御](../../storage/blobs/data-lake-storage-access-control.md)」という記事をご覧ください。
+
 ### <a name="managed-identity"></a>[Managed Identity](#tab/managed-identity)
 
 **マネージ ID** は MSI とも呼ばれます。 これは、サーバーレス SQL プールに Azure サービスを提供する Azure Active Directory (Azure AD) の機能です。 また、Azure AD で自動的に管理される ID をデプロイします。 この ID を使用して、Azure Storage でのデータ アクセスの要求を承認できます。
@@ -81,15 +89,19 @@ SAS トークンを使用したアクセスを有効にするには、データ�
 
 ---
 
+#### <a name="cross-tenant-scenarios"></a>テナント間のシナリオ
+Azure Storage が Synapse サーバーレス SQL プールとは異なるテナントにある場合、**サービス プリンシパル** による認可が推奨される方法です。 **SAS** 認可も可能ですが、**マネージド ID** はサポートされていません。 
+
 ### <a name="supported-authorization-types-for-databases-users"></a>データベース ユーザーに対してサポートされている認可の種類
 
-次の表では、使用可能な認可の種類を確認できます。
+次の表に、Synapse サーバーレス SQL エンドポイントへの異なるログイン方法で使用可能な認可の種類を示します。
 
-| 承認の種類                    | *SQL ユーザー*    | *Azure AD ユーザー*     |
-| ------------------------------------- | ------------- | -----------    |
-| [ユーザー ID](?tabs=user-identity#supported-storage-authorization-types)       | サポートされていません | サポートされています      |
-| [SAS](?tabs=shared-access-signature#supported-storage-authorization-types)       | サポートされています     | サポートされています      |
-| [Managed Identity](?tabs=managed-identity#supported-storage-authorization-types) | サポートされています | サポートされています      |
+| 承認の種類                    | *SQL ユーザー*    | *Azure AD ユーザー*     | *サービス プリンシパル* |
+| ------------------------------------- | ------------- | -----------    | -------- |
+| [ユーザー ID](?tabs=user-identity#supported-storage-authorization-types)       |  サポートされていません | サポートされています      | サポートされています|
+| [SAS](?tabs=shared-access-signature#supported-storage-authorization-types)       | サポートされています     | サポートされています      | サポートされています|
+| [サービス プリンシパル](?tabs=service-principal#supported-storage-authorization-types) | サポートされています | サポートされています      | サポートされています|
+| [Managed Identity](?tabs=managed-identity#supported-storage-authorization-types) | サポートされています | サポートされています      | サポートされています|
 
 ### <a name="supported-storages-and-authorization-types"></a>サポートされているストレージと承認の種類
 
@@ -98,6 +110,7 @@ SAS トークンを使用したアクセスを有効にするには、データ�
 | 承認の種類  | Blob Storage   | ADLS Gen1        | ADLS Gen2     |
 | ------------------- | ------------   | --------------   | -----------   |
 | [SAS](?tabs=shared-access-signature#supported-storage-authorization-types)    | サポートされています      | サポートされていません   | サポートされています     |
+| [サービス プリンシパル](?tabs=managed-identity#supported-storage-authorization-types) | サポートされています   | サポートされています      | サポートされています  |
 | [Managed Identity](?tabs=managed-identity#supported-storage-authorization-types) | サポートされています      | サポートされています        | サポートされています     |
 | [ユーザー ID](?tabs=user-identity#supported-storage-authorization-types)    | サポートされています      | サポートされています        | サポートされています     |
 
@@ -109,6 +122,15 @@ SAS トークンを使用したアクセスを有効にするには、データ�
 > [!NOTE]
 > ストレージに対するファイアウォール機能はパブリック プレビュー段階であり、すべてのパブリック クラウド リージョンで利用できます。 
 
+
+次の表に、Synapse サーバーレス SQL エンドポイントへの異なるログイン方法で使用可能な認可の種類を示します。
+
+| 承認の種類                    | *SQL ユーザー*    | *Azure AD ユーザー*     | *サービス プリンシパル* |
+| ------------------------------------- | ------------- | -----------    | -------- |
+| [ユーザー ID](?tabs=user-identity#supported-storage-authorization-types)       |  サポートされていません | サポートされています      | サポートされています|
+| [SAS](?tabs=shared-access-signature#supported-storage-authorization-types)       | サポートされていません     | サポートされていません      | サポートされていません|
+| [サービス プリンシパル](?tabs=service-principal#supported-storage-authorization-types) | サポートされていません | サポートされていません      | サポートされていません|
+| [Managed Identity](?tabs=managed-identity#supported-storage-authorization-types) | サポートされています | サポートされています      | サポートされています|
 
 ### <a name="user-identity"></a>[ユーザー ID](#tab/user-identity)
 
@@ -193,6 +215,10 @@ SAS トークンを使用したアクセスを有効にするには、データ�
 
 共有アクセス署名を使用して、ファイアウォールで保護されたストレージにアクセスすることはできません。
 
+### <a name="service-principal"></a>[サービス プリンシパル](#tab/service-principal)
+
+サービス プリンシパルを使用して、ファイアウォールで保護されたストレージにアクセスすることはできません。 マネージド ID 認証を代わりに使用します。
+
 ### <a name="managed-identity"></a>[Managed Identity](#tab/managed-identity)
 
 [信頼された Microsoft サービスを許可](../../storage/common/storage-network-security.md#trusted-microsoft-services)する設定を行い、そのリソース インスタンスの[システムによって割り当てられたマネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) に明示的に [Azure ロール](../../storage/blobs/authorize-access-azure-active-directory.md#assign-azure-roles-for-access-rights)を割り当てる必要があります。 この場合、インスタンスのアクセス範囲は、マネージド ID に割り当てられた Azure ロールに対応します。
@@ -263,8 +289,18 @@ GO
 
 必要に応じて、コンテナー名を使用せずに、ストレージ アカウントのベース URL のみを使用できます。
 
-### <a name="managed-identity"></a>[Managed Identity](#tab/managed-identity)
+### <a name="service-principal"></a>[サービス プリンシパル](#tab/service-principal)
 
+次のスクリプトでは、認証と認可のためにサービス プリンシパルを使用してストレージ内のファイルにアクセスするために使用できるサーバー レベル資格情報を作成します。 **AppID** は、Azure portal でアプリの登録にアクセスし、ストレージ アクセスを要求しているアプリを選択することで確認できます。 **Secret** は、アプリの登録中に取得されます。 **AuthorityUrl** は AAD Oauth2.0 機関の URL です。
+
+```sql
+CREATE CREDENTIAL [https://<storage_account>.dfs.core.windows.net/<container>]
+WITH IDENTITY = '<AppID>@<AuthorityUrl>' 
+, SECRET = '<Secret>'
+```
+
+### <a name="managed-identity"></a>[Managed Identity](#tab/managed-identity)
+ 
 次のスクリプトによって作成されるサーバーレベル資格情報は、`OPENROWSET` 関数がワークスペース マネージド ID を使用して Azure Storage 上の任意のファイルにアクセスするために使用できます。
 
 ```sql
@@ -313,6 +349,24 @@ GO
 CREATE EXTERNAL DATA SOURCE mysample
 WITH (    LOCATION   = 'https://<storage_account>.dfs.core.windows.net/<container>/<path>',
           CREDENTIAL = SasToken
+)
+```
+
+
+### <a name="service-principal"></a>[サービス プリンシパル](#tab/service-principal)
+次のスクリプトでは、認証と認可のためにサービス プリンシパルを使用してストレージ内のファイルにアクセスするために使用できるデータベーススコープ資格情報を作成します。 **AppID** は、Azure portal でアプリの登録にアクセスし、ストレージ アクセスを要求しているアプリを選択することで確認できます。 **Secret** は、アプリの登録中に取得されます。 **AuthorityUrl** は AAD Oauth2.0 機関の URL です。
+
+```sql
+-- Optional: Create MASTER KEY if not exists in database:
+-- CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<Very Strong Password>
+
+CREATE DATABASE SCOPED CREDENTIAL [<CredentialName>] WITH
+IDENTITY = '<AppID>@<AuthorityUrl>' 
+, SECRET = '<Secret>'
+GO
+CREATE EXTERNAL DATA SOURCE MyDataSource
+WITH (    LOCATION   = 'https://<storage_account>.dfs.core.windows.net/<container>/<path>',
+          CREDENTIAL = CredentialName
 )
 ```
 
@@ -394,14 +448,18 @@ GO
 CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'Y*********0'
 GO
 
--- Create databases scoped credential that use Managed Identity or SAS token. User needs to create only database-scoped credentials that should be used to access data source:
+-- Create databases scoped credential that use Managed Identity, SAS token or Service Principal. User needs to create only database-scoped credentials that should be used to access data source:
 
 CREATE DATABASE SCOPED CREDENTIAL WorkspaceIdentity
 WITH IDENTITY = 'Managed Identity'
 GO
 CREATE DATABASE SCOPED CREDENTIAL SasCredential
 WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 'sv=2019-10-1********ZVsTOL0ltEGhf54N8KhDCRfLRI%3D'
-
+GO
+CREATE DATABASE SCOPED CREDENTIAL SPNCredential WITH
+IDENTITY = '**44e*****8f6-ag44-1890-34u4-22r23r771098@https://login.microsoftonline.com/**do99dd-87f3-33da-33gf-3d3rh133ee33/oauth2/token' 
+, SECRET = '.7OaaU_454azar9WWzLL.Ea9ePPZWzQee~'
+GO
 -- Create data source that one of the credentials above, external file format, and external tables that reference this data source and file format:
 
 CREATE EXTERNAL FILE FORMAT [SynapseParquetFormat] WITH ( FORMAT_TYPE = PARQUET)
@@ -412,6 +470,7 @@ WITH (    LOCATION   = 'https://<storage_account>.dfs.core.windows.net/<containe
 -- Uncomment one of these options depending on authentication method that you want to use to access data source:
 --,CREDENTIAL = WorkspaceIdentity 
 --,CREDENTIAL = SasCredential 
+--,CREDENTIAL = SPNCredential
 )
 
 CREATE EXTERNAL TABLE dbo.userData ( [id] int, [first_name] varchar(8000), [last_name] varchar(8000) )

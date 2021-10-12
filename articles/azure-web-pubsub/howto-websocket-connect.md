@@ -1,28 +1,29 @@
 ---
-title: Azure Web PubSub サービスへの WebSocket 接続を開始する方法
-description: Azure Web PubSub サービスへの WebSocket 接続を開始する方法の、さまざまな言語での説明。
+title: Azure Web PubSub への WebSocket 接続を開始する方法
+description: さまざまな言語で Azure Web PubSub サービスへの WebSocket 接続を開始する方法について説明します。
 author: vicancy
 ms.author: lianwei
 ms.service: azure-web-pubsub
 ms.topic: how-to
 ms.date: 08/26/2021
-ms.openlocfilehash: 91d326197737ab6dde07bbb72584648cfe025b05
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 939bc5b6c4b272174d99787e89f04a7431a45d68
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123113912"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124827461"
 ---
-#  <a name="how-to-start-websocket-connection-to-the-azure-web-pubsub-service"></a>Azure Web PubSub サービスへの WebSocket 接続を開始する方法
+#  <a name="start-a-websocket-connection-to-azure-web-pubsub"></a>Azure Web PubSub への WebSocket 接続を開始する
 
-クライアントから Azure Web PubSub サービスへの接続には、標準の [WebSocket](https://tools.ietf.org/html/rfc6455) プロトコルが使用されます。 そのため、WebSocket クライアントをサポートする言語を使用して、サービス用のクライアントを作成することができます。 以下のセクションでは、さまざまな言語の WebSocket クライアント サンプルを紹介します。
+クライアントから Azure Web PubSub サービスへの接続には、標準の [WebSocket](https://tools.ietf.org/html/rfc6455) プロトコルが使用されます。 WebSocket クライアントに対応した言語を使用して、サービスのクライアントを作成できます。 この記事では、さまざまな言語の WebSocket クライアントのサンプルをいくつか紹介します。
 
-## <a name="auth"></a>Auth
-Web PubSub サービスには、クライアントの検証と認証に [JWT トークン](https://tools.ietf.org/html/rfc7519.html)が使用されます。 クライアントは、サービスへの接続時に、`access_token` クエリ パラメーターにトークンを配置するか、`Authorization` ヘッダーにトークンを配置することができます。
+## <a name="authorization"></a>承認
 
-一般的なワークフローは、クライアントがまずアプリ サーバーと通信し、サービスの URL とトークンを取得します。 そして、クライアントにより、受け取った URL とトークンが使用され、サービスへの WebSocket 接続が開かれます。
+Web PubSub では、[JSON Web Token (JWT)](https://tools.ietf.org/html/rfc7519.html) を使用してクライアントの検証と認可を行います。 クライアントでは、サービスへの接続時に、トークンを `access_token` クエリ パラメーターに配置するか、`Authorization` ヘッダーに配置することができます。
 
-また、ポータルには、クライアントがクイック テストを開始できるように、トークンを含む動的に生成された *[クライアント URL]* が表示されます。
+一般的に、クライアントではまずアプリ サーバーと通信し、サービスの URL とトークンを取得します。 その後、クライアントでは受け取った URL とトークンを使用して、サービスへの WebSocket 接続を開きます。
+
+また、ポータルでは、トークンを使用してクライアント URL を動的に生成するツールも提供します。 このツールは、簡単なテストを行うのに役立ちます。
 
 :::image type="content" source="./media/howto-websocket-connect/generate-client-url.png" alt-text="クライアント URL ジェネレーターの場所を示すスクリーンショット。":::
 
@@ -30,9 +31,9 @@ Web PubSub サービスには、クライアントの検証と認証に [JWT ト
 > トークンを生成するときには、必要なロールのみを含めるようにしてください。
 >
 
-このサンプル ワークフローを簡略化するために、以下のセクションでは、接続するクライアント用にポータルから一時的に生成された URL を使用し、その値を表すために `<Client_URL_From_Portal>` を使用しています。 生成されるトークンの有効期限は既定で 50 分なので、有効期限が切れた場合は、忘れずに再生成してください。
+次のセクションでは、このサンプル ワークフローを簡略化するために、ポータルから一時的に生成された URL を使用して、クライアントが接続できるようにします。 その値を表すのに、`<Client_URL_From_Portal>` を使用します。 生成されるトークンの有効期限は既定で 50 分なので、有効期限が切れた場合は、忘れずに再生成してください。
 
-このサービスでは、シンプルな WebSocket クライアントと、PubSub WebSocket クライアントの 2 種類の WebSocket クライアントがサポートされています。 ここでは、これら 2 種類のクライアントがサービスに接続する方法について説明します。 これらの 2 種類のクライアントの詳細については、「[Azure Web PubSub 用の WebSocket クライアント プロトコル](./concept-client-protocols.md)」を参照してください。
+このサービスでは、シンプルな WebSocket クライアントと、PubSub WebSocket クライアントの 2 種類の WebSocket クライアントがサポートされています。 ここでは、これら 2 種類のクライアントがサービスに接続する方法について説明します。 これらのクライアントの詳細については、「[Azure Web PubSub の WebSocket クライアント プロトコル](./concept-client-protocols.md)」を参照してください。
 
 ## <a name="dependency"></a>依存関係
 
@@ -64,7 +65,7 @@ Web PubSub サービスには、クライアントの検証と認証に [JWT ト
 
 # <a name="in-browser"></a>[ブラウザー内](#tab/browser)
 
-html ページの `script` ブロック内:
+HTML ページの `script` ブロック内:
 ```html
 <script>
     // Don't forget to replace this <Client_URL_From_Portal> with the value fetched from the portal
@@ -129,7 +130,7 @@ namespace subscriber
             // Don't forget to replace this <Client_URL_From_Portal> with the value fetched from the portal
             using (var client = new WebsocketClient(new Uri("<Client_URL_From_Portal>")))
             {
-                // Disable the auto disconnect and reconnect because the sample would like the client to stay online even no data comes in
+                // Disable the auto disconnect and reconnect because the sample would like the client to stay online even if no data comes in
                 client.ReconnectTimeout = null;
                 client.MessageReceived.Subscribe(msg => Console.WriteLine($"Message received: {msg}"));
                 await client.Start();
@@ -203,7 +204,7 @@ public final class SimpleClient {
 
 # <a name="in-browser"></a>[ブラウザー内](#tab/browser)
 
-html ページの `script` ブロック内:
+HTML ページの `script` ブロック内:
 ```html
 <script>
     // Don't forget to replace this <Client_URL_From_Portal> with the value fetched from the portal
@@ -270,7 +271,7 @@ namespace subscriber
                 return inner;
             }))
             {
-                // Disable the auto disconnect and reconnect because the sample would like the client to stay online even no data comes in
+                // Disable the auto disconnect and reconnect because the sample would like the client to stay online even if no data comes in
                 client.ReconnectTimeout = null;
                 client.MessageReceived.Subscribe(msg => Console.WriteLine($"Message received: {msg}"));
                 await client.Start();
@@ -340,9 +341,9 @@ public final class SubprotocolClient {
 
 ---
 
-## <a name="next-step"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-この記事では、ポータルから生成された URL を使用してサービスに接続する方法について説明します。  実際のアプリケーションで、クライアントがアプリケーション サーバーと通信して URL を取得する方法については、次のチュートリアルを参照してください。
+この記事では、ポータルから生成された URL を使用してサービスに接続する方法について説明しました。 実際のアプリケーションで、クライアントからアプリケーション サーバーに通信して URL を取得する方法については、これらのチュートリアルを参照し、サンプルを確認してください。
 
 > [!div class="nextstepaction"]
 > [チュートリアル: Azure Web PubSub を使用してチャット ルームを作成する](./tutorial-build-chat.md)

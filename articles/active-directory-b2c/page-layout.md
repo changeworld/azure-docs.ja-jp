@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 08/25/2021
+ms.date: 09/22/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: aa60cf86a8bc59b9eed2adc8ac0ba2cfb89be584
-ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
+ms.openlocfilehash: b095b0e53b7d9cd76a7bb0cb92258dc9bda34b3d
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122835612"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128588924"
 ---
 # <a name="page-layout-versions"></a>ページ レイアウト バージョン
 
@@ -56,6 +56,23 @@ ms.locfileid: "122835612"
 
 ## <a name="self-asserted-page-selfasserted"></a>セルフアサート ページ (selfasserted)
 
+**2.1.8**
+
+- 要求名は、ユーザーの属性入力要素を囲む `<li>` HTML 要素の `class` 属性に追加されます。 クラス名を使用すると、特定のユーザー属性入力要素の親 `<li>` を選択する CSS セレクターを作成できます。 次の HTML マークアップは、サインアップ ページのクラス属性を示しています。
+  
+  ```html
+  <div id="attributeList" class="attr">
+    <ul>
+      <li class="EmailBox email_li">...</li>
+      <li class="Password newPassword_li">...</li>
+      <li class="Password reenterPassword_li">...</li>
+      <li class="TextBox displayName_li">...</li>
+      <li class="TextBox givenName_li">...</li>
+      <li class="TextBox surname_li">...</li>
+      <li class="TextBox extension_age_li">...</li>
+    </ul>
+  </div>
+  ```
 **2.1.7**
 - 要求が失敗する原因となっている言語エンコードの問題を修正しました。
 - フォームの送信時にのみインライン エラー メッセージを表示するアクセシビリティのバグを修正しました。

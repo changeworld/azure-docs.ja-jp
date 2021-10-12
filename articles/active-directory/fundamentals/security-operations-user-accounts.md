@@ -12,12 +12,12 @@ ms.date: 07/15/2021
 ms.author: baselden
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0dbaead6f8f3c730cac1393491bb2883f2889e87
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: f78765e7b0d26b2767dabf4b1fdc4ccdd6873123
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114707475"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124803598"
 ---
 # <a name="azure-active-directory-security-operations-for-user-accounts"></a>ユーザー アカウントに対する Azure Active Directory のセキュリティ運用
 
@@ -75,13 +75,13 @@ ms.locfileid: "114707475"
 
 ## <a name="where-to-look"></a>確認先
 
-調査とモニタリングに使用するログ ファイルは次のとおりです。 
+調査と監視に使用するログ ファイルは次のとおりです。 
 
 * [Azure AD 監査ログ](../reports-monitoring/concept-audit-logs.md)
 
 * [サインイン ログ](../reports-monitoring/concept-all-sign-ins.md)
 
-* [Microsoft 365 監査ログ](/microsoft-365/compliance/auditing-solutions-overview?view=o365-worldwide) 
+* [Microsoft 365 監査ログ](/microsoft-365/compliance/auditing-solutions-overview) 
 
 * [Azure Key Vault ログ](../../key-vault/general/logging.md?tabs=Vault)
 
@@ -97,7 +97,7 @@ Azure portal から、Azure AD 監査ログを表示したり、コンマ区切�
 
 * **[Azure Event Hubs](../../event-hubs/event-hubs-about.md) と SIEM の統合**- [Azure Event Hubs 統合を介して、Splunk、ArcSight、QRadar、Sumo Logic などの他の SIEM と Azure AD ログを統合できます](../reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)。
 
-* **[Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security) (MCAS)** - アプリの検出と管理、アプリとリソース全体の管理、クラウド アプリのコンプライアンスの確認を行うことができます。 
+* **[Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security) (MCAS)** – アプリの検出と管理、アプリとリソース全体のガバナンス管理、クラウド アプリのコンプライアンスの確認を行うことができます。 
 
 監視とアラートの対象の多くは、条件付きアクセス ポリシーの影響です。 [条件付きアクセスに関する分析情報とレポートのブック](../conditional-access/howto-conditional-access-insights-reporting.md)を使用すると、サインイン時の 1 つ以上の条件付きアクセス ポリシーの影響と、デバイスの状態などのポリシーの結果を確認できます。 このブックを使用すると、影響の概要を表示し、特定の期間における影響を特定できます。 ブックを使用して、特定のユーザーのサインインを調査することもできます。 
 
@@ -115,7 +115,7 @@ Azure portal から、Azure AD 監査ログを表示したり、コンマ区切�
 
 アカウントの作成と削除に関するデータの軌跡を迅速に発見できなければ、インシデントの調査に必要な情報が存在しなくなる可能性があります。 たとえば、アカウントが削除された後、ごみ箱から消去される場合があります。 監査ログは 30 日間保持されます。 ただし、ログを Azure Monitor またはセキュリティ情報イベント管理 (SIEM) ソリューションにエクスポートすることで、より長期的に保持することができます。 
 
-| [What to monitor] (監視対象)                                                  | リスク レベル | Where               | フィルターとサブフィルター                                                                                                                                         | メモ                                                                                                                               |
+| [What to monitor] (監視対象)                                                  | リスク レベル | Where               | フィルターまたはサブフィルター                                                                                                                                         | メモ                                                                                                                               |
 |------------------------------------------------------------------|------------|---------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
 | 近い期間内のアカウントの作成と削除のイベント。  | 高       | Azure AD 監査ログ | アクティビティ: ユーザーの追加<br>状態 = 成功<br>および<br>アクティビティ: ユーザーの削除<br>状態 = 成功<br>                                                          | ユーザー プリンシパル名 (UPN) イベントを検索します。 24 時間以内に作成され、削除されたアカウントを探します。                          |
 | 承認されていないユーザーまたはプロセスによって作成され、削除されたアカウント。 | Medium     | Azure AD 監査ログ | 開始者 (アクター) - ユーザー プリンシパル名<br>および<br>アクティビティ: ユーザーの追加<br>状態 = 成功<br>および - または<br>アクティビティ: ユーザーの削除<br>状態 = 成功      | アクターが承認されていないユーザーの場合、アラートを送信するように構成します。                                                                    |
@@ -142,7 +142,7 @@ Azure portal から、Azure AD 監査ログを表示したり、コンマ区切�
 
 * 標準の属性が設定されていない、または正しい形式ではないアカウント。 たとえば、有効な従業員 ID がない場合などです。
 
-| [What to monitor] (監視対象)| リスク レベル| Where| フィルターとサブフィルター| メモ |
+| [What to monitor] (監視対象)| リスク レベル| Where| フィルターまたはサブフィルター| メモ |
 | - | - | - | - | - |
 | 想定される属性が定義されていないユーザー アカウント。| 低| Azure AD 監査ログ| アクティビティ: ユーザーの追加<br>状態 = 成功| 標準の属性が null 値または誤った形式のアカウントを探します。 たとえば、EmployeeID |
 | 誤った名前付け形式で作成されたユーザー アカウント。| 低| Azure AD 監査ログ| アクティビティ: ユーザーの追加<br>状態 = 成功| 名前付けポリシーに従わない UPN のアカウントを探します。 |
@@ -169,7 +169,7 @@ Azure portal から、Azure AD 監査ログを表示したり、コンマ区切�
 
 ユーザー アカウントと特権アカウントは、必ず組織のポリシーに従って作成することをお勧めします。 たとえば、正しい名前付け標準、組織の情報、適切な ID ガバナンスのスコープ内でアカウントを作成する必要があります。 ID を作成、管理、および削除する権限を誰が持っているかについて、組織は厳格に管理する必要があります。 このようなアカウントを作成するロールは厳重に管理し、これらのアクセス許可を承認および取得する確立されたワークフローに従った後にのみ、その権限を使用できるようにする必要があります。
 
-| [What to monitor] (監視対象)| リスク レベル| Where| フィルターとサブフィルター| メモ |
+| [What to monitor] (監視対象)| リスク レベル| Where| フィルターまたはサブフィルター| メモ |
 | - | - | - | - | - |
 | 承認されていないユーザーまたはプロセスによって作成または削除されたユーザー アカウント。| Medium| Azure AD 監査ログ| アクティビティ: ユーザーの追加<br>状態 = 成功<br>および - または<br>アクティビティ: ユーザーの削除<br>状態 = 成功<br>および<br>開始者 (アクター) - ユーザー プリンシパル名| 承認されていないユーザーまたはプロセスによって作成されたアカウントについてアラートを生成します。 高い特権を使用して作成されたアカウントを優先します。 |
 | 承認されていないソースから作成または削除されたユーザー アカウント。| Medium| Azure AD 監査ログ| アクティビティ: ユーザーの追加<br>状態 = 成功<br>または<br>アクティビティ: ユーザーの削除<br>状態 = 成功<br>および<br>1 つ以上のターゲット = ユーザー プリンシパル名| 承認されていないドメインまたは既知のブロックされたドメインである場合にアラートを生成します。 |
@@ -184,24 +184,24 @@ Azure portal から、Azure AD 監査ログを表示したり、コンマ区切�
 
 ログの監視とアラートの戦略を設計および運用する際には、Azure portal で使用できるツールを検討してください。 Identity Protection を使用すると、ID ベースのリスク検出、保護、修復を自動化することができます。 Identity Protection には、リスクの検出とユーザーとサインインのリスク スコアの割り当てにインテリジェンス主導型機械学習とヒューリスティック システムが使用されています。お客様は、リスク レベルに基づいて、アクセスを許可または拒否するタイミングや、ユーザーがリスクから安全に自己修復できるようにするためのポリシーを構成することができます。 次に示す Identity Protection のリスク検出を使用すると、今日のリスク レベルがわかります。
 
-| [What to monitor] (監視対象) | リスク レベル | Where | フィルターとサブフィルター | メモ |
+| [What to monitor] (監視対象) | リスク レベル | Where | フィルターまたはサブフィルター | メモ |
 | - | - | - | - | - |
-| 漏えいした資格情報のユーザー リスク検出| 高| Azure AD リスク検出ログ| UX: 漏えいした資格情報 <br><br>API: 「[riskDetection リソースの種類 - Microsoft Graph ベータ](/graph/api/resources/riskdetection?view=graph-rest-beta)」を参照してください| 「[リスクとは - Azure AD Identity Protection](../identity-protection/concept-identity-protection-risks.md)」を参照してください |
-| Azure AD 脅威インテリジェンスのユーザー リスク検出| 高| Azure AD リスク検出ログ| UX: Azure AD 脅威インテリジェンス <br><br>API: 「[riskDetection リソースの種類 - Microsoft Graph ベータ](/graph/api/resources/riskdetection?view=graph-rest-beta)」を参照してください| 「[リスクとは - Azure AD Identity Protection](../identity-protection/concept-identity-protection-risks.md)」を参照してください |
-| 匿名 IP アドレスのサインイン リスク検出| 場合により異なる| Azure AD リスク検出ログ| UX: 匿名 IP アドレス <br><br>API: 「[riskDetection リソースの種類 - Microsoft Graph ベータ](/graph/api/resources/riskdetection?view=graph-rest-beta)」を参照してください| 「[リスクとは - Azure AD Identity Protection](../identity-protection/concept-identity-protection-risks.md)」を参照してください |
-| 通常とは異なる移動のサインイン リスク検出| 場合により異なる| Azure AD リスク検出ログ| UX: 通常とは異なる移動 <br><br>API: 「[riskDetection リソースの種類 - Microsoft Graph ベータ](/graph/api/resources/riskdetection?view=graph-rest-beta)」を参照してください| 「[リスクとは - Azure AD Identity Protection](../identity-protection/concept-identity-protection-risks.md)」を参照してください |
-| 異常なトークン| 場合により異なる| Azure AD リスク検出ログ| UX: 異常なトークン <br><br>API: 「[riskDetection リソースの種類 - Microsoft Graph ベータ](/graph/api/resources/riskdetection?view=graph-rest-beta)」を参照してください| 「[リスクとは - Azure AD Identity Protection](../identity-protection/concept-identity-protection-risks.md)」を参照してください |
-| マルウェアにリンクした IP アドレスのサインイン リスク検出| 場合により異なる| Azure AD リスク検出ログ| UX: マルウェアにリンクした IP アドレス <br><br>API: 「[riskDetection リソースの種類 - Microsoft Graph ベータ](/graph/api/resources/riskdetection?view=graph-rest-beta)」を参照してください| 「[リスクとは - Azure AD Identity Protection](../identity-protection/concept-identity-protection-risks.md)」を参照してください |
-| 疑わしいブラウザーのサインイン リスク検出| 場合により異なる| Azure AD リスク検出ログ| UX: 疑わしいブラウザー <br><br>API: 「[riskDetection リソースの種類 - Microsoft Graph ベータ](/graph/api/resources/riskdetection?view=graph-rest-beta)」を参照してください| 「[リスクとは - Azure AD Identity Protection](../identity-protection/concept-identity-protection-risks.md)」を参照してください |
-| 見慣れないサインイン プロパティのサインイン リスク検出| 場合により異なる| Azure AD リスク検出ログ| UX: 見慣れないサインイン プロパティ <br><br>API: 「[riskDetection リソースの種類 - Microsoft Graph ベータ](/graph/api/resources/riskdetection?view=graph-rest-beta)」を参照してください| 「[リスクとは - Azure AD Identity Protection](../identity-protection/concept-identity-protection-risks.md)」を参照してください |
-| 悪意のある IP アドレスのサインイン リスク検出| 場合により異なる| Azure AD リスク検出ログ| UX: 悪意のある IP アドレス<br><br>API: 「[riskDetection リソースの種類 - Microsoft Graph ベータ](/graph/api/resources/riskdetection?view=graph-rest-beta)」を参照してください| 「[リスクとは - Azure AD Identity Protection](../identity-protection/concept-identity-protection-risks.md)」を参照してください |
-| 受信トレイに対する疑わしい操作ルールのサインイン リスク検出| 場合により異なる| Azure AD リスク検出ログ| UX: 受信トレイに対する疑わしい操作ルール<br><br>API: 「[riskDetection リソースの種類 - Microsoft Graph ベータ](/graph/api/resources/riskdetection?view=graph-rest-beta)」を参照してください| 「[リスクとは - Azure AD Identity Protection](../identity-protection/concept-identity-protection-risks.md)」を参照してください |
-| パスワード スプレーのサインイン リスク検出| 高| Azure AD リスク検出ログ| UX: パスワード スプレー<br><br>API: 「[riskDetection リソースの種類 - Microsoft Graph ベータ](/graph/api/resources/riskdetection?view=graph-rest-beta)」を参照してください| 「[リスクとは - Azure AD Identity Protection](../identity-protection/concept-identity-protection-risks.md)」を参照してください |
-| あり得ない移動のサインイン リスク検出| 場合により異なる| Azure AD リスク検出ログ| UX: あり得ない移動<br><br>API: 「[riskDetection リソースの種類 - Microsoft Graph ベータ](/graph/api/resources/riskdetection?view=graph-rest-beta)」を参照してください| 「[リスクとは - Azure AD Identity Protection](../identity-protection/concept-identity-protection-risks.md)」を参照してください |
-| 初めての国のサインイン リスク検出| 場合により異なる| Azure AD リスク検出ログ| UX: 初めての国<br><br>API: 「[riskDetection リソースの種類 - Microsoft Graph ベータ](/graph/api/resources/riskdetection?view=graph-rest-beta)」を参照してください| 「[リスクとは - Azure AD Identity Protection](../identity-protection/concept-identity-protection-risks.md)」を参照してください |
-| 匿名 IP アドレスからのアクティビティのサインイン リスク検出| 場合により異なる| Azure AD リスク検出ログ| UX: 匿名 IP アドレスからのアクティビティ<br><br>API: 「[riskDetection リソースの種類 - Microsoft Graph ベータ](/graph/api/resources/riskdetection?view=graph-rest-beta)」を参照してください| 「[リスクとは - Azure AD Identity Protection](../identity-protection/concept-identity-protection-risks.md)」を参照してください |
-| 受信トレイからの疑わしい転送のサインイン リスク検出| 場合により異なる| Azure AD リスク検出ログ| UX: 受信トレイからの疑わしい転送<br><br>API: 「[riskDetection リソースの種類 - Microsoft Graph ベータ](/graph/api/resources/riskdetection?view=graph-rest-beta)」を参照してください| 「[リスクとは - Azure AD Identity Protection](../identity-protection/concept-identity-protection-risks.md)」を参照してください |
-| Azure AD 脅威インテリジェンスのサインイン リスク検出| 高| Azure AD リスク検出ログ| UX: Azure AD 脅威インテリジェンス<br>API: 「[riskDetection リソースの種類 - Microsoft Graph ベータ](/graph/api/resources/riskdetection?view=graph-rest-beta.md)」を参照してください| 「[リスクとは - Azure AD Identity Protection](../identity-protection/concept-identity-protection-risks.md)」を参照してください |
+| 漏えいした資格情報のユーザー リスク検出| 高| Azure AD リスク検出ログ| UX: 漏えいした資格情報 <br><br>API: 「[riskDetection リソースの種類 - Microsoft Graph ベータ](/graph/api/resources/riskdetection?view=graph-rest-beta&preserve-view=true)」を参照してください| 「[リスクとは - Azure AD Identity Protection](../identity-protection/concept-identity-protection-risks.md)」を参照してください |
+| Azure AD 脅威インテリジェンスのユーザー リスク検出| 高| Azure AD リスク検出ログ| UX: Azure AD 脅威インテリジェンス <br><br>API: 「[riskDetection リソースの種類 - Microsoft Graph ベータ](/graph/api/resources/riskdetection?view=graph-rest-beta&preserve-view=true)」を参照してください| 「[リスクとは - Azure AD Identity Protection](../identity-protection/concept-identity-protection-risks.md)」を参照してください |
+| 匿名 IP アドレスのサインイン リスク検出| 場合により異なる| Azure AD リスク検出ログ| UX: 匿名 IP アドレス <br><br>API: 「[riskDetection リソースの種類 - Microsoft Graph ベータ](/graph/api/resources/riskdetection?view=graph-rest-beta&preserve-view=true)」を参照してください| 「[リスクとは - Azure AD Identity Protection](../identity-protection/concept-identity-protection-risks.md)」を参照してください |
+| 通常とは異なる移動のサインイン リスク検出| 場合により異なる| Azure AD リスク検出ログ| UX: 通常とは異なる移動 <br><br>API: 「[riskDetection リソースの種類 - Microsoft Graph ベータ](/graph/api/resources/riskdetection?view=graph-rest-beta&preserve-view=true)」を参照してください| 「[リスクとは - Azure AD Identity Protection](../identity-protection/concept-identity-protection-risks.md)」を参照してください |
+| 異常なトークン| 場合により異なる| Azure AD リスク検出ログ| UX: 異常なトークン <br><br>API: 「[riskDetection リソースの種類 - Microsoft Graph ベータ](/graph/api/resources/riskdetection?view=graph-rest-beta&preserve-view=true)」を参照してください| 「[リスクとは - Azure AD Identity Protection](../identity-protection/concept-identity-protection-risks.md)」を参照してください |
+| マルウェアにリンクした IP アドレスのサインイン リスク検出| 場合により異なる| Azure AD リスク検出ログ| UX: マルウェアにリンクした IP アドレス <br><br>API: 「[riskDetection リソースの種類 - Microsoft Graph ベータ](/graph/api/resources/riskdetection?view=graph-rest-beta&preserve-view=true)」を参照してください| 「[リスクとは - Azure AD Identity Protection](../identity-protection/concept-identity-protection-risks.md)」を参照してください |
+| 疑わしいブラウザーのサインイン リスク検出| 場合により異なる| Azure AD リスク検出ログ| UX: 疑わしいブラウザー <br><br>API: 「[riskDetection リソースの種類 - Microsoft Graph ベータ](/graph/api/resources/riskdetection?view=graph-rest-beta&preserve-view=true)」を参照してください| 「[リスクとは - Azure AD Identity Protection](../identity-protection/concept-identity-protection-risks.md)」を参照してください |
+| 見慣れないサインイン プロパティのサインイン リスク検出| 場合により異なる| Azure AD リスク検出ログ| UX: 見慣れないサインイン プロパティ <br><br>API: 「[riskDetection リソースの種類 - Microsoft Graph ベータ](/graph/api/resources/riskdetection?view=graph-rest-beta&preserve-view=true)」を参照してください| 「[リスクとは - Azure AD Identity Protection](../identity-protection/concept-identity-protection-risks.md)」を参照してください |
+| 悪意のある IP アドレスのサインイン リスク検出| 場合により異なる| Azure AD リスク検出ログ| UX: 悪意のある IP アドレス<br><br>API: 「[riskDetection リソースの種類 - Microsoft Graph ベータ](/graph/api/resources/riskdetection?view=graph-rest-beta&preserve-view=true)」を参照してください| 「[リスクとは - Azure AD Identity Protection](../identity-protection/concept-identity-protection-risks.md)」を参照してください |
+| 受信トレイに対する疑わしい操作ルールのサインイン リスク検出| 場合により異なる| Azure AD リスク検出ログ| UX: 受信トレイに対する疑わしい操作ルール<br><br>API: 「[riskDetection リソースの種類 - Microsoft Graph ベータ](/graph/api/resources/riskdetection?view=graph-rest-beta&preserve-view=true)」を参照してください| 「[リスクとは - Azure AD Identity Protection](../identity-protection/concept-identity-protection-risks.md)」を参照してください |
+| パスワード スプレーのサインイン リスク検出| 高| Azure AD リスク検出ログ| UX: パスワード スプレー<br><br>API: 「[riskDetection リソースの種類 - Microsoft Graph ベータ](/graph/api/resources/riskdetection?view=graph-rest-beta&preserve-view=true)」を参照してください| 「[リスクとは - Azure AD Identity Protection](../identity-protection/concept-identity-protection-risks.md)」を参照してください |
+| あり得ない移動のサインイン リスク検出| 場合により異なる| Azure AD リスク検出ログ| UX: あり得ない移動<br><br>API: 「[riskDetection リソースの種類 - Microsoft Graph ベータ](/graph/api/resources/riskdetection?view=graph-rest-beta&preserve-view=true)」を参照してください| 「[リスクとは - Azure AD Identity Protection](../identity-protection/concept-identity-protection-risks.md)」を参照してください |
+| 初めての国のサインイン リスク検出| 場合により異なる| Azure AD リスク検出ログ| UX: 初めての国<br><br>API: 「[riskDetection リソースの種類 - Microsoft Graph ベータ](/graph/api/resources/riskdetection?view=graph-rest-beta&preserve-view=true)」を参照してください| 「[リスクとは - Azure AD Identity Protection](../identity-protection/concept-identity-protection-risks.md)」を参照してください |
+| 匿名 IP アドレスからのアクティビティのサインイン リスク検出| 場合により異なる| Azure AD リスク検出ログ| UX: 匿名 IP アドレスからのアクティビティ<br><br>API: 「[riskDetection リソースの種類 - Microsoft Graph ベータ](/graph/api/resources/riskdetection?view=graph-rest-beta&preserve-view=true)」を参照してください| 「[リスクとは - Azure AD Identity Protection](../identity-protection/concept-identity-protection-risks.md)」を参照してください |
+| 受信トレイからの疑わしい転送のサインイン リスク検出| 場合により異なる| Azure AD リスク検出ログ| UX: 受信トレイからの疑わしい転送<br><br>API: 「[riskDetection リソースの種類 - Microsoft Graph ベータ](/graph/api/resources/riskdetection?view=graph-rest-beta&preserve-view=true)」を参照してください| 「[リスクとは - Azure AD Identity Protection](../identity-protection/concept-identity-protection-risks.md)」を参照してください |
+| Azure AD 脅威インテリジェンスのサインイン リスク検出| 高| Azure AD リスク検出ログ| UX: Azure AD 脅威インテリジェンス<br>API: 「[riskDetection リソースの種類 - Microsoft Graph ベータ](/graph/api/resources/riskdetection?view=graph-rest-beta&preserve-view=true)」を参照してください| 「[リスクとは - Azure AD Identity Protection](../identity-protection/concept-identity-protection-risks.md)」を参照してください |
 
 詳細については、「[Identity Protection とは](../identity-protection/overview-identity-protection.md)」を参照してください。 
 
@@ -260,7 +260,7 @@ Identity Protection を構成すると、セキュリティ ベースライン �
 
 ### <a name="monitoring-for-failed-unusual-sign-ins"></a>通常とは異なる失敗したサインインの監視
 
-| [What to monitor] (監視対象)| リスク レベル| Where| フィルターとサブフィルター| メモ |
+| [What to monitor] (監視対象)| リスク レベル| Where| フィルターまたはサブフィルター| メモ |
 | - |- |- |- |- |
 | 失敗したサインインの試行。| 中 - 孤立したインシデントの場合<br>高 - 多数のアカウントで同じパターンまたは VIP が発生している場合。| Azure AD サインイン ログ| 状態 = 失敗<br>および<br>サインイン エラー コード 50126 - <br>無効なユーザー名またはパスワードにより、資格情報の検証でエラーが発生しました。| ベースラインしきい値を定義してから、組織の行動に合わせて監視および調整し、誤ったアラートが生成されないようにします。 |
 | スマート ロックアウト イベント。| 中 - 孤立したインシデントの場合<br>高 - 多数のアカウントで同じパターンまたは VIP が発生している場合。| Azure AD サインイン ログ| 状態 = 失敗<br>および<br>サインイン エラー コード = 50053 - IdsLocked| ベースラインしきい値を定義してから、組織の行動に合わせて監視および調整し、誤ったアラートが生成されないようにします。 |
@@ -269,35 +269,35 @@ Identity Protection を構成すると、セキュリティ ベースライン �
 
 エントリの影響と重大度に基づいて重要度の高い順に一覧表示したものを次に示します。
 
-| [What to monitor] (監視対象)| リスク レベル| Where| フィルターとサブフィルター| メモ |
+| [What to monitor] (監視対象)| リスク レベル| Where| フィルターまたはサブフィルター| メモ |
 | - |- |- |- |- |
 | 多要素認証 (MFA) の不正アラート。| 高| Azure AD サインイン ログ| 状態 = 失敗<br>および<br>詳細 = MFA 拒否<br>| エントリについて監視し、アラートを生成します。 |
-| 操業していない国からの認証の失敗。| Medium| Azure AD サインイン ログ| 場所 = <unapproved location>| すべてのエントリについて監視し、アラートを生成します。 |
+| 操業していない国からの認証の失敗。| Medium| Azure AD サインイン ログ| 場所 = \<unapproved location\>| すべてのエントリについて監視し、アラートを生成します。 |
 | レガシ プロトコルまたは使用されていないプロトコルの失敗した認証。| Medium| Azure AD サインイン ログ| 状態 = 失敗<br>および<br>クライアント アプリ = その他のクライアント、POP、IMAP、MAPI、SMTP、ActiveSync| すべてのエントリについて監視し、アラートを生成します。 |
 | CA によってブロックされた失敗。| Medium| Azure AD サインイン ログ| エラー コード = 53003 <br>および<br>失敗の理由 = CA によるブロック| すべてのエントリについて監視し、アラートを生成します。 |
 | 任意の種類の認証失敗の増加。| Medium| Azure AD サインイン ログ| 全体的な失敗の増加をキャプチャします。 つまり、今日の失敗の合計が、前週の同じ曜日に比べて 10% を超えて増えている場合などです。| しきい値を設定していない場合は、失敗が 10% 以上増えた場合に監視してアラートを生成します。 |
-| 国の通常の業務を行っていない時間帯と曜日に発生した認証。| 低| Azure AD サインイン ログ| 通常の業務が行われていない曜日または時間帯に発生した対話型の認証をキャプチャします。 <br>状態 = 成功<br>および<br>場所 = <location><br>および<br>日時 = <not normal working hours>| すべてのエントリについて監視し、アラートを生成します。 |
+| 国の通常の業務を行っていない時間帯と曜日に発生した認証。| 低| Azure AD サインイン ログ| 通常の業務が行われていない曜日または時間帯に発生した対話型の認証をキャプチャします。 <br>状態 = 成功<br>および<br>場所 = \<location\><br>および<br>日時 = \<not normal working hours\>| すべてのエントリについて監視し、アラートを生成します。 |
 | アカウントがサインインで無効またはブロックされる| 低| Azure AD サインイン ログ| 状態 = 失敗<br>および<br>エラー コード = 50057、ユーザー アカウントは無効になっています。| これは、誰かが組織を退職した後にアカウントにアクセスしようとしていることを示している可能性があります。 このアカウントはブロックされていますが、このアクティビティについて記録し、アラートを生成することが重要です。 |
 
 
 ### <a name="monitoring-for-successful-unusual-sign-ins"></a>通常とは異なるサインインの監視
 
- | [What to monitor] (監視対象)| リスク レベル| Where| フィルターとサブフィルター| メモ |
+ | [What to monitor] (監視対象)| リスク レベル| Where| フィルターまたはサブフィルター| メモ |
 | - |- |- |- |- |
-| 想定されるコントロールの範囲外の特権アカウントの認証。| 高| Azure AD サインイン ログ| 状態 = 成功<br>および<br>UserPricipalName = <Admin account><br>および<br>場所 = <unapproved location><br>および<br>IP アドレス = <unapproved IP><br>デバイス情報= <承認されていないブラウザー、オペレーティング システム><br>| 想定されるコントロールの範囲外で特権アカウントの認証が成功した場合に監視し、アラートを生成します。 3 つの一般的なコントロールがあります。 |
+| 想定されるコントロールの範囲外の特権アカウントの認証。| 高| Azure AD サインイン ログ| 状態 = 成功<br>および<br>UserPricipalName = \<Admin account\><br>および<br>場所 = \<unapproved location\><br>および<br>IP アドレス = \<unapproved IP\><br>デバイス情報 = \<unapproved Browser, Operating System\><br>| 想定されるコントロールの範囲外で特権アカウントの認証が成功した場合に監視し、アラートを生成します。 3 つの一般的なコントロールがあります。 |
 | 単一要素認証のみが必要な場合。| 低| Azure AD サインイン ログ| 状態 = 成功<br>認証要件 = 単一要素認証| これを定期的に監視し、これが想定される動作であることを確認します。 |
-| MFA に登録されていない特権アカウントを検出します。| 高| Azure Graph API| 管理者アカウントの IsMFARegistered eq false のクエリ。 <br>[credentialUserRegistrationDetails の一覧表示 - Microsoft Graph ベータ版 | Microsoft Docs](/graph/api/reportroot-list-credentialuserregistrationdetails?view=graph-rest-beta&tabs=http)| 監査と調査を行って、意図的なのか、見落としなのかを判断します。 |
-| 組織が操業していない国からの認証の成功。| Medium| Azure AD サインイン ログ| 状態 = 成功<br>場所 = <unapproved country>| 指定された市区町村名と等しくないエントリを監視し、アラートを生成します。 |
+| MFA に登録されていない特権アカウントを検出します。| 高| Azure Graph API| 管理者アカウントの IsMFARegistered eq false のクエリ。 <br>[credentialUserRegistrationDetails の一覧表示 - Microsoft Graph ベータ版 | Microsoft Docs](/graph/api/reportroot-list-credentialuserregistrationdetails?view=graph-rest-beta&preserve-view=true&tabs=http)| 監査と調査を行って、意図的なのか、見落としなのかを判断します。 |
+| 組織が操業していない国からの認証の成功。| Medium| Azure AD サインイン ログ| 状態 = 成功<br>場所 = \<unapproved country\>| 指定された市区町村名と等しくないエントリを監視し、アラートを生成します。 |
 | 認証の成功、CA によってブロックされたセッション。| Medium| Azure AD サインイン ログ| 状態 = 成功<br>および<br>エラー コード = 53003 - 失敗の理由、CA によるブロック| 認証に成功しても、CA によってセッションがブロックされた場合を監視し、調査します。 |
 | レガシ認証を無効にした後の認証の成功。| Medium| Azure AD サインイン ログ| 状態 = 成功 <br>および<br>クライアント アプリ = その他のクライアント、POP、IMAP、MAPI、SMTP、ActiveSync| 組織でレガシ認証を無効にした場合は、レガシ認証が成功したときを監視し、アラートを生成します。 |
 
 
 定期的に、単一要素認証のみが必要な中事業影響度 (MBI) と高事業影響度 (HBI) のアプリケーションに対する認証を確認することをお勧めします。 それぞれについて、単一要素認証が想定されていたかどうかを判断する必要があります。 さらに、認証の成功の増加、または場所に基づいて予期しない時刻のときに確認します。 
 
-| [What to monitor] (監視対象)| リスク レベル| Where| フィルターとサブフィルター| メモ |
+| [What to monitor] (監視対象)| リスク レベル| Where| フィルターまたはサブフィルター| メモ |
 | - | - |- |- |- |
-| 単一要素認証を使用した MBI および HBI アプリケーションに対する認証。| 低| Azure AD サインイン ログ| 状態 = 成功<br>および<br>アプリケーション ID = <HBI app> <br>および<br>認証要件 = 単一要素認証| この構成が意図的なものであることを確認し、検証します。 |
-| 国が通常の業務を行っていない曜日、時間帯、年の認証。| 低| Azure AD サインイン ログ| 通常の業務が行われていない曜日または時間帯に発生した対話型の認証をキャプチャします。 <br>状態 = 成功<br>場所 = <location><br>日付と時刻 = <not normal working hours>| 国が通常の業務を行っていない曜日、時間帯、年の認証について監視し、アラートを生成します。 |
+| 単一要素認証を使用した MBI および HBI アプリケーションに対する認証。| 低| Azure AD サインイン ログ| 状態 = 成功<br>および<br>アプリケーション ID = \<HBI app\> <br>および<br>認証要件 = 単一要素認証| この構成が意図的なものであることを確認し、検証します。 |
+| 国が通常の業務を行っていない曜日、時間帯、年の認証。| 低| Azure AD サインイン ログ| 通常の業務が行われていない曜日または時間帯に発生した対話型の認証をキャプチャします。 <br>状態 = 成功<br>場所 = \<location\><br>日付と時刻 = \<not normal working hours\>| 国が通常の業務を行っていない曜日、時間帯、年の認証について監視し、アラートを生成します。 |
 | 成功したサインインの測定可能な増加| 低| Azure AD サインイン ログ| 全体的な認証の成功数の増加をキャプチャします。 つまり、今日の成功の合計が、前週の同じ曜日に比べて 10% を超えて増えている場合などです。| しきい値を設定していない場合は、認証の成功が 10% 以上増えた場合に監視し、アラートを生成します。 |
 
 ## <a name="next-steps"></a>次のステップ
@@ -315,4 +315,4 @@ Identity Protection を構成すると、セキュリティ ベースライン �
 
 [デバイスのためのセキュリティ運用](security-operations-devices.md)
  
-[インフラストラクチャ向けのセキュリティ運用](security-operations-infrastructure.md)
+[インフラストラクチャのためのセキュリティ運用](security-operations-infrastructure.md)

@@ -10,33 +10,41 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.custom: mvc
 ms.date: 06/24/2021
-ms.openlocfilehash: 7b1202648db3aed73ea040fb60610879a6816dd9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d57941c06f4917c8ff3b27f5e566fc9d5f95474b
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121737567"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129273005"
 ---
-# <a name="use-jupyter-notebook-to-hunt-for-security-threats"></a>Jupyter Notebook を使用してセキュリティの脅威を検出する
+# <a name="use-jupyter-notebooks-to-hunt-for-security-threats"></a>Jupyter のノートブックを使用してセキュリティの脅威を検出する
 
 [!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
-Azure Sentinel の基盤となるのは、ハイ パフォーマンス クエリと動的スキーマを併用して大規模なデータ ボリュームまでスケーリングするデータ ストアです。 Azure portal とすべての Azure Sentinel ツールでは、このデータ ストアにアクセスする際に、共通の API が使用されます。 同じ API を [Jupyter](https://jupyter.org/) Notebook や Python などの外部ツールでも使用できます。 ポータルでは多くの一般的なタスクを実行できますが、Jupyter では、データに対して、より幅広い処理が可能です。 高度なプログラミング性と膨大なライブラリ コレクションを組み合わせて、機械学習、視覚化、データ解析を行えます。 こうした特性から、Jupyter は、セキュリティの調査や検出にうってつけのツールとなっています。
+Azure Sentinel の基盤となるのは、ハイ パフォーマンス クエリと動的スキーマを併用して大規模なデータ ボリュームまでスケーリングするデータ ストアです。 Azure portal とすべての Azure Sentinel ツールでは、このデータ ストアにアクセスする際に、共通の API が使用されます。
+
+同じ API を [Jupyter](https://jupyter.org/) Notebook や Python などの外部ツールでも使用できます。 ポータルでは多くの一般的なタスクを実行できますが、Jupyter では、データに対して、より幅広い処理が可能です。 高度なプログラミング性と膨大なライブラリ コレクションを組み合わせて、機械学習、視覚化、データ解析を行えます。 こうした特性から、Jupyter は、セキュリティの調査や検出にうってつけのツールとなっています。
 
 たとえば、次の目的にノートブックを使用します。
 
-- 一部の Python 機械学習機能など、Azure Sentinel に組み込まれていない分析を実行します
-- カスタム タイムラインやプロセス ツリーなど、Azure Sentinel に組み込まれていないデータ視覚化を作成します
-- オンプレミスのデータ セットなど、Azure Sentinel の外部にあるデータ ソースを統合します。
+- 一部の Python 機械学習機能など、Azure Sentinel に組み込まれていない **分析を実行する**
+- カスタム タイムラインやプロセス ツリーなど、Azure Sentinel に組み込まれていない **データ視覚化を作成する**
+- オンプレミスのデータ セットなど、Azure Sentinel の外部にある **データ ソースを統合する**
 
-Jupyter のエクスペリエンスが Azure portal に統合されているため、簡単にノートブックを作成して実行し、データを解析できます。 *Kqlmagic* ライブラリは、Azure Sentinel からクエリを取得して、ノートブック内で直接実行できるようにする接着剤の働きをします。 クエリでは、[Kusto クエリ言語](https://kusto.azurewebsites.net/docs/kusto/query/index.html)が使用されます。 Azure Sentinel には、Microsoft のセキュリティ アナリストが開発した複数のノートブックがパッケージされています。 これらのノートブックの中には、特定のシナリオ向けに作成され、そのまま使用できるようになっているものがあります。 一方、技術や機能を説明するサンプルとして作成されたものもあります。これをコピーまたは改造して、独自のノートブック内で使用することができます。 Azure Sentinel コミュニティの GitHub からインポートできるノートブックもあります。
+Jupyter のエクスペリエンスが Azure portal に統合されているため、簡単にノートブックを作成して実行し、データを解析できます。 *Kqlmagic* ライブラリは、Azure Sentinel から [KQL](https://kusto.azurewebsites.net/docs/kusto/query/index.html) クエリを取得して、ノートブック内で直接実行できるようにする接着剤の働きをします。
 
-統合された Jupyter エクスペリエンスでは、[Azure Notebooks](https://notebooks.azure.com/) を使用して、ノートブックが保存、共有、および実行されます。 これらのノートブックは、ローカル環境で実行することも (コンピューター上に Python 環境と Jupyter がある場合)、他の JupyterHub 環境 (Azure Databricks など) 内で実行することもできます。
+Azure Sentinel には、Microsoft のセキュリティ アナリストが開発した複数のノートブックがパッケージされています。
+
+- これらのノートブックの中には、特定のシナリオ向けに作成され、そのまま使用できるようになっているものがあります。
+- 一方、技術や機能を説明するサンプルとして作成されたものもあります。これをコピーまたは改造して、独自のノートブック内で使用することができます。
+
+[Azure Sentinel コミュニティの GitHub](https://github.com/Azure/Azure-Sentinel-Notebooks/) からインポートできるノートブックもあります。
 
 
 ## <a name="notebook-components"></a>ノートブックのコンポーネント
 
 ノートブックは、次の 2 つのコンポーネントから構成されています。
+
 - **ブラウザーベースのインターフェイス**。クエリやコードを入力して実行すると、実行結果が表示されます。
 - **"*カーネル*"** 。コード自体を解析して実行する役割を果たします。
 
@@ -49,23 +57,29 @@ Azure Sentinel ノートブックでは、*pandas*、*matplotlib*、*bokeh* な�
 - 統計と数値計算
 - 機械学習とディープ ラーニング
 
-オープンソースの Jupyter セキュリティ ツールも [msticpy](https://github.com/Microsoft/msticpy/) という名前のパッケージでリリースされています。 このパッケージは、組み込みのノートブックの多くで使用されています。 Msticpy ツールは、特に検出や調査用のノートブックの作成に役立つように設計されており、新機能の開発や改良が鋭意進められています。 詳細については、[MSTIC Jupyter および Python セキュリティ ツールのドキュメント](https://msticpy.readthedocs.io/)を参照してください。
+ノートブックのセルに複雑なコードを繰り返し入力しなければならない状況を避けるために、ほとんどの Python ノートブックは "*パッケージ*" と呼ばれるサードパーティのライブラリに依存します。 ノートブックでパッケージを使用するには、パッケージをインストールしてインポートする必要があります。 Azure ML コンピューティングには、一般的なパッケージのほとんどがプレインストールされています。 パッケージ、またはパッケージの関連部分 (モジュール、ファイル、関数、クラスなど) をインポートしていることを確認します。
 
-[Azure Sentinel コミュニティの GitHub リポジトリ](https://github.com/Azure/Azure-Sentinel)は、将来 Microsoft が作成した Azure Sentinel ノートブックやコミュニティから投稿された Azure Sentinel ノートブックを保管するための場所です。
+Azure Sentinel のノートブックでは、[MSTICPy](https://github.com/Microsoft/msticpy/) という名前の Python パッケージを使用します。これは、データの取得、分析、強化、視覚化のためのサイバーセキュリティ ツールのコレクションです。 
 
+MSTICPy ツールは、特に検出や調査用のノートブックの作成に役立つように設計されており、新機能の開発や改良が鋭意進められています。 詳細については、次を参照してください。
+
+- [MSTIC Jupyter と Python のセキュリティ ツールに関するドキュメント](https://msticpy.readthedocs.io/)
+- [チュートリアル: Azure Sentinel での Jupyter Notebook と MSTICPy の概要](notebook-get-started.md)
+- [Azure Sentinel での Jupyter Notebook と MSTICPy の詳細な構成](notebooks-msticpy-advanced.md)
+
+[Azure Sentinel コミュニティの GitHub リポジトリ](https://github.com/Azure/Azure-Sentinel-Notebooks/)は、将来 Microsoft が作成した Azure Sentinel ノートブックやコミュニティから投稿された Azure Sentinel ノートブックを保管するための場所です。
 
 ## <a name="manage-access-to-azure-sentinel-notebooks"></a>Azure Sentinel ノートブックへのアクセスを管理する
 
-ノートブックを使用するには、まず、ユーザーの役割に応じた適切なアクセス許可が必要です。
+Azure Sentinel で Jupyter のノートブックを使用するには、まず、ユーザーの役割に応じた適切なアクセス許可が必要です。
 
-Azure Sentinel ノートブックは [Azure Machine Learning](../machine-learning/overview-what-is-azure-machine-learning.md) (Azure ML) プラットフォーム上で実行されるので、Azure Sentinel ワークスペースと [Azure ML ワークスペース](../machine-learning/concept-workspace.md)の両方に対する適切なアクセス権が必要です。
+Azure Sentinel のノートブックは JupyterLab や Jupyter クラシックで使用できる一方で、Azure Sentinel では、ノートブックは [Azure Machine Learning](../machine-learning/overview-what-is-azure-machine-learning.md) (Azure ML) プラットフォーム上で実行されます。 Azure Sentinel でノートブックを実行するには、Azure Sentinel ワークスペースと [Azure ML ワークスペース](../machine-learning/concept-workspace.md)の両方に対する適切なアクセス権が必要です。
 
 |権限  |説明  |
 |---------|---------|
 |**Azure Sentinel のアクセス許可**     |   他の Azure Sentinel リソースと同様に、[Azure Sentinel Notebooks] ブレードでノートブックにアクセスするには、Azure Sentinel 閲覧者、Azure Sentinel レスポンダー、または Azure Sentinel 共同作成者のロールが必要です。 <br><br>詳細については、「[Azure Sentinel のアクセス許可](roles.md)」を参照してください。|
 |**Azure Machine Learning のアクセス許可**     | Azure Machine Learning ワークスペースは Azure リソースの 1 つです。 他の Azure リソースと同様に、新しい Azure Machine Learning ワークスペースが作成されるときに、既定のロールが提供されます。 ワークスペースにユーザーを追加し、これらの組み込みロールのいずれかに割り当てることができます。 詳細については、[Azure Machine Learning の既定のロール](../machine-learning/how-to-assign-roles.md)に関するページと、「[Azure 組み込みロール](../role-based-access-control/built-in-roles.md)」を参照してください。 <br><br>   **重要**: ロールのアクセス権のスコープは、Azure の複数のレベルで指定できます。 たとえば、ワークスペースへの所有者アクセス権を持つユーザーであっても、そのワークスペースが含まれるリソース グループへの所有者アクセス権を持っていないことがあります。 詳細については、「[Azure RBAC のしくみ](../role-based-access-control/overview.md)」を参照してください。 <br><br>Azure ML ワークスペースの所有者である場合は、ワークスペースのロールを追加および削除し、ロールをユーザーに割り当てることができます。 詳細については、次を参照してください。<br>    - [Azure portal](../role-based-access-control/role-assignments-portal.md)<br>    - [PowerShell](../role-based-access-control/role-assignments-powershell.md)<br>    - [Azure CLI](../role-based-access-control/role-assignments-cli.md)<br>   - [REST API](../role-based-access-control/role-assignments-rest.md)<br>    - [Azure Resource Manager テンプレート](../role-based-access-control/role-assignments-template.md)<br> - [Azure Machine Learning CLI ](../machine-learning/how-to-assign-roles.md#manage-workspace-access)<br><br>組み込みロールが十分ではない場合は、カスタム ロールを作成することもできます。 カスタム ロールには、そのワークスペース内のリソースの読み取り、書き込み、削除、コンピューティングのアクセス許可を与えることができます。 ロールは、特定のワークスペース レベル、特定のリソース グループ レベル、または特定のサブスクリプション レベルで使用できるようにすることができます。 詳細については、「[カスタム ロールの作成](../machine-learning/how-to-assign-roles.md#create-custom-role)」を参照してください。 |
 |     |         |
-
 
 ## <a name="create-an-azure-ml-workspace-from-azure-sentinel"></a>Azure Sentinel から Azure ML ワークスペースを作成する
 
@@ -108,7 +122,13 @@ Azure Sentinel ノートブックは [Azure Machine Learning](../machine-learnin
 
 AML ワークスペースを作成した後、Azure Sentinel から Azure ML ワークスペースでノートブックの起動を開始します。
 
-**ノートブックを起動するには**:
+> [!NOTE]
+> ノートブックは、GitHub の組み込みの静的ノートブック レンダラーなどを使用して、静的なドキュメントとして表示できます。 ただし、ノートブックでコードを実行するには、ノートブックを Jupyter カーネルと呼ばれるバックエンド プロセスにアタッチする必要があります。 カーネルによってコードが実行され、コードで作成されるすべての変数とオブジェクトが保持されます。 ブラウザーがこのデータのビューアーです。
+>
+> Azure ML では、カーネルは Azure ML コンピューティングと呼ばれる仮想マシン上で実行されます。 コンピューティング インスタンスでは、一度に多数のノートブックの実行をサポートできます。
+>
+
+**Azure Sentinel からノートブックを起動するには**:
 
 1. Azure portal から **[Azure Sentinel]**  >  **[Threat management]\(脅威の管理\)**  >  **[Notebooks]\(ノートブック\)** に移動します。ここで、Azure Sentinel によって提供されるノートブックを確認できます。
 
@@ -137,45 +157,205 @@ AML ワークスペースを作成した後、Azure Sentinel から Azure ML ワ
 
     > [!TIP]
     > ノートブックをテストするために新しいコンピューティング インスタンスを作成する場合は、**汎用** カテゴリのコンピューティング インスタンスを作成します。
+    >
+    > また、カーネルは Azure ML のウィンドウの右上にも表示されます。 必要なカーネルが選択されていない場合は、ドロップダウン リストから別のバージョンを選択します。
+    >
 
 1. ノートブック サーバーを作成して起動したら、ノートブックのセルの実行を開始できます。 各セルで、 **[実行]** アイコンを選択してノートブックのコードを実行します。
 
     詳細については、「[コマンド モードのショートカット](../machine-learning/how-to-run-jupyter-notebooks.md)」を参照してください。
 
-1. ノートブック カーネルを再起動して、ノートブックのセルを最初から再実行する必要がある場合は、 **[Kernel operations]\(カーネルの操作\)**  >  **[Restart kernel]\(カーネルの再起動\)** を選択します。 次に例を示します。
+1. ノートブックがハングした、または最初からやり直す必要がある場合は、カーネルを再起動して、ノートブックのセルを最初から再実行します。 **[Kernel operations]\(カーネルの操作\)**  >  **[Restart kernel]\(カーネルの再起動\)** を選択します。 次に例を示します。
 
     :::image type="content" source="media/notebooks/sentinel-notebooks-restart-kernel.png" alt-text="ノートブック カーネルを再起動します。":::
 
+    > [!IMPORTANT]
+    > カーネルを再起動すると、すべての変数とその他の状態がワイプされます。 再起動後に、初期化と認証のセルを再実行する必要があります。
+    >
+
+## <a name="run-code-in-your-notebook"></a>ノートブックでコードを実行する
+
+ノートブックは次のようになっています。
+
+- **Markdown** セルにはテキスト (HTML を含む) と静的イメージがあります。
+- **コード** セルにはコードが含まれます。 コード セルを選択した後、セルの左側にある **[再生]** アイコンを選択するか、**SHIFT + ENTER** キーを押して、セル内のコードを実行します。
+
+> [!IMPORTANT]
+> ノートブックのコード セルは必ず順番に実行してください。 セルをスキップすると、エラーが発生する可能性があります。
+>
+
+たとえば、ノートブックで次のコード セルを実行します。
+
+```python
+# This is your first code cell. This cell contains basic Python code.
+
+# You can run a code cell by selecting it and then selecting
+# the Play button to the left of the cell, or by pressing SHIFT+ENTER.
+# Code output displays below the code.
+
+print("Congratulations, you just ran this code cell")
+
+y = 2 + 2
+
+print("2 + 2 =", y)
+
+```
+
+上のサンプル コードでは、こちらの出力が生成されます。
+
+```python
+Congratulations, you just ran this code cell
+
+2 + 2 = 4
+```
+
+ノートブックのコード セル内で設定した変数はセル間で保持されるため、セルをチェーンでつなぐことができます。 たとえば、次のコード セルでは、前のセルの `y` の値が使用されます。
+
+```python
+# Note that output from the last line of a cell is automatically
+# sent to the output cell, without needing the print() function.
+
+y + 2
+```
+
+出力は次のようになります。
+
+```output
+6
+```
+
+## <a name="download-all-azure-sentinel-notebooks"></a>Azure Sentinel のすべてのノートブックをダウンロードする
+
+このセクションでは、Azure Sentinel ノートブックから、Git を使用して [Azure Sentinel GitHub リポジトリ](https://github.com/Azure/Azure-Sentinel-Notebooks/)で使用できるすべてのノートブックを、Azure ML ワークスペースに直接ダウンロードする方法について説明します。
+
+Azure ML ワークスペースに Azure Sentinel のノートブックを格納しておくと、簡単に更新された状態に保つことができます。
+
+1. Azure Sentinel のノートブックから、次のコードを空のセルに入力し、セルを実行します。
+
+    ```python
+    !git clone https://github.com/Azure/Azure-Sentinel-Notebooks.git azure-sentinel-nb
+    ```
+
+    GitHub リポジトリのコピーが Azure ML ワークスペースのユーザー フォルダーの **azure-sentinel-nb** ディレクトリに作成されます。
+
+1. 目的のノートブックをこのフォルダーから作業ディレクトリにコピーします。
+
+1. GitHub で最近加えられた変更が反映されるようノートブックを更新するには、次のように実行します。
+
+    ```python
+    !cd azure-sentinel-nb && git pull
+    ```
+
+
 ## <a name="troubleshooting"></a>トラブルシューティング
 
+通常、ノートブックではシームレスにカーネルが作成またはアタッチされ、手動で変更を加える必要は一切ありません。 エラーが発生した、またはノートブックが実行されていないと思われる場合は、カーネルのバージョンと状態の確認が必要になることがあります。
+
 ノートブックで問題が発生する場合は、[Azure Machine Learning ノートブックのトラブルシューティング](../machine-learning/how-to-run-jupyter-notebooks.md#troubleshooting)に関する記事を参照してください。
+
+### <a name="force-caching-for-user-accounts-and-credentials-between-notebook-runs"></a>ノートブックの実行間でユーザー アカウントと資格情報のキャッシュを強制する
+
+既定では、ユーザー アカウントと資格情報は、同じセッションであっても、ノートブックの実行間でキャッシュされません。
+
+**セッションの実行中にキャッシュを強制するには、次のようにします**。
+
+1. Azure CLI を使用して認証します。 空のノートブック セルに、次のコードを入力して実行します。
+
+    ```python
+    !az login
+    ```
+
+    次のような出力が表示されます。
+
+    ```python
+    To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the 9-digit device code to authenticate.
+    ```
+
+1. 出力から 9 文字のトークンを選択してコピーし、`devicelogin` の URL を選択して指定されたページに移動します。 
+
+1. ダイアログにトークンを貼り付け、プロンプトが表示されたらサインインを続行します。
+
+    サインインが正常に完了すると、次の出力が表示されます。
+
+    ```python
+    Subscription <subscription ID> 'Sample subscription' can be accessed from tenants <tenant ID>(default) and <tenant ID>. To select a specific tenant when accessing this subscription, use 'az login --tenant TENANT_ID'.
+
+> [!NOTE]
+> The following tenants don't contain accessible subscriptions. Use 'az login --allow-no-subscriptions' to have tenant level access.
+>
+> ```
+> <tenant ID> 'foo'
+><tenant ID> 'bar'
+>[
+> {
+>    "cloudName": "AzureApp",
+>    "homeTenantId": "<tenant ID>",
+>    "id": "<ID>",
+>    "isDefault": true,
+>    "managedByTenants": [
+>    ....
+>```
+>
+### Error: *Runtime dependency of PyGObject is missing*
+
+If the *Runtime dependency of PyGObject is missing* error appears when you load a query provider, try troubleshooting using the following steps:
+
+1. Proceed to the cell with the following code and run it:
+
+    ```python
+    qry_prov = QueryProvider("AzureSentinel")
+    ```
+
+    Python の依存関係 (`pygobject`) がないことを示す、次のような警告が表示されます。
+
+    ```output
+    Runtime dependency of PyGObject is missing.
+
+    Depends on your Linux distribution, you can install it by running code similar to the following:
+    sudo apt install python3-gi python3-gi-cairo gir1.2-secret-1
+
+    If necessary, see PyGObject's documentation: https://pygobject.readthedocs.io/en/latest/getting_started.html
+
+    Traceback (most recent call last):
+      File "/anaconda/envs/azureml_py36/lib/python3.6/site-packages/msal_extensions/libsecret.py", line 21, in <module>
+    import gi  # https://github.com/AzureAD/microsoft-authentication-extensions-for-python/wiki/Encryption-on-Linux
+    ModuleNotFoundError: No module named 'gi'
+    ```
+
+1. Azure Sentinel のノートブックの GitHub リポジトリにある [aml-compute-setup.sh](https://github.com/Azure/Azure-Sentinel-Notebooks/blob/master/HowTos/aml-compute-setup.sh) スクリプトを使用して、コンピューティング インスタンスのすべてのノートブックと Anaconda 環境に `pygobject` を自動的にインストールします。
+
+> [!TIP]
+> また、ノートブックから次のコードを実行して、この警告を修正することもできます。
+>
+> ```python
+> !conda install --yes -c conda-forge pygobject
+> ```
+>
 
 
 ## <a name="next-steps"></a>次のステップ
 
-- [**Azure Log Analytics での資格情報のスキャン**](https://www.youtube.com/watch?v=OWjXee8o04M)や **ガイド付き調査 - プロセス アラート** など、いくつかのノートブック テンプレートを調べて、脅威のハンティングと調査でのノートブックの使用についてさらに学習します。 
+[Azure Sentinel GitHub リポジトリ](https://github.com/Azure/Azure-Sentinel-Notebooks)で共有されているノートブックは、独自のノートブックを開発するときに使用できる便利なツール、図、コード サンプルとして用意されています。
 
-    Azure Sentinel > **[ノートブック]**  >  **[テンプレート]** タブで、ノートブック テンプレートを探します。
+既存のノートブックに関するフィードバック、提案、機能の要求、ノートブックの投稿、バグ レポート、改善や追加などがあれば、ぜひお送りください。 問題またはフォークを作成して、投稿をアップロードするには、[Azure Sentinel コミュニティの GitHub](https://github.com/Azure/Azure-Sentinel) にアクセスしてください。
 
-- [Azure Sentinel の GitHub リポジトリ](https://github.com/Azure/Azure-Sentinel-Notebooks)でさらに検索します。
+- [**Azure Log Analytics での資格情報のスキャン**](https://www.youtube.com/watch?v=OWjXee8o04M)や **ガイド付き調査 - プロセス アラート** など、いくつかのノートブック テンプレートを調べて、脅威のハンティングと調査でのノートブックの使用についてさらに **説明します**。
+
+    Azure Sentinel > **[ノートブック]**  >  **[テンプレート]** タブで、ノートブック テンプレートをさらに検索します。
+
+- [Azure Sentinel の GitHub リポジトリ](https://github.com/Azure/Azure-Sentinel-Notebooks)で、ノートブックを **さらに検索します**。
 
     - [**Sample-Notebooks**](https://github.com/Azure/Azure-Sentinel-Notebooks/tree/master/Sample-Notebooks) ディレクトリにはデータと共に保存されるサンプル ノートブックが含まれており、目的の出力を表示するために使用できます。
 
     - [**HowTos**](https://github.com/Azure/Azure-Sentinel-Notebooks/tree/master/HowTos) ディレクトリには、既定の Python バージョンの設定や、ノートブックからの Azure Sentinel ブックマークの作成などの概念を説明するノートブックが含まれています。
 
-    詳細については、[Azure ML ノートブックと Azure Sentinel の使用開始](https://github.com/Azure/Azure-Sentinel-Notebooks/blob/master/A%20Getting%20Started%20Guide%20For%20Azure%20Sentinel%20ML%20Notebooks.ipynb)に関するガイドを参照してください。
-
-> [!NOTE]
-> [Azure Sentinel GitHub リポジトリ](https://github.com/Azure/Azure-Sentinel-Notebooks)で共有されているノートブックは、独自のノートブックを開発するときに使用できる便利なツール、図、コード サンプルとして用意されています。
->
-> 既存のノートブックに関するフィードバック、提案、機能の要求、ノートブックの投稿、バグ レポート、改善や追加などがあれば、ぜひお送りください。 問題またはフォークを作成して、投稿をアップロードするには、[Azure Sentinel コミュニティの GitHub](https://github.com/Azure/Azure-Sentinel) にアクセスしてください。
->
 
 詳細については、次を参照してください。
 
+  - [チュートリアル: Azure Sentinel での Jupyter Notebook と MSTICPy の概要](notebook-get-started.md)
+- [チュートリアル: Azure Sentinel ノートブック - はじめに](https://www.youtube.com/results?search_query=azazure+sentinel+notebooks) (ビデオ)
+- [チュートリアル: Azure ML スタジオ内から Jupyter ノートブックを編集して実行する](https://www.youtube.com/watch?v=AAj-Fz0uCNk) (ビデオ)
 - [ウェビナー: Azure Sentinel ノートブックの基礎](https://www.youtube.com/watch?v=rewdNeX6H94)
-- [チュートリアル: Azure Sentinel ノートブック - はじめに](https://www.youtube.com/results?search_query=azazure+sentinel+notebooks)
 - [脅威を事前に検出する](hunting.md)
 - [ブックマークを使用して検出中に関心のある情報を保存する](bookmarks.md)
 - [Jupyter、msticpy および Azure Sentinel](https://msticpy.readthedocs.io/en/latest/getting_started/JupyterAndAzureSentinel.html)
-- [チュートリアル: Azure ML スタジオ内から Jupyter ノートブックを編集して実行する](https://www.youtube.com/watch?v=AAj-Fz0uCNk)

@@ -8,12 +8,12 @@ ms.date: 08/20/2021
 ms.author: dech
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: e23ff2623f124c78fb665641ba1f113b044d075a
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: c9ec0f3eb2846a6d5eb281202ebd9f9c278bdd70
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123440112"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124798980"
 ---
 # <a name="best-practices-for-scaling-provisioned-throughput-rus"></a>プロビジョニングされたスループット (RU/秒) のスケーリングに関するベスト プラクティス 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -45,7 +45,7 @@ ms.locfileid: "123440112"
 :::image type="content" source="media/scaling-provisioned-throughput-best-practices/number-of-physical-partitions.png" alt-text="[PartitionKeyRangeID ごとの正規化された RU 消費量 (%)] グラフ の PartitionKeyRangeId の個別の数をカウントする":::
 
 > [!NOTE]
-> グラフには最大 50 の PartitionKeyRangeId だけが表示されます。 リソースでの数が 50 を超える場合は、[Azure Cosmos DB REST API](https://docs.microsoft.com/rest/api/cosmos-db/get-partition-key-ranges#example) を使用して、パーティションの総数をカウントできます。 
+> グラフには最大 50 の PartitionKeyRangeId だけが表示されます。 リソースでの数が 50 を超える場合は、[Azure Cosmos DB REST API](/rest/api/cosmos-db/get-partition-key-ranges#example) を使用して、パーティションの総数をカウントできます。 
 
 各 PartitionKeyRangeId は 1 つの物理パーティションにマップされ、指定可能なハッシュ値の範囲のデータを保持するように割り当てられます。 
 
@@ -147,7 +147,7 @@ Azure Cosmos DB ではコンテナーの作成時に、開始 RU/秒のヒュー
 
 自動スケーリング スループットまたは共有スループット データベースを使用している場合、25 個の物理パーティションを取得するには、最初に 25 * 10,000 RU/秒 = 250,000 RU/秒をプロビジョニングします。 25 個の物理パーティションでサポートできる最大の RU/秒に既に達しているため、インジェストの前にプロビジョニングされた RU/秒を増やすことはありません。
  
-理論的には、250,000 RU/秒で、1 TB のデータがある場合、1 kb のドキュメントの書き込みに 10 RU が必要だと仮定すると、インジェストは理論的に、1000 GB * (1,000,000 kb / 1 GB) * (1 ドキュメント/ 1 kb) * (10 RU/ドキュメント) * (1 秒 / 150,000 RU) * (1 時間 / 3600 秒) = 11.1 時間で完了できます。 
+理論的には、250,000 RU/s で、1 TB のデータがある場合、1 kb のドキュメントの書き込みに 10 RU が必要だと仮定すると、インジェストは理論的に、1000 GB * (1,000,000 kb / 1 GB) * (1 ドキュメント/ 1 kb) * (10 RU/ドキュメント) * (1 秒 / 250,000 RU) * (1 時間 / 3600 秒) = 11.1 時間で完了できます。 
 
 この計算は、インジェストを実行するクライアントでスループットを完全に飽和状態にでき、すべての物理パーティションに書き込みを分散できると仮定した推定値です。 ベスト プラクティスとして、クライアント側でデータを "シャッフル" する方法をお勧めします。 これにより、1 秒ごとに、クライアントは多数の個別の論理的な (したがって物理的な) パーティションに書き込めるようになります。 
  

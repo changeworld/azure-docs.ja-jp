@@ -114,7 +114,7 @@ az webapp deployment source config-local-git --name $myWebAppName --resource-gro
 | [az webapp create](/cli/azure/webapp#az_webapp_create) | App Service ホスティング プランを使用して Azure Web アプリを作成します。 |
 | [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) | Web アプリ用の新しいアプリ設定を追加します。 これらのアプリ設定は、SignalR の接続文字列と GitHub OAuth のアプリ シークレットを格納するために使われます。 |
 | [az webapp deployment user set](/cli/azure/webapp/deployment/user#az_webapp_deployment_user_set) | デプロイ資格情報を更新します。 |
-| [az webapp deployment source config-local-git](/cli/azure/webapp/deployment/source#az_webapp_deployment_source_config_local_git) | Web アプリのデプロイ用に複製してプッシュするための、git リポジトリ エンドポイントの URL を取得します。 |
+| [az webapp deployment source config-local-git](/cli/azure/webapp/deployment/source#az_webapp_deployment_source_config_local_git) | Web アプリのデプロイ用にクローンしてプッシュするための、git リポジトリ エンドポイントの URL を取得します。 |
 
 ## <a name="next-steps"></a>次のステップ
 

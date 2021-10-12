@@ -9,12 +9,12 @@ author: peterclu
 ms.author: peterlu
 ms.date: 08/23/2021
 adobe-target: true
-ms.openlocfilehash: f52c27bbcd0f289028f51c6fcb1fa22ae321f8b4
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: d2b3a18341c782cf848ebd8740577004340be0f8
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122695771"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129351888"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Azure Machine Learning スタジオとは
 
@@ -56,7 +56,7 @@ ms.locfileid: "122695771"
 
 + **データのラベル付け**
 
-    [Azure Machine Learning のデータのラベル付け](how-to-create-labeling-projects.md)を使用すると、データのラベル付けプロジェクトを効率的にコーディネートすることができます。
+    Azure Machine Learning のデータのラベル付けを使用すると、[画像のラベル付け](how-to-create-image-labeling-projects.md)または[テキストのラベル付け](how-to-create-text-labeling-projects.md)プロジェクトを効率的にコーディネートできます。
 
 ## <a name="manage-assets-and-resources"></a>アセットとリソースを管理する
 

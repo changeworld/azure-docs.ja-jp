@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 9c73d8865b2cd019e940a753425d13b67567b39b
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 7cb5d96c7651713f02d606be1038f55cd430162f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123471205"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128599242"
 ---
 # <a name="encryption-scopes-for-blob-storage"></a>BLOB ストレージの暗号化スコープ
 
@@ -36,7 +36,7 @@ ms.locfileid: "123471205"
 
 Azure Policy には、暗号化スコープで顧客が管理するキーを使用することを要求する組み込みのポリシーが用意されています。 詳細については、[「Azure Policy の組み込みポリシー定義」](../../governance/policy/samples/built-in-policies.md#storage)の「**ストレージ**」セクションを参照してください。
 
-ストレージ アカウントには、キーのバージョンが自動的に更新されるカスタマー マネージド キーで保護される暗号化スコープを最大 10,000 含めることができます。 お使いのストレージ アカウントに、自動的に更新されているカスタマー マネージド キーで保護され暗号化スコープが既に 10,000 含まれている場合は、カスタマー マネージド キーで保護される追加の暗号化スコープについて、キーのバージョンを手動で更新する必要があります。  
+ストレージ アカウントには、キーのバージョンが自動的に更新されるカスタマー マネージド キーで保護される暗号化スコープを最大 10,000 含めることができます。 お使いのストレージ アカウントに、自動的に更新されているカスタマー マネージド キーで保護され暗号化スコープが既に 10,000 含まれている場合は、カスタマー マネージド キーで保護される追加の暗号化スコープについて、キーのバージョンを手動で更新する必要があります。
 
 ### <a name="infrastructure-encryption"></a>インフラストラクチャ暗号化
 
@@ -55,7 +55,7 @@ Azure Storage のインフラストラクチャ暗号化により、データの
 
 次の表は、コンテナーに対する既定の暗号化スコープの構成方法に応じて、BLOB のアップロード操作の動作をまとめたものです。
 
-| コンテナーで定義されている暗号化スコープ | 既定の暗号化スコープを使用した BLOB のアップロード | 既定のスコープ以外の暗号化スコープを使用した BLOB のアップロード |
+| コンテナーで定義されている暗号化スコープは... | 既定の暗号化スコープを使用した BLOB のアップロード... | 既定のスコープ以外の暗号化スコープを使用した BLOB のアップロード... |
 |--|--|--|
 | オーバーライドを許可する既定の暗号化スコープ | 成功 | 成功 |
 | オーバーライドを禁止する既定の暗号化スコープ | 成功 | 失敗 |
@@ -82,14 +82,14 @@ Azure Storage のインフラストラクチャ暗号化により、データの
 
 ## <a name="feature-support"></a>機能サポート
 
-次の表は、お使いのアカウントでこの機能がどのようにサポートされるかと、特定の機能を有効にした場合のサポートへの影響を示しています。 
+この表は、アカウントでのこの機能のサポート状況と、特定の機能を有効にした場合のサポートへの影響を示しています。
 
-| ストレージ アカウントの種類                | Blob Storage (既定のサポート)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+| ストレージ アカウントの種類                | Blob Storage (既定のサポート)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>
 |-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
-| Standard 汎用 v2 | ![はい](../media/icons/yes-icon.png) |![いいえ](../media/icons/no-icon.png)              | ![いいえ](../media/icons/no-icon.png) | 
+| Standard 汎用 v2 | ![はい](../media/icons/yes-icon.png) |![いいえ](../media/icons/no-icon.png)              | ![いいえ](../media/icons/no-icon.png) |
 | Premium ブロック BLOB          | ![はい](../media/icons/yes-icon.png) |![いいえ](../media/icons/no-icon.png)              | ![いいえ](../media/icons/no-icon.png) |
 
-<sup>1</sup>    Data Lake Storage Gen2 とネットワーク ファイル システム (NFS) 3.0 プロトコルはどちらも、階層型名前空間が有効になっているストレージ アカウントが必要です。
+<sup>1</sup>    Data Lake Storage Gen2 とネットワーク ファイル システム (NFS) 3.0 プロトコルの両方で、階層型名前空間が有効になっているストレージ アカウントが必要です。
 
 ## <a name="next-steps"></a>次のステップ
 

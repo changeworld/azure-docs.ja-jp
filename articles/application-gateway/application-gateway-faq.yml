@@ -9,12 +9,12 @@ metadata:
   ms.date: 06/08/2021
   ms.author: victorh
   ms.custom: references_regions
-  ms.openlocfilehash: 87780dbc3a7d492f0fd0fec8839ef26bb092b2eb
-  ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+  ms.openlocfilehash: a0d8c83209f5d96d10cacd95d85fc45f2d09b44b
+  ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/24/2021
-  ms.locfileid: "122777556"
+  ms.lasthandoff: 09/24/2021
+  ms.locfileid: "128669077"
 title: Application Gateway に関してよく寄せられる質問
 summary: >
   [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -60,7 +60,11 @@ sections:
 
       v2 SKU の場合は、パブリック IP リソースを開き、 **[構成]** を選択します。 DNS 名を構成するには、 **[DNS 名ラベル (オプション)]** フィールドを使用できます。
   - question: キープアライブ タイムアウトと TCP アイドル タイムアウトの設定はどのようになっていますか?
-    answer: "*キープアライブ タイムアウト* では、固定接続が再利用されるか、または閉じられる前に、クライアントによってその接続上で別の HTTP 要求が送信されるまでの Application Gateway の待機時間が制御されます。 *TCP アイドル タイムアウト* では、アクティビティがない場合に TCP 接続が開いた状態になる時間の長さが制御されます。 \n\nApplication Gateway v1 SKU での *キープアライブ タイムアウト* は 120 秒であり、v2 SKU では 75 秒です。 *TCP アイドル タイムアウト* は、Application Gateway の v1 および v2 SKU 両方のフロントエンド仮想 IP (VIP) 上で既定値の 4 分となっています。 v1 および v2 Application Gateway での TCP アイドル タイムアウト値は、4 分から 30 分までの範囲で構成できます。 v1 と v2 どちらの Application Gateway でも、ポータルで Application Gateway のパブリック IP に移動し、パブリック IP の [構成] ブレードで TCP アイドル タイムアウトを変更する必要があります。 次のコマンドを実行して、PowerShell からパブリック IP の TCP アイドル タイムアウト値を設定できます。 \n\n```azurepowershell-interactive\n$publicIP = Get-AzPublicIpAddress -Name MyPublicIP -ResourceGroupName MyResourceGroup\n$publicIP.IdleTimeoutInMinutes = \"15\"\nSet-AzPublicIpAddress -PublicIpAddress $publicIP\n```\n"
+    answer: "*キープアライブ タイムアウト* では、固定接続が再利用されるか、または閉じられる前に、クライアントによってその接続上で別の HTTP 要求が送信されるまでの Application Gateway の待機時間が制御されます。 *TCP アイドル タイムアウト* では、アクティビティがない場合に TCP 接続が開いた状態になる時間の長さが制御されます。 \n\nApplication Gateway v1 SKU での *キープアライブ タイムアウト* は 120 秒であり、v2 SKU では 75 秒です。 *TCP アイドル タイムアウト* は、Application Gateway の v1 および v2 SKU 両方のフロントエンド仮想 IP (VIP) 上で既定値の 4 分となっています。 v1 および v2 Application Gateway での TCP アイドル タイムアウト値は、4 分から 30 分までの範囲で構成できます。 v1 と v2 どちらの Application Gateway でも、ポータルで Application Gateway のパブリック IP に移動し、パブリック IP の [構成] ブレードで TCP アイドル タイムアウトを変更する必要があります。 プライベート IP アドレスの値の変更はサポートされていません。 次のコマンドを実行して、PowerShell からパブリック IP の TCP アイドル タイムアウト値を設定できます。 \n\n```azurepowershell-interactive\n$publicIP = Get-AzPublicIpAddress -Name MyPublicIP -ResourceGroupName MyResourceGroup\n$publicIP.IdleTimeoutInMinutes = \"15\"\nSet-AzPublicIpAddress -PublicIpAddress $publicIP\n```\n"
+  - question: Application Gateway リソースの名前を変更できますか?
+    answer: いいえ。 Application Gateway リソースの名前は変更できません。 別の名前で新しいリソースを作成する必要があります。
+  - question: 削除されている場合、Application Gateway とそのパブリック IP を復元する方法はありますか?
+    answer: いいえ。 削除された場合、Application Gateway リソースまたはそのパブリック IP は復元する方法がありません。 新しいリソースを作成する必要があります。
   - question: アプリケーション ゲートウェイの有効期間内に IP や DNS 名が変わることはありますか?
     answer: Application Gateway V1 SKU では、アプリケーション ゲートウェイを停止して起動すると、VIP が変わることがあります。 これに対して、アプリケーション ゲートウェイに関連付けられている DNS 名は、そのゲートウェイの有効期間全体を通して変わりません。 DNS 名が変わることはないので、CNAME エイリアスを使用し、その参照先をアプリケーション ゲートウェイの DNS アドレスにするようにしてください。 Application Gateway V2 SKU では、IP アドレスを静的として設定できるため、アプリケーション ゲートウェイの有効期間中、IP および DNS 名が変更されることはありません。
   - question: Application Gateway は静的 IP をサポートしますか?
@@ -96,6 +100,8 @@ sections:
     answer: いいえ。 Application Gateway v2 では、NTLM 認証を使用したプロキシ要求をサポートしていません。
   - question: Application Gateway アフィニティ Cookie は SameSite 属性をサポートしていますか?
     answer: "はい。[Chromium ブラウザー](https://www.chromium.org/Home) [v80 の更新](https://chromiumdash.appspot.com/schedule) で、SameSite 属性のない HTTP Cookie を SameSite=Lax として扱うことが必須になりました。 これは、サードパーティのコンテキストでは、Application Gateway アフィニティ Cookie がブラウザーによって送信されないことを意味します。 \n\nこのシナリオをサポートするために、Application Gateway では、既存の *ApplicationGatewayAffinity* Cookie に加えて、*ApplicationGatewayAffinityCORS* という別の同一の Cookie が挿入されます。  これらの Cookie は似ていますが、*ApplicationGatewayAffinityCORS* Cookie には、次の 2 つの属性が追加されています。*SameSite=None; Secure* です。 これらの属性は、クロスオリジン要求でも固定セッションを維持します。 詳細については、「[Cookie ベースのアフィニティ](configuration-http-settings.md#cookie-based-affinity)」セクションを参照してください。\n"
+  - question: アクティブ リスナーと非アクティブ リスナーの違いは何ですか?
+    answer: "アクティブ リスナーは、ルールに関連付けられ、**かつ**、バックエンド プールにトラフィックを送信するリスナーです。 トラフィックをリダイレクトする **だけ** のリスナーはアクティブ リスナーではありません。 リダイレクト ルールに関連付けられているリスナーはアクティブとは見なされません。 リダイレクト ルールがパスベースのルールの場合、そのリダイレクト ルールのすべてのパスはトラフィックをリダイレクトしているはずです。そうでない場合、リスナーはアクティブであると見なされます。 個々のコンポーネントの制限の詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-resource-manager/management/azure-subscription-service-limits.md#application-gateway-limits)」を参照してください。 \n"
 - name: パフォーマンス
   questions:
   - question: Application Gateway は高可用性とスケーラビリティをどのようにサポートしますか?

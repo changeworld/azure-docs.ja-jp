@@ -43,7 +43,7 @@
 - name: サンプル
   expanded: true
   items:
-    - name: サンプルの Node アプリサンプルの発行者
+    - name: サンプル アプリケーション
       href: 'https://github.com/Azure-Samples/active-directory-verifiable-credentials'
     - name: サンプルの発行者
       href: 'https://didvc-issuer-sample.azurewebsites.net/'

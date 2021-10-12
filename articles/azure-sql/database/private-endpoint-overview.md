@@ -144,7 +144,7 @@ Private Link を使用すると、[ExpressRoute](../../expressroute/expressroute
 
  ![接続オプションの図][1]
 
-さらに、仮想ネットワークで直接実行されているわけではないが、仮想ネットワークと統合されているサービス (App Service Web Apps や Functions など) も、データベースへのプライベート接続を実現できます。 このユース ケースの詳細については、[Azure SQL データベースへのプライベート接続を使用する Web アプリ](/azure/architecture/example-scenario/private-web-app/private-web-app)のアーキテクチャ シナリオをご覧ください。
+さらに、仮想ネットワークで直接実行されているわけではないが、仮想ネットワークと統合されているサービス (App Service Web Apps や Functions など) も、データベースへのプライベート接続を実現できます。 このユース ケースの詳細については、[Azure SQL Database へのプライベート接続を使用する Web アプリ](/azure/architecture/example-scenario/private-web-app/private-web-app)のアーキテクチャ シナリオをご覧ください。
 
 ## <a name="connecting-from-an-azure-vm-in-peered-virtual-network"></a>ピアリングされた仮想ネットワーク内の Azure VM からの接続 
 
@@ -185,7 +185,7 @@ Private Link を使用することで、お客様が NSG のようなネット�
 
 - Azure SQL Database のセキュリティの概要については、「[データベースの保護](security-overview.md)」を参照してください。
 - Azure SQL Database 接続の概要については、「[Azure SQL の接続アーキテクチャ](connectivity-architecture.md)」を参照してください
-- [Azure SQL データベースへのプライベート接続を使用する Web アプリ](/azure/architecture/example-scenario/private-web-app/private-web-app)のアーキテクチャ シナリオも確認できます。このシナリオでは、仮想ネットワークの外部にある Web アプリケーションをデータベースのプライベート エンドポイントに接続します。
+- [Azure SQL Database へのプライベート接続を使用する Web アプリ](/azure/architecture/example-scenario/private-web-app/private-web-app)のアーキテクチャ シナリオも確認できます。このシナリオでは、仮想ネットワークの外部にある Web アプリケーションをデータベースのプライベート エンドポイントに接続します。
 
 <!--Image references-->
 [1]: media/private-endpoint/pe-connect-overview.png

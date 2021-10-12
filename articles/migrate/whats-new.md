@@ -7,16 +7,21 @@ ms.author: anvar
 ms.manager: bsiva
 ms.date: 08/04/2021
 ms.custom: mvc
-ms.openlocfilehash: 99216bd26bfff76c4342f1533ff4ced070a69e92
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: ca3a4a3bbcfd1de92906b75ed56351afb04b4b17
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124735976"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129389439"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Azure Migrate の新着情報
 
 [Azure Migrate](migrate-services-overview.md) を使用すると、オンプレミスのサーバー、アプリ、データを検出して評価し、Microsoft Azure クラウドに移行するのに役立ちます。 この記事では、Azure Migrate の新しいリリースと機能について概要を説明します。
+
+## <a name="update-september-2021"></a>更新 (2021 年 9 月)
+- [Azure Private Link](../private-link/private-endpoint-overview.md) を使用してプライベート ネットワーク上でサーバーを検出、評価、移行する機能が現在、  サポートされている[政府機関向けクラウド](migrate-support-matrix.md#supported-geographies-azure-government)でプレビュー段階です。 [詳細情報](how-to-use-azure-migrate-with-private-endpoints.md)
+- PowerShell を利用し、エージェントレス VMware VM 移行のリソースにタグを付けたり、カスタム名を追加したりできるようになりました。
+- Azure Migrate アプライアンス: 物理サーバーの検出一覧からサーバーを削除するオプション。
 
 ## <a name="update-august-2021"></a>更新 (2021 年 8 月)
 

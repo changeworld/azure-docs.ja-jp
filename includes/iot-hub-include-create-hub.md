@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/14/2020
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: bfa5149cb9aea3ae8deea572abd86f5fb776e252
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.openlocfilehash: 9de7b8c91b1dfdbf10b4e8f5e61e9c8cd9f68abf
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114671160"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129300306"
 ---
 ここでは、[Azure portal](https://portal.azure.com) を使用して IoT ハブを作成する方法について説明します。
 
@@ -70,4 +70,4 @@ ms.locfileid: "114671160"
 
     :::image type="content" source="./media/iot-hub-include-create-hub/iot-hub-review-and-create.png" alt-text="新しいハブを作成するための情報を確認する。":::
 
-1. **[作成]** を選択して新しいハブのデプロイを開始します。 ハブの作成中、数分間にデプロイが進行中になります。 デプロイが完了したら、 **[リソースに移動]** をクリックし、新しいハブを開きます。
+1. **[作成]** を選択して新しいハブのデプロイを開始します。 ハブの作成中、数分間にデプロイが進行中になります。 デプロイが完了したら、 **[リソースに移動]** を選択し、新しいハブを開きます。

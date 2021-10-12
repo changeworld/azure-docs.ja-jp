@@ -29,7 +29,7 @@ Visual Studio では、インフラストラクチャとコードを Azure に�
 
     ![Create project](./media/create-visual-studio-deployment-project/name-project.png)
 
-1. Azure リソース マネージャーにデプロイするテンプレートを選択します。 デプロイするプロジェクトの種類に応じて、さまざまなオプションがあります。 この記事では、 **[Web アプリ]** テンプレートを選択し、 **[OK]** を選択します。
+1. Azure Resource Manager にデプロイするテンプレートを選択します。 デプロイするプロジェクトの種類に応じて、さまざまなオプションがあります。 この記事では、 **[Web アプリ]** テンプレートを選択し、 **[OK]** を選択します。
 
     ![テンプレートの選択](./media/create-visual-studio-deployment-project/select-project.png)
 

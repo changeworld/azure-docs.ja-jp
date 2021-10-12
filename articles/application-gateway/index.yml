@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Azure Application Gateway のドキュメント
-summary: アプリケーション ゲートウェイを作成する方法を説明します。 このドキュメントは、ご自分の Azure リソースへの Web トラフィックを計画、デプロイ、および管理するのに役立ちます。
+summary: Application Gateway を作成する方法を説明します。 このドキュメントは、ご自分の Azure リソースへの Web トラフィックを計画、デプロイ、および管理するのに役立ちます。
 metadata:
   title: Azure Application Gateway のドキュメント
   description: Web アプリケーションへのトラフィックを管理できる Web トラフィック ロード バランサーである Azure Application Gateway について説明します。
@@ -41,7 +41,7 @@ landingContent:
     links:
     - text: Application Gateway の高トラフィックのサポート
       url: high-traffic-support.md
-- title: アプリケーション ゲートウェイをデプロイする
+- title: Application Gateway をデプロイする
   linkLists:
   - linkListType: quickstart
     links:
@@ -67,7 +67,7 @@ landingContent:
       url: application-gateway-autoscaling-zone-redundant.md
   - linkListType: tutorial
     links:
-    - text: Web アプリケーションのアクセスを改善するアプリケーション ゲートウェイを作成する
+    - text: Web アプリケーションのアクセスを改善する Application Gateway を作成する
       url: tutorial-autoscale-ps.md
 - title: AKS のイングレス コントローラー
   linkLists:

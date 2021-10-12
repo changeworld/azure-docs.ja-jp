@@ -3,12 +3,12 @@ title: Azure Video Analyzer のトラブルシューティング - Azure
 description: この記事では、Azure Video Analyzer のトラブルシューティング手順について説明します。
 ms.topic: troubleshooting
 ms.date: 07/15/2021
-ms.openlocfilehash: 0d3a089fee6d374dd8109f2430cfdb9fec19bc30
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: be8bbe61bd9d33557184b11c722141cfbc880fed
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123429354"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128563621"
 ---
 # <a name="troubleshoot-azure-video-analyzer"></a>Azure Video Analyzer のトラブルシューティング
 
@@ -155,6 +155,17 @@ Assembly Initialization method Microsoft.Media.VideoAnalyzer.Test.Feature.Edge.A
 1. [詳細ログを収集するように Video Analyzer モジュールを構成する](#configure-video-analyzer-module-to-collect-verbose-logs)
 1. [デバッグ ログを有効にします](#video-analyzer-debug-logs)
 1. 問題を再現します
+1. Video Analyzer エッジ モジュールを再起動します。 
+    > [!NOTE]
+    > この手順は、エッジ モジュールを適切に終了し、イベントを一切漏らすことなくすべてのログ ファイルを使用可能な形式で取得するために必要です。   
+    
+    IoT Edge デバイスで、`<avaedge>` をお使いの Video Analyzer エッジ モジュールの名前に置き換えた後に、次のコマンドを使用します。
+    
+    ```cmd
+    sudo iotedge restart <avaedge>
+    ```
+
+   Azure portal からリモートでモジュールを再起動することもできます。 詳細については、[「Azure portal から IoT Edge デバイスを監視およびトラブルシューティングする」](../../iot-edge/troubleshoot-in-portal.md)を参照してください。
 1. ポータルの **[IoT Hub]** ページから仮想マシンに接続します
 
    1. _debugLogs_ フォルダー内のすべてのファイルを zip 圧縮します。

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: azure-maps
 services: azure-maps
 ms.custom: mvc, references_regions
-ms.openlocfilehash: e4c9ff1585be0545e93a23772ebd0d05156e1351
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f9b307aeba76f3d5c5ef43ad88f86163b7fc2f57
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121728000"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129273858"
 ---
 # <a name="what-is-azure-maps"></a>Azure Maps とは
 
@@ -25,7 +25,7 @@ Azure Maps は、最新のマッピング データを使用して、地理的�
 * ポイント間、マルチポイント、マルチポイント最適化、等時線、電気自動車、商用車、影響を受ける交通、マトリックス ルーティングなど、さまざまなルーティングのオプション。
 * リアルタイムの交通情報を必要とするアプリケーション向けのトラフィック フロー ビューとインシデント ビュー。
 * 公共の輸送情報を要求する Mobility Service (プレビュー)。さまざまな移動手段とリアルタイムの到着を組み合わせて、ルートを計画します。
-* タイム ゾーンおよび位置情報 (プレビュー) サービス。
+* タイム ゾーンと位置情報サービス。
 * 数値標高モデルを使用した Elevation Service
 * Azure 内でホストされている位置情報を使用した、ジオフェンシング サービスとマッピング データ ストレージ。
 * 地理空間分析による位置情報インテリジェンス。
@@ -62,13 +62,13 @@ Azure Maps は、Azure アプリケーションに地理的なコンテキスト
 
 データはマップに不可欠です。 Data Service は、空間演算や画像合成で使用する地理空間データをアップロードおよび格納するために使用します。  お客様のデータを Azure Maps サービスに近づけると、待ち時間が減少し、生産性が上がり、ご自分のアプリケーションで新しいシナリオが作成されます。 このサービスの詳細については、[Data Service のドキュメント](/rest/api/maps/data-v2)を参照してください。
 
-### <a name="geolocation-service-preview"></a>Geolocation Service (プレビュー)
+### <a name="geolocation-service"></a>位置情報サービス
 
-Geolocation Service は、IP アドレスに関して取得した 2 文字の国および地域コードをプレビューするために使用します。 このサービスは、地理的な場所に基づいてカスタマイズされたアプリケーション コンテンツを提供することで、ユーザー エクスペリエンスを強化するのに役立てることができます。
+Geolocation Service は、IP アドレスの 2 文字の国および地域コードを取得するために使用します。 このサービスは、地理的な場所に基づいてカスタマイズされたアプリケーション コンテンツを提供することで、ユーザー エクスペリエンスを強化するのに役立てることができます。
 
 詳細については、[Geolocation Service のドキュメント](/rest/api/maps/geolocation)を参照してください。
 
-### <a name="mobility-services-preview"></a>Mobility Service (プレビュー) 
+### <a name="mobility-services-preview"></a>Mobility サービス プレビュー
 
 Azure Maps Mobility Service では、輸送経路を指定したり、公共輸送機関の最寄りの停留所を検索したりするなど、公共輸送機関機能を利用できるため、アプリケーションの開発時間が短縮されます。 ユーザーは、輸送の停留所、路線、スケジュールに関する詳細情報を取得できます。 Mobility Service では、ユーザーは停留所や路線の配置、停留所、路線、サービス エリアのアラート、公共輸送機関のリアルタイム到着アラートやサービス アラートを取得することもできます。 さらに、Mobility Service は、マルチモーダルな旅行計画オプションでルーティング機能を提供します。 マルチモードの旅行計画では、徒歩、自転車、公共輸送機関の選択肢がすべて 1 つの旅行に組み込まれます。 ユーザーはまた、段階式で詳しいマルチモードの旅程にアクセスできます。
 
@@ -76,7 +76,7 @@ Azure Maps Mobility Service では、輸送経路を指定したり、公共輸�
 
 ### <a name="render-service"></a>Render Service
 
-[Render Service V2 (プレビュー)](/rest/api/maps/renderv2) では、新しいバージョンの [Get Map Tile V2 API](/rest/api/maps/render-v2/get-map-tile) が導入されています。 Get Map Tile V2 API では、Azure Maps Creator を使用して作成された Azure Maps の道路タイル、気象タイル、またはマップ タイルを要求できるようになりました。 新しい Get Map Tile V2 API を使用することをお勧めします。  
+[Render Service V2](/rest/api/maps/renderv2) では、新しいバージョンの [Get Map Tile V2 API](/rest/api/maps/render-v2/get-map-tile) が導入されています。 Get Map Tile V2 API では、Azure Maps Creator を使用して作成された Azure Maps の道路タイル、気象タイル、またはマップ タイルを要求できるようになりました。 新しい Get Map Tile V2 API を使用することをお勧めします。  
 
 :::image type="content" source="./media/about-azure-maps/intro_map.png" border="false" alt-text="Render Service V2 からのマップの例":::
 
@@ -206,16 +206,11 @@ Elevation Service を使用すると、海抜データを次の 2 つの形式�
 
 :::image type="content" source="./media/about-azure-maps/elevation.png" alt-text="海抜データを含む地図の例":::
 
-
 ## <a name="programming-model"></a>プログラミング モデル
 
 Azure Maps は、モビリティ向けに構築されており、クロスプラットフォーム アプリケーションの開発に役立てることができます。 言語に依存せず、[REST API シリーズ](/rest/api/maps/)を介して JSON 出力をサポートするプログラミング モデルを使用します。
 
 さらに、Azure Maps は、便利な [JavaScript マップ コントロール](/javascript/api/azure-maps-control)を単純なプログラミング モデルで提供します。 Web アプリケーションであれ、モバイル アプリケーションであれ、すばやく簡単に開発することができます。
-
-
-
-
 
 ## <a name="power-bi-visual"></a>Power BI 視覚エフェクト
 
@@ -231,7 +226,8 @@ Azure Maps サービスにアクセスするには、[Azure portal](https://port
 
 Azure Maps では、キーベースの認証スキームが使用されます。 アカウントを作成すると、2 つのキーが生成されます。 Azure Maps サービスに対して認証するには、いずれかのキーを使用します。
 
-注: Azure Maps では、顧客が入力した住所や場所のクエリ ("クエリ") を、マッピング機能の向上のためにサードパーティの TomTom と共有します。 クエリが TomTom と共有される際、クエリはどの顧客やエンド ユーザーにもリンクされないため、個人を識別するために使用されることはありません。 Moovit および AccuWeather との統合を含むモビリティおよび気象サービスは、現在[プレビュー](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)の段階です。
+> [!NOTE]
+> Azure Maps では、顧客が入力した住所や場所のクエリ ("クエリ") を、マッピング機能の向上のためにサードパーティの TomTom と共有します。 クエリが TomTom と共有される際、クエリはどの顧客やエンド ユーザーにもリンクされないため、個人を識別するために使用されることはありません。 Moovit との統合を含むモビリティ サービスは現在のところ、[プレビュー](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)の段階です。
 
 Microsoft は現在、オンライン サービスの下請業者の一覧に TomTom、Moovit、および AccuWeather を追加するプロセスを実行中です。
 

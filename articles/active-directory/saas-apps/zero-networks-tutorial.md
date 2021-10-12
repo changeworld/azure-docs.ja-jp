@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory シングル サインオン (SSO) と Zero Networks の統合 | Microsoft Docs'
+title: 'チュートリアル: Azure AD SSO と Zero Networks の統合'
 description: Azure Active Directory と Zero Networks の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/26/2021
+ms.date: 09/20/2021
 ms.author: jeedes
-ms.openlocfilehash: c6c7baf2a1ff899e7604aa65fb3e24c2b7816712
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 533e1dee16a303931987bc83f15f929d89d38b4f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123077602"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128669373"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zero-networks"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Zero Networks の統合
+# <a name="tutorial-azure-ad-sso-integration-with-zero-networks"></a>チュートリアル: Azure AD SSO と Zero Networks の統合
 
 このチュートリアルでは、Zero Networks と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と Zero Networks を統合すると、次のことが可能になります。
 
@@ -35,7 +35,7 @@ ms.locfileid: "123077602"
 
 ## <a name="scenario-description"></a>シナリオの説明
 
-このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
+このチュートリアルでは、Zero Networks Admin Portal と Access Portal の Azure AD SSO を構成します。
 
 * Zero Networks では、**SP** Initiated SSO がサポートされます。
 
@@ -46,25 +46,12 @@ ms.locfileid: "123077602"
 
 Azure AD への Zero Networks の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に Zero Networks を追加する必要があります。
 
-1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、Azure portal にサインインします。
+1. Azure portal に、職場の Microsoft アカウントを使用してサインインします。
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Zero Networks**」と入力します。
 1. 結果のパネルから **[Zero Networks]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
-
-## <a name="configure-and-test-azure-ad-sso-for-zero-networks"></a>Zero Networks の Azure AD SSO の構成とテスト
-
-**B.Simon** というテスト ユーザーを使用して、Zero Networks に対する Azure AD SSO を構成してテストします。 SSO を機能させるためには、Azure AD ユーザーと Zero Networks の関連ユーザーとの間にリンク関係を確立する必要があります。
-
-Zero Networks に対して Azure AD SSO を構成してテストするには、次の手順を実行します。
-
-1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
-    1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
-    1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
-1. **[Zero Networks SSO の構成](#configure-zero-networks-sso)** - アプリケーション側でシングル サインオン設定を構成します。
-    1. **[Zero Networks のテスト ユーザーの作成](#create-zero-networks-test-user)** - Zero Networks で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
-1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
@@ -88,33 +75,9 @@ Zero Networks に対して Azure AD SSO を構成してテストするには、�
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user&quot;></a>Azure AD のテスト ユーザーの作成
+## <a name="configure-zero-networks-sso&quot;></a>Zero Networks SSO の構成
 
-このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
-
-1. Azure portal の左側のウィンドウから、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
-1. 画面の上部にある **[新しいユーザー]** を選択します。
-1. **[ユーザー]** プロパティで、以下の手順を実行します。
-   1. **[名前]** フィールドに「`B.Simon`」と入力します。  
-   1. **[ユーザー名]** フィールドに「username@companydomain.extension」と入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
-   1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
-   1. **Create** をクリックしてください。
-
-### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>Azure AD テスト ユーザーの割り当て
-
-このセクションでは、B.Simon に Zero Networks へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
-
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
-1. アプリケーションの一覧で **[Zero Networks]** を選択します。
-1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
-1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
-1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
-1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
-1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
-
-## <a name=&quot;configure-zero-networks-sso&quot;></a>Zero Networks SSO の構成
-
-1. Zero Networks 企業サイトに管理者としてログインします。
+1. Zero Networks Admin Portal に管理者としてログインします。
 
 1. **[設定]**  >  **[ID プロバイダー]** に移動します。
 
@@ -134,9 +97,12 @@ Zero Networks に対して Azure AD SSO を構成してテストするには、�
 
     1. **[保存]** をクリックします。
 
-### <a name="create-zero-networks-test-user"></a>Zero Networks のテスト ユーザーの作成
+## <a name="configure-user-assignment-requirement"></a>ユーザー割り当ての要件を構成する
 
-このセクションでは、Zero Networks で Britta Simon というユーザーを作成します。 [Zero Networks サポート チーム](mailto:support@zeronetworks.com)と連携して、Zero Networks プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+1. Azure portal の **Zero Networks** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[プロパティ]** を選択します。
+1. **[ユーザーの割り当てが必要]** を **[いいえ]** に変更します。
+
+![[ユーザーの割り当てが必要] のスクリーンショット。](./media/zero-networks-tutorial/user-assignment.png)
 
 ## <a name="test-sso"></a>SSO のテスト 
 
@@ -147,7 +113,3 @@ Zero Networks に対して Azure AD SSO を構成してテストするには、�
 * Zero Networks のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
 * Microsoft マイ アプリを使用することができます。 マイ アプリで [Zero Networks] タイルをクリックすると、Zero Networks のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
-
-## <a name="next-steps"></a>次のステップ
-
-Zero Networks を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

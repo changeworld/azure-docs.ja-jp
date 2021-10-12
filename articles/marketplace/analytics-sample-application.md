@@ -36,7 +36,7 @@ ms.locfileid: "121748238"
 
 ## <a name="how-to-run-the-application"></a>アプリケーションを実行する方法
 
-1. 次のコマンドを使用して、リポジトリをローカル システムに複製します。
+1. 次のコマンドを使用して、リポジトリをローカル システムにクローンします。
 
     `git clone https://github.com/partneranalytics/ProgrammaticExportSampleAppISV.git`
 

@@ -2,19 +2,22 @@
 title: Bicep 関数 - any
 description: 型を変換するために Bicep で使用できる any 関数について説明します。
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: c4bf30d88f9cad54e83ad1d813242dc09e6c01a5
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.date: 09/09/2021
+ms.openlocfilehash: 00d99a9329f48b089563b4366ae9683ce2874901
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "111027129"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124827576"
 ---
 # <a name="any-function-for-bicep"></a>Bicep の any 関数
 
 Bicep では、Bicep 型システムの型エラーを解決するために `any()` という関数がサポートされています。 この関数は、指定した値の形式が、型システムで予期されるものと一致しない場合に使用します。 たとえば、プロパティに数値が必要なときに、`'0.5'` のように文字列として指定しなければならない場合があります。 `any()` 関数を使用すると、型システムによって報告されるエラーが抑制されます。
 
 この関数は、Azure Resource Manager テンプレートのランタイムには存在しません。 これは Bicep によってのみ使用され、ビルド済みのテンプレートの JSON には生成されません。
+
+> [!NOTE]
+> 型エラーを解決するのに役立つよう、型が不足または間違っていることで `any()` を使用する必要があるときはお知らせください。 GitHub 問題「[不足している型の検証や間違い](https://github.com/Azure/bicep/issues/784)」に詳細を追加してください。
 
 ## <a name="any"></a>any
 
@@ -71,6 +74,6 @@ publicIPAddress: any((pipId == '') ? null : {
 
 `any()` 関数のより複雑な使用方法については、次の例を参照してください。
 
-* [特定の名前を必要とする子リソース](https://github.com/Azure/bicep/blob/main/docs/examples/201/api-management-create-all-resources/main.bicep#L246)
+* [特定の名前を必要とする子リソース](https://github.com/Azure/bicep/blob/62eb8109ae51d4ee4a509d8697ef9c0848f36fe4/docs/examples/201/api-management-create-all-resources/main.bicep#L247)
 * [存在するがリソースの型で定義されないリソース プロパティ](https://github.com/Azure/bicep/blob/main/docs/examples/201/log-analytics-with-solutions-and-diagnostics/main.bicep#L26)
 

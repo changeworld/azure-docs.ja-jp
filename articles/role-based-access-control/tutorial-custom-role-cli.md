@@ -14,16 +14,16 @@ ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e3743697d58d0f5b167b123df59bc5638aa60489
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 6fed28798e8e2f7795600b50c0121361ce54584b
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107771679"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129358235"
 ---
 # <a name="tutorial-create-an-azure-custom-role-using-azure-cli"></a>チュートリアル:Azure CLI を使用して Azure カスタム ロールを作成する
 
-[Azure の組み込みロール](built-in-roles.md)が組織の特定のニーズを満たさない場合は、独自のカスタム ロールを作成することができます。 このチュートリアルでは、Azure CLI を使用して、Reader Support Tickets というカスタム ロールを作成します。 このカスタム ロールが割り当てられたユーザーは、サブスクリプションの管理プレーンにすべてを表示することができ、サポート チケットを開くこともできます。
+[Azure の組み込みロール](built-in-roles.md)が組織の特定のニーズを満たさない場合は、独自のカスタム ロールを作成することができます。 このチュートリアルでは、Azure CLI を使用して、Reader Support Tickets というカスタム ロールを作成します。 このカスタム ロールが割り当てられたユーザーは、サブスクリプションのコントロール プレーンにすべてを表示することができ、サポート チケットを開くこともできます。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -50,9 +50,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 カスタム ロールを作成するには、JSON テンプレートをベースに必要な変更を加えて、新しいロールを作成するのが最も簡単です。
 
-1. [Microsoft.Support リソース プロバイダー](resource-provider-operations.md#microsoftsupport)の操作一覧を確認します。 アクセス許可の作成に使用できる操作を知るための参考にしてください。
+1. [Microsoft.Support リソース プロバイダー](resource-provider-operations.md#microsoftsupport)のアクション一覧を確認します。 アクセス許可の作成に使用できるアクションを知るための参考にしてください。
 
-    | Operation | 説明 |
+    | アクション | 説明 |
     | --- | --- |
     | Microsoft.Support/register/action | サポート リソース プロバイダーに登録します。 |
     | Microsoft.Support/supportTickets/read | サポート チケットの詳細 (ステータス、重大度、連絡先の詳細、やり取りなど) を取得するか、サブスクリプション全体のサポート チケットの一覧を取得します。 |
@@ -79,7 +79,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     }
     ```
     
-1. `Actions` プロパティに次の操作を追加します。 これらのアクションによって、ユーザーはサブスクリプションに含まれるあらゆるものを閲覧したり、サポート チケットを作成したりすることができます。
+1. 次のアクションを `Actions` プロパティに追加します。 これらのアクションによって、ユーザーはサブスクリプションに含まれるあらゆるものを閲覧したり、サポート チケットを作成したりすることができます。
 
     ```
     "*/read",
@@ -202,7 +202,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. ReaderSupportRole.json ファイルを開きます。
 
-1. `Actions` に、リソース グループのデプロイを作成および管理するための操作を追加します (`"Microsoft.Resources/deployments/*"`)。 前の操作の後に必ずコンマを追加してください。
+1. `Actions` に、リソース グループのデプロイを作成および管理するためのアクションを追加します (`"Microsoft.Resources/deployments/*"`)。 前のアクションの後に必ずコンマを追加してください。
 
     更新後の JSON ファイルは次のようになります。
 

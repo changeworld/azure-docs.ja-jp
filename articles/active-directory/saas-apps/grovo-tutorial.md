@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 59d46fefca4955c9cee641cb4ae0a2f815fabcbb
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 82324eca3d638724f946885fe809f2aba261a692
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124833375"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129229712"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-grovo"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Grovo の統合
 

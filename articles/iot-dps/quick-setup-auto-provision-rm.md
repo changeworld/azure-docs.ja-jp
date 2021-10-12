@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc, subject-armqs, devx-track-azurecli
-ms.openlocfilehash: 8ec795e7ad54d2101573d857fa52b5aaad0ed71d
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 20a6ced453ca49c08131917f0d22c4c7d9f759a9
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112032395"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129278749"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-dps-with-an-arm-template"></a>クイックスタート: ARM テンプレートを使用して IoT Hub デバイス プロビジョニング サービス (DPS) を設定する
 
@@ -170,4 +170,4 @@ az group delete --name "${projectName}rg"
 このクイックスタートでは、IoT ハブと Device Provisioning Service インスタンスをデプロイし、この 2 つのリソースをリンクしました。 この設定を使用してデバイスをプロビジョニングする方法については、デバイスの作成に関するクイックスタートに進んでください。
 
 > [!div class="nextstepaction"]
-> [デバイスをプロビジョニングするためのクイックスタート](./quick-create-simulated-device-symm-key.md)
+> [クイックスタート: シミュレートされた対称キー デバイスをプロビジョニングする](./quick-create-simulated-device-symm-key.md)

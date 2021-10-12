@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 10/28/2019
 ms.author: kgremban
 ms.custom: mvc
-ms.openlocfilehash: d2ec1be20c7453d64b3255f9756676d06b023d38
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3cf44d5ebe1ea643f588f1f63e0f5695240b1c95
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121747310"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129233164"
 ---
 # <a name="what-is-azure-iot-edge"></a>Azure IoT Edge とは
 
@@ -65,7 +65,7 @@ Azure IoT Edge ランタイムは、多数の IoT デバイス上で動作する
 
 製造元やモデルが異なっていたり、地理的に分散したりしている数百万台の IoT デバイスのソフトウェア ライフ サイクルを管理するのは困難です。 ワークロードは、特定の種類のデバイスに合わせて作成および構成され、使用するすべてのデバイスにデプロイされ、異常な動作をしているデバイスを検出するために監視されます。 これらのアクティビティは、デバイス単位で行うことはできないので、一定の規模で実施する必要があります。
 
-Azure IoT Edge は、Azure IoT ソリューション アクセラレータ とシームレスに連携し、実際のソリューションのニーズに合った一元的なコントロール プレーンを提供します。 ユーザーは Cloud Services を通じて次のことを実行できます。
+Azure IoT Edge は、Azure IoT Central とシームレスに連携し、実際のソリューションのニーズに合った一元的なコントロール プレーンを提供します。 ユーザーは Cloud Services を通じて次のことを実行できます。
 
 * 特定の種類のデバイス上で動作するワークロードを作成して構成する。
 * まとまったデバイスに対してワークロードを送信する。

@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 4/27/2021
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: 26063c9d0c02079b2c40eb85330be499b4bb624e
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 92b1eeb5317f5a7535406d1b3781a4b0b66cad45
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114462008"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129272455"
 ---
 # <a name="quickstart---get-started-with-a-sample-scenario-in-azure-digital-twins-explorer"></a>クイックスタート - Azure Digital Twins Explorer でサンプル シナリオを使用して作業を始める
 
 Azure Digital Twins を使用すると、現実の環境のライブ モデルを作成して対話的に操作することができます。 最初に、個々の要素を "**デジタル ツイン**" としてモデル化します。 次に、ライブ イベントに応答して情報を照会できるナレッジ "**グラフ**" にそれらを接続します。
 
-このクイックスタートでは、[Azure Digital Twins Explorer](concepts-azure-digital-twins-explorer.md) を使用して、事前構築済みの Azure Digital Twins グラフを調べます。 このツールを使用すると、Azure portal 内で Azure Digital Twins のデータを視覚化して操作できます。
+このクイックスタートでは、[Azure Digital Twins Explorer](concepts-azure-digital-twins-explorer.md) を使用して、事前構築済みの Azure Digital Twins グラフを調べます。 このツールを使用すると、Azure portal 内で Azure Digital Twins のデータを視覚化して操作できます。 
 
 次の手順で行います。
 
@@ -31,6 +31,9 @@ Azure Digital Twins を使用すると、現実の環境のライブ モデル�
 ここで使用するサンプル グラフは、2 つのフロアと 2 つの部屋から成る建物を表します。 Floor0 には Room0 が含まれ、Floor1 には Room1 が含まれます。 グラフは次の画像のようになります。
 
 :::image type="content" source="media/quickstart-azure-digital-twins-explorer/graph-view-full.png" alt-text="Azure Digital Twins Explorer での、矢印で接続された 4 つの円形ノードで構成されたグラフのスクリーンショット。":::
+
+>[!NOTE]
+>このクイックスタートでは、事前構築済みのグラフをいろいろ試し、Azure Digital Twins でのデータの表現方法を理解します。 わかりやすくするために、このクイックスタートでは IoT Hub デバイスとそのグラフ表現の間の接続設定については取り上げません。 グラフで端から端までフローをつなげるには、[エンド ツー エンドのソリューションを接続する](tutorial-end-to-end.md)方法に関するチュートリアルまで進んでください。
 
 ## <a name="prerequisites"></a>前提条件
 

@@ -8,12 +8,12 @@ ms.date: 07/06/2021
 ms.author: karler
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: faa4c57a4fc5e75d0e6262833c27833e9069fb30
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: 9def9f39e28851498c7bf87d5b6b2e7d0a26f2c2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122418711"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128599413"
 ---
 # <a name="prepare-an-application-for-deployment-in-azure-spring-cloud"></a>Azure Spring Cloud にデプロイするアプリケーションを準備する
 
@@ -157,16 +157,16 @@ Spring Boot のバージョン | Spring Cloud のバージョン
 > - CVE レポート「[CVE-2021-22119: Denial-of-Service attack with spring-security-oauth2-client](https://tanzu.vmware.com/security/cve-2021-22119)」に対応するために、Spring Boot を 2.5.2 または 2.4.8 にアップグレードしてください。 Spring Security を使用している場合は、5.5.1、5.4.7、5.3.10、または 5.2.11 にアップグレードしてください。
 > - アプリと Spring Cloud Service Registry 間の TLS 認証で Spring Boot 2.4.0 に問題があることが確認されました。2.4.1 以降を使用してください。 2\.4.0 を使用する場合の回避策については、[FAQ](./faq.md?pivots=programming-language-java#development) を参照してください。
 
-### <a name="dependencies-for-spring-boot-version-2223"></a>Spring Boot バージョン 2.2/2.3 の依存関係
+### <a name="dependencies-for-spring-boot-version-23"></a>Spring Boot バージョン 2.3 の依存関係
 
-Spring Boot バージョン 2.2 の場合は、アプリケーションの POM ファイルに次の依存関係を追加します。
+Spring Boot バージョン 2.3 の場合は、アプリケーションの POM ファイルに次の依存関係を追加します。
 
 ```xml
     <!-- Spring Boot dependencies -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.2.4.RELEASE</version>
+        <version>2.3.4.RELEASE</version>
     </parent>
 
     <!-- Spring Cloud dependencies -->
@@ -183,9 +183,9 @@ Spring Boot バージョン 2.2 の場合は、アプリケーションの POM �
     </dependencyManagement>
 ```
 
-### <a name="dependencies-for-spring-boot-version-24"></a>Spring Boot バージョン 2.4 の依存関係
+### <a name="dependencies-for-spring-boot-version-2425"></a>Spring Boot バージョン 2.4/2.5 の依存関係
 
-Spring Boot バージョン 2.2 の場合は、アプリケーションの POM ファイルに次の依存関係を追加します。
+Spring Boot バージョン 2.4/2.5 の場合は、アプリケーションの POM ファイルに次の依存関係を追加します。
 
 ```xml
     <!-- Spring Boot dependencies -->
@@ -292,41 +292,10 @@ public class GatewayApplication {
  > [!WARNING]
  > 構成プロパティに `spring.jmx.enabled=true` を指定してください。 そうしないと、Azure portal でメトリックを視覚化することはできません。
 
-### <a name="distributed-tracing"></a>分散トレース
-
-さらに、自分の Azure Spring Cloud サービス インスタンスと連携できるよう、Azure Application Insights インスタンスを有効にする必要があります。 Azure Spring Cloud と共に Application Insights を使用する方法については、[分散トレースに関するドキュメント](./how-to-distributed-tracing.md)を参照してください。
-
-#### <a name="spring-boot-2223"></a>Spring Boot 2.2/2.3
-
-pom.xml ファイルの依存関係セクションに次の `spring-cloud-starter-sleuth` および `spring-cloud-starter-zipkin` の依存関係を含めます。
-
-```xml
-<dependency>
-    <groupId>org.springframework.cloud</groupId>
-    <artifactId>spring-cloud-starter-sleuth</artifactId>
-</dependency>
-<dependency>
-    <groupId>org.springframework.cloud</groupId>
-    <artifactId>spring-cloud-starter-zipkin</artifactId>
-</dependency>
-```
-
-#### <a name="spring-boot-24"></a>Spring Boot 2.4
-
-*pom.xml* ファイルの依存関係セクションに次の `spring-cloud-sleuth-zipkin` の依存関係を含めます。
-
-```xml
-<dependency>
-    <groupId>org.springframework.cloud</groupId>
-    <artifactId>spring-cloud-sleuth-zipkin</artifactId>
-</dependency>
-```
-
 ## <a name="see-also"></a>関連項目
 
 * [アプリケーションのログとメトリックを分析する](./diagnostic-services.md)
 * [構成サーバーを設定する](./how-to-config-server.md)
-* [Azure Spring Cloud で分散トレースを使用する](./how-to-distributed-tracing.md)
 * [Spring クイックスタート ガイド](https://spring.io/quickstart)
 * [Spring Boot のドキュメント](https://spring.io/projects/spring-boot)
 

@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: sukishen
-ms.openlocfilehash: 08e20a497c7fddfe00e70fcf1d9d4c6e5f76054f
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 4711e63e1d9309d3111e3207f6cb824704ac4290
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122321841"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128652796"
 ---
 # <a name="sd-wan-connectivity-architecture-with-azure-virtual-wan"></a>Azure Virtual WAN を使用した SD-WAN 接続アーキテクチャ
 
@@ -71,5 +71,5 @@ Azure への接続は v-CPE ゲートウェイ (NVA) 経由であるため、Azu
 
 ## <a name="additional-information"></a>追加情報
 
-* [FAQ](virtual-wan-faq.md)
+* [Azure Virtual WAN に関する FAQ](virtual-wan-faq.md)
 * [リモート接続の解決](work-remotely-support.md)

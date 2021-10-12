@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 6cca34774038156cfb01e872e751338c1c96efaa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 090d11866f3d3605a3703fd7ca39f820bbeb7187
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91316002"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129273252"
 ---
 # <a name="tutorial-provision-devices-across-load-balanced-iot-hubs"></a>チュートリアル: 負荷分散された IoT ハブへのデバイスのプロビジョニング
 
@@ -67,7 +67,7 @@ Device Provisioning Service と IoT ハブをリンクして、Provisioning Serv
 4. **[Add link to IoT hub]\(IoT ハブへのリンクを追加\)** ページで、ラジオ ボタンを使用して、リンク対象の IoT ハブが現在のサブスクリプションと別のサブスクリプションのどちらにあるかを指定します。 次に、**[IoT ハブ]** ボックスから IoT ハブの名前を選択します。
 5. **[保存]** をクリックします。
 
-このチュートリアルでは、以下の内容を学習しました。
+このチュートリアルでは、次の作業を行う方法を学びました。
 
 > [!div class="checklist"]
 > * Azure Portal を使用して 2 つ目のデバイスを 2 つ目の IoT ハブにプロビジョニングする 

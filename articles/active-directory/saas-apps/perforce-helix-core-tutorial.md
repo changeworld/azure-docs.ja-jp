@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Perforce Helix Core - Helix Authentication Service の統合 | Microsoft Docs
+title: 'チュートリアル: Azure AD SSO と Perforce Helix Core - Helix Authentication Service の統合'
 description: Azure Active Directory と Perforce Helix Core - Helix Authentication Service の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/18/2021
+ms.date: 09/24/2021
 ms.author: jeedes
-ms.openlocfilehash: 8f3695edd8529d28ea792fcca57e8225b511635f
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: e11a0aeff4168b850ae95be7ce26f97e4afa9c81
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124738029"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129399605"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-perforce-helix-core---helix-authentication-service"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Perforce Helix Core - Helix Authentication Service の統合
+# <a name="tutorial-azure-ad-sso-integration-with-perforce-helix-core---helix-authentication-service"></a>チュートリアル: Azure AD SSO と Perforce Helix Core - Helix Authentication Service の統合
 
 このチュートリアルでは、Perforce Helix Core - Helix Authentication Service と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と Perforce Helix Core - Helix Authentication Service を統合すると、次のことができます。
 
@@ -32,6 +32,9 @@ ms.locfileid: "124738029"
 
 * Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
 * Perforce Helix Core - Helix Authentication Service でのシングル サインオン (SSO) が有効なサブスクリプション。
+
+> [!NOTE]
+> この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
@@ -73,16 +76,16 @@ Perforce Helix Core - Helix Authentication Service で Azure AD の SSO を構�
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
+1. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<HELIX-AUTH-SERVICE>.<CUSTOMER_HOSTNAME>.com/`
+    a. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<HELIX-AUTH-SERVICE>.<CUSTOMER_HOSTNAME>.com/saml`
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<HELIX-AUTH-SERVICE>.<CUSTOMER_HOSTNAME>.com/saml`
+    b. **[応答 URL]** ボックスに、`https://<HELIX-AUTH-SERVICE>.<CUSTOMER_HOSTNAME>.com/saml/sso` のパターンを使用して URL を入力します
 
-    c. **[応答 URL]** ボックスに、`https://<HELIX-AUTH-SERVICE>.<CUSTOMER_HOSTNAME>.com/saml/sso` のパターンを使用して URL を入力します
+    c. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<HELIX-AUTH-SERVICE>.<CUSTOMER_HOSTNAME>.com/`
 
     > [!NOTE]
-    > これらは実際の値ではありません。 これらの値を実際のサインオン URL、識別子、および応答 URL で更新してください。 これらの値を取得するには、[Perforce Helix Core - Helix Authentication Service クライアント サポート チーム](mailto:support@perforce.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 これらの値は、実際の識別子、応答 URL、サインオン URL で更新してください。 これらの値を取得するには、[Perforce Helix Core - Helix Authentication Service クライアント サポート チーム](mailto:support@perforce.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 1. **[Set up single sign-on with SAML]\(SAML でシングル サインオンをセットアップします\)** ページの **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーして、お使いのコンピューターに保存します。
 

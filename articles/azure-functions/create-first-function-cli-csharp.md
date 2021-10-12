@@ -1,7 +1,7 @@
 ---
 title: コマンド ラインから C# 関数を作成する - Azure Functions
 description: コマンド ラインから C# 関数を作成し、ローカル プロジェクトを Azure Functions のサーバーレス ホスティングに発行する方法を学習します。
-ms.date: 08/15/2021
+ms.date: 09/14/2021
 ms.topic: quickstart
 ms.custom:
 - devx-track-csharp
@@ -11,23 +11,21 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./create-first-function-cli-csharp-ieux
-ms.openlocfilehash: c2344a13c1a3dc005d00933fdc182348be9bb0f2
-ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
+zone_pivot_groups: runtime-version-programming-functions
+ms.openlocfilehash: 5ae176c8f9ebe77a40619a65464594236b94671b
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122830610"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128559884"
 ---
 # <a name="quickstart-create-a-c-function-in-azure-from-the-command-line"></a>クイックスタート: Azure でコマンド ラインから C# 関数を作成する
 
-[!INCLUDE [functions-language-selector-quickstart-cli](../../includes/functions-language-selector-quickstart-cli.md)]
+[!INCLUDE [functions-runtime-version-dotnet](../../includes/functions-runtime-version-dotnet.md)]
 
 この記事では、コマンドライン ツールを使用して、HTTP 要求に応答する C# 関数を作成します。 コードをローカルでテストした後、Azure Functions のサーバーレス環境にデプロイします。
 
-この記事では、次の両方の種類のコンパイル済み C# 関数の作成をサポートしています。 
-
-+ [インプロセス](create-first-function-cli-csharp.md?tabs=in-process) - Functions ホスト プロセスと同じプロセスで実行されます。 詳細については、「[Azure Functions を使用する C# クラス ライブラリ関数を開発する](functions-dotnet-class-library.md)」を参照してください。
-+ [分離プロセス](create-first-function-cli-csharp.md?tabs=isolated-process) - 別の .NET ワーカー プロセスで実行されます。 詳細については、「[Azure において関数を .NET 5.0 で実行するためのガイド](dotnet-isolated-process-guide.md)」を参照してください。
+[!INCLUDE [functions-dotnet-execution-model](../../includes/functions-dotnet-execution-model.md)]
 
 このクイックスタートを完了すると、ご利用の Azure アカウントでわずかな (数セント未満の) コストが発生します。
 
@@ -37,9 +35,39 @@ ms.locfileid: "122830610"
 
 開始する前に、次の項目を用意する必要があります。
 
+::: zone pivot="programming-runtime-functions-v3"
 [!INCLUDE [functions-cli-dotnet-prerequisites](../../includes/functions-cli-dotnet-prerequisites.md)]
+::: zone-end
+::: zone pivot="programming-runtime-functions-v4"
+# <a name="in-process"></a>[インプロセス](#tab/in-process)    
 
-+ アクティブなサブスクリプションを含む Azure アカウントも必要です。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
++ [.NET 6.0 SDK](https://dotnet.microsoft.com/download)
+
++ [Azure Functions Core Tools](./functions-run-local.md#v2) バージョン 4.x。
+
++ 次のいずれかのツール。Azure リソースの作成に使用します。
+
+    + [Azure CLI](/cli/azure/install-azure-cli) バージョン 2.4 以降。
+
+    + [Azure PowerShell](/powershell/azure/install-az-ps) バージョン 5.0 以降。
+
+# <a name="isolated-process"></a>[分離プロセス](#tab/isolated-process)
+
++ [.NET 6.0 SDK](https://dotnet.microsoft.com/download/dotnet/6.0)
+
++ [.NET Core 3.1 SDK](https://dotnet.microsoft.com/download)。 ビルド プロセスで必要です。
+
++ [Azure Functions Core Tools](./functions-run-local.md#v2) バージョン 4.x。
+
++ 次のいずれかのツール。Azure リソースの作成に使用します。
+
+    + [Azure CLI](/cli/azure/install-azure-cli) バージョン 2.4 以降。
+
+    + [Azure PowerShell](/powershell/azure/install-az-ps) バージョン 5.0 以降。
+---
+::: zone-end
+
+アクティブなサブスクリプションを含む Azure アカウントも必要です。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
 ### <a name="prerequisite-check"></a>前提条件のチェック
 
@@ -206,6 +234,11 @@ Azure Functions における関数プロジェクトとは、それぞれが特�
     [New-AzFunctionApp](/powershell/module/az.functions/new-azfunctionapp) コマンドレットによって、Azure に関数アプリが作成されます。 
 
     ---
+
+    ::: zone pivot="programming-runtime-functions-v4"
+    > [!NOTE]
+    > このコマンドによって、3.x バージョンの Azure Functions ランタイムを使用し、関数アプリが作成されます。 後で実行する `func azure functionapp publish` コマンドによってアプリがバージョン 4.x に更新されます。
+    ::: zone-end
     
     前の例では、`<STORAGE_NAME>` を前の手順で使用したアカウントの名前に、`<APP_NAME>` を適宜グローバルに一意の名前に置き換えてください。 `<APP_NAME>` は、関数アプリの既定の DNS ドメインでもあります。 
     

@@ -4,17 +4,17 @@ titleSuffix: Azure Machine Learning
 description: Azure Machine Learning をローカルの Git リポジトリと統合して、トレーニング実行の一環として、リポジトリ、ブランチ、現在のコミット情報を追跡する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: mlops
+ms.subservice: core
 ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.date: 04/08/2021
-ms.openlocfilehash: 3ff019488bff9d2e1088aae37902bb274f77470b
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 37c7d94bfb645e444b4fb937823dcb8d56bcb9c7
+ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129424599"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112457735"
 ---
 # <a name="git-integration-for-azure-machine-learning"></a>Azure Machine Learning との Git 統合
 
@@ -24,7 +24,7 @@ Azure Machine Learning は、作業を追跡するために Git リポジトリ�
 
 ジョブを Azure Machine Learning に送信するとき、ソース ファイルがローカル git リポジトリに格納されていれば、リポジトリに関する情報がトレーニング プロセスの一部として追跡されます。
 
-Azure Machine Learning は、ローカル git リポジトリにある情報を追跡するため、特定の中央リポジトリには関連付けられません。 リポジトリは、GitHub、GitLab、Bitbucket、Azure DevOps、または他の任意の git 互換サービスから複製できます。
+Azure Machine Learning は、ローカル git リポジトリにある情報を追跡するため、特定の中央リポジトリには関連付けられません。 リポジトリは、GitHub、GitLab、Bitbucket、Azure DevOps、または他の任意の git 互換サービスからクローンできます。
 
 > [!TIP]
 > グラフィカル ユーザーインターフェイスを使用して Git と対話するには、Visual Studio Code を使用します。 Visual Studio Code を使用して Azure Machine Learning リモート コンピューティング インスタンスに接続するには、「[Visual Studio Code で Azure Machine Learning コンピューティング インスタンスに接続する (プレビュー)](how-to-set-up-vs-code-remote.md)」を参照してください。
@@ -40,7 +40,7 @@ Azure Machine Learning では、ワークスペース内のすべてのユーザ
 
 認証可能なすべての Git リポジトリ (GitHub、Azure Repos、BitBucket など) をクローンできます。
 
-複製の詳細については、[Git CLI の使用方法](https://guides.github.com/introduction/git-handbook/)に関するガイドを参照してください。
+クローンの詳細については、[Git CLI の使用方法](https://guides.github.com/introduction/git-handbook/)に関するガイドを参照してください。
 
 ## <a name="authenticate-your-git-account-with-ssh"></a>SSH を使用して Git アカウントを認証する
 ### <a name="generate-a-new-ssh-key"></a>新しい SSH キーを生成する
@@ -98,7 +98,7 @@ cat ~/.ssh/id_rsa.pub
 
 + [BitBucket](https://support.atlassian.com/bitbucket-cloud/docs/set-up-an-ssh-key/#SetupanSSHkey-ssh2)。 **手順 4** から開始します。
 
-### <a name="clone-the-git-repository-with-ssh"></a>SSH を使用して Git リポジトリを複製する
+### <a name="clone-the-git-repository-with-ssh"></a>SSH を使用して Git リポジトリをクローンする
 
 1) SSH Git クローン URL を Git リポジトリからコピーします。
 
