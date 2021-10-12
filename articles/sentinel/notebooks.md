@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.custom: mvc
 ms.date: 06/24/2021
-ms.openlocfilehash: d57941c06f4917c8ff3b27f5e566fc9d5f95474b
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 9a72ec356161646df093bb6ca054f84ea0cfe6da
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129273005"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128563072"
 ---
 # <a name="use-jupyter-notebooks-to-hunt-for-security-threats"></a>Jupyter のノートブックを使用してセキュリティの脅威を検出する
 
@@ -322,7 +322,7 @@ If the *Runtime dependency of PyGObject is missing* error appears when you load 
     ModuleNotFoundError: No module named 'gi'
     ```
 
-1. Azure Sentinel のノートブックの GitHub リポジトリにある [aml-compute-setup.sh](https://github.com/Azure/Azure-Sentinel-Notebooks/blob/master/HowTos/aml-compute-setup.sh) スクリプトを使用して、コンピューティング インスタンスのすべてのノートブックと Anaconda 環境に `pygobject` を自動的にインストールします。
+1. Azure Sentinel のノートブックの GitHub リポジトリにある [aml-compute-setup.sh](https://github.com/Azure/Azure-Sentinel-Notebooks/master/HowTos/aml-compute-setup.sh) スクリプトを使用して、コンピューティング インスタンスのすべてのノートブックと Anaconda 環境に `pygobject` を自動的にインストールします。
 
 > [!TIP]
 > また、ノートブックから次のコードを実行して、この警告を修正することもできます。
@@ -333,7 +333,7 @@ If the *Runtime dependency of PyGObject is missing* error appears when you load 
 >
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [Azure Sentinel GitHub リポジトリ](https://github.com/Azure/Azure-Sentinel-Notebooks)で共有されているノートブックは、独自のノートブックを開発するときに使用できる便利なツール、図、コード サンプルとして用意されています。
 
