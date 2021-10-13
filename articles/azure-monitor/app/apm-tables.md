@@ -3,12 +3,12 @@ title: Azure Monitor Application Insights のワークスペース ベースの�
 description: Azure Monitor Application Insights ワークスペース ベース リソースの新しいテーブルの構造とスキーマについて説明します。
 ms.topic: conceptual
 ms.date: 05/09/2020
-ms.openlocfilehash: ef9d22cd2b45679928ee54778b2a521ea9ecab03
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 040f53836466dec446da6fcd312910ca7ad600e4
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100575596"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129615507"
 ---
 # <a name="workspace-based-resource-changes"></a>ワークスペースベース リソースの変更
 
@@ -28,7 +28,7 @@ ms.locfileid: "100575596"
 | pageViews | AppPageViews| 各 Web サイトのビューに関するデータとブラウザー情報。 |
 | performanceCounters | AppPerformanceCounters | Windows のパフォーマンス カウンターなど、アプリケーションをサポートするコンピューティング リソースのパフォーマンス測定結果。 |
 | requests | AppRequests | お使いのアプリケーションで受信された要求。 たとえば、お使いの Web アプリが受信する HTTP 要求ごとに、個別の要求レコードがログ記録されます。  |
-| exceptions | AppSystemEvents | アプリケーションのランタイムからスローされた例外。サーバー側とクライアント側 (ブラウザー) の両方の例外がキャプチャされます。 |
+| exceptions | AppExceptions | アプリケーションのランタイムからスローされた例外。サーバー側とクライアント側 (ブラウザー) の両方の例外がキャプチャされます。 |
 | traces | AppTraces | TrackTrace () を使用して記録された、アプリケーション コード/ログ記録フレームワークによって出力された詳細なログ (トレース)。 |
 
 ## <a name="table-schemas"></a>テーブル スキーマ

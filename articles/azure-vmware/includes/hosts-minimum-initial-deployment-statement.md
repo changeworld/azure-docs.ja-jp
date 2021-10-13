@@ -3,15 +3,15 @@ title: 初期デプロイ時の最小ホスト数
 description: 初期デプロイ時の最小ホスト数は 3 つです。
 ms.topic: include
 ms.date: 09/29/2021
-author: shortpatti
-ms.author: v-patsho
+author: suzizuber
+ms.author: v-szuber
 ms.service: azure-vmware
-ms.openlocfilehash: 56a2f12ae7dddc6e0783d715554934d48dd227b1
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 76b24de732f9668580d5a42f4279d9882a9ae702
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129300185"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129638228"
 ---
 <!-- Used in plan-private-cloud-deployment.md and concepts-private-clouds-clusters.md -->
 

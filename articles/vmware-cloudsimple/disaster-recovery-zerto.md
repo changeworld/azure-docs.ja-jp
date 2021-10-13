@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - オンプレミス ワークロード用のディザスター サイトとしてプライベート クラウドを使用する
 description: CloudSimple プライベート クラウドをオンプレミスの VMware ワークロード用のディザスター リカバリー サイトとして設定する方法について説明します
-author: shortpatti
-ms.author: v-patsho
+author: suzizuber
+ms.author: v-szuber
 ms.date: 08/20/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: e7305557944e00121c54112704f67f861d2aa789
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: f9700b5d25a7d564c72bf959d48ad7cf1afce4e7
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108177784"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129612391"
 ---
 # <a name="set-up-cloudsimple-private-cloud-as-a-disaster-recovery-site-for-on-premises-vmware-workloads"></a>CloudSimple プライベート クラウドをオンプレミスの VMware ワークロード用のディザスター リカバリー サイトとして設定する
 
@@ -35,13 +35,13 @@ CloudSimple ソリューション:
 
 次の図は、Zerto ソリューション用のアーキテクチャを示しています。
 
-![アーキテクチャ](media/cloudsimple-zerto-architecture.png)
+![Architecture](media/cloudsimple-zerto-architecture.png)
 
 ## <a name="how-to-deploy-the-solution"></a>ソリューションをデプロイする方法
 
 以下のセクションでは、プライベート クラウド内で Zerto Virtual Replication を使用して DR ソリューションをデプロイする方法について説明します。
 
-1. [必要条件](#prerequisites)
+1. [前提条件](#prerequisites)
 2. [CloudSimple プライベート クラウド上でのオプションの構成](#optional-configuration-on-your-private-cloud)
 3. [CloudSimple プライベート クラウド上での ZVM と VRA の設定](#set-up-zvm-and-vra-on-your-private-cloud)
 4. [Zerto Virtual Protection Group の設定](#set-up-zerto-virtual-protection-group)

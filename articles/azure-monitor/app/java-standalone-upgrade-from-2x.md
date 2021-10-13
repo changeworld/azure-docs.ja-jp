@@ -6,12 +6,12 @@ ms.date: 11/25/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 5f6b5eb64de1e904805446f731158443205d6b68
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: cbfdc8c7e07a68335083c529e545143a513b1808
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110082440"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129858274"
 ---
 # <a name="upgrading-from-application-insights-java-2x-sdk"></a>Application Insights Java 2.x SDK からのアップグレード
 
@@ -115,31 +115,6 @@ Application Insights Java 3.x では操作名が変更され、Application Insig
 }
 ```
 
-## <a name="dependency-names"></a>依存関係名
-
-Application Insights Java 3.x では依存関係名も変更され、ここでも Application Insights ポータル U/X で全般的により適切な集計ビューを提供するようになりました。
-
-ここでも、アプリケーションによっては、以前の依存関係名によって提供されていた U/X の集計ビューを使用することをお勧めします。その場合は、上記と同様の手法を使用して、以前の動作をレプリケートできます。
-
-## <a name="operation-name-on-dependencies"></a>依存関係の操作名
-
-以前の Application Insights Java 2.x SDK では、依存関係テレメトリに要求テレメトリからの操作名も設定されていました。
-Application Insights Java 3.x では、依存関係テレメトリに操作名が設定されなくなりました。
-依存関係テレメトリの親である要求の操作名を表示するには、たとえば、ログ (Kusto) クエリを記述して依存関係テーブルから要求テーブルに結合します。
-
-```
-let start = datetime('...');
-let end = datetime('...');
-dependencies
-| where timestamp between (start .. end)
-| project timestamp, type, name, operation_Id
-| join (requests
-    | where timestamp between (start .. end)
-    | project operation_Name, operation_Id)
-    on $left.operation_Id == $right.operation_Id
-| summarize count() by operation_Name, type, name
-```
-
 ## <a name="2x-sdk-logging-appenders"></a>2.x SDK ロギング アペンダー
 
 Application Insights Java 3.x では、ロギング アペンダーを構成する必要なく、[ログが自動収集](./java-standalone-config.md#auto-collected-logging)されます。
@@ -148,7 +123,7 @@ Application Insights Java 3.x では、ロギング アペンダーを構成す�
 ## <a name="2x-sdk-spring-boot-starter"></a>2.x SDK Spring Boot スターター
 
 Application Insights Java 3.x Spring Boot スターターはありません。
-3.x の設定と構成は、Spring Boot を使用しているかどうかにかかわらず、同じ[簡単な手順](./java-in-process-agent.md#quickstart)に従います。
+3.x の設定と構成は、Spring Boot を使用しているかどうかにかかわらず、同じ[簡単な手順](./java-in-process-agent.md#get-started)に従います。
 
 Application Insights Java 2.x SDK Spring Boot スターターからアップグレードする場合、クラウド ロールの既定名は `spring.application.name` にならないことに注意してください。
 Json 構成または環境変数を使用して 3.x でクラウド ロール名を設定する方法については、[3.x 構成ドキュメント](./java-standalone-config.md#cloud-role-name)を参照してください。

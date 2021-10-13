@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - 安全なプライベート クラウド
 description: Azure VMware Solution by CloudSimple の安全なプライベート クラウドを作成する方法について説明します
-author: shortpatti
-ms.author: v-patsho
+author: suzizuber
+ms.author: v-szuber
 ms.date: 08/19/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 2cf73cfcad43f34bc3977ab7818bb9623d56c4aa
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 9ca38542dd794aca6661565d6b4c02fe50d31f7e
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108177262"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129616191"
 ---
 # <a name="how-to-secure-your-private-cloud-environment"></a>プライベート クラウド環境をセキュリティで保護する方法
 

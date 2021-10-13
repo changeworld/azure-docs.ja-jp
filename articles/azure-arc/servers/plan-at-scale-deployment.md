@@ -3,12 +3,12 @@ title: Azure Arc 対応サーバーを計画およびデプロイする方法
 description: 多数のマシンを Azure Arc 対応サーバーに対して有効にして、Azure で、重要なセキュリティ、管理、監視の機能の構成を簡略化する方法について説明します。
 ms.date: 08/27/2021
 ms.topic: conceptual
-ms.openlocfilehash: a7494bb45eeed9392a44aef400483cd9cfcfb091
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 0a8bd9187d3d8d2394fe340eb1822f45e17a50b7
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124788935"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129708955"
 ---
 # <a name="plan-and-deploy-azure-arc-enabled-servers"></a>Azure Arc 対応サーバーを計画およびデプロイする
 

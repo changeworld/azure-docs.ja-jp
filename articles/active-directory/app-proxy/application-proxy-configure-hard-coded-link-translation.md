@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 08b730b0196aa5b78ebafc0208accd51e544e8d7
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 08782f57ecf82924f48e25a1e8f1a62a1a94264b
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124787492"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129613835"
 ---
 # <a name="redirect-hard-coded-links-for-apps-published-with-azure-active-directory-application-proxy"></a>Azure Active Directory アプリケーション プロキシで公開されているアプリのハードコードされたリンクをリダイレクトする
 
@@ -142,10 +142,6 @@ MyApps ブラウザー拡張機能を使用すると、アプリケーション 
 4. **[保存]** を選択して変更を保存します。
 
 これで、ユーザーがこのアプリケーションにアクセスすると、テナントのアプリケーション プロキシ経由で公開されている内部 URL がプロキシによって自動的にスキャンされます。
-
-## <a name="send-feedback"></a>フィードバックの送信
-
-この機能がすべてのアプリで動作するようにするためにご協力ください。 HTML と CSS では 30 以上のタグが検索されます。 変換されていないリンクが生成された例がある場合は、コード スニペットを[アプリケーション プロキシのフィードバック](mailto:aadapfeedback@microsoft.com)に送信してください。 
 
 ## <a name="next-steps"></a>次のステップ
 [Azure AD アプリケーション プロキシとともにカスタム ドメインを使用](application-proxy-configure-custom-domain.md)して、同じ内部および外部 URL を含める

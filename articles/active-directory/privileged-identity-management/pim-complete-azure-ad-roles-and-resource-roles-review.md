@@ -12,16 +12,17 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 9/3/2021
+ms.date: 10/07/2021
 ms.author: curtand
+ms.reviewer: shaunliu
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 614f45e4d83ff815bae0020b354b1b10d2812452
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: 7148284bef15b2e3f40a39652d0cb222ed5793c0
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123452360"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129669988"
 ---
 # <a name="complete-an-access-review-of-azure-resource-and-azure-ad-roles-in-pim"></a>PIM で Azure リソース ロールと Azure AD ロールのアクセス レビューを完了する
 

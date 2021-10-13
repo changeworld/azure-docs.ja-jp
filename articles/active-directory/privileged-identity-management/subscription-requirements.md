@@ -4,8 +4,8 @@ description: Azure AD Privileged Identity Management (PIM) を使用するため
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
-editor: markwahl-msft
+manager: KarenH444
+editor: ''
 ms.assetid: 34367721-8b42-4fab-a443-a2e55cdbf33d
 ms.service: active-directory
 ms.workload: identity
@@ -13,16 +13,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: pim
-ms.date: 04/05/2021
+ms.date: 10/07/2021
 ms.author: curtand
+ms.reviewer: shaunliu
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5980e535de875e50c2b2c5a890a371183623dac0
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: a68764822e2e4bb4a169680ea80e214e5b07e55b
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124835789"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129667917"
 ---
 # <a name="license-requirements-to-use-privileged-identity-management"></a>Privileged Identity Management を使用するためのライセンスの要件
 

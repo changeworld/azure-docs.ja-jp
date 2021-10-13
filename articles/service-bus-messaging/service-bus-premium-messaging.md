@@ -2,13 +2,13 @@
 title: Azure Service Bus の Premium レベルと Standard レベル
 description: この記事では、Azure Service Bus の Standard レベルと Premium レベルについて説明します。 これらのレベルを比較して、技術的な違いを示します。
 ms.topic: conceptual
-ms.date: 02/17/2021
-ms.openlocfilehash: c6c520219c383a21d8d2e134d0798f3cb5058c2d
-ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
+ms.date: 10/06/2021
+ms.openlocfilehash: e3899dec34a8c39de0bede60e7cc520989a3239f
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114202424"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129620241"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>Service Bus の Premium および Standard メッセージング レベル
 

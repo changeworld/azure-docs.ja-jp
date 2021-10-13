@@ -4,22 +4,23 @@ description: Azure AD Privileged Identity Management (PIM) の API について�
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: daveba
+manager: KarenH444
 editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: pim
 ms.topic: how-to
-ms.date: 05/14/2021
+ms.date: 10/07/2021
 ms.author: curtand
+ms.reviewer: shaunliu
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b5debb1b0146127238304db5f54a86e38d95edb
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: ac89554135277e0656392a7035b34aac307008b7
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110069456"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129668544"
 ---
 # <a name="understand-the-privileged-identity-management-apis"></a>Privileged Identity Management API について理解する
 

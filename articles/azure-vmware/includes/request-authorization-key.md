@@ -3,15 +3,15 @@ title: ExpressRoute の承認キーを要求する
 description: ExpressRoute の承認キーを要求する手順。
 ms.topic: include
 ms.date: 03/15/2021
-author: shortpatti
-ms.author: v-patsho
+author: suzizuber
+ms.author: v-szuber
 ms.service: azure-vmware
-ms.openlocfilehash: 5f4c436a8559a4b579a3a0c9bbfbe79bcb50764e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 1ab25c1c22dd2697b9101d76602e81d22adc5b37
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121729084"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129638170"
 ---
 <!-- used in tutorial-expressroute-global-reach-private-cloud.md and create-ipsec-tunnel.md -->
 

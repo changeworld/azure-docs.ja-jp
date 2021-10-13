@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: fb68ea362c5b91e5c60578f63c752d1982495efb
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: ee4acc6e8e7abf8ece1c6808a810b022745fb66a
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129538062"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129612334"
 ---
 # <a name="enable-zone-redundancy-for-azure-cache-for-redis"></a>Azure Cache for Redis のゾーン冗長性を有効にする
 この記事では、Azure portal を使用してゾーン冗長の Azure Cache インスタンスを構成する方法について説明します。
@@ -74,7 +74,7 @@ Azure Cache for Redis の Standard、Premium、および Enterprise の各レベ
 
 ### <a name="why-cant-i-enable-zone-redundancy-when-creating-a-premium-cache"></a>Premium の作成時に、ゾーン冗長性を有効にできないのはなぜですか
 
-ゾーン冗長性は、Availability Zones がある Azure リージョンでのみ使用できます。 最新 の一覧については、「[Azure のリージョンと Availability Zones](../availability-zones/az-region.md#azure-services-supporting-availability-zones)」を参照してください。
+ゾーン冗長性は、Availability Zones がある Azure リージョンでのみ使用できます。 最新 の一覧については、「[Azure のリージョンと Availability Zones](../availability-zones/az-region.md#azure-regions-with-availability-zones)」を参照してください。
 
 ### <a name="why-cant-i-select-all-three-zones-during-cache-create"></a>キャッシュの作成中に 3 つのゾーンすべてを選択できないのはなぜですか
 

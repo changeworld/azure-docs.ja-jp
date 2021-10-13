@@ -4,13 +4,13 @@ description: モジュールを定義して使用する方法、およびモジ�
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 09/14/2021
-ms.openlocfilehash: 53bc8d80f1954694b8bdb262cdec25bb4506b221
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 10/05/2021
+ms.openlocfilehash: bd5069db6a2ad9cb14f5f0b3bc28612afa519727
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128672839"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129619597"
 ---
 # <a name="use-bicep-modules"></a>Bicep モジュールを使用する
 
@@ -139,7 +139,7 @@ param namePrefix string
 param location string = deployment().location
 
 var resourceGroupName = '${namePrefix}rg'
-resource myResourceGroup 'Microsoft.Resources/resourceGroups@2020-01-01' = {
+resource myResourceGroup 'Microsoft.Resources/resourceGroups@2021-04-01' = {
   name: resourceGroupName
   location: location
   scope: subscription()
@@ -189,7 +189,7 @@ module storage2 'storageAccount.bicep' = {
 }
 ```
 
-scope プロパティには、有効なスコープ オブジェクトを設定する必要があります。 Bicep ファイルを使用してリソース グループ、サブスクリプション、または管理グループをデプロイする場合、モジュールのスコープをそのリソースのシンボリック名に設定することができます。 また、スコープ関数を使用して有効なスコープを取得することもできます。 
+scope プロパティには、有効なスコープ オブジェクトを設定する必要があります。 Bicep ファイルを使用してリソース グループ、サブスクリプション、または管理グループをデプロイする場合、モジュールのスコープをそのリソースのシンボリック名に設定することができます。 また、スコープ関数を使用して有効なスコープを取得することもできます。
 
 以下がその関数です。
 

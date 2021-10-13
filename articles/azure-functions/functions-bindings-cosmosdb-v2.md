@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 09/01/2021
 ms.author: cshoe
-ms.openlocfilehash: 5d3513ea7c7e44afde70765bed668c93cf4096bb
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: dbeec528e22d3622b374d6cfee2d51a61b989aac
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128582603"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129661162"
 ---
 # <a name="azure-cosmos-db-trigger-and-bindings-for-azure-functions-2x-and-higher-overview"></a>Azure Functions 2.x 以降での Azure Cosmos DB のトリガーとバインドの概要
 
@@ -74,7 +74,7 @@ Functions 1.x アプリでは、[Microsoft.Azure.WebJobs](https://www.nuget.org/
 
 ## <a name="hostjson-settings"></a>host.json 設定
 
-このセクションでは、Azure Functions バージョン 2.x でこのバインディングに使用可能なグローバル構成設定について説明します。 Azure Functions バージョン 2.x でのグローバル構成設定の詳細については、[Azure Functions バージョン 2.x の host.json のリファレンス](functions-host-json.md)を参照してください。
+[!INCLUDE [functions-host-json-section-intro](../../includes/functions-host-json-section-intro.md)]
 
 ```json
 {

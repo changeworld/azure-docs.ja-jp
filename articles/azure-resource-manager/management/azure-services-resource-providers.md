@@ -4,12 +4,12 @@ description: Azure Resource Manager のすべてのリソース プロバイダ�
 ms.topic: conceptual
 ms.date: 09/14/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c10fb3e92b4d7c31a311cad980ffdfca9b891c9c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: a8a460407df41e6f80436ffc4e663dacc427d84f
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128657977"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129711622"
 ---
 # <a name="resource-providers-for-azure-services"></a>Azure サービスのリソース プロバイダー
 

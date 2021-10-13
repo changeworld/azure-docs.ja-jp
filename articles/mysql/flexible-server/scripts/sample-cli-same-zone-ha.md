@@ -8,16 +8,16 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 09/15/2021
-ms.openlocfilehash: f254cc5b8835bb0430d4c2d3ecd0bd2f7d9fa013
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 115baa8d181bd7ebef125e7a666216efe50680d2
+ms.sourcegitcommit: ee5d9cdaf691f578f2e390101bf5350859d85c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128701560"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129740786"
 ---
 # <a name="configure-same-zone-high-availability-in-an-azure-database-for-mysql---flexible-server-preview-using-azure-cli"></a>Azure CLI を使用して、Azure Database for MySQL - フレキシブル サーバー (プレビュー) で同一ゾーン高可用性を構成する
 
-このサンプル CLI スクリプトでは、Azure Database for MySQL - フレキシブル サーバーで[同一ゾーン高可用性](../concepts-high-availability.md)を構成および管理します。 同一ゾーン高可用性は、フレキシブル サーバーの作成時にのみ有効にでき、いつでも無効にできます。 現在、同一ゾーン高可用性は、汎用およびメモリ最適化の価格レベルでのみサポートされています。
+このサンプル CLI スクリプトでは、Azure Database for MySQL - フレキシブル サーバーで[同一ゾーン高可用性](../concepts-high-availability.md)を構成および管理します。 現在、同一ゾーン高可用性は、汎用およびメモリ最適化の価格レベルでのみサポートされています。
 
 
 [!INCLUDE [flexible-server-free-trial-note](../../includes/flexible-server-free-trial-note.md)]

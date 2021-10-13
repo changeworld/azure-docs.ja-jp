@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: how-to
-ms.date: 05/14/2021
+ms.date: 10/06/2021
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d7ece742e211715c27a4bb81b67c51a7910552f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 81ec76717ef1e79f2e29bbe54b7d85d006ab00c6
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121746076"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129615659"
 ---
 # <a name="create-and-assign-a-custom-role-in-azure-active-directory"></a>Azure Active Directory でカスタム ロールを作成して割り当てる
 
@@ -29,7 +29,7 @@ ms.locfileid: "121746076"
 ## <a name="prerequisites"></a>前提条件
 
 - Azure AD Premium P1 または P2 ライセンス
-- 特権ロール管理者または全体管理者
+- 特権ロール管理者またはグローバル管理者
 - PowerShell を使用する場合の AzureADPreview モジュール
 - Microsoft Graph API の Graph エクスプローラーを使用する場合の管理者の同意
 
@@ -105,7 +105,7 @@ $appRegistration = Get-AzureADApplication -Filter "displayName eq 'f/128 Filter 
 $resourceScope = '/' + $appRegistration.objectId
 
 # Create a scoped role assignment
-$roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -RoleDefinitionId $roleDefinition.Id -PrincipalId $user.objectId
+$roleAssignment = New-AzureADMSRoleAssignment -DirectoryScopeId $resourceScope -RoleDefinitionId $roleDefinition.Id -PrincipalId $user.objectId
 ```
 
 ## <a name="create-a-role-with-the-microsoft-graph-api"></a>Microsoft Graph API を使用してロールを作成する

@@ -10,18 +10,18 @@ ms.topic: article
 ms.date: 01/26/2021
 ms.author: danlep
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 689dbc56eb5f587e124a645895723436a2a7ccd8
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 72b1680af5bb20d772d93d7743224170fde437fd
+ms.sourcegitcommit: ee5d9cdaf691f578f2e390101bf5350859d85c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128569618"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129740286"
 ---
 # <a name="secure-backend-services-using-client-certificate-authentication-in-azure-api-management"></a>Azure API Management でクライアント証明書認証を使用してバックエンド サービスを保護する
 
 API Management には、クライアント証明書を使用して API のバックエンド サービスへのアクセスを保護する機能があります。 このガイドでは、Azure portal を使用して Azure API Management サービス インスタンスで証明書を管理する方法について説明します。 また、証明書を使用してバックエンド サービスにアクセスするように API を構成する方法についても説明します。
 
-[API Management REST API](/rest/api/apimanagement/2020-06-01-preview/certificate)を使用して API Management 証明書を管理することもできます。
+[API Management REST API](/rest/api/apimanagement/2020-12-01/certificate)を使用して API Management 証明書を管理することもできます。
 
 ## <a name="certificate-options"></a>証明書のオプション
 

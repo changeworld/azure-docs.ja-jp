@@ -10,12 +10,12 @@ ms.author: prasantp
 author: prasanthpul
 ms.date: 06/18/2020
 ms.custom: seodec18
-ms.openlocfilehash: e12b1761f8b6536895c1441667f77add002cd860
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 348589b133c126f7190955087cc6068e7af90062
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110480014"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129614044"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-accelerate-ml-models"></a>ONNX と Azure Machine Learning:ML モデルの作成と能率化
 
@@ -79,7 +79,7 @@ results = session.run(["output1", "output2"], {
 results = session.run([], {"input1": indata1, "input2": indata2})
 ```
 
-完全な Python API リファレンスについては、[ONNX Runtime リファレンス ドキュメント](https://aka.ms/onnxruntime-python)を参照してください。    
+完全な Python API リファレンスについては、[ONNX Runtime リファレンス ドキュメント](https://onnxruntime.ai/docs/api/python-api.html)を参照してください。  
 
 ## <a name="examples"></a>例
 ONNX モデルを作成してデプロイする Python ノートブックの例は、[how-to-use-azureml/deployment/onnx](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/onnx) を参照してください。

@@ -7,12 +7,12 @@ manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/07/2021
-ms.openlocfilehash: 2d145e62392ee95189a212c1cd0b294134ce1109
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: dda75aedab0c17f14d2725ff9759d7ab30203474
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121739075"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129712917"
 ---
 # <a name="create-rich-interactive-reports-of-security-center-data"></a>Security Center データの豊富な対話型レポートを作成する
 
@@ -95,7 +95,7 @@ Security Center には、コンピューター、コンテナー レジストリ
 
 これらのスキャナーの使用の詳細については、以下を参照してください。
 
-- [統合 VA スキャナーでコンピューターをスキャンする](deploy-vulnerability-assessment-vm.md)
+- [統合 Qualys スキャナーでマシンをスキャンする](deploy-vulnerability-assessment-vm.md)
 - [レジストリ イメージの脆弱性をスキャンする](defender-for-container-registries-usage.md)
 - [SQL リソースの脆弱性をスキャンする](defender-for-sql-on-machines-vulnerability-assessment.md)
 

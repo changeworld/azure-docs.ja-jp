@@ -6,12 +6,12 @@ ms.author: deseelam
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 04/27/2021
-ms.openlocfilehash: 675c90218f456fc0f238fcf3b1fb93d2e5a7bc44
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 83bee24ca8da03f6a6896bb47cc298860f941f4c
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114296302"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129711979"
 ---
 # <a name="onboard-on-premises-servers-in-vmware-virtual-environment-to-azure-arc"></a>VMware 仮想環境内のオンプレミス サーバーを Azure Arc にオンボードする   
 
@@ -37,7 +37,7 @@ Azure Arc を使用すると、移行の対象として最適ではないオン�
     - [必要な Azure ロール](../azure-arc/servers/agent-overview.md#required-permissions)への割り当てが、Azure アカウントに付与されていることを確認します。
     - 検出されたサーバーがファイアウォールまたはプロキシ サーバーを介してインターネット経由で通信する場合、[必要な URL](../azure-arc/servers/agent-overview.md#networking-configuration) がブロックされていないことを確認します。
     - Azure Arc が[サポートされているリージョン](../azure-arc/servers/overview.md#supported-regions)を確認します。 
-    - Azure Arc 対応サーバーでは、1 つのリソース グループで最大 5, 000 個のマシン インスタンスがサポートされます。
+    - Azure Arc 対応サーバーでは、1 つのリソース グループで最大 5,000 個のマシン インスタンスがサポートされます。
 
 
 ## <a name="set-up-the-azure-migrate-project"></a>Azure Migrate プロジェクトを設定する  

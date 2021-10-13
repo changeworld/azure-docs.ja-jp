@@ -4,7 +4,7 @@ description: Privileged Identity Management (PIM) で特権アクセス グル�
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: daveba
+manager: KarenH444
 ms.service: active-directory
 ms.devlang: na
 ms.topic: how-to
@@ -13,13 +13,14 @@ ms.workload: identity
 ms.subservice: pim
 ms.date: 08/03/2020
 ms.author: curtand
+ms.reviewer: shaunliu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c9e2580d2a88fbbab755f0c3df2f923bdc45548
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4d10ab5c5f1e92a9414cde9b0fffac3c29176cf0
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101688350"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129669836"
 ---
 # <a name="bring-privileged-access-groups-preview-into-privileged-identity-management"></a>Privileged Identity Management に特権アクセス グループ (プレビュー) を持ち込む
 

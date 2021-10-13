@@ -8,12 +8,12 @@ ms.topic: reference
 ms.service: iot-develop
 services: iot-develop
 ms.custom: mvc
-ms.openlocfilehash: 7993dce658f6146df183a95808926ec22ddef931
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: 089c82d2b7a682e5f9a655dbc2a4b34dc94c58ac
+ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129457736"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129728705"
 ---
 # <a name="microsoft-sdks-for-iot-plug-and-play"></a>IoT プラグ アンド プレイ用の Microsoft SDK
 
@@ -27,7 +27,7 @@ IoT プラグ アンド プレイ ライブラリと SDK を使用すると、�
 | .NET - デバイス | [NuGet 1.31.0](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client) | [GitHub](https://github.com/Azure/azure-iot-sdk-csharp/tree/main/) | [サンプル](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/main/iot-hub/Samples/device/PnpDeviceSamples) | [IoT Hub への接続](tutorial-connect-device.md) | [リファレンス](/dotnet/api/microsoft.azure.devices.client) |
 | Java - デバイス | [Maven 1.26.0](https://mvnrepository.com/artifact/com.microsoft.azure.sdk.iot/iot-device-client) | [GitHub](https://github.com/Azure/azure-iot-sdk-java/tree/main/) | [サンプル](https://github.com/Azure/azure-iot-sdk-java/tree/main/device/iot-device-samples/pnp-device-sample) | [IoT Hub への接続](tutorial-connect-device.md) | [リファレンス](/java/api/com.microsoft.azure.sdk.iot.device) |
 | Python - デバイス | [pip 2.3.0](https://pypi.org/project/azure-iot-device/) | [GitHub](https://github.com/Azure/azure-iot-sdk-python/tree/master/) | [サンプル](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/pnp) | [IoT Hub への接続](tutorial-connect-device.md) | [リファレンス](/python/api/azure-iot-device/azure.iot.device) |
-| Node - デバイス | [npm 1.17.2](https://www.npmjs.com/package/azure-iot-device)  | [GitHub](https://github.com/Azure/azure-iot-sdk-node/tree/master/) | [サンプル](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples/pnp) | [IoT Hub への接続](tutorial-connect-device.md) | [リファレンス](/javascript/api/azure-iot-device/) |
+| Node - デバイス | [npm 1.17.2](https://www.npmjs.com/package/azure-iot-device)  | [GitHub](https://github.com/Azure/azure-iot-sdk-node/tree/master/) | [サンプル](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples/javascript/pnp) | [IoT Hub への接続](tutorial-connect-device.md) | [リファレンス](/javascript/api/azure-iot-device/) |
 | 埋め込み C - デバイス | 該当なし | [GitHub](https://github.com/Azure/azure-sdk-for-c/)| [サンプル](tutorial-connect-device.md?pivots=programming-language-embedded-c#samples) | [埋め込み C の使用方法](tutorial-connect-device.md?pivots=programming-language-embedded-c) | 該当なし
 
 ## <a name="service-sdks"></a>サービス SDK

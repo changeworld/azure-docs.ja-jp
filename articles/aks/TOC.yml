@@ -237,6 +237,8 @@
           href: load-balancer-standard.md
         - name: 静的 IP アドレスと DNS ラベルの使用
           href: static-ip.md
+        - name: HTTP プロキシの使用 (プレビュー)
+          href: http-proxy.md
         - name: イングレス
           items:
             - name: 基本的なコントローラーの作成

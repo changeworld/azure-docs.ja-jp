@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/08/2021
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 4276311163134b428fe9d616bf1e6bc23fdedfaf
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 11572f957fc2d305f5d6f17303bb8386345abc7b
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128638370"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129714062"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 に関する既知の問題
 
@@ -57,7 +57,6 @@ Data Lake Storage Gen2 API、NFS 3.0、BLOB API では、同じデータを処�
 - [Get Page Ranges](/rest/api/storageservices/get-page-ranges)
 - [Incremental Copy Blob](/rest/api/storageservices/incremental-copy-blob)
 - [Put Page from URL](/rest/api/storageservices/put-page-from-url)
-- [Put Block List](/rest/api/storageservices/put-block-list)
 
 アンマネージド VM ディスクは、階層型名前空間があるアカウントではサポートされていません。 ストレージ アカウントで階層型名前空間を有効にする場合は、階層型名前空間機能が有効ではないストレージ アカウントにアンマネージド VM ディスクを配置してください。
 
@@ -79,7 +78,7 @@ AzCopy の最新バージョン ([AzCopy v10](../common/storage-use-azcopy-v10.m
 
 <a id="storage-explorer"></a>
 
-## <a name="azure-storage-explorer"></a>Azure ストレージ エクスプローラー
+## <a name="azure-storage-explorer"></a>Azure Storage Explorer
 
 バージョン `1.6.0` 以降のみを使用します。
 

@@ -2,18 +2,18 @@
 title: Azure EA の価格
 description: Azure EA の価格概要について説明します
 author: bandersmsft
-ms.reviewer: baolcsva
+ms.reviewer: sapnakeshari
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.topic: conceptual
-ms.date: 09/15/2021
+ms.date: 10/11/2021
 ms.author: banders
-ms.openlocfilehash: 4be49779810d3d4d04fb9cbf935d42ae16292b54
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: a4e5342e73ea374cf54b7bce2e81f17bb2a2bb80
+ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128620593"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129753520"
 ---
 # <a name="azure-ea-pricing"></a>Azure EA の価格
 

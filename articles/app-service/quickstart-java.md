@@ -14,12 +14,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./quickstart-java-uiex
-ms.openlocfilehash: 2fb7a97f1efb50f76b91cbc49a189deda7cde9c8
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 5be4133f23764ab87e8c1fca3b176d680e1eeae1
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129357112"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129855614"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service"></a>クイック スタート:Azure App Service で Java アプリを作成する
 
@@ -123,7 +123,7 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:2.2.0:config
     PricingTier : P1v2
     OS : Windows
     Java : Java 8
-    WebContainer : Java SE
+    Web server stack : Java SE
     Deploy to slot : false
     Confirm (Y/N)? : Y
     [INFO] Saving configuration to pom.
@@ -156,7 +156,7 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:2.2.0:config
     PricingTier : P1v2
     OS : Windows
     Java : Java 8
-    WebContainer : tomcat 8.5
+    Web server stack : Tomcat 8.5
     Deploy to slot : false
     Confirm (Y/N)? : Y
     [INFO] Saving configuration to pom.
@@ -183,7 +183,7 @@ JBoss EAP は、App Service の Linux バージョンでのみ使用できます
 1. **Web アプリ** オプションのプロンプトが表示されたら、Enter キーを押して、既定のオプションである `<create>` を選択します。
 1. **OS** オプションのプロンプトが表示されたら、Enter キーを押して **Linux** を選択します。
 2. **javaVersion** オプションのプロンプトが表示されたら、「`1`」と入力して **Java 8** を選択します。
-3. **価格レベル** オプションのプロンプトが表示されたら、「`10`」と入力して **P1v2** を選択します。
+3. **価格レベル** オプションのプロンプトが表示されたら、「`9`」と入力して **P1v2** を選択します。
 4. 最後のプロンプトで Enter キーを押して、選択内容を確認します。
 
     ```
@@ -194,7 +194,7 @@ JBoss EAP は、App Service の Linux バージョンでのみ使用できます
     Region : centralus
     PricingTier : P1v2
     OS : Linux
-    Web server stack : JAVA SE
+    Web server stack : Java SE
     Deploy to slot : false
     Confirm (Y/N)? : Y
     [INFO] Saving configuration to pom.
@@ -213,7 +213,7 @@ JBoss EAP は、App Service の Linux バージョンでのみ使用できます
 1. **OS** オプションのプロンプトが表示されたら、Enter キーを押して **Linux** を選択します。
 1. **javaVersion** オプションのプロンプトが表示されたら、「`1`」と入力して **Java 8** を選択します。
 1. **webcontainer** オプションのプロンプトが表示されたら、「`3`」と入力して **Tomcat 8.5** を選択します。
-1. **価格レベル** オプションのプロンプトが表示されたら、「`10`」と入力して **P1v2** を選択します。
+1. **価格レベル** オプションのプロンプトが表示されたら、「`9`」と入力して **P1v2** を選択します。
 1. 最後のプロンプトで Enter キーを押して、選択内容を確認します。
 
     ```
@@ -224,7 +224,7 @@ JBoss EAP は、App Service の Linux バージョンでのみ使用できます
     Region : centralus
     PricingTier : P1v2
     OS : Linux
-    Web server stack : TOMCAT 8.5
+    Web server stack : Tomcat 8.5
     Deploy to slot : false
     Confirm (Y/N)? : Y
     [INFO] Saving configuration to pom.
@@ -279,10 +279,10 @@ JBoss EAP は、App Service の Linux バージョンでのみ使用できます
 `<subscriptionId>` | false | サブスクリプション ID を指定します。 | 0.1.0 以降
 `<resourceGroup>` | true | Web アプリの Azure リソース グループ。 | 0.1.0 以降
 `<appName>` | true | Web アプリの名前。 | 0.1.0 以降
-`<region>` | true | Web アプリがホストされるリージョンを指定します。既定値は **centralus** です。 すべての有効なリージョンについては、「[サポートされているリージョン](https://azure.microsoft.com/global-infrastructure/services/?products=app-service)」を参照してください。 | 0.1.0 以降
-`<pricingTier>` | true | Web アプリの価格レベル。 運用ワークロードの場合の既定値は **P1v2** ですが、Java Dev/Test の場合は **B2** が推奨される最小構成です。 [詳細情報](https://azure.microsoft.com/pricing/details/app-service/linux/)| 0.1.0 以降
-`<runtime>` | true | ランタイム環境の構成の詳細については、[こちら](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Web-App:-Configuration-Details)を参照してください。 | 0.1.0 以降
-`<deployment>` | true | デプロイ構成の詳細については、[こちら](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Web-App:-Configuration-Details)を参照してください。 | 0.1.0 以降
+`<region>` | false | Web アプリがホストされるリージョンを指定します。既定値は **centralus** です。 すべての有効なリージョンについては、「[サポートされているリージョン](https://azure.microsoft.com/global-infrastructure/services/?products=app-service)」を参照してください。 | 0.1.0 以降
+`<pricingTier>` | false | Web アプリの価格レベル。 運用ワークロードの場合の既定値は **P1v2** ですが、Java Dev/Test の場合は **B2** が推奨される最小構成です。 [詳細情報](https://azure.microsoft.com/pricing/details/app-service/linux/)| 0.1.0 以降
+`<runtime>` | false | ランタイム環境の構成の詳細については、[こちら](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Web-App:-Configuration-Details)を参照してください。 | 0.1.0 以降
+`<deployment>` | false | デプロイ構成の詳細については、[こちら](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Web-App:-Configuration-Details)を参照してください。 | 0.1.0 以降
 
 `<appName>` と `<resourceGroup>` の値 (デモでは `helloworld-1590394316693` と `helloworld-1590394316693-rg`) に注意してください。これらは後で使用します。
 

@@ -1,8 +1,8 @@
 ---
 title: Azure Kinect DK をリセットする
 description: Azure Kinect DK デバイスを工場出荷時のイメージにリセットする方法について説明します
-author: Teresa-Motiv
-ms.author: v-tea
+author: martinekuan
+ms.author: martinek
 ms.reviewer: jarrettr
 ms.prod: kinect-dk
 ms.date: 02/11/2020
@@ -14,12 +14,12 @@ ms.custom:
 audience: ITPro
 manager: dcscontentpm
 ms.localizationpriority: high
-ms.openlocfilehash: f851579712a9549c88f1ca652aea4f31457da132
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 71579ba69852dd3f5359526a70f8b99d266344e4
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77201900"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129808879"
 ---
 # <a name="reset-azure-kinect-dk"></a>Azure Kinect DK をリセットする
 

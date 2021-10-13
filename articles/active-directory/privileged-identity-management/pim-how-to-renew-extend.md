@@ -4,24 +4,25 @@ description: Azure AD Privileged Identity Management (PIM) で Azure Active Dire
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: daveba
-editor: markwahl-msft
+manager: KarenH444
+editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: pim
-ms.date: 08/06/2021
+ms.date: 10/07/2021
 ms.author: curtand
+ms.reviewer: shaunliu
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b061c98b0e961d60d8edd9b0275c70ce3b005044
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 748abad646342f2f13a554212fcd84393b8d3391
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128647938"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129669646"
 ---
 # <a name="extend-or-renew-azure-ad-role-assignments-in-privileged-identity-management"></a>Privileged Identity Management で Azure AD ロールの割り当てを延長または更新する
 

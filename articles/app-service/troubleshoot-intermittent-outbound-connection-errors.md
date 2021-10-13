@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 11/19/2020
 ms.author: ramakoni
 ms.custom: security-recommendations,fasttrack-edit
-ms.openlocfilehash: dc6a56cff3492011a4717d867f08a580cf5a198c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fe746ed4fe8c24afa0667d8c2559d9c46fee5211
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121738691"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129660079"
 ---
 # <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>Azure App Service での断続的な送信接続エラーのトラブルシューティング
 
@@ -165,14 +165,6 @@ TCP 接続と SNAT ポートは直接関連していません。 TCP 接続の�
  
 SNAT ポートが枯渇していて、WebJob が SQL Database に接続できない場合に、個別の Web アプリケーション プロセスによって開かれている接続の数を示すメトリックはありません。 問題のある WebJob を見つけるには、いくつかの WebJob を別の App Service プランに移動し、状況が改善するかどうか、またはいずれかのプランで問題が継続するかどうかを確認します。 問題のある WebJob が見つかるまで、このプロセスを繰り返します。
 
-### <a name="using-snat-ports-sooner"></a>SNAT ポートの使用を早める
-
-すべての SNAT ポートは次の条件に従って解放され、動作は仕様であるため、Azure の設定を変更して使用済み SNAT ポートの解放を早めることはできません。
- 
-* サーバーまたはクライアントのどちらかが FINACK を送信すると、240 秒後に [SNAT ポートは解放されます](../load-balancer/load-balancer-outbound-connections.md)。
-* RST が送信されると、SNAT ポートは 15 秒後に解放されます。
-* アイドル タイムアウトに達すると、ポートは解放されます。
- 
 ## <a name="additional-information"></a>関連情報
 
 * [App Service を使用した SNAT](https://4lowtherabbit.github.io/blogs/2019/10/SNAT/)

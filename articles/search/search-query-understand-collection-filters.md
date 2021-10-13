@@ -2,29 +2,17 @@
 title: OData コレクション フィルターの概要
 titleSuffix: Azure Cognitive Search
 description: Azure Cognitive Search のクエリで OData コレクション フィルターが動作するしくみについて説明します。これには、コレクションに固有の制限や動作が含まれます。
-manager: nitinme
-author: brjohnstmsft
-ms.author: brjohnst
+author: bevloh
+ms.author: beloh
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-translation.priority.mt:
-- de-de
-- es-es
-- fr-fr
-- it-it
-- ja-jp
-- ko-kr
-- pt-br
-- ru-ru
-- zh-cn
-- zh-tw
-ms.openlocfilehash: 88387bbe51d71a2530d25608fee962e926cd6511
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.date: 10/06/2021
+ms.openlocfilehash: 9a73f5073d5388499a678b25db983046a50de717
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123449155"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129612087"
 ---
 # <a name="understanding-odata-collection-filters-in-azure-cognitive-search"></a>Azure Cognitive Search での OData コレクション フィルターの概要
 

@@ -7,25 +7,22 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: ssambare
 author: shivanissambare
-ms.date: 05/25/2021
+ms.date: 10/07/2021
 ms.topic: how-to
 ms.reviewer: larryfr
 ms.custom: deploy, docker, prebuilt
-ms.openlocfilehash: c4a1b52f87f0c5053e357fcb67a2e90962dc37c1
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: b772db78ebdcbede50b3decc4edd235c336471a6
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123433532"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129713207"
 ---
-# <a name="extend-a-prebuilt-docker-image-preview"></a>事前構築済み Docker イメージを拡張する (プレビュー)
+# <a name="extend-a-prebuilt-docker-image"></a>事前構築済み Docker イメージを拡張する
 
 Azure Machine Learning の[拡張](./how-to-prebuilt-docker-images-inference-python-extensibility.md)ソリューションと[モデル推論用に事前構築済みの Docker イメージ](concept-prebuilt-docker-images-inference.md)では、実際の推論サービスのニーズを満たせない場合もあります。
 
 その場合は、Dockerfile を使用すると、あらかじめ構築されたいずれかのイメージを出発点として新しいイメージを作成できます。 既存の事前構築済み Docker イメージを拡張することで、Azure Machine Learning のネットワーク スタックとライブラリを利用でき、イメージをゼロから作成する必要がありません。
-
-> [!IMPORTANT]
-> Azure Machine Learning に対する事前構築済み Docker イメージの使用は、現在プレビュー段階です。 プレビュー機能では、サポートやサービス レベル アグリーメントは保証されず、"現状有姿" で提供されます。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
 **メリットとトレードオフ**
 

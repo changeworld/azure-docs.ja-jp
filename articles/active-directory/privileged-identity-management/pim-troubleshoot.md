@@ -4,21 +4,22 @@ description: Azure AD Privileged Identity Management (PIM) でロールに関す
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: daveba
+manager: KarenH444
 editor: ''
 ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 06/30/2021
+ms.date: 10/07/2021
 ms.author: curtand
+ms.reviewer: shaunliu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26c3129e463ffaad01db48fa0a15cfd1fadefb29
-ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
+ms.openlocfilehash: f357c41edf30870207ffde0f7d29ef9aadbfef72
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113127978"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129667176"
 ---
 # <a name="troubleshoot-access-to-azure-resources-denied-in-privileged-identity-management"></a>Privileged Identity Management で拒否された Azure リソースへのアクセスのトラブルシューティング
 

@@ -98,6 +98,8 @@ items:
     items:
       - name: モデルの概要
         href: concept-model-overview.md
+      - name: Form Recognizer スタジオ | プレビュー
+        href: concept-form-recognizer-studio.md
       - name: 一般的なドキュメント モデル | プレビュー
         href: concept-general-document.md
       - name: レイアウト モデル

@@ -1,5 +1,6 @@
 ---
-title: アプリケーションにサインインするときに、予期しない同意プロンプトが表示される | Microsoft Docs
+title: アプリケーションにサインインするときに、予期しない同意プロンプトが表示される
+titleSuffix: Azure AD
 description: Azure AD と統合されているアプリケーションでユーザーに予期しない同意プロンプトが表示されたときのトラブルシューティングの方法
 services: active-directory
 author: davidmu1
@@ -12,12 +13,12 @@ ms.date: 07/11/2017
 ms.author: davidmu
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81640356eb60167e8cdefc67b962bf7f38783556
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7d10368a6225fe1e5d09e7d6088b500febd6b1ff
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121738874"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129620756"
 ---
 # <a name="unexpected-consent-prompt-when-signing-in-to-an-application"></a>アプリケーションにサインインするときに、予期しない同意プロンプトが表示される
 

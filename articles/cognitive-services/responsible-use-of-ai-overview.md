@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 06/02/2021
 ms.author: nitinme
-ms.openlocfilehash: f4730a963a669af970362542ecf7868b20438f02
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 29336a19906d36fb8fea7f0b8fceeb55e97e15cf
+ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112296157"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129728648"
 ---
 # <a name="responsible-use-of-ai-with-cognitive-services"></a>Cognitive Services における AI の責任ある使用
 
@@ -71,3 +71,10 @@ Azure Cognitive Services は、アプリケーションで人工知能を責任�
 * [特性と制限](/legal/cognitive-services/anomaly-detector/characteristics-and-limitations?context=/azure/cognitive-services/anomaly-detector/context/context)
 * [統合と責任ある使用](/legal/cognitive-services/anomaly-detector/guidance-integration-responsible-use?context=/azure/cognitive-services/anomaly-detector/context/context)
 * [データ、プライバシー、セキュリティ](/legal/cognitive-services/anomaly-detector/data-privacy-security?context=/azure/cognitive-services/anomaly-detector/context/context)
+
+## <a name="language-understanding"></a>Language Understanding
+
+* [透過性に関するメモとユースケース](/legal/cognitive-services/luis/luis-transparency-note?context=/azure/cognitive-services/LUIS/context/context)
+* [特性と制限](/legal/cognitive-services/luis/characteristics-and-limitations?context=/azure/cognitive-services/LUIS/context/context)
+* [統合と責任ある使用](/legal/cognitive-services/luis/guidance-integration-responsible-use?context=/azure/cognitive-services/LUIS/context/context)
+* [データ、プライバシー、セキュリティ](/legal/cognitive-services/luis/data-privacy-security?context=/azure/cognitive-services/LUIS/context/context)

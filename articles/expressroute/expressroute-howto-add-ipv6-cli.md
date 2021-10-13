@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 09/27/2021
 ms.author: duau
-ms.openlocfilehash: c93d56cb7f8cc6ffe897cb8a9321806b4a2c40ed
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: 1c0b751d6a5107dcf9b7d04423b0b96e0036615d
+ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129094856"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129730415"
 ---
 # <a name="add-ipv6-support-for-private-peering-using-azure-cli-preview"></a>Azure CLI を使用してプライベート ピアリングに対する IPv6 サポートを追加する (プレビュー)
 
@@ -22,7 +22,7 @@ ms.locfileid: "129094856"
 
 * 構成を開始する前に、[前提条件](expressroute-prerequisites.md)と[ワークフロー](expressroute-workflows.md)を確認してください。
 * アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-* 最新バージョンの CLI コマンド (2.0 以降) をインストールします。 CLI コマンドのインストール方法については、「[Azure CLI のインストール](/cli/azure/install-azure-cli.md)」および「[Azure CLI を使ってみる](/cli/azure/get-started-with-azure-cli.md)」を参照してください。
+* 最新バージョンの CLI コマンド (2.0 以降) をインストールします。 CLI コマンドのインストール方法については、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」および「[Azure CLI を使ってみる](/cli/azure/get-started-with-azure-cli)」を参照してください。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 

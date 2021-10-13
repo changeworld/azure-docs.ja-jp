@@ -55,10 +55,10 @@
           href: my-apps-deployment-plan.md
     - name: シングル サインオン
       items:
-        - name: 展開を計画する
-          href: plan-sso-deployment.md
         - name: シングル サインオンとは
           href: what-is-single-sign-on.md
+        - name: 展開を計画する
+          href: plan-sso-deployment.md
     - name: アプリケーションのセキュリティ
       items:
         - name: アプリのアクセス オプション
@@ -118,14 +118,14 @@
           href: prevent-domain-hints-with-home-realm-discovery.md
     - name: アプリケーションの移行
       items:
-        - name: 移行リソース
-          href: migration-resources.md
         - name: Azure への AD FS アプリの移行
           href: migrate-adfs-apps-to-azure.md
         - name: アプリケーション認証を Azure Active Directory に移行する
           href: migrate-application-authentication-to-azure-active-directory.md
         - name: AD FS アプリケーション アクティビティ レポートの使用
           href: migrate-adfs-application-activity.md
+        - name: 移行リソース
+          href: migration-resources.md
         - name: Okta から Azure AD にアプリケーションを移行する
           items:
             - name: Okta から Azure AD にアプリケーションを移行する

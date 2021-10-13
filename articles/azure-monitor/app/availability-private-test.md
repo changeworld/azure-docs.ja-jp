@@ -3,12 +3,12 @@ title: プライベート可用性テスト - Azure Monitor Application Insights
 description: プライベート テストを使用してファイアウォールの内側で実行される内部サーバーで可用性テストを使用する方法について説明します。
 ms.topic: conceptual
 ms.date: 05/14/2021
-ms.openlocfilehash: dca75f6497567c5c6855fc1b5b12aa17a41b3dec
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 713a57db66042c562e212d65c6dd265c2aab47cd
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110104522"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129858445"
 ---
 # <a name="private-testing"></a>プライベート テスト
 
@@ -32,7 +32,7 @@ ms.locfileid: "110104522"
 
         :::image type="content" source="media/availability-private-test/service-tag.png" alt-text="サービス タグのソースを含む [受信セキュリティ規則の追加] タブのスクリーンショット。":::
 
-- エンドポイントが Azure の外部でホストされている場合、またはシナリオでサービス タグが使用できない場合は、[Web テスト エージェントの IP アドレス](ip-addresses.md)を個別に許可リストに登録する必要があります。 [サービス タグ API](../../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) を使用して、PowerShell、Azure CLI、または REST 呼び出しから直接 IP 範囲のクエリを実行できます。[JSON ファイル](../../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)をダウンロードして、現在のサービス タグと IP アドレスの詳細の一覧を取得することもできます。
+- エンドポイントが Azure の外部でホストされている場合、またはシナリオでサービス タグが使用できない場合は、[Web テスト エージェントの IP アドレス](ip-addresses.md)を個別に許可リストに登録する必要があります。 [サービス タグ API](../../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api) を使用して、PowerShell、Azure CLI、または REST 呼び出しから直接 IP 範囲のクエリを実行できます。[JSON ファイル](../../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)をダウンロードして、現在のサービス タグと IP アドレスの詳細の一覧を取得することもできます。
     1. ネットワーク セキュリティ グループ リソースで、 *[設定]* の **[受信セキュリティ規則]** を選択し、 **[追加]** を選択します。
     1. 次に、ソースとして *[IP アドレス]* を選択し、[ソース IP アドレス/CIRD 範囲] のコンマ区切りの一覧に IP アドレスを追加します。
 

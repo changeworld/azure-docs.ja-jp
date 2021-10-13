@@ -3,15 +3,15 @@ title: Azure VMware Solution を使用して NSX-T ネットワーク セグメ�
 description: Azure portal の Azure VMware Solution 用の NSX-T ネットワーク セグメントを追加する手順。
 ms.topic: include
 ms.date: 07/16/2021
-author: shortpatti
-ms.author: v-patsho
+author: suzizuber
+ms.author: v-szuber
 ms.service: azure-vmware
-ms.openlocfilehash: 4b153d95ad339d3a71d5b227e0f794675014a28c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 812266ef6c7ed937c21c1c78c2c9b2aa5ff1043d
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121734203"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129638692"
 ---
 <!-- Used in configure-dhcp-azure-vmware-solution.md and tutorial-nsx-t-network-segment.md -->
 

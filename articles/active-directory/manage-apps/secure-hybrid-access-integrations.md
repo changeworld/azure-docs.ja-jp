@@ -1,6 +1,7 @@
 ---
 title: Azure AD パートナー統合を使用した安全なハイブリッド アクセス
 description: 顧客が SaaS アプリケーションを検出して Azure AD に移行し、従来の認証方法を使用するアプリを Azure AD に接続できるよう支援します。
+titleSuffix: Azure AD
 services: active-directory
 author: gargi-sinha
 manager: martinco
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 04/20/2021
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d7463c6f21ce3973f92ea6261c026adaeaf003d
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: f700b4850f68f9938bc574b26172f49c1d7c0a73
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128630340"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129613816"
 ---
 # <a name="secure-hybrid-access-with-azure-active-directory-partner-integrations"></a>Azure Active Directory パートナー統合を使用した安全なハイブリッド アクセス
 

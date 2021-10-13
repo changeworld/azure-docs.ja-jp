@@ -3,15 +3,15 @@ title: Azure VMware Solution の制限
 description: Azure VMware Solution の制限。
 ms.topic: include
 ms.date: 09/02/2021
-author: shortpatti
-ms.author: v-patsho
+author: suzizuber
+ms.author: v-szuber
 ms.service: azure-vmware
-ms.openlocfilehash: 9f82d5b60b6d27e63ed87fb9c8936c2e45c37b53
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 7a8479a5262c1db61dbb03558632ebebac1a6983
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124778867"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129638216"
 ---
 <!-- Used in /azure/azure-resource-manager/management/azure-subscription-service-limits.md and concepts-networking.md -->
 

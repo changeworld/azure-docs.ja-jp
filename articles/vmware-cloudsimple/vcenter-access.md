@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - vSphere クライアントへのアクセス
 description: プライベート クラウドの vCenter にアクセスする方法について説明します。
-author: shortpatti
-ms.author: v-patsho
+author: suzizuber
+ms.author: v-szuber
 ms.date: 08/30/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: e3f827bbd1e500c9cea809939194757bb9fe7881
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: a11567f18e2c62cfac67b6c5fde7e9c6ed1ce26a
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108181060"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129618669"
 ---
 # <a name="access-your-private-cloud-vcenter-portal"></a>プライベート クラウドの vCenter ポータルへのアクセス
 
@@ -64,7 +64,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 
     ![vSphere クライアントの起動 - 概要](media/cloudsimple-resources-summary-launch-vcenter.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [プライベート クラウドの VLAN/サブネットを作成して管理する](create-vlan-subnet.md)
 * [VMware vCenter の CloudSimple プライベート クラウド アクセス許可モデル](learn-private-cloud-permissions.md)

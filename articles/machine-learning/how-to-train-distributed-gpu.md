@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 08/19/2021
-ms.openlocfilehash: ff95cb0004fbde34e70bcb778d93a2f381dc5830
-ms.sourcegitcommit: c2f0d789f971e11205df9b4b4647816da6856f5b
+ms.openlocfilehash: fdc357900f0111f338af0d758f4aef913c00706d
+ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122661656"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129728154"
 ---
 # <a name="distributed-gpu-training-guide"></a>分散 GPU トレーニング ガイド
 
@@ -287,10 +287,6 @@ run_config = ScriptRunConfig(
 
 run = Experiment(ws, 'experiment_name').submit(run_config)
 ```
-
-### <a name="pytorch-lightning-example"></a>PyTorch Lightning の例
-
-* [azureml-examples: PyTorch Lightning を使用するマルチノード トレーニング](https://github.com/Azure/azureml-examples/blob/main/python-sdk/experimental/using-pytorch-lightning/4.train-multi-node-ddp.ipynb)
 
 ### <a name="hugging-face-transformers"></a>Hugging Face Transformers
 

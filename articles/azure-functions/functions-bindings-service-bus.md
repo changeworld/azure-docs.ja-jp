@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 45c7f5a8d6e2c227e07765f6147e58242ffe3d6c
-ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
+ms.openlocfilehash: dc0e424e36d67cd25fc93e950e5758c6378c1b7d
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122228910"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129660592"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Functions における Azure Service Bus のバインド
 
@@ -66,7 +66,7 @@ Functions 1.x アプリでは、[Microsoft.Azure.WebJobs](https://www.nuget.org/
 
 ## <a name="hostjson-settings"></a>host.json 設定
 
-このセクションでは、バージョン 2.x 以降でこのバインドに使用可能なグローバル構成設定について説明します。 次の host.json ファイルの例には、このバインドの設定のみが含まれています。 グローバル構成設定の詳細については、[Azure Functions の host.json のリファレンス](functions-host-json.md)を参照してください。
+[!INCLUDE [functions-host-json-section-intro](../../includes/functions-host-json-section-intro.md)]
 
 > [!NOTE]
 > Functions 1.x の host.json のリファレンスについては、「[host.json reference for Azure Functions 1.x (Azure Functions 1.x の host.json のリファレンス)](functions-host-json-v1.md)」を参照してください。
@@ -120,7 +120,7 @@ Functions 1.x アプリでは、[Microsoft.Azure.WebJobs](https://www.nuget.org/
     "version": "2.0",
     "extensions": {
         "serviceBus": {
-            "retryOptions":{
+            "clientRetryOptions":{
                 "mode": "exponential",
                 "tryTimeout": "00:01:00",
                 "delay": "00:00:00.80",

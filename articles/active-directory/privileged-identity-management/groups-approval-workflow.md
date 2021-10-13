@@ -4,23 +4,24 @@ description: Azure AD Privileged Identity Management (PIM) でロールを割り
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: daveba
+manager: KarenH444
 ms.service: active-directory
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 07/27/2020
+ms.date: 10/07/2021
 ms.author: curtand
+ms.reviewer: shaunliu
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a3b6dad33ce678478a201dc8b7b612f4b8507c0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6c07c654e5a4baf0f817cefa8c48be9c49cebae4
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91536989"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129668221"
 ---
 # <a name="approve-activation-requests-for-privileged-access-group-members-and-owners-preview"></a>特権アクセス グループのメンバーと所有者のアクティブ化要求を承認する (プレビュー)
 

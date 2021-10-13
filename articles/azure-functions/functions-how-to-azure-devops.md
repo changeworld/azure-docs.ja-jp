@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 7d3a108185c43be2f6de72466db10db5e2ec94f1
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 6e35b814b8b6fce5f223200f1774b7da2fee7a8c
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110077322"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129660972"
 ---
 # <a name="continuous-delivery-by-using-azure-devops"></a>Azure DevOps を使用した継続的デリバリー
 
@@ -244,8 +244,6 @@ Azure Pipelines でアプリをビルドする方法は、アプリのプログ�
 新しいリリース パイプラインを作成するときに、Azure Functions のリリース テンプレートを検索します。
 
 ![Azure Functions のリリース テンプレートを検索する](media/functions-how-to-azure-devops/release-template.png)
-
-リリース テンプレートでは、デプロイ スロットへのデプロイはサポートされていません。
 
 ## <a name="create-a-build-pipeline-by-using-the-azure-cli"></a>Azure CLI を使用してビルド パイプラインを作成する
 

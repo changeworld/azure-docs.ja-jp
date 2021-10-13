@@ -7,12 +7,12 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/19/2021
-ms.openlocfilehash: 4aa60a5433f13ca6b942204bbdb8eb4425d0ddf7
-ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
+ms.openlocfilehash: 11dbe95a63ce22602985cb7ff9b4db11f5e8f8dc
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2021
-ms.locfileid: "112983214"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129856754"
 ---
 # <a name="indexer-connections-to-sql-server-on-an-azure-virtual-machine"></a>Azure 仮想マシン上の SQL Server へのインデクサー接続
 
@@ -83,7 +83,7 @@ SQL Azure VM をすべての接続要求に開放するのではなく、ACL で
 
 IP アドレスは、Search サービスの FQDN (`<your-search-service-name>.search.windows.net` など) に ping を実行することで確認できます。 Search サービスの IP アドレスを変更することはできますが、変更される可能性はほとんどありません。 この IP アドレスがサービスの有効期間中に変わることはほとんどありません。
 
-`AzureCognitiveSearch` [サービス タグ](../virtual-network/service-tags-overview.md#available-service-tags)の IP アドレス範囲を確認するには、[ダウンロード可能な JSON ファイル](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)または [Service Tag Discovery API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) を使用します。 IP アドレス範囲は毎週更新されます。
+`AzureCognitiveSearch` [サービス タグ](../virtual-network/service-tags-overview.md#available-service-tags)の IP アドレス範囲を確認するには、[ダウンロード可能な JSON ファイル](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)または [Service Tag Discovery API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api) を使用します。 IP アドレス範囲は毎週更新されます。
 
 ### <a name="include-the-azure-cognitive-search-portal-ip-addresses"></a>Azure Cognitive Search ポータルの IP アドレスを含める
 

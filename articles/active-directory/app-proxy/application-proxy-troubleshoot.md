@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 1e46bb0fad37e1a6da3676578f6cd92af912cb3f
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 798f381ef067af174370fb21893c32386390449a
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111963891"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129617285"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>アプリケーション プロキシの問題とエラー メッセージのトラブルシューティング | Microsoft Docs
 
@@ -80,10 +80,6 @@ Get-EventLog application –source "Microsoft AAD Application Proxy Connector" �
 | この企業のアプリにはアクセスできません。 このアプリケーションにアクセスする権限がありません。 承認に失敗しました。 ユーザーが Azure Active Directory Premium のライセンスを持っていることを確認します。 | サブスクライバーの管理者によってユーザーに対して Premium ライセンスが明示的に割り当てられていない場合、発行されたアプリにそのユーザーがアクセスしようとすると、このエラーが発生することがあります。 サブスクライバーの Active Directory **[ライセンス]** タブに移動し、このユーザーまたはユーザー グループに Premium ライセンスが割り当てられていることを確認します。 |
 | 指定されたホスト名を持つサーバーが見つかりませんでした。 | アプリケーションのカスタム ドメインが正しく構成されていない場合、発行したアプリにユーザーがアクセスしようとすると、このエラーが表示されることがあります。 「[Azure AD アプリケーション プロキシでのカスタム ドメインの使用](./application-proxy-configure-custom-domain.md)」の手順に従って、ドメインの証明書がアップロードされ、DNS レコードが正しく構成されていることを確認してください。 |
 |禁止:この社内アプリにアクセスできないか、ユーザーを承認できませんでした。 ユーザーがオンプレミスの AD で定義されていること、およびユーザーがオンプレミスの AD でアプリにアクセスできることを確認してください。 | これは、承認情報へのアクセスに問題がある可能性があります。「[一部のアプリケーションや API でアカウント オブジェクトの承認情報に対するアクセス許可が必要になる]( https://support.microsoft.com/help/331951/some-applications-and-apis-require-access-to-authorization-information)」を参照してください。 簡単に言うと、アプリケーション プロキシ コネクタのコンピューター アカウントを "Windows Authorization Access Group" 組み込みドメイン グループに追加して解決します。 |
-
-## <a name="my-error-wasnt-listed-here"></a>上記に記載のないエラー
-
-Azure AD アプリケーション プロキシでこのトラブルシューティング ガイドの一覧にないエラーまたは問題が発生した場合は、 発生したエラーの詳細を記した電子メールを[フィードバック チーム](mailto:aadapfeedback@microsoft.com)までお送りください。
 
 ## <a name="see-also"></a>関連項目
 * [Azure Active Directory のアプリケーション プロキシを有効にする](application-proxy-add-on-premises-application.md)

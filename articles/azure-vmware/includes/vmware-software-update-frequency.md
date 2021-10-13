@@ -3,15 +3,15 @@ title: VMware ソフトウェアの更新頻度
 description: Azure VMware Solution でサポートされている VMware ソフトウェアの更新頻度。
 ms.topic: include
 ms.date: 08/24/2021
-author: shortpatti
-ms.author: v-patsho
+author: suzizuber
+ms.author: v-szuber
 ms.service: azure-vmware
-ms.openlocfilehash: 20286e2363001a49905715f2274d94bd23351e9c
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: 297fc81559adc9bb3f9c22091ca568da36cffb8f
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122867105"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129638193"
 ---
 <!-- Used in faq.md and concepts-private-clouds-clusters.md -->
 

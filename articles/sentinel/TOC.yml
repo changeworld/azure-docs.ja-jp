@@ -222,6 +222,8 @@
           href: authenticate-playbooks-to-sentinel.md
         - name: プレイブックでトリガーとアクションを使用する
           href: playbook-triggers-actions.md
+        - name: テンプレートからプレイブックをカスタマイズする
+          href: use-playbook-templates.md
     - name: Azure Sentinel を管理する
       items:
         - name: MSSP 用 Azure Sentinel

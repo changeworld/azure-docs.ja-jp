@@ -10,12 +10,13 @@ ms.subservice: verifiable-credentials
 ms.date: 07/20/2021
 ms.author: barclayn
 ms.reviewer: ''
-ms.openlocfilehash: c028e00ac52179ef6130ed01ea648ec9b82385f0
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ROBOTS: NOINDEX
+ms.openlocfilehash: 34904f0183e96f8b0f59be42ea605d86ff34fed7
+ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114448102"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129729560"
 ---
 # <a name="tutorial---issue-and-verify-verifiable-credentials-using-your-tenant-preview"></a>チュートリアル - テナントを使用して検証可能な資格情報を発行して検証する (プレビュー)
 

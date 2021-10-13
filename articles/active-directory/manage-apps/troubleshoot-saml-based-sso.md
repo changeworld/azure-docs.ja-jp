@@ -1,6 +1,7 @@
 ---
-title: Azure Active Directory での SAML に基づいたシングル サインオンをトラブルシューティングする
+title: Azure Active Directory のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする方法
 description: SAML に基づいたシングル サインオン用に構成された Azure AD アプリの問題をトラブルシューティングします。
+titleSuffix: Azure AD
 services: active-directory
 author: davidmu1
 manager: CelesteDG
@@ -11,12 +12,12 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: davidmu
 ms.reviewer: ergreenl
-ms.openlocfilehash: 10bb11d51ab6c8070c93f64aa2a18e8695907aad
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 1a600bf3e3525535e7438559674342c629aa5887
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121742788"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129613689"
 ---
 # <a name="troubleshoot-saml-based-single-sign-on-in-azure-active-directory"></a>Azure Active Directory での SAML に基づいたシングル サインオンをトラブルシューティングする
 

@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: tutorial
-ms.date: 11/23/2020
+ms.date: 10/07/2021
 ms.author: lajanuar
-ms.openlocfilehash: ea5e49cf6a61ad89d182637c11b969ee80c754e6
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: b541c19f3a3bd129e81723df7b1b58ba75e4a540
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122327275"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129714444"
 ---
 # <a name="tutorial-create-a-form-processing-app-with-ai-builder"></a>チュートリアル:AI Builder を使用してフォーム処理アプリを作成する
 
@@ -57,7 +57,7 @@ ms.locfileid: "122327275"
 > - 50 ページを超える PDF ドキュメント
 > - 入力可能な PDF
 >
-> 入力ドキュメントの要件の詳細については、「[入力の要件](./overview.md#input-requirements)」を参照してください。
+> 入力ドキュメントの要件の詳細については、「[入力の要件](concept-model-overview.md#input-requirements)」を参照してください。
 
 ### <a name="upload-your-documents"></a>ドキュメントをアップロードする
 
@@ -78,7 +78,7 @@ ms.locfileid: "122327275"
 分析が完了したら、サムネイルを選択してフィールド選択エクスペリエンスを開きます。
 
 > [!IMPORTANT]
-> 分析が失敗した場合は、AI Builder でドキュメント内の構造化テキストを検出できなかった可能性があります。 更新したドキュメントが[入力要件](./overview.md#input-requirements)に従っていることを確認します。
+> 分析が失敗した場合は、AI Builder でドキュメント内の構造化テキストを検出できなかった可能性があります。 更新したドキュメントが[入力要件](concept-model-overview.md#input-requirements)に従っていることを確認します。
 
 ## <a name="select-your-form-fields"></a>フォームのフィールドを選択する
 

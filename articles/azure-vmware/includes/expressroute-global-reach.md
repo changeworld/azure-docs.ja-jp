@@ -3,15 +3,15 @@ title: Azure VMware Solution のネットワークと接続
 description: Azure VMware Solution のネットワークと接続の説明。
 ms.topic: include
 ms.date: 08/10/2021
-author: shortpatti
-ms.author: v-patsho
+author: suzizuber
+ms.author: v-szuber
 ms.service: azure-vmware
-ms.openlocfilehash: c80e256691066239d89b101f206f758725809fad
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: add146bb5b64e12b09bec89c080e1222154d4e2f
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128909629"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129638279"
 ---
 <!-- Used in articles\azure-vmware\introduction.md and articles\azure-vmware\concepts-networking.md 
 
