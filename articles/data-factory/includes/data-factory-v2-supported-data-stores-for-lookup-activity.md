@@ -2,18 +2,18 @@
 title: インクルード ファイル
 description: ルックアップ アクティビティのサポートされるコネクタ
 services: data-factory
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
 ms.topic: include
-ms.date: 09/22/2021
-ms.author: jingwang
+ms.date: 09/29/2021
+ms.author: jianleishen
 ms.custom: include file
-ms.openlocfilehash: 2e89de7bd709f68dc10fe6b835c5b5d016da4835
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.openlocfilehash: e62759f9f73d8bfbc55d7db9e1c06da37ea707c9
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129095911"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129725456"
 ---
 | カテゴリ | データ ストア |
 |:--- |:--- |

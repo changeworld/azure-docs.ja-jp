@@ -7,16 +7,16 @@ ms.subservice: service-overview
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: overview
-author: bonova
-ms.author: bonova
+author: niko-neugebauer
+ms.author: nneugebauer
 ms.reviewer: mathoma, vanto
 ms.date: 01/14/2021
-ms.openlocfilehash: 6f47e9d43008f004bc529b0a3251bf252e0039b9
-ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
+ms.openlocfilehash: 4073a78b9dcab9d6e9ce4b11c839c0c9785d3285
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114690794"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129667347"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>Azure SQL Managed Instance とは
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -56,7 +56,7 @@ SQL Managed Instance では、Azure SQL Database と SQL Server データベー�
 
 SQL Managed Instance の主な機能を次の表に示します。
 
-|機能 | 説明|
+|特徴量 | 説明|
 |---|---|
 | SQL Server のバージョン/ビルド | SQL Server データベース エンジン (最新の安定版) |
 | 管理される自動バックアップ | はい |

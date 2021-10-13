@@ -6,14 +6,14 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 10/11/2020
+ms.date: 10/8/2021
 ms.author: erhopf
-ms.openlocfilehash: 7e0b0a3023147fc12c0133f7fb0c78b943c09ced
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: e706c8ed4bd15d7d8f1d234d8adfab85d626788c
+ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122067057"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129729104"
 ---
 # <a name="azure-cognitive-services-support-and-help-options"></a>Azure Cognitive Services のサポート オプションとヘルプ オプション
 
@@ -144,7 +144,6 @@ Stack Overflow に新しい質問を送信する場合は、次のいずれか�
 機能に関する新たなリリースやAzure ブログのニュースを常に把握しておくことで、プログラミング エラー、サービスバグ、あるいは Cognitive Services ではまだ利用できない機能についての役立つ情報を得ることができます。
 
 * 製品の更新プログラム、ロードマップ、および発表の詳細については、「[Azure の更新情報](https://azure.microsoft.com/updates/?category=ai-machine-learning&query=Azure%20Cognitive%20Services)」で確認できます。
-* 最近追加または更新された Cognitive Services の記事は、[ドキュメントの最新情報](whats-new-docs.md)に関するページでご覧ください。
 * Cognitive Services に関するニュースは、[Azure ブログ](https://azure.microsoft.com/blog/topics/cognitive-services/)で共有されています。
 * Cognitive Services に関して、[Reddit で会話に参加します](https://www.reddit.com/r/AZURE/search/?q=Cognitive%20Services&restrict_sr=1)。
 

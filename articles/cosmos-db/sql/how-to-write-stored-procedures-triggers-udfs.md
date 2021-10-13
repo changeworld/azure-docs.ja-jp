@@ -5,15 +5,15 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 06/16/2020
+ms.date: 10/05/2021
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: b17ed988934536c4b4258cd8f293e9bfc9d6dde7
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 01b1a647f6b6a5f9d8208a6dce23126ebf5ec0a1
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123113949"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129616609"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Azure Cosmos DB でストアド プロシージャ、トリガー、およびユーザー定義関数を記述する方法
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]

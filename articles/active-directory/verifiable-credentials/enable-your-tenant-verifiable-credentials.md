@@ -11,12 +11,13 @@ ms.subservice: verifiable-credentials
 ms.date: 06/24/2021
 ms.author: barclayn
 ms.reviewer: ''
-ms.openlocfilehash: 9867825794c363b9df53849ad3fd1cb644492677
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ROBOTS: NOINDEX
+ms.openlocfilehash: 2bcacf36982c133eb89fe1c92f937f12b5cdb155
+ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124816281"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129729693"
 ---
 # <a name="tutorial---configure-azure-active-directory-to-issue-verifiable-credentials-preview"></a>チュートリアル - Azure Active Directory を構成して検証可能な資格情報 (プレビュー) を発行する
 

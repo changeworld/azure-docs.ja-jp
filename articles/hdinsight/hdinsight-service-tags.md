@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 06/23/2021
-ms.openlocfilehash: 419feaf3102ba9db4335718131281481821fe6a9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 988e3249580408147b74409856bea1e45df4e966
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121722295"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129857115"
 ---
 # <a name="nsg-service-tags-for-azure-hdinsight"></a>Azure HDInsight の NSG サービス タグ
 
@@ -18,7 +18,7 @@ ms.locfileid: "121722295"
 
 これらのサービス タグは、HDInsight サービスによって管理されます。 独自のサービス タグを作成したり、既存のタグを変更したりすることはできません。 サービス タグと一致するアドレス プレフィックスの管理は Microsoft によって行われ、アドレスが変化するとサービス タグは自動的に更新されます。
 
-特定のリージョンを使用する場合に、サービス タグがまだこのページに記載されていない場合は、[Service Tag Discovery API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) を使用してサービス タグを検索できます。 また、[サービス タグの JSON ファイル](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)をダウンロードして、目的のリージョンを検索することもできます。
+特定のリージョンを使用する場合に、サービス タグがまだこのページに記載されていない場合は、[Service Tag Discovery API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api) を使用してサービス タグを検索できます。 また、[サービス タグの JSON ファイル](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)をダウンロードして、目的のリージョンを検索することもできます。
 
 ## <a name="get-started-with-service-tags"></a>サービス タグを使ってみる
 

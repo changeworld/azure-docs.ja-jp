@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/01/2021
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: f385ca93c3cee6535a71dcffdd9240871ab1bdce
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: d43407221d62992a54f1e5efdeb23afd3dde92ef
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128676392"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129661181"
 ---
 # <a name="azure-cosmos-db-output-binding-for-azure-functions-2x-and-higher"></a>Azure Functions 2.x 以降に対する Azure Cosmos DB の出力バインド
 
@@ -700,7 +700,7 @@ def main(req: func.HttpRequest, doc: func.Out[func.Document]) -> func.HttpRespon
 
 ## <a name="hostjson-settings"></a>host.json 設定
 
-このセクションでは、Azure Functions バージョン 2.x でこのバインディングに使用可能なグローバル構成設定について説明します。 Azure Functions バージョン 2.x でのグローバル構成設定の詳細については、[Azure Functions バージョン 2.x の host.json のリファレンス](functions-host-json.md)を参照してください。
+[!INCLUDE [functions-host-json-section-intro](../../includes/functions-host-json-section-intro.md)]
 
 ```json
 {
@@ -720,7 +720,7 @@ def main(req: func.HttpRequest, doc: func.Out[func.Document]) -> func.HttpRespon
 |プロパティ  |Default |説明 |
 |----------|--------|------------|
 |GatewayMode|Gateway|Azure Cosmos DB サービスに接続する際に関数で使用される接続モード。 オプションは `Direct` と `Gateway` です|
-|Protocol|Https|Azure Cosmos DB サービスに接続する際に関数で使用される接続プロトコル。 両方のモードの説明については[こちら](../cosmos-db/performance-tips.md#networking)を参照してください。 <br><br> この設定は、[拡張機能バージョン 4.x](./functions-bindings-cosmosdb-v2.md#cosmos-db-extension-4x-and-higher) では使用できません。 |
+|Protocol|Https|Azure Cosmos DB サービスに接続する際に関数で使用される接続プロトコル。 両方のモードの説明については[こちら](../cosmos-db/performance-tips.md#networking)を参照してください <br><br> この設定は、[拡張機能バージョン 4.x](./functions-bindings-cosmosdb-v2.md#cosmos-db-extension-4x-and-higher) では使用できません。 |
 |leasePrefix|該当なし|アプリ内のすべての関数で使用するプレフィックスをリースします。 <br><br> この設定は、[拡張機能バージョン 4.x](./functions-bindings-cosmosdb-v2.md#cosmos-db-extension-4x-and-higher) では使用できません。|
 
 ## <a name="next-steps"></a>次のステップ

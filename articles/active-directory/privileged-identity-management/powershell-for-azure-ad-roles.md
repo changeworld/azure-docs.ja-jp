@@ -4,7 +4,7 @@ description: Azure AD Privileged Identity Management (PIM) で PowerShell コマ
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: daveba
+manager: KarenH444
 editor: ''
 ms.service: active-directory
 ms.subservice: pim
@@ -12,16 +12,17 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/30/2021
+ms.date: 10/07/2021
 ms.author: curtand
+ms.reviewer: shaunliu
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c53899c8a513d623fc11d7494c3473cf2878d71
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 5b25ae76e2af971c32b027245a852c29f088a145
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128609918"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129669228"
 ---
 # <a name="powershell-for-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management の Azure AD ロールのための PowerShell
 

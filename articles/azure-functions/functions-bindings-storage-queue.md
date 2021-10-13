@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: ea5f9511cd9ae6d569d833ef8f950f1391c30f38
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 252a3316ae14e17c2712547f088477d74da2c66e
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113112187"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129658685"
 ---
 # <a name="azure-queue-storage-trigger-and-bindings-for-azure-functions-overview"></a>Azure Functions における Azure Queue storage のトリガーとバインドの概要
 
@@ -57,7 +57,7 @@ Functions 1.x アプリでは、[Microsoft.Azure.WebJobs](https://www.nuget.org/
 
 ## <a name="hostjson-settings"></a>host.json 設定
 
-このセクションでは、バージョン 2.x 以降でこのバインドに使用可能なグローバル構成設定について説明します。 下の *host.json* ファイルの例には、このバインドのバージョン 2.x 以降の設定のみが含まれています。 バージョン 2.x 以降でのグローバル構成設定の詳細については、「[Azure Functions の host.json のリファレンス](functions-host-json.md)」を参照してください。
+[!INCLUDE [functions-host-json-section-intro](../../includes/functions-host-json-section-intro.md)]
 
 > [!NOTE]
 > Functions 1.x の host.json のリファレンスについては、「[host.json reference for Azure Functions 1.x (Azure Functions 1.x の host.json のリファレンス)](functions-host-json-v1.md)」を参照してください。

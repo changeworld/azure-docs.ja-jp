@@ -7,12 +7,13 @@ author: barclayn
 ms.author: barclayn
 ms.topic: tutorial
 ms.date: 04/01/2021
-ms.openlocfilehash: 2fba830b93be35b1bc55ad85531737ebe8a8c982
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ROBOTS: NOINDEX
+ms.openlocfilehash: 9958d12299287c7d53641ba75d917f1f18359f54
+ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110466234"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129728439"
 ---
 #  <a name="tutorial---get-started-with-azure-active-directory-verifiable-credentials-using-a-sample-app-preview"></a>チュートリアル - サンプル アプリを使用して Azure Active Directory Verifiable Credentials の作業を開始する (プレビュー)
 

@@ -2,13 +2,13 @@
 title: Service Fabric マネージド クラスター上の他の Azure リソースへのアクセスをアプリケーションに許可
 description: この記事では、マネージド ID が有効になった Service Fabric アプリケーションに、Service Fabric マネージド クラスターで Azure Active Directory ベースの認証をサポートする他の Azure リソースへのアクセス権を付与する方法について説明します。
 ms.topic: article
-ms.date: 5/10/2021
-ms.openlocfilehash: ba85736779f44d5874bb4a080ce0da1c5ba764f8
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.date: 10/05/2021
+ms.openlocfilehash: 6bead810e52c53f6c045e6d13d8035542f73ae39
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129544699"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129615279"
 ---
 # <a name="granting-a-service-fabric-applications-managed-identity-access-to-azure-resources-on-a-service-fabric-managed-cluster"></a>Service Fabric アプリケーションのマネージド ID に、Service Fabric マネージド クラスター上の Azure リソースへのアクセス権を付与する
 
@@ -38,74 +38,71 @@ Service Fabric のシステム割り当てのマネージド ID のサポート�
 次の例では、テンプレートのデプロイによってコンテナーへのアクセス権を付与する方法を示します。テンプレートの `resources` 要素の下に、別のエントリとして次のスニペットを追加します。 このサンプルでは、ユーザーが割り当てた ID の種類とシステムによって割り当てられたID の種類の両方に付与されるアクセス権を示します。適切なほうを選択してください。
 
 ```json
-{
+    # under 'variables':
   "variables": {
-    "userAssignedIdentityResourceId": "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities/', parameters('userAssignedIdentityName'))]",
-  },
-  "resources": [
-    {
-      "type": "Microsoft.KeyVault/vaults/accessPolicies",
-      "name": "[concat(parameters('keyVaultName'), '/add')]",
-      "apiVersion": "2018-02-14",
-      "properties": {
-        "accessPolicies": [
-          {
-            "tenantId": "[reference(variables('userAssignedIdentityResourceId'), '2018-11-30').tenantId]",
-            "objectId": "[reference(variables('userAssignedIdentityResourceId'), '2018-11-30').principalId]",
-            "dependsOn": [
-              "[variables('userAssignedIdentityResourceId')]"
-            ],
-            "permissions": {
-              "keys": [ "get", "list" ],
-              "secrets": [ "get", "list" ],
-              "certificates": [ "get", "list" ]
-            }
-          }
-        ]
-      }
+        "userAssignedIdentityResourceId" : "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities/', parameters('userAssignedIdentityName'))]",
     }
-  ]
-}
+    # under 'resources':
+    {
+        "type": "Microsoft.KeyVault/vaults/accessPolicies",
+        "name": "[concat(parameters('keyVaultName'), '/add')]",
+        "apiVersion": "2018-02-14",
+        "properties": {
+            "accessPolicies": [
+                {
+                    "tenantId": "[reference(variables('userAssignedIdentityResourceId'), '2018-11-30').tenantId]",
+                    "objectId": "[reference(variables('userAssignedIdentityResourceId'), '2018-11-30').principalId]",
+                    "dependsOn": [
+                        "[variables('userAssignedIdentityResourceId')]"
+                    ],
+                    "permissions": {
+                        "keys":         ["get", "list"],
+                        "secrets":      ["get", "list"],
+                        "certificates": ["get", "list"]
+                    }
+                }
+            ]
+        }
+    },
 ```
 システムによって割り当てられたマネージド ID の場合:
 ```json
-{
+    # under 'variables':
   "variables": {
-    "sfAppSystemAssignedIdentityResourceId": "[concat(resourceId('Microsoft.ServiceFabric/managedClusters/applications/', parameters('clusterName'), parameters('applicationName')), '/providers/Microsoft.ManagedIdentity/Identities/default')]"
-  },
-  "resources": [
-    {
-      "type": "Microsoft.KeyVault/vaults/accessPolicies",
-      "name": "[concat(parameters('keyVaultName'), '/add')]",
-      "apiVersion": "2018-02-14",
-      "properties": {
-        "accessPolicies": [
-          {
-            "name": "[concat(parameters('clusterName'), '/', parameters('applicationName'))]",
-            "tenantId": "[reference(variables('sfAppSystemAssignedIdentityResourceId'), '2018-11-30').tenantId]",
-            "objectId": "[reference(variables('sfAppSystemAssignedIdentityResourceId'), '2018-11-30').principalId]",
-            "dependsOn": [
-              "[variables('sfAppSystemAssignedIdentityResourceId')]"
-            ],
-            "permissions": {
-              "secrets": [
-                "get",
-                "list"
-              ],
-              "certificates": [
-                "get",
-                "list"
-              ]
-            }
-          }
-        ]
-      }
+        "sfAppSystemAssignedIdentityResourceId": "[concat(resourceId('Microsoft.ServiceFabric/managedClusters/applications/', parameters('clusterName'), parameters('applicationName')), '/providers/Microsoft.ManagedIdentity/Identities/default')]"
     }
-  ]
-}
+    # under 'resources':
+    {
+        "type": "Microsoft.KeyVault/vaults/accessPolicies",
+        "name": "[concat(parameters('keyVaultName'), '/add')]",
+        "apiVersion": "2018-02-14",
+        "properties": {
+            "accessPolicies": [
+            {
+                    "name": "[concat(parameters('clusterName'), '/', parameters('applicationName'))]",
+                    "tenantId": "[reference(variables('sfAppSystemAssignedIdentityResourceId'), '2018-11-30').tenantId]",
+                    "objectId": "[reference(variables('sfAppSystemAssignedIdentityResourceId'), '2018-11-30').principalId]",
+                    "dependsOn": [
+                        "[variables('sfAppSystemAssignedIdentityResourceId')]"
+                    ],
+                    "permissions": {
+                        "secrets": [
+                            "get",
+                            "list"
+                        ],
+                        "certificates": 
+                        [
+                            "get", 
+                            "list"
+                        ]
+                    }
+            },
+        ]
+        }
+    }
 ```
 
 詳細については、「[コンテナー - アクセス ポリシーの更新](/rest/api/keyvault/vaults/updateaccesspolicy)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
-* [ユーザー割り当て、またはシステム割り当てのマネージド ID を使用して Azure Service Fabric アプリケーションをデプロイする](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
+* [マネージド ID を使用してアプリケーションを Microsoft Azure Service Fabric マネージド クラスターにデプロイする](how-to-managed-cluster-application-managed-identity.md)

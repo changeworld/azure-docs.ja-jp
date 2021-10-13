@@ -4,24 +4,24 @@ description: Azure AD Privileged Identity Management (PIM) でのメール通知
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: KarenH444
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: pim
-ms.date: 08/24/2021
+ms.date: 10/07/2021
 ms.author: curtand
-ms.reviewer: hanki
+ms.reviewer: shaunliu
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68fac3501cd13dd4766c519185459c9ef89b6299
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: f9cd2b72b58899ce37843d6117f975f74ef97493
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123311223"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129667328"
 ---
 # <a name="email-notifications-in-pim"></a>PIM での電子メール通知
 

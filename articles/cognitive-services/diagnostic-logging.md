@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/19/2021
 ms.author: erhopf
-ms.openlocfilehash: deb5db6f205c02812330539c403fbe7b80d4784c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 804d56309cf7f97c93b2f404b1f7a11360c26fd0
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121747524"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129660136"
 ---
 # <a name="enable-diagnostic-logging-for-azure-cognitive-services"></a>Azure Cognitive Services の診断ログを有効にする
 
@@ -118,5 +118,4 @@ by bin(TimeGenerated, 10s), OperationName
 * Event Hubs については次の記事をご覧ください。
   * [Azure Event Hubs とは](../event-hubs/event-hubs-about.md)
   * [Event Hubs の使用](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
-* [Azure Storage からメトリックとログをダウンロードする方法](../storage/blobs/storage-quickstart-blobs-dotnet.md#download-blobs)に関する記事をご覧ください。
 * 「[Azure Monitor ログでのログ検索について](../azure-monitor/logs/log-query-overview.md)」をお読みください。

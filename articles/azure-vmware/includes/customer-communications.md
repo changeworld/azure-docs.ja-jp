@@ -3,15 +3,15 @@ title: Azure VMware Solution での顧客コミュニケーション
 description: Azure VMware Solution での顧客コミュニケーションについての説明です。
 ms.topic: include
 ms.date: 03/24/2021
-author: shortpatti
-ms.author: v-patsho
+author: suzizuber
+ms.author: v-szuber
 ms.service: azure-vmware
-ms.openlocfilehash: 6a58a0e3dffe99d80765dc00f472d6b7f74d7321
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3c70a3ae4ced025ee5cff3a97f02daa8ead81f93
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122070733"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129638280"
 ---
 <!-- Used in introduction.md and faq.yml -->
 

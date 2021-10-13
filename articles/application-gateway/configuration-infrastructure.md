@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 06/14/2021
 ms.author: surmb
-ms.openlocfilehash: 5ea384a580109d40dfbb072b7bad16924307873e
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: f838b1821e38e6046014f5cd8233694db7f2ef87
+ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124837330"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129729845"
 ---
 # <a name="application-gateway-infrastructure-configuration"></a>Application Gateway インフラストラクチャの構成
 
@@ -73,7 +73,7 @@ Application Gateway (Standard_v2 または WAF_v2) SKU では、最大 125 の�
 
 - **v1**
 
-   v1 SKU の場合、ユーザー定義ルート (UDR) は、エンド ツー エンドの要求/応答の通信を変えない限り、Application Gateway サブネットでサポートされます。 たとえば、パケットの検査のためにファイアウォール アプライアンスを指すように Application Gateway サブネットの UDR を設定できます。 ただし、検査後にパケットが目的の宛先に到達できることを確認する必要があります。 これに失敗すると、不適切な正常性プローブやトラフィック ルーティング動作が発生する場合があります。 これには仮想ネットワークの Azure ExpressRoute や VPN ゲートウェイによってプロパゲートされる学習済みのルートまたは既定の 0.0.0.0/0 ルートが含まれます。 0\.0.0.0/0 をオンプレミスにリダイレクトする必要があるシナリオ (強制トンネリング) は、v1 ではサポートされていません。
+   v1 SKU の場合、ユーザー定義ルート (UDR) は、エンド ツー エンドの要求/応答の通信を変えない限り、Application Gateway サブネットでサポートされます。 たとえば、パケットの検査のためにファイアウォール アプライアンスを指すように Application Gateway サブネットの UDR を設定できます。 ただし、検査後にパケットが目的の宛先に到達できることを確認する必要があります。 これに失敗すると、不適切な正常性プローブやトラフィック ルーティング動作が発生する場合があります。 これには仮想ネットワークの Azure ExpressRoute や VPN ゲートウェイによってプロパゲートされる学習済みのルートまたは既定の 0.0.0.0/0 ルートが含まれます。
 
 - **v2**
 

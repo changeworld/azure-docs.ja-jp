@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.openlocfilehash: 6caf3847971c2dd39f1eea0a921891e4440373a5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 70d01dce8e5879b6b075c2ea9e305ebf90d57e18
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105727469"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129658883"
 ---
 # <a name="azure-functions-http-output-bindings"></a>Azure Functions での HTTP 出力バインド
 
@@ -39,7 +39,7 @@ HTTP 応答を送信するには、言語標準の応答パターンを使いま
 
 ## <a name="hostjson-settings"></a>host.json 設定
 
-このセクションでは、バージョン 2.x 以降でこのバインドに使用可能なグローバル構成設定について説明します。 次の host.json ファイルの例には、このバインドのバージョン 2.x 以降の設定のみが含まれています。 バージョン 2.x 以降でのグローバル構成設定の詳細については、「[Azure Functions の host.json のリファレンス](functions-host-json.md)」を参照してください。
+[!INCLUDE [functions-host-json-section-intro](../../includes/functions-host-json-section-intro.md)]
 
 > [!NOTE]
 > Functions 1.x の host.json のリファレンスについては、「[host.json reference for Azure Functions 1.x (Azure Functions 1.x の host.json のリファレンス)](functions-host-json-v1.md#http)」を参照してください。

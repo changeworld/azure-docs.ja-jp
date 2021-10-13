@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 09/30/2021
+ms.date: 10/07/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efa2c16f83fc0a85e3c2d346aed5d7fdf848c873
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: a4bda35abff8bed8795d9cc6257b45bb22ef961c
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129355419"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129709875"
 ---
 # <a name="what-is-azure-ad-connect-cloud-sync"></a>Azure AD Connect クラウド同期とは
 Azure AD Connect クラウド同期は、ユーザー、グループ、連絡先を Azure AD に同期するためのハイブリッド ID の目標を満たすために設計された Microsoft の新しいオファリングです。  Azure AD Connect アプリケーションではなく Azure AD クラウド プロビジョニング エージェントを使用してこれを実現します。  ただし、これは Azure AD Connect 同期と共に使用することができ、次のような利点があります。
@@ -34,7 +34,7 @@ Azure AD Connect クラウド同期では、Microsoft Online Services で AD か
 ## <a name="azure-ad-connect-cloud-sync-video"></a>Azure AD Connect クラウド同期のビデオ
 次の短いビデオでは、Azure AD Connect クラウド同期の概要をわかりやすく説明しています。
 
-> [!VIDEO https://youtube.com/embed/mOT3ID02_YQ]
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RWJ8l5]
 
 
 ## <a name="comparison-between-azure-ad-connect-and-cloud-sync"></a>Azure AD Connect とクラウド同期の比較

@@ -1,15 +1,15 @@
 ---
-author: linda33wj
+author: jianleishen
 ms.service: data-factory
 ms.topic: include
-ms.date: 08/18/2020
-ms.author: jingwang
-ms.openlocfilehash: d2944dfb9ddbae424656fbd4bc1767b08acbd4ba
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.date: 09/29/2021
+ms.author: jianleishen
+ms.openlocfilehash: 6f725d17de7405bb8b178cf7b91c45c916fd7271
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "109480337"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129725939"
 ---
 <!--
     Common for all ADF file-based connectors

@@ -6,16 +6,16 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: tutorial
 ms.date: 09/20/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 243943b518c422e63261034e860fc174dc4f1fcd
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 277303a2272f7622e5082b06a73980619bf93aa8
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128588905"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129615963"
 ---
 # <a name="clean-up-resources-and-delete-the-tenant"></a>リソースをクリーンアップしてテナントを削除する
 

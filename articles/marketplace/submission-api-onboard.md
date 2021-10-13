@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: mingshen
 author: mingshen-ms
 ms.date: 09/22/2021
-ms.openlocfilehash: 5c6431fef8c91b41f19d27d19b59efca14986b7f
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: e75b85ea7557e4eb6688e8a549e92820d580359b
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129061949"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129614747"
 ---
 # <a name="partner-center-submission-api-onboarding"></a>パートナー センター申請 API のオンボード
 
@@ -64,7 +64,7 @@ grant_type=client_credentials
 &resource= https://api.partner.microsoft.com
 ```
 
-POST URI の tenant_id の値と client_id および client_secret のパラメーターには、前のセクションでパートナー センターから取得したアプリケーションのテナント ID、クライアント ID、キーを指定します。 resource パラメーターには、https://api.partner.microsoft.com を指定する必要があります。
+POST URI の tenant_id の値と client_id および client_secret のパラメーターには、前のセクションでパートナー センターから取得したアプリケーションのテナント ID、クライアント ID、キーを指定します。 resource パラメーターには、`https://api.partner.microsoft.com` を指定する必要があります。
 
 ### <a name="step-3-use-the-partner-center-submission-api"></a>ステップ 3: パートナー センター申請 API を使用する
 

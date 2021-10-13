@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: how-to
 ms.date: 05/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 1f98c0d12ac0df6d824f7f6f5c5e19071b780612
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: fa8b26c2f26ed93bda0ba96b695e94951b72af6b
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110781975"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129658217"
 ---
 # <a name="create-a-job-input-from-a-local-file"></a>ローカル ファイルからジョブの入力を作成する
 
@@ -33,7 +33,7 @@ Media Services v3 では、ビデオを処理するジョブを送信すると�
 次のコードは、入力資産を作成してジョブの入力として使用する方法を示しています。 CreateInputAsset 関数は、次のアクションを行います。
 
 * 資産を作成する
-* 書き込み可能な [SAS URL](../../storage/common/storage-sas-overview.md) をアセットの[ストレージ内のコンテナー](../../storage/blobs/storage-quickstart-blobs-dotnet.md#upload-blobs-to-a-container)に取得する
+* 書き込み可能な [SAS URL](../../storage/common/storage-sas-overview.md) をアセットの[ストレージ内のコンテナー](../../storage/blobs/storage-quickstart-blobs-dotnet.md#upload-a-blob-to-a-container)に取得する
 * SAS URL を使用してストレージ内のコンテナーにファイルをアップロードする
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateInputAsset)]

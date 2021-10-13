@@ -762,32 +762,6 @@
               href: app/monitor-functions.md
             - name: Azure Kubernetes Service
               href: app/kubernetes-codeless.md
-            - name: スタンドアロン - 任意の環境
-              items:
-                - name: Java
-                  items:
-                    - name: 概要
-                      href: app/java-in-process-agent.md
-                    - name: 構成オプション
-                      href: app/java-standalone-config.md
-                    - name: 詳細な構成
-                      items:
-                        - name: JMX メトリック
-                          href: app/java-jmx-metrics-configuration.md
-                        - name: サンプリング オーバーライド
-                          href: app/java-standalone-sampling-overrides.md
-                        - name: テレメトリ プロセッサ
-                          items:
-                            - name: 概要
-                              href: app/java-standalone-telemetry-processors.md
-                            - name: 例
-                              href: app/java-standalone-telemetry-processors-examples.md
-                    - name: JVM 引数の設定
-                      href: app/java-standalone-arguments.md
-                    - name: 2.x SDK からのアップグレード
-                      href: app/java-standalone-upgrade-from-2x.md
-                    - name: トラブルシューティング
-                      href: app/java-standalone-troubleshoot.md
             - name: オンプレミスのサーバー
               items:
                 - name: ASP.NET
@@ -807,6 +781,38 @@
                   href: app/java-on-premises.md
         - name: OpenTelemetry
           items:
+            - name: 概要
+              href: app/opentelemetry-overview.md
+            - name: .NET
+              href: app/opentelemetry-enable.md?tabs=net
+            - name: Node.js
+              href: app/opentelemetry-enable.md?tabs=nodejs
+            - name: Java
+              items:
+                - name: 概要
+                  href: app/java-in-process-agent.md
+                - name: 構成オプション
+                  href: app/java-standalone-config.md
+                - name: 詳細な構成
+                  items:
+                    - name: JMX メトリック
+                      href: app/java-jmx-metrics-configuration.md
+                    - name: サンプリング オーバーライド
+                      href: app/java-standalone-sampling-overrides.md
+                    - name: テレメトリ プロセッサ
+                      items:
+                        - name: 概要
+                          href: app/java-standalone-telemetry-processors.md
+                        - name: 例
+                          href: app/java-standalone-telemetry-processors-examples.md
+                - name: JVM 引数の設定
+                  href: app/java-standalone-arguments.md
+                - name: 2.x SDK からのアップグレード
+                  href: app/java-standalone-upgrade-from-2x.md
+                - name: トラブルシューティング
+                  href: app/java-standalone-troubleshoot.md
+            - name: Python
+              href: app/opentelemetry-enable.md?tabs=python
             - name: よく寄せられる質問
               href: /azure/azure-monitor/faq#opentelemetry
         - name: リソースの作成 (クラシック)
@@ -1131,7 +1137,7 @@
               href: containers/container-insights-agent-config.md
             - name: 更新によるメトリックの有効化
               href: containers/container-insights-update-metrics.md
-        - name: Monitor
+        - name: モニター
           items:
             - name: パフォーマンスの監視
               href: containers/container-insights-analyze.md

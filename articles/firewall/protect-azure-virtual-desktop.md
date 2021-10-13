@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: how-to
-ms.date: 08/09/2021
+ms.date: 10/06/2021
 ms.author: victorh
-ms.openlocfilehash: 5c165dc8f00bb21894de06e541c02788bd7b51e5
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 9ac87633dbb4d1b21dfe4fa4430012d91243b8d5
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129424995"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129620509"
 ---
 # <a name="use-azure-firewall-to-protect-azure-virtual-desktop-deployments"></a>Azure Firewall を使用して Azure Virtual Desktop のデプロイを保護する
 
@@ -44,6 +44,7 @@ Azure Firewall ポリシーを作成し、ネットワーク ルールとアプ�
 | 規則の名前 | IP アドレス  | VNet またはサブネットの IP アドレス | TCP      | 80                | IP アドレス       | 169.254.169.254、168.63.129.16    |
 | 規則の名前 | IP アドレス  | VNet またはサブネットの IP アドレス | TCP      | 443               | サービス タグ      | AzureCloud、WindowsVirtualDesktop |
 | 規則の名前 | IP アドレス  | VNet またはサブネットの IP アドレス | TCP、UDP | 53                | IP アドレス       | *                                 |
+|規則名  | IP アドレス  | VNet またはサブネットの IP アドレス | TCP      | 1688              | IP アドレス       | 23.102.135.246                    |
 
 > [!NOTE]
 > 一部のデプロイでは、DNS 規則を必要としない場合があります。 たとえば、Azure Active Directory ドメイン コントローラーは、DNS クエリを 168.63.129.16 の Azure DNS に転送します。
@@ -53,7 +54,6 @@ Azure Firewall ポリシーを作成し、ネットワーク ルールとアプ�
 | 名前      | 送信元の種類 | source                    | Protocol   | 変換先の型 | 宛先                                                                                 |
 | --------- | ----------- | ------------------------- | ---------- | ---------------- | ------------------------------------------------------------------------------------------- |
 | 規則の名前 | IP アドレス  | VNet またはサブネットの IP アドレス | Https:443  | FQDN タグ         | WindowsVirtualDesktop、WindowsUpdate、Windows Diagnostics、MicrosoftActiveProtectionService |
-| 規則の名前 | IP アドレス  | VNet またはサブネットの IP アドレス | Https:1688 | FQDN             | kms.core.windows.net                                                                        |
 
 > [!IMPORTANT]
 > Azure Virtual Desktop では TLS 検査を使用しないことが推奨されます。 詳細については、[プロキシ サーバー ガイドライン](../virtual-desktop/proxy-server-support.md#dont-use-ssl-termination-on-the-proxy-server)に関するページをご覧ください。

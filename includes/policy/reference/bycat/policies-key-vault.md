@@ -1,16 +1,16 @@
 ---
-author: DCtheGeek
+author: georgewallace
 ms.service: azure-policy
 ms.topic: include
-ms.date: 09/17/2021
-ms.author: dacoulte
+ms.date: 10/11/2021
+ms.author: gwallace
 ms.custom: generated
-ms.openlocfilehash: d0f72055932a4dbbcc4eb4e42dd447ca17a93320
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 83c99513d2c025fab50d0d039f8b112b547683be
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128655301"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129810587"
 ---
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -38,7 +38,7 @@ ms.locfileid: "128655301"
 |[Key Vault キーには有効期限が必要である](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F152b15f7-8e1f-4c1f-ab71-8c010ba5dbc0) |暗号化キーには有効期限を定義する必要があり、永続的なものにしてはいけません。 無期限に有効なキーを使用すると、攻撃者がキーを侵害できる時間がそれだけ長くなります。 セキュリティ プラクティスとして、暗号化キーには有効期限を設定することをお勧めします。 |Audit、Deny、Disabled |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Keys_ExpirationSet.json) |
 |[Key Vault シークレットには有効期限が必要である](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F98728c90-32c7-4049-8429-847dc0f4fe37) |シークレットには有効期限を定義する必要があり、永続的なものにしてはいけません。 シークレットを無期限に有効にすると、潜在的な攻撃者にそれを侵害する時間を多く与えることになります。 セキュリティ プラクティスとして、シークレットには有効期限を設定することをお勧めします。 |Audit、Deny、Disabled |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Secrets_ExpirationSet.json) |
 |[キー コンテナーで消去保護が有効になっている必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0b60c0b2-2dc2-4e1c-b5c9-abbed971de53) |悪意でキー コンテナーが削除されると、データが完全に失われる可能性があります。 組織内の悪意のある内部関係者が、キー コンテナーの削除と消去を実行できるおそれがあります。 消去保護では、論理的に削除されたキー コンテナーに必須の保有期間を適用することによって、内部関係者の攻撃から組織を保護します。 組織や Microsoft の内部にいるどのユーザーも、論理的な削除の保有期間中にキー コンテナーを消去することはできなくなります。 |Audit、Deny、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_Recoverable_Audit.json) |
-|[キー コンテナーで論理的な削除が有効になっている必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1e66c121-a66a-4b1f-9b83-0fd99bf0fc2d) |論理的な削除が有効になっていない状態でキー コンテナーを削除すると、キー コンテナーに格納されているすべてのシークレット、キー、証明書が完全に削除されます。 誤ってキー コンテナーが削除されると、データが完全に失われる可能性があります。 論理的な削除を使用すると、構成可能な保有期間の間は、誤って削除されたキー コンテナーを復旧できます。 |Audit、Deny、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_SoftDeleteMustBeEnabled_Audit.json) |
+|<bpt id="p1">[</bpt>キー コンテナーで論理的な削除が有効になっている必要がある<ept id="p1">](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1e66c121-a66a-4b1f-9b83-0fd99bf0fc2d)</ept> |論理的な削除が有効になっていない状態でキー コンテナーを削除すると、キー コンテナーに格納されているすべてのシークレット、キー、証明書が完全に削除されます。 誤ってキー コンテナーが削除されると、データが完全に失われる可能性があります。 論理的な削除を使用すると、構成可能な保有期間の間は、誤って削除されたキー コンテナーを復旧できます。 |Audit、Deny、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_SoftDeleteMustBeEnabled_Audit.json) |
 |[ハードウェア セキュリティ モジュール (HSM) によってキーをサポートする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F587c79fe-dd04-4a5e-9d0b-f89598c7261b) |HSM は、キーを格納するハードウェア セキュリティ モジュールです。 HSM によって、暗号化キーの物理的な保護レイヤーが提供されます。 暗号化キーは、ソフトウェア キーよりも高いレベルのセキュリティを提供する物理 HSM から離れることはできません。 |Audit、Deny、Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Keys_HSMBacked.json) |
 |[キーは、特定の暗号化の種類 (RSA または EC) である必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F75c4f823-d65c-4f29-a733-01d0077fdbcb) |一部のアプリケーションでは、特定の暗号化の種類によってサポートされるキーを使用する必要があります。 お使いの環境では、特定の暗号化キーの種類 (RSA または EC) を適用してください。 |Audit、Deny、Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Keys_AllowedKeyTypes.json) |
 |[キーの有効期限には、指定された日数より先の日付を指定する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5ff38825-c5d8-47c5-b70e-069a21955146) |キーの有効期限が近すぎると、キーをローテーションする組織での遅延によって障害が発生するおそれがあります。 キーは、エラーに対処するための十分な時間を確保するために、有効期限よりも指定された日数だけ前にローテーションされる必要があります。 |Audit、Deny、Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Keys_Expiry_ByDays.json) |

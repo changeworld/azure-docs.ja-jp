@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 05/24/2021
 ms.author: pafarley
-ms.openlocfilehash: 1a27bfac347480591a67bf2c164b9ff41fe3b18d
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 395b9d2670a488ab0743a987b1e8b857f6f2fb2f
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129426437"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129708326"
 ---
 # <a name="whats-new-in-computer-vision"></a>Computer Vision の新機能
 
@@ -30,7 +30,7 @@ Computer Vision の [OCR (Read) API](overview-ocr.md) は、[対応する言語]
 * ID ドキュメント内の機械読み取り可能ゾーン (MRZ) テキストおよびデジタル PDF を処理する機能の強化。
 * 一般的なパフォーマンスと AI の品質の向上
 
-新しいプレビュー機能を使用する方法については、[OCR ハウツー ガイド](Vision-API-How-to-Topics/call-read-api.md)を参照してください。
+新しいプレビュー機能を使用する方法については、[OCR ハウツー ガイド](Vision-API-How-to-Topics/call-read-api.md#determine-how-to-process-the-data-optional)を参照してください。
 
 > [!div class="nextstepaction"]
 > [Read API の概要](./quickstarts-sdk/client-library.md)

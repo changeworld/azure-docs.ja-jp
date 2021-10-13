@@ -1036,6 +1036,8 @@
         - name: 要求ユニット使用量を確認する
           displayName: 'request units, RUs, RU, charge, consumption'
           href: cassandra/find-request-unit-charge-cassandra.md
+        - name: レート制限エラーの防止
+          href: cassandra/prevent-rate-limiting-errors.md
         - name: Spring Data の格納と管理
           href: cassandra/access-data-spring-data-app.md
         - name: 一般的な問題のトラブルシューティング

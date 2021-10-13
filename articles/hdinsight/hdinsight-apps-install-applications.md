@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/17/2019
-ms.openlocfilehash: bb057f6328c0a678f1fbc7bfed57f1fa8dc13bfc
-ms.sourcegitcommit: deb5717df5a3c952115e452f206052737366df46
+ms.openlocfilehash: c4b403a28c5411008645a8c3f7f52894b8993faf
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122681637"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129707409"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>Azure HDInsight にサードパーティ製 Apache Hadoop アプリケーションをインストールする
 
@@ -32,10 +32,9 @@ HDInsight アプリケーションは、ユーザーが HDInsight クラスタ�
 |[Kyligence Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/kyligence.kyligence-cloud-saas) |Hadoop、HBase、Spark |Kyligence Enterprise では、Apache Kylin を活用して、ビッグ データでの BI を可能にします。 Hadoop 上のエンタープライズ OLAP エンジンである Kyligence Enterprise により、ビジネス アナリストは、業界標準のデータ ウェアハウスと BI 手法を使用して Hadoop で BI を設計することができます。 |
 |[Starburst Presto for Azure HDInsight](https://azuremarketplace.microsoft.com/marketplace/apps/starburstdatainc1582306810515.starburst-enterprise-presto?tab=Overview) |Hadoop |Presto は、高速でスケーラブルな分散 SQL クエリ エンジンです。 ストレージと計算を分離するように設計された Presto は、Azure Data Lake Storage、Azure Blob Storage、SQL および NoSQL データベース、その他のデータ ソース内のデータのクエリを実行するために最適です。 |
 |[StreamSets Data Collector for HDInsight Cloud](https://azuremarketplace.microsoft.com/marketplace/apps/streamsets.streamsets-data-collector-hdinsight) |Hadoop、HBase、Spark、Kafka |StreamSets Data Collector は、リアルタイムでデータをストリーミングする軽量かつ強力なエンジンです。 Data Collector を使用して、データ ストリーム内のデータをルーティングおよび処理します。 30 日間の試用版ライセンスが付与されています。 |
-|[Trifacta Wrangler Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/trifacta.trifacta-db?tab=Overview) |Hadoop、Spark、HBase |Trifacta Wrangler Enterprise for HDInsight では、あらゆる規模のデータに対して、エンタープライズ全体のデータ ラングリングがサポートされています。 Azure で Trifacta を実行するコストは、Trifacta サブスクリプションのコストと、仮想マシン用の Azure インフラストラクチャのコストとの組み合わせになります。 |
+|[Trifacta Wrangler Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/trifactainc1587522950142.trifactaazure) |Hadoop、Spark、HBase |Trifacta Wrangler Enterprise for HDInsight では、あらゆる規模のデータに対して、エンタープライズ全体のデータ ラングリングがサポートされています。 Azure で Trifacta を実行するコストは、Trifacta サブスクリプションのコストと、仮想マシン用の Azure インフラストラクチャのコストとの組み合わせになります。 |
 |[Unifi Data Platform](https://www.crunchbase.com/organization/unifi-software) |Hadoop、HBase、Storm、Spark |Unifi Data Platform は、シームレスに統合されたセルフサービス データ ツールのスイートであり、ビジネス ユーザーが増分収益を向上させ、コストや運用の複雑さを軽減するというデータの課題に取り組めるように設計されています。 |
 |[Unraveldata APM](https://azuremarketplace.microsoft.com/marketplace/apps/unravel-data.unravel-app) |Spark |HDInsight Spark クラスター用の Unravel Data アプリ。 |
-|[Waterline AI-Driven Data Catalog](https://azuremarketplace.microsoft.com/marketplace/apps/waterline_data.waterline_data) |Spark |Waterline では、AI を使用してデータをカタログ化、整理、および管理することにより、自動的にデータにビジネス用語のタグを付けます。 Waterline のビジネス リテラシー カタログは、セルフサービスの分析、コンプライアンスとガバナンス、および IT 管理イニシアティブのための重要な成功コンポーネントです。 |
 
 この記事で説明する手順では、Azure Portal を使用します。 また、ポータルから Azure Resource Manager テンプレートをエクスポートしたり、ベンダーから Resource Manager テンプレートのコピーを入手したりして、Azure PowerShell と Azure クラシック CLI を使ってテンプレートをデプロイすることもできます。  「[Apache Resource Manager テンプレートを使用して HDInsight に Hadoop クラスターを作成する](hdinsight-hadoop-create-linux-clusters-arm-templates.md)」をご覧ください。
 

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 04/15/2021
 ms.author: mbaldwin
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 8b53f906eed0df4c6dddbaa64f460cb7a8898a5e
-ms.sourcegitcommit: bc29cf4472118c8e33e20b420d3adb17226bee3f
+ms.openlocfilehash: 34938a6d5e52912db8d82b39bed3fdbad9f4814c
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2021
-ms.locfileid: "113492651"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129859022"
 ---
 # <a name="provide-access-to-key-vault-keys-certificates-and-secrets-with-an-azure-role-based-access-control"></a>Azure のロールベースのアクセス制御を使用して Key Vault のキー、証明書、シークレットへのアクセス権を付与する
 
@@ -28,6 +28,21 @@ Azure RBAC を使用すると、キー、シークレット、および証明書
 Azure RBAC モデルには、さまざまなスコープ レベル (管理グループ、サブスクリプション、リソース グループ、または個別のリソース) にアクセス許可を設定する機能があります。  また、Key Vault 用の Azure RBAC には、個々のキー、シークレット、および証明書に対して個別のアクセス許可を持たせる機能もあります
 
 詳細については、[Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) に関するページを参照してください。
+
+## <a name="best-practices-for-individual-keys-secrets-and-certificates"></a>個々のキー、シークレット、および証明書のベスト プラクティス
+
+環境 (開発、実稼働前、および実稼働) ごとにアプリケーションごとのコンテナーを使用することをお勧めします。
+
+個々のキー、シークレット、および証明書のアクセス許可は、次のように特定のシナリオにのみ使用するようにします。
+
+-   レイヤー間でアクセス制御を分離する必要があるマルチレイヤー アプリケーション
+
+-   複数のアプリケーション間での個々のシークレットの共有
+
+Azure Key Vault 管理ガイドラインの詳細については、以下を参照してください。
+
+- [Azure Key Vault のベスト プラクティス](best-practices.md)
+- [Azure Key Vault サービスの制限](service-limits.md)
 
 ## <a name="azure-built-in-roles-for-key-vault-data-plane-operations"></a>Key Vault データ プレーン操作のための Azure の組み込みロール
 

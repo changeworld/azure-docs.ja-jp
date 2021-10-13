@@ -11,12 +11,12 @@ ms.date: 05/11/2021
 ms.author: lajanuar
 ms.custom: cog-serv-seo-aug-2020
 keywords: ドキュメントの処理
-ms.openlocfilehash: d463a45064a9f6b342a7cb735372a3c5098539c4
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 43e7da4eea864bf0ac2767718ff8ed04ed58c54e
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123431750"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129715185"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
@@ -24,7 +24,7 @@ ms.locfileid: "123431750"
 <!-- markdownlint-disable MD034 -->
 # <a name="train-a-custom-model-using-the-sample-labeling-tool"></a>サンプル ラベル付けツールを使用してカスタム モデルをトレーニングする
 
-この記事では、Form Recognizer REST API とサンプル ラベル付きツールを使用して、手動でラベル付けされたデータを使ってカスタム ドキュメント処理モデルをトレーニングします。 Form Recognizer を使用した教師あり学習の詳細については、概要に関するページの「[ラベルを使用したトレーニング](overview.md#train-with-labels)」を参照してください。
+この記事では、Form Recognizer REST API とサンプル ラベル付きツールを使用して、手動でラベル付けされたデータを使ってカスタム ドキュメント処理モデルをトレーニングします。 
 
 > [!VIDEO https://channel9.msdn.com/Shows/Docs-Azure/Azure-Form-Recognizer/player]
 

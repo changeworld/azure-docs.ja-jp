@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 16479588b0e0ec64a17cb3ce0b7a46c49bd2244e
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: e077ac7c1cdae781b2a07cdcba0b89e001da87bb
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124769904"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129712205"
 ---
 # <a name="rewrite-http-request-and-response-headers-with-azure-application-gateway---azure-portal"></a>Azure Application Gateway で HTTP の要求および応答ヘッダーを書き換える - Azure portal
 
@@ -99,7 +99,7 @@ Azure アカウントで [Azure Portal](https://portal.azure.com/) にサイン�
 
    - **[演算子]** ボックスの一覧で、 **[等しい (=)]** を選択します。
 
-   - 正規表現パターンを入力します。 この例では、パターン `(https?)://.*azurewebsites.net(.*)$` を使用します。
+   - 正規表現パターンを入力します。 この例では、パターン `(https?):\/\/.*azurewebsites.net(.*)$` を使用します。
 
    - **[OK]** を選択します。
 

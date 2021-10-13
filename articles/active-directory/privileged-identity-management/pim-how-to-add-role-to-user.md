@@ -4,22 +4,23 @@ description: Azure AD Privileged Identity Management (PIM) で Azure AD ロー�
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: KarenH444
 editor: ''
 ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 09/01/2021
+ms.date: 10/07/2021
 ms.author: curtand
+ms.reviewer: shaunliu
 ms.collection: M365-identity-device-management
 ms.custom: subject-rbac-steps
-ms.openlocfilehash: 1b8338986c6120747018ec43e26baf68cf587aa8
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: d5dcfee6042bf0e423fa7b9c695d71efc93593ca
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128615303"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129670008"
 ---
 # <a name="assign-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management で Azure AD ロールを割り当てる
 

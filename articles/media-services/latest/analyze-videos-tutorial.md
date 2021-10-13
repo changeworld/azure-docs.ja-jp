@@ -8,12 +8,12 @@ ms.service: media-services
 ms.topic: tutorial
 ms.date: 07/26/2021
 ms.author: inhenkel
-ms.openlocfilehash: 8f857ff3c1a17e0f17d396b8d97d9d0e27b4fa18
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 1427e97ceb3cd592a105bc06174e2627e3bc53bd
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128646082"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129659015"
 ---
 # <a name="tutorial-analyze-videos-with-media-services-v3"></a>チュートリアル:Media Services v3 を使用してビデオを分析する
 
@@ -91,7 +91,7 @@ Media Services v3 では、Azure Storage API を使ってファイルをアッ�
 後で示す関数は、次の処理を実行します。
 
 * アセットを作成する。
-* 書き込み可能な [SAS URL](../../storage/common/storage-sas-overview.md) を資産の[ストレージ内のコンテナー](../../storage/blobs/storage-quickstart-blobs-dotnet.md#upload-blobs-to-a-container)に取得する。
+* 書き込み可能な [SAS URL](../../storage/common/storage-sas-overview.md) を資産の[ストレージ内のコンテナー](../../storage/blobs/storage-quickstart-blobs-dotnet.md#upload-a-blob-to-a-container)に取得する。
 
     資産の [ListContainerSas](/rest/api/media/assets/listcontainersas) 関数を使用して SAS URL を取得する場合、複数の SAS URL が返されることに注意してください。これは、ストレージ アカウント キーがストレージ アカウントごとに 2 つ存在するためです。 ストレージ アカウントにキーが 2 つあるのは、ストレージ アカウント キーのシームレスなローテーションを可能にするためです (一方のキーを使用しながらもう一方のキーを変更した後、新しいキーの使用を開始し、その後もう一方のキーをローテーションするなど)。 1 つ目の SAS URL はストレージ キー 1 を、2 つ目の SAS URL はストレージ キー 2 を表します。
 * SAS URL を使用してストレージ内のコンテナーにファイルをアップロードする。

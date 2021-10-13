@@ -83,7 +83,7 @@ Media Services v3 では、Azure Storage API を使ってファイルをアッ�
 後で示す関数は、次の処理を実行します。
 
 * **アセット** を作成する。
-* 書き込み可能な [SAS URL](../../storage/common/storage-sas-overview.md) を資産の[ストレージ内のコンテナー](../../storage/blobs/storage-quickstart-blobs-dotnet.md#upload-blobs-to-a-container)に取得する。
+* 書き込み可能な [SAS URL](../../storage/common/storage-sas-overview.md) を資産の[ストレージ内のコンテナー](../../storage/blobs/storage-quickstart-blobs-dotnet.md#upload-a-blob-to-a-container)に取得する。
 
     資産の [ListContainerSas](/rest/api/media/assets/listcontainersas) 関数を使用して SAS URL を取得する場合、複数の SAS URL が返されることに注意してください。これは、ストレージ アカウント キーがストレージ アカウントごとに 2 つ存在するためです。 ストレージ アカウントにキーが 2 つあるのは、ストレージ アカウント キーのシームレスなローテーションを可能にするためです (一方のキーを使用しながらもう一方のキーを変更した後、新しいキーの使用を開始し、その後もう一方のキーをローテーションするなど)。 1 つ目の SAS URL はストレージ キー 1 を、2 つ目の SAS URL はストレージ キー 2 を表します。
 * SAS URL を使用してストレージ内のコンテナーにファイルをアップロードする。

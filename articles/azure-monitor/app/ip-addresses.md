@@ -3,12 +3,12 @@ title: Azure Monitor で使用される IP アドレス
 description: Application Insights で必要なサーバー ファイアウォール例外
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: e6f0eb2de43f3ee6a9be61089a22d57f8cfe8116
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 7516cdc5fcb605415ef009e7b5f1d5da195ba1c9
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124815774"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129858369"
 ---
 # <a name="ip-addresses-used-by-azure-monitor"></a>Azure Monitor で使用される IP アドレス
 
@@ -196,7 +196,7 @@ East US
 ```
 
 ### <a name="discovery-api"></a>API を検出する
-サービス タグの現在の一覧を IP アドレス範囲の詳細と共[にプログラムで取得](../../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview)することも可能です。
+サービス タグの現在の一覧を IP アドレス範囲の詳細と共[にプログラムで取得](../../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api)することも可能です。
 
 ## <a name="application-insights--log-analytics-apis"></a>Application Insights および Log Analytics API
 

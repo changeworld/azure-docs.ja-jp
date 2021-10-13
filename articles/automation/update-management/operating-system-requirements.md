@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 07/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: d45ab7ba80a33658d1a3feaf024cb23ea65d5fab
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: a470a3c8d4ab9ac4f390f7b18133f65f44fed096
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122771801"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129711628"
 ---
 # <a name="operating-systems-supported-by-update-management"></a>Update Management でサポートされているオペレーティング システム
 

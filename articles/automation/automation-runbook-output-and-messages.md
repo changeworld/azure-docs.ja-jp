@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 11/03/2020
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0b41880bea25c1b833ab2a996a50edcf557f37b8
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: f2392484c8ee7c72daa0da7c3ff9632a981a52ec
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108161665"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129619692"
 ---
 # <a name="configure-runbook-output-and-message-streams"></a>Runbook の出力ストリームとメッセージ ストリームを構成する
 
@@ -30,7 +30,7 @@ ms.locfileid: "108161665"
 
 ## <a name="use-the-output-stream"></a>出力ストリームを使用する
 
-出力ストリームは、スクリプトまたはワークフローが正しく実行された場合に作成されるオブジェクトの出力で使用されます。 Azure Automation では、このストリームは主に、[現在の Runbook](automation-child-runbooks.md) を呼び出す親 Runbook が使用するオブジェクトで使用されます。 親が [Runbook をインラインで呼び出す](automation-child-runbooks.md#invoke-a-child-runbook-using-inline-execution)と、子は出力ストリームからのデータを親に返します。
+出力ストリームは、スクリプトまたはワークフローが正しく実行された場合に作成されるオブジェクトの出力で使用されます。 Azure Automation では、このストリームは主に、[現在の Runbook](automation-child-runbooks.md) を呼び出す親 Runbook が使用するオブジェクトで使用されます。 親が [Runbook をインラインで呼び出す](automation-child-runbooks.md#call-a-child-runbook-by-using-inline-execution)と、子は出力ストリームからのデータを親に返します。
 
 Runbook で出力ストリームを使用して一般情報がクライアントに伝達されるのは、それが別の Runbook から呼び出されない場合のみです。 ただし通常は、ベスト プラクティスとして、Runbook で[詳細ストリーム](#write-output-to-verbose-stream)を使用してユーザーに一般情報を伝えてください。
 

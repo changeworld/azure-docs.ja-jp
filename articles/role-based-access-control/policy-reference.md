@@ -1,18 +1,18 @@
 ---
 title: Azure RBAC 用の組み込みポリシー定義
 description: Azure RBAC 用の Azure Policy 組み込みポリシー定義を一覧表示します。 これらの組み込みポリシー定義は、Azure リソースを管理するための一般的な方法を示します。
-ms.date: 09/17/2021
+ms.date: 10/11/2021
 ms.topic: reference
 author: rolyon
 ms.author: rolyon
 ms.service: role-based-access-control
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 8675a4a1463a654174f66c511080f81db5864aeb
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: abec88f6d17b1e09182da2ac9ead96dc7b0a983e
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128567351"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129812246"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-rbac"></a>Azure RBAC 用の Azure Policy 組み込み定義
 

@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 00a3fa397bf88520fa4923b6fbe7495c0aa0b8a2
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 37535361222a1c2e476e2cde24304ee4cc3f218c
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106277404"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129657361"
 ---
 # <a name="signal-descriptive-audio-tracks"></a>説明オーディオ トラックの通知
 
@@ -45,7 +45,7 @@ Media Services v3 では、Azure Storage API を使ってファイルをアッ�
 後で示す関数は、次の処理を実行します。
 
 * **アセット** を作成する 
-* 書き込み可能な [SAS URL](../../storage/common/storage-sas-overview.md) をアセットの[ストレージ内のコンテナー](../../storage/blobs/storage-quickstart-blobs-dotnet.md#upload-blobs-to-a-container)に取得する
+* 書き込み可能な [SAS URL](../../storage/common/storage-sas-overview.md) をアセットの[ストレージ内のコンテナー](../../storage/blobs/storage-quickstart-blobs-dotnet.md#upload-a-blob-to-a-container)に取得する
 * SAS URL を使用してストレージ内のコンテナーにファイルをアップロードする
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateInputAsset)]

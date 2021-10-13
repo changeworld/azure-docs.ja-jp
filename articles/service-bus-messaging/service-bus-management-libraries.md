@@ -3,12 +3,12 @@ title: Azure Service Bus の名前空間とエンティティをプログラム�
 description: この記事では、Service Bus の名前空間とエンティティを動的に、またはプログラミングによってプロビジョニングする方法について説明します。
 ms.topic: article
 ms.date: 08/06/2021
-ms.openlocfilehash: b053ff5cce51fbcd0ce56e2bdbfaff39dddb6394
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 2962d5d8aebcf0a24535b7d9c1538dc69bd11e65
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122178921"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129709129"
 ---
 # <a name="dynamically-provision-service-bus-namespaces-and-entities"></a>Service Bus の名前空間とエンティティの動的なプロビジョニング 
 Azure Service Bus には、Service Bus の名前空間とエンティティを動的にプロビジョニングできるライブラリが用意されています。 これにより、複雑なデプロイとメッセージング シナリオが可能になり、プロビジョニングするエンティティをプログラムを使用して決定できます。
@@ -60,5 +60,5 @@ Fluent バージョンの Azure Resource Manager ベースのライブラリが�
 
 
 ## <a name="next-steps"></a>次のステップ
-- 最新の Service Bus ライブラリを使用してキューとの間でメッセージを送受信する: [.NET](./service-bus-dotnet-get-started-with-queues.md#send-messages)、[Java](./service-bus-java-how-to-use-queues.md)、[JavaScript](./service-bus-nodejs-how-to-use-queues.md)、[Python](./service-bus-python-how-to-use-queues.md)
+- 最新の Service Bus ライブラリを使用してキューとの間でメッセージを送受信する: [.NET](./service-bus-dotnet-get-started-with-queues.md#send-messages-to-the-queue)、[Java](./service-bus-java-how-to-use-queues.md)、[JavaScript](./service-bus-nodejs-how-to-use-queues.md)、[Python](./service-bus-python-how-to-use-queues.md)
 - 最新の Service Bus ライブラリを使用してトピックにメッセージを送信し、サブスクリプションからメッセージを受信する: [.NET](./service-bus-dotnet-how-to-use-topics-subscriptions.md)、[Java](./service-bus-java-how-to-use-topics-subscriptions.md)、[JavaScript](./service-bus-nodejs-how-to-use-topics-subscriptions.md)、[Python](./service-bus-python-how-to-use-topics-subscriptions.md)

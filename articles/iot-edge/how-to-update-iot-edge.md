@@ -8,12 +8,12 @@ ms.date: 06/15/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 798a46d2d77a3363a5540c3c490fd625fba3a9ff
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b1fdd85c2f954751a0ce7e2ec03dc87d4c685809
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121728834"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129660877"
 ---
 # <a name="update-iot-edge"></a>IoT Edge を更新する
 
@@ -245,7 +245,7 @@ IoT Edge サービスによって、ランタイム イメージの最新バー�
 * **libiothsm-std** パッケージは使用されなくなりました。 IoT Edge リリースの一部として提供されている標準パッケージを使用した場合は、構成を新しいバージョンに移行できます。 libiothsm-std の別の実装を使用していた場合は、デバイス ID 証明書、デバイス CA、信頼バンドルなどのユーザー指定の証明書を再構成する必要があります。
 * 新しい ID サービス **aziot-identity-service** は、1.2 リリースの一部として導入されました。 このサービスにより、IoT Edge と、[IoT Hub 用デバイスの更新](../iot-hub-device-update/understand-device-update.md)などの IoT Hub と通信する必要があるその他のデバイス コンポーネントの ID のプロビジョニングと管理が処理されます。
 * 既定の構成ファイルは、名前と場所が新しくなっています。 以前は `/etc/iotedge/config.yaml` でしたが、デバイス構成情報は既定で `/etc/aziot/config.toml` 内にあることが想定されています。 `iotedge config import` コマンドを使用すると、構成情報を以前の場所と構文から新しいものへと移行できます。
-  * Import コマンドでは、デバイスのトラステッド プラットフォーム モジュール (TPM) に対するアクセス規則を検出または変更することはできません。 デバイスで TPM 構成証明を使用している場合は、/etc/udev/rules.d/tpmaccess.rules ファイルを手動で更新して、aziottpm サービスにアクセスできるようにする必要があります。 詳細については、「[IoT Edge に TPM へのアクセス権を付与する](how-to-auto-provision-simulated-device-linux.md?view=iotedge-2020-11&preserve-view=true#give-iot-edge-access-to-the-tpm)」を参照してください。
+  * Import コマンドでは、デバイスのトラステッド プラットフォーム モジュール (TPM) に対するアクセス規則を検出または変更することはできません。 デバイスで TPM 構成証明を使用している場合は、/etc/udev/rules.d/tpmaccess.rules ファイルを手動で更新して、aziottpm サービスにアクセスできるようにする必要があります。 詳細については、「[IoT Edge に TPM へのアクセス権を付与する](how-to-provision-devices-at-scale-linux-tpm.md?view=iotedge-2020-11&preserve-view=true#give-iot-edge-access-to-the-tpm)」を参照してください。
 * バージョン 1.2 のワークロード API は、暗号化されたシークレットを新しい形式で保存します。 以前のバージョンからバージョン 1.2 にアップグレードすると、既存のマスター暗号化キーがインポートされます。 ワークロード API は、インポートした暗号化キーを使用して、以前の形式で保存されたシークレットを読み取ることができます。 ただし、ワークロード API では、暗号化されたシークレットを以前の形式で書き込むことはできません。 モジュールによって再暗号化されると、シークレットは新しい形式で保存されます。 バージョン 1.2 で暗号化されたシークレットは、バージョン 1.1 の同じモジュールでは読み取ることができません。 暗号化されたデータをホストによってマウントされたフォルダーまたはボリュームに保持する場合は、必要に応じてダウングレードする機能を保持するために、アップグレードする *前に* 必ずデータのバックアップ コピーを作成してください。
 
 更新プロセスを自動化する前に、テスト マシンで機能することを確認してください。

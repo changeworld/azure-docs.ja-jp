@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/11/2020
-ms.openlocfilehash: 617624fe3ae3ea5c0dc7bb3f34145f0aadf4ac4b
-ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+ms.openlocfilehash: 65e2e90f82794fa36c7e33a9eb1859e260034f71
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113219215"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129857522"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>HDInsight の管理 IP アドレス
 
@@ -23,7 +23,7 @@ ms.locfileid: "113219215"
 
 ネットワーク セキュリティ グループ (NSG) またはユーザー定義ルート (UDR) を使用して HDInsight クラスターへの受信トラフィックを制御する場合は、クラスターが Azure の重要な正常性サービスと管理サービスと通信できるようにする必要があります。  これらのサービスで使用される IP アドレスは、一部がリージョン固有であり、一部がすべての Azure リージョンに適用されます。 カスタム DNS を使用していない場合は、必要に応じて Azure DNS サービスからのトラフィックも許可します。
 
-ここに記載されていないリージョンの IP アドレスが必要な場合は、 [Service Tag Discovery API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) を使用して、お客様のリージョンの IP アドレスを見つけることができます。 API を使用できない場合、[サービス タグの JSON ファイル](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)をダウンロードして、目的のリージョンを検索することもできます。
+ここに記載されていないリージョンの IP アドレスが必要な場合は、 [Service Tag Discovery API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api) を使用して、お客様のリージョンの IP アドレスを見つけることができます。 API を使用できない場合、[サービス タグの JSON ファイル](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)をダウンロードして、目的のリージョンを検索することもできます。
 
 HDInsight では、クラスターの作成とスケーリングに関するこれらの規則の検証を行い、さらにエラーが発生しないようにします。 検証が成功しなかった場合、作成とスケーリングは失敗します。
 
@@ -58,7 +58,7 @@ Azure で提供される DNS サービスを使用している場合は、TCP �
 | オーストラリア | オーストラリア東部 | 104.210.84.115<br>13.75.152.195 | \*:443 | 受信 |
 | &nbsp; | オーストラリア南東部 | 13.77.2.56<br>13.77.2.94 | \*:443 | 受信 |
 | ブラジル | ブラジル南部 | 191.235.84.104<br>191.235.87.113 | \*:443 | 受信 |
-| Canada | カナダ東部 | 52.229.127.96<br>52.229.123.172 | \*:443 | 受信 |
+| カナダ | カナダ東部 | 52.229.127.96<br>52.229.123.172 | \*:443 | 受信 |
 | &nbsp; | カナダ中部 | 52.228.37.66<br>52.228.45.222 |\*:443 | 受信 |
 | 中国 | 中国北部 | 42.159.96.170<br>139.217.2.219<br>42.159.198.178<br>42.159.234.157 | \*:443 | 受信 |
 | &nbsp; | 中国東部 | 42.159.198.178<br>42.159.234.157<br>42.159.96.170<br>139.217.2.219 | \*:443 | 受信 |

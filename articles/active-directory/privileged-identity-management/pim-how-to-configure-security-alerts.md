@@ -4,7 +4,7 @@ description: Azure Active Directory で Azure AD ロール Privileged Identity M
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: daveba
+manager: KarenH444
 editor: ''
 ms.service: active-directory
 ms.topic: how-to
@@ -12,14 +12,15 @@ ms.workload: identity
 ms.subservice: pim
 ms.date: 06/30/2021
 ms.author: curtand
+ms.reviewer: shaunliu
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 761995f33d5688e5864640a0e6e2f864f5aa44a3
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 87a31a810b82824f1d25d79e581e6dbd638bf5bb
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124766048"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129668867"
 ---
 # <a name="configure-security-alerts-for-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management で Azure AD ロールに対するセキュリティ アラートを構成する
 

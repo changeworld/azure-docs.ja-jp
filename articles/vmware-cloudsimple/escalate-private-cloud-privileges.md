@@ -2,19 +2,19 @@
 title: プライベートクラウドの特権を昇格する
 titleSuffix: Azure VMware Solution by CloudSimple
 description: vCenter の管理機能のためにプライベート クラウドで特権をエスカレートする方法について説明します
-author: shortpatti
-ms.author: v-hborys
+author: suzizuber
+ms.author: v-szuber
 ms.date: 06/05/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c72c13aa63908311d7a54015ef61165e7dde5917
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: f12b6face019fcbcdc0e47710ead71df633dc0b3
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108182392"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129614709"
 ---
 # <a name="escalate-private-cloud-vcenter-privileges-from-the-cloudsimple-portal"></a>CloudSimple ポータルからのプライベート クラウド vCenter 特権のエスカレート
 

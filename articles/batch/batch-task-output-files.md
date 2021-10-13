@@ -4,12 +4,12 @@ description: Batch サービス API を使用して Batch タスクおよびジ�
 ms.topic: how-to
 ms.date: 08/18/2021
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 6669d6d4ae3a1aba0be6300869d17c0791d3734d
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: 0a089637c68e218799e36cda0bcfa2dc7b1600a1
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122445109"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129658521"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>Batch サービス API を使用してタスクのデータを Azure Storage に保持する
 
@@ -166,7 +166,7 @@ https://myaccount.blob.core.windows.net/mycontainer/task1/output.txt
 https://myaccount.blob.core.windows.net/mycontainer/task2/output.txt
 ```
 
-Azure Storage 内の仮想ディレクトリの詳細については、「[コンテナー内の BLOB を一覧表示する](../storage/blobs/storage-quickstart-blobs-dotnet.md#list-the-blobs-in-a-container)」を参照してください。
+Azure Storage 内の仮想ディレクトリの詳細については、「[コンテナー内の BLOB を一覧表示する](../storage/blobs/storage-quickstart-blobs-dotnet.md#list-blobs-in-a-container)」を参照してください。
 
 ## <a name="diagnose-file-upload-errors"></a>ファイルのアップロード エラーを診断する
 

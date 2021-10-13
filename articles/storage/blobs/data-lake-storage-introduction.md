@@ -8,12 +8,12 @@ ms.date: 02/25/2020
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 34484c501a95379194ad2147fbcb553bf3f06980
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 34331436c0e683aefa8ea7cddd4396e4a21546ea
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129277691"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129619333"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 の概要
 
@@ -45,7 +45,7 @@ Data Lake Storage Gen2 は、低コストの [Azure Blob Storage](storage-blobs-
 
 - **コスト効率:** Data Lake Storage Gen2 は、低コストのストレージ容量とトランザクションを備えています。 [Azure Blob Storage ライフサイクル](./lifecycle-management-overview.md)などの機能により、データがライフサイクルを通じて移行する際にコストが最適化されます。
 
-- **最適化されたドライバー:** ABFS ドライバーは、ビッグ データ分析のために[特別に最適化](data-lake-storage-abfs-driver.md)されています。 該当する REST API は、`dfs.core.windows.net` エンドポイントを介して表示されます。
+- **最適化されたドライバー:** ABFS ドライバーは、ビッグ データ分析のために [特別に最適化](data-lake-storage-abfs-driver.md)されています。 該当する REST API は、`dfs.core.windows.net` エンドポイントを介して表示されます。
 
 ### <a name="scalability"></a>スケーラビリティ
 
@@ -84,5 +84,6 @@ Data Lake Storage Gen2 では、いくつかの Azure サービスがサポー�
 
 ## <a name="see-also"></a>関連項目
 
+- [Azure Data Lake Storage Gen2 の使用に関するベスト プラクティス](data-lake-storage-best-practices.md)
 - [Azure Data Lake Storage Gen2 に関する既知の問題](data-lake-storage-known-issues.md)
 - [Azure Data Lake Storage のマルチプロトコル アクセス](data-lake-storage-multi-protocol-access.md)

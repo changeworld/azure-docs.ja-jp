@@ -4,12 +4,12 @@ description: Azure VM および Azure 仮想マシン スケール セットに�
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 2fc5057826eda1856b5b3671b6a995e9e80468f5
-ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
+ms.openlocfilehash: d3f1d1a8a2e3262ba91339c7335fadda92d90cac
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114720654"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129856108"
 ---
 # <a name="deploy-the-azure-monitor-application-insights-agent-on-azure-virtual-machines-and-azure-virtual-machine-scale-sets"></a>Azure 仮想マシンと Azure 仮想マシン スケール セットに Azure Monitor Application Insights エージェントをデプロイする
 
@@ -57,7 +57,7 @@ Azure 仮想マシンと Azure 仮想マシン スケール セットでホス�
 
 #### <a name="java"></a>Java 
 
-Java アプリケーションに対して追加のカスタム テレメトリが必要な場合は、[使用可能なもの](./java-in-process-agent.md#send-custom-telemetry-from-your-application)の確認、[カスタム ディメンション](./java-standalone-config.md#custom-dimensions)の追加、または[テレメトリ プロセッサ](./java-standalone-telemetry-processors.md)の使用のいずれかを行います。 
+Java アプリケーションに対して追加のカスタム テレメトリが必要な場合は、[使用可能なもの](./java-in-process-agent.md#custom-telemetry)の確認、[カスタム ディメンション](./java-standalone-config.md#custom-dimensions)の追加、または[テレメトリ プロセッサ](./java-standalone-telemetry-processors.md)の使用のいずれかを行います。 
 
 #### <a name="nodejs"></a>Node.js
 
