@@ -19,7 +19,7 @@ ms.locfileid: "101736051"
 
 パートナー ソリューションは、Marketplace から入手できます。
 
-| パートナー ソリューション | [説明] |
+| パートナー ソリューション | 説明 |
 | :--- | :--- |
 | [Apache Kafka for Confluent Cloud](./apache-kafka-confluent-cloud/overview.md) | Apache Kafka が提供するフル マネージドのイベント ストリーミング プラットフォーム |
 | [Datadog](./datadog/overview.md) | サーバー、クラウド、メトリック、アプリを 1 か所で監視します。 |
