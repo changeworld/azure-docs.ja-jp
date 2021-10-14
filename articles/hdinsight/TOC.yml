@@ -695,6 +695,8 @@
           items:
             - name: 障害ドメインの不足
               href: ./kafka/kafka-troubleshoot-insufficient-domains.md
+            - name: 完全なデータ ディスク
+              href: ./kafka/kafka-troubleshoot-full-disk.md
 - name: Apache HBase
   items:
     - name: 概要
