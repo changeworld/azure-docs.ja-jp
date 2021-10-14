@@ -4,13 +4,13 @@ description: Azure Monitor のメトリック警告に関する一般的な問�
 author: harelbr
 ms.author: harelbr
 ms.topic: troubleshooting
-ms.date: 08/15/2021
-ms.openlocfilehash: 5aa39240b87f86dfaa1fbd44de8b6889939ec64f
-ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
+ms.date: 09/30/2021
+ms.openlocfilehash: df925bd149c8516f4c6af8b49a65969737aaffa2
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122195066"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129352393"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Azure Monitor のメトリック警告に関する問題のトラブルシューティング 
 
@@ -140,6 +140,8 @@ Azure リソースを削除しても、関連付けられているメトリッ�
         ]
     }
 ```
+> [!NOTE] 
+> 3 日以上出力されていない既存のカスタム メトリックで警告ルールを定義するとき、*skipMetricValidation* パラメーターも使用する必要があります。
 
 ## <a name="export-the-azure-resource-manager-template-of-a-metric-alert-rule-via-the-azure-portal"></a>Azure portal を使用してメトリック アラート ルールの Azure Resource Manager テンプレートをエクスポートする
 

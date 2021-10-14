@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 09/20/2021
+ms.date: 09/28/2021
 ms.author: tisande
-ms.openlocfilehash: dea28832bb607da722653c398cc234d54d2ffcc9
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 251f534669333c17a4bb408a23b33f73c79c9e9f
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128618630"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129229709"
 ---
 # <a name="how-to-configure-the-azure-cosmos-db-integrated-cache-preview"></a>Azure Cosmos DB 統合キャッシュを構成する方法 (プレビュー)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -66,7 +66,7 @@ Java SDK を使用している場合は、`CosmosClientBuilder` 内で [contentR
 
 ## <a name="adjust-request-consistency"></a>要求の整合性を調整する
 
-要求の整合性を [eventual]\(最終的\) に調整する必要があります。 これを行わないと、要求は常に統合キャッシュをバイパスします。 すべての読み取り操作の最終的な整合性を構成する最も簡単な方法は、[アカウント レベルでこれを設定する方法](consistency-levels.md#configure-the-default-consistency-level)です。 また、[要求レベル](how-to-manage-consistency.md#override-the-default-consistency-level)で整合性を構成することもできます。これは、読み取りのサブセットでのみ統合キャッシュを使用する場合に推奨されます。
+要求の整合性を [セッション] または [eventual]\(最終的\) に調整する必要があります。 これを行わないと、要求は常に統合キャッシュをバイパスします。 すべての読み取り操作の固有の整合性を構成する最も簡単な方法は、[アカウント レベルでこれを設定する方法](consistency-levels.md#configure-the-default-consistency-level)です。 また、[要求レベル](how-to-manage-consistency.md#override-the-default-consistency-level)で整合性を構成することもできます。これは、読み取りのサブセットでのみ統合キャッシュを使用する場合に推奨されます。
 
 > [!NOTE]
 > Python SDK を使用する場合、各要求の整合性レベルを明示的に設定する **必要があります**。 既定のアカウント レベルの設定は、自動的には適用されません。

@@ -4,12 +4,12 @@ description: この記事では、Azure portal を使用した Azure Backup ワ�
 ms.topic: conceptual
 ms.date: 08/06/2021
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: ca99be06934c9eca8a762b4990e89d8818ac3f5c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: f3d353f7d42baf1f9cc968cb37baac1077a35085
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128627237"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129231674"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Azure Backup ワークロードの監視
 
@@ -59,6 +59,8 @@ System Center Data Protection Manager (SC-DPM)、Microsoft Azure Backup Server (
 - バックアップ/復元エラー
 - バックアップの成功 (Microsoft Azure Recovery Services (MARS) エージェントに対する警告を含む)
 - 保護の停止 (データの保持を含む)/保護の停止 (データの削除を含む)
+- コンテナーの論理削除機能が無効
+- データベース ワークロードに対してサポートされていないバックアップの種類
 
 ### <a name="alerts-from-the-following-azure-backup-solutions-are-shown-here"></a>ここには、次の Azure Backup ソリューションからのアラートが表示されます。
 
@@ -72,7 +74,7 @@ System Center Data Protection Manager (SC-DPM)、Microsoft Azure Backup Server (
 
 ### <a name="consolidated-alerts"></a>統合されたアラート
 
-SQL や SAP HANA などの Azure ワークロード バックアップ ソリューションでは、ログ バックアップを非常に頻繁に (ポリシーに従って 15 分ごとに) 生成できます。 そのため、ログ バックアップ エラーも頻繁に発生する可能性があります (最大 15 分間隔)。 このシナリオで、エラーが発生するたびにアラートが発生した場合、エンド ユーザーの気が滅入ってしまいます。 そのため、最初の発生時にはアラートが送信され、それ以降のエラーが同じ根本原因である場合、それ以降のアラートは生成されません。 最初のアラートは、エラー数で更新されます。 しかし、アラートがユーザーによって非アクティブにされている場合は、次の発生時に別の電子メールがトリガーされ、これがその発生に対する最初のアラートとして扱われます。 このようにして Azure Backup は、SQL と SAP HANA のバックアップに対してアラートの統合を実行します。
+SQL や SAP HANA などの Azure ワークロード バックアップ ソリューションでは、ログ バックアップを非常に頻繁に (ポリシーに従って 15 分ごとに) 生成できます。 そのため、ログ バックアップ エラーも頻繁に発生する可能性があります (最大 15 分間隔)。 このシナリオで、エラーが発生するたびにアラートが発生した場合、エンド ユーザーの気が滅入ってしまいます。 そのため、最初の発生時にはアラートが送信され、それ以降のエラーが同じ根本原因である場合、それ以降のアラートは生成されません。 最初のアラートは、エラー数で更新されます。 しかし、アラートがユーザーによって非アクティブにされている場合は、次の発生時に別の電子メールがトリガーされ、これがその発生に対する最初のアラートとして扱われます。 このようにして Azure Backup は、SQL と SAP HANA のバックアップに対してアラートの統合を実行します。 オンデマンド バックアップ ジョブは統合されません。
 
 ### <a name="exceptions-when-an-alert-is-not-raised"></a>アラートが生成されない例外
 

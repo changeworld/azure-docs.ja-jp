@@ -10,16 +10,16 @@ ms.date: 08/31/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: ca0ec185721b0e35c15dfe99e361ff024cf01a78
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: c923af2d4260afba8ed8347c6723119278ab1c62
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128584215"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129278635"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>不変ストレージを使用してビジネスに不可欠な BLOB データを保存する
 
-Azure Blob Storage の不変ストレージを使用すると、ユーザーはビジネスに不可欠なデータを WORM (Write Once Read Many) 状態で保存できます。 WORM の状態では、ユーザーが指定した期間、データを変更および削除できません。 BLOB データに不変ポリシーを構成することにより、上書きや削除からデータを保護することができます。
+Azure Blob Storage の不変ストレージを使用すると、ユーザーはビジネスに不可欠なデータを WORM (Write Once, Read Many) 状態で保存できます。 WORM の状態では、ユーザーが指定した期間、データを変更および削除できません。 BLOB データに不変ポリシーを構成することにより、上書きや削除からデータを保護することができます。
 
 Azure Blob Storage の不変ストレージでは、次の 2 種類の不変ポリシーがサポートされています。
 
@@ -73,7 +73,7 @@ Cohasset レポートは [Microsoft Service Trust Center](https://aka.ms/AzureWo
 - フランス南部
 
 > [!IMPORTANT]
-> バージョンレベルの不変ポリシーは、現在、**プレビュー** の段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用される法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+> バージョン レベルの不変ポリシーは、現在、**プレビュー** の段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用される法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
 ## <a name="summary-of-immutability-scenarios"></a>不変性のシナリオの概要
 
@@ -88,7 +88,7 @@ Cohasset レポートは [Microsoft Service Trust Center](https://aka.ms/AzureWo
 | BLOB のバージョンが *アクティブ* なアイテム保持ポリシーによって保護されている、または訴訟ホールドが有効である | [Delete Blob](/rest/api/storageservices/delete-blob)、[Set Blob Metadata](/rest/api/storageservices/set-blob-metadata)、[Put Page](/rest/api/storageservices/put-page)、[Append Block](/rest/api/storageservices/append-block)<sup>1</sup> | BLOB のバージョンを削除することはできません。 ユーザー メタデータを書き込めません。 <br /><br /> [Put Blob](/rest/api/storageservices/put-blob)、[Put Block List](/rest/api/storageservices/put-block-list)、[Copy Blob](/rest/api/storageservices/copy-blob) で、BLOB を上書きすると、新しいバージョンが作成されます。<sup>2</sup> | ポリシーがロックまたはロック解除されているかどうかに関係なく、コンテナーに少なくとも 1 つの BLOB が存在する場合、コンテナーの削除は失敗します。 | バージョン レベルの不変ストレージが有効になっているコンテナーが少なくとも 1 つある場合、ストレージ アカウントの削除は失敗します。 |
 | BLOB のバージョンが *期限切れ* のアイテム保持ポリシーによって保護されている、または訴訟ホールドが有効である | [Set Blob Metadata](/rest/api/storageservices/set-blob-metadata)、[Put Page](/rest/api/storageservices/put-page)、[Append Block](/rest/api/storageservices/append-block)<sup>1</sup> | BLOB のバージョンを削除することができます。 ユーザー メタデータを書き込めません。 <br /><br /> [Put Blob](/rest/api/storageservices/put-blob)、[Put Block List](/rest/api/storageservices/put-block-list)、[Copy Blob](/rest/api/storageservices/copy-blob) で、BLOB を上書きすると、新しいバージョンが作成されます<sup>2</sup>。 | ポリシーがロックまたはロック解除されているかどうかに関係なく、コンテナーに少なくとも 1 つの BLOB が存在する場合、コンテナーの削除は失敗します。 | 時間ベースのアイテム保持ポリシーを持つ BLOB バージョンを含むコンテナーが少なくとも 1 つある場合、ストレージ アカウントの削除は失敗します。<br /><br />ロック解除されたポリシーでは、削除保護は提供されません。 |
 
-<sup>1</sup> [Append Block](/rest/api/storageservices/append-block) 操作は、**allowProtectedAppendWrites** プロパティが有効になっている時間ベースのアイテム保持ポリシーに対してのみ許可されます。 詳細については、[保護された追加 BLOB の書き込みの許可](immutable-time-based-retention-policy-overview.md#allow-protected-append-blobs-writes)に関するページを参照してください。
+<sup>1</sup> [Append Block](/rest/api/storageservices/append-block) 操作は、**allowProtectedAppendWrites** プロパティが有効になっている時間ベースのアイテム保持ポリシーに対してのみ許可されます。 詳細については、「[保護された追加 BLOB の書き込みを許可する](immutable-time-based-retention-policy-overview.md#allow-protected-append-blobs-writes)」を参照してください。
 <sup>2</sup> BLOB バージョンは常にコンテンツを変更できません。 ストレージ アカウントでバージョン管理が有効になっている場合、ブロック BLOB に対する書き込み操作で新しいバージョンが作成されます。ただし、[Put Block](/rest/api/storageservices/put-block) 操作は除きます。
 
 ### <a name="scenarios-with-container-level-scope"></a>コンテナー レベルのスコープを使用するシナリオ
@@ -102,7 +102,7 @@ Cohasset レポートは [Microsoft Service Trust Center](https://aka.ms/AzureWo
 
 <sup>1</sup> Azure Storage により、[Put Blob](/rest/api/storageservices/put-blob) 操作で新しい BLOB を作成することが許可されます。 不変コンテナーの既存の BLOB パスでの以降の上書き操作は、許可されません。
 
-<sup>2</sup> [Append Block](/rest/api/storageservices/append-block) 操作は、**allowProtectedAppendWrites** プロパティが有効になっている時間ベースのアイテム保持ポリシーに対してのみ許可されます。 詳細については、[保護された追加 BLOB の書き込みの許可](immutable-time-based-retention-policy-overview.md#allow-protected-append-blobs-writes)に関するページを参照してください。
+<sup>2</sup> [Append Block](/rest/api/storageservices/append-block) 操作は、**allowProtectedAppendWrites** プロパティが有効になっている時間ベースのアイテム保持ポリシーに対してのみ許可されます。 詳細については、「[保護された追加 BLOB の書き込みを許可する](immutable-time-based-retention-policy-overview.md#allow-protected-append-blobs-writes)」を参照してください。
 
 > [!NOTE]
 > 一部のワークロード ([SQL Backup to URL](/sql/relational-databases/backup-restore/sql-server-backup-to-url) など) では、BLOB が作成され、それに追加されます。 コンテナーにアクティブな時間ベースのアイテム保持ポリシーまたは訴訟ホールドがある場合は、このパターンに失敗します。
@@ -122,7 +122,7 @@ Cohasset レポートは [Microsoft Service Trust Center](https://aka.ms/AzureWo
 
 ### <a name="access-tiers"></a>アクセス層
 
-すべての BLOB アクセス層は、不変ストレージをサポートしています。 BLOB のアクセス層を変更するには、Set Blob Tier 操作を使用します。 詳細については、「[Azure Blob Storage のアクセス層 - ホット、クール、およびアーカイブ](storage-blob-storage-tiers.md)」を参照してください。
+すべての BLOB アクセス層は、不変ストレージをサポートしています。 BLOB のアクセス層を変更するには、Set Blob Tier 操作を使用します。 詳細については、[BLOB データのホット、クール、アーカイブ アクセス層](access-tiers-overview.md)に関するページを参照してください。
 
 ### <a name="redundancy-configurations"></a>冗長構成
 

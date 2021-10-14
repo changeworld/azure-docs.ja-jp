@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a48a9f4ded6386b4b5a4ea2d02d796b8e5ed4f7
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: a1a6ff8a64ac82b27df6e49ef7f500af3fd65316
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129213916"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129352718"
 ---
 # <a name="how-does-self-service-password-reset-writeback-work-in-azure-active-directory"></a>Azure Active Directory でのセルフサービス パスワード リセットによる書き戻しのしくみ
 
@@ -51,7 +51,7 @@ SSPR 書き戻しの使用を開始するには、次のチュートリアルを
 
 ## <a name="how-password-writeback-works"></a>パスワード ライトバックのしくみ
 
-フェデレーション ユーザーまたはパスワード ハッシュ同期されたユーザーがクラウドで自分のパスワードをリセットまたは変更しようとした場合は、次のアクションが実行されます。
+パスワード ハッシュが同期されているユーザー、パススルー認証が構成されているユーザー、またはフェデレーション ユーザーがクラウドでパスワードのリセットまたは変更を試みると、次の処理が行われます。
 
 1. ユーザーのパスワードの種類のチェックが実行されます。 パスワードがオンプレミスで管理されている場合:
    * ライトバック サービスが稼働しているかどうかのチェックが実行されます。 稼働している場合、ユーザーは続行できます。

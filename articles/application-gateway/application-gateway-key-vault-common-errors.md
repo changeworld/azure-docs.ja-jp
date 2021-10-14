@@ -2,18 +2,17 @@
 title: Application Gateway の一般的なキー コンテナー エラー
 titleSuffix: Azure Application Gateway
 description: この記事では、キー コンテナー関連の問題を識別し、Application Gateway のスムーズな操作のためにユーザーがこれらの問題を解決できるように支援します。
-services: application-gateway
 author: jaesoni
 ms.service: application-gateway
 ms.topic: reference
 ms.date: 07/12/2021
 ms.author: jaysoni
-ms.openlocfilehash: 4f873e6fb751f3b368d86413c201b70634d9c7ce
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: cfcacf84b5a35862c3ef1423ed58ff4d5d7f3142
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128644089"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129272322"
 ---
 # <a name="common-key-vault-errors-in-azure-application-gateway"></a>Azure Application Gateway の一般的なキー コンテナー エラー
 
@@ -24,7 +23,7 @@ ms.locfileid: "128644089"
 
 ## <a name="list-of-error-codes-and-their-details"></a>エラー コードとその詳細の一覧
 
-以降のセクションには、発生する可能性のあるさまざまなエラーが含まれています。 これらの詳細は Azure Advisor で確認できるため、このトラブルシューティングに関する記事はこれらの問題を解決するために使用してください。 詳細については、「[Azure portal を使用して新しい推奨事項に合わせて Azure Advisor アラートを作成する](https://docs.microsoft.com/azure/advisor/advisor-alerts-portal)」を参照してください。
+以降のセクションには、発生する可能性のあるさまざまなエラーが含まれています。 これらの詳細は Azure Advisor で確認できるため、このトラブルシューティングに関する記事はこれらの問題を解決するために使用してください。 詳細については、「[Azure portal を使用して新しい推奨事項に合わせて Azure Advisor アラートを作成する](../advisor/advisor-alerts-portal.md)」を参照してください。
 
 > [!NOTE]
 > Azure Application Gateway では、キー コンテナーの診断に関するログを 4 時間ごとに生成します。 構成を修正した後も診断で引き続きエラーが表示される場合は、ログが更新されるまで待つことが必要になる可能性があります。
@@ -36,7 +35,7 @@ ms.locfileid: "128644089"
 
 **解決方法:** ユーザー割り当てマネージド ID にシークレットに対するこのアクセス許可を付与するように Key Vault のアクセス ポリシーを構成します。 
 1. Azure portal で、リンクされたキー コンテナーに移動します。
-1. **[アクセス ポリシー]** ペインを開きます。
+1. **[アクセス ポリシー]** ウィンドウを開きます。
 1. **[アクセス許可モデル]** で、 **[コンテナー アクセス ポリシー]** を選択します。
 1. **[シークレットの管理操作]** で、 **[取得]** アクセス許可を選択します。
 1. **[保存]** を選択します。
@@ -120,5 +119,5 @@ ms.locfileid: "128644089"
 
 Application Gateway を引き続き使用する場合は、次のトラブルシューティングに関する記事が役立つことがあります。
 
-- [Azure Application Gateway の Resource Health の概要](https://docs.microsoft.com/azure/application-gateway/resource-health-overview)
-- [Azure Application Gateway のセッション アフィニティに関する問題をトラブルシューティングする](https://docs.microsoft.com/azure/application-gateway/how-to-troubleshoot-application-gateway-session-affinity-issues)
+- [Azure Application Gateway の Resource Health の概要](resource-health-overview.md)
+- [Azure Application Gateway のセッション アフィニティに関する問題をトラブルシューティングする](how-to-troubleshoot-application-gateway-session-affinity-issues.md)

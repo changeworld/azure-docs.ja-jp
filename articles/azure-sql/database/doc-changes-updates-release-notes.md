@@ -10,13 +10,13 @@ ms.subservice: service-overview
 ms.custom: sqldbrb=2, references_regions
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 06/22/2021
-ms.openlocfilehash: 256f8f6f792f9bf373af4be9b429a9485b17b7a8
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/24/2021
+ms.openlocfilehash: c73546c23a619f1d38caf10383097b4ded638581
+ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121730495"
+ms.lasthandoff: 09/26/2021
+ms.locfileid: "129057286"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Azure SQL Database と SQL Managed Instance の新機能
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -41,14 +41,14 @@ Azure SQL Database と Azure SQL Managed Instance のドキュメントは別々
 |**Azure SQL Managed Instance** | Azure SQL Database *マネージド インスタンス*| Azure SQL Managed Instance は、Azure SQL Database 内のデプロイ オプションではなく、Azure SQL ファミリ内の独自の製品です。 | 
 |**Azure SQL Database**|Azure SQL Database *単一データベース*| 明示的に指定しない限り、"Azure SQL Database" という製品名には、単一データベースと、エラスティック プールにデプロイされたデータベースの両方が含まれます。 |
 |**Azure SQL Database**|Azure SQL Database *エラスティック プール*| 明示的に指定しない限り、"Azure SQL Database" という製品名には、単一データベースと、エラスティック プールにデプロイされたデータベースの両方が含まれます。  |
-|**Azure SQL Database** |Azure SQL Database | この用語は同じままですが、単一データベースとエラスティック プールのデプロイにのみ適用され、マネージド インスタンスは含まれません。 |
+|**Azure SQL Database** |Azure SQL データベース | この用語は同じままですが、単一データベースとエラスティック プールのデプロイにのみ適用され、マネージド インスタンスは含まれません。 |
 | **Azure SQL**| 該当なし | これは、Azure で使用可能な SQL Server データベース エンジン製品のファミリを指します。Azure SQL Database、Azure SQL Managed Instance、および Azure VM 上の SQL Server。 | 
 
 ## <a name="features-in-public-preview"></a>パブリック プレビュー段階の機能
 
 ### <a name="azure-sql-database"></a>[Azure SQL Database](#tab/single-database)
 
-| 機能 | 詳細 |
+| 特徴量 | 詳細 |
 | ---| --- |
 | エラスティック データベース ジョブ | 詳しくは、「[エラスティック ジョブの作成、構成、および管理](elastic-jobs-overview.md)」をご覧ください。 |
 | エラスティック クエリ | 詳しくは、[エラスティック クエリの概要](elastic-query-overview.md)に関する記事をご覧ください。 |
@@ -60,7 +60,7 @@ Azure SQL Database と Azure SQL Managed Instance のドキュメントは別々
 
 ### <a name="azure-sql-managed-instance"></a>[Azure SQL Managed Instance](#tab/managed-instance)
 
-| 機能 | 詳細 |
+| 特徴量 | 詳細 |
 | ---| --- |
 | [SQL Managed Instance General Purpose の 16 TB サポート](https://techcommunity.microsoft.com/t5/azure-sql/increased-storage-limit-to-16-tb-for-sql-managed-instance/ba-p/2421443) | SQL Managed Instance General Purpose で最大 16 TB の領域の割り当てをサポート |
 | [Azure SQL の Azure Active Directory 限定認証](https://techcommunity.microsoft.com/t5/azure-sql/azure-active-directory-only-authentication-for-azure-sql/ba-p/2417673) | Azure SQL Managed Instance での Azure Active Directory 限定認証のパブリック プレビュー。 |
@@ -134,6 +134,7 @@ Azure SQL Database と Azure SQL Managed Instance のドキュメントは別々
 
 |問題  |検出した日  |Status  |解決した日  |
 |---------|---------|---------|---------|
+|[サービス プリンシパルの再作成を提案する、Azure portal の誤解を招くエラー メッセージ](#misleading-error-message-on-azure-portal-suggesting-recreation-of-the-service-principal)|2021 年 9 月|||
 |[接続の種類の変更が、フェールオーバー グループ エンドポイント経由の接続に影響しない](#changing-the-connection-type-does-not-affect-connections-through-the-failover-group-endpoint)|2021 年 1 月|回避策あり||
 |[@query パラメーターの使用時、プロシージャ sp_send_dbmail が一時的に失敗する可能性がある](#procedure-sp_send_dbmail-may-transiently-fail-when--parameter-is-used)|2021 年 1 月|回避策あり||
 |[サーバー信頼グループからマネージド インスタンスを削除した後、分散トランザクションを実行できる](#distributed-transactions-can-be-executed-after-removing-managed-instance-from-server-trust-group)|2020 年 10 月|回避策あり||
@@ -167,6 +168,18 @@ Azure SQL Database と Azure SQL Managed Instance のドキュメントは別々
 |ソース データベースにインメモリ OLTP オブジェクトが含まれている場合、Business Critical レベルから General Purpose レベルへの組み込みのポイントインタイム データベース復元は成功しません。||解決済み|2019 年 10 月|
 |セキュリティで保護された接続を使用する外部 (Azure 以外) メール サーバーのデータベース メール機能||解決済み|2019 年 10 月|
 |包含データベースは、SQL Managed Instance 内でサポートされている||解決済み|2019 年 8 月|
+
+### <a name="misleading-error-message-on-azure-portal-suggesting-recreation-of-the-service-principal"></a>サービス プリンシパルの再作成を提案する、Azure portal の誤解を招くエラー メッセージ
+
+Azure SQL Managed Instance の Azure portal の _[Active Directory 管理者]_ ブレードには、サービス プリンシパルが既に存在している場合でも、次のエラー メッセージが表示されることがあります。
+
+"Azure Active Directory にアクセスするには、Managed Instance にサービス プリンシパルが必要です。 サービス プリンシパルを作成するには、ここをクリックします"
+
+マネージド インスタンスのサービス プリンシパルが既に存在するか、マネージド インスタンスの AAD 認証が動作している場合、このエラー メッセージを無視できます。 
+
+サービス プリンシパルが存在するかどうかを確認するには、Azure portal の _[エンタープライズ アプリケーション]_ ページに移動し、 _[アプリケーションの種類]_ ドロップダウン リストから _[マネージド ID]_ を選択し、 _[適用]_ をクリックし、検索ボックスにマネージド インスタンスの名前を入力します。 インスタンス名が結果の一覧に表示された場合、サービス プリンシパルは既に存在しており、それ以上の操作は必要ありません。
+
+エラー メッセージの指示に従い、エラー メッセージのリンクをクリックした場合、マネージド インスタンスのサービス プリンシパルは再作成されています。 その場合、Azure AD 認証が正しく機能するように、新しく作成されたサービス プリンシパルに Azure AD 読み取りアクセス許可を割り当ててください。 これは Azure PowerShell で[こちらの手順](./authentication-aad-configure.md?tabs=azure-powershell#powershell)を使用して実行できます
 
 ### <a name="changing-the-connection-type-does-not-affect-connections-through-the-failover-group-endpoint"></a>接続の種類の変更が、フェールオーバー グループ エンドポイント経由の接続に影響しない
 

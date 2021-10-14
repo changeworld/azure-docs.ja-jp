@@ -11,22 +11,22 @@ ms.topic: conceptual
 ms.date: 07/19/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7c3197a8eb9f6734cdd04d609ea0f59465ffa86d
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: 31dd0096140544db9c1265999b8c0c709def9cda
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110535513"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129350068"
 ---
 # <a name="single-page-sign-in-using-the-oauth-20-implicit-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C での OAuth 2.0 暗黙的フローを使用したシングルページ サインイン
 
-最新アプリケーションの多くには、主に JavaScript で記述されたシングル ページ アプリのフロントエンドがあります。 アプリが、React、Angular、Vue.js などのフレームワークを使用して記述されていることもよくあります。 主にブラウザーで実行される、シングル ページ アプリなどの JavaScript アプリには、認証に関していくつかの追加の課題があります。
+最新のアプリケーションの多くには、主に JavaScript で記述されたシングル ページ アプリ (SPA) のフロントエンドがあります。 アプリが、React、Angular、Vue.js などのフレームワークを使用して記述されていることもよくあります。 主にブラウザーで実行される、SPA やその他の JavaScript アプリには、認証に関していくつかの追加の課題があります。
 
 - これらのアプリのセキュリティ特性は、従来のサーバーベースの Web アプリケーションとは異なります。
 - 多くの承認サーバーや ID プロバイダーでは、クロス オリジン リソース共有 (CORS) 要求をサポートしていません。
 - アプリからブラウザーにフル ページがリダイレクトされると、ユーザー エクスペリエンスに悪影響が及ぶ場合があります。
 
-シングルページ アプリケーションをサポートするための推奨される方法は、[OAuth 2.0 認証コード フロー (PKCE あり)](./authorization-code-flow.md) です。
+SPA のサポートには、[OAuth 2.0 認証コード フロー (PKCE あり)](./authorization-code-flow.md) の方法が推奨されます。
 
 [MSAL.js 1.x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core) のような一部のフレームワークでは、暗黙的な許可フローのみがサポートされます。 このような場合、Azure Active Directory B2C (Azure AD B2C) では、OAuth 2.0 認可の暗黙的な許可フローがサポートされます。 このフローは [OAuth 2.0 の仕様のセクション 4.2](https://tools.ietf.org/html/rfc6749) で説明されています。 暗黙的フローでは、アプリは Azure Active Directory (Azure AD) 承認エンドポイントから直接トークンを受け取るため、サーバー間の交換は実行されません。 すべての認証ロジックとセッション処理は、ページ リダイレクトまたはポップアップ ボックスを使って、JavaScript クライアント内ですべて行われます。
 
@@ -68,7 +68,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 
 この時点で、ユーザーはポリシーのワークフローを完了するよう求められます。 ユーザー名とパスワードを入力したり、ソーシャル ID でサインインしたり、ディレクトリにサインアップしたりするなど、いくつかの手順が必要なことがあります。 ユーザー アクションは、ユーザー フローがどのように定義されているかによって異なります。
 
-ユーザーがユーザー フローを完了すると、Azure AD はユーザーが `redirect_uri` に使用した値でアプリに応答を返します。 これには、`response_mode` パラメーターで指定されたメソッドが使用されます。 応答は、実行されたユーザー フローとは無関係に、ユーザー アクションの各シナリオでまったく同じになります。
+ユーザーがユーザー フローを完了すると、Azure AD B2C はユーザーが `redirect_uri` に使用した値でアプリに応答を返します。 これには、`response_mode` パラメーターで指定されたメソッドが使用されます。 応答は、実行されたユーザー フローとは無関係に、ユーザー アクションの各シナリオでまったく同じになります。
 
 ### <a name="successful-response"></a>成功応答
 `response_mode=fragment` と `response_type=id_token+token` を使用している成功応答は、次のようになります (読みやすいように改行してあります)。
@@ -126,7 +126,9 @@ https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_sign_in/v2.0/
 https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_sign_in/discovery/v2.0/keys
 ```
 
-どのユーザー フローが ID トークンの署名に使用されたかと、どこからメタデータを取得できるかは、2 つの方法で判断できます。 最初に、ユーザー フロー名が `id_token` 内の `acr` 要求に含まれています。 ID トークンの要求を解析する方法については、「[Azure AD B2C トークン リファレンス](tokens-overview.md)」を参照してください。 別の方法は次のようになります。要求を発行するときに、`state` パラメーターの値に含まれるユーザー フローをエンコードします。 その後、`state` パラメーターをデコードして、どのユーザー フローが使用されたかを確認します。 どちらの方法も有効です。
+どのユーザー フローが ID トークンの署名に使用されたか (およびどこからメタデータを取得できるか) は、2 つの方法で判断できます。
+-  ユーザー フロー名が `id_token` 内の `acr` 要求に含まれています。 ID トークンの要求を解析する方法については、「[Azure AD B2C トークン リファレンス](tokens-overview.md)」を参照してください。 
+- 要求を発行するときに、`state` パラメーターの値に含まれるユーザー フローをエンコードします。 その後、`state` パラメーターをデコードして、どのユーザー フローが使用されたかを確認します。 どちらの方法も有効です。
 
 OpenID Connect メタデータ エンドポイントからメタデータ ドキュメントを取得したら、このエンドポイントにある RSA-256 公開キーを利用し、ID トークンの署名を検証できます。 このエンドポイントには、特定の時点で、それぞれが `kid` によって識別されるキーが複数存在すると表示される場合があります。 `id_token` のヘッダーにも `kid` 要求が含まれています。 これが、これらのキーのうち、どれが ID トークンの署名に使用されたかを示しています。 [トークンの検証](tokens-overview.md)を含む詳細については、[Azure AD B2C トークン リファレンス](tokens-overview.md)を参照してください。
 <!--TODO: Improve the information on this-->
@@ -150,7 +152,7 @@ ID トークンを検証した後、ユーザーとのセッションを開始�
 ## <a name="get-access-tokens"></a>アクセス トークンを取得する
 Web アプリで必要なのはユーザー フローを実行することだけの場合、以降のセクションの一部を省略できます。 以降のセクションの情報が当てはまるのは、認証される呼び出しを Web API に対して行う必要があり、Azure AD B2C によって保護されている Web アプリのみです。
 
-ユーザーをシングル ページ アプリにサインインさせたので、Azure AD によってセキュリティ保護されている Web API を呼び出すためのアクセス トークンを取得できます。 応答の種類として `token` を使用して既にトークンを取得済みの場合でも、このメソッドを使用してその他のリソースのトークンを取得できます。再度のサインインのためにユーザーをリダイレクトする必要はありません。
+ユーザーを SPA にサインインさせたので、Azure AD でセキュリティ保護されている Web API を呼び出すアクセス トークンを取得できます。 応答の種類として `token` を使用して既にトークンを取得済みの場合でも、このメソッドを使用してその他のリソースのトークンを取得できます。再度のサインインのためにユーザーをリダイレクトする必要はありません。
 
 一般的な Web アプリ フローでは、`/token` エンドポイントに対して要求を行います。 ただし、エンドポイントでは CORS 要求はサポートされていないため、AJAX 呼び出しを行って更新トークンを取得することはできません。 代わりに、非表示の HTML iframe 要素で暗黙的フローを使用して、他の Web API 用の新しいトークンを取得できます。 次に例を示します (読みやすいように改行してあります)。
 
@@ -245,4 +247,4 @@ GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/
 
 ## <a name="next-steps"></a>次の手順
 
-[Azure AD B2C による JavaScript シングルページ アプリケーションのサインイン](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/samples/msal-core-samples/VanillaJSTestApp/app/b2c)のサンプル コードをご覧ください。
+[Azure AD B2C での JavaScript SPA へのサインイン](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/samples/msal-core-samples/VanillaJSTestApp/app/b2c)のサンプル コードをご覧ください。

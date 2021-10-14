@@ -1,19 +1,20 @@
 ---
-title: Azure SQL を使用した Azure Active Directory 専用認証
-description: この記事では、Azure SQL Database と Azure SQL Managed Instance を使用した Azure Active Directory (Azure AD) 専用認証機能に関する情報を提供します。
+title: Azure Active Directory 専用認証
+description: この記事では、Azure SQL Database と Azure SQL Managed Instance を使用した Azure Active Directory (Azure AD) 専用認証機能に関する情報を提供します
+titleSuffix: Azure SQL Database & Azure SQL Managed Instance
 ms.service: sql-db-mi
 ms.subservice: security
 ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 06/30/2021
-ms.openlocfilehash: eaf4228dead01e970e25f7c8dc533bfbc06db802
-ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
+ms.date: 08/31/2021
+ms.openlocfilehash: 95a3d04ce8af0e83072e214e2b3fac72c78b28c0
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113128518"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128669590"
 ---
 # <a name="azure-ad-only-authentication-with-azure-sql"></a>Azure SQL を使用した Azure AD 専用認証
 
@@ -33,7 +34,9 @@ Azure SQL 認証の詳細については、「[認証と承認](logins-create-ma
 
 ## <a name="feature-description"></a>機能の説明
 
-Azure AD 専用認証を有効にすると、[SQL 認証](logins-create-manage.md#authentication-and-authorization)はサーバー レベルで無効になり、SQL 認証資格情報に基づく認証はすべて禁止されます。 SQL 認証ユーザーは、Azure SQL 論理サーバー (すべてのデータベースを含む) に接続できなくなります。 SQL 認証は無効になっていますが、適切なアクセス許可を持つ Azure AD アカウントを使用して、新しい SQL 認証ログインおよびユーザーを作成できます。 新しく作成された SQL 認証アカウントは、サーバーへの接続を許可されません。 Azure AD 専用認証を有効にしても、既存の SQL 認証ログインおよびユーザー アカウントは削除されません。 この機能により、これらのアカウントはサーバーと、このサーバー用に作成されたデータベースに単に接続できなくなります。
+Azure AD 専用認証を有効にすると、[SQL 認証](logins-create-manage.md#authentication-and-authorization)はサーバー レベルで無効になり、SQL 認証資格情報に基づく認証はすべて禁止されます。 SQL 認証ユーザーは、Azure SQL Database の[論理サーバー](logical-servers.md) (すべてのデータベースを含む) に接続できなくなります。 SQL 認証は無効になっていますが、適切なアクセス許可を持つ Azure AD アカウントを使用して、新しい SQL 認証ログインおよびユーザーを作成できます。 新しく作成された SQL 認証アカウントは、サーバーへの接続を許可されません。 Azure AD 専用認証を有効にしても、既存の SQL 認証ログインおよびユーザー アカウントは削除されません。 この機能により、これらのアカウントはサーバーと、このサーバー用に作成されたデータベースに単に接続できなくなります。
+
+Azure Policy を使用して Azure AD 専用認証が有効になっているサーバーを強制的に作成することもできます。 詳細については、[Azure AD 専用認証のための Azure Policy](authentication-azure-ad-only-authentication-policy.md) に関するページを参照してください。
 
 ## <a name="permissions"></a>アクセス許可
 

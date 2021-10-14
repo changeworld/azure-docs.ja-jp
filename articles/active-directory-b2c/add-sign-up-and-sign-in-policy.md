@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 08/17/2021
+ms.date: 08/24/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: b2c-support
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 0c1871921160b0b5862e7655a3826949406ac111
-ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+ms.openlocfilehash: 9774eef558b02bef4ef9ec9ecacd6e5a132fd244
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122777803"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128570312"
 ---
 # <a name="set-up-a-sign-up-and-sign-in-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でサインアップおよびサインイン フローを設定する
 
@@ -34,6 +34,10 @@ ms.locfileid: "122777803"
 * パスワードのリセット
 
 ![プロファイル編集フロー](./media/add-sign-up-and-sign-in-policy/add-sign-up-and-sign-in-flow.png)
+
+こちらの動画を見ると、ユーザーのサインアップとサインインのポリシーがどのように動作するかわかります。 
+
+>[!Video https://www.youtube.com/embed/c8rN1ZaR7wk]
 
 ## <a name="prerequisites"></a>[前提条件]
 
@@ -67,7 +71,7 @@ ms.locfileid: "122777803"
    * **[ローカル アカウント]** で、 **[Email signin]\(メールでのサインイン\)** 、 **[User ID signin]\(ユーザー ID でのサインイン\)** 、 **[Phone signin]\(電話でのサインイン\)** 、 **[Phone/Email signin]\(電話とメールでのサインイン\)** 、 **[None]\(なし\)** のいずれかを選択します。 [詳細については、こちらを参照してください](sign-in-options.md)。
    * **[ソーシャル ID プロバイダ]** で、既に設定してある外部のソーシャル ID プロバイダまたはエンタープライズ ID プロバイダーをどれか選択します。 [詳細については、こちらを参照してください](add-identity-provider.md)。
 1. 第 2 の認証方法で ID を証明することをユーザーに要求したい場合は、 **[多要素認証]** で、認証方法の種類を選択し、さらに、いつ多要素認証 (MFA) を適用するかを選択します。 [詳細については、こちらを参照してください](multi-factor-authentication.md)。
-1. Azure AD B2C テナントに対して条件付きアクセス ポリシーを構成してある場合で、なおかつ、このユーザー フローでそれらを有効にしたい場合は、 **[条件付きアクセス]** の **[Enforce conditional access policies]\(条件付きアクセス ポリシーを強制\)** チェック ボックスをオンにします。 ポリシー名を指定する必要はありません。 [詳細については、こちらを参照してください](conditional-access-user-flow.md?pivots=b2c-user-flow)。
+1. Azure AD B2C テナントに条件付きアクセス ポリシーを設定していて、それをこのユーザー フローで有効にする場合は、 **[Conditional access]\(条件付きアクセス\)** の **[Enforce conditional access policies]\(条件付きアクセス ポリシーを有効にする\)** チェック ボックスに印を入れます。 ポリシー名を指定する必要はありません。 [詳細については、こちらを参照してください](conditional-access-user-flow.md?pivots=b2c-user-flow)。
 1. **[ユーザー属性とトークン要求]** で、サインアップ中にユーザーから収集する属性とトークンで返す要求を選択します。 すべての値を表示するために **[Show more]\(詳細表示\)** を選択して値を選び、 **[OK]** を選択します。
 
    > [!NOTE]

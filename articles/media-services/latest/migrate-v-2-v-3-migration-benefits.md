@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 9dd3525f4efec3c49950839306ee5419c7850c69
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 1a733492a46b51d471a0efb0c5f316b0a47c8598
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106275415"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129353157"
 ---
 # <a name="step-1---understand-the-benefits-of-migrating-to-media-services-api-v3"></a>ステップ 1 - Media Services API V3 に移行する利点を理解する
 
@@ -26,7 +26,7 @@ ms.locfileid: "106275415"
 
 ## <a name="use-the-latest-api"></a>最新の API を使用する
 
-新機能、機能性、パフォーマンスの最適化は、現在の V3 API でのみ利用可能であるため、Azure Media Services V3 API のバージョン 2020-05-01 の使用を今すぐ開始して、利点を得ることをお勧めします。
+新機能、機能性、パフォーマンスの最適化は、現在の V3 API でのみ利用可能であるため、Azure Media Services V3 API のバージョン 2020-05-01 (以降) の使用を今すぐ開始して、ベネフィットを得ることをお勧めします。
 
 ポータル、最新の SDK、最新の CLI、REST API の API バージョンを、正しいバージョン文字列に変更できます。
 

@@ -10,18 +10,18 @@ ms.date: 05/08/2021
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: a0f4a8602b3f4b10ac1ef6ca1ac65e5bedc76210
-ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+ms.openlocfilehash: 244d7b7d2ff6fe88b883b2e8adbeeaa0e7fb167e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123187399"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128593232"
 ---
 # <a name="create-develop-and-maintain-synapse-notebooks-in-azure-synapse-analytics"></a>Azure Synapse Analytics で Synapse ノートブックを作成、開発、管理する
 
 Synapse ノートブックは、ライブ コード、視覚化、および説明テキストを含むファイルを作成するための Web インターフェイスです。 ノートブックは、アイデアを確認し、簡単な実験を使用してデータから分析情報を得るのに最適な場所です。 また、ノートブックは、データの準備、データの視覚化、機械学習、およびその他のビッグ データのシナリオで広く使用されています。
 
-Synapse ノートブックでは、次のことができます。
+Synapse ノートブックでは、次のことができます。 
 
 * 設定作業をせずに使用を開始する。
 * 組み込みのエンタープライズ セキュリティ機能を使用してデータを安全に保つ。
@@ -33,7 +33,7 @@ Synapse ノートブックでは、次のことができます。
 ## <a name="preview-of-the-new-notebook-experience"></a>新しいノートブック エクスペリエンスのプレビュー
 Synapse チームは、Microsoft のお客様に一貫したノートブック エクスペリエンスを提供し、検出可能性、生産性、共有、コラボレーションを最大化するための新しいノートブック コンポーネントを Synapse Studio に導入しました。 この新しいノートブック エクスペリエンスのプレビュー版が利用可能になりました。 ノートブック ツールバーの **[プレビュー機能]** ボタンをオンにしてください。 次の表では、既存のノートブック ("従来のノートブック") と新しいプレビュー版の機能を比較します。  
 
-|機能|従来のノートブック|プレビュー版ノートブック|
+|特徴量|従来のノートブック|プレビュー版ノートブック|
 |--|--|--|
 |%run| サポートされていません | &#9745;|
 |%history| サポートされていません |&#9745;|
@@ -42,10 +42,11 @@ Synapse チームは、Microsoft のお客様に一貫したノートブック �
 |ドラッグ アンド ドロップでセルを移動する| サポートされていません |&#9745;|
 |アウトライン (目次)| サポートされていません |&#9745;|
 |変数エクスプローラー| サポートされていません |&#9745;|
-|ツールバー ボタンを使用してテキスト セルを書式設定する|&#9745;| 使用できません |
+|ツールバー ボタンを使用してテキスト セルを書式設定する|&#9745;| サポートされていません|
 |コード セルのコメント化| サポートされていません | &#9745;|
 
-
+> [!NOTE]
+> 変数エクスプローラーは Python にのみ対応しています。
 ## <a name="create-a-notebook"></a>ノートブックを作成する
 
 ノートブックを作成するには、2 つの方法があります。 新しいノートブックを作成することも、既存のノートブックを **オブジェクト エクスプローラー** から Synapse ワークスペースにインポートすることもできます。 Synapse ノートブックでは、標準の Jupyter Notebook IPYNB ファイルが認識されます。
@@ -64,7 +65,7 @@ Synapse チームは、Microsoft のお客様に一貫したノートブック �
 + [IDE スタイルの IntelliSense](#ide-style-intellisense)
 + [コード スニペット](#code-snippets)
 + [ツールバー ボタンを使用してテキスト セルを書式設定する](#format-text-cell-with-toolbar-buttons)
-+ [セルの操作を元に戻す](#undo-cell-operation)
++ [セル操作を元に戻す/やり直す](#undo-redo-cell-operation)
 + [コード セルのコメント化](#Code-cell-commenting)
 + [セルを移動する](#move-a-cell)
 + [セルを削除する](#delete-a-cell)
@@ -91,13 +92,10 @@ Synapse チームは、Microsoft のお客様に一貫したノートブック �
 
 # <a name="preview-notebook"></a>[プレビュー版ノートブック](#tab/preview)
 
-1. 左上の **[+ セル]** ボタンを展開し、 **[code cell]\(コード セル\)** または **[Markdown cell]\(マークダウン セル\)** を選択します。
+1. 2 つのセル間のスペースをポイントし、 **[コード]** または **[Markdown]** を選択します。
     ![add-azure-notebook-cell-with-cell-button のスクリーンショット](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-add-cell-1.png)
-2. セルの先頭にあるプラス記号を選択し、 **[code cell]\(コード セル\)** または **[Markdown cell]\(マークダウン セル\)** を選択します。
 
-    ![add-azure-notebook-cell-between-space のスクリーンショット](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-add-cell-2.png)
-
-3. [コマンド モードの aznb ショートカット キー](#shortcut-keys-under-command-mode)を使用します。 現在のセルの上にセルを挿入するには、**A** キーを押します。 現在のセルの下にセルを挿入するには、**B** キーを押します。
+2. [コマンド モードの aznb ショートカット キー](#shortcut-keys-under-command-mode)を使用します。 現在のセルの上にセルを挿入するには、**A** キーを押します。 現在のセルの下にセルを挿入するには、**B** キーを押します。
 
 ---
 
@@ -107,8 +105,8 @@ Synapse ノートブックでは、次の 4 つの Apache Spark 言語がサポ�
 
 * PySpark (Python)
 * Spark (Scala)
-* SparkSQL
-* .NET for Apache Spark (C#)
+* Spark SQL
+* .NET Spark (C#)
 
 上部のコマンド バーにあるドロップダウン リストから、新しく追加されたセルの第一言語を設定できます。
 
@@ -138,7 +136,7 @@ Synapse ノートブックでは、異なる言語間でデータや変数を直
 1. セル 1 で、Scala を使用して SQL プール コネクタから DataFrame を読み取り、一時テーブルを作成します。
 
    ```scala
-   %%scala
+   %%spark
    val scalaDataFrame = spark.read.sqlanalytics(&quot;mySQLPoolDatabase.dbo.mySQLPoolTable")
    scalaDataFrame.createOrReplaceTempView( "mydataframetable" )
    ```
@@ -165,10 +163,10 @@ IntelliSense の機能は、言語によって異なる成熟度レベルにあ�
 
 |Languages| 構文の強調表示 | 構文のエラー マーカー  | 構文のコード補完 | 変数のコード補完| システム関数のコード補完| ユーザー関数のコード補完| スマート インデント | コードの折りたたみ|
 |--|--|--|--|--|--|--|--|--|
-|PySpark (Python)|はい|Yes|Yes|Yes|Yes|Yes|Yes|はい|
-|Spark (Scala)|はい|Yes|Yes|Yes|-|-|-|はい|
-|SparkSQL|はい|はい|-|-|-|-|-|-|
-|.NET for Spark (C#)|はい|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
+|PySpark (Python)|はい|はい|はい|はい|はい|はい|はい|はい|
+|Spark (Scala)|はい|はい|はい|はい|はい|はい|-|はい|
+|SparkSQL|はい|はい|はい|はい|はい|-|-|-|
+|.NET for Spark (C#)|はい|はい|はい|はい|はい|はい|はい|Yes|
 
 >[!Note]
 > 変数コード補完、システム関数コード補完、.NET for Spark のユーザー関数コード補完 (C#) を利用するには、アクティブな Spark セッションが必要です。
@@ -196,7 +194,7 @@ Synapse ノートブックには、Spark セッションの構成、Spark DataFr
 
 ---
 
-<h3 id="undo-cell-operation">セルの操作を元に戻す</h3>
+<h3 id="undo-redo-cell-operation">セル操作を元に戻す/やり直す</h3>
 
 # <a name="classical-notebook"></a>[従来のノートブック](#tab/classical)
 
@@ -218,6 +216,7 @@ Synapse ノートブックには、Spark セッションの構成、Spark DataFr
 
 > [!NOTE]
 > セル内のテキスト操作とコード セルのコメント化操作は元に戻せません。
+> これで、最大で 10 個の最新の過去のセル操作を元に戻すかやり直すことができます。
 
 
 ---
@@ -294,7 +293,7 @@ Synapse ノートブックには、Spark セッションの構成、Spark DataFr
 
 # <a name="preview-notebook"></a>[プレビュー版ノートブック](#tab/preview)
 
-セル ツールバーで **[More commands]\(その他のコマンド\)** 省略記号 (...) を選択し、 **[input]\(入力\)** を選択して、現在のセルの入力を折りたたみます。 これを展開するには、セルが折りたたまれている状態で **[input hidden]\(非表示の入力\)** を選択します。
+セル ツールバーで **[More commands]\(その他のコマンド\)** 省略記号 (...) を選択し、 **[入力の非表示]** を選択して、現在のセルの入力を折りたたみます。 これを展開するには、セルが折りたたまれている状態で **[Show input]\(入力を表示する\)** を選択します。
 
    ![Azure ノートブックのセル入力の折りたたみのアニメーション GIF](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-collapse-cell-input.gif)
 
@@ -310,7 +309,7 @@ Synapse ノートブックには、Spark セッションの構成、Spark DataFr
 
 # <a name="preview-notebook"></a>[プレビュー版ノートブック](#tab/preview)
 
-セル ツールバーで **[More commands]\(その他のコマンド\)** 省略記号 (...) を選択し、 **[output]\(出力\)** を選択して、現在のセルの出力を折りたたみます。 これを展開するには、セルの出力が非表示になっている状態で同じボタンを選択します。
+セル ツールバーで **[More commands]\(その他のコマンド\)** 省略記号 (...) を選択し、 **[出力の非表示]** を選択して、現在のセルの出力を折りたたみます。 これを展開するには、セルの出力が非表示になっている状態で **[出力の表示]** を選択します。
 
    ![Azure ノートブックのセル出力の折りたたみのアニメーション GIF](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-collapse-cell-output.gif)
 

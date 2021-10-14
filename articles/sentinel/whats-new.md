@@ -8,12 +8,12 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 08/09/2021
-ms.openlocfilehash: c94ca45d77ccab14c7e10ac831aa9d59ee0e0e2d
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: c99d3dde29edbd0e43f883ff9b31e054cea1a720
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124763293"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129278882"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Azure Sentinel の新着情報
 
@@ -150,7 +150,7 @@ Azure Sentinel Information Model (ASIM) でサポートされるようになっ�
 - [データ収集のベスト プラクティス](best-practices-data.md)
 
 > [!TIP]
-> ドキュメント全体で追加されたガイダンスについては、関連する概念と方法に関する記事を参照してください。 詳細については、「[その他のベスト プラクティス リファレンス](best-practices.md#additional-best-practice-references)」を参照してください。
+> ドキュメント全体で追加されたガイダンスについては、関連する概念と方法に関する記事を参照してください。 詳細については、[ベスト プラクティス リファレンス](best-practices.md#best-practice-references)に関するページを参照してください。
 >
 
 ## <a name="july-2021"></a>2021 年 7 月

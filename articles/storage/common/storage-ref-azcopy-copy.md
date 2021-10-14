@@ -8,12 +8,12 @@ ms.date: 09/01/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 4cb943230c0211c67caf5d7a074d21077358c143
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: d6256fdb15fd4e1e5674ab9aa24002027ed712d9
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128605451"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129273535"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -358,7 +358,7 @@ azcopy cp "https://storage.cloud.google.com/[bucket*name]/" "https://[destaccoun
 
 **--s2s-handle-invalid-metadata** string   無効なメタデータ キーの処理方法を指定します。 使用できるオプションは ExcludeIfInvalid、FailIfInvalid、RenameIfInvalid です。 既定値は `ExcludeIfInvalid` です。
 
-**--s2s-preserve-access-tier** サービス間のコピー中にアクセス層を保持します。 「[Azure Blob Storage: ホット、クール、アーカイブ アクセス層](../blobs/storage-blob-storage-tiers.md)」を参照して、コピー先ストレージ アカウントでアクセス層の設定がサポートされていることを確認してください。 アクセス層の設定がサポートされていない場合は、s2sPreserveAccessTier=false を使用してアクセス層のコピーをバイパスしてください。 既定値は `true` です。
+**--s2s-preserve-access-tier** サービス間のコピー中にアクセス層を保持します。 [BLOB データのホット、クール、アーカイブ アクセス層](../blobs/access-tiers-overview.md)に関するページを参照して、宛先のストレージ アカウントで、アクセス層の設定が確実にサポートされているようにします。 アクセス層の設定がサポートされていない場合は、s2sPreserveAccessTier=false を使用してアクセス層のコピーをバイパスしてください。 既定値は `true` です。
 
 **--s2s-preserve-blob-tags**               Blob Storage 間でのサービス間の転送中にインデックス タグを保持します。
 

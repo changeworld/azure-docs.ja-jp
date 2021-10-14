@@ -3,12 +3,12 @@ title: Azure Resource Graph (ARG) を使用してバックアップのクエリ�
 description: Azure Resource Group (ARG) を使用した Azure リソースのバックアップに関するクエリの詳細について説明します。
 ms.topic: conceptual
 ms.date: 05/21/2021
-ms.openlocfilehash: 252c921ce911777315ab043501359b5eb74cf176
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e9caa1d4d8de77efe9acb31c0cec3be5741b69c7
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121733258"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129236050"
 ---
 # <a name="query-your-backups-using-azure-resource-graph-arg"></a>Azure Resource Graph (ARG) を使用してバックアップのクエリを実行する
 
@@ -109,6 +109,17 @@ RecoveryServicesResources
 | extend datasourceType = case(type == 'microsoft.recoveryservices/vaults/backuppolicies', properties.backupManagementType,type == 'microsoft.dataprotection/backupVaults/backupPolicies',properties.datasourceTypes[0],'--')
 | project id,name,vaultName,resourceGroup,properties,datasourceType
 | where datasourceType == 'AzureIaasVM'
+```
+
+### <a name="list-all-vms-associated-with-a-given-backup-policy"></a>特定のバックアップ ポリシーに関連付けられているすべての VM を一覧表示する
+
+```kusto
+RecoveryServicesResources
+| where type == "microsoft.recoveryservices/vaults/backupfabrics/protectioncontainers/protecteditems"
+| project propertiesJSON = parse_json(properties)
+| where propertiesJSON.backupManagementType == "AzureIaasVM"
+| project VMID=propertiesJSON.sourceResourceId, PolicyID=propertiesJSON.policyId
+| where PolicyID == "<ARM ID of the given policy>"
 ```
 
 ### <a name="list-all-backup-policies-used-for-azure-databases-for-postgresql-servers"></a>Azure database for PostgreSQL サーバーで使用されるすべてのバックアップ ポリシーを一覧表示する

@@ -1,15 +1,15 @@
 ---
 title: 大規模なデータ セットを処理する
 description: Azure Resource Graph の操作中に大きなデータ セット内のレコードを取得、書式設定、ページング、およびスキップする方法について説明します。
-ms.date: 08/17/2021
+ms.date: 09/29/2021
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b306b52c02a251abf1d781ccce586e4b94c8264b
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 142effe9a4d4d46f04b1a9a018fc366fba69428c
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122323741"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129274844"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>大規模な Azure リソース データ セットの処理
 
@@ -38,10 +38,7 @@ Search-AzGraph -Query "Resources | project name | order by name asc" -First 200
 
 "_最も制限の厳しい_" コントロールが選択されます。 たとえば、クエリに含まれる **top** または **limit** 演算子で指定されているレコード数が **First** より多い場合、返される最大レコード数は **First** と等しくなります。 同様に、**top** または **limit** が **First** より小さい場合は、返されるレコード セットは **top** または **limit** で構成されている小さい方の値になります。
 
-**First** の最大許容値は現在 _5000_ であり、これは、結果の _1000_ 件のレコードを一度に [ページング](#paging-results)することで実現されます。
-
-> [!IMPORTANT]
-> **First** が _1000_ 件を超えるレコード数になるように構成されている場合、改ページ位置の自動修正が機能するためには、**id** フィールドをクエリに **反映する** する必要があります。 これがクエリに含まれていない場合、応答は [改ページ](#paging-results)されず、結果は _1000_ レコードに制限されます。
+**First** で許容される最大値は _1000_ です。
 
 ## <a name="skipping-records"></a>レコードのスキップ
 

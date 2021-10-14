@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: fryu
 ms.custom: devx-track-azurepowershell
 ms.subservice: blobs
-ms.openlocfilehash: a1681640b97d6ee183eefd7f65edd9b2d944f0f2
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 3c0a5174a1fea451f5b4f502795a77f1c4ff8125
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128633870"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129275454"
 ---
 # <a name="rehydrate-an-archived-blob-to-an-online-tier"></a>アーカイブ済み BLOB をオンライン層にリハイドレートする
 
@@ -188,7 +188,7 @@ az storage blob show \
 
 ## <a name="see-also"></a>関連項目
 
-- [Azure Blob Storage: ホット、クール、アーカイブ アクセス層](storage-blob-storage-tiers.md)。
+- [BLOB データのホット、クール、アーカイブのアクセス層](access-tiers-overview.md)
 - [アーカイブ層からの BLOB のリハイドレートの概要](archive-rehydrate-overview.md)
 - [BLOB リハイドレート イベントに応答して Azure 関数を実行する](archive-rehydrate-handle-event.md)
 - [Blob Storage のイベント処理](storage-blob-event-overview.md)

@@ -1,32 +1,33 @@
 ---
 title: Azure Storage アカウントの既定のアクセス層を管理する
-description: GPv2 または Blob Storage アカウントの既定のアクセス層を変更する方法を説明します
+titleSuffix: Azure Storage
+description: 汎用 v2 または Blob Storage アカウントの既定のアクセス層を変更する方法を説明します
 author: tamram
 ms.author: tamram
-ms.date: 01/11/2021
+ms.date: 09/23/2021
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.reviewer: klaasl
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ee009c47188e104cfe1d5430be6e68a1c80132cb
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: a9cb4a119447188202036cca4ed4d8580329d0cc
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110666743"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129272568"
 ---
 # <a name="manage-the-default-access-tier-of-an-azure-storage-account"></a>Azure Storage アカウントの既定のアクセス層を管理する
 
 各 Azure Storage アカウントには、ホットまたはクールのいずれかの既定のアクセス層があります。 アクセス層は、ストレージ アカウントを作成するときに割り当てます。 既定のアクセス層はホットです。
 
-既定のアカウント層を変更するには、ストレージ アカウントで **アクセス層** 属性を設定します。 アカウント層の変更は、アカウントに格納されている、層が明示的に設定されていないすべてのオブジェクトに適用されます。 アカウント層をホットからクールに切り替えた場合、GPv2 アカウントについてのみ、階層が設定されていないすべての BLOB に関して、書き込み操作 (10,000 件単位) の料金が発生します。クールからホットへの切り替えでは、Blob Storage および GPv2 アカウントのすべての BLOB に関して、読み取り操作 (10,000 件単位) とデータ取得 (GB 単位) の両方の料金が発生します。
+既定のアカウント層を変更するには、ストレージ アカウントで **アクセス層** 属性を設定します。 アカウント層の変更は、アカウントに格納されている、層が明示的に設定されていないすべてのオブジェクトに適用されます。 アカウント層をホットからクールに切り替えた場合、汎用 v2 アカウントでのみ、階層が設定されていないすべての BLOB で、書き込み操作 (10,000 件単位) の料金が発生します。クールからホットへの切り替えでは、Blob Storage および汎用 v2 アカウントのすべての BLOB で、読み取り操作 (10,000 件単位) とデータ取得 (GB 単位) の両方の料金が発生します。
 
 オブジェクト レベルで層が設定されている BLOB については、アカウント層は適用されません。 アーカイブ層は、オブジェクト レベルでのみ適用することができます。 アクセス層はいつでも切り替えることができます。
 
 ストレージ アカウントを作成した後で既定のアクセス層を変更するには、下の手順に従ってください。
 
-## <a name="change-the-default-account-access-tier-of-a-gpv2-or-blob-storage-account"></a>GPv2 または Blob Storage アカウントの既定のアクセス層を変更する
+## <a name="change-the-default-account-access-tier-of-a-general-purpose-v2-or-blob-storage-account"></a>汎用 v2 または Blob Storage アカウントの既定のアクセス層を変更する
 
 次のシナリオでは、Azure portal または PowerShell を使用します。
 
@@ -51,11 +52,11 @@ ms.locfileid: "110666743"
 次の PowerShell スクリプトを使用すると、アカウント層を変更できます。 `$rgName` 変数は、ご自身のリソース グループ名で初期化する必要があります。 `$accountName` 変数は、ご自身のストレージ アカウント名で初期化する必要があります。
 
 ```powershell
-#Initialize the following with your resource group and storage account names
+# Initialize the following with your resource group and storage account names
 $rgName = ""
 $accountName = ""
 
-#Change the storage account tier to hot
+# Change the storage account tier to hot
 Set-AzStorageAccount -ResourceGroupName $rgName -Name $accountName -AccessTier Hot
 ```
 

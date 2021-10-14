@@ -1,7 +1,6 @@
 ---
 title: Azure AD Multi-Factor Authentication のデプロイに関する考慮事項
 description: Azure AD Multi-Factor Authentication の実装がうまくいくデプロイに関する考慮事項と戦略について説明します
-services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
@@ -11,12 +10,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01044f9d03b911bfb6939023dfb4fd5d3b0a3cd3
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 42ce13335c3bab4a853de5001760eca0d85fdf7b
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124773799"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129352625"
 ---
 # <a name="plan-an-azure-active-directory-multi-factor-authentication-deployment"></a>Azure AD の多要素認証のデプロイを計画する 
 
@@ -64,13 +63,13 @@ Azure Active Directory (Azure AD) Multi-Factor Authentication (MFA) は、デー
 
 テナントで使用できる認証方法を制御できます。 たとえば、SMS などの安全性の最も低い方法をブロックすることができます。
 
-| 認証方法 | 管理方法 | Scoping |
+| 認証方法    | 管理方法 | Scoping |
 |-----------------------|-------------|---------|
 | Microsoft Authenticator (プッシュ通知とパスワードレスの電話によるサインイン)    | MFA の設定または
 認証方法ポリシー | Authenticator のパスワードレスの電話によるサインインのスコープをユーザーとグループに設定できます |
 | FIDO2 セキュリティ キー | 認証方法ポリシー | ユーザーとグループにスコープを設定できます |
 | ソフトウェアまたはハードウェアの OATH トークン | MFA の設定 |     |
-| SMS による認証 | MFA の設定 | プライマリ認証の SMS サインインを認証ポリシーで管理します。 SMS サインインのスコープをユーザーとグループに設定できます。 |
+| SMS による認証 | MFA の設定 | プライマリ認証の SMS サインインを認証ポリシーで管理します。    SMS サインインのスコープをユーザーとグループに設定できます。 |
 | 音声通話 | 認証方法ポリシー |       |
 
 
@@ -117,7 +116,7 @@ Azure AD MFA が必要となる一般的なユース ケースを次に示しま
 
 ユーザーごとの MFA の使用が有効になっていたユーザーが Azure AD Multi-Factor Authentication を強制された場合は、次の PowerShell が、条件付きアクセス ベースの Azure AD Multi-Factor Authentication への変換に役立ちます。
 
-この PowerShell を ISE ウィンドウで実行するか、`.PS1` ファイルとして保存し、ローカルで実行します。 この操作は、[MSOnline モジュール](/powershell/module/msonline/?view=azureadps-1.0#msonline)を使用することによってのみ実行できます。 
+この PowerShell を ISE ウィンドウで実行するか、`.PS1` ファイルとして保存し、ローカルで実行します。 この操作は、[MSOnline モジュール](/powershell/module/msonline#msonline)を使用することによってのみ実行できます。 
 
 ```PowerShell
 # Sets the MFA requirement state
@@ -200,7 +199,7 @@ RADIUS 認証を使用しているアプリケーションの場合は、クラ�
 
 #### <a name="common-integrations"></a>一般的な統合
 
-多くのベンダーでアプリケーションの SAML 認証がサポートされるようになりました。 可能な場合は、これらのアプリケーションを Azure AD とフェデレーションし、条件付きアクセスを使用して MFA を適用することをお勧めします。 ベンダーが最新の認証をサポートしていない場合は、NPS 拡張機能を使用できます。
+多くのベンダーでアプリケーションの SAML 認証がサポートされるようになりました。 可能な場合は、これらのアプリケーションを Azure AD とフェデレーションし、条件付きアクセスを使用して MFA を適用することをお勧めします。 ベンダーが先進認証をサポートしていない場合は、NPS 拡張機能を使用できます。
 一般的な RADIUS クライアントの統合には、[リモート デスクトップ ゲートウェイ](howto-mfa-nps-extension-rdg.md)や [VPN サーバー](howto-mfa-nps-extension-vpn.md)などのアプリケーションが含まれます。 
 
 その他の統合を次に示します。

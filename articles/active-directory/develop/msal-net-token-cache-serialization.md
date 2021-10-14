@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 08/28/2021
+ms.date: 09/30/2021
 ms.author: jmprieur
 ms.reviewer: mmacy
 ms.custom: devx-track-csharp, aaddev, has-adal-ref
-ms.openlocfilehash: 216fd3f132464b9866bc1f3b1b61b143de117019
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.openlocfilehash: 5452f6bd6adc4693b74a20d174b6efe42346226d
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129083469"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129351825"
 ---
 # <a name="token-cache-serialization-in-msalnet"></a>MSAL.NET でのトークン キャッシュのシリアル化
 
@@ -27,15 +27,15 @@ Microsoft Authentication Library (MSAL) によって<bpt id="p1">[</bpt>取得�
 ## <a name="quick-summary"></a>簡単な概要
 
 次のようにすることが推奨されます。
-- Web アプリと Web API では、<bpt id="p1">[</bpt>"Microsoft.Identity.Web" のトークン キャッシュ シリアライザー<ept id="p1">](https://github.com/AzureAD/microsoft-identity-web/wiki/token-cache-serialization)</ept>を使用します。 それらにより、トークンを格納するための分散型データベースまたはキャッシュ システムも提供されます。
-  - ASP.NET Core の <bpt id="p1">[</bpt>Web アプリ<ept id="p1">](scenario-web-app-call-api-overview.md)</ept>と <bpt id="p2">[</bpt>Web API<ept id="p2">](scenario-web-api-call-api-overview.md)</ept> では、ASP.NET Core での上位レベル API として Microsoft.Identity.Web を使用します。
-  - ASP.NET クラシック、.NET Core、.NET Framework では、Microsoft.Identity.Web で提供されている <bpt id="p1">[</bpt>MSAL 用のトークン キャッシュ シリアル化アダプター<ept id="p1">]()</ept>で、MSAL.NET を直接使用します。 
+- Web アプリと Web API では、["Microsoft.Identity.Web.TokenCache" のトークン キャッシュ シリアライザー](https://github.com/AzureAD/microsoft-identity-web/wiki/token-cache-serialization)を使用します。 それらにより、トークンを格納するための分散型データベースまたはキャッシュ システムも提供されます。
+  - ASP.NET Core の [Web アプリ](scenario-web-app-call-api-overview.md)と [Web API](scenario-web-api-call-api-overview.md) で、ASP.NET Core での上位レベル API として [Microsoft.Identity.Web](microsoft-identity-web.md) を使用します。
+  - ASP.NET クラシック、.NET Core、.NET Framework では、Microsoft.Identity.Web.TokenCache NuGet パッケージで提供されている [MSAL 用のトークン キャッシュ シリアル化アダプター](msal-net-token-cache-serialization.md?tabs=aspnet)で、MSAL.NET を直接使用します。 
 - (ファイル システムを使用してトークンを格納できる) デスクトップ アプリケーションでは、<bpt id="p1">[</bpt>Microsoft.Identity.Client.Extensions.Msal<ept id="p1">](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/wiki/Cross-platform-Token-Cache)</ept> と MSAL.Net を使用します。
 - モバイル アプリケーション (Xamarin.iOS、Xamarin.Android、ユニバーサル Windows プラットフォーム) では、キャッシュは MSAL.NET によって自動的に処理されるので、何も行いません。これらのプラットフォームにはセキュリティ保護されたストレージがあります。
 
 ## <a name="aspnet-core-web-apps-and-web-apis"></a><bpt id="p1">[</bpt>ASP.NET Core Web アプリと Web API<ept id="p1">](#tab/aspnetcore)</ept>
 
-<bpt id="p1">[</bpt>Microsoft.Identity.Web<ept id="p1">](https://github.com/AzureAD/microsoft-identity-web)</ept> ライブラリでは、トークン キャッシュのシリアル化を含む NuGet パッケージ <bpt id="p2">[</bpt>Microsoft.Identity.Web<ept id="p2">](https://www.nuget.org/packages/Microsoft.Identity.Web)</ept> が提供されています。
+[Microsoft.Identity.Web](https://github.com/AzureAD/microsoft-identity-web) ライブラリでは、トークン キャッシュのシリアル化を含む NuGet パッケージ [Microsoft.Identity.Web.TokenCache](https://www.nuget.org/packages/Microsoft.Identity.Web.TokenCache) が提供されています。
 
 | 拡張メソッド | 説明  |
 | ---------------- | ------------ |
@@ -119,11 +119,11 @@ services.AddCosmosCache((CosmosCacheOptions cacheOptions) =>
 
 ## <a name="non-aspnet-core-web-apps-and-web-apis"></a><bpt id="p1">[</bpt>ASP.NET Core 以外の Web アプリと Web API<ept id="p1">](#tab/aspnet)</ept>
 
-MSAL.NET を使用する場合でも、Microsoft.Identity.Web に含まれるトークン キャッシュ シリアライザーを利用できます 
+MSAL.NET を使用する場合でも、Microsoft.Identity.Web.TokenCache に含まれるトークン キャッシュ シリアライザーのベネフィットがあります。 
 
 ### <a name="referencing-the-nuget-package"></a>NuGet パッケージの参照
 
-MSAL.NET に加えて、<bpt id="p1">[</bpt>Microsoft.Identity.Web<ept id="p1">](https://www.nuget.org/packages/Microsoft.Identity.Web)</ept> NuGet パッケージをプロジェクトに追加します
+MSAL.NET に加えて、[Microsoft.Identity.Web.TokenCache](https://www.nuget.org/packages/Microsoft.Identity.Web.TokenCache) NuGet パッケージをプロジェクトに追加します。
 
 ### <a name="configuring-the-token-cache"></a>トークン キャッシュの構成
 
@@ -148,7 +148,7 @@ public static async Task<AuthenticationResult> GetTokenAsync(string clientId, X5
        .Build();
 
      // Add a static in-memory token cache. Other options available: see below
-     app.AddInMemoryTokenCache();  // Microsoft.Identity.Web 1.16+
+     app.AddInMemoryTokenCache();  // Microsoft.Identity.Web.TokenCache 1.17+
    
      // Make the call to get a token for client_credentials flow (app to app scenario) 
      return await app.AcquireTokenForClient(scopes).ExecuteAsync();
@@ -282,18 +282,6 @@ var app = ConfidentialClientApplicationBuilder
     .WithCacheSynchronization(false)
     .Build();
 ```
-
-### <a name="monitor-cache-hit-ratios-and-cache-performance"></a>キャッシュ ヒット率とキャッシュ パフォーマンスの監視
-
-MSAL は、<bpt id="p1">[</bpt>AuthenticationResult.AuthenticationResultMetadata<ept id="p1">](/dotnet/api/microsoft.identity.client.authenticationresultmetadata)</ept> オブジェクトの一部として、重要なメトリックを公開します。 
-
-| メトリック       | 意味     | アラームをトリガーするタイミング    |
-| :-------------: | :----------: | :-----------: |
-|  `DurationTotalInMs` | MSAL で費やした合計時間 (ネットワーク呼び出しとキャッシュを含む)   | 全体の待機時間が長い場合のアラーム (1 秒以上)。 値はトークン ソースによって異なります。 キャッシュから: 1 回のキャッシュ アクセス。 AAD から: 2 回のキャッシュ アクセス + 1 回の HTTP 呼び出し。 1 回目 (プロセスごと) の呼び出しでは、1 回分の HTTP 呼び出しが追加で発生するため、時間がかかります。 |
-|  `DurationInCacheInMs` | アプリ開発者によってカスタマイズされた、トークン キャッシュの読み込みまたは保存に要した時間 (Redis に保存するなど)。| スパイク時のアラーム。 |
-|  `DurationInHttpInMs`| AAD への HTTP 呼び出しに要した時間。  | スパイク時のアラーム。|
-|  `TokenSource` | トークンのソースを示します。 キャッシュからのトークンの取得が格段に速くなります (例: ～ 700 ms に対して ～ 100 ms)。 キャッシュ ヒット率の監視とアラーム生成に使用できます。 | <ph id="ph1">`DurationTotalInMs`</ph> と使用します |
-
 ### <a name="samples"></a>サンプル
 
 - .NET Framework および .NET Core アプリケーションでのトークン キャッシュ シリアライザーの使用方法については、こちらのサンプル <bpt id="p1">[</bpt>ConfidentialClientTokenCache<ept id="p1">](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2/tree/master/ConfidentialClientTokenCache)</ept> を参照してください 
@@ -340,6 +328,23 @@ var cacheHelper = await MsalCacheHelper.CreateAsync(storageProperties );
 cacheHelper.RegisterCache(pca.UserTokenCache);
          
 ```
+
+
+##### <a name="plain-text-fallback-mode"></a>プレーン テキスト フォールバック モード
+
+クロス プラットフォーム トークン キャッシュを使用すると、暗号化されていないトークンをクリア テキストで格納できます。 これは、開発環境でデバッグ用途にのみ使用するためのものです。 プレーン テキスト フォールバック モードは、次のコード パターンで使用できます。
+
+```csharp
+storageProperties =
+    new StorageCreationPropertiesBuilder(
+        Config.CacheFileName + ".plaintext",
+        Config.CacheDir)
+    .WithUnprotectedFile()
+    .Build();
+
+var cacheHelper = await MsalCacheHelper.CreateAsync(storageProperties).ConfigureAwait(false);
+```
+
 
 ## <a name="mobile-apps"></a><bpt id="p1">[</bpt>モバイル アプリ<ept id="p1">](#tab/mobile)</ept>
 
@@ -594,20 +599,17 @@ namespace CommonCacheMsalV3
 
 ---
 
-## <a name="plain-text-fallback-mode"></a>プレーン テキスト フォールバック モード
+## <a name="monitor-cache-hit-ratios-and-cache-performance"></a>キャッシュ ヒット率とキャッシュ パフォーマンスの監視
 
-MSAL を使用すると、暗号化されていないトークンをクリア テキストに格納することができます。 これは、開発環境でデバッグ用途にのみ使用するためのものです。 プレーン テキスト フォールバック モードは、次のコード パターンで使用できます。
+MSAL は、[AuthenticationResult.AuthenticationResultMetadata](/dotnet/api/microsoft.identity.client.authenticationresultmetadata) オブジェクトの一部として、重要なメトリックを公開しています。 これらのメトリックをログに記録して、ご自分のアプリケーションの正常性を評価できます。
 
-```csharp
-storageProperties =
-    new StorageCreationPropertiesBuilder(
-        Config.CacheFileName + ".plaintext",
-        Config.CacheDir)
-    .WithUnprotectedFile()
-    .Build();
+| メトリック       | 意味     | アラームをトリガーするタイミング    |
+| :-------------: | :----------: | :-----------: |
+|  `DurationTotalInMs` | MSAL で費やした合計時間 (ネットワーク呼び出しとキャッシュを含む)   | 全体の待機時間が長い場合のアラーム (1 秒以上)。 値はトークン ソースによって異なります。 キャッシュから: 1 回のキャッシュ アクセス。 AAD から: 2 回のキャッシュ アクセス + 1 回の HTTP 呼び出し。 1 回目 (プロセスごと) の呼び出しでは、1 回分の HTTP 呼び出しが追加で発生するため、時間がかかります。 |
+|  `DurationInCacheInMs` | アプリ開発者によってカスタマイズされた、トークン キャッシュの読み込みまたは保存に要した時間 (Redis に保存するなど)。| スパイク時のアラーム。 |
+|  `DurationInHttpInMs`| AAD への HTTP 呼び出しに要した時間。  | スパイク時のアラーム。|
+|  `TokenSource` | トークンのソースを示します。 キャッシュからのトークンの取得が格段に速くなります (例: ～ 700 ms に対して ～ 100 ms)。 キャッシュ ヒット率の監視とアラーム生成に使用できます。 | <ph id="ph1">`DurationTotalInMs`</ph> と使用します |
 
-var cacheHelper = await MsalCacheHelper.CreateAsync(storageProperties).ConfigureAwait(false);
-```
 
 ## <a name="next-steps"></a>次のステップ
 

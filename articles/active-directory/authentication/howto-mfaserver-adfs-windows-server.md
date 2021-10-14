@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9067282b5303d2e0033853b223f05174781899be
-ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
+ms.openlocfilehash: 25911573c8cc991206974e9a80bb52f8a3ae609e
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123215411"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129230534"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-in-windows-server"></a>Windows Server の AD FS と連携するように Azure Multi-Factor Authentication Server を構成する
 
@@ -58,7 +58,7 @@ Azure Multi-Factor Authentication Server をインストールする際、次の
    ![MFA Server コンソールから AD FS アダプターをインストールする](./media/howto-mfaserver-adfs-2012/server.png)
 
 5. [Active Directory] ウィンドウが表示される場合には、 コンピューターがドメインに参加しておらず、AD FS アダプターと Multi-Factor Authentication サービスの間の通信をセキュリティで保護するための Active Directory 構成が完了していないことを意味します。 **[次へ]** をクリックしてこの構成を自動的に完了するか、 **[Active Directory の自動構成をスキップして手動で設定を構成する]** チェック ボックスをオンにします。 **[次へ]** をクリックします。
-6. [ローカル グループ] ウィンドウが表示される場合は、 コンピューターがドメインに参加しておらず、AD FS アダプターと Multi-Factor Authentication サービスの間の通信をセキュリティで保護するためのローカル グループ構成が完了していないことを意味します。 **[次へ]** をクリックしてこの構成を自動的に完了するか、 **[ローカル グループの自動構成をスキップして手動で設定を構成する]** チェック ボックスをオンにします。 **[次へ]** をクリックします。
+6. [ローカル グループ] ウィンドウが表示される場合、それは 2 つのことを意味します。 コンピューターがドメインに参加しておらず、AD FS アダプターと Multi-Factor Authentication サービスの間の通信をセキュリティで保護するためのローカル グループ構成が完了していないことを意味します。 **[次へ]** をクリックしてこの構成を自動的に完了するか、 **[ローカル グループの自動構成をスキップして手動で設定を構成する]** チェック ボックスをオンにします。 **[次へ]** をクリックします。
 7. インストール ウィザードで **[次へ]** をクリックします。 Azure Multi-Factor Authentication Server によって PhoneFactor Admins グループが作成され、AD FS サービス アカウントがその PhoneFactor Admins グループに追加されます。
 8. **[インストーラーの起動]** ページで **[次へ]** をクリックします。
 9. Multi-Factor Authentication AD FS アダプター インストーラーで、 **[次へ]** をクリックします。

@@ -7,12 +7,12 @@ ms.date: 08/06/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: bf8b1e04e11dee4e636826430838a467fe034e3f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b03564c293a5c12dca2a52f3afd5f3347b6c8186
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94951130"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129278200"
 ---
 # <a name="how-to-roll-x509-device-certificates"></a>デバイスの X.509 証明書を展開する方法
 
@@ -45,7 +45,7 @@ IoT ソリューションのライフサイクルの間に、証明書を展開�
 
 ## <a name="roll-the-certificate-in-the-iot-hub"></a>証明書を IoT ハブに展開する
 
-デバイスの証明書は、手動で IoT ハブに追加できます。 Device Provisioning Service インスタンスを使用して、証明書を自動化することもできます。 この記事では、自動プロビジョニングをサポートするために、Device Provisioning Service インスタンスが使用されているものとします。
+デバイスの証明書は、手動で IoT ハブに追加できます。 Device Provisioning Service インスタンスを使用して、証明書を自動化することもできます。 この記事では、自動プロビジョニングのサポートに、Device Provisioning Service インスタンスが使用されているものとします。
 
 デバイスが自動プロビジョニングによって初めてプロビジョニングされると、デバイスは起動し、プロビジョニング サービスに接続されます。 プロビジョニング サービスは、資格情報としてデバイスのリーフ証明書を使用して IoT ハブにデバイスの ID を作成する前に、ID チェックを実行することで応答します。 その後、プロビジョニング サービスはデバイスがどの IoT ハブに割り当てられているかを伝えます。次に、そのデバイスがリーフ証明書を使用して認証し、IoT ハブに接続します。 
 
@@ -166,7 +166,7 @@ IoT ソリューションのライフサイクルの間に、証明書を展開�
 
     ![有効期限に新しいルート CA 証明書を選択する](./media/how-to-roll-certificates/select-new-root-secondary-cert.png)
 
-4. 後ほどプライマリ証明書の有効期限が切れるときに、お使いの Device Provisioning Service インスタンスの **[証明書]** タブをクリックします。 リスト内の有効期限が切れた証明書をクリックし、 **[削除]** ボタンをクリックします。 証明書の名前を入力して削除を確定し、 **[OK]** をクリックします。
+4. 後日、プライマリ証明書の有効期限が切れたとき、お使いの Device Provisioning Service インスタンスの **[証明書]** タブをクリックします。 リスト内の有効期限が切れた証明書をクリックし、 **[削除]** ボタンをクリックします。 証明書の名前を入力して削除を確定し、 **[OK]** をクリックします。
 
     ![ルート CA 証明書を削除する](./media/how-to-roll-certificates/delete-root-cert.png)
 
@@ -188,7 +188,7 @@ IoT ソリューションのライフサイクルの間に、証明書を展開�
 
 ## <a name="reprovision-the-device"></a>デバイスを再プロビジョニングする
 
-証明書がデバイスと Device Provisioning Service の両方に展開されたら、デバイスは Device Provisioning Service に連絡することでデバイス自体を再プロビジョニングできます。 
+証明書がデバイスと Device Provisioning Service の両方に展開されたら、デバイスは Device Provisioning Service と通信してデバイス自体を再プロビジョニングできます。 
 
 プロビジョニングするデバイスをプログラミングする簡単な方法の 1 つは、デバイスが IoT ハブに接続を試行しているときに「未承認」のエラーを受け取った場合に、プロビジョニング サービスに連絡してプロビジョニング フローを実行するようデバイスをプログラミングする方法です。
 

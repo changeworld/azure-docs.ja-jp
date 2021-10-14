@@ -12,12 +12,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: mathoma
 ms.date: 02/13/2019
-ms.openlocfilehash: 7a7cd071d9b1a2f0a359c11a123914f451a35569
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: a8b0e2d0183f29ebf9ecdee576abeca6acc1827c
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110690075"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129229734"
 ---
 # <a name="new-dba-in-the-cloud--managing-azure-sql-database-after-migration"></a>クラウドの新しい DBA – 移行後の Azure SQL Database の管理
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -104,7 +104,7 @@ SQL Database では 2 種類の認証方法が提供されています。
 - [Azure Active Directory 認証](authentication-aad-overview.md)
 - [SQL 認証](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)
 
-従来の Windows 認証はサポートされていません。 Azure Active Directory (Azure AD) は、ID とアクセスの集中管理サービスです。 組織内のすべての担当者にシングル サインオン (SSO) アクセスを非常に簡単に提供できます。 つまり、認証が簡単なように、資格情報はすべての Azure サービスで共有されます。 
+従来の Windows 認証はサポートされていません。 Azure Active Directory (Azure AD) は、ID とアクセスの集中管理サービスです。 これを利用すると、組織の人間にシングル サインオン (SSO) アクセスを非常に便利な方法で提供できます。 つまり、認証が簡単なように、資格情報は Azure サービスで共有されます。
 
 Azure AD は [Azure AD Multi-Factor Authentication](authentication-mfa-ssms-overview.md) をサポートします。[数クリック](../../active-directory/hybrid/how-to-connect-install-express.md)で Azure AD を Windows Server Active Directory と統合できます。 SQL 認証はこれまでとまったく同じように動作します。 ユーザー名とパスワードを提供すると、特定のサーバーの任意のデータベースでユーザーを認証できます。 これを使用すると、SQL Database および Azure Synapse Analytics で、Azure AD ドメイン内において Multi-Factor Authentication とゲスト ユーザー アカウントを提供できます。 既に Active Directory をオンプレミスで使用している場合、そのディレクトリを Azure Active Directory とフェデレーションして Azure へ拡張できます。
 

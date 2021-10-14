@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 08/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 01d62055de8e8327b518bc3638cab85426917247
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: 98fd879cb8d960f2f688b3aa002fa86832981744
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122864643"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129353060"
 ---
 # <a name="media-reserved-units-migration-guidance"></a>メディア占有ユニットの移行ガイダンス
 
@@ -34,7 +34,7 @@ ms.locfileid: "122864643"
 次のシナリオに基づき MRU を移行してください。
 
 * すべての Media Services アカウントについて、メディア占有ユニット (MRU) を設定する必要がなくなりました。 これで、負荷に基づいて、システムが自動的にスケールアップおよびスケールダウンされます。
-* API の 2020-05-01 バージョンの前にアカウントを作成した場合でも、MRU を管理するため API にアクセスできます。ただし、設定した MRU 構成は、エンコードのコンカレンシーやパフォーマンス制御には使用されません。 詳細については、[メディア処理のスケール設定](../previous/media-services-scale-media-processing-overview.md)に関するページを参照してください。 MRU の管理には、CLI 2.0 for Media Services V3、または Azure portal を使用できます。
+* API の 2020-05-01 (以降) バージョンの前にアカウントを作成した場合でも、MRU を管理するため API にアクセスできます。ただし、設定した MRU 構成は、エンコードのコンカレンシーやパフォーマンス制御には使用されません。 詳細については、[メディア処理のスケール設定](../previous/media-services-scale-media-processing-overview.md)に関するページを参照してください。 MRU の管理には、CLI 2.0 for Media Services V3、または Azure portal を使用できます。
 * Azure portal で MRU を管理するオプションが表示されない場合は、2020-05-01 API 以降で作成されたアカウントを実行しています。
 * MRU の種類を S3 に設定していた場合、MRU がなくなったことでパフォーマンスは向上するか、変わりません。
 * 既存の V2 のお客様は、移行が完了する前に、既存のアプリケーションをサポートするために新しい V3 アカウントを作成する必要があります。 

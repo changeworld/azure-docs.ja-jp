@@ -1,15 +1,15 @@
 ---
 title: Azure Lighthouse への顧客のオンボード
 description: Azure Lighthouse に顧客をオンボードする方法について説明します。これによりそのリソースは、テナント内のユーザーがアクセスして管理できます。
-ms.date: 08/26/2021
+ms.date: 09/30/2021
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1d060a7e1a6f9b0ae17e90b1094ec0a5da744e5f
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 3dbd3eb285a0135ca1b86294c5d3a41ef88a8472
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123469682"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129353299"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Azure Lighthouse への顧客のオンボード
 
@@ -338,6 +338,7 @@ az managedservices assignment list
 - 委任されたサブスクリプションに対して、**Microsoft.ManagedServices** リソース プロバイダーを登録する必要があります。 これはデプロイ中に自動的に行われますが、行われない場合は、[手動で登録](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider)できます。
 - 認可には、"[所有者](../../role-based-access-control/built-in-roles.md#owner)" 組み込みロール、または "[DataActions](../../role-based-access-control/role-definitions.md#dataactions)" を持つ組み込みロールが割り当てられたユーザーを含めることはできません。
 - グループは、[**グループの種類**](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md#group-types)を **Microsoft 365** ではなく **Security** に設定して作成する必要があります。
+- アクセスがグループに与えられた場合、ユーザーがそのグループに属するか必ずご確認ください。 属さない場合、別のデプロイを実行しなくても [Azure AD を使用し、グループにユーザーを追加](../../active-directory/fundamentals/active-directory-groups-members-azure-portal.md)できます。 [グループ所有者](../../active-directory/fundamentals/active-directory-accessmanagement-managing-group-owners.md)はその人が管理するグループに属するとは限らず、場合によっては、アクセスを与えるために追加する必要があることにご注意ください。
 - [入れ子になったグループ](../..//active-directory/fundamentals/active-directory-groups-membership-azure-portal.md)では、アクセスが有効になるまでにさらなる遅延が発生する場合があります。
 - 認可に含める [Azure 組み込みロール](../../role-based-access-control/built-in-roles.md)には、非推奨のロールを含めることはできません。 Azure 組み込みロールが非推奨になると、そのロールでオンボードされたすべてのユーザーがアクセス権を失います。また、追加の委任をオンボードすることはできなくなります。 この問題を解決するには、サポートされている組み込みロールのみを使用するようにテンプレートを更新してから、新しいデプロイを実行します。
 

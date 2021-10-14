@@ -4,17 +4,17 @@ description: "\"要求ヘッダーが大きすぎる\" 例外を診断して修�
 author: j82w
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
-ms.date: 07/13/2020
+ms.date: 09/29/2021
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: d180e955fda4074fa2115b26f363b2c1350dab98
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: acd3393471e8a58247ad366dcc8b816965ba8045
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123114104"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129273497"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-request-header-too-large-message"></a>Azure Cosmos DB の "要求ヘッダーが大きすぎる" メッセージを診断してトラブルシューティングする
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -37,7 +37,7 @@ ms.locfileid: "123114104"
 
 #### <a name="solution"></a>解決方法:
 > [!IMPORTANT]
-> .NET [v3.20.1](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/changelog.md) または [v2.15.0](https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/changelog.md) 以上にアップグレードします。 これらのマイナー バージョンには、ヘッダーが拡大し、サイズの制限に達するのを防ぐために、セッション トークンのサイズを小さくする最適化が含まれています。
+> .NET [v3.20.1](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/changelog.md) または [v2.16.1](https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/changelog.md) 以上にアップグレードします。 これらのマイナー バージョンには、ヘッダーが拡大し、サイズの制限に達するのを防ぐために、セッション トークンのサイズを小さくする最適化が含まれています。
 1. [.NET v3](performance-tips-dotnet-sdk-v3-sql.md) または [.NET v2](performance-tips.md) パフォーマンスのヒントに関する記事のガイダンスに従います。 伝送制御プロトコル (TCP) で直接接続モードが使用されるようにアプリケーションを変換します。 TCP プロトコルを使用した直接接続モードでは HTTP プロトコルのようにヘッダー サイズの制限がないため、この問題は回避されます。 最新バージョンの SDK を使用してください。このバージョンには、サービスの相互運用性がない場合のクエリ操作に対する修正が含まれています。
 1. TCP プロトコルを使用した直接接続モードがワークロードのオプションでない場合は、[クライアントの整合性レベル](how-to-manage-consistency.md)を変更することで軽減します。 セッション トークンは、Azure Cosmos DB の既定の整合性レベルであるセッションの整合性にのみ使用されます。 その他の整合性レベルでは、セッション トークンは使用されません。
 

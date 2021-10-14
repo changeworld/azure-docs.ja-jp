@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/27/2020
+ms.date: 09/15/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 95fe619ecb33e3b7e79c37b4cddb5950836b4cd5
-ms.sourcegitcommit: f4e04fe2dfc869b2553f557709afaf057dcccb0b
+ms.openlocfilehash: 12c7b70b2c1128cac943c8d1d61ad84113eb87f5
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113223718"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128570128"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Azure Active Directory B2C の b2clogin.com にリダイレクト URL を設定する
 
@@ -45,7 +45,7 @@ Azure AD B2C の一部のお客様は、OAuth 2.0 クライアントの資格情
 
 * Microsoft サービスによって Cookie ヘッダーで使用される領域が減ります。
 * リダイレクト URL に、Microsoft への参照を含める必要がなくなります。
-* カスタマイズされたページで、JavaScript クライアント側コードがサポートされます (現在、[プレビュー段階](javascript-and-page-layout.md)です)。 *login.microsoftonline.com* を使用する場合は、セキュリティ上の制限により、JavaScript コードと HTML フォームの要素はカスタム ページから削除されます。
+* カスタマイズされたページで、[JavaScript クライアント側コード](javascript-and-page-layout.md)がサポートされます。 *login.microsoftonline.com* を使用する場合は、セキュリティ上の制限により、JavaScript コードと HTML フォームの要素はカスタム ページから削除されます。
 
 ## <a name="overview-of-required-changes"></a>必要な変更の概要
 

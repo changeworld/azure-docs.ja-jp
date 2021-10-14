@@ -8,16 +8,16 @@ ms.author: divswa
 ms.reviewer: estfan, azla
 ms.topic: how-to
 ms.date: 09/15/2021
-ms.openlocfilehash: 027c1f44d756494432a076ec32f06e627f916b99
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 84d0e0b509505e6d56e39294b3e2819e4b03e024
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128553734"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129350001"
 ---
-# <a name="transform-xml-for-workflows-in-azure-logic-apps"></a>Azure Logic Apps でワークフロー用に XML を変換する
+# <a name="transform-xml-in-workflows-with-azure-logic-apps"></a>Azure Logic Apps を使用してワークフローで XML を変換する
 
-エンタープライズ統合の企業間 (B2B) シナリオでは、XML を形式間で変換する必要がある場合があります。 ロジック アプリ ワークフローでは、**XML 変換** アクションと定義済みの [ "*マップ*" ](logic-apps-enterprise-integration-maps.md)を使用して、XML を変換することができます。 たとえば、YearMonthDay という日付形式 (YYYYMMDD) を使用している顧客から、B2B の注文や請求書を定期的に受け取っているとします。 ただし、あなたの組織では MonthDayYear という日付形式 (MMDDYYYY) を使用しています。 そのような場合は、YearMonthDay 形式から MonthDayYear 形式に変換するマップを作成して使用できます。その後、顧客活動データベースに注文や請求書の詳細を保存できます。
+エンタープライズ統合の企業間 (B2B) シナリオでは、XML を形式間で変換する必要がある場合があります。 ロジック アプリ ワークフローでは、**XML 変換** アクションと定義済みの [ "*マップ*"](logic-apps-enterprise-integration-maps.md)を使用して、XML を変換することができます。 たとえば、YearMonthDay という日付形式 (YYYYMMDD) を使用している顧客から、B2B の注文や請求書を定期的に受け取っているとします。 ただし、あなたの組織では MonthDayYear という日付形式 (MMDDYYYY) を使用しています。 そのような場合は、YearMonthDay 形式から MonthDayYear 形式に変換するマップを作成して使用できます。その後、顧客活動データベースに注文や請求書の詳細を保存できます。
 
 ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](logic-apps-overview.md)」を参照してください。 B2B エンタープライズ統合の詳細については、「[Azure Logic Apps と Enterprise Integration Pack を使用した B2B エンタープライズ統合ワークフロー](logic-apps-enterprise-integration-overview.md)」をご確認ください。
 
@@ -44,7 +44,7 @@ ms.locfileid: "128553734"
     取引先、契約、証明書などの他の成果物を保存すると共に、[AS2](logic-apps-enterprise-integration-as2.md)、[X12](logic-apps-enterprise-integration-x12.md)、および [EDIFACT](logic-apps-enterprise-integration-edifact.md) 操作を使用するには、引き続き統合アカウントが必要です。 ただし、ロジック アプリ リソースを統合アカウントにリンクする必要はないため、リンク機能は存在しません。 統合アカウントは、ロジック アプリ リソースと同じ Azure サブスクリプションを使用することや、ロジック アプリ リソースと同じ場所に存在することなど、他の要件も満たす必要があります。
 
     > [!NOTE]
-    > 現在、[RosettaNet](logic-apps-enterprise-integration-rosettanet.md) 操作をサポートしているのは、**ロジック アプリ (従量課金)** というリソースの種類のみです。 **ロジック アプリ (Standard)** というリソースの種類には、[RosettaNet](logic-apps-enterprise-integration-rosettanet.md) 操作は含まれていません。
+    > 現時点では、[RosettaNet](logic-apps-enterprise-integration-rosettanet.md) の操作をサポートしているのは、**ロジック アプリ (従量課金)** のリソースの種類のみです。 **ロジック アプリ (Standard)** というリソースの種類には、[RosettaNet](logic-apps-enterprise-integration-rosettanet.md) 操作は含まれていません。
 
 ## <a name="add-transform-xml-action"></a>XML 変換アクションを追加する
 

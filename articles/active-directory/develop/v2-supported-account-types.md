@@ -13,12 +13,12 @@ ms.date: 07/14/2020
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: d6c184e2983a072dec4b3021a1b58a61cd206dba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b72e911631bc15402cf504655426c63cd26a69d6
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98755984"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129231731"
 ---
 # <a name="supported-account-types"></a>サポートされているアカウントの種類
 

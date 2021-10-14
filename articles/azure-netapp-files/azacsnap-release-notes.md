@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/27/2021
 ms.author: phjensen
-ms.openlocfilehash: 0a2a110b483d7f5f5618e5679e4479ebf1d313b8
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: a580a135d2158234c84f3378b024997679ad6017
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123438122"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124778326"
 ---
 # <a name="release-notes-for-azure-application-consistent-snapshot-tool"></a>Azure アプリケーション整合性スナップショット ツールのリリース ノート
 
@@ -59,7 +59,7 @@ AzAcSnap v5.0 (ビルド: 20210421.6349) が一般公開となり、このビル
 
 次の修正と機能強化を含む AcSnap v5.0 Preview (Build:20210318.30771) がリリースされました。
 
-- SAP HANA テナント DＢ に AZACSNAP ユーザーを追加する必要がなくなりました。「[SAP HANA との通信を有効にする](azacsnap-installation.md#enable-communication-with-sap-hana)」セクションを参照してください。
+- SAP HANA テナント DB に AZACSNAP ユーザーを追加する必要がなくなりました。「[データベースとの通信を有効にする](azacsnap-installation.md#enable-communication-with-database)」セクションを参照してください。
 - 手動による QOS で構成されたボリュームを使用した[復元](azacsnap-cmd-ref-restore.md)を許可するように修正しました。
 - Azure Large Instances の SSH 接続を抑えるためのミューテックス制御を追加しました。
 - スペースを含むパス名およびその他の関連する問題を処理するためにインストーラーを修正しました。

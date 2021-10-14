@@ -8,12 +8,12 @@ ms.author: ramero
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/16/2021
-ms.openlocfilehash: 186fa5fe490541ce465eca37cf21a6a63923e2ee
-ms.sourcegitcommit: 6a3096e92c5ae2540f2b3fe040bd18b70aa257ae
+ms.openlocfilehash: 986bc72d135cbbfceeb4b7e60556673a8dd8edbc
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112321884"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129275850"
 ---
 # <a name="add-scoring-profiles-to-a-search-index"></a>検索インデックスにスコアリング プロファイルを追加する
 
@@ -27,7 +27,7 @@ ms.locfileid: "112321884"
 
 ## <a name="what-is-a-scoring-profile"></a>スコアリング プロファイルとは
 
-スコアリング プロファイルは、インデックス定義の一部であり、重み付けされたフィールド、関数、およびパラメーターで構成されます。 スコアリング プロファイルの目的は、指定した条件に基づいて一致するドキュメントをブーストまたは増幅することです。 
+スコアリング プロファイルは、重み付けされたフィールド、関数、およびパラメーターで構成されるインデックス定義の一部です。 スコアリング プロファイルの目的は、指定した条件に基づいて一致するドキュメント数を増加または増幅することです。 
 
 次の定義は、"geo" という名前のシンプルなプロファイルを示しています。 このプロファイルは、hotelName フィールド内の検索語句を含む結果をブーストします。 また、`distance` 関数を使用して、現在の場所から 10 キロメートル以内にある結果を優先します。 他のユーザーが語句 "inn" の検索を実行し、"inn" がたまたまホテル名の一部であった場合、現在位置の半径 10 Km 以内にあって "inn" を含むホテルが記載されているドキュメントが検索結果で上位に表示されます。  
 
@@ -75,7 +75,7 @@ POST /indexes/hotels/docs&api-version=2020-06-30
 
 ## <a name="how-scores-are-computed"></a>スコアの計算方法
 
-スコアは、最も関連性の高い一致をランク付けして応答の先頭で返す目的で、フルテキスト検索クエリに対して計算されます。 各ドキュメントの全体のスコアは、各フィールドの個々のスコアを集計したものです。各フィールドの個々のスコアは、対象のフィールド内で検索される語句の出現頻度と文書頻度 ([TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf) (語句の出現頻度と逆文書頻度) とも呼ばれます) に基づいて計算されます。 
+スコアは、フルテキスト検索クエリに対して、関連性が最も高い一致をランク付けし、それを応答の先頭で返すために計算されます。 各ドキュメントの全体のスコアは、各フィールドの個々のスコアを集計したものです。各フィールドの個々のスコアは、対象のフィールド内で検索される語句の出現頻度と文書頻度 ([TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf) (語句の出現頻度と逆文書頻度) とも呼ばれます) に基づいて計算されます。 
 
 > [!Tip]
 > [featuresMode](index-similarity-and-scoring.md#featuresmode-parameter-preview) パラメーターを使用して、検索結果 (フィールド レベルのスコアを含む) と共に追加のスコアリングの詳細を要求できます。

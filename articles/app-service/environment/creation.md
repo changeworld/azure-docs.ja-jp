@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 09/07/2021
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 0ed8291fd038f49e079bc3851b340bd7c9af5538
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: fdf74a88a34f9d497bc23b9fed00c8fa55b6875a
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124836361"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129236088"
 ---
 # <a name="create-an-app-service-environment"></a>App Service Environment を作成する
 > [!NOTE]

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/06/2021
 ms.author: v-doeris
 ms.custom: has-adal-ref
-ms.openlocfilehash: a67f493666c458637a2cd48b7e0d78e0bcf59862
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: 541200501fd9bd3cc1883283bc308445d0e4115e
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122418769"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129232245"
 ---
 # <a name="how-to-migrate-a-javascript-app-from-adaljs-to-msaljs"></a>JavaScript アプリを ADAL.js から MSAL.js に移行する方法
 
@@ -98,7 +98,7 @@ ADAL.js と MSAL.js のいずれも、機関 URI を指定しない場合の既�
 
 [AuthenticationContext](https://github.com/AzureAD/azure-activedirectory-library-for-js/wiki/Config-authentication-context#authenticationcontext) の初期化時に使用される [ADAL.js の構成オプション](https://github.com/AzureAD/azure-activedirectory-library-for-js/wiki/Config-authentication-context)の一部は MSAL.js では非推奨になり、いくつかの新しいオプションが導入されました。 [使用できるオプションの詳細な一覧](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser/docs/configuration.md)を参照してください。 重要な点は、これらのオプションの多くは、`clientId` を除き、トークン取得時にオーバーライドできるため、*要求ごと* に設定できるということです。 たとえば、トークンを取得するときに、初期化時に設定したものとは異なる **機関 URI** または **リダイレクト URI** を使用することができます。
 
-さらに、構成オプションでログイン エクスペリエンス (ポップアップ ウィンドウを使用するか、ページをリダイレクトするかなど) を指定する必要もなくなりました。 その代わり、MSAL.js では、`PublicClientApplication` インスタンスを介して `loginPopup` と `loginRedirect` のメソッドが公開されています。
+さらに、構成オプションでログイン エクスペリエンス (ポップアップ ウィンドウを使用するか、ページをリダイレクトするかなど) を指定する必要もなくなりました。 その代わり、`MSAL.js` では、`PublicClientApplication` インスタンスを介して `loginPopup` と `loginRedirect` のメソッドが公開されています。
 
 ## <a name="enable-logging"></a>ログの有効化
 
@@ -473,7 +473,7 @@ npm start
 </tr>
 </table>
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [MSAL.js API リファレンス](https://azuread.github.io/microsoft-authentication-library-for-js/ref/)
 - [MSAL.js コード サンプル](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/samples)

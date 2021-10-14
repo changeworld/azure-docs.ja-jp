@@ -4,12 +4,12 @@ description: 要求を認証し、Azure Monitor REST API を使用して使用�
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.custom: has-adal-ref, devx-track-azurepowershell
-ms.openlocfilehash: 2b7033c86c412e2bebb320952bb8ac94d33cfb69
-ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+ms.openlocfilehash: c15e985cd46c283856fd0ac2f9a374e31753c5fc
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123272171"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129234112"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure 監視 REST API のチュートリアル
 
@@ -17,7 +17,7 @@ ms.locfileid: "123272171"
 
 この記事では、コードが [Microsoft Azure Monitor REST API リファレンス](/rest/api/monitor/)を使用できるように、認証を実行する方法について説明します。
 
-Azure Monitor API では、使用可能な既定のメトリック定義、粒度、およびメトリック値をプログラムによって取得できます。 データは、Azure SQL Database、Azure Cosmos DB、Azure Data Lake など、別のデータ ストアに保存し、 そこで、必要に応じて追加の分析を実行できます。
+Azure Monitor API では、使用可能な既定のメトリック定義、ディメンション値、メトリック値をプログラムによって取得できます。 データは、Azure SQL Database、Azure Cosmos DB、Azure Data Lake など、別のデータ ストアに保存し、 そこで、必要に応じて追加の分析を実行できます。
 
 Monitor API では、さまざまなメトリック データ ポイントを処理するだけでなく、アラート規則の一覧表示、アクティビティ ログの表示などを行うこともできます。 使用可能な操作の一覧については、 [Microsoft Azure Monitor REST API リファレンス](/rest/api/monitor/)を参照してください。
 
@@ -88,7 +88,7 @@ $authHeader = @{
 >
 >
 
-## <a name="retrieve-metric-definitions-multi-dimensional-api"></a>メトリック定義の取得 (多次元 API)
+## <a name="retrieve-metric-definitions"></a>メトリック定義の取得
 
 [Azure Monitor メトリック定義 REST API](/rest/api/monitor/metricdefinitions) を使用すると、サービスで使用できるメトリックの一覧にアクセスできます。
 
@@ -110,7 +110,7 @@ Invoke-RestMethod -Uri $request `
 ```
 
 > [!NOTE]
-> 多次元 Azure Monitor メトリック REST API を使用してメトリック定義を取得するには、"2018-01-01" API バージョンを使用します。
+> 以前のバージョンのメトリック定義 API ではディメンションがサポートされていませんでした。 API バージョン "2018-01-01" 以降を使用することをお勧めします。
 >
 >
 
@@ -225,14 +225,14 @@ Invoke-RestMethod -Uri $request `
 }
 ```
 
-## <a name="retrieve-dimension-values-multi-dimensional-api"></a>ディメンションの値の取得 (多次元 API)
+## <a name="retrieve-dimension-values"></a>ディメンション値を取得する
 
-使用可能なメトリック定義が判明した時点で、一部のメトリックにディメンションがある場合があります。 メトリックのクエリを実行する前に、ディメンションの値の範囲を調べます。 これらのディメンション値に基づいて、メトリックのクエリの実行中にメトリックをフィルター処理するか、分割するかを選択できます。  [Azure Monitor メトリック REST API](/rest/api/monitor/metrics) を使用して、それを達成します。
+使用可能なメトリック定義が判明した時点で、一部のメトリックにディメンションがある場合があります。 メトリックのクエリを実行する前に、ディメンションの値の範囲を調べます。 これらのディメンション値に基づいて、メトリックのクエリの実行中にメトリックをフィルター処理するか、分割するかを選択できます。  [Azure Monitor Metrics REST API](/rest/api/monitor/metrics) を使用し、特定のメトリック ディメンションで考えられるすべての値を見つけます。
 
-すべてのフィルター処理の要求にメトリックの名前 'value' ('localizedValue' ではありません) を使用します。 フィルターが指定されていない場合は、既定のメトリックが返されます。 この API の使用法では、1 つのディメンションでのみ、ワイルドカード フィルターを使用できます。
+すべてのフィルター処理の要求にメトリックの名前 'value' ('localizedValue' ではありません) を使用します。 フィルターが指定されていない場合は、既定のメトリックが返されます。 この API の使用法では、1 つのディメンションでのみ、ワイルドカード フィルターを使用できます。 ディメンション値要求とメトリック データ要求の主な違いは、"resultType=metadata" クエリ パラメーターを指定することです。
 
 > [!NOTE]
-> Azure Monitor REST API を使用してディメンション値を取得するには、"2018-01-01" API バージョンを使用します。
+> Azure Monitor REST API を使用してディメンション値を取得するには、"2019-07-01" 以降の API バージョンを使用します。
 >
 >
 
@@ -244,7 +244,7 @@ Invoke-RestMethod -Uri $request `
 
 ```powershell
 $filter = "APIName eq '*' and GeoType eq 'Primary'"
-$request = "https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Storage/storageAccounts/ContosoStorage/providers/microsoft.insights/metrics?metricnames=Transactions&timespan=2018-03-01T00:00:00Z/2018-03-02T00:00:00Z&resultType=metadata&`$filter=${filter}&api-version=2018-01-01"
+$request = "https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Storage/storageAccounts/ContosoStorage/providers/microsoft.insights/metrics?metricnames=Transactions&timespan=2018-03-01T00:00:00Z/2018-03-02T00:00:00Z&resultType=metadata&`$filter=GeoType eq 'Primary' and ApiName eq '*'&api-version=2019-07-01"
 Invoke-RestMethod -Uri $request `
     -Headers $authHeader `
     -Method Get `
@@ -298,14 +298,14 @@ Invoke-RestMethod -Uri $request `
 }
 ```
 
-## <a name="retrieve-metric-values-multi-dimensional-api"></a>メトリックの値の取得 (多次元 API)
+## <a name="retrieve-metric-values"></a>メトリック値の取得
 
 使用可能なメトリック定義と考えられるディメンションの値がわかったら、関連するメトリック値を取得できます。  [Azure Monitor メトリック REST API](/rest/api/monitor/metrics) を使用して、それを達成します。
 
-すべてのフィルター処理の要求にメトリックの名前 'value' ('localizedValue' ではありません) を使用します。 ディメンション フィルターが指定されていない場合、ロール アップされた集計メトリックが返されます。 メトリックのクエリが複数の時系列を返す場合、'Top' および 'OrderBy' クエリ パラメーターを使用して、制限付きかつ順序付きの時系列のリストを返すことができます。
+すべてのフィルター処理の要求にメトリックの名前 'value' ('localizedValue' ではありません) を使用します。 ディメンション フィルターが指定されていない場合、ロール アップされた集計メトリックが返されます。 特定のディメンション値を持つ複数の時系列をフェッチするには、"&$filter=ApiName eq 'ListContainers' や ApiName eq 'GetBlobServiceProperties'" などの両方のディメンション値を指定するフィルター クエリ パラメーターを指定します。 特定のディメンションのあらゆる値に対して時系列を返すには、" *"&$filter=ApiName eq*" のようなフィルター" を使用します。 'Top' クエリ パラメーターと 'OrderBy' クエリ パラメーターを使用すると、返される時系列の数を制限し、順序付けできます。
 
 > [!NOTE]
-> Azure Monitor REST API を使用して多次元のメトリック値を取得するには、"2018-01-01" API バージョンを使用します。
+> Azure Monitor REST API を使用して多次元のメトリック値を取得するには、"2019-07-01" 以降の API バージョンを使用します。
 >
 >
 
@@ -317,7 +317,7 @@ Invoke-RestMethod -Uri $request `
 
 ```powershell
 $filter = "APIName eq '*' and GeoType eq 'Primary'"
-$request = "https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Storage/storageAccounts/ContosoStorage/providers/microsoft.insights/metrics?metricnames=Transactions&timespan=2018-03-01T02:00:00Z/2018-03-01T02:05:00Z&`$filter=${filter}&interval=PT1M&aggregation=Total&top=3&orderby=Total desc&api-version=2018-01-01"
+$request = "https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Storage/storageAccounts/ContosoStorage/providers/microsoft.insights/metrics?metricnames=Transactions&timespan=2018-03-01T02:00:00Z/2018-03-01T02:05:00Z&`$filter=apiname eq 'GetBlobProperties'&interval=PT1M&aggregation=Total&top=3&orderby=Total desc&api-version=2019-07-01"
 Invoke-RestMethod -Uri $request `
     -Headers $authHeader `
     -Method Get `
@@ -384,201 +384,9 @@ Invoke-RestMethod -Uri $request `
 }
 ```
 
-## <a name="retrieve-metric-definitions"></a>メトリック定義の取得
-
-[Azure Monitor メトリック定義 REST API](/rest/api/monitor/metricdefinitions) を使用すると、サービスで使用できるメトリックの一覧にアクセスできます。
-
-**メソッド**: GET
-
-**Request URI**: https:\/\/management.azure.com/subscriptions/ *{subscriptionId}* /resourceGroups/ *{resourceGroupName}* /providers/ *{resourceProviderNamespace}* / *{resourceType}* / *{resourceName}* /providers/microsoft.insights/metricDefinitions?api-version= *{apiVersion}*
-
-たとえば、Azure Logic App のメトリック定義を取得する要求は次のようになります。
-
-```powershell
-$request = "https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Logic/workflows/ContosoTweets/providers/microsoft.insights/metricDefinitions?api-version=2016-03-01"
-
-Invoke-RestMethod -Uri $request `
-                  -Headers $authHeader `
-                  -Method Get `
-                  -OutFile ".\contosotweets-metricdef-results.json" `
-                  -Verbose
-```
-
-> [!NOTE]
-> Azure Monitor REST API を使用してメトリック定義を取得するには、"2016-03-01" API バージョンを使用します。
->
->
-
-結果として得られる JSON 応答本文は次の例のようになります。
-
-```json
-{
-  "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Logic/workflows/ContosoTweets/providers/microsoft.insights/metricdefinitions",
-  "value": [
-    {
-      "name": {
-        "value": "RunsStarted",
-        "localizedValue": "Runs Started"
-      },
-      "category": "AllMetrics",
-      "startTime": "0001-01-01T00:00:00Z",
-      "endTime": "0001-01-01T00:00:00Z",
-      "unit": "Count",
-      "primaryAggregationType": "Total",
-      "resourceUri": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Logic/workflows/ContosoTweets",
-      "resourceId": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Logic/workflows/ContosoTweets",
-      "metricAvailabilities": [
-        {
-          "timeGrain": "PT1M",
-          "retention": "P30D",
-          "location": null,
-          "blobLocation": null
-        },
-        {
-          "timeGrain": "PT1H",
-          "retention": "P30D",
-          "location": null,
-          "blobLocation": null
-        }
-      ],
-      "properties": null,
-      "dimensions": null,
-      "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Logic/workflows/ContosoTweets/providers/microsoft.insights/metricdefinitions/RunsStarted",
-      "supportedAggregationTypes": [ "None", "Average", "Minimum", "Maximum", "Total", "Count" ]
-    }
-  ]
-}
-```
-
-詳細については、「 [List the metric definitions for a resource in Azure Monitor REST API (Azure Monitor REST API でリソースのメトリック定義を一覧表示)](/rest/api/monitor/metricdefinitions) 」を参照してください。
-
-## <a name="retrieve-metric-values"></a>メトリック値の取得
-
-使用可能なメトリック定義がわかったら、関連するメトリック値を取得できます。 任意のフィルター処理要求に対してメトリックの名前 "value" ("localizedValue" ではありません) を使用します。たとえば、"CpuTime" と "Requests" メトリック データ ポイントを取得します。 フィルターが指定されていない場合は、既定のメトリックが返されます。
-
-> [!NOTE]
-> Azure Monitor REST API を使用してメトリック値を取得するには、"2016-09-01" API バージョンを使用します。
->
->
-
-**メソッド**: `GET`
-
-**要求 URI**: `https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider-namespace}/{resource-type}/{resource-name}/providers/microsoft.insights/metrics?$filter={filter}&api-version={apiVersion}`
-
-たとえば、特定の時間範囲と 1 時間の時間グレインに対して RunsSucceeded メトリック データ ポイントを取得する場合、要求は次のようになります。
-
-```powershell
-$filter = "(name.value eq 'RunsSucceeded') and aggregationType eq 'Total' and startTime eq 2017-08-18T19:00:00 and endTime eq 2017-08-18T23:00:00 and timeGrain eq duration'PT1H'"
-$request = "https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Logic/workflows/ContosoTweets/providers/microsoft.insights/metrics?`$filter=${filter}&api-version=2016-09-01"
-Invoke-RestMethod -Uri $request `
-    -Headers $authHeader `
-    -Method Get `
-    -OutFile ".\contosotweets-metrics-results.json" `
-    -Verbose
-```
-
-結果として得られる JSON 応答本文は次の例のようになります。
-
-```json
-{
-  "value": [
-    {
-      "data": [
-        {
-          "timeStamp": "2017-08-18T19:00:00Z",
-          "total": 0.0
-        },
-        {
-          "timeStamp": "2017-08-18T20:00:00Z",
-          "total": 159.0
-        },
-        {
-          "timeStamp": "2017-08-18T21:00:00Z",
-          "total": 174.0
-        },
-        {
-          "timeStamp": "2017-08-18T22:00:00Z",
-          "total": 97.0
-        }
-      ],
-      "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Logic/workflows/ContosoTweets/providers/Microsoft.Insights/metrics/RunsSucceeded",
-      "name": {
-        "value": "RunsSucceeded",
-        "localizedValue": "Runs Succeeded"
-      },
-      "type": "Microsoft.Insights/metrics",
-      "unit": "Count"
-    }
-  ]
-}
-```
-
-複数のデータまたは集計ポイントを取得するには、次の例に示すように、メトリック定義の名前と集計の種類をフィルターに追加します。
-
-```powershell
-$filter = "(name.value eq 'ActionsCompleted' or name.value eq 'RunsSucceeded') and (aggregationType eq 'Total' or aggregationType eq 'Average') and startTime eq 2017-08-18T21:00:00 and endTime eq 2017-08-18T21:30:00 and timeGrain eq duration'PT1M'"
-$request = "https://management.azure.com/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Logic/workflows/ContosoTweets/providers/microsoft.insights/metrics?`$filter=${filter}&api-version=2016-09-01"
-Invoke-RestMethod -Uri $request `
-    -Headers $authHeader `
-    -Method Get `
-    -OutFile ".\contosotweets-metrics-multiple-results.json" `
-    -Verbose
-```
-
-結果として得られる JSON 応答本文は次の例のようになります。
-
-```json
-{
-  "value": [
-    {
-      "data": [
-        {
-          "timeStamp": "2017-08-18T21:03:00Z",
-          "total": 5.0,
-          "average": 1.0
-        },
-        {
-          "timeStamp": "2017-08-18T21:04:00Z",
-          "total": 7.0,
-          "average": 1.0
-        }
-      ],
-      "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Logic/workflows/ContosoTweets/providers/Microsoft.Insights/metrics/ActionsCompleted",
-      "name": {
-        "value": "ActionsCompleted",
-        "localizedValue": "Actions Completed "
-      },
-      "type": "Microsoft.Insights/metrics",
-      "unit": "Count"
-    },
-    {
-      "data": [
-        {
-          "timeStamp": "2017-08-18T21:03:00Z",
-          "total": 5.0,
-          "average": 1.0
-        },
-        {
-          "timeStamp": "2017-08-18T21:04:00Z",
-          "total": 7.0,
-          "average": 1.0
-        }
-      ],
-      "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azmon-rest-api-walkthrough/providers/Microsoft.Logic/workflows/ContosoTweets/providers/Microsoft.Insights/metrics/RunsSucceeded",
-      "name": {
-        "value": "RunsSucceeded",
-        "localizedValue": "Runs Succeeded"
-      },
-      "type": "Microsoft.Insights/metrics",
-      "unit": "Count"
-    }
-  ]
-}
-```
-
 ### <a name="use-armclient"></a>ARMClient の使用
 
-その他のアプローチは、お使いの Windows マシンで [ARMClient](https://github.com/projectkudu/armclient) を使用することです。 ARMClient では、Azure AD 認証 (および結果の JWT トークン) が自動的に処理されます。 次の手順は、ARMClient を使用してメトリック データを取得する方法を簡単に示しています。
+他のアプローチは、お使いの Windows マシンで [ARMClient](https://github.com/projectkudu/armclient) を使用することです。 ARMClient では、Azure AD 認証 (および結果の JWT トークン) が自動的に処理されます。 次の手順は、ARMClient を使用してメトリック データを取得する方法を簡単に示しています。
 
 1. [Chocolatey](https://chocolatey.org/) と [ARMClient](https://github.com/projectkudu/armclient) をインストールします。
 2. ターミナル ウィンドウで、「 *armclient.exe login*」と入力します。 これにより Azure にログインするよう求められます。
@@ -704,7 +512,7 @@ az storage account show -g azmon-rest-api-walkthrough -n contosotweets2017
 
 ## <a name="retrieve-activity-log-data"></a>アクティビティ ログ データの取得
 
-メトリック定義と関連する値だけでなく、Azure Monitor REST API を使用して Azure リソースに関連するその他の興味深い分析情報を取得することもできます。 たとえば、 [アクティビティ ログ](/rest/api/monitor/activitylogs) データにクエリを実行できます。 次のサンプル要求では、Azure Monitor REST API を使用し、アクティビティ ログにクエリを実行します。
+メトリック定義と関連する値だけでなく、Azure Monitor REST API を使用して Azure リソースに関連する他の興味深い分析情報を取得することもできます。 たとえば、 [アクティビティ ログ](/rest/api/monitor/activitylogs) データにクエリを実行できます。 次のサンプル要求では、Azure Monitor REST API を使用し、アクティビティ ログにクエリを実行します。
 
 フィルターを使用してアクティビティ ログを取得します。
 

@@ -3,15 +3,15 @@ title: Azure Automation でモジュラー Runbook を作成する
 description: この記事では、別の Runbook によって呼び出される Runbook を作成する方法について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 09/13/2021
+ms.date: 09/22/2021
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: cbbf9be820d46875618cae76edb5f76bbfbb5e0f
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: b6ced29de1ddc71d44d1b93f6b46982865f62014
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128675366"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129353428"
 ---
 # <a name="create-modular-runbooks-in-automation"></a>Automation でモジュラー Runbook を作成する
 
@@ -95,12 +95,11 @@ $output = .\PS-ChildRunbook.ps1 -VM $vm -RepeatCount 2 -Restart $true
 # Ensure that the runbook does not inherit an AzContext
 Disable-AzContextAutosave -Scope Process
 
-# Connect to Azure with user-assigned managed identity
-Connect-AzAccount -Identity
-$identity = Get-AzUserAssignedIdentity -ResourceGroupName <ResourceGroupName> -Name <UserAssignedManagedIdentity>
-Connect-AzAccount -Identity -AccountId $identity.ClientId
+# Connect to Azure with system-assigned managed identity
+$AzureContext = (Connect-AzAccount -Identity).context
 
-$AzureContext = Set-AzContext -SubscriptionId ($identity.id -split "/")[2]
+# set and store context
+$AzureContext = Set-AzContext -SubscriptionName $AzureContext.Subscription -DefaultProfile $AzureContext
 
 $params = @{"VMName"="MyVM";"RepeatCount"=2;"Restart"=$true}
 
@@ -108,9 +107,14 @@ Start-AzAutomationRunbook `
     -AutomationAccountName 'MyAutomationAccount' `
     -Name 'Test-ChildRunbook' `
     -ResourceGroupName 'LabRG' `
-    -AzContext $AzureContext `
+    -DefaultProfile $AzureContext `
     -Parameters $params -Wait
 ```
+
+Runbook をシステム割り当てマネージド ID で実行する場合は、コードをそのままにしておきます。 ユーザー割り当てマネージド ID を使用する場合は、次のようにします。
+1. 行 5 から `$AzureContext = (Connect-AzAccount -Identity).context` を削除します。
+1. それを `$AzureContext = (Connect-AzAccount -Identity -AccountId <ClientId>).context` に置き換えた後、
+1. クライアント ID を入力します。
 
 ## <a name="next-steps"></a>次のステップ
 

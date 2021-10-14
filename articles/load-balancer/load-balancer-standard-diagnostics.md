@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2021
 ms.author: allensu
-ms.openlocfilehash: d044ddbde293721e26ed491e237aa5b89075f72a
-ms.sourcegitcommit: d01c2b2719e363178720003b67b968ac2a640204
+ms.openlocfilehash: c0502b880d23e9f0a63564f11473f48e1c01b096
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122455837"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129236557"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>メトリック、アラート、およびリソース正常性を使用した Standard Load Balancer の診断
 
@@ -74,7 +74,7 @@ Standard Load Balancer リソースのメトリックを表示するには:
 
 ### <a name="retrieve-multi-dimensional-metrics-programmatically-via-apis"></a>API を使用してプログラムで多次元メトリックを取得する
 
-多次元メトリックの定義と値を取得するための API のガイダンスについては、「[Azure 監視 REST API のチュートリアル](../azure-monitor/essentials/rest-api-walkthrough.md#retrieve-metric-definitions-multi-dimensional-api)」をご覧ください。 これらのメトリックは、"すべてのメトリック" カテゴリに[診断設定](../azure-monitor/essentials/diagnostic-settings.md)を追加することでストレージ アカウントに書き込むことができます。 
+多次元メトリックの定義と値を取得するための API のガイダンスについては、「[Azure 監視 REST API のチュートリアル](../azure-monitor/essentials/rest-api-walkthrough.md#retrieve-metric-definitions)」をご覧ください。 これらのメトリックは、"すべてのメトリック" カテゴリに[診断設定](../azure-monitor/essentials/diagnostic-settings.md)を追加することでストレージ アカウントに書き込むことができます。 
 
 ### <a name="common-diagnostic-scenarios-and-recommended-views"></a><a name = "DiagnosticScenarios"></a>一般的な診断シナリオと推奨されるビュー
 
@@ -152,7 +152,7 @@ SNAT 接続の統計情報を取得するには:
 SNAT ポートの使用状況と割り当てを確認するには:
 1. グラフの時間の集計を 1 分に設定して、目的のデータが表示されるようにします。
 1. メトリックの種類として **[使用された SNAT ポート]** および/または **[割り当てられた SNAT ポート]** を選択し、集計として **[平均]** を選択します。
-    * 既定では、これらのメトリックは、各バックエンド VM または VMSS に割り当てられた、またはこれらが使用している SNAT ポートの平均数です。これは、ロード バランサーにマップされたすべてのフロントエンド パブリック IP に対応し、TCP と UDP で集計されます。
+    * 既定では、これらのメトリックは、各バックエンド VM または仮想マシン スケール セットに割り当てられた、またはこれらが使用している SNAT ポートの平均数です。これは、ロード バランサーにマップされたすべてのフロントエンド パブリック IP に対応し、TCP と UDP で集計されます。
     * ロード バランサーが使用している、またはロード バランサーに割り当てられた SNAT ポートの合計数を確認するには、メトリック集計の **[Sum]\(合計\)** を使用します。
 1. フィルター処理によって、特定の **プロトコルの種類**、一連の **バックエンド IP**、および/または **フロントエンド IP** に絞り込みます。
 1. バックエンドまたはフロントエンド インスタンスごとに正常性を監視するには、分割を適用します。 

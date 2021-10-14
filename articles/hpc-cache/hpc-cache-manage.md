@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 07/08/2021
 ms.author: v-erkel
-ms.openlocfilehash: cd4dcb4bac5f2876db9af194abc5835c1d0f5a3c
-ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
+ms.openlocfilehash: 4fb5bcc0ae5be35f740bc39bc0cf4a9221363358
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113586979"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129274370"
 ---
 # <a name="manage-your-cache"></a>キャッシュを管理する
 
@@ -35,7 +35,7 @@ Azure portal のキャッシュの概要ページには、お使いのキャッ�
 これらのオプションの詳細については、以下をご覧ください。
 
 > [!TIP]
-> また、個々のストレージ ターゲットを管理できます。詳細については、「[ストレージ ターゲットの管理](manage-storage-targets.md)」を参照してください。
+> また、個々のストレージ ターゲットを管理できます。詳細については、[ストレージ ターゲットの表示と管理](manage-storage-targets.md)に関する説明ページを参照してください。
 
 キャッシュ管理タスクをデモンストレーションする[ビデオ](https://azure.microsoft.com/resources/videos/managing-hpc-cache/)を視聴するには、次の画像をクリックしてください。
 

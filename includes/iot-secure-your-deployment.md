@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 597bcf9d7654b88cb4a3f9b7df32ea1c7b770da2
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: f1256eb3be414679a84701c6ea96ac9a72d9caa2
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109508361"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129236364"
 ---
 この記事では、Azure の IoT インフラストラクチャを保護する詳細事項の次のレベルを説明します。 各コンポーネントを設定し、デプロイする実装レベルの詳細へリンクします。 また、さまざまな方法の比較や選択肢についても説明しています。
 
@@ -29,7 +29,7 @@ Azure IoT デプロイの保護は、次の 3 つのセキュリティ領域に�
 
 ## <a name="secure-device-provisioning-and-authentication"></a>安全なデバイス プロビジョニングと認証
 
-IoT ソリューション アクセラレータでは、次の 2 つの方法を使って IoT デバイスをセキュリティで保護します。
+IoT ソリューションでは、次の 2 つの方法を使用して IoT デバイスをセキュリティで保護します。
 
 * デバイスで IoT Hub と通信するために使用される各デバイスの一意の id キー (セキュリティ トークン) の提供。
 

@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 91ef36a5dbbfb7e0edb7fe1d75d77d2f2dc4870b
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: ef1cce7905e07c1fa407c0194d585bb196ecdfd6
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113357609"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129232206"
 ---
 # <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-msaljs"></a>Internet Explorer および Microsoft Edge ブラウザーに関する既知の問題 (MSAL.js)
 
@@ -36,7 +36,7 @@ IE と Microsoft Edge での認証に関する問題が複数報告されてい�
 
     `Error :login_required; Error description:AADSTS50058: A silent sign-in request was sent but no user is signed in. The cookies used to represent the user's session were not sent in the request to Azure AD. This can happen if the user is using Internet Explorer or Edge, and the web app sending the silent sign-in request is in different IE security zone than the Azure AD endpoint (login.microsoftonline.com)`
 
-- **ポップアップ経由のログインを使用して認証するとき、ポップアップ ウィンドウが閉じないか動作が停止する**。 Microsoft Edge または IE (InPrivate) でポップアップ ウィンドウを通じて認証するとき、資格情報を入力してサインインした後、セキュリティ ゾーンをまたぐ複数のドメインがナビゲーションに関係している場合、MSAL.js がポップアップ ウィンドウの制御を失うためポップアップ ウィンドウが閉じなくなります。
+- **ポップアップ ウィンドウ経由のログインを使用して認証するとき、ポップアップ ウィンドウが閉じない、または動作が停止する**。 Microsoft Edge または IE (InPrivate) でポップアップ ウィンドウを使用して認証するとき、資格情報を入力してサインインした後、セキュリティ ゾーンをまたぐ複数のドメインがナビゲーションに関係している場合、`MSAL.js` がポップアップ ウィンドウのハンドルを失うためポップアップ ウィンドウが閉じなくなります。
 
 ### <a name="update-fix-available-in-msaljs-023"></a>Update: MSAL.js 0.2.3 で使用可能な修正プログラム
 認証のリダイレクト ループの問題に対する修正プログラムが [MSAL.js 0.2.3](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases) でリリースされました。 この修正プログラムを利用するには、MSAL.js 構成ファイルのフラグ `storeAuthStateInCookie` を有効にします。 既定では、このフラグは false に設定されています。
@@ -44,7 +44,7 @@ IE と Microsoft Edge での認証に関する問題が複数報告されてい�
 `storeAuthStateInCookie` フラグが有効になると、MSAL.js はブラウザーの Cookie を使用して、認証フローを検証するために必要な要求の状態を保存します。
 
 > [!NOTE]
-> この修正プログラムは msal-angular および msal-angularjs ラッパーに対してはまだ使用できません。 この修正プログラムはポップアップ ウィンドウの問題には対処していません。
+> `msal-angular` と `msal-angularjs` のラッパーについては、この修正プログラムはまだ利用できません。 この修正プログラムはポップアップ ウィンドウの問題には対処していません。
 
 以下の回避策を使用してください。
 
@@ -63,7 +63,7 @@ IE と Microsoft Edge での認証に関する問題が複数報告されてい�
 
 ## <a name="issues-due-to-popup-blockers"></a>ポップアップ ブロック機能に起因する問題
 
-たとえば、[多要素認証](../authentication/concept-mfa-howitworks.md)中に 2 つ目のポップアップが開いたときに、IE や Microsoft Edge でポップアップがブロックされることがあります。 ポップアップを 1 回のみまたは常に許可するかどうかを確認するアラートがブラウザーで表示されます。 許可することを選択した場合、ブラウザーは自動的にポップアップ ウィンドウを開き、`null` ハンドルを返します。 その結果、ライブラリはウィンドウの制御を得ることができず、ポップアップ ウィンドウを閉じることができません。 Chrome では、ポップアップを許可するプロンプトを表示するときに、同じ問題が発生しません。これは、Chrome ではポップアップ ウィンドウが自動的に開かないためです。
+たとえば、[多要素認証](../authentication/concept-mfa-howitworks.md)中に 2 つ目のポップアップが開いたときに、IE や Microsoft Edge でポップアップがブロックされることがあります。 ポップアップ ウィンドウを許可するのを 1 回のみにするか、常時にするかについてブラウザーでアラートが表示されます。 許可することを選択した場合、ブラウザーにより自動的にポップアップ ウィンドウが開かれ、`null` ハンドルが返されます。 その結果、ライブラリにウィンドウのハンドルがないため、ポップアップ ウィンドウを閉じる方法がなくなります。 Chrome では、ポップアップ ウィンドウが自動的に開かないため、ポップアップ ウィンドウを許可するプロンプトを表示するときに、同じ問題が発生しません。
 
 **回避策** としては、アプリの使用を開始する前に、この問題を回避するために、開発者は IE と Microsoft Edge でポップアップを許可する必要があります。
 

@@ -8,12 +8,12 @@ author: ejarvi
 ms.author: ejarvi
 ms.date: 03/19/2020
 ms.collection: linux
-ms.openlocfilehash: 2b589f24c5338dde503d21a71fcbb9863f8da5b4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e49b017980fa918be57d4dcc8f9c880bc73c6226
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121734580"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129275147"
 ---
 # <a name="azure-disk-encryption-for-linux-microsoftazuresecurityazurediskencryptionforlinux"></a>Linux 用 Azure Disk Encryption (Microsoft.Azure.Security.AzureDiskEncryptionForLinux)
 
@@ -41,6 +41,9 @@ Azure Disk Encryption (ADE) 用の拡張スキーマには、次の 2 つのバ�
 ### <a name="schema-v11-no-aad-recommended"></a>スキーマ v1.1: AAD なし (推奨)
 
 v1.1 スキーマは推奨されており、Azure Active Directory (AAD) のプロパティを必要としません。
+
+> [!NOTE]
+> `DiskFormatQuery` パラメーターは非推奨になりました。 この機能は、暗号化時のデータ ディスクのフォーマットで推奨される EncryptFormatAll オプションに代わり、置き換えられています。
 
 ```json
 {

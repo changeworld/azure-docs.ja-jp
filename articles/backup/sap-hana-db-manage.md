@@ -3,12 +3,12 @@ title: Azure VM 上のバックアップされた SAP HANA データベースを
 description: この記事では、Azure 仮想マシン上で実行されている SAP HANA データベースを管理および監視するための一般的なタスクについて説明します。
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: d514a8f790f906a4830672dc726c03ad2cf41a2c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 2e793cddeb4e751c47ffa82786f24e65a0873faf
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128662250"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129231370"
 ---
 # <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>バックアップされた SAP HANA データベースを管理および監視する
 
@@ -84,7 +84,8 @@ HANA ネイティブ クライアントから (**Backint** に) トリガーさ�
 
 #### <a name="restore"></a>復元
 
-同じマシンに復元するために (**Backint** を使用して) HANA ネイティブ クライアントからトリガーされた復元は、 **[バックアップ ジョブ]** ページから [監視](#monitor-manual-backup-jobs-in-the-portal)することができます。
+**同じマシン** に復元するために (**Backint** を使用して) HANA ネイティブ クライアントからトリガーされた復元は、 **[バックアップ ジョブ]** ページから[監視](#monitor-manual-backup-jobs-in-the-portal)できます。
+HANA ネイティブ クライアントからトリガーされ、別のマシンに復元することはできません。 復元の場合、Azure RBAC 規則に基づき、Azure Backup サービスではターゲット サーバーを認証できないことがその理由です。
 
 #### <a name="delete"></a>削除
 

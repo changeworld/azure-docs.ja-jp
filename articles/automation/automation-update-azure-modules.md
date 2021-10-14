@@ -3,17 +3,17 @@ title: Azure Automation の Azure PowerShell モジュールを更新する
 description: この記事では、Azure Automation に既定で用意されている一般的な Azure PowerShell モジュールを更新する方法について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 09/16/2021
+ms.date: 09/24/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a2ff4799b335376f6f99004d45034ba6a4796059
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: cfa2c8b029a8c8267249907d3f67582a2a38c139
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128654368"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129272099"
 ---
-# <a name="update-azure-automation-powershell-modules"></a>Azure Automation PowerShell モジュールを更新する
+# <a name="update-azure-powershell-modules-in-automation"></a>Automation で Azure PowerShell モジュールを更新する
 
 各 Automation アカウントでは、最も一般的な PowerShell モジュールが既定で提供されます。 「[既定のモジュール](shared-resources/modules.md#default-modules)」を参照してください。 Azure のモジュールは Azure チームによって定期的に更新されているため、同梱されるコマンドレットに変更が生じることがあります。 こうした変更 (パラメーター名の変更、コマンドレット全体の非推奨化など) により、Runbook に悪影響が及ぶ可能性があります。 
 
@@ -30,6 +30,25 @@ Automation アカウントの[システム割り当てマネージド ID また�
 
 > [!NOTE]
 > 新しい Automation アカウントには、最新のモジュールが含まれていない可能性があります。
+
+## <a name="update-az-modules"></a>Az モジュールを更新する
+
+現在、AZ モジュールはポータルからのみ更新できます。 PowerShell と ARM テンプレートからの更新は、今後できるようになる予定です。 次の手順では、既定の Az モジュールのみが更新されます。
+
+1. [Azure portal](https://portal.azure.com) にサインインし、お使いの Automation アカウントに移動します。
+1.  **[共有リソース]** で、 **[PowerShell モジュール]** を選択します。
+1.  **[Update Az modules]** \(Az モジュールを更新する\) を選択します。
+1. **[Module to Update]** \(更新するモジュール\) を選択します。 既定では、Az モジュールが表示されます。  
+1. ドロップダウン リストから **[モジュール バージョン]** を選択します。
+1. **[更新]** を選択し、選択したバージョンに Az モジュールを更新します。
+
+   :::image type="content" source="./media/automation-update-azure-modules/update-az-modules-portal.png" alt-text="[Az モジュールを更新する] ページと選択。":::
+
+Automation アカウントにインポートされた既存の Az モジュールのバージョンよりも下位のバージョンを選択した場合、更新操作で、選択した下位バージョンへのロールバックが実行されます。  
+
+更新操作は、 **[PowerShell モジュール]** の下の **モジュール** 一覧に表示されている更新されたモジュールから、モジュールのバージョンと状態のプロパティを確認できます。 
+
+Azure チームでは、モジュールのバージョンを定期的に更新しています。ドロップダウン リストからモジュールのバージョンを選択すると、**既定** の Az モジュールを更新するオプションが提供されます。  
 
 ## <a name="obtain-a-runbook-to-use-for-updates"></a>更新に使用する Runbook を入手する
 

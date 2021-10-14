@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/25/2021
 ms.author: shpathak
-ms.openlocfilehash: 748e7e09332e9feded9af0bc6cfa9a38d27086f5
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 5d2152b6e1b2da165303c3a309ca97bf0262b5ee
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128615208"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129232781"
 ---
 # <a name="performance-testing"></a>パフォーマンス テスト
 

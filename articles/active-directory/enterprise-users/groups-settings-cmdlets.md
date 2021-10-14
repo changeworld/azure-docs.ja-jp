@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e45101caec9127c39837d015d6a5117c7e2ae775
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: cdd7eb4acf93270ece6215492d79dd12e5d6d0dc
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114472045"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129272341"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>グループの設定を構成するための Azure Active Directory コマンドレット
 
@@ -33,6 +33,9 @@ ms.locfileid: "114472045"
 Microsoft 365 グループの設定は、Settings オブジェクトおよび SettingsTemplate オブジェクトを使用して構成されます。 最初は、ディレクトリには Settings オブジェクトが表示されません。これは、ディレクトリが既定の設定で構成されているためです。 既定の設定を変更するには、Settings テンプレートを使用して新しい Settings オブジェクトを作成する必要があります。 Settings テンプレートは、Microsoft によって定義されます。 複数の Settings テンプレートがサポートされています。 ディレクトリの Microsoft 365 グループ設定を構成するには、"Group.Unified" という名前のテンプレートを使用します。 1 つのグループの Microsoft 365 グループ設定を構成するには、"Group.Unified.Guest" という名前のテンプレートを使用します。 このテンプレートは、Microsoft 365 グループへのゲスト アクセスを管理するために使用されます。 
 
 コマンドレットは、Azure Active Directory PowerShell V2 モジュールの一部です。 モジュールをダウンロードしてお使いのコンピューターにインストールする手順については、「[Azure Active Directory PowerShell Version 2](/powershell/azure/active-directory/overview)」を参照してください。 公開版のバージョン 2 モジュールは、[PowerShell ギャラリー](https://www.powershellgallery.com/packages/AzureAD/)からインストールできます。
+
+>[!Note]
+>Microsoft 365 にゲストの追加を制限する設定が設定されていても、管理者は引き続きゲスト ユーザーを Microsoft 365 グループに追加できます。 この設定では、管理者以外のユーザーの Microsoft 365 グループへのゲスト ユーザーの追加を制限します。
 
 ## <a name="install-powershell-cmdlets"></a>PowerShell コマンドレットのインストール
 

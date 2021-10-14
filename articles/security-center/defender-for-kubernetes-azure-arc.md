@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 09/14/2021
 ms.author: memildin
-ms.openlocfilehash: fa7076882370b404ea7b1e04cb5c364f22c35fae
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 2fc8c04cbe86737d924a1e61e8a2b3808082b7c9
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128648470"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129351723"
 ---
 # <a name="defend-azure-arc-enabled-kubernetes-clusters-running-in-on-premises-and-multi-cloud-environments"></a>オンプレミスおよびマルチクラウド環境で実行されている Azure Arc 対応 Kubernetes クラスターを防御する
 
@@ -49,6 +49,7 @@ AKS 以外のすべての Kubernetes クラスターについては、クラス�
 拡張機能を展開する前に、次のことを確認してください。
 - [Kubernetes クラスターを Azure Arc に接続する](../azure-arc/kubernetes/quickstart-connect-cluster.md)
 - [汎用クラスター拡張機能のドキュメント](../azure-arc/kubernetes/extensions.md#prerequisites)に記載されている前提条件を満たしている。
+- [Helm 3](https://helm.sh/docs/intro/install) バージョン 3.7.0 以降を所持している
 - 送信アクセス用に、次のエンドポイントで **ポート 443** を構成する。
     - Azure Government クラウド上のクラスターの場合:
         - *.ods.opinsights.azure.us
@@ -150,7 +151,7 @@ REST API を使用して Azure Defender 拡張機能をデプロイするには�
 
     各値の説明:
 
-    | 名前            | /   | 必須 | 種類   | 説明                                  |
+    | 名前            | /   | 必須 | Type   | 説明                                  |
     |-----------------|------|----------|--------|----------------------------------------------|
     | サブスクリプション ID | path | True     | string | お使いの Azure Arc 対応 Kubernetes リソースのサブスクリプション ID |
     | リソース グループ  | path | True     | string | お使いの Azure Arc 対応 Kubernetes リソースを含むリソース グループの名前 |
@@ -333,7 +334,7 @@ REST API を使用して拡張機能を削除するには、次の DELETE コマ
 DELETE https://management.azure.com/subscriptions/{{Subscription Id}}/resourcegroups/{{Resource Group}}/providers/Microsoft.Kubernetes/connectedClusters/{{Cluster Name}}/providers/Microsoft.KubernetesConfiguration/extensions/microsoft.azuredefender.kubernetes?api-version=2020-07-01-preview
 ```
 
-| 名前            | /   | 必須 | 種類   | 説明                                           |
+| 名前            | /   | 必須 | Type   | 説明                                           |
 |-----------------|------|----------|--------|-------------------------------------------------------|
 | サブスクリプション ID | path | True     | string | ご自分の Arc 対応 Kubernetes クラスターのサブスクリプション ID |
 | リソース グループ  | path | True     | string | ご自分の Arc 対応 Kubernetes クラスターのリソース グループ  |

@@ -5,12 +5,12 @@ author: noakup
 ms.author: noakuper
 ms.topic: conceptual
 ms.date: 08/01/2021
-ms.openlocfilehash: 936a8393f21d71cfb2fd1dd4cd2c249f0d13689c
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 9f0b1a3f51a5eae7b10ed74880c8abe1c92aae7a
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123432578"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129278996"
 ---
 # <a name="configure-your-private-link"></a>プライベート リンクを構成する
 プライベート リンクを構成するには、いくつかの手順を実行する必要があります。 
@@ -95,7 +95,7 @@ Azure Monitor リソース (Log Analytics ワークスペースと Application I
 ## <a name="configure-access-to-your-resources"></a>リソースへのアクセスを構成する
 ここまでは、ネットワークの構成について説明しましたが、監視対象リソース (Log Analytics ワークスペースと Application Insights コンポーネント) へのネットワーク アクセスを構成する方法についても検討する必要があります。
 
-Azure portal に移動します。 リソースのメニューの左側に、 **[ネットワークの分離]** というメニュー項目があります。 このページで、プライベート リンクを介してリソースに接続できるネットワークと、他のネットワークがそれに接続できるかどうかの両方を制御します。
+Azure Portal にアクセスします。 リソースのメニューの左側に、 **[ネットワークの分離]** というメニュー項目があります。 このページで、プライベート リンクを介してリソースに接続できるネットワークと、他のネットワークがそれに接続できるかどうかの両方を制御します。
 
 
 > [!NOTE]
@@ -156,11 +156,12 @@ $scope = New-AzResource -Location "Global" -Properties $scopeProperties -Resourc
 
 #### <a name="create-ampls---azure-resource-manager-template-arm-template"></a>AMPLS の作成 - Azure Resource Manager テンプレート (ARM テンプレート)
 次の Azure Resource Manager テンプレートでは、以下のものが作成されます。
-* "my-scope" という名前のプライベート リンク スコープ (AMPLS)
+* クエリとインジェストのアクセス モードが [開く] に設定された、"my-scope" という名前のプライベート リンク スコープ (AMPLS)。
 * "my-workspace" という名前の Log Analytics ワークスペース
-* "my-scope" AMPLS にスコープ付きリソースを追加します ("my-workspace-connection" という名前)
+* "my-workspace-connection" という名前のスコープ付きリソースの "my-scope" AMPLS への追加
+
 > [!NOTE]
-> 次の ARM テンプレートでは、AMPLS アクセス モードを設定することができない、古いバージョンの API が使用されています。 次のテンプレートを使用した場合、結果の AMPLS は QueryAccessMode="Open" と IngestionAccessMode="PrivateOnly" に設定されています。これは、AMPLS の内外のリソース上でのクエリの実行は許可される一方で、インジェストは、Private Link リソースのみに到達するよう制限されることを意味します。
+> Private Link Scope オブジェクトの作成には、新しい API バージョン (2021-07-01-preview 以降) を使用してください (下記の type 'microsoft.insights/privatelinkscopes')。 過去に説明した ARM テンプレートでは古い API バージョンが使用され、その結果、AMPLS が QueryAccessMode="Open" と IngestionAccessMode="PrivateOnly" に設定されていました。
 
 ```
 {
@@ -180,10 +181,15 @@ $scope = New-AzResource -Location "Global" -Properties $scopeProperties -Resourc
     "resources": [
         {
             "type": "microsoft.insights/privatelinkscopes",
-            "apiVersion": "2019-10-17-preview",
+            "apiVersion": "2021-07-01-preview",
             "name": "[parameters('private_link_scope_name')]",
             "location": "global",
-            "properties": {}
+            "properties": {
+                "accessModeSettings":{
+                    "queryAccessMode":"Open",
+                    "ingestionAccessMode":"Open"
+                }
+            }
         },
         {
             "type": "microsoft.operationalinsights/workspaces",

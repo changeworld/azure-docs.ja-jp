@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 06/15/2021
+ms.date: 09/28/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c50d62d5c8f24ed25258305411f9ed045098c7f
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.openlocfilehash: 55ba6435ca8ea3b46051080eb6f33ebfca4e02bd
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112232833"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129272758"
 ---
 # <a name="assign-azure-resource-roles-in-privileged-identity-management"></a>Privileged Identity Management で Azure リソース ロールを割り当てる
 
@@ -39,7 +39,7 @@ Privileged Identity Management では、組み込みとカスタムの両方の 
 
 ## <a name="role-assignment-conditions"></a>ロールの割り当て条件
 
-Azure ABAC (Azure の属性ベースのアクセス制御) プレビューを使用すると、資格のあるロールの割り当てに対し、Privileged Identity Management (PIM) を使用してリソースの条件を設定できます。 PIM を使用する場合、エンド ユーザーは、資格のあるロールの割り当てをアクティブ化して、特定のアクションを実行するためのアクセス許可を取得する必要があります。 PIM で Azure ABAC の条件を使用すると、きめ細かな条件を使用してリソースに対するユーザーのロールのアクセス許可を制限できるだけでなく、PIM を使用して、期限付きの設定、承認ワークフロー、監査証跡などでロールの割り当てを保護することもできます。 詳細については、[Azure の属性ベースのアクセス制御 (パブリック プレビュー)](../../role-based-access-control/conditions-overview.md) に関するページを参照してください。
+Azure ABAC (Azure の属性ベースのアクセス制御) プレビューを使用すると、資格のあるロールの割り当てに対し、Privileged Identity Management (PIM) を使用してリソースの条件を設定できます。 PIM を使用する場合、エンド ユーザーは、資格のあるロールの割り当てをアクティブ化して、特定のアクションを実行するためのアクセス許可を取得する必要があります。 PIM で Azure の属性を使用したアクセス制御条件を使用すると、リソースに対するユーザーのロールでのアクセス許可をきめ細かな条件を使用して制限できるだけでなく、PIM を使用して、期限付きの設定、承認ワークフロー、監査証跡などでロールの割り当てを保護することもできます。 詳細については、[Azure の属性ベースのアクセス制御 (パブリック プレビュー)](../../role-based-access-control/conditions-overview.md) に関するページを参照してください。
 
 ## <a name="assign-a-role"></a>ロールの割り当て
 
@@ -92,6 +92,98 @@ Azure ABAC (Azure の属性ベースのアクセス制御) プレビューを使
 1. 新しいロールの割り当てが作成されると、状態の通知が表示されます。
 
     ![新しい割り当て - 通知](./media/pim-resource-roles-assign-roles/resources-new-assignment-notification.png)
+
+## <a name="assign-a-role-using-arm-api"></a>ARM API を使用したロールの割り当て
+
+Privileged Identity Management では、[PIM ARM API リファレンス](/rest/api/authorization/roleeligibilityschedulerequests)に関するページに記載のとおり、Azure リソース ロールの管理で、Azure Resource Manager (ARM) API コマンドをサポートしています。 PIM API の使用に必要なアクセス許可については、「[Privileged Identity Management API について理解する](pim-apis.md)」を参照してください。
+
+次に、Azure のロールに資格のある割り当てを作成するための HTTP 要求の例を示します。
+
+### <a name="request"></a>Request
+
+````HTTP
+PUT https://management.azure.com/providers/Microsoft.Subscription/subscriptions/dfa2a084-766f-4003-8ae1-c4aeb893a99f/providers/Microsoft.Authorization/roleEligibilityScheduleRequests/64caffb6-55c0-4deb-a585-68e948ea1ad6?api-version=2020-10-01-preview
+````
+
+### <a name="request-body"></a>要求本文
+
+````JSON
+{
+  "properties": {
+    "principalId": "a3bb8764-cb92-4276-9d2a-ca1e895e55ea",
+    "roleDefinitionId": "/subscriptions/dfa2a084-766f-4003-8ae1-c4aeb893a99f/providers/Microsoft.Authorization/roleDefinitions/c8d4ff99-41c3-41a8-9f60-21dfdad59608",
+    "requestType": "AdminAssign",
+    "scheduleInfo": {
+      "startDateTime": "2020-09-09T21:31:27.91Z",
+      "expiration": {
+        "type": "AfterDuration",
+        "endDateTime": null,
+        "duration": "P365D"
+      }
+    },
+    "condition": "@Resource[Microsoft.Storage/storageAccounts/blobServices/containers:ContainerName] StringEqualsIgnoreCase 'foo_storage_container'",
+    "conditionVersion": "1.0"
+  }
+}
+````
+
+### <a name="response"></a>Response
+
+状態コード: 201
+
+````HTTP
+{
+  "properties": {
+    "targetRoleEligibilityScheduleId": "b1477448-2cc6-4ceb-93b4-54a202a89413",
+    "targetRoleEligibilityScheduleInstanceId": null,
+    "scope": "/providers/Microsoft.Subscription/subscriptions/dfa2a084-766f-4003-8ae1-c4aeb893a99f",
+    "roleDefinitionId": "/subscriptions/dfa2a084-766f-4003-8ae1-c4aeb893a99f/providers/Microsoft.Authorization/roleDefinitions/c8d4ff99-41c3-41a8-9f60-21dfdad59608",
+    "principalId": "a3bb8764-cb92-4276-9d2a-ca1e895e55ea",
+    "principalType": "User",
+    "requestType": "AdminAssign",
+    "status": "Provisioned",
+    "approvalId": null,
+    "scheduleInfo": {
+      "startDateTime": "2020-09-09T21:31:27.91Z",
+      "expiration": {
+        "type": "AfterDuration",
+        "endDateTime": null,
+        "duration": "P365D"
+      }
+    },
+    "ticketInfo": {
+      "ticketNumber": null,
+      "ticketSystem": null
+    },
+    "justification": null,
+    "requestorId": "a3bb8764-cb92-4276-9d2a-ca1e895e55ea",
+    "createdOn": "2020-09-09T21:32:27.91Z",
+    "condition": "@Resource[Microsoft.Storage/storageAccounts/blobServices/containers:ContainerName] StringEqualsIgnoreCase 'foo_storage_container'",
+    "conditionVersion": "1.0",
+    "expandedProperties": {
+      "scope": {
+        "id": "/subscriptions/dfa2a084-766f-4003-8ae1-c4aeb893a99f",
+        "displayName": "Pay-As-You-Go",
+        "type": "subscription"
+      },
+      "roleDefinition": {
+        "id": "/subscriptions/dfa2a084-766f-4003-8ae1-c4aeb893a99f/providers/Microsoft.Authorization/roleDefinitions/c8d4ff99-41c3-41a8-9f60-21dfdad59608",
+        "displayName": "Contributor",
+        "type": "BuiltInRole"
+      },
+      "principal": {
+        "id": "a3bb8764-cb92-4276-9d2a-ca1e895e55ea",
+        "displayName": "User Account",
+        "email": "user@my-tenant.com",
+        "type": "User"
+      }
+    }
+  },
+  "name": "64caffb6-55c0-4deb-a585-68e948ea1ad6",
+  "id": "/providers/Microsoft.Subscription/subscriptions/dfa2a084-766f-4003-8ae1-c4aeb893a99f/providers/Microsoft.Authorization/RoleEligibilityScheduleRequests/64caffb6-55c0-4deb-a585-68e948ea1ad6",
+  "type": "Microsoft.Authorization/RoleEligibilityScheduleRequests"
+}
+````
 
 ## <a name="update-or-remove-an-existing-role-assignment"></a>既存のロールの割り当てを更新または削除する
 

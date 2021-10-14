@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59597fefe4d3cb0032f8c9ccfbf317c593fd34a9
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 7eb9dc44cb84a432b78ebe1740c7cee35c978fbe
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124748515"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129272296"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory の新着情報
 
@@ -68,7 +68,7 @@ Windows 10 および Windows Server 2019 上の Firefox ブラウザーで、ネ
 **製品の機能:** Identity Governance
  
 
-Azure AD アクセス レビュー用のベータ版 MS Graph API がリリースされました。 この API には、レビュー担当者の種類に加えて、連絡済みのレビュー担当者の名前を返すメソッドが含まれています。 [詳細については、こちらを参照してください](/graph/api/resources/accessreviewinstance?view=graph-rest-beta)。
+Azure AD アクセス レビュー用のベータ版 MS Graph API がリリースされました。 この API には、レビュー担当者の種類に加えて、連絡済みのレビュー担当者の名前を返すメソッドが含まれています。 [詳細については、こちらを参照してください](/graph/api/resources/accessreviewinstance?view=graph-rest-beta&preserve-view=true)。
  
 ---
 
@@ -186,7 +186,7 @@ Identity Protection で、非対話型のサインインについて危険なサ
 **サービス カテゴリ:** Microsoft Identity Manager  
 **製品の機能:** ID ライフサイクル管理
  
-FIM 用 Microsoft Azure AD コネクタは、機能が凍結され非推奨になりました。 FIM と Azure AD コネクタを使用するソリューションが置き換えられました。 FIM 用 Azure AD コネクタで使用される内部インターフェイスが Azure AD から削除されたため、既存のデプロイは、[Azure AD Connect](../hybrid/whatis-hybrid-identity.md)、Azure AD Connect 同期、または [Microsoft Graph コネクタ](https://docs.microsoft.com/microsoft-identity-manager/microsoft-identity-manager-2016-connector-graph)に移行する必要があります。 [詳細については、こちらを参照してください](https://docs.microsoft.com/microsoft-identity-manager/microsoft-identity-manager-2016-deprecated-features)。
+FIM 用 Microsoft Azure AD コネクタは、機能が凍結され非推奨になりました。 FIM と Azure AD コネクタを使用するソリューションが置き換えられました。 FIM 用 Azure AD コネクタで使用される内部インターフェイスが Azure AD から削除されたため、既存のデプロイは、[Azure AD Connect](../hybrid/whatis-hybrid-identity.md)、Azure AD Connect 同期、または [Microsoft Graph コネクタ](/microsoft-identity-manager/microsoft-identity-manager-2016-connector-graph)に移行する必要があります。 [詳細については、こちらを参照してください](/microsoft-identity-manager/microsoft-identity-manager-2016-deprecated-features)。
 
 ---
 
@@ -212,7 +212,7 @@ V2.0 の変更点およびこの変更による影響の詳細については、
  
 MIM 同期、サービス、ポータル、または CM を Windows Server 2008 R2 にデプロイしたり、基になるデータベースとして SQL Server 2008 R2 を使用したりすることは、これらのプラットフォームがメインストリーム サポートではなくなったため非推奨となりました。 MIM 同期およびその他のコンポーネントは、Windows Server 2016 以降にインストールしたり、SQL Server 2016 以降で使用したりすることをお勧めします。
 
-PRIV フォレスト内での Windows Server 2012 R2 ドメイン コントローラーを使用した Privileged Access Management の MIM のデプロイは、非推奨となりました。 PRIV フォレスト ドメインについては、Windows Server 2016 以降の Active Directory を Windows Server 2016 の機能レベルで使用してください。 CORP フォレストのドメインについては、Windows Server 2012 R2 の機能レベルを引き続き使用できます。 [詳細については、こちらを参照してください](https://docs.microsoft.com/microsoft-identity-manager/microsoft-identity-manager-2016-supported-platforms)。
+PRIV フォレスト内での Windows Server 2012 R2 ドメイン コントローラーを使用した Privileged Access Management の MIM のデプロイは、非推奨となりました。 PRIV フォレスト ドメインについては、Windows Server 2016 以降の Active Directory を Windows Server 2016 の機能レベルで使用してください。 CORP フォレストのドメインについては、Windows Server 2012 R2 の機能レベルを引き続き使用できます。 [詳細については、こちらを参照してください](/microsoft-identity-manager/microsoft-identity-manager-2016-supported-platforms)。
 
 ---
 
@@ -273,7 +273,7 @@ Azure AD B2C をご利用のお客様で、カスタムまたは基幹業務ア�
 **サービス カテゴリ:** MS Graph  
 **製品の機能:** 開発者エクスペリエンス
  
-MS Graph のアプリケーション認証方法のポリシーを使用すると、IT 管理者がアプリケーションのパスワード シークレットの資格情報に有効期限を付けたり、シークレットの使用を完全にブロックすることができるようになります。 ポリシーは、既定の設定ではテナント全体に適用することができ、さらに特定のアプリケーションやサービス プリンシパルに適用することもできます。 [詳細については、こちらを参照してください](/graph/api/resources/policy-overview?view=graph-rest-beta)。
+MS Graph のアプリケーション認証方法のポリシーを使用すると、IT 管理者がアプリケーションのパスワード シークレットの資格情報に有効期限を付けたり、シークレットの使用を完全にブロックすることができるようになります。 ポリシーは、既定の設定ではテナント全体に適用することができ、さらに特定のアプリケーションやサービス プリンシパルに適用することもできます。 [詳細については、こちらを参照してください](/graph/api/resources/policy-overview?view=graph-rest-beta&preserve-view=true)。
  
 ---
 
@@ -315,7 +315,7 @@ Azure AD ブレードの診断設定を使用して、危険なユーザーと�
 **サービス カテゴリ:** アプリ プロキシ  
 **製品の機能:** アクセス制御
  
-リソースの種類 onPremisesPublishing に、アプリケーションのバックエンド SSL 証明書検証が有効かどうかを示すプロパティ "isBackendCertificateValidationEnabled" が追加されました。 すべての新しいアプリケーション プロキシ アプリでは、このプロパティは既定で true に設定されています。 すべての既存のアプリでは、このプロパティは false に設定されます。 詳細については、[リソースの種類 onPremisesPublishing](/graph/api/resources/onpremisespublishing?view=graph-rest-beta) API を参照してください。
+リソースの種類 onPremisesPublishing に、アプリケーションのバックエンド SSL 証明書検証が有効かどうかを示すプロパティ "isBackendCertificateValidationEnabled" が追加されました。 すべての新しいアプリケーション プロキシ アプリでは、このプロパティは既定で true に設定されています。 すべての既存のアプリでは、このプロパティは false に設定されます。 詳細については、[リソースの種類 onPremisesPublishing](/graph/api/resources/onpremisespublishing?view=graph-rest-beta&preserve-view=true) API を参照してください。
  
 ---
 
@@ -474,7 +474,7 @@ Azure AD のグループ所有者が、自分のグループの Azure AD アク�
 **サービス カテゴリ:** その他  
 **製品の機能:** デバイスのライフサイクル管理
  
-Azure AD のモビリティ (MDM/MAM) 構成に対する Microsoft Graph のサポートがパブリック プレビューになりました。 管理者は、Microsoft Graph v1.0 を使用して、Intune のような MDM アプリケーションのユーザー スコープと URL を構成できます。 詳細については、[リソースの種類 mobilityManagementPolicy](/graph/api/resources/mobilitymanagementpolicy?view=graph-rest-beta) に関するページを参照してください
+Azure AD のモビリティ (MDM/MAM) 構成に対する Microsoft Graph のサポートがパブリック プレビューになりました。 管理者は、Microsoft Graph v1.0 を使用して、Intune のような MDM アプリケーションのユーザー スコープと URL を構成できます。 詳細については、[リソースの種類 mobilityManagementPolicy](/graph/api/resources/mobilitymanagementpolicy?view=graph-rest-beta&preserve-view=true) に関するページを参照してください
 
 ---
 
@@ -548,7 +548,7 @@ Windows 10 21H1 の更新プログラムにより、Windows Hello で複数の�
 **サービス カテゴリ:** アクセス レビュー  
 **製品の機能:** Identity Governance
  
-Azure Active Directory のアクセス レビューの MS Graph API が v1.0 になり、アクセス レビュー機能が完全に構成可能になりました。 [詳細については、こちらを参照してください](/graph/api/resources/accessreviewsv2-root?view=graph-rest-1.0)。
+Azure Active Directory のアクセス レビューの MS Graph API が v1.0 になり、アクセス レビュー機能が完全に構成可能になりました。 [詳細については、こちらを参照してください](/graph/api/resources/accessreviewsv2-root?view=graph-rest-1.0&preserve-view=true)。
  
 ---
 
@@ -667,7 +667,7 @@ Azure AD を使用して、検証可能な資格情報を簡単に設計、発�
  
 セキュリティ強化として[デバイス コード フロー](../develop/v2-oauth2-device-code.md)が更新され、ユーザーが想定しているアプリにサインインしていることを検証するためのプロンプトが新たに追加されました。 ロールアウトは 6 月に開始され、6 月 30 日までに完了する予定です。
 
-攻撃者がユーザーを騙して悪意のあるアプリケーションにサインインさせるフィッシング攻撃を防ぐために、「[アプリケーションの表示名] にサインインしますか?」というプロンプトが追加されます。 このプロンプトは、デバイス コード フローを使用してログインしようとするすべてのユーザーを対象に表示されます。 セキュリティ対策として、これを削除したりバイパスすることはできません。 [詳細については、こちらを参照してください](../develop/reference-breaking-changes.md#the-device-code-flow-ux-will-now-include-an-app-confirmation-prompt)。
+攻撃者がユーザーを騙して悪意のあるアプリケーションにサインインさせるフィッシング攻撃を防ぐために、"[アプリケーションの表示名] にサインインしますか?" というプロンプトが追加されます。 このプロンプトは、デバイス コード フローを使用してログインしようとするすべてのユーザーを対象に表示されます。 セキュリティ対策として、これを削除したりバイパスすることはできません。 [詳細については、こちらを参照してください](../develop/reference-breaking-changes.md#the-device-code-flow-ux-will-now-include-an-app-confirmation-prompt)。
 
 ---
 
@@ -839,9 +839,9 @@ Azure AD アプリ ギャラリーにアプリケーションを公開する場�
 
 企業リソースへのアクセスがブロックされたユーザーに対して表示される条件付きアクセスの画面の文言を更新しました。 このユーザーは、モバイル デバイス管理にデバイスを登録するまで、アクセスがブロックされます。 これらの機能強化は、Android および iOS または iPadOS プラットフォームに適用されます。 以下は、変更点をまとめたものです。
 
-- 「デバイスの安全を保つためにご協力ください」が「デバイスを設定してアクセス権を取得する」に変更されました
-- 「サインインは完了しましたが、このリソースにアクセスするには、管理者の要求によりデバイスが Microsoft で管理されている必要があります。」 から「[組織名] では、[組織名] のメール、ファイル、データにアクセスする前に、このデバイスをセキュリティで保護する必要があります。」に変更。 
-- 「今すぐ登録」から「続行」に変更
+- "デバイスの安全を保つためにご協力ください" から "デバイスを設定してアクセス権を取得する" に変更
+- "サインインは完了しましたが、このリソースにアクセスするには、管理者の要求によりデバイスが Microsoft で管理されている必要があります。" から "[組織名] では、[組織名] のメール、ファイル、データにアクセスする前に、このデバイスをセキュリティで保護する必要があります。" に変更 
+- "今すぐ登録" から "続行" に変更
 
 「[Android enterprise デバイスを登録する](https://support.microsoft.com/topic/enroll-your-android-enterprise-device-d661c82d-fa28-5dfd-b711-6dff41ae83bb)」に記載されている情報は最新ではありません。
 
@@ -1087,7 +1087,7 @@ Azure portal から、削除されたアプリの登録を表示、復元、お�
 **サービス カテゴリ:** アプリ プロキシ  
 **製品の機能:** アクセス制御
  
-この新しい機能を使用すると、アプリケーションがホストされている最も近いリージョンのアプリケーション プロキシ サービスにコネクタ グループを割り当てることができます。 これにより、アプリがホーム テナントのリージョン以外のリージョンでホストされているシナリオで、アプリのパフォーマンスを向上させることができます。 [詳細については、こちらを参照してください](../app-proxy/application-proxy-network-topology.md#optimize-connector-groups-to-use-closest-application-proxy-cloud-service-preview)。 
+この新しい機能を使用すると、アプリケーションがホストされている最も近いリージョンのアプリケーション プロキシ サービスにコネクタ グループを割り当てることができます。 これにより、ホーム テナントのリージョン以外のリージョンでアプリがホストされているシナリオで、アプリのパフォーマンスが向上します。 [詳細については、こちらを参照してください](../app-proxy/application-proxy-network-topology.md#optimize-connector-groups-to-use-closest-application-proxy-cloud-service-preview)。 
  
 ---
 

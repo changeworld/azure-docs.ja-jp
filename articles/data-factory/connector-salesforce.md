@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 09/03/2021
-ms.openlocfilehash: 0a7bca44ccee4e836fd5aa8e0ef44412e1fc6985
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 09/29/2021
+ms.openlocfilehash: 6a1c13d8557b49b1481e94bc95eef10fd5e658f6
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124836198"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129230247"
 ---
 # <a name="copy-data-from-and-to-salesforce-using-azure-data-factory-or-azure-synapse-analytics"></a>Azure Data Factory または Azure Synapse Analytics を使用して Salesforce との間でデータをコピーする
 
@@ -41,6 +41,9 @@ Salesforce から、サポートされている任意のシンク データ ス�
 - Salesforce 運用環境、サンドボックス、およびカスタム ドメインをコピー先またはコピー元とするデータのコピー。
 
 Salesforce コネクタは、Salesforce REST/Bulk API 上に構築されます。 コネクタは、Salesforce からデータをコピーするときに、データ サイズに基づいて REST または Bulk API を自動的に選択します。結果セットが大きい場合は、パフォーマンス向上のために Bulk API が使用されます。リンクされたサービス内で [`apiVersion` プロパティ](#linked-service-properties)を介してデータを読み書きするために使用する API のバージョンを明示的に設定できます。
+
+>[!NOTE]
+>コネクタでは、Salesforce API の既定のバージョンが設定されなくなりました。 後方互換性のために、既定の API バージョンが前に設定された場合、そのバージョンは動作し続けます。 既定値はソースの場合は 45.0 で、シンクの場合は 40.0 です。
 
 ## <a name="prerequisites"></a>前提条件
 

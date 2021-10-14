@@ -3,15 +3,15 @@ title: Azure Automation で資格情報を管理する
 description: この記事では、資格情報資産を作成し、Runbook または DSC 構成でそれを使用する方法について説明します。
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 12/22/2020
+ms.date: 09/22/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6220a44e952aa4d9856ac5fc2077d254103d4a2c
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 2a78f9636a29c8e48c8d3e1c38d7127bd3ba84b7
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107834284"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129354044"
 ---
 # <a name="manage-credentials-in-azure-automation"></a>Azure Automation で資格情報を管理する
 
@@ -24,7 +24,7 @@ Automation 資格情報資産は、ユーザー名とパスワードなどのセ
 
 ## <a name="powershell-cmdlets-used-to-access-credentials"></a>資格情報へのアクセスに使用する PowerShell コマンドレット
 
-PowerShell を使用して Automation 資格情報を作成および管理するためのコマンドレットを次の表に示します。 これらは、[Az モジュール](modules.md#az-modules)の一部として出荷されます。
+PowerShell を使用して Automation 資格情報を作成および管理するためのコマンドレットを次の表に示します。 これらは、Az モジュールの一部として出荷されます。
 
 | コマンドレット | 説明 |
 |:--- |:--- |
@@ -116,17 +116,33 @@ $securePassword = $myCredential.Password
 $password = $myCredential.GetNetworkCredential().Password
 ```
 
-資格情報を使用して [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) で Azure を認証することもできます。 ほとんどの状況下では、[[実行アカウント]](../automation-security-overview.md#run-as-accounts) を使用して、[Get-AzAutomationConnection](../automation-connections.md) との接続を取得する必要があります。
+まず[マネージド ID](../automation-security-overview.md#managed-identities-preview) で接続した後、資格情報を使用して [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) で Azure を認証することもできます。 この例では、[システム割り当てマネージド ID](../enable-managed-identity-for-automation.md) を使用しています。
 
 ```powershell
-$myCred = Get-AutomationPSCredential -Name 'MyCredential'
+# Ensures you do not inherit an AzContext in your runbook
+Disable-AzContextAutosave -Scope Process
+
+# Connect to Azure with system-assigned managed identity
+$AzureContext = (Connect-AzAccount -Identity).context
+
+# set and store context
+$AzureContext = Set-AzContext -SubscriptionName $AzureContext.Subscription -DefaultProfile $AzureContext
+
+# Get credential
+$myCred = Get-AutomationPSCredential -Name "MyCredential"
 $userName = $myCred.UserName
 $securePassword = $myCred.Password
 $password = $myCred.GetNetworkCredential().Password
 
 $myPsCred = New-Object System.Management.Automation.PSCredential ($userName,$securePassword)
 
-Connect-AzAccount -Credential $myPsCred
+# Connect to Azure with credential
+$AzureContext = (Connect-AzAccount -Credential $myPsCred -TenantId $AzureContext.Subscription.TenantId).context
+
+# set and store context
+$AzureContext = Set-AzContext -SubscriptionName $AzureContext.Subscription `
+    -TenantId $AzureContext.Subscription.TenantId `
+    -DefaultProfile $AzureContext
 ```
 
 # <a name="python-2"></a>[Python 2](#tab/python2)

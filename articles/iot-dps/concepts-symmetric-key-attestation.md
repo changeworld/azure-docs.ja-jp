@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ac4a35b5a73cb87e3e7962729fdccd89c5f82c57
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2d7b5505092e2dfe32624545128be4ce4dbb3459
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121729852"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129278939"
 ---
 # <a name="symmetric-key-attestation"></a>対称キーの構成証明
 
@@ -58,7 +58,7 @@ SAS トークンの形式は次のとおりです。
 
 SAS トークンを作成するコードの例については、[セキュリティ トークン](../iot-hub/iot-hub-dev-guide-sas.md#security-token-structure)に関するページをご覧ください。
 
-対称キー構成証明のためのセキュリティ トークンの作成は、Azure IoT C SDK でサポートされています。 Azure IoT C SDK を使用して個々の登録で構成証明を行う例については、「[クイック スタート: 対称キーを使用してシミュレートされたデバイスをプロビジョニングする](quick-create-simulated-device-symm-key.md)」をご覧ください。
+対称キー構成証明のためのセキュリティ トークンの作成は、Azure IoT C SDK でサポートされています。 Azure IoT C SDK を使用して個々の登録で構成証明を行う例については、[シミュレートされた対称キーのデバイスのプロビジョニング](quick-create-simulated-device-symm-key.md)に関するページをご覧ください。
 
 
 ## <a name="group-enrollments"></a>グループ登録
@@ -182,6 +182,6 @@ String deviceKey = Utils.ComputeDerivedSymmetricKey(Convert.FromBase64String(mas
 
 対称キー構成証明について理解できたので、以下の記事で詳細を確認してください。
 
-* [クイック スタート: 対称キーを使用してシミュレートされたデバイスをプロビジョニングする](quick-create-simulated-device-symm-key.md)
+* [クイックスタート: シミュレートされた対称キー デバイスをプロビジョニングする](quick-create-simulated-device-symm-key.md)
 * [プロビジョニングの概念を確認する](about-iot-dps.md#provisioning-process)
 * [自動プロビジョニングの使用を始める](./quick-setup-auto-provision.md) 

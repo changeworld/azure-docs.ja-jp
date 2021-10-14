@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/03/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, has-adal-ref
-ms.openlocfilehash: a5e4f3cb33451b8668b4212fca248d0b7d9c1438
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 2e214abaa6f193c3464025014757d49349aa388c
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124734850"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129231978"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>認証フローとアプリケーションのシナリオ
 
@@ -127,7 +127,7 @@ Microsoft ID プラットフォームでは、これらのアプリ アーキテ
 
 ![Web API を呼び出すデスクトップ アプリ](media/scenarios/desktop-app.svg)
 
-Windows ドメインに参加しているか、Azure Active Directory (Azure AD) を使って参加しているコンピューターで稼働している Windows ホスト アプリケーションについては、もう 1 つ選択肢があります。 このようなアプリケーションでは、[統合 Windows 認証](https://aka.ms/msal-net-iwa)を使用するとトークンを自動的に取得できます。
+Windows ドメインに参加しているか、Azure Active Directory (Azure AD) を使って参加しているコンピューターで稼働している Windows ホスト アプリケーションについては、もう 1 つ選択肢があります。 このようなアプリケーションでは、[統合 Windows 認証](https://aka.ms/msal-net-iwa)を使用すると、確認を表示せずにトークンを取得します。
 
 ブラウザーがインストールされていないデバイス上で稼働しているアプリケーションであっても、ユーザーのために API を呼び出すことは可能です。 認証するには、Web ブラウザーがインストールされている別のデバイス上でユーザーがサインインする必要があります。 このシナリオでは、[デバイス コード フロー](https://aka.ms/msal-net-device-code-flow)を使用する必要があります。
 

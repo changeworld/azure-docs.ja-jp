@@ -2,21 +2,21 @@
 title: リダイレクト URI (応答 URL) に関する制限 | Azure AD
 titleSuffix: Microsoft identity platform
 description: Microsoft の ID プラットフォームによって適用される、リダイレクト URI (応答 URL) 形式に関する制約と制限についての説明。
-author: SureshJa
-ms.author: sureshja
+author: madansr7
+ms.author: saumadan
 manager: CelesteDG
-ms.date: 08/06/2021
+ms.date: 09/03/2021
 ms.topic: conceptual
 ms.subservice: develop
 ms.custom: contperf-fy21q4-portal, aaddev
 ms.service: active-directory
 ms.reviewer: marsma, lenalepa, manrath
-ms.openlocfilehash: 96fe21b4f1df662e72ec88abc68d74db25257de1
-ms.sourcegitcommit: c2f0d789f971e11205df9b4b4647816da6856f5b
+ms.openlocfilehash: d20d14619111515332b6aa5aec9239d0a6d50283
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122662039"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129353054"
 ---
 # <a name="redirect-uri-reply-url-restrictions-and-limitations"></a>リダイレクト URI (応答 URL) に関する制約と制限
 
@@ -54,6 +54,11 @@ Azure Active Directory (Azure AD) アプリケーション モデルでは、URI
 ## <a name="maximum-uri-length"></a>URI の最大長
 
 アプリの登録に追加するリダイレクト URI ごとに最大 256 文字を使用できます。
+
+## <a name="redirect-uris-in-application-vs-service-principal-objects"></a>アプリケーション オブジェクトとサービス プリンシパル オブジェクトにおけるリダイレクト URI
+
+* リダイレクト URI は常にアプリケーション オブジェクトにのみ追加します。
+* サービス プリンシパルにはリダイレクト URI を追加しないでください。サービス プリンシパル オブジェクトがアプリケーション オブジェクトと同期するとき、これらの値が削除されることがあるためです。 これは 2 つのオブジェクト間で同期をトリガーする更新操作に起因して発生します。
 
 ## <a name="supported-schemes"></a>サポートされているスキーム
 
@@ -126,6 +131,6 @@ Azure Active Directory (Azure AD) アプリケーション モデルでは、URI
 > [!WARNING]
 > この手法では、セキュリティを侵害されたクライアントが状態パラメーターで送信された追加パラメーターを変更し、ユーザーを別の URL にリダイレクトすることを許します。これは RFC 6819 に説明がある[オープン リダイレクターの脅威](https://tools.ietf.org/html/rfc6819#section-4.2.4)です。 そのため、クライアントは状態を暗号化するか、リダイレクト URI に含まれるドメイン名をトークンと比べて検証するなど、何か他の手段で状態を検証することによって、これらのパラメーターを保護する必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 アプリの登録の[アプリケーション マニフェスト](reference-app-manifest.md)について学習します。

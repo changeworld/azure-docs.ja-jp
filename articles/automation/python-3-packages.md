@@ -3,25 +3,25 @@ title: Azure Automation で Python 3 パッケージを管理する
 description: この記事では、Azure Automation での Python 3 パッケージ (プレビュー) の管理方法について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 08/13/2021
+ms.date: 08/25/2021
 ms.topic: conceptual
 ms.custom: has-adal-ref
-ms.openlocfilehash: b7393f06df77b0057925e20a7cf055fddb0a7bf2
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: d3ec338b6d6edac2c56c8b42f877a1095aace2a0
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122965292"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129349616"
 ---
 # <a name="manage-python-3-packages-preview-in-azure-automation"></a>Azure Automation で Python 3 パッケージ (プレビュー) を管理する
 
-Azure Automation を使用すると、Azure Sandbox 環境および Linux Hybrid Runbook Worker で Python 3 Runbook (プレビュー) を実行することができます。 Runbook の簡略化のために、Python パッケージを使用して必要なモジュールをインポートすることができます。 1 つのパッケージをインポートするには、「[パッケージのインポート](#import-a-package)」を参照してください。 複数のパッケージを含むパッケージをインポートするには、「[依存関係を含むパッケージのインポート](#import-a-package-with-dependencies)」を参照してください。 この記事では、Azure Automation での Python 3 パッケージ (プレビュー) の管理および使用方法について説明します。
+Azure Automation を使用すると、Azure Sandbox 環境および Linux Hybrid Runbook Worker で Python 3 Runbook (プレビュー) を実行することができます。 Runbook の簡略化のために、Python パッケージを使用して必要なモジュールをインポートすることができます。 Azure パッケージ 4.0.0 が Python 3 Automation 環境に既定でインストールされます。 Automation アカウントに Python パッケージをインポートすることで、既定のバージョンをオーバーライドできます。 Automation アカウントにインポートされたバージョンが優先されます。 1 つのパッケージをインポートするには、「[パッケージのインポート](#import-a-package)」を参照してください。 複数のパッケージを含むパッケージをインポートするには、「[依存関係を含むパッケージのインポート](#import-a-package-with-dependencies)」を参照してください。 この記事では、Azure Automation での Python 3 パッケージ (プレビュー) の管理および使用方法について説明します。
 
 ## <a name="packages-as-source-files"></a>ソース ファイルとしてのパッケージ
 
 Azure Automation では、Python コードのみを含み、他の言語拡張や他の言語のコードを含まない Python パッケージのみがサポートされます。 ただし、Azure Sandbox 環境には C/C++ バイナリに必要なコンパイラがない場合があるため、代わりに[ホイール ファイル](https://pythonwheels.com/)を使用することが推奨されます。 [Python Package Index](https://pypi.org/) (PyPI) は、Python プログラミング言語用のソフトウェアのリポジトリです。 PyPI から Automation アカウントにインポートするために Python 3 パッケージを選択する場合は、次のファイル名の部分に注意してください。
 
-| ファイル名の部分 | Description |
+| ファイル名の部分 | 説明 |
 |---|---|
 |cp38|Automation では、クラウド ジョブ用に、**Python 3.8** がサポートされています。|
 |amd64|Azure サンドボックス プロセスは **Windows 64 ビット** アーキテクチャです。|
@@ -131,6 +131,22 @@ for group in groups:
 
 > [!NOTE]
 > Python `automationassets` パッケージは、pypi.org で使用できないので、Windows コンピューターにインポートできません。
+
+## <a name="identify-available-packages-in-sandbox"></a>サンドボックスで使用可能なパッケージを特定する
+
+次のコードを使用して、既定のインストール済みモジュールのリストを表示します。
+
+```python
+#!/usr/bin/env python3
+
+import pkg_resources
+installed_packages = pkg_resources.working_set
+installed_packages_list = sorted(["%s==%s" % (i.key, i.version)
+   for i in installed_packages])
+
+for package in installed_packages_list:
+    print(package)
+```
 
 ## <a name="next-steps"></a>次のステップ
 

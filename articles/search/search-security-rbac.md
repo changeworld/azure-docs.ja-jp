@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2021
-ms.openlocfilehash: 3a9669b2c569947c76f4f2b92fa316f3b09ab517
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 1968bb34d124fa37a51b296071ee24b3eae47772
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128577911"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129273725"
 ---
 # <a name="use-role-based-authorization-in-azure-cognitive-search"></a>Azure Cognitive Search でロールベースの承認を使用する
 
@@ -49,7 +49,7 @@ Azure Cognitive Search で RBAC を使用する場合、リージョン、レベ
 | [所有者](../role-based-access-control/built-in-roles.md#owner) | サービス操作 (一般提供) | Azure ロールを割り当てる機能を含む、リソースへのフル アクセス。 サブスクリプション管理者は既定でメンバーになります。 |
 | [Contributor](../role-based-access-control/built-in-roles.md#contributor) | サービス操作 (一般提供) | ロールの割り当て、承認オプションの変更を除いて、所有者と同じアクセス レベル。 |
 | [Reader](../role-based-access-control/built-in-roles.md#reader) | サービス操作 (一般提供) | 一部のサービス情報へのアクセスが制限されています。 ポータルでは、閲覧者ロールはサービスの [概要] ページの [要点] セクションと [監視] タブで情報にアクセスできます。他のすべてのタブとページにはアクセスできません。 </br></br>このロールは、サービス情報 (リソース グループ、サービスの状態、場所、サブスクリプションの名前と ID、タグ、URL、価格レベル、レプリカ、パーティション、検索単位) にアクセスできます。 </br></br>また、このロールは、サービス メトリック (検索の待ち時間、調整された要求の割合、1 秒あたりの平均クエリ数) にもアクセスできます。 </br></br>API キー、ロールの割り当て、コンテンツ (インデックスまたは同意語マップ)、コンテンツ メトリック (使用されているストレージ、オブジェクトの数) にはアクセスできません。 |
-| [Search Service Contributor](../role-based-access-control/built-in-roles.md#search-service-contributor) | サービス操作 (一般提供)、およびトップレベルのオブジェクトとコンテンツ (プレビュー) | このロールは、サービス レベルでは共同作成者の組み合わせですが、コンテンツ レベルでは、[`Microsoft.Search/searchServices/*`](/azure/role-based-access-control/resource-provider-operations#microsoftsearch) を介して、インデックス、同意語マップ、インデクサー、データソース、スキルセットですべてのアクションにフル アクセスできます。 このロールは、サービスとそのコンテンツを完全に管理する必要がある検索サービス管理者向けです。 コンテンツ管理の場合、プレビューにサインアップする必要があります。 </br></br>共同作成者と同様、この役割のメンバーは、ロール割り当ての作成または管理を作成することも、承認オプションを変更することもできません。 |
+| [Search Service Contributor](../role-based-access-control/built-in-roles.md#search-service-contributor) | サービス操作 (一般提供)、およびトップレベルのオブジェクト (プレビュー) | このロールは、サービス レベルでの共同作成者の組み合わせですが、[`Microsoft.Search/searchServices/*`](/azure/role-based-access-control/resource-provider-operations#microsoftsearch) を介して、インデックス、同意語マップ、インデクサー、データソース、スキルセットですべてのアクションにフル アクセスできます。 このロールは、サービスを完全に管理する必要がある検索サービス管理者用です。 </br></br>共同作成者と同様、この役割のメンバーは、ロール割り当ての作成または管理を作成することも、承認オプションを変更することもできません。 |
 | [検索インデックス データ共同作成者](../role-based-access-control/built-in-roles.md#search-index-data-contributor) | ドキュメント コレクション (プレビュー) | 検索サービスですべてのインデックス内のコンテンツに対するフル アクセスを提供します。 このロールは、インデックスのドキュメント コレクションのインポート、更新、またはクエリを行う必要がある開発者またはインデックス所有者向けです。 |
 | [検索インデックス データ閲覧者](../role-based-access-control/built-in-roles.md#search-index-data-reader) | ドキュメント コレクション (プレビュー) | 検索サービスで検索インデックスへの読み取り専用アクセスを提供します。 このロールは、クエリを実行するアプリおよびユーザー向けです。 |
 
@@ -238,6 +238,8 @@ The Azure SDK for .NET では、[NuGet Gallery | Azure.Search.Documents 11.4.0-b
 var tokenCredential =  new ClientSecretCredential(aadTenantId, aadClientId, aadSecret);
 SearchClient srchclient = new SearchClient(serviceEndpoint, indexName, tokenCredential);
 ```
+
+[Azure SDK for .NET での AAD 認証](https://github.com/Azure/azure-sdk-for-net/tree/main/sdk/identity/Azure.Identity)の使用に関するその他の詳細については、SDK の GitHub レポジトリを参照してください。
 
 > [!NOTE]
 > 403 エラーが発生した場合、検索サービスがプレビュー プログラムに登録されていること、およびお使いのサービスがプレビュー ロールの割り当て用に構成されていることを確認します。
