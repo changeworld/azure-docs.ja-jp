@@ -6,12 +6,12 @@ ms.author: harshacs
 ms.service: site-recovery
 ms.topic: article
 ms.date: 07/14/2020
-ms.openlocfilehash: a90d9a82ff26c62423651d8d1b16173300147a1c
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: 939eb89de2e347aeec2d8946f456f5ba2aa6be29
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129536768"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129658578"
 ---
 # <a name="replicate-on-premises-machines-by-using-private-endpoints"></a>プライベート エンドポイントを使用してオンプレミス マシンをレプリケートする
 
@@ -41,7 +41,7 @@ Azure Site Recovery では、オンプレミス マシンを Azure の仮想ネ�
 - プライベート エンドポイントをキャッシュ ストレージ アカウントに接続するには、バイパス ネットワーク内に追加の IP アドレスが 1 つ必要です。 オンプレミスとストレージ アカウント エンドポイント間では任意の接続方法を使用できます。 たとえば、インターネットまたは Azure [ExpressRoute](../expressroute/index.yml) を使用できます。 プライベート リンクの確立は任意です。 ストレージのプライベート エンドポイントを作成できるのは、General Purpose v2 アカウントでのみです。 General Purpose v2 アカウントでのデータ転送の価格については、「[Azure ページ BLOB の価格](https://azure.microsoft.com/pricing/details/storage/page-blobs/)」を参照してください。
 
 > [!NOTE]
-> VMware と物理マシンを保護するためにプライベート エンドポイントを設定する場合は、構成サーバーに MySQL を手動でインストールする必要があります。 [こちら](https://docs.microsoft.com/azure/site-recovery/vmware-azure-deploy-configuration-server#configure-settings)の手順に従って、手動インストールを実行してください。 
+> VMware と物理マシンを保護するためにプライベート エンドポイントを設定する場合は、構成サーバーに MySQL を手動でインストールする必要があります。 [こちら](vmware-azure-deploy-configuration-server.md#configure-settings)の手順に従って、手動インストールを実行してください。 
 
  ## <a name="create-and-use-private-endpoints-for-site-recovery"></a>サイトの回復用のプライベート エンドポイントを作成して使用する
 

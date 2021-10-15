@@ -8,12 +8,12 @@ ms.subservice: ip-services
 ms.topic: how-to
 ms.date: 10/01/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 900010fd454e356b43eb7cb5b2ee0379bdf90beb
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 1129b4cf06a2de01438f2c83500eee84240183fc
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129367447"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129705270"
 ---
 # <a name="create-a-virtual-machine-with-a-static-private-ip-address-using-the-azure-cli"></a>Azure CLI を使用して静的プライベート IP アドレスを持つ仮想マシンを作成する
 
@@ -36,7 +36,7 @@ Azure リソース グループとは、Azure リソースのデプロイと管�
     --location eastus2
 ```
 
-## <a name="create-a-virtual-machine"></a>仮想マシンの作成
+## <a name="create-a-virtual-machine"></a>仮想マシンを作成する
 
 [az vm create](/cli/azure/vm#az_vm_create) を使用して仮想マシンを作成します。 
 
@@ -57,7 +57,7 @@ Azure リソース グループとは、Azure リソースのデプロイと管�
 
 このセクションでは、以前に作成した仮想マシンのプライベート IP アドレスを "**動的**" から "**静的**" に変更します。 
 
-[az network nic ip-config update](/cli/azure/network/nic/ipconfig#az_network_nic_ip_config_update) を使用して、ネットワーク インターフェイスの構成を更新します。
+[az network nic ip-config update](/cli/azure/network/nic/ip-config#az_network_nic_ip_config_update) を使用して、ネットワーク インターフェイスの構成を更新します。
 
 次のコマンドでは、仮想マシンのプライベート IP アドレスを静的に変更します。
 

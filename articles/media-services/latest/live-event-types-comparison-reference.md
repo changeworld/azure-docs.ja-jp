@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 0916439ef75c73d59ada1f9a832b95e733520c9c
-ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
+ms.openlocfilehash: 09bd0cf6a43934ea7a0e973b64c434b705d9ea36
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2021
-ms.locfileid: "129401030"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129716036"
 ---
 # <a name="live-event-types-comparison"></a>ライブ イベントの種類の比較
 
@@ -135,6 +135,7 @@ Azure Media Services では、[ライブ イベント](/rest/api/media/liveevent
 ### <a name="bitrate-of-contribution-feed-and-output-layers"></a>コントリビューション フィードと出力レイヤーのビットレート
 
 ライブ エンコーダーは、コントリビューション フィードのビットレートに関係なく、プリセットのビットレート設定に従うように構成されています。 その結果、出力レイヤーのビットレートが、コントリビューション フィードのものを超える場合があります。 たとえば、1 Mbps に 720p の解像度でコントリビューション フィードを送信すると、出力レイヤーは上記の[表](live-event-types-comparison-reference.md#output-video-streams-for-default720p)と同じままになります。
+
 
 ## <a name="next-steps"></a>次のステップ
 

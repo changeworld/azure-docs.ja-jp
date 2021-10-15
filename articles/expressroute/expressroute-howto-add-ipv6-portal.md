@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 03/09/2021
 ms.author: duau
-ms.openlocfilehash: 645b936b5c8c550e9a71d33c079721d897aab0e3
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: c8d12e533da11f1cf1db2be800b8f1ac3ed02d90
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129233542"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129669171"
 ---
 # <a name="add-ipv6-support-for-private-peering-using-the-azure-portal-preview"></a>Azure portal を使用してプライベート ピアリングに対する IPv6 サポートを追加する (プレビュー)
 
@@ -76,7 +76,7 @@ Follow the steps below if you plan to connect to a new set of Azure resources us
 
 1. [Create the dual-stack gateway subnet](expressroute-howto-add-gateway-portal-resource-manager.md#create-the-gateway-subnet).
 
-1. [Create the virtual network gateway](expressroute-howto-add-gateway-portal-resource-manager.md#create-the-virtual-network-gateway) using any SKU and a Standard, Static public IP address. If you plan to use FastPath, use UltraPerformance or ErGw3AZ (note that this option is only available for circuits using ExpressRoute Direct).
+1. [Create the virtual network gateway](expressroute-howto-add-gateway-resource-manager.md) using any SKU and a Standard, Static public IP address. If you plan to use FastPath, use UltraPerformance or ErGw3AZ (note that this option is only available for circuits using ExpressRoute Direct). **NOTE:** Please use the PowerShell instructions for this step as the Azure portal experience is still under development.
 
 1. [Link your virtual network to your ExpressRoute circuit](expressroute-howto-linkvnet-portal-resource-manager.md).
 

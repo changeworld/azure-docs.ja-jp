@@ -3,12 +3,12 @@ title: Application Insights に対する Azure AD Authentication (プレビュ�
 description: Azure Active Directory (Azure AD) 認証を有効にして、認証されたテレメトリのみが Application Insights リソースに取り込まれるようにする方法について説明します。
 ms.topic: conceptual
 ms.date: 08/02/2021
-ms.openlocfilehash: b38e3498ae61c9639c71eb358a4089dc59243616
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.openlocfilehash: 573a7807f6561dfb326bfa247b12ccafa0857152
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129857713"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129359865"
 ---
 # <a name="azure-ad-authentication-for-application-insights-preview"></a>Application Insights に対する Azure AD Authentication (プレビュー)
 Application Insights では、新たに Azure Active Directory (Azure AD) 認証がサポートされています。 認証されたテレメトリのみが Application Insights リソースに取り込まれるよう、Azure AD を使用して設定できるようになりました。 
@@ -135,7 +135,7 @@ appInsights.defaultClient.aadTokenCredential = credential;
 > [!NOTE]
 > Application Insights Java エージェントでの Azure AD のサポートは、[Java 3.2.0-BETA](https://github.com/microsoft/ApplicationInsights-Java/releases/tag/3.2.0-BETA) 以降に含まれています。 
 
-1. [Java エージェントを使用してアプリケーションを構成します。](java-in-process-agent.md#get-started)
+1. [Java エージェントを使用してアプリケーションを構成します。](java-in-process-agent.md#quickstart)
 
     > [!IMPORTANT]
     > Java エージェントを使用してアプリを構成するときは、"IngestionEndpoint" を含む完全な接続文字列を使用してください。 たとえば、「 `InstrumentationKey=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX;IngestionEndpoint=https://XXXX.applicationinsights.azure.com/` 」のように指定します。
