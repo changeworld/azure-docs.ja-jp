@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf76e5ffc7b3eabae7366805ed1a87d262854992
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 9927232ca01473d8c51ac034f6c0ed24b07a2b39
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128630112"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129707211"
 ---
 # <a name="what-is-a-primary-refresh-token"></a>プライマリ更新トークンとは
 
@@ -67,9 +67,12 @@ Azure AD 登録済みデバイスのシナリオでは、この Azure AD アカ�
 > [!NOTE]
 > サード パーティの ID プロバイダーは、Windows 10 デバイスで PRT 発行を有効にするために、WS-Trust プロトコルをサポートする必要があります。 WS-Trust がない場合、Hybrid Azure AD 参加済みまたは Azure AD 参加済みデバイスでユーザーに PRT を発行することはできません。 ADFS では、usernamemixed エンドポイントのみが必要です。 adfs/services/trust/2005/windowstransport と adfs/services/trust/13/windowstransport はどちらも、イントラネットに接続するエンドポイントとしてのみ有効にする必要があります。Web アプリケーション プロキシを介してエクストラネットに接続するエンドポイントとしては **公開しないでください**。
 
+> [!NOTE]
+> Azure AD 条件付きアクセス ポリシーは、PRT の発行時、評価されません
+
 ## <a name="what-is-the-lifetime-of-a-prt"></a>PRT の有効期間はどれくらいですか?
 
-発行された PRT は 90 日間有効であり、ユーザーがデバイスをアクティブに使用している限り継続的に更新されます。  
+発行された PRT は 14 日間有効であり、ユーザーがデバイスをアクティブに使用している限り継続的に更新されます。  
 
 ## <a name="how-is-a-prt-used"></a>PRT はどのように使用されますか?
 
@@ -90,6 +93,9 @@ PRT は 2 つの異なる方法で更新されます。
 ADFS 環境では、PRT を更新するために、ドメイン コントローラーへの直接の通信経路を確保する必要はありません。 PRT の更新には、WS-Trust プロトコルを使用してプロキシで有効になっている /adfs/services/trust/2005/usernamemixed と /adfs/services/trust/13/usernamemixed エンドポイントのみが必要です。
 
 Windows トランスポート エンドポイントは、パスワードが変更された場合にのみパスワード認証に必要であり、PRT の更新には必要ありません。
+
+> [!NOTE]
+> Azure AD 条件付きアクセス ポリシーは、PRT の更新時、評価されません。
 
 ### <a name="key-considerations"></a>重要な考慮事項
 
@@ -118,7 +124,7 @@ TPM を使用してこれらのキーをセキュリティで保護すること�
 特定のシナリオで、PRT が多要素認証 (MFA) 要求を受けることがあります。 アプリケーションのトークンを要求するために MFA ベースの PRT が使用されると、MFA 要求がアプリ トークンに転送されます。 この機能は、それが必要なすべてのアプリでの MFA チャレンジを防ぐことによって、シームレスなエクスペリエンスをユーザーに提供します。 PRT は次の方法で MFA 要求を取得できます。
 
 * **Windows Hello for Business を使用してサインイン**: Windows Hello for Business は、パスワードを置き換え、暗号化キーを使用して強力な 2 要素認証を提供します。 Windows Hello for Business はデバイス上のユーザーに固有であり、それ自体がプロビジョニングのために MFA を必要とします。 ユーザーが Windows Hello for Business を使用してログインすると、ユーザーの PRT が MFA 要求を取得します。 スマート カード認証が ADFS から MFA 要求を生成する場合、このシナリオはスマート カードでログインしているユーザーにも当てはまります。
-   * Windows Hello for Business は多要素認証と見なされ、PRT 自体が更新されると MFA 要求が更新されるため、ユーザーが WIndows Hello for Business を使用してサインインすると MFA の期間は継続的に延長されます
+   * Windows Hello for Business は多要素認証と見なされ、PRT 自体が更新されると MFA 要求が更新されるため、ユーザーが Windows Hello for Business を使用してサインインすると MFA の期間は継続的に延長されます。
 * **WAM 対話型サインイン中の MFA**: WAM を通じたトークン要求中に、ユーザーがアプリにアクセスするために MFA を実行する必要がある場合、この対話中に更新される PRT には MFA 要求が刻印されます。
    * この場合、MFA 要求は継続的に更新されないため、MFA 期間はディレクトリで設定された有効期間に基づきます。
    * 以前の既存の PRT と RT がアプリへのアクセスに使用されている場合、PRT と RT は最初の認証の証明と見なされます。 2 番目の証明と刻印された MFA 要求で、新しい AT が必要になります。 これにより、新しい PRT と RT も発行されます。
@@ -203,4 +209,4 @@ Windows 10 では、PRT のパーティション分割されたリストを資�
 
 ## <a name="next-steps"></a>次のステップ
 
-PRT 関連の問題のトラブルシューティングについては、[ハイブリッド Azure Active Directory 参加済み Windows 10 および Windows Server 2016 デバイスのトラブルシューティング](troubleshoot-hybrid-join-windows-current.md)に関する記事を参照してください。
+PRT 関連の問題のトラブルシューティングについては、[ハイブリッド Azure Active Directory 参加済み Windows 10 および Windows Server 2016 デバイスのトラブルシューティング](troubleshoot-hybrid-join-windows-current.md#troubleshoot-post-join-authentication-issues)に関する記事を参照してください。

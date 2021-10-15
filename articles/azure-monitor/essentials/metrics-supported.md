@@ -6,55 +6,58 @@ services: azure-monitor
 ms.topic: reference
 ms.date: 09/10/2021
 ms.author: robb
-ms.openlocfilehash: c08644242bc811bfce8be2883bc2dec95f83f13d
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 15e8ea8c1622ec846d9ab36452d8982c1a64a084
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128616728"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129458152"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Monitor のサポートされるメトリック
 
 > [!NOTE]
-> この一覧は、主に自動生成されています。 GitHub を介してこの一覧に加えられた変更は、警告なしで上書きできます。 永続的な更新を行う方法の詳細については、この記事の作成者にお問い合わせください。
+> この一覧は、主に自動生成されています。 GitHub でこの一覧に対して行われた変更は、警告なしで上書きされる可能性があります。 永続的な更新を行う方法の詳細については、この記事の作成者にお問い合わせください。
 
-Azure Monitor では、複数の方法を使用してメトリックを操作できます。たとえば、ポータルでメトリックをグラフ化したり、REST API でアクセスしたり、PowerShell や CLI を使ってクエリを実行したりできます。 
+Azure Monitor では、複数の方法を使用してメトリックを操作できます。たとえば、Azure portal でメトリックをグラフ化したり、REST API でアクセスしたり、PowerShell や Azure CLI を使用してクエリを実行したりできます。 
 
-この記事は、Azure Monitor の統合メトリック パイプラインで現在利用できるすべてのプラットフォーム メトリック (つまり、自動的に集められた) の完全一覧になっています。 この記事の上部に記載された日付以降に変更または追加されたメトリックは、まだ下記に記載されていない可能性があります。 プログラムを使ってこのメトリックの一覧のクエリを実行し、アクセスするには、[2018-01-01 API バージョン](/rest/api/monitor/metricdefinitions)を使用してください。 この一覧にない他のメトリックは、ポータルまたは従来の API で使用できる場合があります。
+この記事は、Azure Monitor の統合メトリック パイプラインで現在利用できる (つまり、自動的に収集される) すべてのプラットフォーム メトリックの完全な一覧です。 この記事の上部に記載された日付以降に変更または追加されたメトリックは、まだ一覧に含まれない可能性があります。 プログラムでこのメトリックの一覧のクエリを実行し、アクセスするには、[2018-01-01 api-version](/rest/api/monitor/metricdefinitions) を使用してください。 この一覧にない他のメトリックを、ポータルまたは従来の API で使用できる場合があります。
 
-メトリックは、リソース プロバイダーとリソースの種類別にまとめられます。 サービスとそれらに属するリソース プロバイダーおよび種類の一覧については、「[Azure サービスのリソース プロバイダー](../../azure-resource-manager/management/azure-services-resource-providers.md)」を参照してください。  
+メトリックは、リソース プロバイダーとリソースの種類別にまとめられています。 サービスとそれらに属するリソース プロバイダーおよび種類の一覧については、「[Azure サービスのリソース プロバイダー](../../azure-resource-manager/management/azure-services-resource-providers.md)」を参照してください。  
 
 ## <a name="exporting-platform-metrics-to-other-locations"></a>他の場所へのプラットフォーム メトリックのエクスポート
 
 次の 2 つの方法のいずれかで、プラットフォーム メトリックを Azure Monitor パイプラインから他の場所にエクスポートできます。
-1. [メトリック REST API](/rest/api/monitor/metrics/list) を使用します。
-2. [診断設定](../essentials/diagnostic-settings.md)を使用して、プラットフォーム メトリックをルーティングします 
-    - Azure Storage
-    - Azure Monitor ログ (および Log Analytics)
-    - イベント ハブ (対象が Microsoft 以外のシステムの場合) 
+
+- [メトリック REST API](/rest/api/monitor/metrics/list) を使用します。
+- [診断設定](../essentials/diagnostic-settings.md)を使用して、プラットフォーム メトリックを次の場所にルーティングします 
+    - Azure Storage です。
+    - Azure Monitor ログ (したがって Log Analytics)。
+    - イベント ハブ (Microsoft 以外のシステムに取得する方法)。 
 
 メトリックをルーティングする最も簡単な方法は診断設定を使用することですが、これには、次のような制限がいくつかあります。 
 
-- **エクスポートできないものがある** - すべてのメトリックは、REST API を使用してエクスポートできますが、Azure Monitor バックエンドの複雑さにより、診断設定を使用してエクスポートできないものがあります。 以下の表の "*診断設定を使用したエクスポートが可能か*" の列には、この方法でエクスポートできるメトリックが一覧表示されています。  
+- **エクスポート可能性**。 REST API を使用するとすべてのメトリックをエクスポートできますが、診断設定を使用した場合は、Azure Monitor バックエンドでの複雑さのため一部のメトリックをエクスポートできません。 以下の表の "診断設定を使用したエクスポートが可能か" の列には、この方法でメトリックをエクスポートできるかどうかが示されています。  
 
-- **多次元メトリック** - 診断設定を使用して、他の場所に多次元メトリックを送信することは現在サポートされていません。 ディメンションを含むメトリックは、ディメンション値間で集計され、フラット化された単一ディメンションのメトリックとしてエクスポートされます。 *例*: イベント ハブの "受信メッセージ" メトリックは、キュー単位のレベルで調査およびグラフ化できます。 ただし、診断設定を使用してエクスポートすると、メトリックは、イベント ハブ内のすべてのキューのすべての受信メッセージとして表されます。
+- **多次元メトリック**。 診断設定を使用して、他の場所に多次元メトリックを送信することは現在サポートされていません。 ディメンションを含むメトリックは、ディメンション値間で集計され、フラット化された単一ディメンションのメトリックとしてエクスポートされます。 
+
+  たとえば、イベント ハブでの "*受信メッセージ*" メトリックは、キュー単位のレベルで調査およびグラフ化できます。 ただし、診断設定を使用してエクスポートしたメトリックは、イベント ハブ内のすべてのキューのすべての受信メッセージとして表されます。
 
 ## <a name="guest-os-and-host-os-metrics"></a>ゲスト OS とホスト OS のメトリック
 
-> [!WARNING]
-> Azure Virtual Machines、Service Fabric、Cloud Services で実行されるゲスト オペレーティング システム (ゲスト OS) のメトリックは、ここには一覧表示されて **いません**。 ゲスト OS メトリックは、ゲスト オペレーティング システムで実行される、あるいはそのシステムの一部として実行される 1 つまたは複数のエージェントを使用して収集する必要があります。  ゲスト OS メトリックには、ゲストの CPU 使用率またはメモリ使用量を追跡するパフォーマンス カウンターが含まれています。これらは、どちらも自動スケーリングまたはアラートに頻繁に使用されます。 
->
-> **ホスト OS メトリックは利用可能であり、以下に一覧表示されています。** これらは同じではありません。 ホスト OS メトリックは、ゲスト OS セッションをホストしている Hyper-V セッションに関連しています。 
+Azure Virtual Machines、Service Fabric、Cloud Services で実行されるゲスト オペレーティング システム (ゲスト OS) のメトリックは、ここには一覧表示されて "*いません*"。 ゲスト OS メトリックは、ゲスト オペレーティング システムで実行される、あるいはそのシステムの一部として実行される 1 つまたは複数のエージェントを使用して収集する必要があります。 ゲスト OS メトリックには、ゲストの CPU 使用率またはメモリ使用量を追跡するパフォーマンス カウンターが含まれます。これらは、どちらも自動スケーリングまたはアラートに頻繁に使用されます。 
+
+ホスト OS メトリックは "*利用可能であり*"、表の一覧に記載されています。 ホスト OS メトリックは、ゲスト OS セッションをホストしている Hyper-V セッションに関連しています。 
 
 > [!TIP]
-> ベスト プラクティスは、Azure Monitor エージェントを使用および構成して、プラットフォーム メトリックが格納されている同じ Azure Monitor メトリック データベースにゲスト OS のパフォーマンス メトリックを送信することです。 エージェントでは、[カスタム メトリック](../essentials/metrics-custom-overview.md) API を使用してゲスト OS メトリックをルーティングします。 その後、ゲスト OS メトリックをプラットフォーム メトリックのようにグラフにしたり、アラートを出す対象にしたり、それ以外の場面で利用したりできます。 または (あるいはそれに加えて)、同じエージェントを使用して、ゲスト OS メトリックを Azure Monitor ログに送信することもできます。 そこで、Log Analytics を使用して、メトリック以外のデータと組み合わせて、これらのメトリックに対してクエリを実行できます。 
+> ベスト プラクティスは、Azure Monitor エージェントを使用および構成して、プラットフォーム メトリックが格納されている同じ Azure Monitor メトリック データベースにゲスト OS のパフォーマンス メトリックを送信することです。 エージェントでは、[カスタム メトリック](../essentials/metrics-custom-overview.md) API を使用してゲスト OS メトリックをルーティングします。 その後、ゲスト OS メトリックをプラットフォーム メトリックのようにグラフにしたり、アラートを出す対象にしたり、それ以外の場面で利用したりできます。 
+>
+> 代わりに、またはそれに加えて、同じエージェントを使用して、ゲスト OS メトリックを Azure Monitor ログに送信することもできます。 そこで、Log Analytics を使用して、メトリック以外のデータと組み合わせて、これらのメトリックに対してクエリを実行できます。 
 
-以前このルーティングに使用されていた Azure Diagnostics 拡張機能と Log Analytics エージェントは、Azure Monitor エージェントによって置き換えられます。 重要な追加情報については、[監視エージェントの概要](../agents/agents-overview.md)に関するページを参照してください。
+以前ゲスト OS のルーティングに使用されていた Azure Diagnostics 拡張機能と Log Analytics エージェントは、Azure Monitor エージェントによって置き換えられます。 重要な追加情報については、「[Azure Monitor エージェントの概要](../agents/agents-overview.md)」を参照してください。
 
 ## <a name="table-formatting"></a>表の書式設定
 
-> [!IMPORTANT] 
-> この最新の更新では、新しい列が追加され、メトリックがアルファベット順に並べ替えられています。 追加情報とは、ブラウザー ウィンドウの幅に応じて、以下の表の下部に水平スクロール バーが表示される場合があることを意味します。 情報が欠落していると思われる場合は、スクロール バーを使用して表の全体が表示されるようにしてください。
+この最新の更新では、新しい列が追加され、メトリックがアルファベット順に並べ替えられています。 追加情報とは、ブラウザー ウィンドウの幅に応じて、表の下部に水平スクロール バーが表示される場合があることを意味します。 情報が欠落していると思われる場合は、スクロール バーを使用して表の全体が表示されるようにしてください。
 
 
 ## <a name="microsoftaadiamazureadmetrics"></a>microsoft.aadiam/azureADMetrics
@@ -123,7 +126,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |---|---|---|---|---|---|---|
 |BackendDuration|はい|バックエンド要求の期間|MilliSeconds|Average|バックエンド要求の期間 (ミリ秒)|Location、Hostname|
 |容量|はい|容量|Percent|Average|ApiManagement サービスの使用率メトリック。 注: Premium 以外の SKU の場合、"Max" 集計では、値は 0 と表示されます。|場所|
-|ConnectionAttempts|はい|WebSocket 接続試行 (プレビュー)|Count|合計|選択したソースと宛先に基づく WebSocket 接続試行の数|場所、ソース、宛先、状態|
+|ConnectionAttempts|はい|WebSocket 接続試行 (プレビュー)|カウント|合計|選択したソースと宛先に基づく WebSocket 接続試行の数|場所、ソース、宛先、状態|
 |Duration|はい|ゲートウェイ要求の全体の期間|MilliSeconds|Average|ゲートウェイ要求の全体の期間 (ミリ秒単位)|Location、Hostname|
 |EventHubDroppedEvents|はい|破棄された EventHub イベント数|Count|合計|キューのサイズ制限に達したためスキップされたイベントの数|場所|
 |EventHubRejectedEvents|はい|拒否された EventHub イベント数|Count|合計|拒否された EventHub イベントの数 (誤った構成または未承認)|場所|
@@ -140,7 +143,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |SuccessfulRequests|はい|成功したゲートウェイ要求 (非推奨)|Count|合計|成功したゲートウェイ要求の数 - 代わりに、GatewayResponseCodeCategory ディメンションで多次元要求メトリックを使用します|Location、Hostname|
 |TotalRequests|はい|ゲートウェイ要求の合計 (非推奨)|Count|合計|ゲートウェイ要求の数 - 代わりに、GatewayResponseCodeCategory ディメンションで多次元要求メトリックを使用します|Location、Hostname|
 |UnauthorizedRequests|はい|未承認ゲートウェイ要求 (非推奨)|Count|合計|未承認ゲートウェイ要求の数 - 代わりに、GatewayResponseCodeCategory ディメンションで多次元要求メトリックを使用します|Location、Hostname|
-|WebSocketMessages|はい|WebSocket メッセージ (プレビュー)|Count|合計|選択したソースと宛先に基づく WebSocket メッセージの数|場所、ソース、宛先|
+|WebSocketMessages|はい|WebSocket メッセージ (プレビュー)|カウント|合計|選択したソースと宛先に基づく WebSocket メッセージの数|場所、ソース、宛先|
 
 
 ## <a name="microsoftappconfigurationconfigurationstores"></a>Microsoft.AppConfiguration/configurationStores
@@ -178,7 +181,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |IngressFailedRequests|はい|失敗した要求|Count|Average|クライアントからの Azure Spring Cloud による失敗した要求数|ホスト名、HttpStatus|
 |IngressRequests|はい|Requests|Count|Average|クライアントからの Azure Spring Cloud による要求数|ホスト名、HttpStatus|
 |IngressResponseStatus|はい|応答の状態|Count|Average|Azure Spring Cloud によって返された HTTP 応答の状態。 応答状態コードの分布をさらに分類し、2xx、3xx、4xx、5xx のカテゴリで応答を表示できます|ホスト名、HttpStatus|
-|IngressResponseTime|はい|応答時間|Seconds|Average|Azure Spring Cloud によって返された HTTP 応答時間|ホスト名、HttpStatus|
+|IngressResponseTime|はい|応答時間|Seconds|Average|Azure Spring Cloud によって返された HTTP 応答時間。|ホスト名、HttpStatus|
 |jvm.gc.live.data.size|はい|jvm.gc.live.data.size|バイト|Average|完全な GC 後の古い世代のメモリ プールのサイズ|Deployment、AppName、Pod|
 |jvm.gc.max.data.size|はい|jvm.gc.max.data.size|バイト|Average|古い世代のメモリ プールの最大サイズ|Deployment、AppName、Pod|
 |jvm.gc.memory.allocated|はい|jvm.gc.memory.allocated|バイト|最大値|1つの GC の後から次の GC の前までの若い世代のメモリ プールのサイズ増加に合わせて増加|Deployment、AppName、Pod|
@@ -808,48 +811,48 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 |メトリック|診断設定を使用したエクスポートが可能か?|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|---|
-|AudioSecondsTranscribed|はい|書き起こされた Audio Seconds|Count|合計|書き起こしの秒数|ApiName、FeatureName、UsageChannel、Region|
-|AudioSecondsTranslated|はい|翻訳された Audio Seconds|Count|合計|翻訳の秒数|ApiName、FeatureName、UsageChannel、Region|
+|AudioSecondsTranscribed|はい|書き起こされた Audio Seconds|カウント|合計|書き起こしの秒数|ApiName、FeatureName、UsageChannel、Region|
+|AudioSecondsTranslated|はい|翻訳された Audio Seconds|カウント|合計|翻訳の秒数|ApiName、FeatureName、UsageChannel、Region|
 |BlockedCalls|はい|ブロックされた呼び出し|Count|合計|レートまたはクォータの制限を超えた呼び出しの回数。|ApiName、OperationName、Region|
-|CharactersTrained|はい|トレーニングされた文字数 (非推奨)|Count|合計|トレーニングされた文字の合計数。|ApiName、OperationName、Region|
-|CharactersTranslated|はい|翻訳された文字数 (非推奨)|Count|合計|受信テキスト要求の合計文字数。|ApiName、OperationName、Region|
+|CharactersTrained|はい|トレーニングされた文字数 (非推奨)|カウント|合計|トレーニングされた文字の合計数。|ApiName、OperationName、Region|
+|CharactersTranslated|はい|翻訳された文字数 (非推奨)|カウント|合計|受信テキスト要求の合計文字数。|ApiName、OperationName、Region|
 |ClientErrors|はい|クライアント エラー|Count|合計|クライアント側のエラー (HTTP 応答コード 4xx) があった呼び出しの回数。|ApiName、OperationName、Region|
-|ComputerVisionTransactions|はい|Computer Vision のトランザクション|Count|合計|Computer Vision のトランザクションの数|ApiName、FeatureName、UsageChannel、Region|
+|ComputerVisionTransactions|はい|Computer Vision のトランザクション|カウント|合計|Computer Vision のトランザクションの数|ApiName、FeatureName、UsageChannel、Region|
 |CustomVisionTrainingTime|はい|Custom Vision のトレーニング時間|Seconds|合計|Custom Vision のトレーニング時間|ApiName、FeatureName、UsageChannel、Region|
-|CustomVisionTransactions|はい|Custom Vision のトランザクション|Count|合計|Custom Vision 予測トランザクションの数|ApiName、FeatureName、UsageChannel、Region|
+|CustomVisionTransactions|はい|Custom Vision のトランザクション|カウント|合計|Custom Vision 予測トランザクションの数|ApiName、FeatureName、UsageChannel、Region|
 |DataIn|はい|受信データ|バイト|合計|受信データのサイズ (バイト)。|ApiName、OperationName、Region|
 |DataOut|はい|送信データ|バイト|合計|送信データのサイズ (バイト)。|ApiName、OperationName、Region|
-|DocumentCharactersTranslated|はい|翻訳されたドキュメント文字|Count|合計|ドキュメント翻訳要求の文字数。|ApiName、FeatureName、UsageChannel、Region|
-|DocumentCustomCharactersTranslated|はい|翻訳されたドキュメントのカスタム文字|Count|合計|カスタム ドキュメント翻訳要求の文字数。|ApiName、FeatureName、UsageChannel、Region|
-|FaceImagesTrained|はい|トレーニング済みの顔画像|Count|合計|トレーニングされたイメージの数。 トランザクションごとにトレーニングされた 1,000 のイメージ。|ApiName、FeatureName、UsageChannel、Region|
-|FacesStored|はい|格納されている顔|Count|合計|1 日に日分けして格納された顔の数。 格納されている顔の数は毎日報告されます。|ApiName、FeatureName、UsageChannel、Region|
-|FaceTransactions|はい|顔のトランザクション|Count|合計|Face サービスに対して行われた API 呼び出しの数|ApiName、FeatureName、UsageChannel、Region|
-|ImagesStored|はい|格納されているイメージ|Count|合計|格納されている Custom Vision イメージの数。|ApiName、FeatureName、UsageChannel、Region|
+|DocumentCharactersTranslated|はい|翻訳されたドキュメント文字|カウント|合計|ドキュメント翻訳要求の文字数。|ApiName、FeatureName、UsageChannel、Region|
+|DocumentCustomCharactersTranslated|はい|翻訳されたドキュメントのカスタム文字|カウント|合計|カスタム ドキュメント翻訳要求の文字数。|ApiName、FeatureName、UsageChannel、Region|
+|FaceImagesTrained|はい|トレーニング済みの顔画像|カウント|合計|トレーニングされたイメージの数。 トランザクションごとにトレーニングされた 1,000 のイメージ。|ApiName、FeatureName、UsageChannel、Region|
+|FacesStored|はい|格納されている顔|カウント|合計|1 日に日分けして格納された顔の数。 格納されている顔の数は毎日報告されます。|ApiName、FeatureName、UsageChannel、Region|
+|FaceTransactions|はい|顔のトランザクション|カウント|合計|Face サービスに対して行われた API 呼び出しの数|ApiName、FeatureName、UsageChannel、Region|
+|ImagesStored|はい|格納されているイメージ|カウント|合計|格納されている Custom Vision イメージの数。|ApiName、FeatureName、UsageChannel、Region|
 |Latency|はい|Latency|MilliSeconds|Average|待機時間 (ミリ秒)。|ApiName、OperationName、Region|
 |LearnedEvents|はい|学習したイベント|Count|合計|学習したイベントの数。|IsMatchBaseline、Mode、RunId|
-|LUISSpeechRequests|はい|LUIS 音声要求|Count|合計|意図を理解する要求に対する LUIS 音声の数|ApiName、FeatureName、UsageChannel、Region|
-|LUISTextRequests|はい|LUIS テキスト要求|Count|合計|LUIS テキスト要求の数|ApiName、FeatureName、UsageChannel、Region|
+|LUISSpeechRequests|はい|LUIS 音声要求|カウント|合計|意図を理解する要求に対する LUIS 音声の数|ApiName、FeatureName、UsageChannel、Region|
+|LUISTextRequests|はい|LUIS テキスト要求|カウント|合計|LUIS テキスト要求の数|ApiName、FeatureName、UsageChannel、Region|
 |MatchedRewards|はい|一致した報酬|Count|合計|一致した報酬の数。|Mode、RunId|
-|NumberofSpeakerProfiles|はい|スピーカー プロファイルの数|Count|合計|登録されたスピーカー プロファイルの数。 日次で日分けされます。|ApiName、FeatureName、UsageChannel、Region|
+|NumberofSpeakerProfiles|はい|スピーカー プロファイルの数|カウント|合計|登録されたスピーカー プロファイルの数。 日次で日分けされます。|ApiName、FeatureName、UsageChannel、Region|
 |ObservedRewards|はい|観察された報酬|Count|合計|観察された報酬の数。|Mode、RunId|
 |ProcessedCharacters|はい|処理された文字|Count|合計|Immersive Reader によって処理された文字数。|ApiName、FeatureName、UsageChannel、Region|
-|ProcessedHealthTextRecords|はい|処理された正常性テキスト レコード|Count|合計|処理された正常性テキスト レコードの数|ApiName、FeatureName、UsageChannel、Region|
+|ProcessedHealthTextRecords|はい|処理された正常性テキスト レコード|カウント|合計|処理された正常性テキスト レコードの数|ApiName、FeatureName、UsageChannel、Region|
 |ProcessedImages|はい|Processed Images (処理されたイメージ)|Count|合計|処理されたイメージの数|ApiName、FeatureName、UsageChannel、Region|
-|ProcessedPages|はい|処理されたページ|Count|合計|処理されたイメージの数|ApiName、FeatureName、UsageChannel、Region|
+|ProcessedPages|はい|処理されたページ|カウント|合計|処理されたイメージの数|ApiName、FeatureName、UsageChannel、Region|
 |ProcessedTextRecords|はい|処理されたテキスト レコード|Count|合計|テキスト レコードの数。|ApiName、FeatureName、UsageChannel、Region|
 |ServerErrors|はい|サーバー エラー|Count|合計|サービスの内部エラー (HTTP 応答コード 5xx) があった呼び出しの回数。|ApiName、OperationName、Region|
-|SpeakerRecognitionTransactions|はい|Speaker Recognition トランザクション|Count|合計|Speaker Recognition トランザクションの数|ApiName、FeatureName、UsageChannel、Region|
-|SpeechModelHostingHours|はい|音声モデル ホスティングの時間|Count|合計|音声モデル ホスティングの時間数|ApiName、FeatureName、UsageChannel、Region|
+|SpeakerRecognitionTransactions|はい|Speaker Recognition トランザクション|カウント|合計|Speaker Recognition トランザクションの数|ApiName、FeatureName、UsageChannel、Region|
+|SpeechModelHostingHours|はい|音声モデル ホスティングの時間|カウント|合計|音声モデル ホスティングの時間数|ApiName、FeatureName、UsageChannel、Region|
 |SpeechSessionDuration|はい|音声セッション期間 (非推奨)|Seconds|合計|音声セッションの合計継続時間 (秒)。|ApiName、OperationName、Region|
 |SuccessfulCalls|はい|成功した呼び出し|Count|合計|成功した呼び出しの数。|ApiName、OperationName、Region|
 |SynthesizedCharacters|はい|合成した文字|Count|合計|文字数。|ApiName、FeatureName、UsageChannel、Region|
-|TextCharactersTranslated|はい|翻訳されたテキスト文字|Count|合計|受信テキスト翻訳要求の文字数。|ApiName、FeatureName、UsageChannel、Region|
-|TextCustomCharactersTranslated|はい|翻訳されたテキストのカスタム文字|Count|合計|受信カスタム テキスト翻訳要求の文字数。|ApiName、FeatureName、UsageChannel、Region|
-|TextTrainedCharacters|はい|テキストのトレーニング済み文字|Count|合計|テキスト翻訳を使用してトレーニングされた文字数。|ApiName、FeatureName、UsageChannel、Region|
+|TextCharactersTranslated|はい|翻訳されたテキスト文字|カウント|合計|受信テキスト翻訳要求の文字数。|ApiName、FeatureName、UsageChannel、Region|
+|TextCustomCharactersTranslated|はい|翻訳されたテキストのカスタム文字|カウント|合計|受信カスタム テキスト翻訳要求の文字数。|ApiName、FeatureName、UsageChannel、Region|
+|TextTrainedCharacters|はい|テキストのトレーニング済み文字|カウント|合計|テキスト翻訳を使用してトレーニングされた文字数。|ApiName、FeatureName、UsageChannel、Region|
 |TotalCalls|はい|合計呼び出し数|Count|合計|呼び出しの合計数。|ApiName、OperationName、Region|
 |TotalErrors|はい|合計エラー数|Count|合計|エラー応答 (HTTP 応答コード 4xx または 5xx) があった呼び出しの合計回数。|ApiName、OperationName、Region|
 |TotalTokenCalls|はい|トークン呼び出しの合計|Count|合計|トークン呼び出しの合計回数。|ApiName、OperationName、Region|
-|TotalTransactions|はい|トランザクションの合計 (非推奨)|Count|合計|トランザクションの合計数。|ディメンションなし|
+|TotalTransactions|はい|トランザクションの合計 (非推奨)|カウント|合計|トランザクションの合計数。|ディメンションなし|
 |VoiceModelHostingHours|はい|音声モデル ホスティングの時間|Count|合計|時間数。|ApiName、FeatureName、UsageChannel、Region|
 |VoiceModelTrainingMinutes|はい|音声モデル トレーニングの分数|Count|合計|分数。|ApiName、FeatureName、UsageChannel、Region|
 
@@ -1580,7 +1583,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |---|---|---|---|---|---|---|
 |AddRegion|はい|追加されたリージョン|Count|Count|追加されたリージョン|リージョン|
 |AutoscaleMaxThroughput|いいえ|自動スケーリングの最大スループット|Count|最大値|自動スケーリングの最大スループット|DatabaseName、CollectionName|
-|AvailableStorage|いいえ|(非推奨) 使用可能な記憶域|バイト|合計|"使用可能な記憶域" は、2023 年 9 月末に Azure Monitor から削除されます。 Cosmos DB コレクション ストレージのサイズは無制限になりました。 唯一の制限は、各論理パーティション キーのストレージ サイズが 20 GB であることです。 診断ログで PartitionKeyStatistics を有効にすると、上位のパーティション キーのストレージ消費量を知ることができます。 Cosmos DB ストレージ クォータの詳細については、こちらのドキュメント https://docs.microsoft.com/azure/cosmos-db/concepts-limits をご確認ください。 非推奨になった後、非推奨メトリックでまだ定義されている残りのアラート ルールは、非推奨となる日の後に自動的に無効になります。|CollectionName、DatabaseName、Region|
+|AvailableStorage|いいえ|(非推奨) 使用可能な記憶域|バイト|合計|"使用可能な記憶域" は、2023 年 9 月末に Azure Monitor から削除されます。 Cosmos DB コレクション ストレージのサイズは無制限になりました。 唯一の制限は、各論理パーティション キーのストレージ サイズが 20 GB であることです。 診断ログで PartitionKeyStatistics を有効にすると、上位のパーティション キーのストレージ消費量を知ることができます。 Cosmos DB のストレージ クォータの詳細については、ドキュメント「[Azure Cosmos DB サービスのクォータ](../../cosmos-db/concepts-limits.md)」を参照してください。 非推奨になった後、非推奨メトリックでまだ定義されている残りのアラート ルールは、非推奨となる日の後に自動的に無効になります。|CollectionName、DatabaseName、Region|
 |CassandraConnectionClosures|いいえ|Cassandra 接続の終了|Count|合計|1 分単位の細分性で報告された、閉じられた Cassandra 接続の数|APIType、Region、ClosureReason|
 |CassandraConnectorAvgReplicationLatency|いいえ|Cassandra Connector Average Replication Latency\(Cassandra コネクタの平均レプリケーション待機時間\)|MilliSeconds|Average|Cassandra コネクタの平均レプリケーション待機時間|ディメンションなし|
 |CassandraConnectorReplicationHealthStatus|いいえ|Cassandra Connector Replication Health Status\(Cassandra コネクタ レプリケーションの正常性状態\)|Count|Count|Cassandra コネクタ レプリケーションの正常性の状態|NotStarted、ReplicationInProgress、Error|
@@ -3586,13 +3589,13 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |メトリック|診断設定を使用したエクスポートが可能か?|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|---|
 |BytesPerSecond|はい|バイト/秒。|BytesPerSecond|Average|Migrator に使用されているバイト/秒のスループット速度。||
-|DirectoriesCreatedCount|はい|作成されたディレクトリ数|Count|合計|これにより、移行の一環として作成されたディレクトリの数の実行中のビューが提供されます。||
-|FileMigrationCount|はい|ファイルの移行数|Count|合計|これにより、移行されたファイルの総数が提供されます。||
+|DirectoriesCreatedCount|はい|作成されたディレクトリ数|カウント|合計|これにより、移行の一環として作成されたディレクトリの数の実行中のビューが提供されます。||
+|FileMigrationCount|はい|ファイルの移行数|カウント|合計|これにより、移行されたファイルの総数が提供されます。||
 |InitialScanDataMigratedInBytes|はい|移行された初期スキャン データ (バイト単位)|バイト|合計|これにより、オンプレミスのファイル システムの初回スキャンの結果として、新しい移行プログラムで転送された合計バイト数が表示されます。 初回スキャン移行後に移行に追加されるデータは、このメトリックには含まれません。||
-|LiveDataMigratedInBytes|はい|移行されたライブ データ (バイト単位)|Count|合計|移行が開始された後、クライアント アクティビティによって変更された LiveData の合計を提供します。||
+|LiveDataMigratedInBytes|はい|移行されたライブ データ (バイト単位)|カウント|合計|移行が開始された後、クライアント アクティビティによって変更された LiveData の合計を提供します。||
 |MigratorCPULoad|はい|Migrator の CPU 負荷|Percent|Average|Migrator の処理による CPU 消費。||
-|NumberOfExcludedPaths|はい|除外されたパスの数|Count|合計|除外ルールにより移行から除外されたパスの実行数を提供します。||
-|NumberOfFailedPaths|はい|失敗したパスの数|Count|合計|移行に失敗したパスの数。||
+|NumberOfExcludedPaths|はい|除外されたパスの数|カウント|合計|除外ルールにより移行から除外されたパスの実行数を提供します。||
+|NumberOfFailedPaths|はい|失敗したパスの数|カウント|合計|移行に失敗したパスの数。||
 |SystemCPULoad|はい|システム CPU 負荷|Percent|Average|CPU 合計消費量。||
 |TotalMigratedDataInBytes|はい|移行されたデータの合計 (バイト単位)|バイト|合計|これにより、特定の Migrator に対して正常に移行されたバイト数が表示されます||
 |TotalTransactions|はい|合計トランザクション|Count|合計|これにより、ユーザーに請求される可能性があるデータ トランザクションの合計が提供されます。||

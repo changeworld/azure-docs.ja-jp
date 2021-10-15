@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/18/2021
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: 9355ddc7b84d2b120ee4c453fe21f0b820ea60a3
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: 6d24154c7cbe9e5e17a78b52e5e0117e27b8d026
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129093233"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129359678"
 ---
 # <a name="azure-cdn-coverage-by-metro"></a>都市別の Azure CDN のカバレッジ 
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.locfileid: "129093233"
 >
 
 
-この記事では、Azure Content Delivery Network (CDN) 製品に対するポイント オブ プレゼンス (POP) の場所を含む現在の都市をリージョン別に示します。 各都市には複数の POP が含まれる場合があります。 たとえば、Microsoft の Azure CDN には 100 の都市に 117 の POP があります。 
+この記事では、Azure Content Delivery Network (CDN) 製品に対するポイント オブ プレゼンス (POP) の場所を含む現在の都市をリージョン別に示します。 各都市には複数の POP が含まれる場合があります。 たとえば、Microsoft の Azure CDN には 100 の都市に 118 の POP があります。 
 
 > [!IMPORTANT]
 > 各 Azure CDN 製品がそれぞれの異なる方法で CDN インフラストラクチャを構築するため、どの Azure CDN 製品を使うかを決めるときは、POP の場所を使用しないことをお勧めします。 代わりに、その機能とエンドユーザー パフォーマンスを考慮する必要があります。 各 Azure CDN 製品でパフォーマンスをテストして、ユーザーに適した製品を選択してください。 

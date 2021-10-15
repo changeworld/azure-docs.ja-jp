@@ -8,12 +8,12 @@ ms.date: 08/11/2020
 author: minhe-msft
 ms.author: hemin
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8633ee6f76319afcd9c62a3aa5d70db77113f235
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 9e0136fe9ec7274a1788b11134527c8625c2cace
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124750592"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129400460"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Azure Data Factory の統合ランタイムを監視する
 
@@ -234,7 +234,7 @@ Azure portal で Azure-SSIS IR を監視するには、ADF UI の **[監視]** �
 
 **[RUNNING / REQUESTED NODE(S)]\(実行中または要求されたノード\)** 情報タイルでは、現在実行中のノード数が、Azure-SSIS IR に対して以前に要求されたノードの合計数と比較されます。
 
-**[DUAL STANDBY PAIR / ROLE]\(デュアル スタンバイ ペアまたはロール\)** 情報タイルには、事業継続とディザスター リカバリー (BCDR) のために Azure SQL Database または Managed Instance フェールオーバー グループと同期して機能するデュアル スタンバイ Azure-SSIS IR ペアの名前と、Azure-SSIS IR の現在のプライマリおよびセカンダ リロールが表示されます。 SSISDB フェールオーバーが発生すると、プライマリとセカンダリの Azure-SSIS IR のロールが入れ替わります ([BCDR 用の Azure-SSIS IR の構成](./configure-bcdr-azure-ssis-integration-runtime.md)に関する記事を参照)。
+**[DUAL STANDBY PAIR / ROLE]\(デュアル スタンバイ ペアまたはロール\)** 情報タイルには、事業継続とディザスター リカバリー (BCDR) のために Azure SQL Database マネージド インスタンス フェールオーバー グループと同期して機能するデュアル スタンバイ Azure-SSIS IR ペアの名前と、Azure-SSIS IR の現在のプライマリおよびセカンダリ ロールが表示されます。 SSISDB フェールオーバーが発生すると、プライマリとセカンダリの Azure-SSIS IR のロールが入れ替わります ([BCDR 用の Azure-SSIS IR の構成](./configure-bcdr-azure-ssis-integration-runtime.md)に関する記事を参照)。
 
 機能タイルの詳細については、以下を参照してください。
 
@@ -270,7 +270,7 @@ Azure-SSIS IR 監視ページの **[接続の診断]** タイルで **[テスト
 
 #### <a name="static-public-ip-addresses-tile"></a>[STATIC PUBLIC IP ADDRESSES]\(静的パブリック IP アドレス\) タイル
 
-Azure-SSIS IR にご自分の静的パブリック IP アドレスを使用すると、Azure-SSIS IR の監視ページに **[STATIC PUBLIC IP ADDRESSES]\(静的パブリック IP アドレス\)** タイルが表示されます ([ Azure-SSIS IR に自分の静的パブリック IP アドレスを使用する](./join-azure-ssis-integration-runtime-virtual-network.md#publicIP)方法に関するページを参照してください)。 このタイルでは、Azure-SSIS IR の 1 つ目または 2 つ目の静的パブリック IP アドレスを指定するリンクを選択し、ウィンドウをポップアップ表示することができます。ここで、テキスト ボックスからリソース ID (`/subscriptions/YourAzureSubscripton/resourceGroups/YourResourceGroup/providers/Microsoft.Network/publicIPAddresses/YourPublicIPAddress`) をコピーすることができます。 また、ポップアップ ウィンドウで **[See your first/second static public IP address settings]\(1 つ目または 2 つ目の静的パブリック IP アドレス設定を表示する\)** リンクを選択し、Azure portal で 1 つ目または 2 つ目の静的パブリック IP アドレスを管理することもできます。
+Azure-SSIS IR にご自分の静的パブリック IP アドレスを使用すると、Azure-SSIS IR の監視ページに **[STATIC PUBLIC IP ADDRESSES]\(静的パブリック IP アドレス\)** タイルが表示されます ([ Azure-SSIS IR に自分の静的パブリック IP アドレスを使用する](azure-ssis-integration-runtime-virtual-network-configuration.md#publicIP)方法に関するページを参照してください)。 このタイルでは、Azure-SSIS IR の 1 つ目または 2 つ目の静的パブリック IP アドレスを指定するリンクを選択し、ウィンドウをポップアップ表示することができます。ここで、テキスト ボックスからリソース ID (`/subscriptions/YourAzureSubscripton/resourceGroups/YourResourceGroup/providers/Microsoft.Network/publicIPAddresses/YourPublicIPAddress`) をコピーすることができます。 また、ポップアップ ウィンドウで **[See your first/second static public IP address settings]\(1 つ目または 2 つ目の静的パブリック IP アドレス設定を表示する\)** リンクを選択し、Azure portal で 1 つ目または 2 つ目の静的パブリック IP アドレスを管理することもできます。
 
 :::image type="content" source="media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-static.png" alt-text="Azure-SSIS IR の監視 - 静的タイル":::
 

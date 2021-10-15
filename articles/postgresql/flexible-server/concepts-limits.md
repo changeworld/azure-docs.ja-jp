@@ -6,12 +6,12 @@ ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/17/2021
-ms.openlocfilehash: 54261049799cc02695d1162012cac9b7bff3558f
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 1966ce24919e2d98658afe2cec09d37e3b567c60
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128559249"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129387489"
 ---
 # <a name="limits-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL - フレキシブル サーバーの制限
 
@@ -96,6 +96,7 @@ PostgreSQL 接続はアイドル状態であっても、約 10 MB のメモリ�
 - Postgres 10 以前はサポートされていません。 以前のバージョンの Postgres が必要な場合は、 [単一サーバー](../overview-single-server.md) オプションを使用することをお勧めします。
 - 現時点では、拡張機能のサポートは Postgres `contrib` 拡張機能に限定されています。
 - 現時点では、バースト可能のサーバーには、組み込みの PgBouncer 接続プーラーを使用できません。
+- 組み込みの PgBouncer を使用した接続では、SCRAM 認証はサポートされていません。
 
 ### <a name="stopstart-operation"></a>停止/開始操作
 

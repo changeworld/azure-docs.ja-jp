@@ -6,13 +6,13 @@ ms.author: esarroyo
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 08/26/2021
-ms.openlocfilehash: 9ee782734baaf8947aa4e4f930cac874e32a5df6
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 10/04/2021
+ms.openlocfilehash: 58ea7624b32b7730863fe3d29f6d9245c4199d25
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124788194"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129535309"
 ---
 # <a name="migrate-your-application-to-use-the-azure-cosmos-db-net-sdk-v3"></a>Azure Cosmos DB .NET SDK v3 を使用するようにアプリケーションを移行する
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -55,8 +55,7 @@ ms.locfileid: "124788194"
 ## <a name="why-migrate-to-the-net-v3-sdk"></a>.NET v3 SDK に移行する理由
 
 多くのユーザビリティとパフォーマンスの向上に加え、最新の SDK で行われた新機能への投資が、以前のバージョンにバックポートされることはありません。
-
-当面は [2.0 SDK のサポートを廃止する](sql-api-sdk-dotnet.md)予定はありませんが、SDK は今後新しいバージョンに置き換えられ、メンテナンス モードに移行されます。 最適な開発環境を確保するために、常に最新バージョンの SDK から始めることをお勧めします。
+v2 SDK は現在メンテナンス モードになっています。 最適な開発環境を確保するために、常に最新バージョンの SDK から始めることをお勧めします。
 
 ## <a name="major-name-changes-from-v2-sdk-to-v3-sdk"></a>v2 SDK から v3 SDK への名前のメジャー変更
 
@@ -196,7 +195,7 @@ catch (CosmosException cosmosException) {
 | .NET v2 SDK | .NET v3 SDK |
 |-------------|-------------|
 |`EnableEndpointRediscovery`|`LimitToEndpoint` - 値が逆になりました。`EnableEndpointRediscovery` が `true` に設定されていた場合、`LimitToEndpoint` は `false` に設定する必要があります。 この設定を使用する前に、[クライアントに与える影響](troubleshoot-sdk-availability.md)を理解しておく必要があります。|
-|`ConnectionProtocol`|削除されます。 プロトコルは、ゲートウェイ (HTTPS) または直接 (TCP) のいずれかのモードに関連付けられています。|
+|`ConnectionProtocol`|削除されます。 プロトコルは、ゲートウェイ (HTTPS) または直接 (TCP) のいずれかのモードに関連付けられています。 HTTPS プロトコルを使用したダイレクト モードは現在、V3 SDK ではサポートされていません。TCP プロトコルを使用することをお勧めします。 |
 |`MediaRequestTimeout`|削除されます。 アタッチがサポートされなくなりました。|
 
 ### <a name="session-token"></a>セッション トークン
@@ -711,4 +710,4 @@ private static async Task DeleteItemAsync(DocumentClient client)
 * [v3 SDK でできること](sql-api-dotnet-v3sdk-samples.md)について、さらに学習する
 * Azure Cosmos DB に移行する容量計画を実行しようとしていますか?
     * 知っていることが既存のデータベース クラスター内の仮想コアとサーバーの数のみである場合は、[仮想コアまたは仮想 CPU の数を使用した要求ユニットの見積もり](../convert-vcore-to-request-unit.md)に関するページを参照してください 
-    * 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB 容量計画ツールを使用した要求ユニットに見積もり](estimate-ru-with-capacity-planner.md)に関するページを参照してください
+    * 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB Capacity Planner を使用した要求ユニットの見積もり](estimate-ru-with-capacity-planner.md)に関するページを参照してください

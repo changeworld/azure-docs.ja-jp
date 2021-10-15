@@ -9,14 +9,14 @@ ms.topic: reference
 ms.reviewer: larryfr
 ms.author: andzha
 author: Anurzeuii
-ms.date: 07/16/2021
+ms.date: 08/24/2021
 ms.custom: references_regions
-ms.openlocfilehash: 1c26761fe23fb1a7558100dea3cb74d7b078550d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 8c05b77a77bbcbfc977dadb22151f0086001b859
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121749499"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129359442"
 ---
 # <a name="azure-machine-learning-feature-availability-across-clouds-regions"></a>Azure Machine Learning ソブリン クラウドの同等性
 
@@ -62,7 +62,7 @@ Azure Government、Azure Germany、Azure China 21Vianet の各リージョンで
 | トレーニングのための Virtual Network (VNet) サポート                                | GA                   | YES                | YES         |
 | 推論のための Virtual Network (VNet) のサポート                               | GA                   | YES                | YES         |
 | エンドポイント認証のスコア付け                                            | パブリック プレビュー       | YES                | YES         |
-| ワークプレース プライベート エンドポイント                                                 | GA  |  パブリック プレビュー  |  パブリック プレビュー |
+| ワークプレース プライベート エンドポイント                                                 | GA  |  GA  |  GA |
 | VNet の背後にある ACI                                                            | パブリック プレビュー       | NO                 | NO          |
 | VNet の背後にある ACR                                                            | GA       | YES                 | YES          |
 | AKS クラスターのプライベート IP                                                  | パブリック プレビュー       | NO                 | NO          |
@@ -80,7 +80,7 @@ Azure Government、Azure Germany、Azure China 21Vianet の各リージョンで
 | [Visual Studio Code の統合](how-to-setup-vs-code.md)                                             | パブリック プレビュー       | NO                 | NO          |
 | [イベント グリッドの統合](how-to-use-event-grid.md)                                                     | パブリック プレビュー       | NO                 | NO          |
 | [Azure Stream Analytics と Azure Machine Learning を統合する](../stream-analytics/machine-learning-udf.md)               | パブリック プレビュー       | NO                 | NO          |
-| **[ラベル](how-to-create-labeling-projects.md)** |   | | |
+| **[画像](how-to-create-image-labeling-projects.md)と[テキスト](how-to-create-text-labeling-projects.md)にラベルを付ける** |   | | |
 | プロジェクト管理ポータルのラベル付け                                        | GA                   | YES                | YES         |
 | ラベラー ポータル                                                            | GA                   | YES                | YES         |
 | プライベート ワークフォースを使用したラベル付け                                          | GA                   | YES                | YES         |

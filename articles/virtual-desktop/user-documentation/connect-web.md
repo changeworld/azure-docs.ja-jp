@@ -3,15 +3,15 @@ title: Web クライアントを使用して Azure Virtual Desktop に接続す�
 description: Web クライアントを使用して Azure Virtual Desktop に接続する方法。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 07/20/2021
+ms.date: 09/30/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 0c6e616b63587f46d9dfe73066147de428d0ee0c
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 3804714a1a21a482166fbf7d592f5ee094ce6a06
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114469191"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129359714"
 ---
 # <a name="connect-to-azure-virtual-desktop-with-the-web-client"></a>Web クライアントを使用して Azure Virtual Desktop に接続する
 
@@ -24,15 +24,15 @@ Web クライアントを使用すると、時間のかかるインストール 
 >現在、Web クライアントにはモバイル OS のサポートがありません。
 
 ## <a name="supported-operating-systems-and-browsers"></a>サポートされているオペレーティング システムとブラウザー
+
 >[!IMPORTANT]
->2021 年 9 月 30 日以降、Azure Virtual Desktop Web クライアントで Internet Explorer 11 はサポートされなくなります。 Internet Explorer 11 の代わりに、Microsoft Edge ブラウザーの使用に移行することをお勧めします。 詳細については、Tech Community の[ブログ記事](https://aka.ms/WVDSupportIE11)を参照してください。
+>2021 年 9 月 30 日以降、Azure Virtual Desktop Web クライアントで Internet Explorer はサポートされなくなります。 代わりに、Microsoft Edge を使用して Web クライアントに接続することをお勧めします。 詳細については、こちらの[ブログ記事](https://aka.ms/WVDSupportIE11)を参照してください。
 
 任意の HTML5 対応ブラウザーが動作しますが、正式にサポートしているオペレーティング システムとブラウザーは次のとおりです。
 
 | Browser           | サポート対象 OS                     | Notes               |
 |-------------------|----------------------------------|---------------------|
 | Microsoft Edge    | Windows                          |                     |
-| Internet Explorer | Windows                          | バージョン 11 以降 |
 | Apple Safari      | macOS                            |                     |
 | Mozilla Firefox   | Windows、macOS、Linux            | バージョン 55 以降 |
 | Google Chrome     | Windows、macOS、Linux、Chrome OS |                     |

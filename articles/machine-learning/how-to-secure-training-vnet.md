@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: 分離された Azure Virtual Network を使用して、Azure Machine Learning トレーニング環境をセキュリティで保護します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: enterprise-readiness
 ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: jhirono
 author: jhirono
 ms.date: 09/24/2021
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1, references_regions
-ms.openlocfilehash: 1bb8066af887005848f711437d33257ae2118e46
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: 4fe1a4f9966e5342ee4f8a12d2b24b3a449efbae
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129093480"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129424333"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>仮想ネットワークを使用して Azure Machine Learning トレーニング環境をセキュリティで保護する
 
@@ -25,12 +25,12 @@ ms.locfileid: "129093480"
 > [!TIP]
 > この記事は、Azure Machine Learning ワークフローのセキュリティ保護に関するシリーズの一部です。 このシリーズの他の記事は次のとおりです。
 >
-> * <bpt id="p1">[</bpt>Virtual Network の概要<ept id="p1">](how-to-network-security-overview.md)</ept>
+> * [Virtual Network の概要](how-to-network-security-overview.md)
 > * <bpt id="p1">[</bpt>ワークスペース リソースをセキュリティで保護する<ept id="p1">](how-to-secure-workspace-vnet.md)</ept>
-> * <bpt id="p1">[</bpt>推論環境をセキュリティで保護する<ept id="p1">](how-to-secure-inferencing-vnet.md)</ept>
-> * <bpt id="p1">[</bpt>スタジオの機能を有効にする<ept id="p1">](how-to-enable-studio-virtual-network.md)</ept>
-> * <bpt id="p1">[</bpt>カスタム DNS を使用する<ept id="p1">](how-to-custom-dns.md)</ept>
-> * <bpt id="p1">[</bpt>ファイアウォールを使用する<ept id="p1">](how-to-access-azureml-behind-firewall.md)</ept>
+> * [推論環境をセキュリティで保護する](how-to-secure-inferencing-vnet.md)
+> * [スタジオの機能を有効にする](how-to-enable-studio-virtual-network.md)
+> * [カスタム DNS を使用する](how-to-custom-dns.md)
+> * [ファイアウォールを使用する](how-to-access-azureml-behind-firewall.md)
 >
 > セキュリティで保護されたワークスペース、コンピューティング クラスター、コンピューティング インスタンスの作成に関するチュートリアルについては、「<bpt id="p1">[</bpt>チュートリアル: セキュリティで保護されたワークスペースを作成する<ept id="p1">](tutorial-create-secure-workspace.md)</ept>」を参照してください。
 
@@ -44,7 +44,7 @@ ms.locfileid: "129093480"
 
 ## <a name="prerequisites"></a>前提条件
 
-+ 一般的な仮想ネットワークのシナリオと全体的な仮想ネットワーク アーキテクチャについては、<bpt id="p1">[</bpt>ネットワーク セキュリティの概要<ept id="p1">](how-to-network-security-overview.md)</ept>に関するページを参照してください。
++ 一般的な仮想ネットワークのシナリオと全体的な仮想ネットワーク アーキテクチャについては、[ネットワーク セキュリティの概要](how-to-network-security-overview.md)に関するページを参照してください。
 
 + コンピューティング リソースで使用する既存の仮想ネットワークとサブネット。
 
@@ -53,7 +53,7 @@ ms.locfileid: "129093480"
     - 仮想ネットワーク リソース上の "Microsoft.Network/virtualNetworks/*/read"。 これは、Azure Resource Manager (ARM) テンプレートのデプロイには必要ありません
     - サブネット リソース上の "Microsoft.Network/virtualNetworks/subnet/join/action"。
 
-    ネットワークでの Azure RBAC の詳細については、<bpt id="p1">[</bpt>ネットワークの組み込みロール<ept id="p1">](../role-based-access-control/built-in-roles.md#networking)</ept>に関するページを参照してください
+    ネットワークでの Azure RBAC の詳細については、[ネットワークの組み込みロール](../role-based-access-control/built-in-roles.md#networking)に関するページを参照してください
 
 ### <a name="azure-machine-learning-compute-clusterinstance"></a>Azure Machine Learning コンピューティング クラスター/インスタンス
 
@@ -176,7 +176,7 @@ ms.locfileid: "129093480"
 
 1. <bpt id="p1">__</bpt>[作成]<ept id="p1">__</ept> を選択してコンピューティング クラスターを作成します。
 
-# <a name="python"></a><bpt id="p1">[</bpt>Python<ept id="p1">](#tab/python)</ept>
+# <a name="python"></a>[Python](#tab/python)
 
 次のコードでは、<ph id="ph2">`mynetwork`</ph> という名前の仮想ネットワークの <ph id="ph1">`default`</ph> サブネットに新しい Machine Learning コンピューティング クラスターが作成されます。
 
@@ -231,7 +231,7 @@ except ComputeTargetException:
 
 **送信接続** が機能するには、ユーザー定義のルートを持つ Azure Firewall などのエグレス ファイアウォールを設定する必要があります。 たとえば、[受信および送信の構成](how-to-access-azureml-behind-firewall.md)で設定されたファイアウォールを使用し、コンピューティング インスタンスがデプロイされているサブネット上にルート テーブルを定義することで、トラフィックをそこにルーティングすることができます。 ルート テーブル エントリには、ファイアウォールのプライベート IP アドレスのネクスト ホップとして、0.0.0.0/0 というアドレス プレフィックスを設定することができます。
 
-**[No public IP]\(パブリック IP なし\)** が有効なコンピューティング インスタンスには、パブリック IP コンピューティング インスタンスの場合と比較して、パブリック インターネットからの **受信通信要件はありません**。 具体的には、どちらの受信 NSG 規則 (`BatchNodeManagement`、`AzureMachineLearning`) も必要ありません。
+**[No public IP]\(パブリック IP なし\)** が有効なコンピューティング インスタンスには、パブリック IP コンピューティング インスタンスの場合と比較して、パブリック インターネットからの **受信通信要件はありません**。 具体的には、どちらの受信 NSG 規則 (`BatchNodeManagement`、`AzureMachineLearning`) も必要ありません。 **VirtualNetwork** のソース、あらゆるポート ソース、**VirtualNetwork** の宛先、**29876、29877、44224** の宛先ポートからの受信は引き続き許可する必要があります。
 
 また、 **[No public IP]\(パブリック IP なし\)** が有効なコンピューティング インスタンスの場合、プライベート エンドポイント ネットワーク ポリシーとプライベート リンク サービス ネットワーク ポリシーを無効にする必要があります。 これらの要件は、Azure Private Link サービスとプライベート エンドポイントに由来するものであり、Azure Machine Learning 固有のものではありません。 「[Private Link サービスのソース IP のネットワーク ポリシーを無効にする](../private-link/disable-private-link-service-network-policy.md)」の指示に従って、仮想ネットワーク サブネットにパラメーター `disable-private-endpoint-network-policies` と `disable-private-link-service-network-policies` を設定します。
 
@@ -295,9 +295,9 @@ VM または HDInsight クラスターをお客様の Azure Machine Learning の
 
 この記事は、Azure Machine Learning ワークフローのセキュリティ保護に関するシリーズの一部です。 このシリーズの他の記事は次のとおりです。
 
-* <bpt id="p1">[</bpt>Virtual Network の概要<ept id="p1">](how-to-network-security-overview.md)</ept>
+* [Virtual Network の概要](how-to-network-security-overview.md)
 * <bpt id="p1">[</bpt>ワークスペース リソースをセキュリティで保護する<ept id="p1">](how-to-secure-workspace-vnet.md)</ept>
-* <bpt id="p1">[</bpt>推論環境をセキュリティで保護する<ept id="p1">](how-to-secure-inferencing-vnet.md)</ept>
-* <bpt id="p1">[</bpt>スタジオの機能を有効にする<ept id="p1">](how-to-enable-studio-virtual-network.md)</ept>
-* <bpt id="p1">[</bpt>カスタム DNS を使用する<ept id="p1">](how-to-custom-dns.md)</ept>
-* <bpt id="p1">[</bpt>ファイアウォールを使用する<ept id="p1">](how-to-access-azureml-behind-firewall.md)</ept>
+* [推論環境をセキュリティで保護する](how-to-secure-inferencing-vnet.md)
+* [スタジオの機能を有効にする](how-to-enable-studio-virtual-network.md)
+* [カスタム DNS を使用する](how-to-custom-dns.md)
+* [ファイアウォールを使用する](how-to-access-azureml-behind-firewall.md)

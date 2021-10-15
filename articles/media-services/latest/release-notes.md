@@ -12,12 +12,12 @@ ms.custom: references_regions
 ms.topic: article
 ms.date: 03/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: 4a2c4959d6a84e8561ac23924207744b6c65f88b
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: 90f6470171db4be4e0d883196495ddaba16772fb
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129053494"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129362770"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 リリース ノート
 
@@ -32,6 +32,9 @@ ms.locfileid: "129053494"
 
 ## <a name="september-2021"></a>2021 年 9 月
 
+### <a name="new-basic-pass-through-live-event-sku"></a>新しい基本のパススルー ライブ イベント SKU
+
+新しい基本のパススルー ライブ イベント SKU を利用すると、顧客は[低い価格設定](https://azure.microsoft.com/pricing/details/media-services/)でライブ イベントを作成できます。 標準のパススルー ライブ イベントに似ていますが、入力帯域幅の制限が低く、許可されるライブ出力が少なく、DVR ウィンドウの長さ制限が異なり、ライブ文字起こしへのアクセスがありません。 詳細については、「[ライブ イベントの種類の比較](./live-event-types-comparison-reference.md#types-comparison)」を参照してください。
 
 ### <a name="improved-scale-management-and-monitoring-for-a-streaming-endpoint-in-the-portal"></a>ポータルでのストリーミング エンドポイントのスケール管理と監視の向上
 
@@ -209,7 +212,7 @@ v3 API と SDK に対する更新の一部として、Media Services アカウ�
 
 ### <a name="standard-encoder-support-for-v2-api-features"></a>Standard Encoder での v2 API 機能のサポート
 
-新しく追加された HEVC (H.265) エンコードのサポートに加えて、2020-05-01 バージョンのエンコード API では次の機能を使用できるようになりました。
+新しく追加された HEVC (H.265) エンコードのサポートに加えて、2020-05-01 (以降) バージョンのエンコード API では次の機能を使用できるようになりました。
 
 - 新しい **Jobinputclip** サポートを使用して、複数の入力ファイルを結合できるようになりました。
     - .NET 用の例では、[2 つのアセットを結合](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/Encoding_StitchTwoAssets)する方法を示しています。

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 8/5/2021
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: da32a2bbd4824e589a6673b043551dce67c32e70
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: 6d32e0f19ca37243fa0dbaca9bc04369bfd974b2
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122446319"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129354131"
 ---
 # <a name="use-an-app-service-environment"></a>App Service 環境の使用
 > [!NOTE]
@@ -174,10 +174,10 @@ ASE を Azure Monitor と統合して、ASE に関するログを Azure Storage�
 
 | 状況 | Message |
 |---------|----------|
-| ASE is unhealthy (ASE が異常です) | The specified ASE is unhealthy due to an invalid virtual network configuration. (無効な仮想ネットワーク構成が原因で、指定された ASE が異常です。) The ASE will be suspended if the unhealthy state continues. (異常な状態が続くと、ASE は中断されます。) Ensure the guidelines defined here are followed (ここで定義されているガイドラインに従っていることを確認してください): https://docs.microsoft.com/azure/app-service/environment/network-info |
+| ASE is unhealthy (ASE が異常です) | The specified ASE is unhealthy due to an invalid virtual network configuration. (無効な仮想ネットワーク構成が原因で、指定された ASE が異常です。) The ASE will be suspended if the unhealthy state continues. (異常な状態が続くと、ASE は中断されます。) Ensure the guidelines defined here are followed: [Networking considerations for an App Service Environment](network-info.md) (ここで定義されているガイドラインに従っていることを確認してください: 「App Service Environment のネットワークの考慮事項」)。 |
 | ASE subnet is almost out of space (ASE サブネットの領域が不足しています) | The specified ASE is in a subnet that is almost out of space. (指定された ASE は、空き領域がほとんどないサブネット内にあります。) There are {0} remaining addresses. (残りのアドレスは {0} 個です。) Once these addresses are exhausted, the ASE will not be able to scale (これらのアドレスが枯渇すると、ASE はスケーリングできなくなります)  |
 | ASE is approaching total instance limit (ASE で、インスタンスの合計数の上限に近づいています) | The specified ASE is approaching the total instance limit of the ASE. (指定された ASE で、ASE のインスタンスの合計数の上限に近づいています) It currently contains {0} App Service Plan instances of a maximum 201 instances. (現在、最大インスタンス数 201 のうち、{0} 個の App Service プラン インスタンスが含まれています。) |
-| ASE is unable to reach a dependency (ASE は依存関係に到達できません) | The specified ASE is not able to reach {0}. (指定された ASE は {0} に到達できません。)  Ensure the guidelines defined here are followed (ここで定義されているガイドラインに従っていることを確認してください): https://docs.microsoft.com/azure/app-service/environment/network-info |
+| ASE is unable to reach a dependency (ASE は依存関係に到達できません) | The specified ASE is not able to reach {0}. (指定された ASE は {0} に到達できません。)  Ensure the guidelines defined here are followed: [Networking considerations for an App Service Environment](network-info.md) (ここで定義されているガイドラインに従っていることを確認してください: 「App Service Environment のネットワークの考慮事項」)。 |
 | ASE is suspended (ASE は中断されています) | The specified ASE is suspended. (指定された ASE は中断されています。) The ASE suspension may be due to an account shortfall or an invalid virtual network configuration. (ASE の中断は、アカウントの不足または無効な仮想ネットワーク構成が原因である可能性があります。) Resolve the root cause and resume the ASE to continue serving traffic (根本原因を解決し、ASE を再開してトラフィックの処理を続行してください) |
 | ASE upgrade has started (ASE のアップグレードが開始されました) | A platform upgrade to the specified ASE has begun. (指定された ASE へのプラットフォームのアップグレードが開始されました。) Expect delays in scaling operations (スケーリング操作で遅延が発生することが予想されます) |
 | ASE upgrade has completed (ASE のアップグレードが完了しました) | A platform upgrade to the specified ASE has finished (指定された ASE へのプラットフォームのアップグレードが完了しました) |

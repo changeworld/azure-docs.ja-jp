@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 06/30/2021
+ms.date: 09/30/2021
 ms.author: alkohli
-ms.openlocfilehash: 2db11b9a1d159e292140901b50c2d7b659c88235
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: fa908a75a09beefe00babe0e710f43c4d74c3aaf
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113364117"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129360529"
 ---
 # <a name="prepare-certificates-to-upload-on-your-azure-stack-edge-pro-gpu"></a>Azure Stack Edge Pro GPU でアップロードするために証明書を準備する
 
@@ -39,19 +39,19 @@ ms.locfileid: "113364117"
 
 1. 個人用証明書ストアで、ルート証明書を選択します。 右クリックし、 **[すべてのタスク] > [エクスポート...]** を選択します。
 
-    ![証明書の DER をエクスポートする 1](media/azure-stack-edge-series-manage-certificates/export-cert-cer-1.png)
+    ![証明書の DER をエクスポートする 1](media/azure-stack-edge-gpu-manage-certificates/export-cert-cer-1.png)
 
 2. 証明書ウィザードが開きます。 形式として **[DER encoded binary X.509 (.cer)]** を選択します。 **[次へ]** を選択します。
 
-    ![証明書の DER をエクスポートする 2](media/azure-stack-edge-series-manage-certificates/export-cert-cer-2.png)
+    ![証明書の DER をエクスポートする 2](media/azure-stack-edge-gpu-manage-certificates/export-cert-cer-2.png)
 
 3. .cer 形式のファイルをエクスポートする場所を参照して選択します。
 
-    ![証明書の DER をエクスポートする 3](media/azure-stack-edge-series-manage-certificates/export-cert-cer-3.png)
+    ![証明書の DER をエクスポートする 3](media/azure-stack-edge-gpu-manage-certificates/export-cert-cer-3.png)
 
 4. **[完了]** を選択します。
 
-    ![証明書の DER をエクスポートする 4](media/azure-stack-edge-series-manage-certificates/export-cert-cer-4.png)
+    ![証明書の DER をエクスポートする 4](media/azure-stack-edge-gpu-manage-certificates/export-cert-cer-4.png)
 
 
 ## <a name="export-certificates-as-pfx-format-with-private-key"></a>秘密キーを含む .pfx 形式で証明書をエクスポートする
@@ -65,42 +65,42 @@ ms.locfileid: "113364117"
 
 1. **[個人]** フォルダーをダブルクリックし、 **[証明書]** をダブルクリックします。
 
-    ![証明書のエクスポート 1](media/azure-stack-edge-series-manage-certificates/export-cert-pfx-1.png)
+    ![証明書のエクスポート 1](media/azure-stack-edge-gpu-manage-certificates/export-cert-pfx-1.png)
  
 2. バックアップする証明書を右クリックし、 **[すべてのタスク] > [エクスポート...]** を選択します。
 
-    ![証明書のエクスポート 2](media/azure-stack-edge-series-manage-certificates/export-cert-pfx-2.png)
+    ![証明書のエクスポート 2](media/azure-stack-edge-gpu-manage-certificates/export-cert-pfx-2.png)
 
 3. 証明書のエクスポート ウィザードに従い、証明書を .pfx ファイルにバックアップします。
 
-    ![証明書のエクスポート 3](media/azure-stack-edge-series-manage-certificates/export-cert-pfx-3.png)
+    ![証明書のエクスポート 3](media/azure-stack-edge-gpu-manage-certificates/export-cert-pfx-3.png)
 
 4. **[はい、秘密キーをエクスポートします]** を選択します。
 
-    ![証明書のエクスポート 4](media/azure-stack-edge-series-manage-certificates/export-cert-pfx-4.png)
+    ![証明書のエクスポート 4](media/azure-stack-edge-gpu-manage-certificates/export-cert-pfx-4.png)
 
 5. **[Include all certificates in certificate path if possible]\(可能な場合は証明書パスのすべての証明書を含める\)** 、 **[すべての拡張プロパティをエクスポートする]** 、 **[証明書のプライバシーを有効にする]** を選択します。 
 
     > [!IMPORTANT]
     > **[Delete Private Key option if export is successful]\(エクスポートが成功した場合に秘密キーを削除する (オプション)\)** は選択しないでください。
 
-    ![証明書のエクスポート 5](media/azure-stack-edge-series-manage-certificates/export-cert-pfx-5.png)
+    ![証明書のエクスポート 5](media/azure-stack-edge-gpu-manage-certificates/export-cert-pfx-5.png)
 
 6. パスワードを入力し、これを憶えておきます。 パスワードを確認入力します。 パスワードによって秘密キーが保護されます。
 
-    ![証明書のエクスポート 6](media/azure-stack-edge-series-manage-certificates/export-cert-pfx-6.png)
+    ![証明書のエクスポート 6](media/azure-stack-edge-gpu-manage-certificates/export-cert-pfx-6.png)
 
 7. 設定した場所にファイルを保存することを選択します。
 
-    ![証明書のエクスポート 7](media/azure-stack-edge-series-manage-certificates/export-cert-pfx-7.png)
+    ![証明書のエクスポート 7](media/azure-stack-edge-gpu-manage-certificates/export-cert-pfx-7.png)
   
 8. **[完了]** を選択します。
 
-    ![証明書のエクスポート 8](media/azure-stack-edge-series-manage-certificates/export-cert-pfx-8.png)
+    ![証明書のエクスポート 8](media/azure-stack-edge-gpu-manage-certificates/export-cert-pfx-8.png)
 
 9. エクスポートが成功したことを示すメッセージが表示されます。 **[OK]** を選択します。
 
-    ![証明書のエクスポート 9](media/azure-stack-edge-series-manage-certificates/export-cert-pfx-9.png)
+    ![証明書のエクスポート 9](media/azure-stack-edge-gpu-manage-certificates/export-cert-pfx-9.png)
 
 .pfx ファイルのバックアップが選択した場所に保存され、安全に保存するために移動または保管する準備ができました。
 

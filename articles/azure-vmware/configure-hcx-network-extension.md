@@ -3,12 +3,12 @@ title: HCX ネットワーク拡張機能を作成する
 description: オンプレミス環境から Azure VMware Solution までネットワークを拡張する方法について説明します。
 ms.topic: how-to
 ms.date: 09/07/2021
-ms.openlocfilehash: fd58285ab7e2999c758e818020e39799a19f6c53
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 81e984975712e76033102c030093fc94abb2796f
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124837762"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129456197"
 ---
 # <a name="create-a-hcx-network-extension"></a>HCX ネットワーク拡張機能を作成する
 
@@ -30,4 +30,8 @@ ms.locfileid: "124837762"
 
    :::image type="content" source="media/tutorial-vmware-hcx/extension-complete.png" alt-text="拡張完了の状態を示すスクリーンショット。":::
 
+## <a name="next-steps"></a>次のステップ
 
+HCX ネットワーク拡張機能を構成したので、次について学習できます。
+
+- [VMware HCX Mobility Optimized Networking (MON) のガイダンス](vmware-hcx-mon-guidance.md)

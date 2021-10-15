@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) についてよく寄せられる質
 ms.topic: conceptual
 ms.date: 05/23/2021
 ms.custom: references_regions
-ms.openlocfilehash: 612493d55adddea82e3e8d1e3d169eee963bfda2
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fdccee2795a4e1b2c967c53dc17d15a6520f4402
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121724728"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129546522"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) についてよく寄せられる質問
 
@@ -289,8 +289,7 @@ spec:
 
 ## <a name="can-i-configure-nsgs-with-aks"></a>AKS で NSG を構成できますか?
 
-独自のサブネットを指定する場合は、そのサブネットに関連付けられているネットワーク セキュリティ グループ (NSG) を管理する必要があります。 AKS を使用すると、NIC レベルでのみ NSG が変更され、そのサブネットに関連付けられている NSG は変更されません。 CNI を使用している場合は、NSG のセキュリティ規則でノードとポッド CIDR 範囲の間のトラフィックが確実に許可されるようにする必要もあります。 kubenet を使用している場合は、NSG のセキュリティ規則でノードとポッド CIDR の間のトラフィックが確実に許可されるようにする必要もあります。
-
+AKS では Network Security Groups (NSG) をそのサブネットに適用せず、そのサブネットに関連付けられている NSG が変更されることはありません。 AKS では NIC レベルでのみ NSG が変更されます。 CNI を使用している場合は、NSG のセキュリティ規則でノードとポッド CIDR 範囲の間のトラフィックが確実に許可されるようにする必要もあります。 kubenet を使用している場合は、NSG のセキュリティ規則でノードとポッド CIDR の間のトラフィックが確実に許可されるようにする必要もあります。 詳しくは、「[ネットワーク セキュリティ グループ](concepts-network.md#network-security-groups)」をご覧ください。
 
 <!-- LINKS - internal -->
 

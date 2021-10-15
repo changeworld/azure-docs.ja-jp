@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 08/20/2021
+ms.date: 09/28/2021
 ms.custom: generated
-ms.openlocfilehash: b1c1944ddf5fdae42bea41482d429a207190d11f
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 02fbc7d0ec30181ccfbd44a2a80c70084a23e4d9
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122771132"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129427915"
 ---
 # <a name="azure-built-in-roles"></a>Azure 組み込みロール
 
@@ -22,7 +22,7 @@ ms.locfileid: "122771132"
 
 この記事では、Azure 組み込みロールを一覧で示します。 Azure Active Directory (Azure AD) の管理者ロールについては、「[Azure AD の組み込みロール](../active-directory/roles/permissions-reference.md)」を参照してください。
 
-次の表に、各組み込みロールの簡単な説明を示します。 ロール名をクリックすると、各ロールの `Actions`、`NotActions`、`DataActions`、`NotDataActions` の一覧が表示されます。 これらのアクションの意味と、管理とデータ プレーンへの適用方法については、「[Azure ロールの定義について](role-definitions.md)」を参照してください。
+次の表に、各組み込みロールの簡単な説明を示します。 ロール名をクリックすると、各ロールの `Actions`、`NotActions`、`DataActions`、`NotDataActions` の一覧が表示されます。 これらのアクションの意味と、コントロールおよびデータ プレーンへの適用方法については、「[Azure ロールの定義について](role-definitions.md)」を参照してください。
 
 ## <a name="all"></a>All
 
@@ -79,7 +79,11 @@ ms.locfileid: "122771132"
 > | **Web** |  |  |
 > | [Azure Maps データ共同作成者](#azure-maps-data-contributor) | Azure Maps アカウントからのマップ関連データへの読み取り、書き込み、削除のアクセスを付与します。 | 8f5e0ce6-4f7b-4dcf-bddf-e6f48634a204 |
 > | [Azure Maps データ閲覧者](#azure-maps-data-reader) | Azure Maps アカウントからマップ関連データを読み取るためのアクセス権を付与します。 | 423170ca-a8f6-4b0f-8487-9e4eb8f49bfa |
+> | [Azure Spring Cloud Config Server 共同作成者](#azure-spring-cloud-config-server-contributor) | Azure Spring Cloud Config Server への読み取り、書き込み、削除アクセスを許可します | a06f5c24-21a7-4e1a-aa2b-f19eb6684f5b |
+> | [Azure Spring Cloud Config Server 閲覧者](#azure-spring-cloud-config-server-reader) | Azure Spring Cloud Config Server への読み取りアクセスを許可します | d04c6db6-4947-4782-9e91-30a88feb7be7 |
 > | [Azure Spring Cloud データ閲覧者](#azure-spring-cloud-data-reader) | Azure Spring Cloud データへの読み取りアクセスを許可します | b5537268-8956-4941-a8f0-646150406f0c |
+> | [Azure Spring Cloud Service Registry 共同作成者](#azure-spring-cloud-service-registry-contributor) | Azure Spring Cloud Service Registry への読み取り、書き込み、削除アクセスを許可します | f5880b48-c26d-48be-b172-7927bfa1c8f1 |
+> | [Azure Spring Cloud Service Registry 閲覧者](#azure-spring-cloud-service-registry-reader) | Azure Spring Cloud Service Registry への読み取りアクセスを許可します | cff1b556-2399-4e7e-856d-a8f754be7b65 |
 > | [Media Services アカウント管理者](#media-services-account-administrator) | Media Services アカウントを作成、読み取り、変更、および削除します。他の Media Services リソースへの読み取り専用アクセスができます。 | 054126f8-9a2b-4f1c-a9ad-eca461f08466 |
 > | [Media Services ライブ イベント管理者](#media-services-live-events-administrator) | ライブ イベント、アセット、アセット フィルター、およびストリーミング ロケーターを作成、読み取り、変更、および削除します。他の Media Services リソースへの読み取り専用アクセスができます。 | 532bc159-b25e-42c0-969e-a1d439f60d77 |
 > | [Media Services メディア オペレーター](#media-services-media-operator) | アセット、アセット フィルター、ストリーミング ロケーター、およびジョブを作成、読み取り、変更、および削除します。他の Media Services リソースへの読み取り専用アクセスができます。 | e4395492-1534-4db2-bedf-88c14621589c |
@@ -90,10 +94,10 @@ ms.locfileid: "122771132"
 > | [Search Service Contributor](#search-service-contributor) | Search サービスを管理できます。ただし、それらへのアクセスは含まれません。 | 7ca78c08-252a-4471-8644-bb5ff32d4ba0 |
 > | [SignalR AccessKey 閲覧者](#signalr-accesskey-reader) | SignalR サービス アクセス キーを読み取ります | 04165923-9d83-45d5-8227-78b77b0a687e |
 > | [SignalR アプリ サーバー (プレビュー)](#signalr-app-server-preview) | AAD の認証オプションを使用して、アプリ サーバーが SignalR Service にアクセスできるようにします。 | 420fcaa2-552c-430f-98ca-3264be4806c7 |
-> | [SignalR 共同作成者](#signalr-contributor) | SignalR のサービス リソースの作成、読み取り、更新、削除を行います | 8cf5e20a-e4b2-4e9d-b3a1-5ceb692c2761 |
-> | [SignalR サーバーレス共同作成者 (プレビュー)](#signalr-serverless-contributor-preview) | AAD の認証オプションを使用して、アプリがサーバーレス モードでサービスにアクセスできるようにします。 | fd53cd77-2268-407a-8f46-7e7863d0f521 |
+> | [SignalR REST API 所有者](#signalr-rest-api-owner) | Azure SignalR Service REST API へのフル アクセス | fd53cd77-2268-407a-8f46-7e7863d0f521 |
+> | [SignalR REST API 閲覧者](#signalr-rest-api-reader) | Azure SignalR Service REST API への読み取り専用アクセス | ddde6b66-c0df-4114-a159-3618637b3035 |
 > | [SignalR Service 所有者](#signalr-service-owner) | Azure SignalR Service REST API へのフル アクセス | 7e4f1700-ea5a-4f59-8f37-079cfe29dce3 |
-> | [SignalR Service 閲覧者 (プレビュー)](#signalr-service-reader-preview) | Azure SignalR Service REST API への読み取り専用アクセス | ddde6b66-c0df-4114-a159-3618637b3035 |
+> | [SignalR/Web PubSub 共同作成者](#signalrweb-pubsub-contributor) | SignalR のサービス リソースの作成、読み取り、更新、削除を行います | 8cf5e20a-e4b2-4e9d-b3a1-5ceb692c2761 |
 > | [Web Plan Contributor](#web-plan-contributor) | Web サイトの Web プランを管理できます。ただし、それらへのアクセスは含まれません。 | 2cc479cb-7b4d-49a8-b449-8c00fd0f0a4b |
 > | [Website Contributor](#website-contributor) | Web サイト (Web プランではない) を管理できます。ただし、それらへのアクセスは含まれません。 | de139f84-1756-47ae-9be6-808fbbe84772 |
 > | **Containers** |  |  |
@@ -111,6 +115,7 @@ ms.locfileid: "122771132"
 > | [Azure Kubernetes Service RBAC 閲覧者](#azure-kubernetes-service-rbac-reader) | 名前空間内のほとんどのオブジェクトを表示するための読み取り専用アクセスが許可されます。 ロールまたはロールのバインドを表示することはできません。 このロールでは、Secrets の表示は許可されません。これは、Secrets の内容を読み取ると、名前空間の ServiceAccount 資格情報にアクセスでき、それにより名前空間の任意の ServiceAccount として API にアクセスできるようになるためです (特権エスカレーションの形式)。 クラスター スコープでこのロールを適用すると、すべての名前空間へのアクセス権が付与されます。 | 7f6c6a51-bcf8-42ba-9220-52d62157d7db |
 > | [Azure Kubernetes Service RBAC ライター](#azure-kubernetes-service-rbac-writer) | 名前空間内のほとんどのオブジェクトに対する読み取り/書き込みアクセスが許可されます。このロールでは、ロールまたはロールのバインドの表示または変更が許可されません。 ただし、このロールを使用すると、Secrets にアクセスし、名前空間内の任意の ServiceAccount としてポッドを実行できるので、名前空間内の任意の ServiceAccount の API アクセス レベルを取得するために使用できます。 クラスター スコープでこのロールを適用すると、すべての名前空間へのアクセス権が付与されます。 | a7ffa36f-339b-4b5c-8bdf-e2c188b2c0eb |
 > | **データベース** |  |  |
+> | [Azure Connected SQL Server のオンボード](#azure-connected-sql-server-onboarding) | Arc 対応サーバー上の SQL Server 用 Azure リソースに対する読み取りおよび書き込みアクセスを許可します。 | e8113dce-c529-4d33-91fa-e9b972617508 |
 > | [Cosmos DB アカウントの閲覧者ロール](#cosmos-db-account-reader-role) | Cosmos DB アカウントのデータを読み取ることができます。 Azure Cosmos DB アカウントの管理については、「[DocumentDB Account Contributor](#documentdb-account-contributor)」をご覧ください。 | fbdf93bf-df7d-467e-a4d2-9458aa1360c8 |
 > | [Cosmos DB オペレーター](#cosmos-db-operator) | Azure Cosmos DB アカウントを管理することができます。ただし、アカウント内のデータにはアクセスできません。 アカウント キーと接続文字列へのアクセスは禁止されます。 | 230815da-be43-4aae-9cb4-875f7bd000aa |
 > | [CosmosBackupOperator](#cosmosbackupoperator) | Cosmos DB データベースまたはアカウントのコンテナーの復元要求を送信できます | db7b14f2-5adf-42da-9f96-f2ee17bab5cb |
@@ -121,7 +126,6 @@ ms.locfileid: "122771132"
 > | [SQL マネージド インスタンス共同作成者](#sql-managed-instance-contributor) | SQL マネージド インスタンスと必要なネットワーク構成を管理することができますが、他のユーザーにアクセス権を付与することはできません。 | 4939a1f6-9ae0-4e48-a1e0-f2cbe897382d |
 > | [SQL Security Manager](#sql-security-manager) | SQL サーバーとデータベースのセキュリティ関連のポリシーを管理できます。ただし、それらへのアクセスは管理できません。 | 056cd41c-7e88-42e1-933e-88ba6a50c9c3 |
 > | [SQL Server Contributor](#sql-server-contributor) | SQL サーバーとデータベースを管理できます。ただし、それらへのアクセスや、それらのセキュリティ関連ポリシーは管理できません。 | 6d8ee4ec-f05a-4a1d-8b00-a9b17e38b437 |
-> | [Azure Connected SQL Server のオンボード](#azure-connected-sql-server-onboarding) | Arc 対応サーバー上の SQL Server 用 Azure リソースに対する読み取りおよび書き込みアクセスを許可します。 | e8113dce-c529-4d33-91fa-e9b972617508 |
 > | **Analytics** |  |  |
 > | [Azure Event Hubs データ所有者](#azure-event-hubs-data-owner) | Azure Event Hubs リソースへのフル アクセスを許可します。 | f526a384-b230-433a-b45c-95f59c4a2dec |
 > | [Azure Event Hubs データ受信者](#azure-event-hubs-data-receiver) | Azure Event Hubs リソースへの受信アクセスを許可します。 | a638d3c7-ab3a-418d-83e6-5f17a39d4fde |
@@ -132,9 +136,9 @@ ms.locfileid: "122771132"
 > | [HDInsight ドメイン サービス共同作成者](#hdinsight-domain-services-contributor) | HDInsight Enterprise セキュリティ パッケージに必要なドメイン サービス関連の操作の読み取り、作成、変更、削除を行うことができます。 | 8d8d5a11-05d3-4bda-a417-a08778121c7c |
 > | [Log Analytics Contributor](#log-analytics-contributor) | Log Analytics 共同作成者は、すべての監視データを読み取り、監視設定を編集できます。 監視設定の編集には、VM 拡張機能の VM への追加、Azure Storage からログの収集を設定できるようにするためのストレージ アカウント キーの読み取り、ソリューションの追加、すべての Azure リソースでの Azure Diagnostics の構成が含まれます。 | 92aaf0da-9dab-42b6-94a3-d43ce8d16293 |
 > | [Log Analytics Reader](#log-analytics-reader) | Log Analytics Reader は、すべての監視データの表示と検索、およびすべての Azure リソース上の Azure Diagnostics 構成の表示など、監視設定の表示を行うことができます。 | 73c42c96-874c-492b-b04d-ab87d138a893 |
-> | [Purview データ キュレーター](#purview-data-curator) | Microsoft.Purview データ キュレーターでは、カタログ データ オブジェクトの作成、読み取り、変更、削除や、オブジェクト間のリレーションシップの確立を行うことができます。 このロールはプレビュー段階にあり、変更される可能性があります。 | 8a3c2885-9b38-4fd2-9d99-91af537c1347 |
-> | [Purview データ リーダー](#purview-data-reader) | Microsoft.Purview データ リーダーは、カタログ データ オブジェクトを読み取ることができます。 このロールはプレビュー段階にあり、変更される可能性があります。 | ff100721-1b9d-43d8-af52-42b69c1272db |
-> | [Purview データ ソース管理者](#purview-data-source-administrator) | Microsoft.Purview データ ソース管理者は、データ ソースとデータ スキャンを管理できます。 このロールはプレビュー段階にあり、変更される可能性があります。 | 200bba9e-f0c8-430f-892b-6f0794863803 |
+> | [Purview データ キュレーター (レガシ)](#purview-data-curator-legacy) | Microsoft.Purview データ キュレーターは、カタログ データ オブジェクトの作成、読み取り、変更、削除や、オブジェクト間のリレーションシップの確立を行うことができるレガシ ロールです。 最近、このロールは Azure のロールベースのアクセスから非推奨になり、Azure Purview データ プレーン内に新しいデータ キュレーターが導入されました。 「[Azure Purview でのアクセスの制御 - ロール](../purview/catalog-permissions.md#roles)」を参照してください | 8a3c2885-9b38-4fd2-9d99-91af537c1347 |
+> | [Purview データ閲覧者 (レガシ)](#purview-data-reader-legacy) | Microsoft.Purview データ閲覧者は、カタログ データ オブジェクトを読み取ることができるレガシ ロールです。 最近、このロールは Azure のロールベースのアクセスから非推奨になり、Azure Purview データ プレーン内に新しいデータ閲覧者が導入されました。 「[Azure Purview でのアクセスの制御 - ロール](../purview/catalog-permissions.md#roles)」を参照してください | ff100721-1b9d-43d8-af52-42b69c1272db |
+> | [Purview データ ソース管理者 (レガシ)](#purview-data-source-administrator-legacy) | Microsoft.Purview データ ソース管理者は、データ ソースとデータ スキャンを管理できるレガシ ロールです。 最近、このロールは Azure のロールベースのアクセスから非推奨になり、Azure Purview データ プレーン内に新しいデータ ソース管理者が導入されました。 「[Azure Purview でのアクセスの制御 - ロール](../purview/catalog-permissions.md#roles)」を参照してください | 200bba9e-f0c8-430f-892b-6f0794863803 |
 > | [Schema Registry Contributor (プレビュー)](#schema-registry-contributor-preview) | Schema Registry グループおよびスキーマの読み取り、書き込み、および削除を行います。 | 5dffeca3-4936-4216-b2bc-10343a5abb25 |
 > | [Schema Registry Reader (プレビュー)](#schema-registry-reader-preview) | Schema Registry グループおよびスキーマの読み取りと一覧表示を行います。 | 2c56ea50-c6b3-40a6-83c0-9d98858bc7d2 |
 > | **ブロックチェーン** |  |  |
@@ -282,6 +286,7 @@ ms.locfileid: "122771132"
 > | [Desktop Virtualization Workspace Contributor](#desktop-virtualization-workspace-contributor) | デスクトップ仮想化ワークスペースの共同作成者。 | 21efdde3-836f-432b-bf3d-3e8e734d4b2b |
 > | [Desktop Virtualization Workspace Reader](#desktop-virtualization-workspace-reader) | デスクトップ仮想化ワークスペースの閲覧者。 | 0fa44ee9-7a7d-466b-9bb2-2bf446b1204d |
 > | [Disk Backup Reader](#disk-backup-reader) | ディスク バックアップを実行するためにコンテナーをバックアップするアクセス許可を提供します。 | 3e5e47e6-65f7-47ef-90b5-e5dd4d455f24 |
+> | [ディスク プール オペレーター](#disk-pool-operator) | ディスク プールに追加されたディスクを管理するためのアクセス許可を、StoragePool リソース プロバイダーに付与します。 | 60fc6e62-5479-42d4-8bf4-67625fcc2840 |
 > | [Disk Restore Operator](#disk-restore-operator) | ディスクの復元を実行するためにコンテナーをバックアップするアクセス許可を提供します。 | b50d9833-a0cb-478e-945f-707fcc997c13 |
 > | [Disk Snapshot Contributor](#disk-snapshot-contributor) | ディスプのスナップショットを管理するためにコンテナーをバックアップするアクセス許可を提供します。 | 7efff54f-a5b4-42b5-a1c5-5411624893ce |
 > | [Scheduler Job Collections Contributor](#scheduler-job-collections-contributor) | スケジューラ ジョブ コレクションを管理できます。ただし、それらへのアクセスは含まれません。 | 188a0f2f-5c9e-469b-ae67-2aa5ce574b94 |
@@ -603,6 +608,7 @@ Azure リソースに対するユーザー アクセスを管理します。 [�
 > | --- | --- |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/availabilitySets/* | コンピューティング可用性セットの作成と管理 |
+> | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/cloudServices/* | Cloud Services の作成と管理 (延長サポート) |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/locations/* | コンピューティングの場所の作成と管理 |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/* | 仮想マシンの作成、更新、削除、起動、再起動、電源オフを含む、すべての仮想マシン操作を実行します。 仮想マシンでスクリプトを実行します。 |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/virtualMachineScaleSets/* | 仮想マシン スケールセットの作成と管理 |
@@ -638,6 +644,7 @@ Azure リソースに対するユーザー アクセスを管理します。 [�
 > | [Microsoft.ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | デプロイの作成と管理 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
+> | Microsoft.SerialConsole/serialPorts/connect/action | シリアル ポートに接続する |
 > | [Microsoft.SqlVirtualMachine](resource-provider-operations.md#microsoftsqlvirtualmachine)/* |  |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/listKeys/action | 指定されたストレージ アカウントのアクセス キーを返します。 |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/read | ストレージ アカウントの一覧を返すか、指定されたストレージ アカウントのプロパティを取得します。 |
@@ -697,6 +704,7 @@ Azure リソースに対するユーザー アクセスを管理します。 [�
         "Microsoft.ResourceHealth/availabilityStatuses/read",
         "Microsoft.Resources/deployments/*",
         "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.SerialConsole/serialPorts/connect/action",
         "Microsoft.SqlVirtualMachine/*",
         "Microsoft.Storage/storageAccounts/listKeys/action",
         "Microsoft.Storage/storageAccounts/read",
@@ -2990,9 +2998,91 @@ Azure Maps アカウントからマップ関連データを読み取るための
 }
 ```
 
+### <a name="azure-spring-cloud-config-server-contributor"></a>Azure Spring Cloud Config Server 共同作成者
+
+Azure Spring Cloud Config Server への読み取り、書き込み、削除アクセスを許可します [詳細情報](../spring-cloud/how-to-access-data-plane-azure-ad-rbac.md)
+
+> [!div class="mx-tableFixed"]
+> | アクション | 説明 |
+> | --- | --- |
+> | "*なし*" |  |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | [Microsoft.AppPlatform](resource-provider-operations.md#microsoftappplatform)/Spring/configService/read | 特定の Azure Spring Cloud サービス インスタンスの構成内容 (たとえば、application.yaml) を読み取ります |
+> | [Microsoft.AppPlatform](resource-provider-operations.md#microsoftappplatform)/Spring/configService/write | 特定の Azure Spring Cloud サービス インスタンスに対する構成サーバーの内容を書き込みます |
+> | [Microsoft.AppPlatform](resource-provider-operations.md#microsoftappplatform)/Spring/configService/delete | 特定の Azure Spring Cloud サービス インスタンスに対する構成サーバーの内容を削除します |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Allow read, write and delete access to Azure Spring Cloud Config Server",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/a06f5c24-21a7-4e1a-aa2b-f19eb6684f5b",
+  "name": "a06f5c24-21a7-4e1a-aa2b-f19eb6684f5b",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.AppPlatform/Spring/configService/read",
+        "Microsoft.AppPlatform/Spring/configService/write",
+        "Microsoft.AppPlatform/Spring/configService/delete"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Azure Spring Cloud Config Server Contributor",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="azure-spring-cloud-config-server-reader"></a>Azure Spring Cloud Config Server 閲覧者
+
+Azure Spring Cloud Config Server への読み取りアクセスを許可します [詳細情報](../spring-cloud/how-to-access-data-plane-azure-ad-rbac.md)
+
+> [!div class="mx-tableFixed"]
+> | アクション | 説明 |
+> | --- | --- |
+> | "*なし*" |  |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | [Microsoft.AppPlatform](resource-provider-operations.md#microsoftappplatform)/Spring/configService/read | 特定の Azure Spring Cloud サービス インスタンスの構成内容 (たとえば、application.yaml) を読み取ります |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Allow read access to Azure Spring Cloud Config Server",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/d04c6db6-4947-4782-9e91-30a88feb7be7",
+  "name": "d04c6db6-4947-4782-9e91-30a88feb7be7",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.AppPlatform/Spring/configService/read"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Azure Spring Cloud Config Server Reader",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
 ### <a name="azure-spring-cloud-data-reader"></a>Azure Spring Cloud データ閲覧者
 
-Azure Spring Cloud データへの読み取りアクセスを許可します。[詳細](../spring-cloud/how-to-access-data-plane-azure-ad-rbac.md)
+Azure Spring Cloud データへの読み取りアクセスを許可します
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
@@ -3024,6 +3114,88 @@ Azure Spring Cloud データへの読み取りアクセスを許可します。[
     }
   ],
   "roleName": "Azure Spring Cloud Data Reader",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="azure-spring-cloud-service-registry-contributor"></a>Azure Spring Cloud Service Registry 共同作成者
+
+Azure Spring Cloud Service Registry への読み取り、書き込み、削除アクセスを許可します [詳細情報](../spring-cloud/how-to-access-data-plane-azure-ad-rbac.md)
+
+> [!div class="mx-tableFixed"]
+> | アクション | 説明 |
+> | --- | --- |
+> | "*なし*" |  |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | [Microsoft.AppPlatform](resource-provider-operations.md#microsoftappplatform)/Spring/eurekaService/read | 特定の Azure Spring Cloud サービス インスタンスのユーザー アプリ登録情報を読み取ります |
+> | [Microsoft.AppPlatform](resource-provider-operations.md#microsoftappplatform)/Spring/eurekaService/write | 特定の Azure Spring Cloud サービス インスタンスのユーザー アプリの登録情報を書き込みます |
+> | [Microsoft.AppPlatform](resource-provider-operations.md#microsoftappplatform)/Spring/eurekaService/delete | 特定の Azure Spring Cloud サービス インスタンスのユーザー アプリの登録情報を削除します |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Allow read, write and delete access to Azure Spring Cloud Service Registry",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/f5880b48-c26d-48be-b172-7927bfa1c8f1",
+  "name": "f5880b48-c26d-48be-b172-7927bfa1c8f1",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.AppPlatform/Spring/eurekaService/read",
+        "Microsoft.AppPlatform/Spring/eurekaService/write",
+        "Microsoft.AppPlatform/Spring/eurekaService/delete"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Azure Spring Cloud Service Registry Contributor",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="azure-spring-cloud-service-registry-reader"></a>Azure Spring Cloud Service Registry 閲覧者
+
+Azure Spring Cloud Service Registry への読み取りアクセスを許可します [詳細情報](../spring-cloud/how-to-access-data-plane-azure-ad-rbac.md)
+
+> [!div class="mx-tableFixed"]
+> | アクション | 説明 |
+> | --- | --- |
+> | "*なし*" |  |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | [Microsoft.AppPlatform](resource-provider-operations.md#microsoftappplatform)/Spring/eurekaService/read | 特定の Azure Spring Cloud サービス インスタンスのユーザー アプリ登録情報を読み取ります |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Allow read access to Azure Spring Cloud Service Registry",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/cff1b556-2399-4e7e-856d-a8f754be7b65",
+  "name": "cff1b556-2399-4e7e-856d-a8f754be7b65",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.AppPlatform/Spring/eurekaService/read"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Azure Spring Cloud Service Registry Reader",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
@@ -3567,58 +3739,9 @@ AAD の認証オプションを使用して、アプリ サーバーが SignalR 
 }
 ```
 
-### <a name="signalr-contributor"></a>SignalR 共同作成者
+### <a name="signalr-rest-api-owner"></a>SignalR REST API 所有者
 
-SignalR のサービス リソースの作成、読み取り、更新、削除を行います
-
-> [!div class="mx-tableFixed"]
-> | アクション | 説明 |
-> | --- | --- |
-> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/* |  |
-> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
-> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | クラシック メトリック アラートの作成と管理 |
-> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
-> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | デプロイの作成と管理 |
-> | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
-> | **NotActions** |  |
-> | "*なし*" |  |
-> | **DataActions** |  |
-> | "*なし*" |  |
-> | **NotDataActions** |  |
-> | "*なし*" |  |
-
-```json
-{
-  "assignableScopes": [
-    "/"
-  ],
-  "description": "Create, Read, Update, and Delete SignalR service resources",
-  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/8cf5e20a-e4b2-4e9d-b3a1-5ceb692c2761",
-  "name": "8cf5e20a-e4b2-4e9d-b3a1-5ceb692c2761",
-  "permissions": [
-    {
-      "actions": [
-        "Microsoft.SignalRService/*",
-        "Microsoft.Authorization/*/read",
-        "Microsoft.Insights/alertRules/*",
-        "Microsoft.Resources/subscriptions/resourceGroups/read",
-        "Microsoft.Resources/deployments/*",
-        "Microsoft.Support/*"
-      ],
-      "notActions": [],
-      "dataActions": [],
-      "notDataActions": []
-    }
-  ],
-  "roleName": "SignalR Contributor",
-  "roleType": "BuiltInRole",
-  "type": "Microsoft.Authorization/roleDefinitions"
-}
-```
-
-### <a name="signalr-serverless-contributor-preview"></a>SignalR サーバーレス共同作成者 (プレビュー)
-
-AAD の認証オプションを使用して、アプリがサーバーレス モードでサービスにアクセスできるようにします。
+Azure SignalR Service REST API へのフル アクセス
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
@@ -3628,6 +3751,16 @@ AAD の認証オプションを使用して、アプリがサーバーレス モ
 > | "*なし*" |  |
 > | **DataActions** |  |
 > | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/auth/clientToken/action | クライアントが ASRS に接続するための AccessToken を生成します。このトークンは、既定では 5 分で有効期限が切れます。 |
+> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/hub/send/action | ハブ内のすべてのクライアント接続にメッセージをブロードキャストします。 |
+> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/group/send/action | メッセージをグループにブロードキャストします。 |
+> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/group/read | グループの存在、またはグループ内のユーザーの存在を確認します。 |
+> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/group/write | グループに参加するか、グループから脱退します。 |
+> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/clientConnection/send/action | クライアント接続にメッセージを直接送信します。 |
+> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/clientConnection/read | クライアント接続の存在を確認します。 |
+> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/clientConnection/write | クライアント接続を閉じます。 |
+> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/user/send/action | 複数のクライアント接続で構成されている可能性のあるユーザーにメッセージを送信します。 |
+> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/user/read | ユーザーの存在を確認します。 |
+> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/user/write | ユーザーを変更します。 |
 > | **NotDataActions** |  |
 > | "*なし*" |  |
 
@@ -3636,7 +3769,7 @@ AAD の認証オプションを使用して、アプリがサーバーレス モ
   "assignableScopes": [
     "/"
   ],
-  "description": "Lets your app access service in serverless mode with AAD auth options.",
+  "description": "Full access to Azure SignalR Service REST APIs",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/fd53cd77-2268-407a-8f46-7e7863d0f521",
   "name": "fd53cd77-2268-407a-8f46-7e7863d0f521",
   "permissions": [
@@ -3644,12 +3777,65 @@ AAD の認証オプションを使用して、アプリがサーバーレス モ
       "actions": [],
       "notActions": [],
       "dataActions": [
-        "Microsoft.SignalRService/SignalR/auth/clientToken/action"
+        "Microsoft.SignalRService/SignalR/auth/clientToken/action",
+        "Microsoft.SignalRService/SignalR/hub/send/action",
+        "Microsoft.SignalRService/SignalR/group/send/action",
+        "Microsoft.SignalRService/SignalR/group/read",
+        "Microsoft.SignalRService/SignalR/group/write",
+        "Microsoft.SignalRService/SignalR/clientConnection/send/action",
+        "Microsoft.SignalRService/SignalR/clientConnection/read",
+        "Microsoft.SignalRService/SignalR/clientConnection/write",
+        "Microsoft.SignalRService/SignalR/user/send/action",
+        "Microsoft.SignalRService/SignalR/user/read",
+        "Microsoft.SignalRService/SignalR/user/write"
       ],
       "notDataActions": []
     }
   ],
-  "roleName": "SignalR Serverless Contributor (Preview)",
+  "roleName": "SignalR REST API Owner",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="signalr-rest-api-reader"></a>SignalR REST API 閲覧者
+
+Azure SignalR Service REST API への読み取り専用アクセス
+
+> [!div class="mx-tableFixed"]
+> | アクション | 説明 |
+> | --- | --- |
+> | "*なし*" |  |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/group/read | グループの存在、またはグループ内のユーザーの存在を確認します。 |
+> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/clientConnection/read | クライアント接続の存在を確認します。 |
+> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/user/read | ユーザーの存在を確認します。 |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Read-only access to Azure SignalR Service REST APIs",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/ddde6b66-c0df-4114-a159-3618637b3035",
+  "name": "ddde6b66-c0df-4114-a159-3618637b3035",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.SignalRService/SignalR/group/read",
+        "Microsoft.SignalRService/SignalR/clientConnection/read",
+        "Microsoft.SignalRService/SignalR/user/read"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "SignalR REST API Reader",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
@@ -3718,20 +3904,23 @@ Azure SignalR Service REST API へのフル アクセス
 }
 ```
 
-### <a name="signalr-service-reader-preview"></a>SignalR Service 閲覧者 (プレビュー)
+### <a name="signalrweb-pubsub-contributor"></a>SignalR/Web PubSub 共同作成者
 
-Azure SignalR Service REST API への読み取り専用アクセス
+SignalR のサービス リソースの作成、読み取り、更新、削除を行います
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
 > | --- | --- |
-> | "*なし*" |  |
+> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/* |  |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | クラシック メトリック アラートの作成と管理 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | デプロイの作成と管理 |
+> | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
-> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/group/read | グループの存在、またはグループ内のユーザーの存在を確認します。 |
-> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/clientConnection/read | クライアント接続の存在を確認します。 |
-> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/user/read | ユーザーの存在を確認します。 |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
 > | "*なし*" |  |
 
@@ -3740,22 +3929,25 @@ Azure SignalR Service REST API への読み取り専用アクセス
   "assignableScopes": [
     "/"
   ],
-  "description": "Read-only access to Azure SignalR Service REST APIs",
-  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/ddde6b66-c0df-4114-a159-3618637b3035",
-  "name": "ddde6b66-c0df-4114-a159-3618637b3035",
+  "description": "Create, Read, Update, and Delete SignalR service resources",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/8cf5e20a-e4b2-4e9d-b3a1-5ceb692c2761",
+  "name": "8cf5e20a-e4b2-4e9d-b3a1-5ceb692c2761",
   "permissions": [
     {
-      "actions": [],
-      "notActions": [],
-      "dataActions": [
-        "Microsoft.SignalRService/SignalR/group/read",
-        "Microsoft.SignalRService/SignalR/clientConnection/read",
-        "Microsoft.SignalRService/SignalR/user/read"
+      "actions": [
+        "Microsoft.SignalRService/*",
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Support/*"
       ],
+      "notActions": [],
+      "dataActions": [],
       "notDataActions": []
     }
   ],
-  "roleName": "SignalR Service Reader (Preview)",
+  "roleName": "SignalR/Web PubSub Contributor",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
@@ -4592,6 +4784,47 @@ Azure Kubernetes Service クラスターへの読み取りおよび書き込み�
 ## <a name="databases"></a>データベース
 
 
+### <a name="azure-connected-sql-server-onboarding"></a>Azure Connected SQL Server のオンボード
+
+Arc 対応サーバー上の SQL Server 用 Azure リソースに対する読み取りおよび書き込みアクセスを許可します。 [詳細情報](/sql/sql-server/azure-arc/connect)
+
+> [!div class="mx-tableFixed"]
+> | アクション | 説明 |
+> | --- | --- |
+> | Microsoft.AzureArcData/sqlServerInstances/read | SQL Server インスタンス リソースを取得します |
+> | Microsoft.AzureArcData/sqlServerInstances/write | SQL Server インスタンス リソースを更新します |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Microsoft.AzureArcData service role to access the resources of Microsoft.AzureArcData stored with RPSAAS.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/e8113dce-c529-4d33-91fa-e9b972617508",
+  "name": "e8113dce-c529-4d33-91fa-e9b972617508",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.AzureArcData/sqlServerInstances/read",
+        "Microsoft.AzureArcData/sqlServerInstances/write"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Azure Connected SQL Server Onboarding",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
 ### <a name="cosmos-db-account-reader-role"></a>Cosmos DB アカウントの閲覧者ロール
 
 Cosmos DB アカウントのデータを読み取ることができます。 Azure Cosmos DB アカウントの管理については、「[DocumentDB Account Contributor](#documentdb-account-contributor)」をご覧ください。 [詳細情報](../cosmos-db/role-based-access-control.md)
@@ -5326,46 +5559,6 @@ SQL サーバーとデータベースを管理できます。ただし、それ�
 }
 ```
 
-### <a name="azure-connected-sql-server-onboarding"></a>Azure Connected SQL Server のオンボード
-
- Arc 対応サーバー上の SQL Server 用 Azure リソースに対する読み取りおよび書き込みアクセスを許可します。
-
-> [!div class="mx-tableFixed"]
-> | アクション | 説明 |
-> | --- | --- |
-> |Microsoft.AzureArcData/sqlServerInstances/read| Azure リソースの情報を読み取ります。 |
-> |Microsoft.AzureArcData/sqlServerInstances/write| Azure リソースの情報を書き込みます。  |
-> | **NotActions** |  |
-> | "*なし*" |  |
-> | **DataActions** |  |
-> | "*なし*" |  |
-> | **NotDataActions** |  |
-> | "*なし*" |  | 
-
-```json
-{
-    "id": "/providers/Microsoft.Authorization/roleDefinitions/e8113dce-c529-4d33-91fa-e9b972617508",
-    "properties": {
-        "roleName": "Azure Connected SQL Server Onboarding",
-        "description": "Microsoft.AzureArcData service role to access the resources of Microsoft.AzureArcData stored with RPSAAS.",
-        "assignableScopes": [
-            "/"
-        ],
-        "permissions": [
-            {
-                "actions": [
-                    "Microsoft.AzureArcData/sqlServerInstances/read",
-                    "Microsoft.AzureArcData/sqlServerInstances/write"
-                ],
-                "notActions": [],
-                "dataActions": [],
-                "notDataActions": []
-            }
-        ]
-    }
-}
-```
-
 ## <a name="analytics"></a>Analytics
 
 
@@ -5800,9 +5993,9 @@ Log Analytics Reader は、すべての監視データの表示と検索、お�
 }
 ```
 
-### <a name="purview-data-curator"></a>Purview データ キュレーター
+### <a name="purview-data-curator-legacy"></a>Purview データ キュレーター (レガシ)
 
-Microsoft.Purview データ キュレーターでは、カタログ データ オブジェクトの作成、読み取り、変更、削除や、オブジェクト間のリレーションシップの確立を行うことができます。 このロールはプレビュー段階にあり、変更される可能性があります。
+Microsoft.Purview データ キュレーターは、カタログ データ オブジェクトの作成、読み取り、変更、削除や、オブジェクト間のリレーションシップの確立を行うことができるレガシ ロールです。 最近、このロールは Azure のロールベースのアクセスから非推奨になり、Azure Purview データ プレーン内に新しいデータ キュレーターが導入されました。 「[Azure Purview でのアクセスの制御 - ロール](../purview/catalog-permissions.md#roles)」を参照してください
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
@@ -5821,7 +6014,7 @@ Microsoft.Purview データ キュレーターでは、カタログ データ �
   "assignableScopes": [
     "/"
   ],
-  "description": "The Microsoft.Purview data curator can create, read, modify and delete catalog data objects and establish relationships between objects. This role is in preview and subject to change.",
+  "description": "The Microsoft.Purview data curator is a legacy role that can create, read, modify and delete catalog data objects and establish relationships between objects. We have recently deprecated this role from Azure role-based access and introduced a new data curator inside Azure Purview data plane. See https://docs.microsoft.com/azure/purview/catalog-permissions#roles",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/8a3c2885-9b38-4fd2-9d99-91af537c1347",
   "name": "8a3c2885-9b38-4fd2-9d99-91af537c1347",
   "permissions": [
@@ -5837,15 +6030,15 @@ Microsoft.Purview データ キュレーターでは、カタログ データ �
       "notDataActions": []
     }
   ],
-  "roleName": "Purview Data Curator",
+  "roleName": "Purview Data Curator (Legacy)",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
 ```
 
-### <a name="purview-data-reader"></a>Purview データ リーダー
+### <a name="purview-data-reader-legacy"></a>Purview データ閲覧者 (レガシ)
 
-Microsoft.Purview データ リーダーは、カタログ データ オブジェクトを読み取ることができます。 このロールはプレビュー段階にあり、変更される可能性があります。
+Microsoft.Purview データ閲覧者は、カタログ データ オブジェクトを読み取ることができるレガシ ロールです。 最近、このロールは Azure のロールベースのアクセスから非推奨になり、Azure Purview データ プレーン内に新しいデータ閲覧者が導入されました。 「[Azure Purview でのアクセスの制御 - ロール](../purview/catalog-permissions.md#roles)」を参照してください
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
@@ -5863,7 +6056,7 @@ Microsoft.Purview データ リーダーは、カタログ データ オブジ�
   "assignableScopes": [
     "/"
   ],
-  "description": "The Microsoft.Purview data reader can read catalog data objects. This role is in preview and subject to change.",
+  "description": "The Microsoft.Purview data reader is a legacy role that can read catalog data objects. We have recently deprecated this role from Azure role-based access and introduced a new data reader inside Azure Purview data plane. See https://docs.microsoft.com/azure/purview/catalog-permissions#roles",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/ff100721-1b9d-43d8-af52-42b69c1272db",
   "name": "ff100721-1b9d-43d8-af52-42b69c1272db",
   "permissions": [
@@ -5878,15 +6071,15 @@ Microsoft.Purview データ リーダーは、カタログ データ オブジ�
       "notDataActions": []
     }
   ],
-  "roleName": "Purview Data Reader",
+  "roleName": "Purview Data Reader (Legacy)",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
 ```
 
-### <a name="purview-data-source-administrator"></a>Purview データ ソース管理者
+### <a name="purview-data-source-administrator-legacy"></a>Purview データ ソース管理者 (レガシ)
 
-Microsoft.Purview データ ソース管理者は、データ ソースとデータ スキャンを管理できます。 このロールはプレビュー段階にあり、変更される可能性があります。
+Microsoft.Purview データ ソース管理者は、データ ソースとデータ スキャンを管理できるレガシ ロールです。 最近、このロールは Azure のロールベースのアクセスから非推奨になり、Azure Purview データ プレーン内に新しいデータ ソース管理者が導入されました。 「[Azure Purview でのアクセスの制御 - ロール](../purview/catalog-permissions.md#roles)」を参照してください
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
@@ -5905,7 +6098,7 @@ Microsoft.Purview データ ソース管理者は、データ ソースとデー
   "assignableScopes": [
     "/"
   ],
-  "description": "The Microsoft.Purview data source administrator can manage data sources and data scans. This role is in preview and subject to change.",
+  "description": "The Microsoft.Purview data source administrator is a legacy role that can manage data sources and data scans. We have recently deprecated this role from Azure role-based access and introduced a new data source admin inside Azure Purview data plane. See https://docs.microsoft.com/azure/purview/catalog-permissions#roles",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/200bba9e-f0c8-430f-892b-6f0794863803",
   "name": "200bba9e-f0c8-430f-892b-6f0794863803",
   "permissions": [
@@ -5921,7 +6114,7 @@ Microsoft.Purview データ ソース管理者は、データ ソースとデー
       "notDataActions": []
     }
   ],
-  "roleName": "Purview Data Source Administrator",
+  "roleName": "Purview Data Source Administrator (Legacy)",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
@@ -12252,6 +12445,7 @@ New Relic Application Performance Management のアカウントとアプリケ�
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationJobs/* | レプリケーション ジョブの作成と管理 |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationPolicies/* | レプリケーション ポリシーの作成と管理 |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationRecoveryPlans/* | 復旧計画の作成と管理 |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationVaultSettings/* |  |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/storageConfig/* | Recovery Services コンテナーのストレージ構成の作成と管理 |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/tokenInfo/read |  |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/usages/read | Recovery Services コンテナーの使用状況の詳細を返します。 |
@@ -12298,6 +12492,7 @@ New Relic Application Performance Management のアカウントとアプリケ�
         "Microsoft.RecoveryServices/vaults/replicationJobs/*",
         "Microsoft.RecoveryServices/vaults/replicationPolicies/*",
         "Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/*",
+        "Microsoft.RecoveryServices/vaults/replicationVaultSettings/*",
         "Microsoft.RecoveryServices/Vaults/storageConfig/*",
         "Microsoft.RecoveryServices/Vaults/tokenInfo/read",
         "Microsoft.RecoveryServices/Vaults/usages/read",
@@ -12376,6 +12571,7 @@ New Relic Application Performance Management のアカウントとアプリケ�
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationRecoveryPlans/testFailover/action | テスト フェールオーバーの復旧計画。 |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationRecoveryPlans/testFailoverCleanup/action | テスト フェールオーバーのクリーンアップの復旧計画。 |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationRecoveryPlans/unplannedFailover/action | フェールオーバーの復旧計画。 |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationVaultSettings/read | サポート対象のオペレーティング システムを読み取ります  |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringAlerts/* | Recovery Services コンテナーのアラートの読み取り |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringConfigurations/notificationConfiguration/read |  |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/storageConfig/read |  |
@@ -12452,6 +12648,7 @@ New Relic Application Performance Management のアカウントとアプリケ�
         "Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/testFailover/action",
         "Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/testFailoverCleanup/action",
         "Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/unplannedFailover/action",
+        "Microsoft.RecoveryServices/vaults/replicationVaultSettings/read",
         "Microsoft.RecoveryServices/Vaults/monitoringAlerts/*",
         "Microsoft.RecoveryServices/Vaults/monitoringConfigurations/notificationConfiguration/read",
         "Microsoft.RecoveryServices/Vaults/storageConfig/read",
@@ -12508,6 +12705,7 @@ Site Recovery の状態を表示できますが、その他の管理操作は実
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationJobs/read | ジョブを読み取ります |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationPolicies/read | ポリシーを読み取ります |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationRecoveryPlans/read | 復旧計画を読み取ります |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationVaultSettings/read | サポート対象のオペレーティング システムを読み取ります  |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/storageConfig/read |  |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/tokenInfo/read |  |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/usages/read | Recovery Services コンテナーの使用状況の詳細を返します。 |
@@ -12557,6 +12755,7 @@ Site Recovery の状態を表示できますが、その他の管理操作は実
         "Microsoft.RecoveryServices/vaults/replicationJobs/read",
         "Microsoft.RecoveryServices/vaults/replicationPolicies/read",
         "Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/read",
+        "Microsoft.RecoveryServices/vaults/replicationVaultSettings/read",
         "Microsoft.RecoveryServices/Vaults/storageConfig/read",
         "Microsoft.RecoveryServices/Vaults/tokenInfo/read",
         "Microsoft.RecoveryServices/Vaults/usages/read",
@@ -13409,6 +13608,55 @@ BizTalk Services を管理できます。ただし、それらへのアクセス
     }
   ],
   "roleName": "Disk Backup Reader",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="disk-pool-operator"></a>ディスク プール オペレーター
+
+ディスク プールに追加されたディスクを管理するためのアクセス許可を、StoragePool リソース プロバイダーに付与します。
+
+> [!div class="mx-tableFixed"]
+> | アクション | 説明 |
+> | --- | --- |
+> | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/disks/write | 新しいディスクを作成するか、既存のディスクを更新します。 |
+> | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/disks/read | ディスクのプロパティを取得します。 |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | クラシック メトリック アラートの作成と管理 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | デプロイの作成と管理 |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Used by the StoragePool Resource Provider to manage Disks added to a Disk Pool.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/60fc6e62-5479-42d4-8bf4-67625fcc2840",
+  "name": "60fc6e62-5479-42d4-8bf4-67625fcc2840",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Compute/disks/write",
+        "Microsoft.Compute/disks/read",
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Disk Pool Operator",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }

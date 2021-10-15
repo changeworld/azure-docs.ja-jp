@@ -6,13 +6,13 @@ author: markheff
 ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/17/2021
-ms.openlocfilehash: e0364b3242a0be3e4704ade75f2514c8c63aa779
-ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
+ms.date: 10/01/2021
+ms.openlocfilehash: a0ad2bcbccac87d19a5026ae72416f6d793bad90
+ms.sourcegitcommit: 079426f4980fadae9f320977533b5be5c23ee426
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2021
-ms.locfileid: "112983232"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129418748"
 ---
 # <a name="index-data-from-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 からのデータのインデックスを作成する
 
@@ -20,13 +20,19 @@ ms.locfileid: "112983232"
 
 Azure Data Lake Storage Gen2 は Azure Storage を通じて入手できます。 Azure ストレージ アカウントを設定するときに、[階層型名前空間](../storage/blobs/data-lake-storage-namespace.md)を有効にするオプションがあります。 これにより、アカウント内のコンテンツのコレクションを、ディレクトリと入れ子になったサブディレクトリの階層にまとめることができます。 階層型名前空間を有効にすることによって、[Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) を有効にすることができます。
 
+この記事の例では、ポータルと REST API を使用します。 C# の例については、GitHub の「[Index Data Lake Gen2 using Azure AD](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/data-lake-gen2-acl-indexing/README.md)」 (Azure AD を使用して Lake Gen2 でデータのインデックスを作成する) を参照してください。
+
 ## <a name="supported-access-tiers"></a>サポートされているアクセス層
 
-Data Lake Storage Gen2 の[アクセス層](../storage/blobs/storage-blob-storage-tiers.md)には、ホット、クール、アーカイブがあります。 インデクサーがアクセスできるのは、ホットとクールのみです。
+Data Lake Storage Gen2 の[アクセス層](../storage/blobs/access-tiers-overview.md)には、ホット、クール、アーカイブがあります。 インデクサーがアクセスできるのは、ホットとクールのみです。
 
 ## <a name="access-control"></a>アクセス制御
 
-Data Lake Storage Gen2 では、Azure ロールベースのアクセス制御 (Azure RBAC) と POSIX のようなアクセス制御リスト (ACL) の両方をサポートする[アクセス制御モデル](../storage/blobs/data-lake-storage-access-control.md)が実装されています。 Data Lake Storage Gen2 からコンテンツのインデックスを作成する場合、Azure Cognitive Search はコンテンツから Azure RBAC と ACL の情報を抽出しません。 このため、この情報は Azure Cognitive Search インデックスには含められません。
+Data Lake Storage Gen2 では、Azure ロールベースのアクセス制御 (Azure RBAC) と POSIX のようなアクセス制御リスト (ACL) の両方をサポートする[アクセス制御モデル](../storage/blobs/data-lake-storage-access-control.md)が実装されています。 Azure Cognitive Search シナリオでは、アクセス制御リストが部分的にサポートされています。
+
++ Data Lake Storage Gen2 のコンテンツへのインデクサー アクセスでは、アクセス制御のサポートが有効になっています。 システムまたはユーザーが割り当てるマネージド ID が与えられている検索サービスの場合、Azure Storage で特定のファイルまたはフォルダーへのインデクサー アクセスを決定するロール割り当てを定義できます。
+
++ インデックスでのドキュメントレベルのアクセス許可はサポートされません。 アクセス制御によってユーザーごとにアクセス レベルが変わる場合、それらのアクセス許可は検索サービスの検索インデックスに継承できません。 インデックスで検索と取得が可能なあらゆるコンテンツに対して、すべてのユーザーに同じアクセス レベルが与えられます。
 
 インデックス内の各ドキュメントのアクセス制御を維持することが重要な場合は、アプリケーション開発者が[セキュリティによるトリミング](./search-security-trimming-for-azure-search.md)を実装する必要があります。
 
@@ -38,11 +44,11 @@ Azure Cognitive Search の BLOB インデクサーは、次の形式のドキュ
 
 [!INCLUDE [search-blob-data-sources](../../includes/search-blob-data-sources.md)]
 
-## <a name="getting-started-with-the-azure-portal"></a>Azure Portal の概要
+## <a name="indexing-through-the-azure-portal"></a>Azure portal でインデックスを作成する
 
 Azure portal では、Azure Data Lake Storage Gen2 からのデータのインポートがサポートされています。 Data Lake Storage Gen2 からデータをインポートするには、Azure portal の Azure Cognitive Search サービス ページに移動し、 **[データのインポート]** 、 **[Azure Data Lake Storage Gen2]** の順に選択します。引き続き、データのインポート フローに従って、データ ソース、スキルセット、インデックス、インデクサーを作成します。
 
-## <a name="getting-started-with-the-rest-api"></a>REST API を使用した作業の開始
+## <a name="indexing-with-the-rest-api"></a>REST API でインデックスを作成する
 
 Data Lake Storage Gen2 インデクサーは、REST API でサポートされています。 以下の手順に従って、データ ソース、インデックス、インデクサーを設定します。
 
@@ -93,7 +99,7 @@ SAS にはコンテナー上にリストおよび読み取りアクセス許可�
 
 ### <a name="step-2---create-an-index"></a>手順 2 - インデックスを作成する
 
-インデックスでは、検索に使用する、ドキュメント内のフィールド、属性、およびその他の構成要素を指定します。 すべてのインデクサーでは、検索インデックスの定義を変換先として指定する必要があります。 次の例では、[Create Index (REST API)](/rest/api/searchservice/create-index) を使用して単純なインデックスを作成します。 
+インデックスでは、検索に使用する、ドキュメント内のフィールド、属性、およびその他の構成要素を指定します。 すべてのインデクサーでは、検索インデックスの定義を変換先として指定する必要があります。 次の例では、[Create Index (REST API)](/rest/api/searchservice/create-index) を使用します。 
 
 ```http
     POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
@@ -117,7 +123,7 @@ SAS にはコンテナー上にリストおよび読み取りアクセス許可�
 
 ### <a name="step-3---configure-and-run-the-indexer"></a>手順 3 - インデクサーを構成して実行する
 
-インデックスとデータ ソースを作成したら、インデクサーを作成できます。
+インデックスとデータ ソースを作成したら、[インデクサーを作成](/rest/api/searchservice/create-indexer)できます。
 
 ```http
     POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
@@ -134,11 +140,7 @@ SAS にはコンテナー上にリストおよび読み取りアクセス許可�
     }
 ```
 
-このインデクサーは 2 時間ごとに実行されます (スケジュールの間隔が "PT2H" に設定されています)。 インデクサーを 30 分ごとに実行するには、間隔を "PT30M" に設定します。 サポートされている最短の間隔は 5 分です。 スケジュールは省略可能です。省略した場合、インデクサーは作成時に一度だけ実行されます。 ただし、いつでもオンデマンドでインデクサーを実行できます。   
-
-インデクサー作成 API の詳細については、「 [インデクサーの作成](/rest/api/searchservice/create-indexer)」をご覧ください。
-
-インデクサーのスケジュールの定義の詳細については、[Azure Cognitive Search のインデクサーのスケジュールを設定する方法](search-howto-schedule-indexers.md)に関する記事を参照してください。
+このインデクサーはすぐに実行され、その後、[スケジュールに基づき](search-howto-schedule-indexers.md) 2 時間ごとに実行されます (スケジュールの間隔が "PT2H" に設定されています)。 インデクサーを 30 分ごとに実行するには、間隔を "PT30M" に設定します。 サポートされている最短の間隔は 5 分です。 スケジュールは省略可能です。省略した場合、インデクサーは作成時に一度だけ実行されます。 ただし、いつでもオンデマンドでインデクサーを実行できます。
 
 <a name="DocumentKeys"></a>
 
@@ -265,7 +267,11 @@ api-key: [admin key]
 
 ## <a name="how-to-control-which-blobs-are-indexed"></a>インデックスが作成される BLOB の制御方法
 
-インデックスを作成する BLOB とスキップする BLOB は、BLOB のファイルの種類によって、または BLOB 自体にプロパティを設定してインデクサーに BLOB をスキップさせることによって制御できます。
+インデックスを作成する BLOB とスキップする BLOB は、ロール割り当てを設定することで、BLOB のファイルの種類によって、または BLOB 自体にプロパティを設定してインデクサーに BLOB をスキップさせることによって制御できます。
+
+### <a name="use-access-controls-and-role-assignments"></a>アクセス制御とロール割り当てを使用する
+
+システムまたはユーザーによって割り当てられたマネージド ID の下で実行されるインデクサーには、特定のファイルやフォルダーで読み取りアクセス許可を与える Reader または Storage Blob Data Reader ロールのメンバーシップを与えることができます。
 
 ### <a name="include-specific-file-extensions"></a>特定のファイル拡張子を含める
 
@@ -381,6 +387,7 @@ api-key: [admin key]
 
 ## <a name="see-also"></a>関連項目
 
++ [C# サンプル: Azure AD を使用して Lake Gen2 のデータにインデックスを作成する](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/data-lake-gen2-acl-indexing/README.md)
 + [Azure Cognitive Search のインデクサー](search-indexer-overview.md)
 + [インデクサーの作成](search-howto-create-indexers.md)
 + [BLOB での AI エンリッチメントの概要](search-blob-ai-integration.md)

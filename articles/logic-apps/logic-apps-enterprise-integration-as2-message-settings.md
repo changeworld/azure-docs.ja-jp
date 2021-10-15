@@ -1,23 +1,23 @@
 ---
 title: AS2 メッセージの設定
-description: Azure Logic Apps と Enterprise Integration Pack の組み合わせにおける AS2 送受信設定のためのリファレンス ガイド
+description: Azure Logic Apps と Enterprise Integration Pack の契約における AS2 メッセージの設定に関するリファレンス ガイド。
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, logicappspm
-ms.topic: article
+ms.reviewer: estfan, azla
+ms.topic: reference
 ms.date: 07/20/2021
-ms.openlocfilehash: af13306598db75e89064507b9a2fad80d8d33542
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 2bec9c598c0f08e9e114fcf5a83bfb0d238dd2b1
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114453173"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129400993"
 ---
-# <a name="reference-for-as2-message-settings-in-azure-logic-apps-with-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack の組み合わせにおける AS2 メッセージ設定のためのリファレンス
+# <a name="reference-for-as2-message-settings-in-agreements-for-azure-logic-apps"></a>Azure Logic Apps の契約での AS2 メッセージの設定に関するリファレンス
 
-このリファレンスでは、取引相手間で送受信されるメッセージの AS2 契約による処理方法を指定する目的で設定できるプロパティについて説明されています。 メッセージを交換するパートナーとの契約に基づいて、これらのプロパティを設定します。
+このリファレンスでは、[取引先](logic-apps-enterprise-integration-partners.md)間のメッセージを処理する方法を指定するために AS2 契約で設定できるプロパティについて説明します。 メッセージを交換するパートナーとの契約に基づいて、これらのプロパティを設定します。
 
 <a name="AS2-incoming-messages"></a>
 

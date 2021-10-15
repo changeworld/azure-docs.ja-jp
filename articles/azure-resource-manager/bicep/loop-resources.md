@@ -4,13 +4,13 @@ description: Bicep ファイルでループと配列を使用して、リソー�
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 09/23/2021
-ms.openlocfilehash: adb05c5af042e0c9f54e925f82097a1721f40073
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 09/30/2021
+ms.openlocfilehash: fadd3cfac94889a187409e95331190b7d7b98b73
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128662098"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129363005"
 ---
 # <a name="resource-iteration-in-bicep"></a>Bicep でのリソースの繰り返し
 
@@ -22,7 +22,7 @@ ms.locfileid: "128662098"
 
 ### <a name="microsoft-learn"></a>Microsoft Learn
 
-ループの詳細とハンズオン ガイダンスについては、**Microsoft Learn** の[条件とループを使用した柔軟な Bicep テンプレートの構築](/learn/modules/build-flexible-bicep-templates-conditions-loops/)に関するページを参照してください。
+ループの詳細とハンズオン ガイダンスについては、**Microsoft Learn** の「[条件とループを使用して柔軟な Bicep テンプレートを作成する](/learn/modules/build-flexible-bicep-templates-conditions-loops/)」を参照してください。
 
 ## <a name="syntax"></a>構文
 
@@ -194,6 +194,8 @@ resource storageAcct 'Microsoft.Storage/storageAccounts@2021-02-01' = [for i in 
 ```
 
 純粋に順次デプロイを行う場合は、バッチ サイズを 1 に設定します。
+
+`batchSize` デコレーターは [sys 名前空間](bicep-functions.md#namespaces-for-functions)にあります。 このデコレーターを同じ名前の別の項目と区別する必要がある場合は、デコレータの前に「**sys**: `@sys.batchSize(2)`」を付けます。
 
 ## <a name="iteration-for-a-child-resource"></a>子リソースの反復処理
 

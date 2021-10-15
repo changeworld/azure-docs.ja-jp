@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: reference
 ms.date: 09/09/2021
-ms.openlocfilehash: f1b4efafd7868d4c42528ce7de5eae56051dcb83
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 99d642a1cd534691e5089ac6956dc023d3a207d0
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124736661"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129388852"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Azure Logic Apps および Power Automate の式で関数を使用するためのリファレンス ガイド
 
@@ -1005,9 +1005,7 @@ base64ToBinary('<value>')
 base64ToBinary('aGVsbG8=')
 ```
 
-返される結果:
-
-`"0110000101000111010101100111001101100010010001110011100000111101"`
+たとえば、HTTP アクションを使用して要求を送信しているとします。 base64 でエンコードされた文字列を `base64ToBinary()` でバイナリ データに変換し、要求でそのデータをコンテンツ タイプ `application/octet-stream` を使用して送信できます。
 
 <a name="base64ToString"></a>
 
@@ -1065,6 +1063,7 @@ binary('<value>')
 *例*
 
 たとえば、画像またはビデオ ファイルを返す HTTP アクションを使用している場合です。 `binary()` を使用して、値を base-64 でエンコードされたコンテンツ エンベロープ モデルに変換できます。 その後、`Compose` などの他のアクションでコンテンツ エンベロープを再利用できます。
+この関数式を使用し、要求でコンテンツ タイプ `application/octet-stream` の文字列バイトを送信できます。
 
 <a name="body"></a>
 
@@ -1277,7 +1276,7 @@ convertFromUtc('<timestamp>', '<destinationTimeZone>', '<format>'?)
 | パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | はい | String | タイムスタンプを含む文字列。 |
-| <*destinationTimeZone*> | はい | String | ターゲット タイム ゾーンの名前。 タイム ゾーン名については、[Microsoft Windows の既定のタイム ゾーン](/windows-hardware/manufacture/desktop/default-time-zones)に関する記事を参照してください。ただし、タイム ゾーン名から句読点を削除することが必要な場合があります。 |
+| <*destinationTimeZone*> | はい | String | ターゲット タイム ゾーンの名前。 タイム ゾーン名については、[Microsoft Windows の既定のタイム ゾーン](/windows-hardware/manufacture/desktop/default-time-zones)に関するページを参照してください。 |
 | <*format*> | いいえ | String | [単一の書式指定子](/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss.fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報が保持されます。 |
 |||||
 
@@ -3716,7 +3715,7 @@ split('<text>', '<delimiter>')
 | [<*substring1*>,<*substring2*>,...] | Array | コンマで区切られた、元の文字列からの部分文字列を含む配列 |
 ||||
 
-*例*
+*例 1*
 
 この例では、区切り記号として指定した文字に基づいて指定された文字列からの部分文字列を含む配列を作成します。
 
@@ -3725,6 +3724,16 @@ split('a_b_c', '_')
 ```
 
 返される配列の結果: `["a","b","c"]`
+
+*例 2*
+  
+この例では、文字列に区切り記号が存在しない場合、1 つの要素を持つ配列が作成されます。
+
+```
+split('a_b_c', ' ')
+```
+
+返される配列の結果: `["a_b_c"]`
 
 <a name="startOfDay"></a>
 

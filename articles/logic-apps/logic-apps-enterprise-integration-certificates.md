@@ -1,6 +1,6 @@
 ---
 title: ワークフローで B2B メッセージをセキュリティで保護するための証明書を追加する
-description: Enterprise Integration Pack を使用して、Azure Logic Apps のワークフローの B2B メッセージをセキュリティで保護するために証明書を追加します。
+description: Azure Logic Apps と Enterprise Integration Pack を使用し、ワークフロー内の B2B メッセージをセキュリティで保護するための証明書を統合アカウントに追加します。
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -8,14 +8,14 @@ ms.author: divswa
 ms.reviewer: estfan, azla
 ms.topic: how-to
 ms.date: 09/23/2021
-ms.openlocfilehash: e2d2bc58c5a523667eef62b21791e953701f7bc1
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: b68bc9f1f77c6ad5b60cd5b2ea9c4b644acb4c5b
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128550086"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129361053"
 ---
-# <a name="secure-messages-using-certificates-for-workflows-in-azure-logic-apps"></a>Azure Logic Apps でワークフローの証明書を使用してメッセージをセキュリティで保護する
+# <a name="add-certificates-to-integration-accounts-for-securing-messages-in-workflows-with-azure-logic-apps"></a>Azure Logic Apps を使用し、ワークフロー内のメッセージをセキュリティで保護するための証明書を統合アカウントに追加する
 
 ロジック アプリの企業間 (B2B) ワークフローで機密メッセージを交換する必要がある場合は、証明書を使用することでこの通信に関するセキュリティを強化できます。 証明書は、次の方法で通信をセキュリティで保護するのに役立つデジタル ドキュメントです。
 
@@ -50,7 +50,7 @@ ms.locfileid: "128550086"
   * [**ロジック アプリ (Standard)** というリソースの種類](logic-apps-overview.md#resource-type-and-host-environment-differences)を使用している場合、統合アカウントにロジック アプリ リソースへのリンクは必要ありませんが、他の成果物 (パートナー、契約、証明書など) を格納することは、[AS2](logic-apps-enterprise-integration-as2.md)、[X12](logic-apps-enterprise-integration-x12.md)、[EDIFACT](logic-apps-enterprise-integration-edifact.md) などの操作を使用することと共に、まだ必要です。 統合アカウントは、ロジック アプリ リソースと同じ Azure サブスクリプションを使用することや、ロジック アプリ リソースと同じ場所に存在することなど、他の要件も満たす必要があります。
 
     > [!NOTE]
-    > 現在、[RosettaNet](logic-apps-enterprise-integration-rosettanet.md) 操作をサポートしているのは、**ロジック アプリ (従量課金)** というリソースの種類のみです。 **ロジック アプリ (Standard)** というリソースの種類には、[RosettaNet](logic-apps-enterprise-integration-rosettanet.md) 操作は含まれていません。
+    > 現時点では、[RosettaNet](logic-apps-enterprise-integration-rosettanet.md) の操作をサポートしているのは、**ロジック アプリ (従量課金)** のリソースの種類のみです。 **ロジック アプリ (Standard)** というリソースの種類には、[RosettaNet](logic-apps-enterprise-integration-rosettanet.md) 操作は含まれていません。
 
 * プライベート証明書の場合は、次の前提条件を満たす必要があります。
 

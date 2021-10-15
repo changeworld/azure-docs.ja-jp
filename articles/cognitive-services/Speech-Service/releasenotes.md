@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/15/2021
 ms.custom: seodec18
-ms.openlocfilehash: db2c4e50b4de7a680b114582baf1361ee4d75fb8
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 017e1ce50c121860038594279a339a03f17bc180
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122768816"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129363047"
 ---
 # <a name="speech-service-release-notes"></a>Speech Service リリース ノート
 
@@ -40,7 +40,7 @@ ms.locfileid: "122768816"
 - **C++/C#/Java**: 独立した認識シナリオの話者認識登録フェーズで有効なアクティブ化フレーズの一覧を受け取る新しい API `GetActivationPhrasesAsync()` が `VoiceProfileClient` クラスに追加されました。 
     - **重要**: Speaker Recognition 機能はプレビュー段階です。 プレビューで作成された音声プロファイルはすべて、Speaker Recognition 機能がプレビューから一般提供に移行してから 90 日後に廃止されます。 その時点で、プレビューの音声プロファイルは機能しなくします。
 - **Python**: 既存の `SpeechRecognizer` および `TranslationRecognizer` オブジェクトに、[継続的な言語識別 (LID) のサポート](./how-to-automatic-language-detection.md?pivots=programming-language-python)が追加されました。 
-- **Python**: 1 回限りまたは継続的な LID (認識または翻訳はなし) を行うための `SourceLanguageRecognizer` という名前の[新しい Python オブジェクト](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.sourcelanguagerecognizer?view=azure-python)が追加されました。 
+- **Python**: 1 回限りまたは継続的な LID (認識または翻訳はなし) を行うための `SourceLanguageRecognizer` という名前の [新しい Python オブジェクト](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.sourcelanguagerecognizer)が追加されました。 
 - **JavaScript**: 独立した認識シナリオの話者認識登録フェーズで有効なアクティブ化フレーズの一覧を受け取るための `getActivationPhrasesAsync` API が `VoiceProfileClient` クラスに追加されました。 
 - **JavaScript**: `VoiceProfileClient` の `enrollProfileAsync` API が、非同期で待機可能になります。 使用例については、[こちらの独立した識別コード](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/quickstart/javascript/node/speaker-recognition/identification/independent-identification.js)を参照してください。
 
@@ -602,7 +602,7 @@ SPX は、コードを記述せずに Azure 音声サービスを使用するた
     | `es-MX` | $1.58 | un peso cincuenta y ocho centavos |
     | `es-ES` | $1.58 | un dólar cincuenta y ocho centavos |
 
-    * 次のロケールでの負の通貨 ("-325 €" など) のサポート: `en-US`、`en-GB`、`fr-FR`、`it-IT`、`en-AU`、`en-CA`。
+    * 次のロケールでの負の通貨 ("-325 &euro;" など) のサポート: `en-US`、`en-GB`、`fr-FR`、`it-IT`、`en-AU`、`en-CA`。
 
 * `pt-PT` での住所の読み取りが改善されました。
 * 単語 "for" と "four" について、Natasha (`en-AU`) と Libby (`en-UK`) の発音に関する問題を修正しました。

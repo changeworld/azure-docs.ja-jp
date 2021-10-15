@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 6d4d0f355d48532c43e9180f2c819e45d45737b4
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: dc516c9631eda2904ff311af6ca779872d9802f0
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111572187"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129537189"
 ---
 # <a name="configure-a-sql-server-always-on-availability-group-across-different-azure-regions"></a>複数の Azure リージョンにまたがる SQL Server Always On 可用性グループを構成する
 
@@ -150,6 +150,8 @@ ms.locfileid: "111572187"
 
 1. SQL Server 構成マネージャーで、新しい SQL Server の [Always On 可用性グループを有効](/sql/database-engine/availability-groups/windows/enable-and-disable-always-on-availability-groups-sql-server)にします。
 
+1. SQL Server Management Studio の新しい SQL Server で、[システム アカウントのアクセス許可を構成します](availability-group-manually-configure-prerequisites-tutorial.md#configure-system-account-permissions)。
+
 1. [新しい SQL Server でファイアウォール ポートを開きます](availability-group-manually-configure-prerequisites-tutorial.md#endpoint-firewall)。
 
    開く必要があるポート番号は、環境に依存します。 ミラーリング エンドポイントと Azure Load Balancer 正常性プローブのポートを開きます。
@@ -158,12 +160,13 @@ ms.locfileid: "111572187"
 1. [新しい SQL Server の可用性グループにレプリカを追加します](/sql/database-engine/availability-groups/windows/use-the-add-replica-to-availability-group-wizard-sql-server-management-studio)。
 
    リモート Azure リージョンのレプリカについては、手動フェールオーバーでの非同期レプリケーション用に設定します。  
+   
 
 ## <a name="set-connection-for-multiple-subnets"></a>複数のサブネットに対する接続を設定する
 
 リモート データ センターのレプリカは、可用性グループの一部ですが、異なるサブネット内にあります。 このレプリカがプライマリ レプリカになった場合、アプリケーション接続のタイムアウトが発生する可能性があります。 この動作は、マルチサブネット デプロイでのオンプレミスの可用性グループと同じです。 クライアント アプリケーションからの接続を許可するには、クライアント接続を更新するか、またはクラスター ネットワーク名リソースに名前解決キャッシュを構成します。
 
-可能であれば、`MultiSubnetFailover=Yes` を設定するようにクライアント接続文字列を更新します。 「[MultiSubnetFailover を使用した接続](/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#Anchor_0)」をご覧ください。
+可能であれば、クラスター構成を更新して `RegisterAllProvidersIP=1` を設定し、クライアント接続文字列を更新して `MultiSubnetFailover=Yes` を設定してください。 「[MultiSubnetFailover を使用した接続](/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#Anchor_0)」をご覧ください。
 
 接続文字列を変更できない場合は、名前解決キャッシュを構成できます。 「[Time-out error and you cannot connect to a SQL Server 2012 AlwaysOn availability group listener in a multi-subnet environment](https://support.microsoft.com/help/2792139/time-out-error-and-you-cannot-connect-to-a-sql-server-2012-alwayson-av)」 (タイムアウト エラーおよび複数サブネット環境で SQL Server 2012 AlwaysOn 可用性グループ リスナーに接続できない) を参照してください。
 

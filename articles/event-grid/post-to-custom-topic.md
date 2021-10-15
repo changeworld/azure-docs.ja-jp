@@ -4,16 +4,20 @@ description: この記事では、カスタム トピックにイベントを投
 ms.topic: conceptual
 ms.date: 08/19/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3c3be5c11341ddd7bb381134a0d0b50ba8745709
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: 489ad5ab07a411612bdbce1a2dc71dc1a3441f3c
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122515425"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129361504"
 ---
-# <a name="post-to-azure-event-grid-custom-topics-using-access-keys"></a>アクセス キーを使用して Azure Event Grid カスタム トピックに投稿する
+# <a name="publish-events-to-azure-event-grid-custom-topics-using-access-keys"></a>アクセス キーを使用して Azure Event Grid カスタム トピックにイベントを公開する
 
 この記事では、アクセス キーを使用し、カスタム トピックにイベントを投稿する方法について説明します。 投稿とイベント データの形式を示します。 [サービス レベル アグリーメント (SLA)](https://azure.microsoft.com/support/legal/sla/event-grid/v1_0/) は、予期される形式と一致する投稿に対してのみ適用されます。
+
+
+> [!NOTE]
+> Azure AD 認証は、アクセス キーや Shared Access Signature (SAS) トークン認証よりも優れた認証サポートを提供します。 Azure AD 認証では、ID は Azure AD ID プロバイダーに対して検証されます。 Azure AD 認証を使用する場合、開発者がコード内のキーを処理する必要はありません。 また、条件付きアクセスなど、Microsoft ID プラットフォームに組み込みのすべてのセキュリティ機能の恩恵を受けることができ、アプリケーションのセキュリティ スタンスを向上させることができます。 詳細については、[Azure Active Directory を使用した発行クライアントの認証](authenticate-with-active-directory.md)に関するページを参照してください。
 
 ## <a name="endpoint"></a>エンドポイント
 

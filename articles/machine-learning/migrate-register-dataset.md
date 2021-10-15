@@ -1,6 +1,6 @@
 ---
 title: 'ML スタジオ (クラシック): Azure Machine Learning に移行する - データセットの再構築'
-description: スタジオ (クラシック) のデータセットを Azure Machine Learning デザイナーで再構築する
+description: スタジオ (クラシック) のデータセットを Azure Machine Learning デザイナーで再構築します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio-classic
@@ -8,12 +8,12 @@ ms.topic: how-to
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 02/04/2021
-ms.openlocfilehash: 75e7e129b15870f05e6622a09376716bc6a28b81
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: f6ad2a2120d998a89ebb59fc6f70779487f7c275
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122868414"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129429511"
 ---
 # <a name="migrate-a-studio-classic-dataset-to-azure-machine-learning"></a>スタジオ (クラシック) のデータセットを Azure Machine Learning に移行する
 

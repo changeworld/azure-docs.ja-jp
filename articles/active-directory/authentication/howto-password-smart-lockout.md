@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b77a0a8f1a02fa970965d3393dada2a7720ab3e4
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: f3f8d5fb55d547a1c0602843fb36f19ad45dbc2a
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122821376"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129536580"
 ---
 # <a name="protect-user-accounts-from-attacks-with-azure-active-directory-smart-lockout"></a>Azure Active Directory スマート ロックアウトを使用してユーザー アカウントを攻撃から保護する
 
@@ -24,7 +24,7 @@ ms.locfileid: "122821376"
 
 ## <a name="how-smart-lockout-works"></a>スマート ロックアウトのしくみ
 
-既定では、スマート ロックアウトは Azure Public テナントでは 10 回、Azure US Government テナントでは 3 回失敗すると、サインイン試行ができないよう 1 分間アカウントがロックされます。 後続のサインインの試行が失敗するたびに、アカウントは再度ロックされます。最初は 1 分間、後続の試行ではより長い時間ロックされます。 攻撃者がこの動作を回避できる方法を最小限にするために、Microsoft では、サインインの試行が重ねて失敗したときにロックアウト期間がどの程度延長されるかを開示していません。
+既定では、スマート ロックアウトは Azure Public テナントと Azure China 21Vianet テナントでは 10 回、Azure US Government テナントでは 3 回失敗すると、サインイン試行ができないよう 1 分間アカウントがロックされます。 後続のサインインの試行が失敗するたびに、アカウントは再度ロックされます。最初は 1 分間、後続の試行ではより長い時間ロックされます。 攻撃者がこの動作を回避できる方法を最小限にするために、Microsoft では、サインインの試行が重ねて失敗したときにロックアウト期間がどの程度延長されるかを開示していません。
 
 スマート ロックアウトでは、直近 3 つの無効なパスワード ハッシュを追跡して、同じパスワードに対するロックアウト カウンターの増分を回避します。 同じ無効なパスワードが複数回入力された場合、この動作によってアカウントがロック アウトされることはありません。
 
@@ -65,7 +65,7 @@ AD FS 2016 と AF FS 2019 を使用したフェデレーション デプロイ�
 
 ## <a name="manage-azure-ad-smart-lockout-values"></a>Azure AD スマート ロックアウトの値を管理する
 
-組織の要件に基づいて、Azure AD スマート ロックアウトの値をカスタマイズできます。 スマート ロックアウト設定を組織固有の値にカスタマイズするには、ユーザーに Azure AD Premium P1 以上のライセンスが必要です。
+組織の要件に基づいて、Azure AD スマート ロックアウトの値をカスタマイズできます。 スマート ロックアウト設定を組織固有の値にカスタマイズするには、ユーザーに Azure AD Premium P1 以上のライセンスが必要です。 Azure China 21Vianet テナントの場合、スマート ロックアウト設定をカスタマイズできません。
 
 組織のスマート ロックアウト値を確認または編集するには、次の手順を実行します。
 
@@ -84,13 +84,19 @@ AD FS 2016 と AF FS 2019 を使用したフェデレーション デプロイ�
 
 ![Azure Portal で Azure AD スマート ロックアウト ポリシーをカスタマイズする](./media/howto-password-smart-lockout/azure-active-directory-custom-smart-lockout-policy.png)
 
-## <a name="how-to-determine-if-the-smart-lockout-feature-is-working-or-not"></a>スマート ロックアウト機能が動作しているかどうかを確認する方法
+## <a name="testing-smart-lockout"></a>スマート ロックアウトのテスト
 
 スマート ロックアウトのしきい値がトリガーされると、アカウントがロックされているときに次のメッセージが表示されます。
 
 *ご使用のアカウントは、不正使用を防ぐために一時的にロックされています。後でもう一度お試しください。問題が解決しない場合は管理者にお問い合わせください。*
 
 スマート ロックアウトをテストする際、Azure AD 認証サービスの地理的分散および負荷分散の性質により、サインイン要求はさまざまなデータセンターによって処理される可能性があります。 そのシナリオでは、ロックアウトはそれぞれの Azure AD データセンターによって個別に追跡されるため、ロックアウトを発生させるために、定義されたロックアウトしきい値よりも多くの試行回数が必要になる場合があります。 完全にロックアウトされるまでのユーザーの最大不正試行回数は (*threshold_limit * datacenter_count*) です。
+
+スマート ロックアウトでは、直近 3 つの無効なパスワード ハッシュを追跡して、同じパスワードに対するロックアウト カウンターの増分を回避します。 同じ無効なパスワードが複数回入力された場合、この動作によってアカウントがロック アウトされることはありません。
+
+
+## <a name="default-protections"></a>既定の保護
+スマート ロックアウトに加えて、Azure AD IP ではまた、トラフィックを含むシグナルを分析し、異常な動作を識別することで攻撃を防ぎます。 Azure AD では、このような悪意のあるサインインを既定でブロックし、パスワードの有効性に関係なく [AADSTS50053 - IdsLocked エラー コード](../develop/reference-aadsts-error-codes.md)を返します。
 
 ## <a name="next-steps"></a>次のステップ
 

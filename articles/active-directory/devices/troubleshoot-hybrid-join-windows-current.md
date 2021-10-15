@@ -12,12 +12,12 @@ manager: karenhoran
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 5a89c2dd574c1910d2c35c78aee4f5ee8b561dfc
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 2b7e51bc2837cdb068f0f9d6704e80d3f41c396e
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128592795"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129538863"
 ---
 # <a name="troubleshoot-hybrid-azure-ad-joined-devices"></a>ハイブリッド Azure AD 参加済みデバイスのトラブルシューティング
 
@@ -443,7 +443,7 @@ WamDefaultAuthority: organizations
 
 イベント ビューアーを使用して、PRT の取得時に Azure AD CloudAP プラグインによって記録されたログ エントリを探します。 
 
-1. イベント ビューアーで、Azure AD のイベント ログを開きます。 これらは、 **[アプリケーションとサービス ログ]**  >  **[Microsoft]**  >  **[Windows]**  >  **[ユーザー デバイス登録]** の下に格納されています。 
+1. イベント ビューアーで、Azure AD の操作イベント ログを開きます。 これらは、 **[アプリケーションとサービス ログ]**  >  **[Microsoft]**  >  **[Windows]**  >  **[AAD]** の下に格納されています。 
 
    > [!NOTE]
    > CloudAP プラグインでは、エラー イベントが操作ログに、情報イベントが分析ログに記録されます。 問題のトラブルシューティングを行うには、分析ログと操作ログの両方のイベントが必要です。 

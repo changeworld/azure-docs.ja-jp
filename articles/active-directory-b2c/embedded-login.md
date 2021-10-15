@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 44b7d541809bc3bd8657fcc4ec626e35ef0b19c1
-ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
+ms.openlocfilehash: 164e6060f9f317dfec02028d02552f82d196cdf8
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122829453"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129545022"
 ---
 # <a name="embedded-sign-up-or-sign-in-experience"></a>埋め込みのサインアップまたはサインイン エクスペリエンス
 

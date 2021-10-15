@@ -11,12 +11,12 @@ ms.date: 09/15/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: 3d7a519a982653693254288e02ffdb867e70f78f
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 65190ed6f79a72f59c4329b6f413428ea8e7bb35
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128572620"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129426550"
 ---
 # <a name="configure-authentication-in-a-sample-angular-single-page-application-by-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用してサンプルの Angular シングルページ アプリケーションで認証を構成する
 
@@ -64,7 +64,7 @@ OpenID Connect (OIDC) は OAuth 2.0 を基盤とした認証プロトコルで�
 
 * [Visual Studio Code](https://code.visualstudio.com/)、または別のコード エディター。
 * [Node.js ランタイム](https://nodejs.org/en/download/) と [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)。
-* [Angular LCI](https://angular.io/cli)。
+* [Angular CLI](https://angular.io/cli)。
 
 ## <a name="step-1-configure-your-user-flow"></a>手順 1: ユーザー フローを構成する
 

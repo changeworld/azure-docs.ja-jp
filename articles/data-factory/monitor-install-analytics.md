@@ -8,56 +8,56 @@ ms.service: data-factory
 ms.subservice: monitoring
 ms.topic: conceptual
 ms.date: 09/02/2021
-ms.openlocfilehash: 4ae7015c575dc10c9f8c2ec2b896e75e1a2a2a91
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 7c93ae2808629bf7b4413e6cb703e2c42863c0f7
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124837757"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129400555"
 ---
 # <a name="install-azure-data-factory-analytics-solution-from-azure-marketplace"></a>Azure Marketplace から Azure Data Factory Analytics ソリューションをインストールする
 
-このソリューションを使用すると、Data Factory の全体的な正常性の概要を確認できます。また、詳細を確認したり、予期しない動作パターンのトラブルシューティングを実行したりするためのオプションも備わっています。 すぐに利用できる豊富なビュー機能を活用することで、次の主要な処理に関する分析情報を得ることができます。
+このソリューションからは、データ ファクトリの全体的な正常性の概要が提供されます。また、詳細を確認したり、予期しない動作パターンのトラブルシューティングを実行したりするためのオプションも備わっています。 すぐに利用できる豊富なビュー機能を活用することで、次の主要な処理に関する分析情報を得ることができます。
 
-* データ ファクトリ パイプライン、アクティビティ、トリガーの実行に関する概要
-* データ ファクトリ アクティビティの実行を種類別に詳しく表示する機能
-* データ ファクトリのトップ パイプライン、アクティビティ エラーの概要
+* データ ファクトリのパイプライン、アクティビティ、トリガー実行に関する概要
+* データ ファクトリのアクティビティ実行を種類別に詳しく表示する機能
+* データ ファクトリのトップ パイプライン アクティビティ エラーの概要
 
-1. **Azure Marketplace** にアクセスして、 **[分析]** フィルターを選択し、**Azure Data Factory Analytics (プレビュー)** を検索します。
+1. **Azure Marketplace** にアクセスして **[分析]** フィルターを選択し、**Azure Data Factory Analytics (プレビュー)** を検索します。
 
-   :::image type="content" source="media/data-factory-monitor-oms/monitor-oms-image3.png" alt-text="&quot;Azure Marketplace&quot; にアクセスして、「&quot;Analytics filter&quot;」と入力し、&quot;[Azure Data Factory Analytics (プレビュー)]&quot; を選択する":::
+   :::image type="content" source="media/data-factory-monitor-oms/monitor-oms-image3.png" alt-text="Azure Marketplace にアクセスして [分析] フィルターを選択し、Azure Data Factory Analytics (プレビュー) を選択する場面を示すスクリーンショット。":::
 
-1. **Azure Data Factory Analytics (プレビュー)** の詳細
+1. **Azure Data Factory Analytics (プレビュー)** の詳細を確認します。
 
-   :::image type="content" source="media/data-factory-monitor-oms/monitor-oms-image4.png" alt-text="&quot;Azure Data Factory Analytics (プレビュー)&quot; の詳細":::
+   :::image type="content" source="media/data-factory-monitor-oms/monitor-oms-image4.png" alt-text="Azure Data Factory Analytics (プレビュー) の詳細を示すスクリーンショット。":::
 
-1. **[作成]** を選択し、**Log Analytics ワークスペース** を作成または選択します。
+1. **[作成]** を選択し、 **[Log Analytics ワークスペース]** を作成または選択します。
 
-   :::image type="content" source="media/data-factory-monitor-oms/monitor-log-analytics-image-5.png" alt-text="新しいソリューションの作成":::
+   :::image type="content" source="media/data-factory-monitor-oms/monitor-log-analytics-image-5.png" alt-text="新しいソリューションの作成を示すスクリーンショット。":::
 
 ## <a name="monitor-data-factory-metrics"></a>Data Factory メトリックを監視する
 
 このソリューションをインストールすると、選択した Log Analytics ワークスペースの [ブック] セクションに既定のセットのビューが作成されます。 その結果、次のメトリックが有効になります。
 
-* ADF の実行 - 1) Data Factory によるパイプラインの実行
-* ADF の実行 - 2) Data Factory によるアクティビティの実行
-* ADF の実行 - 3) Data Factory によるトリガーの実行
-* ADF のエラー - 1) Data Factory によるパイプラインのエラーの上位 10 件
-* ADF のエラー - 2) Data Factory によるアクティビティの実行エラーの上位 10 件
-* ADF のエラー - 3) Data Factory によるトリガーのエラーの上位 10 件
+* データの実行 - 1) データ ファクトリによるパイプラインの実行
+* ADF の実行 - 2) データ ファクトリによるアクティビティの実行
+* ADF の実行 - 3) データ ファクトリによるトリガーの実行
+* ADF のエラー - 1) データ ファクトリによるパイプラインのエラーの上位 10 件
+* ADF のエラー - 2) データ ファクトリによるアクティビティの実行エラーの上位 10 件
+* ADF のエラー - 3) データ ファクトリによるトリガーのエラーの上位 10 件
 * ADF の統計 - 1) 種類別のアクティビティの実行
 * ADF の統計 - 2) 種類別のトリガーの実行
 * ADF の統計 - 3) パイプラインの実行の最長期間
 
-:::image type="content" source="media/data-factory-monitor-oms/monitor-oms-image6.png" alt-text="&quot;Workbooks (プレビュー)&quot; と &quot;AzureDataFactoryAnalytics&quot; が強調表示されているウィンドウ":::
+:::image type="content" source="media/data-factory-monitor-oms/monitor-oms-image6.png" alt-text="Workbooks (プレビュー) と AzureDataFactoryAnalytics が強調表示されているウィンドウを示すスクリーンショット。":::
 
 前述のメトリックの視覚化、これらのメトリックの背後にあるクエリの確認、クエリの編集、アラートの作成、およびその他のアクションを実行できます。
 
-:::image type="content" source="media/data-factory-monitor-oms/monitor-oms-image8.png" alt-text="データ ファクトリによるパイプライン実行のグラフィック表示":::
+:::image type="content" source="media/data-factory-monitor-oms/monitor-oms-image8.png" alt-text="データ ファクトリによるパイプライン実行のグラフィック表示のスクリーンショット。":::
 
 > [!NOTE]
-> Azure Data Factory Analytics (プレビュー) では、診断ログが _リソース固有_ の宛先テーブルに送られます。 次のテーブルに対するクエリを作成できます: _ADFPipelineRun_、_ADFTriggerRun_、_ADFActivityRun_。
+> Azure Data Factory Analytics (プレビュー) では、診断ログが "_リソース固有_" の宛先テーブルに送られます。 次のテーブルに対するクエリを作成できます: _ADFPipelineRun_、_ADFTriggerRun_、_ADFActivityRun_。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [プログラムでのパイプラインの監視と管理](monitor-programmatically.md)

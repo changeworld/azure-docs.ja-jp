@@ -10,15 +10,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 04/06/2021
+ms.date: 10/01/2021
 ms.author: rolyon
 ms.custom: seohack1, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: b364e74df7e6069407b0bcc3a6cfccd2ead09eae
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 3273285aeee7497c43fc4002b2bdabe0b6ef13de
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110690859"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129390066"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Azure RBAC のトラブルシューティング
 
@@ -26,7 +26,7 @@ ms.locfileid: "110690859"
 
 ## <a name="azure-role-assignments-limit"></a>Azure でのロールの割り当て制限
 
-Azure では、サブスクリプションあたり最大 **2,000** 個のロールの割り当てをサポートしています。 この制限には、サブスクリプション、リソース グループ、およびリソースのスコープでのロールの割り当てが含まれます。 エラー メッセージ "ロールの割り当てはこれ以上作成できません (コード: RoleAssignmentLimitExceeded)" が、ロールを割り当てようとすると発生する場合は、サブスクリプションのロールの割り当て数を減らしてみます。
+Azure では、サブスクリプションあたり最大 **2,000** 個のロールの割り当てをサポートしています。 この制限には、サブスクリプション、リソース グループ、リソースのスコープでのロールの割り当てが含まれます。管理グループのスコープではありません。 エラー メッセージ "ロールの割り当てはこれ以上作成できません (コード: RoleAssignmentLimitExceeded)" が、ロールを割り当てようとすると発生する場合は、サブスクリプションのロールの割り当て数を減らしてみます。
 
 > [!NOTE]
 > **2,000** のサブスクリプション当たりのロール割り当ての制限は固定されており、増やすことはできません。
@@ -46,6 +46,13 @@ $scope = "/subscriptions/<subscriptionId>"
 $ras = Get-AzRoleAssignment -Scope $scope | Where-Object {$_.scope.StartsWith($scope)}
 $ras.Count
 ```
+
+## <a name="azure-role-assignments-limit-for-management-groups"></a>管理グループに対する Azure ロールの割り当ての制限
+
+Azure では、管理グループあたり最大 **500** 個のロールの割り当てをサポートしています。 この制限は、サブスクリプションごとのロール割り当ての制限とは異なります。
+
+> [!NOTE]
+> **500** の管理グループあたりのロール割り当ての制限は固定されており、増やすことはできません。
 
 ## <a name="problems-with-azure-role-assignments"></a>Azure のロールの割り当てに関する問題
 

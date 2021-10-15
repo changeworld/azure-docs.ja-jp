@@ -2,14 +2,14 @@
 title: Azure Database for PostgreSQL を復元する
 description: Azure Database for PostgreSQL のバックアップを復元する方法について説明します。
 ms.topic: how-to
-ms.date: 09/22/2021
+ms.date: 10/01/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 0b4c2bd566be2ac19de5533006c5b9e5d206850c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: a5de8e74fb05eea45e5cb730515b3280c4952951
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128699683"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129359508"
 ---
 # <a name="restore-azure-database-for-postgresql-backups-preview"></a>Azure Database for PostgreSQL のバックアップを復元する (プレビュー)
 
@@ -43,7 +43,7 @@ ms.locfileid: "128699683"
 
      1. **[Select key vault and the secret]\(キー コンテナーとシークレットの選択\)** ボックスの一覧から、ターゲット サーバーに接続するための資格情報が格納されるコンテナーを選択します。
 
-     1. **[レビューと復元]** を選択して、[ターゲット サーバーに対する復元のアクセス許可]backup-azure-database-postgresql(backup-azure-database-postgresql-overview.md#set-of-permissions-needed-for-azure-postgresql-database-restore)がサービスにあるかどうかチェックするための検証をトリガーします。 これらのアクセス許可は[手動で付与](backup-azure-database-postgresql-overview.md#grant-access-on-the-azure-postgresql-server-and-key-vault-manually)する必要があります。
+     1. **[レビューと復元]** を選択すると検証がトリガーされ、サービスに[ターゲット サーバーに対する復元のアクセス許可がある](backup-azure-database-postgresql-overview.md#set-of-permissions-needed-for-azure-postgresql-database-restore)か確認されます。 これらのアクセス許可は[手動で付与](backup-azure-database-postgresql-overview.md#grant-access-on-the-azure-postgresql-server-and-key-vault-manually)する必要があります。
 
      :::image type="content" source="./media/restore-azure-database-postgresql/restore-as-database-inline.png" alt-text="[Restore as Database]\(データベースとして復元\) として選択された復元タイプを示すスクリーンショット。" lightbox="./media/restore-azure-database-postgresql/restore-as-database-expanded.png":::
 
@@ -73,7 +73,7 @@ Azure portal を使用して、ストレージ アカウント コンテナー�
 
    :::image type="content" source="./media/restore-azure-database-postgresql/assign-vault-msi-permission-to-access-storage-account-containers-azure-portal-inline.png" alt-text="Azure portal を使用して、ストレージ アカウント コンテナーにアクセスするためのアクセス許可をバックアップ コンテナーの MSI に割り当てるプロセスを示すスクリーンショット。" lightbox="./media/restore-azure-database-postgresql/assign-vault-msi-permission-to-access-storage-account-containers-azure-portal-expanded.png":::
 
-または、Azure CLI で [az role assignment](/cli/azure/role/assignment&preserve-view=true) create コマンドを使用して、復元先の特定のコンテナーに詳細なアクセス許可を付与します。
+または、Azure CLI で [az role assignment](/cli/azure/role/assignment) create コマンドを使用して、復元先の特定のコンテナーに詳細なアクセス許可を付与します。
 
 ```azurecli
 az role assignment create --assignee $VaultMSI_AppId  --role "Storage Blob Data Contributor"   --scope $id

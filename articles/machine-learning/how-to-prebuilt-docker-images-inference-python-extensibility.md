@@ -1,22 +1,22 @@
 ---
 title: 事前構築済み Docker イメージの Python 拡張機能
 titleSuffix: Azure Machine Learning
-description: Python パッケージ拡張ソリューションを使用して、事前構築済み Docker イメージを拡張します
+description: Python パッケージ拡張ソリューションを使用して、事前構築済み Docker イメージを拡張します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.author: ssambare
 author: shivanissambare
 ms.date: 05/25/2021
 ms.topic: how-to
 ms.reviewer: larryfr
 ms.custom: deploy, docker, prebuilt
-ms.openlocfilehash: bf579687f728739eb3f597bd3d02a8190d8c88b4
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 16191b274f840438cac8deab6754991b7b9e29df
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123435944"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129425014"
 ---
 # <a name="python-package-extensibility-for-prebuilt-docker-images-preview"></a>事前構築済みの Docker イメージ用の Python パッケージの機能拡張 (プレビュー)
 

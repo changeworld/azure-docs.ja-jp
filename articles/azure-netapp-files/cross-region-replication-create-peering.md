@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 08/11/2021
 ms.author: b-juche
-ms.openlocfilehash: 94528abaf90a94c59dd97c9a4ae0d15162914bc7
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 84ccb06b6be84c26ce9adf5d0c8e25d45190fa2b
+ms.sourcegitcommit: f3f2ec7793ebeee19bd9ffc3004725fb33eb4b3f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121751379"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129407914"
 ---
 # <a name="create-volume-replication-for-azure-netapp-files"></a>Azure NetApp Files のボリューム レプリケーションを作成する
 
@@ -50,7 +50,7 @@ ms.locfileid: "121751379"
 1. 宛先アカウントは、ソース ボリューム リージョンとは異なるリージョンにある必要があります。 必要に応じて、「[NetApp アカウントを作成する](azure-netapp-files-create-netapp-account.md)」の手順に従って、レプリケーションに使用する Azure リージョンに NetApp アカウントを作成します。   
 別のリージョン内の既存の NetApp アカウントを選択することもできます。  
 
-2. 必要に応じて、「[容量プールを設定する](azure-netapp-files-set-up-capacity-pool.md)」の手順に従って、新しく作成した NetApp アカウントに容量プールを作成します。   
+2. 必要に応じて、[容量プールの作成](azure-netapp-files-set-up-capacity-pool.md)に関するページの手順に従って、新しく作成した NetApp アカウントに容量プールを作成します。   
 
     また、既存の容量プールを選択して、宛先ボリュームをホストすることもできます。  
 

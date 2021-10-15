@@ -4,13 +4,13 @@ description: 文字列を操作する際に Bicep ファイルで使用する関
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 09/10/2021
-ms.openlocfilehash: d94f2b97a9ff78b715682052a647f02af6286af3
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 10/01/2021
+ms.openlocfilehash: e8691fd357b8f8cbde87309f4881fa7424f7f44e
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124794084"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129389079"
 ---
 # <a name="string-functions-for-bicep"></a>Bicep の string 関数
 
@@ -21,6 +21,8 @@ ms.locfileid: "124794084"
 `base64(inputString)`
 
 入力文字列の base64 表現を返します。
+
+名前空間: [sys](bicep-functions.md#namespaces-for-functions)。
 
 ### <a name="parameters"></a>パラメーター
 
@@ -61,6 +63,8 @@ output toJsonOutput object = base64ToJson(base64Object)
 `base64tojson`
 
 base64 形式を JSON オブジェクトに変換します。
+
+名前空間: [sys](bicep-functions.md#namespaces-for-functions)。
 
 ### <a name="parameters"></a>パラメーター
 
@@ -103,6 +107,8 @@ output toJsonOutput object = base64ToJson(base64Object)
 
 base64 形式を文字列に変換します。
 
+名前空間: [sys](bicep-functions.md#namespaces-for-functions)。
+
 ### <a name="parameters"></a>パラメーター
 
 | パラメーター | 必須 | 種類 | 説明 |
@@ -141,7 +147,7 @@ output toJsonOutput object = base64ToJson(base64Object)
 
 ## <a name="concat"></a>concat
 
-concat 関数を使用する代わりに、文字列補間を使用します。 
+concat 関数を使用する代わりに、文字列補間を使用します。
 
 ```bicep
 param prefix string = 'prefix'
@@ -155,11 +161,15 @@ output concatOutput string = '${prefix}And${uniqueString(resourceGroup().id)}'
 | ---- | ---- | ----- |
 | concatOutput | String | prefixAnd5yj4yjf5mbg72 |
 
+名前空間: [sys](bicep-functions.md#namespaces-for-functions)。
+
 ## <a name="contains"></a>contains
 
 `contains (container, itemToFind)`
 
 配列に値が含まれるかどうか、オブジェクトにキーが含まれるかどうか、または文字列に部分文字列が含まれるかどうかを確認します。 文字列比較では大文字・小文字を区別します。 ただし、オブジェクトにキーが含まれているかどうかをテストする場合、比較で大文字・小文字を区別しません。
+
+名前空間: [sys](bicep-functions.md#namespaces-for-functions)。
 
 ### <a name="parameters"></a>パラメーター
 
@@ -216,6 +226,8 @@ output arrayFalse bool = contains(arrayToTest, 'four')
 
 値をデータ URI に変換します。
 
+名前空間: [sys](bicep-functions.md#namespaces-for-functions)。
+
 ### <a name="parameters"></a>パラメーター
 
 | パラメーター | 必須 | 種類 | 説明 |
@@ -251,6 +263,8 @@ output toStringOutput string = dataUriToString(dataFormattedString)
 
 データ URI の形式で書式設定された値を文字列に変換します。
 
+名前空間: [sys](bicep-functions.md#namespaces-for-functions)。
+
 ### <a name="parameters"></a>パラメーター
 
 | パラメーター | 必須 | 種類 | 説明 |
@@ -285,6 +299,8 @@ output toStringOutput string = dataUriToString(dataFormattedString)
 `empty(itemToTest)`
 
 配列、オブジェクト、または文字列が空かどうかを判断します。
+
+名前空間: [sys](bicep-functions.md#namespaces-for-functions)。
 
 ### <a name="parameters"></a>パラメーター
 
@@ -323,6 +339,8 @@ output stringEmpty bool = empty(testString)
 `endsWith(stringToSearch, stringToFind)`
 
 文字列が特定の値で終わるかどうかを判断します。 比較では大文字と小文字は区別されません。
+
+名前空間: [sys](bicep-functions.md#namespaces-for-functions)。
 
 ### <a name="parameters"></a>パラメーター
 
@@ -365,6 +383,8 @@ output endsFalse bool = endsWith('abcdef', 'e')
 
 文字列の最初の文字、または配列の最初の要素を返します。
 
+名前空間: [sys](bicep-functions.md#namespaces-for-functions)。
+
 ### <a name="parameters"></a>パラメーター
 
 | パラメーター | 必須 | 種類 | 説明 |
@@ -403,6 +423,8 @@ output stringOutput string = first('One Two Three')
 
 入力値から書式設定された文字列を作成します。
 
+名前空間: [sys](bicep-functions.md#namespaces-for-functions)。
+
 ### <a name="parameters"></a>パラメーター
 
 | パラメーター | 必須 | 種類 | 説明 |
@@ -438,6 +460,8 @@ output formatTest string = format('{0}, {1}. Formatted number: {2:N0}', greeting
 `guid(baseString, ...)`
 
 パラメーターとして指定した値に基づき、グローバル一意識別子の形式で値を作成します。
+
+名前空間: [sys](bicep-functions.md#namespaces-for-functions)。
 
 ### <a name="parameters"></a>パラメーター
 
@@ -492,6 +516,8 @@ output guidPerDeployment string = guid(resourceGroup().id, deployment().name)
 
 文字列内の値の最初の位置を返します。 比較では大文字と小文字は区別されません。
 
+名前空間: [sys](bicep-functions.md#namespaces-for-functions)。
+
 ### <a name="parameters"></a>パラメーター
 
 | パラメーター | 必須 | 種類 | 説明 |
@@ -533,11 +559,15 @@ output notFound int = indexOf('abcdef', 'z')
 
 有効な JSON 文字列を JSON データ型に変換します。 詳細については、[JSON 関数](./bicep-functions-object.md#json)を参照してください。
 
+名前空間: [sys](bicep-functions.md#namespaces-for-functions)。
+
 ## <a name="last"></a>last
 
 `last (arg1)`
 
 文字列の最後の文字、または配列の最後の要素を返します。
+
+名前空間: [sys](bicep-functions.md#namespaces-for-functions)。
 
 ### <a name="parameters"></a>パラメーター
 
@@ -577,6 +607,8 @@ output stringOutput string = last('One Two Three')
 
 文字列内の値の最後の位置を返します。 比較では大文字と小文字は区別されません。
 
+名前空間: [sys](bicep-functions.md#namespaces-for-functions)。
+
 ### <a name="parameters"></a>パラメーター
 
 | パラメーター | 必須 | 種類 | 説明 |
@@ -615,6 +647,8 @@ output notFound int = indexOf('abcdef', 'z')
 `length(string)`
 
 文字列内の文字、配列内の要素、またはオブジェクト内のルート レベル プロパティの数を返します。
+
+名前空間: [sys](bicep-functions.md#namespaces-for-functions)。
 
 ### <a name="parameters"></a>パラメーター
 
@@ -665,6 +699,8 @@ output objectLength int = length(objectToTest)
 `newGuid()`
 
 グローバル一意識別子の形式の値を返します。 **この関数は、パラメーターの既定値でのみ使用できます。**
+
+名前空間: [sys](bicep-functions.md#namespaces-for-functions)。
 
 ### <a name="remarks"></a>解説
 
@@ -734,6 +770,8 @@ output nameOutput string = storageName
 
 指定された長さに到達するまで左側に文字を追加していくことで、右揃えの文字列を返します。
 
+名前空間: [sys](bicep-functions.md#namespaces-for-functions)。
+
 ### <a name="parameters"></a>パラメーター
 
 | パラメーター | 必須 | 種類 | 説明 |
@@ -770,6 +808,8 @@ output stringOutput string = padLeft(testString, 10, '0')
 
 ある文字列のすべてのインスタンスを別の文字列で置き換えた、新しい文字列を返します。
 
+名前空間: [sys](bicep-functions.md#namespaces-for-functions)。
+
 ### <a name="parameters"></a>パラメーター
 
 | パラメーター | 必須 | 種類 | 説明 |
@@ -805,6 +845,8 @@ output secondOutput string = replace(testString, '1234', 'xxxx')
 `skip(originalValue, numberToSkip)`
 
 指定した文字数の後にあるすべての文字を含む文字列を返します。または、指定した数の要素の後にあるすべての要素を含む配列を返します。
+
+名前空間: [sys](bicep-functions.md#namespaces-for-functions)。
 
 ### <a name="parameters"></a>パラメーター
 
@@ -848,6 +890,8 @@ output stringOutput string = skip(testString, charactersToSkip)
 
 指定された区切り記号で区切られた、入力文字列の部分文字列が格納されている、文字列の配列を返します。
 
+名前空間: [sys](bicep-functions.md#namespaces-for-functions)。
+
 ### <a name="parameters"></a>パラメーター
 
 | パラメーター | 必須 | 種類 | 説明 |
@@ -889,6 +933,8 @@ output secondOutput array = split(secondString, delimiters)
 
 文字列が特定の値で始まるかどうかを判断します。 比較では大文字と小文字は区別されません。
 
+名前空間: [sys](bicep-functions.md#namespaces-for-functions)。
+
 ### <a name="parameters"></a>パラメーター
 
 | パラメーター | 必須 | 種類 | 説明 |
@@ -929,6 +975,8 @@ output endsFalse bool = endsWith('abcdef', 'e')
 `string(valueToConvert)`
 
 指定した値を文字列に変換します。
+
+名前空間: [sys](bicep-functions.md#namespaces-for-functions)。
 
 ### <a name="parameters"></a>パラメーター
 
@@ -975,6 +1023,8 @@ output intOutput string = string(testInt)
 
 指定した文字位置から始まる指定された文字数分の部分文字列を返します。
 
+名前空間: [sys](bicep-functions.md#namespaces-for-functions)。
+
 ### <a name="parameters"></a>パラメーター
 
 | パラメーター | 必須 | 種類 | 説明 |
@@ -1018,6 +1068,8 @@ output substringOutput string = substring(testString, 4, 3)
 
 文字列の先頭から指定した数の文字を含む文字列を、または配列の先頭から指定した数の要素を含む配列を返します。
 
+名前空間: [sys](bicep-functions.md#namespaces-for-functions)。
+
 ### <a name="parameters"></a>パラメーター
 
 | パラメーター | 必須 | 種類 | 説明 |
@@ -1060,6 +1112,8 @@ output stringOutput string = take(testString, charactersToTake)
 
 指定された文字列を小文字に変換します。
 
+名前空間: [sys](bicep-functions.md#namespaces-for-functions)。
+
 ### <a name="parameters"></a>パラメーター
 
 | パラメーター | 必須 | 種類 | 説明 |
@@ -1093,6 +1147,8 @@ output toUpperOutput string = toUpper(testString)
 `toUpper(stringToChange)`
 
 指定した文字列を大文字に変換します。
+
+名前空間: [sys](bicep-functions.md#namespaces-for-functions)。
 
 ### <a name="parameters"></a>パラメーター
 
@@ -1128,6 +1184,8 @@ output toUpperOutput string = toUpper(testString)
 
 指定された文字列から先頭と末尾の空白文字をすべて削除します。
 
+名前空間: [sys](bicep-functions.md#namespaces-for-functions)。
+
 ### <a name="parameters"></a>パラメーター
 
 | パラメーター | 必須 | 種類 | 説明 |
@@ -1159,6 +1217,8 @@ output return string = trim(testString)
 `uniqueString (baseString, ...)`
 
 パラメーターとして渡された値に基づいて、決定論的ハッシュ文字列を作成します。
+
+名前空間: [sys](bicep-functions.md#namespaces-for-functions)。
 
 ### <a name="parameters"></a>パラメーター
 
@@ -1204,7 +1264,7 @@ resource mystorage 'Microsoft.Storage/storageAccounts@@2018-07-01' = {
 }
 ```
 
-Bicep ファイルをデプロイするたびに一意の新しい名前を作成する必要があり、リソースを更新しない場合は、[utcNow](./bicep-functions-date.md#utcnow) 関数と共に uniqueString を使用できます。 この方法は、テスト環境で使用できます。 例については、「[utcNow](./bicep-functions-date.md#utcnow)」をご覧ください。
+Bicep ファイルをデプロイするたびに一意の新しい名前を作成する必要があり、リソースを更新しない場合は、[utcNow](./bicep-functions-date.md#utcnow) 関数と共に uniqueString を使用できます。 この方法は、テスト環境で使用できます。 例については、「[utcNow](./bicep-functions-date.md#utcnow)」をご覧ください。 utcNow 関数は、パラメーターの既定値の式内でのみ使用できることにご留意ください。
 
 ### <a name="return-value"></a>戻り値
 
@@ -1224,6 +1284,8 @@ output uniqueDeploy string = uniqueString(resourceGroup().id, deployment().name)
 `uri (baseUri, relativeUri)`
 
 baseUri と relativeUri の文字列を組み合わせることにより、絶対 URI を作成します。
+
+名前空間: [sys](bicep-functions.md#namespaces-for-functions)。
 
 ### <a name="parameters"></a>パラメーター
 
@@ -1282,6 +1344,8 @@ output toStringOutput string = uriComponentToString(uriEncoded)
 
 URI をエンコードします。
 
+名前空間: [sys](bicep-functions.md#namespaces-for-functions)。
+
 ### <a name="parameters"></a>パラメーター
 
 | パラメーター | 必須 | 種類 | 説明 |
@@ -1320,6 +1384,8 @@ output toStringOutput string = uriComponentToString(uriEncoded)
 `uriComponentToString(uriEncodedString)`
 
 URI エンコードされた値の文字列を返します。
+
+名前空間: [sys](bicep-functions.md#namespaces-for-functions)。
 
 ### <a name="parameters"></a>パラメーター
 

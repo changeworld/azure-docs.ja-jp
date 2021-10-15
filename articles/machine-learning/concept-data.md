@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: Azure Machine Learning のデータストアおよびデータセットを使用して、Azure 上のデータ ストレージに安全に接続する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: enterprise-readiness
 ms.topic: conceptual
 ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 08/31/2020
 ms.custom: devx-track-python, data4ml
-ms.openlocfilehash: 601be8409db22162a410d481e6609d378718a7b4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1b439f65f2807d2d076363938169631651b85d20
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102503591"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129430157"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Azure Machine Learning でのデータ アクセスをセキュリティ保護する
 
@@ -116,7 +116,7 @@ Azure Machine Learning のデータセットは、データのコピーではあ
 
 Azure Machine Learning を使用すると、ラベル付けプロジェクトの作成、管理、監視を一元的に行うことができます。 ラベル付けプロジェクトは、データ、ラベル、チーム メンバーの間の調整に役立ち、ラベル付けタスクをより効率的に管理できるようになります。 現在サポートされているタスクは、複数ラベルまたは多クラスでの画像分類と、境界ボックスを使用したオブジェクト識別です。
 
-[データラベル付けプロジェクト](how-to-create-labeling-projects.md)を作成し、機械学習の実験で使用するためのデータセットを出力します。
+[画像ラベル付けプロジェクト](how-to-create-image-labeling-projects.md)または[テキスト ラベル付けプロジェクト](how-to-create-text-labeling-projects.md)を作成し、機械学習の実験で使用するためのデータセットを出力します。
 
 <a name="drift"></a>
 

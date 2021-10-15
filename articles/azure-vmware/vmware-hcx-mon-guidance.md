@@ -2,15 +2,23 @@
 title: VMware HCX Mobility Optimized Networking (MON) のガイダンス
 description: Mobility Optimized Networking (MON) の Azure VMware Solution 固有のユース ケースについて説明します。
 ms.topic: reference
-ms.date: 09/07/2021
-ms.openlocfilehash: 19e8fce28bc9582c388a6c2667fa6dfc6ca64636
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 10/04/2021
+ms.openlocfilehash: 1b170615b5a0ec0df81a8be7c71b8ac5ae17a24a
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128646226"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129424731"
 ---
 # <a name="vmware-hcx-mobility-optimized-networking-mon-guidance"></a>VMware HCX Mobility Optimized Networking (MON) のガイダンス
+
+>[!IMPORTANT] 
+>HCX MON を有効にする前に、下の制限とサポートされていない構成をお読みください。
+>
+>[HCX NE のサポートされていないソース構成](https://docs.vmware.com/en/VMware-HCX/4.2/hcx-user-guide/GUID-DBDB4D1B-60B6-4D16-936B-4AC632606909.html)
+> 
+>[MON を含む HCX 展開の制限事項](https://docs.vmware.com/en/VMware-HCX/4.2/hcx-user-guide/GUID-BEC26054-D560-46D0-98B4-7FF09501F801.html)
+
 
 [HCX Mobility Optimized Networking (MON)](https://docs.vmware.com/en/VMware-HCX/4.2/hcx-user-guide/GUID-0E254D74-60A9-479C-825D-F373C41F40BC.html) は、[HCX Network Extension (NE)](configure-hcx-network-extension.md) を使用する場合に有効にする、オプションの機能です。 MON を使用すると、特定のシナリオで最適なトラフィック ルーティングが提供され、拡張ネットワーク上のオンプレミスとクラウドベースのリソース間のネットワーク トロンボーンが回避されます。 
 
