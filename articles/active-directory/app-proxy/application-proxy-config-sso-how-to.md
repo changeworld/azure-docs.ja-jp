@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: japere, asteen
-ms.openlocfilehash: 8bf923e6793b55b4655c4c2133de1cda10216e18
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 33276b986f951a1ad343a25229b2ee23c33e05b8
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108187307"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129232396"
 ---
 # <a name="how-to-configure-single-sign-on-to-an-application-proxy-application"></a>アプリケーション プロキシ アプリケーションに対するシングル サインオンを構成する方法
 
@@ -32,15 +32,15 @@ SSO を構成するにはまず、Azure Active Directory で事前認証を行�
 ## <a name="configuring-single-sign-on-modes-for-application-proxy-applications"></a>アプリケーション プロキシ アプリケーションに使用するシングル サインオン モードの構成
 具体的なシングル サインオンの種類を構成します。 サインオン方法は、バックエンド アプリケーションで使用される認証の種類に基づいて分類されます。 アプリケーション プロキシ アプリケーションは、次の 3 種類のサインオンに対応します。
 
--   **[パスワード ベースのサインオン]** : サインオンにユーザー名フィールドとパスワード フィールドを使うアプリケーションには、パスワード ベースのサインオンを使用できます。 構成手順については、[Azure AD ギャラリー アプリケーションのパスワード シングル サインオンの構成](../manage-apps/configure-password-single-sign-on-non-gallery-applications.md)に関するページに記載されています。
+-   **パスワード ベースのサインオン:** サインオンにユーザー名フィールドとパスワード フィールドを使うアプリケーションには、パスワード ベースのサインオンを使用できます。 構成手順については、[Azure AD ギャラリー アプリケーションのパスワード シングル サインオンの構成](../manage-apps/configure-password-single-sign-on-non-gallery-applications.md)に関するページに記載されています。
 
--   **[統合 Windows 認証]** : 統合 Windows 認証 (IWA) を使うアプリケーションでは、Kerberos の制約付き委任 (KCD) を通じてシングル サインオンが実現されます。 このメソッドは、Active Directory において、見かけ上ユーザーとして振る舞い、本人に代わってトークンを送受信する権限をアプリケーション プロキシ コネクタに与えます。 KCD の構成の詳細については、[KCD によるシングル サインオンに関するドキュメント](application-proxy-configure-single-sign-on-with-kcd.md)を参照してください。
+-   **統合 Windows 認証:** 統合 Windows 認証 (IWA) を使うアプリケーションでは、Kerberos の制約付き委任 (KCD) を通じてシングル サインオンが実現されます。 このメソッドは、Active Directory において、見かけ上ユーザーとして振る舞い、本人に代わってトークンを送受信する権限をアプリケーション プロキシ コネクタに与えます。 KCD の構成の詳細については、[KCD によるシングル サインオンに関するドキュメント](application-proxy-configure-single-sign-on-with-kcd.md)を参照してください。
 
--   **[ヘッダーベースのサインオン]** : ヘッダーベースのサインオンは、HTTP ヘッダーを使用するシングル サインオン機能を提供するために使用されます。 詳細については、[ヘッダーベースのシングル サインオン](application-proxy-configure-single-sign-on-with-headers.md)に関するトピックを参照してください。
+-   **ヘッダーベースのサインオン:** ヘッダーベースのサインオンは、HTTP ヘッダーを使用するシングル サインオン機能を提供するために使用されます。 詳細については、[ヘッダーベースのシングル サインオン](application-proxy-configure-single-sign-on-with-headers.md)に関するトピックを参照してください。
 
--   **SAML によるシングル サインオン**:SAML によるシングル サインオンでは、ユーザーの Azure AD アカウントを使用して、Azure AD がアプリケーションに対して認証を行います。 Azure AD は、接続プロトコルを通してアプリケーションにシングル サインオンの情報を伝達します。 SAML ベースのシングル サインオンでは、SAML 要求で定義するルールに基づいて、ユーザーを特定のアプリケーション ロールにマップできます。 SAML によるシングル サインオンの設定の詳細については、[アプリケーション プロキシを使用したシングル サインオンの場合の SAML](application-proxy-configure-single-sign-on-on-premises-apps.md) に関するページを参照してください。
+-   **SAML によるシングル サインオン:** SAML によるシングル サインオンでは、ユーザーの Azure AD アカウントを使用して、Azure AD がアプリケーションに対して認証を行います。 Azure AD は、接続プロトコルを通してアプリケーションにシングル サインオンの情報を伝達します。 SAML ベースのシングル サインオンでは、SAML 要求で定義するルールに基づいて、ユーザーを特定のアプリケーション ロールにマップできます。 SAML によるシングル サインオンの設定の詳細については、[アプリケーション プロキシを使用したシングル サインオンの場合の SAML](application-proxy-configure-single-sign-on-on-premises-apps.md) に関するページを参照してください。
 
-上記の各オプションは、[エンタープライズ アプリケーション] で目的のアプリケーションに移動し、左側のメニューで **[シングル サインオン]** ページを開くと表示されます。 ご自分のアプリケーションが以前のポータルで作成されたものである場合は一部のオプションが表示されない可能性があることに注意してください。
+上記の各オプションは、 **[エンタープライズ アプリケーション]** で目的のアプリケーションに移動し、左側のメニューで **[シングル サインオン]** ページを開くと表示されます。 ご自分のアプリケーションが以前のポータルで作成されたものである場合は一部のオプションが表示されない可能性があることに注意してください。
 
 このページには、さらに別のサインオン オプションとして [リンクされたサインオン] も表示されます。 このオプションもアプリケーション プロキシでサポートされています。 ただしこのオプションは、アプリケーションにシングル サインオンを追加するものではありません。 とは言うものの、アプリケーションには、Active Directory フェデレーション サービスなどの別のサービスを使って既にシングル サインオンが実装されている場合があります。 
 

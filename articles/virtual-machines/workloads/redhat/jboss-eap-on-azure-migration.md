@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: redhat
 ms.assetid: 9b37b2c4-5927-4271-85c7-19adf33d838b
 ms.date: 06/08/2021
-ms.openlocfilehash: 1671b0c4ba57faa6dc631c50cc273678c72b379b
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 188e40f9bc3d2d23035549578cdc6440af60a3e5
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124730140"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129359243"
 ---
 # <a name="how-to-migrate-java-applications-to-jboss-eap-on-azure-vms-and-virtual-machine-scale-sets"></a>Java アプリケーションを Azure VM と仮想マシン スケール セット上の JBoss EAP に移行する方法
 
@@ -248,7 +248,7 @@ JMS 永続ストアが構成されている場合は、それらの構成を把�
 「移行前」ステップで定義した移行の目標に到達したら、エンド ツー エンドの受け入れテストを実施して、すべてが予期したとおりに機能することを確認します。 移行後の機能強化に関するトピックをいくつか記載していますが、もちろん以下に限定されません。
 
 * Azure Storage を使用して、VM にマウントされた静的コンテンツを提供します。 詳細については、[VM へのデータ ディスクのアタッチまたはデタッチ](../../../devtest-labs/devtest-lab-attach-detach-data-disk.md)に関するページを参照してください
-* Azure DevOps を使用して、移行した JBoss クラスターにアプリケーションをデプロイします。 詳細については、[Azure DevOps の使用開始に関するドキュメント](/azure/devops/get-started/?view=azure-devops)を参照してください。
+* Azure DevOps を使用して、移行した JBoss クラスターにアプリケーションをデプロイします。 詳細については、[Azure DevOps の使用開始に関するドキュメント](/azure/devops/get-started)を参照してください。
 * [Application Gateway](../../../application-gateway/index.yml) の使用を検討してください。
 * 高度な負荷分散サービスを使用してネットワーク トポロジを強化します。 詳細については、「[Azure で負荷分散サービスを使用する](../../../traffic-manager/traffic-manager-load-balancing-azure.md)」を参照してください。
 * Azure マネージド ID をマネージド シークレットに利用して、ロールベースのアクセス制御 (RBAC) を Azure リソースに割り当てます。 詳細については、「[Azure リソースのマネージド ID とは](../../../active-directory/managed-identities-azure-resources/overview.md)」を参照してください。

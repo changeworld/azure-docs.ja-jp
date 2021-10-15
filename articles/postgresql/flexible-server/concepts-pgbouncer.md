@@ -5,13 +5,13 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 07/30/2021
-ms.openlocfilehash: 86543f160a9ffc725a9512069bac39e6e222d543
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 10/01/2021
+ms.openlocfilehash: d49deec6a782e0b36f110b7c2046b89e314e4011
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121745091"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129387337"
 ---
 # <a name="pgbouncer-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL の PgBouncer - フレキシブル サーバー
 
@@ -25,7 +25,7 @@ PgBouncer では、非同期 I/O を利用するより軽量なモデルを使�
 有効になっている場合、PgBouncer はデータベース サーバーのポート 6432 で実行されます。 同じホスト名を使用するようにアプリケーションのデータベース接続構成を変更できますが、ポートを 6432 に変更して PgBouncer の使用を開始し、アイドル状態の接続のスケーリングを向上させるというベネフィットを得ることができます。
 
 > [!Note]
-> PgBouncer は、パブリック アクセスとプライベート アクセスの両方のネットワークで、General Purpose とメモリ最適化のコンピューティング レベルでサポートされています。
+> PgBouncer は、パブリック アクセスとプライベート アクセスの両方のネットワークで、General Purpose とメモリ最適化のコンピューティング レベルでサポートされています。 
 
 ## <a name="enabling-and-configuring-pgbouncer"></a>PgBouncer の有効化と構成
 
@@ -77,6 +77,7 @@ psql "host=myPgServer.postgres.database.azure.com port=6432 dbname=postgres user
 * コンピューティング レベルを General Purpose またはメモリ最適化からバースト可能なレベルに変更した場合、PgBouncer の機能は失われます。
 * スケール操作中、HA フェールオーバー中、または再起動時にサーバーが再起動されるたびに、PgBouncer もサーバー仮想マシンと共に再起動されます。 そのため、既存の接続を再確立する必要があります。
 * 既知の問題により、ポータルには PgBouncer パラメーターがすべて表示されません。 PgBouncer を有効にしてパラメーターを保存したら、パラメーター画面を終了して (たとえば、[概要] をクリックして) から、[パラメーター] ページに戻る必要があります。 
+* [SCRAM 認証](how-to-connect-scram.md)は PgBouncer ではサポートされていません。
   
 ## <a name="next-steps"></a>次のステップ
 

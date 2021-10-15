@@ -7,12 +7,12 @@ ms.reviewer: estfan, logicappspm, azla
 ms.topic: how-to
 ms.date: 09/13/2021
 tags: connectors
-ms.openlocfilehash: 1c894c6162a8c9e24794f5c52ce1f6cefb6fa85a
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: c1352fe61b8a663371719100aa86806da0791f20
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128563704"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129359344"
 ---
 # <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>Azure Logic Apps から HTTP または HTTPS でサービス エンドポイントを呼び出す
 
@@ -104,7 +104,7 @@ ms.locfileid: "128563704"
 
 ここでは、以下の情報を返す HTTP トリガーまたはアクションからの出力の詳細情報を示します。
 
-| プロパティ | 種類 | 説明 |
+| プロパティ | Type | 説明 |
 |----------|------|-------------|
 | `headers` | JSON オブジェクト | 要求のヘッダー |
 | `body` | JSON オブジェクト | 要求の本文の内容を含むオブジェクト |
@@ -128,19 +128,19 @@ ms.locfileid: "128563704"
 
 シングル テナント Azure Logic Apps に **ロジック アプリ (Standard)** リソースがある場合に、次の認証の種類で HTTP 操作を使用する場合は、対応する認証の種類に対する追加のセットアップ手順を必ず完了してください。 そうでない場合、呼び出しは失敗します。
 
-* [TSL/SSL 証明書](#tsl-ssl-certificate-authentication): アプリ設定を追加し、`WEBSITE_LOAD_ROOT_CERTIFICATES`、TSL/SSL 証明書の拇印の拇印を指定します。
+* [TLS/SSL 証明書](#tls-ssl-certificate-authentication): アプリ設定を追加し、`WEBSITE_LOAD_ROOT_CERTIFICATES`、TLS/SSL 証明書の拇印の拇印を指定します。
 
 * [クライアントの証明書または Azure Active Directory Open Authentication (Azure AD OAuth) の「Certificate」資格情報の種類 ](#client-certificate-authentication) を使用します。アプリの設定である `WEBSITE_LOAD_USER_PROFILE` を追加し、値を `1` に設定します。
 
-<a name="tsl-ssl-certificate-authentication"></a>
+<a name="tls-ssl-certificate-authentication"></a>
 
-### <a name="tslssl-certificate-authentication"></a>TSL/SSL 証明書認証
+### <a name="tlsssl-certificate-authentication"></a>TLS/SSL 証明書認証
 
 1. ロジック アプリ リソースのアプリ設定で、[アプリ設定の追加または更新](../logic-apps/edit-app-settings-host-settings.md#manage-app-settings)、`WEBSITE_LOAD_ROOT_CERTIFICATES` を行います。
 
-1. 設定値には、信頼できるルート証明書として TSL/SSL 証明書のサムプリントを指定します。
+1. 設定値には、信頼できるルート証明書として TLS/SSL 証明書の拇印を指定します。
 
-   `"WEBSITE_LOAD_ROOT_CERTIFICATES": "<thumbprint-for-TSL/SSL-certificate>"`
+   `"WEBSITE_LOAD_ROOT_CERTIFICATES": "<thumbprint-for-TLS/SSL-certificate>"`
 
 たとえば、Visual Studio Code で作業している場合は、次の手順を実行します。
 
@@ -154,7 +154,7 @@ ms.locfileid: "128563704"
       "Values": {
          <...>
          "AzureWebJobsStorage": "UseDevelopmentStorage=true",
-         "WEBSITE_LOAD_ROOT_CERTIFICATES": "<thumbprint-for-TSL/SSL-certificate>",
+         "WEBSITE_LOAD_ROOT_CERTIFICATES": "<thumbprint-for-TLS/SSL-certificate>",
          <...>
       }
    }
@@ -256,7 +256,7 @@ HTTP 要求の本文に form-urlencoded データを提供するには、デー�
 
 ## <a name="asynchronous-request-response-behavior"></a>非同期の要求 - 応答の動作
 
-マルチテナントとシングルテナントの両方の Azure Logic Apps の *ステートフル* ワークフローの場合、すべての HTTP ベースのアクションは、既定の動作として標準の[非同期操作パターン](/azure/architecture/patterns/async-request-reply)に従います。 このパターンでは、HTTP アクションがエンドポイント、サービス、システム、または API に対して要求を呼び出す、または送信した後、受信側が直ちに ["202 ACCEPTED"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.3) 応答を返すよう規定されます。 このコードは、受信側が要求を受け入れたが、処理が完了していないことを確認します。 応答には、受信側が処理を停止して ["200 OK"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) 成功応答またはその他の 202 以外の応答が返されるまで、呼び出し元が非同期要求の状態をポーリングまたは確認するために使用できる URI およびリフレッシュ ID を指定する `location` ヘッダーを含めることができます。 ただし、呼び出し元は要求の処理が完了するまで待機する必要はなく、次のアクションの実行を継続できます。 詳細については、[マイクロサービスの非同期統合によるマイクロサービスの自律性の強制](/azure/architecture/microservices/design/interservice-communication#synchronous-versus-asynchronous-messaging)に関するページを参照してください。
+マルチテナントとシングルテナントの両方の Azure Logic Apps の *ステートフル* ワークフローの場合、すべての HTTP ベースのアクションは、既定の動作として標準の [非同期操作パターン](/azure/architecture/patterns/async-request-reply)に従います。 このパターンでは、HTTP アクションがエンドポイント、サービス、システム、または API に対して要求を呼び出す、または送信した後、受信側が直ちに ["202 ACCEPTED"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.3) 応答を返すよう規定されます。 このコードは、受信側が要求を受け入れたが、処理が完了していないことを確認します。 応答には、受信側が処理を停止して ["200 OK"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) 成功応答またはその他の 202 以外の応答が返されるまで、呼び出し元が非同期要求の状態をポーリングまたは確認するために使用できる URI およびリフレッシュ ID を指定する `location` ヘッダーを含めることができます。 ただし、呼び出し元は要求の処理が完了するまで待機する必要はなく、次のアクションの実行を継続できます。 詳細については、[マイクロサービスの非同期統合によるマイクロサービスの自律性の強制](/azure/architecture/microservices/design/interservice-communication#synchronous-versus-asynchronous-messaging)に関するページを参照してください。
 
 シングルテナント ワークフローの *ステートレス* ワークフロー Azure Logic Apps の場合、HTTP ベースのアクションでは、非同期操作パターンは使用されません。 代わりに、同期的にのみ実行され、["202 ACCEPTED"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.3) 応答がそのまま返され、ワークフローの実行の次のステップに進みます。 応答に `location` ヘッダーが含まれる場合、ステートレス ワークフローでは、指定された URI をポーリングして状態を確認することはありません。 標準の[非同期操作パターン](/azure/architecture/patterns/async-request-reply)に従うには、代わりにステートフル ワークフローを使用します。
 

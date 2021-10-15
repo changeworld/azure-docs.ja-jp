@@ -13,12 +13,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba5db5208d53996d074dca15bdc8b7b3088e4dec
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 546a7bfbda3f037f3ad40ca9c5d59353cc1de0eb
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113111197"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129349583"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory シームレス シングル サインオンのトラブルシューティングを行う
 
@@ -128,8 +128,12 @@ ms.locfileid: "113111197"
    >使用するドメイン管理者アカウントは、保護されているユーザー グループのメンバーであってはなりません。 そうである場合、操作は失敗します。
 
 2. `Disable-AzureADSSOForest -OnPremCredentials $creds` を呼び出します。 このコマンドは、この特定の Active Directory フォレスト用のオンプレミスのドメイン コントローラーから `AZUREADSSOACC` コンピューター アカウントを削除します。
-3. 機能を設定した Active Directory フォレストごとに、前の手順を繰り返します。
 
+   >[!NOTE]
+   >何らかの理由でオンプレミスの AD にアクセスできない場合は、**手順 3.1** と **3.2** をスキップし、代わりに `Disable-AzureADSSOForest -DomainFqdn <Domain name from the output list in step 2>` を呼び出します。 
+   
+3. 機能を設定した Active Directory フォレストごとに、前の手順を繰り返します。
+ 
 ### <a name="step-4-enable-seamless-sso-for-each-active-directory-forest"></a>手順 4:各 Active Directory フォレストのシームレス SSO を有効にする
 
 1. `Enable-AzureADSSOForest` を呼び出します。 求められたら、目的の Active Directory フォレストのドメイン管理者の資格情報を入力します。

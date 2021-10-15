@@ -1,22 +1,22 @@
 ---
-title: マネージド オンライン エンドポイントを使用して機械学習モデルをデプロイする
+title: マネージド オンライン エンドポイントを使用して ML モデルをデプロイする
 titleSuffix: Azure Machine Learning
 description: Azure によって自動的に管理される Web サービスとして機械学習モデルをデプロイする方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.author: seramasu
 ms.reviewer: laobri
 author: rsethur
 ms.date: 08/05/2021
 ms.topic: how-to
 ms.custom: how-to, devplatv2
-ms.openlocfilehash: 0c421148571b99bb182de6841586caafb116df42
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: 882f0d8d140d7394e82aa23bf9a5b72b477940e5
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122418429"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129423616"
 ---
 # <a name="deploy-and-score-a-machine-learning-model-by-using-a-managed-online-endpoint-preview"></a>マネージド オンライン エンドポイントを使用して機械学習モデルをデプロイおよびスコアリングする (プレビュー)
 

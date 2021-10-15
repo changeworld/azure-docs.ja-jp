@@ -8,12 +8,12 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 07/21/2021
-ms.openlocfilehash: 4a47a13405402b381c1a1b3682f5d42038218959
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 8454a75936c84f012d05c8917cfffeec4a08dcdc
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122689151"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129278426"
 ---
 # <a name="best-practices-for-azure-sentinel"></a>Azure Sentinel のベスト プラクティス
 
@@ -23,6 +23,35 @@ ms.locfileid: "122689151"
 > Azure Sentinel をデプロイする前に、「[展開前のアクティビティと前提条件](prerequisites.md)」を確認し、完了させてください。
 >
 
+
+## <a name="best-practice-references"></a>ベスト プラクティスのリファレンス
+
+この Azure Sentinel のドキュメントには、記事全体にわたってベスト プラクティス ガイダンスが含まれています。 この記事で提供されている内容に加え、詳細については、次の記事を参照してください。
+
+- **[管理者ユーザー]**:
+
+    - [Azure Sentinel をデプロイするためのデプロイ前のアクティビティと前提条件](prerequisites.md)
+    - [Azure Sentinel ワークスペース アーキテクチャのベスト プラクティス](best-practices-workspace-architecture.md)
+    - [Azure Sentinel ワークスペース アーキテクチャを設計する](design-your-workspace-architecture.md)
+    - [Azure Sentinel のサンプル ワークスペースの設計](sample-workspace-designs.md)
+    - [データ収集のベスト プラクティス](best-practices-data.md)
+    - [Azure Sentinel のコストと課金](azure-sentinel-billing.md)
+    - [Azure Sentinel のアクセス許可](roles.md)
+    - [Azure Sentinel で MSSP の知的財産権を保護する](mssp-protect-intellectual-property.md)
+    - [Azure Sentinel への脅威インテリジェンスの統合](threat-intelligence-integration.md)
+    - [Azure Sentinel クエリとアクティビティの監査](audit-sentinel-data.md)
+
+- **アナリスト**:
+
+    - [推奨されるプレイブック](automate-responses-with-playbooks.md#recommended-playbooks)
+    - [Azure Sentinel での偽陽性の処理](false-positives.md)
+    - [Azure Sentinel で脅威を検出する](hunting.md)
+    - [一般的に使用される Azure Sentinel ブック](top-workbooks.md)
+    - [難しい設定なしで脅威を検出する](detect-threats-built-in.md)
+    - [脅威を検出するためのカスタム分析規則を作成する](detect-threats-custom.md)
+    - [Jupyter Notebook を使用してセキュリティの脅威を検出する](notebooks.md)
+
+詳細については、「[Architecting SecOps for Success: Best Practices for Deploying Azure Sentinel (成功するための SecOps の設計: Azure Sentinel のデプロイに関するベスト プラクティス)](https://youtu.be/DyL9MEMhqmI)」という動画をご覧ください
 
 ## <a name="regular-soc-activities-to-perform"></a>実行する標準 SOC アクティビティ
 
@@ -72,9 +101,9 @@ Azure Sentinel は、ワークスペースにデータを送信するコンポ�
 
 Azure Sentinel は、他のソースからアラートやログを取り込むだけでなく、以下のような機能も備えています。
 
-- **取り込んだ情報を[機械学習](bring-your-own-ml.md)で利用する** ことで、より優れたイベントの相関、アラートの集約、異常検知などが可能になります。
+- **取り込んだ情報を [機械学習](bring-your-own-ml.md)で利用する** ことで、より優れたイベントの相関、アラートの集約、異常検知などが可能になります。
 - **[ワークブック](get-visibility.md)を使って、トレンドや関連情報、管理業務や調査に使用する主要データを示すインタラクティブなビジュアルを構築し、提示** します。
-- **アラートに対応するための[プレイブック](tutorial-respond-threats-playbook.md)を実行し**、情報の収集、アイテムに対するアクションの実行、各種プラットフォームへの通知の送信を行います。
+- **アラートに対応するための [プレイブック](tutorial-respond-threats-playbook.md)を実行し**、情報の収集、アイテムに対するアクションの実行、各種プラットフォームへの通知の送信を行います。
 - ServiceNow や Jira などの **パートナー プラットフォーム** と統合し、SOC チームに必要なサービスを提供します。
 - [脅威インテリジェンス プラットフォーム](threat-intelligence-integration.md)から **エンリッチメント フィードを取り込み、フェッチし**、調査のための貴重なデータを提供します。
 
@@ -132,37 +161,7 @@ Azure Sentinel のエンティティの動作を使用すると、ユーザー�
 
 インシデントの発生時には、ウォッチリストを使用して調査データを格納し、調査を行ったときにそれらを削除して、機密データが表示されないようにします。
 
-
-## <a name="additional-best-practice-references"></a>その他のベスト プラクティス リファレンス
-
-Azure Sentinel ドキュメントには、記事全体にわたってベスト プラクティス ガイダンスが含まれています。 詳細については、次に関する記事を参照してください。
-
-- **[管理者ユーザー]**:
-
-    - [Azure Sentinel をデプロイするためのデプロイ前のアクティビティと前提条件](prerequisites.md)
-    - [Azure Sentinel ワークスペース アーキテクチャのベスト プラクティス](best-practices-workspace-architecture.md)
-    - [Azure Sentinel ワークスペース アーキテクチャを設計する](design-your-workspace-architecture.md)
-    - [Azure Sentinel のサンプル ワークスペースの設計](sample-workspace-designs.md)
-    - [データ収集のベスト プラクティス](best-practices-data.md)
-    - [Azure Sentinel のコストと課金](azure-sentinel-billing.md)
-    - [Azure Sentinel のアクセス許可](roles.md)
-    - [Azure Sentinel で MSSP の知的財産権を保護する](mssp-protect-intellectual-property.md)
-    - [Azure Sentinel への脅威インテリジェンスの統合](threat-intelligence-integration.md)
-    - [Azure Sentinel クエリとアクティビティの監査](audit-sentinel-data.md)
-
-- **アナリスト**:
-
-    - [推奨されるプレイブック](automate-responses-with-playbooks.md#recommended-playbooks)
-    - [Azure Sentinel での偽陽性の処理](false-positives.md)
-    - [Azure Sentinel で脅威を検出する](hunting.md)
-    - [一般的に使用される Azure Sentinel ブック](top-workbooks.md)
-    - [難しい設定なしで脅威を検出する](detect-threats-built-in.md)
-    - [脅威を検出するためのカスタム分析規則を作成する](detect-threats-custom.md)
-    - [Jupyter Notebook を使用してセキュリティの脅威を検出する](notebooks.md)
-
-詳細については、「[Architecting SecOps for Success: Best Practices for Deploying Azure Sentinel (成功するための SecOps の設計: Azure Sentinel のデプロイに関するベスト プラクティス)](https://youtu.be/DyL9MEMhqmI)」という動画をご覧ください
-
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Sentinel の概要は、以下を参照してください。
 

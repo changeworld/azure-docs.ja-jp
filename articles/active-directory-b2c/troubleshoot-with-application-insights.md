@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 08/26/2021
+ms.date: 09/20/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b8ceea26ed7a5e58e890c4e313b00f1f4f37f4e7
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 32961477c21c55c21705790495436e2ed10b72fc
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122967800"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128568417"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>Application Insights を使用して Azure Active Directory B2C のログを収集する
 
@@ -37,15 +37,17 @@ ms.locfileid: "122967800"
 
 サブスクリプションで Application Insights の終了インスタンスを使用するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com) にサインインする
-1. 上部のメニューで **[ディレクトリ + サブスクリプション]** フィルターを選択し、(Azure AD B2C のディレクトリではなく) お使いの Azure サブスクリプションが含まれるディレクトリを選択します。
+1. [Azure portal](https://portal.azure.com) にサインインします。
+1. 自分の Azure サブスクリプションが含まれる Azure AD ディレクトリを使用し、Azure AD B2C ディレクトリを使用しているのでないことを確認してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[スイッチ]** を選択します。
 1. 先ほど作成した Application Insights リソースを開きます。
 1. **[概要]** ページで、 **[インストルメンテーション キー]** を記録します。
 
 サブスクリプションに Application Insights のインスタンスを作成するには、次の手順を実行します。
 
 1. [Azure portal](https://portal.azure.com) にサインインする
-1. 上部のメニューで **[ディレクトリ + サブスクリプション]** フィルターを選択し、(Azure AD B2C のディレクトリではなく) お使いの Azure サブスクリプションが含まれるディレクトリを選択します。
+1. 自分の Azure サブスクリプションが含まれる Azure AD ディレクトリを使用し、Azure AD B2C ディレクトリを使用しているのでないことを確認してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[スイッチ]** を選択します。
 1. 左のナビゲーション メニューで **[リソースの作成]** を選択します。
 1. **Application Insights** を探して選択し、 **[作成]** を選択します。
 1. フォームに漏れなく入力し、 **[確認および作成]** を選択してから、 **[作成]** を選択します。

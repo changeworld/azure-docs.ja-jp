@@ -9,12 +9,12 @@ ms.topic: reference
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 703c2023103d9225e5dfad5bd0d288164350122f
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: d10c64af28f6b8dacdbc28d7d29c691fe50580e2
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123450343"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128569335"
 ---
 # <a name="create-an-azure-image-builder-template"></a>Azure Image Builder テンプレートを作成する 
 
@@ -25,32 +25,31 @@ Azure Image Builder では、.json ファイルを使って Image Builder サー
 テンプレートの基本的な形式を次に示します。
 
 ```json
- { 
+  { 
     "type": "Microsoft.VirtualMachineImages/imageTemplates", 
     "apiVersion": "2020-02-14", 
     "location": "<region>", 
     "tags": {
-        "<name": "<value>",
-        "<name>": "<value>"
-     },
-    "identity":{},           
+      "<name>": "<value>",
+      "<name>": "<value>"
+    },
+    "identity": {},          
     "dependsOn": [], 
     "properties": { 
-        "buildTimeoutInMinutes": <minutes>, 
-        "vmProfile": 
-            {
-            "vmSize": "<vmSize>",
+      "buildTimeoutInMinutes": <minutes>, 
+      "vmProfile": {
+        "vmSize": "<vmSize>",
         "proxyVmSize": "<vmSize>",
-            "osDiskSizeGB": <sizeInGB>,
-            "vnetConfig": {
-                "subnetId": "/subscriptions/<subscriptionID>/resourceGroups/<vnetRgName>/providers/Microsoft.Network/virtualNetworks/<vnetName>/subnets/<subnetName>"
-                }
-            },
-        "source": {}, 
-        "customize": {}, 
-        "distribute": {} 
-      } 
- } 
+        "osDiskSizeGB": <sizeInGB>,
+        "vnetConfig": {
+          "subnetId": "/subscriptions/<subscriptionID>/resourceGroups/<vnetRgName>/providers/Microsoft.Network/virtualNetworks/<vnetName>/subnets/<subnetName>"
+        }
+      },
+      "source": {}, 
+      "customize": {}, 
+      "distribute": {} 
+    } 
+  } 
 ```
 
 
@@ -143,11 +142,11 @@ VNET プロパティを指定しない場合、Image Builder によって独自�
 
 ```json
     "identity": {
-    "type": "UserAssigned",
-          "userAssignedIdentities": {
+        "type": "UserAssigned",
+        "userAssignedIdentities": {
             "<imgBuilderId>": {}
         }
-        },
+    },
 ```
 
 
@@ -177,10 +176,10 @@ Azure Image Builder では、Windows Server とクライアント、および Li
 ```json
         "source": {
             "type": "PlatformImage",
-                "publisher": "Canonical",
-                "offer": "UbuntuServer",
-                "sku": "18.04-LTS",
-                "version": "latest"
+            "publisher": "Canonical",
+            "offer": "UbuntuServer",
+            "sku": "18.04-LTS",
+            "version": "latest"
         },
 ```
 
@@ -218,7 +217,7 @@ az vm image list -l westus -f UbuntuServer -p Canonical --output table –-all
 ```json
         "source": { 
             "type": "ManagedImage", 
-                "imageId": "/subscriptions/<subscriptionId>/resourceGroups/{destinationResourceGroupName}/providers/Microsoft.Compute/images/<imageName>"
+            "imageId": "/subscriptions/<subscriptionId>/resourceGroups/{destinationResourceGroupName}/providers/Microsoft.Compute/images/<imageName>"
         }
 ```
 
@@ -236,7 +235,7 @@ az vm image list -l westus -f UbuntuServer -p Canonical --output table –-all
         "source": { 
             "type": "SharedImageVersion", 
             "imageVersionID": "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/p  roviders/Microsoft.Compute/galleries/<sharedImageGalleryName>/images/<imageDefinitionName/versions/<imageVersion>" 
-   } 
+        } 
 ```
 
 `imageVersionId` は、イメージ バージョンの ResourceId にする必要があります。 イメージ バージョンの一覧を表示するには、[az sig image-version list](/cli/azure/sig/image-version#az_sig_image_version_list) を使います。
@@ -308,13 +307,13 @@ customize セクションは配列です。 Azure Image Builder では、カス�
             "sha256Checksum": "<sha256 checksum>"       
         }, 
     ], 
-        "customize": [ 
+    "customize": [ 
         { 
             "type": "Shell", 
             "name": "<name>", 
             "inline": "<commands to run>"
-        }, 
-    ], 
+    }, 
+    ],
 ```
 
 OS のサポート: Linux 
@@ -397,7 +396,7 @@ Linux 再起動カスタマイザーはありませんが、ドライバーま�
              "validExitCodes": "<exit code>",
              "runElevated": "<true or false>" 
          } 
-    ], 
+     ], 
 ```
 
 OS のサポート: Windows と Linux
@@ -455,16 +454,16 @@ OS のサポート: Linux、Windows
 
 ```json
      "customize": [
-            {
-                "type": "WindowsUpdate",
-                "searchCriteria": "IsInstalled=0",
-                "filters": [
+          {
+               "type": "WindowsUpdate",
+               "searchCriteria": "IsInstalled=0",
+               "filters": [
                     "exclude:$_.Title -like '*Preview*'",
                     "include:$true"
-                            ],
-                "updateLimit": 20
-            }
-               ], 
+               ],
+               "updateLimit": 20
+          }
+     ], 
 ```
 
 OS のサポート: Windows
@@ -580,7 +579,7 @@ az resource show \
        "location": "<region>",
        "runOutputName": "<name>",
        "artifactTags": {
-            "<name": "<value>",
+            "<name>": "<value>",
             "<name>": "<value>"
         }
 }
@@ -596,7 +595,7 @@ az resource show \
  
 > [!NOTE]
 > 配布先のリソース グループは存在している必要があります。
-> 別のリージョンにイメージを配布する場合は、デプロイ時間が長くなります。 
+> イメージが別のリージョンに配布されるようにする場合は、デプロイ時間が長くなります。 
 
 ### <a name="distribute-sharedimage"></a>配布: sharedImage 
 Azure 共有イメージ ギャラリーは新しいイメージ管理サービスであり、イメージのリージョン レプリケーションの管理、バージョン管理、カスタム イメージの共有を行うことができます。 Azure Image Builder ではこのサービスによる配布がサポートされているので、共有イメージ ギャラリーでサポートされているリージョンにイメージを配布できます。 
@@ -642,7 +641,7 @@ Azure 共有イメージ ギャラリーは新しいイメージ管理サービ�
 
 
 > [!NOTE]
-> イメージ テンプレートと参照されている `image definition` が同じ場所にない場合は、イメージを作成するための追加の時間が表示されます。 現在、イメージ バージョン リソースの `location` パラメーターは Image Builder にはなく、その親の `image definition` から取得されます。 たとえば、イメージ定義が westus にあり、イメージ バージョンを eastus にレプリケートする場合、BLOB が westus にコピーされます。この BLOB から westus のイメージ バージョン リソースが作成され、eastus にレプリケートされます。 追加のレプリケーション時間を回避するには、`image definition` とイメージ テンプレートが同じ場所にあるようにします。
+> イメージ テンプレートと参照されている `image definition` が同じ場所にない場合は、イメージを作成するための追加の時間が表示されます。 現在、イメージ バージョン リソースの `location` パラメーターは Image Builder にはなく、その親の `image definition` から取得されます。 たとえば、イメージ定義が westus にあり、イメージ バージョンが eastus にレプリケートされるようにする場合は、BLOB が westus にコピーされ、この BLOB から westus のイメージ バージョン リソースが作成された後、eastus にレプリケートされます。 追加のレプリケーション時間を回避するには、`image definition` とイメージ テンプレートが同じ場所にあるようにします。
 
 
 ### <a name="distribute-vhd"></a>配布: VHD  
@@ -653,7 +652,7 @@ VHD に出力することができます。 その後、VHD をコピーし、�
     "type": "VHD",
     "runOutputName": "<VHD name>",
     "tags": {
-        "<name": "<value>",
+        "<name>": "<value>",
         "<name>": "<value>"
     }
 }
@@ -698,7 +697,7 @@ az resource invoke-action \
 ### <a name="cancelling-an-image-build"></a>イメージ ビルドの取り消し
 イメージのビルドを実行しているときに、正しくないと思われる場合、ユーザーの入力を待っている場合、または正常に完了しないと考えられる場合は、ビルドを取り消すことができます。
 
-ビルドはいつでも取り消すことができます。 配布フェーズが始まっている場合でも取り消しはできますが、完了していない可能性があるイメージをクリーンアップする必要があります。 cancel コマンドで取り消しの完了は待機されません。取り消しの進行状況については、状態[コマンド](image-builder-troubleshoot.md#customization-log)を使用して `lastrunstatus.runstate` を監視してください。
+ビルドはいつでも取り消すことができます。 配布フェーズが始まっている場合でも取り消しはできますが、完了していない可能性があるイメージをクリーンアップする必要があります。 cancel コマンドでは、取り消しの完了まで待つことはしません。これらの状態[コマンド](image-builder-troubleshoot.md#customization-log)を使用して、`lastrunstatus.runstate` で取り消しの進行状況を監視してください。
 
 
 `cancel` コマンドの例を次に示します。

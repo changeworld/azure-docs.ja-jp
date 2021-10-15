@@ -8,12 +8,12 @@ ms.service: media-services
 ms.topic: how-to
 ms.date: 08/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: b8dc092104f3371263719adbec16305afb87113c
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: 2525417516691fa4ffb6d681fc23b394f4588649
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122867383"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129364094"
 ---
 # <a name="how-to-scale-media-reserved-units-legacy"></a>メディア占有ユニットをスケーリングする方法 (レガシ)
 
@@ -22,7 +22,7 @@ ms.locfileid: "122867383"
 この記事では、エンコードを高速化するためにメディア占有ユニット (MRU) をスケーリングする方法について説明します。
 
 > [!WARNING]
-> このコマンドは、API の 2020-05-01 バージョン以降で作成された Media Services アカウントでは機能しなくなります。 これらのアカウントでは、メディア占有ユニットは不要になりました。負荷に基づいてシステムによって自動的にスケールアップとスケールダウンが行われるためです。 Azure portal で MRU を管理するオプションが表示されない場合は、2020-05-01 API 以降で作成されたアカウントを使用しています。
+> このコマンドは、API の 2020-05-01 (以降) バージョン以降で作成された Media Services アカウントでは機能しなくなります。 これらのアカウントでは、メディア占有ユニットは不要になりました。負荷に基づいてシステムによって自動的にスケールアップとスケールダウンが行われるためです。 Azure portal で MRU を管理するオプションが表示されない場合は、2020-05-01 API 以降で作成されたアカウントを使用しています。
 > この記事の目的は、MRU を使用する従来のプロセスを文書化することです。
 
 ## <a name="prerequisites"></a>前提条件

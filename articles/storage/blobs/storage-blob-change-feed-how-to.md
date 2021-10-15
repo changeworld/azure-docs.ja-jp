@@ -1,20 +1,21 @@
 ---
-title: Azure Blob Storage の変更フィードを処理する | Microsoft Docs
+title: Azure Blob Storage の変更フィードを処理する
+titleSuffix: Azure Storage
 description: .NET クライアント アプリケーションで変更フィード ログを処理する方法を学習します
 author: tamram
 ms.author: tamram
-ms.date: 09/08/2020
+ms.date: 10/01/2021
 ms.topic: article
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9d43b91fcebff017d6d18ee736cfddc858650fc7
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: cbd15bdc337bdb4a7221f634e6f9a66d4d503fe6
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128620200"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129400802"
 ---
 # <a name="process-change-feed-in-azure-blob-storage"></a>Azure Blob Storage の変更フィードを処理する
 
@@ -31,7 +32,6 @@ ms.locfileid: "128620200"
 dotnet add package Azure.Storage.Blobs --version 12.5.1
 dotnet add package Azure.Storage.Blobs.ChangeFeed --version 12.0.0-preview.4
 ```
-
 
 ## <a name="read-records"></a>レコードの読み取り
 
@@ -218,4 +218,5 @@ public async Task<List<BlobChangeFeedEvent>> ChangeFeedBetweenDatesAsync(string 
 
 ## <a name="next-steps"></a>次のステップ
 
-変更フィード ログについて、さらに学習します。 [Azure Blob Storage の変更フィード](storage-blob-change-feed.md) に関するページを参照してください。
+- [データ保護の概要](data-protection-overview.md)
+- [Azure Blob Storage での変更フィード](storage-blob-change-feed.md)

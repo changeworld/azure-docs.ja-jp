@@ -2,13 +2,13 @@
 title: Azure Event Grid イベントに対するイベント ハンドラーとしてのイベント ハブ
 description: Azure Event Grid イベントのイベント ハンドラーとしてイベント ハブを使用する方法について説明します。
 ms.topic: conceptual
-ms.date: 09/28/2021
-ms.openlocfilehash: 6ba4dec31a93b01804779cd9f614e64854fe6cce
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.date: 09/30/2021
+ms.openlocfilehash: 590364d759fe6f628cfaa306d162d00f575c0622
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129215037"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129354429"
 ---
 # <a name="event-hub-as-an-event-handler-for-azure-event-grid-events"></a>Azure Event Grid イベントに対するイベント ハンドラーとしてのイベント ハブ
 イベント ハンドラーは、イベントの送信先となる場所です。 ハンドラーでは、イベントを処理するアクションが実行されます。 一部の Azure サービスは、イベントを処理するように自動的に構成されます。**Azure Event Hubs** はその 1 つです。 
@@ -72,6 +72,17 @@ Event Grid からのイベントが速すぎて、ソリューションで処理
   }
 }
 ```
+
+## <a name="delivery-properties"></a>配信プロパティ
+イベント サブスクリプションを使用すると、配信されたイベントに含まれる HTTP ヘッダーを設定できます。 この機能を使用すると、宛先に必要なカスタム ヘッダーを設定できます。 Azure Event Hubs に配信されるイベントにカスタム ヘッダーを設定できます。
+
+イベントをイベント ハブ内の特定のパーティションに発行する必要がある場合は、イベント サブスクリプションに `ParitionKey` プロパティを設定して、対象のイベント ハブ パーティションを識別するパーティション キーを指定します。
+
+| ヘッダー名 | ヘッダーの種類 |
+| :-- | :-- |
+|`PartitionKey` | スタティック |
+
+詳細については、「[カスタム配信のプロパティ](delivery-properties.md)」を参照してください。 
 
 ## <a name="next-steps"></a>次のステップ
 サポートされているイベント ハンドラーの一覧については、「[イベント ハンドラー](event-handlers.md)」を参照してください。 

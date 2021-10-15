@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 6/12/2017
 ms.author: lemai
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9c31040ec13084f9e4b08bbc9a347e4ad44975bf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 73d51b68cafba5f2abab375dc5b1b90706a370db
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89021257"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129361741"
 ---
 # <a name="replacing-the-start-node-and-stop-node-apis-with-the-node-transition-api"></a>Start Node API と Stop Node API を Node Transition API に置き換える
 
@@ -25,7 +25,7 @@ Stop Node API (マネージド: [StopNodeAsync()][stopnode]、PowerShell: [Stop-
 
 また、これらの API によって返されるエラーの中には、その内容を判別しにくいものがあります。  たとえば、既に "*停止*" 状態のノードに対して Stop Node API を呼び出すと、*InvalidAddress* というエラーが返されます。  このような状況を改善する目的もあります。
 
-さらに、Start Node API が呼び出されるまで、ノードは "無期限に" 停止します。  これにより問題が発生したり、エラーが起こリやすくなる可能性があります。  たとえば、あるノードに対して Stop Node API を呼び出したまま、そのことを忘れてしまったケースがありました。  時間が経ってしまった後なので、そのノードが "*ダウン*" しているのか、"*停止*" しているのか判断できませんでした。
+さらに、Start Node API が呼び出されるまで、ノードは "無期限に" 停止します。  これにより問題が発生したり、エラーが起こりやすくなる可能性があります。  たとえば、あるノードに対して Stop Node API を呼び出したまま、そのことを忘れてしまったケースがありました。  時間が経ってしまった後なので、そのノードが "*ダウン*" しているのか、"*停止*" しているのか判断できませんでした。
 
 
 ## <a name="introducing-the-node-transition-apis"></a>Node Transition API の概要
@@ -34,8 +34,7 @@ Stop Node API (マネージド: [StopNodeAsync()][stopnode]、PowerShell: [Stop-
 
 **使用方法**
 
-Node Transition API を呼び出したときに例外がスローされなければ、非同期操作はシステムによって受け入れられおり、実行されます。  呼び出しが成功していても、操作が完了しているとは限りません。  操作の現在の状態に関する情報を取得するには、Node Transition API を呼び出したときに使用した guid を指定して、Node Transition Progress API (マネージド: [GetNodeTransitionProgressAsync()][gntp]) を呼び出します。  Node Transition Progress API は、NodeTransitionProgress オブジェクトを返します。  このオブジェクトの State プロパティを見れば、操作の現在の状態がわかります。  値が "Running" の場合、操作は実行中です。  "Completed" の場合、エラーが発生することなく操作が完了しています。  "Faulted" の場合、操作の実行に問題が発生しています。  問題の内容は、Result プロパティの Exception プロパティに示されています。  State プロパティの詳細については https://docs.microsoft.com/dotnet/api/system.fabric.testcommandprogressstate を参照してください。また、コード例については、下の “使用例” セクションをご覧ください。
-
+Node Transition API を呼び出したときに例外がスローされなければ、非同期操作はシステムによって受け入れられおり、実行されます。  呼び出しが成功していても、操作が完了しているとは限りません。  操作の現在の状態に関する情報を取得するには、Node Transition API を呼び出したときに使用した guid を指定して、Node Transition Progress API (マネージド: [GetNodeTransitionProgressAsync()][gntp]) を呼び出します。  Node Transition Progress API は、NodeTransitionProgress オブジェクトを返します。  このオブジェクトの State プロパティを見れば、操作の現在の状態がわかります。  値が "Running" の場合、操作は実行中です。  "Completed" の場合、エラーが発生することなく操作が完了しています。  "Faulted" の場合、操作の実行に問題が発生しています。  問題の内容は、Result プロパティの Exception プロパティに示されています。  State プロパティの詳細については [TestCommandProgressState Enum](/dotnet/api/system.fabric.testcommandprogressstate) を参照してください。また、コード例については、後述する「使用例」セクションを参照してください。
 
 **停止したノードとダウンしたノードを見分ける方法** Node Transition API を使用してノードを "*停止*" した場合、ノード クエリの出力 (マネージド: [GetNodeListAsync()][nodequery]、PowerShell: [Get-servicefabricnode][nodequeryps]) を見ると、このノードの *IsStopped* プロパティの値が true になっているのがわかります。  これは、*NodeStatus* プロパティの値 (*Down*) とは異なります。  *NodeStatus* プロパティの値が *Down* であるにもかかわらず、*IsStopped* が false の場合、そのノードは Node Transition API で停止されたのではなく、別の理由により "*ダウン*" しています。  *IsStopped* プロパティが true で、*NodeStatus* プロパティが *Down* の場合、そのノードは Node Transition API で停止されています。
 

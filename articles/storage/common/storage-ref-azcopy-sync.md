@@ -8,12 +8,12 @@ ms.date: 09/01/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 9ba814b4188984f3a0f6dbe16e866d6184d8cf2b
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 6acafe9f1fab42f5dde74eaaa4426f1953bf0f9b
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128547663"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129275413"
 ---
 # <a name="azcopy-sync"></a>azcopy sync
 
@@ -169,7 +169,7 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 
 **--recursive**    既定では `True` で、ディレクトリ間で同期するときに、サブディレクトリ内を再帰的に調べます。 (既定値は `True` です。)
 
-**--s2s-preserve-access-tier**  サービス間のコピー中にアクセス層を保持します。 「[Azure Blob Storage: ホット、クール、アーカイブ アクセス層](../blobs/storage-blob-storage-tiers.md)」を参照して、同期先のストレージ アカウントで、アクセス層の設定がサポートされていることを確認してください。 アクセス層の設定がサポートされていない場合は、s2sPreserveAccessTier = false を使用してアクセス層のコピーをバイパスしてください。 (既定値は `true` です。)
+**--s2s-preserve-access-tier**  サービス間のコピー中にアクセス層を保持します。 宛先ストレージ アカウントでアクセス層の設定が確実にサポートされるようにするには、「[BLOB データのホット、クール、アーカイブのアクセス層](../blobs/access-tiers-overview.md)」を参照してください。 アクセス層の設定がサポートされていない場合は、s2sPreserveAccessTier = false を使用してアクセス層のコピーをバイパスしてください。 (既定値は `true` です。)
 
 **--s2s-preserve-blob-tags**      BLOB ストレージ間でサービス間の同期中にインデックス タグを保持します。
 

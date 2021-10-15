@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 05/26/2021
+ms.date: 09/28/2021
 ms.author: victorh
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e4543af78b173632e3374567e9a199f182679e8f
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: e3c1da0e21f13357c5c537da2530e012101423dd
+ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110701708"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129215702"
 ---
 # <a name="azure-firewall-dns-settings"></a>Azure Firewall の DNS 設定
 
@@ -21,7 +21,7 @@ ms.locfileid: "110701708"
 
 ## <a name="dns-servers"></a>DNS サーバー
 
-DNS サーバーでは、ドメイン名から IP アドレスに管理と解決が行われます。 Azure Firewall では、名前解決に Azure DNS が既定で使用されます。 **DNS サーバー** 設定を使用すると、Azure Firewall の名前解決に対して独自の DNS サーバーを構成できます。 1 台のサーバーまたは複数台のサーバーを構成できます。
+DNS サーバーでは、ドメイン名から IP アドレスに管理と解決が行われます。 Azure Firewall では、名前解決に Azure DNS が既定で使用されます。 **DNS サーバー** 設定を使用すると、Azure Firewall の名前解決に対して独自の DNS サーバーを構成できます。 1 台のサーバーまたは複数台のサーバーを構成できます。 複数の DNS サーバーを構成する場合、使用されるサーバーはランダムに選択されます。
 
 > [!NOTE]
 > Azure Firewall Manager を使用して管理される Azure Firewall インスタンスの場合、DNS 設定は関連する Azure Firewall ポリシー内に構成されます。
@@ -80,6 +80,8 @@ Azure Firewall が DNS プロキシの場合、次の 2 種類のキャッシュ
 - **負のキャッシュ**: DNS 解決が、応答なし、または解決なしという結果になります。 ファイアウォールによって、この情報は 1 時間キャッシュされます。
 
 DNS プロキシによって、すべての解決済み IP アドレスが FQDN からネットワーク ルールに格納されます。 ベスト プラクティスとして、1 つの IP アドレスに解決される FQDN を使用することをお勧めします。
+
+接続に失敗した場合、Azure DNS など他の DNS サーバーに対して DNS プロキシによる再試行やフェールオーバーは実行されません。
 
 ### <a name="policy-inheritance"></a>ポリシーの継承
 

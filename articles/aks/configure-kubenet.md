@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: d206e92eeea06b8e8a95a74c7a253eae5280eb5f
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: d78616830c47cb2a50292a226cf1d79e0ece58ba
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128607807"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129545079"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) の独自の IP アドレス範囲で kubenet ネットワークを使用する
 
@@ -54,7 +54,7 @@ Azure でサポートされる UDR のルート数は最大 400 なので、AKS 
 * kubenet を使用するには、ルート テーブルとユーザー定義ルートが必要になるため、操作が複雑になります。
 * kubenet の設計により、直接的なポッドのアドレス指定は kubenet ではサポートされていません。
 * Azure CNI クラスターとは異なり、複数の kubenet クラスターで 1 つのサブネットを共有することはできません。
-* 独自のサブネットを指定する場合は、そのサブネットに関連付けられているネットワーク セキュリティ グループ (NSG) を管理する必要があります。 AKS では、そのサブネットに関連付けられている NSG は変更されません。 また、NSG のセキュリティ規則でノードとポッド CIDR の間のトラフィックが許可されるようにする必要もあります。
+* AKS では Network Security Groups (NSG) がそのサブネットに適用されず、そのサブネットに関連付けられている NSG が変更されることもありません。 独自のサブネットを指定し、そのサブネットに関連付けられている NSG を追加する場合は、NSG のセキュリティ規則で、ノードとポッドの CIDR 間のトラフィックが許可されている必要があります。 詳しくは、「[ネットワーク セキュリティ グループ][aks-network-nsg]」を参照してください。
 * **kubenet でサポートされていない機能** には次のものが含まれます。
    * [Azure ネットワーク ポリシー](use-network-policies.md#create-an-aks-cluster-and-enable-network-policy)。ただし、Calico ネットワーク ポリシーは kubenet でサポートされています。
    * [Windows ノード プール](./windows-faq.md)
@@ -254,6 +254,7 @@ az aks create -g MyResourceGroup -n MyManagedCluster --vnet-subnet-id MySubnetID
 <!-- LINKS - Internal -->
 [install-azure-cli]: /cli/azure/install-azure-cli
 [aks-network-concepts]: concepts-network.md
+[aks-network-nsg]: concepts-network.md#network-security-groups
 [az-group-create]: /cli/azure/group#az_group_create
 [az-network-vnet-create]: /cli/azure/network/vnet#az_network_vnet_create
 [az-ad-sp-create-for-rbac]: /cli/azure/ad/sp#az_ad_sp_create_for_rbac

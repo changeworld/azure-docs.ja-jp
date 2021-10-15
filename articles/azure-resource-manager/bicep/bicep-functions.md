@@ -2,13 +2,13 @@
 title: Bicep 関数
 description: 値の取得、文字列の処理、デプロイ情報の取得のために、Bicep ファイルで使用する関数について説明します。
 ms.topic: conceptual
-ms.date: 09/09/2021
-ms.openlocfilehash: bd697d6c1a1eaac7877341ffbbc10b1027882dd6
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 09/30/2021
+ms.openlocfilehash: 6fabd0bdbe6341382344c0e63ca711519275a3f4
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124794028"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129351675"
 ---
 # <a name="bicep-functions"></a>Bicep 関数
 
@@ -16,13 +16,28 @@ ms.locfileid: "124794028"
 
 ほとんどの関数は、リソース グループ、サブスクリプション、管理グループ、またはテナントにデプロイされた場合に、同じように動作します。 いくつかの関数は、すべてのスコープでは使用できません。 これらは以下の一覧に記載されています。
 
+## <a name="namespaces-for-functions"></a>関数の名前空間
+
+Bicep 関数はすべて、`az` と `sys` の 2 つの名前空間内に含まれています。 通常、この関数を使用するときに名前空間を指定する必要はありません。 名前空間は、関数名が Bicep ファイルで定義されている別の項目と同じである場合にのみ指定します。 たとえば、`range` という名前のパラメーターを作成する場合は、`sys` 名前空間を追加して `range` 関数を区別する必要があります。
+
+```bicep
+// Parameter contains the same name as a function
+param range int
+
+// Must use sys namespace to call the function. 
+// The second use of range refers to the parameter.
+output result array = sys.range(1, range)
+```
+
+`az` 名前空間には、Azure のデプロイに固有の関数が含まれています。 `sys` 名前空間には、値を作成するために使用される関数が含まれています。 `sys` 名前空間にはまた、パラメーターとリソース ループのデコレーターも含まれています。 この記事では、これらの名前空間を記載しています。
+
 ## <a name="any-function"></a>すべての関数
 
-Bicep では、データ型の警告に関する問題の解決に役立つ[任意の関数](./bicep-functions-any.md)を使用できます。
+Bicep では、データ型の警告に関する問題の解決に役立つ[任意の関数](./bicep-functions-any.md)を使用できます。 この関数は、`sys` 名前空間にあります。
 
 ## <a name="array-functions"></a>配列関数
 
-次の関数は、配列を操作するために使用できます。
+次の関数は、配列を操作するために使用できます。 これらの関数はすべて、`sys` 名前空間にあります。
 
 * [array](./bicep-functions-array.md#array)
 * [concat](./bicep-functions-array.md#concat)
@@ -41,34 +56,34 @@ Bicep では、データ型の警告に関する問題の解決に役立つ[任�
 
 ## <a name="date-functions"></a>データ関数
 
-次の関数は、日付を操作するために使用できます。
+次の関数は、日付を操作するために使用できます。 これらの関数はすべて、`sys` 名前空間にあります。
 
 * [dateTimeAdd](./bicep-functions-date.md#datetimeadd)
 * [utcNow](./bicep-functions-date.md#utcnow)
 
 ## <a name="deployment-value-functions"></a>デプロイの値関数
 
-次の関数は、デプロイに関連する値を取得するために使用できます。
+次の関数は、デプロイに関連した値を取得するために使用できます。 これらの関数はすべて、`az` 名前空間にあります。
 
 * [デプロイ](./bicep-functions-deployment.md#deployment)
 * [environment](./bicep-functions-deployment.md#environment)
 
 ## <a name="file-functions"></a>ファイル関数
 
-次の関数は、外部ファイルから Bicep ファイルにコンテンツを読み込むために使用できます。
+次の関数は、外部ファイルから Bicep ファイルにコンテンツを読み込むために使用できます。 これらの関数はすべて、`sys` 名前空間にあります。
 
 * [loadFileAsBase64](bicep-functions-files.md#loadfileasbase64)
 * [loadTextContent](bicep-functions-files.md#loadtextcontent)
 
 ## <a name="logical-functions"></a>論理関数
 
-次の関数は、論理条件を操作するために使用できます。
+次の関数は、論理条件を操作するために使用できます。 この関数は、`sys` 名前空間にあります。
 
 * [bool](./bicep-functions-logical.md#bool)
 
 ## <a name="numeric-functions"></a>数値関数
 
-次の関数は、整数を操作するために使用できます。
+次の関数は、整数を操作するために使用できます。 これらの関数はすべて、`sys` 名前空間にあります。
 
 * [int](./bicep-functions-numeric.md#int)
 * [min](./bicep-functions-numeric.md#min)
@@ -76,7 +91,7 @@ Bicep では、データ型の警告に関する問題の解決に役立つ[任�
 
 ## <a name="object-functions"></a>オブジェクト関数
 
-次の関数は、オブジェクトを操作するために使用できます。
+次の関数は、オブジェクトを操作するために使用できます。 これらの関数はすべて、`sys` 名前空間にあります。
 
 * [contains](./bicep-functions-object.md#contains)
 * [empty](./bicep-functions-object.md#empty)
@@ -87,7 +102,7 @@ Bicep では、データ型の警告に関する問題の解決に役立つ[任�
 
 ## <a name="resource-functions"></a>リソース関数
 
-次の関数は、リソースの値を取得するために使用できます。
+次の関数は、リソース値を取得するために使用できます。 これらの関数のほとんどは、`az` 名前空間にあります。 リスト関数と getSecret 関数は、リソースの種類で直接呼び出されるため、名前空間修飾子は含まれていません。
 
 * [extensionResourceId](./bicep-functions-resource.md#extensionresourceid)
 * [getSecret](./bicep-functions-resource.md#getsecret)
@@ -104,7 +119,7 @@ Bicep では、データ型の警告に関する問題の解決に役立つ[任�
 
 ## <a name="scope-functions"></a>スコープ関数
 
-次の関数は、スコープの値を取得するために使用できます。
+次の関数は、スコープの値を取得するために使用できます。 これらの関数はすべて、`az` 名前空間にあります。
 
 * [managementGroup](./bicep-functions-scope.md#managementgroup)
 * [resourceGroup](./bicep-functions-scope.md#resourcegroup) - リソース グループへのデプロイでのみ使用できます。
@@ -113,7 +128,7 @@ Bicep では、データ型の警告に関する問題の解決に役立つ[任�
 
 ## <a name="string-functions"></a>文字列関数
 
-Bicep には、文字列を操作するための次の関数が用意されています。
+Bicep には、文字列を操作するための次の関数が用意されています。 これらの関数はすべて、`sys` 名前空間にあります。
 
 * [base64](./bicep-functions-string.md#base64)
 * [base64ToJson](./bicep-functions-string.md#base64tojson)
@@ -150,6 +165,6 @@ Bicep には、文字列を操作するための次の関数が用意されて�
 
 ## <a name="next-steps"></a>次のステップ
 
-* Bicep ファイルのセクションの説明は、[Bicep ファイルの構造と構文](./file.md)に関する記事をご覧ください。
+* Bicep ファイルのセクションの説明については、「[Bicep ファイルの構造と構文について](./file.md)」を参照してください。
 * 1 種類のリソースを指定した回数分繰り返し作成するには、[Bicep でリソースの複数のインスタンスをデプロイする方法](./loop-resources.md)に関するページを参照してください。
 * 作成した Bicep ファイルをデプロイする方法については、「[Bicep ファイルと Azure PowerShell を使用してリソースをデプロイする](./deploy-powershell.md)」を参照してください。

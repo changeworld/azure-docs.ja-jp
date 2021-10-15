@@ -3,12 +3,12 @@ title: Azure Video Analyzer を Azure Stack Edge にデプロイする
 description: この記事では、Azure Video Analyzer を Azure Stack Edge にデプロイするときに役立つ手順を示します。
 ms.topic: how-to
 ms.date: 06/01/2021
-ms.openlocfilehash: 1cfcd7956cd14d0c687c8619732523a5d7bba4c0
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: da14368846cd87d5d4e231933cec0068a4e558f9
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114605215"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129546625"
 ---
 # <a name="deploy-azure-video-analyzer-on-azure-stack-edge"></a>Azure Video Analyzer を Azure Stack Edge にデプロイする
 
@@ -175,6 +175,40 @@ Azure portal では、配置マニフェストの作成から、IoT Edge デバ�
     "allowUnsecuredEndpoints": true,
     "telemetryOptOut": false
     ```
+1. **[追加]** を選択します。  
+
+RTSP シミュレーター エッジ モジュールを追加する
+
+1. ページの **[IoT Edge モジュール]** セクションで、 **[追加]** ドロップダウンをクリックし、**IoT Edge モジュール** を選択して、 **[IoT Edge モジュールの追加]** ページを表示します。
+1. **モジュールの設定** タブで、モジュール名を入力し、コンテナー イメージ URI を指定します:   
+    例 :
+    
+    * **IoT Edge モジュールの名前**: rtspsim
+    * **イメージ URI**: mcr.microsoft.com/lva-utilities/rtspsim-live555:1.2  
+
+
+1. **[コンテナーの作成オプション]** タブを開きます。
+ 
+    次の JSON をコピーし、ボックスに貼り付けます。
+    
+    ```
+    {
+        "HostConfig": {
+            "Binds": [
+               "/home/localedgeuser/samples/input/:/live/mediaServer/media/"
+            ],
+            "PortBindings": {
+                    "554/tcp": [
+                        {
+                        "HostPort": "554"
+                        }
+                    ]
+            }
+        }
+    }
+    ```
+1. **[追加]** を選択します。  
+
 1. **Next:ルート** 　でルート のセクションに進みます。 ルートを指定します。
 
     [名前] に「**AVAToHub**」と入力し、[値] に「**FROM /messages/modules/avaedge/outputs/ INTO $upstream**」と入力します
@@ -193,6 +227,8 @@ Azure portal では、配置マニフェストの作成から、IoT Edge デバ�
 
     > [!div class="mx-imgBorder"]
     > :::image type="content" source="./media/deploy-on-stack-edge/copy-provisioning-token.png" alt-text="トークンをコピーします":::
+
+
 
 #### <a name="optional-setup-docker-volume-mounts"></a>(省略可能) Docker ボリューム マウントの設定
 
@@ -268,7 +304,7 @@ Azure portal では、配置マニフェストの作成から、IoT Edge デバ�
                     "Mounts": 
                     [
                         {
-                            "Target": "/var/media",
+                            "Target": "/live/mediaServer/media",
                             "Source": "media",
                             "Type": "volume"
                         }

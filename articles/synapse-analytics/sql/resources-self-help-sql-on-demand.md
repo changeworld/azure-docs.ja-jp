@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 9/23/2021
 ms.author: stefanazaric
 ms.reviewer: jrasnick, wiassaf
-ms.openlocfilehash: 35803ad7d63e107f71e71c6ce8292c5608740eec
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: e0380c4d1b4fe9c82d6e9b82922b1a509f7dcdf4
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128555256"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129545605"
 ---
 # <a name="self-help-for-serverless-sql-pool"></a>サーバーレス SQL プールのセルフヘルプ
 
@@ -495,7 +495,7 @@ Azure Synapse SQL では、次の場合、トランザクション ストアに�
 ### <a name="cosmosdb-performance-issues"></a>Cosmos DB のパフォーマンスの問題
 
 予期しないパフォーマンスの問題が発生している場合は、次のようなベスト プラクティスを適用していることを確認してください。
-- クライアント アプリケーション、サーバーレス プール、および Cosmos DB 分析ストレージを[同じリージョン](best-practices-serverless-sql-pool.md#colocate-your-cosmosdb-analytical-storage-and-serverless-sql-pool)に配置したことを確認する。
+- クライアント アプリケーション、サーバーレス プール、および Cosmos DB 分析ストレージを[同じリージョン](best-practices-serverless-sql-pool.md#colocate-your-azure-cosmos-db-analytical-storage-and-serverless-sql-pool)に配置したことを確認する。
 - [最適なデータ型](best-practices-serverless-sql-pool.md#use-appropriate-data-types)で `WITH` 句を使用していることを確認する。
 - 文字列述語を使ってデータをフィルター処理するときに、[Latin1_General_100_BIN2_UTF8 照合順序](best-practices-serverless-sql-pool.md#use-proper-collation-to-utilize-predicate-pushdown-for-character-columns)を使用していることを確認する。
 - キャッシュされる可能性があるクエリを繰り返している場合は、[クエリ結果を Azure Data Lake Storage に格納するために CETAS](best-practices-serverless-sql-pool.md#use-cetas-to-enhance-query-performance-and-joins) を使用してみる。
@@ -509,7 +509,7 @@ Delta Lake のサポートは、現在、サーバーレス SQL プールでの�
 - Apache Spark プールで作成された Delta Lake テーブルは、サーバーレス SQL プールで自動的に使用できるようになりません。 このような Delta Lake テーブルに対して、T-SQL 言語を使用してクエリを実行するには、[CREATE EXTERNAL TABLE](./create-use-external-tables.md#delta-lake-external-table) ステートメントを実行し、形式として Delta を指定します。
 - 外部テーブルでは、パーティション分割はサポートされていません。 パーティションの除去を利用するには、Delta Lake フォルダーの[パーティション分割されたビュー](create-use-views.md#delta-lake-partitioned-views)を使用します。 以下の既知の問題と回避策を参照してください。
 - サーバーレス SQL プールでは、タイム トラベル クエリはサポートされていません。 [Azure フィードバック サイト](https://feedback.azure.com/forums/307516-azure-synapse-analytics/suggestions/43656111-add-time-travel-feature-in-delta-lake)でこの機能に投票することができます。 [履歴データの読み取り](../spark/apache-spark-delta-lake-overview.md?pivots=programming-language-python#read-older-versions-of-data-using-time-travel)には、Azure Synapse Analytics で Apache Spark プールを使用します。
-- サーバーレス SQL プールでは、Delta Lake ファイルの更新はサポートされていません。 サーバーレス SQL プールを使用して、最新バージョンの Delta Lake のクエリを実行できます。 [Delta Lake の更新](../spark/apache-spark-delta-lake-overview.md?pivots=programming-language-python#update-table-data)には、Azure Synapse Analytics で Apache Spark プールを使用します。
+- サーバーレス SQL プールでは、Delta Lake ファイルの更新はサポートされていません。 サーバーレス SQL プールを使用して、最新バージョンの Delta Lake のクエリを実行できます。 [Delta Lake の更新](../spark/apache-spark-delta-lake-overview.md?pivots=programming-language-python#update-table-data) には、Azure Synapse Analytics で Apache Spark プールを使用します。
 - Azure Synapse Analytics のサーバーレス SQL プールでは、[ブルーム フィルター](/azure/databricks/delta/optimizations/bloom-filters)を使用したデータセットはサポートされていません。
 - Delta Lake のサポートは、専用 SQL プールでは使用できません。 Delta Lake ファイルのクエリにはサーバーレス プールを使用していることを確認してください。
 
@@ -644,10 +644,16 @@ Azure チームは、`delta_log` ファイルの内容を調査し、考えら�
 ### <a name="query-duration-is-very-long"></a>クエリの実行時間が非常に長い 
 
 Synapse Studio を使用している場合は、SQL Server Management Studio や Azure Data Studio など、いくつかのデスクトップ クライアントを使用してみてください。 Synapse Studio は、HTTP プロトコルを使用してサーバーレス プールに接続する Web クライアントです。これは一般的に、SQL Server Management Studio または Azure Data Studio で使用されるネイティブ SQL 接続よりも低速です。
+
 実行時間が 30 分を超えるクエリがある場合は、クライアントに結果を返す速度が遅いことを示しています。 サーバーレス SQL プールの実行には 30 分の制限があり、それ以上の時間は結果のストリーミングに費やされています。
+
+クエリの実行速度が遅い場合は、次の問題を確認してください。
 -   そのクライアント アプリケーションがサーバーレス SQL プール エンドポイントと併置されていることを確認します。 リージョンをまたいでクエリを実行すると、結果セットの待機時間が長くなり、ストリーミングが低速になることがあります。
 -   結果セットの低速ストリーミングの原因となるネットワークの問題がないことを確認します 
--   クライアント アプリケーションに十分なリソースがあること (たとえば、CPU の使用率が 100% になっていないこと) を確認します。 [リソースを併置](best-practices-serverless-sql-pool.md#client-applications-and-network-connections)するためのベスト プラクティスを参照してください。
+-   クライアント アプリケーションに十分なリソースがあること (たとえば、CPU の使用率が 100% になっていないこと) を確認します。 
+-   ストレージ アカウントまたは cosmosDB 分析ストレージが、サーバーレス SQL エンドポイントと同じリージョンに配置されていることを確認してください。
+
+[リソースを併置](best-practices-serverless-sql-pool.md#client-applications-and-network-connections)するためのベスト プラクティスを参照してください。
 
 ### <a name="high-variations-in-query-durations"></a>クエリの実行時間が大きく異なる
 

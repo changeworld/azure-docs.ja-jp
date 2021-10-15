@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 08/24/2021
+ms.date: 10/01/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 687e23c7267991eee171e205a537a45546da73b2
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: 510e2207a2c25c5da5f4de08f3bf16fbf6cf4c7d
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122864580"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129354276"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Google を B2B ゲスト ユーザーの ID プロバイダーとして追加する
 
@@ -31,7 +31,7 @@ Google とのフェデレーションを設定することで、招待された�
 > [!IMPORTANT]
 >
 > - **2021 年 7 月 12 日以降では**、Azure AD B2B のお客様がセルフサービス サインアップで使用するため、あるいはカスタム アプリケーションまたは基幹業務アプリケーションに外部ユーザーを招待するために、新しい Google 統合をセットアップした場合、Gmail ユーザーの認証がブロックされる可能性があります (以下の「[予期される事柄](#what-to-expect)」に示すようなエラー画面が表示されます)。 この問題が発生するのは、2021 年 7 月 12日 以降にセルフサービス サインアップ ユーザー フローまたは招待のために Google 統合を作成し、カスタム アプリケーションまたは基幹業務アプリケーションの Gmail 認証がシステム Web ビューに移動されていない場合のみです。 システム Web ビューは既定で有効になっているため、ほとんどのアプリは影響を受けません。 この問題を回避するには、セルフサービス サインアップのために新しい Google 統合を作成する前に、Gmail 認証をシステム ブラウザーに移動することを強くお勧めします。 「[埋め込み Web ビューに必要な対応](#action-needed-for-embedded-frameworks)」を参照してください。
-> - **2021 年 9 月 30 日以降**、Google では [Web ビューのサインイン サポートが非推奨](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html)になります。 アプリで埋め込み Web ビューを使用してユーザーを認証していて、Google フェデレーションを [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md)、Azure AD B2B (外部ユーザーの招待用)、または[セルフサービス サインアップ](identity-providers.md)で使用している場合、Google Gmail ユーザーが認証されなくなります。 [詳細については、こちらを参照してください](#deprecation-of-web-view-sign-in-support)。
+> - **2021 年 9 月 30 日以降**、Google では [Web ビューのサインイン サポートが非推奨](https://developers.googleblog.com/2021/06/upcoming-security-changes-to-googles-oauth-2.0-authorization-endpoint.html)になります。 アプリで埋め込み Web ビューを使用してユーザーを認証していて、Google フェデレーションを [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md)、Azure AD B2B (外部ユーザーの招待用)、または[セルフサービス サインアップ](identity-providers.md)で使用している場合、Google Gmail ユーザーが認証されなくなります。 [詳細については、こちらを参照してください](#deprecation-of-web-view-sign-in-support)。
 
 ## <a name="what-is-the-experience-for-the-google-user"></a>Google ユーザーのエクスペリエンスの内容
 
@@ -58,7 +58,7 @@ Google ゲスト ユーザーは、テナント情報を含むアプリケーシ
 
 ## <a name="deprecation-of-web-view-sign-in-support"></a>Web ビュー サインイン サポートの廃止
 
-2021 年の 9 月 30 日より、Google は[埋め込み Web ビューのサインイン サポートを廃止](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html)します。 アプリで埋め込み Web ビューを使用してユーザーを認証していて、Google フェデレーションを [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md)、Azure AD B2B [(外部ユーザーの招待用)](google-federation.md)、または[セルフサービス サインアップ](identity-providers.md)で使用している場合、Google Gmail ユーザーが認証されなくなります。
+2021 年の 9 月 30 日より、Google は[埋め込み Web ビューのサインイン サポートを廃止](https://developers.googleblog.com/2021/06/upcoming-security-changes-to-googles-oauth-2.0-authorization-endpoint.html)します。 アプリで埋め込み Web ビューを使用してユーザーを認証していて、Google フェデレーションを [Azure AD B2C](../../active-directory-b2c/identity-provider-google.md)、Azure AD B2B [(外部ユーザーの招待用)](google-federation.md)、または[セルフサービス サインアップ](identity-providers.md)で使用している場合、Google Gmail ユーザーが認証されなくなります。
 
 Gmail ユーザーに影響を与える既知のシナリオを次に示します。
 - Windows 上の Microsoft アプリ (Teams や Power Apps など) 
@@ -72,11 +72,7 @@ Gmail ユーザーに影響を与える既知のシナリオを次に示しま�
 - web サイト経由でアクセスされる Microsoft 365 サービス (SharePoint オンライン、Office Web アプリ、Teams Web アプリなど)
 - 認証でシステム Web ビューを使用したモバイルアプリ (iOS の [SFSafariViewController](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller)、Android の[カスタム タブ](https://developer.chrome.com/docs/android/custom-tabs/overview/))。  
 - Google Workspace ID (たとえば、Google Workspace との [SAML ベースのフェデレーション](direct-federation.md)を使用している場合)
-
-この変更によって次のような影響があるか Google に確認しています。
 - Web アカウント マネージャー (WAM) または Web 認証ブローカー (WAB) を使用する Windows アプリ。  
-
-Microsoft はさまざまなプラットフォームおよびシナリオのテストを継続しており、それに応じてこの記事を更新する予定です。
 
 ### <a name="action-needed-for-embedded-web-views"></a>埋め込み Web ビューに必要な対応
 
@@ -84,20 +80,55 @@ Microsoft はさまざまなプラットフォームおよびシナリオのテ�
 
 ### <a name="what-to-expect"></a>ウィザードの内容
 
-Google が 2021 年 9 月 30 日にこれらの変更を実施する前に、Microsoft はまだ埋め込み Web ビューを使用しているアプリのための回避策を配備して、認証がブロックされないようにします。 埋め込み Web ビューで Gmail アカウントを使用してサインインするユーザーは、サインインを完了するために、別のブラウザーでコードを入力するように求められます。
+Microsoft は、9 月 30 日より、埋め込み Web ビューを現在も使用しているアプリケーションの認証がブロックされないようにするための回避策となる、デバイスのサインイン フローをグローバルに展開します。
+
+### <a name="how-to-sign-in-with-the-device-sign-in-flow"></a>デバイスのサインイン フローでサインインする方法
+
+デバイスのサインイン フローでは、Gmail アカウントを使用して埋め込み Web ビューからサインインを行ったユーザーに対して、サインインを完了する前に別のブラウザーでコードを入力するように求めるメッセージを表示します。 ユーザーが、ブラウザー上にアクティブなセッションがない状態で初めて Gmail アカウントでサインインした場合、次のような一連の画面が表示されます。 既存の Gmail アカウントで既にサインインしている場合は、これらの手順の一部が省略される可能性があります。
+
+1. **[サインイン]** 画面で、ユーザーが自身の Gmail のアドレスを入力し、 **[次へ]** を選択します。
+
+   ![サインイン画面を示すスクリーンショット](media/google-federation/1-sign-in.png)
+
+1. ユーザーに、新しいウィンドウを開いて https://microsoft.com/devicelogin に移動し、表示された 9 桁の英数字を入力するよう求める次のような画面が表示されます。
+
+   ![9 桁のコードを示すスクリーンショット](media/google-federation/2-sign-in-code.png)
+
+1. ユーザーがコードを入力できる、デバイスのサインイン ページが開きます。 
+
+   ![デバイスのサインイン ページを示すスクリーンショット](media/google-federation/3-enter-code.png)
+
+1. コードが一致する場合、セキュリティ上の理由から、ユーザーはアプリとサインインの場所を確認するためにメールアドレスを再入力するように求められます。
+
+   ![メールアドレスを再表示するための画面を示すスクリーンショット](media/google-federation/4-sign-in-reenter-email.png)
+
+1. ユーザーは、自身のメールアドレスとパスワードを使用して Google にサインインします。
+
+   ![Google のサインイン画面を示すスクリーンショット](media/google-federation/5-sign-in-with-google.png)
+
+1. ここでも、サインインしようとしているアプリを確認するように求められます。
+
+   ![アプリケーションの確認画面を示すスクリーンショット](media/google-federation/6-confirm-sign-in.png)
+
+1. ユーザーが **[続行]** を選択します。 サインインが完了したことを確認するメッセージが表示されます。 ユーザーがタブまたはウィンドウを閉じると、アプリにサインインした最初の画面に戻ります。
+
+   ![サインインの確認を示すスクリーンショット](media/google-federation/7-app-sign-in-confirmed.png)
 
 または、既存の Gmail ユーザーと新しい Gmail ユーザーに、電子メールのワンタイム パスコードを使用してサインインさせることもできます。 Gmail ユーザーが電子メールのワンタイム パスコードを使用するようにするには、次のようにします。
+
 1. [電子メールのワンタイム パスコードを有効にする](one-time-passcode.md#enable-email-one-time-passcode)
 2. [Google フェデレーションを削除する](google-federation.md#how-do-i-remove-google-federation)
 3. Gmail ユーザーの[利用状態をリセット](reset-redemption-status.md)して、今後、電子メールのワンタイム パスコードを使用できるようにします。
+
+延長を申請する場合、影響を受ける OAuth クライアント ID をお持ちのお客様には、Google Developers から、2022 年 1 月 31 日までに完了しなければならない 1 回限りのポリシー施行延長に関する以下の情報が記載されたメールが届いているはずです。
+
+- "If necessary, you may request a one-time **policy enforcement extension for embedded webviews** for each listed OAuth client ID until January 31, 2022. (必要に応じて、記載されている OAuth クライアント ID ごとに、2022 年 1 月 31 日までであれば、埋め込み Web ビューのポリシー施行延長を 1 回に限り、要求することができます。) For clarity, the policy for embedded webviews will be enforced on February 1, 2022 with no exceptions or extensions." (明確にするために、埋め込み Web ビューのポリシーは 2022 年 2 月 1 日に施行され、例外や延長はありません。)
 
 許可された認証用 Web ビューに移行しているアプリケーションには影響はなく、ユーザーは通常どおり Google 経由で認証することができます。
 
 許可された認証用 Web ビューにアプリケーションが移行されない場合、影響を受ける Gmail ユーザーには次の画面が表示されます。
 
 ![アプリがシステム ブラウザーに移行されない場合の Google サインイン エラー](media/google-federation/google-sign-in-error-ewv.png)
-
-このドキュメントは、Google により日付と詳細情報が共有されたら更新される予定です。
 
 ### <a name="distinguishing-between-cefelectron-and-embedded-web-views"></a>CEF/Electron と埋め込み Web ビューを区別する
 

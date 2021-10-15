@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 08/26/2021
+ms.date: 09/15/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 7b0b5a35a85a8b0564112d62401c722e65505f2e
-ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+ms.openlocfilehash: be29232e78ff3cbfa2aec9f880e42774ad0b2376
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123186229"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128570089"
 ---
 # <a name="billing-model-for-azure-active-directory-b2c"></a>Azure Active Directory B2C の課金モデル
 
@@ -69,14 +69,15 @@ Azure AD B2C テナントにリンクされているサブスクリプション�
 ### <a name="create-the-link"></a>リンクを作成する
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-2. 上部のメニューで **[ディレクトリ + サブスクリプション]** フィルターを選択し、(Azure AD B2C テナントを含むディレクトリ "*ではなく*") 使用する Azure サブスクリプションを含むディレクトリを選択します。
-3. **[リソースの作成]** を選択し、**[Marketplace を検索]** フィールドに「`Active Directory B2C`」と入力し、**[Azure Active Directory B2C]** を選択します。
-4. **［作成］** を選択します
-5. **[Link an existing Azure AD B2C Tenant to my Azure subscription]\(既存の Azure AD B2C テナントを Azure サブスクリプションにリンクする\)** を選択します。
-6. ドロップダウンから **[Azure AD B2C テナント]** を選択します。 自分がグローバル管理者であり、サブスクリプションにまだリンクされていないテナントのみが表示されます。 **[Azure AD B2C リソース名]** フィールドには、選択した Azure AD B2C テナントのドメイン名が入力されます。
-7. 自分が管理者であるアクティブな Azure **[サブスクリプション]** を選択します。
-8. **[リソース グループ]** の **[新規作成]** を選択し、**[リソース グループの場所]** を指定します。 ここでのリソース グループ設定は、Azure AD B2C テナントの場所、パフォーマンス、または課金状態に影響しません。
-9. **［作成］** を選択します
+1. 自分の Azure AD サブスクリプションが含まれるディレクトリを使用しており、Azure AD B2C テナントが含まれているディレクトリではないことを確認してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[スイッチ]** を選択します。
+1. **[リソースの作成]** を選択し、**[Marketplace を検索]** フィールドに「`Active Directory B2C`」と入力し、**[Azure Active Directory B2C]** を選択します。
+1. **［作成］** を選択します
+1. **[Link an existing Azure AD B2C Tenant to my Azure subscription]\(既存の Azure AD B2C テナントを Azure サブスクリプションにリンクする\)** を選択します。
+1. ドロップダウンから **[Azure AD B2C テナント]** を選択します。 自分がグローバル管理者であり、サブスクリプションにまだリンクされていないテナントのみが表示されます。 **[Azure AD B2C リソース名]** フィールドには、選択した Azure AD B2C テナントのドメイン名が入力されます。
+1. 自分が管理者であるアクティブな Azure **[サブスクリプション]** を選択します。
+1. **[リソース グループ]** の **[新規作成]** を選択し、**[リソース グループの場所]** を指定します。 ここでのリソース グループ設定は、Azure AD B2C テナントの場所、パフォーマンス、または課金状態に影響しません。
+1. **［作成］** を選択します
 
     ![Azure portal の Azure AD B2C リソース作成ページ](./media/billing/portal-01-create-b2c-resource-page.png)
 
@@ -90,15 +91,17 @@ Azure AD B2C テナントについてこれらの手順を完了すると、Azur
 
 1. Azure portal にサインインします。
 
-2. 上部のメニューで **[ディレクトリ + サブスクリプション]** フィルターを選択してから、Azure B2C テナントのリンク先の Azure サブスクリプションが含まれるディレクトリを選択します (Azure AD B2C テナント自体を選択 *しないでください*)。
+1. Azure AD B2C テナント自体ではなく Azure B2C テナントのリンク先の Azure サブスクリプションが含まれる Azure AD ディレクトリを選択するため、ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
 
-3. ポータルの上部にある検索ボックスに、Azure AD B2C テナントの名前を入力します。 次に、 **[リソース]** の下の検索結果からテナントを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[スイッチ]** を選択します。
 
-4. リソースの **[概要]** ページで、 **[価格レベル]** の下にある **[変更]** を選択します。
+1. ポータルの上部にある検索ボックスに、Azure AD B2C テナントの名前を入力します。 次に、 **[リソース]** の下の検索結果からテナントを選択します。
+
+1. リソースの **[概要]** ページで、 **[価格レベル]** の下にある **[変更]** を選択します。
 
    ![価格レベルの変更](media/billing/change-pricing-tier.png)
  
-5. 有効にする機能が含まれている価格レベルを選択します。
+1. 有効にする機能が含まれている価格レベルを選択します。
 
    ![価格レベルの選択](media/billing/select-tier.png)
 
@@ -111,22 +114,18 @@ Azure AD B2C テナントについてこれらの手順を完了すると、Azur
 既存の Azure AD B2C リソースについて MAU の課金に切り替えるには、次の手順を実行します。
 
 1. Azure AD B2C リソースへの管理アクセス権を持つサブスクリプション所有者として [Azure portal](https://portal.azure.com) にサインインします。
-
-2. 上部のメニューで **[ディレクトリ + サブスクリプション]** フィルターを選択し、MAU の課金にアップグレードする Azure AD B2C ディレクトリを選択します。<br/>
-
-    ![Azure portal の [ディレクトリ + サブスクリプション] フィルター](./media/billing/portal-mau-01-select-b2c-directory.png)
-
-3. 左側のメニューで、 **[Azure AD B2C]** を選択します。 または、 **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
-
-4. Azure AD B2C テナントの **[概要]** ページで、**[リソース名]** の下のリンクを選択します。 Azure AD テナントの Azure AD B2C リソースにリダイレクトされます。<br/>
+1. MAU の課金にアップグレードする Azure AD B2C ディレクトリを選択するため、ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
+1. 左側のメニューで、 **[Azure AD B2C]** を選択します。 または、 **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
+1. Azure AD B2C テナントの **[概要]** ページで、**[リソース名]** の下のリンクを選択します。 Azure AD テナントの Azure AD B2C リソースにリダイレクトされます。<br/>
 
     ![Azure portal で強調表示されている Azure AD B2C リソースのリンク](./media/billing/portal-mau-02-b2c-resource-link.png)
 
-5. Azure AD B2C リソースの **[概要]** ページで、**[請求可能な単位]** の下にある **[認証ごと (MAU に変更)]** リンクを選択します。<br/>
+1. Azure AD B2C リソースの **[概要]** ページで、**[請求可能な単位]** の下にある **[認証ごと (MAU に変更)]** リンクを選択します。<br/>
 
     ![Azure portal で強調表示されている [MAU に変更] リンク](./media/billing/portal-mau-03-change-to-mau-link.png)
 
-6. **[確認]** を選択して、MAU の課金へのアップグレードを完了します。<br/>
+1. **[確認]** を選択して、MAU の課金へのアップグレードを完了します。<br/>
 
     ![Azure portal の MAU ベースの課金確認ダイアログ](./media/billing/portal-mau-04-confirm-change-to-mau.png)
 

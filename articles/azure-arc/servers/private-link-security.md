@@ -2,13 +2,13 @@
 title: Azure Private Link を使用して、ネットワークを Azure Arc に安全に接続する
 description: Azure Private Link を使用して、ネットワークを Azure Arc に安全に接続する方法について説明します。
 ms.topic: conceptual
-ms.date: 09/14/2021
-ms.openlocfilehash: 53bd9310c193d4fad1d550fbf33446754c30ecd6
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 10/01/2021
+ms.openlocfilehash: 10b306ef659903524c5a6a62c24ffe36e074666a
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128631516"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129399795"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-arc"></a>Azure Private Link を使用して、ネットワークを Azure Arc に安全に接続する
 
@@ -44,10 +44,12 @@ Azure Arc プライベート リンク スコープ (プレビュー) によっ�
 
 :::image type="content" source="./media/private-link-security/private-link-topology.png" alt-text="基本的なリソース トポロジの図" border="true":::
 
-前に示した Azure Arc 対応サーバーから他の Azure リソースに接続するには、各サービス用の Private Link を構成する必要があります。 詳細については、[Azure Automation](../../automation/how-to/private-link-security.md)、[Azure Monitor](../../azure-monitor/logs/private-link-security.md)、[Azure Key Vault](../../key-vault/general/private-link-service.md)、または [Azure Blob Storage](../../private-link/tutorial-private-endpoint-storage-portal.md) 用の Private Link の構成に関する記事を参照してください。
+Azure Arc 対応サーバーから他の Azure リソースに接続するには、サービスごとに Private Link を構成する必要があります。これは省略可能ですが、推奨されています。 Azure Private Link では、サービスごとに個別の構成が必要です。
+
+Azure のサービス用の Private Link の構成の詳細については、[Azure Automation](../../automation/how-to/private-link-security.md)、[Azure Monitor](../../azure-monitor/logs/private-link-security.md)、[Azure Key Vault](../../key-vault/general/private-link-service.md)、または [Azure Blob Storage](../../private-link/tutorial-private-endpoint-storage-portal.md) に関する記事を参照してください。
 
 > [!IMPORTANT]
-> Azure Private Link は、現在、一般提供されています。 プライベート エンドポイントと Private Link サービス (Standard ロード バランサーの背後にあるサービス) の両方が一般提供されています。 さまざまな Azure PaaS が異なるスケジュールで Azure Private Link にオンボードされます。 Private Link 上の Azure PaaS の正確な状態については、[プライベート リンクの可用性](../../private-link/availability.md)に関する記事を参照してください。 既知の制約については、[プライベート エンドポイント](../../private-link/private-endpoint-overview.md#limitations)と [Private Link サービス](../../private-link/private-link-service-overview.md#limitations)の説明を参照してください。
+> Azure Private Link は、現在、一般提供されています。 プライベート エンドポイントと Private Link サービス (Standard ロード バランサーの背後にあるサービス) の両方が一般提供されています。 さまざまな Azure PaaS がさまざまなスケジュールに従って Azure Private Link にオンボードされます。 Private Link 上の Azure PaaS の更新された状態については、[プライベート リンクの可用性](../../private-link/availability.md)に関する記事を参照してください。 既知の制約については、[プライベート エンドポイント](../../private-link/private-endpoint-overview.md#limitations)と [Private Link サービス](../../private-link/private-link-service-overview.md#limitations)の説明を参照してください。
 
 * VNet でプライベート エンドポイントを使用すると、Azure Arc 対応サーバーのエンドポイントのパブリック IP を使用するのではなく、ネットワークのプールのプライベート IP を介してそれらのエンドポイントに接続することができます。 これにより、要求されていない送信トラフィックに対して VNet を開くことなく、Azure Arc 対応サーバーのリソースを使用し続けることができます。
 

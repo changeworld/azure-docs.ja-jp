@@ -3,13 +3,13 @@ title: Azure Functions の開発に関するガイダンス
 description: プログラミング言語とバインドを問わず、Azure での関数開発に必要な Azure Functions の概念とテクニックについて説明します。
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
-ms.date: 10/12/2017
-ms.openlocfilehash: 93ac3458e2d9954c9ec17294fe89199d11cc765f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 9/02/2021
+ms.openlocfilehash: 49c6fc554eab18ec598db7ec21ef8c15b95d7be9
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121741391"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128669647"
 ---
 # <a name="azure-functions-developer-guide"></a>Azure Functions 開発者ガイド
 Azure Functions の特定の関数は、使用する言語またはバインドに関係なく、いくつかの中核となる技術的な概念とコンポーネントを共有します。 特定の言語またはバインド固有の詳細を学習する前に、それらすべてに当てはまるこの概要をお読みください。
@@ -111,17 +111,18 @@ Azure Functions のコードはオープン ソースであり、GitHub リポ�
 
 Azure Functions の一部の接続は、シークレットの代わりに ID を使用するように構成されています。 サポートは、接続を使用する拡張機能によって異なります。 場合によっては、接続先のサービスで ID ベースの接続がサポートされている場合でも、Functions で接続文字列が必要になることがあります。
 
-ID ベースの接続は、すべてのプランにおいて、次のトリガーおよびバインド拡張機能でサポートされています。
+ID ベースの接続は、次のトリガーおよびバインド拡張機能でサポートされています。
 
 > [!NOTE]
 > ID ベースの接続は、Durable Functions ではサポートされません。
 
-| 拡張機能の名前 | 拡張機能のバージョン                                                                                     |
-|----------------|-------------------------------------------------------------------------------------------------------|
-| Azure BLOB     | [バージョン 5.0.0-beta1 以降](./functions-bindings-storage-blob.md#storage-extension-5x-and-higher)  |
-| Azure Queue    | [バージョン 5.0.0-beta1 以降](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher) |
-| Azure Event Hubs    | [バージョン 5.0.0-beta1 以降](./functions-bindings-event-hubs.md#event-hubs-extension-5x-and-higher) |
-| Azure Service Bus    | [バージョン 5.0.0-beta2 以降](./functions-bindings-service-bus.md#service-bus-extension-5x-and-higher) |
+| 拡張機能の名前 | 拡張機能のバージョン                                                                                     | サポートされているプラン     |
+|----------------|-------------------------------------------------------------------------------------------------------|---------------------|
+| Azure BLOB     | [バージョン 5.0.0-beta1 以降](./functions-bindings-storage-blob.md#storage-extension-5x-and-higher)  | すべて                 |
+| Azure Queue    | [バージョン 5.0.0-beta1 以降](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher) | すべて                 |
+| Azure Event Hubs    | [バージョン 5.0.0-beta1 以降](./functions-bindings-event-hubs.md#event-hubs-extension-5x-and-higher) | すべて            |
+| Azure Service Bus    | [バージョン 5.0.0-beta2 以降](./functions-bindings-service-bus.md#service-bus-extension-5x-and-higher) | すべて         |
+| Azure Cosmos DB   | [バージョン 4.0.0-preview1 以降](./functions-bindings-cosmosdb-v2.md#cosmos-db-extension-4x-and-higher) | エラスティック Premium |
 
 
 Functions ランタイム (`AzureWebJobsStorage`) によって使用されるストレージ接続は、ID ベースの接続を使用して構成することもできます。 以下の[「ID を使用してホスト ストレージに接続する」](#connecting-to-host-storage-with-an-identity)を参照してください。
@@ -142,15 +143,17 @@ Azure Functions サービスでホストされている場合、ID ベースの�
 | Azure キュー | [Storage Queue Data Reader](../role-based-access-control/built-in-roles.md#storage-queue-data-reader)、[Storage Queue Data Message Processor](../role-based-access-control/built-in-roles.md#storage-queue-data-message-processor)、[Storage Queue Data Message Sender](../role-based-access-control/built-in-roles.md#storage-queue-data-message-sender)、[Storage Queue Data Contributor](../role-based-access-control/built-in-roles.md#storage-queue-data-contributor)             |
 | Event Hubs   |    [Azure Event Hubs Data Receiver](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver)、[Azure Event Hubs Data Sender](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender)、[Azure Event Hubs Data Owner](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner)              |
 | Service Bus | [Azure Service Bus Data Receiver](../role-based-access-control/built-in-roles.md#azure-service-bus-data-receiver)、[Azure Service Bus Data Sender](../role-based-access-control/built-in-roles.md#azure-service-bus-data-sender)、[Azure Service Bus Data Owner](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner) |
+| Azure Cosmos DB | [Cosmos DB Built-in Data Reader](../cosmos-db/how-to-setup-rbac.md#built-in-role-definitions)、[Cosmos DB Built-in Data Contributor](../cosmos-db/how-to-setup-rbac.md#built-in-role-definitions) |
 
 #### <a name="connection-properties"></a>接続のプロパティ
 
-Azure サービスに対する ID ベースの接続では、次のプロパティを使用できます。
+Azure サービスの ID ベースの接続では、次のプロパティを使用できます。ここで、`<CONNECTION_NAME_PREFIX>` は、トリガーまたはバインディングの定義内の `connection` プロパティの値です。
 
 | プロパティ    | 拡張機能に必要 | 環境変数 | 説明 |
 |---|---|---|---|
 | サービス URI | Azure Blob<sup>1</sup>、Azure Queue | `<CONNECTION_NAME_PREFIX>__serviceUri` | 接続先サービスのデータ プレーン URI。 |
 | 完全修飾名前空間 | Event Hubs、Service Bus | `<CONNECTION_NAME_PREFIX>__fullyQualifiedNamespace` | Event Hubs と Service Bus の完全修飾名前空間。 |
+| アカウント エンドポイント | Azure Cosmos DB | `<CONNECTION_NAME_PREFIX>__accountEndpoint` | Azure Cosmos DB アカウント エンドポイント URI。 |
 | トークン資格情報 | (オプション)。 | `<CONNECTION_NAME_PREFIX>__credential` | 接続のためにトークンを取得する方法を定義します。 "managedidentity" に設定する必要がある場合の、ユーザー割り当て ID の指定時にのみ推奨されます。 これは Azure Functions サービスでホストされるときにのみ有効です。 |
 | クライアント ID | (オプション)。 | `<CONNECTION_NAME_PREFIX>__clientId` | `credential` が "managedidentity" に設定されると、このプロパティによって、トークンの取得時に使用されるユーザー割り当て ID が指定されます。 このプロパティは、アプリケーションに割り当てられたユーザー割り当て ID に相当するクライアント ID を受け取ります。 指定されていない場合、システム割り当て ID が使用されます。 このプロパティは、`credential` を設定しないとき、[ローカル開発シナリオ](#local-development-with-identity-based-connections)で異なる方法で使用されます。 |
 
@@ -189,6 +192,20 @@ Azure Blob との ID ベースの接続に必要な `local.settings.json` プロ
   "IsEncrypted": false,
   "Values": {
     "<CONNECTION_NAME_PREFIX>__serviceUri": "<serviceUri>",
+    "<CONNECTION_NAME_PREFIX>__tenantId": "<tenantId>",
+    "<CONNECTION_NAME_PREFIX>__clientId": "<clientId>",
+    "<CONNECTION_NAME_PREFIX>__clientSecret": "<clientSecret>"
+  }
+}
+```
+
+Azure Cosmos DB との ID ベースの接続に必要な `local.settings.json` プロパティの例を次に示します。 
+
+```json
+{
+  "IsEncrypted": false,
+  "Values": {
+    "<CONNECTION_NAME_PREFIX>__accountEndpoint": "<accountEndpoint>",
     "<CONNECTION_NAME_PREFIX>__tenantId": "<tenantId>",
     "<CONNECTION_NAME_PREFIX>__clientId": "<clientId>",
     "<CONNECTION_NAME_PREFIX>__clientSecret": "<clientSecret>"

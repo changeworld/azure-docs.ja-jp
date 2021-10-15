@@ -3,13 +3,13 @@ title: Azure サポート要求を作成する方法
 description: サポートが必要なお客様は、Azure portal を使用して、セルフサービス ソリューションを見つけたり、サポート リクエストを作成および管理したりできます。
 ms.topic: how-to
 ms.custom: support-help-page
-ms.date: 09/01/2021
-ms.openlocfilehash: 768c778926024288b0d331b5cb6b60c8e9c16a57
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.date: 09/30/2021
+ms.openlocfilehash: 4598cc16173100749ad3f1bdefd3165020554465
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123429463"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129358275"
 ---
 # <a name="create-an-azure-support-request"></a>Azure サポート要求を作成する
 
@@ -18,9 +18,9 @@ Azure では、サポート要求 (サポート チケットとも呼ばれる) 
 > [!NOTE]
 > Azure portal の URL は、組織がデプロイされている Azure クラウドに固有のものです。
 >
->* 商用利用の Azure portal は次のとおりです。[https://portal.azure.com](https://portal.azure.com)
->* ドイツの Azure portal は次のとおりです: [https://portal.microsoftazure.de](https://portal.microsoftazure.de)
->* 米国政府機関向けの Azure portal は次のとおりです: [https://portal.azure.us](https://portal.azure.us)
+>- 商用利用の Azure portal は次のとおりです。[https://portal.azure.com](https://portal.azure.com)
+>- ドイツの Azure portal は次のとおりです: [https://portal.microsoftazure.de](https://portal.microsoftazure.de)
+>- 米国政府機関向けの Azure portal は次のとおりです: [https://portal.azure.us](https://portal.azure.us)
 
 Azure は、サブスクリプション管理 (請求、割り当て調整、アカウント振り替えなど) に無制限のサポートを提供します。 技術的なサポートについては、サポート プランが必要になります。 詳細については、「[サポート プランの比較](https://azure.microsoft.com/support/plans)」を参照してください。
 
@@ -78,7 +78,9 @@ Microsoft は、発生している問題について情報を収集してその�
 
 1. お客様の問題に関する詳細情報を確認できるように **問題の詳細** をすべて入力します。 可能であれば、問題が発生した時期と、再現手順をお知らせください。 ログ ファイルや診断からの出力などのファイルをアップロードできます。 ファイルのアップロードの詳細については、「[ファイルのアップロードのガイドライン](how-to-manage-azure-support-request.md#file-upload-guidelines)」を参照してください。
 
-1. **[診断情報の共有]** セクションで、 **[はい]** または **[いいえ]** を選択します。 **[はい]** を選択することで、Azure サポートで Azure リソースから[診断情報](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/)を収集できるようになります。 この情報を共有しない場合は、 **[いいえ]** を選択します。 場合によっては、仮想マシンのメモリへのアクセスを許可するかどうかなど、追加のオプションを選択する必要があります。
+1. **[診断情報の共有]** セクションで、 **[はい]** または **[いいえ]** を選択します。 **[はい]** を選択することで、Azure サポートで Azure リソースから [診断情報](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/)を収集できるようになります。 この情報を共有しない場合は、 **[いいえ]** を選択します。 収集する可能性があるファイルの種類の詳細については、「[詳細診断情報ログ](#advanced-diagnostic-information-logs)」セクションを参照してください。
+
+  場合によっては、追加のオプションを選択する必要があります。 たとえば、特定の種類の仮想マシンの問題の種類について、[仮想マシンのメモリへのアクセスを許可する](#memory-dump-collection)かどうかを選択できます。
 
 1. **[サポート方法]** セクションで、影響の重大度を選択します。 最高重大度は[サポート プラン](https://azure.microsoft.com/support/plans)ごとに異なります。
 
@@ -93,6 +95,29 @@ Microsoft は、発生している問題について情報を収集してその�
 リクエストを作成する前に、サポートに送信する詳細情報をすべて確認します。 変更が必要な場合は、 **[前へ]** を選択して任意のタブに戻ることができます。 完了したサポート リクエストが適切であれば、 **[作成]** を選択します。
 
 サポート エンジニアが、指定された方法を使用してお客様に連絡します。 初回の応答時間については、「[サポート内容と応答性](https://azure.microsoft.com/support/plans/response/)」を参照してください。
+
+### <a name="advanced-diagnostic-information-logs"></a>詳細診断情報ログ
+
+[詳細診断情報](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/)の収集を許可すると、Microsoft サポートは、問題の迅速な解決に役立つ情報を収集できます。 この一覧はすべてを網羅しているわけではありませんが、さまざまなサービスまたは環境の詳細診断情報で収集される一般的なファイルの例が含まれています。
+
+- [Microsoft Azure PaaS VM ログ](/troubleshoot/azure/virtual-machines/sdp352ef8720-e3ee-4a12-a37e-cc3b0870f359-windows-vm)
+- [Microsoft Azure IaaS VM ログ](https://github.com/azure/azure-diskinspect-service/blob/master/docs/manifest_by_file.md)
+- [Microsoft Azure Service Fabric ログ](/troubleshoot/azure/general/fabric-logs)
+- [StorSimple サポート パッケージとデバイスログ](https://support.microsoft.com/topic/storsimple-support-packages-and-device-logs-cb0a1c7e-6125-a5a7-f212-51439781f646)
+- [Azure Virtual Machines 上の SQL Server ログ](/troubleshoot/azure/general/sql-vm-logs)
+- [Azure Active Directory ログ](/troubleshoot/azure/active-directory/support-data-collection-diagnostic-logs)
+- [Azure Stack Edge サポート パッケージとデバイス ログ](/troubleshoot/azure/general/azure-stack-edge-support-package-device-logs)
+- [Azure Synapse Analytics ログ](/troubleshoot/azure/general/synapse-analytics-apache-spark-pools-diagnostic-logs)
+
+### <a name="memory-dump-collection"></a>メモリ ダンプの収集
+
+特定の仮想マシン (VM) の問題のサポート ケースを作成すると、仮想マシンのメモリへのアクセスのサポートを許可するかどうかを確認するメッセージが表示されます。 そうすると、問題の診断に役立つメモリ ダンプを収集できます。
+
+完全なメモリ ダンプは、最大のカーネル モード ダンプ ファイルです。 このファイルには、Windows で使用されるすべての物理メモリが含まれます。 完全なメモリ ダンプには、既定では、プラットフォーム ファームウェアで使用される物理メモリは含まれません。
+
+ダンプは、同じデータセンター内でデバッグするために、計算ノード (Azure ホスト) から別のサーバーにコピーされます。 データはセキュリティで保護された Azure 境界の内側にあるため、顧客データは保護されます。
+
+ダンプ ファイルは、VM の Hyper-V 保存状態を生成して作成されます。 これにより、VM が最大 10 分間一時停止し、その後 VM が再開されます。 VM は、このプロセスの一部として再起動されません。
 
 ## <a name="next-steps"></a>次のステップ
 

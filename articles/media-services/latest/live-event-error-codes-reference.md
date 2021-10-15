@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: error-reference
 ms.date: 03/26/2021
 ms.author: inhenkel
-ms.openlocfilehash: bd8a980d6f8cf7f71dbbfb5f099a12ca966be9ac
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 24428aeb07548556a96c292b6dc1be0f2014a479
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128661642"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129389838"
 ---
 # <a name="media-services-live-event-error-codes"></a>Media Services ライブ イベント エラー コード
 
@@ -60,7 +60,7 @@ ms.locfileid: "128661642"
 >| [説明]|受信エンコーダーによって、ライブ イベントまたはチャンネルのエンコードで許容されている上限の 30 fps を超えるフレーム レートでストリームが取り込まれました。 |
 >| 推奨されている解決方法|エンコーダーのプリセットを確認して、フレーム レートを 36 fps 未満に下げてください。 |
 >|**MPE_INGEST_VIDEO_RESOLUTION_NOT_SUPPORTED** ||
->| [説明]|受信エンコーダーが、次の許容される解像度を超えるストリームを取り込みました。ライブ イベント/チャンネルのエンコード: 1920x1088、パススルー ライブ イベント/チャンネル: 4096 x 2160 |
+>| [説明]|受信エンコーダーによって、許容される解像度 (ライブ イベントまたはチャネルのエンコードの場合は 1920x1088、Basic および Standard パススルーのライブ イベントまたはチャネルの場合は 4096 x 2160) を超えるストリームが取り込まれました。 |
 >| 推奨されている解決方法|エンコーダーのプリセットを確認し、制限を超えないようにビデオ解像度を下げてください。 |
 >|**MPE_INGEST_RTMP_TOO_LARGE_UNPROCESSED_FLV** |
 >| [説明]|ライブ イベントで一度に大量の音声データまたは動画データを受け取りましたが、キー フレームがありません。 正しいデータで再試行できるようにエンコーダーが切断されました。 |

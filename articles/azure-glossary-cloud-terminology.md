@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2021
 ms.author: monicar
-ms.openlocfilehash: e57dd133a9145356c64faa3854a121834fbdb2ae
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 0f0b624097fdb159fd52adae7ae57830833662f2
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128645153"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129272948"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure 用語集:Azure プラットフォームにおけるクラウド用語の辞書
 
@@ -28,7 +28,7 @@ Microsoft Azure 用語集は、Azure プラットフォーム向けのクラウ�
 
 * [Microsoft Azure とアマゾン ウェブ サービス](https://azure.microsoft.com/campaigns/azure-vs-aws/mapping/) - Azure サービスとそれに対応する AWS サービスの定義。<!-- I propose to link to https://azure.microsoft.com/services/ instead of this -->
 * [クラウド コンピューティング用語](https://azure.microsoft.com/overview/cloud-computing-dictionary/) - 業界における一般的なクラウド用語についての解説
-* [Azure の基本的な概念](https://docs.microsoft.com/azure/cloud-adoption-framework/ready/considerations/fundamental-concepts) - Azure 向けの Microsoft Cloud 導入フレームワーク。
+* [Azure の基本的な概念](/azure/cloud-adoption-framework/ready/considerations/fundamental-concepts) - Azure 向けの Microsoft Cloud 導入フレームワーク。
 
 ## <a name="account"></a>account
 Azure サブスクリプションへのアクセスおよび管理に使用するアカウント。 Azure アカウントと呼ばれることが多いですが、既存の職場アカウント、学校アカウント、個人用 Microsoft アカウントのいずれかを指定できます。 [無料試用版](https://azure.microsoft.com)にサインアップする際に、Azure サブスクリプションを管理するためのアカウントを作成することもできます。  

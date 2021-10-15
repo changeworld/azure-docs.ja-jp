@@ -10,12 +10,12 @@ ms.date: 08/16/2021
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 5b561e233deb5478be89f965bb059e68cfb7134f
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.openlocfilehash: 47445520e92f6c7f4a8e5eb78c404b6875dbe017
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122271206"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129274066"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>ストレージ アカウントがレプリケートされる方法を変更する
 
@@ -151,7 +151,7 @@ Microsoft はお客様のライブ マイグレーションの要求に速やか
 > [!NOTE]
 > Premium ファイル共有は、LRS と ZRS でのみ使用できます。
 >
-> GZRS ストレージ アカウントでは、現在アーカイブ層はサポートされていません。 詳細については、「[Azure Blob Storage: ホット、クール、アーカイブ ストレージ層](../blobs/storage-blob-storage-tiers.md)」を参照してください。
+> GZRS ストレージ アカウントでは、現在アーカイブ層はサポートされていません。 詳細については、「[BLOB データのホット、クール、アーカイブのアクセス層](../blobs/access-tiers-overview.md)」を参照してください。
 >
 > マネージド ディスクは LRS にのみ使用できます。ZRS に移行することはできません。 Standard SSD マネージド ディスクのスナップショットとイメージを、Standard HDD ストレージに格納できます。また、[LRS オプションと ZRS オプションから選択](https://azure.microsoft.com/pricing/details/managed-disks/)できます。 可用性セットとの統合については、「[Azure マネージド ディスクの概要](../../virtual-machines/managed-disks-overview.md#integration-with-availability-sets)」を参照してください。
 

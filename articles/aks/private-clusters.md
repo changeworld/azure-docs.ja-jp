@@ -4,12 +4,12 @@ description: プライベート Azure Kubernetes Service (AKS) クラスター�
 services: container-service
 ms.topic: article
 ms.date: 8/30/2021
-ms.openlocfilehash: dcf969745fcc3c98b5bd0a9ba3681be602b73eb1
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: fd91a848a2da7ca503f74def67c0fab268d253c7
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129210214"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129387983"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>プライベート Azure Kubernetes Service クラスターを作成する
 
@@ -155,7 +155,7 @@ Helm のインストールを実行し、特定の値のマニフェストを渡
 az aks command invoke -g <resourceGroup> -n <clusterName> -c "helm repo add bitnami https://charts.bitnami.com/bitnami && helm repo update && helm install my-release -f values.yaml bitnami/nginx" -f values.yaml
 ```
 > [!NOTE]
-> AKS 実行コマンドへのアクセスをセキュリティで保護するには、"Microsoft.ContainerService/managedClusters/runcommand/action" アクセス許可を持つカスタム ロールを作成し、Just-in-time アクセスまたは条件付きアクセスのポリシーと組み合わせて特定のユーザーまたはグループ、あるいはその両方に割り当てます。 
+> AKS 実行コマンドへのアクセスをセキュリティで保護するには、"Microsoft.ContainerService/managedClusters/runcommand/action"、"Microsoft.ContainerService/managedclusters/commandResults/read" アクセス許可を持つカスタム ロールを作成し、Just-in-time アクセスまたは条件付きアクセスのポリシーと組み合わせて特定のユーザーまたはグループ、あるいはその両方に割り当てます。 
 
 ## <a name="virtual-network-peering"></a>仮想ネットワーク ピアリング
 

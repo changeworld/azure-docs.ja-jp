@@ -31,7 +31,7 @@ ms.locfileid: "128650940"
 
 開始するには、次が必要です。
 
-* Azure AD サブスクリプション。 サブスクリプションがない場合は、<bpt id="p1">[</bpt>無料アカウント<ept id="p1">](https://azure.microsoft.com/free/)</ept>を取得できます。
+* Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
 * Flock でのシングル サインオン (SSO) が有効なサブスクリプション。
 
 ## <a name="scenario-description"></a>シナリオの説明
@@ -46,9 +46,9 @@ ms.locfileid: "128650940"
 Azure AD への Flock の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に Flock を追加する必要があります。
 
 1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、Azure portal にサインインします。
-1. 左のナビゲーション ウィンドウで <bpt id="p1">**</bpt>[Azure Active Directory]<ept id="p1">**</ept> サービスを選択します。
-1. <bpt id="p1">**</bpt>[エンタープライズ アプリケーション]<ept id="p1">**</ept> に移動し、 <bpt id="p2">**</bpt>[すべてのアプリケーション]<ept id="p2">**</ept> を選択します。
-1. 新しいアプリケーションを追加するには、 <bpt id="p1">**</bpt>[新しいアプリケーション]<ept id="p1">**</ept> を選択します。
+1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
+1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
+1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Flock**」と入力します。
 1. 結果パネルから **[Flock]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
@@ -58,37 +58,37 @@ Azure AD への Flock の統合を構成するには、ギャラリーからマ�
 
 Flock に対して Azure AD SSO を構成してテストするには、次の手順を実行します。
 
-1. <bpt id="p1">**</bpt><bpt id="p2">[</bpt>Azure AD SSO の構成<ept id="p2">](#configure-azure-ad-sso)</ept><ept id="p1">**</ept> - ユーザーがこの機能を使用できるようにします。
-    1. <bpt id="p1">**</bpt><bpt id="p2">[</bpt>Azure AD のテスト ユーザーの作成<ept id="p2">](#create-an-azure-ad-test-user)</ept><ept id="p1">**</ept> - Britta Simon で Azure AD のシングル サインオンをテストします。
-    1. <bpt id="p1">**</bpt><bpt id="p2">[</bpt>Azure AD テスト ユーザーの割り当て<ept id="p2">](#assign-the-azure-ad-test-user)</ept><ept id="p1">**</ept> - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
+    1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+    1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
 2. **[Flock SSO の構成](#configure-flock-sso)** - アプリケーション側でシングル サインオン設定を構成します。
-    1. <bpt id="p1">**</bpt><bpt id="p2">[</bpt>Flock テスト ユーザーの作成<ept id="p2">](#create-flock-test-user)</ept><ept id="p1">**</ept> - Azure AD の Britta Simon にリンクさせるために、対応するユーザーを Flock で作成します。
-1. <bpt id="p1">**</bpt><bpt id="p2">[</bpt>SSO のテスト<ept id="p2">](#test-sso)</ept><ept id="p1">**</ept> - 構成が機能するかどうかを確認します。
+    1. **[Flock テスト ユーザーの作成](#create-flock-test-user)** - Azure AD の Britta Simon にリンクさせるために、対応するユーザーを Flock で作成します。
+1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
 1. Azure portal の **Flock** アプリケーション統合ページで **[管理]** セクションを探して、 **[シングル サインオン]** を選択します。
-1. <bpt id="p1">**</bpt>[シングル サインオン方式の選択]<ept id="p1">**</ept> ページで、 <bpt id="p2">**</bpt>[SAML]<ept id="p2">**</ept> を選択します。
-1. <bpt id="p1">**</bpt>[SAML によるシングル サインオンのセットアップ]<ept id="p1">**</ept> ページで、 <bpt id="p2">**</bpt>[基本的な SAML 構成]<ept id="p2">**</ept> の鉛筆アイコンをクリックして設定を編集します。
+1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-4. <bpt id="p1">**</bpt>[基本的な SAML 構成]<ept id="p1">**</ept> セクションで、次の手順を実行します。
+4. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
-    a. <bpt id="p1">**</bpt>[サインオン URL]<ept id="p1">**</ept> ボックスに、次のパターンを使用して URL を入力します。<ph id="ph1">`https://<subdomain>.flock.com/`</ph>
+    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<subdomain>.flock.com/`
 
-    b. <bpt id="p1">**</bpt>[識別子 (エンティティ ID)]<ept id="p1">**</ept> ボックスに、次のパターンを使用して URL を入力します。<ph id="ph1">`https://<subdomain>.flock.com/`</ph>
+    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<subdomain>.flock.com/`
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 この値を取得するには、<bpt id="p1">[</bpt>Flock クライアント サポート チーム<ept id="p1">](mailto:support@flock.com)</ept>にお問い合わせください。 Azure portal の <bpt id="p1">**</bpt>[基本的な SAML 構成]<ept id="p1">**</ept> セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 この値を取得するには、[Flock クライアント サポート チーム](mailto:support@flock.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-4. <bpt id="p1">**</bpt>[SAML でシングル サインオンをセットアップします]<ept id="p1">**</ept> ページの <bpt id="p2">**</bpt>[SAML 署名証明書]<ept id="p2">**</ept> セクションで、 <bpt id="p3">**</bpt>[ダウンロード]<ept id="p3">**</ept> をクリックして要件のとおりに指定したオプションからの<bpt id="p4">**</bpt>証明書 (Base64)<ept id="p4">**</ept> をダウンロードして、お使いのコンピューターに保存します。
+4. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの **証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
-6. <bpt id="p1">**</bpt>[Flock のセットアップ]<ept id="p1">**</ept> セクションで、要件に従って適切な URL をコピーします。
+6. **[Flock のセットアップ]** セクションで、要件に従って適切な URL をコピーします。
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
@@ -96,63 +96,63 @@ Flock に対して Azure AD SSO を構成してテストするには、次の手
 
 このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
 
-1. Azure portal の左側のウィンドウから、 <bpt id="p1">**</bpt>[Azure Active Directory]<ept id="p1">**</ept> 、 <bpt id="p2">**</bpt>[ユーザー]<ept id="p2">**</ept> 、 <bpt id="p3">**</bpt>[すべてのユーザー]<ept id="p3">**</ept> の順に選択します。
-1. 画面の上部にある <bpt id="p1">**</bpt>[新しいユーザー]<ept id="p1">**</ept> を選択します。
-1. <bpt id="p1">**</bpt>[ユーザー]<ept id="p1">**</ept> プロパティで、以下の手順を実行します。
-   1. <bpt id="p1">**</bpt>[名前]<ept id="p1">**</ept> フィールドに「<ph id="ph1">`B.Simon`</ph>」と入力します。  
-   1. <bpt id="p1">**</bpt>[ユーザー名]<ept id="p1">**</ept> フィールドに「<ph id="ph1">username@companydomain.extension</ph>」と入力します。 たとえば、「 <ph id="ph1">`B.Simon@contoso.com`</ph> 」のように入力します。
-   1. <bpt id="p1">**</bpt>[パスワードを表示]<ept id="p1">**</ept> チェック ボックスをオンにし、 <bpt id="p2">**</bpt>[パスワード]<ept id="p2">**</ept> ボックスに表示された値を書き留めます。
-   1. <bpt id="p1">**</bpt>Create<ept id="p1">**</ept> をクリックしてください。
+1. Azure portal の左側のウィンドウから、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
+1. 画面の上部にある **[新しいユーザー]** を選択します。
+1. **[ユーザー]** プロパティで、以下の手順を実行します。
+   1. **[名前]** フィールドに「`B.Simon`」と入力します。  
+   1. **[ユーザー名]** フィールドに「username@companydomain.extension」と入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
+   1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
+   1. **Create** をクリックしてください。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
 このセクションでは、B.Simon に Flock へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で <bpt id="p1">**</bpt>[エンタープライズ アプリケーション]<ept id="p1">**</ept> を選択し、 <bpt id="p2">**</bpt>[すべてのアプリケーション]<ept id="p2">**</ept> を選択します。
-1. アプリケーションの一覧で <bpt id="p1">**</bpt>[Flock]<ept id="p1">**</ept> を選択します。
-1. アプリの概要ページで、 <bpt id="p1">**</bpt>[管理]<ept id="p1">**</ept> セクションを見つけて、 <bpt id="p2">**</bpt>[ユーザーとグループ]<ept id="p2">**</ept> を選択します。
-1. <bpt id="p1">**</bpt>[ユーザーの追加]<ept id="p1">**</ept> を選択し、 <bpt id="p3">**</bpt>[割り当ての追加]<ept id="p3">**</ept> ダイアログで <bpt id="p2">**</bpt>[ユーザーとグループ]<ept id="p2">**</ept> を選択します。
-1. <bpt id="p1">**</bpt>[ユーザーとグループ]<ept id="p1">**</ept> ダイアログの [ユーザー] の一覧から <bpt id="p2">**</bpt>[B.Simon]<ept id="p2">**</ept> を選択し、画面の下部にある <bpt id="p3">**</bpt>[選択]<ept id="p3">**</ept> ボタンをクリックします。
-1. ユーザーにロールが割り当てられることが想定される場合は、 <bpt id="p1">**</bpt>[ロールの選択]<ept id="p1">**</ept> ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
-1. <bpt id="p1">**</bpt>[割り当ての追加]<ept id="p1">**</ept> ダイアログで、 <bpt id="p2">**</bpt>[割り当て]<ept id="p2">**</ept> をクリックします。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
+1. アプリケーションの一覧で **[Flock]** を選択します。
+1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
+1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
+1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
+1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
 ## <a name="configure-flock-sso"></a>Flock SSO の構成
 
 1. 別の Web ブラウザー ウィンドウで、Flock 企業サイトに管理者としてログインします。
 
-2. 左側のナビゲーション パネルで <bpt id="p1">**</bpt>[Authentication]\(認証\)<ept id="p1">**</ept> タブを選択し、 <bpt id="p2">**</bpt>[SAML Authentication]\(SAML 認証\)<ept id="p2">**</ept> を選択します。
+2. 左側のナビゲーション パネルで **[Authentication]\(認証\)** タブを選択し、 **[SAML Authentication]\(SAML 認証\)** を選択します。
 
     ![[S A M L Authentication]\(S A M L 認証\) が選択されている [Authentication]\(認証\) タブを示すスクリーンショット。](./media/flock-tutorial/authentication.png)
 
-3. <bpt id="p1">**</bpt>[SAML Authentication]<ept id="p1">**</ept> セクションで、次の手順に従います。
+3. **[SAML Authentication]** セクションで、次の手順に従います。
 
     ![Flock 構成](./media/flock-tutorial/saml-authentication.png)
 
-    a. <bpt id="p1">**</bpt>[SAML 2.0 Endpoint(HTTP)]\(SAML 2.0 エンドポイント (HTTP)\)<ept id="p1">**</ept> ボックスに、Azure portal からコピーした<bpt id="p2">**</bpt>ログイン URL<ept id="p2">**</ept> の値を貼り付けます。
+    a. **[SAML 2.0 Endpoint(HTTP)]\(SAML 2.0 エンドポイント (HTTP)\)** ボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
-    b. <bpt id="p1">**</bpt>[ID プロバイダーの発行者]<ept id="p1">**</ept> ボックスに、Azure portal からコピーした <bpt id="p2">**</bpt>Azure AD 識別子<ept id="p2">**</ept>の値を貼り付けます。
+    b. **[ID プロバイダーの発行者]** ボックスに、Azure portal からコピーした **Azure AD 識別子** の値を貼り付けます。
 
-    c. Azure portal からダウンロードした<bpt id="p2">**</bpt>証明書 (Base64)<ept id="p2">**</ept> をメモ帳で開き、その内容を <bpt id="p1">**</bpt>[Public Certificate]\(公開証明書\)<ept id="p1">**</ept> ボックスに貼り付けます。
+    c. Azure portal からダウンロードした **証明書 (Base64)** をメモ帳で開き、その内容を **[Public Certificate]\(公開証明書\)** ボックスに貼り付けます。
 
-    d. <bpt id="p1">**</bpt>[保存]<ept id="p1">**</ept> をクリックします。
+    d. **[保存]** をクリックします。
 
 ### <a name="create-flock-test-user"></a>Flock テスト ユーザーの作成
 
 Azure AD ユーザーが Flock にログインできるようにするには、ユーザーを Flock にプロビジョニングする必要があります。 Flock の場合、プロビジョニングは手動で行います。
 
-<bpt id="p1">**</bpt>ユーザー アカウントをプロビジョニングするには、次の手順に従います。<ept id="p1">**</ept>
+**ユーザー アカウントをプロビジョニングするには、次の手順に従います。**
 
 1. Flock 企業サイトに管理者としてログインします。
 
-2. 左側のナビゲーション パネルで <bpt id="p1">**</bpt>[Manage Team]\(チームの管理\)<ept id="p1">**</ept> をクリックします。
+2. 左側のナビゲーション パネルで **[Manage Team]\(チームの管理\)** をクリックします。
 
     ![選択されている [Manage Team]\(チームの管理\) を示すスクリーンショット。](./media/flock-tutorial/user-1.png)
 
-3. <bpt id="p1">**</bpt>[Add Member]\(メンバーの追加\)<ept id="p1">**</ept> タブをクリックし、 <bpt id="p2">**</bpt>[Team Members]\(チーム メンバー\)<ept id="p2">**</ept> を選択します。
+3. **[Add Member]\(メンバーの追加\)** タブをクリックし、 **[Team Members]\(チーム メンバー\)** を選択します。
 
     ![[Add Member]\(メンバーの追加\) タブと選択されている [Team Members]\(チーム メンバー\) を示すスクリーンショット。](./media/flock-tutorial/user-2.png)
 
-4. <bpt id="p1">**</bpt>Brittasimon<ph id="ph1">\@</ph>contoso.com<ept id="p1">**</ept> のようなユーザーのメール アドレスを入力し、 <bpt id="p2">**</bpt>[Add Users]\(ユーザーの追加\)<ept id="p2">**</ept> を選択します。
+4. **Brittasimon\@contoso.com** のようなユーザーのメール アドレスを入力し、 **[Add Users]\(ユーザーの追加\)** を選択します。
 
     ![従業員の追加](./media/flock-tutorial/user-3.png)
 
@@ -163,13 +163,13 @@ Azure AD ユーザーが Flock にログインできるようにするには、�
 
 このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-* Azure portal で <bpt id="p1">**</bpt>[このアプリケーションをテストします]<ept id="p1">**</ept> をクリックします。 これにより、ログイン フローを開始できる Flock のサインオン URL にリダイレクトされます。 
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Flock のサインオン URL にリダイレクトされます。 
 
 * Flock のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリの [Flock] タイルをクリックすると、Flock のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、<bpt id="p1">[</bpt>マイ アプリの概要<ept id="p1">](../user-help/my-apps-portal-end-user-access.md)</ept>に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリの [Flock] タイルをクリックすると、Flock のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ
 
-Flock を構成すると、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 <bpt id="p1">[</bpt>Microsoft Cloud App Security でセッション制御を強制する方法<ept id="p1">](/cloud-app-security/proxy-deployment-any-app)</ept>をご覧ください。
+Flock を構成すると、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) を使用するときに発生する
 services: container-service
 ms.topic: troubleshooting
 ms.date: 09/24/2021
-ms.openlocfilehash: 10f30ccd5efbc612c3b51c273347c872bfae1c17
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: 28807736cf6f58334eb4e6cf674e2c514df9c427
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129058474"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129235271"
 ---
 # <a name="aks-troubleshooting"></a>AKS のトラブルシューティング
 
@@ -147,7 +147,7 @@ AKS クラスターを別のサブスクリプションに移動した場合、�
 * クラスター名は 1 ～ 63 文字にする必要があります。 使用できる文字は、英字、数字、ダッシュ、およびアンダースコアのみです。 先頭と末尾の文字は、文字または数字にしてください。
 * AKS Node/*MC_* リソース グループ名は、リソース グループ名とリソース名を結合します。 `MC_resourceGroupName_resourceName_AzureRegion` の自動生成された構文は、80 文字以内にする必要があります。 必要な場合は、リソース グループ名または AKS クラスター名の長さを短くします。 また、[ノード リソース グループ名をカスタマイズする](cluster-configuration.md#custom-resource-group-name)こともできます。
 * *dnsPrefix* の最初と最後は英数字の値にする必要があり、1 から 54 文字の間にする必要があります。 有効な文字には英数字の値とハイフン (-) が含まれます。 *dnsPrefix* にはピリオド (.) などの特殊文字を含めることはできません。
-* AKS ノード プール名はすべて小文字にする必要があり、linux ノード プールの場合は 1 - 11 文字、windows ノード プールの場合は 1 - 6 文字にする必要があります。 名前は英字で始める必要があり、使用できる文字は英数字のみです。
+* AKS ノード プール名はすべて小文字にする必要があり、Linux ノード プールの場合は 1 - 11 文字、Windows ノード プールの場合は 1 - 6 文字にする必要があります。 名前は英字で始める必要があり、使用できる文字は英数字のみです。
 * Linux ノードに管理者のユーザー名を設定する *admin-username* は、文字で始まる必要があります。文字、数字、ハイフン、アンダースコアのみを含めることができ、最大文字数は 64 文字です。
 
 ## <a name="im-receiving-errors-when-trying-to-create-update-scale-delete-or-upgrade-cluster-that-operation-is-not-allowed-as-another-operation-is-in-progress"></a>クラスターを作成、更新、スケーリング、削除、またはアップグレードしようとすると、別の操作が進行中のためその操作は許可されませんというエラーを受け取ります。

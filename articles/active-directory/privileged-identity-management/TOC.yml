@@ -118,4 +118,4 @@
     - name: Azure AD ロール用の PowerShell の例
       href: powershell-for-azure-ad-roles.md
     - name: Azure AD サービスの制約
-      href: ../users-groups-roles/directory-service-limits-restrictions.md
+      href: ../enterprise-users/directory-service-limits-restrictions.md

@@ -7,12 +7,12 @@ services: iot-fundamentals
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: dobett
-ms.openlocfilehash: 192952747bcc327c87f94d001afe9faf1ed47978
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: 5d711771bd8302fb6146376afd1fd7b31613dfe5
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122605341"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129236031"
 ---
 # <a name="what-azure-technologies-and-services-can-you-use-to-create-iot-solutions"></a>IoT ソリューションを作成するために Azure のどのようなテクノロジとサービスを利用できるか
 
@@ -33,22 +33,9 @@ Azure IoT Central は、カスタム IoT ソリューションの作成に使用
 
 フル マネージドのアプリケーション プラットフォームとして、IoT Central にはシンプルで予測可能な価格モデルが採用されています。
 
-## <a name="azure-iot-solution-accelerators"></a>Azure IoT ソリューション アクセラレータ
-
-[Azure IoT ソリューション アクセラレータ](https://www.azureiotsolutions.com)は、エンタープライズレベルのカスタマイズ可能なソリューションの集まりです。 それらのソリューションをそのままデプロイすることも、オープンソースの Java または .NET ソース コードを使用してカスタム IoT ソリューションを開発することもできます。
-
-Azure IoT ソリューション アクセラレータは、IoT ソリューションを高度に制御する手段となります。 一般的な IoT シナリオを想定した事前構築済みのソリューションがソリューション アクセラレータには含まれており、ご利用の Azure サブスクリプションにそれらを数分でデプロイすることができます。 このシナリオには以下が含まれます。
-
-* コネクテッド ファクトリ
-* デバイスのシミュレーション
-
-すべてのソリューション アクセラレータのオープンソースのコード ベースは GitHub で入手できます。 コードをダウンロードし、実際の IoT 要件に合わせてソリューション アクセラレータをカスタマイズしてください。
-
-ソリューション アクセラレータには、Azure IoT Hub や Azure Storage などの Azure サービスが使用されており、それらのサービスについてはご自身の Azure サブスクリプションで管理する必要があります。
-
 ## <a name="custom-solutions"></a>カスタム ソリューション
 
-IoT ソリューションをゼロから作成したり、IoT Central またはソリューション アクセラレータを使用して作成されたソリューションを拡張したりするには、以下に示した Azure IoT のテクノロジとサービスの 1 つ以上を使用します。
+IoT ソリューションをゼロから作成したり、IoT Central を使用して作成されたソリューションを拡張したりするには、以下に示した Azure IoT のテクノロジとサービスの 1 つ以上を使用します。
 
 ### <a name="devices"></a>デバイス
 
@@ -56,7 +43,7 @@ IoT ソリューションをゼロから作成したり、IoT Central または�
 
 [IoT プラグ アンド プレイ](../iot-develop/overview-iot-plug-and-play.md) 規則に従うことで、デバイスの埋め込みコードの作成方法をさらに簡素化できます。 IoT プラグ アンド プレイを使用することで、ソリューション開発者は埋め込みコードを記述することなく、自分のソリューションにデバイスを統合できます。 IoT プラグ アンド プレイの中核となるのは、デバイスの機能を記述する "_デバイス機能モデル_" スキーマです。 埋め込みデバイス コードを生成したり、クラウドベースのソリューション (IoT Central アプリケーションなど) を構成したりするには、このデバイス機能モデルを使用します。
 
-[Azure IoT Edge](../iot-edge/about-iot-edge.md) では、IoT ワークロードの一部を Azure Cloud Services からデバイスにオフロードすることができます。 IoT Edge では、ソリューションでの待ち時間を短縮したり、デバイスとクラウドとの間でやり取りされるデータの量を削減したり、オフラインのシナリオを実現したりすることができます。 IoT Edge デバイスは、IoT Central やいくつかのソリューション アクセラレータから管理することができます。
+[Azure IoT Edge](../iot-edge/about-iot-edge.md) では、IoT ワークロードの一部を Azure Cloud Services からデバイスにオフロードすることができます。 IoT Edge では、ソリューションでの待ち時間を短縮したり、デバイスとクラウドとの間でやり取りされるデータの量を削減したり、オフラインのシナリオを実現したりすることができます。 IoT Edge デバイスは、IoT Central から管理することができます。
 
 [Azure Sphere](/azure-sphere/product-overview/what-is-azure-sphere) とは、インターネットに接続されたデバイスのための通信およびセキュリティ機能が組み込まれている、セキュリティで保護された高水準のアプリケーション プラットフォームです。 セキュリティで保護されたマイクロコントローラー ユニット、カスタムの Linux ベース オペレーティングシステム、継続的で更新可能なセキュリティを提供するクラウドベースのセキュリティ サービスが含まれています。
 
@@ -64,7 +51,7 @@ IoT ソリューションをゼロから作成したり、IoT Central または�
 
 [Azure IoT Hub](../iot-hub/about-iot-hub.md) サービスは、何百万台もの IoT デバイスとクラウドベースのソリューションとの間で、セキュリティで保護された信頼性の高い双方向通信を実現します。 [Azure IoT Hub Device Provisioning Service](../iot-dps/about-iot-dps.md) は、IoT Hub のヘルパー サービスです。 このサービスでは、適切な IoT Hub に対し、デバイスの Just-In-Time プロビジョニングを人間が介入することなくゼロタッチで行えます。 これらの機能を利用すると、安全かつスケーラブルな方法で膨大な数のデバイスをプロビジョニングすることができます。
 
-IoT Hub は、ソリューション アクセラレータの核となるコンポーネントです。これを使用すると、IoT 実装に伴う次のような課題を解決することができます。
+IoT Hub はコア コンポーネントであり、以下の IoT 実装の課題に対応するために使用できます。
 
 * 大量のデバイスの接続と管理。
 * 大量のテレメトリ インジェスト。

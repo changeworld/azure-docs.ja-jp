@@ -3,12 +3,12 @@ title: Azure Service Fabric クラスターのアップグレード
 description: Azure Service Fabric クラスターを更新するオプションについて説明します
 ms.topic: conceptual
 ms.date: 03/26/2021
-ms.openlocfilehash: 9af6a9b4d515fcede5bc0444a93ae8118077e7dd
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 7fad28e0357b26b0b8753496310c7788f6dbb0c8
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109738754"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129401150"
 ---
 # <a name="upgrading-and-updating-azure-service-fabric-clusters"></a>Azure Service Fabric クラスターのアップグレードと更新
 
@@ -27,6 +27,9 @@ Service Fabric クラスターで[サポートされているランタイム バ
 また、[Resource Manager テンプレートを使用して](service-fabric-cluster-upgrade-version-azure.md#resource-manager-template)、クラスターのアップグレード モードの設定とランタイム バージョンの選択をすることもできます。
 
 自動アップグレードが推奨されるアップグレード モードである理由は、このオプションによってクラスターがサポートされている状態に維持され、最新の修正プログラムや機能を利用できるようになるためです。また、[Wave デプロイ](#wave-deployment-for-automatic-upgrades)方式を使用して、ワークロードの中断を最小限にする方法で更新をスケジュールすることもできます。
+
+> [!NOTE]
+> 既存のクラスターを自動モードに変更すると、クラスターは新しいリリースから始まる次のアップグレード期間に登録されます。 新しいリリースは、[Service Fabric チーム ブログ](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)で発表されます。 アップグレード期間ごとに、可能な限り高いアップグレード パスが選択されます。[サポートされているバージョン](service-fabric-versions.md)を参照してください。 手動アップグレード モードでは、即時アップグレードがトリガーされます。 
 
 ## <a name="wave-deployment-for-automatic-upgrades"></a>Wave デプロイによる自動アップグレード
 

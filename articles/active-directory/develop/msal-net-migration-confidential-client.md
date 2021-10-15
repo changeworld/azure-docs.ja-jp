@@ -13,12 +13,12 @@ ms.date: 06/08/2021
 ms.author: jmprieur
 ms.reviewer: saeeda, shermanouko
 ms.custom: devx-track-csharp, aaddev, has-adal-ref
-ms.openlocfilehash: 72537e46d7d249190585552e0a8ee11c43e40340
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 2148aa8deaa698c10918ee7a6b667c7d90286448
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128566560"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129355074"
 ---
 # <a name="migrate-confidential-client-applications-from-adalnet-to-msalnet"></a>機密クライアント アプリケーションを ADAL.NET から MSAL.NET に移行する
 
@@ -38,7 +38,7 @@ ms.locfileid: "128566560"
    - `resourceId` 文字列。 この変数は、呼び出し対象の Web API のアプリ ID の URI です。
    - `IClientAssertionCertificate` のインスタンスまたは `ClientAssertion`。 このインスタンスは、アプリの ID を証明するためのアプリのクライアント資格情報を提供します。
 
-1. ADAL.NET を使用しているアプリがあることを確認したら、MSAL.NET NuGet パッケージ [Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client) をインストールして、プロジェクト ライブラリの参照を更新します。 詳細については、[NuGet パッケージのインストール](https://www.bing.com/search?q=install+nuget+package)に関するページを参照してください。 トークン キャッシュ シリアライザーを使用する場合は、[Microsoft.Identity.Web](https://www.nuget.org/packages/Microsoft.Identity.Web)もインストールします。
+1. ADAL.NET を使用しているアプリがあることを確認したら、MSAL.NET NuGet パッケージ [Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client) をインストールして、プロジェクト ライブラリの参照を更新します。 詳細については、[NuGet パッケージのインストール](https://www.bing.com/search?q=install+nuget+package)に関するページを参照してください。 トークン キャッシュ シリアライザーを使用する場合は、[Microsoft.Identity.Web.TokenCache](https://www.nuget.org/packages/Microsoft.Identity.Web.TokenCache) もインストールします。
 
 1. 機密クライアントのシナリオに従ってコードを更新します。 いくつかの手順は共通で、機密クライアントのすべてのシナリオに適用されます。 それ以外の手順は、各シナリオに固有のものです。 
 
@@ -514,7 +514,7 @@ app.UseInMemoryTokenCaches(); // or a distributed token cache.
 1. 最新バージョンの MSAL.NET を使用していることを確認します。
 1. 機密クライアント アプリケーションを構築するときに設定した証明機関ホストと、ADAL で使用した証明機関ホストが類似していることを確認します。 特に、同じ[クラウド](msal-national-cloud.md) (Azure Government、Azure China 21Vianet、または Azure Germany) を使用していることを確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [ADAL.NET と MSAL.NET アプリの違い](msal-net-differences-adal-net.md)についての詳細を確認してください。
 [MSAL.NET でのトークン キャッシュのシリアル化](msal-net-token-cache-serialization.md)の詳細を確認してください。

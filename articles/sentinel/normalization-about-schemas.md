@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/11/2021
 ms.author: ofshezaf
-ms.openlocfilehash: 828524e225f660cab2c11d23c5657ca82ae8781e
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 091181388656dd02ee438d1e5ef77a19d489205a
+ms.sourcegitcommit: 079426f4980fadae9f320977533b5be5c23ee426
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124796516"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129419090"
 ---
 # <a name="azure-sentinel-information-model-asim-schemas-public-preview"></a>Azure Sentinel 情報モデル (ASIM) スキーマ (パブリック プレビュー)
 
@@ -50,7 +50,7 @@ ms.locfileid: "124796516"
 |**フィールドの型**     |  スキーマの各フィールドには型があります。 Log Analytics ワークスペースには、限られたデータ型のセットがあります。 そのため、Azure Sentinel は多くのスキーマ フィールドに論理型を使用します。Log Analytics ではこれを強制していませんが、スキーマの互換性のために必要です。 論理フィールド型を使用すると、値とフィールド名の両方がソース間で一貫性を保ちます。  <br><br>詳細については、「[論理型](#logical-types)」を参照してください。     |
 |**Field クラス**     |フィールドには、パーサーによってフィールドを実装しなければならない場合に定義するクラスがいくつか含まれます。 <br><br>-    **必須** フィールドはすべてのパーサーで表示されなければなりません。 ソースでこの値の情報が提供されていない場合、またはデータを追加できない場合、正規化されたスキーマを参照するほとんどのコンテンツ項目はサポートされません。<br>-  **推奨** フィールドがあれば正規化してください。 ただし、すべてのソースで使用できるとはいえ、正規化されたスキーマを参照するコンテンツ項目では可用性を考慮する必要があります。 <br>-  **省略可能な** フィールド (使用可能な場合) は、正規化するか、元の形式で残します。 通常、最小限のパーサーでは、パフォーマンス上の理由から正規化されません。    |
 |**エンティティ**     | イベントは、ユーザー、ホスト、プロセス、ファイルなどのエンティティを中心に進化します。各エンティティでは、それを記述するために複数のフィールドが必要になる場合があります。 たとえば、ホストには名前と IP アドレスを指定できます。 <br><br>1 つのレコードに、ソース ホストと宛先ホストの両方など、同じ種類の複数のエンティティが含まれる場合があります。 <br><br>この Azure Sentinel 情報モデルでは、エンティティを一貫して記述する方法を定義し、エンティティを使用してスキーマを拡張できます。 <br><br>たとえば、ネットワーク セッション スキーマにはプロセス情報が含まれますが、一部のイベント ソースは追加できるプロセス情報を提供します。 詳細は、「[エンティティ](#entities)」を参照してください。 |
-|**エイリアス**     |  場合によっては、ユーザーによってフィールドの名前が異なると予想される場合があります。 たとえば、DNS の用語では、`query` という名前のフィールドが必要ですが、より一般的にはドメイン名が保持されます。 エイリアスは、指定された値に対して複数の名前を許可することで、あいまいさの問題を解決します。 エイリアス クラスは、エイリアスのフィールドと同じクラスです。       |
+|**エイリアス**     |  場合によっては、ユーザーによってフィールドの名前が異なると予想される場合があります。 たとえば、DNS の用語では、`query` という名前のフィールドが必要ですが、より一般的にはドメイン名が保持されます。 エイリアスは、指定された値に対して複数の名前を許可することで、あいまいさの問題を解決します。 エイリアス クラスは、エイリアスのフィールドと同じクラスです。<br><br>Log Analytics ではエイリアス化がサポートされていないことに注意してください。 エイリアスパーサーを実装するには、`extend` 演算子を使用して元の値のコピーを作成します。        |
 | | |
 
 ## <a name="logical-types"></a>論理型
@@ -80,34 +80,34 @@ ms.locfileid: "124796516"
 
 次のフィールドは、すべての ASIM スキーマに共通です。 スキーマごとに詳細が異なる状況をサポートするために、一般的なフィールドをここに示し、スキーマごとに一覧表示します。☆ 例えば、**EventType** フィールドの値はスキーマごとに異なり、**EventSchemaVersion** フィールドの値も異なる可能性があります。 
 
-| フィールド               | クラス       | 型       |  説明        |
+| フィールド               | クラス       | Type       |  説明        |
 |---------------------|-------------|------------|--------------------|
 | <a name="timegenerated"></a>**TimeGenerated** | 組み込み | DATETIME | イベントがレポート デバイスによって生成された時刻。|
 | **_ResourceId**   | 組み込み |  guid     | レポート デバイスまたはサービスの Azure リソース ID。Syslog、CEF、WEF を使用して転送されたイベントの場合はログ フォワーダー リソース ID。 |
 | **Type** | 組み込み | String | レコードがフェッチされた元のテーブル。 このフィールドは、同じイベントを異なるテーブルに対して 2 つのチャネルを通じて受信できるが、同じ `EventVendor` と `EventProduct` を持つ場合に便利です。 たとえば、Sysmon イベントは、イベント テーブルまたは SecurityEvent テーブルのいずれかに収集できます。 |
-| **EventMessage**        | 省略可能    | String     |     レコードに含まれるか、レコードから生成された一般的なメッセージまたは説明。   |
+| **EventMessage**        | オプション    | String     |     レコードに含まれるか、レコードから生成された一般的なメッセージまたは説明。   |
 | **EventCount**          | Mandatory   | Integer    |     レコードによって記述されるイベントの数。 <br><br>この値は、ソースが集計に対応しており、1 つのレコードが複数のイベントを表す場合があるときに使用されます。 <br><br>その他のソースの場合は、`1` に設定します。   |
 | **EventStartTime**      | Mandatory   | 日付/時刻  |      ソースが集計に対応しており、レコードが複数のイベントを表す場合、このフィールドでは最初にイベントが生成された時間を指定します。 <br><br>それ以外の場合、このフィールドは [TimeGenerated](#timegenerated) フィールドの別名になります。 |
 | **EventEndTime**        | Mandatory   | エイリアス      |      [TimeGenerated](#timegenerated) フィールドの別名。    |
 |  <a name=eventtype></a>**EventType**           | Mandatory   | Enumerated |    レコードによってレポートされる操作を記述します。 各スキーマには、このフィールドに対して有効な値の一覧が文書化されています。 |
-| **EventSubType** | 省略可能 | Enumerated | [EventType](#eventtype) フィールドでレポートされた操作を細分化して記述します。 各スキーマには、このフィールドに対して有効な値の一覧が文書化されています。 |
+| **EventSubType** | オプション | Enumerated | [EventType](#eventtype) フィールドでレポートされた操作を細分化して記述します。 各スキーマには、このフィールドに対して有効な値の一覧が文書化されています。 |
 | <a name="eventresult"></a>**EventResult** | Mandatory | Enumerated | 以下の値のいずれかです。**Success**、**Partial**、**Failure**、**NA** (該当なし)。<br> <br>ソース レコードでは、異なる用語を使用して値が指定されている場合があります。それを、これらの値に正規化する必要があります。 また、ソースは [EventResultDetails](#eventresultdetails) フィールドのみを提供する場合があり、これを分析して EventResult 値を導き出す必要があります。<br><br>例: `Success`|
 | <a name=eventresultdetails></a>**EventResultDetails** | Mandatory | エイリアス | [**EventResult**](#eventresult) でレポートされた結果の理由または詳細。 各スキーマには、このフィールドに対して有効な値の一覧が文書化されています。<br><br>例: `NXDOMAIN`|
-| **EventOriginalUid**    | 省略可能    | String     |   元のレコードの一意の ID (ソースによって提供されている場合)。<br><br>例: `69f37748-ddcd-4331-bf0f-b137f1ea83b`|
-| **EventOriginalType**   | 省略可能    | String     |   元のイベントの種類または ID (ソースによって提供されている場合)。 たとえば、このフィールドは、元の Windows イベント ID を格納するために使用されます。<br><br>例: `4624`|
+| **EventOriginalUid**    | オプション    | String     |   元のレコードの一意の ID (ソースによって提供されている場合)。<br><br>例: `69f37748-ddcd-4331-bf0f-b137f1ea83b`|
+| **EventOriginalType**   | オプション    | String     |   元のイベントの種類または ID (ソースによって提供されている場合)。 たとえば、このフィールドは、元の Windows イベント ID を格納するために使用されます。<br><br>例: `4624`|
 | <a name ="eventproduct"></a>**EventProduct**        | Mandatory   | String     |             イベントを生成している製品。 <br><br>例: `Sysmon`<br><br>**注**: このフィールドはソース レコードでは使用できない場合があります。 その場合、このフィールドはパーサーによって設定される必要があります。           |
-| **EventProductVersion** | 省略可能    | String     | イベントを生成している製品のバージョン。 <br><br>例: `12.1`      |
+| **EventProductVersion** | オプション    | String     | イベントを生成している製品のバージョン。 <br><br>例: `12.1`      |
 | **EventVendor**         | Mandatory   | String     |           イベントを生成している製品のベンダー。 <br><br>例: `Microsoft`  <br><br>**注**: このフィールドはソース レコードでは使用できない場合があります。 その場合、このフィールドはパーサーによって設定される必要があります。  |
 | **EventSchemaVersion**  | Mandatory   | String     |    スキーマのバージョン。 各スキーマは、その現在のバージョンを文書化します。         |
-| **EventReportUrl**      | 省略可能    | String     | あるリソースのイベントに指定された、そのイベントに関する追加情報を提供する URL。|
+| **EventReportUrl**      | オプション    | String     | あるリソースのイベントに指定された、そのイベントに関する追加情報を提供する URL。|
 | **Dvc** | Mandatory       | String     |               イベントが発生したデバイスの一意の識別子。 <br><br>このフィールドの別名は、[DvcId](#dvcid)、[DvcHostname](#dvchostname)、または [DvcIpAddr](#dvcipaddr) フィールドになる場合があります。 明確なデバイスがないクラウド リソースの場合は、[Event Product](#eventproduct) フィールドと同じ値を使用します。           |
 | <a name ="dvcipaddr"></a>**DvcIpAddr**           | 推奨 | IP アドレス |         イベントが発生したデバイスの IP アドレス。  <br><br>例: `45.21.42.12`    |
 | <a name ="dvchostname"></a>**DvcHostname**         | 推奨 | Hostname (ホスト名)   |               イベントが発生したデバイスのホスト名。 <br><br>例: `ContosoDc.Contoso.Azure`               |
-| <a name ="dvcid"></a>**DvcId**               | 省略可能    | String     |  イベントが発生したデバイスの一意の ID。 <br><br>例: `41502da5-21b7-48ec-81c9-baeea8d7d669`   |
-| **DvcMacAddr**          | 省略可能    | MAC        |   イベントが発生したデバイスの MAC アドレス。  <br><br>例: `00:1B:44:11:3A:B7`       |
-| **DvcOs**               | 省略可能    | String     |         イベントが発生したデバイスで実行されているオペレーティング システム。    <br><br>例: `Windows`    |
-| **DvcOsVersion**        | 省略可能    | String     |   イベントが発生したデバイスのオペレーティング システムのバージョン。 <br><br>例: `10` |
-| **AdditionalFields**    | 省略可能    | 動的    | ソースから保持する必要のある追加情報が提供される場合は、元のフィールド名をそのまま使用するか、動的な **AdditionalFields** フィールドを作成し、それに追加情報をキーと値のペアとして追加します。    |
+| <a name ="dvcid"></a>**DvcId**               | オプション    | String     |  イベントが発生したデバイスの一意の ID。 <br><br>例: `41502da5-21b7-48ec-81c9-baeea8d7d669`   |
+| **DvcMacAddr**          | オプション    | MAC        |   イベントが発生したデバイスの MAC アドレス。  <br><br>例: `00:1B:44:11:3A:B7`       |
+| **DvcOs**               | オプション    | String     |         イベントが発生したデバイスで実行されているオペレーティング システム。    <br><br>例: `Windows`    |
+| **DvcOsVersion**        | オプション    | String     |   イベントが発生したデバイスのオペレーティング システムのバージョン。 <br><br>例: `10` |
+| **AdditionalFields**    | オプション    | 動的    | ソースから保持する必要のある追加情報が提供される場合は、元のフィールド名をそのまま使用するか、動的な **AdditionalFields** フィールドを作成し、それに追加情報をキーと値のペアとして追加します。    |
 | | | | |
 
 > [!NOTE]
@@ -147,7 +147,7 @@ ms.locfileid: "124796516"
 
 次の表では、ユーザーに対してサポートされている識別子について説明します。
 
-|正規化されたフィールド  |型  |形式とサポートされる型  |
+|正規化されたフィールド  |Type  |形式とサポートされる型  |
 |---------|---------|---------|
 |**UserId**     |    String     |   コンピューターが判読できる、英数字で、システム内のユーザーを一意に表現したもの。 <br><br>形式とサポートされる型は次のとおりです。<br>    - **SID** (Windows): `S-1-5-21-1377283216-344919071-3415362939-500`<br>    -  **UID** (Linux): `4578`<br>    -    **AADID** (Azure Active Directory): `9267d02c-5f76-40a9-a9eb-b686f3ca47aa`<br>    - **OktaId**: `00urjk4znu3BcncfY0h7`<br>    - **AWSId**: `72643944673`<br><br>    ID 型を `UserIdType` フィールドに格納します。 他の ID がある場合は、フィールド名をそれぞれ`UserSid`、`UserUid`、`UserAADID`、`UserOktaId`、`UserAwsId`に正規化することを推奨します。       |
 |**ユーザー名**     |  String       |   ユーザー名 (可能な場合はドメイン情報を含む) を、以下のいずれかの形式で、以下の優先順位で記載してください。 <br> -   **Upn/Email**: `johndow@contoso.com` <br>  -    **Windows**: `Contoso\johndow` <br> -   **DN**: `CN=Jeff Smith,OU=Sales,DC=Fabrikam,DC=COM` <br>  - **Simple**: `johndow`. この形式は、ドメイン情報が使用できない場合にのみ使用してください。 <br><br> Username 型を `UsernameType` フィールドに格納します。    |
@@ -165,7 +165,7 @@ ms.locfileid: "124796516"
 
 次の表では、プロセスに対してサポートされている識別子について説明します。
 
-|正規化されたフィールド  |型  |形式とサポートされる型  |
+|正規化されたフィールド  |Type  |形式とサポートされる型  |
 |---------|---------|---------|
 |**Id**     |    String     |   OS によって割り当てられたプロセス ID。      |
 |**Guid**     |  String       |   OS によって割り当てられたプロセス GUID。 GUID は一般的にシステムの再起動間で一意ですが、ID は再利用される場合が多いです。   |
@@ -196,7 +196,7 @@ ms.locfileid: "124796516"
 
 次の表では、デバイスに対してサポートされている識別子について説明します。
 
-|正規化されたフィールド  |型  |形式とサポートされる型  |
+|正規化されたフィールド  |Type  |形式とサポートされる型  |
 |---------|---------|---------|
 |**hostname**     |    String     |        |
 |**FQDN**     |  String       |   完全修飾ドメイン名   |
@@ -252,7 +252,7 @@ ms.locfileid: "124796516"
 | | | | |
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、Azure Sentinel での正規化の概要と、Azure Sentinel 情報モデルについて説明しています。
 

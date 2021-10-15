@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 07/06/2021
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: b7bf1d7353917808fca222a7027dda74f89aff70
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ac47322f33ac8f2efd08e5b04e639f09959dee28
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121736096"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129352017"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Azure App Service でのアプリの診断ログの有効化
 ## <a name="overview"></a>概要
@@ -70,6 +70,10 @@ Azure では、組み込みの診断機能により、 [App Service アプリ](o
 
 終わったら、 **[保存]** を選択します。
 
+> [!NOTE]
+> BLOB にログを書き込む場合、アプリを削除しても BLOB にログを保持していると、アイテム保持ポリシーは適用されなくなります。 詳細については、「[リソースの削除後に発生する可能性があるコスト](overview-manage-costs.md#costs-that-might-accrue-after-resource-deletion)」を参照してください。
+>
+
 ## <a name="enable-application-logging-linuxcontainer"></a>アプリケーションのログ記録を有効にする (Linux/コンテナー)
 
 [Azure portal](https://portal.azure.com) で Linux アプリまたはカスタム コンテナー アプリのアプリケーション ログ記録を有効にするには、アプリに移動し、 **[App Service ログ]** を選択します。
@@ -97,6 +101,10 @@ Azure では、組み込みの診断機能により、 [App Service アプリ](o
 >
 
 終わったら、 **[保存]** を選択します。
+
+> [!NOTE]
+> BLOB にログを書き込む場合、アプリを削除しても BLOB にログを保持していると、アイテム保持ポリシーは適用されなくなります。 詳細については、「[リソースの削除後に発生する可能性があるコスト](overview-manage-costs.md#costs-that-might-accrue-after-resource-deletion)」を参照してください。
+>
 
 ## <a name="log-detailed-errors"></a>詳細なエラーのログを記録する
 

@@ -1,7 +1,7 @@
 ---
 title: Azure Databricks ML 実験用の MLflow Tracking
 titleSuffix: Azure Machine Learning
-description: Azure Databricks Ml 実験のメトリックと成果物をログに記録するために、Azure Machine Learning で MLflow を設定します。
+description: Azure Databricks ML 実験のメトリックと成果物をログに記録するために、Azure Machine Learning で MLflow を設定します。
 services: machine-learning
 author: nibaccam
 ms.author: nibaccam
@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.custom: devx-track-python
-ms.openlocfilehash: 9f5fae1fb1a4afaca021eddd8b04625d87b9b2d9
-ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
+ms.openlocfilehash: 62e87c2c63ade98be48977e7a8377ad66530af5d
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128707999"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129428827"
 ---
 # <a name="track-azure-databricks-ml-experiments-with-mlflow-and-azure-machine-learning"></a>MLflow と Azure Machine Learning を使用した Azure Databricks ML 実験の追跡
 

@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 06/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: d3d05ba65e0d3918f1651c36cd17700ebf74de76
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 0a090f7a4ba00c9a7d55f06acc74556b604d6b7e
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107778339"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129363333"
 ---
 # <a name="create-or-update-azure-custom-roles-using-azure-cli"></a>Azure CLI を使用して Azure カスタム ロールを作成または更新する
 
@@ -146,7 +146,7 @@ az role definition list --name "Virtual Machine Operator" --output json --query 
 az role definition create --role-definition {roleDefinition}
 ```
 
-次の例では、"*仮想マシン オペレーター*" というカスタム ロールが作成されます。 このカスタム ロールは、*Microsoft.Compute*、*Microsoft.Storage*、*Microsoft.Network* リソース プロバイダーのすべての読み取り操作に対するアクセス許可を割り当てて、仮想マシンの起動、再起動、監視を行うためのアクセス許可を割り当ています。 このカスタム ロールは、2 つのサブスクリプションで使うことができます。 この例では、入力として JSON ファイルを使用します。
+次の例では、"*仮想マシン オペレーター*" というカスタム ロールが作成されます。 このカスタム ロールは、*Microsoft.Compute*、*Microsoft.Storage*、*Microsoft.Network* リソース プロバイダーのすべての読み取りアクションに対するアクセス許可を割り当てて、仮想マシンの起動、再起動、監視を行うためのアクセス許可を割り当てます。 このカスタム ロールは、2 つのサブスクリプションで使うことができます。 この例では、入力として JSON ファイルを使用します。
 
 vmoperator.json
 
@@ -189,7 +189,7 @@ az role definition create --role-definition ~/roles/vmoperator.json
 az role definition update --role-definition {roleDefinition}
 ```
 
-次の例では、*Microsoft.Insights/diagnosticSettings/* 操作が `Actions` に追加され、管理グループが *仮想マシン オペレーター* の `AssignableScopes` に追加されます。 `AssignableScopes` への管理グループの追加は、現在プレビューの段階です。
+次の例では、*Microsoft.Insights/diagnosticSettings/* アクションが `Actions` に追加され、管理グループが *仮想マシン オペレーター* の `AssignableScopes` に追加されます。 `AssignableScopes` への管理グループの追加は、現在プレビューの段階です。
 
 vmoperator.json
 

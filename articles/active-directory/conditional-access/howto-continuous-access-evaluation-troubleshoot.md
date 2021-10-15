@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: jlu, shreyamalik
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 431124d79307c305ebb589a72a0608347de8a2c7
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 93d44065255dcb9f4977e93dd596eb3b80c1faa2
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128594449"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129533156"
 ---
 # <a name="monitor-and-troubleshoot-continuous-access-evaluation"></a>継続的アクセス評価の監視とトラブルシューティング
 
@@ -42,7 +42,7 @@ ms.locfileid: "128594449"
 
 ## <a name="continuous-access-evaluation-workbooks"></a>継続的アクセス評価ブック
 
-継続的アクセス評価分析情報ブックを使用すると、管理者はテナントの CAE 使用状況の分析情報を表示および監視できます。 最初のテーブルには、IP の不一致を含む認証試行が表示されます。 2 番目のテーブルには、さまざまなアプリケーションでの CAE のサポート状態が表示されます。 このブックは、[条件付きアクセス] カテゴリの下のテンプレートとして見つかります。 
+継続的アクセス評価分析情報ブックを使用すると、管理者はテナントの CAE 使用状況の分析情報を表示および監視できます。 テーブルには、IP の不一致を含む認証試行が表示されます。 このブックは、[条件付きアクセス] カテゴリの下のテンプレートとして見つかります。 
 
 ### <a name="accessing-the-cae-workbook-template"></a>CAE ブック テンプレートへのアクセス
 
@@ -54,7 +54,7 @@ ms.locfileid: "128594449"
 
 [ ![ギャラリーで CAE 分析情報ブックを見つけて監視を続行します](./media/howto-continuous-access-evaluation-troubleshoot/azure-ad-workbooks-continuous-access-evaluation.png) ](./media/howto-continuous-access-evaluation-troubleshoot/azure-ad-workbooks-continuous-access-evaluation.png#lightbox)
 
-**継続的アクセス評価分析情報** ブックには、2 つのテーブルが含まれています。
+**継続的アクセス評価分析情報** ブックには、以下のテーブルが含まれています。
 
 ### <a name="potential-ip-address-mismatch-between-azure-ad-and-resource-provider"></a>Azure AD とリソース プロバイダーの間で IP アドレスの不一致の可能性  
 

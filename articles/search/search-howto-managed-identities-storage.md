@@ -6,13 +6,13 @@ author: markheff
 ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/02/2021
-ms.openlocfilehash: 7dd06e48d6d610b99f6c52affcd1d6101e04c9ba
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.date: 10/01/2021
+ms.openlocfilehash: 139fa020459804571129d63819a0e82e3f1737e2
+ms.sourcegitcommit: 079426f4980fadae9f320977533b5be5c23ee426
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122183984"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129418653"
 ---
 # <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity"></a>マネージド ID を使用して、Azure Storage アカウントへの接続を設定する
 
@@ -20,7 +20,8 @@ ms.locfileid: "122183984"
 
 システム割り当てマネージド ID またはユーザー割り当てマネージド ID (プレビュー) を使用できます。
 
-この機能についてさらに学ぶ前に、インデクサーとは何かについて、およびデータ ソースに対してインデクサーを設定する方法について理解しておくことをお勧めします。 以下のリンクで詳しい情報を確認できます。
+この記事では、インデクサーの概念と構成に関する理解を前提とします。 インデクサーを知らない場合は、次のリンクから始める必要があります。
+
 * [インデクサーの概要](search-indexer-overview.md)
 * [Azure BLOB インデクサー](search-howto-indexing-azure-blob-storage.md)
 * [Azure Data Lake Storage Gen2 インデクサー](search-howto-index-azure-data-lake-storage.md)
@@ -28,7 +29,9 @@ ms.locfileid: "122183984"
 
 ## <a name="1---set-up-a-managed-identity"></a>1 - マネージド ID を設定する
 
-次のいずれかのオプションを使用して[マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) を設定します。
+次のいずれかのオプションを使用して、Azure Cognitive Search サービスの[マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) を設定します。 
+
+検索サービスは Basic レベル以上である必要があります。
 
 ### <a name="option-1---turn-on-system-assigned-managed-identity"></a>オプション 1 - システム割り当てマネージド ID を有効にする
 
@@ -39,26 +42,32 @@ ms.locfileid: "122183984"
 **[保存]** を選択した後に、検索サービスに割り当てられたオブジェクト ID が表示されます。
 
 ![オブジェクト ID](./media/search-managed-identities/system-assigned-identity-object-id.png "Object ID")
- 
+
 ### <a name="option-2---assign-a-user-assigned-managed-identity-to-the-search-service-preview"></a>オプション 2 - ユーザー割り当てのマネージド ID を検索サービスに割り当てる (プレビュー)
 
 ユーザー割り当てマネージド ID をまだ作成していない場合は、作成する必要があります。 ユーザー割り当てマネージド ID は Azure のリソースです。
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
+
 1. **[+ リソースの作成]** を選択します。
+
 1. [サービスとマーケットプレース] の検索バーで、[ユーザー割り当てマネージド ID] を検索し、 **[作成]** を選択します。
+
 1. ID にわかりやすい名前を付けます。
 
 次に、ユーザー割り当てマネージド ID を検索サービスに割り当てます。 これは、[2021-04-01-preview 管理 API](/rest/api/searchmanagement/2021-04-01-preview/services/create-or-update) を使用して行うことができます。
 
 ID プロパティは、型と 1 つ以上の完全修飾ユーザー割り当て ID を受け取ります。
 
-* **type** は ID の型です。 有効な値は "SystemAssigned"、"UserAssigned"、または "SystemAssigned, UserAssigned" (両方を使用する場合) です。 値 "None" を指定すると、検索サービスから以前に割り当てられた ID がクリアされます。
-* **userAssignedIdentities** には、ユーザー割り当てマネージド ID の詳細が含まれます。
-    * ユーザー割り当てマネージド ID の形式: 
-        * /subscriptions/**サブスクリプション ID**/resourcegroups/**リソース グループ名**/providers/Microsoft.ManagedIdentity/userAssignedIdentities/**マネージド ID の名前**
+* **type** は ID の型です。 両方について、有効な値は "SystemAssigned"、"UserAssigned"、または "SystemAssigned, UserAssigned" です。 値 "None" を指定すると、検索サービスから以前に割り当てられた ID がクリアされます。
 
-ユーザー割り当てマネージド ID を検索サービスに割り当てる方法の例:
+* **userAssignedIdentities** には、ユーザー割り当てマネージド ID の詳細が含まれます。 形式は次のようになります:
+
+  ```bash
+    /subscriptions/<your-subscription-ID>/resourcegroups/<your-resource-group-name>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<your-managed-identity-name>
+  ```
+
+ユーザー割り当てマネージド ID の割り当ての例:
 
 ```http
 PUT https://management.azure.com/subscriptions/[subscription ID]/resourceGroups/[resource group name]/providers/Microsoft.Search/searchServices/[search service name]?api-version=2021-04-01-preview
@@ -88,17 +97,22 @@ Content-Type: application/json
 このステップでは、Azure Cognitive Search サービスまたはユーザー割り当てマネージド ID に、ストレージ アカウントからデータを読み取るためのアクセス許可を付与します。
 
 1. Azure portal で、インデックスを作成するデータを含むストレージ アカウントに移動します。
+
 2. **[アクセス制御 (IAM)]** を選択します
+
 3. **[追加]** 、 **[ロールの割り当ての追加]** の順に選択します
 
     ![ロールの割り当てを追加する](./media/search-managed-identities/add-role-assignment-storage.png "ロールの割り当ての追加")
 
 4. インデックスを作成するストレージ アカウントの種類に基づいて、適切なロールを選択します。
-    1. Azure Blob Storage では、**ストレージ BLOB データ閲覧者** ロールに検索サービスを追加する必要があります。
-    1. Azure Data Lake Storage Gen2 では、**ストレージ BLOB データ閲覧者** ロールに検索サービスを追加する必要があります。
-    1. Azure Table Storage では、**閲覧者とデータ アクセス** ロールに検索サービスを追加する必要があります。
-5.  **[アクセスの割り当て先]** は **[Azure AD のユーザー、グループ、サービス プリンシパル]** のままにしておきます
-6.  システム割り当てマネージド ID を使用している場合、検索サービスを検索して選択します。 ユーザー割り当てマネージド ID を使用している場合、ユーザー割り当てマネージド ID の名前を検索して選択します。 **[保存]** を選択します。
+
+    * Azure Blob Storage では、**ストレージ BLOB データ閲覧者** ロールに検索サービスを追加する必要があります。
+    * Azure Data Lake Storage Gen2 では、**ストレージ BLOB データ閲覧者** ロールに検索サービスを追加する必要があります。
+    * Azure Table Storage では、**閲覧者とデータ アクセス** ロールに検索サービスを追加する必要があります。
+
+5. **[アクセスの割り当て先]** は **[Azure AD のユーザー、グループ、サービス プリンシパル]** のままにしておきます
+
+6. システム割り当てマネージド ID を使用している場合、検索サービスを検索して選択します。 ユーザー割り当てマネージド ID を使用している場合、ユーザー割り当てマネージド ID の名前を検索して選択します。 **[保存]** を選択します。
 
     システム割り当てマネージド ID を使用する Azure Blob Storage および Azure Data Lake Storage Gen2 の例:
 
@@ -107,6 +121,8 @@ Content-Type: application/json
     システム割り当てマネージド ID を使用した Azure Table Storage の例:
 
     ![閲覧者とデータ アクセスのロールの割り当てを追加する](./media/search-managed-identities/add-role-assignment-reader-and-data-access.png "閲覧者とデータ アクセスのロールの割り当てを追加する")
+
+C# のコード例については、GitHub の「[Index Data Lake Gen2 using Azure AD](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/data-lake-gen2-acl-indexing/README.md)」 (Azure AD を使用して Lake Gen2 でデータのインデックスを作成する) を参照してください。
 
 ## <a name="3---create-the-data-source"></a>3 - データ ソースを作成する
 
@@ -241,14 +257,13 @@ BLOB インデクサーのインデクサー定義の例:
 
 インデクサーのスケジュールの定義の詳細については、[Azure Cognitive Search のインデクサーのスケジュールを設定する方法](search-howto-schedule-indexers.md)に関する記事を参照してください。
 
-## <a name="accessing-secure-data-in-storage-accounts"></a>ストレージ アカウントで安全なデータにアクセスする
+## <a name="accessing-network-secured-data-in-storage-accounts"></a>ストレージ アカウントのネットワークで保護されたデータにアクセスする
 
 Azure ストレージ アカウントは、ファイアウォールと仮想ネットワークを利用することでさらにセキュリティを強化できます。 ファイアウォールや仮想ネットワークを利用してセキュリティを強化した BLOB ストレージ アカウントまたは Data Lake Gen2 ストレージ アカウントからコンテンツにインデックスを付ける場合、「[信頼されたサービスの例外を使用してストレージ アカウントのデータに安全にアクセスする](search-indexer-howto-access-trusted-service-exception.md)」の指示に従ってください。
 
 ## <a name="see-also"></a>関連項目
 
-Azure Storage インデクサーの詳細については、以下を参照してください。
-
 * [Azure BLOB インデクサー](search-howto-indexing-azure-blob-storage.md)
 * [Azure Data Lake Storage Gen2 インデクサー](search-howto-index-azure-data-lake-storage.md)
 * [Azure テーブル インデクサー](search-howto-indexing-azure-tables.md)
+* [C# 例: Azure AD を使用して Lake Gen2 のデータにインデックスを作成する (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/data-lake-gen2-acl-indexing/README.md)

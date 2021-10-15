@@ -14,12 +14,12 @@ ms.author: davidmu
 ms.reviewer: ergreenl
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: e064afb3adc296df136c730834da70d591d73ba4
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: d6daa398c560bf7112539291f76fe4188abb76a1
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128618933"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129231617"
 ---
 # <a name="plan-a-single-sign-on-deployment-in-azure-active-directory"></a>Azure Active Directory でシングル サインオンのデプロイを計画する
 

@@ -12,15 +12,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 01/18/2021
+ms.date: 10/01/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bd4b8ccf3147e349b9625d5912e5d603415ec39a
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 3c04c2824b005adfc3e04d710b0e55c7f52c99b1
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112297505"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129402998"
 ---
 # <a name="azure-virtual-machines-oracle-dbms-deployment-for-sap-workload"></a>SAP ワークロードのための Azure Virtual Machines Oracle DBMS のデプロイ
 
@@ -359,7 +359,7 @@ NTFS でフォーマットされたディスクを使用した単一インスタ
 
 [Azure Managed Disks](../../managed-disks-overview.md) の使用を強くお勧めします。 また、Oracle Database デプロイの場合には [Azure Premium Storage または Azure Ultra Disk](../../disks-types.md) の使用も強くお勧めします。
 
-ネットワーク ドライブまたは Azure File サービスのようなリモート共有は、Oracle Database ファイルに対してはサポートされていません。 詳細については、次を参照してください。
+ネットワーク ドライブまたは Azure ファイル サービスのようなリモート共有は、Oracle Database ファイルに対してはサポートされていません。 詳細については、次を参照してください。
 
 - [Microsoft Azure File サービスの概要](/archive/blogs/windowsazurestorage/introducing-microsoft-azure-file-service)
 
@@ -413,6 +413,7 @@ Azure M シリーズ VM では、Azure Premium Storage と比較して、オン�
 バックアップと復元機能については、SAP BR*Tools for Oracle が標準の Windows Server オペレーティング システムと同様にサポートされています。 ディスクへのバックアップとディスクからの復元については Oracle Recovery Manager (RMAN) もサポートされます。
 
 Azure Backup を使用して、VM のアプリケーション整合性バックアップを実行することもできます。 記事「[Azure における VM バックアップ インフラストラクチャの計画を立てる](../../../backup/backup-azure-vms-introduction.md)」では、Azure Backup でアプリケーション整合性バックアップを実行するために Windows VSS 機能を使用する方法が説明されています。 SAP によって Azure でサポートされている Oracle DBMS リリースでは、バックアップに VSS 機能を利用できます。 詳細については、Oracle のドキュメント「[Basic concepts of database backup and recovery with VSS (VSS を使用したデータベースのバックアップと復元の基本概念)](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/ntqrf/basic-concepts-of-database-backup-and-recovery-with-vss.html#GUID-C085101B-237F-4773-A2BF-1C8FD040C701)」を参照してください。
+
 
 
 ### <a name="high-availability"></a>高可用性
@@ -517,6 +518,9 @@ Azure M シリーズ VM で Azure 書き込みアクセラレータを使用す�
 バックアップと復元機能については、SAP BR*Tools for Oracle がベア メタルおよび Hyper-V と同様にサポートされています。 ディスクへのバックアップとディスクからの復元については Oracle Recovery Manager (RMAN) もサポートされます。
 
 Azure Backup サービスと Azure Recovery サービスを使用して Oracle データベースをバックアップおよび回復する方法の詳細については、「[Azure Linux 仮想マシンでの Oracle Database 12c データベースのバックアップと回復](../oracle/oracle-overview.md)」を参照してください。
+
+[Azure Backup サービス](../../../backup/backup-overview.md)は、「[Azure Backup を使用して Azure Linux VM で Oracle Database 19c データベースをバックアップおよび回復する](../oracle/oracle-database-backup-azure-backup.md)」の記事で説明されている Oracle のバックアップもサポートしています。
+
 
 ### <a name="high-availability"></a>高可用性
 高可用性とディザスター リカバリーを目的として Oracle Data Guard がサポートされています。 Data Guard で自動フェールオーバーを実現するには、ファスト スタート フェールオーバー (FSFA) を使用することが必要です。 オブザーバー機能 (FSFA) によってフェールオーバーがトリガーされます。 FSFA を使用しない場合は、手動フェールオーバー構成のみを使用できます。 詳細については、「[Azure Linux 仮想マシンで Oracle Data Guard を実装する](../oracle/configure-oracle-dataguard.md)」を参照してください。

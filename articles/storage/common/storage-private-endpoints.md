@@ -10,16 +10,16 @@ ms.date: 03/16/2021
 ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: a52460db452d519c51fb7a1b191766b21da67f88
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 908c313da4343798faedf614e8356e511ab0b4dd
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128592282"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129458645"
 ---
 # <a name="use-private-endpoints-for-azure-storage"></a>Azure Storage のプライベート エンドポイントを使用する
 
-Azure Storage アカウントの[プライベート エンドポイント](../../private-link/private-endpoint-overview.md)を使用すると、仮想ネットワーク (VNet) 上のクライアントは[プライベート リンク](../../private-link/private-link-overview.md)を介してデータに安全にアクセスできるようになります。 プライベート エンドポイントは、ストレージ アカウント サービスの VNet アドレス空間からの IP アドレスを使用します。 VNet 上のクライアントとストレージ アカウントの間のネットワーク トラフィックは、VNet と Microsoft バックボーン ネットワーク上のプライベート リンクを経由することで、パブリック インターネットからの露出を排除します。
+Azure Storage アカウントの[プライベート エンドポイント](../../private-link/private-endpoint-overview.md)を使用すると、仮想ネットワーク (VNet) 上のクライアントは[プライベート リンク](../../private-link/private-link-overview.md)を介してデータに安全にアクセスできるようになります。 プライベート エンドポイントは、各ストレージ アカウント サービスごとに、VNet アドレス空間から別の IP アドレスを使用します。 VNet 上のクライアントとストレージ アカウントの間のネットワーク トラフィックは、VNet と Microsoft バックボーン ネットワーク上のプライベート リンクを経由することで、パブリック インターネットからの露出を排除します。
 
 ストレージ アカウントにプライベート エンドポイントを使用すると、次のことが可能になります。
 
@@ -92,7 +92,7 @@ geo 冗長ストレージ向けに構成されているストレージ アカウ
 
 上の図の例のように、プライベート エンドポイントをホストしている VNet の外部から解決されると、ストレージ アカウント "StorageAccountA" の DNS リソース レコードは次のようになります。
 
-| 名前                                                  | 種類  | 値                                                 |
+| 名前                                                  | Type  | 値                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | `StorageAccountA.blob.core.windows.net`             | CNAME | `StorageAccountA.privatelink.blob.core.windows.net` |
 | `StorageAccountA.privatelink.blob.core.windows.net` | CNAME | \<storage service public endpoint\>                   |
@@ -102,7 +102,7 @@ geo 冗長ストレージ向けに構成されているストレージ アカウ
 
 StorageAccountA の DNS リソース レコードは、プライベート エンドポイントをホストしている VNet 内のクライアントによって解決されると、次のようになります。
 
-| 名前  | 種類 | 値 |
+| 名前  | Type | 値 |
 | :--- | :---: | :--- |
 | `StorageAccountA.blob.core.windows.net` | CNAME | `StorageAccountA.privatelink.blob.core.windows.net` |
 | `StorageAccountA.privatelink.blob.core.windows.net` | A | `10.1.1.5` |

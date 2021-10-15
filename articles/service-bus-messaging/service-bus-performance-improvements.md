@@ -3,12 +3,12 @@ title: Azure Service Bus を使用したパフォーマンス向上のための�
 description: Service Bus を使用して、ブローカー メッセージを交換する際のパフォーマンスを最適化する方法について説明します。
 ms.topic: article
 ms.date: 08/30/2021
-ms.openlocfilehash: d7bd692809504bb16607a431e879f0abfff953cb
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 51b8005f9aa3b53bbcb8d78b83c4449992cf0210
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123225248"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128560718"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Service Bus メッセージングを使用したパフォーマンス向上のためのベスト プラクティス
 
@@ -84,13 +84,14 @@ AMQP は、Service Bus への接続を維持するため、最も効率的です
 > SBMP は、.NET Framework のみで使用できます。 AMQP は、.NET Standard の既定です。
 
 ## <a name="choosing-the-appropriate-service-bus-net-sdk"></a>適切な Service Bus .NET SDK の選択
-サポート対象の Azure Service Bus .NET SDK は、3 種類あります。 これらの API はよく似ており、どちらを選択すればよいかはわかりにくいかもしれません。 判断に役立つ次の表を参照してください。 Azure.Messaging.ServiceBus SDK は最新のもので、その他の SDK よりもこれを使用することをお勧めします。 Azure.Messaging.ServiceBus SDK と Microsoft.Azure.ServiceBus SDK はどちらも最新でパフォーマンスが高く、クロスプラットフォーム互換です。 また、これらは WebSocket 経由の AMQP をサポートしており、オープンソース プロジェクトの Azure .NET SDK コレクションの一部となっています。
+
+`Azure.Messaging.ServiceBus` パッケージは、2020 年 11 月の時点で利用可能な最新の Azure Service Bus .NET SDK です。 重要なバグ修正の提供が継続される、それ以前の .NET SDK が 2 つありますが、代わりに最新の SDK を使用することを強くお勧めします。 以前の SDK から移行する方法の詳細については、[移行ガイド](https://aka.ms/azsdk/net/migrate/sb)に関するページを参照してください。
 
 | NuGet パッケージ | プライマリ名前空間 | 最小プラットフォーム | プロトコル |
 |---------------|----------------------|---------------------|-------------|
-| [Azure.Messaging.ServiceBus](https://www.nuget.org/packages/Azure.Messaging.ServiceBus) | `Azure.Messaging.ServiceBus`<br>`Azure.Messaging.ServiceBus.Administration` | .NET Core 2.0<br>.NET Framework 4.6.1<br>Mono 5.4<br>Xamarin.iOS 10.14<br>Xamarin.Mac 3.8<br>Xamarin.Android 8.0<br>ユニバーサル Windows プラットフォーム 10.0.16299 | AMQP<br>HTTP |
+| [Azure.Messaging.ServiceBus](https://www.nuget.org/packages/Azure.Messaging.ServiceBus) (**最新**) | `Azure.Messaging.ServiceBus`<br>`Azure.Messaging.ServiceBus.Administration` | .NET Core 2.0<br>.NET Framework 4.6.1<br>Mono 5.4<br>Xamarin.iOS 10.14<br>Xamarin.Mac 3.8<br>Xamarin.Android 8.0<br>ユニバーサル Windows プラットフォーム 10.0.16299 | AMQP<br>HTTP |
 | [Microsoft.Azure.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus) | `Microsoft.Azure.ServiceBus`<br>`Microsoft.Azure.ServiceBus.Management` | .NET Core 2.0<br>.NET Framework 4.6.1<br>Mono 5.4<br>Xamarin.iOS 10.14<br>Xamarin.Mac 3.8<br>Xamarin.Android 8.0<br>ユニバーサル Windows プラットフォーム 10.0.16299 | AMQP<br>HTTP |
-| [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus) | `Microsoft.ServiceBus`<br>`Microsoft.ServiceBus.Messaging` | .NET Framework 4.6.1 | AMQP<br>SBMP<br>HTTP |
+| [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus) (**レガシ**) | `Microsoft.ServiceBus`<br>`Microsoft.ServiceBus.Messaging` | .NET Framework 4.6.1 | AMQP<br>SBMP<br>HTTP |
 
 .NET Standard プラットフォームの最小サポートの詳細については、「[.NET 実装サポート](/dotnet/standard/net-standard#net-implementation-support)」を参照してください。
 
@@ -102,9 +103,13 @@ AMQP は、Service Bus への接続を維持するため、最も効率的です
 
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft.Azure.ServiceBus SDK](#tab/net-standard-sdk)
 
+> 新しいパッケージ Azure.Messaging.ServiceBus が、2020 年 11 月時点で利用可能であることに注意してください。 Microsoft Azure ServiceBus パッケージは引き続き重要なバグの修正を受け取りますが、アップグレードすることを強くお勧めします。 詳細については、[移行ガイド](https://aka.ms/azsdk/net/migrate/sb)に関するページを参照してください。
+
 [`IQueueClient`][QueueClient] または [`IMessageSender`][MessageSender]の実装などの Service Bus クライアント オブジェクトは、シングルトンとして依存関係の挿入用に登録する（またはインスタンス化された後で共有する）必要があります。 メッセージを送信した後にメッセージング ファクトリ、キュー、トピック、またはサブスクリプションのクライアントを閉じないようにし、次のメッセージを送信するときにこれらを再作成することをお勧めします。 メッセージング ファクトリを閉じると、Service Bus サービスへの接続が削除されます。 ファクトリを再作成するときに、新しい接続が確立されます。 
 
 # <a name="windowsazureservicebus-sdk"></a>[WindowsAzure.ServiceBus SDK](#tab/net-framework-sdk)
+
+> 新しいパッケージ Azure.Messaging.ServiceBus が、2020 年 11 月時点で利用可能であることに注意してください。 WindowsAzure ServiceBus パッケージは引き続き重要なバグの修正を受け取りますが、アップグレードすることを強くお勧めします。 詳細については、[移行ガイド](https://aka.ms/azsdk/net/migrate/sb)に関するページを参照してください。
 
 `QueueClient` や `MessageSender` などの Service Bus クライアント オブジェクトは、接続の内部管理も提供する [MessagingFactory][MessagingFactory] オブジェクトによって作成されます。 メッセージを送信した後にメッセージング ファクトリ、キュー、トピック、またはサブスクリプションのクライアントを閉じないようにし、次のメッセージを送信するときにこれらを再作成することをお勧めします。 メッセージング ファクトリを閉じると Service Bus サービスの接続が削除され、ファクトリを再作成すると新しい接続が確立されます。 
 

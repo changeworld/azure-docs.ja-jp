@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory アプリケーション管理の新機能
 description: Azure Active Directory アプリケーション管理の新規および更新されたドキュメント。
-ms.date: 09/08/2021
+ms.date: 10/05/2021
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: reference
@@ -10,16 +10,52 @@ ms.author: davidmu
 author: davidmu1
 manager: CelesteDG
 reviewer: napuri
-ms.openlocfilehash: a5de6a248d389c90cbc67f59b0b94f53c35821f2
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 260473c428e7bdc2bfd968aa2ba5469e578c1005
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124810036"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129533150"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory アプリケーション管理: 新機能
 
 Azure Active Directory アプリケーション管理のドキュメントの最新情報にようこそ。 この記事では、過去 3 か月間に追加された新しいドキュメントと、重要な更新があったものの一覧を示します。 アプリケーション管理サービスの新機能については、「[Azure Active Directory の新着情報](../fundamentals/whats-new.md)」を参照してください。
+
+## <a name="september-2021"></a>2021 年 9 月
+
+### <a name="new-articles"></a>新しい記事
+
+- [Azure Active Directory でのアプリケーションのホーム領域検出](home-realm-discovery-policy.md)
+
+### <a name="updated-articles"></a>更新された記事
+
+- [Azure Active Directory でアプリケーションにユーザーとグループを割り当てる](assign-user-or-group-access-portal.md)
+- [ホーム領域検出ポリシーを使用してアプリケーションのサインイン動作を構成する](configure-authentication-for-federated-users-portal.md)
+- [Azure Active Directory でユーザーがアプリケーションにサインインする方法を無効にする](disable-user-sign-in-portal.md)
+- [Azure Active Directory でエンタープライズ アプリケーションを非表示にする](hide-application-from-user-portal.md)
+- [Azure Active Directory でセルフサービス アプリケーションの割り当てを有効にする](manage-self-service-access.md)
+- [ホーム領域検出ポリシーを使用してユーザー サインイン時のフェデレーション IDP への自動高速化を無効にする](prevent-domain-hints-with-home-realm-discovery.md)
+- [Azure Active Directory でアプリへのアクセスを管理する](what-is-access-management.md)
+- [チュートリアル: アプリケーションを Okta から Azure Active Directory に移行する](migrate-applications-from-okta-to-azure-active-directory.md)
+- [チュートリアル: Okta フェデレーションを Azure Active Directory マネージド認証に移行する](migrate-okta-federation-to-azure-active-directory.md)
+- [チュートリアル: Okta サインオン ポリシーを Azure AD の条件付きアクセスに移行する](migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access.md)
+- [チュートリアル: Okta 同期プロビジョニングを Azure AD Connect ベースの同期に移行する](migrate-okta-sync-provisioning-to-azure-active-directory.md)
+- [Azure Active Directory パートナー統合を使用した安全なハイブリッド アクセス](secure-hybrid-access-integrations.md)
+- [Azure Active Directory アプリケーション管理: 新機能](whats-new-docs.md)
+- [クイックスタート: Azure Active Directory でユーザー アカウントを作成して割り当てる](add-application-portal-assign-users.md)
+- [クイックスタート: Azure Active Directory でエンタープライズ アプリケーションのプロパティを構成する](add-application-portal-configure.md)
+- [Azure Active Directory で OpenID Connect ベースのシングル サインオン アプリケーションを追加する](add-application-portal-setup-oidc-sso.md)
+- [クイックスタート: Azure Active Directory でエンタープライズ アプリケーションのシングル サインオンを有効にする](add-application-portal-setup-sso.md)
+- [クイックスタート: Azure Active Directory でエンタープライズ アプリケーションを追加する](add-application-portal.md)
+- [クイックスタート: Azure Active Directory でエンタープライズ アプリケーションを削除する](delete-application-portal.md)
+- [クイックスタート: Azure Active Directory でエンタープライズ アプリケーションを表示する](view-applications-portal.md)
+- [マイ アプリ ポータルでコレクションを作成する](access-panel-collections.md)
+- [アプリの同意ポリシーを管理する](manage-app-consent-policies.md)
+- [Azure Active Directory で、リンクされたシングル サインオンをアプリケーションに追加する](configure-linked-sign-on.md)
+- [Azure Active Directory で、パスワードベースのシングル サインオンをアプリケーションに追加する](configure-password-single-sign-on-non-gallery-applications.md)
+- [Azure Active Directory でシングル サインオンのデプロイを計画する](plan-sso-deployment.md)
+- [Azure Active Directory でのシングル サインオンとは](what-is-single-sign-on.md)
+
 
 ## <a name="august-2021"></a>2021 年 8 月
 

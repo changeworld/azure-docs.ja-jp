@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 07/08/2020
 ms.author: raynew
 ms.custom: include file
-ms.openlocfilehash: 61aa5ffcbab493109371067b1eb9d199a29cb852
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a39b49c8a75f8ffbf99b3d92917c8e5e3e0cae55
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100551562"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129585111"
 ---
 **構成およびプロセス サーバーの要件**
 
@@ -63,6 +63,9 @@ https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.
 
 > [!NOTE]
 > Site Recovery コンテナーへの[プライベート リンク接続](../articles/site-recovery/hybrid-how-to-enable-replication-private-endpoints.md)がある場合は、構成サーバーへの追加のインターネット アクセスは不要です。 これには例外があり、OVA テンプレートを使用して CS マシンを設定しているときに、プライベート リンク アクセス以外から次の URL にアクセスする必要があります: https://management.azure.com 、 https://www.live.com 、および https://www.microsoft.com 。 これらの URL へのアクセスを許可しない場合は、Unified Installer を使用して CS を設定してください。
+
+> [!NOTE]
+> VMware と物理マシンを保護するためにプライベート エンドポイントを設定する場合は、構成サーバーに MySQL を手動でインストールする必要があります。 [こちら](https://docs.microsoft.com/azure/site-recovery/vmware-azure-deploy-configuration-server#configure-settings)の手順に従って、手動インストールを実行してください。 
 
 ## <a name="required-software"></a>必要なソフトウェア
 

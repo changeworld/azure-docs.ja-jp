@@ -6,19 +6,19 @@ ms.author: andbrown
 ms.date: 2/25/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 5b70d59f83280eda416736e9fd02a2ff417dcc34
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 9d3cc8cb8ed36179e2297da7c057851345e1c02e
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128556348"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129536928"
 ---
 # <a name="importing-updates-into-device-update-for-iot-hub---schema-and-other-information"></a>Device Update for IoT Hub への更新プログラムのインポート - スキーマおよびその他の情報
 Device Update for IoT Hub に更新プログラムにインポートする場合は、まず、[概念](import-concepts.md)と[攻略ガイド](import-update.md) を必ず確認しておいてください。 インポート マニフェストの構築時に使用されるスキーマの詳細と、関連するオブジェクトの情報に関心がある場合は、以下を参照してください。
 
 ## <a name="import-manifest-schema"></a>インポート マニフェスト スキーマ
 
-| 名前 | 種類 | 説明 | 制限 |
+| 名前 | Type | 説明 | 制限 |
 | --------- | --------- | --------- | --------- |
 | UpdateId | `UpdateId` オブジェクト | 更新プログラム ID。 |
 | UpdateType | string | 更新の種類: <br/><br/> * 参照エージェントを使用してパッケージベースの更新を実行する場合は、`microsoft/apt:1` を指定します。<br/> * 参照エージェントを使用してイメージベースの更新を実行する場合は、`microsoft/swupdate:1` を指定します。<br/> * サンプル エージェント シミュレーターを使用する場合は、`microsoft/simulator:1` を指定します。<br/> * カスタム エージェントを開発する場合は、カスタムの種類を指定します。 | 形式: <br/> `{provider}/{type}:{typeVersion}`<br/><br/> 最大 32 文字 |
@@ -30,7 +30,7 @@ Device Update for IoT Hub に更新プログラムにインポートする場合
 
 ## <a name="updateid-object"></a>UpdateId オブジェクト
 
-| 名前 | 種類 | 説明 | 制限 |
+| 名前 | Type | 説明 | 制限 |
 | --------- | --------- | --------- | --------- |
 | プロバイダー | string | 更新プログラム ID のプロバイダー部分 | 1 から 64 文字 (英数字、ドット、ダッシュ)。 |
 | 名前 | string | 更新プログラム ID の名前部分 | 1 から 64 文字 (英数字、ドット、ダッシュ)。 |
@@ -38,22 +38,22 @@ Device Update for IoT Hub に更新プログラムにインポートする場合
 
 ## <a name="file-object"></a>File オブジェクト
 
-| 名前 | 種類 | 説明 | 制限 |
+| 名前 | Type | 説明 | 制限 |
 | --------- | --------- | --------- | --------- |
 | ファイル名 | string | ファイルの名前 | 255 文字以内でなければなりません。 更新プログラム内で一意である必要があります |
-| SizeInBytes | Int64 | ファイルのサイズ (バイト単位)。 | 個々のファイルあたり最大 2 GB、または更新プログラムあたり合計で 2 GB |
+| SizeInBytes | Int64 | ファイルのサイズ (バイト単位)。 | 個々のファイルあたり、および更新プログラムあたりの合計の最大サイズについては、「[Device Update の制限](./device-update-limits.md)」を参照してください。 |
 | ハッシュ | `Hashes` オブジェクト | ファイルのハッシュを含む JSON オブジェクト |
 
 ## <a name="compatibilityinfo-object"></a>CompatibilityInfo オブジェクト
 
-| 名前 | 種類 | 説明 | 制限 |
+| 名前 | Type | 説明 | 制限 |
 | --- | --- | --- | --- |
 | DeviceManufacturer | string | 更新プログラムと互換性があるデバイスの製造元。 | 1 から 64 文字 (英数字、ドット、ダッシュ)。 |
 | DeviceModel | string | 更新プログラムと互換性があるデバイスのモデル。 | 1 から 64 文字 (英数字、ドット、ダッシュ)。 |
 
 ## <a name="hashes-object"></a>Hashes オブジェクト
 
-| 名前 | 必須 | 種類 | 説明 |
+| 名前 | 必須 | Type | 説明 |
 | --------- | --------- | --------- | --------- |
 | Sha256 | True | string | SHA-256 アルゴリズムを使用した、ファイルの Base64 エンコード ハッシュ。 |
 

@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: 機械学習の実験を実行するために Azure Machine Learning データセットを作成してデータにアクセスする方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mldata
 ms.topic: how-to
 ms.custom: contperf-fy21q1, data4ml
 ms.author: yogipandey
 author: ynpandey
 ms.reviewer: nibaccam
 ms.date: 07/06/2021
-ms.openlocfilehash: 5443386a8e62d6576d73161519546e368f41ad82
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: f640165420f06a85633d4db30d6338f4bfa205c4
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121860891"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129428371"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning データセットを作成する
 
@@ -223,7 +223,7 @@ file_dataset = file_dataset.filter(file_dataset.file_metadata['Size'] < 100000)
 file_dataset = file_dataset.filter((file_dataset.file_metadata['CreatedTime'] < datetime(2020,1,1)) | (file_dataset.file_metadata['CanSeek'] == False))
 ```
 
-[データのラベル付けプロジェクト](how-to-create-labeling-projects.md)から作成された **ラベル付きデータセット** は特殊なケースです。 これらのデータセットは、イメージ ファイルで構成される TabularDataset の一種です。 これらのデータセットの種類には、メタデータ、および `label` や `image_details` などの列の値によって、イメージを [filter()](/python/api/azureml-core/azureml.data.tabulardataset#filter-expression-) でフィルター処理できます。
+[画像のラベル付けプロジェクト](how-to-create-image-labeling-projects.md)から作成された **ラベル付きデータセット** は特殊なケースです。 これらのデータセットは、イメージ ファイルで構成される TabularDataset の一種です。 これらのデータセットの種類には、メタデータ、および `label` や `image_details` などの列の値によって、イメージを [filter()](/python/api/azureml-core/azureml.data.tabulardataset#filter-expression-) でフィルター処理できます。
 
 ```python
 # Dataset that only contains records where the label column value is dog

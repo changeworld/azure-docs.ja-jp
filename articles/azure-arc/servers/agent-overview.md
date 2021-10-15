@@ -1,15 +1,15 @@
 ---
 title: Connected Machine エージェントの概要
 description: この記事では、ハイブリッド環境でホストされている仮想マシンの監視をサポートする、使用可能な Azure Arc 対応サーバー エージェントの詳細な概要を提供します。
-ms.date: 09/14/2021
+ms.date: 09/30/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e8d29e230819e6fa141df0f99460b67fe4a2eb0e
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 36dc64a28cd0199e7fba3ab2b5f3f6765eef489d
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128662288"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129455609"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Azure Arc 対応サーバー エージェントの概要
 
@@ -97,9 +97,8 @@ Azure Connected Machine エージェントでは、次のバージョンの Wind
 
 > [!NOTE]
 > Azure Arc 対応サーバーでは Amazon Linux がサポートされていますが、以下ではこのディストリビューションはサポートされていません。
-> * Azure Monitor で使用されるエージェント (つまり、Log Analytics エージェントと Dependency Agent)
+> * Azure Monitor VM 分析情報で使用される依存関係エージェント
 > * Azure Automation の Update Management
-> * VM の分析情報
 
 ### <a name="software-requirements"></a>ソフトウェア要件
 
@@ -120,6 +119,34 @@ Azure Arc 対応サーバーでお使いのマシンを構成する前に、Azur
 
 Azure Arc 対応サーバーでは、1 つのリソース グループで最大 5,000 個のマシン インスタンスがサポートされます。
 
+### <a name="register-azure-resource-providers"></a>Azure リソースプロバイダーを登録する
+
+Azure Arc 対応サーバーは、このサービスを使用するために、お使いのサブスクリプション内の次の Azure リソース プロバイダーに依存しています。
+
+* **Microsoft.HybridCompute**
+* **Microsoft.GuestConfiguration**
+
+これらが登録されていない場合は、次のコマンドを使って登録できます。
+
+Azure PowerShell:
+
+```azurepowershell-interactive
+Login-AzAccount
+Set-AzContext -SubscriptionId [subscription you want to onboard]
+Register-AzResourceProvider -ProviderNamespace Microsoft.HybridCompute
+Register-AzResourceProvider -ProviderNamespace Microsoft.GuestConfiguration
+```
+
+Azure CLI:
+
+```azurecli-interactive
+az account set --subscription "{Your Subscription Name}"
+az provider register --namespace 'Microsoft.HybridCompute'
+az provider register --namespace 'Microsoft.GuestConfiguration'
+```
+
+「[Azure portal](../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)」の手順に従って、Azure portal でリソースプロバイダーを登録することもできます。
+
 ### <a name="transport-layer-security-12-protocol"></a>トランスポート層セキュリティ 1.2 プロトコル
 
 Azure に転送中のデータのセキュリティを確保するには、トランスポート層セキュリティ (TLS) 1.2 を使用するようにマシンを構成することを強くお勧めします。 以前のバージョンの TLS/SSL (Secure Sockets Layer) は脆弱であることが確認されています。現在、これらは下位互換性を維持するために使用可能ですが、**推奨されていません**。
@@ -129,9 +156,11 @@ Azure に転送中のデータのセキュリティを確保するには、ト�
 |Linux | Linux ディストリビューションでは、TLS 1.2 のサポートに関して [OpenSSL](https://www.openssl.org) に依存する傾向があります。 | [OpenSSL の Changelog](https://www.openssl.org/news/changelog.html) を参照して、使用している OpenSSL のバージョンがサポートされていることを確認してください。|
 | Windows Server 2012 R2 以降 | サポートされています。既定で有効になっています。 | [既定の設定](/windows-server/security/tls/tls-registry-settings)を使用していることを確認するには。|
 
-### <a name="networking-configuration"></a>ネットワーク構成
+## <a name="networking-configuration"></a>ネットワーク構成
 
 Linux と Windows 用の Connected Machine エージェントは、TCP ポート 443 を介して安全に Azure Arc へのアウトバウンド通信を行います。 マシンがインターネットで通信するためにファイアウォールまたはプロキシ サーバー経由で接続する必要がある場合、エージェントは代わりに HTTP プロトコルをアウトバウンドの通信を行います。 トラフィックは既に暗号化されているため、プロキシ サーバーによって Connected Machine Agent のセキュリティが強化されることはありません。
+
+Azure Arc へのネットワーク接続をさらにセキュリティで保護するには、パブリック ネットワークとプロキシ サーバーを使用する代わりに、[Azure Arc プライベート リンク スコープ](private-link-security.md) (プレビュー) を実装できます。
 
 > [!NOTE]
 > Azure Arc 対応サーバーでは、Connected Machine エージェントのプロキシとして [Log Analytics ゲートウェイ](../../azure-monitor/agents/gateway.md)を使用することはサポートされていません。
@@ -169,34 +198,6 @@ URL:
 各サービス タグ/リージョンの IP アドレスの一覧については、「[Azure IP 範囲とサービス タグ – パブリック クラウド](https://www.microsoft.com/download/details.aspx?id=56519)」という JSON ファイルを参照してください。 Microsoft では、各 Azure サービスとそれが使用する IP 範囲を含む更新プログラムを毎週発行しています。 JSON ファイル内のこの情報は、各サービス タグに対応する現在の特定時点の IP 範囲の一覧です。 IP アドレスは変更される可能性があります。 ファイアウォール構成に IP アドレス範囲が必要な場合は、**AzureCloud** サービス タグを使用して、すべての Azure サービスへのアクセスを許可してください。 これらの URL のセキュリティ監視または検査を無効にせず、他のインターネット トラフィックと同様に許可してください。
 
 詳細については、[サービス タグの概要](../../virtual-network/service-tags-overview.md)に関するページをご確認ください。
-
-### <a name="register-azure-resource-providers"></a>Azure リソースプロバイダーを登録する
-
-Azure Arc 対応サーバーは、このサービスを使用するために、お使いのサブスクリプション内の次の Azure リソース プロバイダーに依存しています。
-
-* **Microsoft.HybridCompute**
-* **Microsoft.GuestConfiguration**
-
-これらが登録されていない場合は、次のコマンドを使って登録できます。
-
-Azure PowerShell:
-
-```azurepowershell-interactive
-Login-AzAccount
-Set-AzContext -SubscriptionId [subscription you want to onboard]
-Register-AzResourceProvider -ProviderNamespace Microsoft.HybridCompute
-Register-AzResourceProvider -ProviderNamespace Microsoft.GuestConfiguration
-```
-
-Azure CLI:
-
-```azurecli-interactive
-az account set --subscription "{Your Subscription Name}"
-az provider register --namespace 'Microsoft.HybridCompute'
-az provider register --namespace 'Microsoft.GuestConfiguration'
-```
-
-「[Azure portal](../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)」の手順に従って、Azure portal でリソースプロバイダーを登録することもできます。
 
 ## <a name="installation-and-configuration"></a>インストールと構成
 

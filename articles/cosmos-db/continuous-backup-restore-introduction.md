@@ -8,12 +8,12 @@ ms.date: 07/29/2021
 ms.author: govindk
 ms.reviewer: sngun
 ms.custom: references_regions
-ms.openlocfilehash: a8862f0b71a6b3f8bba21bdd4ab40290a00d0959
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: e7d46d1680e11307eb873383e91e6e682f545549
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122323021"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129546560"
 ---
 # <a name="continuous-backup-with-point-in-time-restore-in-azure-cosmos-db"></a>Azure Cosmos DB のポイントインタイム リストアを使用した継続的バックアップ
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -111,7 +111,9 @@ Azure Cosmos DB を使用すると、継続的バックアップ アカウント
 
 * 複数リージョンの書き込みアカウントはサポートされていません。
 
-* Azure Synapse Link が有効なアカウントのバックアップと復元には、分析ストア データは含まれません。 Synapse Link が有効になっている場合、トランザクション ストア内のデータは、Azure Cosmos DB によって、スケジュールされたバックアップ間隔で引き続き自動的にバックアップされます。 現時点では、分析ストア内のデータの自動バックアップと復元はサポートされていません。
+* Azure Synapse Link と定期的なバックアップ モードは、同じデータベース アカウント内で共存することができます。 ただし、バックアップと復元には、分析ストア データは含まれません。 Synapse Link が有効になっている場合、Azure Cosmos DB がトランザクション ストア内のデータを、スケジュールされたバックアップ間隔で引き続き自動的にバックアップします。 
+
+* Azure Synapse Link と継続的バックアップ モードは、同じデータベース アカウント内で共存することができません。 現在、Synapse Link が有効になっているデータベース アカウントでは継続的バックアップ モードを使用できず、その逆も同様です。
 
 * 復元されるアカウントは、ソース アカウントが存在するものと同じリージョンに作成されます。 ソース アカウントが存在していないリージョンにアカウントを復元することはできません。
 

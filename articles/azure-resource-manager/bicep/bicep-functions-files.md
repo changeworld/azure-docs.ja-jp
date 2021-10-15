@@ -2,13 +2,13 @@
 title: Bicep 関数 - ファイル
 description: ファイルから内容を読み込むために Bicep ファイルで使用する関数について説明します。
 ms.topic: conceptual
-ms.date: 09/13/2021
-ms.openlocfilehash: 10c4bb501945bdcd5b502797e8383dbea1d0f63c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 09/30/2021
+ms.openlocfilehash: 28b28086986eb4e871cc6ed8c315c3802e721840
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128552678"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129359838"
 ---
 # <a name="file-functions-for-bicep"></a>Bicep のファイル関数
 
@@ -18,11 +18,13 @@ ms.locfileid: "128552678"
 
 `loadFileAsBase64(filePath)`
 
-ファイルを base64 文字列として読み込みます。 
+ファイルを base64 文字列として読み込みます。
+
+名前空間: [sys](bicep-functions.md#namespaces-for-functions)。
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | filePath | はい | string | 読み込むファイルのパス。 パスはデプロイされた Bicep ファイルからの相対パスです。 |
 
@@ -44,9 +46,11 @@ base64 文字列形式のファイル。
 
 指定したファイルの内容を文字列として読み込みます。 
 
+名前空間: [sys](bicep-functions.md#namespaces-for-functions)。
+
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | filePath | はい | string | 読み込むファイルのパス。 パスはデプロイされた Bicep ファイルからの相対パスです。 |
 | encoding | いいえ | string | ファイルのエンコード。 既定値は <ph id="ph1">`utf-8`</ph> です。 使用できるオプションは、`iso-8859-1`、`us-ascii`、`utf-16`、`utf-16BE`、または `utf-8` です。  |

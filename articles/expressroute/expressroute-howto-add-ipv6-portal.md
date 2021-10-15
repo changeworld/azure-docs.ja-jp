@@ -7,16 +7,19 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 03/09/2021
 ms.author: duau
-ms.openlocfilehash: ffb713ac2a2f60b6ea046691169f4775bff726e3
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 645b936b5c8c550e9a71d33c079721d897aab0e3
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128647482"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129233542"
 ---
 # <a name="add-ipv6-support-for-private-peering-using-the-azure-portal-preview"></a>Azure portal を使用してプライベート ピアリングに対する IPv6 サポートを追加する (プレビュー)
 
-この記事では、Azure portal を使用して Azure 内のリソースに ExpressRoute 経由で接続するための IPv6 サポートを追加する方法について説明します。 
+この記事では、Azure portal を使用して Azure 内のリソースに ExpressRoute 経由で接続するための IPv6 サポートを追加する方法について説明します。
+
+>[!NOTE]
+> ポータル エクスペリエンスのいくつかの側面は引き続き実装されています。 そのため、このドキュメントで提供されている手順の正確な順序に従って、ポータル経由で IPv6 サポートを正常に追加してください。 具体的には、ポータルで新しい仮想ネットワーク ゲートウェイを作成する "*前に*"、必ず仮想ネットワークとサブネットを作成するか、または既存の仮想ネットワークと GatewaySubnet に IPv6 アドレス空間を追加するようにしてください。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 

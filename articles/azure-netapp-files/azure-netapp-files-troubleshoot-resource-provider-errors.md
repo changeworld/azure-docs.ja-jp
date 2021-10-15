@@ -13,14 +13,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 02/10/2021
+ms.date: 10/04/2021
 ms.author: b-juche
-ms.openlocfilehash: ac83e5a9366a12c5adce0e08f04f2bb28a7d788d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2a3e97096109ce89f481b2abca2dc7b5a3a237e6
+ms.sourcegitcommit: f3f2ec7793ebeee19bd9ffc3004725fb33eb4b3f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100374883"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129407876"
 ---
 # <a name="troubleshoot-azure-netapp-files-resource-provider-errors"></a>Azure NetApp Files のリソース プロバイダー エラーのトラブルシューティング 
 
@@ -30,13 +30,13 @@ ms.locfileid: "100374883"
 
 "***このリージョンでは `netAppAccounts` の作成が制限されています。***"
 
-この状況は、サブスクリプションが Azure NetApp Files の順番待ちリストに記載されており、ユーザーが NetApp アカウントを作成しようとした場合に発生します。
+この状況は、ユーザーが NetApp アカウントを作成しようとした場合に発生します。
 
 * 原因:   
 Azure NetApp Files の Azure リソース プロバイダーが正常に登録されていません。 
  
 * 解決方法:   
-サブスクリプションが順番待ちリストに記載された後、[Azure NetApp リソース プロバイダーの登録](azure-netapp-files-register.md#resource-provider)に記載されているすべての手順を完了します。
+[NetApp リソースプロバイダーを登録する](azure-netapp-files-register.md)方法に関するページに記載されているすべての手順を実行してください。
 
 ***BareMetalTenantId cannot be changed. (BareMetalTenantId を変更できません。)***  
 
@@ -317,7 +317,7 @@ Active Directory の構成が使用されていない場合は、最初に既存
 
 ***OwnerId cannot be changed (OwnerId を変更できません)***
 
-このエラーは、ボリュームの OwnerId プロパティを変更しようとすると発生します。 OwnerId の変更はサポートされている操作ではありません。 
+このエラーは、ボリュームの `OwnerId` プロパティを変更しようとすると発生します。 `OwnerId` の変更はサポートされている操作ではありません。 
 
 * 原因:   
 `OwnerId` プロパティは、ボリュームの作成時に設定されます。 このプロパティを後から変更することはできません。

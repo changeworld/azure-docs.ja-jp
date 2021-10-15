@@ -4,12 +4,12 @@ description: ページ ビューとセッション数、Web クライアント�
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 4ce6481a35b8a214a2203a165161183d384b4ea0
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 6e3b7601605eecafa969eec78b82b863580ecc2e
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128662174"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129235746"
 ---
 # <a name="application-insights-for-web-pages"></a>Web ページ向けの Application Insights
 
@@ -108,7 +108,7 @@ SDK の読み込みに失敗する原因となるだけでなく、エラーの�
 
 使用できる構成オプションは次のとおりです。
  
-| 名前 | 種類 | 説明
+| 名前 | Type | 説明
 |------|------|----------------
 | src | string **[必須]** | SDK の読み込み元の完全な URL。 この値は、動的に追加される &lt;script /&gt; タグの "src" 属性に使用されます。 パブリック CDN の場所を使用することも、プライベートにホストされている独自の場所を使用することもできます。
 | name | string *[省略可能]* | 初期化された SDK のグローバル名。既定値は `appInsights` です。 ```window.appInsights``` は、初期化されたインスタンスへの参照になります。 注: name 値を指定した場合や、(グローバル名 appInsightsSDK によって) 以前のインスタンスが割り当てられているように見える場合は、この name 値もグローバル名前空間で ```window.appInsightsSDK=<name value>``` として定義されます。これは、スニペットの正しいスケルトン メソッドとプロキシ メソッドを確実に初期化および更新できるように、SDK の初期化コードで必要となります。
@@ -218,7 +218,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | enable&#8203;AjaxErrorStatusText | true の場合、失敗した AJAX 要求の依存関係イベントに応答エラー データ テキストを含めます。 | boolean<br/> false |
 | enable&#8203;AjaxPerfTracking |ブラウザーの window.performance の追加のタイミングを検索し、レポートされる `ajax` (XHR および fetch) のレポートされるメトリックに含めることを可能にするフラグを設定します。 | boolean<br/> false |
 | maxAjaxPerf&#8203;LookupAttempts | window.performance のタイミング (使用可能な場合) を検索する最大回数。すべてのブラウザーが、XHR 要求の終了をレポートする前に window.performance を設定するわけではないため、これは必須です。fetch 要求の場合、これは要求の完了後に追加されます。| numeric<br/> 3 |
-| ajaxPerfLookupDelay | `ajax` 要求で windows.performance のタイミングの検索を再試行するまでの待ち時間。時間はミリ秒単位であり、setTimeout() に直接渡されます。 | numeric<br/> 25 ms |
+| ajaxPerfLookupDelay | `ajax` 要求で window.performance のタイミングの検索を再試行するまでの待ち時間の量。時間はミリ秒単位であり、直接 setTimeout() に渡されます。 | numeric<br/> 25 ms |
 | enableUnhandled&#8203;PromiseRejection&#8203;Tracking | true の場合、未処理の Promise 拒否が自動収集され、JavaScript エラーとしてレポートされます。 disableExceptionTracking が true (例外を追跡しない) の場合、この構成値は無視され、未処理の Promise 拒否はレポートされません。 | boolean<br/> false |
 | disable&#8203;InstrumentationKey&#8203;Validation | true の場合、インストルメンテーション キーの検証チェックはバイパスされます。 | boolean<br/>false |
 | enablePerfMgr | 有効にすると (true)、perfEvents を (doPerf() ヘルパーを使用して) 生成するためにインストルメント化されたコードのローカル perfEvents が作成されます。 これは、使用量に基づいて SDK 内で、または必要に応じて独自のインストルメント化されたコード内で、パフォーマンスの問題を識別するために使用できます。 [詳細については、基本ドキュメントを参照してください](https://github.com/microsoft/ApplicationInsights-JS/blob/master/docs/PerformanceMonitoring.md)。 v2.5.7 以降 | boolean<br/>false |

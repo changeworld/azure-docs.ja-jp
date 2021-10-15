@@ -17,12 +17,12 @@ ms.date: 9/01/2021
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 828f4bc269e5d7ec5b0d46c473d2abbf2c200222
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: e5c4dd695cb9761721386eb98e18f00ad53bdc26
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123220617"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129231313"
 ---
 # <a name="automate-management-with-the-sql-server-iaas-agent-extension"></a>SQL Server IaaS Agent 拡張機能を使用して管理を自動化する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -90,7 +90,7 @@ SQL Server IaaS Agent 拡張機能には、SQL Server VM を管理するため�
 
 - **軽量** モードでは、拡張機能バイナリが VM にコピーされますが、エージェントはインストールされません。 軽量モードでは、SQL Server のライセンスの種類とエディションの変更 "_のみ_" がサポートされ、ポータルの管理が制限されます。 このオプションは、複数のインスタンスがあるか、フェールオーバー クラスター インスタンス (FCI) に参加している SQL Server VM に使用します。 簡易モードは、[自動登録](sql-agent-extension-automatic-registration-all-vms.md)機能を使用する場合、または手動登録時に管理の種類が指定されていない場合の既定の管理モードです。 軽量モードを使用する場合、メモリまたは CPU への影響はなく、また関連コストはありません。 
 
-- **フル** モードでは、SQL IaaS Agent が VM にインストールされてすべての機能が提供されます。 単一のインスタンスがある SQL Server VM を管理する場合に使用します。 フル モードでは、メモリと CPU に与える影響が最小の 2 つの Windows サービスがインストールされます。これらは、タスク マネージャーを通して監視できます。 完全管理モードの使用に関連するコストはありません。 システム管理者のアクセス許可が必要です。 2021 年 9 月以降は、SQL Server VM をフル管理モードで登録したときでも、SQL Server サービスを再起動する必要はありません。 
+- **フル** モードでは、SQL IaaS Agent が VM にインストールされてすべての機能が提供されます。 単一のインスタンスがある SQL Server VM を管理する場合に使用します。 フル モードでは、メモリと CPU への影響を最低限に抑えた 2 つの Windows サービスをインストールします - これらはタスク マネージャーでモニターできます。 完全管理モードの使用に関連するコストはありません。 システム管理者のアクセス許可が必要です。 2021 年 9 月以降は、SQL Server VM をフル管理モードで登録したときでも、SQL Server サービスを再起動する必要はありません。 
 
 - **NoAgent** モードは Windows Server 2008 にインストールされた SQL Server 2008 および SQL Server 2008 R2 の専用モードです。 NoAgent モードを使用する場合、メモリまたは CPU への影響はありません。 NoAgent 管理モードの使用に関連するコストはありません。SQL Server は再起動されず、エージェントは VM にインストールされません。 
 

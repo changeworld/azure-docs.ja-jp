@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 09/20/2021
+ms.date: 09/28/2021
 ms.author: tisande
-ms.openlocfilehash: 39b385096fadb5d410520889c0aa8f1a07f1a67a
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: ebf9eb5e06b98bdd573d91f0a57daeb9d81b1f50
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128616557"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129230572"
 ---
 # <a name="azure-cosmos-db-integrated-cache---overview-preview"></a>Azure Cosmos DB 統合キャッシュ - 概要 (プレビュー)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -90,7 +90,7 @@ Azure Cosmos DB 統合キャッシュはインメモリ キャッシュで、要
 
 統合キャッシュでは、セッションと最終的な[整合性](consistency-levels.md)の両方のみがサポートされます。 一貫したプレフィックス、有界整合性制約、厳密な一貫性が設定されている読み取りの場合、統合キャッシュは常にバイパスされます。
 
-すべての読み取りのセッションまたは最終的な整合性のいずれかを構成する最も簡単な方法は、[アカウントレベルでこれを設定する](consistency-levels.md#configure-the-default-consistency-level)ことです。 ただし、一部の読み取りにのみ最終的な整合性を設定する場合は、[要求レベル](how-to-manage-consistency.md#override-the-default-consistency-level)で整合性を構成することもできます。
+すべての読み取りのセッションまたは最終的な整合性のいずれかを構成する最も簡単な方法は、[アカウントレベルでこれを設定する](consistency-levels.md#configure-the-default-consistency-level)ことです。 ただし、一部の読み取りにのみ特定の整合性を設定する場合は、[要求レベル](how-to-manage-consistency.md#override-the-default-consistency-level)で整合性を構成することもできます。
 
 ### <a name="session-consistency"></a>"セッション" 整合性
 
@@ -139,8 +139,8 @@ Azure Cosmos DB 統合キャッシュはインメモリ キャッシュで、要
 - `IntegratedCacheEvictedEntriesSize` - 専用ゲートウェイ ノード全体で、LRU が原因で統合キャッシュから削除された平均データ量。 これには、`MaxIntegratedCacheStaleness` 時間を超過したために期限切れになったデータは含まれません。
 - `IntegratedCacheItemExpirationCount` - キャッシュされているポイント読み取りが `MaxIntegratedCacheStaleness` 時間を超過したために統合キャッシュから削除された項目の数。 この値は、すべての専用ゲートウェイ ノード全体の統合キャッシュ インスタンスの平均です。
 - `IntegratedCacheQueryExpirationCount` - キャッシュされているクエリが `MaxIntegratedCacheStaleness` 時間を超過したために統合キャッシュから削除されたクエリの数。 この値は、すべての専用ゲートウェイ ノード全体の統合キャッシュ インスタンスの平均です。
-- `IntegratedCacheItemHitRate` - (最終的な整合性を保って専用ゲートウェイを経由したすべてのポイント読み取り数のうち) 統合キャッシュを使用したポイント読み取りの割合。 この値は、すべての専用ゲートウェイ ノード全体の統合キャッシュ インスタンスの平均です。
-- `IntegratedCacheQueryHitRate` - (最終的な整合性を保って専用ゲートウェイを経由したすべてのクエリ数のうち) 統合キャッシュを使用したクエリの割合。 この値は、すべての専用ゲートウェイ ノード全体の統合キャッシュ インスタンスの平均です。
+- `IntegratedCacheItemHitRate` - (セッションの整合性または最終的な整合性を保って専用ゲートウェイを経由したすべてのポイント読み取り数のうち) 統合キャッシュを使用したポイント読み取りの割合。 この値は、すべての専用ゲートウェイ ノード全体の統合キャッシュ インスタンスの平均です。
+- `IntegratedCacheQueryHitRate` - (セッションの整合性最終的な整合性を保って専用ゲートウェイを経由したすべてのクエリ数のうち) 統合キャッシュを使用したクエリの割合。 この値は、すべての専用ゲートウェイ ノード全体の統合キャッシュ インスタンスの平均です。
 
 既定では、([メトリック (クラシック)] ではなく) **[メトリック]** ブレードから、既存のすべてのメトリックを使用できます。
 
@@ -183,4 +183,4 @@ LRU ではなく `MaxIntegratedCacheStaleness` を超過したことが原因で
 - [専用ゲートウェイ](dedicated-gateway.md)
 - Azure Cosmos DB への移行のための容量計画を実行しようとしていますか? 容量計画のために、既存のデータベース クラスターに関する情報を使用できます。
     - 知っていることが既存のデータベース クラスター内の仮想コアとサーバーの数のみである場合は、[仮想コアまたは仮想 CPU の数を使用した要求ユニットの見積もり](convert-vcore-to-request-unit.md)に関するページを参照してください 
-    - 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB 容量計画ツールを使用した要求ユニットに見積もり](estimate-ru-with-capacity-planner.md)に関するページを参照してください
+    - 現在のデータベース ワークロードに対する通常の要求レートがわかっている場合は、[Azure Cosmos DB Capacity Planner を使用した要求ユニットの見積もり](estimate-ru-with-capacity-planner.md)に関するページを参照してください

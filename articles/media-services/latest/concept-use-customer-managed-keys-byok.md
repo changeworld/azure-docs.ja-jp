@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: 1ad358c428f80e2e8bebcecf73cc89ddd5c37bc7
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: ce91f89e8974517d56aa7f1de55d01b9353106e7
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110454424"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129358575"
 ---
 # <a name="bring-your-own-key-customer-managed-keys-with-media-services"></a>Media Services での Bring Your Own Key (カスタマー マネージド キー)
 
@@ -21,7 +21,7 @@ Bring Your Own Key (BYOK) は、お客様のワークロードをクラウドに
 
 ## <a name="keys-and-key-management"></a>キーとキー管理
 
-Media Services 2020-05-01 API を使用するときには、Media Services で独自のキーを使用できます。 Media Services が所有するシステム キーで暗号化されるすべてのアカウントに対して、既定のアカウント キーが作成されます。 お客様独自のキーを使用するときには、アカウント キーはそのキーで暗号化されます。 コンテンツ キーは、アカウント キーによって暗号化されます。 JobInputHttp URL と、トークン検証用の対称キーも暗号化されます。
+Media Services 2020-05-01 以降の API を使用するときには、Media Services で独自のキーを使用できます。 Media Services が所有するシステム キーで暗号化されるすべてのアカウントに対して、既定のアカウント キーが作成されます。 お客様独自のキーを使用するときには、アカウント キーはそのキーで暗号化されます。 コンテンツ キーは、アカウント キーによって暗号化されます。 JobInputHttp URL と、トークン検証用の対称キーも暗号化されます。
 
 :::image type="content" source="./media/customer-managed-key/customer-managed-key.svg" alt-text="カスタマー マネージド キーによってシステム管理キーが置き換えられます":::
 

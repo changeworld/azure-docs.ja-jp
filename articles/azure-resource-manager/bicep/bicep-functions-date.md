@@ -4,13 +4,13 @@ description: date で作業する際に Bicep ファイルで使用する関数�
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 09/10/2021
-ms.openlocfilehash: 45e0180a11209b39b4c37f16f9940686c042ee89
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 09/30/2021
+ms.openlocfilehash: 0eb995db6584dd056fa0b1563aec8c117fddeb66
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124794122"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129357268"
 ---
 # <a name="date-functions-for-bicep"></a>Bicep の Date 関数
 
@@ -22,9 +22,11 @@ ms.locfileid: "124794122"
 
 ベースの値に期間を加算します。 ISO 8601 形式である必要があります。
 
+名前空間: [sys](bicep-functions.md#namespaces-for-functions)。
+
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | base | はい | string | 加算する期間の開始日時の値。 [ISO 8601 タイムスタンプの形式](https://en.wikipedia.org/wiki/ISO_8601)を使用します。 |
 | duration | はい | string | ベースに加算する時間の値。 負の値を指定することができます。 [ISO 8601 期間の形式](https://en.wikipedia.org/wiki/ISO_8601#Durations)を使用します。 |
@@ -52,7 +54,7 @@ output add1HourOutput string = add1Hour
 
 以前の例がベースの日時 `2020-04-07 14:53:14Z`でデプロイされている場合、出力は次のようになります。
 
-| Name | 種類 | 値 |
+| Name | Type | 値 |
 | ---- | ---- | ----- |
 | add3YearsOutput | String | 4/7/2023 2:53:14 PM |
 | subtract9DaysOutput | String | 3/29/2020 2:53:14 PM |
@@ -86,9 +88,11 @@ resource scheduler 'Microsoft.Automation/automationAccounts/schedules@2015-10-31
 
 指定された形式で現在 (UTC) の datetime 値を返します。 形式を指定しないと、ISO 8601 (`yyyyMMddTHHmmssZ`) 形式が使われます。 **この関数は、パラメーターの既定値でのみ使用できます。**
 
+名前空間: [sys](bicep-functions.md#namespaces-for-functions)。
+
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | format |いいえ |string |文字列に変換する URI エンコードされた値。 [標準書式指定文字列](/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式指定文字列](/dotnet/standard/base-types/custom-date-and-time-format-strings)を使用します。 |
 
@@ -120,7 +124,7 @@ output utcCustomOutput string = utcCustomValue
 
 前の例からの出力はデプロイごとに変わりますが、次のようになります。
 
-| 名前 | 種類 | 値 |
+| 名前 | Type | 値 |
 | ---- | ---- | ----- |
 | utcOutput | string | 20190305T175318Z |
 | utcShortOutput | string | 03/05/2019 |
@@ -145,4 +149,4 @@ output utcShortOutput string = utcShort
 
 ## <a name="next-steps"></a>次のステップ
 
-* Bicep ファイルのセクションの説明は、[Bicep ファイルの構造と構文](./file.md)に関する記事をご覧ください。
+* Bicep ファイルのセクションの説明は、<bpt id="p1">[</bpt>Bicep ファイルの構造と構文<ept id="p1">](./file.md)</ept>に関する記事をご覧ください。

@@ -7,16 +7,16 @@ ms.custom: references_regions
 ms.date: 06/30/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: bc356e828adbe9b2d93a202f6b58673dd4ec5efc
-ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
+ms.openlocfilehash: 709721139fa652798c5cc67b7f54e1b7452505a3
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113125908"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129273877"
 ---
 # <a name="data-locations-for-azure-virtual-desktop"></a>Azure Virtual Desktop のデータの場所
 
-現在、Azure Virtual Desktop はすべての地理的な場所で使用できます。 管理者は、ホスト プールの仮想マシンと関連するサービス (ファイル サーバーなど) を作成するときに、ユーザー データを格納する場所を選択できます。 Azure の地域の詳細については、[Azure データセンターのマップ](https://azuredatacentermap.azurewebsites.net/)を参照してください。
+現在、Azure Virtual Desktop はすべての地理的な場所で使用できます。 管理者は、ホスト プールの仮想マシンと関連するサービス (ファイル サーバーなど) を作成するときに、ユーザー データを格納する場所を選択できます。 Azure の地域の詳細については、[Azure におけるデータ所在地](https://azure.microsoft.com/global-infrastructure/data-residency/#overview)を参照してください。
 
 >[!NOTE]
 >Microsoft が、お客様またはお客様のユーザーがユーザーとアプリ固有のデータにアクセスできるリージョンを制御または制限することはありません。

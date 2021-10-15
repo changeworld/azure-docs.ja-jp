@@ -11,12 +11,12 @@ ms.date: 11/13/2020
 ms.author: joanpo
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019"
-ms.openlocfilehash: 45b9fa1fb96f45b5b24d7a0b823b11f89a471bd4
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: d17f370739acf5280850beb1eb14ad8cdc0268a6
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111752317"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129424938"
 ---
 # <a name="backup-and-restore-in-azure-synapse-dedicated-sql-pool"></a>Azure Synapse の専用 SQL プールにおけるバックアップと復元
 
@@ -74,7 +74,7 @@ order by run_id desc
 専用 SQL プールの geo バックアップが不要な場合は、それを無効にして、ディザスター リカバリー ストレージのコストを節約できます。 これを行うには、[方法ガイド:専用 SQL プール (以前の SQL DW) の geo バックアップの無効化](disable-geo-backup.md)に関する記事を参照してください。 geo バックアップを無効にすると、プライマリ Azure データ センターが使用できなくなった場合に、ペアになっている Azure リージョンに専用 SQL プールを復旧できなくなることに注意してください。 
 
 > [!NOTE]
-> geo バックアップ用にさらに短い RPO が必要な場合は、[こちら](https://feedback.azure.com/forums/307516-sql-data-warehouse)でこの機能に投票してください。 ユーザー定義の復元ポイントを作成し、新しく作成された復元ポイントを異なるリージョンの新しいデータ ウェアハウスに復元することもできます。 復元が済むと、データ ウェアハウスはオンラインになるので、無期限に一時停止してコンピューティング コストを節約することができます。 一時停止したデータベースについては、Azure Premium Storage レートでストレージに対して課金されます。 データ ウェアハウスのアクティブなコピーが必要な場合は、わずか数分で再開できます。
+> geo バックアップ用にさらに短い RPO が必要な場合は、[こちら](https://feedback.azure.com/forums/307516-sql-data-warehouse)でこの機能に投票してください。 ユーザー定義の復元ポイントを作成し、新しく作成された復元ポイントを異なるリージョンの新しいデータ ウェアハウスに復元することもできます。 復元後、データ ウェアハウスはオンライン状態になり、コンピューティング コストを節約するために無期限に一時停止することもできます。 一時停止したデータベースについては、Azure Premium Storage レートでストレージに対して課金されます。 復旧ポイントの間隔を短くするためによく利用されるもう 1 つの方法は、データ ウェアハウスのプライマリおよびセカンダリ インスタンスに並列でデータを取り込むことです。 このシナリオでは、1 つまたは複数のソースから取り込んだデータが、データ ウェアハウスの 2 つの別個のインスタンス (プライマリとセカンダリ) に残ります。 ウェアハウスのセカンダリ インスタンスは、コンピューティング コストを節約するために一時停止できます。 データ ウェアハウスのアクティブなコピーが必要な場合は、わずか数分で再開できます。
 
 ## <a name="data-residency"></a>データの保存場所 
 

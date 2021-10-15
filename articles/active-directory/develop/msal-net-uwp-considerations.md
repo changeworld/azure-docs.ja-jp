@@ -13,18 +13,18 @@ ms.date: 03/03/2021
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 8a8aab447007eb574a7a4bc532d8177bd0d8b345
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: a11022fa0334ec353b574363934339e2b93b75eb
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102122478"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129235721"
 ---
 # <a name="considerations-for-using-universal-windows-platform-with-msalnet"></a>ユニバーサル Windows プラットフォームを MSAL.NET と使用する場合の考慮事項
 ユニバーサル Windows プラットフォーム (UWP) を MSAL.NET と使用するアプリケーションの開発者は、この記事で紹介する概念を考慮する必要があります。
 
 ## <a name="the-usecorporatenetwork-property"></a>UseCorporateNetwork プロパティ
-Windows ランタイム (WinRT) プラットフォームでは、`PublicClientApplication` にブール型プロパティ `UseCorporateNetwork` があります。 このプロパティを使用すると、フェデレーション Azure Active Directory (Azure AD) テナントを持つアカウントにユーザーがサインインしている場合に、Windows 10 アプリケーションと UWP アプリケーションで統合 Windows 認証 (IWA) のメリットを活用できるようになります。 オペレーティング システムにサインインしているユーザーが、シングル サインオン (SSO) を使用することもできます。 `UseCorporateNetwork` プロパティを設定すると、MSAL.NET により、Web 認証ブローカー (WAB) が使用されます。
+Windows ランタイム (WinRT) プラットフォームでは、`PublicClientApplication` にブール型プロパティ `UseCorporateNetwork` があります。 フェデレーション Azure Active Directory (Azure AD) テナントのあるアカウントにユーザーがサインインしている場合は、Windows 10 のアプリケーションと UWP アプリケーションで、このプロパティを使用することにより、統合 Windows 認証 (IWA) を利用できます。 オペレーティング システムにサインインしているユーザーが、シングル サインオン (SSO) を使用することもできます。 `UseCorporateNetwork` プロパティを設定すると、MSAL.NET により、Web 認証ブローカー (WAB) が使用されます。
 
 > [!IMPORTANT]
 > `UseCorporateNetwork` プロパティを true に設定する場合は、アプリケーション開発者がアプリケーションで IWA を有効にしておくことが前提となります。 IWA を有効にするには、次を実行します。

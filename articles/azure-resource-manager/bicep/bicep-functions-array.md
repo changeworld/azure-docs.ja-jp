@@ -4,13 +4,13 @@ description: 配列で作業する際に Bicep ファイルで使用する関数
 author: mumian
 ms.topic: conceptual
 ms.author: jgao
-ms.date: 09/10/2021
-ms.openlocfilehash: 69a937a68e2f73eaf911f2cb80cf09bab7d78eed
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 09/30/2021
+ms.openlocfilehash: 69e1e3c9574d6a32663186d46c1af3dceb422f4a
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124794103"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129357615"
 ---
 # <a name="array-functions-for-bicep"></a>Bicep の配列関数
 
@@ -21,6 +21,8 @@ ms.locfileid: "124794103"
 `array(convertToArray)`
 
 値を配列に変換します。
+
+名前空間: [sys](bicep-functions.md#namespaces-for-functions)。
 
 ### <a name="parameters"></a>パラメーター
 
@@ -62,6 +64,8 @@ output objectOutput array = array(objectToConvert)
 `concat(arg1, arg2, arg3, ...)`
 
 複数の配列を結合し、連結された配列を返します。
+
+名前空間: [sys](bicep-functions.md#namespaces-for-functions)。
 
 ### <a name="parameters"></a>パラメーター
 
@@ -106,6 +110,8 @@ output return array = concat(firstArray, secondArray)
 `contains(container, itemToFind)`
 
 配列に値が含まれるかどうか、オブジェクトにキーが含まれるかどうか、または文字列に部分文字列が含まれるかどうかを確認します。 文字列比較では大文字・小文字を区別します。 ただし、オブジェクトにキーが含まれているかどうかをテストする場合、比較で大文字・小文字を区別しません。
+
+名前空間: [sys](bicep-functions.md#namespaces-for-functions)。
 
 ### <a name="parameters"></a>パラメーター
 
@@ -160,6 +166,8 @@ output arrayFalse bool = contains(arrayToTest, 'four')
 
 配列、オブジェクト、または文字列が空かどうかを判断します。
 
+名前空間: [sys](bicep-functions.md#namespaces-for-functions)。
+
 ### <a name="parameters"></a>パラメーター
 
 | パラメーター | 必須 | 種類 | 説明 |
@@ -198,6 +206,8 @@ output stringEmpty bool = empty(testString)
 
 配列の最初の要素、または文字列の最初の文字を返します。
 
+名前空間: [sys](bicep-functions.md#namespaces-for-functions)。
+
 ### <a name="parameters"></a>パラメーター
 
 | パラメーター | 必須 | 種類 | 説明 |
@@ -235,6 +245,8 @@ output stringOutput string = first('One Two Three')
 `intersection(arg1, arg2, arg3, ...)`
 
 パラメーターから共通の要素を持つ 1 つの配列またはオブジェクトを返します。
+
+名前空間: [sys](bicep-functions.md#namespaces-for-functions)。
 
 ### <a name="parameters"></a>パラメーター
 
@@ -327,6 +339,8 @@ output commonDown array = intersection(array2, array3, array1)
 
 配列の最後の要素、または文字列の最後の文字を返します。
 
+名前空間: [sys](bicep-functions.md#namespaces-for-functions)。
+
 ### <a name="parameters"></a>パラメーター
 
 | パラメーター | 必須 | 種類 | 説明 |
@@ -364,6 +378,8 @@ output stringOutput string = last('One Two three')
 `length(arg1)`
 
 配列内の要素、文字列内の文字、またはオブジェクト内のルート レベル プロパティの数を返します。
+
+名前空間: [sys](bicep-functions.md#namespaces-for-functions)。
 
 ### <a name="parameters"></a>パラメーター
 
@@ -415,6 +431,8 @@ output objectLength int = length(objectToTest)
 
 整数の配列または整数のコンマ区切りリストから最大値を返します。
 
+名前空間: [sys](bicep-functions.md#namespaces-for-functions)。
+
 ### <a name="parameters"></a>パラメーター
 
 | パラメーター | 必須 | 種類 | 説明 |
@@ -454,6 +472,8 @@ output intOutput int = max(0,3,2,5,4)
 `min(arg1)`
 
 整数の配列または整数のコンマ区切りリストから最小値を返します。
+
+名前空間: [sys](bicep-functions.md#namespaces-for-functions)。
 
 ### <a name="parameters"></a>パラメーター
 
@@ -495,6 +515,8 @@ output intOutput int = min(0,3,2,5,4)
 
 始点となる整数から、指定した数の項目が含まれる配列を作成します。
 
+名前空間: [sys](bicep-functions.md#namespaces-for-functions)。
+
 ### <a name="parameters"></a>パラメーター
 
 | パラメーター | 必須 | 種類 | 説明 |
@@ -528,6 +550,8 @@ output rangeOutput array = range(startingInt, numberOfElements)
 `skip(originalValue, numberToSkip)`
 
 配列内の指定した数の要素の後にあるすべての要素から成る配列を返します。または、文字列内の指定した数の文字の後にあるすべての文字から成る文字列を返します。
+
+名前空間: [sys](bicep-functions.md#namespaces-for-functions)。
 
 ### <a name="parameters"></a>パラメーター
 
@@ -571,6 +595,8 @@ output stringOutput string = skip(testString, charactersToSkip)
 
 配列の先頭から指定した数の要素を含む配列、または文字列の先頭から指定した数の文字を含む文字列を返します。
 
+名前空間: [sys](bicep-functions.md#namespaces-for-functions)。
+
 ### <a name="parameters"></a>パラメーター
 
 | パラメーター | 必須 | 種類 | 説明 |
@@ -612,6 +638,8 @@ output stringOutput string = take(testString, charactersToTake)
 `union(arg1, arg2, arg3, ...)`
 
 パラメーターからすべての要素を持つ 1 つの配列またはオブジェクトを返します。 重複する値またはキーは、1 回のみ含まれます。
+
+名前空間: [sys](bicep-functions.md#namespaces-for-functions)。
 
 ### <a name="parameters"></a>パラメーター
 

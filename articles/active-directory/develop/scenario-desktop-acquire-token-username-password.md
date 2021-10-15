@@ -1,7 +1,7 @@
 ---
-title: Web API を呼び出し、ユーザー名とパスワードでトークンを取得する (デスクトップ アプリ) | Azure
+title: ユーザー名とパスワードを使用して Web API を呼び出すためのトークンを取得する (デスクトップ アプリ) | Azure
 titleSuffix: Microsoft identity platform
-description: Web API を呼び出し、ユーザー名とパスワードでアプリのトークンを取得するデスクトップ アプリを構築する方法について説明します
+description: ユーザー名とパスワードを使用してアプリのトークンを取得するために Web API を呼び出すデスクトップ アプリを構築する方法について説明します。
 services: active-directory
 author: maliksahil
 manager: CelesteDG
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/25/2021
 ms.author: sahmalik
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: ae84fd2fb25a78687f3103a193e584efc14614ca
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 08c14161ea5a108c1c6205f352485c348871bae5
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124837790"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129234872"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token-using-username-and-password"></a>Web API を呼び出すデスクトップ アプリ: ユーザー名とパスワードでトークンを取得する
 
@@ -25,7 +25,7 @@ ms.locfileid: "124837790"
 
 ## <a name="this-flow-isnt-recommended"></a>推奨されないフロー
 
-アプリケーションでユーザーにパスワードを求めることは安全でないため、ユーザー名とパスワードのフローは "*推奨されません*"。 詳細については、[深刻化するパスワードの問題の解決策](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/)に関する記事を参照してください Windows ドメイン参加済みマシン上でトークンを自動的に取得するために推奨されるフローは、[統合 Windows 認証](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Integrated-Windows-Authentication)です。 [デバイス コード フロー](https://aka.ms/msal-net-device-code-flow)を使用することもできます。
+アプリケーションでユーザーにパスワードを求めることは安全でないため、ユーザー名とパスワードのフローは "*推奨されません*"。 詳細については、[深刻化するパスワードの問題の解決策](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/)に関する記事を参照してください Windows ドメイン参加済みマシン上でトークンをサイレントに取得するための推奨されるフローは、[統合 Windows 認証](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Integrated-Windows-Authentication)です。 [デバイス コード フロー](https://aka.ms/msal-net-device-code-flow)を使用することもできます。
 
 DevOps シナリオなど、場合によっては、ユーザー名とパスワードを使用すると便利です。 ただし、独自の UI を提供する対話型のシナリオでユーザー名とパスワードを使用したい場合は、別の方法について検討してください。 ユーザー名とパスワードを使用すると、いくつかのことを放棄することになります。
 

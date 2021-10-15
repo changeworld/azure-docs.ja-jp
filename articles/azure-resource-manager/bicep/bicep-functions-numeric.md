@@ -4,13 +4,13 @@ description: Bicep ファイルで数値を扱う関数について説明しま�
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 09/10/2021
-ms.openlocfilehash: 8df0aec96001aa5b1a7cdd7342fe663f0bfa2da0
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 09/30/2021
+ms.openlocfilehash: b5230d9fd7f228981c3ac3ec899ae8b641cc74fb
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124758486"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129355333"
 ---
 # <a name="numeric-functions-for-bicep"></a>Bicep の数値関数
 
@@ -24,9 +24,11 @@ Azure Resource Manager JSON 数値関数の一部は、[Bicep 数値演算子](.
 
 指定された値を整数に変換します。
 
+名前空間: [sys](bicep-functions.md#namespaces-for-functions)。
+
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | valueToConvert |はい |文字列または整数 |整数に変換する値。 |
 
@@ -46,7 +48,7 @@ output inResult int = int(stringToConvert)
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 種類 | 値 |
+| 名前 | Type | 値 |
 | ---- | ---- | ----- |
 | intResult | int | 4 |
 
@@ -56,9 +58,11 @@ output inResult int = int(stringToConvert)
 
 整数の配列または整数のコンマ区切りリストから最大値を返します。
 
+名前空間: [sys](bicep-functions.md#namespaces-for-functions)。
+
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |整数の配列、または整数のコンマ区切りリスト |最大値を取得するコレクション。 |
 
@@ -85,7 +89,7 @@ output intOutput int = max(0,3,2,5,4)
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 種類 | 値 |
+| 名前 | Type | 値 |
 | ---- | ---- | ----- |
 | arrayOutput | int | 5 |
 | intOutput | int | 5 |
@@ -96,9 +100,11 @@ output intOutput int = max(0,3,2,5,4)
 
 整数の配列または整数のコンマ区切りリストから最小値を返します。
 
+名前空間: [sys](bicep-functions.md#namespaces-for-functions)。
+
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |整数の配列、または整数のコンマ区切りリスト |最小値を取得するコレクション。 |
 
@@ -125,7 +131,7 @@ output intOutput int = min(0,3,2,5,4)
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 種類 | 値 |
+| 名前 | Type | 値 |
 | ---- | ---- | ----- |
 | arrayOutput | int | 0 |
 | intOutput | int | 0 |

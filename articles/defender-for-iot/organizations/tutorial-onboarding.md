@@ -4,14 +4,14 @@ description: このチュートリアルでは、Azure Defender for IoT の試�
 author: ElazarK
 ms.author: v-ekrieg
 ms.topic: tutorial
-ms.date: 09/23/2021
+ms.date: 10/05/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: cd62dfaa3a90c6efde1f758bec3e7062ce3e858c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 717b65b78d177e277922687c4c290035b57ab6ab
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128642151"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129537034"
 ---
 # <a name="tutorial-azure-defender-for-iot-trial-setup"></a>チュートリアル: Azure Defender for IoT の試用版のセットアップ
 
@@ -282,7 +282,7 @@ vSwitch にはミラーリング機能がありませんが、対処法を使用
 
 開始する前に、以下を行う必要があります。
 
-- ClearPass VA のインスタンスが実行されていないことを確認します。
+- 仮想アプライアンスのインスタンスが実行されていないことを確認します。
 
 - 管理ポートではなく、データ ポートで SPAN が有効になっていることを確認します。
 
@@ -306,11 +306,11 @@ vSwitch にはミラーリング機能がありませんが、対処法を使用
 
 1. **[OK]** を選択します。
 
-#### <a name="attach-a-clearpass-span-virtual-interface-to-the-virtual-switch"></a>ClearPass SPAN 仮想インターフェイスを仮想スイッチに接続する
+#### <a name="attach-a-span-virtual-interface-to-the-virtual-switch"></a>SPAN 仮想インターフェイスを仮想スイッチに接続する
 
-Windows PowerShell または Hyper-V マネージャーを使用して、ClearPass SPAN 仮想インターフェイスを仮想スイッチに接続できます。
+Windows PowerShell または Hyper-V マネージャーを使用して、SPAN 仮想インターフェイスを仮想スイッチに接続できます。
 
-**PowerShell を使用して ClearPass SPAN 仮想インターフェイスを仮想スイッチに接続するには**:
+**PowerShell を使用して SPAN 仮想インターフェイスを仮想スイッチに接続するには**:
 
 1. 新しく追加された SPAN 仮想スイッチを選択し、次のコマンドを使用して新しいネットワーク アダプターを追加します。
 
@@ -334,7 +334,7 @@ Windows PowerShell または Hyper-V マネージャーを使用して、ClearPa
 
 これらのコマンドでは、新しく追加されたアダプター ハードウェアの名前が `Monitor` に設定されます。 Hyper-V マネージャーを使用する場合、新しく追加されたアダプター ハードウェアの名前は `Network Adapter` に設定されます。
 
-**Hyper-V マネージャーを使用して ClearPass SPAN 仮想インターフェイスを仮想スイッチに接続するには**:
+**Hyper-V マネージャーを使用して SPAN 仮想インターフェイスを仮想スイッチに接続するには**:
 
 1. [ハードウェア] の一覧で、 **[ネットワーク アダプター]** を選択します。
 

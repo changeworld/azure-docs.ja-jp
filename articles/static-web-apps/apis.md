@@ -5,14 +5,14 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: conceptual
-ms.date: 05/18/2020
+ms.date: 08/24/2021
 ms.author: cshoe
-ms.openlocfilehash: d7716c6d91ac0f7c8c699d14f265e00f5535a00d
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 95e180d34577f94f96b3e35c1f2432d85eb946a9
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124730403"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129361405"
 ---
 # <a name="api-support-in-azure-static-web-apps-with-azure-functions"></a>Azure Functions による Azure Static Web Apps での API のサポート
 
@@ -41,7 +41,7 @@ Azure Static Web Apps API は、次の使用できる 2 つの構成でサポー
 | [管理対象 ID](../app-service/overview-managed-identity.md) | ✕ | ✔ |
 | [Azure App Service の認証と承認](../app-service/configure-authentication-provider-aad.md)のトークン管理 | ✕ | ✔ |
 | Azure Static Web Apps の外部で使用できる API 関数 | ✕ | ✔ |
-| Azure Key Vault に格納されるアプリケーション設定 | ✕ | ✔ |
+| [Key Vault 参照](../app-service/app-service-key-vault-references.md) | ✕ | ✔ |
 
 ## <a name="configuration"></a>構成
 
@@ -49,7 +49,7 @@ Web アプリでは、_api_ ルートを介して API エンドポイントを�
 
 | マネージド関数 | 独自の関数の持ち込み |
 | --- | --- |
-| _api_ ルートは固定されていますが、マネージド関数アプリのフォルダーの場所は制御できます。 リポジトリの _.github/workflows_ フォルダーにある [ワークフロー YAML ファイルを編集する](build-configuration.md)ことにより、この場所を変更できます。 | _api_ ルートへの要求は、既存の Azure Functions アプリに送信されます。 |
+| _api_ ルートは固定されていますが、マネージド関数アプリのソース コードのフォルダーの場所は制御できます。 リポジトリの _.github/workflows_ フォルダーにある [ワークフロー YAML ファイルを編集する](build-configuration.md)ことにより、この場所を変更できます。 | _api_ ルートへの要求は、既存の Azure Functions アプリに送信されます。 |
 
 ## <a name="troubleshooting-and-logs"></a>トラブルシューティングとログ
 

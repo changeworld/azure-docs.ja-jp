@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: 6b4b15362d1fe2371f181fb4ee46c30e8237dea0
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 7dc2a8e5701ba45e49d9be50d5a05727d01cda4d
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128598111"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129533285"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>アマゾン ウェブ サービス (AWS) の VM を検出して評価し、Azure に移行する
 
@@ -329,7 +329,7 @@ Azure Migrate: Server Migration では、レプリケーション アプライ�
 5. 移行の完了後、Azure portal の **[仮想マシン]** で、移行された Azure VM を確認します。 マシン名には、サフィックス **-Test** が含まれています。
 6. テストが完了したら、 **[マシンのレプリケート]** で Azure VM を右クリックし、 **[テスト移行をクリーンアップ]** をクリックします。
 
-    ![移行のクリーンアップ](./media/tutorial-migrate-physical-virtual-machines/clean-up.png)
+    :::image type="content" source="./media/tutorial-migrate-physical-virtual-machines/clean-up-inline.png" alt-text="テスト移行のクリーンアップ後の結果を示すスクリーンショット。" lightbox="./media/tutorial-migrate-physical-virtual-machines/clean-up-expanded.png":::
 
     > [!NOTE]
     > SQL Server を実行しているサーバーを SQL VM RP に登録できるようになりました。これにより、SQL IaaS Agent 拡張機能を使用した自動修正、自動バックアップ、簡略化されたライセンス管理を利用できるようになります。
@@ -401,7 +401,7 @@ Azure Migrate: Server Migration では、レプリケーション アプライ�
 **質問:** AWS VM を Azure に移行する前に、何か変更を加える必要がありますか   
 **回答:** EC2 VM を Azure に移行する前に、これらの変更を行うことが必要になる場合があります。
 
-- VM のプロビジョニングに cloud-init を使用している場合は、Azure にレプリケートする前に、VM の cloud-init を無効にすることをお勧めします。 VM の cloud-init によって実行されるプロビジョニング手順は、AWS に固有のものである可能性があり、Azure への移行後には有効ではありません。 
+- VM のプロビジョニングに cloud-init を使用している場合は、Azure にレプリケートする前に、VM の cloud-init を無効にすることをお勧めします。 VM の cloud-init によって実行されるプロビジョニング手順は、AWS に固有のものである可能性があり、Azure への移行後には有効ではありません。 
 - VM が PV VM (準仮想化) であり HVM VM ではない場合、準仮想化された VM は AWS のカスタム ブート シーケンスを使用するため、Azure 上ではそのままでは実行できない可能性があります。 Azure への移行を実行する前に、PV ドライバーをアンインストールすることで、この課題を解決できる場合もあります。  
 - 最終的な移行の前に、必ずテスト移行を実行することをお勧めします。  
 

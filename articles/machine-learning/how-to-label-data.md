@@ -1,30 +1,29 @@
 ---
 title: 画像とテキスト ドキュメントにラベルを付ける
 title.suffix: Azure Machine Learning
-description: データのラベル付けプロジェクトで、データのラベル付けツールを使用して、Machine Learning 用のテキストまたは画像データを迅速に準備する方法について説明します。
+description: データのラベル付けプロジェクトで、データのラベル付けツールを使用して、テキストまたは画像に Machine Learning 用のラベルをすばやく付けます。
 author: sdgilley
 ms.author: sgilley
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mldata
 ms.topic: how-to
-ms.date: 04/29/2021
+ms.date: 09/24/2021
 ms.custom: data4ml
-ms.openlocfilehash: 491ee8134d17eac9e0abb54780f2aa39e1323e6c
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: d07a48267effa51a721d1b64c79bc0a6ba7d439f
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114446257"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129429644"
 ---
 # <a name="labeling-images-and-text-documents"></a>画像とテキスト ドキュメントにラベルを付ける
 
-プロジェクト管理者によって Azure Machine Learning で[データのラベル付けプロジェクトが作成](./how-to-create-labeling-projects.md#create-a-data-labeling-project)されたら、ラベル付けツールを使用してすぐに Machine Learning プロジェクト用のデータを準備できます。 この記事では、次の内容について説明します。
+プロジェクト管理者が Azure Machine Learning で[画像データのラベル付けプロジェクト](./how-to-create-image-labeling-projects.md)または[テキスト データのラベル付けプロジェクト](./how-to-create-text-labeling-projects.md)を作成したら、ラベル付けツールを使用してすぐに Machine Learning プロジェクト用のデータを準備できます。 この記事では、次の内容について説明します。
 
 > [!div class="checklist"]
 > * ラベル付けプロジェクトにアクセスする方法
 > * ラベル付けツール
 > * 特定のラベル付けタスクにツールを使用する方法
-
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -63,7 +62,7 @@ ms.locfileid: "114446257"
 
 特に、ラベル付けプロジェクトの初期の段階では、機械学習モデルに、ほんの一部の画像に対して事前ラベル付けするだけの精度しかない、ということがあります。 これらの画像のラベル付けが完了すると、次のラウンドのモデル トレーニング用にさらに多くのデータを収集するため、ラベル付けプロジェクトは手動でのラベル付けに戻ります。 やがて、さらに多くの割合の画像について、モデルの信頼度が上がっていき、後でプロジェクトで行う事前ラベル付けタスクが蓄積されていきます。
 
-## <a name="image-tasks"></a>画像タスク
+## <a name="image-tasks"></a><a name="image-tasks"></a> 画像タスク
 
 画像分類タスクに対しては、複数の画像を同時に表示することができます。 画像領域の上にあるアイコンを使用して、レイアウトを選択します。
 
@@ -163,13 +162,13 @@ Azure では、各画像に少なくとも 1 つのタグを適用した後に�
 
 画像のポリゴンを作成したら、 **[送信]** を選択して作業内容を保存します。そうしないと、進行中の作業は保存されません。
 
-## <a name="annotate-text-preview"></a>テキストの注釈を設定する (プレビュー)
+## <a name="label-text-preview"></a><a name="label-text"></a> テキストにラベルを付ける (プレビュー)
 
 > [!IMPORTANT]
 > テキストのラベル付けはパブリック プレビュー段階にあります。
 > プレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
-テキストに注釈を付ける場合は、ツールバーを使用して次のようにします。
+テキストにタグを付けるときは、ツール バーを使用して次のようにします。
 
 * テキストのサイズを拡大または縮小する
 * フォントの変更

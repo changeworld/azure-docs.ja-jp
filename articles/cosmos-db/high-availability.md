@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/07/2021
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 5fdde23875d49d6bf4329a57081f12f517692062
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: f0535298f1e856697992f357c37c134742eee9c9
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128618650"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129547021"
 ---
 # <a name="how-does-azure-cosmos-db-provide-high-availability"></a>Azure Cosmos DB で高可用性を実現する方法
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]

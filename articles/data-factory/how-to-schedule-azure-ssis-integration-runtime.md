@@ -5,15 +5,15 @@ ms.service: data-factory
 ms.subservice: integration-services
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 06/04/2021
+ms.date: 10/04/2021
 author: swinarko
 ms.author: sawinark
-ms.openlocfilehash: 7ebb64ccdfaaefe517baf21c0996d49f0bdc1278
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: a7a520ba1b95b412cbc068ad045a6b022e15306f
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124760443"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129535433"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Azure-SSIS Integration Runtime をスケジュールに従って開始および停止する方法
 
@@ -84,39 +84,55 @@ Azure-SSIS IR をまだプロビジョニングしていない場合は、[チ�
 
    :::image type="content" source="./media/doc-common-process/get-started-page.png" alt-text="ADF のホーム ページを示すスクリーンショット。":::
    
-2. **[アクティビティ]** ツールボックスの **[全般]** メニューを展開し、 **[Web]** アクティビティをパイプライン デザイナー画面にドラッグ アンド ドロップします。 アクティビティ プロパティ ウィンドウの **[全般]** タブで、アクティビティの名前を「**startMyIR**」に変更します。 **[設定]** タブに切り替えて、次の操作を実行します。
+2. **[アクティビティ]** ツールボックスの **[全般]** メニューを展開し、 **[Web]** アクティビティをパイプライン デザイナー画面にドラッグ アンド ドロップします。 アクティビティ プロパティ ウィンドウの **[全般]** タブで、アクティビティの名前を「**startMyIR**」に変更します。 **[設定]** タブに切り替え、次の操作を実行します。
 
-    1. **[URL]** に、Azure-SSIS IR を開始する REST API の次の URL を入力します。`{subscriptionId}`、`{resourceGroupName}`、`{factoryName}`、`{integrationRuntimeName}` を、自分の IR の実際の値に置き換えます。`https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/start?api-version=2018-06-01` または、ADF UI/アプリの監視ページから、IR のリソース ID をコピーして貼り付け、上記の URL の次の部分を置き換えてもかまいません。 `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}`
+   1. **[URL]** に、Azure-SSIS IR を開始する REST API の URL、`https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/start?api-version=2018-06-01` を入力して、`{subscriptionId}`、`{resourceGroupName}`、`{factoryName}`、`{integrationRuntimeName}` を、自分の IR の実際の値に置き換えます。  または、ADF UI/アプリの監視ページから、IR のリソース ID をコピーして貼り付け、上記の URL の次の部分を置き換えてもかまいません。 `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}`
     
-       :::image type="content" source="./media/how-to-schedule-azure-ssis-integration-runtime/adf-ssis-ir-resource-id.png" alt-text="ADF SSIS IR のリソース ID":::
+      :::image type="content" source="./media/how-to-schedule-azure-ssis-integration-runtime/adf-ssis-ir-resource-id.png" alt-text="ADF SSIS IR のリソース ID":::
   
-    2. **[メソッド]** では、 **[POST]** を選択します。 
-    3. **[本文]** には、「`{"message":"Start my IR"}`」を入力します。 
-    4. **[認証]** において **[MSI]** を選択して、ADF にマネージド ID を使用します。詳しくは、「[Data Factory のマネージド ID](./data-factory-service-identity.md)」をご覧ください。
-    5. **[リソース]** に、「`https://management.azure.com/`」と入力します。
+   2. **[メソッド]** では、 **[POST]** を選択します。 
+   3. **[本文]** には、「`{"message":"Start my IR"}`」を入力します。
+   4. **[認証]** で **[マネージド ID]** を選択して、指定したシステム マネージド ID を ADF に使用します。詳しくは、「[Data Factory のマネージド ID](./data-factory-service-identity.md)」を参照してください。
+   5. **[リソース]** に、「`https://management.azure.com/`」と入力します。
     
-       :::image type="content" source="./media/how-to-schedule-azure-ssis-integration-runtime/adf-web-activity-schedule-ssis-ir.png" alt-text="ADF Web アクティビティのスケジュールの SSIS IR":::
+      :::image type="content" source="./media/how-to-schedule-azure-ssis-integration-runtime/adf-web-activity-schedule-ssis-ir.png" alt-text="ADF Web アクティビティのスケジュールの SSIS IR":::
   
 3. 1 つ目のパイプラインを複製して 2 つ目を作成し、アクティビティ名を「**stopMyIR**」に変更して、次のプロパティを置き換えます。
 
-    1. **[URL]** に、Azure-SSIS IR を停止する REST API の次の URL を入力します。`{subscriptionId}`、`{resourceGroupName}`、`{factoryName}`、`{integrationRuntimeName}` を、自分の IR の実際の値に置き換えます。`https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/stop?api-version=2018-06-01`
-    
-    2. **[本文]** には、「`{"message":"Stop my IR"}`」を入力します。 
+   1. **[URL]** に、Azure-SSIS IR を停止する REST API の URL、`https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/stop?api-version=2018-06-01` を入力して、`{subscriptionId}`、`{resourceGroupName}`、`{factoryName}`、`{integrationRuntimeName}` を、自分の IR の実際の値に置き換えます。
+   2. **[本文]** には、「`{"message":"Stop my IR"}`」を入力します。 
 
-4. 3 つ目のパイプラインを作成し、 **[アクティビティ]** ツールボックスから **[SSIS パッケージの実行]** アクティビティをドラッグして、パイプライン デザイナー画面にドロップします。そして、[ADF で SSIS パッケージの実行アクティビティを使用して、SSIS パッケージを呼び出す方法](how-to-invoke-ssis-package-ssis-activity.md)に関する記事に従って構成します。  または、代わりに **ストアド プロシージャ** アクティビティを使用し、[ADF でストアド プロシージャ アクティビティを使用して、SSIS パッケージを呼び出す方法](how-to-invoke-ssis-package-stored-procedure-activity.md)に関する記事に従って構成することもできます。  次に、1 つ目/2 つ目のパイプラインでの Web アクティビティと同じように、IR を開始/停止する 2 つの Web アクティビティの間に SSIS パッケージの実行/ストアド プロシージャ アクティビティを連結します。
+4. 3 つ目のパイプラインを作成し、 **[アクティビティ]** ツールボックスから **[SSIS パッケージの実行]** アクティビティをドラッグして、パイプライン デザイナー画面にドロップします。そして、[ADF で SSIS パッケージの実行アクティビティを使用して、SSIS パッケージを呼び出す方法](how-to-invoke-ssis-package-ssis-activity.md)に関する記事に従って構成します。  次に、1 つ目/2 つ目のパイプラインでの Web アクティビティと同じように、IR を開始/停止する 2 つの Web アクティビティの間に SSIS パッケージの実行アクティビティを連結します。
 
    :::image type="content" source="./media/how-to-schedule-azure-ssis-integration-runtime/adf-web-activity-on-demand-ssis-ir.png" alt-text="ADF Web アクティビティのオンデマンド SSIS IR":::
 
-5. ADF のマネージド ID にそれ自体に対する **共同作成者** ロールを割り当て、そのパイプライン内の Web アクティビティが REST API を呼び出してその中にプロビジョニングされた Azure-SSIS IR を開始/停止できるようにします。  Azure portal の ADF ページで **[アクセス制御 (IAM)]** 、 **[+ ロールの割り当ての追加]** の順にクリックし、 **[ロールの割り当ての追加]** ブレードで次の操作を行います。
+5. 3 番目のパイプラインを手動で作成する代わりに、テンプレートから自動的に作成することもできます。 これを行うには、 **[パイプライン]** の横にある **[...]** 記号を選択して、パイプライン アクションのドロップダウン メニューを表示し、 **[テンプレートからのパイプライン]** アクションを選択します。そして、 **[カテゴリ]** の下の **[SSIS]** チェックボックスをオンにし、 **[SSIS パッケージの実行の前後に適時に Azure-SSIS IR を開始または停止するように ADF パイプラインのスケジュールを設定]** テンプレートを選択します。次に、 **[Azure-SSIS Integration Runtime]** ドロップダウン メニューで IR を選択し、最後に **[このテンプレートを使用]** ボタンを選択します。 パイプラインが自動的に作成されます。これには、SSIS パッケージのみが残っており、SSIS パッケージの実行アクティビティに割り当てることができます。
 
-    1. **[ロール]** で、 **[共同作成者]** を選択します。 
-    2. **[アクセスの割り当て先]** で **[Azure AD のユーザー、グループ、サービス プリンシパル]** を選択します。 
-    3. **[選択]** で、ADF 名を検索して選択します。 
-    4. **[保存]** をクリックします。
+   :::image type="content" source="./media/how-to-schedule-azure-ssis-integration-runtime/adf-on-demand-ssis-ir-template.png" alt-text="ADF オンデマンド SSIS IR テンプレート":::
+
+6. 3 番目のパイプラインの堅牢性を高めるために、ネットワーク接続やその他の問題のために一時的なエラーが発生した場合に IR を開始/停止する Web アクティビティが再試行され、IR が実際に開始/停止したときにのみ完了するようにすることができます。 これを行うには、各 Web アクティビティを Until アクティビティに置き換えます。このアクティビティには、IR を開始/停止する 2 つの Web アクティビティと、IR の状態を確認するための 2 つの Web アクティビティが含まれます。 これらの Until アクティビティを、"*SSIS IR の開始*" および "*Ssis IR の停止*" と呼ぶことにします。  *[SSIS IR の開始]* Until アクティビティには、 *[SSIS IR 開始の試行]* および *[SSIS IR 状態の取得]* Web アクティビティが含まれます。 *[SSIS IR の停止]* Until アクティビティには、 *[SSIS IR 停止の試行]* および *[SSIS IR 状態の取得]* Web アクティビティが含まれます。 *[SSIS IR の開始]* / *[SSIS IR の停止]* Until アクティビティの **[設定]** タブで、 **[式]** にそれぞれ、`@equals('Started', activity('Get SSIS IR Status').output.properties.state)`/`@equals('Stopped', activity('Get SSIS IR Status').output.properties.state)` と入力します。
+
+   :::image type="content" source="./media/how-to-schedule-azure-ssis-integration-runtime/adf-until-activity-on-demand-ssis-ir.png" alt-text="ADF Until アクティビティのオンデマンド SSIS IR":::
+
+   両方の Until アクティビティ内の *[SSIS IR 開始の試行]* / *[SSIS IR 停止の試行]* Web アクティビティは、1 つ目/2 つ目のパイプラインの Web アクティビティと似ています。 *[SSIS IR 状態の取得]* Web アクティビティの **[設定]** タブで、次の操作を行います。
+
+   1. **[URL]** に、Azure-SSIS IR の状態を取得する REST API の URL、`https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}?api-version=2018-06-01` を入力して、`{subscriptionId}`、`{resourceGroupName}`、`{factoryName}`、`{integrationRuntimeName}` を、自分の IR の実際の値に置き換えます。
+   2. **[メソッド]** で **[GET]** を選択します。 
+   3. **[認証]** で **[マネージド ID]** を選択して、指定したシステム マネージド ID を ADF に使用します。詳しくは、「[Data Factory のマネージド ID](./data-factory-service-identity.md)」を参照してください。
+   4. **[リソース]** に、「`https://management.azure.com/`」と入力します。
+    
+      :::image type="content" source="./media/how-to-schedule-azure-ssis-integration-runtime/adf-until-activity-on-demand-ssis-ir-open.png" alt-text="ADF Until アクティビティのオンデマンド SSIS IR を開く":::
+
+7. ADF のマネージド ID にそれ自体に対する **共同作成者** ロールを割り当て、そのパイプライン内の Web アクティビティが REST API を呼び出してその中にプロビジョニングされた Azure-SSIS IR を開始/停止できるようにします。  Azure portal の ADF ページで **[アクセス制御 (IAM)]** 、 **[+ ロールの割り当ての追加]** の順にクリックし、 **[ロールの割り当ての追加]** ブレードで、次の操作を行います。
+
+   1. **[ロール]** で、 **[共同作成者]** を選択します。 
+   2. **[アクセスの割り当て先]** で **[Azure AD のユーザー、グループ、サービス プリンシパル]** を選択します。 
+   3. **[選択]** で、ADF 名を検索して選択します。 
+   4. **[保存]** をクリックします。
     
    :::image type="content" source="./media/how-to-schedule-azure-ssis-integration-runtime/adf-managed-identity-role-assignment.png" alt-text="ADF マネージド ID のロールの割り当て":::
 
-6. ファクトリ/パイプライン ツール バーの **[すべて検証]/[検証]** をクリックして、ADF とすべてのパイプラインの設定を検証します。 **[>>]** ボタンをクリックして、 **[Factory/Pipeline Validation Output]\(ファクトリ/パイプライン検証出力\)** を閉じます。  
+8. ファクトリ/パイプライン ツール バーの **[すべて検証]/[検証]** をクリックして、ADF とすべてのパイプラインの設定を検証します。 **[>>]** ボタンをクリックして、 **[Factory/Pipeline Validation Output]\(ファクトリ/パイプライン検証出力\)** を閉じます。  
 
    :::image type="content" source="./media/how-to-schedule-azure-ssis-integration-runtime/validate-pipeline.png" alt-text="パイプラインの検証":::
 
@@ -126,7 +142,7 @@ Azure-SSIS IR をまだプロビジョニングしていない場合は、[チ�
 
    :::image type="content" source="./media/how-to-schedule-azure-ssis-integration-runtime/test-run-output.png" alt-text="テストの実行":::
     
-2. 3 つ目のパイプラインをテストするには、SQL Server Management Studio (SSMS) を起動します。 **[サーバーへの接続]** ウィンドウで、次の操作を行います。 
+2. 3 つ目のパイプラインをテストするために、SSIS パッケージを SSIS カタログ (SSISDB) に格納している場合は、SQL Server Management Studio (SSMS) を起動して実行を確認できます。 **[サーバーへの接続]** ウィンドウで、次の操作を行います。 
 
     1. **[サーバー名]** に、「 **&lt;自分のサーバー名&gt;.database.windows.net**」と入力します。
     2. **[オプション >>]** を選択します。
@@ -173,7 +189,7 @@ Azure-SSIS IR をまだプロビジョニングしていない場合は、[チ�
 
    :::image type="content" source="./media/how-to-schedule-azure-ssis-integration-runtime/pipeline-runs.png" alt-text="パイプライン実行":::
 
-2. パイプラインの実行に関連付けられているアクティビティの実行を表示するには、 **[アクション]** 列にある最初のリンク ( **[View Activity Runs]\(アクティビティの実行の表示\)** ) をクリックします。 3 つ目のパイプラインでは、パイプラインの連結されたアクティビティごとに 1 つずつ、3 つのアクティビティ実行が表示されます (IR を開始する Web アクティビティ、パッケージを実行するストアド プロシージャ アクティビティ、IR を停止する Web アクティビティ)。 パイプラインの実行を再び表示するには、上部の **[パイプライン]** リンクをクリックします。
+2. パイプラインの実行に関連付けられているアクティビティの実行を表示するには、 **[アクション]** 列にある最初のリンク ( **[View Activity Runs]\(アクティビティの実行の表示\)** ) をクリックします。 3 つ目のパイプラインでは、パイプラインの連結されたアクティビティごとに 1 つずつ、3 つのアクティビティ実行が表示されます (IR を開始する Web アクティビティ、パッケージを実行する SSIS パッケージの実行アクティビティ、IR を停止する Web アクティビティ)。 パイプラインの実行を再び表示するには、上部の **[パイプライン]** リンクをクリックします。
 
    :::image type="content" source="./media/how-to-schedule-azure-ssis-integration-runtime/activity-runs.png" alt-text="アクティビティの実行":::
 

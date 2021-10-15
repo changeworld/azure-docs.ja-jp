@@ -7,12 +7,12 @@ ms.date: 10/09/2020
 ms.author: helohr
 ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: 481b81edb0ee5709e712f213036fa8df53aca7c4
-ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
+ms.openlocfilehash: 282044d0ee3d07ae4eaa2c63d8d0bcebae0251aa
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/04/2021
-ms.locfileid: "113287926"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129544491"
 ---
 # <a name="customize-remote-desktop-protocol-rdp-properties-for-a-host-pool"></a>ホスト プールのリモート デスクトップ プロトコル (RDP) プロパティをカスタマイズする
 
@@ -38,6 +38,7 @@ RDP ファイルには、既定で次のプロパティがあります。
 >[!NOTE]
 >- マルチモニター モードは、デスクトップ アプリ グループに対してのみ有効になり、RemoteApp アプリ グループの場合は無視されます。
 >- 既定の RDP ファイルのプロパティは、すべて Azure Portal で公開されています。
+>- 既定では、Azure portal の CustomRdpProperty フィールドは null です。 CustomRdpProperty フィールドが null の場合は、すべての既定の RDP プロパティがホスト プールに適用されます。 CustomRdpProperty フィールドが空の場合は、既定の RDP プロパティがいずれもホスト プールに適用されません。
 
 ## <a name="prerequisites"></a>前提条件
 

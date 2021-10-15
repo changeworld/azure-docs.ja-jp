@@ -4,14 +4,14 @@ description: この記事では、Azure Event Hubs 名前空間にスキーマ �
 ms.topic: how-to
 ms.date: 06/01/2021
 ms.custom: references_regions
-ms.openlocfilehash: 1155ef818cf6c82d3159c146006b16d811efeac8
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: 360f81157f5431a6e6e70a25ef33e707c57cc91a
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110788441"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129536608"
 ---
-# <a name="create-an-azure-event-hubs-schema-registry-preview"></a>Azure Event Hubs スキーマ レジストリを作成する (プレビュー)
+# <a name="create-an-azure-event-hubs-schema-registry--preview"></a>Azure Event Hubs スキーマ レジストリを作成する (プレビュー)
 この記事では、Azure Event Hubs によってホストされるスキーマ レジストリに、スキーマを含むスキーマ グループを作成する方法について説明します。 Azure Event Hubs のスキーマ レジストリ機能の概要については、「[Event Hubs の Azure スキーマ レジストリ](schema-registry-overview.md)」を参照してください。
 
 > [!NOTE]

@@ -4,16 +4,16 @@ titleSuffix: Azure Machine Learning
 description: マネージド オンライン エンドポイントを監視し、Application Insights を使用してアラートを作成します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.date: 05/03/2021
 ms.topic: conceptual
 ms.custom: how-to, devplatv2
-ms.openlocfilehash: c6b370d568b7448ae6417f050cbc902378571151
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 44cfdcdd5d40aaac2eb97b9a3268a9b376f71560
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128548167"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129425375"
 ---
 # <a name="monitor-managed-online-endpoints-preview"></a>マネージド オンライン エンドポイント (プレビュー) を監視する
 

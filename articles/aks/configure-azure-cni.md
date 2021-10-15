@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/03/2019
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: d26459080e57f8998b40c181306ca10508ad4749
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: cde36aaa5946519533d4e68eb31da48af08be689
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123099227"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129546294"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Azure Kubernetes サービス (AKS) で Azure CNI ネットワークを構成する
 
@@ -28,7 +28,7 @@ ms.locfileid: "123099227"
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
 * AKS ノード プールに割り当てられたサブネットを[委任されたサブネット](../virtual-network/subnet-delegation-overview.md)にすることはできません。
-* 独自のサブネットを指定する場合は、そのサブネットに関連付けられているネットワーク セキュリティ グループ (NSG) を管理する必要があります。 AKS では、そのサブネットに関連付けられている NSG は変更されません。 また、NSG のセキュリティ規則でノードとポッド CIDR の範囲の間のトラフィックが許可されるようにする必要もあります。
+* AKS では Network Security Groups (NSGs) がそのサブネットに適用されず、そのサブネットに関連付けられている NSGs が変更されることもありません。 独自のサブネットを指定し、そのサブネットに関連付けられている NSG を追加する場合は、NSG のセキュリティ規則で、ノードとポッドの CIDR 範囲間のトラフィックが許可されている必要があります。 詳しくは、「[ネットワーク セキュリティ グループ][aks-network-nsg]」を参照してください。
 
 ## <a name="plan-ip-addressing-for-your-cluster"></a>クラスターの IP アドレス指定を計画する
 
@@ -358,6 +358,7 @@ AKS のネットワークの詳細については、次の記事を参照して�
 [aks-ssh]: ssh.md
 [ManagedClusterAgentPoolProfile]: /azure/templates/microsoft.containerservice/managedclusters#managedclusteragentpoolprofile-object
 [aks-network-concepts]: concepts-network.md
+[aks-network-nsg]: concepts-network.md#network-security-groups
 [aks-ingress-basic]: ingress-basic.md
 [aks-ingress-tls]: ingress-tls.md
 [aks-ingress-static-tls]: ingress-static-ip.md

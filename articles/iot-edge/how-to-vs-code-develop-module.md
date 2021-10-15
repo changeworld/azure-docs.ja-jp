@@ -9,12 +9,12 @@ ms.date: 08/24/2021
 ms.topic: conceptual
 ms.service: iot-edge
 ms.custom: devx-track-js
-ms.openlocfilehash: 6c204308cff285860c0e887d41eca56ecc220226
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: c65cd9e9e6d80222f60a3ee060ba697743713738
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123039056"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129362719"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Visual Studio Code を使用して Azure IoT Edge のモジュールを開発およびデバッグする
 
@@ -64,14 +64,13 @@ Windows、macOS、または Linux を実行しているコンピューターま�
     > [!TIP]
     > プロトタイプおよびテスト目的で、クラウド レジストリの代わりに Docker のローカル レジストリを使用できます。
 
-C でモジュールを開発している場合を除き、IoT Edge ソリューションをデバッグ、実行、テストするようにローカルの開発環境を設定するには、Python ベースの [Azure IoT EdgeHub Dev Tool](https://pypi.org/project/iotedgehubdev/) も必要になります。 まだ行っていない場合は、[Python (2.7、3.6、3.7) と Pip](https://www.python.org/) をインストールした後、ターミナルで次のコマンドを実行して **iotedgehubdev** をインストールしてください。
+C でモジュールを開発している場合を除き、IoT Edge ソリューションをデバッグ、実行、テストするようにローカルの開発環境を設定するには、Python ベースの [Azure IoT EdgeHub Dev Tool](https://pypi.org/project/iotedgehubdev/) も必要になります。 まだ行っていない場合は、[Python (2.7、3.6、3.7、3.8) と Pip](https://www.python.org/) をインストールした後、ターミナルで次のコマンドを実行して **iotedgehubdev** をインストールしてください。
 
    ```cmd
    pip install --upgrade iotedgehubdev
    ```
 
 > [!NOTE]
-> 現在、iotedgehubdev では、Python 3.8 と互換性のない docker-py ライブラリが使用されています。
 >
 > 事前インストール済みの python 2.7 など、複数の Python をお持ちの場合 (たとえば、Ubuntu や macOS で)、正しい `pip` または `pip3` を使用して **iotedgehubdev** をインストールしています
 

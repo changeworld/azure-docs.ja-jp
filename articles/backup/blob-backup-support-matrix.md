@@ -2,14 +2,14 @@
 title: Azure BLOB バックアップのサポート マトリックス
 description: Azure BLOB をバックアップするときのサポート設定と制限の概要について説明します。
 ms.topic: conceptual
-ms.date: 07/07/2021
+ms.date: 10/01/2021
 ms.custom: references_regions
-ms.openlocfilehash: 0d9dbcb9bb4497de4c8355ca42597b8e9eecd0e9
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 921f08a80511766f55e179fccde38a061800061e
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124799246"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129533180"
 ---
 # <a name="support-matrix-for-azure-blobs-backup"></a>Azure BLOB バックアップのサポート マトリックス
 
@@ -17,7 +17,7 @@ ms.locfileid: "124799246"
 
 ## <a name="supported-regions"></a>サポートされているリージョン
 
-BLOB の運用バックアップは、現在、次のリージョンでご利用いただけます。オーストラリア中部、オーストラリア中部 2、オーストラリア東部、オーストラリア南東部、ブラジル南部、ブラジル南東部、カナダ中部、カナダ東部、インド中部、米国中部、東アジア、米国東部、米国東部 2、フランス中部、ドイツ北部、ドイツ中西部、東日本、西日本、韓国中部、韓国南部、米国中北部、北ヨーロッパ、ノルウェー東部、ノルウェー西部、南アフリカ北部、米国中南部、東南アジア、インド南部、スイス北部、スイス西部、アラブ首長国連邦中部、アラブ首長国連邦北部、英国南部、英国西部、米国中西部、西ヨーロッパ、インド西部、米国西部、米国西部 2。
+BLOB の運用バックアップは、フランス南部、南アフリカ西部を除くすべてのパブリック クラウド リージョンで使用できます。 また、ソブリン クラウド リージョンである、すべての Azure Government リージョンと中国リージョン (中国東部を除く) でも使用できます。
 
 ## <a name="limitations"></a>制限事項
 

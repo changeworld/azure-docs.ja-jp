@@ -67,7 +67,7 @@ var pubsub = new WebSocket('wss://test.webpubsub.azure.com/client/hubs/hub1', 'j
 
 #### <a name="the-protobuf-subprotocol"></a>protobuf サブプロトコル
 
-プロトコル バッファー (protobuf) は、言語的にもプラットフォーム的にも中立なバイナリベースのプロトコルであり、バイナリ データの送信が簡単になります。 protobuf には、Java、Python、Objective-C、C#、C++ などの多くの言語のクライアントを生成するためのツールが用意されています。 <bpt id="p1">[</bpt>Protobuf の詳細を表示<ept id="p1">](https://developers.google.com/protocol-buffers)</ept>。
+プロトコル バッファー (protobuf) は、言語的にもプラットフォーム的にも中立なバイナリベースのプロトコルであり、バイナリ データの送信が簡単になります。 protobuf には、Java、Python、Objective-C、C#、C++ などの多くの言語のクライアントを生成するためのツールが用意されています。 [Protobuf の詳細を表示](https://developers.google.com/protocol-buffers)。
 
 たとえば、JavaScript では、次のコードを使用して、protobuf サブプロトコルを使用する PubSub WebSocket クライアントを作成できます。
 
@@ -88,7 +88,7 @@ var pubsub = new WebSocket('wss://test.webpubsub.azure.com/client/hubs/hub1', 'p
 | `webpubsub.joinLeaveGroup` | クライアントは、どのグループについても、参加または脱退が可能です。 |
 | `webpubsub.sendToGroup` | クライアントは、どのグループにもメッセージを発行できます。 |
 | `webpubsub.joinLeaveGroup.<group>` | クライアントは、グループ `<group>` について、参加または脱退が可能です。 |
-| `webpubsub.sendToGroup.<group>` | クライアントはグループ <ph id="ph1">`<group>`</ph> にメッセージを発行できます。 |
+| `webpubsub.sendToGroup.<group>` | クライアントはグループ `<group>` にメッセージを発行できます。 |
 | | |
 
 JSON サブプロトコルの詳細については、[JSON サブプロトコル](./reference-json-webpubsub-subprotocol.md)に関するページを参照してください。

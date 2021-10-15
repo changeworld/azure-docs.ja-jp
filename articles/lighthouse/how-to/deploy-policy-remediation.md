@@ -1,14 +1,14 @@
 ---
 title: 修復できるポリシーをデプロイする
 description: Azure Lighthouse を通して修復タスクを使用するポリシーをデプロイするには、顧客テナント内にマネージド ID を作成する必要があります。
-ms.date: 09/13/2021
+ms.date: 09/30/2021
 ms.topic: how-to
-ms.openlocfilehash: 2270644a2d3e841a40046743bd6092a3ba44105d
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 5783d753fabb7246914056139fb9a081b7684b9c
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128611455"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129362260"
 ---
 # <a name="deploy-a-policy-that-can-be-remediated-within-a-delegated-subscription"></a>委任されたサブスクリプション内で修復が可能なポリシーをデプロイする
 
@@ -19,11 +19,14 @@ ms.locfileid: "128611455"
 
 ## <a name="create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant"></a>顧客のテナント内でマネージド ID にロールを割り当てることができるユーザーを作成する
 
-Azure Lighthouse に顧客をオンボードするときには、[Azure Resource Manager テンプレート](onboard-customer.md#create-an-azure-resource-manager-template)とパラメーター ファイルを使用し、顧客テナント内の委任されたリソースにアクセスを付与する承認ワークフローを定義します。 承認ごとに、管理テナントの Azure AD ユーザー、グループ、サービス プリンシパルに対応する **principalId** と、付与される [Azure 組み込みロール](../../role-based-access-control/built-in-roles.md)に対応する **roleDefinitionId** が指定されます。
+Azure Lighthouse に顧客をオンボードするときには、[Azure Resource Manager テンプレート](onboard-customer.md#create-an-azure-resource-manager-template)とパラメーター ファイルを使用し、顧客テナント内の委任されたリソースにアクセスを付与する承認ワークフローを定義します。 認可を行うたびに、管理テナントの Azure AD ユーザー、グループまたはサービス プリンシパルに対応する **principalId** と、付与する [Azure 組み込みロール](../../role-based-access-control/built-in-roles.md) に対応する **roleDefinitionId** が指定されます。
 
 ある **principalId** に顧客テナント内でのマネージド ID の作成を許可するには、**roleDefinitionId** を **ユーザー アクセス管理者** に設定する必要があります。 このロールは一般にサポートされているものではありませんが、今回のように、このアクセス許可が設定されているユーザー アカウントがマネージド ID に対していくつかの組み込みロールを割り当てられるようにするシナリオでは利用が可能です。 これらのロールは **delegatedRoleDefinitionIds** プロパティに定義されており、ユーザー アクセスの管理者と所有者を除き、あらゆる [サポートされている Azure 組み込みロール](../concepts/tenants-users-roles.md#role-support-for-azure-lighthouse)を含めることができます。
 
 顧客のオンボードが終わると、この承認で作成された **principalId** が、顧客テナント内のマネージド ID にこれらの組み込みロールを割り当てることができるようになります。 ただし、ユーザー アクセス管理者ロールに通常関連付けられている他のアクセス許可が付与されることはありません。
+
+> [!NOTE]
+> 現在、全テナントに対する[ロールの割り当て](../../role-based-access-control/role-assignments-steps.md#step-5-assign-role)は API で行う必要があり、Azure portal ではできません。
 
 以下の例は、ある **principalId** にユーザー アクセス管理者ロールを設定するものです。 このユーザーは、顧客テナント内でマネージド ID に次の 2 種類の組み込みロールを割り当てることができます:共同作成者および Log Analytics 共同作成者。
 
@@ -45,7 +48,7 @@ Azure Lighthouse に顧客をオンボードするときには、[Azure Resource
 
 たとえば、こちらの[サンプル](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-enforce-keyvault-monitoring)にあるように、顧客テナント内にある Azure Key Vault リソースを対象とした診断を有効にしたい場合を考えてみましょう。 (上で説明したとおり) 管理主体となるテナント内で適切なアクセス許可の設定を済ませたユーザーが、このシナリオを実現するために [Azure Resource Manager テンプレート](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/policy-enforce-keyvault-monitoring/enforceAzureMonitoredKeyVault.json)をデプロイします。
 
-現時点では、委任されたサブスクリプションと一緒に使用するポリシーの割り当てを作成する操作に Azure portal ではなく、API を使用する必要があります。 その際、**apiVersion** は新しい **delegatedManagedIdentityResourceId** プロパティが含まれる **2019-04-01-preview** に設定する必要があります。 このプロパティによって、(Azure Lighthouse にオンボードされているサブスクリプションまたはリソース グループに) 顧客テナントに存在するマネージド ID を含めることができます。
+現時点では、委任されたサブスクリプションと一緒に使用するポリシーの割り当てを作成する操作に Azure portal ではなく、API を使用する必要があります。 これを行うときは、**apiVersion** を **2020-10-01-preview** に設定する必要があります。このバージョンには新しいプロパティ **delegatedManagedIdentityResourceId** が存在します。 このプロパティを使用すれば、(Azure Lighthouse にオンボードしたサブスクリプションまたはリソース グループにある) 顧客のテナントに存在するマネージド ID を対象に加えることができます。
 
 次の例は、**delegatedManagedIdentityResourceId** を使ったロール割り当てを示したものです。
 

@@ -12,18 +12,36 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 09/27/2021
+ms.date: 10/05/2021
 ms.author: b-juche
-ms.openlocfilehash: cae4e16f42d9031040060a33bb8a5795f7695f56
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: 2dff42fcf855a41e2e907563b1aecccad0a1661a
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129092131"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129545927"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Azure NetApp Files の新機能
 
 Azure NetApp Files は定期的に更新されています。 この記事では、最新の新機能と機能強化の概要について説明します。 
+
+    
+## <a name="october-2021"></a>2021 年 10 月
+
+* [Standard ネットワーク機能](configure-network-features.md) (プレビュー)
+
+    Azure NetApp Files は、当初よりお客様から求められていたボリュームの **Standard** ネットワーク機能をサポートしています。 この機能は、革新的なハードウェアとソフトウェアの統合によって可能になりました。 標準ネットワーク機能により、Azure NetApp Files を含むすべてのワークロードのセキュリティ態勢と共に、シームレスで一貫したエクスペリエンスを実現するためのさまざまな機能を通じて、仮想ネットワーク エクスペリエンスが強化されます。
+    
+    Azure NetApp Files ボリュームの新規作成時に、*Standard* または *Basic* のネットワーク機能を選択できるようになりました。 Standard ネットワーク機能を選択すると、Azure NetApp Files ボリュームと委任されたサブネットに対して、次のサポートされている機能を使用できます。   
+    * Azure NetApp Files ボリュームのある VNet の IP 制限を VM と同等に引き上げました
+    * Azure NetApp Files の委任されたサブネット上で[ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md)をサポートすることでネットワーク セキュリティを強化しました
+    * Azure NetApp Files の委任されたサブネットとの間で[ユーザー定義ルート](../virtual-network/virtual-networks-udr-overview.md#custom-routes)をサポートし、ネットワーク制御を強化しました
+    * アクティブ/アクティブ VPN ゲートウェイ設定を介した接続
+    * [ExpressRoute FastPath](../expressroute/about-fastpath.md) による Azure NetApp Files への接続
+
+    現在、このパブリック プレビューは **米国中北部** から使用可能になりました。また、他のリージョンにも展開される予定です。  使用可能なリージョンや機能が増えた際には、[Azure Update](https://azure.microsoft.com/updates/) で詳細をご確認ください。  
+ 
+    詳細については、「[Azure NetApp Files ボリュームのネットワーク機能を構成する](configure-network-features.md)」を参照してください。
 
 ## <a name="september-2021"></a>2021 年 9 月
 

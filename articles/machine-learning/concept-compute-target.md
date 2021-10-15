@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2021
-ms.openlocfilehash: bb7baa20b5bc7e47e231e3e15937dde941ac0e03
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: 5e1d4675e7e99410471951c21d7e8112cf6839c5
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122608260"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129275014"
 ---
 # <a name="what-are-compute-targets-in-azure-machine-learning"></a>Azure Machine Learning でのコンピューティング ターゲットとは
 
@@ -93,10 +93,13 @@ VM サイズを選択する際には次のような例外と制限事項があ�
 | [EAv4](../virtual-machines/eav4-easv4-series.md) | [なし] : | メモリ最適化 | コンピューティングのクラスターとインスタンス |
 | [Ev3](../virtual-machines/ev3-esv3-series.md) | [なし] : | メモリ最適化 | コンピューティングのクラスターとインスタンス |
 | [FSv2](../virtual-machines/fsv2-series.md) | [なし] : | コンピューティング最適化 | コンピューティングのクラスターとインスタンス |
+| [FX](../virtual-machines/fx-series.md) | 承認が必要。 | コンピューティング最適化 | コンピューティング クラスター |
 | [H](../virtual-machines/h-series.md) | [なし] : | ハイ パフォーマンス コンピューティング | コンピューティングのクラスターとインスタンス |
 | [HB](../virtual-machines/hb-series.md) | 承認が必要。 | ハイ パフォーマンス コンピューティング | コンピューティングのクラスターとインスタンス |
 | [HBv2](../virtual-machines/hbv2-series.md) | 承認が必要。 |  ハイ パフォーマンス コンピューティング | コンピューティングのクラスターとインスタンス |
+| [HBv3](../virtual-machines/hbv3-series.md) | 承認が必要。 |  ハイ パフォーマンス コンピューティング | コンピューティングのクラスターとインスタンス |
 | [HC](../virtual-machines/hc-series.md) | 承認が必要。 |  ハイ パフォーマンス コンピューティング | コンピューティングのクラスターとインスタンス |
+| [LSv2](../virtual-machines/lsv2-series.md) | [なし] : |  ストレージ最適化 | コンピューティングのクラスターとインスタンス |
 | [M](../virtual-machines/m-series.md) | 承認が必要。 | メモリ最適化 | コンピューティングのクラスターとインスタンス |
 | [NC](../virtual-machines/nc-series.md) | [なし] : |  GPU | コンピューティングのクラスターとインスタンス |
 | [NC Promo](../virtual-machines/nc-series.md) | [なし] : | GPU | コンピューティングのクラスターとインスタンス |

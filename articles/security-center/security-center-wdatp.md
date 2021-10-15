@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 08/16/2021
 ms.author: memildin
-ms.openlocfilehash: 529a88c2af5c47cb329006b58f2439ab95f40ba2
-ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
+ms.openlocfilehash: a57a94b8ee0bb91deb0b15a3da0265af15dbc3a3
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122228747"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129536301"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>Security Center の統合 EDR ソリューションを使用してエンドポイントを保護する: Microsoft Defender for Endpoint
 
@@ -37,7 +37,7 @@ Microsoft Defender for Endpoint は、クラウドで提供される包括的な
 |----------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | リリース状態:                               | • Defender for Endpoint for Windows との統合 - 一般公開 (GA)<br> • Defender for Endpoint for Linux との統合 - プレビュー                                                                                                                                     |
 | 価格:                                     | [Azure Defender for servers](defender-for-servers-introduction.md) が必要                                                                                                                                                                                                           |
-| サポートされている環境:                      | :::image type="icon" source="./media/icons/yes-icon.png"::: Windows/Linux を実行している Azure Arc マシン<br>:::image type="icon" source="./media/icons/yes-icon.png":::Linux を実行している Azure VM ([サポートされているバージョン](/microsoft-365/security/defender-endpoint/microsoft-defender-endpoint-linux))<br>:::image type="icon" source="./media/icons/yes-icon.png"::: Windows Server 2019、2016、2012 R2、2008 R2 SP1、[Windows Virtual Desktop (WVD)](../virtual-desktop/overview.md)、[Windows 10 Enterprise マルチセッション](../virtual-desktop/windows-10-multisession-faq.yml) (旧称 Enterprise for Virtual Desktops (EVD) を実行している Azure VM<br>:::image type="icon" source="./media/icons/no-icon.png"::: Windows 10 を実行している Azure VM (EVD または WVD 以外)           |
+| サポートされている環境:                      | :::image type="icon" source="./media/icons/yes-icon.png"::: Windows/Linux を実行している Azure Arc マシン<br>:::image type="icon" source="./media/icons/yes-icon.png":::Linux を実行している Azure VM ([サポートされているバージョン](/microsoft-365/security/defender-endpoint/microsoft-defender-endpoint-linux))<br>:::image type="icon" source="./media/icons/yes-icon.png"::: Windows Server 2022、2019、2016、2012 R2、2008 R2 SP1、[Windows Virtual Desktop (WVD)](../virtual-desktop/overview.md)、[Windows 10 Enterprise マルチセッション](../virtual-desktop/windows-10-multisession-faq.yml) (旧称 Enterprise for Virtual Desktops (EVD) を実行している Azure VM<br>:::image type="icon" source="./media/icons/no-icon.png"::: Windows 10 を実行している Azure VM (EVD または WVD 以外)           |
 | 必要なロールとアクセス許可:              | • 統合を有効または無効にするには: **セキュリティ管理者** または **所有者**<br>• Defender for Endpoint アラートを Security Center で表示するには: **セキュリティ閲覧者**、**閲覧者**、**リソース グループの共同作成者**、**リソース グループの所有者**、**セキュリティ管理者**、**サブスクリプションの所有者**、または **サブスクリプションの共同作成者** |
 | クラウド:                                      | :::image type="icon" source="./media/icons/yes-icon.png"::: 商用クラウド<br>:::image type="icon" source="./media/icons/yes-icon.png"::: Azure Government<br>:::image type="icon" source="./media/icons/no-icon.png"::: Azure China 21Vianet                                                         |
 |                                              |                                                                                                                                                                                                                                                                                       |
@@ -258,14 +258,14 @@ Linux を実行しているエンドポイント:
 
 ### <a name="whats-this-mdewindows--mdelinux-extension-running-on-my-machine"></a>私のマシンで "MDE.Windows" / "MDE.Linux" という拡張機能が動いていますが、これは何ですか。
 
-以前、Microsoft Defender for Endpoint は Log Analytics エージェントにより提供されていました。 [サポートを拡張して Windows Server 2019](release-notes.md#microsoft-defender-for-endpoint-integration-with-azure-defender-now-supports-windows-server-2019-and-windows-10-virtual-desktop-wvd-released-for-general-availability-ga) と Linux を含めるようにしたとき、当社は、自動でオンボードを実行する拡張機能も追加しました。 
+以前、Microsoft Defender for Endpoint は Log Analytics エージェントにより提供されていました。 [サポートを拡張して Windows Server 2019](release-notes-archive.md#microsoft-defender-for-endpoint-integration-with-azure-defender-now-supports-windows-server-2019-and-windows-10-virtual-desktop-wvd-released-for-general-availability-ga) と Linux を含めるようにしたとき、当社は、自動でオンボードを実行する拡張機能も追加しました。 
 
 Security Center では、次のものを実行しているマシンに対し、拡張機能を自動的にデプロイします。
 
 - Windows Server 2019。
 - Windows 10 Virtual Desktop (WVD)。
 - OS のバージョンが Security Center で認識されない場合は、あらゆるバージョンの Windows Server (例えば、カスタム VM イメージを使用している場合)。 この場合、Microsoft Defender for Endpoint は、引き続き Log Analytics エージェントにより提供されます。
-- Linux
+- Linux。
 
 > [!IMPORTANT]
 > MDE.Windows 拡張機能を削除しても、Microsoft Defender for Endpoint は削除されません。 “オフボード” する方法は「[オフボード Windows サーバー](/microsoft-365/security/defender-endpoint/configure-server-endpoints)」をご覧ください。

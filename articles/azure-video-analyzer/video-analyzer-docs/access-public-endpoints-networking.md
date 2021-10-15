@@ -3,12 +3,12 @@ title: パブリック エンドポイントとネットワーク
 description: Azure Video Analyzer では、管理、インジェスト、再生など、さまざまな製品シナリオを可能にする一連のパブリック ネットワーク エンドポイントを公開します。 この記事では、パブリック エンドポイントとネットワークにアクセスする方法について説明します。
 ms.topic: how-to
 ms.date: 06/01/2021
-ms.openlocfilehash: 4a15893e718f716f4d3858ad6823ab0c3aa0e46c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 0debf9b00bc8c3d78810fb377aa6e065589e6f96
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128699211"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129389648"
 ---
 # <a name="public-endpoints-and-networking"></a>パブリック エンドポイントとネットワーク
 
@@ -20,7 +20,7 @@ Azure Video Analyzer では、管理、インジェスト、再生など、さ�
 
 このセクションでは、Video Analyzer エンドポイントのリストを示します。
 
-### <a name="streaming"></a>ストリーミング
+### <a name="streaming"></a>ストリーム
 
 * **目的**: オーディオ、ビデオ、推論のデータを公開します。これらは、[Video Analyzer プレーヤー ウィジェット](player-widget.md)または互換性のある DASH/HLS プレーヤーで使用できます。
 * **認証と認可**: エンドポイントの認可は、Video Analyzer サービスによって発行されたトークンを通じて実施されます。 トークンは 1 つのビデオに制限され、ビデオごとにクライアントおよび管理 API に適用される承認規則に基づいて暗黙的に発行されます。 承認フローは、Video Analyzer プレーヤー ウィジェットによって自動的に処理されます。
@@ -41,7 +41,7 @@ Azure Video Analyzer では、管理、インジェスト、再生など、さ�
 * **認証と認可**: 初期認証は、Video Analyzer 管理 API によって発行される、有効期限の短いプロビジョニング トークンを使用して行われます。 初期ハンドシェイクが完了すると、モジュールとサービスは、この時点以降に使用される、自動的にローテーションされる承認キーのセットを交換します。
 * **要件**: Video Analyzer Edge モジュールが正しく機能するには、このエンドポイントへのアクセスが必要です。 このエンドポイントに 36 時間以内に到達できない場合、Edge モジュールは機能を停止します。
 
-## <a name="telemetry"></a>テレメトリ:
+## <a name="telemetry"></a>テレメトリ
 
 * **目的**: オプションでテレメトリ データを定期的に送信すると、Microsoft では Video Analyzer Edge モジュールの使用状況をよりよく把握し、互換性、パフォーマンス、その他の製品分野で行える将来の改善を事前に特定できます。
 * **認証と認可**: 認可は、事前に確立されたキーに基づいて行います。
@@ -51,6 +51,31 @@ Azure Video Analyzer では、管理、インジェスト、再生など、さ�
 
 > [!NOTE]
 > この記事で説明するエンドポイントのリストは、関連付けられているサービス エンドポイントの包括的なリストではありません。 これは、Video Analyzer の通常の操作に必要なエンドポイントを示す、参考のためのリストです。 各サービスによって公開されるエンドポイントの完全なリストについては、個々の Azure サービスのドキュメントをご覧ください。
+
+## <a name="azure-storage"></a>Azure Storage
+
+* **目的**: パイプライン (TODO: リンク) がビデオ シンク (TODO: pipeline.md のセクションへのリンク) ノードを介してクラウド上にビデオを保存するように構成されている場合に、オーディオ、ビデオ、および推論データを記録するため。
+* **認証と承認**: 承認は、標準の Azure Storage サービスの認証と承認の実施によって行われます。 この場合、ストレージにはコンテナー固有の SAS URL を介してアクセスします。
+* **要件**: このエンドポイントへのアクセスは、ビデオをクラウドにアーカイブするように Video Analyzer エッジ パイプラインが構成されている場合にのみ必要です。
+
+## <a name="iot-hub"></a>IoT Hub
+
+* **目的**: Azure IoT Hub およびエッジ デバイスの制御およびデータ プレーン。
+* **認証と承認**: Azure IoT Hub のドキュメントを参照してください。
+* **要件**: Azure Video Analyzer エッジ モジュールが正しく動作するためには、Azure IoT Edge ランタイムが実行されているエッジ デバイスが適切に構成され、機能していることが必要です。
+
+## <a name="114----tls-encryption"></a>1.1.4    TLS 暗号化 
+
+* **暗号化とサーバー認証**: すべての Video Analyzer エンドポイントは、TLS 1.2 準拠のエンドポイントを介して公開されます。
+
+## <a name="115----references"></a>1.1.5    レファレンス 
+
+パブリック:
+
+* [Azure リソース マネージャーの概要](../../azure-resource-manager/management/overview.md)
+* [Azure IoT Hub のエンドポイントについて](../../iot-hub/iot-hub-devguide-endpoints.md)
+* [Azure Private Link とは](../../private-link/private-link-overview.md)
+* [Azure サービス タグの概要](../../virtual-network/service-tags-overview.md)
 
 ## <a name="next-steps"></a>次のステップ
 

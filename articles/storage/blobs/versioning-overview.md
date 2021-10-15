@@ -10,12 +10,12 @@ ms.date: 05/10/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1feb78c381a189ae2db1d2aa658f8d0782769f99
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 2fa724f139881f7647468684f5ad97d80a80baf2
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128664791"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129274427"
 ---
 # <a name="blob-versioning"></a>BLOB のバージョン管理
 
@@ -109,7 +109,7 @@ BLOB のバージョン管理が有効になっている場合、BLOB に対す�
 
 ### <a name="access-tiers"></a>アクセス層
 
-[Set Blob Tier](/rest/api/storageservices/set-blob-tier) 操作を呼び出すことにより、現在のバージョンを含む、任意のバージョンのブロック BLOB を別の BLOB のアクセス層に移動することができます。 古いバージョンの BLOB をクールまたはアーカイブ層に移動することにより、より低い容量価格を利用できます。 詳細については、「[Azure Blob Storage: ホット、クール、アーカイブ アクセス層](storage-blob-storage-tiers.md)」を参照してください。
+[Set Blob Tier](/rest/api/storageservices/set-blob-tier) 操作を呼び出すことにより、現在のバージョンを含む、任意のバージョンのブロック BLOB を別の BLOB のアクセス層に移動することができます。 古いバージョンの BLOB をクールまたはアーカイブ層に移動することにより、より低い容量価格を利用できます。 詳細については、[BLOB データのホット、クール、アーカイブ アクセス層](access-tiers-overview.md)に関するページを参照してください。
 
 ブロック BLOB を適切な層に移動するプロセスを自動化するには、BLOB のライフ サイクル管理を使用します。 ライフ サイクル管理の詳細については、「[Azure Blob Storage のライフ サイクルを管理する](./lifecycle-management-overview.md)」を参照してください。
 
@@ -209,7 +209,7 @@ BLOB バージョンの署名済みリソースは、`bv` です。 詳細につ
 
 BLOB のバージョン管理を有効にすると、アカウントに追加のデータ ストレージ料金が発生する可能性があります。 不要なコストを抑えるためにも、アプリケーションを設計する際は、この料金が発生するしくみを理解しておくことが重要です。
 
-BLOB のスナップショットと同様に、BLOB のバージョンは、アクティブなデータと同じレートで課金されます。 バージョンの課金方法は、ベース BLOB またはそのいずれかのバージョン (またはスナップショット) のどちらに対して層を明示的に設定したかによって異なります。 BLOB 層の詳細については、「[Azure Blob Storage: ホット、クール、アーカイブ ストレージ層](storage-blob-storage-tiers.md)」を参照してください。
+BLOB のスナップショットと同様に、BLOB のバージョンは、アクティブなデータと同じレートで課金されます。 バージョンの課金方法は、ベース BLOB またはそのいずれかのバージョン (またはスナップショット) のどちらに対して層を明示的に設定したかによって異なります。 BLOB 層の詳細については、[BLOB データのホット、クール、アーカイブ アクセス層](access-tiers-overview.md)に関するページを参照してください。
 
 BLOB またはバージョンの層を変更していない場合は、その BLOB、そのバージョン、およびそれが持つ可能性があるすべてのスナップショットにわたるデータの一意のブロックに対して課金されます。 詳細については、「[BLOB 層が明示的に設定されていない場合の課金](#billing-when-the-blob-tier-has-not-been-explicitly-set)」を参照してください。
 

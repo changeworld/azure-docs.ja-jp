@@ -9,12 +9,12 @@ ms.subservice: nat
 ms.topic: conceptual
 ms.date: 06/29/2021
 ms.author: allensu
-ms.openlocfilehash: afaee074fcfda1713031468a18039aac8aa398ca
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: dfd00b0eb924c13cc68dbf0d6d1b1833c3ad7893
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114297066"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129236617"
 ---
 # <a name="what-is-virtual-network-nat"></a>Virtual Network NAT とは
 
@@ -120,6 +120,7 @@ Virtual Network NAT と NAT ゲートウェイ リソースは、すべての Az
 * NAT は、Standard SKU のパブリック IP、パブリック IP プレフィックス、ロード バランサーの各リソースと共に利用することができます。 Basic リソース (Basic Load Balancer など) やそれらから派生した製品を NAT と共存させることはできません。  Basic リソースは、NAT が構成されていないサブネットに配置する必要があります。
 * サポートされるアドレス ファミリーは IPv4 です。  IPv6 アドレス ファミリーを NAT で扱うことはできません。  IPv6 プレフィックスを持つサブネットに NAT をデプロイすることはできません。
 * NAT を複数の仮想ネットワークにまたがって使用することはできません。
+* [ゲートウェイ サブネット](../../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#gwsub)に NAT をデプロイすることはできません
 
 ## <a name="next-steps"></a>次のステップ
 

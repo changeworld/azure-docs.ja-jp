@@ -8,14 +8,14 @@ ms.author: divswa
 ms.reviewer: estfan, azla
 ms.topic: how-to
 ms.date: 09/14/2021
-ms.openlocfilehash: fa900b7df1db1efbc8fe28a96cd2048113d7390d
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: c140c8495b1179298d6ca0029f430896aab55f7f
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128550387"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129360846"
 ---
-# <a name="create-and-manage-integration-accounts-for-b2b-workflows-in-azure-logic-apps-using-the-enterprise-integration-pack"></a>Enterprise Integration Pack を使用して Azure Logic Apps で B2B ワークフロー用の統合アカウントを作成および管理する
+# <a name="create-and-manage-integration-accounts-for-b2b-workflows-in-azure-logic-apps-with-the-enterprise-integration-pack"></a>Enterprise Integration Pack で、Azure Logic Apps の B2B ワークフローを使用するための統合アカウントを作成、管理する
 
 Azure Logic Apps を使用して企業間 (B2B) およびエンタープライズ統合ワークフローを構築する前に、"*統合アカウント*" リソースを作成する必要があります。 このアカウントは、Azure のスケーラブルなクラウドベースのコンテナーであり、B2B シナリオのワークフローで定義して使用する B2B 成果物を簡単に格納および管理することができます。 このような成果物には、[取引先](logic-apps-enterprise-integration-partners.md)、[契約](logic-apps-enterprise-integration-agreements.md)、[マップ](logic-apps-enterprise-integration-maps.md)、[スキーマ](logic-apps-enterprise-integration-schemas.md)、[証明書](logic-apps-enterprise-integration-certificates.md)などが含まれます。 また、B2B メッセージを他の組織と電子的に交換するには、統合アカウントが必要です。 他の組織でご自身の組織とは異なるプロトコルとメッセージ形式が使用されている場合、ご自身の組織のシステムでそれらのメッセージを処理できるように、形式を変換する必要があります。 サポートされている業界標準プロトコルとして、[AS2](logic-apps-enterprise-integration-as2.md)、[X12](logic-apps-enterprise-integration-x12.md)、[EDIFACT](logic-apps-enterprise-integration-edifact.md)、[RosettaNet](logic-apps-enterprise-integration-rosettanet.md) があります。
 

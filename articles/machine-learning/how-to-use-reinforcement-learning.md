@@ -1,5 +1,5 @@
 ---
-title: 強化学習モデルをトレーニングしてデプロイします (プレビュー)。
+title: 強化学習モデルをトレーニングしてデプロイする (プレビュー)
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning の強化学習 (プレビュー) を使用して、Pong をプレイするように RL エージェントをトレーニングする方法について説明します。
 services: machine-learning
@@ -10,19 +10,19 @@ author: peterclu
 ms.date: 05/05/2020
 ms.topic: how-to
 ms.custom: devx-track-python, contperf-fy21q2
-ms.openlocfilehash: 84fbea3d7d38e16a2069c40a459d5f86e7412a09
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: ca8f0349692b8a72d8a8b5953723249934a6f672
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108739045"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129428618"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Azure Machine Learning での強化学習 (プレビュー)
 
 
 
 > [!NOTE]
-> Azure Machine Learning の強化学習は、現在はプレビュー機能です。 現時点では、Ray および RLlib フレームワークのみがサポートされています。
+> Azure Machine Learning の強化学習は、現在プレビュー機能です。 現時点では、Ray および RLlib フレームワークのみがサポートされています。
 
 この記事では、ビデオ ゲームの Pong をプレイするように強化学習 (RL) エージェントをトレーニングする方法について説明します。 オープンソースの Python ライブラリ [Ray RLlib](https://ray.readthedocs.io/en/master/rllib.html) と Azure Machine Learning を使用して、分散 RL の複雑さを管理します。
 
@@ -214,6 +214,7 @@ else:
 ```
 
 ## <a name="create-a-reinforcement-learning-estimator"></a>強化学習の推定器を作成する
+
 [ReinforcementLearningEstimator](/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator) を使用して、Azure Machine Learning にトレーニング ジョブを送信します。
 
 Azure Machine Learning では、推定器クラスを使用して、実行の構成情報がカプセル化されます。 これにより、スクリプトの実行の構成方法を指定できます。 

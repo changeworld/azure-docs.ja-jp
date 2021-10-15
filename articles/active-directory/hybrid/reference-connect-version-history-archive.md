@@ -13,12 +13,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 24d62e282258a92826b6e5226ab342d890099c18
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 1b83acb31d903a08302b70c53a22b65dfbb4ca71
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124773628"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129235713"
 ---
 # <a name="azure-ad-connect-version-release-history-archive"></a>Azure AD Connect:バージョンのリリース履歴アーカイブ
 
@@ -48,7 +48,7 @@ Azure Active Directory (Azure AD) チームは、Azure AD Connect を定期的�
 - Ping での WS-Trust の修正をピックアップするためと新しい Azure インスタンスに対するサポートを追加するために ADAL 3.19.8 へのアップグレードが行われました。 
 - samAccountName、DomainNetbios、および DomainFQDN をクラウドに送信するためのグループ同期規則が変更されました (要求で必要)。 
 - 同期規則の既定の処理が変更されました。詳細については[こちら](how-to-connect-fix-default-rules.md)を参照してください。
-- Windows サービスとして実行される新しいエージェントが追加されました。 “Admin Agent” という名前のこのエージェントでは、Azure AD Connect サーバーの詳細なリモート診断が可能であり、お客様がサポート ケースを開いたときに Microsoft のエンジニアがトラブルシューティングを行う際に役に立ちます。 エージェントはインストールされず、既定で有効になっています。  エージェントをインストールして有効にする方法の詳細については、「[Azure AD Connect 管理エージェントとは](whatis-aadc-admin-agent.md)」を参照してください。 
+- Windows サービスとして実行する新しいエージェントを追加しました。 “Admin Agent” という名前のこのエージェントでは、Azure AD Connect サーバーの詳細なリモート診断が可能であり、お客様がサポート ケースを開いたときに Microsoft のエンジニアがトラブルシューティングを行う際に役に立ちます。 エージェントはインストールされず、既定で有効になっています。  エージェントをインストールして有効にする方法の詳細については、「[Azure AD Connect 管理エージェントとは](whatis-aadc-admin-agent.md)」を参照してください。 
 - エンド ユーザー ライセンス契約 (EULA) が更新されました。 
 - ログインの種類として AD FS を使用するデプロイに対する自動アップグレードのサポートが追加されました。  これにより、アップグレード プロセスの一環として AD FS の Azure AD 証明書利用者信頼を更新するという要件が削除されます。 
 - 分析/更新の信頼とリセットの信頼という 2 つのオプションがある Azure AD 信頼管理タスクが追加されました。 

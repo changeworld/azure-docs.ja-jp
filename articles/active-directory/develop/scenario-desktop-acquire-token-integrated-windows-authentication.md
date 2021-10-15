@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 08/25/2021
 ms.author: sahmalik
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 182bed366dd59b99232608042bbe96aefaa6a8fa
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 67b2c1ac6b9a73444639bb174eacfbf5d685ce92
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124837793"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129234834"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token-using-integrated-windows-authentication"></a>Web API を呼び出すデスクトップ アプリ: 統合 Windows 認証でトークンを取得する
 
-ドメインまたは Azure AD 参加済みのマシンでドメイン ユーザーをサインインさせるには、統合 Windows 認証を使用します。
+ドメインまたは Azure AD 参加済みのマシンでドメイン ユーザーをサインインさせるには、統合 Windows 認証 (IWA) を使用します。
 
 ## <a name="constraints"></a>制約
 

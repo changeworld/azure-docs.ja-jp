@@ -3,17 +3,17 @@ title: Azure API Management のアクセス制限ポリシー | Microsoft Docs
 description: Azure API Management で使用できるアクセス制限ポリシーについて説明します。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: dlepow
 ms.service: api-management
 ms.topic: article
 ms.date: 08/20/2021
-ms.author: apimpm
-ms.openlocfilehash: 8d3370558e8dde2227834fa8f67577ca393b9564
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.author: danlep
+ms.openlocfilehash: 32fa405a612026fc16257447cb2cc858101c729c
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122687725"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129536507"
 ---
 # <a name="api-management-access-restriction-policies"></a>API Management のアクセス制限ポリシー
 
@@ -97,7 +97,7 @@ ms.locfileid: "122687725"
 
 ```xml
 <rate-limit calls="number" renewal-period="seconds">
-    <api name="API name" id="API id" calls="number" renewal-period="seconds" />
+    <api name="API name" id="API id" calls="number" renewal-period="seconds">
         <operation name="operation name" id="operation id" calls="number" renewal-period="seconds" 
         retry-after-header-name="header name" 
         retry-after-variable-name="policy expression variable name"
@@ -217,7 +217,7 @@ ms.locfileid: "122687725"
 | renewal-period      | 許可された要求の数が、`calls` で指定された値を超えてはならないスライディング ウィンドウの長さ (秒単位)。 ポリシー式は許可されます。 許可される最大値: 300 秒。                 | はい      | 該当なし     |
 | retry-after-header-name    | 値が指定された呼び出しレートを超えた後の推奨される再試行間隔 (秒単位) である応答ヘッダーの名前。 |  いいえ | N/A  |
 | retry-after-variable-name    | 指定した呼び出しレートを超えた後の推奨される再試行間隔 (秒単位) を格納するポリシー式変数の名前。 |  いいえ | N/A  |
-| remaining-calls-header-name    | 各ポリシーの実行後の値が、`renewal-period` で指定された時間間隔に対して許可されている残りの呼び出しの数である応答ヘッダーの名前。 |  いいえ | 該当なし  |
+| remaining-calls-header-name    | 各ポリシーの実行後の値が、`renewal-period` で指定された時間間隔に対して許可されている残りの呼び出しの数である応答ヘッダーの名前。 |  いいえ | N/A  |
 | remaining-calls-variable-name    | 各ポリシーの実行後に、`renewal-period` で指定された時間間隔に対して許可されている残りの呼び出しの数を格納する、ポリシー式変数の名前。 |  いいえ | N/A  |
 | total-calls-header-name    | 値が `calls` で指定された値である応答ヘッダーの名前。 |  いいえ | 該当なし  |
 
@@ -391,6 +391,9 @@ ms.locfileid: "122687725"
 | counter-key         | クォータ ポリシーに使用するキー。                                                                      | はい                                                              | 該当なし     |
 | increment-condition | クォータに対して要求の件数をカウントするかどうかを指定するブール式 (`true`)             | いいえ                                                               | 該当なし     |
 | renewal-period      | クォータのリセット間隔 (秒単位)。 `0` に設定すると、この期間は無限に設定されます。                                                   | はい                                                              | 該当なし     |
+
+> [!NOTE]
+> `counter-key` 属性値は、他の API 間で合計値を共有したくない場合は、API Management のすべての API で一意でなければなりません。
 
 ### <a name="usage"></a>使用法
 
@@ -650,21 +653,21 @@ ms.locfileid: "122687725"
 ### <a name="attributes"></a>属性
 
 | 名前                            | 説明      | 必須 |  Default    |
-| ------------------------------- |   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| ------------------------------- | -----------------| -------- | ----------- |
 | validate-revocation  | ブール型。 オンライン失効リストに対して証明書を検証するかどうかを指定します。  | Ｘ   | True  |
 | validate-trust | ブール型。 信頼された証明機関にチェーンを正常に構築できない場合に検証が失敗するかどうかを指定します。 | Ｘ | True |
-| validate-not-before | ブール型。 現在の時刻に対して値を検証します。 | Ｘ | True | 
-| validate-not-after  | ブール型。 現在の時刻に対して値を検証します。 | Ｘ | True| 
-| ignore-error  | Boolean です。 ポリシーを次のハンドラーに進めるか、検証に失敗した場合に ON-ERROR にジャンプするかを指定します。 | 番号 | False |  
-| ID | 文字列 をオンにします。 証明書を有効にする証明書要求値の組み合わせ。 | はい | N/A | 
+| validate-not-before | ブール型。 現在の時刻に対して値を検証します。 | Ｘ | True |
+| validate-not-after  | ブール型。 現在の時刻に対して値を検証します。 | Ｘ | True|
+| ignore-error  | Boolean です。 ポリシーを次のハンドラーに進めるか、検証に失敗した場合に ON-ERROR にジャンプするかを指定します。 | no | False |
+| ID | 文字列 をオンにします。 証明書を有効にする証明書要求値の組み合わせ。 | はい | N/A |
 | thumbprint | 証明書のサムプリント。 | Ｘ | N/A |
 | serial-number | 証明書のシリアル番号。 | Ｘ | N/A |
 | common-name | 証明書の共通名 (サブジェクト文字列の一部)。 | Ｘ | N/A |
 | subject | サブジェクト文字列。 識別名の形式に従う必要があります。 | Ｘ | N/A |
-| dns-name | サブジェクトの代替名要求内の dnsName エントリの値。 | Ｘ | 該当なし | 
-| issuer-subject | 発行者のサブジェクト。 識別名の形式に従う必要があります。 | Ｘ | N/A | 
-| issuer-thumbprint | 発行者の拇印。 | Ｘ | N/A | 
-| issuer-certificate-id | 発行者の公開キーを表す既存の証明書エンティティの識別子。 他の発行者属性と同時に指定できません。  | Ｘ | 該当なし | 
+| dns-name | サブジェクトの代替名要求内の dnsName エントリの値。 | Ｘ | 該当なし |
+| issuer-subject | 発行者のサブジェクト。 識別名の形式に従う必要があります。 | Ｘ | N/A |
+| issuer-thumbprint | 発行者の拇印。 | Ｘ | N/A |
+| issuer-certificate-id | 発行者の公開キーを表す既存の証明書エンティティの識別子。 他の発行者属性と同時に指定できません。  | Ｘ | 該当なし |
 
 ### <a name="usage"></a>使用法
 

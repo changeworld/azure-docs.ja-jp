@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.date: 07/22/2021
-ms.openlocfilehash: 28b616d0e0e4730fe96e5366a590ea84e5fa39cf
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 447398acc918dc830769b6b5e227f2ea87eb33c4
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124777756"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129545380"
 ---
 # <a name="run-jupyter-notebooks-in-your-workspace"></a>ワークスペースで Jupyter Notebook を実行する
 
@@ -311,7 +311,7 @@ Jupyter Notebook と同様に、Azure Machine Learning Studio ノートブック
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-* ノートブックに接続できない場合は、Web ソケット通信が無効になって **いない** ことを確認してください。 コンピューティング インスタンスの Jupyter 機能を動作させるには、Web ソケット通信を有効にする必要があります。 お使いのネットワークで、*. instances.azureml.net と *. instances.azureml.ms への WebSocket 接続が許可されていることを確認してください。 
+* ノートブックに接続できない場合は、Web ソケット通信が無効になって **いない** ことを確認してください。 コンピューティング インスタンスの Jupyter 機能を動作させるには、Web ソケット通信を有効にする必要があります。 *.instances.azureml.net と *.instances.azureml.ms への [WebSocket 接続がお使いのネットワークで許可されている](https://docs.microsoft.com/azure/machine-learning/how-to-access-azureml-behind-firewall?tabs=ipaddress#microsoft-hosts)ことを確認してください。 
 
 * プライベート エンドポイントのあるワークスペースにデプロイされたコンピューティング インスタンスには、[仮想ネットワーク内からのみアクセスする](./how-to-secure-training-vnet.md)ことができます。 カスタム DNS またはホスト ファイルを使用している場合は、ワークスペースのプライベート エンドポイントのプライベート IP アドレスを使用して < instance-name >.< region >.instances.azureml.ms のエントリを追加してください。 詳細については、[カスタム DNS](./how-to-custom-dns.md?tabs=azure-cli)に関する記事をご覧ください。
 

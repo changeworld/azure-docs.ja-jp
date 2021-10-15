@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: 534ea1a7a4e1356f44c97dc69e1a6dabbf9cae12
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: fc052deefeec9263d1f055c04381792c1ac0980b
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128637144"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129537005"
 ---
 # <a name="discover-assess-and-migrate-google-cloud-platform-gcp-vms-to-azure"></a>Google Cloud Platform (GCP) VM の検出、評価、および Azure への移行
 
@@ -315,14 +315,15 @@ Azure Migrate: Server Migration では、レプリケーション アプライ�
 
 2. テストする VM を右クリックし、 **[テスト移行]** をクリックします。
 
-    ![テスト移行](./media/tutorial-migrate-physical-virtual-machines/test-migrate.png)
+    :::image type="content" source="./media/tutorial-migrate-physical-virtual-machines/test-migrate-inline.png" alt-text="テスト移行をクリックした後の結果を示すスクリーンショット。" lightbox="./media/tutorial-migrate-physical-virtual-machines/test-migrate-expanded.png":::
 
 3. **[テスト移行]** で、移行後に Azure VM が配置される Azure VNet を選択します。 非運用環境の VNet を使用することをお勧めします。
 4. **テスト移行** ジョブが開始されます。 ポータルの通知でジョブを監視します。
 5. 移行の完了後、Azure portal の **[仮想マシン]** で、移行された Azure VM を確認します。 マシン名には、サフィックス **-Test** が含まれています。
 6. テストが完了したら、 **[マシンのレプリケート]** で Azure VM を右クリックし、 **[テスト移行をクリーンアップ]** をクリックします。
 
-    ![移行のクリーンアップ](./media/tutorial-migrate-physical-virtual-machines/clean-up.png)
+    :::image type="content" source="./media/tutorial-migrate-physical-virtual-machines/clean-up-inline.png" alt-text="テスト移行のクリーンアップ後の結果を示すスクリーンショット。" lightbox="./media/tutorial-migrate-physical-virtual-machines/clean-up-expanded.png":::
+
     > [!NOTE]
     > SQL Server を実行しているサーバーを SQL VM RP に登録できるようになりました。これにより、SQL IaaS Agent 拡張機能を使用した自動修正、自動バックアップ、簡略化されたライセンス管理を利用できるようになります。
     >- **[管理]**  >  **[Replicating servers]\(レプリケートしているサーバー\)**  >  **[Machine containing SQL server]\(SQL サーバーを含むマシン\)**  >  **[コンピューティングとネットワーク]** を選択し、 **[はい]** を選択して SQL VM RP に登録します。
@@ -394,7 +395,7 @@ Azure Migrate: Server Migration では、レプリケーション アプライ�
 **質問:** GCP VM を Azure に移行する前に、何か変更を加える必要がありますか   
 **回答:** EC2 VM を Azure に移行する前に、これらの変更を行うことが必要になる場合があります。
 
-- VM のプロビジョニングに cloud-init を使用している場合は、Azure にレプリケートする前に、VM の cloud-init を無効にすることをお勧めします。 VM の cloud-init によって実行されるプロビジョニング手順は、GCP に固有のものである可能性があり、Azure への移行後には有効ではありません。 
+- VM のプロビジョニングに cloud-init を使用している場合は、Azure にレプリケートする前に、VM の cloud-init を無効にすることをお勧めします。 VM の cloud-init によって実行されるプロビジョニング手順は、GCP に固有のものである可能性があり、Azure への移行後には有効ではありません。 
 - 「[前提条件](#prerequisites)」セクションを確認して、Azure に移行する前に、オペレーティング システムに必要な変更があるかどうかを判断します。
 - 最終的な移行の前に、必ずテスト移行を実行することをお勧めします。  
 

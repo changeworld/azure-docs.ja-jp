@@ -1,18 +1,17 @@
 ---
 title: Azure Virtual WAN に関する FAQ | Microsoft Docs
 description: Azure Virtual WAN のネットワーク、クライアント、ゲートウェイ、デバイス、パートナー、接続に関してよく寄せられる質問とその回答を参照できます。
-services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: troubleshooting
 ms.date: 08/18/2021
 ms.author: cherylmc
-ms.openlocfilehash: c4c31314ca8e559748425518258e0eec965d9c09
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: eaeefcfc48492686abc88215e80bc6d74a836f4f
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124754435"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129545041"
 ---
 # <a name="virtual-wan-faq"></a>Virtual WAN の FAQ
 
@@ -36,7 +35,7 @@ Virtual WAN には、次の 2 種類があります。Basic と Standard です�
 
 Virtual WAN は、ハブ内で使用可能になったハブとサービスのコレクションです。 ユーザーは、必要な数だけ Virtual WAN を利用できます。 Virtual WAN ハブには、VPN や ExpressRoute などの複数のサービスがあります。リージョンで Availability Zones がサポートされている場合、これらのサービス (Azure Firewall を除く) はそれぞれ自動的に Availability Zones にまたがってデプロイされます。 ハブでの初期デプロイ後にリージョンが可用性ゾーンになった場合、ユーザーはゲートウェイを再作成できます。これにより、可用性ゾーンのデプロイがトリガーされます。 すべてのゲートウェイがアクティブ/アクティブとしてハブにプロビジョニングされます。これは、ハブ内に回復性が組み込まれていることを意味します。 ユーザーは、複数のリージョンにわたって回復性が必要な場合、複数のハブに接続できます。 
 
-Availability Zones をサポートするために、現在、Azure Firewall Manager Portal、[PowerShell](/powershell/module/az.network/new-azfirewall?view=azps-6.3.0#example-6--create-a-firewall-with-no-rules-and-with-availability-zones)、または CLI を使用して Azure Firewall をデプロイできます。 現在、既存のファイアウォールが可用性ゾーンにまたがってデプロイされるように構成する方法はありません。 Azure Firewall を削除してから再デプロイする必要があります。 
+Availability Zones をサポートするために、現在、Azure Firewall Manager Portal、[PowerShell](/powershell/module/az.network/new-azfirewall#example-6--create-a-firewall-with-no-rules-and-with-availability-zones)、または CLI を使用して Azure Firewall をデプロイできます。 現在、既存のファイアウォールが可用性ゾーンにまたがってデプロイされるように構成する方法はありません。 Azure Firewall を削除してから再デプロイする必要があります。 
 
 Virtual WAN の概念はグローバルですが、実際の Virtual WAN リソースは Resource Manager ベースであり、リージョンでデプロイされます。 仮想 WAN リージョン自体に問題がある場合、その仮想 WAN 内のすべてのハブは引き続きそのまま機能しますが、ユーザーは、仮想 WAN リージョンが使用可能になるまで新しいハブを作成することはできません。
 
@@ -253,10 +252,10 @@ VPN サイトでは、ハブに接続するときに、複数の接続を使用�
 仮想ハブが複数のリモート ハブからの同じルートを学習する場合、次の順序で決定されます。
 
 1. プレフィックスの最長一致。
-1. インターハブ上のローカル ルート (仮想ハブからは 65520-65520 がインターハブ AS に対して割り当てられます)。
+1. interhub 経由のローカル ルート。
 1. BGP 経由の静的ルート: これは、仮想ハブ ルーターによって行われる決定に対するコンテキストにあります。 しかし、決定を行うのが VPN ゲートウェイであり、サイトで BGP 経由のルートをアドバタイズする場合、または静的アドレス プレフィックスを指定する場合は、静的ルートが BGP ルートよりも優先されることがあります。
 1. VPN 経由の ExpressRoute (ER): コンテキストがローカル ハブの場合、VPN よりも ER が優先されます。 ExpressRoute 回線間の転送接続は、Global Reach 経由でのみ使用できます。 そのため、ExpressRoute 回線が 1 つのハブに接続されており、VPN 接続を使用して異なるハブに接続されている別の ExpressRoute 回線があるシナリオの場合、ハブ間のシナリオでは VPN が優先される可能性があります。
-1. AS パスの長さ。
+1. AS パスの長さ (仮想ハブにより、相互にルートがアドバタイズされるときに、ルートの先頭に AS パス 65520-65520 が付加されます)。
 
 ### <a name="does-the-virtual-wan-hub-allow-connectivity-between-expressroute-circuits"></a>Virtual WAN ハブで ExpressRoute 回線間の接続性は許可されますか。
 

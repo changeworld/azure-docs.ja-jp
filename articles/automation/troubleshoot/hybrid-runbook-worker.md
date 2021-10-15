@@ -1,23 +1,23 @@
 ---
-title: Azure Automation Hybrid Runbook Worker の問題のトラブルシューティング
-description: この記事では、Azure Automation Hybrid Runbook Worker で発生する問題のトラブルシューティングと解決方法について説明します。
+title: Azure Automation でエージェント ベースの Hybrid Runbook Worker の問題をトラブルシューティングする
+description: この記事では、Azure Automation エージェント ベースの Hybrid Runbook Worker で発生する問題をトラブルシューティングして解決する方法について説明します。
 services: automation
 ms.subservice: ''
 author: mgoedtel
 ms.author: magoedte
-ms.date: 02/11/2021
+ms.date: 09/24/2021
 ms.topic: troubleshooting
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9b06213416241f671dd0e6ef56a7660a3af5f6e8
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 824925f4c3616b91f10fc3bae4bdaa1f5a0bb5ee
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108123899"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129277159"
 ---
-# <a name="troubleshoot-hybrid-runbook-worker-issues"></a>Hybrid Runbook Worker の問題のトラブルシューティング
+# <a name="troubleshoot-agent-based-hybrid-runbook-worker-issues-in-automation"></a>Automation でエージェント ベースの Hybrid Runbook Worker の問題をトラブルシューティングする
 
-この記事では、Azure Automation Hybrid Runbook Worker に関する問題のトラブルシューティングと解決方法について説明します。 一般情報については、「[Hybrid Runbook Worker overview (Hybrid Runbook Worker の概要)](../automation-hybrid-runbook-worker.md)」をご覧ください。
+この記事では、Azure Automation エージェント ベースの Hybrid Runbook Worker に関する問題のトラブルシューティングと解決に関する情報を提供します。 拡張機能ベースのワーカーのトラブルシューティングについては、[Automation での拡張機能ベースの Hybrid Runbook Worker の問題のトラブルシューティング](./extension-based-hybrid-runbook-worker.md)に関するページを参照してください。 一般情報については、「[Hybrid Runbook Worker overview (Hybrid Runbook Worker の概要)](../automation-hybrid-runbook-worker.md)」をご覧ください。
 
 ## <a name="general"></a>全般
 
@@ -47,7 +47,7 @@ Runbook は 3 回実行を試みると、短時間中断されます。 Runbook 
 
 Hybrid Runbook Worker を実行するコンピューターは、この機能をホストするようにワーカーを構成する前に、ハードウェアの最小要件を満たしている必要があります。 Runbook とそれらが使用するバックグラウンド プロセスによってシステムが過剰に使用され、それが原因で Runbook ジョブの遅延やタイムアウトが発生する可能性があります。
 
-Hybrid Runbook Worker の機能を実行するコンピューターがハードウェアの最小要件を満たしていることを確認します。 満たしている場合は、CPU とメモリの使用を監視して、Hybrid Runbook Worker プロセスのパフォーマンスと Windows の間の相関関係を調べます。 メモリまたは CPU の負荷は、リソースのアップグレードが必要であることを示している可能性があります。 最小要件を満たす別のコンピューティング リソースを選択し、ワークロードの需要によって増加が必要であることが示された時点でスケーリングすることもできます。
+Hybrid Runbook Worker の機能を実行するコンピューターが最小ハードウェア要件を満たしていることを確認します。 満たしている場合は、CPU とメモリの使用を監視して、Hybrid Runbook Worker プロセスのパフォーマンスと Windows の間の相関関係を調べます。 メモリまたは CPU の負荷は、リソースのアップグレードが必要であることを示している可能性があります。 また、最小要件をサポートする別のコンピューティング リソースを選択し、ワークロードの需要によって増加が必要であることが示された時点でスケーリングすることもできます。
 
 **Microsoft-SMA** のイベント ログで、`Win32 Process Exited with code [4294967295]` という説明のある、対応するイベントを調べます。 このエラーの原因は、Runbook で認証が構成されていないか、または Hybrid Runbook Worker グループの実行資格情報が指定されていないことです。 「[Hybrid Runbook Worker での Runbook の実行](../automation-hrw-run-runbooks.md)」で Runbook のアクセス許可を調べ直して、Runbook の認証を正しく構成したことを確認します。
 
@@ -180,7 +180,7 @@ Linux Hybrid Runbook Worker で `sudo` コマンドを実行すると、パス�
 
 #### <a name="cause"></a>原因
 
-Linux 用 Log Analytics エージェントの **nxautomationuser** アカウントが、**sudoers** ファイルで正しく構成されていません。 Hybrid Runbook Worker では、Linux Runbook Worker で Runbook に署名できるように、アカウントのアクセス許可やその他のデータが適切に構成されている必要があります。
+Linux 用 Log Analytics エージェントの **nxautomationuser** アカウントが **sudoers** ファイルで正しく構成されていません。 Hybrid Runbook Worker では、Linux Runbook Worker で Runbook に署名できるように、アカウントのアクセス許可やその他のデータが適切に構成されている必要があります。
 
 #### <a name="resolution"></a>解決策
 
@@ -264,7 +264,7 @@ PowerShell で次のコマンドを入力して、このエージェントが実
 
 Windows Hybrid Runbook Worker で実行されるスクリプトを、想定どおりに Orchestrator サンドボックスの Microsoft 365 に接続できません。 スクリプトでは、接続に [Connect-MsolService](/powershell/module/msonline/connect-msolservice) を使用しています。 
 
-**Orchestrator.Sandbox.exe.config** を調整してプロキシとバイパス リストを設定しても、サンドボックスに正常に接続されません。 プロキシとバイパス リストの設定が同じ **Powershell_ise.exe.config** ファイルは、想定したとおり機能しているようです。 Service Management Automation (SMA) ログと PowerShell ログでは、プロキシに関する情報が提供されません。
+**Orchestrator.Sandbox.exe.config** を調整してプロキシとバイパス リストを設定しても、サンドボックスに正常に接続されません。 プロキシとバイパス リストの設定が同じ **Powershell_ise.exe.config** ファイルは、想定したとおり機能しているようです。 Service Management Automation (SMA) ログや PowerShell ログでは、プロキシに関する情報は提供されません。
 
 #### <a name="cause"></a>原因
 
@@ -372,7 +372,7 @@ Start-Service -Name HealthService
 
 ## <a name="next-steps"></a>次のステップ
 
-該当する問題がここにない場合、または問題を解決できない場合は、追加のサポートを受けるために、次のいずれかのチャネルをお試しください。
+発生している問題がここで見つからないか、またはその問題を解決できない場合は、次のいずれかのチャネルで追加のサポートを受けてみてください。
 
 * [Azure フォーラム](https://azure.microsoft.com/support/forums/)を通じて Azure エキスパートから回答を得ることができます。
 * [@AzureSupport](https://twitter.com/azuresupport) (カスタマー エクスペリエンスを向上させるための Microsoft Azure の公式アカウント) に連絡する。 Azure サポートにより、Azure コミュニティの回答、サポート、エキスパートと結び付けられます。

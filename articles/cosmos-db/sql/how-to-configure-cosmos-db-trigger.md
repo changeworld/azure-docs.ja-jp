@@ -4,14 +4,14 @@ description: Cosmos DB 用 Azure Functions トリガーで使用されるログ�
 author: ealsur
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 10/19/2020
+ms.date: 10/04/2021
 ms.author: maquaran
-ms.openlocfilehash: 44e738cc50feb66fc8806236be388b6baa18a17f
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 409cf65dc9b79707a7508590b370b63325101f67
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123114014"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129427383"
 ---
 # <a name="how-to-configure-logging-and-connectivity-with-the-azure-functions-trigger-for-cosmos-db"></a>Cosmos DB 用 Azure Functions トリガーによるログと接続を構成する方法
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -68,7 +68,7 @@ traces
 }
 ```
 
-`connectionMode` には目的の接続モード (Direct または Gateway)、`protocol` には目的の接続プロトコル (Tcp または Https) が設定されている必要があります。 
+`connectionMode` には目的の接続モード (Direct または Gateway)、`protocol` には目的の接続プロトコル (直接モードでは Tcp またはゲートウェイ モードでは Https) が設定されている必要があります。
 
 自分の Azure Functions プロジェクトで Azure Functions V1 ランタイムを使用している場合、構成の名前はわずかに異なり、`cosmosDB` ではなく `documentDB` を使用する必要があります。
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/10/2021
 ms.author: xpouyat
-ms.openlocfilehash: f931d5c21de4c91acc24af68992e4b3b64931e21
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: 0311948d679cee38dcc7113e4c0246c757409d95
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123450586"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129233449"
 ---
 # <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>Microsoft&reg; Smooth Streaming Client Porting Kit のライセンス
 
@@ -81,72 +81,10 @@ Smooth Streaming Client Porting Kit の利用には、1 回限りのライセン
 中間製品契約と最終製品契約を締結済みの SSPK ライセンシーは、技術的な質問を [smoothpk@microsoft.com](mailto:smoothpk@microsoft.com)をクリックしてください。
 
 ## <a name="microsoft-smooth-streaming-client-interim-product-agreement-licensees"></a>Microsoft Smooth Streaming Client 中間製品契約ライセンシー
-* Enseo, Inc.
-* Fluendo S.A.
-* Guangzhou Dimai Digital Limited Co.
-* Guangzhou Shikun Electronics., Ltd.
-* Hisilicon Technologies Co., Ltd.
-* LG Electronics, Inc.
-* MediaTek Inc.
-* Montage LZ Technologies Hong Kong Limited
-* Panasonic Corporation
-* Socionext Inc.
-* Synamedia Limited
-* Tatung Technology Inc.
-* Top Victory Investments, Ltd.
-* ZTE Corporation
+現在のライセンシーの一覧については、 https://go.microsoft.com/fwlink/?linkid=301271 を参照してください。
 
 ## <a name="microsoft-smooth-streaming-client-final-product-agreement-licensees"></a>Microsoft Smooth Streaming Client 最終製品契約ライセンシー
-* Advanced Digital Broadcast SA
-* AmTRAN Technology Co., Ltd 
-* Arcadyan Technology Corporation
-* Arcelik A.S
-* Compal Electronics, Inc.
-* Enseo, LLC
-* EXPRESS LUCK TECHNOLOGY LIMITED
-* FAIRWIT HONGKONG CO., LIMITED
-* Fluendo S.A.
-* FUNAI ELECTRIC CO., LTD
-* Guangdong Asano Technology CO.,Ltd.
-* Hisense Broadband Multimedia Technologies Co.,Ltd.
-* Hisense International Co., Ltd.
-* Hisense Visual Technology Co., Ltd
-* HKC Corporation Limited
-* Hong Kong Konka Ltd
-* Jinpin Electrical Company Ltd.Zhuhai.S.E.Z
-* KAONMEDIA CO., Ltd.
-* KDDI Corporation
-* K-Tronics (Suzhou) Technology Co., Ltd.
-* LG Electronics, Inc.
-* Liberty Global Technology Services BV
-* Mega Fame Electronics Co. Limited
-* MINGCAI NEW CENTURY (HK) CO., LIMITED
-* MIRC Electronics Limited
-* MOKA INTERNATIONAL LIMITED
-* ONEPLUS ELECTRONICS (SHENZHEN) CO., LTD.
-* Panasonic Corporation
-* Qingdao Haier Optronics Co., Ltd.
-* SAGEMCOM BROADBAND SAS
-* Sharp Consumer Electronics Poland Sp. z o.o.
-* Shenzhen ATEKO PHOTO Electricity Co.,Ltd.
-* Shenzhen Chuangwei-RGB Electronics Co.,Ltd.
-* Shenzhen Jiuzhou Electric Co., Ltd
-* Shenzhen KTC Technology Co., Ltd. 
-* Shenzhen Maxmade Technology Co., Ltd
-* Shenzhen MTC Co., Ltd
-* SHENZHEN QIYUE OPTRONICS CO.,LTD
-* Shenzhen Skyworth Digital Technology Co., Ltd
-* Sichuan Changhong Electric Co., Ltd.
-* SKARDIN INDUSTRIAL CORP
-* Sky CP Ltd
-* SMARDTV GLOBAL SAS
-* Sony Corporation
-* SoftAtHome
-* Technicolor Delivery Technologies, SAS
-* Top Victory Investments, Ltd.
-* Vizio, Inc.
-* Walton Hi-Tech Industries Ltd.
-* ZTE CORPORATION
+現在のライセンシーの一覧については、 https://go.microsoft.com/fwlink/?linkid=301271 を参照してください。
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

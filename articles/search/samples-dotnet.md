@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/27/2021
-ms.openlocfilehash: 32fbdae5719e2f8e379b39076f8557b3db0d61ca
-ms.sourcegitcommit: 942a1c6df387438acbeb6d8ca50a831847ecc6dc
+ms.date: 10/01/2021
+ms.openlocfilehash: 0f4ce35a43702f958656b1ad077e6c0f84bc88bb
+ms.sourcegitcommit: 079426f4980fadae9f320977533b5be5c23ee426
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112020027"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129418710"
 ---
 # <a name="net-c-code-samples-for-azure-cognitive-search"></a>Azure Cognitive Search の .NET (C#) コード サンプル
 
@@ -66,6 +66,7 @@ Cognitive Search チームのコード サンプルは、機能とワークフ�
 
 | サンプル | 説明 |
 |---------|-------------|
+| [Azure AD を使用して Data Lake Gen2 のインデックスを作成する](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/data-lake-gen2-acl-indexing/README.md) | インデクサー接続と、Azure AD とロールベースのアクセス制御で保護された Azure Data Lake Gen2 のファイルとフォルダーのインデックス作成を行うデモンストレーション用のソース コード。 |
 | [azure-search-power-skills](https://github.com/Azure-Samples/azure-search-power-skills)  | 獲得したソリューションに組み込むことができる、使用可能なカスタム スキルのソース コード。  |
 | [ナレッジ マイニング ソリューション アクセラレータ](/samples/azure-samples/azure-search-knowledge-mining/azure-search-knowledge-mining/) | エンドツーエンドのナレッジ マイニング ソリューションのプロトタイプ作成に役立つテンプレート、サポート ファイル、および分析レポートが含まれています。  |
 | [Covid-19 Search App リポジトリ](https://github.com/liamca/covid19search) | Cognitive Search ベースの [Covid-19 Search App](https://covid19search.azurewebsites.net/) のソース コード リポジトリ |

@@ -1,19 +1,20 @@
 ---
-title: ブロック BLOB ストレージのパフォーマンス レベル - Azure Storage
+title: ブロック BLOB ストレージのパフォーマンス レベル
+titleSuffix: Azure Storage
 description: Azure ブロック BLOB ストレージの Premium と Standard のパフォーマンス レベルの違いについて説明します。
 author: normesta
 ms.author: normesta
-ms.date: 05/17/2021
+ms.date: 09/23/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 222a0f3c327c476ef372117ff0734b6739faf9db
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 1e0ac8784a8a4e5077d600b2582bc7ce3e7d981b
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128588696"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129279186"
 ---
 # <a name="performance-tiers-for-block-blob-storage"></a>ブロック BLOB ストレージのパフォーマンス レベル
 
@@ -53,7 +54,7 @@ Premium パフォーマンス ストレージは、高速で一貫性のある�
 
 ## <a name="standard-performance"></a>Standard パフォーマンス
 
-Standard パフォーマンスでは、最もコスト効率の高い方法でデータを格納できるよう、さまざまな[アクセス層](storage-blob-storage-tiers.md)をサポートしています。 大規模なデータ セットで、高容量および高スループットを実現するために最適化されています。
+Standard パフォーマンスでは、最もコスト効率の高い方法でデータを格納できるよう、さまざまな[アクセス層](access-tiers-overview.md)をサポートしています。 大規模なデータ セットで、高容量および高スループットを実現するために最適化されています。
 
 - **バックアップおよびディザスター リカバリーのデータセット**。 Standard パフォーマンス ストレージでは、コスト効率に優れた層が提供されるため、短期および長期のディザスター リカバリー データセット、セカンダリ バックアップ、コンプライアンス データ アーカイブにおける最適なユース ケースとなります。
 

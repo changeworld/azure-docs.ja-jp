@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ed393f721d4461ebadea41f8dad707d4881865cd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a9a79322439db33620b67ff568387a5750f7ee5c
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "78183907"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129350582"
 ---
 # <a name="azure-ad-b2c-authentication-protocols"></a>Azure AD B2C: 認証プロトコル
 Azure Active Directory B2C (Azure AD B2C) では、業界標準のプロトコルである OpenID Connect と OAuth 2.0 をサポートすることによって Identity-as-a-Service (サービスとしての ID) 機能がアプリに提供されます。 このサービスは標準に準拠していますが、これらのプロトコルには、実装によって微妙な違いが存在する場合があります。
@@ -40,7 +40,10 @@ https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/oauth2/v2.0/token
 
 OAuth と OpenID Connect におけるフローはほぼすべて、情報のやり取りに 4 つの当事者が関係します。
 
-![4 つの OAuth 2.0 ロールを示す図](./media/protocols-overview/protocols_roles.png)
+
+
+
+:::image type="content" source="./media/protocols-overview/protocols_roles.png" alt-text="4 つの OAuth 2.0 ロールを示す図。":::
 
 * **承認サーバー** は Azure AD エンドポイントです。 承認サーバーは、ユーザー情報とアクセスに関するすべてのことを安全に処理します。 また、フロー内の当事者間の信頼関係も処理します。 ユーザーの本人性確認、リソースへのアクセス権の付与と取り消し、トークンの発行という役割を担います。 ID プロバイダーとも呼ばれます。
 

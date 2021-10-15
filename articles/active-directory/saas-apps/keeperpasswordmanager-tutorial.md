@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Keeper Password Manager の統合 | Microsoft Docs'
+title: 'チュートリアル: Azure AD SSO と Keeper Password Manager の統合'
 description: Azure Active Directory と Keeper Password Manager の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/03/2021
+ms.date: 09/24/2021
 ms.author: jeedes
-ms.openlocfilehash: bbfec5e90f76d96870c0768b82b86360c19a7020
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 3488ecba825d82cd1f3790b977b8b039eb38486f
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124822185"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129402949"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-keeper-password-manager"></a>チュートリアル: Azure Active Directory と Keeper Password Manager の統合
+# <a name="tutorial-azure-ad-sso-integration-with-keeper-password-manager"></a>チュートリアル: Azure AD SSO と Keeper Password Manager の統合
 
 このチュートリアルでは、Keeper Password Manager と Azure Active Directory (Azure AD) を統合する方法について説明します。 Keeper Password Manager と Azure AD を統合すると、次のことができます。
 
@@ -32,6 +32,9 @@ ms.locfileid: "124822185"
 
 * Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
 * Keeper Password Manager でのシングル サインオン (SSO) が有効なサブスクリプション。
+
+> [!NOTE]
+> この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
@@ -67,7 +70,7 @@ Keeper Password Manager 用に Azure AD SSO を構成してテストするには
     1. [Keeper Password Manager のテスト ユーザーを作成](#create-a-keeper-password-manager-test-user)して、Keeper Password Manager で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 1. [SSO をテスト](#test-sso)して、構成が機能するかどうかを確認します。
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
@@ -145,6 +148,9 @@ Keeper Password Manager 用に Azure AD SSO を構成してテストするには
 ### <a name="create-a-keeper-password-manager-test-user"></a>Keeper Password Manager のテスト ユーザーの作成
 
 Azure AD ユーザーが Keeper Password Manager にサインインできるようにするには、ユーザーをプロビジョニングする必要があります。 このアプリケーションでは、Just-In-Time ユーザー プロビジョニングがサポートされているので、認証後にユーザーがアプリケーションに自動的に作成されます。 ユーザーを手動で設定する場合は、[Keeper サポート](https://keepersecurity.com/contact.html)にお問い合わせください。
+
+> [!NOTE]
+> Keeper Password Manager では、自動ユーザー プロビジョニングもサポートされます。自動ユーザー プロビジョニングの構成方法の詳細については、[こちら](./keeper-password-manager-digitalvault-provisioning-tutorial.md)を参照してください。
 
 ## <a name="test-sso"></a>SSO のテスト
 

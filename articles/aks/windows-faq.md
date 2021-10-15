@@ -2,15 +2,14 @@
 title: Windows Server ノード プールに関する FAQ
 titleSuffix: Azure Kubernetes Service
 description: Windows Server ノード プールとアプリケーション ワークロードを Azure Kubernetes Service (AKS) 内で実行する際の、よく寄せられる質問について説明します。
-services: container-service
 ms.topic: article
 ms.date: 10/12/2020
-ms.openlocfilehash: c11ca69e11ee3f9b429414c2caf5b71a947d6a31
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: dd83803069f83233915c0baae0656346008a3814
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128595296"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129354639"
 ---
 # <a name="frequently-asked-questions-for-windows-server-node-pools-in-aks"></a>AKS の Windows Server ノード プールに関してよく寄せられる質問
 
@@ -68,7 +67,7 @@ AKS クラスター上の Windows ノードでは、Calico が有効になって
 
 2020 年 2 月より前にクラスターを作成し、クラスターのアップグレード操作を行っていない場合、クラスターは引き続き古い Windows イメージを使用します。 次のようなエラーが表示されている可能性があります。
 
-"デプロイ テンプレートから参照されている次のイメージの一覧が見つかりません:発行元: MicrosoftWindowsServer、オファー:WindowsServer、Sku:2019-datacenter-core-smalldisk-2004、バージョン: 最新。 利用可能なイメージの検索方法については、 https://docs.microsoft.com/azure/virtual-machines/windows/cli-ps-findimage をご覧ください。"
+"デプロイ テンプレートから参照されている次のイメージの一覧が見つかりません:発行元: MicrosoftWindowsServer、オファー:WindowsServer、Sku:2019-datacenter-core-smalldisk-2004、バージョン: 最新。 使用可能なイメージを検索する方法については、「[Azure PowerShell を使用して Azure Marketplace VM イメージを検索して使用する](../virtual-machines/windows/cli-ps-findimage.md)」を参照してください。
 
 このエラーを修復するには:
 

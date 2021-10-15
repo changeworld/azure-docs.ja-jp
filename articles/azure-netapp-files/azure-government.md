@@ -1,6 +1,6 @@
 ---
 title: Azure Government 向け Azure NetApp Files | Microsoft Docs
-description: この記事では、Azure NetApp Files と一緒に使用するために Azure Government 米国に接続する方法の概要を説明します
+description: Azure Government に接続して Azure NetApp Files を使用する方法と、Azure Government における Azure NetApp Files 機能の可用性について説明します。
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,22 +12,33 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/15/2021
+ms.date: 09/28/2021
 ms.author: b-juche
-ms.openlocfilehash: b76895fdd82122413c83ebc017944578001ce0b9
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 4dbdc8086b59553474d05297cdaf030d897d441e
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128699266"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129234074"
 ---
 # <a name="azure-netapp-files-for-azure-government"></a>Azure Government 向け Azure NetApp Files 
 
 [Microsoft Azure Government](../azure-government/documentation-government-welcome.md) は、政府機関とそのパートナーがミッションクリティカルなワークロードをクラウドに変換できる専用のクラウドを提供します。  
 
-この記事では、Azure NetApp Files サービスに Azure Government 内でアクセスする方法を示します。 
+この記事では、Azure Government における Azure NetApp Files 機能の可用性について説明します。 また、Azure NetApp Files サービスに Azure Government 内でアクセスする方法も示します。
 
-## <a name="portal"></a>ポータル 
+## <a name="feature-availability"></a>使用可能な機能
+
+Azure NetApp Files でサポートされている Azure Government のリージョンについては、「 *[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-texas,usgov-virginia)* 」のページを参照してください。  
+
+Azure パブリック クラウドで利用できるすべての [Azure NetApp Files](whats-new.md) の機能は、"***次の表に記載されている機能を除き***"、サポートされている Azure Government リージョンでも利用できます。 
+
+| Azure NetApp Files の機能 | Azure パブリック クラウドの可用性 |  Azure Government の可用性 |
+|:--- |:--- |:--- |
+| Azure NetApp Files のリージョン間レプリケーション | パブリック プレビュー | [制限がある](cross-region-replication-introduction.md#supported-region-pairs) |
+| Azure NetApp Files バックアップ | パブリック プレビュー | いいえ |
+
+## <a name="portal-access"></a>ポータル アクセス
 
 Azure Government ユーザーは、ブラウザーを **portal.azure.us** にポイントすることで、Azure NetApp Files にアクセスできます。ポータル サイト名は **Microsoft Azure Government** です。詳細については、[ポータルを使用した Azure Government への接続](../azure-government/documentation-government-get-started-connect-with-portal.md)に関する記事をご確認ください。   
 
@@ -37,7 +48,7 @@ Microsoft Azure Government ポータルから、Azure portal でアクセスす�
 
 サービスの使用の詳細については、[Azure NetApp Files](/azure/azure-netapp-files/) のドキュメントを参照してください。
 
-## <a name="azure-cli"></a>Azure CLI 
+## <a name="azure-cli-access"></a>Azure CLI アクセス
 
 クラウド名を `AzureUSGovernment` に設定し、`az login` コマンドを使用して通常と同じ方法でログインし、Azure Government に接続できます。 ログイン コマンドを実行すると、ブラウザーが起動します。ここで、適切な Azure Government 資格情報を入力します。  
 
@@ -59,11 +70,11 @@ az cloud list --output table
 
 詳細は、「[Azure CLI を使用した Azure Government への接続](../azure-government/documentation-government-get-started-connect-with-cli.md)」を参照してください。
 
-## <a name="rest-api"></a>REST API
+## <a name="rest-api-access"></a>REST API アクセス
 
 Azure Government のエンドポイントは、商用 Azure エンドポイントとは異なります。 さまざまなエンドポイントの一覧については、Azure Government の「[開発者向ガイダンス](../azure-government/compare-azure-government-global-azure.md#guidance-for-developers)」を参照してください。
 
-## <a name="powershell"></a>PowerShell
+## <a name="powershell-access"></a>PowerShell アクセス
 
 PowerShell を使用して Azure Government に接続する場合は、環境パラメーターを指定して、正しいエンドポイントに確実に接続する必要があります。 そこから、通常 PowerShell で行うのと同様に、Azure NetApp Files の使用に進めます。 
 
@@ -78,6 +89,7 @@ PowerShell を使用して Azure Government に接続する場合は、環境パ
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Government とは?](../azure-government/documentation-government-welcome.md)
+* [Azure NetApp Files の新機能](whats-new.md)
 * [商用 Azure Government とグローバル Azure の比較](../azure-government/compare-azure-government-global-azure.md)
 * [Azure NetApp Files REST API](azure-netapp-files-develop-with-rest-api.md)
 * [PowerShell を使用する Azure NetApp Files REST API](develop-rest-api-powershell.md)

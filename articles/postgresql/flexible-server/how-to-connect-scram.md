@@ -5,13 +5,13 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 06/23/2021
-ms.openlocfilehash: 7fc67ab7162c7fe62df226fd39aefcd350bbdf82
-ms.sourcegitcommit: 5be51a11c63f21e8d9a4d70663303104253ef19a
+ms.date: 10/01/2021
+ms.openlocfilehash: ad7cbfc7c06a86cca79930c9745160cc9af4697f
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112897264"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129388871"
 ---
 # <a name="scram-authentication-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL - フレキシブル サーバーでの SCRAM 認証
 
@@ -84,6 +84,9 @@ SCRAM 認証方法を使用して PostgreSQL データベース サーバーに�
     ```
 
 8. その後、SCRAM 認証をサポートするクライアントからサーバーに接続できます。
+
+> [!Note] 
+> 組み込みのマネージド [PgBouncer](concepts-pgbouncer.md) に接続されている場合、SCRAM 認証はサポートされません。
 
 ## <a name="next-steps"></a>次のステップ
 - [Azure CLI を使用して Azure Database for PostgreSQL - フレキシブル サーバー仮想ネットワークを作成し、管理する](./how-to-manage-virtual-network-cli.md)。

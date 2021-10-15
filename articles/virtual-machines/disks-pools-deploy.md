@@ -4,15 +4,15 @@ description: Azure ディスク プールのデプロイ方法を説明します
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/19/2021
+ms.date: 09/29/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: f0f648f7f8c04aeb6ed97a0c58fa157e743da5f1
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 72a25b6bc51732ac9b598cbcb6b45f9ac84fc21b
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114436972"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129351064"
 ---
 # <a name="deploy-an-azure-disk-pool-preview"></a>Azure ディスク プール (プレビュー) をデプロイする
 
@@ -35,7 +35,7 @@ ms.locfileid: "114436972"
 
 Azure PowerShell モジュールを使用する場合は、[バージョン 6.1.0 以降](/powershell/module/az.diskpool/?view=azps-6.1.0&preserve-view=true)をインストールしてください。
 
-Azure CLI を使用する場合は、[最新バージョン](/cli/azure/disk-pool?view=azure-cli-latest)をインストールしてください。
+Azure CLI を使用する場合は、[最新バージョン](/cli/azure/disk-pool)をインストールしてください。
 
 ## <a name="register-your-subscription-for-the-preview"></a>プレビュー版を利用するためにサブスクリプションを登録する
 
@@ -71,7 +71,7 @@ Azure CLI を使用する場合は、[最新バージョン](/cli/azure/disk-poo
 1. [Azure portal](https://portal.azure.com/) にサインインします。
 1. ディスクを含むリソース グループまたは各ディスクを検索して選択します。
 1. **[アクセス制御 (IAM)]** を選択します。
-1. **[ロールの割り当ての追加 (プレビュー)]** を選択し、ロールの一覧で **[仮想マシン共同作成者]** を選択します。
+1. **[ロールの割り当ての追加 (プレビュー)]** を選択し、ロールの一覧で **[Disk Pool Operator]\(ディスク プール オペレーター\)** を選択します。
 
     代わりに、独自のカスタム ロールを作成することもできます。 ディスク プールのカスタム ロールを機能させるには、**Microsoft.Compute/disks/write** と **Microsoft.Compute/disks/read** の RBAC アクセス許可が必要です。
 

@@ -4,14 +4,14 @@ description: Azure HPC Cache サービスにクライアントを接続する方
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 09/20/2021
+ms.date: 09/27/2021
 ms.author: v-erkel
-ms.openlocfilehash: 4e3c2a336d58e90bc446c77b164148359f9588fd
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: ab66fc29a29461e6808686aa53b520144b39a1e1
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128675909"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129274199"
 ---
 # <a name="mount-the-azure-hpc-cache"></a>Azure HPC Cache をマウントする
 
@@ -85,7 +85,7 @@ mount コマンドを作成するには、次の手順に従います。
 
    Azure HPC Cache の集約された名前空間の機能の詳細については、「[集約された名前空間を計画する](hpc-cache-namespace.md)」を参照してください。
 
-1. 手順 3 の **[Mount command]\(mount コマンド\)** フィールドには、前のフィールドで設定したマウント アドレス、仮想名前空間のパス、クライアント パスを使用する、カスタマイズされた mount コマンドが自動的に入力されます。
+1. **[Mount command]\(mount コマンド\)** フィールドには、前のフィールドで設定したマウント アドレス、仮想名前空間のパス、クライアント パスを使用する、カスタマイズされた mount コマンドが自動的に入力されます。
 
    フィールドの右側にあるコピー記号をクリックすると、自動的にクリップボードにコピーされます。
 

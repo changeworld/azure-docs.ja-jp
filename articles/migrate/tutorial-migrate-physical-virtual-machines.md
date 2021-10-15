@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 01/02/2021
 ms.custom: MVC
-ms.openlocfilehash: 6c392d1af427c7a9837519ea8443efc5773aa6db
-ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
+ms.openlocfilehash: 00d069257d25441f16fb82cae720bb49b8e0f15f
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129154814"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129536988"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>マシンを物理サーバーとして Azure に移行する
 
@@ -308,14 +308,15 @@ Azure Migrate: Server Migration では、レプリケーション アプライ�
 
 2. テストする VM を右クリックし、 **[テスト移行]** をクリックします。
 
-    ![テスト移行](./media/tutorial-migrate-physical-virtual-machines/test-migrate.png)
-
+    :::image type="content" source="./media/tutorial-migrate-physical-virtual-machines/test-migrate-inline.png" alt-text="テスト移行をクリックした後の結果を示すスクリーンショット。" lightbox="./media/tutorial-migrate-physical-virtual-machines/test-migrate-expanded.png":::
+ 
 3. **[テスト移行]** で、移行後に Azure VM が配置される Azure VNet を選択します。 非運用環境の VNet を使用することをお勧めします。
 4. **テスト移行** ジョブが開始されます。 ポータルの通知でジョブを監視します。
 5. 移行の完了後、Azure portal の **[仮想マシン]** で、移行された Azure VM を確認します。 マシン名には、サフィックス **-Test** が含まれています。
 6. テストが完了したら、 **[マシンのレプリケート]** で Azure VM を右クリックし、 **[テスト移行をクリーンアップ]** をクリックします。
 
-    ![移行のクリーンアップ](./media/tutorial-migrate-physical-virtual-machines/clean-up.png)
+    :::image type="content" source="./media/tutorial-migrate-physical-virtual-machines/clean-up-inline.png" alt-text="テスト移行のクリーンアップ後の結果を示すスクリーンショット。" lightbox="./media/tutorial-migrate-physical-virtual-machines/clean-up-expanded.png":::
+
     > [!NOTE]
     > SQL Server を実行しているサーバーを SQL VM RP に登録できるようになりました。これにより、SQL IaaS Agent 拡張機能を使用した自動修正、自動バックアップ、簡略化されたライセンス管理を利用できるようになります。
     >- **[管理]**  >  **[Replicating servers]\(レプリケートしているサーバー\)**  >  **[Machine containing SQL server]\(SQL サーバーを含むマシン\)**  >  **[コンピューティングとネットワーク]** を選択し、 **[はい]** を選択して SQL VM RP に登録します。

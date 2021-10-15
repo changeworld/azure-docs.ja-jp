@@ -7,17 +7,17 @@ ms.service: data-factory
 ms.subservice: integration-runtime
 ms.topic: conceptual
 ms.custom: seo-lt-2019, references_regions, devx-track-azurepowershell
-ms.date: 07/20/2021
-ms.openlocfilehash: 29bd9cf165ef8247a4185b17d479b01c4e14fa87
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/28/2021
+ms.openlocfilehash: f9c07abdfe512c2564fdfe1595f16db8a6372a8b
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638347"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129230238"
 ---
-# <a name="azure-data-factory-managed-virtual-network-preview"></a>Azure Data Factory マネージド仮想ネットワーク (プレビュー)
+# <a name="azure-data-factory-managed-virtual-network"></a>Azure Data Factory のマネージド仮想ネットワーク
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 この記事では、Azure Data Factory におけるマネージド仮想ネットワークとマネージド プライベート エンドポイントについて説明します。
 
@@ -36,9 +36,6 @@ Azure Data Factory マネージド仮想ネットワーク (VNET) 内に Azure I
 
 > [!IMPORTANT]
 >現在、マネージド仮想ネットワークは、Azure Data Factory リージョンと同じリージョン内でのみサポートされます。
-
-> [!Note]
->Azure Data Factory マネージド仮想ネットワークはまだパブリック プレビューの段階にあるため、SLA の保証はありません。
 
 > [!Note]
 >既存のパブリック Azure 統合ランタイムを、Azure Data Factory マネージド仮想ネットワーク内の Azure 統合ランタイムに切り替えることはできません。また、その逆も同様です。
@@ -83,6 +80,9 @@ Azure Data Factory にマネージド プライベート エンドポイント�
 設計上、データ ファクトリごとに 1 つの計算ノードを予約していないため、マネージド仮想ネットワーク内の Azure 統合ランタイムは、パブリック Azure 統合ランタイムよりもキュー時間が長く、各アクティビティが開始されるまでにウォームアップがあります。これは、Azure 統合ランタイムではなく、主に仮想ネットワーク参加で発生します。 パイプライン アクティビティや外部アクティビティを含む非 Copy アクティビティの場合、初めてトリガーするときに、60 分の Time To Live (TTL) があります。 TTL 内では、ノードが既にウォームアップされているため、キュー時間が短くなります。 
 > [!NOTE]
 > Copy アクティビティでは、まだ TTL がサポートされていません。
+
+> [!NOTE]
+> 2 コピー アクティビティ用の DIU は、マネージド仮想ネットワークではサポートされていません。
 
 ## <a name="create-managed-virtual-network-via-azure-powershell"></a>Azure PowerShell を使用したマネージド仮想ネットワークの作成
 ```powershell
@@ -132,19 +132,20 @@ New-AzResource -ApiVersion "${apiVersion}" -ResourceId "${integrationRuntimeReso
 ### <a name="supported-data-sources"></a>サポートされるデータ ソース
 以下のデータ ソースはネイティブ プライベート エンドポイントをサポートしており、ADF マネージド仮想ネットワークからプライベート リンクを介して接続できます。
 - Azure Blob Storage (ストレージ アカウント V1 は含まれません)
-- Azure Table Storage (ストレージ アカウント V1 は含まれません)
-- Azure Files (ストレージ アカウント V1 は含まれません)
-- Azure Data Lake Gen2
-- Azure SQL Database (Azure SQL Managed Instance を含まない)
-- Azure Synapse Analytics
-- Azure CosmosDB SQL
-- Azure Key Vault
-- Azure Private Link サービス
-- Azure Search
+- Azure Cognitive Search
+- Azure Cosmos DB SQL API
+- Azure Data Lake Storage Gen2
+- Azure Database for MariaDB
 - Azure Database for MySQL
 - Azure Database for PostgreSQL
-- Azure Database for MariaDB
+- Azure Files (ストレージ アカウント V1 は含まれません)
+- Azure Key Vault
 - Azure Machine Learning
+- Azure Private Link サービス
+- Azure Purview
+- Azure SQL Database (Azure SQL Managed Instance を含まない)
+- Azure Synapse Analytics
+- Azure Table Storage (ストレージ アカウント V1 は含まれません)
 
 > [!Note]
 > 引き続き、パブリック ネットワークを介して、Data Factory でサポートされているすべてのデータ ソースにアクセスできます。

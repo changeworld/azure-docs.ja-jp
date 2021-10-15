@@ -1,7 +1,7 @@
 ---
 title: Visual Studio Code 拡張機能 (プレビュー) を設定する
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning Visual Studio Code 拡張機能をセットアップする方法について説明します
+description: Azure Machine Learning Visual Studio Code 拡張機能をセットアップする方法について説明します。
 services: machine-learning
 author: luisquintanilla
 ms.author: luquinta
@@ -10,12 +10,12 @@ ms.subservice: core
 ms.date: 05/25/2021
 ms.topic: how-to
 ms.custom: devplatv2
-ms.openlocfilehash: 6e0975a61ff5b36eb5ffbe5737be614a70150796
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: 2b175d209c6506cb802e0105dff03c7c0f6e6ad9
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122419482"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129425033"
 ---
 # <a name="set-up-the-visual-studio-code-azure-machine-learning-extension-preview"></a>Visual Studio Code Azure Machine Learning 拡張機能をセットアップする (プレビュー)
 

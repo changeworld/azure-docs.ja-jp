@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: マネージド オンライン エンドポイントのデプロイとスコアリングに関する一般的なエラーをトラブルシューティングする方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 author: petrodeg
 ms.author: petrodeg
 ms.reviewer: laobri
 ms.date: 05/13/2021
 ms.topic: troubleshooting
 ms.custom: devplatv2
-ms.openlocfilehash: 0edd6b7e9ac3229483d53d0e91c49f06633f5e51
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: e4c4b611b4316f0e9a950c9f13144e37c9c1762b
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129218453"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129425756"
 ---
 # <a name="troubleshooting-managed-online-endpoints-deployment-and-scoring-preview"></a>マネージド オンライン エンドポイントのデプロイとスコアリングのトラブルシューティング (プレビュー)
 
@@ -195,6 +195,7 @@ az ml endpoint get-logs
     - インポートされたパッケージは、conda 環境には存在しません
     - 構文エラー
     - `init()` メソッドのエラー
+- `get-logs` によってログが生成されていない場合は、通常、コンテナーの起動に失敗したということを意味します。 この問題をデバッグするには、代わりに[ローカルにデプロイ](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/machine-learning/how-to-troubleshoot-online-endpoints.md#deploy-locally)してみてください。
 - readiness probe または liveness probe が正しく設定されていない。
 - 依存関係が不足しているなど、コンテナーの環境設定にエラーがある。
 

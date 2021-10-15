@@ -1,7 +1,7 @@
 ---
 title: トレーニングと推論のコンピューティング先を設定する
 titleSuffix: Azure Machine Learning
-description: 機械学習のトレーニングと推論に使用するためにコンピューティング リソース (コンピューティング先) をワークスペースに追加する
+description: 機械学習のトレーニングと推論に使用するためにコンピューティング リソース (コンピューティング先) をワークスペースに追加します。
 services: machine-learning
 author: sdgilley
 ms.author: sgilley
@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 06/18/2021
 ms.topic: how-to
 ms.custom: devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 8d9910755162ea1da593f2e9ee50183c0a3eaa60
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: af5d5914d0a90c2c142582e5cdf2105982205f04
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121745292"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129427687"
 ---
 # <a name="set-up-compute-targets-for-model-training-and-deployment"></a>モデルのトレーニングとデプロイのためのコンピューティング ターゲットを設定する
 

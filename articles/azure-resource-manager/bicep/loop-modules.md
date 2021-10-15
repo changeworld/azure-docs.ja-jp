@@ -4,13 +4,13 @@ description: Bicep ファイルでループと配列を使用して、モジュ�
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 08/27/2021
-ms.openlocfilehash: f8893fa6716d1b106e54f7eb76002622ce5a4bc3
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 09/30/2021
+ms.openlocfilehash: 8c679eda4de1a3e29719a1518166e214b57b37c3
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124793438"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129357822"
 ---
 # <a name="module-iteration-in-bicep"></a>Bicep でのモジュールの反復処理
 
@@ -149,6 +149,8 @@ module stgModule './storageAccount.bicep' = [for i in range(0, 4): {
 ```
 
 純粋に順次デプロイを行う場合は、バッチ サイズを 1 に設定します。
+
+`batchSize` デコレーターは、[sys 名前空間](bicep-functions.md#namespaces-for-functions)にあります。 このデコレーターを同じ名前の別の項目と区別する必要がある場合は、デコレータの前に「**sys**: `@sys.batchSize(2)`」を付けます。
 
 ## <a name="next-steps"></a>次のステップ
 

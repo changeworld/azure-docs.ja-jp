@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/23/2021
 ms.author: bwren
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8cedd159c1c4c8a7d5309024d66ddc104c07506b
-ms.sourcegitcommit: 149815030568fb4d4dd2e2025a18dc64fc190d07
+ms.openlocfilehash: 0e894fc6c6e210249e591ed7f9b9b662ff5ae187
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129062087"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129272929"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Azure Monitor ログで使用量とコストを管理する    
 
@@ -229,7 +229,7 @@ Log Analytics [消去 API](/rest/api/loganalytics/workspacepurge/purge) はデ�
     }
 ```
 
-`retentionInDays` の有効な値は、30 ～ 730 です。
+`retentionInDays` の有効な値は、4 から 730 です。
 
 データの種類 `Usage` および `AzureActivity` は、カスタム リテンション期間を使用して設定することはできません。 これらは既定のワークスペース リテンション期間の最大値 (90 日) を取ります。 
 

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 09/08/2021
 ms.author: alkohli
-ms.openlocfilehash: a2aa8d3cecab71b354df2ff258bfa47ee77c97f9
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 67cddd1839e666d4908706a1bbdaccbbd3565704
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128619592"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129351438"
 ---
 # <a name="manage-azure-stack-edge-secrets-using-azure-key-vault"></a>Azure Key Vault を使用して Azure Stack Edge シークレットを管理する 
 
@@ -37,7 +37,7 @@ Azure Stack Edge サービスの場合、キー コンテナーとの統合に�
 
 ## <a name="generate-activation-key-and-create-key-vault"></a>アクティブ化キーを生成してキー コンテナーを作成する
 
-アクティブ化キーの生成処理中に、Azure Stack Edge リソース用のキー コンテナーが作成されます。 キー コンテナーは、Azure Stack Edge リソースが存在するのと同じリソース グループ内に作成されます。 共同作成者のアクセス許可が、キー コンテナーに対して必要です。 
+アクティブ化キーの生成処理中に、Azure Stack Edge リソース用のキー コンテナーが作成されます。 キー コンテナーは、Azure Stack Edge リソースが存在するのと同じリソース グループ内に作成されます。 キー コンテナーに対する共同作成者のアクセス許可が必要です。 
 
 ### <a name="prerequisites-for-key-vault"></a>キー コンテナーの前提条件
 

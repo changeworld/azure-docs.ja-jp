@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 835c102cffa7fb956d284792fd144cccadfa94b4
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 9c167752881d1a6be7b51db16e2556ac3c781bd0
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128582992"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129455458"
 ---
 # <a name="conditional-access-filters-for-devices-preview"></a>条件付きアクセス: デバイスのフィルター (プレビュー)
 
@@ -121,7 +121,7 @@ ms.locfileid: "128582992"
 | model | Equals、NotEquals、StartsWith、NotStartsWith、EndsWith、NotEndsWith、Contains、NotContains、In、NotIn | 任意の文字列 | (device.model -notContains “Surface”) |
 | operatingSystem | Equals、NotEquals、StartsWith、NotStartsWith、EndsWith、NotEndsWith、Contains、NotContains、In、NotIn | 有効なオペレーティング システム (Windows、iOS、Android など) | (device.operatingSystem -eq “Windows”) |
 | operatingSystemVersion | Equals、NotEquals、StartsWith、NotStartsWith、EndsWith、NotEndsWith、Contains、NotContains、In、NotIn | 有効なオペレーティング システムのバージョン (Windows 7 の場合は 6.1、Windows 8 の場合は 6.2、Windows 10 の場合は 10.0 など) | (device.operatingSystemVersion -in [“10.0.18363”, “10.0.19041”, “10.0.19042”]) |
-| pyhsicalIds | Contains、NotContains | たとえば、Windows オートパイロット デバイスにはすべて、デバイスの physicalIds プロパティに ZTDId (インポートされたすべての Windows オートパイロット デバイスに割り当てられた一意の値) が格納されています。 | (device.devicePhysicalIDs -contains "[ZTDId]") |
+| physicalIds | Contains、NotContains | たとえば、Windows オートパイロット デバイスにはすべて、デバイスの physicalIds プロパティに ZTDId (インポートされたすべての Windows オートパイロット デバイスに割り当てられた一意の値) が格納されています。 | (device.devicePhysicalIDs -contains "[ZTDId]") |
 | profileType | Equals、NotEquals | デバイスに設定されている有効なプロファイルの種類。 サポートされている値は、RegisteredDevice (既定値)、SecureVM (Azure AD サインインで有効になっている Azure の Windows VM に使用)、プリンター (プリンターに使用)、共有 (共有デバイスに使用)、IoT (IoT デバイスに使用) | (device.profileType -notIn [“Printer”, “Shared”, “IoT”]) |
 | systemLabels | Contains、NotContains | システムによってデバイスに適用されているラベルの一覧。 サポートされている値は、AzureResource (Azure AD サインインで有効になっている Azure の Windows VM に使用)、M365Managed (Microsoft マネージド デスクトップを使用して管理されるデバイスに使用)、MultiUser (共有デバイスに使用) など | (device.systemLabels - "M365Managed" を含む) |
 | trustType | Equals、NotEquals | デバイスの有効な登録済み状態。 サポートされている値は、AzureAD (Azure AD 参加デバイスに使用)、ServerAD (Hybrid Azure AD 参加済みデバイスに使用)、Workplace (Azure AD 登録済みデバイスに使用) | (device.trustType -notIn ‘ServerAD, Workplace’) |

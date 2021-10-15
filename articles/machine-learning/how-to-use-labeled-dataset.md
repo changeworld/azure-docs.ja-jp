@@ -5,16 +5,16 @@ description: Azure Machine Learning のラベル付けプロジェクトから�
 author: nibaccam
 ms.author: nibaccam
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mldata
 ms.topic: how-to
 ms.custom: data4ml
 ms.date: 05/14/2020
-ms.openlocfilehash: e46d088180666523c27d86a98d740fa49f5214f2
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 2af916866aa78a081f8769322a80f4d846c89d3e
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112460488"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129424087"
 ---
 # <a name="create-and-explore-azure-machine-learning-dataset-with-labels"></a>ラベル付き Azure Machine Learning データセットを作成して探索する
 
@@ -22,7 +22,7 @@ ms.locfileid: "112460488"
 
 ## <a name="what-are-datasets-with-labels"></a>ラベル付きデータセットとは 
 
-ラベル付きの Azure Machine Learning データセットは、ラベル付きデータセットと呼ばれています。 ラベル付きデータセットというこれらの特定の種類のデータセットは、Azure Machine Learning データ ラベル付けプロジェクトの出力としてのみ作成されます。 データ ラベル付けプロジェクトを作成するには、[こちらの手順](how-to-create-labeling-projects.md)を使用します。 Machine Learning では、画像の分類 (複数ラベルまたは多クラス) のほか、境界ボックスと組み合わせたオブジェクトの識別でデータ ラベル付けプロジェクトをサポートしています。
+ラベル付きの Azure Machine Learning データセットは、ラベル付きデータセットと呼ばれています。 ラベル付きデータセットというこれらの特定の種類のデータセットは、Azure Machine Learning データ ラベル付けプロジェクトの出力としてのみ作成されます。 [画像のラベル付け](how-to-create-image-labeling-projects.md)や[テキストのラベル付け](how-to-create-text-labeling-projects.md)のためのデータ ラベル付けプロジェクトを作成します。 Machine Learning では、画像の分類 (複数ラベルまたは多クラス) のほか、境界ボックスと組み合わせたオブジェクトの識別でデータ ラベル付けプロジェクトをサポートしています。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -30,7 +30,7 @@ ms.locfileid: "112460488"
 * [Azure Machine Learning SDK for Python](/python/api/overview/azure/ml/intro)、または [Azure Machine Learning Studio](https://ml.azure.com/) へのアクセス。
     * [azure-contrib-dataset](/python/api/azureml-contrib-dataset/) パッケージをインストールする
 * Machine Learning ワークスペース。 [Azure Machine Learning ワークスペースを作成する](how-to-manage-workspace.md)方法に関するページを参照してください。
-* Azure Machine Learning データのラベル付けプロジェクトへのアクセス。 ラベル付けプロジェクトがない場合は、[こちらの手順](how-to-create-labeling-projects.md)を使用して作成します。
+* Azure Machine Learning データのラベル付けプロジェクトへのアクセス。 ラベル付けプロジェクトがない場合は、最初に[画像のラベル付け](how-to-create-image-labeling-projects.md)や[テキストのラベル付け](how-to-create-text-labeling-projects.md)のためのものを作成します。
 
 ## <a name="export-data-labels"></a>データ ラベルをエクスポートする 
 

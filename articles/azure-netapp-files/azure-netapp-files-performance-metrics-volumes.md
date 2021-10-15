@@ -6,13 +6,13 @@ ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: conceptual
-ms.date: 08/07/2019
-ms.openlocfilehash: f73091552a78760024189b173897913edca724bb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 09/29/2021
+ms.openlocfilehash: e5d5104e0f2215e81b5539296ff18572375a8a28
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100593407"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129362391"
 ---
 # <a name="performance-benchmark-test-recommendations-for-azure-netapp-files"></a>Azure NetApp Files のパフォーマンス ベンチマークのテスト レコメンデーション
 
@@ -21,6 +21,8 @@ ms.locfileid: "100593407"
 ## <a name="overview"></a>概要
 
 Azure NetApp Files ボリュームのパフォーマンス特性を理解するために、オープンソース ツールの [FIO](https://github.com/axboe/fio) を使用して一連のベンチマークを実行し、さまざまなワークロードをシミュレートすることができます。 FIO は、Linux と Windows のどちらをベースにしたオペレーティング システムにもインストールできます。  ボリュームの IOPS とスループット両方の簡易スナップショットを取得するための優れたツールです。
+
+Azure NetApp Files では、基準となるベンチマーク ツールとして  *ユーティリティを使用することは "* 推奨されません`dd`"。 実際のアプリケーション ワークロード、ワークロードのシミュレーション、ベンチマークと分析のツール (たとえば、Oracle、または DB2 に相当する IBM での Oracle AWR) を使用して、最適なインフラストラクチャのパフォーマンスを確立および分析する必要があります。 FIO、vdbench、iometer などのツールでは、仮想マシンをストレージの制限に合わせて決定し、テストのパラメーターを実際のアプリケーション ワークロードの組み合わせに一致させることで、最も有用な結果を得ることができます。 ただし、常に実際のアプリケーションでテストすることをお勧めします。  
 
 ### <a name="vm-instance-sizing"></a>VM インスタンスのサイズ設定
 

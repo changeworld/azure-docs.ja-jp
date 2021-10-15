@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/09/2021
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: a29bd1513f021be03cf6c6bd4aa83d13062de170
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 6a5b8f990238ac6a700a087d443fcd6881a6bde1
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122181518"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129350599"
 ---
 # <a name="best-practices-for-authentication-and-authorization-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) の認証と認可のベスト プラクティス
 
@@ -132,16 +132,17 @@ Azure リソース用ポッドマネージド ID を利用すると、Azure AD �
 Microsoft Azure Active Directory ポッド ID では、次の 2 つの操作モードがサポートされます。
 
 1. 標準モード: このモードでは、次の 2 つのコンポーネントが AKS クラスターにデプロイされます。 
-    * [Managed Identity Controller (MIC)](https://azure.github.io/aad-pod-identity/docs/concepts/mic/): Kubernetes API Server を介してポッド、[AzureIdentity](https://azure.github.io/aad-pod-identity/docs/concepts/azureidentity/)、および [AzureIdentityBinding](https://azure.github.io/aad-pod-identity/docs/concepts/azureidentitybinding/) の変更を監視する Kubernetes コントローラー。 MIC は関連する変更を検出すると、必要に応じて [AzureAssignedIdentity](https://azure.github.io/aad-pod-identity/docs/concepts/azureassignedidentity/) を追加または削除します。 具体的には、ポッドがスケジュールされている場合、MIC は、作成フェーズ中にノード プールによって使用される基になる VMSS に Azure 上のマネージド ID を割り当てます。 ID を使用しているすべてのポッドが削除された場合、同じマネージド ID が他のポッドによって使用されていない限り、ノード プールの VMSS から ID が削除されます。 MIC は、AzureIdentity または AzureIdentityBinding が作成または削除された場合にも同様のアクションを実行します。
-    * [Node Management Identity (NMI)](https://azure.github.io/aad-pod-identity/docs/concepts/nmi/) は、AKS クラスターの各ノードで DaemonSet として実行されるポッドです。 NMI は、各ノード上の [Azure Instance Metadata Service](../virtual-machines/linux/instance-metadata-service.md?tabs=linux) に対するセキュリティ トークン要求をインターセプトし、それをそれ自体にリダイレクトし、トークンを要求している ID にポッドがアクセスできる場合に検証し、アプリケーションに代わって Azure Active Directory テナントからトークンをフェッチします。
-2. マネージド モード: このモードでは、NMI のみがあります。 ID は、ユーザーが手動で割り当て、管理する必要があります。 詳細については、[マネージド モードのポッド ID](https://azure.github.io/aad-pod-identity/docs/configure/pod_identity_in_managed_mode/) に関するページをご覧ください。 このモードでは、[az aks pod-identity add](/cli/azure/aks/pod-identity?view=azure-cli-latest#az_aks_pod_identity_add) コマンドを使用して Azure Kubernetes Service (AKS) クラスターにポッド ID を追加すると、[AzureIdentity](https://azure.github.io/aad-pod-identity/docs/concepts/azureidentity/) と [AzureIdentityBinding](https://azure.github.io/aad-pod-identity/docs/concepts/azureidentitybinding/) が `--namespace` パラメーターで指定された名前空間に作成され、AKS リソース プロバイダーは `--identity-resource-id` パラメーターで指定されたマネージド ID を AKS クラスター内の各ノード プールの仮想マシン スケール セット (VMSS) に割り当てます。
+    * [Managed Identity Controller (MIC)](https://azure.github.io/aad-pod-identity/docs/concepts/mic/): Kubernetes API サーバーを介してポッド、[AzureIdentity](https://azure.github.io/aad-pod-identity/docs/concepts/azureidentity/)、および [AzureIdentityBinding](https://azure.github.io/aad-pod-identity/docs/concepts/azureidentitybinding/) の変更を監視する Kubernetes コントローラー。 MIC は関連する変更を検出すると、必要に応じて [AzureAssignedIdentity](https://azure.github.io/aad-pod-identity/docs/concepts/azureassignedidentity/) を追加または削除します。 具体的には、ポッドがスケジュールされている場合、MIC は、作成フェーズ中にノード プールによって使用される基になる VMSS に Azure 上のマネージド ID を割り当てます。 ID を使用しているすべてのポッドが削除された場合、同じマネージド ID が他のポッドによって使用されていない限り、ノード プールの VMSS から ID が削除されます。 MIC は、AzureIdentity または AzureIdentityBinding が作成または削除された場合にも同様のアクションを実行します。
+    * [Node Management Identity (NMI)](https://azure.github.io/aad-pod-identity/docs/concepts/nmi/) は、AKS クラスターの各ノードで DaemonSet として実行されるポッドです。 NMI は、各ノード上の [Azure Instance Metadata Service](../virtual-machines/linux/instance-metadata-service.md?tabs=linux) に対するセキュリティ トークン要求をインターセプトし、それをそれ自体にリダイレクトし、トークンを要求している ID にポッドがアクセスできるか検証し、アプリケーションに代わって Azure Active Directory テナントからトークンをフェッチします。
+
+2. マネージド モード: このモードでは、NMI のみがあります。 ID は、ユーザーが手動で割り当て、管理する必要があります。 詳細については、[マネージド モードのポッド ID](https://azure.github.io/aad-pod-identity/docs/configure/pod_identity_in_managed_mode/) に関するページをご覧ください。 このモードでは、[az aks pod-identity add](/cli/azure/aks/pod-identity#az_aks_pod_identity_add) コマンドを使用して Azure Kubernetes Service (AKS) クラスターにポッド ID を追加すると、[AzureIdentity](https://azure.github.io/aad-pod-identity/docs/concepts/azureidentity/) と [AzureIdentityBinding](https://azure.github.io/aad-pod-identity/docs/concepts/azureidentitybinding/) が `--namespace` パラメーターで指定された名前空間に作成され、AKS リソース プロバイダーは `--identity-resource-id` パラメーターで指定されたマネージド ID を AKS クラスター内の各ノード プールの仮想マシン スケール セット (VMSS) に割り当てます。
 
 > [!NOTE]
 > 代わりに [AKS クラスター アドオン](./use-azure-ad-pod-identity.md) を使用して Azure Active Directory Pod Identity をインストールすることにした場合、セットアップでは `managed` モードが使用されます。
 
 `managed` モードには、`standard` に比べて次の利点があります。
 
-1. ノード プールの VMSS での ID の割り当てには、40 ～ 60 秒かかる可能性があります。 ID へのアクセスが必要で、割り当ての遅延を許容できない cronjobs またはアプリケーションの場合は、ノード プールの VMSS に ID が事前に割り当てられているか、手動で、または [az aks pod-identity add](/cli/azure/aks/pod-identity?view=azure-cli-latest#az_aks_pod_identity_add) コマンドを使用して `managed` モードを使用するのが最善です。
+1. ノード プールの VMSS での ID の割り当てには、40 ～ 60 秒かかる可能性があります。 ID へのアクセスが必要で、割り当ての遅延を許容できない cronjobs またはアプリケーションの場合は、手動、または [az aks pod-identity add](/cli/azure/aks/pod-identity#az_aks_pod_identity_add) コマンドを使用して、ノード プールの VMSS に ID が事前に割り当てられる `managed` モードを使用するのが最善です。
 2. `standard` モードでは、MIC には、AKS クラスターによって使用される VMSS に対する書き込みアクセス許可と、ユーザー割り当てマネージド ID に対する `Managed Identity Operator` アクセス許可が必要です。 `managed mode` で実行している間、MIC は使用されないので、ロールの割り当ては必要ありません。
 
 ポッドの資格情報を手動で定義する代わりに、ポッドマネージド ID によってアクセス トークンがリアルタイムで要求され、それが割り当てられているサービスにのみアクセスするために使用されます。 AKS には、ポッドでマネージド ID を使用できるようにする操作を処理するコンポーネントが 2 つあります。
@@ -170,14 +171,14 @@ Microsoft Azure Active Directory ポッド ID では、次の 2 つの操作モ�
 > [!NOTE]
 > ポッドマネージド ID は、現在プレビュー状態です。
 
-ポッドマネージド ID を使用するには、「[Azure Kubernetes Service で Azure Active Directory ポッドマネージド ID を使用する (プレビュー)]( https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity)」を参照してください。
+ポッドマネージド ID を使用するには、「[Azure Kubernetes Service で Azure Active Directory ポッドマネージド ID を使用する (プレビュー)](use-azure-ad-pod-identity.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 このベスト プラクティスの記事では、クラスターとリソースの認証と認可について取り上げました。 これらのベスト プラクティスのいくつかを実装する場合は、次の記事を参照してください。
 
 * [Azure Active Directory と AKS の統合][aks-aad]
-* [Azure Kubernetes Service で Azure Active Directory ポッドマネージド ID を使用する (プレビュー)]( https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity)
+* [Azure Kubernetes Service で Azure Active Directory ポッドマネージド ID を使用する (プレビュー)](use-azure-ad-pod-identity.md)
 
 AKS でのクラスター操作の詳細については、次のベスト プラクティスを参照してください。
 

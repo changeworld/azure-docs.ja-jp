@@ -4,13 +4,13 @@ description: Bicep ファイルでパラメーターを定義する方法につ�
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 09/13/2021
-ms.openlocfilehash: b53402dfaa274c57d40ef7814b7920dc7eb0a8c7
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 10/01/2021
+ms.openlocfilehash: b90fb108df58c41578bf9472390574b4bc174111
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128619516"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129363500"
 ---
 # <a name="parameters-in-bicep"></a>Bicep のパラメーター
 
@@ -54,9 +54,32 @@ param location string = resourceGroup().location
 
 :::code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/parameters/parameterswithfunctions.bicep" highlight="2":::
 
-## <a name="secure-parameters"></a>セキュリティで保護されたパラメーター
+## <a name="decorators"></a>デコレータ
 
-パラメーターでは、制約またはメタデータにデコレーターを使用します。 デコレーターは `@expression` という形で使用し、パラメーターの宣言の上に配置されます。
+パラメーターでは、制約またはメタデータにデコレーターを使用します。 デコレーターは `@expression` という形で使用し、パラメーターの宣言の上に配置されます。 パラメータが機密であることをマークしたり、使用できる値を指定したり、文字列の最小長と最大長を設定したり、整数の最小値と最大値を設定したり、パラメータの説明を記載したりすることができます。
+
+次の例は、デコレーターの 2 つの一般的な用途を示しています。
+
+```bicep
+@secure()
+param demoPassword string
+
+@description('Must be at least Standard_A3 to support 2 NICs.')
+param virtualMachineSize string = 'Standard_DS1_v2'
+```
+
+デコレーターは、[sys 名前空間](bicep-functions.md#namespaces-for-functions)にあります。 このデコレーターを同じ名前の別の項目と区別する必要がある場合は、デコレータの前に「`sys`」を付けます。 たとえば、Bicep ファイルに `description` という名前のパラメーターが含まれている場合、**description** デコレーターを使用するときに、sys 名前空間を追加する必要があります。
+
+```bicep
+@sys.description('The name of the instance.')
+param name string
+@sys.description('The description of the instance to display.')
+param description string
+```
+
+使用可能なデコレーターについては、次のセクションで説明します。
+
+### <a name="secure-parameters"></a>セキュリティで保護されたパラメーター
 
 文字列またはオブジェクトのパラメーターをセキュリティで保護されたものとマークすることができます。 セキュリティで保護されたパラメーターの値はデプロイ履歴に保存されず、ログに記録されません。
 
@@ -68,7 +91,7 @@ param demoPassword string
 param demoSecretObject object
 ```
 
-## <a name="allowed-values"></a>使用できる値
+### <a name="allowed-values"></a>使用できる値
 
 パラメーターに使用できる値を定義できます。 使用できる値は配列で指定します。 使用できる値の 1 つではない値がパラメーターに渡された場合、検証時にデプロイは失敗します。
 
@@ -80,7 +103,7 @@ param demoSecretObject object
 param demoEnum string
 ```
 
-## <a name="length-constraints"></a>長さの制限
+### <a name="length-constraints"></a>長さの制限
 
 文字列と配列のパラメーターの最小長と最大長を指定できます。 一方または両方の制約を設定できます。 文字列の場合、長さは文字数を示します。 配列の場合、長さは配列内の項目数を示します。
 
@@ -96,7 +119,7 @@ param storageAccountName string
 param appNames array
 ```
 
-## <a name="integer-constraints"></a>整数の制約
+### <a name="integer-constraints"></a>整数の制約
 
 整数パラメーターの最小値と最大値を設定できます。 一方または両方の制約を設定できます。
 
@@ -106,7 +129,7 @@ param appNames array
 param month int
 ```
 
-## <a name="description"></a>説明
+### <a name="description"></a>説明
 
 指定する値をユーザーが理解できるように、パラメーターに説明を追加します。 ポータルからテンプレートをデプロイする場合、説明のテキストがそのパラメーターのヒントとして自動的に使用されます。 パラメーター名から推測できる情報よりもテキストからわかる情報の方が多い場合にのみ、説明を追加します。
 

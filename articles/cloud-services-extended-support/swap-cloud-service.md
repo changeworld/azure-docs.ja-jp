@@ -7,13 +7,12 @@ author: surbhijain
 ms.author: surbhijain
 ms.reviewer: gachandw
 ms.date: 04/01/2021
-ms.custom: ''
-ms.openlocfilehash: 3321152d5d7b753ddca23a8810f0d1ae1b3d4399
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: cd13a7f69d3085786407a405598df4bc7b8e0ef9
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122967023"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129358434"
 ---
 # <a name="swap-or-switch-deployments-in-azure-cloud-services-extended-support"></a>Azure Cloud Services (拡張サポート) でのデプロイのスワップまたは切り替え
 
@@ -31,7 +30,6 @@ Azure Cloud Services (拡張サポート) を使用すると、2 つの独立し
 2 つ目のクラウド サービスをデプロイすると、両方のクラウド サービスの SwappableCloudService プロパティが互いを指し示すように設定されます。 これらのクラウド サービスに対するそれ以降の更新では、このプロパティを指定する必要があります。そうでないと、SwappableCloudService プロパティを削除または更新できないことを示すエラーが返されます。
 
 設定されると、SwappableCloudService プロパティは読み取り専用として扱われます。 これを削除したり、別の値に変更したりすることはできません。 (スワップ可能なペアの) クラウド サービスのいずれかを削除すると、残りのクラウド サービスの SwappableCloudService プロパティがクリアされます。
-
 
 ## <a name="arm-template"></a>ARM テンプレート
 
@@ -65,7 +63,7 @@ Azure portal でデプロイをスワップするには、次の手順に従い�
 
 ## <a name="rest-api"></a>REST API
 
-[REST API](https://review.docs.microsoft.com/rest/api/compute/load-balancers/swap-public-ip-addresses?branch=net202102) を使用して Azure Cloud Services (拡張サポート) で、新しいクラウド サービスのデプロイに切り替えるには、次のコマンドと JSON 構成を使用します。
+[REST API](/rest/api/compute/load-balancers/swap-public-ip-addresses) を使用して Azure Cloud Services (拡張サポート) で、新しいクラウド サービスのデプロイに切り替えるには、次のコマンドと JSON 構成を使用します。
 
 ```http
 POST https://management.azure.com/subscriptions/subid/providers/Microsoft.Network/locations/westus/setLoadBalancerFrontendPublicIpAddresses?api-version=2021-02-01

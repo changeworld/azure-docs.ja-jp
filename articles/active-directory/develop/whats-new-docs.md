@@ -5,23 +5,45 @@ description: Microsoft ID プラットフォームの新規および更新され
 services: active-directory
 author: mmacy
 manager: CelesteDG
-ms.date: 09/01/2021
+ms.date: 10/01/2021
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
 ms.author: marsma
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1e639cfe0b3c86e2a2f422250979a292020e7fbf
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 9383c05ed797e4a00470240ce9a25541988d9b6d
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123433127"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129349551"
 ---
 # <a name="microsoft-identity-platform-docs-whats-new"></a>Microsoft ID プラットフォームに関するドキュメント:新機能
 
 Microsoft ID プラットフォームに関するドキュメントの新着情報へようこそ。 この記事では、過去 3 か月間に追加された新しいドキュメントと、重要な更新があったものの一覧を示します。
+
+## <a name="september-2021"></a>2021 年 9 月
+
+### <a name="new-articles"></a>新しい記事
+
+- [Web API を呼び出すデスクトップ アプリ: 対話式でトークンを取得する](scenario-desktop-acquire-token-interactive.md)
+- [Web API を呼び出すデスクトップ アプリ: デバイス コード フローでトークンを取得する](scenario-desktop-acquire-token-device-code-flow.md)
+- [Web API を呼び出すデスクトップ アプリ: 統合 Windows 認証でトークンを取得する](scenario-desktop-acquire-token-integrated-windows-authentication.md)
+- [Web API を呼び出すデスクトップ アプリ: ユーザー名とパスワードでトークンを取得する](scenario-desktop-acquire-token-username-password.md)
+- [Web API を呼び出すデスクトップ アプリ: WAM を使用してトークンを取得する](scenario-desktop-acquire-token-wam.md)
+- [アプリでロールベースのアクセス制御を実装する](howto-implement-rbac-for-apps.md)
+- [パブリック クライアント アプリケーションを ADAL.NET から MSAL.NET に移行する](msal-net-migration-public-client.md)
+
+### <a name="updated-articles"></a>更新された記事
+
+- [最小限の特権の原則でセキュリティを高める](secure-least-privileged-access.md)
+- [機密クライアント アプリケーションを ADAL.NET から MSAL.NET に移行する](msal-net-migration-confidential-client.md)
+- [Microsoft ID プラットフォームのビデオ](identity-videos.md)
+- [各国のクラウド](authentication-national-cloud.md)
+- [Android デバイスの共有デバイス モード](msal-android-shared-devices.md)
+- [MSAL.NET でのトークン キャッシュのシリアル化](msal-net-token-cache-serialization.md)
+- [サポートされているアカウントの種類別の検証の相違点 (signInAudience)](supported-accounts-validation.md)
 
 ## <a name="august-2021"></a>2021 年 8 月
 
@@ -54,22 +76,3 @@ Microsoft ID プラットフォームに関するドキュメントの新着情�
 - [Microsoft ID プラットフォームでのアクセス許可と同意](v2-permissions-and-consent.md)
 - [保護された Web API: スコープとアプリのロールを検証する](scenario-protected-web-api-verification-scope-app-roles.md)
 - [クイック スタート:Microsoft でのサインインを ASP.NET Core Web アプリに追加する](quickstart-v2-aspnet-core-webapp.md)
-
-## <a name="june-2021"></a>2021 年 6 月
-
-### <a name="new-articles"></a>新しい記事
-
-- [アプリケーションの最小特権アクセスに関するベスト プラクティス](secure-least-privileged-access.md)
-- [ADAL.NET アプリと MSAL.NET アプリの違い](msal-net-differences-adal-net.md)
-- [方法: テナントで ADAL を使用しているアプリの一覧を取得する](howto-get-list-of-all-active-directory-auth-library-apps.md)
-- [機密クライアント アプリケーションを ADAL.NET から MSAL.NET に移行する方法](msal-net-migration-confidential-client.md)
-
-### <a name="updated-articles"></a>更新された記事
-
-- [Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト](app-objects-and-service-principals.md)
-- [Web API を呼び出す Web アプリ: コード構成](scenario-web-app-call-api-app-configuration.md)
-- [テナントに存在する特定のアプリに対するトークンに組み込むクレームをカスタマイズする](active-directory-claims-mapping.md)
-- [Microsoft ID プラットフォームのコード サンプル](sample-v2-code.md)
-- [MSAL.NET または Microsoft Identity. Web へのアプリケーションの移行](msal-net-migration.md)
-- [MSAL.NET でのトークン キャッシュのシリアル化](msal-net-token-cache-serialization.md)
-- [認証の新機能](reference-breaking-changes.md)

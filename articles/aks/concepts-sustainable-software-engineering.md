@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) での持続可能なソフトウェ
 services: container-service
 ms.topic: conceptual
 ms.date: 03/29/2021
-ms.openlocfilehash: c43c65dfa2f3930510bd59aaa24c798525bd691b
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 3fb40b278a4107cb1cdba2230602b99e2bdfff85
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107011493"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129355487"
 ---
 # <a name="sustainable-software-engineering-principles-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での持続可能なソフトウェア エンジニアリングの原則
 
@@ -103,4 +103,4 @@ AKS クラスターの炭素排出量を削減するには、クラスターの�
 [node-sizing]: use-multiple-node-pools.md#specify-a-vm-size-for-a-node-pool
 [sustainability-calculator]: https://azure.microsoft.com/blog/microsoft-sustainability-calculator-helps-enterprises-analyze-the-carbon-emissions-of-their-it-infrastructure/
 [system-pools]: use-system-pools.md
-[principles-sse]: https://docs.microsoft.com/learn/modules/sustainable-software-engineering-overview/
+[principles-sse]: /learn/modules/sustainable-software-engineering-overview/

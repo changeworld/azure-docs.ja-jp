@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 04/06/2021
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 2cd051b9c20df2d002feaa3908f577be9530fef9
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: d97270c130545e8a54f924dcc4f50c4a1f36420b
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123114141"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129387698"
 ---
 # <a name="spring-data-azure-cosmos-db-v3-for-core-sql-api-release-notes-and-resources"></a>コア (SQL) API 用 Spring Data Azure Cosmos DB v3:リリース ノートとリソース
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -94,7 +94,8 @@ Spring Data Azure Cosmos DB は [Azure Spring Cloud](https://azure.microsoft.com
 > * 3\.10.0 リリース - 3.10.0 以降のバージョンを使用することを強くお勧めします。
 > * 3\.5.0 リリースでは、Spring Boot 2.4.3 以降がサポートされています。
 
-[!INCLUDE[Release notes](~/azure-sdk-for-java-cosmos-db/sdk/cosmos/azure-spring-data-cosmos/CHANGELOG.md)]
+## <a name="release-history"></a>リリース履歴
+リリース履歴は azure-sdk-for-java リポジトリで管理されています。リリースの詳細なリストについては、[changelog ファイル](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/cosmos/azure-spring-data-cosmos/CHANGELOG.md)を参照してください。
 
 ## <a name="additional-notes"></a>その他のメモ
 

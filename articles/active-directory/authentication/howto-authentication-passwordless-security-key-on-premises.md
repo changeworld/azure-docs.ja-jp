@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2079905f81b770039a9b71b2e8e4f21553da099f
-ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
+ms.openlocfilehash: 49963f7c2625a0aa454d8a1bac5ff001cb4debe9
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114202992"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129230914"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory"></a>Azure Active Directory を使用してオンプレミスのリソースへのパスワードなしのセキュリティ キー サインインを有効にする 
 
@@ -47,8 +47,8 @@ Azure AD Kerberos サーバー オブジェクトがオンプレミスの Active
 - [Azure AD Connect](../hybrid/how-to-connect-install-roadmap.md#install-azure-ad-connect) のバージョンは 1.4.32.0 以降である必要があります。
   - 使用可能な Azure AD ハイブリッド認証オプションの詳細については、「[Azure Active Directory ハイブリッド ID ソリューションの適切な認証方法を選択する](../hybrid/choose-ad-authn.md)」および「[Azure AD Connect で使用するインストールの種類の選択](../hybrid/how-to-connect-install-select-installation.md)」を参照します。
 - Windows Server ドメイン コントローラーには、次の修正プログラムがインストールされている必要があります。
-    - Windows Server 2016 の場合 - https://support.microsoft.com/help/4534307/windows-10-update-kb4534307
-    - Windows Server 2019 の場合 - https://support.microsoft.com/help/4534321/windows-10-update-kb4534321
+    - [Windows Server 2016](https://support.microsoft.com/help/4534307/windows-10-update-kb4534307) の場合
+    - [Windows Server 2019](https://support.microsoft.com/help/4534321/windows-10-update-kb4534321) の場合
 
 ### <a name="supported-scenarios"></a>サポートされるシナリオ
 
@@ -201,7 +201,8 @@ Microsoft はこの機能を一般提供 (GA) するため、この機能に取�
 
 時間内に応答してリソース要求を処理できるように、十分な数のドメイン コントローラーに修正プログラムが適用されていることを確認してください。 機能を実行しているドメイン コントローラーが表示できるかどうかを確認するには、`nltest /dsgetdc:contoso /keylist /kdc` の出力を確認します。
 
-注: nltest コマンドのこの /Keylist スイッチは、クライアント windows 10 v2004 以降にあります
+> [!NOTE]
+> `nltest` コマンドの `/keylist` スイッチは、クライアント Windows 10 v2004 以上で使用できます。
 
 ## <a name="next-steps"></a>次のステップ
 

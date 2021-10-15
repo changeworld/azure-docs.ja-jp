@@ -4,12 +4,12 @@ description: Azure Backup サービスのサポート設定と制限事項の概
 ms.topic: conceptual
 ms.date: 09/21/2021
 ms.custom: references_regions
-ms.openlocfilehash: 7448b8c5fa4882f9579b60d7d723d88e98ca7683
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: eee136952f2830e8d204a2d5346c97101be2a7da
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128658623"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129363426"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup のサポート マトリックス
 
@@ -160,7 +160,7 @@ Azure Backup に、データの可用性と回復性の機能を強化するた�
 
 リソース正常性チェックは、次の条件で機能します。
 
-|     |     |
+| リソース正常性チェック    | 詳細    |
 | --- | --- |
 | **サポートされているリソース** | Recovery Services コンテナー |
 | **サポートされているリージョン** | 米国東部、米国東部 2、米国中部、米国中南部、米国中北部、米国中西部、米国西部、米国西部 2、米国西部 3、カナダ東部、カナダ中部、北ヨーロッパ、西ヨーロッパ、英国西部、英国南部、フランス中部、フランス南部、スウェーデン中部、スウェーデン南部、東アジア、東南アジア、東日本、西日本、韓国中部、韓国南部、オーストラリア東部、オーストラリア中部、オーストラリア中部 2、オーストラリア東南部、南アフリカ北部、南アフリカ西部、アラブ首長国連邦北部、アラブ首長国連邦中部、ブラジル南東部、ブラジル南部、スイス北部、スイス西部、ノルウェー東部、ノルウェー西部、ドイツ北部、ドイツ中西部、インド西部、インド中部、インド南部、JIO インド西部、JIO インド中部。 |

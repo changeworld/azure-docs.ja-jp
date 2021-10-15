@@ -44,16 +44,16 @@ ms.locfileid: "128604660"
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| <bpt id="p1">**</bpt>コマンド<ept id="p1">**</ept> | <bpt id="p1">**</bpt>注<ept id="p1">**</ept> |
+| **コマンド** | **注** |
 |---|---|
-|<bpt id="p1">[</bpt>az group create<ept id="p1">](/cli/azure/group#az_group_create)</ept>|すべてのリソースを格納するリソース グループを作成します。|
+|[az group create](/cli/azure/group#az_group_create)|すべてのリソースを格納するリソース グループを作成します。|
 |[az mysql flexible-server create](/cli/azure/mysql/flexible-server#az_mysql_flexible_server_create)|データベースをホストするフレキシブル サーバーを作成します。|
-|<bpt id="p1">[</bpt>az network vnet subnet create<ept id="p1">](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create)</ept>|VNet 内にサブネットを作成します。|
-|<bpt id="p1">[</bpt>az vm create<ept id="p1">](/cli/azure/vm#az_vm_create)</ept>|Azure 仮想マシンを作成します。|
-|<bpt id="p1">[</bpt>az vm open-port<ept id="p1">](/cli/azure/vm#az_vm_open_port)</ept>|指定したポートで受信トラフィックへの VM を開きます。|
-|<bpt id="p1">[</bpt>az group delete<ept id="p1">](/cli/azure/group#az_group_delete)</ept> | 入れ子になったリソースすべてを含むリソース グループを削除します。|
+|[az network vnet subnet create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create)|VNet 内にサブネットを作成します。|
+|[az vm create](/cli/azure/vm#az_vm_create)|Azure 仮想マシンを作成します。|
+|[az vm open-port](/cli/azure/vm#az_vm_open_port)|指定したポートで受信トラフィックへの VM を開きます。|
+|[az group delete](/cli/azure/group#az_group_delete) | 入れ子になったリソースすべてを含むリソース グループを削除します。|
 
 ## <a name="next-steps"></a>次のステップ
 
 - 他のスクリプトを試す: [Azure Database for MySQL - フレキシブル サーバー (プレビュー) の Azure CLI サンプル](../sample-scripts-azure-cli.md)
-- Azure CLI の詳細については、<bpt id="p1">[</bpt>Azure CLI のドキュメント<ept id="p1">](/cli/azure)</ept>のページをご覧ください。
+- Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure)のページをご覧ください。

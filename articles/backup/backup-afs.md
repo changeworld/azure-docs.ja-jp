@@ -3,12 +3,12 @@ title: Azure portal 内での Azure ファイル共有のバックアップ
 description: Recovery Services コンテナー内のバックアップされた Azure ファイル共有を、Azure portal を使用してバックアップする方法について説明します
 ms.topic: conceptual
 ms.date: 05/07/2021
-ms.openlocfilehash: e236980310889e84fe905861c5843f5a7b7039a2
-ms.sourcegitcommit: 38d81c4afd3fec0c56cc9c032ae5169e500f345d
+ms.openlocfilehash: 807a173112d0bb85c008403028ab76000a3096db
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109516760"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129427972"
 ---
 # <a name="back-up-azure-file-shares"></a>Azure ファイル共有のバックアップ
 
@@ -60,6 +60,9 @@ ms.locfileid: "109516760"
 1. 検出されたストレージ アカウントの一覧からアカウントを選択し、 **[OK]** を選択します。
 
    ![検出されたストレージ アカウントから選択する](./media/backup-afs/select-discovered-storage-account.png)
+   
+   >[!NOTE]
+   > ストレージ アカウントがコンテナーとは異なるリージョンに存在する場合は、検出されたストレージ アカウントの一覧に表示されません。
 
 1. 次の手順で、バックアップするファイル共有を選択します。 **[FileShares to Backup]\(バックアップするファイル共有)** セクションにある **[追加]** ボタンを選択します。
 
@@ -100,8 +103,6 @@ ms.locfileid: "109516760"
 
 バックアップ ポリシーを設定すると、スケジュールされた時刻にファイル共有のスナップショットが作成されます。 復旧ポイントも、選択した期間にわたって保持されます。
 
->[!NOTE]
->Azure Backup では、Azure ファイル共有のバックアップに対して日単位、週単位、月単位、年単位でのリテンション期間のポリシーがサポートされるようになりました。
 
 ## <a name="configure-backup-from-the-file-share-pane"></a>ファイル共有ペインからバックアップを構成する
 

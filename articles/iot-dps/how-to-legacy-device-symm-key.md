@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: lizross
-ms.openlocfilehash: 754db21fa8e14045696f1af2bcfe375fb1161d94
-ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
+ms.openlocfilehash: c2330203ce2617bf7cc42b8c7549d11a73185f12
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2021
-ms.locfileid: "107930571"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129458247"
 ---
 # <a name="how-to-provision-devices-using-symmetric-key-enrollment-groups"></a>対称キー登録グループを使用してデバイスをプロビジョニングする方法
 
-この記事では、登録グループを利用し、1 つの IoT Hub に複数の対称キーを安全にプロビジョニングする方法を実演します。
+この記事では、登録グループを利用し、1 つの IoT Hub に複数のシミュレートされた対称キーを安全にプロビジョニングする方法を実演します。
 
 一部のデバイスには、デバイスを安全に識別するために使用できる証明書、TPM、またはその他のセキュリティ機能がない場合があります。 Device Provisioning Service には、[対称キーの構成証明](concepts-symmetric-key-attestation.md)が含まれています。 対称キーの構成証明は、MAC アドレスやシリアル番号などの固有の情報に基づいてデバイスを識別するために使用できます。
 
@@ -28,7 +28,7 @@ ms.locfileid: "107930571"
 この記事は、Windows ベースのワークスペース向けです。 ただし、Linux でもこの手順を実行できます。 Linux の例については、「[How to provision for multitenancy](how-to-provision-multitenant.md)」(マルチテナント方式のプロビジョニング) を参照してください。
 
 > [!NOTE]
-> この記事で使用されているサンプルは、C で記述されています。[C# デバイス プロビジョニングの対称キーのサンプル](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/device/SymmetricKeySample)も使用できます。 このサンプルを使用するには、[azure-iot-samples-csharp](https://github.com/Azure-Samples/azure-iot-samples-csharp) リポジトリをダウンロードまたは複製し、サンプル コードのインラインの手順に従います。 この記事の手順に従って、ポータルを使用して対称キー登録グループを作成し、サンプルの実行に必要な ID スコープと登録グループのプライマリ キーとセカンダリ キーを検索できます。 また、サンプルを使用して個別登録を作成することもできます。
+> この記事で使用されているサンプルは、C で記述されています。[C# デバイス プロビジョニングの対称キーのサンプル](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/main/provisioning/Samples/device/SymmetricKeySample)も使用できます。 このサンプルを使用するには、[azure-iot-samples-csharp](https://github.com/Azure-Samples/azure-iot-samples-csharp) リポジトリをダウンロードまたは複製し、サンプル コードのインラインの手順に従います。 この記事の手順に従って、ポータルを使用して対称キー登録グループを作成し、サンプルの実行に必要な ID スコープと登録グループのプライマリ キーとセカンダリ キーを検索できます。 また、サンプルを使用して個別登録を作成することもできます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -46,7 +46,7 @@ Windows 開発環境の前提条件は次のとおりです。 Linux または m
 
 [対称キーの構成証明](concepts-symmetric-key-attestation.md)を使用する登録グループは、Device Provisioning Service を使用して作成されます。 登録グループには、グループ マスター キーが含まれます。 このマスター キーは、デバイスごとに一意のデバイス キーを生成するために、一意の各登録 ID のハッシュに使用されます。 デバイスは、この派生デバイス キーとその一意の登録 ID を使用して Device Provisioning Service で構成証明され、IoT ハブに割り当てられます。
 
-この記事で示すデバイス コードは、「[クイック スタート: 対称キーを使用してシミュレートされたデバイスをプロビジョニングする](quick-create-simulated-device-symm-key.md)」と同じパターンに従います。 このコードでは、[Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) からのサンプルを使用してデバイスがシミュレートされます。 シミュレートされたデバイスは、クイック スタートで示されている個々の登録ではなく、登録グループで構成証明されます。
+この記事で示すデバイス コードは、「[クイックスタート: シミュレートされた対称キー デバイスをプロビジョニングする](quick-create-simulated-device-symm-key.md)」と同じパターンに従います。 このコードでは、[Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) からのサンプルを使用してデバイスがシミュレートされます。 シミュレートされたデバイスは、クイック スタートで示されている個々の登録ではなく、登録グループで構成証明されます。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -222,9 +222,9 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 
 このサンプル コードでは、Device Provisioning Service のインスタンスにプロビジョニング要求を送信するデバイス ブート シーケンスがシミュレートされます。 ブート シーケンスにより、デバイスが認識され、登録グループで構成した IoT ハブに割り当てられます。 これは、登録グループを使用してプロビジョニングされるデバイスごとに実行されます。
 
-1. Azure portal で、Device Provisioning Service の **[概要]** タブをクリックし、**[_ID スコープ_]** の値を書き留めます。
+1. Azure portal で、Device Provisioning Service の **[概要]** タブを選択し、 **[_ID スコープ_]** の値を書き留めます。
 
-    ![ポータルのブレードから Device Provisioning サービスのエンドポイント情報を抽出](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
+    ![ポータルのブレードから Device Provisioning サービスのエンドポイント情報を抽出](./media/quick-create-simulated-device-x509/copy-id-scope.png) 
 
 2. 前に CMake を実行して生成された **azure_iot_sdks.sln** ソリューション ファイルを Visual Studio で開きます。 ソリューション ファイルは次の場所にあります。
 
@@ -305,7 +305,7 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 > [IoT Hub デバイスの再プロビジョニングの概念](concepts-device-reprovision.md)
 
 > [!div class="nextstepaction"]
-> [クイック スタート: 対称キーを使用してシミュレートされたデバイスをプロビジョニングする](quick-create-simulated-device-symm-key.md)
+> [クイックスタート: シミュレートされた対称キー デバイスをプロビジョニングする](quick-create-simulated-device-symm-key.md)
 
 * プロビジョニング解除の詳細については、次の記事を参照してください。
 

@@ -24,11 +24,11 @@ ms.locfileid: "124823188"
 ---
 # <a name="nfs-v41-volumes-on-azure-netapp-files-for-sap-hana"></a>SAP HANA 用 Azure NetApp Files 上の NFS v4.1 ボリューム
 
-Azure NetApp Files には、 <bpt id="p1">**</bpt>/hana/shared<ept id="p1">**</ept>、 <bpt id="p2">**</bpt>/hana/data<ept id="p2">**</ept>、 <bpt id="p3">**</bpt>/hana/log<ept id="p3">**</ept> の各ボリュームに使用できるネイティブ NFS 共有が用意されています。 <bpt id="p1">**</bpt>/hana/data<ept id="p1">**</ept> および <bpt id="p2">**</bpt>/hana/log<ept id="p2">**</ept> のボリュームに ANF ベースの NFS 共有を使用するには、v4.1 NFS プロトコルを使用する必要があります。 共有が ANF ベースの場合、 <bpt id="p1">**</bpt>/hana/data<ept id="p1">**</ept> および <bpt id="p2">**</bpt>/hana/log<ept id="p2">**</ept> ボリュームに NFS プロトコル v3 を使用することはできません。 
+Azure NetApp Files には、 **/hana/shared**、 **/hana/data**、 **/hana/log** の各ボリュームに使用できるネイティブ NFS 共有が用意されています。 **/hana/data** および **/hana/log** のボリュームに ANF ベースの NFS 共有を使用するには、v4.1 NFS プロトコルを使用する必要があります。 共有が ANF ベースの場合、 **/hana/data** および **/hana/log** ボリュームに NFS プロトコル v3 を使用することはできません。 
 
 
 > [!IMPORTANT]
-> Azure NetApp Files に実装されている NFS v3 プロトコルの使用は、 <bpt id="p1">**</bpt>/hana/data<ept id="p1">**</ept> および <bpt id="p2">**</bpt>/hana/log<ept id="p2">**</ept> ではサポートされて<bpt id="p3">**</bpt>いません<ept id="p3">**</ept>。 機能的観点から、 <bpt id="p1">**</bpt>/hana/data<ept id="p1">**</ept> および <bpt id="p2">**</bpt>/hana/log<ept id="p2">**</ept> ボリュームには、NFS 4.1 の使用が必須となります。 一方、 <bpt id="p1">**</bpt>/hana/shared<ept id="p1">**</ept> ボリュームの場合、機能的観点から NFS v3 または NFS v4.1 プロトコルを使用できます。
+> Azure NetApp Files に実装されている NFS v3 プロトコルの使用は、 **/hana/data** および **/hana/log** ではサポートされて **いません**。 機能的観点から、 **/hana/data** および **/hana/log** ボリュームには、NFS 4.1 の使用が必須となります。 一方、 **/hana/shared** ボリュームの場合、機能的観点から NFS v3 または NFS v4.1 プロトコルを使用できます。
 
 ## <a name="important-considerations"></a>重要な考慮事項
 
@@ -36,37 +36,37 @@ SAP Netweaver および SAP HANA 用に Azure NetApp Files を検討するとき
 
 - 最小容量プールは 4 TiB です  
 - 最小ボリューム サイズは 100 GiB です。
-- Azure NetApp Files と、Azure NetApp Files のボリュームがマウントされるすべての仮想マシンは、同じ Azure 仮想ネットワーク内、または同じリージョン内の<bpt id="p1">[</bpt>ピアリングされた仮想ネットワーク<ept id="p1">](../../../virtual-network/virtual-network-peering-overview.md)</ept>内に存在する必要があります
+- Azure NetApp Files と、Azure NetApp Files のボリュームがマウントされるすべての仮想マシンは、同じ Azure 仮想ネットワーク内、または同じリージョン内の[ピアリングされた仮想ネットワーク](../../../virtual-network/virtual-network-peering-overview.md)内に存在する必要があります
 - 待ち時間を短縮するには、仮想マシンを Azure NetApp ストレージに近い場所にデプロイすることが重要です。  
 - 選択した仮想ネットワークには、Azure NetApp Files に委任されているサブネットがある必要があります
 - データベース サーバーから ANF ボリュームへの待機時間が計測されており、1 ミリ秒未満であることを確認します
-- Azure NetApp ボリュームのスループットは、「<bpt id="p1">[</bpt>Azure NetApp Files のサービス レベル<ept id="p1">](../../../azure-netapp-files/azure-netapp-files-service-levels.md)</ept>」に記載されているように、ボリューム クォータとサービス レベルの機能です。 HANA Azure NetApp ボリュームのサイズを設定するときは、そのスループットが HANA システム要件を満たしていることを確認してください。 または、ボリュームの容量とスループットを個別に構成およびスケーリングできる[手動 QoS 容量プール](../../../azure-netapp-files/manual-qos-capacity-pool-introduction.md)の使用を検討してください (SAP HANA の具体的な例については、[このドキュメント](../../../azure-netapp-files/manual-qos-capacity-pool-introduction.md)を参照してください)。
+- Azure NetApp ボリュームのスループットは、「[Azure NetApp Files のサービス レベル](../../../azure-netapp-files/azure-netapp-files-service-levels.md)」に記載されているように、ボリューム クォータとサービス レベルの機能です。 HANA Azure NetApp ボリュームのサイズを設定するときは、そのスループットが HANA システム要件を満たしていることを確認してください。 または、ボリュームの容量とスループットを個別に構成およびスケーリングできる[手動 QoS 容量プール](../../../azure-netapp-files/manual-qos-capacity-pool-introduction.md)の使用を検討してください (SAP HANA の具体的な例については、[このドキュメント](../../../azure-netapp-files/manual-qos-capacity-pool-introduction.md)を参照してください)。
 - 大きなボリュームでより高いパフォーマンスを実現するために、可能であれば、/sapmnt、/usr/sap/trans などに対して 1 つのボリュームを使用するなど、ボリュームを "統合" してみてください。 可能な場合  
-- Azure NetApp Files の<bpt id="p1">[</bpt>エクスポート ポリシー<ept id="p1">](../../../azure-netapp-files/azure-netapp-files-configure-export-policy.md)</ept>では、ユーザーが制御できるのは、許可されたクライアント、アクセスの種類 (読み取りおよび書き込み、読み取り専用など) です。 
+- Azure NetApp Files の[エクスポート ポリシー](../../../azure-netapp-files/azure-netapp-files-configure-export-policy.md)では、ユーザーが制御できるのは、許可されたクライアント、アクセスの種類 (読み取りおよび書き込み、読み取り専用など) です。 
 - Azure NetApp Files 機能は、ゾーンにはまだ対応していません。 現在、Azure NetApp Files 機能は、Azure リージョン内のすべての可用性ゾーンにはデプロイされていません。 Azure リージョンによっては、待ち時間が発生する可能性があることに注意してください。   
-- 仮想マシン上の <bpt id="p1"><b></bpt>sid<ept id="p1"></b></ept>adm のユーザー ID と <ph id="ph1">`sapsys`</ph> のグループ ID は、Azure NetApp Files の構成と一致している必要があります。 
+- 仮想マシン上の <b>sid</b>adm のユーザー ID と `sapsys` のグループ ID は、Azure NetApp Files の構成と一致している必要があります。 
 
 > [!IMPORTANT]
 > SAP HANA ワークロードにとって、待ち時間の短縮は重要です。 Microsoft の担当者と協力して、仮想マシンと Azure NetApp Files ボリュームが確実に近接してデプロイされるようにします。  
 
 > [!IMPORTANT]
-> 仮想マシンと Azure NetApp の構成の間で、<bpt id="p1"><b></bpt>sid<ept id="p1"></b></ept>adm のユーザー ID と、<ph id="ph1">`sapsys`</ph> のグループ ID が一致しない場合は、VM にマウントされた Azure NetApp ボリューム上のファイルのアクセス許可が <ph id="ph2">`nobody`</ph> として表示されます。 Azure NetApp Files に<bpt id="p2">[</bpt>新しいシステムをオンボード<ept id="p2">](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxjSlHBUxkJBjmARn57skvdUQlJaV0ZBOE1PUkhOVk40WjZZQVJXRzI2RC4u)</ept>するときに、正しい <bpt id="p1"><b></bpt>sid<ept id="p1"></b></ept>adm のユーザー ID と <ph id="ph1">`sapsys`</ph> のグループ ID を指定していることを確認してください。
+> 仮想マシンと Azure NetApp の構成の間で、<b>sid</b>adm のユーザー ID と、`sapsys` のグループ ID が一致しない場合は、VM にマウントされた Azure NetApp ボリューム上のファイルのアクセス許可が `nobody` として表示されます。 Azure NetApp Files に[新しいシステムをオンボード](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxjSlHBUxkJBjmARn57skvdUQlJaV0ZBOE1PUkhOVk40WjZZQVJXRzI2RC4u)するときに、正しい <b>sid</b>adm のユーザー ID と `sapsys` のグループ ID を指定していることを確認してください。
 
 
 ## <a name="sizing-for-hana-database-on-azure-netapp-files"></a>Azure NetApp Files 上の HANA データベースのサイズ指定
 
-Azure NetApp ボリュームのスループットは、「<bpt id="p1">[</bpt>Azure NetApp Files のサービス レベル<ept id="p1">](../../../azure-netapp-files/azure-netapp-files-service-levels.md)</ept>」に記載されているように、ボリューム サイズとサービス レベルの機能です。 
+Azure NetApp ボリュームのスループットは、「[Azure NetApp Files のサービス レベル](../../../azure-netapp-files/azure-netapp-files-service-levels.md)」に記載されているように、ボリューム サイズとサービス レベルの機能です。 
 
-重要なのは、サイズに対応するパフォーマンスと、サービスのストレージ エンドポイントには物理的な制限があるということを理解することです。 各ストレージ エンドポイントは、ボリューム作成時に<bpt id="p1">[</bpt>サブネットを委任された Azure NetApp Files<ept id="p1">](../../../azure-netapp-files/azure-netapp-files-delegate-subnet.md)</ept> に動的に挿入されて IP アドレスを受信します。 Azure NetApp Files ボリュームは、使用可能な容量とデプロイ ロジックに応じて、ストレージ エンドポイントを共有できます。
+重要なのは、サイズに対応するパフォーマンスと、サービスのストレージ エンドポイントには物理的な制限があるということを理解することです。 各ストレージ エンドポイントは、ボリューム作成時に[サブネットを委任された Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-delegate-subnet.md) に動的に挿入されて IP アドレスを受信します。 Azure NetApp Files ボリュームは、使用可能な容量とデプロイ ロジックに応じて、ストレージ エンドポイントを共有できます。
 
 次の表は、バックアップを格納するには大規模な "Standard" ボリュームを作成するのが理にかなっていること、そして 12 TB を超える "Ultra" ボリュームを作成すると 1 つのボリュームの物理的な帯域幅の最大容量を超えてしまうため、理にかなっていないことを示しています。 
 
 ボリュームと 1 つの Linux セッションの最大書き込みスループットは、1.2 から 1.4 GB/秒です。 /hana/data のスループットを向上させる必要がある場合は、SAP HANA データ ボリュームのパーティション分割を使用して、データの再読み込み時または HANA セーブポイントの I/O アクティビティを、複数の NFS 共有に配置されている複数の HANA データ ファイル間でストライピングできます。 読み取りスループットを向上させるには、NFS の nconnect マウント オプションを使用できます。 Azure NetApp Files Linux のパフォーマンスと nconnect の詳細については、「[Azure NetApp Files 用の Linux NFS マウント オプションのベスト プラクティス](../../../azure-netapp-files/performance-linux-mount-options.md)」を参照してください。 HANA データ ボリュームのストライピングの詳細については、これらの記事をご覧ください。
 
-- <bpt id="p1">[</bpt>HANA 管理者ガイド<ept id="p1">](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.05/en-US/40b2b2a880ec4df7bac16eae3daef756.html?q=hana%20data%20volume%20partitioning)</ept>
-- <bpt id="p1">[</bpt>SAP HANA に関するブログ - データ ボリュームのパーティション分割<ept id="p1">](https://blogs.sap.com/2020/10/07/sap-hana-partitioning-data-volumes/)</ept>
-- <bpt id="p1">[</bpt>SAP ノート #2400005<ept id="p1">](https://launchpad.support.sap.com/#/notes/2400005)</ept>
-- <bpt id="p1">[</bpt>SAP ノート #2700123<ept id="p1">](https://launchpad.support.sap.com/#/notes/2700123)</ept>
+- [HANA 管理者ガイド](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.05/en-US/40b2b2a880ec4df7bac16eae3daef756.html?q=hana%20data%20volume%20partitioning)
+- [SAP HANA に関するブログ - データ ボリュームのパーティション分割](https://blogs.sap.com/2020/10/07/sap-hana-partitioning-data-volumes/)
+- [SAP ノート #2400005](https://launchpad.support.sap.com/#/notes/2400005)
+- [SAP ノート #2700123](https://launchpad.support.sap.com/#/notes/2700123)
 
 
 | サイズ  | スループット (Standard) | スループット (Premium) | スループット (Ultra) |
@@ -92,14 +92,14 @@ Azure で SAP のインフラストラクチャを設計する際には、SAP �
 | データ ボリュームの書き込み | 250 MB/秒 | 4 TB | 2 TB |
 | データ ボリュームの読み取り | 400 MB/秒 | 6.3 TB | 3.2 TB |
 
-3 つのすべての KPI が要求されるため、読み取りの最小要件を満たすには、 <bpt id="p1">**</bpt>/hana/data<ept id="p1">**</ept> のボリュームを、より大きな容量にサイズ調整する必要があります。 手動 QoS 容量プールを使用する場合、ボリュームのサイズとスループットを個別に定義できます。 容量とスループットの両方が同じ容量プールから取得されるため、プールのサービス レベルとサイズは全体のパフォーマンスを提供できる十分な大きさにする必要があります (例については、[こちら](../../../azure-netapp-files/manual-qos-capacity-pool-introduction.md)を参照してください)。
+3 つのすべての KPI が要求されるため、読み取りの最小要件を満たすには、 **/hana/data** のボリュームを、より大きな容量にサイズ調整する必要があります。 手動 QoS 容量プールを使用する場合、ボリュームのサイズとスループットを個別に定義できます。 容量とスループットの両方が同じ容量プールから取得されるため、プールのサービス レベルとサイズは全体のパフォーマンスを提供できる十分な大きさにする必要があります (例については、[こちら](../../../azure-netapp-files/manual-qos-capacity-pool-introduction.md)を参照してください)。
 
 高帯域幅を必要としない HANA システムの場合、ボリューム サイズを小さくするか、手動で QoS を行う場合にはスループットを直接調整することで、ANF ボリュームのスループットを下げることができます。 また、HANA システムのスループットを向上させる必要がある場合は、容量をオンラインでサイズ変更することでボリュームを調整できます。 KPI は、バックアップ ボリュームに対しては定義されていません。 ただし、高パフォーマンスの環境には、バックアップ ボリュームのスループットが不可欠です。 ログ、およびデータ ボリュームのパフォーマンスは、顧客の期待に合わせて設計する必要があります。
 
 > [!IMPORTANT]
-> 1 つの NFS ボリュームにデプロイする容量に関係なく、スループットは、単一セッションでコンシューマーによって活用される毎秒 1.2 から 1.4 GB までの帯域幅範囲にとどまるものと予想されます。 これは、ANF プランの基礎アーキテクチャと NFS 関連の Linux セッション上限に関係があります。 「<bpt id="p1">[</bpt>Azure NetApp Files のパフォーマンス ベンチマークのテスト結果<ept id="p1">](../../../azure-netapp-files/performance-benchmarks-linux.md)</ept>」という記事に記載されているパフォーマンスとスループットの数値は、1 つの共有 NFS ボリュームと複数のクライアント VM (結果として複数のセッション) に対して行われたものです。 このシナリオは、SAP で測定するシナリオとは異なります。 その場合、ANF でホストされている NFS ボリュームに対して 1 つの VM からの スループットを測定します。
+> 1 つの NFS ボリュームにデプロイする容量に関係なく、スループットは、単一セッションでコンシューマーによって活用される毎秒 1.2 から 1.4 GB までの帯域幅範囲にとどまるものと予想されます。 これは、ANF プランの基礎アーキテクチャと NFS 関連の Linux セッション上限に関係があります。 「[Azure NetApp Files のパフォーマンス ベンチマークのテスト結果](../../../azure-netapp-files/performance-benchmarks-linux.md)」という記事に記載されているパフォーマンスとスループットの数値は、1 つの共有 NFS ボリュームと複数のクライアント VM (結果として複数のセッション) に対して行われたものです。 このシナリオは、SAP で測定するシナリオとは異なります。 その場合、ANF でホストされている NFS ボリュームに対して 1 つの VM からの スループットを測定します。
 
-データとログの SAP 最小スループット要件を満たすため、および <bpt id="p1">**</bpt>/hana/shared<ept id="p1">**</ept> のガイドラインに従うと、推奨されるサイズは次のようになります。
+データとログの SAP 最小スループット要件を満たすため、および **/hana/shared** のガイドラインに従うと、推奨されるサイズは次のようになります。
 
 | ボリューム | サイズ<br /> Premium ストレージ層 | サイズ<br /> Ultra ストレージ層 | サポートされる NFS プロトコル |
 | --- | --- | --- |
@@ -120,26 +120,26 @@ Azure で SAP のインフラストラクチャを設計する際には、SAP �
 そのため、Ultra Disk Storage 用に記載されているのと同様の ANF ボリューム用のスループットをデプロイすることを検討してください。 また、Ultra ディスク テーブルの場合と同じように、さまざまな VM SKU のボリュームに対して記載されているサイズも考慮してください。
 
 > [!TIP]
-> Azure NetApp Files ボリュームは、ボリュームを <ph id="ph1">`unmount`</ph> したり、仮想マシンを停止したり、SAP HANA を停止したりすることなく、動的にサイズ変更することができます。 これにより、予想されるスループット要求と予期しないスループット要求の両方を柔軟に満たすことができます。
+> Azure NetApp Files ボリュームは、ボリュームを `unmount` したり、仮想マシンを停止したり、SAP HANA を停止したりすることなく、動的にサイズ変更することができます。 これにより、予想されるスループット要求と予期しないスループット要求の両方を柔軟に満たすことができます。
 
-ANF でホストされる NFS v4.1 ボリュームを使用して、スタンバイ ノードを含む SAP HANA スケールアウト構成をデプロイする方法については、<bpt id="p1">[</bpt>SUSE Linux Enterprise Server 上に Azure VM のスタンバイ ノードと Azure NetApp Files を使用して SAP HANA をスケールアウトする方法<ept id="p1">](./sap-hana-scale-out-standby-netapp-files-suse.md)</ept>に関するドキュメントを参照してください。
+ANF でホストされる NFS v4.1 ボリュームを使用して、スタンバイ ノードを含む SAP HANA スケールアウト構成をデプロイする方法については、[SUSE Linux Enterprise Server 上に Azure VM のスタンバイ ノードと Azure NetApp Files を使用して SAP HANA をスケールアウトする方法](./sap-hana-scale-out-standby-netapp-files-suse.md)に関するドキュメントを参照してください。
 
 
 ## <a name="availability"></a>可用性
-ANF システムの更新とアップグレードは、お客様の環境に影響を与えることなく適用されます。 定義された <bpt id="p1">[</bpt>SLA は 99.99%<ept id="p1">](https://azure.microsoft.com/support/legal/sla/netapp/)</ept> です。
+ANF システムの更新とアップグレードは、お客様の環境に影響を与えることなく適用されます。 定義された [SLA は 99.99%](https://azure.microsoft.com/support/legal/sla/netapp/) です。
 
 
 ## <a name="volumes-and-ip-addresses-and-capacity-pools"></a>ボリュームと IP アドレスと容量プール
 ANF を使用する際は、基になるインフラストラクチャどのように構築されているかを理解することが重要です。 容量プールは、容量プールのサービス レベルに基づいて、容量とパフォーマンスの予算と請求単位を提供する単なる構成体です。 容量プールには、基になるインフラストラクチャとの物理的な関係はありません。 サービスでボリュームを作成すると、ストレージ エンドポイントが作成されます。 ボリュームへのデータ アクセスを提供するために、このストレージ エンドポイントに 1 つの IP アドレスが割り当てられます。 複数のボリュームを作成した場合、すべてのボリュームは、このストレージ エンドポイントに関連付けられて、基になるベアメタル フリート全体に分散されます。 ANF には、構成されたストレージのボリュームまたは容量が内部で事前に定義されたレベルに達した際に、顧客のワークロードを自動的に分散するロジックが備わっています。 このような場合は、新しい IP アドレスを持つ新しいストレージ エンドポイントがボリュームにアクセスするために自動的に作成されます。 ANF サービスでは、この配布ロジックの制御は提供されていません。
 
 ## <a name="log-volume-and-log-backup-volume"></a>ログ ボリュームとログ バックアップ ボリューム
-"ログ ボリューム" ( <bpt id="p1">**</bpt>/hana/log<ept id="p1">**</ept>) は、オンライン REDO ログの書き込みに使用されます。 そのため、このボリュームにはオープンなファイルが存在し、このボリュームのスナップショットを作成しても意味がありません。 オンラインの redo ログ ファイルがいっぱいになるか、redo ログ バックアップが実行されると、オンライン redo ログ ファイルは、ログ バックアップ ボリュームにアーカイブまたはバックアップされます。 適切なバックアップ パフォーマンスを実現するには、ログ バックアップ ボリュームに十分なスループットが必要です。 ストレージ コストを最適化するには、複数の HANA インスタンスのログ バックアップ ボリュームを統合することが有効です。 これにより、複数の HANA インスタンスで同じボリュームが使用され、異なるディレクトリにバックアップが書き込まれます。 このような統合を使用すると、ボリュームを若干大きくする必要があるため、スループットを向上させることができます。 
+"ログ ボリューム" ( **/hana/log**) は、オンライン REDO ログの書き込みに使用されます。 そのため、このボリュームにはオープンなファイルが存在し、このボリュームのスナップショットを作成しても意味がありません。 オンラインの redo ログ ファイルがいっぱいになるか、redo ログ バックアップが実行されると、オンライン redo ログ ファイルは、ログ バックアップ ボリュームにアーカイブまたはバックアップされます。 適切なバックアップ パフォーマンスを実現するには、ログ バックアップ ボリュームに十分なスループットが必要です。 ストレージ コストを最適化するには、複数の HANA インスタンスのログ バックアップ ボリュームを統合することが有効です。 これにより、複数の HANA インスタンスで同じボリュームが使用され、異なるディレクトリにバックアップが書き込まれます。 このような統合を使用すると、ボリュームを若干大きくする必要があるため、スループットを向上させることができます。 
 
 これは、HANA データベースの完全バックアップの書き込みに使用するボリュームにも当てはまります。  
  
 
 ## <a name="backup"></a>バックアップ
-「<bpt id="p1">[</bpt>Azure Virtual Machines 上の SAP HANA のバックアップ ガイド<ept id="p1">](../../../backup/sap-hana-db-about.md)</ept>」の説明にある SAP HANA データベースをバックアップするストリーミング バックアップと Azure Back サービスに加えて、Azure NetApp Files により、ストレージベースのスナップショット バックアップを実行することができるようになります。 
+「[Azure Virtual Machines 上の SAP HANA のバックアップ ガイド](../../../backup/sap-hana-db-about.md)」の説明にある SAP HANA データベースをバックアップするストリーミング バックアップと Azure Back サービスに加えて、Azure NetApp Files により、ストレージベースのスナップショット バックアップを実行することができるようになります。 
 
 SAP HANA では以下がサポートされます。
 
@@ -151,7 +151,7 @@ SAP HANA では以下がサポートされます。
 ストレージベースのスナップショット バックアップの作成は、簡単な 4 つの手順で行います。 
 1. HANA (内部) データベース スナップショットを作成する - これは、ユーザーまたはツールで実行する必要があるアクティビティです 
 1. SAP HANA によってデータがデータファイルに書き込まれることで、ストレージに一貫性のある状態が作り出される - この手順は、HANA スナップショットの作成後に実行されます
-1. ストレージ上に <bpt id="p1">**</bpt>/hana/data<ept id="p1">**</ept> ボリュームのスナップショットを作成する - これは、ユーザーまたはツールで実行する必要があるステップです。 <bpt id="p1">**</bpt>/hana/log<ept id="p1">**</ept> ボリュームのスナップショットを実行する必要はありません
+1. ストレージ上に **/hana/data** ボリュームのスナップショットを作成する - これは、ユーザーまたはツールで実行する必要があるステップです。 **/hana/log** ボリュームのスナップショットを実行する必要はありません
 1. HANA (内部) データベース スナップショットを削除して通常の操作を再開する - これは、ユーザーまたはツールで実行する必要があるステップです
 
 > [!WARNING]
@@ -173,7 +173,7 @@ az netappfiles snapshot create -g mygroup --account-name myaccname --pool-name m
 BACKUP DATA FOR FULL SYSTEM CLOSE SNAPSHOT BACKUP_ID 47110815 SUCCESSFUL SNAPSHOT-2020-08-18:11:00';
 ```
 
-このスナップショット バックアップの手順は、さまざまなツールを使用してさまざまな方法で管理できます。 1 つの例として、GitHub (<bpt id="p1">[</bpt><ph id="ph1">https://github.com/netapp/ntaphana</ph><ept id="p1">](https://github.com/netapp/ntaphana)</ept>) にある python スクリプト “ntaphana_azure.py” があります。これは、メンテナンスやサポートのない、"現状有姿" で提供されるサンプル コードです。
+このスナップショット バックアップの手順は、さまざまなツールを使用してさまざまな方法で管理できます。 1 つの例として、GitHub ([https://github.com/netapp/ntaphana](https://github.com/netapp/ntaphana)) にある python スクリプト “ntaphana_azure.py” があります。これは、メンテナンスやサポートのない、"現状有姿" で提供されるサンプル コードです。
 
 
 
@@ -183,7 +183,7 @@ BACKUP DATA FOR FULL SYSTEM CLOSE SNAPSHOT BACKUP_ID 47110815 SUCCESSFUL SNAPSHO
 ストレージ スナップショット ベースのアプリケーション整合性バックアップに使用できるソリューション:
 
 - Microsoft [Azure アプリケーション整合性スナップショットツール (AzAcSnap)](../../../azure-netapp-files/azacsnap-introduction.md) は、サードパーティのデータベースのデータ保護を可能にするコマンドライン ツールです。これを使用すると、ストレージのスナップショットを作成する前にデータベースをアプリケーション整合状態にするために必要なすべてのオーケストレーションを処理することができます。その後、データベースは稼働状態に戻ります。 AzAcSnap は、HANA L インスタンスと Azure NetApp Files のスナップショット ベースのバックアップをサポートしています。 詳細については、Azure アプリケーション整合性スナップショット ツールに関する記事を参照してください 
-- Commvault バックアップ製品のユーザーの場合、もう 1 つのオプションとして Commvault IntelliSnap V.11.21 以降があります。 これ以降のバージョンの Commvault は Azure NetApp Files スナップショットをサポートしています。 詳細については、<bpt id="p1">[</bpt>Commvault IntelliSnap 11.21<ept id="p1">](https://documentation.commvault.com/11.21/essential/116350_getting_started_with_backup_and_restore_operations_for_azure_netapp_file_services_smb_shares_and_nfs_shares.html)</ept> に関する記事を参照してください。
+- Commvault バックアップ製品のユーザーの場合、もう 1 つのオプションとして Commvault IntelliSnap V.11.21 以降があります。 これ以降のバージョンの Commvault は Azure NetApp Files スナップショットをサポートしています。 詳細については、[Commvault IntelliSnap 11.21](https://documentation.commvault.com/11.21/essential/116350_getting_started_with_backup_and_restore_operations_for_azure_netapp_file_services_smb_shares_and_nfs_shares.html) に関する記事を参照してください。
 
 
 
@@ -196,7 +196,7 @@ root # wget -O azcopy_v10.tar.gz https://aka.ms/downloadazcopy-v10-linux && tar 
 Saving to: ‘azcopy_v10.tar.gz’
 ```
 
-最も高度な機能は、同期オプションです。 同期オプションを使用すると、azcopy によってソースと同期先ディレクトリが常に同期されます。 パラメーター <bpt id="p1">**</bpt>--delete-destination<ept id="p1">**</ept> を使用することは重要です。 このパラメーターを指定しないと、azcopy によって同期先のサイトのファイルが削除されず、同期先の領域使用率が増加します。 Azure ストレージ アカウントでブロック BLOB コンテナーを作成します。 次に、BLOB コンテナーの SAS キーを作成し、スナップショット フォルダーを Azure Blob コンテナーに同期します。
+最も高度な機能は、同期オプションです。 同期オプションを使用すると、azcopy によってソースと同期先ディレクトリが常に同期されます。 パラメーター **--delete-destination** を使用することは重要です。 このパラメーターを指定しないと、azcopy によって同期先のサイトのファイルが削除されず、同期先の領域使用率が増加します。 Azure ストレージ アカウントでブロック BLOB コンテナーを作成します。 次に、BLOB コンテナーの SAS キーを作成し、スナップショット フォルダーを Azure Blob コンテナーに同期します。
 
 たとえば、データを保護するために、毎日のスナップショットを Azure Blob コンテナーに同期する必要があるとします。 その 1 つのスナップショットのみを保持する必要がある場合は、以下のコマンドを使用できます。
 
@@ -207,4 +207,4 @@ root # > azcopy sync '/hana/data/SID/mnt00001/.snapshot' 'https://azacsnaptmytes
 ## <a name="next-steps"></a>次のステップ
 以下の記事を参照してください。
 
-- <bpt id="p1">[</bpt>Azure 仮想マシンの SAP HANA の高可用性<ept id="p1">](./sap-hana-availability-overview.md)</ept>
+- [Azure 仮想マシンの SAP HANA の高可用性](./sap-hana-availability-overview.md)

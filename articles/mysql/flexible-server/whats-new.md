@@ -6,13 +6,13 @@ ms.service: mysql
 ms.author: jtoland
 ms.custom: mvc
 ms.topic: conceptual
-ms.date: 08/17/2021
-ms.openlocfilehash: cfbff4be8048090ec606fd8640281dccd17fe084
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 09/29/2021
+ms.openlocfilehash: 377c9fc994c4d26b67791e3eb525c7fba75a9d78
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "128598008"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129388890"
 ---
 # <a name="whats-new-in-azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL - フレキシブル サーバー (プレビュー) の新機能
 
@@ -21,6 +21,40 @@ ms.locfileid: "128598008"
 [Azure Database for MySQL - フレキシブル サーバー](./overview.md#azure-database-for-mysql---flexible-server-preview)は、データベース管理機能と構成設定において、単一サーバー デプロイ モードよりもさらにきめ細かな制御と柔軟性を提供するように設計されたデプロイ モードです。 現在、このサービスでは、MySQL 5.7 と 8.0 のコミュニティ バージョンがサポートされています。
 
 この記事では、2021 年 1 月に利用開始されている Azure Database for MySQL - フレキシブル サーバーの新しいリリースと機能について説明します。 リストは新しい順に記載されており、最新の更新が最初に示されています。
+## <a name="october-2021"></a>2021 年 10 月
+- **読み取りレプリカの作成時の Availability Zones の選択**
+
+    読み取りレプリカを作成するときには、任意の Availability Zones の場所を選択するためのオプションがあります。 Availability Zones とは高可用性を提供するサービスで、アプリケーションとデータをデータセンターの障害から保護します。 Availability Zones は、Azure リージョン内の一意の物理的な場所です。 [詳細情報](../flexible-server/concepts-read-replicas.md)
+
+- **Azure Database for MySQL - フレキシブル サーバーでの読み取りレプリカは、バースト可能 SKU では利用できなくなる**
+    
+    バースト可能レベルのサーバーでは、新規作成や既存の読み取りレプリカの保守はできなくなります。 バースト可能 SKU レベルに適したクエリと開発エクスペリエンスを提供することに関心があるため、バースト可能価格レベルのサーバーで読み取りレプリカを作成および保守するためのサポートは終了します。 
+
+    読み取りレプリカが有効になっている既存の Azure Database for MySQL - フレキシブル サーバーがある場合は、汎用またはメモリ最適化価格レベルのいずれかにサーバーをスケールアップするか、60 日以内に読み取りレプリカを削除する必要があります。 60 日が経過すると、読み取り/書き込み操作にプライマリ サーバーを引き続き使用できますが、読み取りレプリカ サーバーへのレプリケーションは停止します。 新しく作成されたサーバーの場合、読み取りレプリカのオプションは、汎用およびメモリ最適化価格レベルでのみ利用可能になります。  
+
+ 
+
+## <a name="september-2021"></a>2021 年 9 月
+
+Azure Database for MySQL - フレキシブル サーバーのこのリリースでは、次の更新が行われています。
+
+- **3 つの追加の Azure リージョンで利用可能**
+
+  Azure Database for MySQL - フレキシブル サーバーのパブリック プレビューが、次の Azure リージョンでご利用いただけるようになりました。
+
+  - 英国西部
+  - カナダ東部
+  - 西日本
+
+- **バグの修正**
+
+  同一ゾーン HA 作成は、次のリージョンで修正されています。
+
+  - インド中部
+  - 東アジア
+  - 韓国中部
+  - 南アフリカ北部
+  - スイス北部
 
 ## <a name="august-2021"></a>2021 年 8 月
 
@@ -48,7 +82,7 @@ Azure Database for MySQL - フレキシブル サーバーのこのリリース�
 
 - **プライベート プレビューで使用可能な validate_password と caching_sha2_password プラグイン**
 
-  フレキシブル サーバーで、プライベート プレビューでの validate_password と caching_sha2_password プラグインの有効化がサポートされるようになりました。 メールの問い合わせ先は AskAzureDBforMySQL@service.microsoft.com です
+  フレキシブル サーバーで、プライベート プレビューでの validate_password と caching_sha2_password プラグインの有効化がサポートされるようになりました。 マイクロソフトにメールを送信する (AskAzureDBforMySQL@service.microsoft.com)
 
 - **4 つの追加の Azure リージョンで利用可能**
 

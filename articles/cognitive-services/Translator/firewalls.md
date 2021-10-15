@@ -10,24 +10,23 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: lajanuar
-ms.openlocfilehash: f5dd72328180574809c812d670f8165ad84963ae
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: afb0e616f01342c94734155e96367f0b453e313a
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98897749"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129401866"
 ---
 # <a name="how-to-translate-behind-ip-firewalls-with-translator"></a>Translator を使用して IP ファイアウォールの内側で翻訳する方法
 
-Translator による翻訳は、ドメイン名フィルタリングまたは IP フィルタリングを使用して、ファイアウォールの内側で実行できます。 可能であればドメイン名フィルタリングの使用をお勧めします。 IP フィルタリング ファイアウォールの内側から Microsoft Translator を実行することは **お勧めしません**。 この構成は将来、予告なく動作不能になる可能性があります。
+Translator による翻訳は、ドメイン名フィルタリングまたは IP フィルタリングを使用して、ファイアウォールの内側で実行できます。 可能であればドメイン名フィルタリングの使用をお勧めします。 それでも IP フィルタリングが必要な場合は、[サービス タグを使用して IP アドレスの詳細](../../virtual-network/service-tags-overview.md#service-tags-on-premises)を取得することをお勧めします。 Translator は、"CognitiveServicesManagement" サービス タグの下にあります。 
 
-## <a name="translator-ip-addresses"></a>Translator の IP アドレス
-api.cognitive.microsofttranslator.com の IP アドレス - 2019 年 8 月 21 日時点の Translator:
+特定の IP フィルタリング ファイアウォールの内側から Microsoft Translator を実行することは **お勧めしません**。 この構成は将来、予告なく動作不能になる可能性があります。
 
-* **アジア太平洋:** 20.40.125.208、20.43.88.240、20.184.58.62、40.90.139.163、104.44.89.44
-* **ヨーロッパ:** 40.90.138.4、40.90.141.99、51.105.170.64、52.155.218.251
-* **北米:** 40.90.139.36、40.90.139.2、40.119.2.134、52.224.200.129、52.249.207.163
+2021 年 9 月 21 日の時点の Translator の地理的エンドポイントの IP アドレスは以下の通りです。
 
-## <a name="next-steps"></a>次のステップ
-> [!div class="nextstepaction"]
-> [Translator で IP ファイアウォールの内側で翻訳する](reference/v3-0-translate.md)
+|[地理的な場所]|ベース URL (地域のエンドポイント)|IP アドレス|
+|:--|:--|:--|
+|United States|api-nam.cognitive.microsofttranslator.com|20.42.6.144、20.49.96.128、40.80.190.224、40.64.128.192|
+|ヨーロッパ|api-eur.cognitive.microsofttranslator.com|20.50.1.16、20.38.87.129|
+|アジア太平洋|api-apc.cognitive.microsofttranslator.com|40.80.170.160、20.43.132.96、20.37.196.160、20.43.66.16|

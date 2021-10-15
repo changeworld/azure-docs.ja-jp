@@ -5,14 +5,14 @@ services: route-server
 author: duongau
 ms.service: route-server
 ms.topic: conceptual
-ms.date: 09/01/2021
+ms.date: 10/01/2021
 ms.author: duau
-ms.openlocfilehash: aa109544ce890c4a8fae4775010a722791fbe5a7
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 61a712fa747252b07a513cfa6e18e3f3b4a67e6c
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123426078"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129400726"
 ---
 # <a name="about-azure-route-server-support-for-expressroute-and-azure-vpn"></a>ExpressRoute と Azure VPN に対する Azure Route Server のサポートについて
 
@@ -34,7 +34,7 @@ Azure Route Server は、Azure で実行されているサードパーティ製�
 SDWAN アプライアンスを Azure VPN ゲートウェイに置き換えることもできます。 Azure VPN ゲートウェイと ExpressRoute はフル マネージドされているため、ルート交換を有効にするだけで、2 つのオンプレミス ネットワークが相互に通信できるようになります。
 
 > [!IMPORTANT] 
-> Azure VPN ゲートウェイは、[**アクティブ/アクティブ**](../vpn-gateway/vpn-gateway-activeactive-rm-powershell.md) モードで構成する必要があります。
+> Azure VPN ゲートウェイは、[**アクティブ/アクティブ**](../vpn-gateway/vpn-gateway-activeactive-rm-powershell.md) モードで構成し、ASN が 65515 に設定されている必要があります。
 >
 
 ![ルート サーバーで構成された ExpressRoute と VPN ゲートウェイを示す図。](./media/expressroute-vpn-support/expressroute-and-vpn-with-route-server.png)

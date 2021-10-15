@@ -17,12 +17,12 @@ ms.date: 06/23/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9fbd65204534e978446109c99ca7286c0af00d68
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: 9455883bea37602e572a538862eaf5de9c17bbbc
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112580388"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128669419"
 ---
 # <a name="sign-in-logs-in-azure-active-directory---preview"></a>Azure Active Directory のサインイン ログ - プレビュー
 
@@ -177,7 +177,7 @@ Azure portal でログにアクセスする方法はいくつかあります。 
 
 - クライアントで OAuth 2.0 認証コードを使用して、アクセス トークンと更新トークンを取得します。
 
-- ユーザーが、Azure AD に参加している PC 上の Web アプリまたは Windows アプリへのシングル サインオン (SSO) を実行します。
+- ユーザーは Azure AD に参加している PC で Web または Windows アプリへのシングル サインオン (SSO) を実行します (認証要素を指定したり、Azure AD プロンプトを操作したりする必要はありません)。
 
 - ユーザーが、FOCI (クライアント ID のファミリ) を使用してモバイル デバイス上でセッションを行っているときに、2 つ目の Microsoft Office アプリにサインインします。
 

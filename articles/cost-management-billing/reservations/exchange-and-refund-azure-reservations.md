@@ -7,12 +7,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 04/14/2021
 ms.author: banders
-ms.openlocfilehash: d45682a3ccdc67cdbff8ef0c1edd542817875fbc
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 56ebba760defcb47d336874294255e2e97e5a151
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111891556"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129546230"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Azure の予約のセルフサービスによる交換と払戻
 
@@ -80,6 +80,7 @@ Premium Storage をサポートしない VM サイズの購入済み予約を、
 ### <a name="pay-as-you-go-invoice-payments-and-csp-program"></a>従量課金制の請求書支払いと CSP プログラム
 
 元の予約購入請求書がキャンセルされ、払戻用の新しい請求書が作成されます。 交換の場合、新しい請求書には払戻と新しい購入が示されます。 払戻額は購入に対して調整されます。 予約の払戻のみの場合は、日割り金額が保持され、今後の予約購入に対して調整されます。 従量課金制料金で予約を購入し、その後 CSP に移動した場合、予約を返上して再購入できます。ペナルティはありません。
+CSP ではセルフサービスでの払戻はできないため、払戻をご希望の場合は CSP のサポートにお問い合わせください。
 
 ### <a name="pay-as-you-go-credit-card-customers"></a>従量課金制クレジット カードのお客様
 

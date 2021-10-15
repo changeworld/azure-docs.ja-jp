@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 08/17/2020
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e4463659077943507651ddd2ad30ee2a1af9cf7a
-ms.sourcegitcommit: 7f59e3b79a12395d37d569c250285a15df7a1077
+ms.openlocfilehash: a2c760e4b1ca923496d11002f2e30b72672f32df
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2021
-ms.locfileid: "110785215"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124778402"
 ---
 # <a name="azure-functions-hosting-options"></a>Azure Functions のホスティング オプション
 
@@ -34,8 +34,8 @@ Azure で Function App を作成するときは、アプリのホスティング
 | プラン | メリット |
 | --- | --- |  
 |**[従量課金プラン](consumption-plan.md)**| 自動的にスケールし、関数が実行されている際のコンピューティング リソースに対してのみ課金されます。<br/><br/>従量課金プランでは、Functions ホストのインスタンスは、受信イベントの数に基づいて動的に追加および削除されます。<br/><br/> ✔ 既定のホスティング プランです。<br/>✔ 関数の実行中にのみ課金されます。<br/>✔ 負荷が高い期間中でも、自動的にスケーリングします。|  
-|**[Premium プラン](functions-premium-plan.md)**|需要に応じて自動的にスケーリングを行いながら、事前ウォーミングされたワーカーを使用して、アイドル状態になっても遅延なくアプリケーションを実行したり、より強力なインスタンスで実行したり、仮想ネットワークに接続したりすることができます。 <br/><br/>次のような状況では、Azure Functions の Premium プランを検討してください。 <br/><br/>✔ 関数を継続的に、またはほぼ継続的に実行したい。<br/>✔ 小規模な実行の回数が多く、実行料金が高いが、従量課金プランでの GB 秒は低い。<br/>✔ 従量課金プランで提供されるよりも多くの CPU またはメモリのオプションが必要である。<br/>✔ 従量課金プランで許可されている最大実行時間よりも長くコードを実行する必要がある。<br/>✔ 仮想ネットワーク接続など、従量課金プランでは利用できない機能が必要である。|  
-|**[専用プラン](dedicated-plan.md)** |App Service プラン内で、Functions を通常の [App Service プラン料金](https://azure.microsoft.com/pricing/details/app-service/windows/)で実行します。<br/><br/>[Durable Functions](durable/durable-functions-overview.md) を使用できない、実行時間の長いシナリオに最適です。 次のような状況では、App Service プランを検討してください。<br/><br/>✔ 既に他の App Service インスタンスを実行している、使用率の低い既存の VM がある。<br/>✔ 関数を実行するカスタム イメージを提供したい。 <br/>✔ スケーリングとコストを予測できることが必要である。|  
+|**[Premium プラン](functions-premium-plan.md)**|需要に応じて自動的にスケーリングを行いながら、事前ウォーミングされたワーカーを使用して、アイドル状態になっても遅延なくアプリケーションを実行したり、より強力なインスタンスで実行したり、仮想ネットワークに接続したりすることができます。 <br/><br/>次のような状況では、Azure Functions の Premium プランを検討してください。 <br/><br/>✔ 関数を継続的に、またはほぼ継続的に実行したい。<br/>✔ 小規模な実行の回数が多く、実行料金が高いが、従量課金プランでの GB 秒は低い。<br/>✔ 従量課金プランで提供されるよりも多くの CPU またはメモリのオプションが必要である。<br/>✔ 従量課金プランで許可されている最大実行時間よりも長くコードを実行する必要がある。<br/>✔ 仮想ネットワーク接続など、従量課金プランでは利用できない機能が必要である。<br/>✔ 関数を実行するカスタム Linux イメージを提供したい。 |  
+|**[専用プラン](dedicated-plan.md)** |App Service プラン内で、Functions を通常の [App Service プラン料金](https://azure.microsoft.com/pricing/details/app-service/windows/)で実行します。<br/><br/>[Durable Functions](durable/durable-functions-overview.md) を使用できない、実行時間の長いシナリオに最適です。 次のような状況では、App Service プランを検討してください。<br/><br/>✔ 既に他の App Service インスタンスを実行している、使用率の低い既存の VM がある。<br/>✔ スケーリングとコストを予測できることが必要である。|  
 
 この記事の比較表には、Functions アプリを実行するための最大の制御性と分離性を実現する、次のホスト オプションも含まれています。  
 

@@ -4,16 +4,16 @@ description: Azure Cosmos DB では現在、定期モードから継続モード
 author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
-ms.date: 08/26/2021
+ms.date: 10/04/2021
 ms.author: sngun
 ms.topic: how-to
 ms.reviewer: sngun
-ms.openlocfilehash: 270c0fd585c2232b86011673e460737173106b09
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: b6821435f2f6ce04f1b8ba4b3af8b8f47097c2fa
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123479078"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129546017"
 ---
 # <a name="migrate-an-azure-cosmos-db-account-from-periodic-to-continuous-backup-mode"></a>Azure Cosmos DB アカウントを定期バックアップ モードから継続的バックアップ モードに移行する
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -78,6 +78,24 @@ ms.locfileid: "123479078"
      -Name "myAccount" `
      -BackupPolicyType Continuous
    ```
+
+### <a name="check-the-migration-status"></a>移行の状態を確認する
+
+**backupPolicy** オブジェクトの **status** または **targetType** プロパティを確認するには、次のコマンドを実行します。 移行を開始すると、以下のようにステータスは進行中となります。
+
+```azurepowershell-interactive
+az cosmosdb show -n "myAccount" -g "myrg"
+```
+
+:::image type="content" source="./media/migrate-continuous-backup/migration-status-started-powershell.png" alt-text="PowerShell コマンドを使用して移行の状態を確認する":::
+
+移行が完了すると、バックアップの種類が **Continuous** に変わります。 同じコマンドを再度実行して、状態を確認します。
+
+```azurepowershell-interactive
+az cosmosdb show -n "myAccount" -g "myrg"
+```
+
+:::image type="content" source="./media/migrate-continuous-backup/migration-status-complete-powershell.png" alt-text="移行が完了すると、バックアップの種類が continuous に変更される":::
 
 ## <a name="migrate-using-cli"></a><a id="cli"></a>CLI を使用した移行
 

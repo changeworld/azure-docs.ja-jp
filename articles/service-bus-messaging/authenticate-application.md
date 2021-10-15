@@ -4,12 +4,12 @@ description: この記事では、Azure Service Bus エンティティ (キュ�
 ms.topic: conceptual
 ms.date: 06/14/2021
 ms.custom: subject-rbac-steps
-ms.openlocfilehash: 8a28b13a8cde8c908d01d2f0eb2160ba7decb6f6
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: cf9e65468567764e5fe7c91455f010dd6d46831f
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112122624"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129359956"
 ---
 # <a name="authenticate-and-authorize-an-application-with-azure-active-directory-to-access-azure-service-bus-entities"></a>Azure Service Bus エンティティにアクセスするために Azure Active Directory を使用してアプリケーションを認証および承認する
 Azure Service Bus では、Azure Active Directory (Azure AD) を使用して Service Bus エンティティ (キュー、トピック、サブスクリプション、またはフィルター) への要求を承認することがサポートされています。 Azure AD では、Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、サービス プリンシパル (ユーザー、グループ、またはアプリケーションのサービス プリンシパルである可能性があります) にアクセス許可を付与します。 ロールとロールの割り当ての詳細については、[各種ロールの理解](../role-based-access-control/overview.md)に関するページを参照してください。
@@ -52,7 +52,7 @@ Azure Service Bus の場合、名前空間およびそれに関連するすべ�
 > [!NOTE]
 > Azure ロールの割り当ての反映には最大で 5 分かかる場合があることに留意してください。 
 
-組み込みのロールの定義方法の詳細については、[ロール定義](../role-based-access-control/role-definitions.md#management-and-data-operations)に関するページを参照してください。 Azure カスタム ロールの作成については、「[Azure カスタム ロール](../role-based-access-control/custom-roles.md)」を参照してください。
+組み込みのロールの定義方法の詳細については、[ロール定義](../role-based-access-control/role-definitions.md#control-and-data-actions)に関するページを参照してください。 Azure カスタム ロールの作成については、「[Azure カスタム ロール](../role-based-access-control/custom-roles.md)」を参照してください。
 
 
 ## <a name="assign-azure-roles-using-the-azure-portal"></a>Azure portal を使用して Azure ロールを割り当てる  
@@ -109,8 +109,6 @@ Azure AD へのアプリケーションの登録について詳しくは、「[A
 
 トークンの取得がサポートされるシナリオの一覧は、[Microsoft Authentication Library (MSAL) for .NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) GitHub リポジトリの[シナリオ](https://aka.ms/msal-net-scenarios)のセクションを参照してください。
 
-<!-- TAB -- # [.NET](#tab/dotnet) -  -->
-
 最新の [Azure.Messaging.ServiceBus](https://www.nuget.org/packages/Azure.Messaging.ServiceBus) ライブラリを使用して、[ServiceBusClient](/dotnet/api/azure.messaging.servicebus.servicebusclient) を、[Azure.Identity](https://www.nuget.org/packages/Azure.Identity) ライブラリで定義されている [ClientSecretCredential](/dotnet/api/azure.identity.clientsecretcredential) で認証することができます。
 
 ```cs
@@ -118,11 +116,7 @@ TokenCredential credential = new ClientSecretCredential("<tenant_id>", "<client_
 var client = new ServiceBusClient("<fully_qualified_namespace>", credential);
 ```
 
-以前の .NET パッケージを使用している場合は、これらのサンプルを参照してください。
-- [Microsoft.Azure.ServiceBus での RoleBasedAccessControl](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/RoleBasedAccessControl)
-- [WindowsAzure.ServiceBus での RoleBasedAccessControl](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/RoleBasedAccessControl)
-
-<!-- CLOSE TAB --- -->
+古い .NET パッケージを使用している場合は、[azure-service-bus サンプル リポジトリ](https://github.com/Azure/azure-service-bus)の RoleBasedAccessControl サンプルを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 - Azure RBAC の詳細については、「[Azure ロールベースのアクセス制御 (Azure RBAC) とは](../role-based-access-control/overview.md)」を参照してください。

@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/12/2021
+ms.date: 10/01/2021
 ms.author: tamram
-ms.reviewer: dineshm
+ms.reviewer: fryu
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 5e38cfeae5ad8593e5ee69059f4bdb903b04aa42
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 566c538e0864f11dad0a642dd18f711c7cf00886
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122178303"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129532857"
 ---
 # <a name="prevent-shared-key-authorization-for-an-azure-storage-account"></a>Azure Storage アカウントの共有キーによる承認を禁止する
 
@@ -122,7 +122,7 @@ Azure portal でストレージ アカウントに対する共有キーによる
 
 1. Azure Portal のストレージ アカウントに移動します。
 1. **[設定]** から **[構成]** 設定を探します。
-1. **[Allow shared key access]\(共有キーによるアクセスを許可する\)** を **[無効]** に設定します。
+1. **[Allow storage account key access]\(ストレージ アカウント キーのアクセスを許可する\)** を **[無効]** に設定します。
 
     :::image type="content" source="media/shared-key-authorization-prevent/shared-key-access-portal.png" alt-text="アカウントに対する共有キーによるアクセスを禁止する方法を示すスクリーンショット":::
 
@@ -231,7 +231,7 @@ Shared Access Signature の詳細については、「[Shared Access Signatures 
 |-|-|
 | Azure portal | サポートされています。 Azure portal からの Azure AD アカウントを使用した承認の詳細については、「[Azure portal で BLOB データへのアクセスの承認方法を選択する](../blobs/authorize-data-operations-portal.md)」を参照してください。 |
 | AzCopy | Blob Storage の場合、サポートされています。 AzCopy の操作の承認については、AzCopy のドキュメントの「[認証資格情報の提供方法を選択する](storage-use-azcopy-v10.md#choose-how-youll-provide-authorization-credentials)」を参照してください。 |
-| Azure Storage Explorer | Blob Storage と Azure Data Lake Storage Gen2 の場合にのみ、サポートされています。 Queue storage に対する Azure AD のアクセスはサポートされていません。 正しい Azure AD テナントを選択してください。 詳細については、「[Storage Explorer の概要](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows#sign-in-to-azure)」を参照してください |
+| Azure ストレージ エクスプローラー | Blob Storage と Azure Data Lake Storage Gen2 の場合にのみ、サポートされています。 Queue storage に対する Azure AD のアクセスはサポートされていません。 正しい Azure AD テナントを選択してください。 詳細については、「[Storage Explorer の概要](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows#sign-in-to-azure)」を参照してください |
 | Azure PowerShell | サポートされています。 Azure AD で BLOB またはキューの操作の PowerShell コマンドを承認する方法の詳細については、「[Azure AD の資格情報を使用して PowerShell コマンドを実行して BLOB データにアクセスする](../blobs/authorize-data-operations-powershell.md)」または「[Azure AD 資格情報を使用して PowerShell コマンドを実行してキューのデータにアクセスする](../queues/authorize-data-operations-powershell.md)」を参照してください。 |
 | Azure CLI | サポートされています。 BLOB およびキューのデータにアクセスするために、Azure AD で Azure CLI コマンドを承認する方法については、[Azure AD 資格情報を使用して Azure CLI コマンドを実行して BLOB またはキューのデータにアクセスする方法](../blobs/authorize-data-operations-cli.md)に関する記事を参照してください。 |
 | Azure IoT Hub | サポートされています。 詳細については、[IoT Hub による仮想ネットワークのサポート](../../iot-hub/virtual-network-support.md)に関する記事を参照してください。 |

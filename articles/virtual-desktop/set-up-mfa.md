@@ -1,17 +1,17 @@
 ---
-title: Azure Virtual Desktop で Azure 多要素認証をセットアップする - Azure
-description: Azure 多要素認証をセットアップして Azure Virtual Desktop のセキュリティを高める方法。
+title: Azure Virtual Desktop の Azure 多要素認証 - Azure
+description: Azure Virtual Desktop のセキュリティを強化するために Azure 多要素認証を設定する方法について説明します。
 author: Heidilohr
 ms.topic: how-to
 ms.date: 12/10/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 6e01b132dd68fd711af30f816df15795991efd41
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 2e86597f0307699c2fc4cac9f48eac5b884e8df3
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111754189"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129363609"
 ---
 # <a name="enable-azure-multifactor-authentication-for-azure-virtual-desktop"></a>Azure Virtual Desktop で Azure 多要素認証を有効にする
 

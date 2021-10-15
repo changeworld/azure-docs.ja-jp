@@ -4,12 +4,12 @@ description: ASP.NET Core を使用した Azure App Services のアプリケー�
 ms.topic: conceptual
 ms.date: 08/05/2021
 ms.custom: devx-track-js, devx-track-dotnet
-ms.openlocfilehash: bf474ff535a9292fbadfd023830d15973bf39ad1
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: d31f8e59b297c16995482826414d07ab8cf5774f
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128699193"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129233224"
 ---
 # <a name="application-monitoring-for-azure-app-service-and-aspnet-core"></a>Azure App Service と ASP.NET Core のアプリケーション監視 
 

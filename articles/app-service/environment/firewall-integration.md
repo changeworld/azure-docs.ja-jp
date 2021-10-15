@@ -4,15 +4,15 @@ description: Azure Firewall と統合して、App Service Environment 内から�
 author: ccompy
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
 ms.topic: article
-ms.date: 07/07/2021
+ms.date: 09/16/2021
 ms.author: ccompy
 ms.custom: seodec18, references_regions
-ms.openlocfilehash: f2ac32c304365ba5f833df904d11400c89249c45
-ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
+ms.openlocfilehash: b9d5e3bda24e3020dd21a600cde40c55bffb2f56
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113651148"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128669229"
 ---
 # <a name="locking-down-an-app-service-environment"></a>App Service Environment をロックする
 > [!NOTE]
@@ -245,6 +245,7 @@ Azure Firewall を使用すると、FQDN タグで構成された以下のもの
 | \*.ctldl.windowsupdate.com:80 |
 | \*.ctldl.windowsupdate.com:443 |
 | \*.prod.microsoftmetrics.com:443 |
+| \*.dsms.core.windows.net:443 |
 
 #### <a name="linux-dependencies"></a>Linux の依存関係 
 

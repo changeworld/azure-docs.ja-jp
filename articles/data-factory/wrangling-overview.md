@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.topic: conceptual
 ms.date: 07/29/2021
-ms.openlocfilehash: d49b587262bfceb8072761cec6981ab908abb21e
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 996b91040d16a3c2b966bb1b68e83f578d42f583
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124732946"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129354988"
 ---
 # <a name="what-is-data-wrangling"></a>データ ラングリングとは
 
@@ -23,9 +23,6 @@ ms.locfileid: "124732946"
 Data Factory では、Power Query を使用して、クラウド規模でコードフリーのデータ準備を繰り返し行うことができます。 Data Factory と [Power Query Online](/power-query/) の統合により、Power Query M の関数をパイプライン アクティビティとして使用できるようになります。
 
 Data Factory は、Power Query Online マッシュアップ エディターによって生成された M を、Azure Data Factory データ フローに変換することによって、クラウド規模で実行するための Spark コードに変換します。 Power Query とデータ フローを使用したデータのラングリングは、データ エンジニアや "シティズン データ インテグレーター" にとっては特に便利です。
-
-> [!NOTE]
-> Azure Data Factory 内の Power Query アクティビティは、現在、パブリック プレビューで提供されています
 
 ## <a name="use-cases"></a>ユース ケース
 
@@ -47,11 +44,11 @@ Data Factory は、Power Query Online マッシュアップ エディターに�
 
 | コネクタ | データ形式 | 認証の種類 |
 | -- | -- | --|
-| [Azure Blob Storage](connector-azure-blob-storage.md) | CSV、Parquet | アカウント キー |
-| [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | CSV | サービス プリンシパル |
-| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | CSV、Parquet | アカウント キー、サービス プリンシパル |
-| [Azure SQL Database](connector-azure-sql-database.md) | - | SQL 認証 |
-| [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md) | - | SQL 認証 |
+| [Azure Blob Storage](connector-azure-blob-storage.md) | CSV、Parquet、Excel | アカウント キー、サービス プリンシパル、MSI |
+| [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | CSV、Parquet、Excel | サービス プリンシパル、MSI |
+| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | CSV、Parquet、Excel | アカウント キー、サービス プリンシパル、MSI |
+| [Azure SQL Database](connector-azure-sql-database.md) | - | SQL 認証、MSI、サービス プリンシパル |
+| [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md) | - | SQL 認証、MSI、サービス プリンシパル |
 
 ## <a name="the-mashup-editor"></a>マッシュアップ エディター
 

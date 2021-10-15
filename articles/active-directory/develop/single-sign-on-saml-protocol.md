@@ -14,12 +14,12 @@ ms.date: 08/24/2021
 ms.author: kenwith
 ms.custom: aaddev
 ms.reviewer: paulgarn
-ms.openlocfilehash: d32a4ec02585de7a34c3d21633454accaa11d69c
-ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+ms.openlocfilehash: 1d3257980d628a627b9a4896e2511812240454f8
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122777515"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129229888"
 ---
 # <a name="single-sign-on-saml-protocol"></a>シングル サインオンの SAML プロトコル
 
@@ -30,7 +30,7 @@ ms.locfileid: "122777515"
 ![シングル サインオン (SSO) のワークフロー](./media/single-sign-on-saml-protocol/active-directory-saml-single-sign-on-workflow.png)
 
 > [!NOTE]
-> この記事では、シングル サインオンでの SAML の使用について説明します。 シングル サインオンを処理するその他の方法 (OpenID Connect や統合 Windows 認証など) の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
+> この記事では、シングル サインオンでの SAML の使用について説明します。 シングル サインオンを処理するその他の方法 (OpenID Connect や統合 Windows 認証など) の詳細については、[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)に関するページを参照してください。
 
 ## <a name="authnrequest"></a>AuthnRequest
 

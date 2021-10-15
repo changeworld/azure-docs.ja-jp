@@ -3,12 +3,12 @@ title: Azure ファイル共有のバックアップのトラブルシューテ�
 description: この記事は、Azure ファイル共有を保護する際に発生する問題に関するトラブルシューティング情報です。
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 86324c80f0df70713c6ea76a43e4b9da50c1fae6
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 942574fafe6a68b601f3ed4c428dc74fb02719a5
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111555022"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129532499"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>Azure ファイル共有のバックアップ中の問題のトラブルシューティング
 
@@ -25,8 +25,10 @@ ms.locfileid: "111555022"
   >ストレージ アカウントのすべてのファイル共有は、1 つの Recovery Services コンテナーのみで保護できます。 [このスクリプト](scripts/backup-powershell-script-find-recovery-services-vault.md)を使用すると、ご自分のストレージ アカウントが登録されている Recovery Services コンテナーを見つけるのに役立ちます。
 
 - サポートされていないストレージ アカウントのいずれにもファイル共有が存在しないようにしてください。 サポートされているストレージ アカウントを見つけるには、「[Azure ファイル共有のバックアップのサポート マトリックス](azure-file-share-support-matrix.md)」を参照してください。
+- ストレージ アカウントと Recovery Services コンテナーが同じリージョンに存在していることを確認してください。
 - 新しいストレージ アカウントの場合、ストレージ アカウント名とリソース グループ名を組み合わせた長さが確実に 84 文字を超えないようにしてください。従来のストレージ アカウントの場合は 77 文字です。
-- ストレージ アカウントのファイアウォール設定を確認して、信頼された Microsoft サービスからストレージ アカウントへのアクセスを許可するオプションが有効になっていることを確認します。
+- ストレージ アカウントのファイアウォール設定を確認して、例外 "_信頼されたサービスの一覧の Azure サービスにこのストレージ アカウントへのアクセスを許可する_" が付与されていることを確かめます。 例外の許可の手順については、[こちら](/azure/storage/common/storage-network-security?tabs=azure-portal#manage-exceptions)のリンクを参照してください。
+
 
 ### <a name="error-in-portal-states-discovery-of-storage-accounts-failed"></a>ポータルのエラーが、ストレージ アカウントの検出に失敗したことを示しています
 

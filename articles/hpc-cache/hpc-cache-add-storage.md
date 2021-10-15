@@ -4,15 +4,15 @@ description: Azure HPC Cache で長期的なファイルの保管にオンプレ
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 07/12/2021
+ms.date: 09/22/2021
 ms.custom: subject-rbac-steps
 ms.author: v-erkel
-ms.openlocfilehash: 3ea51d88d65b8016e68673703ee823df19bcf608
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 016a62bc7713b389e8baf7d0a5b5aeefceb81f2b
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114294952"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129271967"
 ---
 # <a name="add-storage-targets"></a>ストレージ ターゲットを追加する
 
@@ -401,7 +401,7 @@ Azure portal からキャッシュ インスタンスを開き、左側のサイ
 
 ストレージ ターゲットの名前をクリックして、その詳細ページを開きます。
 
-詳細については、「[ストレージ ターゲットを編集する](hpc-cache-edit-storage.md)」を参照してください。
+詳細については、「[ストレージ ターゲットを管理する](manage-storage-targets.md)」および「[ストレージ ターゲットを編集する](hpc-cache-edit-storage.md)」を参照してください。
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

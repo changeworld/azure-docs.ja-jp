@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: eliotga
-ms.openlocfilehash: 322d6b590863d8065454c0439c5d899107a6abe7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f25aed4fa424ba7b98781f145ace2dce95d27d99
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98784967"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129276153"
 ---
 # <a name="roles-and-operations"></a>役割と操作
 
@@ -30,7 +30,7 @@ IoT ソリューションの開発フェーズは、製造時間、出荷、通�
 | 演算子 | 自動プロビジョニングを構成する | この操作は、自動プロビジョニングの第 1 フェーズに対応します。<br><br>**クイック スタート**:オペレーターの役割として、Azure サブスクリプション内の Device Provisioning Service および IoT Hub のインスタンスを構成します。 |
 |  | デバイス ID を加入させる | この操作は、自動プロビジョニングの第 2 フェーズに対応します。<br><br>**クイック スタート**:オペレーターの役割として、シミュレートされたデバイスを Device Provisioning Service インスタンスに加入させます。 デバイス ID は、クイック スタートでシミュレートされている構成証明方法 (TPM または X.509) によって決定されます。 構成証明の詳細については、開発者の役割を参照してください。 |
 | Device Provisioning Service、<br>IoT Hub | \<all operations\> | 物理デバイスによる運用実装でも、シミュレートされたデバイスによるクイック スタートでも、これらの役割は、Azure サブスクリプションで構成する IoT サービスを通じて実行されます。 IoT サービスのプロビジョニングでは、物理デバイスとシミュレートされたデバイスとの区別がないため、役割/操作は、まったく同じように機能します。 |
-| Developer | 登録ソフトウェアをビルド/デプロイする | この操作は、自動プロビジョニングの第 3 フェーズに対応します。 開発者は、適切な SDK を使用して、登録ソフトウェアをビルドし、デバイスにデプロイします。<br><br>**クイック スタート**:ビルドするサンプル登録アプリケーションが、実際のデバイスをシミュレートします。プラットフォームと言語は選択することができ、ワークステーション上で実行されます (物理デバイスにデプロイするのではなく)。 登録アプリケーションは、物理デバイスにデプロイされるアプリケーションと同じ操作をします。 構成証明方法 (TPM または X.509 証明書) と、Device Provisioning Service インスタンスの登録 URL および "ID スコープ" を指定します。 デバイス ID は、指定した以下の方法に基づいて、実行時の SDK 構成証明ロジックによって決められます。 <ul><li>**TPM 構成証明** - 開発ワークステーションが [TPM シミュレーター アプリケーション](quick-create-simulated-device.md)を実行します。 実行されると、デバイス ID の加入に使用される TPM の "保証キー" と "登録 ID" を展開するために別のアプリケーションが使用されます。 SDK の構成証明ロジックも、登録中にシミュレーターを使用し、認証および加入の検証に対して、署名された SAS トークンを提示します。</li><li>**X509 構成証明** - [証明書を生成する](tutorial-custom-hsm-enrollment-group-x509.md#create-an-x509-certificate-chain)ために、ツールを使用します。 生成されたら、加入で使用するために必要な証明書ファイルを作成します。 SDK の構成証明ロジックも、登録中に証明書を使用し、認証および加入の検証に対して提示します。</li></ul> |
+| Developer | 登録ソフトウェアをビルド/デプロイする | この操作は、自動プロビジョニングの第 3 フェーズに対応します。 開発者は、適切な SDK を使用して、登録ソフトウェアをビルドし、デバイスにデプロイします。<br><br>**クイック スタート**:ビルドするサンプル登録アプリケーションが、実際のデバイスをシミュレートします。プラットフォームと言語は選択することができ、ワークステーション上で実行されます (物理デバイスにデプロイするのではなく)。 登録アプリケーションは、物理デバイスにデプロイされるアプリケーションと同じ操作をします。 構成証明方法 (TPM または X.509 証明書) と、Device Provisioning Service インスタンスの登録 URL および "ID スコープ" を指定します。 デバイス ID は、指定した以下の方法に基づいて、実行時の SDK 構成証明ロジックによって決められます。 <ul><li>**TPM 構成証明** - 開発ワークステーションが [TPM シミュレーター アプリケーション](quick-create-simulated-device-tpm.md)を実行します。 実行されると、デバイス ID の加入に使用される TPM の "保証キー" と "登録 ID" を展開するために別のアプリケーションが使用されます。 SDK の構成証明ロジックも、登録中にシミュレーターを使用し、認証および加入の検証に対して、署名された SAS トークンを提示します。</li><li>**X509 構成証明** - [証明書を生成する](tutorial-custom-hsm-enrollment-group-x509.md#create-an-x509-certificate-chain)ために、ツールを使用します。 生成されたら、加入で使用するために必要な証明書ファイルを作成します。 SDK の構成証明ロジックも、登録中に証明書を使用し、認証および加入の検証に対して提示します。</li></ul> |
 | Device | 起動して登録する | この操作は、自動プロビジョニングの第 3 フェーズに対応し、開発者によってビルドされたデバイス登録ソフトウェアによって実行されます。 詳細については、開発者の役割を参照してください。 最初のブートで、以下のことが実行されます。 <ol><li>アプリケーションは、開発中に指定されたグローバル URL およびサービス "ID スコープ" ごとに Device Provisioning Service インスタンスに接続します。</li><li>接続すると、デバイスは加入時に指定された構成証明方法と ID で認証されます。</li><li>認証されると、プロビジョニング サービス インスタンスによって指定された IoT Hub インスタンスにデバイスが登録されます。</li><li>登録が正常に実行されると、一意のデバイス ID と IoT Hub エンドポイントが登録アプリケーションに返されます。これらは、IoT Hub との通信に使用されます。</li><li> そこから、デバイスは構成用に初期[デバイス ツイン](~/articles/iot-hub/iot-hub-devguide-device-twins.md)状態を入手して、テレメトリ データの報告プロセスを開始することができます。</li></ol>**クイック スタート**: デバイスはシミュレートされるため、登録ソフトウェアは開発ワークステーション上で実行されます。|
 
 次の図は、デバイスの自動プロビジョニング中の役割と操作の流れをまとめたものです。
@@ -79,11 +79,11 @@ IoT ソリューションの開発フェーズは、製造時間、出荷、通�
 
 次に、お使いのデバイス構成証明メカニズムや好みの Device Provisioning Service SDK と言語に適した「デバイスのプロビジョニング」クイックスタートに進みます。 このクイック スタートでは、"デバイスの加入" と "デバイスの登録および構成" フェーズについて具体的に説明しています。 
 
-| デバイス構成証明メカニズム | クイック スタート SDK/言語 | 
+| デバイス構成証明メカニズム | クイック スタート | 
 | ------------------------------- | -------------------- |
-| 対称キー | [C](quick-create-simulated-device-symm-key.md)<br>[Java](quick-create-simulated-device-symmetric-key-java.md)<br>[Python](quick-create-device-symmetric-key-python.md) |
-| X.509 証明書 | [C](quick-create-simulated-device-x509.md)<br>[Java](quick-create-simulated-device-x509-java.md)<br>[C#](quick-create-simulated-device-x509-csharp.md)<br>[Node.js](quick-create-simulated-device-x509-node.md)<br>[Python](quick-create-simulated-device-x509-python.md) |
-| シミュレート済みのトラステッド プラットフォーム モジュール (TPM) | [C](quick-create-simulated-device.md)<br>[Java](quick-create-simulated-device-tpm-java.md)<br>[C#](quick-create-simulated-device-tpm-csharp.md)<br>[Python](quick-create-simulated-device-tpm-python.md) |
+| 対称キー | [シミュレートされた対称キーのデバイスをプロビジョニングする](quick-create-simulated-device-symm-key.md) |
+| X.509 証明書 | [シミュレートされた X.509 デバイスをプロビジョニングする](quick-create-simulated-device-x509.md) |
+| シミュレート済みのトラステッド プラットフォーム モジュール (TPM) | [シミュレートされた TPM デバイスをプロビジョニングする](quick-create-simulated-device-tpm.md)|
 
 
 

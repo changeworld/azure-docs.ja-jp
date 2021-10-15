@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 06/29/2021
 ms.author: tamram
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: cfea2bd15bceb7d1478059d9ef80f4eb33337dc6
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: a0f95f78b8ca84175be185088316209ea5eb1e97
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128664753"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129546824"
 ---
 # <a name="manage-storage-account-access-keys"></a>ストレージ アカウント アクセス キーを管理する
 
@@ -32,15 +32,17 @@ ms.locfileid: "128664753"
 
 Azure portal からストレージ アカウントのアクセス キーまたは接続文字列を表示およびコピーするには:
 
-1. [Azure Portal](https://portal.azure.com) のストレージ アカウントに移動します。
+1. [Azure portal](https://portal.azure.com) で、ストレージ アカウントに移動します。
 
-2. **[設定]** で **[アクセス キー]** を選択します。 アカウント アクセス キーと、各キーの完全な接続文字列が表示されます。
+2. **[セキュリティとネットワーク]** で、 **[アクセス キー]** を選択します。 アカウント アクセス キーと、各キーの完全な接続文字列が表示されます。
 
-3. **[key1]** で **[キー]** 値を見つけ、 **[コピー]** ボタンをクリックしてアカウント キーをコピーします。
+3. **[キーの表示]** を選択して、アクセス キーと接続文字列を表示し、値をコピーするボタンを有効にします。
 
-4. あるいは、接続文字列全体をコピーできます。 **[Key1]** の **[接続文字列]** の値を見つけて **[コピー]** ボタンをクリックし、接続文字列をコピーします。
+4. **[key1]** の下で **[キー]** 値を見つけます。 **[コピー]** ボタンを選択してアカウント キーをコピーします。
 
-    :::image type="content" source="media/storage-account-keys-manage/portal-connection-string.png" alt-text="Azure portal でアクセス キーを表示する方法を示したスクリーンショット":::
+5. あるいは、接続文字列全体をコピーできます。 **[key1]** の下で **[接続文字列]** の値を見つけます。 **[コピー]** ボタンを選択して接続文字列をコピーします。
+
+    :::image type="content" source="./media/storage-account-keys-manage/portal-connection-string.png" alt-text="Azure portal でアクセス キーを表示する方法を示したスクリーンショット":::
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -50,7 +52,7 @@ PowerShell でアカウント アクセス キーを取得するには、[Get-Az
 
 ```powershell
 $storageAccountKey = `
-    (Get-AzStorageAccountKey `
+    (Get-AzStorageAccountKey
     -ResourceGroupName <resource-group> `
     -Name <storage-account>).Value[0]
 ```
@@ -93,7 +95,19 @@ Microsoft では、ストレージアカウントのセキュリティを確保�
 
 #### <a name="portal"></a>[ポータル](#tab/azure-portal)
 
-Azure portal を使用してキーの有効期限ポリシーを設定する機能は、まだ提供されていません。 PowerShell または Azure CLI を使用してください。
+Azure portal で、キーの有効期限ポリシーを作成するには:
+
+1. [Azure portal](https://portal.azure.com) で、ストレージ アカウントに移動します。
+
+2. **[セキュリティとネットワーク]** で、 **[アクセス キー]** を選択します。 アカウント アクセス キーと、各キーの完全な接続文字列が表示されます。
+
+3. **[交換リマインダーの設定]** リンクを選択します。
+
+4. **[アクセス キーを交換するためのリマインダーを設定する]** で **[キー交換リマインダーを有効にする]** チェックボックスをオンにして、アラームの頻度を設定します。
+
+5. **[保存]** を選択します。
+
+:::image type="content" source="media/storage-account-keys-manage/portal-key-expiration-policy.png" alt-text="Azure portal でのキーの有効期限ポリシーの構成方法を示すスクリーンショット":::
 
 #### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -202,7 +216,7 @@ Azure portal でストレージ アカウントのアクセス キーをロー�
 
 2. [Azure Portal](https://portal.azure.com) のストレージ アカウントに移動します。
 
-3. **[設定]** で **[アクセス キー]** を選択します。
+3. **[セキュリティとネットワーク]** で、 **[アクセス キー]** を選択します。
 
 4. ストレージ アカウントのプライマリ アクセス キーを再生成するには、プライマリ アクセス キーの隣にある **[再生成]** ボタンを選択します。
 

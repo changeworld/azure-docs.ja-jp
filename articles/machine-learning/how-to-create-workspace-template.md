@@ -10,21 +10,18 @@ ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ms.author: larryfr
 author: Blackmist
 ms.date: 04/21/2021
-ms.openlocfilehash: 9a8272d6b21130f253046ef3ffe05db8b00d4b79
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: c0220070d6b377212099a67c4328bc080afc1648
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123038672"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129544623"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Azure Resource Manager テンプレートを使用して Azure Machine Learning のワークスペースを作成します。
 
-
-<br>
-
 この記事では、Azure Resource Manager テンプレートを使用して Azure Machine Learning ワークスペースを作成するさまざまな方法について説明します。 Resource Manager テンプレートを使用すると、1 つの調整された操作でリソースを簡単に作成できます。 テンプレートは、デプロイに必要なリソースを定義する JSON ドキュメントです。 デプロイ パラメーターを指定することもできます。 パラメーターは、テンプレートの使用時に入力値を指定するために使用します。
 
-詳細については、「[Azure Resource Manager のテンプレートを使用したアプリケーションのデプロイ](../azure-resource-manager/templates/deploy-powershell.md)」を参照してください。
+詳細については、「 [Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](../azure-resource-manager/templates/deploy-powershell.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -38,7 +35,7 @@ ms.locfileid: "123038672"
 
 ## <a name="workspace-resource-manager-template"></a>ワークスペースの Resource Manager テンプレート
 
-このドキュメント全体で使用する Azure Resource Manager テンプレートは、Azure クイックスタート テンプレートの GitHub リポジトリの [machine-learning-advanced](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.machinelearningservices/machine-learning-advanced/azuredeploy.json) ディレクトリにあります。
+このドキュメント全体で使用する Azure Resource Manager テンプレートは、Azure クイックスタート テンプレートの GitHub リポジトリの [microsoft.machineleaerningservices/machine-learning-workspace-vnet](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.machinelearningservices/machine-learning-workspace-vnet/azuredeploy.json) ディレクトリにあります。
 
 このテンプレートでは、次の Azure サービスが作成されます。
 

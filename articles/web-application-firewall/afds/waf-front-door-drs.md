@@ -1,18 +1,17 @@
 ---
 title: Azure Front Door 上の Azure Web Application Firewall の DRS 規則グループと規則
 description: この記事では、Web Application Firewall の DRS 規則グループと規則について説明します。
-services: web-application-firewall
-author: vhorne
 ms.service: web-application-firewall
-ms.date: 07/29/2021
+author: vhorne
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 401a6bd003e592d1b53aa91ac24f062688da7a3b
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.date: 07/29/2021
+ms.openlocfilehash: 95839937f2356f74d29499bb45e7cd0e1159b02c
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123435746"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129546351"
 ---
 # <a name="web-application-firewall-drs-rule-groups-and-rules"></a>Web Application Firewall の DRS 規則グループと規則
 
@@ -62,6 +61,9 @@ OWASP には、トラフィックをブロックするかどうかを決定す�
 |注意事項       |2|
 
 異常スコアでトラフィックがブロックされるしきい値は 5 です。 そのため、防止モードであっても、WAF によって要求がブロックされるには、"*クリティカル*" 規則との一致が 1 つあるだけで十分です。 しかし、1 つの *[警告]* 規則の一致では、異常スコアは 3 増加するだけで、その一致だけではトラフィックをブロックするには不十分です。
+
+> [!NOTE]
+> 本体の検査は DRS 2.0 でのみ使用できます。
 
 ### <a name="drs-20"></a>DRS 2.0
 
@@ -288,6 +290,9 @@ OWASP には、トラフィックをブロックするかどうかを決定す�
 |941370|JavaScript のグローバル変数が見つかりました|
 |941380|AngularJS クライアント側テンプレート インジェクションが検出されました|
 
+>[!NOTE]
+> この記事には、Microsoft では使用されなくなった "*ブラックリスト*" という用語への言及があります。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
+
 
 ### <a name="sqli---sql-injection"></a><a name="drs942-20"></a> SQLI - SQL インジェクション
 |RuleId|説明|
@@ -470,6 +475,9 @@ OWASP には、トラフィックをブロックするかどうかを決定す�
 |941340|IE XSS フィルター - 攻撃が検出されました。|
 |941350|UTF-7 エンコード IE XSS - 攻撃が検出されました。|
 
+>[!NOTE]
+> この記事には、Microsoft では使用されなくなった "*ブラックリスト*" という用語への言及があります。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
+
 ### <a name="sqli---sql-injection"></a><a name="drs942-11"></a> SQLI - SQL インジェクション
 |RuleId|説明|
 |---|---|
@@ -647,6 +655,9 @@ OWASP には、トラフィックをブロックするかどうかを決定す�
 |941330|IE XSS フィルター - 攻撃が検出されました。|
 |941340|IE XSS フィルター - 攻撃が検出されました。|
 |941350|UTF-7 エンコード IE XSS - 攻撃が検出されました。|
+
+>[!NOTE]
+> この記事には、Microsoft では使用されなくなった "*ブラックリスト*" という用語への言及があります。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
 
 ### <a name="sqli---sql-injection"></a><a name="drs942-10"></a> SQLI - SQL インジェクション
 |RuleId|説明|

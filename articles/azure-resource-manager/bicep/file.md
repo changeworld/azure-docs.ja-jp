@@ -2,13 +2,13 @@
 title: Bicep ファイルの構造と構文
 description: 宣言型の構文を使用した Bicep ファイルの構造とプロパティについて説明します。
 ms.topic: conceptual
-ms.date: 09/21/2021
-ms.openlocfilehash: f0fb7214d261c686273e275cb0d3d18b1d393f6b
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 10/01/2021
+ms.openlocfilehash: e627821f80f76ff536859fd643bd01c55d50ab7e
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128654330"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129350401"
 ---
 # <a name="understand-the-structure-and-syntax-of-bicep-files"></a>Bicep ファイルの構造と構文について
 
@@ -175,6 +175,17 @@ param storageSKU string = 'Standard_LRS'
 | minValue | INT | INT | 整数パラメーターの最小値。 この値は包含値です。 |
 | secure | string、object | なし | パラメーターを、セキュリティで保護されているとしてマークします。 セキュリティで保護されたパラメーターの値はデプロイ履歴に保存されず、ログに記録されません。 詳細については、「[セキュリティで保護された文字列とオブジェクト](data-types.md#secure-strings-and-objects)」を参照してください。 |
 
+デコレーターは、[sys 名前空間](bicep-functions.md#namespaces-for-functions)にあります。 このデコレーターを同じ名前の別の項目と区別する必要がある場合は、デコレータの前に「`sys`」を付けます。 たとえば、Bicep ファイルに `description` という名前のパラメーターが含まれている場合、**description** デコレーターを使用するときに、sys 名前空間を追加する必要があります。
+
+```bicep
+@sys.description('The name of the instance.')
+param name string
+@sys.description('The description of the instance to display.')
+param description string
+```
+
+詳細については、[デコレーター](parameters.md#decorators)に関するページを参照してください。
+
 ## <a name="variables"></a>変数
 
 Bicep ファイル内で繰り返される複雑な式には変数を使用します。 たとえば、複数の値を連結して構成されるリソース名の変数を追加できます。
@@ -281,6 +292,8 @@ resource storageAccountResources 'Microsoft.Storage/storageAccounts@2019-06-01' 
   ...
 }]
 ```
+
+`batchSize` デコレーターは、[sys 名前空間](bicep-functions.md#namespaces-for-functions)にあります。 このデコレーターを同じ名前の別の項目と区別する必要がある場合は、デコレータの前に「**sys**: `@sys.batchSize(2)`」を付けます。
 
 詳細については、[「バッチでのデプロイ」](loop-resources.md#deploy-in-batches)を参照してください。
 

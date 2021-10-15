@@ -5,12 +5,12 @@ author: gundarev
 ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: e55564ab1534b145958e128f58d50911ae9c51fa
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 2ace40157681b250b56fcd595486260f07ec80c3
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111746287"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129400707"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-azure-virtual-desktop"></a>Azure Virtual Desktop 用グラフィックス処理装置 (GPU) アクセラレーションを構成する
 
@@ -23,10 +23,11 @@ Azure Virtual Desktop は、アプリのパフォーマンスとスケーラビ�
 
 ## <a name="select-an-appropriate-gpu-optimized-azure-virtual-machine-size"></a>GPU で最適化する Azure 仮想マシンの適切なサイズを選択する
 
-Azure の [NV シリーズ](../virtual-machines/nv-series.md)、[NVv3 シリーズ](../virtual-machines/nvv3-series.md)、または [NVv4 シリーズ](../virtual-machines/nvv4-series.md)の各 VM サイズのいずれかを選択します。 これらは、アプリとデスクトップの仮想化に合わせて調整され、ほとんどのアプリと Windows ユーザー インターフェイスで GPU アクセラレーションを有効にすることができます。 実際のホスト プールに適した選択は、特定のアプリ ワークロード、ユーザー エクスペリエンスの望ましい品質、コストなど、さまざまなの要因に依存します。 一般に、GPU が大きくて高機能であるほど、特定のユーザー密度でのユーザー エクスペリエンスは向上しますが、GPU サイズが小さく、分割されている場合は、コストと品質をよりきめ細やかに制御することができます。
+Azure の [NV シリーズ](../virtual-machines/nv-series.md)、[NVv3 シリーズ](../virtual-machines/nvv3-series.md)、または [NVv4 シリーズ](../virtual-machines/nvv4-series.md)の各 VM サイズのいずれかを選択します。 これらは、アプリとデスクトップの仮想化に合わせて調整され、ほとんどのアプリと Windows ユーザー インターフェイスで GPU アクセラレーションを有効にすることができます。 実際のホスト プールに適した選択は、特定のアプリ ワークロード、ユーザー エクスペリエンスの望ましい品質、コストなど、さまざまなの要因に依存します。 一般に、GPU が大きくて高機能であるほど、特定のユーザー密度でのユーザー エクスペリエンスは向上しますが、GPU サイズが小さく、分割されている場合は、コストと品質をよりきめ細やかに制御することができます。 VM を選択するときは、NV シリーズの VM の提供終了について考慮してください。詳細については、[NV の提供終了](../virtual-machines/nv-series-retirement.md)に関する記事を参照してください
 
 >[!NOTE]
 >Azure の NC、NCv2、NCv3、ND、NDv2 シリーズの VM は通常、Azure Virtual Desktop のセッション ホストには適していません。 これらの VM は、NVIDIA CUDA を使用して構築されたものなど、特殊な高パフォーマンスのコンピューティング ツールまたは機械学習ツール向けに設計されています。 ほとんどのアプリまたは Windows ユーザー インターフェイスでは、GPU アクセラレーションはサポートされていません。
+
 
 ## <a name="create-a-host-pool-provision-your-virtual-machine-and-configure-an-app-group"></a>ホスト プールを作成し、仮想マシンをプロビジョニングして、アプリ グループを構成する
 
@@ -36,6 +37,9 @@ Azure Virtual Desktop では、次のオペレーティング システム内で
 
 * Windows 10 バージョン 1511 以降
 * Windows Server 2016 以降
+
+>[!NOTE]
+>マルチセッション OS は具体的には記載されていませんが、NV インスタンスの GRID ライセンスでは、25 人の同時ユーザーがサポートされます。「[NV シリーズ](../virtual-machines/nv-series.md)」を参照してください
 
 また、アプリ グループを構成するか、または新しいホスト プールを作成すると自動的に作成される ("Desktop Application Group" という名前の) 既定のデスクトップ アプリ グループを使う必要があります。 手順については、[Azure Virtual Desktop 用アプリ グループの管理チュートリアル](./manage-app-groups.md)のページをご覧ください。
 

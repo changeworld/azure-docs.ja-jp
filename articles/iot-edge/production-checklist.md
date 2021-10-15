@@ -10,12 +10,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 69d6cae5ccb26ef35fd121c32a9f111ff64b7a11
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: b131d20122ca2440698fed301768d1fe961ac286
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129215284"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129390351"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>IoT Edge ソリューションを運用環境にデプロイするための準備を行う
 
@@ -362,7 +362,7 @@ IoT Edge のデプロイをテストする場合、通常はデバイスにア�
 
 チュートリアルやその他のドキュメントでは、開発コンピューターで使用するものと同じコンテナー レジストリの資格情報を IoT Edge デバイスでも使用するように指示しています。 これらの指示は、単にテストおよび開発環境をより簡単に設定できるようにするためのものです。運用環境シナリオではこれらの指示に従わないでください。
 
-レジストリへのセキュリティで保護されたアクセスのために、[認証オプション](../container-registry/container-registry-authentication.md)を選択できます。 一般的で推奨される認証は、Active Directory サービス プリンシパルを使用することです。これは、IoT Edge デバイスと同様に、自動的にまたは無人方式でコンテナー イメージをプルするアプリケーションやサービスによく適しています。
+レジストリへのセキュリティで保護されたアクセスのために、[認証オプション](../container-registry/container-registry-authentication.md)を選択できます。 一般的で推奨される認証は、Active Directory サービス プリンシパルを使用することです。これは、IoT Edge デバイスと同様に、自動的にまたは無人方式でコンテナー イメージをプルするアプリケーションやサービスによく適しています。 もう 1 つのオプションは、リポジトリをスコープとしたトークンの使用です。これにより、それらが作成された Azure Container Registry にのみ存在する長期または短期の ID を作成し、リポジトリ レベルへのアクセスのスコープを設定することができます。
 
 サービス プリンシパルを作成するには、「[サービス プリンシパルの作成](../container-registry/container-registry-auth-service-principal.md#create-a-service-principal)」の説明に従って、2 つのスクリプトを実行します。 これらのスクリプトは次のタスクを実行します。
 
@@ -375,6 +375,16 @@ IoT Edge のデプロイをテストする場合、通常はデバイスにア�
 * ユーザー名またはクライアント ID には、サービス プリンシパル ID を指定します。
 
 * パスワードまたはクライアント シークレットには、サービス プリンシパルのパスワードを指定します。
+
+<br>
+
+リポジトリをスコープとしたトークンを作成するには、[リポジトリをスコープとしたトークンの作成](../container-registry/container-registry-repository-scoped-permissions.md)に関するページに従ってください。
+
+リポジトリをスコープとしたトークンを使用して認証するには、リポジトリをスコープとしたトークンを作成した後に取得したトークン名とパスワードを指定します。 デプロイ マニフェストにこれらの資格情報を指定します。
+
+* ユーザー名には、トークンのユーザー名を指定します。
+
+* パスワードには、トークンのパスワードのいずれかを指定します。
 
 > [!NOTE]
 > 強化されたセキュリティ認証を実装した後、**管理者ユーザー** 設定を無効にして、既定のユーザー名とパスワードにアクセスできないようにします。 Azure portal のコンテナー レジストリで、左側のウィンドウ メニューの **[設定]** の下にある **[アクセスキー]** を選択します。

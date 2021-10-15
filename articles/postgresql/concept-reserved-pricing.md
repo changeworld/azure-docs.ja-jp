@@ -1,26 +1,26 @@
 ---
-title: 予約済みコンピューティングの価格 - Azure Database for PostgreSQL - Single Server
+title: 予約済みコンピューティングの価格 - Azure Database for PostgreSQL
 description: 予約容量を使用して Azure Database for PostgreSQL 計算リソースを前払いする
 author: mksuni
 ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/16/2020
-ms.openlocfilehash: 958663ffc0b05b55d837ae565ee48ee03a54b0ba
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 10/01/2021
+ms.openlocfilehash: 9d8c0a4f550442b59a65993aceba37a1672ce078
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128674739"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129389496"
 ---
-# <a name="prepay-for-azure-database-for-postgresql---single-server-compute-resources-with-reserved-capacity"></a>Azure Database for PostgreSQL の前払い - 予約容量を持つ Single Server 計算リソース
+# <a name="prepay-for-azure-database-for-postgresql-compute-resources-with-reserved-capacity"></a>予約容量を使用して Azure Database for PostgreSQL 計算リソースを前払いする
 
 Azure Database for PostgreSQL では計算リソースを前払いすることで、従量課金制よりコストを節約できるようになりました。 Azure Database for PostgreSQL の予約容量を使用すると、PostgreSQL サーバーを 1 年分または 3 年分前払いすることで計算コストを大幅に引き下げることができます。 Azure Database for PostgreSQL の予約容量を購入するには、Azure リージョン、デプロイの種類、パフォーマンス レベル、および期間を指定する必要があります。 </br>
 
 特定の Azure Database for PostgreSQL サーバーに予約を割り当てる必要はありません。 既に実行している Azure Database for PostgreSQL または新しくデプロイされたものには、予約価格の特典が自動的に適用されます。 予約を購入すると、計算コストを 1 年間または 3 年間分前払いすることになります。 予約を購入するとすぐに、予約の属性に一致する Azure Database for PostgreSQL のコンピューティング料金は従量課金制で課金されなくなります。 予約には、PostgreSQL データベース サーバーに関連するソフトウェア、ネットワーク、またはストレージの料金は含まれません。 予約期間が満了した時点で、課金特典の有効期限は切れ、従量課金料金が Azure Database for PostgreSQL に適用されます。 予約は自動更新されません。 価格の詳細については、[Azure Database for PostgreSQL の予約容量オファー](https://azure.microsoft.com/pricing/details/postgresql/)に関するページを参照してください。 </br>
 
 > [!IMPORTANT]
-> 予約容量の価格は、Azure Database for PostgreSQL の [Single Server](./overview.md#azure-database-for-postgresql---single-server) および [Hyperscale Citus](./overview.md#azure-database-for-postgresql--hyperscale-citus) デプロイ オプションの両方で使用できます。 Hyperscale (Citus) での RI の価格の詳細については、[このページ](concepts-hyperscale-reserved-pricing.md)を参照してください。
+> 予約容量の価格は、Azure Database for PostgreSQL の [Single Server](./overview.md#azure-database-for-postgresql---single-server)、[フレキシブル サーバー](flexible-server/overview.md)、および [Hyperscale Citus](./overview.md#azure-database-for-postgresql--hyperscale-citus) デプロイ オプションで使用できます。 Hyperscale (Citus) での RI の価格の詳細については、[このページ](concepts-hyperscale-reserved-pricing.md)を参照してください。
 
 Azure Database for PostgreSQL の予約容量は、[Azure portal](https://portal.azure.com/) で購入できます。 予約の支払いは、[前払いまたは月払い](../cost-management-billing/reservations/prepare-buy-reservation.md)で行います。 予約容量を購入するには:
 

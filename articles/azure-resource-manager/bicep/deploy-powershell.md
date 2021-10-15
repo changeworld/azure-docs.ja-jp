@@ -4,27 +4,25 @@ description: Azure Resource Manager と Azure PowerShell を使用してリソ�
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: 3058265fee62143f88bbd87e69c58dd4ff597920
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 10/01/2021
+ms.openlocfilehash: cc6c8e05f5e6f37a8ac832ac5ee8fae386a627f1
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124793799"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129387717"
 ---
 # <a name="deploy-resources-with-bicep-and-azure-powershell"></a>Bicep と Azure PowerShell を使用してリソースをデプロイする
 
 この記事では、Azure PowerShell と Bicep ファイルを使用して、Azure にリソースをデプロイする方法について説明します。 Azure ソリューションのデプロイと管理の概念について詳しくない場合は、[Bicep 概要](overview.md)に関する記事を参照してください。
 
-Bicep ファイルをデプロイするには、[Azure PowerShell バージョン 5.6.0 以降](/powershell/azure/install-az-ps)が必要です。
-
 ## <a name="prerequisites"></a>前提条件
 
-デプロイする Bicep ファイルが必要です。 この記事で使用されているローカル ファイル名は _C:\MyTemplates\azuredeploy.bicep_ です。
+デプロイする Bicep ファイルが必要です。 ファイルはローカルである必要があります。
 
-Azure PowerShell をインストールし、Azure に接続する必要があります。
+Azure PowerShell と、Azure に接続されている必要があります。
 
-- **ローカル コンピューターに Azure PowerShell コマンドレットをインストールします。** 詳細については、[Azure PowerShell の概要](/powershell/azure/get-started-azureps)に関するページを参照してください。
+- **ローカル コンピューターに Azure PowerShell コマンドレットをインストールします。** Bicep ファイルをデプロイするには、[Azure PowerShell](/powershell/azure/install-az-ps) バージョン **5.6.0 以降** が必要です。 詳細については、[Azure PowerShell の概要](/powershell/azure/get-started-azureps)に関するページを参照してください。
 - **[Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) を使用して Azure に接続します**。 Azure サブスクリプションが複数ある場合は、[Set-AzContext](/powershell/module/Az.Accounts/Set-AzContext) を実行する必要が生じることもあります。 詳しくは、「[Use multiple Azure subscriptions (複数の Azure サブスクリプションを使用する)](/powershell/azure/manage-subscriptions-azureps)」をご覧ください。
 
 PowerShell がインストールされていない場合は、Azure Cloud Shell を使用できます。 詳細については、「[Azure Cloud Shell から Bicep ファイルをデプロイする](./deploy-cloud-shell.md)」を参照してください。
@@ -139,15 +137,15 @@ New-AzResourceGroupDeployment -ResourceGroupName testgroup `
 
 ```powershell
 New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
-  -TemplateFile <path-to-bicep> `
-  -TemplateParameterFile c:\MyTemplates\storage.parameters.json
+  -TemplateFile c:\BicepFiles\storage.bicep `
+  -TemplateParameterFile c:\BicepFiles\storage.parameters.json
 ```
 
 外部パラメーター ファイルを渡すには、`TemplateParameterUri` パラメーターを使用します。
 
 ```powershell
 New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
-  -TemplateFile <path-to-bicep> `
+  -TemplateFile c:\BicepFiles\storage.bicep `
   -TemplateParameterUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.storage/storage-account-create/azuredeploy.parameters.json
 ```
 
@@ -157,11 +155,11 @@ Bicep ファイルをデプロイする前に、Bicep ファイルが環境に�
 
 ## <a name="deploy-template-specs"></a>テンプレート スペックをデプロイする
 
-現在、Azure PowerShell では、Bicep ファイルを指定してテンプレート スペックを作成することはサポートされていません。 ただし、[Microsoft.Resources/templateSpecs](/azure/templates/microsoft.resources/templatespecs) リソースを使用して Bicep ファイルを作成し、テンプレート スペックをデプロイできます。Bicep ファイルでテンプレート スペックを作成する方法については、[テンプレート スペックの作成サンプル](https://github.com/Azure/azure-docs-bicep-samples/blob/main/samples/create-template-spec/azuredeploy.bicep)を参照してください。 また、Bicep CLI を使用して Bicep ファイルを ARM テンプレート JSON に組み込み、JSON テンプレートを使用してテンプレート スペックを作成することもできます。
+現在、Azure PowerShell では、Bicep ファイルを指定してテンプレート スペックを作成することはサポートされていません。 ただし、[Microsoft.Resources/templateSpecs](/azure/templates/microsoft.resources/templatespecs) リソースを使用して Bicep ファイルを作成し、テンプレート スペックをデプロイできます。Bicep ファイルでテンプレート スペックを作成する方法については、[テンプレート スペックの作成サンプル](https://github.com/Azure/azure-docs-bicep-samples/blob/main/samples/create-template-spec/azuredeploy.bicep)を参照してください。 また、Bicep CLI を使用して Bicep ファイルを JSON に組み込み、JSON テンプレートを使用してテンプレート スペックを作成することもできます。
 
 ## <a name="deployment-name"></a>デプロイ名
 
-Bicep ファイルをデプロイするときに、デプロイに名前を付けることができます。 この名前は、デプロイ履歴からデプロイを取得するのに役立ちます。 デプロイの名前を指定しない場合は、Bicep ファイルの名前が使用されます。 たとえば、`azuredeploy.bicep` という名前の Bicep をデプロイし、デプロイ名を指定しなかった場合、デプロイは `azuredeploy` という名前になります。
+Bicep ファイルをデプロイするときに、デプロイに名前を付けることができます。 この名前は、デプロイ履歴からデプロイを取得するのに役立ちます。 デプロイの名前を指定しない場合は、Bicep ファイルの名前が使用されます。 たとえば、`main.bicep` という名前の Bicep をデプロイし、デプロイ名を指定しなかった場合、デプロイは `main` という名前になります。
 
 デプロイを実行するたびに、リソース グループのデプロイ履歴にデプロイ名のエントリが追加されます。 別のデプロイを実行するときに同じ名前を付けると、現在のデプロイによって前のエントリが置き換えられます。 デプロイ履歴に一意のエントリを保持する場合は、デプロイごとに一意の名前を付けます。
 
@@ -189,6 +187,4 @@ $deploymentName="ExampleDeployment"+"$today"
 
 ## <a name="next-steps"></a>次のステップ
 
-- エラーが発生したときに正常なデプロイにロールバックするには、「[エラー発生時に正常なデプロイにロールバックする](../templates/rollback-on-error.md)」を参照してください。
 - ファイルでパラメーターを定義する方法については、「[Bicep ファイルの構造と構文について](file.md)」を参照してください。
-- SAS トークンを必要とするテンプレートをデプロイする方法については、「[SAS トークンを使用してプライベート ARM テンプレートをデプロイする](../templates/secure-template-with-sas-token.md)」を参照してください。

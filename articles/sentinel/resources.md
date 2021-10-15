@@ -1,26 +1,21 @@
 ---
-title: Azure Sentinel の使用時に便利なリソース| Microsoft Docs
+title: Azure Sentinel の操作に便利なリソース
 description: このドキュメントでは、Azure Sentinel の使用時に便利なリソースの一覧を示します。
 services: sentinel
-documentationcenter: na
 author: yelevin
 manager: rkarlin
-editor: ''
 ms.assetid: 9b4c8e38-c986-4223-aa24-a71b01cb15ae
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 03/03/2021
 ms.author: yelevin
-ms.openlocfilehash: 247b025524a029fcb68fbe0682b365e9b7f240b5
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 47ccfea5b666e3c600454fec5d2e8dc801b78bc2
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128565175"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129358093"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel"></a>Azure Sentinel の操作に便利なリソース
 
@@ -45,7 +40,7 @@ Azure Logic Apps と増え続ける組み込みプレイブック ギャラリ�
 
 次の表では、Azure Sentinel でのプレイブック、ブック、およびノートブックの違いを説明します。
 
-|  |プレイブック  |ブック  |ノートブック  |
+| カテゴリ |プレイブック  |ブック  |ノートブック  |
 |---------|---------|---------|---------|
 |**ペルソナ**     |   <ul><li>SOC エンジニア</li><li>すべてのレベルのアナリスト</li></ul>      | <ul><li> SOC エンジニア</li><li>すべてのレベルのアナリスト</li></ul>       | <ul><li>脅威の検出者と Tier-2/Tier-3 アナリスト</li><li>インシデント調査担当者</li><li>データ サイエンティスト</li><li>セキュリティ研究者</li></ul>       |
 |**用途**     | 単純で反復可能なタスクの自動化:<ul><li>外部データの取り込み </li><li>TI や GeoIP 検索などを使用したデータ エンリッチメント </li><li> 調査 </li><li>修復 </li></ul>       | <ul><li>グラフ</li></ul>        |   <ul><li>Azure Sentinel データおよび外部データに対するクエリ </li><li>TI、GeoIP 検索、WhoIs 検索などを使用したデータ エンリッチメント </li><li> 調査 </li><li> グラフ </li><li> 検出 </li><li>機械学習とビッグ データ分析 </li></ul>      |

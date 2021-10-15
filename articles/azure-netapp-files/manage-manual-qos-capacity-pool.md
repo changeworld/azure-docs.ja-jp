@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/14/2021
 ms.author: b-juche
-ms.openlocfilehash: 18333b7c9fded73d330cacd6322b0869bf65f9d9
-ms.sourcegitcommit: 8651d19fca8c5f709cbb22bfcbe2fd4a1c8e429f
+ms.openlocfilehash: dd92472ff810a46743ffa08b1ea2fdd8f9e01da7
+ms.sourcegitcommit: f3f2ec7793ebeee19bd9ffc3004725fb33eb4b3f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112071085"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129407591"
 ---
 # <a name="manage-a-manual-qos-capacity-pool"></a>手動 QoS 容量プールを管理する
 
@@ -31,7 +31,7 @@ QoS の種類に関する考慮事項を理解するためには、「[Azure Net
 
 手動 QoS の種類を使用する新しい容量プールを作成するには:
 
-1. 「[容量プールを設定する](azure-netapp-files-set-up-capacity-pool.md)」の手順に従います。  
+1. 「[容量プールを作成する](azure-netapp-files-set-up-capacity-pool.md)」の手順に従います。  
 
 2. [新しい容量プール] ウィンドウで、種類として **[手動 QoS]** を選択します。  
 
@@ -68,7 +68,7 @@ QoS の種類に関する考慮事項を理解するためには、「[Azure Net
 
 ## <a name="next-steps"></a>次のステップ  
 
-* [容量プールを設定する](azure-netapp-files-set-up-capacity-pool.md)
+* [容量プールの作成](azure-netapp-files-set-up-capacity-pool.md)
 * [Azure NetApp Files のメトリック](azure-netapp-files-metrics.md)
 * [Azure NetApp Files のパフォーマンスに関する考慮事項](azure-netapp-files-performance-considerations.md)
 * [容量プールに関する問題のトラブルシューティング](troubleshoot-capacity-pools.md)

@@ -5,13 +5,13 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 07/30/2021
-ms.openlocfilehash: 5030abe5dbc93a1b04588d548d353701a5a77ad4
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 10/01/2021
+ms.openlocfilehash: 5298b572c24d174842da1c9e29b01a1d98f47a39
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128559268"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129387356"
 ---
 # <a name="logical-replication-and-logical-decoding-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL - フレキシブル サーバーでの論理レプリケーションと論理デコード
 
@@ -104,12 +104,21 @@ Azure Database for PostgreSQL - フレキシブル サーバーでは、次の�
 
 ### <a name="pglogical-extension"></a>pglogical 拡張機能
 
-プロバイダー データベース サーバーとサブスクライバーで pglogical を構成する例を次に示します。 詳細については、pglogical 拡張機能のドキュメントを参照してください。 また、上で示した前提条件のタスクを実行してある必要があります。
+プロバイダー データベース サーバーとサブスクライバーで pglogical を構成する例を次に示します。 詳細については、[pglogical 拡張機能のドキュメント](https://www.2ndquadrant.com/en/resources/pglogical/pglogical-docs)を参照してください。 また、上で示した前提条件のタスクを実行してある必要があります。
+
 
 1. プロバイダーとサブスクライバー両方のデータベース サーバーのデータベースに、pglogical 拡張機能をインストールします。
     ```SQL
    \C myDB
    CREATE EXTENSION pglogical;
+   ```
+2. レプリケーション ユーザーがサーバー管理ユーザー (サーバーを作成したユーザー) 以外の場合は、必ずユーザーに `azure_pg_admin` および `replication` 特権を割り当ててください。 または、管理者ユーザーをレプリケーション ユーザーに付与することもできます。 詳細については、[pglogical のドキュメント](https://www.2ndquadrant.com/en/resources/pglogical/pglogical-docs/#limitations-and-restrictions)を参照してください。
+   ```SQL
+   GRANT azure_pg_admin, replication to myUser;
+   ```
+   または
+   ```SQL
+   GRANT myAdminUser to myUser;
    ```
 2. **プロバイダー** (ソースとパブリッシャー) のデータベース サーバーで、プロバイダー ノードを作成します。
    ```SQL

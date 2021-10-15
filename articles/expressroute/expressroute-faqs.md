@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 03/29/2021
 ms.author: duau
-ms.openlocfilehash: 108c7c30ad84c83e895cade79bc8a6ad30029199
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.openlocfilehash: 08878f4fe13c270b6da3bfb74bed88c2476ad5de
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122272258"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129399624"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute の FAQ
 

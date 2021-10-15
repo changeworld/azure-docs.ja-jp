@@ -8,12 +8,12 @@ ms.service: azure-sentinel
 ms.custom: subject-cost-optimization
 ms.topic: how-to
 ms.date: 09/02/2021
-ms.openlocfilehash: 3e814541ecf43d8f9d12c028e8bebc8ac31fe411
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: bd3ff870952701901f432660ec0069afa5151916
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123433478"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129275356"
 ---
 # <a name="plan-and-manage-costs-for-azure-sentinel"></a>Azure Sentinel のコストを計画および管理する
 
@@ -321,7 +321,7 @@ Azure Sentinel で脅威をハンティングまたは調査するときは、�
 
 ### <a name="optimize-log-analytics-costs-with-dedicated-clusters"></a>専用クラスターを使用して Log Analytics のコストを最適化する
 
-少なくとも 1 TB/日を Azure Sentinel ワークスペースまたは同じリージョン内のワークスペースに取り込む場合は、コストを削減するために Log Analytics 専用クラスターへの移行を検討してください。 Log Analytics 専用クラスターのコミットメント レベルにより、まとめると合計 1 TB/日以上を取り込むすべてのワークスペースのデータ量が集約されます。
+少なくとも 500 GB/日を Azure Sentinel ワークスペースまたは同じリージョン内のワークスペースに取り込む場合は、コストを削減するために Log Analytics 専用クラスターへの移行を検討してください。 Log Analytics 専用クラスターのコミットメント レベルにより、まとめると合計 500 GB/日以上を取り込むすべてのワークスペースのデータ量が集約されます。
 
 Log Analytics 専用クラスターは、Azure Sentinel のコミットメント レベルには適用されません。 Azure Sentinel のコストは、専用クラスター内のワークスペースごとに引き続き適用されます。
 
@@ -329,7 +329,7 @@ Log Analytics 専用クラスターは、Azure Sentinel のコミットメント
 
 - クエリに含まれるすべてのワークスペースが専用クラスター内にある場合、クロスワークスペース クエリの実行速度が向上します。 それでも、環境内のワークスペースは可能な限り少なくするのが最善であり、専用クラスターで 1 つのクロスワークスペース クエリに含めることができる[ワークスペースには 100 の制限](../azure-monitor/logs/cross-workspace-query.md)がやはりあります。
 
-- 専用クラスター内のすべてのワークスペースで、クラスターに設定されている Log Analytics コミットメント レベルを共有できます。 ワークスペースごとに個別の Log Analytics コミットメント レベルにコミットする必要がないと、コストを削減して効率化できます。 専用クラスターを有効にすると、1 日あたり 1 TB のインジェストの最小 Log Analytics コミットメント レベルにコミットすることになります。
+- 専用クラスター内のすべてのワークスペースで、クラスターに設定されている Log Analytics コミットメント レベルを共有できます。 ワークスペースごとに個別の Log Analytics コミットメント レベルにコミットする必要がないと、コストを削減して効率化できます。 専用クラスターを有効にすると、1 日あたり 500 GB のインジェストの最小 Log Analytics コミットメント レベルにコミットすることになります。
 
 コストの最適化のために専用クラスターに移行する場合の、その他の考慮事項を次に示します。
 

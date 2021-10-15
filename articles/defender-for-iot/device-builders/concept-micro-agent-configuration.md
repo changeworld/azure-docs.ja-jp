@@ -1,14 +1,14 @@
 ---
 title: マイクロ エージェントの構成 (プレビュー)
 description: 構成の変更直後に、コレクターによって現在のすべてのデータが送信されます。 その後、変更が適用されます。
-ms.date: 08/18/2021
+ms.date: 10/04/2021
 ms.topic: conceptual
-ms.openlocfilehash: 432cf82f436e0a70b52d33d77c9002b549f96398
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: 43a26a73f97c9d424998a4ff35d1304c0baf6fc0
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122398085"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129428447"
 ---
 # <a name="micro-agent-configurations-preview"></a>マイクロ エージェントの構成 (プレビュー)
 
@@ -19,7 +19,7 @@ ms.locfileid: "122398085"
 構成を変更すると、未送信のイベント データがコレクターによってすぐに送信されます。 データが送信されると、変更が適用され、すべてのコレクターが再起動します。
 
 > [!Note]
-> 集計モード、キャッシュ サイズ、頻度の設定はサポートされますが、構成することはできません。
+> 集計モードの設定はサポートされていますが、構成することはできません。
 
 ## <a name="event-based-collectors-configurations"></a>イベント ベースのコレクターの構成
 

@@ -16,12 +16,12 @@ ms.topic: reference
 ms.date: 08/10/2020
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44ef48fe75d7070d3f471b06d548c06dc5d972b6
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 21d59036677a9a62d366e03bcdedb3a2f5d44abe
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110479789"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129351699"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: バージョンのリリース履歴
 Azure Active Directory チームは、Azure AD Connect Health を新機能で定期的に更新しています。 この記事では、リリースされたバージョンと機能の一覧を示します。  
@@ -31,6 +31,13 @@ Azure Active Directory チームは、Azure AD Connect Health を新機能で定
 >
 
 Azure AD Connect Health for Sync は、Azure AD Connect のインストールと統合されます。 詳細については、[Azure AD Connect のリリース履歴](./reference-connect-version-history.md)に関する記事をご覧ください。機能のフィードバックについては、[Connnect Health User Voice チャネル](https://feedback.azure.com/forums/169401-azure-active-directory/filters/new?category_id=165591)で投票してください
+
+## <a name="september-2021"></a>2021 年 9 月
+**エージェントの更新**
+- AD FS 用の Azure AD Connect Health エージェント (バージョン 3.1.113.0)
+  - 特定のデバイス ベースの認証シナリオにおいて、AD FS 監査からデバイスのコンプライアンスや管理状態、デバイスの OS、デバイスの OS バージョンなどのデバイス情報を抽出するよう修正。
+  - エラーが発生した場合に OAuth アプリケーション情報を入力し、OAuth のエラーをより具体的なエラー コードで分類するよう修正
+  - お客様のマシンで発生した WMI 呼び出しの破損に関するアラートを修正。 このような呼び出しでは、結果または状態が "notRun "に設定されます。
 
 ## <a name="may-2021"></a>2021 年 5 月
 **エージェントの更新**

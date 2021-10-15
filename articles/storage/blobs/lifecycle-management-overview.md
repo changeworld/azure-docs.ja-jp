@@ -10,12 +10,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell, references_regions
-ms.openlocfilehash: 1f7b4152bee090e39c598b559ffa9d2e8aea8e88
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 245bcbfd59644946ac6f039e35fe02147054cc8c
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123477746"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129273233"
 ---
 # <a name="optimize-costs-by-automatically-managing-the-data-lifecycle"></a>データ ライフサイクルを自動管理してコストを最適化する
 
@@ -153,8 +153,8 @@ BLOB インデックス機能と、既知の問題および制限事項の詳細
 | tierToArchive               | `blockBlob` でサポート                  | サポートされています     | サポートされています     |
 | delete                      | `blockBlob` および `appendBlob` に対してサポートされています | サポートされています     | サポートされています     |
 
->[!NOTE]
->同じ BLOB に複数のアクションを定義した場合、ライフサイクル管理によって最も低コストのアクションが BLOB に適用されます。 たとえば、`delete` アクションは `tierToArchive` アクションよりも低コストです。 `tierToArchive` アクションは `tierToCool` アクションよりも低コストです。
+> [!NOTE]
+> 同じ BLOB に複数のアクションを定義した場合、ライフサイクル管理によって最も低コストのアクションが BLOB に適用されます。 たとえば、`delete` アクションは `tierToArchive` アクションよりも低コストです。 `tierToArchive` アクションは `tierToCool` アクションよりも低コストです。
 
 実行条件は、古さに基づいています。 ベース BLOB では、最終変更時刻を使用し、BLOB バージョンではバージョン作成時刻を使用し、BLOB スナップショットでは、スナップショットの作成時刻を使用して古さが追跡されます。
 
@@ -364,11 +364,11 @@ BLOB インデックス機能と、既知の問題および制限事項の詳細
 
 ## <a name="feature-support"></a>機能サポート
 
-この表は、アカウントでのこの機能のサポート状況と、特定の機能を有効にした場合のサポートへの影響を示しています。 
+この表は、アカウントでのこの機能のサポート状況と、特定の機能を有効にした場合のサポートへの影響を示しています。
 
-| ストレージ アカウントの種類                | Blob Storage (既定のサポート)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>    
+| ストレージ アカウントの種類                | Blob Storage (既定のサポート)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>
 |-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
-| Standard 汎用 v2 | ![はい](../media/icons/yes-icon.png) |![はい](../media/icons/yes-icon.png)              | ![はい](../media/icons/yes-icon.png) | 
+| Standard 汎用 v2 | ![はい](../media/icons/yes-icon.png) |![はい](../media/icons/yes-icon.png)              | ![はい](../media/icons/yes-icon.png) |
 | Premium ブロック BLOB          | ![はい](../media/icons/yes-icon.png)|![はい](../media/icons/yes-icon.png) | ![はい](../media/icons/yes-icon.png) |
 
 <sup>1</sup>    Data Lake Storage Gen2 とネットワーク ファイル システム (NFS) 3.0 プロトコルの両方で、階層型名前空間が有効になっているストレージ アカウントが必要です。
@@ -391,7 +391,7 @@ BLOB の最終アクセス時刻が更新されるたびに、[その他の操�
 
 **既存のポリシーを更新した場合、アクションの実行にはどのくらいの時間がかかりますか。**
 
-更新されたポリシーは、有効になるまで最大 24 時間かかります。 ポリシーが有効になると、アクションが実行されるまでに最大で 24 時間かかることがあります。 このため、ポリシーのアクションが完了するまでに最大 48 時間かかる可能性があります。 更新によってルールが無効になるか、削除されるとき、enableAutoTierToHotFromCool が使用された場合でも、ホット層に自動的に階層化されます。 たとえば、最後のアクセスに基づき、enableAutoTierToHotFromCool を含むルールが設定されます。 ルールが無効になるか、削除されるとき、BLOB が現在クール層にあり、その後アクセスされる場合、ホット層に戻ります。それがライフサイクル管理外のアクセスで適用されるためです。 ライフサイクル管理ルールが無効になっているか、削除されているため、BLOB がホット層からクール層に移動することはありません。  autoTierToHotFromCool を回避する唯一の方法は、最終アクセス時刻の追跡をオフにすることです。
+更新されたポリシーは、有効になるまで最大 24 時間かかります。 ポリシーが有効になると、アクションが実行されるまでに最大で 24 時間かかることがあります。 このため、ポリシーのアクションが完了するまでに最大 48 時間かかる可能性があります。 更新によってルールが無効になるか、削除されるとき、enableAutoTierToHotFromCool が使用された場合でも、ホット層に自動的に階層化されます。 たとえば、最後のアクセスに基づき、enableAutoTierToHotFromCool を含むルールが設定されます。 ルールが無効になるか、削除されるとき、BLOB が現在クール層にあり、その後アクセスされる場合、ホット層に戻ります。それがライフサイクル管理外のアクセスで適用されるためです。 ライフサイクル管理ルールが無効になっているか、削除されているため、BLOB がホット層からクール層に移動することはありません。 autoTierToHotFromCool を回避する唯一の方法は、最終アクセス時刻の追跡をオフにすることです。
 
 **アーカイブ済み BLOB を手動でリハイドレートしました。これが一時的にアーカイブ層に戻されないようにするにはどうすればよいですか。**
 
@@ -400,5 +400,5 @@ BLOB の最終アクセス時刻が更新されるたびに、[その他の操�
 ## <a name="next-steps"></a>次のステップ
 
 - [ライフサイクル管理ポリシーを構成する](lifecycle-management-policy-configure.md)
-- [Azure Blob Storage のアクセス層 - ホット、クール、およびアーカイブ](storage-blob-storage-tiers.md)
+- [BLOB データのホット、クール、アーカイブのアクセス層](access-tiers-overview.md)
 - [BLOB インデックスを使用して Azure Blob Storage でデータを管理および検索する](storage-manage-find-blobs.md)

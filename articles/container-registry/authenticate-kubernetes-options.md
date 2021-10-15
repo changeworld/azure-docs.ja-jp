@@ -4,13 +4,13 @@ description: Kubernetes クラスターからコンテナー イメージをプ�
 ms.topic: article
 author: dlepow
 ms.author: danlep
-ms.date: 06/02/2021
-ms.openlocfilehash: 738bdf617d17c0bd621614ee0fd32f2d0e18b729
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.date: 09/20/2021
+ms.openlocfilehash: 2fc24714183438f9d740de79f9a9e9ce11f17391
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111442218"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129545399"
 ---
 # <a name="scenarios-to-authenticate-with-azure-container-registry-from-kubernetes"></a>Kubernetes から Azure Container Registry の認証を受ける
 
@@ -23,9 +23,9 @@ Azure Container Registry から Kuberentes クラスターにイメージをプ�
 
 | Kubernetes クラスター |認証方法  | 説明  | 例 | 
 |---------|---------|---------|----------|
-| AKS クラスター |AKS マネージド ID    |  AKS kubelet [マネージ ID](../aks/use-managed-identity.md) を有効にして、アタッチされている Azure Container Registry からイメージをプルします。<br/><br/> レジストリは、同じまたは別の Azure サブスクリプションに配置できます。      | [Azure Kubernetes Service から Azure Container Registry の認証を受ける](../aks/cluster-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json)| 
-| AKS クラスター | AKS サービス プリンシパル     | ターゲットの Azure Container Registry に対するアクセス許可を持つ [AKS サービス プリンシパル](../aks/kubernetes-service-principal.md)を有効にします。<br/><br/>レジストリは、同じ Azure Active Directory テナント内でも、別のテナント内でも構いません。        | [Azure Container Registry から別の AD テナントの AKS クラスターにイメージをプルする](authenticate-aks-cross-tenant.md)
-| AKS 以外の Kubernetes クラスター |ポッド [imagePullSecrets](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/)   |  一般的な Kubernetes メカニズムを使用して、ポッド デプロイのレジストリ資格情報を管理します。<br/><br/>AD サービス プリンシパル、リポジトリ スコープのトークン、またはその他の[レジストリ資格情報](container-registry-authentication.md)を構成します。  | [プル シークレットを使用して Azure Container Registry から Kubernetes クラスターにイメージをプルする](container-registry-auth-kubernetes.md) | 
+| AKS クラスター |AKS マネージド ID    |  AKS kubelet [マネージ ID](../aks/use-managed-identity.md) を有効にして、アタッチされている Azure Container Registry からイメージをプルします。<br/><br/> レジストリとクラスターは同じ Active Directory テナントにある必要がありますが、Azure サブスクリプションは同じであっても違っていてもかまいません。      | [Azure Kubernetes Service から Azure Container Registry の認証を受ける](../aks/cluster-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json)| 
+| AKS クラスター | AKS サービス プリンシパル     | ターゲットの Azure Container Registry に対するアクセス許可を持つ [AKS サービス プリンシパル](../aks/kubernetes-service-principal.md)を有効にします。<br/><br/>レジストリとクラスターが存在する Azure サブスクリプションと Active Directory テナントは、同じあっても違っていてもかまいません。        | [Azure Container Registry から別の AD テナントの AKS クラスターにイメージをプルする](authenticate-aks-cross-tenant.md)
+| AKS 以外の Kubernetes クラスター |ポッド [imagePullSecrets](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/)   |  一般的な Kubernetes メカニズムを使用して、ポッド デプロイのレジストリ資格情報を管理します。<br/><br/>AD サービス プリンシパルや、レジストリをスコープとするトークンなど、サポートされている[レジストリ資格情報](container-registry-authentication.md)を設定します。  | [プル シークレットを使用して Azure Container Registry から Kubernetes クラスターにイメージをプルする](container-registry-auth-kubernetes.md) | 
 
 
 

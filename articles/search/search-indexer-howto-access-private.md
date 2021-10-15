@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/13/2021
-ms.openlocfilehash: 79bb517faffdda7e9d7ddef45e7b52f5e81dc201
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 484f52656c5e49113d50f25a94a33b94ed886ab0
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128589684"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129359190"
 ---
 # <a name="make-indexer-connections-through-a-private-endpoint"></a>プライベート エンドポイントを経由したインデクサー接続の作成
 
@@ -56,7 +56,13 @@ Azure Cognitive Search では、その管理 REST API を通じて、Azure Cogni
 この記事の残りの部分では、Azure portal (または必要に応じて [Azure CLI](/cli/azure/)) と [Postman](https://www.postman.com/) (または必要に応じて [curl](https://curl.se/) などの他の HTTP クライアント) を組み合わせて使用して、REST API の呼び出しをデモンストレーションします。
 
 > [!NOTE]
-> Azure Data Lake Storage Gen2 へのプライベート エンドポイント接続を作成するには、2 つのプライベート エンドポイントを作成する必要があります。 groupID 'dfs' を持つ 1 つのプライベート エンドポイントと、groupID 'blob' を持つもう 1 つのプライベート エンドポイント。
+> Azure Cognitive Search データ ソースなど、正しく機能するために複数の共有プライベート リンクの作成が必要な構成も存在します。 次のリストに、この要件に当てはまる構成と、それぞれに必要なグループ ID を記載します。
+> * **Azure Data Lake Storage Gen2 データ ソース** - dfs、blob という groupID を持つ共有プライベート リンクを 1 つずつ、合計 2 つ作成します。
+> * **ナレッジ ストアを設定しているスキルセット** - ナレッジ ストアに設定しているプロジェクションにより、1 つまたは 2 つの共有プライベート リンクが必要です。
+>   * BLOB またはファイル プロジェクションを使用する場合は、blob という groupID を持つ共有プライベート リンクを 1 つ作成します。 
+>   * テーブル プロジェクションを使用する場合は、table という groupID を持つ共有プライベート リンクを 1 つ作成します。 
+>   * BLOB または ファイル プロジェクションとテーブル プロジェクションを使用する場合は、blob、table という groupID を持つ共有プライベート リンクを 1 つずつ、合計 2 つ作成します。 
+> * **キャッシュを有効にしたインデクサー** - table、blob という groupID を持つ共有プライベート リンクを 1 つずつ、合計 2 つ作成します。
 
 ## <a name="set-up-indexer-connection-through-private-endpoint"></a>プライベート エンドポイントを使用してインデクサー接続を設定する
 
@@ -70,25 +76,25 @@ Azure Cognitive Search では、その管理 REST API を通じて、Azure Cogni
 
 アクセスを制限する手順は、リソースによって異なります。 以下のシナリオは、3 つの一般的な種類のリソースを示しています。
 
-- シナリオ 1: データ ソース
+- シナリオ 1: Azure Storage
 
-    Azure Storage アカウントを構成する方法の例を次に示します。 このオプションをオンにしてページを空のままにすると、仮想ネットワークからのトラフィックは許可されないことを意味します。
+    Azure ストレージ アカウント ファイアウォールの設定例を次に挙げます。 このオプションをオンにしてページを空のままにすると、仮想ネットワークからのトラフィックは許可されないことを意味します。
 
     ![Azure Storage の [ファイアウォールと仮想ネットワーク] ペインのスクリーンショット。選択したネットワークへのアクセスを許可するオプションが表示されています。](media\search-indexer-howto-secure-access\storage-firewall-noaccess.png)
 
 - シナリオ 2: Azure Key Vault
 
-    Azure Key Vault を構成する方法の例を次に示します。
+    Azure Key Vault ファイアウォールの設定例を次に挙げます。
  
     ![Azure Key Vault の [ファイアウォールと仮想ネットワーク] ペインのスクリーンショット。選択したネットワークへのアクセスを許可するオプションが表示されています。](media\search-indexer-howto-secure-access\key-vault-firewall-noaccess.png)
     
 - シナリオ 3: Azure Functions
 
-    Azure Functions には、ネットワーク設定の変更は必要ありません。 次の手順の後半では、共有プライベート エンドポイントを作成すると、関数への共有プライベート エンドポイントの作成後に、プライベート リンクを使用したアクセスのみが関数によって自動的に許可されます。
+    Azure Functions のファイアウォールでは、ネットワーク設定の変更は必要ありません。 これ以降のステップでは、Function に共有プライベート エンドポイントを作成すると、それ以降は Function の機能によって、プライベート リンクを使用するアクセスだけが許可されるようになります。
 
 ### <a name="step-2-create-a-shared-private-link-resource-to-the-azure-resource"></a>手順 2: Azure リソースへの共有プライベート リンク リソースを作成する
 
-次のセクションでは、Azure portal または Azure CLI のいずれかを使用して共有プライベート リンク リソースを作成する方法について説明します。
+次のセクションでは、Azure portal または Azure CLI のいずれかを使用して共有プライベート リンク リソースを作成する方法について説明します。 
 
 #### <a name="option-1-portal"></a>オプション 1: ポータル
 

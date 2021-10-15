@@ -167,6 +167,8 @@
           href: security-best-practices-for-app-registration.md
     - name: 自動ユーザー プロビジョニング (SCIM)
       href: ../app-provisioning/user-provisioning.md?toc=/azure/active-directory/develop/toc.json&bc=/azure/active-directory/develop/breadcrumb/toc.json
+    - name: Microsoft Graph API を使用する
+      href: microsoft-graph-intro.md
 - name: 操作方法
   items:
     - name: アプリ シナリオの統合
@@ -560,8 +562,6 @@
           href: howto-add-app-roles-in-azure-ad-apps.md
         - name: アプリケーションに RBAC を実装する
           href: howto-implement-rbac-for-apps.md
-    - name: Microsoft Graph API を使用する
-      href: microsoft-graph-intro.md
     - name: 回復性のための構築
       items:
         - name: 開発の概要

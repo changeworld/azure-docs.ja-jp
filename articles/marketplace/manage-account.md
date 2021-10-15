@@ -1,27 +1,27 @@
 ---
-title: Microsoft パートナー センターでコマーシャル マーケットプレースのアカウントを管理する方法 - Azure Marketplace
-description: Microsoft パートナー センターで商業マーケットプレース アカウントを管理する方法について学習します。
+title: パートナー センターで商業マーケットプレース アカウントを管理する
+description: パートナー センターで商業マーケットプレース アカウントを管理します。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: varsha-sarah
 ms.author: vavargh
 ms.date: 09/27/2021
-ms.openlocfilehash: 9e30cc845fbc4ec2aefc062780f53e3bb0f02161
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.openlocfilehash: f6730ad58491fb24dbc025eaa44fbc7d7bdade58
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129082618"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129359815"
 ---
-# <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>パートナー センターで商業マーケットプレース アカウントを管理する
+# <a name="manage-a-commercial-marketplace-account-in-partner-center"></a>パートナー センターで商業マーケットプレース アカウントを管理する
 
 **適切なロール**
 
 - 所有者
 - 管理者
 
-[パートナー センター アカウントの作成](./create-account.md)したら、[商業マーケットプレース ダッシュボード](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)を使用してアカウントとオファーを管理できるようになります。
+[パートナー センター アカウントを作成](./create-account.md)したら、[商業マーケットプレース ダッシュボード](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)を使用してアカウントとオファーを管理します。
 
 ## <a name="access-your-account-settings"></a>アカウント設定にアクセスする
 
@@ -33,11 +33,11 @@ ms.locfileid: "129082618"
 
 1. アクセスするアカウントを使用して、パートナー センターの[コマーシャル マーケットプレースのダッシュボード](https://partner.microsoft.com/dashboard/home)にサインインします。 複数のアカウントに属していて、別のアカウントでサインインしている場合は、[カウントを切り替える](switch-accounts.md)ことができます。
 
-1. 右上にある **[設定]** (歯車アイコン) を選択してから、 **[アカウント設定]** を選択します。
+1. 右上にある **[設定]** (歯車アイコン)、 **[アカウント設定]** の順に選択します。
 
     [ ![パートナー センターにあるアカウント設定メニューのスクリーンショット。](./media/manage-accounts/settings-account-workspaces.png) ](./media/manage-accounts/settings-account-workspaces.png#lightbox)
 
-1. **[アカウント設定]** で、 **[法的情報]** を選択します。 次に、 **[開発者]** タブを選択して、コマーシャル マーケットプレースのアカウントに関連する詳細を表示します。
+1. **[アカウント設定]** の下にある **[法的情報]** 、 **[開発者]** タブの順に選択し、商業マーケットプレース アカウントに関する詳細を表示します。
 
     [ ![[アカウント設定] の [法的情報] ページにある [開発者] タブのスクリーンショット。](./media/manage-accounts/developer-tab-workspaces.png) ](./media/manage-accounts/developer-tab-workspaces.png#lightbox)
 
@@ -50,7 +50,7 @@ ms.locfileid: "129082618"
 
    :::image type="content" source="media/manage-accounts/settings-account.png" alt-text="パートナー センターの [アカウント設定] オプションのスクリーンショット。":::
 
-1. **[アカウント設定]** で、 **[法的情報]** を選択します。 次に、 **[開発者]** タブを選択して、コマーシャル マーケットプレースのアカウントに関連する詳細を表示します。
+1. **[アカウント設定]** の下にある **[法的情報]** 、 **[開発者]** タブの順に選択し、商業マーケットプレース アカウントに関する詳細を表示します。
 
    :::image type="content" source="media/manage-accounts/developer-tab.png" alt-text="[開発者] タブのスクリーンショット。" lightbox="media/manage-accounts/developer-tab.png":::
 
@@ -137,6 +137,8 @@ _[連絡先情報]_ セクションでは、**発行元の表示名**、**販売
 注意を要する契約の更新が存在する場合、このページの最上部に "**Actions needed (処置が必要です)** " と表示されることがあります。 更新された契約に同意するには、まずリンクされている契約バージョンを読み、 **[Accept agreement]\(契約に同意する\)** を選択します。
 
 ## <a name="set-up-a-payout-profile"></a>支払いプロファイルを設定する
+
+Azure Marketplace で取引可能なプランを用意するには、パートナー センターで税務プロファイルと支払プロファイルを送信して検証する必要があります。  支払プロファイルを作成する前に、まず税務プロファイルを送信する必要があります。 税務プロファイルの送信は、検証に最大 48 時間かかる場合があります。
 
 支払いプロファイルは、販売収益の振り込み先となる銀行口座です。 この銀行口座は、パートナー センター アカウントの登録時に入力した国またはリージョンと同じ場所に存在している必要があります。 支払いプロファイルに関する詳細については、「[支払いアカウントと税フォームの設定](/partner-center/set-up-your-payout-account)」を参照してください。
 

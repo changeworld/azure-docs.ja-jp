@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/20/2021
 ms.author: danlep
-ms.openlocfilehash: 769c67557b6e9d6947e8ffd0fffa71765cf397c4
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 03ac79a70a1725fd6d1ceca6d79d4cdb325a8c51
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128601827"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129428466"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Azure API Management で Azure Active Directory を使用して開発者アカウントを承認する
 
@@ -90,7 +90,7 @@ ms.locfileid: "128601827"
 
     > [!NOTE]
     > **[許可されているテナント]** セクションには、複数のドメインを指定できます。 グローバル管理では、ユーザーが元のアプリの登録ドメインとは異なるドメインからサインインする前に、アプリケーションにディレクトリ データへのアクセス許可を付与する必要があります。 アクセス許可を付与するために、全体管理者は次の操作を行う必要があります。
-    > 1. `https://<URL of your developer portal>/aadadminconsent` に移動します (例: https://contoso.portal.azure-api.net/aadadminconsent) 。
+    > 1. `https://<URL of your developer portal>/aadadminconsent` に移動します (例: `https://contoso.portal.azure-api.net/aadadminconsent`)。
     > 1. アクセス許可を付与する Azure AD テナントのドメイン名を入力します。
     > 1. **[Submit]\(送信\)** をクリックします。 
 

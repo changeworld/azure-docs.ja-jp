@@ -6,12 +6,12 @@ ms.author: lianwei
 ms.service: azure-web-pubsub
 ms.topic: how-to
 ms.date: 08/26/2021
-ms.openlocfilehash: 939bc5b6c4b272174d99787e89f04a7431a45d68
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 02e7afa9b8c454b3520db933d76149973b50c699
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124827461"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129275166"
 ---
 #  <a name="start-a-websocket-connection-to-azure-web-pubsub"></a>Azure Web PubSub への WebSocket 接続を開始する
 
@@ -31,7 +31,7 @@ Web PubSub では、[JSON Web Token (JWT)](https://tools.ietf.org/html/rfc7519.h
 > トークンを生成するときには、必要なロールのみを含めるようにしてください。
 >
 
-次のセクションでは、このサンプル ワークフローを簡略化するために、ポータルから一時的に生成された URL を使用して、クライアントが接続できるようにします。 その値を表すのに、`<Client_URL_From_Portal>` を使用します。 生成されるトークンの有効期限は既定で 50 分なので、有効期限が切れた場合は、忘れずに再生成してください。
+次のセクションでは、このサンプル ワークフローを簡略化するために、ポータルから一時的に生成された URL を使用して、クライアントが接続できるようにします。 その値を表すのに、`<Client_URL_From_Portal>` を使用します。 生成されるトークンの有効期限は既定で 60 分なので、有効期限が切れた場合は、忘れずに再生成してください。
 
 このサービスでは、シンプルな WebSocket クライアントと、PubSub WebSocket クライアントの 2 種類の WebSocket クライアントがサポートされています。 ここでは、これら 2 種類のクライアントがサービスに接続する方法について説明します。 これらのクライアントの詳細については、「[Azure Web PubSub の WebSocket クライアント プロトコル](./concept-client-protocols.md)」を参照してください。
 

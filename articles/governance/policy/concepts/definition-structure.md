@@ -3,12 +3,12 @@ title: ポリシー定義の構造の詳細
 description: ポリシー定義を使用し、組織の Azure リソースの規則を確立する方法について説明します。
 ms.date: 09/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: e285ca8c47d73f8b9a23c005be8c8b88d38db879
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 7665d2b3855765c0d3c60cdb9c7181720835a963
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123436106"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129456976"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy の定義の構造
 
@@ -774,6 +774,8 @@ Azure Policy では、次の種類の効果をサポートしています。
 各効果の詳細、評価の順序、プロパティ、例については、「[Azure Policy の効果について](effects.md)」を参照してください。
 
 ### <a name="policy-functions"></a>ポリシー関数
+
+関数を使用して、ポリシー規則にロジックを追加できます。 これらは、ポリシー定義の[ポリシー規則](#policy-rule)内と、[イニシアティブのポリシー定義に割り当てられたパラメーター値](initiative-definition-structure.md#passing-a-parameter-value-to-a-policy-definition)内で解決されます。
 
 ポリシー規則では、次の関数およびユーザー定義関数を除くすべての [Resource Manager テンプレート関数](../../../azure-resource-manager/templates/template-functions.md)を使用できます。
 

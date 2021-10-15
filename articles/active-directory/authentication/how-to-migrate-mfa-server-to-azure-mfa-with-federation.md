@@ -1,7 +1,6 @@
 ---
 title: フェデレーションを使用して Azure AD MFA に移行する - Azure Active Directory
 description: オンプレミスの Azure MFA Server から、フェデレーションを使用した Azure AD MFA への移行に関するステップ バイ ステップのガイダンス
-services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
@@ -11,12 +10,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b34538fb4d0c9dc7beb0defd22f0aa78207f0a3
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0c5d92d16f5ac9fcd8aa69ce9fd71f4844a77d28
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121730790"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129352715"
 ---
 # <a name="migrate-to-azure-ad-mfa-with-federation"></a>フェデレーションを使用して Azure AD MFA に移行する
 
@@ -65,7 +64,7 @@ Get-AdfsAdditionalAuthenticationRule
 既存の証明書利用者信頼を表示するには、次のコマンドを実行して、RPTrustName を証明書利用者信頼の要求規則の名前に置き換えます。 
 
 ```powershell
-(Get-AdfsRelyingPartyTrust -Name “RPTrustName”).AdditionalAuthenticationRules 
+(Get-AdfsRelyingPartyTrust -Name "RPTrustName").AdditionalAuthenticationRules 
 ```
 
 #### <a name="access-control-policies"></a>アクセス制御ポリシー
@@ -92,7 +91,7 @@ Azure AD MFA を呼び出すユーザーを配置する特定のグループを�
 
 グループ SID を検索するには、次のコマンドとグループ名を使用します。
 
-`Get-ADGroup “GroupName”`
+`Get-ADGroup "GroupName"`
 
 ![Get-ADGroup スクリプトの結果を示すスクリーンショットの画像。](./media/how-to-migrate-mfa-server-to-azure-mfa-user-authentication/find-the-sid.png)
 
@@ -112,7 +111,7 @@ Azure AD MFA を呼び出すユーザーを配置する特定のグループを�
 次の PowerShell コマンドレットを実行します。 
 
 ```powershell
-(Get-AdfsRelyingPartyTrust -Name “RPTrustName”).AdditionalAuthenticationRules
+(Get-AdfsRelyingPartyTrust -Name "RPTrustName").AdditionalAuthenticationRules
 ```
 
  
@@ -126,7 +125,7 @@ Value = "AzureMfaAuthentication");
 not exists([Type == "https://schemas.microsoft.com/ws/2008/06/identity/claims/groupsid", 
 Value=="YourGroupSid"]) => issue(Type = 
 "https://schemas.microsoft.com/claims/authnmethodsproviders", Value = 
-"AzureMfaServerAuthentication");’
+"AzureMfaServerAuthentication");'
 ```
 
 次の例では、ユーザーがネットワークの外部から接続するときに、MFA を要求するように現在の要求規則が構成されていることを前提としています。 この例には、追加する必要がある規則が含まれています。
@@ -137,12 +136,12 @@ Set-AdfsAdditionalAuthenticationRule -AdditionalAuthenticationRules 'c:[type ==
 "https://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod", value = 
 "https://schemas.microsoft.com/claims/multipleauthn" );
  c:[Type == "https://schemas.microsoft.com/ws/2008/06/identity/claims/groupsid", Value == 
-“YourGroupSID"] => issue(Type = "https://schemas.microsoft.com/claims/authnmethodsproviders", 
+"YourGroupSID"] => issue(Type = "https://schemas.microsoft.com/claims/authnmethodsproviders", 
 Value = "AzureMfaAuthentication");
 not exists([Type == "https://schemas.microsoft.com/ws/2008/06/identity/claims/groupsid", 
-Value==“YourGroupSid"]) => issue(Type = 
+Value=="YourGroupSid"]) => issue(Type = 
 "https://schemas.microsoft.com/claims/authnmethodsproviders", Value = 
-"AzureMfaServerAuthentication");’
+"AzureMfaServerAuthentication");'
 ```
 
 
@@ -156,12 +155,12 @@ Set-AdfsRelyingPartyTrust -TargetName AppA -AdditionalAuthenticationRules 'c:[ty
 "https://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod", value = 
 "https://schemas.microsoft.com/claims/multipleauthn" );
 c:[Type == "https://schemas.microsoft.com/ws/2008/06/identity/claims/groupsid", Value == 
-“YourGroupSID"] => issue(Type = "https://schemas.microsoft.com/claims/authnmethodsproviders", 
+"YourGroupSID"] => issue(Type = "https://schemas.microsoft.com/claims/authnmethodsproviders", 
 Value = "AzureMfaAuthentication");
 not exists([Type == "https://schemas.microsoft.com/ws/2008/06/identity/claims/groupsid", 
-Value==“YourGroupSid"]) => issue(Type = 
+Value=="YourGroupSid"]) => issue(Type = 
 "https://schemas.microsoft.com/claims/authnmethodsproviders", Value = 
-"AzureMfaServerAuthentication");’
+"AzureMfaServerAuthentication");'
 ```
 
 
@@ -183,7 +182,7 @@ AD FS に Azure AD MFA を構成するには、各 AD FS サーバーを構成�
 
 SupportsMFA フラグが False に設定されている場合、Azure MFA を使用していない可能性があります。おそらく、AD FS 証明書利用者に対して要求規則を使用して MFA を呼び出しています。
 
-次の [Windows PowerShell コマンドレット](/powershell/module/msonline/get-msoldomainfederationsettings?view=azureadps-1.0)を使用して、SupportsMFA フラグの状態を確認できます。
+次の [Windows PowerShell コマンドレット](/powershell/module/msonline/get-msoldomainfederationsettings)を使用して、SupportsMFA フラグの状態を確認できます。
 
 ```powershell
 Get-MsolDomainFederationSettings –DomainName yourdomain.com
@@ -328,12 +327,12 @@ Azure MFA への移行が完了し、MFA Server の使用を停止する準備�
  
 ```console
 c:[Type == &quot;https://schemas.microsoft.com/ws/2008/06/identity/claims/groupsid&quot;, Value ==
-“**YourGroupSID**&quot;] => issue(Type = &quot;https://schemas.microsoft.com/claims/authnmethodsproviders&quot;,
+&quot;**YourGroupSID**&quot;] => issue(Type = &quot;https://schemas.microsoft.com/claims/authnmethodsproviders&quot;,
 Value = &quot;AzureMfaAuthentication");
 not exists([Type == "https://schemas.microsoft.com/ws/2008/06/identity/claims/groupsid",
 Value=="YourGroupSid"]) => issue(Type =
 "https://schemas.microsoft.com/claims/authnmethodsproviders", Value =
-"AzureMfaServerAuthentication");’
+"AzureMfaServerAuthentication");'
 ```
 
 ### <a name="disable-mfa-server-as-an-authentication-provider-in-ad-fs"></a>MFA Server を AD FS の認証プロバイダーとして無効にする

@@ -3,17 +3,17 @@ title: Hybrid Runbook Worker での Azure Automation Runbook の実行
 description: この記事では、Hybrid Runbook Worker を利用し、ローカル データセンターまたはその他のクラウド プロバイダーのコンピューターで Runbook を実行する方法について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 08/12/2021
+ms.date: 09/30/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 5f27f9366b388c090ca689a2011c777973b8a894
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 702fcc816bac95345fca8c701be504e4eaa3a1fe
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122968055"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129354749"
 ---
-# <a name="run-runbooks-on-a-hybrid-runbook-worker"></a>Hybrid Runbook Worker での Runbook の実行
+# <a name="run-automation-runbooks-on-a-hybrid-runbook-worker"></a>Hybrid Runbook Worker で Automation Runbook を実行する
 
 通常、[Hybrid Runbook Worker](automation-hybrid-runbook-worker.md) で実行する Runbook では、ローカル コンピューター上のリソース、または worker がデプロイされているローカル環境内のリソースを管理します。 Azure Automation の Runbook は、通常、Azure クラウド内のリソースを管理します。 Azure Automation で実行される Runbook と、Hybrid Runbook Worker で実行される Runbook は、使い方は異なりますが、構造的には同じものです。
 
@@ -21,18 +21,30 @@ Hybrid Runbook Worker で実行される Runbook を作成するときは、work
 
 ## <a name="plan-for-azure-services-protected-by-firewall"></a>ファイアウォールによって保護された Azure サービスの計画
 
-[Azure Storage](../storage/common/storage-network-security.md)、[Azure Key Vault](../key-vault/general/network-security.md)、または [Azure SQL](../azure-sql/database/firewall-configure.md) で Azure Firewall を有効にすると、それらのサービスの Azure Automation Runbook からのアクセスがブロックされます。 信頼された Microsoft サービスを許可するファイアウォール例外が有効になっている場合でも、Automation は信頼されたサービスの一覧に含まれていないため、アクセスはブロックされます。 ファイアウォールが有効になっている場合、アクセスは、Hybrid Runbook Worker と[仮想ネットワーク サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)を使用して行う必要があります。
+[Azure Storage](../storage/common/storage-network-security.md)、[Azure Key Vault](../key-vault/general/network-security.md)、または [Azure SQL](../azure-sql/database/firewall-configure.md) で Azure Firewall を有効にすると、それらのサービスの Azure Automation Runbook からのアクセスがブロックされます。 信頼される Microsoft サービスを許可するファイアウォール例外が有効になっている場合でも、Automation は信頼されるサービス一覧に含まれていないため、アクセスはブロックされます。 ファイアウォールが有効になっている場合、アクセスは、Hybrid Runbook Worker と[仮想ネットワーク サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)を使用して行う必要があります。
 
 ## <a name="plan-runbook-job-behavior"></a>Runbook ジョブの動作を計画する
 
 Azure Automation による Hybrid Runbook Worker でのジョブの処理は、Azure サンドボックスで実行されるジョブとは異なります。 実行時間の長い Runbook がある場合、起こりうる再起動に対して回復性があることを確認します。 ジョブの動作の詳細については、「[Hybrid Runbook Worker ジョブ](automation-hybrid-runbook-worker.md#hybrid-runbook-worker-jobs)」を参照してください。
 
-Hybrid Runbook Worker のジョブは、Windows ではローカルの **システム** アカウントで実行され、Linux では **nxautomation** アカウントで実行されます。 Linux の場合、Runbook モジュールが格納されている場所に **nxautomation** アカウントがアクセスできることを確認します。 **nxautomation** アカウントのアクセスを保証するには、次の手順を実行します。
+## <a name="service-accounts"></a>サービス アカウント
 
-- [Install-Module](/powershell/module/powershellget/install-module) コマンドレットを使用するときは、`AllUsers` を `Scope` パラメーターに対して必ず指定します。
+### <a name="windows"></a>Windows 
+
+Hybrid Runbook Worker のジョブは、ローカルの **システム** アカウントで実行されます。
+
+### <a name="linux"></a>Linux
+
+サービス アカウント **nxautomation** と **omsagent** が作成されます。 作成およびアクセス許可の割り当てスクリプトは、[https://github.com/microsoft/OMS-Agent-for-Linux/blob/master/installer/datafiles/linux.data](https://github.com/microsoft/OMS-Agent-for-Linux/blob/master/installer/datafiles/linux.data) で確認できます。 [Linux Hybrid Runbook Worker のインストール](automation-linux-hrw-install.md)中には、対応する sudo アクセス許可を持つアカウントが存在する必要があります。 ワーカーをインストールしようとしたときに、このアカウントが存在しないか、または適切なアクセス許可を持っていない場合、そのインストールは失敗します。 `sudoers.d` フォルダーまたはその所有権のアクセス許可は変更しないでください。 sudo アクセス許可はアカウントに必要であるため、アクセス許可を削除しないでください。 これを特定のフォルダーまたはコマンドに制限すると、破壊的変更が発生する可能性があります。 Update Management の一環として有効にされた **nxautomation** ユーザーによって実行されるのは、署名済みの Runbook のみです。
+
+格納されている Runbook モジュールにサービス アカウントから確実にアクセスできるようにするには:
+
 - Linux でのパッケージのインストールに `pip install`、`apt install`、またはその他の方法を使用する場合、すべてのユーザーにパッケージがインストールされていることを確認してください。 たとえば、「 `sudo -H pip install <package_name>` 」のように指定します。
+- [Linux で PowerShell](/powershell/scripting/whats-new/what-s-new-in-powershell-70) を使用している場合は、[Install-Module](/powershell/module/powershellget/install-module) コマンドレットを使用するとき、`Scope` パラメーターに対して必ず `AllUsers` を指定してください。
 
-Linux での PowerShell に関する詳細については、「[Windows 以外のプラットフォームでの PowerShell に関する既知の問題](/powershell/scripting/whats-new/what-s-new-in-powershell-70)」を参照してください。
+Automation ワーカー ログは `/var/opt/microsoft/omsagent/run/automationworker/worker.log` にあります。
+
+サービス アカウントは、マシンが Hybrid Runbook Worker として削除された時点で削除されます。
 
 ## <a name="configure-runbook-permissions"></a>Runbook のアクセス許可を構成する
 
@@ -72,15 +84,23 @@ Hybrid Runbook Worker 上の Azure リソースに対してマネージド ID �
 1. [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) コマンドレットと `Identity` パラメーターを使用して Azure リソースに対する認証を行うように、Runbook を更新します。 この構成により、実行アカウントを使用し、関連するアカウントを管理を実行する必要性が減ります。
 
     ```powershell
-    # Connect to Azure using the managed identities for Azure resources identity configured on the Azure VM that is hosting the hybrid runbook worker
-    Connect-AzAccount -Identity
+    # Ensures you do not inherit an AzContext in your runbook
+    Disable-AzContextAutosave -Scope Process
+    
+    # Connect to Azure with system-assigned managed identity
+    $AzureContext = (Connect-AzAccount -Identity).context
+    
+    # set and store context
+    $AzureContext = Set-AzContext -SubscriptionName $AzureContext.Subscription -DefaultProfile $AzureContext
 
     # Get all VM names from the subscription
-    Get-AzVM | Select Name
+    Get-AzVM -DefaultProfile $AzureContext | Select Name
     ```
 
-    > [!NOTE]
-    > `Connect-AzAccount -Identity` は、システム割り当て ID と単一ユーザー割り当て ID を使用する Hybrid Runbook Worker に対して機能します。 Hybrid Runbook Worker で複数のユーザー割り当て ID を使用する場合は、Runbook で `Connect-AzAccount` の `AccountId` パラメーターを指定して、特定のユーザー割り当て ID を選択する必要があります。
+    Runbook をシステム割り当てマネージド ID で実行する場合は、コードをそのままにしておきます。 ユーザー割り当てマネージド ID を使用する場合は、次のようにします。
+    1. 5 行目から、`$AzureContext = (Connect-AzAccount -Identity).context` を削除し、
+    1. それを `$AzureContext = (Connect-AzAccount -Identity -AccountId <ClientId>).context` に置き換えた後、
+    1. クライアント ID を入力します。
 
 ### <a name="use-runbook-authentication-with-run-as-account"></a>実行アカウントで Runbook 認証を使用する
 

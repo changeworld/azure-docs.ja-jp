@@ -6,14 +6,14 @@ ms.reviewer: primittal
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 08/11/2021
+ms.date: 10/05/2021
 ms.author: banders
-ms.openlocfilehash: 0c278256c952fce12833a8f4c5fe55e18c3b40b0
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 797aff6fed0cf2eda46bcf5371e57e18df466f00
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123099914"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129546964"
 ---
 # <a name="permissions-to-view-and-manage-azure-reservations"></a>Azure の予約を表示および管理するためのアクセス許可
 
@@ -31,6 +31,8 @@ ms.locfileid: "123099914"
 - Azure Active Directory (Azure AD) テナント (ディレクトリ) の予約の予約管理者
 - Azure Active Directory テナント (ディレクトリ) の予約に対する読み取り専用アクセス権を持つ予約閲覧者
 
+現時点で、予約管理者ロールと予約閲覧者ロールで可能なのは、PowerShell を使用して割り当てることのみです。 Azure portal では、表示することも、割り当てることもできません。 詳細については、「[PowerShell でアクセス権を付与する](#grant-access-with-powershell)」を参照してください。
+
 予約のライフサイクルは Azure サブスクリプションに依存しないため、予約は Azure サブスクリプションに属するリソースではありません。 そうではなく、サブスクリプションとは別の独自の Azure RBAC アクセス許可があるテナントレベルのリソースです。 予約には、購入後にサブスクリプションからアクセス許可が継承されません。
 
 ## <a name="view-and-manage-reservations"></a>予約の表示と管理
@@ -42,7 +44,7 @@ ms.locfileid: "123099914"
     - Microsoft 顧客契約の課金プロファイル所有者の場合は、左側のメニューで **[課金プロファイル]** を選択します。 課金プロファイルの一覧でプロファイルを選択します。
 1. 左側のメニューで、 **[製品とサービス]**  >  **[予約]** を選択します。
 1. EA 加入契約または課金プロファイルの予約の完全な一覧が表示されます。
-1. 課金管理者は、予約を選択し、表示されたウィンドウで **[アクセスの付与]** を選択することで、予約の所有権を取得できます。
+1. 課金管理者は、1 つまたは複数の予約を選択し、 **[アクセスの付与]** をクリックし、表示されたウィンドウで **[アクセスの付与]** を選択することで、予約の所有権を取得できます。
 
 ### <a name="add-billing-administrators"></a>課金管理者を追加する
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 06/11/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 415824041c8e721c96ad9a9d480d5e50436310e4
-ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
+ms.openlocfilehash: 957ee0b5a7301fa1959b3a88450dd047bfacaad5
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112964772"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129353668"
 ---
 # <a name="how-application-provisioning-works-in-azure-active-directory"></a>Azure Active Directory でのアプリケーションのプロビジョニングのしくみ
 
@@ -81,7 +81,10 @@ Azure AD から SaaS アプリケーションへの送信プロビジョニン�
 
 Azure AD ユーザー プロビジョニング サービスを使って、Azure AD の B2B (またはゲスト) ユーザーを SaaS アプリケーションにプロビジョニングすることは可能です。 ただし、B2B ユーザーが、Azure AD を使用して SaaS アプリケーションにサインインするには、SaaS アプリケーションで、SAML ベースのシングル サインオン機能が特定の方法で構成されている必要があります。 B2B ユーザーからのサインインをサポートするように SaaS アプリケーションを構成する方法の詳細については、「[B2B コラボレーション用の SaaS アプリの構成](../external-identities/configure-saas-apps.md)」を参照してください。
 
-ゲスト ユーザーの userPrincipalName は、多くの場合、"alias#EXT#@domain.com" として格納されることに注意してください。 userPrincipalName がソース属性として属性マッピングに含まれている場合、#EXT# は userPrincipalName から削除されます。 #EXT# が存在する必要がある場合は、ソース属性としての userPrincipalName を originalUserPrincipalName に置き換えてください。 
+> [!NOTE]
+ゲスト ユーザーの userPrincipalName は、多くの場合、"alias#EXT#@domain.com" として表示されます。 userPrincipalName がソース属性として属性マッピングに含まれている場合、#EXT# は userPrincipalName から削除されます。 #EXT# が存在する必要がある場合は、ソース属性としての userPrincipalName を originalUserPrincipalName に置き換えてください。 
+
+userPrincipalName = alias@domain.com originalUserPrincipalName = alias#EXT#@domain.com
 
 ## <a name="provisioning-cycles-initial-and-incremental"></a>プロビジョニング サイクル:初回と増分
 

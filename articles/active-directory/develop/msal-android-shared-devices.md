@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 03/31/2020
+ms.date: 09/30/2021
 ms.author: marsma
-ms.reviewer: hahamil
+ms.reviewer: brandwe
 ms.custom: aaddev, identitypla | Azuretformtop40
-ms.openlocfilehash: 7b1c87c67413f8240746f2a793c913cd4add4865
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 3a1539f80556afa9a3dbeb73edcd4d38380db33a
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124787284"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129357661"
 ---
 # <a name="shared-device-mode-for-android-devices"></a>Android デバイスの共有デバイス モード
 
@@ -33,11 +33,13 @@ ms.locfileid: "124787284"
 - 開発者は、単一アカウント アプリ (共有デバイス モードでは複数アカウント アプリはサポートされていません) を記述し、アプリの構成に `"shared_device_mode_supported": true` を追加して、共有デバイスのサインアウトなどを処理するためのコードを記述します。
 - デバイス管理者は、認証アプリをインストールし、その認証アプリを使用してデバイスを共有モードに設定することによって、共有されるデバイスを準備します。 [認証アプリ](https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc)を使用してデバイスを共有モードにすることができるのは、[クラウド デバイス管理者](../roles/permissions-reference.md#cloud-device-administrator)ロールのユーザーだけです。 組織ロールのメンバーシップは、Azure portal で次のコマンドを使用して構成できます。 **[Azure Active Directory]**  >  **[ロールと管理者]**  >  **[クラウド デバイス管理者]** 。
 
- この記事では主に、開発者が考慮すべき事項に重点を置いています。
+この記事では主に、開発者が考慮すべき事項に重点を置いています。
 
 ## <a name="single-vs-multiple-account-applications"></a>単一アカウント アプリケーションと複数アカウント アプリケーションの選択
 
-Microsoft Authentication Library SDK (MSAL) を使用して記述されたアプリケーションは、単一のアカウントまたは複数のアカウントを管理できます。 詳細については、[単一アカウント モードまたは複数アカウント モード](single-multi-account.md)に関するページを参照してください。 お使いのアプリで使用できる Microsoft ID プラットフォーム機能は、アプリケーションが単一アカウント モードと複数アカウント モードのどちらで実行されているかによって異なります。
+Microsoft Authentication Library (MSAL) SDK を使用して記述されたアプリケーションは、単一のアカウントまたは複数のアカウントを管理できます。 詳細については、[単一アカウント モードまたは複数アカウント モード](single-multi-account.md)に関するページを参照してください。
+
+お使いのアプリで使用できる Microsoft ID プラットフォーム機能は、アプリケーションが単一アカウント モードと複数アカウント モードのどちらで実行されているかによって異なります。
 
 **共有デバイス モード アプリは、単一アカウント モードでのみ動作します**。
 
@@ -76,12 +78,12 @@ private IPublicClientApplication mApplication;
 
 アプリが共有デバイスまたは個人デバイスのどちらで実行されているかに応じて、次の違いが適用されます。
 
-|  | 共有モード デバイス  | 個人デバイス |
-|---------|---------|---------|
-| **Accounts**     | 単一のアカウント | 複数のアカウント |
-| **サインイン** | グローバル | グローバル |
-| **サインアウト** | グローバル | 各アプリケーションは、サインアウトがアプリに対してローカルか、またはアプリケーションのファミリに対するものかを制御できます。 |
-| **サポートされているアカウントの種類** | 職場アカウントのみ | 個人アカウントと職場アカウントをサポート  |
+|                             | 共有モード デバイス | 個人デバイス                                                                                     |
+| --------------------------- | ------------------ | --------------------------------------------------------------------------------------------------- |
+| **Accounts**                | 単一のアカウント     | 複数のアカウント                                                                                   |
+| **サインイン**                 | グローバル             | グローバル                                                                                              |
+| **サインアウト**                | グローバル             | 各アプリケーションは、サインアウトがアプリに対してローカルか、またはアプリケーションのファミリに対するものかを制御できます。 |
+| **サポートされているアカウントの種類** | 職場アカウントのみ | 個人アカウントと職場アカウントをサポート                                                                |
 
 ## <a name="why-you-may-want-to-only-support-single-account-mode"></a>単一アカウント モードのみをサポートする理由
 
@@ -93,7 +95,7 @@ private IPublicClientApplication mApplication;
 
 ## <a name="shared-device-sign-out-and-the-overall-app-lifecycle"></a>共有デバイスのサインアウトとアプリのライフサイクル全体
 
-ユーザーがサインアウトしたら、そのユーザーのプライバシーとデータを保護するためのアクションを実行する必要があります。 たとえば、医療記録アプリを構築している場合は、ユーザーがサインアウトしたら、以前に表示された患者記録が消去されていることを確認する必要があります。 アプリケーションはこの処理を行う準備をし、フォアグラウンドに入るたびにチェックする必要があります。
+ユーザーがサインアウトしたら、そのユーザーのプライバシーとデータを保護するためのアクションを実行する必要があります。 たとえば、医療記録アプリを構築している場合は、ユーザーがサインアウトしたら、以前に表示された患者記録が消去されていることを確認する必要があります。 アプリケーションは、フォアグラウンドに入るたびに、データのプライバシーとチェックに備える必要があります。
 
 アプリが、共有モードのデバイス上で実行されているアプリで MSAL を使用してユーザーをサインアウトすると、サインイン アカウントとキャッシュされているトークンがアプリとデバイスの両方から削除されます。
 
@@ -103,4 +105,6 @@ private IPublicClientApplication mApplication;
 
 ## <a name="next-steps"></a>次のステップ
 
-現場の最前線で働く従業員用のアプリを共有モードの Android デバイスで実行する方法を示す [Android アプリケーションでの共有デバイス モードの使用](tutorial-v2-shared-device-mode.md)に関するチュートリアルを試してみてください。
+Android デバイスの共有モードで現場の最前線で働く従業員用のアプリを実行する方法の詳細については、以下を参照してください。
+
+- [Android アプリケーションで共有デバイス モードを使用する](tutorial-v2-shared-device-mode.md)

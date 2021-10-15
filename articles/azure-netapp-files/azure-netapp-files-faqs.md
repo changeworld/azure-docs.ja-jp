@@ -1,25 +1,18 @@
 ---
 title: Azure NetApp Files についてよく寄せられる質問 | Microsoft Docs
 description: ネットワーク、セキュリティ、パフォーマンス、容量管理、データ移行/保護など、Azure NetApp Files についてよく寄せられる質問を確認します。
-services: azure-netapp-files
-documentationcenter: ''
-author: b-juche
-manager: ''
-editor: ''
-ms.assetid: ''
 ms.service: azure-netapp-files
 ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/27/2021
+author: b-juche
 ms.author: b-juche
-ms.openlocfilehash: 01a483e43429f45562cbb464e2b595023bd2ad5f
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.date: 10/04/2021
+ms.openlocfilehash: 3d0d43dc795dfc729d006fa629382fe35b433983
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129091029"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129535650"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Azure NetApp Files についての FAQ
 
@@ -83,10 +76,6 @@ Azure Dedicated HSM を使用したカスタマー マネージド キー (Bring
 ### <a name="can-i-configure-the-nfs-export-policy-rules-to-control-access-to-the-azure-netapp-files-service-mount-target"></a>NFS エクスポート ポリシー規則を、Azure NetApp Files サービスのマウント ターゲットへのアクセスを制御するように構成できますか?
 
 はい。1 つの NFS エクスポート ポリシーで、最大 5 つの規則を構成できます。
-
-### <a name="does-azure-netapp-files-support-network-security-groups"></a>Azure NetApp Files は、ネットワーク セキュリティ グループをサポートしていますか?
-
-いいえ。現在のところ、ネットワーク セキュリティ グループは、Azure NetApp Files の委任されたサブネットまたはサービスによって作成されたネットワーク インターフェイスに適用することはできません。
 
 ### <a name="can-i-use-azure-rbac-with-azure-netapp-files"></a>Azure NetApp Files で Azure RBAC を使用できますか?
 
@@ -365,7 +354,50 @@ Azure NetApp Files は、受信したバックアップ データのエンコー
 
 システムは、スケジュールされたバックアップ ジョブを処理するときに、10 回再試行します。 ジョブが失敗した場合、システムはバックアップ操作に失敗します。 (構成済みのポリシーに基づいて) スケジュールされたバックアップの場合、システムは 1 時間ごとにデータのバックアップを試行します。 転送されなかった (または前回の試行中に失敗した) 新しいスナップショットが使用可能な場合、それらのスナップショットは転送対象と見なされます。 
 
+## <a name="application-resilience-faqs"></a>アプリケーションの回復性に関する FAQ
+
+このセクションでは、アプリケーションの回復性に関する質問に回答します。
+
+### <a name="what-do-you-generally-recommend-for-application-timeouts-to-best-handle-potential-application-disruptions-due-to-storage-service-maintenance-events"></a>ストレージ サービスのメンテナンス イベントによって起こり得るアプリケーションの障害に適切に対処するために、アプリケーション タイムアウトに関して一般的に推奨されるのは何ですか?
+
+Azure NetApp Files では、時々、計画メンテナンス (プラットフォームの更新、サービスやソフトウェアのアップグレードなど) が行われることがあります。 ファイル プロトコル (NFS/SMB) の観点から見ると、これらのイベント中に一時的に発生する可能性がある IO の一時停止をアプリケーションが処理できる限り、メンテナンス操作は通常中断しません。 I/O の一時停止は通常、数秒から 30 秒程度の短い時間です。 NFS プロトコルは特に堅牢で、クライアントとサーバー間のファイル操作は通常通り行われます。 一部のアプリケーションでは、30 秒から 45 秒程の IO の一時停止に対応するためのチューニングが必要な場合があるため、ストレージ サービスのメンテナンス イベントに対処するために、アプリケーションの回復性設定を確認するようにしてください。 SMB プロトコルを利用する、ユーザー介入型のアプリケーションの場合は、通常、標準のプロトコル設定で十分です。 
+
+### <a name="do-i-need-to-take-special-precautions-for-specific-smb-based-applications"></a>特定の SMB ベースのアプリケーションには、特別な予防措置を講じる必要がありますか?
+
+はい。特定の SMB ベースのアプリケーションでは、SMB 透過フェールオーバーが必要です。 SMB 透過フェールオーバーを使用すると、SMB ボリュームにデータを格納してアクセスするサーバー アプリケーションへの接続を中断することなく、Azure NetApp Files サービスでメンテナンス操作を行うことができます。 特定のアプリケーションの SMB 透過フェールオーバーをサポートするために、Azure NetApp Files では、[SMB 継続的可用性共有オプション](azure-netapp-files-create-volumes-smb.md#continuous-availability)がサポートされるようになりました。 
+
+### <a name="i-am-running-ibm-mq-on-azure-netapp-files-i-have-experienced-application-disruptions-due-to-storage-service-maintenance-despite-using-the-nfs-protocol-do-i-need-to-take-special-precautions"></a>IBM MQ を Azure NetApp Files で実行しています。 NFS プロトコルを使用しているにもかかわらず、ストレージ サービスのメンテナンスによるアプリケーションの障害が発生しました。 特別な予防措置を講じる必要はありますか?
+
+はい、[IBM MQ アプリケーションを共有ファイル構成](https://www.ibm.com/docs/en/ibm-mq/9.2?topic=multiplatforms-sharing-mq-files)で実行しており、IBM MQ データとログが Azure NetApp Files ボリュームに保存されている場合、ストレージ サービスのメンテナンス イベント時の回復力を高めるために、以下の考慮事項が推奨されます。
+
+* NFS v4.1 プロトコルのみを使用する必要があります。
+* 高可用性を実現するためには、[共有 NFS v4.1 ボリュームを使用した IBM MQ マルチインスタンス構成を使用する必要があります](https://www.ibm.com/docs/en/ibm-mq/9.2?topic=manager-create-multi-instance-queue-linux)。 
+* [共有 NFS v4.1 ボリュームを使用して、IBM マルチインスタンス構成](https://www.ibm.com/docs/en/ibm-mq/9.2?topic=multiplatforms-verifying-shared-file-system-behavior)の機能を確認する必要があります。 
+* 1 つの大規模なマルチインスタンス IBM MQ 構成を使用するのではなく、スケールアウト IBM MQ アーキテクチャを実装する必要があります。 複数の IBM MQ マルチインスタンス ペアにメッセージ処理負荷を分散することで、各 MQ マルチインスタンス ペアで処理するメッセージの数が減るため、サービスが中断される可能性が減ることが考えられます。
+
+> [!NOTE] 
+> 各 MQ マルチインスタンス ペアが処理する必要があるメッセージの数は、ユーザーごとの特定の環境に大きく依存します。 ユーザーは、必要な MQ マルチインスタンス ペアの数や、スケールアップまたはスケールダウン ルールの内容を決定する必要があります。
+
+スケールアウト アーキテクチャでは、Azure Load Balancer の背後に複数の IBM MQ マルチインスタンス ペアがデプロイされています。 IBM MQ と通信するように構成されたアプリケーションは、Azure Load Balancer を介して IBM MQ インスタンスと通信するように構成されます。 共有 NFS ボリューム上の IBM MQ に関連するサポートについては、IBM でベンダー サポートを受け取る必要があります。
+
+### <a name="i-am-running-apache-activemq-with-leveldb-or-kahadb-on-azure-netapp-files-i-have-experienced-disruptions-due-to-storage-service-maintenance-events-despite-using-the-nfs-protocol-do-i-need-to-take-special-precautions"></a>LevelDB または KahaDB を使用して Apache ActiveMQ を Azure NetApp Files で実行しています。 *NFS* プロトコルを使用しているにもかかわらず、ストレージ サービスのメンテナンス イベントによる障害が発生しました。 特別な予防措置を講じる必要はありますか?
+
+はい。Apache ActiveMQ を実行している場合は、[Pluggable Storage Locker 付きの ActiveMQ High Availability](https://www.openlogic.com/blog/pluggable-storage-lockers-activemq) を導入することをお勧めします。 
+
+ActiveMQ の高可用性 (HA) モデルを使用すると、ブローカー インスタンスが常にオンラインで、メッセージ トラフィックを処理できることが保証されます。 ActiveMQ の HA モデルで最も一般的なものは、ネットワーク上でファイルシステムを共有するものです。 これは、アクティブおよびパッシブなブローカー インスタンスに、LevelDB または KahaDB のいずれかを提供することが目的です。 これらの HA モデルでは、LevelDB または KahaDB ディレクトリ内のファイルに対して、"lock" と呼ばれる OS レベルのロックを取得して維持する必要があります。 この ActiveMQ HA モデルには、いくつかの問題があります。 まず、"スレーブ" がファイルをロックできることを認識していない、"マスター不在" の状況になる可能性があります。  また、インデックスやジャーナルが破損し、最終的にメッセージが失われてしまう "マスターマスター" 構成につながる可能性もあります。 これらの問題の多くは、ActiveMQ の制御外の要因に起因します。 例えば、NFS クライアントの最適化が不十分だと、負荷がかかったときにロックされたデータが古くなり、フェールオーバー時に "マスターなし" のダウンタイムが発生する可能性があります。 
+
+この HA ソリューションに関する問題の大部分は、OS レベルの不正確なファイル ロックに起因しているため、ActiveMQ コミュニティにより、ブローカーのバージョン 5.7 で [Pluggable Storage Locker という概念](https://www.openlogic.com/blog/pluggable-storage-lockers-activemq)が導入されました。 この方法を使用すると、ユーザーは OS レベルのファイルシステム ロックではなく、行レベルの JDBC データベース ロックを使用することで、異なる共有ロックの手段を利用することができます。 ActiveMQ の HA アーキテクチャやデプロイに関するサポートやコンサルティングについては、[Perforce が提供する OpenLogic](https://www.openlogic.com/contact-us) にお問い合わせください。
+
+>[!NOTE]
+> このセクションには、Microsoft では使用されなくなった "*スレーブ*" と "*マスター*" という用語への言及があります。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
+
+### <a name="i-am-running-apache-activemq-with-leveldb-or-kahadb-on-azure-netapp-files-i-have-experienced-disruptions-due-to-storage-service-maintenance-event-despite-using-the-smb-protocol-do-i-need-to-take-special-precautions"></a>LevelDB または KahaDB を使用して Apache ActiveMQ を Azure NetApp Files で実行しています。 *SMB* プロトコルを使用しているにもかかわらず、ストレージ サービスのメンテナンス イベントによる障害が発生しました。 特別な予防措置を講じる必要はありますか?
+
+業界の一般的な推奨事項は、[KahaDB の共有ストレージを CIFS/SMB で運用しない](https://www.openlogic.com/blog/activemq-community-deprecates-leveldb-what-you-need-know)ことです。 正確なロック状態の維持に問題がある場合は、より信頼性の高いロック メカニズムを提供する JDBC Pluggable Storage Locker をチェックしてください。 ActiveMQ の HA アーキテクチャやデプロイに関するサポートやコンサルティングについては、[Perforce が提供する OpenLogic](https://www.openlogic.com/contact-us) にお問い合わせください。
+
 ## <a name="product-faqs"></a>製品に関する FAQ
+
+このセクションでは、Azure NetApp Files に関連する製品についての情報を提供します。 
 
 ### <a name="can-i-use-azure-netapp-files-nfs-or-smb-volumes-with-azure-vmware-solution-avs"></a>Azure VMware Solution (AVS) で Azure NetApp Files NFS または SMB ボリュームを使用できますか?
 

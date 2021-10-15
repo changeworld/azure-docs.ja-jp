@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 08/19/2021
+ms.date: 09/30/2021
 ms.author: cherylmc
-ms.openlocfilehash: f2b23c469e7ababb9aab439e33cffd2de6e20eae
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: 3f39fe037c7f56122d48a38431cb4b86824b793f
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122514679"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129362041"
 ---
 # <a name="azure-active-directory-authentication-configure-a-vpn-client-for-p2s-openvpn-protocol-connections---macos"></a>Azure Active Directory 認証: P2S OpenVPN プロトコル接続用に VPN クライアントを構成する - macOS
 
@@ -21,7 +21,7 @@ ms.locfileid: "122514679"
 
 > [!NOTE]
 > * Azure AD 認証は、OpenVPN® プロトコル接続でのみサポートされ、Azure VPN クライアントを必要とします。
-> * Azure VPN クライアントは、ローカルの規制により、一部のリージョンでは利用できない場合があります。
+> * macOS 用の Azure VPN クライアントは、現在、現地の規制と要件により、フランスと中国では使用できません。
 >
 
 ポイント対サイト VPN 接続を使用して VNet に接続するすべてのコンピューターについて、次の手順を実行する必要があります。

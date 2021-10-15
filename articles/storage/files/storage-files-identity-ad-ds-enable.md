@@ -5,15 +5,15 @@ author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: how-to
-ms.date: 07/20/2021
+ms.date: 10/05/2021
 ms.author: rogarana
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: cb66ed6c1a00c049c2fff6d9fccb22acbcb9fbee
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 7a7082005cc2a8154670abfae120d94015b2135c
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114462508"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129545814"
 ---
 # <a name="part-one-enable-ad-ds-authentication-for-your-azure-file-shares"></a>パート 1: Azure ファイル共有に対する AD DS 認証を有効にする 
 
@@ -36,7 +36,7 @@ AzFilesHybrid PowerShell モジュールのコマンドレットによって、�
 
 ### <a name="download-azfileshybrid-module"></a>AzFilesHybrid モジュールをダウンロードする
 
-- [.Net Framework 4.7.2](https://dotnet.microsoft.com/download/dotnet-framework/net472) がインストールされていない場合は、今すぐインストールします。 これは、モジュールを正常にインポートするために必要です。
+- [.NET Framework 4.7.2](https://dotnet.microsoft.com/download/dotnet-framework/net472) がインストールされていない場合は、今すぐインストールします。 これは、モジュールを正常にインポートするために必要です。
 - [AzFilesHybrid モジュール (GA モジュール: v0.2.0+) をダウンロードして解凍する](https://github.com/Azure-Samples/azure-files-samples/releases)AES 256 Kerberos 暗号化は、v0.2.2 以上でサポートされることに注意してください。 この機能を 0.2.2 未満の AzFilesHybrid バージョンで有効にし、AES 256 Kerberos 暗号化がサポートされるように更新する場合は、[この記事](./storage-troubleshoot-windows-file-connection-problems.md#azure-files-on-premises-ad-ds-authentication-support-for-aes-256-kerberos-encryption)をご覧ください。
 - ターゲット AD でサービス ログオン アカウントまたはコンピューター アカウントを作成する権限がある AD DS 資格情報を使用して、オンプレミスの AD DS に参加しているデバイスにモジュールをインストールして実行します。
 -  Azure AD に同期されているオンプレミスの AD DS 資格情報を使用して、スクリプトを実行します。 オンプレミスの AD DS 資格情報には、ストレージ アカウントに対する **所有者** または **共同作成者** の Azure ロールが必要です。
@@ -104,11 +104,11 @@ Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGrou
 
 前述の `Join-AzStorageAccountForAuth` スクリプトを既に正常に実行している場合は、セクション[「機能が有効になっていることを確認する」](#confirm-the-feature-is-enabled)に進んでください。 次の手動の手順を実行する必要はありません。
 
-### <a name="checking-environment"></a>環境の確認
+### <a name="check-the-environment"></a>環境をチェックする
 
 まず、環境の状態を確認する必要があります。 具体的には、[Active Directory PowerShell](/powershell/module/activedirectory/) がインストールされているかどうかと、シェルが管理者特権で実行されているかどうかを確認する必要があります。 次に、[Az.Storage 2.0 モジュール (またはそれ以降)](https://www.powershellgallery.com/packages/Az.Storage/2.0.0) がインストールされているかどうかを確認し、まだの場合はインストールします。 これらの確認が完了したら、AD DS を確認し、[コンピューター アカウント](/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (既定値)、あるいは "cifs/ここはご利用のストレージ アカウントの名前.file.core.windows.net" などの SPN または UPN を使用して既に作成されている[サービス ログオン アカウント](/windows/win32/ad/about-service-logon-accounts)があるかどうかを確認します。 アカウントが存在しない場合は、次のセクションの説明に従って作成します。
 
-### <a name="creating-an-identity-representing-the-storage-account-in-your-ad-manually"></a>AD でのストレージ アカウントを表す ID の手動による作成
+### <a name="create-an-identity-representing-the-storage-account-in-your-ad-manually"></a>AD のストレージ アカウントを表す ID を手動で作成する
 
 このアカウントを手動で作成するには、ストレージ アカウント用の新しい Kerberos キーを作成します。 次に、以下の PowerShell コマンドレットを使用して、その Kerberos キーをアカウントのパスワードとして使用します。 このキーは、設定時にのみ使われ、ストレージ アカウントに対する制御やデータ プレーンの操作には使用できません。 
 
@@ -129,9 +129,37 @@ OU でパスワードの有効期限が適用されている場合は、パス�
 
 新しく作成された ID の SID を保持します。これは次の手順で必要になります。 ストレージ アカウントを表す、作成した ID を Azure AD に同期する必要はありません。
 
+#### <a name="optional-enable-aes256-encryption"></a>(省略可能) AES256 暗号化を有効にする
+
+AES 256 暗号化を有効にする場合は、このセクションの手順に従ってください。 RC4 を使用する予定の場合は、このセクションを省略できます。
+
+ストレージ アカウントを表すドメイン オブジェクトは、次の要件を満たしている必要があります。
+- ストレージ アカウント名は 15 文字以下でなければなりません。
+- ドメイン オブジェクトは、オンプレミスの AD ドメイン内のコンピューター オブジェクトとして作成する必要があります。
+- 末尾の '$' を除き、ストレージ アカウント名はコンピューター オブジェクトの SamAccountName と同じである必要があります。
+
+ドメイン オブジェクトがこれらの要件を満たしていない場合は、削除して、要件を満たす新しいドメイン オブジェクトを作成します。
+
+`<domain-object-identity>` と `<domain-name>` を実際の値に置き換えてから、次のコマンドを使用して AES256 のサポートを構成します。 
+
+```powershell
+Set-ADComputer -Identity <domain-object-identity> -Server <domain-name> -KerberosEncryptionType "AES256"
+```
+
+そのコマンドを実行した後、次のスクリプトの `<domain-object-identity>` を実際の値に置き換えてから、スクリプトを実行してドメイン オブジェクトのパスワードを更新します。
+
+```powershell
+$KeyName = "kerb1" # Could be either the first or second kerberos key, this script assumes we're refreshing the first
+$KerbKeys = New-AzStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAccountName -KeyName $KeyName
+$KerbKey = $KerbKeys | Where-Object {$_.KeyName -eq $KeyName} | Select-Object -ExpandProperty Value
+$NewPassword = Convert-ToSecureString -String $KerbKey -AsPlainText -Force
+
+Set-ADAccountPassword -Identity <domain-object-identity> -Reset -NewPassword $NewPassword
+```
+
 ### <a name="enable-the-feature-on-your-storage-account"></a>ストレージ アカウントで機能を有効にする
 
-これで、ストレージ アカウントで機能を有効にすることができるようになりました。 次のコマンドでドメイン プロパティの構成の詳細をいくつか指定してから実行します。 次のコマンドで必要なストレージ アカウント SID は、[前のセクション](#creating-an-identity-representing-the-storage-account-in-your-ad-manually)の AD DS で作成した ID の SID です。
+これで、ストレージ アカウントで機能を有効にすることができるようになりました。 次のコマンドでドメイン プロパティの構成の詳細をいくつか指定してから実行します。 次のコマンドで必要なストレージ アカウント SID は、[前のセクション](#create-an-identity-representing-the-storage-account-in-your-ad-manually)の AD DS で作成した ID の SID です。
 
 ```PowerShell
 # Set the feature flag on the target storage account and provide the required AD domain information

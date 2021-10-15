@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/01/2021
+ms.date: 09/28/2021
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05ea462d08c50e6483aeb0968b00b6b18d0e7397
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: b3285c18394c8c59d17e41b3a3eb3fd43428cd61
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129092678"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129229584"
 ---
 # <a name="assign-sensitivity-labels-to-microsoft-365-groups-in-azure-active-directory"></a>Azure Active Directory で Microsoft 365 グループに秘密度ラベルを割り当てる
 
@@ -117,7 +117,7 @@ Azure Active Directory (Azure AD) では、[Microsoft 365 コンプライアン�
 
 1. ラベルは、この Azure AD 組織の Microsoft 365 コンプライアンス センターで公開されています。
 1. 機能が有効になっており、Azure AD PowerShell モジュールで EnableMIPLabels が True に設定されています。
-1. ラベルは、Security & Compliance PowerShell モジュールの Execute-AzureAdLabelSync コマンドレットで、Azure AD に同期されます。
+1. ラベルは、Security & Compliance PowerShell モジュールの Execute-AzureAdLabelSync コマンドレットで Azure AD に同期されます。
 1. グループは Microsoft 365 グループです。
 1. 組織に、アクティブな Azure Active Directory Premium P1 ライセンスがある。
 1. 現在サインインしているユーザーに、ラベルを割り当てるための十分な権限がある。 そのユーザーは、全体管理者、グループ管理者、またはグループの所有者のいずれかである必要があります。

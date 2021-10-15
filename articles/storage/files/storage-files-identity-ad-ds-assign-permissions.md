@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/13/2021
 ms.author: rogarana
 ms.custom: devx-track-azurepowershell, subject-rbac-steps
-ms.openlocfilehash: 4c69a8bcd3acb559de3674dd7012220f4c7868e4
-ms.sourcegitcommit: 6f4378f2afa31eddab91d84f7b33a58e3e7e78c1
+ms.openlocfilehash: cf2d9c2921599680781695631eae9c5276ff53c2
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113687157"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129400646"
 ---
 # <a name="part-two-assign-share-level-permissions-to-an-identity"></a>パート 2: ID に共有レベルのアクセス許可を割り当てる
 
@@ -55,11 +55,14 @@ ms.locfileid: "113687157"
 
 ## <a name="share-level-permissions-for-specific-azure-ad-users-or-groups"></a>特定の Azure AD ユーザーまたはグループに対する共有レベルのアクセス許可
 
-特定の Azure AD ユーザーまたはグループを使用して Azure ファイル共有のリソースにアクセスする場合、その ID は、オンプレミスの AD DS と Azure AD の両方に存在するハイブリッド ID である必要があります。 たとえば、ご使用の AD に user1@onprem.contoso.com というユーザーがいて、Azure AD Connect 同期を使用して user1@contoso.com として Azure AD に同期しているとします。このユーザーが Azure Files にアクセスするには、user1@contoso.com に共有レベルのアクセス許可を割り当てる必要があります。 グループまたはサービス プリンシパルにも同じ概念が適用されます。 このため、Azure AD Connect 同期を使用して、ユーザーとグループを AD から Azure AD に同期する必要があります。 
+特定の Azure AD ユーザーまたはグループを使用して Azure ファイル共有のリソースにアクセスする場合、その ID は、**オンプレミスの AD DS と Azure AD の両方に存在するハイブリッド ID** である必要があります。 たとえば、ご使用の AD に user1@onprem.contoso.com というユーザーがいて、Azure AD Connect 同期を使用して user1@contoso.com として Azure AD に同期しているとします。このユーザーが Azure Files にアクセスするには、user1@contoso.com に共有レベルのアクセス許可を割り当てる必要があります。 グループまたはサービス プリンシパルにも同じ概念が適用されます。 このため、Azure AD Connect 同期を使用して、ユーザーとグループを AD から Azure AD に同期する必要があります。 
 
 Azure ファイル共有への AD DS 認証をサポートするために、共有レベルのアクセス許可を、AD DS 内の同じユーザーまたはグループを表す Azure AD ID に割り当てる必要があります。 Azure Managed Identities (MSIs) など、Azure AD にのみ存在する ID に対する認証と承認は、AD DS 認証ではサポートされていません。
 
 Azure portal、Azure PowerShell モジュール、または Azure CLI を使用して、共有レベルのアクセス許可を付与するために、組み込みのロールをユーザーの Azure AD ID に割り当てることができます。
+
+> [!IMPORTANT]
+> 共有レベルのアクセス許可は、完了してから有効になるまで最大 3 時間かかります。 資格情報を使用してファイル共有に接続する前に、アクセス許可が同期されるまで待ってください   
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 
@@ -68,7 +71,7 @@ Azure portal、Azure PowerShell モジュール、または Azure CLI を使用�
 1. Azure portal でファイル共有に移動するか、[ファイル共有を作成](storage-how-to-create-file-share.md)します。
 1. **[アクセス制御 (IAM)]** を選択します。
 1. **[ロールの割り当てを追加する]** を選択します。
-1. **[ロールの割り当てを追加する]** ブレードで、 **[ロール]** の一覧から[適切な組み込みロール](#share-level-permissions)を選択します。
+1. **[ロールの割り当てを追加する]** ブレードで、 **[ロール]** の一覧から [適切な組み込みロール](#share-level-permissions)を選択します。
     1. 記憶域ファイル データの SMB 共有の閲覧者
     1. 記憶域ファイル データの SMB 共有の共同作成者
     1. ストレージ ファイル データの SMB 共有の管理者特権の共同作成者

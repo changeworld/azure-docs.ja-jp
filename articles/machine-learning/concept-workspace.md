@@ -1,5 +1,5 @@
 ---
-title: ワークスペースとは
+title: ワークスペースとは?
 titleSuffix: Azure Machine Learning
 description: ワークスペースは、Azure Machine Learning の最上位のリソースです。 スクリプトのログ、メトリック、出力、スナップショットとともに、すべてのトレーニング実行の履歴も保持されています。
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2021
-ms.openlocfilehash: 32d5602a4f71b1e66e135fe2478f2d9b10b8424d
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 01ad9aaa69d0034daacf559bc5d909c27bfa6a01
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129219194"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129429150"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペースとは
 

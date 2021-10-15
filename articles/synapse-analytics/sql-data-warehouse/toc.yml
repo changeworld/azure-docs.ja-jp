@@ -344,6 +344,8 @@
           href: sql-data-warehouse-how-to-configure-workload-importance.md
         - name: リソース クラスからワークロード グループへの変換
           href: sql-data-warehouse-how-to-convert-resource-classes-workload-groups.md
+        - name: 分類が不足している場合のトラブルシューティング
+          href: sql-data-warehouse-how-to-troubleshoot-missed-classification.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
     - name: 管理および監視
       items:
         - name: Gen2 へのアップグレード

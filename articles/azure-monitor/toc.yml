@@ -1137,7 +1137,7 @@
               href: containers/container-insights-agent-config.md
             - name: 更新によるメトリックの有効化
               href: containers/container-insights-update-metrics.md
-        - name: モニター
+        - name: Monitor
           items:
             - name: パフォーマンスの監視
               href: containers/container-insights-analyze.md
@@ -1202,7 +1202,7 @@
             - name: 概要
               href: insights/sql-insights-overview.md
             - name: よく寄せられる質問
-              href: /azure/azure-monitor/faq#sql-insights-preview
+              href: /azure/azure-monitor/faq#sql-insights-(preview)
             - name: 有効にする
               href: insights/sql-insights-enable.md
             - name: 警告

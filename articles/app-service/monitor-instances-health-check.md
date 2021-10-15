@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/19/2021
 ms.author: msangapu
 ms.custom: contperf-fy22q1
-ms.openlocfilehash: 3efac96949d701bbc0147abf8712d4995f781d47
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 37b876b177b7879c57255619d3f5e7e113a2a284
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122771846"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129278069"
 ---
 # <a name="monitor-app-service-instances-using-health-check"></a>正常性チェックを使用して App Service インスタンスを監視する
 
@@ -29,8 +29,8 @@ ms.locfileid: "122771846"
 - さらに、スケール アップまたはスケール アウトする場合は、新しいインスタンスの準備ができていることを保証するために、App Service によって正常性チェック パスに対して ping が実行されます。
 
 > [!NOTE]
-> 正常性チェックは 302 リダイレクトには従いません。 App Service プランによれば、1 時間あたり最大で 1 つのインスタンス、1 日あたり最大で 3 つのインスタンスが置き換えられます。
->
+>- 正常性チェックは 302 リダイレクトには従いません。 App Service プランによれば、1 時間あたり最大で 1 つのインスタンス、1 日あたり最大で 3 つのインスタンスが置き換えられます。
+>- 正常性チェックで状態 `Waiting for health check response` が表示されている場合は、HTTP 状態コード 307 が原因でチェックが失敗している可能性があります。これは、HTTPS リダイレクトが有効になっているが `HTTPS Only` が無効になっている場合に発生する可能性があります。
 
 ## <a name="enable-health-check"></a>正常性チェックを有効にする
 

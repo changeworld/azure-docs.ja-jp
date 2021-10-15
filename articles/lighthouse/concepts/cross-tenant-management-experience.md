@@ -1,14 +1,14 @@
 ---
 title: テナント間の管理エクスペリエンス
 description: Azure Lighthouse により、多くの Azure サービスでクロステナント エクスペリエンスが有効になり、強化されます。
-ms.date: 07/20/2021
+ms.date: 09/30/2021
 ms.topic: conceptual
-ms.openlocfilehash: c57afabe5f3aaf49ef1f1868c04c60af4298381d
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: a6ad75df4e22f56c8bcb0f28586c736fc6b04a49
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114440912"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129349775"
 ---
 # <a name="cross-tenant-management-experiences"></a>テナント間の管理エクスペリエンス
 
@@ -101,7 +101,7 @@ Azure REST API では、[Subscriptions - Get](/rest/api/resources/subscriptions/
 - [ログ分析](../../azure-monitor/logs/service-providers.md):複数のテナントにあるリモートのワークスペースからデータを照会する (顧客テナントのワークスペースからデータにアクセスするために使用される Automation アカウントは、同じテナント内に作成する必要があることに注意してください)
 - 顧客テナントで[メトリック アラート](../../azure-monitor/alerts/alerts-metric.md)、[ログ アラート](../../azure-monitor/alerts/alerts-log.md)、および[アクティビティ ログ アラート](../../azure-monitor/alerts/alerts-activity-log.md)を作成、表示、および管理する
 - 顧客のテナント内に、Webhook を使用して管理側テナントで Azure Automation Runbook や Azure Functions などの自動化をトリガーするアラートを作成する
-- 顧客テナント内で[診断設定](../..//azure-monitor/essentials/diagnostic-settings.md)を作成して、管理テナント内のワークスペースにリソース ログを送信する
+- 顧客テナント内に作成されたワークスペースで[診断設定](../..//azure-monitor/essentials/diagnostic-settings.md)を作成して、管理テナント内のワークスペースにリソース ログを送信する
 - SAP ワークロードに対しては、[顧客のテナント全体で集計されたビューを使って SAP ソリューションのメトリックを監視する](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/using-azure-lighthouse-and-azure-monitor-for-sap-solutions-to/ba-p/1537293)
 
 [Azure のネットワーク](../../networking/fundamentals/networking-overview.md):

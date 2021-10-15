@@ -8,12 +8,12 @@ ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 09/27/2021
 ms.custom: references_regions
-ms.openlocfilehash: 738ee7b01831574af32c44dd00c8b1d9b56513c3
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: b57e8f4725e1f6d97cd86406f95c26fbbf7b47e7
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129210166"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129358597"
 ---
 # <a name="amazon-s3-multi-cloud-scanning-connector-for-azure-purview"></a>Azure Purview 用 Amazon S3 Multi-Cloud Scanning Connector
 
@@ -98,9 +98,9 @@ Amazon S3 バケットを Purview データ ソースとして追加し、S3 デ
 
 1. **[新規]** を選択して新しい資格情報を作成します。
 
-    右側に表示される **[新しい資格情報]** ペインで、AWS の関連フィールドに貼り付けるための **Microsoft アカウント ID** と **外部 ID** の値を、別のファイルにコピーするか、手元に用意しておきます。
-
-    次に例を示します。
+    右側に表示される **[新しい資格情報]** ペインの **[認証方法]** ドロップダウンで **[ロール ARN]** を選択します。 
+    
+    AWS の関連フィールドに貼り付けるための **Microsoft アカウント ID** と **外部 ID** の値をコピーして、別のファイルに表示するか、手元に用意しておきます。 次に例を示します。
 
     [ ![Microsoft アカウント ID と外部 ID の値を検索します。](./media/register-scan-amazon-s3/locate-account-id-external-id.png) ](./media/register-scan-amazon-s3/locate-account-id-external-id.png#lightbox)
 
@@ -172,14 +172,12 @@ Amazon S3 バケットを Purview データ ソースとして追加し、S3 デ
     |**名前**     |この資格情報のわかりやすい名前を入力します。        |
     |**説明**     |この資格情報の説明を「`Used to scan the tutorial S3 buckets`」のように入力します (省略可能)         |
     |**認証方法**     |**[ロール ARN]** を選択します。これは、ロール ARN を使用してバケットにアクセスするためです。         |
-    |**[Microsoft アカウント ID]**     |この値を選択してクリップボードにコピーします。 この値は、[AWS でロール ARN を作成](#create-a-new-aws-role-for-purview)するときに **Microsoft アカウント ID** として使用します。           |
-    |**外部 ID**     |この値を選択してクリップボードにコピーします。 この値は、[AWS でロール ARN を作成](#create-a-new-aws-role-for-purview)するときに **外部 ID** として使用します。        |
     |**ロール ARN**     | [Amazon IAM ロールを作成](#create-a-new-aws-role-for-purview)したら、AWS IAM 領域のロールに移動し、 **[ロール ARN]** の値をコピーして、ここに入力します。 (例: `arn:aws:iam::181328463391:role/S3Role`)。 <br><br>詳細については、「[新しいロール ARN を取得する](#retrieve-your-new-role-arn)」を参照してください。 |
     | | |
+    
+    **[Microsoft アカウント ID]** と **[外部 ID]** の値は、[AWS で [ロール ARN] を作成する](#create-a-new-aws-role-for-purview)ときに使用されます。
 
-    完了したら **[作成]** を選択し、資格情報の作成を終了します。
-
-1. まだ行っていない場合は、次の手順である [Purview の新しい AWS ロールを作成](#create-a-new-aws-role-for-purview)するときに使用する **Microsoft アカウント ID** と **外部 ID** の値をコピーして貼り付けます。
+1. 完了したら **[作成]** を選択し、資格情報の作成を終了します。
 
 Purview の資格情報の詳細については、「[Azure Purview のソース認証用の資格情報](manage-credentials.md)」を参照してください。
 
@@ -300,10 +298,6 @@ AWS アカウント ID とは、AWS コンソールにログインするため�
 
 **バケットを追加するには**:
 
-1. Amazon S3 URL の専用の Purview コネクタを使用して Purview ポータルを起動します。 この URL は、Amazon S3 Purview コネクタ製品管理チームから提供されています。
-
-    ![Purview ポータルを起動します。](./media/register-scan-amazon-s3/purview-portal-amazon-s3.png)
-
 1. Azure Purview の **[Data Map]** ページに移動し、 **[登録]** ![[登録] アイコン](./media/register-scan-amazon-s3/register-button.png) を選択します。 >  **[Amazon S3]**  >  **[続行]** を選択します。
 
     ![Amazon AWS バケットを Purview データ ソースとして追加します。](./media/register-scan-amazon-s3/add-s3-datasource-to-purview.png)
@@ -325,16 +319,13 @@ AWS アカウント ID とは、AWS コンソールにログインするため�
 
 「[1 つ以上の Amazon S3 バケットのスキャンを作成する](#create-a-scan-for-one-or-more-amazon-s3-buckets)」に進みます。
 
-## <a name="add-an-amazon-account-as-a-purview-resource"></a>Amazon アカウントを Purview リソースとして追加します。
+## <a name="add-an-aws-account-as-a-purview-resource"></a>AWS アカウントを Purview リソースとして追加する
 
 Amazon アカウントに複数の S3 バケットがあり、それらすべてを Purview データ ソースとして登録する場合は、この手順を使用します。
 
 それらすべてを一度にスキャンしないようにする場合は、[スキャンを構成する](#create-a-scan-for-one-or-more-amazon-s3-buckets)ときに、スキャン対象の特定のバケットを選択できます。
 
 **Amazon アカウントを追加するには**:
-1. Amazon S3 URL の専用の Purview コネクタを使用して Purview ポータルを起動します。 この URL は、Amazon S3 Purview コネクタ製品管理チームから提供されています。
-
-    ![Amazon S3 専用の Purview ポータルのコネクタを起動する](./media/register-scan-amazon-s3/purview-portal-amazon-s3.png)
 
 1. Azure Purview の **[Data Map]** ページに移動し、 **[登録]** ![[登録] アイコン](./media/register-scan-amazon-s3/register-button.png) を選択します。 >  **[Amazon accounts]\(Amazon アカウント\)**  >  **[続行]** を選択します。
 

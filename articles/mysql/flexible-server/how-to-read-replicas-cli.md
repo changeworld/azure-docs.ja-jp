@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 06/17/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: adffb4edf7f689002cab7eae86388ff18ac04027
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 77e9d66af8a03f9d1a55a59d9a355499a3019f29
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "122651570"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129233903"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-flexible-server-using-the-azure-cli"></a>Azure CLI を使用して Azure Database for MySQL フレキシブル サーバーの読み取りレプリカを作成し、管理する方法
 
@@ -26,6 +26,7 @@ ms.locfileid: "122651570"
 > [!Note]
 >
 > * 高可用性が有効になっているサーバーでは、レプリカはサポートされていません。 
+>* 読み取りレプリカ機能は、汎用とメモリ最適化のどちらかの価格レベルにおける Azure Database for MySQL - フレキシブル サーバーにのみ使用可能です。 ソース サーバーがこれらの価格レベルのいずれであるかを確認します。
 >
 > * プライマリ サーバーで GTID が有効になっている場合 (`gtid_mode` = ON)、新しく作成されたレプリカでも GTID が有効になり、GTID ベースのレプリケーションが使用されます。 詳細については、「[グローバル トランザクション識別子 (GTID)](concepts-read-replicas.md#global-transaction-identifier-gtid)」を参照してください。
 

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 04/14/2021
 ms.author: rolyon
-ms.openlocfilehash: f0fc0611e48f25c8faec415b8702a420402280c5
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: 1f1b8f627a60a6e9f9b866ffb48324ecd146ffbe
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109483841"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129362084"
 ---
 # <a name="steps-to-assign-an-azure-role"></a>Azure ロールを割り当てる手順
 
@@ -50,7 +50,7 @@ ms.locfileid: "109483841"
 
 1. この記事で、アクセス許可を付与する対象リソースのサービス カテゴリ (コンピューティング、ストレージ、データベースなど) に移動します。 通常、探しているものを見つけるのに最も簡単な方法は、"BLOB"、"仮想マシン" などの関連キーワードをページ内で検索することです。
 
-1. サービス カテゴリに一覧表示されているロールを確認し、必要な特定の操作を特定します。 繰り返しになりますが、常に、最も制限の厳しいロールから始めるようにしてください。
+1. サービス カテゴリに一覧表示されているロールを確認し、必要な特定のアクションを特定します。 繰り返しになりますが、常に、最も制限の厳しいロールから始めるようにしてください。
 
     たとえば、セキュリティ プリンシパルが Azure Storage アカウントの BLOB を読み取る必要がある一方で、書き込みアクセスを必要としない場合は、[ストレージ BLOB データ共同作成者](built-in-roles.md#storage-blob-data-contributor)ではなく[ストレージ BLOB データ閲覧者](built-in-roles.md#storage-blob-data-reader)を選択します (決して管理者レベルの[ストレージ BLOB データ所有者](built-in-roles.md#storage-blob-data-owner)ロールを選択しないようにしてください)。 ロールの割り当ては、必要に応じて後でいつでも更新できます。
 

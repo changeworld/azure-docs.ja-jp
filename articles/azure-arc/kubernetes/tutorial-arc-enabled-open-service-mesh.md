@@ -6,12 +6,12 @@ ms.date: 07/23/2021
 ms.topic: article
 author: mayurigupta13
 ms.author: mayg
-ms.openlocfilehash: 1909b6efc46e40de0b0e4a864e8a5e3d852da366
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 16e13238ffd471678eab9bdd0245aa708b7c4419
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128637840"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129389363"
 ---
 # <a name="azure-arc-enabled-open-service-mesh-preview"></a>Azure Arc 対応 Open Service Mesh (プレビュー)
 
@@ -52,7 +52,7 @@ KUBECONFIG 環境変数に、OSM 拡張機能をインストールする Kuberne
 環境変数を設定します。
 
 ```azurecli-interactive
-export VERSION=0.8.4
+export VERSION=<osm-arc-version>
 export CLUSTER_NAME=<arc-cluster-name>
 export RESOURCE_GROUP=<resource-group-name>
 ```
@@ -92,7 +92,7 @@ az k8s-extension create --cluster-name $CLUSTER_NAME --resource-group $RESOURCE_
   },
   "statuses": [],
   "type": "Microsoft.KubernetesConfiguration/extensions",
-  "version": "0.8.4"
+  "version": "x.x.x"
 }
 ```
 
@@ -126,7 +126,7 @@ OSM helm chart をクラスターにデプロイするには 3 - 5 分程度か�
 
 ### <a name="install-azure-arc-enabled-osm-using-arm-template"></a>ARM テンプレートを使用して Azure Arc 対応 OSM をインストールする
 
-クラスターを Azure Arc に接続してから、次の形式の json ファイルを作成します。\<cluster-name\> の値を置き換えることを忘れないでください。
+クラスターを Azure Arc に接続してから、次の形式の json ファイルを作成します。\<cluster-name\> および \<osm-arc-version\> の値を置き換えることを忘れないでください。
 
 ```json
 {
@@ -148,7 +148,7 @@ OSM helm chart をクラスターにデプロイするには 3 - 5 分程度か�
             }
         },
         "ExtensionVersion": {
-            "defaultValue": "0.8.4",
+            "defaultValue": "<osm-arc-version>",
             "type": "String",
             "metadata": {
                 "description": "The extension type version."
@@ -238,7 +238,7 @@ az k8s-extension show --cluster-type connectedClusters --cluster-name $CLUSTER_N
   },
   "statuses": [],
   "type": "Microsoft.KubernetesConfiguration/extensions",
-  "version": "0.8.4"
+  "version": "x.x.x"
 }
 ```
 ## <a name="osm-controller-configuration"></a>OSM コントローラーの構成

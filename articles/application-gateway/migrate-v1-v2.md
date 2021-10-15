@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 03/31/2020
 ms.author: victorh
-ms.openlocfilehash: 4757a8237aa6226b78e7c1e79ba50710e31d28e3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 000daf7c60d0bc823aacdab85de42af3b6cbbf55
+ms.sourcegitcommit: 079426f4980fadae9f320977533b5be5c23ee426
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99594267"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129419052"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Azure Application Gateway と Web アプリケーション ファイアウォールを v1 から v2 に移行する
 
@@ -84,6 +84,7 @@ Azure Az モジュールがインストールされていて、それらをア�
     -resourceId <v1 application gateway Resource ID>
     -subnetAddressRange <subnet space you want to use>
     -appgwName <string to use to append>
+    -AppGwResourceGroupName <resource group name you want to use>
     -sslCertificates <comma-separated SSLCert objects as above>
     -trustedRootCertificates <comma-separated Trusted Root Cert objects as above>
     -privateIpAddress <private IP string>
@@ -101,8 +102,9 @@ Azure Az モジュールがインストールされていて、それらをア�
      $appgw.Id
      ```
 
-   * **subnetAddressRange: [String]:必須** - 新しい v2 ゲートウェイを含む新しいサブネットに割り当てた (または割り当てる) IP アドレス空間です。 これは、CIDR 表記で指定する必要があります。 次に例を示します。10.0.0.0/24。 このサブネットを事前に作成しておく必要はありません。 存在しない場合はスクリプトによって作成されます。
+   * **subnetAddressRange: [String]:必須** - 新しい v2 ゲートウェイを含む新しいサブネットに割り当てた (または割り当てる) IP アドレス空間です。 これは、CIDR 表記で指定する必要があります。 次に例を示します。10.0.0.0/24。 このサブネットを事前に作成する必要はありませんが、CIDR は VNET のアドレス空間の一部である必要があります。 存在しない場合はスクリプトによって作成されます。存在する場合は、既存のものを使用します (サブネットが空であるか、v2 ゲートウェイだけが含まれ、使用可能な IP が十分にあることを確認してください)。
    * **appgwName: [String]:省略可能**。 新しい Standard_v2 または WAF_v2 ゲートウェイの名前として使用するように指定する文字列です。 このパラメーターが指定されていない場合、サフィックス *_v2* が付加された既存の v1 ゲートウェイの名前が使用されます。
+   * **AppGwResourceGroupName: [String]: 省略可能**。 V2 Application Gateway リソースの作成先となるリソースグループの名前 (既定値は `<v1-app-gw-rgname>` になります)
    * **sslCertificates: [PSApplicationGatewaySslCertificate]:省略可能**。  新しい v2 ゲートウェイにアップロードする必要がある、v1 ゲートウェイの TLS または SSL 証明書を表すために作成する PSApplicationGatewaySslCertificate オブジェクトのコンマ区切りの一覧です。 Standard v1 または WAF v1 ゲートウェイ用に構成された TLS または SSL 証明書のそれぞれに対して、次に示す `New-AzApplicationGatewaySslCertificate` コマンドを使用して新しい PSApplicationGatewaySslCertificate オブジェクトを作成することができます。 TLS または SSL 証明書ファイルへのパスとパスワードが必要です。
 
      このパラメーターは、v1 ゲートウェイまたは WAF 用に構成された HTTPS リスナーがない場合は省略可能です。 HTTPS リスナーのセットアップが少なくとも 1 つある場合、このパラメーターを指定する必要があります。
@@ -140,6 +142,7 @@ Azure Az モジュールがインストールされていて、それらをア�
       -resourceId /subscriptions/8b1d0fea-8d57-4975-adfb-308f1f4d12aa/resourceGroups/MyResourceGroup/providers/Microsoft.Network/applicationGateways/myv1appgateway `
       -subnetAddressRange 10.0.0.0/24 `
       -appgwname "MynewV2gw" `
+      -AppGwResourceGroupName "MyResourceGroup" `
       -sslCertificates $mySslCert1,$mySslCert2 `
       -trustedRootCertificates $trustedCert `
       -privateIpAddress "10.0.0.1" `

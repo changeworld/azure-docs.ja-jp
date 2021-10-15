@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 02/02/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 5eaefbe835d7660de8bd0712d55c75149cc588a8
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 437211ae50404443dee30e5a9c8141ea09d69244
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128591085"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129278559"
 ---
 # <a name="blob-snapshots"></a>BLOB のスナップショット
 
@@ -71,7 +71,7 @@ VHD ファイルは、VM ディスクの現時点の情報と状態の格納に�
 
 スナップショット (BLOB の読み取り専用コピー) を作成すると、別途データ ストレージ料金がアカウントに課金される場合があります。 不要なコストを抑えるためにも、アプリケーションを設計する際は、この料金が発生するしくみを理解しておくことが重要です。
 
-BLOB のバージョンと同様に、BLOB のスナップショットは、アクティブなデータと同じレートで課金されます。 スナップショットの課金方法は、ベース BLOB またはそのいずれかのスナップショット (バージョン) のどちらに対して層を明示的に設定したかによって異なります。 BLOB 層の詳細については、「[Azure Blob Storage: ホット、クール、アーカイブ ストレージ層](storage-blob-storage-tiers.md)」を参照してください。
+BLOB のバージョンと同様に、BLOB のスナップショットは、アクティブなデータと同じレートで課金されます。 スナップショットの課金方法は、ベース BLOB またはそのいずれかのスナップショット (バージョン) のどちらに対して層を明示的に設定したかによって異なります。 BLOB 層の詳細については、「[BLOB データのホット、クール、アーカイブのアクセス層](access-tiers-overview.md)」を参照してください。
 
 BLOB またはスナップショットの層を変更していない場合は、その BLOB、そのスナップショット、およびそれが持つ可能性があるすべてのバージョンにわたるデータの一意のブロックに対して課金されます。 詳細については、「[BLOB 層が明示的に設定されていない場合の課金](#billing-when-the-blob-tier-has-not-been-explicitly-set)」を参照してください。
 

@@ -9,19 +9,19 @@ ms.topic: how-to
 ms.date: 08/26/2021
 ms.author: allensu
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c06ad374e46e9900ba99a95708e19a63498719ec
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 6d4671823f5eb3f186007aea46983860269d916b
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123101549"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129361748"
 ---
 # <a name="manage-network-policies-for-private-endpoints"></a>プライベート エンドポイントのネットワーク ポリシーを管理する
 
 NSG (ネットワーク セキュリティ グループ) などのネットワーク ポリシーは、プライベート エンドポイントでは以前、サポートされていませんでした。 特定のサブネットにプライベート エンドポイントをデプロイするには、そのサブネット上で明示的な無効化設定が必要でした。 この設定は、プライベート エンドポイントにのみ適用されます。 サブネット内の他のリソースについては、ネットワーク セキュリティ グループのセキュリティ規則に基づいてアクセスが制御されます。
 
 > [!IMPORTANT]
-> プライベート エンドポイントに対する NSG と UDR のサポートは、パブリック プレビュー段階です。
+> プライベート エンドポイントに対する NSG と UDR のサポートは、一部のリージョンでパブリック プレビュー段階です。 詳細については、「[Private Link UDR のサポートのパブリック プレビュー](https://azure.microsoft.com/updates/public-preview-of-private-link-udr-support/)」と「[Private Link ネットワーク セキュリティ グループのサポートのパブリック プレビュー](https://azure.microsoft.com/updates/public-preview-of-private-link-network-security-group-support/)」を参照してください。
 > このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 ポータルを使用してプライベート エンドポイントを作成する場合、`PrivateEndpointNetworkPolicies` 設定は作成プロセスの一環として自動的に無効になります。 他のクライアントを使用したデプロイでは、この設定を変更するための追加の手順が必要になります。 

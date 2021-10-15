@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/23/2021
 ms.author: bagol
-ms.openlocfilehash: 545ab178c99b8d5ab6db1d6619a9859eb3133306
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 9f6585cec5c52dd2255fca2a31e2f92853954370
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124781346"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129279015"
 ---
 # <a name="troubleshoot-your-cef-or-syslog-data-connector"></a>CEF または Syslog データ コネクタのトラブルシューティング
 
@@ -504,7 +504,7 @@ if $rawmsg contains "CEF:" or $rawmsg contains "ASA-" then @@127.0.0.1:25226
 
 - ローカル ログ ファイル ( **/var/log/messages** または **/var/log/syslog**) にログが書き込まれていることを確認します
 
-- ポート 25524、25526、または両方で、データ パケットが流れていることを確認します
+- ポート 25224、25226、または両方で、データ パケットが流れていることを確認します
 
 - 仮想マシンからポート 443 への TCP 経由のアウトバウンド接続があること、または [Log Analytics エンドポイント](../azure-monitor/agents/log-analytics-agent.md#network-requirements)に接続できることを確認します
 

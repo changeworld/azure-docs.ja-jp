@@ -1,22 +1,22 @@
 ---
-title: アーカイブ層からの BLOB のリハイドレートの概要
+title: アーカイブ層からの BLOB のリハイドレート
 description: BLOB はアーカイブ アクセス層に含まれていますが、オフラインと見なされ、読み取りや変更はできません。 アーカイブされた BLOB 内のデータを読み取りまたは変更するには、まず、ホット層またはクール層のどちらかのオンライン層に BLOB をリハイドレートする必要があります。
 services: storage
 author: tamram
 ms.author: tamram
-ms.date: 08/31/2021
+ms.date: 09/29/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: fryu
-ms.openlocfilehash: 2c4eac524ecda8a2b90036748fd2a6f2a389a3cd
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 195238c6ef4191266a0f4b5dd481fbf24b70528f
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124823741"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129271823"
 ---
-# <a name="overview-of-blob-rehydration-from-the-archive-tier"></a>アーカイブ層からの BLOB のリハイドレートの概要
+# <a name="blob-rehydration-from-the-archive-tier"></a>アーカイブ層からの BLOB のリハイドレート
 
 BLOB はアーカイブ アクセス層に含まれていますが、オフラインと見なされ、読み取りや変更はできません。 アーカイブされた BLOB 内のデータを読み取りまたは変更するには、まず、ホット層またはクール層のどちらかのオンライン層に BLOB をリハイドレートする必要があります。 アーカイブ層に格納されている BLOB をリハイドレートするには、次の 2 つのオプションがあります。
 
@@ -28,7 +28,7 @@ Archive レベルからの BLOB のリハイドレートには、完了まで数
 
 BLOB をアーカイブ層からオンライン層にリハイドレートしたときにイベントを発生させ、そのイベントをイベント ハンドラーに送信するように [Azure Event Grid](../../event-grid/overview.md) を構成できます。 詳細については、「[BLOB のリハイドレート イベントの処理](#handle-an-event-on-blob-rehydration)」を参照してください。
 
-Azure Storage のアクセス層の詳細については、「[Azure Blob Storage のアクセス層 - ホット、クール、アーカイブ](storage-blob-storage-tiers.md)」を参照してください。
+Azure Storage のアクセス層の詳細については、[BLOB データのホット、クール、アーカイブ アクセス層](access-tiers-overview.md)に関するページを参照してください。
 
 ## <a name="rehydration-priority"></a>リハイドレートの優先度
 
@@ -51,7 +51,7 @@ blob をリハイドレートする際には、[Set Blob Tier](/rest/api/storage
 
 Microsoft では、次の理由により、アーカイブ層からオンライン層に BLOB を移動する必要があるほとんどのシナリオで、コピー操作の実行を推奨します。
 
-- コピー操作では、必要な 180 日の期間が経過する前に blob の階層をアーカイブ階層から変更した場合に課される早期削除料金を回避できます。 詳しくは、「[アーカイブ アクセス層](storage-blob-storage-tiers.md#archive-access-tier)」をご覧ください。
+- コピー操作では、必要な 180 日の期間が経過する前に blob の階層をアーカイブ階層から変更した場合に課される早期削除料金を回避できます。 詳しくは、「[アーカイブ アクセス層](access-tiers-overview.md#archive-access-tier)」をご覧ください。
 - ストレージ アカウントに対するライフサイクル管理ポリシーが有効な場合、[Set Blob Tier](/rest/api/storageservices/set-blob-tier) で blob をリハイドレートさせると、最終更新時刻がポリシーで設定された閾値を超えているため、ライフサイクル ポリシーによってリハイドレート後に blob がアーカイブ層に戻されるというシナリオが発生します。 コピー操作は、ソース blob をアーカイブ層に残し、別の名前と新しい最終変更時刻を持つ新しい blob を作成します。そのため、リハイドレートされた blob がライフサイクル ポリシーによってアーカイブ層に戻されるリスクはありません。
 
 アーカイブ層からの blob のコピーは、選択されたリハイドレートの優先度によっては数時間かかることがあります。 BLOB コピー操作では、バックグラウンドでアーカイブ ソース BLOB が読み取られ、選択された移動先の層に新しいオンライン BLOB が作成されます。 リハイドレーション操作が完了する前に親コンテナー内の BLOB を一覧表示すると、新しい BLOB が表示される場合がありますが、その層はアーカイブに設定されます。アーカイブ層のソース BLOB からの読み取り操作が完了し、BLOB の内容がオンライン層の新しい宛先 BLOB に書き込まれるまで、データは使用できません。 新しい BLOB は独立したコピーなので、それを変更または削除しても、アーカイブ層のソース BLOB には影響を与えません。
@@ -107,13 +107,13 @@ Blob Storage でのイベント処理の詳細については、「[Azure Blob S
 
 [Copy Blob](/rest/api/storageservices/copy-blob) または [Copy Blob from URL](/rest/api/storageservices/copy-blob-from-url) でアーカイブされた BLOB をオンライン層にコピーすると、データ読み取りトランザクションとデータ取得サイズで課金されます。 オンライン層での宛先 BLOB の作成は、データ書き込みトランザクションに対して課金されます。 ソース BLOB はアーカイブ層で変更されていないため、オンライン BLOB にコピーする場合、早期削除料金は適用されません。 優先順位の高い取得料金は、選択した場合に適用されます。
 
-アーカイブ層の BLOB は、少なくとも 180 日間格納する必要があります。 180 日の期間が経過する前にアーカイブ済み BLOB のレベルを削除または変更すると、早期削除料金が発生します。 詳しくは、「[アーカイブ アクセス層](storage-blob-storage-tiers.md#archive-access-tier)」をご覧ください。
+アーカイブ層の BLOB は、少なくとも 180 日間格納する必要があります。 180 日の期間が経過する前にアーカイブ済み BLOB のレベルを削除または変更すると、早期削除料金が発生します。 詳しくは、「[アーカイブ アクセス層](access-tiers-overview.md#archive-access-tier)」をご覧ください。
 
 ブロック BLOB とデータ ハイドレートの価格の詳細については、[Azure Storage の価格](https://azure.microsoft.com/pricing/details/storage/blobs/)に関するページを参照してください。 送信データ転送の価格の詳細については、[データ転送料金の詳細](https://azure.microsoft.com/pricing/details/data-transfers/)に関するページを参照してください。
 
 ## <a name="see-also"></a>関連項目
 
-- [Azure Blob Storage: ホット、クール、アーカイブ アクセス層](storage-blob-storage-tiers.md)
+- [BLOB データのホット、クール、アーカイブ アクセス層](access-tiers-overview.md)。
 - [アーカイブ済み BLOB をオンライン層にリハイドレートする](archive-rehydrate-to-online-tier.md)
 - [BLOB リハイドレート イベントに応答して Azure 関数を実行する](archive-rehydrate-handle-event.md)
 - [Blob Storage のイベント処理](storage-blob-event-overview.md)

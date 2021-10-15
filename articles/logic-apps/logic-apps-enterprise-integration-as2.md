@@ -1,19 +1,19 @@
 ---
 title: B2B ワークフローで AS2 メッセージを交換する
-description: Azure Logic Apps と Enterprise Integration Pack を使用してワークフローを作成することにより、取引間で AS2 メッセージを交換します。
+description: Azure Logic Apps と Enterprise Integration Pack を使用してワークフローを作成することにより、取引先間で AS2 メッセージを交換します。
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, azla
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/27/2021
-ms.openlocfilehash: 8b42987055ca2e2b6533ae2f9d45b4bb62fbe016
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.openlocfilehash: 8023073aecae3a1f97c82a16a5be952df7425186
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129082459"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129399654"
 ---
 # <a name="exchange-as2-messages-using-workflows-in-azure-logic-apps"></a>Azure Logic Apps でワークフローを使用して AS2 メッセージを交換する
 
@@ -23,7 +23,9 @@ Azure Logic Apps を使用して作成したワークフローで AS2 メッセ�
 
   **AS2 (v2)** を使用すると、パフォーマンスが向上し、追跡機能を除いて、元のバージョンと同じ機能が提供されます。また、これは、Azure Logic Apps ランタイムにネイティブであり、メッセージ サイズ、スループット、待機時間について大幅なパフォーマンスの向上が実現されます。 また、v2 コネクタでは、統合アカウントへの接続を作成する必要はありません。 代わりに、前提条件で説明されているように、コネクタを使用する予定のロジック アプリ リソースに統合アカウントがリンクされていることを確認してください。
 
-* **Logic App (Standard)** のリソースの種類を使用する場合は、現在、元の **AS2** コネクタのみが使用できます。 このバージョンの詳細については、[コネクタのリファレンス ページ](/connectors/as2/)を参照してください。ここでは、コネクタの Swagger ファイルで文書化されているトリガー、アクション、制限について説明しています。
+* **Logic App (Standard)** のリソースの種類を使用する場合は、現在、元の **AS2** コネクタのみが使用できます。
+
+  元の **AS2** コネクタのバージョンの技術情報については、[コネクタのリファレンス ページ](/connectors/as2/)を参照してください。ここでは、コネクタの Swagger ファイルで文書化されているトリガー、アクション、制限について説明しています。
 
 ### <a name="consumption"></a>[従量課金プラン](#tab/consumption)
 
@@ -56,7 +58,7 @@ Azure Logic Apps を使用して作成したワークフローで AS2 メッセ�
 
 ### <a name="standard"></a>[Standard](#tab/standard)
 
-元の **AS2** コネクタのトリガー、アクション、制限バージョンの詳細については、コネクタの Swagger ファイルで文書化されている[コネクタのリファレンス ページ](/connectors/as2/)を参照してください。
+元の **AS2** コネクタのトリガー、アクション、制限バージョンの詳細については、コネクタの Swagger ファイルで文書化されている [コネクタのリファレンス ページ](/connectors/as2/)を参照してください。
 
 ---
 
@@ -82,12 +84,12 @@ Azure Logic Apps を使用して作成したワークフローで AS2 メッセ�
 
 * 統合アカウント内の少なくとも 2 つの[取引先](logic-apps-enterprise-integration-partners.md)。 両方の取引先の定義では、同じ "*ビジネス ID*" 修飾子 (このシナリオでは **AS2Identity**) を使用する必要があります。
 
-* ワークフローに参加する取引先間の統合アカウント内の [AS2 契約](logic-apps-enterprise-integration-agreements.md)。 契約には、ホスト パートナーとゲスト パートナーが必要です。
+* ワークフローに参加する取引先間の統合アカウント内の [AS2 契約](logic-apps-enterprise-integration-agreements.md)。 契約には、ホスト パートナーとゲスト パートナーが必要です。 他の取引先との間のメッセージの内容が、契約の種類と一致している必要があります。
 
 * AS2 操作を使用するロジック アプリ リソースとワークフロー。
 
   > [!NOTE]
-  > **AS2 (v2)** コネクタでは、アクションのみ提供され、トリガーは提供されません。 この記事のこのコネクタの例では、[Request](../connectors/connectors-native-reqres.md) トリガーを使用します。 元の **AS2** コネクタには、トリガーとアクションが含まれています。 元の **AS2** コネクタのトリガー、アクション、制限バージョンの詳細については、コネクタの Swagger ファイルで文書化されている[コネクタのリファレンス ページ](/connectors/as2/)を参照してください。
+  > **AS2 (v2)** コネクタでは、アクションのみ提供され、トリガーは提供されません。 この記事のこのコネクタの例では、[Request](../connectors/connectors-native-reqres.md) トリガーを使用します。 元の **AS2** コネクタには、トリガーとアクションが含まれています。 元の **AS2** コネクタのトリガー、アクション、制限バージョンの詳細については、コネクタの Swagger ファイルで文書化されている [コネクタのリファレンス ページ](/connectors/as2/)を参照してください。
 
   ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](logic-apps-overview.md)」と[クイック スタートの初めてのロジック アプリの作成](quickstart-create-first-logic-app-workflow.md)に関するページを参照してください。
 

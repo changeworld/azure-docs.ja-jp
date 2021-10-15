@@ -12,12 +12,12 @@ ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: has-adal-ref
-ms.openlocfilehash: 9a21ae719a6e89819cb6841f69ff48e17cc0bec6
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: cb6241443f4ec7aa9d60501aab50ca21ed1d147d
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124779523"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129235860"
 ---
 # <a name="using-azure-ad-application-proxy-to-publish-on-premises-apps-for-remote-users"></a>Azure AD アプリケーション プロキシを使用してリモート ユーザー向けにオンプレミス アプリを発行する
 
@@ -92,7 +92,7 @@ Azure AD はアプリケーション プロキシを使用して、オンプレ�
 
 アプリケーション プロキシは、次のネイティブ認証プロトコルを使用するアプリで動作します。
 
-* **[統合 Windows 認証 (IWA)](./application-proxy-configure-single-sign-on-with-kcd.md)。** IWA の場合、アプリケーション プロキシ コネクタは、Kerberos アプリケーションに対して Kerberos 制約付き委任 (KCD) を使用し、ユーザーを認証します。
+* [**統合 Windows 認証 (IWA)** ](./application-proxy-configure-single-sign-on-with-kcd.md)。 IWA の場合、アプリケーション プロキシ コネクタは、Kerberos アプリケーションに対して Kerberos 制約付き委任 (KCD) を使用し、ユーザーを認証します。
 
 サード パーティ統合または特定の構成のシナリオでは、アプリケーション プロキシは次の認証プロトコルもサポートしています。
 

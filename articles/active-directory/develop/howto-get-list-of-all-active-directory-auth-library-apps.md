@@ -13,12 +13,12 @@ ms.date: 07/22/2021
 ms.author: shermanouko
 ms.custom: aaddev, has-adal-ref
 ms.reviewer: aiwang, marsma
-ms.openlocfilehash: 07f6c7f481e815e788b22782f01ad9369bd2c9f6
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 1f4a710beba53987ce555aad5526298f81d0a43c
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123039698"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129232301"
 ---
 # <a name="get-a-complete-list-of-apps-using-adal-in-your-tenant"></a>テナントで ADAL を使用しているアプリの一覧を取得する
 
@@ -28,9 +28,13 @@ Active Directory 認証ライブラリ (ADAL) のサポートは 2022 年 6 月 
 
 ブックは、Azure Active Directory (Azure AD) ログで使用できる情報を収集して視覚化するクエリのセットです。 [サインイン ログ スキーマの詳細については、こちらを参照してください](../reports-monitoring/reference-azure-monitor-sign-ins-log-schema.md)。 Azure AD 管理ポータルのサインイン ブックには現在、ADAL を使用しているアプリケーションとその使用頻度を判断するのに役立つテーブルが用意されています。 まず、アプリケーションの一覧の視覚化を表示する前に、ブックにアクセスする方法について詳しく説明します。
 
-## <a name="step-1-integrate-audit-logs-with-azure-monitor"></a>手順 1: 監査ログを Azure Monitor と統合する
+## <a name="step-1-send-azure-ad-sign-in-events-to-azure-monitor"></a>手順 1: Azure Monitor に Azure AD サインイン イベントを送信する
 
-ブックにアクセスする前に、[Azure AD のサインインと監査ログを Azure Monitor と統合](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)に関するページの手順に従います。 Azure Monitor の統合後に作成されたサインインと監査イベントのみが格納されます。
+Azure AD では、サインイン イベントは既定で Azure Monitor に送信されません。これは Azure Monitor のサインイン ブックで必要になります。
+
+[Azure AD サインインと監査ログを Azure Monitor に統合する](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)に関するページの手順に従って Azure Monitor にサインイン イベントを送信するように AD を構成します。 **診断設定** の構成手順で、 **[SignInLogs]** チェック ボックスをオンにします。
+
+Azure Monitor にイベントを送信するように Azure AD を構成する *前* に発生したサインイン イベントは、サインイン ブックに表示されます。
 
 ## <a name="step-2-access-sign-ins-workbook-in-azure-portal"></a>手順 2: Azure portal でサインイン ブックにアクセスする
 

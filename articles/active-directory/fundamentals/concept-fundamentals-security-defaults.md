@@ -12,12 +12,12 @@ manager: karenhoran
 ms.reviewer: lvandenende
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 83a2c5bca5837919015125d6c421dccfef5bf58c
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.openlocfilehash: b88cb7baa3c8eb8d40bd23d8697f563406bd1fdb
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129079449"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129535024"
 ---
 # <a name="what-are-security-defaults"></a>セキュリティの既定値群とは
 
@@ -58,7 +58,7 @@ Microsoft は、誰もがセキュリティの既定値群を利用できるよ�
 
 特権アクセスを持つユーザーは、より自由に環境にアクセスできます。 これらのアカウントには権限があるので、特別な注意を払って対処する必要があります。 特権アカウントの保護を強化するための一般的な方法の 1 つは、サインイン時に、強力な形式のアカウント検証を必須にすることです。 Azure AD では、多要素認証を必須にすることで、アカウント検証を強力にすることができます。
 
-次の 9 つの Azure AD 管理者ロールについては、Azure AD Multi-Factor Authentication への登録が完了した後、サインインのたびに追加の認証を実行する必要があります。
+次の Azure AD 管理者ロールについては、Azure AD Multi-Factor Authentication への登録が完了した後、サインインのたびに追加の認証を実行する必要があります。
 
 - 全体管理者
 - アプリケーション管理者

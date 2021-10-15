@@ -8,22 +8,21 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 08/16/2021
+ms.date: 09/15/2021
 ms.author: mimart
 ms.subservice: B2C
+ms.custom: b2c-support
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: c88954434c38a04d0d1263e96639e6cca03c3a1b
-ms.sourcegitcommit: 47491ce44b91e546b608de58e6fa5bbd67315119
+ms.openlocfilehash: ceb265ef339d39f14dbc042914e471c692ae6420
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122201637"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128568561"
 ---
 # <a name="enable-custom-domains-for-azure-active-directory-b2c"></a>Azure Active Directory B2C のカスタム ドメインを有効にする
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
-
-[!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
 この記事では、Azure Active Directory B2C (Azure AD B2C) のリダイレクト URL でカスタム ドメインを有効にする方法について説明します。 アプリケーションでカスタム ドメインを使用すると、よりシームレスなユーザー エクスペリエンスが得られます。 ユーザーの視点では、サインイン プロセス中、ユーザーは Azure AD B2C の既定ドメイン *&lt;tenant-name&gt;.b2clogin.com* にリダイレクトするのでなく、ドメインにとどまります。
 
@@ -36,8 +35,8 @@ ms.locfileid: "122201637"
 次の図は、Azure Front Door の統合を示しています。
 
 1. ユーザーは、アプリケーションからサインイン ボタンを選択すると、Azure AD B2C サインイン ページに移動します。 このページでカスタム ドメイン名が指定されます。
-1. Web ブラウザーによって、カスタム ドメイン名は Azure Front Door の IP アドレスに解決されます。 DNS 解決時に、カスタム ドメイン名の正規名 (CNAME) レコードが Front Door の既定フロントエンド ホスト (例: `contoso.azurefd.net`) を指します。 
-1. カスタム ドメイン (例: `login.contoso.com`) 宛てのトラフィックは、指定された Front Door の既定のフロントエンド ホスト (`contoso.azurefd.net`) にルーティングされます。
+1. Web ブラウザーによって、カスタム ドメイン名は Azure Front Door の IP アドレスに解決されます。 DNS 解決時に、カスタム ドメイン名の正規名 (CNAME) レコードが Front Door の既定フロントエンド ホスト (例: `contoso-frontend.azurefd.net`) を指します。 
+1. カスタム ドメイン (例: `login.contoso.com`) 宛てのトラフィックは、指定された Front Door の既定のフロントエンド ホスト (`contoso-frontend.azurefd.net`) にルーティングされます。
 1. Azure Front Door が Azure AD B2C の `<tenant-name>.b2clogin.com` 既定ドメインを使用して Azure AD B2C コンテンツを呼び出します。 Azure AD B2C エンドポイントに対する要求に、元のカスタム ドメイン名が含まれます。
 1. Azure AD B2C は、関連するコンテンツと元のカスタム ドメインを表示して、要求に応答します。
 
@@ -51,7 +50,7 @@ ms.locfileid: "122201637"
 - 複数のカスタム ドメインを設定できます。 サポートされているカスタム ドメインの最大数については、Azure AD B2C の「[Azure AD サービスの制限と制約](../active-directory/enterprise-users/directory-service-limits-restrictions.md)」、および Azure Front Door の「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-front-door-service-limits)」を参照してください。
 - Azure Front Door は別個の Azure サービスであるため、追加料金が発生します。 詳細については、「[Front Door の価格](https://azure.microsoft.com/pricing/details/frontdoor)」を参照してください。
 - Azure Front Door の [Web Application Firewall](../web-application-firewall/afds/afds-overview.md) を使用するには、ファイアウォールの構成とルールが Azure AD B2C ユーザー フローで正しく動作することを確認する必要があります。
-- カスタム ドメインを構成した後も、ユーザーは Azure AD B2C の既定ドメイン名 *&lt;tenant-name&gt;.b2clogin.com* にアクセスできます (カスタム ポリシーを使用して[アクセスがブロック](#block-access-to-the-default-domain-name)されている場合を除く)。
+- カスタム ドメインを構成した後も、ユーザーは Azure AD B2C の既定ドメイン名 *&lt;tenant-name&gt;.b2clogin.com* にアクセスできます (カスタム ポリシーを使用して [アクセスがブロック](#block-access-to-the-default-domain-name)されている場合を除く)。
 - 複数のアプリケーションがある場合は、それらすべてをカスタム ドメインに移行してください (ブラウザーが、現在使用されているドメイン名の下に Azure AD B2C セッションを格納するため)。
 
 ## <a name="prerequisites"></a>前提条件
@@ -100,7 +99,8 @@ Azure AD B2C テナントの Front Door を作成するには、次の手順に�
   
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-1. **[ディレクトリ + サブスクリプション]** を選択し、Azure Front Door に使用する Azure サブスクリプションが含まれているディレクトリを選択します。 このディレクトリは、Azure AD B2C テナントが含まれているディレクトリであっては "*なりません*"。
+1. Azure AD B2C テナントが含まれるディレクトリ *ではなく* Azure Front Door に使用する Azure サブスクリプションが含まれるディレクトリを選択するため、ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[スイッチ]** を選択します。 
 1. ホーム ページまたは Azure メニューから **[リソースの作成]** を選択します。 **[ネットワーク]**  >  **[すべて表示]**  >  **[フロントドア]** の順に選択します。
 1. **[フロント ドアを作成する]** ページの **[基本]** タブで、次の情報を入力または選択してから、 **[次へ: 構成]** を選択します。
 
@@ -114,7 +114,7 @@ Azure AD B2C テナントの Front Door を作成するには、次の手順に�
 
 フロントエンド ホストは、アプリケーションで使用されるドメイン名です。 Front Door を作成すると、既定のフロントエンド ホストは `azurefd.net` のサブドメインになります。
 
-Azure Front Door には、カスタム ドメインをフロントエンド ホストと関連付けるオプションが用意されています。 このオプションを使用して、Front Door に所有されているドメイン名の代わりに、URL 内のカスタム ドメインに Azure AD B2C のユーザー インターフェイスを関連付けます。 たとえば、「 https://login.contoso.com 」のように入力します。
+Azure Front Door には、カスタム ドメインをフロントエンド ホストと関連付けるオプションが用意されています。 このオプションを使用して、Front Door に所有されているドメイン名の代わりに、URL 内のカスタム ドメインに Azure AD B2C のユーザー インターフェイスを関連付けます。 たとえば、「 `https://login.contoso.com` 」のように入力します。
 
 フロントエンド ホストを追加するには、次の手順に従います。
 
@@ -171,11 +171,11 @@ Azure Front Door には、カスタム ドメインをフロントエンド ホ�
 
 ### <a name="31-create-a-cname-dns-record"></a>3.1 CNAME DNS レコードを作成する
 
-カスタム ドメインを Front Door で使用するためには、最初に Front Door の既定のフロントエンド ホスト (contose.azurefd.net など) を指す正規名 (CNAME) レコードをドメイン プロバイダーで作成する必要があります。
+カスタム ドメインを Front Door で使用するためには、最初に Front Door の既定のフロントエンド ホスト (contoso-frontend.azurefd.net など) を指す正規名 (CNAME) レコードをドメイン プロバイダーで作成する必要があります。
 
 CNAME レコードは、ソース ドメイン名を宛先ドメイン名 (別名) にマップする DNS レコードの一種です。 Azure Front Door では、ソース ドメイン名はカスタム ドメイン名であり、宛先ドメイン名は[手順 2.1](#21-add-frontend-host) で構成した Front Door の既定のホスト名です。 
 
-作成した CNAME レコードが Front Door によって検証されると、ソース カスタム ドメイン (login.contoso.com など) 宛てのトラフィックは、指定された宛先の Front Door 既定フロントエンド ホスト (`contoso.azurefd.net` など) にルーティングされます。 詳細については、「[Front Door にカスタム ドメインを追加する](../frontdoor/front-door-custom-domain.md)」を参照してください。 
+作成した CNAME レコードが Front Door によって検証されると、ソース カスタム ドメイン (login.contoso.com など) 宛てのトラフィックは、指定された宛先の Front Door 既定フロントエンド ホスト (`contoso-frontend.azurefd.net` など) にルーティングされます。 詳細については、「[Front Door にカスタム ドメインを追加する](../frontdoor/front-door-custom-domain.md)」を参照してください。 
 
 カスタム ドメインの CNAME レコードを作成するには:
 
@@ -187,13 +187,13 @@ CNAME レコードは、ソース ドメイン名を宛先ドメイン名 (別�
 
     | source          | Type  | 宛先           |
     |-----------------|-------|-----------------------|
-    | `<login.contoso.com>` | CNAME | `contoso.azurefd.net` |
+    | `<login.contoso.com>` | CNAME | `contoso-frontend.azurefd.net` |
 
    - ソース: カスタム ドメイン名 (例: login.contoso.com) を入力します。
 
    - 型: 「*CNAME*」と入力します。
 
-   - ターゲット: [手順 2.1](#21-add-frontend-host) で作成した既定の Front Door フロントエンド ホストを入力します。 名前は、 _&lt;ホスト名&gt;_ .azurefd.net の形式である必要があります。 たとえば、「 `contoso.azurefd.net` 」のように入力します。
+   - ターゲット: [手順 2.1](#21-add-frontend-host) で作成した既定の Front Door フロントエンド ホストを入力します。 名前は、 _&lt;ホスト名&gt;_ .azurefd.net の形式である必要があります。 たとえば、「 `contoso-frontend.azurefd.net` 」のように入力します。
 
 1. 変更を保存します。
 
@@ -218,7 +218,7 @@ CNAME レコードは、ソース ドメイン名を宛先ドメイン名 (別�
     
     ![スクリーンショットでは、Azure Front Door 証明書を使用して HTTPS を有効にする方法を示しています。](./media/custom-domain/azure-front-door-add-custom-domain-https-settings.png)
 
-1. **[証明書の管理の種類]** で、[[管理されているフロント ドア]](../frontdoor/front-door-custom-domain-https.md#option-1-default-use-a-certificate-managed-by-front-door) または[[自分の証明書を使用する]](../frontdoor/front-door-custom-domain-https.md#option-2-use-your-own-certificate) を選択します。 *[管理されているフロント ドア]* オプションを選択した場合、証明書が完全にプロビジョニングされるまで待ちます。
+1. **[証明書の管理の種類]** で、[[管理されているフロント ドア]](../frontdoor/front-door-custom-domain-https.md#option-1-default-use-a-certificate-managed-by-front-door) または [[自分の証明書を使用する]](../frontdoor/front-door-custom-domain-https.md#option-2-use-your-own-certificate) を選択します。 *[管理されているフロント ドア]* オプションを選択した場合、証明書が完全にプロビジョニングされるまで待ちます。
 
 1. **[追加]** を選択します。
 
@@ -253,7 +253,8 @@ Azure Blob Storage のクロスオリジン リソース共有を、次の手順
 ## <a name="test-your-custom-domain"></a>カスタム ドメインのテスト
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページの **[ディレクトリ名]** の一覧で自分の Azure AD B2C ディレクトリを見つけて、 **[切り替え]** を選択します。
 1. Azure portal で、 **[Azure AD B2C]** を検索して選択します。
 1. **[ポリシー]** で **[ユーザー フロー (ポリシー)]** を選択します。
 1. ユーザー フローを選択して、 **[ユーザー フローの実行]** を選択します。
@@ -375,7 +376,7 @@ https://<domain-name>/11111111-1111-1111-1111-111111111111/v2.0/
 - **考えられる原因** - この問題は、DNS 構成または Azure Front Door バックエンド構成に関連している可能性があります。 
 - **解決方法**:  
     1. カスタム ドメインが Azure AD B2C テナントに[登録されていて正常に検証されている](#step-1-add-a-custom-domain-name-to-your-azure-ad-b2c-tenant)ことを確認します。
-    1. [カスタム ドメイン](../frontdoor/front-door-custom-domain.md)が正しく構成されていることを確認します。 カスタム ドメインの `CNAME` レコードは、Azure Front Door の既定のフロントエンド ホスト (例: contoso.azurefd.net) をポイントしていなければなりません。
+    1. [カスタム ドメイン](../frontdoor/front-door-custom-domain.md)が正しく構成されていることを確認します。 カスタム ドメインの `CNAME` レコードは、Azure Front Door の既定のフロントエンド ホスト (例: contoso-frontend.azurefd.net) をポイントしていなければなりません。
     1. [Azure Front Door バックエンド プール構成](#22-add-backend-and-backend-pool)が、カスタム ドメイン名が設定されていてユーザー フローまたはカスタム ポリシーが格納されているテナントをポイントしていることを確認します。
 
 
@@ -409,6 +410,10 @@ Azure Front Door は、ユーザーの元の IP アドレスを渡します。 �
 
 独自の Web アプリケーション ファイアウォールを Azure Front Door の前面で使用するには、すべてが Azure AD B2C のユーザー フローまたはカスタム ポリシーで正しく動作するよう構成して検証する必要があります。  
 
+### <a name="can-my-azure-front-door-instance-be-hosted-in-a-different-subscription-than-my-azure-ad-b2c-tenant"></a>Azure Front Door インスタンスを Azure AD B2C テナントとは異なるサブスクリプションでホストすることはできますか。
+    
+はい。Azure Front Door は別のサブスクリプションにできます。
+    
 ## <a name="next-steps"></a>次のステップ
 
 [OAuth 承認要求](protocols-overview.md)について学習します。

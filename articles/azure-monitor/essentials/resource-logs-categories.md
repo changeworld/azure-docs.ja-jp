@@ -1,31 +1,31 @@
 ---
-title: Azure Monitor リソース ログでサポートされているサービスとカテゴリ
-description: Azure Monitor のリファレンス - Azure リソース ログでサポートされているサービスとイベント スキーマについて説明します。
+title: Azure Monitor リソース ログでサポートされているカテゴリ
+description: Azure Monitor リソース ログでサポートされているサービスとイベント スキーマについて説明します。
 ms.topic: reference
 ms.date: 09/10/2021
-ms.openlocfilehash: c92f20d4a757ef69d334345619bdc2d585648d5d
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 9c41c714d2913247a6b0d00e3b242da9c59e038e
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129211254"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129457755"
 ---
-# <a name="supported-categories-for-azure-resource-logs"></a>Azure リソース ログでサポートされているカテゴリ
+# <a name="supported-categories-for-azure-monitor-resource-logs"></a>Azure Monitor リソース ログでサポートされているカテゴリ
 
 > [!NOTE]
-> この一覧は、主に自動生成されています。 GitHub を介してこの一覧に加えられた変更は、警告なしで上書きできます。 永続的な更新を行う方法の詳細については、この記事の作成者にお問い合わせください。
+> この一覧は、主に自動生成されています。 GitHub でこの一覧に対して行われた変更は、警告なしで上書きされる可能性があります。 永続的な更新を行う方法の詳細については、この記事の作成者にお問い合わせください。
 
-[Azure Monitor リソース ログ](../essentials/platform-logs-overview.md)は、Azure サービスによって出力されるログであり、そのサービスやリソースの操作が記述されます。 Azure Monitor を通じて使用できるすべてのリソース ログには、共通の上位スキーマが共有されます。各サービスが、独自のイベントに固有のプロパティを出力するための柔軟性も備わっています。
+[Azure Monitor リソース ログ](../essentials/platform-logs-overview.md)は、Azure サービスによって出力されるログであり、そのサービスやリソースの操作が記述されます。 Azure Monitor によって使用可能なすべてのリソース ログは、共通の最上位レベルのスキーマを共有します。 各サービスには、独自のイベントに対して一意のプロパティを生成する柔軟性があります。
 
 リソース ログは、以前は診断ログと呼ばれていました。 この名前は、Azure Monitor によって収集されたログの種類が、Azure リソースだけでなくそれ以外のものも含むように移行したため、2019 年 10 月に変更されました。
 
-(`resourceId` プロパティで使用可能な) リソースの種類と `category` を組み合わせて、スキーマを一意に識別します。 サービス固有のフィールドを含むすべてのリソース ログに共通のスキーマがあり、それぞれのログ カテゴリに対して追加されています。 詳細については、[Azure リソース ログの共通のスキーマとサービス固有のスキーマ](/azure/azure-monitor/essentials/resource-logs-schema)に関するページを参照してください
+リソースの種類 (`resourceId` プロパティで使用可能) とカテゴリの組み合わせにより、スキーマが一意に識別されます。 サービス固有のフィールドを含むすべてのリソース ログに共通のスキーマがあり、それぞれのログ カテゴリに対して追加されています。 詳細については、「[Azure リソース ログの共通およびサービス固有のスキーマ](/azure/azure-monitor/essentials/resource-logs-schema)」を参照してください。
 
 ## <a name="costs"></a>コスト
 
-[Azure Monitor Log Analytics](https://azure.microsoft.com/pricing/details/monitor/)、[Azure Storage](https://azure.microsoft.com/product-categories/storage/)、[イベント ハブ](https://azure.microsoft.com/pricing/details/event-hubs/)、Azure Monitor に直接統合しているパートナー ([Datadog など](../../partner-solutions/datadog/overview.md)) は、データの取り込みと保存に関連するコストがかかります。 これらのサービスの価格に関するページへのリンクを確認して、これらのコストを把握してください。 リソース ログは、これらの場所に送信できるデータの一種です。 
+[Azure Monitor Log Analytics](https://azure.microsoft.com/pricing/details/monitor/)、[Azure Storage](https://azure.microsoft.com/product-categories/storage/)、[Azure Event Hubs](https://azure.microsoft.com/pricing/details/event-hubs/)、Azure Monitor に直接統合しているパートナー ([Datadog など](../../partner-solutions/datadog/overview.md)) は、データの取り込みと保存に関連するコストがかかります。 前の文でリンクされている価格ページを調べて、それらのサービスのコストを確認してください。 リソース ログは、それらの場所に送信できるデータの 1 つの種類に過ぎません。 
 
-また、リソース ログの一部のカテゴリをこれらの場所にエクスポートするコストが発生する場合もあります。 そのようなログと考え得るエクスポート コストを下の表に示します。 エクスポートの価格の詳細については、「[Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)」ページの「*プラットフォーム ログ*」セクションを参照してください。
+また、リソース ログの一部のカテゴリをこれらの場所にエクスポートするコストが発生する場合もあります。 ログと考え得るエクスポート コストを、次のセクションで示します。 エクスポートの価格の詳細については、「[Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)」ページの「**プラットフォーム ログ**」セクションを参照してください。
 
 ## <a name="supported-log-categories-per-resource-type"></a>リソースの種類ごとのサポートされているログ カテゴリ
 
@@ -33,7 +33,7 @@ ms.locfileid: "129211254"
 
 一部のカテゴリは、特定の種類のリソースに対してのみサポートされています。 リソースが不足していると思われる場合は、リソース固有のドキュメントを参照してください。 たとえば、Microsoft.Sql/servers/databases カテゴリは、すべての種類のデータベースで使用できるわけではありません。 詳細については、[SQL Database の診断ログに関する情報](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md)を参照してください。 
 
-何かが不足していると考えられる場合は、この記事の下部にある GitHub コメントを開くことができます。
+不足しているものがあると考えられる場合は、この記事の下部にある GitHub コメントを開くことができます。
 
 
 ## <a name="microsoftaaddomainservices"></a>Microsoft.AAD/DomainServices

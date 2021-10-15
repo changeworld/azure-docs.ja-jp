@@ -7,12 +7,12 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.date: 09/27/2021
-ms.openlocfilehash: 6efbd254a74d2432985d451adf67a33b74d2e2c4
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.openlocfilehash: eadbeee57960577f12f880b4582e820eddb63e3c
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129081922"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129234378"
 ---
 # <a name="create-a-dynamics-365-for-operations-offer"></a>Dynamics 365 for Operations オファーの作成
 
@@ -104,13 +104,13 @@ ms.locfileid: "129081922"
 
 ## <a name="business-applications-isv-program"></a>Business Applications ISV プログラム
 
-オファーは、最初は Standard レベルで登録されています。 ソリューションがプログラムの適格性基準を満たしている場合は、プログラムの特典が拡充された Premium レベルへのアップグレードを要求することができます。 その場合は、オファーを公開する前に[共同販売モジュール](https://aka.ms/BizAppsISVProgram)を完了しておく必要があります。
+オファーは、最初は Standard レベルで登録されています。
 
-Premium レベルへのアップグレードを要求するには、このチェック ボックスをオンにします。
+オファーを公開する前に、[共同販売モジュール](https://aka.ms/BizAppsISVProgram)を完了します。
 
 左側のナビゲーション メニューの次のタブである **[プロパティ]** に進む前に、 **[下書きの保存]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 
-- [オファーのプロパティを構成する](dynamics-365-operations-properties.md)
+- オファーの[プロパティ](dynamics-365-operations-properties.md)を構成する
 - [オファーの掲載のベスト プラクティス](gtm-offer-listing-best-practices.md)

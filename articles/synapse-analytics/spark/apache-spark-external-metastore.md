@@ -8,12 +8,12 @@ ms.subservice: spark
 ms.author: yanacai
 author: yanancai
 ms.date: 09/08/2021
-ms.openlocfilehash: 9a2d822d84d6356fbf34b45e24501e4426f1b06d
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 805987eb38df3979904fc8b9f3bebfc7fdb1fdca
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128699245"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129276380"
 ---
 # <a name="use-external-hive-metastore-for-synapse-spark-pool-preview"></a>Azure Synapse Spark プールに外部 Hive メタストアを使用する (プレビュー)
 
@@ -36,21 +36,21 @@ Azure Synapse Analytics では、同じワークスペース上の Apache Spark 
 
 次の手順で、外部 Hive メタストアのリンク サービスを Synapse ワークスペースにセットアップします。
 
-1.  Synapse Studio を開き、 **[Manage]\(管理\) > [Linked services]\(リンク サービス\)** に移動し、 **[New]\(新規\)** をクリックして新しいリンク サービスを作成します。
+1. Synapse Studio を開き、 **[Manage]\(管理\) > [Linked services]\(リンク サービス\)** に移動し、 **[New]\(新規\)** をクリックして新しいリンク サービスを作成します。
 
-    :::image type="content" source="./media/use-external-metastore/set-up-hive-metastore-linked-service.png" alt-text="Hive Metastore のリンク サービスをセットアップする" border="true":::
+   :::image type="content" source="./media/use-external-metastore/set-up-hive-metastore-linked-service.png" alt-text="Hive Metastore のリンク サービスをセットアップする" border="true":::
 
-2.  **[Azure SQL Database]** を選択して **[Continue]\(続行\)** をクリックします。
+2. **[Azure SQL Database]** を選択して **[Continue]\(続行\)** をクリックします。
 
-3.  リンク サービスの **[Name]\(名前\)** を入力します。 リンク サービスの名前を控えます。この情報はすぐ後で Spark の構成に使用します。
+3. リンク サービスの **[Name]\(名前\)** を入力します。 リンク サービスの名前を控えます。この情報はすぐ後で Spark の構成に使用します。
 
-4.  外部 Hive メタストアの Azure SQL Database を Azure サブスクリプションのリストから選ぶか、手動でその情報を入力します。
+4. 外部 Hive メタストアの Azure SQL Database を Azure サブスクリプションのリストから選ぶか、手動でその情報を入力します。
 
-5.  現在サポートしている認証の種類は SQL 認証だけです。 **[User name]\(ユーザー名\)** と **[Password]\(パスワード\)** を入力して接続をセットアップします。
+5. 現在サポートしている認証の種類は SQL 認証だけです。 **[User name]\(ユーザー名\)** と **[Password]\(パスワード\)** を入力して接続をセットアップします。
 
-6.  接続をテスト (**Test connection**) して、ユーザー名とパスワードが有効であることを確認します。
+6. 接続をテスト (**Test connection**) して、ユーザー名とパスワードが有効であることを確認します。
 
-7.  **[Create]\(作成\)** をクリックしてリンク サービスを作成します。 
+7. **[Create]\(作成\)** をクリックしてリンク サービスを作成します。 
 
 ### <a name="test-connection-and-get-the-metastore-version-in-notebook"></a>接続をテストし、ノートブックでメタストアのバージョンを取得する
 ネットワークによっては、Spark プールから外部 Hive メタストア DB へのアクセスを遮断するよう、セキュリティ規則を設定している場合があります。 Spark プールを設定する前に、任意の Spark プール ノートブックで下のコードを実行して、外部 Hive メタストア DB への接続をテストします。 
@@ -108,7 +108,7 @@ spark.sql.hive.metastore.jars /opt/hive-metastore/lib-2.1/*:/usr/hdp/current/had
 ```
 
 ### <a name="configure-a-spark-session"></a>Spark セッションを設定する
-Spark プールを設定したくない場合は、ノートブックで %%configure magic コマンドを使用して Spark セッションを設定することもできます。 次にコードを示します。 Spark バッチ ジョブにも同じ構成を使用できます。 
+Spark プールを構成したくない場合は、%%configure magic コマンドを使用して、ノートブックで Spark セッションを構成することもできます。 次にコードを示します。 Spark バッチ ジョブにも同じ構成を使用できます。 
 
 ```
 %%configure -f
@@ -132,7 +132,7 @@ Hive メタストア データベースのリンク サービスでは、Hive �
 
 ### <a name="set-up-connection-to-adls-gen-2"></a>ADLS Gen 2 への接続をセットアップする
 #### <a name="workspace-primary-storage-account"></a>ワークスペース プライマリ ストレージ アカウント
-Hive テーブルのデータの本体をワークスペース プライマリ ストレージ アカウントに保存している場合、追加の設定は必要ありません。 ワークスペース作成時に、説明どおりストレージをセットアップすれば、問題なく機能します。
+Hive テーブルの基になるデータがワークスペース プライマリ ストレージ アカウントに格納されている場合、追加の設定を行う必要はありません。 ワークスペース作成時に、説明どおりストレージをセットアップすれば、問題なく機能します。
 
 #### <a name="other-adls-gen-2-account"></a>その他の ADLS Gen 2 アカウント
 Hive カタログのデータ本体を他の ADLS Gen 2 アカウントに保存している場合は、Spark クエリを実行するユーザーが、ADLS Gen2 ストレージ アカウントで **Storage Blob Data Contributer** ロールを持っている必要があります。 
@@ -140,15 +140,15 @@ Hive カタログのデータ本体を他の ADLS Gen 2 アカウントに保存
 ### <a name="set-up-connection-to-blob-storage"></a>Blob Storage への接続をセットアップする
 Hive テーブルのデータの本体を Azure Blob ストレージ アカウントに保存している場合は、下の手順で接続をセットアップします。
 
-1.  Synapse Studio を開き、 **[Data]\(データ\) > [Linked]\(リンク\) タブ > [Add]\(追加\)** > **[Connect to external data]\(外部データへの接続\)** に移動します。
+1. Synapse Studio を開き、 **[Data]\(データ\) > [Linked]\(リンク\) タブ > [Add]\(追加\)** > **[Connect to external data]\(外部データへの接続\)** に移動します。
 
-    :::image type="content" source="./media/use-external-metastore/connect-to-storage-account.png" alt-text="ストレージ アカウントに接続する" border="true":::
+   :::image type="content" source="./media/use-external-metastore/connect-to-storage-account.png" alt-text="ストレージ アカウントに接続する" border="true":::
 
-2.  **[Azure Blob Storage]** を選択して **[Continue]\(続行\)** をクリックします。
-3.  リンク サービスの **[Name]\(名前\)** を入力します。 リンク サービスの名前を控えます。この情報はすぐ後で Spark セッションの構成に使用します。
-4.  Azure Blob Storage アカウントを選択します。 認証方法を **[Account key]\(アカウント キー\)** に設定します。 現在 Spark プールでは、アカウント キーでのみ Blob Storage アカウントにアクセスできます。
-5.  接続をテスト (**Test connection**) して、 **[Create]\(作成\)** をクリックします。
-6.  Blob Storage アカウントのリンク サービスを作成した後、Spark クエリを実行するときは、ノートブックで下の Spark コードを実行し、Spark セッションを使用する Blob Storage アカウントへのアクセス権を取得してください。 この手順が必要な理由を[ここ](./apache-spark-secure-credentials-with-tokenlibrary.md)で説明しています。
+2. **[Azure Blob Storage]** を選択して **[Continue]\(続行\)** をクリックします。
+3. リンク サービスの **[Name]\(名前\)** を入力します。 リンク サービスの名前を控えます。この情報はすぐ後で Spark セッションの構成に使用します。
+4. Azure Blob Storage アカウントを選択します。 認証方法を **[Account key]\(アカウント キー\)** に設定します。 現在 Spark プールでは、アカウント キーでのみ Blob Storage アカウントにアクセスできます。
+5. 接続をテスト (**Test connection**) して、 **[Create]\(作成\)** をクリックします。
+6. Blob Storage アカウントのリンク サービスを作成した後、Spark クエリを実行するときは、ノートブックで下の Spark コードを実行し、Spark セッションを使用する Blob Storage アカウントへのアクセス権を取得してください。 この手順が必要な理由を[ここ](./apache-spark-secure-credentials-with-tokenlibrary.md)で説明しています。
 
 ```
 %%pyspark
@@ -168,7 +168,7 @@ spark.conf.set('fs.azure.sas.%s.%s.blob.core.windows.net' % (blob_container_name
 - Synapse Studio オブジェクト エクスプローラーでは当面、外部 HMS の代わりにマネージド Synapse メタストアのオブジェクトを表示します。この機能は現在改善中です。
 - [SQL <-> spark 同期](../sql/develop-storage-files-spark-tables.md)は、外部 HMS の使用中は機能しません。  
 - 外部 Hive Metastore データベースには、Azure SQL Database だけをサポートしています。 認証には、SQL 認証だけをサポートしています。
-- 現在 Spark では、外部 Hive テーブルと、トランザクション以外の ACID マネージド以外の Hive テーブルのみを使用できます。 Hive の ACID テーブルとトランザクション テーブルは現在サポートしていません。
+- 現在 Spark では、外部 Hive テーブルと、トランザクション以外の ACID マネージド以外の Hive テーブルのみを使用できます。 Hive の ACID テーブルとトランザクション テーブルは、現在サポートされていません。
 - Apache Ranger との連携機能は現時点で実装していません。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
@@ -195,7 +195,7 @@ spark.conf.set('fs.azure.sas.%s.%s.blob.core.windows.net' % (blob_container_name
 Py4JJavaError : An error occurred while calling o305.load. : Operation failed: "This request is not authorized to perform this operation using this permission.", 403, HEAD
 ```
 
-Spark クエリを実行するユーザーが、データの本体を保存しているストレージ アカウントに対して十分なアクセス権を持っていない場合に、これが起こる場合があります。 Spark クエリを実行するユーザーが、ADLS Gen2 ストレージ アカウントで **Storage Blob Data Contributor** ロールを持っていることを確認してください。 このステップは、リンク サービスの作成後に実行できます。
+これは、Spark クエリを実行するユーザーが、基になるストレージ アカウントへの十分なアクセス権を持っていないために発生する可能性があります。 Spark クエリを実行するユーザーが、ADLS Gen2 ストレージ アカウントで **Storage Blob Data Contributor** ロールを持っていることを確認してください。 このステップは、リンク サービスの作成後に実行できます。
 
 ### <a name="hms-schema-related-settings"></a>HMS スキーマに関する設定 
 HMS のバックエンド スキーマおよびバージョンが変更されることを避けるため、次の hive 構成がシステムによって既定で設定されます。 
@@ -213,10 +213,10 @@ spark.hadoop.hive.metastore.schema.verification false
 spark.hadoop.hive.synapse.externalmetastore.schema.usedefault false
 ```
 
-HMS バージョンを変更する必要がある場合は、[hive スキーマ ツール](https://cwiki.apache.org/confluence/display/Hive/Hive+Schema+Tool)の使用をお勧めします。 また、HMS を HDInsight クラスターで使用している場合は、[HDI に対応しているバージョン](https://docs.microsoft.com/azure/hdinsight/interactive-query/apache-hive-migrate-workloads)の使用をお勧めします。 
+HMS バージョンを変更する必要がある場合は、[hive スキーマ ツール](https://cwiki.apache.org/confluence/display/Hive/Hive+Schema+Tool)の使用をお勧めします。 また、HMS を HDInsight クラスターで使用している場合は、[HDI に対応しているバージョン](../../hdinsight/interactive-query/apache-hive-migrate-workloads.md)の使用をお勧めします。 
 
 ### <a name="when-sharing-the-metastore-with-hdinsight-40-spark-clusters-i-cannot-see-the-tables"></a>メタストアを HDInsight 4.0 Spark クラスターで共有したときに、テーブルが表示されない
 Hive カタログを HDInsiht 4.0 の spark クラスターで共有する場合は、Synapse spark の `spark.hadoop.metastore.catalog.default` プロパティが HDInsight spark の値に正しく対応していることを確認してください。 既定値は `Spark` です。
 
 ### <a name="when-sharing-the-hive-metastore-with-hdinsight-40-hive-clusters-i-can-list-the-tables-successfully-but-only-get-empty-result-when-i-query-the-table"></a>Hive メタストアを HDInsight 4.0 Hive クラスターで共有したときに、テーブルのリストは表示されるが、テーブルに対するクエリを実行すると空の結果しか取得できない
-制限事項のセクションで述べたとおり、Synapse Spark プールでは、外部 hive テーブルと、トランザクション以外の ACID マネージド テーブル以外のハイブ テーブルのみをサポートしており、Hive の ACID テーブルとトランザクション テーブルは現在サポートしていません。 既定では、HDInsight 4.0 Hive クラスターで作成するすべてのマネージド テーブルは ACID テーブルかトランザクション テーブルになるため、それらのテーブルに対するクエリを実行すると空の結果が返ります。 
+制限事項で説明したように、Synapse Spark プールでは、外部 Hive テーブルと、トランザクション以外の ACID マネージド以外のテーブルのみがサポートされ、Hive の ACID テーブルとトランザクション テーブルは現在サポートされていません。 HDInsight 4.0 Hive クラスターでは、既定では、すべてのマネージド テーブルが ACID テーブルまたはトランザクション テーブルとして作成されます。それらのテーブルに対してクエリを実行すると空の結果が得られるのはそのためです。 

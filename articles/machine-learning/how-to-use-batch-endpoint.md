@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: この記事では、大きなデータのバッチ スコアリングを継続的に行うバッチ エンドポイントの作成方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.topic: conceptual
 author: tracych
 ms.author: tracych
 ms.reviewer: laobri
 ms.date: 8/11/2021
 ms.custom: how-to, devplatv2
-ms.openlocfilehash: b68ba3f0221aa97307e746d192de65b2915d2e4b
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: e113fdebb7c6cf11b486bb958ab04af8e37a5e89
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122419552"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129428048"
 ---
 # <a name="use-batch-endpoints-preview-for-batch-scoring"></a>バッチ エンドポイント (プレビュー) を使用したバッチ スコアリング
 

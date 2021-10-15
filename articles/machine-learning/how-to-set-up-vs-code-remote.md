@@ -9,18 +9,18 @@ ms.topic: how-to
 ms.author: luquinta
 author: luisquintanilla
 ms.date: 07/15/2021
-ms.openlocfilehash: b3e30a4914ac52c9d9661d3b6d6e07f54f0afdc6
-ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
+ms.openlocfilehash: b7f3ce1bdb295dfd4bd14b28b45bccf470e377b3
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114230417"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129423540"
 ---
 # <a name="connect-to-an-azure-machine-learning-compute-instance-in-visual-studio-code-preview"></a>Visual Studio Code で Azure Machine Learning コンピューティング インスタンスに接続する (プレビュー)
 
 この記事では、Visual Studio Code を使用して Azure Machine Learning コンピューティング インスタンスに接続する方法について説明します。
 
-[Azure Machine Learning コンピューティング インスタンス](concept-compute-instance.md)は、データ サイエンティスト向けのクラウドベースのフルマネージド ワークステーションであり、IT 管理者用の管理およびエンタープライズ対応機能を備えています。
+[Azure Machine Learning コンピューティング インスタンス](concept-compute-instance.md)は、データ サイエンティスト向けのクラウドベースのフル マネージド ワークステーションであり、IT 管理者用の管理およびエンタープライズ対応機能を備えています。
 
 Visual Studio Code からコンピューティング インスタンスに接続するには、次の 2 つの方法があります。
 

@@ -10,13 +10,13 @@ ms.workload: identity
 ms.topic: how-to
 ms.author: mimart
 ms.subservice: B2C
-ms.date: 07/19/2021
-ms.openlocfilehash: 4a7fdf12ecf123c1fb741dcbd2706f7ca9a1d5c2
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 09/15/2021
+ms.openlocfilehash: ce9de190c5754102b9ac66602818b25e960ae8dd
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121732446"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128570257"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Azure Monitor で Azure AD B2C を監視する
 
@@ -34,6 +34,10 @@ Azure Monitor を使用して、Azure Active Directory B2C (Azure AD B2C) のサ
 
 > [!IMPORTANT]
 > Azure AD B2C のログを別の監視ソリューションまたはリポジトリに転送することを計画している場合は、次の点を考慮してください。 Azure AD B2C のログには個人データが含まれています。 そのようなデータは、未承認または違法な処理に対する保護など、個人データの適切なセキュリティを保証する方法で、適切な技術的または組織的手段を使用して処理する必要があります。
+
+Azure Monitor を使用して Azure AD B2C の監視を構成する方法については、次のビデオをご覧ください。  
+
+>[!Video https://www.youtube.com/embed/tF2JS6TGc3g]
 
 ## <a name="deployment-overview"></a>デプロイの概要
 
@@ -60,7 +64,8 @@ Azure AD B2C テナント内の Azure Active Directory で "_診断設定_" を�
 まず、Azure AD B2C からデータを受信する宛先 Log Analytics ワークスペースが含まれるリソース グループを作成するか、選択します。 Azure Resource Manager テンプレートをデプロイするときに、リソース グループ名を指定します。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-1. ポータル ツールバーにある **[ディレクトリ + サブスクリプション]** アイコンを選択し、**Azure AD テナント** が含まれているディレクトリを選択します。
+1. ご自分の Azure AD テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[スイッチ]** を選択します。
 1. [リソース グループを作成する](../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups)か、既存のものを選択します。 この例では、_azure-ad-b2c-monitor_ という名前のリソース グループを使用します。
 
 ## <a name="2-create-a-log-analytics-workspace"></a>2. Log Analytics ワークスペースの作成
@@ -68,7 +73,8 @@ Azure AD B2C テナント内の Azure Active Directory で "_診断設定_" を�
 **Log Analytics ワークスペース** は、Azure Monitor ログ データ用の固有の環境です。 この Log Analytics ワークスペースを使用して Azure AD B2C の[監査ログ](view-audit-logs.md)からデータを収集し、それをクエリやブックを使用して視覚化したり、アラートを作成したりします。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-1. ポータル ツールバーにある **[ディレクトリ + サブスクリプション]** アイコンを選択し、**Azure AD テナント** が含まれているディレクトリを選択します。
+1. ご自分の Azure AD テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[スイッチ]** を選択します。
 1. [Log Analytics ワークスペースを作成します](../azure-monitor/logs/quick-create-workspace.md)。 この例では、_AzureAdB2C_ という名前の Log Analytics ワークスペースを _azure-ad-b2c-monitor_ という名前のリソース グループで使用します。
 
 ## <a name="3-delegate-resource-management"></a>3. リソース管理を委任する
@@ -80,7 +86,8 @@ Azure AD B2C テナント内の Azure Active Directory で "_診断設定_" を�
 まず、Azure AD B2C ディレクトリの **テナント ID** (ディレクトリ ID とも呼ばれる) を取得します。
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
-1. ポータル ツールバーにある **[ディレクトリ + サブスクリプション]** アイコンを選択し、**Azure AD B2C** テナントが含まれるディレクトリを選択します。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
 1. **[Azure Active Directory]** を選択し、 **[概要]** を選択します。
 1. **テナント ID** を記録します。
 
@@ -101,12 +108,13 @@ Azure AD B2C テナント内の Azure Active Directory で "_診断設定_" を�
 Azure Lighthouse 内でカスタム認証と委任を作成するには、前に作成した Azure AD リソース グループ (_azure-ad-b2c-monitor_ など) への Azure AD B2C アクセスを許可する、Azure Resource Manager テンプレートを使用します。 **[Azure へのデプロイ]** ボタンを使用して GitHub サンプルからテンプレートをデプロイします。これにより、Azure portal が開き、ポータルで直接、テンプレートを構成してデプロイできます。 これらの手順では、(Azure AD B2C テナントではなく) Azure AD テナントにサインインしていることを確認してください。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
-2. ポータル ツールバーにある **[ディレクトリ + サブスクリプション]** アイコンを選択し、**Azure AD テナント** が含まれているディレクトリを選択します。
-3. **[Azure へのデプロイ]** ボタンを使用して、Azure portal を開き、テンプレートをポータルに直接デプロイします。 詳細については、「[Azure Resource Manager テンプレートの作成](../lighthouse/how-to/onboard-customer.md#create-an-azure-resource-manager-template)」を参照してください。
+1. ご自分の Azure AD テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[スイッチ]** を選択します。
+1. **[Azure へのデプロイ]** ボタンを使用して、Azure portal を開き、テンプレートをポータルに直接デプロイします。 詳細については、「[Azure Resource Manager テンプレートの作成](../lighthouse/how-to/onboard-customer.md#create-an-azure-resource-manager-template)」を参照してください。
 
    [![Azure へのデプロイ](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure-ad-b2c%2Fsiem%2Fmaster%2Ftemplates%2FrgDelegatedResourceManagement.json)
 
-4. **[カスタム デプロイ]** ページで、次の情報を入力します。
+1. **[カスタム デプロイ]** ページで、次の情報を入力します。
 
    | フィールド                 | 定義                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
    | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -137,15 +145,10 @@ Azure Lighthouse 内でカスタム認証と委任を作成するには、前に
 テンプレートをデプロイし、リソース プロジェクションが完了するまで数分待った後、次の手順に従ってサブスクリプションを Azure AD B2C ディレクトリに関連付けます。
 
 1. Azure portal に現在サインインしている場合は、サインアウトします (これにより、次の手順でセッションの資格情報が更新されます)。
-2. **Azure AD B2C** の管理者アカウントで [Azure portal](https://portal.azure.com) にサインインします。 このアカウントは、「[リソース管理を委任する](#3-delegate-resource-management)」手順で指定したセキュリティ グループのメンバーである必要があります。
-3. ポータルツールバーの **[ディレクトリ + サブスクリプション]** アイコンを選択します。
-4. Azure サブスクリプションと、作成した _azure-ad-b2c-monitor_ リソース グループが含まれている Azure AD ディレクトリを選択します。
-
-   ![ディレクトリを切り替える](./media/azure-monitor/azure-monitor-portal-03-select-subscription.png)
-
-5. 正しいディレクトリとサブスクリプションを選択してあることを確認します。 この例では、すべてのディレクトリとすべてのサブスクリプションが選択されています。
-
-   ![ディレクトリとサブスクリプションのフィルターで選択されたすべてのディレクトリ](./media/azure-monitor/azure-monitor-portal-04-subscriptions-selected.png)
+1. **Azure AD B2C** の管理者アカウントで [Azure portal](https://portal.azure.com) にサインインします。 このアカウントは、「[リソース管理を委任する](#3-delegate-resource-management)」手順で指定したセキュリティ グループのメンバーである必要があります。
+1. ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [ディレクトリ + サブスクリプション]** ページの **[ディレクトリ名]** 一覧で、Azure サブスクリプションと作成した _azure-ad-b2c-monitor_ リソース グループを含む Azure AD ディレクトリを見つけ、 **[切り替え]** を選択します。
+1. 正しいディレクトリとサブスクリプションを選択してあることを確認します。
 
 ## <a name="5-configure-diagnostic-settings"></a>5. 診断設定を構成する
 
@@ -164,7 +167,8 @@ Azure portal で[診断設定を作成する](../active-directory/reports-monito
 Azure AD B2C のアクティビティ ログの監視設定を構成するには:
 
 1. Azure AD B2C の管理者アカウントで [Azure portal](https://portal.azure.com/) にサインインします。 このアカウントは、「[セキュリティ グループを選択する](#32-select-a-security-group)」手順で指定したセキュリティ グループのメンバーである必要があります。
-1. ポータル ツール バーにある **[ディレクトリ + サブスクリプション]** アイコンを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
 1. **[Azure Active Directory]** を選択します
 1. **[監視]** で **[診断設定]** を選択します。
 1. リソースに対する既存の設定がある場合は、構成済みの設定の一覧が表示されます。 **[診断設定を追加する]** を選択して新しい設定を追加するか、 **[編集]** を選択して既存の設定を編集します。 各設定には、各送信先の種類を 1 つだけ含めることができます。

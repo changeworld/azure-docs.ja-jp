@@ -9,12 +9,12 @@ author: MikeRayMSFT
 ms.author: mikeray
 description: Kubernetes ディストリビューション向けの、Azure Arc 対応データ サービスの検証プログラムについて説明します。
 keywords: Kubernetes, Arc, Azure, K8s, 検証, データ サービス, SQL Managed Instance
-ms.openlocfilehash: 1935648b2d3de48aecf9878865f377c41c8498cc
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 90158be8a28aae08cbc377aa776947096597a601
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121779456"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129273839"
 ---
 # <a name="azure-arc-enabled-data-services-kubernetes-validation"></a>Azure Arc 対応データ サービス Kubernetes 検証
 
@@ -31,7 +31,7 @@ Azure Arc 対応データ サービス チームでは、業界のパートナ�
 
 ### <a name="dell"></a>Dell
 
-|ソリューションとバージョン | Kubernetes バージョン | Azure Arc 対応データ サービスのバージョン | SQL エンジンのバージョン | PostgreSQL Hyperscale のバージョン
+|ソリューションとバージョン | Kubernetes バージョン | Azure Arc 対応データ サービスのバージョン | SQL Server のバージョン | PostgreSQL Hyperscale のバージョン
 |-----|-----|-----|-----|-----|
 | Dell EMC PowerFlex |1.19.7|v1.0.0_2021-07-30|SQL Server 2019 (15.0.4123) | |
 | PowerFlex バージョン 3.6 |1.19.7|v1.0.0_2021-07-30|SQL Server 2019 (15.0.4123) | |
@@ -65,7 +65,7 @@ Azure Arc 対応データ サービス チームでは、業界のパートナ�
 
 ## <a name="data-services-validation-process"></a>データ サービスの検証プロセス
 
-Sonobuoy Arc 対応データ サービス プラグインは、Kubernetes クラスターでの Azure Arc 対応のデータ サービスのプロビジョニングとテストを自動化します。
+Sonobuoy Azure Arc 対応データ サービス プラグインは、Kubernetes クラスターでの Azure Arc 対応のデータ サービスのプロビジョニングとテストを自動化します。
 
 ### <a name="prerequisites"></a>前提条件
 

@@ -4,13 +4,13 @@ description: Bicep ファイルでデプロイ情報の取得に使用する関�
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 09/10/2021
-ms.openlocfilehash: e909ea77da32675beec6d5117430717acf274ab1
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 09/30/2021
+ms.openlocfilehash: 9d06bd78d7ba6dcf0f73326f744e975a9c4e3f53
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124731108"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129352398"
 ---
 # <a name="deployment-functions-for-bicep"></a>Bicep のデプロイ関数
 
@@ -21,6 +21,8 @@ ms.locfileid: "124731108"
 `deployment()`
 
 現在のデプロイ操作に関する情報を返します。
+
+名前空間: [az](bicep-functions.md#namespaces-for-functions)。
 
 ### <a name="return-value"></a>戻り値
 
@@ -110,6 +112,8 @@ output deploymentOutput object = deployment()
 `environment()`
 
 デプロイに使用される Azure 環境に関する情報を返します。
+
+名前空間: [az](bicep-functions.md#namespaces-for-functions)。
 
 ### <a name="return-value"></a>戻り値
 

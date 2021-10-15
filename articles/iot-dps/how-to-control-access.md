@@ -5,15 +5,15 @@ author: anastasia-ms
 ms.service: iot-dps
 services: iot-dps
 ms.topic: conceptual
-ms.date: 08/30/2021
+ms.date: 09/22/2021
 ms.author: v-stharr
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: cf2934c57441176034d28a7b60e33c639977e62d
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: dc33bf659785419619afe4f393a8a1ed09142452
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124779599"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129272531"
 ---
 # <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub Device Provisioning Service のアクセスを制御する
 
@@ -122,13 +122,9 @@ curl -L -i -X PUT -H 'Content-Type: application/json' -H 'Content-Encoding:  utf
 
 X.509 証明書ベースの認証用に個々の登録または登録グループを設定している場合、デバイスでは、発行された X.509 証明書を使用してデバイス API を証明する必要があります。 登録を設定してデバイス証明書を生成する方法については、次の記事を参照してください。
 
-* クイックスタート - [シミュレートされた X.509 デバイスを Python を使用して Azure IoT Hub にプロビジョニングする](quick-create-simulated-device-x509-python.md?tabs=linux)
+* クイックスタート - [シミュレートされた X.509 デバイスを Azure IoT Hub にプロビジョニングする](quick-create-simulated-device-x509.md)
 
-* クイックスタート - [シミュレートされた X.509 デバイスを Node.js を使用して Azure IoT Hub にプロビジョニングする](quick-create-simulated-device-x509-node.md)
-
-* クイックスタート - [X.509 デバイスを Python を使用して Azure Device Provisioning Service に登録する](quick-enroll-device-x509-python.md)
-
-* クイックスタート - [X.509 デバイスを Node.js を使用して Azure Device Provisioning Service に登録する](quick-enroll-device-x509-node.md)
+* クイックスタート - [X.509 デバイスを Azure Device Provisioning Service に登録する](quick-enroll-device-x509.md)
 
 登録が設定され、デバイス証明書が発行された後、デバイスの X.509 証明書を使用して Device API に対して認証する方法を次の例に示します。
 

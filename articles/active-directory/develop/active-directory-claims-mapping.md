@@ -2,7 +2,6 @@
 title: Azure AD テナントのアプリ要求をカスタマイズする (PowerShell)
 titleSuffix: Microsoft identity platform
 description: 特定の Azure Active Directory テナントのアプリケーションに対するトークンに組み込むクレーム (属性情報) をカスタマイズする方法を説明します。
-services: active-directory
 author: rwike77
 manager: CelesteDG
 ms.service: active-directory
@@ -13,12 +12,12 @@ ms.topic: how-to
 ms.date: 06/16/2021
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 302ab2b6f3060213a79b88ce6358cd842f74a425
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 71677a085627f46a995530c522a3a480be188042
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123425556"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129351006"
 ---
 # <a name="customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant"></a>テナントに存在する特定のアプリに対するトークンに組み込むクレームをカスタマイズする
 
@@ -47,7 +46,7 @@ ms.locfileid: "123425556"
 使用を開始するには、次の手順を実行します。
 
 1. 最新版の [Azure AD PowerShell モジュール パブリック プレビュー リリース](https://www.powershellgallery.com/packages/AzureADPreview)をダウンロードします。
-1. [Connect-AzureAD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0-preview) を実行して Azure AD 管理者アカウントにサインインします。 新しいセッションを開始するたびにこのコマンドを実行します。
+1. [Connect-AzureAD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0-preview&preserve-view=true) を実行して Azure AD 管理者アカウントにサインインします。 新しいセッションを開始するたびにこのコマンドを実行します。
 
    ``` powershell
    Connect-AzureAD -Confirm
@@ -225,7 +224,7 @@ PowerShell で [MSAL Public Client Application のインスタンスを作成し
     - 秘密キーのパスワード (.pfx ファイル)
 
 > [!IMPORTANT]
-> Azure AD では他の形式をサポートしていないため、秘密キーは PKCS#12 形式である必要があります。 誤った形式を使用すると、Microsoft Graph で、証明書情報を含む `keyCredentials` をサービス プリンシパルに PATCH するときに、“Invalid certificate: Key value is invalid certificate” (証明書が無効: キーの値に無効な証明書が指定されています) というエラーが出る場合があります。
+> Azure AD では他の形式をサポートしていないため、秘密キーは PKCS#12 形式である必要があります。 誤った形式を使用した場合、証明書情報を保持する `keyCredentials` の存在するサービス プリンシパルを Microsoft Graph で PATCH すると、“Invalid certificate: Key value is invalid certificate” (無効な証明書: キーの値が無効な証明書です) というエラーが発生する場合があります。
 
 ```powershell
 

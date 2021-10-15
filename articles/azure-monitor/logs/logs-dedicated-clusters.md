@@ -6,12 +6,12 @@ author: yossi-y
 ms.author: yossiy
 ms.date: 07/29/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 3aafeacbd07e386a23b289db0452a7425e18f567
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: a1236e1b68b90e9a1e48d61fa1b425ba26ead14b
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128632616"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129351398"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor ログ専用クラスター
 
@@ -30,7 +30,7 @@ Azure Monitor ログ専用クラスターは、Azure Monitor ログのお客様�
 
 ## <a name="management"></a>管理 
 
-専用クラスターは、Azure Monitor ログ クラスターを表す Azure リソースで管理されます。 [CLI](/cli/azure/monitor/log-analytics/cluster?view=azure-cli-latest)、[PowerShell](/powershell/module/az.operationalinsights) [REST](/rest/api/loganalytics/clusters) のいずれかを使用してプログラムから操作が実行されます。
+専用クラスターは、Azure Monitor ログ クラスターを表す Azure リソースで管理されます。 [CLI](/cli/azure/monitor/log-analytics/cluster)、[PowerShell](/powershell/module/az.operationalinsights) [REST](/rest/api/loganalytics/clusters) のいずれかを使用してプログラムから操作が実行されます。
 
 クラスターの作成後、そこにワークスペースをリンクさせると、新しく取り込まれたデータがクラスターに格納されます。 ワークスペースとクラスターのリンクはいつでも解除できます。リンクの解除後は、新しいデータが共有 Log Analytics クラスターに格納されます。 リンクとリンク解除の操作はクエリに影響せず、ワークスペースに保有されている限り、操作の前後でデータへのアクセスにも影響しません。 クラスターとワークスペースとの間にリンクを設定するには、両者が同じリージョンに存在する必要があります。
 
@@ -673,7 +673,7 @@ Authorization: Bearer <token>
 
 -  404 -- ワークスペースが見つかりません。 指定したワークスペースが存在しないか、削除されました。
 -  409 -- ワークスペースのリンクまたはリンク解除操作が進行中です。
--  400 -- Cluster not found, the cluster you specified doesn’t exist or was deleted. (400 -- クラスターが見つかりません。指定したクラスターが存在しないか、削除されました。) クラスターをその名前で作成しようとし、競合が発生した場合、そのクラスターは 14 日間の論理的な削除状態にあります。 回復するには、サポートにお問い合わせください。
+-  400 -- Cluster not found, the cluster you specified doesn't exist or was deleted. (400 -- クラスターが見つかりません。指定したクラスターが存在しないか、削除されました。) クラスターをその名前で作成しようとし、競合が発生した場合、そのクラスターは 14 日間の論理的な削除状態にあります。 回復するには、サポートにお問い合わせください。
 
 ### <a name="workspace-unlink"></a>ワークスペースのリンク解除
 -  404 -- ワークスペースが見つかりません。 指定したワークスペースが存在しないか、削除されました。

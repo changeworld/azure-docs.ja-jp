@@ -1,6 +1,6 @@
 ---
-title: Azure Virtual Desktop のディザスター リカバリー プランを設定する - Azure
-description: Azure Virtual Desktop のデプロイのために事業継続とディザスター リカバリー プランを設定する方法。
+title: Azure Virtual Desktop のディザスター リカバリー計画
+description: データを保護するために、Azure Virtual Desktop デプロイのディザスター リカバリー計画を立てます。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,14 +8,14 @@ ms.topic: how-to
 ms.date: 10/09/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 91795dbe4e648f12e9a088a5aeffb68bffb46a65
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 54202b49e2881d1d128136b876cbf88c2bc87400
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111757897"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129359764"
 ---
-# <a name="set-up-a-business-continuity-and-disaster-recovery-plan"></a>事業継続とディザスター リカバリー プランを設定する
+# <a name="azure-virtual-desktop-disaster-recovery"></a>Azure Virtual Desktop のディザスター リカバリー
 
 組織のデータを安全な状態に保つために、事業継続とディザスター リカバリー (BCDR) 戦略を採用する必要がある場合があります。 確実な BCDR 戦略により、計画的および計画外のサービスまたは Azure の停止中にアプリとワークロードの稼働状態が保たれます。
 

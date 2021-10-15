@@ -2,13 +2,13 @@
 title: Bicep の関数 - scopes
 description: デプロイのスコープに関する値を取得するために、Bicep ファイル内で使用する関数について説明します。
 ms.topic: conceptual
-ms.date: 09/10/2021
-ms.openlocfilehash: 4432aa528dbdd565128a15eb79d4b4c01572c924
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 09/30/2021
+ms.openlocfilehash: ee7ea8efbb19048ff5aa6b6ead2bf9d2495ad23a
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124827441"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129360237"
 ---
 # <a name="scope-functions-for-bicep"></a>Bicep の Scope 関数
 
@@ -21,6 +21,8 @@ ms.locfileid: "124827441"
 `managementGroup(name)`
 
 スコープを管理グループに設定するために使用されるオブジェクトを返します。
+
+名前空間: [az](bicep-functions.md#namespaces-for-functions)。
 
 ### <a name="remarks"></a>解説
 
@@ -64,6 +66,8 @@ module  'module.bicep' = {
 または
 
 現在のリソース グループを表すオブジェクトを返します。
+
+名前空間: [az](bicep-functions.md#namespaces-for-functions)。
 
 ### <a name="remarks"></a>解説
 
@@ -156,6 +160,8 @@ resourceGroup 関数を使用して、リソース グループからリソー�
 
 現在のデプロイのサブスクリプションの詳細を返します。
 
+名前空間: [az](bicep-functions.md#namespaces-for-functions)。
+
 ### <a name="remarks"></a>解説
 
 subscription 関数には、2 つの異なる用途があります。 1 つは、[モジュール](modules.md#configure-module-scopes)または[拡張リソースの種類](scope-extension-resources.md)上でスコープを設定すること、 もう 1 つは、現在のサブスクリプションに関する詳細を取得することです。 その用途は、関数の配置によって決まります。 `scope` プロパティの設定に使用すると、スコープ オブジェクトが返されます。
@@ -207,6 +213,8 @@ output subscriptionOutput object = subscription()
 `tenant()`
 
 スコープをテナントに設定するために使用されるオブジェクトを返します。
+
+名前空間: [az](bicep-functions.md#namespaces-for-functions)。
 
 ### <a name="remarks"></a>解説
 

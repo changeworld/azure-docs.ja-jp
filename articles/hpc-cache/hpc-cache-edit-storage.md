@@ -6,19 +6,19 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 06/30/2021
 ms.author: v-erkel
-ms.openlocfilehash: e0100c9e184d1704d127e1ef5a33c2144e721a89
-ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
+ms.openlocfilehash: 151186d3d42ad799707f4a352e76cd154d3443bb
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113587097"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129276191"
 ---
 # <a name="edit-storage-targets"></a>ストレージ ターゲットを編集する
 
 Azure portal か Azure CLI を使用すれば、ストレージ ターゲットを編集できます。 たとえば、既存のストレージ ターゲットのアクセス ポリシー、使用量モデル、名前空間パスを変更できます。
 
 > [!TIP]
-> [ストレージ ターゲットの管理](manage-storage-targets.md)に関する記事を読み、 ストレージ ターゲットの削除および停止方法、キャッシュ データをバックエンド ストレージに書き込む方法を学んでください。
+> ストレージ ターゲットを削除または中断するか、またはストレージ ターゲットでキャッシュ データをバックエンド ストレージに書き込む方法については、「[ストレージ ターゲットの表示と管理](manage-storage-targets.md)」を参照してください。
 
 ストレージの種類に応じて、次のストレージ ターゲット値を変更できます。
 
@@ -73,7 +73,7 @@ BLOB ストレージ ターゲットの名前空間を Azure CLI を使用して
 
 NFS ストレージ ターゲットの場合は、仮想名前空間パスを変更または追加したり、名前空間パスが指す NFS エクスポートまたはサブディレクトリの値を変更したり、使用モデルを変更したりできます。
 
-一部の種類のカスタム DNS 設定が指定されたキャッシュ内のストレージ ターゲットには、IP アドレスを更新するためのコントロールもあります。 (この種の構成を設定することは稀です。) DNS の設定を更新する方法は、[ストレージ ターゲットの管理](manage-storage-targets.md#update-ip-address-custom-dns-configurations-only)に関する記事をご覧ください。
+一部の種類のカスタム DNS 設定が指定されたキャッシュ内のストレージ ターゲットには、IP アドレスを更新するためのコントロールもあります。 (この種類の構成はまれです。) DNS 設定を更新する方法については、「[ストレージ ターゲットの表示と管理](manage-storage-targets.md#update-ip-address-custom-dns-configurations-only)」を参照してください。
 
 詳細については以下にあります。
 
@@ -179,6 +179,6 @@ ADLS-NFS 使用モデルの構成は、NFS 使用モデルの選択と同じで�
 
 ## <a name="next-steps"></a>次のステップ
 
-* 個別のストレージ ターゲットの停止、削除、フラッシュについては、[ストレージ ターゲットの管理](manage-storage-targets.md)に関する記事を読んでください。
+* 個々のストレージ ターゲットの停止、削除、フラッシュについては、「[ストレージ ターゲットの表示と管理](manage-storage-targets.md)」を参照してください。
 * ストレージ ターゲットのオプションの詳細については「[ストレージ ターゲットを追加する](hpc-cache-add-storage.md)」を読んでください。
 * 仮想パスの使用に関するその他のヒントについては、「[集約された名前空間を計画する](hpc-cache-namespace.md)」を参照してください。

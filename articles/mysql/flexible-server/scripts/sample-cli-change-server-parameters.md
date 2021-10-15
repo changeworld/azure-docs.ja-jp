@@ -42,17 +42,17 @@ ms.locfileid: "128604667"
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| <bpt id="p1">**</bpt>コマンド<ept id="p1">**</ept> | <bpt id="p1">**</bpt>注<ept id="p1">**</ept> |
+| **コマンド** | **注** |
 |---|---|
-|<bpt id="p1">[</bpt>az group create<ept id="p1">](/cli/azure/group#az_group_create)</ept>|すべてのリソースを格納するリソース グループを作成します。|
+|[az group create](/cli/azure/group#az_group_create)|すべてのリソースを格納するリソース グループを作成します。|
 |[az mysql flexible-server create](/cli/azure/mysql/flexible-server#az_mysql_flexible_server_create)|データベースをホストするフレキシブル サーバーを作成します。|
 |[az mysql flexible-server parameter list](/cli/azure/mysql/flexible-server/parameter#az_mysql_flexible_server_parameter_list)|フレキシブル サーバーのパラメーター値を一覧表示します。|
 |[az mysql flexible-server parameter set](/cli/azure/mysql/flexible-server/parameter#az_mysql_flexible_server_parameter_set)|フレキシブル サーバーのパラメーターを更新します。|
 |[az mysql flexible-server parameter show](/cli/azure/mysql/flexible-server/parameter#az_mysql_flexible_server_parameter_show)|フレキシブル サーバーの特定のパラメーター値を取得します。|
 |[az mysql flexible-server delete](/cli/azure/mysql/flexible-server#az_mysql_flexible_server_delete)|フレキシブル サーバーを削除します。|
-|<bpt id="p1">[</bpt>az group delete<ept id="p1">](/cli/azure/group#az_group_delete)</ept> | 入れ子になったリソースすべてを含むリソース グループを削除します。|
+|[az group delete](/cli/azure/group#az_group_delete) | 入れ子になったリソースすべてを含むリソース グループを削除します。|
 
 ## <a name="next-steps"></a>次のステップ
 
 - 他のスクリプトを試す: [Azure Database for MySQL - フレキシブル サーバー (プレビュー) の Azure CLI サンプル](../sample-scripts-azure-cli.md)
-- Azure CLI の詳細については、<bpt id="p1">[</bpt>Azure CLI のドキュメント<ept id="p1">](/cli/azure)</ept>のページをご覧ください。
+- Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure)のページをご覧ください。

@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 08/31/2021
 author: palma21
-ms.openlocfilehash: 7fe0aa073cf1ecb959bc7999ba59a2486c65b7e1
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 0f941b612c76811ba750a06036faf48c7359bedd
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123429012"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129429853"
 ---
 # <a name="enable-container-storage-interface-csi-drivers-for-azure-disks-and-azure-files-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Azure ディスクと Azure Files 用の Container Storage Interface (CSI) ドライバーを有効にする
 
@@ -66,14 +66,54 @@ $ echo $(kubectl get CSINode <NODE NAME> -o jsonpath="{.spec.drivers[1].allocata
 8
 ```
 
+## <a name="migrating-custom-in-tree-storage-classes-to-csi"></a>ツリー内のカスタム ストレージ クラスを CSI に移行する
+ツリー内ストレージ ドライバーに基づいてカスタム ストレージ クラスを作成した場合は、クラスターを 1.21.x にアップグレードするときに、これらのクラスを移行する必要があります。
+
+ストレージ クラスを有効にするために CSI プロバイダーへの明示的な移行は必要ない一方で、CSI 機能 (スナップショット作成など) を使用するには、移行を実行する必要があります。
+
+これらのストレージ クラスの移行には、既存のストレージ クラスを削除し、Azure Disks を使用している場合は **disk.csi.azure.com**、Azure Files を使用している場合は **files.csi.azure.com** にプロビジョナーを設定して再プロビジョニングする必要があります。  Azure ディスクの例を次に示します。
+
+### <a name="original-in-tree-storage-class-definition"></a>元のツリー内ストレージ クラスの定義
+
+```yaml
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: managed-premium-retain
+provisioner: kubernetes.io/azure-disk
+reclaimPolicy: Retain
+parameters:
+  storageaccounttype: Premium_LRS
+  kind: Managed
+```
+
+### <a name="csi-storage-class-definition"></a>CSI ストレージ クラスの定義
+
+```yaml
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: managed-premium-retain
+provisioner: disk.csi.azure.com
+reclaimPolicy: Retain
+parameters:
+  storageaccounttype: Premium_LRS
+  kind: Managed
+```
+
+CSI ストレージ システムでは、ツリー内ドライバーと同じ機能がサポートされています。そのため、必要な変更はプロビジョナーのみです。
+
+
 ## <a name="next-steps"></a>次の手順
 
 - Azure ディスクで CSI ドライブを使用する場合は、[Azure ディスクでの CSI ドライバーの使用](azure-disk-csi.md)に関するページを参照してください。
 - Azure Files で CSI ドライブを使用する場合は、[Azure Files での CSI ドライバーの使用](azure-files-csi.md)に関するページを参照してください。
 - ストレージのベスト プラクティスの詳細については、「[Azure Kubernetes Service のストレージとバックアップに関するベスト プラクティス][operator-best-practices-storage]」を参照してください。
+- CSI の移行の詳細については、[Kubernetes ツリー内 CSI ボリューム移行][csi-migration-community]に関するページを参照してください。
 
 <!-- LINKS - external -->
 [access-modes]: https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes
+[csi-migration-community]: https://kubernetes.io/blog/2019/12/09/kubernetes-1-17-feature-csi-migration-beta
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubernetes-storage-classes]: https://kubernetes.io/docs/concepts/storage/storage-classes/

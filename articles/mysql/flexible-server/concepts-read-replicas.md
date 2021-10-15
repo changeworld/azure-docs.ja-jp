@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 06/17/2021
-ms.openlocfilehash: 601b3659cd23cbd12d96f4e73c24a3a4a6c3fe55
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 3684c038ab96fe16d28802012293357c0a8f4e5b
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128602263"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129232035"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql---flexible-server"></a>Azure Database for MySQL - フレキシブル サーバーでの読み取りレプリカ
 
@@ -27,6 +27,9 @@ MySQL は、インターネット規模の Web およびモバイル アプリ�
 読み取りレプリカ機能を使用すると、Azure Database for MySQL フレキシブル サーバーから読み取り専用サーバーに、データをレプリケートできます。 ソース サーバーから最大で **10** 個のレプリカにレプリケートできます。 レプリカは、MySQL エンジンのネイティブなバイナリ ログ (binlog) ファイルの位置ベースのレプリケーション テクノロジを使用して、非同期で更新されます。 binlog レプリケーションの詳細については、[MySQL binlog レプリケーションの概要](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html)に関する記事を参照してください。
 
 レプリカは、ソース Azure Database for MySQL フレキシブル サーバーと同じようにユーザーが管理する新しいサーバーです。 読み取りレプリカごとに、仮想コアでのプロビジョニング済みコンピューティングとストレージ (GB/月) に基づいて課金されます。 詳細については、[価格](./concepts-compute-storage.md#pricing)に関するページを参照してください。
+
+> [!NOTE]
+> 読み取りレプリカ機能は、汎用とメモリ最適化のどちらかの価格レベルにおける Azure Database for MySQL - フレキシブル サーバーにのみ使用可能です。 ソース サーバーがこれらの価格レベルのいずれであるかを確認します。
 
 MySQL レプリケーションの機能と問題の詳細については、[MySQL レプリケーションに関するドキュメント](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html)を参照してください。
 
@@ -141,7 +144,8 @@ GTID を有効にして整合性動作を構成するには、[Azure portal](how
 
 | シナリオ | 制限と考慮事項 |
 |:-|:-|
-| ゾーン冗長 HA が有効になっているサーバー上のレプリカ | サポートされていません |
+| HA が有効になっているサーバー上のレプリカ | サポートされていません |
+| バースト可能価格レベルでのサーバー上のレプリカ| サポートされていません |
 | リージョン間読み取りレプリケーション | サポートされていません |
 | 価格 | レプリカ サーバーの実行のコストは、レプリカ サーバーが実行されているリージョンに基づきます |
 | ソース サーバーの再起動 | 既存のレプリカがないソースのレプリカを作成すると、ソースは最初に、レプリケーションの準備をするために再起動します。 これを考慮して、これらの操作はオフピーク期間中に実行します |

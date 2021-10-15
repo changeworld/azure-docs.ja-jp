@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: trkeya
 ms.author: trkeya
-ms.date: 03/16/2020
-ms.openlocfilehash: ae8bbad9d99837bd1cd0d21b66a37c895b816f2a
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 10/01/2020
+ms.openlocfilehash: 3aa0ddf4a9013d5f64584fbe93a795f6420dc410
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128642666"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129389950"
 ---
 # <a name="set-up-an-azure-marketplace-subscription-for-hosted-test-drives"></a>ホストされた体験版用に Azure Marketplace サブスクリプションを設定する
 
@@ -65,7 +65,32 @@ ms.locfileid: "128642666"
 
             :::image type="content" source="./media/test-drive/add-client-secret-customer.png" alt-text="クライアント シークレットの追加。":::
 
-5. アプリケーションにサービス プリンシパルの役割を追加して、Azure AD アプリで Azure テナントからユーザーを削除できるようにします。
+5. アプリケーションにサービス プリンシパルの役割を追加して、Azure AD アプリで Azure テナントからユーザーを削除できるようにします。 この手順を完了するには、2 つのオプションがあります。
+
+    **方法 1**
+
+    1. "**Azure AD のロールと管理者**" を検索し、サービスを選択します。
+
+        :::image type="content" source="./media/test-drive/active-ad-roles.png" alt-text="Azure AD のロールと管理者を検索する方法を示しています。":::
+
+    2. **[すべてのロール]** ページで、"**ユーザー管理者**" のロールを検索し、 **[ユーザー管理者]** をダブルクリックします。
+
+        :::image type="content" source="./media/test-drive/user-administrator.png" alt-text="ユーザー管理者を検索して選択する方法を示しています。":::
+
+    3. **[割り当ての追加]** を選択します。
+
+        :::image type="content" source="./media/test-drive/add-assignments-1.png" alt-text="[割り当ての追加] ボタンを示しています。":::
+
+    4. 上で作成したアプリを検索して選択し、 **[追加]** をクリックします。
+
+        :::image type="content" source="./media/test-drive/add-assignments-2.png" alt-text="アプリの割り当てが成功したことを示しています。":::
+
+    5. サービス プリンシパルのロールがアプリケーションに正常に割り当てられていることに注意してください。
+
+        :::image type="content" source="./media/test-drive/successful-assignment.png" alt-text="サービス プリンシパルのロールがアプリケーションに正常に割り当てられていることを示しています。":::
+
+    **方法 2**
+
     1. 管理レベルの PowerShell コマンド プロンプトを開きます。
     2. Install-Module MSOnline (MSOnline がインストールされていない場合、このコマンドを実行します)。
     3. Connect-MsolService (これにより、ポップアップ ウィンドウが表示されます。新しく作成された組織テナントを使用してサインインします)。
@@ -73,7 +98,7 @@ ms.locfileid: "128642666"
     5. $sp = Get-MsolServicePrincipal -AppPrincipalId $applicationId。
     6. Add-MsolRoleMember -RoleObjectId fe930be7-5e62-47db-91af-98c3a49a38b1 -RoleMemberObjectId $sp.ObjectId -RoleMemberType servicePrincipal。
 
-        :::image type="content" source="./media/test-drive/sign-in-to-account.png" alt-text="アカウントへのサインイン。":::
+         :::image type="content" source="./media/test-drive/sign-in-to-account.png" alt-text="アカウントへのサインイン。":::
 
 6. 新しいセキュリティ グループを作成し、キャンバス アプリ (Power Apps) に追加します。 この手順は、キャンバス アプリ (Power Apps) プランにのみ適用されます。
     1. 新しいセキュリティ グループを作成します。

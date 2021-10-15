@@ -5,12 +5,12 @@ author: anilmur
 ms.service: azure-video-analyzer
 ms.topic: how-to
 ms.date: 06/01/2021
-ms.openlocfilehash: d24ddd090f9acffc3dd19643d4004dbb58fc344d
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: e86d2eb8883efb887a598f93d191ae9070ef2b67
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114603844"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129402999"
 ---
 # <a name="customer-managed-keys-with-azure-video-analyzer"></a>カスタマー マネージド キーと Azure Video Analyzer
 
@@ -20,7 +20,7 @@ Bring Your Own Key (BYOK) は、お客様のワークロードをクラウドに
 
 すべての Video Analyzer アカウントに対してアカウント キーが作成されます。 このアカウントキーは既定では、Video Analyzer によって所有されているシステム キー (つまり、システムによって管理されるキー) を使用して暗号化されます。 そうしないで、Azure Video Analyzer で独自のキーを使用することもできます。 この場合、お客様のアカウント キーはご自分のキーで暗号化されます。 アクセス ポリシーとビデオ リソース メタデータは、アカウント キーを使用して暗号化されます。
 
-Video Analyzer では、ユーザー割り当てマネージド ID を使用して、自分が所有しているキー コンテナーから自分のキーを読み取ります。 Video Analyzer アカウントの作成または更新時にユーザー割り当てマネージド ID を指定し、適切な [Azure ロールベースのアクセス制御]../../role-based-access-control/overview.md) をキー コンテナーに割り当てる必要があります。 Video Analyzer では、そのキー コンテナーがアカウントと同じリージョンにあり、そこで論理的な削除と消去保護が有効になっている必要があります。
+Video Analyzer では、ユーザー割り当てマネージド ID を使用して、自分が所有しているキー コンテナーから自分のキーを読み取ります。 Video Analyzer アカウントの作成または更新時にユーザー割り当てマネージド ID を指定し、適切な [Azure ロールベースのアクセス制御](../../role-based-access-control/overview.md)をキー コンテナーに割り当てる必要があります。 Video Analyzer では、そのキー コンテナーがアカウントと同じリージョンにあり、そこで論理的な削除と消去保護が有効になっている必要があります。
 
 お客様のキーには、2048、3072、または 4096 RSA キーを使用できます。また、HSM キーとソフトウェア キーの両方がサポートされています。
 

@@ -2,10 +2,8 @@
 title: SAP ワークロードのための SQL Server Azure Virtual Machines DBMS のデプロイ | Microsoft Docs
 description: SAP ワークロードのための SQL Server Azure Virtual Machines DBMS のデプロイ
 services: virtual-machines-linux,virtual-machines-windows
-documentationcenter: ''
 author: msjuergent
 manager: bburns
-editor: ''
 tags: azure-resource-manager
 keywords: Azure、SQL Server、SAP、AlwaysOn
 ms.service: virtual-machines-sap
@@ -15,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 06/08/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 66426b6e48c15882f884657fbf8e75f44e500eb8
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: b9d44e718329c836b1e4fc63861f52cc37458a79
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114467641"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129352416"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SAP NetWeaver のための SQL Server Azure Virtual Machines DBMS のデプロイ
 
@@ -320,7 +318,7 @@ ms.locfileid: "114467641"
 
 一般的に、Azure IaaS で SAP ワークロードを実行するには、最新の SQL Server リリースを使用することを検討することをお勧めします。 最新の SQL Server リリースは、Azure のサービスと機能の一部との統合性が向上しています。 または、Azure IaaS インフラストラクチャで操作を最適化するように変更します。
 
-続行する前に、「Azure Virtual Machines 上の SQL Server とは何か (Windows)」 [https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview ] の記事を確認することをお勧めします。
+続行する前に、「[Azure Virtual Machines 上の SQL Server とは何か (Windows)](../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)」の記事を確認することをお勧めします。
 
 以降のセクションでは、上記のリンクにあるドキュメントの一部の情報を集約して説明しています。 SAP に関する特記事項についても説明し、いくつかの概念についてはさらに詳しく説明します。 ただし、SQL Server に特化したドキュメントを読み取る前に、上記のドキュメントに目を通すことを強くお勧めします。
 
@@ -488,9 +486,9 @@ SAP でサポートされているデータベース ミラーリング (SAP Not
 
 クラウドのみのデプロイの時点で、最も簡単な方法は 1 つのドメイン内にそれらの DBMS VM (および理想的には専用の SAP VM) を持つことができるように Azure で別のドメインをセットアップすることです。
 
-ドメインをセットアップできない場合は、<https://docs.microsoft.com/sql/database-engine/database-mirroring/use-certificates-for-a-database-mirroring-endpoint-transact-sql> に記載されているように、データベース ミラーリング エンドポイントの証明書を使用することもできます。
+ドメインを使用できない場合は、「[データベース ミラーリング エンドポイントでの証明書の使用 (Transact-SQL)](/sql/database-engine/database-mirroring/use-certificates-for-a-database-mirroring-endpoint-transact-sql)」で説明されているように、データベース ミラーリング エンドポイントに証明書を使用することもできます。
 
-Azure でのデータベース ミラーリングのセットアップのチュートリアルについては、<https://docs.microsoft.com/sql/database-engine/database-mirroring/database-mirroring-sql-server> を参照してください。 
+Azure でデータベース ミラーリングを設定するチュートリアルについては、「[データベース ミラーリング (SQL Server)](/sql/database-engine/database-mirroring/database-mirroring-sql-server)」を参照してください。
 
 ### <a name="sql-server-always-on"></a>SQL Server AlwaysOn
 AlwaysOn は SAP オンプレミスでサポートされており (SAP Note [1772688] を参照)、この機能は Azure の SAP との組み合わせでサポートされています。 オンプレミスでは可能ですが、現時点で Azure では AD/DNS オブジェクトを作成できないため、SQL Server 可用性グループ リスナー (Azure 可用性セットと混同しないこと) のデプロイに関する特別な考慮事項があります。 そのため、Azure 固有の動作に対応するために、いくつかの別のインストール手順が必要です。

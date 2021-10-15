@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: ca8e0f2303ed31660e92f084c0f6760a60f40c22
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: c2a08059de275efcfb3e65c6a316566a6a081830
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128659478"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129357953"
 ---
 # <a name="step-3---set-up-to-migrate-to-the-v3-rest-api-or-client-sdk"></a>手順 3 - V3 REST API またはクライアント SDK に移行するための設定
 
@@ -39,7 +39,7 @@ V2 API では、2 つの異なるクライアント SDK がありました。1 �
 
 V3 API は、Azure Resource Management (ARM) に基づいています。 これは、Azure Active Directory (Azure AD) のサービス プリンシパル ID とキーを使用して API に接続します。 開発者は、API に接続するために、サービス プリンシパルまたはマネージド ID を作成する必要があります。 V3 API では、API は標準の ARM エンドポイントを使用し、他のすべての Azure サービスと同様の一貫性のあるモデルを使用します。
 
-V2 アカウントを管理するために、以前に 2015-10-01 バージョンの ARM 管理 API を使用していたお客様は、V3 API アクセス用にサポートされている 2020-05-01 バージョンの ARM 管理 API を使用する必要があります。
+これまで 2015-10-01 バージョンの ARM 管理 API で V2 アカウントを管理していたお客様は、V3 API アクセスをサポートしている 2020-05-01 以降のバージョンの ARM 管理 API を使用する必要があります。
 
 ## <a name="create-a-new-media-services-account-for-testing"></a>テスト用の新しいメディア サービス アカウントを作成する
 
@@ -69,7 +69,7 @@ Azure portal を使用して[環境を設定する](setup-azure-subscription-how
 Media Services v3 REST API 呼び出し用に [Postman](./setup-postman-rest-how-to.md) を使用します。
 [REST API リファレンス ページ](/rest/api/media/)を参照してください。
 
-Postman コレクションの 2020-05-01 バージョン文字列を使用する必要があります。
+Postman コレクションでは、2020-05-01 以降のバージョン文字列を使用する必要があります。
 
 ## <a name="net"></a>[.NET](#tab/net)
 

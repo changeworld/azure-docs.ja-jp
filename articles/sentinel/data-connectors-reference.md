@@ -8,16 +8,20 @@ ms.service: azure-sentinel
 ms.topic: reference
 ms.date: 08/12/2021
 ms.author: bagol
-ms.openlocfilehash: 8cbd8861e7dc01e8615225dd88960b581fd4c2f4
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 3886d26c571246f42c54bb9aab45bae32e05b750
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124755083"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129362444"
 ---
 # <a name="find-your-azure-sentinel-data-connector"></a>Azure Sentinel データ コネクタを見つける
 
 この記事では、Azure Sentinel にデータ コネクタをデプロイする方法について説明し、サポートされているすべての組み込みデータ コネクタの一覧と共に、一般的なデプロイ手順へのリンクと特定のコネクタに必要な追加手順を示します。
+
+> [!TIP]
+> 一部のデータ コネクタは、ソリューションによってのみデプロイされます。 詳細については、「[Azure Sentinel ソリューション カタログ](sentinel-solutions-catalog.md)」を参照してください。 また、[Azure Sentinel の GitHub リポジトリ](https://github.com/Azure/Azure-Sentinel/tree/master/DataConnectors)には、コミュニティによって作成された他のデータ コネクタが掲載されています。
+>
 
 ## <a name="how-to-use-this-guide"></a>このガイドを使用する方法
 

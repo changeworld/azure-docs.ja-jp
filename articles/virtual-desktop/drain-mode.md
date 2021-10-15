@@ -1,6 +1,6 @@
 ---
-title: Azure Virtual Desktop ドレイン モードを設定する - Azure
-description: Azure Virtual Desktop でドレイン モードを設定し、使用する方法。
+title: ドレイン モードを使用してセッション ホストを分離する方法 - Azure Virtual Desktop
+description: Azure Virtual Desktop でドレイン モードを使用してセッション ホストを分離し、メンテナンスを実行する方法について説明します。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,14 +9,14 @@ ms.date: 04/14/2021
 ms.author: helohr
 ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: 2ff90e2800da857dd5c82cd3b9402fa2454575ac
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 4bacff4ecef6762a4e08760c463531392a71245f
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111757843"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129352014"
 ---
-# <a name="set-drain-mode"></a>ドレイン モードを設定する
+# <a name="use-drain-mode-to-isolate-session-hosts-and-apply-patches"></a>ドレイン モードを使用してセッション ホストを分離し、パッチを適用する
 
 ユーザー セッションを中断せずに修正プログラムを適用したりメンテナンスを行ったりしたい場合に、ドレイン モードを使用するとセッション ホストが分離されます。 分離されている場合、セッション ホストでは新しいユーザー セッションを受け入れません。 新しい接続は、次に使用可能なセッショ ン ホストにリダイレクトされます。 セッション ホスト内の既存の接続は、ユーザーがサインアウトするか、管理者がセッションを終了するまで動作し続けます。 セッション ホストがドレイン モードであるときは、管理者も Azure Virtual Desktop サービスを使わずにリモートでサーバーに接続できます。 この設定は、プールされたデスクトップと個人用のデスクトップの両方に適用できます。
 

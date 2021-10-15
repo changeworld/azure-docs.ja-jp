@@ -3,12 +3,12 @@ title: AuthN/AuthZ での OAuth トークン
 description: App Service の組み込みの認証と認可を使用しているときに、トークンを取得したり、トークンを更新したり、セッションを拡張したりする方法について説明します。
 ms.topic: article
 ms.date: 03/29/2021
-ms.openlocfilehash: 820ab9fe75bf960c5991187cfef25ace32b6995c
-ms.sourcegitcommit: b59e0afdd98204d11b7f9b6a3e55f5a85d8afdec
+ms.openlocfilehash: f158f9f76820635a65737b75f3c016ff67a3a92a
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114371166"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129352077"
 ---
 # <a name="work-with-oauth-tokens-in-azure-app-service-authentication"></a>Azure App Service 認証で OAuth トークンを操作する
 
@@ -41,7 +41,7 @@ ms.locfileid: "114371166"
 - **Google**: `access_type=offline` クエリ文字列パラメーターを `/.auth/login/google` API 呼び出しに追加します。 Mobile Apps SDK を使用している場合は、`LogicAsync` オーバーロードの 1 つにパラメーターを追加できます ([Google 更新トークン](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens)に関するページをご覧ください)。
 - **Facebook**: 更新トークンを提供しません。 長期間維持されるトークンの有効期限は 60 日間です ([Facebook のアクセス トークンの有効期限と延長](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension)に関するページをご覧ください)。
 - **Twitter**: アクセス トークンに有効期限はありません ([Twitter OAuth の FAQ](https://developer.twitter.com/en/docs/authentication/faq) に関するページを参照してください)。
-- **Azure Active Directory**: [https://resources.azure.com](https://resources.azure.com) で、次の手順を実行します。
+- **Microsoft**: [https://resources.azure.com](https://resources.azure.com) で、次の手順を実行します。
     1. ページの上部にある **[Read/Write]** を選択します。
     2. 左側のブラウザーで、**subscriptions** > ** _\<subscription\_name_** > **resourceGroups** > **_ \<resource\_group\_name> _** > **providers** > **Microsoft.Web** > **sites** > **_ \<app\_name>_** > **config** > **authsettingsV2** の順に移動します。
     3. **[編集]** をクリックします。
@@ -51,16 +51,16 @@ ms.locfileid: "114371166"
         "identityProviders": {
           "azureActiveDirectory": {
             "login": {
-              "loginParameters": ["scope=openid offline_access"]
+              "loginParameters": ["scope=openid profile email offline_access"]
             }
           }
         }
         ```
 
     5. **[Put]** をクリックします。
-
-> [!NOTE]
-> [認証 (クラシック)] ブレードを使用してアプリケーションを構成した場合は、[https://resources.azure.com](https://resources.azure.com) で **authSettingsV2** セクションに移動するのではなく、**authsettings** に移動します。 その後、設定 ```"additionalLoginParams": ["scope=openid offline_access"]``` を編集します。
+    
+    > [!NOTE]
+    > 更新トークンが提供されるスコープは [offline_access](../active-directory/develop/v2-permissions-and-consent.md#offline_access) です。 それがどのように使用されるかについては、「[チュートリアル: Azure App Service でユーザーをエンド ツー エンドで認証および承認する](tutorial-auth-aad.md)」を参照してください。 他のスコープは、既に App Service によって既定で要求されます。 これらの既定のスコープについては、「[OpenID Connect のスコープ](../active-directory/develop/v2-permissions-and-consent.md#openid-connect-scopes)」を参照してください。
 
 プロバイダーが構成されたら、トークン ストアで[更新トークンを見つけ、そのアクセス トークンの有効期限を確認](#retrieve-tokens-in-app-code)できます。 
 

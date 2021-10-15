@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 04/22/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 332866c49470ed47f3c3de65b03ffd07003f6d13
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: c2ad9c6eae22db2d940942c0ec15c6b1116a54cd
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122253255"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129353012"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのサービス プリンシパル
 
@@ -38,9 +38,9 @@ Azure PowerShell バージョン 5.0.0 以降がインストールされてい�
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Azure portal で、または [az aks create][az-aks-create] コマンドを使用して AKS クラスターを作成するときには、Azure によるサービス プリンシパルの自動生成が可能です。
+Azure portal で、または [az aks create][az-aks-create] コマンドを使用して AKS クラスターを作成すると、Azure によってマネージド ID が作成されます。
 
-次の Azure CLI の例では、サービス プリンシパルは指定されていません。 このシナリオでは、Azure CLI によって、AKS クラスター用のサービス プリンシパルが作成されます。 この操作を正しく完了するためには、Azure アカウントが、サービス プリンシパルを作成するための適切な権限を持っている必要があります。
+次の Azure CLI の例では、サービス プリンシパルは指定されていません。 このシナリオでは、Azure CLI によって、AKS クラスター用のマネージド ID が作成されます。 
 
 ```azurecli
 az aks create --name myAKSCluster --resource-group myResourceGroup
@@ -48,9 +48,9 @@ az aks create --name myAKSCluster --resource-group myResourceGroup
 
 ### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
-Azure portal で、または [New-AzAksCluster][new-azakscluster] コマンドを使用して AKS クラスターを作成するとき、Azure ではサービス プリンシパルを自動的に生成できます。
+Azure portal で、または [New-AzAksCluster][new-azakscluster] コマンドを使用して AKS クラスターを作成するときに、Azure から新しいマネージド ID を生成することができます。
 
-次の Azure PowerShell の例では、サービス プリンシパルは指定されていません。 このシナリオでは、Azure PowerShell によって AKS クラスター用のサービス プリンシパルが作成されます。 この操作を正しく完了するためには、Azure アカウントが、サービス プリンシパルを作成するための適切な権限を持っている必要があります。
+次の Azure PowerShell の例では、サービス プリンシパルは指定されていません。 このシナリオでは、Azure PowerShell によって、AKS クラスター用のマネージド ID が作成されます。 
 
 ```azurepowershell-interactive
 New-AzAksCluster -Name myAKSCluster -ResourceGroupName myResourceGroup

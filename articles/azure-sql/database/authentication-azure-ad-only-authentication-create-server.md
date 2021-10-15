@@ -8,13 +8,13 @@ ms.topic: how-to
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 08/31/2021
-ms.openlocfilehash: 1519573670b3c97e1c47404ed457bf68c488108e
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 10/04/2021
+ms.openlocfilehash: 959175611f42c8c75da465044c7962c585d3728f
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128643196"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129458675"
 ---
 # <a name="create-server-with-azure-ad-only-authentication-enabled-in-azure-sql"></a>Azure SQL で Azure AD 専用認証を有効にしたサーバーを作成する
 
@@ -49,6 +49,46 @@ ms.locfileid: "128643196"
 > Azure AD 専用認証が false に設定されている場合 (既定)、サーバーまたはマネージド インスタンスの作成時にすべての API にサーバー管理者とパスワードを含める必要があります。
 
 ## <a name="azure-sql-database"></a>Azure SQL Database
+
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
+
+1. Azure portal の [[SQL デプロイ オプションの選択]](https://portal.azure.com/#create/Microsoft.AzureSQL) ページを参照します。
+
+1. まだ Azure portal にサインインしていない場合は、求められたらサインインします。
+
+1. **[SQL データベース]** で、 **[リソースの種類]** を **[単一データベース]** に設定し、 **[作成]** を選択します。
+
+1. **[SQL データベースの作成]** フォームの **[基本]** タブにある **[プロジェクトの詳細]** で、目的の Azure **[サブスクリプション]** を選択します。
+
+1. **[リソース グループ]** の **[新規作成]** を選択し、リソース グループの名前を入力し、 **[OK]** を選択します。
+
+1. **[データベース名]** に、データベースの名前を入力します。
+
+1. **[サーバー]** で、 **[新規作成]** を選択し、新しいサーバー フォームに次の値を入力します。
+
+   - **[サーバー名]** : 一意のサーバー名を入力します。 サーバー名は、サブスクリプション内で一意ではなく、Azure のすべてのサーバーに対してグローバルに一意である必要があります。 値を入力すると Azure portal で使用可能かどうかが示されます。
+   - **[場所]** : ドロップダウン リストから場所を選択します
+   - **[認証方法]** : **[Azure Active Directory (Azure AD) 認証のみを使用]** を選択します。
+   - **[管理者の設定]** を選択します。論理サーバー Azure AD 管理者として Azure AD プリンシパルを選択するメニューが表示されます。 完了したら、 **[選択]** ボタンを使用して管理者を設定します。
+
+   :::image type="content" source="media/authentication-azure-ad-only-authentication/azure-ad-portal-create-server.png" alt-text="Azure AD 専用認証が有効なサーバーを作成するスクリーンショット":::
+    
+1. **ページの下部にある [Next: Networking]\(次へ: ネットワーク\)** を選択します。
+
+1. **[ネットワーク]** タブの **[接続方法]** で、 **[パブリック エンドポイント]** を選択します。
+
+1. **[ファイアウォール規則]** で、 **[現在のクライアント IP アドレスを追加する]** を **[はい]** に設定します。 **[Azure サービスおよびリソースにこのサーバー グループへのアクセスを許可する]** を **[いいえ]** に設定したままにします。 
+
+1. **[接続ポリシー]** と **[最小 TLS バージョン]** は規定値のままにします。
+
+1. ページの下部で **[次へ: セキュリティ]** を選択します。 自身の環境向けに、 **[Azure Defender for SQL]** 、 **[Ledger]** 、 **[ID]** 、 **[Transparent Data Encryption]** の設定を構成します。 これらの設定は省略することもできます。
+
+   > [!NOTE]
+   > ユーザー割り当てマネージド ID (UMI) の使用は、Azure AD 専用認証ではサポートされていません。 **[ID]** セクションでサーバー ID を UMI として設定しないでください。
+
+1. ページ下部にある **[確認と作成]** を選択します。
+
+1. **[確認と作成]** ページで、確認後、 **[作成]** を選択します。
 
 # <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -255,6 +295,10 @@ ARM テンプレートを使用して、サーバーの Azure AD 管理者が設
 ---
 
 ## <a name="azure-sql-managed-instance"></a>Azure SQL Managed Instance
+
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
+
+現在、Azure portal を使用した、 Azure AD 専用認証が有効なマネージド インスタンスの管理またはデプロイはサポートされていません。 Azure AD 専用認証を有効にしてマネージド インスタンスをデプロイするには、Azure CLI、PowerShell、Rest API、ARM テンプレートのいずれかを使用しします。
 
 # <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -666,7 +710,7 @@ Invoke-RestMethod -Uri https://management.azure.com/subscriptions/$subscriptionI
 
 ## <a name="limitations"></a>制限事項
 
-- プロビジョニング中に Azure portal を使用して、Azure AD 専用認証を有効にしたサーバーまたはインスタンスの作成は、現在サポートされていません。
+- プロビジョニング中に Azure portal を使用して、Azure AD 専用認証を有効にしたマネージド インスタンスの作成は、現在サポートされていません。
 - サーバー管理者のパスワードをリセットするには、Azure AD 専用認証を無効にする必要があります。
 - Azure AD 専用認証が無効になっている場合は、すべての API を使用するときに、サーバー管理者とパスワードを持つサーバーを作成する必要があります。
 

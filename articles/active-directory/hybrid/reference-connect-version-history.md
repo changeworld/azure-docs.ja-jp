@@ -1,9 +1,7 @@
 ---
 title: Azure AD Connect:バージョンのリリース履歴 | Microsoft Docs
 description: この記事では、Azure AD Connect と Azure AD Sync のすべてのリリースの一覧を示します。
-services: active-directory
 author: billmath
-manager: daveba
 ms.assetid: ef2797d7-d440-4a9a-a648-db32ad137494
 ms.service: active-directory
 ms.topic: reference
@@ -13,12 +11,12 @@ ms.subservice: hybrid
 ms.author: rodejo
 ms.custom: has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2238916ec3ea13abd342ca0156271c1e87f5ed9c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: c9cc55100001f1210255a465b5622e1b862674bf
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128659098"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129352177"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect:バージョンのリリース履歴
 Azure Active Directory (Azure AD) チームは、Azure AD Connect を定期的に更新し、新機能を追加しています。 すべての追加機能がすべてのユーザーに適用されるわけではありません。
@@ -61,6 +59,26 @@ Azure AD Connect のすべてのリリースが自動アップグレードに対
  - 以前のバージョンの Windows Server を使用している場合は、Azure AD Connect V1.6 を使用する必要があります。 Azure AD Connect V1 の最新バージョンは、[このリンク](https://www.microsoft.com/download/details.aspx?id=103336)を使用してダウンロードできます。 
  - 今後、V1 バージョンには重要な変更のみを適用する予定であるため、V1 リリースでは V2 の機能や修正プログラムの一部が見つかからない場合があります。そのため、できるだけ早く V2 バージョンにアップグレードする必要があります。
 
+## <a name="20280"></a>2.0.28.0
+
+>[!NOTE] 
+> これは Azure AD Connect のメンテナンス更新プログラムのリリースです。 このリリースには Windows Server 2016 以降が必要です。
+
+### <a name="release-status"></a>リリースの状態
+2021 年 9 月 30 日: ダウンロード専用にリリース。自動アップグレードには使用できません。
+
+### <a name="bug-fixes"></a>バグの修正
+ - ウィザードの [Group Writeback Permissions]\(グループの書き戻しアクセス許可\) ページで、PowerShell スクリプトのダウンロード ボタンを削除し、PowerShell スクリプトが掲載されているオンライン記事にリンクされている詳細情報リンクを含めるようにウィザード ページのテキストを変更しました。
+
+ - サーバー上の .NET バージョンが 4.6 以降の場合に、レジストリ キーがないためにウィザードによって誤ってインストールがブロックされていたバグを修正しました。 これらのレジストリ キーは必須ではなく、意図的に false に設定されている場合にのみインストールがブロックされます。
+
+- 同期手順の初期化中にファントム オブジェクトが見つかった場合に、エラーがスローされるバグを修正しました。 これにより、同期手順がブロックされたり、一時的なオブジェクトが削除されたりします。 ファントム オブジェクトは無視されるようになりました。
+注: ファントム オブジェクトとは、実際には存在しない、またはまだ認識されていないオブジェクトのプレースホルダーです。たとえば、存在しないターゲット オブジェクトへの参照がソース オブジェクトにある場合、ターゲット オブジェクトをファントムとして作成します。
+
+### <a name="functional-changes"></a>機能の変更点
+
+ - 使用中であっても、ユーザーが包含リストからオブジェクトと属性の選択を解除できるように変更されました。 これはブロックされるのではなく、警告が生成されるようになりました。 
+
 ## <a name="16142"></a>1.6.14.2
 >[!NOTE] 
 >これは Azure AD Connect の修正プログラムのリリースです。 このバージョンは、古いバージョンの Windows Server を実行していて、この時点でサーバーを Windows Server 2016 以降にアップグレードできないお客様が使用することを目的としています。 このバージョンを使用して Azure AD Connect V2.0 サーバーを更新することはできません。
@@ -70,8 +88,8 @@ Azure AD Connect のすべてのリリースが自動アップグレードに対
 2021 年 9 月 21 日: ダウンロードと自動アップグレード向けにリリース済み。
 
 ### <a name="functional-changes"></a>機能の変更点
- - 最新バージョンの MIM コネクタ (1.1.1610.0) を追加しました。 詳細な情報は、[MiM コネクタのリリース履歴ページ](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-version-history#1116100-september-2021)に記載されています。
- - Azure AD Connect であいまい一致機能を無効にする構成オプションを追加しました。 あいまい一致は、クラウド専用アカウントを引き継ぐために必要でない限り無効にすることをお勧めしています。 この[記事](https://docs.microsoft.com/powershell/module/msonline/set-msoldirsyncfeature?view=azureadps-1.0#example-2--block-soft-matching-for-the-tenant)で、あいまい一致を無効にする方法を示しています。
+ - 最新バージョンの MIM コネクタ (1.1.1610.0) を追加しました。 詳細な情報は、[MiM コネクタのリリース履歴ページ](/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-version-history#1116100-september-2021)に記載されています。
+ - Azure AD Connect でソフト マッチング機能を無効にする構成オプションを追加しました。 Microsoft では、クラウド専用アカウントを引き継ぐ目的で必要としない限り、ソフト マッチングは無効にすることをお客様に提案しています。 この[記事](/powershell/module/msonline/set-msoldirsyncfeature#example-2--block-soft-matching-for-the-tenant)では、ソフト マッチングを無効にする方法を紹介します。
 
 ### <a name="bug-fixes"></a>バグの修正
  - 以前のバージョンからのアップグレード後に DesktopSSO 設定が保持されないバグを修正しました。
@@ -100,8 +118,8 @@ Azure AD Connect のすべてのリリースが自動アップグレードに対
  - 要求変換規則を AAD サービス プリンシパルに追加するために、新しい AAD Kerberos PowerShell コマンドレット "\*-AADKerberosServer" を作成しました。
 
 ### <a name="functional-changes"></a>機能の変更点
- - 最新バージョンの MIM コネクタ (1.1.1610.0) を追加しました。 詳細な情報は、[MiM コネクタのリリース履歴ページ](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-version-history#1116100-september-2021)に記載されています。
- - Azure AD Connect であいまい一致機能を無効にする構成オプションを追加しました。 あいまい一致は、クラウド専用アカウントを引き継ぐために必要でない限り無効にすることをお勧めしています。 この[記事](https://docs.microsoft.com/powershell/module/msonline/set-msoldirsyncfeature?view=azureadps-1.0#example-2--block-soft-matching-for-the-tenant)で、あいまい一致を無効にする方法を示しています。
+ - 最新バージョンの MIM コネクタ (1.1.1610.0) を追加しました。 詳細な情報は、[MiM コネクタのリリース履歴ページ](/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-version-history#1116100-september-2021)に記載されています。
+ - Azure AD Connect でソフト マッチング機能を無効にする構成オプションを追加しました。 Microsoft では、クラウド専用アカウントを引き継ぐ目的で必要としない限り、ソフト マッチングは無効にすることをお客様に提案しています。 この[記事](/powershell/module/msonline/set-msoldirsyncfeature#example-2--block-soft-matching-for-the-tenant)では、ソフト マッチングを無効にする方法を紹介します。
 
 ## <a name="20100"></a>2.0.10.0
 
@@ -178,12 +196,12 @@ Azure AD Connect のすべてのリリースが自動アップグレードに対
 ### <a name="functional-changes"></a>機能の変更点
  - SQL Server の LocalDB コンポーネントを SQL 2019 にアップグレードしました。 
  - SQL Server 2019 の要件により、このリリースには Windows Server 2016 以降が必要です。 Azure AD Connect サーバー上の Windows Server のインプレース アップグレードはサポートされていないため、[スイング移行](how-to-upgrade-previous-version.md#swing-migration)の使用が必要になる場合があることに注意してください。
- -  このリリースでは、TLS 1.2 の使用を適用しています。 お使いの Windows Server で TLS 1.2 を有効にしている場合は、AADConnect でこのプロトコルが使用されます。 サーバーで TLS 1.2 が有効になっていない場合、AADConnect をインストールしようとするとエラー メッセージが表示され、TLS 1.2 を有効にするまでインストールは続行されません。 お使いのサーバーで新しい "Set-ADSyncToolsTls12" コマンドレットを使用して TLS 1.2 を有効にできることに注意してください。
- -  このリリースでは、Azure AD Connect をインストールするときに、"ハイブリッド ID の管理者" のユーザー ロールを持つユーザーを使用して認証を行うことができます。 これには、全体管理者ロールは不要になりました。
- - SQL Server 2019 の前提条件として、Visual C++ ランタイム ライブラリをバージョン 14 にアップグレードしました  
- -  このリリースでは、認証に MSAL ライブラリを使用しており、2022 年に廃止予定の古い ADAL ライブラリを削除しました。   
- -  Windows セキュリティ ガイダンスに従って、AdminSDHolders に対するアクセス許可が適用されなくなりました。 ADSyncConfig.psm1 モジュールのパラメーター "SkipAdminSdHolders" を "IncludeAdminSdHolders" に変更しました。
- -  パスワードは、それ自体が変更されたかどうかに関係なく、期限切れのパスワードの "有効期限が切れていない" ときに、再評価されるようになりました。 ユーザーのパスワードが [ユーザーは次回ログオン時にパスワードの変更が必要] に設定されていて、このフラグがオフになっている (つまり、パスワードの "有効期限が切れていない") 場合は、"有効期限が切れていない" 状態とパスワード ハッシュが Azure AD に同期され、ユーザーが Azure AD にサインインしようとしたときに、有効期限が切れていないパスワードを使用できます。
+ -    このリリースでは、TLS 1.2 の使用を適用しています。 お使いの Windows Server で TLS 1.2 を有効にしている場合は、AADConnect でこのプロトコルが使用されます。 サーバーで TLS 1.2 が有効になっていない場合、AADConnect をインストールしようとするとエラー メッセージが表示され、TLS 1.2 を有効にするまでインストールは続行されません。 お使いのサーバーで新しい "Set-ADSyncToolsTls12" コマンドレットを使用して TLS 1.2 を有効にできることに注意してください。
+ -    このリリースでは、Azure AD Connect をインストールするときに、"ハイブリッド ID の管理者" のユーザー ロールを持つユーザーを使用して認証を行うことができます。 これには、全体管理者ロールは不要になりました。
+ - SQL Server 2019 の前提条件として、Visual C++ ランタイム ライブラリをバージョン 14 にアップグレードしました    
+ -    このリリースでは、認証に MSAL ライブラリを使用しており、2022 年に廃止予定の古い ADAL ライブラリを削除しました。    
+ -    Windows セキュリティ ガイダンスに従って、AdminSDHolders に対するアクセス許可が適用されなくなりました。 ADSyncConfig.psm1 モジュールのパラメーター "SkipAdminSdHolders" を "IncludeAdminSdHolders" に変更しました。
+ -    パスワードは、それ自体が変更されたかどうかに関係なく、期限切れのパスワードの "有効期限が切れていない" ときに、再評価されるようになりました。 ユーザーのパスワードが [ユーザーは次回ログオン時にパスワードの変更が必要] に設定されていて、このフラグがオフになっている (つまり、パスワードの "有効期限が切れていない") 場合は、"有効期限が切れていない" 状態とパスワード ハッシュが Azure AD に同期され、ユーザーが Azure AD にサインインしようとしたときに、有効期限が切れていないパスワードを使用できます。
 期限切れのパスワードを Active Directory から Azure Active Directory に同期するには、Azure AD Connect の[一時パスワードの同期](how-to-connect-password-hash-synchronization.md#synchronizing-temporary-passwords-and-force-password-change-on-next-logon)機能を使用してください。 この機能を使用するには、パスワード ライトバックを有効にして、更新プログラムに使用するパスワードも Active Directory に書き戻されるようにする必要があることに注意してください。
  - Windows Server から TLS 1.2 の設定を有効化または取得するために、ADSyncTools モジュールに次の 2 つの新しいコマンドレットを追加しました。 
    - Get-ADSyncToolsTls12
@@ -191,67 +209,67 @@ Azure AD Connect のすべてのリリースが自動アップグレードに対
    
 これらのコマンドレットを使用して、TLS 1.2 の有効化ステータスを取得したり、必要に応じて設定したりできます。 インストールまたは AADConnect を正常に行うには、サーバーで TLS 1.2 を有効にする必要があることに注意してください。
 
- -  いくつかの新しいおよび改良されたコマンドレットにより、ADSyncTools を改良しました。 [ADSyncTools の記事](reference-connect-adsynctools.md)には、これらのコマンドレットの詳細が記載されています。 
+ -    いくつかの新しいおよび改良されたコマンドレットにより、ADSyncTools を改良しました。 [ADSyncTools の記事](reference-connect-adsynctools.md)には、これらのコマンドレットの詳細が記載されています。 
   追加または更新されたコマンドレットは次のとおりです 
-    - Clear-ADSyncToolsMsDsConsistencyGuid  
-    - ConvertFrom-ADSyncToolsAadDistinguishedName   
+    - Clear-ADSyncToolsMsDsConsistencyGuid    
+    - ConvertFrom-ADSyncToolsAadDistinguishedName    
     - ConvertFrom-ADSyncToolsImmutableID    
-    - ConvertTo-ADSyncToolsAadDistinguishedName 
-    - ConvertTo-ADSyncToolsCloudAnchor  
-    - ConvertTo-ADSyncToolsImmutableID  
+    - ConvertTo-ADSyncToolsAadDistinguishedName    
+    - ConvertTo-ADSyncToolsCloudAnchor    
+    - ConvertTo-ADSyncToolsImmutableID    
     - Export-ADSyncToolsAadDisconnectors    
-    - Export-ADSyncToolsObjects 
-    - Export-ADSyncToolsRunHistory  
-    - Get-ADSyncToolsAadObject  
+    - Export-ADSyncToolsObjects    
+    - Export-ADSyncToolsRunHistory    
+    - Get-ADSyncToolsAadObject    
     - Get-ADSyncToolsMsDsConsistencyGuid    
-    - Import-ADSyncToolsObjects 
-    - Import-ADSyncToolsRunHistory  
-    - Remove-ADSyncToolsAadObject   
+    - Import-ADSyncToolsObjects    
+    - Import-ADSyncToolsRunHistory    
+    - Remove-ADSyncToolsAadObject    
     - Search-ADSyncToolsADobject    
     - Set-ADSyncToolsMsDsConsistencyGuid    
-    - Trace-ADSyncToolsADImport 
+    - Trace-ADSyncToolsADImport    
     - Trace-ADSyncToolsLdapQuery    
--   インポートとエクスポートに V2 エンドポイントを使用し、Get-ADSyncAADConnectorExportApiVersion コマンドレットの問題を修正しました。 V2 エンドポイントの詳細については、[Azure AD Connect 同期 V2 エンドポイントの記事](how-to-connect-sync-endpoint-api-v2.md)を参照してください。
--   オンプレミスの AD から Azur AD に同期するために、次の新しいユーザー プロパティを追加しました 
-    - employeeType  
-    - employeeHireDate  
--   このリリースでは、Windows Server に PowerShell バージョン 5.0 以降がインストールされている必要があります。 このバージョンは Windows Server 2016 以降のバージョンの一部であることに注意してください。   
--   新しい V2 エンドポイントにより、グループ同期メンバーシップの制限を 250,000 に引き上げました。
--   Generic LDAP コネクタと Generic SQL コネクタを最新バージョンに更新しました。 これらのコネクタの詳細については、こちらをご覧ください。
+-    インポートとエクスポートに V2 エンドポイントを使用し、Get-ADSyncAADConnectorExportApiVersion コマンドレットの問題を修正しました。 V2 エンドポイントの詳細については、[Azure AD Connect 同期 V2 エンドポイントの記事](how-to-connect-sync-endpoint-api-v2.md)を参照してください。
+-    オンプレミスの AD から Azur AD に同期するために、次の新しいユーザー プロパティを追加しました    
+    - employeeType    
+    - employeeHireDate    
+-    このリリースでは、Windows Server に PowerShell バージョン 5.0 以降がインストールされている必要があります。 このバージョンは Windows Server 2016 以降のバージョンの一部であることに注意してください。    
+-    新しい V2 エンドポイントにより、グループ同期メンバーシップの制限を 250,000 に引き上げました。
+-    Generic LDAP コネクタと Generic SQL コネクタを最新バージョンに更新しました。 これらのコネクタの詳細については、こちらをご覧ください。
     - [Generic LDAP コネクタ リファレンス ドキュメント](/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-genericldap)
     - [Generic SQL コネクタ リファレンス ドキュメント](/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-genericsql)
--   M365 管理センターでは、Azure AD へのエクスポート アクティビティがあるたびに、AADConnect クライアントのバージョンを報告するようになりました。 これにより、M365 管理センターには常に最新の AADConnect クライアント バージョンが確保されるため、期限切れのバージョンを使用している場合は検出できるようになります
+-    M365 管理センターでは、Azure AD へのエクスポート アクティビティがあるたびに、AADConnect クライアントのバージョンを報告するようになりました。 これにより、M365 管理センターには常に最新の AADConnect クライアント バージョンが確保されるため、期限切れのバージョンを使用している場合は検出できるようになります
 
 ### <a name="bug-fixes"></a>バグの修正
 - スクリーン リーダーが [詳細情報] リンクの間違ったロールをアナウンスするアクセシビリティのバグを修正しました。
--   優先順位の大きな値 (387163089 など) の同期規則によってアップグレードが失敗するバグを修正しました。 値をインクリメントする前に、優先順位番号を整数としてキャストするようにストアド プロシージャ 'mms_UpdateSyncRulePrecedence' を更新しました。
--   グループの書き戻しの構成がインポートされた場合に、グループの書き戻しアクセス許可が同期アカウントに設定されないバグを修正しました。 インポートされた構成でグループの書き戻しが有効になっている場合に、グループの書き戻しアクセス許可が設定されるようにしました。
--   インストール エラーを修正するために、Azure AD Connect Health エージェントのバージョンを 3.1.110.0 に更新しました。
--   ディレクトリ拡張属性が構成されているエクスポートされた構成からの既定以外の属性で問題が発生しています。 これらの構成を新しいサーバーまたはインストールにインポートすると、対象属性リストはディレクトリ拡張構成ステップによってオーバーライドされるため、インポート後は、既定およびディレクトリ拡張の属性のみが Sync Service Manager で選択されます (既定以外の属性はインストールには含まれていないため、インポートした同期規則を機能させる場合は、ユーザーが Sync Service Manager から手動でこれらの属性を再度有効にする必要があります)。 対象属性リストから既存の属性を保持するようにディレクトリ拡張を構成する前に、AAD コネクタを更新するようにしました。
--   ページ ヘッダーのフォントの太さが "細い" に設定されるアクセシビリティの問題を修正しました。 ページ タイトルのフォントの太さが "太字" に設定され、すべてのページのヘッダーに適用されるようになりました。
--   ADSyncSingleObjectSync.ps1 の関数 Get-AdObject は、AD コマンドレットとのあいまいさを防ぐために、Get-AdDirectoryObject に名前変更されました。
--   SQL 関数 'mms_CheckSynchronizationRuleHasUniquePrecedence' では、異なるコネクタの送信同期規則で重複する優先順位が許可されています。 重複する規則の優先順位を許可する条件を削除しました。
--   属性フロー データが null の場合 (削除操作をエクスポートする場合) に、単一オブジェクト同期コマンドレットが失敗するバグを修正しました。  
--   ADSync ブートストラップ サービスを開始できないためにインストールが失敗するバグを修正しました。 ブートストラップ サービスを開始する前に、ローカルの Builtin ユーザー グループに同期サービス アカウントを追加しました。
--   AAD Connect ウィザードのアクティブなタブが、ハイ コントラスト テーマで正しい色で表示されないアクセシビリティの問題を修正しました。 選択した色コードは、通常の色のコード構成で条件が不足していたため上書きされました。
--   ユーザーが UI と PowerShell を使用して同期規則で使用されるオブジェクトと属性の選択を解除できる問題に対処しました。 任意の同期規則で使用されている属性またはオブジェクトの選択を解除しようとすると、わかりやすいエラー メッセージが表示されるようになりました。
--   古いバージョンの Azure AD Connect でスクリプトを実行した場合の下位互換性の問題を確認して修正するために、"設定の移行コード" にいくつかの更新を加えました。  
--   PHS が不完全なオブジェクトの検索を試みる際に、パスワードのフェッチに最初に使用したのと同じアルゴリズムを使用して DC を解決しないバグを修正しました。 特に、アフィニティ化された DC 情報が無視されます。 不完全なオブジェクトの検索では、両方のインスタンスで DC を見つけるために同じロジックを使用する必要があります。
--   AAD Connect クライアント ID に基づく Microsoft Graph の直接呼び出しに関するアクセス許可の問題により、AADConnect が Microsoft Graph を使用してアプリケーション プロキシ項目を読み取れないバグを修正しました。これを修正するために、Microsoft Graph への依存関係を削除し、代わりに AAD PowerShell を使用してアプリ プロキシ アプリケーション オブジェクトを操作します。
--   'Out to AD - Group SOAInAAD Exchange' 同期規則から書き戻しメンバーの制限を削除しました。  
--   コネクタ アカウントのアクセス許可を変更するときに、最後の差分インポート以降に変更されていないスコープ内にオブジェクトが含まれていると、差分インポートでそれがインポートされないバグを修正しました。 ユーザーにこの問題の警告アラートが表示されるようになりました。
--   スクリーン リーダーでラジオ ボタンの位置が読み上げられないアクセシビリティの問題を修正しました。 ラジオ ボタンのアクセシビリティ テキスト フィールドに、位置テキストを追加しました。
--   パススルー認証エージェント バンドルを更新しました。 古いバンドルには、US Gov での HIP のファースト パーティ アプリケーションの正しい応答 URL がありませんでした。  
--   既存のデータベースを使用 (既定では DirSyncWebServices API V2 を使用) して AADConnect バージョン 1.6.X.X をクリーン インストールすると、AAD コネクタのエクスポートに 'stopped-extension-dll-exception' があるバグを修正しました。 以前は、v2 へのエクスポート バージョンの設定はアップグレードのためにのみ行われていましたが、クリーン インストールでも設定されるように変更しました。
--   "ADSyncPrep.psm1" モジュールは使用されなくなり、インストールから削除されます。
+-    優先順位の大きな値 (387163089 など) の同期規則によってアップグレードが失敗するバグを修正しました。 値をインクリメントする前に、優先順位番号を整数としてキャストするようにストアド プロシージャ 'mms_UpdateSyncRulePrecedence' を更新しました。
+-    グループの書き戻しの構成がインポートされた場合に、グループの書き戻しアクセス許可が同期アカウントに設定されないバグを修正しました。 インポートされた構成でグループの書き戻しが有効になっている場合に、グループの書き戻しアクセス許可が設定されるようにしました。
+-    インストール エラーを修正するために、Azure AD Connect Health エージェントのバージョンを 3.1.110.0 に更新しました。
+-    ディレクトリ拡張属性が構成されているエクスポートされた構成からの既定以外の属性で問題が発生しています。 これらの構成を新しいサーバーまたはインストールにインポートすると、対象属性リストはディレクトリ拡張構成ステップによってオーバーライドされるため、インポート後は、既定およびディレクトリ拡張の属性のみが Sync Service Manager で選択されます (既定以外の属性はインストールには含まれていないため、インポートした同期規則を機能させる場合は、ユーザーが Sync Service Manager から手動でこれらの属性を再度有効にする必要があります)。 対象属性リストから既存の属性を保持するようにディレクトリ拡張を構成する前に、AAD コネクタを更新するようにしました。
+-    ページ ヘッダーのフォントの太さが "細い" に設定されるアクセシビリティの問題を修正しました。 ページ タイトルのフォントの太さが "太字" に設定され、すべてのページのヘッダーに適用されるようになりました。
+-    ADSyncSingleObjectSync.ps1 の関数 Get-AdObject は、AD コマンドレットとのあいまいさを防ぐために、Get-AdDirectoryObject に名前変更されました。
+-    SQL 関数 'mms_CheckSynchronizationRuleHasUniquePrecedence' では、異なるコネクタの送信同期規則で重複する優先順位が許可されています。 重複する規則の優先順位を許可する条件を削除しました。
+-    属性フロー データが null の場合 (削除操作をエクスポートする場合) に、単一オブジェクト同期コマンドレットが失敗するバグを修正しました。    
+-    ADSync ブートストラップ サービスを開始できないためにインストールが失敗するバグを修正しました。 ブートストラップ サービスを開始する前に、ローカルの Builtin ユーザー グループに同期サービス アカウントを追加しました。
+-    AAD Connect ウィザードのアクティブなタブが、ハイ コントラスト テーマで正しい色で表示されないアクセシビリティの問題を修正しました。 選択した色コードは、通常の色のコード構成で条件が不足していたため上書きされました。
+-    ユーザーが UI と PowerShell を使用して同期規則で使用されるオブジェクトと属性の選択を解除できる問題に対処しました。 任意の同期規則で使用されている属性またはオブジェクトの選択を解除しようとすると、わかりやすいエラー メッセージが表示されるようになりました。
+-    古いバージョンの Azure AD Connect でスクリプトを実行した場合の下位互換性の問題を確認して修正するために、"設定の移行コード" にいくつかの更新を加えました。    
+-    PHS が不完全なオブジェクトの検索を試みる際に、パスワードのフェッチに最初に使用したのと同じアルゴリズムを使用して DC を解決しないバグを修正しました。 特に、アフィニティ化された DC 情報が無視されます。 不完全なオブジェクトの検索では、両方のインスタンスで DC を見つけるために同じロジックを使用する必要があります。
+-    AAD Connect クライアント ID に基づく Microsoft Graph の直接呼び出しに関するアクセス許可の問題により、AADConnect が Microsoft Graph を使用してアプリケーション プロキシ項目を読み取れないバグを修正しました。これを修正するために、Microsoft Graph への依存関係を削除し、代わりに AAD PowerShell を使用してアプリ プロキシ アプリケーション オブジェクトを操作します。
+-    'Out to AD - Group SOAInAAD Exchange' 同期規則から書き戻しメンバーの制限を削除しました。    
+-    コネクタ アカウントのアクセス許可を変更するときに、最後の差分インポート以降に変更されていないスコープ内にオブジェクトが含まれていると、差分インポートでそれがインポートされないバグを修正しました。 ユーザーにこの問題の警告アラートが表示されるようになりました。
+-    スクリーン リーダーでラジオ ボタンの位置が読み上げられないアクセシビリティの問題を修正しました。 ラジオ ボタンのアクセシビリティ テキスト フィールドに、位置テキストを追加しました。
+-    パススルー認証エージェント バンドルを更新しました。 古いバンドルには、US Gov での HIP のファースト パーティ アプリケーションの正しい応答 URL がありませんでした。    
+-    既存のデータベースを使用 (既定では DirSyncWebServices API V2 を使用) して AADConnect バージョン 1.6.X.X をクリーン インストールすると、AAD コネクタのエクスポートに 'stopped-extension-dll-exception' があるバグを修正しました。    以前は、v2 へのエクスポート バージョンの設定はアップグレードのためにのみ行われていましたが、クリーン インストールでも設定されるように変更しました。
+-    "ADSyncPrep.psm1" モジュールは使用されなくなり、インストールから削除されます。
 
 ### <a name="known-issues"></a>既知の問題
--   AADConnect ウィザードで、[同期設定をインポート] オプションが "プレビュー" として表示されていますが、この機能は一般公開されています。
--   一部の Active Directory コネクタは、移行設定スクリプトの出力を使用して製品をインストールすると、異なる順序でインストールされる場合があります。 
--   Azure AD Connect ウィザードの [ユーザー サインイン オプション] ページに、"社内管理者" と記載されています。 この用語は使用されなくなったため、"全体管理者" に置き換える必要があります。
--   サインイン オプションが PingFederate を使用するように構成されている場合、[設定のエクスポート] オプションは破損します。
--   Azure AD Connect は、ハイブリッド ID の管理者ロールを使用してデプロイできるようになりましたが、セルフサービス パスワード リセットを構成するには、引き続きユーザーに全体管理者ロールが必要です。
--   デプロイ中に元の AADConnect 構成とは別のテナントに接続するために AADConnect 構成をインポートすると、ディレクトリ拡張属性が正しく構成されません。
+-    AADConnect ウィザードで、[同期設定をインポート] オプションが "プレビュー" として表示されていますが、この機能は一般公開されています。
+-    一部の Active Directory コネクタは、移行設定スクリプトの出力を使用して製品をインストールすると、異なる順序でインストールされる場合があります。 
+-    Azure AD Connect ウィザードの [ユーザー サインイン オプション] ページに、"社内管理者" と記載されています。 この用語は使用されなくなったため、"全体管理者" に置き換える必要があります。
+-    サインイン オプションが PingFederate を使用するように構成されている場合、[設定のエクスポート] オプションは破損します。
+-    Azure AD Connect は、ハイブリッド ID の管理者ロールを使用してデプロイできるようになりましたが、セルフサービス パスワード リセットを構成するには、引き続きユーザーに全体管理者ロールが必要です。
+-    デプロイ中に元の AADConnect 構成とは別のテナントに接続するために AADConnect 構成をインポートすると、ディレクトリ拡張属性が正しく構成されません。
 
 ## <a name="1640"></a>1.6.4.0
 
@@ -324,7 +342,7 @@ Azure AD Connect のすべてのリリースが自動アップグレードに対
  - 以前の同期 UI の [CS 検索] ページから、[明示] 列が削除されました
  - 以前の手順で資格情報がまだ指定されていない場合に、ユーザーに資格情報の入力を求めたり、ADSyncConfig モジュールを使用して独自のアクセス許可を構成したりするため、グループ書き戻しフローに追加の UI が設けられました。
  - DC 上の ADSync サービス アカウント用の MSA を自動作成します。 
- -  既存のコマンドレットで Azure Active Directory DirSync 機能の Group Writeback V2 を設定し、取得する機能が追加されました。
+ - 既存のコマンドレットで Azure Active Directory DirSync 機能の Group Writeback V2 を設定し、取得する機能が追加されました。
     - Set-ADSyncAADCompanyFeature
     - Get-ADSyncAADCompanyFeature
  - AWS API バージョンを読み取るコマンドレットが 2 つ追加されました
@@ -547,9 +565,9 @@ Azure AD Connect のすべてのリリースが自動アップグレードに対
 >
 > これを解決するには、**AdSync** モジュールをインポートしてから、Azure AD Connect サーバー上で `Set-ADSyncDirSyncConfiguration` PowerShell コマンドレットを実行します。  次の手順を使用できます。
 >
->1. 管理者モードで PowerShell を開きます。
->2. `Import-Module "ADSync"` を実行します。
->3. `Set-ADSyncDirSyncConfiguration -AnchorAttribute ""` を実行します。
+>1.    管理者モードで PowerShell を開きます。
+>2.    `Import-Module "ADSync"` を実行します。
+>3.    `Set-ADSyncDirSyncConfiguration -AnchorAttribute ""` を実行します。
  
 ### <a name="release-status"></a>リリースの状態 
 

@@ -1,8 +1,9 @@
 ### YamlMime:Landing
-title: Azure Cost Management および Billing のドキュメント
+title: Cost Management + Billing のドキュメント
 summary: Azure Cost Management + Billing は、Azure の請求書 (課金) の把握、課金アカウントとサブスクリプションの管理、Azure での支出の監視と制御、リソース使用の最適化に役立ちます。 コストを分析する方法、予算を作成および管理する方法、推奨事項を確認して対処する方法についてご確認ください。
 metadata:
   title: Cost Management と Billing
+  titleSuffix: Azure Cost Management + Billing documentation
   description: Azure Cost Management + Billing は、Azure の請求書 (課金) の把握、課金アカウントとサブスクリプションの管理、Azure での支出の監視と制御、リソース使用の最適化に役立ちます。 コストを分析する方法、予算を作成および管理する方法、推奨事項を確認して対処する方法についてご確認ください。
   ms.service: cost-management-billing
   ms.subservice: common
@@ -10,13 +11,13 @@ metadata:
   ms.collection: collection
   author: bandersmsft
   ms.author: banders
-  ms.date: 10/07/2021
-  ms.openlocfilehash: 4dab44a6129c2e6bb6d810ec820cfb459ddb89df
-  ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+  ms.date: 10/13/2021
+  ms.openlocfilehash: 50e8782d70e2c8d783c8079e7bd3fb48fcf9bb94
+  ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/09/2021
-  ms.locfileid: "129711254"
+  ms.lasthandoff: 10/14/2021
+  ms.locfileid: "130000387"
 landingContent:
 - title: コストの分析
   linkLists:

@@ -7,14 +7,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 06/18/2021
+ms.date: 09/02/2021
 ms.author: aahi
-ms.openlocfilehash: 2bd9d1c6a76e8bf2726831859045363809458228
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 68f320a7af2d41bfb29f6d7f7f84ccdf718044d7
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123122080"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124799086"
 ---
 ## <a name="install-the-container"></a>コンテナーをインストールする
 
@@ -50,6 +50,22 @@ Logging:Disk:Format=json
 - TCP ポート 5000 を公開し、コンテナーに pseudo-TTY を割り当てます
 - 使用許諾契約 (Eula) と責任ある AI (RAI) の条項に同意します
 - コンテナーの終了後にそれを自動的に削除します。 ホスト コンピューター上のコンテナー イメージは引き続き利用できます。
+
+### <a name="run-the-container-with-client-library-support"></a>クライアント ライブラリのサポート付きでコンテナーを実行する
+
+コンテナー バージョン `3.0.017010001-onprem-amd64` 以降 (または `latest` コンテナーを使用している場合)、正常性コンテナーの Text Analytics を実行して、Text Analytics [クライアント ライブラリ](../quickstarts/client-libraries-rest-api.md)の正常性操作と連携できます。 これを行うには、次のパラメーターを `docker run` コマンドに追加します。
+
+`enablelro=true`
+
+その後、Text Analytics クライアントを認証するときに、コンテナーが実行されているエンドポイントを使用します。
+
+`http://localhost:5000`
+
+たとえば、C# を使用している場合は、次のコードを使用します。
+
+```csharp
+var client = new TextAnalyticsClient("http://localhost:5000", "your-text-analytics-key");
+```
 
 ### <a name="demo-ui-to-visualize-output"></a>出力を視覚化するためのデモ UI
 

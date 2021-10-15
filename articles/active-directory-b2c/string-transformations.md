@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 07/20/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a7041f343eec34f16f4cfd7b32ae56157963dd09
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: f581d7f4400e4cff734e3094d5957fec6148488f
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114439362"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129536324"
 ---
 # <a name="string-claims-transformations"></a>文字列要求変換
 
@@ -923,8 +923,8 @@ GetLocalizedStringsTransformation 要求変換を使用する場合は、次の�
     - **stringComparison**: ordinalIgnoreCase
     - **outputClaimIfMatched**:B2C_V1_90001
 - 出力要求:
-    - **isMinorResponseCode**:B2C_V1_90001
-    - **isMinor**: true
+    - **isMinorResponseCode**: true
+    - **isMinor**: B2C_V1_90001
 
 
 ## <a name="stringcontains"></a>StringContains

@@ -2,13 +2,13 @@
 title: Bicep のデータ型
 description: Bicep で使用可能なデータ型について説明します
 ms.topic: conceptual
-ms.date: 09/22/2021
-ms.openlocfilehash: 936f17273a95ceb77030497b27f7f73defc37896
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 09/30/2021
+ms.openlocfilehash: e2dffac58c3fec1b6c29d2c5e1542c9fec7ec0e4
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128624400"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129357928"
 ---
 # <a name="data-types-in-bicep"></a>Bicep のデータ型
 
@@ -83,9 +83,7 @@ Bicep の整数は 64 ビット整数です。 デプロイに使用する SDK �
 
 ## <a name="objects"></a>オブジェクト
 
-オブジェクトは左中かっこ (`{`) で始めて、右中かっこ (`}`) で終わります。 Bicep では、オブジェクは複数の行で宣言する必要があります。 オブジェクト内の各プロパティはキーと値で構成されます。 キーと値はコロン (`:`) で区切られます。 オブジェクトでは、任意の型の任意のプロパティが許可されます。
-
-Bicep では、キーは引用符で囲まれません。 プロパティ間にコンマを使用しないでください。
+オブジェクトは左中かっこ (`{`) で始めて、右中かっこ (`}`) で終わります。 Bicep では、オブジェクは複数の行で宣言する必要があります。 オブジェクト内の各プロパティはキーと値で構成されます。 キーと値はコロン (`:`) で区切られます。 オブジェクトでは、任意の型の任意のプロパティが許可されます。 プロパティ間にコンマを使用しないでください。
 
 ```bicep
 param exampleObject object = {
@@ -93,6 +91,23 @@ param exampleObject object = {
   id: '123-abc'
   isCurrent: true
   tier: 1
+}
+```
+
+Bicep では、必要に応じてオブジェクトのプロパティ キーに引用符を使用できます。
+
+```bicep
+var test = {
+  'my - special. key': 'value'
+}
+```
+
+前の例では、オブジェクトのプロパティ キーに特殊文字が含まれている場合に、引用符が使用されています。  たとえば、スペース、'-'、'.' などです。 次の例は、オブジェクト プロパティ キーに補間を使用する方法を示しています。
+
+```bicep
+var stringVar = 'example value'
+var objectVar = {
+  '${stringVar}': 'this value'
 }
 ```
 
@@ -139,7 +154,7 @@ param exampleString string = 'test value'
 
 次の表に、円記号 (`\`) 文字でエスケープする必要がある予約文字のセットを示します。
 
-| エスケープ シーケンス | 表される値 | Notes |
+| エスケープ シーケンス | 表される値 | メモ |
 |:-|:-|:-|
 | `\\` | `\` ||
 | `\'` | `'` ||

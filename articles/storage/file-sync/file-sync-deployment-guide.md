@@ -8,12 +8,12 @@ ms.date: 04/15/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 75e8b7482e9d810caf0afb0818d53df141908708
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: cce87bbcd8a4a2db5d400b41948e9dcf4598b331
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128609272"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129390294"
 ---
 # <a name="deploy-azure-file-sync"></a>Azure File Sync のデプロイ
 
@@ -234,7 +234,7 @@ Azure File Sync エージェントは、Windows Server を Azure ファイル共
 このエージェントは、[Microsoft ダウンロード センター](https://go.microsoft.com/fwlink/?linkid=858257) からダウンロードできます。 ダウンロードが完了したら、MSI パッケージをダブルクリックして Azure File Sync エージェントのインストールを開始します。
 
 > [!IMPORTANT]
-> フェールオーバー クラスターで Azure File Sync を使用する場合は、クラスターのすべてのノードに Azure File Sync エージェントをインストールする必要があります。 Azure File Sync で動作するようにクラスター内の各ノードを登録する必要があります。
+> フェールオーバー クラスターで Azure File Sync を使用する場合は、クラスターのすべてのノードに Azure File Sync エージェントをインストールする必要があります。 クラスターのノードは、Azure File Sync を利用するようそれぞれ登録する必要があります。Azure File Sync では、Clustered Disks で Windows Server Failover Cluster を使用するシナリオのみをサポートしています。 Azure File Sync については「[フェールオーバー クラスタリング](file-sync-planning.md#failover-clustering)」セクションをご覧ください。
 
 次を実行することをお勧めします。
 - トラブルシューティングとサーバーのメンテナンスを簡素化するために、既定のインストール パス (C:\Program Files\Azure\StorageSyncAgent) をそのまま使用します。

@@ -5,13 +5,13 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/04/2021
-ms.openlocfilehash: 662faef8b7a3afbf3d3d3b021c52754af3a3c0bc
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.date: 10/01/2021
+ms.openlocfilehash: 526a06c1ffd110fa02fd3d412ab62882bd74f9fa
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111559916"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129387375"
 ---
 # <a name="server-parameters-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL - フレキシブル サーバーのサーバー パラメーター
 
@@ -39,6 +39,7 @@ Azure Database for PostgreSQL サーバーは、作成時に各パラメータ�
 | **shared_buffers**    | 'shared_buffers' 設定は、選択した SKU に応じて変わります (SKU によって、使用可能なメモリが決まります)。 汎用サーバーには 2 つの仮想コア用に 2 GB shared_buffers があり、メモリ最適化サーバーには 2 つの仮想コア用に 4 GB の shared_buffers があります。 shared_buffers 設定は、階層で仮想コアが増えると、線形的 (大まか) にスケーリングされます。 | 
 | **shared_preload_libraries** | このパラメーターは、サポートされている拡張機能の定義済みセットを使用して構成できます。 `pg_stat_statements` 拡張機能に加えて (メンテナンスタスクに使用される) 、 `azure` 拡張機能が常に読み込まれていることに注意してください (pg_stat_statements パラメーターは、拡張機能がアクティブかどうかを制御するために使用できます)。 |
 | **connection_throttling** | 無効なパスワード ログイン エラーが多すぎる場合に、IP ごとに一時的な接続のスロットリング有効化または無効化できます。 |
+| **require_secure_transport** | アプリケーションがサーバーへの SSL 接続をサポートしていない場合は、必要に応じて、このパラメーター値を `OFF` にすることで、クライアントからのセキュリティで保護されたトランスポートを無効にできます。 |
  
 ## <a name="next-steps"></a>次のステップ
 

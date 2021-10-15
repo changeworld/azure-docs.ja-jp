@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/24/2021
 ms.author: robinsh
 ms.custom: mqtt, devx-track-csharp
-ms.openlocfilehash: 18055232714914456ec2db51891edc70ac89057e
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 91637d6f508eb198345add5ad40fed52a67ec952
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124779637"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129457717"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-net"></a>IoT Hub を使用してデバイスからクラウドにファイルをアップロードする (.NET)
 
@@ -59,7 +59,7 @@ ms.locfileid: "124779637"
     dotnet --version
     ```
 
-* [https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) から Azure IoT C# サンプルをダウンロードし、ZIP アーカイブを展開します。
+* [https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/main.zip](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/main.zip) から Azure IoT C# サンプルをダウンロードし、ZIP アーカイブを展開します。
 
 * ポート 8883 がファイアウォールで開放されていることを確認してください。 この記事のサンプルでは、ポート 8883 を介して通信する MQTT プロトコルを使用しています。 このポートは、企業や教育用のネットワーク環境によってはブロックされている場合があります。 この問題の詳細と対処方法については、「[IoT Hub への接続 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)」を参照してください。
 
@@ -77,7 +77,7 @@ ms.locfileid: "124779637"
 
 この記事では、事前にダウンロードした Azure IoT C# サンプル リポジトリのサンプルをデバイス アプリとして使用します。 以下のファイルは、Visual Studio、Visual Studio Code、またはテキスト エディターを使用して開くことができます。  
 
-このサンプルは、Azure IoT C# サンプルを解凍したフォルダーの下にある、**azure-iot-samples-csharp-master\iot-hub\Samples\device\FileUploadSample** にあります。
+このサンプルは、Azure IoT C# サンプルを解凍したフォルダーの下にある、**azure-iot-samples-csharp-main\iot-hub\Samples\device\FileUploadSample** にあります。
 
 **FileUpLoadSample.cs** のコードを確認してください。 このファイルには、メインのサンプル ロジックが含まれています。 IoT Hub デバイス クライアントを作成した後、デバイスからファイルをアップロードするための標準的な 3 つの手順が実行されます。
 
@@ -225,7 +225,7 @@ ms.locfileid: "124779637"
 
 
 
-1. 次に、デバイス アプリを実行して、ファイルを Azure Storage にアップロードします。 新しいコマンド プロンプトを開き、フォルダーを Azure IoT C# サンプルを解凍した下にある **azure-iot-samples-csharp-master\iot-hub\Samples\device\FileUploadSample** フォルダーに変更します。 次のコマンドを実行します。 2 つ目のコマンドにある `{Your device connection string}` プレースホルダーの値を、先ほど「[IoT ハブに新しいデバイスを登録する](#register-a-new-device-in-the-iot-hub)」でコピーしたデバイス接続文字列に置き換えます。
+1. 次に、デバイス アプリを実行して、ファイルを Azure Storage にアップロードします。 新しいコマンド プロンプトを開き、フォルダーを Azure IoT C# サンプルを解凍した下にある **azure-iot-samples-csharp-main\iot-hub\Samples\device\FileUploadSample** フォルダーに変更します。 次のコマンドを実行します。 2 つ目のコマンドにある `{Your device connection string}` プレースホルダーの値を、先ほど「[IoT ハブに新しいデバイスを登録する](#register-a-new-device-in-the-iot-hub)」でコピーしたデバイス接続文字列に置き換えます。
 
     ```cmd/sh
     dotnet restore

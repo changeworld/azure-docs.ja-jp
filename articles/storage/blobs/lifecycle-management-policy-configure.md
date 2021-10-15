@@ -10,12 +10,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 507077913a672da6f9572a283367c5713a9d5e39
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: e940db4a16963b236fa5230893373da935532761
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128603507"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129273215"
 ---
 # <a name="configure-a-lifecycle-management-policy"></a>ライフサイクル管理ポリシーを構成する
 
@@ -220,4 +220,4 @@ Azure Resource Manager テンプレートを使用してライフサイクル管
 ## <a name="see-also"></a>こちらもご覧ください
 
 - [データ ライフサイクルを自動管理してコストを最適化する](lifecycle-management-overview.md)
-- [Azure Blob Storage のアクセス層 - ホット、クール、およびアーカイブ](storage-blob-storage-tiers.md)
+- [BLOB データのホット、クール、アーカイブのアクセス層](access-tiers-overview.md)

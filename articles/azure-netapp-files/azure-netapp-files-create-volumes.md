@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 08/06/2021
+ms.date: 10/04/2021
 ms.author: b-juche
-ms.openlocfilehash: e9d3f2443d73f75e96e0036d5c546d00238a58d8
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: d1aafd863e35d8cb19f529928c22645496fff671
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128614374"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129536265"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>Azure NetApp Files の NFS ボリュームを作成する
 
@@ -29,7 +29,7 @@ Azure NetApp Files では、NFS (NFSv3 または NFSv4.1)、SMB3、またはデ�
 
 ## <a name="before-you-begin"></a>開始する前に 
 * あらかじめ容量プールを設定しておく必要があります。  
-    「[容量プールを設定する](azure-netapp-files-set-up-capacity-pool.md)」を参照してください。   
+    「[容量プールの作成](azure-netapp-files-set-up-capacity-pool.md)」を参照してください。   
 * サブネットが Azure NetApp Files に委任されている必要があります。  
     「[サブネットを Azure NetApp Files に委任する](azure-netapp-files-delegate-subnet.md)」を参照してください。
 
@@ -93,6 +93,9 @@ Azure NetApp Files では、NFS (NFSv3 または NFSv4.1)、SMB3、またはデ�
         ![ボリュームを作成する](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
     
         ![サブネットの作成](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
+
+    * **ネットワーク機能**  
+        サポートされているリージョンでは、ボリュームで使用するネットワーク機能を **Basic** または **Standard** から選ぶことができます。 詳細については、「[ボリュームのネットワーク機能を構成する](configure-network-features.md)」と「[Azure NetApp Files のネットワーク計画のガイドライン](azure-netapp-files-network-topologies.md)」を参照してください。
 
     * 既存のスナップショット ポリシーをボリュームに適用する場合は、 **[詳細セクションの表示]** をクリックして展開し、スナップショットのパスを非表示にするかどうかを指定して、プルダウン メニューでスナップショット ポリシーを選択します。 
 

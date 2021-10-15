@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: 'Azure Machine Learning (MLOps) を使用したモデル管理について説明します。 モデルのデプロイ、管理、系列追跡、監視を行って継続的に改善します。 '
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.topic: conceptual
 author: jpe316
 ms.author: jordane
 ms.date: 07/08/2021
 ms.custom: seodec18
-ms.openlocfilehash: 0ef4715bb854905f8076ee116f672eee2d33a059
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: e58e820471bbde5d56996958b82c573c69d332b8
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121860810"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129427174"
 ---
 # <a name="mlops-model-management-deployment-lineage-and-monitoring-with-azure-machine-learning"></a>MLOps: Azure Machine Learning を使用したモデルの管理、デプロイ、系列追跡、監視
 

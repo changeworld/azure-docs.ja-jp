@@ -1,24 +1,24 @@
 ---
 title: 予約容量を利用して Azure App Service のコストを節約する
-description: Azure App Service Premium v3 と Premium v2 の予約インスタンスおよび Isolated スタンプ料金のコストを節約する方法について説明します。
+description: Azure App Service Premium v3 と Isolated v2 の予約インスタンスおよび Isolated スタンプ料金のコストを節約する方法について説明します。
 author: bandersmsft
 ms.reviewer: primittal
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 09/20/2021
+ms.date: 10/04/2021
 ms.author: banders
 ms.custom: references_regions
-ms.openlocfilehash: 305849e104c3d8fb48b5d661d3d21f589fd69516
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: f3c45799d88601bb8ef9a2d652bb07d7d54aceb9
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128664430"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129456615"
 ---
 # <a name="save-costs-with-azure-app-service-reserved-instances"></a>Azure App Service 予約インスタンスを使用してコストを節約する
 
-この記事では、Premium v3 および Premium v2 インスタンスの Azure App Service 予約インスタンスと、Isolated スタンプ料金で節約する方法について説明します。
+この記事では、Premium v3 および Isolated v2 インスタンスの Azure App Service 予約インスタンスと、Isolated スタンプ料金で節約する方法について説明します。
 
 ## <a name="save-with-premium-v3-reserved-instances"></a>Premium v3 予約インスタンスで節約する
 

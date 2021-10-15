@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 08/27/2021
 ms.author: rolyon
-ms.openlocfilehash: 9553e53cda41a4fe4d926923bdd71d7d7c5ebb15
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 31da46a7eb6a021a14641d13f9c76ab7406f9b94
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123308414"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129363406"
 ---
 # <a name="azure-custom-roles"></a>Azure カスタム ロール
 
@@ -33,7 +33,7 @@ ms.locfileid: "123308414"
 
 1. 必要なアクセス許可を決定する。
 
-    カスタム ロールを作成する場合、アクセス許可を定義するために使用可能な操作を把握しておく必要があります。 通常は、まず、既存の組み込みロールを使用し、必要に応じてそれを変更します。 操作を[ロール定義](role-definitions.md)の `Actions` または `NotActions` プロパティに追加します。 データ操作をする場合は、それらを `DataActions` または `NotDataActions` プロパティに追加します。
+    カスタム ロールを作成する場合、アクセス許可を定義するために使用可能なアクションを把握しておく必要があります。 通常は、まず、既存の組み込みロールを使用し、必要に応じてそれを変更します。 アクションを[ロール定義](role-definitions.md)の `Actions` または `NotActions` プロパティに追加します。 データ アクションをする場合は、それらを `DataActions` または `NotDataActions` プロパティに追加します。
 
     詳細については、次のセクション「[必要なアクセス許可を特定する方法](#how-to-determine-the-permissions-you-need)」をご覧ください。
 
@@ -157,10 +157,10 @@ Azure CLI を使用して表示される同じカスタム ロールを次に示
 | `Id`</br>`name` | はい | String | カスタム ロールの一意の ID。 Azure PowerShell と Azure CLI では、新しいロールを作成するときに自動的にこの ID が生成されます。 |
 | `IsCustom`</br>`roleType` | はい | String | これがカスタム ロールであるかどうかを示します。 カスタム ロールの場合は `true` または `CustomRole` に設定します。 組み込みロールの場合は `false` または `BuiltInRole` に設定します。 |
 | `Description`</br>`description` | はい | String | カスタム ロールの説明。 英字、数字、スペース、特殊文字を含めることができます。 最大文字数は 1024 文字です。 |
-| `Actions`</br>`actions` | はい | String[] | ロールで実行できる管理操作を指定する文字列の配列。 詳細については、「[Actions](role-definitions.md#actions)」を参照してください。 |
-| `NotActions`</br>`notActions` | いいえ | String[] | 許可された `Actions` から除外される管理操作を指定する文字列の配列。 詳細については、「[notActions](role-definitions.md#notactions)」を参照してください。 |
-| `DataActions`</br>`dataActions` | いいえ | String[] | 対象のオブジェクト内のデータに対して、ロールで実行できるデータ操作を指定する文字列の配列。 `DataActions` が含まれるカスタム ロールを作成する場合、そのロールは管理グループのスコープで割り当てることができません。 詳細については、「[DataActions](role-definitions.md#dataactions)」を参照してください。 |
-| `NotDataActions`</br>`notDataActions` | いいえ | String[] | 許可された `DataActions` から除外されるデータ操作を指定する文字列の配列。 詳細については、「[NotDataActions](role-definitions.md#notdataactions)」を参照してください。 |
+| `Actions`</br>`actions` | はい | String[] | ロールで実行できるコントロール プレーン アクションを指定する文字列の配列。 詳細については、「[Actions](role-definitions.md#actions)」を参照してください。 |
+| `NotActions`</br>`notActions` | いいえ | String[] | 許可される `Actions` から除外されるコントロール プレーン アクションを指定する文字列の配列。 詳細については、「[notActions](role-definitions.md#notactions)」を参照してください。 |
+| `DataActions`</br>`dataActions` | いいえ | String[] | 対象のオブジェクト内のデータに対して、ロールで実行できるコントロール プレーン アクションを指定する文字列の配列。 `DataActions` が含まれるカスタム ロールを作成する場合、そのロールは管理グループのスコープで割り当てることができません。 詳細については、「[DataActions](role-definitions.md#dataactions)」を参照してください。 |
+| `NotDataActions`</br>`notDataActions` | いいえ | String[] | 許可される `DataActions` から除外されるデータ プレーン アクションを指定する文字列の配列。 詳細については、「[NotDataActions](role-definitions.md#notdataactions)」を参照してください。 |
 | `AssignableScopes`</br>`assignableScopes` | はい | String[] | 割り当てにカスタム ロールを使用できるスコープを指定する文字列の配列。 カスタム ロールの `AssignableScopes` に定義できる管理グループは 1 つだけです。 `AssignableScopes` への管理グループの追加は、現在プレビューの段階です。 詳細については、「[AssignableScopes](role-definitions.md#assignablescopes)」を参照してください。 |
 
 アクセス許可の文字列では大文字と小文字が区別されません。 カスタム ロールを作成する場合は、「[Azure リソース プロバイダーの操作](resource-provider-operations.md)」に示されているアクセス許可の大文字と小文字の区別の規則に従ってください。
@@ -187,11 +187,11 @@ Microsoft.CostManagement/exports/*
 
 組み込みロールと同じように、`AssignableScopes` プロパティでは、割り当てにロールを使用できるスコープを指定します。 カスタム ロールの `AssignableScopes` プロパティでは、カスタム ロールを作成、削除、更新、または表示できるユーザーも制御されます。
 
-| タスク | Operation | 説明 |
+| タスク | アクション | 説明 |
 | --- | --- | --- |
-| カスタム ロールの作成/削除 | `Microsoft.Authorization/ roleDefinitions/write` | カスタム ロールのすべての `AssignableScopes` に対してこの操作が許可されているユーザーは、これらのスコープで使用するカスタム ロールを作成 (または削除) できます。 たとえば、管理グループ、サブスクリプション、リソース グループの[所有者](built-in-roles.md#owner)と[ユーザー アクセス管理者](built-in-roles.md#user-access-administrator)です。 |
-| カスタム ロールの更新 | `Microsoft.Authorization/ roleDefinitions/write` | カスタム ロールのすべての `AssignableScopes` に対してこの操作が許可されているユーザーは、これらのスコープ内のカスタム ロールを更新できます。 たとえば、管理グループ、サブスクリプション、リソース グループの[所有者](built-in-roles.md#owner)と[ユーザー アクセス管理者](built-in-roles.md#user-access-administrator)です。 |
-| カスタム ロールの表示 | `Microsoft.Authorization/ roleDefinitions/read` | あるスコープでこの操作を許可されたユーザーは、そのスコープで割り当て可能なカスタム ロールを表示できます。 すべての組み込みロールでは、カスタム ロールを割り当てることができます。 |
+| カスタム ロールの作成/削除 | `Microsoft.Authorization/ roleDefinitions/write` | カスタム ロールのすべての `AssignableScopes` に対してこのアクションが許可されているユーザーは、これらのスコープで使用するカスタム ロールを作成 (または削除) できます。 たとえば、管理グループ、サブスクリプション、リソース グループの[所有者](built-in-roles.md#owner)と[ユーザー アクセス管理者](built-in-roles.md#user-access-administrator)です。 |
+| カスタム ロールの更新 | `Microsoft.Authorization/ roleDefinitions/write` | カスタム ロールのすべての `AssignableScopes` に対してこのアクションが許可されているユーザーは、これらのスコープ内のカスタム ロールを更新できます。 たとえば、管理グループ、サブスクリプション、リソース グループの[所有者](built-in-roles.md#owner)と[ユーザー アクセス管理者](built-in-roles.md#user-access-administrator)です。 |
+| カスタム ロールの表示 | `Microsoft.Authorization/ roleDefinitions/read` | あるスコープでこのアクションを許可されたユーザーは、そのスコープで割り当て可能なカスタム ロールを表示できます。 すべての組み込みロールでは、カスタム ロールを割り当てることができます。 |
 
 ## <a name="custom-role-limits"></a>カスタム ロールの制限事項
 

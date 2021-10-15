@@ -3,15 +3,15 @@ title: Azure Automation の Runbook の種類
 description: この記事では、Azure Automation で使用できる Runbook の種類と、使用する種類を決定する際の考慮事項について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 06/10/2021
+ms.date: 10/05/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 44923cd63676a6eb2fa589c66726f1c14c76896c
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 58bc105a088e2ed06fb710d9a2e38e406e375bd9
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124744811"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129534320"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure Automation の Runbook の種類
 
@@ -69,8 +69,8 @@ PowerShell Runbook は、Windows PowerShell に基づきます。 Azure ポー�
 * PowerShell スクリプトについて理解している必要があります。
 * Runbook に[並列処理](automation-powershell-workflow.md#use-parallel-processing)を使用し、複数のアクションを並列して実行することはできません。
 * Runbook に[チェックポイント](automation-powershell-workflow.md#use-checkpoints-in-a-workflow)を使用し、エラーが発生した場合に Runbook を再開することはできません。
-* PowerShell ワークフロー Runbook とグラフィカル Runbook を子 Runbook として組み込むには、新しいジョブを作成する [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook) コマンドレットを使用する必要があります。
-* Runbooks では PowerShell [#Requires](/powershell/module/microsoft.powershell.core/about/about_requires) ステートメントを使用できません。Azure sandbox または Hybrid Runbook Workers でサポートされておらず、ジョブが失敗する原因となります。
+* PowerShell、PowerShell ワークフロー Runbook とグラフィカル Runbook を子 Runbook として組み込むには、新しいジョブを作成する [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook) コマンドレットを使用する必要があります。
+* Runbooks では PowerShell [#Requires](/powershell/module/microsoft.powershell.core/about/about_requires) ステートメントを使用できません。Azure sandbox または Hybrid Runbook Workers でサポートされておらず、ジョブが失敗する原因となる可能性があります。
 
 ### <a name="known-issues"></a>既知の問題
 
@@ -124,6 +124,14 @@ Python 3 の Runbook は、次の Azure グローバル インフラストラク
 * サードパーティ製ライブラリを使用するには、Automation アカウントに[パッケージをインポートする](python-packages.md)必要があります。
 * PowerShell/PowerShell ワークフロー内で **Start-AutomationRunbook**  コマンドレットを使用して、Python 3 Runbook (プレビュー) を開始することはできません。 この制限を回避するには、Az.Automation モジュールから **Start-AzAutomationRunbook** コマンドレットを使用するか、または AzureRm.Automation モジュールから  **Start-AzureRmAutomationRunbook** コマンドレットを使用します。  
 * Azure Automation では  **sys.stderr** がサポートされていません。
+
+### <a name="multiple-python-versions"></a>複数の Python バージョン
+
+Windows Runbook Worker では、Python 2 Runbook を実行するときに、`PYTHON_2_PATH` 環境変数が最初に検索され、それが有効な実行可能ファイルを参照しているかどうかが検証されます。 たとえば、インストール フォルダーが `C:\Python2` の場合、`C:\Python2\python.exe` が有効なパスであるかどうかがチェックされます。 見つからない場合は、`PATH` 環境変数が検索され、同様のチェックが実行されます。
+
+Python 3 の場合、`PYTHON_3_PATH` 環境変数が最初に検索された後、`PATH` 環境変数にフォールバックされます。
+
+Python の 1 つのバージョンだけを使用する場合は、`PATH` 変数にインストール パスを追加できます。 Runbook Worker で両方のバージョンを使用する場合は、`PYTHON_2_PATH` と `PYTHON_3_PATH` をそれらのバージョンのモジュールの場所に設定します。
 
 ### <a name="known-issues"></a>既知の問題
 

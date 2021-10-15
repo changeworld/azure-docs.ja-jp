@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 06/18/2021
 ms.topic: how-to
 ms.custom: devx-track-python, contperf-fy21q1
-ms.openlocfilehash: e08823861e0b1a197313c8311cc13ac972d61a25
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: 052e82f0bb1aa7c5b0b3dad7808bd46839fb95ad
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122603710"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129387793"
 ---
 # <a name="configure-and-submit-training-runs"></a>トレーニングの実行を構成して送信する
 
@@ -61,7 +61,7 @@ ScriptRunConfig オブジェクトを使用して、トレーニング実験を�
 
 ## <a name="create-an-experiment"></a>実験の作成
 
-ご自分のワークスペース内に実験を作成します。
+ご自分のワークスペース内に[実験](concept-azure-machine-learning-architecture.md#experiments)を作成します。 実験は、実行の送信を整理したり、コードを追跡したりするのに役立つ軽量のコンテナーです。
 
 ```python
 from azureml.core import Experiment

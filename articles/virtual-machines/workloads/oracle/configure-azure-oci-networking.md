@@ -8,12 +8,12 @@ ms.collection: linux
 ms.topic: article
 ms.date: 03/16/2020
 ms.author: rogardle
-ms.openlocfilehash: 9c785be73e424d4669b24600c353a14127e9279a
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: c8c35abc680a37c3226872698d85be8853dd892d
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122696025"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129456406"
 ---
 # <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>Azure と Oracle Cloud Infrastructure 間の直接相互接続をセットアップする  
 
@@ -32,6 +32,10 @@ ms.locfileid: "122696025"
 次の図は、相互接続の概要を示しています。
 
 ![クロスクラウド ネットワーク接続](https://user-images.githubusercontent.com/37556655/115093592-bced0180-9ecf-11eb-976d-9d4c7a1be2a8.png)
+
+> [!NOTE]
+> 図に示されている ExpressRoute 接続は、通常の [ExpressRoute 回線](../../../expressroute/expressroute-introduction.md)であり、Global Reach などのすべての機能がサポートされます。
+> 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -79,7 +83,7 @@ ms.locfileid: "122696025"
 
 ネットワークの構成が完了したら、Azure portal の ExpressRoute プライベート ピアリング ブレードで **[ARP レコードを取得する]** および **[ルート テーブルを取得する]** をクリックして、構成の有効性を検証できます。
 
-## <a name="automation"></a>オートメーション
+## <a name="automation"></a>Automation
 
 Microsoft では、ネットワーク相互接続の自動デプロイを有効にするために Terraform スクリプトを作成しました。 Terraform スクリプトには Azure サブスクリプションでの適切なアクセス許可が必要なため、実行する前に Azure で認証する必要があります。 認証は、[Azure Active Directory サービス プリンシパル](../../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)を使用するか、Azure CLI を使用して実行できます。 詳細については、[Terraform のドキュメント](https://www.terraform.io/docs/providers/azurerm/auth/azure_cli.html)を参照してください。
 

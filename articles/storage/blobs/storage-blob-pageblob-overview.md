@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: wielriac
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 36d36101cc7a7a4efff66e680f47431933ddf569
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 58509ca09bc17911d4a1a16955f97396c082e7de
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128630833"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129273119"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Azure ページ BLOB の概要
 
@@ -27,7 +27,7 @@ Azure のページ BLOB の重要な機能は、その REST インターフェ�
 
 ## <a name="restrictions"></a>制限
 
-ページ BLOB で使用できるのは、**ホット** アクセス層のみであり、**クール** または **アーカイブ** 層を使用することはできません。 アクセス層の詳細については、「[Azure Blob Storage: ホット、クール、アーカイブ ストレージ層](storage-blob-storage-tiers.md)」を参照してください。
+ページ BLOB で使用できるのは、**ホット** アクセス層のみであり、**クール** または **アーカイブ** 層を使用することはできません。 アクセス層の詳細については、「[BLOB データのホット、クール、アーカイブのアクセス層](access-tiers-overview.md)」を参照してください。
 
 ## <a name="sample-use-cases"></a>サンプル ユース ケース
 

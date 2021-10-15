@@ -1,20 +1,21 @@
 ---
-title: Azure Blob Storage の変更フィード | Microsoft Docs
+title: Blob Storage での変更フィード
+titleSuffix: Azure Storage
 description: Azure Blob Storage の変更フィード ログとその使用方法を学習します。
 author: tamram
 ms.author: tamram
-ms.date: 05/17/2021
+ms.date: 10/01/2021
 ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 67ecaac43885b76071a6bc71268edb811db7cbbd
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: bed39bd544ac1b586dcefefb890927fe1ce472b2
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128680283"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129402153"
 ---
 # <a name="change-feed-support-in-azure-blob-storage"></a>Azure Blob Storage の変更フィードのサポート
 
@@ -55,7 +56,7 @@ ms.locfileid: "128680283"
 
 - 変更フィードでは、アカウントで発生したすべての使用可能なイベントの *すべて* の変更をキャプチャします。 クライアント アプリケーションでは、必要に応じて、イベントの種類をフィルターで除外できます (現在のリリースの[条件](#conditions)を参照)。
 
-- 変更フィードを有効にできるのは、汎用 v2 アカウントと BLOB ストレージ アカウントのみです。 Premium ブロック BLOB アカウント、および階層型名前空間が有効なアカウントは現在サポートされていません。 汎用 v1 ストレージ アカウントはサポートされていませんが、ダウンタイムなしで汎用 v2 にアップグレードできます。詳細については、[汎用 v2 ストレージ アカウントへのアップグレード](../common/storage-account-upgrade.md)に関するページを参照してください。
+- 変更フィードを有効にできるのは、Standard 汎用 v2、Premium ブロック BLOB、Blob Storage の各アカウントのみです。 階層型名前空間が有効にされたアカウントは、現在サポートされていません。 汎用 v1 ストレージ アカウントはサポートされていませんが、ダウンタイムなしで汎用 v2 にアップグレードできます。詳細については、[汎用 v2 ストレージ アカウントへのアップグレード](../common/storage-account-upgrade.md)に関するページを参照してください。
 
 ### <a name="portal"></a>[ポータル](#tab/azure-portal)
 
@@ -302,12 +303,12 @@ $blobchangefeed/idx/segments/2019/02/23/0110/meta.json                  BlockBlo
 
 この表は、アカウントでのこの機能のサポート状況と、特定の機能を有効にした場合のサポートへの影響を示しています。
 
-| ストレージ アカウントの種類                | Blob Storage (既定のサポート)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>
-|-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|
-| Standard 汎用 v2 | ![はい](../media/icons/yes-icon.png) |![いいえ](../media/icons/no-icon.png)              | ![いいえ](../media/icons/no-icon.png) |
-| Premium ブロック BLOB          | ![いいえ](../media/icons/no-icon.png)|![いいえ](../media/icons/no-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| ストレージ アカウントの種類 | Blob Storage (既定のサポート) | Data Lake Storage Gen2 <sup>1</sup> | NFS 3.0 <sup>1</sup> |
+|--|--|--|--|
+| Standard 汎用 v2 | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) | ![いいえ](../media/icons/no-icon.png) |
+| Premium ブロック BLOB | ![はい](../media/icons/yes-icon.png) | ![いいえ](../media/icons/no-icon.png) | ![いいえ](../media/icons/no-icon.png) |
 
-<sup>1</sup>    Data Lake Storage Gen2 とネットワーク ファイル システム (NFS) 3.0 プロトコルの両方で、階層型名前空間が有効になっているストレージ アカウントが必要です。
+<sup>1</sup> Data Lake Storage Gen2 と Network File System (NFS) 3.0 プロトコルはどちらも、階層型名前空間を有効にしたストレージ アカウントが必要です。
 
 ## <a name="faq"></a>よく寄せられる質問
 

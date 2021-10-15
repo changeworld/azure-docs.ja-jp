@@ -13,12 +13,12 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 06/21/2021
-ms.openlocfilehash: 9501c49bec8d2a632387ecb9b620dcbdc5a0ac1c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5505350cffbda3b84e800b34be7094818fdb125c
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121751271"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129230591"
 ---
 # <a name="get-started-with-azure-sql-managed-instance-auditing"></a>Azure SQL Database Managed Instance の監査の概要
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -238,9 +238,9 @@ Azure Monitor ログにより、統合された検索とカスタム ダッシ�
 Azure SQL Managed Instance のデータベースと SQL Server のデータベースにおける監査の主な相違点は、次のとおりです。
 
 - Azure SQL Managed Instance では、監査はサーバー レベルで機能し、Azure BLOB Storage に `.xel` ログ ファイルが保存されます。
-- SQL Server では、監査はサーバー レベルで機能しますが、イベントはファイル システム/Windows イベント ログに保存されます。
+- SQL Server では、監査はサーバー レベルで機能しますが、イベントはファイル システムと Windows イベント ログに保存されます。
 
-マネージド インスタンスの XEvent 監査では、Azure Blob Storage のターゲットがサポートされます。 ファイル ログと Windows ログは **サポートされていません**。
+マネージド インスタンスの XEvent 監査では、Azure Blob Storage のターゲットがサポートされます。 ファイル ログと Windows ログは **サポートされません**。
 
 Azure Blob Storage を監査するための `CREATE AUDIT` 構文の主な相違点は次のとおりです。
 

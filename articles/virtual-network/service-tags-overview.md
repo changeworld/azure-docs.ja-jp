@@ -10,15 +10,15 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 9/20/2021
+ms.date: 9/30/2021
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 79785c82e06c9dc1621b3278ef886866ae9695ab
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 39262b40cc320152bcbf2e9e5c0947e52234a019
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128590292"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129400232"
 ---
 # <a name="virtual-network-service-tags"></a>仮想ネットワーク サービス タグ
 <a name="network-service-tags"></a>
@@ -68,6 +68,7 @@ ms.locfileid: "128590292"
 | **AzureDatabricks** | Azure Databricks。 | 両方 | いいえ | いいえ |
 | **AzureDataExplorerManagement** | Azure Data Explorer 管理。 | 受信 | いいえ | いいえ |
 | **AzureDataLake** | Azure Data Lake Storage Gen1。 | 送信 | いいえ | はい |
+| **AzureDeviceUpdate** | Device Update for IoT Hub。 | 両方 | いいえ | はい |
 | **AzureDevSpaces** | Azure Dev Spaces。 | 送信 | いいえ | いいえ |
 | **AzureDevOps** | Azure Dev Ops。<br/><br/>*注: 現在、このタグは Azure portal 経由で構成できません。*| 受信 | いいえ | はい |
 | **AzureDigitalTwins** | Azure Digital Twins。<br/><br/>*注:* このタグ、またはこのタグによってカバーされる IP アドレスを使用すれば、イベント ルート用に構成されたエンドポイントへのアクセスを制限することができます。 *現在、このタグは Azure portal 経由で構成できません。* | 受信 | いいえ | はい |

@@ -4,16 +4,16 @@ description: Azure に高可用性で回復力のあるアプリケーション�
 author: prsandhu
 ms.service: azure
 ms.topic: conceptual
-ms.date: 09/16/2021
+ms.date: 10/05/2021
 ms.author: prsandhu
 ms.reviewer: cnthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: 26d4464d67634d5660796ce24dc9b9dc2505e0ef
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 22b6f4570736d891b7cbcb9c0d2c10d6847ee83f
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129218244"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129533667"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>Availability Zones をサポートする Azure サービス
 
@@ -49,13 +49,13 @@ Azure での包括的なビジネス継続性を実現するには、Availabilit
 
 | アメリカ           | ヨーロッパ               | アフリカ              | アジア太平洋   |
 |--------------------|----------------------|---------------------|----------------|
-| ブラジル南部       | フランス中部       | 南アフリカ北部* | オーストラリア東部 |
+| ブラジル南部       | フランス中部       | 南アフリカ北部  | オーストラリア東部 |
 | カナダ中部     | ドイツ中西部 |                     | インド中部* |
 | 米国中部         | 北ヨーロッパ         |                     | 東日本     |
-| 米国東部            | ノルウェー東部          |                     | 韓国中部* |
+| 米国東部            | ノルウェー東部          |                     | 韓国中部  |
 | 米国東部 2          | 英国南部             |                     | 東南アジア |
 | 米国中南部   | 西ヨーロッパ          |                     |                |
-| US Gov バージニア州    |                      |                     |                |
+| US Gov バージニア州    | スウェーデン*              |                     |                |
 | 米国西部 2          |                      |                     |                |
 | 米国西部 3          |                      |                     |                |
 
@@ -147,7 +147,7 @@ Azure での包括的なビジネス継続性を実現するには、Availabilit
 |     [Azure Site Recovery](../site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md)                                       | :large_blue_diamond:  |
 |     Azure SQL: [仮想マシン](../azure-sql/database/high-availability-sla.md)                                                                 | :large_blue_diamond:  |
 |     [Azure Web アプリケーション ファイアウォール](../firewall/deploy-availability-zone-powershell.md)                                                         | :large_blue_diamond:  |
-|     [コンテナー レジストリ](../container-registry/zone-redundancy.md)                                                                               | :large_blue_diamond:  |
+|     [Container Registry](../container-registry/zone-redundancy.md)                                                                               | :large_blue_diamond:  |
 |     [Event Grid](../event-grid/overview.md)                                                                                                      | :large_blue_diamond:  |
 |     [HDInsight](/azure/hdinsight/hdinsight-use-availability-zones)                                                                               | :large_blue_diamond:  |
 |     [Network Watcher](/azure/network-watcher/frequently-asked-questions#service-availability-and-redundancy)                                     | :large_blue_diamond:  |

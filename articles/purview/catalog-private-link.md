@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 09/27/2021
-ms.openlocfilehash: 925c556ccc5657af604eb80d5d697ed6ebcb5260
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 9d92a1baddbd12f80084dbbdb9a9205edb3f56b1
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 09/29/2021
-ms.locfileid: "129210651"
+ms.locfileid: "129272853"
 ---
 # <a name="use-private-endpoints-for-your-azure-purview-account"></a>Azure Purview アカウントにプライベート エンドポイントを使用する
 
@@ -87,7 +87,7 @@ Azure Purview アカウント用のプライベート エンドポイントを�
 
         3. 基本情報を入力します。
 
-        4. **[リソース]** タブで、 **[リソースの種類]** として **[Microsoft.Purview/portal]** を選択します。
+        4. **[リソース]** タブで、 **[リソースの種類]** として **[Microsoft.Purview/account]** を選択します。
 
         5. **[リソース]** として Azure Purview アカウントを選択し、 **[対象サブリソース]** として **[ポータル]** を選択します。
 

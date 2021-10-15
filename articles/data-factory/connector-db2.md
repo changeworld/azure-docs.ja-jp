@@ -1,29 +1,29 @@
 ---
-title: Azure Data Factory を使用して DB2 からデータをコピーする
+title: DB2 からデータをコピーする
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Azure Data Factory パイプラインでコピー アクティビティを使用して、DB2 のデータをサポートされているシンク データ ストアにコピーする方法について説明します。
+description: Azure Data Factory のコピー アクティビティまたは Synapse Analytics パイプラインで、DB2 からサポートしているシンク データ ストアにデータをコピーする方法を説明します。
 author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 08/30/2021
+ms.date: 09/09/2021
 ms.author: jianleishen
-ms.openlocfilehash: 01680713d0e21baa3433e79474a4ba4567d5c644
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: def376920d111f915edfa7f367fcbedd4bc370f4
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123313062"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124778060"
 ---
-# <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Azure Data Factory を使用して DB2 からデータをコピーする
+# <a name="copy-data-from-db2-using-azure-data-factory-or-synapse-analytics"></a>Azure Data Factory または Synapse Analytics で DB2 からデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-onprem-db2-connector.md)
 > * [現在のバージョン](connector-db2.md)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-この記事では、Azure Data Factory のコピー アクティビティを使用して、DB2 データベースからデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
+この記事では、Azure Data Factory のコピー アクティビティと Synapse Analytics パイプラインで、DB2 データベースからデータをコピーする方法の概要を説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -67,7 +67,7 @@ DB2 データベースのデータを、サポートされているシンク デ
 
     # <a name="azure-data-factory"></a>[Azure Data Factory](#tab/data-factory)
 
-    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI を使用した新しいリンク サービスの作成を示すスクリーンショット。":::
+    :::image type="content" source="media/doc-common-process/new-linked-service.png" alt-text="Azure Data Factory の UI で新しいリンク サービスを作成するスクリーンショット。":::
 
     # <a name="azure-synapse"></a>[Azure Synapse](#tab/synapse-analytics)
 
@@ -103,12 +103,12 @@ DB2 のリンクされたサービスでは、次のプロパティがサポー�
 | database |DB2 データベースの名前です。 |はい |
 | authenticationType |DB2 データベースへの接続に使用される認証の種類です。<br/>使用可能な値:**Basic**。 |はい |
 | username |DB2 データベースに接続するユーザー名を指定します。 |はい |
-| password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |はい |
-| packageCollection    | データベースに対してクエリを実行するときに、必要なパッケージが ADF によって自動的に作成される場所を指定します。 これが設定されていない場合、Data Factory では既定値として {username} が使用されます。 | いいえ |
+| password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString とマークして安全に保存するか、[Azure Key Vault に保存されているシークレットを参照](store-credentials-in-key-vault.md)します。 |はい |
+| packageCollection    | データベースに対するクエリを実行したときに、サービスによって必要なパッケージを自動作成する場所を指定します。 これを設定しない場合、サービスでは {username} を規定値として使用します。 | いいえ |
 | certificateCommonName | Secure Sockets Layer (SSL) またはトランスポート層セキュリティ (TLS) 暗号化を使用する場合は、証明書共通名の値を入力する必要があります。 | いいえ |
 
 > [!TIP]
-> `The package corresponding to an SQL statement execution request was not found. SQLSTATE=51002 SQLCODE=-805` というエラー メッセージが表示された場合は、そのユーザーに必要なパッケージが作成されていません。 既定の場合、ADF では、DB2 への接続に使用したユーザーの名前が付けられたコレクションの下にパッケージを作成しようとします。 データベースに対してクエリを実行するときに、ADF によって必要なパッケージを作成する場所を示すパッケージ コレクション プロパティを指定してください。
+> `The package corresponding to an SQL statement execution request was not found. SQLSTATE=51002 SQLCODE=-805` というエラー メッセージが表示された場合は、そのユーザーに必要なパッケージが作成されていません。 このサービスでは、既定では、それまでに DB2 に接続するのに使用したユーザーの名前が付いたコレクションにパッケージを作成しようとします。 パッケージ コレクションのプロパティを指定することで、データベースに対するクエリを実行したときに、サービスによって必要なパッケージをどこに作成するかを指定します。
 
 **例:**
 
@@ -262,9 +262,9 @@ DB2 からデータをコピーするために、コピー アクティビティ
 
 ## <a name="data-type-mapping-for-db2"></a>DB2 のデータ型のマッピング
 
-DB2 からデータをコピーするとき、次の DB2 のデータ型から Azure Data Factory の中間データ型へのマッピングが使用されます。 コピー アクティビティでソースのスキーマとデータ型がシンクにマッピングされるしくみについては、[スキーマとデータ型のマッピング](copy-activity-schema-and-type-mapping.md)に関する記事を参照してください。
+DB2 からデータをコピーするときは、DB2 のデータ型からサービスでの内的処理に使用する暫定データ型への、次のマッピングを使用します。 コピー アクティビティでソースのスキーマとデータ型がシンクにマッピングされるしくみについては、[スキーマとデータ型のマッピング](copy-activity-schema-and-type-mapping.md)に関する記事を参照してください。
 
-| DB2 データベース型 | Data Factory の中間データ型 |
+| DB2 データベース型 | 中間サービス データ型 |
 |:--- |:--- |
 | BigInt |Int64 |
 | Binary |Byte[] |
@@ -298,4 +298,4 @@ DB2 からデータをコピーするとき、次の DB2 のデータ型から A
 プロパティの詳細については、[Lookup アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。
+Copy アクティビティでソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関するセクションを参照してください。

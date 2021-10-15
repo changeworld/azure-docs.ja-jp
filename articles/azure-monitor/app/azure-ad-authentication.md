@@ -3,12 +3,12 @@ title: Application Insights に対する Azure AD Authentication (プレビュ�
 description: Azure Active Directory (Azure AD) 認証を有効にして、認証されたテレメトリのみが Application Insights リソースに取り込まれるようにする方法について説明します。
 ms.topic: conceptual
 ms.date: 08/02/2021
-ms.openlocfilehash: 9d93da1a8567a7c50dac43c29e3a962652ceee33
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: b38e3498ae61c9639c71eb358a4089dc59243616
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123111470"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129857713"
 ---
 # <a name="azure-ad-authentication-for-application-insights-preview"></a>Application Insights に対する Azure AD Authentication (プレビュー)
 Application Insights では、新たに Azure Active Directory (Azure AD) 認証がサポートされています。 認証されたテレメトリのみが Application Insights リソースに取り込まれるよう、Azure AD を使用して設定できるようになりました。 
@@ -135,7 +135,7 @@ appInsights.defaultClient.aadTokenCredential = credential;
 > [!NOTE]
 > Application Insights Java エージェントでの Azure AD のサポートは、[Java 3.2.0-BETA](https://github.com/microsoft/ApplicationInsights-Java/releases/tag/3.2.0-BETA) 以降に含まれています。 
 
-1. [Java エージェントを使用してアプリケーションを構成します。](java-in-process-agent.md#quickstart)
+1. [Java エージェントを使用してアプリケーションを構成します。](java-in-process-agent.md#get-started)
 
     > [!IMPORTANT]
     > Java エージェントを使用してアプリを構成するときは、"IngestionEndpoint" を含む完全な接続文字列を使用してください。 たとえば、「 `InstrumentationKey=XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX;IngestionEndpoint=https://XXXX.applicationinsights.azure.com/` 」のように指定します。
@@ -174,7 +174,7 @@ appInsights.defaultClient.aadTokenCredential = credential;
       "type": "UAMI", 
       "clientId":"<USER-ASSIGNED MANAGED IDENTITY CLIENT ID>" 
     } 
-  }  
+  }     
 } 
 ```
 :::image type="content" source="media/azure-ad-authentication/user-assigned-managed-identity.png" alt-text="ユーザー割り当てマネージド ID のスクリーンショット。" lightbox="media/azure-ad-authentication/user-assigned-managed-identity.png":::
@@ -188,11 +188,11 @@ appInsights.defaultClient.aadTokenCredential = credential;
   "connectionString": "App Insights Connection String with IngestionEndpoint",
    "preview": { 
         "authentication": { 
-        "enabled": true, 
-        "type": "CLIENTSECRET", 
-        "clientId":"<YOUR CLIENT ID>", 
-        "clientSecret":"<YOUR CLIENT SECRET>", 
-        "tenantId":"<YOUR TENANT ID>" 
+          "enabled": true, 
+          "type": "CLIENTSECRET", 
+          "clientId":"<YOUR CLIENT ID>", 
+          "clientSecret":"<YOUR CLIENT SECRET>", 
+          "tenantId":"<YOUR TENANT ID>" 
     } 
   } 
 } 
@@ -206,11 +206,9 @@ appInsights.defaultClient.aadTokenCredential = credential;
 > [!NOTE]
 > Azure AD 認証は、Python v2.7、v3.6、v3.7 でのみ使用できます。 Application Insights Opencensus Python SDK での Azure AD のサポートは、ベータ バージョン [opencensus-ext-azure 1.1b0](https://pypi.org/project/opencensus-ext-azure/1.1b0/) 以降に含まれています。
 
-
-適切な[資格情報](/python/api/overview/azure/identity-readme?view=azure-python#credentials)を作成し、Azure Monitor エクスポーターのコンストラクターに渡します。 リソースのインストルメンテーション キーとインジェスト エンドポイントを使用して接続文字列が設定されていることを確認してください。
+適切な[資格情報](/python/api/overview/azure/identity-readme#credentials)を作成し、Azure Monitor エクスポーターのコンストラクターに渡します。 リソースのインストルメンテーション キーとインジェスト エンドポイントを使用して接続文字列が設定されていることを確認してください。
 
 Opencensus Azure Monitor エクスポーターでサポートされている認証のタイプを以下に示します。 運用環境ではマネージド ID を使用することをお勧めします。
-
 
 #### <a name="system-assigned-managed-identity"></a>システム割り当てマネージド ID
 
@@ -278,21 +276,21 @@ Azure AD 認証が有効になったら、ローカル認証を無効にする�
 
 ### <a name="azure-portal"></a>Azure portal
 
-1.  Application Insights リソースで、左側のメニューの *[構成]* 見出しの下にある **[プロパティ]** を選択します。 次に、ローカル認証が有効になっている場合は、 **[Enabled (click to change)]\(有効 (クリックして変更)\)** を選択します。 
+1. Application Insights リソースで、左側のメニューの *[構成]* 見出しの下にある **[プロパティ]** を選択します。 次に、ローカル認証が有効になっている場合は、 **[Enabled (click to change)]\(有効 (クリックして変更)\)** を選択します。 
 
-    :::image type="content" source="./media/azure-ad-authentication/enabled.png" alt-text="[構成] で [プロパティ] が選択され、ローカル認証の [Enabled (click to change)]\(有効 (クリックして変更)\) ボタンが表示されているスクリーンショット。":::
+   :::image type="content" source="./media/azure-ad-authentication/enabled.png" alt-text="[構成] で [プロパティ] が選択され、ローカル認証の [Enabled (click to change)]\(有効 (クリックして変更)\) ボタンが表示されているスクリーンショット。":::
 
-1. **[無効]** を選択し、変更を適用します。 
+1. **[無効]** を選択し、変更を適用します。
 
-    :::image type="content" source="./media/azure-ad-authentication/disable.png" alt-text="ローカル認証の有効/無効の切り替えボタンが強調表示されたスクリーンショット。":::
+   :::image type="content" source="./media/azure-ad-authentication/disable.png" alt-text="ローカル認証の有効/無効の切り替えボタンが強調表示されたスクリーンショット。":::
 
 1. リソースでローカル認証が無効になると、対応する情報が **[概要]** ペインに表示されます。
 
-    :::image type="content" source="./media/azure-ad-authentication/overview.png" alt-text="[概要] タブで [Disabled (click to change)]\(無効 (クリックして変更)\) が強調表示されたスクリーンショット。":::
+   :::image type="content" source="./media/azure-ad-authentication/overview.png" alt-text="[概要] タブで [Disabled (click to change)]\(無効 (クリックして変更)\) が強調表示されたスクリーンショット。":::
 
 ### <a name="azure-policy"></a>Azure Policy 
 
-"DisableLocalAuth" の Azure ポリシーは、このプロパティが "true" に設定されていない場合に、ユーザーが新しい Application Insights リソースを作成することを拒否します。 ポリシー名は "Application Insights components should block non-AAD auth ingestion" (Application Insights コンポーネントは AAD 認証以外のインジェストをブロックする必要がある) です。
+"DisableLocalAuth" の Azure Policy は、このプロパティが "true" に設定されていない場合に、ユーザーが新しい Application Insights リソースを作成することを拒否します。 ポリシー名は "Application Insights components should block non-AAD auth ingestion" (Application Insights コンポーネントは AAD 認証以外のインジェストをブロックする必要がある) です。
 
 このポリシー定義をサブスクリプションに適用するには、[新しいポリシー割り当てを作成してポリシーを割り当てます](../../governance/policy/assign-policy-portal.md)。
 
@@ -436,7 +434,7 @@ Azure AD 認証が有効になったら、ローカル認証を無効にする�
 
 Application Insights .NET SDK は、イベント ソースを使用してエラー ログを出力します。 イベント ソース ログの収集の詳細については、[「データが存在しない場合のトラブルシューティング」の「PerfView でログを収集する」](asp-net-troubleshoot-no-data.md#PerfView)を参照してください。
 
-SDK でトークンを取得できなかった場合、次の例外メッセージがログに記録されます: "AAD トークンを取得できませんでした。 エラー メッセージ: "
+SDK でトークンを取得できなかった場合、次の例外メッセージがログに記録されます: "AAD トークンを取得できませんでした。 エラー メッセージ:"
 
 ### <a name="nodejs"></a>[Node.js](#tab/nodejs)
 

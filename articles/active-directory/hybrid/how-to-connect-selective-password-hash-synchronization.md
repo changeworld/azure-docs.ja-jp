@@ -12,12 +12,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8ab21b884e0842f22118efd892786cd5af9559b
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 1bbdc6a28af9bab40ede4f6a3a065b3ee776cf29
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108161431"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129235404"
 ---
 # <a name="selective-password-hash-synchronization-configuration-for-azure-ad-connect"></a>Azure AD Connect の選択的なパスワード ハッシュ同期の構成
 

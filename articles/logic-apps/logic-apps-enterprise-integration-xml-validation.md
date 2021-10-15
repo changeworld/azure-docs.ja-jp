@@ -1,6 +1,6 @@
 ---
 title: エンタープライズ統合ワークフローで XML を検証する
-description: Enterprise Integration Pack を備えた Azure Logic Apps でスキーマを使用して XML を検証します。
+description: Azure Logic Apps と Enterprise Integration Pack を使用し、ワークフローでスキーマを使用して XML を検証します。
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -8,16 +8,16 @@ ms.author: divswa
 ms.reviewer: estfan, azla
 ms.topic: how-to
 ms.date: 09/15/2021
-ms.openlocfilehash: 842b26502dcfa073bca21891eed44fe990037f06
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: f295054913dbf275533d4d14f39497071c6984a8
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128660806"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129353222"
 ---
-# <a name="validate-xml-for-workflows-in-azure-logic-apps"></a>Azure Logic Apps でワークフロー用の XML を検証する
+# <a name="validate-xml-in-workflows-with-azure-logic-apps"></a>Azure Logic Apps を使用してワークフローで XML を検証する
 
-企業統合の B2B シナリオでは、多くの場合、契約の取引先は、データ処理を開始する前に、交換するメッセージが有効であることを確認する必要があります。 ロジック アプリ ワークフローでは、**XML 検証** アクションと定義済みの[スキーマ](logic-apps-enterprise-integration-schemas.md)を使用して、XML メッセージとドキュメントを検証することができます。
+企業統合の B2B シナリオでは、多くの場合、契約の取引先は、データ処理を開始する前に、交換するメッセージが有効であることを確認する必要があります。 ロジック アプリ ワークフローでは、**XML 検証** アクションと定義済みの [スキーマ](logic-apps-enterprise-integration-schemas.md)を使用して、XML メッセージとドキュメントを検証することができます。
 
 ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](logic-apps-overview.md)」を参照してください。 B2B エンタープライズ統合の詳細については、「[Azure Logic Apps と Enterprise Integration Pack を使用した B2B エンタープライズ統合ワークフロー](logic-apps-enterprise-integration-overview.md)」をご確認ください。
 

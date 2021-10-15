@@ -2,13 +2,13 @@
 title: VMware Site Recovery Manager を使用してディザスター リカバリーをデプロイする
 description: Azure VMware Solution のプライベート クラウドで VMware Site Recovery Manager (SRM) を使用してディザスター リカバリーをデプロイします。
 ms.topic: how-to
-ms.date: 08/18/2021
-ms.openlocfilehash: d9a224f0aba33420359d50441fe44e6602df7fb0
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 10/04/2021
+ms.openlocfilehash: 2cefe85f71c770ce29a14fb4aad7a91efd91651c
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128668925"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129430100"
 ---
 # <a name="deploy-disaster-recovery-with-vmware-site-recovery-manager"></a>VMware Site Recovery Manager を使用してディザスター リカバリーをデプロイする
 
@@ -59,6 +59,8 @@ SRM を使用すると、次のようなさまざまな種類の回復を実装�
 :::image type="content" source="media/vmware-srm-vsphere-replication/site-recovery-manager-workflow.png" alt-text="Azure VMware Solution での VMware Site Recovery Manager のデプロイ ワークフローを示す図。" border="false":::
 
 ## <a name="prerequisites"></a>前提条件
+
+リモート vCenter の VRM 管理者と SRM 管理者ロールをリモート ユーザーに明示的に指定してください。
 
 ### <a name="scenario-on-premises-to-azure-vmware-solution"></a>シナリオ: オンプレミスから Azure VMware Solution へ 
 

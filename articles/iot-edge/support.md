@@ -3,16 +3,16 @@ title: サポートされているオペレーティング システム、コン
 description: Azure IoT Edge デーモンとランタイムを実行できるオペレーティング システム、運用デバイス用にサポートされるコンテナー エンジンについて説明します。
 author: kgremban
 ms.author: kgremban
-ms.date: 06/09/2021
+ms.date: 09/30/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f2ce05950cc77e41d55be1a957c5f3985addcc99
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: fd970e80f2b091d17c40b15d6c55699721fb1025
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123437024"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129349669"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Azure IoT Edge のサポートされるシステム
 
@@ -175,21 +175,21 @@ IoT Edge のリリース アセットとリリース ノートは、[azure-ioted
 
 | Release | aziot-edge | edgeHub<br>edgeAgent | aziot-identity-service |
 | ------- | ---------- | -------------------- | ---------------------- |
-| **1.2** | 1.2.0<br>1.2.1 | 1.2.0<br>1.2.1   | 1.2.0<br><br> |
+| **1.2** | 1.2.0<br>1.2.1<br>1.2.2<br>1.2.3 | 1.2.0<br>1.2.1<br>1.2.2<br> 1.2.3  | 1.2.0<br>1.2.1<br>1.2.2<br><br> |
 
 次の表は、1.1 LTS リリースまでの各リリースに含まれているコンポーネントの一覧です。 この表に一覧表示されているコンポーネントは、個別にインストールまたは更新することができ、以前のバージョンとの下位互換性を備えています。
 
+IoT Edge 1.1 は、最初の長期サポート (LTS) リリース チャネルです。 このバージョンでは新機能は導入されていませんが、回帰に対するセキュリティ更新プログラムとバグの修正が適用されます。 IoT Edge 1.1 LTS では .NET Core 3.1 が使用され、これは [.NET Core および .NET 5 のリリース ライフサイクル](https://dotnet.microsoft.com/platform/support/policy/dotnet-core)に合わせて 2022 年 12 月 3 日までサポートされます。
+
 | Release | iotedge | edgeHub<br>edgeAgent | libiothsm | moby |
 |--|--|--|--|--|
-| **1.1 LTS**<sup>1</sup> | 1.1.0<br>1.1.1<br><br>1.1.3 | 1.1.0<br>1.1.1<br>1.1.2<br>1.1.3 | 1.1.0<br>1.1.1<br><br>1.1.3 |   |
+| **1.1 LTS** | 1.1.0<br>1.1.1<br><br>1.1.3<br>1.1.4<br>1.1.5<br>1.1.6 | 1.1.0<br>1.1.1<br>1.1.2<br>1.1.3<br>1.1.4<br>1.1.5<br><br> | 1.1.0<br>1.1.1<br><br>1.1.3<br>1.1.4<br>1.1.5<br>1.1.6 |   |
 | **1.0.10** | 1.0.10<br>1.0.10.1<br>1.0.10.2<br><br>1.0.10.4 | 1.0.10<br>1.0.10.1<br>1.0.10.2<br>1.0.10.3<br>1.0.10.4 | 1.0.10<br>1.0.10.1<br>1.0.10.2<br><br>1.0.10.4 |  |
 | **1.0.9** | 1.0.9<br>1.0.9.1<br>1.0.9.2<br>1.0.9.3<br>1.0.9.4<br>1.0.9.5 | 1.0.9<br>1.0.9.1<br>1.0.9.2<br>1.0.9.3<br>1.0.9.4<br>1.0.9.5 | 1.0.9<br>1.0.9.1<br>1.0.9.2<br>1.0.9.3<br>1.0.9.4<br>1.0.9.5 |  |
 | **1.0.8** | 1.0.8 | 1.0.8<br>1.0.8.1<br>1.0.8.2<br>1.0.8.3<br>1.0.8.4<br>1.0.8.5 | 1.0.8 | 3.0.6 |
 | **1.0.7** | 1.0.7<br>1.0.7.1 | 1.0.7<br>1.0.7.1 | 1.0.7<br>1.0.7.1 | 3.0.4 (ARMv7hl、CentOS)<br>3.0.5 |
 | **1.0.6** | 1.0.6<br>1.0.6.1 | 1.0.6<br>1.0.6.1 | 1.0.6<br>1.0.6.1 |  |
 | **1.0.5** | 1.0.5 | 1.0.5 | 1.0.5 | 3.0.2 |
-
-<sup>1</sup> IoT Edge 1.1 は、最初の長期サポート (LTS) リリース チャネルです。 このバージョンでは新機能は導入されていませんが、回帰に対するセキュリティ更新プログラムとバグの修正が適用されます。 IoT Edge 1.1 LTS では .NET Core 3.1 が使用され、これは [.NET Core および .NET 5 のリリース ライフサイクル](https://dotnet.microsoft.com/platform/support/policy/dotnet-core)に合わせて 2022 年 12 月 3 日までサポートされます。
 
 >[!IMPORTANT]
 >長期サポート チャネルがリリースされたため、現在 1.0.x を実行しているすべてのお客様は、継続的なサポートを受けるためにデバイスを 1.1.x にアップグレードすることをお勧めします。

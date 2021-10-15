@@ -6,12 +6,12 @@ ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 09/17/2021
-ms.openlocfilehash: adfde8ee9ef73afdbbb175fd5ecbfc476e019a08
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 5b4e67197e5d43e929ca01c8c81e297e134edf47
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128699255"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129271614"
 ---
 # <a name="azure-percept-dk-container-release-notes"></a>Azure Percept DK コンテナーのリリース ノート
 
@@ -21,7 +21,7 @@ ms.locfileid: "128699255"
 
 ## <a name="august-2108-release"></a>8 月 (2108) リリース
 
-- Azureyemodule
+- Azureyemodule (mcr.microsoft.com/azureedgedevices/azureeyemodule:2108-1)
     - MyriadX Camera ファームウェアの更新に関する Intel の最新 (5 月) ドロップに更新されました。 
     - 入力ソースとして UVC (USB ビデオ クラス) カメラが有効になりました。 入力ソースとして UVC カメラを使用する方法については、[高度な開発に関する GitHub](https://github.com/microsoft/azure-percept-advanced-development/tree/main/azureeyemodule#using-uvcusb-video-class-camera-as-input-source) を参照してください。 
     - H.264 生 RTSP ストリームを使用したときのモジュールのクラッシュを修正しました。

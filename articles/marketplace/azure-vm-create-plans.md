@@ -7,12 +7,12 @@ ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 07/26/2021
-ms.openlocfilehash: eb94adfa104b68f515374090cfd07f300896a163
-ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
+ms.openlocfilehash: 9994e37d747419bd42820bd4c3c4c5ed1e147708
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128708816"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129360178"
 ---
 # <a name="create-plans-for-a-virtual-machine-offer"></a>仮想マシン オファーに対するプランを作成する
 
@@ -159,7 +159,17 @@ Microsoft がパートナーに代わって消費税および使用税を送金�
 
 ### <a name="reuse-technical-configuration"></a>技術的構成を再利用する
 
-同じ種類のプランが複数あり、それらの間でパッケージが同一である場合は、 **[This plan reuses the technical configuration from another plan]\(このプランで別のプランの技術的構成を再利用する\)** をオンにします。 このオプションを使用すると、このオファーに対して同じ種類の他のプランのいずれかを選択し、その技術的構成を再利用できます。
+このオプションを使用すると、同じオファー内の複数のプランで同じ技術的な構成設定を使用できるため、同じイメージセットを活用することができます。 技術的な構成を再利用するオプションを有効にすると、選択した基本プランと同じ技術的な構成設定がお客様のプランに継承されます。  基本プランを変更すると、その構成を再利用しているプランにも変更が反映されます。
+
+別のプランから技術的な構成設定を再利用する一般的な理由としては、次のようなものがあります。
+
+1. "*従量課金制*" と *BYOL* の両方で同じイメージが利用できるため。
+2. パブリック プランで使用している技術的な構成を、価格の異なるプライベート プランで再利用するため。 
+3. ソリューションの動作は、ユーザーデプロイするプランによって異なるため。 たとえば、ソフトウェアが同じでも、機能はプランによって異なります。
+
+[Azure Instance Metadata Service](/azure/virtual-machines/windows/instance-metadata-service) (IMDS) を利用して、ソリューションがどのプランにデプロイされているかを特定し、ライセンスを検証したり、適切な機能を有効にしたりします。
+
+後日、プラン間で異なる変更を公開することになった場合は、これを切り離すことができます。 プランでこのオプションを選択解除すると、技術的な構成を再利用してプランを切り離すことができます。 一度切り離すと、プランは最後に設定した場所の技術的な構成の設定を引き継ぐため、プランの構成が分岐する可能性があります。 過去に独立して公開したプランで、技術的な構成を後から再利用することはできません。 
 
 ### <a name="operating-system"></a>オペレーティング システム
 

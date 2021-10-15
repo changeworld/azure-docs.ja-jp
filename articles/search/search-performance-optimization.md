@@ -6,14 +6,14 @@ author: LiamCavanagh
 ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 04/06/2021
+ms.date: 10/04/2021
 ms.custom: references_regions
-ms.openlocfilehash: ad59bae5d0d5309dea15effefd29a23e8029cd5b
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: c3cb2a64cd2981c73a673776c01ec98bf44c8041
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128587710"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129458190"
 ---
 # <a name="availability-and-business-continuity-in-azure-cognitive-search"></a>Azure Cognitive Search の可用性とビジネス継続性
 
@@ -120,12 +120,12 @@ Azure Cognitive Search は主要なデータ ストレージ ソリューショ�
 
 ## <a name="next-steps"></a>次のステップ
 
-価格レベルと各レベルのサービスの制限の詳細については、[サービスの制限](search-limits-quotas-capacity.md)に関するページをご覧ください。 パーティションとレプリカの組み合わせの詳細については、[キャパシティ プランニング](search-capacity-planning.md)に関する記事をご覧ください。
+価格レベルと各レベルのサービスの制限の詳細については、[サービスの制限](search-limits-quotas-capacity.md)に関するページをご覧ください。 パーティションとレプリカの組み合わせの詳細については、[キャパシティ プランニング](search-capacity-planning.md)に関する記事をご覧ください。また、実践で使えるヒントについては、[ケース スタディ: Cognitive Search を使用して複雑な AI シナリオに対応する](https://techcommunity.microsoft.com/t5/azure-ai/case-study-effectively-using-cognitive-search-to-support-complex/ba-p/2804078)方法に関するページを参照してください。
 
 この記事で説明された手法のパフォーマンスとデモについて、次の動画をご覧ください。
 
 > [!VIDEO https://channel9.msdn.com/Events/Microsoft-Azure/AzureCon-2015/ACON319/player]
-> 
+>
 
 <!--Image references-->
 [1]: ./media/search-performance-optimization/geo-redundancy.png

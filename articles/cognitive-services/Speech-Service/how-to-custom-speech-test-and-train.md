@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 02/12/2021
+ms.date: 09/16/2021
 ms.author: pafarley
-ms.openlocfilehash: 79846dcb5acb50549231d247530512564ae1beea
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 046499f32050bf856e6eb39874f3f7b0f0fa2e51
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123542525"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128569494"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Custom Speech 用のテスト データを準備する
 
@@ -153,7 +153,8 @@ Speech サービスのサブスクリプションで推奨されるリージョ�
 
 ## <a name="pronunciation-data-for-training"></a>トレーニング用の発音データ
 
-ユーザー側で発生するまたは使用する可能性がある、標準の発音がない一般的でない用語がある場合は、カスタム発音ファイルを提供して認識を向上させることができます。 
+ユーザー側で発生するまたは使用する可能性がある、標準の発音がない一般的でない用語がある場合は、カスタム発音ファイルを提供して認識を向上させることができます。 カスタム発音をサポートしている言語のリストは、「[音声テキスト変換表](language-support.md#speech-to-text)」の **カスタマイズ** 列の **発音** をご覧ください。
+
 > [!IMPORTANT]
 > カスタムの発音ファイルを使用して、共通単語の発音を変更することはお勧めしません。
 
@@ -166,13 +167,6 @@ Speech サービスのサブスクリプションで推奨されるリージョ�
 | IEEE | i triple e |
 
 音声フォームは、スペル アウトされた表示フォームの音声シーケンスです。これは文字、単語、音節、または 3 つすべての組み合わせで構成できます。
-
-カスタマイズされた発音は、英語 (`en-US`) およびドイツ語 (`de-DE`) で使用できます。 この表に、言語ごとにサポートされている文字を示します。
-
-| Language | Locale | 文字 |
-|----------|--------|------------|
-| 英語 | `en-US` | `a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z` |
-| ドイツ語 | `de-DE` | `ä, ö, ü, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z` |
 
 次の表を使用して、発音用の関連データ ファイルが正しく書式設定されているか確認します。 発音ファイルは小さいため、数キロバイトしかサイズは必要ありません。
 

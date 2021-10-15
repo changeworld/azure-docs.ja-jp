@@ -4,17 +4,17 @@ titleSuffix: Azure Machine Learning
 description: TensorBoard を起動して実験の実行履歴を視覚化し、ハイパーパラメーターの調整と再トレーニングの候補となる領域を特定します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 author: minxia
 ms.author: minxia
 ms.date: 02/27/2020
 ms.topic: how-to
-ms.openlocfilehash: a8e1c85bf2284eb2dd5a2bc87c2a60b89478e928
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 29c79d53ded02ab4648359210b8b18ea04f5965b
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108760609"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129429017"
 ---
 # <a name="visualize-experiment-runs-and-metrics-with-tensorboard-and-azure-machine-learning"></a>TensorBoard と Azure Machine Learning を使用して実験の実行とメトリックを視覚化する
 

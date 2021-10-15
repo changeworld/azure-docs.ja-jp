@@ -1,14 +1,14 @@
 ---
 title: 委任されたリソースを大規模に監視する
 description: Azure Lighthouse は、すべての顧客テナントで、スケーラブルな方法により、Azure Monitor のログを使用するのに役立ちます。
-ms.date: 08/12/2021
+ms.date: 09/30/2021
 ms.topic: how-to
-ms.openlocfilehash: d261fd41c300f317e34ff7cacafa53911b7bbc12
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 7ae54918ffad64e6b9790c4458717807cacd09ad
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124736619"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129363239"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>委任されたリソースを大規模に監視する
 
@@ -23,7 +23,7 @@ ms.locfileid: "124736619"
 
 データを収集するには、Log Analytics ワークスペースを作成する必要があります。 これらの Log Analytics ワークスペースは、Azure Monitor によって収集されたデータのための特別な環境です。 各ワークスペースには、独自のデータ リポジトリと構成があり、データ ソースとソリューションは、特定のワークスペースにデータを格納するように構成されます。
 
-これらのワークスペースは、直接顧客テナントに作成することをお勧めします。 そうすることで、データを自分の環境にエクスポートするのではなく、各顧客のテナント内に留めることができます。 また、Log Analytics でサポートされるリソースまたはサービスの監視を一元化し、監視対象となるデータの種類について、より柔軟な運用が可能となります。
+これらのワークスペースは、直接顧客テナントに作成することをお勧めします。 そうすることで、データを自分の環境にエクスポートするのではなく、各顧客のテナント内に留めることができます。 顧客テナントにワークスペースを作成すると、Log Analytics でサポートされるリソースまたはサービスの監視を一元化し、監視対象となるデータの種類について、より柔軟な運用が可能となります。 [診断設定](../..//azure-monitor/essentials/diagnostic-settings.md)から情報を収集するには、顧客テナントで作成されたワークスペースが必要です。
 
 > [!TIP]
 > Log Analytics ワークスペースからデータにアクセスする目的で使用される Automation アカウントは、ワークスペースと同じテナントで作成する必要があります。

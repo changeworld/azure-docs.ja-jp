@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 7b4b3806ed00955096939c4b996c9a9d3daec004
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: a1f0fe56af1faaf9b743bf752f75c6dcb6aad881
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122323813"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129351272"
 ---
 # <a name="encoding-video-and-audio-with-media-services"></a>Media Services を使用したビデオとオーディオのエンコード
 
@@ -148,7 +148,7 @@ Media Services v3 では、プリセットは API 自体で厳密に型指定さ
 ## <a name="scaling-encoding-in-v3"></a>v3 でのエンコードのスケーリング
 
 メディア処理のスケール設定を行うには、[CLI を使用したスケーリング](media-reserved-units-cli-how-to.md)に関するトピックをご覧ください。
-**2020-05-01** バージョンの API または Azure portal を使用して作成されたアカウントの場合、スケーリングとメディア占有ユニットは不要になりました。 スケーリングは自動で行われ、サービスによって内部的に処理されます。
+**2020-05-01** 以降のバージョンの API または Azure portal を使用して作成されたアカウントの場合、スケーリングとメディア占有ユニットは必要なくなりました。 スケーリングは自動で行われ、サービスによって内部的に処理されます。
 
 ## <a name="billing"></a>課金
 

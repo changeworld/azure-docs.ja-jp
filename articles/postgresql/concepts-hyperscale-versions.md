@@ -6,19 +6,23 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 08/03/2021
-ms.openlocfilehash: 8dd0929d56bac0b2f825d976ba07bd0956c0d063
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 10/01/2021
+ms.openlocfilehash: 63f9cf024101fee3049eddc5f91497ab978d2821
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124755206"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129399690"
 ---
 # <a name="supported-database-versions-in-azure-database-for-postgresql--hyperscale-citus"></a>Azure Database for PostgreSQL でサポートされているデータベースのバージョン – Hyperscale (Citus)
 
 ## <a name="postgresql-versions"></a>PostgreSQL のバージョン
 
 Hyperscale (Citus) サーバー グループで実行されている PostgreSQL のバージョンは、作成時にカスタマイズできます。 Hyperscale (Citus) では現在、次のメジャー バージョンがサポートされています。
+
+### <a name="postgresql-version-14"></a>PostgreSQL バージョン 14
+
+現在のマイナー リリースは 14.0 です。 このマイナー リリースの機能強化と修正の詳細については、[PostgreSQL のドキュメント](https://www.postgresql.org/docs/14/release-14.html)を参照してください。
 
 ### <a name="postgresql-version-13"></a>PostgreSQL バージョン 13
 
@@ -38,7 +42,7 @@ Azure Database for PostgreSQL - Hyperscale (Citus) では、PostgreSQL バージ
 
 ## <a name="citus-and-other-extension-versions"></a>Citus およびその他拡張機能のバージョン
 
-サーバー グループで実行されている PostgreSQL のバージョンによっては、異なる[バージョンの Postgres 拡張機能](concepts-hyperscale-extensions.md)もインストールされます。  特に、Postgres 13 には Citus 10 が付属しており、以前の Postgres バージョンには Citus 9.5 が付属しています。
+サーバー グループで実行されている PostgreSQL のバージョンによっては、異なる[バージョンの Postgres 拡張機能](concepts-hyperscale-extensions.md)もインストールされます。 特に、Postgres バージョン 12 ～ 14 には Citus 10 が付属しており、以前の Postgres バージョンには Citus 9.5 が付属しています。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -1,14 +1,14 @@
 ---
 title: 適格な認可を作成する
 description: 顧客を Azure Lighthouse にオンボードする際に、管理テナント内のユーザーに Just-In-Time ベースでロールを昇格させることができます。
-ms.date: 07/15/2021
+ms.date: 09/08/2021
 ms.topic: how-to
-ms.openlocfilehash: 5f5711b8ee573e0f91437dd1e89a870c755f4725
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.openlocfilehash: b36c3a91c780c2d374ceafe14a671aaa135a2d3c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114667223"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124777832"
 ---
 # <a name="create-eligible-authorizations"></a>適格な認可を作成する
 
@@ -58,11 +58,11 @@ EMS E5 または Azure AD Premium P2 ライセンスは、顧客テナントで�
 > [!NOTE]
 > 適格な認可ごとに、同じプリンシパル ID に対して異なるロール (閲覧者 (または閲覧者アクセスを含む別の Azure 組み込みロール) など) を持つ永続的な (アクティブな) 認可も作成してください。 閲覧者アクセスを持つ永続的な認可を含めないと、ユーザーが Azure portal で自身のロールを昇格できなくなります。
 
-### <a name="role"></a>職務
+### <a name="role"></a>Role
 
 それぞれの適格な認可には、ユーザーが Just-In-Time ベースで使用できる [Azure 組み込みロール](../../role-based-access-control/built-in-roles.md)が含まれている必要があります。
 
-ロールには、ユーザー アクセス管理者を除く、Azure の委任されたリソース管理でサポートされている任意の Azure 組み込みロールを指定できます。
+ロールには、ユーザー アクセス管理者を除く、[Azure の委任されたリソース管理でサポートされている](../concepts/tenants-users-roles.md#role-support-for-azure-lighthouse)任意の Azure 組み込みロールを指定できます。
 
 > [!IMPORTANT]
 > 同じロールを使用する複数の適格な認可を含める場合は、それぞれの適格な認可に同じアクセス ポリシー設定がある必要があります。
@@ -103,7 +103,7 @@ EMS E5 または Azure AD Premium P2 ライセンスは、顧客テナントで�
 
 |オンボード対象 (適格な認可付き)  |使用する Azure Resource Manager テンプレート  |変更するパラメーター ファイル |
 |---------|---------|---------|
-|サブスクリプション   |[subscription.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/delegated-resource-management-eligible-authorizations/subscription/subscription.json)  |[subscription.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/delegated-resource-management-eligible-authorizations/subscription/subscription.Parameters.json)    |
+|サブスクリプション   |[subscription.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/delegated-resource-management-eligible-authorizations/subscription/subscription.json)  |[subscription.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/delegated-resource-management-eligible-authorizations/subscription/subscription.parameters.json)    |
 |サブスクリプション (承認者を使用)  |[subscription-managing-tenant-approvers.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/delegated-resource-management-eligible-authorizations/subscription/subscription-managing-tenant-approvers.json)  |[subscription-managing-tenant-approvers.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/delegated-resource-management-eligible-authorizations/subscription/subscription-managing-tenant-approvers.parameters.json)    |
 |Resource group   |[rg.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/delegated-resource-management-eligible-authorizations/rg/rg.json)  |[rg.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/delegated-resource-management-eligible-authorizations/rg/rg.parameters.json)    |
 |リソース グループ (承認者を使用)  |[rg-managing-tenant-approvers.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/delegated-resource-management-eligible-authorizations/rg/rg-managing-tenant-approvers.json)  |[rg-managing-tenant-approvers.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/delegated-resource-management-eligible-authorizations/rg/rg-managing-tenant-approvers.parameters.json)    |
@@ -121,113 +121,77 @@ EMS E5 または Azure AD Premium P2 ライセンスは、顧客テナントで�
             "type": "string",
             "metadata": {
                 "description": "Specify a unique name for your offer"
-            },
-            "defaultValue": "<to be filled out by MSP> Specify a title for your offer"
+            }
         },
         "mspOfferDescription": {
             "type": "string",
             "metadata": {
                 "description": "Name of the Managed Service Provider offering"
-            },
-            "defaultValue": "<to be filled out by MSP> Provide a brief description of your offer"
+            }
         },
         "managedByTenantId": {
             "type": "string",
             "metadata": {
                 "description": "Specify the tenant id of the Managed Service Provider"
-            },
-            "defaultValue": "<to be filled out by MSP> Provide your tenant id"
+            }
         },
         "authorizations": {
             "type": "array",
             "metadata": {
                 "description": "Specify an array of objects, containing tuples of Azure Active Directory principalId, a Azure roleDefinitionId, and an optional principalIdDisplayName. The roleDefinition specified is granted to the principalId in the provider's Active Directory and the principalIdDisplayName is visible to customers."
-            },
-            "defaultValue": [
-                { 
-                    "principalId": "00000000-0000-0000-0000-000000000000", 
-                    "roleDefinitionId": "acdd72a7-3385-48ef-bd42-f606fba81ae7",
-                    "principalIdDisplayName": "PIM_Group" 
-                }, 
-                { 
-                    "principalId": "00000000-0000-0000-0000-000000000000", 
-                    "roleDefinitionId": "91c1777a-f3dc-4fae-b103-61d183457e46",
-                    "principalIdDisplayName": "PIM_Group" 
-                }   
-            ]
-        }, 
-        "eligibleAuthorizations": { 
-            "type": "array", 
-            "metadata": { 
-                "description": "Provide the authorizations that will have just-in-time role assignments on customer environments" 
-            },
-           "defaultValue": [ 
-                { 
-                        "justInTimeAccessPolicy": { 
-                            "multiFactorAuthProvider": "Azure", 
-                            "maximumActivationDuration": "PT8H",
-                            "managedByTenantApprovers": [ 
-                                { 
-                                    "principalId": "00000000-0000-0000-0000-000000000000", 
-                                    "principalIdDisplayName": "PIM-Approvers" 
-                                }
-                            ]
-                        },
-                        "principalId": "00000000-0000-0000-0000-000000000000", 
-                        "principalIdDisplayName": "PIM_Group",
-                        "roleDefinitionId": "b24988ac-6180-42a0-ab88-20f7382dd24c" 
-                        
-                }                    
-            ]    
-
-        }                 
-    },
-    "variables": {
-        "mspRegistrationName": "[guid(parameters('mspOfferName'))]",
-        "mspAssignmentName": "[guid(parameters('mspOfferName'))]"
-    },
-    "resources": [
-        {
-            "type": "Microsoft.ManagedServices/registrationDefinitions",
-            "apiVersion": "2020-02-01-preview",
-            "name": "[variables('mspRegistrationName')]",
-            "properties": {
-                "registrationDefinitionName": "[parameters('mspOfferName')]",
-                "description": "[parameters('mspOfferDescription')]",
-                "managedByTenantId": "[parameters('managedByTenantId')]",
-                "authorizations": "[parameters('authorizations')]", 
-                "eligibleAuthorizations": "[parameters('eligibleAuthorizations')]" 
             }
         },
-        {
-            "type": "Microsoft.ManagedServices/registrationAssignments",
-            "apiVersion": "2020-02-01-preview",
-            "name": "[variables('mspAssignmentName')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.ManagedServices/registrationDefinitions/', variables('mspRegistrationName'))]"
-            ],
-            "properties": {
-                "registrationDefinitionId": "[resourceId('Microsoft.ManagedServices/registrationDefinitions/', variables('mspRegistrationName'))]"
+        "eligibleAuthorizations": {
+            "type": "array",
+            "metadata": {
+                "description": "Provide the authorizations that will have just-in-time role assignments on customer environments with support for approvals from the managing tenant"
             }
         }
-    ],
-    
-    "outputs": {
-        "mspOfferName": {
-            "type": "string",
-            "value": "[concat('Managed by', ' ', parameters('mspOfferName'))]"
+    },
+        "variables": {
+            "mspRegistrationName": "[guid(parameters('mspOfferName'))]",
+            "mspAssignmentName": "[guid(parameters('mspOfferName'))]"
         },
-        "authorizations": {
-            "type": "array",
-            "value": "[parameters('authorizations')]"
-        }, 
-        "eligibleAuthorizations": { 
-            "type": "array", 
-            "value": "[parameters('eligibleAuthorizations')]" 
-
-        } 
+        "resources": [
+            {
+                "type": "Microsoft.ManagedServices/registrationDefinitions",
+                "apiVersion": "2020-02-01-preview",
+                "name": "[variables('mspRegistrationName')]",
+                "properties": {
+                    "registrationDefinitionName": "[parameters('mspOfferName')]",
+                    "description": "[parameters('mspOfferDescription')]",
+                    "managedByTenantId": "[parameters('managedByTenantId')]",
+                    "authorizations": "[parameters('authorizations')]",
+                    "eligibleAuthorizations": "[parameters('eligibleAuthorizations')]"
+                }
+            },
+            {
+                "type": "Microsoft.ManagedServices/registrationAssignments",
+                "apiVersion": "2020-02-01-preview",
+                "name": "[variables('mspAssignmentName')]",
+                "dependsOn": [
+                    "[resourceId('Microsoft.ManagedServices/registrationDefinitions/', variables('mspRegistrationName'))]"
+                ],
+                "properties": {
+                    "registrationDefinitionId": "[resourceId('Microsoft.ManagedServices/registrationDefinitions/', variables('mspRegistrationName'))]"
+                }
+            }
+        ],
+        "outputs": {
+            "mspOfferName": {
+                "type": "string",
+                "value": "[concat('Managed by', ' ', parameters('mspOfferName'))]"
+            },
+            "authorizations": {
+                "type": "array",
+                "value": "[parameters('authorizations')]"
+            },
+            "eligibleAuthorizations": {
+                "type": "array",
+                "value": "[parameters('eligibleAuthorizations')]"
+            }
+        }
     }
-}
 ```
 
 ### <a name="define-eligible-authorizations-in-your-parameters-file"></a>パラメーター ファイルで適格な認可を定義する

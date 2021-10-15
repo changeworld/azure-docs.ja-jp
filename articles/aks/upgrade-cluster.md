@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) クラスターをアップグレー
 services: container-service
 ms.topic: article
 ms.date: 12/17/2020
-ms.openlocfilehash: 2b839350b8f993d107bce67266600d2f4b2386fd
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 0f4e364cd3de9093b84e3ae02c4337361985959a
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129217374"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129350985"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes Service (AKS) クラスターのアップグレード
 
@@ -176,6 +176,13 @@ az aks update --resource-group myResourceGroup --name myAKSCluster --auto-upgrad
 ## <a name="using-cluster-auto-upgrade-with-planned-maintenance"></a>計画メンテナンスでのクラスター自動アップグレードの使用
 
 計画メンテナンスと自動アップグレードを使用している場合は、指定したメンテナンス期間中にアップグレードが開始されます。 計画メンテナンスの詳細については、「[計画メンテナンスを使用して Azure Kubernetes Service (AKS) クラスターのメンテナンス期間をスケジュールする (プレビュー)][planned-maintenance]」を参照してください。
+
+## <a name="special-considerations-for-node-pools-that-span-multiple-availability-zones"></a>複数の Availability Zones にまたがるノード プールに関する特別な考慮事項
+
+AKS では、ノード グループでのベストエフォート ゾーン バランシングが使用されます。 サージ アップグレード中、VMSS のサージ ノードのゾーンは事前には不明です。 これにより、アップグレード中に一時的に不均衡なゾーン構成が発生する可能性があります。 ただし、アップグレードが完了し、元のゾーン バランスが維持されると、AKS によりサージ ノードが削除されます。 アップグレード中にゾーン バランスを維持する場合は、サージをノード数の 3 の倍数に増やします。 その後、VMSS により、ベストエフォートのゾーン バランシングを使用して、Availability Zones 間でノードのバランスが調整されます。
+
+Azure LRS ディスクで PVC を使用している場合、それらは特定のゾーンにバインドされ、サージ ノードが PVC のゾーンと一致しない場合はすぐに復旧できない可能性があります。 このため、アップグレード操作によってノードのドレインが続行されても、PV がゾーンにバインドされていると、アプリケーションのダウンタイムが発生する可能性があります。 このケースを処理し、高可用性を維持するには、アプリケーションで[ポッド中断バジェット](https://kubernetes.io/docs/tasks/run-application/configure-pdb/)を構成します。 これにより、アップグレードのドレイン操作中に Kubernetes で可用性の要件を遵守するようにできます。 
+
 
 ## <a name="next-steps"></a>次のステップ
 

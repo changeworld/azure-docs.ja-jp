@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/11/2020
+ms.date: 09/21/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f97d2c7ac7026032344f7f08f80cb28bcb0d3d71
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: a30dc564dced8d3306c4645ca48b6331e1f6959b
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128618960"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129355762"
 ---
 # <a name="conditional-access-session"></a>条件付きアクセス:Session
 
@@ -26,7 +26,7 @@ ms.locfileid: "128618960"
 
 ## <a name="application-enforced-restrictions"></a>アプリケーションによって適用される制限
 
-組織では、このコントロールを使用して、選択されたクラウド アプリにデバイス情報を渡すように Azure AD に要求できます。 クラウド アプリは、デバイス情報によって、接続が準拠またはドメイン参加済みデバイスから開始されているかどうかを認識できます。 このコントロールでは、選択されたクラウド アプリとして SharePoint Online と Exchange Online のみがサポートされます。 選択されたクラウド アプリは、デバイス情報を使用して、デバイスの状態に応じて制限付きまたは完全なエクスペリエンスをユーザーに提供します。
+組織では、このコントロールを使用して、選択されたクラウド アプリにデバイス情報を渡すように Azure AD に要求できます。 クラウド アプリでは、このデバイス情報により、規則に準拠しているデバイスまたはドメイン参加済みのデバイスによって接続が開始されたかどうかを把握すること、セッションの環境を変更することができます。 このコントロールでは、選択されたクラウド アプリとして SharePoint Online と Exchange Online のみがサポートされます。 選択したクラウド アプリでは、デバイス情報を使用し、デバイスの状態に応じて、制限付きの環境 (デバイスが管理対象でない場合) または制限なしの環境 (デバイスが管理対象であり、規則にも準拠している場合) をユーザーに提供します。
 
 アプリによって適用される制限の使用と構成の詳細については、以下の記事を参照してください。
 

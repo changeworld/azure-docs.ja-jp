@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: reference
-ms.date: 08/15/2021
+ms.date: 10/03/2021
 ms.author: memildin
-ms.openlocfilehash: 9ebe158f1a047006b75eb519864152fc4bb396e8
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: c0ae5cc8d3dee5a09916194418345c1602a19e4b
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122419529"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129424786"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Security Center の最新情報
 
@@ -24,6 +24,63 @@ Security Center で近日中に公開を "*予定されている*" 変更につ�
 
 > [!TIP]
 > 6 か月以上前の項目を探す場合は、「[Azure Security Center の最新情報のアーカイブ](release-notes-archive.md)」をご覧ください。
+
+
+## <a name="october-2021"></a>2021 年 10 月
+
+10 月の更新プログラムには次のものが含まれます。
+
+- [一部のアラートの種類のプレフィックスを "ARM_" から "VM_" に変更](#changed-prefix-of-some-alert-types-from-arm_-to-vm_)
+
+### <a name="changed-prefix-of-some-alert-types-from-arm_-to-vm_"></a>一部のアラートの種類のプレフィックスを "ARM_" から "VM_" に変更 
+
+2021 年 7 月に、[Azure Resource Manager アラート用の Azure Defender の論理的な再編成](release-notes.md#logical-reorganization-of-azure-defender-for-resource-manager-alerts)について発表しました。 
+
+Azure Defender プランの論理的な再編成の一環として、21 個のアラートが [Azure Defender for Resource Manager](defender-for-resource-manager-introduction.md) から [Azure Defender for servers](defender-for-servers-introduction.md) に移動されました。
+
+この更新プログラムでは、次の表に示すように、この再割り当てに一致するようにこれらのアラートのプレフィックスを変更し、"ARM_" を "VM_" に置き換えました。
+
+| 元の名前                                  | この変更以降                              |
+|------------------------------------------------|-----------------------------------------------|
+| ARM_AmBroadFilesExclusion                      | VM_AmBroadFilesExclusion                      |
+| ARM_AmDisablementAndCodeExecution              | VM_AmDisablementAndCodeExecution              |
+| ARM_AmDisablement                              | VM_AmDisablement                              |
+| ARM_AmFileExclusionAndCodeExecution            | VM_AmFileExclusionAndCodeExecution            |
+| ARM_AmTempFileExclusionAndCodeExecution        | VM_AmTempFileExclusionAndCodeExecution        |
+| ARM_AmTempFileExclusion                        | VM_AmTempFileExclusion                        |
+| ARM_AmRealtimeProtectionDisabled               | VM_AmRealtimeProtectionDisabled               |
+| ARM_AmTempRealtimeProtectionDisablement        | VM_AmTempRealtimeProtectionDisablement        |
+| ARM_AmRealtimeProtectionDisablementAndCodeExec | VM_AmRealtimeProtectionDisablementAndCodeExec |
+| ARM_AmMalwareCampaignRelatedExclusion          | VM_AmMalwareCampaignRelatedExclusion          |
+| ARM_AmTemporarilyDisablement                   | VM_AmTemporarilyDisablement                   |
+| ARM_UnusualAmFileExclusion                     | VM_UnusualAmFileExclusion                     |
+| ARM_CustomScriptExtensionSuspiciousCmd         | VM_CustomScriptExtensionSuspiciousCmd         |
+| ARM_CustomScriptExtensionSuspiciousEntryPoint  | VM_CustomScriptExtensionSuspiciousEntryPoint  |
+| ARM_CustomScriptExtensionSuspiciousPayload     | VM_CustomScriptExtensionSuspiciousPayload     |
+| ARM_CustomScriptExtensionSuspiciousFailure     | VM_CustomScriptExtensionSuspiciousFailure     |
+| ARM_CustomScriptExtensionUnusualDeletion       | VM_CustomScriptExtensionUnusualDeletion       |
+| ARM_CustomScriptExtensionUnusualExecution      | VM_CustomScriptExtensionUnusualExecution      |
+| ARM_VMAccessUnusualConfigReset                 | VM_VMAccessUnusualConfigReset                 |
+| ARM_VMAccessUnusualPasswordReset               | VM_VMAccessUnusualPasswordReset               |
+| ARM_VMAccessUnusualSSHReset                    | VM_VMAccessUnusualSSHReset                    |
+|||
+
+[Azure Defender for Resource Manager](defender-for-resource-manager-introduction.md) プランと [Azure Defender for servers](defender-for-servers-introduction.md) プランの詳細を参照してください。
+
+## <a name="september-2021"></a>2021 年 9 月
+
+9 月に、次の更新プログラムがリリースされました。
+
+### <a name="two-new-recommendations-to-audit-os-configurations-for-azure-security-baseline-compliance"></a>Azure のセキュリティ ベースライン コンプライアンスの OS 構成を監査する 2 つの新しい推奨事項
+
+[Windows のセキュリティ ベースライン](../governance/policy/samples/guest-configuration-baseline-windows.md)と [Linux セキュリティ ベースライン](../governance/policy/samples/guest-configuration-baseline-linux.md)へのマシンのコンプライアンスを評価するため、次の 2 つの推奨事項がリリースされました。
+
+- Windows マシンの場合は、[Windows マシンのセキュリティ構成の脆弱性を修復する必要がある (ゲスト構成を利用)](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/1f655fb7-63ca-4980-91a3-56dbc2b715c6)
+- Linux マシンの場合は、[Linux マシンのセキュリティ構成の脆弱性を修復する必要がある (ゲスト構成を利用)](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/8c3d9ad0-3639-4686-9cd2-2b2ab2609bda)
+
+これらの推奨事項は、Azure Policy のゲスト構成機能を使用して、マシンの OS 構成と [Azure セキュリティ ベンチマーク](/security/benchmark/azure/overview)で定義されたベースラインとの比較を行っています。
+
+これらの推奨事項を使用する方法の詳細については、[ゲスト構成を使用したマシンの OS 構成の強化](apply-security-baseline.md)に関するページをご覧ください。
 
 ## <a name="august-2021"></a>2021 年 8 月
 
@@ -267,7 +324,7 @@ Azure Defender プランの論理的な再編成の一環として、一部の�
 
 ### <a name="compliance-over-time-workbook-template-added-to-azure-monitor-workbooks-gallery"></a>'Compliance over time' ブック テンプレートが Azure Monitor ブック ギャラリーに追加
 
-3 月に、Security Center での統合 Azure Monitor ブック エクスペリエンスを発表しました (「[Azure Monitor ブックを Security Center に統合し、テンプレートを 3 件提供](#azure-monitor-workbooks-integrated-into-security-center-and-three-templates-provided)」を参照してください)。
+3 月に、Security Center での統合 Azure Monitor ブック エクスペリエンスを発表しました (「[Azure Monitor ブックを Security Center に統合し、テンプレートを 3 件提供](release-notes-archive.md#azure-monitor-workbooks-integrated-into-security-center-and-three-templates-provided)」を参照してください)。
 
 最初のリリースには、組織のセキュリティ体制に関して動的レポートとビジュアル レポートを構築するための 3 つのテンプレートが含まれていました。
 
@@ -326,7 +383,7 @@ Azure のデータは、プラットフォーム マネージド キーを使用
 
 ### <a name="prefix-for-kubernetes-alerts-changed-from-aks_-to-k8s_"></a>Kubernetes アラートのプレフィックスを "AKS_" から "K8S_" に変更
 
-オンプレミスおよびマルチ クラウド環境でホストされている Kubernetes クラスターを保護するため、Azure Defender for Kubernetes が最近拡張されました。 詳細については、「[Azure Defender for Kubernetes を使用したハイブリッドおよびマルチクラウド Kubernetes デプロイの保護 (プレビュー)](release-notes.md#use-azure-defender-for-kubernetes-to-protect-hybrid-and-multi-cloud-kubernetes-deployments-in-preview)」をご覧ください。
+オンプレミスおよびマルチ クラウド環境でホストされている Kubernetes クラスターを保護するため、Azure Defender for Kubernetes が最近拡張されました。 詳細については、「[Azure Defender for Kubernetes を使用したハイブリッドおよびマルチクラウド Kubernetes デプロイの保護 (プレビュー)](release-notes-archive.md#use-azure-defender-for-kubernetes-to-protect-hybrid-and-multi-cloud-kubernetes-deployments-in-preview)」をご覧ください。
 
 Azure Defender for Kubernetes によって提供されるセキュリティ アラートが Azure Kubernetes Service 上のクラスターに制限されなくなったという事実を反映するために、アラートの種類のプレフィックスを "AKS_" から "K8S_" に変更しました。 必要に応じて、名前と説明も更新されています。 たとえば、このアラートです。
 
@@ -534,339 +591,3 @@ Security Center の資産インベントリのページには、表示される�
 
 - [Azure Security Center への AWS アカウントの接続](quickstart-onboard-aws.md)
 - [Azure Security Center への GCP アカウントの接続](quickstart-onboard-gcp.md)
-
-
-## <a name="april-2021"></a>2021 年 4 月
-
-4 月の更新プログラムには次のものが含まれます。
-- [更新された [リソース正常性] ページ (プレビュー)](#refreshed-resource-health-page-in-preview)
-- [最近プルされたコンテナー レジストリ イメージを毎週再スキャン (一般提供 (GA) リリース)](#container-registry-images-that-have-been-recently-pulled-are-now-rescanned-weekly-released-for-general-availability-ga)
-- [Azure Defender for Kubernetes を使用したハイブリッドおよびマルチクラウド Kubernetes デプロイの保護 (プレビュー)](#use-azure-defender-for-kubernetes-to-protect-hybrid-and-multi-cloud-kubernetes-deployments-in-preview)
-- [Azure Defender と Microsoft Defender for Endpoint の統合で、Windows Server 2019 および Windows 10 Virtual Desktop (WVD) をサポート (一般提供 (GA) リリース)](#microsoft-defender-for-endpoint-integration-with-azure-defender-now-supports-windows-server-2019-and-windows-10-virtual-desktop-wvd-released-for-general-availability-ga)
-- [Azure Defender for DNS および Azure Defender for Resource Manager を有効にする際の推奨事項 (プレビュー)](#recommendations-to-enable-azure-defender-for-dns-and-resource-manager-in-preview)
-- [追加された 3 つの規制コンプライアンス標準: Azure CIS 1.3.0、CMMC レベル 3、New Zealand ISM Restricted](#three-regulatory-compliance-standards-added-azure-cis-130-cmmc-level-3-and-new-zealand-ism-restricted)
-- [ゲスト構成に関連する 4 つの新しい推奨事項 (プレビュー)](#four-new-recommendations-related-to-guest-configuration-in-preview)
-- [CMK の推奨事項をベスト プラクティスのセキュリティ コントロールに移動](#cmk-recommendations-moved-to-best-practices-security-control)
-- [11 個の Azure Defender アラートを非推奨化](#11-azure-defender-alerts-deprecated)
-- ["システムの更新プログラムを適用する" セキュリティ コントロールの 2 つの推奨事項を非推奨化](#two-recommendations-from-apply-system-updates-security-control-were-deprecated)
-- [[Azure Defender for SQL on machine] タイルを Azure Defender ダッシュボードから削除](#azure-defender-for-sql-on-machine-tile-removed-from-azure-defender-dashboard)
-- [21 個の推奨事項をセキュリティ コントロール間で移動](#21-recommendations-moved-between-security-controls)
-
-### <a name="refreshed-resource-health-page-in-preview"></a>更新された [リソース正常性] ページ (プレビュー)
-
-Security Center のリソース正常性が拡張、強化、改善され、1 つのリソースの全体的な正常性のスナップショット ビューが提供されるようになりました。 
-
-リソースに関する詳細情報と、そのリソースに適用されるすべての推奨事項を確認できます。 また、[Azure Defender](azure-defender.md) を使用している場合は、その特定のリソースに関する未処理のセキュリティ アラートも表示されます。
-
-リソースの [リソース正常性] ページを開くには、[資産インベントリ ページ](asset-inventory.md)でリソースを選択します。
-
-Security Center のポータル ページにあるこのプレビュー ページには、次の情報が表示されます。
-
-1. **リソース情報** - リソースが属するリソース グループとサブスクリプション、地理的な場所など。
-1. **適用されているセキュリティ機能** - そのリソースに対して Azure Defender が有効になっているかどうか。
-1. **未処理の推奨事項とアラートの数** - 未処理のセキュリティに関する推奨事項と Azure Defender アラートの数。
-1. **実行可能な推奨事項とアラート** - リソースに適用される推奨事項とアラートが 2 つのタブに一覧表示されます。
-
-:::image type="content" source="media/investigate-resource-health/resource-health-page-virtual-machine.gif" alt-text="仮想マシンの正常性情報を示す Azure Security Center の [リソース正常性] ページ":::
-
-詳細については、「[チュートリアル: リソースの正常性を調査する](investigate-resource-health.md)」をご覧ください。
-
-
-### <a name="container-registry-images-that-have-been-recently-pulled-are-now-rescanned-weekly-released-for-general-availability-ga"></a>最近プルされたコンテナー レジストリ イメージを毎週再スキャン (一般提供 (GA) リリース)
-
-コンテナー レジストリ用 Azure Defender には、組み込みの脆弱性スキャナーが含まれています。 このスキャナーは、レジストリにプッシュされたイメージと、過去 30 日以内にプルされたすべてのイメージを即座にスキャンします。
-
-新しい脆弱性は毎日検出されます。 この更新により、過去 30 日間にレジストリからプルされたコンテナー イメージが毎週 **再スキャン** されます。 これにより、新しく検出された脆弱性をイメージ内で確実に識別できます。
-
-スキャンはイメージごとに課金されるため、これらの再スキャンに対する追加料金は発生しません。
-
-このスキャナーの詳細については、「[コンテナー レジストリ用の Azure Defender を使用してイメージの脆弱性をスキャンする](defender-for-container-registries-usage.md)」を参照してください。
-
-
-### <a name="use-azure-defender-for-kubernetes-to-protect-hybrid-and-multi-cloud-kubernetes-deployments-in-preview"></a>Azure Defender for Kubernetes を使用したハイブリッドおよびマルチクラウド Kubernetes デプロイの保護 (プレビュー)
-
-Azure Defender for Kubernetes は、クラスターがどこにデプロイされていても防御できるように、脅威保護機能が拡張されています。 これは、[Azure Arc 対応 Kubernetes](../azure-arc/kubernetes/overview.md) とその新しい[拡張機能](../azure-arc/kubernetes/extensions.md)との統合によって実現されています。 
-
-非 Azure Kubernetes クラスターで Azure Arc を有効にすると、Azure Security Center の新しい推奨事項として、わずか数回のクリックで Azure Defender 拡張機能をデプロイすることが提案されます。
-
-推奨事項 (**Azure Arc 対応 Kubernetes クラスターには Azure Defender の拡張機能がインストールされている必要がある**) と拡張機能を使用して、(マネージド Kubernetes サービス上ではなく) 他のクラウド プロバイダーにデプロイされた Kubernetes クラスターを保護します。
-
-Azure Security Center、Azure Defender、および Azure Arc 対応 Kubernetes の間のこの統合により、次のことが実現されます。
-
-- 保護されていない Azure Arc 対応 Kubernetes クラスターに対して Azure Defender 拡張機能を簡単にプロビジョニングする (手動および大規模)
-- Azure Arc ポータルから Azure Defender 拡張機能とそのプロビジョニングの状態を監視する
-- Security Center からのセキュリティに関する推奨事項が、Azure Arc ポータルの新しい [セキュリティ] ページでレポートされる
-- Azure Defender で特定されたセキュリティ上の脅威が、Azure Arc ポータルの新しい [セキュリティ] ページでレポートされる
-- Azure Arc 対応 Kubernetes クラスターが、Azure Security Center プラットフォームおよびエクスペリエンスに統合される
-
-詳細については、[オンプレミスおよびマルチクラウドの Kubernetes クラスターでの Azure Defender for Kubernetes の使用](defender-for-kubernetes-azure-arc.md)に関する記事をご覧ください。
-
-:::image type="content" source="media/defender-for-kubernetes-azure-arc/extension-recommendation.png" alt-text="Azure Arc 対応 Kubernetes クラスター用の Azure Defender 拡張機能をデプロイするための Azure Security Center の推奨事項。" lightbox="media/defender-for-kubernetes-azure-arc/extension-recommendation.png":::
-
-
-### <a name="microsoft-defender-for-endpoint-integration-with-azure-defender-now-supports-windows-server-2019-and-windows-10-virtual-desktop-wvd-released-for-general-availability-ga"></a>Azure Defender と Microsoft Defender for Endpoint の統合で、Windows Server 2019 および Windows 10 Virtual Desktop (WVD) をサポート (一般提供 (GA) リリース)
-
-Microsoft Defender for Endpoint は、クラウドで提供される包括的なエンドポイント セキュリティ ソリューションです。 リスクベースによる脆弱性の管理と評価、およびエンドポイントでの検出と対応 (EDR) を提供します。 Defender for Endpoint を Azure Security Center と併用するメリットの全容については、「[Security Center に統合された EDR ソリューション Microsoft Defender for Endpoint でエンドポイントを保護する](security-center-wdatp.md)」を参照してください。
-
-Windows サーバー上のサーバーに Azure Defender を有効にした場合、プランに Defender for Endpoint のライセンスが含まれています。 サーバーに対して既に Azure Defender を有効にしており、サブスクリプションに Windows 2019 サーバーが存在する場合には、今回の更新により自動的に Defender for Endpoint が追加されます。 特に何か操作をする必要はありません。 
-
-このたびサポートが拡張され、Windows Server 2019 と [Windows Virtual Desktop (WVD)](../virtual-desktop/overview.md) が含まれるようになりました。
-
-> [!NOTE]
-> Windows Server 2019 のマシンで Defender for Endpoint を有効にする場合には、マシンが「[Microsoft Defender for Endpoint 統合を有効にする](security-center-wdatp.md#enable-the-microsoft-defender-for-endpoint-integration)」に記載されている前提条件を満たしていることを確認してください。
-
-
-### <a name="recommendations-to-enable-azure-defender-for-dns-and-resource-manager-in-preview"></a>Azure Defender for DNS および Azure Defender for Resource Manager を有効にする際の推奨事項 (プレビュー)
-
-[Azure defender For Resource Manager](defender-for-resource-manager-introduction.md) と [Azure Defender for DNS](defender-for-dns-introduction.md) を有効にするプロセスを簡略化するために、2 つの新しい推奨事項が追加されました。
-
-- **Azure Defender for Resource Manager を有効にする必要がある** - Defender for Resource Manager は組織内のリソース管理操作を自動的に監視します。 Azure Defender では、脅威を検出し、疑わしいアクティビティについて警告します。
-- **Azure Defender for DNS を有効にする必要がある** - Defender for DNS では、Azure リソースからのすべての DNS クエリを継続的に監視することにより、クラウド リソースに対して追加の保護層を提供します。 Azure Defender では、DNS 層での不審なアクティビティについて警告します。
-
-Azure Defender プランを有効にすると、料金が発生します。 リージョンごとの料金の詳細については、Security Center の価格に関するページ https://aka.ms/pricing-security-center を参照してください。
-
-> [!TIP]
-> プレビューの推奨事項によってリソースが異常な状態になることはありません。これらの推奨事項は、セキュリティ スコアの計算には含まれません。 これらの推奨事項はプレビュー期間が終了した時点でスコアに反映されるため、可能な限り修復してください。 これらの推奨事項に対応する方法については、「[Azure Security Center の修復レコメンデーション](security-center-remediate-recommendations.md)」を参照してください。
-
-
-### <a name="three-regulatory-compliance-standards-added-azure-cis-130-cmmc-level-3-and-new-zealand-ism-restricted"></a>追加された 3 つの規制コンプライアンス標準: Azure CIS 1.3.0、CMMC レベル 3、New Zealand ISM Restricted
-
-Azure Security Center で使用するための 3 つの標準が追加されました。 規制コンプライアンス ダッシュボードを使用して、次の標準への準拠を追跡できるようになりました。
-
-- [CIS Microsoft Azure Foundations Benchmark 1.3.0](../governance/policy/samples/cis-azure-1-3-0.md)
-- [CMMC レベル 3](../governance/policy/samples/cmmc-l3.md)
-- [New Zealand ISM Restricted](../governance/policy/samples/new-zealand-ism.md)
-
-「[規制コンプライアンス ダッシュボードで標準セットをカスタイマイズする](update-regulatory-compliance-packages.md)」で説明するように、これらをサブスクリプションに割り当てることができます。
-
-:::image type="content" source="media/release-notes/additional-regulatory-compliance-standards.png" alt-text="Azure Security Center の規制コンプライアンス ダッシュボードで使用するために追加された 3 つの標準。" lightbox="media/release-notes/additional-regulatory-compliance-standards.png":::
-
-詳細情報:
-- [規制コンプライアンス ダッシュボードでの標準セットのカスタイマイズ](update-regulatory-compliance-packages.md)
-- [チュートリアル:規制に対するコンプライアンスの向上](security-center-compliance-dashboard.md)
-- [FAQ - 規制コンプライアンス ダッシュボード](security-center-compliance-dashboard.md#faq---regulatory-compliance-dashboard)
-
-### <a name="four-new-recommendations-related-to-guest-configuration-in-preview"></a>ゲスト構成に関連する 4 つの新しい推奨事項 (プレビュー)
-
-Azure の[ゲスト構成拡張機能](../governance/policy/concepts/guest-configuration.md)により、仮想マシンのゲスト内設定の確実な強化を支援するように Security Center に対してレポートが行われます。 この拡張機能は Arc 接続マシン エージェントに含まれているため、Arc 対応サーバーには必要ありません。 この拡張機能を使用するには、マシンにシステムマネージド ID が必要です。
-
-この拡張機能を最大限に活用するために、Security Center に 4 つの新しい推奨事項が追加されました。
-
-- 2 つの推奨事項では、拡張機能と、その必須のシステムマネージド ID をインストールすることを求めています。
-    - **ゲスト構成拡張機能をマシンにインストールする必要がある**
-    - **仮想マシンのゲスト構成拡張機能はシステム割り当てマネージド ID を使用してデプロイする必要がある**
-
-- 拡張機能がインストールされて実行されると、マシンの監査が開始され、オペレーティング システムの構成や環境設定などの設定を強化するように求められます。 これらの 2 つの推奨事項に従って、Windows および Linux マシンを強化するように求められます。
-    - **マシンで Windows Defender Exploit Guard を有効にする必要がある**
-    - **Linux マシンに対する認証では SSH キーを要求する必要がある**
-
-詳細については、「[Azure Policy のゲストの構成の理解](../governance/policy/concepts/guest-configuration.md)」を参照してください。
-
-### <a name="cmk-recommendations-moved-to-best-practices-security-control"></a>CMK の推奨事項をベスト プラクティスのセキュリティ コントロールに移動
-
-すべての組織のセキュリティ プログラムには、データ暗号化要件が含まれています。 既定では、Azure のお客様のデータは、サービス マネージド キーを使用して保存時に暗号化されます。 ただし、規制コンプライアンス基準を満たすためには、一般にカスタマー マネージド キー (CMK) が必要です。 CMK を使用すると、自分が作成して所有する [Azure Key Vault](../key-vault/general/overview.md) キーを使用してデータを暗号化できます。 これにより、ローテーションや管理など、キーのライフサイクルを完全に制御し、責任を負うことになります。
-
-Azure Security Center のセキュリティ コントロールは、関連するセキュリティ推奨事項の論理グループであり、脆弱な攻撃対象領域を反映しています。 コントロールごとに、すべてのリソースについて、コントロールに示されているすべての推奨事項を修復した場合にセキュリティ スコアに追加できる最大ポイント数があります。 **[セキュリティのベスト プラクティスの実装]** セキュリティ コントロールは、0 ポイントです。 したがって、このコントロールの推奨事項は、セキュリティ スコアに影響しません。
-
-次に示す推奨事項は、オプションとしての性質をより適切に反映するために、 **[セキュリティのベスト プラクティスの実装]** セキュリティ コントロールに移動されています。 この移動によって、これらの推奨事項は、その目標を達成するために最も適したコントロールに含められます。
-
-- Azure Cosmos DB アカウントでは保存データを暗号化するためにカスタマー マネージド キーを使用する必要がある
-- Azure Machine Learning ワークスペースは、カスタマー マネージド キー (CMK) を使用して暗号化する必要がある
-- Cognitive Services アカウントでカスタマー マネージド キー (CMK) によるデータ暗号化を有効にする必要がある
-- コンテナー レジストリは、カスタマー マネージド キー (CMK) を使用して暗号化する必要がある
-- SQL マネージド インスタンスでは保存データを暗号化するためにカスタマー マネージド キーを使用する必要がある
-- SQL サーバーでは保存データを暗号化するためにカスタマー マネージド キーを使用する必要がある
-- ストレージ アカウントでは暗号化にカスタマー マネージド キー (CMK) を使用する必要がある
-
-各セキュリティ コントロールに含まれる推奨事項については、「[セキュリティ コントロールとその推奨事項](secure-score-security-controls.md#security-controls-and-their-recommendations)」を参照してください。
-
-
-### <a name="11-azure-defender-alerts-deprecated"></a>11 個の Azure Defender アラートを非推奨化
-
-次に示す 11 個の Azure Defender アラートは非推奨となりました。
-
-- 次の 2 つのアラートは、新しいアラートで置き換えられ、より適切なカバレッジが提供されます。
-
-    | AlertType                | AlertDisplayName                                                         |
-    |--------------------------|--------------------------------------------------------------------------|
-    | ARM_MicroBurstDomainInfo | PREVIEW - MicroBurst toolkit "Get-AzureDomainInfo" function run detected (プレビュー - MicroBurst ツールキット "Get-AzureDomainInfo" 関数の実行が検出されました) |
-    | ARM_MicroBurstRunbook    | PREVIEW - MicroBurst toolkit "Get-AzurePasswords" function run detected (プレビュー - MicroBurst ツールキット "Get-AzurePasswords" 関数の実行が検出されました)  |
-    |                          |                                                                          |
-
-- 次の 9 つのアラートは、既に非推奨になっている Azure Active Directory Identity Protection コネクタ (IPC) に関連したものです。
-
-    | AlertType           | AlertDisplayName              |
-    |---------------------|-------------------------------|
-    | UnfamiliarLocation  | 通常とは異なるサインイン プロパティ |
-    | AnonymousLogin      | 匿名 IP アドレス          |
-    | InfectedDeviceLogin | マルウェアにリンクした IP アドレス     |
-    | ImpossibleTravel    | 特殊な移動               |
-    | MaliciousIP         | 悪意のある IP アドレス          |
-    | LeakedCredentials   | 漏洩した資格情報            |
-    | PasswordSpray       | パスワード スプレー                |
-    | LeakedCredentials   | Azure AD 脅威インテリジェンス  |
-    | AADAI               | Azure AD AI                   |
-    |                     |                               |
- 
-    > [!TIP]
-    > これらの 9 つの IPC アラートは、Security Center アラートではありませんでした。 これらは Azure Active Directory (AAD) Identity Protection コネクタ (IPC) の一部であり、IPC によって Security Center に送信されていました。 過去 2 年間に、これらのアラートが表示されたお客様は、2019 年以前に (コネクタから ASC への) エクスポートを構成した組織だけです。 AAD IPC は引き続き独自のアラート システムに表示されており、今後も Azure Sentinel で利用できます。 唯一の変更点は、Security Center に表示されなくなったことです。
-
-### <a name="two-recommendations-from-apply-system-updates-security-control-were-deprecated"></a>"システムの更新プログラムを適用する" セキュリティ コントロールの 2 つの推奨事項を非推奨化 
-
-次の 2 つの推奨事項は非推奨とされ、この変更によってセキュリティ スコアにわずかな影響が生じる可能性があります。
-
-- **システムの更新プログラムを適用するには、マシンを再起動する必要があります**
-- **お使いのマシンに監視エージェントをインストールする必要があります**。 この推奨事項は、オンプレミスのマシンにのみ関係します。また、そのロジックのいくつかは、別の推奨事項 (**お使いのマシンで Log Analytics エージェントの正常性の問題を解決する必要がある**) に移される予定です
-
-連続エクスポートとワークフロー自動化の構成をチェックして、該当する推奨事項が含まれているかどうかを確認することをお勧めします。 また、ダッシュボードまたはそれらを使用する他の監視ツールを適宜更新する必要があります。
-
-これらの推奨事項の詳細については、[セキュリティに関する推奨事項のリファレンス ページ](recommendations-reference.md)を参照してください。
-
-### <a name="azure-defender-for-sql-on-machine-tile-removed-from-azure-defender-dashboard"></a>[Azure Defender for SQL on machine] タイルを Azure Defender ダッシュボードから削除
-
-Azure Defender ダッシュボードの適用範囲には、お使いの環境用の関連 Azure Defender プランのタイルが含まれています。 保護されているリソースと保護されていないリソースの数のレポートに関する問題が発生したため、問題が解決されるまでは、**Azure Defender for SQL on machine** のリソース適用範囲の状態を一時的に削除することにしました。
-
-
-### <a name="21-recommendations-moved-between-security-controls"></a>21 個の推奨事項をセキュリティ コントロール間で移動 
-
-次の推奨事項は、別のセキュリティ コントロールに移動されました。 セキュリティ コントロールは、関連するセキュリティ推奨事項の論理グループであり、脆弱な攻撃対象領域を反映しています。 この移動によって、これらの各推奨事項は、その目標を達成するために最も適したコントロールに含められます。
-
-各セキュリティ コントロールに含まれる推奨事項については、「[セキュリティ コントロールとその推奨事項](secure-score-security-controls.md#security-controls-and-their-recommendations)」を参照してください。
-
-|推奨 |変更と影響  |
-|---------|---------|
-|脆弱性評価を SQL サーバー上で有効にする必要がある<br>脆弱性評価を SQL マネージド インスタンス上で有効にする必要がある<br>SQL データベースの脆弱性を新たに修復する必要がある<br>VM 内の SQL データベースの脆弱性を修復する必要があります     |脆弱性の修復 (6 ポイント分) から<br>セキュリティ構成の修復 (4 ポイント分) に移動されます。<br>お客様の環境によっては、これらの推奨事項がスコアに与える影響が少なくなります。|
-|複数の所有者がサブスクリプションに割り当てられている必要がある<br>Automation アカウント変数は、暗号化する必要がある<br> IoT デバイス - Auditd プロセスでイベントの送信が停止された<br> IoT デバイス - オペレーティング システムのベースラインの検証に失敗した<br> IoT デバイス - TLS 暗号スイートのアップグレードが必要<br> IoT デバイス - デバイス上でポートを開く<br> IoT デバイス - チェーンのうちの 1 つに制限の緩すぎるファイアウォール ポリシーが見つかりました<br> IoT デバイス - 入力チェーンに制限の緩すぎるファイアウォール ルールが見つかりました<br> IoT デバイス - 出力チェーンに制限の緩すぎるファイアウォール ルールが見つかりました<br>IoT Hub の診断ログを有効にする必要がある<br> IoT デバイス - エージェントで低使用率のメッセージが送信されている<br>IoT デバイス - 既定の IP フィルター ポリシーを拒否にする必要がある<br>IoT デバイス - IP フィルター ルールの IP 範囲が広い<br>IoT デバイス - エージェントのメッセージ間隔とサイズを調整する必要がある<br>IoT デバイス - 認証の資格情報が同一<br>IoT デバイス - 監査対象プロセスでイベントの送信が停止された<br>IoT デバイス - オペレーティング システム (OS) のベースライン構成を修正する必要がある|**セキュリティのベスト プラクティスの実装** に移動されます。<br>推奨事項が「セキュリティのベスト プラクティスの実装」セキュリティ コントロールに移動される (ポイントは発生しない) と、この推奨事項はセキュリティ スコアに影響を及ぼさなくなります。|
-|||
-
-
-## <a name="march-2021"></a>2021 年 3 月
-
-3 月の更新プログラムには次のものが含まれます。
-
-- [Azure Firewall の管理を Security Center に統合](#azure-firewall-management-integrated-into-security-center)
-- [SQL 脆弱性評価に "ルールの無効化" エクスペリエンスを追加 (プレビュー)](#sql-vulnerability-assessment-now-includes-the-disable-rule-experience-preview)
-- [Azure Monitor ブックを Security Center に統合し、テンプレートを 3 件提供](#azure-monitor-workbooks-integrated-into-security-center-and-three-templates-provided)
-- [規制コンプライアンス ダッシュボードに Azure 監査レポートを追加 (プレビュー)](#regulatory-compliance-dashboard-now-includes-azure-audit-reports-preview)
-- [[Explore in ARG]\(ARG で探索\) を使用した Azure Resource Graph での推奨データの表示](#recommendation-data-can-be-viewed-in-azure-resource-graph-with-explore-in-arg)
-- [ワークフローの自動化をデプロイするためのポリシーを更新](#updates-to-the-policies-for-deploying-workflow-automation)
-- [従来の 2 つの推奨事項で Azure アクティビティ ログにデータが直接書き込まれなくなる](#two-legacy-recommendations-no-longer-write-data-directly-to-azure-activity-log)
-- [推奨事項ページの拡充](#recommendations-page-enhancements)
-
-
-### <a name="azure-firewall-management-integrated-into-security-center"></a>Azure Firewall の管理を Security Center に統合
-
-Azure Security Center を開いたときに、最初に表示されるページが概要ページです。 
-
-この対話式のダッシュボードでは、ハイブリッド クラウド ワークロードのセキュリティ対策について一元的なビューが提供されます。 また、セキュリティ アラート、カバレッジ情報なども表示されます。
-
-このたび、セキュリティの状態を一元的に確認できるようにするための取り組みの一環として、このダッシュボードに Azure Firewall Manager を統合しました。 全ネットワークをまたいでファイアウォールのカバレッジ状態を確認できるほか、Security Center から Azure Firewall のポリシーを一元管理できるようになりました。
-
-このダッシュボードの詳細については [Azure Security Center の概要ページ](overview-page.md)を参照してください。
-
-:::image type="content" source="media/release-notes/overview-dashboard-firewall-manager.png" alt-text="Security Center の概要ダッシュボードに Azure Firewall のタイルが表示されているところ":::
-
-
-### <a name="sql-vulnerability-assessment-now-includes-the-disable-rule-experience-preview"></a>SQL 脆弱性評価に "ルールの無効化" エクスペリエンスを追加 (プレビュー)
-
-Security Center には、データベースの脆弱性となりうる問題を検出、追跡、および修復するうえで役立つ脆弱性スキャナーが組み込まれています。 評価スキャンの結果では、SQL マシンのセキュリティ状態の概要と、セキュリティに関する検出結果の詳細が示されます。
-
-組織のニーズとして、検出結果を修復するのではなく無視する必要がある場合は、必要に応じて検出結果を無効にできます。 無効化された検出結果は、セキュリティ スコアに影響を与えたり、不要なノイズを生成したりすることはありません。
-
-詳細については、「[特定の検出結果を無効にする](defender-for-sql-on-machines-vulnerability-assessment.md#disable-specific-findings-preview)」を参照してください。
-
-
-
-### <a name="azure-monitor-workbooks-integrated-into-security-center-and-three-templates-provided"></a>Azure Monitor ブックを Security Center に統合し、テンプレートを 3 件提供
-
-Ignite Spring 2021 において、Security Center に Azure Monitor ブックを統合したエクスペリエンスを発表しました。
-
-この新しい統合を使用すると、Security Center のギャラリーから面倒な設定のいらないテンプレートを使えるようになります。 ブック テンプレートを使用すると、組織のセキュリティ体制を追跡するための動的なビジュアル レポートを閲覧したり、作成したりできます。 また、Security Center のデータをはじめとするサポートされているデータ型に基づいて新しいブックを作成したり、Security Center の GitHub コミュニティから入手したコミュニティ ワークブックをすばやくデプロイしたりすることもできます。
-
-用意されているテンプレート レポートは次の 3 つです。
-
-- **セキュリティ スコアの推移** - サブスクリプションのスコアと、リソースに対する推奨事項の変化を追跡できます
-- **システムの更新プログラム** - リソース、OS、重要度などに応じて、システムに適用できていない更新プログラムを表示します
-- **脆弱性評価の検出結果** - Azure リソースを対象とした脆弱性スキャンの検出結果を表示します
-
-ここに挙げたレポートを使用する方法や、独自のレポートを作成する方法の詳細については、「[豊富な機能を備えた対話型の Security Center データ レポートを作成する](custom-dashboards-azure-workbooks.md)」を参照してください。
-
-:::image type="content" source="media/custom-dashboards-azure-workbooks/secure-score-over-time-snip.png" alt-text="経過時間に応じたセキュア スコア レポート。":::
-
-
-### <a name="regulatory-compliance-dashboard-now-includes-azure-audit-reports-preview"></a>規制コンプライアンス ダッシュボードに Azure 監査レポートを追加 (プレビュー)
-
-規制コンプライアンス ダッシュボードのツール バーから、Azure と Dynamics の証明書レポートをダウンロードできるようになりました。 
-
-:::image type="content" source="media/release-notes/audit-reports-regulatory-compliance-dashboard.png" alt-text="規制コンプライアンス ダッシュボードのツール バー":::
-
-関連するレポートの種類 (PCI、SOC、ISO など) のタブを選択し、フィルターを使用すると、必要なレポートを見つけることができます。
-
-詳細は、「[規制コンプライアンス ダッシュボードでの標準の管理](update-regulatory-compliance-packages.md)」を参照してください。
-
-:::image type="content" source="media/release-notes/audit-reports-list-regulatory-compliance-dashboard.png" alt-text="利用可能な Azure 監査レポートの一覧にフィルターを適用する。":::
-
-
-
-### <a name="recommendation-data-can-be-viewed-in-azure-resource-graph-with-explore-in-arg"></a>[Explore in ARG]\(ARG で探索\) を使用した Azure Resource Graph での推奨データの表示
-
-推奨事項の詳細ページに、[Explore in ARG]\(ARG で探索\) ツールバー ボタンが含まれるようになりました。 このボタンを使用して、Azure Resource Graph のクエリを開き、推奨データを探索、エクスポート、および共有します。
-
-Azure Resource Graph (ARG) を使用すると、堅牢なフィルター処理、グループ化、および並べ替え機能を使用して、クラウド環境全体のリソース情報にすばやくアクセスできます。 これは、Azure サブスクリプション全体の情報を、プログラムから、または Azure portal 内ですばやく効率的に照会する方法です。
-
-[Azure Resource Graph (ARG)](../governance/resource-graph/index.yml) の詳細について参照してください。
-
-:::image type="content" source="media/release-notes/explore-in-resource-graph.png" alt-text="Azure Resource Graph で推奨データを探索する。":::
-
-
-### <a name="updates-to-the-policies-for-deploying-workflow-automation"></a>ワークフローの自動化をデプロイするためのポリシーを更新
-
-組織の監視とインシデント対応プロセスを自動化すると、セキュリティ インシデントの調査と軽減にかかる時間を大幅に短縮できます。
-
-Microsoft では、ワークフローの自動化のプロシージャを作成および構成し、組織全体にデプロイするための Azure Policy "DeployIfNotExist" ポリシーを 3 つ提供しています。
-
-|目標  |ポリシー  |ポリシー ID  |
-|---------|---------|---------|
-|セキュリティ アラートのワークフローの自動化|[Azure Security Center アラートに対してワークフローの自動化をデプロイする](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2ff1525828-9a90-4fcf-be48-268cdd02361e)|f1525828-9a90-4fcf-be48-268cdd02361e|
-|セキュリティに関する推奨事項のワークフローの自動化|[Azure Security Center 推奨事項に対してワークフローの自動化をデプロイする](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f73d6ab6c-2475-4850-afd6-43795f3492ef)|73d6ab6c-2475-4850-afd6-43795f3492ef|
-|規制コンプライアンスの変化に関するワークフローの自動化|[Azure Security Center の法令遵守のためにワークフローの自動化をデプロイする](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f73d6ab6c-509122b9-ddd9-47ba-a5f1-d0dac20be63c)|509122b9-ddd9-47ba-a5f1-d0dac20be63c|
-||||
-
-ここに挙げたポリシーの機能について、2 点更新を実施しました。
-
-- 割り当てると適用され、そのまま有効な状態が維持されます。
-- 既にデプロイされている場合でも、ポリシーをカスタマイズしたり、パラメーターを更新したりできるようになりました。 たとえば、別の評価キーを追加したり、既存の評価キーを編集したりする必要が生じた場合には、そのような操作を行うことができます。
-
-[ワークフローの自動化テンプレート](https://github.com/Azure/Azure-Security-Center/tree/master/Workflow%20automation)を使用して開始するには、こちらを参照してください。
-
-方法の詳細については、「[Security Center のトリガーへの応答を自動化する](workflow-automation.md)」を参照してください。
-
-
-### <a name="two-legacy-recommendations-no-longer-write-data-directly-to-azure-activity-log"></a>従来の 2 つの推奨事項で Azure アクティビティ ログにデータが直接書き込まれなくなる 
-
-Security Center によって、ほぼすべてのセキュリティに関する推奨事項のデータが Azure Advisor に渡され、そこから [Azure アクティビティ ログ](../azure-monitor/essentials/activity-log.md)に書き込まれます。
-
-2 つの推奨事項については、データは同時に Azure アクティビティ ログに直接書き込まれます。 この変更により、Security Center によって、これらの従来のセキュリティに関する推奨事項のデータがアクティビティ ログに直接書き込まれなくなります。 代わりに、他のすべての推奨事項と同様に、データは Azure Advisor にエクスポートされます。
-
-この 2 つの従来の推奨事項は次のとおりです。
--  - お使いのマシンで Endpoint Protection の正常性の問題を解決する必要があります
-- 使用しているマシンでセキュリティ構成の脆弱性を修復する必要がある
-
-アクティビティ ログの "TaskDiscovery タイプの推奨事項" カテゴリでこの 2 つの推奨事項の情報にアクセスしていた場合、これは使用できなくなります。
-
-
-### <a name="recommendations-page-enhancements"></a>推奨事項ページの拡充 
-
-推奨事項一覧の改良版がリリースされ、一目で詳細情報を確認できるようになりました。
-
-これにより、ページには以下が表示されます。
-
-1. 各セキュリティ コントロールの最大スコアと現在のスコア。
-1. **修正** や **プレビュー** などのタグに代わるアイコン。
-1. 各推奨事項に関連する[ポリシー イニシアチブ](security-policy-concept.md)を示す新しい列。これは、"コントロールでグループ化" が無効になっている場合に表示されます。
-
-:::image type="content" source="media/release-notes/recommendations-grid-enhancements.png" alt-text="Azure Security Center の推奨事項ページの機能強化 - 2021 年 3 月" lightbox="media/release-notes/recommendations-grid-enhancements.png":::
-
-:::image type="content" source="media/release-notes/recommendations-grid-enhancements-initiatives.png" alt-text="Azure Security Center の推奨事項の &quot;フラット&quot; リストの機能強化 - 2021 年 3 月" lightbox="media/release-notes/recommendations-grid-enhancements-initiatives.png":::
-
-詳細については、[Azure Security Center でのセキュリティに関する推奨事項](security-center-recommendations.md)を参照してください。

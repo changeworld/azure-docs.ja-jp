@@ -59,7 +59,7 @@ Azure Media Services は、さまざまなプロトコルでビデオやオー�
 PUT https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/liveEvents/:liveEventName?api-version=2019-05-01-preview&autoStart=true 
 ```
 
-この操作には次の本文があります (取り込みプロトコルとしての RTMP によってパススルー ライブ イベントが作成されます)。 transcriptions プロパティが追加されていることに注目してください。
+この操作には次の本体が存在します (この本体では、RTMP を取り込み用のプロトコルに使用して、シンプルなパススルー Live Event を作成します)。 transcriptions プロパティが追加されていることに注目してください。
 
 ```
 {
@@ -93,7 +93,7 @@ PUT https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:r
       }
     },
     "encoding": {
-      "encodingType": "None"
+      "encodingType": "PassthroughBasic"
     },
     "transcriptions": [
       {

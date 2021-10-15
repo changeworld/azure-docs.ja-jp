@@ -6,12 +6,12 @@ ms.subservice: shared-capabilities
 ms.date: 04/28/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9fc7a8d5b27da251f13f2c9dfeffa03f7cdbd149
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: f10c1f70026b905521193a0dd511ba1e65de6849
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114452561"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129274028"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Azure Automation でモジュールを管理する
 
@@ -30,9 +30,6 @@ Automation アカウントを作成すると、Azure Automation は既定で一�
 
 Automation が Runbook と DSC コンパイル ジョブを実行すると、モジュールがサンドボックスに読み込まれ、そこで Runbook を実行し、DSC 構成をコンパイルできるようになります。 また、Automation は、DSC リソースを自動的に DSC プル サーバー上のモジュールに配置します。 マシンは、DSC 構成を適用するときに、そのリソースをプルできます。
 
->[!NOTE]
->Runbook と DSC 構成に必須のモジュールだけをインポートするようにしてください。 ルート Az モジュールをインポートすることはお勧めしません。 これには、他に不要と思われるモジュールが多く含まれており、それらはパフォーマンスの問題を引き起こす可能性があります。 代わりに、Az.Compute などのモジュールを個々にインポートしてください。
-
 クラウド サンドボックスでは、最大 48 のシステム呼び出しがサポートされ、他のすべての呼び出しはセキュリティ上の理由で制限されます。 資格情報の管理や一部のネットワークなどのその他の機能は、クラウド サンドボックスではサポートされません。
 
 含まれるモジュールとコマンドレットの数が多いため、サポートされていない呼び出しを行うコマンドレットを事前に把握することは困難です。 一般的に、コマンドレットのうち、昇格されたアクセス権を必要とするもの、パラメーターとして資格情報を必要とするもの、ネットワークに関連するものには問題が見られます。 AIPService PowerShell モジュールの [Connect-AipService](/powershell/module/aipservice/connect-aipservice) や DNSClient モジュールの [Resolve-DnsName](/powershell/module/dnsclient/resolve-dnsname) など、フルスタックのネットワーク操作を実行するコマンドレットは、サンドボックスではサポートされません。
@@ -44,19 +41,28 @@ Automation が Runbook と DSC コンパイル ジョブを実行すると、モ
 
 ## <a name="default-modules"></a>既定のモジュール
 
-次の表に、Automation アカウントを作成したときに Azure Automation が既定でインポートするモジュールを示します。 Automation を使用してこれらのモジュールの新しいバージョンをインポートできます。 ただし、新しいバージョンを削除した場合でも、Automation アカウントから元のバージョンを削除することはできません。 これらの既定のモジュールにいくつかの AzureRM モジュールが含まれていることに注意してください。
+新しい Automation アカウントにはすべて、最新バージョンの PowerShell Az モジュールが既定でインポートされています。 Az モジュールは AzureRM の置き換えであり、Azure で使用するための推奨されるモジュールです。 新しい Automation アカウントの **既定のモジュール** には、既存の 24 の AzureRM モジュールと 60 以上の Az モジュールが含まれています。
 
-既定のモジュールは、グローバル モジュールとも呼ばれます。 Azure portal で、アカウントの作成時にインポートされたモジュールを表示すると、**グローバル モジュール** プロパティが **true** になります。
+Automation アカウントのユーザーがモジュールを最新の Az モジュールに更新するためのネイティブ オプションがあります。 この操作では、すべてのモジュール依存関係をバックエンドで処理するため、モジュールを[手動で](../automation-update-azure-modules.md#update-az-modules)更新したり、Runbook を実行して [Azure モジュールを更新](../automation-update-azure-modules.md#obtain-a-runbook-to-use-for-updates)したりする手間が省けます。  
+
+既存の Automation アカウントに AzureRM モジュールしかない場合は、[[Az モジュールの更新]](../automation-update-azure-modules.md#update-az-modules) オプションにより、ユーザーが選択したバージョンの Az モジュールで Automation アカウントが更新されます。  
+
+既存の Automation アカウントに AzureRM と一部の Az モジュールがある場合は、そのオプションにより、残りの Az モジュールがその Automation アカウントにインポートされます。 既存の Az モジュールが優先されるため、更新操作でこれらのモジュールは更新されません。 これは、Runbook によって使用されているモジュールを誤って更新することで、モジュールの更新操作が Runbook の実行エラーを発生させることがないようにするためです。 このシナリオで推奨される方法は、まず既存の Az モジュールを削除し、その後に更新操作を実行して、最新の Az モジュールが Automation アカウントにインポートされるようにすることです。 既定ではインポートされない、このようなモジュールの種類は **[カスタム]** と呼ばれます。  **[カスタム]** モジュールは、常に **既定の** モジュールより優先されます。  
+
+例: Az モジュール 6.3.0 によって提供されるバージョン 2.3.0 でインポートされた `Az.Aks` モジュールが既にあり、Az モジュールを最新の 6.4.0 バージョンに更新しようとしているとします。 更新操作では、`Az.Aks` を除き、すべての Az モジュールが 6.4.0 パッケージからインポートされます。 最新バージョンの `Az.Aks` を使用するには、まず既存のモジュールを削除し、その後に更新操作を実行します。あるいは、「[Az モジュールをインポートする](#import-az-modules)」の説明に従って、このモジュールを個別に更新して、別のバージョンの特定のモジュールをインポートすることもできます。  
+
+次の表は、Automation アカウントを作成したときに Azure Automation によって既定でインポートされるモジュールの一覧を示しています。 Automation を使用してこれらのモジュールの新しいバージョンをインポートできます。 ただし、新しいバージョンを削除した場合でも、Automation アカウントから元のバージョンを削除することはできません。
+
+既定のモジュールは、グローバル モジュールとも呼ばれます。 Azure portal で、アカウントが作成されたときにインポートされたモジュールを表示すると、 **[グローバル モジュール]** プロパティが **true** になります。
 
 ![Azure portal のグローバル モジュール プロパティのスクリーンショット](../media/modules/automation-global-modules.png)
-
-Automation によって、新規または既存の Automation アカウントに、ルート Az モジュールが自動的にインポートされることはありません。 これらのモジュールの操作の詳細については、「[Az モジュールへの移行](#migrate-to-az-modules)」を参照してください。
 
 > [!NOTE]
 > [Start/Stop VMs during off-hours](../automation-solution-vm-management.md) 機能のデプロイに使用される Automation アカウントでモジュールおよび Runbook を変更することはお勧めしません。
 
 |モジュール名|Version|
 |---|---|
+|Az.* | [PowerShell ギャラリー](https://www.powershellgallery.com/packages/Az)の **[パッケージの詳細]** にある完全な一覧を参照|
 | AuditPolicyDsc | 1.1.0.0 |
 | Azure | 1.0.3 |
 | Azure.Storage | 1.0.3 |
@@ -81,10 +87,6 @@ Automation によって、新規または既存の Automation アカウントに
 | xDSCDomainjoin | 1.1 |
 | xPowerShellExecutionPolicy | 1.1.0.0 |
 | xRemoteDesktopAdmin | 1.1.0.0 |
-
-## <a name="az-modules"></a>Az モジュール
-
-Az.Automation の場合、多くのコマンドレットの名前は、AzureRM モジュールに使用されるものと同じです。ただし、`AzureRM` のプレフィックスが `Az` に変更されています。 この名前付け規則に従わない Az モジュールの一覧については、[例外の一覧](/powershell/azure/migrate-from-azurerm-to-az#update-cmdlets-modules-and-parameters)を参照してください。
 
 ## <a name="internal-cmdlets"></a>内部コマンドレット
 
@@ -122,8 +124,8 @@ Azure Automation は、カスタム モジュールをインポートしてそ�
 
 AzureRM モジュールと Az モジュールを同じ Automation アカウントで実行することはお勧めできません。 AzureRM から Az に移行することが確実である場合は、完全な移行を完全にコミットすることをお勧めします。 Automation では、多くの場合、起動時間を節約するために Automation アカウントのサンドボックスが再利用されます。 モジュールの完全な移行を行っていない場合、AzureRM モジュールのみを使用するジョブを開始し、次に Az モジュールのみを使用する別のジョブを開始することになります。 サンドボックスは間もなくクラッシュし、モジュールに互換性がないことを示すエラーが返されます。 このような状況では、特定の Runbook または構成ではクラッシュがランダムに発生します。
 
->[!NOTE]
->新しい Automation アカウントを作成すると、Az モジュールへの移行後でも、Automation では既定で AzureRM モジュールがインポートされます。 引き続き、AzureRM コマンドレットを使用してチュートリアルの Runbook を更新できます。 ただし、これらの Runbook は実行しないでください。
+> [!NOTE]
+> 新しい Automation アカウントを作成すると、Az モジュールへの移行後でも、Automation によって引き続き AzureRM モジュールが既定でインストールされます。
 
 ### <a name="test-your-runbooks-and-dsc-configurations-prior-to-module-migration"></a>モジュールを移行する前に Runbook と DSC 構成をテストする
 
@@ -148,7 +150,7 @@ Automation アカウントに Az モジュールをインポートしても、Ru
 * Runbook で [using module](/powershell/module/microsoft.powershell.core/about/about_using#module-syntax) ステートメントを使用してモジュールが明示的にインポートされたとき。 using ステートメントは、Windows PowerShell 5.0 以降でサポートされており、クラスと列挙型のインポートをサポートしています。
 * Runbook が別の依存モジュールをインポートするとき。
 
-Az モジュールを Automation アカウントにインポートするには、Azure portal を使用します。 利用可能なすべての Az モジュールではなく、必要な Az モジュールだけをインポートするようにしてください。 [Az.Accounts](https://www.powershellgallery.com/packages/Az.Accounts/1.1.0) には他の Az モジュールが依存しているため、必ず他のモジュールの前にこのモジュールをインポートするようにしてください。
+Az モジュールを Automation アカウントにインポートするには、Azure portal を使用します。 [Az.Accounts](https://www.powershellgallery.com/packages/Az.Accounts/1.1.0) には他の Az モジュールが依存しているため、必ず他のモジュールの前にこのモジュールをインポートするようにしてください。
 
 1. Azure [Portal](https://portal.azure.com) にサインインします。
 1. **Automation アカウント** を検索して選択します。

@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 06/17/2021
-ms.openlocfilehash: 61e2f33511e6a200258ed16b5ef191e153553db8
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 711b35ec11d42ae16a4b4db08d17e85b5217d41f
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "122653647"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129387519"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-flexible-server-using-the-azure-portal"></a>Azure portal を使用して Azure Database for MySQL フレキシブル サーバーの読み取りレプリカを作成し、管理する方法
 
@@ -25,7 +25,8 @@ ms.locfileid: "122653647"
 > [!Note]
 >
 > * 高可用性が有効になっているサーバーでは、レプリカはサポートされていません。 
->
+> 
+> * 読み取りレプリカ機能は、汎用とメモリ最適化のどちらかの価格レベルにおける Azure Database for MySQL - フレキシブル サーバーにのみ使用可能です。 ソース サーバーがこれらの価格レベルのいずれであるかを確認します。
 > * プライマリ サーバーで GTID が有効になっている場合 (`gtid_mode` = ON)、新しく作成されたレプリカでも GTID が有効になり、GTID ベースのレプリケーションが使用されます。 詳細については、「[グローバル トランザクション識別子 (GTID)](concepts-read-replicas.md#global-transaction-identifier-gtid)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -49,7 +50,7 @@ ms.locfileid: "122653647"
 
    :::image type="content" source="./media/how-to-read-replica-portal/add-replica.png" alt-text="Azure Database for MySQL - レプリケーション":::
 
-5. レプリカ サーバーの名前を入力します。
+5. レプリカ サーバーの名前を入力します。 リージョンで Availability Zones がサポートされている場合は、任意の可用性ゾーンを選択することができます。
 
     :::image type="content" source="./media/how-to-read-replica-portal/replica-name.png" alt-text="Azure Database for MySQL - レプリカ名":::
 

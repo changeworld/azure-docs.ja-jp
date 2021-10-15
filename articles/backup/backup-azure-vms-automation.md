@@ -4,12 +4,12 @@ description: PowerShell を使用して Azure Backup によって Azure VM を�
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 89514bad58633727b5189c7d0daecccf5372efea
-ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
+ms.openlocfilehash: 6f669a7382cfe7dad4c1a58186ce3c6a30f49063
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123214991"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129533972"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>PowerShell を使用して Azure VM をバックアップおよび復元する
 
@@ -529,6 +529,12 @@ Wait-AzRecoveryServicesBackupJob -Job $restorejob -Timeout 43200
 $restorejob = Get-AzRecoveryServicesBackupJob -Job $restorejob -VaultId $targetVault.ID
 $details = Get-AzRecoveryServicesBackupJobDetail -Job $restorejob -VaultId $targetVault.ID
 ```
+
+#### <a name="using-managed-identity-to-restore-disks"></a>マネージド ID を使用したディスクの復元
+
+Azure Backup では、復元操作中にマネージド ID (MSI) を使用して、ディスクを復元する必要があるストレージ アカウントにアクセスすることもできます。 このオプションは現在、マネージド ディスクの復元でのみサポートされています。
+
+ディスクの復元にコンテナーのシステムによって割り当てられたマネージド ID を使用するには、Restore-AzRecoveryServicesBackupItem コマンドに追加のフラグ * **-UseSystemAssignedIdentity** _ を渡します。 ユーザー割り当てマネージド ID を使用する場合は、コンテナーのマネージド ID の ARM ID をパラメーターの値として使用して、パラメーター _*_ -UserAssignedIdentityId_** を渡します。 コンテナーのマネージド ID を有効にする方法については、[この記事](encryption-at-rest-with-cmk.md#enable-managed-identity-for-your-recovery-services-vault)を参照してください。 
 
 #### <a name="restore-selective-disks"></a>選択的なディスクの復元
 

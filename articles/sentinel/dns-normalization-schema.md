@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 06/15/2021
 ms.author: bagol
-ms.openlocfilehash: 21775c8d6e9743b65a791abb946c571862b68156
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 4bdb65fddfe7f72407c432fd03cce0558637ab39
+ms.sourcegitcommit: 079426f4980fadae9f320977533b5be5c23ee426
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128617566"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129419014"
 ---
 # <a name="azure-sentinel-dns-normalization-schema-reference-public-preview"></a>Azure Sentinel の DNS 正規化スキーマ リファレンス (パブリック プレビュー)
 
@@ -105,7 +105,18 @@ DNS 情報モデルにカスタム パーサーを実装するときは、次の
 | **eventtype**| string | 指定した種類の DNS クエリのみがフィルター処理されます。 値が指定されていない場合は、検索クエリのみが返されます。 |
 ||||
 
-パラメーターを使用して結果をフィルター処理するには、パーサー内にパラメーターを指定する必要があります。 
+たとえば、ドメイン名の解決に失敗した最後の日から DNS クエリのみをフィルター処理するには、次のように指定します。
+
+```kql
+imDns (responsecodename = 'NXDOMAIN', starttime = ago(1d), endtime=now())
+```
+
+指定されたドメイン名の一覧に対して DNS クエリのみをフィルター処理するには、次を使用します。
+
+```kql
+let torProxies=dynamic(["tor2web.org", "tor2web.com", "torlink.co",...]);
+imDns (domain_has_any = torProxies)
+```
 
 ## <a name="normalized-content"></a>正規化されたコンテンツ
 
@@ -145,7 +156,7 @@ DNS 情報モデルは、[OSSEM DNS エンティティ スキーマ](https://git
 | --- | --- | --- |
 | <a name=timegenerated></a>**TimeGenerated** | 日付/時刻 | イベントがレポート デバイスによって生成された日時。 |
 | **\_ResourceId** | guid | レポート デバイスまたはサービスの Azure リソース ID。Syslog、CEF、WEF を使用して転送されたイベントの場合はログ フォワーダー リソース ID。 |
-| **Type** | String | レコードがフェッチされた元のテーブル。 このフィールドは、同じイベントを異なるテーブルに対して複数のチャネルを通じて受信でき、同じ EventVendor 値と EventProduct 値を持つ場合に便利です。<br><br>たとえば、Sysmon イベントを、イベント テーブルまたは WindowsEvent テーブルのいずれかに収集できます。 |
+| **Type** | String | レコードがフェッチされた元のテーブル。 このフィールドは、同じイベントを複数のチャネルを通じて異なるテーブルで受信できるときに、同じ EventVendor 値と EventProduct 値を設定する場合に役に立ちます。<br><br>たとえば、Sysmon イベントを、イベント テーブルまたは WindowsEvent テーブルのいずれかに収集できます。 |
 | | | |
 
 > [!NOTE]
@@ -187,7 +198,7 @@ DNS 情報モデルは、[OSSEM DNS エンティティ スキーマ](https://git
 
 | **フィールド** | **クラス** | **Type** | **ノート** |
 | --- | --- | --- | --- |
-| **SrcIpAddr** | Mandatory | IP アドレス | DNS 要求を送信しているクライアントの IP アドレス。 再帰的な DNS 要求の場合、この値は通常はレポート デバイスであり、ほとんどの場合、`127.0.0.1` に設定されます。<br><br>例: `192.168.12.1` |
+| **SrcIpAddr** | 推奨 | IP アドレス | DNS 要求を送信しているクライアントの IP アドレス。 再帰的な DNS 要求の場合、この値は通常はレポート デバイスであり、ほとんどの場合、`127.0.0.1` に設定されます。<br><br>例: `192.168.12.1` |
 | **SrcPortNumber** | 省略可能 | Integer | DNS クエリの送信元ポート。<br><br>例: `54312` |
 | **DstIpAddr** | 省略可能 | IP アドレス | DNS 要求を受信しているサーバーの IP アドレス。 通常の DNS 要求の場合、この値は通常はレポート デバイスであり、ほとんどの場合、`127.0.0.1` に設定されます。<br><br>例: `127.0.0.1` |
 | **DstPortNumber** | 省略可能 | Integer  | 送信先ポート番号。<br><br>例: `53` |
@@ -195,7 +206,7 @@ DNS 情報モデルは、[OSSEM DNS エンティティ スキーマ](https://git
 | <a name=query></a>**DnsQuery** | Mandatory | FQDN | 解決する必要があるドメイン。 <br><br>**注**: ソースによっては、このクエリが異なる形式で送信されます。 たとえば、DNS プロトコル自体では、このクエリは末尾にドット ( **.** ) が含まれているため、これを削除する必要があります。<br><br>DNS プロトコルでは 1 つの要求に複数のクエリを含めることができますが、このようなシナリオは行われるとしてもまれです。 要求に複数のクエリがある場合は、最初のものをこのフィールドに格納し、必要に応じて残りを [AdditionalFields](#additionalfields) フィールドに保持します。<br><br>例: `www.malicious.com` |
 | **Domain** | エイリアス | | [Query](#query) の別名。 |
 | **DnsQueryType** | 省略可能 | Integer | このフィールドには、[DNS のリソース レコードの種類コード](https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml)が含まれる場合があります。 <br><br>例: `28`|
-| **DnsQueryTypeName** | Mandatory | Enumerated | このフィールドには、[DNS のリソース レコードの種類](https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml)の名前が含まれる場合があります。 <br><br>**注**: IANA では値の大文字と小文字は定義されていないので、分析では必要に応じて大文字と小文字を正規化する必要があります。 ソースで数値のクエリの種類コードのみが提供され、クエリの種類の名前が提供されない場合は、パーサーでこの値をエンリッチするためにルックアップ テーブルを含める必要があります。<br><br>例: `AAAA`|
+| **DnsQueryTypeName** | 推奨 | Enumerated | このフィールドには、[DNS のリソース レコードの種類](https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml)の名前が含まれる場合があります。 <br><br>**注**: IANA では値の大文字と小文字は定義されていないので、分析では必要に応じて大文字と小文字を正規化する必要があります。 ソースで数値のクエリの種類コードのみが提供され、クエリの種類の名前が提供されない場合は、パーサーでこの値をエンリッチするためにルックアップ テーブルを含める必要があります。<br><br>例: `AAAA`|
 | <a name=responsename></a>**DnsResponseName** | 省略可能 | String | レコードに含まれる応答の内容。<br> <br> DNS 応答データは、レポート デバイスの間で一貫性がなく、解析が複雑であり、ソースに依存しない分析にとっての価値は高くありません。 したがって、情報モデルでの解析と正規化は必要なく、Azure Sentinel では補助関数を使用して応答情報が提供されます。 詳細については、「[DNS の応答の処理](#handling-dns-response)」を参照してください。|
 | <a name=responsecodename></a>**DnsResponseCodeName** |  Mandatory | Enumerated | [DNS 応答コード](https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml)。 <br><br>**注**: IANA では値の大文字と小文字は定義されていないので、分析では大文字と小文字を正規化する必要があります。 ソースで数値の応答コードのみが提供され、応答コードの名前が提供されない場合は、パーサーでこの値をエンリッチするためにルックアップ テーブルを含める必要があります。 <br><br> このレコードが応答ではなく要求を表している場合は、**NA** に設定します。 <br><br>例: `NXDOMAIN` |
 | **DnsResponseCode** | 省略可能 | Integer | [DNS 数値応答コード](https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml)。 <br><br>例: `3`|
@@ -240,7 +251,7 @@ DNS 情報モデルは、[OSSEM DNS エンティティ スキーマ](https://git
 
 ### <a name="additional-entities"></a>その他のエンティティ
 
-イベントは、ユーザー、ホスト、プロセス、ファイルなどのエンティティを中心に進化します。各エンティティでは、それを記述するために複数のフィールドが必要になる場合があります。 次に例を示します。
+イベントは、ユーザー、ホスト、プロセス、ファイルなどのエンティティを中心に進化します。各エンティティでは、それを記述するために複数のフィールドが必要になる場合があります。 例:
 
 - ホストは、名前と IP アドレスの両方を持つことができます。
 - 1 つのレコードに、ソース ホストと宛先ホストの両方など、同じ種類の複数のエンティティが含まれる場合があります

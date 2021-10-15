@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 06/11/2021
+ms.date: 10/05/2021
 ms.author: alkohli
-ms.openlocfilehash: 1f3ecf919337c17514af7d9e0d3d83b2dc75bf1d
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 44716cea30df107d3e966ce39e941bcbe385ebb8
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122769257"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129535685"
 ---
 # <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU デバイス上の Kubernetes クラスターで Azure Arc を有効にする
 
@@ -140,20 +140,21 @@ Azure Arc 管理用に Kubernetes クラスターを構成するには、次の�
 
 1. 型:
 
-    `Set-HcsKubernetesAzureArcAgent -SubscriptionId "<Your Azure Subscription Id>" -ResourceGroupName "<Resource Group Name>" -ResourceName "<Azure Arc resource name (shouldn't exist already)>" -Location "<Region associated with resource group>" -TenantId "<Tenant Id of service principal>" -ClientId "<App id of service principal>" -ClientSecret "<Password of service principal>"`
+    `Set-HcsKubernetesAzureArcAgent -SubscriptionId "<Your Azure Subscription Id>" -ResourceGroupName "<Resource Group Name>" -ResourceName "<Azure Arc resource name (shouldn't exist already)>" -Location "<Region associated with resource group>" -TenantId "<Tenant Id of service principal>" -ClientId "<App id of service principal>"` 
+    
+    このコマンドを実行すると、`ClientSecret` を入力するフォローアップ プロンプトが表示されます。 `ClientSecret` は、セキュリティで保護された文字列です。
 
     Azure パブリック以外のクラウドを使用している場合は、`CloudEnvironment` パラメーターを追加します。 このパラメーターは、`AZUREPUBLICCLOUD`、`AZURECHINACLOUD`、`AZUREGERMANCLOUD`、および `AZUREUSGOVERNMENTCLOUD` に設定できます。
 
     > [!NOTE]
     > - お使いのデバイスに Azure Arc を展開するには、[Azure Arc でサポートされているリージョン](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc)を使用していることを確認してください。 
     > - `az account list-locations` コマンドを使用して、`Set-HcsKubernetesAzureArcAgent` コマンドレットで渡す正確な場所の名前を確認します。 場所の名前は通常、スペースなしの形式が使用されます。
-    > - `ClientId` と `ClientSecret` は必須パラメーターです。 `ClientSecret` は、セキュリティで保護された文字列です。
+    > - `ClientId` と `ClientSecret` は必須です。 
     
     たとえば次のようになります。
    
     ```powershell
-    [10.128.44.240]: PS>Set-HcsKubernetesAzureArcAgent -SubscriptionId "062c67a6-019b-40af-a775-c4dc1abe56ed&quot; -ResourceGroupName &quot;myaserg1&quot; -ResourceName &quot;myasetestresarc&quot; -Location &quot;westeurope&quot; -TenantId &quot;72f988bf-86f1-41af-91ab-2d7cd011db47&quot; -ClientId &quot;aa8a082e-0fa1-4a82-b51c-e8b2a9fdaa8b&quot; -ClientSecret &quot;<password>"
-    [10.128.44.240]: PS>
+    [10.128.44.240]: PS>Set-HcsKubernetesAzureArcAgent -SubscriptionId "062c67a6-019b-40af-a775-c4dc1abe56ed&quot; -ResourceGroupName &quot;myaserg1&quot; -ResourceName &quot;myasetestresarc&quot; -Location &quot;westeurope&quot; -TenantId &quot;72f988bf-86f1-41af-91ab-2d7cd011db47&quot; -ClientId &quot;aa8a082e-0fa1-4a82-b51c-e8b2a9fdaa8b"
     ```
     
     Azure portal で、前のコマンドで指定した名前でリソースを作成する必要があります。

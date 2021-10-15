@@ -205,8 +205,6 @@
         - name: リソース所有者のパスワード資格情報ポリシー
           href: add-ropc-policy.md
           displayName: ROPC
-        - name: セルフサービス パスワードのリセット ポリシーの設定 (非推奨)
-          href: user-flow-self-service-password-reset.md
         - name: 電話によるサインアップとサインイン
           href: phone-authentication-user-flows.md
     - name: ID プロバイダー

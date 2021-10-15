@@ -4,17 +4,20 @@ description: 別の AD テナントの Azure コンテナー レジストリに�
 ms.topic: article
 author: dlepow
 ms.author: danlep
-ms.date: 05/21/2021
-ms.openlocfilehash: 154ef93ca89c6d117d23a80986fe30ef2e14a426
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.date: 09/13/2021
+ms.openlocfilehash: da7a03e1f46523b67666a4a0ab7ab53fba909720
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111442221"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129545474"
 ---
 # <a name="pull-images-from-a-container-registry-to-an-aks-cluster-in-a-different-azure-ad-tenant"></a>コンテナー レジストリから別の Azure AD テナントの AKS クラスターにイメージをプルする
 
 ある Azure Active Directory (Azure AD) テナントに Azure AKS クラスターがあり、別のテナントに Azure コンテナー レジストリがある場合があります。 この記事では、AKS サービス プリンシパルの資格情報を使用したテナント間認証を有効してコンテナー レジストリからプルする手順について説明します。
+
+> [!NOTE]
+> クラスターとコンテナー レジストリが異なるテナントにある場合、レジストリをアタッチして、AKS マネージド ID を使用して認証することはできません。
 
 ## <a name="scenario-overview"></a>シナリオの概要
 この例の前提条件は、次のとおりです。
@@ -79,5 +82,6 @@ AKS クラスターのサブスクリプションの共同作成者ロールと�
 * [サービス プリンシパルによる Azure Container Registry 認証](container-registry-auth-service-principal.md)の詳細を確認する
 * [Kubernetes のドキュメント](https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod)でイメージのプル シークレットの詳細を確認します
 - [Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト](../active-directory/develop/app-objects-and-service-principals.md)の詳細を確認する
+- Kubernetes クラスターから [Azure Container Registry の認証を受けるシナリオ](authenticate-kubernetes-options.md)について確認する
 
 

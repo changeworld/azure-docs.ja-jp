@@ -3,12 +3,12 @@ title: Advisor を使用して Azure アプリのパフォーマンスを向上�
 description: Azure Advisor のパフォーマンスに関する推奨事項を使用すると、ビジネスに不可欠なアプリケーションのスピードと応答性を向上させることができます。
 ms.topic: article
 ms.date: 07/29/2020
-ms.openlocfilehash: a2813699e082afbc263775821839ed6946e26c1c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7229f4a786fc0afc43793ffe730470427ca2b107
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121724790"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129234928"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Azure Advisor を使用して Azure アプリケーションのパフォーマンスを向上させる
 
@@ -155,7 +155,7 @@ Azure Advisor によって、100 のクエリ ページ サイズを使用して
 ## <a name="consider-using-accelerated-writes-feature-in-your-hbase-cluster-to-improve-cluster-performance"></a>お使いの HBase クラスターで、クラスターのパフォーマンスの向上に高速書き込み機能を使用することを検討する
 Azure Advisor は過去 7 日間のシステム ログを分析し、お使いのクラスターで次のシナリオが発生したかどうかを識別します。
 1. WAL の同期時に長い待機時間が発生 
-2. 大量の書き込み要求 (1 時間に 1000 を超える avg_write_requests/second/node)
+2. 大量の書き込み要求 (1 時間に 3 回以上、1000 を超える avg_write_requests/second/node)
 
 これらの条件は、クラスターで書き込み時に長い待機時間が発生していることを示しています。 これは、お使いのクラスターで大量のワークロードが実行されたことが原因である可能性があります。お使いのクラスターのパフォーマンスを向上させるには、Azure HDInsight HBase の高速書き込み機能の利用を検討することをお勧めします。 HDInsight の Apache HBase クラスター用高速書き込み機能では、クラウド ストレージを使用する代わりに、Premium SSD マネージド ディスクをすべての RegionServer (ワーカー ノード) にアタッチします。 その結果、書き込み待機時間が短縮され、アプリケーションの回復性が向上します。 この機能の詳細については、[こちら](../hdinsight/hbase/apache-hbase-accelerated-writes.md#how-to-enable-accelerated-writes-for-hbase-in-hdinsight)を参照してください。
 

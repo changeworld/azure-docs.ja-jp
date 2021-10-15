@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 10/26/2020
 ms.author: inhenkel
-ms.openlocfilehash: f17c2fcd5793412716c72f02c7cfbe670360fa33
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 961c563a12a3edf4df5c898f0c8ee8f1a5b2daf0
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106123202"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129390123"
 ---
 # <a name="live-event-states-and-billing"></a>ライブ イベントの状態と課金
 
@@ -29,7 +29,7 @@ Azure Media Services のライブ イベントでは、その状態が **[実行
 [ライブ イベント](/rest/api/media/liveevents)の **LiveEventEncodingType** を Standard または Premium1080p に設定した場合、入力フィードがなくなり、実行中の **ライブ出力** がなくなってから 12 時間後に、まだ **[実行中]** 状態のライブ イベントがあれば、それらは Media Services によって自動的に停止されます。 ただし、ライブ イベントが **[実行中]** 状態だった期間については課金されます。
 
 > [!NOTE]
-> パススルー ライブ イベントは自動的には停止しません。過剰な課金を防ぐためには、API で明示的に停止する必要があります。
+> パススルー (基本的または標準) ライブ イベントは自動的には停止しません。過剰な課金を防ぐためには、API で明示的に停止する必要があります。
 
 ## <a name="states"></a>状態
 

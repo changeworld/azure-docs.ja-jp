@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 669b03d0d1d6f5f328cc4af368a756d0bbdab787
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: d5e46dec7fb1ecde4a7b00ef0f963c621a295c61
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113727834"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129232358"
 ---
 # <a name="enable-remote-access-to-sharepoint-with-azure-active-directory-application-proxy"></a>Azure Active Directory アプリケーション プロキシを利用し、SharePoint へのリモート アクセスを有効にする
 

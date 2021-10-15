@@ -5,12 +5,12 @@ author: noakup
 ms.author: noakuper
 ms.topic: conceptual
 ms.date: 08/01/2021
-ms.openlocfilehash: 3b7316bf7d21a117c80eb49978a807b085db004b
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 39a89fbaf72a78bad1c9a0ebca4ce068f6c65cae
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123432542"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129272892"
 ---
 # <a name="design-your-private-link-setup"></a>Private Link のセットアップ設計
 
@@ -70,7 +70,7 @@ Azure Monitor Private Link を設定する前に、ネットワーク トポロ�
 アクセス モードは慎重に選択してください。 プライベート専用アクセス モードを使用すると、サブスクリプションまたはテナントに関係なく、同じ DNS を共有しているすべてのネットワークで AMPLS 内ではないリソースへのトラフィックがブロックされます (以下で説明する Log Analytics インジェスト要求を除く)。 すべての Azure Monitor リソースを AMPLS に追加できない場合、まず、一部のリソースを追加し、オープン アクセス モードを適用します。 "*すべて*" の Azure Monitor リソースを AMPLS に追加した後で "プライベートのみ" モードに切り替えると、最大のセキュリティを確保できます。
 
 > [!NOTE]
-> Log Analytics インジェストではリソース固有のエンドポイントが使用されます。 そのため、AMPLS アクセス モードに準拠しません。 AMPLS 内のワークスペースへのインジェストはプライベート リンク経由で送信され、AMPLS 内ではないワークスペースへのインジェストでは既定のパブリック エンドポイントが使用されます。 インジェスト要求で AMPLS 外のリソースにアクセスできないようにするには、ネットワークからパブリック エンドポイントへのアクセスをブロックします。
+> Log Analytics インジェストではリソース固有のエンドポイントが使用されます。 そのため、AMPLS アクセス モードに準拠しません。 **Log Analytics インジェスト要求で AMPLS の外部にあるワークスペースにアクセスできないようにするには、AMPLS アクセス モードには関係なく、パブリック エンドポイントへのトラフィックをブロックするようにネットワーク ファイアウォールを設定します**。
 
 ### <a name="setting-access-modes-for-specific-networks"></a>特定のネットワークのアクセス モードの設定
 AMPLS リソースに設定されたアクセス モードは、すべてのネットワークに影響します。ただし、特定のネットワークに対してこれらの設定をオーバーライドすることができます。

@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 07/07/2021
+ms.date: 10/05/2021
 ms.author: memildin
-ms.openlocfilehash: 1d8feb49be378abed2a63030c6329e9e8a13d48a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e2b1b238e7f893df5eb56818f256eb324c5be6aa
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121750727"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129536048"
 ---
 # <a name="continuously-export-security-center-data"></a>Security Center のデータを連続的にエクスポートする
 
@@ -150,7 +150,7 @@ API には、Azure portal からは使用できない追加の機能が用意さ
     > 2. Azure Policy のメニューから **[定義]** を選択し、名前で検索します。 
 
 1. 関連する Azure Policy ページで、 **[割り当てる]** を選択します。
-    :::image type="content" source="./media/continuous-export/export-policy-assign.png" alt-text="Azure Policy の割り当て。":::
+    :::image type="content" source="./media/continuous-export/export-policy-assign.png" alt-text="Azure Policy を割り当てます。":::
 
 1. 各タブを開き、必要に応じてパラメーターを設定します。
     1. **[基本]** タブで、ポリシーのスコープを設定します。 集中管理を使用するには、連続エクスポートの構成を使用するサブスクリプションが含まれている管理グループにポリシーを割り当てます。 
@@ -209,6 +209,9 @@ Azure Monitor の Security Center からアラートと推奨事項を表示す�
 ## <a name="manual-one-time-export-of-alerts-and-recommendations"></a>アラートと推奨事項の手動による 1 回限りのエクスポート
 
 アラートまたは推奨事項の CSV レポートをダウンロードするには、 **[セキュリティ アラート]** または **[推奨事項]** ページを開き、 **[レポートを CSV にダウンロード]** ボタンを選択します。
+
+> [!TIP]
+> Azure Resource Graph の制限により、レポートのファイル サイズは 13,000 行に制限されています。 エクスポートされるデータが多すぎることに関連するエラーが表示される場合は、エクスポート対象として少ないサブスクリプション セットを選択して出力を制限してみてください。
 
 :::image type="content" source="./media/continuous-export/download-alerts-csv.png" alt-text="アラート データを CSV ファイルとしてダウンロードする。" lightbox="./media/continuous-export/download-alerts-csv.png":::
 

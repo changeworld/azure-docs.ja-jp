@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 08/27/2021
 ms.author: rolyon
-ms.openlocfilehash: de888e76e9ba27fa653905084193e6f8e25d2a81
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: dddcbef1b43866a7cba631cd565856aef787ec8b
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123315383"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129360943"
 ---
 # <a name="create-or-update-azure-custom-roles-using-the-azure-portal"></a>Azure portal を使用して Azure カスタム ロールを作成または更新する
 
@@ -184,7 +184,7 @@ Azure には、カスタム ロールに含めることができる何千もの�
 
     ![[アクセス許可の追加] の一覧](./media/shared/add-permissions-list.png)
 
-1. データ プレーンに適用されるアクセス許可を検索する場合は、 **[データ アクション]** をクリックします。 それ以外の場合は、アクションの切り替えを **[アクション]** のままにして、管理プレーンに適用されるアクセス許可を一覧表示します。 管理プレーンとデータ プレーンの違いの詳細については、「[管理操作とデータ操作](role-definitions.md#management-and-data-operations)」を参照してください。
+1. データ プレーンに適用されるアクセス許可を検索する場合は、 **[データ アクション]** をクリックします。 それ以外の場合は、アクションの切り替えを **[アクション]** のままにして、コントロール プレーンに適用されるアクセス許可を一覧表示します。 コントロール プレーンとデータ プレーンの違いについては、「[コントロールおよびデータ アクション](role-definitions.md#control-and-data-actions)」を参照してください。
 
 1. 必要に応じて、検索文字列を更新して検索を絞り込みます。
 

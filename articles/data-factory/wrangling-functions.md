@@ -7,21 +7,18 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.topic: conceptual
 ms.date: 04/16/2021
-ms.openlocfilehash: e3f310fb7544ed92dcf096dcf0d6e276a01fa7de
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 2af1e7f9e1b787e73247d9537b4a8876cc4f7220
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124732979"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129361223"
 ---
 # <a name="transformation-functions-in-power-query-for-data-wrangling"></a>データ ラングリングのための Power Query の変換関数
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Azure Data Factory のデータ ラングリングを使用すると、Power Query ```M``` スクリプトを Data Flow スクリプトに変換することにより、コード不要のアジャイルなデータ準備とラングリングをクラウド規模で実行できます。 ADF は [Power Query Online](/powerquery-m/power-query-m-reference) と統合されており、データ フローの Spark インフラストラクチャを使用した Spark の実行を介して、Power Query ```M``` 関数をデータ ラングリングで使用できるようにします。 
-
-> [!NOTE]
-> ADF の Power Query は現在、パブリック プレビューで提供されています。
 
 現時点では、Power Query M 関数は、作成中に利用可能であっても、そのすべてがデータ ラングリングでサポートされているわけではありません。 マッシュアップを作成しているとき、関数がサポートされていない場合は、次のエラー メッセージが表示されます。
 
@@ -104,19 +101,42 @@ Azure Data Factory のデータ ラングリングを使用すると、Power Que
 
 ## <a name="m-script-workarounds"></a>M スクリプトの回避策
 
-### <a name="for-splitcolumn-there-is-an-alternate-for-split-by-length-and-by-position"></a>```SplitColumn``` には、長さおよび位置で分割する代替方法があります
+### ```SplitColumn```
+
+長さおよび位置で分割する代替方法を以下に示します。
 
 * Table.AddColumn(Source, "First characters", each Text.Start([Email], 7), type text)
 * Table.AddColumn(#"Inserted first characters", "Text range", each Text.Middle([Email], 4, 9), type text)
 
 このオプションは、リボンの [抽出] オプションからアクセスできます
 
-:::image type="content" source="media/wrangling-data-flow/pq-split.png" alt-text="Power Query の [列の追加]":::
+:::image type="content" source="media/wrangling-data-flow/power-query-split.png" alt-text="Power Query の [列の追加]":::
 
-### <a name="for-tablecombinecolumns"></a>```Table.CombineColumns``` の場合
+### ```Table.CombineColumns```
 
 * Table.AddColumn(RemoveEmailColumn, "Name", each [FirstName] & " " & [LastName])
 
+### <a name="pivots"></a>ピボット
+
+* PQ エディターから [ピボット変換] を選択し、ピボット列を選択します。
+
+![Power Query Pivot Common](media/wrangling-data-flow/power-query-pivot-1.png)
+
+* 次に、値列と集計関数を選択します。
+
+![Power Query Pivot Selector](media/wrangling-data-flow/power-query-pivot-2.png)
+
+* [OK] をクリックすると、ピボット値でエディターのデータが更新されます。
+* 変換がサポートされていない可能性があるという警告メッセージも表示されます。
+* この警告を修正するには、PQ エディターを使用して、ピボットの一覧を手動で展開します。
+* リボンから [詳細エディター] オプションを選択します。
+* ピボット値の一覧を手動で展開します。
+* List. Distinct () を次のような値の一覧に置き換えます。
+```
+#"Pivoted column" = Table.Pivot(Table.TransformColumnTypes(#"Changed column type 1", {{"genres", type text}}), {"Drama", "Horror", "Comedy", "Musical", "Documentary"}, "genres", "Rating", List.Average)
+in
+  #"Pivoted column"
+```
 
 ## <a name="next-steps"></a>次のステップ
 

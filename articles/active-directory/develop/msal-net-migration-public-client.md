@@ -13,12 +13,12 @@ ms.date: 08/31/2021
 ms.author: sahmalik
 ms.reviewer: saeeda, shermanouko, jmprieur
 ms.custom: devx-track-csharp, aaddev, has-adal-ref
-ms.openlocfilehash: 153ac3b3ae141815246326d42b3959ae4d981081
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 1ccd2acaaec8c49de761511ebd3d4a5ad86f4095
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124837800"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129233656"
 ---
 # <a name="migrate-public-client-applications-from-adalnet-to-msalnet"></a>パブリック クライアント アプリケーションを ADAL.NET から MSAL.NET に移行する
 
@@ -40,10 +40,10 @@ ms.locfileid: "124837800"
    パブリック クライアントのシナリオは次のとおりです。
 
    - Windows で推奨されるブローカーベースの認証である [Web 認証マネージャー](scenario-desktop-acquire-token-wam.md)。
-   - サインイン プロセスを完了するための Web ベースのインターフェイスがユーザーに表示される[対話型認証](scenario-desktop-acquire-token-interactive.md)。
-   - Windows ドメインへのサインインに使用したものと同じ ID を使用してユーザーがサインインする (ドメイン参加済みまたは AAD に参加しているコンピューターの場合)、[統合 Windows 認証](scenario-desktop-acquire-token-integrated-windows-authentication.md)。
-   - ユーザー名とパスワードの資格情報を指定することでサインインが行われる[ユーザー名とパスワード](scenario-desktop-acquire-token-username-password.md)。
-   - UX が制限されたデバイスに、別のデバイスで認証フローを完了するためのデバイス コードが表示される[デバイス コード フロー](scenario-desktop-acquire-token-device-code-flow.md)。
+   - ユーザーにサインイン プロセスを完了するための Web ベースのインターフェイスが表示される[対話型認証](scenario-desktop-acquire-token-interactive.md)。
+   - ユーザーが、Windows ドメインにサインインするために使用されたのと同じ ID を使用して署名する[統合 Windows 認証](scenario-desktop-acquire-token-integrated-windows-authentication.md) (ドメイン参加済みまたは Azure AD 参加済みマシンの場合)。
+   - ユーザー名とパスワードの資格情報を指定することによってサインインが実行される[ユーザー名とパスワード](scenario-desktop-acquire-token-username-password.md)。
+   - 制限された UX のデバイスに、代替デバイス上で認証フローを完了するためのデバイス コードが表示される[デバイス コード フロー](scenario-desktop-acquire-token-device-code-flow.md)。
 
 
 ## <a name="interactive"></a>[対話](#tab/interactive)
@@ -124,23 +124,23 @@ catch (MsalUiRequiredException) // no change in the pattern
 
 ## <a name="integrated-windows-authentication"></a>[統合 Windows 認証](#tab/iwa)
 
-統合 Windows 認証の場合、パブリック クライアント アプリケーションのサインインに、Windows ドメインへのサインインに使用したものと同じ ID を使用します (ドメイン参加済みまたは AAD に参加しているコンピューターの場合)。
+統合 Windows 認証では、パブリック クライアント アプリケーションが、Windows ドメインにサインインするために使用されたのと同じ ID を使用してサインインします (ドメイン参加済みまたは Azure AD 参加済みマシンの場合)。
 
-#### <a name="find-out-if-your-code-uses-integrated-windows-authentication"></a>コードで統合 Windows 認証を使用しているかどうかを確認する
+#### <a name="find-out-if-your-code-uses-integrated-windows-authentication"></a>コードで統合 Windows 認証を使用しているかどうかを調べる
 
-アプリの ADAL コードに、`AuthenticationContextIntegratedAuthExtensions` クラスの拡張メソッドとして使用できる、次のパラメーターを使用した `AcquireTokenAsync` の呼び出しが含まれている場合は、統合 Windows 認証シナリオを使用しています。
+アプリの ADAL コードに、次のパラメーターを使用した、`AuthenticationContextIntegratedAuthExtensions` クラスの拡張メソッドとして使用できる `AcquireTokenAsync` の呼び出しが含まれている場合は、そこで統合 Windows 認証シナリオを使用しています。
 
 - トークンを要求する対象のリソースを表す `resource`
 - アプリケーションの登録を表す GUID である `clientId`
 - トークンを要求する対象のユーザーを表す `UserCredential` オブジェクト。
 
-#### <a name="update-the-code-for-integrated-windows-auth-scenarios"></a>統合 Windows 認証シナリオ用にコードを更新する
+#### <a name="update-the-code-for-integrated-windows-authentication-scenarios"></a>統合 Windows 認証シナリオ用にコードを更新する
 
  [!INCLUDE [Common steps](includes/msal-net-adoption-steps-public-clients.md)]
 
 この例では、`AuthenticationContext.AcquireTokenAsync` の呼び出しを `IPublicClientApplication.AcquireTokenByIntegratedWindowsAuth` の呼び出しで置き換えます。
 
-統合 Windows 認証シナリオでの ADAL.NET と MSAL.NET のコードの比較を以下に示します。
+統合 Windows 認証シナリオ用の ADAL.NET と MSAL.NET のコードの比較を次に示します。
 
 :::row:::
 :::column span="":::
@@ -494,7 +494,7 @@ private static async Task<AuthenticationResult> AcquireByDeviceCodeAsync(IPublic
 1. 最新バージョンの MSAL.NET を使用していることを確認します。
 1. 機密クライアント アプリケーションを構築するときに設定した証明機関ホストと、ADAL で使用した証明機関ホストが類似していることを確認します。 特に、同じ[クラウド](msal-national-cloud.md) (Azure Government、Azure China 21Vianet、または Azure Germany) を使用していることを確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [ADAL.NET と MSAL.NET アプリの違い](msal-net-differences-adal-net.md)についての詳細を確認してください。
 [MSAL.NET でのトークン キャッシュのシリアル化](msal-net-token-cache-serialization.md)の詳細を確認してください。

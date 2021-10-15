@@ -12,12 +12,12 @@ ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: ba29c7577bd725cf0c165e0cae8374d3c4bb647c
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 5a13171d234664ca09508f2404acb95e468f9d7c
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108187123"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129232320"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-sso-to-your-apps-with-application-proxy"></a>アプリケーション プロキシを使ったアプリへのシングル サインオン (SSO) の Kerberos の制約付き委任
 
@@ -88,8 +88,8 @@ Active Directory の構成は、アプリケーション プロキシ コネク�
 1. 「 [アプリケーション プロキシを使用したアプリケーションの発行](../app-proxy/application-proxy-add-on-premises-application.md)」で説明されている手順に従って、アプリケーションを発行します。 **[事前認証方法]** で **[Azure Active Directory]** が選択されていることを確認してください。
 2. アプリケーションがエンタープライズ アプリケーションの一覧に表示されたら、アプリケーションを選択して **[シングル サインオン]** をクリックします。
 3. シングル サインオン モードを **[統合 Windows 認証]** に設定します。  
-4. アプリケーション サーバーの **[内部アプリケーション SPN]** を入力します。 この例では、公開されたアプリケーションの SPN は、http/www.contoso.com です。 この SPN は、コネクタが委任された資格情報を提供できるサービスの一覧に入っている必要があります。 
-5. ユーザーの代わりに使うコネクタに **委任されたログイン ID** を選択します。 詳細については、「[さまざまなオンプレミス ID とクラウド ID の操作](#working-with-different-on-premises-and-cloud-identities)」をご覧ください。
+4. アプリケーション サーバーの **[内部アプリケーション SPN]** を入力します。 この例では、公開されたアプリケーションの SPN は、`http/www.contoso.com` です。 この SPN は、コネクタが委任された資格情報を提供できるサービスの一覧に入っている必要があります。
+5. ユーザーの代わりに使うコネクタに **委任されたログイン ID** を選択します。 詳細については、「[さまざまなオンプレミス ID とクラウド ID の操作](#working-with-different-on-premises-and-cloud-identities)」を参照してください。
 
    ![高度なアプリケーションの構成](./media/application-proxy-configure-single-sign-on-with-kcd/cwap_auth2.png)  
 

@@ -8,12 +8,12 @@ ms.author: abnarain
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/22/2021
-ms.openlocfilehash: 06bdd49df0f8a4d79ffece298fee2ea2691b0796
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 24e6157ce585914229a3b65a20feba4640ca272a
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129219213"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129458815"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Azure Data Factory のソース管理
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -102,6 +102,7 @@ Azure Repos Git 統合を使ったビジュアルの作成では、データ フ
 | **ProjectName** | Azure Repos プロジェクトの名前。 Azure Repos プロジェクトの名前は `https://{organization name}.visualstudio.com/{project name}` で確認することができます｡ | `<your Azure Repos project name>` |
 | **RepositoryName** | Azure Repos コード リポジトリの名前｡ Azure Repos プロジェクトには、プロジェクトの拡大に合わせてソース コードを管理するための Git リポジトリが含まれます。 新しいリポジトリを作成するか、プロジェクト内に既にある既存のリポジトリを使用できます。 | `<your Azure Repos code repository name>` |
 | **コラボレーション ブランチ** | 発行に使用する Azure Repos コラボレーション ブランチ。 既定では、これは `main` です。 別のブランチからのリソースを発行する場合は、この設定を変更します。 | `<your collaboration branch name>` |
+| **発行ブランチ** | 発行ブランチは、リポジトリ内の、発行に関する ARM テンプレートが保存および更新されるブランチです。 既定では、これは `adf_publish` です。 | `<your publish branch name>` |
 | **ルート フォルダー** | Azure Repos コラボレーション ブランチのルート フォルダー。 | `<your root folder name>` |
 | **[Import existing Data Factory resources to repository]\(既存の Data Factory リソースをリポジトリにインポートする\)** | UX **作成キャンバス** からの既存のデータ ファクトリ リソースを Azure Repos Git リボジトリにインポートするかどうかを指定します。 オンにすると、JSON 形式でデータ ファクトリ リソースを関連付けられている Git リポジトリにインポートします。 このアクションでは、各リソースが個別にエクスポートされます (つまり、リンクされたサービスとデータセットは、異なる JSON にエクスポートされます)。 このボックスを選択しなかった場合、既存のリソースはインポートされません。 | 選択済み (既定値) |
 | **Branch to import resource into** | データ ファクトリのリソース (パイプライン、データセット、リンクされたサービスなど) をインポートするブランチを指定します。 次のブランチのいずれかにリソースをインポートできます。a. コラボレーション b. 新規作成 c. 既存のものを使用 |  |
@@ -296,6 +297,12 @@ Data Factory のリンクされたサービスのすべての接続文字列ま�
 1. 変更をコラボレーション ブランチにマージする pull request を作成します 
 
 必要に応じて、いずれかの方法を選択します。 
+
+### <a name="all-resources-showing-as-new-on-publish"></a>発行時にすべてのリソースが新規と表示される
+
+発行中は、以前に発行されたリソースであっても、すべてのリソースが新規として表示されることがあります。 これは、ファクトリの ARM テンプレートを再デプロイするか、PowerShell または REST API を使用してファクトリの *repoConfiguration* プロパティを更新することにより、ファクトリの *repoConfiguration* プロパティで *lastCommitId* プロパティがリセットされた場合に発生します。 リソース発行を続けると問題は解決しますが、再発防止のため、ファクトリの *repoConfiguration* プロパティを更新することは避けてください。 
+
+
 
 ## <a name="switch-to-a-different-git-repository"></a>別の Git リポジトリに切り替える
 

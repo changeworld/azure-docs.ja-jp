@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2021
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: 065a06955adc9c157134e138a25aaee9f54f5bea
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: c7c4c28218d1cf6e1c55523d926fd3691a8c13a8
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121862114"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129356291"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure Machine Learning のしくみ:アーキテクチャと概念
 
@@ -268,7 +268,7 @@ Azure Machine Learning で提供される監視およびログ記録機能は次
 + コードを記述せずにワークフローの手順を行うための [Azure Machine Learning デザイナー](concept-designer.md)
 + [自動機械学習](concept-automated-ml.md)の Web エクスペリエンス
 + 統合された Jupyter ノートブック サーバーで独自のコードを作成して実行するための [Azure Machine Learning ノートブック](how-to-run-jupyter-notebooks.md)
-+ データをラベル付けするプロジェクトを作成、管理、および監視するための[データのラベル付けプロジェクト](how-to-create-labeling-projects.md)
++ [イメージ](how-to-create-image-labeling-projects.md)または[テキスト](how-to-create-text-labeling-projects.md)をラベル付けするプロジェクトを作成、管理、および監視するためのデータのラベル付けプロジェクト
 
 ### <a name="programming-tools"></a>プログラミング ツール
 

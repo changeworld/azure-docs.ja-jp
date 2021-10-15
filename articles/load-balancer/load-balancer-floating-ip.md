@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/13/2020
 ms.author: allensu
-ms.openlocfilehash: e103af26d62518dabb5314c79c61335a2791417a
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: a72eceba85e14e058fa7c8ba2b109009e46e6df3
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123479870"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129357453"
 ---
 # <a name="azure-load-balancer-floating-ip-configuration"></a>Azure Load Balancer のフローティング IP の構成
 
@@ -24,7 +24,7 @@ ms.locfileid: "123479870"
 
 ## <a name="floating-ip"></a>フローティング IP
 
-一部のアプリケーション シナリオでは、バックエンド プール内の 1 つの VM で複数のアプリケーション インスタンスによって同じポートが使用されることを選択するまたは使用されることが求められる場合があります。 ポート再利用の一般的な例を次に示します 
+一部のアプリケーション シナリオでは、バックエンド プール内の 1 つの VM で複数のアプリケーション インスタンスによって同じポートが使用されることを選択するまたは使用されることが求められる場合があります。 ポート再利用の一般的な例を次に示します。 
 - 高可用性を実現するためのクラスタリング
 - ネットワーク仮想アプライアンス
 - 再暗号化によらない複数 TLS エンドポイントの公開。 

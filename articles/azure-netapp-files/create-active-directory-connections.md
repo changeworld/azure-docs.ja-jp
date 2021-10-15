@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/09/2021
 ms.author: b-juche
-ms.openlocfilehash: aa47a6b9caaba4b23202390b0cb45a2392b985ea
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: ba34d9d1d85ae5845247133289001ffe58174213
+ms.sourcegitcommit: f3f2ec7793ebeee19bd9ffc3004725fb33eb4b3f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124764407"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129407648"
 ---
 # <a name="create-and-manage-active-directory-connections-for-azure-netapp-files"></a>Azure NetApp Files の Active Directory 接続の作成と管理
 
@@ -27,7 +27,7 @@ Azure NetApp Files のいくつかの機能では、Active Directory 接続が�
 
 ## <a name="before-you-begin"></a>開始する前に  
 
-* あらかじめ容量プールを設定しておく必要があります。 「[容量プールを設定する](azure-netapp-files-set-up-capacity-pool.md)」を参照してください。   
+* あらかじめ容量プールを設定しておく必要があります。 「[容量プールの作成](azure-netapp-files-set-up-capacity-pool.md)」を参照してください。   
 * サブネットが Azure NetApp Files に委任されている必要があります。 「[サブネットを Azure NetApp Files に委任する](azure-netapp-files-delegate-subnet.md)」を参照してください。
 
 ## <a name="requirements-and-considerations-for-active-directory-connections"></a><a name="requirements-for-active-directory-connections"></a>Active Directory 接続の要件と考慮事項

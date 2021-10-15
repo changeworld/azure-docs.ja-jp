@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 09/27/2021
 ms.topic: conceptual
-ms.openlocfilehash: 293dcb57ec25fb4e6f3cc15e64f4b49b2d6ccb5f
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: 121e302708fecd20934f6ba57bd08590e45a7429
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129091314"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129233202"
 ---
 # <a name="context-switching-in-azure-automation"></a>Azure Automation でのコンテキスト切り替え
 

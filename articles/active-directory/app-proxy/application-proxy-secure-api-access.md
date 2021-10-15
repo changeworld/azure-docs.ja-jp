@@ -12,12 +12,12 @@ ms.date: 05/06/2021
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: has-adal-ref
-ms.openlocfilehash: 7f4404e3e9b09bcabfc97f0419c230e932a31815
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: 5bcdfdd3a56807db967d6be1a8bde540b88c17ca
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122419228"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129230952"
 ---
 # <a name="secure-access-to-on-premises-apis-with-azure-active-directory-application-proxy"></a>Azure Active Directory アプリケーション プロキシを使用してオンプレミス API に安全にアクセスする
 
@@ -97,7 +97,7 @@ Azure AD アプリケーション プロキシを通じて Web API を公開し�
 1. **[割り当ての追加]** ページに戻り、 **[割り当て]** を選択します。
 
 > [!NOTE]
-> 統合 Windows 認証を使用する API では、[追加の手順](./application-proxy-configure-single-sign-on-with-kcd.md)が必要になる場合があります。
+> 統合 Windows 認証を使用する API では、[追加の手順](./application-proxy-configure-single-sign-on-with-kcd.md)が必要になることがあります。
 
 ## <a name="register-the-native-app-and-grant-access-to-the-api"></a>ネイティブ アプリを登録して API へのアクセス権を付与する
 

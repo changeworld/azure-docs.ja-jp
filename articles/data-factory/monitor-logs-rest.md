@@ -1,6 +1,6 @@
 ---
 title: Azure Monitor REST API を使用して診断ログを設定する
-description: Azure Monitor REST API を使用し、Azure Data Factory の診断ログを設定する方法について説明します。
+description: Azure Monitor REST API を使用して、Azure Data Factory の診断ログを設定する方法について説明します。
 author: minhe-msft
 ms.author: hemin
 ms.reviewer: jburchel
@@ -8,16 +8,16 @@ ms.service: data-factory
 ms.subservice: monitoring
 ms.topic: conceptual
 ms.date: 09/02/2021
-ms.openlocfilehash: 309b900f6c5f2ffe8cc0fd9101e7aa0408cb2dd2
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: a78d3e68841e4463d4f66f24821b5e42c7650f44
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124837851"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129400441"
 ---
-# <a name="setup-diagnostic-logs-via-the-azure-monitor-rest-api"></a>Azure Monitor REST API を使用して診断ログを設定する
+# <a name="set-up-diagnostic-logs-via-the-azure-monitor-rest-api"></a>Azure Monitor REST API を使用して診断ログを設定する
 
-この記事では、Azure Monitor REST API を使用し、Azure Data Factory の診断ログを設定する方法について説明します。
+この記事では、Azure Monitor REST API を使用して、Azure Data Factory の診断ログを設定する方法について説明します。
 
 ## <a name="diagnostic-settings"></a>診断設定
 
@@ -27,10 +27,12 @@ ms.locfileid: "124837851"
 * 送信するログ カテゴリを指定します。
 * ログの各カテゴリをストレージ アカウントに保持する期間を指定します。
 * リテンション期間が 0 日の場合、ログは永続的に保持されます。 または、1 日から 2,147,483,647 日の間の任意の日数を値として指定できます。
-* 保持ポリシーが設定されていても、ストレージ アカウントへのログの保存が無効になっている場合、保持ポリシーは無効になります。 たとえば、この状態は、Event Hubs または Monitor ログのオプションのみが選択されている場合に生じる可能性があります。
+* 保持ポリシーが設定されていても、ストレージ アカウントへのログの保存が無効になっている場合、保持ポリシーは無効になります。 たとえば、この状態は、イベント ハブまたは Monitor ログのオプションのみが選択されている場合に生じる可能性があります。
 * 保持ポリシーは日単位で適用されます。 日と日の間の境界は、協定世界時 (UTC) の午前 0 時になります。 1 日の終わりに、保持ポリシーの期間を超えた日のログが削除されます。 たとえば、保持ポリシーが 1 日の場合、今日が始まった時点で、昨日より前のログは削除されます。
 
-## <a name="enable-diagnostic-logs-via-the-azure-monitor-rest-api"></a>Azure Monitor REST API を使用して診断ログを有効にする
+## <a name="enable-diagnostic-logs-via-the-monitor-rest-api"></a>Monitor REST API を使用して診断ログを有効にする
+
+診断ログを有効にするには、Monitor REST API を使用します。
 
 ### <a name="create-or-update-a-diagnostics-setting-in-the-monitor-rest-api"></a>Monitor REST API の診断設定を作成または更新する
 
@@ -44,7 +46,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 #### <a name="headers"></a>ヘッダー
 
 * `{api-version}` を `2016-09-01` で置き換え
-* `{resource-id}` を、診断設定を編集するリソースの ID に置き換えます。 詳細については、[リソース グループを使用した Azure リソースの管理](../azure-resource-manager/management/manage-resource-groups-portal.md)に関するページを参照してください。
+* `{resource-id}` を、診断設定を編集するリソースの ID に置き換えます。 詳細については、 [リソース グループを使用した Azure リソースの管理](../azure-resource-manager/management/manage-resource-groups-portal.md)に関するページを参照してください。
 * `Content-Type` ヘッダーを `application/json` に設定します。
 * Azure Active Directory (Azure AD) から取得した Authorization ヘッダーを JSON Web トークンに設定します。 詳細については、[要求の認証](../active-directory/develop/authentication-vs-authorization.md)に関するページを参照してください。
 
@@ -92,7 +94,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | プロパティ | 種類 | 説明 |
 | --- | --- | --- |
 | **storageAccountId** |String | 診断ログを送信するストレージ アカウントのリソース ID。 |
-| **serviceBusRuleId** |String | 診断ログのストリーミングのために Event Hubs を作成するサービス バス名前空間のサービス バス ルール ID。 ルール ID の形式は、`{service bus resource ID}/authorizationrules/{key name}` です。|
+| **serviceBusRuleId** |String | 診断ログのストリーミングのためにイベント ハブを作成するサービス バス名前空間のサービス バス ルール ID。 ルール ID の形式は、`{service bus resource ID}/authorizationrules/{key name}` です。|
 | **workspaceId** | String | ログが保存されるワークスペースのワークスペース ID。 |
 |**メトリック**| 呼び出されたパイプラインに渡されるパイプライン実行のパラメーター値| パラメーター名を引数値にマップする JSON オブジェクト。 |
 | **logs**| 複合型| リソースの種類に対応する診断ログ カテゴリの名前。 リソースの診断ログ カテゴリの一覧を取得するには、診断設定の取得操作を実行します。 |
@@ -164,7 +166,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 #### <a name="headers"></a>ヘッダー
 
 * `{api-version}` を `2016-09-01` で置き換え
-* `{resource-id}` を、診断設定を編集するリソースの ID に置き換えます。 詳細については、[リソース グループを使用した Azure リソースの管理](../azure-resource-manager/management/manage-resource-groups-portal.md)に関するページを参照してください。
+* `{resource-id}` を、診断設定を編集するリソースの ID に置き換えます。 詳細については、 [リソース グループを使用した Azure リソースの管理](../azure-resource-manager/management/manage-resource-groups-portal.md)に関するページを参照してください。
 * `Content-Type` ヘッダーを `application/json` に設定します。
 * Azure AD から取得した Authorization ヘッダーを JSON Web トークンに設定します。 詳細については、[要求の認証](../active-directory/develop/authentication-vs-authorization.md)に関するページを参照してください。
 
@@ -217,8 +219,8 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
     "identity": null
 }
 ```
-詳細については、「[診断設定](/rest/api/monitor/diagnosticsettings)」を参照してください。
+詳細については、[診断の設定](/rest/api/monitor/diagnosticsettings)に関する記事を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure Monitor による SSIS 操作の監視](monitor-ssis.md)

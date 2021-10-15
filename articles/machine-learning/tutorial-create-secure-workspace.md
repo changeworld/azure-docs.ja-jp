@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: セキュリティで保護された仮想ネットワーク内に Azure Machine Learning ワークスペースと必要な Azure サービスを作成します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: enterprise-readiness
 ms.reviewer: jhirono
 ms.author: larryfr
 author: blackmist
 ms.date: 09/15/2021
 ms.topic: how-to
 ms.custom: subject-rbac-steps
-ms.openlocfilehash: f0b4f19e8c1e06aa8ab5657fd1c70a75814451ad
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: ad81535a8287a4b89f978c4c2523b664375d23d6
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128612189"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129428732"
 ---
 # <a name="how-to-create-a-secure-workspace"></a>セキュリティで保護されたワークスペースを作成する方法
 
@@ -37,8 +37,8 @@ ms.locfileid: "128612189"
 
 環境が前提条件を満たし、ARM テンプレートを使い慣れている場合は、[Azure にデプロイ] ボタンを選択して、このチュートリアルの最初の 5 つの手順を完了することもできます。 続きは「[ワークスペースに接続する](#connect-to-the-workspace)」から読み進めることができます。
 
-[![Azure にデプロイ](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.machinelearningservices%2Fmachine-learning-advanced%2Fazuredeploy.json)
-[![Azure US Gov にデプロイ](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazuregov.svg?sanitize=true)](https://portal.azure.us/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.machinelearningservices%2Fmachine-learning-advanced%2Fazuredeploy.json)
+[![Azure にデプロイ](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.machinelearningservices%2Fmachine-learning-workspace-vnet%2Fazuredeploy.json)
+[![Azure US Gov にデプロイ](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazuregov.svg?sanitize=true)](https://portal.azure.us/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.machinelearningservices%2Fmachine-learning-workspace-vnet%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -176,6 +176,9 @@ ms.locfileid: "128612189"
     :::image type="content" source="./media/tutorial-create-secure-workspace/storage-file-private-endpoint-config.png" alt-text="ファイルのプライベート エンドポイントを構成する UI":::
 
 1. __[確認および作成]__ を選択します。 情報が正しいことを確認し、 __[作成]__ を選択します。
+
+> [!TIP]
+> パイプラインで [ParallelRunStep](./tutorial-pipeline-batch-scoring-classification.md) を使用する予定の場合は、プライベート エンドポイントの対象となる **キュー** と **テーブル** のサブリソースを構成することも必要になります。 ParallelRunStep は、タスクのスケジュール設定とディスパッチのために、内部でキューとテーブルを使用します。
 
 ## <a name="create-a-key-vault"></a>Key Vault を作成します
 
@@ -400,8 +403,8 @@ Azure Machine Learning スタジオは Web ベースのアプリケーション�
 > [!TIP]
 > コンピューティング クラスターまたはコンピューティング インスタンスを作成すると、Azure Machine Learning によってネットワーク セキュリティ グループ (NSG) が動的に追加されます。 この NSG には、コンピューティング クラスターとコンピューティング インスタンスに固有の次のルールが含まれています。
 > 
-> * `BatchNodeManagement` サービス タグからのポート 29876 から 29877 での受信 TCP トラフィックを許可します。
-> * `AzureMachineLearning` サービス タグからのポート 44224 での受信 TCP トラフィックを許可します。
+> * <ph id="ph1">`BatchNodeManagement`</ph> サービス タグからのポート 29876 から 29877 での受信 TCP トラフィックを許可します。
+> * <ph id="ph1">`AzureMachineLearning`</ph> サービス タグからのポート 44224 での受信 TCP トラフィックを許可します。
 >
 > 次のスクリーンショットは、これらのルールの例を示しています。
 >

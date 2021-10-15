@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 09/09/2021
-ms.openlocfilehash: e6b1524f15f07bc1cb17842c5fca167016136ae0
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 10/01/2021
+ms.openlocfilehash: 8d052be49a545e34ce44dc53174a5dbca7c3d220
+ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124828459"
+ms.lasthandoff: 10/03/2021
+ms.locfileid: "129402968"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>マッピング データ フローのデバッグ モード
 
@@ -32,7 +32,7 @@ Azure Data Factory および Synapse Analytics のマッピング データ フ�
 
 :::image type="content" source="media/data-flow/debug-new-1.png" alt-text="デバッグ IR の選択":::
 
-デバッグ モードが有効なときは、アクティブな Spark クラスターを使用して対話的にデータ フローを構築します。 デバッグを無効にすると、セッションは終了します。 デバッグ セッションを有効にしている間に Azure Databricks によって発生する 1 時間あたりの料金を把握しておく必要があります。
+デバッグ モードが有効なときは、アクティブな Spark クラスターを使用して対話的にデータ フローを構築します。 デバッグを無効にすると、セッションは終了します。 デバッグ セッションを有効にしている間に Data Factory によって発生する 1 時間あたりの料金を把握しておく必要があります。
 
 ほとんどの場合は、デバッグ モードでデータ フローを構築し、ビジネス ロジックを検証してデータ変換を確認してから、作業内容を公開することをお勧めします。 パイプライン パネルの [デバッグ] ボタンを使用して、パイプライン内部のデータ フローをテストします。
 

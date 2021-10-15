@@ -14,16 +14,16 @@ ms.date: 09/14/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 31d58536b1af26d037b3c53f04bcae5c9359ff47
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: b60735ee1da80674429a4359783cab832b8dc418
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128606705"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129457033"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>Privileged Identity Management で Azure AD ロールの設定を構成する
 
-特権ロール管理者は、ロール候補の割り当てをアクティブ化しているユーザーの操作性を変更するなど、Azure Active Directory (Azure AD) 組織の Privileged Identity Management (PIM) をカスタマイズできます。
+特権ロール管理者は、ロール候補の割り当てをアクティブ化しているユーザーの操作性を変更するなど、Azure Active Directory (Azure AD) 組織の Privileged Identity Management (PIM) をカスタマイズできます。 通知をトリガーする PIM イベントと、それらを受け取る管理者の詳細については、[Privileged Identity Management の電子メール通知](pim-email-notifications.md#notifications-for-azure-ad-roles)に関するページを参照してください
 
 ## <a name="open-role-settings"></a>ロールの設定を開く
 

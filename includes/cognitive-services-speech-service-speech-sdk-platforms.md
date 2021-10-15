@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/03/2021
 ms.author: trbye
-ms.openlocfilehash: c860d1da844cb3dfc319fa192115d6a0343cc4e0
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b9cfedce886f5d1727dac91dcc1469d077a021c2
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105043256"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129585138"
 ---
 | プログラミング言語 | プラットフォーム | SDK リファレンス |
 |----------------------|----------|---------------|
@@ -21,6 +21,9 @@ ms.locfileid: "105043256"
 | Objective-C / Swift | iOS、macOS | [Objective-C SDK](/objectivec/cognitive-services/speech/) |
 | Python | Windows、Linux、macOS | [Python SDK](/python/api/azure-cognitiveservices-speech/) |
 
-<sup>1 .NET Speech SDK は .NET Standard 2.0 に基づいているため、多くのプラットフォームをサポートしています。詳細については<a href="https://docs.microsoft.com/dotnet/standard/net-standard#net-implementation-support" target="_blank">.NET 実行サポートを参照してください<span class="docon docon-navigate-external x-hidden-focus"></span></a>。</sup>
+<sup>1 .NET Speech SDK は .NET Standard 2.0 に基づいているため、多くのプラットフォームをサポートしています。詳細については、「[.NET 実装のサポート](/dotnet/standard/net-standard#net-implementation-support)」を参照してください。</sup>
 
 <sup>2　Java音声DSKは [Speech Devises SDKの一部としても使用できます](../articles/cognitive-services/speech-service/speech-devices-sdk.md)。</sup>
+
+> [!IMPORTANT]
+> C は Speech SDK でサポートされているプログラミング言語ではありません。 C++ などのいくつかのサポートされているプログラミング言語には、共通のアプリケーション バイナリ インターフェイス (ABI) レイヤーの一部である C ヘッダーが含まれています。 これらの ABI ヘッダーは、直接使用することを意図したものでは "**ありません**"。また、バージョンによって変更される可能性があります。

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.author: normesta
 ms.reviewer: klaasl
 ms.subservice: blobs
-ms.openlocfilehash: 67bd943028ba321aa4fa3a5acca30e80cfc36a32
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: ace430aa1e48d7e769f82d7258da241a0716a16d
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128615569"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129455647"
 ---
 # <a name="enable-azure-storage-blob-inventory-reports"></a>Azure Storage BLOB のインベントリ レポートを有効にする
 
@@ -63,7 +63,7 @@ BLOB インベントリ レポートを有効にするには、1 つ以上のル
 
 <a id="powershell"></a>
 
-Azure PowerShell モジュールを使用して、静的な Web サイトのホスティングを有効にできます。
+Azure PowerShell モジュールを使用して、ポリシーを追加、編集、または削除することができます。
 
 1. Windows PowerShell コマンド ウィンドウを開きます。
 
@@ -75,7 +75,7 @@ Azure PowerShell モジュールを使用して、静的な Web サイトのホ�
    Connect-AzAccount
    ```
 
-4. 自分の ID が複数のサブスクリプションに関連付けられている場合は、アクティブなサブスクリプションを、静的 Web サイトをホストするストレージ アカウントのサブスクリプションに設定します。
+4. 自分の ID が複数のサブスクリプションに関連付けられている場合は、アクティブなサブスクリプションを設定します。
 
    ```powershell
    $context = Get-AzSubscription -SubscriptionId <subscription-id>
@@ -123,11 +123,11 @@ Azure PowerShell モジュールを使用して、静的な Web サイトのホ�
 
 <a id="cli"></a>
 
-[Azure コマンド ライン インターフェイス (CLI)](/cli/azure/) を使用して、静的な Web サイトのホスティングを有効にすることができます。
+[Azure コマンド ライン インターフェイス (CLI)](/cli/azure/) を使用して、ポリシーを追加、編集、または削除することができます。
 
 1. まず、[Azure Cloud Shell](../../cloud-shell/overview.md) を開きます。または、Azure CLI をローカルに[インストール](/cli/azure/install-azure-cli)した場合は、Windows PowerShell などのコマンド コンソール アプリケーションを開きます。
 
-2. 自分の ID が複数のサブスクリプションに関連付けられている場合は、アクティブなサブスクリプションを、静的 Web サイトをホストするストレージ アカウントのサブスクリプションに設定します。
+2. 自分の ID が複数のサブスクリプションに関連付けられている場合は、アクティブなサブスクリプションを設定します。
 
    ```azurecli
       az account set --subscription <subscription-id>

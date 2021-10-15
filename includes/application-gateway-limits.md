@@ -2,14 +2,14 @@
 author: vhorne
 ms.service: application-gateway
 ms.topic: include
-ms.date: 03/04/2020
+ms.date: 09/09/2021
 ms.author: victorh
-ms.openlocfilehash: 3e2b9ab4eaf794e5cf64861d7c641b82f18b64dc
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: f106ca51487e1c4c306d51161110062ad3582fcd
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "114201388"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129440005"
 ---
 | リソース | 制限 | Note |
 | --- | --- | --- |
@@ -18,8 +18,8 @@ ms.locfileid: "114201388"
 | フロントエンド ポート |100<sup>1</sup> | |
 | バックエンド アドレス プール |100<sup>1</sup> | |
 | プールあたりのバックエンド サーバーの数 |1,200 | |
-| HTTP リスナー |200<sup>1</sup> |トラフィックをルーティングするアクティブなリスナーは 100 個に制限されます。 アクティブリスナー数は、リスナーの総数から非アクティブなリスナー数を差し引いた数です。<br>ルーティング規則内の既定の構成がトラフィックをルーティングするように設定されている (たとえば、リスナー、バックエンド プール、HTTP 設定がある) 場合は、それがリスナーとしてカウントされます。|
-| HTTP の負荷分散規則 |100<sup>1</sup> | |
+| HTTP リスナー |200<sup>1</sup> |トラフィックをルーティングするアクティブなリスナーは 100 個に制限されます。 アクティブリスナー数は、リスナーの総数から非アクティブなリスナー数を差し引いた数です。<br>ルーティング規則内の既定の構成がトラフィックをルーティングするように設定されている (たとえば、リスナー、バックエンド プール、HTTP 設定がある) 場合は、それがリスナーとしてカウントされます。 詳細については、「[Application Gateway に関してよく寄せられる質問](../articles/application-gateway/application-gateway-faq.yml#what-is-considered-an-active-listener-versus-inactive-listener)」を参照してください。|
+| HTTP の負荷分散規則 |400<sup>1</sup> | |
 | バックエンドの HTTP 設定 |100<sup>1</sup> | |
 | ゲートウェイあたりのインスタンスの数 |V1 SKU - 32<br>V2 SKU - 125 | |
 | SSL 証明書の数 |100<sup>1</sup> |HTTP リスナーあたり 1 |

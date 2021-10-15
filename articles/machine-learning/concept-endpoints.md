@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: Azure Machine Learning エンドポイント (プレビュー) を使用して機械学習のデプロイを簡略化する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.topic: conceptual
 ms.author: seramasu
 author: rsethur
 ms.reviewer: laobri
 ms.custom: devplatv2
 ms.date: 06/17/2021
-ms.openlocfilehash: 8ce9241e11bd9aa259c8b7a1bf3114be677a01bd
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 4a4cc34b3f3bb77e0c2405d3b0a29b40fa1cd616
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114447654"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129427003"
 ---
 # <a name="what-are-azure-machine-learning-endpoints-preview"></a>Azure Machine Learning エンドポイント (プレビュー) とは 
 

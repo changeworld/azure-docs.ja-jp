@@ -4,13 +4,13 @@ description: Bicep ファイルでリソースの値取得に使用する関数�
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 09/10/2021
-ms.openlocfilehash: 23d205f44b23b71f476f86d8d589f5d99a417a85
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 09/30/2021
+ms.openlocfilehash: 4cfbac80e9783dd9424a4b2ee63607fb6f2a7f17
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124827546"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129361911"
 ---
 # <a name="resource-functions-for-bicep"></a>Bicep のリソース関数
 
@@ -23,6 +23,8 @@ ms.locfileid: "124827546"
 `extensionResourceId(resourceId, resourceType, resourceName1, [resourceName2], ...)`
 
 [拡張リソース](../management/extension-resource-types.md)のリソース ID を返します。これは、その機能に追加する別のリソースに適用されるリソースの種類です。
+
+名前空間: [az](bicep-functions.md#namespaces-for-functions)。
 
 extensionResourceId 関数は Bicep ファイルで使用できますが、通常は必要はありません。 代わりに、リソースのシンボリック名を使用して、`id` プロパティにアクセスします。
 
@@ -110,9 +112,11 @@ Azure Key Vault からシークレットを返します。 `getSecret` 関数は
 
 キー コンテナーでは、`enabledForTemplateDeployment` を `true` に設定する必要があります。 Bicep ファイルをデプロイするユーザーは、シークレットにアクセスできる必要があります。 詳細については、「[Bicep デプロイ時に Azure Key Vault を使用して、セキュリティで保護されたパラメーター値を渡す](key-vault-parameter.md)」を参照してください。
 
+この関数はリソースの種類と共に使用されるため、[namespace 修飾子](bicep-functions.md#namespaces-for-functions)は必要ありません。
+
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | secretName | はい | string | Key Vault に格納されているシークレットの名前。 |
 
@@ -168,15 +172,17 @@ module sql './sql.bicep' = {
 
 `resourceName.list([apiVersion], [functionValues])`
 
-`list` で始まる操作を使用して、任意のリソースの種類に対して list 関数を呼び出すことができます。 一般的に使用されるものとして、`list`、`listKeys`、`listKeyValue`、`listSecrets` があります。 
+`list` で始まる操作を使用して、任意のリソースの種類に対して list 関数を呼び出すことができます。 一般的に使用されるものとして、`list`、`listKeys`、`listKeyValue`、`listSecrets` があります。
 
 この関数の構文は、リスト操作の名前によって異なります。 戻り値も操作によって異なります。 Bicep は現在、`list*` 関数の完了と検証をサポートしていません。
 
-**Bicep バージョン 0.4.412 以降** では、[アクセサー演算子](operators-access.md#function-accessor)を使用して list 関数を呼び出すことができます。 たとえば、「 `stg.listKeys()` 」のように入力します。 
+**Bicep バージョン 0.4.412 以降** では、[アクセサー演算子](operators-access.md#function-accessor)を使用して list 関数を呼び出すことができます。 たとえば、「 `stg.listKeys()` 」のように入力します。
+
+この関数はリソースの種類と共に使用されるため、[namespace 修飾子](bicep-functions.md#namespaces-for-functions)は必要ありません。
 
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | apiVersion |いいえ |string |このパラメーターを指定しない場合は、リソースの API バージョンが使用されます。 特定のバージョンで関数を実行する必要がある場合にのみ、カスタム API バージョンを指定します。 **yyyy-mm-dd** の形式を使用します。 |
 | functionValues |いいえ |object | 関数の値を持つオブジェクト。 このオブジェクトは、ストレージ アカウントの **listAccountSas** など、パラメーター値を持つオブジェクトの受信をサポートする関数に対してのみ指定します。 関数値を渡す例をこの記事で紹介します。 |
@@ -264,12 +270,12 @@ list* の使用例を次の表にまとめています。
 | ------------- | ------------- |
 | Microsoft.Addons/supportProviders | listsupportplaninfo |
 | Microsoft.AnalysisServices/servers | [listGatewayStatus](/rest/api/analysisservices/servers/listgatewaystatus) |
-| Microsoft.ApiManagement/service/authorizationServers | [listSecrets](/rest/api/apimanagement/2020-06-01-preview/authorization-server/list-secrets) |
-| Microsoft.ApiManagement/service/gateways | [listKeys](/rest/api/apimanagement/2020-06-01-preview/gateway/list-keys) |
-| Microsoft.ApiManagement/service/identityProviders | [listSecrets](/rest/api/apimanagement/2020-06-01-preview/identity-provider/list-secrets) |
-| Microsoft.ApiManagement/service/namedValues | [listValue](/rest/api/apimanagement/2020-06-01-preview/named-value/list-value) |
-| Microsoft.ApiManagement/service/openidConnectProviders | [listSecrets](/rest/api/apimanagement/2020-06-01-preview/openid-connect-provider/list-secrets) |
-| Microsoft.ApiManagement/service/subscriptions | [listSecrets](/rest/api/apimanagement/2020-06-01-preview/subscription/list-secrets) |
+| Microsoft.ApiManagement/service/authorizationServers | [listSecrets](/rest/api/apimanagement/2021-04-01-preview/authorization-server/list-secrets) |
+| Microsoft.ApiManagement/service/gateways | [listKeys](/rest/api/apimanagement/2021-04-01-preview/gateway/list-keys) |
+| Microsoft.ApiManagement/service/identityProviders | [listSecrets](/rest/api/apimanagement/2021-04-01-preview/identity-provider/list-secrets) |
+| Microsoft.ApiManagement/service/namedValues | [listValue](/rest/api/apimanagement/2021-04-01-preview/named-value/list-value) |
+| Microsoft.ApiManagement/service/openidConnectProviders | [listSecrets](/rest/api/apimanagement/2021-04-01-preview/openid-connect-provider/list-secrets) |
+| Microsoft.ApiManagement/service/subscriptions | [listSecrets](/rest/api/apimanagement/2021-04-01-preview/subscription/list-secrets) |
 | Microsoft.AppConfiguration/configurationStores | [ListKeys](/rest/api/appconfiguration/configurationstores/listkeys) |
 | Microsoft.AppPlatform/Spring | [listTestKeys](/rest/api/azurespringcloud/services/listtestkeys) |
 | Microsoft.Automation/automationAccounts | [listKeys](/rest/api/automation/keys/listbyautomationaccount) |
@@ -411,9 +417,11 @@ list* の使用例を次の表にまとめています。
 
 リソースの種類がリージョンのゾーンをサポートしているかどうかを判断します。
 
+名前空間: [az](bicep-functions.md#namespaces-for-functions)。
+
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | providerNamespace | はい | string | ゾーンのサポートについて確認するためのリソースの種類のリソース プロバイダーの名前空間。 |
 | resourceType | はい | string | ゾーンのサポートについて確認するためのリソースの種類。 |
@@ -460,7 +468,7 @@ output notSupportedType array = pickZones('Microsoft.Cdn', 'profiles', 'westus2'
 
 前の例からの出力は、3 つの配列を返します。
 
-| 名前 | 種類 | 値 |
+| 名前 | Type | 値 |
 | ---- | ---- | ----- |
 | サポート対象 | array | [ "1" ] |
 | notSupportedRegion | array | [] |
@@ -472,11 +480,15 @@ output notSupportedType array = pickZones('Microsoft.Cdn', 'profiles', 'westus2'
 
 **providers 関数は非推奨となりました。** これの使用は推奨されていません。 この関数を使用してリソース プロバイダーの API バージョンを取得した場合は、テンプレートで特定の API バージョンを指定することをお勧めします。 動的に返された API バージョンを使用すると、プロパティがバージョン間で変更された場合にテンプレートが破損する可能性があります。
 
+名前空間: [az](bicep-functions.md#namespaces-for-functions)。
+
 ## <a name="reference"></a>reference
 
 `reference(resourceName or resourceIdentifier, [apiVersion], ['Full'])`
 
 リソースのランタイム状態を表すオブジェクトを返します。
+
+名前空間: [az](bicep-functions.md#namespaces-for-functions)。
 
 reference 関数は Bicep ファイルで使用できますが、通常は必要はありません。 代わりに、リソースのシンボリック名を使用します。
 
@@ -519,6 +531,8 @@ output blobAddress string = stg.properties.primaryEndpoints.blob
 
 リソースの一意の識別子を返します。
 
+名前空間: [az](bicep-functions.md#namespaces-for-functions)。
+
 resourceId 関数は Bicep ファイルで使用できますが、通常は必要はありません。 代わりに、リソースのシンボリック名を使用して、`id` プロパティにアクセスします。
 
 リソース名があいまいであるか、同じ Bicep ファイル内でプロビジョニングされていないときに、この関数を使用します。 返される ID の形式は、デプロイがリソース グループ、サブスクリプション、管理グループ、またはテナントのスコープで行われるかどうかによって異なります。
@@ -559,6 +573,8 @@ output storageID string = stg.id
 `subscriptionResourceId([subscriptionId], resourceType, resourceName1, [resourceName2], ...)`
 
 サブスクリプション レベルでデプロイされたリソースの一意の識別子を返します。
+
+名前空間: [az](bicep-functions.md#namespaces-for-functions)。
 
 subscriptionResourceId 関数は Bicep ファイルで使用できますが、通常は必要はありません。 代わりに、リソースのシンボリック名を使用して、`id` プロパティにアクセスします。
 
@@ -619,6 +635,8 @@ resource myRoleAssignment 'Microsoft.Authorization/roleAssignments@2018-09-01-pr
 `tenantResourceId(resourceType, resourceName1, [resourceName2], ...)`
 
 テナント レベルでデプロイされたリソースの一意の識別子を返します。
+
+名前空間: [az](bicep-functions.md#namespaces-for-functions)。
 
 tenantResourceId 関数は Bicep ファイルで使用できますが、通常は必要はありません。 代わりに、リソースのシンボリック名を使用して、`id` プロパティにアクセスします。
 

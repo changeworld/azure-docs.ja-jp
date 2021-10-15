@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 04/06/2021
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 0157a01178c9efcefe03b839a968ba02b04e7ca2
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 48988392c1961d6878ccfc0d6c40d86dbe8fd237
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123113933"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129389136"
 ---
 # <a name="azure-cosmos-db-java-sdk-v4-for-core-sql-api-release-notes-and-resources"></a>Core (SQL) API 用 Azure Cosmos DB Java SDK v4: リリース ノートとリソース
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -72,7 +72,8 @@ Core (SQL) 用 Azure Cosmos DB Java SDK v4 では、非同期 API と同期 API 
 > * 4\.18.0 リリース - 4.18.0 以降のバージョンを使用することを強くお勧めします。
 > * 4\.13.0 リリースでは、`reactor-core` および `reactor-netty` のメジャー バージョンが `2020.0.4 (Europium)` リリース トレインに更新されています。
 
-[!INCLUDE[Release notes](~/azure-sdk-for-java-cosmos-db/sdk/cosmos/azure-cosmos/CHANGELOG.md)]
+## <a name="release-history"></a>リリース履歴
+リリース履歴は azure-sdk-for-java リポジトリで管理されています。リリースの詳細なリストについては、[changelog ファイル](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/cosmos/azure-cosmos/CHANGELOG.md)を参照してください。
 
 ## <a name="faq"></a>よく寄せられる質問
 [!INCLUDE [cosmos-db-sdk-faq](../includes/cosmos-db-sdk-faq.md)] 

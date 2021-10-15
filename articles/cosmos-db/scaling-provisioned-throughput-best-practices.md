@@ -8,12 +8,12 @@ ms.date: 08/20/2021
 ms.author: dech
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: c9ec0f3eb2846a6d5eb281202ebd9f9c278bdd70
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: c8a2ab0b904c60e2d1d1c44a9d596cf62d0403d6
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124798980"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129546014"
 ---
 # <a name="best-practices-for-scaling-provisioned-throughput-rus"></a>プロビジョニングされたスループット (RU/秒) のスケーリングに関するベスト プラクティス 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -33,9 +33,13 @@ ms.locfileid: "124798980"
 - **非同期スケールアップ**
     - 要求された RU/秒が、物理パーティションのレイアウトでサポートできる RU/秒よりも高い場合、Azure Cosmos DB では既存の物理パーティションが分割されます。 この動作は、要求された RU/秒をサポートするために必要な最小の数のパーティションがリソースに付与されるまで行われます。 
     - その結果、操作の完了に時間がかかる場合があります (通常は 4 ~ 6 時間)。
- 
 各物理パーティションでは、最大 10,000 RU/秒のスループット (すべての API に適用されます) と 50 GB のストレージ (ストレージが 30 GB の Cassandra を除くすべての API に適用されます) をサポートできます。 
 
+- **インスタント スケールダウン**
+    - スケールダウン操作の場合、Azure Cosmos DB ではパーティションを分割したり新規に追加したりする必要はありません。 
+    - その結果、操作はすぐに完了し、対象の RU/s を使用できます。 
+    - この操作の主な結果として、パーティションの範囲あたりの RU が減少します。
+    
 ## <a name="how-to-scale-up-rus-without-changing-partition-layout"></a>パーティションのレイアウトを変更せずに RU/秒をスケールアップする方法
 
 ### <a name="step-1-find-the-current-number-of-physical-partitions"></a>手順 1: 現在の物理パーティションの数を調べる。 

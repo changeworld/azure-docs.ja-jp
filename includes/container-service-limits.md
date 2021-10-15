@@ -1,19 +1,18 @@
 ---
 title: インクルード ファイル
 description: インクルード ファイル
-services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: include
 ms.date: 04/06/2021
 ms.author: mlearned
 ms.custom: include file
-ms.openlocfilehash: 928c4669ec7b1a04874f760cc14234cfa874e99a
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 17a98a50f4c6e6d0723b62f1ea402c78f653bf4c
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123437898"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129378549"
 ---
 | リソース                                                                                                           | 制限                                                                                                                                                                                                       |
 | ------------------------------------------------------------------------------------------------------------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -25,14 +24,14 @@ ms.locfileid: "123437898"
 | ノードごとの最大ポッド数: Azure Container Networking Interface を使った[高度なネットワーク][advanced-networking]        | 最大値: 250 <br /> 既定値: 30                                                      |
 | Open Service Mesh (OSM) AKS アドオン プレビュー                                                                          | Kubernetes クラスターのバージョン: 1.19 以上<sup>1</sup><br />クラスターあたりの OSM コントローラー数: 1<sup>1</sup><br />OSM コントローラーあたりのポッド数: 500<sup>1</sup><br />OSM によって管理される Kubernetes サービス アカウント数: 50<sup>1</sup> |
 
-<sup>1</sup>AKS 用 OSM アドオンはプレビュー段階であり、一般提供 (GA) 前にさらに改良される予定です。 プレビュー段階では、記載されている制限の範囲内で使用することをお勧めします。<br />
+<sup>1</sup> AKS 用 OSM アドオンはプレビュー段階であり、一般提供 (GA) 前にさらに改良される予定です。 プレビュー段階では、記載されている制限の範囲内で使用することをお勧めします。<br />
 
 <br />
 
-| Kubernetes コントロール プレーンの制限                                                                                                                                                                                                     |
-| ------------------------------------------------------------------------------------------------------------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 有料レベル                                                                                  | 負荷に基づいた自動スケールアウト                                                                                                                                                                                                        |
-| Free レベル                       | 50 個の変更と 100 個の読み取り専用呼び出しの[配信要求制限](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/)付きの制限されたリソース                                                                                                                                                                                                         |
+| Kubernetes コントロール プレーンのサービス レベル | 制限 |  
+| -------------- | :--------------------------------------------- |
+| 有料レベル      | 負荷に基づいた自動スケールアウト     |
+| Free レベル      | 50 個の変更と 100 個の読み取り専用呼び出しの[配信要求制限](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/)付きの制限されたリソース   |
 
 <!-- LINKS - Internal -->
 

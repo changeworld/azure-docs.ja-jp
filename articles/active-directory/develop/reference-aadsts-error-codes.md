@@ -12,12 +12,12 @@ ms.date: 07/28/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 3a530dae026ffe87efe06fb413966df43ce32314
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 8492b35fae2d2c2d716330002d5f889ec693f8c5
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128588293"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129353377"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD 認証と承認のエラー コード
 
@@ -88,6 +88,8 @@ Azure Active Directory (Azure AD) セキュリティ トークン サービス (
 | AADSTS20001 | WsFedSignInResponseError - フェデレーション ID プロバイダーに問題があります。 この問題を解決するには、IDP に問い合わせてください。 |
 | AADSTS20012 | WsFedMessageInvalid - フェデレーション ID プロバイダーに問題があります。 この問題を解決するには、IDP に問い合わせてください。 |
 | AADSTS20033 | FedMetadataInvalidTenantName - フェデレーション ID プロバイダーに問題があります。 この問題を解決するには、IDP に問い合わせてください。 |
+| AADSTS28002 | 入力パラメーター スコープ '{scope}' に指定された値が、アクセス トークンを要求するときに有効ではありません。 有効なスコープを指定してください。 |
+| AADSTS28003 | 指定された認証コードを使用してアクセス トークンを要求する場合、入力パラメーター スコープに指定された値を空にすることはできません。 有効なスコープを指定してください。|
 | AADSTS40008 | OAuth2IdPUnretryableServerError - フェデレーション ID プロバイダーに問題があります。 この問題を解決するには、IDP に問い合わせてください。 |
 | AADSTS40009 | OAuth2IdPRefreshTokenRedemptionUserError - フェデレーション ID プロバイダーに問題があります。 この問題を解決するには、IDP に問い合わせてください。 |
 | AADSTS40010 | OAuth2IdPRetryableServerError - フェデレーション ID プロバイダーに問題があります。 この問題を解決するには、IDP に問い合わせてください。 |
@@ -163,6 +165,7 @@ Azure Active Directory (Azure AD) セキュリティ トークン サービス (
 | AADSTS50144 | InvalidPasswordExpiredOnPremPassword - ユーザーの Active Directory パスワードの有効期限が切れました。 ユーザーに新しいパスワードを生成するか、またはユーザーにセルフサービスのリセット ツールを使用させて、パスワードをリセットしてください。 |
 | AADSTS50146 | MissingCustomSigningKey - このアプリは、アプリ固有の署名キーを使って構成する必要があります。 そのように構成されていません。または、キーが有効期限切れか、またはまだ有効になっていません。 |
 | AADSTS50147 | MissingCodeChallenge - コードのチャレンジ パラメーターのサイズが無効です。 |
+| AADSTS501481 | Code_Verifier が、承認要求で指定された code_challenge と一致しません。|
 | AADSTS50155 | DeviceAuthenticationFailed - このユーザーのデバイス認証が失敗しました。 |
 | AADSTS50158 | ExternalSecurityChallenge - 外部セキュリティ チャレンジが満たされませんでした。 |
 | AADSTS50161 | InvalidExternalSecurityChallengeConfiguration - 外部プロバイダーによって送信された要求が十分ではないか、または外部プロバイダーに対して要求された要求がありません。 |
@@ -175,6 +178,7 @@ Azure Active Directory (Azure AD) セキュリティ トークン サービス (
 | AADSTS50178 | ExternalChallengeNotSupportedForPassthroughUsers - セッション制御は、パススルー ユーザーに対してサポートされていません。 |
 | AADSTS50180 | WindowsIntegratedAuthMissing - 統合 Windows 認証が必要です。 シームレス SSO に対してテナントを有効にしてください。 |
 | AADSTS50187 | DeviceInformationNotProvided - サービスはデバイス認証を実行できませんでした。 |
+| AADSTS50194 | アプリケーション '{appId}'({appName}) はマルチテナント アプリケーションとして構成されていません。 '{time}' より後に作成されたそのようなアプリケーションでは、/common エンドポイントの使用はサポートされていません。 テナント固有のエンドポイントを使用するか、アプリケーションをマルチテナントとして構成してください。 |
 | AADSTS50196 | LoopDetected - クライアント ループが検出されました。 アプリのロジックを調べて、確実にトークンのキャッシュが実装されていて、エラー状態が正しく処理されるようにします。  アプリが非常に短期間にあまりにも多くの同じ要求を行いました。これは、障害がある状態にあるか、またはトークンを不正に要求していることを示しています。 |
 | AADSTS50197 | ConflictingIdentities - ユーザーが見つかりませんでした。 もう一度サインインしてみてください。 |
 | AADSTS50199 | CmsiInterrupt - セキュリティ上の理由から、この要求にはユーザー確認が必要です。  これは "interaction_required" エラーであるため、クライアントでは対話型認証を行う必要があります。これが発生した理由は、システム Web ビューを使用してネイティブ アプリケーションのトークンが要求されたことにあります。これが実際にサインインしようとしたアプリであったかどうかをたずねるプロンプトをユーザーに表示する必要があります。 このメッセージを表示しないようにするには、リダイレクト URI が次のセーフ リストに含まれている必要があります。 <br />http://<br />https://<br />msauth://(iOS のみ)<br />msauthv2://(iOS のみ)<br />chrome-extension://(デスクトップ Chrome ブラウザーのみ) |
@@ -191,16 +195,21 @@ Azure Active Directory (Azure AD) セキュリティ トークン サービス (
 | AADSTS53004 | ProofUpBlockedDueToRisk - ユーザーは、このコンテンツにアクセスする前に、多要素認証登録プロセスを完了する必要があります。 ユーザーは多要素認証に登録する必要があります。 |
 | AADSTS53011 | ホーム テナントのリスクによりユーザーがブロックされました。 |
 | AADSTS54000 | MinorUserBlockedLegalAgeGroupRule |
+| AADSTS54005 | OAuth2 認証コードは既に引き換え済みです。新しい有効なコードを使用してもう一度やり直すか、既存の更新トークンを使用してください。 |
 | AADSTS65001 | DelegationDoesNotExist - X という ID でアプリケーションを使用することにユーザーまたは管理者が同意していません。このユーザーとリソースのインタラクティブな承認要求を送信してください。 |
+| AADSTS65002 | ファースト パーティのアプリケーション '{applicationId}' とファースト パーティのリソース '{resourceId}' との間の同意は、事前承認で構成されている必要があります。Microsoft が所有し運営するアプリケーションは、API のトークンを要求する前に、その API の所有者から承認を得なければなりません。  テナント内の開発者が、Microsoft が所有するアプリ ID を再利用しようとしている可能性があります。 このエラーが発生すると、Microsoft のアプリケーションを偽装して他の API を呼び出すことができなくなります。 この場合、 https://portal.azure.com で登録した別のアプリ ID に移行する必要があります。|
 | AADSTS65004 | UserDeclinedConsent - ユーザーはアプリへのアクセスの同意を拒否しました。 ユーザーに、再度サインインしてアプリに同意させてください|
 | AADSTS65005 | MisconfiguredApplication - アプリの必須リソース アクセス リストに、リソースによって検出可能なアプリが含まれていません。または、必須リソース アクセス リストで指定されていないリソースへのアクセスをクライアント アプリが要求したか、Graph サービスから無効な要求が返されたか、リソースが見つかりません。 アプリが SAML をサポートしている場合、間違った識別子 (エンティティ) でアプリを構成している可能性があります。 詳細については、エラー [AADSTS650056](/troubleshoot/azure/active-directory/error-code-aadsts650056-misconfigured-app) のトラブルシューティングに関する記事を参照してください。 |
 | AADSTS650052 | このアプリには、組織 `\"{organization}\"` がサブスクライブしていないか有効にしていない `(\"{name}\")` サービスへのアクセスが必要です。 サービス サブスクリプションの構成を確認するには、IT 管理者にお問い合わせください。 |
 | AADSTS650054 |  アプリケーションが、削除されたか使用できなくなったリソースにアクセスするためのアクセス許可を要求しました。 アプリが呼び出しているすべてのリソースが、操作中のテナントに存在していることを確認してください。 |
+| AADSTS650056 | アプリケーションが正しく構成されていない この場合は、次のいずれかの原因が考えられます。クライアントが、クライアントのアプリケーション登録の要求されたアクセス許可に '{name}' のアクセス許可を記載していません。 あるいは、管理者がテナントで同意していません。 あるいは、要求のアプリケーション識別子を調べて、構成したクライアント アプリケーション識別子に一致することを確認してください。 または、要求の証明書を確認して、有効であることを確認します。 構成を修正するか、テナントの代わりに同意するように管理者に連絡してください。 クライアント アプリ ID: {id}。 構成を修正するか、テナントの代わりに同意するように管理者に連絡してください。|
+| AADSTS650057 | 無効なリソースです。 クライアントが、クライアントのアプリケーションの登録で要求されたアクセス許可に記載されていないリソースへのアクセスを要求しています。 クライアント アプリ ID: {appId}({appName})。 要求のリソース値: {resource}。 リソース アプリ ID: {resourceAppId}。 アプリの登録からの有効なリソースのリスト: {regList}。 |
 | AADSTS67003 | ActorNotValidServiceIdentity |
 | AADSTS70000 | InvalidGrant - 認証に失敗しました。 更新トークンが無効です。 次のいずれかの理由がエラーの原因の可能性があります。<ul><li>トークンのバインド ヘッダーが空</li><li>トークンのバインド ハッシュが一致しない</li></ul> |
 | AADSTS70001 | UnauthorizedClient - アプリケーションが無効です。 詳細については、エラー [AADSTS70001](/troubleshoot/azure/active-directory/error-code-aadsts70001-app-not-found-in-directory) のトラブルシューティングに関する記事を参照してください。 |
 | AADSTS70002 | InvalidClient - 資格情報の検証中にエラーが発生しました。 指定された client_secret が、このクライアントに予期される値と一致しません。 client_secret を修正してから、やり直してください。 詳細については、「[承認コードを使用してアクセス トークンを要求する](v2-oauth2-auth-code-flow.md#redeem-a-code-for-an-access-token)」を参照してください。 |
 | AADSTS70003 | UnsupportedGrantType - アプリがサポートされていない付与タイプを返しました。 |
+| AADSTS700030 | 無効な証明書 - 証明書のサブジェクト名が承認されていません。 トークン証明書の SubjectNames/SubjectAlternativeNames (最大 10 個) は、{certificateSubjects} です。 |
 | AADSTS70004 | InvalidRedirectUri - アプリが無効なリダイレクト URI を返しました。 クライアントによって指定されているリダイレクト アドレスが、構成されているどのアドレス、または OIDC 承認リストのどのアドレスとも、一致しません。 |
 | AADSTS70005 | UnsupportedResponseType - 次の理由により、アプリがサポートされていない応答の種類を返しました。<ul><li>応答の種類 "token" がアプリに対して有効になっていません</li><li>応答の種類 "id_token" には "OpenID" スコープが必要です。エンコードされた wctx にサポートされていない OAuth パラメーター値が含まれます</li></ul> |
 | AADSTS700054 | Response_type 'id_token' がアプリケーションに対して有効になっていません。  アプリケーションが承認エンドポイントから ID トークンを要求しましたが、ID トークンの暗黙的な許可が有効になっていませんでした。  [Azure Portal] > [Azure Active Directory] > [アプリの登録] > アプリケーションを選択します > [認証] > [暗黙的な許可およびハイブリッド フロー] で、[ID トークン] が選択されていることを確認してください。|
@@ -212,6 +221,7 @@ Azure Active Directory (Azure AD) セキュリティ トークン サービス (
 | AADSTS70016 | AuthorizationPending - OAuth 2.0 デバイス フロー エラー。 承認は保留中です。 デバイスは要求のポーリングを再試行します。 |
 | AADSTS70018 | BadVerificationCode - ユーザーがデバイス コード フローに誤ったユーザー コードを入力したため、確認コードが無効です。 認証は承認されていません。 |
 | AADSTS70019 | CodeExpired - 確認コードの有効期限が切れました。 ユーザーにサインインを再試行させてください。 |
+| AADSTS70043 | 条件付きアクセスによるサインインの頻度チェックが原因で、更新トークンが期限切れになったか無効です。 このトークンは {issueDate} に発行され、この要求で許可される最長の有効期間は {time} です。 |
 | AADSTS75001 | BindingSerializationError - SAML メッセージ バインド中にエラーが発生しました。 |
 | AADSTS75003 | UnsupportedBindingError - アプリが、サポートされていないバインドに関連するエラーを返しました (SAML プロトコルの応答は、HTTP POST 以外のバインド経由では送信できません)。 |
 | AADSTS75005 | Saml2MessageInvalid - Azure AD は、SSO 用のアプリによって送信された SAML 要求をサポートしていません。 詳細については、エラー [AADSTS75005](/troubleshoot/azure/active-directory/error-code-aadsts75005-not-a-valid-saml-request) のトラブルシューティングに関する記事を参照してください。 |
@@ -243,20 +253,25 @@ Azure Active Directory (Azure AD) セキュリティ トークン サービス (
 | AADSTS90008 | TokenForItselfRequiresGraphPermission - ユーザーまたは管理者がアプリケーションを使用することに同意していません。 少なくとも、アプリケーションではサインインおよびユーザー プロファイルの読み取りのアクセス許可を指定して Azure AD にアクセスする必要があります。 |
 | AADSTS90009 | TokenForItselfMissingIdenticalAppIdentifier - アプリケーションは、自身のトークンを要求されています。 このシナリオは、指定されたリソースが GUID ベースのアプリケーション ID を使用する場合にのみサポートされます。 |
 | AADSTS90010 | NotSupported - アルゴリズムを作成できません。 |
+| AADSTS9001023 |/common または /consumers エンドポイントではサポートされていない付与タイプです。 /organizations またはテナント固有のエンドポイントを使用してください。|
 | AADSTS90012 | RequestTimeout - 要求がタイムアウトしました。 |
 | AADSTS90013 | InvalidUserInput - ユーザーからの入力が無効です。 |
 | AADSTS90014 | MissingRequiredField - このエラー コードは、さまざまなケースで、資格情報に想定されているフィールドが存在しないときに表示される場合があります。 |
+| AADSTS900144 | 要求本文には、次のパラメーターが含まれている必要があります: '{name}'。  開発者エラー - アプリは、必要な認証パラメーターまたは正しい認証パラメーターを使用せずにサインインしようとしています。|
 | AADSTS90015 | QueryStringTooLong - クエリ文字列が長すぎます。 |
 | AADSTS90016 | MissingRequiredClaim - アクセス トークンが無効です。 必要な要求がありません。 |
 | AADSTS90019 | MissingTenantRealm - Azure AD で要求からテナント識別子を特定できませんでした。 |
+| AADSTS90020 | SAML 1.1 アサーションにユーザーの ImmutableID がありません。 開発者エラー - アプリは、必要な認証パラメーターまたは正しい認証パラメーターを使用せずにサインインしようとしています。|
 | AADSTS90022 | AuthenticatedInvalidPrincipalNameFormat - プリンシパル名の形式が無効、または予期される形式 `name[/host][@realm]` を満たしていません。 プリンシパル名は必須です。ホストと領域は省略可能で、null に設定できます。 |
 | AADSTS90023 | InvalidRequest - 認証サービス要求が有効ではありません。 |
 | AADSTS9002313 | InvalidRequest - 要求の形式が正しくないか、無効です。 - この問題の原因は、特定のエンドポイントへの要求に何か問題があったことです。 この問題を解決するには、発生したエラーの fiddler トレースを取得し、要求が実際に適切に書式設定されているかどうかを確認します。 |
 | AADSTS90024 | RequestBudgetExceededError - 一時的なエラーが発生しました。 やり直してください。 |
+| AADSTS90027 | MSA テナントでは、この API バージョンからトークンを発行することができません。 これをサポートするには、プロトコルのバージョン 2.0 を使用してもらう必要があるため、アプリケーション ベンダーにお問い合わせください。|
 | AADSTS90033 | MsodsServiceUnavailable - Microsoft Online Directory Service (MSODS) が使用できません。 |
 | AADSTS90036 | MsodsServiceUnretryableFailure - MSODS によってホストされる WCF サービスから再試行できない予期しないエラーが発生しました。 エラーの詳細を取得するには、[サポート チケットを開いてください](../fundamentals/active-directory-troubleshooting-support-howto.md)。 |
 | AADSTS90038 | NationalCloudTenantRedirection - 指定したテナント 'Y' は、国内クラウド 'X' に属しています。 現在のクラウド インスタンス 'Z' が X とフェデレーションしていません。クラウドのリダイレクト エラーが返されます。 |
 | AADSTS90043 | NationalCloudAuthCodeRedirection - 機能が無効になっています。 |
+| AADSTS900432 | Confidential Client はクロスクラウド要求でサポートされていません。|
 | AADSTS90051 | InvalidNationalCloudId - 国内クラウド識別子に無効なクラウド識別子が含まれています。 |
 | AADSTS90055 | TenantThrottlingError - 着信要求が多すぎます。 この例外は、ブロックされているテナントに対してスローされます。 |
 | AADSTS90056 | BadResourceRequest - コードをアクセス トークンと引き換えるには、アプリで `/token` エンドポイントに POST 要求を送信する必要があります。 また、その前に認証コードを提供し、それを POST 要求で `/token` エンドポイントに送信する必要があります。 OAuth 2.0 承認コード フローの概要については、この記事 ([../azuread-dev/v1-protocols-oauth-code.md](../azuread-dev/v1-protocols-oauth-code.md)) を参照してください。 ユーザーを authorization_code を返す `/authorize` エンドポイントにリダイレクトしてください。 `/token` エンドポイントに要求をポストすることで、ユーザーはアクセス トークンを取得します。 Azure portal にログインし、 **[アプリの登録] > [エンドポイント]** の順にチェックして、2 つのエンドポイントが正しく構成されていることを確認します。 |
@@ -273,6 +288,7 @@ Azure Active Directory (Azure AD) セキュリティ トークン サービス (
 | AADSTS90093 | GraphUserUnauthorized - 要求に対して Forbidden エラー コードが Graph から返されました。 |
 | AADSTS90094 | AdminConsentRequired - 管理者の同意が必要です。 |
 | AADSTS900382 | Confidential Client はクロスクラウド要求でサポートされていません。 |
+| AADSTS90095  | AdminConsentRequiredRequestAccess - 管理者の同意ワークフロー エクスペリエンスで、ユーザーが管理者に同意を求める必要があるということを示す際に表示される割り込みです。  |
 | AADSTS90099 | アプリケーション '{appId}' ({appName}) は、テナント '{tenant}' で承認されていません。 アプリケーションは、パートナー代理管理者が使用できるようになる前に、顧客テナントへのアクセスが承認されている必要があります。 事前同意を提供するか、適切な Partner Center API を実行してアプリケーションを承認します。 |
 | AADSTS900971| 応答アドレスが指定されていません。|
 | AADSTS90100 | InvalidRequestParameter - パラメーターが空であるか無効です。 |
@@ -311,8 +327,10 @@ Azure Active Directory (Azure AD) セキュリティ トークン サービス (
 | AADSTS130007 | NgcDeviceIsDisabled - デバイスは無効になっています。 |
 | AADSTS130008 | NgcDeviceIsNotFound - NGC キーが参照しているデバイスが見つかりませんでした。 |
 | AADSTS135010 | KeyNotFound |
+| AADSTS135011 |  認証中に使用されるデバイスは無効になります。|
 | AADSTS140000 | InvalidRequestNonce - 要求の nonce が指定されていません。 |
 | AADSTS140001 | InvalidSessionKey - セッション キーが無効です。|
+| AADSTS165004 | 実際のメッセージの内容はランタイム固有です。 詳細については、応答の例外メッセージを参照してください。 |
 | AADSTS165900 | InvalidApiRequest - 無効な要求です。 |
 | AADSTS220450 | UnsupportedAndroidWebViewVersion - Chrome WebView バージョンがサポートされていません。 |
 | AADSTS220501 | InvalidCrlDownload |
@@ -329,6 +347,8 @@ Azure Active Directory (Azure AD) セキュリティ トークン サービス (
 | AADSTS700005 | InvalidGrantRedeemAgainstWrongTenant - 指定された承認コードは、他のテナントに対して使用することを目的にしているため、拒否されました。 OAuth2 承認コードは、それが取得されたときの同じテナント (必要に応じて /common または /{tenant-ID}) に対して引き換える必要があります。 |
 | AADSTS1000000 | UserNotBoundError - Bind API では Azure AD ユーザーも外部 IDP による認証が必要ですが、まだ行われていません。 |
 | AADSTS1000002 | BindCompleteInterruptError - バインドは正常に完了しましたが、ユーザーに通知する必要があります。 |
+| AADSTS100007 | AAD Regional は、MSI、または Microsoft インフラストラクチャ テナント内の 1P アプリまたは 3P アプリの SN+I を使用した MSAL からの要求に対する認証のみをサポートします。|
+| AADSTS1000031 | 現時点では、アプリケーション {appDisplayName} にアクセスすることはできません。 管理者に問い合わせてください。 |
 | AADSTS7000112 | UnauthorizedClientApplicationDisabled - アプリケーションが無効です。 |
 | AADSTS7000114| アプリケーション 'appIdentifier' には、アプリケーションの代理呼び出しを行うことが許可されていません。|
 | AADSTS7500529 | 値 ‘SAMLId-Guid’ は有効な SAML ID ではありません- Azure AD ではこの属性を使用して、返される応答の InResponseTo 属性が設定されます。 ID の 1 文字目に数字を使用することはできないので、一般的な方法としては、GUID の文字列表現の前に "id" のような文字列を付加します。 たとえば、id6c1c178c166d486687be4aaf5e482730 は有効な ID です。 |

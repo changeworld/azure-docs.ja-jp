@@ -3,15 +3,15 @@ title: Azure Automation での Runbook の実行
 description: この記事では、Azure Automation における Runbook の処理の概要を示します。
 services: automation
 ms.subservice: process-automation
-ms.date: 08/13/2021
+ms.date: 09/15/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 026adbac5ad66772711bcd3988a9c95da49ae6a1
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 700c5a9254cbb3ae8fe69ccc0f2ea3b76bb66121
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124837482"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129356443"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Azure Automation での Runbook の実行
 
@@ -72,7 +72,7 @@ Runbook ロジックの一部として一時ファイルを作成する必要が
 
 Runbook には必ず、[リソース](/rest/api/resources/resources) (VM、ネットワーク、ネットワーク上のリソースなど) を扱うロジックが含まれています。 リソースは Azure サブスクリプションに関連付けられており、どのリソースにアクセスする場合でも Runbook に適切な資格情報が必要となります。 Runbook におけるリソースの処理の例については、「[リソースの処理](manage-runbooks.md#handle-resources)」を参照してください。
 
-## <a name="security"></a>Security
+## <a name="security"></a>セキュリティ
 
 Azure Automation は、[Azure Security Center (ASC)](../security-center/security-center-introduction.md) を使用してリソースのセキュリティを確保し、Linux システムにおけるセキュリティ侵害を検出します。 リソースが Azure 内にあるかどうかにかかわらず、セキュリティはワークロード全体で確保されます。 [Azure Automation での認証の概要](automation-security-overview.md)に関するページを参照してください。
 
@@ -99,19 +99,9 @@ Azure Automation では、そのマシンの操作を監視するために [Azur
 
 ### <a name="log-analytics-agent-for-linux"></a>Linux 用 Log Analytics エージェント
 
-[Linux 用 Log Analytics エージェント](../azure-monitor/agents/agent-linux.md)は、Windows 用のエージェントと同様に機能しますが、Linux コンピューターを Azure Monitor に接続します。 エージェントをインストールすると、Hybrid Runbook Worker などでルート アクセス許可が要求されるコマンドを実行できる、**nxautomation** というユーザー アカウントもインストールされます。 **nxautomation** アカウントは、パスワードを必要としないシステム アカウントです。
+[Linux 用 Log Analytics エージェント](../azure-monitor/agents/agent-linux.md)は、Windows 用のエージェントと同様に機能しますが、Linux コンピューターを Azure Monitor に接続します。 このエージェントは、ルート アクセス許可が必要なコマンドを実行する特定のサービス アカウントを使用してインストールされます。 詳細については、「[サービス アカウント](./automation-hrw-run-runbooks.md#service-accounts)」を参照してください。
 
-[Linux Hybrid Runbook Worker のインストール](automation-linux-hrw-install.md)中は、対応する sudo アクセス許可を持った **nxautomation** アカウントが存在していなければなりません。 そのアカウントが存在しない、または適切なアクセス許可がアカウントにない状態でワーカーをインストールしようとすると、インストールは失敗します。
-
-`sudoers.d` フォルダーまたはその所有権のアクセス許可は変更しないでください。 **nxautomation** アカウントには sudo アクセス許可が必要です。このアクセス許可は削除しないでください。 これを特定のフォルダーまたはコマンドに制限すると、破壊的変更が発生する可能性があります。
-
-Log Analytics エージェントと **nxautomation** アカウント向けに提供されるログは次のとおりです。
-
-* /var/opt/microsoft/omsagent/log/omsagent.log - Log Analytics エージェントのログ
-* /var/opt/microsoft/omsagent/run/automationworker/worker.log - Automation ワーカーのログ
-
->[!NOTE]
->Update Management の一環として有効にされた **nxautomation** ユーザーによって実行されるのは、署名済みの Runbook のみです。
+Log Analytics エージェント ログは、`/var/opt/microsoft/omsagent/log/omsagent.log` にあります。
 
 ## <a name="runbook-permissions"></a>Runbook のアクセス許可
 

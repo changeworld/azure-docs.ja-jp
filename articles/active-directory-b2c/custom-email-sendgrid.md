@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/21/2021
+ms.date: 09/15/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: daee0bc89804b8fe72845c411224b689452fe7d2
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 67c5c15b81bf2007494cb78496a655e4e0d833fb
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121723238"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128568489"
 ---
 # <a name="custom-email-verification-with-sendgrid"></a>SendGrid を使用するカスタム メール確認
 
@@ -49,7 +49,8 @@ Azure Active Directory B2C (Azure AD B2C) でカスタム メールを使用し�
 次に、SendGrid API キーを Azure AD B2C ポリシー キーに格納し、ポリシーで参照されるようにします。
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
-1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、ご利用の Azure AD B2C ディレクトリを選択します。
+1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページで Azure AD B2C ディレクトリを **[ディレクトリ名]** リストで見つけ、 **[Switch]** を選択します。
 1. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
 1. [概要] ページで、 **[Identity Experience Framework]** を選択します。
 1. **[ポリシー キー]** を選択し、 **[追加]** を選択します。
@@ -205,7 +206,9 @@ JSON オブジェクトの構造は、InputClaims の InputParameters と Transf
 次の要求変換を `<BuildingBlocks>` 内の `<ClaimsTransformations>` 要素に追加します。 要求変換 XML を次のように更新します。
 
 * 「[SendGrid テンプレートの作成](#create-sendgrid-template)」で先に作成した SendGrid トランザクション テンプレートの ID で `template_id` InputParameter 値を更新します。
-* `from.email` アドレス値を更新します。 確認メールがスパムに指定されないように有効なメール アドレスを使用します。
+* `from.email` アドレス値を更新します。 確認メールがスパムに指定されないように有効なメール アドレスを使用します。 
+   > [!NOTE]
+   > このメール アドレスは、SendGrid でドメイン認証か Single Sender Authentication のいずれかを使用した Sender Authentication で検証する必要があります。
 * `personalizations.0.dynamic_template_data.subject` 件名入力パラメーターの値を組織に適切な件名で更新します。
 
 ```xml

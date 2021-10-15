@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.custom: mqtt, devx-track-azurecli
-ms.openlocfilehash: cc681d843d1fc68b3da6918724c7ad3e3ca5e37e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3901f624f5df8770a235c6cd184aca4a3409c26b
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121727818"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129547135"
 ---
 # <a name="send-cloud-to-device-messages-from-an-iot-hub"></a>IoT ハブから cloud-to-device メッセージを送信する
 
@@ -96,12 +96,12 @@ cloud-to-device メッセージを送信するときに、サービスでは、�
 
 | プロパティ           | 説明 |
 | ------------------ | ----------- |
-| EnqueuedTimeUtc    | メッセージの結果が発生した日時を示すタイムスタンプ (たとえば、ハブでフィードバック メッセージが受信されたときや、元のメッセージの期限が切れたとき) |
-| OriginalMessageId  | このフィードバック情報が関連する cloud-to-device メッセージの *MessageId* |
-| StatusCode         | IoT ハブによって生成されるフィードバック メッセージで使用される、必須の文字列。 <br/> *Success* <br/> *Expired* <br/> *DeliveryCountExceeded* <br/> *拒否* <br/> *Purged* |
-| 説明        | *StatusCode* の文字列値 |
+| enqueuedTimeUtc    | メッセージの結果が発生した日時を示すタイムスタンプ (たとえば、ハブでフィードバック メッセージが受信されたときや、元のメッセージの期限が切れたとき) |
+| originalMessageId  | このフィードバック情報が関連する cloud-to-device メッセージの *MessageId* |
+| statusCode         | IoT ハブによって生成されるフィードバック メッセージで使用される、必須の文字列。 <br/> *Success* <br/> *Expired* <br/> *DeliveryCountExceeded* <br/> *拒否* <br/> *Purged* |
+| description        | *StatusCode* の文字列値 |
 | deviceId           | フィードバックのこの要素が関連する cloud-to-device メッセージのターゲット デバイスの *DeviceId* |
-| DeviceGenerationId | フィードバックのこの要素が関連する cloud-to-device メッセージのターゲット デバイスの *DeviceGenerationId* |
+| deviceGenerationId | フィードバックのこの要素が関連する cloud-to-device メッセージのターゲット デバイスの *DeviceGenerationId* |
 
 cloud-to-device メッセージのフィードバックを元のメッセージと関連付けるには、サービスで *MessageId* を指定する必要があります。
 
@@ -110,12 +110,12 @@ cloud-to-device メッセージのフィードバックを元のメッセージ�
 ```json
 [
   {
-    "OriginalMessageId": "0987654321",
-    "EnqueuedTimeUtc": "2015-07-28T16:24:48.789Z",
-    "StatusCode": 0,
-    "Description": "Success",
-    "DeviceId": "123",
-    "DeviceGenerationId": "abcdefghijklmnopqrstuvwxyz"
+    "originalMessageId": "0987654321",
+    "enqueuedTimeUtc": "2015-07-28T16:24:48.789Z",
+    "statusCode": "Success",
+    "description": "Success",
+    "deviceId": "123",
+    "deviceGenerationId": "abcdefghijklmnopqrstuvwxyz"
   },
   {
     ...

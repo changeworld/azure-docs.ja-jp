@@ -2,18 +2,18 @@
 title: Azure API Management を使用して仮想ネットワークに接続する
 description: Azure API Management で仮想ネットワークへの接続を設定し、それを介して Web サービスにアクセスする方法について説明します。
 services: api-management
-author: vladvino
+author: dlepow
 ms.service: api-management
 ms.topic: how-to
 ms.date: 08/10/2021
-ms.author: apimpm
+ms.author: danlep
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: 6eb89c069cb8ce1017b84f5c886231ae767a25a8
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 008e3874961af2c3e8ff8dfe3f162254fb9d5f5e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123537407"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128669248"
 ---
 # <a name="connect-to-a-virtual-network-using-azure-api-management"></a>Azure API Management を使用して仮想ネットワークに接続する
 
@@ -38,7 +38,7 @@ Azure API Management は、Azure 仮想ネットワーク (VNET) の内部にデ
 
 + **API Management インスタンス。** 詳細については、[Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関する記事を参照してください。
 
-* API Management インスタンスと同じリージョンおよびサブスクリプションにある **仮想ネットワークとサブネット**。 このサブネットには他の Azure リソースが含まれている可能性があります。
+* API Management インスタンスと同じリージョンおよびサブスクリプション内に存在する **仮想ネットワークとサブネット**。 このサブネットには他の Azure リソースが含まれている可能性があります。
 
 [!INCLUDE [api-management-public-ip-for-vnet](../../includes/api-management-public-ip-for-vnet.md)]
 
@@ -46,9 +46,9 @@ Azure API Management は、Azure 仮想ネットワーク (VNET) の内部にデ
 
 + **API Management インスタンス。** 詳細については、[Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関する記事を参照してください。
 
-* API Management インスタンスと同じリージョンおよびサブスクリプションにある **仮想ネットワークとサブネット**。
+* API Management インスタンスと同じリージョンおよびサブスクリプション内に存在する **仮想ネットワークとサブネット**。
 
-    このサブネットは API Management インスタンス専用である必要があります。 他のリソースが含まれる Resource Manager VNET サブネットに Azure API Management インスタンスをデプロイしようとすると、そのデプロイは失敗します。
+    サブネットは、API Management インスタンス専用である必要があります。 他のリソースが含まれる Resource Manager VNET サブネットに Azure API Management インスタンスをデプロイしようとすると、そのデプロイは失敗します。
 
 ---
 
@@ -65,7 +65,7 @@ Azure API Management は、Azure 仮想ネットワーク (VNET) の内部にデ
 
 1. API Management サービスがプロビジョニングされている場所 (リージョン) の一覧で、次の操作を行います。 
     1. **[場所]** を選択します。
-    1. **[仮想ネットワーク]** 、 **[サブネット]** 、 **[IP アドレス]** を選択します。 
+    1. **仮想ネットワーク**、**サブネット**、**IP アドレス** を選択します。 
     * VNET の一覧には、構成しているリージョンで設定された Azure サブスクリプションで使用できる Resource Manager の VNET が設定されます。
 
         :::image type="content" source="media/api-management-using-with-vnet/api-management-using-vnet-select.png" alt-text="ポータルでの VNET の設定。":::
@@ -109,7 +109,8 @@ API Management サービスを VNET に接続すると、パブリック サー�
 
 :::image type="content" source="media/api-management-using-with-vnet/api-management-using-vnet-add-api.png" alt-text="VNET から API を追加する":::
 
-## <a name="network-configuration"></a>ネットワーク構成
+## <a name="common-network-configuration-issues"></a><a name="network-configuration-issues"> </a>ネットワーク構成に関する一般的な問題
+
 その他のネットワーク構成設定については、以降のセクションを確認してください。 
 
 これらの設定は、API Management サービスを VNET にデプロイしているときに発生する可能性のある構成の誤りに関する一般的な問題に対処します。
@@ -148,7 +149,7 @@ API Management サービス インスタンスが VNET でホストされてい�
 | * / 25、587、25028                       | 送信           | TCP                | VIRTUAL_NETWORK / INTERNET            | 電子メールを送信するために SMTP リレーに接続する                    | 外部 / 内部  |
 | * / 6381 - 6383              | 受信および送信 | TCP                | VIRTUAL_NETWORK / VIRTUAL_NETWORK     | マシン間の[キャッシュ](api-management-caching-policies.md) ポリシーのために Redis サービスにアクセスする         | 外部 / 内部  |
 | * / 4290              | 受信および送信 | UDP                | VIRTUAL_NETWORK / VIRTUAL_NETWORK     | マシン間の[レート制限](api-management-access-restriction-policies.md#LimitCallRateByKey)ポリシーのために同期カウンターにアクセスする         | 外部 / 内部  |
-| * / 6390                       | 受信            | TCP                | AZURE_LOAD_BALANCER / VIRTUAL_NETWORK | Azure インフラストラクチャの Load Balancer                          | 外部 / 内部  |
+| * / 6390                       | 受信            | TCP                | AZURE_LOAD_BALANCER / VIRTUAL_NETWORK | **Azure インフラストラクチャの Load Balancer**                          | 外部 / 内部  |
 
 #### <a name="stv1"></a>[stv1](#tab/stv1)
 
@@ -166,7 +167,7 @@ API Management サービス インスタンスが VNET でホストされてい�
 | * / 25、587、25028                       | 送信           | TCP                | VIRTUAL_NETWORK / INTERNET            | 電子メールを送信するために SMTP リレーに接続する                    | 外部 / 内部  |
 | * / 6381 - 6383              | 受信および送信 | TCP                | VIRTUAL_NETWORK / VIRTUAL_NETWORK     | マシン間の[キャッシュ](api-management-caching-policies.md) ポリシーのために Redis サービスにアクセスする         | 外部 / 内部  |
 | * / 4290              | 受信および送信 | UDP                | VIRTUAL_NETWORK / VIRTUAL_NETWORK     | マシン間の[レート制限](api-management-access-restriction-policies.md#LimitCallRateByKey)ポリシーのために同期カウンターにアクセスする         | 外部 / 内部  |
-| * / *                         | 受信            | TCP                | AZURE_LOAD_BALANCER / VIRTUAL_NETWORK | Azure インフラストラクチャの Load Balancer                          | 外部 / 内部  |
+| * / *                         | 受信            | TCP                | AZURE_LOAD_BALANCER / VIRTUAL_NETWORK | Azure インフラストラクチャのロード バランサー (Premium SKU に不可欠)                         | 外部 / 内部  |
 
 ---
 
@@ -207,10 +208,14 @@ SMTP リレー用の送信ネットワーク接続を許可します。これは
   VNET 内から API Management 拡張機能を使用しているときに、Azure portal から診断ログのフローを有効にするには、`port 443` での `dc.services.visualstudio.com` への送信アクセスが必要です。 このアクセスは、拡張機能の使用時に発生する可能性がある問題のトラブルシューティングに役立ちます。
 
 ### <a name="azure-load-balancer"></a>Azure Load Balancer  
-  `Developer` SKU では、その背後にデプロイされるコンピューティング ユニットは 1 つだけであるため、サービス タグ `AZURE_LOAD_BALANCER` からの受信要求を許可する必要はありません。 ただし、`Premium` のような上位の SKU にスケーリングするときは、Load Balancer からの正常性プローブのエラーでデプロイに失敗するため、[168.63.129.16](../virtual-network/what-is-ip-address-168-63-129-16.md) からの受信が重要になります。
+  `Developer` SKU では、その背後にデプロイされるコンピューティング ユニットは 1 つだけであるため、サービス タグ `AZURE_LOAD_BALANCER` からの受信要求を許可する必要はありません。 ただし、上位の SKU (`Premium` など) にスケーリングするときは、ロード バランサーからの正常性プローブのエラーによってコントロール プレーンやデータ プレーンへのすべての受信アクセスがブロックされるため、`AZURE_LOAD_BALANCER` からの受信が **重要** になります。
 
 ### <a name="application-insights"></a>Application Insights  
   API Management で [Azure Application Insights](api-management-howto-app-insights.md) の監視を有効にしている場合は、VNET から[テレメトリ エンドポイント](../azure-monitor/app/ip-addresses.md#outgoing-ports)への送信接続を許可します。
+
+### <a name="kms-endpoint"></a>KMS エンドポイント
+
+Windows を実行する仮想マシンを VNET に追加する場合は、クラウド内の [KMS エンドポイント](/troubleshoot/azure/virtual-machines/custom-routes-enable-kms-activation#solution)へのポート 1688 上の送信接続を許可します。 この構成では、Windows のアクティブ化を完了するために Windows VM トラフィックが Azure キー管理サービス (KMS) サーバーにルーティングされます。
 
 ### <a name="force-tunneling-traffic-to-on-premises-firewall-using-expressroute-or-network-virtual-appliance"></a>ExpressRoute またはネットワーク仮想アプライアンスを使用したオンプレミス ファイアウォールへのトラフィックの強制トンネリング  
   通常は、API Management の委任されたサブネットからのすべてのトラフィックを、オンプレミスのファイアウォールまたはネットワーク仮想アプライアンスに強制的に流す、独自の既定のルート (0.0.0.0/0) を構成して定義します。 このトラフィック フローでは、Azure API Management を使用した接続は切断されます。これは、発信トラフィックがオンプレミスでブロックされるか、さまざまな Azure エンドポイントで使用されなくなった認識できないアドレス セットに NAT 変換されるためです。 この問題は、いくつかの方法で解決できます。 
@@ -230,6 +235,7 @@ SMTP リレー用の送信ネットワーク接続を許可します。これは
       - Azure portal 診断
       - SMTP リレー
       - 開発者ポータル CAPTCHA
+      - Azure KMS サーバー
 
 ## <a name="routing"></a>ルーティング
 
@@ -240,7 +246,7 @@ SMTP リレー用の送信ネットワーク接続を許可します。これは
 > [!NOTE]
 > API Management インスタンスの VIP アドレスは、次の場合に変更されます。
 > * VNET が有効または無効になった。 
-> * API Management が **[外部]** から **[内部]** の仮想ネットワーク モードに (または、その逆に) 移動された。
+> * API Management が **外部** から **内部** の仮想ネットワーク モードに (またはその逆に) 移行された。
 > * ユーザーのインスタンスの場所で [[ゾーン冗長性]](zone-redundancy.md) 設定が有効または無効になるか、あるいは更新された (Premium SKU のみ)。
 
 ## <a name="control-plane-ip-addresses"></a>コントロール プレーンの IP アドレス
@@ -335,7 +341,7 @@ SMTP リレー用の送信ネットワーク接続を許可します。これは
   | **必須** | API Management に必要な Azure サービスへの接続を確認する場合に選択します。 エラーは、そのインスタンスが API を管理するためのコア操作を実行できないことを示します。 |
   | **Optional** | オプションのサービスへの接続を確認する場合に選択します。 エラーは、特定の機能 (SMTP など) が機能しないことのみを示します。 エラーが発生すると、API Management インスタンスを使用と監視を行う機能や、確約された SLA を提供する機能が低下する可能性があります。 |
 
-  接続の問題に対処するには、[ネットワーク構成設定](#network-configuration)を確認し、必要なネットワーク設定を修正します。
+  接続の問題に対処するには、[ネットワーク構成設定](#network-configuration-issues)を確認し、必要なネットワーク設定を修正します。
 
 * **増分更新**  
   ネットワークを変更するときは、[NetworkStatus API](/rest/api/apimanagement/2020-12-01/network-status) を参照して、API Management サービスで重要なリソースへのアクセスが失われていないことを確認してください。 接続状態は、15 分間隔で更新されます。

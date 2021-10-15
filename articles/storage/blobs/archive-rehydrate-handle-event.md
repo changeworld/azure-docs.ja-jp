@@ -10,12 +10,12 @@ ms.date: 08/11/2021
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
-ms.openlocfilehash: 3ce2f92f88e24eb634222db5ffab45acaf1a5820
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 06239708293be94f13c62cab7004c7a57d00eea1
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128577994"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129275508"
 ---
 # <a name="run-an-azure-function-in-response-to-a-blob-rehydration-event"></a>BLOB リハイドレート イベントに応答して Azure 関数を実行する
 
@@ -303,7 +303,7 @@ Event Grid 内でイベントをフィルター処理する方法の詳細につ
 
 ## <a name="see-also"></a>関連項目
 
-- [Azure Blob Storage のアクセス層 - ホット、クール、およびアーカイブ](storage-blob-storage-tiers.md)
+- [BLOB データのホット、クール、アーカイブのアクセス層](access-tiers-overview.md)
 - [アーカイブ層からの BLOB のリハイドレートの概要](archive-rehydrate-overview.md)
 - [アーカイブ済み BLOB をオンライン層にリハイドレートする](archive-rehydrate-to-online-tier.md)
 - [Blob Storage のイベント処理](storage-blob-event-overview.md)

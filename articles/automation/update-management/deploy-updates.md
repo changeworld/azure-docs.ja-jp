@@ -3,14 +3,14 @@ title: Azure Automation Update Management の更新プログラムの展開を�
 description: この記事では、更新プログラムの展開をスケジュールし、その状態を確認する方法について説明します。
 services: automation
 ms.subservice: update-management
-ms.date: 06/24/2021
+ms.date: 08/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: de148858ba5c88e8dbbf2693dadc818b8c66e833
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 1d8ad9b41f9d193624d9c3501493c525777832eb
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122768330"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129350636"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>更新プログラムを展開して結果を確認する方法
 
@@ -169,6 +169,36 @@ REST API を使用して更新プログラムの展開を作成する方法に�
 ターゲット VM での更新プログラムの展開を管理する Runbook のジョブ ストリームを確認するには、 **[出力]** を選択します。
 
 展開で発生したエラーの詳細情報を確認するには、 **[エラー]** を選択します。
+
+## <a name="deploy-updates-across-azure-tenants"></a>Azure テナント全体に更新プログラムをデプロイする
+
+Update Management への報告を行う別の Azure テナントに、修正プログラムを適用する必要があるマシンが存在する場合は、次の対処法を使用して、それらをスケジュールを設定する必要があります。 スケジュールを作成するには、`ForUpdateConfiguration` パラメーターを指定して [New-AzAutomationSchedule](/powershell/module/Az.Automation/New-AzAutomationSchedule) コマンドレットを使用します。 [New-AzAutomationSoftwareUpdateConfiguration](/powershell/module/Az.Automation/New-AzAutomationSoftwareUpdateConfiguration) コマンドレットを使用して、他のテナントのマシンを `NonAzureComputer` パラメーターに渡すことができます。 次の例は、その方法を示したものです。
+
+```azurepowershell-interactive
+$nonAzurecomputers = @("server-01", "server-02")
+
+$startTime = ([DateTime]::Now).AddMinutes(10)
+
+$sched = New-AzAutomationSchedule `
+    -ResourceGroupName mygroup `
+    -AutomationAccountName myaccount `
+    -Name myupdateconfig `
+    -Description test-OneTime `
+    -OneTime `
+    -StartTime $startTime `
+    -ForUpdateConfiguration
+
+New-AzAutomationSoftwareUpdateConfiguration  `
+    -ResourceGroupName $rg `
+    -AutomationAccountName <automationAccountName> `
+    -Schedule $sched `
+    -Windows `
+    -NonAzureComputer $nonAzurecomputers `
+    -Duration (New-TimeSpan -Hours 2) `
+    -IncludedUpdateClassification Security,UpdateRollup `
+    -ExcludedKbNumber KB01,KB02 `
+    -IncludedKbNumber KB100
+```
 
 ## <a name="next-steps"></a>次のステップ
 

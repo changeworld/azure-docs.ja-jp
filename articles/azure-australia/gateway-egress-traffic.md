@@ -6,12 +6,12 @@ ms.service: azure-australia
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: yvettep
-ms.openlocfilehash: e61c7688e24d3e44ee1a68105c7a0952c4e4f521
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 58fccb77131aac8311029cb06372201f2dd4b3bb
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "117029036"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129359560"
 ---
 # <a name="controlling-egress-traffic-in-azure-australia"></a>Azure Australia でのエグレス トラフィックの制御
 
@@ -216,10 +216,9 @@ PaaS をシステムまたはアプリケーション アーキテクチャの�
 
 Azure でのルーティング トポロジの設計または実装にかかわる個人は、Azure によるトラフィックのルーティング方法を理解し、必要なシステム機能と、要求されるセキュリティおよび可視性とのバランスを取るアーキテクチャを開発する必要があります。 ルーティング動作への介入と例外が過剰に発生するのを防ぐために、環境を適切に計画するために注意が必要です。そうしないと、複雑さが増し、トラブルシューティングやエラー検出がより困難で時間のかかるものになります。
 
-| リソース | Link  |
-| --- | --- |
-| *有効なルートを表示する* | <https://docs.microsoft.com/azure/virtual-network/manage-route-table#view-effective-routes> |
-|
+| リソース | 
+| --- | 
+| [有効なルートを表示する](../virtual-network/manage-route-table.md#view-effective-routes)
 
 ### <a name="system-routes"></a>システム ルート
 

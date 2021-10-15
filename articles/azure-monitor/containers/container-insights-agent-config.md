@@ -3,12 +3,12 @@ title: Container insights エージェントのデータ収集を構成する | 
 description: この記事では、Container insights エージェントによる stdout/stderr および環境変数のログ収集の制御を構成する方法について説明します。
 ms.topic: conceptual
 ms.date: 10/09/2020
-ms.openlocfilehash: bd818d03d74042e7f58cbc8889ce862279706bec
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c24b87cb35339cb0e400878579b35d5f6b963718
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121741323"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129388059"
 ---
 # <a name="configure-agent-data-collection-for-container-insights"></a>Container insights のエージェント データ収集を構成する
 
@@ -41,7 +41,7 @@ Container insights により、コンテナー化されたエージェントか�
 | `[log_collection_settings.stderr] exclude_namespaces =` | String | コンマ区切りの配列 | stderr のログを収集しない Kubernetes 名前空間の配列。<br> この設定は、<br> `log_collection_settings.stdout.enabled` は `true` に設定されます。<br> ConfigMap で指定しない場合、既定値は<br> `exclude_namespaces = ["kube-system"]`. |
 | `[log_collection_settings.env_var] enabled =` | Boolean | true または false | この設定は、クラスター内のすべてのポッドまたはノードにわたる<br> 環境変数の収集を制御します。<br> ConfigMaps で指定していない場合、既定は `enabled = true`<br> です。<br> 環境変数の収集がグローバルに有効になっている場合は、次の環境変数を設定して、特定のコンテナーに対してそれを<br> 無効にすることができます。<br> `AZMON_COLLECT_ENV` を Dockerfile 設定または [ポッドの構成ファイル](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/)の **env:** セクションの下で **False** に設定します。<br> 環境変数のコレクションがグローバルに無効になっている場合、特定のコンテナーに対してコレクションを有効にすることはできません (つまり、コンテナー レベルで適用できる唯一のオーバーライドは、既にグローバルに有効になっている場合にコレクションを無効にすることです)。 |
 | `[log_collection_settings.enrich_container_logs] enabled =` | Boolean | true または false | この設定は、クラスター内のすべてのコンテナー ログの ContainerLog テーブルに書き込まれる<br> 各ログ記録の名前およびイメージ プロパティ値を設定する、コンテナー ログ強化を制御します。<br> ConfigMap に指定されていない場合、既定は `enabled = false` になります。 |
-| `[log_collection_settings.collect_all_kube_events]` | Boolean | true または false | この設定では、すべての種類の Kube イベントの収集を許可します。<br> 既定では、種類が *Normal* の Kube イベントは収集されません。 この設定を `true` に設定した場合、*Normal* イベントはフィルター処理されず、すべてのイベントが収集されます。<br> 既定では、これは `false` に設定されています。 |
+| `[log_collection_settings.collect_all_kube_events] enabled =` | Boolean | true または false | この設定では、すべての種類の Kube イベントの収集を許可します。<br> 既定では、種類が *Normal* の Kube イベントは収集されません。 この設定を `true` に設定した場合、*Normal* イベントはフィルター処理されず、すべてのイベントが収集されます。<br> ConfigMap に指定されていない場合、既定は `enabled = false` になります |
 
 ### <a name="metric-collection-settings"></a>メトリック収集の設定
 

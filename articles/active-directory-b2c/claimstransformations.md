@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 37d9bd78a80ac52d2a790537bf47e33807720349
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 426fe2bee411b5db40314ba6ff4087c37aad657c
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85202961"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129544851"
 ---
 # <a name="claimstransformations"></a>ClaimsTransformations
 
@@ -115,7 +115,7 @@ ms.locfileid: "85202961"
 | ClaimTypeReferenceId | はい | ポリシー内の ClaimsSchema セクションに既に定義されている ClaimType への参照。
 | TransformationClaimType | はい | 変換要求の種類を参照する識別子。 各要求変換は、独自の値を持ちます。 使用可能な値の完全なリストについては、[要求変換の参照](#claims-transformations-reference)を確認してください。 |
 
-入力要求と出力要求が同じ型 (文字列またはブール値) である場合、出力要求と同じ入力要求を使用できます。 この場合、要求変換によって、入力要求が出力要求に取り換えられます。
+要求変換に使用される入力と出力の要求は、区別できる必要があります。 同じ入力要求を出力要求として使用することはできません。
 
 ## <a name="example"></a>例
 

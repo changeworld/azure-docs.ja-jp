@@ -11,13 +11,13 @@ metadata:
   ms.date: 08/12/2021
   author: kenwith
   ms.author: kenwith
-  manager: mtillman
-  ms.openlocfilehash: e55de6ce1310b508ad7d865b62902e905cc71b19
-  ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+  manager: karenh444
+  ms.openlocfilehash: 5a27ce64296f32eb48c4c043187e0ad8ddd3fd73
+  ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/13/2021
-  ms.locfileid: "121860511"
+  ms.lasthandoff: 10/14/2021
+  ms.locfileid: "129991282"
 landingContent:
 - title: ユーザーとグループをクラウド アプリにプロビジョニングする
   linkLists:

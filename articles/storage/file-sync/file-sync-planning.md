@@ -8,12 +8,12 @@ ms.date: 04/13/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: 741f20a19c4bfe842ed2c14cee51c1ae19c1d9da
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: c4429e0410fb9511d511ce5841876d5fbca173f5
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123258473"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129388098"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Azure File Sync のデプロイの計画
 
@@ -153,7 +153,7 @@ NTFS ボリュームのみがサポートされます。ReFS、FAT、FAT32 お�
 
 次の表に、NTFS ファイル システムの機能の相互運用の状態を示します。 
 
-| 機能 | サポートの状態 | Notes |
+| 特徴量 | サポートの状態 | Notes |
 |---------|----------------|-------|
 | アクセス制御リスト (ACL) | 完全にサポートされています | Windows スタイルの随意アクセス制御リストは Azure File Sync に保持され、サーバー エンドポイント上の Windows Server によって適用されます。 Azure ファイル共有を直接マウントするときに ACL を適用することもできますが、これには追加の構成が必要です。 詳細については、[ID に関するセクション](#identity)を参照してください。 |
 | ハード リンク | スキップ | |
@@ -209,7 +209,9 @@ Azure File Sync では、以下のものがローカル ディスク上のスペ
 この場合、Azure File Sync には約 209,500,000 KiB (209.5 GiB) の領域が必要になります。 このディスクに必要な空き領域を計算するために望ましい追加の空き領域に、この量を追加します。
 
 ### <a name="failover-clustering"></a>フェールオーバー クラスタリング
-Windows Server フェールオーバー クラスタリングは、Azure ファイル同期の "汎用ファイル サーバー" デプロイ オプションでサポートされています。 フェールオーバー クラスタリングは、"アプリケーション データ用のスケールアウト ファイル サーバー" (SOFS) またはクラスター共有ボリューム (CSV) ではサポートされていません。
+1. Windows Server フェールオーバー クラスタリングは、Azure ファイル同期の "汎用ファイル サーバー" デプロイ オプションでサポートされています。 
+2. Azure File Sync によってサポートされる唯一のシナリオは、クラスター化されたディスクを使用する Windows Server フェールオーバー クラスターです
+3. フェールオーバー クラスタリングは、"アプリケーション データ用のスケールアウト ファイル サーバー" (SOFS)、クラスター共有ボリューム (CSV)、またはローカル ディスクではサポートされていません。
 
 > [!Note]  
 > 同期が適切に機能するには、フェールオーバー クラスターのすべてのノードに Azure File Sync エージェントをインストールする必要があります。

@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 06/21/2021
+ms.date: 09/22/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 33389224bcc4abf05ffbb261e23409eb95896781
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: b428b069c0f576109179ecc64bddc409abe29e5f
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123220865"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "128568326"
 ---
 # <a name="developer-notes-for-azure-active-directory-b2c"></a>Azure Active Directory B2C の開発者向けのメモ
 
@@ -55,7 +55,9 @@ Azure AD B2C と連携できる OAuth 2.0 および OpenId Connect アプリケ�
 [On-Behalf-Of](../active-directory/develop/v2-oauth2-on-behalf-of-flow.md)| NA | NA | アプリケーションでサービスまたは Web API を呼び出し、それがさらに別のサービスまたは Web API を呼び出す必要があります。 <br />  <br /> 中間層のサービスから下流のサービスに対して認証要求を行うには、"*クライアント資格情報*" トークンを認可ヘッダーに埋め込みます。 必要に応じて、Azure AD B2C ユーザーのトークンを含むカスタム ヘッダーも使用できます。  |
 [OpenID Connect](openid-connect.md) | GA | GA | OpenID Connect には、ID トークンの概念が導入されています。ID トークンとは、クライアントがユーザーの本人性を確認できるセキュリティ トークンです。 |
 [OpenId Connect ハイブリッド フロー](openid-connect.md) | GA | GA | Web アプリケーションから認可要求を行って ID トークンと認可コードを取得できます。  |
-[リソース所有者のパスワード資格情報 (ROPC)](add-ropc-policy.md) | プレビュー | プレビュー | モバイル アプリケーションで直接パスワードを処理して、ユーザーをサインインさせることができます。 |
+[リソース所有者のパスワード資格情報 (ROPC)](add-ropc-policy.md) | GA | GA | モバイル アプリケーションで直接パスワードを処理して、ユーザーをサインインさせることができます。 |
+| [サインアウト](session-behavior.md#sign-out)| GA | GA | |
+| [シングル サインアウト](session-behavior.md#sign-out)  | NA | プレビュー | |
 
 ### <a name="oauth-20-options"></a>OAuth 2.0 のオプション
 
@@ -66,6 +68,7 @@ Azure AD B2C と連携できる OAuth 2.0 および OpenId Connect アプリケ�
 | `client_assertion` を使用して JSON をユーザー体験に挿入| NA| 非推奨 |  |
 | [id_token_hint](id-token-hint.md) として JSON をユーザー体験に挿入する | NA | GA | |
 | [ID プロバイダー トークンをアプリケーションに渡す](idp-pass-through-user-flow.md)| プレビュー| プレビュー| 例: Facebook からアプリへ。 |
+| [サインインしたままにする (KMSI)](session-behavior.md#enable-keep-me-signed-in-kmsi)| GA| GA| |
 
 ## <a name="saml2-application-authentication-flows"></a>SAML2 アプリケーションの認証フロー
 
@@ -81,6 +84,7 @@ Azure AD B2C と連携できる Security Assertion Markup Language (SAML) アプ
 |機能  |ユーザー フロー  |カスタム ポリシー  |Notes  |
 |---------|:---------:|:---------:|---------|
 | [複数言語のサポート](localization.md)| GA | GA | |
+| [カスタム ドメイン](custom-domain.md)| GA | GA | |
 | [カスタム メール確認](custom-email-mailjet.md) | NA | GA| |
 | [組み込みテンプレートを使用したユーザー インターフェイスのカスタマイズ](customize-ui.md) | GA| GA| |
 | [カスタム テンプレートを使用したユーザー インターフェイスのカスタマイズ](customize-ui-with-html.md) | GA| GA| HTML テンプレートを使用します。 |
@@ -89,6 +93,7 @@ Azure AD B2C と連携できる Security Assertion Markup Language (SAML) アプ
 | [埋め込みサインイン エクスペリエンス](embedded-login.md) | NA |  プレビュー| インライン フレーム要素の `<iframe>` を使用します。 |
 | [パスワードの複雑さ](password-complexity.md) | GA | GA | |
 | [メールの確認を無効にする](disable-email-verification.md) | GA|  GA| 運用環境での使用はお勧めしません。 サインアップ プロセスでの電子メールの検証を無効にすると、スパムにつながる場合があります。 |
+
 
 
 
@@ -147,7 +152,7 @@ Azure AD B2C と連携できる Security Assertion Markup Language (SAML) アプ
 | [外部ログイン セッション プロバイダー](custom-policy-reference-sso.md#externalloginssosessionprovider) | GA |  |
 | [SAML SSO セッション プロバイダー](custom-policy-reference-sso.md#samlssosessionprovider) | GA |  |
 | [OAuth SSO セッション プロバイダー](custom-policy-reference-sso.md#oauthssosessionprovider)  | GA|  |
-| [シングル サインアウト](session-behavior.md#sign-out)  |  プレビュー |  |
+
 
 ### <a name="components"></a>Components
 
@@ -159,6 +164,7 @@ Azure AD B2C と連携できる Security Assertion Markup Language (SAML) アプ
 | ローカル ディレクトリとしての [Azure Active Directory](active-directory-technical-profile.md) | GA |  |
 | [述語の検証](predicates.md) | GA | 例: パスワードの複雑さ。 |
 | [表示コントロール](display-controls.md) | GA |  |
+| [サブ体験](subjourneys.md) | GA | |
 
 ### <a name="developer-interface"></a>開発者向けインターフェイス
 

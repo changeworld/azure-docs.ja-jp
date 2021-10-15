@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.date: 09/10/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 7a24b9631362618ee3be5e94066ac5267ac85962
-ms.sourcegitcommit: 0ab53a984dcd23b0a264e9148f837c12bb27dac0
+ms.openlocfilehash: e84ee56b57c4e97e2fd77e38acf45fc0d426fb58
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2021
-ms.locfileid: "113504875"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129277083"
 ---
 # <a name="url-path-based-routing-overview"></a>URL パス ベースのルーティングの概要
 
@@ -64,7 +64,7 @@ urlPathMap 要素は、パス パターンのバックエンド サーバー プ
 
 ### <a name="pathpattern"></a>PathPattern
 
-PathPattern は照合するパス パターンの一覧です。 それぞれ / で始まる必要があり、"*" が許可されるのは末尾の "/" の後だけです。 パス照合に渡される文字列の最初の ?  または # の後にテキストは含まれず、これらの文字はここでは許可されません。 それ以外の場合、URL で許可される文字はすべて PathPattern で許可されます。
+PathPattern は照合するパス パターンの一覧です。 各パスは / で始まる必要があります。ワイルドカード文字として \* を使用できます。 パス照合に渡される文字列の最初の ?  または # の後にテキストは含まれず、これらの文字はここでは許可されません。 それ以外の場合、URL で許可される文字はすべて PathPattern で許可されます。
 
 Application Gateway v1 と v2 のいずれをデプロイしているかによって、サポートされるパターンは異なります。
 
@@ -76,9 +76,9 @@ Application Gateway v1 と v2 のいずれをデプロイしているかによ�
 |---------|---------|
 |`/images/*`     |はい|
 |`/images*`     |はい|
-|`/images/*.jpg`     |Ｘ|
-|`/*.jpg`     |Ｘ|
-|`/Repos/*/Comments/*`     |いいえ|
+|`/images/*.jpg`     |no|
+|`/*.jpg`     |no|
+|`/Repos/*/Comments/*`     |no|
 |`/CurrentUser/Comments/*`     |はい|
 
 #### <a name="v2"></a>v2
@@ -89,9 +89,9 @@ Application Gateway v1 と v2 のいずれをデプロイしているかによ�
 |---------|---------|
 |`/images/*`     |はい|
 |`/images*`     |はい|
-|`/images/*.jpg`     |Ｘ|
-|`/*.jpg`     |Ｘ|
-|`/Repos/*/Comments/*`     |いいえ|
+|`/images/*.jpg`     |no|
+|`/*.jpg`     |no|
+|`/Repos/*/Comments/*`     |no|
 |`/CurrentUser/Comments/*`     |はい|
 
 詳しくは、「 [Resource Manager template using URL-based routing (URL ベースのルーティングを使用した Resource Manager テンプレート)](https://azure.microsoft.com/resources/templates/application-gateway-url-path-based-routing) 」をご覧ください。

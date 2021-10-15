@@ -4,13 +4,13 @@ description: オブジェクトを操作する際に Bicep ファイルで使用
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 09/10/2021
-ms.openlocfilehash: fd65cc60412d46a734764d3566fa3606a48c7bf6
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 09/30/2021
+ms.openlocfilehash: 38dfdee2dbe40b40631b45b8d0f9e157f5efc7ae
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124758448"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129349838"
 ---
 # <a name="object-functions-for-bicep"></a>Bicep の object 関数
 
@@ -22,9 +22,11 @@ ms.locfileid: "124758448"
 
 配列に値が含まれるかどうか、オブジェクトにキーが含まれるかどうか、または文字列に部分文字列が含まれるかどうかを確認します。 文字列比較では大文字・小文字を区別します。 ただし、オブジェクトにキーが含まれているかどうかをテストする場合、比較で大文字・小文字を区別しません。
 
+名前空間: [sys](bicep-functions.md#namespaces-for-functions)。
+
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | container |はい |配列、オブジェクト、文字列 |検索対象の値を含む値。 |
 | itemToFind |はい |文字列または整数 |検索対象の値。 |
@@ -60,7 +62,7 @@ output arrayFalse bool = contains(arrayToTest, 'four')
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 種類 | 値 |
+| 名前 | Type | 値 |
 | ---- | ---- | ----- |
 | stringTrue | Bool | True |
 | stringFalse | Bool | False |
@@ -75,9 +77,11 @@ output arrayFalse bool = contains(arrayToTest, 'four')
 
 配列、オブジェクト、または文字列が空かどうかを判断します。
 
+名前空間: [sys](bicep-functions.md#namespaces-for-functions)。
+
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | itemToTest |はい |配列、オブジェクト、文字列 |空かどうかを確認する値。 |
 
@@ -101,7 +105,7 @@ output stringEmpty bool = empty(testString)
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 種類 | 値 |
+| 名前 | Type | 値 |
 | ---- | ---- | ----- |
 | arrayEmpty | Bool | True |
 | objectEmpty | Bool | True |
@@ -113,9 +117,11 @@ output stringEmpty bool = empty(testString)
 
 パラメーターから共通の要素を持つ 1 つの配列またはオブジェクトを返します。
 
+名前空間: [sys](bicep-functions.md#namespaces-for-functions)。
+
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |配列またはオブジェクト |共通の要素の検索に使用する 1 番目の値。 |
 | arg2 |はい |配列またはオブジェクト |共通の要素の検索に使用する 2 番目の値。 |
@@ -156,7 +162,7 @@ output arrayOutput array = intersection(firstArray, secondArray)
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 種類 | 値 |
+| 名前 | Type | 値 |
 | ---- | ---- | ----- |
 | objectOutput | Object | {"one": "a", "three": "c"} |
 | arrayOutput | Array | ["two", "three"] |
@@ -169,9 +175,11 @@ output arrayOutput array = intersection(firstArray, secondArray)
 
 有効な JSON 文字列を JSON データ型に変換します。
 
+名前空間: [sys](bicep-functions.md#namespaces-for-functions)。
+
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |string |JSON に変換する値。 文字列は、適切に書式設定された JSON 文字列である必要があります。 |
 
@@ -207,7 +215,7 @@ output concatObjectOutput object = json(concat('{"a": "', concatValue, '"}'))
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 種類 | 値 |
+| 名前 | Type | 値 |
 | ---- | ---- | ----- |
 | emptyObjectOutput | Boolean | True |
 | objectOutput | Object | {"a": "b"} |
@@ -223,9 +231,11 @@ output concatObjectOutput object = json(concat('{"a": "', concatValue, '"}'))
 
 配列内の要素、文字列内の文字、またはオブジェクト内のルート レベル プロパティの数を返します。
 
+名前空間: [sys](bicep-functions.md#namespaces-for-functions)。
+
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |array、string、または object |要素の数を取得するために使用する配列、文字の数を取得するために使用する文字列、またはルート レベル プロパティの数を取得するために使用するオブジェクト。 |
 
@@ -261,7 +271,7 @@ output objectLength int = length(objectToTest)
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 種類 | 値 |
+| 名前 | Type | 値 |
 | ---- | ---- | ----- |
 | arrayLength | int | 3 |
 | stringLength | int | 13 |
@@ -273,9 +283,11 @@ output objectLength int = length(objectToTest)
 
 パラメーターからすべての要素を持つ 1 つの配列またはオブジェクトを返します。 重複する値またはキーは、1 回のみ含まれます。
 
+名前空間: [sys](bicep-functions.md#namespaces-for-functions)。
+
 ### <a name="parameters"></a>パラメーター
 
-| パラメーター | 必須 | 種類 | 説明 |
+| パラメーター | 必須 | Type | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |配列またはオブジェクト |要素の結合に使用される 1 番目の値。 |
 | arg2 |はい |配列またはオブジェクト |要素の結合に使用される 2 番目の値。 |
@@ -319,11 +331,11 @@ output arrayOutput array = union(firstArray, secondArray)
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| 名前 | 種類 | 値 |
+| 名前 | Type | 値 |
 | ---- | ---- | ----- |
 | objectOutput | Object | {"one": "a", "two": "b", "three": "c2", "four": "d", "five": "e"} |
 | arrayOutput | Array | ["one", "two", "three", "four"] |
 
 ## <a name="next-steps"></a>次のステップ
 
-* Bicep ファイルのセクションの説明は、[Bicep ファイルの構造と構文](./file.md)に関する記事をご覧ください。
+* Bicep ファイルのセクションの説明は、<bpt id="p1">[</bpt>Bicep ファイルの構造と構文<ept id="p1">](./file.md)</ept>に関する記事をご覧ください。

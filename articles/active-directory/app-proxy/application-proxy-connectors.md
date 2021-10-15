@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: ae7da354b16dbea3e84f8d75fbf97e805387c4b0
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 066690f69922ba8df7e7df8739d4c4bf521eb5c3
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111952096"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129230933"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Azure AD アプリケーション プロキシ コネクタを理解する
 
@@ -30,10 +30,10 @@ ms.locfileid: "111952096"
 
 アプリケーション プロキシを正常にデプロイするには、少なくとも 1 つのコネクタが必要ですが、回復性向上のために 2 つ以上のコネクタを使うことをお勧めします。 Windows Server 2012 R2 以降が実行されているマシンにコネクタをインストールします。 コネクタは、アプリケーション プロキシ サービスおよび公開するオンプレミス アプリケーションと通信する必要があります。
 
-### <a name="windows-server"></a>Windows サーバー
+### <a name="windows-server"></a>Windows Server
 Windows Server 2012 R2 以降が実行されていて、アプリケーション プロキシ コネクタをインストールできるサーバーが必要です。 サーバーは、Azure 内のアプリケーション プロキシ サービスと、公開するオンプレミス アプリケーションに接続する必要があります。
 
-アプリケーション プロキシ コネクタをインストールするには、Windows サーバーで TLS 1.2 が有効になっている必要があります。 サーバー上で TLS 1.2 を有効にするには、次の手順に従います。
+アプリケーション プロキシ コネクタをインストールするには、サーバーで TLS 1.2 が有効になっている必要があります。 サーバー上で TLS 1.2 を有効にするには、次の手順に従います。
 
 1. 次のレジストリ キーを設定します。
 
@@ -133,7 +133,7 @@ Azure AD では、デプロイしたすべてのコネクタの自動更新を�
 
 ## <a name="domain-joining"></a>ドメイン参加
 
-コネクタは、ドメインに参加していないコンピューターで実行できます。 ただし、統合 Windows 認証 (IWA) を使用するアプリケーションへのシングル サインオン (SSO) を行う場合は、ドメイン参加済みのコンピューターが必要です。 この場合、コネクタを実行するコンピューターは、公開済みアプリケーションのユーザーの代わりに [Kerberos](https://web.mit.edu/kerberos) の制約付き委任を実行できるドメインに参加する必要があります。
+コネクタは、ドメインに参加していないコンピューターで実行できます。 ただし、統合 Windows 認証 (IWA) を使用するアプリケーションへのシングル サインオン (SSO) が必要な場合は、ドメイン参加済みマシンが必要です。 この場合、コネクタを実行するコンピューターは、公開済みアプリケーションのユーザーの代わりに [Kerberos](https://web.mit.edu/kerberos) の制約付き委任を実行できるドメインに参加する必要があります。
 
 コネクタは、部分的な信頼関係のあるフォレスト内のドメイン、または読み取り専用ドメイン コントローラーに参加することもできます。
 

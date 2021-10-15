@@ -11,16 +11,16 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efe7a8d1969f457a70326edb99652eb8f25d27b8
-ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+ms.openlocfilehash: 422a273f0bc5fbeccf61f3af1ddb4edc9b95e36b
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113213887"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129232479"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Azure AD の B2B ユーザーにオンプレミスのアプリケーションへのアクセスを許可する
 
-Azure Active Directory (Azure AD) B2B コラボレーション機能を使用して取引先組織のゲスト ユーザーを Azure AD に招待している組織が、これらの B2B ユーザーにオンプレミスのアプリケーションへのアクセスを提供できるようになりました。 これらのオンプレミスのアプリケーションでは、Kerberos の制約付き委任 (KCD) と共に SAML ベースの認証または統合 Windows 認証 (IWA) を使用できます。
+Azure Active Directory (Azure AD) B2B コラボレーション機能を使用して取引先組織のゲスト ユーザーを Azure AD に招待している組織が、これらの B2B ユーザーにオンプレミスのアプリケーションへのアクセスを提供できるようになりました。 これらのオンプレミス アプリは、SAML ベースの認証または統合 Windows 認証 (IWA) を Kerberos の制約付き委任 (KCD) と共に使用できます。
 
 ## <a name="access-to-saml-apps"></a>SAML アプリケーションへのアクセス
 
@@ -38,13 +38,13 @@ Azure Active Directory (Azure AD) B2B コラボレーション機能を使用し
 
 ## <a name="access-to-iwa-and-kcd-apps"></a>IWA および KCD アプリへのアクセス
 
-統合 Windows 認証と Kerberos の制約付き委任を使用してセキュリティで保護されたオンプレミス アプリケーションへのアクセス権を B2B ユーザーに付与するには、次のコンポーネントが必要です。
+B2B ユーザーに、統合 Windows 認証と Kerberos の制約付き委任を使用してセキュリティで保護されたオンプレミス アプリケーションへのアクセスを提供するには、次のコンポーネントが必要です。
 
 - **Azure AD アプリケーション プロキシを介した認証**。 B2B ユーザーは、オンプレミス アプリケーションに対して認証できる必要があります。 これを行うには、Azure AD アプリケーション プロキシを介してオンプレミス アプリを発行する必要があります。 詳細については、[アプリケーション プロキシを使用したリモート アクセスを行うためのオンプレミス アプリケーションの追加に関するチュートリアル](../app-proxy/application-proxy-add-on-premises-application.md)を参照してください。
 - **オンプレミス ディレクトリの B2B ユーザー オブジェクトを介した承認**。 アプリケーションは、ユーザー アクセス チェックを実行し、正しいリソースへのアクセス権を付与できる必要があります。 IWA と KCD がこの承認を完了するには、オンプレミスの Windows Server Active Directory 内のユーザー オブジェクトが必要です。 「[KCD を使ったシングル サインオンのしくみ](../app-proxy/application-proxy-configure-single-sign-on-with-kcd.md#how-single-sign-on-with-kcd-works)」で説明されているように、アプリケーション プロキシはこのユーザー オブジェクトを使用してユーザーを偽装し、アプリに対する Kerberos トークンを取得する必要があります。 
 
    > [!NOTE]
-   > Azure AD アプリケーション プロキシを構成する場合は、**委任されたログオン ID** が、統合 Windows 認証 (IWA) に対するシングル サインオン構成で、**ユーザー プリンシパル名** (既定) に確実に設定されているようにします。
+   > Azure AD アプリケーション プロキシを構成する場合は、統合 Windows 認証 (IWA) のシングル サインオン構成で **[委任されたログオン ID]** が **[ユーザー プリンシパル名]** (既定値) に設定されていることを確認してください。
 
    B2B ユーザーのシナリオでは、オンプレミス ディレクトリでの承認に必要なゲスト ユーザー オブジェクトの作成に使用できる方法が 2 つあります。
 

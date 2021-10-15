@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/20/2020
 ms.author: pafarley
-ms.openlocfilehash: cb39fc53e5753c2667fcc3d3bf78b075366dd3a8
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 0ffa432b6d5d94ad4e313a183d8e277ce44aae3d
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123539080"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129585072"
 ---
 ## <a name="install-the-speech-sdk"></a>Speech SDK のインストール
 
@@ -112,6 +112,9 @@ private static async Task<string> GetVoiceSignatureString()
 * 参加者を会話に追加します。 上記の手順の関数 `GetVoiceSignatureString()` の出力として、文字列 `voiceSignatureStringUser1` と `voiceSignatureStringUser2` が得られます。
 * 会話に参加し、文字起こしを開始します。
 
+> [!NOTE]
+> `AudioStreamReader` は [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/quickstart/csharp/dotnet/conversation-transcription/helloworld/AudioStreamReader.cs) で取得できるヘルパー クラスです。
+
 関数 `TranscribeConversationsAsync()` を呼び出して、会話の文字起こしを開始します。
 
 ```csharp
@@ -201,8 +204,9 @@ public static async Task TranscribeConversationsAsync(string voiceSignatureStrin
                 Task.WaitAny(new[] { stopRecognition.Task });
                 await conversationTranscriber.StopTranscribingAsync().ConfigureAwait(false);
             }
-        }
-    }
-}
+         }
+      }
+   }
 }
 ```
+

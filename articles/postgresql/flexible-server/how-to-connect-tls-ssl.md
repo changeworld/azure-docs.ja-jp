@@ -6,12 +6,12 @@ ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: cd9a74e9a05dad68a5d05fd8b9c92ed566c21766
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: 065ffe56e2868cce00bd92c612beb987d9372e38
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107227434"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129388795"
 ---
 # <a name="encrypted-connectivity-using-transport-layer-security-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL - フレキシブル サーバーでのトランスポート層セキュリティを使用した暗号化された接続
 
@@ -20,7 +20,10 @@ ms.locfileid: "107227434"
 
 Azure Database for PostgreSQL - フレキシブル サーバーによって、トランスポート層セキュリティ (TLS) (旧称 Secure Sockets Layer (SSL)) を使用したクライアント アプリケーションの PostgreSQL サービスへの接続がサポートされます。 TLS は、データベース サーバーとクライアント アプリケーションの間の暗号化されたネットワーク接続を保証する業界標準のプロトコルです。これを使用することで、ユーザーはコンプライアンス要件に準拠することができます。
 
-Azure Database for PostgreSQL - フレキシブル サーバーによって、トランスポート層セキュリティ (TLS 1.2 以降) を使用した暗号化された接続がサポートされ、TLS 1.0 と TLS 1.1 を使用した受信接続はすべて拒否されます。 すべてのフレキシブル サーバーで TLS 接続の適用が有効になるため、フレキシブル サーバーに接続するために TLS/SSL を無効にすることはできません。
+Azure Database for PostgreSQL - フレキシブル サーバーによって、トランスポート層セキュリティ (TLS 1.2 以降) を使用した暗号化された接続がサポートされ、TLS 1.0 と TLS 1.1 を使用した受信接続はすべて拒否されます。 すべてのフレキシブル サーバーで、TLS 接続の強制が有効になっています。 
+
+>[!Note]
+> 既定では、クライアントとサーバーの間で、保護された接続を強制します。 フレキシブル サーバーへの接続で TLS/SSL を無効にするには、サーバー パラメーターを `require_secure_transport` から `OFF` に変更します。 
 
 ## <a name="applications-that-require-certificate-verification-for-tlsssl-connectivity"></a>TLS/SSL 接続のために証明書の検証を必要とするアプリケーション
 安全に接続するために、信頼された証明機関 (CA) 証明書ファイルから生成されたローカルの証明書ファイルがアプリケーションに必要な場合があります。 Azure Database for PostgreSQL - フレキシブル サーバーにより、*DigiCert Global Root CA* が使用されます。 [DigiCert Global Root CA](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem) から SSL 経由で通信するために必要なこの証明書をダウンロードし、証明書ファイルを希望する場所に保存します。 たとえば、このチュートリアルでは `c:\ssl` を使用します。

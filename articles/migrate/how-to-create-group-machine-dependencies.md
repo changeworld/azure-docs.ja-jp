@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 11/25/2020
-ms.openlocfilehash: 757a10473c2f6776ef3a84310b42209ddd12ed45
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 1ad8f9496bd781d6ed33927b4056073a50e0b5a2
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128643652"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129535029"
 ---
 # <a name="set-up-dependency-visualization"></a>依存関係の視覚化を設定する
 
@@ -65,9 +65,13 @@ ms.locfileid: "128643652"
 > System Center Operations Manager 2012 R2 以降によって監視されているサーバーの場合、MMA エージェントをインストールする必要はありません。 Service Map は Operations Manager と統合されます。 統合ガイダンスに[従ってください](../azure-monitor/vm/service-map-scom.md#prerequisites)。
 
 1. **[Azure Migrate: 検出および評価]** で、 **[検出済みサーバー]** をクリックします。
-2. 依存関係の視覚化を利用して分析する各サーバーについて、 **[依存関係]** 列の **[エージェントをインストールする必要があります]** をクリックします。
-3. **[依存関係]** ページで、Windows 用または Linux 用の MMA と依存関係エージェントをダウンロードします。
-4. **[MMA エージェントの構成]\(Configure MMA agent\)** で、ワークスペース ID とキーをコピーします。 これらは、MMA エージェントをインストールするときに必要です。
+1. **[列]** をクリックして **[依存関係 (エージェントベース)]** を選択し、[検出済みサーバー] ページに列を表示します。
+
+    :::image type="content" source="./media/how-to-create-group-machine-dependencies/columns-inline.png" alt-text="列をクリックした後の結果を示すスクリーンショット。" lightbox="./media/how-to-create-group-machine-dependencies/columns-expanded.png":::
+
+1. 依存関係の視覚化を利用して分析する各サーバーについて、 **[依存関係]** 列の **[エージェントをインストールする必要があります]** をクリックします。
+1. **[依存関係]** ページで、Windows 用または Linux 用の MMA と依存関係エージェントをダウンロードします。
+1. **[MMA エージェントの構成]\(Configure MMA agent\)** で、ワークスペース ID とキーをコピーします。 これらは、MMA エージェントをインストールするときに必要です。
 
     ![エージェントをインストールする](./media/how-to-create-group-machine-dependencies/dependencies-install.png)
 

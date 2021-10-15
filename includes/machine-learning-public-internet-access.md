@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/27/2021
 ms.author: larryfr
 ms.custom: include file
-ms.openlocfilehash: 18d6da8c9156a66a16be7590603ae71b85abb9a4
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: e144756e65c0ae4d202333cd2972d9c5a1e3fdc8
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123105505"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124740698"
 ---
 Azure Machine Learning は、パブリック インターネットへの受信アクセスと送信アクセスの両方が必要です。 次の表に、必要なアクセスの概要と、その目的を示します。 すべての項目の __プロトコル__ は __TCP__ です。 `.region` で終わるサービス タグでは、`region` を、ご利用のワークスペースを含む Azure リージョンに置き換えます。 `Storage.westus` の例を次に示します。
 
@@ -28,6 +28,7 @@ Azure Machine Learning は、パブリック インターネットへの受信�
 | 送信 | 443 | AzureFrontDoor.FrontEnd</br>* Azure China では不要です。 | [Azure Machine Learning スタジオ](https://ml.azure.com)用のグローバル エントリ ポイント。 | 
 | 送信 | 443 | ContainerRegistry.region | Microsoft が提供する Docker イメージにアクセスします。 |
 | 送信 | 443 | MicrosoftContainerRegistry.region | Microsoft が提供する Docker イメージにアクセスします。 Azure Kubernetes Service の Azure Machine Learning ルートのセットアップ。 |
+| 送信 | 443 | Keyvault.region | Azure Batch サービスのキー コンテナーにアクセスします。 [hbi_workspace](/python/api/azureml-core/azureml.core.workspace%28class%29#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) フラグを有効にしてワークスペースが作成された場合にのみ必要です。 |
 
 > [!TIP]
 > サービス タグの代わりに IP アドレスが必要な場合、次のいずれかのオプションを使用します。
@@ -52,6 +53,6 @@ Azure Machine Learning は、パブリック インターネットへの受信�
 
 Azure Machine Learning で Azure Kubernetes Service (AKS) を使用する場合は、AKS VNet への次のトラフィックを許可します。
 
-* 「[Azure Kubernetes Service (AKS) でエグレス トラフィックを制限する](/azure/aks/limit-egress-traffic)」で説明されている AKS の受信または送信の一般的な要件。
+* 「[Azure Kubernetes Service (AKS) でエグレス トラフィックを制限する](../articles/aks/limit-egress-traffic.md)」で説明されている AKS の受信または送信の一般的な要件。
 * mcr.microsoft.com への __送信__。
-* AKS クラスターにモデルをデプロイする場合は、「[ML モデルを Kubernetes Service にデプロイする](/azure/machine-learning/how-to-deploy-azure-kubernetes-service#connectivity)」記事のガイダンスを使用してください。
+* AKS クラスターにモデルをデプロイする場合は、「[ML モデルを Kubernetes Service にデプロイする](../articles/machine-learning/how-to-deploy-azure-kubernetes-service.md#connectivity)」記事のガイダンスを使用してください。

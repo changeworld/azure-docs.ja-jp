@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: yushwang
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6bbea74f635375785f325f48a2babb01af7c8228
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: f990fb196311945642e918e9b38ec1a32a15fcc6
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114463193"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129270469"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections"></a>S2S VPN または VNet-to-VNet 接続の IPsec/IKE ポリシーを構成する
 
@@ -35,7 +35,7 @@ IPsec/IKE 標準プロトコルは、幅広い暗号アルゴリズムをさま�
 
 > [!IMPORTANT]
 > 1. IPsec/IKE ポリシーは、次のゲートウェイ SKU でのみ機能する点に注意してください。
->    * ***VpnGw1、VpnGw2、VpnGw3*** (ルート ベース)
+>    * ***VpnGw1 から 5 および VpnGw1AZ から 5AZ*** (ルート ベース)
 >    * ***Standard** _ および _ *_HighPerformance_** (ルート ベース)
 > 2. ある特定の接続に対して指定できるポリシーの組み合わせは ***1 つ*** だけです。
 > 3. IKE (メイン モード) と IPsec (クイック モード) の両方について、すべてのアルゴリズムとパラメーターを指定する必要があります。 ポリシーを部分的に指定することはできません。

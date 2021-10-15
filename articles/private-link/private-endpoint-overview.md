@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/09/2021
 ms.author: allensu
-ms.openlocfilehash: f7af65c111659a1794fbdedb89d541009d269b66
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 0d613d7d207da8632fe7a2767d6440ee62378866
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124791882"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129359416"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Azure プライベート エンドポイントとは
 
@@ -158,7 +158,7 @@ ms.locfileid: "124791882"
 | ユーザー定義ルートを使用するプライベート エンドポイント宛てのトラフィックは、非対称である可能性があります。 | プライベート エンドポイントから返されるトラフィックは、ネットワーク仮想アプライアンス (NVA) をバイパスして、ソース VM に戻ろうとします。 | 対称的なルーティングが確実に行われるように、ソース ネットワーク アドレス変換 (SNAT) が使用されます。 UDR を使用するプライベート エンドポイント宛てのすべてのトラフィックについては、NVA で、トラフィックのために SNAT を使用することをお勧めします。 |
 
 > [!IMPORTANT]
-> プライベート エンドポイントに対する NSG と UDR のサポートは、パブリック プレビュー段階です。
+> プライベート エンドポイントに対する NSG と UDR のサポートは、一部のリージョンでパブリック プレビュー段階です。 詳細については、「[Private Link UDR のサポートのパブリック プレビュー](https://azure.microsoft.com/updates/public-preview-of-private-link-udr-support/)」と「[Private Link ネットワーク セキュリティ グループのサポートのパブリック プレビュー](https://azure.microsoft.com/updates/public-preview-of-private-link-network-security-group-support/)」を参照してください。
 > このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 ## <a name="public-preview-limitations"></a>パブリック プレビューの制限事項
@@ -175,7 +175,7 @@ ms.locfileid: "124791882"
 | AllowVirtualNetworkAccess フラグ | 別の VNet (VNet B) へのピアリング リンクで **AllowVirtualNetworkAccess** フラグが false に設定されている VNet (VNet A) で VNet ピアリングを設定している場合は、**VirtualNetwork** タグを使用して、プライベート エンドポイント リソースにアクセスする VNet B からのトラフィックを拒否することはできません。 プライベート エンドポイントへのトラフィックを拒否するには、VNet B のアドレス プレフィックスのブロックを明示的に配置する必要があります。 | September |
 | デュアル ポート NSG ルールがサポートされない。 | NSG 規則で複数のポート範囲が使用されている場合、許可規則と拒否規則に対して、最初のポート範囲だけが有効になります。 複数のポート範囲がある規則では、既定で、特定のポートではなくすべてが拒否されます。 </br> **詳細については、下の規則の例を参照してください。** | September |
 
-| Priority | 送信元ポート | 宛先ポート | アクション | 有効なアクション |
+| 優先順位 | 送信元ポート | 宛先ポート | アクション | 有効なアクション |
 | -------- | ----------- | ---------------- | ------ | ---------------- |
 | 10 | 10 ～ 12 | 10 ～ 12 | 許可/拒否 | 送信元/宛先ポートの単一ポート範囲は、想定どおりに動作します。 |
 | 10 | 10 ～ 12、13 ～ 14 | 14 ～ 15、16 ～ 17 | Allow | 送信元ポート 10 ～ 12 と宛先ポート 14 ～ 15 のみが許可されます。 |

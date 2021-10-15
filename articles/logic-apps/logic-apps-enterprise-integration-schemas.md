@@ -1,6 +1,6 @@
 ---
-title: ワークフローで XML 検証用のスキーマを追加する
-description: Enterprise Integration Pack を使用する Azure Logic Apps で、ワークフローの XML ドキュメントを検証するためのスキーマを追加します。
+title: ワークフローの XML を検証するためのスキーマを追加する
+description: Azure Logic Apps と Enterprise Integration Pack で、ワークフローの XML ドキュメントを検証するためのスキーマを追加します。
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -8,18 +8,18 @@ ms.author: divswa
 ms.reviewer: estfan, azla
 ms.topic: how-to
 ms.date: 09/14/2021
-ms.openlocfilehash: f80ed9c7fa9aa2d291e4f045b6cfc7da695cb22b
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 2c64deb35d89d6e1381fd3b296c7c73d82567ade
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128611436"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129363839"
 ---
-# <a name="add-schemas-to-validate-xml-documents-for-workflows-in-azure-logic-apps"></a>Azure Logic Apps でワークフローの XML ドキュメントを検証するためのスキーマを追加する
+# <a name="add-schemas-to-validate-xml-in-workflows-with-azure-logic-apps"></a>Azure Logic Apps でワークフローの XML を検証するためのスキーマを追加する
 
 ドキュメントで有効な XML が使用され、必要なデータが定義済みの形式で含まれていることを確認するために、ロジック アプリ ワークフローでは、**XML 検証** アクションで XML スキーマを使用できます。 XML スキーマでは、[XML スキーマ定義 (XSD)](https://www.w3.org/TR/xmlschema11-1/) を使用して XML で表されたビジネス ドキュメントを記述します。
 
-ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](logic-apps-overview.md)」を参照してください。 B2B エンタープライズ統合の詳細については、「[Azure Logic Apps と Enterprise Integration Pack を使用した B2B エンタープライズ統合ワークフロー](logic-apps-enterprise-integration-overview.md)」を参照してください。
+ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](logic-apps-overview.md)」を参照してください。 B2B エンタープライズ統合の詳細については、「[Azure Logic Apps と Enterprise Integration Pack を使用した B2B エンタープライズ統合ワークフロー](logic-apps-enterprise-integration-overview.md)」をご確認ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -37,7 +37,7 @@ ms.locfileid: "128611436"
    > [!NOTE]
    > 高解像度モニターでは、Visual Studio の[マップ デザイナーで表示の問題](/visualstudio/designers/disable-dpi-awareness)が発生することがあります。 この表示の問題を解決するには、[Visual Studio を DPI 非対応モードで再起動する](/visualstudio/designers/disable-dpi-awareness#restart-visual-studio-as-a-dpi-unaware-process)か、[DPIUNAWARE レジストリ値](/visualstudio/designers/disable-dpi-awareness#add-a-registry-entry)を追加します。
 
-* エンタープライズ統合および B2B ワークフローで使用する成果物 (取引先、アグリーメント、証明書など) を定義して保存する[統合アカウント リソース](logic-apps-enterprise-integration-create-integration-account.md)。 このリソースでは、次の要件が満たされている必要があります。
+* エンタープライズ統合および B2B ワークフローで使用する成果物 (取引先、契約、証明書など) を定義して保存する[統合アカウント リソース](logic-apps-enterprise-integration-create-integration-account.md)。 このリソースでは、次の要件が満たされている必要があります。
 
   * ロジック アプリ リソースと同じ Azure サブスクリプションに関連付けられている。
 
