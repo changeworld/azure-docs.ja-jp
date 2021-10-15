@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 10/01/2021
 ms.custom: template-how-to
 ms.reviewer: wiassaf
-ms.openlocfilehash: 1fa0394f3e711ec172f5a3ad32288f63bcf55dce
-ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
+ms.openlocfilehash: 6cf1564ccc62d6429da56bc8116b124b44b58653
+ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2021
-ms.locfileid: "129390467"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129728401"
 ---
 # <a name="troubleshooting-a-misclassified-workload-in-azure-synapse-analytics"></a>Azure Synapse Analytics での誤って分類されたワークロードのトラブルシューティング
 
@@ -102,7 +102,7 @@ WHERE   r.name IN ('mediumrc','largerc','xlargerc','staticrc10','staticrc20','st
 SELECT * FROM sys.dm_pdw_exec_requests;
 ```
 
-詳細については、「[sys.dm_pdw_requests](/sql/relational-databases/system-catalog-views/sys-dm-pdw-exec-requests-transact-sql)」を参照してください。
+詳細については、「[sys.dm_pdw_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql)」を参照してください。
 
 ## <a name="common-scenarios-of-misclassified-workloads"></a>誤って分類されたワークロードの一般的なシナリオ
 
@@ -295,7 +295,7 @@ CREATE WORKLOAD CLASSIFIER CLASSIFIER-2 WITH
 4. 最後に、判断基準として、ワークロード グループの作成時間が考慮されます。 ユーザー要求は、最近作成されたワークロード グループにルーティングされます。 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - ワークロードの分類の詳細については、[ワークロード分類](sql-data-warehouse-workload-classification.md)に関するページを参照してください。
 - ワークロードの重要度の詳細については、[ワークロードの重要度](sql-data-warehouse-workload-importance.md)に関するページを参照してください
 

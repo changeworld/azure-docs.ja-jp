@@ -9,12 +9,12 @@ ms.reviewer: eustacea
 ms.date: 09/17/2021
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: d07f0073141632477a64b2c1cc4bc3a9b8e8d458
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: fedb06a23a71dbe30954154daa6d314267268551
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129233515"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129659680"
 ---
 # <a name="azure-iot-edge-security-manager"></a>Azure IoT Edge セキュリティ マネージャー
 
@@ -269,11 +269,11 @@ IoT Edge セキュリティ マネージャーの目的は、Azure IoT Edge プ�
 
 ソフトウェアまたは仮想 TPM を使用するトラステッド プラットフォーム モジュール (TPM) で Azure IoT セキュリティ マネージャーを強化する方法について説明します。  
 
-[Linux 仮想マシン上で、仮想 TPM を使用する IoT Edge デバイス](how-to-auto-provision-simulated-device-linux.md)を作成し、プロビジョニングする。
+[Linux 仮想マシン上で、仮想 TPM を使用する IoT Edge デバイス](how-to-provision-devices-at-scale-linux-tpm.md)を作成し、プロビジョニングする。
 
 <!--1.1-->
 :::moniker range="iotedge-2018-06"
-[Windows 上で、シミュレートされた TPM を使用する IoT Edge デバイス](how-to-auto-provision-simulated-device-windows.md)を作成し、プロビジョニングする。
+[Windows 上で、シミュレートされた TPM を使用する IoT Edge デバイス](how-to-provision-devices-at-scale-windows-tpm.md)を作成し、プロビジョニングする。
 :::moniker-end
 
 ## <a name="next-steps"></a>次のステップ

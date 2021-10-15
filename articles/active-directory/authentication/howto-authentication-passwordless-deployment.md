@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3427384d41b4ebdd5f65d9c7e9ecdde911b5f08e
-ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
+ms.openlocfilehash: a1c8f1117053e6076d2281036ecc63f1cbf97d15
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129807642"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129352755"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Azure Active Directory でパスワードレス認証のデプロイを計画する
 
@@ -299,7 +299,7 @@ FIDO2 セキュリティ キーを使用して Windows 10 のサインインを�
 | ユーザーが、統合された登録を実行できない。| [統合された登録](concept-registration-mfa-sspr-combined.md)が有効になっていることを確認します。 |
 | ユーザーが[セキュリティの設定](https://aka.ms/mysecurityinfo)でセキュリティ キーを追加できない。| [セキュリティ キー](howto-authentication-passwordless-security-key.md)が有効になっていることを確認します。 |
 | ユーザーが Windows 10 のサインイン オプションでセキュリティ キーを追加できない。| [Windows サインイン用のセキュリティ キー](concept-authentication-passwordless.md)が有効になっていることを確認します。 |
-| **エラー メッセージ**:We detected that this browser or OS doesn't support FIDO2 security keys. (このブラウザーまたは OS では FIDO2 セキュリティ キーがサポートされていないことが検出されました。)| パスワードなしの FIDO2 セキュリティ デバイスは、Windows 10 バージョン 1809 以降のサポートされているブラウザー (Microsoft Edge、Firefox バージョン 67) でのみ登録できます。 |
+| **エラー メッセージ**:We detected that this browser or OS doesn't support FIDO2 security keys. (このブラウザーまたは OS では FIDO2 セキュリティ キーがサポートされていないことが検出されました。)| パスワードレス FIDO2 セキュリティ デバイスは、Windows 10 バージョン 1809 以降のサポートされているブラウザー (Microsoft Edge、Firefox バージョン 67) でのみ登録できます。 |
 | **エラー メッセージ**:会社のポリシーでは、別の方法を使用してサインインする必要があります。| テナントでセキュリティ キーが有効になっていることを確認します。 |
 | ユーザーが Windows 10 バージョン 1809 でセキュリティ キーを管理できない| バージョン 1809 では、FIDO2 キー ベンダーによって提供されるセキュリティ キー管理ソフトウェアを使用する必要があります。 ベンダーにサポートについてお問い合わせください。 |
 | FIDO2 のセキュリティ キーが破損している可能性がある - どうすればテストできるか。| [https://webauthntest.azurewebsites.net/](https://webauthntest.azurewebsites.net/) に移動して、テスト アカウントの資格情報を入力します。問題のあるセキュリティ キーをプラグインして、画面の右上にある [+] ボタンを選択し、[作成] を選択して作成プロセスを実行します。 このシナリオが失敗する場合、デバイスに欠陥がある可能性があります。 |

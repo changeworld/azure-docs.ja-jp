@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/09/2021
 ms.author: allensu
-ms.openlocfilehash: 0d613d7d207da8632fe7a2767d6440ee62378866
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 692bcd4900ae960928a66eaa63b02c6ddf12f2bf
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129359416"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129705286"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Azure プライベート エンドポイントとは
 
@@ -88,6 +88,7 @@ ms.locfileid: "129359416"
 | **Azure Event Grid** | Microsoft.EventGrid/domains | domain |
 | **Azure Event Grid** | Microsoft.EventGrid/topics  | Event Grid トピック |
 | **Azure Event Hub** | Microsoft.EventHub/namespaces | namespace |
+| **Azure HDInsight** | Microsoft.HDInsight/clusters | cluster |
 | **Azure API for FHIR** | Microsoft.HealthcareApis/services | service |
 | **Azure Keyvault HSM** | Microsoft.Keyvault/managedHSMs | HSM (HSM) |
 | **Azure Key Vault** | Microsoft.KeyVault/vaults | コンテナー |
@@ -175,7 +176,7 @@ ms.locfileid: "129359416"
 | AllowVirtualNetworkAccess フラグ | 別の VNet (VNet B) へのピアリング リンクで **AllowVirtualNetworkAccess** フラグが false に設定されている VNet (VNet A) で VNet ピアリングを設定している場合は、**VirtualNetwork** タグを使用して、プライベート エンドポイント リソースにアクセスする VNet B からのトラフィックを拒否することはできません。 プライベート エンドポイントへのトラフィックを拒否するには、VNet B のアドレス プレフィックスのブロックを明示的に配置する必要があります。 | September |
 | デュアル ポート NSG ルールがサポートされない。 | NSG 規則で複数のポート範囲が使用されている場合、許可規則と拒否規則に対して、最初のポート範囲だけが有効になります。 複数のポート範囲がある規則では、既定で、特定のポートではなくすべてが拒否されます。 </br> **詳細については、下の規則の例を参照してください。** | September |
 
-| 優先順位 | 送信元ポート | 宛先ポート | アクション | 有効なアクション |
+| Priority | 送信元ポート | 宛先ポート | アクション | 有効なアクション |
 | -------- | ----------- | ---------------- | ------ | ---------------- |
 | 10 | 10 ～ 12 | 10 ～ 12 | 許可/拒否 | 送信元/宛先ポートの単一ポート範囲は、想定どおりに動作します。 |
 | 10 | 10 ～ 12、13 ～ 14 | 14 ～ 15、16 ～ 17 | Allow | 送信元ポート 10 ～ 12 と宛先ポート 14 ～ 15 のみが許可されます。 |

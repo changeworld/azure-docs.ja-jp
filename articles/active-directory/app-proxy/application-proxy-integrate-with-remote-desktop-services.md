@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/12/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: aa5c8ae942bb48c78526867eb44cc2084c056d48
-ms.sourcegitcommit: d2738669a74cda866fd8647cb9c0735602642939
+ms.openlocfilehash: 1f35dfff5c9c29766abf97d32496ca3056ed7e40
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113649666"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129456995"
 ---
 # <a name="publish-remote-desktop-with-azure-active-directory-application-proxy"></a>Azure Active Directory アプリケーション プロキシを使用したリモート デスクトップの公開
 
@@ -61,6 +61,7 @@ RDS と Azure AD アプリケーション プロキシを自分の環境用に�
    - 外部 URL:このフィールドは、アプリケーションの名前に基づいて自動的に設定されますが、変更することもできます。 ユーザーは、RDS にアクセスするときにこの URL に移動します。
    - [事前認証方法]:Azure Active Directory
    - [ヘッダーの URL を変換する]:いいえ
+   - [HTTP 専用 Cookie を使用する]: いいえ
 2. 発行した RD アプリケーションにユーザーを割り当てます。 すべてのユーザーが RDS へのアクセス権を持っていることもご確認ください。
 3. アプリケーションのシングル サインオン方式は、 **[Azure AD シングル サインオンが無効]** のままにします。
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9292ad6e167e62b27fa3b646a1b60ba7176ff87
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 46a8e61f296d430713812007b93f1b34cea8588a
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129367462"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129811548"
 ---
 # <a name="conditional-access-resilience-defaults"></a>条件付きアクセス: 復元の既定値群
 
@@ -32,13 +32,13 @@ ms.locfileid: "129367462"
 > [!IMPORTANT]
 > 復元の既定値群は、新規と既存のすべてのポリシーに対して自動的に有効になります。Microsoft は、停止の影響を軽減するため、復元の既定値群を有効のままにすることを強くお勧めします。 管理者は、個々の条件付きアクセス ポリシーについて、復元の既定値群を無効にできます。 
 
-## <a name="how-does-it-work"></a>それはどのように機能しますか?
+## <a name="how-does-it-work"></a>それはどのように機能するのでしょうか。
 
 停止の間、Backup Authentication Service によって特定のセッションのアクセス トークンが自動的に再発行されます。
 
 | Session description (セッションの説明) | アクセスが許可されます |
 | --- | --- |
-| 新しいセッション | いいえ |
+| 新しいセッション | No |
 | 既存のセッション – 条件付きアクセス ポリシーが構成されていない | はい |
 | 既存のセッション – 条件付きアクセス ポリシーが構成されており、MFA などの必要な制御が既に満たされた | はい |
 | 既存のセッション – 条件付きアクセス ポリシーが構成されており、MFA などの必要な制御がまだ満たされていない | 復元の既定値群によって決定されます |
@@ -86,7 +86,7 @@ Azure AD の停止中に既存のセッションの有効期限が切れると�
 
 ### <a name="ms-graph-apis"></a>MS Graph API
 
-MS Graph API と [Microsoft Graph Explorer](/graph/graph-explorer) を使用して、条件付きアクセスのポリシーに対する復元の既定値群を管理することもできます。 
+MS Graph API と [Microsoft Graph Explorer](/graph/graph-explorer/graph-explorer-overview) を使用して、条件付きアクセスのポリシーに対する復元の既定値群を管理することもできます。 
 
 要求 URL の例: 
 
@@ -129,6 +129,6 @@ Microsoft は、復元の既定値群を有効にすることをお勧めしま�
 
 セッションが開始した後で、ユーザーのロールまたはグループのメンバーシップが変更された可能性があります。 [継続的アクセス評価 (CAE)](concept-continuous-access-evaluation.md) では、アクセス トークンは 24 時間有効ですが、即時失効イベントの対象となります。 Backup Authentication Service では、同じ失効イベントの CAE がサブスクライブされます。 CAE の一部としてユーザーのトークンが取り消された場合、ユーザーは停止中にサインインできません。 復元の既定値群を有効にすると、停止中に期限が切れる既存のセッションが延長されます。 サインイン頻度を強制するようにセッション制御でポリシーが構成されている場合でも、セッションは延長されます。 たとえば、復元の既定値群が有効になっているポリシーでは、ユーザーは SharePoint サイトにアクセスするために 1 時間ごとに再認証が必要になる場合があります。 停止中は、ユーザーの再認証に Azure AD を使用できない場合でも、ユーザーのセッションが延長されます。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [継続的アクセス評価 (CAE)](concept-continuous-access-evaluation.md)
