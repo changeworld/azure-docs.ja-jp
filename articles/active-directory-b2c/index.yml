@@ -9,15 +9,15 @@ metadata:
   ms.subservice: B2C
   ms.topic: landing-page
   ms.collection: collection
-  author: msmimart
-  ms.author: mimart
+  author: kengaderdus
+  ms.author: kengaderdus
   ms.date: 01/28/2020
-  ms.openlocfilehash: 3193313808683c20f8c3c77fb8cb9018b9724d40
-  ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+  ms.openlocfilehash: e3be36fda59ff35f62811fb072203f8dac0172bb
+  ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/13/2021
-  ms.locfileid: "121724901"
+  ms.lasthandoff: 10/15/2021
+  ms.locfileid: "130039013"
 landingContent:
 - title: Azure AD B2C
   linkLists:

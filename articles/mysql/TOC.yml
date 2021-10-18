@@ -211,9 +211,9 @@
             - name: クエリ ストア
               href: concepts-query-store.md
               displayName: 'performance, query store'
-            - name: クエリ パフォーマンスの分析情報
+            - name: Query Performance Insight
               href: concepts-query-performance-insight.md
-              displayName: query performance insights
+              displayName: Query Performance Insight
             - name: パフォーマンスに関する推奨事項
               href: concepts-performance-recommendations.md
               displayName: recommendation
@@ -478,7 +478,7 @@
               href: flexible-server/concepts-slow-query-logs.md
             - name: 監査ログ
               href: flexible-server/concepts-audit-logs.md
-            - name: Workbooks
+            - name: ブック
               href: flexible-server/concepts-workbooks.md
         - name: レプリケーション
           items:
@@ -559,7 +559,7 @@
               href: flexible-server/tutorial-query-performance-insights.md
             - name: 監査
               href: flexible-server/tutorial-configure-audit.md
-            - name: 警告
+            - name: アラート
               href: flexible-server/how-to-alert-on-metric.md
         - name: レプリケーション
           items:

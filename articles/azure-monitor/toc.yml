@@ -1017,8 +1017,6 @@
                   href: app/devops.md
                 - name: 開発、テスト、運用の分離
                   href: app/separate-resources.md
-                - name: Application Insights での作業
-                  href: app/how-do-i.md
                 - name: Application Insights の管理
                   href: app/powershell.md
                 - name: Azure Cloud Services の管理

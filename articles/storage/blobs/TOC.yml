@@ -132,8 +132,8 @@ items:
             items:
               - name: 概要
                 href: ../common/storage-account-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-              - name: パフォーマンス レベル
-                href: storage-blob-performance-tiers.md
+              - name: Premium パフォーマンス
+                href: storage-blob-block-blob-premium.md
           - name: 承認
             items:
               - name: データ操作の承認
@@ -176,7 +176,7 @@ items:
                 href: ../common/storage-private-endpoints.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
               - name: ネットワーク ルーティング設定の構成
                 href: ../common/network-routing-preference.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-          - name: データの保護
+          - name: データ保護
             items:
               - name: 概要
                 href: data-protection-overview.md
@@ -630,7 +630,7 @@ items:
         items:
           - name: Azure の更新情報
             href: 'https://azure.microsoft.com/updates/?product=storage'
-          - name: Azure Storage Explorer
+          - name: Azure ストレージ エクスプローラー
             items:
               - name: Storage Explorer のダウンロード
                 href: 'https://azure.microsoft.com/features/storage-explorer/'
@@ -642,7 +642,7 @@ items:
                 href: ../common/storage-explorer-network.md
               - name: Storage Explorer のリリース ノート
                 href: 'https://github.com/microsoft/AzureStorageExplorer/releases'
-              - name: Storage Explorer のトラブルシューティング
+              - name: ストレージ エクスプローラーのトラブルシューティング
                 href: ../common/storage-explorer-troubleshooting.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
               - name: Storage Explorer のコマンド ライン オプション
                 href: ../common/storage-explorer-command-line-options.md

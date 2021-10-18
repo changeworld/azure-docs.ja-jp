@@ -12,19 +12,19 @@ metadata:
   ms.author: mathoma
   ms.reviewer: 
   ms.date: 01/25/2021
-  ms.openlocfilehash: cf7a5c488eb0a972831dccb9ac6770f08ac0591f
-  ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+  ms.openlocfilehash: b0e56991bc2f65e724f1a39a676cec3118e7076e
+  ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/22/2021
-  ms.locfileid: "112456960"
+  ms.lasthandoff: 10/15/2021
+  ms.locfileid: "130038520"
 landingContent:
 - title: Azure SQL データベース
   linkLists:
   - linkListType: whats-new
     links:
     - text: 新機能
-      url: doc-changes-updates-release-notes.md?tabs=single-database
+      url: doc-changes-updates-release-notes-whats-new.md
   - linkListType: quickstart
     links:
     - text: SQL Database を作成する

@@ -11,12 +11,12 @@ metadata:
   author: HeidiSteen
   ms.author: heidist
   ms.date: 03/02/2021
-  ms.openlocfilehash: d0fbe222a6128604e5ed98d467f60cecbeeeebcf
-  ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+  ms.openlocfilehash: ebe6f6d4ce0df3bfc38db012c2f7cdf720f21467
+  ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/09/2021
-  ms.locfileid: "129706840"
+  ms.lasthandoff: 10/15/2021
+  ms.locfileid: "130066131"
 landingContent:
 - title: Cognitive Search について
   linkLists:
@@ -91,11 +91,11 @@ landingContent:
   - linkListType: concept
     links:
     - text: スキルセット
-      url: cognitive-search-defining-skillset.md
+      url: cognitive-search-working-with-skillsets.md
     - text: ナレッジ ストア
       url: knowledge-store-concept-intro.md
     - text: プロジェクション
-      url: knowledge-store-projections-examples.md
+      url: knowledge-store-projection-overview.md
   - linkListType: how-to-guide
     links:
     - text: Cognitive Services をアタッチする

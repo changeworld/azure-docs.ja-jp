@@ -135,7 +135,7 @@
           items:
             - name: 価格レベル
               href: concepts-pricing-tiers.md
-        - name: Security
+        - name: セキュリティ
           items:
             - name: セキュリティの概要
               href: concepts-security.md
@@ -630,12 +630,17 @@
           items:
             - name: ワーカー ノードのシャード データ
               href: tutorial-hyperscale-shard.md
-        - name: マルチテナント データベースを設計する
-          href: tutorial-design-database-hyperscale-multi-tenant.md
-          displayName: 'hyperscale, tutorial, multi-tenant'
-        - name: リアルタイム ダッシュボードを設計する
-          href: tutorial-design-database-hyperscale-realtime.md
-          displayName: 'hyperscale, tutorial, real-time'
+            - name: マルチテナント データベースを設計する
+              href: tutorial-design-database-hyperscale-multi-tenant.md
+              displayName: 'hyperscale, tutorial, multi-tenant'
+            - name: リアルタイム ダッシュボードを設計する
+              href: tutorial-design-database-hyperscale-realtime.md
+              displayName: 'hyperscale, tutorial, real-time'
+        - name: 管理
+          items:
+            - name: プライベート アクセス
+              href: tutorial-hyperscale-private-access.md
+              displayName: 'hyperscale, tutorial, private'
     - name: 概念
       items:
         - name: Basic レベル
@@ -651,11 +656,16 @@
               href: concepts-hyperscale-choose-distribution-column.md
             - name: テーブル コロケーション
               href: concepts-hyperscale-colocation.md
-        - name: セキュリティ
+        - name: データ アクセスとセキュリティ
           items:
-            - name: ファイアウォール規則
+            - name: 概要
+              href: concepts-hyperscale-security-overview.md
+            - name: パブリック アクセス
               href: concepts-hyperscale-firewall-rules.md
               displayName: 'firewall, rules, hyperscale'
+            - name: プライベート アクセス
+              href: concepts-hyperscale-private-access.md
+              displayName: 'private, link, hyperscale'
             - name: SSL の構成
               href: concepts-hyperscale-ssl-connection-security.md
               displayName: 'hyperscale, ssl'
@@ -702,11 +712,18 @@
               href: howto-hyperscale-scale-grow.md
             - name: シャードの再調整
               href: howto-hyperscale-scale-rebalance.md
-        - name: ファイアウォール規則
+        - name: データ アクセスとセキュリティ
           items:
-            - name: Azure portal
-              href: howto-hyperscale-manage-firewall-using-portal.md
-              displayName: 'firewall rule, hyperscale'
+            - name: パブリック アクセス
+              items:
+                - name: Azure portal
+                  href: howto-hyperscale-manage-firewall-using-portal.md
+                  displayName: 'firewall rule, hyperscale'
+            - name: プライベート アクセス
+              items:
+                - name: Azure portal
+                  href: howto-hyperscale-private-access.md
+                  displayName: 'network, private link'
         - name: ユーザーの作成
           href: howto-hyperscale-create-users.md
         - name: 分散データ

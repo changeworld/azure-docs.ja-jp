@@ -987,7 +987,7 @@
     - name: 概要
       displayName: 'managed disks, introduction to managed disks'
       href: managed-disks-overview.md
-    - name: IaaS VM 用のディスクの種類の選択
+    - name: ディスクの種類
       href: disks-types.md
     - name: ディスク冗長オプション
       href: disks-redundancy.md

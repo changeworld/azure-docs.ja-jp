@@ -1216,6 +1216,8 @@ items:
                     href: ../data-factory/connector-troubleshoot-dynamics-dataverse.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
                   - name: FTP、SFTP、および HTTP
                     href: ../data-factory/connector-troubleshoot-ftp-sftp-http.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
+                  - name: Hive
+                    href: ../data-factory/connector-troubleshoot-hive.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
                   - name: Oracle
                     href: ../data-factory/connector-troubleshoot-oracle.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics
                   - name: ORC 形式
