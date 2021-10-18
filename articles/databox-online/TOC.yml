@@ -9,7 +9,7 @@
           href: azure-stack-edge-gpu-overview.md
     - name: クイックスタート
       items:
-        - name: はじめに
+        - name: 作業開始
           href: azure-stack-edge-gpu-quickstart.md
     - name: チュートリアル
       items:
@@ -374,10 +374,12 @@
               href: azure-stack-edge-gpu-recover-device-failure.md
         - name: モニター
           items:
+            - name: アラートを確認する
+              href: azure-stack-edge-alerts.md
+            - name: アラート通知のルールの使用
+              href: azure-stack-edge-gpu-manage-device-event-alert-notifications.md
             - name: メトリック グラフの使用
               href: azure-stack-edge-monitor.md
-            - name: デバイス イベント アラートの管理
-              href: azure-stack-edge-gpu-manage-device-event-alert-notifications.md
             - name: Kubernetes ダッシュボードの使用
               href: azure-stack-edge-gpu-monitor-kubernetes-dashboard.md
             - name: Azure Monitor の使用

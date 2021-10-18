@@ -160,6 +160,8 @@
           href: how-to-enable-system-assigned-managed-identity.md
         - name: ロールとアクセス許可を作成する
           href: how-to-permissions.md
+        - name: TLS/SSL 証明書を使用する
+          href: how-to-use-tls-certificate.md
         - name: エンドツーエンドのトランスポート層セキュリティを有効にする
           href: how-to-enable-end-to-end-tls.md
         - name: Config Server とサービス レジストリにアクセスする

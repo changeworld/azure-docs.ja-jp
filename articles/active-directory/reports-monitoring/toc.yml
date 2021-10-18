@@ -8,6 +8,8 @@
       href: overview-monitoring.md
     - name: サインイン診断とは
       href: overview-sign-in-diagnostics.md
+    - name: フラグが設定されたサインインとは
+      href: overview-flagged-sign-ins.md
 - name: クイックスタート
   expanded: true
   items:
@@ -60,6 +62,8 @@
           href: howto-find-activity-reports.md
         - name: ユーザーのサインイン エラーのトラブルシューティング
           href: howto-troubleshoot-sign-in-errors.md
+        - name: リスクのフラグ付きユーザーの修復
+          href: howto-remediate-users-flagged-for-risk.md
         - name: レポート API の構成の前提条件
           href: howto-configure-prerequisites-for-reporting-api.md
         - name: Azure AD ブックの使用方法
@@ -91,8 +95,6 @@
 - name: リファレンス
   expanded: true
   items:
-    - name: サインイン ログの基本情報識別子
-      href: reference-basic-info-identifiers.md
     - name: レポート用の Azure AD PowerShell コマンドレット
       href: reference-powershell-reporting.md
     - name: 監査ログの API リファレンス

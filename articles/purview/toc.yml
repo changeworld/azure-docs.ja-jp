@@ -42,6 +42,8 @@ items:
         items:
           - name: デプロイのベスト プラクティス
             href: deployment-best-practices.md
+          - name: アカウントのアーキテクチャ
+            href: concept-best-practices-accounts.md
           - name: コレクションのアーキテクチャ
             href: concept-best-practices-collections.md
           - name: 価格のガイドライン
@@ -279,6 +281,8 @@ items:
         href: /python/api/azure-mgmt-purview/
       - name: REST
         href: /rest/api/purview/
+      - name: Azure Purview オープンソース ツール ユーティリティ
+        href: tutorial-purview-tools.md
       - name: ABAP 関数のデプロイ ガイド
         href: abap-functions-deployment-guide.md
       - name: よく寄せられる質問 (FAQ)

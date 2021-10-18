@@ -97,7 +97,20 @@
         - name: Azure Percept DK でネットワークの詳細設定を行う
           href: how-to-set-up-advanced-network-settings.md
         - name: Azure Percept を 5G または LTE ネットワークで接続する
-          href: connect-over-cellular.md
+          items:
+            - name: Azure Percept を 5G または LTE ネットワークで接続する
+              href: connect-over-cellular.md
+              items:
+                - name: USB モデムを使用して接続する
+                  href: connect-over-cellular-usb.md
+                - name: 移動体通信ゲートウェイを使用して接続する
+                  href: connect-over-cellular-gateway.md
+                - name: Vodafone Connect 4G と USB モデムを使用して接続する
+                  href: connect-over-cellular-usb-vodafone.md
+                - name: Multitech USB モデムを使用して接続する
+                  href: connect-over-cellular-usb-multitech.md
+                - name: Quectel 5G Developer Kit を使用して接続する
+                  href: connect-over-cellular-usb-quectel.md
         - name: Azure Percept DK に SSH で接続する
           href: how-to-ssh-into-percept-dk.md
         - name: Azure Percept DK にシリアルで接続する

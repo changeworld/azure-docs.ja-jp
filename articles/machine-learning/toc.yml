@@ -57,11 +57,14 @@
               href: tutorial-train-models-with-aml.md
             - name: 2. モデルをデプロイする
               href: tutorial-deploy-models-with-aml.md
-        - name: 自動 ML による回帰 (NYC タクシー データ)
+        - name: 自動化された ML
           items:
-            - name: ML モデルを自動トレーニングする
+            - name: 回帰 (ニューヨーク市のタクシー データ)
               displayName: 'automl, automated, auto ml,'
               href: tutorial-auto-train-models.md
+            - name: AutoML を使用した物体検出
+              displayName: 'automl, automated, auto ml, computer vision, images'
+              href: tutorial-auto-train-image-models.md
         - name: パイプラインを使用したバッチ スコア モデル
           displayName: pipelines
           href: tutorial-pipeline-batch-scoring-classification.md
@@ -502,7 +505,7 @@
           displayName: 'automl, auto ml'
           items:
             - name: 自動化された ML を使用する (Python)
-              displayName: SDK automl
+              displayName: 'SDK, automl'
               href: how-to-configure-auto-train.md
             - name: 自動 ML を使用する (インターフェイス)
               href: how-to-use-automated-ml-for-ml-models.md
@@ -512,6 +515,15 @@
             - name: 予測モデルを自動トレーニングする
               displayName: time series
               href: how-to-auto-train-forecast.md
+            - name: Computer Vision モデルの画像データを準備する (Python)
+              displayName: 'SDK, automl, image, datasets, conversion scripts, schema'
+              href: how-to-prepare-datasets-for-automl-images.md
+            - name: Computer Vision モデルを自動トレーニングする (Python)
+              displayName: 'SDK, automl, image'
+              href: how-to-auto-train-image-models.md
+            - name: 小さな物体の検出モデルを自動トレーニングする
+              displayName: 'computer vision, image'
+              href: how-to-use-automl-small-object-detect.md
             - name: データの分割とクロス検証 (Python)
               displayName: 'automl, feature engineering, feature importance'
               href: how-to-configure-cross-validation-data-splits.md
@@ -759,6 +771,9 @@
     - name: CLI (v1)
       displayName: 'extension, command line, command-line, az, ci/cd, automate, automated'
       href: reference-azure-machine-learning-cli.md
+    - name: AutoML 用のイメージ データ スキーマ
+      displayName: 'automl, schema, data'
+      href: reference-automl-images-schema.md
     - name: デザイナー モジュール リファレンス
       displayName: 'module, reference, algorithm, studio'
       href: algorithm-module-reference/module-reference.md

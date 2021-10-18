@@ -12,6 +12,8 @@ items:
         href: quick-demo-map-app.md
       - name: Android アプリの作成
         href: quick-android-map.md
+      - name: iOS アプリの作成
+        href: quick-iOS-app.md
   - name: チュートリアル
     items:
       - name: Web SDK のチュートリアル
@@ -88,8 +90,6 @@ items:
             href: render-coverage.md
           - name: ルーティングの対象範囲
             href: routing-coverage.md
-          - name: モビリティの対象範囲
-            href: mobility-coverage.md
           - name: 天気の対象範囲
             href: weather-coverage.md
       - name: ローカライズ サポート
@@ -98,8 +98,6 @@ items:
         href: supported-map-styles.md
       - name: ズーム レベルとタイル グリッド
         href: zoom-levels-and-tile-grid.md
-      - name: モビリティ サービス
-        href: mobility-service-data-structure.md
       - name: Weather Service の概念
         href: weather-services-concepts.md
       - name: Weather Service の FAQ
@@ -141,10 +139,6 @@ items:
             href: how-to-use-best-practices-for-routing.md
           - name: 静的マップ上にカスタム データをレンダリングする
             href: how-to-render-custom-data.md
-          - name: 公共輸送機関のルートを要求する
-            href: how-to-request-transit-data.md
-          - name: 公共輸送機関のリアルタイム データを要求する
-            href: how-to-request-real-time-data.md
           - name: リアルタイムの天気予報データを要求する
             href: how-to-request-weather-data.md
           - name: 標高データを要求する
@@ -283,6 +277,10 @@ items:
             href: data-driven-style-expressions-android-sdk.md
           - name: イベントへの反応
             href: android-map-events.md
+      - name: iOS SDK を使った開発
+        items:
+          - name: iOS マップ コントロールの概要
+            href: how-to-use-ios-map-control-library.md
       - name: Power BI で Azure Maps を使用する
         items:
           - name: 作業の開始
@@ -293,6 +291,8 @@ items:
             href: power-bi-visual-add-bubble-layer.md
           - name: 横棒グラフ レイヤーを追加する
             href: power-bi-visual-add-bar-chart-layer.md
+          - name: ヒート マップ レイヤーを追加する
+            href: power-bi-visual-add-heat-map-layer.md
           - name: 参照レイヤーを追加する
             href: power-bi-visual-add-reference-layer.md
           - name: タイル レイヤーを追加する
@@ -333,8 +333,6 @@ items:
             href: /rest/api/maps/elevation
           - name: 位置情報サービス
             href: /rest/api/maps/geolocation
-          - name: モビリティ サービス
-            href: /rest/api/maps/mobility
           - name: Render Service
             href: /rest/api/maps/render
           - name: Render Service V2

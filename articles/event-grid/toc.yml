@@ -309,7 +309,7 @@
           href: consume-private-endpoints.md
         - name: IP ファイアウォールの構成
           href: configure-firewall.md
-        - name: Azure Active Directory による Webhook のセキュリティ保護
+        - name: Azure Active Directory で保護されたエンドポイントにイベントを配信する
           href: secure-webhook-delivery.md
     - name: トラブルシューティング
       items:

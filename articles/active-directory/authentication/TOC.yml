@@ -60,6 +60,8 @@
           href: multi-factor-authentication-faq.yml
     - name: パスワード保護
       items:
+        - name: 統合されたパスワード ポリシー チェック
+          href: concept-password-ban-bad-combined-policy.md
         - name: クラウドで脆弱なパスワードを排除する
           href: concept-password-ban-bad.md
         - name: オンプレミスで脆弱なパスワードを排除する

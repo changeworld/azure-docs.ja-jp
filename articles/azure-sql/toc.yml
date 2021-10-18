@@ -278,7 +278,7 @@
         - name: SQL Database とは
           href: database/sql-database-paas-overview.md
         - name: 新機能
-          href: database/doc-changes-updates-release-notes.md?&tabs=single-database
+          href: database/doc-changes-updates-release-notes-whats-new.md
         - name: Single Database
           href: database/single-database-overview.md
         - name: エラスティック プール
@@ -759,7 +759,7 @@
         - name: SQL Managed Instance とは
           href: managed-instance/sql-managed-instance-paas-overview.md
         - name: 新機能
-          href: database/doc-changes-updates-release-notes.md?&tabs=managed-instance
+          href: managed-instance/doc-changes-updates-release-notes-whats-new.md
         - name: インスタンス プール
           href: managed-instance/instance-pools-overview.md
         - name: よく寄せられる質問
@@ -976,7 +976,7 @@
                     - name: SQL Server 用の R コードを変換する
                       href: /sql/machine-learning/r/converting-r-code-for-use-in-sql-server?context=%2fazure%2fazure-sql%2fmanaged-instance%2fcontext%2fml-context&preserve-view=true&view=azuresqldb-mi-current
                     - name: sqlrutils を使用してストアド プロシージャを作成する
-                      href: /machine-learning-server/r-reference/sqlrutils/how-to-create-a-stored-procedure-from-r
+                      href: /sql/machine-learning/r/reference/sqlrutils/how-to-create-stored-procedure-from-r
                 - name: 予測
                   items:
                     - name: PREDICT T-SQL でのネイティブ スコアリング
@@ -1108,7 +1108,7 @@
             - name: SQL Server VM とは
               href: virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md
             - name: 新機能
-              href: virtual-machines/windows/doc-changes-updates-release-notes.md
+              href: virtual-machines/windows/doc-changes-updates-release-notes-whats-new.md
         - name: クイックスタート
           items:
             - name: ポータル
@@ -1426,6 +1426,8 @@
       href: 'https://stackoverflow.com/questions/tagged/sql-azure'
     - name: トラブルシューティング
       items:
+        - name: SQL Managed Instance に関する既知の問題
+          href: managed-instance/doc-changes-updates-known-issues.md
         - name: デプロイ中の容量エラー
           href: capacity-errors-troubleshoot.md
         - name: 接続エラー

@@ -198,6 +198,8 @@
           items:
             - name: キーベースの認証
               href: search-security-api-keys.md
+            - name: Azure AD 認証
+              href: search-howto-aad.md
             - name: ロール ベースの承認
               href: search-security-rbac.md
             - name: IP ファイアウォールの構成
@@ -400,6 +402,8 @@
               href: knowledge-store-projection-shape.md
             - name: プロジェクションを定義する
               href: knowledge-store-projections-examples.md
+            - name: プロジェクションの例
+              href: knowledge-store-projection-example-long.md
             - name: Storage Explorer を使用した表示
               href: knowledge-store-view-storage-explorer.md
             - name: Power BI を使用した接続

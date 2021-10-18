@@ -49,8 +49,12 @@
           href: outputs.md
           displayName: 'dynamic number of outputs,modules'
         - name: モジュール
-          href: modules.md
-          displayName: 'scopes,consume'
+          items:
+            - name: モジュールの定義
+              href: modules.md
+              displayName: 'scopes,consume'
+            - name: プライベート レジストリを作成する
+              href: private-module-registry.md
         - name: ループ
           items:
             - name: リソース
@@ -148,11 +152,13 @@
     - name: Bicep ファイルの構造
       displayName: 'parameters,variables,resources,outputs,condition'
       href: file.md
-    - name: Bicep リソースのリファレンス
+    - name: リソースの参照
       href: /azure/templates/
-    - name: データの種類
+    - name: データ型
       href: data-types.md
-      displayName: 'supported types,arrays,booleans,integers,objects,strings,secure,'
+      displayName: 'supported types,arrays,booleans,integers,objects,strings,secure'
+    - name: Bicep 構成ファイル
+      href: bicep-config.md
     - name: 関数
       items:
         - name: すべての関数

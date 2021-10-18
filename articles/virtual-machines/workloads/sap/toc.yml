@@ -26,7 +26,7 @@
           href: hana-operations-model.md
         - name: 互換性のあるオペレーティング システム
           href: os-compatibility-matrix-hana-large-instance.md
-    - name: Architecture
+    - name: アーキテクチャ
       items:
         - name: 全般的なアーキテクチャ
           href: hana-architecture.md
@@ -102,6 +102,14 @@
       href: sap-deployment-checklist.md
     - name: SAP NetWeaver アプリケーションをデプロイする
       href: deployment-guide.md
+    - name: SAP 用 Azure VM 拡張機能
+      items:
+        - name: SAP 用 Azure VM 拡張機能の前提条件
+          href: vm-extension-for-sap.md
+        - name: SAP 用 Azure VM 拡張機能の標準バージョン
+          href: vm-extension-for-sap-standard.md
+        - name: SAP 用 Azure VM 拡張機能の新しいバージョン
+          href: vm-extension-for-sap-new.md
     - name: Azure での SAP NetWeaver の計画と実装
       href: planning-guide.md
     - name: Azure VM 上の SAP Business One

@@ -12,12 +12,12 @@ metadata:
   author: dlepow
   ms.author: danlep
   ms.date: 11/08/2019
-  ms.openlocfilehash: c4820bef73e2dac03f2b400ff4c802f9e7cb8e65
-  ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
+  ms.openlocfilehash: cb092b5fd8131c67931c85758d71f955fdf4110d
+  ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/15/2021
-  ms.locfileid: "114219024"
+  ms.lasthandoff: 10/14/2021
+  ms.locfileid: "129998487"
 landingContent:
 - title: Azure Container Registry について
   linkLists:
@@ -25,8 +25,6 @@ landingContent:
     links:
     - text: Azure Container Registry とは
       url: container-registry-intro.md
-    - text: レジストリ、リポジトリ、イメージ
-      url: container-registry-concepts.md
 - title: はじめに
   linkLists:
   - linkListType: quickstart
@@ -53,6 +51,10 @@ landingContent:
       url: https://azure.microsoft.com/resources/videos/index/?services=container-registry&sort=newest
 - title: レジストリの管理
   linkLists:
+  - linkListType: quickstart
+    links:
+    - text: クライアント ライブラリを使用してコンテンツを管理する
+      url: quickstart-client-libraries.md
   - linkListType: how-to-guide
     links:
     - text: リポジトリとタグの表示
@@ -65,6 +67,8 @@ landingContent:
       url: container-registry-delete.md
   - linkListType: concept
     links:
+    - text: レジストリ、リポジトリ、イメージ
+      url: container-registry-concepts.md
     - text: geo レプリケーション
       url: container-registry-geo-replication.md
     - text: 認証

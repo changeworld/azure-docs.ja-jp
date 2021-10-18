@@ -190,6 +190,8 @@
               href: spot-node-pool.md
             - name: システム ノード プールの使用
               href: use-system-pools.md
+            - name: WebAssembly System Interface (WASI) ノード プールを使用する
+              href: use-wasi-node-pools.md
         - name: Terraform を使用した AKS のデプロイ
           href: /azure/developer/terraform/create-k8s-cluster-with-tf-and-aks
           maintainContext: true
@@ -392,6 +394,8 @@
                   href: open-service-mesh-open-source-observability.md
                 - name: OSM CLI のエクスペリエンスをカスタマイズする
                   href: open-service-mesh-customize-add-on-experience.md
+                - name: IP とポート範囲を除外する
+                  href: open-service-mesh-ip-port-exclusion.md
             - name: Azure Monitor を構成する
               href: open-service-mesh-azure-monitor.md
             - name: OSM のトラブルシューティング

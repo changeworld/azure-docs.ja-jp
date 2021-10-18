@@ -17,7 +17,7 @@
 - name: チュートリアル
   items:
     - name: WAF との統合
-      href: app-service-app-service-environment-web-application-firewall.md
+      href: integrate-with-application-gateway.md
     - name: ASE のカスタム設定
       href: app-service-app-service-environment-custom-settings.md
 - name: サンプル
@@ -62,22 +62,16 @@
       items:
         - name: ASEv1
           href: app-service-app-service-environment-intro.md
-        - name: ASEv1 の作成
-          href: app-service-web-how-to-create-an-app-service-environment.md
+        - name: テンプレートから ASEv1 を作成する
+          href: app-service-app-service-environment-create-ilb-ase-resourcemanager.md
         - name: ASEv1 の構成
           href: app-service-web-configure-an-app-service-environment.md
-        - name: 内部 ASEv1 の作成
-          href: app-service-environment-with-internal-load-balancer.md
-        - name: テンプレートからの内部 ASEv1 の作成
-          href: app-service-app-service-environment-create-ilb-ase-resourcemanager.md
         - name: ASEv1 での自動スケールの構成
           href: app-service-environment-auto-scale.md
         - name: ASEv1 におけるアプリのスケールアウト
           href: app-service-web-scale-a-web-app-in-an-app-service-environment.md
         - name: ネットワーク アーキテクチャ
           href: app-service-app-service-environment-network-architecture-overview.md
-        - name: ASEv1 での Web アプリの作成
-          href: app-service-web-how-to-create-a-web-app-in-an-ase.md
         - name: バックエンドへの接続
           href: app-service-app-service-environment-securely-connecting-to-backend-resources.md
         - name: ExpressRoute の構成
