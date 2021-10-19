@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: security
 author: nabhishek
 ms.author: abnarain
-ms.openlocfilehash: 285b4c4fb9fae46ed7549352a93553b15a518e36
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: 2138c1947fd6d068bfc4d171595cf818ecf5dd77
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122419305"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129708052"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Azure Data Factory のロールとアクセス許可
 
@@ -27,6 +27,10 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 
 データセット、リンクされたサービス、パイプライン、トリガー、および統合ランタイムを含む Data Factory の子リソースを作成および管理するには、次の要件が適用されます。
 - Azure portal で子リソースを作成および管理するには、**リソース グループ** レベル以上で **Data Factory 共同作成者** ロールに属している必要があります。
+  
+  > [!NOTE]
+  > **リソース グループ** レベル以上で **共同作成者** ロールを既に割り当てている場合、**Data Factory 共同作成者** ロールは必要ありません。 [共同作成者ロール](../role-based-access-control/built-in-roles.md#data-factory-contributor)は、[Data Factory 共同作成者ロール](../role-based-access-control/built-in-roles.md#contributor)に付与されたすべてのアクセス許可を含むスーパーセット ロールです。
+
 - PowerShell または SDK を使用して子リソースを作成および管理する場合は、リソース レベル以上での **共同作成者** ロールで十分です。
 
 ロールにユーザーを追加する方法に関するサンプル手順については、[ロールの追加](../cost-management-billing/manage/add-change-subscription-administrator.md)に関する記事を参照してください。

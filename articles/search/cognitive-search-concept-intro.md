@@ -9,18 +9,20 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/10/2021
 ms.custom: references_regions
-ms.openlocfilehash: b1c7a8f29c08f00cc69dbd304c8215180f5ace92
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 7d3f76777b717051b7524585abf593f57fedc47d
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124796611"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129707921"
 ---
 # <a name="ai-enrichment-in-azure-cognitive-search"></a>Azure Cognitive Search における AI エンリッチメント
 
 Azure Cognitive Search での AI エンリッチメントとは、インデックス作成の間にコンテンツの変換と生成を追加する、組み込みのコグニティブ スキルとカスタム スキルのことです。 エンリッチメントによって、イメージからの情報抽出、テキストからのセンチメント、キー フレーズ、エンティティの検出など、これまで存在しなかった新しい情報が作成されます。 また、エンリッチメントによって、区別されていないテキストに構造体が追加されます。 これらのすべてのプロセスの結果として、全文検索をより効果的にするドキュメントが作成されます。 多くの場合、エンリッチされたドキュメントは、ナレッジ マイニングなど、検索以外のシナリオに役立ちます。
 
 エンリッチメントは、[インデクサー](search-indexer-overview.md)にアタッチされた[スキルセット](cognitive-search-working-with-skillsets.md)によって定義されています。 インデクサーによってコンテンツが抽出されて設定されるのに対し、スキルセットでは、画像、BLOB、その他の非構造化データ ソースから新しい情報や構造が識別、分析、作成されます。 エンリッチメント パイプラインの出力は、[検索インデックス](search-what-is-an-index.md)または[ナレッジ ストア](knowledge-store-concept-intro.md)です。
+
+![エンリッチメント パイプラインの図](./media/cognitive-search-intro/cogsearch-architecture.png "エンリッチメント パイプラインの概要")
 
 スキルセットには、Cognitive Search の組み込みのスキルを含めることも、[*カスタム スキル*](cognitive-search-create-custom-skill-example.md)で提供する外部の処理を埋め込むこともできます。 カスタム スキルの例としては、金融、科学出版物、医療などの専門分野を対象としたカスタム エンティティ モジュールまたはドキュメント分類子が挙げられます。
 
@@ -29,8 +31,6 @@ Azure Cognitive Search での AI エンリッチメントとは、インデッ�
 + **自然言語処理** スキルには、[エンティティ認識](cognitive-search-skill-entity-recognition-v3.md)、[言語検出](cognitive-search-skill-language-detection.md)、[キー フレーズ抽出](cognitive-search-skill-keyphrases.md)、テキスト操作、[センチメント検出 (オピニオン マイニングを含む)](cognitive-search-skill-sentiment-v3.md)、[PII 検出](cognitive-search-skill-pii-detection.md)が含まれます。 これらのスキルによって、構造化されていないテキストが、インデックスで検索可能およびフィルター可能なフィールドとしてマップされます。
 
 + **画像処理** スキルには、[光学式文字認識 (OCR)](cognitive-search-skill-ocr.md) および [ビジュアル フィーチャー](cognitive-search-skill-image-analysis.md)の特定 (例: 顔検出、画像の解釈、画像の認識 (有名な人やランドマーク)、画像の向きなどの属性) が含まれます。 これらのスキルによって、画像コンテンツのテキスト表現が作成され、Azure Cognitive Search のクエリ機能を使用して検索できるようになります。
-
-![エンリッチメント パイプラインの図](./media/cognitive-search-intro/cogsearch-architecture.png "エンリッチメント パイプラインの概要")
 
 Azure Cognitive Search の組み込みのスキルは、Cognitive Services APIs の事前トレーニング済み機械学習モデル ([Computer Vision](../cognitive-services/computer-vision/index.yml) と[テキスト分析](../cognitive-services/text-analytics/overview.md)) に基づいています。 コンテンツの処理中にこれらのリソースを活用する場合は、Cognitive Services リソースをアタッチできます。
 
@@ -109,11 +109,11 @@ AI エンリッチメントは、Azure Cognitive Services が利用できるリ�
 
 Azure Cognitive Search では、インデクサーによって作成された出力が保存されます。
 
-[検索可能なインデックス](search-what-is-an-index.md)は、インデクサーによって常に作成される出力の 1 つです。 インデックスの指定はインデクサーの要件であり、ユーザーがスキルセットをアタッチすると、スキルセットの出力に加えて、ソースから直接インポートされたフィールドを使用して、インデックスが作成されます。 通常、キー フレーズやセンチメント スコアなどの特定のスキルの出力は、その目的のために作成されたフィールドのインデックスに取り込まれます。
+[検索可能なインデックス](search-what-is-an-index.md)は、インデクサーによって常に作成される出力の 1 つです。 インデックスの指定はインデクサーの要件であり、ユーザーがスキルセットをアタッチすると、スキルセットの出力に加えて、ソースから直接マップされたフィールドを使用して、インデックスが作成されます。 通常、キー フレーズやセンチメント スコアなどの特定のスキルの出力は、その目的のために作成されたフィールドのインデックスに取り込まれます。
 
 [ナレッジ ストア](knowledge-store-concept-intro.md)はオプションの出力であり、ナレッジ マイニングのような下流のアプリに使用されます。 ナレッジ ストアは、スキルセット内で定義されています。 その定義により、エンリッチされたドキュメントが表またはオブジェクト (ファイルまたは BLOB) のどちらとして投影されるかが決まります。 表形式のプロジェクションは、Power BI などのツールでの対話型分析に適しています。一方、ファイルと BLOB は通常、データ サイエンスや同様のプロセスで使用されます。
 
-最後に、後続のスキルセットの実行で再利用される場合に備えて、インデクサーで Azure Blob Storage に[エンリッチされたドキュメントをキャッシュする](cognitive-search-incremental-indexing-conceptual.md)ことができます。 キャッシュされたエンリッチメントは、後で再実行する同じスキルセットによって使用できます。 キャッシュは、スキルセットに画像分析や OCR が含まれていて、画像ファイルの再処理にかかる時間と費用を避けたい場合に便利です。
+最後に、後続のスキルセットの実行で再利用される場合に備えて、インデクサーで Azure Blob Storage に[エンリッチされたドキュメントをキャッシュする](cognitive-search-incremental-indexing-conceptual.md)ことができます。 キャッシュは、内部でのみ使用されます。 キャッシュされたエンリッチメントは、後で再実行する同じスキルセットによって使用できます。 キャッシュは、スキルセットに画像分析や OCR が含まれていて、画像ファイルの再処理にかかる時間と費用を避けたい場合に便利です。
 
 インデックスとナレッジ ストアは相互に完全に独立しています。 インデクサーの要件を満たすにはインデックスをアタッチする必要がありますが、ナレッジ ストアだけが目的の場合は、作成された後でインデックスを無視してかまいません。 ただし、削除しないようにしてください。 インデクサーとスキルセットを再実行する場合、インデクサーを実行するにはインデックスが必要になります。
 
@@ -141,7 +141,8 @@ Azure Cognitive Search では、インデクサーによって作成された出
 
 ## <a name="next-steps"></a>次のステップ
 
-+ [クイック スタート: ポータルにおける AI エンリッチメントのチュートリアル](cognitive-search-quickstart-blob.md)
++ [クイックスタート: テキスト翻訳とエンティティ スキルセットを作成する](cognitive-search-quickstart-blob.md)
++ [クイックスタート: OCR イメージ スキルセットを作成する](cognitive-search-quickstart-ocr.md)
 + [チュートリアル: AI エンリッチメント REST API について学習する](cognitive-search-tutorial-blob.md)
 + [スキルセットの概念](cognitive-search-working-with-skillsets.md)
 + [ナレッジ ストアの概念](knowledge-store-concept-intro.md)

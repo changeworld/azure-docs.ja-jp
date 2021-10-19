@@ -5,14 +5,14 @@ author: shants123
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: conceptual
-ms.date: 05/22/2020
+ms.date: 10/06/2021
 ms.author: shants
-ms.openlocfilehash: 0f1d65c7caa9073fa66fe3920b2b39bc9c5a5d11
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: cb1a4cc1e0c1539ab56b986a35084fa761d85438
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122687707"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129657532"
 ---
 # <a name="maintenance-for-virtual-machines-in-azure"></a>Azure での仮想マシンのメンテナンス
 
@@ -35,7 +35,7 @@ VM 内で、[Linux](./linux/scheduled-events.md) または [Windows 向けの Sc
 
 ほとんどのプラットフォーム更新は、お客様の VM に影響しません。 影響を及ぼさない更新が不可能な場合、Azure は、お客様の VM への影響が最小となる更新メカニズムを選択します。 
 
-影響がゼロではないメンテナンスでは、ほとんどの場合、VM の一時停止は 10 秒未満です。 場合によっては、Azure はメモリ保持メンテナンスのメカニズムを使用します。 これらのメカニズムでは、最大 30 秒間 VM が一時停止され、RAM 内のメモリが保持されます。 その後、VM が再開され、クロックが自動的に同期されます。 
+影響がゼロではないメンテナンスでは、ほとんどの場合、VM の一時停止は 10 秒未満です。 場合によっては、Azure はメモリ保持メンテナンスのメカニズムを使用します。 これらのメカニズムでは通常、30 秒間 VM が一時停止され、RAM 内のメモリが保持されます。 その後、VM が再開され、クロックが自動的に同期されます。 
 
 メモリ保持メンテナンスは、Azure VM の 90% 以上で機能します。 G、M、N、および H シリーズでは機能しません。 Azure では、ライブ マイグレーション テクノロジの使用を拡大すると共に、一時停止期間を短縮するためにメモリ保持メンテナンス メカニズムの改善に取り組んでいます。  
 

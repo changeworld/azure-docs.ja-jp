@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
-ms.date: 06/16/2021
+ms.date: 10/11/2021
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40, subject-rbac-steps
-ms.openlocfilehash: 2b8e8c73286eb058f5fcd183ac43998801a0ebe8
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: f04dc73c6137e311b309a2009d6493414591eda5
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123038432"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129858905"
 ---
 # <a name="use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する
 
@@ -38,11 +38,11 @@ Azure portal を使用してサービス プリンシパルを直接作成する
 ### <a name="check-azure-ad-permissions"></a>Azure AD のアクセス許可を確認する
 
 1. **[Azure Active Directory]** を選択します。
-1. 自分のロールを確認します。 **[ユーザー]** ロールを持っている場合は、管理者以外のユーザーがアプリケーションを登録できることを確認する必要があります。
+1. **[概要]** -> **[マイ フィード]** で自分のロールを見つけます。 **[ユーザー]** ロールを持っている場合は、管理者以外のユーザーがアプリケーションを登録できることを確認する必要があります。
 
-   ![自分のロールを見つける。 ユーザーの場合、確実に管理者以外がアプリを登録できるようにする](./media/howto-create-service-principal-portal/view-user-info.png)
+   :::image type="content" source="media/howto-create-service-principal-portal/view-user-info.png" alt-text="自分のロールを見つける。ユーザーの場合、確実に管理者以外がアプリを登録できるようにする":::
 
-1. 左側のウィンドウで、 **[ユーザー設定]** を選択します。
+1. 左側のペインで、 **[ユーザー]** 、 **[ユーザー設定]** の順に選択します。
 1. **[アプリの登録]** 設定を確認します。 この値は、管理者だけが設定できます。 **[はい]** に設定されている場合は、Azure AD テナント内のすべてのユーザーがアプリを登録できます。
 
 アプリの登録の設定が **[いいえ]** に設定されている場合は、管理者ロールを持つユーザーのみが、これらの種類のアプリケーションを登録できます。 使用可能な管理者ロールと各ロールに与えられている Azure AD での具体的なアクセス許可については、[Azure AD の組み込みロール](../roles/permissions-reference.md#all-roles)に関するページを参照してください。 アカウントにユーザー ロールが割り当てられているが、アプリの登録の設定が管理者ユーザーに制限されている場合は、アプリの登録のすべての側面について作成と管理が可能な管理者ロールの 1 つを、登録を行うユーザーに割り当てるか、ユーザーがアプリを登録できるようにするよう、管理者に依頼してください。
@@ -67,9 +67,9 @@ Azure サブスクリプションで AD アプリにロールを割り当てる�
 
    ![サービス プリンシパルを作成するサブスクリプションを選択する](./media/howto-create-service-principal-portal/view-details.png)
 
-1. **[ロールの割り当て]** で **[表示]** を選択して割り当て済みのロールを表示し、AD アプリにロールを割り当てるための適切なアクセス許可があるかどうかを確認します。 ない場合は、サブスクリプション管理者に連絡して、ユーザー アクセス管理者ロールに追加してもらいます。 次の図では、ユーザーには所有者ロールが割り当てられているので、このユーザーには適切なアクセス許可があります。
+1. **[ロールの割り当て]** を選択して割り当て済みのロールを表示し、AD アプリにロールを割り当てるための適切なアクセス許可があるかどうかを確認します。 ない場合は、サブスクリプション管理者に連絡して、ユーザー アクセス管理者ロールに追加してもらいます。 次の図では、ユーザーには所有者ロールが割り当てられているので、このユーザーには適切なアクセス許可があります。
 
-   ![この例では、ユーザーには所有者ロールが割り当てられています](./media/howto-create-service-principal-portal/view-user-role.png)
+   :::image type="content" source="media/howto-create-service-principal-portal/view-user-role.png" alt-text="この例では、ユーザーには所有者ロールが割り当てられています":::
 
 ## <a name="register-an-application-with-azure-ad-and-create-a-service-principal"></a>Azure AD にアプリケーションを登録し、サービス プリンシパルを作成する
 

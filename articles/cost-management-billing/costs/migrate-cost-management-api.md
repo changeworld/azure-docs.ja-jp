@@ -3,21 +3,21 @@ title: EA から Microsoft 顧客契約の API に移行する - Azure
 description: この記事では、Microsoft Enterprise Agreement (EA) から Microsoft 顧客契約への移行とその結果について説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 07/13/2021
+ms.date: 10/07/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
-ms.openlocfilehash: 2d3bae2f6282a4e505e2d5aa9ce2cf3f52b80006
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: fbccab537575720aa92c00f74afcdb82c773423e
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113762268"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129711376"
 ---
 # <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>Enterprise Agreement から Microsoft 顧客契約 API に移行する
 
-この記事では、Enterprise Agreement (EA) と Microsoft 顧客契約 (MCA) アカウントとの、データ構造、API、およびその他のシステム統合に関する違いについて説明します。 Azure Cost Management では、両方のアカウントの種類に応じた API がサポートされています。 続行する前に、Microsoft 顧客契約の[請求先アカウントの設定](../manage/mca-setup-account.md)に関する記事を参照してください。
+この記事では、Enterprise Agreement (EA) と Microsoft 顧客契約 (MCA) アカウントとの、データ構造、API、およびその他のシステム統合に関する違いについて説明します。 Cost Management では、両方のアカウントの種類に応じた API がサポートされています。 続行する前に、Microsoft 顧客契約の[請求先アカウントの設定](../manage/mca-setup-account.md)に関する記事を参照してください。
 
 既存の EA アカウントを含む組織は、MCA アカウントを設定すると共に、この記事を参照する必要があります。 以前、EA アカウントを更新するには、古い加入契約から新しい加入契約に移行するための最低限の複数の作業が必要でした。 ただし、MCA アカウントへの移行には、追加の作業が必要です。 追加の作業は、基になる課金サブシステムでの変更がすべてのコスト関連 API およびサービス内容に影響するという理由で行います。
 
@@ -28,7 +28,7 @@ MCA API と新しい統合により、以下の操作が可能になります。
 - ネイティブ Azure API から API を完全に利用できる。
 - 単一の請求先アカウントで複数の請求書を構成する。
 - Azure サービスの使用状況、サードパーティ製 Marketplace の使用状況、および Marketplace の購入で組み合わされた API にアクセスする。
-- Azure Cost Management を使用して複数の課金プロファイル (加入契約と同じ) にわたってコストを表示する。
+- Cost Management を使用して複数の課金プロファイル (加入契約と同じ) にわたってコストを表示する。
 - コストを表示し、コストが事前定義されたしきい値を超えたときに通知を受け、および生データをエクスポートするために新しい API にアクセスする。
 
 ## <a name="migration-checklist"></a>移行チェックリスト
@@ -517,7 +517,7 @@ Reservation Details API を使用して予約の概要を取得するには:
 
 ## <a name="power-bi-integration"></a>Power BI 統合
 
-コストの報告には、Power BI を使用することもできます。 Power BI Desktop の [Azure Cost Management コネクタ](/power-bi/desktop-connect-azure-cost-management) を使用すると、Azure のコストをより深く理解するのに役立つ、カスタマイズされた高性能レポートを作成できます。 Azure Cost Management コネクタは現在のところ、Microsoft 顧客契約またはマイクロソフト エンタープライズ契約 (EA) をお持ちのお客様がご利用いただけます。
+コストの報告には、Power BI を使用することもできます。 Power BI Desktop の [Cost Management コネクタ](/power-bi/desktop-connect-azure-cost-management) を使用すると、Azure のコストをより深く理解するのに役立つ、カスタマイズされた高性能レポートを作成できます。 Cost Management コネクタは現在のところ、Microsoft 顧客契約またはマイクロソフト エンタープライズ契約 (EA) をお持ちのお客様がご利用いただけます。
 
 ## <a name="next-steps"></a>次の手順
 

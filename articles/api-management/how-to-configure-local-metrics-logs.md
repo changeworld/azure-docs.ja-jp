@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/11/2021
 ms.author: danlep
-ms.openlocfilehash: 94dde4e35a072431fbcc5a30b3257b7a70b59e44
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 421111e289ffba14b792af5cf810ac562164c846
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128551120"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129660839"
 ---
 # <a name="configure-local-metrics-and-logs-for-azure-api-management-self-hosted-gateway"></a>Azure API Management のセルフホステッド ゲートウェイにローカル メトリックとログを構成する
 
@@ -30,6 +30,9 @@ ms.locfileid: "128551120"
 ### <a name="deploy-statsd-and-prometheus-to-the-cluster"></a>StatsD と Prometheus をクラスターにデプロイする
 
 次に示すのは、セルフホステッド ゲートウェイがデプロイされている Kubernetes クラスターに StatsD と Prometheus をデプロイするための YAML 構成のサンプルです。 また、それぞれに対して [サービス](https://kubernetes.io/docs/concepts/services-networking/service/)も作成します。 セルフホステッド ゲートウェイにより、StatsD サービスにメトリックが公開されます。 そのサービスを介して Prometheus ダッシュボードにアクセスします。
+
+> [!NOTE]
+> 次の例では、パブリック コンテナー イメージを Docker Hub からプルします。 匿名の pull request を行うのではなく、Docker Hub アカウントを使用して認証するようにプル シークレットを設定することをお勧めします。 パブリック コンテンツを操作するときの信頼性を向上させるために、プライベートの Azure コンテナー レジストリにイメージをインポートして管理します。 [パブリック イメージの操作に関する詳細を参照してください](../container-registry/buffer-gate-public-content.md)。
 
 ```yaml
 apiVersion: v1

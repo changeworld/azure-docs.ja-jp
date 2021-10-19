@@ -8,12 +8,12 @@ ms.author: arjagann
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: dc89bfcd3d89e6987c2c8b742f5fe2453c273fc7
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 8aac6f90880775c5a1d7002048c79257b4e5ab85
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121746283"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129855899"
 ---
 # <a name="indexer-access-to-content-protected-by-azure-network-security-features"></a>Azure ネットワーク セキュリティ機能を使用したデータ ソースへのインデクサーのアクセス
 
@@ -76,7 +76,7 @@ Azure Cognitive Search インデクサーは、データ ソースからコン�
 インデクサーがアクセスしようとするリソースが特定の IP 範囲のセットにのみ制限される場合、インデクサー要求が発生する可能性のある IP 範囲を含むようにそのセットを拡張する必要があります。 前述のように、インデクサーが実行され、アクセス要求が発生する可能性がある環境が 2 つあります。 インデクサー アクセスを機能させるために、**両方** の環境の IP アドレスを追加する必要があります。
 
 - 検索サービス固有のプライベート環境の IP アドレスを取得するには、検索サービスの完全修飾ドメイン名 (FQDN) を `nslookup` (または `ping`) します。 たとえば、パブリック クラウドの検索サービスの FQDN は、`<service-name>.search.windows.net` です。 この情報は、Azure portal で入手できます。
-- マルチテナント環境の IP アドレスは、`AzureCognitiveSearch` サービス タグを介して入手できます。 [Azure サービス タグ](../virtual-network/service-tags-overview.md)には、各サービスの公開された IP アドレスの範囲があり、これは [Discovery API (プレビュー)](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) または[ダウンロード可能な JSON ファイル](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)を介して入手できます。 どちらの場合も、IP 範囲はリージョンごとに分類されます。検索サービスがプロビジョニングされているリージョンに割り当てられた IP 範囲のみを選択できます。
+- マルチテナント環境の IP アドレスは、`AzureCognitiveSearch` サービス タグを介して入手できます。 [Azure サービス タグ](../virtual-network/service-tags-overview.md)には、各サービスの公開された IP アドレスの範囲があり、これは [Discovery API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api) または[ダウンロード可能な JSON ファイル](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)を介して入手できます。 どちらの場合も、IP 範囲はリージョンごとに分類されます。検索サービスがプロビジョニングされているリージョンに割り当てられた IP 範囲のみを選択できます。
 
 特定のデータ ソースについては、IP 範囲の一覧を列挙する代わりに、サービス タグ自体を直接使用できます (検索サービスの IP アドレスは、引き続き明示的に使用する必要があります)。 これらのデータ ソースでは、[ネットワーク セキュリティ グループの規則](../virtual-network/network-security-groups-overview.md)を設定することでアクセスを制限します。これは、Azure Storage、Cosmos DB、Azure SQL などが提供する IP 規則とは異なり、サービス タグの追加をネイティブでサポートします。 検索サービスの IP アドレスに加えて、`AzureCognitiveSearch` サービス タグを直接使用する機能をサポートするデータ ソースを次に示します。
 

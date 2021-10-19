@@ -7,21 +7,21 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: troubleshooting
-ms.date: 09/15/2021
+ms.date: 10/07/2021
 ms.author: banders
-ms.openlocfilehash: 2532b02247a85d180d7b1cccd504838b83a8f93f
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: de526c46a9aace4a6740b8b9afaab5cc23f3f87d
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128591845"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129711102"
 ---
 # <a name="troubleshoot-csp-billing-issues-with-usage-file-pivot-tables"></a>使用状況ファイルのピボット テーブルを使用して CSP の請求に関する問題をトラブルシューティングする
 
 この記事は、パートナー センターの調整 (使用状況) ファイルのピボット テーブルを使用して、クラウド ソリューション プロバイダー (CSP) の請求に関する問題をトラブルシューティングする場合に役立ちます。 Azure 使用状況ファイルには、Azure の使用状況と消費量に関するすべての情報が含まれています。 このファイル内の情報は、次のことを理解するために役立ちます。
 
 - Azure の予約がどのように使用および適用されているかを理解する
-- 請求書を使用して、Azure Cost Management の情報を調整する
+- 請求書を使用して、Cost Management の情報を調整する
 - コスト スパイクをトラブルシューティングする
 - サービス レベル アグリーメントの払戻額を計算する
 
@@ -111,4 +111,4 @@ Azure 使用状況ファイルは CSV 形式であるため、Excel で使用で
 
 ## <a name="next-steps"></a>次のステップ
 
-- [パートナー向け Azure Cost Management の利用を開始する](../costs/get-started-partners.md)。
+- [パートナー向け Cost Management の利用を開始する](../costs/get-started-partners.md)

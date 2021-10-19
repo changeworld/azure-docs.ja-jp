@@ -7,18 +7,18 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.topic: how-to
-ms.date: 09/15/2021
+ms.date: 10/07/2021
 ms.author: banders
-ms.openlocfilehash: 2f2d88a48b7dca0b2ab3ad512e6b723ab68931c8
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: c3ed338341ffb73f59a5b20fea55e8d83f4a375f
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128650251"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129711296"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>Azure Budgets でのコストの管理
 
-コスト管理は、クラウドへの投資の価値を最大化するために不可欠な要素の 1 つです。 さまざまなシナリオにおいて、コストの可視性、レポート、およびコスト ベースのオーケストレーションが、継続的な事業運営に不可欠となります。 [Azure Cost Management API](/rest/api/consumption/) の一連の API は、このようなシナリオのそれぞれをサポートします。 これらの API から使用状況の詳細がわかるので、インスタンス レベルのコストを細分化して調べることができます。
+コスト管理は、クラウドへの投資の価値を最大化するために不可欠な要素の 1 つです。 さまざまなシナリオにおいて、コストの可視性、レポート、およびコスト ベースのオーケストレーションが、継続的な事業運営に不可欠となります。 [Cost Management API](/rest/api/consumption/) の一連の API では、このようなシナリオのそれぞれがサポートされます。 これらの API から使用状況の詳細がわかるので、インスタンス レベルのコストを細分化して調べることができます。
 
 予算はコスト管理の一部として一般的に使用されます。 Azure では、範囲を限定して予算を管理することができます。 たとえば、予算のビューをサブスクリプション、リソース グループ、またはリソースのコレクションに基づいて絞り込むことができます。 予算 API を使用して、予算のしきい値に達したときに電子メールで通知を受け取ることに加えて、[Azure Monitor のアクション グループ](../../azure-monitor/alerts/action-groups.md)を使用して、予算に関するイベントの発生時に一連のアクションをトリガーし、オーケストレーションの下で実行することもできます。
 

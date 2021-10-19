@@ -1,19 +1,19 @@
 ---
 title: Azure Cost Management のグループおよびフィルター オプション
-description: この記事では、Azure Cost Management でグループとフィルターのオプションを使用する方法について説明します。
+description: この記事では、Cost Management でグループとフィルターのオプションを使用する方法について説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 09/15/2021
+ms.date: 10/11/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: 89344ccfe70a3d0becef103bd0bd3ffee79bb80c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 8cc4a0bfd7503a48b3df6887c05f268fcfae5733
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128616462"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129856336"
 ---
 # <a name="group-and-filter-options-in-cost-analysis"></a>コスト分析のグループとフィルターのオプション
 
@@ -40,8 +40,8 @@ ms.locfileid: "128616462"
 | **測定** | コストを使用量メーター別にします。 | 購入と Marketplace の使用は、 **[No meter]\(測定なし\)** として表示されます。 購入を特定するには「**料金タイプ**」を、Marketplace の料金を特定するには「**パブリッシャーの種類**」を参照してください。 |
 | **操作** | AWS コストを操作別にします。 | AWS スコープと管理グループに対してのみ適用できます。 Azure データには操作が含まれないため、 **[No operation]\(操作なし\)** として表示されます。代わりに **[測定]** を使用してください。 |
 | **価格モデル** | コストをオンデマンド、予約、またはスポット使用別にします。 | 購入は、"**オンデマンド**" として表示されます。 "**該当なし**" が表示された場合に、その使用量が予約なのか、オンデマンドでの使用量なのかを調べるには、 **[予約]** でグループ化します。また、購入を特定するには **[料金タイプ]** でグループ化します。
-| **プロバイダー** | コストを AWS と Azure に分割します。 | 管理グループに対してのみ使用できます。 |
-| **パブリッシャーの種類** | AWS、Azure、Marketplace のコストに分割します。 |  |
+| **プロバイダー** | プロバイダーの種類別 (Azure、Microsoft 365、Dynamics 365、AWS など) にコストを分けます。 | 製品と業種の識別子。 |
+| **パブリッシャーの種類** | Microsoft、Azure、AWS、Marketplace のコストを分けます。 | 値は、MCA アカウントの場合は **Microsoft**、EA と従量課金制アカウントの場合は **Azure** です。 |
 | **予約** | 予約でコストを分割します。 | 予約に関連付けられていない使用または購入は、 **[No reservation]\(予約なし\)** として表示されます。 その他の Azure、AWS、Marketplace の購入を特定するには、 **[パブリッシャーの種類]** でグループ化してください。 |
 | **リソース** | リソースでコストを分割します。 | Marketplace での購入は **[Other Marketplace purchases]\(その他の Marketplace での購入\)** として表示され、予約やサポートの料金などの Azure の購入は **[Other Azure purchases]\(その他の Azure の購入\)** として表示されます。 その他の Azure、AWS、または Marketplace での購入を識別するには、 **[パブリッシャーの種類]** でグループ化またはフィルター処理を行います。 |
 | **リソース グループ** | リソース グループでコストを分割します。 | 購入、サブスクリプションに関連付けられていないテナント リソース、リソース グループにデプロイされていないサブスクリプション リソース、クラシック リソースにはリソース グループが存在しないため、 **[Other Marketplace purchases]\(その他の Marketplace での購入\)** 、 **[Other Azure purchases]\(その他の Azure の購入\)** 、 **[Other tenant resources]\(その他のテナント リソース\)** 、 **[Other subscription resources]\(その他のサブスクリプション リソース\)** 、 **[$system]** 、または **[その他の料金]** として表示されます。 |
@@ -52,6 +52,27 @@ ms.locfileid: "128616462"
 | **Tag** | 特定のタグ キーのタグ値でコストを分割します。 | 購入、サブスクリプションに関連付けられていないテナント リソース、リソース グループにデプロイされていないサブスクリプション リソース、クラシック リソースには、タグを付けることができないため、 **[Tags not available]\(タグの使用不可\)** として表示されます。 使用状況データにタグが含まれていないサービスは、 **[Tags not supported]\(タグはサポート対象外\)** として表示されます。 タグがリソースに指定されていない残りのケースは、 **[タグなし]** として表示されます。 [リソースの種類ごとのタグのサポート](../../azure-resource-manager/management/tag-support.md)に関するページを参照してください。 |
 
 用語について詳しくは、「[Azure の利用状況と請求金額ファイル内の用語について](../understand/understand-usage.md)」をご覧ください。
+
+## <a name="changes-to-publisher-type-values"></a>パブリッシャーの種類の値の変更
+
+MCA 契約をお持ちのお客様の場合、`Publisher type` の値 **Azure** は、Cost Management + Billing で追跡される Microsoft からのすべての料金に適用されることを反映するため、値 **Microsoft** で置き換えられます。 この変更は、2021 年 10 月 14 日に有効になります。
+
+次のことを考慮してください。
+
+- コスト分析の保存されたビュー - フィルター `PublisherType` = **Azure** を使用しているすべての保存されたビューは、新しい値 **Microsoft** を反映するように更新されます。 
+    - 必要な操作: なし。
+- `PublisherType` フィルターを使用した予算 - `PublisherType` = **Azure** フィルターを使用して作成された予算は、新しい値 **Microsoft** を反映するように更新されます。
+    - 必要な操作: なし。
+- エクスポート - 2021 年 10 月 14 日より前に生成されたすべてのエクスポート ファイルでは、`PublisherType field` の値は **Azure** になり、2021 年 10 月 14 日以降の値は **Microsoft** になります。
+    - 必要な操作: *新しいファイルと 2021 年 10 月 14 日より前にダウンロードしたファイルをマージするときは、変更された値を考慮してください*。
+- ダウンロードされたデータ - コスト分析からダウンロードしたファイルでは、2021 年 10 月 14 日より前にダウンロードしたファイルの使用状況の詳細の `PublisherType` フィールドには、古い値である **Azure** が残っています。
+    - 必要な操作: *新しいファイルと 2021 年 10 月 14 日より前にダウンロードしたファイルをマージするときは、変更された値を考慮してください*。
+- REST API 呼び出し - 値 **Azure** で PublisherType フィールドをフィルター処理する Cost Management + Billing REST API の呼び出しを使用している場合は、2021 年 10 月 14 日以降は **Microsoft** でフィルター処理するように更新します。
+    - 必要な操作: *すべてのファーストパーティ料金を取得するには、REST API の呼び出しで `Publisher type` = **Microsoft** を使用します。`Publisher type` = **Azure** を使用して呼び出すと、データは返されません*。
+
+> [!NOTE]
+> マイクロソフト エンタープライズ契約 (EA) または従量課金制 (PAYG) アカウントを持っている場合、この変更による影響はありません。
+
 
 ## <a name="next-steps"></a>次のステップ
 

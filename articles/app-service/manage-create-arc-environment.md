@@ -3,12 +3,12 @@ title: App Service、Functions、および Logic Apps 用に Azure Arc セット
 description: ご使用の Azure Arc 対応 Kubernetes クラスターに対して、App Service アプリ、Functions Apps、Logic Apps を有効にする方法を学習します。
 ms.topic: article
 ms.date: 08/17/2021
-ms.openlocfilehash: 7fbdae7b5e8b3bda94c1f1ddbb2a70720596d1fd
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: f0594458f65fbd14bc50540148d5ea68d15fbdbd
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128639035"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129707116"
 ---
 # <a name="set-up-an-azure-arc-enabled-kubernetes-cluster-to-run-app-service-functions-and-logic-apps-preview"></a>Azure Arc 対応の Kubernetes クラスターを設定して、App Service、Functions、Logic Apps を実行します (プレビュー)
 

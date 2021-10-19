@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/04/2021
+ms.date: 10/07/2021
 ms.author: b-juche
-ms.openlocfilehash: b94374d8eaa0efac50989a388686f96d9bae0622
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 6e711f3101426f59aead80b84b88350af86bbd6b
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111537133"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129669190"
 ---
 # <a name="requirements-and-considerations-for-using-cross-region-replication"></a>リージョン間レプリケーションを使用するための要件と考慮事項 
 
@@ -33,7 +33,7 @@ Azure NetApp Files [ボリュームのリージョン間レプリケーション
 * 宛先アカウントは、ソース ボリューム リージョンとは異なるリージョンにある必要があります。 別のリージョン内の既存の NetApp アカウントを選択することもできます。  
 * [宛先リージョンにフェールオーバー](cross-region-replication-manage-disaster-recovery.md#fail-over-to-destination-volume)して、宛先ボリュームで読み取りと書き込みを有効にするまで、レプリケーションの宛先ボリュームは読み取り専用になります。 
 * 現在、Azure NetApp Files レプリケーションでは複数のサブスクリプションがサポートされていません。レプリケーションはすべて、1 つのサブスクリプションで実行する必要があります。
-* リージョン当たり 1 つのサブスクリプションで行うレプリケーションには最大 5 つのボリュームを設定できます。 サポート チケットを開くことで、5 つのレプリケーション宛先ボリューム (リージョン内のサブスクリプション当たり) という既定のクォータの増大を要求することができます。 
+* リージョン間レプリケーションの宛先ボリュームの最大数については、[リソース制限](azure-netapp-files-resource-limits.md)に関する記事を参照してください。 サポート チケットを開くことで、レプリケーション宛先ボリュームの既定のクォータ (リージョン内のサブスクリプションあたり) の[制限増大を要求する](azure-netapp-files-resource-limits.md#request-limit-increase)ことができます。
 * ソース ボリュームに新しく追加されたスナップショットがインターフェイスに反映されるまでに、最大 5 分の遅延が発生する場合があります。  
 * カスケード、ファン イン、ファン アウト トポロジはサポートされていません。
 * 現時点では、スナップショットから作成されたソース ボリュームについてボリューム レプリケーションを構成することはサポートされていません。

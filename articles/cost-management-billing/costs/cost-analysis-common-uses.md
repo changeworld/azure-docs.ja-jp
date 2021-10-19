@@ -1,23 +1,23 @@
 ---
 title: Azure Cost Management での一般的なコスト分析の使用
-description: この記事では、Azure Cost Management で一般的なコスト分析タスクの結果を取得する方法について説明します。
+description: この記事では、Cost Management で一般的なコスト分析タスクの結果を取得する方法について説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 09/15/2021
+ms.date: 10/07/2021
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: e17a30f5210f77c8fcabdeaf6b719814025b87fa
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 0fa5eba77727676f21a7b45848171859395b00f0
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128599850"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129706001"
 ---
 # <a name="common-cost-analysis-uses"></a>一般的なコスト分析の使用
 
-多くの場合、Azure Cost Management のユーザーは、他の多くのユーザーが持つ疑問に対する答えを必要としています。 この記事では、Cost Management での一般的なコスト分析タスクの結果を取得する手順について説明します。
+多くの場合、Cost Management のユーザーは、他の多くのユーザーが持つ疑問に対する答えを必要としています。 この記事では、Cost Management での一般的なコスト分析タスクの結果を取得する手順について説明します。
 
 ## <a name="view-forecasted-costs"></a>予測コストを表示する
 

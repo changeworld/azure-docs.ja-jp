@@ -2,18 +2,18 @@
 title: Azure Stack Edge Mini R デバイスで Wi-Fi プロファイルを使用する
 description: 高セキュリティのエンタープライズ ネットワークとパーソナル ネットワークで Azure Stack Edge Mini R デバイスの Wi-Fi プロファイルを作成する方法について説明します。
 services: databox
-author: v-dalc@microsoft.com
+author: v-dalc
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/24/2021
+ms.date: 10/07/2021
 ms.author: alkohli
-ms.openlocfilehash: 90c7c238cef104eae78618e51fa4b284adcc8f42
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 34fe33f3c1d5be747e96ae71567424026c7c7a2a
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105050331"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129669209"
 ---
 # <a name="use-wi-fi-profiles-with-azure-stack-edge-mini-r-devices"></a>Azure Stack Edge Mini R デバイスで Wi-Fi プロファイルを使用する
 
@@ -97,6 +97,8 @@ Wireless Protected Access 2 (WPA2) -エンタープライズ ネットワーク�
 
 コンピューター上の Wi-Fi インターフェイスのプロファイルをエクスポートするには、次の手順を実行します。
 
+1. ワイヤレス プロファイルのエクスポートに使用するコンピューターが、デバイスで使用する Wi-Fi ネットワークに接続できることを確認します。
+
 1. コンピューターのワイヤレス プロファイルを表示するには、 **[スタート]** メニューで **[コマンド プロンプト]** (cmd.exe) を開き、次のコマンドを入力します。
 
    `netsh wlan show profiles`
@@ -120,14 +122,14 @@ Wireless Protected Access 2 (WPA2) -エンタープライズ ネットワーク�
        All User Profile     : Boat
    ```
 
-2. プロファイルをエクスポートするには、次のコマンドを入力します。
+1. プロファイルをエクスポートするには、次のコマンドを入力します。
 
-   `netsh wlan export profile name=”<profileName>” folder=”<path>\<profileName>"`
+   `netsh wlan export profile name=”<profileName>” folder=”<path>\<profileName>" key=clear`
 
    たとえば、次のコマンドは、ContosoFTINET プロファイルを XML 形式で、`gusp` という名前のユーザーのダウンロード フォルダーに保存します。
 
    ```dos
-   C:\Users\gusp>netsh wlan export profile name="ContosoFTINET" folder=c:Downloads
+   C:\Users\gusp>netsh wlan export profile name="ContosoFTINET" folder=c:Downloads key=clear
 
    Interface profile "ContosoFTINET" is saved in file "c:Downloads\ContosoFTINET.xml" successfully.
    ```

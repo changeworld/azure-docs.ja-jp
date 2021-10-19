@@ -13,12 +13,12 @@ ms.author: mireks
 ms.reviewer: vanto
 ms.date: 09/28/2020
 tags: azure-synapse
-ms.openlocfilehash: 9afad44bcf67478a81e75c17d0ff8ffc6d8c65aa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ad29b24c6c79447a23e0b910583322107fa5af32
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94841132"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129618593"
 ---
 # <a name="using-multi-factor-azure-active-directory-authentication"></a>Azure Active Directory の多要素認証の使用
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -68,12 +68,11 @@ SSMS 18.x 以降を実行している場合、ゲスト ユーザーの AD ド�
 
 ### <a name="azure-ad-business-to-business-support"></a>Azure AD の企業間サポート
 
-> [!IMPORTANT]
-> ゲスト ユーザーがグループに参加せずに Azure SQL Database、SQL Managed Instance、および Azure Synapse に接続することに対するサポートは、現在 **パブリック プレビュー** 段階です。 詳細については、「[Azure AD ゲスト ユーザーを作成し、Azure AD 管理者として設定する](authentication-aad-guest-users.md)」を参照してください。
+Azure AD B2B シナリオでゲスト ユーザーとしてサポートされている Azure AD ユーザー ([Azure B2B コラボレーションの概要](../../active-directory/external-identities/what-is-b2b.md)に関する記事を参照) は、関連付けられた Azure AD に作成された Azure AD グループの個々のユーザーまたはメンバーとして SQL Database と Azure Synapse に接続でき、特定のデータベース内の [CREATE USER (Transact-SQL)](/sql/t-sql/statements/create-user-transact-sql) ステートメントを使用して手動でマップされます。 
 
-Azure AD B2B シナリオでゲスト ユーザーとしてサポートされている Azure AD ユーザー ([Azure B2B コラボレーションの概要](../../active-directory/external-identities/what-is-b2b.md)に関する記事を参照) は、関連付けられた Azure AD に作成されたグループのメンバーとしてのみ SQL Database と Azure Synapse に接続でき、特定のデータベース内の [CREATE USER (Transact-SQL)](/sql/t-sql/statements/create-user-transact-sql) ステートメントを使用して手動でマップされます。 たとえば、`steve@gmail.com` を Azure AD `contosotest` に (Azure AD ドメイン `contosotest.onmicrosoft.com` を使用して) 招待した場合、Azure AD グループ (`usergroup` など) を、`steve@gmail.com` メンバーを含む Azure AD で作成する必要があります。 次に、Azure AD SQL 管理者または Azure AD DBO が Transact-SQL `CREATE USER [usergroup] FROM EXTERNAL PROVIDER` ステートメントを実行して、特定のデータベース (たとえば、`MyDatabase`) に対してこのグループを作成する必要があります。 
+たとえば、`steve@gmail.com` が Azure AD `contosotest` に招待される場合 (Azure AD ドメイン `contosotest.onmicrosoft.com`)、ユーザー `steve@gmail.com` を、Azure AD SQL 管理者または Azure AD DBO が Transact-SQL `create user [steve@gmail.com] FROM EXTERNAL PROVIDER` ステートメントを実行し、特定のデータベース (**MyDatabase** など) に対して作成する必要があります。 `steve@gmail.com` が Azure AD グループ (`usergroup` など) に属する場合、このグループを、Azure AD SQL 管理者または Azure AD DBO が Transact-SQL `create user [usergroup] FROM EXTERNAL PROVIDER` ステートメントを実行し、特定のデータベース (**MyDatabase** など) に対して作成する必要があります。 
 
-データベース ユーザーが作成されると、ユーザー `steve@gmail.com` は、SSMS 認証オプション `Azure Active Directory – Universal with MFA` を使用して `MyDatabase` にサインインできます。 既定では、`usergroup` には接続権限のみがあります。 それ以上のデータ アクセス許可は、十分な特権を持つユーザーがデータベースで[付与する](/sql/t-sql/statements/grant-transact-sql)必要があります。 
+データベース ユーザーまたはユーザー グループが作成されると、ユーザー `steve@gmail.com` は、SSMS 認証オプション `Azure Active Directory – Universal with MFA` を使用して `MyDatabase` にサインインできます。 既定では、ユーザーまたはユーザー グループには接続アクセス許可のみが与えられます。 それ以上のデータ アクセス許可は、十分な特権を持つユーザーがデータベースで[付与する](/sql/t-sql/statements/grant-transact-sql)必要があります。 
 
 > [!NOTE]
 > SSMS 17.x の場合、`steve@gmail.com` をゲスト ユーザーとして使用するには、 **[AD ドメイン名またはテナント ID]** ボックスをオンにし、 **[接続プロパティ]** ダイアログ ボックスに AD ドメイン名 `contosotest.onmicrosoft.com` を追加する必要があります。 **[AD ドメイン名またはテナントの ID]** オプションは、 **[Azure Active Directory - MFA で汎用]** 認証でのみサポートされます。 それ以外の場合、このチェック ボックスはグレー表示になります。

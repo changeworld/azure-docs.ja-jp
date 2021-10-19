@@ -5,16 +5,16 @@ services: automation
 ms.subservice: update-management
 ms.date: 06/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: 20df340df025ceada8a4b254f317fe2f5d8eecbc
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 1607ad99ffb78a90bcc143ab20829709cec77561
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122768897"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129706496"
 ---
 # <a name="view-update-assessments-in-update-management"></a>Update Management で更新プログラムの評価を表示する
 
-Update Management には、ご利用のマシン、不足している更新プログラム、更新プログラムのデプロイ、およびスケジュールされている更新プログラムのデプロイに関する情報が表示されます。 選択された Arc 対応サーバーから、または構成されているすべてのマシンとサーバーにおける Automation アカウントから、選択した Azure 仮想マシンにスコープを指定して評価情報を表示できます。
+Update Management には、ご利用のマシン、不足している更新プログラム、更新プログラムのデプロイ、およびスケジュールされている更新プログラムのデプロイに関する情報が表示されます。 選択された Azure Arc 対応サーバーから、または構成されているすべてのマシンとサーバーにおける Automation アカウントから、選択した Azure 仮想マシンにスコープを指定して評価情報を表示できます。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
@@ -28,13 +28,13 @@ Update Management には、ご利用のマシン、不足している更新プ�
 
 [ ![Azure VM の Update Management 評価ビュー](./media/view-update-assessments/update-assessment-azure-vm.png)](./media/view-update-assessments/update-assessment-azure-vm-expanded.png#lightbox)
 
-Arc 対応サーバーからの更新プログラムの評価を表示するには、 **[サーバー - Azure Arc]** に移動し、一覧からお使いのサーバーを選択します。 左側のメニューで、 **[ゲスト + ホストの更新プログラム]** を選択します。 **[ゲスト + ホストの更新プログラム]** ページで、 **[Go to Update Management]\(Update Management に移動\)** を選択します。
+Azure Arc 対応サーバーからの更新プログラムの評価を表示するには、 **[サーバー - Azure Arc]** に移動し、一覧からお使いのサーバーを選択します。 左側のメニューで、 **[ゲスト + ホストの更新プログラム]** を選択します。 **[ゲスト + ホストの更新プログラム]** ページで、 **[Go to Update Management]\(Update Management に移動\)** を選択します。
 
-Update Management には、ご利用の Arc 対応マシン、不足している更新プログラム、更新プログラムのデプロイ、スケジュールされている更新プログラムのデプロイに関する情報が表示されます。
+Update Management には、ご利用の Azure Arc 対応マシン、不足している更新プログラム、更新プログラムのデプロイ、スケジュールされている更新プログラムのデプロイに関する情報が表示されます。
 
 [ ![Arc 対応サーバーについての Update Management 評価ビュー](./media/view-update-assessments/update-assessment-arc-server.png)](./media/view-update-assessments/update-assessment-arc-server-expanded.png#lightbox)
 
-Automation アカウントからの Arc 対応サーバーを含め、すべてのマシンの更新プログラムの評価を表示するには、 **[Automation アカウント]** に移動し、Update Management が有効になっている Automation アカウントを一覧から選択します。 Automation アカウントで、左側のメニューから **[更新の管理]** を選択します。
+Automation アカウントからの Azure Arc 対応サーバーを含め、すべてのマシンの更新プログラムの評価を表示するには、 **[Automation アカウント]** に移動し、Update Management が有効になっている Automation アカウントを一覧から選択します。 Automation アカウントで、左側のメニューから **[更新の管理]** を選択します。
 
 ご使用の環境の更新プログラムが、 **[更新の管理]** ページに一覧表示されます。 更新プログラムが不足していると識別された場合は、 **[不足している更新プログラム]** タブに、それらの一覧が表示されます。
 

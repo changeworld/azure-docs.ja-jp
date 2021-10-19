@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 07/26/2021
 ms.author: yushwang
-ms.openlocfilehash: 0551cf435b732b621ad5493914251afd67f18882
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: b3619ba68338e40773cdd962298b01806bde5b2b
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114707143"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129660630"
 ---
 # <a name="vpn-gateway-faq"></a>VPN Gateway に関する FAQ
 
@@ -185,6 +185,10 @@ IPsec/IKE のパラメーターについては、[パラメーター](vpn-gatewa
 Windows Server 2012 ルーティングとリモート アクセス (RRAS) サーバーでは、クロスプレミス構成のサイト間接続をサポートしています。
 
 その他のソフトウェア VPN ソリューションについては、業界標準の IPsec の実装に準拠していればマイクロソフトのゲートウェイで動作します。 構成とサポートの手順については、ソフトウェアのベンダーにお問い合わせください。
+
+### <a name="can-i-connect-to-azure-gateway-via-point-to-site-when-located-at-a-site-that-has-an-active-site-to-site-connection"></a>サイト間接続がアクティブなサイトにあるとき、ポイント対サイトを利用して Azure ゲートウェイに接続できますか。
+
+はい。ただし、ポイント対サイト クライアントのパブリック IP アドレスと、サイト間 VPN デバイスで使用されるパブリック IP アドレスが異なる必要があります。同じ場合、ポイント対サイト接続は機能しません。 IKEv2 によるポイント対サイト接続は、同じ Azure VPN ゲートウェイでサイト間 VPN 接続が構成されている同じパブリック IP アドレスから開始できません。 
 
 ## <a name="point-to-site---certificate-authentication"></a><a name="P2S"></a>ポイント対サイト - 証明書認証
 

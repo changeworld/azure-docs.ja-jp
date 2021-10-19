@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: fd50253b5fc77ec1042aada9351e85ee64035ec2
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 8a64c0e4a2c6ee080288bd0a700defc4adf598d2
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124740290"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129708595"
 ---
 # <a name="set-up-a-resource-owner-password-credentials-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でリソース所有者パスワード資格情報フローを設定する
 
@@ -54,15 +54,18 @@ ROPC フローを使用する場合は、次の点を考慮してください。
 
 ##  <a name="create-a-resource-owner-user-flow"></a>リソース所有者のユーザー フローを作成する
 
-1. Azure AD B2C テナントの全体管理者として、Azure portal にサインインします。
-2. Azure AD B2C テナントに切り替えるには、ポータルの右上隅で B2C ディレクトリを選択します。
-3. **[ユーザー フロー]** を選択し、 **[新しいユーザー フロー]** を選択します。
-4. **[リソース所有者のパスワード資格情報 (ROPC) を使用してサインインする]** を選択します。
-5. **[バージョン]** で **[プレビュー]** が選択されていることを確認してから、 **[作成]** を選択します。
-7. *ROPC_Auth* など、ユーザー フローの名前を入力します。
-8. **[アプリケーション要求]** の **[さらに表示する]** をクリックします。
-9. [表示名]、[メール アドレス]、[ID プロバイダー] など、アプリケーションに必要なアプリケーション要求を選択します。
-10. **[OK]** を選択し、 **[作成]** を選択します。
+1. ご利用の Azure AD B2C テナントの [グローバル管理者](https://portal.azure.com)として **Azure portal** にサインインします。
+2. ご利用の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。
+    1. ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+    1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページの **[ディレクトリ名]** の一覧で自分の Azure AD B2C ディレクトリを見つけて、 **[切り替え]** を選択します。
+1. Azure portal で、 **[Azure AD B2C]** を検索して選択します。
+1. **[ユーザー フロー]** を選択し、 **[新しいユーザー フロー]** を選択します。
+1. **[リソース所有者のパスワード資格情報 (ROPC) を使用してサインインする]** を選択します。
+1. **[バージョン]** で **[プレビュー]** が選択されていることを確認してから、 **[作成]** を選択します。
+1. *ROPC_Auth* など、ユーザー フローの名前を入力します。
+1. **[アプリケーション要求]** の **[さらに表示する]** をクリックします。
+1. [表示名]、[メール アドレス]、[ID プロバイダー] など、アプリケーションに必要なアプリケーション要求を選択します。
+1. **[OK]** を選択し、 **[作成]** を選択します。
 
 ::: zone-end
 

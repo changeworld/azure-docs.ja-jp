@@ -5,12 +5,12 @@ ms.assetid: 70fb0e6e-8727-4cca-ba82-98a4d21586ff
 ms.topic: article
 ms.date: 11/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: c15c4e2f269791dfce80d89edf22d5041be636b9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 03dd990fdc6d5e2d274a0ea858d1d91feb5a0b07
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121734474"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129659889"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Azure App Service のカスタム ドメイン名を購入する
 
@@ -97,6 +97,11 @@ App Service ドメインの料金については、[App Service の価格に関�
     ![App Service ドメインが作成されました。 リソースに移動](./media/app-service-web-tutorial-custom-domain/deployment-complete.png)
 
 これで、このカスタム ドメインに App Service アプリを割り当てる準備は完了です。
+
+> [!NOTE]
+> サブスクリプションの種類にもよりますが、App Service ドメインの作成前に、十分な支払履歴が必要になることがあります。 
+> 
+> 支払が完了してもこのエラーが発生する場合、サポートにご連絡いただき、支払証明を提示してください。
 
 ## <a name="prepare-the-app"></a>アプリの準備
 

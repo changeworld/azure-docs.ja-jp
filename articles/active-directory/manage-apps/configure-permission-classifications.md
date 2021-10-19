@@ -1,5 +1,6 @@
 ---
-title: Azure AD を使用してアクセス許可の分類を構成する
+title: アクセス許可の分類を構成する
+titleSuffix: Azure AD
 description: 委任されたアクセス許可の分類を管理する方法について説明します。
 services: active-directory
 author: davidmu1
@@ -12,14 +13,14 @@ ms.date: 08/31/2021
 ms.author: davidmu
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 1824eb31b17ba1a46bd5514797e11a502ac4665a
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 8a2bfb1e76a323ab3fb9d4daa3bbb3e6ba2408ab
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124810054"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129619787"
 ---
-# <a name="configure-permission-classifications"></a>アクセス許可の分類を構成する
+# <a name="configure-permission-classifications-with-azure-active-directory"></a>Azure Active Directory でアクセス許可分類を構成する
 
 アクセス許可の分類を使用すると、組織のポリシーとリスク評価に応じて、さまざまなアクセス許可の影響を特定できます。 たとえば、同意ポリシーでアクセス許可の分類を使用して、ユーザーが同意を許可された一連のアクセス許可を識別できます。
 

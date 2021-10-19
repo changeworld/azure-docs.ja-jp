@@ -6,14 +6,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 08/19/2021
+ms.date: 10/07/2021
 ms.author: banders
-ms.openlocfilehash: 9b586d453f9ac49dd7bd2894c0003fef521167da
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: 982bb3719de66d880f635dbb7c95e9ae2c4590c2
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122514947"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129711164"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>Microsoft 顧客契約の請求先アカウントの設定
 
@@ -27,7 +27,7 @@ ms.locfileid: "122514947"
 請求先アカウント設定を完了するには、Azure サブスクリプションの請求先を Enterprise Agreement 加入契約から新しいアカウントに切り替える必要があります。 セットアップは、サブスクリプションで実行されている Azure サービスに影響しません。 ただし、サブスクリプションに対する課金を管理する方法は変更されます。
 
 - [EA ポータル](https://ea.azure.com)の代わりに、[Azure portal](https://portal.azure.com) 上で Azure サービスと課金を管理します。
-- 料金に対して月単位のデジタル請求書を受け取ります。 [Azure Cost Management + Billing (Azure Cost Management + 請求)] ページで、請求書を確認して分析します。
+- 料金に対して月単位のデジタル請求書を受け取ります。 [Cost Management + Billing] ページで、請求書を確認して分析します。
 - Enterprise Agreement 加入契約での部署とアカウントの代わりに、新しいアカウントの課金の体系とスコープを使用して課金を管理および整理します。
 
 セットアップを開始する前に、次の操作を行うことをお勧めします。
@@ -331,7 +331,5 @@ Enterprise Agreement 加入契約での Azure の予約は、特典や条件の�
 ## <a name="next-steps"></a>次のステップ
 
 - [新しい請求先アカウントを開始する](../understand/mca-overview.md)
-
 - [Microsoft 顧客契約用の課金アカウントでの Enterprise Agreement タスクを実行する](mca-enterprise-operations.md)
-
 - [請求先アカウントへのアクセスを管理する](understand-mca-roles.md)

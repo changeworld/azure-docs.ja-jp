@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: 独立した Azure Virtual Network (VNet) を使用して、Azure Machine Learning ワークスペース リソースとコンピューティング環境を保護します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: enterprise-readiness
 ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
-ms.date: 09/24/2021
+ms.date: 09/29/2021
 ms.topic: how-to
 ms.custom: devx-track-python, references_regions, contperf-fy21q1,contperf-fy21q4,FY21Q4-aml-seo-hack, security
-ms.openlocfilehash: 1844d9a84714231aac7cb399239c31a6af62661c
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: c478744bc960a90d8d84d3e51bd1cd9d8bb3719e
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129093518"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129657875"
 ---
 <!-- # Virtual network isolation and privacy overview -->
 # <a name="secure-azure-machine-learning-workspace-resources-using-virtual-networks-vnets"></a>仮想ネットワーク (VNet) を使用して Azure Machine Learning ワークスペース リソースを保護する
@@ -78,7 +78,7 @@ ms.locfileid: "129093518"
     | サービス | エンドポイント情報 | 信頼できる情報を許可する |
     | ----- | ----- | ----- |
     | __Azure Key Vault__| [サービス エンドポイント](../key-vault/general/overview-vnet-service-endpoints.md)</br>[プライベート エンドポイント](../key-vault/general/private-link-service.md) | [信頼された Microsoft サービスを許可して、このファイアウォールをバイパスする](how-to-secure-workspace-vnet.md#secure-azure-key-vault) |
-    | __Azure Storage アカウント__ | [サービスとプライベート エンドポイント](how-to-secure-workspace-vnet.md?tabs=se#secure-azure-storage-accounts)</br>[プライベート エンドポイント](how-to-secure-workspace-vnet.md?tabs=pe#secure-azure-storage-accounts) | [信頼された Azure サービスにアクセスを許可する](../storage/common/storage-network-security.md#grant-access-to-trusted-azure-services) |
+    | __Azure Storage アカウント__ | [サービスとプライベート エンドポイント](how-to-secure-workspace-vnet.md?tabs=se#secure-azure-storage-accounts)</br>[プライベート エンドポイント](how-to-secure-workspace-vnet.md?tabs=pe#secure-azure-storage-accounts) | [Azure リソース インスタンスからのアクセスを許可する](../storage/common/storage-network-security.md#grant-access-from-azure-resource-instances-preview)</br>**or**</br>[信頼された Azure サービスにアクセスを許可する](../storage/common/storage-network-security.md#grant-access-to-trusted-azure-services) |
     | __Azure Container Registry__ | [プライベート エンドポイント](../container-registry/container-registry-private-link.md) | [信頼されたサービスを許可する](../container-registry/allow-access-trusted-services.md) |
 
 
@@ -168,7 +168,7 @@ ms.locfileid: "129093518"
 
 ### <a name="limitations"></a>制限事項
 
-[ML によるデータのラベル付け](how-to-create-labeling-projects.md#use-ml-assisted-data-labeling)は、仮想ネットワークの背後にある既定のストレージ アカウントをサポートしていません。 代わりに、既定以外のストレージ アカウントを使用して、ML によるデータのラベル付けを行います。 
+[ML によるデータのラベル付け](how-to-create-image-labeling-projects.md#use-ml-assisted-data-labeling)は、仮想ネットワークの背後にある既定のストレージ アカウントをサポートしていません。 代わりに、既定以外のストレージ アカウントを使用して、ML によるデータのラベル付けを行います。 
 
 > [!TIP]
 > 既定のストレージ アカウントでない限り、データのラベル付けに使用されるアカウントは、仮想ネットワークの背後で保護できます。 

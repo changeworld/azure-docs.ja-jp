@@ -7,12 +7,12 @@ ms.date: 01/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0461fffa62f46491d5bbb3c2c9f66670b3bd9cba
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 601015658b2d2de6c855ac285b4dfbec6cb15ca8
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121732878"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129670235"
 ---
 # <a name="understand-iot-edge-automatic-deployments-for-single-devices-or-at-scale"></a>1 台のデバイスまたは多数のデバイスを対象とした IoT Edge 自動デプロイについて
 
@@ -79,6 +79,7 @@ IoT Edge の自動デプロイでは、実行する IoT Edge モジュール イ
 * ターゲット条件のどの部分でも、二重引用符を使うことはできません。 単一引用符を使ってください。
 * 単一引用符は、ターゲット条件の値を表します。 そのため、デバイス名に単一引用符が含まれる場合は、別の単一引用符でエスケープする必要があります。 たとえば、`operator'sDevice` というデバイスをターゲットとするには、`deviceId='operator''sDevice'` と書き込みます。
 * ターゲット条件の値 `-:.+%_#*?!(),=@;$` には、数字、文字、および 次の文字を使用することができます。
+* ターゲット条件キーでは、次の文字は使用できません: `/;`。
 
 ### <a name="priority"></a>Priority
 

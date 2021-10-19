@@ -6,19 +6,19 @@ ms.suite: integration
 ms.reviewer: estfan, ladolan, reylons, archidda, sopai, azla
 ms.topic: how-to
 ms.date: 06/03/2021
-ms.openlocfilehash: a3ccea075dd4ce4bce06b31fdbe6dc2a55812ebc
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 17c9eb020d62207910008fb032872bd609df553f
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111754081"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129712302"
 ---
 # <a name="create-and-deploy-single-tenant-based-logic-app-workflows-with-azure-arc-enabled-logic-apps-preview"></a>Azure Arc 対応 Logic Apps を使用してシングルテナント ベースのロジック アプリ ワークフローを作成してデプロイする (プレビュー)
 
 > [!NOTE]
 > この機能はプレビュー段階にあり、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」が適用されます。
 
-Azure Arc 対応 Logic Apps と Azure portal を使用すると、運用および管理する Kubernetes インフラストラクチャにシングルテナント ベースのロジック アプリ ワークフローを作成してデプロイできます。 ロジック アプリは、Azure App Service プラットフォーム拡張機能バンドルをインストールして有効にした Azure Arc 対応 Kubernetes クラスターにマップされた "*カスタムの場所*" で実行されます。
+Azure Arc 対応 Logic Apps と Azure portal を使用すると、運用および管理する Kubernetes インフラストラクチャに対して、シングルテナント ベースのロジック アプリ ワークフローを作成してデプロイできます。 ロジック アプリは、Azure App Service プラットフォーム拡張機能バンドルをインストールして有効にした Azure Arc 対応 Kubernetes クラスターにマップされた "*カスタムの場所*" で実行されます。
 
 たとえば、このクラスターは、Azure Kubernetes Service、ベアメタル Kubernetes、または別のセットアップにすることができます。 拡張機能バンドルを使用すると、Kubernetes クラスターで Azure Logic Apps、Azure App Service、Azure Functions などのプラットフォーム サービスを実行できます。 
 
@@ -183,7 +183,7 @@ az logicapp create --name MyLogicAppName
    --storage-account MyStorageAccount --custom-location MyCustomLocation
 ```
 
-プライベート Azure Container Registry イメージを使用して Azure Arc 対応ロジック アプリを作成するには、次の必須パラメーターを指定して `az logicapp create` コマンドを実行します。
+プライベート Azure Container Registry イメージを使用して Azure Arc 対応ロジック アプリを作成するには、次の必須パラメーターを指定してコマンド `az logicapp create` を実行します。
 
 ```azurecli
 az logicapp create --name MyLogicAppName 
@@ -298,7 +298,7 @@ Visual Studio Code で、ロジック アプリ ワークフローをエンド�
 
 1. Azure portal で [**ロジック アプリ (Standard)** リソースを作成します](create-single-tenant-workflows-azure-portal.md)。 ただし、 **[発行]** の宛先には **[Docker コンテナー]** を選択します。 **[リージョン]** には、アプリの場所として先ほど作成したカスタムの場所を選択します。
 
-   既定では、**Logic App (Standard)** リソースはシングルテナントの Azure Logic Apps で実行されます。 ただし、Azure Arc 対応 Logic Apps の場合、ロジック アプリ リソースは Kubernetes 環境用に作成したカスタムの場所で実行されます。 また、App Service プランは自動的に作成されるため、作成する必要はありません。
+   既定では、**Logic App (Standard)** リソースはシングルテナントの Azure Logic Apps で実行されます。 しかし、Azure Arc 対応 Logic Apps の場合、ロジック アプリ リソースは Kubernetes 環境用に作成したカスタムの場所で実行されます。 また、App Service プランは自動的に作成されるため、作成する必要はありません。
 
    > [!IMPORTANT]
    > ロジック アプリのリソースの場所、カスタムの場所、Kubernetes 環境はすべて同じである必要があります。
@@ -414,7 +414,7 @@ Azure Arc 対応ロジック アプリをビルドしてデプロイするため
 
 ### <a name="standard-deployment-non-container"></a>標準のデプロイ (コンテナー以外)
 
-ロジック アプリのデプロイに zip デプロイを使用する場合は、コンテナー イメージをホストするために Docker レジストリを設定する必要はありません。 Kubernetes のロジック アプリは、厳密にはコンテナーで実行されますが、これらのコンテナーは Azure Arc 対応 Logic Apps によって管理されます。 このシナリオの場合は、インフラストラクチャを設定するときに次のタスクを実行します。
+ロジック アプリのデプロイに zip デプロイを使用する場合は、コンテナー イメージをホストするために Docker レジストリを設定する必要はありません。 Kubernetes のロジック アプリは、厳密にはコンテナーで実行されますが、これらのコンテナーは Azure Arc 対応 Logic Apps によって自動的に管理されます。 このシナリオの場合は、インフラストラクチャを設定するときに次のタスクを実行します。
 
 - Kubernetes でロジック アプリを作成しているリソース プロバイダーに通知します。
 - デプロイに App Service プランを含めます。 詳細については、「[デプロイに App Service プランを含める](#include-app-service-plan)」を参照してください。
@@ -640,7 +640,7 @@ Azure Arc 対応 Logic Apps では、バックエンド ストレージ キュ�
 
 ### <a name="prerequisites-to-change-scaling"></a>スケーリングを変更するための前提条件
 
-Arc 対応 Kubernetes クラスターで、以前に作成した App Service バンドル拡張機能の `keda.enabled` プロパティを `true` に設定する必要があります。 詳細については、[最重要の前提条件](#prerequisites)を確認してください。
+Azure Arc 対応 Kubernetes クラスターで、以前に作成した App Service バンドル拡張機能の `keda.enabled` プロパティを `true` に設定する必要があります。 詳細については、[最重要の前提条件](#prerequisites)を確認してください。
 
 ### <a name="change-scaling-threshold"></a>スケーリングしきい値を変更する
 

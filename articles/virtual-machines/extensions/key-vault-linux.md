@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a55a49232e18c61f1c5b1915c06cd61e1f13ab0b
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 4fe44c7880420d7f2bc89f479e152a23f22909e8
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128674435"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129670216"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>Linux 用の Key Vault 仮想マシン拡張機能
 
@@ -33,6 +33,9 @@ Key Vault VM 拡張機能では、次の Linux ディストリビューション
 > [!NOTE]
 > 拡張セキュリティ機能を利用するには、Ubuntu-1604 および Debian-9 システムをアップグレードする準備をしてください。これらのバージョンは、指定されたサポート期間の終わりに近づいています。
 > 
+
+> [!NOTE]
+> Key Vault VM 拡張機能は、既定の場所または VM 拡張機能の設定の "certStoreLocation" プロパティによって指定される場所に証明書をダウンロードします。 KeyValut VM 拡張機能によって、フォルダーのアクセス許可が 700 (drwx------) に更新され、読み取り、書き込み、および実行のアクセス許可がフォルダーの所有者にのみ付与されます
 
 ### <a name="supported-certificate-content-types"></a>サポートされている証明書の内容の種類
 

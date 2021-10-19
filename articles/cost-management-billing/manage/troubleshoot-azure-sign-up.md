@@ -8,14 +8,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: troubleshooting
-ms.date: 05/13/2021
+ms.date: 10/07/2021
 ms.author: v-miegge
-ms.openlocfilehash: 6e9c3d09c5dbf9ddae779f585425f8317b41ab46
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 0000d49d9e434a4fd07f4c3a05be60f20ebca3be
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110467517"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129711016"
 ---
 # <a name="troubleshoot-issues-when-you-sign-up-for-a-new-account-in-azure-portal"></a>Azure portal で新しいアカウントをサインアップするときの問題をトラブルシューティングする
 
@@ -176,6 +176,6 @@ Azure の請求とサブスクリプションに関するその他のトラブ�
 
 ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)してください。
 
-## <a name="find-out-more-about-azure-cost-management"></a>Azure Cost Management の詳細を探す
+## <a name="next-steps"></a>次のステップ
 
-- [Azure Cost Management および Billing のドキュメント](../index.yml)
+- [Cost Management と Billing のドキュメント](../index.yml)を参照してください

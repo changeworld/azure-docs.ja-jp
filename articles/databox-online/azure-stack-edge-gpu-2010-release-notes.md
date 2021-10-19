@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/05/2021
 ms.author: alkohli
-ms.openlocfilehash: 651b67b95a127aeafd8e9f7efbbb167680cc372e
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 6f08e9c33a0e5b97e27993519b1d0f471622cb9b
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110460825"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129705505"
 ---
 # <a name="azure-stack-edge-pro-with-gpu-general-availability-ga-release-notes"></a>GPU 搭載 Azure Stack Edge Pro の一般提供 (GA) リリースノート
 
@@ -30,7 +30,7 @@ ms.locfileid: "110460825"
 Azure Stack Edge 2010 リリースでは、次の新機能が使用できます。 
 
 - **ストレージ クラス** - このリリースでは、ストレージを動的にプロビジョニングできるストレージ クラスが追加されました。 詳細については、「[Azure Stack Edge Pro GPU デバイス上の Kubernetes ストレージ管理](azure-stack-edge-gpu-kubernetes-storage.md#dynamicprovisioning)」を参照してください。 
-- **Kubernetes ダッシュボードとメトリック サーバー** - このリリースでは、Kubernetes ダッシュボードがメトリック サーバー アドオンと共に追加されました。 ダッシュボードを使用して Azure Stack Edge Pro デバイス上で実行されているアプリケーションの概要を取得すること、Kubernetes クラスター リソースの状態を表示すること、デバイスで発生したエラーを確認することができます。 メトリック サーバーによって、デバイス上の Kubernetes リソース全体の CPU とメモリの使用量が集計されます。 詳細については、「[Kubernetes ダッシュボードを使用して Azure Stack Edge Pro GPU デバイスを監視する](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md)」を参照してください。
+- **Kubernetes ダッシュボードとメトリック サーバー** - このリリースでは、Kubernetes ダッシュボードがメトリック サーバー アドオンと共に追加されました。 ダッシュボードを使用して Azure Stack Edge Pro デバイス上で実行されているアプリケーションの概要を取得すること、Kubernetes クラスター リソースの状態を表示すること、デバイスで発生したエラーを確認することができます。 メトリック サーバーによって、デバイス上の Kubernetes リソース全体の CPU とメモリの使用量が集計されます。 詳細については、[Kubernetes ダッシュボードを使用した Azure Stack Edge Pro GPU デバイスの監視](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md)に関するページを参照してください。
 - **Azure Stack Edge Pro 上の Azure Arc 対応 Kubernetes** - このリリースから、Azure Arc 対応 Kubernetes を介して Azure Stack Edge Pro デバイス上にアプリケーション ワークロードを展開できるようになりました。 Azure Arc は、Kubernetes クラスターにアプリケーションをデプロイできるようにするためのハイブリッド管理ツールです。 詳細については、[Azure Arc を介して Azure Stack Edge Pro デバイスにワークロードをデプロイする](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md)方法に関するページを参照してください。  
 
 ## <a name="known-issues"></a>既知の問題 

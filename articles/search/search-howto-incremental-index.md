@@ -6,15 +6,15 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/06/2020
-ms.openlocfilehash: 4165768837f590690a39226b983b4d32361957e3
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.date: 10/06/2021
+ms.openlocfilehash: 5ea2c908cce37e19023e27b0e3e4cc76f778b7f0
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114730561"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129620167"
 ---
-# <a name="how-to-configure-caching-for-incremental-enrichment-in-azure-cognitive-search"></a>Azure Cognitive Search でインクリメンタル エンリッチメントのキャッシュを構成する方法
+# <a name="configure-caching-for-incremental-enrichment-in-azure-cognitive-search"></a>Azure Cognitive Search でインクリメンタル エンリッチメントのキャッシュを構成する
 
 > [!IMPORTANT] 
 > この機能はパブリック プレビュー段階にあり、[追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)の下で提供されます。 [プレビューの REST API](/rest/api/searchservice/index-preview) では、この機能がサポートされています
@@ -29,12 +29,9 @@ ms.locfileid: "114730561"
 
 既にスキルセットがある既存のインデクサーがある場合は、このセクションの手順に従ってキャッシュを追加します。 1 回限りの操作では、増分処理が有効になる前に、インデクサーを完全にリセットして再実行する必要があります。
 
-> [!TIP]
-> 概念実証として、この[ポータルのクイックスタート](cognitive-search-quickstart-blob.md)を実行して必要なオブジェクトを作成し、Postman またはポータルを使用して更新を行うことができます。 課金対象の Cognitive Services リソースをアタッチすることもできます。 インデクサーを複数回実行すると、すべての手順を完了する前に、1 日あたりの割り当てが解放されます。
-
 ### <a name="step-1-get-the-indexer-definition"></a>手順 1:インデクサーの定義を取得する
 
-コンポーネント (データソース、スキルセット、インデックス) を含む既存の有効なインデクサーを使用して開始します。 インデクサーは実行可能である必要があります。 
+コンポーネント (データソース、スキルセット、インデックス) を含む既存の有効なインデクサーを使用して開始します。 インデクサーは実行可能である必要があります。
 
 API クライアントを使用して、[GET インデクサー要求](/rest/api/searchservice/get-indexer)を作成してインデクサーの現在の構成を取得します。 プレビュー API バージョンを使用してインデクサーを取得すると、null に設定された `cache` プロパティが定義に追加されます。
 

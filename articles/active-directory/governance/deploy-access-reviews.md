@@ -16,12 +16,12 @@ ms.date: 04/16/2021
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f5974f8d3f94d16a27c77c81837d7c430ee48b26
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 141322495fe31283b90f34bbf77a7d1ebb86d00d
+ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124817916"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129730472"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>Azure Active Directory アクセス レビューのデプロイの計画
 
@@ -191,10 +191,10 @@ ms.locfileid: "124817916"
 
 | リソースの種類| アクセス レビューの作成と管理 (作成者)| アクセス レビュー結果の読み取り |
 | - | - | -|
-| グループまたはアプリケーション| グローバル管理者 <p>ユーザー管理者| 作成者とセキュリティ管理者 |
-| Azure AD の特権ロール| グローバル管理者 <p>特権ロール管理者| 作成者 <p>セキュリティ閲覧者<p>セキュリティ管理者 |
-| Azure の特権ロール (リソース)| グローバル管理者<p>ユーザー管理者<p>リソースの所有者| 作成者 |
-| アクセス パッケージ| グローバル管理者<p>アクセス パッケージの作成者| 全体管理者のみ |
+| グループまたはアプリケーション| グローバル管理者 <p>ユーザー管理者<p>Identity Governance 管理者<p>特権ロール管理者 (Azure AD ロール割り当て可能グループの場合はレビューのみ)<p>グループ所有者 ([管理者によって有効にされている場合]( create-access-review.md#allow--group-owners-to-create-and-manage-access-reviews-preview))| グローバル管理者<p>グローバル閲覧者<p>ユーザー管理者<p>Identity Governance 管理者<p>特権ロール管理者<p>セキュリティ閲覧者<p>グループ所有者 ([管理者によって有効にされている場合]( create-access-review.md#allow--group-owners-to-create-and-manage-access-reviews-preview)) |
+|Azure AD ロール| グローバル管理者 <p>特権ロール管理者|  グローバル管理者<p>グローバル閲覧者<p>ユーザー管理者<p>特権ロール管理者<p> <p>セキュリティ閲覧者 |
+| Azure リソース ロール| グローバル管理者<p>リソースの所有者| グローバル管理者<p>グローバル閲覧者<p>ユーザー管理者<p>特権ロール管理者<p> <p>セキュリティ閲覧者  |
+| アクセス パッケージ| グローバル管理者<p>ユーザー管理者<p>Identity Governance 管理者| グローバル管理者<p>グローバル閲覧者<p>ユーザー管理者<p>Identity Governance 管理者<p> <p>セキュリティ閲覧者  |
 
 詳細については、「[Azure Active Directory での管理者ロールのアクセス許可](../roles/permissions-reference.md)」を参照してください。
 

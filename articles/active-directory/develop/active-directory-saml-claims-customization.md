@@ -13,12 +13,12 @@ ms.date: 07/20/2021
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: f7d3b52f5f2cac470c8833a22a67f2324f7be705
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 77d564cb54910391b0a0eb9f2492bfa74a044512
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123033863"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129619030"
 ---
 # <a name="customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>エンタープライズ アプリケーションの SAML トークンで発行された要求のカスタマイズ
 
@@ -58,8 +58,9 @@ SAML 要求に NameIDPolicy 要素が含まれていない場合、指定した�
 |---------------|-------------|
 | **[Default]** | 既定のソース形式が使用されます。 |
 | **永続的** | NameID 形式として Persistent が使用されます。 |
-| **EmailAddress** | NameID 形式として EmailAddress が使用されます。 |
+| **電子メール アドレス** | NameID 形式として EmailAddress が使用されます。 |
 | **未指定** | NameID 形式として Unspecified が使用されます。 |
+|**Windows ドメインの修飾名**| Microsoft ID プラットフォームでは WindowsDomainQualifiedName 形式が使用されます。|
 
 一時的な NameID もサポートされていますが、ドロップダウンでは選択できず、また、Azure 側で構成できません。 NameIDPolicy 属性について詳しくは、「[シングル サインオンの SAML プロトコル](single-sign-on-saml-protocol.md)」をご覧ください。
 

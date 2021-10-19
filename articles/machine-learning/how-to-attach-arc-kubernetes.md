@@ -8,12 +8,12 @@ ms.service: machine-learning
 ms.subservice: mlops
 ms.date: 06/18/2021
 ms.topic: how-to
-ms.openlocfilehash: 9ce41f22fd90acd8ef7e41ec07bce1d7758ab452
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: c3aea87e32aef24bfc17637720e81d30da0d30eb
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129427706"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129713259"
 ---
 # <a name="configure-azure-arc-enabled-machine-learning-preview"></a>Azure Arc 対応機械学習を構成する (プレビュー)
 

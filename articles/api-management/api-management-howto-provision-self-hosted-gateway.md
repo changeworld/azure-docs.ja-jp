@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: danlep
-ms.openlocfilehash: 93e7feb2d1b91cb8d5fa58d52244c901e1eeaea2
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 3bc2543d8051a99c5b770204d64db043bbf7dfad
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128598751"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129708565"
 ---
 # <a name="provision-a-self-hosted-gateway-in-azure-api-management"></a>Azure API Management でセルフホステッド ゲートウェイをプロビジョニングする
 

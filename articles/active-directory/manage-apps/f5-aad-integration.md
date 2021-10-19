@@ -1,5 +1,6 @@
 ---
-title: F5 を使用した Azure AD の安全なハイブリッド アクセス | Microsoft Docs
+title: F5 を使用した安全なハイブリッド アクセス
+titleSuffix: Azure AD
 description: F5 BIG-IP Access Policy Manager と Azure Active Directory の統合による、安全なハイブリッド アクセス
 services: active-directory
 author: davidmu1
@@ -12,14 +13,14 @@ ms.date: 11/12/2020
 ms.author: davidmu
 ms.collection: M365-identity-device-management
 ms.reviewer: miccohen
-ms.openlocfilehash: a5066eece8950d4e9dffabedb2e0cca4c527353f
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: e5f17826d4a578f0c82a5e1e58abf54d4abac252
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124823001"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129620661"
 ---
-# <a name="f5-big-ip-access-policy-manager-and-azure-active-directory-integration-for-secure-hybrid-access"></a>F5 BIG-IP Access Policy Manager と Azure Active Directory の統合による、安全なハイブリッド アクセス
+# <a name="integrate-f5-big-ip-with-azure-active-directory"></a>F5 BIG-IP と Azure Active Directory の統合
 
 モビリティが普及し、脅威が進化するにつれ、リソースへのアクセスとガバナンスに対する監視がさらに強化される中、すべての最新化プログラムにおいて、[ゼロ トラスト](https://www.microsoft.com/security/blog/2020/04/02/announcing-microsoft-zero-trust-assessment-tool/)が何よりも重要な要素になっています。
 Microsoft と F5 は、このデジタル変革は、通常、企業が複数年にわたって取り組むものであり、最新化されるまでに、重要なリソースが公開される可能性があると考えています。 F5 BIG-IP と Azure Active Directory Secure Hybrid Access (SHA) は、オンプレミス アプリケーションへのリモート アクセスを向上させるだけでなく、これらの脆弱性を持つサービスの全体的なセキュリティを強化することを目的として開発されました。

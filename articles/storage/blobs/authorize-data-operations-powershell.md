@@ -10,12 +10,12 @@ ms.date: 02/10/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: blobs
-ms.openlocfilehash: dae63f442c2e2df068cc3f17bb5355abd4b7de77
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: e83be2c3e6f98d000dfe9623cb90478ec4452053
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128615626"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129859097"
 ---
 # <a name="run-powershell-commands-with-azure-ad-credentials-to-access-blob-data"></a>Azure AD 資格情報を使用して PowerShell コマンドを実行して BLOB データにアクセスする
 
@@ -86,4 +86,4 @@ Azure PowerShell を使用してサインインし Azure Storage に対する後
 ## <a name="next-steps"></a>次のステップ
 
 - [BLOB データにアクセスするための Azure ロールを割り当てる](assign-azure-role-data-access.md)
-- [Azure リソースに対するマネージド ID を使用して BLOB およびキュー データへのアクセスを認証する](../common/storage-auth-aad-msi.md)
+- [Azure リソースのマネージド ID を使用して BLOB データへのアクセスを承認する](authorize-managed-identity.md)

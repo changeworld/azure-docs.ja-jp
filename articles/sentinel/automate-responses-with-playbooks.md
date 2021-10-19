@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/29/2021
+ms.date: 10/11/2021
 ms.author: yelevin
-ms.openlocfilehash: bddd27b29a1546f0c985f7a5b3aa15027be75d46
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d6afd8e1d4c70d818257007993aedfe3a48ce4f4
+ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121726100"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129752115"
 ---
 # <a name="automate-threat-response-with-playbooks-in-azure-sentinel"></a>Azure Sentinel のプレイブックを使用して脅威への対応を自動化する
 
@@ -36,7 +36,29 @@ ms.locfileid: "121726100"
 
 たとえば、アカウントとマシンが侵害された場合、SOC チームにインシデントが通知されるまで、プレイブックでマシンをネットワークから分離し、アカウントをブロックすることができます。
 
-プレイブックはサブスクリプション レベルで作成および適用されますが、**プレイブック** タブ (新しい **オートメーション** ブレードにある) には、選択したすべてのサブスクリプションで利用可能なすべてのプレイブックが表示されます。
+プレイブックはそれが属しているサブスクリプション内で使用できますが、 **[プレイブック]** タブ ( **[オートメーション]** ブレードにある) には、選択したすべてのサブスクリプションで利用可能なすべてのプレイブックが表示されます。
+
+### <a name="playbook-templates"></a>プレイブック テンプレート
+
+> [!IMPORTANT]
+>
+> **プレイブック テンプレート** は、現在、**プレビュー段階** にあります。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+
+プレイブック テンプレートは、事前に構築されてテストされた、すぐに使用できるワークフローであり、ニーズに合わせてカスタマイズできます。 テンプレートは、プレイブックをゼロから開発するときのベスト プラクティスのリファレンスとして、または新しい自動化シナリオのためのインスピレーションを得るためにも、役に立つ場合があります。
+
+プレイブック テンプレートは、それからプレイブック (テンプレートの編集可能なコピー) を作成するまで、アクティブなプレイブック自体ではありません。
+
+プレイブック テンプレートは、次のソースから取得できます。
+
+- **[プレイブック テンプレート]** タブ ( **[オートメーション]** の下) には、Azure Sentinel コミュニティによって提供された主要なシナリオが表示されます。 同じテンプレートから複数のアクティブなプレイブックを作成できます。
+
+    新しいバージョンのテンプレートが発行されると、そのテンプレートから作成されたアクティブなプレイブックに ( **[プレイブック]** タブ)、更新プログラムが利用できるという通知のラベルが付きます。
+
+- プレイブック テンプレートは、特定の製品のコンテキストで [**Azure Sentinel ソリューション**](sentinel-solutions.md)の一部として入手することもできます。 ソリューションをデプロイすると、アクティブなプレイブックが生成されます。
+
+- [**Azure Sentinel GitHub リポジトリ**](https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks)には、多くのプレイブック テンプレートが含まれています。 **[Azure に配置する]** ボタンを選択することで、Azure サブスクリプションにデプロイできます。 
+
+技術的には、プレイブック テンプレートは、いくつかのリソース (Azure Logic Apps ワークフローや、関連する各接続の API 接続など) で構成される [ARM テンプレート](../azure-resource-manager/templates/index.yml)です。 
 
 ### <a name="azure-logic-apps-basic-concepts"></a>Azure Logic Apps の基本概念
 
@@ -62,7 +84,7 @@ Azure Logic Apps は、コネクタを使用して他のシステムやサービ
 
     > [!IMPORTANT]
     >
-    > - プレイブックの **インシデント トリガー** 機能は、現在、**プレビュー** 段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+    > プレイブックの **インシデント トリガー** 機能は、現在、**プレビュー** 段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
 - **アクション:** アクションは、トリガー後に発生するすべてのステップです。 それらは並列に、または複合条件のマトリックスに、連続的に配列できます。
 

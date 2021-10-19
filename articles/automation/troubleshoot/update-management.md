@@ -6,12 +6,12 @@ ms.subservice: update-management
 ms.date: 06/10/2021
 ms.topic: troubleshooting
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 735677886493bace8bb831eae1c974bb0483b0c1
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: bf9804b0881e02b1a4f58e5923c33840d06e37e2
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122771837"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129706480"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Update Management に関する問題のトラブルシューティング
 
@@ -78,7 +78,7 @@ Linux マシンの場合、Update Management には、 **[セキュリティ]** 
 
 お使いの Linux マシンに対して保留になっている OS 更新プログラムの評価が終わると、Linux ディストリビューション ベンダーが提供する [Open Vulnerability and Assessment Language](https://oval.mitre.org/) (OVAL) が分類のために Update Management によって使用されます。 セキュリティの問題または脆弱性に対処する更新プログラムについて明記された OVAL ファイルに基づき、Linux 更新プログラムが **[セキュリティ]** か **[その他]** として分類されます。 ただし、更新プログラムが実行されるとき、YUM、APT、ZYPPER などの適切なパッケージ マネージャーを使用し、Linux マシン上で実行され、インストールされます。 Linux ディストリビューションのパッケージ マネージャーには、更新プログラムを分類する別のメカニズムが与えられていることがあります。結果は、Update Management によって OVAL ファイルから取得されるものと異なる場合があります。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決策
 
 Linux マシン、適用できる更新プログラム、ディストリビューションのパッケージ マネージャー別のその分類を手動で確認できます。 お使いのパッケージ マネージャーによって **[セキュリティ]** として分類された更新プログラムを理解するには、次のコマンドを実行します。
 
@@ -340,11 +340,11 @@ Azure portal には、ユーザーが特定のスコープで書き込みアク�
 
 5. マシンがシステム Hybrid Runbook Worker として設定されていない場合は、次のいずれかの方法を使用して有効にする方法を確認してください。
 
-   - 1 台以上の Azure マシンと Azure 以外のマシン (Arc 対応サーバーを含む) に対しては、お使いの [Automation アカウント](../update-management/enable-from-automation-account.md)から。
+   - 1 台以上の Azure マシンと Azure 以外のマシン (Azure Arc 対応サーバーを含む) に対しては、お使いの [Automation アカウント](../update-management/enable-from-automation-account.md)から。
 
-   - **Enable-AutomationSolution** [Runbook](../update-management/enable-from-runbook.md) を使用した Azure VM のオンボードの自動化。
+   - <bpt id="p1">**</bpt>Enable-AutomationSolution<ept id="p1">**</ept> <bpt id="p2">[</bpt>Runbook<ept id="p2">](enable-from-runbook.md)</ept> を使用した Azure VM のオンボードの自動化。
 
-   - [選択した Azure VM](../update-management/enable-from-vm.md) に対しては、Azure portal の **[仮想マシン]** ページから。 このシナリオは、Linux VM 用と Windows VM 用があります。
+   - <bpt id="p1">[</bpt>選択した Azure VM<ept id="p1">](enable-from-vm.md)</ept> に対しては、Azure portal の <bpt id="p2">**</bpt>[仮想マシン]<ept id="p2">**</ept> ページから。 このシナリオは、Linux VM 用と Windows VM 用があります。
 
    - [複数の Azure VM](../update-management/enable-from-portal.md) に対しては、Azure portal の **[仮想マシン]** ページからそれらを選択することで。
 

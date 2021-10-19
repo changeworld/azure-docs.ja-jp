@@ -12,12 +12,12 @@ author: vladai78
 ms.author: vladiv
 ms.reviewer: mathoma, vladiv, sachinp
 ms.date: 09/28/2021
-ms.openlocfilehash: 7fba2ede931375d310b64bf7800b2adf43b2a24e
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 86b823ca368223c2d789ff651fe831b76bbd5c58
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129212781"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129613379"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Azure SQL Managed Instance のリソース制限の概要
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -37,7 +37,7 @@ SQL Managed Instance には、基になるインフラストラクチャとア�
 | **仮想コアの数** | 8、16、24 の仮想コア | 4、8、16、24、32、40、64、80 の仮想コア |
 | **最大メモリ (メモリ/コア比)** | 仮想コアあたり 7 GB<br/>メモリ量を増やすには、仮想コアを追加します。 | 仮想コアあたり 5.1 GB<br/>メモリ量を増やすには、仮想コアを追加します。 |
 | **最大インメモリ OLTP メモリ** | インスタンスの制限:仮想コアあたり 1 から 1.5 GB| インスタンスの制限:仮想コアあたり 0.8 から 1.65 GB |
-| **インスタンスの予約済み最大ストレージ** |  汎用:8 TB<br/>Business Critical:1 TB (テラバイト) | 汎用:8 TB<br/> Business Critical: コアの数に応じて 1 TB、2 TB、または 4 TB |
+| **インスタンスの予約済み最大ストレージ** |  汎用:8 TB <br/>Business Critical:1 TB (テラバイト) | 汎用: 8 TB、コアの数に応じて 16 TB (プレビュー)<br/> Business Critical: コアの数に応じて 1 TB、2 TB、または 4 TB |
 
 > [!IMPORTANT]
 > - Gen4 ハードウェアは段階的に廃止中であり、新しいデプロイでは利用できなくなりました。 SQL Managed Instance の新しいインスタンスはすべて、Gen5 ハードウェアにデプロイする必要があります。
@@ -69,12 +69,12 @@ SQL Managed Instance には 2 つのサービス レベルがあります。[Gen
 | --- | --- | --- |
 | 仮想コアの数\* | Gen4:8、16、24<br/>Gen5:4、8、16、24、32、40、64、80 | Gen4:8、16、24 <br/> Gen5:4、8、16、24、32、40、64、80 <br/>\*同じ数の仮想コアが読み取り専用クエリに割り当てられます。 |
 | 最大メモリ | Gen4:56 GB - 168 GB (7 GB/仮想コア)<br/>Gen5:20.4 GB から 408 GB (5.1 GB/仮想コア)<br/>メモリ量を増やすには、仮想コアを追加します。 | Gen4:56 GB - 168 GB (7 GB/仮想コア)<br/>Gen5:20.4 GB - 読み取り/書き込みクエリの場合は 408 GB (5.1 GB/仮想コア)<br/>+ 追加の 20.4 GB - 読み取り専用クエリの場合は 408 GB (5.1 GB/仮想コア)。<br/>メモリ量を増やすには、仮想コアを追加します。 |
-| インスタンスの最大ストレージ サイズ (予約済み) | - 4 仮想コアの場合は 2 TB (Gen5 のみ)<br/>- その他のサイズの場合は 8 TB | Gen4:1 TB (テラバイト) <br/> Gen5: <br/>- 4、8、16 仮想コアの場合は 1 TB<br/>- 24 仮想コアの場合は 2 TB<br/>- 32、40、64、80 仮想コアの場合は 4 TB |
-| 最大データベース サイズ | 現在利用可能なインスタンスのサイズまで (仮想コア数に応じて最大 2 TB から 8 TB)。 | 現在利用可能なインスタンスのサイズまで (仮想コア数に応じて最大 1 TB から 4 TB)。 |
+| インスタンスの最大ストレージ サイズ (予約済み) | - 4 仮想コアの場合は 2 TB (Gen5 のみ)<br/>- その他のサイズの場合は 8 TB <br/>- 16 仮想コアの場合は 16 TB (プレビュー) (Gen5 のみ) | Gen4:1 TB (テラバイト) <br/> Gen5: <br/>- 4、8、16 仮想コアの場合は 1 TB<br/>- 24 仮想コアの場合は 2 TB<br/>- 32、40、64、80 仮想コアの場合は 4 TB |
+| 最大データベース サイズ | 現在利用可能なインスタンスのサイズまで (最大 2 TB から 8 TB、仮想コア数に応じて 16 TB (プレビュー))。 | 現在利用可能なインスタンスのサイズまで (仮想コア数に応じて最大 1 TB から 4 TB)。 |
 | 最大 tempDB サイズ | 24 GB/仮想コア (96 から 1,920 GB) と現在利用可能なインスタンスのストレージ サイズに制限されています。<br/>tempdb 領域を増やすには、仮想コアを追加します。<br/> ログ ファイルは 120 GB に制限されています。| 現在利用可能なインスタンスのストレージ サイズまで。 |
 | インスタンスごとの最大データベース数 | インスタンスのストレージ サイズの上限に達していない限り、データベースごとに 100 ユーザー。 | インスタンスのストレージ サイズの上限に達していない限り、データベースごとに 100 ユーザー。 |
 | インスタンスごとの最大データベース ファイル数 | インスタンスのストレージ サイズまたは [Azure Premium ディスクの記憶域割り当ての領域](../database/doc-changes-updates-release-notes.md#exceeding-storage-space-with-small-database-files)の上限に達していない限り、最大で 280 個。 | インスタンスのストレージ サイズの上限に達していない限り、データベースごとに 32,767 ファイル。 |
-| データ ファイルの最大サイズ | 現在利用可能なインスタンスのストレージ サイズ (最大 2 TB から 8 TB) と [Azure Premium ディスクの記憶域割り当ての領域](../database/doc-changes-updates-release-notes.md#exceeding-storage-space-with-small-database-files)に制限されています。 | 現在利用可能なインスタンスのストレージ サイズ (最大 1 TB から 4 TB) に制限されています。 |
+| データ ファイルの最大サイズ | 現在利用可能なインスタンスのストレージ サイズ (最大 2 TB から 8 TB) と [Azure Premium ディスクの記憶域割り当ての領域](../database/doc-changes-updates-release-notes.md#exceeding-storage-space-with-small-database-files)に制限されています。 8 TB を超えるデータベースの場合、少なくとも 2 つのデータ ファイルを使用します。 | 現在利用可能なインスタンスのストレージ サイズ (最大 1 TB から 4 TB) に制限されています。 |
 | 最大ログ ファイル サイズ | 2 TB と現在利用可能なインスタンスのストレージ サイズに制限されています。 | 2 TB と現在利用可能なインスタンスのストレージ サイズに制限されています。 |
 | データ/ログの IOPS (概算) | インスタンス* あたり最大で 30 から 40 K IOPS、ファイルあたり 500 から 7500<br/>\*[IOPS を増やすには、ファイル サイズを大きくします](#file-io-characteristics-in-general-purpose-tier)| 16 K - 320 K (4000 IOPS/仮想コア)<br/>IO パフォーマンスを向上させるには、仮想コアを追加します。 |
 | ログ書き込みのスループット制限 (インスタンスあたり) | 仮想コアあたり 3 MB/秒<br/>インスタンスあたり最大 120 MB/秒<br/>DB あたり 22 ～ 65 MB/秒<br/>\*[IO パフォーマンスを向上させるには、ファイル サイズを増やします](#file-io-characteristics-in-general-purpose-tier) | 仮想コアあたり 4 MB/秒<br/>最大 96 MB/秒 |

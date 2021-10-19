@@ -3,12 +3,12 @@ title: Container insights の概要 | Microsoft Docs
 description: この記事では、AKS Container insights ソリューションを監視する Container insights と、Azure の AKS クラスターとコンテナー インスタンスの正常性を監視することによって提供される価値について説明します。
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.openlocfilehash: 56222eb90534537df237ec2c5d29a5969f150e60
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b1e7b3e6d3c72dbc65169c48f1d12de6ca712a45
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121738492"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129708911"
 ---
 # <a name="container-insights-overview"></a>Container insights の概要
 

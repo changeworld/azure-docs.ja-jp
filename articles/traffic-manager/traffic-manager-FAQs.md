@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 03/03/2021
 ms.author: duau
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6c0e01349c56744590f35659edae66d963aeb302
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 17445b90c3923fa6c3772b40024eec5657cae89e
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110697962"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129858597"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager についてよく寄せられる質問 (FAQ)
 
@@ -448,7 +448,7 @@ Traffic Manager では、エンドポイントに対して開始される HTTP(S
 
 ### <a name="what-are-the-ip-addresses-from-which-the-health-checks-originate"></a>正常性チェックはどの IP アドレスから発信されますか。
 
-[ここ](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview)をクリックして、Traffic Manager の正常性チェックの実行元になる IP アドレスの一覧を取得する方法を確認します。 REST API、Azure CLI、または Azure PowerShell を使用して、最新の一覧を取得できます。 一覧に示されている IP を確認し、正常性状態をチェックするためにこれらの IP アドレスからの受信接続がエンドポイントで確実に許可されるように設定してください。
+[この記事](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api)を参照して、Traffic Manager の正常性チェックの実行元になる IP アドレスの一覧を取得する方法を確認します。 REST API、Azure CLI、または Azure PowerShell を使用して、最新の一覧を取得できます。 一覧に示されている IP を確認し、正常性状態をチェックするためにこれらの IP アドレスからの受信接続がエンドポイントで確実に許可されるように設定してください。
 
 Azure PowerShell の使用例:
 

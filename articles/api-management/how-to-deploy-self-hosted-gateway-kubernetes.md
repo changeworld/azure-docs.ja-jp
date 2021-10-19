@@ -8,12 +8,12 @@ ms.workload: mobile
 ms.topic: article
 ms.author: danlep
 ms.date: 05/25/2021
-ms.openlocfilehash: dda6fcbf71914fefcd1afd2056864ad66aa11d4d
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 5ab029b5080ae06276119d733f081974ba42ff9b
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128609823"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129708444"
 ---
 # <a name="deploy-a-self-hosted-gateway-to-kubernetes"></a>Kubernetes にセルフホステッド ゲートウェイをデプロイする
 

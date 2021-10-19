@@ -1,24 +1,24 @@
 ---
 title: Azure Cost Management のデータを理解する
-description: この記事では、Azure Cost Management に含まれるデータと、それが処理、収集、表示、およびクローズされる頻度について詳しく説明します。
+description: この記事では、Cost Management に含まれるデータと、それが処理、収集、表示、およびクローズされる頻度について詳しく説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 05/24/2021
+ms.date: 10/07/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 025208685d45658824956b5625993a5dfdbf5e6a
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 0e67812e07229ee8dc13bcd79fc6d546a2618009
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110467535"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129711314"
 ---
 # <a name="understand-cost-management-data"></a>Cost Management のデータを理解する
 
-この記事では、Azure Cost Management に含まれる Azure のコストと使用状況のデータについて詳しく説明します。 また、データが処理、収集、表示、クローズされる頻度についても説明します。 お客様は、Azure の使用量に対して毎月課金されます。 請求期間は月単位ですが、期間の開始日と終了日はサブスクリプションの種類によって異なります。 Cost Management が使用状況データを受信する頻度は、さまざまな要因に基づいて決まります。 このような要因には、データの処理にかかる時間や、Azure サービスから請求システムに使用状況が送信される頻度などがあります。
+この記事では、Cost Management に含まれる Azure のコストと使用状況のデータについて詳しく説明します。 また、データが処理、収集、表示、クローズされる頻度についても説明します。 お客様は、Azure の使用量に対して毎月課金されます。 請求期間は月単位ですが、期間の開始日と終了日はサブスクリプションの種類によって異なります。 Cost Management が使用状況データを受信する頻度は、さまざまな要因に基づいて決まります。 このような要因には、データの処理にかかる時間や、Azure サービスから請求システムに使用状況が送信される頻度などがあります。
 
 Cost Management には、すべての使用量と購入の他に、Enterprise Agreement (EA) アカウント向けの予約とサード パーティ製品が含まれています。 従量課金制料金の Microsoft 顧客契約アカウントと個々のサブスクリプションには、Azure と Marketplace のサービスの使用量のみが含まれます。 サポート コストとその他のコストは含まれません。 コストは請求書が生成されるまで推定され、クレジットは考慮されません。
 
@@ -26,7 +26,7 @@ Cost Management には、すべての使用量と購入の他に、Enterprise Ag
 
 ## <a name="supported-microsoft-azure-offers"></a>サポートされている Microsoft Azure プラン
 
-Azure Cost Management で現在サポートされている [Microsoft Azure のプラン](https://azure.microsoft.com/support/legal/offer-details/)を次に示します。 Azure プランとは、ご利用の Azure サブスクリプションの種類です。 データは、 **[データ利用可能開始日]** の日付から Cost Management で使用できます。 サブスクリプションでプランが変更された場合、プラン変更日前のコストは使用できません。
+Cost Management で現在サポートされている [Microsoft Azure のプラン](https://azure.microsoft.com/support/legal/offer-details/)を次に示します。 Azure プランとは、ご利用の Azure サブスクリプションの種類です。 データは、 **[データ利用可能開始日]** の日付から Cost Management で使用できます。 サブスクリプションでプランが変更された場合、プラン変更日前のコストは使用できません。
 
 | **カテゴリ**  | **プラン名** | **クォータ ID** | **プラン番号** | **データ利用可能開始日** |
 | --- | --- | --- | --- | --- |
@@ -54,7 +54,7 @@ _<sup>**1**</sup> 2014 年 5 月よりも前のデータについては、[Azure
 
 _<sup>**2**</sup> Microsoft 顧客契約は 2019 年 3 月に開始したため、これ以前の履歴データはありません。_
 
-_<sup>**3**</sup>クレジットベースの前払い制サブスクリプションの履歴データは、請求書と一致しない場合があります。下の[履歴データが請求書と一致しない場合がある](#historical-data-might-not-match-invoice)に関するセクションをご覧ください。_
+_<sup>**3**</sup>クレジットベースの前払い制サブスクリプションの履歴データは、請求書と一致しない場合があります。下の [履歴データが請求書と一致しない場合がある](#historical-data-might-not-match-invoice)に関するセクションをご覧ください。_
 
 次のプランはまだサポートされていません。
 
@@ -105,7 +105,7 @@ _<sup>**6**</sup> 現時点では、エンタープライズ契約 (EA) およ�
 
 ## <a name="how-tags-are-used-in-cost-and-usage-data"></a>コストと使用状況のデータでのタグの使用方法
 
-Azure Cost Management は、個々のサービスによって送信される各使用状況レコードの一部としてタグを受け取ります。 これらのタグには、次の制約が適用されます。
+Cost Management は、個々のサービスによって送信される各使用状況レコードの一部としてタグを受け取ります。 これらのタグには、次の制約が適用されます。
 
 - タグはリソースに直接適用される必要があり、親リソース グループから暗黙的に継承されることはありません。
 - リソース タグは、リソース グループにデプロイされたリソースでのみサポートされます。

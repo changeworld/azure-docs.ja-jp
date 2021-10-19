@@ -7,21 +7,21 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: troubleshooting
-ms.date: 09/15/2021
+ms.date: 10/07/2021
 ms.author: banders
-ms.openlocfilehash: 1d4e6a407e75a70618089f20a7d19343785380ad
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: cd7507a6bbb9ef8cfe71c95431fe63191cd63275
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128616481"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129711125"
 ---
 # <a name="troubleshoot-mca-billing-issues-with-usage-file-pivot-tables"></a>使用状況ファイルのピボット テーブルを使用して MCA の請求に関する問題をトラブルシューティングする
 
 この記事は、使用状況ファイルのピボット テーブルを使用して、Microsoft 顧客契約 (MCA) の請求に関する問題をトラブルシューティングする場合に役立ちます。 Azure 使用状況ファイルには、Azure の使用状況と消費量に関するすべての情報が含まれています。 このファイル内の情報は、次のことを理解するために役立ちます。
 
 - Azure の予約がどのように使用および適用されているかを理解する
-- 請求書を使用して、Azure Cost Management の情報を調整する
+- 請求書を使用して、Cost Management の情報を調整する
 - コスト スパイクをトラブルシューティングする
 - サービス レベル アグリーメントの払戻額を計算する
 

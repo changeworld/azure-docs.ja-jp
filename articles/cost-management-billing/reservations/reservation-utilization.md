@@ -6,14 +6,14 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 04/15/2021
+ms.date: 10/07/2021
 ms.author: banders
-ms.openlocfilehash: 28b61781f0b22e79d10d79c1a46e757737a401cf
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: 15726451525d3ffcaf2d059b9e6c9dee86058591
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107568751"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129710206"
 ---
 # <a name="view-reservation-utilization-after-purchase"></a>購入後に予約の使用率を確認する
 
@@ -45,8 +45,8 @@ Reserved Instance Usage API を使用して、[予約の使用率](/rest/api/bil
 
 Power BI ユーザーには、2 とおりの方法があります。
 
-- Power BI Desktop 用の Azure Cost Management コネクタ - 予約購入日と使用率データは、[Power BI Desktop 用の Azure Cost Management コネクタ](/power-bi/desktop-connect-azure-cost-management)で入手できます。 コネクタを使用して、目的のレポートを作成します。
-- Azure Cost Management Power BI アプリ - 追加のカスタマイズが可能な事前作成済みレポートに対して [Azure Cost Management Power BI アプリ](https://appsource.microsoft.com/product/power-bi/costmanagement.azurecostmanagementapp)を使用します。
+- Power BI Desktop 用の Cost Management コネクタ - 予約購入日と使用率データは、[Power BI Desktop 用の Cost Management コネクタ](/power-bi/desktop-connect-azure-cost-management)で入手できます。 コネクタを使用して、目的のレポートを作成します。
+- Cost Management Power BI アプリ - 追加のカスタマイズが可能な事前作成済みレポートに対して [Cost Management Power BI アプリ](https://appsource.microsoft.com/product/power-bi/costmanagement.azurecostmanagementapp)を使用します。
 
 ## <a name="next-steps"></a>次のステップ
 

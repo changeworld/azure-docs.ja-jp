@@ -1,6 +1,7 @@
 ---
-title: Azure Active Directory でユーザーをアプリに割り当てる方法を理解する
+title: ユーザーをアプリに割り当てる方法を理解する
 description: ID 管理のために Azure Active Directory を使用するアプリにユーザーを割り当てる方法について説明します。
+titleSuffix: Azure AD
 services: active-directory
 author: davidmu1
 manager: CelesteDG
@@ -11,12 +12,12 @@ ms.topic: reference
 ms.date: 01/07/2021
 ms.author: davidmu
 ms.reviewer: alamaral
-ms.openlocfilehash: 9f4e99c21ab0cba538021f416e058bdafd5c83b9
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 5a7955a183893540e6c8de3981ad561200e31f70
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124779352"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129613569"
 ---
 # <a name="understand-how-users-are-assigned-to-apps-in-azure-active-directory"></a>Azure Active Directory でユーザーをアプリに割り当てる方法を理解する
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 09/17/2021
 ms.author: danlep
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 6a6a83ef0e810880ff14ddc8125235229db75787
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 7739411364b187e437e9dda4c72dff85de26d741
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128676176"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129669570"
 ---
 # <a name="protect-a-web-api-backend-in-azure-api-management-using-oauth-20-authorization-with-azure-active-directory"></a>OAuth 2.0 認可と Azure Active Directory を使用して Azure API Management で Web API バックエンドを保護する 
 
@@ -62,7 +62,7 @@ Azure portal を使用して、API を表すアプリケーションを Azure AD
    - **[名前]** セクションに、アプリのユーザーに表示されるわかりやすいアプリケーション名を入力します (例: *backend-app*)。 
    - **[サポートされているアカウントの種類]** セクションで、シナリオに適したオプションを選択します。 
 
-1. [ **[リダイレクト URI]** ](../active-directory/develop/reply-url.md) セクションは空のままにします。
+1. [ **[リダイレクト URI]**](../active-directory/develop/reply-url.md) セクションは空のままにします。
 
 1. **[登録]** を選択して、アプリケーションを作成します。 
 
@@ -137,7 +137,7 @@ API と Developer Console を表す 2 つのアプリケーションを登録し
 
 この例では、Developer Console (クライアント アプリ) で OAuth 2.0 ユーザー認可を有効にします。
 
-1. Azure portal で、 **[認可エンドポイントの URL]** と **[トークン エンドポイントの URL]** を見つけ、後のために保存してきます。 
+1. Azure portal で、 **[承認エンドポイントの URL]** と **[トークン エンドポイントの URL]** を見つけ、後のために保存してきます。 
     1. **[アプリの登録]** ページを開きます。 
     1. **[エンドポイント]** を選択します。
     1. **[OAuth 2.0 認可エンドポイント]** と **[OAuth 2.0 トークン エンドポイント]** をコピーします。 

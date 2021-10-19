@@ -3,12 +3,12 @@ title: Azure Arc 上の App Service
 description: App Service と Azure オペレーター向け Azure Arc との 統合の概要。
 ms.topic: article
 ms.date: 08/17/2021
-ms.openlocfilehash: bd5e257d48ec009ccb79696f4c299fd93568f1c9
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: cec1e7bb9dac43e33e85b6036910220a1fa287c2
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122397333"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129711655"
 ---
 # <a name="app-service-functions-and-logic-apps-on-azure-arc-preview"></a>Azure Arc の App Service、Functions、および Logic Apps (プレビュー)
 
@@ -42,7 +42,7 @@ App Service Kubernetes 環境には、次のパブリック プレビューの�
 
 ## <a name="pods-created-by-the-app-service-extension"></a>App Service 拡張機能によって作成されたポッド
 
-Arc 対応 Kubernetes クラスターに App Service 拡張機能がインストールされると、指定されたリリース名前空間で作成された複数のポッドが表示されます。 これらのポッドを使用すると、Kubernetes クラスターを Azure の `Microsoft.Web` リソース プロバイダーの拡張機能にして、アプリの管理と操作をサポートできます。 必要に応じて、拡張機能を使用してイベント ドリブン スケーリング用に [KEDA](https://keda.sh/) をインストールできます。
+Azure Arc 対応 Kubernetes クラスターに App Service 拡張機能がインストールされると、指定されたリリース名前空間で作成された複数のポッドが表示されます。 これらのポッドを使用すると、Kubernetes クラスターを Azure の `Microsoft.Web` リソース プロバイダーの拡張機能にして、アプリの管理と操作をサポートできます。 必要に応じて、拡張機能を使用してイベント ドリブン スケーリング用に [KEDA](https://keda.sh/) をインストールできます。
  <!-- You can only have one installation of KEDA on the cluster. If you have one already, you must disable this behavior during installation of the cluster extension `TODO`. -->
 
 次の表では、既定で作成される各ポッドの役割について説明します。

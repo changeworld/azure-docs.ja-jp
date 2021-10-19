@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 09/14/2020
 ms.author: cshoe
-ms.openlocfilehash: 262e0fc02632465a03391dbfeaa0902d1b6b9ec3
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 7267e733971b2abed258ca815a010b13938bc2a6
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128609759"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129613474"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>Azure Functions バインド拡張機能を登録する
 
@@ -69,7 +69,7 @@ Java、JavaScript、PowerShell、Python、およびカスタム ハンドラー�
 * 1 つのバンドルで利用できない特定の組み合わせの拡張機能にアクセスする必要があります。
 
 > [!NOTE]
-> Core Tools を使用して拡張機能を手動でインストールするには、[.NET Core 2.x SDK](https://dotnet.microsoft.com/download) がインストールされている必要があります。 .NET Core SDK は NuGet から拡張機能をインストールする目的で Azure Functions Core Tools によって使用されます。 Azure Functions 拡張機能を使用するために .NET の知識は必要ありません。
+> Core Tools を使用して拡張機能を手動でインストールするには、[.NET Core 3.1 SDK](https://dotnet.microsoft.com/download) がインストールされている必要があります。 .NET Core SDK は NuGet から拡張機能をインストールする目的で Azure Functions Core Tools によって使用されます。 Azure Functions 拡張機能を使用するために .NET の知識は必要ありません。
 
 拡張機能を明示的にインストールすると、extensions.csproj という名前の .NET プロジェクト ファイルがプロジェクトのルートに追加されます。 このファイルによって、関数に必要とされる NuGet パッケージのセットが定義されます。 このファイルで [NuGet パッケージ参照](/nuget/consume-packages/package-references-in-project-files)を使用することができますが、Core Tools では、ファイルを手動編集しなくても拡張機能をインストールできます。
 
@@ -129,6 +129,6 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.<BINDING_TYPE_NAME> --vers
 
 例の中の `<TARGET_VERSION>` を `3.0.0-beta5` などの特定のバージョンのパッケージに置き換えます。 有効なバージョンは、[NuGet.org](https://nuget.org) の個々のパッケージ ページに記載されています。Functions ランタイム 1.x または 2.x に対応する主要なバージョンは、バインデイングのリファレンス記事に示されています。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 > [!div class="nextstepaction"]
 > [Azure Functions のトリガーとバンドの例](./functions-bindings-example.md)

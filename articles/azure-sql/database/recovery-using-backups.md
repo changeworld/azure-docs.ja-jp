@@ -12,12 +12,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: mathoma, danil
 ms.date: 11/13/2020
-ms.openlocfilehash: e1a6887efc2b0220ae92b372c2c9fd2ff91cc8fa
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d313f521a13ae49f8701614d1b1331d34960ae77
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121722976"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129619483"
 ---
 # <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>自動データベース バックアップを使用して復旧する - Azure SQL Database および SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -69,6 +69,9 @@ Azure portal、[PowerShell](/powershell/module/az.sql/restore-azsqldatabase)、�
 完了すると、元のデータベースと同じサーバー上に新しいデータベースが作成されます。 復元されたデータベースでは、サービス レベルとコンピューティング サイズに基づいて通常料金が発生します。 データベースの復元が完了するまでは、料金は発生しません。
 
 通常、以前の時点へのデータベースの復元は、復旧の目的で行います。 復元されたデータベースは、元のデータベースの代わりとして扱うことも、元のデータベースを更新するためのデータ ソースとして使用することもできます。
+
+> [!IMPORTANT]
+> 同じサーバーでのみ、復元を実行できます。ポイントインタイム リストアでは、サーバーをまたぐ復元はサポートされていません。
 
 - **データベースの置換**
 

@@ -12,12 +12,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: mathoma
 ms.date: 7/7/2021
-ms.openlocfilehash: 56bd4dcc121b5ebd2ac48f772bd0793dffccd50d
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 9fbcf03159e11aa9d2951f3f951290eb6e51b511
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114289928"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129670140"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-service-tiers"></a>Azure SQL Database と Azure SQL Managed Instance のサービス レベル
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -44,7 +44,7 @@ Azure SQL Database では、Hyperscale サービス レベルも提供されま�
 | | SQL Managed Instance のプール | 2、4、8、16、24、32、40、64、80 の仮想コア | 該当なし | 該当なし |
 | **ストレージの種類** | All | リモート ストレージ | 階層化されたリモートおよびローカル SSD ストレージ | ローカル SSD ストレージ |
 | **データベースのサイズ** | SQL Database | 1 GB – 4 TB | 40 GB - 100 TB | 1 GB – 4 TB |
-| | SQL Managed Instance  | 32 GB – 8 TB | 該当なし | 32 GB – 4 TB |
+| | SQL Managed Instance  | 32 GB – 8 TB </br> コア数に応じて 16 TB (プレビュー)、Gen5 のみ| 該当なし | 32 GB – 4 TB |
 | **ストレージ サイズ** | SQL Database | 1 GB – 4 TB | 40 GB - 100 TB | 1 GB – 4 TB |
 | | SQL Managed Instance  | 32 GB – 8 TB | 該当なし | 32 GB – 4 TB |
 | **TempDB のサイズ** | SQL Database | [仮想コアあたり 32 GB](resource-limits-vcore-single-databases.md) | [仮想コアあたり 32 GB](resource-limits-vcore-single-databases.md) | [仮想コアあたり 32 GB](resource-limits-vcore-single-databases.md) |

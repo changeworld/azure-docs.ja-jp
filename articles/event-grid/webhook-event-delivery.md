@@ -2,13 +2,13 @@
 title: webhook のイベント配信
 description: この記事では、WebHook を使用する場合の WebHook イベント配信とエンドポイント検証について説明します。
 ms.topic: conceptual
-ms.date: 09/15/2021
-ms.openlocfilehash: 58da34498fa3e2fc81c8fe1476b1098688b9c6c0
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 09/29/2021
+ms.openlocfilehash: 77908b7f36c51ca729915b09cb1e813c978235e3
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128625166"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129614368"
 ---
 # <a name="webhook-event-delivery"></a>Webhook のイベント配信
 Webhook は、Azure Event Grid からイベントを受信する多数ある方法の 1 つです。 新しいイベントの準備ができるたびに、Event Grid サービスは、本文にイベントが含まれる HTTP 要求を構成済み HTTP エンドポイントに POST します。
@@ -82,6 +82,25 @@ SubscriptionValidationEvent の例を以下に示します。
 
 ## <a name="endpoint-validation-with-cloudevents-v10"></a>CloudEvents v1.0 を使用したエンドポイントの検証
 CloudEvents v1.0 では、**HTTP OPTIONS** メソッドを使用して、独自の [不正使用防止のセマンティクス](webhook-event-delivery.md)が実装されます。 詳細については、 [こちら](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection)を参照してください。 出力に CloudEvents スキーマを使用すると、Event Grid では、Event Grid の検証イベント メカニズムではなく CloudEvents v1.0 の不正使用防止が使用されます。
+
+## <a name="event-subscriptions-considerations"></a>イベント サブスクリプションに関する考慮事項
+
+サブスクリプションの作成中の問題を防ぐには、この参照を使用し、トピックとサブスクリプション スキーマの間の互換性を検証します。 トピックが作成されると、受信イベント スキーマが定義されます。また、サブスクリプションが作成されるとき、送信イベント スキーマが定義されます。
+
+> [!NOTE]
+> この互換性の表の参照はカスタム トピックとイベント ドメインに適用されます。
+
+| 受信イベント スキーマ | 送信イベント スキーマ | サポートされています |
+| ---- | ---- | ---- |
+| Event Grid スキーマ | Event Grid スキーマ | はい |
+| | Cloud Events v1.0 スキーマ | はい |
+| | カスタムの入力スキーマ | No |
+| Cloud Events v1.0 スキーマ | Event Grid スキーマ | No |
+| | Cloud Events v1.0 スキーマ | はい |
+| | カスタムの入力スキーマ | No |
+| カスタムの入力スキーマ | Event Grid スキーマ | はい |
+| | Cloud Events v1.0 スキーマ | はい |
+| | カスタムの入力スキーマ | はい |
 
 ## <a name="next-steps"></a>次のステップ
 イベント サブスクリプション検証をトラブルシューティングする方法については、次の記事を参照してください。 

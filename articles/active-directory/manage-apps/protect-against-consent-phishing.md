@@ -1,5 +1,6 @@
 ---
-title: 同意フィッシングからの保護 | Azure AD のアプリ管理
+title: 同意フィッシングからの保護
+titleSuffix: Azure AD
 description: Azure AD を使用してアプリベースの同意フィッシング攻撃を軽減する方法について説明します。
 services: active-directory
 author: Chrispine-Chiedo
@@ -12,14 +13,14 @@ ms.date: 08/09/2021
 ms.custom: template-concept
 ms.author: cchiedo
 ms.reviewer: tilarso
-ms.openlocfilehash: 6d2a6afe4555bc9324241616ae6c22494216a146
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: dc860dce0f75648488ff692a0024a850bf4c76ad
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124791443"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129615697"
 ---
-# <a name="protecting-against-consent-phishing"></a>同意フィッシングからの保護
+# <a name="protecting-against-consent-phishing-in-azure-active-directory"></a>Azure Active Directory で同意フィッシングから保護する
 
 生産性がプライベート ネットワークに限定されなくなり、作業がクラウド サービスに大きく移行しました。 クラウド アプリケーションを使用すると、従業員はリモートで生産性を高めることができますが、攻撃者もアプリケーションベースの攻撃を使用して重要な組織データにアクセスできます。 メールのフィッシングや資格情報の侵害など、ユーザーに焦点を当てた攻撃にはなじみがあるかもしれません。 ***同意フィッシング*** は、注意が必要なもう 1 つの脅威ベクトルです。
 この記事では、同意フィッシングの概要、ユーザーを保護するための Microsoft の取り組み、組織の安全を維持するための手順について説明します。

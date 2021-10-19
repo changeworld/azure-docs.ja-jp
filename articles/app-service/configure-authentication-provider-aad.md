@@ -5,12 +5,12 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 04/14/2020
 ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: 2404d8af682f119b68c78d6dc5cacc3d30201c17
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: 61253ab7360253e1c6902b6a7b38c9fb53faa3eb
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122397096"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129611750"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>Azure AD ログインを使用するように App Service または Azure Functions アプリを構成する
 
@@ -26,7 +26,7 @@ App Service 認証機能では、Microsoft ID プラットフォームを使用�
 > [!NOTE]
 > 新しい登録を作成するオプションは、政府機関向けクラウドでは使用できません。 代わりに、 [登録を個別に定義](#advanced)します。
 
-## <a name="create-a-new-app-registration-automatically"></a><a name="express"> </a>新しいアプリ登録を自動作成する
+## <a name="option-1-create-a-new-app-registration-automatically"></a><a name="express"> </a> オプション 1: 新しいアプリ登録を自動作成する
 
 このオプションでは、認証を簡単にするように設計されていて、必要なのは数回のクリックのみです。
 
@@ -47,7 +47,7 @@ App Service 認証機能では、Microsoft ID プラットフォームを使用�
 
 Azure Storage と Microsoft Graph にアクセスする Web アプリの Azure AD ログインを構成する例については、[こちらのチュートリアル](scenario-secure-app-authentication-app-service.md)を参照してください。
 
-## <a name="use-an-existing-registration-created-separately"></a><a name="advanced"> </a>個別に作成された既存の登録を使用する
+## <a name="option-2-use-an-existing-registration-created-separately"></a><a name="advanced"> </a>オプション 2: 個別に作成された既存の登録を使用する
 
 また、アプリケーションを Microsoft ID プラットフォームに手動で登録し、登録をカスタマイズして、登録の詳細を使用して App Service 認証を構成することもできます。 これは、たとえば App Service が含まれているものとは異なる Azure AD テナントからアプリケーションの登録を使用する場合に便利です。
 

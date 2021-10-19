@@ -1,57 +1,79 @@
 ---
-title: H シリーズの廃止
-description: H シリーズの廃止 (2021 年 9 月 1 日以降)
+title: H シリーズの提供終了
+description: H シリーズの提供終了が 2021 年 9 月 1 日に始まりました。
 author: vermagit
 ms.service: virtual-machines
 ms.subservice: vm-sizes-hpc
 ms.topic: conceptual
 ms.date: 08/02/2021
 ms.author: amverma
-ms.openlocfilehash: 98465066f79f93777255a3072c472d342b557bdc
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 1ad9a9384d00ec0961235c167379d9984ec417fe
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128600230"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129705251"
 ---
-# <a name="migrate-your-h-and-h_promo-series-virtual-machines-by-august-31-2022"></a>2022 年 8 月 31 日までに H および H_Promo シリーズの仮想マシンを移行してください
-Microsoft Azure には、新世代のハイ パフォーマンス コンピューティング (HPC)、汎用、およびメモリ最適化の仮想マシンが導入されているため、元の H シリーズ (H シリーズ promo を含む) の仮想マシンから新しいオファリングにワークロードを移行することをお勧めします。
+# <a name="migrate-your-h-and-h-series-promo-virtual-machines-by-august-31-2022"></a>2022 年 8 月 31 日までに H シリーズと H シリーズ Promo の仮想マシンを移行してください
 
-Azure [HC](hc-series.md)、[HBv2](hbv2-series.md)、[HBv3](hbv3-series.md)、[Dv4](dv4-dsv4-series.md)、[Dav4 ](dav4-dasv4-series.md)、[Ev4 ](ev4-esv4-series.md)、[Eav4](eav4-easv4-series.md) 仮想マシンは、さまざまな HPC ワークロードにわたって、より広いメモリ帯域幅、向上したネットワーク機能、より優れたコストとパフォーマンスを備えています。 その結果、H シリーズの Azure 仮想マシンのサイズ (H8、H8m、H16、H16r、H16m、H16mr、H8 Promo、H8m Promo、H16 Promo、H16r Promo、H16m Promo、H16mr Promo) を 2022 年 8 月 31 日に廃止します。
+Microsoft Azure には、ハイ パフォーマンス コンピューティング (HPC)、汎用、メモリ最適化の仮想マシン (VM) の新しい世代が導入されました。 このため、元の H シリーズと H シリーズ Promo の VM から新しい製品にワークロードを移行することをお勧めします。
 
-## <a name="how-does-the-h-series-migration-affect-me"></a>H シリーズの移行によってどのような影響がありますか?  
+Azure [HC](hc-series.md)、[HBv2](hbv2-series.md)、[HBv3](hbv3-series.md)、[Dv4](dv4-dsv4-series.md)、[Dav4 ](dav4-dasv4-series.md)、[Ev4 ](ev4-esv4-series.md)、[Eav4](eav4-easv4-series.md) VM は、さまざまな HPC ワークロードにわたって、より広いメモリ帯域幅、向上したネットワーク機能、より優れたコストとパフォーマンスを備えています。 2022 年 8 月 31 日に、次の H シリーズの Azure VM サイズは廃止されます。
 
-2022 年 8 月 31 日を過ぎると、前述の H シリーズ仮想マシンの残っているサブスクリプションはすべて割り当てが解除された状態に設定され、稼働が停止し、課金されなくなります。 
+- H8
+- H8m
+- H16
+- H16r
+- H16m
+- H16mr
+- H8 Promo
+- H8m Promo
+- H16 Promo
+- H16r Promo
+- H16m Promo
+- H16mr Promo
 
-現在の VM サイズの廃止は、H シリーズ promo を含む [H シリーズ](h-series.md)の VM サイズにのみ影響があります。 
+## <a name="how-does-the-h-series-migration-affect-me"></a>H シリーズの移行によってどのような影響がありますか?
 
-## <a name="what-actions-should-i-take"></a>どのような対応が必要ですか?  
+2022 年 8 月 31 日を過ぎると、前の一覧で残っている H シリーズ VM サブスクリプションは、割り当て解除済みの状態に設定されます。 これらは動かなくなり、課金料金が発生しなくなります。
 
-H シリーズの仮想マシンのサイズ変更または割り当ての解除が必要になります。 これまでの H シリーズ (H シリーズ promo を含む) の仮想マシンから新しい仮想マシンにワークロードを移行することをお勧めします。
+現在の VM サイズの廃止は、H シリーズ Promo を含む [H シリーズ](h-series.md)の VM サイズにのみ影響があります。
 
-HPC ワークロードの場合、[HC](hc-series.md)、[HBv2](hbv2-series.md)、[HBv3](hbv3-series.md) VM は、H シリーズと比べ、大きく改善された CPU コアアーキテクチャ、広いメモリ帯域幅、大容量の L3 キャッシュ、強化された InfiniBand ネットワークのハードウェアとソフトウェアのサポートにより、大幅に高いレベルの HPC ワークロード パフォーマンスと費用対効果を発揮します。 その結果、HC、HBv2、HBv3 シリーズでは、一般に、単位パフォーマンスあたりのコストが大幅に向上し (一定量のパフォーマンスに対するコストを最小にする)、単位コストあたりのパフォーマンスが大幅に向上します (一定量の費用に対するパフォーマンスを最大にします)。 
+## <a name="what-actions-should-i-take"></a>どのような対応が必要ですか?
 
-汎用ワークロードの場合、[Dv4](dv4-dsv4-series.md)、[Dav4](dav4-dasv4-series.md)、Dv5 VM は、同一またはそれ以上のコア数で同等またはそれ以上の CPU パフォーマンスを発揮し、物理 CPU コアあたりのメモリ量は同等であり、Azure ネットワーク機能が向上し、全体的なコストも抑えられます。 
+お使いの H シリーズ VM のサイズを変更するか、割り当てを解除することが必要になります。 元の H シリーズ VM と H シリーズ Promo VM から新しいオファリングにワークロードを移行することをお勧めします。
 
-メモリ最適化ワークロードの場合、[Ev4](ev4-esv4-series.md)、[Eav4](eav4-easv4-series.md)、Ev5 VM は、同一またはそれ以上のコア数で同等またはそれ以上の CPU パフォーマンスを発揮し、物理 CPU コアあたりのメモリ量は同等であり、Azure ネットワーク機能が向上し、全体的なコストも抑えられます。 
+**HPC ワークロード:** [HC](hc-series.md)、[HBv2](hbv2-series.md)、[HBv3](hbv3-series.md) の各 VM は、次の理由により、HPC ワークロードのパフォーマンスとコスト効率が大幅に向上しています。
 
-[H シリーズ](h-series.md) VM (H シリーズ Promo を含む) は 2022 年 9 月までは廃止されません。そのため、移行のアセスメント、計画、実行のための長い時間をお客様に持っていただくために、事前にこのガイドを提供しています。 
+- CPU コア アーキテクチャの大幅な改良。
+- より高いメモリ帯域幅。
+- より大きい L3 キャッシュ。
+- H シリーズと比較して強化された InfiniBand ネットワークのハードウェアとソフトウェアのサポート。
 
+その結果、HC、HBv2、HBv3 シリーズでは、一般に、単位パフォーマンスあたりのコストが大幅に向上し (一定量のパフォーマンスに対するコストを最小にする)、単位コストあたりのパフォーマンスが大幅に向上します (一定量の費用に対するパフォーマンスを最大にします)。
 
-### <a name="migration-steps"></a>移行の手順 
-1. 移行先となるシリーズとサイズを選ぶ。 
-2. ターゲット VM シリーズのクォータを取得します 
-3. 現在の H シリーズの VM サイズをターゲット サイズに変更します 
+**汎用ワークロード:** [Dv4](dv4-dsv4-series.md)、[Dav4](dav4-dasv4-series.md)、Dv5 VM は、同一またはそれ以上のコア数で同等またはそれ以上の CPU パフォーマンスを発揮し、物理 CPU コアあたりのメモリ量は同等であり、Azure ネットワーク機能が向上し、全体的なコストも抑えられます。
 
+**メモリ最適化ワークロード:** [Ev4](ev4-esv4-series.md)、[Eav4](eav4-easv4-series.md)、Ev5 VM は、同一またはそれ以上のコア数で同等またはそれ以上の CPU パフォーマンスを発揮し、物理 CPU コアあたりのメモリ量は同等であり、Azure ネットワーク機能が向上し、全体的なコストも抑えられます。
 
-### <a name="breaking-changes"></a>重大な変更 
-InfiniBand ネットワーク インターフェイスを公開する H シリーズ VM サイズ (VM サイズ名に 'r' が付いているものなど) を使用していて、新しい VM サイズでも InfiniBand ネットワークをサポートしたい場合、InfiniBand ドライバーが組み込まれたレガシ OS イメージ (CentOS 7.4 以前、Windows Server 2012) は使用できなくなります。 代わりに、最新のオペレーティング システム (CentOS 7.5 以降、Windows Server 2016 以降) と OFED ドライバーをサポートする最新の OS イメージ (Azure Marketplace に掲載されているものなど) を使用してください。 それぞれの VM サイズでサポートされる OS を含む[サポートされるソフトウェア スタック](hbv3-series.md#get-started)を参照してください。 
+[H シリーズ](h-series.md)と H シリーズ Promo の VM は、2022 年 9 月までは廃止されません。 移行を評価、計画、実行するための時間的余裕が十分確保されるように、前もってこのガイドを提供しています。
 
+### <a name="migration-steps"></a>移行の手順
 
-### <a name="get-quota-for-the-target-vm-family"></a>ターゲット VM ファミリのクォータを取得する 
+1. 移行用のシリーズとサイズを選択します。
+1. ターゲット VM シリーズのクォータを取得します。
+1. 現在の H シリーズの VM サイズをターゲット サイズに変更します。
 
-[VM ファミリによる vCPU クォータの増加を要求する](../azure-portal/supportability/per-vm-quota-requests.md)ためのガイドに従ってください。
+### <a name="breaking-changes"></a>重大な変更
 
+InfiniBand ネットワーク インターフェイスを公開する H シリーズ VM サイズ (VM サイズ名に "r" が付いているサイズなど) を使用していて、新しい VM サイズでも InfiniBand ネットワークをサポートしたい場合、InfiniBand ドライバーが組み込まれたレガシ OS イメージ (CentOS 7.4 以前、Windows Server 2012) は使用できなくなります。
 
-### <a name="resize-the-current-virtual-machine"></a>現在の仮想マシンのサイズを変更する
+代わりに、最新のオペレーティング システム (CentOS 7.5 以降、Windows Server 2016 以降) と OFED ドライバーをサポートする最新の OS イメージ (Azure Marketplace で利用できるものなど) を使用してください。 それぞれの VM サイズでサポートされる OS を含む[サポートされるソフトウェア スタック](hbv3-series.md#get-started)を参照してください。
+
+### <a name="get-a-quota-for-the-target-vm-family"></a>ターゲット VM ファミリのクォータを取得する
+
+ガイドに従って、[VM ファミリによる vCPU クォータの増加をリクエストします](../azure-portal/supportability/per-vm-quota-requests.md)。
+
+### <a name="resize-the-current-vm"></a>現在の VM のサイズを変更する
+
 [仮想マシンのサイズを変更](resize-vm.md)できます。

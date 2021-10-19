@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/23/2021
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: c45be7452d71002c2120e37999c2ecfacb8608b0
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 3e406f9ed38aa9360da3fed2ce256654ad7c10c0
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124800006"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129707518"
 ---
 # <a name="preview-azure-automanage-for-virtual-machines"></a>プレビュー: Azure Automanage for virtual machines
 
@@ -36,7 +36,7 @@ Azure Automanage for virtual machines サービスを使用すると、Azure で
 VM が配置されている geography 外で、Automanage によって顧客データが格納/処理されることはありません。 SoutheastAsia リージョンでは、SoutheastAsia 外で、Automanage によってデータが格納/処理されることはありません。
 
 > [!NOTE]
-> Automanage は Azure 仮想マシン上に加え、Arc 対応のサーバー上で有効にできます。 現在、Automanage は米国政府機関向けクラウドでは利用できません。
+> Automanage は Azure 仮想マシン上に加え、Azure Arc 対応のサーバー上で有効にできます。 現在、Automanage は米国政府機関向けクラウドでは利用できません。
 
 ## <a name="prerequisites"></a>前提条件
 

@@ -1,5 +1,6 @@
 ---
-title: Azure AD と Datawiza を使用した安全なハイブリッド アクセス
+title: Datawiza を使用した安全なハイブリッド アクセス
+titleSuffix: Azure AD
 description: このチュートリアルでは、Datawiza と Azure AD を統合して安全なハイブリッド アクセスを実現する方法について説明します
 services: active-directory
 author: gargi-sinha
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 8/27/2021
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 19a3f4835e3e2b20d0921aa2a259739ec6cd51bc
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 844c450e5a549458964b7747160d7efe553d406a
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124754162"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129620699"
 ---
 # <a name="tutorial-configure-datawiza-with-azure-active-directory-for-secure-hybrid-access"></a>チュートリアル: Datawiza と Azure Active Directory の統合を構成して安全なハイブリッド アクセスを実現する
 

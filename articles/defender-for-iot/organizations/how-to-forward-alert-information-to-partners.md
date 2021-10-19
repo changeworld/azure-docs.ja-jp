@@ -3,12 +3,12 @@ title: アラート情報を転送する
 description: 転送ルールを使用して、パートナーのシステムにアラート情報を送信することができます。
 ms.date: 08/29/2021
 ms.topic: how-to
-ms.openlocfilehash: 2136a58a383bb623edca69cb03c1c9c5530a107f
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: eb902036a286be50dc1f29ccca894f3d422cc59c
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123432363"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129612212"
 ---
 # <a name="forward-alert-information"></a>アラート情報を転送する
 
@@ -98,6 +98,8 @@ Defender for IoT の管理者には、転送ルールを使用するためのア
 転送ルール用の電子メールを定義するには:
 
 1. 1 つの電子メール アドレスを入力します。 複数の電子メールを追加する必要がある場合、電子メール アドレスごとに別のアクションを作成する必要があります。
+
+    :::image type="content" source="media/how-to-forward-alert-information-to-partners/forward-email.png" alt-text="アラート転送画面のスクリーンショット。電子メール アドレスにアラートを転送します。":::
 
 1. SIEM でのアラート検出用のタイム スタンプのタイム ゾーンを入力します。
 

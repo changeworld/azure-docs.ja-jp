@@ -2,16 +2,16 @@
 title: テンプレート スペックの作成とデプロイ
 description: テンプレート スペックを作成し、組織内の他のユーザーと共有する方法について説明します。
 ms.topic: conceptual
-ms.date: 05/04/2021
+ms.date: 10/05/2021
 ms.author: tomfitz
 ms.custom: devx-track-azurepowershell
 author: tfitzmac
-ms.openlocfilehash: bf417b6ca70012a3cf4bce17640aa4bc9ab9fd08
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 8d8b582cdae8b387774402869eccf903a1b394b2
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128611208"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129613436"
 ---
 # <a name="azure-resource-manager-template-specs"></a>Azure Resource Manager テンプレート スペック
 
@@ -24,9 +24,11 @@ ms.locfileid: "128611208"
 > [!NOTE]
 > Azure PowerShell でテンプレート スペックを使用するには、[バージョン 5.0.0 以降](/powershell/azure/install-az-ps)をインストールする必要があります。 Azure CLI でこれを使用するには、[バージョン 2.14.2 以降](/cli/azure/install-azure-cli)を使用します。
 
+デプロイを計画するときは常に、リソースのライフサイクルを考慮し、ライフサイクルが同じようなリソースを 1 つのテンプレート仕様にグループ化します。たとえば、デプロイに複数の Cosmos DB インスタンスが含まれ、各インスタンスにそれ自体のデータベースとコンテナーが含まれています。 データベースとコンテナーにほとんど変化がないときは、Cosmo DB とその基礎となるデータベースとコンテナーを含めるテンプレート仕様を 1 つ作成します。 次に、それらのリソースのインスタンスを複数作成するコピー ループと共に、条件付きステートメントをテンプレートの中で使用できます。
+
 ### <a name="microsoft-learn"></a>Microsoft Learn
 
-テンプレート スペックの詳細とハンズオン ガイダンスについては、**Microsoft Learn** の[テンプレート スペックを使用した再利用可能なインフラストラクチャ コードのライブラリの発行](/learn/modules/arm-template-specs)に関するページを参照してください。
+テンプレート スペックの詳細とハンズオン ガイダンスについては、**Microsoft Learn** の [テンプレート スペックを使用した再利用可能なインフラストラクチャ コードのライブラリの発行](/learn/modules/arm-template-specs)に関するページを参照してください。
 
 ## <a name="why-use-template-specs"></a>テンプレート スペックを使用する理由は何ですか。
 

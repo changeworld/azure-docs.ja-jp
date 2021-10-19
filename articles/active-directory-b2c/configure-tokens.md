@@ -7,17 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/15/2021
+ms.date: 10/08/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: dad937a385f22444baafb00c46de503b836b27f4
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 9ca7d1b5f5e8a9958d072317bfb2d01bd7a9199e
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128575537"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129611832"
 ---
 # <a name="configure-tokens-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でトークンを構成する
 
@@ -61,6 +61,11 @@ ms.locfileid: "128575537"
 1. **[プロパティ]** を選択します。
 1. **[トークンの有効期間]** で、お使いのアプリケーションのニーズに合わせてプロパティを調整します。
 1. **[保存]** をクリックします。
+
+
+
+:::image type="content" source="./media/configure-tokens/configure-tokens.png" alt-text="Azure portal でユーザー フロー トークンを構成します。":::
+
 
 ::: zone-end
 

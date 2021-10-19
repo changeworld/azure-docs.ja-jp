@@ -1,6 +1,7 @@
 ---
-title: Azure Active Directory マイ アプリの構成を計画する
+title: マイ アプリの構成を計画する
 description: 組織内でマイ アプリを効果的に使用するための計画ガイド。
+titleSuffix: Azure AD
 services: active-directory
 author: davidmu1
 manager: CelesteDG
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 09/02/2021
 ms.author: davidmu
 ms.reviewer: lenalepa
-ms.openlocfilehash: 6d77f3d93ad3b69f6cc8842e8a320221e533c4c7
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: eb85784ff37e78557a510c1b09f5656294d50696
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124791481"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129615830"
 ---
 # <a name="plan-azure-active-directory-my-apps-configuration"></a>Azure Active Directory マイ アプリの構成を計画する
 

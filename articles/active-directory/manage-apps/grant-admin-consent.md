@@ -1,6 +1,7 @@
 ---
-title: アプリケーションに対してテナント全体の管理者の同意を付与する - Azure AD
+title: アプリケーションに対してテナント全体の管理者の同意を付与する
 description: エンド ユーザーがアプリケーションにサインインするときに同意を求めるメッセージが表示されないように、テナント全体の同意をアプリケーションに付与する方法について説明します。
+titleSuffix: Azure AD
 services: active-directory
 author: davidmu1
 manager: CelesteDG
@@ -12,14 +13,14 @@ ms.date: 08/21/2021
 ms.author: davidmu
 ms.reviewer: ergreenl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee3ff6fc063de5eebd4a7cc300fdc0a5ceeba560
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 439a24c0e33cf33eaa758d91f516a435a2d2cb53
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123038392"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129617627"
 ---
-# <a name="grant-tenant-wide-admin-consent-to-an-application"></a>アプリケーションに対してテナント全体の管理者の同意を付与する
+# <a name="grant-tenant-wide-admin-consent-to-an-application-in-azure-active-directory"></a>Azure Active Directory でアプリケーションに対してテナント全体の管理者同意を付与する
 
   アプリケーションにテナント全体の管理者の同意を付与する方法について説明します。 この記事では、さまざまな方法でこれを実現します。
 

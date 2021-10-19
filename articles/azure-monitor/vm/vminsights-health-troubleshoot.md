@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/25/2021
-ms.openlocfilehash: a02b7d6fa5ef8369578f89a452df95a50ca34204
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 13de7b055820ac680e8b513198224bcfd6421e11
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123425178"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129708859"
 ---
 # <a name="troubleshoot-vm-insights-guest-health-preview"></a>VM 分析情報のゲストの正常性のトラブルシューティング (プレビュー)
 この記事では、VM 分析情報の正常性に関する問題があるときに実行できるトラブルシューティング手順について説明します。
@@ -62,7 +62,7 @@ Exiting with the following error: "Failed to install VM Guest Health Agent: exit
 
 ### <a name="upgrade-available-message-is-still-displayed-after-upgrading-guest-health"></a>ゲストの正常性をアップグレードした後も、アップグレードを利用可能のメッセージが表示される 
 
-- VM がグローバル Azure で実行されていることを確認します。 Arc 対応サーバーは、まだサポートされていません。
+- VM がグローバル Azure で実行されていることを確認します。 Azure Arc 対応サーバーは、まだサポートされていません。
 - [Azure Monitor for VMs ゲストの正常性で監視を有効にする (プレビュー)](vminsights-health-enable.md) に関するページの説明に従って、仮想マシンのリージョンとオペレーティング システムのバージョンがサポートされていることを確認します。
 - ゲストの正常性の拡張機能が 0 終了コードで正常にインストールされていることを確認します。
 - Azure Monitor エージェント拡張機能が正常にインストールされていることを確認します。

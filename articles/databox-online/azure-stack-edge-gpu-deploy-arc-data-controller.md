@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 04/15/2021
 ms.author: alkohli
-ms.openlocfilehash: ebccfdad883242411b4f45b717553ebd25ee69a9
-ms.sourcegitcommit: ba8f0365b192f6f708eb8ce7aadb134ef8eda326
+ms.openlocfilehash: e1078bb12b6d33eb4d4d35cc3e1e11f91ef39e9b
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109633521"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129705537"
 ---
 # <a name="deploy-azure-data-services-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Data Services を Azure Stack Edge Pro GPU デバイスにデプロイする
 

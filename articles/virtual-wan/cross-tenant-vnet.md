@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: wellee
-ms.openlocfilehash: 8c9ab37e46f23d533550ffc535633575a85937a6
-ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+ms.openlocfilehash: dc065e68d513850f9e006371861d087cccc6e155
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122778901"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129669855"
 ---
 # <a name="connect-cross-tenant-vnets-to-a-virtual-wan-hub"></a>クロステナント Vnet を Virtual WAN に接続する
 
@@ -28,6 +28,9 @@ ms.locfileid: "122778901"
 
 この構成の手順は、Azure portal と PowerShell を組み合わせて使用して実行します。 ただし、機能自体は PowerShell と CLI でのみ提供されています。
 
+>[!NOTE]
+> テナント間の Virtual Network 接続は、PowerShell または CLI を使用してのみ管理できることに注意してください。 Azure portal では、テナント間の Virtual Network 接続を管理することは **できません**。
+> 
 ## <a name="before-you-begin"></a>はじめに
 
 ### <a name="prerequisites"></a>前提条件

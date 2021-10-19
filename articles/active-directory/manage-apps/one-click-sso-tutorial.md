@@ -1,6 +1,7 @@
 ---
-title: Azure Marketplace アプリケーションの One Click シングル サインオン (SSO) の構成 | Microsoft Docs
+title: Azure Marketplace アプリケーションの One Click シングル サインオン (SSO) の構成
 description: Azure Marketplace のアプリケーションの SSO をワンクリックで構成する手順。
+titleSuffix: Azure AD
 services: active-directory
 author: davidmu1
 manager: CelesteDG
@@ -12,14 +13,14 @@ ms.date: 06/11/2019
 ms.author: davidmu
 ms.collection: M365-identity-device-management
 ms.reviewer: ergreenl
-ms.openlocfilehash: dac32dd14e006b1187f62389d3bc38e3c30a890f
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 97cdedac91fa80c45ec8b36bad4a1368e48e3e81
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124791462"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129615792"
 ---
-# <a name="one-click-app-configuration-of-single-sign-on"></a>アプリの One Click シングル サインオンの構成
+# <a name="one-click-app-configuration-of-single-sign-on-in-azure-active-directory"></a>Azure Active Directory のシングル サインオンの One Click アプリ構成
 
  このチュートリアルでは、SAML をサポートする Azure Marketplace の Azure Active Directory (Azure AD) アプリケーションの One Click シングル サインオン (SSO) を構成する方法について説明します。
 

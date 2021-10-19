@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 09/07/2021
 ms.author: cherylmc
-ms.openlocfilehash: d44ccec62a9da63fccc45a0735ff16f615dfbb4b
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 99cee6b73fb37caf0ccf09170d60ea4ba3effc2a
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128643139"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129714172"
 ---
 # <a name="azure-bastion-faq"></a>Azure Bastion に関する FAQ
 
@@ -79,7 +79,24 @@ Azure Bastion によって、顧客データがデプロイされているリー
 
 ### <a name="which-keyboard-layouts-are-supported-during-the-bastion-remote-session"></a><a name="keyboard"></a>Bastion リモート セッション中はどのキーボード レイアウトがサポートされますか?
 
-Azure Bastion は現在、VM 内で en-us-qwerty のキーボード レイアウトをサポートしています。  キーボード レイアウトのその他のロケールに対するサポートは進行中の作業です。
+現在、VM 内では次のキーボード レイアウトが、Azure Bastion でサポートされています。
+* en-us-qwerty
+* en-gb-qwerty
+* de-ch-qwertz
+* de-de-qwertz
+* fr-be-azerty
+* fr-fr-azerty
+* fr-ch-qwertz
+* hu-hu-qwertz
+* it-it-qwerty
+* ja-jp-qwerty
+* pt-br-qwerty
+* es-es-qwerty
+* es-latam-qwerty
+* sv-se-qwerty
+* tr-tr-qwerty
+
+ターゲット VM での既定のキーボード レイアウトは、ご利用のローカル言語と一致します。これは、ご利用のローカル コンピューターの設定で変更できます。
 
 ### <a name="does-azure-bastion-support-timezone-configuration-or-timezone-redirection-for-target-vms"></a><a name="timezone"></a>Azure Bastion では、ターゲット VM のタイムゾーンの構成やタイムゾーンのリダイレクトはサポートされていますか?
 

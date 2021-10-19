@@ -7,18 +7,18 @@ ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/16/2021
-ms.openlocfilehash: 2c8cbc3496b0a7b12f8df114ed2aa993ee5cb1a7
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 054abdaeb184a37a995f14ab6196c378abbb470b
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128610866"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129707667"
 ---
 # <a name="tips-for-ai-enrichment-in-azure-cognitive-search"></a>Azure Cognitive Search における AI エンリッチメントに関するヒント
 
 この記事では、Azure Cognitive Search で AI エンリッチメント機能を使い始めてから利用を続けるためのヒントやコツの一覧を示します。 
 
-まだ[AI エンリッチメント API を呼び出す方法を学習するチュートリアル](cognitive-search-quickstart-blob.md)を行っていない場合は、AI エンリッチメントを BLOB データ ソースに適用する練習のために、このチュートリアルを実行してください。
+まだ行っていない場合は、[テキスト翻訳とエンティティ スキルセットの作成](cognitive-search-quickstart-blob.md)または [OCR イメージ スキルセットの作成](cognitive-search-quickstart-ocr.md)に関するクイックスタートを実行して、BLOB データのエンリッチメントについて確認してください。
 
 ## <a name="tip-1-start-with-a-small-dataset"></a>ヒント 1: 小さなデータセットから開始する
 問題をすばやく見つける最良の方法は、問題を修正する速度を上げることです。 インデックス付け時間を短縮する最善の方法は、インデックス付けするドキュメントの数を減らすことです。 

@@ -3,14 +3,14 @@ title: Azure Functions 用 JavaScript 開発者向けリファレンス
 description: JavaScript を使用して関数を開発する方法について説明します。
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
-ms.date: 03/07/2021
+ms.date: 10/07/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: e62e320e2fac2b34e970f983965f9809d62e2103
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fbd291494554c7bbb6e7f79a932717bf81a124c6
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121741385"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129667594"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions の JavaScript 開発者向けガイド
 
@@ -264,17 +264,15 @@ context.bindingData
 
 ### <a name="contextdone-method"></a>context.done メソッド
 
-```js
-context.done([err],[propertyBag])
-```
+**context.done** メソッドは、同期メソッドによって使用されます。
 
-ランタイムにコードが完了したことを知らせます。 関数で [`async function`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function) 宣言を使用する場合、`context.done()` を使用する必要はありません。 `context.done` コールバックは暗黙的に呼び出されます。 非同期関数は Node 8 以降のバージョンで使用できますが、それにはバージョン 2.x の Functions ランタイムが必要です。
+|同期実行|[非同期](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function)実行<br>(Node 8+、Functions ランタイム 2+)|
+|--|--|
+|必須: 関数が完了したとランタイムに通知する `context.done([err],[propertyBag])`。 これがない場合、実行はタイムアウトします。<br>`context.done` メソッドを使用すると、ランタイムに対するユーザー定義のエラーと、出力バインド データを含む JSON オブジェクトの両方を、戻すことができます。 `context.done` に渡されるプロパティは、`context.bindings` オブジェクトで設定されているすべてのものを上書きします。|不要: `context.done` - 暗黙的に呼び出されます。| 
 
-関数が非同期関数ではない場合、関数が完了したことをランタイムに通知するために **呼び出す必要があります** `context.done`。 これがない場合、実行はタイムアウトします。
-
-`context.done` メソッドを使用すると、ランタイムに対するユーザー定義のエラーと、出力バインド データを含む JSON オブジェクトの両方を、戻すことができます。 `context.done` に渡されるプロパティは、`context.bindings` オブジェクトで設定されているすべてのものを上書きします。
 
 ```javascript
+// Synchronous code only
 // Even though we set myOutput to have:
 //  -> text: 'hello world', number: 123
 context.bindings.myOutput = { text: 'hello world', number: 123 };
@@ -588,7 +586,7 @@ module.exports = function(context) {
 
 ### <a name="in-azure-cloud-environment"></a>Azure クラウド環境
 
-Azure で実行されている場合は、関数アプリで[アプリケーション設定](functions-app-settings.md) (サービス接続文字列など) を使用し、これらの設定を実行時に環境変数として公開できます。 
+Azure で実行されている場合は、関数アプリで[アプリケーション設定](functions-app-settings.md) (サービス接続文字列など) を設定して使用し、これらの設定を実行時に環境変数として公開できます。 
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 

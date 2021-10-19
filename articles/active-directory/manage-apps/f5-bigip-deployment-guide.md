@@ -1,5 +1,6 @@
 ---
-title: F5 を使用した Azure AD のセキュリティで保護されたハイブリッド アクセスのデプロイ ガイド | Microsoft Docs
+title: セキュリティで保護されたハイブリッド アクセスと F5 デプロイのガイド
+titleSuffix: Azure AD
 description: セキュリティで保護されたハイブリッド アクセスのために F5 BIG-IP Virtual Edition (VE) VM を Azure IaaS にデプロイするチュートリアル
 services: active-directory
 author: davidmu1
@@ -13,14 +14,14 @@ ms.author: davidmu
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
 ms.reviewer: miccohen
-ms.openlocfilehash: f33e9a8207e3b8e6986999b7ea19aedbcb19b4da
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2bc309ed4d4fcfcc205ff3b464d23769d1e2182c
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121749209"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129611859"
 ---
-# <a name="tutorial-to-deploy-f5-big-ip-virtual-edition-vm-in-azure-iaas-for-secure-hybrid-access"></a>セキュリティで保護されたハイブリッド アクセスのために F5 BIG-IP Virtual Edition VM を Azure IaaS にデプロイするチュートリアル
+# <a name="deploy-an-f5-big-ip-virtual-edition-vm-to-azure-active-directory"></a>F5 BIG-IP Virtual Edition VM を Azure Active Directory にデプロイする
 
 このチュートリアルでは、Azure IaaS に BIG-IP Virtual Edition (VE) をデプロイするエンドツーエンドのプロセスについて説明します。 このチュートリアルを終了すると、次のものが準備できたことになります。
 
@@ -245,7 +246,7 @@ BIG-IP の **アクセス ガイド付き構成** を使用して SHA を実装�
 
  |     フィールド   |   値        |
  |:------------|:------------|
- |ソース| Any|
+ |source| Any|
  |Source port ranges| *|
  |送信先 IP アドレス|BIG-IP-VM のすべてのセカンダリ プライベート IP のコンマ区切りリスト|
  |宛先ポート| 80,443|

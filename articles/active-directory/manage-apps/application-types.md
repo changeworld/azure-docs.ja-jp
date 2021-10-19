@@ -1,5 +1,6 @@
 ---
-title: ID 管理用の Azure Active Directory テナントを使用してアプリを表示する
+title: ID 管理用のテナントを使用してアプリを表示する
+titleSuffix: Azure AD
 description: ID 管理用の Azure Active Directory テナントを使用してすべてのアプリを表示する方法について説明します。
 services: active-directory
 author: davidmu1
@@ -11,14 +12,14 @@ ms.topic: reference
 ms.date: 01/07/2021
 ms.author: davidmu
 ms.reviewer: alamaral
-ms.openlocfilehash: 3f106a7153f9fd61c289516d129e31c9239b97fd
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a2030df0bd70781f299ee7db60df0e3ae49b8568
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121738871"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129620718"
 ---
-# <a name="viewing-apps-using-your-azure-ad-tenant-for-identity-management"></a>ID 管理用の Azure AD テナントを使用してアプリを表示する
+# <a name="viewing-apps-using-your-azure-active-directory-tenant-for-identity-management"></a>ID 管理用の Azure Active Directory テナントを使用してアプリを表示する
 
 「[アプリケーション管理のクイックスタート シリーズ](view-applications-portal.md)」では、基本情報を紹介します。 ID 管理用の Azure AD テナントを使用して、すべてのアプリを表示する方法について説明します。 この記事では、表示されるアプリの種類についてもう少し詳しく説明します。
 

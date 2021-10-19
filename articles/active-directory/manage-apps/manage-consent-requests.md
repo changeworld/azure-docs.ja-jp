@@ -1,6 +1,7 @@
 ---
-title: アプリケーションの同意の管理と Azure Active Directory の同意要求の評価
+title: アプリケーションの同意の管理と同意要求の評価
 description: ユーザーの同意が無効または制限されている場合に同意要求を管理する方法、および Azure Active Directory でアプリケーションに対するテナント全体の管理者の同意要求を評価する方法について説明します。
+titleSuffix: Azure AD
 services: active-directory
 author: davidmu1
 manager: CelesteDG
@@ -11,14 +12,14 @@ ms.topic: how-to
 ms.date: 08/25/2021
 ms.author: davidmu
 ms.reviewer: phsignor
-ms.openlocfilehash: a6bf1ec1616d45edd08b943b55f2859d7942c908
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 5de11c8f853d471ad616ff0a9df4d01acb896c3f
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123425851"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129619806"
 ---
-# <a name="managing-consent-to-applications-and-evaluating-consent-requests"></a>アプリケーションの同意の管理と同意要求の評価
+# <a name="manage-consent-to-applications-and-evaluate-consent-requests-in-azure-active-directory"></a>アプリケーションの同意の管理と Azure Active Directory の同意要求の評価
 
 Microsoft では、ユーザーが検証された発行元からのアプリと選択したアクセス許可に対してのみ同意できるように、[ユーザーの同意を制限する](../../active-directory/manage-apps/configure-user-consent.md)ことをお勧めします。 このポリシーを満たしていないアプリの場合、組織のセキュリティ チームと ID 管理者チームに意思決定プロセスが一元化されます。
 

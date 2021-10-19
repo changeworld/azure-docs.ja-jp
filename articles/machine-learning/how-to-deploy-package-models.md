@@ -9,12 +9,12 @@ ms.date: 07/31/2020
 ms.topic: how-to
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: 8327a1855de21c274a54f1bfa3750eab9aea8a8c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 05af03c7ac60e2f98471ace4d57a296a54cf8ce6
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128649344"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129707353"
 ---
 # <a name="how-to-package-a-registered-model-with-docker"></a>Docker を使用して登録済みモデルをパッケージ化する方法
 
@@ -27,7 +27,7 @@ ms.locfileid: "128649344"
 
 ## <a name="package-models"></a>モデルのパッケージ化
 
-場合によっては、モデルをデプロイせずに Docker イメージを作成することが必要になることがあります (たとえば、[Azure App Service にデプロイする](how-to-deploy-app-service.md)予定がある場合)。 または、イメージをダウンロードして、ローカルの Docker インストールで実行することが必要な場合もあります。 さらに、イメージのビルドに使用するファイルをダウンロードし、それらを検査および変更して、手動でビルドすることが必要な場合もあります。
+場合によっては、モデルをデプロイせずに Docker イメージを作成することが必要になることがあります。 または、イメージをダウンロードして、ローカルの Docker インストールで実行することが必要な場合もあります。 さらに、イメージのビルドに使用するファイルをダウンロードし、それらを検査および変更して、手動でビルドすることが必要な場合もあります。
 
 モデルのパッケージ化により、これらを行うことができます。 モデルを Web サービスとしてホストするために必要なすべてのアセットをパッケージ化し、完全にビルドされた Docker イメージ、またはイメージのビルドに必要なファイルのいずれかをダウンロードできます。 モデルのパッケージ化を使用するには、次の 2 つの方法があります。
 

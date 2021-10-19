@@ -1,6 +1,7 @@
 ---
-title: アクティビティ レポートを使用して AD FS アプリを Azure Active Directory に移行する | Microsoft Docs
+title: アクティビティ レポートを使用して AD FS アプリを Azure Active Directory に移行する
 description: Active Directory フェデレーション サービス (AD FS) のアプリケーション アクティビティ レポートを使用すると、AD FS から Azure Active Directory (Azure AD) にアプリケーションをすばやく移行できます。 AD FS 用のこの移行ツールでは、Azure AD との互換性を識別して、移行に関するガイダンスを得られます。
+titleSuffix: Azure AD
 services: active-directory
 author: davidmu1
 manager: CelesteDG
@@ -12,14 +13,14 @@ ms.date: 01/14/2019
 ms.author: davidmu
 ms.collection: M365-identity-device-management
 ms.reviewer: alamaral
-ms.openlocfilehash: 6b60479d1205acdd0d18311791adfc4924913c4e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 00bc79bf0ab078e3a95c958b8c539f453a633e1c
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121738774"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129614728"
 ---
-# <a name="use-the-ad-fs-application-activity-report-to-migrate-applications-to-azure-ad"></a>AD FS アプリケーション アクティビティ レポートを使用してアプリケーションを Azure AD に移行する
+# <a name="review-the-application-activity-report-in-azure-active-directory"></a>Azure Active Directory のアプリケーション アクティビティ レポートを確認する
 
 多くの組織では、Active Directory フェデレーション サービス (AD FS) を使用して、クラウド アプリケーションへのシングルサインオンを提供しています。 認証のために AD FS アプリケーションを Azure AD に移行すると、コスト管理、リスク管理、生産性、コンプライアンス、ガバナンスの点で特に大きなメリットが得られます。 しかし、どのアプリケーションが Azure AD と互換性があるかを把握し、具体的な移行手順を特定するには、時間がかかる場合があります。
 

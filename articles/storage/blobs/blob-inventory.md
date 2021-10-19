@@ -10,12 +10,12 @@ ms.author: normesta
 ms.reviewer: klaasl
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: 9cf53cdf35435030b9aa16b8336d80d887e6efbd
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 6962688a574d7f7c11f8cbfc71ccdb29ac3b6445
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128584210"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129619390"
 ---
 # <a name="azure-storage-blob-inventory"></a>Azure Storage BLOB インベントリ
 
@@ -254,7 +254,7 @@ BLOB インベントリの実行は、毎日自動的にスケジュールされ
 
 ルールのインベントリの実行ごとに、次のファイルが生成されます。
 
-- **インベントリ ファイル:** ルールを使用してインベントリを実行すると、CSV または Apache Parquet 形式のファイルが少なくとも 1 つ生成されます。 一致したオブジェクトの数が大きい場合は、1 つのファイルではなく複数のファイルが生成されます。 そのような各ファイルには、一致したオブジェクトとそのメタデータが含まれます。 CS 形式のファイルの場合、最初の行は常にスキーマ行になります。 次の図は、Microsoft Excel で開いたインベントリ CSV ファイルを示しています。
+- **インベントリ ファイル:** ルールを使用してインベントリを実行すると、CSV または Apache Parquet 形式のファイルが少なくとも 1 つ生成されます。 一致したオブジェクトの数が大きい場合は、1 つのファイルではなく複数のファイルが生成されます。 そのような各ファイルには、一致したオブジェクトとそのメタデータが含まれます。 CSV 形式のファイルの場合、最初の行は常にスキーマ行になります。 次の図は、Microsoft Excel で開いたインベントリ CSV ファイルを示しています。
 
   :::image type="content" source="./media/blob-inventory/csv-file-excel.png" alt-text="Microsoft Excel で開いたインベントリ CSV ファイルのスクリーンショット":::
 

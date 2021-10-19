@@ -1,5 +1,5 @@
 ---
-title: Azure CDN エンドポイントの複数配信元 (プレビュー)
+title: Azure CDN エンドポイントの複数配信元
 description: Azure CDN エンドポイントで複数の配信元を使用します。
 services: cdn
 author: asudbring
@@ -8,12 +8,12 @@ ms.service: azure-cdn
 ms.topic: how-to
 ms.date: 08/18/2021
 ms.author: allensu
-ms.openlocfilehash: 06d0e35534db97f1de48c55f9cc6f46f979514fa
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: 1e17c747c87a5abb184ae4b7b263a8b5bd1a3a49
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122444840"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129855994"
 ---
 # <a name="azure-cdn-endpoint-multi-origin"></a>Azure CDN エンドポイントの複数配信元
 
@@ -22,6 +22,8 @@ ms.locfileid: "122444840"
 Azure CDN エンドポイント内で複数の配信元を選択すると、提供される冗長性によって、各配信元の正常性が調査され、必要に応じてフェールオーバーされることによって、リスクが分散されます。
 
 1 つまたは複数の配信元グループを設定して、既定の配信元グループを選択します。 各配信元グループは、類似したワークロードを受け取ることができる 1 つ以上の配信元のコレクションです。
+
+最初の配信元グループが、既定の配信元グループとして設定されます。 CDN エンドポイントの既定の配信元グループが選択されると、複数配信元機能が有効になります。 いったん有効になった複数配信元機能を無効にすることはできず、既定の配信元グループは削除できません。 既定の配信元グループは、要求を配信元にルーティングするために使用されます。 配信元グループの構成を更新し、1 つの配信元の構成に切り替えることができます。 また、既定の配信元グループの指定を別の配信元グループに変更することもできます。
 
 > [!NOTE]
 > 現在、この機能は Microsoft の Azure CDN からのみ使用できます。 

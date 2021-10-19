@@ -9,12 +9,12 @@ ms.author: amjads
 ms.collection: linux
 ms.date: 12/13/2018
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 20be29d428fe6eaf9e7e64b4536c5014641c5416
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 04264276b3419e32aa420792027502ce3d1acbb2
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111962523"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129669684"
 ---
 # <a name="use-linux-diagnostic-extension-30-to-monitor-metrics-and-logs"></a>Linux Diagnostic Extension 3.0 を使用して、メトリックとログを監視する
 
@@ -62,7 +62,7 @@ Debian 7 などのメジャー バージョンのみを示しているディス�
 
 サポートされているディストリビューションとバージョン:
 
-- Ubuntu 18.04、16.04、14.04
+- Ubuntu 20.04、18.04、16.04、14.04
 - CentOS 7、6.5+
 - Oracle Linux 7、6.4+
 - OpenSUSE 13.1+

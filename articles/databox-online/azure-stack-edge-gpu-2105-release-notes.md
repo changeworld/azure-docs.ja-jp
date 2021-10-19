@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 05/27/2021
 ms.author: alkohli
-ms.openlocfilehash: 60de3b926e490ce1eb6a74b5234e21f8173a8ade
-ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
+ms.openlocfilehash: 90f5abd9a141e22bbc6eff37f2da7dfd6b5abc7e
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114220349"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129707465"
 ---
 # <a name="azure-stack-edge-2105-release-notes"></a>Azure Stack Edge 2105 リリース ノート
 

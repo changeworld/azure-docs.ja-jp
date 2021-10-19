@@ -3,19 +3,19 @@ title: コンテナー分析情報を有効にする | Microsoft Docs
 description: この記事では、コンテナーのパフォーマンスと特定されたパフォーマンスに関する問題を把握できるように、コンテナー分析情報を有効にして構成する方法について説明します。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 04bc88034c3537431c4c1972611d0c4d93e4cda4
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: de7475ddb5a8057ef1b58d4ed21c55a1d10a4dd8
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128631403"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129708948"
 ---
 # <a name="enable-container-insights"></a>コンテナー分析情報を有効にする
 
 この記事では、Kubernetes 環境にデプロイされ、以下でホストされているワークロードのパフォーマンスを監視することを目的として、コンテナー分析情報を設定するために使用できるオプションの概要について説明します。
 
 - [Azure Kubernetes Service (AKS)](../../aks/index.yml)  
-- [Arc 対応 Kubernetes クラスター](../../azure-arc/kubernetes/overview.md)
+- [Azure Arc 対応 Kubernetes クラスター](../../azure-arc/kubernetes/overview.md)
    - [Azure Stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview) またはオンプレミス
    - [AKS エンジン](https://github.com/Azure/aks-engine)
    - [Azure Red Hat OpenShift](../../openshift/intro-openshift.md) バージョン 4.x  

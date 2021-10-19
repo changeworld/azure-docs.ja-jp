@@ -7,17 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/20/2021
+ms.date: 10/08/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 3e3cb266e9da128e9379d6868d189ac72408c4f7
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 05d5d4a3ed9ea9e9ea99cd917762973f2865528f
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128605831"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129657323"
 ---
 # <a name="define-custom-attributes-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム属性を定義する
 
@@ -48,7 +48,7 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
 1. カスタム属性の **[名前]** ("ShoeSize" など) を指定します。
 1. **[データ型]** を選択します。 **[文字列]** 、 **[ブール値]** 、および **[Int] (整数)** のみを使用できます。
 1. オプションで、情報目的のために **[説明]** を入力します。
-1. **Create** をクリックしてください。
+1. **［作成］** を選択します
 
 これで、このカスタム属性が **[ユーザー属性]** の一覧やユーザー フローで使用できるようになります。 カスタム属性が作成されるのは、いずれかのユーザー フローで初めて使用されるときだけであり、 **[ユーザー属性]** の一覧に追加されるときではありません。
 
@@ -58,9 +58,9 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
 
 1. Azure AD B2C テナントで、 **[ユーザー フロー]** を選択します。
 1. ポリシー ("B2C_1_SignupSignin" など) を選択して開きます。
-1. **[ユーザー属性]** 、カスタム属性 ("ShoeSize" など) の順に選択します。 **[保存]** をクリックします。
+1. **[ユーザー属性]** 、カスタム属性 ("ShoeSize" など) の順に選択します。 **[保存]** を選択します。
 1. **[アプリケーションの要求]** 、カスタム属性の順に選択します。
-1. **[保存]** をクリックします。
+1. **[保存]** を選択します。
 
 新しく作成したカスタム属性を使用するユーザー フローを使用して新しいユーザーを作成したら、[Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) でオブジェクトのクエリを実行できます。 または、ユーザー フローに対して [[ユーザー フローを実行します]](./tutorial-create-user-flows.md) 機能を使用して、カスタマー エクスペリエンスを確認できます。 これで、**ShoeSize** がサインアップ中に収集される属性の一覧や、アプリケーションに送り返されるトークンに表示されるようになります。
 
@@ -72,7 +72,7 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
 
 ::: zone pivot="b2c-user-flow"
 
-アプリケーション ID を取得するには:
+### <a name="get-extensions-apps-application-id"></a>拡張機能アプリのアプリケーション ID を取得する
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
@@ -86,7 +86,7 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
 
 ::: zone pivot="b2c-custom-policy"
 
-次の手順でアプリケーション プロパティを取得します。
+### <a name="get-extensions-apps-application-properties"></a>拡張機能アプリのアプリケーション プロパティを取得する
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 1. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
@@ -189,6 +189,36 @@ Microsoft Graph API では、拡張属性を使用したユーザーの作成と
 "extension_831374b3bd5041bfaa54263ec9e050fc_loyaltyId": "212342" 
 ``` 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="remove-extension-attribute"></a>拡張属性を削除する
+
+組み込み属性とは異なり、拡張属性やカスタム属性は削除できます。 拡張属性の値も削除できます。 
+
+> [!Important]
+> 拡張機能やカスタム属性を削除する前に、ディレクトリ内の各アカウントに対して、拡張属性の値を null に設定します。  この方法で拡張属性の値を明示的に削除します。 続いて拡張属性自体を削除します。 拡張機能とカスタム属性は MS Graph API を使用してクエリを実行できます。 
+
+::: zone pivot="b2c-user-flow"
+
+ユーザーフローから拡張機能とカスタム属性を削除するには、次の手順に従います。
+
+1. Azure AD B2C テナントの全体管理者として [Azure Portal](https://portal.azure.com/) にサインインします。
+2. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。
+    1.  ポータル ツールバーの **[Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** アイコンを選択します。
+    1. **[ポータルの設定] | [Directories + subscriptions]\(ディレクトリ + サブスクリプション\)** ページの [ディレクトリ名] の一覧で自分の Azure AD B2C ディレクトリを見つけて、 **[切り替え]** を選択します。
+1. Azure Portal の左上隅の **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
+1. **[ユーザー属性]** を選択してから、削除する属性を選択します。
+1. **[削除]** を選択してから、 **[はい]** を選択して確定します。
+
+::: zone-end
+
+::: zone pivot="b2c-custom-policy"
+
+カスタム属性を削除するには、[MS Graph API](microsoft-graph-operations.md) を使用して [Delete](/graph/api/application-delete-extensionproperty) コマンドを使用します。
+
+::: zone-end
+
+ 
+
+
+## <a name="next-steps"></a>次の手順
 
 [カスタム ポリシーを使用した要求の追加とユーザー入力のカスタマイズ](configure-user-input.md)に関するガイドラインに従ってください。 このサンプルでは、組み込みの要求の "city" を使用します。 カスタム属性を使用するには、"city" を独自のカスタム属性に置き換えます。

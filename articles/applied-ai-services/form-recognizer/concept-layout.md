@@ -7,69 +7,82 @@ manager: nitinme
 ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 08/09/2021
+ms.date: 10/07/2021
 ms.author: lajanuar
-ms.openlocfilehash: 247400ea72567108fb9dc320bddd1b87d6ef6ced
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+recommendations: false
+ms.openlocfilehash: 425a5cb9ab332076ddd0d745bba7b914e5601917
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128641676"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129707149"
 ---
-# <a name="form-recognizer-layout-service"></a>Form Recognizer レイアウト サービス
+# <a name="form-recognizer-layout-model"></a>Form Recognizer レイアウト モデル
 
 Azure Form Recognizer の Layout API を使用すると、ドキュメント (PDF、TIFF) と画像 (JPG、PNG、BMP) から、テキスト、テーブル、選択マーク、および構造情報を抽出できます。 これを使用すると、お客様はさまざまな形式のドキュメントを受け取り、ドキュメントの構造化されたデータ表現を返すことができます。 これは、Microsoft の強力な[光学式文字認識 (OCR)](../../cognitive-services/computer-vision/overview-ocr.md) 機能の強化バージョンと、ディープ ラーニング モデルを組み合わせ、テキスト、テーブル、選択マーク、ドキュメント構造を抽出します。
 
-## <a name="what-does-the-layout-service-do"></a>レイアウト サービスの機能
+##### <a name="sample-form-processed-with-form-recognizer-sample-labeling-tool--layout-feature"></a>[Form Recognizer サンプル ラベル付けツール](https://fott-2-1.azurewebsites.net/)のレイアウト機能を使用して処理されたサンプル フォーム:
 
-Layout API を使用すると、非常に優れた精度でドキュメントからテキスト、テーブル ヘッダーが含まれるテーブル、選択マーク、構造の情報が抽出され、構造化された JSON 応答に整理されて返されます。 ドキュメントは、携帯電話でキャプチャされた画像、スキャンされたドキュメント、デジタル PDF など、さまざまな形式や品質のものを利用できます。 Layout API により、そのようなドキュメントのいずれからも、構造化された出力が正確に抽出されます。
+:::image type="content" source="media/layout-demo.gif" alt-text="{alt-text}":::
 
-![レイアウトの例](./media/layout-demo.gif)
+**データ抽出機能**
 
-## <a name="try-it&quot;></a>[試用版]
+| **レイアウト モデル**   | **テキスト抽出**   | **選択マーク**   | **テーブル**  |
+| --- | --- | --- | --- |
+| Layout  | ✓  | ✓  | ✓  |
 
-Form Recognizer のレイアウト サービスを試してみるには、オンラインのサンプル UI ツールにアクセスしてください。
+## <a name="try-form-recognizer-studio-preview"></a>Form Recognizer スタジオ (プレビュー) を試す
 
-> [!div class=&quot;nextstepaction&quot;]
-> [レイアウト モデルを試す](https://aka.ms/fott-2.1-ga &quot;フォームからデータを抽出するための事前構築済みのレイアウト モデルを使用して開始します。")
+* Form Recognizer スタジオは、プレビュー (v3.0) API で使用できます。
 
-Form Recognizer Layout API を試すには、Azure サブスクリプション ([無料で作成](https://azure.microsoft.com/free/cognitive-services)) と [Form Recognizer リソース](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) エンドポイントおよびキーが必要です。
+* Form Recognizer スタジオのレイアウト機能を使用して、フォームとドキュメントからテーブル、チェック ボックス、テキストを抽出します。
 
-![サンプル UI のスクリーンショット。ドキュメントのテキスト、テーブル、選択マークが分析されている](./media/analyze-layout.png)
+> [!div class="nextstepaction"]
+> [Form Recognizer スタジオを試す](https://formrecognizer.appliedai.azure.com/studio/layout)
+
+## <a name="try-form-recognizer-sample-labeling-tool"></a>Form Recognizer サンプル ラベル付けツールを試す
+
+サンプル ラベル付けツールを試すことで、レイアウト データがどのように抽出されるかを確認できます。 次が必要です。
+
+* Azure サブスクリプション — [無料で作成する](https://azure.microsoft.com/free/cognitive-services/)ことができます
+
+* Azure portal の [Form Recognizer インスタンス](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer)。 Free 価格レベル (`F0`) を利用して、サービスを試用できます。 リソースがデプロイされたら、 **[リソースに移動]** をクリックして API キーとエンドポイントを取得します。
+
+ :::image type="content" source="media/containers/keys-and-endpoint.png" alt-text="スクリーンショット: Azure portal のキーとエンドポイントの場所。":::
+
+* フォーム ドキュメント。 [サンプル フォーム ドキュメント](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/sample-layout.pdf)を使用できます。
+
+> [!div class="nextstepaction"]
+  > [試してみる](https://fott-2-1.azurewebsites.net/prebuilts-analyze)
+
+  Form Recognizer UI で以下の手順を実行します。
+
+  1. **[Use Layout to get text, tables, and selection marks]\(レイアウトを使用してテキスト、テーブル、および選択マークを取得する\)** を選択します。
+  1. ドロップダウン メニューから、 **[ローカル ファイル]** を選択します。
+  1. ファイルをアップロードし、 **[Run Layout]\(レイアウトの実行\)** を選択します
+
+  :::image type="content" source="media/try-layout.png" alt-text="スクリーンショット: スクリーンショット: サンプル ラベル付けツールのドロップダウンのレイアウト ファイル ソース選択メニュー。":::
 
 ## <a name="input-requirements"></a>入力の要件
 
-[!INCLUDE [input requirements](./includes/input-requirements-receipts.md)]
+* 最適な結果を得るには、ドキュメントごとに 1 つの鮮明な写真または高品質のスキャンを提供してください。
+* サポートされているファイル形式: JPEG、PNG、BMP、TIFF、および PDF (テキスト埋め込みまたはスキャン済み)。 文字の抽出と位置に関するエラーが発生する可能性を排除するには、テキストが埋め込まれている PDF が最適です。
+* PDF および TIFF の場合、最大 2000 ページが処理されます (Free レベルのサブスクリプションでは、最初の 2 ページのみが処理されます)。
+* ファイル サイズは 50 MB 未満である必要があります。
+* 画像の寸法は、50 x 50 ピクセルから 10,000 x 10,000 ピクセルの間である必要があります。
+* PDF の寸法は、17 x 17 インチまでで、Legal または A3 サイズ以下の用紙に対応します。
+* トレーニング データ セットの合計サイズは、500 ページ以下です。
+* PDF がパスワードでロックされている場合は、送信前にロックを解除する必要があります。
+* 教師なし学習の場合 (ラベルの付いたデータなし):
+  * データには、キーと値を含める必要があります。
+  * キーは値の上または左に配置されている必要があり、下または右に配置されていてはいけません。
 
-## <a name="analyze-layout"></a>レイアウトを分析する
+> [!NOTE]
+> [サンプル ラベル付けツール](https://fott-2-1.azurewebsites.net/)では、BMP ファイル形式はサポートされていません。 これは、Form Recognizer サービスではなく、ツールの制限です。
 
-まず、[レイアウト分析](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeLayoutAsync)操作を呼び出します。 レイアウト分析を使用すると、ドキュメント (画像、TIFF、または PDF ファイル) が入力として取得されて、ドキュメントのテキスト、テーブル、選択マーク、構造が抽出されます。 この呼び出しにより、`Operation-Location` という応答ヘッダー フィールドが返されます。 `Operation-Location` 値は、次の手順で使用される結果 ID を含む URL です。
+## <a name="supported-languages-and-locales"></a>サポートされている言語とロケール
 
-|応答ヘッダー| 結果の URL |
-|:-----|:----|
-|Operation-Location | `https://cognitiveservice/formrecognizer/v2.1/layout/analyzeResults/{resultId}' |
-
-## <a name="get-analyze-layout-result"></a>レイアウト分析結果取得
-
-2 番目の手順では、[レイアウト分析結果取得](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/GetAnalyzeLayoutResult)操作を呼び出します。 この操作には、レイアウト分析操作によって作成された結果 ID を入力として渡します。 これにより、次の設定可能な値を持つ **status** フィールドが含まれた JSON 応答が返されます。
-
-|フィールド| 型 | 設定可能な値 |
-|:-----|:----:|:----|
-|status | string | `notStarted`:分析操作は開始されていません。<br /><br />`running`:分析操作が進行中です。<br /><br />`failed`:分析操作は失敗しました。<br /><br />`succeeded`:分析操作は成功しました。|
-
-`succeeded` 値が返されるまで、この操作を繰り返し呼び出します。 1 秒あたりの要求数 (RPS) を超えないようにするために、間隔は 3 - 5 秒あけてください。
-
-**status** フィールドの値が `succeeded` である場合、JSON の応答には、抽出されたレイアウト、テキスト、テーブル、選択マークが含まれます。 抽出されるデータには、抽出されたテキスト行と単語、境界ボックス、手書きの指示があるテキスト外観、テーブル、選択マークと選択または非選択の指示が含まれます。
-
-## <a name="sample-json-output"></a>サンプル JSON 出力
-
-"*レイアウト分析結果取得*" 操作への応答は、抽出されたすべての情報が含まれるドキュメントの構造化表現になります。
-[サンプルのドキュメント ファイル](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/curl/form-recognizer/sample-layout.pdf)と、その構造化された出力である[サンプルのレイアウト出力](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/curl/form-recognizer/sample-layout-output.json)を参照してください。
-
-JSON 出力には次の 2 つの部分があります。
-
-* `readResults` ノードには、認識されたすべてのテキストと選択マークが格納されます。 テキストは、まずページごとに整理され、そのうえで行ごと、さらに個々の単語ごとに整理されます。
-* `pageResults` ノードには、境界ボックスで抽出されたテーブルとセル、信頼度、および "readResults" 内の行と単語への参照が格納されます。
+ Form Recognizer のプレビュー バージョンでは、レイアウト モデルに追加の言語サポートが導入されています。 サポートされている手書き文字と印刷テキストの完全な一覧については、[言語サポート](language-support.md#layout-and-custom-model)に関する記事を "*参照してください*"。
 
 ## <a name="features"></a>特徴
 
@@ -109,12 +122,22 @@ Layout API により、ドキュメントと画像から、複数のテキスト
 
 :::image type="content" source="./media/layout-select-pages-for-text.png" alt-text="レイアウトが選択されたページの出力":::
 
-## <a name="next-steps"></a>次のステップ
+## <a name="form-recognizer-preview-v30"></a>Form Recognizer プレビュー v3.0
 
-* [Form Recognizer のサンプル UI ツール](https://aka.ms/fott-2.1-ga)を使用し、独自のレイアウト抽出を試してみてください
-* 選択した開発言語でのレイアウト抽出を始めるには、[Form Recognizer のクイックスタート](quickstarts/client-library.md#analyze-layout)を行います。
+ Form Recognizer プレビューでは、いくつかの新機能が導入されています。
 
-## <a name="see-also"></a>関連項目
+* アプリケーションとワークフローでプレビュー バージョンを使用する方法については、[**Form Recognizer v3.0 移行ガイド**](v3-migration-guide.md)に関する記事を参照してください。
 
-* [Form Recognizer とは](./overview.md)
-* [REST API リファレンス ドキュメント](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeLayoutAsync)
+* プレビュー バージョンと新機能の詳細については、[**REST API (プレビュー)** ](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v3-0-preview-1/operations/AnalyzeDocument) に関する記事を参照してください。
+
+## <a name="next-steps"></a>次の手順
+
+* Form Recognizer のクイックスタートを完了する:
+
+  > [!div class="nextstepaction"]
+  > [Form Recognizer のクイックスタート](quickstarts/try-sdk-rest-api.md)
+
+* REST API を調べる:
+
+    > [!div class="nextstepaction"]
+    > [Form Recognizer API v2.1](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeLayoutAsync)

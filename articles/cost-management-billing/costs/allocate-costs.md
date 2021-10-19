@@ -3,21 +3,21 @@ title: Azure のコストの割り当て
 description: この記事では、サブスクリプション、リソース グループ、タグのコストを配分するためのコストの割り当てルールを作成する方法について説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 05/10/2021
+ms.date: 10/07/2021
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: benshy
-ms.openlocfilehash: b837e5819318707b44932f5915746479e27646ec
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 7696dc683d41080f5be2c97ebcb0cdf314e2098d
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109734902"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129706263"
 ---
 # <a name="create-and-manage-azure-cost-allocation-rules-preview"></a>Azure のコストの割り当てルールの作成と管理 (プレビュー)
 
-大企業が利用する Azure のサービスやリソースは、一元管理されているものの、社内のさまざまな部署や事業部門によって利用されることが少なくありません。 通常、中央の管理チームは、共有サービスを実際に利用している社内の部署や事業部門に対し、そのサービスのコストを再度割り当てる必要があります。 この記事は、Azure Cost Management におけるコストの割り当てを理解して使用する際に役立ちます。
+大企業が利用する Azure のサービスやリソースは、一元管理されているものの、社内のさまざまな部署や事業部門によって利用されることが少なくありません。 通常、中央の管理チームは、共有サービスを実際に利用している社内の部署や事業部門に対し、そのサービスのコストを再度割り当てる必要があります。 この記事は、Cost Management におけるコストの割り当てを理解して使用する際に役立ちます。
 
 コストの割り当てを使用すると、組織内の複数のサブスクリプション、リソース グループ、タグ間で共有サービスのコストを再割り当て (配分) することができます。 コストの割り当ては、共有サービスの利用者である社内の部署や事業部門によって所有されている別のサブスクリプション、リソース グループ、タグにそのコストを移すものです。 つまり、コストの割り当ては、事業単位間の "_コストのアカウンタビリティ_" を管理し、明らかにするのに役立ちます。
 
@@ -26,7 +26,7 @@ ms.locfileid: "109734902"
 割り当てられたコストは、コスト分析で示されます。 これらは、コストの割り当てルールの作成時に指定した配分先のサブスクリプション、リソース グループ、タグに関連した追加項目として表示されます。
 
 > [!NOTE]
-> Azure Cost Management のコストの割り当て機能は現在パブリック プレビュー段階です。 Cost Management の一部の機能はサポートされていないか、機能が制限されている可能性があります。
+> Cost Management のコストの割り当て機能は現在パブリック プレビュー段階です。 Cost Management の一部の機能はサポートされていないか、機能が制限されている可能性があります。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -132,4 +132,4 @@ Azure portal で **[コストの管理と請求]**  >  **[コスト管理]**  > 
 
 - コストの割り当てに関する質問と回答については、[Cost Management + Billing に関する FAQ](../cost-management-billing-faq.yml) を参照してください。
 - [コスト割り当ての REST API](/rest/api/cost-management/costallocationrules) を使用して割り当てルールを作成または更新する
-- [Azure Cost Management を使用してクラウドへの投資を最適化する方法](cost-mgt-best-practices.md)の詳細を確認する
+- [Cost Management を使用してクラウドへの投資を最適化する方法](cost-mgt-best-practices.md)の詳細を確認する

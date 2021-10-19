@@ -1,5 +1,5 @@
 ---
-title: 機能の概要
+title: 機能の説明
 titleSuffix: Azure Cognitive Search
 description: Azure Cognitive Search の機能カテゴリについて説明します。
 manager: nitinme
@@ -7,17 +7,19 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/15/2020
-ms.openlocfilehash: f25f67839c0bf859e020859db60027d9a5b2db91
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.date: 10/06/2021
+ms.openlocfilehash: 714dc6ac27f466c98e5c74bc16a9cfa3c5cd30cf
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114729149"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129620281"
 ---
 # <a name="features-of-azure-cognitive-search"></a>Azure Cognitive Search の機能
 
-Azure Cognitive Search は、フルテキスト検索エンジン、検索インデックスの永続的ストレージ、より多くのテキストと構造を抽出するためにインデックス作成時に使用される統合 AI、および API とツールを提供します。 次の表は、カテゴリ別の機能をまとめたものです。 Cognitive Search と他の検索テクノロジの比較については、「[Azure Cognitive Search とは](search-what-is-azure-search.md)」を参照してください。
+Azure Cognitive Search は、フルテキスト検索エンジン、検索インデックスの永続的ストレージ、より多くのテキストと構造を抽出するためにインデックス作成時に使用される統合 AI、および API とツールを提供します。 
+
+次の表は、カテゴリ別の機能をまとめたものです。 Cognitive Search と他の検索テクノロジの比較については、「[検索オプションの比較](search-what-is-azure-search.md#compare-search-options)」を参照してください。
 
 ## <a name="indexing-features"></a>インデックス作成機能
 

@@ -8,15 +8,15 @@ ms.subservice: core
 ms.author: keli19
 author: likebupt
 ms.reviewer: peterlu
-ms.date: 10/29/2020
+ms.date: 10/08/2021
 ms.topic: how-to
 ms.custom: deploy, studio, designer
-ms.openlocfilehash: 110bb5e6349ab5cb64366ba365ccace8ab029362
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: d2553ddde013c43b9ce4d23d2cc0b4541150e6f3
+ms.sourcegitcommit: ee5d9cdaf691f578f2e390101bf5350859d85c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107949436"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129740482"
 ---
 # <a name="use-the-studio-to-deploy-models-trained-in-the-designer"></a>スタジオを使用して、デザイナーでトレーニングされたモデルをデプロイする
 
@@ -100,7 +100,8 @@ Azure Machine Learning スタジオにモデルをデプロイするには、次
 必要なファイルをダウンロードしたら、モデルをデプロイする準備は完了です。
 
 1. **[モデル]** アセット ページで、登録されているモデルを選択します。
-1. **[デプロイ]** ボタンを選択します。
+1. **[デプロイ]** を選択し、 **[Deploy to web service]\(Web サービスにデプロイする\)** を選択します。
+    ![[モデル] アセット ページの [デプロイ] ボタンのスクリーンショット](./media/how-to-deploy-model-designer/open-deploy-wizard.png)
 1. [構成] メニューで、次の情報を入力します。
 
     - エンドポイントの名前を入力します。

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2021
-ms.openlocfilehash: cca95effdbbda099dd3e082e950b92f26e96f80f
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 06a37bc77d5eda453740881af9ca45ad4b8746e8
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114459472"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129715176"
 ---
 # <a name="monitor-virtual-machines-with-azure-monitor-analyze-monitoring-data"></a>Azure Monitor を使用して仮想マシンを監視する: 監視データの分析
 この記事は、シナリオ「[Azure Monitor で仮想マシンとそのワークロードを監視する](monitor-virtual-machine.md)」の一部です。 これは、仮想マシンの構成を完了した後に仮想マシンの監視データを分析する方法について説明しています。
@@ -27,14 +27,14 @@ ms.locfileid: "114459472"
 :::image type="content" source="media/monitor-virtual-machines/vm-menu.png" alt-text="Azure portal での VM の分析を示すスクリーンショット。" lightbox="media/monitor-virtual-machines/vm-menu.png":::
 
 - **概要ページ**: 仮想マシンのホストの [プラットフォームのメトリック](../essentials/data-platform-metrics.md)を表示するには、 **[監視]** タブを選択します。 CPU、ネットワーク、ディスクなど、重要なメトリックのさまざまな期間における傾向を簡単に把握できます。 ただし、これらはホストのメトリックであるため、ゲスト オペレーティング システムからのカウンター (メモリなど) は含まれません。 さまざまな集計を実行できる[メトリックス エクスプローラー](../essentials/metrics-getting-started.md)でこのデータを操作するグラフを選択し、分析用のカウンターを追加します。
-- **アクティビティ ログ**: 現在の仮想マシンに対してフィルター処理された[アクティビティ ログ](../essentials/activity-log.md#view-the-activity-log)のエントリが表示されます。 構成の変更やいつ停止および開始されたかなど、マシンの最近のアクティビティを表示するには、このログを使用します。 
+- **アクティビティ ログ**: 現在の仮想マシンに対してフィルター処理された [アクティビティ ログ](../essentials/activity-log.md#view-the-activity-log)のエントリが表示されます。 構成の変更やいつ停止および開始されたかなど、マシンの最近のアクティビティを表示するには、このログを使用します。 
 - **分析情報**: 現在選択されている仮想マシンのマップを使用して [VM insights](../vm/vminsights-overview.md) を開きます。 マップには、マシン上で実行中のプロセス、他のマシンへの依存関係、および外部プロセスが表示されます。 単一のマシンについてマップ ビューを使用する方法の詳細については、「[VM insights のマップ機能を使用してアプリケーション コンポーネントを把握する](vminsights-maps.md#view-a-map-from-a-vm)」を参照してください。
 
     **[パフォーマンス]** タブを選択すると、さまざまな期間の重大なパフォーマンス カウンターの傾向が表示されます。 [仮想マシン] メニューから VM insights を開くと、各ディスクの詳細なメトリックを含むテーブルも表示されます。 単一のマシンについてマップ ビューを使用する方法の詳細については、[VM insights を使用したパフォーマンスのグラフ化](vminsights-performance.md#view-performance-directly-from-an-azure-vm)に関するページを参照してください。 
 
-- **アラート**: 現在の仮想マシンの[アラート](../alerts/alerts-overview.md)が表示されます。 これらのアラートは、ターゲット リソースとしてマシンのみを使用するため、他のアラートが関連付けられている可能性があります。 すべてのリソースのアラートを表示するには、[Azure Monitor] メニューの **[アラート]** オプションを使用する必要がある場合があります。 詳細については、「[Azure Monitor を使用して仮想マシンを監視する: アラート](monitor-virtual-machine-alerts.md)」を参照してください。
+- **アラート**: 現在の仮想マシンの [アラート](../alerts/alerts-overview.md)が表示されます。 これらのアラートは、ターゲット リソースとしてマシンのみを使用するため、他のアラートが関連付けられている可能性があります。 すべてのリソースのアラートを表示するには、[Azure Monitor] メニューの **[アラート]** オプションを使用する必要がある場合があります。 詳細については、「[Azure Monitor を使用して仮想マシンを監視する: アラート](monitor-virtual-machine-alerts.md)」を参照してください。
 - **メトリック**: スコープをマシンに設定して、メトリックス エクスプローラーを開きます。 このオプションは、 **[概要]** ページからパフォーマンス グラフを 1 つ選択するのと同じですが、メトリックがまだ追加されていない点が異なります。
-- **診断設定**: 現在の仮想マシンに対して[診断拡張機能](../agents/diagnostics-extension-overview.md)を有効にして構成します。 このオプションは、他の Azure リソースの **診断設定** オプションとは異なります。 診断拡張機能は、Azure Event Hubs または Azure Storage にデータを送信する必要がある場合にのみ有効にします。
+- **診断設定**: 現在の仮想マシンに対して [診断拡張機能](../agents/diagnostics-extension-overview.md)を有効にして構成します。 このオプションは、他の Azure リソースの **診断設定** オプションとは異なります。 診断拡張機能は、Azure Event Hubs または Azure Storage にデータを送信する必要がある場合にのみ有効にします。
 - **Advisor の推奨事項**: [Azure Advisor](../../advisor/index.yml) からの現在の仮想マシンに関する推奨事項が表示されます。
 - **ログ**: [スコープ](../logs/scope.md)を現在の仮想マシンに設定して、[Log Analytics](../logs/log-analytics-overview.md) を開きます。 さまざまな既存のクエリから選択して、このマシンのみのログとパフォーマンス データにドリルダウンすることができます。 
 - **接続モニター**: [Network Watcher 接続モニター](../../network-watcher/connection-monitor-overview.md)を開いて、現在の仮想マシンと他の仮想マシンとの間の接続を監視します。 
@@ -45,9 +45,9 @@ ms.locfileid: "114459472"
 
 :::image type="content" source="media/monitor-virtual-machines/monitor-menu.png" alt-text="Azure portal での複数の VM の分析を示すスクリーンショット。" lightbox="media/monitor-virtual-machines/monitor-menu.png":::
 
-- **アクティビティ ログ**: すべてのリソースに対してフィルター処理された[アクティビティ ログ](../essentials/activity-log.md#view-the-activity-log)のエントリが表示されます。 すべてのマシンのイベントを表示するには、仮想マシンまたは仮想マシン スケール セットの **リソースの種類** のフィルターを作成します。
-- **アラート**: すべてのリソースの[アラート](../alerts/alerts-overview.md)を表示します。これには、仮想マシンに関連するものの、ワークスペースに関連付けられているアラートが含まれます。 すべてのマシンのアラートを表示するには、仮想マシンまたは仮想マシン スケール セットの **リソースの種類** のフィルターを作成します。 
-- **メトリック**: スコープを選択せずに[メトリックス エクスプローラー](../essentials/metrics-getting-started.md)を開きます。 この機能は、複数のマシン間で傾向を比較する場合に特に便利です。 まとめて分析するマシンのグループをすばやく追加するには、サブスクリプションまたはリソース グループを選択します。
+- **アクティビティ ログ**: すべてのリソースに対してフィルター処理された [アクティビティ ログ](../essentials/activity-log.md#view-the-activity-log)のエントリが表示されます。 すべてのマシンのイベントを表示するには、仮想マシンまたは仮想マシン スケール セットの **リソースの種類** のフィルターを作成します。
+- **アラート**: すべてのリソースの [アラート](../alerts/alerts-overview.md)を表示します。これには、仮想マシンに関連するものの、ワークスペースに関連付けられているアラートが含まれます。 すべてのマシンのアラートを表示するには、仮想マシンまたは仮想マシン スケール セットの **リソースの種類** のフィルターを作成します。 
+- **メトリック**: スコープを選択せずに [メトリックス エクスプローラー](../essentials/metrics-getting-started.md)を開きます。 この機能は、複数のマシン間で傾向を比較する場合に特に便利です。 まとめて分析するマシンのグループをすばやく追加するには、サブスクリプションまたはリソース グループを選択します。
 - **ログ**: [スコープ](../logs/scope.md)をワークスペースに設定して、[Log Analytics](../logs/log-analytics-overview.md) を開きます。 さまざまな既存のクエリから選択して、すべてのマシンのログとパフォーマンス データにドリルダウンすることができます。 または、追加の分析を実行するためのカスタム クエリを作成することもできます。
 - **ブック**: 複数マシンの VM insights ブックでブック ギャラリーを開きます。 複数のマシン向けに設計された VM insights ブックの一覧については、「[VM insights ブック](vminsights-workbooks.md#vm-insights-workbooks)」を参照してください。 
 - **Virtual Machines**: **[概要]** タブを開いた状態で [VM insights](../vm/vminsights-overview.md) を開きます。 このアクションによって、Azure サブスクリプション内のすべてのマシンが表示され、監視対象のマシンが特定されます。 このビューを使用して、まだ監視対象になっていない個々のマシンをオンボードします。

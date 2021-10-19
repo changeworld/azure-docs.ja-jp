@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/16/2021
-ms.openlocfilehash: 9bc027f269355a76d43fe02e4ca90a0e9f65024d
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 26338164ca073ff5d9b331d36a5a9d935a3f3468
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128656609"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129707599"
 ---
 # <a name="documentation-resources-for-ai-enrichment-in-azure-cognitive-search"></a>Azure Cognitive Search の AI エンリッチメントのドキュメント リソース
 
@@ -34,7 +34,8 @@ AI エンリッチメントは、インデクサーベースのインデクス�
 
 ## <a name="hands-on-walkthroughs"></a>ハンズオン チュートリアル
 
-+ [クイック スタート: Azure portal でコグニティブ スキルセットを作成する](cognitive-search-quickstart-blob.md)
++ [クイックスタート: テキスト翻訳とエンティティ スキルセットを作成する](cognitive-search-quickstart-blob.md)
++ [クイックスタート: OCR イメージ スキルセットを作成する](cognitive-search-quickstart-ocr.md)
 + [チュートリアル:AI によるインデックスのエンリッチ](cognitive-search-tutorial-blob.md)
 + [チュートリアル:デバッグ セッションを使用してスキルセットに対する診断、修復、および変更のコミットを行う](cognitive-search-tutorial-debug-sessions.md)
 

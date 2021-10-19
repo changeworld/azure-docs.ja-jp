@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/16/2021
 ms.topic: how-to
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: be6bc9166ffc0bddae5433734d3213b53e6f6f0e
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 57a3f1f9d9665e23ba40479062f0f60e59608b66
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128673656"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129707423"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-in-azure-machine-learning-studio"></a>Azure Machine Learning スタジオでモデルのトレーニングとデプロイのためのコンピューティング先を作成する
 
@@ -172,7 +172,7 @@ Azure Machine Learning ワークスペースの外部に作成されたコンピ
 [!INCLUDE [arc-enabled-machine-learning-create-training-compute](../../includes/machine-learning-create-arc-enabled-training-computer-target.md)]
 
 > [!IMPORTANT]
-> Azure Kubernetes Services (AKS) または Arc 対応 Kubernetes クラスターをアタッチするには、サブスクリプション所有者であるか、サブスクリプションの AKS クラスター リソースにアクセスするためのアクセス許可が付与されている必要があります。 そうでないと [attach new compute]\(新しいコンピューティングをアタッチ\) ページのクラスター一覧が空白になります。
+> Azure Kubernetes Services (AKS) または Azure Arc 対応 Kubernetes クラスターをアタッチするには、サブスクリプション所有者であるか、サブスクリプションの AKS クラスター リソースにアクセスするためのアクセス許可が付与されている必要があります。 そうでないと [attach new compute]\(新しいコンピューティングをアタッチ\) ページのクラスター一覧が空白になります。
 
 コンピューティングをデタッチする手順は次のとおりです。
 

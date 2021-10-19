@@ -3,18 +3,18 @@ title: Azure Cost Management のスコープを理解して使用する
 description: この記事では、Azure で使用できる課金スコープとリソース管理スコープの概要、およびこれらのスコープを Cost Management と API で使用する方法について説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 05/05/2021
+ms.date: 10/07/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 67d8ef5bf6960ca03d8d2d36efbe4461e1124190
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 55c2d19ee2e80915cc1c4393aa5a25326a5e9d0e
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110695236"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129711282"
 ---
 # <a name="understand-and-work-with-scopes"></a>スコープを理解して使用する
 
@@ -68,7 +68,7 @@ Cost Management の各スコープでは、次の組み込みロールがサポ�
 
 Cost Management 共同作成者は、最低限の特権を持つ推奨ロールです。 予算を作成および管理し、コストをより効果的に監視してレポートできるようにエクスポートすることができます。 Cost Management 共同作成者は、複雑なコスト管理シナリオをサポートする追加のロールが必要になることがあります。 以下のようなシナリオが考えられます。
 
-- **リソースの使用状況をレポートする** – Azure Cost Management では、コストが Azure portal に表示されます。 これには、すべての使用パターンのコストに関連する使用状況が含まれます。 このレポートには、API とダウンロード料金も表示されますが、さらに理解を深めるために、Azure Monitor の詳細な使用状況メトリックを表示する必要がある場合もあります。 詳細な使用状況メトリックもレポートする必要がある場合は、スコープで[監視閲覧者](../../role-based-access-control/built-in-roles.md#monitoring-reader)を付与することを検討してください。
+- **リソースの使用状況をレポートする** – Cost Management によって、コストが Azure portal に表示されます。 これには、すべての使用パターンのコストに関連する使用状況が含まれます。 このレポートには、API とダウンロード料金も表示されますが、さらに理解を深めるために、Azure Monitor の詳細な使用状況メトリックを表示する必要がある場合もあります。 詳細な使用状況メトリックもレポートする必要がある場合は、スコープで[監視閲覧者](../../role-based-access-control/built-in-roles.md#monitoring-reader)を付与することを検討してください。
 - **予算を超過したときに対応する** – Cost Management 共同作成者は、予算超過に自動的に対応するために、アクション グループを作成および管理するアクセス権も必要です。 予算のしきい値を超えたときに使用するアクション グループを含むリソース グループに対して、[監視の共同作成者](../../role-based-access-control/built-in-roles.md#monitoring-contributor)を付与することを検討してください。 特定のアクションを自動化するには、使用する特定のサービス (Automation や Azure Functions など) の追加のロールが必要です。
 - **コスト データのエクスポートをスケジュールする** – Cost Management 共同作成者は、ストレージ アカウントにデータをコピーするエクスポートをスケジュールするために、ストレージ アカウントを管理するアクセス権も必要です。 コスト データのエクスポート先となるストレージ アカウントを含むリソース グループに対して、[ストレージ アカウントの共同作成者](../../role-based-access-control/built-in-roles.md#storage-account-contributor)を付与することを検討してください。
 - **コスト削減の推奨事項を表示する** – Cost Management 閲覧者と Cost Management 共同作成者は、コストの推奨事項を *表示する* ためのアクセス権を既定で所有しています。 ただし、コストの推奨事項に従って操作するためのアクセスでは、個々のリソースに対するアクセス権が必要です。 コストの推奨事項に従って操作したい場合は、[サービス固有のロール](../../role-based-access-control/built-in-roles.md#all)の付与を検討してください。
@@ -267,7 +267,7 @@ AWS 統合が完了した後、「[AWS のコストと使用状況レポート�
 
 *グローバル管理者* および *管理エージェント* のロールを持つユーザーのみが、パートナーの Azure テナントで直接、課金アカウント、課金プロファイル、顧客のコストを管理および表示できます。 パートナー センターのロールの詳細については、「[ユーザー ロールとアクセス許可の割り当て](/partner-center/permissions-overview)」を参照してください。
 
-Azure Cost Management は、顧客が Microsoft 顧客契約を保持している場合には、CSP パートナーの顧客をサポートします。 Microsoft 顧客契約をまだ結んでいない CSP サポート顧客ついては、[パートナー センター](/azure/cloud-solution-provider/overview/partner-center-overview)に関するページを参照してください。
+顧客が Microsoft 顧客契約を保持している場合、Cost Management では CSP パートナーの顧客のみがサポートされます。 Microsoft 顧客契約をまだ結んでいない CSP サポート顧客ついては、[パートナー センター](/azure/cloud-solution-provider/overview/partner-center-overview)に関するページを参照してください。
 
 CSP スコープの管理グループは、Cost Management ではサポートされません。 CSP サブスクリプションを利用していて、コスト分析でそのスコープを管理グループに設定した場合、次のようなエラーが表示されます。
 

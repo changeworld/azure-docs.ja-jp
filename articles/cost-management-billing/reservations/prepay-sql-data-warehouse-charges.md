@@ -1,5 +1,5 @@
 ---
-title: Azure の容量予約で Azure Synapse Analytics 料金を節約する
+title: Azure の予約容量で Azure Synapse Analytics (データ ウェアハウスのみ) 料金を節約する
 description: 予約容量を使用したコスト削減によって Azure Synapse Analytics 料金のコストを節約する方法について説明します。
 author: bandersmsft
 ms.reviewer: primittal
@@ -8,20 +8,20 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: f738b2e551ecb26426ef25603969fb471ecfa437
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 7e5987aee066e8c9e439b2789b1242e1bc541c35
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128666592"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129714106"
 ---
-# <a name="save-costs-for-azure-synapse-analytics-charges-with-reserved-capacity"></a>予約容量を使用して Azure Synapse Analytics 料金のコストを節約する
+# <a name="save-costs-for-azure-synapse-analytics-data-warehousing-only-charges-with-reserved-capacity"></a>予約容量を使用して Azure Synapse Analytics (データ ウェアハウスのみ) 料金のコストを節約する
 
-1 年分または 3 年分の cDWU の使用に関する予約をコミットすることによって、Azure Synapse Analytics にかかるコストを節約することができます。 Azure Synapse Analytics の予約容量を購入するには、Azure リージョンと期間を選択する必要があります。 その後、Azure Synapse Analytics SKU をカートに追加して、購入する cDWU ユニットの数量を選択します。
+1 年分または 3 年分の cDWU の使用に関する予約をコミットすることによって、Azure Synapse Analytics (データ ウェアハウスのみ) にかかるコストを節約することができます。 Azure Synapse Analytics の予約容量を購入するには、Azure リージョンと期間を選択する必要があります。 その後、Azure Synapse Analytics SKU をカートに追加して、購入する cDWU ユニットの数量を選択します。
 
 予約を購入すると、予約の属性に一致する Azure Synapse Analytics の使用状況は従量課金制で課金されなくなります。
 
-Azure Synapse Analytics の使用に関連するストレージまたはネットワークの料金は予約割引の対象外となります。
+Azure Synapse Analytics の使用に関連するストレージまたはネットワークの料金は、予約割引の対象外となります。データ ウェアハウスの使用量のみがその対象となります。
 
 予約容量を超過した場合、Azure Synapse Analytics インスタンスは引き続き実行されますが、従量課金制の料金で課金されます。 予約は自動更新されません。
 

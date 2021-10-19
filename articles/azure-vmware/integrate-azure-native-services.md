@@ -3,12 +3,12 @@ title: Azure ネイティブ サービスを使用して VM を監視および�
 description: Microsoft Azure ネイティブ ツールを統合してデプロイし、Azure VMware Solution ワークロードを監視および管理する方法について説明します。
 ms.topic: how-to
 ms.date: 08/15/2021
-ms.openlocfilehash: 19453eeb652a0303e0447a80e37b63613aa92255
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: fa3a30ce3908494e1fdf0470781f4057279fe001
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124799322"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129714951"
 ---
 # <a name="monitor-and-protect-vms-with-azure-native-services"></a>Azure ネイティブ サービスを使用して VM を監視および保護する
 
@@ -92,7 +92,6 @@ Azure Automation の [Azure Update Management](../automation/update-management/o
  
 1. Update Management を有効にしたら、[VM に更新プログラムをデプロイして結果を確認する](../automation/update-management/deploy-updates.md)ことができます。 
 
-
 ## <a name="enable-azure-security-center"></a>Azure Security Center を有効にする
 
 Azure VMware Solution VM の脆弱性を評価し、アラートを必要に応じて発生させます。 このセキュリティ アラートは、解決のために Azure Monitor に転送できます。 詳しくは、[VM でサポートされる機能](../security-center/security-center-services.md)に関するページを参照してください。
@@ -124,8 +123,7 @@ Azure VMware Solution、オンプレミス、またはその他のクラウド �
 
 
 
-## <a name="onboard-hybrid-kubernetes-clusters-with-arc-enabled-kubernetes"></a>Arc 対応 Kubernetes を使用したハイブリッド Kubernetes クラスターのオンボード
-
+## <a name="onboard-hybrid-kubernetes-clusters-with-azure-arc-enabled-kubernetes"></a>Azure Arc 対応 Kubernetes を使用したハイブリッド Kubernetes クラスターのオンボード
 
 Azure Arc 対応 Kubernetes を使用して、Azure VMware Solution 環境でホストされている Kubernetes クラスターをアタッチします。 詳細については、「[Azure Arc 対応オンボード サービス プリンシパルの作成](../azure-arc/kubernetes/create-onboarding-service-principal.md)」を参照してください。
 

@@ -11,12 +11,12 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: bf35868d67dab2cb48aee5c85b964f86abd912e3
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 74dea2337bb40469e4d4e94117df080960faca53
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128653780"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129858774"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Azure IoT Central に接続する
 
@@ -75,7 +75,7 @@ X.509 証明書を使用してデバイスをアプリケーションに接続�
 
 SAS キーを使用してデバイスをアプリケーションに接続するには、次のようにします。
 
-1. **Shared Access Signature (SAS)** 構成証明の種類を使用する *登録グループ* を作成します。
+1. **Shared Access Signature (SAS)** 構成証明の種類を使用する *登録グループ* を作成します。 
 1. 登録グループからグループのプライマリ キーまたはセカンダリ キーをコピーします。
 1. Azure CLI を使用してグループ キーからデバイス キーを生成します。
 
@@ -84,6 +84,9 @@ SAS キーを使用してデバイスをアプリケーションに接続する�
     ```
 
 1. デバイスが IoT Central アプリケーションに接続するときに、生成されたデバイス キーを使用します。
+
+> [!NOTE]
+> 登録グループ内の既存の SAS キーを使用するには、 **[キーの自動生成]** のトグルを無効にし、SAS キーを入力します。
 
 ## <a name="individual-enrollment"></a>個別加入
 
@@ -259,7 +262,7 @@ IoT Hub を使用するすべてのデバイス通信では、次の IoT Hub 接
 | オフライン コマンド | クラウドからデバイスへのメッセージ |
 | プロパティ | デバイス ツインの報告されるプロパティ |
 | プロパティ (書き込み可能) | デバイス ツインの目的および報告されるプロパティ |
-| コマンド | ダイレクト メソッド |
+| command | ダイレクト メソッド |
 
 ### <a name="protocols"></a>プロトコル
 

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 07/30/2021
 ms.author: alkohli
-ms.openlocfilehash: 6edb7aafdee046f2dd198d54e566c69b791cc1eb
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 6dccf76a99c183c9b3d148ee1c4574c560d877f3
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121779172"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129714797"
 ---
 # <a name="data-residency-and-resiliency-for-azure-stack-edge-preview"></a>Azure Stack Edge のデータ所在地と回復性 (プレビュー)
 
@@ -84,7 +84,7 @@ Azure Arc 対応 Kubernetes、Azure IoT Hub および Azure IoT Edge、Azure Key
 Azure Arc 対応 Kubernetes は、Azure Stack Edge のアドオンとして使用できます。 シンガポール (東南アジア) の場合、Azure Arc データはシンガポール内にのみ存在し、香港ではレプリケートされません。 <!--If there is a region-wide outage, the service is not resilient.-->
 
 <!--For all other regions, Azure Arc supports Azure Regional Pair and is resilient to any region-wide outages.--> 
-<!--For more information, see [Data residency and resiliency for Azure Arc enabled Kubernetes clusters]().-->
+<!--For more information, see [Data residency and resiliency for Azure Arc-enabled Kubernetes clusters]().-->
 
 
 ### <a name="azure-iot"></a>Azure IoT

@@ -7,13 +7,14 @@ author: dlepow
 ms.service: api-management
 ms.topic: article
 ms.date: 04/13/2021
-ms.author: danlep
-ms.openlocfilehash: d0fe9c305b9592aad7b08437d6e9d14150748ed6
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.author: apimpm
+ms.custom: fasttrack-edit
+ms.openlocfilehash: fe5f282150aae2103d20963416f390bf159c48ea
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128680739"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129856887"
 ---
 # <a name="ip-addresses-of-azure-api-management"></a>Azure API Management の IP アドレス
 
@@ -57,7 +58,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/
 
 API Management サービスが仮想ネットワーク内にある場合、パブリックとプライベートの 2 種類の IP アドレスがあります。
 
-パブリック IP アドレスは、ポート `3443` での内部通信に使用されます。これは、構成の管理用です (たとえば、Azure Resource Manager 経由)。 外部 VNet 構成では、ランタイム API トラフィックにも使用されます。 要求が API Management から公開されている (インターネットに接続された) バックエンドに送信されると、パブリック IP アドレスが要求の送信元として表示されます。
+パブリック IP アドレスは、ポート `3443` での内部通信に使用されます。これは、構成の管理用です (たとえば、Azure Resource Manager 経由)。 外部 VNet 構成では、ランタイム API トラフィックにも使用されます。 
 
 [内部 VNet モード](api-management-using-with-internal-vnet.md)で **のみ** 使用可能なプライベート仮想 IP (VIP) アドレス は、ネットワーク内から API Management エンドポイント (ゲートウェイ、開発者ポータル、および直接 API アクセス用の管理プレーン) に接続するために使用されます。 ネットワーク内の DNS レコードを設定するために、これらを使用できます。
 
@@ -85,7 +86,11 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/
 }
 ```
 
-API Management では、VNet 外部の接続にパブリック IP アドレスが使用され、VNet 内の接続にプライベート IP アドレスが使用されます。
+API Management では、VNet 外部の接続にパブリック IP アドレスが使用され、VNet 内の接続にプライベート IP アドレスが使用されます。 
+
+API Management が[内部 VNet 構成](api-management-using-with-internal-vnet.md)にデプロイされていて、API Management がプライベート (イントラネットに接続する) バックエンドに接続するときは、サブネットの内部 IP アドレスがランタイム API トラフィックに使用されます。 要求が API Management からプライベート バックエンドに送信されるときは、プライベート IP アドレスが要求の送信元として表示されます。 したがって、この構成で、API Management と内部バックエンドの間のトラフィックを制限する要件がある場合は、API Management リソースに関連付けられているプライベート IP アドレスだけではなく、API Management のサブネット プレフィックス全体を IP 規則で使用するのが良い方法です。 
+
+要求が API Management から公開されている (インターネットに接続された) バックエンドに送信されると、パブリック IP アドレスが要求の送信元として常に認識されます。
 
 ## <a name="ip-addresses-of-consumption-tier-api-management-service"></a>従量課金レベルの API Management サービスの IP アドレス
 

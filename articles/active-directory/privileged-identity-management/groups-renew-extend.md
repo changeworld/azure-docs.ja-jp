@@ -1,27 +1,27 @@
 ---
-title: Privileged Identity Management でメンバー割り当ての有効期限が切れたグループ所有者を更新する - Azure AD | Microsoft Docs
+title: Privileged Identity Management で有効期限が切れたグループ所有者またはメンバー割り当てを更新する - Azure AD | Microsoft Docs
 description: Azure AD Privileged Identity Management (PIM) でロールの割り当て可能なグループの割り当てを延長または更新する方法について説明します。
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: daveba
-editor: markwahl-msft
+manager: KarenH444
+ms.reviewer: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: pim
-ms.date: 06/30/2020
+ms.date: 10/07/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0cfbb0be22dee4550050d6af10314f3a3bb1f583
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 791da880607de6e2e3c7ad9a9e94e41c50e5a4be
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87505619"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129667670"
 ---
 # <a name="extend-or-renew-privileged-access-group-assignments-preview-in-privileged-identity-management"></a>Privileged Identity Management で特権アクセス グループの割り当て (プレビュー) を延長または更新する
 

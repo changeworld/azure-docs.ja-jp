@@ -4,15 +4,15 @@ description: Azure Data Lake Storage Gen2 で Azure サービスを使用する�
 author: normesta
 ms.topic: conceptual
 ms.author: normesta
-ms.date: 02/17/2021
+ms.date: 10/06/2021
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: bbe99ced7a4d0110ac9ff709201a16017b45ec15
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 1c1849117b2e27198d7fb0c76590cb1cf14f0891
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128562478"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129619352"
 ---
 # <a name="tutorials-that-use-azure-services-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 で Azure サービスを使用するチュートリアル
 
@@ -37,8 +37,8 @@ ms.locfileid: "128562478"
 | Azure Cognitive Search | [Azure Data Lake Storage Gen2 ドキュメントのインデックスと検索 (プレビュー)](../../search/search-howto-index-azure-data-lake-storage.md) |
 
 > [!NOTE]
-> この表には、Data Lake Storage Gen2 がサポートされる Azure サービスの完全な一覧が反映されているわけではありません。 サポートされる Azure サービスの一覧と、そのサポートのレベルについては、「[Azure Data Lake Storage Gen2 がサポートされている Azure のサービス](data-lake-storage-supported-azure-services.md)」を参照してください
+> この表には、Data Lake Storage Gen2 がサポートされる Azure サービスの完全な一覧が反映されているわけではありません。 サポートされる Azure サービスの一覧と、そのサポートのレベルについては、「[Azure Data Lake Storage Gen2 がサポートされている Azure のサービス](data-lake-storage-supported-azure-services.md)」を参照してください。 取り込み、ダウンロード、処理、視覚化などのカテゴリにサービスを整理するしくみについては、[取り込み、処理、分析](data-lake-storage-data-scenarios.md#ingest-process-and-analyze)に関するページを参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="see-also"></a>関連項目
 
-- これらのサービスを組み合わせて使用し、データの取り込み、ダウンロード、処理、視覚化を行うワークロードを構築する方法について学習します。 「[Data Lake Storage Gen2 を使用してビッグ データの要件に対応する](data-lake-storage-data-scenarios.md)」を参照してください。
+[Azure Data Lake Storage Gen2 の使用に関するベスト プラクティス](data-lake-storage-best-practices.md)

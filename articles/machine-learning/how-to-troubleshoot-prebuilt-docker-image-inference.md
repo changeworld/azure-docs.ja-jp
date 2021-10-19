@@ -7,20 +7,23 @@ ms.service: machine-learning
 ms.subservice: mlops
 ms.author: ssambare
 author: shivanissambare
-ms.date: 05/25/2021
+ms.date: 10/07/2021
 ms.topic: how-to
 ms.reviewer: larryfr
 ms.custom: deploy, docker, prebuilt, troubleshoot
-ms.openlocfilehash: 209a9ffe884fd772fde30bd7a6d4995a15d97f02
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 59a3709ef6145fa723d1919429fec4bf62a0998b
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129423483"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129705328"
 ---
-# <a name="troubleshooting-prebuilt-docker-images-for-inference-preview"></a>推論用の事前構築済み Docker イメージに関するトラブルシューティング (プレビュー)
+# <a name="troubleshooting-prebuilt-docker-images-for-inference"></a>推論用の事前構築済み Docker イメージに関するトラブルシューティング
 
-Azure Machine Learning で、推論用の事前構築済み Docker イメージ [(プレビュー)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) を使用する際に発生する可能性のある問題をトラブルシューティングする方法について説明します。
+Azure Machine Learning で、推論用の事前構築済み Docker イメージを使用する際に発生する可能性のある問題をトラブルシューティングする方法について説明します。
+
+> [!IMPORTANT]
+> Azure Machine Learning での[事前構築済み Docker イメージ用 Python パッケージ拡張性](how-to-prebuilt-docker-images-inference-python-extensibility.md)の使用は、現在プレビュー段階です。 プレビュー機能では、サポートやサービス レベル アグリーメントは保証されず、"現状有姿" で提供されます。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
 ## <a name="model-deployment-failed"></a>モデル デプロイが失敗した
 
