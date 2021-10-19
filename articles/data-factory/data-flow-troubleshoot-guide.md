@@ -213,7 +213,7 @@ ms.locfileid: "105933085"
 - **メッセージ**: accountName または accountEndpoint のいずれかを指定する必要があります。
 
 ### <a name="error-code-df-github-writenotsupported"></a>エラー コード: DF-Github-WriteNotSupported
-- **メッセージ**: Github ストアで書き込みが許可されていません。
+- **メッセージ**: GitHub ストアで書き込みが許可されていません。
 
 ### <a name="error-code-df-pgsql-invalidcredential"></a>エラー コード: DF-PGSQL-InvalidCredential
 - **メッセージ**: ユーザー/パスワードを指定する必要があります。
