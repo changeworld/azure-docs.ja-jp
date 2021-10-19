@@ -41,7 +41,7 @@ Cognitive Search チームのコード サンプルは、機能とワークフ�
 | [暗号化された BLOB にインデックスを付ける](https://github.com/Azure-Samples/azure-search-postman-samples/commit/f5ebb141f1ff98f571ab84ac59dcd6fd06a46718) | [BLOB インデクサーとスキルセットを使用して暗号化された BLOB にインデックスを付ける方法](search-howto-index-encrypted-blobs.md)に関する記事のソース コード。 この記事では、以前に Azure Key Vault を使用して暗号化されている Azure Blob Storage 内のドキュメントにインデックスを付ける方法について説明します。 |
 
 > [!Tip]
-> [サンプル ブラウザー](/samples/browse/?expanded=azure&languages=http&products=azure-cognitive-search)を試して、製品、サービス、言語でフィルター処理された Microsoft コード サンプルを Github 内で検索してください。
+> [サンプル ブラウザー](/samples/browse/?expanded=azure&languages=http&products=azure-cognitive-search)を試して、製品、サービス、言語でフィルター処理された Microsoft コード サンプルを GitHub 内で検索してください。
 
 ## <a name="other-samples"></a>その他のサンプル
 
