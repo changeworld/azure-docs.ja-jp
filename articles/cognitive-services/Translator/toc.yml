@@ -82,7 +82,7 @@
           href: reference/v3-0-dictionary-lookup.md
         - name: 辞書の例
           href: reference/v3-0-dictionary-examples.md
-- name: カスタム変換
+- name: Custom Translator
   items:
     - name: Custom Translator とは
       href: custom-translator/overview.md
@@ -134,9 +134,9 @@
           href: custom-translator/training-and-model.md
         - name: BLEU スコア
           href: custom-translator/what-is-bleu-score.md
-- name: ドキュメント変換
+- name: Document Translation
   items:
-    - name: ドキュメント変換とは
+    - name: Document Translationとは
       href: document-translation/overview.md
     - name: クイックスタート
       href: document-translation/get-started-with-document-translation.md
