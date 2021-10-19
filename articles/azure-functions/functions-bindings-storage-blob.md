@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
-ms.openlocfilehash: af8e6a64e94530d6cca1494aff2c3b249186a42e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9ca3471b599e9f0671cd39603d71def344f7d72c
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121738545"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129660497"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions-overview"></a>Azure Functions における Azure Blob Storage のバインドの概要
 
@@ -55,10 +55,10 @@ Functions 1.x アプリでは、[Microsoft.Azure.WebJobs](https://www.nuget.org/
 
 ## <a name="hostjson-settings"></a>host.json 設定
 
-> [!NOTE]
-> このセクションは、5.0.0 より前のバージョンの拡張機能を使用する場合には適用されません。 それらのバージョンには、BLOB のグローバル構成設定はありません。
+このセクションでは、このバインディングの関数で使用できる関数アプリの構成設定について説明します。 これらの設定は、[拡張機能バージョン 5.0.0 以上](#storage-extension-5x-and-higher)を使用している場合にのみ適用されます。 次の host.json ファイルの例には、このバインドのバージョン 2.x 以降の設定のみが含まれています。 バージョン 2.x 以降のバージョンでの関数アプリ構成設定の詳細については、「[Azure Functions の host.json のリファレンス](functions-host-json.md)」を参照してください。
 
-このセクションでは、[バージョン 5.0.0 以降の拡張機能](#storage-extension-5x-and-higher)を使用する場合に、このバインディングで使用できるグローバル構成設定について説明します。 下の *host.json* ファイルの例には、このバインドのバージョン 2.x 以降の設定のみが含まれています。 バージョン 2.x 以降の Functions でのグローバル構成設定の詳細については、「[Azure Functions の host.json のリファレンス](functions-host-json.md)」を参照してください。
+> [!NOTE]
+> このセクションは、5.0.0 より前の拡張機能のバージョンには適用されません。 それらの以前のバージョンでは、BLOB に対する関数アプリ規模の構成設定はありません。
 
 ```json
 {

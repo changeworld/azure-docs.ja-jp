@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 09/28/2021
 ms.topic: conceptual
-ms.openlocfilehash: bac463aa01a997122d86e32e140b135938d589da
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: fcf7235ae071dece392a11bacbf9f750569380ae
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129093290"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129715305"
 ---
 # <a name="plan-your-update-management-deployment"></a>Update Management の展開を計画する
 
@@ -64,7 +64,7 @@ Azure Automation Update Management では、Windows の更新プログラムの�
 
 Azure Marketplace から入手できるオンデマンドの Red Hat Enterprise Linux (RHEL) イメージから作成した VM は、Azure にデプロイされた Red Hat Update Infrastructure (RHUI) にアクセスするよう登録されています。 その他の Linux ディストリビューションは、そのディストリビューションでサポートされている方法を使用して、ディストリビューションのオンライン ファイル リポジトリから更新する必要があります。
 
-Red Hat Enterprise バージョン 6 の更新プログラムを分類するには、yum-security プラグインをインストールする必要があります。 Red Hat Enterprise Linux 7 では、プラグインは既に yum 自体の一部であるため、何もインストールする必要はありません。 詳細については、次の Red Hat の<bpt id="p1">[</bpt>ナレッジ記事<ept id="p1">](https://access.redhat.com/solutions/10021)</ept>を参照してください。
+Red Hat Enterprise バージョン 6 の更新プログラムを分類するには、yum-security プラグインをインストールする必要があります。 Red Hat Enterprise Linux 7 では、プラグインは既に yum 自体の一部であるため、何もインストールする必要はありません。 詳細については、次の Red Hat の[ナレッジ記事](https://access.redhat.com/solutions/10021)を参照してください。
 
 ## <a name="step-9---plan-deployment-targets"></a>ステップ 9 - 展開ターゲットを計画する
 
@@ -85,7 +85,7 @@ Azure 以外のマシンでは、動的グループは保存された検索 (<bp
 
 - Azure <bpt id="p1">[</bpt>Resource Manager テンプレート<ept id="p1">](enable-from-template.md)</ept>を使用して、お使いのサブスクリプション内の新しいまたは既存の Automation アカウントと Azure Monitor Log Analytics ワークスペースに Update Management をデプロイする。 管理する必要があるマシンのスコープは構成されません。これは、テンプレートを使用した後の個別の手順として実行されます。
 
-- 1 台以上の Azure マシンと Azure 以外のマシン (Arc 対応サーバーを含む) に対しては、お使いの <bpt id="p1">[</bpt>Automation アカウント<ept id="p1">](enable-from-automation-account.md)</ept>から。
+- 1 台以上の Azure マシンと Azure 以外のマシン (Azure Arc 対応サーバーを含む) に対しては、お使いの [Automation アカウント](enable-from-automation-account.md)から。
 
 - <bpt id="p1">**</bpt>Enable-AutomationSolution<ept id="p1">**</ept> <bpt id="p2">[</bpt>Runbook<ept id="p2">](enable-from-runbook.md)</ept> を使用した Azure VM のオンボードの自動化。
 

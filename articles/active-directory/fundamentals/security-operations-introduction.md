@@ -12,12 +12,12 @@ ms.date: 07/15/2021
 ms.author: baselden
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df71173837075c786d7c8f9907e0ed3cac576b16
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: c219ab9c1503fdd3bbd85bf704786ef2c097d52a
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128676259"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129808666"
 ---
 # <a name="azure-active-directory-security-operations-guide"></a>Azure Active Directory セキュリティ運用ガイド
 
@@ -73,6 +73,10 @@ Microsoft には、お客様のニーズに合わせて IT 環境をカスタマ
 
    * [Windows 10 v1909 と Windows Server v1909 のセキュリティ ベースライン (最終)](https://techcommunity.microsoft.com/t5/microsoft-security-baselines/security-baseline-final-for-windows-10-v1909-and-windows-server/ba-p/1023093)
 
+   * [Windows 11 用のセキュリティ ベースライン](https://techcommunity.microsoft.com/t5/microsoft-security-baselines/windows-11-security-baseline/ba-p/2810772)
+   
+   * [Windows Server 2022 用のセキュリティ ベースライン](https://techcommunity.microsoft.com/t5/microsoft-security-baselines/windows-server-2022-security-baseline/ba-p/2724685)
+   
 * オンプレミス環境
 
    * [Microsoft Defender for Identity のアーキテクチャ](/defender-for-identity/architecture)

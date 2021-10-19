@@ -9,12 +9,12 @@ metadata:
   ms.date: 06/08/2021
   ms.author: victorh
   ms.custom: references_regions
-  ms.openlocfilehash: a0d8c83209f5d96d10cacd95d85fc45f2d09b44b
-  ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+  ms.openlocfilehash: eda05df5b3ec13d2f2ae4dc8c3634ead6c1e35bf
+  ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/24/2021
-  ms.locfileid: "128669077"
+  ms.lasthandoff: 10/11/2021
+  ms.locfileid: "129728420"
 title: Application Gateway に関してよく寄せられる質問
 summary: >
   [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -185,6 +185,8 @@ sections:
     answer: "はい。 Application Gateway では、[暗号スイートを構成](application-gateway-ssl-policy-overview.md)できます。 カスタム ポリシーを定義するためには、次の暗号スイートのうち少なくとも 1 つを有効にする必要があります。 \n\n* TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 \n* TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256\n* TLS_DHE_RSA_WITH_AES_128_GCM_SHA256\n* TLS_RSA_WITH_AES_128_GCM_SHA256\n* TLS_RSA_WITH_AES_256_CBC_SHA256\n* TLS_RSA_WITH_AES_128_CBC_SHA256\n\nApplication Gateway では、バックエンドの管理に SHA256 を使用しています。\n"
   - question: Application Gateway は、TLS または SSL 証明書をいくつサポートしていますか?
     answer: Application Gateway は、TLS または SSL 証明書を 100 件までサポートしています。
+  - question: Application Gateway では、OCSP と OCSP のステープリングはサポートされていますか。
+    answer: はい。Application Gateway では、サーバー証明書のための OCSP 拡張機能と OCSP ステープリングを使用した証明書がサポートされています。
   - question: Application Gateway は、バックエンドの再暗号化用の認証証明書をいくつサポートしていますか?
     answer: Application Gateway は、認証証明書を 100 件までサポートしています。
   - question: Application Gateway は Azure Key Vault とネイティブに統合されていますか?

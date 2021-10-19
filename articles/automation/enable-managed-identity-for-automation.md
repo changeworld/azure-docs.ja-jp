@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 09/23/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b84c73e5286dc633b54ade2d59d43957f517361e
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: eb883fafd7c738ca99fe2282edb67d1849b9b1af
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129057664"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129858160"
 ---
 # <a name="using-a-system-assigned-managed-identity-for-an-azure-automation-account-preview"></a>Azure Automation アカウントのシステム割り当てマネージド ID を使用する (プレビュー)
 
@@ -23,7 +23,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 - Azure Automation アカウント。 手順については、「[Azure Automation アカウントを作成する](./quickstarts/create-account-portal.md)」をご覧ください。
 
-- Azure アカウント モジュールの最新バージョン。 現在 2.2.8 です。 (このバージョンの詳細は [Az.Accounts](https://www.powershellgallery.com/packages/Az.Accounts/) をご覧ください。)
+- 最新バージョンの Az PowerShell モジュール Az.Accounts、Az.Resources、Az.Automation、Az.KeyVault。
 
 - Automation Runbook からアクセスする必要がある Azure リソース。 このリソースには、マネージド ID に対して定義されたロールが必要です。これにより、Automation Runbook はリソースへのアクセスを認証できます。 ロールを追加するには、対応する Azure AD テナントのリソースの所有者である必要があります。
 

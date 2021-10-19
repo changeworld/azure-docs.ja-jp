@@ -6,12 +6,12 @@ ms.author: terrylan
 ms.service: security
 ms.topic: reference
 ms.date: 09/13/2021
-ms.openlocfilehash: 3f2559ca573ed9fedf5a15fce454cf406f8f6b0b
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 918743544aeaf60932f14d1d1eed609775b29efd
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129210746"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129710545"
 ---
 # <a name="cloud-feature-availability-for-us-government-customers"></a>米国政府機関のお客様向けのクラウド機能の利用可能性
 
@@ -107,7 +107,7 @@ Azure Security Center は、データ センターのセキュリティ体制を
 
 <sup><a name="footnote3" /></a>3</sup> コンテナー レジストリ用 Azure Defender が必要です。
 
-<sup><a name="footnote4" /></a>4</sup> 部分的に GA: Arc 対応クラスターのサポートはパブリック プレビュー段階であり、Azure Government では使用できません。
+<sup><a name="footnote4" /></a>4</sup> 部分的に GA: Azure Arc 対応クラスターのサポートはパブリック プレビュー段階であり、Azure Government では使用できません。
 
 <sup><a name="footnote5" /></a>5</sup> Azure Defender for Kubernetes が必要です。
 
@@ -304,23 +304,36 @@ Azure Defender for IoT を使用すると、IoT/OT デバイス全体にわた�
 | [オンプレミス デバイスの検出とインベントリ](../../defender-for-iot/how-to-investigate-all-enterprise-sensor-detections-in-a-device-inventory.md) | GA | GA |
 | [脆弱性の管理](../../defender-for-iot/how-to-create-risk-assessment-reports.md) | GA | GA |
 | [IoT および OT 行動分析による脅威の検出](../../defender-for-iot/how-to-work-with-alerts-on-your-sensor.md) | GA | GA |
-| [脅威インテリジェンスの自動更新](../../defender-for-iot/how-to-work-with-threat-intelligence-packages.md) | GA | GA |
+| [脅威インテリジェンスの手動更新と自動更新](../../defender-for-iot/how-to-work-with-threat-intelligence-packages.md) | GA | GA |
 | **SIEM、SOAR、XDR を使用して、IT とセキュリティを統合する** |  |  |
-| - [アラート情報を転送する](../../defender-for-iot/how-to-forward-alert-information-to-partners.md) | GA | GA |
-| - [Azure Defender for IoT を使用して Sentinel を構成する](../../defender-for-iot/how-to-configure-with-sentinel.md) | パブリック プレビュー | 利用不可 |
-| - [SOC システム](../../defender-for-iot/integration-splunk.md) | GA | GA |
-| - [チケット発行システムと CMDB (サービスを開始)](../../defender-for-iot/integration-servicenow.md) | GA | GA |
-| - [センサーのプロビジョニング](../../defender-for-iot/how-to-manage-sensors-on-the-cloud.md) | GA | GA |
+| [Active Directory](../../defender-for-iot/organizations/how-to-create-and-manage-users.md#integrate-with-active-directory-servers) | GA | GA |
+| [ArcSight](../../defender-for-iot/organizations/how-to-accelerate-alert-incident-response.md#accelerate-incident-workflows-by-using-alert-groups) | GA | GA |
+| [ClearPass (アラート & インベントリ)](../../defender-for-iot/organizations/how-to-install-software.md#attach-a-span-virtual-interface-to-the-virtual-switch) | GA | GA |
+| [CyberArk PSM](../../defender-for-iot/organizations/concept-key-concepts.md#integrations) | GA | GA |
+| [Email](../../defender-for-iot/organizations/how-to-forward-alert-information-to-partners.md#email-address-action) | GA | GA |
+| [FortiGate](../../defender-for-iot/organizations/tutorial-fortinet.md) | GA | GA |
+| [FortiSIEM](../../defender-for-iot/organizations/tutorial-fortinet.md) | GA | GA |
+| [Microsoft Sentinel](../../defender-for-iot/organizations/how-to-configure-with-sentinel.md) | パブリック プレビュー | パブリック プレビュー |
+| [NetWitness](../../defender-for-iot/organizations/how-to-forward-alert-information-to-partners.md#netwitness-action) | GA | GA |
+| [Palo Alto NGFW](../../defender-for-iot/organizations/tutorial-palo-alto.md) | GA | GA |
+| [Palo Alto Panorama](../../defender-for-iot/organizations/tutorial-palo-alto.md) | GA | GA |
+| [ServiceNow (アラート & インベントリ)](../../defender-for-iot/organizations/tutorial-servicenow.md) | GA | GA |
+| [SNMP MIB の監視](../../defender-for-iot/organizations/how-to-set-up-snmp-mib-monitoring.md) | GA | GA |
+| [Splunk](../../defender-for-iot/organizations/tutorial-splunk.md) | GA | GA |
+| [SYSLOG サーバー (CEF 形式)](../../defender-for-iot/organizations/how-to-forward-alert-information-to-partners.md#syslog-server-actions) | GA | GA |
+| [SYSLOG サーバー (LEEF 形式)](../../defender-for-iot/organizations/how-to-forward-alert-information-to-partners.md#syslog-server-actions) | GA | GA |
+| [SYSLOG サーバー (オブジェクト)](../../defender-for-iot/organizations/how-to-forward-alert-information-to-partners.md#syslog-server-actions) | GA | GA |
+| [SYSLOG サーバー (テキスト メッセージ)](../../defender-for-iot/organizations/how-to-forward-alert-information-to-partners.md#syslog-server-actions) | GA | GA |
+| [Web コールバック (Webhook)](../../defender-for-iot/organizations/how-to-forward-alert-information-to-partners.md#webhook-server-action) | GA | GA |
 
 ### <a name="for-device-builders"></a>デバイス ビルダーの場合
 
 | 機能 | Azure | Azure Government |
 |--|--|--|
 | [Azure RTOS 用マイクロ エージェント](../../defender-for-iot/iot-security-azure-rtos.md) | GA | GA |
-| - [Azure Defender for IoT を使用して Sentinel を構成する](../../defender-for-iot/how-to-configure-with-sentinel.md) | GA | 利用不可 |
+| [Azure Defender for IoT を使用して Sentinel を構成する](../../defender-for-iot/how-to-configure-with-sentinel.md) | パブリック プレビュー | パブリック プレビュー |
 | **スタンドアロンのマイクロ エージェント for Linux** |  |  |
-| - [スタンドアロンのマイクロ エージェントの概要](../../defender-for-iot/concept-standalone-micro-agent-overview.md) | パブリック プレビュー | パブリック プレビュー |
-| - [スタンドアロン エージェントのバイナリ インストール](../../defender-for-iot/quickstart-standalone-agent-binary-installation.md) | パブリック プレビュー | パブリック プレビュー |
+| [スタンドアロン エージェントのバイナリ インストール](../../defender-for-iot/quickstart-standalone-agent-binary-installation.md) | パブリック プレビュー | パブリック プレビュー |
 
 ## <a name="next-steps"></a>次のステップ
 

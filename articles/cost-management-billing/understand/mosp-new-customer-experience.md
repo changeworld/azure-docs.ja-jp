@@ -6,14 +6,14 @@ ms.reviewer: amberbhargava
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 05/20/2021
+ms.date: 10/07/2021
 ms.author: banders
-ms.openlocfilehash: b4a4bd73672b36e8301d33618701a5d6b43926a5
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 8e58a31d37e4b6aece877e8a2d920e7abc91d8f8
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110474875"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129710955"
 ---
 # <a name="get-started-with-your-updated-azure-billing-account"></a>更新された Azure 課金アカウントの使用を開始する
 
@@ -140,7 +140,7 @@ Azure 課金アカウントでは、以下の新機能を使用できます。
 
 更新されたアカウントの一部として、Cost Management + Billing に新しいスコープが用意されています。 これらは、階層型組織や請求処理を支援するだけでなく、複数の基になるサブスクリプションの合計料金を表示することもできます。 課金スコープの詳細については、「[Microsoft 顧客契約のスコープ](../costs/understand-work-scopes.md#microsoft-customer-agreement-scopes)」を参照してください。
 
-Cost Management API シリーズにアクセスして、上位のスコープで結合されたコスト ビューを利用することもできます。 サブスクリプション スコープを使用するすべての Cost Management API は、スキーマに軽微な変更を加えることで引き続き使用できます。 API の詳細については、[Azure Cost Management API シリーズ](/rest/api/cost-management/)および [Azure Consumption API シリーズ](/rest/api/consumption/)に関する記事を参照してください。
+Cost Management API シリーズにアクセスして、上位のスコープで結合されたコスト ビューを利用することもできます。 サブスクリプション スコープを使用するすべての Cost Management API は、スキーマに軽微な変更を加えることで引き続き使用できます。 API の詳細については、[Cost Management API シリーズ](/rest/api/cost-management/)および [Azure Consumption API シリーズ](/rest/api/consumption/)に関する記事を参照してください。
 
 #### <a name="cost-allocation"></a>コストの割り当て
 
@@ -148,7 +148,7 @@ Cost Management API シリーズにアクセスして、上位のスコープで
 
 #### <a name="power-bi"></a>Power BI
 
-Power BI Desktop 用の Azure Cost Management コネクタを使用すると、Azure の使用状況と支出に関するカスタムの視覚化とレポートを作成できます。 更新されたアカウントに接続した後、コストと使用状況のデータにアクセスします。 Power BI Desktop 用の Azure Cost Management コネクタの詳細については、「[Power BI Desktop で Azure Cost Management コネクタを使用してビジュアルとレポートを作成する](/power-bi/connect-data/desktop-connect-azure-cost-management)」を参照してください。
+Power BI Desktop 用の Cost Management コネクタを使用すると、Azure の使用状況と支出に関するカスタムの視覚化とレポートを作成できます。 更新されたアカウントに接続した後、コストと使用状況のデータにアクセスします。 Power BI Desktop 用の Cost Management コネクタの詳細については、「[Power BI Desktop で Cost Management コネクタを使用してビジュアルとレポートを作成する](/power-bi/connect-data/desktop-connect-azure-cost-management)」を参照してください。
 
 ### <a name="updated-capabilities"></a>更新された機能
 

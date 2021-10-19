@@ -4,17 +4,17 @@ description: この記事では、Azure ハイブリッド特典を使用した�
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/30/2021
+ms.date: 10/07/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: ahb
 ms.reviewer: chrisrin
-ms.openlocfilehash: bc08d9465830043071fd78a6e9735f0443be42ec
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.openlocfilehash: 69517a84fa28a6c1d9cde0cb51df82a296bd653a
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129547286"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129710158"
 ---
 # <a name="how-azure-applies-assigned-sql-licenses-to-hourly-usage"></a>割り当てられた SQL ライセンスが Azure によって毎時の使用量に適用される方法
 
@@ -37,13 +37,13 @@ ms.locfileid: "129547286"
 
 :::image type="content" source="./media/manage-licenses-centrally/partially-discounted-consumption.svg" alt-text="部分的に割引された消費量を示す図。" border="false" lightbox="./media/manage-licenses-centrally/partially-discounted-consumption.svg":::
 
-割り当てられた Core ライセンスがカバーする Azure SQL リソースは、時間ごとに変動する可能性があります。 この変動は、どのリソースが実行され、自動化されたシステムによってその使用量がどのような順序で処理されるかによって変わります。 ただし、システムにより、選択されたスコープ内で割り当てられた SQL ライセンスが最大限に使用されます。 使用状況は、Azure Cost Management を使用して監視できます。 詳細については、[割り当てられたライセンスの使用状況を追跡する方法](create-sql-license-assignments.md#track-assigned-license-use)に関するセクションを参照してください。
+割り当てられた Core ライセンスがカバーする Azure SQL リソースは、時間ごとに変動する可能性があります。 この変動は、どのリソースが実行され、自動化されたシステムによってその使用量がどのような順序で処理されるかによって変わります。 ただし、システムにより、選択されたスコープ内で割り当てられた SQL ライセンスが最大限に使用されます。 使用状況は、Cost Management を使用して監視できます。 詳細については、[割り当てられたライセンスの使用状況を追跡する方法](create-sql-license-assignments.md#track-assigned-license-use)に関するセクションを参照してください。
 
 次の図は、割り当てられた SQL Server ライセンスが時間の経過と共にどのように適用され、Azure ハイブリッド特典の最大割引が達成されるかを示しています。
 
 :::image type="content" source="./media/manage-licenses-centrally/ncl-utilization-over-time.png" alt-text="時間経過に伴う NCL の使用状況を示す図。" border="false" lightbox="./media/manage-licenses-centrally/ncl-utilization-over-time.png":::
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - 「[スコープ レベルの Azure ハイブリッド特典の管理に関する FAQ](faq-azure-hybrid-benefit-scope.yml)」を確認します。
 - [既存の Azure ハイブリッド特典エクスペリエンスから移行する](transition-existing.md)方法について確認します。

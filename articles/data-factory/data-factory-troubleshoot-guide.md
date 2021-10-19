@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: troubleshooting
 ms.custom: synapse
 ms.topic: troubleshooting
-ms.date: 09/09/2021
+ms.date: 09/30/2021
 ms.author: abnarain
-ms.openlocfilehash: c9e6c4c0475842d9eb8c674464ebcf997d98b548
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: ec238a018dea8940143aa6a2483c0e7dfa0d3d63
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124749444"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129705617"
 ---
 # <a name="troubleshoot-azure-data-factory-and-synapse-pipelines"></a>Azure Data Factory と Synapse パイプラインのトラブルシューティング
 
@@ -142,6 +142,20 @@ Copy アクティビティの使用時にエラーが発生したなど、コネ
 
 - **推奨事項**:セルフホステッド統合ランタイムを使用している場合は、統合ランタイム ノードからのネットワーク接続が信頼できることを確認してください。 Azure 統合ランタイムを使用している場合、通常は再試行すると機能します。
  
+### <a name="the-boolean-run-output-starts-coming-as-string-instead-of-expected-int"></a>ブール値の実行出力が、予期される int ではなく文字列として開始される
+
+- **現象**: ブール値の実行出力が、予期される int (`0` や `1` など) ではなく、文字列 (`"0"` や `"1"` など) として開始されます。
+
+   :::image type="content" source="media/data-factory-troubleshoot-guide/databricks-pipeline.png" alt-text="Databricks パイプラインのスクリーン ショット。":::
+
+    この出力に依存するパイプラインが失敗し始めた 2021 年 9 月 28 日の午前 9 時頃に、この変更に気付きました。 パイプラインに変更は行われておらず、障害の前まで、ブール値の出力が予想通り行われていました。 
+
+   :::image type="content" source="media/data-factory-troubleshoot-guide/old-and-new-output.png" alt-text="出力の違いのスクリーンショット。":::
+
+- **原因**: この問題は、最近の変更 (設計による) が原因で発生します。 変更後、結果が 0 で始まる数値の場合、Azure Data Factory によって数値が 8 進数に変換されますが、これはバグです。 この数値は常に 0 か 1 で、変更前に問題が発生したことはありません。 そのため、8 進数の変換を修正するには、文字列出力を Notebook の実行からそのまま渡します。 
+
+- **推奨事項**: **if** 条件を `if(value=="0")` などに変更します。
+
 ## <a name="azure-data-lake-analytics"></a>Azure Data Lake Analytics
 
 次の表は、U-SQL について記載したものです。
@@ -1021,6 +1035,15 @@ Copy アクティビティの使用時にエラーが発生したなど、コネ
 **原因:** 各アクティビティの実行のペイロードには、アクティビティの構成、関連付けられているデータセットとリンクされたサービスの構成 (ある場合)、アクティビティの種類ごとに生成されるシステム プロパティの一部が含まれます。 このようなペイロード サイズの制限は、[Data Factory](../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits) および [Azure Synapse Analytics](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-synapse-analytics-limits) の Azure の制限のドキュメントで説明されているように 896 KB です。
 
 **推奨事項:** アップストリーム アクティビティの出力または外部から 1 つ以上の大きなパラメーター値を渡す場合、特に制御フロー内のアクティビティ間で実際のデータを渡す場合、この制限に達する可能性があります。 大きなパラメーター値のサイズを減らせるかどうかを確認するか、パイプライン ロジックを調整して、アクティビティ間で値が渡されずにアクティビティ内で処理されるようにします。
+
+### <a name="unsupported-compression-causes-files-to-be-corrupted"></a>サポートされていない圧縮によりファイルが破損する
+
+**現象**: BLOB コンテナーに格納されているファイルを解凍しようとします。 パイプライン内の 1 つのコピー アクティビティに、圧縮の種類が "deflate64" (または任意のサポートされていない種類) に設定されたソースがあります。 このアクティビティは正常に実行され、zip ファイルに格納されたテキスト ファイルが生成されます。 ただし、ファイル内のテキストに問題があり、このファイルは破損しているように見えます。 このファイルをローカルで解凍すると、問題ありません。
+
+**原因**: zip ファイルは "deflate64" のアルゴリズムによって圧縮されていますが、Azure Data Factory の内部 zip ライブラリでは "deflate" のみがサポートされています。 zip ファイルが Windows システムによって圧縮され、ファイル全体のサイズが特定の数値を超える場合、Windows では既定で "deflate64" が使用され、これは Azure Data Factory でサポートされていません。 一方、ファイル サイズが小さいか、または圧縮アルゴリズムの指定をサポートする何らかのサードパーティ製の zip ツールを使用している場合、Windows では既定で "deflate" が使用されます。
+
+> [!TIP]
+> 実際に、「[Azure Data Factory と Synapse Analytics でのバイナリ形式](format-binary.md)」と「[Azure Data Factory および Azure Synapse Analytics での区切りテキスト形式](format-delimited-text.md)」の両方で、"deflate64" 形式は Azure Data Factory でサポートされていないことが明記されています。
 
 ## <a name="next-steps"></a>次のステップ
 

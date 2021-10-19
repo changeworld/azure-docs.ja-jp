@@ -5,13 +5,13 @@ author: ekpgh
 ms.author: v-erkel
 ms.service: fxt-edge-filer
 ms.topic: tutorial
-ms.date: 06/20/2019
-ms.openlocfilehash: 8d349a0faa2cfc97f029e496b9bd92b1e5057018
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.date: 10/07/2021
+ms.openlocfilehash: c723214962e67ef04f9cf7659f63d29af87a4732
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122867505"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129670056"
 ---
 # <a name="tutorial-configure-the-clusters-network-settings"></a>チュートリアル:クラスターのネットワーク設定を構成する
 
@@ -102,42 +102,46 @@ DNS サーバーを使用するかどうかを決定する際は、以下の点�
 
 ### <a name="round-robin-dns-configuration-details"></a>ラウンド ロビン DNS の構成の詳細
 
-クライアントがクラスターにアクセスするとき、RRDNS (ラウンドロビン DNS) は使用可能なすべてのインターフェイスの間で要求を自動的に分散します。
+ラウンドロビン DNS (RRDNS) システムでは、クライアント要求を複数のアドレスにわたって自動的にルーティングします。
 
-最適なパフォーマンスを得るには、次の図に示すように、クライアントに接続するクラスター アドレスを処理するように DNS サーバーを構成します。
+このシステムを設定するには、DNS サーバーの構成ファイルをカスタマイズする必要があります。これにより、FXT Edge Filer のメイン ドメイン アドレスへのマウント要求を受け取ると、クラスターのすべてのマウント ポイント全体にトラフィックが割り当てられます。 クライアントでは、サーバー引数としてそのドメイン名を使用してクラスターがマウントされ、次のマウント IP に自動的にルーティングされます。
 
-クラスター vserver が左側に示され、IP アドレスが中央と右側に示されています。 図に示すように、A レコードとポインターを使用して各クライアントのアクセス ポイントを構成します。
+RRDNS を構成する手順は、主に次の 2 つです。
 
-:::image type="complex" source="media/fxt-cluster-config/fxt-rrdns-diagram.png" alt-text="クラスターのラウンドロビン DNS 構成を示す図。":::
-   <この図は 3 つのカテゴリの要素間の接続を示しています。1 つの vserver (左側)、3 つの IP アドレス (中央の列)、3 つのクライアント インターフェイス (右側の列) です。 左側で "vserver1" というラベルが付いた 1 つの円が、IP アドレス: 10.0.0.10、10.0.0.11、10.0.0.12 のラベルが付いた 3 つの円を指し示す矢印で結ばれています。 vserver 円から 3 つの IP の円への矢印には、"A" というキャプションがあります。 各 IP アドレスの円は、クライアント インターフェイスのラベルが付いた円と 2 つの矢印で結ばれています。 IP 10.0.0.10 の円は "vs1-client-IP-10" とつながり、IP 10.0.0.11 の円は "vs1-client-IP-11" とつながり、IP 10.0.0.12 の円は "vs1-client-IP-11" とつながっています。 IP アドレスの円とクライアント インターフェイスの円の間をつないでいるのは、2 つの矢印です。一方の矢印は "PTR" のラベルが付いていて、IP アドレスの円からクライアント インターフェイスの円を指しており、もう一方の矢印は "A" のラベルが付いていて、クライアント インターフェイスの円から IP アドレスの円を指しています。 > :::image-end:::
+1. DNS サーバーの ``named.conf`` ファイルを変更して、FXT クラスターへのクエリの循環の順序を設定します。 このオプションを選択すると、サーバーで使用可能なすべての IP 値が順番に表示されます。 次のようなステートメントを追加します。
 
-クライアントに接続する IP アドレスには、クラスターによる内部使用のための一意の名前がそれぞれ必要です。 (この図では、わかりやすくするためにクライアント IP に vs1-client-IP-* という名前が付いていますが、運用環境では client* のような簡潔なものがおそらく使用されます。)
+   ```bash
+   options {
+       rrset-order {
+           class IN A name "fxt.contoso.com" order cyclic;
+       };
+   };
+   ```
 
-クライアントはサーバーの引数として vserver 名を使用してクラスターをマウントします。
+1. 次の例のように、使用可能な IP アドレスごとに A レコードとポインター (PTR) レコードを構成します。
 
-DNS サーバーの ``named.conf`` ファイルを変更して、vserver へのクエリの循環の順序を設定します。 このオプションにより、使用可能なすべての値が循環して使用されます。 次のようなステートメントを追加します。
+   これらの ``nsupdate`` コマンドは、ドメイン名 fxt.contoso.com と 3 つのマウント アドレス (10.0.0.10、10.0.0.11、および 10.0.0.12) を使用して、Azure FXT Edge Filer クラスターに対して DNS を正しく構成する例を示します。
 
-```
-options {
-    rrset-order {
-        class IN A name "vserver1.example.com" order cyclic;
-    };
-};
-```
+   ```bash
+   update add fxt.contoso.com. 86400 A 10.0.0.10
+   update add fxt.contoso.com. 86400 A 10.0.0.11
+   update add fxt.contoso.com. 86400 A 10.0.0.12
+   update add client-IP-10.contoso.com. 86400 A 10.0.0.10
+   update add client-IP-11.contoso.com. 86400 A 10.0.0.11
+   update add client-IP-12.contoso.com. 86400 A 10.0.0.12
+   update add 10.0.0.10.in-addr.arpa. 86400 PTR client-IP-10.contoso.com
+   update add 11.0.0.10.in-addr.arpa. 86400 PTR client-IP-11.contoso.com
+   update add 12.0.0.10.in-addr.arpa. 86400 PTR client-IP-12.contoso.com
+   ```
 
-次の ``nsupdate`` コマンドは、DNS を正しく構成した例を示しています。
+   これらのコマンドによって、クラスターのマウント アドレスごとに A レコードが作成されるほか、逆引き DNS チェックを適切にサポートするようにポインター レコードが設定されます。
 
-```
-update add vserver1.example.com. 86400 A 10.0.0.10
-update add vserver1.example.com. 86400 A 10.0.0.11
-update add vserver1.example.com. 86400 A 10.0.0.12
-update add vs1-client-IP-10.example.com. 86400 A 10.0.0.10
-update add vs1-client-IP-11.example.com. 86400 A 10.0.0.11
-update add vs1-client-IP-12.example.com. 86400 A 10.0.0.12
-update add 10.0.0.10.in-addr.arpa. 86400 PTR vs1-client-IP-10.example.com
-update add 11.0.0.10.in-addr.arpa. 86400 PTR vs1-client-IP-11.example.com
-update add 12.0.0.10.in-addr.arpa. 86400 PTR vs1-client-IP-12.example.com
-```
+   次の図は、この構成の基本的な構造を示しています。
+
+   :::image type="complex" source="media/round-robin-dns-diagram-fxt.png" alt-text="クライアントのマウント ポイントの DNS 構成を示す図。":::
+   <この図は 3 つのカテゴリの要素間の接続を示しています。1 つの FXT Edge Filer クラスター ドメイン名 (左側)、3 つの IP アドレス (中央の列)、3 つの内部使用逆引き DNS クライアント インターフェイス (右側の列) です。 左側の "fxt.contoso.com" というラベルが付いた 1 つの楕円が、IP アドレス: 10.0.0.10、10.0.0.11、10.0.0.12 のラベルが付いた 3 つの楕円を指し示す矢印で結ばれています。 fxt.contoso.com の楕円から 3 つの IP の楕円への矢印には、"A" というラベルが付いています。 各 IP アドレスの楕円は、クライアント インターフェイスのラベルが付いた楕円と 2 つの矢印で結ばれています。IP 10.0.0.10 の楕円は "client-IP-10.contoso.com" と、IP 10.0.0.11 の楕円は "client-IP-11.contoso.com" と、IP 10.0.0.12 の楕円は "client-IP-11.contoso.com" とつながっています。 IP アドレスの楕円とクライアント インターフェイスの楕円の間をつないでいるのは、2 つの矢印です。一方の矢印は "PTR" のラベルが付いていて、IP アドレスの楕円からクライアント インターフェイスの楕円を指しており、もう一方の矢印は "A" のラベルが付いていて、クライアント インターフェイスの楕円から IP アドレスの楕円を指しています。> :::image-end:::
+
+RRDNS システムが構成されたら、それを使用してマウント コマンドで FXT クラスター アドレスを解決するように、クライアント コンピューターに指示します。
 
 ### <a name="enable-dns-in-the-cluster"></a>クラスター内で DNS を有効にする
 

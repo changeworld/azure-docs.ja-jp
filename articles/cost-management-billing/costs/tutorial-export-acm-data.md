@@ -1,26 +1,26 @@
 ---
 title: チュートリアル - Azure Cost Management からデータをエクスポートし、管理する
-description: この記事では、外部システムで使用できるように Azure Cost Management データをエクスポートし、管理する方法を紹介します。
+description: この記事では、外部システムで使用できるように Cost Management データをエクスポートし、管理する方法を紹介します。
 author: bandersmsft
 ms.author: banders
-ms.date: 09/16/2021
+ms.date: 10/07/2021
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18, devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 5c27f34adcf427a82f425f7ef4cf24a4ae843bc4
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: a08c6a6b00273e21c517162260f54ed3e6fc65ff
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128648774"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129711361"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>チュートリアル:データをエクスポートし、管理する
 
 コスト分析のチュートリアルをお読みになっていれば、コスト管理データを手動でダウンロードできます。 その一方で、コスト管理データを Azure Storage に対して毎日、毎週、または毎月、自動的にエクスポートする定期タスクを作成することができます。 エクスポートしたデータは CSV 形式になり、コスト管理で収集したすべての情報がそれに含まれます。 エクスポート後は、Azure Storage に格納されたそのデータを外部システムで利用したり、独自のデータと組み合わせたりできます。 また、エクスポートしたデータを、ダッシュボードやその他の金融システムのような外部システムで利用できます。
 
-Azure のコスト データを Azure Storage にエクスポートするスケジュールの作成については、[Azure Cost Management でストレージへのエクスポートをスケジュールする方法](https://www.youtube.com/watch?v=rWa_xI1aRzo)に関するビデオをご覧ください。 他の動画を視聴するには、[Cost Management の YouTube チャンネル](https://www.youtube.com/c/AzureCostManagement)にアクセスしてください。
+Azure のコスト データを Azure Storage にエクスポートするスケジュールの作成については、[Cost Management でストレージへのエクスポートをスケジュールする方法](https://www.youtube.com/watch?v=rWa_xI1aRzo)に関するビデオをご覧ください。 他の動画を視聴するには、[Cost Management の YouTube チャンネル](https://www.youtube.com/c/AzureCostManagement)にアクセスしてください。
 
 >[!VIDEO https://www.youtube.com/embed/rWa_xI1aRzo]
 

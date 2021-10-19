@@ -3,12 +3,12 @@ title: Azure Functions 2.x の host.json のリファレンス
 description: Azure Functions の v2 ランタイムの host.json ファイルのリファレンス ドキュメント。
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: b646c4d263896e1bf4d63bdaf965209c005b8228
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 8844e76c7f01bf33bc81ef2fec733b9e538e34cc
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121742651"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129660516"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x 以降の host.json のリファレンス 
 
@@ -16,12 +16,15 @@ ms.locfileid: "121742651"
 > * [Version 1](functions-host-json-v1.md)
 > * [バージョン 2 以降](functions-host-json.md)
 
-*host.json* メタデータ ファイルには、関数アプリのすべての関数に影響するグローバル構成オプションが含まれています。 この記事では、Azure Functions ランタイムのバージョン 2.x 移行で使用できる設定を一覧表示しています。  
+host.json メタデータ ファイルには、関数アプリ インスタンス内のすべての関数に影響する構成オプションが含まれています。 この記事では、Azure Functions ランタイムのバージョン 2.x 移行で使用できる設定を一覧表示しています。  
 
 > [!NOTE]
 > この記事は、Azure Functions 2.x 以降のバージョンを対象としています。  Functions 1.x の host.json のリファレンスについては、「[host.json reference for Azure Functions 1.x (Azure Functions 1.x の host.json のリファレンス)](functions-host-json-v1.md)」を参照してください。
 
-その他の関数アプリの構成オプションは、[アプリ設定](functions-app-settings.md) (デプロイされているアプリの場合) または [local.settings.json](functions-develop-local.md#local-settings-file) ファイル (ローカル開発の場合) で管理されます。
+その他の関数アプリの構成オプションは、関数アプリが実行される場所に応じて管理されます。
+
++ **Azure にデプロイ済み**: [アプリケーション設定](functions-app-settings.md)内 
++ **ローカル コンピューター上**: [local.settings.json](functions-develop-local.md#local-settings-file) ファイル内。
 
 バインドに関連する host.json 内の構成は、関数アプリの各関数に均等に適用されます。 
 

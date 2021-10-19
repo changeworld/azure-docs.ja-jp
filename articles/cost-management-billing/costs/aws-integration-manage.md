@@ -9,16 +9,16 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: matrive
 ms.custom: ''
-ms.openlocfilehash: 4f657e742165bdb87e1cc1c021966dc2e5473e81
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: d64d0bead5df1aa8b91ae39a79c1255eaac51f27
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128647735"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129706177"
 ---
 # <a name="manage-aws-costs-and-usage-in-azure"></a>Azure での AWS のコストと使用状況の管理
 
-Azure Cost Management のための AWS のコストおよび使用レポートを設定して構成したら、AWS のコストと使用状況を開始する準備ができたことになります。 この記事では、Cost Management でのコスト分析と予算を使用して、AWS のコストと使用状況を管理する方法を理解できます。
+Cost Management のための AWS のコストおよび使用レポートを設定して構成したら、AWS のコストと使用状況を開始する準備ができたことになります。 この記事では、Cost Management でのコスト分析と予算を使用して、AWS のコストと使用状況を管理する方法を理解できます。
 
 統合をまだ構成していない場合は、「[AWS の使用状況レポート統合の設定と構成](aws-integration-set-up-configure.md)」を参照してください。
 
@@ -151,7 +151,7 @@ AWS のリンクされたアカウントのコストへのアクセス許可を�
 
 **エラー コード:** _AccessDeniedReportDefinitions_
 
-このエラーは、Cost Management でコストと使用状況レポートの定義を表示できないことを意味しています。 このアクセス許可は、Azure Cost Management が想定するとおりに CUR が定義されていることを検証するために使用されます。 「[AWS でコストと使用状況レポートを作成する](aws-integration-set-up-configure.md#create-a-cost-and-usage-report-in-aws)」を参照してください。
+このエラーは、Cost Management でコストと使用状況レポートの定義を表示できないことを意味しています。 このアクセス許可は、Cost Management が想定するとおりに CUR が定義されていることを検証するために使用されます。 「[AWS でコストと使用状況レポートを作成する](aws-integration-set-up-configure.md#create-a-cost-and-usage-report-in-aws)」を参照してください。
 
 ### <a name="collection-failed-with-access-denied---list-reports"></a>アクセス拒否で収集が失敗 - レポートの一覧表示
 

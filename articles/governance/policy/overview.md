@@ -3,12 +3,12 @@ title: Azure Policy の概要
 description: Azure Policy は Azure のサービスであり、Azure 環境でのポリシー定義の作成、割り当て、管理に使うことができます。
 ms.date: 07/27/2021
 ms.topic: overview
-ms.openlocfilehash: 9462281ce37e066a920c17d1dc142a177b97fb2a
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: aff8dc3aa4ff97438a4ebc457a6946f30dccb142
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122770552"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129660858"
 ---
 # <a name="what-is-azure-policy"></a>Azure Policy とは
 
@@ -74,7 +74,7 @@ Azure Policy は、次の 2 つのリソース プロバイダーにおいて、
 - [Microsoft.Authorization](../../role-based-access-control/resource-provider-operations.md#microsoftauthorization)
 - [Microsoft.PolicyInsights](../../role-based-access-control/resource-provider-operations.md#microsoftpolicyinsights)
 
-Azure Policy のリソースに対するアクセス許可は、さまざまな組み込みロールによって与えられます。 **リソース ポリシーの共同作成者** ロールには、Azure Policy のほとんどの操作が含まれます。 **所有者** は完全な権限を持っています。 **共同作成者** と **閲覧者** はどちらも、Azure Policy のすべての "_読み取り_" 操作にアクセスできます。 **共同作成者** はリソースの修復をトリガーできますが、定義や割り当てを "_作成_" することはできません。 **deployIfNotExists** や **modify** 割り当てのマネージド ID に対して必要なアクセス許可を与えるには、**ユーザー アクセス管理者** が必要です。
+Azure Policy のリソースに対するアクセス許可は、さまざまな組み込みロールによって与えられます。 **リソース ポリシーの共同作成者** ロールには、Azure Policy のほとんどの操作が含まれます。 **所有者** は完全な権限を持っています。 **共同作成者** と **閲覧者** はどちらも、Azure Policy のすべての "_読み取り_" 操作にアクセスできます。 **共同作成者** はリソースの修復をトリガーできますが、定義や割り当てを "_作成_" することはできません。 **deployIfNotExists** や **modify** 割り当てのマネージド ID に対して必要なアクセス許可を与えるには、**ユーザー アクセス管理者** が必要です。 すべてのポリシー オブジェクトは、スコープのすべてのロールから読み取ることができるようになります。
 
 いずれの組み込みロールにも必要なアクセス許可がない場合は、[カスタム ロール](../../role-based-access-control/custom-roles.md)を作成してください。
 

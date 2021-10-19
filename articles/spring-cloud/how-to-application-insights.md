@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 12/04/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 3922b716a5537838be06f3fec6a9626e59fa929f
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: d4cb278fbfd6feb3fb2be0e2a113092ff24644cc
+ms.sourcegitcommit: ee5d9cdaf691f578f2e390101bf5350859d85c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129055110"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129740267"
 ---
 # <a name="application-insights-java-in-process-agent-in-azure-spring-cloud"></a>Azure Spring Cloud での Application Insights Java In-Process Agent
 
@@ -54,6 +54,9 @@ Application Insights には、次のように多くの監視可能なパース�
 3. **Application Insights** を有効にすると、1 つのオプションのサンプリング レート (既定値は 10.0%) を構成できます。
 
    [ ![IPA 0](media/spring-cloud-application-insights/insights-process-agent-0.png)](media/spring-cloud-application-insights/insights-process-agent-0.png)
+
+> [!Note]
+> 異なる Azure Spring Cloud インスタンスで同じ AI を使用しないでください。そうしないと、混合データが表示されます。
 
 ## <a name="using-the-application-insights-feature"></a>Application Insights 機能の使用
 

@@ -1,28 +1,28 @@
 ---
-title: Arc 対応サーバー用 Azure Automanage
-description: Arc 対応サーバー用 Azure Automanage について説明します
+title: Azure Arc 対応サーバー用 Azure Automanage
+description: Azure Arc 対応サーバー用 Azure Automanage について説明します
 ms.service: virtual-machines
 ms.subservice: automanage
 ms.collection: linux
 ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 06/24/2021
-ms.openlocfilehash: ce12689548884d4c57363851f7de99b5fb067ef6
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: cb04cdd75815ecc0579d9e4efbda9c49f1a7ff1c
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129456235"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129713429"
 ---
-# <a name="azure-automanage-for-machines-best-practices---arc-enabled-servers"></a>Azure Automanage for Machines ベスト プラクティス - Arc 対応サーバー
+# <a name="azure-automanage-for-machines-best-practices---azure-arc-enabled-servers"></a>Azure Automanage for Machines のベスト プラクティス - Azure Arc 対応サーバー
 
-Arc 対応サーバー VM で Automanage Machine Best Practices を使用する場合、これらの Azure サービスは自動的にオンボードされます。 それらはベスト プラクティスのホワイト ペーパーに不可欠なものであり、[クラウド導入フレームワーク](/azure/cloud-adoption-framework/manage/azure-server-management)を参照してください。
+Azure Arc 対応サーバー VM で Automanage Machine Best Practices を使用する場合、これらの Azure サービスは自動的にオンボードされます。 それらはベスト プラクティスのホワイト ペーパーに不可欠なものであり、[クラウド導入フレームワーク](/azure/cloud-adoption-framework/manage/azure-server-management)を参照してください。
 
 これらのすべてのサービスについては、Microsoft が自動オンボード、自動構成、ドリフトの監視、ドリフトが検出された場合の修復を行います。 このプロセスの詳細については、「[Azure Automanage for virtual machines](automanage-virtual-machines.md)」を参照してください。
 
 ## <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
 
-Automanage では、Arc 対応サーバーで次のオペレーティング システムがサポートされます
+Automanage では、Azure Arc 対応サーバーで次のオペレーティング システムがサポートされます
 
 - Windows Server 2012/R2
 - Windows Server 2016

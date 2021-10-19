@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/16/2021
-ms.openlocfilehash: 81c82152bf87944c7aed191c12e067567ec2b086
-ms.sourcegitcommit: c2f0d789f971e11205df9b4b4647816da6856f5b
+ms.openlocfilehash: 26aa625d7ada93c4524276ee195fd279d155e8c8
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122662247"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129710327"
 ---
 # <a name="configure-data-collection-for-the-azure-monitor-agent"></a>Azure Monitor エージェント用のデータ収集の構成
 

@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 09/21/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: b7a35b819844b411a040542d4390fae3e69b9bcc
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 13e025845dd4fbd51519f85f1879cc11c6ea102d
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128656020"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129706894"
 ---
 # <a name="install-the-azure-monitor-agent"></a>Azure Monitor エージェントのインストール
 この記事では、Azure 仮想マシンと Azure Arc 対応サーバーの両方に [Azure Monitor エージェント](azure-monitor-agent-overview.md) をインストールするために現在使用できるさまざまなオプションについて説明し、エージェントが収集するデータを定義する[データ収集ルールとの関連付け](data-collection-rule-azure-monitor-agent.md)を作成するオプションについても説明します。

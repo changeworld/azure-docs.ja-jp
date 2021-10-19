@@ -3,12 +3,12 @@ title: Service Fabric クラスターのアップグレードの管理
 description: Service Fabric クラスター ランタイムをいつどのように更新するかを管理する
 ms.topic: how-to
 ms.date: 03/26/2021
-ms.openlocfilehash: 98c3300e5cc51c32d894397839879e25190d979b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 129bdae4dc131013bd7c13377b61575141c27ccd
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105731169"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129714578"
 ---
 # <a name="manage-service-fabric-cluster-upgrades"></a>Service Fabric クラスターのアップグレードの管理
 
@@ -40,7 +40,7 @@ Azure portal を使用して、新しい Service Fabric クラスターを作成
 
 ### <a name="resource-manager-template"></a>Resource Manager テンプレート
 
-Resource Manager テンプレートを使用してクラスター アップグレード モードを変更するには、*Microsoft.ServiceFabric/clusters* リソース定義の `upgradeMode` プロパティに *Automatic* または *Manual* を指定します。 手動アップグレードを選択した場合は、も現在`clusterCodeVersion`サポートされているファブリック のバージョン[に設定します。](#query-for-supported-cluster-versions)
+Resource Manager テンプレートを使用してクラスター アップグレード モードを変更するには、*Microsoft.ServiceFabric/clusters* リソース定義の `upgradeMode` プロパティに *Automatic* または *Manual* を指定します。 手動アップグレードを選択した場合は、も現在`clusterCodeVersion`サポートされているファブリック のバージョン[に設定します。](#check-for-supported-cluster-versions)
 
 :::image type="content" source="./media/service-fabric-cluster-upgrade/ARMUpgradeMode.PNG" alt-text="スクリーンショットには、構造を反映するようにインデントされたプレーン テキストのテンプレートが示されています。'clusterCodeVersion' と 'upgradeMode' のプロパティーが強調表示されています。":::
 
@@ -126,11 +126,11 @@ Resource Manager テンプレートを使用してクラスター アップグ�
 
 :::image type="content" source="./media/service-fabric-cluster-upgrade/custom-upgrade-policy.png" alt-text="アップグレード時にカスタム正常性ポリシーを設定するには、Azure portal のクラスター リソースの [ファブリックのアップグレード] セクションで [カスタム] アップグレード ポリシー オプションを選択します":::
 
-## <a name="query-for-supported-cluster-versions"></a>サポートされているクラスター バージョンのクエリ
+## <a name="check-for-supported-cluster-versions"></a>サポートされているクラスター バージョンの確認
 
-[Azure REST API](/rest/api/azure/) を使用すると、指定した場所とサブスクリプションで使用可能なすべての Service Fabric ランタイム バージョン ([clusterVersions](/rest/api/servicefabric/sfrp-api-clusterversions_list)) を一覧表示できます。
+サポートされているバージョンとオペレーティング システムの詳細については、[Service Fabric バージョン](service-fabric-versions.md)に関するページで確認できます。
 
-サポートされているバージョンとオペレーティング システムの詳細については、[Service Fabric バージョン](service-fabric-versions.md)に関するページでも確認できます。
+[Azure REST API](/rest/api/azure/) を使用して、指定した場所とサブスクリプションで使用可能なすべての Service Fabric ランタイム バージョン ([clusterVersions](/rest/api/servicefabric/sfrp-api-clusterversions_list)) を一覧表示することもできます。
 
 ```REST
 GET https://<endpoint>/subscriptions/{{subscriptionId}}/providers/Microsoft.ServiceFabric/locations/{{location}}/clusterVersions?api-version=2018-02-01
@@ -173,11 +173,45 @@ GET https://<endpoint>/subscriptions/{{subscriptionId}}/providers/Microsoft.Serv
 出力の `supportExpiryUtc` は、特定のリリースの有効期限が近づいているか、期限切れになっていることを報告します。 最新リリースには有効な日付ではなく、*9999-12-31T23:59:59.9999999* という値が設定されていますが、これは単に有効期限が設定されていないことを意味するものです。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="check-for-supported-upgrade-path"></a>サポートされているアップグレード パスの確認
+
+サポートされているアップグレード パスと関連するバージョン情報については、[Service Fabric バージョン](service-fabric-versions.md)に関するドキュメントを参照できます。 
+
+次の PowerShell 手順で、サポートされているターゲットのバージョン情報を使用して、サポートされているアップグレード パスを検証できます。
+
+1) Azure にログインする
+   ```PowerShell
+   Login-AzAccount
+   ```
+
+2) サブスクリプションの選択
+   ```PowerShell
+   Set-AzContext -SubscriptionId <your-subscription>
+   ```
+
+3) コマンドレットを呼び出します
+   ```PowerShell
+   $params = @{ "TargetVersion" = "<target version>"}
+   Invoke-AzResourceAction -ResourceId -ResourceId <cluster resource id> -Parameters $params -Action listUpgradableVersions -Force
+   ```
+
+   例: 
+   ```PowerShell
+   $params = @{ "TargetVersion" = "8.1.335.9590"}
+   Invoke-AzResourceAction -ResourceId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myResourceGroup/providers/Microsoft.ServiceFabric/clusters/myCluster -Parameters $params -Action listUpgradableVersions -Force
+
+   Output
+   supportedPath
+   -------------
+   {8.1.329.9590, 8.1.335.9590}
+   ```
+
+
+## <a name="next-steps"></a>次のステップ
 
 * [Service Fabric のアップグレードの管理](service-fabric-cluster-upgrade-version-azure.md)
-* [Service Fabric クラスターの設定](service-fabric-cluster-fabric-settings.md)のカスタマイズ
-* [クラスターのスケール インとスケール アウト](service-fabric-cluster-scale-in-out.md)
+* [Service Fabric クラスター設定](service-fabric-cluster-fabric-settings.md)のカスタマイズ
+* [クラスターのスケールイン/アウト](service-fabric-cluster-scale-in-out.md)
 * [アプリケーションのアップグレード](service-fabric-application-upgrade.md)
 
 

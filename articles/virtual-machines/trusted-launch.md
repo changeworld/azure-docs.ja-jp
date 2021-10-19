@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/26/2021
 ms.reviewer: cynthn
 ms.custom: template-concept; references_regions
-ms.openlocfilehash: 0e86c503fb016f79097d9ddde1d30f4314942870
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 9b2dfe8d4ae7bb17eee4d875178ff059080cb4e0
+ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122695291"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129728895"
 ---
 # <a name="trusted-launch-for-azure-virtual-machines-preview"></a>Azure Virtual Machines のトラステッド起動 (プレビュー)
 
@@ -57,24 +57,20 @@ Azure からは、[第 2 世代](generation-2.md)の VM のセキュリティを
 - SUSE 15 SP2
 - Ubuntu 20.04 LTS
 - Ubuntu 18.04 LTS
+- Debian 11
+- CentOS 8.4
+- Oracle Linux 8.3
 - Windows Server 2019
 - Windows Server 2016
+- Windows 11 Pro
+- Windows 11 Enterprise
+- Windows 11 Enterprise マルチセッション
 - Windows 10 Pro
 - Windows 10 Enterprise
 - Windows 10 (Enterprise マルチセッション)
 
 **[地域]**: 
-- 米国中部
-- 米国東部
-- 米国東部 2
-- 米国中北部
-- 米国中南部
-- 米国西部
-- 米国西部 2
-- 北ヨーロッパ
-- 西ヨーロッパ
-- 東日本
-- 東南アジア
+- すべてのパブリック リージョン
 
 **価格**: 既存の VM の価格への追加料金はかかりません。
 

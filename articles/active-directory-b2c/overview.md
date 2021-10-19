@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory B2C とは
-description: Azure Active Directory B2C を使用して、Facebook、Google、その他の ID プロバイダーでのソーシャル ログインなど、外部 ID をアプリケーションでサポートする方法について説明します。
+description: Azure Active Directory B2C を使用して、Facebook、Google、その他の ID プロバイダーでのソーシャル サインアップなど、外部 ID をアプリケーションでサポートする方法について説明します。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 10/01/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 916c5191acb0f7245c929c6ef1db5fca4fc3841b
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 54af9f4b8584500faa9c3134f350a436da54c24b
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129352462"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129709968"
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>Azure Active Directory B2C とは
 
@@ -25,10 +25,10 @@ Azure Active Directory B2C は、サービスとしての企業-消費者間 (B2
 
 Azure AD B2C は、1 日あたり何百万ものユーザーと何十億もの認証をサポートできる顧客 ID アクセス管理 (CIAM) ソリューションです。 認証プラットフォームのスケーリングと安全性が処理され、サービス拒否、パスワード スプレー、ブルート フォース攻撃などの脅威の監視と自動処理が行われます。
 
-Azure AD B2C は、[Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) とは別のサービスです。 Azure AD と同じテクノロジをベースにして構築されていますが、目的が異なり、企業が顧客向けのアプリケーションを構築し、ユーザー アカウントに制限をかけずに、だれでもそのアプリケーションにサインアップできるようにします。
+Azure AD B2C は、[Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) とは別のサービスです。 Azure AD と同じテクノロジをベースにして構築されていますが、目的が異なります。 企業が顧客向けのアプリケーションを構築し、ユーザー アカウントに制限をかけずに、だれでもそのアプリケーションにサインアップできるようにします。
    
 ## <a name="who-uses-azure-ad-b2c"></a>Azure AD B2C の利用者
-自社または自分の Web またはモバイル アプリケーションにだれでもサインアップできるようにしたい企業または個人。 
+ホワイト ラベルの認証ソリューションを使用して、Web/モバイル アプリケーションのエンド ユーザーを認証したい企業または個人。 Azure AD B2C サービスは、認証とは別に、認証されたユーザーによる API リソースへのアクセスなどの承認に使用されます。 Azure AD B2C は、**IT 管理者** と **開発者** によって使用されることを想定しています。
 
 ## <a name="custom-branded-identity-solution"></a>カスタム ブランドの ID ソリューション
 

@@ -1,23 +1,23 @@
 ---
 title: Azure Cost Management と AWS の統合セットアップをする
-description: この記事では、Azure Cost Management で AWS のコストと使用状況レポートの統合を設定して構成する方法を説明します。
+description: この記事では、Cost Management で AWS のコストと使用状況レポートの統合を設定して構成する方法を説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 06/08/2021
+ms.date: 10/07/2021
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: matrive
-ms.openlocfilehash: 098766674e3bd665bb533fbf4d78fe1b0b1aebda
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 6c8c03f93e811e622daa93515740e1cc25e65434
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111756043"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129706154"
 ---
 # <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>AWS のコストと使用状況レポートの統合を設定して構成する
 
-Amazon Web サービス (AWS) のコストと使用状況レポート (CUR) の統合では、Azure Cost Management で AWS 支出を監視して制御します。 統合により、Azure portal の単一の場所で、Azure と AWS の両方での支出を監視して制御します。 この記事では、統合を設定し、Azure Cost Management 機能を使用して、コストを分析し、予算を確認するために構成する方法を説明します。
+Amazon Web サービス (AWS) のコストと使用状況レポート (CUR) の統合では、Cost Management で AWS 支出を監視して制御します。 統合により、Azure portal の単一の場所で、Azure と AWS の両方での支出を監視して制御します。 この記事では、統合を設定し、Cost Management 機能を使用して、コストを分析し、予算を確認できるように構成する方法を説明します。
 
 Cost Management では、レポート定義を取得し、レポートの GZIP CSV ファイルをダウンロードするために AWS アクセス資格情報を使用して、S3 バケットに格納されている AWS のコストと使用状況レポートを処理します。
 
@@ -59,7 +59,7 @@ AWS で Amazon S3 バケットへのレポートの配信が開始されるま�
 
 ## <a name="create-a-role-and-policy-in-aws"></a>AWS でロールとポリシーを作成する
 
-Azure Cost Management では、1 日数回、コストと使用状況レポートが配置されている S3 バケットにアクセスします。 このサービスでは、新しいデータを確認するために資格情報へのアクセスが必要です。 Cost Management によるアクセスを許可するには、AWS でロールとポリシーを作成します。
+Cost Management では、1 日数回、コストと使用状況レポートが配置されている S3 バケットにアクセスします。 このサービスでは、新しいデータを確認するために資格情報へのアクセスが必要です。 Cost Management によるアクセスを許可するには、AWS でロールとポリシーを作成します。
 
 Cost Management で AWS アカウントへのロールベースのアクセスを有効にするために、AWS コンソールでロールが作成されます。 AWS コンソールからの _ロール ARN_ と _外部 ID_ が必要です。 後で、Cost Management の **[AWS コネクタの作成]** ページでこれらを使用します。
 
@@ -71,7 +71,7 @@ Cost Management で AWS アカウントへのロールベースのアクセス�
 4. 次のページで、 **[Another AWS account]\(別の AWS アカウント\)** を選択します。
 5. **[アカウント ID]** に、「**432263259397**」と入力します。
 6. **[オプション]** で、 **[Require external ID (Best practice when a third party will assume this role)]\(外部 ID が必要 (サード パーティでこのロールを想定する場合のベスト プラクティス)\)** を選択します。
-7. **[外部 ID]** に、外部 ID を入力します。これは、AWS ロールと Azure Cost Management 間の共有パスコードです。 Cost Management の **[新しいコネクタ]** ページでも同じ外部 ID が使用されます。 外部 ID を入力する場合には、強力なパスコードポリシーを使用するようお勧めします。
+7. **[外部 ID]** に、外部 ID を入力します。これは、AWS ロールと Cost Management 間の共有パスコードです。 Cost Management の **[新しいコネクタ]** ページでも同じ外部 ID が使用されます。 外部 ID を入力する場合には、強力なパスコードポリシーを使用するようお勧めします。
     > [!NOTE]
     > **[MFA の要求]** の選択は変更しないでください。 クリアされたままにしておく必要があります。
 8. **Permissions\(次へ: アクセス許可\)** をクリックします。
@@ -114,7 +114,7 @@ AWS 組織へのアクセス許可を追加します。
 5. **確認\)** をクリックします。
 6. 新しいロールの名前を入力します。 正しい情報を入力したことを確認してから、 **[ロールの作成]** を選択します。
 
-    ロールの作成時に前の手順で使用されたロール ARN と外部 ID をメモしておいてください。 これらは後で Azure Cost Management コネクタを設定するときに使用します。
+    ロールの作成時に前の手順で使用されたロール ARN と外部 ID をメモしておいてください。 これらは後で Cost Management コネクタを設定するときに使用します。
 
 ポリシー JSON は次の例のようになるはずです。 _bucketname_ を S3 バケットの名前に置き換えます。
 

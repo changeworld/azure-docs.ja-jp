@@ -3,16 +3,16 @@ title: Azure Defender の概要と使用可能なプラン
 description: Azure Defender のプラン、保護、アラートについて説明します。 その後、サブスクリプションで Azure Defender を有効にして高度なセキュリティを実現します。
 author: memildin
 ms.author: memildin
-ms.date: 9/30/2020
+ms.date: 10/07/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: cfbb8badd4a0d9a8b9776d810d33f77a051b3a39
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.openlocfilehash: 34d450535b25b8d3ba1bcc69b54a27d6aab73115
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112238964"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129715397"
 ---
 # <a name="introduction-to-azure-defender"></a>Azure Defender の概要
 
@@ -57,7 +57,7 @@ Azure 環境の防護に加えて、次のような Azure Defender 機能をハ�
 
 特定の環境に応じてカスタマイズされた脅威インテリジェンスと優先順位が付けられたアラートを取得して、最も重要な問題に専念できるようにします。
 
-他のクラウドまたはオンプレミスの仮想マシンと SQL データベースに保護を拡張するには、[Azure Arc](https://azure.microsoft.com/services/azure-arc/) をデプロイし、Azure Defender を有効にします。 Azure Arc for servers は無料のサービスですが、Arc 対応サーバー (Azure Defender など) で使用されるサービスは、そのサービスの価格に従って課金されます。 詳細については、「[Azure Arc を使用して Azure 以外のマシンを追加する](quickstart-onboard-machines.md#add-non-azure-machines-with-azure-arc)」をご覧ください。
+他のクラウドまたはオンプレミスの仮想マシンと SQL データベースに保護を拡張するには、[Azure Arc](https://azure.microsoft.com/services/azure-arc/) をデプロイし、Azure Defender を有効にします。 Azure Arc for servers は無料のサービスですが、Azure Arc 対応サーバーで使用されるサービス (Azure Defender など) は、そのサービスの価格に従って課金されます。 詳細については、「[Azure Arc を使用して Azure 以外のマシンを追加する](quickstart-onboard-machines.md#add-non-azure-machines-with-azure-arc)」をご覧ください。
 
 > [!TIP]
 > AWS のネイティブ コネクタにより、Azure Arc デプロイが透過的に処理されます。 詳細については、「[Azure Security Center への AWS アカウントの接続](quickstart-onboard-aws.md)」をご覧ください。
@@ -84,13 +84,18 @@ Azure Defender ダッシュボードの [高度な保護] タイルを使用し�
 
 ## <a name="vulnerability-assessment-and-management"></a>脆弱性の評価と管理
 
-Azure Defender には、仮想マシンとコンテナー レジストリの脆弱性スキャンが追加費用なしで含まれています。 スキャナーは Qualys を使用していますが、Qualys ライセンスも Qualys アカウントも必要ありません。すべてが Security Center 内でシームレスに処理されます。 
+Azure Defender には、仮想マシンとコンテナー レジストリの脆弱性評価が追加費用なしで含まれています。 一部のスキャナーでは Qualys を使用していますが、Qualys ライセンスも Qualys アカウントも必要ありません。すべてが Security Center 内でシームレスに処理されます。 
+
+[Microsoft Defender for Endpoint との統合](security-center-wdatp.md)を有効にした場合は、**Microsoft の脅威と脆弱性の管理** から脆弱性の検出結果にアクセスできるようになります。 詳細については、「[Microsoft Defender for Endpoint の脅威と脆弱性の管理を使用して弱点を調査する](deploy-vulnerability-assessment-tvm.md)」を参照してください。
 
 これらの脆弱性スキャナーの結果を確認し、すべての結果に対して Security Center 内から対応します。 これにより、Security Center では、クラウド セキュリティのすべての取り組みを、より一元的に確認できます。
 
+> [!IMPORTANT]
+> Security Center と Microsoft Defender for Endpoint の統合は、既定で有効になっています。 そのため、Azure Defender を有効にする際、脆弱性、インストールされているソフトウェア、エンドポイントのアラートに関連する Microsoft Defender for Endpoint データへの Azure Defender for servers のアクセスに同意します。
+
 詳細については、次のページを参照してください。
 
-- [Azure 仮想マシンに対する Security Center の統合脆弱性評価](deploy-vulnerability-assessment-vm.md)
+- [Azure およびハイブリッドのマシンに対する Azure Defender の統合された Qualys スキャナー](deploy-vulnerability-assessment-vm.md)
 - [Azure コンテナー レジストリでイメージの脆弱性を識別する](defender-for-container-registries-usage.md#identify-vulnerabilities-in-images-in-other-container-registries)
 
 

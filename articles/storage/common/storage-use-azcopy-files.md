@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 04/02/2021
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 3e60815b2361f4ba14b6a40ded2734c748f8d4ae
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 95a09a19a4bf569680ba3c16214bc10c6be37cd9
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128633699"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129616419"
 ---
 # <a name="transfer-data-with-azcopy-and-file-storage"></a>AzCopy とファイル ストレージでデータを転送する
 
@@ -423,7 +423,7 @@ azcopy copy 'https://mysourceaccount.file.core.windows.net?sv=2018-03-28&ss=bfqt
 ローカル ファイル システムのコンテンツをファイル共有と同期させたり、ファイル共有の間でコンテンツを同期させたりすることができます。 また、ファイル共有内のディレクトリの内容を、別のファイル共有に配置されているディレクトリの内容と同期させることもできます。 同期は一方向です。 言い換えると、2 つのエンドポイントのいずれかを同期元として、いずれかを同期先として選択します。 同期にもサーバー間 API が使用されます。
 
 > [!NOTE]
-> 現在のところ、このシナリオは、階層型名前空間のないアカウントでのみサポートされています。 AzCopy の現在のリリースでは、Azure Files と Blob Storage が同期されません。
+> 現在、このシナリオは、BLOB エンドポイントを使用して階層型名前空間を有効にしているアカウントでサポートされています。
 
 ### <a name="guidelines"></a>ガイドライン
 

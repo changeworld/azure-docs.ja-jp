@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/29/2021
-ms.openlocfilehash: 68f0d94482d65f261b40095ac715ad65f76fe7af
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 464e848814da046600b05a1feea632a1ceaa141a
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124772203"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129713833"
 ---
 # <a name="monitoring-azure-kubernetes-service-aks-with-azure-monitor"></a>Azure Monitor のコンテナー正常性機能を使用して Azure Kubernetes Service (AKS) を監視する
 このシナリオでは、Azure Monitor を使用して、Azure Kubernetes Service (AKS) の正常性とパフォーマンスを監視する方法について説明します。 これには、傾向を識別するために収集されたデータの監視、分析、視覚化に不可欠なテレメトリのコレクションと、重大な問題が予防的に通知されるアラートを構成する方法が含まれます。

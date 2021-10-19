@@ -1,27 +1,29 @@
 ---
-title: Azure IoT Hub Device Provisioning Service の概要 | Microsoft Docs
+title: Microsoft Azure IoT Hub Device Provisioning Service の概要
 description: Device Provisioning Service (DPS) と IoT Hub を使用した Azure へのデバイス プロビジョニングについて説明します
-author: wesmc7777
-ms.author: wesmc
-ms.date: 04/04/2019
+author: anastasia-ms
+ms.author: v-stharr
+ms.date: 10/06/2021
 ms.topic: overview
 ms.service: iot-dps
 services: iot-dps
-manager: eliotgra
+manager: lizross
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: d65ef555ff0f05ca8020b3598bc6ac3022a708dd
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: eab01abee0ee75df0e342aa7cec1ef7e6c8a4b55
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129272720"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129659509"
 ---
 # <a name="what-is-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub Device Provisioning Service とは
+
 Microsoft Azure には、すべての IoT ソリューションのニーズに合う豊富な統合されたパブリック クラウド サービス セットがあります。 IoT Hub Device Provisioning Service (DPS) は、IoT Hub のヘルパー サービスです。適切な IoT Hub へのゼロタッチの Just-In-Time プロビジョニングを人間の介入を必要とせずに行うことができます。 DPS を使用すると、膨大な数のデバイスを、安全かつスケーラブルな方法でプロビジョニングすることができます。
 
 ## <a name="when-to-use-device-provisioning-service"></a>Device Provisioning Service を使用する場合
+
 デバイスを IoT Hub に接続し、構成する際に DPS が最適な選択肢になるプロビジョニング シナリオは多数あります。次に例を示します。
 
 * 工場 (初期設定) で IoT Hub 接続情報をハードコーディングすることなく、ゼロタッチで単一の IoT ソリューションにプロビジョニングできます
@@ -31,6 +33,14 @@ Microsoft Azure には、すべての IoT ソリューションのニーズに�
 * 最低限の待機時間でデバイスを IoT ハブに接続します (geo シャーディング)
 * デバイスの変化に基づいて再プロビジョニングします
 * デバイスが IoT Hub に接続するときに使用するキーをローリングします (接続に X.509 証明書を使用しない場合)
+
+>[!NOTE]
+>**データ所在地に関する考慮事項:**
+>
+>DPS は、すべてのプロビジョニング サービス インスタンスに対して同じ[デバイス プロビジョニング エンドポイント](concepts-service.md#device-provisioning-endpoint)を使用し、使用可能な最も近いサービス エンドポイントへのトラフィック負荷分散を実行します。 このため、認証シークレットは、DPS インスタンスが最初に作成されたリージョンの外部に一時的に転送される可能性があります。 ただし、デバイスが接続されると、デバイス データは DPS インスタンスの元のリージョンに直接送られます。
+>
+>DPS インスタンスが作成されたリージョンからデータが離れないようにするには、プライベート エンドポイントを使用します。  プライベート エンドポイントを設定する方法については、[仮想ネットワーク向けの Azure IoT Device Provisioning Service (DPS) サポート](virtual-network-support.md#private-endpoint-limitations)を参照してください。
+
 
 ## <a name="behind-the-scenes"></a>バックグラウンド処理
 前のセクションに記載したすべてのシナリオは、ゼロタッチ プロビジョニングの DPS を使用して、同じフローで実行できます。 プロビジョニングに従来必要だった手動の手順の多くは DPS で自動化されるので、IoT デバイスのデプロイにかかる時間を短縮し、手動によるエラーのリスクを軽減できます。 次のセクションでは、デバイスをプロビジョニングする処理の背後でどのような処理が行われているかについて説明します。 最初の手順は手動ですが、残りのすべての手順は自動です。

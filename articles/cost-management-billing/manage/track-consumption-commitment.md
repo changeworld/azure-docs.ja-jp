@@ -7,18 +7,18 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 07/06/2021
+ms.date: 10/11/2021
 ms.author: banders
-ms.openlocfilehash: 41a4f22e669300e24ddce0248e8ab1744b773202
-ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
+ms.openlocfilehash: 741efbce1f8578ca425059b2b04b64d9892112cb
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2021
-ms.locfileid: "113301926"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129857612"
 ---
 # <a name="track-your-microsoft-azure-consumption-commitment-macc"></a>Microsoft Azure Consumption Commitment (MACC) を追跡する
 
-Microsoft Azure Consumption Commitment (MACC) は、お客様の組織が Microsoft Azure の費用に対して長期にわたって行うことがある契約上のコミットメントです。 Microsoft 顧客契約 (MCA) の請求アカウントの MACC をお持ちの組織の場合、開始日、終了日、残りのコミットメント、対象となる費用など、コミットメントの重要な側面を Azure portal または REST API で確認できます。 Enterprise Agreement (EA) 請求アカウントの MACC または CTC は、Azure portal または REST API でまだ使用できません。
+Microsoft Azure Consumption Commitment (MACC) は、お客様の組織が Microsoft Azure の費用に対して長期にわたって行うことがある契約上のコミットメントです。 Microsoft 顧客契約 (MCA) 請求アカウントまたは Enterprise Agreement (EA) 請求アカウントの MACC をお持ちの組織の場合、開始日、終了日、残りのコミットメント、対象となる費用など、コミットメントの重要な側面を Azure portal または REST API で確認できます。
 
 ## <a name="track-your-macc-commitment"></a>MACC コミットメントを追跡する
 
@@ -27,13 +27,16 @@ Microsoft Azure Consumption Commitment (MACC) は、お客様の組織が Micros
 1. [Azure portal](https://portal.azure.com) にサインインします。
 2. "**コスト管理 + 請求**" を検索します。  
     :::image type="content" source="./media/track-consumption-commitment/billing-search-cost-management-billing.png" alt-text="ポータルでの [コストの管理と請求] の検索を示すスクリーンショット。" lightbox="./media/track-consumption-commitment/billing-search-cost-management-billing.png" :::
-3. コミットメントを追跡する課金アカウントを [課金スコープ] ページで選択します。 課金アカウントの種類は、**Microsoft 顧客契約** である必要があります。  
+3. コミットメントを追跡する課金アカウントを [課金スコープ] ページで選択します。 請求アカウントの種類は、Microsoft 顧客契約 (MCA) のお客様の **Microsoft 顧客契約** または EA のお客様の **Enterprise Agreement** である必要があります。   
     :::image type="content" source="./media/track-consumption-commitment/list-of-scopes.png" alt-text="課金スコープを示すスクリーンショット。" lightbox="./media/track-consumption-commitment/list-of-scopes.png" :::
     > [!NOTE]
      > ユーザーが最近アクセスした課金スコープは、Azure portal によって記憶されます。次回 [コストの管理と請求] ページにアクセスすると、そのスコープが表示されます。 過去に [コストの管理と請求] にアクセスしたことがなければ、課金スコープ ページは表示されません。 その場合は、[適切なスコープ](#check-access-to-a-microsoft-customer-agreement)になっていることを確認してください。 適切でない場合は、[スコープを切り替え](view-all-accounts.md#switch-billing-scope-in-the-azure-portal)て Microsoft 顧客契約の課金アカウントを選択します。
-4. 左側から **[プロパティ]** を選択し、 **[Microsoft Azure Consumption Commitment (MACC)]** を選択します。  
-    :::image type="content" source="./media/track-consumption-commitment/select-macc-tab.png" alt-text="MACC タブの選択を示すスクリーンショット。" lightbox="./media/track-consumption-commitment/select-macc-tab.png" :::
-5. [Microsoft Azure Consumption Commitment (MACC)] タブには、次のセクションがあります。
+4. ご利用の契約の種類に応じて、次のいずれかを実行します。
+    - MCA のお客様の場合は、左側から **[プロパティ]** を選択し、 **[Microsoft Azure Consumption Commitment (MACC)]** を選択します。  
+        :::image type="content" source="./media/track-consumption-commitment/select-macc-tab.png" alt-text="MCA の場合の MACC タブの選択を示すスクリーンショット。" lightbox="./media/track-consumption-commitment/select-macc-tab.png" :::
+    - EA のお客様の場合は、左側のナビゲーション メニューで **[クレジットとコミットメント]** を選択し、 **[Microsoft Azure Consumption Commitment (MACC)]** を選択します。  
+        :::image type="content" source="./media/track-consumption-commitment/select-macc-tab-ea.png" alt-text="EA の場合の MACC タブの選択を示すスクリーンショット。" lightbox="./media/track-consumption-commitment/select-macc-tab-ea.png" :::
+1. [Microsoft Azure Consumption Commitment (MACC)] タブには、次のセクションがあります。
 
 #### <a name="remaining-commitment"></a>[Remaining commitment]\(残りのコミットメント\) 
 
@@ -73,7 +76,7 @@ MACC の状態は次のいずれかです。
 |---|---|
 | Date | イベントが発生した日付 |
 | 説明 | イベントの説明 |
-| 請求プロファイル | イベントが発生した課金プロファイル |
+| 請求プロファイル | イベントが発生した課金プロファイル。 課金プロファイルは、Microsoft 顧客契約にのみ適用されます。 EA の登録を行っている場合、課金プロファイルは表示されません。 |
 | MACC decrement (MACC の減少) | イベント以降の MACC 減少額 |
 | Remaining commitment (残りのコミットメント) | イベント後の残りの MACC コミットメント |
 
@@ -81,7 +84,7 @@ MACC の状態は次のいずれかです。
 
 [Azure Billing](/rest/api/billing/) と [Consumption](/rest/api/consumption/) の各 API を使用して、課金アカウントの Microsoft Azure Consumption Commitment (MACC) をプログラムで取得できます。
 
-次に示す例では、REST API を使用します。 現時点では、PowerShell と Azure CLI はサポートされていません。
+次に示す例では、REST API を使用します。 現時点では、PowerShell と Azure CLI はサポートされていません。 出力例は Microsoft 顧客契約の場合であるため、Enterprise Agreement の出力は異なります。
 
 ### <a name="find-billing-accounts-you-have-access-to"></a>アクセスできる課金アカウントを検索する
 

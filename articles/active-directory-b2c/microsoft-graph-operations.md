@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/22/2021
+ms.date: 10/08/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 216123a60a69fc696423ac9d129201201cac8fbc
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: b4706d8bc9224920afb8e17abca88409d4aff7ab
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124739918"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129617380"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Microsoft Graph を使用して Azure AD B2C を管理する
 
@@ -139,6 +139,7 @@ Microsoft Graph API のポリシー キーの最上位レベルのリソース�
 ## <a name="application-extension-properties"></a>アプリケーション拡張機能プロパティ
 
 - [拡張機能プロパティの一覧表示](/graph/api/application-list-extensionproperty)
+- [拡張機能プロパティの削除](/graph/api/application-delete-extensionproperty)
 
 Azure AD B2C で提供されているディレクトリには、ユーザーごとに 100 個のカスタム属性を保持できます。 ユーザーフローの場合、これらの拡張機能プロパティは、[Azure portal を使用して管理します](user-flow-custom-attributes.md)。 カスタム ポリシーの場合、ポリシーが拡張機能プロパティに値を初めて書き込むときに、Azure AD B2C によってプロパティが作成されます。
 

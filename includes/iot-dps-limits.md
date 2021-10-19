@@ -1,18 +1,20 @@
 ---
-author: wesmc7777
+author: anastasia-ms
 ms.service: iot-dps
 ms.topic: include
-ms.date: 06/15/2021
-ms.author: wesmc
-ms.openlocfilehash: b3c218314f56fb53d0690ac0659192bb955e4301
-ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
+ms.date: 10/10/2021
+ms.author: v-stharr
+ms.openlocfilehash: fa416ff3e3ef5b502b65ac414558692ccd7071b5
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112539010"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129866138"
 ---
 > [!NOTE]
 > このサービスの一部の領域には、調整可能な制限があります。 これは、次の表の *調整可能?* 列に示されています。 制限が調整可能な場合、*調整可能?* の値は *はい* になります。
+>
+>制限を調整できる実際の値は、各顧客のデプロイによって異なる場合があります。 非常に大規模なデプロイでは、DPS の複数のインスタンスが必要になることがあります。
 >
 > 調整可能な制限を上げること、または既定の制限を超えたクォータが必要な場合は、[サポート チケットを開いて](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)追加のリソースを要求できます。
 

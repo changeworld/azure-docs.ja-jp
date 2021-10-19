@@ -7,21 +7,21 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: troubleshooting
-ms.date: 09/15/2021
+ms.date: 10/07/2021
 ms.author: banders
-ms.openlocfilehash: 9d343959ee67a52ef143ada024d9a5257927a1e3
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 4a54c1da5f8525736d4befc56a715759eceae8b8
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128556492"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129710963"
 ---
 # <a name="troubleshoot-ea-billing-issues-with-usage-file-pivot-tables"></a>使用状況ファイルのピボット テーブルを使用して EA の請求に関する問題をトラブルシューティングする
 
 この記事は、使用状況ファイルのピボット テーブルを使用して、EA の請求に関する問題をトラブルシューティングする場合に役立ちます。 Azure 使用状況ファイルには、Azure の使用状況と消費量に関するすべての情報が含まれています。 このファイル内の情報は、次のことを理解するために役立ちます。
 
 - Azure の予約がどのように使用および適用されているかを理解する
-- 請求書を使用して、Azure Cost Management の情報を調整する
+- 請求書を使用して、Cost Management の情報を調整する
 - コスト スパイクをトラブルシューティングする
 - サービス レベル アグリーメントの払戻額を計算する
 

@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 09/28/2021
 ms.custom: generated
-ms.openlocfilehash: 02fbc7d0ec30181ccfbd44a2a80c70084a23e4d9
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 3f9154a2ec6c7900ffa15fd19e9910c89649be2d
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129427915"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129709304"
 ---
 # <a name="azure-built-in-roles"></a>Azure 組み込みロール
 

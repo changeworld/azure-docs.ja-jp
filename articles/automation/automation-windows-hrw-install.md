@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 09/27/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 59d3b78ac09c253270279612598b2d42ac6a2204
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 900ccf0434ee9d6dde9b0312a1bace180fe1470f
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129272069"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129706562"
 ---
 # <a name="deploy-an-agent-based-windows-hybrid-runbook-worker-in-automation"></a>Automation でエージェントベースの Windows Hybrid Runbook Worker をデプロイする
 
@@ -169,22 +169,22 @@ Windows Hybrid Runbook Worker をインストールして構成するには、�
 
 1. ターゲット マシンに Log Analytics エージェントをデプロイします。
 
-    * Azure VM の場合、[Windows 用仮想マシン拡張機能](../virtual-machines/extensions/oms-windows.md)を使用して、Windows 用 Log Analytics エージェントをインストールします。 この拡張機能では、Azure 仮想マシンに Log Analytics エージェントがインストールされ、仮想マシンが既存の Log Analytics ワークスペースに登録されます。 Azure Resource Manager テンプレート、PowerShell、または Azure Policy を使用すれば、"[*Linux* または *Windows* VM 用の Log Analytics エージェントのデプロイ](../governance/policy/samples/built-in-policies.md#monitoring)" という組み込みポリシー定義を割り当てることができます。 エージェントがインストールされたら、Automation アカウントの Hybrid Runbook Worker グループにマシンを追加できます。
+    - Azure VM の場合、[Windows 用仮想マシン拡張機能](../virtual-machines/extensions/oms-windows.md)を使用して、Windows 用 Log Analytics エージェントをインストールします。 この拡張機能では、Azure 仮想マシンに Log Analytics エージェントがインストールされ、仮想マシンが既存の Log Analytics ワークスペースに登録されます。 Azure Resource Manager テンプレート、PowerShell、または Azure Policy を使用すれば、"[*Linux* または *Windows* VM 用の Log Analytics エージェントのデプロイ](../governance/policy/samples/built-in-policies.md#monitoring)" という組み込みポリシー定義を割り当てることができます。 エージェントがインストールされたら、Automation アカウントの Hybrid Runbook Worker グループにマシンを追加できます。
     
-    * Azure 以外のマシンの場合は、[Azure Arc 対応サーバー](../azure-arc/servers/overview.md)を使用して Log Analytics エージェントをインストールできます。 Arc 対応サーバーでは、以下の方法を使用した Log Analytics エージェントのデプロイがサポートされています。
+    - Azure 以外のマシンの場合は、[Azure Arc 対応サーバー](../azure-arc/servers/overview.md)を使用して Log Analytics エージェントをインストールできます。 Azure Arc 対応サーバーでは、以下の方法を使用した Log Analytics エージェントのデプロイがサポートされています。
     
-        - VM 拡張機能フレームワークの使用。
+      - VM 拡張機能フレームワークの使用。
         
-            Azure Arc 対応サーバーのこの機能を使用すると、Azure 以外の Windows や Linux のサーバーに、Log Analytics エージェントの VM 拡張機能をデプロイできます。 VM 拡張機能は、ハイブリッド コンピューターまたは Arc 対応サーバーで管理されているサーバーで、次の方法を使用して管理できます。
+        Azure Arc 対応サーバーのこの機能を使用すると、Azure 以外の Windows や Linux のサーバーに、Log Analytics エージェントの VM 拡張機能をデプロイできます。 VM 拡張機能は、ハイブリッド コンピューターまたは Arc 対応サーバーで管理されているサーバーで、次の方法を使用して管理できます。
         
-            - [Azure Portal](../azure-arc/servers/manage-vm-extensions-portal.md)
-            - [Azure CLI](../azure-arc/servers/manage-vm-extensions-cli.md)
-            - [Azure PowerShell](../azure-arc/servers/manage-vm-extensions-powershell.md)
-            - Azure [Resource Manager テンプレート](../azure-arc/servers/manage-vm-extensions-template.md)
+        - [Azure Portal](../azure-arc/servers/manage-vm-extensions-portal.md)
+        - [Azure CLI](../azure-arc/servers/manage-vm-extensions-cli.md)
+        - [Azure PowerShell](../azure-arc/servers/manage-vm-extensions-powershell.md)
+        - Azure [Resource Manager テンプレート](../azure-arc/servers/manage-vm-extensions-template.md)
         
-        - Azure Policy の使用。
+      - Azure Policy の使用。
         
-            この方法を利用し、Azure Policy の "[Log Analytics エージェントを Linux または Windows Azure Arc マシンにデプロイする](../governance/policy/samples/built-in-policies.md#monitoring)" という組み込みポリシー定義を使用して、Arc 対応サーバーに Log Analytics エージェントがインストールされているかどうかを監査します。 エージェントがインストールされていない場合は、修復タスクを使用して自動的にそれがデプロイされます。 Azure Monitor for VMs を使用してマシンを監視する予定の場合は、代わりに [Azure Monitor for VMs を有効にする](../governance/policy/samples/built-in-initiatives.md#monitoring)というイニシアティブを使用して Log Analytics エージェントのインストールと構成を行います。
+      この方法を利用し、Azure Policy の "[Log Analytics エージェントを Linux または Windows Azure Arc マシンにデプロイする](../governance/policy/samples/built-in-policies.md#monitoring)" という組み込みポリシー定義を使用して、Arc 対応サーバーに Log Analytics エージェントがインストールされているかどうかを監査します。 エージェントがインストールされていない場合は、修復タスクを使用して自動的にそれがデプロイされます。 Azure Monitor for VMs を使用してマシンを監視する予定の場合は、代わりに [Azure Monitor for VMs を有効にする](../governance/policy/samples/built-in-initiatives.md#monitoring)というイニシアティブを使用して Log Analytics エージェントのインストールと構成を行います。
 
     Azure Policy を使用して、Windows または Linux 用の Log Analytics エージェントをインストールすることをお勧めします。
 

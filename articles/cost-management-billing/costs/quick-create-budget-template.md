@@ -7,14 +7,14 @@ tags: azure-resource-manager
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.topic: quickstart
-ms.date: 09/15/2021
+ms.date: 10/07/2021
 ms.custom: subject-armqs, devx-track-azurepowershell
-ms.openlocfilehash: b7ae1fa6533067c977952cdfc3ae73244e50d941
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: ac32afdf2197c32f43c94c6b0126688ed363902f
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128584925"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129711390"
 ---
 # <a name="quickstart-create-a-budget-with-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して予算を作成する
 
@@ -161,7 +161,7 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイックスタートでは、Azure の予算のデプロイを作成しました。 Azure Cost Management と Billing および Azure Resource Manager の詳細については、引き続き以下の記事を参照してください。
+このクイックスタートでは、Azure の予算のデプロイを作成しました。 Cost Management and Billing および Azure Resource Manager の詳細については、引き続き以下の記事を参照してください。
 
 - [Cost Management と Billing](../cost-management-billing-overview.md) の概要を読む
 - Azure portal で[予算を作成](tutorial-acm-create-budgets.md)する

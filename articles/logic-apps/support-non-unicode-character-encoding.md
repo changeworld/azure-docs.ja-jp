@@ -1,16 +1,16 @@
 ---
-title: Logic Apps での Unicode 以外の文字エンコードのサポート
-description: Logic Apps で Unicode 以外のテキストを使用します。 Base64 エンコードと Azure Functions を使用して、テキスト ペイロードを UTF-8 に変換します。
-ms.date: 04/29/2021
-ms.topic: conceptual
-ms.reviewer: logicappspm
+title: 互換性のために Unicode でエンコードされていないテキストを変換する
+description: Azure Logic Apps で Unicode 以外の文字を処理するには、base64 エンコードおよび Azure Functions を使用してテキスト ペイロードを UTF-8 に変換します。
+ms.date: 10/05/2021
+ms.topic: how-to
+ms.reviewer: estfan, azla
 ms.service: logic-apps
-ms.openlocfilehash: cabdb2a644870d363265fa39290eb503f72730a9
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 1251a1622e62b7940c25ac810db10f70da560000
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108326925"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129618992"
 ---
 # <a name="support-non-unicode-character-encoding-in-logic-apps"></a>Logic Apps での Unicode 以外の文字エンコードのサポート
 
@@ -24,9 +24,17 @@ ms.locfileid: "108326925"
 
 まず、指定したトリガーでコンテンツ タイプを正しく識別できることを確認します。 この手順により、Logic Apps では、テキストが UTF-8 であると想定されなくなります。 
 
-**[コンテンツ タイプの推測]** という設定のトリガーの場合は、 **[いいえ]** を選択します。 トリガーにこのオプションがない場合、コンテンツ タイプは受信メッセージによって設定されます。 
+プロパティ **[内容の種類を推測]** があるトリガーとアクションで、 **[いいえ]** を選択します。  通常、このプロパティは、操作の **[パラメーターの追加]** の一覧で確認できます。 ただし、操作にこのプロパティが含まれていない場合、コンテンツ タイプは受信メッセージによって設定されます。
 
-`text/plain` コンテンツに HTTP 要求トリガーを使用している場合は、呼び出しの`Content-Type` ヘッダーに `charset` パラメーターを設定する必要があります。 `charset` パラメーターを設定していない場合、またはパラメーターがペイロードのエンコード形式と一致しない場合、文字が破損する可能性があります。 詳細については、[ `text/plain` コンテンツ タイプを処理する方法](logic-apps-content-type.md#text-plain)に関するセクションを参照してください。
+次の一覧に、コンテンツ タイプを自動的に推測することを無効にできるコネクタをいくつか示します。
+* [OneDrive](/connectors/onedrive/)
+* [Azure Blob Storage](/connectors/azureblob/)
+* [Azure File Storage](/connectors/azurefile/)
+* [ファイル システム](/connectors/filesystem/)
+* [Google ドライブ](/connectors/googledrive/)
+* [SFTP - SSH](/connectors/sftpwithssh/)
+ 
+`text/plain` コンテンツに要求トリガーを使用している場合は、呼び出しの `Content-Type` ヘッダーにある `charset` パラメーターを設定する必要があります。 そうでない場合、文字が破損する可能性があるか、またはパラメーターがペイロードのエンコード形式と一致しません。 詳細については、[ `text/plain` コンテンツ タイプを処理する方法](logic-apps-content-type.md#text-plain)に関するセクションを参照してください。
 
 たとえば、`Content-Type` ヘッダーに正しい `charset` パラメーターが設定されている場合、HTTP トリガーによって受信コンテンツが UTF-8 に変換されます。
 

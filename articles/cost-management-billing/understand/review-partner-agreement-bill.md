@@ -7,18 +7,18 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: tutorial
-ms.date: 09/15/2021
+ms.date: 10/07/2021
 ms.author: banders
-ms.openlocfilehash: a7c67b364fba771ad485eee8b93a62b9bdabc841
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: acff6020d401390ab514c168241db8daca801691
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128643044"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129705808"
 ---
 # <a name="tutorial-review-your-microsoft-partner-agreement-invoice"></a>チュートリアル:Microsoft Partner Agreement の請求書を確認する
 
- Microsoft Partner Agreement の課金アカウントでは、課金プロファイルごとに毎月請求書が生成されます。 請求書には、顧客に対する前月からのすべての請求金額が含まれます。 Azure portal で個々の取引を分析することで、請求書の料金を理解できます。 また、Azure portal で請求書を表示し、料金を使用状況の詳細ファイルと比較することもできます。
+Microsoft Partner Agreement の課金アカウントでは、課金プロファイルごとに毎月請求書が生成されます。 請求書には、顧客に対する前月からのすべての請求金額が含まれます。 Azure portal で個々の取引を分析することで、請求書の料金を理解できます。 また、Azure portal で請求書を表示し、料金を使用状況の詳細ファイルと比較することもできます。
 
 詳細については、[Azure portal から請求書をダウンロードする方法](download-azure-invoice.md)に関するページを参照してください。
 
@@ -132,7 +132,7 @@ Azure の利用状況と請求金額を含む CSV ファイルの **customerName
 > * 保留中の料金を確認して次の請求書を見積もる
 > * Azure 利用料金を分析する
 
-パートナー向け Azure Cost Management の使用法についてご確認ください。
+パートナー向け Cost Management の使用法についてご確認ください。
 
 > [!div class="nextstepaction"]
-> [パートナー向け Azure Cost Management の利用を開始する](../costs/get-started-partners.md)
+> [パートナー向け Cost Management の利用を開始する](../costs/get-started-partners.md)

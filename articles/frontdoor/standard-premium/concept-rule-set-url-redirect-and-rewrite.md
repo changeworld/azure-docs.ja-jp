@@ -7,12 +7,12 @@ ms.service: frontdoor
 ms.topic: article
 ms.date: 02/18/2021
 ms.author: yuajia
-ms.openlocfilehash: 382a4c040c7a519462ee3e35119b9471031e0724
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2e758560eed1ffb01117764f9399aa6f4f4b1395
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101098010"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129857552"
 ---
 # <a name="url-redirect-and-url-rewrite-with-azure-front-door-standardpremium-preview"></a>Azure Front Door Standard/Premium (プレビュー) を使用した URL リダイレクトと URL 書き換え
 
@@ -74,6 +74,10 @@ URL リダイレクトは、ルール セットを使用して構成できます
 ### <a name="source-pattern"></a>ソース パターン
 
 ソース パターンとは、置換するソース要求の URL パスです。 現在、ソース パターンではプレフィックスに基づく一致が使用されます。 すべての URL パスを一致させるには、ソース パターン値としてスラッシュ (/) を使用します。
+
+URL 書き換えのソース パターンでは、ルート構成の "照合対象のパターン" の後のパスのみが考慮されます。 たとえば、`<Frontend-domain>/<route-patterns-to-match-path>/<Rule-URL-Rewrite-Source-pattern>` という受信 URL 形式がある場合、`/<Rule-URL-Rewrite-Source-pattern>` のみがルール エンジンによって書き換えられるソース パターンと見なされます。 したがって、ソース パターンの一致を使用した URL 書き換えルールがある場合、送信 URL の形式は `<Frontend-domain>/<route-patterns-to-match-path>/<Rule-URL-Rewrite-destination>` になります。
+
+URL パスの `/<route-patterns-to-match-path` セグメントを削除する必要があるシナリオの場合は、ルート構成の元のグループの元のパスを `/` に設定し ます。
 
 ### <a name="destination"></a>到着地
 

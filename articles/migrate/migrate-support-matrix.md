@@ -6,12 +6,12 @@ ms.author: panshar
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: b98695e9f7d91ae72ca13714814eeca3bde23c74
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0429c7a8308db9acecd4600d4925493222375ced
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121736460"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129857875"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure Migrate のサポート マトリックス
 
@@ -88,12 +88,13 @@ Africa | アフリカ南部またはアフリカ北部
 アジア太平洋 | 東アジアまたは東南アジア
 オーストラリア | オーストラリア東部またはオーストラリア南東部
 ブラジル | ブラジル南部
-Canada | カナダ中部またはカナダ東部
+カナダ | カナダ中部またはカナダ東部
 ヨーロッパ | 北ヨーロッパまたは西ヨーロッパ
 フランス | フランス中部
 ドイツ | ドイツ中西部
 インド | インド中部またはインド南部
 日本 |  東日本または西日本
+JIO インド | JIO インド西部 
 韓国 | 韓国中部または韓国南部
 ノルウェー | ノルウェー東部
 スイス | スイス北部

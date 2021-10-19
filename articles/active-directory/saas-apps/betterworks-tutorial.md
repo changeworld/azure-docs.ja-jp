@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory シングル サインオン (SSO) と BetterWorks の統合 | Microsoft Docs'
+title: 'チュートリアル: Azure AD SSO と BetterWorks の統合'
 description: Azure Active Directory と BetterWorks の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 author: jeevansd
@@ -9,24 +9,22 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 08/26/2019
+ms.date: 10/07/2021
 ms.author: jeedes
-ms.openlocfilehash: a719487f991784d2641fd92c9ada4b7d45bd30c7
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 607a3ce9aa55e08e91b09fc55e054a3b978c171f
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128610904"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129811142"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-betterworks"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と BetterWorks の統合
+# <a name="tutorial-azure-ad-sso-integration-with-betterworks"></a>チュートリアル: Azure AD SSO と BetterWorks の統合
 
 このチュートリアルでは、BetterWorks と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と BetterWorks を統合すると、次のことができます。
 
 * BetterWorks にアクセスする Azure AD ユーザーを制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して BetterWorks に自動的にサインインできるようにすることができます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
-
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,28 +37,27 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* BetterWorks では、**SP と IDP** によって開始される SSO がサポートされます
+* BetterWorks では、**SP および IDP** Initiated SSO がサポートされます。
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
 
-## <a name="adding-betterworks-from-the-gallery"></a>ギャラリーからの BetterWorks の追加
+## <a name="add-betterworks-from-the-gallery"></a>ギャラリーからの BetterWorks の追加
 
 Azure AD への BetterWorks の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に BetterWorks を追加する必要があります。
 
-1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、Azure portal にサインインします。
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**BetterWorks**」と入力します。
 1. 結果のパネルから **[BetterWorks]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-
-## <a name="configure-and-test-azure-ad-single-sign-on-for-betterworks"></a>BetterWorks の Azure AD シングル サインオンの構成とテスト
+## <a name="configure-and-test-azure-ad-sso-for-betterworks"></a>BetterWorks のための Azure AD SSO の構成とテスト
 
 **B.Simon** というテスト ユーザーを使用して、BetterWorks に対する Azure AD SSO を構成してテストします。 SSO を機能させるには、Azure AD ユーザーと BetterWorks の関連ユーザーとの間にリンク関係を確立する必要があります。
 
-BetterWorks で Azure AD SSO を構成してテストするには、次の構成要素を完了します。
+BetterWorks 用に Azure AD SSO を構成してテストするには、次の手順を実行します。
 
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
     1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
@@ -73,21 +70,21 @@ BetterWorks で Azure AD SSO を構成してテストするには、次の構成
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **BetterWorks** アプリケーション統合ページで、**[管理]** セクションを見つけて、**[シングル サインオン]** を選択します。
+1. Azure portal の **BetterWorks** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次のフィールドの値を入力します。
+1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
-    a. **[識別子]** テキスト ボックスに、`https://app.betterworks.com/saml2/metadata/` という URL を入力します。
+    a. **[識別子]** ボックスに、`https://app.betterworks.com/saml2/metadata/` という URL を入力します。
 
-    b. **[応答 URL]** ボックスに、`https://app.betterworks.com/saml2/acs/` という URL を入力します。
+    b. **[応答 URL]** ボックスに、URL として「`https://app.betterworks.com/saml2/acs/`」と入力します。
 
 1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    **[サインオン URL]** テキスト ボックスに URL として「`https://app.betterworks.com`」と入力します。
+    **[サインオン URL]** テキスト ボックスに、URL として「`https://app.betterworks.com`」と入力します。
 
    > [!NOTE]
    > BetterWorks の欧州連合でご利用のお客様は、これらの URL でドメイン名として `app.betterworks.com` ではなく `eu.betterworks.com` を使用してください。
@@ -119,13 +116,7 @@ BetterWorks で Azure AD SSO を構成してテストするには、次の構成
 1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
 1. アプリケーションの一覧で **[BetterWorks]** を選択します。
 1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
-
-   ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
-
 1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
-
-    ![[ユーザーの追加] リンク](common/add-assign-user.png)
-
 1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
@@ -140,16 +131,20 @@ BetterWorks で Azure AD SSO を構成してテストするには、次の構成
 
 ## <a name="test-sso"></a>SSO のテスト 
 
-このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
+このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-アクセス パネル上で [BetterWorks] タイルをクリックすると、SSO を設定した BetterWorks に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510)に関する記事を参照してください。
+#### <a name="sp-initiated"></a>SP Initiated:
 
-## <a name="additional-resources"></a>その他のリソース
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる BetterWorks のサインオン URL にリダイレクトされます。  
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
+* BetterWorks のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
+#### <a name="idp-initiated"></a>IDP Initiated:
 
-- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
+* Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した BetterWorks に自動的にサインインされます。 
 
-- [Azure AD で BetterWorks を試す](https://aad.portal.azure.com/)
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [BetterWorks] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した BetterWorks に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+
+## <a name="next-steps"></a>次のステップ
+
+BetterWorks を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

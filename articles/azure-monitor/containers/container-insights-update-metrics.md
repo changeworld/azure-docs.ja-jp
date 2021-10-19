@@ -4,12 +4,12 @@ description: この記事では、集計したメトリックの探索とアラ�
 ms.topic: conceptual
 ms.date: 10/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: cff5933db1d74e9853120a07444e399005b2e498
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 0d48ae48c667422b68c39570eb0003ff2e648267
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128620827"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129706882"
 ---
 # <a name="how-to-update-container-insights-to-enable-metrics"></a>メトリックを有効にするように Container insights を更新する方法
 
@@ -23,10 +23,10 @@ Container insights により、Azure Kubernetes Services (AKS) および Azure A
 
 | メトリック名前空間 | メトリック | 説明 |
 |------------------|--------|-------------|
-| Insights.container/nodes | cpuUsageMillicores、cpuUsagePercentage、memoryRssBytes、memoryRssPercentage、memoryWorkingSetBytes、memoryWorkingSetPercentage、nodesCount、diskUsedPercentage | *ノード* メトリックとして、それらは *ホスト* をディメンションとして含みます。 また、<br> *ホスト* ディメンションの値として、ノードの名前も含みます。 |
+| Insights.container/nodes | cpuUsageMillicores、cpuUsagePercentage、memoryRssBytes、memoryRssPercentage、memoryWorkingSetBytes、memoryWorkingSetPercentage、**cpuUsageAllocatablePercentage**、**memoryWorkingSetAllocatablePercentage**、**memoryRssAllocatablePercentage**、nodesCount、diskUsedPercentage | *ノード* メトリックとして、それらは *ホスト* をディメンションとして含みます。 また、<br> *ホスト* ディメンションの値として、ノードの名前も含みます。 |
 | Insights.container/pods | podCount、completedJobsCount、restartingContainerCount、oomKilledContainerCount、podReadyPercentage | *ポッド* メトリックとして、それらは ControllerName、Kubernetes 名前空間、名前、フェーズをディメンションとして含みます。 |
-| Insights.container/containers | cpuExceededPercentage、memoryRssExceededPercentage、memoryWorkingSetExceededPercentage | |
-| Insights.container/persistentvolumes | pvUsageExceededPercentage | |
+| Insights.container/containers | cpuExceededPercentage、memoryRssExceededPercentage、memoryWorkingSetExceededPercentage、**cpuThresholdViolated**、**memoryRssThresholdViolated**、**memoryWorkingSetThresholdViolated** | |
+| Insights.container/persistentvolumes | pvUsageExceededPercentage、**pvUsageThresholdViolated** | |
 
 これらの新機能をサポートするために、新しいコンテナー化されたエージェントが、このリリースのバージョン **microsoft/oms:ciprod05262020** (AKS 用) およびバージョン **microsoft/oms:ciprod09252020** (Azure Arc 対応 Kubernetes クラスター用) に含まれています。 AKS の新しいデプロイでは、この構成の変更と機能が自動的に含まれます。 この機能をサポートするためのクラスターの更新は、Azure portal、Azure PowerShell、または Azure CLI で実行できます。 Azure PowerShell と Azure CLI を使用すると、 サブスクリプション内のクラスターごとに、またはすべてのクラスターでこれを実行できます。
 

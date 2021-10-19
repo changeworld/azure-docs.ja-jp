@@ -5,15 +5,15 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: conceptual
-ms.date: 08/10/2021
+ms.date: 10/11/2021
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: d1a46cd010f0a629e787a7ebabcfe002837b7ad3
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: c6cc19bd688dd2c38210fae8d77a036f2ba5be7e
+ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124811179"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129754313"
 ---
 # <a name="azure-firewall-premium-features"></a>Azure Firewall Premium の機能
 
@@ -103,6 +103,8 @@ Azure Firewall Premium は、次のリージョンでサポートされていま
 - インド中部 (パブリック/インド)
 - 米国中部 (パブリック/米国)
 - 米国中部 EUAP (パブリック/カナリア (US))
+- 中国北部 2 (Mooncake/中国)
+- 中国東部 2 (Mooncake/中国)
 - 東アジア (パブリック/アジア太平洋)
 - 米国東部 (パブリック/米国)
 - 米国東部 2 (パブリック/米国)
@@ -125,6 +127,9 @@ Azure Firewall Premium は、次のリージョンでサポートされていま
 - アラブ首長国連邦北部 (パブリック/UAE)
 - 英国南部 (パブリック/英国)
 - 英国西部 (パブリック/英国)
+- 米国政府アリゾナ (Fairfax/USGov)
+- 米国政府テキサス (Fairfax/USGov)
+- 米国政府バージニア (Fairfax/USGov)
 - 米国中西部 (パブリック/米国)
 - 西ヨーロッパ (パブリック/ヨーロッパ)
 - インド西部 (パブリック/インド)

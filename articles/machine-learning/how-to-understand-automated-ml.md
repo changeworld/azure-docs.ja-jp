@@ -11,12 +11,12 @@ ms.subservice: automl
 ms.date: 12/09/2020
 ms.topic: how-to
 ms.custom: contperf-fy21q2, automl
-ms.openlocfilehash: db8d9a8130db868a53fefd4e72967657f272f8fe
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 91c620a68d375084f8a4be6c5a8bf30b92d016c1
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129423464"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129812193"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>自動機械学習実験の結果を評価
 
@@ -74,25 +74,27 @@ ms.locfileid: "129423464"
 
 |メトリック|説明|計算|
 |--|--|---|
-|AUC | AUC は[受信者操作特性曲線](#roc-curve)の下の領域です。<br><br> **目的:** 1 に近いほど良い <br> **範囲:** [0, 1]<br> <br>サポートされているメトリック名の例 <li>`AUC_macro`: クラスごとの AUC の算術平均です。<li> `AUC_micro`: 各クラスの真陽性と偽陽性を組み合わせることで計算されます。 <li> `AUC_weighted`: 各クラスのスコアの算術平均で、各クラス内の true インスタンスの数によって重み付けされます。<br><br>注: クラスが 2 つしかない場合、自動 ML によって報告された AUC の値が、ROC グラフと一致しない場合があります。 二項分類の場合、AUC の基礎となる scikit-learn の実装で、マクロ、マイクロ、加重平均は実際には適用されません。 代わりに、最も可能性の高い正のクラスの AUC が返されます。 ROC グラフでは、マルチクラスの場合と同様に、二項分類のクラス平均が適用されます。  |[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | 
-|accuracy| 精度は、true クラス ラベルと正確に一致する予測の割合です。 <br> <br>**目的:** 1 に近いほど良い <br> **範囲:** [0, 1]|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html)|
-|average_precision|平均適合率は、各しきい値で達成した適合率の加重平均として適合率-再現率曲線をまとめたもので、前のしきい値より増加した再現率を重みとして使用します。 <br><br> **目的:** 1 に近いほど良い <br> **範囲:** [0, 1]<br> <br>サポートされているメトリック名の例<li>`average_precision_score_macro`: 各クラスの平均適合率スコアの算術平均です。<li> `average_precision_score_micro`: 各カットオフでの真陽性と偽陽性を組み合わせることで計算されます。<li>`average_precision_score_weighted`: 各クラスの平均適合率スコアの算術平均で、各クラス内の true インスタンスの数によって重み付けされます。|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|
-balanced_accuracy|バランスの取れた精度は、各クラスの再現率の算術平均です。<br> <br>**目的:** 1 に近いほど良い <br> **範囲:** [0, 1]|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|
-f1_score|F1 スコアは、適合率と再現率の調和平均です。 偽陽性と偽陰性の両方を適切に調整して測定します。 ただし、真陰性は考慮されません。 <br> <br>**目的:** 1 に近いほど良い <br> **範囲:** [0, 1]<br> <br>サポートされているメトリック名の例<li>  `f1_score_macro`: 各クラスの F1 スコアの算術平均です。 <li> `f1_score_micro`: 真陽性、偽陰性、偽陽性の合計をカウントすることによって計算されます。 <li> `f1_score_weighted`: 各クラスの F1 スコアのクラスごとの頻度の加重平均です。|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|
-log_loss|これは、(多項) ロジスティック回帰とその拡張機能 (ニューラル ネットワークなど) で使用される損失関数で、確率的分類法の予測を前提として、true ラベルの負の対数尤度として定義されます。 <br><br> **目的:** 0 に近いほど良い <br> **範囲:** [0, inf)|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html)|
+|AUC | AUC は[受信者操作特性曲線](#roc-curve)の下の領域です。<br><br> **目的:** 1 に近いほど良い <br> **範囲:** [0, 1]<br> <br>サポートされているメトリック名の例 <li>`AUC_macro`: クラスごとの AUC の算術平均です。<li> `AUC_micro`: マルチラベル形式で計算されます。 すべてのサンプルについて、異なる各クラスが独立した `0/1` の予測として扱われます。 正しいクラスは `true` クラスになり、残りは `false` クラスになります。 その後、すべてのサンプルを組み合わせて、新しい二項分類タスクに対する AUC が計算されます。 <li> `AUC_weighted`: 各クラスのスコアの算術平均で、各クラス内の true インスタンスの数によって重み付けされます。 <li> `AUC_binary`: 1 つの特定のクラスを `true` クラスとして扱い、他のすべてのクラスを `false` クラスとして結合することによる、AUC の値。<br><br>|[計算](https://scikit-learn.org/0.22/modules/generated/sklearn.metrics.roc_auc_score.html) | 
+|accuracy| 精度は、true クラス ラベルと正確に一致する予測の割合です。 <br> <br>**目的:** 1 に近いほど良い <br> **範囲:** [0, 1]|[計算](https://scikit-learn.org/0.22/modules/generated/sklearn.metrics.accuracy_score.html)|
+|average_precision|平均適合率は、各しきい値で達成した適合率の加重平均として適合率-再現率曲線をまとめたもので、前のしきい値より増加した再現率を重みとして使用します。 <br><br> **目的:** 1 に近いほど良い <br> **範囲:** [0, 1]<br> <br>サポートされているメトリック名の例<li>`average_precision_score_macro`: 各クラスの平均適合率スコアの算術平均です。<li> `average_precision_score_micro`: マルチラベル形式で計算されます。 すべてのサンプルについて、異なる各クラスが独立した `0/1` の予測として扱われます。 正しいクラスは `true` クラスになり、残りは `false` クラスになります。 その後、すべてのサンプルを組み合わせて、新しい二項分類タスクの平均適合率が計算されます。<li>`average_precision_score_weighted`: 各クラスの平均適合率スコアの算術平均で、各クラス内の true インスタンスの数によって重み付けされます。 <li> `average_precision_score_binary`: 1 つの特定のクラスを `true` クラスとして扱い、他のすべてのクラスを `false` クラスとして結合することによる、平均適合率の値。|[計算](https://scikit-learn.org/0.22/modules/generated/sklearn.metrics.average_precision_score.html)|
+balanced_accuracy|バランスの取れた精度は、各クラスの再現率の算術平均です。<br> <br>**目的:** 1 に近いほど良い <br> **範囲:** [0, 1]|[計算](https://scikit-learn.org/0.22/modules/generated/sklearn.metrics.recall_score.html)|
+f1_score|F1 スコアは、適合率と再現率の調和平均です。 偽陽性と偽陰性の両方を適切に調整して測定します。 ただし、真陰性は考慮されません。 <br> <br>**目的:** 1 に近いほど良い <br> **範囲:** [0, 1]<br> <br>サポートされているメトリック名の例<li>  `f1_score_macro`: 各クラスの F1 スコアの算術平均です。 <li> `f1_score_micro`: 真陽性、偽陰性、偽陽性の合計をカウントすることによって計算されます。 <li> `f1_score_weighted`: 各クラスの F1 スコアのクラスごとの頻度の加重平均です。 <li> `f1_score_binary`: 1 つの特定のクラスを `true` クラスとして扱い、他のすべてのクラスを `false` クラスとして結合することによる、f1 の値。|[計算](https://scikit-learn.org/0.22/modules/generated/sklearn.metrics.f1_score.html)|
+log_loss|これは、(多項) ロジスティック回帰とその拡張機能 (ニューラル ネットワークなど) で使用される損失関数で、確率的分類法の予測を前提として、true ラベルの負の対数尤度として定義されます。 <br><br> **目的:** 0 に近いほど良い <br> **範囲:** [0, inf)|[計算](https://scikit-learn.org/0.22/modules/generated/sklearn.metrics.log_loss.html)|
 norm_macro_recall| 正規化されたマクロ再現率は、ランダムなパフォーマンスでのスコアが 0、最適なパフォーマンスでのスコアが 1 になるように、マクロ平均化および正規化された再現率です。 <br> <br>**目的:** 1 に近いほど良い <br> **範囲:** [0, 1] |`(recall_score_macro - R)`&nbsp;/&nbsp;`(1 - R)` <br><br>ここで、`R` はランダム予測の `recall_score_macro` の予想される値です。<br><br>`R = 0.5`&nbsp;: &nbsp;バイナリ&nbsp;分類の場合。 <br>`R = (1 / C)`: C クラス分類の問題の場合。|
-matthews_correlation | Matthews 相関係数は、精度のバランスを取ります。これは、1 つのクラスに他より多くのサンプルが含まれている場合でも使用できます。 係数 1 は完全な予測、0 はランダムな予測、-1 は逆予測を示します。<br><br> **目的:** 1 に近いほど良い <br> **範囲:** [-1, 1]|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.matthews_corrcoef.html)|
-精度|適合率は、負のサンプルが正としてラベル付けされないようにするモデルの機能です。 <br><br> **目的:** 1 に近いほど良い <br> **範囲:** [0, 1]<br> <br>サポートされているメトリック名の例 <li> `precision_score_macro`: 各クラスの適合率の算術平均です。 <li> `precision_score_micro`: 真陽性と偽陽性の合計をカウントすることによって、グローバルに計算されます。 <li> `precision_score_weighted`: 各クラスの適合率の算術平均で、各クラス内の true インスタンスの数によって重み付けされます。|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|
-リコール| 再現率は、すべての正のサンプルを検出するモデルの機能です。 <br><br> **目的:** 1 に近いほど良い <br> **範囲:** [0, 1]<br> <br>サポートされているメトリック名の例 <li>`recall_score_macro`: 各クラスの再現率の算術平均です。 <li> `recall_score_micro`: 真陽性、偽陰性、偽陽性の合計をカウントすることによって、グローバルに計算されます。<li> `recall_score_weighted`: 各クラスの再現率の算術平均で、各クラス内の true インスタンスの数によって重み付けされます。|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|
-weighted_accuracy|加重精度は、各サンプルが同じクラスに属するサンプルの合計数によって重み付けされる精度です。 <br><br>**目的:** 1 に近いほど良い <br>**範囲:** [0, 1]|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html)|
+matthews_correlation | Matthews 相関係数は、精度のバランスを取ります。これは、1 つのクラスに他より多くのサンプルが含まれている場合でも使用できます。 係数 1 は完全な予測、0 はランダムな予測、-1 は逆予測を示します。<br><br> **目的:** 1 に近いほど良い <br> **範囲:** [-1, 1]|[計算](https://scikit-learn.org/0.22/modules/generated/sklearn.metrics.matthews_corrcoef.html)|
+精度|適合率は、負のサンプルが正としてラベル付けされないようにするモデルの機能です。 <br><br> **目的:** 1 に近いほど良い <br> **範囲:** [0, 1]<br> <br>サポートされているメトリック名の例 <li> `precision_score_macro`: 各クラスの適合率の算術平均です。 <li> `precision_score_micro`: 真陽性と偽陽性の合計をカウントすることによって、グローバルに計算されます。 <li> `precision_score_weighted`: 各クラスの適合率の算術平均で、各クラス内の true インスタンスの数によって重み付けされます。 <li> `precision_score_binary`: 1 つの特定のクラスを `true` クラスとして扱い、他のすべてのクラスを `false` クラスとして結合することによる、適合率の値。|[計算](https://scikit-learn.org/0.22/modules/generated/sklearn.metrics.precision_score.html)|
+リコール| 再現率は、すべての正のサンプルを検出するモデルの機能です。 <br><br> **目的:** 1 に近いほど良い <br> **範囲:** [0, 1]<br> <br>サポートされているメトリック名の例 <li>`recall_score_macro`: 各クラスの再現率の算術平均です。 <li> `recall_score_micro`: 真陽性、偽陰性、偽陽性の合計をカウントすることによって、グローバルに計算されます。<li> `recall_score_weighted`: 各クラスの再現率の算術平均で、各クラス内の true インスタンスの数によって重み付けされます。 <li> `recall_score_binary`: 1 つの特定のクラスを `true` クラスとして扱い、他のすべてのクラスを `false` クラスとして結合することによる、再現率の値。|[計算](https://scikit-learn.org/0.22/modules/generated/sklearn.metrics.recall_score.html)|
+weighted_accuracy|加重精度は、各サンプルが同じクラスに属するサンプルの合計数によって重み付けされる精度です。 <br><br>**目的:** 1 に近いほど良い <br>**範囲:** [0, 1]|[計算](https://scikit-learn.org/0.22/modules/generated/sklearn.metrics.accuracy_score.html)|
 
 ### <a name="binary-vs-multiclass-classification-metrics"></a>バイナリと多クラスの分類メトリック
 
-自動 ML によって、バイナリと多クラスの各メトリックは区別されません。 データセットに 2 つのクラスがある場合でも、3 つ以上のクラスがある場合でも、同じ検証メトリックが報告されます。 ただし、一部のメトリックは多クラス分類を対象としています。 バイナリ データセットに適用した場合、これらのメトリックによってどのクラスも `true` クラスとして扱われません。 明らかに多クラス向けのメトリックには、`micro`、`macro`、または `weighted` がサフィックスとして付けられます。 例として、`average_precision_score`、`f1_score`、`precision_score`、`recall_score`、`AUC` などがあります。
+自動 ML では、データがバイナリかどうかが自動的に検出され、`true` クラスを指定することによってデータが多クラスの場合でも、ユーザーは二項分類メトリックをアクティブにすることができます。 多クラス分類メトリックは、データセットのクラスが 2 つか 3 つ以上かに関係なく報告されます。 二項分類メトリックは、データがバイナリの場合、またはユーザーがオプションをアクティブにした場合にのみ報告されます。 
 
-たとえば、リコールを `tp / (tp + fn)` として計算する代わりに、多クラスの平均リコール (`micro`、`macro`、または `weighted`) は、二項分類データセットの両方のクラスの平均をとります。 これは、`true` クラスと `false` クラスのリコールを個別に計算してから、その 2 つの平均を取得することと同じです。
+多クラス分類メトリックは多クラス分類を目的としていることに注意してください。 バイナリ データセットに適用した場合、これらのメトリックによってどのクラスも `true` クラスとして扱われません。 明らかに多クラス向けのメトリックには、`micro`、`macro`、または `weighted` がサフィックスとして付けられます。 例として、`average_precision_score`、`f1_score`、`precision_score`、`recall_score`、`AUC` などがあります。 たとえば、リコールを `tp / (tp + fn)` として計算する代わりに、多クラスの平均リコール (`micro`、`macro`、または `weighted`) は、二項分類データセットの両方のクラスの平均をとります。 これは、`true` クラスと `false` クラスのリコールを個別に計算してから、その 2 つの平均を取得することと同じです。
 
-自動 ML では、バイナリ分類データセットのメトリックであるバイナリ メトリックは計算されません。 ただし、これらのメトリックは、その特定の実行のために自動 ML で生成された[混同行列](#confusion-matrix)を使用して手動で計算できます。 たとえば、2x2 の混同行列表に示されている真陽性と擬陽性の値を使用して、適合率 `tp / (tp + fp)` を計算できます。
+また、二項分類の自動検出がサポートされてはいますが、それでも、`true` クラスを常に手動で指定して、二項分類メトリックが正しいクラスに対して計算されるようにすることをお勧めします。
+
+データセット自体が多クラスのときに、二項分類データセットのメトリックをアクティブにするために、ユーザーが行う必要があるのは、`true` クラスとして扱われるクラスの指定だけであり、これらのメトリックが計算されます。
 
 ## <a name="confusion-matrix"></a>混同行列
 
@@ -143,7 +145,7 @@ weighted_accuracy|加重精度は、各サンプルが同じクラスに属す�
 
 完全なモデルでは、すべての正のサンプルをすべての負のサンプルの上に優先度付けして、2 つの直線セグメントで構成される累積ゲイン曲線を示します。 1 つ目は `(0, 0)` から `(x, 1)` への傾き `1 / x` の線で、`x` は正のクラスに属するサンプルの割合です (クラスの均衡が取れている場合は `1 / num_classes`)。 2 つ目は `(x, 1)` から `(1, 1)` までの水平線です。 最初のセグメントでは、すべての正のサンプルが正しく分類され、累積ゲインは、考慮されたサンプルの最初の `x%` 内で `100%` になります。
 
-ベースライン ランダム モデルでは、`y = x` の後に累積ゲイン曲線があります。ここでは、検討されたサンプルの `x%` について、正のサンプルの合計の約 `x%` のみが検出されました。 完璧なモデルでは、左上隅に接するマイクロ平均曲線と、累積ゲインが 100% になるまで傾きが `1 / num_classes` のマクロ平均線があり、その後はデータの割合が 100 になるまで水平になります。
+ベースライン ランダム モデルでは、`y = x` の後に累積ゲイン曲線があります。ここでは、検討されたサンプルの `x%` について、正のサンプルの合計の約 `x%` のみが検出されました。 バランスの取れたデータセットに完璧なモデルでは、マイクロ平均曲線と、累積ゲインが 100% になるまで傾きが `num_classes` のマクロ平均線があり、その後はデータの割合が 100 になるまで水平になります。
 > [!TIP]
 > 分類の実験では、自動 ML モデル用に生成された各折れ線グラフを使用して、クラスごとにモデルを評価したり、すべてのクラスに対して平均化したりできます。 グラフの右側にある凡例のクラス ラベルをクリックすると、これらのビューを切り替えることができます。
 ### <a name="cumulative-gains-curve-for-a-good-model"></a>適切なモデルの累積ゲイン曲線
@@ -154,7 +156,7 @@ weighted_accuracy|加重精度は、各サンプルが同じクラスに属す�
 
 ## <a name="lift-curve"></a>リフト曲線
 
-リフト曲線には、ランダム モデルと比較して、モデルのパフォーマンスが何倍優れているかが示されます。 リフトは、ランダム モデルの累積ゲインに対する累積ゲインの比率として定義されます。
+リフト曲線には、ランダム モデルと比較して、モデルのパフォーマンスが何倍優れているかが示されます。 リフトは、ランダム モデルの累積ゲインに対する累積ゲインの比率として定義されます (常に `1` になる必要があります)。
 
 この相対的なパフォーマンスでは、クラスの数を増やすと分類が困難になるという事実が考慮されます。 ランダム モデルでは、2 つのクラスを持つデータセットと比較して、10 個のクラスを持つデータセットからのサンプルの割合が、誤って予測されます。
 
@@ -191,14 +193,14 @@ weighted_accuracy|加重精度は、各サンプルが同じクラスに属す�
 
 |メトリック|説明|計算|
 --|--|--|
-explained_variance|説明分散では、モデルでターゲット変数のバリエーションを指定する範囲を測定します。 エラーの分散に対する元データの分散の減少の割合です。 誤差の平均が 0 の場合は、決定係数と等しくなります (以下の r2_score を参照)。 <br> <br> **目的:** 1 に近いほど良い <br> **範囲:** (-inf, 1]|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.explained_variance_score.html)|
-mean_absolute_error|平均絶対誤差は、ターゲットと予測の間における差異の絶対値について予期される値です。<br><br> **目的:** 0 に近いほど良い <br> **範囲:** [0, inf) <br><br> タイプ: <br>`mean_absolute_error` <br>  `normalized_mean_absolute_error`: データの範囲で除算した mean_absolute_error です。 | [計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html)|
+explained_variance|説明分散では、モデルでターゲット変数のバリエーションを指定する範囲を測定します。 エラーの分散に対する元データの分散の減少の割合です。 誤差の平均が 0 の場合は、決定係数と等しくなります (以下の r2_score を参照)。 <br> <br> **目的:** 1 に近いほど良い <br> **範囲:** (-inf, 1]|[計算](https://scikit-learn.org/0.22/modules/generated/sklearn.metrics.explained_variance_score.html)|
+mean_absolute_error|平均絶対誤差は、ターゲットと予測の間における差異の絶対値について予期される値です。<br><br> **目的:** 0 に近いほど良い <br> **範囲:** [0, inf) <br><br> タイプ: <br>`mean_absolute_error` <br>  `normalized_mean_absolute_error`: データの範囲で除算した mean_absolute_error です。 | [計算](https://scikit-learn.org/0.22/modules/generated/sklearn.metrics.mean_absolute_error.html)|
 mean_absolute_percentage_error|平均絶対パーセント誤差 (MAPE) は、予測された値と実際の値との平均差を測定したものです。<br><br> **目的:** 0 に近いほど良い <br> **範囲:** [0, inf) ||
-median_absolute_error|中央絶対誤差は、ターゲットと予測の間におけるすべての絶対差の中央値です。 この損失は外れ値に対してロバストです。<br><br> **目的:** 0 に近いほど良い <br> **範囲:** [0, inf)<br><br>タイプ: <br> `median_absolute_error`<br> `normalized_median_absolute_error`: データの範囲で除算した median_absolute_error です。 |[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.median_absolute_error.html)|
-r2_score|R<sup>2</sup> (決定係数) では、観測されたデータの全分散と比較して平均二乗誤差 (MSE) の比例減少が測定されます。 <br> <br> **目的:** 1 に近いほど良い <br> **範囲:** [-1, 1]<br><br>注: R<sup>2</sup> は、(-inf, 1] の範囲を持つことがよくあります。 MSE は観測された分散よりも大きい場合があるため、データとモデル予測によっては、R<sup>2</sup> は任意の大きな負の値を持つ場合があります。 自動 ML クリップによって -1 の R<sup>2</sup> スコアが報告された場合、R<sup>2</sup> の値 -1 は、実際の R<sup>2</sup> スコアが -1 未満であることを意味する可能性があります。 負の R<sup>2</sup> スコアを解釈する場合は、他のメトリック値とデータのプロパティを考慮してください。|[計算](https://scikit-learn.org/0.16/modules/generated/sklearn.metrics.r2_score.html)|
-root_mean_squared_error |平均平方二乗誤差 (RMSE) は、ターゲットと予測の間における予期される二乗誤差の平方根です。 不偏推定の場合、RMSE は標準偏差と等しくなります。<br> <br> **目的:** 0 に近いほど良い <br> **範囲:** [0, inf)<br><br>タイプ:<br> `root_mean_squared_error` <br> `normalized_root_mean_squared_error`: データの範囲で除算した root_mean_squared_error です。 |[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|
-root_mean_squared_log_error|対数平均平方二乗誤差は、予期される対数二乗誤差の平方根です。<br><br>**目的:** 0 に近いほど良い <br> **範囲:** [0, inf) <br> <br>タイプ: <br>`root_mean_squared_log_error` <br> `normalized_root_mean_squared_log_error`: データの範囲で除算した root_mean_squared_log_error です。  |[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|
-spearman_correlation| スピアマンの相関は、2 つのデータセット間の関係の単調性に対するノンパラメトリック測定です。 ピアソンの相関とは異なり、スピアマンの相関は両方のデータセットが正規分布していることを想定しません。 他の相関係数と同様に、スピアマンは -1 と 1 の間で変化し、0 は相関関係がないことを示します。 相関係数が -1 または 1 の場合は、完全に単調な関係であることを示します。 <br><br> スピアマンはランク順序の相関関係メトリックです。これは、予測値または実際の値を変更しても、予測値または実際の値のランク順序を変更しないと、スピアマンの結果が変更されないことを意味します。<br> <br> **目的:** 1 に近いほど良い <br> **範囲:** [-1, 1]|[計算](https://docs.scipy.org/doc/scipy-0.16.1/reference/generated/scipy.stats.spearmanr.html)|
+median_absolute_error|中央絶対誤差は、ターゲットと予測の間におけるすべての絶対差の中央値です。 この損失は外れ値に対してロバストです。<br><br> **目的:** 0 に近いほど良い <br> **範囲:** [0, inf)<br><br>タイプ: <br> `median_absolute_error`<br> `normalized_median_absolute_error`: データの範囲で除算した median_absolute_error です。 |[計算](https://scikit-learn.org/0.22/modules/generated/sklearn.metrics.median_absolute_error.html)|
+r2_score|R<sup>2</sup> (決定係数) では、観測されたデータの全分散と比較して平均二乗誤差 (MSE) の比例減少が測定されます。 <br> <br> **目的:** 1 に近いほど良い <br> **範囲:** [-1, 1]<br><br>注: R<sup>2</sup> は、(-inf, 1] の範囲を持つことがよくあります。 MSE は観測された分散よりも大きい場合があるため、データとモデル予測によっては、R<sup>2</sup> は任意の大きな負の値を持つ場合があります。 自動 ML クリップによって -1 の R<sup>2</sup> スコアが報告された場合、R<sup>2</sup> の値 -1 は、実際の R<sup>2</sup> スコアが -1 未満であることを意味する可能性があります。 負の R<sup>2</sup> スコアを解釈する場合は、他のメトリック値とデータのプロパティを考慮してください。|[計算](https://scikit-learn.org/0.22/modules/generated/sklearn.metrics.r2_score.html)|
+root_mean_squared_error |平均平方二乗誤差 (RMSE) は、ターゲットと予測の間における予期される二乗誤差の平方根です。 不偏推定の場合、RMSE は標準偏差と等しくなります。<br> <br> **目的:** 0 に近いほど良い <br> **範囲:** [0, inf)<br><br>タイプ:<br> `root_mean_squared_error` <br> `normalized_root_mean_squared_error`: データの範囲で除算した root_mean_squared_error です。 |[計算](https://scikit-learn.org/0.22/modules/generated/sklearn.metrics.mean_squared_error.html)|
+root_mean_squared_log_error|対数平均平方二乗誤差は、予期される対数二乗誤差の平方根です。<br><br>**目的:** 0 に近いほど良い <br> **範囲:** [0, inf) <br> <br>タイプ: <br>`root_mean_squared_log_error` <br> `normalized_root_mean_squared_log_error`: データの範囲で除算した root_mean_squared_log_error です。  |[計算](https://scikit-learn.org/0.22/modules/generated/sklearn.metrics.mean_squared_log_error.html)|
+spearman_correlation| スピアマンの相関は、2 つのデータセット間の関係の単調性に対するノンパラメトリック測定です。 ピアソンの相関とは異なり、スピアマンの相関は両方のデータセットが正規分布していることを想定しません。 他の相関係数と同様に、スピアマンは -1 と 1 の間で変化し、0 は相関関係がないことを示します。 相関係数が -1 または 1 の場合は、完全に単調な関係であることを示します。 <br><br> スピアマンはランク順序の相関関係メトリックです。これは、予測値または実際の値を変更しても、予測値または実際の値のランク順序を変更しないと、スピアマンの結果が変更されないことを意味します。<br> <br> **目的:** 1 に近いほど良い <br> **範囲:** [-1, 1]|[計算](https://docs.scipy.org/doc/scipy-1.5.2/reference/generated/scipy.stats.spearmanr.html)|
 
 ### <a name="metric-normalization"></a>メトリックの正規化
 

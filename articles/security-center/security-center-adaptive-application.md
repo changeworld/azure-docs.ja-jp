@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 09/09/2021
 ms.author: memildin
-ms.openlocfilehash: ef37d84d2fcef851e13837ae40da14db9fb2412f
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: f2ab2dfeec7522599cfb8b3eccdf9b498fdfff32
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124777452"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129713708"
 ---
 # <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>適応型アプリケーション制御を使用して、マシンの攻撃対象領域を減らす
 
@@ -244,7 +244,7 @@ REST API から使用できる関数をいくつか以下に示します。
 現時点では、利用できる強制オプションはありません。 適応型アプリケーション制御では、安全なものとして定義したもの以外のアプリケーションが実行されると、**セキュリティ アラート** が表示されることを想定しています。 これらにはさまざまな利点があり (「[適応型アプリケーション制御の利点とは](#what-are-the-benefits-of-adaptive-application-controls)」)、このページに示すように高度なカスタマイズが可能です。
 
 ### <a name="why-do-i-see-a-qualys-app-in-my-recommended-applications"></a>お勧めアプリケーションに Qualys アプリが表示されるのはなぜですか?
-[Azure Defender for servers](defender-for-servers-introduction.md) には、お使いのマシンの脆弱性スキャンが追加費用なしで含まれています。 Qualys ライセンスも Qualys アカウントも必要ありません。すべてが Security Center 内でシームレスに処理されます。 このスキャナーの詳細およびデプロイ方法の手順については、「[Defender の統合された脆弱性評価ソリューション](deploy-vulnerability-assessment-vm.md)」を参照してください。
+[Azure Defender for servers](defender-for-servers-introduction.md) には、お使いのマシンの脆弱性スキャンが追加費用なしで含まれています。 Qualys ライセンスも Qualys アカウントも必要ありません。すべてが Security Center 内でシームレスに処理されます。 このスキャナーの詳細およびデプロイ方法の手順については、[Defender の統合された Qualys 脆弱性評価ソリューション](deploy-vulnerability-assessment-vm.md)に関する記事を参照してください。
 
 Security Center にスキャナーをデプロイするときにアラートが生成されないようにするには、適応型アプリケーション制御の推奨許可リストに、すべてのコンピューターのスキャナーが含まれていることを確認します。 
 

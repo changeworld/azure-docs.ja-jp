@@ -7,15 +7,15 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: common
 ms.topic: conceptual
-ms.date: 09/15/2021
+ms.date: 10/07/2021
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 087cc0e9e650e89edb099e2593383a54d173ad89
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: d1a76078db3acd79d1f59ce43852d538edac7964
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128588088"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129710889"
 ---
 # <a name="plan-to-manage-azure-costs"></a>Azure のコストの管理を計画する
 
@@ -95,7 +95,7 @@ Azure サービスを実行状態に移した後は、定期的にコストを�
 
 ## <a name="optimize-and-reduce-costs"></a>コストの最適化と削減
 
-コスト管理の原則をよく理解していない場合は、「[Azure Cost Management でクラウド投資を最適化する方法](../costs/cost-mgt-best-practices.md)」をお読みください。
+コスト管理の原則をよく理解していない場合は、「[Azure Cost Management を使用してクラウドへの投資を最適化する方法](../costs/cost-mgt-best-practices.md)」をお読みください。
 
 Azure portal で、VM の自動シャットダウンと Advisor の推奨事項を使用して、Azure のコストを最適化し、削減することもできます。
 

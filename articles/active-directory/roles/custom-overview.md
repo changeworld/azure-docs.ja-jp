@@ -8,23 +8,23 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: overview
-ms.date: 09/13/2021
+ms.date: 10/06/2021
 ms.author: rolyon
 ms.reviewer: abhijeetsinha
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 21e1b91c10d687b0b82626372510dcaf2a0611ef
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 083b0da0152f82d75df2ca83a451b5672dc09002
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128601800"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129667898"
 ---
 # <a name="overview-of-role-based-access-control-in-azure-active-directory"></a>Azure Active Directory のロールベースのアクセス制御の概要
 
 この記事では、Azure Active Directory (Azure AD) のロールベースのアクセス制御について説明します。 Azure AD ロールを使用すると、最小限の特権の原則に従って、管理者に詳細なアクセス許可を付与できます。 Azure AD の組み込みロールとカスタム ロールは、<bpt id="p1">[</bpt>Azure リソースのロールベースのアクセス制御システム<ept id="p1">](../../role-based-access-control/overview.md)</ept> (Azure ロール) と同様の概念で動作します。 <bpt id="p1">[</bpt>この 2 つのロールベースのアクセス制御システムの違い<ept id="p1">](../../role-based-access-control/rbac-and-directory-admin-roles.md)</ept>は次のとおりです。
 
-- Azure AD ロールでは、Graph API を使用して、ユーザー、グループ、アプリケーションなどの Azure AD リソースへのアクセスを制御します
+- Azure AD ロールでは、Microsoft Graph API を使用して、ユーザー、グループ、アプリケーションなどの Azure AD リソースへのアクセスを制御します
 - Azure ロールでは、Azure Resource Management を使用して、仮想マシンやストレージなどの Azure リソースへのアクセスを制御します
 
 どちらのシステムにも、同様に使用されるロールの定義とロールの割り当ての概念が含まれています。 ただし、Azure AD ロールのアクセス許可を Azure カスタム ロールで使用することはできません。その逆も同様です。
@@ -58,7 +58,7 @@ Azure AD では、2 種類のロールの定義がサポートされています
 - ロールの定義 - アクセス許可のコレクション。 
 - スコープ - アクセス許可を適用できる場所を制限する方法。
 
-<bpt id="p1">[</bpt>ロールの割り当ての作成<ept id="p1">](manage-roles-portal.md)</ept>は、Azure portal、Azure AD PowerShell、または Graph API を使って行うことができます。 また、<bpt id="p1">[</bpt>ロールの割り当てを一覧表示<ept id="p1">](view-assignments.md)</ept>することもできます。
+[ロールの割り当ての作成](manage-roles-portal.md)と[ロールの割り当ての一覧表示](view-assignments.md)は、Azure portal、Azure AD PowerShell、または Microsoft Graph API を使って行うことができます。 Azure CLI は Azure AD のロールの割り当てに対してはサポートされていません。
 
 次の図では、ロールの割り当ての例を示します。 この例では、Contoso Widget Builder アプリ登録のスコープで、Chris にアプリ登録管理者のカスタム役割が割り当てられています。 割り当てにより、Chris には、この特定のアプリ登録に対してのみ、アプリ登録管理者の役割のアクセス許可が付与されます。
 

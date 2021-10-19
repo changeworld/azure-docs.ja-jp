@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 05/01/2017
-ms.openlocfilehash: b1bf95295fbaaa72df50b1aa7c42a6e954ef6ee2
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: 7d9d4efb683b7401c4601c86425490957d085d23
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129538806"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129658711"
 ---
 # <a name="aspnet-session-state-provider-for-azure-cache-for-redis"></a>Azure Cache for Redis の ASP.NET セッション状態プロバイダー
 
@@ -35,12 +35,7 @@ Install-Package Microsoft.Web.RedisSessionStateProvider
 >
 >
 
-Redis セッション状態プロバイダー NuGet パッケージは、StackExchange.Redis.StrongName パッケージに依存します。 StackExchange.Redis.StrongName パッケージは、プロジェクト内に存在しなければインストールされます。
-
->[!NOTE]
->厳密な名前を持つ StackExchange.Redis.StrongName パッケージ以外に、厳密な名前を持たない StackExchange.Redis バージョンもあります。 プロジェクトで厳密な名前を持たないバージョンの StackExchange.Redis を使っている場合は、それをアンインストールする必要があります。そうしないと、プロジェクトで名前の競合が発生します。 これらのパッケージの詳細については、[.NET キャッシュ クライアントの構成](cache-dotnet-how-to-use-azure-redis-cache.md#configure-the-cache-clients)に関するトピックを参照してください。
->
->
+Redis セッション状態プロバイダー NuGet パッケージは、StackExchange.Redis パッケージに依存します。 StackExchange.Redis パッケージは、プロジェクト内に存在しなければインストールされます。
 
 NuGet パッケージがダウンロードされ、必要なアセンブリ参照が追加されて、次のセクションが web.config ファイルに追加されます。 このセクションには、Azure Cache for Redis セッション状態プロバイダーを使うために ASP.NET アプリケーションに必要な構成が含まれます。
 
@@ -134,4 +129,3 @@ web.config の標準の InProc セッション状態プロバイダー セクシ
 ## <a name="next-steps"></a>次のステップ
 
 「[Azure Cache for Redis の ASP.NET 出力キャッシュ プロバイダー](cache-aspnet-output-cache-provider.md)」を参照してください。
-

@@ -3,16 +3,94 @@ title: Azure Monitor のドキュメントの最新情報
 description: Azure Monitor のドキュメントの最新情報
 ms.topic: conceptual
 ms.date: 09/07/2021
-ms.openlocfilehash: ff893ade0664df13c8e849957cb7d7877d91a910
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: f6827ac33585a22eabd31cc79126f9fe0e6c56f8
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124788422"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129713781"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure Monitor のドキュメントの最新情報
 
 この記事では、Azure Monitor ドキュメントに対する重要な変更点を示します。
+
+## <a name="september-2021"></a>2021 年 9 月
+### <a name="general"></a>全般
+
+**更新された記事**
+
+- [Azure Policy を使用して大規模に Azure Monitor をデプロイする](deploy-scale.md)
+- [Azure Monitor パートナーとの統合](partners.md)
+- [Azure Monitor 用の Resource Manager テンプレートのサンプル](resource-manager-samples.md)
+- [Azure Monitor でのロール、アクセス許可、セキュリティ](roles-permissions-security.md)
+- [Azure Monitor での使用量と推定コストの監視](usage-estimated-costs.md)
+- [Azure Monitor からのデータを視覚化する](visualizations.md)
+### <a name="agents"></a>エージェント
+
+**更新された記事**
+
+- [Azure Monitor エージェントの概要](agents/azure-monitor-agent-overview.md)
+
+### <a name="application-insights"></a>Application Insights
+
+**新しい記事**
+
+- [Azure App Service と ASP.NET のアプリケーション監視](app/azure-web-apps-net.md)
+- [Azure App Service と Java のアプリケーション監視](app/azure-web-apps-java.md)
+- [Azure App Service と ASP.NET Core のアプリケーション監視](app/azure-web-apps-net-core.md)
+- [Azure App Service と Node.js でのアプリケーションの監視](app/azure-web-apps-nodejs.md)
+
+**更新された記事**
+
+- [Azure App Service と ASP.NET のアプリケーション監視](app/azure-web-apps-net.md)
+- [Application Insights SDK におけるフィルター処理および前処理](app/api-filtering-sampling.md)
+- [Microsoft.ApplicationInsights.SnapshotCollector のリリース ノート](app/snapshot-collector-release-notes.md)
+- [Azure Monitor Application Insights の自動インストルメンテーションとは](app/codeless-overview.md)
+- [Azure App Service のアプリケーションの監視の概要](app/azure-web-apps.md)
+
+### <a name="containers"></a>コンテナー
+
+**更新された記事**
+
+- [コンテナー分析情報を有効にする](containers/container-insights-onboard.md)
+
+### <a name="essentials"></a>Essentials
+
+**更新された記事**
+
+- [Azure Monitor のサポートされるメトリック](essentials/metrics-supported.md)
+- [Azure リソース ログでサポートされているカテゴリ](essentials/resource-logs-categories.md)
+- [Azure アクティビティ ログ](essentials/activity-log.md)
+- [Azure 監視 REST API のチュートリアル](essentials/rest-api-walkthrough.md)
+
+
+### <a name="insights"></a>洞察
+
+**新しい記事**
+
+- [Azure CLI を使用して Application Insights コンポーネントを管理する](insights/azure-cli-application-insights-component.md)
+
+**更新された記事**
+
+- [Azure Data Explorer Insights](insights/data-explorer.md)
+- [Azure Monitor での Agent Health ソリューション](insights/solution-agenthealth.md)
+- [Azure Monitor での監視ソリューション](insights/solutions.md)
+- [SQL insights を使用して SQL デプロイを監視する (プレビュー)](insights/sql-insights-overview.md)
+- [SQL 分析情報のトラブルシューティング (プレビュー)](insights/sql-insights-troubleshoot.md)
+
+### <a name="logs"></a>ログ
+
+**新しい記事**
+
+- [Azure Monitor の Log Analytics クラスター用の Resource Manager テンプレートのサンプル](logs/resource-manager-cluster.md)
+
+**更新された記事**
+
+- [プライベート リンクを構成する](logs/private-link-configure.md)
+- [Azure Monitor のカスタマー マネージド キー](logs/customer-managed-keys.md)
+- [Azure Monitor ログ専用クラスター](logs/logs-dedicated-clusters.md)
+- [Azure Monitor の Log Analytics ワークスペースのデータ エクスポート (プレビュー)](logs/logs-data-export.md)
+- [Azure portal を使用して Log Analytics ワークスペースを別のリージョンに移動する](logs/move-workspace-region.md)
 
 ## <a name="august-2021"></a>2021 年 8 月
 

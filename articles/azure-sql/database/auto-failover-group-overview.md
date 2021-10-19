@@ -6,18 +6,17 @@ services: sql-database
 ms.service: sql-db-mi
 ms.subservice: high-availability
 ms.custom: sqldbrb=2
-ms.devlang: ''
 ms.topic: conceptual
 author: BustosMSFT
 ms.author: robustos
 ms.reviewer: mathoma
-ms.date: 10/04/2021
-ms.openlocfilehash: 403f3c82bbb5a387e7611a6d98ce808ded599146
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.date: 10/06/2021
+ms.openlocfilehash: a2b8498b0ff4eab174c0ae77bd29d1e562db508a
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129456292"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129667651"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>自動フェールオーバー グループを使用して、複数のデータベースの透過的な調整されたフェールオーバーを有効にする
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -372,7 +371,7 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 - SQL Managed Instance のインスタンスによって使用される仮想ネットワークは、[VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md) または [Express Route](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) 経由で接続されている必要があります。 2 つの仮想ネットワークがオンプレミスのネットワーク経由で接続されている場合、ポート 5022 および 11000-11999 をブロックするファイアウォール規則がないことを確認します。 グローバル VNet ピアリングはサポート対象ですが、次の注記で説明する制限事項があります。
 
    > [!IMPORTANT]
-   > [2020 年 9 月 22 日に、新しく作成された仮想クラスターに対するグローバル仮想ネットワーク ピアリングのサポートが発表されました](https://azure.microsoft.com/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/)。 つまり、この発表日の後に空のサブネット内に作成された SQL Managed Instance のほか、これらのサブネット内に作成されたそれ以降のすべてのマネージド インスタンスでグローバル仮想ネットワーク ピアリングがサポートされます。 その他のすべての SQL Managed Instance では、[グローバル仮想ネットワーク ピアリングの制約](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)のために、ピアリングのサポートが同じリージョン内のネットワークに制限されます。 詳細については、[Azure Virtual Networks のよく寄せられる質問](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)に関する記事の関連セクションも参照してください。 この発表日の前に作成された仮想クラスターの SQL Managed Instance でグローバル仮想ネットワーク ピアリングを使用できるようにするには、そのインスタンス上で[メンテナンス期間](./maintenance-window.md)を構成することを検討してください。それにより、そのインスタンスが、グローバル仮想ネットワーク ピアリングをサポートする新しい仮想クラスターに移動されます。
+   > [2020 年 9 月 22 日に、新しく作成された仮想クラスターに対するグローバル仮想ネットワーク ピアリングのサポートが発表されました](https://azure.microsoft.com/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/)。 つまり、この発表日の後に空のサブネット内に作成された SQL Managed Instance のほか、これらのサブネット内に作成されたそれ以降のすべてのマネージド インスタンスでグローバル仮想ネットワーク ピアリングがサポートされます。 その他のすべての SQL Managed Instance では、[グローバル仮想ネットワーク ピアリングの制約](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints)のために、ピアリングのサポートが同じリージョン内のネットワークに制限されます。 詳細については、[Azure Virtual Networks のよく寄せられる質問](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)に関する記事の関連セクションも参照してください。 この発表日の前に作成された仮想クラスターの SQL Managed Instance でグローバル仮想ネットワーク ピアリングを使用できるようにするには、そのインスタンス上で既定以外の[メンテナンス期間](./maintenance-window.md)を構成することを検討してください。それにより、そのインスタンスが、グローバル仮想ネットワーク ピアリングをサポートする新しい仮想クラスターに移動されます。
 
 - 2 つの SQL Managed Instance VNet に、重複する IP アドレスを含めることはできません。
 - 他のマネージド インスタンスのサブネットからの接続では、インバウンドおよびアウトバウンドでポート 5022 およびその範囲の 11000 から 12000 を開くように、ネットワーク セキュリティ グループ (NSG) を設定する必要があります。 これで、インスタンス間のレプリケーション トラフィックを許可します。
@@ -412,7 +411,8 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 - 同じ Azure リージョン内の 2 つのサーバーまたはインスタンス間で、フェールオーバー グループを作成することはできません。
 - フェールオーバー グループの名前を変更することはできません。 グループを削除し、別の名前で再作成する必要があります。
 - データベース名の変更は、フェールオーバー グループ内のインスタンスに対してはサポートされていません。 データベース名を変更するには、フェールオーバー グループを一時的に削除する必要があります。
-- システム データベースは、フェールオーバー グループのセカンダリ インスタンスにはレプリケートされません。 したがって、システム データベースのオブジェクトに依存するシナリオでは、オブジェクトをセカンダリ インスタンスで手動で作成する必要があります。また、プライマリ インスタンスで行われた変更があれば、手動で同期を保つ必要があります。 唯一の例外は SQL Managed Instance のサービス マスター キー (SMK) で、これはフェールオーバー グループの作成時にセカンダリ インスタンスに自動的にレプリケートされます。 ただし、プライマリ インスタンスでの SMK のその後の変更は、セカンダリ インスタンスにレプリケートされません。
+- システム データベースは、フェールオーバー グループのセカンダリ インスタンスには **レプリケートされません**。 したがって、システム データベースのオブジェクトに依存するシナリオでは、オブジェクトをセカンダリ インスタンスで手動で作成する必要があります。また、プライマリ インスタンスで行われた変更があれば、手動で同期を保つ必要があります。 唯一の例外は SQL Managed Instance のサービス マスター キー (SMK) で、これはフェールオーバー グループの作成時にセカンダリ インスタンスに自動的にレプリケートされます。 ただし、プライマリ インスタンスでの SMK のその後の変更は、セカンダリ インスタンスにレプリケートされません。
+- インスタンスが自動フェールオーバー グループに参加している場合に、インスタンスの[接続の種類](../managed-instance/connection-types-overview.md)を変更しても、フェールオーバー グループ リスナー エンドポイントを介して確立された接続で有効になりません。 接続の種類の変更を有効にするには、自動フェールオーバー グループを一時的に削除して再作成する必要があります。
 
 ## <a name="programmatically-managing-failover-groups"></a>フェールオーバー グループのプログラムによる管理
 

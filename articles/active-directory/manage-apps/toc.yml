@@ -140,12 +140,18 @@
       items:
         - name: Azure AD を使用した安全なハイブリッド アクセス
           href: secure-hybrid-access.md
-        - name: F5 と Azure AD の統合
-          href: f5-aad-integration.md
-        - name: Azure IaaS での F5 BIG-IP VE のデプロイ
-          href: f5-bigip-deployment-guide.md
-        - name: パスワードレス VPN のための F5 Big-IP と Azure AD
-          href: f5-aad-password-less-vpn.md
+        - name: Datawiza
+          href: datawiza-with-azure-ad.md
+        - name: F5
+          items:
+            - name: F5 と Azure AD の統合
+              href: f5-aad-integration.md
+            - name: Azure IaaS での F5 BIG-IP VE のデプロイ
+              href: f5-bigip-deployment-guide.md
+            - name: パスワードレス VPN のための F5 Big-IP と Azure AD
+              href: f5-aad-password-less-vpn.md
+        - name: Silverfort
+          href: silverfort-azure-ad-integration.md
     - name: シングル サイン オン
       items:
         - name: リンク

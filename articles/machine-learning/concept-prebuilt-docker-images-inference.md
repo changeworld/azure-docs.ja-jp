@@ -7,20 +7,20 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: ssambare
 author: shivanissambare
-ms.date: 05/25/2021
+ms.date: 10/07/2021
 ms.topic: conceptual
 ms.reviewer: larryfr
-ms.custom: deploy, docker, prebuilt
-ms.openlocfilehash: db019c225b3e3caaad1a02b30ec0b7278e5b9dcc
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.custom: deploy, docker, prebuilt, curated environments
+ms.openlocfilehash: 04ca2582360f0a4463dd806664a84d020b0c58a7
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123435908"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129712162"
 ---
-# <a name="prebuilt-docker-images-for-inference-preview"></a>推論用の事前構築済みの Docker イメージ (プレビュー)
+# <a name="prebuilt-docker-images-for-inference"></a>推論用の事前構築済み Docker イメージ
 
-推論用の事前構築済みの Docker コンテナー イメージ [(プレビュー)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) は、Azure Machine Learning でモデルをデプロイする際に使用します。  これらのイメージは、一般的な機械学習フレームワークと Python パッケージを使用して事前に構築されています。 また、次のいずれかの方法を使用して、パッケージを拡張して他のパッケージを追加することもできます。
+推論用の事前構築済みの Docker コンテナー イメージは、Azure Machine Learning でモデルをデプロイする際に使用します。  これらのイメージは、一般的な機械学習フレームワークと Python パッケージを使用して事前に構築されています。 また、次のいずれかの方法を使用して、パッケージを拡張して他のパッケージを追加することもできます。
 
 * [Python パッケージを追加する](how-to-prebuilt-docker-images-inference-python-extensibility.md)。
 * [新しい Dockerfile のベースとして事前構築済みの推論イメージを使用する](how-to-extend-prebuilt-docker-image-inference.md)。 この方法を使用すると、**Python パッケージと apt パッケージ** の両方をインストールできます。
@@ -34,47 +34,7 @@ ms.locfileid: "123435908"
 
 ## <a name="list-of-prebuilt-docker-images-for-inference"></a>推論用の事前構築済み Docker イメージの一覧 
 
-* すべての Docker イメージは、非ルート ユーザーとして実行されます。
-* Docker イメージに `latest` タグを使用することをお勧めします。 推論用の構築済みの Docker イメージは、Microsoft Container Registry (MCR) に発行され、使用可能なタグの一覧をクエリするには、[GitHub リポジトリの指示](https://github.com/microsoft/ContainerRegistry#browsing-mcr-content)に従います。
-
-### <a name="tensorflow"></a>TensorFlow
-
-Framework のバージョン | CPU/GPU | 事前インストール済みパッケージ | MCR パス | キュレーション環境
- --- | --- | --- | --- | --- |
- 1.15 | CPU | pandas==0.25.1 </br> numpy=1.20.1 | `mcr.microsoft.com/azureml/tensorflow-1.15-ubuntu18.04-py37-cpu-inference:latest`  | AzureML-tensorflow-1.15-ubuntu18.04-py37-cpu-inference | 
-2.4 | CPU | numpy>=1.16.0 </br> pandas~=1.1.x | `mcr.microsoft.com/azureml/tensorflow-2.4-ubuntu18.04-py37-cpu-inference:latest` | AzureML-tensorflow-2.4-ubuntu18.04-py37-cpu-inference |
-2.4 | GPU | numpy >= 1.16.0 </br> pandas~=1.1.x </br> CUDA==11.0.3 </br> CuDNN==8.0.5.39 | `mcr.microsoft.com/azureml/tensorflow-2.4-ubuntu18.04-py37-cuda11.0.3-gpu-inference:latest` | AzureML-tensorflow-2.4-ubuntu18.04-py37-cuda11.0.3-gpu-inference |
-
-### <a name="pytorch"></a>PyTorch
-
-Framework のバージョン | CPU/GPU | 事前インストール済みパッケージ | MCR パス | キュレーション環境
- --- | --- | --- | --- | --- |
- 1.6 | CPU | numpy==1.20.1 </br> pandas==0.25.1 | `mcr.microsoft.com/azureml/pytorch-1.6-ubuntu18.04-py37-cpu-inference:latest` | AzureML-pytorch-1.6-ubuntu18.04-py37-cpu-inference |
-1.7 | CPU | numpy>=1.16.0 </br> pandas~=1.1.x | `mcr.microsoft.com/azureml/pytorch-1.7-ubuntu18.04-py37-cpu-inference:latest` | AzureML-pytorch-1.7-ubuntu18.04-py37-cpu-inference |
-
-### <a name="scikit-learn"></a>SciKit-Learn
-
-Framework のバージョン | CPU/GPU | 事前インストール済みパッケージ | MCR パス | キュレーション環境
- --- | --- | --- | --- | --- |
-0.24.1  | CPU | scikit-learn==0.24.1 </br> numpy>=1.16.0 </br> pandas~=1.1.x | `mcr.microsoft.com/azureml/sklearn-0.24.1-ubuntu18.04-py37-cpu-inference:latest` | AzureML-sklearn-0.24.1-ubuntu18.04-py37-cpu-inference |
-
-### <a name="onnx-runtime"></a>ONNX Runtime
-
-Framework のバージョン | CPU/GPU | 事前インストール済みパッケージ | MCR パス | キュレーション環境
- --- | --- | --- | --- | --- |
-1.6 | CPU | numpy>=1.16.0 </br> pandas~=1.1.x | `mcr.microsoft.com/azureml/onnxruntime-1.6-ubuntu18.04-py37-cpu-inference:latest` |AzureML-onnxruntime-1.6-ubuntu18.04-py37-cpu-inference |
-
-### <a name="xgboost"></a>XGBoost
-
-Framework のバージョン | CPU/GPU | 事前インストール済みパッケージ | MCR パス | キュレーション環境
- --- | --- | --- | --- | --- |
-0.9 | CPU | scikit-learn==0.23.2 </br> numpy==1.20.1 </br> pandas==0.25.1 | `mcr.microsoft.com/azureml/xgboost-0.9-ubuntu18.04-py37-cpu-inference:latest` | AzureML-xgboost-0.9-ubuntu18.04-py37-cpu-inference | 
-
-### <a name="no-framework"></a>フレームワークなし
-
-Framework のバージョン | CPU/GPU | 事前インストール済みパッケージ | MCR パス | キュレーション環境
- --- | --- | --- | --- | --- |
-NA | CPU | NA | `mcr.microsoft.com/azureml/minimal-ubuntu18.04-py37-cpu-inference:latest` | AzureML-minimal-ubuntu18.04-py37-cpu-inference  |
+[!INCLUDE [list-of-inference-prebuilt-docker-images](../../includes/aml-inference-list-prebuilt-docker-images.md)]
 
 ## <a name="next-steps"></a>次の手順
 

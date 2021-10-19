@@ -5,14 +5,14 @@ description: Azure Cache for Redis 接続の回復性を高める方法につい
 author: shpathak-msft
 ms.service: cache
 ms.topic: conceptual
-ms.date: 08/25/2021
+ms.date: 10/11/2021
 ms.author: shpathak
-ms.openlocfilehash: a0dd6e3e8f4c2a7645da1ceccf77f7607d2b84b3
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 02b5c4bd42abc9c36ef971b053979d590d1e602d
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128656951"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129808843"
 ---
 # <a name="connection-resilience"></a>接続の回復力
 
@@ -23,6 +23,23 @@ ms.locfileid: "128656951"
 ## <a name="test-resiliency"></a>回復性をテストする
 
 [再起動](cache-administration.md#reboot)を使用して修正プログラムをシミュレートし、接続の中断に対するシステムの回復性をテストします。 パフォーマンスのテストについて詳しくは、「[パフォーマンス テスト](cache-best-practices-performance.md)」を参照してください。
+
+## <a name="tcp-settings-for-linux-hosted-client-applications"></a>Linux でホストされるクライアント アプリケーションのための TCP の設定
+
+Linux の一部のバージョンでは、既定でオプティミスティック TCP の設定が使用されます。 TCP の設定により、接続を正常に閉じる前に Redis サーバーが応答を停止したときに、キャッシュへのクライアント接続を長時間再確立できない状況が発生する可能性があります。 Azure Cache for Redis のプライマリ ノードが計画外のメンテナンスなどで使用できなくなった場合、接続の再確立が失敗することがあります。
+
+次のように TCP を設定することをお勧めします。
+
+|設定  |値 |
+|---------|---------|
+| *net.ipv4.tcp_retries2*   | 5 |
+| *TCP_KEEPIDLE*   | 15 |
+| *TCP_KEEPINTVL*  | 5 |
+| *TCP_KEEPCNT* | 3 |
+
+*ForceReconnect* パターンの使用を検討します。 パターンの実装については、「[Reconnecting with Lazy\<T\> pattern (Lazy\&lt;T\&gt; パターンでの再接続)](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-lazyreconnect-cs)」のコードを参照してください。
+
+このシナリオの詳細については、「[Connection does not re-establish for 15 minutes when running on Linux (Linux で実行している場合、15 分間接続が再確立されない)](https://github.com/StackExchange/StackExchange.Redis/issues/1848#issuecomment-913064646)」を参照してください。 この説明は StackExchange.Redis ライブラリについてですが、Linux で実行されている他のクライアント ライブラリも影響を受けます。 この説明はやはり有効であり、他のライブラリに一般化できます。
 
 ## <a name="configure-appropriate-timeouts"></a>適切なタイムアウトを構成する
 

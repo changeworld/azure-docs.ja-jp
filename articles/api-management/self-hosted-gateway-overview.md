@@ -8,12 +8,12 @@ ms.service: api-management
 ms.topic: article
 ms.date: 05/25/2021
 ms.author: danlep
-ms.openlocfilehash: fde1ee4c7b19c27b278fe6728ee244d03be246e4
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 802dd143accbd993eb0903797def7f1710a00033
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128663651"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129716212"
 ---
 # <a name="self-hosted-gateway-overview"></a>セルフホステッド ゲートウェイの概要
 

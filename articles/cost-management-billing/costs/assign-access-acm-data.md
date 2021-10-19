@@ -1,24 +1,24 @@
 ---
 title: Azure Cost Management のデータへのアクセス許可を割り当てる
-description: この記事では、Azure Cost Management のデータに対するアクセス許可をさまざまなアクセス スコープで割り当てる方法を説明します。
+description: この記事では、Cost Management のデータに対するアクセス許可をさまざまなアクセス スコープで割り当てる方法を説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 06/27/2021
+ms.date: 10/07/2021
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: secdec18
-ms.openlocfilehash: 9ee0f7f854363389f3e6594946411f05b1b8b790
-ms.sourcegitcommit: 1c12bbaba1842214c6578d914fa758f521d7d485
+ms.openlocfilehash: dddb6292530687e75e4b5e697f4fc754d98040fb
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2021
-ms.locfileid: "112988699"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129706240"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Cost Management のデータへのアクセス許可を割り当てる
 
-Azure Enterprise Agreement を使用するユーザーの場合は、Azure portal とエンタープライズ (EA) ポータルで付与されたアクセス許可の組み合わせによって、Azure Cost Management のデータへのアクセス レベルが定義されます。 他の種類の Azure アカウントを使用するユーザーの場合、Cost Management のデータに対するユーザーのアクセス レベルの定義は、Azure のロールベースのアクセス制御 (Azure RBAC) を使用して、もっと簡単に行うことができます。 この記事では、Cost Management のデータにアクセス許可を割り当てる方法について説明します。 アクセス許可の組み合わせが割り当てられると、ユーザーにはそのアクセス スコープと、Azure portal で選択したスコープに基づく Cost Management のデータが表示されます。
+Azure Enterprise Agreement を使用するユーザーの場合は、Azure portal とエンタープライズ (EA) ポータルで付与されたアクセス許可の組み合わせによって、Cost Management のデータへのアクセス レベルが定義されます。 他の種類の Azure アカウントを使用するユーザーの場合、Cost Management のデータに対するユーザーのアクセス レベルの定義は、Azure のロールベースのアクセス制御 (Azure RBAC) を使用して、もっと簡単に行うことができます。 この記事では、Cost Management のデータにアクセス許可を割り当てる方法について説明します。 アクセス許可の組み合わせが割り当てられると、ユーザーにはそのアクセス スコープと、Azure portal で選択したスコープに基づく Cost Management のデータが表示されます。
 
 ユーザーが選択したスコープは、データの統合とコスト情報へのアクセスの制御のために、Cost Management 全体を通して使用されます。 スコープを使用する場合、ユーザーはスコープの複数選択を行いません。 代わりに、子スコープがロール アップするよりも大きなスコープを選択してから、表示したい内容をフィルターで絞り込みます。 一部のユーザーは子スコープがロール アップする親スコープにアクセスすべきではないため、データの統合について理解しておくことが重要です。
 
@@ -56,7 +56,7 @@ Azure EA サブスクリプションのコスト データを表示するには�
 - サブスクリプション
 - Resource group
 
-パートナーによって顧客が Microsoft 顧客契約にオンボードされた後は、さまざまなスコープが利用可能です。 CSP のお客様は、CSP パートナーによって有効化された場合は Cost Management の機能を使用できます。 詳細については、「[パートナー向け Azure Cost Management の概要](get-started-partners.md)」を参照してください。
+パートナーによって顧客が Microsoft 顧客契約にオンボードされた後は、さまざまなスコープが利用可能です。 CSP のお客様は、CSP パートナーによって有効化された場合は Cost Management の機能を使用できます。 詳細については、「[パートナー向け Cost Management の概要](get-started-partners.md)」を参照してください。
 
 ## <a name="enable-access-to-costs-in-the-azure-portal"></a>Azure portal でのコストへのアクセスを有効にする
 
@@ -161,7 +161,7 @@ EA Portal でオプションを有効にするには、次の手順に従いま�
 
 ## <a name="cross-tenant-authentication-issues"></a>テナント間の認証の問題
 
-現在、Azure Cost Management では、テナント間の認証のサポートが制限されています。 テナント間で認証しようとした場合、状況によっては、コスト分析で **アクセス拒否** エラーが表示される場合があります。 この問題は、別のテナントのサブスクリプションに Azure のロールベースのアクセス制御 (Azure RBAC) を構成した後でコストのデータを表示しようとした場合に発生する可能性があります。
+現在、Cost Management では、テナント間の認証のサポートが制限されています。 テナント間で認証しようとした場合、状況によっては、コスト分析で **アクセス拒否** エラーが表示される場合があります。 この問題は、別のテナントのサブスクリプションに Azure のロールベースのアクセス制御 (Azure RBAC) を構成した後でコストのデータを表示しようとした場合に発生する可能性があります。
 
 "*回避策は次のとおりです*": テナント間の Azure RBAC を構成した後、1 時間待機します。 その後、コスト分析でコストを表示するか、両方のテナントのユーザーに Cost Management へのアクセス権を付与します。  
 

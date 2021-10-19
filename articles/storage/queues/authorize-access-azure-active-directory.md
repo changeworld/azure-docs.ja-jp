@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/13/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 410d5daf67d590d84801a23627b5ce46e26367f5
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: bd9224537be7559a325b30a71fb72eab07a71bd0
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129357574"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129855367"
 ---
 # <a name="authorize-access-to-queues-using-azure-active-directory"></a>Azure Active Directory を使用してキューへのアクセスを承認する
 
@@ -28,7 +28,7 @@ Azure AD での承認は、すべてのパブリック リージョンおよび�
 
 セキュリティ プリンシパル (ユーザー、グループ、またはアプリケーション) がキュー リソースへのアクセスを試みた場合、要求が承認される必要があります。 Azure AD では、リソースへのアクセスは 2 段階のプロセスです。 まず、セキュリティ プリンシパルの ID が認証され、OAuth 2.0 トークンが返されます。 次に、そのトークンが Queue サービスへの要求の一部として渡され、指定されたリソースへのアクセスを承認するためにサービスによって使用されます。
 
-認証の手順では、アプリケーションが実行時に OAuth 2.0 アクセス トークンを要求する必要があります。 アプリケーションが Azure VM、仮想マシン スケール セット、または Azure Functions アプリなどの Azure エンティティ内から実行されている場合、[マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) を使用してキューにアクセスできます。 マネージド ID によって行われた要求を承認する方法については、[Azure Active Directory と Azure リソースのマネージド ID を使用してキューへのアクセスを承認する方法についての記事](../common/storage-auth-aad-msi.md)を参照してください。
+認証の手順では、アプリケーションが実行時に OAuth 2.0 アクセス トークンを要求する必要があります。 アプリケーションが Azure VM、仮想マシン スケール セット、または Azure Functions アプリなどの Azure エンティティ内から実行されている場合、[マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) を使用してキューにアクセスできます。 マネージド ID によって行われた要求を認可する方法については、[Azure リソースのマネージド ID を使用してキューのデータへのアクセスを認可する方法](authorize-managed-identity.md)に関する記事を参照してください。
 
 承認の手順では、セキュリティ プリンシパルに 1 つまたは複数の Azure ロールを割り当てる必要があります。 キュー データへの一般的なアクセス許可セットを含む Azure ロールは、Azure Storage によって提供されます。 セキュリティ プリンシパルに割り当てられたロールによって、そのプリンシパルが持つアクセス許可が決定されます。 キュー データにアクセスするための Azure ロールの割り当ての詳細については、「[キュー データにアクセスするための Azure ロールを割り当てる](../queues/assign-azure-role-data-access.md)」を参照してください。
 

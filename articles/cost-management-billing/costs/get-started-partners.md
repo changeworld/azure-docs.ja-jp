@@ -1,24 +1,24 @@
 ---
 title: パートナー向け Azure Cost Management の利用を開始する
-description: この記事では、パートナーが Azure Cost Management の機能を使用する方法と、パートナーの顧客のために Cost Management アクセスを有効にする方法について説明します。
+description: この記事では、パートナーが Cost Management の機能を使用する方法と、パートナーの顧客のためにアクセスを有効にする方法について説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 07/01/2021
+ms.date: 10/07/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 78a2ef8491eea5fa3df5355236f23be730062108
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d402acaf43682a7c025147fd38bccb9baa033683
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121752004"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129705986"
 ---
-# <a name="get-started-with-azure-cost-management-for-partners"></a>パートナー向け Azure Cost Management の利用を開始する
+# <a name="get-started-with-cost-management-for-partners"></a>パートナー向け Cost Management の利用を開始する
 
-Azure Cost Management は、お客様を Microsoft 顧客契約にオンボードし、[Azure プランを購入](/partner-center/purchase-azure-plan)している直接パートナーがネイティブに使用できます。 この記事では、パートナーが [Azure Cost Management](../index.yml) 機能を使用して、Azure プランのサブスクリプションのコストを表示する方法について説明します。 また、パートナーが、自分の顧客向けに Cost Management へのアクセスを有効にする方法についても説明します。
+Cost Management は、お客様を Microsoft 顧客契約にオンボードし、[Azure プランを購入している](/partner-center/purchase-azure-plan)直接パートナーがネイティブに使用できます。 この記事では、パートナーが [Cost Management](../index.yml) 機能を使用して、Azure プランのサブスクリプションのコストを表示する方法について説明します。 また、パートナーが、自分の顧客向けに Cost Management へのアクセスを有効にする方法についても説明します。
 
 直接パートナーおよび間接プロバイダーの場合、全体管理者と管理者エージェントが、パートナー テナントの Cost Management にアクセスして請求価格のコストを管理できます。
 
@@ -43,19 +43,19 @@ CSP パートナーは、次の目的に Cost Management を使用します。
 
 [![1 人の顧客のコストを示す例](./media/get-started-partners/customer-costs2.png)](./media/get-started-partners/customer-costs2.png#lightbox)
 
-Azure Cost Management で使用できるすべての機能は、REST API でも使用できます。 API を使用してコスト管理タスクを自動化します。
+Cost Management で使用できるすべての機能は、REST API でも使用できます。 API を使用してコスト管理タスクを自動化します。
 
 ## <a name="prerequisites"></a>前提条件
 
-パートナーの場合、Azure Cost Management は、Azure プランのサブスクリプションでのみネイティブに使用できます。
+パートナーの場合、Cost Management は、Azure プランのサブスクリプションでのみネイティブに使用できます。
 
-Azure portal で Azure Cost Management を有効にするには、(顧客に代わって) Microsoft 顧客契約に対する顧客の同意を確認し、その顧客を Azure プランに移行している必要があります。 Azure Cost Management では、Azure プランに移行されているサブスクリプションのコストのみを使用できます。
+Azure portal で Cost Management を有効にするには、(顧客に代わって) Microsoft 顧客契約に対する顧客の同意を確認し、その顧客を Azure プランに移行している必要があります。 Cost Management では、Azure プランに移行されているサブスクリプションのコストのみを使用できます。
 
-Azure Cost Management には、課金アカウントまたはサブスクリプションへの読み取りアクセスが必要です。
+Cost Management には、課金アカウントまたはサブスクリプションへの読み取りアクセスが必要です。
 
-課金アカウントでの Azure Cost Management へのアクセスの有効化と割り当ての詳細については、「[ユーザー ロールとアクセス許可の割り当て](/partner-center/permissions-overview)」を参照してください。 **全体管理者** ロールと **管理エージェント** ロールは、課金アカウントのコストを管理できます。
+課金アカウントでの Cost Management へのアクセスの有効化と割り当ての詳細については、「[ユーザー ロールとアクセス許可の割り当て](/partner-center/permissions-overview)」を参照してください。 **全体管理者** ロールと **管理エージェント** ロールは、課金アカウントのコストを管理できます。
 
-サブスクリプション スコープで Azure Cost Management にアクセスする場合、サブスクリプションに対して Azure RBAC アクセス権を持つユーザーは、小売 (従量課金制) レートでコストを表示できます。 ただし、[顧客テナントのコスト可視性ポリシー](#enable-the-policy-to-view-azure-usage-charges)が有効になっている必要があります。 サポートされているアカウントの種類の完全な一覧については、「[Cost Management のデータを理解する](understand-cost-mgt-data.md)」を参照してください。
+サブスクリプション スコープで Cost Management にアクセスする場合、サブスクリプションに対して Azure RBAC アクセス権を持つユーザーは、小売 (従量課金制) レートでコストを表示できます。 ただし、[顧客テナントのコスト可視性ポリシー](#enable-the-policy-to-view-azure-usage-charges)が有効になっている必要があります。 サポートされているアカウントの種類の完全な一覧については、「[Cost Management のデータを理解する](understand-cost-mgt-data.md)」を参照してください。
 
 既存の課金契約を新しいパートナーに転送する際、コスト管理機能は、そのパートナーとの現在の課金リレーションシップについてのみ利用できます。 新しいパートナーへの転送前に生じた過去のコストが、新しい課金アカウントに移動することはありません。 ただしコスト履歴は、関連する元の課金アカウントと共に残ります。
 
@@ -145,7 +145,7 @@ Azure portal で、"*パートナー テナント*" にサインインし、 **[
 選択した顧客のサブスクリプションに関連付けられている **Azure 使用** 料金について、現在のコスト可視性ポリシーが表示されます。
 ![従量課金制の料金を表示することを顧客に許可するポリシー](./media/get-started-partners/cost-management-billing-policies.png)
 
-ポリシーが **[いいえ]** に設定されている場合、顧客に関連付けられているサブスクリプション ユーザーに対して Azure Cost Management は使用できません。 パートナーによって有効化されていない限り、コスト可視性ポリシーはすべてのサブスクリプション ユーザーに対して既定で無効になっています。
+ポリシーが **[いいえ]** に設定されている場合、顧客に関連付けられているサブスクリプション ユーザーに対して Cost Management は使用できません。 パートナーによって有効化されていない限り、コスト可視性ポリシーはすべてのサブスクリプション ユーザーに対して既定で無効になっています。
 
 コスト ポリシーが **[はい]** に設定されている場合、顧客テナントに関連付けられているサブスクリプション ユーザーは、従量課金制の料金で使用料金を確認できます。
 
@@ -162,8 +162,6 @@ Azure portal で、"*パートナー テナント*" にサインインし、 **[
 Azure RBAC スコープの予約インスタンスの償却ビューおよび実際のコストでは、料金がゼロと表示されます。 予約インスタンスや Marketplace 料金などのエンタイトルメントの購入コストは、購入が行われたパートナーのテナントの課金スコープにのみ表示されます。
 
 このビューに表示されるコスト計算に使用される小売料金は、すべてのお客様の Azure 料金計算ツールに表示される料金と同じです。 表示されるコストには、パートナーが持っているパートナー獲得クレジット、階層割引、グローバル サービス割引などの割引やクレジットは含まれません。
-
- 
 
 ## <a name="analyze-costs-in-cost-analysis"></a>コスト分析でコストを分析する
 
@@ -229,7 +227,7 @@ Azure RBAC スコープの予約インスタンスの償却ビューおよび実
 | unitOfMeasure | サービスが課金される単位を特定します。 たとえば、GB や時間数など。 | サービスが課金される単位を特定します。 たとえば、GB、時間、および 10,000 単位など。 |
 | pricingCurrency | 単価を定義する通貨。 | 価格表の通貨。|
 | billingCurrency | 請求されるコストを定義する通貨。 | 請求書上の請求通貨として定義されている通貨。 |
-| chargeType | 購入や返金など、Azure Cost Management でコストが表す料金の種類を定義します。 | 料金または調整の種類。 現在のアクティビティでは使用できません。 |
+| chargeType | 購入や返金など、Cost Management でコストが表す料金の種類を定義します。 | 料金または調整の種類。 現在のアクティビティでは使用できません。 |
 | costinBillingCurrency | 請求通貨での税引き前の ExtendedCost またはブレンド コスト。 | 該当なし |
 | costinPricingCurrency | 価格に関連する価格通貨での税引き前の ExtendedCost またはブレンド コスト。 | 該当なし |
 | **costinUSD** | 税引き前の、予測される ExtendedCost またはブレンド コスト (米国ドル)。 | 該当なし |
@@ -247,7 +245,7 @@ Azure RBAC スコープの予約インスタンスの償却ビューおよび実
 
 ## <a name="view-partner-earned-credit-pec-resource-costs"></a>パートナー獲得クレジット (PEC) リソースのコストを表示する
 
-Azure Cost Management では、パートナーはコスト分析を使用して、PEC 特典を受けたコストを表示できます。
+Cost Management では、パートナーはコスト分析を使用して、PEC 特典を受けたコストを表示できます。
 
 Azure portal で、パートナー テナントにサインインし、 **[Cost Management + Billing]\(コスト管理と課金\)** を選択します。 **[コスト管理]** で、 **[コスト分析]** を選択します。
 
@@ -261,7 +259,7 @@ Azure portal で、パートナー テナントにサインインし、 **[Cost 
 
 **PartnerEarnedCreditApplied** プロパティが _False_ の場合、関連付けられたコストはクレジットの必要資格を満たしていません。 または、購入したサービスはパートナー獲得クレジットの対象ではありません。
 
-通常、サービス使用状況データが Cost Management に表示されるまでに 8 ～ 24 時間かかります。 詳細については、[コストと使用状況データの更新と保持](understand-cost-mgt-data.md#cost-and-usage-data-updates-and-retention)に関する記事を参照してください。 PEC クレジットは、Azure Cost Management にアクセスしてから 48 時間以内に表示されます。
+通常、サービス使用状況データが Cost Management に表示されるまでに 8 ～ 24 時間かかります。 詳細については、[コストと使用状況データの更新と保持](understand-cost-mgt-data.md#cost-and-usage-data-updates-and-retention)に関する記事を参照してください。 PEC クレジットは、Cost Management にアクセスしてから 48 時間以内に表示されます。
 
 
 **[Group by]\(グループ化\)** オプションを使用して、**PartnerEarnedCreditApplied** プロパティによるグループ化およびフィルター処理を行うこともできます。 オプションを使用して、PEC があるコストとないコストを調べます。
@@ -298,7 +296,7 @@ Azure portal で、パートナー テナントまたは顧客テナントにサ
 
 パートナーと顧客は、次のセクションに記載されている Cost Management API を一般的なタスクに対して使用できます。
 
-### <a name="azure-cost-management-apis---direct-and-indirect-providers"></a>Azure Cost Management API - 直接プロバイダーと間接プロバイダー
+### <a name="cost-management-apis---direct-and-indirect-providers"></a>Cost Management API - 直接プロバイダーと間接プロバイダー
 
 パートナー テナントの課金スコープにアクセスできるパートナーは、次の API を使用して請求されたコストを表示できます。
 

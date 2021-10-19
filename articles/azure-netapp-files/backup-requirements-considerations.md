@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/27/2021
+ms.date: 10/07/2021
 ms.author: b-juche
-ms.openlocfilehash: abbf02776d6bc1506912a5bdd1446393b9f678fb
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: f396904b3832403337a6fa4553e2ae4a4b8c86b4
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129094910"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129667955"
 ---
 # <a name="requirements-and-considerations-for-azure-netapp-files-backup"></a>Azure NetApp Files バックアップの要件と考慮事項 
 
@@ -45,6 +45,8 @@ Azure NetApp Files バックアップを使用する前に、要件および考�
     バックアップする必要のあるボリュームには、スナップショットを作成するための構成済みスナップショット ポリシーが必要です。 設定された数のバックアップが Azure ストレージに保存されます。 
 
 * (ボリュームに十分な空き容量が残っていない、といった) 問題が発生し、スナップショット ポリシーによって新しいスナップショットの作成が停止されると、バックアップ機能によって、バックアップする新しいスナップショットが作成されなくなります。 
+
+* リージョン間レプリケーションの設定では、Azure NetApp Files のバックアップはソース ボリュームにのみ構成できます。 リージョン間レプリケーションの "*宛先*" ボリュームではサポートされていません。
 
 ## <a name="next-steps"></a>次のステップ
 

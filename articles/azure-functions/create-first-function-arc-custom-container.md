@@ -3,19 +3,19 @@ title: 'クイック スタート: カスタム コンテナー内で Azure Arc 
 description: カスタムの Linux コンテナー内に最初の関数アプリをデプロイすることによって、Azure Arc で Azure Functions の使用を開始します。
 ms.topic: quickstart
 ms.date: 05/11/2021
-ms.openlocfilehash: 48940e70e1678e4426efb34e40b3b16b742e4f5c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a22907387a647ca46a5784661324d3f6edcc3594
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121746746"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129706929"
 ---
 # <a name="create-your-first-function-on-azure-arc-using-a-custom-container-preview"></a>カスタム コンテナーを使用して Azure Arc に最初の関数を作成する (プレビュー)
 
 このクイック スタートでは、カスタム コンテナー内で実行する Azure Functions プロジェクトを作成し、これを Docker Hub アカウントから [Azure Arc 対応の Kubernetes クラスター](../azure-arc/kubernetes/overview.md)にデプロイします。 詳細については、「[Azure Arc の App Service、Functions、および Logic Apps](../app-service/overview-arc-integration.md)」を参照してください。このシナリオでは、Linux で実行されている関数アプリのみをサポートしています。   
 
 > [!NOTE]
-> Arc 対応 Kubernetes クラスターでの関数の実行は、現在プレビュー段階です。  
+> Azure Arc 対応 Kubernetes クラスターでの関数の実行は、現在プレビュー段階です。  
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -223,7 +223,7 @@ az functionapp config appsettings set --name <app_name> --resource-group AzureFu
 
 ## <a name="next-steps"></a>次の手順
 
-これで、Arc 対応 App Service Kubernetes 環境のコンテナーで実行する関数アプリが作成されたので、Queue Storage 出力バインドを追加して Azure Storage に接続できます。
+これで、Azure Arc 対応 App Service Kubernetes 環境のコンテナーで実行する関数アプリが作成されたので、Queue Storage 出力バインドを追加して Azure Storage に接続できます。
 
 # <a name="c"></a>[C\#](#tab/csharp)  
 

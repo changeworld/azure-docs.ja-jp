@@ -7,12 +7,12 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/01/2021
-ms.openlocfilehash: 3a6bb0fd360b334299c6cd1be2795121a3b53203
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: e73e8226bd90b1600b0f3538e34c9f4f937ce189
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124777528"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129807376"
 ---
 # <a name="index-data-from-sharepoint-online"></a>SharePoint Online からのデータのインデックスを作成する
 
@@ -265,9 +265,6 @@ api-key: [admin key]
 ## <a name="indexing-document-metadata"></a>ドキュメント メタデータのインデックス作成
 ドキュメント メタデータのインデックスを作成するようにインデクサーを設定している場合は、次のメタデータを使用して、インデックスを作成できます。
 
-> [!NOTE]
-> カスタム メタデータは、現在のバージョンのプレビューには含まれていません。
-
 | 識別子 | Type | 説明 | 
 | ------------- | -------------- | ----------- |
 | metadata_spo_site_library_item_id | Edm.String | サイトのドキュメント ライブラリ内にある項目を一意に識別する、サイト ID、ライブラリ ID、および項目 ID を組み合わせたキー。 |
@@ -284,6 +281,9 @@ api-key: [admin key]
 
 SharePoint Online インデクサーでは、各ドキュメントの種類に固有のメタデータもサポートされています。 詳細については、[Azure Cognitive Search で使用されるコンテンツ メタデータのプロパティ](search-blob-metadata-properties.md)に関するページを参照してください。
 
+> [!NOTE]
+> カスタム メタデータのインデックスを作成するには、[クエリ定義で `additionalColumns` を指定する必要があります](#query)
+
 <a name="controlling-which-documents-are-indexed"></a>
 
 ## <a name="controlling-which-documents-are-indexed"></a>インデックスを作成するドキュメントの制御
@@ -298,6 +298,8 @@ SharePoint Online インデクサーでは、各ドキュメントの種類に�
 +   *useQuery*
     + *query* で定義されているコンテンツのインデックスのみを作成します。
 
+<a name="query"></a>
+
 ### <a name="query"></a>クエリ
 *query* プロパティは、キーワードと値のペアで構成されます。 使用できるキーワードを以下に示します。 値は、サイトの URL またはドキュメント ライブラリの URL のいずれかです。
 
@@ -310,6 +312,7 @@ SharePoint Online インデクサーでは、各ドキュメントの種類に�
 | includeLibrariesInSite | 接続文字列に定義されているサイト内のすべてのライブラリにあるコンテンツのインデックスを作成します。 これらはご自分のサイトのサブサイトに限定されます <br><br> このキーワードの *query* 値は、サイトまたはサブサイトの URI である必要があります。 | mysite 内のすべてのドキュメント ライブラリにあるすべてのコンテンツのインデックスを作成する。 <br><br> ``` "container" : { "name" : "useQuery", "query" : "includeLibrariesInSite=https://mycompany.sharepoint.com/mysite" } ``` |
 | includeLibrary | このライブラリにあるコンテンツのインデックスを作成します。 <br><br> このキーワードの *query* 値は、次のいずれかの形式にする必要があります。 <br><br> 例 1: <br><br> *includeLibrary=[サイトまたはサブサイト]/[ドキュメント ライブラリ]* <br><br> 例 2: <br><br> お使いのブラウザーからコピーした URI。 | MyDocumentLibrary にあるすべてのコンテンツのインデックスを作成する。 <br><br> 例 1: <br><br> ``` "container" : { "name" : "useQuery", "query" : "includeLibrary=https://mycompany.sharepoint.com/mysite/MyDocumentLibrary" } ``` <br><br> 例 2: <br><br> ``` "container" : { "name" : "useQuery", "query" : "includeLibrary=https://mycompany.sharepoint.com/teams/mysite/MyDocumentLibrary/Forms/AllItems.aspx" } ``` |
 | excludeLibrary |  このライブラリにあるコンテンツのインデックスを作成しません。 <br><br> このキーワードの *query* 値は、次のいずれかの形式にする必要があります。 <br><br> 例 1: <br><br> *excludeLibrary=[サイトまたはサブサイトの URI]/[ドキュメント ライブラリ]* <br><br> 例 2: <br><br> お使いのブラウザーからコピーした URI。 | MyDocumentLibrary 以外のすべてのライブラリにあるすべてのコンテンツのインデックスを作成する。 <br><br> 例 1: <br><br> ``` "container" : { "name" : "useQuery", "query" : "includeLibrariesInSite=https://mysite.sharepoint.com/subsite1; excludeLibrary=https://mysite.sharepoint.com/subsite1/MyDocumentLibrary" } ``` <br><br> 例 2: <br><br> ``` "container" : { "name" : "useQuery", "query" : "includeLibrariesInSite=https://mycompany.sharepoint.com/teams/mysite; excludeLibrary=https://mycompany.sharepoint.com/teams/mysite/MyDocumentLibrary/Forms/AllItems.aspx" } ``` |
+| additionalColumns | このライブラリの列にインデックスを作成します。 <br><br> このキーワードのクエリ値には、インデックスを作成する列名のコンマ区切りリストを含める必要があります。 列名に含まれるセミコロンとコンマは、二重円記号を使用してエスケープします。 <br><br> 例 1: <br><br> additionalColumns=MyCustomColumn,MyCustomColumn2 <br><br> 例 2: <br><br> additionalColumns=MyCustomColumnWith\\,,MyCustomColumn2With\\; | MyDocumentLibrary にあるすべてのコンテンツのインデックスを作成する。 <br><br> 例 1: <br><br> ``` "container" : { "name" : "useQuery", "query" : "includeLibrary=https://mycompany.sharepoint.com/mysite/MyDocumentLibrary;additionalColumns=MyCustomColumn,MyCustomColumn2" } ``` <br><br> 文字をエスケープするときの二重の円記号に注意してください。JSON では、円記号を別の円記号でエスケープする必要があります。 <br><br> 例 2: <br><br> ``` "container" : { "name" : "useQuery", "query" : "includeLibrary=https://mycompany.sharepoint.com/teams/mysite/MyDocumentLibrary/Forms/AllItems.aspx;additionalColumns=MyCustomColumnWith\\,,MyCustomColumnWith\\;" } ``` |
 
 ## <a name="index-by-file-type"></a>ファイルの種類でインデックスを作成する
 インデックスが作成されるドキュメントとスキップされるドキュメントを制御できます。

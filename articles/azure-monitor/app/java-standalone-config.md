@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: d8ba75ce068d7d2b604e9cafa4cde76393175c30
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 3ca38fbefccaf6529d78d1c5acce30c85d88bf7c
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114298159"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129616989"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>構成オプション - Azure Monitor Application Insights for Java
 
@@ -39,14 +39,14 @@ ms.locfileid: "114298159"
 
 ## <a name="configuration-file-path"></a>構成ファイルのパス
 
-Application Insights Java 3.x は、既定では構成ファイルが `applicationinsights.json` という名前で、`applicationinsights-agent-3.1.1.jar` と同じディレクトリに配置されていることが想定されています。
+Application Insights Java 3.x は、既定では構成ファイルが `applicationinsights.json` という名前で、`applicationinsights-agent-3.2.0.jar` と同じディレクトリに配置されていることが想定されています。
 
 独自の構成ファイルのパスを指定するには、以下のいずれかを使用します
 
 * `APPLICATIONINSIGHTS_CONFIGURATION_FILE`環境変数、または
 * `applicationinsights.configuration.file` Java システム プロパティ
 
-相対パスを指定すると、`applicationinsights-agent-3.1.1.jar` が配置されているディレクトリからの相対でパスが解決されます。
+相対パスを指定すると、`applicationinsights-agent-3.2.0.jar` が配置されているディレクトリからの相対でパスが解決されます。
 
 ## <a name="connection-string"></a>接続文字列
 
@@ -180,6 +180,22 @@ Application Insights Java 3.x は、既定では構成ファイルが `applicati
 > [!NOTE]
 > バージョン 3.0.2 以降では、`service.version` という名前のカスタム ディメンションを追加した場合、値はカスタム ディメンションとしてではなく、Application Insights ログ テーブルの `application_Version` 列に格納されます。
 
+## <a name="inherited-attribute-preview"></a>継承された属性 (プレビュー)
+
+バージョン 3.2.0 以降、要求テレメトリでカスタム ディメンションをプログラムによって設定し、それに続く依存関係テレメトリに継承させたい場合は、以下のように行います。
+
+```json
+{
+  "inheritedAttributes": [
+    {
+      "key": "mycustomer",
+      "type": "string"
+    }
+  ]
+}
+```
+
+
 ## <a name="telemetry-processors-preview"></a>テレメトリ プロセッサ (プレビュー)
 
 要求、依存関係、トレースのテレメトリに適用されるルールを構成できます。次に例を示します。
@@ -254,28 +270,6 @@ Micrometer メトリック (Spring Boot アクチュエータ メトリックを
 }
 ```
 
-## <a name="auto-collected-azure-sdk-telemetry-preview"></a>自動収集 Azure SDK テレメトリ (プレビュー)
-
-最新の Azure SDK ライブラリの多くでは、テレメトリが生成されます ([全一覧](./java-in-process-agent.md#azure-sdks-preview)を参照)。
-
-Application Insights Java 3.0.3 以降、このテレメトリのキャプチャを有効にすることができます。
-
-この機能を無効にする場合:
-
-```json
-{
-  "preview": {
-    "instrumentation": {
-      "azureSdk": {
-        "enabled": true
-      }
-    }
-  }
-}
-```
-
-この機能は、環境変数 `APPLICATIONINSIGHTS_PREVIEW_INSTRUMENTATION_AZURE_SDK_ENABLED` を `true` に設定することでも有効にできます (これは、json 構成で指定されている有効化よりも優先されます)。
-
 ## <a name="suppressing-specific-auto-collected-telemetry"></a>特定の自動収集テレメトリの抑制
 
 バージョン 3.0.3 以降では、こちらの構成オプションを使用して、特定の自動収集テレメトリを抑制できます。
@@ -283,6 +277,9 @@ Application Insights Java 3.0.3 以降、このテレメトリのキャプチャ
 ```json
 {
   "instrumentation": {
+    "azureSdk": {
+      "enabled": false
+    },
     "cassandra": {
       "enabled": false
     },
@@ -301,6 +298,9 @@ Application Insights Java 3.0.3 以降、このテレメトリのキャプチャ
     "mongo": {
       "enabled": false
     },
+    "rabbitmq": {
+      "enabled": false
+    },
     "redis": {
       "enabled": false
     },
@@ -313,12 +313,14 @@ Application Insights Java 3.0.3 以降、このテレメトリのキャプチャ
 
 これらの環境変数を `false` に設定することで、これらのインストルメンテーションを抑制することもできます。
 
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_AZURE_SDK_ENABLED`
 * `APPLICATIONINSIGHTS_INSTRUMENTATION_CASSANDRA_ENABLED`
 * `APPLICATIONINSIGHTS_INSTRUMENTATION_JDBC_ENABLED`
 * `APPLICATIONINSIGHTS_INSTRUMENTATION_JMS_ENABLED`
 * `APPLICATIONINSIGHTS_INSTRUMENTATION_KAFKA_ENABLED`
 * `APPLICATIONINSIGHTS_INSTRUMENTATION_MICROMETER_ENABLED`
 * `APPLICATIONINSIGHTS_INSTRUMENTATION_MONGO_ENABLED`
+* `APPLICATIONINSIGHTS_INSTRUMENTATION_RABBITMQ_ENABLED`
 * `APPLICATIONINSIGHTS_INSTRUMENTATION_REDIS_ENABLED`
 * `APPLICATIONINSIGHTS_INSTRUMENTATION_SPRING_SCHEDULING_ENABLED`
 
@@ -326,6 +328,31 @@ Application Insights Java 3.0.3 以降、このテレメトリのキャプチャ
 
 > [!NOTE]
 > より細かい制御を検討している (たとえば、すべての Redis 呼び出しではなく、一部の Redis 呼び出しを抑制する) 場合は、[サンプリング オーバーライド](./java-standalone-sampling-overrides.md)を参照してください。
+
+## <a name="preview-instrumentations"></a>プレビュー インストルメンテーション
+
+バージョン 3.2.0 以降では、次のプレビュー インストルメンテーションを有効にすることができます。
+
+```
+{
+  "preview": {
+    "instrumentation": {
+      "apacheCamel": {
+        "enabled": true
+      },
+      "grizzly": {
+        "enabled": true
+      },
+      "quartz": {
+        "enabled": true
+      },
+      "springIntegration": {
+        "enabled": true
+      }
+    }
+  }
+}
+```
 
 ## <a name="heartbeat"></a>Heartbeat
 
@@ -431,7 +458,7 @@ Application Insights Java 3.x は、既定では `applicationinsights.log` フ�
 
 `level` には、`OFF`、`ERROR`、`WARN`、`INFO`、`DEBUG`、`TRACE` のいずれかを指定できます。
 
-`path` には、絶対パスまたは相対パスを指定できます。 相対パスは、`applicationinsights-agent-3.1.1.jar` があるディレクトリを基準にして解決されます。
+`path` には、絶対パスまたは相対パスを指定できます。 相対パスは、`applicationinsights-agent-3.2.0.jar` があるディレクトリを基準にして解決されます。
 
 `maxSizeMb` は、ロールオーバーされる前のログ ファイルの最大サイズです。
 

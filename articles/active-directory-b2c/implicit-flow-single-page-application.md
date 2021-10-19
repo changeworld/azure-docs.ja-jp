@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/19/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 31dd0096140544db9c1265999b8c0c709def9cda
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 16c024926ddb863e3b40eac07f494c8d5dbeae9c
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129350068"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129617988"
 ---
 # <a name="single-page-sign-in-using-the-oauth-20-implicit-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C での OAuth 2.0 暗黙的フローを使用したシングルページ サインイン
 
@@ -222,7 +222,7 @@ error=user_authentication_required
 Iframe 要求でこのエラーを受信した場合、ユーザーは対話形式でもう一度サインインして新しいトークンを取得する必要があります。
 
 ## <a name="refresh-tokens"></a>更新トークン
-ID トークンとアクセス トークンは、どちらも短時間で期限切れになります。 これらのトークンを定期的に更新するようにアプリを準備する必要があります。  どちらの種類のトークンを更新する場合も、Azure AD のステップを制御する `prompt=none` パラメーターを使用して、前の例で使用したのと同じ非表示の iframe 要求を実行します。  新しい `id_token` を取得するには、必ず `response_type=id_token`、`scope=openid`、および `nonce` パラメーターを使用します。
+ID トークンとアクセス トークンは、どちらも短時間で期限切れになります。 これらのトークンを定期的に更新するようにアプリを準備する必要があります。 暗黙的フローでは、セキュリティ上の理由から、更新トークンを取得できません。 いずれかの種類のトークンを更新するには、非表示の HTML iframe 要素で暗黙的フローを使用します。 承認要求には、パラメーター `prompt=none` を含めます。 新しい id_token 値を受け取るには、必ず `response_type=id_token`、`scope=openid`、および `nonce` パラメーターを使用します。
 
 ## <a name="send-a-sign-out-request"></a>サインアウト要求を送信する
 ユーザーをアプリからサインアウトさせる場合は、サインアウトする Azure AD にユーザーをリダイレクトします。ユーザーをリダイレクトさせなかった場合、そのユーザーは、資格情報を再入力しなくてもアプリに対する再認証を行うことができてしまいます。Azure AD とのシングル サインオン セッションが有効であるためです。

@@ -3,16 +3,16 @@ title: Azure Defender for servers - 利点と機能
 description: Azure Defender for servers の利点と機能について説明します。
 author: memildin
 ms.author: memildin
-ms.date: 08/09/2021
+ms.date: 09/05/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 5ffa11472227375867be215ed73ee0b7fc203b9c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 1a7b5d1e7ed3c4c1de2c535fb126b67f3ffadecd
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121743089"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129711715"
 ---
 # <a name="introduction-to-azure-defender-for-servers"></a>Azure Defender for servers の概要
 
@@ -32,13 +32,15 @@ Azure Defender for servers には、次のような脅威検出および保護�
     Defender for Endpoint で脅威が検出されると、アラートがトリガーされます。 アラートは Security Center に表示されます。 Security Center から、Defender for Endpoint コンソールにピボットし、詳細な調査を実行して攻撃の範囲を明らかにすることもできます。 Microsoft Defender for Endpoint の詳細をご確認ください。
 
     > [!IMPORTANT]
-    > **Microsoft Defender for Endpoint** センサーは、Security Center を使用する Windows マシンで自動的に有効になります。
+    > Security Center と Microsoft Defender for Endpoint の統合は、既定で有効になっています。 そのため、Azure Defender を有効にする際、脆弱性、インストールされているソフトウェア、エンドポイントのアラートに関連する Microsoft Defender for Endpoint データへの Azure Defender for servers のアクセスに同意します。
     >
-    > 現在、このセンサーは、プレビュー段階で Linux マシン用に提供されています。 詳細については、「[Security Center の統合 EDR ソリューションを使用してエンドポイントを保護する: Microsoft Defender for Endpoint](security-center-wdatp.md)」を参照してください。 
+    > 現在、このセンサーは、プレビュー段階で Linux マシン用に提供されています。 詳細については、「[Security Center の統合 EDR ソリューションを使用してエンドポイントを保護する: Microsoft Defender for Endpoint](security-center-wdatp.md)」を参照してください。
 
-- **VM の脆弱性評価スキャン** -Azure Defender for servers には、Qualys を使用した脆弱性スキャナーが含まれています。
+- **マシンの脆弱性評価ツール** - Azure Defender for servers には、マシンに対する脆弱性の検出と管理のツールが含まれています。 Security Center の [設定] ページから、これらのツールのうち、マシンに配置するものを選択でき、検出された脆弱性はセキュリティに関する推奨事項で示されます。
 
-    Qualys のスキャナーは、Azure 仮想マシンとハイブリッド仮想マシンの脆弱性をリアルタイムで特定するための主要なツールの 1 つです。 Qualys ライセンスも Qualys アカウントも必要ありません。すべてが Security Center 内でシームレスに処理されます。 詳細については、「[Azure およびハイブリッドのマシンに対する Azure Defender の統合された脆弱性評価](deploy-vulnerability-assessment-vm.md)」をご覧ください。
+    - **Microsoft 脅威と脆弱性の管理** - Microsoft Defender for Endpoint を使用して、リアルタイムで脆弱性と構成の誤りを発見します。追加のエージェントや定期的なスキャンは必要ありません。 [脅威と脆弱性の管理](/microsoft-365/security/defender-endpoint/next-gen-threat-and-vuln-mgt)によって、脅威の情勢、組織での検出、脆弱なデバイス上の機密情報、ビジネス事情に基づき、脆弱性の優先順位が付けられます。 詳細については、「[Microsoft Defender for Endpoint の脅威と脆弱性の管理を使用して弱点を調査する](deploy-vulnerability-assessment-tvm.md)」を参照してください
+
+    - **Qualys を使用した脆弱性スキャナー** - Qualys のスキャナーは、Azure とハイブリッドの仮想マシンの脆弱性をリアルタイムで特定するための主要なツールの 1 つです。 Qualys ライセンスも Qualys アカウントも必要ありません。すべてが Security Center 内でシームレスに処理されます。 詳細については、[Azure およびハイブリッドのマシンに対する Azure Defender の統合された Qualys スキャナー](deploy-vulnerability-assessment-vm.md)に関する記事を参照してください。
 
 - **Just-In-Time (JIT) 仮想マシン (VM) アクセス** - 脅威アクターは、RDP や SSH などの、開いている管理ポートがあるアクセス可能なマシンを積極的に探しています。 すべての仮想マシンは、攻撃の対象となる可能性があります。 VM への侵害が成功すると、これは環境内のリソースをさらに攻撃するためのエントリ ポイントとして使用されます。
 
@@ -55,6 +57,7 @@ Azure Defender for servers には、次のような脅威検出および保護�
 - **アダプティブ ネットワークのセキュリティ強化機能 (ANH)** - ネットワーク セキュリティ グループ (NSG) を適用してリソースとの間でやり取りされるトラフィックをフィルター処理することにより、ネットワーク セキュリティ ポスチャを向上させることができます。 ただし、NSG を通過する実際のトラフィックが、定義される NSG ルールのサブセットとなる場合もあります。 このような場合は、実際のトラフィック パターンに基づいて NSG ルールを強化することによって、セキュリティ ポスチャをさらに向上させることができます。
 
     アダプティブ ネットワークのセキュリティ強化機能によって、NSG ルールをさらに強化するための推奨事項が提供されます。 実際のトラフィック、既知の信頼された構成、脅威インテリジェンス、および侵害に関するその他のインジケーターを考慮する機械学習アルゴリズムを使用し、特定の IP/ポート タプルからのトラフィックのみを許可する推奨事項を提示します。 詳細については、「[アダプティブ ネットワークのセキュリティ強化により、ネットワークのセキュリティ体制を向上させる](security-center-adaptive-network-hardening.md)」をご覧ください。
+
 
 - **Docker ホストの強化機能** - Azure Security Center では、IaaS Linux VM 上、または Docker コンテナーを実行している他の Linux マシン上でホストされているアンマネージド コンテナーが識別されます。 Security Center によって、こうしたコンテナーの構成が継続的に評価されます。 その後、Center for Internet Security (CIS) Docker Benchmark と比較されます。 Security Center には CIS Docker Benchmark のルールセット全体が含まれており、コンテナーがいずれかのコントロールを満たしていない場合は警告が表示されます。 詳細については、「[Docker ホストのセキュリティを強化する](harden-docker-hosts.md)」をご覧ください。
 

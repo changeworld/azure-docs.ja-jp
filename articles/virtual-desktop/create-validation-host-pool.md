@@ -3,23 +3,23 @@ title: Azure Virtual Desktop ホスト プール サービスの更新プログ�
 description: 運用環境に更新プログラムを展開する前にサービスの更新プログラムを監視する検証ホスト プールを作成する方法。
 author: Heidilohr
 ms.topic: tutorial
-ms.date: 07/23/2021
+ms.date: 10/08/2021
 ms.author: helohr
 ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: 13d340d427d2478d226b966e17bf98bcf2561004
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: c81fb82695d534864fa96d8a5bfff9b3cebd4a4e
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123110164"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129705291"
 ---
 # <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>チュートリアル:サービスの更新プログラムを検証するためのホスト プールを作成する
 
 >[!IMPORTANT]
 >この内容は、Azure Resource Manager Azure Virtual Desktop オブジェクトを含む Azure Virtual Desktop に適用されます。 Azure Resource Manager オブジェクトを含まない Azure Virtual Desktop (クラシック) を使用している場合は、[こちらの記事](./virtual-desktop-fall-2019/create-validation-host-pool-2019.md)を参照してください。
 
-ホスト プールは、Azure Virtual Desktop 環境内にある 1 つまたは複数の同一の仮想マシンをまとめたものです。 サービスの更新プログラムを先に適用する検証ホスト プールを作成することを強くお勧めします。 サービスの更新プログラムを監視したうえで、標準の (検証用ではない) 環境に適用することができます。 検証ホスト プールがない場合、標準環境でユーザーにダウンタイムをもたらす可能性のあるエラーを招く変更を検出できないことがあります。
+ホスト プールは、Azure Virtual Desktop 環境内にある 1 つまたは複数の同一の仮想マシンをまとめたものです。 サービスの更新プログラムを先に適用する検証ホスト プールを作成することを強くお勧めします。 検証ホスト プールを使用すると、サービスの更新プログラムを監視したうえで、標準の (検証用ではない) 環境に適用することができます。 検証ホスト プールがない場合、標準環境でユーザーにダウンタイムをもたらす可能性のあるエラーを招く変更を検出できないことがあります。
 
 アプリで最新の更新プログラムを確実に処理できるようにするには、検証ホスト プールを非検証環境のホスト プールとできるだけ類似したものにする必要があります。 ユーザーは、標準環境のホスト プールに接続する場合と同じくらい頻繁に、検証ホスト プールに接続する必要があります。 ホスト プールでのテストを自動化している場合は、検証ホスト プールでの自動テストも含める必要があります。
 
@@ -33,7 +33,7 @@ ms.locfileid: "123110164"
 
 ## <a name="create-your-host-pool"></a>ホスト プールを作成する
 
-ホスト プールは、これらのいずれかの記事の手順に従って作成できます。
+既存のプールされたまたは個人のホスト プールを検証ホスト プールとして構成できます。 また、これらのいずれかの記事の手順に従って、検証に使用する新しいホスト プールを作成することもできます。
 - [チュートリアル: Azure Marketplace または Azure CLI を使用してホスト プールを作成する](create-host-pools-azure-marketplace.md)
 - [PowerShell または Azure CLI を使用してホスト プールを作成する](create-host-pools-powershell.md)
 
@@ -49,7 +49,7 @@ Azure portal を使用して検証ホスト プールを構成するには、次
 4. 編集するホスト プールの名前を選択します。
 5. **[プロパティ]** を選択します。
 6. 検証環境を有効にするには、検証環境フィールドで **[はい]** を選択します。
-7. **[保存]** を選択します。 これにより、新しい設定が適用されます。
+7. **[保存]** を選択して新しい設定を適用します。
 
 ### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
@@ -106,7 +106,7 @@ az desktopvirtualization hostpool show --name "MyHostPool" \
 
 サービスの更新は毎月行われます。 大きな問題がある場合は、より頻繁なペースで重要な更新プログラムが提供されます。
 
-サービスの更新がある場合は、環境を検証するために、多少なりともサインインするユーザーを毎日確保してください。 [TechCommunity サイト](https://techcommunity.microsoft.com/t5/forums/searchpage/tab/message?filter=location&q=wvdupdate&location=forum-board:WindowsVirtualDesktop&sort_by=-topicPostDate&collapse_discussion=true)には定期的にアクセスすることをお勧めします。WVDUPdate に関する投稿に注目して、サービスの更新に関する最新情報を把握してください。
+サービスの更新がある場合は、環境を検証するために、サインインするユーザーを毎日少なくも 2 から 3 名確保してください。 [TechCommunity サイト](https://techcommunity.microsoft.com/t5/forums/searchpage/tab/message?filter=location&q=wvdupdate&location=forum-board:WindowsVirtualDesktop&sort_by=-topicPostDate&collapse_discussion=true)には定期的にアクセスすることをお勧めします。WVDUPdate に関する投稿に注目して、サービスの更新に関する最新情報を把握してください。
 
 ## <a name="next-steps"></a>次のステップ
 

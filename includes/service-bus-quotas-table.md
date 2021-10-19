@@ -5,22 +5,22 @@ services: service-bus-messaging
 author: spelluru
 ms.service: service-bus-messaging
 ms.topic: include
-ms.date: 06/08/2021
+ms.date: 10/07/2021
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 226377f2a8df895c078d05b58d5ed49c4bba9117
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 058ce3899e5857c136859426f0972efc9fd0b92f
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121802054"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129715999"
 ---
 次の表に、Azure Service Bus メッセージングに固有のクォータ情報を示します。 Service Bus の価格と他のクォータについては、「[Service Bus の価格](https://azure.microsoft.com/pricing/details/service-bus/)」をご覧ください。
 
 | クォータ名 | Scope | 値 | メモ | 
 | --- | --- | --- | --- |
 | Azure サブスクリプションごとの名前空間の最大数 |名前空間 |  1000 (既定値と最大値) |追加の名前空間に対する後続の要求は拒否されます。 |
-| キューまたはトピックのサイズ |Entity | 1、2、3、4、または 5 GB。<p>Premium SKU と、[パーティション分割](../articles/service-bus-messaging/service-bus-partitioning.md)が有効な Standard SKU では、キューまたはトピックの最大サイズは 80 GB です。</p><p>Premium 名前空間の合計サイズの制限は、[メッセージング ユニット](../articles/service-bus-messaging/service-bus-premium-messaging.md)あたり 1 TB です。 名前空間内のすべてのエンティティの合計サイズがこの制限を超えることはできません。</p> | キューまたはトピックの作成または更新時に定義されます。 <br/><br/> 後続の受信メッセージが拒否され、呼び出し元コードが例外を受け取ります。 |
+| キューまたはトピックのサイズ |Entity | <p>1、2、3、4、または 5 GB。</p><p>Premium SKU と、[パーティション分割](../articles/service-bus-messaging/service-bus-partitioning.md)が有効な Standard SKU では、キューまたはトピックの最大サイズは 80 GB です。</p><p>Premium 名前空間の合計サイズの制限は、[メッセージング ユニット](../articles/service-bus-messaging/service-bus-premium-messaging.md)あたり 1 TB です。 名前空間内のすべてのエンティティの合計サイズがこの制限を超えることはできません。</p> | キューまたはトピックの作成または更新時に定義されます。 <br/><br/> 後続の受信メッセージが拒否され、呼び出し元コードが例外を受け取ります。 |
 | 名前空間のコンカレント接続数 |名前空間 |ネット メッセージング:1,000。<br /><br />AMQP:5,000。 | 追加の接続に関する後続の要求は拒否され、呼び出し元コードが例外を受け取ります。 REST 操作は、TCP 同時接続数に加算されません。 |
 | キュー、トピック、またはサブスクリプション エンティティの同時受信要求数 |Entity | 5,000 |後続の受信要求が拒否され、呼び出し元コードが例外を受け取ります。 このクォータは、1 つのトピックのすべてのサブスクリプションの同時受信操作の合計数に適用されます。 |
 | 名前空間あたりのトピック数またはキュー数 |名前空間 | Basic または Standard レベルでは 10,000。 名前空間のトピックとキューの合計数は、10,000 以下にする必要があります。 <br/><br/>Premium レベルでは、メッセージング ユニット (MU) あたり 1,000 です。 | 以後、名前空間でのトピックまたはキューの新規作成要求が拒否されます。 その結果、([Azure portal][Azure portal] で構成されていれば) エラー メッセージが生成されます。 管理 API から呼び出された場合は、呼び出し元のコードが例外を受け取ります。 |
@@ -29,8 +29,8 @@ ms.locfileid: "121802054"
 | メッセージング エンティティ名の最大サイズ: 名前空間、サブスクリプション、またはサブスクリプション規則 |Entity |- |50 文字。 |
 | メッセージ ID の最大サイズ | Entity |- | 128 |
 | メッセージ セッション ID の最大サイズ | Entity |- | 128 |
-| キュー、トピック、またはサブスクリプション エンティティのメッセージ サイズ |Entity |これらのクォータを超える受信メッセージは拒否され、呼び出し元コードが例外を受け取ります。 |メッセージの最大サイズ:[Standard レベル](../articles/service-bus-messaging/service-bus-premium-messaging.md)では 256 KB、[Premium レベル](../articles/service-bus-messaging/service-bus-premium-messaging.md)では 1 MB。 <br /><br />システムのオーバーヘッドのため、この制限はこれらの値よりも小さくなります。<br /><br />ヘッダーの最大サイズ:64 KB。<br /><br />プロパティ バッグ内のヘッダー プロパティの最大数: **バイト/int.MaxValue**。<br /><br />プロパティ バッグ内のプロパティの最大サイズ: プロパティ名と値の両方が 32 KB に制限されています。 |
-| キュー、トピック、またはサブスクリプション エンティティのメッセージ プロパティ サイズ |Entity | 例外 `SerializationException` が生成されます。 |各プロパティのメッセージ プロパティの最大サイズは、32 KB です。 すべてのプロパティの累積サイズが 64 KB を超えることはできません。 この制限は、ブローカー メッセージのヘッダー全体に適用されます。このヘッダーには、ユーザー プロパティとシステム プロパティ (ログ シーケンス番号、ラベル、メッセージ ID など) の両方が含まれます。 |
+| キュー、トピック、またはサブスクリプション エンティティのメッセージ サイズ |Entity |これらのクォータを超える受信メッセージは拒否され、呼び出し元コードが例外を受け取ります。 | 256 KB ([Standard レベル](../articles/service-bus-messaging/service-bus-premium-messaging.md))<br/> 1 MB ([Premium レベル](../articles/service-bus-messaging/service-bus-premium-messaging.md)) <br /><br />メッセージ サイズには、プロパティのサイズ (システムとユーザー) とペイロードのサイズが含まれます。 システム プロパティのサイズは、シナリオによって異なります。 |
+| キュー、トピック、またはサブスクリプション エンティティのメッセージ プロパティ サイズ |Entity | 例外 `SerializationException` が生成されます。 | <p>各プロパティのメッセージ プロパティの最大サイズは、32 KB です。</p><p>すべてのプロパティの累積サイズが 64 KB を超えることはできません。 この制限は、ブローカー メッセージのヘッダー全体に適用されます。このヘッダーには、ユーザー プロパティとシステム プロパティ (ログ シーケンス番号、ラベル、メッセージ ID など) の両方が含まれます。</p><p>プロパティ バッグ内のヘッダー プロパティの最大数: **バイト/int.MaxValue**。</p> |
 | トピックごとのサブスクリプション数 |Entity |以後、そのトピックに対するサブスクリプションの新規作成要求は拒否されます。 その結果、ポータルで構成されている場合は、エラー メッセージが表示されます。 管理 API から呼び出された場合は、呼び出し元のコードが例外を受け取ります。 |Standard レベルおよび Premium レベルのトピックあたり 2,000。 |
 | トピックごとの SQL フィルターの数 |Entity |そのトピックに追加のフィルターを作成するための後続の要求は拒否され、呼び出し元コードが例外を受け取ります。 |2,000 |
 | トピックごとの関連付けフィルターの数 |Entity |そのトピックに追加のフィルターを作成するための後続の要求は拒否され、呼び出し元コードが例外を受け取ります。 |100,000 |

@@ -4,12 +4,12 @@ description: Azure Functions では、複数のバージョンのランタイム
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 09/22/2021
-ms.openlocfilehash: 85df4bec5eb4802820a8837a1bb23394851aca42
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 516bcbdd00ae4b116326e797746485c82be9c3fb
+ms.sourcegitcommit: ee5d9cdaf691f578f2e390101bf5350859d85c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128637624"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129740514"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions ランタイム バージョンの概要
 
@@ -74,19 +74,14 @@ Azure の公開アプリから使用される Functions ランタイムのバー
 
 Azure Functions バージョン 4.x (プレビュー) では、バージョン 3.x との下位互換性が高くなっています。  多くのアプリでは、コードを変更することなく、4.x に安全にアップグレードできるはずです。 運用アプリでメジャー バージョンを変更する前に、広範囲なテストを必ず実行してください。
 
-アプリを 3.x から 4.x に移行するには:
+3\.x から 4.x にアプリを移行するには、次の Azure CLI コマンドを使用して、`FUNCTIONS_EXTENSION_VERSION` アプリケーション設定を `~4` に設定します。
 
-- 次の Azure CLI コマンドを使用して、`FUNCTIONS_EXTENSION_VERSION` アプリケーション設定を `~4` にします。
+```bash
+az functionapp config appsettings set --settings FUNCTIONS_EXTENSION_VERSION=~4 -n <APP_NAME> -g <RESOURCE_GROUP_NAME>
 
-    ```bash
-    az functionapp config appsettings set --settings FUNCTIONS_EXTENSION_VERSION=~4 -n <APP_NAME> -g <RESOURCE_GROUP_NAME>
-    ```
-
-- Windows 関数アプリの場合、ランタイムでは、次の Azure CLI コマンドを使用して .NET 6.0 を有効にする必要があります。
-
-    ```bash
-    az functionapp config set --net-framework-version v6.0 -n <APP_NAME> -g <RESOURCE_GROUP_NAME>
-    ```
+# For Windows function apps only, also enable .NET 6.0 that is needed by the runtime
+az functionapp config set --net-framework-version v6.0 -n <APP_NAME> -g <RESOURCE_GROUP_NAME>
+```
 
 ### <a name="breaking-changes-between-3x-and-4x"></a>3\.x と 4.x の間の破壊的変更
 
@@ -101,6 +96,13 @@ Azure Functions バージョン 4.x (プレビュー) では、バージョン 3
 - Azure Functions 4.x では、拡張機能の[最小バージョン要件](https://github.com/Azure/Azure-Functions/issues/1987)が適用されます。 影響を受ける拡張機能の最新バージョンにアップグレードします。 .NET 以外の言語では、拡張機能バンドル バージョン 2.x 以降に[アップグレード](./functions-bindings-register.md#extension-bundles)してください。
 
 - 4\.x Linux 従量課金プランの関数アプリでは、既定および最大のタイムアウトが適用されるようになりました。
+
+- Application Insights は、4.x には既定では含まれなくなっています。 別の拡張機能としてそれを使用できます。
+    - インプロセス .NET アプリの場合は、[Microsoft.Azure.WebJobs.Extensions.ApplicationInsights](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ApplicationInsights/) 拡張機能パッケージを関数アプリに追加します。
+    - 分離 .NET アプリの場合:
+        - [Microsoft.Azure.Functions.Worker.Extensions.ApplicationInsights](https://www.nuget.org/packages/Microsoft.Azure.Functions.Worker.Extensions.ApplicationInsights/) 拡張機能パッケージを、関数アプリに追加します。
+        - [Microsoft.Azure.Functions.Worker](https://www.nuget.org/packages/Microsoft.Azure.Functions.Worker/) および [Microsoft.Azure.Functions.Worker.Sdk](https://www.nuget.org/packages/Microsoft.Azure.Functions.Worker.Sdk/) パッケージを、最新バージョンに更新します。
+    - 他の言語の場合は、[Azure Functions 拡張機能バンドル](functions-bindings-register.md#extension-bundles)の今後の更新で、Application Insights 拡張機能が組み込まれます。 新しいバンドルが使用できるようになったら、アプリでそれが自動的に使用されます。
 
 #### <a name="languages"></a>言語
 

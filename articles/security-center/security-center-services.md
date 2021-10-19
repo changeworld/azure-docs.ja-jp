@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 08/18/2021
 ms.custom: references_regions
 ms.author: memildin
-ms.openlocfilehash: 3174aff7529e8248cffb39ee10684e843b4fd0b1
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: 21c453da9a2e84e4e936b92f04748854cbd928d3
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122418574"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129710746"
 ---
 # <a name="feature-coverage-for-machines"></a>マシンを対象とする機能
 
@@ -30,16 +30,16 @@ ms.locfileid: "122418574"
 |[ファイルレスのセキュリティ アラート](alerts-reference.md#alerts-windows)|✔|✔|✔|はい|
 |[ネットワーク ベースのセキュリティ アラート](other-threat-protections.md#network-layer)|✔|✔|-|はい|
 |[Just In Time VM アクセス](security-center-just-in-time.md)|✔|-|-|はい|
-|[ネイティブ脆弱性評価](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|✔|はい|
+|[統合された Qualys 脆弱性スキャナー](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner)|✔|-|✔|はい|
 |[ファイルの整合性の監視](security-center-file-integrity-monitoring.md)|✔|✔|✔|はい|
 |[アダプティブ アプリケーション制御](security-center-adaptive-application.md)|✔|-|✔|はい|
 |[ネットワーク マップ](security-center-network-recommendations.md#network-map)|✔|✔|-|はい|
 |[アダプティブ ネットワークのセキュリティ強化機能](security-center-adaptive-network-hardening.md)|✔|-|-|はい|
 |[規制へのコンプライアンス ダッシュボードおよびレポート](security-center-compliance-dashboard.md)|✔|✔|✔|はい|
 |[Docker ホストのセキュリティ強化機能](./harden-docker-hosts.md)|-|-|-|はい|
-|足りない OS パッチの評価|✔|✔|✔|Azure: いいえ<br><br>Arc 対応:はい|
-|セキュリティの誤った構成の評価|✔|✔|✔|Azure: いいえ<br><br>Arc 対応:はい|
-|[エンドポイント保護の評価](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Azure: いいえ<br><br>Arc 対応:はい|
+|足りない OS パッチの評価|✔|✔|✔|Azure: いいえ<br><br>Azure Arc 対応: はい|
+|セキュリティの誤った構成の評価|✔|✔|✔|Azure: いいえ<br><br>Azure Arc 対応: はい|
+|[エンドポイント保護の評価](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Azure: いいえ<br><br>Azure Arc 対応: はい|
 |ディスク暗号化の評価|✔</br>([サポートされるシナリオ](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios)の場合)|✔|-|いいえ|
 |サードパーティの脆弱性評価|✔|-|✔|いいえ|
 |[ネットワーク セキュリティ評価](security-center-network-recommendations.md)|✔|✔|-|いいえ|
@@ -54,15 +54,15 @@ ms.locfileid: "122418574"
 | [ファイルレスのセキュリティ アラート](alerts-reference.md#alerts-windows)                                                            | -                                                                                                               | -                                    | -                              | はい                               |
 | [ネットワーク ベースのセキュリティ アラート](other-threat-protections.md#network-layer)                                                | ✔                                                                                                              | ✔                                    | -                              | はい                               |
 | [Just In Time VM アクセス](security-center-just-in-time.md)                                                                 | ✔                                                                                                              | -                                    | -                              | はい                               |
-| [ネイティブ脆弱性評価](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner) | ✔                                                                                                              | -                                    | ✔                             | はい                               |
+| [統合された Qualys 脆弱性スキャナー](deploy-vulnerability-assessment-vm.md#overview-of-the-integrated-vulnerability-scanner) | ✔                                                                                                              | -                                    | ✔                             | はい                               |
 | [ファイルの整合性の監視](security-center-file-integrity-monitoring.md)                                                 | ✔                                                                                                              | ✔                                    | ✔                             | はい                               |
 | [アダプティブ アプリケーション制御](security-center-adaptive-application.md)                                                  | ✔                                                                                                              | -                                    | ✔                             | はい                               |
 | [ネットワーク マップ](security-center-network-recommendations.md#network-map)                                                     | ✔                                                                                                              | ✔                                    | -                              | はい                               |
 | [アダプティブ ネットワークのセキュリティ強化機能](security-center-adaptive-network-hardening.md)                                               | ✔                                                                                                              | -                                    | -                              | はい                               |
 | [規制へのコンプライアンス ダッシュボードおよびレポート](security-center-compliance-dashboard.md)                                      | ✔                                                                                                              | ✔                                    | ✔                             | はい                               |
 | [Docker ホストのセキュリティ強化機能](./harden-docker-hosts.md)                                                                         | ✔                                                                                                              | ✔                                    | ✔                             | はい                               |
-| 足りない OS パッチの評価                                                                                             | ✔                                                                                                              | ✔                                    | ✔                             | Azure: いいえ<br><br>Arc 対応:はい |
-| セキュリティの誤った構成の評価                                                                                     | ✔                                                                                                              | ✔                                    | ✔                             | Azure: いいえ<br><br>Arc 対応:はい |
+| 足りない OS パッチの評価                                                                                             | ✔                                                                                                              | ✔                                    | ✔                             | Azure: いいえ<br><br>Azure Arc 対応: はい |
+| セキュリティの誤った構成の評価                                                                                     | ✔                                                                                                              | ✔                                    | ✔                             | Azure: いいえ<br><br>Azure Arc 対応: はい |
 | [エンドポイント保護の評価](security-center-services.md#supported-endpoint-protection-solutions-)                    | -                                                                                                               | -                                    | -                              | いいえ                                |
 | ディスク暗号化の評価                                                                                                | ✔</br>([サポートされるシナリオ](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios)の場合) | ✔                                    | -                              | いいえ                                |
 | サードパーティの脆弱性評価                                                                                      | ✔                                                                                                              | -                                    | ✔                             | いいえ                                |
@@ -134,7 +134,7 @@ ms.locfileid: "122418574"
 | - [適応型アプリケーション制御](./security-center-adaptive-application.md)                                                                              | GA             | GA                             | GA            |
 | - [アダプティブ ネットワークのセキュリティ強化機能](./security-center-adaptive-network-hardening.md)                                                                           | GA             | 利用不可                  | 利用不可 |
 | - [Docker ホストのセキュリティ強化機能](./harden-docker-hosts.md)                                                                                                       | GA             | GA                             | GA            |
-| - [マシンに対する統合された脆弱性評価](./deploy-vulnerability-assessment-vm.md)                                                             | GA             | 利用不可                  | 利用不可 |
+| - [統合された Qualys 脆弱性スキャナー](./deploy-vulnerability-assessment-vm.md)                                                             | GA             | 利用不可                  | 利用不可 |
 | - [規制へのコンプライアンス ダッシュボードおよびレポート](./security-center-compliance-dashboard.md) <sup>[8](#footnote8)</sup>                                       | GA             | GA                             | GA            |
 | - [Microsoft Defender for Endpoint のデプロイと統合ライセンス](./security-center-wdatp.md)                                                         | GA             | GA                             | 利用不可 |
 | - [AWS アカウントを接続する](./quickstart-onboard-aws.md)                                                                                                      | GA             | 利用不可                  | 利用不可 |
@@ -147,7 +147,7 @@ ms.locfileid: "122418574"
 
 <sup><a name="footnote3" /></a>3</sup> コンテナー レジストリ用 Azure Defender が必要です。
 
-<sup><a name="footnote4" /></a>4</sup> 部分的に GA: Arc 対応クラスターのサポートはパブリック プレビュー段階であり、Azure Government では使用できません。
+<sup><a name="footnote4" /></a>4</sup> 部分的に GA: Azure Arc 対応クラスターのサポートはパブリック プレビュー段階であり、Azure Government では使用できません。
 
 <sup><a name="footnote5" /></a>5</sup> Azure Defender for Kubernetes が必要です。
 

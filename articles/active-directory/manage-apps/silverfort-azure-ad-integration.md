@@ -1,6 +1,7 @@
 ---
 title: Azure AD と Silverfort で安全にハイブリッド アクセスを行う
 description: このチュートリアルでは、Silverfort を Azure AD と連携させて、安全にハイブリッド アクセスを行う方法を説明します
+titleSuffix: Azure AD
 services: active-directory
 author: gargi-sinha
 manager: martinco
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 9/13/2021
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce68bde35f817d17f1278f6826ffe38284bf6c1a
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 1515bfe65a9a680a9331a5a4d2b13e4d3633fda0
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128699738"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129658255"
 ---
 # <a name="tutorial-configure-silverfort-with-azure-active-directory-for-secure-hybrid-access"></a>チュートリアル: Azure Active Directory と連携するよう Silverfort を構成し、安全にハイブリッド アクセスを行う
 
@@ -36,7 +37,7 @@ Silverfort では、あらゆる種類の資産を、まるで最新のウェブ
 
 **ブリッジした** これらの資産は、通常のアプリケーションと同様に Azure AD に表示され、条件付きアクセス、シングルサインオン (SSO)、多要素認証、監査などによって保護できます。
 
-このソリューションでは、組織のすべての資産とサード パーティー製の Identity and Access Management (IAM) プラットフォームを組み合わせて使用できます。 たとえば、ハイブリッド環境とマルチクラウド環境を含めて、Active Directory、Active Directory フェデレーション サービス (ADFS)、Azure AD でのリモート認証ダイヤルイン ユーザー サービス (RADIUS) をサポートしています。
+このソリューションでは、組織のすべての資産とサード パーティ製の Identity and Access Management (IAM) プラットフォームを組み合わせて使用できます。 たとえば、ハイブリッド環境とマルチクラウド環境を含めて、Active Directory、Active Directory フェデレーション サービス (ADFS)、Azure AD でのリモート認証ダイヤルイン ユーザー サービス (RADIUS) をサポートしています。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
@@ -134,7 +135,7 @@ Azure AD テナントに追加したアプリケーションで SSO を設定す
 
     ![ポリシーを追加する画面の画像](./media/silverfort-azure-ad-integration/add-policy.png)
 
-14. Azure AD コンソールに戻り、 **[Enterprise applications]\(エンタープライズ アプリケーション\)** に移動します。 新しい Silverfort アプリケーションが表示されます。 このアプリケーションを [[CA policies]\(CA ポリシー\)](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-azure-mfa?bc=/azure/active-directory/conditional-access/breadcrumb/toc.json&toc=/azure/active-directory/conditional-access/toc.json%23create-a-conditional-access-policy) に追加できるようになりました。
+14. Azure AD コンソールに戻り、 **[Enterprise applications]\(エンタープライズ アプリケーション\)** に移動します。 新しい Silverfort アプリケーションが表示されます。 このアプリケーションを [[CA policies]\(CA ポリシー\)](../authentication/tutorial-enable-azure-mfa.md?bc=/azure/active-directory/conditional-access/breadcrumb/toc.json&toc=/azure/active-directory/conditional-access/toc.json%23create-a-conditional-access-policy) に追加できるようになりました。
 
 ## <a name="next-steps"></a>次のステップ
 

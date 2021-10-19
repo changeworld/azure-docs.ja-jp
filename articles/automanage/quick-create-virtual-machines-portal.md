@@ -10,12 +10,12 @@ ms.subservice: automanage
 ms.workload: infrastructure
 ms.custom:
 - mode-portal
-ms.openlocfilehash: faf51735ae6805f0ff7db98416e9b05731c08642
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 7836e15c307a0dcfcf4bfa4b8c56fbeea869d315
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123426456"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129709763"
 ---
 # <a name="quickstart-enable-azure-automanage-for-virtual-machines-in-the-azure-portal"></a>クイック スタート:Azure portal で仮想マシンに対して Azure Automanage を有効にする
 
@@ -50,7 +50,7 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
     1. オンボードする各仮想マシンのチェック ボックスをオンにします。
     1. **[選択]** ボタンをクリックします。
     > [!NOTE]
-    > Azure VM と Arc 対応サーバーの両方を選択できます。
+    > Azure VM と Azure Arc 対応サーバーの両方を選択できます。
 
     :::image type="content" source="media\quick-create-virtual-machine-portal\existing-vm-select-machine.png" alt-text="使用可能な VM のリストから既存の VM を選択します。":::
 

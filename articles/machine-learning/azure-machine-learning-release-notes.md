@@ -8,19 +8,45 @@ ms.subservice: core
 ms.topic: reference
 ms.author: larryfr
 author: BlackMist
-ms.date: 08/18/2021
-ms.openlocfilehash: f4c7c43c0406ed7a6c05c3d83e467bc335c43093
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 10/04/2021
+ms.openlocfilehash: 598cc1944cb49024d91da476b95f9aa0b25f6279
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128628111"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129811102"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning のリリース ノート
 
 この記事では、Azure Machine Learning の各リリースについて説明します。  SDK リファレンス コンテンツの詳細については、Azure Machine Learning の [**メインの SDK for Python**](/python/api/overview/azure/ml/intro) のリファレンス ページを参照してください。
 
 __RSS フィード__:ご自身のフィード リーダーに次の URL をコピーして貼り付けることで、このページの更新時に通知を受け取ることができます。`https://docs.microsoft.com/api/search/rss?search=%22Azure+machine+learning+release+notes%22&locale=en-us`
+
+## <a name="2021-10-11"></a>2021-10-11
+
+### <a name="azure-machine-learning-sdk-for-python-v1350"></a>Azure Machine Learning SDK for Python v1.35.0
+  + **azureml-automl-core**
+    + バイナリ メトリックの計算を有効にします
+  + **azureml-contrib-fairness**
+    + ダッシュボードのダウンロードに失敗したときのエラーメッセージを改善します
+  + **azureml-core**
+    + マネージド ID 認証に非パブリック クラウドを指定するときのバグを解決しました。
+    + Dataset.File.upload_directory() と Dataset.Tabular.register_pandas_dataframe() の実験的なフラグが削除されました。
+    + TabularDataset クラスの partition_by() メソッドの実験的なフラグが削除されました。
+  + **azureml-pipeline-steps**
+    + ParallelRunConfig クラスの `partition_keys` パラメーターの実験的なフラグが削除されました。
+  + **azureml-interpret**
+    + azureml-interpret パッケージが intepret-community 0.20.* に更新されました
+  + **azureml-mlflow**
+    + サブディレクトリを使用して MLflow でアーティファクトとイメージをログに記録できるようになりました
+  + **azureml-responsibleai**
+    + ダッシュボードのダウンロードに失敗したときのエラーメッセージを改善します
+  + **azureml-train-automl-client**
+    + イメージ分類、オブジェクト検出、インスタンス セグメント化などのコンピューター ビジョン タスクのサポートが追加されました。 詳細なドキュメントは次の場所にあります: https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-image-models
+    + バイナリ メトリックの計算を有効にします
+  + **azureml-train-automl-runtime**
+    + モデル テストの実行に TCNForecaster のサポートが追加されます。
+    + モデル テストの predictions.csv の出力形式が更新されます。 出力列に、テストの実行に渡された元のターゲット値と特徴が含まれるようになります。 これを無効にするには、`AutoMLConfig` で `test_include_predictions_only=True` を設定するか、`ModelProxy.test()` で `include_predictions_only=True` を設定します。 ユーザーが予測のみを含めるように要求した場合、出力形式は次のようになります (予測は回帰と同じです): Classification => [predicted values] [probabilities] Regression => [predicted values] または (既定): Classification => [original test data labels] [predicted values] [probabilities] [features] Regression => [original test data labels] [predicted values] [features] `[predicted values]` 列名 = `[label column name] + "_predicted"`。 `[probabilities]` 列名 = `[class name] + "_predicted_proba"`。 ターゲット列がテスト実行に入力として渡されなかった場合、`[original test data labels]` は出力に含まれません。
 
 ## <a name="2021-09-07"></a>2021-09-07
 
@@ -1038,8 +1064,6 @@ Azure CLI に対する `ml` 拡張機能は、Azure Machine Learning の次世�
     + キャッシュ ストアの内容が改ざんされた場合に発生する新しい種類のユーザー例外を追加しました
   + **azureml-automl-runtime**
     + ユーザーが特徴量化を無効にした場合に、クラス分散スイープを有効化できなくなりました。  
-  + **azureml-contrib-itp**
-    + CmAks コンピューティングの種類がサポートされます。 トレーニング ジョブのワークスペースに独自の AKS クラスターをアタッチできます。
   + **azureml-contrib-notebook**
     + azureml-contrib-notebook パッケージのドキュメントを改善しました。
   + **azureml-contrib-pipeline-steps**

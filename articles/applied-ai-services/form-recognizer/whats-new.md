@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 09/30/2021
+ms.date: 10/07/2021
 ms.author: lajanuar
-ms.openlocfilehash: 3adffbac5641c2791c5ef683b5c4d687331a1c3b
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 401c9d08efd6be33d4444d34ba7a2a6c89723a6b
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129350120"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129715093"
 ---
 <!-- markdownlint-disable MD024 -->
 <!-- markdownlint-disable MD036 -->
@@ -22,21 +22,59 @@ ms.locfileid: "129350120"
 
 Form Recognizer サービスは、継続的に更新されます。 このページにブックマークを設定して、リリースノート、機能の強化、およびドキュメントの更新についての最新情報を入手してください。
 
+## <a name="october-2021"></a>2021 年 10 月
+
+### <a name="form-recognizer-new-preview-release"></a>Form Recognizer の新しいプレビュー リリース
+
+ Form Recognizer の新しいプレビュー リリースでは、いくつかの新機能が導入されています。
+
+* [**一般的なドキュメント**](concept-general-document.md) モデルは新しい API であり、事前トレーニング済みのモデルを使用して、テキスト、テーブル、構造、キーと値のペア、名前付きエンティティがフォームとドキュメントから抽出されます。
+* [**ホテルの領収書**](concept-receipt.md)モデルが、構築済みの受信確認処理に追加されました。
+* [**身分証明書の展開されたフィールド**](concept-id-document.md) ID モデルでは、米国の運転免許証からの署名、制限、車両分類の抽出がサポートされています。
+* [**署名フィールド**](concept-custom.md)は、フォーム フィールド内の署名の有無を検出するカスタム フォームの新しいフィールドの種類です。
+
+* [**言語の展開**](language-support.md) 122 言語 (印刷) と 7 言語 (手書き) のサポート。 Form Recognizer のレイアウトとカスタム フォームでは、最新のプレビューで[サポートされる言語](language-support.md)が 122 個に拡大されました。 これには、49 個の新しい言語 (ロシア語、ブルガリア語、その他のキリル語系やラテン語系など) での印刷テキストに対するテキスト抽出が含まれています。 また、手書きテキストの抽出では、英語を含む 7 個の言語と、新たに簡体字中国語、フランス語、ドイツ語、イタリア語、ポルトガル語、スペイン語の新しいプレビューがサポートされるようになりました。
+
+* **テーブルとテキスト抽出の機能強化** レイアウトは、キーと値のテーブルとも呼ばれる単一行テーブルの抽出をサポートするようになりました。 テキスト抽出の機能強化には、デジタル PDF や身分証明書内の機械可読ゾーン (MRZ) テキストの処理の向上、全般的なパフォーマンスの向上が含まれます。
+
+* [**Form Recognizer Studio**](https://formrecognizer.appliedai.azure.com) サービスの使用を簡単にするために、Form Recognizer Studio にアクセスして、さまざまな事前構築済みモデルをテストしたり、カスタム モデルにラベルを付けてトレーニングしたりすることができるようになりました。
+
+v3.0 プレビュー API の新しい [REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeWithCustomForm)、[Python](quickstarts/try-v3-python-sdk.md)、または [.NET](quickstarts/try-v3-csharp-sdk.md) SDK を利用できます。
+
+ #### <a name="form-recognizer-model-data-extraction"></a>Form Recognizer モデルのデータ抽出
+
+  | **Model**   | **テキストの抽出** |**キーと値のペア** |**選択マーク**   | **テーブル**   |**エンティティ** |
+  | --- | :---: |:---:| :---: | :---: |:---: |
+  |🆕一般的なドキュメント  | ✓  |  ✓ | ✓  | ✓  | ✓  |
+  | Layout  | ✓  |   | ✓  | ✓  |   |
+  | 請求書  | ✓ | ✓  | ✓  | ✓ ||
+  |Receipt  | ✓  |   ✓ |   |  ||
+  | 身分証明書 | ✓  |   ✓  |   |   ||
+  | 名刺    | ✓  |   ✓ |   |   ||
+  | Custom             |✓  |  ✓ | ✓  | ✓  | ✓  |
+
 ## <a name="september-2021"></a>2021 年 9 月
 
-Azure portal の Form Recognizer リソースの概要ページで、[Azure メトリックス エクスプローラーの高度な機能](/azure/azure-monitor/essentials/metrics-charts)を使用できます。
+* Azure portal の Form Recognizer リソースの概要ページで、[Azure メトリックス エクスプローラーの高度な機能](/azure/azure-monitor/essentials/metrics-charts)を使用できます。
 
-### <a name="monitoring-menu"></a>監視メニュー
+    ### <a name="monitoring-menu"></a>監視メニュー
 
-:::image type="content" source="media/portal-metrics.png" alt-text="Azure portal の監視メニューを示すスクリーンショット":::
+    :::image type="content" source="media/portal-metrics.png" alt-text="Azure portal の監視メニューを示すスクリーンショット":::
 
-### <a name="charts"></a>グラフ
+    ### <a name="charts"></a>グラフ
 
-:::image type="content" source="media/portal-metrics-charts.png" alt-text="Azure portal のサンプルのメトリック グラフを示すスクリーンショット。":::
+    :::image type="content" source="media/portal-metrics-charts.png" alt-text="Azure portal のサンプルのメトリック グラフを示すスクリーンショット。":::
+
+*  **身分証明書** モデルの更新: サフィックスを含む名前がある場合、ピリオド (フル ストップ) の有無にかかわらず、正常に処理されます。
+
+    |入力テキスト | 更新された結果 |
+    |------------|-------------------------------------------|
+    | William Isaac Kirby Jr. |**FirstName**: William Isaac</br></br>**LastName**: Kirby Jr. |
+    | Henry Caleb Ross Sr | **FirstName**: Henry Caleb </br></br> **LastName**: Ross Sr |
 
 ## <a name="july-2021"></a>2021 年 7 月
 
-### <a name="system-assigned-managed-identity-support"></a>システム割り当てマネージド ID のサポート 
+### <a name="system-assigned-managed-identity-support"></a>システム割り当てマネージド ID のサポート
 
  システム割り当てマネージド ID を有効にして、プライベート ストレージ アカウントへの制限付きアクセスを Form Recognizer に許可できるようになりました。これには、Virtual Network (VNet) またはファイアウォールで保護されているものや、BYOS (Bring Your Own Storage) が有効になっているものが含まれます。 *詳細については、「* [Form Recognizer リソース用のマネージド ID を作成して使用する](managed-identity-byos.md)」を参照してください。
 
@@ -90,9 +128,9 @@ Form Recognizer 機能は、**レイアウト**、**名刺**、**身分証明書
 * [ID ドキュメント](concept-identification-cards.md)
 * [カスタム フォーム](concept-custom.md)
 
-#### <a name="get-started"></a>はじめに 
+#### <a name="get-started"></a>はじめに
 
-[Form Recognizer サンプル ツール](https://fott-2-1.azurewebsites.net/)にアクセスし、[クイックスタート](quickstarts/get-started-with-form-recognizer.md)に従ってください 
+[Form Recognizer サンプル ツール](https://fott-2-1.azurewebsites.net/)にアクセスし、[クイックスタート](quickstarts/get-started-with-form-recognizer.md)に従ってください
 
 ### <a name="layout-adds-table-headers"></a>レイアウトによってテーブル ヘッダーが追加される
 
@@ -375,9 +413,9 @@ pip パッケージ バージョン 3.1.0b4
 
    :::image type="content" source="./media/id-canada-passport-example.png" alt-text="パスポートの例" lightbox="./media/id-canada-passport-example.png":::
 
-* **事前構築済み請求書モデルの品目抽出** - 事前構築済み請求書モデルは品目抽出をサポートするようになりました。完全な項目とその一部 (説明、金額、数量、製品 ID、日付など) が抽出されるようになりました。 簡単な API または SDK の呼び出しにより、請求書から有用なデータ (テキスト、テーブル、キーと値のペア、品目) を抽出できます。
+* **請求書モデルの品目抽出** - 事前構築済み請求書モデルは品目抽出をサポートするようになりました。完全な項目とその一部 (説明、金額、数量、製品 ID、日付など) が抽出されるようになりました。 簡単な API または SDK の呼び出しにより、請求書から有用なデータ (テキスト、テーブル、キーと値のペア、品目) を抽出できます。
 
-   [事前作成された請求書モデルの詳細情報](concept-invoices.md)
+   [請求書モデルの詳細について確認してください](concept-invoices.md)
 
 * **監視対象テーブルのラベル付けとトレーニング、空の値のラベル付け** - Form Recognizer の [最先端のディープ ラーニング自動テーブル抽出機能](https://techcommunity.microsoft.com/t5/azure-ai/enhanced-table-extraction-from-documents-with-form-recognizer/ba-p/2058011)に加えて、お客様がテーブルに対してラベル付けとトレーニングを行えるようになりました。 この新しいリリースには、品目とテーブル (動的と固定) にラベルを付けてトレーニングし、キーと値のペアと品目を抽出するカスタム モデルをトレーニングする機能が含まれています。 モデルのトレーニングが完了すると、モデルにより documentResults セクションの JSON 出力の一部として品目が抽出されます。
 

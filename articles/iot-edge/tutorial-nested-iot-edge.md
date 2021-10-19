@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 983844a824f4aac6bfe21f06b8fab591c99e1bf1
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: dc878b0f1a843d8212cd6541338510f8eff4b56c
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121740545"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129714947"
 ---
 # <a name="tutorial-create-a-hierarchy-of-iot-edge-devices"></a>チュートリアル:IoT Edge デバイスの階層を作成する
 
@@ -87,9 +87,8 @@ IoT Edge デバイスの階層を作成するには、以下のものが必要�
 
    ![仮想マシンが作成されるときに、その SSH ハンドルを含んだ JSON が出力される](./media/tutorial-nested-iot-edge/virtual-machine-outputs.png)
 
-* 最下位レイヤー デバイスを除くすべてのデバイスで、8000、443、5671、8883 の各ポートが受信用に開放されていることを確認します。
-  * 8000: API プロキシを介して Docker コンテナー イメージをプルする際に使用されます。
-  * 443:親エッジ ハブと子エッジ ハブ間で REST API 呼び出しに使用されます。
+* 最下位レイヤー デバイスを除くすべてのデバイスで、443、5671、8883 の各ポートが受信用に開放されていることを確認します。
+  * 443: REST API の呼び出しと Docker コンテナー イメージのプルのために、親と子のエッジ ハブの間で使用されます。
   * 5671、8883: AMQP と MQTT に使用されます。
 
   詳細については、「[Azure portal を使用して仮想マシンへのポートを開く方法](../virtual-machines/windows/nsg-quickstart-portal.md)」を参照してください。
@@ -235,7 +234,7 @@ IoT Edge ランタイムを構成するには、セットアップ スクリプ�
 **下位レイヤー デバイス** の場合は、診断イメージを手動でコマンドに渡す必要があります。
 
    ```bash
-   sudo iotedge check --diagnostics-image-name <parent_device_fqdn_or_ip>:8000/azureiotedge-diagnostics:1.2
+   sudo iotedge check --diagnostics-image-name <parent_device_fqdn_or_ip>:443/azureiotedge-diagnostics:1.2
    ```
 
 **最上位レイヤー デバイス** では、出力には複数の合格した評価が表示されることが予想されます。 ログ ポリシーに関する警告のほか、ご利用のネットワークによっては DNS ポリシーに関する警告が表示されることもあります。
@@ -259,9 +258,9 @@ IoT Edge ランタイムを構成するには、セットアップ スクリプ�
 
 **最上位レイヤー デバイス** は、ランタイム モジュールである **IoT Edge エージェント** と **IoT Edge ハブ** に加え、**Docker レジストリ** モジュールと **IoT Edge API プロキシ** モジュールを受け取ります。
 
-**Docker レジストリ** モジュールは、既存の Azure Container Registry を参照します。 この場合、`REGISTRY_PROXY_REMOTEURL` の参照先は Microsoft Container Registry です。 `createOptions` では、通信はポート 5000 で行われることがわかります。
+**Docker レジストリ** モジュールは、既存の Azure Container Registry を参照します。 この場合、`REGISTRY_PROXY_REMOTEURL` の参照先は Microsoft Container Registry です。 既定では、**Docker レジストリ** はポート 5000 でリッスンします。
 
-**IoT Edge API プロキシ** モジュールは、HTTP 要求を他のモジュールにルーティングします。これによって下位レイヤー デバイスはストレージに対してコンテナー イメージをプルしたり、BLOB をプッシュしたりできるようになります。 このチュートリアルでは、その通信にポート 8000 を使用しています。さらに、Docker コンテナー イメージ pull request を、ポート 5000 で **Docker レジストリ** モジュールにルーティングするように構成されています。 また、Blob Storage のアップロード要求は、ポート 11002 で AzureBlobStorageonIoTEdge モジュールにルーティングされます。 **IoT Edge API プロキシ** モジュールとその構成方法の詳細については、モジュールの [使用法ガイド](how-to-configure-api-proxy-module.md)を参照してください。
+**IoT Edge API プロキシ** モジュールは、HTTP 要求を他のモジュールにルーティングします。これによって下位レイヤー デバイスはストレージに対してコンテナー イメージをプルしたり、BLOB をプッシュしたりできるようになります。 このチュートリアルでは、その通信にポート 443 を使用しています。さらに、Docker コンテナー イメージのプル要求を、ポート 5000 で **Docker レジストリ** モジュールにルーティングするように構成されています。 また、Blob Storage のアップロード要求は、ポート 11002 で AzureBlobStorageonIoTEdge モジュールにルーティングされます。 **IoT Edge API プロキシ** モジュールとその構成方法の詳細については、モジュールの [使用法ガイド](how-to-configure-api-proxy-module.md)を参照してください。
 
 このようなデプロイを Azure portal または Azure Cloud Shell で作成する方法については、[使用法ガイドの最上位レイヤー デバイスに関するセクション](how-to-connect-downstream-iot-edge-device.md#deploy-modules-to-top-layer-devices)を参照してください。
 
@@ -271,7 +270,7 @@ IoT Edge ランタイムを構成するには、セットアップ スクリプ�
    cat ~/nestedIotEdgeTutorial/iotedge_config_cli_release/templates/tutorial/deploymentLowerLayer.json
    ```
 
-`systemModules` では、**下位レイヤー デバイス** のランタイム モジュールが、**最上位レイヤー デバイス** のように `mcr.microsoft.com` からではなく、`$upstream:8000` からプルするように設定されていることがわかります。 **下位レイヤー デバイス** は、クラウドから直接イメージをプルすることができないため、ポート 8000 で Docker イメージ要求を **IoT Edge API プロキシ** モジュールに送信します。 **下位レイヤー デバイス** にデプロイされたもう 1 つのモジュール、**Simulated Temperature Sensor** モジュールも、そのイメージ要求を `$upstream:8000` に対して行います。
+`systemModules` では、**下位レイヤー デバイス** のランタイム モジュールが、**最上位レイヤー デバイス** のように `mcr.microsoft.com` からではなく、`$upstream:443` からプルするように設定されていることがわかります。 **下位レイヤー デバイス** は、クラウドから直接イメージをプルすることができないため、ポート 443 で Docker イメージ要求を **IoT Edge API プロキシ** モジュールに送信します。 **下位レイヤー デバイス** にデプロイされたもう 1 つのモジュール、**Simulated Temperature Sensor** モジュールも、そのイメージ要求を `$upstream:443` に対して行います。
 
 このようなデプロイを Azure portal または Azure Cloud Shell で作成する方法については、[使用法ガイドの下位レイヤー デバイスに関するセクション](how-to-connect-downstream-iot-edge-device.md#deploy-modules-to-lower-layer-devices)を参照してください。
 
@@ -305,10 +304,8 @@ IoT Edge ランタイムを構成するには、セットアップ スクリプ�
 
 下位レイヤーから `iotedge check` を実行すると、このプログラムは、ポート 443 を使用して親からイメージをプルしようとします。
 
-このチュートリアルではポート 8000 を使用しているため、それを指定する必要があります。
-
 ```bash
-sudo iotedge check --diagnostics-image-name $upstream:8000/azureiotedge-diagnostics:1.2
+sudo iotedge check --diagnostics-image-name $upstream:443/azureiotedge-diagnostics:1.2
 ```
 
 `azureiotedge-diagnostics` の値は、レジストリ モジュールにリンクされたコンテナー レジストリからプルされます。 このチュートリアルでは、既定値の https://mcr.microsoft.com: に設定しています。

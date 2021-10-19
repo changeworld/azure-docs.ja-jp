@@ -3,20 +3,20 @@ title: Azure Functions のアプリケーション設定のリファレンス
 description: Azure Functions のアプリケーション設定または環境変数の参照ドキュメントです。
 ms.topic: conceptual
 ms.date: 07/27/2021
-ms.openlocfilehash: 6b860e40acd118bc708ab00001707755272525b6
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: ada3429d32ea08f8185ba19937b963a30400c7b0
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128663613"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129659661"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions のアプリケーション設定のリファレンス
 
-関数アプリのアプリケーション設定には、その関数アプリのすべての関数に影響するグローバル構成オプションが含まれています。 ローカルで実行する場合、これらの設定は、ローカルの[環境変数](functions-develop-local.md#local-settings-file)としてアクセスされます。 この記事では、関数アプリで使用できるアプリケーション設定の一覧を紹介します。
+関数アプリのアプリ設定には、その関数アプリのすべての関数に影響する構成オプションが含まれています。 ローカルで実行する場合、これらの設定は、ローカルの[環境変数](functions-develop-local.md#local-settings-file)としてアクセスされます。 この記事では、関数アプリで使用できるアプリケーション設定の一覧を紹介します。
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 
-[host.json](functions-host-json.md) ファイルと [local.settings.json](functions-develop-local.md#local-settings-file) ファイルには、他のグローバル構成オプションもあります。
+[host.json](functions-host-json.md) ファイルと [local.settings.json](functions-develop-local.md#local-settings-file) ファイルには、他の関数アプリ構成オプションもあります。
 例の接続文字列の値は、読みやすくするために省略されています。
 
 > [!NOTE]
@@ -402,6 +402,6 @@ Windows で関数アプリを実行するときに使用する Node.js のバー
 
 [アプリケーション設定の更新方法](functions-how-to-use-azure-function-app-settings.md#settings)
 
-[host.json ファイルのグローバル設定を参照する](functions-host-json.md)
+[host.json ファイルの構成設定を参照する](functions-host-json.md)
 
 [App Service アプリの他のアプリ設定を参照する](https://github.com/projectkudu/kudu/wiki/Configurable-settings)

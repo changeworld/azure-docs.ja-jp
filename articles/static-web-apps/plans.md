@@ -5,14 +5,14 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: overview
-ms.date: 05/14/2021
+ms.date: 10/05/2021
 ms.author: cshoe
-ms.openlocfilehash: 489f714c9900c0b759a5ecf7bc9a5ffc12cae884
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a29a13e11416e533a27020a745daddf6e26ef919
+ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121746220"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129729636"
 ---
 # <a name="azure-static-web-apps-hosting-plans"></a>Azure Static Web Apps ホスティング プラン
 
@@ -32,6 +32,7 @@ Azure Static Web Apps は、Free と Standard の 2 種類のプランで利用�
 | カスタム ドメイン | アプリあたり 2 | アプリあたり 5 |
 | Azure Functions による API | マネージド | マネージドまたは<br>[独自の関数アプリの持ち込み](functions-bring-your-own.md) |
 | 認証プロバイダーの統合 | [事前構成済み](authentication-authorization.md)<br>(サービスで定義済み) | [カスタム登録](authentication-custom.md) |
+| [関数を使用したカスタム ロールの割り当て](authentication-authorization.md?tabs=function#role-management) | - | ✔ |
 | プライベート エンドポイント | - | ✔ |
 | [サービス レベル アグリーメント (SLA)](https://azure.microsoft.com/support/legal/sla/app-service-static/v1_0/) | なし  | ✔ |
 

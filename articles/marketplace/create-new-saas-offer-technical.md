@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: 236a7729a8be0fb1ad20be28efd7b45f5796c1dd
-ms.sourcegitcommit: 6323442dbe8effb3cbfc76ffdd6db417eab0cef7
+ms.openlocfilehash: 7efbb49565027ed7b982d37e99a27e1d66c59bf5
+ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110615165"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129728097"
 ---
 # <a name="add-technical-details-for-a-saas-offer"></a>SaaS オファーの技術的な詳細を追加する
 
@@ -31,7 +31,7 @@ ms.locfileid: "110615165"
   > [!IMPORTANT]
   > 貴社のランディング ページは、24 時間 365 日稼働している必要があります。 これは、顧客のコマーシャル マーケットプレースからの貴社の SaaS オファーの新規購入、またはオファーのアクティブなサブスクリプションの構成要求の通知を受ける唯一の方法です。
 
-- **[接続 Webhook]** (必須) – Microsoft からお客様に送信する必要があるすべての非同期イベント (例: SaaS サブスクリプションが取り消された) のために、お客様は接続 Webhook の URL を指定する必要があります。 イベントは、この URL を呼び出して通知します。
+- **[接続 Webhook]** (必須) – Microsoft からお客様に送信する必要があるすべての非同期イベント (例: SaaS サブスクリプションが取り消された) のために、お客様は[接続 Webhook の URL を指定する](./partner-center-portal/pc-saas-fulfillment-api-v2.md#implementing-a-webhook-on-the-saas-service)必要があります。 イベントは、この URL を呼び出して通知します。
 
   > [!IMPORTANT]
   > これは、コマーシャル マーケットプレース経由で購入された貴社の顧客の SaaS サブスクリプションに関する更新の通知を受け取る唯一の方法であるため、貴社は Webhook を、24 時間 365 日稼働している必要があります。

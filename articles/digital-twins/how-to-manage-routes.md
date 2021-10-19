@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/30/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 4e9bfa2dc340f567a6c2b7c4ab5d45cfeaa41e6c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 99fbf0a6ecd232ae646639e84864addd103c1f5a
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128661015"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129807772"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins"></a>Azure Digital Twins でのエンドポイントとルートの管理
 
@@ -42,9 +42,12 @@ Azure Digital Twins では、ダウンストリームのサービスや接続さ
 ## <a name="create-an-endpoint-for-azure-digital-twins"></a>Azure Digital Twins のエンドポイントの作成
 
 インスタンスに作成できるエンドポイントのタイプは次のとおりです。
-* [Event Grid](../event-grid/overview.md) 
-* [Event Hubs](../event-hubs/event-hubs-about.md)
-* [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)
+* [Event Grid](../event-grid/overview.md) トピック
+* [Event Hubs](../event-hubs/event-hubs-about.md) ハブ
+* [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) トピック
+
+>[!NOTE]
+> Event Grid エンドポイントの場合は、Event Grid **トピック** のみがサポートされます。 Event Grid **ドメイン** は、エンドポイントとしてサポートされていません。
 
 さまざまなエンドポイントのタイプの詳細については、"[Azure メッセージング サービスの選択](../event-grid/compare-messaging-services.md)" に関する記事を参照してください。
 
@@ -58,7 +61,7 @@ Azure Digital Twins では、ダウンストリームのサービスや接続さ
 
 | エンドポイントの種類 | 必要なリソース (作成手順にリンクされています) |
 | --- | --- |
-| Event Grid エンドポイント | [イベント グリッド トピック](../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic) |
+| Event Grid エンドポイント | [イベント グリッド トピック](../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic)<br/>*イベント スキーマは、Event Grid スキーマまたは Cloud Event スキーマ v1.0 である必要があります |
 | Event Hubs エンドポイント | [Event&nbsp;Hubs&nbsp;名前空間](../event-hubs/event-hubs-create.md)<br/><br/>[イベント ハブ](../event-hubs/event-hubs-create.md)<br/><br/>(省略可能) キーベースの認証用の[承認規則](../event-hubs/authorize-access-shared-access-signature.md) | 
 | Service Bus エンドポイント | [Service Bus 名前空間](../service-bus-messaging/service-bus-quickstart-topics-subscriptions-portal.md)<br/><br/>[Service Bus トピック](../service-bus-messaging/service-bus-quickstart-topics-subscriptions-portal.md)<br/><br/> (省略可能) キーベースの認証用の[承認規則](../service-bus-messaging/service-bus-authentication-and-authorization.md#shared-access-signature)|
 

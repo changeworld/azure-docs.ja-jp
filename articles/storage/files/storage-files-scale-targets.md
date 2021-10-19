@@ -4,15 +4,15 @@ description: Azure Files のスケーラビリティとパフォーマンスの�
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 09/16/2021
+ms.date: 10/06/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 83e33933e8afb8b376750368a64c60cb56406a75
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 66ad68711d57767f6f657d941222e4b225c4b20e
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128651543"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129658939"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure Files のスケーラビリティおよびパフォーマンスのターゲット
 [Azure Files](storage-files-introduction.md) はクラウドで、SMB および NFS ファイル システム プロトコルを介してアクセスできる、フル マネージドのファイル共有を提供します。 この記事では、Azure Files と Azure File Sync のスケーラビリティとパフォーマンスのターゲットについて説明します。
@@ -71,7 +71,7 @@ Azure では、お客様のさまざまなストレージ シナリオに対し�
 
 <sup>1</sup> Standard ファイル共有で使用可能な 3 つの階層 (トランザクションの最適化、ホット、クール) すべてに Standard ファイル共有の制限が適用されます。
 
-<sup>2</sup> 標準ファイル共有の既定値は 5 TiB です。100 TiB サイズでファイル共有を作成する方法と、既存の標準ファイル共有を最大 100 TiB まで増やす方法の詳細については、「[Azure ファイル共有を作成する](./storage-how-to-create-file-share.md)」を参照してください。
+<sup>2</sup> 標準ファイル共有の既定値は 5 TiB です。100 TiB サイズでファイル共有を作成する方法と、既存の標準ファイル共有を最大 100 TiB まで増やす方法の詳細については、「[Azure ファイル共有を作成する](./storage-how-to-create-file-share.md)」を参照してください。 大規模なターゲットを利用するには、クォータを 5 TiB より大きくなるように変更する必要があります。
 
 ### <a name="file-scale-targets"></a>ファイルのスケール ターゲット
 | 属性 | Standard ファイル共有内のファイル  | Premium ファイル共有内のファイル  |

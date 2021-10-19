@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 578ff0997375b62b3fd5a90ec44967ead1b9cd63
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 392d457ead16d0bcfc057282886669a01e24ff3e
+ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123253801"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129730377"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics でサーバーレス SQL プールを使う際の OPENROWSET の使用方法
 
@@ -98,6 +98,7 @@ WITH ( {'column_name' 'column_type' [ 'column_ordinal' | 'json_path'] })
 [ , HEADER_ROW = { TRUE | FALSE } ]
 [ , DATAFILETYPE = { 'char' | 'widechar' } ]
 [ , CODEPAGE = { 'ACP' | 'OEM' | 'RAW' | 'code_page' } ]
+[ , ROWSET_OPTIONS = '{"READ_OPTIONS":["ALLOW_INCONSISTENT_READS"]}' ]
 ```
 
 ## <a name="arguments"></a>引数
@@ -242,15 +243,19 @@ CSV パーサー バージョン 2.0 の詳細:
 
 HEADER_ROW = { TRUE | FALSE }
 
-CSV ファイルにヘッダー行を含めるかどうかを指定します。 既定値は FALSE です。 PARSER_VERSION='2.0' でサポートされています。 TRUE の場合、列名は、FIRSTROW 引数に従って最初の行から読み取られます。 TRUE であり、WITH を使用してスキーマを指定すると、列名のバインドは序数位置ではなく列名によって行われます。
+CSV ファイルにヘッダー行を含めるかどうかを指定します。 既定値は `FALSE.` です。PARSER_VERSION='2.0' でサポートされています。 TRUE の場合、列名は、FIRSTROW 引数に従って最初の行から読み取られます。 TRUE であり、WITH を使用してスキーマを指定すると、列名のバインドは序数位置ではなく列名によって行われます。
 
 DATAFILETYPE = { 'char' | 'widechar' }
 
-エンコードを指定します。UTF8 にはchar が使用され、UTF16 ファイルには widechar が使用されます。
+エンコードを指定します。UTF8 には `char` が使用され、UTF16 ファイルには `widechar` が使用されます。
 
 CODEPAGE = { 'ACP' | 'OEM' | 'RAW' | 'code_page' }
 
 データ ファイル内のデータのコード ページを指定します。 既定値は 65001 (UTF-8 エンコード) です。 このオプションの詳細については、[こちら](/sql/t-sql/functions/openrowset-transact-sql?view=sql-server-ver15&preserve-view=true#codepage)を参照してください。
+
+ROWSET_OPTIONS = '{"READ_OPTIONS":["ALLOW_INCONSISTENT_READS"]}'
+
+このオプションを選択すると、クエリの実行中にファイル変更チェックが無効にされ、クエリの実行中に更新されたファイルが読み取られます。 これは、クエリの実行中に追加される追加専用ファイルを読み取る必要がある場合に便利なオプションです。 追加可能なファイルでは、既存のコンテンツは更新されず、新しい行の追加のみが行われます。 そのため、更新可能なファイルと比較して、結果が不正確になる可能性が最小限に抑えられます。 このオプションを使用すると、エラーを処理する必要なく、頻繁に追加されるファイルを読み取ることができるようになります。 詳細については、[追加可能な CSV ファイルのクエリ](query-single-csv-file.md#querying-appendable-files)に関する記事を参照してください。
 
 ## <a name="fast-delimited-text-parsing"></a>高速の区切りテキスト解析
 

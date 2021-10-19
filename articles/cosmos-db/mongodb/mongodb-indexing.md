@@ -5,16 +5,16 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: how-to
-ms.date: 09/13/2021
+ms.date: 10/13/2021
 author: gahl-levy
 ms.author: gahllevy
 ms.custom: devx-track-js
-ms.openlocfilehash: 8e609268258142875ebbe924f3cfbdebc94911f8
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 115876aab202c550d694267294345b5472ad1f2a
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128601724"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129811729"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API でのインデックス作成を管理する
 [!INCLUDE[appliesto-mongodb-api](../includes/appliesto-mongodb-api.md)]
@@ -361,13 +361,13 @@ Azure Cosmos DB の MongoDB 用 API のバージョン 3.6 以降では、デー
 
 ## <a name="reindex-command"></a>reIndex コマンド
 
-`reIndex` コマンドによって、コレクションのすべてのインデックスが再作成されます。 ほとんどの場合、これは必要ありません。 ただし、まれに、`reIndex` コマンドの実行後にクエリのパフォーマンスが向上する場合があります。
+`reIndex` コマンドによって、コレクションのすべてのインデックスが再作成されます。 まれに、コレクションでのクエリのパフォーマンスや他のインデックスの問題が、`reIndex` コマンドを実行することで解決される場合があります。 インデックスの作成に関する問題が発生している場合は、`reIndex` コマンドを使用してインデックスを再作成することをお勧めします。 
 
 `reIndex` コマンドは、次の構文を使用して実行できます。
 
 `db.runCommand({ reIndex: <collection> })`
 
-次の構文を使用して、`reIndex` コマンドを実行する必要があるかどうかを確認できます。
+次の構文を使用すると、`reIndex` コマンドを実行することによりコレクションでのクエリのパフォーマンスが向上するかどうかを調べることができます。
 
 `db.runCommand({"customAction":"GetCollection",collection:<collection>, showIndexes:true})`
 
@@ -402,7 +402,7 @@ Azure Cosmos DB の MongoDB 用 API のバージョン 3.6 以降では、デー
 }
 ```
 
-`reIndex` が必要な場合、**requiresReIndex** が true になります。 `reIndex` が必要ない場合、このプロパティは省略されます。
+`reIndex` によってクエリのパフォーマンスが向上する場合は、**requiresReIndex** が true になります。 `reIndex` でクエリのパフォーマンスが向上しない場合、このプロパティは省略されます。
 
 ## <a name="migrate-collections-with-indexes"></a>インデックス付きのコレクションを移行する
 

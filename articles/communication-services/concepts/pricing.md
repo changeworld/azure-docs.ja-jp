@@ -3,18 +3,16 @@ title: 通話 (音声またはビデオ) およびチャットの価格シナリ
 titleSuffix: An Azure Communication Services concept document
 description: Communication Services の価格モデルについて説明します。
 author: nmurav
-manager: nmurav
-services: azure-communication-services
 ms.author: nmurav
 ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: d8938a437db42a2d1cb5dd88f6102ce7f5facb3a
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 5d08f964899faf9fe438a0df68c6fe4401fd01c7
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123259067"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129859382"
 ---
 # <a name="pricing-scenarios"></a>価格シナリオ
 
@@ -120,6 +118,35 @@ Alice は医師として、患者である Bob を診察する予定です。 Al
 - Teams デスクトップ アプリケーションで参加するユーザー: $0 (Teams ライセンスに含まれています)
 
 
+## <a name="call-recording"></a>通話レコーディング
+
+Azure Communication Services を使用すると、PSTN、WebRTC、会議、SIP インターフェイスの通話をレコーディングできます。 現在、通話レコーディングでは、混合オーディオ + ビデオ MP4 と混合オーディオ専用 MP3/WAV 出力形式がサポートされています。 通話レコーディング SDK は、Java と C# で使用できます。 詳細については、[こちらのページ](../quickstarts/voice-video-calling/call-recording-sample.md)を参照してください。
+
+### <a name="price"></a>Price
+
+混合オーディオ + ビデオ形式の場合は $0.01/分、混合オーディオのみの場合は $0.002/分が課金されます。
+
+### <a name="pricing-example-record-a-call-in-a-mixed-audiovideo-format"></a>価格の例: 混合オーディオ + ビデオ形式で通話をレコーディングする
+
+Alice が、仕事仲間の Bob と Charlie とグループ通話を行いました。 
+
+- この通話は合計 60 分間続きました。 そして、レコーディングは 60 分間アクティブでした。
+- Bob は 30 分間、Alice と Charlie は 60 分間通話に参加していました。
+
+**コストの計算**
+- 会議の長さに対して課金されます。 (会議の長さは、ユーザーがレコーディングを開始してから、明示的に停止するまで、または誰も会議に残っていない時点までのタイムラインです)。
+- 60 分 x $0.01/分 (1 レコーディングあたり) = $0.6
+
+### <a name="pricing-example-record-a-call-in-a-mixed-audioonly-format"></a>価格の例: 混合オーディオ専用形式で通話をレコーディングする
+
+Alice は Jane との通話を開始します。 
+
+- この通話は合計 60 分間続きました。 レコーディングは 45 分間続きました。
+
+**コストの計算**
+- レコーディングの長さに対して課金されます。 
+- 45 分 x $0.002/分 (1 レコーディングあたり) = $0.09
+
 ## <a name="chat"></a>チャット
 
 Communication Services を使用すると、2 人以上のユーザー間でチャット メッセージを送受信する機能でアプリケーションを強化できます。 Chat SDK は、JavaScript、.NET、Python、および Java で使用できます。 SDK の詳細については、[こちらのページ](./sdk-options.md)を参照してください
@@ -190,10 +217,10 @@ Rose はメッセージを表示し、チャットを開始します。 その�
 
 ### <a name="sms"></a>SMS
 
-SMS の価格は従量課金制です。 価格は、メッセージの宛先に基づく、メッセージごとの料金となっています。 メッセージは、無料電話番号から米国内の電話番号に送信することができます。 SMS メッセージの送信にローカル (固定) 電話番号は使用できないので注意してください。
+SMS の価格は従量課金制です。 価格は、メッセージの宛先に基づく、メッセージ セグメントごとの料金となっています。 メッセージ セグメントの詳細については、[こちら](./telephony-sms/sms-faq.md#what-is-the-sms-character-limit)を参照してください。 メッセージは、無料電話番号から米国内の電話番号に送信することができます。 SMS メッセージの送信にローカル (固定) 電話番号は使用できないので注意してください。
 
 次の価格には、通信に必要な税と料金が含まれています。
 
 |国   |メッセージを送信する|メッセージを受信する|
 |-----------|------------|------------|
-|USA (無料電話番号)    |$0.0075/メッセージ   | $0.0075/メッセージ |
+|USA (無料電話番号)    |$0.0075/メッセージ セグメント  | $0.0075/メッセージ セグメント |

@@ -1,5 +1,6 @@
 ---
-title: 管理者の同意ワークフローの構成 - Azure Active Directory | Microsoft Docs
+title: 管理者の同意ワークフローの構成
+titleSuffix: Azure AD
 description: 管理者の同意を必要とするアプリケーションへのアクセスをエンド ユーザーが要求できるように構成する方法について説明します。
 services: active-directory
 author: davidmu1
@@ -8,18 +9,18 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/08/2021
+ms.date: 10/06/2021
 ms.author: davidmu
 ms.reviewer: ergreenl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5611de6dde5ef1380a819ba3f3a2e6050d79374b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 07254d54d535616aa3a6b1c17a2b1b81d8fe16bb
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121738850"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129659205"
 ---
-# <a name="configure-the-admin-consent-workflow"></a>管理者の同意ワークフローの構成
+# <a name="configure-the-admin-consent-workflow-in-azure-active-directory"></a>Azure Active Directory の管理者の同意ワークフローの構成
 
 この記事では、管理者の同意ワークフロー機能を有効にする方法について説明します。これにより、エンド ユーザーは、管理者の同意を必要とするアプリケーションへのアクセスを要求できます。
 
@@ -90,7 +91,7 @@ ms.locfileid: "121738850"
 
 8. 要求を評価し、適切なアクションを実行します。
 
-   * **要求の承認**。 要求を承認する場合には、アプリケーションに管理者の同意を付与します。 要求が承認されたら、すべての要求元に対し、アクセスが許可されたことを知らせる通知が送信されます。  
+   * **要求の承認**。 要求を承認する場合には、アプリケーションに管理者の同意を付与します。 要求が承認されたら、すべての要求元に対し、アクセスが許可されたことを知らせる通知が送信されます。 要求を承認すると、ユーザー割り当てによって他に制限されていない限り、テナント内のすべてのユーザーがアプリケーションにアクセスできます。 
    * **要求の拒否**。 要求を拒否する場合には、理由を入力する必要があります。入力した理由は、すべての要求元に提供されます。 要求が拒否されたら、すべての要求元に対し、アプリケーションへのアクセスが拒否されたことを知らせる通知が送信されます。 要求を拒否しても、ユーザーがその後同じアプリについて管理者の同意を要求できなくなるわけではありません。  
    * **要求のブロック**。 要求をブロックする場合には、理由を入力する必要があります。入力した理由は、すべての要求元に提供されます。 要求がブロックされたら、すべての要求元に対し、アプリケーションへのアクセスが拒否されたことを知らせる通知が送信されます。 要求をブロックすると、テナント内でそのアプリケーションのサービス プリンシパル オブジェクトが、無効の状態で作成されます。 以降は、ユーザーがそのアプリケーションに関する管理者の同意を要求することができなくなります。
 

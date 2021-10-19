@@ -1,5 +1,6 @@
 ---
-title: Azure Active Directory のアプリケーション管理用の PowerShell サンプル
+title: アプリケーション管理の PowerShell サンプル
+titleSuffix: Azure AD
 description: これらの PowerShell サンプルは、Azure Active Directory テナントで管理しているアプリに使用します。 これらのサンプル スクリプトを使用すると、シークレットと証明書の有効期限に関する情報を見つけることができます。
 services: active-directory
 author: davidmu1
@@ -11,12 +12,12 @@ ms.topic: sample
 ms.date: 02/18/2021
 ms.author: davidmu
 ms.reviewer: sureshja
-ms.openlocfilehash: 4d1ec8858099fed1a826d9413e40bcb7f2979010
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 95f0ee8106612dd2035f0e1c77d9fe5d3efe2540
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121723125"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129620034"
 ---
 # <a name="azure-active-directory-powershell-examples-for-application-management"></a>アプリケーション管理用の Azure Active Directory PowerShell の例
 

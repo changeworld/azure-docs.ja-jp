@@ -10,13 +10,13 @@ metadata:
   ms.topic: conceptual
   ms.date: 09/16/2021
   ms.author: banders
-  ms.openlocfilehash: d23c07386fe0245f3acd7bc1e716a053cdfa2019
-  ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+  ms.openlocfilehash: 7edae913ea733002aa3ad0736cf744f969003cdb
+  ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/24/2021
-  ms.locfileid: "128607294"
-title: Azure Cost Management + Billing についてよくあるご質問 (FAQ)
+  ms.lasthandoff: 10/09/2021
+  ms.locfileid: "129706209"
+title: Cost Management + Billing についてよくあるご質問 (FAQ)
 summary: ''
 sections:
 - name: 課金に関する一般的な質問
@@ -55,7 +55,7 @@ sections:
       「[Cost Management のデータへのアクセス許可を割り当てる](costs/assign-access-acm-data.md)」を参照してください。
   - question: Cost Management ではどのパートナー プランがサポートされていますか?
     answer: >
-      Cost Management を利用できるのは、パートナーのお客様が Azure プランを利用している場合です。 パートナーは、ポリシー設定を有効にすることで、お客様がコスト情報を表示できるようにすることができます。 詳細については、「[パートナー向け Azure Cost Management の概要](costs/get-started-partners.md)」を参照してください。 Cost Management では、クラシック CSP はサポートされていません。
+      Cost Management を利用できるのは、パートナーのお客様が Azure プランを利用している場合です。 パートナーは、ポリシー設定を有効にすることで、お客様がコスト情報を表示できるようにすることができます。 詳細については、「[パートナー向け Cost Management の概要](costs/get-started-partners.md)」を参照してください。 Cost Management では、クラシック CSP はサポートされていません。
   - question: 予測コストを表示するにはどうすればよいですか?
     answer: >
       Azure portal で **[コストの管理と請求]**  >  **[コスト管理]**  >  **[コスト分析]** に移動します。 既定のビューでは、最上位のグラフに、実績/償却コストと予測コストのセクションがあります。 グラフの純色は、実際の/償却コストを示しています。 影付きの色は、予測コストを示します。
@@ -87,7 +87,7 @@ sections:
     answer: >
       記事「[Azure ストレージ アカウントの SAS キーを使用してコスト データをエクスポートする](costs/export-cost-data-storage-account-sas-key.md)」を参照してください。
   - question: CSP パートナーとして、Cost Management は Azure プランのクラシック CSP プランでサポートされていますか?
-    answer: "[新しいコマース エクスペリエンス](https://www.microsoft.com/licensing/news/new-azure-experience-in-csp)でクラシック CSP のお客様を Azure プランに移行する計画があるため、Azure Cost Management は、Azure プランを利用しているお客様の直接パートナーおよび間接プロバイダーのみが利用できます。 \n"
+    answer: "[新しいコマース エクスペリエンス](https://www.microsoft.com/licensing/news/new-azure-experience-in-csp)でクラシック CSP のお客様を Azure プランに移行する計画があるため、Cost Management + Billing は、Azure プランを利用しているお客様の直接パートナーおよび間接プロバイダーのみが利用できます。 \n"
   - question: CSP パートナー (全体管理者) として Azure プランのエンド カスタマーとリセラーのサブスクリプション スコープでコスト可視性ポリシーを有効にするにはどうすればよいですか?
     answer: >
       サブスクリプションの Azure RBAC ユーザーの小売料金での Azure で使用されているサービスに対するコスト可視化ポリシーを有効にするには、「[顧客テナントのサブスクリプションのコスト管理ができるようにする](costs/get-started-partners.md#enable-cost-management-for-customer-tenant-subscriptions)」を参照してください。 直接パートナーまたは間接プロバイダーの全体管理者は、ポリシーに関係なく、顧客テナントのコストを表示できます。
@@ -100,10 +100,10 @@ sections:
   - question: Cost Management ではどのような種類のプランがサポートされていますか?
     answer: >
       「[サポートされている Microsoft Azure プラン](./costs/understand-cost-mgt-data.md#supported-microsoft-azure-offers)」を参照してください。
-  - question: Azure Cost Management でコストと使用状況データが表示されるまでにどれくらいかかりますか?
+  - question: Cost Management でコストと使用状況データが表示されるまでにどれくらいかかりますか?
     answer: >
       「[コストと使用状況データの更新と保有](./costs/understand-cost-mgt-data.md#cost-and-usage-data-updates-and-retention)」を参照してください。
-  - question: コストに関連するすべての情報を Azure Cost Management で見つけることはできますか?
+  - question: コストに関連するすべての情報を Cost Management で見つけることはできますか?
     answer: >
       「[Cost Management に含まれるコスト](costs/understand-cost-mgt-data.md#costs-included-in-cost-management)」を参照してください。
   - question: 予算および予測ビューには割り当てられたコストが考慮されていますか?
@@ -144,7 +144,7 @@ sections:
     answer: >
       割引を表示するには、いくつかの方法があります。
 
-      -  EA をご利用のお客様の場合は、EA 用の Azure Cost Management Power BI アプリを使用して、[[RI Savings]\(RI の節約\) レポート](./costs/analyze-cost-data-azure-cost-management-power-bi-template-app.md#reports-available-with-the-app)を表示できます。
+      -  EA をご利用のお客様の場合は、EA 用の Cost Management Power BI アプリを使用して、[[RI Savings]\(RI の節約\) レポート](./costs/analyze-cost-data-azure-cost-management-power-bi-template-app.md#reports-available-with-the-app)を表示できます。
 
       -  [使用量 + 請求金額] データ ファイルを使用して、手動で[予約による割引を判定](reservations/understand-reserved-instance-usage-ea.md#determine-reservation-savings)します。
   - question: 十分に活用されていない予約を表示するにはどうすればよいですか?
@@ -331,7 +331,7 @@ sections:
     answer: "\"_リソース グループ_\" と \"_タグ_\" を使用している場合、この情報はサービス レベルで追跡され、詳細な使用状況のダウンロード (CSV) ファイルでアクセスできます。 Azure エンタープライズ ポータルの[使用状況レポートのダウンロード](https://ea.azure.com/report/downloadusage)を参照してください。\n\nAPI で使用状況にアクセスすることもできます。 詳細な情報とサンプル コードについては、[Azure Enterprise REST API](manage/ea-portal-rest-apis.md) に関するページを参照してください。\n\n> [!NOTE]\n> タグを適用できるのは、Azure Resource Manager の操作をサポートするリソースのみです。 仮想マシン、仮想ネットワーク、またはストレージをクラシック デプロイ モデル (クラシック ポータルなど) を使用して作成した場合、そのリソースにタグを適用することはできません。 タグ付けをサポートするには、Resource Manager を介してこれらのリソースを再デプロイする必要があります。 その他のすべてのリソースでは、タグ付けがサポートされています。\n"
   - question: Power BI を使用して分析を実行できますか?
     answer: >
-      はい。[Power BI Desktop 用の Azure Cost Management コネクタ](/power-bi/connect-data/desktop-connect-azure-cost-management)を使用すると、Azure のコストの理解を深めるのに役立つ、強力でカスタマイズされた視覚化とレポートを作成することができます。 Enterprise Agreement (EA) を使用している場合は、[Azure Cost Management テンプレート アプリ](costs/analyze-cost-data-azure-cost-management-power-bi-template-app.md)を使用することもできます。 Azure Cost Management テンプレート アプリには、コストの監視、サービスの使用傾向、および支出を削減するためのコスト最適化オプションの特定に役立つ、あらかじめ作成されたレポートが付属します。               Power BI レポートは、課金情報を表示するアクセス権がある、Azure EA ダイレクト、パートナー、およびインダイレクトのお客様にご利用いただけます。
+      はい。[Power BI Desktop 用の Cost Management コネクタ](/power-bi/connect-data/desktop-connect-azure-cost-management)を使用すると、Azure のコストの理解を深めるのに役立つ、強力でカスタマイズされた視覚化とレポートを作成することができます。 Enterprise Agreement (EA) を使用している場合は、[Cost Management テンプレート アプリ](costs/analyze-cost-data-azure-cost-management-power-bi-template-app.md)を使用することもできます。 Cost Management テンプレート アプリには、コストの監視、サービスの使用傾向、および支出を削減するためのコスト最適化オプションの特定に役立つ、あらかじめ作成されたレポートが付属します。               Power BI レポートは、課金情報を表示するアクセス権がある、Azure EA ダイレクト、パートナー、およびインダイレクトのお客様にご利用いただけます。
   - question: 既存の Azure アカウントを Azure EA 加入契約に関連付けることはできますか?
     answer: >
       はい。 自分がアカウント所有者であるすべての Azure サブスクリプションが、Enterprise Agreement に変換されます。 これには、Visual Studio、AzurePass、MPN、BizSpark など、月単位のクレジットを使用するサブスクリプションが含まれます。 そのようなサブスクリプションを変換すると、月単位のクレジットが失われます。

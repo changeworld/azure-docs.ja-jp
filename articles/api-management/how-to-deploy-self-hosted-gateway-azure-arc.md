@@ -6,18 +6,18 @@ ms.author: danlep
 ms.service: api-management
 ms.topic: article
 ms.date: 05/25/2021
-ms.openlocfilehash: bfcb6e738c480281361d544c4aa7a8dd355d92de
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: ee2b0fc20111fddd55a987bef4d454d5b63b8e4e
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128590705"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129708495"
 ---
 # <a name="deploy-an-azure-api-management-gateway-on-azure-arc-preview"></a>Azure API Management ゲートウェイを Azure Arc にデプロイする (プレビュー)
 
 Azure API Management と [Kubernetes 上の Azure Arc](../azure-arc/kubernetes/overview.md) の統合により、API Management ゲートウェイ コンポーネントを、[Azure Arc 対応 Kubernetes クラスターの拡張機能](../azure-arc/kubernetes/extensions.md)としてデプロイできます。 
 
-API Management ゲートウェイを Arc 対応 Kubernetes クラスターにデプロイすると、ハイブリッドおよびマルチクラウドの各環境のための API Management サポートが拡張されます。 クラスター拡張機能を使用したデプロイを有効にすると、ポリシーの管理と Arc 対応クラスターへの適用を一貫した操作で行うことができます。
+API Management ゲートウェイを Azure Arc 対応 Kubernetes クラスターにデプロイすると、ハイブリッドおよびマルチクラウドの各環境のための API Management サポートが拡張されます。 クラスター拡張機能を使用したデプロイを有効にすると、ポリシーの管理と Azure Arc 対応クラスターへの適用を一貫した操作で行うことができます。
 
 [!INCLUDE [preview](./includes/preview/preview-callout-self-hosted-gateway-azure-arc.md)]
 

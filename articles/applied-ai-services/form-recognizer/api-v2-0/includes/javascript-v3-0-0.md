@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 05/25/2021
 ms.author: lajanuar
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: cec68dd2fe938cea22bbc9a34c9227f2988307b5
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 9b0af9be953f664b962cf780cee0143594811401
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128641782"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129725655"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->

@@ -1,6 +1,7 @@
 ---
-title: Azure Active Directory での SAML トークン暗号化
+title: SAML トークン暗号化
 description: Azure Active Directory の SAML トークン暗号化を構成する方法について説明します。
+titleSuffix: Azure AD
 services: active-directory
 author: davidmu1
 manager: CelesteDG
@@ -12,14 +13,14 @@ ms.date: 03/13/2020
 ms.author: davidmu
 ms.reviewer: alamaral
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2dc7169055f006ca12c2f291d20683022a27d7a2
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d15e4425b7506ada2ac1dcaf9f83bb4112a21639
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121749163"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129617646"
 ---
-# <a name="how-to-configure-azure-ad-saml-token-encryption"></a>Azure AD SAML トークン暗号化の構成方法
+# <a name="configure-azure-active-directory-saml-token-encryption"></a>Azure Active Directory の SAML トークン暗号化を構成する
 
 > [!NOTE]
 > トークン暗号化は、Azure Active Directory (Azure AD) のプレミアム機能です。 Azure AD のエディション、機能、および価格について詳しくは、[Azure AD の価格](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing)に関するページをご覧ください。

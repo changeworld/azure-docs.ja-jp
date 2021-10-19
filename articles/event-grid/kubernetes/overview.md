@@ -6,12 +6,12 @@ ms.author: jafernan
 ms.subservice: kubernetes
 ms.date: 05/25/2021
 ms.topic: overview
-ms.openlocfilehash: 807d337988993c8be0fee76b9c12e1fc6dc75c7d
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 109c9248bf087cb998fd8debdc644de8cfb1488b
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122770570"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129714907"
 ---
 # <a name="event-grid-on-kubernetes-with-azure-arc-preview---overview"></a>Azure Arc を使用した Kubernetes 上の Event Grid (プレビュー) - 概要
 この記事では、Kubernetes 上の Event Grid の概要、使用方法のユース ケース、提供されている機能、および Azure Event Grid との違いについて説明します。

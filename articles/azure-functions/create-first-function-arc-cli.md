@@ -3,19 +3,19 @@ title: 'クイックスタート: Azure Arc で関数アプリを作成する'
 description: 最初の関数アプリをデプロイすることによって、Azure Arc で Azure Functions の使用を開始します。
 ms.topic: quickstart
 ms.date: 05/10/2021
-ms.openlocfilehash: 3a9c92e500e79b68688ec526baa2a77b8df2ccef
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 4fd5a7a2792e6e90748c60336d92d5ed80388267
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121723010"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129706999"
 ---
 # <a name="create-your-first-function-on-azure-arc-preview"></a>Azure Arc で初めての関数を作成する (プレビュー)
 
 このクイックスタートでは、Azure Functions プロジェクトを作成し、[Azure Arc 対応 Kubernetes クラスター](../azure-arc/kubernetes/overview.md)で実行される関数アプリにデプロイします。 詳細については、「[Azure Arc の App Service、Functions、および Logic Apps](../app-service/overview-arc-integration.md)」を参照してください。このシナリオでは、Linux で実行されている関数アプリのみがサポートされます。   
 
 > [!NOTE]
-> Arc に対応した Kubernetes クラスターでの関数の実行は、現在プレビュー段階です。  
+> Azure Arc 対応 Kubernetes クラスターでの関数の実行は、現在プレビュー段階です。  
 >  
 > 現在、Azure Arc 対応 Kubernetes クラスターに PowerShell 関数プロジェクトを発行する操作はサポートされていません。 Azure Arc 対応 Kubernetes クラスターに PowerShell 関数をデプロイする必要がある場合は、[コンテナー内に関数アプリを作成](create-first-function-arc-custom-container.md)します。 
 
@@ -164,7 +164,7 @@ func azure functionapp list-functions
 
 ## <a name="next-steps"></a>次の手順
 
-これで、Arc 対応 App Service Kubernetes 環境のコンテナーで実行する関数アプリが作成されたので、Queue Storage 出力バインドを追加して Azure Storage に接続できます。
+これで、Azure Arc 対応 App Service Kubernetes 環境のコンテナーで実行する関数アプリが作成されたので、Queue Storage 出力バインドを追加して Azure Storage に接続できます。
 
 # <a name="c"></a>[C\#](#tab/csharp)  
 

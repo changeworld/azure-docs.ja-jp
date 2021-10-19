@@ -6,12 +6,12 @@ ms.author: sunaray
 ms.service: mysql
 ms.topic: how-to
 ms.date: 06/08/2021
-ms.openlocfilehash: 05ccdc3613141e7b04c3255a6035c7a03ad25995
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: ee81fa18ac0f6bae6a3aefbfef60333991001dff
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128579731"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129812139"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-flexible-server-data-in-replication"></a>Azure Database for MySQL フレキシブル サーバーのデータイン レプリケーションを構成する方法
 
@@ -164,6 +164,8 @@ Azure Database for MySQL フレキシブル サービスでレプリカを作成
 
    Azure Database for MySQL フレキシブル サーバー サービスに作成したサーバーにダンプ ファイルを復元します。 ダンプ ファイルを MySQL サーバーに復元する方法については、「[ダンプと復元](../concepts-migrate-dump-restore.md)」を参照してください。 大きいダンプ ファイルは、レプリカ サーバーと同じリージョンにある Azure 内の仮想マシンにアップロードしてください。 そのファイルを仮想マシンから Azure Database for MySQL フレキシブル サーバーに復元します。
 
+>[!Note]
+>* ダンプと復元を行うときにデータベースを読み取り専用に設定したくない場合は、[mydumper/mydumper](../concepts-migrate-mydumper-myloader.md) を使用できます。
 
 ## <a name="link-source-and-replica-servers-to-start-data-in-replication"></a>ソースとレプリカのサーバーをリンクしてデータイン レプリケーションを開始する
 
@@ -189,7 +191,8 @@ Azure Database for MySQL フレキシブル サービスでレプリカを作成
      このパラメーターは変数で渡すことをお勧めします。 詳細については、次の例を参照してください。
 
    > [!NOTE]
-   > ソース サーバーが Azure VM にホストされる場合は、[Azure サービスへのアクセスを許可] を [有効] に設定して、ソースとレプリカのサーバーが相互に通信できるようにします。 この設定は、 **[接続のセキュリティ]** オプションから変更できます。 詳細については、[ポータルを使用してファイアウォール規則を管理する](how-to-manage-firewall-portal.md)方法に関するページを参照してください。
+   > * ソース サーバーが Azure VM にホストされる場合は、[Azure サービスへのアクセスを許可] を [有効] に設定して、ソースとレプリカのサーバーが相互に通信できるようにします。 この設定は、 **[接続のセキュリティ]** オプションから変更できます。 詳細については、[ポータルを使用したファイアウォール規則の管理](how-to-manage-firewall-portal.md)に関する記事を参照してください。
+   > * mydumper/mydumper を使用してデータベースをダンプした場合は、 */backup/metadata* ファイルから master_log_file と master_log_pos を取得できます。 
 
    **使用例**
 

@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 08/25/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 6c202c3f192e9097eb3f861f53a384a60882dcd1
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: c65f1c511e0f33f4b460bf7d1f7a40895437b019
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128657084"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129709845"
 ---
 # <a name="configure-a-custom-container-for-azure-app-service"></a>Azure App Service のカスタム コンテナーを構成する
 
@@ -323,6 +323,37 @@ SSH では、コンテナーとクライアント間の通信をセキュリテ�
     > - `Ciphers` には、`aes128-cbc,3des-cbc,aes256-cbc` の項目を少なくとも 1 つ含める必要があります。
     > - `MACs` には、`hmac-sha1,hmac-sha1-96` の項目を少なくとも 1 つ含める必要があります。
 
+- [ssh-keygen を使用](https://man.openbsd.org/ssh-keygen.1)して SSH キーを作成するための ssh_setup スクリプト ファイルをリポジトリに追加します。
+
+    ```
+    #!/bin/sh
+
+    if [ ! -f "/etc/ssh/ssh_host_rsa_key" ]; then
+        # generate fresh rsa key
+        ssh-keygen -f /etc/ssh/ssh_host_rsa_key -N '' -t rsa
+    fi
+
+    if [ ! -f "/etc/ssh/ssh_host_dsa_key" ]; then
+        # generate fresh dsa key
+        ssh-keygen -f /etc/ssh/ssh_host_dsa_key -N '' -t dsa
+    fi
+
+    if [ ! -f "/etc/ssh/ssh_host_ecdsa_key" ]; then
+        # generate fresh ecdsa key
+        ssh-keygen -f /etc/ssh/ssh_host_ecdsa_key -N '' -t dsa
+    fi
+
+    if [ ! -f "/etc/ssh/ssh_host_ed25519_key" ]; then
+        # generate fresh ecdsa key
+        ssh-keygen -f /etc/ssh/ssh_host_ed25519_key -N '' -t dsa
+    fi
+
+    #prepare run dir
+        if [ ! -d "/var/run/sshd" ]; then
+        mkdir -p /var/run/sshd
+    fi
+    ```
+
 - Dockerfile で、次のコマンドを追加します。
 
     ```Dockerfile
@@ -332,6 +363,12 @@ SSH では、コンテナーとクライアント間の通信をセキュリテ�
 
     # Copy the sshd_config file to the /etc/ssh/ directory
     COPY sshd_config /etc/ssh/
+
+    # Copy and configure the ssh_setup file
+    RUN mkdir -p /tmp
+    COPY ssh_setup.sh /tmp
+    RUN chmod +x /tmp/ssh_setup.sh \
+        && (sleep 1;/tmp/ssh_setup.sh 2>&1 > /dev/null)
 
     # Open port 2222 for SSH access
     EXPOSE 80 2222

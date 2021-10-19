@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: d87a09615df4882b132fd407417c046d174e9a0f
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: fc49dc992125e22205f50faa3f38283024559cba
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128570476"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129657570"
 ---
 # <a name="set-up-a-password-reset-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でパスワードのリセット フローを設定する
 
@@ -338,6 +338,9 @@ ms.locfileid: "128570476"
 カスタム ポリシーは、ユーザー体験を定義するために Azure AD B2C テナントにアップロードする XML ファイルのセットです。 サインアップとサインイン、パスワードのリセット、プロファイル編集ポリシーなど、いくつかの事前に構築されたポリシーを含むスターター パックが用意されています。 詳細については、「[Azure AD B2C でのカスタム ポリシーの概要](tutorial-create-user-flows.md?pivots=b2c-custom-policy)」を参照してください。
 
 ::: zone-end
+
+## <a name="troubleshoot-azure-ad-b2c-user-flows-and-custom-policies"></a>Azure AD B2C のユーザー フローとカスタム ポリシーのトラブルシューティング
+アプリケーション側で、Azure B2C サービスから生成された特定のエラーを処理する必要があります。 [Azure AD B2C のユーザー フローとカスタム ポリシーのトラブルシューティング方法](troubleshoot.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

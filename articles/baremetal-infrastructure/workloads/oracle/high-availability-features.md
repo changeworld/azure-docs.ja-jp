@@ -3,13 +3,13 @@ title: Azure BareMetal における Oracle の高可用性機能
 description: BareMetal で利用できる Oracle データベースの機能について説明します。
 ms.topic: overview
 ms.subservice: baremetal-oracle
-ms.date: 04/16/2021
-ms.openlocfilehash: 73473cb99521be76be5518ad82dfbb9ec9d1feb0
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.date: 10/11/2021
+ms.openlocfilehash: bdd557f4d4ab26fdf348937882d5923801509786
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121862481"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129855424"
 ---
 # <a name="high-availability-features-for-oracle-on-azure-baremetal"></a>Azure BareMetal における Oracle の高可用性機能
 
@@ -19,7 +19,7 @@ Oracle は、そのデータベースを実行する回復性のあるプラッ�
 
 ## <a name="flashback-database"></a>Flashback Database
 
-[Flashback Database](https://docs.oracle.com/en/database/oracle/oracle-database/21/rcmrf/FLASHBACK-DATABASE.html#GUID-584AC79A-40C5-45CA-8C63-DED3BE3A4511) 機能は、Oracle Database Enterprise Edition で提供されます。 Flashback Database は、データベースを特定の時点まで巻き戻すものです。 復元後に早送りするのではなく、現在の時点から巻き戻すという点で、この機能は [Recovery Manager (RMAN)](https://docs.oracle.com/en/cloud/paas/db-backup-cloud/csdbb/performing-general-restore-and-recovery-operations.html) による特定の時点への復旧とは異なります。 したがって、完了までの所要時間は、Flashback Database の方が圧倒的に短くなります。
+[Flashback Database](https://docs.oracle.com/en/database/oracle/oracle-database/21/rcmrf/FLASHBACK-DATABASE.html#GUID-584AC79A-40C5-45CA-8C63-DED3BE3A4511) 機能は、Oracle Database Enterprise Edition で提供されます。 Flashback Database は、データベースを特定の時点まで巻き戻すものです。 復元後に早送りするのではなく、現在の時点から巻き戻すため、この機能は [Recovery Manager (RMAN)](https://docs.oracle.com/en/cloud/paas/db-backup-cloud/csdbb/performing-general-restore-and-recovery-operations.html) による特定の時点への復旧とは異なります。 したがって、完了までの所要時間は、Flashback Database の方が圧倒的に短くなります。
  
 この機能は、[Oracle Data Guard](https://docs.oracle.com/en/database/oracle/oracle-database/19/sbydb/preface.html#GUID-B6209E95-9DA8-4D37-9BAD-3F000C7E3590) と連携させることができます。 データベース管理者は、Flashback Database を使用して、障害が発生したデータベースを再インスタンス化し、Data Guard 構成に戻すことが可能です。その際、RMAN による完全な復元と復旧を行う必要はありません。 ディザスター リカバリー機能 (Active Data Guard によってオフロードされるあらゆるレポート機能とバックアップという利点を含む) の復元時間は、この機能によって大幅に短縮されます。
  
@@ -37,7 +37,7 @@ Oracle の「[高可用性の概要とベスト プラクティス](https://docs
 
 いずれかのインスタンスで障害が発生しても、残りすべてのインスタンスでサービスは続行されます。 このソリューションでデプロイされる各データベースは、n+1 の RAC 構成となります (n は、サービスをサポートするうえで最低限必要な処理能力)。
 
-いずれかのインスタンスで障害が発生した場合でも、ノード間で透過的に接続をフェールオーバーできるよう、Oracle Database サービスが使用されます。 そのような障害は、計画されている場合もあれば、計画されていない場合もあります。 サービスは、アプリケーション (Fast Application Notification イベント) と連携し、インスタンスが利用不可の状態になると、生存ノードに移動されます。 サービスの移動先となるのは、サービス構成で preferred (優先) または available (利用可能) として指定されたノードです。
+いずれかのインスタンスで障害が発生した場合でも、ノード間で透過的に接続をフェールオーバーできるよう、Oracle Database サービスが使用されます。 そのような障害は、計画されている場合もあれば、計画されていない場合もあります。 サービスは、Oracle RAC Fast Application Notification と連携し、インスタンスが利用不可の状態になると、生存ノードに移動されます。 サービスの移動先となるのは、サービス構成で preferred (優先) または available (利用可能) として指定されたノードです。
 
 Oracle Database サービスには、重要な機能がもう 1 つあります。ロールに応じたサービスのみを開始する機能です。 Data Guard フェールオーバーが存在する場合に、この機能が使用されます。 Data Guard を使用してデプロイされるすべてのパターンで、データベース サービスを Data Guard ロールにリンクさせる必要があります。
 
@@ -45,7 +45,7 @@ Oracle Database サービスには、重要な機能がもう 1 つあります�
 
 ## <a name="oracle-data-guard"></a>Oracle データの保護
 
-Data Guard を使用すると、まったく同じデータベース コピーを異なる物理ハードウェアに置くことができます。 そのハードウェアは、プライマリ データベースから地理的に遠ざけるのが理想です。 Data Guard に距離的な制限はありませんが、距離は保護のモードに影響します。 距離を増やしたことでサイト間の待ち時間が増え、一部のオプション (同期レプリケーションなど) の実用性が失われる原因になる場合があります。
+Data Guard を使用すると、データベース コピーを異なる物理ハードウェアに置くことができます。 そのハードウェアは、プライマリ データベースから地理的に遠ざけるのが理想です。 Data Guard に距離的な制限はありませんが、距離は保護のモードに影響します。 距離を増やしたことでサイト間の待ち時間が増え、それによって一部のオプション (同期レプリケーションなど) がサポートされなくなる場合があります。
 
 Data Guard は、次の点でストレージレベルのレプリケーションよりも優れています。
 
@@ -53,6 +53,7 @@ Data Guard は、次の点でストレージレベルのレプリケーション
 - ワークロードによっては一時テーブルスペースに対する高負荷の入出力が生じる場合があります。これらはスタンバイ側には不要であり、レプリケートされません。
 - レプリケートされたブロックに対する検証がスタンバイ データベース側で実行されるため、プライマリ データベースの物理的な破損は、スタンバイ データベースにはレプリケートされません。
 - ブロック内の論理的な破損や Lost Write 破損を防ぎます。 また、ストレージ管理者によるミスがスタンバイにレプリケートされるリスクも防止されます。
+
 事前に決められた期間、Redo を遅らせることができるため、ユーザー エラーが直ちにスタンバイにレプリケートされることはありません。
 
 ## <a name="baremetal-snapshot-recovery"></a>BareMetal スナップショット復旧
@@ -72,7 +73,7 @@ Recovery Manager (RMAN) は、物理データベース バックアップの作�
 
 RMAN を使用すると、データベースのホット バックアップまたはコールド バックアップを実行できます。 これらのバックアップを使用して、スタンバイ データベースを作成したり、データベースを複製して環境をクローンしたりすることができます。 また、RMAN には、復元の検証機能が備わっています。 この機能は、バックアップ セットを読み取り、それを使用してデータベースを特定の時点に復旧できるかどうかを判断するものです。
 
-RMAN は Oracle が提供するユーティリティであるため、データベース ファイルの内部構造が読み取られます。 そのためバックアップや復元の操作中に、物理的な破損と論理的な破損のチェックを実行することができます。 また、データベースのデータファイルを復旧し、個々のデータファイルとテーブルスペースを特定の時点まで復元することもできます。 これらが、ストレージ スナップショットと比べて RMAN が優れている点です。 スナップショットが使用できない場合は、RMAN バックアップが、完全なデータ損失に対する最後の砦となります。
+RMAN は Oracle によって提供されているため、これによってデータベース ファイルの内部構造が読み取られます。 この機能を使用すると、バックアップや復元の操作中に、物理的および論理的な破損のチェックを実行することができます。 また、データベースのデータファイルを復旧し、個々のデータファイルとテーブルスペースを特定の時点まで復元することもできます。 これらが、ストレージ スナップショットと比べて RMAN が優れている点です。 スナップショットが使用できない場合は、RMAN バックアップが、完全なデータ損失に対する最後の砦となります。
 
 ## <a name="next-steps"></a>次のステップ
 

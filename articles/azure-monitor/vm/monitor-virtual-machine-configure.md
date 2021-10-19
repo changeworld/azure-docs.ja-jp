@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2021
-ms.openlocfilehash: ce9fd7bd2b123877f73978caaabafca8c767c2be
-ms.sourcegitcommit: 98e126b0948e6971bd1d0ace1b31c3a4d6e71703
+ms.openlocfilehash: ceb57d364cca4b05d170ad6e42e8894f9a1ce86e
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114674333"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129710235"
 ---
 # <a name="monitor-virtual-machines-with-azure-monitor-configure-monitoring"></a>Azure Monitor を使用して仮想マシンを監視する: 監視の構成
 この記事は、シナリオ「[Azure Monitor で仮想マシンとそのワークロードを監視する](monitor-virtual-machine.md)」の一部です。 Azure Monitor で Azure 仮想マシンとハイブリッド仮想マシンの監視を構成する方法について説明します。
@@ -79,8 +79,8 @@ Azure Private Link を使用すると、Log Analytics ワークスペースの�
 
 Azure Arc 対応サーバーに対してさらにコストが発生することはありませんが、有効にするさまざまなオプションに対してコストが発生することがあります。 詳細については、「[Azure Arc の価格](https://azure.microsoft.com/pricing/details/azure-arc/)」を参照してください。 ハイブリッド マシンが VM 分析情報に対して有効にされた後にワークスペースで収集されるデータには、コストが発生します。
 
-### <a name="machines-that-cant-use-azure-arcenabled-servers"></a>Azure Arc 対応サーバーを使用できないマシン
-次の条件に一致するハイブリッド マシンがある場合、それらのマシンでは Azure Arc 対応サーバーを使用できません。 
+### <a name="machines-that-cant-use-azure-arc-enabled-servers"></a>Azure Arc 対応サーバーを使用できないマシン
+次の条件に一致するハイブリッド マシンがある場合、それらのマシンでは Azure Arc 対応サーバーを使用できません。
 
 - マシンのオペレーティング システムは、Azure Arc によって有効にされているサーバー エージェントでサポートされていない。詳細については、「[サポートされるオペレーティング システム](../../azure-arc/servers/agent-overview.md#prerequisites)」を参照してください。
 - ご使用のセキュリティ ポリシーでは、マシンを Azure に直接接続できない。 Log Analytics エージェントでは、Azure Arc 対応サーバーがインストールされているかどうかにかかわらず、[Log Analytics ゲートウェイ](../agents/gateway.md)を使用できます。 Azure Arc によって有効にされているサーバー エージェントは、Azure に直接接続される必要があります。
@@ -110,7 +110,7 @@ Azure Monitor エージェントには、収集するデータと、そのデー
 
 Log Analytics エージェントによって既に収集されているデータと重複するので、ログにデータを送信しないように注意してください。
 
-Azure 仮想マシンと Azure Arc 対応サーバーで同じ方法を使用して、個々のマシンに Azure Monitor をインストールできます。 これらの方法には、Azure portal または Resource Manager テンプレートを使用した個々のマシンのオンボードや、Azure Policy を使用した大規模なマシンの有効化が含まれます。 Azure Arc 対応サーバーを使用できないハイブリッド マシンの場合は、エージェントを手動でインストールします。
+Azure 仮想マシンと Azure Arc 対応サーバーで同じ方法を使用して、個々のマシンに Azure Monitor エージェントをインストールできます。 これらの方法には、Azure portal または Resource Manager テンプレートを使用した個々のマシンのオンボードや、Azure Policy を使用した大規模なマシンの有効化が含まれます。 Azure Arc 対応サーバーを使用できないハイブリッド マシンの場合は、エージェントを手動でインストールします。
 
 Azure portal を使用して、DCR を作成し、Azure Monitor エージェントを 1 つ以上のエージェントにデプロイするには、[Azure portal でのルールと関連付けの作成](../agents/data-collection-rule-azure-monitor-agent.md)に関する記事を参照してください。 その他のインストール方法については、「[Azure Monitor エージェントをインストールする](../agents/azure-monitor-agent-install.md)」で説明されています。 エージェントと DCR を作成時に新しいマシンに自動的にデプロイするポリシーを作成するには、「[Azure Policy を使用して大規模に Azure Monitor をデプロイする](../deploy-scale.md#azure-monitor-agent)」を参照してください。
 

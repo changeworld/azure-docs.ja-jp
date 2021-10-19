@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit, devx-track-azurepowershell
-ms.openlocfilehash: 62330b341d2aa59f33b5f780005042d114400748
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: f8cddbe0cf82245b566903541c51c78f0242005e
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128625679"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129713454"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Azure Functions の関数アプリのリソース デプロイを自動化
 
@@ -571,7 +571,7 @@ Linux アプリでは、`siteConfig` の下に `linuxFxVersion` プロパティ�
 
 ## <a name="deploy-to-azure-arc"></a>Azure Arc にデプロイ
 
-Azure Functions は、 [Azure Arc 対応 Kubernetes](../app-service/overview-arc-integration.md)にデプロイできます。 このプロセスは、主に「[deploying to an App Service plan](#deploy-on-app-service-plan)」\ (App Service プランへのデプロイ\) に従いますが、いくつかの違いがあります。
+Azure Functions は、[Azure Arc 対応 Kubernetes](../app-service/overview-arc-integration.md) にデプロイできます。 このプロセスは、主に「[deploying to an App Service plan](#deploy-on-app-service-plan)」\ (App Service プランへのデプロイ\) に従いますが、いくつかの違いがあります。
 
 アプリを作成し、リソースを計画するには、Azure Arc 対応 Kubernetes クラスター用の [App Service Kubernetes 環境](../app-service/manage-create-arc-environment.md) をあらかじめ作成しておく必要があります。 これらの例では、デプロイ先のカスタムの場所と App Service Kubernetes 環境のリソース ID があることを前提としています。 ほとんどのテンプレートでは、これらをパラメーターとして指定できます。
 

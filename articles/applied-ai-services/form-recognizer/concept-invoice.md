@@ -1,0 +1,133 @@
+---
+title: Form Recognizer の請求書モデル
+titleSuffix: Azure Applied AI Services
+description: 事前に構築された請求書モデルを使用するデータ抽出と分析を含む概念
+author: laujan
+manager: nitinme
+ms.service: applied-ai-services
+ms.subservice: forms-recognizer
+ms.topic: conceptual
+ms.date: 10/07/2021
+ms.author: lajanuar
+recommendations: false
+ms.openlocfilehash: 4b660d464a8615886be9b466fd2e9de808ef3bd9
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129716358"
+---
+<!-- markdownlint-disable MD033 -->
+
+# <a name="form-recognizer-invoice-model"></a>Form Recognizer の請求書モデル
+
+ 請求書モデルを使用すると、強力な光学式文字認識 (OCR) 機能と、ディープ ラーニング モデルを組み合わせて、売上の請求書の主要なフィールドと品目を分析し、抽出することができます。  電話でキャプチャされた画像、スキャンされたドキュメント、デジタル PDF など、さまざまな形式や品質の請求書を使用できます。 API によって請求書のテキストが分析され、顧客名、請求先住所、期限、支払金額などの主要な情報が抽出されて、構造化された JSON データ表現が返されます。
+
+##### <a name="sample-invoice-processed-with-form-recognizer-sample-labeling-tool"></a>[Form Recognizer サンプル ラベル付けツール](https://fott-2-1.azurewebsites.net/)で処理された請求書のサンプル:
+
+:::image type="content" source="media/overview-invoices.jpg" alt-text="サンプル請求書" lightbox="media/overview-invoices-big.jpg":::
+
+## <a name="try-form-recognizer-studio-preview"></a>Form Recognizer Studio (プレビュー) を試す
+
+* Form Recognizer Studio は、プレビュー (v3.0) API で使用できます。
+
+* Form Recognizer Studio の請求書機能を使用して、顧客とベンダーの詳細情報、品目などを抽出します。
+
+> [!div class="nextstepaction"]
+> [Form Recognizer Studio を試す](https://formrecognizer.appliedai.azure.com/studio/prebuilt?formType=invoice)
+
+## <a name="try-it-sample-labeling-tool"></a>試してみる: サンプル ラベル付けツール
+
+サンプル ラベル付けツールを試すことで、請求書データがどのように抽出されるかを確認できます。 次が必要です。
+
+* Azure サブスクリプション - [無料で作成](https://azure.microsoft.com/free/cognitive-services/)できます
+
+* Azure portal の [Form Recognizer インスタンス](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer)。 Free 価格レベル (`F0`) を利用して、サービスを試用できます。 リソースがデプロイされたら、 **[リソースに移動]** をクリックして API キーとエンドポイントを取得します。
+
+ :::image type="content" source="media/containers/keys-and-endpoint.png" alt-text="スクリーンショット: Azure portal のキーとエンドポイントの場所。":::
+
+* 請求書ドキュメント。 [サンプル請求書ドキュメント](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/sample-invoice.pdf)を使用できます。
+
+> [!div class="nextstepaction"]
+  > [試してみる](https://fott-2-1.azurewebsites.net/prebuilts-analyze)
+
+  Form Recognizer UI で以下の手順を実行します。
+
+  1. **[Use prebuilt model to get data]\(事前構築済みモデルを使用してデータを取得する\)** を選択します。
+  1. **[フォームの種類]** ドロップダウン メニューから **[請求書]** を選択します。
+
+  :::image type="content" source="media/try-invoice.png" alt-text="スクリーンショット: サンプル ラベル付けツールのドロップダウン、事前構築済みモデルの選択メニュー。":::
+
+## <a name="input-requirements"></a>入力の要件
+
+* 最適な結果を得るには、ドキュメントごとに 1 つの鮮明な写真または高品質のスキャンを用意してください。
+* サポートされているファイル形式: JPEG、PNG、BMP、TIFF、および PDF (テキスト埋め込みまたはスキャン済み)。 文字の抽出と位置に関するエラーが発生する可能性を排除するには、テキストが埋め込まれている PDF が最適です。
+* PDF および TIFF の場合、最大 2000 ページを処理できます (Free レベルのサブスクリプションでは、最初の 2 ページのみが処理されます)。
+* ファイル サイズは 50 MB 未満である必要があります。
+* 画像の寸法は、50 x 50 ピクセルから 10,000 x 10,000 ピクセルの間である必要があります。
+* PDF の寸法は、17 x 17 インチまでで、Legal または A3 サイズ以下の用紙に対応します。
+* トレーニング データの合計サイズは、500 ページ以下です。
+* PDF がパスワードでロックされている場合は、送信前にロックを解除する必要があります。
+* 教師なし学習の場合 (ラベルの付いたデータなし):
+  * データには、キーと値を含める必要があります。
+  * キーは値の上または左に配置されている必要があり、下または右に配置されていてはいけません。
+
+> [!NOTE]
+> [サンプル ラベル付けツール](https://fott-2-1.azurewebsites.net/)では、BMP ファイル形式はサポートされていません。 これは、Form Recognizer サービスではなく、ツールの制限です。
+
+## <a name="supported-languages-and-locales"></a>サポートされている言語とロケール
+
+| モデル | 言語 - ロケール コード | Default |
+|--------|:----------------------|:---------|
+|請求書| <ul><li>英語 (米国) - en-US</li></ul>| 英語 (米国) - en-US|
+
+## <a name="key-value-pair-extraction"></a>キーと値のペアの抽出
+
+|名前| 型 | 説明 | 標準化された出力 |
+|:-----|:----|:----|:---:|
+| CustomerName | string | 請求された顧客| |
+| CustomerId | string | 顧客の参照 ID | |
+| PurchaseOrder | string | 注文書の参照番号 | |
+| InvoiceId | string | この特定の請求書の ID (多くの場合、"請求書番号") | |
+| InvoiceDate | date | 請求書の発行日 | yyyy-mm-dd|
+| DueDate | date | この請求書の支払期日 | yyyy-mm-dd|
+| VendorName | string | ベンダー名 |  |
+| VendorAddress | string |  ベンダーの郵送先住所|  |
+| VendorAddressRecipient | string | VendorAddress に関連付けられている名前 |  |
+| CustomerAddress | string | 顧客の住所 | |
+| CustomerAddressRecipient | string | CustomerAddress に関連付けられている名前 | |
+| BillingAddress | string | 顧客の明示的な請求先住所 |  |
+| BillingAddressRecipient | string | BillingAddress に関連付けられている名前 | |
+| ShippingAddress | string | 顧客の明示的な送付先住所 | |
+| ShippingAddressRecipient | string | ShippingAddress に関連付けられている名前 |  |
+| SubTotal | 数値 | この請求書で識別された小計フィールド | 整数 (integer) |
+| TotalTax | 数値 | この請求書で識別された合計税額フィールド | 整数 (integer) |
+| InvoiceTotal | 数値 (米国ドル) | この請求書に関連付けられている合計新規料金 | 整数 (integer) |
+| AmountDue |  数値 (米国ドル) | ベンダーに対する合計金額 | 整数 (integer) |
+| ServiceAddress | string | 顧客の明示的なサービス住所または物件所在地 | |
+| ServiceAddressRecipient | string | ServiceAddress に関連付けられている名前 |  |
+| RemittanceAddress | string | 顧客の明示的な送金住所または支払住所 |   |
+| RemittanceAddressRecipient | string | RemittanceAddress に関連付けられている名前 |  |
+| ServiceStartDate | date | サービス期間の最初の日 (たとえば、公共料金サービス期間) | yyyy-mm-dd |
+| ServiceEndDate | date | サービス期間の最後の日 (たとえば、公共料金サービス期間) | yyyy-mm-dd|
+| PreviousUnpaidBalance | 数値 | 明示的な以前の未払い残高 | 整数 (integer) |
+
+## <a name="form-recognizer-preview-v30"></a>Form Recognizer プレビュー v3.0
+
+ Form Recognizer プレビューでは、いくつかの新機能が導入されています。
+
+* アプリケーションとワークフローでプレビュー バージョンを使用する方法については、[**Form Recognizer v3.0 移行ガイド**](v3-migration-guide.md)に関する記事を参照してください。
+
+* プレビュー バージョンと新機能の詳細については、[**REST API (プレビュー)** ](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v3-0-preview-1/operations/AnalyzeDocument) に関する記事を参照してください。
+
+## <a name="next-steps"></a>次の手順
+
+* Form Recognizer のクイックスタートを完了する:
+
+  > [!div class="nextstepaction"]
+  > [Form Recognizer のクイックスタート](quickstarts/try-sdk-rest-api.md)
+
+* REST API を調べる:
+
+    > [!div class="nextstepaction"]
+    > [Form Recognizer API v2.1](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/5ed8c9843c2794cbb1a96291)

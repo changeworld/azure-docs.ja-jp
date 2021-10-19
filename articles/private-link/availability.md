@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 3/15/2021
 ms.custom: template-concept,references_regions
-ms.openlocfilehash: aaa013a25e9131ec55f002db089de0d353f13f7c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 175b940995ed4e68e1358989e8c9b09c201f3ce4
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128585768"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129711816"
 ---
 # <a name="azure-private-link-availability"></a>Azure Private Link の可用性
 
@@ -39,6 +39,7 @@ Azure Private Link を使用すると、お使いの仮想ネットワーク内�
 |Azure Event Hub | すべてのパブリック リージョン<br/>すべての Government リージョン      |   | GA   <br/> [Azure Event Hub のプライベート エンドポイントを作成する方法を確認します。](../event-hubs/private-link-service.md)  |
 | Azure Monitor <br/>(ログ分析と Application Insights) | すべてのパブリック リージョン      |  | GA   <br/> [Azure Monitor のプライベート エンドポイントを作成する方法を確認します。](../azure-monitor/logs/private-link-security.md)   |
 |Azure Data Factory | すべてのパブリック リージョン<br/> すべての Government リージョン<br/>すべての中国リージョン    | 資格情報は Azure Key Vault に格納する必要があります| GA   <br/> [Azure Data Factory のプライベート エンドポイントを作成する方法を確認します。](../data-factory/data-factory-private-link.md)   |
+|Azure HDInsight | すべてのパブリック リージョン<br/>すべての Government リージョン      |   | GA   <br/> [Azure HDInsight のプライベート エンドポイントを作成する方法を確認します。](../hdinsight/hdinsight-private-link.md)  |
 
 ### <a name="compute"></a>Compute
 

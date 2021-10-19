@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: overview
 ms.custom: contperf-fy21q4
 ms.date: 10/15/2020
-ms.openlocfilehash: 443dcf5bf34622fd0767ac75ece83e3ea6dc3ad0
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 9764afb8bbb0dd6e627336e360ed5b5edc5b8d14
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112075567"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129855975"
 ---
 # <a name="what-is-the-microsoft-commercial-marketplace"></a>Microsoft コマーシャル マーケットプレースとは何ですか?
 
@@ -43,8 +43,8 @@ Microsoft との提携の下でビジネスを促進し、パートナー様の�
 
 この記事で説明する Microsoft コマーシャル マーケットプレースには、次の 2 つの主要なオンライン ストアがあります。 
 
-- [Microsoft AppSource](https://appsource.microsoft.com/) には、ビジネス ソリューションと Azure Marketplace が含まれます。
-- [Azure Marketplace](https://azuremarketplace.microsoft.com/) は、IT ソリューション用に設計されています。
+- ビジネス ソリューション向け [Microsoft AppSource](https://appsource.microsoft.com/)
+- IT ソリューション向け [Azure Marketplace](https://azuremarketplace.microsoft.com/)
 
 > [!NOTE]
 > その他のコマーシャル マーケットプレースのソフトウェアとサービスが、Microsoft 365、Dynamics 365、Microsoft Power Platform、Azure などの Microsoft の製品に含まれている場合もあります。 Microsoft のオンライン ストアと製品内エクスペリエンスが、毎月何百万という潜在顧客を呼び込んでいます。 それぞれのオンライン ストアで異なるシナリオが提供されているため、皆様のソリューションまたはサービスを、それを必要とする顧客に確実に届けることができます。

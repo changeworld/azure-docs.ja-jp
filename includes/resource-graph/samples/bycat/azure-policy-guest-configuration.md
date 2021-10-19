@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: resource-graph
 ms.topic: include
-ms.date: 08/31/2021
+ms.date: 09/03/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 0ddd3c7e7c0a62b1b378c0a83cb266de8d078f24
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 55bfde4593282e415ad9436d9f81ef07a5570704
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123309548"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129725765"
 ---
 ### <a name="count-machines-in-scope-of-guest-configuration-policies"></a>ゲスト構成ポリシーのスコープにあるマシンを数える
 

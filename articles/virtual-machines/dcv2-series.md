@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-general
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: jushiman
-ms.openlocfilehash: c5232d9ed3e7ab7caec6134e4c5d3e553e2b543c
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 0c5321625f9963a15527d8fb0edef73f0701bd6e
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124818416"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129856387"
 ---
 # <a name="dcsv2-series"></a>DCsv2 シリーズ
 
@@ -22,7 +22,9 @@ DCsv2 シリーズの仮想マシンは、パブリック クラウドで処理�
 
 これらのマシンは、SGX テクノロジが搭載された 3.7 GHz Intel® Xeon E-2288G (Coffee Lake) によってサポートされています。 インテル® ターボ ブースト マックス テクノロジー 3.0 により、これらのマシンは最大 5.0 GHz まで高速化できます。 
 
-ユース ケース例としては、機密のマルチパーティ データ共有、不正行為の検出、機密のデータベース、マネー ロンダリング対策、ブロックチェーン、機密の利用状況分析、インテリジェンス分析、機密の機械学習などがあります。
+[!NOTE] ハイパースレッディングは、セキュリティの状態を追加する場合は無効になります。 価格は、物理コアと仮想コアでパフォーマンスが良いほうと、DC シリーズの独自のセキュリティ機能に基づいています。
+
+機密の使用例としては、データベース、ブロックチェーン、マルチパーティ データ分析、不正行為の検出、マネー ロンダリング対策、利用状況分析、インテリジェンス分析、機械学習などがあります。
 
 ## <a name="configuration"></a>構成
 
@@ -38,7 +40,7 @@ DCsv2 シリーズの仮想マシンは、パブリック クラウドで処理�
 
 ## <a name="technical-specifications"></a>技術仕様
 
-| サイズ             | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合および一時ストレージの最大スループットIOPS/MBps (キャッシュ サイズは GiB 単位) | 最大 NIC 数/想定ネットワーク帯域幅 (MBps) | EPC メモリ (MiB) |
+| サイズ             | 物理コア | メモリ:GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合および一時ストレージの最大スループットIOPS/MBps (キャッシュ サイズは GiB 単位) | 最大 NIC 数/想定ネットワーク帯域幅 (MBps) | EPC メモリ (MiB) |
 |------------------|------|-------------|------------------------|----------------|-------------------------------------------------------------------------|----------------------------------------------|---------------------|
 | Standard_DC1s_v2 | 1    | 4           | 50                     | 1              | 2,000/16                                                                                               | 2   | 28                                      |
 | Standard_DC2s_v2 | 2    | 8           | 100                    | 2              | 4,000/32                                                                                               | 2  | 56                                          |
@@ -51,7 +53,6 @@ DCsv2 シリーズの仮想マシンは、パブリック クラウドで処理�
 - [Azure portal](./linux/quick-create-portal.md) または [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-compute.acc-virtual-machine-v2?tab=overview) を使用して DCsv2 VM を作成します
 - DCsv2 シリーズの VM は[第 2 世代の VM](./generation-2.md#creating-a-generation-2-vm) であり、`Gen2` イメージのみをサポートしています。
 - 現在、「[リージョン別の Azure 製品](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines&regions=all)」にリストされているリージョンで利用できます。
-- 次世代の DC シリーズ VM: [プレビュー プログラムにご参加ください](https://aka.ms/intelgen3)
 
 ## <a name="more-sizes-and-information"></a>その他のサイズと情報
 

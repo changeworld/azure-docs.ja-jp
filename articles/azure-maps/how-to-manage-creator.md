@@ -1,18 +1,18 @@
 ---
 title: Microsoft Azure Maps Creator を管理する
 description: この記事では Microsoft Azure Maps Creator を管理する方法について説明します。
-author: anastasia-ms
-ms.author: v-stharr
-ms.date: 05/18/2021
+author: stevemunk
+ms.author: v-munksteve
+ms.date: 10/08/2021
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
-ms.openlocfilehash: af01febed5398ecb6750305e6d03352f9bcea727
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 09a70e55d796e0eb16d0806fb9a0726ff67ea812
+ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121751472"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129729769"
 ---
 # <a name="manage-azure-maps-creator"></a>Azure Maps Creator を管理する
 
@@ -32,7 +32,7 @@ Azure Maps Creator を使用すると、プライベートな屋内マップ デ
 
     :::image type="content" border="true" source="./media/how-to-manage-creator/creator-blade-settings.png" alt-text="Azure Maps Creator 作成ページ":::
 
-4. Creator リソースの名前、場所、およびマップ プロビジョニングのストレージ ユニットを入力します。 現在、Creator は米国でのみサポートされています。 **[Review + create]\(レビュー + 作成\)** を選択します。
+4. Creator リソースの名前、場所、およびマップ プロビジョニングのストレージ ユニットを入力した後、 **[確認および作成]** を選択します。
 
    :::image type="content" source="./media/how-to-manage-creator/creator-creation-dialog.png" alt-text="Creator アカウント情報入力ページ":::
 

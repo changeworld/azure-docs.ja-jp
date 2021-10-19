@@ -1,23 +1,23 @@
 ---
-title: クライアント アプリケーションからの要求を承認するために Azure AD からトークンを取得する
+title: ネイティブ アプリケーションまたは Web アプリケーションから BLOB またはキュー データへのアクセスを認可する
 titleSuffix: Azure Storage
 description: Azure Active Directory を使用して、クライアント アプリケーション内から認証し、OAuth 2.0 トークンを取得し、および Azure Blob Storage および Queue Storage への要求を承認します。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 10/11/2021
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 746d908065523651f9147a721531514d1a0f84c0
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 0eb9c51f112af25356023ea0483440cea1831e3e
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128673276"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129856451"
 ---
-# <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>クライアント アプリケーションからの要求を承認するために Azure AD からトークンを取得する
+# <a name="authorize-access-to-blob-or-queue-data-from-a-native-or-web-application"></a>ネイティブ アプリケーションまたは Web アプリケーションから BLOB またはキュー データへのアクセスを認可する
 
 Azure Blob Storage または Queue Storage で Azure Active Directory (Azure AD) を使用する主な利点は、資格情報をコード内に格納する必要がなくなることです。 代わりに、Microsoft ID プラットフォームから OAuth 2.0 アクセス トークンを要求することができます。 Azure AD によって、アプリケーションを実行しているセキュリティ プリンシパル (ユーザー、グループ、またはサービス プリンシパル) が認証されます。 認証が成功すると、Azure AD からアプリケーションにアクセス トークンが返されます。アプリケーションでは、このアクセス トークンを使用して Azure Blob Storage および Queue Storage への要求を承認できます。
 
@@ -294,4 +294,4 @@ https://<storage-account>.blob.core.windows.net/<container>/Blob1.txt
 
 - [Microsoft ID プラットフォーム](../../active-directory/develop/index.yml)
 - [BLOB データにアクセスするための Azure ロールを割り当てる](../blobs/assign-azure-role-data-access.md)
-- [Azure リソースに対するマネージド ID を使用して BLOB およびキューへのアクセスを認証する](storage-auth-aad-msi.md)
+- [Azure リソースに対するマネージド ID を使用して BLOB データへのアクセスを認可する](../blobs/authorize-managed-identity.md)

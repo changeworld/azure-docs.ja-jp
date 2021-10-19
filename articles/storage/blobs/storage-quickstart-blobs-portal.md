@@ -1,5 +1,5 @@
 ---
-title: クイックスタート - Azure portal を使用して BLOB を作成する
+title: 'クイック スタート: BLOB のアップロード、ダウンロード、一覧表示 - Azure portal'
 titleSuffix: Azure Storage
 description: このクイック スタートでは、オブジェクト (BLOB) ストレージで Azure portal を使用します。 その後、Azure Portal を使用して、Azure Storage への BLOB のアップロード、BLOB のダウンロード、およびコンテナー内の BLOB の一覧表示を行います。
 services: storage
@@ -9,12 +9,12 @@ ms.subservice: blobs
 ms.topic: quickstart
 ms.date: 04/29/2021
 ms.author: tamram
-ms.openlocfilehash: 2e181394a67cb6762965e600ada46ab48c753fbc
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: e5dcd34491c2b8b06b7739eae606ba8618dbdef6
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108317463"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129619049"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-the-azure-portal"></a>クイック スタート:Azure portal を使用して BLOB をアップロード、ダウンロード、および一覧表示する
 

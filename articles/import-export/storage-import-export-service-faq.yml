@@ -6,15 +6,15 @@ metadata:
   services: storage
   ms.service: storage
   ms.topic: conceptual
-  ms.date: 09/07/2021
+  ms.date: 10/04/2021
   ms.author: alkohli
   ms.subservice: common
-  ms.openlocfilehash: 7a4344ed0aa7346d3c87d36d96e4772c08080327
-  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+  ms.openlocfilehash: 7217f10d9d54931d0f37ec0400c8df3132076f87
+  ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/13/2021
-  ms.locfileid: "124763559"
+  ms.lasthandoff: 10/09/2021
+  ms.locfileid: "129709466"
 title: 'Azure Import/Export サービス: よく寄せられる質問'
 summary: >
   以下では、Azure Import/Export サービスを使用してデータを Azure Storage に転送するときによくある質問と、それに対する回答を示します。
@@ -22,9 +22,9 @@ sections:
 - name: Import/Export サービスについて
   questions:
   - question: >
-      Azure Import/Export サービスを使用して Azure File Storage をコピーすることはできますか?
+      Azure Import/Export サービスを使用して Azure Files ストレージにコピーすることはできますか?
     answer: >
-      はい。 Azure Import/Export サービスでは Azure File Storage へのインポートがサポートされます。 現時点では、Azure Files のエクスポートはサポートされていません。
+      はい。 Azure Import/Export サービスでは Azure Files ストレージへのインポートがサポートされます。 現時点では、Azure Files からのエクスポートはサポートされていません。
   - question: >
       CSP サブスクリプションで Azure Import/Export サービスを使用できますか?
     answer: >
@@ -56,7 +56,7 @@ sections:
   - question: >
       ジョブを取り消すことはできますか?
     answer: >
-      はい。 ジョブの状態が **作成** または **発送** のときは、ジョブを取り消すことができます。 これらのステージを過ぎると、ジョブをキャンセルすることはできず、最後のステージまで行われます。
+      はい。 状態が **[Creating]\作成中\** の間にジョブを取り消すことができます。 ただし、追跡情報を入力すると、ジョブの状態が **[Shipping]\(送付\)** に変わり、ジョブを取り消すことができなくなります。
   - question: >
       Azure Portal では、どのくらいの期間、完了したジョブの状態を確認できますか?
     answer: >
@@ -68,8 +68,13 @@ sections:
 
       データ容量が複数ディスクのインポート ジョブにわたるときの詳細とガイダンスについては、Microsoft サポートに問い合わせてください。
   - question: >
+      インポート/エクスポート ジョブのデータ コピー ログに問題が見つかりました。 ジョブを修復できますか?
+    answer: >
+      いいえ。現在のバージョンの Azure ImportExport ツール (BLOB の場合はバージョン 1.5.0.300、ファイルの場合はバージョン 2.2.0.300) では、ジョブの修復はサポートされていません。 問題を解決した後で、新しい Import/Export ジョブを作成する必要があります。 [BLOB のインポート ジョブの作成](storage-import-export-data-to-blobs.md#step-2-create-an-import-job)または[ファイルのインポート ジョブの作成](storage-import-export-data-to-files.md#step-2-create-an-import-job)に関する記事を参照してください。
+  - question: >
       アップロードした BLOB の状態が "Lease expired (リースの有効期限切れ)" として表示されます。 どうすればよいですか。
-    answer: "\"Lease Expired (リースの有効期限切れ)\" フィールドは無視してかまいません。 Import/Export は、アップロード中、他のプロセスが BLOB を並列に更新できないよう BLOB をリースする必要があります。 \"Lease Expired (リースの有効期限切れ)\" は、Import/Export によるアップロードが今は行われておらず、BLOB が利用可能な状態にあることを暗に意味しています。\n"
+    answer: >
+      **Lease Expired (リースの有効期限切れ)** フィールドは無視してかまいません。 Import/Export は、アップロード中、他のプロセスが BLOB を並列に更新できないよう BLOB をリースする必要があります。 **Lease Expired (リースの有効期限切れ)** は、Import/Export による BLOB へのアップロードが今は行われておらず、BLOB が利用可能な状態にあることを示しています。
 - name: ディスクの発送
   questions:
   - question: >
@@ -91,7 +96,7 @@ sections:
   - question: >
       ドライブを海外に発送したり返送したりする場合、何か制限はありますか?
     answer: >
-      発送する物理メディアが国境を越える場合があることに注意してください。 お客様は、物理メディアおよびデータが輸入および輸出に関して該当する法律に準拠していることを確認する必要があります。 物理メディアを発送する前に、アドバイザーに依頼して、メディアおよびデータが指定のデータ センターに合法的に発送できることを確認してもらってください。 それにより、マイクロソフトへのメディアの到着が遅れるのを防ぐことができます。
+      発送する物理メディアが国境を越える場合があることに注意してください。 お客様は、物理メディアおよびデータが輸入および輸出に関して該当する法律に準拠していることを確認する必要があります。 物理メディアを発送する前に、アドバイザーに依頼して、メディアおよびデータが指定のデータ センターに合法的に発送できることを確認してもらってください。 事前に確認することで、マイクロソフトへの到着が遅れるのを防ぐことができます。
 
 
       アップロードの完了後、ドライブを海外の住所に返送するプロセスは、国内の返送に要する期間 (通常 2 日から 3 日) よりも長くなる場合があります。 Azure Portal に "Packaging (梱包)" として表示されている段階では、さまざまな海外輸出入要件を確実に満たした発送を行うために、適切な書類が提出されるよう Data Box チームが万全を期しています。
@@ -111,7 +116,7 @@ sections:
   - question: >
       ドライブを発送するときに、運送業者からデータ センターの連絡先の住所と電話番号を求められました。 何を提供すればよいですか?
     answer: >
-      電話番号と DC の住所は、ジョブの作成の一環として提供されます。
+      電話番号とデータ センターの住所は、ジョブの作成の一環として提供されます。
   - question: >
       デバイスが既に配送されているのに、注文の状態がまだ「発送」であるのはなぜですか?
     answer: >
@@ -136,7 +141,13 @@ sections:
   - question: >
       ストレージ アカウント内に既に存在するファイルがドライブに含まれている場合、既存の BLOB またはファイルは上書きされますか?
     answer: >
-      場合によります。 ドライブを準備するときに、データセット CSV の /Disposition:<rename|no-overwrite|overwrite> というフィールドを使用して、コピー先のファイルを上書きするか無視するかを指定できます。 既定では、既存の BLOB またはファイルは上書きされず、新しいファイルの名前が変更されます。
+      はい。 Azure ImportExport ツールの最新リリース (バージョン 1.5.0.300 (BLOB の場合) と 2.2.0.300 (ファイルの場合)) では、インポートに同じ名前のファイルまたは BLOB が含まれる場合、ストレージに既に存在する BLOB またはファイルは自動的に上書きされます。 以前のツール バージョンでは、既存の BLOB またはファイルの名前が同じ場合、既定では受信ファイルの名前が変更されていました。 データセット CSV ファイルの Disposition フィールドを使用すると、コピー先のファイルまたは BLOB の名前を変更するか、上書きしないか、上書きするかを指定できます。 Disposition フィールドの形式は `Disposition:<rename|no-overwrite|overwrite>` です。
+  - question: >
+      新しいジョブを作成しています。 古い Azure Import/Export ツールを引き続き使用できますか?
+    answer: >
+      既存のジョブで古い Azure Import/Export ツールを使用することもできます。 ただし、古いツールは段階的に廃止されるため、新しいインポート/エクスポート ジョブについては最新のツール バージョンへ移行することを強くお勧めします。古いツールがサポートされなくなると、Azure portal に通知が表示されます。
+
+      最新のツール バージョンの場所を次に示します。 BLOBの場合、[WAImportExport バージョン 1.5.0.300 をダウンロードします](https://www.microsoft.com/download/details.aspx?id=42659)。 ファイルの場合、[WAImportExport バージョン 2.2.0.300 をダウンロードします](https://aka.ms/waiev2)。
   - question: >
       WAImportExport ツールは、32 ビット オペレーティング システムと互換性がありますか?
     answer: >
@@ -144,7 +155,7 @@ sections:
   - question: >
       Azure Import/Export でサポートされるブロック BLOB とページ BLOB の最大サイズはいくつですか?
     answer: >
-      - ブロック BLOB の最大サイズは、約 4.768 TB または 5,000,000 MB です。
+      - ブロック BLOB の最大サイズは、約 4.768 TB (5,000,000 MB) です。
 
       - ページ BLOB の最大サイズは 8 TB です。
   - question: >

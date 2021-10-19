@@ -6,14 +6,14 @@ ms.reviewer: amberb
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 09/15/2021
+ms.date: 10/07/2021
 ms.author: banders
-ms.openlocfilehash: 71a3ce7a33f920c361dfe1e7d0004b52e8211336
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 62156836a37cff8e209fe8f97847b8a8c7889272
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128559614"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129710935"
 ---
 # <a name="get-started-with-your-microsoft-partner-agreement-billing-account"></a>Microsoft Partner Agreement の課金アカウントの概要
 
@@ -84,4 +84,4 @@ CSP の [2 層モデル](/partner-center)の間接プロバイダーは、Azure 
 
 - [ 用に追加の Azure サブスクリプションを作成する](../manage/create-subscription.md)
 - [Azure Billing API シリーズ](/rest/api/billing/)を使用して、課金データを独自のレポート システムに統合する
-- [パートナー向けの Azure Cost Management のクイックスタート ガイド](../costs/get-started-partners.md)
+- [パートナー向けの Cost Management のクイックスタート ガイド](../costs/get-started-partners.md)

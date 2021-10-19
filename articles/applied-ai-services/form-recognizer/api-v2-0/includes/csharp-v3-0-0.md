@@ -6,15 +6,15 @@ manager: nitinme
 ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: include
-ms.date: 05/25/2021
+ms.date: 09/25/2021
 ms.author: lajanuar
 ms.custom: " devx-track-csharp"
-ms.openlocfilehash: 96b141231d6465282224cfc8d72a7c23af872f7a
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 12d957ded4960a2952f88af92c3cfc6909106fbd
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128641763"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129725803"
 ---
 <!-- markdownlint-disable MD024 -->
 <!-- markdownlint-disable MD033 -->

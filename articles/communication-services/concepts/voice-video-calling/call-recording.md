@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.custom: references_regions
 ms.service: azure-communication-services
 ms.subservice: calling
-ms.openlocfilehash: a6e5f1ecb5686145718d83febf3faf5c520db6fe
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 103ced05c6b88c5f7f60de398f78f89cc460daf9
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128609519"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129667309"
 ---
 # <a name="calling-recording-overview"></a>通話録音の概要
 
@@ -30,11 +30,12 @@ ms.locfileid: "128609519"
 ![通話録音機能の概念図](../media/call-recording-concept.png)
 
 ## <a name="media-output-types"></a>メディア出力の種類
-通話録音では、現在、オーディオとビデオが混在する MP4 出力形式がサポートされています。 この出力メディアは、Microsoft Teams のレコーディングによって生成された会議の録音と一致します。
+現在、通話レコーディングでは、混合オーディオ + ビデオ MP4 と混合オーディオ専用 MP3/WAV 出力形式がサポートされています。 混合オーディオ + ビデオ出力メディアは、Microsoft Teams のレコーディングによって生成された会議の録音と一致します。
 
 | チャネルの型 | コンテンツ形式 | ビデオ | オーディオ |
 | :----------- | :------------- | :---- | :--------------------------- |
 | audioVideo | mp4 | 既定のタイル配置での参加者全員の 1920 x 1080 8 FPS ビデオ | 参加者全員の 16 kHz mp4a 混合オーディオ |
+| audioOnly| mp3/wav | 該当なし | 参加者全員の 16 kHz mp3/wav 混合オーディオ |
 
 
 ## <a name="run-time-control-apis"></a>ランタイム コントロール API

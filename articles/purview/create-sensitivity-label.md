@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 09/27/2021
-ms.openlocfilehash: 7a94d82c3ec2a47869c64520e20bed6cdf58ebdb
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 0cc474ba9566737cb0117cc3a0f2bfb079cdf3d9
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129210529"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129616514"
 ---
 # <a name="labeling-in-azure-purview"></a>Azure Purview でのラベル付け
 
@@ -64,7 +64,7 @@ Azure Purview では、次のデータ ソースに対して秘密度ラベル�
 
 ## <a name="labeling-for-sql-databases"></a>SQL データベースのラベル付け
 
-Microsoft では、データベースの列に対する Purview のラベル付けに加えて、[SQL Server Management Studio (SSMS)](/sql/ssms/sql-server-management-studio-ssms) の SQL データ分類を使用した SQL データベースの列のラベル付けもサポートされています。 Purview ではグローバルの [MIP 秘密度ラベル](/microsoft-365/compliance/sensitivity-labels)が使用されますが、SSMS ではローカルに定義されているラベルのみが使用されます。
+Microsoft では、データベースの列に対する Purview のラベル付けに加えて、[SQL Server Management Studio (SSMS)](/sql/ssms/sql-server-management-studio-ssms) の SQL データ分類を使用した SQL データベースの列のラベル付けもサポートされています。 Purview ではグローバルの[秘密度ラベル](/microsoft-365/compliance/sensitivity-labels)が使用されますが、SSMS ではローカルに定義されているラベルのみが使用されます。
 
 Purview でのラベル付けと SSMS でのラベル付けは、現在相互に連携していない別々のプロセスです。 そのため、**SSMS で適用されるラベルは Purview には表示されず、その逆も同様です**。 SQL データベースにラベルを付けるには、Azure Purview を使用することをお勧めします。これは、複数のプラットフォームに適用できるグローバルな MIP ラベルが使用されているからです。
 

@@ -4,13 +4,13 @@ description: デプロイするリソースを Bicep で宣言する方法につ
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 08/16/2021
-ms.openlocfilehash: a540a30cd93d9f1dc54f77355f2f6560444131c1
-ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
+ms.date: 10/07/2021
+ms.openlocfilehash: 4b3b355016057af00c361a118aed2728948768dd
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122228564"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129659623"
 ---
 # <a name="resource-declaration-in-bicep"></a>リソースの Bicep を使った宣言
 
@@ -28,7 +28,7 @@ resource stg 'Microsoft.Storage/storageAccounts@2019-06-01' = {
 }
 ```
 
-リソースのシンボリック名を設定します。 前の例では、シンボリック名は `stg` です。 シンボリック名には任意の値を使用できますが、Bicep ファイル内の他のリソース、パラメーター、または変数と同じにすることはできません。 シンボリック名はリソース名と同じものではありません。 シンボリック名は、Bicep ファイルの他の部分にあるリソースを参照するために使用します。
+リソースのシンボリック名を設定します。 前の例では、シンボリック名は `stg` です。  シンボリック名はリソース名と同じものではありません。 シンボリック名は、Bicep ファイルの他の部分にあるリソースを参照するために使用します。 シンボリック名は大文字と小文字が区別されます。  文字、数字、および _ を含めることができますが、数字で始めることはできません。
 
 Bicep では、[Azure Resource Manager テンプレート (ARM テンプレート) JSON](../templates/syntax.md) で利用できる `apiProfile` はサポートされていません。
 
@@ -106,7 +106,7 @@ az provider show \
 
 ## <a name="set-managed-identities-for-azure-resources"></a>Azure リソース用マネージド ID を設定する
 
-一部のリソースでは、[Azure リソース用マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) がサポートされます。 これらのリソースには、リソース宣言のルート レベルに ID オブジェクトがあります。 
+一部のリソースでは、[Azure リソース用マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) がサポートされます。 これらのリソースには、リソース宣言のルート レベルに ID オブジェクトがあります。
 
 システム割り当てまたはユーザー割り当ての ID を使用できます。
 
@@ -204,7 +204,7 @@ resource myParent 'My.Rp/parentType@2020-01-01' = {
 
 ### <a name="explicit-dependency"></a>明示的な依存関係
 
-明示的な依存関係は、`dependsOn` プロパティで宣言されます。 このプロパティによって、リソース識別子の配列が受け入れられるため、複数の依存関係を指定できます。 
+明示的な依存関係は、`dependsOn` プロパティで宣言されます。 このプロパティによって、リソース識別子の配列が受け入れられるため、複数の依存関係を指定できます。
 
 次の例は、`dnsZone` という名前の DNS ゾーンに依存する `otherZone` という名前の DNS ゾーンを示しています。
 

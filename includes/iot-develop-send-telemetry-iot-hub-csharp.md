@@ -4,52 +4,115 @@ description: インクルード ファイル
 author: timlt
 ms.service: iot-develop
 ms.topic: include
-ms.date: 08/03/2021
+ms.date: 10/07/2021
 ms.author: timlt
 ms.custom: include file
-ms.openlocfilehash: 086370583f77ddadeae156fe0fa3d5babf80d815
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: a0082eb488c05d71409606e1048b0a94fd6155a4
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129516691"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129855093"
 ---
 [![コードを参照](../articles/iot-develop/media/common/browse-code.svg)](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/iot-hub/Samples/device/PnpDeviceSamples)
 
 このクイックスタートでは、基本的な Azure IoT アプリケーション開発のワークフローについて説明します。 Azure CLI と IoT エクスプローラーを使用して、Azure IoT ハブとデバイスを作成します。 次に、Azure IoT device SDK サンプルを使用して、シミュレートされた温度コントローラーを実行し、それをハブに安全に接続して、テレメトリを送信します。
 
 ## <a name="prerequisites"></a>前提条件
+
+このクイックスタートは、Windows、Linux、Raspberry Pi で実行できます。 これは、次の OS およびデバイス バージョンでテストされています。
+
+- Windows 10
+- Linux 用 Windows サブシステム (WSL) で実行されている Ubuntu 20.04 LTS
+- Raspberry Pi 3 Model B+ で実行されている Raspberry Pi OS バージョン 10 (Raspian)
+
+Raspberry Pi に関する説明がある場合を除き、開発マシンに次の前提条件をインストールします。
+
 - Azure サブスクリプションをお持ちでない場合は、開始する前に [無料でアカウントを 1 つ](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)作成してください。
-- [Visual Studio (Community、Professional、または Enterprise) 2019](https://visualstudio.microsoft.com/downloads/)。
-- [Microsoft Azure IoT Samples for C# (.NET)](https://github.com/Azure-Samples/azure-iot-samples-csharp) GitHub リポジトリのローカル コピー。 リポジトリのコピーをダウンロードして展開します: [ZIP をダウンロード](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/main.zip)します。
-- [Azure IoT エクスプローラー](https://github.com/Azure/azure-iot-explorer/releases): Azure IoT を監視および管理するための GUI ベースのクロスプラットフォーム ユーティリティ。 
+- [Git](https://git-scm.com/downloads).
+- .NET Core SDK 3.1。 ランタイムだけではなく、.NET SDK も必ずインストールしてください。 マシンにインストールされている .NET SDK とランタイムのバージョンを確認するには、`dotnet --info` を実行します。
+
+  - Windows と Linux (Raspberry Pi を除く) の場合は、手順に従って、お使いのプラットフォームに [.NET Core SDK 3.1 をインストール](/dotnet/core/install/)します。
+  - Raspberry Pi の場合は、手順に従って、[SDK を手動でインストール](/dotnet/core/install/linux-scripted-manual#manual-install)する必要があります。 これは、Debian では、.NET SDK のパッケージ マネージャーのインストールが x64 アーキテクチャでのみサポートされているためです。
+
+- [Azure IoT エクスプローラー](https://github.com/Azure/azure-iot-explorer/releases): Azure IoT を監視および管理するための GUI ベースのクロスプラットフォーム ユーティリティ。 開発プラットフォームとして Raspberry Pi を使用している場合は、別のコンピューターに IoT エクスプローラーをインストールすることをお勧めします。 IoT エクスプローラーをインストールしない場合は、Azure CLI を使用して同じ手順を実行できます。 
 - Azure CLI。 このクイックスタートで Azure CLI コマンドを実行するには、2 つのオプションがあります。
     - ブラウザーで CLI コマンドを実行する対話型シェルである Azure Cloud Shell を使用します。 何もインストールする必要がないため、このオプションをお勧めします。 Cloud Shell を初めて使用する場合は、[Azure portal](https://portal.azure.com) にログインします。 [Cloud Shell のクイックスタート](../articles/cloud-shell/quickstart.md)の手順に従って、**Cloud Shell を起動** し、**Bash 環境を選択** します。
-    - 必要に応じて、お使いのローカル コンピューターで Azure CLI を実行します。 Azure CLI が既にインストールされている場合は、`az upgrade` を実行して、CLI と拡張機能を最新バージョンにアップグレードします。 Azure CLI のインストール方法については、「[Azure CLI をインストールする]( /cli/azure/install-azure-cli)」をご覧ください。
+    - 必要に応じて、お使いのローカル コンピューターで Azure CLI を実行します。 Azure CLI が既にインストールされている場合は、`az upgrade` を実行して、CLI と拡張機能を最新バージョンにアップグレードします。 Azure CLI のインストール方法については、「[Azure CLI をインストールする]( /cli/azure/install-azure-cli)」をご覧ください。 開発プラットフォームとして Raspberry Pi を使用している場合は、Azure Cloud Shell を使用するか、または別のコンピューターに Azure CLI をインストールすることをお勧めします。
 
 [!INCLUDE [iot-hub-include-create-hub-iot-explorer](iot-hub-include-create-hub-iot-explorer.md)]
 
 ## <a name="run-a-simulated-device"></a>シミュレートされたデバイスを実行する
+
 このセクションでは、C# SDK を使用して、シミュレートされたデバイスから対象の IoT ハブにメッセージを送信します。 2 つのサーモスタット センサーを備えた温度コントローラーを実装するサンプルを実行します。
 
-Visual Studio でサンプル アプリケーションを実行するには:
+1. Windows CMD、PowerShell、または Bash などの新しいコンソールを開きます。 以下の手順では、このコンソールを使用して Node.js SDK をインストールし、Node.js のサンプル コードを操作します。
 
-1. Azure IoT Samples for C# を展開したフォルダーで、*azure-iot-samples-csharp-main\iot-hub\Samples\device\IoTHubDeviceSamples.sln"* ソリューション ファイルを Visual Studio で開きます。 
+    > [!NOTE]
+    > Azure CLI のローカル インストールを使用している場合は、次の 2 つのコンソール ウィンドウが開きます。 このセクションのコマンドは、CLI で使用していたものではなく、必ずこの開いたコンソールに入力してください。
 
-1. **ソリューション エクスプローラー** で、**PnpDeviceSamples > TemperatureController** プロジェクト ファイルを選択して右クリックし、 **[スタートアップ プロジェクトに設定]** を選択します。
+1. [C# (.NET) 用 Microsoft Azure IoT サンプル](https://github.com/Azure-Samples/azure-iot-samples-csharp)をローカル コンピューターにクローンします。
 
-1. **TemperatureController** プロジェクトを右クリックし、 **[プロパティ]** を選択します。 **[デバッグ]** タブを選択し、次の環境変数をプロジェクトに追加します。
+    ```console
+    git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
+    ```
 
-    | Name | 値 |
-    | ---- | ----- |
-    | IOTHUB_DEVICE_SECURITY_TYPE | *connectionString* |
-    | IOTHUB_DEVICE_CONNECTION_STRING | 以前に保存した接続文字列。 |
+1. sample ディレクトリに移動します。
 
-1. 更新された **TemperatureController** プロジェクト ファイルを保存します。
+    **Windows**
+    ```console
+    cd azure-iot-samples-csharp\iot-hub\Samples\device\PnpDeviceSamples\TemperatureController
+    ```
 
-1. Visual Studio で、Ctrl キーを押しながら F5 キーを押して、サンプルを実行します。
+    **Linux または Raspberry Pi OS**
+    ```console
+    cd azure-iot-samples-csharp/iot-hub/Samples/device/PnpDeviceSamples/TemperatureController
+    ```
 
-コンソール ウィンドウが開きます。 このサンプルを実行すると、登録したデバイスとして IoT ハブに安全に接続され、テレメトリ メッセージの送信が開始されます。 サンプル出力がコンソールに表示されます。
+1. Azure IoT C# SDK および必要な依存関係をインストールします。
+
+    ```console
+    dotnet restore
+    ```
+
+    このコマンドを実行すると、*TemperatureController.csproj* ファイルに指定されている適切な依存関係がインストールされます。
+
+1. シミュレートされたデバイスを Azure IoT に接続できるよう、次の両方の環境変数を設定します。
+    * `IOTHUB_DEVICE_CONNECTION_STRING` という環境変数を設定します。 変数の値には、前のセクションで保存したデバイス接続文字列を使用します。
+    * `IOTHUB_DEVICE_SECURITY_TYPE` という環境変数を設定します。 変数には、リテラル文字列値 `connectionString` を使用します。
+
+    **CMD (Windows)**
+
+    ```console
+    set IOTHUB_DEVICE_CONNECTION_STRING=<your connection string here>
+    set IOTHUB_DEVICE_SECURITY_TYPE=connectionString
+    ```
+
+    > [!NOTE]
+    > Windows CMD では、各変数の文字列値を囲む引用符は入力しません。
+
+    **PowerShell**
+
+    ```azurepowershell
+    $env:IOTHUB_DEVICE_CONNECTION_STRING='<your connection string here>'
+    $env:IOTHUB_DEVICE_SECURITY_TYPE='connectionString'
+    ```
+
+    **Bash**
+
+    ```bash
+    export IOTHUB_DEVICE_CONNECTION_STRING="<your connection string here>"
+    export IOTHUB_DEVICE_SECURITY_TYPE="connectionString"
+    ```
+1. コード サンプルを実行します。
+
+    ```console
+    dotnet run
+    ```
+    > [!NOTE]
+    > このコード サンプルでは、Azure IoT プラグ アンド プレイを使用しており、手動構成なしでソリューションにスマート デバイスを統合できます。  既定では、このドキュメントのほとんどのサンプルで IoT プラグ アンド プレイが使用されています。 IoT PnP の利点と、それを使用するケースと使用しないケースについて詳しくは、「[IoT プラグ アンド プレイとは](../articles/iot-develop/overview-iot-plug-and-play.md)」を参照してください。
+
+このサンプルを実行すると、登録したデバイスとして IoT ハブに安全に接続され、テレメトリ メッセージの送信が開始されます。 サンプル出力がコンソールに表示されます。
 
 ## <a name="view-telemetry"></a>利用統計情報データを表示する
 

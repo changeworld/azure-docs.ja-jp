@@ -5,15 +5,15 @@ author: memildin
 manager: rkarlin
 services: security-center
 ms.author: memildin
-ms.date: 02/10/2021
+ms.date: 10/07/2021
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: 0daf5cab1627819093514833667606758707f17a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 4175476bc655aa0be1a5377f3fada83cb30ac37e
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121728678"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129715915"
 ---
 # <a name="explore-and-manage-your-resources-with-asset-inventory"></a>資産インベントリを使用してリソースの調査と管理を行う
 
@@ -40,7 +40,7 @@ Security Center では、Azure リソースのセキュリティの状態が定�
 |側面|詳細|
 |----|:----|
 |リリース状態:|一般公開 (GA)|
-|価格:|Free|
+|価格:|Free *<br>* インベントリ ページの一部の機能 ([ソフトウェア インベントリ](#access-a-software-inventory)など) には、有料のソリューションを用意する必要があります|
 |必要なロールとアクセス許可:|すべてのユーザー|
 |クラウド:|:::image type="icon" source="./media/icons/yes-icon.png"::: 商用クラウド<br>:::image type="icon" source="./media/icons/yes-icon.png":::国/ソブリン (Azure Government、Azure China 21Vianet)|
 |||
@@ -130,6 +130,73 @@ ARG は、大規模なクエリの実行機能によってリソースを効率�
     ![ARG でのインベントリ クエリ。](./media/asset-inventory/inventory-query-in-resource-graph-explorer.png)
 
 1. フィルターを定義してページを開いたままにしておくと、Security Center で結果が自動的に更新されません。 ページを手動で再読み込みするか、 **[更新]** を選択しない限り、リソースを変更しても表示される結果には影響しません。
+
+## <a name="access-a-software-inventory"></a>ソフトウェア インベントリにアクセスする
+
+Microsoft Defender for Endpoint との統合を有効にし、Azure Defender for servers を有効にしてある場合は、ソフトウェア インベントリにアクセスできます。
+
+:::image type="content" source="media/asset-inventory/software-inventory-filters.gif" alt-text="脅威と脆弱性のソリューションを有効にした場合、Security Center の資産インベントリにより、インストールされているソフトウェアによってリソースを選択するフィルターが提供されます。":::
+
+> [!NOTE]
+> "ブランク" オプションを選択すると、Microsoft Defender for Endpoint (または Azure Defender for servers) が有効になっていないコンピューターが表示されます。
+
+資産インベントリ ページのフィルターと同様に、Azure Resource Graph エクスプローラーからソフトウェア インベントリ データを探索することができます。
+
+Azure Resource Graph エクスプローラーを使用してソフトウェア インベントリ データにアクセスし、探索する例:
+
+1. **Azure Resource Graph エクスプローラー** を開きます。
+
+    :::image type="content" source="./media/security-center-identity-access/opening-resource-graph-explorer.png" alt-text="Azure Resource Graph エクスプローラーの起動** 推奨ページ" :::
+
+1. 次のサブスクリプション スコープを選択します: securityresources/softwareinventories
+
+1. 次のいずれかのクエリを入力し (または、それらをカスタマイズしたり、独自に作成して)、 **[クエリの実行]** を選択します。
+
+    - インストールされているソフトウェアの基本的な一覧を生成するには:
+
+        ```kusto
+        securityresources
+        | where type == "microsoft.security/softwareinventories"
+        | project id, Vendor=properties.vendor, Software=properties.softwareName, Version=properties.version
+        ```
+
+    - バージョン番号でフィルター処理するには:
+
+        ```kusto
+        securityresources
+        | where type == "microsoft.security/softwareinventories"
+        | project id, Vendor=properties.vendor, Software=properties.softwareName, Version=tostring(properties.    version)
+        | where Software=="windows_server_2019" and parse_version(Version)<=parse_version("10.0.17763.1999")
+        ```
+
+    - ソフトウェア製品の組み合わせでコンピューターを検索するには:
+
+        ```kusto
+        securityresources
+        | where type == "microsoft.security/softwareinventories"
+        | extend vmId = properties.azureVmId
+        | where properties.softwareName == "apache_http_server" or properties.softwareName == "mysql"
+        | summarize count() by tostring(vmId)
+        | where count_ > 1
+        ```
+
+    - ソフトウェア製品と別の ASC 推奨事項の組み合わせ:
+
+        (この例では、MySQL がインストールされ、管理ポートが公開されているコンピューター)
+
+        ```kusto
+        securityresources
+        | where type == "microsoft.security/softwareinventories"
+        | extend vmId = tolower(properties.azureVmId)
+        | where properties.softwareName == "mysql"
+        | join (
+        securityresources
+        | where type == "microsoft.security/assessments"
+        | where properties.displayName == "Management ports should be closed on your virtual machines" and properties.status.code == "Unhealthy"
+        | extend vmId = tolower(properties.resourceDetails.Id)
+        ) on vmId
+        ```
+
 
 
 ## <a name="faq---inventory"></a>FAQ - インベントリ

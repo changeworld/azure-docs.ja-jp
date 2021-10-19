@@ -190,7 +190,7 @@
     - name: 動作保証済み Linux ディストリビューション
       href: ../virtual-machines/linux/endorsed-distros.md
       maintainContext: true
-    - name: オーケストレーション モード (プレビュー)
+    - name: オーケストレーション モード
       items:
         - name: 概要
           href: virtual-machine-scale-sets-orchestration-modes.md
@@ -234,7 +234,7 @@
     - name: インフラストラクチャの自動化
       href: ../virtual-machines/infrastructure-automation.md
       maintainContext: true
-    - name: セキュリティ
+    - name: Security
       items:
         - name: セキュリティとポリシー
           href: ../virtual-machines/security-policy.md

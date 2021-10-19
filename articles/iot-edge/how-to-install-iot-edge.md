@@ -6,14 +6,14 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 06/28/2021
+ms.date: 10/05/2021
 ms.author: kgremban
-ms.openlocfilehash: 5ed9768f8cb1a6279eeb97a73d508a41984ef160
-ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
+ms.openlocfilehash: b062f4984bd5630f282d181e773e853f2234bb81
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123214343"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129710766"
 ---
 # <a name="install-or-uninstall-azure-iot-edge-for-linux"></a>Azure IoT Edge for Linux をインストールまたはアンインストールする
 
@@ -214,36 +214,21 @@ IoT Edge デバイスで構成ファイルを開きます。
 <!-- 1.2 -->
 ::: moniker range=">=iotedge-2020-11"
 
-IoT Edge のインストールの一部として提供されるテンプレート ファイルに基づいて、デバイスの構成ファイルを作成します。
+次のコマンドで、対称キー認証を使用する IoT Edge デバイスを簡単に構成できます。
 
    ```bash
-   sudo cp /etc/aziot/config.toml.edge.template /etc/aziot/config.toml
+   sudo iotedge config mp --connection-string 'PASTE_CONNECTION_STRING_HERE'
    ```
 
-IoT Edge デバイスで構成ファイルを開きます。
+`iotedge config mp` コマンドを実行して、デバイスに構成ファイルを作成し、接続文字列を提供し、構成の変更を適用します。
+
+構成ファイルを表示する場合は、次の方法で開きます。
 
    ```bash
    sudo nano /etc/aziot/config.toml
    ```
 
-ファイルの "**Provisioning**" セクションを見つけて、接続文字列行を使用した手動プロビジョニングをコメント解除します。
-
-   ```toml
-   # Manual provisioning with connection string
-   [provisioning]
-   source = "manual"
-   connection_string = "<ADD DEVICE CONNECTION STRING HERE>"
-   ```
-
-"**connection_string**" の値をご自分の IoT Edge デバイスの接続文字列で更新します。
-
-クリップボードの内容を Nano に貼り付けるには、`Shift+Right Click` キーまたは `Shift+Insert` キーを押します。
-
-ファイルを保存して閉じます。
-
-   `CTRL + X`, `Y`, `Enter`
-
-構成ファイルにプロビジョニング情報を入力した後、変更を適用します。
+構成ファイルに変更を加えた場合は、`iotedge config apply` コマンドを使用して変更を適用します。
 
    ```bash
    sudo iotedge config apply

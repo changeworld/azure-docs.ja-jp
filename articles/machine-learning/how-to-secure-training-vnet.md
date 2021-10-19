@@ -11,12 +11,12 @@ ms.author: jhirono
 author: jhirono
 ms.date: 09/24/2021
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1, references_regions
-ms.openlocfilehash: 4fe1a4f9966e5342ee4f8a12d2b24b3a449efbae
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 38347644557b2e2e3bf76dc4412381ab52396de2
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129424333"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129658559"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>仮想ネットワークを使用して Azure Machine Learning トレーニング環境をセキュリティで保護する
 
@@ -26,7 +26,7 @@ ms.locfileid: "129424333"
 > この記事は、Azure Machine Learning ワークフローのセキュリティ保護に関するシリーズの一部です。 このシリーズの他の記事は次のとおりです。
 >
 > * [Virtual Network の概要](how-to-network-security-overview.md)
-> * <bpt id="p1">[</bpt>ワークスペース リソースをセキュリティで保護する<ept id="p1">](how-to-secure-workspace-vnet.md)</ept>
+> * [ワークスペース リソースをセキュリティで保護する](how-to-secure-workspace-vnet.md)
 > * [推論環境をセキュリティで保護する](how-to-secure-inferencing-vnet.md)
 > * [スタジオの機能を有効にする](how-to-enable-studio-virtual-network.md)
 > * [カスタム DNS を使用する](how-to-custom-dns.md)
@@ -82,8 +82,8 @@ ms.locfileid: "129424333"
 
     * 1 つのネットワーク セキュリティ グループ (NSG)。 この NSG には、コンピューティング クラスターとコンピューティング インスタンスに固有の次のルールが含まれています。
 
-        * <ph id="ph1">`BatchNodeManagement`</ph> サービス タグからのポート 29876 から 29877 での受信 TCP トラフィックを許可します。
-        * <ph id="ph1">`AzureMachineLearning`</ph> サービス タグからのポート 44224 での受信 TCP トラフィックを許可します。
+        * `BatchNodeManagement` サービス タグからのポート 29876 から 29877 での受信 TCP トラフィックを許可します。
+        * `AzureMachineLearning` サービス タグからのポート 44224 での受信 TCP トラフィックを許可します。
 
         次のスクリーンショットは、これらのルールの例を示しています。
 
@@ -111,7 +111,7 @@ ms.locfileid: "129424333"
     * <bpt id="p1">__</bpt>SDK<ept id="p1">__</ept> を使用する計画の場合は、ストレージ アカウントが別のサブネットに含まれていてもかまいません。
 
     > [!NOTE]
-    > [信頼された Microsoft サービスによるこのアカウントに対するアクセスを許可します] チェック ボックスをオンにするだけでは、コンピューティングからの通信の許可には不十分です。
+    > ワークスペースのリソース インスタンスを追加するか、[信頼された Microsoft サービスによるこのアカウントに対するアクセスを許可します] チェック ボックスをオンにするだけでは、コンピューティングからの通信の許可には不十分です。
 
 * ワークスペースでプライベート エンドポイントを使用する場合、コンピューティング インスタンスには仮想ネットワーク内からのみアクセスできます。 カスタム DNS または hosts ファイルを使用する場合は、<ph id="ph1">`<instance-name>.<region>.instances.azureml.ms`</ph> のエントリを追加します。 このエントリを、ワークスペースのプライベート エンドポイントのプライベート IP アドレスにマップします。 詳細については、<bpt id="p1">[</bpt>カスタム DNS<ept id="p1">](./how-to-custom-dns.md)</ept> に関するページを参照してください。
 * 仮想ネットワーク サービス エンドポイント ポリシーは、コンピューティング クラスターやインスタンスのシステム ストレージ アカウントに対して機能しません。
@@ -157,7 +157,7 @@ ms.locfileid: "129424333"
 
 次の手順を使用して、Azure Machine Learning スタジオでコンピューティング クラスターを作成します。
 
-1. <bpt id="p1">[</bpt>Azure Machine Learning Studio<ept id="p1">](https://ml.azure.com/)</ept> にサインインし、お使いのサブスクリプションとワークスペースを選択します。
+1. [Azure Machine Learning Studio](https://ml.azure.com/) にサインインし、お使いのサブスクリプションとワークスペースを選択します。
 1. 左側の <bpt id="p1">__</bpt>[Compute]\(コンピューティング\)<ept id="p1">__</ept> を選択し、中央の <bpt id="p2">__</bpt>[Compute clusters]\(コンピューティング クラスター\)<ept id="p2">__</ept> を選択して、 <bpt id="p3">__</bpt>[+ 新規]<ept id="p3">__</ept> を選択します。
 
     <bpt id="p1">:::image type="content" source="./media/how-to-enable-virtual-network/create-compute-cluster.png" alt-text="</bpt>クラスター作成画面のスクリーンショット<ept id=&quot;p1&quot;>":::</ept>
@@ -259,7 +259,7 @@ Azure Machine Learning の入力と出力のトラフィック要件の詳細に
 ### <a name="create-the-vm-or-hdinsight-cluster"></a>VM または HDInsight クラスターを作成する
 
 Azure portal または Azure CLI を使用して VM または HDInsight クラスターを作成し、そのクラスターを Azure の仮想ネットワークに配置します。 詳細については、次の記事を参照してください。
-* <bpt id="p1">[</bpt>Linux VM 用の Azure 仮想ネットワークの作成と管理を行う<ept id="p1">](../virtual-machines/linux/tutorial-virtual-network.md)</ept>
+* [Linux VM 用の Azure 仮想ネットワークの作成と管理を行う](../virtual-machines/linux/tutorial-virtual-network.md)
 
 * <bpt id="p1">[</bpt>Azure Virtual Network を使用した Azure HDInsight の拡張<ept id="p1">](../hdinsight/hdinsight-plan-virtual-network-deployment.md)</ept>
 
@@ -283,7 +283,7 @@ Azure Machine Learning で VM またはクラスターの SSH ポートと通信
 
 1. <bpt id="p1">__</bpt>[アクション]<ept id="p1">__</ept> で、 <bpt id="p2">__</bpt>[許可]<ept id="p2">__</ept> を選択します。
 
-ネットワーク セキュリティ グループの既定のアウトバウンド規則を保持します。 詳細については、「<bpt id="p1">[</bpt>セキュリティ グループ<ept id="p1">](../virtual-network/network-security-groups-overview.md#default-security-rules)</ept>」の既定のセキュリティ規則をご覧ください。
+ネットワーク セキュリティ グループの既定のアウトバウンド規則を保持します。 詳細については、「[セキュリティ グループ](../virtual-network/network-security-groups-overview.md#default-security-rules)」の既定のセキュリティ規則をご覧ください。
 
 既定のアウトバウンド規則を使用せずに仮想ネットワークのアウトバウンド アクセスを制限する場合は、「<bpt id="p1">[</bpt>必要なパブリック インターネット アクセス<ept id="p1">](#required-public-internet-access)</ept>」セクションを参照してください。
 
@@ -296,7 +296,7 @@ VM または HDInsight クラスターをお客様の Azure Machine Learning の
 この記事は、Azure Machine Learning ワークフローのセキュリティ保護に関するシリーズの一部です。 このシリーズの他の記事は次のとおりです。
 
 * [Virtual Network の概要](how-to-network-security-overview.md)
-* <bpt id="p1">[</bpt>ワークスペース リソースをセキュリティで保護する<ept id="p1">](how-to-secure-workspace-vnet.md)</ept>
+* [ワークスペース リソースをセキュリティで保護する](how-to-secure-workspace-vnet.md)
 * [推論環境をセキュリティで保護する](how-to-secure-inferencing-vnet.md)
 * [スタジオの機能を有効にする](how-to-enable-studio-virtual-network.md)
 * [カスタム DNS を使用する](how-to-custom-dns.md)

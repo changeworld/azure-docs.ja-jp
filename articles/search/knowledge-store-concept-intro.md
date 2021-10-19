@@ -8,16 +8,16 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/02/2021
-ms.openlocfilehash: 07a4d0b7b932b92307b77420df1a21027df1efb0
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 1463c4e879b364f8242d55aa58b424a8cc6f9cf9
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123538059"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129706803"
 ---
 # <a name="knowledge-store-in-azure-cognitive-search"></a>Azure Cognitive Search のナレッジ ストア
 
-ナレッジ ストアは、Azure Cognitive Search の機能です。[AI エンリッチメント パイプライン](cognitive-search-concept-intro.md)からの出力を、独立した分析またはダウンストリーム処理用に Azure Storage テーブルと BLOB に送信するものです。
+ナレッジ ストアは、Cognitive Search [AI エンリッチメント パイプライン](cognitive-search-concept-intro.md)によって作成されたデータ シンクで、Azure Storage のテーブルおよび blob コンテナーにエンリッチされたコンテンツを格納します。これにより、ナレッジ マイニングなどの非検索シナリオで、独立した分析や下流の処理を行うことができます。
 
 過去にコグニティブ スキルを使用したことがある場合は、"*スキルセット*" を使用して、エンティティの認識やテキストの翻訳など、アトミック変換を呼び出す一連のエンリッチメントを介してドキュメントを移動することを既にご存知でしょう。 結果は、検索インデックスまたはナレッジ ストア内のプロジェクションとなります。 2 つの出力 (検索インデックスとナレッジ ストア) は、同じパイプラインから生成された相互に排他的な製品であり、同じ入力から派生しますが、結果としては、さまざまなアプリケーションで出力が構造化、格納、および使用されます。
 
@@ -93,7 +93,7 @@ Cognitive Search のクエリを介してアクセスする必要がある検索
 
 ### <a name="rest"></a>[**REST**](#tab/kstore-rest)
 
-[**Postman を使用した初めてのナレッジ ストアの作成**](knowledge-store-create-rest.md)に関する記事は、この[ナレッジ ストアのコレクション](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/knowledge-store)に属するオブジェクトと要求について説明するチュートリアルです。
+[**Postman を使用した初めてのナレッジ ストアの作成**](knowledge-store-create-rest.md)に関する記事は、この [ナレッジ ストアのコレクション](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/knowledge-store)に属するオブジェクトと要求について説明するチュートリアルです。
 
 REST API バージョン `2020-06-30` を使用すると、スキルセットに追加してナレッジ ストアを作成できます。
 

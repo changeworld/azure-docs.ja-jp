@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/22/2021
-ms.openlocfilehash: 1968bb34d124fa37a51b296071ee24b3eae47772
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.date: 10/04/2021
+ms.openlocfilehash: 80471da945dcc5fdee690ec477599565777f1beb
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129273725"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129611455"
 ---
 # <a name="use-role-based-authorization-in-azure-cognitive-search"></a>Azure Cognitive Search でロールベースの承認を使用する
 
@@ -129,7 +129,7 @@ Postman または別の Web テスト ツールを使用する場合は、要求
 1. サービスに [ロールを割り当て](#assign-roles)て、データ プレーンに対して正しく機能することを確認します。
 
 > [!TIP]
-> Management REST API 呼び出しは、Azure Active Directory を介して認証されます。 セキュリティ プリンシパルと要求の設定に関するガイダンスについては、ブログ記事「[Azure REST APIs with Postman (2021)](https://blog.jongallant.com/2021/02/azure-rest-apis-postman-2021/)」(Postman を使用した Azure REST API (2021)) を参照してください。 前の例は、このブログ記事に記載されている命令と Postman コレクションを使用してテストされています。
+> Management REST API 呼び出しは、Azure Active Directory を介して認証されます。 セキュリティの原則と要求の設定に関するガイダンスについては、ブログ記事「[Postman を使用した Azure REST API (2021)](https://blog.jongallant.com/2021/02/azure-rest-apis-postman-2021/)」を参照してください。 前の例は、このブログ記事に記載されている命令と Postman コレクションを使用してテストされています。
 
 ---
 
@@ -293,4 +293,20 @@ API キーを削除することはできませんが、サービスで無効に�
 キー認証を再度有効にするには、最後の要求を再実行して、"disableLocalAuth" を false に設定します。 検索サービスでは、要求での API キーの受け入れが自動的に再開されます (機能が指定されている場合)。
 
 > [!TIP]
-> Management REST API 呼び出しは、Azure Active Directory を介して認証されます。 セキュリティ プリンシパルと要求の設定に関するガイダンスについては、ブログ記事「[Azure REST APIs with Postman (2021)](https://blog.jongallant.com/2021/02/azure-rest-apis-postman-2021/)」(Postman を使用した Azure REST API (2021)) を参照してください。 前の例は、このブログ記事に記載されている命令と Postman コレクションを使用してテストされています。
+> Management REST API 呼び出しは、Azure Active Directory を介して認証されます。 セキュリティの原則と要求の設定に関するガイダンスについては、ブログ記事「[Postman を使用した Azure REST API (2021)](https://blog.jongallant.com/2021/02/azure-rest-apis-postman-2021/)」を参照してください。 前の例は、このブログ記事に記載されている手順と Postman コレクションを使用してテストされています。
+
+## <a name="conditional-access"></a>条件付きアクセス
+
+[条件付きアクセス](../active-directory/conditional-access/overview.md)は、組織のポリシーを適用するために Azure Active Directory によって使用されるツールです。 条件付きアクセス ポリシーを使用すると、必要な場合は適切なアクセス制御を適用して組織のセキュリティを維持することができます。 ロールベースのアクセス制御を使用して Azure Cognitive Search サービスにアクセスすると、条件付きアクセスにより、組織ポリシーを適用することができます。
+
+Azure Cognitive Search の条件付きアクセス ポリシーを有効にするには、次の手順を実行します。
+1. Azure portal に[サインイン](https://portal.azure.com)します。
+1. **Azure AD 条件付きアクセス** を探します。
+1. **[ポリシー]** を選択します。
+1. **[新しいポリシー]** を選択します。
+1. ポリシーの **[クラウド アプリまたは操作]** セクションで、ポリシーの設定方法に応じて、クラウド アプリとして **Azure Cognitive Search** を追加します。
+1. ポリシーの残りのパラメーターを更新します。 たとえば、このポリシーを適用するユーザーとグループを指定します。 
+1. ポリシーを保存します。
+
+> [!IMPORTANT]
+> 検索サービスにマネージド ID が割り当てられている場合、その検索サービスは、条件付きアクセス ポリシーの一部として含めたり、除外したりすることができるクラウド アプリとして表示されます。 条件付きアクセス ポリシーを特定の検索サービスに適用することはできません。 代わりに、一般的な **Azure Cognitive Search** クラウド アプリを選択してください。

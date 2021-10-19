@@ -1,5 +1,6 @@
 ---
-title: F5 VPN を使用した Azure AD のセキュリティで保護されたハイブリッド アクセス | Microsoft Docs
+title: F5 VPN を使用した安全なハイブリッド アクセス
+titleSuffix: Azure AD
 description: パスワードレス VPN 用の Azure Active Directory シングル サインオン (SSO) と F5 BIG-IP の統合
 services: active-directory
 author: davidmu1
@@ -12,14 +13,14 @@ ms.date: 10/12/2020
 ms.author: davidmu
 ms.collection: M365-identity-device-management
 ms.reviewer: miccohen
-ms.openlocfilehash: 34175414cd5203438de76a94de7896e3bf175355
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 068fe4e98b3beb3f365cd16070fd134fda7c48b9
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121744167"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129617741"
 ---
-# <a name="tutorial-for-azure-active-directory-single-sign-on-integration-with-f5-big-ip-for-password-less-vpn"></a>パスワードレス VPN 用の Azure Active Directory シングル サインオンと F5 BIG-IP の統合
+# <a name="integrate-f5-big-ip-for-password-less-vpn-with-azure-active-directory"></a>パスワードレス VPN 用の F5 BIG-IP と Azure Active Directory の統合
 
 このチュートリアルでは、セキュリティで保護されたハイブリッド アクセス (SHA) のために F5 の BIG-IP に基づく Secure Socket Layer 仮想プライベート ネットワーク (SSL) ソリューションと Azure Active Directory (AD) を統合する方法について説明します。
 

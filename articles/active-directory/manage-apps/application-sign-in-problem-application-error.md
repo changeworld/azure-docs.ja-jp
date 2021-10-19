@@ -1,5 +1,6 @@
 ---
-title: サインイン後、アプリのページでエラーが発生する | Microsoft Docs
+title: サインイン後にアプリ ページにエラー メッセージが表示される
+titleSuffix: Azure AD
 description: アプリがエラーを返すときに Azure AD サインインで問題を解決する方法。
 services: active-directory
 author: davidmu1
@@ -12,14 +13,14 @@ ms.date: 07/11/2017
 ms.author: davidmu
 ms.reviewer: ergreenl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c1910eb106e7a3e405f58ba672c38fa108544d2
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 499ce4c7875a1805b5845614221ffef0641816d6
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121738898"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129617779"
 ---
-# <a name="an-app-page-shows-an-error-message-after-the-user-signs-in"></a>ユーザーがサインインした後、アプリのページにエラー メッセージが表示される
+# <a name="an-app-page-shows-an-error-message-after-the-user-signs-in-azure-active-directory"></a>ユーザーが Azure Active Directory にサインインした後に、アプリ ページにエラー メッセージが表示される
 
 このシナリオでは、Azure Active Directory (Azure AD) でユーザーをサインインします。 ただし、アプリケーションにはエラー メッセージが表示され、ユーザーはサインイン フローを完了できません。 問題は、Azure AD が発行した応答をアプリが受け取らなかったことです。
 

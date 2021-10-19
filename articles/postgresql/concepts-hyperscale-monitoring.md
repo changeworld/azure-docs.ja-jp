@@ -6,13 +6,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 07/26/2021
-ms.openlocfilehash: cb88998009ab05eb91b8945a138ef935660dac35
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.date: 10/05/2021
+ms.openlocfilehash: 89fcd5ce46ea9093779ad24dcca5a80a3a4f6ada
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114710762"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129618330"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL の監視とチューニング - Hyperscale (Citus)
 
@@ -26,7 +26,7 @@ Hyperscale (Citus) からは、サーバー グループに含まれるノード
 
 ### <a name="per-node-vs-aggregate"></a>ノードあたりと集計
 
-既定では、Azure portal では、サーバー グループ内のノード全体で Hyperscale (Citus) メトリックが収集されます。 ただし、ディスク使用量 (%) など、一部のメトリックはノードあたりを基準にした場合に情報の有益性が上がります。 ノードのメトリックを個別に表示するには、サーバー名を基準に Azure Monitor [メトリック分割](../azure-monitor/essentials/metrics-charts.md#metric-splitting)を使用します。
+既定では、Azure portal では、サーバー グループ内のノード全体で Hyperscale (Citus) メトリックが収集されます。 ただし、ディスク使用量 (%) など、一部のメトリックはノードあたりを基準にした場合に情報の有益性が上がります。 ノードのメトリックを個別に表示するには、サーバー名を基準に Azure Monitor [メトリック分割](howto-hyperscale-monitoring.md#view-metrics-per-node)を使用します。
 
 > [!NOTE]
 >
@@ -51,5 +51,6 @@ Azure にはクラスター全体の集計メトリックは用意されてい�
 
 ## <a name="next-steps"></a>次のステップ
 
+- Hyperscale (Citus) サーバー グループの[メトリックを表示する](howto-hyperscale-monitoring.md)方法について確認します。
 - メトリックに対するアラートの作成のガイダンスについては、[アラートを設定する方法](howto-hyperscale-alert-on-metric.md)に関するページをご覧ください。
 - サーバー グループ内でノードあたりのメトリックを調べる目的で[メトリック分割](../azure-monitor/essentials/metrics-charts.md#metric-splitting)する方法について学習します。

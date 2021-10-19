@@ -7,12 +7,12 @@ ms.reviewer: mbullwin
 ms.custom: devx-track-python
 author: lzchen
 ms.author: lechen
-ms.openlocfilehash: 988f32cae16a026ddef0294815ffd21ba0d81760
-ms.sourcegitcommit: 0beea0b1d8475672456da0b3a4485d133283c5ea
+ms.openlocfilehash: 98af913787ede9a0c9f543315043540b7994729f
+ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2021
-ms.locfileid: "112991741"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129754237"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>Python アプリケーション用に Azure Monitor をセットアップします
 
@@ -27,7 +27,7 @@ OpenCensus が [OpenTelemetry](https://opentelemetry.io/) に統合されつつ�
 ## <a name="prerequisites"></a>前提条件
 
 - Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
-- Python のインストール。 この記事では [Python 3.7.0](https://www.python.org/downloads/release/python-370/) を使用しますが、他のバージョンでも軽微な変更で使用できる可能性があります。 Opencensus Python SDK でサポートされているのは、Python v2.7 および v3.4 から v3.7 のみです。
+- Python のインストール。 この記事では [Python 3.7.0](https://www.python.org/downloads/release/python-370/) を使用しますが、他のバージョンでも軽微な変更で使用できる可能性があります。 Opencensus Python SDK でサポートされているのは、Python v2.7 および v3.4 以降のみです。
 - Application Insights の[リソース](./create-new-resource.md)を作成します。 リソースの独自のインストルメンテーション キー (ikey) が割り当てられます。
 
 ## <a name="introducing-opencensus-python-sdk"></a>Opencensus Python SDK の概要
@@ -349,47 +349,47 @@ OpenCensus Python SDK を使用すると、`tags` の方法でメトリック �
 
 1. 使用するタグをタグ マップに挿入します。 タグ マップは、使用可能なすべてのタグの一種の "プール" として機能します。
 
-```python
-...
-tmap = tag_map_module.TagMap()
-tmap.insert("url", "http://example.com")
-...
-```
+    ```python
+    ...
+    tmap = tag_map_module.TagMap()
+    tmap.insert("url", "http://example.com")
+    ...
+    ```
 
 1. 特定の `View` について、タグ キーを使用して、そのビューでメトリックを記録するときに使用するタグを指定します。
 
-```python
-...
-prompt_view = view_module.View("prompt view",
-                               "number of prompts",
-                               ["url"], # <-- A sequence of tag keys used to specify which tag key/value to use from the tag map
-                               prompt_measure,
-                               aggregation_module.CountAggregation())
-...
-```
+    ```python
+    ...
+    prompt_view = view_module.View("prompt view",
+                                "number of prompts",
+                                ["url"], # <-- A sequence of tag keys used to specify which tag key/value to use from the tag map
+                                prompt_measure,
+                                aggregation_module.CountAggregation())
+    ...
+    ```
 
 1. 測定マップで記録する場合、必ずタグ マップを使用してください。 `View` で指定されるタグ キーは、記録に使用されるタグ マップ内に存在する必要があります。
 
-```python
-...
-mmap = stats_recorder.new_measurement_map()
-mmap.measure_int_put(prompt_measure, 1)
-mmap.record(tmap) # <-- pass the tag map in here
-...
-```
+    ```python
+    ...
+    mmap = stats_recorder.new_measurement_map()
+    mmap.measure_int_put(prompt_measure, 1)
+    mmap.record(tmap) # <-- pass the tag map in here
+    ...
+    ```
 
 1. `customMetrics` テーブルでは、`prompt_view` を使用して出力されるすべてのメトリック レコードにカスタム ディメンション `{"url":"http://example.com"}` があります。
 
 1. 同じキーを使用して異なる値を持つタグを生成するには、それらに対して新しいタグ マップを作成します。
 
-```python
-...
-tmap = tag_map_module.TagMap()
-tmap2 = tag_map_module.TagMap()
-tmap.insert("url", "http://example.com")
-tmap2.insert("url", "https://www.wikipedia.org/wiki/")
-...
-```
+    ```python
+    ...
+    tmap = tag_map_module.TagMap()
+    tmap2 = tag_map_module.TagMap()
+    tmap.insert("url", "http://example.com")
+    tmap2.insert("url", "https://www.wikipedia.org/wiki/")
+    ...
+    ```
 
 #### <a name="performance-counters"></a>パフォーマンス カウンター
 

@@ -7,12 +7,12 @@ ms.date: 03/03/2021
 ms.author: thweiss
 author: ThomasWeiss
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: eb448630424939ef7d17144c6c0d385474fdf917
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+ms.openlocfilehash: 61e836fcb07045ce25df02ba48823ac5a2d70762
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113360255"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129859306"
 ---
 # <a name="configure-ip-firewall-in-azure-cosmos-db"></a>Azure Cosmos DB で IP ファイアウォールを構成する
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -108,7 +108,7 @@ Azure Cosmos DB を使用する中間層サービスのホスティングには�
 
 ファイアウォール設定に追加する送信 IP 範囲の現在の一覧にアクセスするには、[Azure IP 範囲とサービス タグのダウンロード](https://www.microsoft.com/download/details.aspx?id=56519)に関するページを参照してください。
 
-リストを自動化する方法については、「[Service Tag Discovery API を使用する (パブリック プレビュー)](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview)」を参照してください。
+この一覧を自動化するには、「[Service Tag Discovery API を使用する](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api)」を参照してください。
 
 ## <a name="configure-an-ip-firewall-by-using-a-resource-manager-template"></a><a id="configure-ip-firewall-arm"></a>Resource Manager テンプレートを使用して IP ファイアウォールを構成する
 

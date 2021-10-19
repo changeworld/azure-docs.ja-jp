@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 09/05/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: bdc98523c2c9795f3f69baeaef7599352ff9e4dc
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: fbad522ca99449773402b70839578fdcab24716c
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123536916"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129725922"
 ---
 このカテゴリには **23 個** の推奨事項があります。
 

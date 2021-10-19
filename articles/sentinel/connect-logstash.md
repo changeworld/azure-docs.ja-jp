@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2020
 ms.author: yelevin
-ms.openlocfilehash: 37b09e09207b91e966fef7249cc38a2f13fe4e68
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5f6765d4e6fc60a4b1d34846b1279456e1e8dca7
+ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121747145"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129754294"
 ---
 # <a name="use-logstash-to-connect-data-sources-to-azure-sentinel"></a>Logstash を使用して Azure Sentinel にデータ ソースを接続する
 
@@ -48,7 +48,7 @@ Logstash エンジンは、次の 3 つのコンポーネントで構成され�
 >
 > - Microsoft では、Azure Sentinel 用のサード パーティ製 Logstash 出力プラグインや、その他の種類の Logstash プラグインやコンポーネントをサポートしていません。
 >
-> - Azure Sentinel の Logstash 出力プラグインでサポートされるのは、**Logstash の 7.0 から 7.9 までのバージョン** だけです。
+> - Azure Sentinel の Logstash 出力プラグインでサポートされるのは、**Logstash の 7.0 から 7.15 までのバージョン** だけです。
 
 Logstash 用の Azure Sentinel 出力プラグインは、Log Analytics HTTP データ コレクター REST API を使用して、JSON 形式のデータを Log Analytics ワークスペースに送信します。 データはカスタム ログに取り込まれます。
 

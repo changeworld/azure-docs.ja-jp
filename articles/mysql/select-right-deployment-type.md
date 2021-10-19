@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/26/2020
-ms.openlocfilehash: ee18a405ca6c6a9d2e6a3a6cceb5c0ff89b5cf73
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 3126eb9a2c3289f6fbc97a14fadf94300d1c2e84
+ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124748582"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129728781"
 ---
 # <a name="choose-the-right-mysql-server-option-in-azure"></a>Azure で適切な MySQL サーバー オプションを選択する
 
@@ -111,7 +111,7 @@ Azure では、MySQL サーバーのワークロードをホスト型仮想マ�
 | [**監視**](flexible-server/concepts-monitoring.md) | | | |
 | Azure Monitor の統合およびアラート | サポートされています | サポートされています | ユーザー管理 |
 | データベース操作の監視 | サポートされています | サポートされています | ユーザー管理 |
-| Query Performance Insights | サポートされています | サポートされていません | ユーザー管理 |
+| Query Performance Insights | サポートされています | サポートされています (Workbooks を使用)| ユーザー管理 |
 | サーバー ログ | サポートされています | サポートされています (診断ログを使用) | ユーザー管理 |
 | [監査ログ] | サポートされています | サポートされています | サポートされています | 
 | エラー ログ | サポートされていません | サポートされています | サポートされています |

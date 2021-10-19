@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: reference
-ms.date: 09/14/2021
+ms.date: 10/07/2021
 ms.author: rolyon
 ms.reviewer: abhijeetsinha
 ms.custom: generated, it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a057cbd765e58cf4eca509af38e74e62168cddc2
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: b1cbd4732513b9c9bcc40f6eafb0a792b2d3ca06
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129058135"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129667879"
 ---
 # <a name="azure-ad-built-in-roles"></a>Azure AD の組み込みロール
 
@@ -57,6 +57,7 @@ Azure Active Directory (Azure AD) で、別の管理者または管理者以外�
 > | [ディレクトリ ライター](#directory-writers) | 基本的なディレクトリ情報の読み取りと書き込みを実行できます。 ユーザーではなく、アプリケーションへのアクセスを許可する場合。 | 9360feb5-f418-4baa-8175-e2a00bac4301 |
 > | [ドメイン名管理者](#domain-name-administrator) | クラウドおよびオンプレミスのドメイン名を管理できます。 | 8329153b-31d0-4727-b945-745eb3bc5f31 |
 > | [Dynamics 365 管理者](#dynamics-365-administrator) | Dynamics 365 製品のすべての側面を管理できます。 | 44367163-eba1-44c3-98af-f5787879f96a |
+> | [Edge 管理者](#edge-administrator) | Microsoft Edge のすべての側面を管理します。 | 3f1acade-1e04-4fbc-9b69-f0302cd84aef |
 > | [Exchange 管理者](#exchange-administrator) | Exchange 製品のすべての側面を管理できます。 | 29232cdf-9323-42fd-ade2-1d097af3e4de |
 > | [Exchange 受信者管理者](#exchange-recipient-administrator) | Exchange Online 組織内で Exchange Online 受信者を作成または更新できます。 | 31392ffb-586c-42d1-9346-e59415a2cc4e |
 > | [外部 ID ユーザー フロー管理者](#external-id-user-flow-administrator) | ユーザー フローのすべての側面を作成および管理できます。 | 6e591065-9bad-43ed-90f3-e9424366d2f0 |
@@ -252,7 +253,7 @@ Azure Active Directory (Azure AD) で、別の管理者または管理者以外�
 > | --- | --- |
 > | microsoft.directory/users/authenticationMethods/create | ユーザーの認証方法を作成する |
 > | microsoft.directory/users/authenticationMethods/delete | ユーザーの認証方法を削除する |
-> | microsoft.directory/users/authenticationMethods/standard/restrictedRead | 個人を特定できる情報を含まない認証方法の標準プロパティを読み取ります。 |
+> | microsoft.directory/users/authenticationMethods/standard/restrictedRead | ユーザーの個人を特定できる情報を含まない認証方法の標準プロパティを読み取る |
 > | microsoft.directory/users/authenticationMethods/basic/update | ユーザーの認証方法の基本プロパティを更新する |
 > | microsoft.directory/users/invalidateAllRefreshTokens | ユーザー更新トークンを無効にして強制的にサインアウトする |
 > | microsoft.directory/users/password/update | すべてのユーザーのパスワードをリセットする |
@@ -758,6 +759,17 @@ Azure Active Directory (Azure AD) で、別の管理者または管理者以外�
 > | microsoft.office365.supportTickets/allEntities/allTasks | Microsoft 365 サービス要求を作成および管理する |
 > | microsoft.office365.webPortal/allEntities/standard/read | Microsoft 365 管理センターですべてのリソースの基本プロパティを読み取る |
 
+## <a name="edge-administrator"></a>Edge 管理者
+
+このロールのユーザーは、Microsoft Edge で Internet Explorer モードに必要なエンタープライズ サイト リストを作成および管理できます。 このロールには、サイト リストを作成、編集、発行するアクセス許可が付与され、さらにサポート チケットを管理するためのアクセスが許可されます。 [詳細情報](https://go.microsoft.com/fwlink/?linkid=2165707)
+
+> [!div class="mx-tableFixed"]
+> | アクション | 説明 |
+> | --- | --- |
+> | microsoft.edge/allEntities/allProperties/allTasks | Microsoft Edge のすべての側面を管理する |
+> | microsoft.office365.supportTickets/allEntities/allTasks | Microsoft 365 サービス要求を作成および管理する |
+> | microsoft.office365.webPortal/allEntities/standard/read | Microsoft 365 管理センターですべてのリソースの基本プロパティを読み取る |
+
 ## <a name="exchange-administrator"></a>Exchange 管理者
 
 このロールが割り当てられたユーザーは、Microsoft Exchange Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。 また、すべての Microsoft 365 グループの作成および管理、サポート チケットの管理、サービスの正常性の監視を行うこともできます。 詳細については、「[管理者ロールについて](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)」をご覧ください。
@@ -977,7 +989,7 @@ Azure Active Directory (Azure AD) で、別の管理者または管理者以外�
 > | microsoft.directory/applications/allProperties/read | すべての種類のアプリケーションのすべてのプロパティ (特権プロパティを含む) を読み取る |
 > | microsoft.directory/applications/synchronization/standard/read | アプリケーション オブジェクトに関連付けられているプロビジョニング設定を読み取る |
 > | microsoft.directory/auditLogs/allProperties/read | 監査ログのすべてのプロパティ (特権プロパティを含む) を読み取る |
-> | microsoft.directory/users/authenticationMethods/standard/restrictedRead | 個人を特定できる情報を含まない認証方法の標準プロパティを読み取ります。 |
+> | microsoft.directory/users/authenticationMethods/standard/restrictedRead | ユーザーの個人を特定できる情報を含まない認証方法の標準プロパティを読み取る |
 > | microsoft.directory/authorizationPolicy/standard/read | 認証ポリシーの標準プロパティを読み取る |
 > | microsoft.directory/bitlockerKeys/key/read | デバイス上の bitlocker メタデータとキーを読み取る |
 > | microsoft.directory/cloudAppSecurity/allProperties/read | Cloud App Security のすべてのプロパティを読み取る |
@@ -1123,7 +1135,6 @@ Azure Active Directory (Azure AD) で、別の管理者または管理者以外�
 > | microsoft.directory/applications/audience/update | アプリケーションの対象ユーザー プロパティを更新する |
 > | microsoft.directory/applications/authentication/update | すべての種類のアプリケーションで認証を更新する |
 > | microsoft.directory/applications/basic/update | アプリケーションの基本プロパティを更新する |
-> | microsoft.directory/applications/credentials/update | アプリケーション資格情報を更新する |
 > | microsoft.directory/applications/notes/update | アプリケーションのメモを更新する |
 > | microsoft.directory/applications/owners/update | アプリケーションの所有者を更新する |
 > | microsoft.directory/applications/permissions/update | すべての種類のアプリケーションで、公開されたアクセス許可と必要なアクセス許可を更新する |
@@ -2034,7 +2045,7 @@ Windows Defender ATP および EDR | アラートを表示して調査します�
 
 `<namespace>/<entity>/<propertySet>/<action>`
 
-例:
+次に例を示します。
 
 `microsoft.directory/applications/credentials/update`
 

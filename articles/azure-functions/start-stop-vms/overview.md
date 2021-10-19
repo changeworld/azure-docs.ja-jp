@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.service: azure-functions
 ms.subservice: start-stop-vms
 ms.date: 06/25/2021
-ms.openlocfilehash: 24872e96333aeb67661c462e54acebc62b32c8aa
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: e71f6b6dde1ae12a68f425dcb372cca73456de73
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129455420"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129858133"
 ---
 # <a name="startstop-vms-v2-preview-overview"></a>Start/Stop VMs v2 (プレビュー) の概要
 
@@ -45,14 +45,20 @@ Start/Stop VMs v2 (プレビュー) は再設計されており、[以前のバ�
 
  [Azure Logic Apps](../../logic-apps/logic-apps-overview.md) は、JSON ペイロードを使用して関数を呼び出すことにより、VM の開始と停止のスケジュールを構成および管理するために使用されます。 これは既定で、最初のデプロイ中に、次のシナリオ向けに合計 5 つの Logic Apps を作成します。
 
-- Scheduled - 開始と停止のアクションは、Azure Resource Manager とクラシックの VM に対して指定したスケジュールに基づきます。 **ststv2_vms_Scheduled_start** と **ststv2_vms_Scheduled_stop** により、スケジュール設定された開始と停止が構成されます。
+- **Scheduled** - 開始と停止のアクションは、Azure Resource Manager やクラシック VM に対して指定するスケジュールに基づきます。 **ststv2_vms_Scheduled_start** と **ststv2_vms_Scheduled_stop** により、スケジュール設定された開始と停止が構成されます。
 
-- Sequenced - 開始と停止のアクションは、事前定義されたシーケンス処理タグの付いた VM を対象とするスケジュールに基づきます。 サポートされているのは、**sequencestart** および **sequencestop** の 2 つの名前付きタグのみです。 **ststv2_vms_Sequenced_start** と **ststv2_vms_Sequenced_stop** により、シーケンスされた開始と停止が構成されます。
+- **Sequenced** - 開始と停止のアクションは、事前に定義されたシーケンス処理タグの付いた VM を対象とするスケジュールに基づきます。 サポートされているのは、**sequencestart** および **sequencestop** の 2 つの名前付きタグのみです。 **ststv2_vms_Sequenced_start** と **ststv2_vms_Sequenced_stop** により、シーケンスされた開始と停止が構成されます。 
+
+    シーケンス機能を使用するための適切な方法として、順番に開始する各 VM で **sequencestart** という名前のタグを作成します。 このタグの値は、対応するスコープ内の各 VM に対して 1 から N までの整数である必要があります。 このタグは省略可能であり、存在しない場合、その VM は単純にシーケンス処理に参加しません。 停止する VM にも同じ条件が適用されますが、タグ名だけが異なり、この場合は **sequencestop** を使用します。 開始と停止のアクションを使用するには、各 VM で両方のタグを構成する必要があります。
+
+    たとえば、次の表は、逆のシーケンスを持つ 2 つの VM が最終的には同じ順序で実行されるようすを示しています。
+
+    :::image type="content" source="media/overview/sequence-settings-table.png" alt-text="シーケンス設定のタグの例を示す表":::
 
     > [!NOTE]
     > このシナリオでサポートされるのは、Azure Resource Manager の VM のみです。
 
-- AutoStop - この機能は、CPU 使用率に基づいて Azure Resource Manager とクラシックの両方の VM に対して停止アクションを実行するためにのみ使用されます。 また、これは、スケジュールに基づいた "*アクションの実行*" にもなり得ます。これにより、VM に関するアラートが作成され、条件に基づいて、停止アクションを実行するためにアラートがトリガーされます。 **ststv2_vms_AutoStop** により、自動停止機能が構成されます。
+- **AutoStop** - この機能は、それぞれの CPU 使用率に基づいて Azure Resource Manager とクラシック VM の両方に対して停止アクションを実行するためにのみ使用されます。 また、これは、スケジュールに基づいた "*アクションの実行*" にもなり得ます。これにより、VM に関するアラートが作成され、条件に基づいて、停止アクションを実行するためにアラートがトリガーされます。 **ststv2_vms_AutoStop** により、自動停止機能が構成されます。
 
 開始と停止の各アクションでは、1 つ以上のサブスクリプション、リソース グループ、または VM の一覧の割り当てがサポートされています。
 

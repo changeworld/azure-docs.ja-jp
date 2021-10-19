@@ -6,12 +6,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 10/04/2021
 ms.author: normesta
-ms.openlocfilehash: b1f612ee189d47529033fdd9e6c7e7df0f523df9
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: 025aa395fa6d2fd3a8fe98f4781a6b554e2b506d
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129459021"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129710534"
 ---
 #  <a name="upgrade-azure-blob-storage-with-azure-data-lake-storage-gen2-capabilities"></a>Azure Data Lake Storage Gen2 の機能で Azure Blob Storage をアップグレードする
 
@@ -41,7 +41,7 @@ ms.locfileid: "129459021"
 
 6. **[手順 2: アップグレードする前にアカウントを検証する]** セクションを展開し、 **[検証の開始]** をクリックします。
 
-   検証が失敗した場合は、 **[エラーの表示]** リンクを選択します
+   検証に失敗した場合は、ページにエラーが表示されます。 場合によっては、 **[エラーの表示]** リンクが表示されます。 リンクが表示されたら、それを選択します。 
 
    > [!div class="mx-imgBorder"]
    > ![[エラーの表示] リンク](./media/upgrade-to-data-lake-storage-gen2-how-to/validation-errors.png)
@@ -97,6 +97,6 @@ ms.locfileid: "129459021"
    BLOB API の場合と同様に、スクリプトの多くは、変更を必要とせずに機能する可能性があります。 ただし、必要な場合は、Data Lake Storage Gen2 の [PowerShell コマンドレット](data-lake-storage-directory-file-acl-powershell.md)と [Azure CLI コマンド](data-lake-storage-directory-file-acl-cli.md)を使用するようにスクリプト ファイルをアップグレードできます。
  
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>こちらもご覧ください
 
 [Azure Data Lake Storage Gen2 の概要](data-lake-storage-introduction.md)

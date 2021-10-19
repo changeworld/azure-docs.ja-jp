@@ -4,15 +4,15 @@ description: 使用状況イベント API を使用すると、Microsoft AppSour
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/26/2020
+ms.date: 10/12/2021
 author: saasguide
 ms.author: souchak
-ms.openlocfilehash: 85bc266dcd1434a7d28eb642376bea32c94c3610
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: 056fd364902ccd530b1aa2d540cd7d0457e0276b
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129457128"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129855861"
 ---
 # <a name="marketplace-metered-billing-apis"></a>マーケットプレースの従量制課金 API
 
@@ -164,8 +164,12 @@ Forbidden. 認証トークンが指定されていない、無効である、ま
 | `authorization`      | この API 呼び出しを行う ISV を識別する一意のアクセス トークン。 以下の説明に従って、発行元によってトークン値が取得される場合、形式は `Bearer <access_token>` です <br> <ul> <li> [HTTP POST でトークンを取得する](partner-center-portal/pc-saas-registration.md#get-the-token-with-an-http-post) SaaS。 </li> <li> [認証方法](./marketplace-metering-service-authentication.md)のマネージド アプリケーション。 </li> </ul> |
 | | |
 
+>[!NOTE]
+>要求本文では、リソース ID の意味がカスタム メーターを発行する SaaS アプリと Azure マネージド アプリで異なります。 SaaS アプリのリソース ID は `resourceID` です。 Azure Application Managed Apps プランのリソース ID は `resourceUri` です。
 
-*要求本文の例:*
+SaaS オファーの場合、`resourceId` は SaaS サブスクリプション ID です。 SaaS サブスクリプションの詳細については、「[サブスクリプションの一覧](partner-center-portal/pc-saas-fulfillment-api-v2.md#get-list-of-all-subscriptions)」をご覧ください。
+
+*SaaS アプリの要求本文の例:*
 
 ```json
 {
@@ -188,12 +192,30 @@ Forbidden. 認証トークンが指定されていない、無効である、ま
 }
 ```
 
->[!NOTE]
->`resourceId` は、SaaS アプリとカスタム メーターを生成するマネージド アプリでは、意味が異なります。 
+Azure Application Managed Apps プランの場合、`resourceUri` は、マネージド アプリの `resource group Id`です。 これを取得するためのサンプル スクリプトについては、「[Azure マネージド ID トークンの使用](marketplace-metering-service-authentication.md#using-the-azure-managed-identities-token)」をご覧ください。 
 
-Azure Application Managed Apps プランの場合、`resourceId` は、マネージド アプリの `resource group Id`です。 これを取得するためのサンプル スクリプトについては、「[Azure マネージド ID トークンの使用](marketplace-metering-service-authentication.md#using-the-azure-managed-identities-token)」をご覧ください。 
+*Azure アプリケーション マネージド アプリの要求本文の例:*
 
-SaaS オファーの場合、`resourceId` は SaaS サブスクリプション ID です。 SaaS サブスクリプションの詳細については、「[サブスクリプションの一覧](partner-center-portal/pc-saas-fulfillment-api-v2.md#get-list-of-all-subscriptions)」をご覧ください。
+```json
+{
+  "request": [ // list of usage events for the same or different resources of the publisher
+    { // first event
+      "resourceUri": "<guid1>", // Unique identifier of the resource against which usage is emitted. 
+      "quantity": 5.0, // how many units were consumed for the date and hour specified in effectiveStartTime, must be greater than 0, can be integer or float value
+      "dimension": "dim1", //Custom dimension identifier
+      "effectiveStartTime": "2018-12-01T08:30:14",//Time in UTC when the usage event occurred, from now and until 24 hours back
+      "planId": "plan1", // id of the plan purchased for the offer
+    },
+    { // next event
+      "resourceId": "<guid2>", 
+      "quantity": 39.0, 
+      "dimension": "email", 
+      "effectiveStartTime": "2018-11-01T23:33:10
+      "planId": "gold", // id of the plan purchased for the offer
+    }
+  ]
+}
+```
 
 ### <a name="responses"></a>Responses
 

@@ -6,15 +6,15 @@ author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure
 ms.topic: how-to
-ms.date: 07/17/2017
+ms.date: 10/09/2021
 ms.custom: devx-track-java
 ms.author: cynthn
-ms.openlocfilehash: ec738d2f2765cd97c518b79081675c197ead6466
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: fa4d2f5dc33553cb92a5733e5946c055d6a12941
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122697206"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129810886"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Java を使用して Azure で Windows VM を作成および管理する
 
@@ -68,74 +68,24 @@ ms.locfileid: "122697206"
 
     ```xml
     <dependency>
-      <groupId>com.microsoft.azure</groupId>
-      <artifactId>azure</artifactId>
-      <version>1.1.0</version>
+      <groupId>com.azure</groupId>
+      <artifactId>azure-identity</artifactId>
+      <version>1.3.6</version>
     </dependency>
     <dependency>
-      <groupId>com.microsoft.azure</groupId>
-      <artifactId>azure-mgmt-compute</artifactId>
-      <version>1.1.0</version>
-    </dependency>
-    <dependency>
-      <groupId>com.microsoft.azure</groupId>
-      <artifactId>azure-mgmt-resources</artifactId>
-      <version>1.1.0</version>
-    </dependency>
-    <dependency>
-      <groupId>com.microsoft.azure</groupId>
-      <artifactId>azure-mgmt-network</artifactId>
-      <version>1.1.0</version>
-    </dependency>
-    <dependency>
-      <groupId>com.squareup.okio</groupId>
-      <artifactId>okio</artifactId>
-      <version>1.13.0</version>
-    </dependency>
-    <dependency>
-      <groupId>com.nimbusds</groupId>
-      <artifactId>nimbus-jose-jwt</artifactId>
-      <version>3.6</version>
-    </dependency>
-    <dependency>
-      <groupId>net.minidev</groupId>
-      <artifactId>json-smart</artifactId>
-      <version>1.0.6.3</version>
-    </dependency>
-    <dependency>
-      <groupId>javax.mail</groupId>
-      <artifactId>mail</artifactId>
-      <version>1.4.5</version>
+      <groupId>com.azure.resourcemanager</groupId>
+      <artifactId>azure-resourcemanager</artifactId>
+      <version>2.8.0</version>
     </dependency>
     ```
 
 3. ファイルを保存します。
 
-## <a name="create-credentials"></a>資格情報を作成する
+## <a name="set-up-authentication"></a>認証の設定
 
-この手順を開始する前に、[Active Directory サービス プリンシパル](../../active-directory/develop/howto-create-service-principal-portal.md)にアクセスできることを確認します。 また、後の手順で必要になるので、アプリケーション ID、認証キー、テナント ID を控えておく必要があります。
+[認証を設定する](/azure/developer/java/sdk/get-started#set-up-authentication)方法について説明します。
 
-### <a name="create-the-authorization-file"></a>承認ファイルを作成する
-
-1. `azureauth.properties` という名前のファイルを作成し、次のプロパティを追加します。
-
-    ```
-    subscription=<subscription-id>
-    client=<application-id>
-    key=<authentication-key>
-    tenant=<tenant-id>
-    managementURI=https://management.core.windows.net/
-    baseURL=https://management.azure.com/
-    authURL=https://login.windows.net/
-    graphURL=https://graph.microsoft.com/
-    ```
-
-    **&lt;subscription-id&gt;** をサブスクリプション ID に、 **&lt;application-id&gt;** を Active Directory アプリケーション ID に、 **&lt;authentication-key&gt;** をアプリケーション キーに、 **&lt;tenant-id&gt;** をテナント識別子に置き換えます。
-
-2. ファイルを保存します。
-3. シェルの AZURE_AUTH_LOCATION という名前の環境変数に、認証ファイルへの完全なパスを設定します。
-
-### <a name="create-the-management-client"></a>管理クライアントを作成する
+## <a name="create-the-management-client"></a>管理クライアントを作成する
 
 1. `src\main\java\com\fabrikam` の中の `App.java` ファイルを開き、次の package ステートメントが先頭にあることを確認します。
 
@@ -143,42 +93,20 @@ ms.locfileid: "122697206"
     package com.fabrikam.testAzureApp;
     ```
 
-2. package ステートメントの下に、次の import ステートメントを追加します。
+2. AzureResourceManager を作成します。
    
     ```java
-    import com.microsoft.azure.management.Azure;
-    import com.microsoft.azure.management.compute.AvailabilitySet;
-    import com.microsoft.azure.management.compute.AvailabilitySetSkuTypes;
-    import com.microsoft.azure.management.compute.CachingTypes;
-    import com.microsoft.azure.management.compute.InstanceViewStatus;
-    import com.microsoft.azure.management.compute.DiskInstanceView;
-    import com.microsoft.azure.management.compute.VirtualMachine;
-    import com.microsoft.azure.management.compute.VirtualMachineSizeTypes;
-    import com.microsoft.azure.management.network.PublicIPAddress;
-    import com.microsoft.azure.management.network.Network;
-    import com.microsoft.azure.management.network.NetworkInterface;
-    import com.microsoft.azure.management.resources.ResourceGroup;
-    import com.microsoft.azure.management.resources.fluentcore.arm.Region;
-    import com.microsoft.azure.management.resources.fluentcore.model.Creatable;
-    import com.microsoft.rest.LogLevel;
-    import java.io.File;
-    import java.util.Scanner;
-    ```
+    TokenCredential credential = new EnvironmentCredentialBuilder()
+                .authorityHost(AzureAuthorityHosts.AZURE_PUBLIC_CLOUD)
+                .build();
 
-2. 要求を行うために必要な Active Directory 資格情報を作成するために、App クラスの main メソッドに次のコードを追加します。
-   
-    ```java
-    try {
-        final File credFile = new File(System.getenv("AZURE_AUTH_LOCATION"));
-        Azure azure = Azure.configure()
-            .withLogLevel(LogLevel.BASIC)
-            .authenticate(credFile)
+    // Please finish 'Set up authentication' step first to set the four environment variables: AZURE_SUBSCRIPTION_ID, AZURE_CLIENT_ID, AZURE_CLIENT_SECRET, AZURE_TENANT_ID
+    AzureProfile profile = new AzureProfile(AzureEnvironment.AZURE);
+
+    AzureResourceManager azureResourceManager = AzureResourceManager.configure()
+            .withLogLevel(HttpLogDetailLevel.BASIC)
+            .authenticate(credential, profile)
             .withDefaultSubscription();
-    } catch (Exception e) {
-        System.out.println(e.getMessage());
-        e.printStackTrace();
-    }
-
     ```
 
 ## <a name="create-resources"></a>リソースを作成する
@@ -209,7 +137,6 @@ AvailabilitySet availabilitySet = azure.availabilitySets()
     .define("myAvailabilitySet")
     .withRegion(Region.US_EAST)
     .withExistingResourceGroup("myResourceGroup")
-    .withSku(AvailabilitySetSkuTypes.MANAGED)
     .create();
 ```
 ### <a name="create-the-public-ip-address"></a>パブリック IP アドレスの作成
@@ -220,7 +147,7 @@ AvailabilitySet availabilitySet = azure.availabilitySets()
 
 ```java
 System.out.println("Creating public IP address...");
-PublicIPAddress publicIPAddress = azure.publicIPAddresses()
+PublicIpAddress publicIPAddress = azure.publicIpAddresses()
     .define("myPublicIP")
     .withRegion(Region.US_EAST)
     .withExistingResourceGroup("myResourceGroup")
@@ -241,7 +168,7 @@ Network network = azure.networks()
     .withRegion(Region.US_EAST)
     .withExistingResourceGroup("myResourceGroup")
     .withAddressSpace("10.0.0.0/16")
-    .withSubnet("mySubnet","10.0.0.0/24")
+    .withSubnet("mySubnet", "10.0.0.0/24")
     .create();
 ```
 
@@ -297,21 +224,22 @@ input.nextLine();
 Marketplace イメージではなく、既存のディスクを使用する場合は、このコードを使用します。 
 
 ```java
-ManagedDisk managedDisk = azure.disks.define("myosdisk")
+Disk managedDisk = azure.disks().define("myosdisk")
     .withRegion(Region.US_EAST)
     .withExistingResourceGroup("myResourceGroup")
     .withWindowsFromVhd("https://mystorage.blob.core.windows.net/vhds/myosdisk.vhd")
+    .withStorageAccountName("mystorage")
     .withSizeInGB(128)
-    .withSku(DiskSkuTypes.PremiumLRS)
+    .withSku(DiskSkuTypes.PREMIUM_LRS)
     .create();
 
-azure.virtualMachines.define("myVM")
+azure.virtualMachines().define("myVM")
     .withRegion(Region.US_EAST)
     .withExistingResourceGroup("myResourceGroup")
     .withExistingPrimaryNetworkInterface(networkInterface)
-    .withSpecializedOSDisk(managedDisk, OperatingSystemTypes.Windows)
+    .withSpecializedOSDisk(managedDisk, OperatingSystemTypes.WINDOWS)
     .withExistingAvailabilitySet(availabilitySet)
-    .withSize(VirtualMachineSizeTypes.StandardDS1)
+    .withSize(VirtualMachineSizeTypes.STANDARD_DS1)
     .create();
 ```
 
@@ -347,23 +275,24 @@ System.out.println("osProfile");
 System.out.println("    computerName: " + vm.osProfile().computerName());
 System.out.println("    adminUserName: " + vm.osProfile().adminUsername());
 System.out.println("    provisionVMAgent: " + vm.osProfile().windowsConfiguration().provisionVMAgent());
-System.out.println("    enableAutomaticUpdates: " + vm.osProfile().windowsConfiguration().enableAutomaticUpdates());
+System.out.println(
+        "    enableAutomaticUpdates: " + vm.osProfile().windowsConfiguration().enableAutomaticUpdates());
 System.out.println("networkProfile");
 System.out.println("    networkInterface: " + vm.primaryNetworkInterfaceId());
 System.out.println("vmAgent");
 System.out.println("  vmAgentVersion: " + vm.instanceView().vmAgent().vmAgentVersion());
 System.out.println("    statuses");
-for(InstanceViewStatus status : vm.instanceView().vmAgent().statuses()) {
+for (InstanceViewStatus status : vm.instanceView().vmAgent().statuses()) {
     System.out.println("    code: " + status.code());
     System.out.println("    displayStatus: " + status.displayStatus());
     System.out.println("    message: " + status.message());
     System.out.println("    time: " + status.time());
 }
 System.out.println("disks");
-for(DiskInstanceView disk : vm.instanceView().disks()) {
+for (DiskInstanceView disk : vm.instanceView().disks()) {
     System.out.println("  name: " + disk.name());
     System.out.println("  statuses");
-    for(InstanceViewStatus status : disk.statuses()) {
+    for (InstanceViewStatus status : disk.statuses()) {
         System.out.println("    code: " + status.code());
         System.out.println("    displayStatus: " + status.displayStatus());
         System.out.println("    time: " + status.time());
@@ -375,7 +304,7 @@ System.out.println("  id: " + vm.id());
 System.out.println("  name: " + vm.name());
 System.out.println("  type: " + vm.type());
 System.out.println("VM instance status");
-for(InstanceViewStatus status : vm.instanceView().statuses()) {
+for (InstanceViewStatus status : vm.instanceView().statuses()) {
     System.out.println("  code: " + status.code());
     System.out.println("  displayStatus: " + status.displayStatus());
 }

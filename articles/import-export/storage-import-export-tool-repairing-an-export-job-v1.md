@@ -5,17 +5,21 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/19/2021
+ms.date: 10/04/2021
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: d84f26b2764a103a9b504c1480e88b58fed3c201
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e1768c506928642ec7742ea8713b98ad4f154ed1
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98706063"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129709229"
 ---
 # <a name="repairing-an-export-job"></a>Export ジョブの修復
+
+> [!IMPORTANT]
+> ジョブの修復は、Azure Import/Export ツールでサポートされなくなりました。 バージョン1.5.0.300 以降では、BLOB のエクスポートで問題を修正してから、[新しいエクスポート ジョブを作成する](storage-import-export-data-from-blobs.md?tabs=azure-portal#step-1-create-an-export-job)必要があります。
+
 エクスポート ジョブが完了した後、オンプレミスで Microsoft Azure Import/Export ツールを実行して、次を行うことができます。  
   
 1.  Azure Import/Export サービスでエクスポートできなかったファイルをダウンロードする。  
@@ -152,7 +156,7 @@ G:\pictures\wild\canyon.jpg.properties
   
 ## <a name="next-steps"></a>次のステップ
  
-* [Azure Import/Export ツールの設定](storage-import-export-tool-setup-v1.md)   
+<!--* [Setting Up the Azure Import/Export Tool](storage-import-export-tool-setup-v1.md)-->
 * [インポート ジョブ用のハード ドライブを準備する](storage-import-export-data-to-blobs.md#step-1-prepare-the-drives)   
 * [コピー ログ ファイルによるジョブの状態の確認](storage-import-export-tool-reviewing-job-status-v1.md)   
-* [インポート ジョブの修復](storage-import-export-tool-repairing-an-import-job-v1.md)
+<!--* [Repairing an import job](storage-import-export-tool-repairing-an-import-job-v1.md)-->

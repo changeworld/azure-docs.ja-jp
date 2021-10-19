@@ -12,12 +12,12 @@ metadata:
   ms.date: 04/27/2021
   ms.author: kenwith
   ms.reviewer: japere
-  ms.openlocfilehash: f0d27693bcf378988d70bae2ad45babedea4b858
-  ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+  ms.openlocfilehash: d144b160a940132bdab71362b6322b1e51679006
+  ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/29/2021
-  ms.locfileid: "129234321"
+  ms.lasthandoff: 10/06/2021
+  ms.locfileid: "129619164"
 title: Active Directory (Azure AD) アプリケーション プロキシに関してよく寄せられる質問
 summary: このページには、Azure Active Directory (Azure AD) アプリケーション プロキシに関してよく寄せられる質問への回答が記載されています。
 sections:
@@ -118,13 +118,29 @@ sections:
     answer: >
       [アプリケーションの登録] ページで、ホームページの URL を任意のランディング ページの外部 URL に変更できます。 アプリケーションがマイ アプリまたは Office 365 ポータルから起動されると、指定したページが読み込まれます。 構成手順については、「[Azure AD アプリケーション プロキシを使用して、発行されたアプリのカスタム ホーム ページを設定する](application-proxy-configure-custom-home-page.md)」を参照してください
   - question: >
+      URL に "#" (ハッシュタグ) 文字が含まれる場合に、公開済みのアプリケーションにアクセスしようとすると、切り捨てられた URL にリダイレクトされるのはなぜですか。
+    answer: >
+      Azure AD の事前認証が構成されていて、アプリケーションに初めてアクセスしようとしたときにアプリケーションの URL に "#" 文字が含まれている場合、認証のために Azure AD (login.microsoftonline.com) にリダイレクトされます。 認証が完了すると、"#" 文字の前の URL 部分にリダイレクトされ、"#" 以降のすべてが無視または削除されたように見えます。 たとえば、URL が `https://www.contoso.com/#/home/index.html` の場合、Azure AD 認証が完了すると、ユーザーは `https://www.contoso.com/` にリダイレクトされます。
+
+      この動作は仕様であり、ブラウザーによる "#" 文字の処理方法が原因です。
+
+
+      考えられる解決策または代替策:
+
+
+      - `https://www.contoso.com` から `https://contoso.com/#/home/index.html` へのリダイレクトを設定する。 ユーザーは最初に `https://www.contoso.com` にアクセスする必要があります。
+
+      - 最初のアクセス試行に使用される URL には、エンコードされた形式の "#" 文字 (%23) を含める必要があります。 公開されているサーバーがこれを受け付けない可能性があります。
+
+      - パススルーの事前認証の種類を構成する (推奨されません)。
+  - question: >
       公開できるのは IIS ベースのアプリケーションのみですか。 Windows 以外の Web サーバーで実行されている Web アプリケーションを公開することはできますか。 コネクタを IIS がインストールされているサーバーにインストールする必要はありますか。
     answer: >
       いいえ。公開済みのアプリケーションには IIS の必要条件はありません。 Windows Server 以外のサーバーで実行されている Web アプリケーションを公開できます。 ただし、Web サーバーがネゴシエート (Kerberos 認証) をサポートしていない場合、Windows 以外のサーバーで事前認証を使用できない場合があります。 コネクタがインストールされているサーバーでは、IIS は必要ありません。
   - question: >
       HSTS ヘッダーを追加するようにアプリケーション プロキシを構成できますか。
     answer: >
-      アプリケーション プロキシでは、HTTP の Strict-Transport-Security ヘッダーは HTTPS 応答に自動的に追加されませんが、公開されたアプリケーションによって送信された元の応答にそのヘッダーがある場合、それは保持されます。 この機能を有効にするための設定の証明は、ロードマップ上にあります。 これを応答に追加できるようにするプレビューに関心がある場合は、aadapfeedback@microsoft.com に詳細をお問い合わせください。
+      アプリケーション プロキシでは、HTTP の Strict-Transport-Security ヘッダーは HTTPS 応答に自動的に追加されませんが、公開されたアプリケーションによって送信された元の応答にそのヘッダーがある場合、それは保持されます。 この機能を有効にするための設定の証明は、ロードマップ上にあります。
   - question: >
       統合 Windows 認証
     answer: ''
@@ -210,7 +226,7 @@ sections:
   - question: >
       WebSocket のサポートは、QlikSense やリモート デスクトップ Web クライアント (HTML5) 以外のアプリケーションでも有効ですか。
     answer: >
-      現在、WebSocket プロトコルのサポートはパブリック プレビュー段階であり、他のアプリケーションでは機能しない可能性があります。 一部のお客様は、他のアプリケーションと WebSocket プロトコルを組み合わせることで成功した事例もあります。 このようなシナリオをテストする場合は、ぜひ結果についてご報告ください。 フィードバックについては、aadapfeedback@microsoft.comまでご連絡ください。
+      現在、WebSocket プロトコルのサポートはパブリック プレビュー段階であり、他のアプリケーションでは機能しない可能性があります。 一部のお客様は、他のアプリケーションと WebSocket プロトコルを組み合わせることで成功した事例もあります。
 
 
       Windows Admin Center (WAC) の機能 (イベント ログ、PowerShell、リモート デスクトップ サービス) は現在、Azure AD アプリケーション プロキシ経由では動作しません。

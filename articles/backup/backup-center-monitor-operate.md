@@ -3,12 +3,12 @@ title: バックアップ センターを使用してバックアップを監視
 description: この記事では、バックアップ センターを使用して、バックアップを大規模に監視および操作する方法について説明します。
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: 86b81110d6abeb1425e18ee45dfe65a96f69687d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cab9e710cfe4bf43b0d225d64e8f64b16c09e3a6
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102506127"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129659851"
 ---
 # <a name="monitor-and-operate-backups-using-backup-center"></a>Backup Center を使用してバックアップを監視および操作する
 
@@ -88,6 +88,14 @@ ms.locfileid: "102506127"
 **[バックアップ ポリシー]** メニュー項目を選択すると、バックアップ資産全体にわたって作成したすべてのポリシーを表示できます。 この一覧は、コンテナーのサブスクリプション、リソース グループ、データ ソースの種類、コンテナーでフィルター処理できます。 グリッド内の項目を右クリックすると、そのポリシーに関連付けられている項目を表示したり、ポリシーを編集したり、場合によっては削除したりすることもできます。
 
 ![バックアップ センター - ポリシー](./media/backup-center-monitor-operate/backup-center-policies.png)
+
+
+## <a name="resource-centric-views"></a>リソース中心のビュー
+
+組織で複数のリソースを共通のコンテナーにバックアップしており、各リソース所有者が自分の所有するリソースのバックアップ情報のみを表示する必要がある場合は、バックアップ センターでリソース中心のビューを使用できます。 リソース中心のビューを使用するには、[アクセス権のあるデータソースに関する情報のみを表示する] チェックボックスをオンにします。 このオプションは、現在、 **[概要]** 、 **[バックアップ インスタンス]** 、 **[ジョブ]** 、 **[アラート]** の各タブでサポートされています。 サポートされているワークロードは、Azure VM、Azure VM での SQL、Azure VM での SAP HANA、Azure Blob、Azure Disk です。
+
+> [!NOTE]
+> ユーザーは、リソース中心のビューを使用している場合でも、コンテナーに対して必要な RBAC アクセス許可を持つ必要があります。 このビューの目的は、個々のユーザーが、所有していないリソース (VM など) の情報の表示を防止できるようにすることです。
 
 ## <a name="next-steps"></a>次のステップ
 

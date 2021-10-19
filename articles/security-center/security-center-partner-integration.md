@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 12/10/2020
 ms.author: memildin
-ms.openlocfilehash: 3d7bed3847465c48914453a3fd167384e1c180b6
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: 66f2ca97ce20dc0aeb6b1fcecf691861b645284b
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113435824"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129706704"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Azure Security Center でのセキュリティ ソリューションの統合
 このドキュメントは、既に Azure Security Center に接続されているセキュリティ ソリューションを管理したり、新しいセキュリティ ソリューションを追加したりする際に役立ちます。
@@ -30,7 +30,7 @@ Security Center を使用すると、Azure で統合されたセキュリティ 
 > [!NOTE]
 > ほとんどのセキュリティ ベンダーがアプライアンス上での外部エージェントの実行を禁止しているため、Security Center はパートナー仮想アプライアンスに Log Analytics エージェントをインストールしません。
 
-Azure Defender のお客様が利用できる組み込みのスキャナーなど、Qualys の脆弱性スキャン ツールの統合の詳細については、[Azure Virtual Machines の脆弱性評価](deploy-vulnerability-assessment-vm.md)に関するページを参照してください。
+Azure Defender のお客様が利用できる組み込みのスキャナーなど、Qualys の脆弱性スキャン ツールの統合の詳細については、「[Azure およびハイブリッドのマシンに対する Azure Defender の統合された脆弱性評価](deploy-vulnerability-assessment-vm.md)」を参照してください。
 
 Security Center では、次の脆弱性分析も提供しています：
 

@@ -1,7 +1,7 @@
 ### YamlMime:FAQ
 metadata:
   title: Microsoft 顧客契約の FAQ - Azure
-  titleSuffix: Azure Cost Management + Billing
+  titleSuffix: Cost Management + Billing
   description: この記事では、Microsoft 顧客契約についてよく寄せられる質問に対する回答をご紹介します。
   author: bandersmsft
   ms.service: cost-management-billing
@@ -9,410 +9,410 @@ metadata:
   ms.topic: conceptual
   ms.date: 08/11/2021
   ms.author: banders
-  ms.openlocfilehash: 6198ce529b9264b12e3529e21d9f232a9b52693b
-  ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+  ms.openlocfilehash: bdb107daab06d9813822b47089a4036cea2e02a9
+  ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/13/2021
-  ms.locfileid: "121785938"
+  ms.lasthandoff: 10/09/2021
+  ms.locfileid: "129708102"
 title: Microsoft 顧客契約の FAQ - Azure
 summary: ''
 sections:
 - name: 一般的な質問
   questions:
-  - question: Can I sign the Microsoft Customer Agreement today?
+  - question: 今日、Microsoft 顧客契約を締結することはできますか?
     answer: >
-      - **If you work through a Microsoft seller**, the Microsoft Customer Agreement is currently available in Argentina, Australia, Austria, Canada, Chile, Finland, France, Germany, Greece, Iceland, Ireland, Italy, Luxembourg, Netherlands, Norway, Portugal, Puerto Rico, South Africa, Spain, Sweden, Switzerland, United Kingdom, United States, and Uruguay.
+      - **Microsoft 販売者を通す場合**、現在、アルゼンチン、オーストラリア、オーストリア、カナダ、チリ、フィンランド、フランス、ドイツ、ギリシャ、アイスランド、アイルランド、イタリア、ルクセンブルグ、オランダ、ノルウェー、ポルトガル、プエルトリコ、南アフリカ、スペイン、スウェーデン、スイス、英国、米国、ウルグアイで Microsoft 顧客契約を利用できます。
 
-      - **If you are a new customer purchasing Azure services directly from Azure.com,** today the Microsoft Customer Agreement is available in the countries below all of which are transacted in US dollars (USD). In 2021, we began the rollout for the new customers in other regions with the goal of making Microsoft Customer Agreement available worldwide.
+      - **本日、Azure.com から Azure サービスを直接購入する新規のお客様の場合、** 次の国で Microsoft 顧客契約を利用できます (いずれも米ドル (USD) で取引されます)。 2021 年、世界中で Microsoft 顧客契約を利用可能にすることを目標に、他の地域の新規顧客向けに展開を開始しました。
 
-      - The Microsoft Customer Agreement is also available through Cloud Solution Providers (CSP) around the world. You can find a partner in the CSP program at [Microsoft Solution Providers](https://www.microsoft.com/solution-providers/home).
+      - Microsoft 顧客契約は、世界各国のクラウド ソリューション プロバイダー (CSP) を通じて利用することもできます。 CSP プログラムのパートナーは、[Microsoft ソリューション プロバイダー](https://www.microsoft.com/solution-providers/home)で見つけることができます。
 
-         | Countries/regions       | Countries/regions   | Countries/regions      | Countries/regions                    |
+         | 国/地域       | 国/地域   | 国/地域      | 国/地域                    |
          |-------------------------|---------------------|------------------------|--------------------------------------|
-         | Afghanistan             | Côte d'Ivoire       | Moldova                | Sri Lanka                            |
-         | Albania                 | Curaçao             | Mongolia               | Tajikistan                           |
-         | Algeria                 | Dominican Republic  | Montenegro             | Tanzania                             |
-         | Angola                  | Egypt               | Morocco                | Thailand                             |
-         | Armenia                 | Ethiopia            | Namibia                | Trinidad and Tobago                  |
-         | Azerbaijan              | Georgia             | Nepal                  | Tunisia                              |
-         | Bahrain                 | Ghana               | Nicaragua              | Turkmenistan                         |
-         | Bangladesh              | Guatemala           | Nigeria                | Virgin Islands of the United States  |
-         | Barbados                | Honduras            | Oman                   | Uganda                               |
-         | Belarus                 | Iraq                | Pakistan               | Ukraine                              |
-         | Belize                  | Israel              | Palestinian Authority  | United Arab Emirates                 |
-         | Bermuda                 | Jamaica             | Panama                 | United States                        |
-         | Bolivia                 | Jordan              | Paraguay               | Uruguay                              |
-         | Bosnia and Herzegovina  | Kazakhstan          | Peru                   | Uzbekistan                           |
-         | Botswana                | Kenya               | Philippines            | Venezuela                            |
-         | Brunei Darussalam       | Kuwait              | Puerto Rico            | Vietnam                              |
-         | Cameroon                | Kyrgyzstan          | Qatar                  | Yemen                                |
-         | Cabo Verde              | Lebanon             | Rwanda                 | Zambia                               |
-         | Cayman Islands          | Libya               | Saint Kitts and Nevis  | Zimbabwe                             |
-         | Chile                   | Macao               | Senegal                | Ecuador                              |
-         | Colombia                | Macedonia (FYRO)    | Serbia                 | El Salvador                          |
-         | Costa Rica              | Mauritius           | Singapore              |                                      |
-  - question: What if I am an existing customer purchasing Azure directly from Azure.com?
+         | アフガニスタン             | コートジボワール       | モルドバ                | スリランカ                            |
+         | アルバニア                 | キュラソー             | モンゴル               | タジキスタン                           |
+         | アルジェリア                 | ドミニカ共和国  | モンテネグロ             | タンザニア                             |
+         | アンゴラ                  | エジプト               | モロッコ                | タイ                             |
+         | アルメニア                 | エチオピア            | ナミビア                | トリニダード・トバゴ                  |
+         | アゼルバイジャン              | ジョージア             | ネパール                  | チュニジア                              |
+         | バーレーン                 | ガーナ               | ニカラグア              | トルクメニスタン                         |
+         | バングラデシュ              | グアテマラ           | ナイジェリア                | 米領バージン諸島  |
+         | バルバドス                | ホンジュラス            | オマーン                   | ウガンダ                               |
+         | ベラルーシ                 | イラク                | パキスタン               | ウクライナ                              |
+         | ベリーズ                  | イスラエル              | パレスチナ自治政府  | アラブ首長国連邦                 |
+         | バミューダ                 | ジャマイカ             | パナマ                 | United States                        |
+         | ボリビア                 | ヨルダン              | パラグアイ               | ウルグアイ                              |
+         | ボスニア・ヘルツェゴビナ  | カザフスタン          | ペルー                   | ウズベキスタン                           |
+         | ボツワナ                | ケニア               | フィリピン            | ベネズエラ                            |
+         | ブルネイ・ダルサラーム       | クウェート              | プエルトリコ            | ベトナム                              |
+         | カメルーン                | キルギスタン          | カタール                  | イエメン                                |
+         | カーボベルデ              | レバノン             | ルワンダ                 | ザンビア                               |
+         | ケイマン諸島          | リビア               | セントクリストファー・ネーヴィス  | ジンバブエ                             |
+         | チリ                   | マカオ               | セネガル                | エクアドル                              |
+         | コロンビア                | マケドニア (旧ユーゴスラビア共和国)    | セルビア                 | エルサルバドル                          |
+         | コスタリカ              | モーリシャス           | シンガポール              |                                      |
+  - question: 既存の顧客である自分が Azure.com から Azure を直接購入するとどうなりますか?
     answer: >
-      Microsoft will share a notice directly with you at least 30 days before the transition to the Microsoft Customer Agreement.
-  - question: Which Azure Services are available through the Microsoft Customer Agreement?
+      Microsoft は、Microsoft 顧客契約への移行の少なくとも 30 日前に、通知をお客様と直接共有します。
+  - question: Microsoft 顧客契約を通じて利用できる Azure サービスはどれですか?
     answer: >
-      All Azure services are available through Microsoft Customer Agreement. Once you accept the Microsoft Customer Agreement, you get the benefit of more free enterprise-grade management tools including new invoice and cost management capabilities through the same portal where you manage your Azure services.
-  - question: How is Azure priced under the Microsoft Customer Agreement?
+      すべての Azure サービスは Microsoft 顧客契約を通じて利用できます。 Microsoft 顧客契約に同意すると、Azure サービスを管理するものと同じポータルを使用して、新しい請求書やコスト管理機能など、多くのエンタープライズ レベルの管理ツールを無料で利用できるという利点があります。
+  - question: Microsoft 顧客契約を締結した場合、Azure はどのように課金されますか?
     answer: >
-      Azure is priced in US dollars (USD) worldwide under the Microsoft Customer Agreement.
+      Microsoft 顧客契約を締結した場合、世界中どこでも Azure は米ドル (USD) で課金されます。
 
 
-      If you transact in one of the other supported currencies listed below, your monthly cost is first calculated in US dollars (USD). For payment, the total is then converted to the local currency.
+      以下に示す他のサポートされている通貨のいずれかで取引する場合、月額料金はまず米ドル (USD) で計算されます。 お支払いの際には、その合計額が現地通貨に換算されます。
 
 
-      | Code    | Currency           |
+      | コード    | 通貨           |
 
       |---------|--------------------|
 
-      | AUD     | Australian Dollar  |
+      | AUD     | オーストラリア ドル  |
 
-      | BRL     | Brazilian Real     |
+      | BRL     | ブラジル レアル     |
 
-      | GBP     | British Pound      |
+      | GBP     | 英国ポンド      |
 
-      | CAD     | Canadian Dollar    |
+      | CAD     | カナダ ドル    |
 
-      | CNY     | Chinese Yuan       |
+      | CNY     | 中国人民元       |
 
-      | DKK     | Danish Krone       |
+      | DKK     | デンマーク クローネ       |
 
-      | EUR     | Euro               |
+      | EUR     | ユーロ               |
 
-      | INR     | Indian Rupee       |
+      | INR     | インド ルピー       |
 
-      | JPY     | Japanese Yen       |
+      | JPY     | 日本円       |
 
-      | KRW     | Korean Won         |
+      | KRW     | 韓国ウォン         |
 
-      | NZD     | New Zealand Dollar |
+      | NZD     | ニュージーランド ドル |
 
-      | NOK     | Norwegian Krone    |
+      | NOK     | ノルウェー クローネ    |
 
-      | RUB     | Russian Ruble      |
+      | RUB     | ロシア ルーブル      |
 
-      | SEK     | Swedish Krona      |
+      | SEK     | スウェーデン クローナ      |
 
-      | CHF     | Swiss Franc        |
+      | CHF     | スイス フラン        |
 
-      | TWD     | Taiwan Dollar      |
-  - question: What exchange rate will be used and how does it work with my bill?
+      | TWD     | 台湾ドル      |
+  - question: どの為替レートが使用され、どのように請求書に反映されますか?
     answer: >
-      We use Thomson Reuters benchmark rates that are captured at the end of the previous month and go into effect on the first day of the next calendar month. This rate applies to all transactions during the upcoming month.
+      前月末に取得され、翌暦月の 1 日に発効する Thomson Reuters 社のベンチマーク レートを使用しています。 このレートは、翌月のすべての取引に適用されます。
 
 
-      For example, the exchange rate for January transactions is first captured in the final days of December. This rate will be applied to all Azure purchases made in January and all Azure consumption in January. The January exchange rate and local currency billed amount will appear in the January invoice, which is available at the beginning of February.
-  - question: Under the Microsoft Customer Agreement, in which currency will my payment be processed?
+      たとえば、1 月の取引の為替レートは、12 月の最終日に初めて取得されます。 このレートは、1 月に行われたすべての Azure の購入と、1 月のすべての Azure の使用量に適用されます。 1 月の為替レートと現地通貨での請求額は、2 月初めに発行される 1 月分の請求書に記載されます。
+  - question: Microsoft 顧客契約を締結した場合、支払いはどの通貨で処理されますか?
     answer: >
-      The legal address you provide at the time of signing will determine your billing geography and currency based on the table below:
+      締結時にお客様が指定した法的住所により、次の表に基づいて請求先の地域と通貨が決まります。
 
 
-      | **Country/Region**                  | **Billing currency**    |
+      | **国または地域**                  | **Billing currency**    |
 
       |-------------------------------------|-------------------------|
 
-      | Afghanistan                         | US Dollar (\$)          |
+      | アフガニスタン                         | 米ドル (\$)          |
 
-      | Albania                             | US Dollar (\$)          |
+      | アルバニア                             | 米ドル (\$)          |
 
-      | Algeria                             | US Dollar (\$)          |
+      | アルジェリア                             | 米ドル (\$)          |
 
-      | Angola                              | US Dollar (\$)          |
+      | アンゴラ                              | 米ドル (\$)          |
 
-      | Argentina                           | US Dollar (\$)          |
+      | アルゼンチン                           | 米ドル (\$)          |
 
-      | Armenia                             | US Dollar (\$)          |
+      | アルメニア                             | 米ドル (\$)          |
 
-      | Australia                           | Australian Dollar (\$)  |
+      | オーストラリア                           | オーストラリア ドル (\$)  |
 
-      | Austria                             | Euro (€)                |
+      | オーストリア                             | ユーロ (€)                |
 
-      | Azerbaijan                          | US Dollar (\$)          |
+      | アゼルバイジャン                          | 米ドル (\$)          |
 
-      | Bahamas                             | US Dollar (\$)          |
+      | バハマ                             | 米ドル (\$)          |
 
-      | Bahrain                             | US Dollar (\$)          |
+      | バーレーン                             | 米ドル (\$)          |
 
-      | Bangladesh                          | US Dollar (\$)          |
+      | バングラデシュ                          | 米ドル (\$)          |
 
-      | Barbados                            | US Dollar (\$)          |
+      | バルバドス                            | 米ドル (\$)          |
 
-      | Belarus                             | US Dollar (\$)          |
+      | ベラルーシ                             | 米ドル (\$)          |
 
-      | Belgium                             | Euro (€)                |
+      | ベルギー                             | ユーロ (€)                |
 
-      | Belize                              | US Dollar (\$)          |
+      | ベリーズ                              | 米ドル (\$)          |
 
-      | Bermuda                             | US Dollar (\$)          |
+      | バミューダ                             | 米ドル (\$)          |
 
-      | Bolivia                             | US Dollar (\$)          |
+      | ボリビア                             | 米ドル (\$)          |
 
-      | Bosnia and Herzegovina              | US Dollar (\$)          |
+      | ボスニア・ヘルツェゴビナ              | 米ドル (\$)          |
 
-      | Botswana                            | US Dollar (\$)          |
+      | ボツワナ                            | 米ドル (\$)          |
 
-      | Brazil                              | Brazilian Real (R\$)    |
+      | ブラジル                              | ブラジル レアル (R\$)    |
 
-      | Brunei Darussalam                   | US Dollar (\$)          |
+      | ブルネイ・ダルサラーム                   | 米ドル (\$)          |
 
-      | Bulgaria                            | Euro (€)                |
+      | ブルガリア                            | ユーロ (€)                |
 
-      | Republic of Cabo Verde              | US Dollar (\$)          |
+      | カーボベルデ共和国              | 米ドル (\$)          |
 
-      | Cameroon                            | US Dollar (\$)          |
+      | カメルーン                            | 米ドル (\$)          |
 
-      | Canada                              | Canadian Dollar (\$)    |
+      | カナダ                              | カナダ ドル (\$)    |
 
-      | Cayman Islands                      | US Dollar (\$)          |
+      | ケイマン諸島                      | 米ドル (\$)          |
 
-      | Chile                               | US Dollar (\$)          |
+      | チリ                               | 米ドル (\$)          |
 
-      | China                               | Chinese yuan (¥)        |
+      | 中国                               | 中国人民元 (\)        |
 
-      | Colombia                            | US Dollar (\$)          |
+      | コロンビア                            | 米ドル (\$)          |
 
-      | Republic of the Congo               | US Dollar (\$)          |
+      | コンゴ共和国               | 米ドル (\$)          |
 
-      | Costa Rica                          | US Dollar (\$)          |
+      | コスタリカ                          | 米ドル (\$)          |
 
-      | Côte d'Ivoire                       | US Dollar (\$)          |
+      | コートジボワール                       | 米ドル (\$)          |
 
-      | Croatia                             | Euro (€)                |
+      | クロアチア                             | ユーロ (€)                |
 
-      | Curaçao                             | US Dollar (\$)          |
+      | キュラソー                             | 米ドル (\$)          |
 
-      | Cyprus                              | Euro (€)                |
+      | キプロス                              | ユーロ (€)                |
 
-      | Czech Republic                      | Euro (€)                |
+      | チェコ共和国                      | ユーロ (€)                |
 
-      | Denmark                             | Danish Krone (kr)       |
+      | デンマーク                             | デンマーク クローネ (kr)       |
 
-      | Dominican Republic                  | US Dollar (\$)          |
+      | ドミニカ共和国                  | 米ドル (\$)          |
 
-      | Ecuador                             | US Dollar (\$)          |
+      | エクアドル                             | 米ドル (\$)          |
 
-      | Egypt                               | US Dollar (\$)          |
+      | エジプト                               | 米ドル (\$)          |
 
-      | El Salvador                         | US Dollar (\$)          |
+      | エルサルバドル                         | 米ドル (\$)          |
 
-      | Estonia                             | Euro (€)                |
+      | エストニア                             | ユーロ (€)                |
 
-      | Ethiopia                            | US Dollar (\$)          |
+      | エチオピア                            | 米ドル (\$)          |
 
-      | Faroe Islands                       | Danish Krone (kr)       |
+      | フェロー諸島                       | デンマーク クローネ (kr)       |
 
-      | Fiji                                | Australian Dollar (\$)  |
+      | フィジー                                | オーストラリア ドル (\$)  |
 
-      | Finland                             | Euro (€)                |
+      | フィンランド                             | ユーロ (€)                |
 
-      | France                              | Euro (€)                |
+      | フランス                              | ユーロ (€)                |
 
-      | Georgia                             | US Dollar (\$)          |
+      | ジョージア                             | 米ドル (\$)          |
 
-      | Germany                             | Euro (€)                |
+      | ドイツ                             | ユーロ (€)                |
 
-      | Ghana                               | US Dollar (\$)          |
+      | ガーナ                               | 米ドル (\$)          |
 
-      | Greece                              | Euro (€)                |
+      | ギリシャ                              | ユーロ (€)                |
 
-      | Guatemala                           | US Dollar (\$)          |
+      | グアテマラ                           | 米ドル (\$)          |
 
-      | Honduras                            | US Dollar (\$)          |
+      | ホンジュラス                            | 米ドル (\$)          |
 
-      | Hong Kong                           | US Dollar (\$)          |
+      | 香港特別行政区                           | 米ドル (\$)          |
 
-      | Hungary                             | Euro (€)                |
+      | ハンガリー                             | ユーロ (€)                |
 
-      | Iceland                             | Euro (€)                |
+      | アイスランド                             | ユーロ (€)                |
 
-      | India                               | Indian Rupee (₹)        |
+      | インド                               | インド ルピー (₹)        |
 
-      | Indonesia                           | US Dollar (\$)          |
+      | インドネシア                           | 米ドル (\$)          |
 
-      | Iraq                                | US Dollar (\$)          |
+      | イラク                                | 米ドル (\$)          |
 
-      | Ireland                             | Euro (€)                |
+      | アイルランド                             | ユーロ (€)                |
 
-      | Israel                              | US Dollar (\$)          |
+      | イスラエル                              | 米ドル (\$)          |
 
-      | Italy                               | Euro (€)                |
+      | イタリア                               | ユーロ (€)                |
 
-      | Jamaica                             | US Dollar (\$)          |
+      | ジャマイカ                             | 米ドル (\$)          |
 
-      | Japan                               | Japanese Yen (¥)        |
+      | 日本                               | 日本円 (¥)        |
 
-      | Jordan                              | US Dollar (\$)          |
+      | ヨルダン                              | 米ドル (\$)          |
 
-      | Kazakhstan                          | US Dollar (\$)          |
+      | カザフスタン                          | 米ドル (\$)          |
 
-      | Kenya                               | US Dollar (\$)          |
+      | ケニア                               | 米ドル (\$)          |
 
-      | Korea                               | Korean Won (₩)          |
+      | 韓国                               | 韓国ウォン (₩)          |
 
-      | Kuwait                              | US Dollar (\$)          |
+      | クウェート                              | 米ドル (\$)          |
 
-      | Kyrgyzstan                          | US Dollar (\$)          |
+      | キルギスタン                          | 米ドル (\$)          |
 
-      | Latvia                              | Euro (€)                |
+      | ラトビア                              | ユーロ (€)                |
 
-      | Lebanon                             | US Dollar (\$)          |
+      | レバノン                             | 米ドル (\$)          |
 
-      | Libya                               | US Dollar (\$)          |
+      | リビア                               | 米ドル (\$)          |
 
-      | Liechtenstein                       | Swiss Franc. (chf)      |
+      | リヒテンシュタイン                       | スイス フラン (chf)      |
 
-      | Lithuania                           | Euro (€)                |
+      | リトアニア                           | ユーロ (€)                |
 
-      | Luxembourg                          | Euro (€)                |
+      | ルクセンブルク                          | ユーロ (€)                |
 
-      | Macao                               | US Dollar (\$)          |
+      | マカオ                               | 米ドル (\$)          |
 
-      | Macedonia (FYRO)                    | US Dollar (\$)          |
+      | マケドニア (旧ユーゴスラビア共和国)                    | 米ドル (\$)          |
 
-      | Malaysia                            | US Dollar (\$)          |
+      | マレーシア                            | 米ドル (\$)          |
 
-      | Malta                               | Euro (€)                |
+      | マルタ                               | ユーロ (€)                |
 
-      | Mauritius                           | US Dollar (\$)          |
+      | モーリシャス                           | 米ドル (\$)          |
 
-      | Mexico                              | US Dollar (\$)          |
+      | メキシコ                              | 米ドル (\$)          |
 
-      | Moldova                             | US Dollar (\$)          |
+      | モルドバ                             | 米ドル (\$)          |
 
-      | Monaco                              | Euro (€)                |
+      | モナコ                              | ユーロ (€)                |
 
-      | Mongolia                            | US Dollar (\$)          |
+      | モンゴル                            | 米ドル (\$)          |
 
-      | Montenegro                          | US Dollar (\$)          |
+      | モンテネグロ                          | 米ドル (\$)          |
 
-      | Morocco                             | US Dollar (\$)          |
+      | モロッコ                             | 米ドル (\$)          |
 
-      | Namibia                             | US Dollar (\$)          |
+      | ナミビア                             | 米ドル (\$)          |
 
-      | Nepal                               | US Dollar (\$)          |
+      | ネパール                               | 米ドル (\$)          |
 
-      | Netherlands                         | Euro (€)                |
+      | オランダ                         | ユーロ (€)                |
 
-      | New Zealand                         | New Zealand Dollar (\$) |
+      | ニュージーランド                         | ニュージーランド ドル (\$) |
 
-      | Nicaragua                           | US Dollar (\$)          |
+      | ニカラグア                           | 米ドル (\$)          |
 
-      | Nigeria                             | US Dollar (\$)          |
+      | ナイジェリア                             | 米ドル (\$)          |
 
-      | Norway                              | Norwegian Krone (kr)    |
+      | ノルウェー                              | ノルウェー クローネ (kr)    |
 
-      | Oman                                | US Dollar (\$)          |
+      | オマーン                                | 米ドル (\$)          |
 
-      | Pakistan                            | US Dollar (\$)          |
+      | パキスタン                            | 米ドル (\$)          |
 
-      | Palestinian Authority               | US Dollar (\$)          |
+      | パレスチナ自治政府               | 米ドル (\$)          |
 
-      | Panama                              | US Dollar (\$)          |
+      | パナマ                              | 米ドル (\$)          |
 
-      | Paraguay                            | US Dollar (\$)          |
+      | パラグアイ                            | 米ドル (\$)          |
 
-      | Peru                                | US Dollar (\$)          |
+      | ペルー                                | 米ドル (\$)          |
 
-      | Philippines                         | US Dollar (\$)          |
+      | フィリピン                         | 米ドル (\$)          |
 
-      | Poland                              | Euro (€)                |
+      | ポーランド                              | ユーロ (€)                |
 
-      | Portugal                            | Euro (€)                |
+      | ポルトガル                            | ユーロ (€)                |
 
-      | Puerto Rico                         | US Dollar (\$)          |
+      | プエルトリコ                         | 米ドル (\$)          |
 
-      | Qatar                               | US Dollar (\$)          |
+      | カタール                               | 米ドル (\$)          |
 
-      | Romania                             | Euro (€)                |
+      | ルーマニア                             | ユーロ (€)                |
 
-      | Russia                              | Russian Ruble (руб)     |
+      | ロシア                              | ロシア ルーブル (руб)     |
 
-      | Rwanda                              | US Dollar (\$)          |
+      | ルワンダ                              | 米ドル (\$)          |
 
-      | Saint Kitts and Nevis               | US Dollar (\$)          |
+      | セントクリストファー・ネーヴィス               | 米ドル (\$)          |
 
-      | Saudi Arabia                        | US Dollar (\$)          |
+      | サウジアラビア                        | 米ドル (\$)          |
 
-      | Senegal                             | US Dollar (\$)          |
+      | セネガル                             | 米ドル (\$)          |
 
-      | Serbia                              | US Dollar (\$)          |
+      | セルビア                              | 米ドル (\$)          |
 
-      | Singapore                           | US Dollar (\$)          |
+      | シンガポール                           | 米ドル (\$)          |
 
-      | Slovakia                            | Euro (€)                |
+      | スロバキア                            | ユーロ (€)                |
 
-      | Slovenia                            | Euro (€)                |
+      | スロベニア                            | ユーロ (€)                |
 
-      | South Africa                        | US Dollar (\$)          |
+      | 南アフリカ                        | 米ドル (\$)          |
 
-      | Spain                               | Euro (€)                |
+      | スペイン                               | ユーロ (€)                |
 
-      | Sri Lanka                           | US Dollar (\$)          |
+      | スリランカ                           | 米ドル (\$)          |
 
-      | Sweden                              | Swedish Krona (kr)      |
+      | スウェーデン                              | スウェーデン クローナ (kr)      |
 
-      | Switzerland                         | Swiss Franc. (chf)      |
+      | スイス                         | スイス フラン (chf)      |
 
-      | Taiwan                              | Taiwanese Dollar (NT\$) |
+      | 台湾                              | 台湾ドル (NT\$) |
 
-      | Tajikistan                          | US Dollar (\$)          |
+      | タジキスタン                          | 米ドル (\$)          |
 
-      | Tanzania                            | US Dollar (\$)          |
+      | タンザニア                            | 米ドル (\$)          |
 
-      | Thailand                            | US Dollar (\$)          |
+      | タイ                            | 米ドル (\$)          |
 
-      | Trinidad and Tobago                 | US Dollar (\$)          |
+      | トリニダード・トバゴ                 | 米ドル (\$)          |
 
-      | Tunisia                             | US Dollar (\$)          |
+      | チュニジア                             | 米ドル (\$)          |
 
-      | Turkey                              | US Dollar (\$)          |
+      | トルコ                              | 米ドル (\$)          |
 
-      | Turkmenistan                        | US Dollar (\$)          |
+      | トルクメニスタン                        | 米ドル (\$)          |
 
-      | Uganda                              | US Dollar (\$)          |
+      | ウガンダ                              | 米ドル (\$)          |
 
-      | Ukraine                             | US Dollar (\$)          |
+      | ウクライナ                             | 米ドル (\$)          |
 
-      | United Arab Emirates                | US Dollar (\$)          |
+      | アラブ首長国連邦                | 米ドル (\$)          |
 
-      | United Kingdom                      | British Pound (£)       |
+      | イギリス                      | イギリス ポンド (£)       |
 
-      | United States                       | US Dollar (\$)          |
+      | United States                       | 米ドル (\$)          |
 
-      | Uruguay                             | US Dollar (\$)          |
+      | ウルグアイ                             | 米ドル (\$)          |
 
-      | Uzbekistan                          | US Dollar (\$)          |
+      | ウズベキスタン                          | 米ドル (\$)          |
 
-      | Venezuela                           | US Dollar (\$)          |
+      | ベネズエラ                           | 米ドル (\$)          |
 
-      | Vietnam                             | US Dollar (\$)          |
+      | ベトナム                             | 米ドル (\$)          |
 
-      | Virgin Islands of the United States | US Dollar (\$)          |
+      | 米領バージン諸島 | 米ドル (\$)          |
 
-      | Yemen                               | US Dollar (\$)          |
+      | イエメン                               | 米ドル (\$)          |
 
-      | Zambia                              | US Dollar (\$)          |
+      | ザンビア                              | 米ドル (\$)          |
 
-      | Zimbabwe                            | US Dollar (\$)          |
+      | ジンバブエ                            | 米ドル (\$)          |
 
 
-      If you purchase Azure services through a Microsoft partner, contact them for questions regarding your payment currency.
-  - question: How will I get my invoice?
+      Microsoft パートナーを通じて Azure サービスを購入している場合は、支払い通貨に関する質問はパートナーにお問い合わせください。
+  - question: 請求書はどのように入手できますか?
     answer: >
-      -   If you’re buying directly from Azure.com, you will find your invoice details in the **Cost Management and Billing** service in the [Azure portal](https://portal.azure.com).
+      -   Azure.com から直接購入している場合は、[Azure portal](https://portal.azure.com) の **[コストの管理と請求]** サービスで請求書の詳細を確認できます。
 
-      -   If you are buying through a Microsoft sales representative, you will receive your invoices from Microsoft. You can also access your invoices in the **Cost Management and Billing** service in the [Azure portal](https://portal.azure.com).
+      -   Microsoft の営業担当者を通じて購入している場合は、Microsoft から請求書が届きます。 また、[Azure portal](https://portal.azure.com) の **[コストの管理と請求]** サービスでも請求書にアクセスできます。
 
-      -   If you are purchasing through a cloud solution provider under the Microsoft Customer Agreement, you will receive your invoice from the partner.
-  - question: Where can I review the Microsoft Customer Agreement?
+      -   Microsoft 顧客契約を締結し、クラウド ソリューション プロバイダーを通じて購入している場合は、パートナーから請求書が届きます。
+  - question: Microsoft 顧客契約はどこで確認できますか?
     answer: >
-      You can review the Microsoft Customer Agreement at [Microsoft Licensing](https://www.microsoft.com/licensing/docs/customeragreement).
-  - question: How do these changes affect my organization if we already have a Microsoft Enterprise Agreement?
+      Microsoft 顧客契約は、[Microsoft のライセンス](https://www.microsoft.com/licensing/docs/customeragreement)に関するページで確認できます。
+  - question: 既に Microsoft Enterprise Agreement を締結している場合、この変更は私の組織にどのように影響しますか?
     answer: >
-      Azure usage and purchases made under an existing Enterprise Agreement are not affected by this change.
-additionalContent: "\n## Next steps\n\nLearn more about the Microsoft Customer Agreement:\n-  [Key next steps after accepting your Microsoft Customer Agreement](microsoft-customer-agreement-get-started.md)"
+      既存のエンタープライズ契約に基づいて行われた Azure の使用と購入は、この変更による影響を受けません。
+additionalContent: "\n## <a name=\"next-steps\"></a>次の手順\n\nMicrosoft 顧客契約について詳しく知る\n-  [Microsoft 顧客契約への同意後に重要となる次のステップ](microsoft-customer-agreement-get-started.md)"

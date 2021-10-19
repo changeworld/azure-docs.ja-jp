@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 09/03/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 819878f84b567b6042d2021992f6c8c5e52823fb
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 55bfde4593282e415ad9436d9f81ef07a5570704
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123535946"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129725634"
 ---
 ### <a name="count-machines-in-scope-of-guest-configuration-policies"></a>ゲスト構成ポリシーのスコープにあるマシンを数える
 

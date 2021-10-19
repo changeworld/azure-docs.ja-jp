@@ -9,12 +9,12 @@ author: yorek
 ms.author: damauri
 ms.reviewer: ''
 ms.date: 9/24/2021
-ms.openlocfilehash: e2785f965cdbb94af081e937f0b2290578c04796
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: 38dd0f42b8c318d94c266b4837f2b67eda1f9ed9
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129059532"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129667860"
 ---
 # <a name="hyperscale-secondary-replicas"></a>Hyperscale セカンダリ レプリカ
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -62,6 +62,11 @@ HA レプリカと同様、名前付きレプリカでも、プライマリ レ�
 - 独自のサービス レベル目標があり、プライマリ レプリカとは無関係に設定したり変更したりできます。
 - (プライマリ レプリカ 1 つにつき) 最大 30 個の名前付きレプリカがサポートされます。
 - 名前付きレプリカのホストとなる論理サーバーに複数の異なるログインを作成することで、名前付きレプリカごとに異なる認証を使用できます。
+
+そのため、名前付きレプリカには、HA レプリカと比較して、読み取り専用ワークロードに関するいくつかの利点があります。
+
+- プライマリ レプリカがスケールアップまたはダウンされるとき、名前付きレプリカに接続されているユーザーが切断されることはありません。同時に、プライマリ レプリカに接続されているユーザーは、名前付きレプリカのスケールアップまたはダウンによる影響を受けません。
+-   プライマリまたは名前付きのレプリカで実行されているワークロードは、他のレプリカで実行されている実行時間の長いクエリによる影響を受けません。
 
 名前付きレプリカの主な目標は、大量の OLTP [読み取りスケールアウト](read-scale-out.md) シナリオへの対応と、Hybrid Transactional and Analytical Processing (HTAP) ワークロードの向上です。 こうしたソリューションを作成する方法の例を次に示します。
 

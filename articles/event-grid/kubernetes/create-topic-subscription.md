@@ -6,12 +6,12 @@ ms.subservice: kubernetes
 ms.author: jafernan
 ms.date: 06/17/2021
 ms.topic: quickstart
-ms.openlocfilehash: 5060d8e3022d98c31d11ea570555b7c5bba3d062
-ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
+ms.openlocfilehash: d08f7678fa2a38f501c28938395bf152c6be7126
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2021
-ms.locfileid: "112415644"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129715825"
 ---
 # <a name="route-cloud-events-to-webhooks-with-azure-event-grid-on-kubernetes"></a>Kubernetes 上の Azure Event Grid でクラウド イベントを Webhook にルーティングする
 このクイックスタートでは、Kubernetes 上の Event Grid でトピックを作成し、トピックのサブスクリプションを作成し、サンプル イベントをトピックに送信してシナリオをテストします。 

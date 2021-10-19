@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: reference
 ms.date: 10/03/2021
 ms.author: memildin
-ms.openlocfilehash: ca1e75af5f1d5697b84742e3aec207a33a57b1c6
-ms.sourcegitcommit: f3f2ec7793ebeee19bd9ffc3004725fb33eb4b3f
+ms.openlocfilehash: 516fa13a24c9cb5376bc6e8d38eeb1fc077f1d57
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129407192"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129713951"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Azure Security Center の最新情報のアーカイブ
 
@@ -519,9 +519,9 @@ Azure 以外のマシンで Azure Arc を有効にした場合、Security Center
 - デプロイされたエージェントで検出された脆弱性を受け取って分析する (手動で大規模に)
 - Azure VM と Azure Arc マシンでエクスペリエンスを統一する
 
-[ハイブリッド マシンへの統合された脆弱性スキャナーのデプロイについての詳細を参照してください](deploy-vulnerability-assessment-vm.md#deploy-the-integrated-scanner-to-your-azure-and-hybrid-machines)。
+[ハイブリッド マシンへの統合された Qualys 脆弱性スキャナーのデプロイについての詳細を参照してください](deploy-vulnerability-assessment-vm.md#deploy-the-integrated-scanner-to-your-azure-and-hybrid-machines)。
 
-[Azure Arc 対応のサーバーについての詳細を参照してください](../azure-arc/servers/index.yml)。
+[Azure Arc 対応サーバーについての詳細を参照してください](../azure-arc/servers/index.yml)。
 
 
 ### <a name="secure-score-for-management-groups-is-now-available-in-preview"></a>管理グループのセキュア スコア (プレビュー) が利用可能に
@@ -984,9 +984,9 @@ Azure 以外のマシンで Azure Arc を有効にした場合、Security Center
 - デプロイされたエージェントで検出された脆弱性を受け取って分析する (手動で大規模に)
 - Azure VM と Azure Arc マシンでエクスペリエンスを統一する
 
-[ハイブリッド マシンへの統合された脆弱性スキャナーのデプロイについての詳細を参照してください](deploy-vulnerability-assessment-vm.md#deploy-the-integrated-scanner-to-your-azure-and-hybrid-machines)。
+[ハイブリッド マシンへの統合された Qualys 脆弱性スキャナーのデプロイについての詳細を参照してください](deploy-vulnerability-assessment-vm.md#deploy-the-integrated-scanner-to-your-azure-and-hybrid-machines)。
 
-[Azure Arc 対応のサーバーについての詳細を参照してください](../azure-arc/servers/index.yml)。
+[Azure Arc 対応サーバーについての詳細を参照してください](../azure-arc/servers/index.yml)。
 
 
 ### <a name="azure-firewall-recommendation-added-preview"></a>Azure Firewall の推奨事項の追加 (プレビュー)
@@ -1257,7 +1257,7 @@ Security Center の統合された脆弱性評価ツールは、"仮想マシン
 
 関連するページ:
 
-- [Azure 仮想マシンに対する Security Center の統合脆弱性評価](deploy-vulnerability-assessment-vm.md)
+- [Azure 仮想マシンに対する Security Center の統合された Qualys 脆弱性評価](deploy-vulnerability-assessment-vm.md)
 - [Azure Container Registry に対する Security Center の統合された脆弱性評価ソリューション](defender-for-container-registries-usage.md)
 - [連続エクスポート](continuous-export.md)
 
@@ -2011,7 +2011,7 @@ Azure Security Center で、Azure Container Registry にあるコンテナー �
 
 イメージのスキャンでは、コンテナー イメージ ファイルを解析し、(Qualys を利用して) 既知の脆弱性が存在するかどうかが確認されます。
 
-スキャン自体は、新しいコンテナー イメージを Azure Container Registry にプッシュすると自動的にトリガーされます。 検出された脆弱性は Security Center の推奨事項として表示され、修正プログラムを適用してそれらの脆弱性による攻撃対象領域を削減する方法に関する情報と共に Azure セキュリティ スコアに含められます。
+スキャン自体は、新しいコンテナー イメージを Azure Container Registry にプッシュすると自動的にトリガーされます。 検出された脆弱性は Security Center の推奨事項として表示され、修正プログラムを適用してそれらの脆弱性による攻撃対象領域を削減する方法に関する情報と共にセキュリティ スコアに含められます。
 
 
 ### <a name="additional-regulatory-compliance-standards-preview"></a>規制コンプライアンス標準の追加 (プレビュー)
@@ -2045,7 +2045,7 @@ Azure Virtual Machines の脆弱性評価の詳細については、[こちら](
 
 IaaS VM 上で実行されている SQL DB の脅威からの保護と脆弱性評価の、Azure Security Center によるサポートのプレビューが開始されました。
 
-[脆弱性評価](../azure-sql/database/sql-vulnerability-assessment.md)では、データベースの潜在的な脆弱性を検出、追跡、修復できるサービスを簡単に構成できます。 Azure セキュリティ スコアの一部としてセキュリティ体制が可視化され、セキュリティの問題を解決してデータベースの防御機能を強化するための手順が含まれます。
+[脆弱性評価](../azure-sql/database/sql-vulnerability-assessment.md)では、データベースの潜在的な脆弱性を検出、追跡、修復できるサービスを簡単に構成できます。 セキュリティ スコアの一部としてセキュリティ体制が可視化され、セキュリティの問題を解決してデータベースの防御機能を強化するための手順が含まれます。
 
 [Advanced Threat Protection](../azure-sql/database/threat-detection-overview.md) では、SQL Server へのアクセスや SQL Server の悪用を試みる、害を及ぼす可能性のある通常とは異なる試行を示す異常なアクティビティが検出されます。 データベースでの不審なアクティビティを継続的に監視し、異常なデータベース アクセス パターンに対してアクション指向のセキュリティ通知を提供します。 このようなアラートからは、不審なアクティビティの詳細と、脅威の調査や危険性の軽減のために推奨されるアクションが提示されます。
 

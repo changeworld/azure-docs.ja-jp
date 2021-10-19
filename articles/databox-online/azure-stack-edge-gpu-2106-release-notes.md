@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 07/19/2021
 ms.author: alkohli
-ms.openlocfilehash: 81c6f9eb55a44be49cfdbde5e171ce431f4f3cfd
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: f536ac07a15b0b17405cf83233b2fbfba4193d25
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114481788"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129714081"
 ---
 # <a name="azure-stack-edge-2106-release-notes"></a>Azure Stack Edge 2106 リリース ノート
 

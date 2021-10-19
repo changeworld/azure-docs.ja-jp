@@ -8,25 +8,27 @@ ms.date: 05/20/2021
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: partner
-ms.openlocfilehash: 97ad7067b598ad4aa03f46cc7124dcc05d7f2b42
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: a6333ef4385439afa2e2f0000ae3f452357aa958
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112115699"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129856822"
 ---
 # <a name="analyze-and-migrate-to-azure-with-komprise"></a>Komprise を使用してデータを分析し、Azure に移行する
 
-この記事は、Komprise Intelligent Data Manager インフラストラクチャを Azure のストレージ サービスに統合する際に役立ちます。 データを分析して移行する方法についての考慮事項や導入に関するガイダンスを取り上げています。
+この記事は、Komprise Intelligent Data Management インフラストラクチャを Azure のストレージ サービスに統合する際に役立ちます。 データを分析して移行する方法についての考慮事項や導入に関するガイダンスを取り上げています。
 
-Komprise を使用すると、ネットワーク接続ストレージ システムを分析してその情報を入手できます。 Azure Files、Azure NetApp Files、Azure Blob Storage をはじめとする Azure のストレージ サービスに加え、ISV の NAS ソリューションへのデータの移行が可能になります。 [プライマリ ストレージとセカンダリ ストレージの検証済みパートナー ソリューション](../primary-secondary-storage/partner-overview.md)についての詳しい情報をご覧ください。
+Komprise では、ネットワークに接続されたストレージ システム (NAS) に格納されているファイルおよびオブジェクト データと、オンプレミスとクラウドの両方のオブジェクト ストアに対する分析と分析情報が提供されます。  Azure Files、Azure NetApp Files、Azure Blob Storage をはじめとする Azure のストレージ サービスに加え、その他の ISV の NAS ソリューションへのデータの移行が可能になります。 [プライマリ ストレージとセカンダリ ストレージの検証済みパートナー ソリューション](../primary-secondary-storage/partner-overview.md)についての詳しい情報をご覧ください。
 
-Komprise は、次に示したようなさまざまなユース ケースで役に立ちます。
+Komprise の一般的なユースケースは次のとおりです。
 
-- オンプレミスの非構造化データを分析して、データの管理、移動、配置、アーカイブ、保護、制限に関する分析情報を得る。
-- オンプレミスの非構造化データを Azure Files、Azure NetApp Files、ISV の NAS ソリューションに移行する。
-- オンプレミスの非構造化データをネイティブ アクセスで Azure Blob Storage にコピー (アーカイブ) する
-- オブジェクト ストレージ ソリューションを Azure Blob Storage に移行する
+- 構造化されていないファイルおよびオブジェクト データを分析して、データの管理、移動、配置、アーカイブ、保護、制限に関する分析情報を得る
+- ファイル データを Azure Files、Azure NetApp Files、ISV の NAS ソリューションに移行する
+- 元の NAS ソリューションからの透過的なアクセスを維持し、Azure でのネイティブなオブジェクト アクセスを可能にすると同時に、ポリシーに基づいてファイル データを Azure Blob Storage で階層化してアーカイブする
+- Azure でのネイティブなオブジェクト アクセスを維持しながら、構成可能なスケジュールに基づいてファイル データを Azure Blob Storage にコピーする
+- オブジェクト データを Azure Blob Storage に移行する
+- 最終アクセス時刻に基づいて、Azure Blob Storage のホット、クール、アーカイブ層にオブジェクトを階層化してデータ ライフサイクル管理を行う
 
 ## <a name="reference-architecture"></a>参照アーキテクチャ
 
@@ -34,9 +36,13 @@ Komprise は、次に示したようなさまざまなユース ケースで役�
 
 :::image type="content" source="./media/komprise-quick-start-guide/komprise-architecture.png" alt-text="Komprise Intelligent Data Manager の基本的な構成を表すリファレンス アーキテクチャ":::
 
+次の図は、クラウドおよびオンプレミスのオブジェクト ワークロードを Azure Blob Storage に移行するための参照アーキテクチャを示しています。
+
+:::image type="content" source="./media/komprise-quick-start-guide/komprise-architecture-blob.png" alt-text="クラウドおよびオンプレミスのオブジェクト ワークロードを Azure Blob Storage に移行するためのセットアップを示す参照アーキテクチャ":::
+
 Komprise は、仮想環境に簡単にデプロイできるソフトウェア ソリューションです。 このソリューションの構成要素は次のとおりです。
 - **Director** - Komprise Grid の管理コンソール。 環境の構成、アクティビティの監視、レポートとグラフの表示、ポリシーの設定に使用されます。
-- **Observer** - 共有の管理と分析、レポートの要約、Director との通信、NFS データ トラフィックの処理を行います。
+- **Observer** - 共有の管理と分析、レポートの要約、Director との通信、オブジェクトおよび NFS データ トラフィックの処理を行います。
 - **プロキシ** - SMB または CIFS のデータ フローを単純化してスピードアップすると共に、容易にスケーリングして、拡大する環境のパフォーマンス要件を満たします。
 
 ## <a name="before-you-begin"></a>開始する前に
@@ -77,7 +83,7 @@ Azure へのファイル データの移行を検討する際には、いくつ�
 
 Komprise は簡単にセットアップでき、次の 3 つのステップで複数の移行を同時に実行することができます。
 
-1.  データを分析して、移行またはアーカイブの対象となるファイルを特定します。
+1.  データを分析して、移行またはアーカイブの対象となるファイルおよびオブジェクトを特定します。
 1.  非構造化データを Azure Storage に移行、移動、コピーするためのポリシーを定義します。
 1.  データを自動的に移動するポリシーをアクティブにします。
 
@@ -87,14 +93,15 @@ Komprise は簡単にセットアップでき、次の 3 つのステップで�
   - オンプレミスにキャッシュしたり高速ファイル サービスに保存したりすることができるアクセス頻度の低いファイル
   - Blob Storage にアーカイブできるコールド データ
 - 最も大きな影響を受ける組織内のグループと移行の順序を突き止めるための上位のユーザー、グループ、共有に関する情報 (ビジネスへの影響の評価に使用)
-- ファイル数、またはファイルの種類ごとの容量。これによって保存対象のファイルの種類が決まるほか、コンテンツをクリーンアップする余地があるかどうかが判断されます。 クリーンアップによって移行作業の負担が軽減され、移行先ストレージのコストも小さくなります
-- ファイル数、またはファイル サイズごとの容量。これによって移行の所要時間が決まります。 サイズの小さなファイルが多数存在すると、大きなファイルが少数ある場合よりも、移行にかかる時間が長くなります
+- ファイル数、またはファイルの種類ごとの容量。これによって保存対象のファイルの種類が決まるほか、コンテンツをクリーンアップする余地があるかどうかが判断されます。 クリーンアップによって移行作業の負担が軽減され、移行先ストレージのコストも小さくなります。 オブジェクト データに対しても同様の分析を使用できます。
+- ファイル数、またはファイル サイズごとの容量。これによって移行の所要時間が決まります。 サイズの小さなファイルが多数存在すると、大きなファイルが少数ある場合よりも、移行にかかる時間が長くなります。 オブジェクト データに対しても同様の分析を使用できます。
+- コールド データがコストの高い層に不適切に配置されているかどうか、またはホット データがアクセス コストが高くてコストの安い層に不適切に配置されているかどうかを判断するための、ストレージ層別のオブジェクトのコスト。 アクセス パターンに基づいてデータを適切に配置すると、クラウド ストレージ全体のコストを最適化できます。
 
     :::image type="content" source="./media/komprise-quick-start-guide/komprise-analyze-1.png" alt-text="ファイルの種類とアクセス時刻に基づく分析":::
 
     :::image type="content" source="./media/komprise-quick-start-guide/komprise-analyze-shares.png" alt-text="共有の分析の例":::
 
-- 特定のニーズに合ったファイル群を正確に抽出するためのカスタム クエリ機能フィルター
+- 特定のニーズに合った一連のファイルおよびオブジェクトを正確に抽出するためのカスタム クエリ機能フィルター
 
     :::image type="content" source="./media/komprise-quick-start-guide/komprise-analyze-custom.png" alt-text="カスタム クエリの分析":::
 
@@ -156,6 +163,8 @@ Komprise Grid は、速度、スケーラビリティ、回復性を確保する
 
    4.  追加の[セキュリティに関するベスト プラクティス](../../../blobs/security-recommendations.md)を構成します。
 
+### <a name="deployment-instructions-for-managing-file-data"></a>ファイル データを管理するためのデプロイ手順
+
 1.  Komprise Observer 仮想アプライアンスを Director から **ダウンロード** してハイパーバイザーにデプロイし、ネットワークとドメインを使用してその構成を行います。 Director は、Komprise によって管理されるクラウド サービスとして提供されます。 Director にアクセスするために必要な情報は、ソリューションの購入後にウェルカム メールで送信されます。
 
     :::image type="content" source="./media/komprise-quick-start-guide/komprise-setup-1.png" alt-text="Komprise Observer の適切なイメージを Director からダウンロードする":::
@@ -184,9 +193,37 @@ Komprise Grid は、速度、スケーラビリティ、回復性を確保する
 
     :::image type="content" source="./media/komprise-quick-start-guide/komprise-azure-files-2.png" alt-text="Azure Files の詳細を入力する":::
 
+### <a name="deployment-instructions-for-managing-object-data"></a>オブジェクト データを管理するためのデプロイ手順
+
+オブジェクトの管理では、異なるエクスペリエンスが提供されます。 Director と Observer は、Komprise によって管理されるクラウド サービスとして提供されます。 Azure Blob Storage のデータを分析およびアーカイブする必要があるだけの場合は、それ以上のデプロイは必要ありません。 Azure Blob Storage への移行を実行する必要がある場合は、ウェルカム メールで送信された Komprise Observer 仮想アプライアンスを取得して、Azure クラウド インフラストラクチャ内の Linux 仮想マシンにデプロイします。 デプロイが完了したら、Komprise Director で次の手順を実行します。
+
+1. **[データ ストア]** 、 **[新しいオブジェクト ストアの追加]** に移動します。 プロバイダーとして **[Microsoft Azure]** を選択します。
+
+    :::image type="content" source="./media/komprise-quick-start-guide/komprise-add-object-store.png" alt-text="新しいオブジェクト ストアの追加を示すスクリーンショット":::
+
+1. 分析と移行を行う共有を追加します。 ソース、ターゲット共有、またはコンテナーごとに、これらの手順を繰り返す必要があります。 同じアクションを実行するには、次の 2 つのオプションがあります。
+    1. 次の情報を入力して、すべてのコンテナーを **検出** します。
+        - ストレージ アカウント名
+        - プライマリ アクセス キー
+        - 表示名
+    
+        :::image type="content" source="./media/komprise-quick-start-guide/komprise-discover-storage-account.png" alt-text="ストレージ アカウント内のコンテナーを検出する方法を示すスクリーンショット":::
+
+        **[Azure portal](https://portal.azure.com/)** で必要な情報を確認するには、ストレージ アカウントの **[設定]** の下にある **[アクセス キー]** 項目に移動します。 キーが表示されていない場合は、 **[Show keys]\(キーの表示\)** をクリックします。
+
+    1. 次の情報を入力して、コンテナーを **指定** します。
+        - コンテナー名
+        - ストレージ アカウント名
+        - プライマリ アクセス キー
+        - 表示名
+
+        :::image type="content" source="./media/komprise-quick-start-guide/komprise-add-container.png" alt-text="ストレージ アカウントにコンテナーを追加する方法を示すスクリーンショット":::
+
+        コンテナー名は移行先のコンテナーを表し、移行前に作成する必要があります。 **[Azure portal](https://portal.azure.com/)** でその他の必要な情報を確認するには、ストレージ アカウントの **[設定]** の下にある **[アクセス キー]** 項目に移動します。 キーが表示されていない場合は、 **[Show keys]\(キーの表示\)** をクリックします。
+
 ## <a name="migration-guide"></a>移行ガイド
 
-Komprise はライブ マイグレーションに対応しており、移行中もエンド ユーザーとアプリケーションを中断することなく、データにアクセスし続けることができます。 ディレクトリ、ファイル、リンクは、移行プロセスによって自動的に移行元から移行先に移行されます。 各ステップで、データ整合性がチェックされます。 属性、アクセス許可、アクセスの制御はすべて移行元から適用されます。
+Komprise はライブ マイグレーションに対応しており、移行中もエンド ユーザーとアプリケーションを中断することなく、データにアクセスし続けることができます。 ディレクトリ、ファイル、リンクは、移行プロセスによって自動的に移行元から移行先に移行されます。 各ステップで、データ整合性がチェックされます。 属性、アクセス許可、アクセスの制御はすべて移行元から適用されます。 オブジェクトの移行では、オブジェクト、プレフィックス、各オブジェクトのメタデータが移行されます。
 
 移行を構成して実行するには、次の手順に従います。
 
@@ -195,11 +232,19 @@ Komprise はライブ マイグレーションに対応しており、移行中�
 
     :::image type="content" source="./media/komprise-quick-start-guide/komprise-new-migrate.png" alt-text="新しい移行ジョブを追加する":::
 
-1. 移行元と移行先の適切な共有を選択して移行タスクを追加します。 移行の名前を指定してください。 構成が済んだら **[Start Migration]\(移行の開始\)** をクリックします。 
+1. 移行元と移行先の適切な共有を選択して移行タスクを追加します。 移行の名前を指定してください。 構成が済んだら **[Start Migration]\(移行の開始\)** をクリックします。 この手順は、ファイル データの移行とオブジェクト データの移行では若干異なります。
    
-   :::image type="content" source="./media/komprise-quick-start-guide/komprise-add-migration.png" alt-text="移行ジョブの詳細を指定する":::
+    1. ファイルの移行
 
-   (_省略可_) アクセス時刻と SMB の ACL を移行先で維持するかどうかを定義します。 このオプションは、移行元と移行先の選択したファイル サービスおよびプロトコルに依存します。
+       :::image type="content" source="./media/komprise-quick-start-guide/komprise-add-migration.png" alt-text="移行ジョブの詳細を指定する":::
+
+       ファイルの移行では、移行先でアクセス時間と SMB ACL を維持するオプションが提供されます。 このオプションは、移行元と移行先の選択したファイル サービスおよびプロトコルに依存します。
+
+    1. オブジェクトの移行
+
+        :::image type="content" source="./media/komprise-quick-start-guide/komprise-add-object-migration.png" alt-text="オブジェクトの移行の追加を示すスクリーンショット":::
+
+        オブジェクトの移行では、移行先の Azure ストレージ層 (ホット、クール、アーカイブ) を選択するオプションが提供されます。 MD5 チェックサムを使用した各データ転送の検証を選択することもできます。 MD5 チェックサムを計算するにはクラウド オブジェクトを取得する必要があるため、MD5 チェックサムでエグレス コストが発生する可能性があります。
 
 2. 移行が開始されたら、 **[Migrate]\(移行\)** に移動して進行状況を監視できます。
 

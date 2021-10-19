@@ -1,6 +1,6 @@
 ---
-title: Microsoft コマーシャル マーケットプレースの SaaS オファーを計画する方法 - Azure Marketplace
-description: Microsoft パートナー センターのコマーシャル マーケットプレース プログラムを使用して、Microsoft AppSource、Azure Marketplace、またはクラウド ソリューション プロバイダー (CSP) プログラムでリスト登録または販売を行うために新しいサービスとしてのソフトウェア (SaaS) オファーを計画する方法。
+title: Microsoft コマーシャル マーケットプレース向けの SaaS オファーを計画する - Azure Marketplace
+description: Microsoft パートナー センターのコマーシャル マーケットプレース プログラムを使用して、Microsoft AppSource、Azure Marketplace、またはクラウド ソリューション プロバイダー (CSP) プログラムでリスト登録または販売を行うために新しいサービスとしてのソフトウェア (SaaS) オファーを計画します。
 author: mingshen-ms
 ms.author: mingshen
 ms.reviewer: dannyevers
@@ -8,14 +8,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/17/2021
-ms.openlocfilehash: e31fff677b6e1363d0afda420d521d31b2cf4247
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 6f429bd55c3fbf93f88c91168021eed9f1d6505a
+ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128657559"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129730187"
 ---
-# <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>コマーシャル マーケットプレースの SaaS オファーを計画する方法
+# <a name="plan-a-saas-offer-for-the-commercial-marketplace"></a>コマーシャル マーケットプレース向けの SaaS オファーを計画する
 
 この記事では、サービスとしてのソフトウェア (SaaS) オファーを Microsoft コマーシャル マーケットプレースに公開するためのさまざまなオプションと要件について説明します。 SaaS では、オンライン サブスクリプションを介してソリューションを顧客に配布し、ライセンスを付与します。 SaaS 発行者は、お客様のプランの使用をサポートするために必要なインフラストラクチャの管理および支払いを行います。 この記事は、パートナー センターでコマーシャル マーケットプレースに公開するためにオファーを準備するのに役立ちます。
 
@@ -72,7 +72,7 @@ _[今すぐ入手 (無料)]_ 、 _[無料試用版]_ 、 _[Sell through Microsof
 
     構成するランディング ページは、24 時間 365 日稼働している必要があります。 これは、コマーシャル マーケットプレースでの SaaS オファーの新しい購入について、またはオファーのアクティブなサブスクリプションの構成要求について、通知を受ける唯一の方法です。
 
-- **接続 Webhook**: Microsoft から送信する必要があるすべての非同期イベント (例: SaaS サブスクリプションがキャンセルされた) について、接続 Webhook の URL を指定する必要があります。 イベントについてお客様に通知するために、Microsoft によってこの URL が呼び出されます。
+- **[接続 Webhook]** : Microsoft からパートナーに送信する必要があるすべての非同期イベントのため (SaaS サブスクリプションが取り消されたときなど)、パートナーは[接続 Webhook の URL を指定する](./partner-center-portal/pc-saas-fulfillment-api-v2.md#implementing-a-webhook-on-the-saas-service)必要があります。 イベントについてお客様に通知するために、Microsoft によってこの URL が呼び出されます。
 
   指定する Webhook は、24 時間 365 日稼働している必要があります。 これは、コマーシャル マーケットプレースを介して購入された顧客の SaaS サブスクリプションに関する更新について通知を受ける唯一の方法です。
 
@@ -107,17 +107,17 @@ SaaS オファーを公開すると、Microsoft AppSource、Azure Marketplace、
 SaaS オファーが IT ソリューション (Azure Marketplace) とビジネス ソリューション (AppSource) の "*両方*" である場合は、各オンライン ストアに適用されるカテゴリおよびサブカテゴリを選択します。 両方のオンライン ストアに公開されるオファーには、IT ソリューション "*および*" ビジネス ソリューションとしての価値提案が存在する必要があります。
 
 > [!IMPORTANT]
-> [従量制課金](partner-center-portal/saas-metered-billing.md)での SaaS オファーは、Azure Marketplace と Azure portal を通じて利用できます。 プライベート プランのみを含む SaaS オファーは、Azure portal から利用できます。
+> [従量制課金](partner-center-portal/saas-metered-billing.md)での SaaS オファーは、Azure Marketplace と Azure portal を通じて利用できます。 プライベート プランのみを含む SaaS オファーは、Azure portal と AppSource から利用できます。
 
 | 従量制課金 | パブリック プラン | プライベート プラン | 次で利用可能: |
 |---|---|---|---|
 | はい             | はい         | いいえ           | Azure Marketplace と Azure portal |
 | はい             | はい         | はい          | Azure Marketplace と Azure portal* |
 | はい             | いいえ          | はい          | Azure portal のみ |
-| いいえ              | いいえ          | はい          | Azure portal のみ |
+| いいえ              | いいえ          | はい          | Azure portal と AppSource |
 |||||
 
-&#42; このオファーのプライベート プランは、Azure portal 経由でのみ利用可能です。
+&#42; オファーのプライベート プランは、Azure portal および AppSource からのみ利用できます。
 
 たとえば、従量制課金とプライベート プランのみ (パブリックプランなし) のオファーを購入するのは、Azure portal のお客様のみになります。 詳細については、「[Microsoft 商業マーケットプレースでのプライベート オファー](private-offers.md)」を参照してください。
 
@@ -132,7 +132,6 @@ SaaS オファーが IT ソリューション (Azure Marketplace) とビジネ�
 > [!NOTE]
 > コマーシャル マーケットプレースの標準契約を使用してオファーを公開した後に、独自のカスタム使用条件を使用することはできません。 これは、"または" のシナリオです。 ソリューションは、標準契約または独自の使用条件のいずれかの下で提供します。 標準契約の条件を変更する必要がある場合は、Standard Contract Amendments (標準契約の修正) を使用して変更することができます。
 
-
 ## <a name="microsoft-365-integration"></a>Microsoft 365 の統合
 
 Microsoft 365 との統合により、SaaS オファーでは、Teams アプリ、Office アドイン、SharePoint Framework ソリューションなどの関連する無料アドインを通じて、複数の Microsoft 365 アプリ サーフェイス間で接続されたエクスペリエンスを提供できます。 次の情報を提供することで、顧客が E2E ソリューション (Web サービスと関連するアドイン) におけるすべてのファセットを簡単に検出し、それらを 1 つのプロセスでデプロイできるように支援できます。 
@@ -140,7 +139,7 @@ Microsoft 365 との統合により、SaaS オファーでは、Teams アプリ�
     
      Microsoft を通じてオファーを販売する場合、これは顧客サブスクリプションのアクティブ化を完了するために必要なユーザー基本情報を取得するランディング ページで登録したものと同じ AAD アプリ ID になります。 詳細なガイダンスについては、「[取引可能な SaaS オファー用のランディング ページをコマーシャル マーケットプレースに作成する](azure-ad-transactable-saas-landing-page.md)」を参照してください。 
     
-   -    リンクする SaaS オファーで動作する関連アドインの一覧を提供します。 顧客は AppSource で E2E ソリューションを見つけることができ、管理者は SaaS と、Microsoft 365 管理センターを介して同じプロセスでリンクされたすべての関連アドインの両方をデプロイできます。
+   -    リンクする SaaS オファーで動作する関連アドインの一覧を提供します。 顧客は Microsoft AppSource で E2E ソリューションを見つけることができ、管理者は SaaS とリンクされたすべての関連アドインの両方を、Microsoft 365 管理センターから同じプロセスでデプロイできます。
     
         関連するアドインをリンクするには、アドインの AppSource リンクを指定する必要があります。これは、アドインをまず AppSource に公開する必要があることを意味します。 リンクに対応しているアドインの種類としては、Teams アプリ、Office アドイン、および SharePoint Framework (SPFx) ソリューションがあります。 リンクされた各アドインは、SaaS オファーに対して一意である必要があります。 
 
@@ -214,9 +213,9 @@ Microsoft 365 との統合により、SaaS オファーでは、Teams アプリ�
 
   これらのロゴは、オンライン ストアのさまざまな場所で使用されます。
 
-  - 小のロゴは、Azure Marketplace の検索結果、Microsoft AppSource のメイン ページ、検索結果ページに表示されます。
+  - 小さいロゴは、Azure Marketplace の検索結果および AppSource のメイン ページと検索結果ページに表示されます。
   - 中のロゴは、Microsoft Azure で新しいリソースを作成すると表示されます。
-  - 大のロゴは、Azure Marketplace と Microsoft AppSource のオファー登録情報ページに表示されます。
+  - 大きいロゴは、Azure Marketplace および AppSource のオファー掲載ページに表示されます。
 
 - **メディア - スクリーンショット**: オファーがどのように機能するかを示す、次の要件を含むスクリーンショットを 1 つ以上最大 5 つ追加する必要があります。
   - 1280 x 720 ピクセル

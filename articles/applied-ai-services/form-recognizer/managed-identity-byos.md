@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: how-to
-ms.date: 07/08/2021
+ms.date: 10/07/2021
 ms.author: lajanuar
-ms.openlocfilehash: 43220ce85bf02919a0ccf069bc9646a16c3a0a26
-ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
+ms.openlocfilehash: 448b13d1406587c36b729b3258d8ca375a0914ae
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129155355"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129706580"
 ---
 # <a name="create-and-use-managed-identity-for-your-form-recognizer-resource"></a>Form Recognizer リソース用のマネージド ID を作成して使用する
 
@@ -35,7 +35,7 @@ Azure マネージド ID は、Azure Active Directory (Azure AD) ID と Azure �
 >
 > * [**Form Recognizer サンプル ラベル付けツール (FOTT)**](https://fott-2-1.azurewebsites.net/) を使用してストレージ データを分析する場合は、VNet またはファイアウォールの背後にツールをデプロイする必要があります。
 >
-> * Analyze [**Receipt**](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeReceiptAsync)、[**Business Card**](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeBusinessCardAsync)、[**Invoice**](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/5ed8c9843c2794cbb1a96291)、[**Identity Document**](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/5f74a7738978e467c5fb8707)、および [**Custom Form**](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeWithCustomForm) の API では、要求を生のバイナリ コンテンツとして送信することによって、1 つのドキュメントからデータを抽出できます。 これらのシナリオでは、マネージド ID 資格情報の要件はありません。
+> * Analyze [**Receipt**](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeReceiptAsync)、[**Business Card**](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeBusinessCardAsync)、[**Invoice**](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/5ed8c9843c2794cbb1a96291)、[**ID Document**](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/5f74a7738978e467c5fb8707)、および [**Custom Form**](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeWithCustomForm) の API では、要求を生のバイナリ コンテンツとして送信することによって、1 つのドキュメントからデータを抽出できます。 これらのシナリオでは、マネージド ID 資格情報の要件はありません。
 
 ## <a name="prerequisites"></a>前提条件
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 07/30/2021
-ms.openlocfilehash: 154cfa6f8fd413c1cef1a22143d7e4d357053760
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: f1f352c93fca84f26516811b0014f6fca549b1cd
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122867014"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129668810"
 ---
 # <a name="introduction-to-listing-options"></a>登録情報オプションの概要
 
@@ -24,19 +24,19 @@ ms.locfileid: "122867014"
 | ------------ | ------------- | ------------- | ------------- | ------------- |
 | Azure アプリケーション (マネージド アプリ) |   | &#10004; |   | &#10004; |
 | Azure アプリケーション (ソリューション テンプレート) |  |  |  | &#10004; |
-| コンサルティング サービス |  |  | &#10004; |  |
 | Azure Container |  |  |  | &#10004; |
+| Azure Virtual Machine | &#10004; | &#10004; |  | &#10004; |
+| コンサルティング サービス |  |  | &#10004; |  |
 | Dynamics 365 Business Central | &#10004; | &#10004; | &#10004; | &#10004; |
 | Dynamics 365 Customer Engagement および PowerApps | &#10004; | &#10004; | &#10004; | &#10004; |
 | Dynamics 365 for Operations | &#10004; | &#10004; | &#10004; | &#10004; |
 | IoT Edge モジュール |  |  |  | &#10004; |
 | マネージド サービス |  |  |  | &#10004; |
 | Power BI アプリ |  |  |  | &#10004; |
-| Azure Virtual Machine | &#10004; | &#10004; |  | &#10004; |
 | サービスとしてのソフトウェア | &#10004; | &#10004; | &#10004; | &#10004; |
 ||||||
 
-&#42; **[今すぐ入手する]** 登録オプションには、[今すぐ入手する (無料)]、[ライセンス持ち込み (BYOL)]、[サブスクリプション]、[使用量ベースの価格] が含まれています。 詳細については、「[今すぐ入手する](#get-it-now)」を参照してください。
+\* **[今すぐ入手する]** 登録オプションには、[今すぐ入手する (無料)]、[ライセンス持ち込み (BYOL)]、[サブスクリプション]、[使用量ベースの価格] が含まれています。 詳細については、「[今すぐ入手する](#get-it-now)」を参照してください。
 
 ## <a name="change-the-offer-type"></a>オファーの種類を変更する
 

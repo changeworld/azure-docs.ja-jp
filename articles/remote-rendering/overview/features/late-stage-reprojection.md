@@ -5,12 +5,12 @@ author: sebastianpick
 ms.author: sepick
 ms.date: 02/04/2020
 ms.topic: article
-ms.openlocfilehash: f0951415bba22a226dadb7f2a115cede451399bc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 377e35b3107195841f49ecc8b1e5fb18fe38ed87
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "92205644"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129658540"
 ---
 # <a name="late-stage-reprojection"></a>Late Stage Reprojection
 
@@ -30,11 +30,55 @@ Unity エディターの *:::no-loc text="File > Build Settings":::* に移動�
 
 オンである場合、アプリでは Depth LSR が使用されます。それ以外の場合は、Planar LSR が使用されます。
 
+OpenXR を使用する場合は、常に深度バッファーを送信する必要があります。 この設定は、 *:::no-loc text="XR Plug-in Management > OpenXR":::* にあります。 次に、OpenXR プラグインの拡張機能によって、再投影モードを変更できます。
+
+```cs
+using Microsoft.MixedReality.OpenXR;
+
+public class OverrideReprojection : MonoBehaviour
+{
+    void OnEnable()
+    {
+        RenderPipelineManager.endCameraRendering += RenderPipelineManager_endCameraRendering;
+    }
+    void OnDisable()
+    {
+        RenderPipelineManager.endCameraRendering -= RenderPipelineManager_endCameraRendering;
+    }
+
+    // When using the Universal Render Pipeline, OnPostRender has to be called manually.
+    private void RenderPipelineManager_endCameraRendering(ScriptableRenderContext context, Camera camera)
+    {
+        OnPostRender();
+    }
+
+    // Called directly when using Unity's legacy renderer.
+    private void OnPostRender()
+    {
+        ReprojectionSettings reprojectionSettings = default;
+        reprojectionSettings.ReprojectionMode = ReprojectionMode.PlanarManual; // Or your favorite reprojection mode.
+        
+        // In case of PlanarManual you also need to provide a focus point here.
+        reprojectionSettings.ReprojectionPlaneOverridePosition = ...;
+        reprojectionSettings.ReprojectionPlaneOverrideNormal = ...;
+        reprojectionSettings.ReprojectionPlaneOverrideVelocity = ...;
+
+        foreach (ViewConfiguration viewConfiguration in ViewConfiguration.EnabledViewConfigurations)
+        {
+            if (viewConfiguration.IsActive && viewConfiguration.SupportedReprojectionModes.Contains(reprojectionSettings.ReprojectionMode))
+            {
+                viewConfiguration.SetReprojectionSettings(reprojectionSettings);
+            }
+        }
+    }
+}
+```
+
 ## <a name="depth-lsr"></a>Depth LSR
 
 Depth LSR を機能させるには、クライアント アプリケーションが、LSR 中に考慮する必要があるすべての関連ジオメトリを含む有効な深度バッファーを指定する必要があります。
 
-Depth LSR は、指定された深度バッファーの内容に基づいて、ビデオ フレームの安定化を試みます。 結果として、透明なオブジェクトなど、レンダリングされていないコンテンツは、LSR によって調整することはできず、不安定で再投影される可能性があります。 
+Depth LSR は、指定された深度バッファーの内容に基づいて、ビデオ フレームの安定化を試みます。 結果として、透明なオブジェクトなど、レンダリングされていないコンテンツは、LSR によって調整することはできず、不安定で再投影される可能性があります。
 
 透過的なオブジェクトの再プロジェクションの不安定性を軽減するには、深度バッファーの書き込みを強制することができます。 [カラー](color-materials.md) および [PBR](pbr-materials.md) のマテリアルについては、*TransparencyWritesDepth* のマテリアル フラグを参照してください。 ただし、このフラグを有効にすると、透明/不透明なオブジェクトの相互作用のビジュアル品質が低下する可能性があります。
 
@@ -46,9 +90,10 @@ Planar LSR は、指定された平面に近いオブジェクトを適切に再
 
 ### <a name="configure-planar-lsr-in-unity"></a>Unity で Planar LSR を構成する
 
-プレーン パラメーターは、`UnityEngine.XR.WSA.HolographicSettings.SetFocusPointForFrame` を使用してすべてのフレームに設定する必要がある *フォーカス ポイント* と呼ばれるものから派生しています。 詳細については、[Unity のフォーカス ポイント API](/windows/mixed-reality/focus-point-in-unity) に関するページを参照してください。 フォーカス ポイントを設定しない場合は、フォールバックが自動で選択されます。 ただし多くの場合、自動フォールバックの結果は最適ではありません。
+プレーン パラメーターは、いわゆる *フォーカス ポイント* から派生しています。 WMR を使用する場合、フォーカス ポイントを `UnityEngine.XR.WSA.HolographicSettings.SetFocusPointForFrame` によってフレームごとに設定する必要があります。 詳細については、[Unity のフォーカス ポイント API](/windows/mixed-reality/focus-point-in-unity) に関するページを参照してください。 OpenXR の場合、フォーカス ポイントは、前のセクションで示した `ReprojectionSettings` を使用して設定する必要があります。
+フォーカス ポイントを設定しない場合は、フォールバックが自動で選択されます。 ただし多くの場合、自動フォールバックの結果は最適ではありません。
 
-フォーカス ポイントは自分で計算できますが、Remote Rendering ホストによって計算されたものを基にした方が適切な場合もあります。 `RemoteManagerUnity.CurrentSession.GraphicsBinding.GetRemoteFocusPoint` を呼び出してこれを取得します。 フォーカス ポイントを表す座標フレームを指定するように求められます。 ほとんどの場合、`UnityEngine.XR.WSA.WorldManager.GetNativeISpatialCoordinateSystemPtr` の結果をここに入力するだけです。
+フォーカス ポイントは自分で計算できますが、Remote Rendering ホストによって計算されたものを基にした方が適切な場合もあります。 `RemoteManagerUnity.CurrentSession.GraphicsBinding.GetRemoteFocusPoint` を呼び出してこれを取得します。
 
 通常、クライアントとホストの両方が、もう片方が認識していないコンテンツ (クライアント上の UI 要素など) を表示します。 そのため、リモートのフォーカス ポイントをローカルで計算されたフォーカス ポイントと結合することは理にかなっていると考えられます。
 

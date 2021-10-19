@@ -7,16 +7,16 @@ ms.service: cache
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 04/22/2018
-ms.openlocfilehash: 7354f0504197742a8c8acf2d0c555a524fef95d9
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: 89c76331f9aad8238b596094ad2057df98eea9a9
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129538839"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129659528"
 ---
 # <a name="aspnet-output-cache-provider-for-azure-cache-for-redis"></a>Azure Cache for Redis の ASP.NET 出力キャッシュ プロバイダー
 
-Redis 出力キャッシュ プロバイダーは、出力キャッシュ データ用のプロセス外ストレージ メカニズムです。 このデータは、完全な HTTP 応答専用です (ページ出力キャッシュ)。 プロバイダーは、ASP.NET 4 で導入された新しい出力キャッシュ プロバイダー拡張機能ポイントに接続します。 ASP.NET Core アプリケーションについては、「[ASP.NET Core での応答のキャッシュ](/aspnet/core/performance/caching/response)」を参照してください。 
+Redis 出力キャッシュ プロバイダーは、出力キャッシュ データ用のプロセス外ストレージ メカニズムです。 このデータは、完全な HTTP 応答専用です (ページ出力キャッシュ)。 プロバイダーは、ASP.NET 4 で導入された新しい出力キャッシュ プロバイダー拡張機能ポイントに接続します。 ASP.NET Core アプリケーションについては、「[ASP.NET Core での応答のキャッシュ](/aspnet/core/performance/caching/response)」を参照してください。
 
 Redis 出力キャッシュ プロバイダーを使用するには、まず対象のキャッシュを構成し、Redis 出力キャッシュ プロバイダー NuGet パッケージを使用して ASP.NET アプリケーションを構成します。 この記事では、Redis 出力キャッシュ プロバイダーを使用するようにアプリケーションを構成する手順について説明します。 Azure Cache for Redis インスタンスを作成および構成する方法の詳細については、[キャッシュの作成](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache)に関するページを参照してください。
 
@@ -26,14 +26,11 @@ Visual Studio で Azure Cache for Redis Session State NuGet パッケージを�
 
 [`Package Manager Console`] ウィンドウで、次のコマンドを実行します。
 
-```
+```powershell
 Install-Package Microsoft.Web.RedisOutputCacheProvider
 ```
 
-Redis 出力キャッシュ プロバイダー NuGet パッケージは、StackExchange.Redis.StrongName パッケージに依存します。 StackExchange.Redis.StrongName パッケージは、プロジェクト内に存在しなければインストールされます。 Redis Output Cache Provider NuGet パッケージについて詳しくは、[RedisOutputCacheProvider](https://www.nuget.org/packages/Microsoft.Web.RedisOutputCacheProvider/) NuGet ページを参照してください。
-
->[!NOTE]
->厳密な名前を持つ StackExchange.Redis.StrongName パッケージ以外に、厳密な名前を持たない StackExchange.Redis バージョンもあります。 プロジェクトで厳密な名前を持たないバージョンの StackExchange.Redis を使っている場合は、それをアンインストールする必要があります。そうしないと、プロジェクトで名前の競合が発生します。 これらのパッケージの詳細については、[.NET キャッシュ クライアントの構成](cache-dotnet-how-to-use-azure-redis-cache.md#configure-the-cache-clients)に関するトピックを参照してください。
+Redis 出力キャッシュ プロバイダー NuGet パッケージは、StackExchange.Redis パッケージに依存します。 StackExchange.Redis パッケージは、プロジェクト内に存在しなければインストールされます。 Redis Output Cache Provider NuGet パッケージについて詳しくは、[RedisOutputCacheProvider](https://www.nuget.org/packages/Microsoft.Web.RedisOutputCacheProvider/) NuGet ページを参照してください。
 
 NuGet パッケージがダウンロードされ、必要なアセンブリ参照が追加されて、次のセクションが web.config ファイルに追加されます。 このセクションには、Redis 出力キャッシュ プロバイダーを使うために ASP.NET アプリケーションに必要な構成が含まれます。
 

@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 04/12/2021
+ms.date: 10/05/2021
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ed289789576df7c81368b2b98001968c358c0e0
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: f944caecae6d35e680f5c5beb1a6e23fc422e698
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114440203"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129618094"
 ---
 # <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でアクセス パッケージの割り当てを表示、追加、および削除する
 
@@ -72,7 +72,7 @@ $assignments = Get-MgEntitlementManagementAccessPackageAssignment -AccessPackage
 $assignments | ft Id,AssignmentState,TargetId,{$_.Target.DisplayName}
 ```
 
-## <a name="directly-assign-a-user"></a>ユーザーを直接割り当てる
+## <a name="directly-assign-a-user"></a>ユーザーを直接割り当てる 
 
 場合によっては、ユーザーがアクセス パッケージを要求するプロセスをたどらなくて済むように、アクセス パッケージに特定のユーザーを直接割り当てることもできます。 ユーザーを直接割り当てるには、アクセス パッケージに、管理者に直接割り当てを許可するポリシーが必要です。
 
@@ -108,6 +108,38 @@ $assignments | ft Id,AssignmentState,TargetId,{$_.Target.DisplayName}
 1. **[追加]** をクリックして、選択したユーザーをアクセス パッケージに直接割り当てます。
 
     しばらくしてから **[更新]** をクリックすると、割り当ての一覧にユーザーが表示されます。
+    
+> [!NOTE]
+> ユーザーをアクセス パッケージに割り当てる際、管理者は、そのユーザーが既存のポリシー要件に基づいてそのアクセス パッケージの対象となっていることを確認する必要があります。 そうしない場合、ユーザーはアクセス パッケージに正常に割り当てられません。 ユーザー リクエストの承認を必要とするポリシーがアクセス パッケージに含まれている場合、指定された承認者による必要な承認を得ずに、ユーザーを直接アクセス パッケージに割り当てることはできません。
+
+## <a name="directly-assign-any-user-preview"></a>任意のユーザーを直接割り当てる (プレビュー)
+Azure AD エンタイトルメント管理により、外部ユーザーをアクセス パッケージに直接割り当てて、パートナーとの共同作業を簡単にすることもできます。 これを行うには、アクセス パッケージに、まだディレクトリに存在しないユーザーがアクセスを要求できるようにするポリシーがある必要があります。
+
+**事前に必要なロール:** グローバル管理者、ユーザー管理者、カタログ所有者、アクセス パッケージ マネージャーまたはアクセス パッケージ割り当てマネージャー
+
+1.  Azure portal で **[Azure Active Directory]** を選択し、 **[Identity Governance]** を選択します。
+
+1.  左側のメニューで **[アクセス パッケージ]** をクリックしてから、ユーザーを追加するアクセス パッケージを開きます。
+
+1.  左側のメニューで **[割り当て]** をクリックします。
+
+1.  **[新しい割り当て]** を選択して、 **[ユーザーのアクセス パッケージへの追加]** を開きます。
+
+1.  **[ポリシーの選択]** の一覧で、 **[自分のディレクトリ内以外のユーザーの場合]** に設定されることを許可するポリシーを選択します
+
+1. **[任意のユーザー]** を選択します。 このアクセス パッケージに割り当てるユーザーを指定することができます。
+    ![割り当て - アクセス パッケージにユーザーを追加する](./media/entitlement-management-access-package-assignments/assignments-add-any-user.png)
+
+1. ユーザーの **[名前]** (省略可能) とユーザーの **[メール アドレス]** (必須) を入力します。
+
+    > [!NOTE]
+    > - 追加するユーザーは、ポリシーのスコープ内にある必要があります。 たとえば、ポリシーが **[特定の接続済み組織]** に設定されている場合、ユーザーのメールアドレスは、選択した組織のドメインからのものである必要があります。 追加しようとしているユーザーのメール アドレスが jen@*foo.com* でも、選択した組織のドメインが *bar.com* である場合、そのユーザーをアクセス パッケージに追加することはできません。
+    > - 同様に、 **[構成済みの接続されたすべての組織]** を含めるようにポリシーを設定した場合、ユーザーのメール アドレスは、構成されている接続済み組織のいずれかからのものである必要があります。 そうでない場合、ユーザーはアクセス パッケージに追加されません。
+    > - アクセス パッケージに任意のユーザーを追加する場合は、ポリシーを構成するときに、 **[すべてのユーザー (すべての接続済み組織 + 外部ユーザー)]** を選択するようにする必要があります。
+
+1.  選択したユーザーの割り当てを開始および終了する日付と時刻を設定します。 終了日が指定されていない場合は、ポリシーのライフサイクルの設定が使用されます。
+1.  **[追加]** をクリックして、選択したユーザーをアクセス パッケージに直接割り当てます。
+1.  しばらくしてから **[更新]** をクリックすると、割り当ての一覧にユーザーが表示されます。
 
 ## <a name="directly-assigning-users-programmatically"></a>プログラムによるユーザーの直接割り当て
 ### <a name="assign-a-user-to-an-access-package-with-microsoft-graph"></a>Microsoft Graph を使用してアクセス パッケージにユーザーを割り当てる

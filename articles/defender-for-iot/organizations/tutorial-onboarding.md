@@ -4,14 +4,14 @@ description: このチュートリアルでは、Azure Defender for IoT の試�
 author: ElazarK
 ms.author: v-ekrieg
 ms.topic: tutorial
-ms.date: 10/05/2021
+ms.date: 10/07/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 717b65b78d177e277922687c4c290035b57ab6ab
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: e509b3a1c12c7c7d118eca0b3a2adabe01bdc977
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129537034"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129660307"
 ---
 # <a name="tutorial-azure-defender-for-iot-trial-setup"></a>チュートリアル: Azure Defender for IoT の試用版のセットアップ
 
@@ -246,7 +246,7 @@ ESXi または Hyper-V のいずれかを使用して、仮想センサーのソ
 
 ## <a name="configure-a-span-port"></a>SPAN ポートを構成する
 
-vSwitch にはミラーリング機能がありませんが、対処法を使用して SPAN ポートを実装できます。 この対処法は、ESXi または Hyper-V で実装できます。
+仮想スイッチにはミラーリング機能はありません。 ただし、仮想スイッチ環境では無作為検出モードを使用できます。 無作為検出モードは、操作モードであるほか、セキュリティ、監視、および管理の手法でもあります。これは、仮想スイッチまたはポートグループ レベルで定義されています。 既定では、無作為検出モードは無効になっています。 無作為検出モードが有効になっている場合、その仮想スイッチを通過するすべてのネットワーク トラフィックを表示するために、同じポートグループにある仮想マシンのネットワーク インターフェイスによって無作為検出モードが使用されます。 この対処法は、ESXi または Hyper-V で実装できます。
 
 :::image type="content" source="media/tutorial-onboarding/purdue-model.png" alt-text="アーキテクチャ内でセンサーを配置する場所を示すスクリーンショット。":::
 
@@ -476,5 +476,5 @@ CA 署名証明書のアップロード後に、画面を更新する必要が�
 
 ## <a name="next-steps"></a>次のステップ
 
-[追加のアプライアンス](how-to-install-software.md#about-defender-for-iot-appliances)の設定方法を学びます。
+[その他のアプライアンス](how-to-install-software.md#about-defender-for-iot-appliances)の設定方法を学びます。
 [エージェントレス アーキテクチャ](architecture.md)について確認します。

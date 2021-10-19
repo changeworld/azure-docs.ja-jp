@@ -1,5 +1,5 @@
 ---
-title: クイックスタート - Azure CLI を使用して BLOB を作成する
+title: 'クイック スタート: BLOB のアップロード、ダウンロード、一覧表示 - Azure CLI'
 titleSuffix: Azure Storage
 description: このクイックスタートでは、Azure CLI を使用して、Azure Storage への BLOB のアップロード、BLOB のダウンロード、およびコンテナー内の BLOB の一覧表示を行う方法を説明します。
 services: storage
@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 08/17/2020
 ms.author: tamram
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 68797d8b158e7ff56d609f0d59c174b72277e98b
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 8f4726088a49bfe5da7fdea088df76da3356162e
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128674587"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129616552"
 ---
 # <a name="quickstart-create-download-and-list-blobs-with-azure-cli"></a>クイック スタート:Azure CLI を使用して BLOB を作成、ダウンロード、一覧表示する
 

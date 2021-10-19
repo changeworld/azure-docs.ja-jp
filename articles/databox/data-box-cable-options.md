@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: how-to
 ms.date: 10/24/2018
 ms.author: alkohli
-ms.openlocfilehash: a2c4cce492c48ebe6e09ad142f97bc6377a8a5e1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 851c717ad313c32137235704f7cbdca9544d2605
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94334618"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129716126"
 ---
 # <a name="cabling-options-for-your-azure-data-box"></a>Azure Data Box の配線方法
 
@@ -117,7 +117,7 @@ Data Box に 2 つのポート (管理トラフィック用に MGMT ポート、
 
 開始する前に、次のものがあることを確認します。
 
-- RJ45 ケーブル (DATA 1 に接続する場合)。
+- RJ45 ケーブル (DATA 3 に接続する場合)。
 - 10-GbE SFP+ Twinax 銅線ケーブル (接続する 10-GbE データ ポート 1 つにつき 1 本ずつ)。
 - [サポートされている OS](data-box-system-requirements.md#supported-operating-systems-for-clients) を実行している 1 つ以上のデータ ソース。 これらのデータ ソースは、1 GbE ネットワークや 10 GbE ネットワークなどの異なるネットワークに存在する可能性があります。
 

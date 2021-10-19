@@ -8,12 +8,12 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/07/2021
-ms.openlocfilehash: 650f5f40bf8b8fc0909b4fec85ef6b5724a2e3c7
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 4453660cb58a1b976488d1cc9e240768637a85b6
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123539826"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129857096"
 ---
 # <a name="indexer-troubleshooting-guidance-for-azure-cognitive-search"></a>Azure Cognitive Search のインデクサーの一般的な問題のトラブルシューティング
 
@@ -26,7 +26,7 @@ ms.locfileid: "123539826"
 >
 > 検索サービスの IP アドレスを確認するには、その完全修飾ドメイン名 (例: `<your-search-service-name>.search.windows.net`) を ping します。
 >
-> `AzureCognitiveSearch` [サービス タグ](../virtual-network/service-tags-overview.md#available-service-tags)の IP アドレス範囲を確認するには、[ダウンロード可能な JSON ファイル](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)または [Service Tag Discovery API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) を使用します。 IP アドレス範囲は毎週更新されます。
+> `AzureCognitiveSearch` [サービス タグ](../virtual-network/service-tags-overview.md#available-service-tags)の IP アドレス範囲を確認するには、[ダウンロード可能な JSON ファイル](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)または [Service Tag Discovery API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api) を使用します。 IP アドレス範囲は毎週更新されます。
 
 ### <a name="firewall-rules"></a>ファイアウォール規則
 
@@ -105,7 +105,7 @@ SharePoint Online インデクサーの作成時には、デバイス コード�
 
     追加の IP アドレスは、インデクサーの[マルチテナント実行環境](search-indexer-securing-resources.md#indexer-execution-environment)からの要求に使用されます。 この IP アドレス範囲は、サービス タグから取得できます。
 
-    `AzureCognitiveSearch` サービス タグの IP アドレス範囲は、[Discovery API (プレビュー)](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) または[ダウンロード可能な JSON ファイル](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)経由で取得できます。
+    `AzureCognitiveSearch` サービス タグの IP アドレス範囲は、[Discovery API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api) または[ダウンロード可能な JSON ファイル](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)経由で取得できます。
 
     このチュートリアルでは、検索サービスが Azure パブリック クラウドであることを前提として、[Azure パブリック JSON ファイル](https://www.microsoft.com/download/details.aspx?id=56519)をダウンロードする必要があります。
 

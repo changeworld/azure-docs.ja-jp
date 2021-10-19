@@ -1,6 +1,6 @@
 ---
-title: Azure portal でコンテナーと BLOB の Shared Access Signature (SAS) トークンを生成します。
-description: Azure portal でコンテナーと BLOB の Shared Access Signature (SAS) トークンを生成する方法
+title: Azure portal でコンテナーと BLOB の SAS トークンを生成する
+description: Azure portal でコンテナーと BLOB の Shared Access Signature (SAS) トークンを生成する方法について説明します。
 ms.topic: how-to
 author: laujan
 manager: nitinme
@@ -9,17 +9,18 @@ ms.subservice: forms-recognizer
 ms.date: 09/23/2021
 ms.author: lajanuar
 recommendations: false
-ms.openlocfilehash: 6e1b145c5efa9135a198cd6623c450f5965a6c2c
-ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
+ms.openlocfilehash: bed6b3e8d40beab403b8295b9c17fc8b6f6eefbe
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2021
-ms.locfileid: "129387945"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129659262"
 ---
 # <a name="generate-sas-tokens-for-storage-containers"></a>ストレージ コンテナーの SAS トークンを生成する
 
- この記事では、Azure Blob Storage コンテナーのユーザー委任 Shared Access Signature (SAS) トークンを生成する方法について説明します。 ユーザー委任 SAS トークンは、Azure ストレージ キーではなく Azure Active Directory (Azure AD) 資格情報を使用して署名されます。 これにより、Azure ストレージ アカウント内のリソースへのより安全な委任アクセスが可能になります。
-大まかには、次のようなしくみです。アプリケーションが要求の一部として Azure ストレージに SAS トークンを提供します。 ストレージ サービスによって SAS が有効であることが確認されると、要求が承認されます。 SAS が無効と見なされた場合、要求はエラー コード 403 (Forbidden) で拒否されます。
+この記事では、Azure Blob Storage コンテナーのユーザー委任 Shared Access Signature (SAS) トークンを生成する方法について説明します。 ユーザー委任 SAS トークンは、Azure ストレージ キーではなく Azure Active Directory (Azure AD) 資格情報を使用して署名されます。 これにより、Azure ストレージ アカウント内のリソースへのより安全な委任アクセスが可能になります。
+
+大まかには、次のようなしくみです。アプリケーションが要求の一部として Azure ストレージに SAS トークンを提供します。 ストレージ サービスによって Shared Access Signature が有効であることが確認されると、要求が承認されます。 Shared Access Signature が無効と見なされた場合、要求はエラー コード 403 (許可されていません) で拒否されます。
 
 Azure Blob Storage には、3 種類のリソースがあります。
 
@@ -29,90 +30,86 @@ Azure Blob Storage には、3 種類のリソースがあります。
 
 > [!NOTE]
 >
-> * Azure ストレージ アカウントが Virtual Network (VNet) またはファイアウォールで保護されている場合、SAS トークンを使用してアクセスを許可することはできません。 ストレージ リソースへのアクセスを許可するには、[**マネージド ID**](managed-identity-byos.md) を使用する必要があります。
->
-> * [**マネージド ID**](managed-identity-byos.md) では、プライベートとパブリックの両方のアクセスが可能な Azure Blog Storage アカウントがサポートされます。
+> * Azure ストレージ アカウントが仮想ネットワークまたはファイアウォールで保護されている場合、SAS トークンを使用してアクセスを許可することはできません。 ストレージ リソースへのアクセスを許可するには、[マネージド ID](managed-identity-byos.md) を使用する必要があります。
+> * [マネージド ID](managed-identity-byos.md) では、プライベートとパブリックの両方のアクセスが可能な Azure Blog Storage アカウントがサポートされます。
 >
 
 ## <a name="when-to-use-a-shared-access-signature"></a>Shared Access Signature を使用するタイミング
 
 * パブリック アクセスでストレージ コンテナーを使用している場合は、SAS トークンの使用を選択して、ストレージ リソースへの制限付きアクセスを許可することができます。
-
-* カスタム モデルをトレーニングする場合は、組み立てられたトレーニング ドキュメントのセットを Azure Blob Storage コンテナーにアップロードする "**必要があります**"。 ユーザー委任 SAS トークンを使用して、トレーニング リソースにアクセス許可を付与できます。
+* カスタム モデルをトレーニングする場合は、組み立てられたトレーニング ドキュメントのセットを Azure Blob Storage コンテナーにアップロードする "*必要があります*"。 ユーザー委任 SAS トークンを使用して、トレーニング リソースにアクセス許可を付与できます。
 
 ## <a name="prerequisites"></a>前提条件
 
 作業を開始するには、以下が必要です。
 
-* アクティブな [**Azure アカウント**](https://azure.microsoft.com/free/cognitive-services/)。  アカウントがない場合は、[**無料アカウントを作成**](https://azure.microsoft.com/free/)できます。
-* [**Form Recognizer**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) または [**Cognitive Services マルチサービス**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne) リソース。
-* **標準パフォーマンスの** [**Azure Blob Storage アカウント**](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)。 ストレージ アカウント内に BLOB データを格納して整理するためのコンテナーを作成します。 コンテナーを含む Azure ストレージ アカウントを作成する方法がわからない場合は、次のクイックスタートに従ってください。
+* アクティブな [Azure アカウント](https://azure.microsoft.com/free/cognitive-services/)。 アカウントがない場合は、[無料アカウントを作成する](https://azure.microsoft.com/free/)ことができます。
+* [Form Recognizer](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) または [Cognitive Services マルチサービス](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne) リソース。
+* **標準パフォーマンス** の [Azure Blob Storage アカウント](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)。 ストレージ アカウント内に BLOB データを格納して整理するためのコンテナーを作成します。 コンテナーを含む Azure ストレージ アカウントを作成する方法がわからない場合は、次のクイックスタートに従ってください。
 
-  * [**ストレージ アカウントを作成する**](/azure/storage/common/storage-account-create)。 ストレージ アカウントを作成するときに、**[インスタンスの詳細] → [パフォーマンス]** フィールドで必ず **[Standard]** を選択してください。
-  * [**コンテナーを作成する**](/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container)。 コンテナーを作成するときに、**[新しいコンテナー]** ウィンドウの **[パブリック アクセス レベル]** フィールドを **[コンテナー]** (コンテナーと BLOB の匿名読み取りアクセス) に設定します。
+  * [ストレージ アカウントの作成](/azure/storage/common/storage-account-create)。 ストレージ アカウントを作成するときに、 **[インスタンスの詳細]**  >  **[パフォーマンス]** フィールドで **[Standard]** を選択してください。
+  * [コンテナーを作成する](/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container)。 コンテナーを作成するときに、 **[新しいコンテナー]** ウィンドウの **[パブリック アクセス レベル]** を **[コンテナー]** (コンテナーと BLOB の匿名読み取りアクセス) に設定します。
 
 ## <a name="upload-your-documents"></a>ドキュメントをアップロードする
 
-1. [Azure portal](https://ms.portal.azure.com/#home) で、次のように移動します。**お使いのストレージ アカウント** → **[データ ストレージ]** → **[コンテナー]**
+1. [Azure ポータル](https://ms.portal.azure.com/#home)にアクセスします。 **自分のストレージ アカウント** >  **[データ ストレージ]**  >  **[コンテナー]** を選択します。
 
-   :::image type="content" source="media/sas-tokens/data-storage-menu.png" alt-text="スクリーンショット: Azure portal の [データ ストレージ] メニュー。":::
+   :::image type="content" source="media/sas-tokens/data-storage-menu.png" alt-text="Azure portal の [データ ストレージ] メニューを示すスクリーンショット。":::
 
-1. 一覧から **コンテナー** を選択します。
+1. 一覧からコンテナーを選択します。
 1. ページ上部のメニューから **[アップロード]** を選択します。
 
-    :::image type="content" source="media/sas-tokens/container-upload-button.png" alt-text="スクリーンショット: Azure portal のコンテナーの [アップロード] ボタン。":::
+    :::image type="content" source="media/sas-tokens/container-upload-button.png" alt-text="Azure portal のコンテナーの [アップロード] ボタンを示すスクリーンショット。":::
 
-1. **[BLOB のアップロード]** ウィンドウが表示されます。
+   **[BLOB のアップロード]** ウィンドウが表示されます。
 1. アップロードするファイルを選択します。
 
-    :::image type="content" source="media/sas-tokens/upload-blob-window.png" alt-text="スクリーンショット: Azure portal の [BLOB のアップロード] ウィンドウ。":::
+    :::image type="content" source="media/sas-tokens/upload-blob-window.png" alt-text="Azure portal の [BLOB のアップロード] ウィンドウを示すスクリーンショット。":::
 
 > [!NOTE]
-> 既定では、REST API ではコンテナーのルートにあるフォーム ドキュメントが使用されます。 ただし、API 呼び出しで指定されている場合は、サブフォルダーに整理されたデータを使用することができます。 *「*[**データをサブフォルダーに整理する**](/azure/applied-ai-services/form-recognizer/build-training-data-set#organize-your-data-in-subfolders-optional)」を参照してください
+> 既定では、REST API ではコンテナーのルートにあるフォーム ドキュメントが使用されます。 API 呼び出しで指定されている場合は、サブフォルダーに整理されたデータを使用することもできます。 詳細については、「[データをサブフォルダーに整理する](/azure/applied-ai-services/form-recognizer/build-training-data-set#organize-your-data-in-subfolders-optional)」を参照してください
 
-## <a name="create-a-sas-with-the-azure-portal"></a>Azure portal で SAS を作成する
+## <a name="create-a-shared-access-signature-with-the-azure-portal"></a>Azure portal で Shared Access Signature を作成する
 
 > [!IMPORTANT]
 >
-> ストレージ アカウント自体ではなく、コンテナー用の SAS を生成して取得します。
+> ストレージ アカウント自体ではなく、コンテナーの Shared Access Signature を生成して取得します。
 
-1. [Azure portal](https://ms.portal.azure.com/#home) で、次のように移動します。
-
-     **お使いのストレージ アカウント** → **[コンテナー]**
+1. [Azure portal](https://ms.portal.azure.com/#home) で、**自分のストレージ アカウント** >  **[コンテナー]** を選択します。
 1. 一覧からコンテナーを選択します。
 1. メイン ウィンドウの右側に移動し、選択したコンテナーに関連付けられている 3 つの省略記号を選択します。
-1. ドロップダウン メニューから **[SAS の生成]** を選択して、**[SAS の生成] ウィンドウ** を開きます。
+1. ドロップダウン メニューから **[SAS の生成]** を選択して、 **[SAS の生成]** ウィンドウ を開きます。
 
-    :::image type="content" source="media/sas-tokens/generate-sas.png" alt-text="スクリーンショット (Azure portal): SAS トークンの生成のドロップダウン メニュー。":::
+    :::image type="content" source="media/sas-tokens/generate-sas.png" alt-text="Azure portal の [SAS トークンの生成] ドロップダウン メニューを示すスクリーンショット":::
 
-1. **[署名方法]** → **[ユーザーの委任キー]** を選択します。
+1. **[署名方法]**  >  **[ユーザーの委任キー]** を選択します。
 
-1. 該当するチェックボックスをオンまたはオフにして、**[アクセス許可]** を定義します。 **[読み取り]**、**[書き込み]**、**[削除]**、および **[表示]** のアクセス許可がオンになっていることを確認します。
+1. 該当するチェックボックスをオンまたはオフにして、 **[アクセス許可]** を定義します。 **[読み取り]** 、 **[書き込み]** 、 **[削除]** 、および **[表示]** のアクセス許可がオンになっていることを確認します。
 
-    :::image type="content" source="media/sas-tokens/sas-permissions.png" alt-text="スクリーンショット (Azure portal): SAS の [アクセス許可] フィールド。":::
+    :::image type="content" source="media/sas-tokens/sas-permissions.png" alt-text="Azure portal の [SAS のアクセス許可] フィールドを示すスクリーンショット。":::
 
     >[!IMPORTANT]
     >
     > * 次のようなメッセージが表示された場合は、ストレージ アカウント内の BLOB データにアクセス権を割り当てる必要があります。
     >
-    >     :::image type="content" source="media/sas-tokens/need-permissions.png" alt-text="スクリーンショット: アクセス許可の不足に関する警告。":::
+    >     :::image type="content" source="media/sas-tokens/need-permissions.png" alt-text="アクセス許可の不足の警告を示すスクリーンショット。":::
     >
-     > * [**Azure ロールベースのアクセス制御**](/azure/role-based-access-control/overview) (Azure RBAC) は、Azure のリソースに対するアクセスを管理するために使用する認可システムです。 Azure RBAC は、Azure リソースのアクセスとアクセス許可を管理するのに役立ちます。
-    > * [**BLOB データへのアクセスのための Azure ロールの割り当て**](/azure/role-based-access-control/role-assignments-portal?tabs=current)に関するガイドに従って、Azure ストレージ コンテナーの読み取り、書き込み、削除のアクセス許可を許可するロールを割り当ててください (例: [**Storage BLOB データ共同作成者**](/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor))。
+     > * [Azure ロールベースのアクセス制御](/azure/role-based-access-control/overview) (Azure RBAC) は、Azure のリソースに対するアクセスを管理するために使用する認可システムです。 Azure RBAC は、Azure リソースのアクセスとアクセス許可を管理するのに役立ちます。
+    > * 「[BLOB データへのアクセスのための Azure ロールの割り当て](/azure/role-based-access-control/role-assignments-portal?tabs=current)」には、Azure ストレージ コンテナーの読み取り、書き込み、削除のアクセス許可を許可するロールを割り当てる方法が記載されています。 たとえば、「[Storage Blob データ共同作成者](/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor)」を参照してください。
 
-1. 署名されたキーの **開始** と **有効期限** の時刻を指定します。 **有効期限の値は、SAS の開始から最大 7 日間です**。
+1. 署名されたキーの **開始** と **有効期限** の時刻を指定します。 有効期限の値は、Shared Access Signature の開始から最大 7 日間です。
 
 1. **[使用できる IP アドレス]** フィールドは省略可能であり、要求を受け入れる IP アドレスまたは IP アドレスの範囲を指定します。 要求の IP アドレスが SAS トークンで指定された IP アドレスまたはアドレス範囲と一致しない場合は、承認されません。
 
-1. **[許可されるプロトコル]** フィールドは省略可能であり、SAS を使用して行われた要求で許可されるプロトコルを指定します。 既定値は HTTPS です。
+1. **[許可されるプロトコル]** フィールドは省略可能であり、Shared Access Signature を使用して行われた要求で許可されるプロトコルを指定します。 既定値は HTTPS です。
 
-1. 確認してから、 **[SAS トークンおよび URL を生成]** を選択します。
+1. **[SAS トークンおよび URL を生成]** を選択します。
 
-1. **BLOB SAS トークン** のクエリ文字列と **BLOB SAS URL** が、ウィンドウの下部に表示されます。 **BLOB SAS トークン** を使用するには、ストレージ サービス URI を追加します。
+1. **BLOB SAS トークン** のクエリ文字列と **BLOB SAS URL** が、ウィンドウの下部に表示されます。 BLOB SAS トークンを使用するには、ストレージ サービス URI にトークンを追加します。
 
-1. **BLOB SAS トークンと URL の値をコピーして安全な場所に貼り付けます。これらは 1 回だけ表示され、ウィンドウが閉じると取得できなくなります。**
+1. **BLOB SAS トークン** と **BLOB SAS URL** の値をコピーして安全な場所に貼り付けます。 これらは 1 回だけ表示され、ウィンドウを閉じた後は取得できません。
 
-## <a name="create-a-sas-with-azure-command-line-interface-cli"></a>Azure コマンド ライン インターフェイス (CLI) を使用して SAS を作成する
+## <a name="create-a-shared-access-signature-with-the-azure-cli"></a>Azure CLI で Shared Access Signature を作成する
 
 1. Azure CLI を使用してコンテナーにユーザー委任 SAS を作成するには、バージョン 2.0.78 以降がインストールされていることを確認します。 インストールされているバージョンを確認するには、`az --version` コマンドを使用します。
 
@@ -121,15 +118,15 @@ Azure Blob Storage には、3 種類のリソースがあります。
 1. 次のパラメーターが必要です。
 
     * `auth-mode login`. このパラメーターによって、Azure Storage に対して行われた要求が Azure AD の資格情報で承認されるようになります。
-    * `as-user`.  このパラメーターは、生成された SAS がユーザー委任 SAS であることを示します。
+    * `as-user`. このパラメーターは、生成された SAS がユーザー委任 SAS であることを示します。
 
-1. コンテナーでユーザー委任 SAS に対してサポートされているアクセス許可には、追加 (a)、作成 (c)、削除 (d)、一覧表示 (l)、読み取り (r)、書き込み (w) があります。  **r**、**w**、**d**、**l** がアクセス許可パラメーターの一部として含まれている必要があります。
+1. コンテナーでユーザー委任 SAS に対してサポートされているアクセス許可には、追加 (a)、作成 (c)、削除 (d)、一覧表示 (l)、読み取り (r)、書き込み (w) があります。 **r**、**w**、**d**、**l** がアクセス許可パラメーターの一部として含まれている必要があります。
 
-1. Azure CLI を使用してユーザー委任 SAS を作成する場合、ユーザー委任キーが有効な間隔は開始日から最大 7 日間です。 そのため、SAS の有効期限を開始時刻から 7 日以内で指定する必要があります。 [**Azure CLI を使用したコンテナーまたは BLOB のユーザー委任 SAS の作成**](/azure/storage/blobs/storage-blob-user-delegation-sas-create-cli#use-azure-ad-credentials-to-secure-a-sas)に関する記事を参照してください
+1. Azure CLI を使用してユーザー委任 SAS を作成する場合、ユーザー委任キーが有効な間隔は開始日から最大 7 日間です。 開始時刻から 7 日以内で Shared Access Signature の有効期限を指定します。 詳細については、「[Azure CLI を使用したコンテナーまたは BLOB のユーザー委任 SAS の作成](/azure/storage/blobs/storage-blob-user-delegation-sas-create-cli#use-azure-ad-credentials-to-secure-a-sas)」を参照してください。
 
 ### <a name="example"></a>例
 
-ユーザー委任 SAS を生成します。  かっこ内のプレースホルダー値は独自の値に置き換えてください。
+ユーザー委任 SAS を生成します。 かっこ内のプレースホルダー値は独自の値に置き換えてください。
 
 ```azurecli-interactive
 az storage container generate-sas \
@@ -141,9 +138,11 @@ az storage container generate-sas \
     --as-user
 ```
 
-## <a name="how-to-use-your-blob-sas-url"></a>BLOB SAS URL を使用する方法
+## <a name="use-your-blob-sas-url"></a>BLOB SAS URL を使用する
 
-* BLOB SAS URL を [**REST API**](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/TrainCustomModelAsync) で使用するには、SAS URL を要求本文に追加します。
+次の 2 つのオプションを使用できます。
+
+* BLOB SAS URL を [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/TrainCustomModelAsync) で使用するには、SAS URL を要求本文に追加します。
 
   ```json
   {
@@ -151,11 +150,13 @@ az storage container generate-sas \
   }
   ```
 
-* **BLOB SAS URL** を [**Form Recognizer ラベリング ツール**](https://fott-2-1.azurewebsites.net/connections/create)で使用するには、**[接続の設定]** → **[Azure BLOB コンテナー]** → **[SAS URI]** フィールドで SAS URL を追加します。
+* BLOB SAS URL を [Form Recognizer ラベリング ツール](https://fott-2-1.azurewebsites.net/connections/create)で使用するには、 **[接続の設定]**  >  **[Azure BLOB コンテナー]**  >  **[SAS URI]** フィールドで SAS URL を追加します。
 
-  :::image type="content" source="media/sas-tokens/fott-add-sas-uri.png" alt-text="{alt-text}":::
+  :::image type="content" source="media/sas-tokens/fott-add-sas-uri.png" alt-text="[SAS URI] フィールドを示すスクリーンショット。":::
 
 これで終了です。 SAS トークンを生成して、クライアントによるデータ アクセスの方法を承認する方法を学習しました。
+
+## <a name="next-step"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [トレーニング データ セットの作成](build-training-data-set.md)

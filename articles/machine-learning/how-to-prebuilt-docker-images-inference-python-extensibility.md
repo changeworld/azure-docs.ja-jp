@@ -11,12 +11,12 @@ ms.date: 05/25/2021
 ms.topic: how-to
 ms.reviewer: larryfr
 ms.custom: deploy, docker, prebuilt
-ms.openlocfilehash: 16191b274f840438cac8deab6754991b7b9e29df
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 679be09b977ffd39dd513e88968fe4b0d474e74b
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129425014"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129705354"
 ---
 # <a name="python-package-extensibility-for-prebuilt-docker-images-preview"></a>事前構築済みの Docker イメージ用の Python パッケージの機能拡張 (プレビュー)
 
@@ -31,7 +31,7 @@ ms.locfileid: "129425014"
     この方法は、"__運用環境のデプロイ__" に使用します。 パッケージを格納するディレクトリはイメージにマウントされるため、デプロイにパブリック インターネット アクセスがなくても使用できます。 たとえば、セキュリティで保護された Azure Virtual Network にデプロイするケースが考えられます。
 
 > [!IMPORTANT]
-> Azure Machine Learning に対する事前構築済み Docker イメージの使用は、現在プレビュー段階です。 プレビュー機能では、サポートやサービス レベル アグリーメントは保証されず、"現状有姿" で提供されます。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+> Azure Machine Learning での事前構築済み Docker イメージ用 Python パッケージ拡張性の使用は、現在プレビュー段階です。 プレビュー機能では、サポートやサービス レベル アグリーメントは保証されず、"現状有姿" で提供されます。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 

@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 09/09/2021
-ms.openlocfilehash: 393e6dbc0f30e4a541408119db6f606f24023d5d
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.date: 10/07/2021
+ms.openlocfilehash: 56a6a521eb648a1ad49baf2bf206ef84aa084731
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129059741"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129714120"
 ---
 # <a name="mapping-data-flow-transformation-overview"></a>マッピング データ フロー変換の概要
 
@@ -43,6 +43,7 @@ ms.locfileid: "129059741"
 | [Sink](data-flow-sink.md) | - | お使いのデータの最終受信先 |
 | [Sort](data-flow-sort.md) | 行の修飾子 | 現在のデータ ストリームで受信行を並べ替える |
 | [ソース](data-flow-source.md) | - | データ フローのデータ ソース |
+| [Stringify](data-flow-stringify.md) | - | 複合型をプレーン文字列に変換する |
 | [代理キー](data-flow-surrogate-key.md) | スキーマ修飾子 | ビジネス以外の任意のキー値のインクリメントを追加する |
 | [Union (結合)](data-flow-union.md) | 複数の入力/出力 | 複数のデータ ストリームを垂直方向に結合する |
 | [ピボット解除](data-flow-unpivot.md) | スキーマ修飾子 | 列を行の値にピボットする |

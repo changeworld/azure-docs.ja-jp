@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 05/12/2021
 ms.author: lajanuar
 ms.custom: devx-track-js
-ms.openlocfilehash: 18111fcce10b5c139105d19edd3eda68c5dff33c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 880f27665b191df2459cbdc15b6a8afa47fd3f8c
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128652560"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129715477"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
@@ -190,7 +190,7 @@ URL から請求書を分析するには、`beginRecognizeInvoicesFromUrl` メ�
 > [!TIP]
 > **beginRecognizeInvoices** などの [FormRecognizerClient](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient) メソッドを使用して、ローカルにあるレシートの画像を分析することもできます。 
 
-## <a name="analyze-identity-documents"></a>身分証明書を分析する
+## <a name="analyze-id-documents"></a>身分証明書を分析する
 
 このセクションでは、Form Recognizer のあらかじめ構築された ID モデルを使用して、政府発行の身分証明書 (世界各国のパスポートと米国の運転免許証) から重要な情報を分析および抽出する方法を示します。 身分証明書の分析の詳細については、[あらかじめ構築された身分証明書モデルの概念ガイド](../../concept-identification-cards.md)を参照してください。
 

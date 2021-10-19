@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/26/2021
 ms.author: pafarley
-ms.openlocfilehash: 0c7fb175d80a35d30649d2e4ce491fe39ac19c70
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: abef7e44ad2e15bda230d28e8dae74a3fd949f88
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123539139"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129706333"
 ---
 # <a name="what-is-conversation-transcription-preview"></a>会話の文字起こし (プレビュー) とは
 
@@ -55,10 +55,13 @@ ms.locfileid: "123539139"
 ## <a name="expected-inputs"></a>想定される入力
 
 - **マルチチャンネル オーディオ ストリーム** - 仕様と設計の詳細については、[Microsoft Speech Device SDK マイク](./speech-devices-sdk-microphone.md)に関するページを参照してください。 開発キットの詳細および購入については、[Microsoft Speech Device SDK の入手](./get-speech-devices-sdk.md)に関するページを参照してください。
-- **ユーザーの音声サンプル** - 会話の文字起こしには、会話の前にユーザー プロファイルが必要です。 各ユーザーからオーディオ録音を収集し、[署名生成サービス](https://aka.ms/cts/signaturegenservice)にその録音を送信して、音声を検証し、ユーザー プロファイルを生成する必要があります。
+- **ユーザーの音声サンプル** - 会話の文字起こしには、話者識別の会話の前にユーザー プロファイルが必要です。 各ユーザーからオーディオ録音を収集し、[署名生成サービス](https://aka.ms/cts/signaturegenservice)にその録音を送信して、音声を検証し、ユーザー プロファイルを生成する必要があります。
 
 > [!NOTE]
-> ユーザーの音声サンプルは省略可能です。 この入力がない場合、文字起こしでは複数の異なる話者が示されますが、事前登録されている特定の話者名を認識する代わりに、「Speaker1」、「Speaker2」などと表示されます。
+> 話者識別には、音声署名のユーザー音声サンプルが必要です。 音声サンプルのない話者は、"不明" として認識されます。 `DifferentiateGuestSpeakers` プロパティが有効になっている場合は、識別されていない話者も区別できます (以下の例を参照)。 その場合、文字起こしの出力では、事前に登録された特定の話者名として認識される代わりに、話者が "Guest_0"、"Guest_1" などと表示されます。
+> ```csharp
+> config.SetProperty("DifferentiateGuestSpeakers", "true");
+> ```
 
 
 ## <a name="real-time-vs-asynchronous"></a>リアルタイムと非同期

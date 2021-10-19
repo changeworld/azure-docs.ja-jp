@@ -7,12 +7,12 @@ ms.date: 08/16/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: ad16a831b22097e98bd02b606e3a6596cf4e48f5
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: f8f399ec557bbddd031b386d69436f3376ee42b1
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124810951"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129808537"
 ---
 # <a name="how-to-use-analytics-to-analyze-device-data"></a>分析を使用してデバイス データを分析する方法
 
@@ -52,6 +52,8 @@ Azure IoT Central では、履歴の傾向を分析し、デバイスのテレ�
 ## <a name="interact-with-your-data"></a>データと対話する
 
 データにクエリを実行してから、折れ線グラフ上で視覚化できます。 テレメトリの表示と非表示、期間の変更、またはグリッドでのデータ表示を行うことができます。
+
+**[保存]** を選択して分析クエリを保存します。 後で、保存したクエリを取得できます。
 
 - **タイム エディター パネル:** 既定では、最終日のデータが表示されます。 スライダーのいずれかの端をドラッグして、期間を変更できます。 カレンダー コントロールを使用して、事前定義された時間バケットの 1 つを選択することも、カスタムの時間の範囲を選択することもできます。 タイム コントロールには **[Interval size]\(間隔サイズ\)** スライダーもあり、データ集計に使用する間隔サイズを制御できます。
 

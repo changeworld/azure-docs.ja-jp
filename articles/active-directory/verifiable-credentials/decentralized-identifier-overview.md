@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 04/01/2021
 ms.author: barclayn
 ms.reviewer: ''
-ms.openlocfilehash: 1203562d088efeafd20a0b6c58698fcfe10b79e6
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: ffa5aae5e45583385d7849637665a053ef0b9a2f
+ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124816183"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129729579"
 ---
 # <a name="introduction-to-azure-active-directory-verifiable-credentials-preview"></a>Azure Active Directory Verifiable Credentials (プレビュー) の概要
 
@@ -81,7 +81,7 @@ Microsoft の検証可能な資格情報ソリューションでは分散化資�
 
 **4. Microsoft リゾルバー**。```did:ion``` メソッドを使用して ION ノードに接続して DID を検索および解決し、DID ドキュメント オブジェクト (DDO) を返す API。 DDO には、公開キーやサービス エンドポイントなど、DID に関連付けられた DPKI メタデータが含まれています。 
 
-**5. Azure Active Directory Verified Credentials Service**。```did:ion``` メソッドを使用して署名される [W3C 検証可能な資格情報](https://www.w3.org/TR/vc-data-model/)向けの発行および検証 API とオープンソースの SDK。 これらにより、ID 所有者によるクレームの生成、表示、検証が可能になります。 これが、システムのユーザー間における信頼の基礎を形成します。
+**5. Azure Active Directory 検証可能な資格情報サービス**。```did:ion``` メソッドを使用して署名される [W3C 検証可能な資格情報](https://www.w3.org/TR/vc-data-model/)向けの Azure の発行および検証サービスと REST API。 これらにより、ID 所有者によるクレームの生成、表示、検証が可能になります。 これが、システムのユーザー間における信頼の基礎を形成します。
 
 ## <a name="a-sample-scenario"></a>サンプル シナリオ
 

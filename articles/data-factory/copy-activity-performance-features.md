@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 09/09/2021
-ms.openlocfilehash: c9cedace5f4755e22c4f08ecdde0d3f6fb8fa52f
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 09/29/2021
+ms.openlocfilehash: 5c898b9547377f8a021f4126c70bba3cb66fdab7
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128663214"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129714143"
 ---
 # <a name="copy-activity-performance-optimization-features"></a>コピー アクティビティ パフォーマンス最適化機能
 
@@ -90,8 +90,8 @@ ms.locfileid: "128663214"
 | --- | --- |
 | ファイル ストア間 | `parallelCopies` は、**ファイルレベル** での並列処理を決定します。 それぞれのファイル内でのチャンク化は裏で自動的かつ透過的に行われます。 指定されたソース データ ストアの種類に最適なチャンク サイズを使用し、並行してデータを読み込むよう設計されています。 <br/><br/>実行時にコピー アクティビティが使用する並列コピーの実際の数は、存在するファイルの数以下となります。 コピー動作が **mergeFile** をファイルシンクにマージする場合、コピー アクティビティはファイル レベルでの並列処理を活用できません。 |
 | ファイル ストアから非ファイル ストアへ | - Azure SQL Database または Azure Cosmos DB にデータをコピーする場合、既定の並列コピーはシンク層 (Dtu/Ru の数) にも依存します。<br>- Azure テーブルにデータをコピーする場合、既定の並列コピーは 4 です。 |
-| 非ファイル ストアからファイル ストアへ | - パーティション オプションが有効なデータ ストア ([Azure SQL Database](connector-azure-sql-database.md#azure-sql-database-as-the-source)、[Azure SQL Managed Instance](connector-azure-sql-managed-instance.md#sql-managed-instance-as-a-source)、[Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#azure-synapse-analytics-as-the-source)、[Oracle](connector-oracle.md#oracle-as-source)、[Netezza](connector-netezza.md#netezza-as-source)、[SAP HANA](connector-sap-hana.md#sap-hana-as-source)、[SAP Open Hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)、[SAP テーブル](connector-sap-table.md#sap-table-as-source)、[SQL Server](connector-sql-server.md#sql-server-as-a-source)、[Teradata](connector-teradata.md#teradata-as-source) など) からデータをコピーする場合、既定の並列コピーは 4 となります。 実行時のコピーアクティビティで使用される並列コピーの実際の数は、所有しているデータ パーティションの数以下になります。 セルフホステッド統合ランタイムを使用して Azure Blob/ADLS Gen2 にコピーする場合は、IR ノードあたりの最大の有効な並列コピー数が 4 または 5 であることに注意してください。<br>- その他のシナリオでは、並列コピーは有効になりません。 並列処理が指定されても、この場合は適用されません。 |
-| 非ファイル ストア間 | - Azure SQL Database または Azure Cosmos DB にデータをコピーする場合、既定の並列コピーはシンク層 (Dtu/Ru の数) にも依存します。<br/>- パーティション オプションが有効なデータ ストア ([Azure SQL Database](connector-azure-sql-database.md#azure-sql-database-as-the-source)、[Azure SQL Managed Instance](connector-azure-sql-managed-instance.md#sql-managed-instance-as-a-source)、[Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#azure-synapse-analytics-as-the-source)、[Oracle](connector-oracle.md#oracle-as-source)、[Netezza](connector-netezza.md#netezza-as-source)、[SAP HANA](connector-sap-hana.md#sap-hana-as-source)、[SAP Open Hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)、[SAP テーブル](connector-sap-table.md#sap-table-as-source)、[SQL Server](connector-sql-server.md#sql-server-as-a-source)、[Teradata](connector-teradata.md#teradata-as-source) など) からデータをコピーする場合、既定の並列コピーは 4 となります。<br>- Azure テーブルにデータをコピーする場合、既定の並列コピーは 4 です。 |
+| 非ファイル ストアからファイル ストアへ | - パーティション オプションが有効なデータ ストア ([Azure SQL Database](connector-azure-sql-database.md#azure-sql-database-as-the-source)、[Azure SQL Managed Instance](connector-azure-sql-managed-instance.md#sql-managed-instance-as-a-source)、[Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#azure-synapse-analytics-as-the-source)、[Oracle](connector-oracle.md#oracle-as-source)、[Amazon RDS for Oracle](connector-amazon-rds-for-oracle.md#amazon-rds-for-oracle-as-source)、[Netezza](connector-netezza.md#netezza-as-source)、[SAP HANA](connector-sap-hana.md#sap-hana-as-source)、[SAP Open Hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)、[SAP テーブル](connector-sap-table.md#sap-table-as-source)、[SQL Server](connector-sql-server.md#sql-server-as-a-source)、[Amazon RDS for SQL Server](connector-amazon-rds-for-sql-server.md#amazon-rds-for-sql-server-as-a-source)、[Teradata](connector-teradata.md#teradata-as-source) など) からデータをコピーする場合、既定の並列コピーは 4 となります。 実行時のコピーアクティビティで使用される並列コピーの実際の数は、所有しているデータ パーティションの数以下になります。 セルフホステッド統合ランタイムを使用して Azure Blob/ADLS Gen2 にコピーする場合は、IR ノードあたりの最大の有効な並列コピー数が 4 または 5 であることに注意してください。<br>- その他のシナリオでは、並列コピーは有効になりません。 並列処理が指定されても、この場合は適用されません。 |
+| 非ファイル ストア間 | - Azure SQL Database または Azure Cosmos DB にデータをコピーする場合、既定の並列コピーはシンク層 (Dtu/Ru の数) にも依存します。<br/>- パーティション オプションが有効なデータ ストア ([Azure SQL Database](connector-azure-sql-database.md#azure-sql-database-as-the-source)、[Azure SQL Managed Instance](connector-azure-sql-managed-instance.md#sql-managed-instance-as-a-source)、[Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#azure-synapse-analytics-as-the-source)、[Oracle](connector-oracle.md#oracle-as-source)、[Amazon RDS for Oracle](connector-amazon-rds-for-oracle.md#amazon-rds-for-oracle-as-source)、[Netezza](connector-netezza.md#netezza-as-source)、[SAP HANA](connector-sap-hana.md#sap-hana-as-source)、[SAP Open Hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)、[SAP テーブル](connector-sap-table.md#sap-table-as-source)、[SQL Server](connector-sql-server.md#sql-server-as-a-source)、[Amazon RDS for SQL Server](connector-amazon-rds-for-sql-server.md#amazon-rds-for-sql-server-as-a-source)、[Teradata](connector-teradata.md#teradata-as-source) など) からデータをコピーする場合、既定の並列コピーは 4 となります。<br>- Azure テーブルにデータをコピーする場合、既定の並列コピーは 4 です。 |
 
 お使いのデータ ストアをホストしているマシンの負荷を制御したり、コピーのパフォーマンスをチューニングしたりするには、規定値をオーバーライドし、`parallelCopies` プロパティの値を指定することができます。 値は 1 以上の整数でなければなりません。 実行時にコピー アクティビティは、設定された値以下でパフォーマンスが最大になる値を使用します。
 

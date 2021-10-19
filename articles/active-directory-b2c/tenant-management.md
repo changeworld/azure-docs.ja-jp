@@ -7,68 +7,26 @@ author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: how-to
-ms.date: 09/20/2021
+ms.topic: tutorial
+ms.date: 10/04/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3851f9893799902c9cdcda71db67a9152de028ec
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 7e364b3ce5231370643f9c9ea730dec22ab9022a
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128595809"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129615944"
 ---
 # <a name="manage-your-azure-active-directory-b2c-tenant"></a>Azure Active Directory B2C テナントを管理する
 
 Azure Active Directory B2C (Azure AD B2C) で "テナント" は、コンシューマー ユーザーのディレクトリを表します。 各 Azure AD B2C テナントは、他の Azure AD B2C テナントと区別され、分離されています。 Azure AD B2C テナントは、既にお持ちかもしれない Azure Active Directory テナントとは別のものです。 この記事では、Azure AD B2C テナントを管理する方法を説明します。
 
-## <a name="supported-azure-ad-features"></a>サポートされる Azure AD の機能
-
-Azure AD B2C は、Azure AD プラットフォームに依存しています。 Azure AD B2C テナントでは、次の Azure AD 機能を使用できます。
-
-|機能  |Azure AD  | Azure AD B2C |
-|---------|---------|---------|
-| [グループ](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) | グループを使用して、管理アカウントとユーザー アカウントを管理できます。| グループを使用して、管理アカウントを管理できます。 [コンシューマー アカウント](user-overview.md#consumer-user)は、どのグループでもメンバーにすることはできません。 |
-| [外部 ID のゲストの招待](../active-directory//external-identities/add-users-administrator.md)| ゲスト ユーザーを招待し、Facebook と Google のアカウントでのフェデレーションやサインインなどの外部 ID 機能を構成することができます。 | アプリケーションにアクセスしたり、テナントを管理したりするために Azure AD テナントにゲストとして招待できるのは、Microsoft アカウントまたは Azure AD ユーザーのみです。 [コンシューマー アカウント](user-overview.md#consumer-user)の場合は、Azure AD B2C のユーザー フローとカスタム ポリシーを使用して、ユーザーと、Google や Facebook などの外部 ID プロバイダーでのサインアップまたはサインインを管理します。 |
-| [ロールと管理者](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md)| 管理アカウントとユーザー アカウントに対して完全にサポートされています。 | ロールは、[コンシューマー アカウント](user-overview.md#consumer-user)ではサポートされていません。 コンシューマー アカウントは、どの Azure リソースにもアクセスできません。|
-| [カスタム ドメイン名](../active-directory/fundamentals/add-custom-domain.md) |  Azure AD カスタム ドメインは管理アカウントにのみ使用できます。 | [コンシューマー アカウント](user-overview.md#consumer-user)は、ユーザー名、電話番号、または任意の電子メール アドレスを使用してサインインできます。 [カスタム ドメイン](custom-domain.md)はリダイレクト URL で使用できます。|
-| [条件付きアクセス](../active-directory/conditional-access/overview.md) | 管理アカウントとユーザー アカウントに対して完全にサポートされています。 | [コンシューマー アカウント](user-overview.md#consumer-user)では、Azure AD 条件付きアクセス機能のサブセットがサポートされています。Azure AD B2C の[条件付きアクセス](conditional-access-user-flow.md)を構成する方法を参照してください。|
-| [Premium P1](https://azure.microsoft.com/pricing/details/active-directory) | Azure AD Premium P1 の機能で完全にサポートされています ([パスワード保護](../active-directory/authentication/concept-password-ban-bad.md)、[ハイブリッド ID](../active-directory/hybrid/whatis-hybrid-identity.md)、[条件付きアクセス](../active-directory/roles/permissions-reference.md#)、[動的グループ](../active-directory/enterprise-users/groups-create-rule.md)など)。 | [コンシューマー アカウント](user-overview.md#consumer-user)では、Azure AD 条件付きアクセス機能のサブセットがサポートされています。 Azure AD B2C の[条件付きアクセス](conditional-access-user-flow.md)を構成する方法を参照してください。|
-| [Premium P2](https://azure.microsoft.com/pricing/details/active-directory/) | Azure AD Premium P2 の機能で完全にサポートされています ([Identity Protection](../active-directory/identity-protection/overview-identity-protection.md)、[Identity Governance](../active-directory/governance/identity-governance-overview.md) など)。  | コンシューマー アカウントでは、[Azure AD Identity Protection](user-overview.md#consumer-user) 機能のサブセットがサポートされています。 [Identity Protection を使用してリスクを調査](identity-protection-investigate-risk.md)し、Azure AD B2C の[条件付きアクセス](conditional-access-user-flow.md)を構成する方法を参照してください。 |
-
-## <a name="other-azure-resources-in-your-tenant"></a>テナント内のその他の Azure リソース
-
-Azure AD B2C テナントでは、仮想マシン、Azure Web アプリ、Azure 関数などの他の Azure リソースをプロビジョニングすることはできません。 これらのリソースは、Azure AD テナントで作成する必要があります。
-
-## <a name="azure-ad-b2c-accounts-overview"></a>Azure AD B2C アカウントの概要
-
-Azure AD B2C テナントには、次の種類のアカウントを作成できます。
-
-Azure AD B2C テナントには、「[Azure Active Directory B2C のユーザー アカウントの概要](user-overview.md)」という記事で説明されているように、いくつかの種類のアカウントを作成できます。
-
-- **職場アカウント** - 職場アカウントは、テナントのリソースにアクセスでき、管理者ロールを使用してテナントを管理できます。
-- **ゲスト アカウント** - ゲスト アカウントは、Microsoft アカウント、またはアプリケーションにアクセスするかテナントを管理するために使用できる Azure Active Directory ユーザーのみが可能です。
-- **コンシューマー アカウント** - コンシューマー アカウントは、Azure AD B2C に登録したアプリケーションのユーザーによって使用されます。
-
-これらのアカウントの種類の詳細については、「[Azure Active Directory B2C のユーザー アカウントの概要](user-overview.md)」を参照してください。 Azure AD B2C テナントを管理するために割り当てられるすべてのユーザーは、Azure 関連のサービスにアクセスできるように、Azure AD ユーザーアカウントを持っている必要があります。 このようなユーザーを追加するには、Azure AD B2C テナントで[アカウント (職場のアカウント) を作成](#add-an-administrator-work-account)するか、ゲスト ユーザーとして Azure AD B2C テナントに[招待](#invite-an-administrator-guest-account)します。
-
-## <a name="use-roles-to-control-resource-access"></a>ロールを使用したリソース アクセスの制御
-
-アクセス制御戦略を計画するときは、リソースにアクセスするために必要な最小限の特権をユーザーに割り当てることをお勧めします。 次の表は、Azure AD B2C テナントのプライマリ リソースと、それらを管理するユーザーに最も適した管理者ロールを説明しています。
-
-|リソース  |説明  |Role  |
-|---------|---------|---------|
-|[アプリケーションの登録](tutorial-register-applications.md) | Azure AD B2C 内で、Web、モバイル、およびネイティブのアプリケーション登録のすべての側面を作成し、管理します。|[アプリケーション管理者](../active-directory/roles/permissions-reference.md#application-administrator)|
-|[ID プロバイダー](add-identity-provider.md)| [ローカル ID プロバイダー](identity-provider-local.md)と外部のソーシャルまたはエンタープライズ ID プロバイダーを構成します。 | [外部 ID プロバイダー管理者](../active-directory/roles/permissions-reference.md#external-identity-provider-administrator)|
-|[API コネクタ](add-api-connector.md)| ユーザー フローを Web API と統合してユーザー エクスペリエンスをカスタマイズし、外部システムと統合します。|[外部 ID ユーザー フロー管理者](../active-directory/roles/permissions-reference.md#external-id-user-flow-administrator)|
-|[会社のブランド](customize-ui.md#configure-company-branding)| ユーザー フローの各ページをカスタマイズします。| [全体管理者](../active-directory/roles/permissions-reference.md#global-administrator)|
-|[ユーザー属性](user-flow-custom-attributes.md)| すべてのユーザー フローに使用可能なカスタム属性を追加するか、削除します。| [外部 ID ユーザー フロー属性管理者](../active-directory/roles/permissions-reference.md#external-id-user-flow-attribute-administrator)|
-|ユーザーの管理| この記事で説明されているように、[コンシューマー アカウント](manage-users-portal.md) と管理アカウントを管理します。| [ユーザー管理者](../active-directory/roles/permissions-reference.md#user-administrator)|
-|ロールと管理者| Azure AD B2C ディレクトリでロールの割り当てを管理します。 Azure AD B2C ロールに割り当てることができるグループを作成し、管理します。 |[ブローバル管理者](../active-directory/roles/permissions-reference.md#global-administrator)、[特権ロール管理者](../active-directory/roles/permissions-reference.md#privileged-role-administrator)|
-|[ユーザー フロー](user-flow-overview.md)|サインアップ、サインイン、プロファイル編集などの一般的な ID タスクを短時間で構成し、有効にします。| [外部 ID ユーザー フロー管理者](../active-directory/roles/permissions-reference.md#external-id-user-flow-administrator)|
-|[カスタム ポリシー](user-flow-overview.md)| Azure AD B2C ですべてのカスタムポリシーの作成、読み取り、更新、および削除を行います。| [B2C IEF ポリシー管理者](../active-directory/roles/permissions-reference.md#b2c-ief-policy-administrator)|
-|[ポリシー キー](policy-keys-overview.md)|カスタム ポリシーで使用されるトークン、クライアント シークレット、証明書、パスワードの署名と検証のための暗号化キーを追加し、管理します。|[B2C IEF キーセット管理者](../active-directory/roles/permissions-reference.md#b2c-ief-keyset-administrator)|
+## <a name="prerequisites"></a>前提条件
+- 独自の [Azure AD B2C テナント](tutorial-create-tenant.md)をまだ作成していない場合、ここで作成してください。 既存の Azure AD B2C テナントを使用できます。
+- [Azure AD B2C でのユーザー アカウント](user-overview.md)について理解する。
+- [リソース アクセスを制御するユーザー ロール](roles-resource-access-control.md)について理解する。
 
 
 ## <a name="add-an-administrator-work-account"></a>管理者 (職場のアカウント) を追加する
@@ -87,7 +45,7 @@ Azure AD B2C テナントには、「[Azure Active Directory B2C のユーザー
    - **ユーザー名**。 必須。 新しいユーザーのユーザー名です。 たとえば、「 `mary@contoso.com` 」のように入力します。
      ユーザー名のドメイン部分には、既定の初期ドメイン名の *\<yourdomainname>.onmicrosoft.com* を使用する必要があります。
    - **グループ**。 オプションで、1 つまたは複数の既存のグループにユーザーを追加できます。 後でグループにユーザーを追加することもできます。 
-   - **ディレクトリ ロール**: ユーザーに Azure AD 管理アクセス許可が必要な場合は、Azure AD ロールに追加することができます。 ユーザーには、グローバル管理者を割り当てることも、Azure AD の限られた管理者ロールを 1 つ以上割り当てることもできます。 ロールの割り当ての詳細については、「[ロールを使用してリソースへのアクセスを制御する](#use-roles-to-control-resource-access)」を参照してください。
+   - **ディレクトリ ロール**: ユーザーに Azure AD 管理アクセス許可が必要な場合は、Azure AD ロールに追加することができます。 ユーザーには、グローバル管理者を割り当てることも、Azure AD の限られた管理者ロールを 1 つ以上割り当てることもできます。 ロールの割り当ての詳細については、「[ロールを使用してリソースへのアクセスを制御する](roles-resource-access-control.md)」を参照してください。
    - **ジョブ情報**:こちらにはユーザーに関する詳細情報を追加できます。これは後で行うこともできます。 
 
 1. **[パスワード]** ボックスに表示されている自動生成されたパスワードをコピーします。 このパスワードは初回のサインインのためにユーザーに渡す必要があります。
@@ -113,7 +71,7 @@ Azure AD B2C テナントには、「[Azure Active Directory B2C のユーザー
    - **電子メール アドレス**。 必須。 招待するユーザーの電子メール アドレス。 たとえば、「 `mary@contoso.com` 」のように入力します。   
    - **個人用メッセージ**: 招待メールに含める個人用メッセージを追加します。
    - **グループ**。 オプションで、1 つまたは複数の既存のグループにユーザーを追加できます。 後でグループにユーザーを追加することもできます。
-   - **ディレクトリ ロール**: ユーザーに Azure AD 管理アクセス許可が必要な場合は、Azure AD ロールに追加することができます。 ユーザーには、グローバル管理者を割り当てることも、Azure AD の限られた管理者ロールを 1 つ以上割り当てることもできます。 ロールの割り当ての詳細については、「[ロールを使用してリソースへのアクセスを制御する](#use-roles-to-control-resource-access)」を参照してください。
+   - **ディレクトリ ロール**: ユーザーに Azure AD 管理アクセス許可が必要な場合は、Azure AD ロールに追加することができます。 ユーザーには、グローバル管理者を割り当てることも、Azure AD の限られた管理者ロールを 1 つ以上割り当てることもできます。 ロールの割り当ての詳細については、「[ロールを使用してリソースへのアクセスを制御する](roles-resource-access-control.md)」を参照してください。
    - **ジョブ情報**:こちらにはユーザーに関する詳細情報を追加できます。これは後で行うこともできます。
 
 1. **［作成］** を選択します
@@ -211,4 +169,4 @@ Azure AD B2C テナント ID を取得するには、これらの手順に従い
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Portal で Azure Active Directory B2C テナントを作成する](tutorial-create-tenant.md)
+- [リソースをクリーンアップしてテナントを削除する](tutorial-delete-tenant.md)

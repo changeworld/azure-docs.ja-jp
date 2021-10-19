@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/12/2021
 ms.author: rosouz
 ms.custom: seo-nov-2020
-ms.openlocfilehash: b2501631c8ccdb6c61d4f31e9179a7e94c2276cb
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 09b5d7c1865020ba33a89e73b2ba39260f473e6a
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129210404"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129859344"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store"></a>Azure Cosmos DB 分析ストアとは
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -180,19 +180,21 @@ df = spark.read\
 
 ### <a name="schema-representation"></a>スキーマ表現
 
-分析ストアには、2 つのスキーマ表現モードがあります。 これらのモードでは、データベース アカウント内のすべてのコンテナーのスキーマ表現方法が定義されており、クエリ エクスペリエンスの簡単さと、ポリモーフィック型スキーマのより包括的な列表現の便利さとの間にはトレードオフがあります。
+分析ストアには 2 種類のスキーマ表現があります。 これらの種類では、データベース アカウント内のすべてのコンテナーのスキーマ表現方法を定義していますが、クエリ エクスペリエンスのシンプルさと、ポリモーフィック型スキーマでのより包括的な列表現の利便性の間にはトレードオフがあります。
 
 * SQL (CORE) API アカウントの既定のオプションである、適切に定義されたスキーマ表現。 
 * MongoDB 用 Azure Cosmos DB API アカウントの既定のオプションである、完全に忠実なスキーマ表現。
 
-SQL (Core) API アカウントに完全に忠実なスキーマを使用することができます。 この可能性に関する考慮事項を次に示します。
+#### <a name="full-fidelity-schema-for-sql-api-accounts"></a>SQL API アカウントの完全に忠実なスキーマ
 
- * このオプションは、Synapse Link が有効になっていないアカウントに対してのみ有効です。
- * Synapse Link を無効にしてから再びオンにして、既定のオプションをリセットし、適切に定義されたものから完全に忠実なものに変更することはできません。
- * 他のプロセスを使用して、適切に定義されたものを完全に忠実なものに変更することはできません。
- * MongoDB アカウントは、表現方法を変更するこの可能性とは互換性がありません。
- * 現在、この決定は Azure portal では行うことができません。
- * このオプションの決定は、アカウントで Synapse Link を有効にするのと同じときに行う必要があります。
+Cosmos DB アカウントで Synapse Link を初めて有効にするときにスキーマの種類を設定することによって、既定のオプションではなく、SQL (コア) API アカウントの完全に忠実なスキーマを使用できます。 既定のスキーマ表現の種類を変更することに関する考慮事項を次に示します。
+
+ * このオプションは、Synapse Link がまだ有効になって **いない** アカウントでのみ有効です。
+ * スキーマ表現の種類を、適切に定義されたスキーマから完全に忠実なスキーマに、あるいはその逆に再設定することはできません。
+ * 現在、MongoDB 用 Azure Cosmos DB API アカウントは、スキーマ表現の変更のこの可能性と互換性がありません。 すべての MongoDB アカウントには常に、完全に忠実なスキーマ表現の種類があります。
+ * 現在、Azure portal からこの変更を行うことはできません。 Azure portal で Synapse Link が有効になっているすべてのデータベース アカウントには、既定のスキーマ表現の種類である、適切に定義されたスキーマがあります。
+ 
+スキーマ表現の種類の決定は、Azure CLI または PowerShell を使用して、そのアカウントで Synapse Link を有効にするのと同時に行う必要があります。
  
  Azure CLI を使用する場合:
  ```cli

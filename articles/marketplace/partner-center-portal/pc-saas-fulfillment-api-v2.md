@@ -4,15 +4,15 @@ description: Fulfillment API バージョン 2 を使用し、Microsoft AppSourc
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 06/10/2020
+ms.date: 10/08/2021
 author: saasguide
 ms.author: souchak
-ms.openlocfilehash: 194d9465d43de33f1f05e9587d2e166e9d2831f1
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: c420a2fd947e32acb0cce9a6ce4a73ddd1d2a3bd
+ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129455135"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129729142"
 ---
 # <a name="saas-fulfillment-apis-version-2-in-the-commercial-marketplace"></a>コマーシャル マーケットプレースの SaaS Fulfillment API バージョン 2
 
@@ -30,11 +30,11 @@ ms.locfileid: "129455135"
 
 #### <a name="purchased-but-not-yet-activated-pendingfulfillmentstart"></a>購入済みであるが、まだアクティブ化されていない (*PendingFulfillmentStart*)
 
-エンドユーザー (または CSP) がコマーシャル マーケットプレースで SaaS プランを購入した後、その購入が公開元に通知されます。 その後、公開元はそのエンド ユーザー用に、公開元側で新しい SaaS アカウントを作成して構成できます。
+エンド ユーザーまたはクラウド ソリューション プロバイダー (CSP) がコマーシャル マーケットプレースで SaaS プランを購入すると、その購入が公開元に通知されます。 その後、公開元はそのエンド ユーザー用に、公開元側で新しい SaaS アカウントを作成して構成できます。
 
 アカウントの作成が行われるようにするには:
 
-1. 顧客は Microsoft AppSource または Azure portal での購入が正常に終了した後に、SaaS オファーで使用可能な **[構成]** ボタンを選択します。 代わりに、顧客は購入後すぐに受信する電子メールの **[構成]** ボタンを使用することもできます。
+1. 顧客は Microsoft AppSource または Azure portal での購入が正常に終了した後に、SaaS オファーで使用可能な **[Configure account now]\(今すぐアカウントを構成\)** ボタンを選択します。 代わりに、顧客は購入後すぐに受信する電子メールの **[今すぐ構成]** ボタンを使用することもできます。
 2. その後、新しいブラウザー タブで token パラメーター (コマーシャル マーケットプレースからの購入 ID トークン) を含むランディング ページの URL が開かれることで、Microsoft からパートナーに対して購入に関する通知が行われます。
 
 このような呼び出しの例として `https://contoso.com/signup?token=<blob>` がありますが、パートナー センターでは、この SaaS オファーのランディング ページの URL は `https://contoso.com/signup` として構成されています。 このトークンにより、SaaS の購入と顧客を一意に識別する ID が発行者に提供されます。
@@ -84,7 +84,7 @@ SaaS サブスクリプションに対して 2 種類の更新ができます。
 
 このフローでは、顧客は Azure portal または Microsoft 365 管理センターからサブスクリプション プランまたはシート数を変更します。
 
-1. 更新が入力された後、Microsoft によって、パートナー センターの **[接続 Webhook]** フィールドに構成されている公開元の Webhook URL が、*action* およびその他の関連するパラメーターの適切な値を使用して呼び出されます。 
+1. 更新が入力された後、Microsoft によって、パートナー センターの _[技術的な構成]_ ページにある **[接続 Webhook]** フィールドに構成されている公開元の Webhook URL が、*action* およびその他の関連するパラメーターの適切な値を使用して呼び出されます。
 1. 公開元側は SaaS サービスに対して必要な変更を行い、[Update Status of Operation API](#update-the-status-of-an-operation) を呼び出すことで完了時に Microsoft に通知します。
 1. "*失敗*" の状態でパッチが送信されると、更新プロセスは Microsoft 側で完了しません。 SaaS サブスクリプションは、既存のプランとシート数のままになります。
 
@@ -728,8 +728,6 @@ SaaS アカウントがエンド ユーザー向けに構成されたら、公�
 
 指定した SaaS サブスクリプションの保留中の操作の一覧を取得します。  公開元は、[Operation patch API](#update-the-status-of-an-operation) を呼び出すことによって、返された操作を確認する必要があります。
 
-現時点では、この API 呼び出しの応答として返されるのは **復帰の操作** のみです。
-
 ##### <a name="get-httpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidoperationsapi-versionapiversion"></a>Get `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations?api-version=<ApiVersion>`
 
 *クエリ パラメーター:*
@@ -750,7 +748,7 @@ SaaS アカウントがエンド ユーザー向けに構成されたら、公�
 
 *応答コード:*
 
-コード:200 - 指定された SaaS サブスクリプションで保留中の復帰操作を返します。
+コード: 200 指定された SaaS サブスクリプションで保留中の操作を返します。
 
 *応答ペイロードの例:*
 
@@ -773,7 +771,7 @@ SaaS アカウントがエンド ユーザー向けに構成されたら、公�
 }
 ```
 
-保留中の復帰操作がない場合は、空の json を返します。
+保留中の操作がない場合は、空の json を返します。
 
 コード:400 - 無効な要求: 検証エラー。
 
@@ -902,7 +900,7 @@ Response body:
 パートナー センターで取引可能な SaaS オファーを作成する場合、パートナーは、HTTP エンドポイントとして使用される **接続 Webhook** の URL を指定します。  この Webhook は、Microsoft 側で発生する次のイベントを公開元に通知するために、POST HTTP 呼び出しを使用して Microsoft によって呼び出されます。
 
 * SaaS サブスクリプションが *Subscribed* 状態である場合:
-    * ChangePlan 
+    * ChangePlan
     * ChangeQuantity
     * [中断]
     * サブスクライブ解除

@@ -7,16 +7,19 @@ ms.author: anvar
 ms.manager: bsiva
 ms.date: 08/04/2021
 ms.custom: mvc
-ms.openlocfilehash: ca3a4a3bbcfd1de92906b75ed56351afb04b4b17
-ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
+ms.openlocfilehash: 87b62853be54055c3b130c8b8b23f60c04717210
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2021
-ms.locfileid: "129389439"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129857856"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Azure Migrate の新着情報
 
 [Azure Migrate](migrate-services-overview.md) を使用すると、オンプレミスのサーバー、アプリ、データを検出して評価し、Microsoft Azure クラウドに移行するのに役立ちます。 この記事では、Azure Migrate の新しいリリースと機能について概要を説明します。
+
+## <a name="update-october-2021"></a>更新 (2021 年 10 月)
+- Azure Migrate では、パブリック クラウドの新しい地域とリージョンがサポートされるようになりました。 [詳細情報](migrate-support-matrix.md#supported-geographies-public-cloud)
 
 ## <a name="update-september-2021"></a>更新 (2021 年 9 月)
 - [Azure Private Link](../private-link/private-endpoint-overview.md) を使用してプライベート ネットワーク上でサーバーを検出、評価、移行する機能が現在、  サポートされている[政府機関向けクラウド](migrate-support-matrix.md#supported-geographies-azure-government)でプレビュー段階です。 [詳細情報](how-to-use-azure-migrate-with-private-endpoints.md)

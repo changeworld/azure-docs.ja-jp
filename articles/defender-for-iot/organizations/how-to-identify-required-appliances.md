@@ -3,12 +3,12 @@ title: 必要なアプライアンスを特定する
 description: 認定済みの Defender for IoT センサーとオンプレミス管理コンソールのハードウェアおよび仮想アプライアンスについて説明します。
 ms.date: 06/21/2021
 ms.topic: how-to
-ms.openlocfilehash: b22f1dc81aee7ee20f4490d716b1e2af953b4553
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: c124ccd69257b9a0b7a57c53b6fa6b0817d95fb6
+ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113020325"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129754351"
 ---
 # <a name="identify-required-appliances"></a>必要なアプライアンスを特定する
 
@@ -40,7 +40,7 @@ Defender for IoT では、物理および仮想デプロイの両方をサポー
 | モデル | HPE ProLiant DL360 | HPE ProLiant DL20 | HPE ProLiant DL20 | HPE EL300 |
 | 監視ポート | 最大 15 個の RJ45 または 8 個の OPT | 最大 8 個の RJ45 または 6 個の OPT | 最大 4 個の RJ45 | 最大 5 個の RJ45 |
 | 最大帯域幅 [1](#anchortext) | 3 Gb/秒 | 1 Gb/秒 | 200 Mb/秒 | 100 Mb/秒 |
-| 保護される最大デバイス数 | 30,000 | 15,000 | 1,000 | 800 |
+| 保護される最大デバイス数 | 10,000 | 10,000 | 1,000 | 800 |
 
 ベンダーの詳細については、「[アプライアンスの仕様](#appliance-specifications)」をご覧ください。
 
@@ -54,12 +54,12 @@ Defender for IoT では、物理および仮想デプロイの両方をサポー
 
 ### <a name="virtual-sensors"></a>仮想センサー
 
-ここでは、入手可能な仮想センサーの概要を説明します。
+ここでは、使用可能な仮想センサーについて説明します。
 
 | デプロイの種類 | 企業 | Enterprise | SMB |
 |--|--|--|--|
 | 最大帯域幅 | 2.5 Gbps | 800 Mbps | 160 Mbps |
-| 保護される最大デバイス数 | 30,000 | 10,000 | 800 |
+| 保護される最大デバイス数 | 10,000 | 10,000 | 800 |
 
 ## <a name="on-premises-management-console-appliance"></a>オンプレミス管理コンソール アプライアンス
 

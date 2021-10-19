@@ -7,13 +7,13 @@ ms.author: bagol
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
-ms.date: 08/09/2021
-ms.openlocfilehash: c99d3dde29edbd0e43f883ff9b31e054cea1a720
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.date: 10/11/2021
+ms.openlocfilehash: 07e48fba8bfb554604d875f9f4a041fed466dbe7
+ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129278882"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129754712"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Azure Sentinel の新着情報
 
@@ -32,6 +32,43 @@ ms.locfileid: "129278882"
 >
 > ユーザーも投稿することができます。 [Azure Sentinel Threat Hunters GitHub コミュニティ](https://github.com/Azure/Azure-Sentinel/wiki)にぜひご参加ください。
 >
+
+## <a name="october-2021"></a>2021 年 10 月
+
+- [プレイブックのテンプレートとギャラリーを使用できるようになりました (パブリック プレビュー)](#playbook-templates-and-gallery-now-available-public-preview)
+- [スケジュールされた分析ルールのテンプレート バージョンを管理する (パブリック プレビュー)](#manage-template-versions-for-your-scheduled-analytics-rules-public-preview)
+- [DHCP 正規化スキーマ (パブリック プレビュー)](#dhcp-normalization-schema-public-preview)
+
+### <a name="playbook-templates-and-gallery-now-available-public-preview"></a>プレイブックのテンプレートとギャラリーを使用できるようになりました (パブリック プレビュー)
+
+プレイブック テンプレートは、事前に構築されてテストされた、すぐに使用できるワークフローであり、ニーズに合わせてカスタマイズできます。 テンプレートは、プレイブックをゼロから開発するときのベスト プラクティスのリファレンスとして、または新しい自動化シナリオのためのインスピレーションを得るためにも、役に立つ場合があります。
+
+プレイブック テンプレートは、Azure Sentinel コミュニティ、独立系ソフトウェア ベンダー (ISV)、Microsoft 社内の専門家によって開発されたものであり、 **[Playbook templates]\(プレイブック テンプレート\)** タブ ( **[オートメーション]** の下)、[**Azure Sentinel ソリューション**](sentinel-solutions.md)の一部、または [**Azure Sentinel GitHub リポジトリ**](https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks)で見つけることができます。 
+
+**[オートメーション]** の **[Playbook templates]\(プレイブック テンプレート\)** タブからプレイブック テンプレートをデプロイする方法については、[組み込みのテンプレートからのプレイブックの作成とカスタマイズ](use-playbook-templates.md)に関するページを参照してください。
+
+### <a name="manage-template-versions-for-your-scheduled-analytics-rules-public-preview"></a>スケジュールされた分析ルールのテンプレート バージョンを管理する (パブリック プレビュー)
+
+[組み込みの Azure Sentinel ルール テンプレート](detect-threats-built-in.md)から分析ルールを作成すると、事実上、テンプレートのコピーが作成されます。 この時点を過ぎると、アクティブなルールは、元のテンプレートに加えられた変更に合わせて動的に更新 "***されなくなります***"。
+
+ただし、テンプレートから作成したルールには、どのテンプレートから作成されたかの情報が記録されて "***いる***" ため、以下の 2 つの利点があります。
+
+- テンプレートからルールを作成する際 (またはその後) に変更を加えた場合、いつでもそのルールを (テンプレートのコピーとして) 元のバージョンに戻すことができます。
+
+- テンプレートが更新されたときには通知を受けることができ、ルールを新しいバージョンのテンプレートに更新するか、そのままにしておくかを選択することができます。
+
+[これらのタスクの管理方法](manage-analytics-rule-templates.md)と注意点を確認してください。 これらの手順は、テンプレートから作成されたすべての[スケジュールされた](detect-threats-built-in.md#scheduled)分析ルールに適用されます。
+
+### <a name="dhcp-normalization-schema-public-preview"></a>DHCP 正規化スキーマ (パブリック プレビュー)
+
+Azure Sentinel Information Model (ASIM) は、DHCP 正規化スキーマをサポートするようになりました。これは DHCP サーバーから報告されたイベントを記述するために使用され、Azure Sentinel によってソースに依存しない分析を可能にするために使用されます。 
+
+DHCP 正規化スキーマに記述されるイベントには、クライアント システムからリースされた DHCP IP アドレスの要求の処理、リースを許可した DNS サーバーの更新などがあります。
+
+詳細については、次を参照してください。
+
+- [Azure Sentinel の DHCP 正規化スキーマ リファレンス (パブリック プレビュー)](dhcp-normalization-schema.md)
+- [正規化と Azure Sentinel 情報モデル (ASIM)](normalization.md)
 
 ## <a name="september-2021"></a>2021 年 9 月
 

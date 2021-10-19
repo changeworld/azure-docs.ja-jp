@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/12/2021
-ms.openlocfilehash: 442400754d4c103a4f26724ff2ca731c8ae5250f
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 0781d627052eaef14583739bba612d6c56aca56c
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122178548"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129715803"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics エージェントの概要
 

@@ -7,12 +7,12 @@ ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.date: 09/08/2021
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 468f5141d7e28d387719df6bddbf30f5810c5955
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 276ac87c4d1f0c31d75c4dd653aaa5c67f96d6c0
+ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128557248"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129754522"
 ---
 # <a name="quickstart-create-an-azure-managed-instance-for-apache-cassandra-cluster-from-the-azure-portal-preview"></a>クイックスタート: Azure portal から Azure Managed Instance for Apache Cassandra クラスターを作成する (プレビュー)
 
@@ -53,7 +53,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    * **[Confirm Cassandra admin password]\(Cassandra 管理者パスワードの確認\)** - パスワードを再入力します。
 
    > [!NOTE]
-   > パブリック プレビュー期間中は、"*米国東部、米国西部、米国東部 2、米国西部 2、米国中部、米国中南部、北ヨーロッパ、西ヨーロッパ、東南アジア、およびオーストラリア東部*" リージョンでマネージド インスタンス クラスターを作成できます。
+   > パブリック プレビュー期間中は、"*米国東部、米国西部、米国東部 2、米国西部 2、米国中部、米国中南部、北ヨーロッパ、西ヨーロッパ、東南アジア、インド中部、およびオーストラリア東部*" リージョンでマネージド インスタンス クラスターを作成できます。
 
    :::image type="content" source="./media/create-cluster-portal/create-cluster-page.png" alt-text="クラスターの作成フォームに入力する。" lightbox="./media/create-cluster-portal/create-cluster-page.png" border="true":::
 

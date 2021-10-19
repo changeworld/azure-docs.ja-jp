@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: sumi
-ms.openlocfilehash: 50d918cb6cb096674dc5b79d478d37d65422106e
-ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+ms.openlocfilehash: a621d93bda3c3a032932a9d6349dcbce0190610c
+ms.sourcegitcommit: ee5d9cdaf691f578f2e390101bf5350859d85c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123186013"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129740248"
 ---
 # <a name="what-is-azure-private-link-service"></a>Azure Private Link サービスとは
 

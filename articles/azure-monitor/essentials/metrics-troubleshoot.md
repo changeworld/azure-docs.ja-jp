@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
-ms.openlocfilehash: 6acab9618566766b12b4b236c75aa58386100513
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: f8ff057f818999a9d170fe6f58101c99cd931f7e
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105961066"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129809687"
 ---
 # <a name="troubleshooting-metrics-charts"></a>メトリック グラフのトラブルシューティング
 
@@ -51,11 +51,11 @@ Azure では、メトリックへのアクセスは、[Azure ロールベース�
 
 **解決方法:** グラフの Y 軸の境界が、メトリックの値の範囲外でロックされていないことを確認します。 Y 軸の境界がロックされている場合、一時的にそれをリセットして、メトリック値がグラフの範囲外になっていないことを確認できます。 **sum**、**min**、**max** の集計のグラフの場合、自動細分性では Y 軸範囲をロックしないことをお勧めします。ブラウザー ウィンドウのサイズを変更したり、画面の解像度を切り替えたりすると、値の細分性が変化するためです。 細分性が切り替わると、グラフの表示領域が空のままになる可能性があります。
 
-### <a name="you-are-looking-at-a-guest-os-metric-but-didnt-enable-azure-diagnostic-extension"></a>ゲスト OS のメトリックを見ているが、Azure Diagnostics 拡張機能が有効になっていなかった
+### <a name="you-are-looking-at-a-guest-classic-metric-but-didnt-enable-azure-diagnostic-extension"></a>ゲスト (クラシック) のメトリックを見ているが、Azure Diagnostics 拡張機能が有効になっていなかった
 
-**ゲスト OS** のメトリックを収集するには、Azure Diagnostics 拡張機能を構成するか、またはご自分のリソースの **[診断設定]** パネルを使って有効にする必要があります。
+**ゲスト (クラシック)** のメトリックを収集するには、Azure Diagnostics 拡張機能を構成するか、またはご自分のリソースの **[診断設定]** パネルを使って有効にする必要があります。
 
-**解決方法:** Azure Diagnostics 拡張機能を有効にしてもメトリックが表示されない場合は、[Azure Diagnostics 拡張機能のトラブルシューティング ガイド](../agents/diagnostics-extension-troubleshooting.md#metric-data-doesnt-appear-in-the-azure-portal)の手順をご覧ください。 「[ゲスト OS の名前空間とメトリックを選択できない](#cannot-pick-guest-os-namespace-and-metrics)」のトラブルシューティング手順もご覧ください
+**解決方法:** Azure Diagnostics 拡張機能を有効にしてもメトリックが表示されない場合は、[Azure Diagnostics 拡張機能のトラブルシューティング ガイド](../agents/diagnostics-extension-troubleshooting.md#metric-data-doesnt-appear-in-the-azure-portal)の手順をご覧ください。 [ゲスト (クラシック) の名前空間とメトリックを選択できない](#cannot-pick-guest-namespace-and-metrics)場合のトラブルシューティング手順も参照してください
 
 ## <a name="error-retrieving-data-message-on-dashboard"></a>ダッシュボードに "データの取得中にエラーが発生しました" というメッセージが表示される
 
@@ -79,19 +79,19 @@ Azure のメトリック グラフでは、2 つの既知の時間グレイン �
 
 **解決方法:** この動作は仕様です。 データが "*部分的*" または "*不完全*" であっても、受け取ったデータをすぐに表示することにはメリットがあると思われます。 このようにすると、重要な結論を早急に下し、すぐに調査を開始できます。 たとえば、エラーの数を示すメトリックの場合、部分的な値 X を見ると、特定の 1 分間に少なくとも X 回のエラーが発生したことがわかります。 その 1 分間に発生したエラーの正確な数が表示されるまで待つことなく、すぐに問題の調査を開始できます。正確な数は重要ではないことがあります。 完全なデータ セットを受信するとグラフは更新されますが、その時点では、さらに近い分の新しい不完全なデータ ポイントも表示される可能性があります。
 
-## <a name="cannot-pick-guest-os-namespace-and-metrics"></a>ゲスト OS の名前空間とメトリックを選択できない
+## <a name="cannot-pick-guest-namespace-and-metrics"></a>ゲストの名前空間とメトリックを選択できない
 
-仮想マシンと仮想マシン スケール セットには、メトリックの 2 つのカテゴリがあります。Azure ホスティング環境によって収集される **仮想マシン ホスト** メトリックと、仮想マシンで実行されている [監視エージェント](../agents/agents-overview.md)によって収集される **ゲスト OS (クラシック)** メトリックです。 監視エージェントは、[Azure Diagnostics 拡張機能](../agents/diagnostics-extension-overview.md)を有効にすることでインストールします。
+仮想マシンと仮想マシン スケール セットには、メトリックの 2 つのカテゴリがあります。Azure ホスティング環境によって収集される **仮想マシン ホスト** メトリックと、仮想マシンで実行されている [監視エージェント](../agents/agents-overview.md)によって収集される **ゲスト (クラシック)** メトリックです。 監視エージェントは、[Azure Diagnostics 拡張機能](../agents/diagnostics-extension-overview.md)を有効にすることでインストールします。
 
-既定では、ゲスト OS メトリックは Azure Storage アカウントに格納され、リソースの **[診断設定]** タブから選択します。 ゲスト OS メトリックが収集されない場合、またはメトリックス エクスプローラーでアクセスできない場合は、**仮想マシン ホスト** メトリック名前空間のみが表示されます。
+既定では、ゲスト (クラシック) メトリックは Azure Storage アカウントに格納され、リソースの **[診断設定]** タブから選択します。 ゲスト メトリックが収集されない場合、またはメトリックス エクスプローラーでアクセスできない場合は、**仮想マシン ホスト** メトリック名前空間のみが表示されます。
 
-![メトリックの画像](./media/metrics-troubleshoot/vm.png)
+![メトリックの画像](./media/metrics-troubleshoot/vm-metrics.png)
 
-**解決方法:** **ゲスト OS (クラシック)** の名前空間とメトリックがメトリックス エクスプローラーに表示されない場合:
+**解決方法:** **ゲスト (クラシック)** の名前空間とメトリックがメトリックス エクスプローラーに表示されない場合:
 
 1. [Azure Diagnostics 拡張機能](../agents/diagnostics-extension-overview.md)が有効になっており、メトリックを収集するように構成されていることを確認します。
     > [!WARNING]
-    > [Log Analytics エージェント](../agents/agents-overview.md#log-analytics-agent) (Microsoft Monitoring Agent または "MMA" とも呼ばれます) を使って **ゲスト OS** をストレージ アカウントに送信することはできません。
+    > [Log Analytics エージェント](../agents/agents-overview.md#log-analytics-agent) (Microsoft Monitoring Agent または "MMA" とも呼ばれます) を使って **ゲスト (クラシック)** をストレージ アカウントに送信することはできません。
 
 1. **Microsoft.Insights** リソース プロバイダーが [ご利用のサブスクリプションに登録されている](#microsoftinsights-resource-provider-isnt-registered-for-your-subscription)ことを確認します。
 

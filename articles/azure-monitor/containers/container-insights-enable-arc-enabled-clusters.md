@@ -5,12 +5,12 @@ ms.topic: article
 author: shashankbarsin
 ms.author: shasb
 description: Azure Monitor を使用して Azure Arc 対応 Kubernetes クラスターのメトリックとログを収集する
-ms.openlocfilehash: 55beedec85b5e2a426954f179b738fcf81eb4982
-ms.sourcegitcommit: 42ac9d148cc3e9a1c0d771bc5eea632d8c70b92a
+ms.openlocfilehash: 1ece606aa3967d9fddaa5f964c43e24350610817
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/13/2021
-ms.locfileid: "109845746"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129709721"
 ---
 # <a name="azure-monitor-container-insights-for-azure-arc-enabled-kubernetes-clusters"></a>Azure Arc 対応 Kubernetes クラスター用の Azure Monitor Container Insights
 
@@ -23,6 +23,9 @@ ms.locfileid: "109845746"
 - Azure Monitor Container Insights では、「[概要](container-insights-overview.md)」の記事で説明されているように Azure Arc 対応 Kubernetes の監視 (プレビュー) がサポートされます。ただし、ライブ データ (プレビュー) 機能は除きます。 また、ユーザーには、[メトリックを有効にする](container-insights-update-metrics.md)ための[所有者](../../role-based-access-control/built-in-roles.md#owner)権限は必要ありません。
 - `Docker`、`Moby`、CRI 互換コンテナー ランタイム (`CRI-O`、`containerd`など)。
 - 認証なしの送信プロキシと基本認証を使用した送信プロキシがサポートされます。 現時点では、信頼できる証明書が必要な送信プロキシはサポートされていません。
+
+>[!NOTE]
+> 現在 Azure Monitor Container Insights では、Kubernetes v 1.22 以上がサポートされていません
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -40,7 +43,7 @@ ms.locfileid: "109845746"
     | `*.monitoring.azure.com` | 443 |
     | `login.microsoftonline.com` | 443 |
 
-    Arc 対応 Kubernetes リソースが Azure US Government 環境にある場合、送信アクセスのために次のエンドポイントを有効にする必要があります。
+    Azure Arc 対応 Kubernetes リソースが Azure US Government 環境にある場合、送信アクセスのために次のエンドポイントを有効にする必要があります。
 
     | エンドポイント | Port |
     |----------|------|
@@ -130,7 +133,7 @@ az k8s-extension create --name azuremonitor-containers --cluster-name <cluster-n
 
 ### <a name="onboarding-from-the-azure-arc-enabled-kubernetes-resource-blade"></a>Azure Arc 対応 Kubernetes リソース ブレードからのオンボード
 
-1. Azure portal で、監視する Arc 対応 Kubernetes クラスターを選択します。
+1. Azure portal で、監視する Azure Arc 対応 Kubernetes クラスターを選択します。
 
 2. リソース ブレードの [監視] セクションの下にある [Insights (プレビュー)] 項目を選択します。
 
@@ -182,7 +185,7 @@ az k8s-extension delete --name azuremonitor-containers --cluster-type connectedC
 
 ## <a name="next-steps"></a>次のステップ
 
-- Arc 対応 Kubernetes クラスターとそこで実行されるワークロードの正常性とリソース使用率を収集するための監視を有効にしたので、Container insights の[使い方](container-insights-analyze.md)を確認します。
+- Azure Arc 対応 Kubernetes クラスターとそこで実行されるワークロードの正常性とリソース使用率を収集するための監視を有効にしたので、Container insights の[使い方](container-insights-analyze.md)を確認します。
 
 - 既定では、コンテナー化されたエージェントによって、kube-system を除くすべての名前空間で実行されているすべてのコンテナーの stdout および stderr コンテナー ログが収集されます。 特定の名前空間に固有のコンテナー ログ収集を構成するには、「[コンテナーの Azure Monitor に対するエージェントのデータ収集を構成する](container-insights-agent-config.md)」を参照して、ConfigMap 構成ファイルに必要なデータ収集設定を構成します。
 

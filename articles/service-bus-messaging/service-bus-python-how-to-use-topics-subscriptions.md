@@ -10,12 +10,12 @@ ms.devlang: python
 ms.custom:
 - devx-track-python
 - mode-api
-ms.openlocfilehash: 49e80e277c6df5372341293861d5bda0580f3e8c
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 920aadf1cc800a8ea9d7c764cf0bcfa7cf9287f3
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107537162"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129614025"
 ---
 # <a name="send-messages-to-an-azure-service-bus-topic-and-receive-messages-from-subscriptions-to-the-topic-python"></a>Azure Service Bus トピックへのメッセージ送信とトピックのサブスクリプションからのメッセージ受信 (Python)
 この記事では、Python を使用して Service Bus トピックにメッセージを送信したり、そのトピックのサブスクリプションからメッセージを受信したりする方法について説明します。 
@@ -23,7 +23,7 @@ ms.locfileid: "107537162"
 ## <a name="prerequisites"></a>前提条件
 - Azure サブスクリプション。 [Visual Studio または MSDN のサブスクライバー特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)を有効にするか、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)にサインアップしてください。
 - 「[Quickstart:Azure portal を使用して Service Bus トピックとそのサブスクリプションを作成する](service-bus-quickstart-topics-subscriptions-portal.md)」の手順に従ってください。 接続文字列、トピック名、サブスクリプション名を書き留めておきます。 このクイックスタートで使用するサブスクリプションは 1 つだけです。 
-- Python 2.7 以上および [Azure Python SDK][Azure Python パッケージ] パッケージがインストールされていること。 詳しくは、[Python インストール ガイド](/azure/developer/python/azure-sdk-install)に関する記事をご覧ください。
+- Python 3.5 以上および [Azure Python SDK][Azure Python パッケージ] パッケージがインストールされていること。 詳しくは、[Python インストール ガイド](/azure/developer/python/azure-sdk-install)に関する記事をご覧ください。
 
 ## <a name="send-messages-to-a-topic"></a>メッセージをトピックに送信する
 

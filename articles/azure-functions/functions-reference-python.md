@@ -4,12 +4,12 @@ description: Python を使用して関数を開発する方法について説明
 ms.topic: article
 ms.date: 11/4/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: d44de94ef30976a35bbfeddf68b60068b952fbde
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: 940ad3d08069ee51a9d138585b6e7dca0af49996
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123450883"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129658911"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions の Python 開発者向けガイド
 
@@ -98,7 +98,7 @@ Python 関数プロジェクトの推奨フォルダー構造は、次の例の�
 
 * *local.settings.json*:ローカルで実行するときに、アプリの設定と接続文字列を格納するために使用されます。 このファイルは Azure に公開されません。 詳細については、「[local.settings.file](functions-develop-local.md#local-settings-file)」に関するページを参照してください。
 * *requirements.txt*:Azure に公開するときにシステムによってインストールされる Python パッケージの一覧が含まれます。
-* *host.json*:関数アプリ内のすべての関数に影響するグローバル構成オプションが含まれます。 このファイルは Azure に公開されます。 ローカルで実行する場合は、すべてのオプションがサポートされるわけではありません。 詳細については、「[host.json](functions-host-json.md)」に関するページを参照してください。
+* *host.json*: 関数アプリ インスタンス内にあるすべての関数に影響する構成オプションが含まれます。 このファイルは Azure に公開されます。 ローカルで実行する場合は、すべてのオプションがサポートされるわけではありません。 詳細については、「[host.json](functions-host-json.md)」に関するページを参照してください。
 * *.vscode/* :(省略可能) ストア VSCode 構成が含まれます。 詳細については、[VSCode 設定](https://code.visualstudio.com/docs/getstarted/settings)に関するページを参照してください。
 * *.venv/* :(省略可能) ローカル開発で使用される Python 仮想環境が含まれます。
 * *Dockerfile*:(省略可能) [カスタム コンテナー](functions-create-function-linux-custom-image.md)でプロジェクトを発行するときに使用されます。

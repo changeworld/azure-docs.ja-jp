@@ -10,14 +10,14 @@ metadata:
   ms.subservice: domain-services
   ms.workload: identity
   ms.topic: how-to
-  ms.date: 09/01/2021
+  ms.date: 10/08/2021
   ms.author: justinha
-  ms.openlocfilehash: f11d8198c04cc93587591e41359fe9e359d350d6
-  ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+  ms.openlocfilehash: 104b738143169ffe6f9787a8223efa757a8656d6
+  ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/03/2021
-  ms.locfileid: "123433140"
+  ms.lasthandoff: 10/09/2021
+  ms.locfileid: "129710352"
 title: Azure Active Directory (AD) Domain Services に関してよく寄せられる質問 (FAQ)
 summary: このページには、Azure Active Directory Domain Services に関してよく寄せられる質問への回答が記載されています。
 sections:
@@ -77,9 +77,9 @@ sections:
       リソース フォレストとオンプレミス フォレストの間に、双方向のフォレストの信頼を作成できますか。
     answer: "いいえ。 マネージド ドメイン リソース フォレストでは、オンプレミスのフォレストに対する一方向の送信フォレストの信頼が最大 5 つサポートされます。 \n"
   - question: >
-      既存の Azure AD Domain Services マネージド ドメインを別のサブスクリプション、リソース グループ、リージョン、仮想ネットワーク、またはサブネットに移動できますか。
+      マネージド ドメインを移動できますか。
     answer: >
-      いいえ。 Azure AD Domain Services マネージド ドメインを作成した後は、そのマネージド ドメインを別のサブスクリプション、リソース グループ、リージョン、仮想ネットワーク、またはサブネットに移動することはできません。 マネージド ドメインをデプロイするときに、最適なサブスクリプション、リソース グループ、リージョン、仮想ネットワーク、およびサブネットを慎重に選択してください。
+      いいえ。 Azure AD Domain Services マネージド ドメインを作成した後は、別のサブスクリプション、リソース グループ、リージョン、仮想ネットワーク、またはサブネットに移動することはできません。 回避策として、PowerShell または Azure portal を使用して[マネージド ドメインを削除](delete-aadds.md)し、必要な設定で再作成することができます。 マネージド ドメインの再作成中は、復元操作を実行できません。
   - question: >
       既存の Azure AD Domain Services ドメイン名を変更できますか。
     answer: >

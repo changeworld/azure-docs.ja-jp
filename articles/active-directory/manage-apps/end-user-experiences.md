@@ -1,5 +1,6 @@
 ---
-title: アプリケーションのエンドユーザー エクスペリエンス - Azure Active Directory
+title: アプリケーションのエンドユーザー エクスペリエンス
+titleSuffix: Azure AD
 description: Azure Active Directory (Azure AD) には、組織内のエンド ユーザーにアプリケーションをデプロイするためのカスタマイズ可能な方法が複数用意されています。
 services: active-directory
 author: davidmu1
@@ -11,12 +12,12 @@ ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: davidmu
 ms.reviewer: lenalepa
-ms.openlocfilehash: a63cf628baf2f0f707f018da60f16d7bfc71e37c
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 9480370a263c58984277d652965f099ac5951bd3
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124823052"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129617760"
 ---
 # <a name="end-user-experiences-for-applications-in-azure-active-directory"></a>Azure Active Directory でのアプリケーションのエンド ユーザー エクスペリエンス
 
