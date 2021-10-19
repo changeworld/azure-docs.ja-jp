@@ -45,7 +45,7 @@ ms.locfileid: "98014554"
     ```
     sudo add-apt-repository ppa:oisf/suricata-stable
     sudo apt-get update
-    sudo sudo apt-get install suricata
+    sudo apt-get install suricata
     ```
 
 1. インストールを確認するには、コマンド `suricata -h` を実行して、コマンドの完全な一覧を表示します。
