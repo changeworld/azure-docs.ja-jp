@@ -26,12 +26,9 @@ ms.locfileid: "105026174"
 
 次の表は、Windows と Linux の Azure Monitor エージェントを簡単に比較したものです。 それぞれの詳細については、以下のセクションで説明します。
 
-> [!NOTE]
-> Azure Monitor エージェントは、現在プレビューの段階にあり、機能が制限されています。 この表は更新される予定です 
-
 ### <a name="windows-agents"></a>Windows エージェント
 
-| | Azure Monitor エージェント (プレビュー) | 診断<br>拡張機能 (WAD) | Log Analytics<br>エージェント | 依存関係<br>エージェント |
+| | Azure Monitor エージェント | 診断<br>拡張機能 (WAD) | Log Analytics<br>エージェント | 依存関係<br>エージェント |
 |:---|:---|:---|:---|:---|
 | **サポートされている環境** | Azure<br>その他のクラウド (Azure Arc)<br>オンプレミス (Azure Arc)  | Azure | Azure<br>その他のクラウド<br>オンプレミス | Azure<br>その他のクラウド<br>オンプレミス | 
 | **エージェントの要件**  | なし | なし | なし | Log Analytics エージェントが必要 |
@@ -41,30 +38,36 @@ ms.locfileid: "105026174"
 
 ### <a name="linux-agents"></a>Linux エージェント
 
-| | Azure Monitor エージェント (プレビュー) | 診断<br>拡張機能 (LAD) | Telegraf<br>エージェント | Log Analytics<br>エージェント | 依存関係<br>エージェント |
+| | Azure Monitor エージェント | 診断<br>拡張機能 (LAD) | Telegraf<br>エージェント | Log Analytics<br>エージェント | 依存関係<br>エージェント |
 |:---|:---|:---|:---|:---|:---|
 | **サポートされている環境** | Azure<br>その他のクラウド (Azure Arc)<br>オンプレミス (Azure Arc) | Azure | Azure<br>その他のクラウド<br>オンプレミス | Azure<br>その他のクラウド<br>オンプレミス | Azure<br>その他のクラウド<br>オンプレミス |
 | **エージェントの要件**  | なし | なし | なし | なし | Log Analytics エージェントが必要 |
 | **収集されるデータ** | syslog<br>パフォーマンス | syslog<br>パフォーマンス | パフォーマンス | syslog<br>パフォーマンス| プロセスの依存関係<br>ネットワーク接続のメトリック |
-| **送信されるデータ** | Azure Monitor ログ<br>Azure Monitor メトリック | Azure Storage<br>イベント ハブ | Azure Monitor メトリック | Azure Monitor ログ | Azure Monitor ログ<br>(Log Analytics エージェント経由) |
+| **送信されるデータ** | Azure Monitor ログ<br>Azure Monitor メトリック<sup>1</sup> | Azure Storage<br>イベント ハブ | Azure Monitor メトリック | Azure Monitor ログ | Azure Monitor ログ<br>(Log Analytics エージェント経由) |
 | **サービスと**<br>**features**<br>**サポート対象** | Log Analytics<br>メトリックス エクスプローラー | | メトリックス エクスプローラー | VM insights<br>Log Analytics<br>Azure Automation<br>Azure Security Center<br>Azure Sentinel | VM insights<br>サービス マップ |
 
+<sup>1</sup>現在の Linux 用 Azure Monitor エージェントには、Azure Monitor メトリックのみを送信先として使用することがサポートされない、という制限があります。
+Azure Monitor ログと一緒に使用することで動作します。この制限は、次の拡張機能アップデートにて対処されます。
 
-## <a name="azure-monitor-agent-preview"></a>Azure Monitor エージェント (プレビュー)
 
-[Azure Monitor エージェント](azure-monitor-agent-overview.md)は、現在プレビューの段階にあり、Windows と Linux の両方のマシンで、Log Analytics エージェントおよび Telegraf エージェントを置き換えます。 Azure Monitor ログと Azure Monitor のメトリックの両方にデータを送信し、[データ収集ルール (DCR)](data-collection-rule-overview.md) を使用します。これにより、各エージェントのデータ コレクションと変換先をよりスケーラブルに構成する方法が提供されます。
+## <a name="azure-monitor-agent-preview"></a>Azure Monitor エージェント
+
+[Azure Monitor エージェント](azure-monitor-agent-overview.md)は、Windows と Linux の両方のマシンで、Log Analytics エージェントおよび Telegraf エージェントを置き換えます。 Azure Monitor ログと Azure Monitor のメトリックの両方にデータを送信し、[データ収集ルール (DCR)](data-collection-rule-overview.md) を使用します。これにより、各エージェントのデータ コレクションと変換先をよりスケーラブルに構成する方法が提供されます。
 
 次のことを行う必要がある場合は、Azure Monitor エージェントを使用します。
 
 - Azure、その他のクラウド、またはオンプレミスの任意のマシンからゲスト ログとメトリックを収集する。 (Azure の外部のマシンには [Azure Arc 対応サーバー](../../azure-arc/servers/overview.md)が必要です。) 
-- Azure Monitor での分析のために、Azure Monitor ログと Azure Monitor メトリックにデータを送信する。 
-- アーカイブのためにデータを Azure Storage に送信する。
-- [Azure Event Hubs](./diagnostics-extension-stream-event-hubs.md) を使用して、データをサードパーティ製のツールに送信する。
-- [Azure Security Center](../../security-center/security-center-introduction.md) または [Azure Sentinel](../../sentinel/overview.md) を使用して、ご利用のマシンのセキュリティを管理する。 (プレビューでは使用できません。)
+- [データ収集ルール (DCR)](data-collection-rule-overview.md) を使用してデータ収集構成を一元管理し、Azure Resource Manger (ARM) のテンプレートやポリシーを使用して全体的な管理を行う
+- Azure Monitor での分析のために、Azure Monitor ログと Azure Monitor メトリックにデータを送信する。
+- Windows のイベント フィルタリングや、Windows と Linux のlogに対してマルチホーミングを活用する
 
 Azure Monitor エージェントの制限事項は次のとおりです。
 
-- 現在、パブリック プレビュー段階にあります。 パブリック プレビュー段階での制限事項の一覧については、[現在の制限事項](azure-monitor-agent-overview.md#current-limitations)に関する記事を参照してください。
+- 本番環境にて Log Analytics のソリューションを使用することはできません。 (プレビュー版でのみ使用可能、[サポート対象](https://docs.microsoft.com/ja-jp/azure/azure-monitor/agents/azure-monitor-agent-overview?tabs=PowerShellWindows#supported-services-and-features) を参照してください。)
+- プライベート リンクを含むネットワークのシナリオはまだサポートされていません。
+- カスタムログ (ファイル) や IIS ログ ファイルの収集はまだサポートされていません。
+- Event Hubs やストレージ アカウントを送信先とすることはまだサポートされていません。
+- Hybrid Runbook Worker はサポートされていません。
 
 ## <a name="log-analytics-agent"></a>Log Analytics エージェント
 
@@ -225,6 +228,7 @@ Telegraf エージェントは、次のような場合に使用します。
 
 各エージェントの詳細については、以下を参照してください。
 
+- [Azure Monitor エージェントの概要](./azure-monitor-agent-overview.md)
 - [Log Analytics エージェントの概要](./log-analytics-agent.md)
 - [Azure Diagnostics 拡張機能の概要](./diagnostics-extension-overview.md)
 - [Linux VM のカスタム メトリックを InfluxData Telegraf エージェントを使用して収集する](../essentials/collect-custom-metrics-linux-telegraf.md)
