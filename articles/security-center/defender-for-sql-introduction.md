@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: e104a00f92517b917252144b3234c16dd104a673
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7f5427edb2b48065ea67e589602be2278c7410c9
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121751852"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129711734"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>Azure Defender for SQL の概要
 

@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: include
-ms.date: 07/17/2018
+ms.date: 09/28/2021
 ms.author: alkohli
 ms.custom: include file
-ms.openlocfilehash: 8ed57cd39580474925e781f3ec8fb05a2299a937
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5aca82d0a3ee290ec7e0f6ad3a32396b51b2aa59
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98701646"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129709614"
 ---
 ディスクを発送した後は、Azure Portal の **[インポート/エクスポート]** ページに戻ります。 
 
@@ -27,3 +27,7 @@ ms.locfileid: "98701646"
 3. **[発送済みとしてマークする]** のチェックボックスをオンにします。
 4. **[運送業者]** と **[追跡番号]** を入力します。
 5. ポータルのダッシュボードでジョブの進行状況を追跡します。 各ジョブの状態の詳細については、[ジョブの状態の表示](../articles/import-export/storage-import-export-view-drive-status.md)に関する記事を参照してください。
+
+> [!NOTE] 
+> ジョブを取り消すことができるのは、その状態が [作成中] である間のみです。 追跡の詳細を指定すると、ジョブの状態が [発送] に変わるため、ジョブを取り消すことはできません。
+

@@ -3,20 +3,20 @@ title: 'クイック スタート: Azure Arc で Web アプリを作成する'
 description: Azure Arc 上の App Service の使用を開始して最初の Web アプリをデプロイします。
 ms.topic: quickstart
 ms.date: 06/02/2021
-ms.openlocfilehash: 4002ef3d66eaae05881da0dd8d95cc82ffeb916d
-ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
+ms.openlocfilehash: 30d310aa1170cf4c28d76e0299b23a90a3f599d9
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2021
-ms.locfileid: "112377010"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129709804"
 ---
 # <a name="create-an-app-service-app-on-azure-arc-preview"></a>Azure Arc で App Service アプリを作成する (プレビュー)
 
-このクイックスタートでは、[Azure Arc 対応 Kubernetes クラスターに App Serviceアプリを](overview-arc-integration.md)作成します (プレビュー)。 このシナリオでは Linux アプリのみをサポートし、組み込みの言語スタックまたはカスタム コンテナーを使用できます。
+このクイックスタートでは、[Azure Arc 対応 Kubernetes クラスターに App Service アプリを](overview-arc-integration.md)作成します (プレビュー)。 このシナリオでは Linux アプリのみをサポートし、組み込みの言語スタックまたはカスタム コンテナーを使用できます。
 
 ## <a name="prerequisites"></a>前提条件
 
-- [App Service を実行するよう Azure Arc 対応 Kubernetes を設定する](manage-create-arc-environment.md)。
+- [App Service を実行するように Azure Arc 対応 Kubernetes を設定する](manage-create-arc-environment.md)。
 
 [!INCLUDE [app-service-arc-cli-install-extensions](../../includes/app-service-arc-cli-install-extensions.md)]
 

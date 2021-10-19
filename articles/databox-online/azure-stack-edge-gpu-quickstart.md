@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: quickstart
 ms.date: 06/09/2021
 ms.author: alkohli
-ms.openlocfilehash: 0dd8b103f81ea911a079aee6590287a939819b52
-ms.sourcegitcommit: e39ad7e8db27c97c8fb0d6afa322d4d135fd2066
+ms.openlocfilehash: fa68d0c14c8a540b4e32fc4d4075df6e7529ad03
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111982378"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129710142"
 ---
 # <a name="quickstart-get-started-with-azure-stack-edge-pro-with-gpu"></a>クイックスタート: GPU 搭載の Azure Stack Edge Pro を使い始める 
 
@@ -72,7 +72,7 @@ ms.locfileid: "111982378"
 
 12. **コンピューティングの構成**: Azure portal で、 **[概要] > [デバイス]** に移動します。 デバイスが **オンライン** であることを確認します。 左側のペインで、 **[Edge コンピューティング] > [作業の開始] > [Edge コンピューティングの構成] > [コンピューティング]** に移動します。 既存または新規の IoT Hub サービスを指定し、コンピューティングが構成されるまで約 20 分待ちます。 詳細については、「[チュートリアル: Azure Stack Edge Pro GPU デバイスにコンピューティングを構成する](azure-stack-edge-gpu-deploy-configure-compute.md)」を参照してください
 
-これで、[IoT Edge を使用して](azure-stack-edge-gpu-deploy-sample-module-marketplace.md)、[`kubectl` を使用して](azure-stack-edge-gpu-create-kubernetes-cluster.md)、または [Azure Arc 対応 Kubernetes を使用して](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md)、デバイスにコンピューティング ワークロードを展開できるようになりました。 セットアップ中に問題が発生した場合は、[Azure Stack Edge Pro GPU デバイス](azure-stack-edge-gpu-troubleshoot.md)、[証明書の問題](azure-stack-edge-gpu-certificate-troubleshooting.md)、または [IoT Edge の問題](azure-stack-edge-gpu-troubleshoot-iot-edge.md)のトラブルシューティングを参照してください。 
+これで、[IoT Edge を使用して](azure-stack-edge-gpu-deploy-sample-module-marketplace.md)、[`kubectl` を使用して](azure-stack-edge-gpu-create-kubernetes-cluster.md)、または [Azure Arc 対応 Kubernetes を使用して](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md)、デバイスにコンピューティング ワークロードを配置できるようになりました。 セットアップ中に問題が発生した場合は、[Azure Stack Edge Pro GPU デバイス](azure-stack-edge-gpu-troubleshoot.md)、[証明書の問題](azure-stack-edge-gpu-certificate-troubleshooting.md)、または [IoT Edge の問題](azure-stack-edge-gpu-troubleshoot-iot-edge.md)のトラブルシューティングを参照してください。 
 
 ## <a name="next-steps"></a>次の手順
 

@@ -7,12 +7,12 @@ ms.date: 07/20/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 53c5ef179a3df860d97cbe31287f2defcec2411b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 265f8646de1208a88b00dcaaccc992e09d44b29a
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121750710"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129711744"
 ---
 # <a name="introduction-to-azure-defender-for-kubernetes"></a>Azure Defender for Kubernetes の概要
 
@@ -22,7 +22,7 @@ Azure Defender for Kubernetes は、Kubernetes クラスターの保護を、そ
 
 - **Azure Kubernetes Service (AKS)** - コンテナー化されたアプリケーションを開発、デプロイ、管理するための Microsoft のマネージド サービスです。
 
-- **オンプレミス環境とマルチクラウド環境** - [Arc 対応 Kubernetes 用の拡張機能](defender-for-kubernetes-azure-arc.md)を使用します。
+- **オンプレミスとマルチクラウドの環境** - [Azure Arc 対応 Kubernetes 用の拡張機能](defender-for-kubernetes-azure-arc.md)を使用します。
 
 Azure Security Center と AKS は、「[Security Center のコンテナーのセキュリティ](container-security.md)」で概説する環境のセキュリティ強化、ワークロード保護、実行時保護を提供する、クラウドネイティブな Kubernetes セキュリティ オファリングを形成します。
 

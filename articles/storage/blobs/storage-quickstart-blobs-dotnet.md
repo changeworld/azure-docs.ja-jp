@@ -3,29 +3,30 @@ title: 'クイックスタート: Azure Blob Storage ライブラリ v12 - .NET'
 description: このクイックスタートでは、.NET 用 Azure Blob Storage クライアント ライブラリ バージョン 12 を使用して、BLOB (オブジェクト) ストレージ内にコンテナーと BLOB を作成する方法について説明します。 次に、ローカル コンピューターに BLOB をダウンロードする方法と、コンテナー内のすべての BLOB を一覧表示する方法について説明します。
 author: normesta
 ms.author: normesta
-ms.date: 03/03/2021
+ms.date: 10/06/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c71a362c7e8e3073929967abce4bcdc4566b8ce9
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: f695d344401598256d89dee83a69b886768e2774
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128652912"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129659585"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-net"></a>クイックスタート: .NET 用 Azure Blob Storage クライアント ライブラリ v12
 
 .NET 用 Azure Blob Storage クライアント ライブラリ v12 を使用してみましょう。 Azure Blob Storage は、Microsoft のクラウド用オブジェクト ストレージ ソリューションです。 手順に従ってパッケージをインストールし、基本タスクのコード例を試してみましょう。 Blob Storage は、テキスト データやバイナリ データなどの大量の非構造化データを格納するために最適化されています。
 
-.NET 用 Azure Blob Storage クライアント ライブラリ v12 を使用すると、以下のことができます。
+このクイックスタートの例では、.NET 用の Azure Blob Storage クライアント ライブラリ v12 を使用して以下を実行する方法を示します。
 
-- コンテナーを作成する
-- Azure Storage へ BLOB をアップロードする
-- コンテナー内のすべての BLOB を一覧表示する
-- ローカル コンピューターに BLOB をダウンロードする
-- コンテナーを削除する
+- [接続文字列を取得する](#get-the-connection-string)
+- [コンテナーの作成](#create-a-container)
+- [コンテナーに BLOB をアップロードする](#upload-a-blob-to-a-container)
+- [コンテナー内の BLOB を一覧表示する](#list-blobs-in-a-container)
+- [BLOB をダウンロードする](#download-a-blob)
+- [コンテナーの削除](#delete-a-container)
 
 その他のリソース:
 
@@ -109,14 +110,7 @@ Azure Blob Storage は、大量の非構造化データを格納するために�
 
 ## <a name="code-examples"></a>コード例
 
-以下のサンプル コード スニペットは、.NET 用 Azure Blob Storage クライアント ライブラリを使用して以下を実行する方法を示します。
-
-- [接続文字列を取得する](#get-the-connection-string)
-- [コンテナーの作成](#create-a-container)
-- [コンテナーに BLOB をアップロードする](#upload-blobs-to-a-container)
-- [コンテナー内の BLOB を一覧表示する](#list-the-blobs-in-a-container)
-- [BLOB をダウンロードする](#download-blobs)
-- [コンテナーの削除](#delete-a-container)
+次のセクションのサンプル コード スニペットでは、.NET 用 Azure Blob Storage クライアント ライブラリを使用して基本的なデータ操作を実行する方法を示します。
 
 ### <a name="get-the-connection-string"></a>接続文字列を取得する
 
@@ -139,7 +133,7 @@ Azure Blob Storage は、大量の非構造化データを格納するために�
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/quickstarts/dotnet/BlobQuickstartV12/Program.cs" id="Snippet_CreateContainer":::
 
-### <a name="upload-blobs-to-a-container"></a>コンテナーに BLOB をアップロードする
+### <a name="upload-a-blob-to-a-container"></a>コンテナーに BLOB をアップロードする
 
 次のコード スニペット:
 
@@ -151,7 +145,7 @@ Azure Blob Storage は、大量の非構造化データを格納するために�
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/quickstarts/dotnet/BlobQuickstartV12/Program.cs" id="Snippet_UploadBlobs":::
 
-### <a name="list-the-blobs-in-a-container"></a>コンテナー内の BLOB を一覧表示する
+### <a name="list-blobs-in-a-container"></a>コンテナー内の BLOB を一覧表示する
 
 [GetBlobsAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsasync) メソッドを呼び出して、コンテナー内の BLOB を一覧表示します。 この場合、コンテナーに BLOB が 1 つだけ追加されているので、一覧表示操作ではその 1 つの BLOB だけが返されます。
 
@@ -159,7 +153,7 @@ Azure Blob Storage は、大量の非構造化データを格納するために�
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/quickstarts/dotnet/BlobQuickstartV12/Program.cs" id="Snippet_ListBlobs":::
 
-### <a name="download-blobs"></a>BLOB をダウンロードする
+### <a name="download-a-blob"></a>BLOB をダウンロードする
 
 [DownloadToAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.downloadtoasync) メソッドを呼び出して、以前に作成した BLOB をダウンロードします。 サンプル コードは、ローカル ファイル システム内で両方のファイルを見ることができるように、ファイル名に "DOWNLOADED" というサフィックスを追加します。
 

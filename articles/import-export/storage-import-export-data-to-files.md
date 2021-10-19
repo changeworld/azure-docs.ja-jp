@@ -1,36 +1,50 @@
 ---
-title: Azure Import/Export を使用した Azure Files へのデータの転送 | Microsoft Docs
+title: Azure Import/Export を使用して Azure Files にデータを転送するためのチュートリアル | Microsoft Docs
 description: Azure portal でインポート ジョブを作成し、データを Azure Files に転送する方法について説明します。
 author: alkohli
 services: storage
 ms.service: storage
-ms.topic: how-to
-ms.date: 09/03/2021
+ms.topic: tutorial
+ms.date: 10/06/2021
 ms.author: alkohli
 ms.subservice: common
-ms.custom: devx-track-azurepowershell, devx-track-azurecli, contperf-fy21q3
-ms.openlocfilehash: 344d513f823c3eb04e869c66ca79bfb611c3eb6a
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.custom: tutorial, devx-track-azurepowershell, devx-track-azurecli, contperf-fy21q3
+ms.openlocfilehash: 4f8d984d97c046891008c1e1e3904ef065198f98
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129079753"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129709604"
 ---
-# <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Azure Import/Export サービスを使用してデータを Azure Files にインポートする
+# <a name="tutorial-transfer-data-to-azure-files-with-azure-importexport"></a>チュートリアル: Azure Import/Export を使用して Azure Files にデータを転送する
 
 この記事では、Azure Import/Export サービスを使用して大量のデータを Azure Files に安全にインポートする手順を説明します。 このサービスを使用してデータをインポートするには、データが含まれているサポート対象のディスク ドライブを Azure データセンターに送付する必要があります。
 
 Import/Export サービスでは、Azure Files の Azure Storage へのインポートのみをサポートしています。 Azure Files のエクスポートはサポートしていません。
+
+このチュートリアルでは、以下の内容を学習します。
+
+> [!div class="checklist"]
+> * Azure Files にデータをインポートするための前提条件
+> * 手順 1:ドライブを準備する
+> * 手順 2:インポート ジョブの作成
+> * 手順 3: ドライブを Azure データセンターに送付する
+> * 手順 4: 追跡情報を使用してジョブを更新する
+> * 手順 5: Azure へのデータのアップロードを確認する
 
 ## <a name="prerequisites"></a>前提条件
 
 インポート ジョブを作成して Azure Files にデータを転送する前に、次の前提条件の一覧を慎重に確認し、すべてを満たしてください。 次の手順が必要です。
 
 - Import/Export サービスで使用するアクティブな Azure サブスクリプションがある。
-- Azure Storage アカウントが少なくとも 1 つある。 [Import/Export サービスでサポートしているストレージ アカウントとストレージの種類](storage-import-export-requirements.md)の一覧を参照してください。 新しいストレージ アカウントの作成については、「 [ストレージ アカウントの作成方法](../storage/common/storage-account-create.md)」を参照してください。
+- Azure Storage アカウントが少なくとも 1 つある。 [Import/Export サービスでサポートしているストレージ アカウントとストレージの種類](storage-import-export-requirements.md)の一覧を参照してください。
+  - ストレージ アカウントで大きなファイル共有を構成することを検討してください。 Azure Files へのインポート中に、ファイル共有に十分な空き領域がない場合、複数の Azure ファイル共有へのデータの自動分割はサポートされなくなったため、コピーは失敗します。 手順については、[ストレージ アカウントでの大きなファイル共有の構成](../storage/files/storage-how-to-create-file-share.md?tabs=azure-portal#enable-large-files-shares-on-an-existing-account)に関する記事を参照してください。
+  - 新しいストレージ アカウントの作成については、[ストレージ アカウントの作成方法](../storage/common/storage-account-create.md)に関する記事を参照してください。
 - 十分な数の[サポートされている種類](storage-import-export-requirements.md#supported-disks)のディスクがある。
 - [サポートされている OS バージョン](storage-import-export-requirements.md#supported-operating-systems)を実行している Windows システムがある。
-- Windows システムで [WAImportExport バージョン 2 をダウンロード](https://aka.ms/waiev2)してください。 既定のフォルダー `waimportexport` に解凍します。 たとえば、「 `C:\WaImportExport` 」のように入力します。
+- Azure Import/Export バージョン 2 ツールの現在のリリースを、ファイル用に Windows システムにダウンロードします。
+  1. [WAImportExport バージョン 2 をダウンロードします](https://aka.ms/waiev2)。 現行バージョンは 2.2.0.300 です。
+  1. 既定のフォルダー `WaImportExportV2` に解凍します。 たとえば、「 `C:\WaImportExportV2` 」のように入力します。
 - FedEx または DHL のアカウントを用意します。 FedEx または DHL 以外の運送業者を使用する場合、`adbops@microsoft.com` から Azure Data Box Operations チームまでお問い合わせください。
     - アカウントは、有効で、残高があり、差出人住所の機能を持っている必要があります。
     - エクスポート ジョブの追跡番号を生成します。
@@ -53,24 +67,27 @@ Import/Export サービスでは、Azure Files の Azure Storage へのインポ
    - **ファイルをインポートするには**: 次の例では、コピーするデータは F: ドライブにあります。 ファイル *MyFile1.txt* は *MyAzureFileshare1* のルートにコピーされます。 *MyAzureFileshare1* は、存在しない場合、Azure Storage アカウントに作成されます。 フォルダー構造は維持されます。
 
        ```
-           BasePath,DstItemPathOrPrefix,ItemType,Disposition,MetadataFile,PropertiesFile
-           "F:\MyFolder1\MyFile1.txt","MyAzureFileshare1/MyFile1.txt",file,rename,"None",None
+           BasePath,DstItemPathOrPrefix,ItemType
+           "F:\MyFolder1\MyFile1.txt","MyAzureFileshare1/MyFile1.txt",file
+       ```
+
+   - **フォルダーをインポートするには**: *MyFolder2* の下にあるすべてのファイルとフォルダーがファイル共有に再帰的にコピーされます。 フォルダー構造は維持されます。 コピー先のフォルダー内の既存のファイルと同じ名前のファイルをインポートすると、インポートされたファイルはそのファイルを上書きします。
 
        ```
-   - **フォルダーをインポートするには**:*MyFolder2* の下にあるすべてのファイルとフォルダーがファイル共有に再帰的にコピーされます。 フォルダー構造は維持されます。
-
+           "F:\MyFolder2\","MyAzureFileshare1/",file
        ```
-           "F:\MyFolder2\","MyAzureFileshare1/",file,rename,"None",None
+   
+       > [!NOTE]
+       > /Disposition パラメーターは、以前のバージョンのツールに既に存在するファイルをインポートするときに実行する操作を選択できるようにするものですが、これは Azure Import/Export バージョン 2.2.0.300 ではサポートされていません。 以前のツール バージョンでは、既存のファイルと同じ名前でインポートされたファイルは、既定では名前が変更されていました。
 
-       ```
      インポートするフォルダーまたはファイルに対応する複数のエントリを同じファイル内に作成できます。
 
        ```
-           "F:\MyFolder1\MyFile1.txt","MyAzureFileshare1/MyFile1.txt",file,rename,"None",None
-           "F:\MyFolder2\","MyAzureFileshare1/",file,rename,"None",None
-
+           "F:\MyFolder1\MyFile1.txt","MyAzureFileshare1/MyFile1.txt",file
+           "F:\MyFolder2\","MyAzureFileshare1/",file
        ```
-     詳しくは、[データセット CSV ファイルの準備](/previous-versions/azure/storage/common/storage-import-export-tool-preparing-hard-drives-import)に関する記事をご覧ください。
+
+<!--ARCHIVED ARTICLE -Learn more about [preparing the dataset CSV file](/previous-versions/azure/storage/common/storage-import-export-tool-preparing-hard-drives-import).-->
 
 
 4. ツールが配置されているルート フォルダーにある *driveset.csv* ファイルを変更します。 次の例のようなエントリを *driveset.csv* ファイルに追加します。 ドライブセット ファイルには、ツールが準備するディスクの一覧を正しく選択できるように、ディスクとそれに対応するドライブ文字の一覧が含まれています。
@@ -361,7 +378,11 @@ Install-Module -Name Az.ImportExport
 
 ## <a name="step-5-verify-data-upload-to-azure"></a>手順 5: Azure へのデータのアップロードを確認する
 
-完了するまでジョブを監視します。 ジョブが完了したら、データが Azure にアップロードされたことを確認します。 オンプレミスのデータは、アップロードが成功したことを確認した後にのみ削除してください。
+完了するまでジョブを監視します。 ジョブが完了したら、データが Azure にアップロードされたことを確認します。 コピー ログでエラーがないかどうかを確認します。 詳細については、[コピー ログの確認](storage-import-export-tool-reviewing-job-status-v1.md)に関する記事を参照してください。 オンプレミスのデータは、アップロードが成功したことを確認した後にのみ削除してください。
+
+> [!NOTE]
+> ファイル用の Azure Import/Export ツールの最新バージョン (2.2.0.300) では、ファイル共有に十分な空き領域がない場合、データは複数の Azure ファイル共有に自動的に分割されなくなりました。 その代わりに、コピーは失敗し、サポートから連絡があります。 ストレージ アカウントに大きなファイル共有を構成するか、一部のデータを移動して共有内の領域を確保する必要があります。 詳細については、[ストレージ アカウントでの大きなファイル共有の構成](../storage/files/storage-how-to-create-file-share.md?tabs=azure-portal#enable-large-files-shares-on-an-existing-account)に関する記事を参照してください。
+
 
 ## <a name="samples-for-journal-files"></a>ジャーナル ファイルのサンプル
 
@@ -397,4 +418,4 @@ WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2  /DataSet:dataset
 ## <a name="next-steps"></a>次のステップ
 
 * [ジョブとドライブの状態の表示](storage-import-export-view-drive-status.md)
-* [Import/Export の要件の確認](storage-import-export-requirements.md)
+* [Import/Export のコピー ログの確認](storage-import-export-tool-reviewing-job-status-v1.md)

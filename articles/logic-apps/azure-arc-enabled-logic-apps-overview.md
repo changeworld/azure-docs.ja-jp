@@ -6,19 +6,19 @@ ms.suite: integration
 ms.reviewer: estfan, ladolan, reylons, archidda, sopai, azla
 ms.topic: overview
 ms.date: 05/25/2021
-ms.openlocfilehash: 880e194fefdf49b05f2b531699a83d1f0e3e70cc
-ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
+ms.openlocfilehash: 2a8d3187eecb684f7c0c2b89c135745dbcc9d8e9
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122429479"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129713365"
 ---
 # <a name="what-is-azure-arc-enabled-logic-apps-preview"></a>Azure Arc 対応 Logic Apps とは (プレビュー)
 
 > [!NOTE]
 > この機能はプレビュー段階にあり、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」が適用されます。
 
-Azure Arc 対応 Logic Apps を使用すると、Kubernetes が実行できるすべての場所で、シングルテナントベースのロジック アプリを開発して実行できます。 たとえば、Azure、Azure Kubernetes Service、オンプレミス、さらにその他のクラウド プロバイダーでもロジック アプリ ワークフローを実行できます。 このオファリングでは、次の機能のために、Azure Arc および Azure portal を通じた 1 つのウィンドウからの一元的な管理プラットフォームを提供します。
+Azure Arc 対応 Logic Apps を使用すると、Kubernetes が実行できるすべての場所で、シングルテナント ベースのロジック アプリを開発して実行できます。 たとえば、Azure、Azure Kubernetes Service、オンプレミス、さらにその他のクラウド プロバイダーでもロジック アプリ ワークフローを実行できます。 このオファリングでは、次の機能のために、Azure Arc および Azure portal を介した 1 つのウィンドウからの一元的な管理プラットフォームを提供します。
 
 - 統合プラットフォームとして Azure Logic Apps を使用します。
 - ホストされている場所に関係なく、ワークフローをすべてのサービスに接続します。
@@ -38,11 +38,11 @@ Azure Arc 対応 Logic Apps を使用すると、Kubernetes が実行できる�
 
 <a name="why-use"></a>
 
-## <a name="why-use-arc-enabled-logic-apps"></a>Arc 対応 Logic Apps を使用する理由
+## <a name="why-use-azure-arc-enabled-logic-apps"></a>Azure Arc 対応 Logic Apps を使用する理由
 
 Azure Arc 対応 Logic Apps では、Azure Logic Apps のシングルテナント エクスペリエンスと同じ方法で、ロジック アプリ ワークフローを作成およびデプロイできます。 また、運用および管理する Kubernetes インフラストラクチャでロジック アプリを実行すると、管理のしやすさと柔軟性が向上します。
 
-ロジックアプリの作成、設計、およびデプロイについて、Azure Arc とシングルテナント Logic Apps エクスペリエンスの間にわずかな違いがあります。 Azure Arc 対応 Logic Apps を使用する場合の大きな違いは、ロジック アプリが "*カスタムの場所*" で実行されることです。 この場所は、Azure App Service プラットフォーム拡張機能バンドルをインストールして有効にした Arc 対応 Kubernetes クラスターにマップされます。
+ロジックアプリの作成、設計、およびデプロイについて、Azure Arc とシングルテナント Logic Apps エクスペリエンスの間にわずかな違いがあります。 Azure Arc 対応 Logic Apps を使用する場合の大きな違いは、ロジック アプリが "*カスタムの場所*" で実行されることです。 この場所は、Azure App Service プラットフォーム拡張機能バンドルをインストールして有効にした Azure Arc 対応 Kubernetes クラスターにマップされます。
 
 たとえば、このクラスターは、Azure Kubernetes Service、ベアメタル Kubernetes、または別のセットアップにすることができます。 拡張機能バンドルを使用すると、Kubernetes クラスターで Azure Logic Apps、Azure Functions、Azure App Service などのプラットフォーム サービスを実行できます。
 
@@ -57,7 +57,7 @@ Azure Arc 対応 Logic Apps では、Azure Logic Apps のシングルテナン�
 
 <a name="when-to-use"></a>
 
-## <a name="when-to-use-arc-enabled-logic-apps"></a>Arc 対応 Logic Apps を使用する場合
+## <a name="when-to-use-azure-arc-enabled-logic-apps"></a>Azure Arc 対応 Logic Apps を使用する状況
 
 Kubernetes では管理のしやすさと柔軟性が向上しますが、運用上のオーバーヘッドも発生します。 Logic Apps サービスでニーズを満たせることに満足している場合は、このサービスを引き続き使用することをお勧めします。 ただし、次のシナリオの場合は、Azure Arc 対応 Logic Apps の使用を検討してください。
 
@@ -123,7 +123,7 @@ Kubernetes では管理のしやすさと柔軟性が向上しますが、運用
       コンテナーを実行する任意の場所で実行
    :::column-end:::
    :::column:::
-      Arc 対応 Kubernetes クラスターで任意の場所で実行
+      Azure Arc 対応 Kubernetes クラスターがある任意の場所で実行
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -181,4 +181,4 @@ Kubernetes では管理のしやすさと柔軟性が向上しますが、運用
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Arc 対応 Logic Apps を使用してワークフローを作成してデプロイする](azure-arc-enabled-logic-apps-create-deploy-workflows.md)
+> [Azure Arc 対応 Logic Apps を使用してワークフローを作成してデプロイする](azure-arc-enabled-logic-apps-create-deploy-workflows.md)

@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 991306a115fdfe88f9646d1c65059bfe2699cb8d
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: fe61b971dbe1a3a82a085228ff8723f3cf47df20
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128613657"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129638616"
 ---
 このドキュメントでは、ユーザーを Azure Active Directory (Azure AD) から SQL データベースに自動的にプロビジョニングおよびプロビジョニング解除するために実行する必要がある手順について説明します。  ここでは、汎用 SQL コネクタと Azure AD ECMA Connector Host を設定して使用する方法を説明します。 
  
@@ -32,6 +32,8 @@ ms.locfileid: "128613657"
 * Oracle 10 および 11g
 * Oracle 12c および 18c
 * MySQL 5.x
+
+注: 汎用 SQL コネクタでは、列名の大文字と小文字は区別されません。 MySQL は Linux では大文字と小文字が区別され、Postgres はプラットフォーム全体で大文字と小文字が区別されます。 そのため、現在はサポートされていません。 
 
 ### <a name="cloud-requirements"></a>クラウドの要件
 

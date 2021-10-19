@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 10/01/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0aad268f8721d2f4747c4e3dec3860e52dd7112a
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 8f5cbcefa37df245f025895f421df4c4c7907ff4
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129352804"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129709993"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Azure Active Directory B2C の技術と機能の概要
 
@@ -299,6 +299,12 @@ Azure AD B2C では、ユーザーが Web アプリにいつサインアップ�
 Azure Application Insights を Azure AD B2C カスタム ポリシーに統合することにより、ユーザーによるサインアップ、サインイン、パスワードのリセット、プロファイルの編集の状況に関する分析情報を取得できます。 この知識により、将来の開発サイクルに関してデータ駆動型の意思決定を行うことができます。
 
 詳細については、「[Application Insights を使用して Azure AD B2C でのユーザーの動作を追跡する](analytics-with-application-insights.md)」をご覧ください。
+
+## <a name="automation-using-microsoft-graph-api"></a>Microsoft Graph API を使用した自動化
+
+MS Graph API を使用して、Azure AD B2C ディレクトリを管理します。 Azure AD B2C ディレクトリ自体を作成することもできます。 ユーザー、ID プロバイダー、ユーザー フロー、カスタム ポリシーなどを管理することができます。 
+
+[Microsoft Graph を使用して Azure AD B2C を管理する](microsoft-graph-operations.md)方法の詳細を確認してください。 
 
 ## <a name="azure-ad-b2c-service-limits-and-restrictions"></a>Azure AD B2C サービスの制限と制約
 「[Azure AD B2C サービスの制限と制約](service-limits.md)」の詳細を確認します。

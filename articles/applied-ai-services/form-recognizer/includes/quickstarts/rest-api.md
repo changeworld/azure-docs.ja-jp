@@ -8,12 +8,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 05/25/2021
 ms.author: lajanuar
-ms.openlocfilehash: 6c768f18aa8e58ee82519a1b42c078685db25b0e
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 48d8747883bfb3d47368d96cc2d4e52d07c599d9
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128652541"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129715466"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
@@ -38,7 +38,7 @@ ms.locfileid: "128652541"
 * **レシートの画像** の URL。 このクイックスタートでは、[サンプルの画像](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/contoso-allinone.jpg)を使用できます。
 * **名刺の画像** の URL。 このクイックスタートでは、[サンプルの画像](https://raw.githubusercontent.com/Azure/azure-sdk-for-python/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms/business_cards/business-card-english.jpg)を使用できます。
 * **請求書の画像** の URL。 このクイックスタートでは、[サンプル ドキュメント](https://raw.githubusercontent.com/Azure/azure-sdk-for-python/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms/forms/Invoice_1.pdf)を使用できます。
-* **ID ドキュメントの画像** の URL。 [サンプル画像](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/id-license.jpg)を使用できます。
+* **身分証明書の画像** の URL。 [サンプル画像](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/id-license.jpg)を使用できます。
 
 ## <a name="analyze-layout"></a>レイアウトを分析する
 
@@ -970,7 +970,7 @@ JSON 出力で `200 (Success)` 応答を受信します。
 
 ## <a name="analyze-identity-id-documents"></a>身分証明書を分析する
 
-身分証明書の分析を開始するには、下の cURL コマンドを使用します。 身分証明書の分析の詳細については、[身分証明書の概念ガイド](../../concept-identification-cards.md)を参照してください。 身分証明書の分析を開始するには、下の cURL コマンドを使用して **[Analyze ID Document](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/5f74a7738978e467c5fb8707)** API を呼び出します。 コマンドを実行する前に、次の変更を行います。
+身分証明書の分析を開始するには、下の cURL コマンドを使用します。 身分証明書の分析の詳細については、[身分証明書の概念ガイド](../../concept-identification-cards.md)を参照してください。 身分証明書の分析を開始するには、以下の cURL コマンドを使用して 「 **[身分証明書の分析](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/5f74a7738978e467c5fb8707)** 」の API を呼び出します。 コマンドを実行する前に、次の変更を行います。
 
 1. `{endpoint}` を、Form Recognizer サブスクリプションで取得したエンドポイントで置き換えます。
 1. `{your ID document URL}` を、レシートの画像の URL アドレスに置き換えます。
@@ -979,7 +979,7 @@ JSON 出力で `200 (Success)` 応答を受信します。
 #### <a name="request"></a>Request
 
 ```bash
-curl -i -X POST "https://{endpoint}/formrecognizer/v2.1/prebuilt/idDocument/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{your identity document URL}'}"
+curl -i -X POST "https://{endpoint}/formrecognizer/v2.1/prebuilt/idDocument/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{your ID document URL}'}"
 ```
 
 #### <a name="operation-location"></a>Operation-Location
@@ -1012,7 +1012,7 @@ curl -X GET "https://{endpoint}/formrecognizer/v2.1/prebuilt/businessCard/analyz
 
 JSON 出力で `200 (Success)` 応答を受信します。 最初のフィールド `"status"` は、操作の状態を示します。 操作が完了していない場合、`"status"` の値は `"running"` または `"notStarted"` になります。`succeeded` の値を受け取るまで、手動またはスクリプトでもう一度 API を呼び出す必要があります。 呼び出しの間隔は 1 秒以上あけることをお勧めします。
 
-* `"readResults"` フィールドには、身分証明書から抽出されたテキストのすべての行が含まれます。
+* `"readResults"` フィールドには、身分証明書から抽出されたすべてのテキスト行が含まれます。
 * `"documentResults"` フィールドには、入力ドキュメント内で検出された身分証明書をそれぞれ表すオブジェクトの配列が含まれます。
 
 サンプルの身分証明書とそれに対応する JSON 出力を以下に示します
@@ -1572,7 +1572,7 @@ curl -v -X DELETE "https://{endpoint}/formrecognizer/v2.1/custom/models/{modelId
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイックスタートでは、Form Recognizer REST API を使用してモデルをトレーニングし、さまざまな方法でフォームを分析しました。 次に、Form Recognizer API の詳細を把握するためにリファレンス ドキュメントを探索します。
+このクイックスタートでは、Form Recognizer REST API を使用して、さまざまな方法でフォームを分析しました。 次に、Form Recognizer API の詳細を把握するためにリファレンス ドキュメントを探索します。
 
 > [!div class="nextstepaction"]
 > [REST API リファレンス ドキュメント](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeWithCustomForm)

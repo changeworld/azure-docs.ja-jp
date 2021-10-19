@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/12/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 7205fa7095608084140f7ac6e1c3965b1296a8fe
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: bebedbcd2c36203ec122ebf597ac8a0c64fb1ae4
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122336124"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129679919"
 ---
 |**VPN<br>ゲートウェイ<br>世代** |**SKU**   | **S2S/VNet 間<br>トンネル** | **P2S<br> SSTP 接続** | **P2S<br> IKEv2/OpenVPN 接続** | **合計<br>スループット ベンチマーク** | **BGP** | **ゾーン冗長** |
 |---            |---         | ---        | ---       | ---            | ---       | ---       | ---|
@@ -36,7 +36,7 @@ ms.locfileid: "122336124"
 
 (*) 30 個を超える S2S VPN トンネルが必要な場合は、[Virtual WAN](../articles/virtual-wan/virtual-wan-about.md) を使用してください。
 
-* VpnGw SKU のサイズ変更は、Basic SKU のサイズ変更を除き、同じ世代内で許可されます。 Basic SKU はレガシ SKU であり、機能に制限があります。 Basic から別の VpnGw SKU に移行するには、Basic SKU VPN ゲートウェイを削除し、必要な世代と SKU サイズの組み合わせを使用して新しいゲートウェイを作成する必要があります。
+* VpnGw SKU のサイズ変更は、Basic SKU のサイズ変更を除き、同じ世代内で許可されます。 Basic SKU はレガシ SKU であり、機能に制限があります。 Basic から別の VpnGw SKU に移行するには、Basic SKU VPN ゲートウェイを削除し、必要な世代と SKU サイズの組み合わせを使用して新しいゲートウェイを作成する必要があります。 Basic ゲートウェイは、別のレガシ SKU のサイズにのみ変更できます ([レガシ SKU の使用](../articles/vpn-gateway/vpn-gateway-about-skus-legacy.md)に関する記事を参照してください)。
 
 * これらの接続の制限は別々になっています。 たとえば、VpnGw1 SKU では 128 の SSTP 接続が利用できると共に 250 の IKEv2 接続を利用できます。
 

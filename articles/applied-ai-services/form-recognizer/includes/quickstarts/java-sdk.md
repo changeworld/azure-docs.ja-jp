@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 05/25/2021
 ms.custom: devx-track-java
 ms.author: lajanuar
-ms.openlocfilehash: 4554725a028bc3b70e14b8eba00a636965694819
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: fdb92ae88ceec485557cc7bccd7a62a5b873362f
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128652554"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129715454"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
@@ -246,9 +246,9 @@ URL から請求書を分析するには、`beginRecognizeInvoicesFromUrl` メ�
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_invoice_print)]
 
-## <a name="analyze-identity-documents"></a>身分証明書を分析する
+## <a name="analyze-id-documents"></a>身分証明書を分析する
 
-このセクションでは、Form Recognizer のあらかじめ構築された ID モデルを使用して、政府発行の身分証明書 (世界各国のパスポートと米国の運転免許証) から重要な情報を分析および抽出する方法を示します。 身分証明書分析の詳細については、[あらかじめ構築された身分証明書モデルの概念ガイド](../../concept-identification-cards.md)を参照してください。
+このセクションでは、Form Recognizer のあらかじめ構築された ID モデルを使用して、政府発行の身分証明書 (世界各国のパスポートと米国の運転免許証) から重要な情報を分析および抽出する方法を示します。 身分証明書の分析の詳細については、[あらかじめ構築された身分証明書モデルの概念ガイド](../../concept-identification-cards.md)を参照してください。
 
 URI から身分証明書を分析するには、`beginRecognizeIdentityDocumentsFromUrl` メソッドを使用します。
 

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 09/09/2021
 ms.custom: template-quickstart
 keywords: Kubernetes, Arc, Azure, クラスター
-ms.openlocfilehash: 10c97945a78867d92b9ed4887e9655d49b195e33
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: e876ecf11de197e523c9d34825a5a52284af871b
+ms.sourcegitcommit: ee5d9cdaf691f578f2e390101bf5350859d85c67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129273763"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129740457"
 ---
 # <a name="quickstart-connect-an-existing-kubernetes-cluster-to-azure-arc"></a>クイックスタート: 既存の Kubernetes クラスターを Azure Arc に接続する
 
@@ -27,7 +27,7 @@ ms.locfileid: "129273763"
 
 * バージョン 2.16.0 以降の [Azure CLI をインストールするか、それにアップグレードします](/cli/azure/install-azure-cli)
 
-* **connectedk8s** Azure CLI 拡張機能バージョン 1.0.0 以降をインストールします。
+* **connectedk8s** Azure CLI 拡張機能バージョン 1.2.0 以降をインストールします。
 
   ```console
   az extension add --name connectedk8s
@@ -48,8 +48,6 @@ ms.locfileid: "129273763"
 
 * `kubeconfig` ファイルと、クラスターを指すコンテキスト。
 * Azure Arc 対応 Kubernetes リソースの種類 (`Microsoft.Kubernetes/connectedClusters`) に対する "読み取り" および "書き込み" アクセス許可。
-
-* [Helm 3](https://helm.sh/docs/intro/install) をインストールします。 Helm 3 のバージョンが &lt; 3.7.0 であることを確認します。
 
 ### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
@@ -99,6 +97,7 @@ ms.locfileid: "129273763"
 | `https://gbl.his.arc.azure.com` (Azure Cloud の場合)、`https://gbl.his.arc.azure.us` (Azure US Government の場合) |  システム割り当て管理 ID 証明書をプルするためリージョン エンドポイントを取得するために必要です。 |
 | `https://*.his.arc.azure.com` (Azure Cloud の場合)、`https://usgv.his.arc.azure.us` (Azure US Government の場合) |  システム割り当てマネージド ID 証明書をプルするために必須。 |
 |`*.servicebus.windows.net`, `guestnotificationservice.azure.com`, `*.guestnotificationservice.azure.com`, `sts.windows.net` | [クラスター接続](cluster-connect.md)ベース シナリオの場合と、[カスタムの場所](custom-locations.md)ベースのシナリオの場合。 |
+|`https://k8connecthelm.azureedge.net` | `az connectedk8s connect` では、Helm 3 を使用して、Kubernetes クラスターに Azure Arc エージェントをデプロイします。 このエンドポイントは、エージェント Helm chart のデプロイを容易にするために、Helm クライアントのダウンロードに必要です。 |
 
 ## <a name="1-register-providers-for-azure-arc-enabled-kubernetes"></a>1. Azure Arc 対応 Kubernetes 用のプロバイダーを登録する
 

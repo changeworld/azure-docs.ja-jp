@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 08/24/2021
-ms.openlocfilehash: f9dacea4d80591b6ec5b83ae93564cd8b03aff9c
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 4af576587d5d0e87053fb31cdd2c1d073d1ea97e
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129212458"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129714773"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>クイック スタート:Azure portal で Azure Cognitive Search インデックスを作成する
 
 架空のホテル データを含んだ組み込みのサンプル データ ソースと **データのインポート** ウィザードを使用して、初めての検索インデックスを作成します。 ウィザードの案内に従って検索インデックス (hotels-sample-index) を作成できるので、関心のあるクエリを数分で記述することができます。 
 
-このクイックスタートでは使用しませんが、このウィザードには、AI エンリッチメントのページも用意されているので、画像ファイルや非構造化テキストからテキストおよび構造を抽出することができます。 AI エンリッチメントを含む同様のチュートリアルについては、[コグニティブ スキルセットの作成](cognitive-search-quickstart-blob.md)に関するクイックスタートを参照してください。
+このクイックスタートでは使用しませんが、このウィザードには、AI エンリッチメントのページも用意されているので、画像ファイルや非構造化テキストからテキストおよび構造を抽出することができます。 AI エンリッチメントを含む同様のチュートリアルについては、[テキスト翻訳とエンティティのスキルセット](cognitive-search-quickstart-blob.md)または[OCR 画像スキルセット](cognitive-search-quickstart-ocr.md)に関するクイックスタートを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 

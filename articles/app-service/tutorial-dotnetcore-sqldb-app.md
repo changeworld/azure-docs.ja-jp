@@ -3,27 +3,27 @@ title: チュートリアル:Azure SQL Database を使用した ASP.NET Core
 description: Azure SQL Database に接続された .NET Core アプリを Azure App Service で動作させる方法について説明します。
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 04/29/2021
+ms.date: 10/06/2021
 ms.custom: devx-track-csharp, mvc, cli-validate, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 45214579e599ab83dfa97470276c85c225c5473b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5db5a4a1d390164cff0f4acee56ca49687ebddfb
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121730657"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129658437"
 ---
 # <a name="tutorial-build-an-aspnet-core-and-azure-sql-database-app-in-azure-app-service"></a>チュートリアル:Azure App Service での ASP.NET Core および Azure SQL Database アプリの作成
 
 ::: zone pivot="platform-windows"  
 
-[Azure App Service](overview.md) は、Azure での高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 このチュートリアルでは、.NET Core アプリを作成して SQL Database に接続する方法について説明します。 完了すると、.NET Core MVC アプリが App Service on Windows で実行されます。
+[Azure App Service](overview.md) は、Azure での高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 このチュートリアルでは、ASP.NET Core アプリを作成して SQL Database に接続する方法について説明します。 完了すると、.NET MVC アプリが App Service on Windows で実行されます。
 
 ::: zone-end
 
 ::: zone pivot="platform-linux"
 
-[Azure App Service](overview.md) は、Linux オペレーティング システムを使用する、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 このチュートリアルでは、.NET Core アプリを作成して SQL Database に接続する方法について説明します。 完了すると、.NET Core MVC アプリが App Service on Linux で実行されます。
+[Azure App Service](overview.md) は、Linux オペレーティング システムを使用する、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 このチュートリアルでは、ASP.NET Core アプリを作成して SQL Database に接続する方法について説明します。 完了すると、ASP.NET Core MVC アプリが App Service on Linux で実行されます。
 
 ::: zone-end
 
@@ -33,7 +33,7 @@ ms.locfileid: "121730657"
 
 > [!div class="checklist"]
 > * Azure で SQL データベースを作成する
-> * .NET Core アプリを SQL Database に接続する
+> * ASP.NET Core アプリを SQL Database に接続する
 > * Azure にアプリケーションをデプロイする
 > * データ モデルを更新し、アプリを再デプロイする
 > * Azure から診断ログをストリーミングする
@@ -46,13 +46,13 @@ ms.locfileid: "121730657"
 このチュートリアルを完了するには、以下が必要です。
 
 - <a href="https://git-scm.com/" target="_blank">Git をインストールする</a>
-- <a href="https://dotnet.microsoft.com/download/dotnet-core/3.1" target="_blank">最新の .NET Core 3.1 SDK をインストールする</a>
+- <a href="https://dotnet.microsoft.com/download/dotnet/5.0" target="_blank">最新の .NET 5.0 SDK をインストールする</a>
 
 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-## <a name="create-local-net-core-app"></a>ローカル .NET Core アプリを作成する
+## <a name="create-local-aspnet-core-app"></a>ローカル ASP.NET Core アプリの作成
 
-この手順では、ローカル .NET Core プロジェクトを設定します。
+この手順では、ローカル ASP.NET Core プロジェクトを設定します。
 
 ### <a name="clone-the-sample-application"></a>サンプル アプリケーションの複製
 
@@ -90,7 +90,7 @@ ms.locfileid: "121730657"
 
     ![SQL Database に正常に接続](./media/tutorial-dotnetcore-sqldb-app/local-app-in-browser.png)
 
-1. 任意のタイミングで .NET Core を停止するには、ターミナルで `Ctrl+C` キーを押します。
+1. 任意のタイミングで ASP.NET Core を停止するには、ターミナルで `Ctrl+C` キーを押します。
 
 ## <a name="create-production-sql-database"></a>運用 SQL Database を作成する
 
@@ -169,7 +169,7 @@ az sql db show-connection-string --client ado.net --server <server-name> --name 
 
 コマンド出力の *\<username>* と *\<password>* は、前に使用したデータベース管理者の資格情報に置き換えてください。
 
-これは .NET Core アプリの接続文字列です。 後で使用するためコピーします。
+これは ASP.NET Core アプリの接続文字列です。 後で使用するためコピーします。
 
 ### <a name="configure-app-to-connect-to-production-database"></a>運用データベースに接続するようにアプリを構成する
 
@@ -200,7 +200,7 @@ services.AddDbContext<MyDatabaseContext>(options =>
 ```
 # Delete old migrations
 rm -r Migrations
-# Recreate migrations
+# Recreate migrations with UseSqlServer (see previous snippet)
 dotnet ef migrations add InitialCreate
 
 # Set connection string to production database
@@ -236,7 +236,7 @@ dotnet ef database update
 
 ## <a name="deploy-app-to-azure"></a>アプリを Azure にデプロイする
 
-この手順では、SQL Database に接続された .NET Core アプリケーションを App Service にデプロイします。
+この手順では、SQL Database に接続された ASP.NET Core アプリケーションを App Service にデプロイします。
 
 ### <a name="configure-local-git-deployment"></a>ローカル Git デプロイを構成する
 
@@ -275,7 +275,7 @@ dotnet ef database update
 Azure アプリの接続文字列を設定するには、Cloud Shell で [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) コマンドを使用します。 次のコマンドの *\<app-name>* および *\<connection-string>* パラメーターは、先ほど作成した接続文字列に置き換えてください。
 
 ```azurecli-interactive
-az webapp config connection-string set --resource-group myResourceGroup --name <app-name> --settings MyDbConnection="<connection-string>" --connection-string-type SQLAzure
+az webapp config connection-string set --resource-group myResourceGroup --name <app-name> --settings MyDbConnection='<connection-string>' --connection-string-type SQLAzure
 ```
 
 ASP.NET Core では、*appsettings.json* で指定される接続文字列のように、標準パターンを使用して、この名前付き接続文字列 (`MyDbConnection`) を使用できます。 この場合、`MyDbConnection` は、*appsettings.json* でも定義されています。 App Service で実行する場合、App Service で定義された接続文字列は、*appsettings.json* で定義された接続文字列よりも優先されます。 コードは、ローカル開発中は *appsettings.json* 値を使用し、同じコードがデプロイ時には App Service 値を使用します。
@@ -361,7 +361,7 @@ ASP.NET Core では、*appsettings.json* で指定される接続文字列のよ
 
     ![App Service で実行されるアプリ](./media/tutorial-dotnetcore-sqldb-app/azure-app-in-browser.png)
 
-**お疲れさまでした。** App Service でデータ主導型の .NET Core アプリが実行されています。
+**お疲れさまでした。** App Service でデータ主導型の ASP.NET Core アプリが実行されています。
 
 ## <a name="update-locally-and-redeploy"></a>ローカルで更新して再デプロイする
 
@@ -390,7 +390,7 @@ dotnet ef database update
 
 ### <a name="use-the-new-property"></a>新しいプロパティを使用する
 
-`Done` プロパティを使用するために、コードにいくつかの変更を加えます。 このチュートリアルでは、わかりやすくするために `Index` ビューと `Create` ビューのみを変更して、実際のプロパティを確認します。
+<ph id="ph1">`Done`</ph> プロパティを使用するために、コードにいくつかの変更を加えます。 このチュートリアルでは、わかりやすくするために `Index` ビューと `Create` ビューのみを変更して、実際のプロパティを確認します。
 
 1. _Controllers/TodosController.cs_ を開きます。
 
@@ -468,12 +468,12 @@ dotnet ef database update
 
 Azure App Service で ASP.NET Core アプリが稼動している間、コンソールのログをパイプ処理で Cloud Shell に渡すことができます。 このようにすると、アプリケーション エラーのデバッグに役立つ同じ診断メッセージを取得できます。
 
-サンプル プロジェクトは既に、[Azure における ASP.NET Core のログ記録](/aspnet/core/fundamentals/logging#azure-app-service-provider)に関するページのガイダンスに従っています。ただし、次の 2 つの変更を構成に加えています。
+サンプル プロジェクトは既に、[Azure App Service ログ プロバイダー](/dotnet/core/extensions/logging-providers#azure-app-service)に関するページのガイダンスに従っています。ただし、次の 2 つの変更を構成に加えています。
 
 - *DotNetCoreSqlDb.csproj* で `Microsoft.Extensions.Logging.AzureAppServices` への参照を追加しています。
 - *Program.cs* 内の `loggerFactory.AddAzureWebAppDiagnostics()` を呼び出します。
 
-1. App Service で ASP.NET Core の[ログ レベル](/aspnet/core/fundamentals/logging#log-level)を、既定のレベルである `Error` から `Information` に設定するには、Cloud Shell から [`az webapp log config`](/cli/azure/webapp/log#az_webapp_log_config) コマンドを使用します。
+1. App Service で ASP.NET Core の[ログ レベル](/dotnet/core/extensions/logging#log-level)を、既定のレベルである `Error` から `Information` に設定するには、Cloud Shell から [`az webapp log config`](/cli/azure/webapp/log#az_webapp_log_config) コマンドを使用します。
 
     ```azurecli-interactive
     az webapp log config --name <app-name> --resource-group myResourceGroup --application-logging filesystem --level information
@@ -492,21 +492,7 @@ Azure App Service で ASP.NET Core アプリが稼動している間、コンソ
 
 1. 任意のタイミングでログのストリーミングを停止するには、`Ctrl`+`C` と入力します。
 
-ASP.NET Core のログのカスタマイズの詳細については、「[ASP.NET Core でのログ記録](/aspnet/core/fundamentals/logging)」を参照してください。
-
-## <a name="manage-your-azure-app"></a>Azure アプリを管理する
-
-1. 作成したアプリを確認するには、[Azure portal](https://portal.azure.com) で **[App Services]** を検索して選択します。
-
-    ![Azure portal で App Services を選択する](./media/tutorial-dotnetcore-sqldb-app/app-services.png)
-
-1. **[App Services]** ページで、Azure アプリの名前を選択します。
-
-    ![Azure アプリへのポータル ナビゲーション](./media/tutorial-dotnetcore-sqldb-app/access-portal.png)
-
-    既定では、ポータルにはアプリの **[概要]** ページが表示されます。 このページでは、アプリの動作状態を見ることができます。 ここでは、参照、停止、開始、再開、削除のような基本的な管理タスクも行うことができます。 ページの左側にあるタブは、開くことができるさまざまな構成ページを示しています。
-
-    ![Azure Portal の [App Service] ページ](./media/tutorial-dotnetcore-sqldb-app/web-app-blade.png)
+ASP.NET Core のログのカスタマイズの詳細については、「[.NET でのログ記録](/dotnet/core/extensions/logging)」を参照してください。
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
@@ -517,7 +503,7 @@ ASP.NET Core のログのカスタマイズの詳細については、「[ASP.NE
 
 > [!div class="checklist"]
 > * Azure で SQL データベースを作成する
-> * .NET Core アプリを SQL Database に接続する
+> * ASP.NET Core アプリを SQL データベースに接続する
 > * Azure にアプリケーションをデプロイする
 > * データ モデルを更新し、アプリを再デプロイする
 > * Azure からターミナルにログをストリーミングする
