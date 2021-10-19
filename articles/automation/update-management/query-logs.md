@@ -33,7 +33,7 @@ Update Management では、Windows および Linux VM のレコードと、ロ�
 | ManagementGroupName | Operations Manager 管理グループまたは Log Analytics ワークスペースの名前。 |
 | Product | 更新プログラムが適用される製品。 |
 | PublishDate | Windows Update から更新プログラムをダウンロードしてインストールする準備ができた日付。 |
-| サーバー | | 
+| Server | | 
 | SourceHealthServiceId | Log Analytics Windows エージェント ID を表す一意識別子。 |
 | SourceSystem | *OperationsManager* |
 | TenantId | Azure Active Directory の組織のインスタンスを表す一意識別子。 |
