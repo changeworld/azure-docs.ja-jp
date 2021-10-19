@@ -125,7 +125,7 @@ Sectigo Certificate Manager による Azure AD のシングル サインオン�
     
     1. **[新しいクレームの追加]** を選択し、次の 4 つのクレームを追加します。
     
-        | 名前 | 名前空間 | source | ソース属性 | [説明] |
+        | 名前 | 名前空間 | source | ソース属性 | 説明 |
         | --- | --- | --- | --- | --- |
         | eduPersonPrincipalName | empty | 属性 | user.userprincipalname | 管理者用 Sectigo Certificate Manager の **[IdP Person ID]\(IdP 人物 ID\)** フィールドの内容と合致している必要があります。 |
         | mail | empty | 属性 | User.mail | 必須 |
