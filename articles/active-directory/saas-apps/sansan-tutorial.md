@@ -88,7 +88,7 @@ Sansan で Azure AD SSO を構成してテストするには、次の構成要�
        | 環境 | URL |
       |:--- |:--- |
       | PC |`https://ap.sansan.com/v/saml2/<company name>/acs` |
-      | スマートフォン アプリ |`https://internal.api.sansan.com/<company name>/acs` |
+      | スマートフォン アプリ |`https://internal.api.sansan.com/saml2/<company name>/acs` |
       | スマートフォン Web |`https://ap.sansan.com/s/saml2/<company name>/acs` |
 
     > [!NOTE]
