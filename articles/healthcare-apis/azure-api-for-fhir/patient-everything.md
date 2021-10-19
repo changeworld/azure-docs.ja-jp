@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 06/04/2021
 ms.author: cavoeg
-ms.openlocfilehash: 935084c12551dcbebecf3f10bb0e6eff19eff45f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 83c38f2add15481bab844f1c21a142644b546c0c
+ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121780777"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123429210"
 ---
 # <a name="patient-everything-in-fhir"></a>FHIR の patient-everything
 
@@ -58,7 +58,7 @@ GET {FHIRURL}/Patient/{ID}/$everything?start=2010&end=2020
 
 $patient-everything を使用して、患者の観察と発生を照会するには、次の呼び出しを使用します。 
 ```json
-GET {FHIRURL}/Patient/{ID}/$everything_type=Observation,Encounter 
+GET {FHIRURL}/Patient/{ID}/$everything?_type=Observation,Encounter 
 ```
 
 $patient-everything を使用して、2021-05-27T05:00:00Z 以降の患者の "すべて" を照会するには、次の呼び出しを使用します。 

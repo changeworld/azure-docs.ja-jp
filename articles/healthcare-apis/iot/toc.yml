@@ -1,0 +1,36 @@
+items:
+  - name: IoT コネクタ
+    href: index.yml
+  - name: 概要
+    expanded: true
+    items:
+      - name: IoT コネクタについて
+        href: iot-connector-overview.md
+  - name: クイックスタート
+    expanded: true
+    items:
+      - name: IoT コネクタをデプロイする
+        expanded: true
+        items:
+          - name: ポータルの使用
+            href: deploy-iot-connector-in-azure.md
+  - name: 操作方法ガイド
+    expanded: true
+    items:
+      - name: Azure IoT Hub を通じてデバイス データを受信する
+        href: device-data-through-iot-hub.md
+      - name: IoT データ フロー
+        href: iot-data-flow.md
+      - name: デバイス マッピングを使用する
+        href: how-to-use-device-mapping-iot.md
+      - name: FHIR 変換先マッピングを使用する
+        href: how-to-use-fhir-mapping-iot.md
+      - name: 診断設定を使用して IoT コネクタのメトリックをエクスポートする
+        href: iot-metrics-diagnostics-export.md
+  - name: リソース
+    expanded: true
+    items:
+      - name: オープンソース プロジェクト
+        href: iot-git-projects.md
+      - name: トラブルシューティング ガイド
+        href: iot-troubleshoot-guide.md

@@ -1,0 +1,102 @@
+### YamlMime:Landing
+title: Azure の医療 Api (プレビュー) のドキュメント
+summary: FHIR、DICOM、データ変換など、すべての Azure 医療 Api (プレビュー) サービスに関するドキュメント。
+metadata:
+  title: Azure の医療 Api のドキュメント
+  description: FHIR、DICOM、データ変換など、すべての Azure 医療 Api 製品とサービスに関するドキュメント
+  services: healthcare-apis
+  ms.service: healthcare-apis
+  ms.topic: landing-page
+  ms.collection: collection
+  author: msjasteppe
+  ms.author: jasteppe
+  ms.date: 10/05/2021
+  ms.openlocfilehash: dc71d1a28dd572c1635c22f8505409c0905d397c
+  ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+  ms.translationtype: MT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 10/05/2021
+  ms.locfileid: "129545342"
+landingContent:
+- title: 医療 Api とは
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 医療 Api について
+      url: healthcare-apis-overview.md
+    - text: ワークスペースの概要
+      url: workspace-overview.md
+  - linkListType: deploy
+    links:
+    - text: 医療 Api の概要
+      url: healthcare-apis-quickstart.md
+- title: 医療 Api の使用
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 認証と承認
+      url: authentication-authorization.md
+    - text: REST クライアントを使用したアクセス
+      url: using-rest-client.md
+  - linkListType: reference
+    links:
+    - text: 医療 Api に関する Faq
+      url: healthcare-apis-faqs.md
+- title: データの転送と変換
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: データのエクスポート
+      url: ./data-transformation/export-data.md
+    - text: データを Synapse にエクスポートする
+      url: ./data-transformation/move-to-synapse.md
+  - linkListType: concept
+    links:
+    - text: データの変換
+      url: ./data-transformation/convert-data.md
+- title: FHIR サービス
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: FHIR サービスについて
+      url: ./fhir/overview.md
+  - linkListType: deploy
+    links:
+    - text: ポータルを使用して FHIR サービスをデプロイする
+      url: ./fhir/fhir-portal-quickstart.md
+  - linkListType: tutorial
+    links:
+    - text: 相互運用性と患者アクセス
+      url: ./fhir/cms-tutorial-introduction.md
+    - text: FHIR 検索操作
+      url: ./fhir/overview-of-search.md
+- title: DICOM サービス
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: DICOM サービスについて
+      url: ./dicom/dicom-services-overview.md
+  - linkListType: deploy
+    links:
+    - text: ポータルを使用して DICOM サービスをデプロイする
+      url: ./dicom/deploy-dicom-services-in-azure.md
+  - linkListType: tutorial
+    links:
+    - text: DICOMweb 標準 Api
+      url: ./dicom/dicomweb-standard-apis-with-dicom-services.md
+    - text: DICOM 変更フィード
+      url: ./dicom/pull-dicom-changes-from-change-feed.md
+- title: IoT コネクタ
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: IoT コネクタについて
+      url: ./iot/iot-connector-overview.md
+  - linkListType: deploy
+    links:
+    - text: ポータルを使用して IoT コネクタをデプロイする
+      url: ./iot/deploy-iot-connector-in-azure.md
+  - linkListType: tutorial
+    links:
+    - text: Azure IoT Hub を通じてデバイス データを受信する
+      url: ./iot/device-data-through-iot-hub.md

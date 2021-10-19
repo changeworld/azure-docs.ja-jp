@@ -1,0 +1,51 @@
+### YamlMime:Landing
+title: DICOM のドキュメント
+summary: Azure の医療 Api (プレビュー) のための DICOM サービスのドキュメントページ。
+metadata:
+  title: Azure の医療 Api の DICOM サービス
+  description: Azure の医療 Api に関する DICOM ドキュメントセクション
+  services: healthcare-apis
+  ms.service: healthcare-apis
+  ms.subservice: fhir
+  ms.topic: landing-page
+  ms.collection: collection
+  author: ginalee-dotcom
+  ms.author: ginle
+  ms.date: 06/21/2021
+  ms.openlocfilehash: dfd82e198623e435fedc48c6ed54a894951fb659
+  ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+  ms.translationtype: MT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 08/13/2021
+  ms.locfileid: "121777669"
+landingContent:
+- title: DICOM サービスを開始する
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: DICOM サービスについて
+      url: dicom-services-overview.md
+  - linkListType: quickstart
+    links:
+    - text: Azure portal を使用して DICOM サービスをデプロイする
+      url: deploy-dicom-services-in-azure.md
+- title: DICOM サービスの使用
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: C での DICOMweb Standard Api の使用#
+      url: dicomweb-standard-apis-c-sharp.md
+    - text: CURL での DICOMweb Standard Api の使用
+      url: dicomweb-standard-apis-curl.md
+    - text: Python での DICOMweb Standard Api の使用
+      url: dicomweb-standard-apis-python.md
+- title: DICOM 変更フィード
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: DICOM change feed とは
+      url: dicom-change-feed-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: 変更フィードを使用して DICOM の変更をプルする
+      url: pull-dicom-changes-from-change-feed.md

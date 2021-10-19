@@ -1,18 +1,18 @@
 ---
 title: Azure API for FHIR でカスタム検索を実行する方法
-description: この記事では、データベースで使用される独自のカスタム検索パラメーターを定義する方法について説明します。
+description: この記事では、Azure API for FHIR で独自のカスタム検索パラメーターを定義して、データベースで使用する方法について説明します。
 author: ginalee-dotcom
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
 ms.date: 05/03/2021
 ms.author: cavoeg
-ms.openlocfilehash: 1fd19057d71a4ef6ac7f199d9fd133285ffeee18
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 28acdb257fe3eee41eb1585e9f1c60a26c91b0ad
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121781206"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129358488"
 ---
 # <a name="defining-custom-search-parameters-for-azure-api-for-fhir"></a>Azure API for FHIR のカスタム検索パラメーターの定義
 

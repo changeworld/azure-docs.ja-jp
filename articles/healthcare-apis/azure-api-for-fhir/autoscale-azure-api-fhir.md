@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 07/26/2021
 ms.author: zxue
-ms.openlocfilehash: cc5fd2dd91c1edc39886938d91ebb54bcbc3ef0d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d1aa4a6797fe6d7794f07b5da7832d80ac026e71
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121780862"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122823334"
 ---
 # <a name="autoscale-for-azure-api-for-fhir"></a>Azure API for FHIR の自動スケーリング 
 
@@ -33,7 +33,7 @@ ms.locfileid: "121780862"
 
 ## <a name="how-to-adjust-the-maximum-throughput-rus"></a>最大スループット RU/秒 を調整する方法
 
-自動スケーリングが有効になっている場合、システムは初期の `Tmax` 値を計算して設定します。 スケーラビリティは、最大スループット `RU/s` 値または `Tmax` によって制御され、`0.1 *Tmax` (または 10% `Tmax`) から `Tmax RU/s` の間で実行されます。 
+自動スケーリングが有効になっている場合、システムは初期の `Tmax` 値を計算して設定します。 スケーラビリティは、最大スループットの値 (または) によって制御され、 `RU/s` `Tmax` `0.1 *Tmax` (または 10%) との間でスケーリングし `Tmax` `Tmax RU/s` ます。 
 
 最大 `RU/s` または `Tmax` 値を引き上げて、サービスによってサポートされる上限まで高くすることができます。 サービスがビジー状態の場合、スループット `RU/s` は `Tmax` 値にスケールアップされます。 サービスがアイドル状態の場合、スループット `RU/s` は 10% `Tmax` 値にスケールダウンされます。
  
@@ -43,7 +43,17 @@ ms.locfileid: "121780862"
 * **例 2**: 20 GB のデータを持っており、プロビジョニングされた最大 `RU/s` は 100,000 です。 最小値は Max (4000, **100,000/10**, 20x400) = 10,000 です。 2 番目の数値 **100,000/10 =10,000** が使用されます。
 * **例 3**: 80 GB のデータを持っており、プロビジョニングされた最大 RU/秒は 300,000 です。 最小値は Max (4000, 300,000/10, **80x400**) = 32,000 です。 3 番目の数値 **80x400=32,000** が使用されます。
 
-有効な数値であり、10,000 `RU/s` 以下の場合、ポータルを介して最大 `RU/s` または `Tmax` 値を調整できます。 10,000 を超える `Tmax` 値を要求するサポート チケットを作成できます。
+ポータルを使用して、最大 `RU/s` 値または最大値を調整でき `Tmax` ます。これは、有効な数値で、1万を超えていない場合に使用し `RU/s` ます。 10,000 を超える `Tmax` 値を要求するサポート チケットを作成できます。
+
+>[!Note] 
+>データストレージのサイズが大きくなるにつれて、システムは、そのストレージレベルをサポートできる次の最大 RU/秒に自動的に最大スループットを引き上げます。
+
+
+## <a name="how-to-migrate-to-manual-scale"></a>手動スケールに移行する方法
+
+自動スケールを手動スケールに変更し、スループット RU/秒を指定するには、サポートチケットが必要です。 手動スケールの最小値は、に設定できます。は `MAX (400, highest max RU/s ever provisioned / 100, current storage in GB * 40)` 、最も近い1000に丸めら `RU/s` れます。 ここで使用される数値は、自動スケールで使用される番号とは異なります。
+
+変更が完了すると、新しい課金レートは手動スケールに基づいて算出されます。
 
 ## <a name="what-is-the-cost-impact-of-autoscale"></a>自動スケーリングのコストへの影響
 

@@ -1,0 +1,45 @@
+### YamlMime:Landing
+title: IoT コネクタ
+summary: Azure の医療 Api (プレビュー) の IoT コネクタのドキュメントページ。
+metadata:
+  title: Azure の医療 Api IoT コネクタ
+  description: Azure の医療 Api のデータ変換に関するドキュメントセクション
+  services: healthcare-apis
+  ms.service: healthcare-apis
+  ms.subservice: data-transformation
+  ms.topic: landing-page
+  ms.collection: collection
+  author: msjasteppe
+  ms.author: jasteppe
+  ms.date: 10/12/2021
+  ms.openlocfilehash: 322abc6caf874aa7155b9385e376d066e2c82e11
+  ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+  ms.translationtype: MT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 10/14/2021
+  ms.locfileid: "130003744"
+landingContent:
+- title: IoT コネクタのデプロイ
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: ポータルを使用して IoT コネクタをデプロイする
+      url: deploy-iot-connector-in-azure.md
+- title: IoT コネクタの使用
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: IoT コネクタのデータフロー
+      url: iot-data-flow.md
+    - text: デバイス マッピング
+      url: how-to-use-device-mapping-iot.md
+    - text: FHIR 変換先マッピング
+      url: how-to-use-fhir-mapping-iot.md
+    - text: IoMT コネクタデータマッパーツール
+      url: https://github.com/microsoft/iomt-fhir/tree/master/tools/data-mapper
+- title: Azure IoT Hub
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Azure IoT Hub を通じてデバイス データを受信する
+      url: device-data-through-iot-hub.md

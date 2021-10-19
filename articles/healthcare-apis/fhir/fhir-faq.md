@@ -9,19 +9,19 @@ ms.topic: reference
 ms.date: 08/03/2021
 ms.author: cavoeg
 ms.custom: references_regions
-ms.openlocfilehash: 2b0a4a3aeb0045c0df31c61d6b10b5d9bc12e349
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7e36e91125e721d8ce5ed4dbc2603109838ca531
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121779124"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122780013"
 ---
 # <a name="frequently-asked-questions-about-the-fhir-service"></a>FHIR サービスに関してよく寄せられる質問
 
 > [!IMPORTANT]
 > Azure Healthcare APIs は現在プレビュー段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」に記載されています。
 
-このセクションでは、Azure Healthcare APIs FHIR サービス (FHIR サービスと呼ばれます) に関してよく寄せられる質問について説明します。
+このセクションでは、Azure Healthcare API FHIR サービス (ここでは FHIR サービスと呼ばれる) についてよく寄せられる質問について説明します。
 
 ## <a name="fhir-service-the-basics"></a>FHIR サービス: 基本
 

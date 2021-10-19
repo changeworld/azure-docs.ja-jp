@@ -8,25 +8,25 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: cavoeg
-ms.openlocfilehash: e38295a306e41dee6b92df7839f8f10878535ea1
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 4571d8f1183cd2aa56568d2e5c4f83abb0f7f5dc
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121779623"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122779347"
 ---
 # <a name="azure-active-directory-identity-configuration-for-fhir-service"></a>FHIR サービスのための Azure Active Directory ID の構成
 
 > [!IMPORTANT]
 > Azure Healthcare APIs は現在プレビュー段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」に記載されています。
 
-医療データを扱う場合、データがセキュリティで保護されており、承認されていないユーザーやアプリケーションがアクセスできないようにすることが重要です。 FHIR サーバーは [OAuth 2.0](https://oauth.net/2/) を使用して、このデータのセキュリティを確保します。 FHIR サービスは、OAuth 2.0 ID プロバイダーの一例である [Azure Active Directory](../../active-directory/index.yml) を使用してセキュリティで保護されています。 この記事では、FHIR サーバーの承認の概要と、FHIR サーバーにアクセスするためのトークンを取得するために必要な手順について説明します。 これらの手順は任意の FHIR サーバーと任意の ID プロバイダーに適用されますが、この記事では、Healthcare APIs FHIR サービスと、ID プロバイダーとしての Azure Active Directory (Azure AD) について説明します。
+医療データを扱う場合、データがセキュリティで保護されており、承認されていないユーザーやアプリケーションがアクセスできないようにすることが重要です。 FHIR サーバーは [OAuth 2.0](https://oauth.net/2/) を使用して、このデータのセキュリティを確保します。 Azure Healthcare API (ここでは FHIR サービスと呼ばれる) の FHIR サービスは[、OAuth](../../active-directory/index.yml)2.0 ID プロバイダーの例である Azure Active Directory を使用してセキュリティ保護されます。 この記事では、FHIR サーバーの承認の概要と、FHIR サーバーにアクセスするためのトークンを取得するために必要な手順について説明します。 これらの手順は FHIR サーバーと任意の ID プロバイダーに適用されます。この記事では、ID プロバイダーとして FHIR サービスと Azure Active Directory (Azure AD) について説明します。
 
 ## <a name="access-control-overview"></a>アクセス制御の概要
 
-クライアント アプリケーションから FHIR サービスにアクセスするには、アクセス トークンを提示する必要があります。 アクセス トークンは、クライアントの ID とロール、およびクライアントに与えられた特権に関する情報を伝達する、署名付きの、[Base64](https://en.wikipedia.org/wiki/Base64) でエンコードされたプロパティ (要求) のコレクションです。
+クライアント アプリケーションが FHIR サービスにアクセスするには、アクセス トークンを提示する必要があります。 アクセス トークンは、クライアントの ID とロール、およびクライアントに与えられた特権に関する情報を伝達する、署名付きの、[Base64](https://en.wikipedia.org/wiki/Base64) でエンコードされたプロパティ (要求) のコレクションです。
 
-トークンを取得するにはさまざまな方法がありますが、FHIR サービスでは、正しい要求を含む適切に署名されたトークンである限り、トークンの取得方法は考慮されません。 
+トークンを取得する方法は多数ありますが、トークンが正しい要求を持つ適切に署名されたトークンである限り、FHIR サービスはトークンの取得方法を気にしません。 
 
 [承認コード フロー](../../active-directory/azuread-dev/v1-protocols-oauth-code.md)を例として使用すると、FHIR サーバーへのアクセスでは、次の 4 つの手順が実行されます。
 
@@ -46,15 +46,15 @@ FHIR アプリケーションの開発には、多くの場合、アクセスに
 FHIR サーバーでは、通常、[JSON Web トークン](https://en.wikipedia.org/wiki/JSON_Web_Token) (JWT、"ジョット" と発音する場合がある) が想定されています。 これは、次の 3 つの部分で構成されています。
 
 **パート 1**: ヘッダー。次のようになります。
-    ```json
+```json
     {
       "alg": "HS256",
       "typ": "JWT"
     }
-    ```
+```
 
 **パート 2**: ペイロード (要求)。次に例を示します。
-    ```json
+```json
     {
      "oid": "123",
      "iss": "https://issuerurl",
@@ -63,7 +63,7 @@ FHIR サーバーでは、通常、[JSON Web トークン](https://en.wikipedia.
         "admin"
       ]
     }
-    ```
+```
 
 **パート 3**: 署名。これは、Base64 でエンコードされたヘッダーとペイロードのコンテンツを連結し、ヘッダーに指定されたアルゴリズム (`alg`) に基づいてそれらの暗号化ハッシュを計算することによって計算されます。 サーバーは、ID プロバイダーから公開キーを取得し、このトークンが特定の ID プロバイダーによって発行されたものであり、改ざんされていないことを検証できます。
 

@@ -1,0 +1,16 @@
+items:
+  - name: データの転送と変換
+    href: index.yml
+  - name: データのエクスポート
+    expanded: true
+    items:
+      - name: エクスポートの設定を構成する
+        href: configure-export-data.md
+      - name: エクスポート
+        href: export-data.md
+      - name: 匿名化エクスポート
+        href: de-identified-export.md
+      - name: Synapse へのエクスポート
+        href: move-to-synapse.md
+  - name: データの変換
+    href: convert-data.md

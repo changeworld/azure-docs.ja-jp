@@ -1,19 +1,18 @@
 ---
 title: Azure AD にパブリック クライアント アプリを登録する - Azure API for FHIR
 description: この記事では、Azure での FHIR API のデプロイの準備として、パブリック クライアント アプリケーションを Azure Active Directory に登録する方法について説明します。
-services: healthcare-apis
 author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: conceptual
-ms.date: 08/16/2021
+ms.date: 09/10/2021
 ms.author: cavoeg
-ms.openlocfilehash: 5b089e1c1c6d5a5b621fb50fda9e975e2320ea7e
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: e89d577385e41fc1e2dcd0b58afafc8ccf5371c8
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122396737"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129278312"
 ---
 # <a name="register-a-public-client-application-in-azure-active-directory-for-azure-api-for-fhir"></a>Azure API for FHIR の場合に Azure Active Directory でパブリック クライアント アプリケーションを登録する
 
@@ -55,19 +54,10 @@ ms.locfileid: "122396737"
 
 ## <a name="api-permissions"></a>API のアクセス許可
 
-[Confidential クライアント アプリケーション](register-confidential-azure-ad-client-app.md)と同様に、このアプリケーションがユーザーに代わって要求できる API アクセス許可を選択する必要があります。
+FHIR の Azure API のアクセス許可は、RBAC によって管理されます。 詳細については、「 [FHIR の AZURE RBAC の構成](configure-azure-rbac.md)」を参照してください。
 
-1. **[API のアクセス許可]** を開きます。
-
-    Azure API for FHIR を使用する場合は、 **[所属する組織で使用している API]** の下で Azure Healthcare API を検索して、Azure Healthcare API へのアクセス許可を追加します。 これは、既に [Azure API for FHIR](fhir-paas-powershell-quickstart.md) がデプロイされている場合にのみ、見つけることができます。
-
-    
-    他のリソース アプリケーションを参照している場合は、 **[自分の API][ で作成済みの](register-resource-azure-ad-client-app.md)FHIR API リソース アプリケーションの登録** を選択します。
-
-    ![Azure portal。 新しいパブリック API のアクセス許可 - Azure API for FHIR の既定値](media/public-client-application/api-permissions.png)
-
-
-2. アプリケーションから要求できるようにするアクセス許可を選択します。![Azure portal。 アプリのアクセス許可](media/public-client-application/app-permissions.png)
+>[!NOTE]
+>Postman などのツールを使用して、FHIR 用の Azure API のアクセストークンをするときに、client_credentials の grant_type を使用します。 詳細については、「 [fhir の AZURE api での FHIR api のテスト](tutorial-web-app-test-postman.md)」を参照してください。
 
 ## <a name="validate-fhir-server-authority"></a>FHIR サーバーのオーソリティを検証する
 この記事で登録したアプリケーションと FHIR サーバーが同じ Azure AD テナントにある場合、次の手順に進むことができます。
@@ -79,4 +69,4 @@ ms.locfileid: "122396737"
 この記事では、パブリック クライアント アプリケーションを Azure Active Directory に登録する方法について学習しました。 次に、Postman を使用して FHIR サーバーへのアクセスをテストします。
  
 >[!div class="nextstepaction"]
->[Postman を使用して FHIR サービスにアクセスする](../fhir/using-postman.md)
+>[Postman を使用して FHIR サービスにアクセスする](./../use-postman.md)

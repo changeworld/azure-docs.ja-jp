@@ -1,46 +1,64 @@
 ---
-title: $validateのプロファイルに対して FHIR リソースをAzure API for FHIR
-description: $validateに対して FHIR リソースを作成する
+title: Azure の医療 Api で FHIR サービスのプロファイルに対して FHIR リソースを $validate する
+description: FHIR サービスのプロファイルに対して FHIR リソースを $validate する
 author: ginalee-dotcom
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
-ms.date: 05/06/2021
-ms.author: ginle
-ms.openlocfilehash: 2c367dbed14e0dba9a8a95a3ce2709d2415c7cd6
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.date: 08/03/2021
+ms.author: cavoeg
+ms.openlocfilehash: b52389b6007c436614840a9bad568a0e81cf7fa2
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110466703"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122779572"
 ---
 # <a name="how-to-validate-fhir-resources-against-profiles"></a>プロファイルに対して FHIR リソースを検証する方法
 
-HL7 FHIR は、医療データを格納および交換するための標準的で相互運用可能な方法を定義します。 基本 FHIR 仕様内でも、FHIR が使用されているコンテキストに基づいて追加のルールまたは拡張機能を定義すると便利です。 このようなコンテキスト固有の FHIR の使用では **、FHIR** プロファイルが仕様の追加レイヤーに使用されます。
+> [!IMPORTANT]
+> Azure Healthcare APIs は現在プレビュー段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」に記載されています。
 
-[FHIR プロファイルは](https://www.hl7.org/fhir/profiling.html) 、 として表されるリソースに対する制約や拡張機能などの追加コンテキストを記述します `StructureDefinition` 。 HL7 FHIR 標準では一連の基本リソースが定義され、これらの標準の基本リソースにはジェネリック定義があります。 FHIR プロファイルを使用すると、制約と拡張機能を使用してリソース定義を絞り込み、カスタマイズできます。
+HL7 FHIR は、医療データを格納および交換するための標準的で相互運用可能な方法を定義したものです。 基本の FHIR 仕様の範囲内であっても、FHIR が使用されるコンテキストに基づいて追加のルールまたは拡張を定義すると便利な場合があります。 このようなコンテキスト固有の FHIR 使用法には、仕様の追加レイヤーとして **FHIR プロファイル** が使用されます。
 
-Azure API for FHIRを使用すると、プロファイルに対してリソースを検証して、リソースがプロファイルに準拠していないか確認できます。 この記事では、FHIR プロファイルの基本と、リソースの作成時および更新時にプロファイルに対するリソースの検証に を `$validate` 使用する方法について説明します。
+[FHIR プロファイル](https://www.hl7.org/fhir/profiling.html)はリソースに関する制約や拡張などの追加コンテキストを記述したもので、`StructureDefinition` として表されます。 HL7 FHIR 標準には一連の基本リソースが定義されており、これらの標準の基本リソースはジェネリックな定義になっています。 FHIR プロファイルを使用すると、制約と拡張を使用してリソース定義を絞り込み、カスタマイズできます。
+
+Azure の医療 Api (FHIR サービスと呼ばれます) の FHIR サービスは、プロファイルに対してリソースを検証して、リソースがプロファイルに準拠しているかどうかを確認できます。 この記事では、FHIR プロファイルの基本と、リソースの作成時および更新時に、プロファイルに照らしたリソースの検証のために `$validate` を使用する方法について説明します。
 
 ## <a name="fhir-profile-the-basics"></a>FHIR プロファイル: 基本
 
-プロファイルは、通常はリソースとして表される、リソースに追加のコンテキストを設定 `StructureDefinition` します。 `StructureDefinition` では、リソースの内容またはデータ型に関する一連の規則 (リソースに含むフィールドや、これらのフィールドが受け取る値など) を定義します。 たとえば、プロファイルでは、カーディナリティを制限したり (要素を排除するために最大カーディナリティを 0 に設定したり)、要素の内容を 1 つの固定値に制限したり、リソースに必要な拡張機能を定義したりすることができます。 また、既存のプロファイルに対して追加の制約を指定できます。 は `StructureDefinition` 、正規 URL で識別されます。
+プロファイルによってリソースに追加のコンテキストを設定します。通常それは `StructureDefinition` リソースとして表されます。 `StructureDefinition` を使用して、リソースの内容またはデータ型に関する一連のルール (リソースに含まれるフィールドや、これらのフィールドに設定できる値など) を定義します。 たとえば、プロファイルでカーディナリティを制限 (たとえば要素を除外するために最大カーディナリティを 0 に設定) することや、要素の内容を 1 個の固定値に制限すること、またはリソースに必要な拡張を定義することができます。 また、既存のプロファイルに対して追加の制約を指定することもできます。 `StructureDefinition` は、正規 URL で識別されます。
 
 ```rest
 http://hl7.org/fhir/StructureDefinition/{profile}
 ```
 
-ここで、 フィールド `{profile}` にプロファイルの名前を指定します。
+ここで、`{profile}` フィールドにはプロファイルの名前を指定します。
 
 次に例を示します。
 
-- `http://hl7.org/fhir/StructureDefinition/patient-birthPlace` は、患者の出生時に登録された住所に関する情報を必要とする基本プロファイルです。
-- `http://hl7.org/fhir/StructureDefinition/bmi` は、本文量インデックス (BMI) の観測値を表す方法を定義するもう 1 つの基本プロファイルです。
-- `http://hl7.org/fhir/us/core/StructureDefinition/us-core-allergyintolerance` は、 `AllergyIntolerance` 患者に関連付けられているリソースの最小予想を設定し、拡張機能や値セットなどの必須フィールドを識別する US コアプロファイルです。
+- `http://hl7.org/fhir/StructureDefinition/patient-birthPlace` は、患者の出生地を表す登録済み住所の情報を必要とする基本プロファイルです。
+- `http://hl7.org/fhir/StructureDefinition/bmi` は、肥満度指数 (BMI) の観測値を表す方法を定義するもう 1 つの基本プロファイルです。
+- `http://hl7.org/fhir/us/core/StructureDefinition/us-core-allergyintolerance` は、患者に関連した `AllergyIntolerance` リソースに最小限必要な事項を設定し、拡張や値セットなどの必須フィールドを定めた US Core プロファイルです。
 
-### <a name="base-profile-and-custom-profile"></a>基本プロファイルとカスタムプロファイル
+リソースがいずれかのプロファイルに準拠している場合、そのプロファイルはリソースのフィールド `profile` 内に指定されます。
 
-プロファイルには、基本プロファイルとカスタムプロファイルの2種類があります。 基本プロファイルは、リソースが準拠する必要があるベースであり、 `StructureDefinition` やなどの基本リソースによって定義されてい `Patient` `Observation` ます。 たとえば、Body マスインデックス (BMI) プロファイルは `Observation` 次のように開始します。
+```json
+{
+  "resourceType" : "Patient",
+  "id" : "ExamplePatient1",
+  "meta" : {
+    "lastUpdated" : "2020-10-30T09:48:01.8512764-04:00",
+    "source" : "Organization/PayerOrganizationExample1",
+    "profile" : [
+      "http://hl7.org/fhir/us/carin-bb/StructureDefinition/C4BB-Patient"
+    ]
+  },
+```
+
+### <a name="base-profile-and-custom-profile"></a>基本プロファイルとカスタム プロファイル
+
+プロファイルには、基本プロファイルとカスタム プロファイルの 2 種類があります。 基本プロファイルは、リソースが準拠する必要がある基本の `StructureDefinition` であり、`Patient` や `Observation` などの基本リソースによって定義されています。 たとえば、肥満度指数 (BMI) の `Observation` プロファイルは次のように始まります。
 
 ```json
 {
@@ -50,37 +68,37 @@ http://hl7.org/fhir/StructureDefinition/{profile}
 }
 ```
 
-カスタムプロファイルは、基本プロファイルに加えて、基本仕様に含まれていないリソースパラメーターを制限したり追加したりするための追加の制約のセットです。 カスタムプロファイルは、既存の基本リソースに制約と拡張を指定することによって独自のリソース定義をカスタマイズできるので便利です。 たとえば、性別に基づいてリソースインスタンスを表示するプロファイルを作成し、 `AllergyIntolerance` `Patient` その場合はプロファイルを持つ既存のプロファイルの上にカスタムプロファイルを作成することができ `Patient` `AllergyIntolerance` ます。
+カスタム プロファイルは、基本プロファイルをベースにした追加の制約のセットであり、基本仕様の一部ではないリソース パラメーターを制約または追加します。 カスタム プロファイルは、既存の基本リソースに対する制約と拡張を指定することによって自分独自のリソース定義をカスタマイズできるため、便利です。 たとえば、`Patient` の性別に基づいて `AllergyIntolerance` リソースのインスタンスを示すプロファイルを作成する必要がある場合は、既存の `Patient` プロファイルをベースに `AllergyIntolerance` プロファイルを使用してカスタム プロファイルを作成します。
 
 > [!NOTE]
-> カスタムプロファイルは基本リソース上に構築する必要があり、基本リソースと競合することはできません。 たとえば、要素のカーディナリティが 1 ..1 の場合、カスタムプロファイルでオプションを設定することはできません。
+> カスタム プロファイルは、基本リソースをベースにして作成する必要があり、基本リソースと競合することはできません。 たとえば、要素のカーディナリティが 1..1 の場合、カスタム プロファイルでそれを省略可能にすることはできません。
 
-カスタムプロファイルは、さまざまな実装ガイドでも指定されています。 いくつかの一般的な実装ガイドは次のとおりです。
+カスタムプロファイルは、さまざまな実装ガイドでも指定されています。 一般的な実装ガイドを次に示します。
 
 |名前 |URL
 |---- |----
-米国コア |<https://www.hl7.org/fhir/us/core/>
-青いボタン |<http://hl7.org/fhir/us/carin-bb/>
-Da ヴィンチ支払人データ交換 |<http://hl7.org/fhir/us/davinci-pdex/>
+Us Core |<https://www.hl7.org/fhir/us/core/>
+CARIN Blue Button |<http://hl7.org/fhir/us/carin-bb/>
+Da Vinci Payer Data Exchange |<http://hl7.org/fhir/us/davinci-pdex/>
 Argonaut |<http://www.fhir.org/guides/argonaut/pd/>
 
-## <a name="accessing-profiles-and-storing-profiles"></a>プロファイルへのアクセスとプロファイルの保存
+## <a name="accessing-profiles-and-storing-profiles"></a>プロファイルへのアクセスとプロファイルの格納
 
-### <a name="storing-profiles"></a>プロファイルの保存
+### <a name="storing-profiles"></a>プロファイルの格納
 
-プロファイルをサーバーに保存するには、次のように `POST` 要求します。
-
-```rest
-POST http://<your FHIR service base URL>/{Resource}
-```
-
-フィールドはに `{Resource}` よって置き換えられ、 `StructureDefinition` `StructureDefinition` リソース `POST` はまたはの形式でサーバーに対して使用され `JSON` `XML` ます。 たとえば、プロファイルを格納する場合は `us-core-allergyintolerance` 、次の操作を行います。
+サーバーにプロファイルを格納する場合は、`POST` 要求を行うことができます。
 
 ```rest
-POST http://my-fhir-server.azurewebsites.net/StructureDefinition?url=http://hl7.org/fhir/us/core/StructureDefinition/us-core-allergyintolerance
+POST http://<your FHIR service base URL>/StructureDefinition
 ```
 
-US Core の大企業の容容プロファイルが格納され、取得される場所:
+たとえば、`us-core-allergyintolerance` プロファイルを格納する場合は、次のようにします。
+
+```rest
+POST https://myworkspace-myfhirserver.fhir.azurehealthcareapis.com/StructureDefinition?url=http://hl7.org/fhir/us/core/StructureDefinition/us-core-allergyintolerance
+```
+
+ここで US Core Allergy Intolerance プロファイルを格納および取得します。
 
 ```json
 {
@@ -112,7 +130,7 @@ US Core の大企業の容容プロファイルが格納され、取得される
 ...
 ```
 
-ほとんどのプロファイルのリソースの種類は ですが、用語リソースである と の種類 `StructureDefinition` `ValueSet` `CodeSystem` を [指定](http://hl7.org/fhir/terminologies.html) することもできます。 たとえば、JSON 形式のプロファイルの場合、サーバーは、 の場合と同様に、プロファイルに割り当てられた格納されたプロファイル `POST` `ValueSet` `id` を返します `StructureDefinition` 。 条件重大度プロファイルをアップロードするときに取得する例を次に [示します。](https://www.hl7.org/fhir/valueset-condition-severity.html) このプロファイルでは、条件/診断の重大度プロファイルの条件を指定します。
+ほとんどのプロファイルはリソースの種類が `StructureDefinition` ですが、`ValueSet` および `CodeSystem` の種類であることもあります。これらは[用語](http://hl7.org/fhir/terminologies.html)のリソースです。 たとえば、JSON 形式で `ValueSet` プロファイルを `POST` すると、サーバーからは、`StructureDefinition` の場合と同様に、格納されているプロファイルがプロファイルに割り当てられた `id` と共に返されます。 病状または診断の重症度の段階を指定した[病状重症度](https://www.hl7.org/fhir/valueset-condition-severity.html)プロファイルをアップロードしたときに返される例を次に示します。
 
 ```json
 {
@@ -151,25 +169,25 @@ US Core の大企業の容容プロファイルが格納され、取得される
 ...
 ```
 
-が で、プロファイルの が 型であるも指定されているの `resourceType` `ValueSet` `url` を確認できます `ValueSet` `"http://hl7.org/fhir/ValueSet/condition-severity"` 。
+`resourceType` は `ValueSet` であり、プロファイルの `url` によって、これが種類 `ValueSet` の `"http://hl7.org/fhir/ValueSet/condition-severity"` であることも指定されています。
 
 ### <a name="viewing-profiles"></a>プロファイルの表示
 
-要求を使用して、サーバー内の既存のカスタム プロファイルにアクセス `GET` できます。 実装ガイドの有効な正規 URL を持つプロファイルなど、すべての有効なプロファイルには、次のクエリを実行してアクセスできる必要があります。
+`GET` 要求を使用して、サーバーにある既存のカスタム プロファイルにアクセスできます。 実装ガイドにある有効な正規 URL を持つプロファイルなど、すべての有効なプロファイルには、次のクエリを実行してアクセスできます。
 
 ```rest
 GET http://<your FHIR service base URL>/StructureDefinition?url={canonicalUrl} 
 ```
 
-フィールドが `{canonicalUrl}` プロファイルの正規 URL に置き換えられる場所。
+ここで、フィールド `{canonicalUrl}` は、ご自分のプロファイルの正規 URL で置き換えます。
 
-たとえば、US Core リソース プロファイルを表示する `Goal` 場合は、次のようになります。
+たとえば、US Core `Goal` リソース プロファイルを表示する場合は、次のようにします。
 
 ```rest
-GET http://my-fhir-server.azurewebsites.net/StructureDefinition?url=http://hl7.org/fhir/us/core/StructureDefinition/us-core-goal
+GET https://myworkspace-myfhirserver.fhir.azurehealthcareapis.com/StructureDefinition?url=http://hl7.org/fhir/us/core/StructureDefinition/us-core-goal
 ```
 
-これにより、US `StructureDefinition` Core Goal プロファイルのリソースが返されます。これは次のように開始されます。
+これにより、US Core Goal プロファイルの `StructureDefinition` リソースが返されます。これは次のように始まります。
 
 ```json
 {
@@ -197,7 +215,7 @@ GET http://my-fhir-server.azurewebsites.net/StructureDefinition?url=http://hl7.o
 ...
 ```
 
-FHIR サーバーは基本プロファイルのインスタンスを返しませんが、HL7 Web サイトで簡単に `StructureDefinition` 見つくことができます。次に例を示します。
+FHIR サービスは `StructureDefinition` 基本プロファイルのインスタンスを返しませんが、HL7 web サイトで簡単に見つけることができます。次に例を示します。
 
 - `http://hl7.org/fhir/Observation.profile.json.html`
 - `http://hl7.org/fhir/Patient.profile.json.html`
@@ -205,14 +223,14 @@ FHIR サーバーは基本プロファイルのインスタンスを返しませ
 
 ### <a name="profiles-in-the-capability-statement"></a>機能ステートメントのプロファイル
 
-には、構造体の定義や値セットなど、サーバー機能のステートメントとして使用できる FHIR サーバーのすべての動作 `Capability Statement` が一覧表示されます。 Azure API for FHIR機能ステートメントを更新し、アップロードされたプロファイルと格納されたプロファイルに関する情報を次の形式で更新します。
+には、 `Capability Statement` 構造の定義や値セットなど、サーバー機能のステートメントとして使用される FHIR サービスのすべての動作が一覧表示されます。 FHIR サービスは、アップロードおよび保存されたプロファイルに関する情報を次の形式で使用して、機能ステートメントを更新します。
 
 - `CapabilityStatement.rest.resource.profile`
 - `CapabilityStatement.rest.resource.supportedProfile`
 
-これらは、カーディナリティ、バインド、拡張機能、その他の制限に関する制約を含め、リソースの全体的なサポートを記述するプロファイルのすべての仕様を示します。 そのため、 `POST` の形式のプロファイル `StructureDefinition` と `GET` リソースメタデータを使用して完全な機能ステートメントを確認すると、 `supportedProfiles` アップロードしたプロファイルのすべての詳細がパラメーターの横に表示されます。
+これらは、カーディナリティに関する制約、バインド、拡張、その他の制限を含め、リソースに関するサポート全般を記述するプロファイルのすべての仕様を示します。 したがって、`StructureDefinition` の形式のプロファイルを `POST` し、完全な機能ステートメントを確認するためにリソース メタデータを `GET` すると、`supportedProfiles` パラメーターの横に、アップロードしたプロファイルに関するすべての詳細が表示されます。
 
-たとえば、 `POST` 米国コアの患者プロファイルの場合、次のようになります。
+たとえば、US Core Patient プロファイルの `POST` を行う場合は、次のように始まります。
 
 ```json
 {
@@ -229,13 +247,13 @@ FHIR サーバーは基本プロファイルのインスタンスを返しませ
 ...
 ```
 
-`GET`次の要求を送信し `metadata` ます。
+`metadata` の `GET` 要求を送信します。
 
 ```rest
 GET http://<your FHIR service base URL>/metadata
 ```
 
-`CapabilityStatement`FHIR サーバーにアップロードした米国コア患者プロファイルに関する次の情報を含むが返されます。
+FHIR サーバーにアップロードした US Core Patient プロファイルに関する次の情報を含む `CapabilityStatement` が返されます。
 
 ```json
 ...
@@ -248,24 +266,24 @@ GET http://<your FHIR service base URL>/metadata
 ...
 ```
 
-## <a name="validating-resources-against-the-profiles"></a>プロファイルに対するリソースの検証
+## <a name="validating-resources-against-the-profiles"></a>プロファイルに照らしたリソースの検証
 
-やなどの FHIR リソースは、 `Patient` `Observation` 特定のプロファイルへの準拠を表すことができます。 これにより、FHIR サーバーは、関連付けられたプロファイルまたは指定されたプロファイルに対して、指定されたリソースを **検証** することができます。 プロファイルに対してリソースを検証するということは、リソースがプロファイルに準拠しているかどうかを確認することです。これには、「」 `Resource.meta.profile` または「実装ガイド」に記載されている仕様
+`Patient` や `Observation` などの FHIR リソースによって、特定のプロファイルへの準拠を表すことができます。 これにより、FHIR サービスは、関連付けられているプロファイルまたは指定されたプロファイルに対して、指定されたリソースを **検証** できます。 プロファイルに照らしてリソースを検証すると、ご自分のリソースが、`Resource.meta.profile` または実装ガイドに記述されている仕様を含めてプロファイルに準拠していることを確認できます。
 
-リソースを検証する方法は2つあります。 最初に、 `$validate` FHIR サーバーに既に存在するリソースに対して操作を使用できます。 次に、 `POST` リソースまたは操作の一部としてサーバーに対して行うことができ `Update` `Create` ます。 どちらの場合も、FHIR サーバー構成を使用して、リソースが目的のプロファイルに準拠していない場合の対処方法を決定できます。
+ご自分のリソースを検証するには、2 つの方法があります。 最初に、 `$validate` FHIR サービスに既に存在するリソースに対して操作を使用できます。 次に、リソースの `Update` または `Create` 操作の一部としてサーバーに `POST` できます。 どちらの場合も、FHIR サービス構成を使用して、リソースが目的のプロファイルに準拠していない場合の対処方法を決定できます。
 
 ### <a name="using-validate"></a>$validate の使用
 
-操作は、指定された `$validate` プロファイルが有効かどうか、およびリソースが指定されたプロファイルに準拠しているかどうかを確認します。 [HL7 FHIR 仕様](https://www.hl7.org/fhir/resource-operation-validate.html)に記載されているように、やなどのを指定することもでき `mode` `$validate` `create` `update` ます。
+`$validate` は、指定されたプロファイルが有効かどうか、およびリソースが指定されたプロファイルに準拠しているかどうかを確認する操作です。 [HL7 FHIR 仕様](https://www.hl7.org/fhir/resource-operation-validate.html)に規定されているとおり、`$validate` の `mode` (`create`、`update` など) も指定できます。
 
-- `create`: サーバーは、プロファイルコンテンツが既存のリソースから一意であること、および新しいリソースとして作成できることを確認します。
-- `update`: プロファイルが、指名された既存のリソースに対する更新であることを確認します (変更できないフィールドに変更が加えられていないなど)。
+- `create`: プロファイルの内容が既存のリソースと重複しておらず、新しいリソースとしての作成が許容されることがサーバーで確認されます
+- `update`: プロファイルが、指定された既存のリソースに対する更新であること (変更できないフィールドに変更が加えられていないなど) が確認されます
 
-サーバーは、常にを `OperationOutcome` 検証結果として返します。
+サーバーからは検証結果として常に `OperationOutcome` が返されます。
 
 #### <a name="validating-an-existing-resource"></a>既存のリソースの検証
 
-既存のリソースを検証するには、要求でを使用し `$validate` `GET` ます。
+既存のリソースを検証するには、`GET` 要求で `$validate` を使用します。
 
 ```rest
 GET http://<your FHIR service base URL>/{resource}/{resource ID}/$validate
@@ -274,10 +292,10 @@ GET http://<your FHIR service base URL>/{resource}/{resource ID}/$validate
 次に例を示します。
 
 ```rest
-GET http://my-fhir-server.azurewebsites.net/Patient/a6e11662-def8-4dde-9ebc-4429e68d130e/$validate
+GET https://myworkspace-myfhirserver.fhir.azurehealthcareapis.com/Patient/a6e11662-def8-4dde-9ebc-4429e68d130e/$validate
 ```
 
-上の例では、既存のリソース を検証 `Patient` します `a6e11662-def8-4dde-9ebc-4429e68d130e` 。 有効な場合は、次 `OperationOutcome` のような が表示されます。
+上の例では、既存の `Patient` リソース `a6e11662-def8-4dde-9ebc-4429e68d130e` を検証しています。 有効な場合は、次のような `OperationOutcome` が表示されます。
 
 ```json
 {
@@ -292,7 +310,7 @@ GET http://my-fhir-server.azurewebsites.net/Patient/a6e11662-def8-4dde-9ebc-4429
 }
 ```
 
-リソースが有効でない場合は、エラー コードと、リソースが無効な理由の詳細を含むエラー メッセージが表示されます。 または エラーは、検証自体を実行できませんでした。また、リソースが有効かどうか `4xx` `5xx` は不明です。 エラー メッセージ `OperationOutcome` で返される例は次のようになります。
+リソースが有効でない場合は、エラー コードと、リソースが無効な理由の詳細を含むエラー メッセージが表示されます。 `4xx` または `5xx` エラーは、検証自体を実行できなかったことを意味し、リソースが有効かどうかは不明です。 エラー メッセージが返された `OperationOutcome` の例を次に示します。
 
 ```json
 {
@@ -334,24 +352,17 @@ GET http://my-fhir-server.azurewebsites.net/Patient/a6e11662-def8-4dde-9ebc-4429
 }
 ```
 
-上記の例では、リソースは、指定されたプロファイルに準拠していなかったので、患者識別子の値と `Patient` 性別が必要でした。
+上記のこの例では、指定した `Patient` プロファイルでは患者識別子の値と性別が必須ですが、リソースにそれに準拠していませんでした。
 
-パラメーターとしてプロファイルを指定する場合は、検証するプロファイルの正規 URL を指定できます。たとえば、US Core プロファイルを使用した次の例と、 の基本プロファイル `Patient` を指定します `heartrate` 。
-
-```rest
-GET http://<your FHIR service base URL>/{Resource}/{Resource ID}/$validate?profile={canonicalUrl}
-```
-
-次に例を示します。
+プロファイルをパラメーターとして指定する場合は、次に示す `heartrate` の HL7 基本プロファイルの例のように、検証の基準となるプロファイルの正規 URL を指定できます。
 
 ```rest
-GET http://my-fhir-server.azurewebsites.net/Patient/a6e11662-def8-4dde-9ebc-4429e68d130e/$validate?profile=http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient
-GET http://my-fhir-server.azurewebsites.net/Observation/12345678/$validate?profile=http://hl7.org/fhir/StructureDefinition/heartrate
+GET https://myworkspace-myfhirserver.fhir.azurehealthcareapis.com/Observation/12345678/$validate?profile=http://hl7.org/fhir/StructureDefinition/heartrate
 ```
 
 #### <a name="validating-a-new-resource"></a>新しいリソースの検証
 
-サーバーにアップロードする新しいリソースを検証する場合は、次の要求を実行 `POST` できます。
+サーバーにアップロードしようとしている新しいリソースを検証する場合は、`POST` 要求を実行できます。
 
 ```rest
 POST http://<your FHIR service base URL>/{Resource}/$validate
@@ -360,14 +371,14 @@ POST http://<your FHIR service base URL>/{Resource}/$validate
 次に例を示します。
 
 ```rest
-POST http://my-fhir-server.azurewebsites.net/Patient/$validate 
+POST https://myworkspace-myfhirserver.fhir.azurehealthcareapis.com/Patient/$validate 
 ```
 
-この要求では、要求ペイロードで指定する新しいリソースが JSON 形式でも XML 形式でも作成され、アップロードされたリソースが検証されます。 次に、新しい `OperationOutcome` リソースの検証の結果として が返されます。
+この要求を使用すると、JSON または XML のどちらの形式でも、要求ペイロードに指定する新しいリソースが作成され、アップロードしたリソースが検証されます。 次に、新しいリソースに対する検証の結果として `OperationOutcome` が返されます。
 
-### <a name="validate-on-resource-create-or-resource-update"></a>リソースの CREATE またはリソースの更新に関する検証
+### <a name="validate-on-resource-create-or-resource-update"></a>リソースの CREATE またはリソースの UPDATE に対する検証
 
-リソースの CREATE や UPDATE など、リソースを検証する場合に選択できます。 これは、サーバー構成設定の の下で指定できます `CoreFeatures` 。
+リソースの CREATE や UPDATE の時点など、リソースをいつ検証するかに選択できます。 これは、サーバー構成設定の `CoreFeatures` で指定できます。
 
 ```json
 {
@@ -379,8 +390,8 @@ POST http://my-fhir-server.azurewebsites.net/Patient/$validate
 }
 ```
 
-リソースが指定された に準拠し、プロファイルがシステムに存在する場合、サーバーは上記の構成設定に従 `Resource.meta.profile` って機能します。 指定されたプロファイルがサーバーに存在しない場合、検証要求は無視され、 に残されます `Resource.meta.profile` 。
-検証は通常、コストのかかる操作なので、通常はテスト サーバーまたはリソースの小さなサブセットでのみ実行されます。そのため、検証操作をサーバー側でオンまたはオフにするこれらの方法を使用することが重要です。 サーバー構成でリソースの作成/更新の検証を無効にするように指定した場合、ユーザーは `header` 作成/更新要求のでその動作をオーバーライドできます。
+リソースが指定された `Resource.meta.profile` に準拠し、プロファイルがシステムに存在する場合、サーバーは上記の構成設定に従って機能します。 指定されたプロファイルがサーバーに存在しない場合、検証要求は無視され、`Resource.meta.profile` に残されます。
+通常、検証はコストのかかる操作なので、通常はテスト サーバーまたはリソースの小さなサブセットでのみ実行します。そのため、検証操作をサーバー側でオンまたはオフにするこれらの方法を使用できることが重要です。 サーバー構成でリソースの作成または更新時の検証をオプトアウトするように指定している場合、ユーザーは、作成または更新要求の `header` にそれを指定することで、動作をオーバーライドできます。
 
 ```rest
 x-ms-profile-validation: true
@@ -388,7 +399,7 @@ x-ms-profile-validation: true
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、FHIR プロファイルと、$validate を使用してプロファイルに対してリソースを検証する方法について説明しました。 FHIR のその他のサポートされている機能の Azure API の詳細については、次を参照してください。
+この記事では、FHIR プロファイルと、$validate を使用してプロファイルに照らしてリソースを検証する方法について説明しました。 FHIR サービスのその他のサポートされている機能の詳細については、次を参照してください。
 
 >[!div class="nextstepaction"]
->[FHIR でサポートされる機能](fhir-features-supported.md)
+>[FHIR でサポートされている機能](fhir-features-supported.md)

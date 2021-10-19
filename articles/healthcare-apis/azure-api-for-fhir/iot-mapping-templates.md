@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: conceptual
 ms.date: 04/05/2021
 ms.author: rabhaiya
-ms.openlocfilehash: 690a406c9cb0dd7644656c78236a2001ae0f0f2e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
-ms.translationtype: HT
+ms.openlocfilehash: 4b32bf7a505fb7ca3958d8add69e3deb25cee0a1
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121779516"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "124748735"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-mapping-templates"></a>Azure IoT Connector for FHIR (プレビュー) のマッピング テンプレート
 この記事では、マッピング テンプレートを使用して、Azure IoT Connector for FHIR&#174; (高速ヘルスケア相互運用性リソース)* を構成する方法について詳しく説明します。
@@ -65,8 +65,8 @@ Azure IoT Connector for FHIR には、JSON ベースのマッピング テンプ
 #### <a name="jsonpathcontenttemplate"></a>JsonPathContentTemplate
 JsonPathContentTemplate では、JSON パスを使用して、イベント ハブ メッセージの値の照合と抽出を行うことができます。
 
-| プロパティ | 説明 |<div style="width:150px">例</div>
-| --- | --- | --- 
+| プロパティ | 説明 |例 |
+| --- | --- | --- |
 |**TypeName**|テンプレートに一致する測定値に関連付ける型。|`heartrate`
 |**TypeMatchExpression**|イベント ハブのペイロードに対して評価される JSON パス式。 一致する JToken が見つかった場合、テンプレートは一致と見なされます。 後続のすべての式は、ここで一致した抽出済みの JToken に対して評価されます。|`$..[?(@heartRate)]`
 |**TimestampExpression**|測定の OccurenceTimeUtc のタイムスタンプ値を抽出する JSON パス式。|`$.endDate`
@@ -445,7 +445,7 @@ CodeValueFhirTemplate は、FHIR マッピングで現在サポートされて�
 |**Codes[].System**|[Coding](http://hl7.org/fhir/datatypes-definitions.html#coding) のシステム。
 |**Codes[].Display**|[Coding](http://hl7.org/fhir/datatypes-definitions.html#coding) の表示。
 |**Value**|観察で抽出して表す値。 詳細については、「[値の型テンプレート](#valuetypes)」を参照してください。
-|**コンポーネント**|*省略可能:* 観察に対して作成する 1 つ以上のコンポーネント。
+|**Components**|*省略可能:* 観察に対して作成する 1 つ以上のコンポーネント。
 |**Components[].Codes**|コンポーネントに適用する 1 つ以上の [Codings](http://hl7.org/fhir/datatypes-definitions.html#coding)。
 |**Components[].Value**|コンポーネントで抽出して表す値。 詳細については、「[値の型テンプレート](#valuetypes)」を参照してください。
 

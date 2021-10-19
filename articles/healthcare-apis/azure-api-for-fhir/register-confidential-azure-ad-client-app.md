@@ -1,19 +1,18 @@
 ---
 title: Azure AD に Confidential クライアント アプリを登録する - Azure API for FHIR
 description: ユーザーの代わりに認証し、リソース アプリケーションへのアクセスを要求する Confidential クライアント アプリを Azure Active Directory に登録します。
-services: healthcare-apis
 author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: conceptual
-ms.date: 08/16/2021
+ms.date: 09/10/2021
 ms.author: cavoeg
-ms.openlocfilehash: 5f49b73e034e4a38ba6022270a68f3d6c2018a40
-ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+ms.openlocfilehash: 2851f230a19bfbafb514e9fb22fd3f37de1f610b
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122396838"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129272549"
 ---
 # <a name="register-a-confidential-client-application-in-azure-active-directory-for-azure-api-for-fhir"></a>Azure API for FHIR の Azure Active Directory で Confidential クライアント アプリケーションを登録する
 
@@ -45,25 +44,10 @@ ms.locfileid: "122396838"
 
 ## <a name="api-permissions"></a>API のアクセス許可
 
-これでアプリケーションが登録されたので、ユーザーに代わり、このアプリケーションによって要求する必要のある API アクセス許可を選択する必要があります。
+FHIR の Azure API のアクセス許可は、RBAC によって管理されます。 詳細については、「 [FHIR の AZURE RBAC の構成](configure-azure-rbac.md)」を参照してください。
 
-1. **[API のアクセス許可]** を選択します。
-
-    :::image type="content" source="media/add-azure-active-directory/portal-aad-register-new-app-registration-confidential-client-api-permissions.png" alt-text="機密クライアント。API のアクセス許可。":::
-
-1. **[アクセス許可の追加]** を選択します。
-
-    Azure API for FHIR を使用する場合は、 **[所属する組織で使用している API]** で **Azure Healthcare APIs** を検索し、Azure Healthcare API へのアクセス許可を追加します。 Azure Healthcare API の検索結果は、[Azure API for FHIR を既にデプロイした](fhir-paas-powershell-quickstart.md)場合にのみ返されます。
-
-    別のリソース アプリケーションを参照している場合は、 **[自分の API]** で作成済みの [FHIR API リソース アプリケーションの登録](register-resource-azure-ad-client-app.md)を選択します。
-
-
-    :::image type="content" source="media/confidential-client-application/confidential-client-org-api.png" alt-text="Confidential クライアント。自分の組織の API" lightbox="media/confidential-client-application/confidential-app-org-api-expanded.png":::
-    
-
-1. ユーザーに代わって機密クライアント アプリケーションが要求できるスコープ (アクセス許可) を選択します。 **user_impersonation** を選択し、 **[アクセス許可の追加]** を選択します。
-
-    :::image type="content" source="media/confidential-client-application/confidential-client-add-permission.png" alt-text="Confidential クライアント。委任されたアクセス許可":::
+>[!NOTE]
+>Postman などのツールを使用して、FHIR 用の Azure API のアクセストークンをするときに、client_credentials の grant_type を使用します。 詳細については、「 [fhir の AZURE api での FHIR api のテスト](tutorial-web-app-test-postman.md)」を参照してください。
 
 
 ## <a name="application-secret"></a>アプリケーション シークレット
@@ -88,4 +72,4 @@ ms.locfileid: "122396838"
 この記事では、Azure AD に機密クライアント アプリケーションを登録する方法の手順について説明しました。 また、Azure Healthcare API に API アクセス許可を追加する方法の手順も説明しました。 最後に、アプリケーション シークレットを作成する方法を示しました。 さらに、Postman を使用して FHIR サーバーにアクセスする方法を学習できます。
  
 >[!div class="nextstepaction"]
->[Postman を使用して FHIR サービスにアクセスする](../fhir/using-postman.md)
+>[Postman を使用して FHIR サービスにアクセスする](./../use-postman.md)

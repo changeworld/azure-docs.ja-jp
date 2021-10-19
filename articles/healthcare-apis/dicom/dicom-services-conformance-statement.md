@@ -6,14 +6,14 @@ author: stevewohl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
-ms.date: 08/04/2021
+ms.date: 10/05/2021
 ms.author: aersoy
-ms.openlocfilehash: 8a43c48108c5714a0c11b08cf28b0fade1729596
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 32a368243ab2114799dd9ce9d2ffcdf3306115c9
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121779626"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130044669"
 ---
 # <a name="dicom-conformance-statement"></a>DICOM 適合性宣言書
 
@@ -361,7 +361,7 @@ DICOM オブジェクトの ID に基づくクエリ (QIDO) を使用すると�
 | (0008, 0030) | StudyTime |
 | (0008, 0050) | AccessionNumber |
 | (0008, 0056) | InstanceAvailability |
-| (0009, 0090) | ReferringPhysicianName |
+| (0008, 0090) | ReferringPhysicianName |
 | (0008, 0201) | TimezoneOffsetFromUTC |
 | (0010, 0010) | PatientName |
 | (0010, 0020) | PatientID |

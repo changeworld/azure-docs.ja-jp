@@ -1,44 +1,47 @@
 ---
 title: IoT コネクタでのデバイス マッピング テンプレート - Azure Healthcare APIs
-description: この記事では、IoT コネクタでデバイス マッピング テンプレートを使用する方法について説明します。
-author: stevewohl
+description: この記事では、 のデバイス マッピング テンプレートを使用する方法について説明IoT Connector。
+author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: conceptual
-ms.date: 07/12/2021
-ms.author: rabhaiya
-ms.openlocfilehash: 4e4515db5c908dc111e21bcea19c927967d68105
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 10/12/2021
+ms.author: jasteppe
+ms.openlocfilehash: a0cc7037ca95fe4262b6c10dc9cb260a971f7c31
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121778976"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130005541"
 ---
-# <a name="how-to-use-the-device-mapping-template"></a>デバイス マッピング テンプレートの使用方法
+# <a name="how-to-use-device-mapping"></a>デバイス マッピングを使用する方法
 
-IoT コネクタには、JSON ベースの 2 種類のマッピング テンプレートが必要です。 1 種類目の **デバイス マッピング** は、`devicedata` Azure Event Hub エンドポイントに送信されるデバイス ペイロードのマッピングを担います。 型、デバイス識別子、測定日時、測定値を抽出します。 
+> [!IMPORTANT]
+> Azure Healthcare APIs は現在プレビュー段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」に記載されています。
 
-2 種類目の **FHIR マッピング** は、FHIR リソースのマッピングを制御します。 これにより、観察期間の長さ、値の格納に使用される FHIR データ型、用語コードを構成できます。 
+IoT コネクタには、2 種類の JSON ベースのマッピングが必要です。 1 種類目の **デバイス マッピング** は、`devicedata` Azure Event Hub エンドポイントに送信されるデバイス ペイロードのマッピングを担います。 型、デバイス識別子、測定日時、測定値を抽出します。 
 
-2 種類のマッピング テンプレートは、その種類に基づいた JSON ドキュメント内に構成されます。 その後これらの JSON ドキュメントは、Azure portal を通じて Azure IoT Connector for FHIR に追加されます。 デバイス マッピング ドキュメントは **[Configure Device mapping]\(デバイス マッピングの構成\)** ページで、FHIR マッピング ドキュメントは **[Configure FHIR mapping]\(FHIR マッピングの構成\)** ページで追加されます。
+2 番目の型 **である 高速ヘルスケア相互運用性リソース (FHIR&#174;) 変換** 先マッピングは、FHIR リソースのマッピングを制御します。 これにより、観察期間の長さ、値の格納に使用される FHIR データ型、用語コードを構成できます。 
+
+2 種類のマッピングは、その型に基づいて JSON ドキュメントに構成されます。 これらの JSON ドキュメントは、次の手順を使用して IoT コネクタにAzure portal。 [デバイス マッピング] ドキュメントは、[デバイス **マッピング]** ページと [宛先] ページの FHIR 変換先マッピング ドキュメントを通 **じて追加** されます。
 
 > [!NOTE]
-> マッピング テンプレートは、基になる BLOB ストレージに格納され、コンピューティングの実行ごとに BLOB から読み込まれます。 更新された場合は、すぐに有効になります。 
+> マッピングは基になる BLOB ストレージに格納され、コンピューティングの実行ごとに BLOB から読み込まれます。 更新された場合は、すぐに有効になります。 
 
 ## <a name="device-mapping"></a>デバイス マッピング
 
 デバイス マッピングには、さらなる評価のためにデバイス コンテンツを共通の形式に抽出するマッピング機能が用意されています。 受信した各メッセージが、すべてのテンプレートに対して評価されます。 この方法によって、1 つの受信メッセージを複数の送信メッセージに投影し、後で FHIR の異なる観察にマップすることができます。 結果は、テンプレートによって解析された 1 つまたは複数の値を表す、正規化されたデータ オブジェクトです。 正規化されたデータ モデルには、検出して抽出する必要がある、いくつかの必須プロパティがあります。
 
-| プロパティ | 説明 |
-| - | - |
-|**Type**|測定を分類するための名前または種類。 この値は、必要な FHIR マッピング テンプレートにバインドするために使用されます。  複数のテンプレートを同じ種類に出力して、複数のデバイス間で異なる表現を 1 つの共通出力にマップできます。|
-|**OccurenceTimeUtc**|測定が発生した時刻。|
-|**DeviceId**|デバイスの識別子。 この値は、送信先の FHIR サーバーに存在するデバイス リソースの識別子と一致している必要があります。|
- |**Properties**|作成された Observation リソースに値を保存できるように、少なくとも 1 つのプロパティを抽出します。  プロパティは、正規化中に抽出されたキーと値のペアのコレクションです。|
+| プロパティ             | 説明                                                                                                                                                                                                                                                   |
+|----------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Type**             | 測定を分類するための名前または種類。 この値は、必要な FHIR 変換先マッピングにバインドするために使用されます。  複数のマッピングを同じ種類に出力することで、複数のデバイス間で異なる表現を 1 つの一般的な出力にマップできます。 |
+| **OccurenceTimeUtc** | 測定が発生した時刻。                                                                                                                                                                                                                            |
+| **DeviceId**         | デバイスの識別子。 この値は、宛先 FHIR サービスに存在するデバイス リソースの識別子と一致する必要があります。                                                                                                                       |
+| **Properties**       | 作成された Observation リソースに値を保存できるように、少なくとも 1 つのプロパティを抽出します。  プロパティは、正規化中に抽出されたキーと値のペアのコレクションです。                                                                                  |
 
 次に、正規化時の動作の概念を表す例を示します。
 
-[ ![正規化の例](media/concepts-iot-mapping-templates/normalization-example.png) ](media/concepts-iot-mapping-templates/normalization-example.png#lightbox)
+![正規化の例](media/concepts-iot-mapping-templates/normalization-example.png#lightbox)
 
 コンテンツ ペイロード自体は、次の 3 つの部分で構成される Azure Event Hub メッセージです: Body、Properties、SystemProperties。 `Body` は、UTF-8 でエンコードされた文字列を表すバイト配列です。 テンプレートの評価中に、バイト配列は自動的に文字列値に変換されます。 `Properties` は、メッセージの作成者が使用するキー値のコレクションです。 `SystemProperties` も、Azure Event Hub フレームワークによって予約され、エントリが自動的に入力されるキー値コレクションです。
 
@@ -61,21 +64,21 @@ IoT コネクタには、JSON ベースの 2 種類のマッピング テンプ�
 ```
 ### <a name="mapping-with-json-path"></a>JSON パスを使用したマッピング
 
-現在サポートされている 3 つのデバイス コンテンツ テンプレートの種類は、必要なテンプレートと抽出された値の両方に一致する JSON パスに依存しています。 JSON パスの詳細については、[こちら](https://goessner.net/articles/JsonPath/)を参照してください。 3 種類のテンプレートすべてで、JSON パス式を解決するために、[JSON .NET 実装](https://www.newtonsoft.com/json/help/html/QueryJsonSelectTokenJsonPath.htm)が使用されます。
+現在サポートされている 3 つのデバイス コンテンツ マッピングの種類は、必要なマッピングと抽出された値の両方に一致する JSON パスに依存しています。 JSON パスの詳細については、[こちら](https://goessner.net/articles/JsonPath/)を参照してください。 3 種類のテンプレートすべてで、JSON パス式を解決するために、[JSON .NET 実装](https://www.newtonsoft.com/json/help/html/QueryJsonSelectTokenJsonPath.htm)が使用されます。
 
 #### <a name="jsonpathcontenttemplate"></a>JsonPathContentTemplate
 
 JsonPathContentTemplate では、JSON パスを使用して、イベント ハブ メッセージの値の照合と抽出を行うことができます。
 
-| プロパティ | 説明 |<div style="width:150px">例</div>
-| --- | --- | --- 
+| プロパティ | 説明 |例 |
+| --- | --- | --- |
 |**TypeName**|テンプレートに一致する測定値に関連付ける型。|`heartrate`
 |**TypeMatchExpression**|イベント ハブのペイロードに対して評価される JSON パス式。 一致する JToken が見つかった場合、テンプレートは一致と見なされます。 後続のすべての式は、ここで一致した抽出済みの JToken に対して評価されます。|`$..[?(@heartRate)]`
 |**TimestampExpression**|測定の OccurenceTimeUtc のタイムスタンプ値を抽出する JSON パス式。|`$.endDate`
 |**DeviceIdExpression**|デバイス識別子を抽出する JSON パス式。|`$.deviceId`
 |**PatientIdExpression**|*省略可能*:患者識別子を抽出する JSON パス式。|`$.patientId`
 |**EncounterIdExpression**|*省略可能*:面接識別子を抽出する JSON パス式。|`$.encounterId`
-|**Values[].ValueName**|後続の式によって抽出された値に関連付ける名前。 FHIR マッピング テンプレートで必要な値またはコンポーネントをバインドするために使用します。 |`hr`
+|**Values[].ValueName**|後続の式によって抽出された値に関連付ける名前。 FHIR 変換先マッピングで必要な値/コンポーネントをバインドするために使用されます。 |`hr`
 |**Values[].ValueExpression**|必要な値を抽出する JSON パス式。|`$.heartRate`
 |**Values[].Required**|ペイロード内に値が存在する必要があります。  見つからない場合は、測定値が生成されず、InvalidOperationException がスローされます。|`true`
 
@@ -261,7 +264,7 @@ JsonPathContentTemplate では、JSON パスを使用して、イベント ハ�
 
 IotJsonPathContentTemplate は JsonPathContentTemplate に似ていますが、DeviceIdExpression と TimestampExpression は必要ありません。
 
-このテンプレートを使用する場合、評価対象メッセージが [Azure IoT Hub デバイス SDK](../../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks) または [Azure IoT Central](../../iot-central/core/overview-iot-central.md) の[データのエクスポート (レガシ)](../../iot-central/core/howto-export-data-legacy.md) 機能を使用して送信されたことが前提になります。 これらの SDK を使用する場合、デバイス ID (Azure Iot Hub/Central からのデバイス識別子が宛先 FHIR サーバー上のデバイス リソースの識別子として登録されていることを前提としています) とメッセージのタイムスタンプは既知です。 Azure IoT Hub デバイス SDK を使用しているが、メッセージ本文でデバイス ID または測定タイムスタンプにカスタム プロパティを使用している場合でも、JsonPathContentTemplate を使用できます。
+このテンプレートを使用する場合、評価対象メッセージが [Azure IoT Hub デバイス SDK](../../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks) または [Azure IoT Central](../../iot-central/core/overview-iot-central.md) の[データのエクスポート (レガシ)](../../iot-central/core/howto-export-data-legacy.md) 機能を使用して送信されたことが前提になります。 これらの SDK を使用する場合、デバイス ID (Azure Iot Hub/Central のデバイス識別子が宛先 FHIR サービス上のデバイス リソースの識別子として登録されている場合) と、メッセージのタイムスタンプが確認されます。 Azure IoT Hub デバイス SDK を使用しているが、メッセージ本文でデバイス ID または測定タイムスタンプにカスタム プロパティを使用している場合でも、JsonPathContentTemplate を使用できます。
 
 > [!NOTE]
 > `IotJsonPathContentTemplate` を使用するときは、`TypeMatchExpression` が JToken としてメッセージ全体に解決される必要があります。 詳細については、次の例を参照してください。
@@ -448,5 +451,6 @@ IotCentralJsonPathContentTemplate でも、DeviceIdExpression と TimestampExpre
 ## <a name="next-steps"></a>次のステップ
 
 >[!div class="nextstepaction"]
->[IoT FHIR マッピングを使用する方法](how-to-use-fhir-mapping-iot.md)
+>[FHIR 変換先マッピングを使用する方法](how-to-use-fhir-mapping-iot.md)
 
+(FHIR&#174;) [HL7](https://hl7.org/fhir/) の登録商標であり、HL7 のアクセス許可と共に使用されます。

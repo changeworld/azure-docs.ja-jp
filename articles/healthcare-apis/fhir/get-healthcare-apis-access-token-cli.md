@@ -1,43 +1,73 @@
 ---
-title: Azure CLI を使用してアクセス トークンを取得する - Azure API for FHIR
-description: この記事では、Azure CLI を使用して Azure API for FHIR のアクセス トークンを取得する方法について説明します。
+title: Azure CLI または Azure PowerShell を使用してアクセス トークンを取得する - FHIR サービス
+description: この記事では、Azure CLI または Azure PowerShell を使用して FHIR サービスのアクセス トークンを取得する方法について説明します。
 services: healthcare-apis
 author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: conceptual
-ms.date: 02/26/2019
+ms.date: 10/14/2021
 ms.author: zxue
-ms.openlocfilehash: 45752add8b55761a656193d2815e469f115af148
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 672089ac061430121916efff67280c08c1c6943f
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112288687"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129619439"
 ---
-# <a name="get-access-token-for-azure-api-for-fhir-using-azure-cli"></a>Azure CLI を使用して Azure API for FHIR のアクセス トークンを取得する
+# <a name="get-access-token-for-fhir-service-using-azure-cli-or-azure-powershell"></a>Azure CLI または Azure PowerShell を使用して FHIR サービスのアクセス トークンを取得する
 
-この記事では、Azure CLI を使用して Azure API for FHIR のアクセス トークンを取得する方法について説明します。 [Azure API for FHIR をプロビジョニングする](fhir-paas-portal-quickstart.md)場合は、サービスにアクセスできるユーザーまたはサービス プリンシパルのセットを構成します。 ユーザー オブジェクト ID が許可されているオブジェクト ID の一覧にある場合は、Azure CLI を使用して取得したトークンを使用して、サービスにアクセスすることができます。
+> [!IMPORTANT]
+> Azure Healthcare APIs は現在プレビュー段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」に記載されています。
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+この記事では、 Azure CLI を使用して、Azure Healthcare API (ここでは FHIR サービスと呼ばれる) で FHIR サービスのアクセス トークンを取得する方法について説明します。 [FHIR サービス をプロビジョニングする場合は](fhir-portal-quickstart.md)、サービスにアクセスできるユーザーまたはサービス プリンシパルのセットを構成します。 ユーザー オブジェクト ID が許可されているオブジェクト ID の一覧にある場合は、Azure CLI を使用して取得したトークンを使用して、サービスにアクセスすることができます。
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+この記事では、Azure Healthcare API (ここでは FHIR サービスと呼ばれる) で、Azure PowerShell を使用して FHIR サービスのアクセス トークンを取得する方法について説明します。 [FHIR サービス をプロビジョニングする場合は](fhir-portal-quickstart.md)、サービスにアクセスできるユーザーまたはサービス プリンシパルのセットを構成します。 ユーザー オブジェクト ID が許可されているオブジェクト ID の一覧にある場合は、 を使用して取得したトークンを使用してサービスAzure PowerShell。
+
+[!INCLUDE [azure-powershell-requirements.md](../../../includes/azure-powershell-requirements.md)]
+
+---
 ## <a name="obtain-a-token"></a>トークンを取得する
 
-Azure API for FHIR は、FHIR サーバーの URI (`https://<FHIR ACCOUNT NAME>.azurehealthcareapis.com`) と同じ URI で `resource` または `Audience` を使用します。 次のコマンドを使用して、トークンを取得し、変数 (`$token`) に格納することができます。
+FHIR サービスは、FHIR サーバーの URI と等しい URI を持 `resource` `Audience` つ または を使用します `https://<FHIR ACCOUNT NAME>.azurehealthcareapis.com` 。 次のコマンドを使用して、トークンを取得し、変数 (`$token`) に格納することができます。
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli-interactive
-$token=$(az account get-access-token --resource=https://<FHIR ACCOUNT NAME>.azurehealthcareapis.com --query accessToken --output tsv)
+token=$(az account get-access-token --resource=https://<FHIR ACCOUNT NAME>.azurehealthcareapis.com --query accessToken --output tsv)
 ```
 
-## <a name="use-with-azure-api-for-fhir"></a>Azure API for FHIR での使用
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+```azurepowershell-interactive
+$token = (Get-AzAccessToken -ResourceUrl 'https://<FHIR ACCOUNT NAME>.azurehealthcareapis.com').Token
+```
+
+---
+
+## <a name="use-with-fhir-service"></a>FHIR サービスでの使用
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli-interactive
 curl -X GET --header "Authorization: Bearer $token" https://<FHIR ACCOUNT NAME>.azurehealthcareapis.com/Patient
 ```
 
-## <a name="next-steps"></a>次のステップ
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
-この記事では、Azure CLI を使用して Azure API for FHIR のアクセス トークンを取得する方法を学習しました。 Postman を使用して FHIR API にアクセスする方法を学習するには、Postman のチュートリアルに進んでください。
+```azurepowershell-interactive
+$headers = @{Authorization="Bearer $token"}
+Invoke-WebRequest -Method GET -Headers $headers -Uri 'https://<FHIR ACCOUNT NAME>.azurehealthcareapis.com/Patient'
+```
+
+---
 
 >[!div class="nextstepaction"]
->[Postman を使用して FHIR API にアクセスする](access-fhir-postman-tutorial.md)
+>[Postman を使用して FHIR API にアクセスする](../use-postman.md)

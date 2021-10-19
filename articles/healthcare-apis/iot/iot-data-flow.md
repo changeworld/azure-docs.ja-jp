@@ -1,65 +1,69 @@
 ---
-title: '概念: FHIR サービスの Azure IoT Connector for FHIR (プレビュー) 機能のデータ フロー'
-description: Azure IoT Connector for FHIR (プレビュー) のデータ フローについて説明します。 Azure IoT Connector for FHIR (プレビュー) は、IoMT データの取り込み、正規化、グループ化、変換、FHIR サービスへの保存を行います。
+title: IoT コネクタのデータフロー-Azure の医療 Api
+description: IoT コネクタのデータフローを理解します。 IoT コネクタは、取り込み、正規化、グループ化、変換を行い、IoMT データを FHIR サービスに永続化します。
 services: healthcare-apis
-author: ms-puneet-nagpal
+author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: conceptual
-ms.date: 11/13/2020
-ms.author: rabhaiya
-ms.openlocfilehash: 27252c0ed1a247e05d26a0bf393e44ebc4b9c68b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 10/12/2021
+ms.author: jasteppe
+ms.openlocfilehash: 41ad8d284636e431b74c43006bb544f737ce1f47
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121779417"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130005505"
 ---
-# <a name="iot-connector-for-fhir-data-flow"></a>IoT Connector for FHIR: データ フロー
+# <a name="iot-connector-data-flow"></a>IoT コネクタのデータフロー
 
-この記事では、Azure IoT Connector for Fast Healthcare Interoperability Resources (FHIR&#174;)* のデータ フローの概要について説明します。 デバイス データを FHIR ベースの [Observation](https://www.hl7.org/fhir/observation.html) リソースに変換する、Azure IoT Connector for FHIR 内のさまざまなデータ処理段階について説明します。
+> [!IMPORTANT]
+> Azure Healthcare APIs は現在プレビュー段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」に記載されています。
 
-上の図は、Azure IoT Connector for FHIR を使用した一般的なデータ フローを示しています。 
+この記事では、IoT コネクタの概要について説明します。 デバイスデータを高速医療相互運用性リソース (FHIR&#174;) ベースの [監視](https://www.hl7.org/fhir/observation.html) リソースに変換する IoT コネクタ内のさまざまなデータ処理ステージについて説明します。
 
-以下は、Azure IoT Connector for FHIR によって受信されたデータが経由するさまざまな段階です。
+次に、IoT コネクタによって受信されたデータのさまざまな段階を示します。
 
 ## <a name="ingest"></a>取り込み
-取り込みは、デバイス データが Azure IoT Connector for FHIR に受信される最初の段階です。 デバイス データのインジェスト エンドポイントは、[Azure Event Hubs](../../event-hubs/index.yml) でホストされます。 Azure Event Hubs プラットフォームは、1 秒あたり数百万件のメッセージを受信して処理する機能により、高いスケールおよびスループットを実現します。 また、これを使用すると、Azure IoT Connector for FHIR でメッセージを非同期に使用できるようになり、デバイス データの処理中にデバイスの待機が不要になります。
+取り込みは、デバイスデータを IoT コネクタに受信する最初の段階です。 デバイス データのインジェスト エンドポイントは、[Azure Event Hubs](../../event-hubs/index.yml) でホストされます。 Azure Event Hubs プラットフォームは、1 秒あたり数百万件のメッセージを受信して処理する機能により、高いスケールおよびスループットを実現します。 また、IoT コネクタはメッセージを非同期に使用できるため、デバイスデータの処理中にデバイスの待機が不要になります。
 
 > [!NOTE]
 > 現時点でデバイス データの形式としてサポートされているは JSON のみです。
 
 ## <a name="normalize"></a>Normalize (正規化)
-次の段階である正規化では、デバイス データが上記の Azure Event Hubs から取得され、デバイス マッピング テンプレートを使用して処理されます。 このマッピング プロセスにより、デバイス データが、正規化されたスキーマに変換されます。 
+ノーマライズは、デバイスデータが上記の Azure Event Hub から取得され、デバイスマッピングを使用して処理される次の段階です。 このマッピング プロセスにより、デバイス データが、正規化されたスキーマに変換されます。 
 
 正規化プロセスによって、後の段階でのデータ処理が簡素化されるだけでなく、1 つの入力メッセージを複数の正規化されたメッセージに投影することもできます。 たとえば、デバイスから 1 つのメッセージで、体温、脈拍数、血圧、および呼吸速度に関する複数の生命兆候を送信できます。 この入力メッセージから、4 つの別個の FHIR リソースが作成されます。 各リソースは異なる生命兆候を表し、入力メッセージが 4 つの異なる正規化されたメッセージに投影されます。
 
 ## <a name="group"></a>グループ
 次の段階であるグループ化では、デバイス ID、測定タイプ、期間の 3 つの異なるパラメーターを使用して、前の段階から入手できる正規化されたメッセージがグループ化されます。
 
-デバイス ID と測定タイプのグループ化により、[SampledData](https://www.hl7.org/fhir/datatypes.html#SampledData) 測定タイプを使用できるようになります。 このタイプは、FHIR 内のデバイスから収集した時間ベースの一連の測定値を表す簡潔な方法を提供します。 また、期間により、Azure IoT Connector for FHIR によって生成された Observation リソースが FHIR サービスに書き込まれるときの待機時間が制御されます。
+デバイス ID と測定タイプのグループ化により、[SampledData](https://www.hl7.org/fhir/datatypes.html#SampledData) 測定タイプを使用できるようになります。 このタイプは、FHIR 内のデバイスから収集した時間ベースの一連の測定値を表す簡潔な方法を提供します。 および期間は、IoT コネクタによって生成される監視リソースが FHIR サービスに書き込まれる待ち時間を制御します。
 
 > [!NOTE]
 > 期間の既定値は 15 分に設定されており、プレビュー用に構成することはできません。
 
 ## <a name="transform"></a>変換
-変換の段階では、グループ化および正規化されたメッセージは FHIR マッピング テンプレートを使用して処理されます。 テンプレートの種類に一致するメッセージは、マッピングで指定されているとおりに FHIR ベースの Observation リソースに変換されます。
+変換段階では、グループ化された正規化メッセージは、FHIR の送信先マッピングテンプレートを通じて処理されます。 テンプレートの種類に一致するメッセージは、マッピングで指定されているとおりに FHIR ベースの Observation リソースに変換されます。
 
-また、この時点で、[Device](https://www.hl7.org/fhir/device.html) リソースとそれに関連付けられている [Patient](https://www.hl7.org/fhir/patient.html) リソースが、メッセージに含まれるデバイス識別子を使用して FHIR サーバーから取得されます。 これらのリソースは、作成される Observation リソースへの参照として追加されます。
+この時点で、 [デバイス](https://www.hl7.org/fhir/device.html) リソースとそれに関連付けられている [患者](https://www.hl7.org/fhir/patient.html) リソースも、メッセージに示されているデバイス識別子を使用して fhir サービスから取得されます。 これらのリソースは、作成される Observation リソースへの参照として追加されます。
 
 > [!NOTE]
-> FHIR サーバーの負荷を軽減するために、すべての ID 参照は一度解決されるとキャッシュされます。 複数の患者に対してデバイスの再利用を予定している場合は、その患者に固有の仮想デバイス リソースを作成し、メッセージ ペイロードで仮想デバイス識別子を送信することをお勧めします。 仮想デバイスは、実際のデバイス リソースに親としてリンクさせることができます。
+> FHIR サービスの負荷を軽減するために、すべての id の参照がキャッシュされています。 複数の患者に対してデバイスの再利用を予定している場合は、その患者に固有の仮想デバイス リソースを作成し、メッセージ ペイロードで仮想デバイス識別子を送信することをお勧めします。 仮想デバイスは、実際のデバイス リソースに親としてリンクさせることができます。
 
-特定のデバイス識別子の Device リソースが FHIR サーバーに存在しない場合、結果は作成時に設定された `Resolution Type` の値によって決まります。 `Lookup` に設定すると、特定のメッセージは無視され、パイプラインは他の受信メッセージの処理を続行します。 `Create` に設定すると、Azure IoT Connector for FHIR によって、FHIR サーバー上に必要最小限の Device および Patient リソースが作成されます。  
+特定のデバイス id のデバイスリソースが FHIR サービスに存在しない場合、結果は作成時に設定されたの値によって決まり `Resolution Type` ます。 `Lookup` に設定すると、特定のメッセージは無視され、パイプラインは他の受信メッセージの処理を続行します。 に設定されている場合 `Create` 、IoT コネクタは、ベアボーンデバイスと患者リソースを FHIR サービスに作成します。  
 
 ## <a name="persist"></a>保持
-変換の段階で Observation FHIR リソースが生成されると、リソースは FHIR サービスに保存されます。 FHIR リソースが新しい場合は、サーバー上に作成されます。 FHIR リソースが既に存在している場合は、更新されます。
+変換ステージで監視 FHIR リソースが生成されると、リソースは FHIR サービスに保存されます。 FHIR リソースが新しい場合は、FHIR サービスに作成されます。 FHIR リソースが既に存在している場合は、更新されます。
 
 ## <a name="next-steps"></a>次のステップ
 
-デバイスおよび FHIR のマッピング テンプレートを作成する方法については、次のステップをクリックしてください。
+デバイスおよび FHIR の変換先マッピングを作成する方法について説明します。
 
->[!div class="nextstepaction"]
->[Azure IoT Connector for FHIR のマッピング テンプレート](how-to-use-device-mapping-iot.md)
+> [!div class="nextstepaction"]
+> [デバイス マッピング](how-to-use-device-mapping-iot.md)
 
-*Azure portal では、Azure IoT Connector for FHIR は IoT Connector (プレビュー) と呼ばれています。 FHIR は HL7 の登録商標であり、HL7 の許可を得て使用しています。 
+> [!div class="nextstepaction"]
+> [FHIR 変換先マッピング](how-to-use-fhir-mapping-iot.md)
+
+(FHIR&#174;) [HL7](https://hl7.org/fhir/) の登録商標であり、HL7 のアクセス許可と共に使用されます。

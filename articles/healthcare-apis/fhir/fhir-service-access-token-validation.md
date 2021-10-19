@@ -8,19 +8,19 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 08/05/2021
 ms.author: cavoeg
-ms.openlocfilehash: 678151fb59941fafb521a9fc62ef2be0b94cf6de
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 557cbb92f643e553c1dae0768e2891abf7327f03
+ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121781198"
+ms.lasthandoff: 08/24/2021
+ms.locfileid: "122779419"
 ---
 # <a name="fhir-service-access-token-validation"></a>FHIR サービス アクセス トークンの検証
 
 > [!IMPORTANT]
 > Azure Healthcare APIs は現在プレビュー段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」に記載されています。
 
-FHIR サービスでのアクセス トークンの検証方法は、実装と構成によって異なります。 この記事では、アクセスの問題のトラブルシューティングを行う際に役立つ検証手順について説明します。
+Azure Healthcare API の FHIR サービス (ここでは FHIR サービスと呼ばれる) がアクセス トークンを検証する方法は、実装と構成によって異なります。 この記事では、アクセスの問題のトラブルシューティングを行う際に役立つ検証手順について説明します。
 
 ## <a name="validate-token-has-no-issues-with-identity-provider"></a>検証トークンには ID プロバイダーに関する問題はない
 
@@ -104,7 +104,7 @@ FHIR サーバーの重要なプロパティである、`jwks_uri` によって�
 
 FHIR サーバーによってトークンの信頼性が検証されると、次にクライアントがトークンにアクセスするために必要な要求があるかどうかが検証されます。
 
-FHIR サービスを使用すると、サーバーによって以下が検証されます。
+FHIR サービスを使用すると、サーバーは次の検証を行います。
 
 1. トークンに適切な `Audience` (`aud` 要求) があること。
 1. トークンが発行されたユーザーまたはプリンシパルが、FHIR サーバーのデータ プレーンにアクセスできること。 トークンの `oid` 要求には、ユーザーまたはプリンシパルを一意に識別する ID オブジェクト ID が含まれています。

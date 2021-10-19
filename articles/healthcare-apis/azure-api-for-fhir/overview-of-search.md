@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 5/17/2021
 ms.author: cavoeg
-ms.openlocfilehash: af0b40ccd33829803978aa5c42f1dcb4c0fcc4c2
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f974cb0a5099ce23f9b7ecaf719c09239c21eca8
+ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121780778"
+ms.lasthandoff: 08/25/2021
+ms.locfileid: "122824531"
 ---
 # <a name="overview-of-search-in-azure-api-for-fhir"></a>Azure API for FHIR での検索の概要
 
@@ -136,7 +136,7 @@ Azure API for FHIRでは、次の検索パラメーター型のペアがサポ�
 | _revinclude                   | はい                  | はい                       |含まれる項目は 100 に制限されています。 Cosmos DB 上の PaaS や OSS の _revinclude には、:iterate のサポートが含まれません [(#2137)](https://github.com/microsoft/fhir-server/issues/2137)。  また、不適切な要求に対する正しくない状態コードがあります [#1319](https://github.com/microsoft/fhir-server/issues/1319)                            |
 | _summary                      | はい             | はい                   |
 | _total                        | 部分的              | 部分的                   | _total=none および _total=accurate                               |
-| _sort                         | 部分的              | 部分的                   | sort=_lastUpdated はサポートされています。 2021 年 4 月 20 日より後に作成された Azure API for FHIR Cosmos および OSS Cosmos DB データベースの場合は、名、姓、および臨床日でも並べ替えがサポートされます。 FHIR サービスと OSS SQL DB データベースでは、文字列と日付による並べ替えがサポートされています。                              |
+| _sort                         | 部分的              | 部分的                   | sort=_lastUpdated はサポートされています。 既定では、レコードは昇順で並べ替えられます。 プレフィックス '-' を使用して、降順で並べ替えることができます。 2021 年 4 月 20 日より後に作成された Azure API for FHIR Cosmos および OSS Cosmos DB データベースの場合は、名、姓、および臨床日でも並べ替えがサポートされます。          |
 | _contained                    | いいえ                   | いいえ                        |
 | _containedType                | いいえ                   | いいえ                        |
 | _score                        | いいえ                   | いいえ                        |
