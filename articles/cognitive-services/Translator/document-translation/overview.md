@@ -1,6 +1,6 @@
 ---
-title: ドキュメント変換とは
-description: クラウドベースのバッチ ドキュメント翻訳サービスとプロセスの概要について説明します。
+title: Document Translationとは
+description: クラウドベースのバッチDocument Translationサービスとプロセスの概要について説明します。
 ms.topic: overview
 manager: nitinme
 ms.author: lajanuar
@@ -13,16 +13,16 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 03/30/2021
 ms.locfileid: "105968171"
 ---
-# <a name="what-is-document-translation-preview"></a>ドキュメント翻訳とは (プレビュー)
+# <a name="what-is-document-translation-preview"></a>Document Translationとは (プレビュー)
 
-ドキュメント翻訳は、[Azure Translator](../translator-info-overview.md) サービスのクラウドベースの機能であり、REST API の Azure Cognitive Services ファミリの一部です。 Document Translation API は、ドキュメントの構造とデータ形式を維持しながら、90 の言語および方言との間でドキュメントを翻訳します。
+Document Translationは、[Azure Translator](../translator-info-overview.md) サービスのクラウドベースの機能であり、REST API の Azure Cognitive Services ファミリの一部です。 Document Translation API は、ドキュメントの構造とデータ形式を維持しながら、90 の言語および方言との間でドキュメントを翻訳します。
 
 このドキュメントには、次の種類の記事が含まれています。  
 
 * [**クイックスタート**](get-started-with-document-translation.md)は、サービスへの要求の実行方法を説明する概要手順です。
 * [**攻略ガイド**](create-sas-tokens.md)には、より具体的またはカスタマイズした方法で機能を使用するための手順が記載されています。  
 
-## <a name="document-translation-key-features"></a>ドキュメント翻訳の主要機能
+## <a name="document-translation-key-features"></a>Document Translationの主要機能
 
 | 機能 | 説明 |
 | ---------| -------------|
@@ -41,7 +41,7 @@ ms.locfileid: "105968171"
 
 ## <a name="supported-document-formats"></a>サポートされるドキュメントの形式
 
-ドキュメント翻訳では、次の種類のドキュメント ファイルがサポートされています。
+Document Translationでは、次の種類のドキュメント ファイルがサポートされています。
 
 | ファイルの種類| [ファイル拡張子]|説明|
 |---|---|--|
@@ -57,7 +57,7 @@ ms.locfileid: "105968171"
 
 ## <a name="supported-glossary-formats"></a>サポートされている用語集の形式
 
-ドキュメント翻訳では、次の種類の用語集ファイルがサポートされています。
+Document Translationでは、次の種類の用語集ファイルがサポートされています。
 
 | ファイルの種類| [ファイル拡張子]|説明|
 |---|---|--|
@@ -67,4 +67,4 @@ ms.locfileid: "105968171"
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [ドキュメント翻訳を使ってみる](get-started-with-document-translation.md)
+> [Document Translationを使ってみる](get-started-with-document-translation.md)
