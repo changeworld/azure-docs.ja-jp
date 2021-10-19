@@ -124,9 +124,9 @@ az acr build --image webfrontend:v1 \
   --file Dockerfile .
 ```
 
-## <a name="create-your-helm-chart"></a>Helm グラフを作成する
+## <a name="create-your-helm-chart"></a>Helm チャートを作成する
 
-`helm create` コマンドを使用して Helm グラフを生成します。
+`helm create` コマンドを使用して Helm チャートを生成します。
 
 ```console
 helm create webfrontend
@@ -167,9 +167,9 @@ name: webfrontend
 appVersion: v1
 ```
 
-## <a name="run-your-helm-chart"></a>Helm グラフを実行する
+## <a name="run-your-helm-chart"></a>Helm チャートを実行する
 
-`helm install` コマンドを使用して、Helm グラフを使用してアプリケーションをインストールします。
+`helm install` コマンドを使用して、Helm チャートを使用してアプリケーションをインストールします。
 
 ```console
 helm install webfrontend webfrontend/
