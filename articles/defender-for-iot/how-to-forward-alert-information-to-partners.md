@@ -108,7 +108,7 @@ Defender for IoT の管理者には、転送ルールを使用するためのア
     
 :::image type="content" source="media/how-to-work-with-alerts-sensor/configure-encryption.png" alt-text="転送ルール用の暗号化を構成します。":::
 
-| Syslog テキスト メッセージの出力フィールド | [説明] |
+| Syslog テキスト メッセージの出力フィールド | 説明 |
 |--|--|
 | 日付と時刻 | Syslog サーバー マシンで情報が受信された日付と時刻。 |
 | Priority | User.Alert |
@@ -117,7 +117,7 @@ Defender for IoT の管理者には、転送ルールを使用するためのア
 | Message | Sensor:  センサー名。<br /> Alert:  アラートのタイトル。<br /> 型:  アラートの種類。 **[Protocol Violation]** 、 **[Policy Violation]** 、 **[Malware]** 、 **[Anomaly]** 、または **[Operational]** を指定できます。<br /> 重大度:  アラートの重大度。 **[Warning]** 、 **[Minor]** 、 **[Major]** 、または **[Critical]** を指定できます。<br /> ソース:送信元デバイスの名前。<br /> ソース IP: 送信元デバイスの IP アドレス。<br /> 変換先:送信先デバイスの名前。<br /> 宛先 IP:  送信先デバイスの IP アドレス。<br /> メッセージ: アラートのメッセージ。<br /> Alert group: アラートに関連付けられているアラート グループ。 |
 
 
-| Syslog オブジェクトの出力 | [説明] |
+| Syslog オブジェクトの出力 | 説明 |
 |--|--|
 | 日時 |   Syslog サーバー マシンで情報が受信された日付と時刻。 |  
 | Priority |    User.Alert | 
@@ -125,14 +125,14 @@ Defender for IoT の管理者には、転送ルールを使用するためのア
 | Message | Sensor name:  アプライアンスの名前。 <br /> Alert time:  アラートが検出された時刻。 Syslog サーバー マシンの時刻とは異なる場合があり、転送ルールのタイム ゾーン構成によって決まります。 <br /> Alert title:  アラートのタイトル。 <br /> Alert message: アラートのメッセージ。 <br /> Alert severity:  アラートの重大度: **[Warning]** 、 **[Minor]** 、 **[Major]** 、または **[Critical]** 。 <br /> Alert type: **[Protocol Violation]** 、 **[Policy Violation]** 、 **[Malware]** 、 **[Anomaly]** 、または **[Operational]** 。 <br /> プロトコル: アラートのプロトコル。  <br /> **Source_MAC**: 送信元デバイスの IP アドレス、名前、ベンダー、または OS。 <br /> Destination_MAC: 送信先デバイスの IP アドレス、名前、ベンダー、または OS。 データが見つからない場合、この値は **[N/A]** になります。 <br /> alert_group: アラートに関連付けられているアラート グループ。 |
 
 
-| Syslog CEF の出力形式 | [説明] |
+| Syslog CEF の出力形式 | 説明 |
 |--|--|
 | 日付と時刻 | Syslog サーバー マシンで情報が受信された日付と時刻。 |
 | Priority | User.Alert | 
 | hostname | センサーの IP アドレス |
 | Message | CEF:0 <br />Azure Defender for IoT <br />Sensor name:  センサー アプライアンスの名前。 <br /><センサーのバージョン> <br />Alert title: アラートのタイトル。 <br />msg:  アラートのメッセージ。 <br />protocol: アラートのプロトコル。 <br />severity:  **[Warning]** 、 **[Minor]** 、 **[Major]** 、または **[Critical]** 。 <br />type:  **[Protocol Violation]** 、 **[Policy Violation]** 、 **[Malware]** 、 **[Anomaly]** 、または **[Operational]** 。 <br /> start:  アラートが検出された時刻。 <br />Syslog サーバー マシンの時刻とは異なる場合があり、転送ルールのタイム ゾーン構成によって決まります。 <br />src_ip: 送信元デバイスの IP アドレス。  <br />dst_ip: 送信先デバイスの IP アドレス。<br />cat: アラートに関連付けられているアラート グループ。  |
 
-| Syslog LEEF の出力形式 | [説明] |
+| Syslog LEEF の出力形式 | 説明 |
 |--|--|
 | 日付と時刻 |   Syslog サーバー マシンで情報が受信された日付と時刻。 |  
 | Priority |    User.Alert | 
