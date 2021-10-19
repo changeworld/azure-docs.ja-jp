@@ -874,7 +874,7 @@ interpolate(Expression.Interpolator interpolation, Expression number, Expression
 
 `interpolate` 式で使用できる補間メソッドには、次の 3 種類があります。
 
-| 名前 | [説明] |
+| 名前 | 説明 |
 |------|-------------|
 | `linear()` | 分岐点のペア間を直線的に補間します。  |
 | `exponential(number)` \| `exponential(Expression)` | 分岐点間を指数関数的に補間します。 「基数」が指定されており、出力の増加率を制御します。 この値が大きくなるほど、出力は範囲の上限値に偏るように増加します。 「基数」の値が 1 に近づくと、より直線的に増加する出力が生成されます。|
