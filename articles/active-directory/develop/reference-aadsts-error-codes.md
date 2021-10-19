@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: reference
-ms.date: 07/28/2021
+ms.date: 10/11/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 8492b35fae2d2c2d716330002d5f889ec693f8c5
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 55a640be9eacf2feaf3852cf14f3181b924373b6
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129353377"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129856700"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD 認証と承認のエラー コード
 
@@ -27,6 +27,11 @@ Azure Active Directory (Azure AD) セキュリティ トークン サービス (
 > この情報は暫定的なもので、変更されることがあります。 ご質問がありますか。またはお探しの情報が見つかりませんでしたか。 GitHub のイシューを作成するか、「[開発者向けのサポート オプションとヘルプ オプション](./developer-support-help-options.md)」で、ヘルプやサポートを受けるためのその他の方法を参照してください。
 >
 > このドキュメントは、開発者と管理者向けのガイダンスとして提供されています。クライアント自体では決して使用しないでください。 エラー コードは予告なく変更される可能性があります。これは、より詳しいエラー メッセージを提供してアプリケーションを構築中の開発者に役立てていただくためです。 テキストやエラー コード番号に依存するアプリケーションは、時間の経過に伴い正常に機能しなくなります。
+
+## <a name="lookup-current-error-code-information"></a>現在のエラー コード情報の参照
+エラー コードとメッセージは変更される可能性があります。  最新の情報については、[https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) ページを参照して、AADSTS のエラーの説明、修正、およびいくつかの推奨される回避策を確認してください。  
+
+たとえば、"AADSTS50058" というエラー コードを受け取った場合は、[https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) で "50058" を検索します。  次のように URL にエラー コード番号を追加して、特定のエラーに直接リンクすることもできます。[https://login.microsoftonline.com/error?code=50058](https://login.microsoftonline.com/error?code=50058)
 
 ## <a name="handling-error-codes-in-your-application"></a>アプリケーションでのエラー コードの処理
 
@@ -70,11 +75,6 @@ Azure Active Directory (Azure AD) セキュリティ トークン サービス (
 | `invalid_resource` | 対象のリソースは、存在しない、Azure AD が見つけられない、または正しく構成されていないために無効です。 | これは、リソース (存在する場合) がテナントで構成されていないことを示します。 アプリケーションでは、アプリケーションのインストールと Azure AD への追加を求める指示をユーザーに表示できます。  開発中の場合、これは通常、誤って設定されたテスト テナント、または要求されているスコープの名前の入力ミスを示します。 |
 | `interaction_required` | 要求にユーザーの介入が必要です。 たとえば、追加の認証手順が必要です。 | ユーザーが必要なチャレンジをすべて完了できるように、この要求を対話的に、同じリソースで再試行してください。  |
 | `temporarily_unavailable` | サーバーが一時的にビジー状態であるため、要求を処理できません。 | 要求をやり直してください。 クライアント アプリケーションは、一時的な状況が原因で応答が遅れることをユーザーに説明する場合があります。 |
-
-## <a name="lookup-current-error-code-information"></a>現在のエラー コード情報の参照
-エラー コードとメッセージは変更される可能性があります。  最新の情報については、[https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) ページを参照して、AADSTS のエラーの説明、修正、およびいくつかの推奨される回避策を確認してください。  
-
-たとえば、"AADSTS50058" というエラー コードを受け取った場合は、[https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) で "50058" を検索します。  次のように URL にエラー コード番号を追加して、特定のエラーに直接リンクすることもできます。[https://login.microsoftonline.com/error?code=50058](https://login.microsoftonline.com/error?code=50058)
 
 ## <a name="aadsts-error-codes"></a>AADSTS エラー コード
 
