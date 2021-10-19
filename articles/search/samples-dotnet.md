@@ -57,7 +57,7 @@ Cognitive Search チームのコード サンプルは、機能とワークフ�
 | [tutorial-ai-enrichment](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/tutorial-ai-enrichment)  | 「[チュートリアル:.NET SDK を使用して Azure BLOB から AI で生成する検索可能なコンテンツ](cognitive-search-tutorial-blob-dotnet.md)」のソース コード。  |
 
 > [!Tip]
-> [サンプル ブラウザー](/samples/browse/?languages=csharp&products=azure-cognitive-search)を試して、製品、サービス、言語でフィルター処理された Microsoft コード サンプルを Github 内で検索してください。
+> [サンプル ブラウザー](/samples/browse/?languages=csharp&products=azure-cognitive-search)を試して、製品、サービス、言語でフィルター処理された Microsoft コード サンプルを GitHub 内で検索してください。
 
 ## <a name="other-samples"></a>その他のサンプル
 
