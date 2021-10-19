@@ -6,6 +6,6 @@
       tocHref: /azure/cognitive-services/
       topicHref: /azure/cognitive-services/index
       items:
-        - name: '[変換者]'
+        - name: 'Translator'
           tocHref: /azure/cognitive-services/
           topicHref: /azure/cognitive-services/translator/index
