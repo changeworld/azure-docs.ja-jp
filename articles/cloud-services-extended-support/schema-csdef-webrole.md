@@ -316,7 +316,7 @@ HTTP、HTTPS、UDP、TCP の各エンドポイントを組み合わせて複数�
 
 以下の表に、`Runtime` 要素の属性を示します。  
 
-| 属性 | Type | [説明] |  
+| 属性 | Type | 説明 |  
 | --------- | ---- | ----------- |  
 |executionContext|string|省略可能。 ロール プロセスを起動するコンテキストを指定します。 既定のコンテキストは `limited` です。<br /><br /> -   `limited` – プロセスは管理者権限を使用せずに起動されます。<br />-   `elevated` – プロセスは管理者権限を使用して起動されます。|  
 
@@ -340,7 +340,7 @@ HTTP、HTTPS、UDP、TCP の各エンドポイントを組み合わせて複数�
 
 以下の表に、`RoleInstanceValue` 要素の属性を示します。
 
-| 属性 | Type | [説明] |  
+| 属性 | Type | 説明 |  
 | --------- | ---- | ----------- |  
 |xpath|string|省略可能。 インスタンスのデプロイ設定の保存先のパスです。 詳しくは、[XPath を使用した構成変数](../cloud-services/cloud-services-role-config-xpath.md)に関するページをご覧ください。<br /><br /> value 属性か `RoleInstanceValue` 要素のいずれかを指定する必要があります。|  
 
