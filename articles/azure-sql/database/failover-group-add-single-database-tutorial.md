@@ -7,16 +7,16 @@ ms.subservice: high-availability
 ms.custom: sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: tutorial
-author: BustosMSFT
-ms.author: robustos
+author: emlisa
+ms.author: emlisa
 ms.reviewer: mathoma
 ms.date: 06/19/2019
-ms.openlocfilehash: 83fe28a063c455de17e178320f0ff2cc057f3f01
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 79ed4c8a3f7159f0e49603c706e292d3f67db2f3
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110706348"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130166825"
 ---
 # <a name="tutorial-add-an-azure-sql-database-to-an-autofailover-group"></a>チュートリアル:自動フェールオーバー グループに Azure SQL Database を追加する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -163,7 +163,7 @@ ms.locfileid: "110706348"
 
 チュートリアルのこの部分では、次の PowerShell コマンドレットを使用します。
 
-| コマンド | Notes |
+| command | Notes |
 |---|---|
 | [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | 単一データベースとエラスティック プールをホストする Azure SQL Database 内のサーバーを作成します。 |
 | [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Azure SQL Database 内のサーバーのファイアウォール規則を作成します。 |
@@ -286,7 +286,7 @@ PowerShell を使用してフェールオーバーをテストします。
 
 チュートリアルのこの部分では、次の PowerShell コマンドレットを使用します。
 
-| コマンド | Notes |
+| command | Notes |
 |---|---|
 | [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Azure SQL Database のフェールオーバー グループを取得または一覧表示します。 |
 | [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| Azure SQL Databese のフェールオーバー グループのフェールオーバーを実行します。 |
@@ -355,7 +355,7 @@ PowerShell を使用してリソース グループを削除します。
 
 チュートリアルのこの部分では、次の PowerShell コマンドレットを使用します。
 
-| コマンド | Notes |
+| command | Notes |
 |---|---|
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | リソース グループを削除します |
 
@@ -388,7 +388,7 @@ Azure CLI を使用してリソース グループを削除します。
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| コマンド | Notes |
+| command | メモ |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | すべてのリソースを格納するリソース グループを作成します。 |
 | [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Azure SQL Database 内の単一データベースとエラスティック プールをホストするサーバーを作成します。 |
@@ -407,7 +407,7 @@ Azure CLI を使用してリソース グループを削除します。
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| コマンド | Notes |
+| command | Notes |
 |---|---|
 | [az account set](/cli/azure/account#az_account_set) | サブスクリプションを現在のアクティブなサブスクリプションとして設定します。 |
 | [az group create](/cli/azure/group#az_group_create) | すべてのリソースを格納するリソース グループを作成します。 |

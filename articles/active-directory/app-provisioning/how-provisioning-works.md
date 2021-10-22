@@ -3,7 +3,7 @@ title: Azure Active Directory でのアプリケーションのプロビジョ�
 description: Azure Active Directory でのアプリケーションのプロビジョニングのしくみについて説明します。
 services: active-directory
 author: kenwith
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 06/11/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 957ee0b5a7301fa1959b3a88450dd047bfacaad5
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 5508f2e4c85de64e92a5c3b33cd774c595e0ca72
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129353668"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129991491"
 ---
 # <a name="how-application-provisioning-works-in-azure-active-directory"></a>Azure Active Directory でのアプリケーションのプロビジョニングのしくみ
 

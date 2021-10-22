@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 10/05/2021
 ms.author: alkohli
-ms.openlocfilehash: 44716cea30df107d3e966ce39e941bcbe385ebb8
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: a43b3945a214f0825f1b580610dd364be446eeba
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129535685"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129713075"
 ---
 # <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU デバイス上の Kubernetes クラスターで Azure Arc を有効にする
 
@@ -142,7 +142,7 @@ Azure Arc 管理用に Kubernetes クラスターを構成するには、次の�
 
     `Set-HcsKubernetesAzureArcAgent -SubscriptionId "<Your Azure Subscription Id>" -ResourceGroupName "<Resource Group Name>" -ResourceName "<Azure Arc resource name (shouldn't exist already)>" -Location "<Region associated with resource group>" -TenantId "<Tenant Id of service principal>" -ClientId "<App id of service principal>"` 
     
-    このコマンドを実行すると、`ClientSecret` を入力するフォローアップ プロンプトが表示されます。 `ClientSecret` は、セキュリティで保護された文字列です。
+    このコマンドを実行すると、`ClientSecret` を入力するフォローアップ プロンプトが表示されます。 サービス プリンシパルのパスワードを指定します。
 
     Azure パブリック以外のクラウドを使用している場合は、`CloudEnvironment` パラメーターを追加します。 このパラメーターは、`AZUREPUBLICCLOUD`、`AZURECHINACLOUD`、`AZUREGERMANCLOUD`、および `AZUREUSGOVERNMENTCLOUD` に設定できます。
 
@@ -154,7 +154,17 @@ Azure Arc 管理用に Kubernetes クラスターを構成するには、次の�
     たとえば次のようになります。
    
     ```powershell
-    [10.128.44.240]: PS>Set-HcsKubernetesAzureArcAgent -SubscriptionId "062c67a6-019b-40af-a775-c4dc1abe56ed&quot; -ResourceGroupName &quot;myaserg1&quot; -ResourceName &quot;myasetestresarc&quot; -Location &quot;westeurope&quot; -TenantId &quot;72f988bf-86f1-41af-91ab-2d7cd011db47&quot; -ClientId &quot;aa8a082e-0fa1-4a82-b51c-e8b2a9fdaa8b"
+    [10.100.10.10]: PS>Set-HcsKubernetesAzureArcAgent -SubscriptionId "062c67a6-019b-40af-a775-c4dc1abe56ed&quot; -ResourceGroupName &quot;myaserg1&quot; -ResourceName &quot;myasetestresarc&quot; -Location &quot;westeurope&quot; -TenantId &quot;72f988bf-86f1-41af-91ab-2d7cd011db47&quot; -ClientId &quot;aa8a082e-0fa1-4a82-b51c-e8b2a9fdaa8b"
+    
+    WARNING: A script or application on the remote computer 10.126.76.0 is sending a prompt request. When you are prompted,
+    enter sensitive information, such as credentials or passwords, only if you trust the remote computer and the
+    application or script that is requesting the data.
+
+    cmdlet Set-HcsKubernetesAzureArcAgent at command pipeline position 1
+
+    Supply values for the following parameters:
+    ClientSecret: **********************************
+    [10.100.10.10]: PS>
     ```
     
     Azure portal で、前のコマンドで指定した名前でリソースを作成する必要があります。
@@ -214,7 +224,7 @@ Azure Arc 管理用に Kubernetes クラスターを構成するには、次の�
 - `metrics-agent`: 他の Arc エージェントのメトリックを収集し、これらのエージェントのパフォーマンスが最適であることを確認します
 - `cluster-metadata-operator`: クラスターのメタデータを収集します (クラスターのバージョン、ノード数、Azure Arc エージェントのバージョン)
 - `resource-sync-agent`: 前述のクラスター メタデータを Azure に同期します
-- `clusteridentityoperator`:Azure Arc 対応 Kubernetes では、現在、システムによって割り当てられた ID がサポートされています。 clusteridentityoperator では、他のエージェントが Azure との通信に使用する管理サービス ID (MSI) 証明書が保持されます。
+- `clusteridentityoperator`: Azure Arc 対応 Kubernetes では、現在、システムによって割り当てられた ID がサポートされています。 clusteridentityoperator では、他のエージェントが Azure との通信に使用する管理サービス ID (MSI) 証明書が保持されます。
 - `flux-logs-agent`: ソース管理構成の一部としてデプロイされる Flux オペレーターからログを収集します。
 - `connect-agent`: Azure Arc リソースと対話します。
 

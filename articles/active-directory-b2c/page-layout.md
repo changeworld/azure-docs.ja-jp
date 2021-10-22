@@ -3,20 +3,20 @@ title: ページ レイアウト バージョン
 titleSuffix: Azure AD B2C
 description: カスタム ポリシーでの UI カスタマイズのページ レイアウトのバージョン履歴。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/22/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: b095b0e53b7d9cd76a7bb0cb92258dc9bda34b3d
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: ef18f8391962520daada2e7abf5677863d503a91
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128588924"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130036096"
 ---
 # <a name="page-layout-versions"></a>ページ レイアウト バージョン
 

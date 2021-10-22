@@ -3,12 +3,12 @@ title: Service Fabric マネージド クラスター ノードでのマネー�
 description: Service Fabric マネージド クラスター ノードのマネージド ディスク タイプを選択し、ARM テンプレートで構成する方法を学習します。
 ms.topic: how-to
 ms.date: 5/10/2021
-ms.openlocfilehash: c9daef02b9249d44d5d202f5066bac40f807ec58
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.openlocfilehash: d0113ff161c000480f0e2f233f9acf6851f9d222
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129546332"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130068857"
 ---
 # <a name="select-managed-disk-types-for-service-fabric-managed-cluster-nodes"></a>Service Fabric マネージド クラスター ノードでのマネージド ディスクの種類を選択する
 
@@ -21,7 +21,7 @@ Azure Service Fabric マネージド クラスターでは、次のマネージ�
     * Standard HDD のローカル冗長ストレージ。 バックアップ用、重要でない、頻度の低いアクセスに最適です。 
 * Standard SSD の *既定値*
     * Standard SSD のローカル冗長ストレージ。 Web サーバー、使用頻度の低いエンタープライズ アプリケーション、Dev/Test に最適です。
-* Premium SSD *特定の VM サイズと互換性があります* 詳細については、[[Premium SSD]](../virtual-machines/disks-types.md#premium-ssd) を参照してください
+* Premium SSD *特定の VM サイズと互換性があります* 詳細については、[[Premium SSD]](../virtual-machines/disks-types.md#premium-ssds) を参照してください
     * Premium SSD ローカル冗長ストレージ。 実稼働およびパフォーマンスが要求されるワークロードに最適です。
 
 >[!NOTE]

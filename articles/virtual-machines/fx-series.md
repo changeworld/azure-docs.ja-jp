@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-compute
 ms.topic: conceptual
 ms.date: 06/10/2021
 ms.author: jushiman
-ms.openlocfilehash: eb8e094b4a78e718efc86314ca74c0df92426248
-ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
+ms.openlocfilehash: 20b1ad634f204e0aeb6f12cc737f7f82ddaf8d32
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122229013"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130071190"
 ---
 # <a name="fx-series"></a>FX シリーズ
 
@@ -52,7 +52,7 @@ FX シリーズ VM には、[Intel® Turbo Boost Technology 2.0](https://www.int
 
 料金計算ツール: [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 
-ディスクの種類の詳細情報:[ディスクの種類](./disks-types.md#ultra-disk)
+ディスクの種類の詳細情報:[ディスクの種類](./disks-types.md#ultra-disks)
 
 
 ## <a name="next-steps"></a>次のステップ

@@ -1,14 +1,14 @@
 ---
 title: Azure Monitor でのメトリック アラートの機能
 description: メトリック アラートの用途と、Azure Monitor での機能の概要を理解します。
-ms.date: 03/11/2021
+ms.date: 10/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: dd0672523329b17b0e101d5abb16700254b8a918
-ms.sourcegitcommit: 070122ad3aba7c602bf004fbcf1c70419b48f29e
+ms.openlocfilehash: fa577d4c2099be6b333994690b56c7581ae32669
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111441332"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129994729"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Azure Monitor でのメトリック アラートの機能
 
@@ -138,14 +138,15 @@ Azure Monitor のメトリック アラートでは、1 つのルールによる
 
 | サービス | パブリック Azure | Government | 中国 |
 |:--------|:--------|:--------|:--------|
-| 仮想マシン<sup>1</sup>  | **はい** | **はい** | **はい** |
+| 仮想マシン<sup>1</sup>  | **はい** | **あり** | **はい** |
 | SQL Server データベース | **はい** | **はい** | **あり** |
-| SQL Server エラスティック プール | **はい** | **はい** | **あり** |
-| NetApp ファイル容量プール | **はい** | **はい** | **あり** |
+| SQL Server エラスティック プール | **はい** | **あり** | **あり** |
+| NetApp ファイル容量プール | **あり** | **あり** | **あり** |
 | NetApp ファイル ボリューム | **あり** | **はい** | **あり** |
-| キー コンテナー | **あり** | **はい** | **あり** |
-| Azure Cache for Redis | **はい** | **はい** | **あり** |
+| キー コンテナー | **あり** | **あり** | **あり** |
+| Azure Cache for Redis | **あり** | **あり** | **あり** |
 | Data Box Edge のデバイス | **はい** | **はい** | **あり** |
+| Recovery Services コンテナー | **あり** | **いいえ** | **いいえ** |
 
 <sup>1</sup> 仮想マシンのネットワーク メトリック (受信ネットワーク合計、送信ネットワーク合計、受信フロー数、送信フロー数、受信フローの最大作成速度、送信フローの最大作成速度) に対してはサポートされていません。
 

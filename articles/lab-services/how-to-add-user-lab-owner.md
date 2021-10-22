@@ -1,15 +1,15 @@
 ---
 title: Azure Lab Services でラボに他の所有者を追加する方法
 description: この記事では、Azure Lab Services で管理者がユーザーをラボに所有者として追加する方法について説明します。
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/03/2021
 ms.custom: subject-rbac-steps
-ms.openlocfilehash: e8dd21a140e1c519f09d661c776e5c84c47da925
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.openlocfilehash: 531910013284abbddd73c2247b5f65494a74ddf1
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122635013"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130181010"
 ---
 # <a name="how-to-add-additional-owners-to-an-existing-lab-in-azure-lab-services"></a>Azure Lab Services で既存のラボに所有者を追加する方法
 この記事では、管理者が既存のラボに所有者を追加する方法について説明します。

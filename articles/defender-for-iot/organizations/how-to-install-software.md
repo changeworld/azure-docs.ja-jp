@@ -1,18 +1,18 @@
 ---
 title: Defender for IoT のインストール
 description: Azure Defender for IoT のセンサーとオンプレミス管理コンソールをインストールする方法について説明します。
-ms.date: 10/05/2021
+ms.date: 10/09/2021
 ms.topic: how-to
-ms.openlocfilehash: a5b4beff2d01896082974bf761cb7544d439af9e
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: f23c5fe84959045ba0446ad03c9a990a7bbb2014
+ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129537308"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129754541"
 ---
 # <a name="defender-for-iot-installation"></a>Defender for IoT のインストール
 
-この記事では、Azure Defender for IoT の次の要素をインストールする方法について説明します。
+この記事では、次の Azure Defender for IoT コンポーネントをインストールする方法について説明します。
 
 - **センサー**:Defender for IoT センサーは、パッシブ (エージェントレス) 監視を使用して、ICS ネットワーク トラフィックを収集します。 このセンサーは、パッシブで非侵入型であるため、OT と IoT のネットワークとデバイスに影響しません。 このセンサーは、SPAN ポートまたはネットワーク TAP に接続し、ネットワークの監視を直ちに開始します。 検出はセンサー コンソールに表示されます。 そこでは、ネットワーク マップ、デバイス インベントリ、広範なレポートによって、それらを表示、調査、分析できます。 例としては、リスク評価レポート、データ マイニング クエリ、攻撃ベクトルなどがあります。 センサー機能の詳細については、[Defender for IoT センサーのユーザー ガイド (直接ダウンロード)](./getting-started.md) を参照してください。
 
@@ -43,7 +43,7 @@ Defender for IoT アプライアンス センサーは、SPAN ポートまたは
 | **Model** | HPE ProLiant DL360 | HPE ProLiant DL20 | HPE ProLiant DL20 | HPE EL300 |
 | **監視ポート** | 最大 15 個の RJ45 または 8 個の OPT | 最大 8 個の RJ45 または 6 個の OPT | 最大 4 個の RJ45 | 最大 5 個の RJ45 |
 | **最大帯域幅\*** | 3 GB/秒 | 1 GB/秒 | 200 Mb/秒 | 100 MB/秒 |
-| **保護される最大デバイス数** | 30,000 | 15,000 | 1,000 | 800 |
+| **保護される最大デバイス数** | 10,000 | 10,000 | 1,000 | 800 |
 
 *最大帯域幅の容量は、プロトコルの配布によって異なる場合があります。
 
@@ -55,7 +55,7 @@ Defender for IoT アプライアンス センサーは、SPAN ポートまたは
 |--|--|--|--|
 | **説明** | Corporate デプロイ用の仮想アプライアンス | Enterprise デプロイ用の仮想アプライアンス | SMB デプロイ用の仮想アプライアンス |
 | **最大帯域幅\*** | 2.5 Gb/秒 | 800 Mbps | 160 Mbps |
-| **保護される最大デバイス数** | 30,000 | 10,000 | 800 |
+| **保護される最大デバイス数** | 10,000 | 10,000 | 800 |
 | **デプロイの種類** | 企業 | Enterprise | SMB |
 
 *最大帯域幅の容量は、プロトコルの配布によって異なる場合があります。
@@ -1361,7 +1361,7 @@ GUI または CLI を使用して検証を実行します。 検証は、ユー�
 
 ## <a name="configure-a-span-port"></a>SPAN ポートを構成する
 
-vSwitch にはミラーリング機能がありませんが、対処法を使用して SPAN ポートを実装できます。 この対処法は、ESXi または Hyper-V で実装できます。
+仮想スイッチにはミラーリング機能はありません。 ただし、仮想スイッチ環境では無作為検出モードを使用できます。 無作為検出モードは、操作モードであるほか、セキュリティ、監視、および管理の手法でもあります。これは、仮想スイッチまたはポートグループ レベルで定義されています。 既定では、無作為検出モードは無効になっています。 無作為検出モードが有効になっている場合、その仮想スイッチを通過するすべてのネットワーク トラフィックを表示するために、同じポートグループにある仮想マシンのネットワーク インターフェイスによって無作為検出モードが使用されます。 この対処法は、ESXi または Hyper-V で実装できます。
 
 :::image type="content" source="media/tutorial-install-components/purdue-model.png" alt-text="アーキテクチャ内でセンサーを配置する場所を示すスクリーンショット。":::
 

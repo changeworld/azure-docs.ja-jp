@@ -2,20 +2,20 @@
 title: Azure portal で Azure AD B2C コンシューマー ユーザー アカウントを作成および削除する
 description: Azure portal を使用して Azure AD B2C ディレクトリ内のコンシューマー ユーザーを作成および削除する方法について説明します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 09/20/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 02c0197af40854bfbcff04401dbc4e9ca0d990dc
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 55151493e18a2a5cc56583b10e905a89dcc74770
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128573899"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130041730"
 ---
 # <a name="use-the-azure-portal-to-create-and-delete-consumer-users-in-azure-ad-b2c"></a>Azure portal を使用して Azure AD B2C 内のコンシューマー ユーザーを作成および削除する
 

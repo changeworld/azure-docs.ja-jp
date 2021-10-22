@@ -11,12 +11,12 @@ ms.reviewer: luquinta
 ms.date: 11/16/2020
 ms.topic: how-to
 ms.custom: devx-track-python, responsible-ml
-ms.openlocfilehash: fa55476edb7e286fece50e0310dba95787c2b569
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 799ae40a42a8849fdf74bf7d89b30e08e26a00b1
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129426152"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130063718"
 ---
 # <a name="use-azure-machine-learning-with-the-fairlearn-open-source-package-to-assess-the-fairness-of-ml-models-preview"></a>Azure Machine Learning と Fairlearn オープンソース パッケージを使用して ML モデルの公平性を評価する (プレビュー)
 
@@ -128,8 +128,7 @@ pip install fairlearn==0.4.6
 
     # (Optional) View this model in the fairness dashboard, and see the disparities which appear:
     from raiwidgets import FairnessDashboard
-    FairnessDashboard(sensitive_features=A_test, 
-                      sensitive_feature_names=['Race', 'Sex'],
+    FairnessDashboard(sensitive_features=A_test,
                       y_true=y_test,
                       y_pred={"lr_model": lr_predictor.predict(X_test)})
     ```
@@ -283,8 +282,7 @@ pip install fairlearn==0.4.6
 
     from raiwidgets import FairnessDashboard
 
-    FairnessDashboard(sensitive_features=A_test, 
-                      sensitive_feature_names=['Race', 'Sex'],
+    FairnessDashboard(sensitive_features=A_test,
                       y_true=y_test.tolist(),
                       y_pred=ys_pred)
     ```

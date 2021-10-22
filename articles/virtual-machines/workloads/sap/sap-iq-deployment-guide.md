@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/11/2021
 ms.author: depadia
-ms.openlocfilehash: 7b4f49efff29717e3345a2cc04286e9c3e86c8f7
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 7ece73f467e2dc148e79512c7dd1a6fcc19cf270
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123306532"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130072634"
 ---
 # <a name="sap-bw-nls-implementation-guide-with-sap-iq-on-azure"></a>Azure 上で SAP IQ を使用した SAP BW NLS の実装ガイド
 
@@ -99,7 +99,7 @@ Azure 上の SAP IQ には、次の種類の Azure ストレージを使用で�
 
 - Azure Managed Disks
 
-  [マネージド ディスク](../../managed-disks-overview.md)とは、Azure によって管理されるブロック レベルのストレージ ボリュームです。 SAP IQ シンプレックス デプロイには、マネージド ディスクを使用できます。 さまざまな種類のマネージド ディスクが利用可能できますが、SAP IQ には [Premium SSD](../../disks-types.md#premium-ssd) を使用することをお勧めします。 
+  [マネージド ディスク](../../managed-disks-overview.md)とは、Azure によって管理されるブロック レベルのストレージ ボリュームです。 SAP IQ シンプレックス デプロイには、マネージド ディスクを使用できます。 さまざまな種類のマネージド ディスクが利用可能できますが、SAP IQ には [Premium SSD](../../disks-types.md#premium-ssds) を使用することをお勧めします。 
 
 - Azure 共有ディスク
 

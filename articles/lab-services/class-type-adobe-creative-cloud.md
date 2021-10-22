@@ -2,15 +2,15 @@
 title: Azure Lab Services を使用した Adobe Creative Cloud のラボの設定 | Microsoft Docs
 description: Adobe Creative Cloud を使用するデジタル アートおよびメディア クラスのラボを設定する方法について説明します。
 author: nicolela
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/21/2021
 ms.author: nicolela
-ms.openlocfilehash: 210fa647f12a786e357902bef3bbb3b20cca8077
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 3802687b76929bda96e34a9b1cb402096bee40c5
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111962651"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130177158"
 ---
 # <a name="set-up-a-lab-for-adobe-creative-cloud"></a>Adobe Creative Cloud のラボを設定する
 [Adobe Creative Cloud](https://www.adobe.com/creativecloud.html) は、写真、デザイン、ビデオ、Web、ユーザー エクスペリエンス (UX) などに使用されるデスクトップ アプリケーションと Web サービスのコレクションです。  大学と K-12 教育機関は、デジタル アートおよびメディア クラスで Creative Cloud を使用しています。  一部の Creative Cloud のメディア プロセスでは、一般的なタブレット、ラップトップ、またはワークステーションのサポートよりも多くのコンピューティングと視覚化 (GPU) の性能を必要とする場合があります。  Azure Lab Services によって、GPU サイズを含むさまざまな仮想マシン (VM) サイズから柔軟に選択できます。

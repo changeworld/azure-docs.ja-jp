@@ -4,13 +4,13 @@ description: Lab Services のコストを表示するさまざまな方法につ
 author: rbest
 ms.author: rbest
 ms.date: 08/16/2020
-ms.topic: article
-ms.openlocfilehash: 05613d4e019d5cef18130dfd39b74c1da6b9768c
-ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
+ms.topic: how-to
+ms.openlocfilehash: 29965e2fe819debd6ea992dcdd2c8164dddab5f5
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129660440"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130181200"
 ---
 # <a name="cost-management-for-azure-lab-services"></a>Azure Lab Services のコスト管理
 

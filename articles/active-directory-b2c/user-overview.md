@@ -2,21 +2,21 @@
 title: Azure Active Directory B2C のユーザー アカウントの概要
 description: Azure Active Directory B2C で使用できるユーザー アカウントの種類について説明します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/01/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: 4a21ba7191bab596818324f23235a9dc610ade1e
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 0e5b8daff5c3e13524d5193e97588a7ecc1bff65
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129351345"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130043816"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のユーザー アカウントの概要
 

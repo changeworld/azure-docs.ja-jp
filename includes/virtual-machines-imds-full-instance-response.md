@@ -7,18 +7,23 @@ ms.topic: include
 ms.date: 01/04/2021
 ms.author: chhenk
 ms.reviewer: azmetadatadev
-ms.openlocfilehash: 19b69e688936f0e0bfe1ed69938e17fe8a514ea9
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ef1c20a0d51ca0f96d812e31efdc1b496dea1271
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121801009"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130173322"
 ---
 #### <a name="windows"></a>[Windows](#tab/windows/)
 ```json
 {
     "compute": {
         "azEnvironment": "AZUREPUBLICCLOUD",
+        "extendedLocation": {
+            "type": "edgeZone",
+            "location": "microsoftlosangeles"
+        },
+        "evictionPolicy": "",
         "isHostCompatibilityLayerVm": "true",
         "licenseType":  "Windows_Client",
         "location": "westus",
@@ -38,6 +43,7 @@ ms.locfileid: "121801009"
         },
         "platformFaultDomain": "36",
         "platformUpdateDomain": "42",
+        "priority": "Regular",
         "publicKeys": [{
                 "keyData": "ssh-rsa 0",
                 "path": "/home/user/.ssh/authorized_keys0"
@@ -118,6 +124,9 @@ ms.locfileid: "121801009"
         "tags": "baz:bash;foo:bar",
         "userData": "Zm9vYmFy",
         "version": "15.05.22",
+        "virtualMachineScaleSet": {
+            "id": "/subscriptions/xxxxxxxx-xxxxx-xxx-xxx-xxxx/resourceGroups/resource-group-name/providers/Microsoft.Compute/virtualMachineScaleSets/virtual-machine-scale-set-name"
+        },
         "vmId": "02aab8a4-74ef-476e-8182-f6d2ba4166a6",
         "vmScaleSetName": "crpteste9vflji9",
         "vmSize": "Standard_A3",
@@ -150,6 +159,11 @@ ms.locfileid: "121801009"
 {
     "compute": {
         "azEnvironment": "AZUREPUBLICCLOUD",
+        "extendedLocation": {
+            "type": "edgeZone",
+            "location": "microsoftlosangeles"
+        },
+        "evictionPolicy": "",
         "isHostCompatibilityLayerVm": "true",
         "licenseType":  "",
         "location": "westus",
@@ -169,6 +183,7 @@ ms.locfileid: "121801009"
         },
         "platformFaultDomain": "36",
         "platformUpdateDomain": "42",
+        "priority": "Regular",
         "publicKeys": [{
                 "keyData": "ssh-rsa 0",
                 "path": "/home/user/.ssh/authorized_keys0"
@@ -248,6 +263,9 @@ ms.locfileid: "121801009"
         "subscriptionId": "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
         "tags": "baz:bash;foo:bar",
         "version": "15.05.22",
+        "virtualMachineScaleSet": {
+            "id": "/subscriptions/xxxxxxxx-xxxxx-xxx-xxx-xxxx/resourceGroups/resource-group-name/providers/Microsoft.Compute/virtualMachineScaleSets/virtual-machine-scale-set-name"
+        },
         "vmId": "02aab8a4-74ef-476e-8182-f6d2ba4166a6",
         "vmScaleSetName": "crpteste9vflji9",
         "vmSize": "Standard_A3",

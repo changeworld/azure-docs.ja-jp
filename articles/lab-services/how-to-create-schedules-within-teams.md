@@ -1,14 +1,14 @@
 ---
 title: Teams 内で Azure Lab Services のスケジュールを作成する
 description: Teams 内で Lab Services のスケジュールを作成する方法を学習します。
-ms.topic: article
+ms.topic: how-to
 ms.date: 10/07/2020
-ms.openlocfilehash: 202b202f99868875a51d13e95fbcac677246cc05
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5427105d0bac3fd652764345c1d31fd0ef8bb2db
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92042339"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130180573"
 ---
 # <a name="create-and-manage-lab-services-schedules-within-teams"></a>Teams 内で Lab Services のスケジュールを作成および管理する
 

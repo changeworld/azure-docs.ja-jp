@@ -4,12 +4,12 @@ description: この記事では、Azure Event Hubs での Schema Registry のサ
 ms.topic: overview
 ms.date: 05/10/2021
 ms.custom: references_regions
-ms.openlocfilehash: 6ac6361643d9baafb41259e6db69f816d747b1d8
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: bde8b8c436783c4a7248c449bbee536490e2b740
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129534821"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130066171"
 ---
 # <a name="azure-schema-registry-in-event-hubs-preview"></a>Event Hubs の Azure スキーマ レジストリ (プレビュー)
 多くのイベント ストリーミングおよびメッセージング シナリオでは、イベントまたはメッセージのペイロードに、Apache Avro のようなスキーマ駆動型の形式を使用してシリアル化または逆シリアル化された構造化データが含まれています。 送信側と受信側のどちらであっても、JSON スキーマのようなスキーマ ドキュメントでデータの整合性を検証したい場合があります。 スキーマ駆動型の形式の場合、メッセージ コンシューマーでスキーマを使用できるようにすることは、コンシューマーでデータを逆シリアル化できるようにするための前提条件です。 
@@ -38,7 +38,7 @@ Event Hubs 名前空間で、イベント ハブ (または Kafka トピック) 
 Avro シリアライザーを含む次のライブラリのいずれかを使用できます。これは、Schema Registry のスキーマ識別子と Avro エンコード データを含むペイロードをシリアル化および逆シリアル化するために使用できます。
 
 - [.NET - Microsoft.Azure.Data.SchemaRegistry.ApacheAvro](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/schemaregistry/Microsoft.Azure.Data.SchemaRegistry.ApacheAvro)
-- [Java - azure-data-schemaregistry-avro](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/schemaregistry/azure-data-schemaregistry-avro/)
+- [Java - azure-data-schemaregistry-avro](https://github.com/Azure/azure-sdk-for-java/tree/main/sdk/schemaregistry/azure-data-schemaregistry-apacheavro)
 - [Python - azure-schemaregistry-avroserializer](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/schemaregistry/azure-schemaregistry-avroserializer)
 - [JavaScript - @azure/schema-registry-avro](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/schemaregistry/schema-registry-avro)
 - [Apache Kafka](https://github.com/Azure/azure-schema-registry-for-kafka/) - Azure Schema Registry によって提供される Kafka 統合 Apache Avro シリアライザーと逆シリアライザーを実行します。 Azure Schema Registry 用の Java クライアントの Apache Kafka クライアント シリアライザーは、任意の Apache Kafka シナリオで、Apache Kafka® ベースのデプロイまたはクラウド サービスと共に使用できます。 
@@ -67,7 +67,7 @@ Azure portal を使用してアプリケーションを登録する方法につ�
 - Azure portal を使用してスキーマ レジストリを作成する方法については、[Azure portal を使用して Event Hubs スキーマ レジストリを作成する](create-schema-registry.md)方法に関するページを参照してください。
 - 次の **Schema Registry Avro クライアント ライブラリ** サンプルを参照してください。
     - [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/schemaregistry/Microsoft.Azure.Data.SchemaRegistry.ApacheAvro/tests/Samples)
-    - [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/schemaregistry/azure-data-schemaregistry-avro/src/samples)
+    - [Java](https://github.com/Azure/azure-sdk-for-java/tree/main/sdk/schemaregistry/azure-data-schemaregistry-apacheavro/src/samples)
     - [JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/schemaregistry/schema-registry-avro/samples )
     - [Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/schemaregistry/azure-schemaregistry-avroserializer/samples )
     - [Azure Schema Registry の Kafka Avro 統合](https://github.com/Azure/azure-schema-registry-for-kafka/tree/master/csharp/avro/samples)

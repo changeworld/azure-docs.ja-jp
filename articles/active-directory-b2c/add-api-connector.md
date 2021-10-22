@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: B2C
 ms.topic: how-to
 ms.date: 08/24/2021
-ms.author: mimart
-author: msmimart
-manager: celestedg
+ms.author: kengaderdus
+author: kengaderdus
+manager: CelesteDG
 ms.custom: it-pro
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 288cffbaa90db2725d2aa2985c003474b2c7eb7b
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 661801e8eb184e8368cb5156d7f7b7f71612f8f2
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128570731"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130040153"
 ---
 # <a name="add-an-api-connector-to-a-sign-up-user-flow"></a>API コネクタをサインアップ ユーザー フローに追加する
 

@@ -2,15 +2,15 @@
 title: Windows テンプレート マシンの設定に関するガイド | Microsoft Docs
 description: Lab Services で Windows テンプレート マシンを準備するための一般的な手順。  これらの手順には、Windows Update スケジュールの設定、OneDrive のインストール、Office のインストールが含まれます。
 author: EMaher
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
 ms.author: enewman
-ms.openlocfilehash: 216dc843b31eac355e1d818014f3d70b2ef83132
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9b84823e356f59cda00b80052add584153a4aad6
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94647904"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130180117"
 ---
 # <a name="guide-to-setting-up-a-windows-template-machine-in-azure-lab-services"></a>Azure Lab Services での Windows テンプレート マシンの設定に関するガイド
 

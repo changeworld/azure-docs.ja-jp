@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 08/16/2021
+ms.date: 10/08/2021
 ms.author: memildin
-ms.openlocfilehash: a57a94b8ee0bb91deb0b15a3da0265af15dbc3a3
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: 174540ecdfe54073c30cdc7b71952c0621a66ba8
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129536301"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129710725"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>Security Center の統合 EDR ソリューションを使用してエンドポイントを保護する: Microsoft Defender for Endpoint
 
@@ -48,6 +48,10 @@ Microsoft Defender for Endpoint では次のものが提供されます。
 
 - **高度な侵害後検出センサー**。 Defender for Endpoint のセンサーにより、ありとあらゆる動作の信号がコンピューターから収集されます。
 
+- **Microsoft 脅威と脆弱性の管理ソリューションからの脆弱性評価**。 Microsoft Defender for Endpoint を有効にすると、Security Center に脅威と脆弱性の管理モジュールによって検出された脆弱性を表示することができます。また、サポートされる脆弱性評価ソリューションとしてこのモジュールを指定することもできます。 詳細については、「[Microsoft Defender for Endpoint の脅威と脆弱性の管理を使用して弱点を調査する](deploy-vulnerability-assessment-tvm.md)」を参照してください。
+
+    このモジュールを使用すると、[ソフトウェア インベントリへのアクセス](asset-inventory.md#access-a-software-inventory)に関する記事で説明されているソフトウェア インベントリ機能を利用できます。また、[自動デプロイ設定](auto-deploy-vulnerability-assessment.md)でサポートされているマシンに対して自動的に有効にすることができます。
+
 - **分析に基づくクラウド利用の侵害後検出**。 Defender for Endpoint は、脅威の変化にすばやく適応します。 高度な分析とビッグ データを使用します。 Windows、Azure、Office 全体の信号を使用したインテリジェント セキュリティ グラフによって強化され、これにより未知の脅威が検出されます。 アクションにつながるアラートを提供し、迅速に対応できるようにします。
 
 - **脅威インテリジェンス**。 Defender for Endpoint によって攻撃者のツール、テクニック、およびプロシージャが識別されると、アラートが生成されます。 Microsoft の脅威ハンターおよびセキュリティ チームによって生成され、パートナーによって提供されるインテリジェンスによって強化されたデータを使用します。
@@ -81,6 +85,9 @@ Security Center を使用してコンピューターを監視すると、Defende
     - **オンプレミスのコンピューター** - 「[Azure Arc 対応サーバーにハイブリッド マシンを接続する](../azure-arc/servers/learn/quick-enable-hybrid-vm.md)」の説明に従って、ターゲット マシンを Azure Arc に接続します。
 
 1. **Azure Defender for servers** を有効にします。 「[クイックスタート: Azure Defender を有効にする](enable-azure-defender.md)」をご覧ください。
+
+    > [!IMPORTANT]
+    > Security Center と Microsoft Defender for Endpoint の統合は、既定で有効になっています。 そのため、Azure Defender を有効にする際、脆弱性、インストールされているソフトウェア、エンドポイントのアラートに関連する Microsoft Defender for Endpoint データへの Azure Defender for servers のアクセスに同意します。
 
 1. Azure テナント間でサブスクリプションを移動した場合は、手動による準備手順も必要になります。 詳細については、[Microsoft サポートにお問い合わせください](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)。
 

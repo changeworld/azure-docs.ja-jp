@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/08/2021
 ms.author: thweiss
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 633148279332c8d2b30cae525dfa7cc6b14f849e
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 78f112b7c1de9709aab661525bf22a3325c462cc
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111744307"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130069237"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Azure Cosmos アカウントの Azure Private Link を構成する
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -138,7 +138,7 @@ $virtualNetwork = Get-AzVirtualNetwork -ResourceGroupName  $ResourceGroupName -N
  
 $subnet = $virtualNetwork | Select -ExpandProperty subnets | Where-Object  {$_.Name -eq $SubnetName}  
  
-$privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $ResourceGroupName -Name $PrivateEndpointName -Location "westcentralus" -Subnet  $subnet -PrivateLinkServiceConnection $privateEndpointConnection
+$privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $ResourceGroupName -Name $PrivateEndpointName -Location $Location -Subnet  $subnet -PrivateLinkServiceConnection $privateEndpointConnection
 ```
 
 ### <a name="integrate-the-private-endpoint-with-a-private-dns-zone"></a>プライベート エンドポイントとプライベート DNS ゾーンを統合する
@@ -168,13 +168,13 @@ $networkInterface = Get-AzResource -ResourceId $pe.NetworkInterfaces[0].Id `
 
 $PrivateDnsZoneId = $zone.ResourceId
 
-$config = New-AzPrivateDnsZoneConfig -Name $zoneName`
+$config = New-AzPrivateDnsZoneConfig -Name $zoneName `
  -PrivateDnsZoneId $PrivateDnsZoneId
 
 ## Create a DNS zone group
-New-AzPrivateDnsZoneGroup -ResourceGroupName $ResourceGroupName`
- -PrivateEndpointName $PrivateEndpointName`
- -Name "MyPrivateZoneGroup"`
+New-AzPrivateDnsZoneGroup -ResourceGroupName $ResourceGroupName `
+ -PrivateEndpointName $PrivateEndpointName `
+ -Name "MyPrivateZoneGroup" `
  -PrivateDnsZoneConfig $config
 ```
 

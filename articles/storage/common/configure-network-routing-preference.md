@@ -10,12 +10,12 @@ ms.date: 03/17/2021
 ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: c871a1ec4feec89cc3250f1fbfefefa69ed927bb
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: b5d33e9bfe123b0c0b2fceacc3d59e8f1f35de7f
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128589323"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130066777"
 ---
 # <a name="configure-network-routing-preference-for-azure-storage"></a>Azure Storage に対してネットワークのルーティング優先設定を構成する
 
@@ -131,7 +131,7 @@ ms.locfileid: "128589323"
 
    - Microsoft ネットワーク ルーティング設定を使用するルート固有のエンドポイントを作成するには、`-PublishMicrosoftEndpoint` パラメーターを `true` に設定します。
 
-   - インターネット ルーティング設定を使用するルート固有のエンドポイントを作成するには、`-PublishInternetEndpointTo` パラメーターを `true` に設定します。
+   - インターネット ルーティング設定を使用するルート固有のエンドポイントを作成するには、`-PublishInternetEndpoint` パラメーターを `true` に設定します。
 
    次の例では、Microsoft ネットワーク ルーティングの設定を使用するルート固有のエンドポイントを作成します。
 

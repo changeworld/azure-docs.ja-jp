@@ -3,12 +3,12 @@ title: Azure Batch のコスト分析の取得と予算の設定
 description: Batch ワークロードの実行に使用される、基になるコンピューティング リソースとソフトウェア ライセンスについて、コスト分析を取得して予算を設定し、コストを削減する方法について説明します。
 ms.topic: how-to
 ms.date: 10/04/2021
-ms.openlocfilehash: 0e4c0b6235537d1e5c36e7adf997516d0f966d76
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: b88b69c4debf34cb97368d7cfb6ac5e611c77334
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129532563"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130071817"
 ---
 # <a name="get-cost-analysis-and-set-budgets-for-azure-batch"></a>Azure Batch のコスト分析の取得と予算の設定
 
@@ -48,7 +48,7 @@ Standard ロード バランサーでは、Batch プール VM との間でやり
 
 ## <a name="view-cost-analysis-and-create-budgets"></a>コスト分析を表示して予算を作成する
 
-[Azure Cost Management](/cost-management-billing/cost-management-billing-overview.md) では、クラウドへの投資を最大化するために支出を計画、分析、削減することができます。 Azure Batch を含め、すべての Azure サービスの使用コストを使用することができます。 表示およびフィルター処理する Batch コストを表示およびフィルター処理したり、将来のコストを予測したりすることができます。また、支出制限を設定し、これらの制限に達したときにアラート発行できます。
+[Azure Cost Management](/azure/cost-management-billing/cost-management-billing-overview) では、クラウドへの投資を最大化するために支出を計画、分析、削減することができます。 Azure Batch を含め、すべての Azure サービスの使用コストを使用することができます。 表示およびフィルター処理する Batch コストを表示およびフィルター処理したり、将来のコストを予測したりすることができます。また、支出制限を設定し、これらの制限に達したときにアラート発行できます。
 
 Azure portal で、Batch プールまたは Batch アカウントの予算と支出アラートを作成できます。 予算とアラートは、予算オーバーのリスクを関係者に通知するのに役立ちますが、支出アラートの遅延が生じたり、予算をわずかに超過したりする危険性があります。
 
@@ -74,7 +74,7 @@ Batch サービスのプール割り当てモードで作成された Batch ア�
 結果のコスト分析には、プールのコストと、そのコストの原因であるリソースが表示されます。 この例では、プールで使用されている VM が最もコストのかかるリソースです。
 
 > [!NOTE]
-> この例のプールでは **仮想マシンの構成** を使用します。これは[ほとんどのプールで推奨](batch-pool-cloud-service-to-virtual-machine-configuration.md)されており、Virtual Machines の料金体系に基づいて課金されます。 **Cloud Services 構成** を使用するプールは、Cloud Services の料金体系に基づいて課金されます。
+> この例のプールでは **仮想マシンの構成** を使用します。これは [ほとんどのプールで推奨](batch-pool-cloud-service-to-virtual-machine-configuration.md)されており、Virtual Machines の料金体系に基づいて課金されます。 **Cloud Services 構成** を使用するプールは、Cloud Services の料金体系に基づいて課金されます。
 
 [タグ](../azure-resource-manager/management/tag-resources.md)を Batch アカウントに関連付けることができ、これにより、タグを使用してコストをさらにフィルター処理できるようになります。 たとえば、タグを使用して、プロジェクト、ユーザー、またはグループの情報を Batch アカウントに関連付けることができます。 現在、タグを Batch プールに関連付けることはできません。
 
@@ -151,5 +151,5 @@ VM の使用率を確認するには、タスクの実行時にノードにロ�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Cost Management and Billing](../cost-management-billing/cost-management-billing-overview.md) の詳細について確認します。
+- [Azure Cost Management and Billing](/azure/cost-management-billing/cost-management-billing-overview) の詳細について確認します。
 - [Batch での優先順位の低い VM の使用](batch-low-pri-vms.md)について確認します。

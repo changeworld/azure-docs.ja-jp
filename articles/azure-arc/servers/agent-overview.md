@@ -1,15 +1,15 @@
 ---
 title: Connected Machine エージェントの概要
 description: この記事では、ハイブリッド環境でホストされている仮想マシンの監視をサポートする、使用可能な Azure Arc 対応サーバー エージェントの詳細な概要を提供します。
-ms.date: 09/30/2021
+ms.date: 10/12/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 36dc64a28cd0199e7fba3ab2b5f3f6765eef489d
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: 71446d57d5f73e81c859a0d8453a2017f4c5fd12
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129455609"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129984366"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Azure Arc 対応サーバー エージェントの概要
 
@@ -183,17 +183,11 @@ URL:
 |`management.azure.com`|Azure Resource Manager|
 |`login.windows.net`|Azure Active Directory|
 |`login.microsoftonline.com`|Azure Active Directory|
+|`pas.windows.net`|Azure Active Directory|
 |`dc.services.visualstudio.com`|Application Insights|
 |`*.guestconfiguration.azure.com` |ゲスト構成|
 |`*.his.arc.azure.com`|ハイブリッド ID サービス|
 |`*.blob.core.windows.net`|Azure Arc 対応サーバー拡張機能のダウンロード元|
-
-プレビュー エージェント (バージョン 0.11 以下) でも、次の URL へのアクセスが必要になります。
-
-| エージェントのリソース | 説明 |
-|---------|---------|
-|`agentserviceapi.azure-automation.net`|ゲスト構成|
-|`*-agentservice-prod-1.azure-automation.net`|ゲスト構成|
 
 各サービス タグ/リージョンの IP アドレスの一覧については、「[Azure IP 範囲とサービス タグ – パブリック クラウド](https://www.microsoft.com/download/details.aspx?id=56519)」という JSON ファイルを参照してください。 Microsoft では、各 Azure サービスとそれが使用する IP 範囲を含む更新プログラムを毎週発行しています。 JSON ファイル内のこの情報は、各サービス タグに対応する現在の特定時点の IP 範囲の一覧です。 IP アドレスは変更される可能性があります。 ファイアウォール構成に IP アドレス範囲が必要な場合は、**AzureCloud** サービス タグを使用して、すべての Azure サービスへのアクセスを許可してください。 これらの URL のセキュリティ監視または検査を無効にせず、他のインターネット トラフィックと同様に許可してください。
 

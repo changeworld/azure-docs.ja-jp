@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: risverma
-ms.openlocfilehash: e0fbe4b02ac0cf2978bba69a9e7e6eafb36b0f84
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: b6a7efc543af12cbcac575a0b6fedfe9caba7833
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122697950"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130073565"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>負荷の急増に対応できる B シリーズ仮想マシンのサイズ
 
@@ -159,7 +159,7 @@ Azure でメトリック データにアクセスする方法の詳細につい�
 
 料金計算ツール: [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 
-ディスクの種類の詳細情報: [ディスクの種類](./disks-types.md#ultra-disk)
+ディスクの種類の詳細情報: [ディスクの種類](./disks-types.md#ultra-disks)
 
 ## <a name="next-steps"></a>次のステップ
 

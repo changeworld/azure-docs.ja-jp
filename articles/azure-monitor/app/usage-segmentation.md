@@ -2,15 +2,15 @@
 title: Application Insights でのユーザー、セッション、およびイベント分析
 description: Web アプリのユーザーの統計分析について説明します。
 ms.topic: conceptual
-author: lgayhardt
-ms.author: lagayhar
+author: mattmccleary
+ms.author: mmcc
 ms.date: 07/30/2021
-ms.openlocfilehash: 09dc9ba915b0ecf99219aadd9214192b9f4b1e19
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d3b6bac65cea13de078d91a6936aa8618d9f7423
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121747682"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130132666"
 ---
 # <a name="users-sessions-and-events-analysis-in-application-insights"></a>Application Insights でのユーザー、セッション、およびイベントの分析
 

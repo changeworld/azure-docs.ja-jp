@@ -7,16 +7,16 @@ ms.subservice: high-availability
 ms.custom: sqldbrb=1, devx-track-azurepowershell
 ms.devlang: ''
 ms.topic: how-to
-author: BustosMSFT
-ms.author: robustos
+author: emlisa
+ms.author: emlisa
 ms.reviewer: mathoma
 ms.date: 02/13/2019
-ms.openlocfilehash: dd71998eaa3254e31d123a9ca011339d1aaeee10
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f4e94fe4d41e95d02b02815e267ab12ea96ce847
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121739677"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130164591"
 ---
 # <a name="manage-rolling-upgrades-of-cloud-applications-by-using-sql-database-active-geo-replication"></a>SQL Database アクティブ geo レプリケーションを使用してクラウド アプリケーションのローリング アップグレードを管理する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

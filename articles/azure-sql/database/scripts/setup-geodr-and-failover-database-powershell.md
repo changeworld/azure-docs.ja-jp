@@ -7,16 +7,16 @@ ms.subservice: high-availability
 ms.custom: sqldbrb=1, devx-track-azurepowershell
 ms.devlang: PowerShell
 ms.topic: sample
-author: BustosMSFT
-ms.author: robustos
+author: emlisa
+ms.author: emlisa
 ms.reviewer: mathoma
 ms.date: 03/12/2019
-ms.openlocfilehash: 4ee43ffc09c4abe8594a8285303464431d25a577
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: de6e32476e5b70433d76518bd9b7c462ded0ebe1
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110707995"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130167362"
 ---
 # <a name="use-powershell-to-configure-active-geo-replication-for-a-database-in-azure-sql-database"></a>PowerShell を使用して Azure SQL Database のデータベースに対するアクティブ geo レプリケーションを構成する
 
@@ -47,7 +47,7 @@ Remove-AzResourceGroup -ResourceGroupName $secondaryresourcegroupname
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| コマンド | Notes |
+| command | メモ |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | すべてのリソースを格納するリソース グループを作成します。 |
 | [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | データベースとエラスティック プールをホストするサーバーを作成します。 |

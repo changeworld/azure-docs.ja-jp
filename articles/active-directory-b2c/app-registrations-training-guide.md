@@ -2,21 +2,21 @@
 title: Azure AD B2C の新しいアプリの登録エクスペリエンス
 description: Azure AD B2C の新しいアプリの登録エクスペリエンスの概要です。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 05/25/2020
 ms.custom: project-no-code
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 430da23986fc36a0e94c049512ef716aff1fed5c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 01f51e20176a7535681bdb21b4cee6c7fa298292
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98660252"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130038025"
 ---
 # <a name="the-new-app-registrations-experience-for-azure-active-directory-b2c"></a>Azure Active Directory B2C の新しいアプリの登録エクスペリエンス
 

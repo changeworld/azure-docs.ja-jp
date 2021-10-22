@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 09/27/2021
-ms.openlocfilehash: 0cc474ba9566737cb0117cc3a0f2bfb079cdf3d9
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: f6769cfc95ff06ef67d9020ff109993772b36bf0
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129616514"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130000841"
 ---
 # <a name="labeling-in-azure-purview"></a>Azure Purview でのラベル付け
 
@@ -35,7 +35,7 @@ Azure Purview を使用すると、資産に秘密度ラベルを適用し、デ
 * **自動ラベル付け:** データの秘密度に基づいて、ラベルが自動的に適用されます。 資産に対して機密データをスキャンすると、どの秘密度ラベルを適用するかを決定するために、自動ラベル付け規則が使用されます。 各秘密度ラベルに対して自動ラベル付け規則を作成し、どの分類および機密情報の種類でラベルが構成されるかを定義できます。
 * **ファイルとデータベース列にラベルを適用:** ラベルは、Azure Data Lake、Azure Files などのストレージ内のファイルや、Azure SQL DB、Cosmos DB などでの列のようなスキーマ化されたデータに適用できます。
 
-秘密度ラベルは、データを分類および保護するために資産に適用できるタグです。 秘密度ラベルの詳細については、[こちら](/microsoft-365/compliance/create-sensitivity-labels.md)を参照してください。
+秘密度ラベルは、データを分類および保護するために資産に適用できるタグです。 秘密度ラベルの詳細については、[こちら](/microsoft-365/compliance/create-sensitivity-labels)を参照してください。
 
 ## <a name="how-to-apply-labels-to-assets-in-azure-purview"></a>Azure Purview で資産にラベルを適用する方法
 

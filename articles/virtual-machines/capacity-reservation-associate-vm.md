@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/09/2021
 ms.reviewer: cynthn, jushiman
 ms.custom: template-how-to
-ms.openlocfilehash: c4aa31c94accf9aad13c54cf3680298476bf016d
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: 8bfb5811cd8c4ffe2efa10a0bb8fcac8b449092e
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129532679"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130065046"
 ---
 # <a name="associate-a-vm-to-a-capacity-reservation-group-preview"></a>VM を容量予約グループに関連付ける (プレビュー) 
 
@@ -82,6 +82,19 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 1. 検証の実行後、 **[作成]** ボタンを選択します。 
 1. デプロイが完了したら、 **[リソースに移動]** を選択します。
 
+### <a name="cli"></a>[CLI](#tab/cli1)
+
+`az vm create` を使用して新しい VM を作成し、`capacity-reservation-group` プロパティを追加して既存の容量予約グループに関連付けます。 次の例では、米国東部の場所に Standard_D2s_v3 VM を作成し、その VM を容量予約グループに関連付けます。
+
+```azurecli-interactive
+az vm create 
+--resource-group myResourceGroup 
+--name myVM 
+--location eastus 
+--size Standard_D2s_v3 
+--image UbuntuLTS 
+--capacity-reservation-group /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}
+```
 
 ### <a name="powershell"></a>[PowerShell](#tab/powershell1)
 
@@ -159,6 +172,24 @@ ARM テンプレートを使用して、関連するリソースのグループ�
 1. 左側の **[構成]** に移動します。
 1. **[容量予約グループ]** ドロップダウンで、VM を関連付けるグループを選択します。 
 
+### <a name="cli"></a>[CLI](#tab/cli2)
+
+1. VM の割り当てを解除する
+
+    ```azurecli-interactive
+    az vm deallocate 
+    -g myResourceGroup 
+    -n myVM
+    ```
+
+1. VM を容量予約グループに関連付ける
+
+    ```azurecli-interactive
+    az vm update 
+    -g myresourcegroup 
+    -n myVM 
+    --capacity-reservation-group subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{CapacityReservationGroupName}
+    ```
 
 ### <a name="powershell"></a>[PowerShell](#tab/powershell2)
 
@@ -242,6 +273,16 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
    }
 } 
 ``` 
+
+### <a name="cli"></a>[CLI](#tab/cli3)
+
+```azurecli-interactive
+az capacity reservation show 
+-g myResourceGroup
+-c myCapacityReservationGroup 
+-n myCapacityReservation 
+```
+
 ### <a name="powershell"></a>[PowerShell](#tab/powershell3)
 
 ```powershell-interactive

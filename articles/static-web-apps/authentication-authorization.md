@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 10/08/2021
 ms.author: cshoe
-ms.openlocfilehash: e38cc40407f636f8bfd53a9196ecaf9c431d34db
-ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
+ms.openlocfilehash: 8180dc98745079f351d321c971ed7d24d25b4b41
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129729826"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130002911"
 ---
 # <a name="authentication-and-authorization-for-azure-static-web-apps"></a>Azure Static Web Apps の認証と承認
 
@@ -48,9 +48,6 @@ Azure Static Web Apps は、認証エクスペリエンスが効率化されて�
 ### <a name="add-a-user-to-a-role"></a>ユーザーをロールに追加する
 
 ユーザーをロールに追加するには、ユーザーを特定のロールに関連付けることができる招待を生成します。 ロールは、_staticwebapp.config.json_ ファイル内で定義および管理されます。
-
-> [!NOTE]
-> グループ管理用の招待の発行を避けたい場合は、[カスタム Azure Active Directory プロバイダーを登録](./authentication-custom.md)してください。
 
 <a name="invitations" id="invitations"></a>
 

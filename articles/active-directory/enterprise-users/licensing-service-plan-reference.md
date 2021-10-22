@@ -5,7 +5,7 @@ services: active-directory
 keywords: Azure Active Directory のライセンスのサービス プラン
 documentationcenter: ''
 author: Nicholak-MS
-manager: mtillman
+manager: KarenH444
 editor: ''
 ms.service: active-directory
 ms.subservice: enterprise-users
@@ -16,12 +16,12 @@ ms.author: nicholak
 ms.reviewer: Nicholak-MS
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc8a781bca5a232bdc828eea0f2369ae7044cfd7
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 9b0e6f46007582112fb9e6728d3e3f1ac6e6591b
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129618612"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129985772"
 ---
 # <a name="product-names-and-service-plan-identifiers-for-licensing"></a>ライセンスのための製品名とサービス プラン 識別子
 

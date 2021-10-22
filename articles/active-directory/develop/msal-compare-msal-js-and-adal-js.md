@@ -3,21 +3,21 @@ title: JavaScript アプリケーションを ADAL.js から MSAL.js に移行�
 titleSuffix: Microsoft identity platform
 description: 認証と認可に Active Directory 認証ライブラリ (ADAL) ではなく、Microsoft 認証ライブラリ (MSAL) を使用するために既存の JavaScript アプリケーションを更新する方法。
 services: active-directory
-author: derisen
+author: KarenH444
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
 ms.date: 07/06/2021
-ms.author: v-doeris
+ms.author: karenhoran
 ms.custom: has-adal-ref
-ms.openlocfilehash: 541200501fd9bd3cc1883283bc308445d0e4115e
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 9e5e7b5f5bec9cf26e7dbdd019509157b9a225ba
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129232245"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130163906"
 ---
 # <a name="how-to-migrate-a-javascript-app-from-adaljs-to-msaljs"></a>JavaScript アプリを ADAL.js から MSAL.js に移行する方法
 
@@ -166,9 +166,9 @@ ADAL.js の一部のパブリック メソッドには、MSAL.js に同等のも
 | `login`                           | 該当なし                             | 非推奨になりました。 `loginPopup` または `loginRedirect` を使用します  |
 | `logOut`                          | 該当なし                             | 非推奨になりました。 `logoutPopup` または `logoutRedirect` を使用します|
 | 該当なし                               | `loginPopup`                    |                                                  |
-| 該当なし                               | `loginRedirect`                 |                                                  |
-| 該当なし                               | `logoutPopup`                   |                                                  |
-| 該当なし                               | `logoutRedirect`                |                                                  |
+| なし                               | `loginRedirect`                 |                                                  |
+| なし                               | `logoutPopup`                   |                                                  |
+| なし                               | `logoutRedirect`                |                                                  |
 | 該当なし                               | `getAccountByHomeId`            | ホーム ID (oid + テナント ID) を使用してアカウントをフィルター処理します    |
 | 該当なし                               | `getAccountLocalId`             | ローカル ID を使用してアカウントをフィルター処理します (ADFS に役立ちます)   |
 | 該当なし                               | `getAccountUsername`            | ユーザー名を使用してアカウントをフィルター処理します (存在する場合)         |

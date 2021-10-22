@@ -8,13 +8,13 @@ ms.topic: reference
 ms.workload: identity
 ms.author: kenwith
 author: kenwith
-manager: mtillman
-ms.openlocfilehash: a5b870bb2c0e8021320bf03d990e5d7b636c5422
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+manager: karenh444
+ms.openlocfilehash: 7404e91f9a5f71276749b704355a080f5c3cc29f
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129535822"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129990522"
 ---
 # <a name="azure-active-directory-application-provisioning-whats-new"></a>Azure Active Directory アプリケーションのプロビジョニング新機能
 

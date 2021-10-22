@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: allensu
-ms.openlocfilehash: e983494b41e2fe0187f9468a66242c71c9bd3280
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 372953e9a2a11cbb614cc6afd6ccde629344e0c2
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129367803"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130132780"
 ---
 # <a name="what-is-ipv6-for-azure-virtual-network"></a>Azure Virtual Network の IPv6 の概要
 
@@ -57,7 +57,6 @@ Azure VNet の IPv6 には、以下の機能が含まれています。
     - 複数のフロントエンド構成 (オプション)。これにより、単一のロード バランサーで複数の IPv6 パブリック IP アドレスを使用できます。フロントエンド アドレスをまたいで同じフロントエンド プロトコルとポートを再利用できます。
     - 負荷分散規則の *Floating IP* 機能を使用して、オプションの IPv6 ポートをバックエンド インスタンスで再利用できます 
     - 注:負荷分散では、プロトコル変換は実行されません (NAT64 はサポートされていません)。 
-    - 注:IPv6 は、Azure VM 上のプライマリ ネットワーク インターフェイス (NIC) に対してのみ負荷分散できます。 
 - Azure VNET 内に弾力性のある多層アプリケーションを作成するための、[Standard IPv6 内部 Load Balancer](../../virtual-network/ipv6-dual-stack-standard-internal-load-balancer-powershell.md) のサポート。   
 - レガシ デプロイとの互換性のための Basic IPv6 パブリック Load Balancer のサポート
 - [予約された IPv6 パブリック IP アドレスおよびアドレス範囲](public-ip-address-prefix.md)により、安定した予測可能な IPv6 アドレスが提供されます。これにより、会社や顧客向けに、Azure でホストされているアプリケーションを簡単にフィルター処理することができます。

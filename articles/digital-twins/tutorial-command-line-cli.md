@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 6/1/2021
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 50e5a8fb09a3bd54dd4131f6c60de6b315233e86
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 8df2c2a1eb7a16df4d35a8b6530aec82a1632722
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128557668"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129996287"
 ---
 # <a name="tutorial-create-an-azure-digital-twins-graph-using-the-azure-cli"></a>チュートリアル: Azure CLI を使用して Azure Digital Twins グラフを作成する
 
@@ -52,7 +52,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 この記事で Azure Digital Twins を操作するには、まず **Azure Digital Twins インスタンス** とそれを使用するために必要なアクセス許可を設定する必要があります。 以前の作業で Azure Digital Twins インスタンスが既に設定されている場合は、そのインスタンスを使用できます。
 
-それ以外の場合は、「[インスタンスと認証を設定する](how-to-set-up-instance-cli.md)」の手順に従います。 説明には、各手順が正常に完了し、新しいインスタンスを使用する準備ができていることを確認するための手順も含まれています。
+それ以外の場合は、「[インスタンスと認証を設定する](how-to-set-up-instance-cli.md#create-the-azure-digital-twins-instance)」の手順に従います。 説明には、各手順が正常に完了し、新しいインスタンスを使用する準備ができていることを確認するための手順も含まれています。
 
 Azure Digital Twins インスタンスを設定したら、後でインスタンスに接続するために必要な次の値をメモしておきます。
 * インスタンスの **"_ホスト名_"**

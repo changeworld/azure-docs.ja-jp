@@ -5,12 +5,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2019
-ms.openlocfilehash: afe6e82c3cc9773fbf0c17992fd6894d199d177f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 02a568d48ca99a58778adfd4068c359b4748ab43
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105937245"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130178451"
 ---
 # <a name="azure-monitor-overview"></a>Azure Monitor の概要
 
@@ -44,7 +44,7 @@ Azure Monitor が収集した多くの Azure リソースのデータは、Azure
 
 ![視覚化で使用するためにメトリック エクスプローラーに送信されるメトリック データを示す図。](media/overview/metrics.png)
 
-Azure Monitor が収集したログ データは、収集されたデータをすばやく検索、統合、分析する[クエリ](logs/log-query-overview.md)を使用して分析できます。  Azure portal から [Log Analytics](./logs/log-query-overview.md) を使用してクエリを作成し、テストすることができます。 その後、別のツールを使用してデータを直接分析するか、またはクエリを保存して[視覚化](visualizations.md)や[アラート ルール](alerts/alerts-overview.md)に利用することができます。
+Azure Monitor が収集したログ データは、収集されたデータをすばやく検索、統合、分析する[クエリ](logs/log-query-overview.md)を使用して分析できます。  Azure portal から [Log Analytics](./logs/log-query-overview.md) を使用してクエリを作成し、テストすることができます。 その後、別のツールを使用してデータを直接分析するか、またはクエリを保存して[視覚化](best-practices-analysis.md)や[アラート ルール](alerts/alerts-overview.md)に利用することができます。
 
 Azure Monitor では、[Kusto クエリ言語](/azure/kusto/query/)の 1 つのバージョンを使用します。この言語は、単純なログ検索に適している一方で、集計、結合、スマート分析など高度な機能も備えています。 [さまざまなレッスン](logs/get-started-queries.md)を利用すれば、クエリ言語はすぐに覚えることができます。  既に [SQL](/azure/data-explorer/kusto/query/sqlcheatsheet) や [Splunk](/azure/data-explorer/kusto/query/splunk-cheat-sheet) に習熟しているユーザーには、別途ガイダンスが用意されています。
 
@@ -107,7 +107,7 @@ Azure Monitor のアラート ルールは、受信者の一意なセットと�
 ![「プロセッサ時間 > 80%」というラベルが付いたいくつかのサーバーが直線上にあり、2 台のサーバーが最小、3 台のサーバーが現在の容量、5 台のサーバーが最大とマークされている、自動スケーリングを示す図。](media/overview/autoscale.png)
 
 ## <a name="visualizing-monitoring-data"></a>監視データの視覚化
-グラフや表などによる[視覚化](visualizations.md)は、監視データをまとめてさまざまな対象ユーザーに提示する際に利用できる効果的なツールです。 Azure Monitor は、監視データを視覚化する独自の機能を備えており、他の Azure サービスを活用してさまざまな対象ユーザーに公開します。
+グラフや表などによる[視覚化](best-practices-analysis.md)は、監視データをまとめてさまざまな対象ユーザーに提示する際に利用できる効果的なツールです。 Azure Monitor は、監視データを視覚化する独自の機能を備えており、他の Azure サービスを活用してさまざまな対象ユーザーに公開します。
 
 ### <a name="dashboards"></a>ダッシュボード
 [Azure ダッシュボード](../azure-portal/azure-portal-dashboards.md)を使用すると、さまざまな種類のデータを組み合わせて、[Azure portal](https://portal.azure.com) 内の 1 つのペインに表示できます。 ダッシュボードは、他の Azure ユーザーと共有することもできます。 ログ クエリやメトリック グラフの出力を Azure ダッシュ ボードに追加できます。 たとえば、メトリックのグラフ、アクティビティ ログの表、Application Insights の使用状況グラフ、ログ クエリ結果を示すタイルを組み合わせて 1 つのダッシュボードを作成できます。

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: arvinh
-ms.openlocfilehash: 673dca65726a4258e267e8dd3e403329b47f6d98
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 5a14f9367a1b46a641f371b8c17a62b9f58c5756
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108739986"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130001316"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>チュートリアル:Slack を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -37,7 +37,7 @@ ms.locfileid: "108739986"
 
 * [Azure AD テナント](../develop/quickstart-create-new-tenant.md)。
 * プロビジョニングを構成するための[アクセス許可](../roles/permissions-reference.md)を持つ Azure AD のユーザー アカウント (アプリケーション管理者、クラウド アプリケーション管理者、アプリケーション所有者、グローバル管理者など)。
-* [Plus プラン](https://aadsyncfabric.slack.com/pricing)以上の Slack テナントが有効になっていること。
+* [Plus プラン](https://slack.com/pricing)以上の Slack テナントが有効になっていること。
 * Team Admin アクセス許可がある Slack のユーザー アカウント。
 
 > [!NOTE]

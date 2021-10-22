@@ -1,18 +1,18 @@
 ---
 title: バックエンド v1 への接続
 description: App Service 環境からバックエンド リソースに安全に接続する方法について説明します。 このドキュメントは、レガシ v1 ASE を使用するお客様にのみ提供されます。
-author: stefsch
+author: madsd
 ms.assetid: f82eb283-a6e7-4923-a00b-4b4ccf7c4b5b
 ms.topic: article
 ms.date: 10/04/2016
-ms.author: stefsch
+ms.author: madsd
 ms.custom: seodec18
-ms.openlocfilehash: 9f8e288f771b9d584a0fd3430115f5fa60f68e47
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eb022d72dbbf433c8a91f092cb2337fc7e3a6e55
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88961807"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130004675"
 ---
 # <a name="connect-securely-to-back-end-resources-from-an-app-service-environment"></a>App Service 環境からバックエンド リソースに安全に接続する
 App Service 環境は常に Azure Resource Manager 仮想ネットワーク **または** クラシック デプロイ モデル [仮想ネットワーク][virtualnetwork]の **いずれか** に作成されるため、App Service 環境から他のバックエンド リソースへの送信接続は、仮想ネットワーク経由でのみ行うことができます。 2016 年 6 月の時点で、ASE はパブリック アドレス範囲または RFC1918 アドレス空間 (プライベートアドレス) のいずれかを使用する仮想ネットワークにもデプロイすることができます。  

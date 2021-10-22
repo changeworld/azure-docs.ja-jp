@@ -3,15 +3,13 @@ title: Key Vault 分析情報でキー コンテナーを監視する | Microsof
 description: この記事では、Key Vault 分析情報について説明します。
 services: azure-monitor
 ms.topic: conceptual
-author: lgayhardt
-ms.author: lagayhar
 ms.date: 09/10/2020
-ms.openlocfilehash: 953d6300b8ac19ddfcfe3b37a1cfde50480e19a4
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 0ad400ffcb892c09d6f746c482c9cb78c5627075
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110095124"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130131868"
 ---
 # <a name="monitoring-your-key-vault-service-with-key-vault-insights"></a>Key Vault 分析情報を使用したキー コンテナー サービスの監視
 Key Vault 分析情報ではキー コンテナーの要求、パフォーマンス、エラー、待機時間の統合ビューにより、キー コンテナーの包括的な監視が提供されます。

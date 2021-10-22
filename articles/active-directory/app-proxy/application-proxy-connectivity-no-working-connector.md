@@ -3,7 +3,7 @@ title: Azure Active Directory アプリケーション プロキシ アプリ用
 description: Azure Active Directory アプリケーション プロキシを使用したアプリケーション用のコネクタ グループ内に動作するコネクタがない場合に発生するおそれのある問題に対処します
 services: active-directory
 author: kenwith
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-proxy
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: asteen
-ms.openlocfilehash: 22472b3a4ef215426fa79fa4e06beb333764f707
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 1c099b9af1314a62f5fe26703525dfbad3b79ab2
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108187091"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129989724"
 ---
 # <a name="no-working-connector-group-found-for-an-application-proxy-application"></a>アプリケーション プロキシ アプリケーション用として動作するコネクタ グループが見つからない
 

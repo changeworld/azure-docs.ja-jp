@@ -3,7 +3,7 @@ title: Azure Active Directory アプリケーション プロキシのワイル�
 description: Azure Active Directory アプリケーション プロキシでワイルドカード アプリケーションを使用する方法について説明します。
 services: active-directory
 author: kenwith
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-proxy
 ms.workload: identity
@@ -12,12 +12,12 @@ ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 60565787588bf2c061945ba0e99207d853caadc8
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: d84ca4e53ada2310097e0c7af5314bdf05fd2613
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129232976"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129988563"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Azure Active Directory アプリケーション プロキシのワイルドカード アプリケーション
 

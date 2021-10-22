@@ -7,12 +7,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: 9fd07c6a5ec49d2251173d68c28cf18806312a36
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 44aa20dcdf4cc4d87fa868ce38855b525caa8a98
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129356821"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129707502"
 ---
 # <a name="azure-stack-edge-2101-release-notes"></a>Azure Stack Edge 2101 リリース ノート
 
@@ -43,7 +43,7 @@ Azure Stack Edge 2101 リリースの新機能は次のとおりです。
 
 | いいえ。 | 特徴量 | 問題 | 対応策/コメント |
 | --- | --- | --- | --- |
-|**1.**|プレビュー機能 |このリリースでは、ローカル Azure Resource Manager、仮想マシン、仮想マシンのクラウド管理、Azure Arc 対応 Kubernetes、Azure Stack Edge Pro R および Azure Stack Edge Mini R 用の VPN、Azure Stack Edge Pro GPU 用のマルチプロセス サービス (MPS) の全機能をプレビューとしてご利用になれます。  |これらの機能は、今後のリリースで一般公開される予定です。 |
+|**1.**|プレビュー機能 |このリリースでは、ローカル Azure Resource Manager、仮想マシン、仮想マシンのクラウド管理、Azure Arc 対応 Kubernetes、Azure Stack Edge Pro R および Azure Stack Edge Mini R 用の VPN、Azure Stack Edge Pro GPU 用のマルチプロセス サービス (MPS) の全機能をプレビューとして利用できます。  |これらの機能は、今後のリリースで一般公開される予定です。 |
 |**2.**|Kubernetes ダッシュボード | Kubernetes ダッシュボードで SSL 証明書を使用する *Https* エンドポイントはサポートされていません。 | |
 |**3.**|Kubernetes |Web プロキシが有効になっている場合、Edge コンテナー レジストリは機能しません。|この機能は、今後のリリースで利用可能になります。 |
 |**4.**|Kubernetes |IoT Edge モジュールでは Edge コンテナー レジストリは機能しません。| |
@@ -60,8 +60,8 @@ Azure Stack Edge 2101 リリースの新機能は次のとおりです。
 
 | いいえ。 | 特徴量 | 問題 | 対応策/コメント |
 | --- | --- | --- | --- |
-| **1.** |Azure Stack Edge Pro + Azure SQL | SQL Database を作成するには、管理者アクセス権が必要です。   |「[チュートリアル: SQL Server データベースを使用したエッジでのデータの格納](../iot-edge/tutorial-store-data-sql-server.md#create-the-sql-database)」の手順 1 から 2 ではなく以下の手順を実行します。 <ul><li>デバイスのローカル UI で、コンピューティング インターフェイスを有効にします。 **[コンピューティング] > [ポート番号] > [Enable for compute]\(コンピューティングを有効にする\) > [適用]** を選択します。</li><li>[sqlcmd ユーティリティ](/sql/tools/sqlcmd-utility)からクライアント マシンに `sqlcmd` をダウンロードします。 </li><li>コンピューティング インターフェイスの IP アドレス (有効なポート) に接続し、アドレスの末尾に ",1401" を追加します。</li><li>最終的なコマンドは次のようになります。sqlcmd -S {Interface IP},1401 -U SA -P "Strong!Passw0rd"</li>この後、現在のドキュメントの手順 3 から 4 は同じにする必要があります。 </li></ul> |
-| **2.** |更新| **[更新]** によって復元された BLOB の増分変更はサポートされていません |BLOB エンドポイントの場合、[更新] 後に BLOB を部分的に更新すると、更新がクラウドにアップロードされない可能性があります。 たとえば、次のような一連のアクションがあります。<ul><li>クラウドに BLOB を作成します。 または、以前にアップロードした BLOB をデバイスから削除します。</li><li>更新機能を使用して、クラウドからアプライアンスに BLOB を更新します。</li><li>Azure SDK REST API を使用して、BLOB の一部のみを更新します。</li></ul>これらのアクションの結果、BLOB の更新されたセクションがクラウドで更新されない可能性があります。 <br>**回避策**:robocopy などのツール、またはエクスプローラーやコマンド ラインを介した通常のファイル コピーを使用して、BLOB 全体を置き換えます。|
+|**1.**|Azure Stack Edge Pro + Azure SQL | SQL Database を作成するには、管理者アクセス権が必要です。 |「[チュートリアル: SQL Server データベースを使用したエッジでのデータの格納](../iot-edge/tutorial-store-data-sql-server.md#create-the-sql-database)」の手順 1 から 2 ではなく以下の手順を実行します。 <ul><li>デバイスのローカル UI で、コンピューティング インターフェイスを有効にします。 **[コンピューティング] > [ポート番号] > [Enable for compute]\(コンピューティングを有効にする\) > [適用]** を選択します。</li><li>[sqlcmd ユーティリティ](/sql/tools/sqlcmd-utility)からクライアント マシンに `sqlcmd` をダウンロードします。 </li><li>コンピューティング インターフェイスの IP アドレス (有効なポート) に接続し、アドレスの末尾に「`,1401`」を追加します。</li><li>最終的なコマンドは `sqlcmd -S {Interface IP},1401 -U SA -P "Strong!Passw0rd"` のようになります。</li>この後、現在のドキュメントの手順 3 から 4 は同じにする必要があります。 </li></ul> |
+|**2.**|更新| **[更新]** によって復元された BLOB の増分変更はサポートされていません |BLOB エンドポイントの場合、[更新] 後に BLOB を部分的に更新すると、更新がクラウドにアップロードされない可能性があります。 たとえば、次のような一連のアクションがあります。<ul><li>クラウドに BLOB を作成します。 または、以前にアップロードした BLOB をデバイスから削除します。</li><li>更新機能を使用して、クラウドからアプライアンスに BLOB を更新します。</li><li>Azure SDK REST API を使用して、BLOB の一部のみを更新します。</li></ul>これらのアクションの結果、BLOB の更新されたセクションがクラウドで更新されない可能性があります。 <br>**回避策**:robocopy などのツール、またはエクスプローラーやコマンド ラインを介した通常のファイル コピーを使用して、BLOB 全体を置き換えます。|
 |**3.**|Throttling|調整中に、デバイスへの新しい書き込みが許可されていない場合、NFS クライアントによる書き込みは "アクセス許可が拒否されました" エラーで失敗します。| 次のようなエラーが表示されます。<br>`hcsuser@ubuntu-vm:~/nfstest$ mkdir test`<br>mkdir: cannot create directory 'test': (mkdir: ディレクトリ 'test' を作成できません:)アクセス許可は拒否されました|
 |**4.**|Blob Storage のインジェスト|Blob storage のインジェストに AzCopy バージョン 10 を使用する場合は、次の引数を指定して AzCopy を実行します。`Azcopy <other arguments> --cap-mbps 2000`| AzCopy にこれらの制限を指定しない場合、デバイスに大量の要求が送信され、サービスに問題が発生する可能性があります。|
 |**5.**|階層型ストレージ アカウント|階層型ストレージ アカウントを使用する場合は、以下が適用されます。<ul><li> ブロック BLOB のみがサポートされています。 ページ BLOB はサポートされていません。</li><li>スナップショットまたはコピー API はサポートされていません。</li><li> `distcp` を使用した Hadoop ワークロードの取り込みは、コピー操作が頻繁に使用されるため、サポートされていません。</li></ul>||

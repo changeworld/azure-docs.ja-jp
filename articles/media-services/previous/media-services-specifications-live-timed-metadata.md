@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2019
 ms.author: johndeu
-ms.openlocfilehash: 92db32e4e51d94e7e6c827803653c367bec4f759
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: de4c836fd5108a029208ead4ab6e1152f7b3fc1b
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123440075"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130166763"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>ライブ ストリーミングでの時間指定メタデータのシグナル通知 
 
@@ -84,7 +84,7 @@ ms.locfileid: "123440075"
 | [MS-SSTR-Ingest]  | [Azure Media Services の Fragmented MP4 ライブ インジェスト仕様](./media-services-fmp4-live-ingest-overview.md)                                                      |
 | [RFC8216]         | R. Pantos, Ed.; W. May. HTTP ライブ ストリーミング。 2017 年 8 月。 情報提供。 [https://tools.ietf.org/html/rfc8216](https://tools.ietf.org/html/rfc8216)                                                            |
 | [RFC4648]         | Base16、Base32、および Base64 データ エンコード - [https://tools.ietf.org/html/rfc4648](https://tools.ietf.org/html/rfc4648)                                                                                     |
-| [RTMP]            | [「Adobe のリアルタイム メッセージング プロトコル」、2012 年 12 月 21 日](https://www.adobe.com/devnet/rtmp.html)                                                                                                            |
+| [RTMP]            | [「Adobe のリアルタイム メッセージング プロトコル」、2012 年 12 月 21 日](https://rtmp.veriskope.com/docs/spec/)                                                                                                            |
 | [SCTE-35-2019]    | SCTE 35:2019 - ケーブル接続のデジタル プログラム挿入キューイング メッセージ - https://scte-cms-resource-storage.s3.amazonaws.com/ANSI_SCTE-35-2019a-1582645390859.pdf                                                                       |
 | [SCTE-214-1]      | SCTE 214-1 2016 – IP ベースのケーブル サービス向け MPEG DASH パート 1:MPD の制約と拡張                                                                                                                 |
 | [SCTE-214-3]      | SCTE 214-3 2015 IP ベースのケーブル サービス向け MPEG DASH パート 3:DASH/FF プロファイル                                                                                                                                  |

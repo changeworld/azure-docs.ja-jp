@@ -8,12 +8,12 @@ ms.date: 10/05/2021
 ms.topic: article
 ms.service: azure-fluid
 fluid.url: https://fluidframework.com/docs/deployment/azure-frs/
-ms.openlocfilehash: 4c44803b7f65aef89a0f82e6c2420b31f798a9e8
-ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
+ms.openlocfilehash: b9fe1c6a0b70d2e2765ce9da8733916b6226c0da
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129661624"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130178958"
 ---
 # <a name="how-to-connect-to-an-azure-fluid-relay-service"></a>方法: Azure Fluid Relay サービスに接続する
 
@@ -158,11 +158,11 @@ const onAudienceChanged = () => {
   const memberStrings: string[] = [];
   const useAzure = process.env.FLUID_CLIENT === "azure";
 
-  members.forEach((member: AzureMember<ICustomUserDetails>) => {
-    if (member.userId !== self?.userId) {
+  members.forEach((member) => {
+    if (member.userId !== (self ? self.userId : "")) {
       if (useAzure) {
-        const memberString = `${member.userName}: {Email: ${member.additionalDetails?.email},
-                        Address: ${member.additionalDetails?.address}}`;
+        const memberString = `${member.userName}: {Email: ${member.additionalDetails ? member.additionalDetails.email : ""},
+                        Address: ${member.additionalDetails ? member.additionalDetails.address : ""}}`;
         memberStrings.push(memberString);
       } else {
         memberStrings.push(member.userName);
@@ -170,7 +170,7 @@ const onAudienceChanged = () => {
     }
   });
   audienceDiv.innerHTML = `
-            Current User: ${self?.userName} <br />
+            Current User: ${self ? self.userName : ""} <br />
             Other Users: ${memberStrings.join(", ")}
         `;
 };

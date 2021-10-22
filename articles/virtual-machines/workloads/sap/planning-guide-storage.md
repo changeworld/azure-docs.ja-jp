@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/17/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0af6df954dda4e5af6335776b1f93f929da5834e
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 25cdaf3bd916b587adeeaf200d0c55b0c4001ad2
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122323724"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130074553"
 ---
 # <a name="azure-storage-types-for-sap-workload"></a>SAP ワークロードの Azure Storage の種類
 Azure には、機能、スループット、待機時間、価格が大幅に異なるさまざまな種類のストレージがあります。 ストレージの種類の中には、SAP シナリオでは使用できないものや、制限付きで使用できるものがあります。 一方、いくつかの Azure Storage の種類が、特定の SAP ワークロードのシナリオ用として適切であるか、または最適化されています。 特に SAP HANA に関して、一部の Azure Storage の種類は SAP HANA での使用の認定を受けています。 このドキュメントでは、さまざまな種類のストレージを取り上げて、SAP ワークロードと SAP コンポーネントに対する機能と使用可能性について説明します。
@@ -130,7 +130,7 @@ Azure Premium SSD は、以下のことを実現する目的で導入されま�
 * IOPS とスループットの SLA
 * I/O 待機時間の変動の低減
 
-この種類のストレージは、DBMS ワークロード、数ミリ秒台という短い待機時間が求められるストレージ トラフィック、IOPS に基づく SLA をターゲットにしています。Azure Premium Storage の場合のスループット コストの基準は、このようなディスクに格納されている実際のデータ量ではなく、このようなディスクのサイズ カテゴリであり、ディスク内に格納されているデータの量は関係ありません。 なお、Premium Storage では、「[Premium SSD](../../disks-types.md#premium-ssd)」の記事に示されているサイズ カテゴリに直接マップされないディスクを作成することもできます。 この記事からの結論は次のとおりです。
+この種類のストレージは、DBMS ワークロード、数ミリ秒台という短い待機時間が求められるストレージ トラフィック、IOPS に基づく SLA をターゲットにしています。Azure Premium Storage の場合のスループット コストの基準は、このようなディスクに格納されている実際のデータ量ではなく、このようなディスクのサイズ カテゴリであり、ディスク内に格納されているデータの量は関係ありません。 なお、Premium Storage では、「[Premium SSD](../../disks-types.md#premium-ssds)」の記事に示されているサイズ カテゴリに直接マップされないディスクを作成することもできます。 この記事からの結論は次のとおりです。
 
 - ストレージは範囲別に編成されています。 たとえば、容量が 513 GiB から 1024 GiB までの範囲にあるディスクでは、同じ機能と同じ月額コストが共有されます。
 - GiB あたりの IOPS は、サイズ カテゴリ間で線形になりません。 32 GiB より小さいディスクの場合、GiB あたりの IOPS レートが高くなります。 32 GiB を超えて 1024 GiB までのディスクの場合、GiB あたりの IOPS レートは、GiB あたり 4 から 5 IOPS です。 32,767 GiB までの大容量ディスクになると、GiB あたりの IOPS レートは 1 を下回るようになります。
@@ -190,8 +190,8 @@ Azure Ultra Disk では、Azure IaaS VM 用に高スループット、高 IOPS�
 Ultra ディスクを作成するとき、次の 3 つのディメンションを定義できます。
 
 - ディスクの容量。 範囲は 4 GiB から 65,536 GiB までです。
-- ディスクに対してプロビジョニングされた IOPS。 ディスク容量には、さまざまな最大値が適用されます。 詳細については、「[Ultra Disk](../../disks-types.md#ultra-disk)」の記事を参照してください。
-- プロビジョニングされたストレージ帯域幅。 ディスクの容量に応じて、さまざまな最大帯域幅が適用されます。 詳細については、「[Ultra Disk](../../disks-types.md#ultra-disk)」の記事を参照してください。
+- ディスクに対してプロビジョニングされた IOPS。 ディスク容量には、さまざまな最大値が適用されます。 詳細については、「[Ultra Disk](../../disks-types.md#ultra-disks)」の記事を参照してください。
+- プロビジョニングされたストレージ帯域幅。 ディスクの容量に応じて、さまざまな最大帯域幅が適用されます。 詳細については、「[Ultra Disk](../../disks-types.md#ultra-disks)」の記事を参照してください。
 
 1 個のディスクのコストは、特定のディスクに対して個別に定義できる 3 つのディメンションによって決まります。 
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/10/2021
 ms.author: danlep
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: 008e3874961af2c3e8ff8dfe3f162254fb9d5f5e
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 1d3abd6da011a0147c3e9cee06f8e60800263e63
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128669248"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129612011"
 ---
 # <a name="connect-to-a-virtual-network-using-azure-api-management"></a>Azure API Management を使用して仮想ネットワークに接続する
 
@@ -162,7 +162,7 @@ API Management サービス インスタンスが VNET でホストされてい�
 | * / 1433                     | 送信           | TCP                | VIRTUAL_NETWORK / SQL                 | **Azure SQL エンドポイントへのアクセス**                           | 外部 / 内部  |
 | * / 5671, 5672, 443          | 送信           | TCP                | VIRTUAL_NETWORK / イベント ハブ            | [Event Hub へのログ ポリシー](api-management-howto-log-event-hubs.md)および監視エージェントの依存関係 | 外部 / 内部  |
 | * / 445                      | 送信           | TCP                | VIRTUAL_NETWORK / Storage             | [Git](api-management-configuration-repository-git.md) のための Azure ファイル共有への依存関係                      | 外部 / 内部  |
-| * / 443、12000                     | 送信           | TCP                | VIRTUAL_NETWORK / AzureCloud            | 正常性と監視の拡張機能         | 外部 / 内部  |
+| * / 443、12000                     | 送信           | TCP                | VIRTUAL_NETWORK / AzureCloud            | 正常性と監視の拡張機能、Event Grid への依存関係 (イベント通知がアクティブになっている場合)        | 外部 / 内部  |
 | * / 1886、443                     | 送信           | TCP                | VIRTUAL_NETWORK / AzureMonitor         | [診断ログとメトリック](api-management-howto-use-azure-monitor.md)、[Resource Health](../service-health/resource-health-overview.md)、[Application Insights](api-management-howto-app-insights.md) を公開する                   | 外部 / 内部  |
 | * / 25、587、25028                       | 送信           | TCP                | VIRTUAL_NETWORK / INTERNET            | 電子メールを送信するために SMTP リレーに接続する                    | 外部 / 内部  |
 | * / 6381 - 6383              | 受信および送信 | TCP                | VIRTUAL_NETWORK / VIRTUAL_NETWORK     | マシン間の[キャッシュ](api-management-caching-policies.md) ポリシーのために Redis サービスにアクセスする         | 外部 / 内部  |

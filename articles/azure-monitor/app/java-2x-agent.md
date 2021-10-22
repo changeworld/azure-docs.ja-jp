@@ -3,15 +3,15 @@ title: Java Web アプリのパフォーマンスの監視 - Azure Application I
 description: Application Insights を使用した Java Web サイトのパフォーマンスおよび利用状況の監視拡張。
 ms.topic: conceptual
 ms.date: 01/10/2019
-author: MS-jgol
 ms.custom: devx-track-java
-ms.author: jgol
-ms.openlocfilehash: 3489591a39901a79323faf307b8700863f71522a
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+author: mattmccleary
+ms.author: mmcc
+ms.openlocfilehash: 989a0707ded7f9f462263a368bb64d55395cc03c
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110105016"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130134015"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Java Web アプリでの依存関係、キャッチされた例外、メソッド実行時間の監視
 

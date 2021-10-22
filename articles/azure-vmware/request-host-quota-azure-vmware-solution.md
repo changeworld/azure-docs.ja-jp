@@ -4,12 +4,12 @@ description: Azure VMware Solution のホスト クォータまたは容量を�
 ms.topic: how-to
 ms.custom: contperf-fy21q3
 ms.date: 09/27/2021
-ms.openlocfilehash: 2b3e2291726f37f3c802d1db24429381e7a2b7d1
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.openlocfilehash: 985b17183d8e3373f03f156857ee0697c769e28d
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129083241"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130044821"
 ---
 # <a name="request-host-quota-for-azure-vmware-solution"></a>Azure VMware Solution のホスト クォータを要求する
 
@@ -41,7 +41,7 @@ Azure VMware Solution の既存のプライベート クラウドがあり、さ
 
 1. サポート チケットの <bpt id="p1">**</bpt>[詳細]<ept id="p1">**</ept> タブの <bpt id="p2">**</bpt>[説明]<ept id="p2">**</ept> に、次の情報を入力します。
 
-   - POC または運用環境 
+   - Production 
    - リージョン名
    - ホストの数
    - その他の詳細
@@ -79,9 +79,9 @@ CSP は <bpt id="p1">[</bpt>Microsoft パートナー センター<ept id="p1">]
 
    1. <bpt id="p2">**</bpt>代理管理者<ept id="p2">**</ept> (AOBO) の手順を使用して、<bpt id="p1">[</bpt>Microsoft パートナー センター<ept id="p1">](https://partner.microsoft.com)</ept>から Azure portal にアクセスします。
    
-   1. <bpt id="p1">**</bpt>[CSP]<ept id="p1">**</ept> を選択して、 <bpt id="p2">**</bpt>[顧客]<ept id="p2">**</ept> 領域にアクセスします。
+   1. **[CSP]** を選択して、 **[顧客]** 領域にアクセスします。
    
-   1. 顧客の詳細を展開し、 <bpt id="p1">**</bpt>[Microsoft Azure の管理ポータル]<ept id="p1">**</ept> を選択します。
+   1. 顧客の詳細を展開し、 **[Microsoft Azure の管理ポータル]** を選択します。
    
    1. Azure portal の <bpt id="p1">**</bpt>[ヘルプとサポート]<ept id="p1">**</ept> で、 <bpt id="p2">**</bpt><bpt id="p3">[</bpt>新しいサポート リクエスト<ept id="p3">](https://rc.portal.azure.com/#create/Microsoft.Support)</ept><ept id="p2">**</ept> を作成し、次の情報を入力します。
       - <bpt id="p1">**</bpt>問題の種類:<ept id="p1">**</ept> 技術
@@ -94,7 +94,7 @@ CSP は <bpt id="p1">[</bpt>Microsoft パートナー センター<ept id="p1">]
    
    1. サポート チケットの <bpt id="p1">**</bpt>[詳細]<ept id="p1">**</ept> タブの <bpt id="p2">**</bpt>[説明]<ept id="p2">**</ept> に、次の情報を入力します。
    
-      - POC または運用環境 
+      - Production 
       - リージョン名
       - ホストの数
       - その他の詳細

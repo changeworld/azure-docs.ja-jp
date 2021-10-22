@@ -6,15 +6,15 @@ ms.service: active-directory
 ms.subservice: B2C
 ms.topic: reference
 ms.workload: identity
-ms.author: mimart
-author: msmimart
+ms.author: kengaderdus
+author: kengaderdus
 manager: CelesteDG
-ms.openlocfilehash: 48e2e033062126345f66387529485ee143489a24
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: ba3e1ea54c6637e6882bdba1f62a9c41a1f17605
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129536164"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130043588"
 ---
 # <a name="azure-active-directory-b2c-whats-new"></a>Azure Active Directory B2C:新機能
 
