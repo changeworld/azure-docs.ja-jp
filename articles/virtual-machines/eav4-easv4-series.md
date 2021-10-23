@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/13/2021
 ms.author: ayshak
 ms.reviewer: jushiman
-ms.openlocfilehash: 5b27feeb6e185ce2ea4bd247a3251a6e3db7dc98
-ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
+ms.openlocfilehash: c5f2304de4cd10b8d4eea43c324d6d6e17bdbd7f
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129153598"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130070510"
 ---
 # <a name="eav4-and-easv4-series"></a>Eav4 および Easv4 シリーズ
 
@@ -94,7 +94,7 @@ Easv4 シリーズのサイズは、2.35 Ghz AMD EPYC<sup>TM</sup> 7452 プロ�
 
 料金計算ツール: [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 
-ディスクの種類の詳細情報:[ディスクの種類](./disks-types.md#ultra-disk)
+ディスクの種類の詳細情報:[ディスクの種類](./disks-types.md#ultra-disks)
 
 ## <a name="next-steps"></a>次のステップ
 

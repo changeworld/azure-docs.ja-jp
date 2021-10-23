@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/09/2021
 ms.reviewer: cynthn, jushiman
 ms.custom: template-how-to
-ms.openlocfilehash: e2563f7addb773b256a56dc67b2ec892b7231372
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: 9f8f9f14099c20259d26e9cf031695a1e72171a9
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129532635"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130066283"
 ---
 # <a name="associate-a-virtual-machine-scale-set-to-a-capacity-reservation-group-preview"></a>仮想マシン スケール セットを容量予約グループに関連付ける (プレビュー)
 
@@ -82,6 +82,21 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
     } 
 ```
 
+### <a name="cli"></a>[CLI](#tab/cli1)
+
+`az vmss create` を使用して新しい仮想マシン スケール セットを作成し、`capacity-reservation-group` プロパティを追加して、スケール セットを既存の容量予約グループに関連付けます。 次の例では、米国東部の場所に Standard_Ds1_v2 VM の均一スケール セットを作成し、そのスケール セットを容量予約グループに関連付けます。
+
+```azurecli-interactive
+az vmss create 
+--resource-group myResourceGroup 
+--name myVMSS 
+--location eastus 
+--vm-sku Standard_Ds1_v2 
+--image UbuntuLTS 
+--capacity-reservation-group /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName} 
+```
+
+
 ### <a name="powershell"></a>[PowerShell](#tab/powershell1) 
 
 `New-AzVmss` を使用して新しい仮想マシン スケール セットを作成し、`CapacityReservationGroupId` プロパティを追加して、スケール セットを既存の容量予約グループに関連付けます。 次の例では、米国東部の場所に Standard_Ds1_v2 VM の均一スケール セットを作成し、そのスケール セットを容量予約グループに関連付けます。
@@ -149,6 +164,26 @@ ARM テンプレートを使用して、関連するリソースのグループ�
                 }
         }
     }
+    ```
+
+### <a name="cli"></a>[CLI](#tab/cli2)
+
+1. 仮想マシン スケール セットの割り当てを解除します。 
+
+    ```azurecli-interactive
+    az vmss deallocate 
+    --location eastus
+    --resource-group myResourceGroup 
+    --name myVMSS 
+    ```
+
+1. スケール セットを容量予約グループに関連付けます。 
+
+    ```azurecli-interactive
+    az vmss update 
+    --resource-group myResourceGroup 
+    --name myVMSS 
+    --capacity-reservation-group /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}
     ```
 
 ### <a name="powershell"></a>[PowerShell](#tab/powershell2) 
@@ -236,6 +271,14 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
     } 
 } 
 ```  
+
+### <a name="cli"></a>[CLI](#tab/cli3)
+
+```azurecli-interactive
+az capacity reservation group show 
+-g myResourceGroup
+-n myCapacityReservationGroup 
+``` 
 
 ### <a name="powershell"></a>[PowerShell](#tab/powershell3) 
 

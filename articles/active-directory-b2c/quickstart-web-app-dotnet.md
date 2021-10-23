@@ -3,20 +3,20 @@ title: 'クイックスタート: ASP.NET Web アプリのサインインを設�
 titleSuffix: Azure AD B2C
 description: このクイックスタートでは、Azure Active Directory B2C を使用してアカウント サインインを提供するサンプル ASP.NET Web アプリを実行します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.topic: quickstart
 ms.custom: devx-track-csharp, mvc
 ms.date: 10/01/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 3c39780f1f8e84ed3fe58973f46274bad727d10e
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: e48ce8e709a81270bc7a0fdac6d57817f582c9f2
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129351374"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130035469"
 ---
 # <a name="quickstart-set-up-sign-in-for-an-aspnet-application-using-azure-active-directory-b2c"></a>クイックスタート: Azure Active Directory B2C を使用した ASP.NET アプリケーションのサインインの設定
 

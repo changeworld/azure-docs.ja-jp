@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C のユーザー プロファイル属性
 description: Azure AD B2C ディレクトリのユーザー プロファイルでサポートされているユーザー リソースの種類の属性について説明します。 組み込みの属性、拡張機能、および属性が Microsoft Graph にどのようにマップされるかについて説明します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/24/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: c11227d975f572d6d473a22f62f4616ad024af3b
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: 2b3970504811b3dd97002b0da57d6af6ddf9413b
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129061449"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130043759"
 ---
 # <a name="user-profile-attributes"></a>ユーザー プロファイルの属性
 
@@ -39,7 +39,7 @@ Azure AD B2C ユーザー プロファイルで使用できるほとんどの属
 - 属性をユーザー フローで使用できるかどうか
 - 属性をカスタム ポリシーの [Azure AD 技術プロファイル](active-directory-technical-profile.md)で使用できるかどうか、およびどのセクション (&lt;InputClaims&gt;、&lt;OutputClaims&gt;、または &lt;PersistedClaims&gt;) で使用できるか
 
-|名前     |種類     |説明|Azure portal|ユーザー フロー|カスタム ポリシー|
+|名前     |Type     |説明|Azure portal|ユーザー フロー|カスタム ポリシー|
 |---------|---------|----------|------------|----------|-------------|
 |accountEnabled  |Boolean|ユーザー アカウントが有効か無効か: アカウントが有効の場合は **true**、それ以外の場合は **false**。|はい|いいえ|Persisted、Output|
 |ageGroup        |String|ユーザーの年齢グループ。 指定できる値: null、Undefined、Minor、Adult、NotAdult。|はい|いいえ|Persisted、Output|
@@ -115,7 +115,7 @@ Azure AD B2C ディレクトリにユーザー アカウントを作成するに
 
 Microsoft Graph API では、ローカル ID とフェデレーション ID の両方が、[objectIdentity](/graph/api/resources/objectidentity) 型のユーザー `identities` 属性に格納されます。 `identities` コレクションは、ユーザー アカウントへのサインインに使用される一連の ID を表します。 このコレクションにより、ユーザーは、関連付けられた任意の ID を使用してユーザー アカウントにサインインできます。 識別子属性には最大 10 個の [objectIdentity](/graph/api/resources/objectidentity) オブジェクトを含めることができます。 各オブジェクトには次のプロパティが含まれます。
 
-| 名前   | 種類 |説明|
+| 名前   | Type |説明|
 |:---------------|:--------|:----------|
 |signInType|string| お使いのディレクトリ内のユーザー サインインの種類を指定します。 ローカル アカウントの場合: `emailAddress`、`emailAddress1`、`emailAddress2`、`emailAddress3`、`userName`、または他の任意の種類。 ソーシャル アカウントは `federated` に設定する必要があります。|
 |発行者|string|ID の発行者を指定します。 ローカル アカウント (**signInType** が `federated` でない) の場合、このプロパティは、ローカル B2C テナントの既定のドメイン名 (`contoso.onmicrosoft.com` など) になります。 ソーシャル ID (**signInType** が `federated`) の場合、値は発行者の名前 (`facebook.com` など) になります。|

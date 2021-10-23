@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 08/26/2021
 ms.author: duau
-ms.openlocfilehash: c0738fcc9011de7102ecbb60f4834bed910843ec
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: d420313cc38b905b0b04ce746f050ed6f585eb11
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129363517"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130163366"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>ExpressRoute 接続パートナーとピアリングの場所
 
@@ -266,7 +266,7 @@ Azure の各国のクラウドは互いに分離され、またグローバル�
 | **[Gtt Communications Inc](https://www.gtt.net)** |Equinix | ワシントン DC |
 | **[Gulf Bridge International](https://gbiinc.com/)** | Equinix | アムステルダム |
 | **[HSO](https://www.hso.co.uk/products/cloud-direct)** |Equinix | ロンドン、スラウ |
-| **[IVedha Inc](http://www.ivedha.com/cloud/manage-azure-cloud/express-route-4/)**| Equinix | Toronto |
+| **[IVedha Inc](https://ivedha.com/cloud-services)**| Equinix | Toronto |
 | **[Kaalam Telecom Bahrain B.S.C](http://www.kalaam-telecom.com/azure/)**| Level 3 Communications |アムステルダム |
 | **LGA Telecom** |Equinix |シンガポール|
 | **[Macroview Telecom](http://www.macroview.com/en/scripts/catitem.php?catid=solution&sectionid=expressroute)** |Equinix |香港特別行政区 

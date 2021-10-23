@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 08/03/2021
-ms.openlocfilehash: b5689b17bf2e4eace52e7c3cb28c40dc05e58ade
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 3b8fbcb310b4f972598ac7d0693eb87fac48a256
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122179394"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130074002"
 ---
 # <a name="manage-your-azure-cognitive-search-service-with-the-azure-cli"></a>Azure CLI を使用して Azure Cognitive Search サービスを管理する
 > [!div class="op_single_selector"]
@@ -110,7 +110,7 @@ az search service show --name <service-name> --resource-group <search-service-re
 
 ## <a name="create-or-delete-a-service"></a>サービスの作成または削除
 
-[新しい検索サービスを作成](search-create-service-portal.md)するには、[**az search service create**](/cli/azure/search/service#az_search_service_show) コマンドを使用します。
+[新しい検索サービスを作成](search-create-service-portal.md)するには、[**az search service create**](/cli/azure/search/service#az_search_service_create) コマンドを使用します。
 
 ```azurecli-interactive
 az search service create \

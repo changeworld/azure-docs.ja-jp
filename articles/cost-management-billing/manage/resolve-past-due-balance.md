@@ -9,18 +9,18 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: a61eaa10420a9a4a413074559a158e2a32f5cf95
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 8bdb31d13f35f2ffbc4713623e5509675433ddd8
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128634997"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129997178"
 ---
 # <a name="resolve-past-due-balance-for-your-azure-subscription"></a>支払期限を過ぎた Azure サブスクリプション未払い額の支払い
 
 この記事は、クレジット カードを使用してオンラインで Azure にサインアップし、Microsoft Online Services プログラムの課金アカウントを持っているお客様に適用されます。 [課金アカウントの種類を確認する](#check-the-type-of-your-account)方法をご覧ください。 Microsoft 顧客契約の課金アカウントをお持ちの場合は、「[Microsoft Azure の請求書の支払い](../understand/pay-bill.md)」を参照してください。
 
-お客様の支払いが届いていない場合や、お客様の支払いを処理できない場合、サブスクリプションの期限が過ぎていることを通知するメールが届き、アラートが Azure portal に表示されます。 既定の支払い方法がクレジット カードの場合、[アカウント管理者](../understand/subscription-transfer.md#whoisaa)は Azure portal で未払い料金を清算できます。 請求書による支払い (小切手、電信送金) を利用する場合は、請求書の下部に記載されている場所に送金してください。
+お客様の支払いが届いていない場合や、お客様の支払いを処理できない場合、サブスクリプションの期限が過ぎていることを通知するメールが届き、アラートが Azure portal に表示されます。 既定の支払い方法がクレジット カードの場合、[アカウント管理者](add-change-subscription-administrator.md#whoisaa)は Azure portal で未払い料金を清算できます。 請求書による支払い (小切手、電信送金) を利用する場合は、請求書の下部に記載されている場所に送金してください。
 
 > [!IMPORTANT]
 > * 同じクレジット カードを使用する複数のサブスクリプションがあり、それらがすべて支払期限を過ぎている場合は、未払い残高全体を一度に支払う必要があります。
