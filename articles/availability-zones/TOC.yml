@@ -62,7 +62,7 @@
                 - name: Azure を使用して可用性ゾーン全体で VM の負荷分散を行う (CLI)
                   href: ../load-balancer/quickstart-load-balancer-standard-public-cli.md
         - name: パブリック IP アドレス
-          href: ../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address
+          href: ../virtual-network/ip-services/virtual-network-public-ip-address.md#create-a-public-ip-address
         - name: SQL Database
           items:
             - name: SQL Database の汎用サービス レベルでの可用性ゾーン

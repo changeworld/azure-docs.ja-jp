@@ -141,7 +141,7 @@ items:
       - name: リージョン間で移動する
         items:
           - name: パブリック IP
-            href: /azure/resource-mover/tutorial-move-region-virtual-machines?toc=/azure/virtual-network/ip-services/toc.json
+            href: ../../resource-mover/tutorial-move-region-virtual-machines.md?toc=%2fazure%2fvirtual-network%2fip-services%2ftoc.json
   - name: リファレンス
     items:
       - name: Azure CLI

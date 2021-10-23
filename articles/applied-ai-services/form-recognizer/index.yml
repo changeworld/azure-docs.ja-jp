@@ -10,12 +10,12 @@ metadata:
   author: laujan
   ms.author: lajanuar
   ms.date: 09/05/2019
-  ms.openlocfilehash: 58971fda2e7b02d04f7e31ea5c74369a21504c8c
-  ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+  ms.openlocfilehash: 78c647e9105ec6b8ae4ed622f04f31c285e598aa
+  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/09/2021
-  ms.locfileid: "129706523"
+  ms.lasthandoff: 10/22/2021
+  ms.locfileid: "130220172"
 landingContent:
 - title: Azure From Recognizer について
   linkLists:
@@ -46,15 +46,15 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: .NET SDK の使用
-      url: quickstarts/client-library.md?pivots=programming-language-csharp&tabs=preview%2Cv2-1#analyze-layout
+      url: ./quickstarts/try-sdk-rest-api.md?pivots=programming-language-csharp&tabs=preview%2cv2-1#analyze-layout
     - text: Python SDK の使用
-      url: quickstarts/client-library.md?pivots=programming-language-python&tabs=preview%2Cv2-1#analyze-layout
+      url: ./quickstarts/try-sdk-rest-api.md?pivots=programming-language-python&tabs=preview%2cv2-1#analyze-layout
     - text: Java SDK の使用
-      url: quickstarts/client-library.md?pivots=programming-language-java&tabs=preview%2Cv2-1#analyze-layout
+      url: ./quickstarts/try-sdk-rest-api.md?pivots=programming-language-java&tabs=preview%2cv2-1#analyze-layout
     - text: JavaScript SDK の使用
-      url: quickstarts/client-library.md?pivots=programming-language-javascript&tabs=preview%2Cv2-1#analyze-layout
+      url: ./quickstarts/try-sdk-rest-api.md?pivots=programming-language-javascript&tabs=preview%2cv2-1#analyze-layout
     - text: REST API の使用する (cURL)
-      url: quickstarts/client-library.md?pivots=programming-language-rest-api&tabs=preview%2Cv2-1#analyze-layout
+      url: ./quickstarts/try-sdk-rest-api.md?pivots=programming-language-rest-api&tabs=preview%2cv2-1#analyze-layout
   - linkListType: get-started
     links:
     - text: Form Recognizer を試す (レイアウト)
@@ -64,19 +64,19 @@ landingContent:
   - linkListType: concept
     links:
     - text: Receipts
-      url: concept-receipts.md?
+      url: ./concept-receipt.md
   - linkListType: quickstart
     links:
     - text: .NET SDK の使用
-      url: quickstarts/client-library.md?pivots=programming-language-csharp&tabs=preview%2Cv2-1#analyze-receipts
+      url: ./quickstarts/try-sdk-rest-api.md?pivots=programming-language-csharp&tabs=preview%2cv2-1#analyze-receipts
     - text: Python SDK の使用
-      url: quickstarts/client-library.md?pivots=programming-language-python&tabs=preview%2Cv2-1#analyze-receipts
+      url: ./quickstarts/try-sdk-rest-api.md?pivots=programming-language-python&tabs=preview%2cv2-1#analyze-receipts
     - text: Java SDK の使用
-      url: quickstarts/client-library.md?pivots=programming-language-java&tabs=preview%2Cv2-1#analyze-receipts
+      url: ./quickstarts/try-sdk-rest-api.md?pivots=programming-language-java&tabs=preview%2cv2-1#analyze-receipts
     - text: JavaScript SDK の使用
-      url: quickstarts/client-library.md?pivots=programming-language-javascript&tabs=preview%2Cv2-1#analyze-receipts
+      url: ./quickstarts/try-sdk-rest-api.md?pivots=programming-language-javascript&tabs=preview%2cv2-1#analyze-receipts
     - text: REST API の使用する (cURL)
-      url: quickstarts/client-library.md?pivots=programming-language-rest-api&tabs=preview%2Cv2-1#analyze-receipts
+      url: ./quickstarts/try-sdk-rest-api.md?pivots=programming-language-rest-api&tabs=preview%2cv2-1#analyze-receipts
   - linkListType: get-started
     links:
     - text: Form Recognizer を試す (レシートの分析)
@@ -86,19 +86,19 @@ landingContent:
   - linkListType: concept
     links:
     - text: 名刺
-      url: concept-business-cards.md
+      url: ./concept-business-card.md
   - linkListType: quickstart
     links:
     - text: .NET SDK の使用
-      url: quickstarts/client-library.md?pivots=programming-language-csharp&tabs=preview%2Cv2-1#analyze-business-cards
+      url: ./quickstarts/try-sdk-rest-api.md?pivots=programming-language-csharp&tabs=preview%2cv2-1#analyze-business-cards
     - text: Python SDK の使用
-      url: quickstarts/client-library.md?pivots=programming-language-python&tabs=preview%2Cv2-1#analyze-business-cards
+      url: ./quickstarts/try-sdk-rest-api.md?pivots=programming-language-python&tabs=preview%2cv2-1#analyze-business-cards
     - text: Java SDK の使用
-      url: quickstarts/client-library.md?pivots=programming-language-python&tabs=preview%2Cv2-1#analyze-business-cards
+      url: ./quickstarts/try-sdk-rest-api.md?pivots=programming-language-python&tabs=preview%2cv2-1#analyze-business-cards
     - text: JavaScript SDK の使用
-      url: quickstarts/client-library.md?pivots=programming-language-javascript&tabs=preview%2Cv2-1#analyze-business-cards
+      url: ./quickstarts/try-sdk-rest-api.md?pivots=programming-language-javascript&tabs=preview%2cv2-1#analyze-business-cards
     - text: REST API の使用する (cURL)
-      url: quickstarts/client-library.md?pivots=programming-language-rest-api&tabs=preview%2Cv2-1#analyze-business-cards
+      url: ./quickstarts/try-sdk-rest-api.md?pivots=programming-language-rest-api&tabs=preview%2cv2-1#analyze-business-cards
   - linkListType: get-started
     links:
     - text: Form Recognizer を試す (名刺の分析)
@@ -108,19 +108,19 @@ landingContent:
   - linkListType: concept
     links:
     - text: Invoices
-      url: concept-invoices.md?
+      url: ./concept-invoice.md
   - linkListType: quickstart
     links:
     - text: .NET SDK の使用
-      url: quickstarts/client-library.md?pivots=programming-language-csharp&tabs=preview%2Cv2-1#analyze-invoices
+      url: ./quickstarts/try-sdk-rest-api.md?pivots=programming-language-csharp&tabs=preview%2cv2-1#analyze-invoices
     - text: Python SDK の使用
-      url: quickstarts/client-library.md?pivots=programming-language-python&tabs=preview%2Cv2-1#analyze-invoices
+      url: ./quickstarts/try-sdk-rest-api.md?pivots=programming-language-python&tabs=preview%2cv2-1#analyze-invoices
     - text: Java SDK の使用
-      url: quickstarts/client-library.md?pivots=programming-language-java&tabs=preview%2Cv2-1#analyze-invoices
+      url: ./quickstarts/try-sdk-rest-api.md?pivots=programming-language-java&tabs=preview%2cv2-1#analyze-invoices
     - text: JavaScript SDK の使用
-      url: quickstarts/client-library.md?pivots=programming-language-javascript&tabs=preview%2Cv2-1#analyze-invoices
+      url: ./quickstarts/try-sdk-rest-api.md?pivots=programming-language-javascript&tabs=preview%2cv2-1#analyze-invoices
     - text: REST API の使用する (cURL)
-      url: quickstarts/client-library.md?pivots=programming-language-rest-api&tabs=preview%2Cv2-1#analyze-invoices
+      url: ./quickstarts/try-sdk-rest-api.md?pivots=programming-language-rest-api&tabs=preview%2cv2-1#analyze-invoices
   - linkListType: get-started
     links:
     - text: Form Recognizer を試す (請求書の分析)
@@ -130,19 +130,19 @@ landingContent:
   - linkListType: concept
     links:
     - text: 身分証明書
-      url: concept-identification-cards.md
+      url: ./concept-id-document.md
   - linkListType: quickstart
     links:
     - text: .NET SDK の使用
-      url: quickstarts/client-library.md?pivots=programming-language-csharp&tabs=preview%2Cv2-1#analyze-identity-documents
+      url: ./quickstarts/try-sdk-rest-api.md?pivots=programming-language-csharp&tabs=preview%2cv2-1#analyze-identity-id-documents
     - text: Python SDK の使用
-      url: quickstarts/client-library.md?pivots=programming-language-python&tabs=preview%2Cv2-1#analyze-identity-documents
+      url: ./quickstarts/try-sdk-rest-api.md?pivots=programming-language-python&tabs=preview%2cv2-1#analyze-identity-id-documents
     - text: Java SDK の使用
-      url: quickstarts/client-library.md?pivots=programming-language-java&tabs=preview%2Cv2-1#analyze-identity-documents
+      url: ./quickstarts/try-sdk-rest-api.md?pivots=programming-language-java&tabs=preview%2cv2-1#analyze-identity-id-documents
     - text: JavaScript SDK の使用
-      url: quickstarts/client-library.md?pivots=programming-language-javascript&tabs=preview%2Cv2-1#analyze-identity-documents
+      url: ./quickstarts/try-sdk-rest-api.md?pivots=programming-language-javascript&tabs=preview%2cv2-1#analyze-identity-id-documents
     - text: REST API の使用する (cURL)
-      url: quickstarts/client-library.md?pivots=programming-language-rest-api&tabs=preview%2Cv2-1#analyze-identity-documents
+      url: ./quickstarts/try-sdk-rest-api.md?pivots=programming-language-rest-api&tabs=preview%2cv2-1#analyze-identity-id-documents
   - linkListType: get-started
     links:
     - text: Form Recognizer を試す (ID の分析)
@@ -170,15 +170,15 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: .NET SDK の使用
-      url: quickstarts/client-library.md?pivots=programming-language-csharp&tabs=preview%2Cv2-1#train-a-custom-model
+      url: ./quickstarts/try-sdk-rest-api.md?pivots=programming-language-csharp&tabs=preview%2cv2-1#train-a-custom-model
     - text: Python SDK の使用
-      url: quickstarts/client-library.md?pivots=programming-language-python&tabs=preview%2Cv2-1#train-a-custom-model
+      url: ./quickstarts/try-sdk-rest-api.md?pivots=programming-language-python&tabs=preview%2cv2-1#train-a-custom-model
     - text: Java SDK の使用
-      url: quickstarts/client-library.md?pivots=programming-language-java&tabs=preview%2Cv2-1#train-a-custom-model
+      url: ./quickstarts/try-sdk-rest-api.md?pivots=programming-language-java&tabs=preview%2cv2-1#train-a-custom-model
     - text: JavaScript SDK の使用
-      url: quickstarts/client-library.md?pivots=programming-language-javascript&tabs=preview%2Cv2-1#train-a-custom-model
+      url: ./quickstarts/try-sdk-rest-api.md?pivots=programming-language-javascript&tabs=preview%2cv2-1#train-a-custom-model
     - text: REST API の使用する (cURL)
-      url: quickstarts/client-library.md?pivots=programming-language-rest-api&tabs=preview%2Cv2-1#train-a-custom-model
+      url: ./quickstarts/try-sdk-rest-api.md?pivots=programming-language-rest-api&tabs=preview%2cv2-1#train-a-custom-model
   - linkListType: get-started
     links:
     - text: Form Recognizer を試す (モデルのトレーニング)
@@ -188,15 +188,15 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: .NET SDK の使用
-      url: quickstarts/client-library.md?pivots=programming-language-csharp&tabs=preview%2Cv2-1#analyze-forms-with-a-custom-model
+      url: ./quickstarts/try-sdk-rest-api.md?pivots=programming-language-csharp&tabs=preview%2cv2-1#analyze-forms-with-a-custom-model
     - text: Python SDK の使用
-      url: quickstarts/client-library.md?pivots=programming-language-python&tabs=preview%2Cv2-1#analyze-forms-with-a-custom-model
+      url: ./quickstarts/try-sdk-rest-api.md?pivots=programming-language-python&tabs=preview%2cv2-1#analyze-forms-with-a-custom-model
     - text: Java SDK の使用
-      url: quickstarts/client-library.md?pivots=programming-language-java&tabs=preview%2Cv2-1#analyze-forms-with-a-custom-model
+      url: ./quickstarts/try-sdk-rest-api.md?pivots=programming-language-java&tabs=preview%2cv2-1#analyze-forms-with-a-custom-model
     - text: JavaScript SDK の使用
-      url: quickstarts/client-library.md?pivots=programming-language-javascript&tabs=preview%2Cv2-1#analyze-forms-with-a-custom-model
+      url: ./quickstarts/try-sdk-rest-api.md?pivots=programming-language-javascript&tabs=preview%2cv2-1#analyze-forms-with-a-custom-model
     - text: REST API の使用する (cURL)
-      url: quickstarts/client-library.md?pivots=programming-language-rest-api&tabs=preview%2Cv2-1#analyze-forms-with-a-custom-model
+      url: ./quickstarts/try-sdk-rest-api.md?pivots=programming-language-rest-api&tabs=preview%2cv2-1#analyze-forms-with-a-custom-model
   - linkListType: get-started
     links:
     - text: Form Recognizer を試す (カスタム フォームの分析)

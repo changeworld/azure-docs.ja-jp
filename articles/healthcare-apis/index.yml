@@ -1,9 +1,9 @@
 ### YamlMime:Landing
-title: Azure の医療 Api (プレビュー) のドキュメント
-summary: FHIR、DICOM、データ変換など、すべての Azure 医療 Api (プレビュー) サービスに関するドキュメント。
+title: Azure Healthcare API (プレビュー) のドキュメント
+summary: FHIR、DICOM、IoT コネクタの機能を含む、すべての Azure Healthcare API (プレビュー) 機能に関するドキュメント。
 metadata:
-  title: Azure の医療 Api のドキュメント
-  description: FHIR、DICOM、データ変換など、すべての Azure 医療 Api 製品とサービスに関するドキュメント
+  title: Azure Healthcare API のドキュメント
+  description: FHIR、DICOM、IoT コネクタなど、すべての Azure Healthcare API 製品とサービスに関するドキュメント
   services: healthcare-apis
   ms.service: healthcare-apis
   ms.topic: landing-page
@@ -11,26 +11,26 @@ metadata:
   author: msjasteppe
   ms.author: jasteppe
   ms.date: 10/05/2021
-  ms.openlocfilehash: dc71d1a28dd572c1635c22f8505409c0905d397c
-  ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+  ms.openlocfilehash: 79c3b6f970db22bf94b77df0dd785fd7c83f0c3e
+  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
   ms.translationtype: MT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/05/2021
-  ms.locfileid: "129545342"
+  ms.lasthandoff: 10/22/2021
+  ms.locfileid: "130259395"
 landingContent:
-- title: 医療 Api とは
+- title: 医療 API とは
   linkLists:
   - linkListType: overview
     links:
-    - text: 医療 Api について
+    - text: 医療 API について
       url: healthcare-apis-overview.md
-    - text: ワークスペースの概要
+    - text: ワークスペースについて
       url: workspace-overview.md
   - linkListType: deploy
     links:
-    - text: 医療 Api の概要
+    - text: 医療 API の使用を開始する
       url: healthcare-apis-quickstart.md
-- title: 医療 Api の使用
+- title: 医療 API の使用
   linkLists:
   - linkListType: how-to-guide
     links:
@@ -40,7 +40,7 @@ landingContent:
       url: using-rest-client.md
   - linkListType: reference
     links:
-    - text: 医療 Api に関する Faq
+    - text: 医療 API に関する FAQ
       url: healthcare-apis-faqs.md
 - title: データの転送と変換
   linkLists:
@@ -82,7 +82,7 @@ landingContent:
       url: ./dicom/deploy-dicom-services-in-azure.md
   - linkListType: tutorial
     links:
-    - text: DICOMweb 標準 Api
+    - text: DICOMweb Standard API
       url: ./dicom/dicomweb-standard-apis-with-dicom-services.md
     - text: DICOM 変更フィード
       url: ./dicom/pull-dicom-changes-from-change-feed.md

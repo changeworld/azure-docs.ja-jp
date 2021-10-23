@@ -121,7 +121,7 @@
     - name: ブロックチェーン
       items:
         - name: ブロックチェーン
-          href: ../../blockchain/service/create-member-template.md?toc=/azure/azure-resource-manager/templates/toc.json
+          href: 'https://azure.microsoft.com/solutions/blockchain/?toc=%2fazure%2fazure-resource-manager%2ftemplates%2ftoc.json'
     - name: Compute
       items:
         - name: Batch
@@ -441,7 +441,7 @@
           href: deploy-github-actions.md
     - name: オーサリング ツールを使用する
       items:
-        - name: Visual Studio
+        - name: "Visual\_Studio"
           href: create-visual-studio-deployment-project.md
         - name: VS デプロイ スクリプトを Az モジュールに更新する
           href: update-visual-studio-deployment-script.md

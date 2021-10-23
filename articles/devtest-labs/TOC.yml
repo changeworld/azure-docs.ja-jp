@@ -2,7 +2,7 @@
   href: index.yml
 - name: 概要
   items:
-    - name: DevTest ラボについて
+    - name: DevTest ラボとは
       href: devtest-lab-overview.md
 - name: クイック スタート
   items:

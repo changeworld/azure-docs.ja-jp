@@ -203,7 +203,7 @@
     - name: トラブルシューティングの概要、フィードバック、サポート
       href: ../troubleshoot-set-up-overview.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
     - name: 問題の特定と診断
-      href: ../diagnostics-role-service.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
+      href: ../troubleshoot-set-up-overview.md?bc=%2fazure%2fvirtual-desktop%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-desktop%2fremote-app-streaming%2ftoc.json
     - name: 作業の開始機能
       href: ../troubleshoot-getting-started.md?toc=/azure/virtual-desktop/remote-app-streaming/toc.json&bc=/azure/virtual-desktop/breadcrumb/toc.json
     - name: ホスト プールの作成
