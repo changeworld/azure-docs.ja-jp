@@ -7,16 +7,16 @@ ms.subservice: high-availability
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: BustosMSFT
-ms.author: robustos
+author: emlisa
+ms.author: emlisa
 ms.reviewer: mathoma
 ms.date: 12/18/2018
-ms.openlocfilehash: caba051710117cd21a590f2a7f17813b9ff8491c
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 1dd66cb34eb7f829abe3b339198b4864bfe7c8a8
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110694428"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130160934"
 ---
 # <a name="performing-disaster-recovery-drills"></a>ディザスター リカバリーの訓練の実行
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

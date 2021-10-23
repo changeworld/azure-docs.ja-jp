@@ -5,34 +5,44 @@ services: healthcare-apis
 author: msjasteppe
 ms.service: healthcare-apis
 ms.topic: reference
-ms.date: 10/18/2021
+ms.date: 10/19/2021
 ms.author: jasteppe
-ms.openlocfilehash: 0092482af2f9f4f6f9a090a00cc387ae901e5b68
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: e66a6f3e2603645be4efeb68211ffd4d785067db
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130187779"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130259413"
 ---
 # <a name="open-source-projects"></a>オープンソース プロジェクト
 
-IoT コネクタを使用してさまざまな用途にサービスをデプロイするソース コードと手順を提供する GitHub のオープンソース プロジェクトを確認してください。 
+IoT コネクタを使用してさまざまな用途にサービスをデプロイするソース コードと手順を提供する GitHub 上のオープンソース プロジェクトを確認してください。 
 
 ## <a name="iot-connector-github-projects"></a>IoT コネクタとGitHubプロジェクト
 
-#### <a name="integration-with-iot-hub-and-iot-central"></a>IoT Hub および IoT Central との統合
+#### <a name="fhir-integration"></a>FHIR 統合
 
-* [microsoft/iomt-fhir:](https://github.com/microsoft/iomt-fhir)IoT Hub または IoT Central から 高速ヘルスケア相互運用性リソース (FHIR&#174;) への統合と、正規化されたデータのデータ正規化と FHIR 変換
-* 正規化: デバイス データ情報は、追加処理のために一般的な形式に抽出されます
-* FHIR 変換: 正規化され、グループ化されたデータは FHIR にマップされます。 構成されたテンプレートに従って観察が作成または更新され、デバイスと患者にリンクされます。
+* [microsoft/iomt-fhir:](https://github.com/microsoft/iomt-fhir)Azure Healthcare API IoT コネクタマネージド サービスのオープンソース バージョン。 FHIR R7 をサポートする高速ヘルスケア相互運用性リソース (FHIR&#174;) サービス [で使用&#174;](https://https://www.hl7.org/implement/standards/product_brief.cfm?product_id=491)
 
-#### <a name="device-and-fhir-destination-mappings-authoring-and-troubleshooting"></a>デバイスマッピングと FHIR 変換先マッピングの作成とトラブルシューティング
+#### <a name="device-and-fhir-destination-mappings"></a>デバイスと FHIR の宛先マッピング
 
-* [デバイスと FHIR の変換先マッピング](https://github.com/microsoft/iomt-fhir/tree/master/tools/data-mapper)の構築に役立つツール: デバイス入力データを正規化するためのマッピング構成を視覚化し、FHIR リソースに変換します。 開発者は、このツールを使用して、デバイス マッピングと FHIR 変換先マッピングを編集およびテストできます。 デバイスの IoT コネクタにアップロードするためにエクスポートAzure portal。
+* [IoMT コネクタ データ マッパー](https://github.com/microsoft/iomt-fhir/tree/master/tools/data-mapper): IoT コネクタデバイスと FHIR 変換先マッピングの編集、テスト、トラブルシューティングを行うツールです。 Azure portal で IoT コネクタにアップロードしたり、オープンソース バージョンで使用したりするためにマッピングをエクスポートします。
 
-#### <a name="healthkit-and-fhir-integration"></a>HealthKit と FHIR の統合
+#### <a name="wearables-integration"></a>しつらえの統合
 
-* [microsoft/healthkit-on-fhir:](https://github.com/microsoft/healthkit-on-fhir)Apple HealthKit データの FHIR サービスへのエクスポートを自動化する Swift ライブラリ。
+Fitbit
+
+* [microsoft/fitbit-on-fhir:](https://github.com/microsoft/FitbitOnFHIR)Fitbit&#174; FHIR サービスにデータを取り込む。
+
+HealthKit
+
+* [microsoft/healthkit-on-fhir:](https://github.com/microsoft/healthkit-on-fhir)Apple&#174; HealthKit&#174; FHIR サービスにデータを取り込む。
+
+* [microsoft/healthkit-to-fhir:](https://github.com/microsoft/healthkit-to-fhir)HKObjects から FHIR リソースを作成する簡単な方法を提供します
+
+正常性データ同期
+
+* [microsoft/health-data-sync:](https://github.com/microsoft/health-data-sync)HealthKit データの外部ストアへのエクスポートを簡略化および自動化する Swift ライブラリ。
 
 ## <a name="next-steps"></a>次の手順
 デバイスに IoT コネクタをデプロイする方法についてAzure portal
