@@ -14,12 +14,12 @@ ms.custom:
 - mvc
 - devx-track-azurecli
 - mode-arm
-ms.openlocfilehash: 5934c20c2c7749b75b05bdb80b6d9dee85d6d3c1
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: da540d63c78e9029addf098b76ec24773e63a782
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112007015"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130131070"
 ---
 # <a name="quickstart-create-an-key-vault-managed-hsm-using-an-azure-resource-manager-template"></a>クイック スタート:Azure Resource Manager テンプレートを使用して Key Vault Managed HSM を作成する
 
@@ -81,7 +81,7 @@ az ad user show --id <your-email-address> --query "objectId"
 
     - **サブスクリプション**:Azure サブスクリプションを選択します。
     - **[リソース グループ]** : **[新規作成]** を選択し、リソース グループの一意の名前を入力し、 **[OK]** をクリックします。
-    - **[場所]** :場所を選択します。 たとえば、**米国中南部** とします。
+    - **[場所]** :場所を選択します。 たとえば **[米国中部]** です。
     - **managedHSMName**: マネージド HSM の名前を入力します。
     - **テナント ID**:テンプレート関数によって自動的にテナント ID が取得されます。既定値を変更しないでください。  値が存在しない場合は、「[前提条件](#prerequisites)」で取得したテナント ID を入力します。
     * **initialAdminObjectIds**: 「[前提条件](#prerequisites)」で取得したオブジェクト ID を入力します。

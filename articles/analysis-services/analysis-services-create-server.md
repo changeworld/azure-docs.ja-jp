@@ -4,17 +4,17 @@ description: このクイックスタートでは、Azure portal を使用して
 author: minewiskan
 ms.author: owend
 ms.reviewer: minewiskan
-ms.date: 08/31/2020
+ms.date: 10/12/2021
 ms.topic: quickstart
 ms.service: azure-analysis-services
 ms.custom:
 - mode-portal
-ms.openlocfilehash: 78e4e008a4c4dfcee1e4f0a11b519e0a2bbf5f56
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: f55a3b79ba8ee0b2483bdf5b098e289f090bca5f
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107535072"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130005674"
 ---
 # <a name="quickstart-create-a-server---portal"></a>クイック スタート: サーバーを作成する - ポータル
 

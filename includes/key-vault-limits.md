@@ -4,12 +4,12 @@ ms.service: key-vault
 ms.topic: include
 ms.date: 05/28/2021
 ms.author: ambapat
-ms.openlocfilehash: 3539e222407fee63a829e80db986f2b0eed02e24
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 2918ae1a7fcca250de91e61ecc9b2c64a2d9a0aa
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111761375"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130019028"
 ---
 Azure Key Vault サービスでは、コンテナーとマネージド HSM という 2 つのリソースの種類がサポートされています。 次の 2 つのセクションでは、それぞれのサービスの制限について説明します。
 
@@ -86,7 +86,7 @@ Key Vault では、シークレット、キー、または証明書に対する�
 
 |アイテム|制限|
 |----|------:|
-リージョンごとのサブスクリプションあたりの HSM インスタンスの数|1 
+リージョンごとのサブスクリプションあたりの HSM インスタンスの数|5 
 HSM プールあたりのキー数|5000
 キーあたりのバージョン数|100
 HSM あたりのカスタム ロール定義の数|50

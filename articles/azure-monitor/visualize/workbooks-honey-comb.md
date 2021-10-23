@@ -2,18 +2,16 @@
 title: Azure Monitor ブックの蜂の巣の視覚化
 description: Azure Monitor ブックの蜂の巣の視覚化について説明します。
 services: azure-monitor
-author: lgayhardt
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/18/2020
-ms.author: lagayhar
-ms.openlocfilehash: c91912f711b912c54c1673f2f92e998b4d9ea9db
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 51941e9b8ef7165e3d5756d8c4fa9ed3520bc460
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101736935"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130132362"
 ---
 # <a name="honey-comb-visualizations"></a>蜂の巣の視覚化
 

@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 01/12/2020
 ms.author: vikancha
-ms.openlocfilehash: f1312a27b77c7c9a4c4df75fef3ddd8010b5661c
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 92fa6f5e2c1b4850696def464bfb0f96e3ce11f8
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124823365"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130069821"
 ---
 # <a name="nvv4-series"></a>NVv4 シリーズ 
 
@@ -25,7 +25,7 @@ NVv4 シリーズの仮想マシンにパワーを与えるのは [AMD Radeon In
 [ACU](acu.md):230-260<br>
 [Premium Storage](premium-storage-performance.md): サポートされています<br>
 [Premium Storage キャッシュ](premium-storage-performance.md): サポートされています<br>
-[Ultra Disks](disks-types.md#ultra-disk): サポートされています (可用性、使用状況、およびパフォーマンスの[詳細](https://techcommunity.microsoft.com/t5/azure-compute/ultra-disk-storage-for-hpc-and-gpu-vms/ba-p/2189312)を参照) <br>
+[Ultra Disks](disks-types.md#ultra-disks): サポートされています (可用性、使用状況、およびパフォーマンスの[詳細](https://techcommunity.microsoft.com/t5/azure-compute/ultra-disk-storage-for-hpc-and-gpu-vms/ba-p/2189312)を参照) <br>
 [ライブ マイグレーション](maintenance-and-updates.md): サポートされていません<br>
 [メモリ保持更新](maintenance-and-updates.md): サポートされていません<br>
 [VM 世代サポート](generation-2.md): 第 1 世代と第 2 世代<br>

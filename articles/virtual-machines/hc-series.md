@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/05/2021
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 081295e77da4a8bdf3929a08f405fe0230967579
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 6cd934f185a9317f031cde1b70fd0fbca71d6c99
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124754620"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130072351"
 ---
 # <a name="hc-series"></a>HC シリーズ
 
@@ -26,7 +26,7 @@ HC シリーズ VM は、100 Gb/秒の Mellanox EDR InfiniBand を特徴とし�
 [ACU](acu.md): 297-315<br>
 [Premium Storage](premium-storage-performance.md): サポートされています<br>
 [Premium Storage キャッシュ](premium-storage-performance.md): サポートされています<br>
-[Ultra Disks](disks-types.md#ultra-disk): サポートされています (可用性、使用状況、およびパフォーマンスの[詳細](https://techcommunity.microsoft.com/t5/azure-compute/ultra-disk-storage-for-hpc-and-gpu-vms/ba-p/2189312)を参照) <br>
+[Ultra Disks](disks-types.md#ultra-disks): サポートされています (可用性、使用状況、およびパフォーマンスの[詳細](https://techcommunity.microsoft.com/t5/azure-compute/ultra-disk-storage-for-hpc-and-gpu-vms/ba-p/2189312)を参照) <br>
 [ライブ マイグレーション](maintenance-and-updates.md): サポートされていません<br>
 [メモリ保持更新](maintenance-and-updates.md): サポートされていません<br>
 [VM 世代サポート](generation-2.md): 第 1 世代と第 2 世代<br>

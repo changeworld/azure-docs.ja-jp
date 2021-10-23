@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/29/2021
 ms.author: danlep
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 01a7a7c34b7253acdcf046c47643d42dcdee2cb6
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 4239e9a9abc5e7e63a99ac72a50ec7f238386a20
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128666763"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130004770"
 ---
 # <a name="set-up-a-service-fabric-backend-in-api-management-using-the-azure-portal"></a>Azure portal を使用して API Management に Service Fabric バックエンドを設定する
 
@@ -139,5 +139,4 @@ API Management インスタンスに証明書を追加する手順について�
 ## <a name="next-steps"></a>次のステップ
 
 * バックエンドに要求を転送するように[ポリシーを構成する](api-management-advanced-policies.md)方法について学習する
-* バックエンドは、API Management [REST API](/rest/api/apimanagement/2020-06-01-preview/backend)、[Azure PowerShell](/powershell/module/az.apimanagement/new-azapimanagementbackend)、または [Azure Resource Manager テンプレート](../service-fabric/service-fabric-tutorial-deploy-api-management.md)を使用して構成することもできます
-
+* バックエンドは、API Management [REST API](/rest/api/apimanagement/2021-01-01-preview/backend)、[Azure PowerShell](/powershell/module/az.apimanagement/new-azapimanagementbackend)、または [Azure Resource Manager テンプレート](../service-fabric/service-fabric-tutorial-deploy-api-management.md)を使用して構成することもできます

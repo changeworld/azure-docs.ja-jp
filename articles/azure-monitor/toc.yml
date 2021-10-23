@@ -141,7 +141,7 @@
           href: logs/personal-data-mgmt.md
         - name: アプリケーション データの収集、保持、保存
           href: app/data-retention-privacy.md
-    - name: 警告
+    - name: アラート
       items:
         - name: 概要
           href: alerts/alerts-overview.md
@@ -151,6 +151,8 @@
           href: alerts/alerts-unified-log.md
         - name: アクティビティ ログ アラート
           href: alerts/activity-log-alerts.md
+    - name: データの視覚化
+      href: visualizations.md
     - name: パートナー統合
       href: partners.md
     - name: セキュリティ
@@ -164,18 +166,6 @@
   items:
     - name: シナリオ
       items:
-        - name: Azure Monitor に関するベスト プラクティス
-          items:
-            - name: 概要
-              href: best-practices.md
-            - name: 計画
-              href: best-practices-plan.md
-            - name: データ収集を構成する
-              href: best-practices-data-collection.md
-            - name: 解析と視覚化
-              href: best-practices-analysis.md
-            - name: アラートと自動アクション
-              href: best-practices-alerts.md
         - name: Azure リソースの監視
           href: essentials/monitor-azure-resource.md
         - name: 仮想マシンの監視
@@ -195,6 +185,13 @@
           displayname: VM
         - name: Kubernetes の監視
           href: ../aks/monitor-aks.md?toc=/azure/azure-monitor/toc.json
+    - name: デプロイ
+      items:
+        - name: Azure Monitor をデプロイする
+          href: deploy.md
+        - name: 大規模にデプロイする
+          displayName: 'Azure Policy, Policy'
+          href: deploy-scale.md
     - name: 管理と構成
       items:
         - name: ロールのアクセス許可とセキュリティ
@@ -405,6 +402,9 @@
             - name: データ コレクション
               displayname: 'data collection rule,Azure Monitor agent'
               href: agents/data-collection-rule-azure-monitor-agent.md
+            - name: 大規模にデプロイする
+              displayname: Deploy Azure Monitor agent at scale
+              href: deploy-scale.md#azure-monitor-agent
             - name: レガシ エージェントから移行する
               displayname: Migrate to Azure Monitor agent
               href: agents/azure-monitor-agent-migration.md
@@ -1027,7 +1027,7 @@
               href: app/export-telemetry.md
             - name: データのエクスポート モデル
               href: app/export-data-model.md
-        - name: "Visual\_Studio"
+        - name: Visual Studio
           items:
             - name: F5 による洞察
               href: app/visual-studio.md

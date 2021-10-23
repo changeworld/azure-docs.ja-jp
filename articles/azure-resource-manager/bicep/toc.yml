@@ -56,22 +56,7 @@
             - name: プライベート レジストリを作成する
               href: private-module-registry.md
         - name: ループ
-          items:
-            - name: リソース
-              displayName: 'iteration,copy,multiple,batches,child,condition,filter'
-              href: loop-resources.md
-            - name: モジュール
-              displayName: 'iteration,copy,multiple,batches,condition,filter'
-              href: loop-modules.md
-            - name: Properties
-              displayName: 'iteration,copy,multiple'
-              href: loop-properties.md
-            - name: 変数
-              displayName: 'iteration,copy,multiple'
-              href: loop-variables.md
-            - name: 出力
-              displayName: 'iteration,copy,multiple'
-              href: loop-outputs.md
+          href: loops.md
         - name: スコープ
           items:
             - name: Resource group

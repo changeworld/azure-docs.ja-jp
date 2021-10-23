@@ -8,21 +8,16 @@ ms.service: virtual-machine-scale-sets
 ms.date: 08/05/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli, vmss-flex
-ms.openlocfilehash: 9fd4d2171aa54da469aacfaa7090025c296dd0c1
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: db141f863389d724cc1437beeed3b00b44020098
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124804068"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130161839"
 ---
-# <a name="preview-orchestration-modes-api-comparison"></a>プレビュー: オーケストレーション モードの API の比較 
+# <a name="orchestration-modes-api-comparison"></a>オーケストレーション モードの API の比較 
 
 この記事では、仮想マシン スケール セットの均一オーケストレーション モードと[フレキシブル オーケストレーション](..\virtual-machines\flexible-virtual-machine-scale-sets.md) モードの間の API の違いを比較します。 均一仮想マシン スケール セットとフレキシブル仮想マシン スケール セットの詳細については、[オーケストレーション モード](virtual-machine-scale-sets-orchestration-modes.md)に関するページをご覧ください。
-
-> [!IMPORTANT]
-> フレキシブル オーケストレーション モードの仮想マシン スケール セットは現在、パブリック プレビュー段階です。 後述するパブリック プレビュー機能を使用するためには、オプトイン手順が必要です。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 
 ## <a name="instance-view"></a>インスタンス ビュー
@@ -66,7 +61,7 @@ ms.locfileid: "124804068"
 
 ### <a name="uniform-api"></a>均一 API
 `VMSS List Instances`: 
-- 本プレビューの間、各インスタンスに関連付けられているスケール セット ID を返します 
+- 各インスタンスに関連付けられているスケール セット ID を返します
 
 ### <a name="flexible-alternative"></a>フレキシブルな代替手段
 Azure Resource Graph: 
@@ -95,6 +90,8 @@ resources
 ### <a name="flexible-alternative"></a>フレキシブルな代替手段
 個々の VM に対する操作を呼び出します。
 
+仮想マシンの操作:
+- [再イメージ化](/rest/api/compute/virtual-machines/reimage): 単一 VM API の呼び出し - エフェメラル OS の VM でのみ再イメージ化
 
 ## <a name="vm-extension"></a>VM 拡張機能
 

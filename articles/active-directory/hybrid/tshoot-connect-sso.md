@@ -13,12 +13,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 546a7bfbda3f037f3ad40ca9c5d59353cc1de0eb
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 8b1947d9b78ef77644dd5df8aabe4298de90f9e8
+ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129349583"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129754275"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory シームレス シングル サインオンのトラブルシューティングを行う
 
@@ -39,6 +39,7 @@ ms.locfileid: "129349583"
 - Azure AD サービスの URL (`https://autologon.microsoftazuread-sso.com`) を、ローカル イントラネット ゾーンではなく信頼済みサイト ゾーンに追加すると、*ユーザーのサインインがブロック* されます。
 - シームレス SSO では、Kerberos の AES256_HMAC_SHA1、AES128_HMAC_SHA1、および RC4_HMAC_MD5 暗号化の種類がサポートされます。 AzureADSSOAcc$ アカウントの暗号化の種類を AES256_HMAC_SHA1 に設定するか、AES タイプまたはRC4 のいずれかに設定してセキュリティを強化することをお勧めします。 暗号化の種類は、Active Directory 内のアカウントの属性の msDS-SupportedEncryptionTypes 属性に格納されます。  AzureADSSOAcc$ アカウントの暗号化の種類が RC4_HMAC_MD5 に設定されていて、それを AES 暗号化の種類のいずれかに変更する場合は、[FAQ ドキュメント](how-to-connect-sso-faq.yml)の関連する質問に説明されているように、まず AzureADSSOAcc$ アカウントの Kerberos 復号化キーをロールオーバーするようにしてください。そうしないと、シームレス SSO は行われません。
 -  フォレストの信頼関係があるフォレストが複数ある場合、いずれかのフォレストで SSO を有効にすると、すべての信頼されたフォレストで SSO が有効になります。 SSO が既に有効になっているフォレストで SSO を有効にすると、フォレストで SSO が既に有効になっているというエラーが表示されます。
+-  シームレス SSO を有効にするポリシーには、25,600 文字の制限があります。 この制限は、シームレス SSO を有効にするフォレスト名を含め、ポリシーに含まれるすべてのものに適用されます。 環境内に多数のフォレストがある場合は、文字数の制限に達する可能性があります。 フォレスト間に信頼関係がある場合は、1 つのフォレストでのみシームレス SSO を有効にするだけで十分です。 たとえば、contoso.com と fabrikam.com があり、この 2 つの間に信頼関係がある場合、contoso.com でのみシームレス SSO を有効にすれば、fabrikam.com にも適用されます。 このようにポリシーで有効にするフォレスト数を減らして、ポリシーの上限を超えないようにすることができます。
 
 ## <a name="check-status-of-feature"></a>機能の状態の確認
 

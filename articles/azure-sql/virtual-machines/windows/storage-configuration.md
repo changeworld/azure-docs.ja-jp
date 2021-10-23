@@ -3,7 +3,7 @@ title: SQL Server VM のストレージを構成する | Microsoft Docs
 description: このトピックでは、プロビジョニング中に SQL Server VM のストレージが Azure によってどのように構成されるかを説明します (Azure Resource Manager デプロイ モデル)。 また、既存の SQL Server VM のストレージを構成する方法についても説明します。
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: bluefooted
 tags: azure-resource-manager
 ms.assetid: 169fc765-3269-48fa-83f1-9fe3e4e40947
 ms.service: virtual-machines-sql
@@ -12,13 +12,14 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/26/2019
-ms.author: mathoma
-ms.openlocfilehash: 3ddcd99257eb7605322fe81f1002123d4876456b
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.author: pamela
+ms.reviewer: mathoma
+ms.openlocfilehash: 5a30cfbd95f660e470854977a63b4dc469a3f769
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113435418"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130162444"
 ---
 # <a name="configure-storage-for-sql-server-vms"></a>SQL Server VM のストレージを構成する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -54,7 +55,7 @@ SQL Server のギャラリー イメージを使用して Azure VM をプロビ�
 
 ディスク構成は完全にカスタマイズ可能であるため、SQL Server VM のワークロードに必要なストレージ トポロジ、ディスクの種類、IOPS を構成できます。 また、SQL Server VM がサポートされているリージョン (米国東部 2、東南アジア、北ヨーロッパ) にあり、[サブスクリプションで Ultra Disks](../../../virtual-machines/disks-enable-ultra-ssd.md) を有効にしている場合は、 **[ディスクの種類]** のオプションとして UltraSSD (プレビュー) を使用することもできます。
 
-さらに、ディスクのキャッシュを設定することもできます。 [Premium ディスク](../../../virtual-machines/disks-types.md#premium-ssd)で使用する場合、Azure VM には [BLOB キャッシュ](../../../virtual-machines/premium-storage-performance.md#disk-caching)と呼ばれる多層キャッシュ テクノロジがあります。 BLOB キャッシュでは、仮想マシンの RAM とローカル SSD の組み合わせがキャッシュに使用されます。
+さらに、ディスクのキャッシュを設定することもできます。 [Premium ディスク](../../../virtual-machines/disks-types.md#premium-ssds)で使用する場合、Azure VM には [BLOB キャッシュ](../../../virtual-machines/premium-storage-performance.md#disk-caching)と呼ばれる多層キャッシュ テクノロジがあります。 BLOB キャッシュでは、仮想マシンの RAM とローカル SSD の組み合わせがキャッシュに使用されます。
 
 Premium SSD のディスク キャッシュは、"*読み取り専用*"、"*読み取り書き込み*"、または "*なし*" にすることができます。
 
@@ -156,7 +157,7 @@ Azure では、次の設定を使用して、SQL Server VM で記憶域プール
 Azure portal でキャッシュ ポリシーを変更するには、次の手順に従います。
 
 1. SQL Server サービスを停止します。
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 1. 仮想マシンに移動し、 **[設定]** で **[ディスク]** を選択します。
 
    ![Azure portal の VM ディスク構成ブレードを示すスクリーンショット。](./media/storage-configuration/disk-in-portal.png)
@@ -179,7 +180,7 @@ Azure portal でキャッシュ ポリシーを変更するには、次の手順
 Azure portal を使用して書き込みアクセラレーションを有効にするには、次の手順を実行します。
 
 1. SQL Server サービスを停止します。 ディスクがストライピングされている場合は、仮想マシンをシャットダウンします。
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 1. 仮想マシンに移動し、 **[設定]** で **[ディスク]** を選択します。
 
    ![Azure portal の VM ディスク構成ブレードを示すスクリーンショット。](./media/storage-configuration/disk-in-portal.png)
