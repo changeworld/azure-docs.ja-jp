@@ -3,20 +3,20 @@ title: エラー コード リファレンス
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C サービスによって返される可能性があるエラー コードの一覧です。
 services: B2C
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 06/16/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 0c24bcf45b2440aada43af62035f0b988128c8f8
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 172e170839b540f796c90c891695f63f60f14e13
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112284547"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130041426"
 ---
 # <a name="error-codes-azure-active-directory-b2c"></a>エラー コード:Azure Active Directory B2C
 

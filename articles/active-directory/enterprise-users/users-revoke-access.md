@@ -8,17 +8,17 @@ ms.workload: identity
 ms.topic: how-to
 author: curtand
 ms.author: curtand
-manager: daveba
+manager: KarenH444
 ms.reviewer: krbain
 ms.date: 03/29/2021
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 727b5997045694a1a9242b30d865ec6229fbd3bf
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 9fdff97b2b0325d8c965000a309fb6c3232aee7f
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111963636"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129985183"
 ---
 # <a name="revoke-user-access-in-azure-active-directory"></a>Azure Active Directory でユーザー アクセスを取り消す
 

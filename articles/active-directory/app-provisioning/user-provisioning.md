@@ -3,7 +3,7 @@ title: Azure Active Directory での SaaS アプリ ユーザー プロビジョ
 description: Azure Active Directory を使用して、複数のサードパーティ SaaS アプリケーション間でユーザー アカウントを自動的にプロビジョニング、プロビジョニング解除、継続的に更新する方法の紹介。
 services: active-directory
 author: kenwith
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: overview
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/28/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 95bd9ea10f857ef5b4eb72b0fb3449bbcb5a67d9
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 78533b519c2410744b3ec8adc7dd3269e018715f
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114437333"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129990560"
 ---
 # <a name="what-is-app-provisioning-in-azure-active-directory"></a>Azure Active Directory でのアプリのプロビジョニングとは
 

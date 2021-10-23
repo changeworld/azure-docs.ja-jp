@@ -63,8 +63,6 @@ items:
             href: 'https://azure.github.io/communication-ui-library/?path=/story/quickstarts-statefulclient--page'
           - name: UI コンポーネントの概要
             href: 'https://azure.github.io/communication-ui-library/?path=/story/quickstarts-uicomponents--page'
-          - name: モバイル アプリに通話の複合を追加する
-            href: quickstarts/ui-library/get-started-call.md
       - name: TURN のリレーにアクセスする
         href: quickstarts/relay-token.md
   - name: チュートリアル
@@ -137,10 +135,6 @@ items:
             href: concepts/ui-library/ui-library-overview.md
           - name: UI ライブラリのユース ケース
             href: concepts/ui-library/ui-library-use-cases.md
-          - name: モバイル UI ライブラリの概要
-            href: concepts/ui-library/mobile-ui-library.md
-          - name: モバイル UI ライブラリのユース ケース
-            href: concepts/ui-library/mobile-ui-use-cases.md
       - name: SDK と REST API
         href: concepts/sdk-options.md
       - name: クライアントとサーバーのアーキテクチャ

@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 06/11/2021
 ms.topic: how-to
 ms.custom: automl, FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: e49a1560e45b801de2c6031d09e4fa3133d71823
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: a48fa9df38b9892c740713b1463010c1f601506d
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129429055"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130000026"
 ---
 # <a name="set-up-no-code-automl-training-with-the-studio-ui"></a>スタジオ UI を使用してコード不要の自動 ML トレーニングを設定する 
 
@@ -114,7 +114,7 @@ Python コードベースのエクスペリエンスでは、Azure Machine Learn
 
     **[次へ]** を選択します。
 
-1. **[Task type and settings]\(タスクの種類と設定\)** フォームで、[classification]\(分類\)、[regression]\(回帰\)、または [forecasting]\(予測\) のタスクの種類を選択します。 [サポートされるタスクの種類](concept-automated-ml.md#when-to-use-automl-classification-regression--forecasting)に関する記事を参照してください。
+1. **[Task type and settings]\(タスクの種類と設定\)** フォームで、[classification]\(分類\)、[regression]\(回帰\)、または [forecasting]\(予測\) のタスクの種類を選択します。 [サポートされるタスクの種類](concept-automated-ml.md#when-to-use-automl-classification-regression-forecasting--computer-vision)に関する記事を参照してください。
 
     1. **[分類]** については、ディープ ラーニングを有効にすることもできます。
     

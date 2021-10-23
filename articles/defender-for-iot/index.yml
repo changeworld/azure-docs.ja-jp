@@ -18,10 +18,10 @@ highlightedContent:
     - title: エンドユーザー組織向けの Azure Defender for IoT とは
       itemType: overview
       url: organizations/overview.md
-    - title: 組織向けの新機能
+    - title: エンドユーザー組織向けの新機能とは
       itemType: whats-new
       url: organizations/release-notes.md
-    - title: 組織向けのエージェントレス ソリューション アーキテクチャ
+    - title: エンドユーザー組織向けのエージェントレス ソリューション アーキテクチャ
       itemType: architecture
       url: organizations/architecture.md
     - title: デバイス ビルダー向けの Azure Defender for IoT とは

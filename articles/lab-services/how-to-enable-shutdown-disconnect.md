@@ -1,14 +1,14 @@
 ---
 title: Azure Lab Services のラボで VM の自動シャットダウンを構成する
 description: リモート デスクトップ接続が切断されたときの VM の自動シャットダウンを有効または無効にする方法について説明します。
-ms.topic: article
+ms.topic: how-to
 ms.date: 10/01/2020
-ms.openlocfilehash: 8f9080f3b7b762d3b9fa448a903a4167cd2cec4a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2b3e589e66749e1b1d9b2348a00cd3c3c432a4e5
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96433938"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130180307"
 ---
 # <a name="configure-automatic-shutdown-of-vms-for-a-lab"></a>ラボで VM の自動シャットダウンを構成する
 

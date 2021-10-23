@@ -4,7 +4,7 @@ description: Azure Active Directory 管理センターでグループ メンバ�
 services: active-directory
 author: curtand
 ms.author: curtand
-manager: daveba
+manager: KarenH444
 ms.date: 09/02/2021
 ms.topic: how-to
 ms.service: active-directory
@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f3f083f2cae8b1cfb33c20c09395a2d8fd4a6b2
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: abccbbddc17c0f82d1e399d0ce1123b44938a830
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123437348"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129986646"
 ---
 # <a name="bulk-add-group-members-in-azure-active-directory"></a>Azure Active Directory でのグループ メンバーの一括追加
 

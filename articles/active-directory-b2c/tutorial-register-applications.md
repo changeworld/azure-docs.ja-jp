@@ -3,21 +3,21 @@ title: チュートリアル:アプリケーションを登録する
 titleSuffix: Azure AD B2C
 description: このチュートリアルでは、Azure portal を使用して Azure Active Directory B2C に Web アプリケーションを登録する方法について説明します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/20/2021
 ms.custom: project-no-code
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 913393b36ec91b1db576a39711deeddca0f98258
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: e6148f10ad257fcac79b0c2a355b16aca4c9a484
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128581623"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130044006"
 ---
 # <a name="tutorial-register-a-web-application-in-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C に Web アプリケーションを登録する
 

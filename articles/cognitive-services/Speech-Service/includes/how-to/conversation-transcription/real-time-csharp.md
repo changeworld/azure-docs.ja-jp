@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/20/2020
 ms.author: pafarley
-ms.openlocfilehash: 0ffa432b6d5d94ad4e313a183d8e277ce44aae3d
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.openlocfilehash: b1765c6f3627a694e46698f5fd512ade4ebc35d8
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129585072"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129725770"
 ---
 ## <a name="install-the-speech-sdk"></a>Speech SDK のインストール
 
@@ -111,6 +111,7 @@ private static async Task<string> GetVoiceSignatureString()
 * コンストラクターを使用して `ConversationTranscriber` を作成し、必要なイベントにサブスクライブします。
 * 参加者を会話に追加します。 上記の手順の関数 `GetVoiceSignatureString()` の出力として、文字列 `voiceSignatureStringUser1` と `voiceSignatureStringUser2` が得られます。
 * 会話に参加し、文字起こしを開始します。
+* 音声サンプルを提供せずに話者を区別したい場合は、[会話の文字起こしの概要](../../../conversation-transcription.md)に関するページにあるように、`DifferentiateGuestSpeakers` 機能を有効にしてください。 
 
 > [!NOTE]
 > `AudioStreamReader` は [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/quickstart/csharp/dotnet/conversation-transcription/helloworld/AudioStreamReader.cs) で取得できるヘルパー クラスです。
@@ -137,7 +138,9 @@ public static async Task TranscribeConversationsAsync(string voiceSignatureStrin
 
     var config = SpeechConfig.FromSubscription(subscriptionKey, region);
     config.SetProperty("ConversationTranscriptionInRoomAndOnline", "true");
-    // config.SpeechRecognitionLanguage = "zh-cn"; // en-us by default. This code specifies Chinese.
+
+    // en-us by default. Adding this code to specify other languages, like zh-cn.
+    // config.SpeechRecognitionLanguage = "zh-cn";
     var stopRecognition = new TaskCompletionSource<int>();
 
     using (var audioInput = AudioConfig.FromWavFileInput(filepath))

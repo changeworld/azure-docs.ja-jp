@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 4cb7fdf7f32070de66e81736d7572e0b48aad896
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 7e7ea41a95c2b59e124f8f605be52f3ba774f763
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123429498"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129998639"
 ---
 # <a name="add-a-bar-chart-layer"></a>横棒グラフ レイヤーを追加する
 
@@ -56,6 +56,14 @@ ms.locfileid: "123429498"
 > 横棒の幅が小さく、 **[Scale width on zoom]\(ズーム時に幅を調整する\)** オプションが無効になっている場合、レンダリングされた幅のサイズが 1 ピクセル以下になってしまうため、棒は大きく拡大したときに消えてしまう可能性があります。 ただし、 **[Scale width on zoom]\(ズーム時に幅を調整する\)** オプションが有効になっている場合、ズーム レベルが変更されると、追加の計算が実行されるため、大規模なデータ セットのパフォーマンスに影響する可能性があります。
 
 ## <a name="next-steps"></a>次のステップ
+
+マップにデータを表示する方法を変更します。
+
+> [!div class="nextstepaction"]
+> [バブル レイヤーを追加する](power-bi-visual-add-bubble-layer.md)
+
+> [!div class="nextstepaction"]
+> [ヒート マップ レイヤーを追加する](power-bi-visual-add-heat-map-layer.md)
 
 マップにコンテキストをさらに追加する:
 

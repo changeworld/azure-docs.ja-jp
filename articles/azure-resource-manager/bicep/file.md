@@ -2,13 +2,13 @@
 title: Bicep ファイルの構造と構文
 description: 宣言型の構文を使用した Bicep ファイルの構造とプロパティについて説明します。
 ms.topic: conceptual
-ms.date: 10/01/2021
-ms.openlocfilehash: e627821f80f76ff536859fd643bd01c55d50ab7e
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.date: 10/07/2021
+ms.openlocfilehash: 8cdeb75aa676b9121d69ba8bf612067157328ee0
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129350401"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130067157"
 ---
 # <a name="understand-the-structure-and-syntax-of-bicep-files"></a>Bicep ファイルの構造と構文について
 
@@ -129,7 +129,7 @@ output storageEndpoint object = stg.properties.primaryEndpoints
 * **managementGroup** - [管理グループのデプロイ](deploy-to-management-group.md)に使用されます。
 * **tenant** - [テナントのデプロイ](deploy-to-tenant.md)に使用されます。
 
-モジュールでは、Bicep ファイルの残りの部分とは異なるスコープを指定できます。 詳細については、[「モジュール スコープの構成」](modules.md#configure-module-scopes)を参照してください
+モジュールでは、Bicep ファイルの残りの部分とは異なるスコープを指定できます。 詳細については、[「モジュール スコープの構成」](modules.md#set-module-scope)を参照してください
 
 ## <a name="parameters"></a>パラメーター
 
@@ -202,7 +202,7 @@ var uniqueStorageName = '${storagePrefix}${uniqueString(resourceGroup().id)}'
 
 ## <a name="resource"></a>リソース
 
-デプロイするリソースを定義するには `resource` キーワードを使用します。 リソース宣言には、リソースのシンボリック名が含まれます。 このシンボリック名を、リソースから値を取得する必要がある場合に Bicep ファイルの他の部分で使用します。 シンボリック名には、a-z、A-Z、0-9、'_' を含めることができます。名前の先頭を数字にすることはできません。
+デプロイするリソースを定義するには `resource` キーワードを使用します。 リソース宣言には、リソースのシンボリック名が含まれます。 このシンボリック名を、リソースから値を取得する必要がある場合に Bicep ファイルの他の部分で使用します。 シンボリック名は大文字と小文字が区別されます。 文字、数字、および _ を含めることができますが、数字で始めることはできません。
 
 リソース宣言には、リソースの種類と API バージョンも含まれます。
 

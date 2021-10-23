@@ -3,15 +3,15 @@ title: Java Web アプリでの Azure Application Insights テレメトリのフ
 description: 監視する必要のないイベントをフィルターで除外して、テレメトリのトラフィックを削減します。
 ms.topic: conceptual
 ms.date: 3/14/2019
-author: MS-jgol
 ms.custom: devx-track-java
-ms.author: jgol
-ms.openlocfilehash: c8c3e1e73a1504a5da519144ee5c3e9968fb89b9
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+author: mattmccleary
+ms.author: mmcc
+ms.openlocfilehash: 26addfdcd7b7b2d9ec3b049040e5d387d7c5bb86
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110105015"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130133958"
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>Java Web アプリでのテレメトリのフィルター処理
 
@@ -85,7 +85,7 @@ ApplicationInsights.xml で、次の例のように `TelemetryProcessors` セク
 
 ```
 
-[すべてのビルトイン プロセッサを確認します](https://github.com/microsoft/ApplicationInsights-Java/tree/master/core/src/main/java/com/microsoft/applicationinsights/internal)。
+[すべてのビルトイン プロセッサを確認します](https://github.com/microsoft/ApplicationInsights-Java/tree/main/agent/agent-tooling/src/main/java/com/microsoft/applicationinsights/agent/internal)。
 
 ## <a name="built-in-filters"></a>ビルトイン フィルター
 

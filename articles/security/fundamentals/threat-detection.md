@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2021
 ms.author: terrylan
-ms.openlocfilehash: 19944b336a9140a7133b2f96d7821c56a59abe7e
-ms.sourcegitcommit: 16580bb4fbd8f68d14db0387a3eee1de85144367
+ms.openlocfilehash: 36410c2c6f4f5054f04d017f944b840c6251ec8c
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112676854"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130003574"
 ---
 # <a name="azure-threat-protection"></a>Azure 脅威防止
 
@@ -253,7 +253,7 @@ SQL Database の脅威検出機能では、次の検出手法のいずれかが�
 
 ### <a name="application-gateway-web-application-firewall"></a>Application Gateway の Web アプリケーション ファイアウォール
 
-[Web アプリケーション ファイアウォール (WAF)](../../app-service/environment/app-service-app-service-environment-web-application-firewall.md) は、[Azure Application Gateway](../../web-application-firewall/ag/ag-overview.md) の機能で、標準の[アプリケーション配信コントロール](https://kemptechnologies.com/in/application-delivery-controllers)機能に対してアプリケーション ゲートウェイを使用して、Web アプリケーションを保護します。 Web アプリケーション ファイアウォールは、[Open Web Application Security Project (OWASP) の上位 10 件の一般的 Web 脆弱性](https://owasp.org/www-project-top-ten/)の大部分に対する保護を提供することで、これを実現します。
+[Web アプリケーション ファイアウォール (WAF)](../../app-service/environment/integrate-with-application-gateway.md) は、[Azure Application Gateway](../../web-application-firewall/ag/ag-overview.md) の機能で、標準の[アプリケーション配信コントロール](https://kemptechnologies.com/in/application-delivery-controllers)機能に対してアプリケーション ゲートウェイを使用して、Web アプリケーションを保護します。 Web アプリケーション ファイアウォールは、[Open Web Application Security Project (OWASP) の上位 10 件の一般的 Web 脆弱性](https://owasp.org/www-project-top-ten/)の大部分に対する保護を提供することで、これを実現します。
 
 ![Application Gateway の Web アプリケーション ファイアウォールの図](./media/threat-detection/azure-threat-detection-fig13.png)
 

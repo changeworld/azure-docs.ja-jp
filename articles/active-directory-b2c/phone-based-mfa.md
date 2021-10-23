@@ -3,20 +3,20 @@ title: Azure AD B2C での電話ベースの MFA のセキュリティ保護
 titleSuffix: Azure AD B2C
 description: Azure Monitor Log Analytics レポートおよびアラートを使用して、Azure AD B2C テナントの電話ベースの多要素認証 (MFA) をセキュリティで保護するためのヒントについて説明します。 ブックを使用して、不正な電話認証を特定し、不正なサインアップを軽減します。 =
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.date: 09/20/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 112fe68a1d8682b03a9f08839d827b71ebadf1d1
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 30e9f10b1c39aa1b05a5e8fcc395373a502f8c33
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128571771"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130035747"
 ---
 # <a name="securing-phone-based-multi-factor-authentication-mfa"></a>電話ベースの多要素認証 (MFA) のセキュリティ保護
 

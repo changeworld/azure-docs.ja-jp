@@ -4,14 +4,14 @@ description: 説明がここに表示されます。
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/04/2021
+ms.date: 10/12/2021
 ms.author: normesta
-ms.openlocfilehash: 7f5c2397e2b8d6e19e912dd46eec39f432e27434
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: 5dfdddb3458d552c0c3336c9d7609cfe2fdc6de3
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129459040"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130003498"
 ---
 # <a name="upgrading-azure-blob-storage-with-azure-data-lake-storage-gen2-capabilities"></a>Azure Data Lake Storage Gen2 の機能による Azure Blob Storage のアップグレード
 

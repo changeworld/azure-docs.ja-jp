@@ -1,16 +1,16 @@
 ---
-author: msmimart
+author: kengaderdus
 ms.service: active-directory-b2c
 ms.subservice: B2C
 ms.topic: include
 ms.date: 06/11/2021
-ms.author: mimart
-ms.openlocfilehash: 2bab69917caf103cd4e2f0b10e28b46acd8e48c3
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.author: kengaderdus
+ms.openlocfilehash: c2409ef7d846ff7d4d67d7bf79ab96760375da81
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123220252"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130037056"
 ---
 ## <a name="prepopulate-the-sign-in-name"></a>サインイン名を事前入力する
 

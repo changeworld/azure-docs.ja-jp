@@ -332,13 +332,13 @@ conceptualContent:
         - url: ./app/export-telemetry.md
           itemType: how-to-guide
           text: テレメトリのエクスポート
-        - url: ./app/export-stream-analytics.md
+        - url: ../stream-analytics/app-insights-export-stream-analytics.md
           itemType: how-to-guide
           text: Stream Analytics にエクスポートする
-        - url: ./app/code-sample-export-sql-stream-analytics.md
+        - url: ../stream-analytics/app-insights-export-sql-stream-analytics.md
           itemType: how-to-guide
           text: Stream Analytics を使用して SQL にエクスポートする
-        - url: ./app/code-sample-export-sql-stream-analytics.md
+        - url: ../stream-analytics/app-insights-export-sql-stream-analytics.md
           itemType: how-to-guide
           text: データのエクスポート モデル
         - url: ./logs/logicapp-flow-connector.md

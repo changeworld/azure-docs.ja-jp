@@ -6,18 +6,18 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 194154f192cfcc91138b13bd37b37d80d38097d2
-ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
+ms.openlocfilehash: 8323f3a917cfe51fdc358d28b865db3055f28172
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113126790"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130178222"
 ---
 # <a name="monitoring-azure-functions-with-azure-monitor-logs"></a>Azure Monitor ログを使用した Azure Functions の監視
 
 Azure Functions は [Azure Monitor ログ](../azure-monitor/logs/data-platform-logs.md)と統合されており、関数を監視することができます。 この記事では、システム生成ログとユーザー生成ログを Azure Monitor ログに送信するように Azure Functions を構成する方法について説明します。
 
-Azure Monitor Logs を使うと、同じワークスペース内の異なるリソースのログを統合できます。また、それを[クエリ](../azure-monitor/logs/log-query-overview.md)を使って分析し、収集したデータをすばやく取得、統合、分析できます。  Azure portal で [Log Analytics](../azure-monitor/logs/log-query-overview.md) を使用してクエリを作成およびテストした後、これらのツールを使用してデータを直接分析できるほか、クエリを保存して[視覚化](../azure-monitor/visualizations.md)または[アラート ルール](../azure-monitor/alerts/alerts-overview.md)に利用することができます。
+Azure Monitor Logs を使うと、同じワークスペース内の異なるリソースのログを統合できます。また、それを[クエリ](../azure-monitor/logs/log-query-overview.md)を使って分析し、収集したデータをすばやく取得、統合、分析できます。  Azure portal で [Log Analytics](../azure-monitor/logs/log-query-overview.md) を使用してクエリを作成およびテストした後、これらのツールを使用してデータを直接分析できるほか、クエリを保存して[視覚化](../azure-monitor/best-practices-analysis.md)または[アラート ルール](../azure-monitor/alerts/alerts-overview.md)に利用することができます。
 
 Azure Monitor では、Azure Data Explorer で使用される [Kusto クエリ言語](/azure/kusto/query/)のバージョンを使用します。それは、単純なログ検索に適していますが、集計、結合、スマート分析などの高度な機能も備えています。 [さまざまなレッスン](../azure-monitor/logs/get-started-queries.md)を利用すれば、クエリ言語はすぐに覚えることができます。
 

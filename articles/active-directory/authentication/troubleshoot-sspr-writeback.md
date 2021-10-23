@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ccc9b6dffd6fa18fc18a9d16bc702553d277193d
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: 2f90f98f8e2f46f3f914ec61d2fea4e1946f1604
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122866600"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129987805"
 ---
 # <a name="troubleshoot-self-service-password-reset-writeback-in-azure-active-directory"></a>Azure Active Directory でのセルフサービス パスワード リセットの書き戻しをトラブルシューティングする
 
@@ -59,7 +59,7 @@ Test-NetConnection -ComputerName ssprdedicatedsbprodscu.servicebus.windows.net -
 または以下を実行します。
 
 ```powershell
-Invoke-WebRequest -Uri https://ssprdedicatedbprodscu.servicebus.windows.net -Verbose
+Invoke-WebRequest -Uri https://ssprdedicatedsbprodscu.servicebus.windows.net -Verbose
 ```
 
 詳細については、[Azure AD Connect の接続の前提条件](../hybrid/how-to-connect-install-prerequisites.md)に関するページを参照してください。

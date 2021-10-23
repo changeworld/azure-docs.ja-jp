@@ -6,14 +6,14 @@ author: ginalee-dotcom
 ms.custom: references_regions
 ms.service: healthcare-apis
 ms.topic: reference
-ms.date: 07/16/2021
+ms.date: 10/21/2021
 ms.author: ginle
-ms.openlocfilehash: 3cccd2a1e418dbc66a5a8c1bfa665c6c3276552d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 6debd85f084a68cc96133cc7128f97beefa2dfcb
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121780718"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130259377"
 ---
 # <a name="frequently-asked-questions-about-azure-healthcare-apis-preview"></a>Azure Healthcare APIs についてよく寄せられる質問 (プレビュー)
 
@@ -58,13 +58,17 @@ Azure Healthcare APIs を使用すると、以下を行うことができます�
 * ワークスペースあたり 10 FHIR インスタンス (調整不可)
 
 #### <a name="iot-connector"></a>IoT コネクタ:
-* サブスクリプションあたり 25 IoT コネクタ (調整不可)
-* ワークスペースあたり 10 IoT コネクタ (調整不可)
-* IoT コネクタあたり 1 つの FHIR 宛先* (調整不可)
+* サブスクリプションあたり 25 の IoT コネクタ (Azure サポート リクエストで調整可能)
+* ワークスペースあたり 10 の IoT コネクタ (Azure サポート リクエストで調整可能)
+* IoT コネクタごとに 1 つの FHIR Destination* (調整不可)
+
+(* - FHIR Destination は IoT コネクタの子リソースです)
 
 ## <a name="more-frequently-asked-questions"></a>その他のよく寄せられる質問
 [Azure Healthcare APIs の FHIR サービスに関する FAQ](./fhir/fhir-faq.md)
 
 [Azure Healthcare APIs の DICOM サービスに関する FAQ](./dicom/dicom-services-faqs.yml)
 
+[Azure Healthcare API IoT コネクタに関する FAQ](./iot/iot-connector-faqs.md)
 
+(FHIR&#174;) は HL7 の商標であり [、HL7](https://hl7.org/fhir/) の許可を得て使用されます。

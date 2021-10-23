@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3c91961eb6e89533ee5b995eb56fdd172d21b6f2
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 45a18ade65a08b378652248bc0b0f62cb8f97e84
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124730183"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130072767"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Azure での SAP ワークロード: 計画とデプロイに関するチェックリスト
 
@@ -110,9 +110,9 @@ ms.locfileid: "124730183"
            -  [Azure の Linux 仮想マシンのサイズ](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 サイズ設定では *キャッシュされていないディスクの最大スループット* を検討することが重要です。
    2. ストレージ。
         - ドキュメント「[SAP ワークロードの Azure Storage の種類](./planning-guide-storage.md)」を確認してください。
-        - SAP アプリケーション レイヤーを表す VM や、さほどパフォーマンスが要求されない DBMS デプロイには、最小要件として [Azure Standard SSD ストレージ](../../disks-types.md#standard-ssd)を使用します。
-        - 一般に、[Azure Standard HDD ディスク](../../disks-types.md#standard-hdd)を使用することはお勧めしません。
-        - リモートでのパフォーマンスが重視される DBMS VM には、[Azure Premium Storage](../../disks-types.md#premium-ssd) を使用します。
+        - SAP アプリケーション レイヤーを表す VM や、さほどパフォーマンスが要求されない DBMS デプロイには、最小要件として [Azure Standard SSD ストレージ](../../disks-types.md#standard-ssds)を使用します。
+        - 一般に、[Azure Standard HDD ディスク](../../disks-types.md#standard-hdds)を使用することはお勧めしません。
+        - リモートでのパフォーマンスが重視される DBMS VM には、[Azure Premium Storage](../../disks-types.md#premium-ssds) を使用します。
         - [Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/) を使用します。
         - M シリーズの DBMS ログ ドライブには、Azure 書き込みアクセラレータを使用します。 [書き込みアクセラレータ](../../how-to-enable-write-accelerator.md)に関する記事に記載されている書き込みアクセラレータの制限と使用方法に注意してください。
         - DBMS のさまざまな種類については、[一般的な SAP 関連の DBMS ドキュメント](./dbms_guide_general.md)と、一般ドキュメントで参照されている DBMS ごとの個別ドキュメントを確認してください。

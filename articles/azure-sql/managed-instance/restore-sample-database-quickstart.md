@@ -12,12 +12,12 @@ author: misliplavo
 ms.author: mlazic
 ms.reviewer: mathoma
 ms.date: 09/13/2021
-ms.openlocfilehash: f683bbd008e47a154fac11d89e8d06f0e07b87f2
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 3c8df890cb8772c919d70e790f7a2c62eb757e87
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128674212"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130041286"
 ---
 # <a name="quickstart-restore-a-database-to-azure-sql-managed-instance-with-ssms"></a>クイック スタート:SSMS を使用して Azure SQL Managed Instance にデータベースを復元する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -51,69 +51,69 @@ SSMS で、次の手順に従って復元ウィザードを使用して、Wide W
 1. SSMS を開き、お使いのマネージド インスタンスに接続します。
 2. **オブジェクト エクスプローラー** で、マネージド インスタンスのデータベースを右クリックし、 **[データベースの復元]** を選択して復元ウィザードを開きます。
 
-    ![復元ウィザードを開いているところを示すスクリーンショット。](./media/restore-sample-database-quickstart/restore-wizard-start.png)
+    :::image type="content" source="./media/restore-sample-database-quickstart/restore-wizard-start.png" alt-text="復元ウィザードを開いているところを示すスクリーンショット。":::
 
 3. 新しい復元ウィザードで、省略記号 **[...]** を選択して、使用するバックアップ ファイルのソースを選択します。
 
-    ![新しい復元ウィザード ウィンドウを開いているところを示すスクリーンショット。](./media/restore-sample-database-quickstart/new-restore-wizard.png)
+    :::image type="content" source="./media/restore-sample-database-quickstart/new-restore-wizard.png" alt-text="新しい復元ウィザード ウィンドウを開いているところを示すスクリーンショット。":::
 
 4. **[バックアップ デバイスの選択]** で、 **[追加]** を選択します。 **[バックアップ メディアの種類]** では、サポートされている唯一のソースの種類であるため、 **[URL]** のみがオプションです。 **[OK]** を選択します。
 
-    ![デバイスの選択を示すスクリーンショット。](./media/restore-sample-database-quickstart/restore-wizard-select-device.png)
+    :::image type="content" source="./media/restore-sample-database-quickstart/restore-wizard-select-device.png" alt-text="デバイスの選択を示すスクリーンショット。":::
 
 5. **[バックアップ ファイルの場所を選択]** では、3 つのオプションから選択して、バックアップ ファイルの配置に関する情報を指定できます。
     - ドロップダウンから、事前登録済みのストレージ コンテナーを選択します。
     - 新しいストレージ コンテナーと Shared Access Signature を入力します。 (新しい SQL 資格情報が自動的に登録されます)。 
     - **[追加]** を選択して、Azure サブスクリプションからさらに多くのストレージ コンテナーを参照します。
 
-    ![バックアップ ファイルの場所の選択を示すスクリーンショット。](./media/restore-sample-database-quickstart/restore-wizard-backup-file-location.png)
+    :::image type="content" source="./media/restore-sample-database-quickstart/restore-wizard-backup-file-location.png" alt-text="バックアップ ファイルの場所の選択を示すスクリーンショット。":::
 
     **[追加]** ボタンを選択した場合は、次の手順のようにします。 別の方法を使用してバックアップ ファイルの場所を指定する場合は、ステップ 12 に進みます。
 6. **[Microsoft サブスクリプションへの接続]** で **[サインイン]** を選択して自分の Azure サブスクリプションにサインインします。
 
-    ![Azure サブスクリプションのサインインを示すスクリーンショット。](./media/restore-sample-database-quickstart/restore-wizard-connect-subscription-sign-in.png)
+    :::image type="content" source="./media/restore-sample-database-quickstart/restore-wizard-connect-subscription-sign-in.png" alt-text="Azure サブスクリプションのサインインを示すスクリーンショット。":::
 
 7. Microsoft アカウントにサインインし、Azure でセッションを開始します。
 
-    ![Azure セッションへのサインインを示すスクリーンショット。](./media/restore-sample-database-quickstart/restore-wizard-sign-in-session.png)
+    :::image type="content" source="./media/restore-sample-database-quickstart/restore-wizard-sign-in-session.png" alt-text="Azure セッションへのサインインを示すスクリーンショット。":::
 
 8. バックアップ ファイルを含むストレージ アカウントが存在するサブスクリプションを選択します。
 
-    ![サブスクリプションの選択を示すスクリーンショット。](./media/restore-sample-database-quickstart/restore-wizard-select-subscription.png)
+    :::image type="content" source="./media/restore-sample-database-quickstart/restore-wizard-select-subscription.png" alt-text="サブスクリプションの選択を示すスクリーンショット。":::
 
 9. バックアップ ファイルが配置されているストレージ アカウントを選択します。
 
-    ![ストレージ アカウントを示すスクリーンショット。](./media/restore-sample-database-quickstart/restore-wizard-select-storage-account.png)
+    :::image type="content" source="./media/restore-sample-database-quickstart/restore-wizard-select-storage-account.png" alt-text="ストレージ アカウントを示すスクリーンショット。":::
 
 10. バックアップ ファイルが格納されている BLOB コンテナーを選択します。
 
-    ![BLOB コンテナーを選択する](./media/restore-sample-database-quickstart/restore-wizard-select-container.png)
+    :::image type="content" source="./media/restore-sample-database-quickstart/restore-wizard-select-container.png" alt-text="BLOB コンテナーを選択する":::
 
 11. 共有アクセス ポリシーの有効期限を指定し、 **[資格情報の作成]** を選択します。 適切なアクセス許可を持つ Shared Access Signature が作成されます。 **[OK]** を選択します。
 
-    ![Shared Access Signature の生成を示すスクリーンショット。](./media/restore-sample-database-quickstart/restore-wizard-generate-shared-access-signature.png)
+    :::image type="content" source="./media/restore-sample-database-quickstart/restore-wizard-generate-shared-access-signature.png" alt-text="Shared Access Signature の生成を示すスクリーンショット。":::
 
 12. 左側のペインでフォルダー構造を展開して、バックアップ ファイルが配置されているフォルダーを表示します。 復元するバックアップ セットに関連するすべてのバックアップ ファイルを選択し、 **[OK]** を選択します。
 
-    ![バックアップ ファイルの選択を示すスクリーンショット。](./media/restore-sample-database-quickstart/restore-wizard-backup-file-selection.png)
+    :::image type="content" source="./media/restore-sample-database-quickstart/restore-wizard-backup-file-selection.png" alt-text="バックアップ ファイルの選択を示すスクリーンショット。":::
 
     SSMS によってバックアップ セットが検証されます。 バックアップ セットのサイズによっては、このプロセスに数秒かかります。
 
 13. バックアップが検証されたら、復元先のデータベース名を指定するか、バックアップ セットのデータベース名をそのまま使用して、 **[OK]** を選択します。
 
-    ![復元の開始を示すスクリーンショット。](./media/restore-sample-database-quickstart/restore-wizard-start-restore.png)
+    :::image type="content" source="./media/restore-sample-database-quickstart/restore-wizard-start-restore.png" alt-text="復元の開始を示すスクリーンショット。":::
 
     復元が開始されます。 所要時間は、バックアップ セットのサイズによって異なります。
 
-    ![復元の実行を示すスクリーンショット。](./media/restore-sample-database-quickstart/restore-wizard-running-restore.png)
+    :::image type="content" source="./media/restore-sample-database-quickstart/restore-wizard-running-restore.png" alt-text="復元の実行を示すスクリーンショット。":::
 
 14. 復元が完了すると、成功したことがダイアログに示されます。 **[OK]** を選択します。
 
-    ![完了した復元を示すスクリーンショット。](./media/restore-sample-database-quickstart/restore-wizard-finish-restore.png)
+    :::image type="content" source="./media/restore-sample-database-quickstart/restore-wizard-finish-restore.png" alt-text="完了した復元を示すスクリーンショット。":::
 
 15. オブジェクト エクスプローラーで復元されたデータベースを調べます。
 
-    ![復元されたデータベースを示すスクリーンショット。](./media/restore-sample-database-quickstart/restore-wizard-restored-database.png)
+    :::image type="content" source="./media/restore-sample-database-quickstart/restore-wizard-restored-database.png" alt-text="復元されたデータベースを示すスクリーンショット。":::
 
 
 ## <a name="restore-from-a-backup-file-using-t-sql"></a>T-SQL を使用してバックアップ ファイルから復元する
@@ -133,7 +133,7 @@ SQL Server Management Studio で、次の手順に従って、Wide World Importe
    , SECRET = 'sv=2017-11-09&ss=bfqt&srt=sco&sp=rwdlacup&se=2028-09-06T02:52:55Z&st=2018-09-04T18:52:55Z&spr=https&sig=WOTiM%2FS4GVF%2FEEs9DGQR9Im0W%2BwndxW2CQ7%2B5fHd7Is%3D'
    ```
 
-    ![資格情報を作成する](./media/restore-sample-database-quickstart/credential.png)
+    :::image type="content" source="./media/restore-sample-database-quickstart/credential.png" alt-text="資格情報を作成する":::
 
 4. 認証情報を確認するために、次のスクリプトを実行します。このスクリプトでは、[コンテナー](https://azure.microsoft.com/services/container-instances/)の URL を使用してバックアップ ファイルの一覧を取得します。
 
@@ -142,7 +142,7 @@ SQL Server Management Studio で、次の手順に従って、Wide World Importe
       'https://mitutorials.blob.core.windows.net/databases/WideWorldImporters-Standard.bak'
    ```
 
-    ![ファイル一覧](./media/restore-sample-database-quickstart/file-list.png)
+    :::image type="content" source="./media/restore-sample-database-quickstart/file-list.png" alt-text="ファイル一覧":::
 
 5. 次のスクリプトを実行して、Wide World Importers データベースを復元します。
 
@@ -151,7 +151,7 @@ SQL Server Management Studio で、次の手順に従って、Wide World Importe
      'https://mitutorials.blob.core.windows.net/databases/WideWorldImporters-Standard.bak'
    ```
 
-    ![オブジェクト エクスプローラーで実行され、成功メッセージが表示されたスクリプトを示すスクリーンショット。](./media/restore-sample-database-quickstart/restore.png)
+    :::image type="content" source="./media/restore-sample-database-quickstart/restore.png" alt-text="オブジェクト エクスプローラーで実行され、成功メッセージが表示されたスクリプトを示すスクリーンショット。":::
 
 6. 次のスクリプトを実行して、復元の状態を追跡します。
 

@@ -3,21 +3,21 @@ title: アプリケーション プロキシを使った Azure Active Directory 
 description: Azure Active Directory アプリケーション プロキシを使用してシングル サインオンを提供する方法について説明します。
 services: active-directory
 author: kenwith
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-proxy
 ms.workload: identity
 ms.topic: how-to
 ms.date: 04/27/2021
 ms.author: kenwith
-ms.reviewer: japere
+ms.reviewer: ashishj
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 5a13171d234664ca09508f2404acb95e468f9d7c
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 8aaf08b3d94db9ada52fb80d1dcb1a0e94d39894
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129232320"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129989762"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-sso-to-your-apps-with-application-proxy"></a>アプリケーション プロキシを使ったアプリへのシングル サインオン (SSO) の Kerberos の制約付き委任
 
