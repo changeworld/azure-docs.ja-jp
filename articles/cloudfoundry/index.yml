@@ -10,12 +10,12 @@ metadata:
   author: georgewallace
   ms.author: gwallace
   ms.date: 03/08/2020
-  ms.openlocfilehash: fecf1946eae433573839458a4fe269f6dfee28bb
-  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+  ms.openlocfilehash: 2c36fd37ff604f070cbe9eb334ae363165e1b970
+  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/13/2021
-  ms.locfileid: "124815343"
+  ms.lasthandoff: 10/22/2021
+  ms.locfileid: "130264543"
 landingContent:
 - title: Cloud Foundry on Azure について
   linkLists:
@@ -28,7 +28,7 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: Cloud Foundry on Azure のデプロイ
-      url: /azure/cloudfoundry/cloudfoundry-deploy-your-first-app
+      url: ./cloudfoundry-deploy-your-first-app.md
   - linkListType: how-to-guide
     links:
     - text: 初めてのアプリのデプロイ

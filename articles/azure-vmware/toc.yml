@@ -187,27 +187,27 @@
         - name: 全般
           href: ./faq.yml
         - name: 課金
-          href: /azure/azure-vmware/faq#billing
+          href: ./faq.yml
         - name: 顧客とのコミュニケーション
-          href: /azure/azure-vmware/faq#customer-communication
+          href: ./faq.yml
         - name: 構成とセットアップ
-          href: /azure/azure-vmware/faq#configuration-and-setup
+          href: ./faq.yml
         - name: VMware ソフトウェア
-          href: /azure/azure-vmware/faq#vmware-software
+          href: ./faq.yml
         - name: サード パーティのバックアップ ソリューション
-          href: /azure/azure-vmware/faq#third-party-backup-and-recovery
+          href: ./faq.yml
         - name: Compute
-          href: /azure/azure-vmware/faq#compute
+          href: ./faq.yml
         - name: ネットワークと相互接続
-          href: /azure/azure-vmware/faq#networking-and-interconnectivity
+          href: ./faq.yml
         - name: ストレージ
-          href: /azure/azure-vmware/faq#storage
+          href: ./faq.yml
         - name: ホスト、クラスター、およびプライベート クラウド
-          href: '/azure/azure-vmware/faq#hosts,-clusters,-and-private-clouds'
+          href: ./faq.yml
         - name: ID 管理
-          href: /azure/azure-vmware/faq#identity-management
+          href: ./faq.yml
         - name: CSP とマルチテナント
-          href: /azure/azure-vmware/faq#csp-and-multi-tenancy
+          href: ./faq.yml
     - name: ビデオ
       items:
         - name: 再生リスト
