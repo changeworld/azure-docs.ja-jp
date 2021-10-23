@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-general
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: dbb10405408250be55bf10f49d3c557a0205df92
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 81ede4b26bcc1eb5234fa8374a0c3faab7949e36
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122692870"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130073375"
 ---
 # <a name="av2-series"></a>Av2 シリーズ
 
@@ -53,7 +53,7 @@ Av2 シリーズ VM は多様なハードウェアの種類とプロセッサに
 
 料金計算ツール:[料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 
-ディスクの種類の詳細情報:[ディスクの種類](./disks-types.md#ultra-disk)
+ディスクの種類の詳細情報:[ディスクの種類](./disks-types.md#ultra-disks)
 
 ## <a name="next-steps"></a>次のステップ
 

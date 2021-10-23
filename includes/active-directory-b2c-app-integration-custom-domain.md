@@ -1,16 +1,16 @@
 ---
-author: msmimart
+author: kengaderdus
 ms.service: active-directory-b2c
 ms.subservice: B2C
 ms.topic: include
 ms.date: 06/11/2021
-ms.author: mimart
-ms.openlocfilehash: 8547dac26c8d3a6a286a49a6b6e12919199a994b
-ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+ms.author: kengaderdus
+ms.openlocfilehash: 33b42af7804c2c48a0112e0f8eb502c253813f47
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123220331"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130037096"
 ---
 ## <a name="use-a-custom-domain"></a>カスタム ドメインの使用
 

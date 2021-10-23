@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 10/07/2021
 ms.author: lajanuar
 recommendations: false
-ms.openlocfilehash: abd279b8464e4477a99aa0da8be480844bf18563
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 55e3d529b0f0e713be1c19e9f2ae4736d9b6a9ca
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129716364"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130177519"
 ---
 # <a name="how-to-use-custom-and-composed-models"></a>方法: カスタム モデルと作成済みモデルを使用する
 
@@ -31,7 +31,7 @@ Form Recognizer では、高度な機械学習テクノロジを使用して、�
 
 カスタム フォームからデータを抽出する方法を確認するには、サンプル ラベル付けツールを試してください。 次が必要です。
 
-* Azure サブスクリプション—[無料で作成できます](https://azure.microsoft.com/free/cognitive-services/)。
+* Azure サブスクリプション: [無料で作成できます](https://azure.microsoft.com/free/cognitive-services/)。
 
 * Azure portal の [Form Recognizer インスタンス](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer)。 Free 価格レベル (`F0`) を利用して、サービスを試用できます。 リソースがデプロイされたら、 **[リソースに移動]** をクリックして API キーとエンドポイントを取得します。
 
@@ -161,9 +161,9 @@ Form Recognizer サンプル ラベル付けツール、REST API、またはク�
 
 任意のプログラミング言語コードを使用して、1 つのモデル ID で呼び出される作成済みモデルを作成します。 既存のカスタム モデルから作成済みモデルを作成する方法を示したコード サンプルへのリンクを次に示します。
 
-* [**C#/.NET**](https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/Sample8_ModelCompose.md)
+* [**C#/.NET**](https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/Sample_ModelCompose.md)
 
-* [**Java**](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/java/com/azure/ai/formrecognizer/CreateComposedModel.java)
+* [**Java**](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/java/com/azure/ai/formrecognizer/administration/CreateComposedModel.java)
 
 * [**JavaScript**](https://github.com/Azure/azure-sdk-for-js/blob/main/sdk/formrecognizer/ai-form-recognizer/samples/v3/javascript/createComposedModel.js)
 
@@ -195,9 +195,9 @@ REST API を使用して [Analyze Form](https://westus.dev.cognitive.microsoft.c
 
 任意のプログラミング言語と、カスタムまたは作成済みモデルを使用してフォームまたはドキュメントを分析します。 Form Recognizer エンドポイント、API キー、モデル ID が必要になります。
 
-* [**C#/.NET**](https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/Sample8_ModelCompose.md#recognize-a-custom-form-using-a-composed-model)
+* [**C#/.NET**](https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/Sample_ModelCompose.md)
 
-* [**Java**](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/java/com/azure/ai/formrecognizer/RecognizeCustomFormsFromUrl.java)
+* [**Java**](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/java/com/azure/ai/formrecognizer/AnalyzeCustomDocumentFromUrl.java)
 
 * [**JavaScript**](https://github.com/Azure/azure-sdk-for-js/blob/main/sdk/formrecognizer/ai-form-recognizer/samples/v3/javascript/recognizeCustomForm.js)
 

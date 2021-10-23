@@ -3,12 +3,12 @@ title: Azure Site Recovery の最新情報
 description: Azure Site Recovery サービスの新機能と最新の更新プログラムの概要について説明します。
 ms.topic: conceptual
 ms.date: 07/28/2021
-ms.openlocfilehash: 1e5c74d34d85fed9fff86dba92398c8cd57287bd
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 291865469c552d2e952fbda8d7eb82ece5268ea3
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129356268"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130071399"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery の最新情報
 
@@ -514,7 +514,7 @@ Site Recovery では、キャッシュ ストレージまたはターゲット �
 **機能** | **詳細**
 --- | ---
 **ネットワーク マッピング** | Azure VM ディザスター リカバリーで、レプリケーションを有効にすると、利用可能な任意のターゲット ネットワークを使用できるようになりました。
-**Standard SSD** | [Standard SSD ディスク](../virtual-machines/disks-types.md#standard-ssd)を使用して Azure VM のディザスター リカバリーを設定できるようになりました。
+**Standard SSD** | [Standard SSD ディスク](../virtual-machines/disks-types.md#standard-ssds)を使用して Azure VM のディザスター リカバリーを設定できるようになりました。
 **記憶域スペース ダイレクト** | Azure VM アプリで実行されるアプリのディザスター リカバリーを、高可用性を実現するために[記憶域スペース ダイレクト](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)を使用して設定できるようになりました。  Site Recovery と共に記憶域スペース ダイレクト (S2D) を使用することで、Azure VM ワークロードを包括的に保護することができます。 S2D では、Azure でゲスト クラスターをホストすることができます。 これは特に、SAP ASCS レイヤー、SQL Server、スケールアウト ファイル サーバーなど、重要なアプリケーションを VM でホストするときに便利です。
 
 

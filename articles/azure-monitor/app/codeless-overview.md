@@ -2,15 +2,13 @@
 title: コードを変更せずにアプリを監視する - Azure Monitor Application Insights の自動インストルメンテーション |Microsoft Docs
 description: Azure Monitor Application Insights の自動インストルメンテーションの概要 - コード不要のアプリケーションのパフォーマンス管理
 ms.topic: conceptual
-author: MS-jgol
-ms.author: jgol
 ms.date: 08/31/2021
-ms.openlocfilehash: 3f6af0beb887f66f4696707dcc0e0f408004509a
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 8603837d9d9ac098f7093a8760f326a1c0e44f89
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124827619"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130133635"
 ---
 # <a name="what-is-auto-instrumentation-for-azure-monitor-application-insights"></a>Azure Monitor Application Insights の自動インストルメンテーションとは
 

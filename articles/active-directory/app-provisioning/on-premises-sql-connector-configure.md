@@ -3,7 +3,7 @@ title: Azure AD ECMA Connector Host の汎用 SQL コネクタの構成
 description: このドキュメントでは、Azure AD ECMA Connector Host の汎用 SQL コネクタを構成する方法について説明します。
 services: active-directory
 author: billmath
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: how-to
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 06/06/2021
 ms.author: billmath
 ms.reviewer: arvinh
-ms.openlocfilehash: 90924dda7e4483884681322ed175de1e59b34928
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 494f3eaec7fbc90597fd5b6c91e619f3aae94935
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128633775"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129991358"
 ---
 # <a name="azure-ad-ecma-connector-host-generic-sql-connector-configuration"></a>Azure AD ECMA Connector Host の汎用 SQL コネクタの構成
 次のドキュメントでは、汎用 SQL コネクタと ECMA コネクタ ホストを SQL Server と使用する方法を示す構成およびチュートリアル情報を示します。

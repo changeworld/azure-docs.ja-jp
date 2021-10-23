@@ -1,14 +1,14 @@
 ---
 title: Azure Lab Services と GNS3 を使用してネットワーク ラボを設定する | Microsoft Docs
 description: GNS3 でネットワークの授業を行うために Azure Lab Services を使用してラボを設定する方法について説明します。
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/19/2021
-ms.openlocfilehash: dec5dea13d5a89536a06da45fc57d33881a9b3ad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b4e4562ac472b728f5feff1828897d6bee162b75
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99499395"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130176816"
 ---
 # <a name="set-up-a-lab-to-teach-a-networking-class"></a>ネットワーク クラスの授業を行うためのラボを設定する 
 この記事では、学生が [GNS3](https://www.gns3.com/) ソフトウェアを使用して仮想および実際のネットワークのエミュレート、構成、テスト、トラブルシューティングを行うことができるように、クラスを設定する方法について説明します。 

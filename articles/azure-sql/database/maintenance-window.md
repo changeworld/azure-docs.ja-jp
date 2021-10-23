@@ -9,13 +9,13 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: mathoma
 ms.custom: references_regions
-ms.date: 10/05/2021
-ms.openlocfilehash: ca8ed4fa480bd394196f4ca5b37c52bcc06e41c1
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.date: 10/15/2021
+ms.openlocfilehash: 123ea592e46c270830bccef1dc06f9caa3e8fd6e
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129546173"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130071893"
 ---
 # <a name="maintenance-window-preview"></a>メンテナンス期間 (プレビュー)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -66,7 +66,6 @@ Azure では、SQL Database と SQL マネージド インスタンス リソー
 ### <a name="supported-service-level-objectives"></a>サポートされるサービス レベル目標
 
 既定以外のメンテナンス期間は、すべての SLO で選択できますが、**次の場合を除きます**。
-* ハイパースケール 
 * インスタンス プール
 * レガシ Gen4 vCore
 * Basic、S0、および S1 

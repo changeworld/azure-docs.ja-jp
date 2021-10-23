@@ -1,14 +1,14 @@
 ---
 title: トレーニング用のラボを使用する - Azure Lab Services
 description: この記事では、Azure DevTest Labs を使用してトレーニング シナリオ用のラボを Azure に作成する方法について説明します。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: f9eb3d44d470a978e676f6268cd693b283dd2703
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e99c3f9d8f27571a88fcdf6d62fa16a86d180a1c
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96433557"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130178616"
 ---
 # <a name="use-labs-for-trainings"></a>レーニング用のラボを使用する
 教育者 (教師、教授、トレーナー、または補助教員など) は、Azure Labs Services を使用してオンライン ラボをすばやく簡単に作成し、受講者用の事前構成された学習環境をプロビジョニングできます。 各受講者は、同じ単独の環境をトレーニング用に使用できます。 ポリシーを適用して、各受講者が必要としている場合にのみトレーニング環境を利用できるようにしたり、トレーニングで必要となる十分なリソース (仮想マシンなど) を含めたりすることができます。 

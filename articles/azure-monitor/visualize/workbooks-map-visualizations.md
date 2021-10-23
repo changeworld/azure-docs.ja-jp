@@ -2,18 +2,16 @@
 title: Azure Monitor ブックのマップの視覚化
 description: Azure Monitor ブックのマップの視覚化について説明します。
 services: azure-monitor
-author: lgayhardt
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/25/2020
-ms.author: lagayhar
-ms.openlocfilehash: dd9bafab982923785898b7f135e5c0408aa19a14
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a90723754440191bcc92c6e01341cecee7869520
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100601135"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130132343"
 ---
 # <a name="map-visualization"></a>マップの視覚エフェクト
 

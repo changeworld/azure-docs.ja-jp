@@ -1,15 +1,15 @@
 ---
-author: msmimart
+author: kengaderdus
 ms.service: active-directory-b2c
 ms.topic: include
 ms.date: 01/27/2021
-ms.author: mimart
-ms.openlocfilehash: a8bdcc8bc6ecf260d27caf1a1e58c11c89dcf8b5
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.author: kengaderdus
+ms.openlocfilehash: 7f2dc7a36565c035a8d96809ca3720abae680f23
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128558445"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130036962"
 ---
 ::: zone pivot="b2c-user-flow"
 

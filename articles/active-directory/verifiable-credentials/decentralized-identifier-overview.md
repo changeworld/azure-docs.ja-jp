@@ -3,7 +3,7 @@ title: Azure Active Directory Verifiable Credentials (プレビュー) の概要
 description: Azure Verifiable Credentials の概要。
 services: active-directory
 author: barclayn
-manager: daveba
+manager: karenh444
 editor: ''
 ms.service: active-directory
 ms.subservice: verifiable-credentials
@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 04/01/2021
 ms.author: barclayn
 ms.reviewer: ''
-ms.openlocfilehash: ffa5aae5e45583385d7849637665a053ef0b9a2f
-ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
+ms.openlocfilehash: e87105a05cde1a32a89d3e4fd404ad222245dce0
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129729579"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129996515"
 ---
 # <a name="introduction-to-azure-active-directory-verifiable-credentials-preview"></a>Azure Active Directory Verifiable Credentials (プレビュー) の概要
 

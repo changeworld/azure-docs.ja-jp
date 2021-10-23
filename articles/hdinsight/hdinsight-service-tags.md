@@ -4,13 +4,14 @@ description: NSG に IP アドレスを追加することなく、正常性と�
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 06/23/2021
-ms.openlocfilehash: 988e3249580408147b74409856bea1e45df4e966
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.date: 10/07/2021
+ms.author: guyhay
+ms.openlocfilehash: f85ad29b11e45f5e906bfbf50321c86d16670f89
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129857115"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130004353"
 ---
 # <a name="nsg-service-tags-for-azure-hdinsight"></a>Azure HDInsight の NSG サービス タグ
 
@@ -59,11 +60,14 @@ HDInsight クラスターでサービス タグを使い始める最も簡単な
 | オーストラリア | オーストラリア東部 | HDInsight.AustraliaEast |
 | &nbsp; | オーストラリア南東部 | HDInsight.AustraliaSoutheast |
 | &nbsp; | オーストラリア中部 | HDInsight.AustraliaCentral |
+| アジア | 東アジア | HDInsight.EastAsia |
+| &nbsp; | 東南アジア | HDInsight.SoutheastAsia |
 | ブラジル | ブラジル南部 | HDInsight.BrazilSouth |
 | &nbsp; | ブラジル南東部 | HDInsight.BrazilSoutheast |
 | 中国 | 中国東部 2 | HDInsight.ChinaEast2 |
 | &nbsp; | 中国北部 2 | HDInsight.ChinaNorth2 |
-| 日本 | 西日本 | HDInsight.JapanWest |
+| 日本 | 東日本 | HDInsight.JapanEast |
+| &nbsp; | 西日本 | HDInsight.JapanWest |
 | 韓国 | 韓国中部 | HDInsight.KoreaCentral |
 | &nbsp; | 韓国南部 | HDInsight.KoreaSouth |
 | インド | インド中部 | HDInsight.CentralIndia |
@@ -72,14 +76,19 @@ HDInsight クラスターでサービス タグを使い始める最も簡単な
 | 南アフリカ | 南アフリカ北部 | HDInsight.SouthAfricaNorth |
 | UAE | アラブ首長国連邦北部 | HDInsight.UAENorth |
 | &nbsp; | アラブ首長国連邦中部 | HDInsight.UAECentral |
+| ヨーロッパ | 北ヨーロッパ | HDInsight.NorthEurope |
+| &nbsp; | 西ヨーロッパ | HDInsight.WestEurope |
 | フランス | フランス中部| HDInsight.FranceCentral |
 | ドイツ | ドイツ中西部| HDInsight.GermanyWestCentral |
 | ノルウェー | ノルウェー東部 | HDInsight.NorwayEast |
+| スウェーデン | スウェーデン中部 | HDInsight.SwedenCentral |
+| &nbsp; | スウェーデン南部 | HDInsight.SwedenSouth |
 | スイス | スイス北部 | HDInsight.SwitzerlandNorth |
 | &nbsp; | スイス西部 | HDInsight.SwitzerlandWest |
 | 英国 | 英国南部 | HDInsight.UKSouth |
 | &nbsp; | 英国西部 | HDInsight.UKWest |
 | United States | 米国中北部 | HDInsight.NorthCentralUS |
+| &nbsp; | 米国中部 | HDInsight.CentralUS |
 | &nbsp; | 米国西部 2 | HDInsight.WestUS2 |
 | &nbsp; | 米国西部 3 | HDInsight.WestUS3 |
 | &nbsp; | 米国中西部 | HDInsight.WestCentralUS |

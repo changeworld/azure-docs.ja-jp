@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: cshoe
-ms.openlocfilehash: a8c7584b91b59aa7d807dd8b57f5a9ea3fb5a13d
-ms.sourcegitcommit: 1b19b8d303b3abe4d4d08bfde0fee441159771e1
+ms.openlocfilehash: f8ac0c985018d8d4c3858a9ff47ac2b188539161
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109754553"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130003460"
 ---
 # <a name="azure-functions-deployment-slots"></a>Azure Functions デプロイ スロット
 
@@ -224,10 +224,10 @@ Azure Functions デプロイ スロットには、次の制限があります。
 | OS/ホスティング プラン           | サポートのレベル     |
 | ------------------------- | -------------------- |
 | Windows Consumption       | 一般公開 |
-| Windows Premium           | 一般公開  |
+| Windows Premium           | 一般公開 |
 | Windows Dedicated         | 一般公開 |
-| Linux Consumption         | プレビュー          |
-| Linux Premium             | 一般公開  |
+| Linux Consumption         | 一般公開 |
+| Linux Premium             | 一般公開 |
 | Linux Dedicated           | 一般公開 |
 
 ## <a name="next-steps"></a>次のステップ

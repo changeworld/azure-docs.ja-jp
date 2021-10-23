@@ -7,13 +7,13 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.custom: devx-track-azurecli, devx-track-java
 ms.author: vramasubbu
-ms.date: 06/15/2021
-ms.openlocfilehash: a8dd727b0f0f999f1b0b8e6c9b6ed5977779f5ff
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.date: 10/12/2021
+ms.openlocfilehash: a1e4a03b5a9f2c173bb7a8a301fd20997b738005
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122271376"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130003006"
 ---
 # <a name="quickstart-provision-azure-spring-cloud-using-azure-cli"></a>クイックスタート: Azure CLI を使用して Azure Spring Cloud をプロビジョニングする
 

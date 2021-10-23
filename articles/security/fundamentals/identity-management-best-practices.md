@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: e7241944f6178b80ad684ff35684b5b5d3f53e94
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 0e3797e7f78b0938a50e2803f46962b4cacdcd33
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124784529"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129998164"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure の ID 管理とアクセス制御セキュリティのベスト プラクティス
 
@@ -145,7 +145,7 @@ ID セキュリティ スコアは、セキュリティ対策を客観的に測�
 複数のテナントがある場合、またはユーザーが[自分のパスワードをリセット](https://support.microsoft.com/account-billing/reset-your-work-or-school-password-using-security-info-23dde81f-08bb-4776-ba72-e6b72b9dda9e)できるようにする場合は、適切なセキュリティ ポリシーを使用して不適切な使用を防止することが重要です。
 
 **ベスト プラクティス**: ユーザーに対してセルフサービス パスワード リセット (SSPR) を設定します。  
-**詳細**: Azure AD の [セルフサービス パスワード リセット](../../active-directory-b2c/user-flow-self-service-password-reset.md)機能を使用します。
+**詳細**: Azure AD の [セルフサービス パスワード リセット](../../active-directory/authentication/tutorial-enable-sspr.md)機能を使用します。  
 
 **ベスト プラクティス**: SSPR が実際に使用されているかどうか、またはその使用方法を監視します。  
 **詳細**: Azure AD の [パスワード リセット登録アクティビティ レポート](../../active-directory/authentication/howto-sspr-reporting.md)を使用して、登録しているユーザーを監視します。 Azure AD で提供されるレポート機能によって、質問に対する答えをあらかじめ用意されたレポートから得ることができます。 適切にライセンスを付与されている場合は、カスタム クエリを作成することもできます。
