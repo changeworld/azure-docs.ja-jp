@@ -4,15 +4,15 @@ description: このチュートリアルでは、Azure portal または SQL Serv
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 08/31/2020
+ms.date: 10/12/2021
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: aea2196671a136145671b977a6d925849b635b73
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 21742dbc4fa41cca4dadf2871d7851a526807e48
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92018697"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129993361"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>チュートリアル:サーバー管理者とユーザー ロールを構成する
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 ms.custom: mvc
-ms.openlocfilehash: d911f5f0ee1670177e6de23b7afd647582253a8a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 6fd1592e1f0b7d5da44fac15e20b03b8f237ad0a
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121748778"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129997347"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-by-using-azure-maps"></a>チュートリアル:Azure Maps を使用して IoT 空間分析を実装する
 
@@ -116,7 +116,7 @@ IoT シナリオでは、空間と時間に生じる関連イベントをキャ�
 
 次に、[Postman アプリ](https://www.getpostman.com)を使用して、Azure Maps に[ジオフェンスをアップロードします](./geofence-geojson.md)。 ジオフェンスにより、レンタカーの承認された地理的領域が定義されます。 Azure 関数でジオフェンスを使用して、車がジオフェンス領域の外に移動したかどうかを判断します。
 
-Azure Maps Data Upload API を使用してジオフェンスをアップロードするには、次の手順に従います。 
+Azure Maps Data Upload API を使用してジオフェンスをアップロードするには、次の手順に従います。
 
 1. Postman アプリを開き、もう一度 **[新規]** を選択します。 **[新規作成]** ウィンドウで、 **[HTTP 要求]** を選択し、要求の名前を入力します。
 
@@ -128,7 +128,7 @@ Azure Maps Data Upload API を使用してジオフェンスをアップロー�
 
     URL パス内の `dataFormat` パラメーターに対する `geojson` 値は、アップロードするデータの形式を表します。
 
-3. 入力形式として **[本文]**  >  **[raw]\(未加工\)** を選択し、ドロップダウンリストから **[JSON]** を選択します。 [JSON データ ファイルを開き](https://raw.githubusercontent.com/Azure-Samples/iothub-to-azure-maps-geofencing/master/src/Data/geofence.json?token=AKD25BYJYKDJBJ55PT62N4C5LRNN4)、JSON を body セクションにコピーします。 **[送信]** を選択します。
+3. 入力形式として **[本文]**  >  **[raw]\(未加工\)** を選択し、ドロップダウンリストから **[JSON]** を選択します。 [JSON データ ファイルを開き](https://raw.githubusercontent.com/Azure-Samples/iothub-to-azure-maps-geofencing/master/src/Data/geofence.json?token=AKD25BYJYKDJBJ55PT62N4C5LRNN4)、JSON を body セクションにコピーします。 **[Send]** を選択します。
 
 4. **[Send]\(送信\)** を選択し、要求が処理されるまで待ちます。 要求が完了したら、応答の **[Headers]\(ヘッダー\)** タブに移動します。 **Operation-Location** キーの値である `status URL` をコピーします。
 
@@ -246,7 +246,6 @@ Azure 関数が実行されると、テレメトリ データを IoT ハブに�
     dotnet run
     ```
 
-
   ローカル ターミナルは次のようになります。
 
 :::image type="content" source="./media/tutorial-iot-hub-maps/terminal.png" alt-text="ターミナル出力のスクリーンショット。":::
@@ -283,7 +282,6 @@ Azure で IoT の認定を受けたデバイスの一覧を取得するには、
 ## <a name="next-steps"></a>次の手順
 
 device-to-cloud、およびその逆方向にテレメトリを送信する方法については、次を参照してください。
-
 
 > [!div class="nextstepaction"]
 > [デバイスから利用統計情報を送信する](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-csharp)

@@ -7,12 +7,12 @@ author: vikancha-MSFT
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: vikancha
-ms.openlocfilehash: 62108e46b748552fc22a8dc1e86ea78b3cc5e4e5
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: fbfed62d118b5321a96072f56d6c59b6bddee1a9
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124774160"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130068933"
 ---
 # <a name="ncast4_v3-series"></a>NCasT4_v3 シリーズ 
 
@@ -25,7 +25,7 @@ NCasT4_v3 シリーズ仮想マシンは、[Nvidia Tesla T4](https://www.nvidia.
 [ACU](acu.md):230-260<br>
 [Premium Storage](premium-storage-performance.md): サポートされています<br>
 [Premium Storage キャッシュ](premium-storage-performance.md): サポートされています<br>
-[Ultra Disk](disks-types.md#ultra-disk): サポートされています (可用性、使用状況、およびパフォーマンスについては、[詳細をご覧ください](https://techcommunity.microsoft.com/t5/azure-compute/ultra-disk-storage-for-hpc-and-gpu-vms/ba-p/2189312)) <br>
+[Ultra Disk](disks-types.md#ultra-disks): サポートされています (可用性、使用状況、およびパフォーマンスについては、[詳細をご覧ください](https://techcommunity.microsoft.com/t5/azure-compute/ultra-disk-storage-for-hpc-and-gpu-vms/ba-p/2189312)) <br>
 [ライブ マイグレーション](maintenance-and-updates.md): サポートされていません<br>
 [メモリ保持更新](maintenance-and-updates.md): サポートされていません<br>
 [VM 世代サポート](generation-2.md): 第 1 世代と第 2 世代<br>

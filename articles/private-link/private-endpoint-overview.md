@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/09/2021
 ms.author: allensu
-ms.openlocfilehash: 692bcd4900ae960928a66eaa63b02c6ddf12f2bf
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 485cd0d3d7ce2c64bfb0f37e07d785dee8808e3a
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129705286"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130062673"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Azure プライベート エンドポイントとは
 
@@ -98,6 +98,7 @@ ms.locfileid: "129705286"
 | **Private Link サービス** (独自のサービス) |  Microsoft.Network/privateLinkServices | empty |
 | **Power BI** | Microsoft.PowerBI/privateLinkServicesForPowerBI | Power BI |
 | **Azure Purview** | Microsoft.Purview/accounts | account |
+| **Azure Purview** | Microsoft.Purview/accounts | ポータル |
 | **Azure Backup** | Microsoft.RecoveryServices/vaults | コンテナー |
 | **Azure Relay** | Microsoft.Relay/namespaces | namespace |
 | **Microsoft Search** | Microsoft.Search/searchServices | search service |

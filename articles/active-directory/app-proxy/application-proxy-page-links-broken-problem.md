@@ -3,7 +3,7 @@ title: ページ上のリンクが Azure Active Directory アプリケーショ�
 description: Azure Active Directory と統合したアプリケーション プロキシ アプリケーション上の壊れたリンクに関する問題のトラブルシューティングを行う方法
 services: active-directory
 author: kenwith
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-proxy
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: asteen
-ms.openlocfilehash: 5594629f6695631aeb015d732b15c433c55fce4e
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 905f25d449c8de5046a83c4f66139fdd23227b2b
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108186848"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129988983"
 ---
 # <a name="links-on-the-page-dont-work-for-an-application-proxy-application"></a>ページ上のリンクがアプリケーション プロキシ アプリケーションに対して機能しない
 

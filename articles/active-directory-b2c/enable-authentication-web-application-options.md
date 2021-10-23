@@ -2,21 +2,21 @@
 title: Azure Active Directory B2C を使用して Web アプリ認証オプションを有効にする
 description: この記事では、Web アプリの認証オプションを有効にするいくつかの方法について説明します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 08/12/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: 50cdb5f171614c138427b358f2418b8b81751457
-ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+ms.openlocfilehash: 097422d3d3156f42b55374593aaced8514ae2d09
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123220334"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130040856"
 ---
 # <a name="enable-authentication-options-in-a-web-app-by-using-azure-ad-b2c"></a>Azure AD B2C を使用して Web アプリの認証オプションを有効にする 
 
@@ -367,7 +367,7 @@ services.AddAuthorization(options =>
 
 ASP.NET Core での承認を制御するには、[AuthorizeAttribute](/aspnet/core/security/authorization/simple) とそのさまざまなパラメーターを使用します。 最も基本的な形式では、コントローラー、アクション、または Razor ページに `Authorize` 属性を適用すると、そのコンポーネントの認証済みユーザーにアクセスが制限されます。
 
-コントローラーにポリシーを適用するには、`Authorize` 属性とポリシー名を使用します。 次のコードでは、`Claims` アクションへのアクセスが、`EmployeeOnly` ポリシーによって許可されたユーザーに制限されます。
+コントローラーにポリシーを適用するには、`Authorize` 属性とポリシー名を使用します。 次のコードでは、`Claims` アクションへのアクセスが、`EmployeeOnly` ポリシーによって認可されたユーザーに制限されます。
 
 ```csharp
 [Authorize(Policy = "EmployeeOnly")]

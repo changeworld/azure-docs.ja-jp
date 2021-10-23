@@ -6,12 +6,12 @@ ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/25/2021
-ms.openlocfilehash: 26858ca04af7a96896229c44757fa963ae362f1c
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: de2ef5b76e67ae19eca6bbb24c9d65dfc7b602b6
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110534174"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129987311"
 ---
 # <a name="azure-cosmos-db-serverless"></a>Azure Cosmos DB サーバーレス
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -46,7 +46,6 @@ Azure Cosmos DB サーバーレスは、アイドル時間が長く、**断続�
 サーバーレス アカウントで作成されたコンテナーはすべて、サーバーレス コンテナーです。 サーバーレス コンテナーでは、プロビジョニングされたスループット モードで作成されたコンテナーと同じ機能が公開されているため、まったく同じ方法でデータの読み取り、書き込み、クエリを実行できます。 ただし、サーバーレス アカウントとコンテナーには固有の特性もあります。
 
 - サーバーレス アカウントは、1 つの Azure リージョンでのみ実行できます。 サーバーレス アカウントを作成した後で、そのアカウントに Azure リージョンを追加することはできません。
-- サーバーレス アカウントで [Synapse Link 機能](synapse-link.md)を有効にすることはできません。
 - サーバーレス コンテナーでは、スループットのプロビジョニングは必要ないため、次の記述が該当します。
     - サーバーレス コンテナーを作成するときにスループットを渡すことはできず、これを行うとエラーが返されます。
     - サーバーレス コンテナーでスループットを読み取りまたは更新することはできず、これを行うとエラーが返されます。

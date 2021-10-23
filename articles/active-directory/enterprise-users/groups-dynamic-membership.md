@@ -4,7 +4,7 @@ description: グループを自動的に設定するメンバーシップ ルー
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: daveba
+manager: KarenH444
 ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af682b21c60c7746595383d2488e3ad064eda4b5
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: 088273ff23b28bd54a4a14ab9485a0e28ae42cef
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129058306"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129986551"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory の動的グループ メンバーシップ ルール
 

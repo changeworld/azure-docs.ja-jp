@@ -8,13 +8,13 @@ ms.topic: reference
 ms.workload: identity
 ms.author: kenwith
 author: kenwith
-manager: mtillman
-ms.openlocfilehash: 9e6d184b98e8b7eea22d231514fc2e419983442b
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+manager: karenh444
+ms.openlocfilehash: cc0404f14a0c7014bb8bbec6e618480905d1f81e
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129534025"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129987748"
 ---
 # <a name="azure-active-directory-application-proxy-whats-new"></a>Azure Active Directory アプリケーション プロキシ: 新機能
 

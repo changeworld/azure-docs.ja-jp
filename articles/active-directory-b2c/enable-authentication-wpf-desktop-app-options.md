@@ -2,21 +2,21 @@
 title: Azure Active Directory B2C を使用して WPF デスクトップ アプリケーションのオプションを有効にする
 description: いくつかの方法を使用して、WPF デスクトップ アプリケーションのオプションの使用を有効にします。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 08/04/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: bbb0b9d29b2551a6c733d0df8b62505efe68514f
-ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+ms.openlocfilehash: 16b625f739df35604b649b9d7391d969669af6be
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123220244"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130040765"
 ---
 # <a name="enable-authentication-options-in-a-wpf-desktop-app-by-using-azure-ad-b2c"></a>Azure AD B2C を使用して WPF デスクトップ アプリの認証オプションを有効にする 
 

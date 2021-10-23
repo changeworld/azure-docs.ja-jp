@@ -1,14 +1,14 @@
 ---
 title: Azure Lab Services で共有イメージ ギャラリーを使用する | Microsoft Docs
 description: 共有イメージ ギャラリーを使用するようにラボ アカウントを構成して、ユーザーが他のユーザーとイメージを共有したり、他のユーザーがイメージを使用してラボでテンプレート VM を作成したりできるようにする方法について説明します。
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/11/2020
-ms.openlocfilehash: 8a0cd273d2444281fd2c43823aaa822b5e476ed0
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: cadb95d4946eef02c98a322e61489588bd8ea767
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123450550"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130179946"
 ---
 # <a name="use-a-shared-image-gallery-in-azure-lab-services"></a>Azure Lab Services で共有イメージ ギャラリーを使用する
 

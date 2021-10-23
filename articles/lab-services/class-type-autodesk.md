@@ -2,15 +2,15 @@
 title: Azure Lab Services を使用して Autodesk でラボを設定する
 description: Autodesk でエンジニアリング クラスを教えるためのラボの設定方法について説明します。
 author: nicolela
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/21/2021
 ms.author: nicolela
-ms.openlocfilehash: 6cc983907349ca8eab0731b18c18d526f2b75ba5
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: 2c9abda8f42023ebc54de77caadbe2860afe137f
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108281117"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130177063"
 ---
 # <a name="set-up-labs-for-autodesk"></a>Autodesk のラボを設定する
 
@@ -57,7 +57,7 @@ Autodesk によって生成されたライセンス ファイルには、ライ�
 詳細については、[共有リソースとしてのライセンス サーバーの設定](./how-to-create-a-lab-with-shared-resource.md)に関する記事を参照してください。
 
 > [!WARNING]
-> ラボを作成する **前** に、ライセンス サーバーの仮想ネットワークにラボ アカウントの[仮想ネットワークをピアリングする](./how-to-connect-peer-virtual-network.md)ことを忘れないでください。
+> ラボを作成する **前** に、ライセンス サーバーの仮想ネットワークにラボ アカウントの [仮想ネットワークをピアリングする](./how-to-connect-peer-virtual-network.md)ことを忘れないでください。
 
 ### <a name="template-machine"></a>テンプレート マシン
 このセクションの手順では、テンプレート VM を設定する方法を示します。

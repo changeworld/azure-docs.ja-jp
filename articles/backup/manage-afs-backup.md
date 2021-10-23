@@ -2,13 +2,13 @@
 title: Azure ファイル共有のバックアップを管理する
 description: この記事では、Azure Backup によってバックアップされた Azure ファイル共有を管理および監視するための一般的なタスクについて説明します。
 ms.topic: conceptual
-ms.date: 01/07/2020
-ms.openlocfilehash: 973c28b2c8caac4d2acda9e2cd976f9ceb8c387c
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.date: 10/08/2021
+ms.openlocfilehash: e955ed1cf01c055ea72218076799d7da31d096b7
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129534049"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129714316"
 ---
 # <a name="manage-azure-file-share-backups"></a>Azure ファイル共有のバックアップを管理する
 
@@ -30,31 +30,65 @@ ms.locfileid: "129534049"
 
 ## <a name="monitor-using-azure-backup-reports"></a>Azure Backup レポートを使用した監視
 
-Azure Backup には、[Azure Monitor ログ](../azure-monitor/logs/log-analytics-tutorial.md)と [Azure ブック](../azure-monitor/visualize/workbooks-overview.md)を使用するレポート ソリューションが用意されています。これらのリソースは、バックアップに関する豊富な分析情報の取得に役立ちます。 これらのレポートを利用して、Azure Files のバックアップ項目、項目レベルのジョブ、アクティブ ポリシーの詳細を可視化できます。 バックアップ レポートで使用できるメール レポート機能を使用すると、自動化されたタスクを作成して、メールで定期的なレポートを受信できます。Azure Backup レポートの構成と表示方法を[ご覧ください](/azure/backup/configure-reports#get-started)。
+Azure Backup では、[Azure Monitor ログ](../azure-monitor/logs/log-analytics-tutorial.md)と [Azure ブック](../azure-monitor/visualize/workbooks-overview.md)を使用するレポート ソリューションが提供されます。 これらのリソースを利用すると、バックアップに関するさまざまな分析情報を得られます。 これらのレポートを利用して、Azure Files のバックアップ項目、項目レベルのジョブ、アクティブ ポリシーの詳細を可視化できます。 バックアップ レポートで使用できるメール レポート機能を使用すると、自動化されたタスクを作成して、メールで定期的なレポートを受信できます。Azure Backup レポートの構成と表示方法を[ご覧ください](/azure/backup/configure-reports#get-started)。
 
 ## <a name="create-a-new-policy"></a>新しいポリシーの作成
 
 Recovery Services コンテナーの **[バックアップ ポリシー]** セクションから、Azure ファイル共有をバックアップするための新しいポリシーを作成できます。 ファイル共有のバックアップを構成した際に作成されたすべてのポリシーは、**Azure ファイル共有** という **ポリシーの種類** で表示されます。
 
+新しいバックアップ ポリシーを作成するには、次の手順を実行します。
+
+1. Recovery Services コンテナーの **[バックアップ ポリシー]** ペインで、 **[+ 追加]** を選択します。
+
+   :::image type="content" source="./media/manage-afs-backup/new-backup-policy.png" alt-text="新しいバックアップ ポリシーの作成を開始するオプションを示すスクリーンショット。":::
+
+1. **[追加]** ペインで、 **[ポリシーの種類]** として **[Azure ファイル共有]** を選択します。
+
+   :::image type="content" source="./media/manage-afs-backup/define-policy-type.png" alt-text="ポリシーの種類として Azure ファイル共有を選択することを示すスクリーンショット。":::
+
+1. **Azure ファイル共有** の **[バックアップ ポリシー]** ペインが開くので、ポリシー名を指定します。
+
+1. **[バックアップ スケジュール]** で、適切なバックアップの頻度を 選択します ( **[毎日]** または **[毎時]** )。
+
+   :::image type="content" source="./media/manage-afs-backup/backup-frequency-types.png" alt-text="バックアップの頻度の種類を示すスクリーンショット。":::
+
+   - **毎日**: 1 日に 1 回のバックアップをトリガーします。 毎日の頻度の場合は、次の適切な値を選択します。
+
+     - **時刻**: バックアップ ジョブをトリガーする必要がある時刻のタイムスタンプ。
+     - **タイム ゾーン**: バックアップ ジョブに対応するタイムゾーン。
+
+   - **毎時**: 1 日に複数回のバックアップをトリガーします。 毎時の頻度の場合は、次の適切な値を選択します。
+   
+     - **スケジュール**: 連続するバックアップの間の時間間隔 (時間単位)。
+     - **開始時刻**: その日の最初のバックアップ ジョブをトリガーする必要がある時刻。
+     - **期間**: バックアップ期間 (時間単位) を表します。つまり、選択したスケジュールに従ってバックアップ ジョブをトリガーする必要がある期間です。
+     - **タイム ゾーン**: バックアップ ジョブに対応するタイムゾーン。
+     
+     たとえば、RPO (回復ポイントの目標) の要件が 4 時間であり、勤務時間が午前 9 時から午後 9 時であるとします。 これらの要件を満たすには、バックアップ スケジュールの構成は次のようになります。
+    
+     - スケジュール: 4 時間ごと
+     - 開始時刻: 午前 9 時 
+     - 期間: 12 時間 
+     
+     :::image type="content" source="./media/manage-afs-backup/hourly-backup-frequency-values-scenario.png" alt-text="毎時のバックアップ頻度値の例を示すスクリーンショット。":::
+
+     選択した内容に基づいて、バックアップ ジョブの詳細 (バックアップ ジョブがトリガーされる時刻のタイムスタンプ) がバックアップ ポリシー ブレードに表示されます。
+
+1. **[保持期間]** には、バックアップの適切な保持期間値 (毎日、毎週、毎月、毎年というタグが付けられています) を指定します。
+
+1. ポリシーのすべての属性を定義したら、 **[作成]** をクリックします。
+  
+### <a name="view-policy"></a>ポリシーの表示
+
 既存のバックアップ ポリシーを表示するには:
 
 1. ファイル共有のバックアップを構成するために使用した Recovery Services コンテナーを開きます。 [Recovery Services コンテナー] メニューで、 **[管理]** セクションから **[バックアップ ポリシー]** を選択します。 コンテナーに構成されているすべてのバックアップ ポリシーが表示されます。
 
-   ![すべてのバックアップ ポリシー](./media/manage-afs-backup/all-backup-policies.png)
+   :::image type="content" source="./media/manage-afs-backup/all-backup-policies.png" alt-text="すべてのバックアップ ポリシーを示すスクリーンショット。":::
 
 1. **Azure ファイル共有** に固有のポリシーを表示するには、右上のドロップダウンから **[Azure ファイル共有]** を選択します。
 
-   ![Azure ファイル共有を選択する](./media/manage-afs-backup/azure-file-share.png)
-
-新しいバックアップ ポリシーを作成するには:
-
-1. **[バックアップ ポリシー]** ペインで、 **[+ 追加]** を選択します。
-
-   ![新しいバックアップ ポリシー](./media/manage-afs-backup/new-backup-policy.png)
-
-1. **[追加]** ペインで、 **[ポリシーの種類]** として **[Azure ファイル共有]** を選択します。 **Azure ファイル共有** の **[バックアップ ポリシー]** ペインが開きます。 復旧ポイントのポリシー名、バックアップ頻度、保持期間を指定します。 ポリシーを定義したら、 **[OK]** を選択します。
-
-   ![バックアップ ポリシーの定義](./media/manage-afs-backup/define-backup-policy.png)
+   :::image type="content" source="./media/manage-afs-backup/azure-file-share.png" alt-text="Azure ファイル共有を選択するプロセスを示すスクリーンショット。":::
 
 ## <a name="modify-policy"></a>ポリシーを変更する
 

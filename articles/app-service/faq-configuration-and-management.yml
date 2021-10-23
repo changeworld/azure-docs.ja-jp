@@ -11,12 +11,12 @@ metadata:
   ms.date: 10/30/2018
   ms.author: genli
   ms.custom: devx-track-azurepowershell
-  ms.openlocfilehash: 6f8d30011a19c6d8210d9c63f4378a66237fe024
-  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+  ms.openlocfilehash: 825840dfe237d58f281db5e26b6090c153707195
+  ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/17/2021
-  ms.locfileid: "122253354"
+  ms.lasthandoff: 10/14/2021
+  ms.locfileid: "129992838"
 title: Azure の Web Apps の構成と管理に関する FAQ
 summary: >
   この記事では、[Azure App Service の Web Apps 機能](https://azure.microsoft.com/services/app-service/web/)の構成および管理の問題に関するよく寄せられる質問 (FAQ)への回答を掲載しています。
@@ -245,13 +245,6 @@ sections:
   - question: >
       静的ルーティング (ポリシー ベース) ゲートウェイを持つ仮想ネットワークに App Service Web アプリを接続するにはどうすればよいですか?
     answer: "現時点では、静的ルーティング (ポリシー ベース) ゲートウェイを持つ仮想ネットワークへの App Service Web アプリの接続はサポートしていません。 ターゲットの仮想ネットワークが既に存在している場合は、そのネットワークで動的ルーティング ゲートウェイによるポイント対サイト VPN が有効になっていないと、アプリに接続できません。 ゲートウェイが静的ルーティングに設定されている場合は、ポイント対サイト VPN を有効にすることはできません。 \n\n詳細については、「[アプリを Azure 仮想ネットワークに統合する](web-sites-integrate-with-vnet.md)」を参照してください。\n"
-  - question: >
-      App Service Environment で、使用できるワーカーが 2 つある場合でも、App Service プランを 1 つしか作成できないのはなぜですか?
-    answer: >
-      フォールト トレランスを提供するために、App Service Environment では、ワーカー プールごとに追加のコンピューティング リソースが少なくとも 1 つ必要です。 追加のコンピューティング リソースには、ワークロードを割り当てることはできません。
-
-
-      詳細については、「[App Service Environment の作成方法](environment/app-service-web-how-to-create-an-app-service-environment.md)」を参照してください。
   - question: >
       App Service Environment を作成するときにタイムアウトを表示されるのはなぜですか?
     answer: >

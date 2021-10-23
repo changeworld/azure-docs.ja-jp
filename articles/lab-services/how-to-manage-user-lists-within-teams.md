@@ -1,14 +1,14 @@
 ---
 title: Teams からの Azure Lab Services ユーザー リストを管理する
 description: Teams からの Azure Lab Services のユーザー リストを管理する方法について説明します。
-ms.topic: article
+ms.topic: how-to
 ms.date: 10/07/2020
-ms.openlocfilehash: fa8f96a84be5c4c91e0153216e15963ec0e3d6f8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 598edd21943364d25f59848236f838cb10fa3ce5
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91946523"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130180193"
 ---
 # <a name="manage-lab-services-user-lists-from-teams"></a>Teams からの Lab Services ユーザー リストを管理する
 

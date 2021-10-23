@@ -6,12 +6,12 @@ author: shseth
 ms.author: shseth
 ms.date: 7/12/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 01c2f7b49b051e9166ad1ceef99fc816e611f579
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.openlocfilehash: d3f2fa2457ef52fc02e2fd5b7d183918e2e9e09c
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122271970"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130177989"
 ---
 # <a name="migrate-from-log-analytics-agents"></a>Log Analytics エージェントからの移行
 この記事では、新しい Azure Monitor エージェント (AMA) およびデータ収集ルール (DCR) に移行するタイミングと方法について、大まかなガイダンスを提供します。 この記事は、新しい移行ツールが利用可能になったときに更新されます。
@@ -38,10 +38,10 @@ ms.locfileid: "122271970"
     - Log Analytics ワークスペースなどの移行先
 1. 前の構成を使用して、[新しいデータ収集ルールを作成](/rest/api/monitor/datacollectionrules/create#examples)します。 ベスト プラクティスとして、Windows と Linux ソースに対して個別のデータ収集ルールを作成することをお勧めします。 または、データ収集のニーズが異なるチームごとに、個別のデータ収集ルールを作成することもできます。
 1. 移行先リソースで[システム割り当てマネージド ID を有効にします](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md#system-assigned-managed-identity)。
-1. Azure Monitor エージェント拡張機能をインストールします。 [組み込みのポリシー イニシアチブ](../deploy-scale.md#built-in-policy-initiatives)を使用して、すべてのターゲット リソースにデータ収集ルールの関連付けをデプロイします。 前のデータ収集ルールを入力パラメーターとして指定します。 
+2. Azure Monitor エージェント拡張機能をインストールします。 [組み込みのポリシー イニシアチブ](azure-monitor-agent-install.md#install-with-azure-policy)を使用して、すべてのターゲット リソースにデータ収集ルールの関連付けをデプロイします。 前のデータ収集ルールを入力パラメーターとして指定します。 
 1. 検証データは、Azure Monitor エージェントを使用して期待どおりに送られます。 **ハートビート** テーブルで、新しいエージェント バージョンの値を確認します。 既存の Log Analytics エージェントを通過するデータと一致していることを確認します。
-1. ダッシュボード、アラート、runbook worker など、すべてのダウンストリームの依存関係を検証します。 ブックはすべて、新しいエージェントからのデータを使用して引き続き機能します。
-1. リソースから [Log Analytics エージェントをアンインストール](./agent-manage.md#uninstall-agent)します。 System Center Operations Manager シナリオや、Azure Monitor エージェントでまだ使用できないその他のソリューションに対して使用する必要がある場合は、アンインストールしないでください。
-1. 以前に Log Analytics エージェントによって使用されていた構成ファイル、ワークスペース キー、または証明書を消去します。
+2. ダッシュボード、アラート、runbook worker など、すべてのダウンストリームの依存関係を検証します。 ブックはすべて、新しいエージェントからのデータを使用して引き続き機能します。
+3. リソースから [Log Analytics エージェントをアンインストール](./agent-manage.md#uninstall-agent)します。 System Center Operations Manager シナリオや、Azure Monitor エージェントでまだ使用できないその他のソリューションに対して使用する必要がある場合は、アンインストールしないでください。
+4. 以前に Log Analytics エージェントによって使用されていた構成ファイル、ワークスペース キー、または証明書を消去します。
 
 

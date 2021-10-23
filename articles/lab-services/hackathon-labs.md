@@ -1,14 +1,14 @@
 ---
 title: ハッカソンに Azure Lab Services を使用する
 description: この記事では、ハッカソンの実行に使用できるラボを作成するために Azure Lab Services を使用する方法について説明します。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: d4648def48557d70547ef7d41d6c3e516671849e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 00a00228231152a1ac0817ea1562f84635d7090e
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102452732"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130181124"
 ---
 # <a name="use-azure-lab-services-for-your-next-hackathon"></a>次回のハッカソンに Azure Lab Services を使用する
 Azure Lab Services は、ハッカソン向けの仮想マシン (VM) の新しいラボをすばやく作成できるように、軽量で使いやすく設計されています。  次のチェックリストを使用して、ハッカソンができるだけ円滑に進むようにします。 このチェックリストは、ハッカソン ラボの作成と管理を担当する IT 部門または教員によって作成される必要があります。 

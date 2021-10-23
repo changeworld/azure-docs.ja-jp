@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: tutorial
 ms.date: 09/07/2021
 ms.author: cherylmc
-ms.openlocfilehash: 0aa2efb84c207592131d3b7c3060aebc22cc49f6
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 0bac9ef5d9a636fb4772352c93de537d21483139
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128668901"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130179307"
 ---
 # <a name="tutorial-configure-bastion-and-connect-to-a-windows-vm"></a>チュートリアル:Bastion を構成し、Windows VM に接続する
 
@@ -82,7 +82,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 1. [Bastion] ページで、 **[+ 作成]** をクリックして **[Bastion の作成]** ページを開きます。
 1. **[Bastion の作成]** ページで、新しい Bastion リソースを構成します。
 
-   :::image type="content" source="./media/tutorial-create-host-portal/review-create.png" alt-text="[Bastion の作成] ポータル ページのスクリーンショット。" lightbox="./media/tutorial-create-host-portal/create-expand.png":::
+   :::image type="content" source="./media/tutorial-create-host-portal/review-create.png" alt-text="[Bastion の作成] ポータル ページのスクリーンショット。" lightbox="./media/tutorial-create-host-portal/create.png":::
 
 ### <a name="project-details"></a>プロジェクトの詳細
 

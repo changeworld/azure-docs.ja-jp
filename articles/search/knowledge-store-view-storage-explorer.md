@@ -7,19 +7,17 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/10/2021
-ms.openlocfilehash: d87ec3fa05e1740b5cba7b4230894f1df822ac1f
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 10/15/2021
+ms.openlocfilehash: 8be37bfc85b56af67784fb1abb457da95b9565fc
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124784641"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130067043"
 ---
 # <a name="view-a-knowledge-store-with-storage-explorer"></a>Storage Explorer でナレッジ ストアを表示する
 
 [ナレッジ ストア](knowledge-store-concept-intro.md)は、Azure Cognitive Search スキルセットによって作成され、Azure Storage に保存されるコンテンツです。 この記事では、Azure portal の Storage Explorer を使用してナレッジ ストアの内容を表示する方法を説明します。
-
-## <a name="prerequisites"></a>前提条件
 
 [Azure portal](knowledge-store-create-portal.md) 内または [REST API](knowledge-store-create-rest.md) を使用して作成された既存のナレッジ ストアから始めます。 ポータルと REST のどちらのチュートリアルでも、Azure Table Storage にナレッジ ストアが作成されます。
 
@@ -29,7 +27,7 @@ ms.locfileid: "124784641"
 
 1. ストレージ アカウントの左側のナビゲーション ウィンドウで、 **[Storage Explorer]** を選択します。
 
-## <a name="edit-and-query-tables"></a>テーブルを編集してクエリを実行する
+## <a name="view-edit-and-query-tables"></a>テーブルの表示、編集、クエリを行う
 
 1. **[テーブル]** の一覧を展開し、ナレッジ ストアを作成したときに作成された Azure テーブル プロジェクションの一覧を表示します。 クイックスタートまたは REST の記事を使用してナレッジ ストアを作成した場合、テーブルにはヨーロッパのホテルの顧客レビューに関連するコンテンツが含まれます。
 

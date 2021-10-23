@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/22/2021
-ms.openlocfilehash: 8a6a2b7acc4f627bb871520ee6a82be920d1135e
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 8728371fab634c9673e264e9cb9fa99c54931e01
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129215911"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129710343"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Azure Monitor エージェントの概要
 

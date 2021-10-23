@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 12/04/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: d4cb278fbfd6feb3fb2be0e2a113092ff24644cc
-ms.sourcegitcommit: ee5d9cdaf691f578f2e390101bf5350859d85c67
+ms.openlocfilehash: 328d99d2e690004f87d7224253e81ed6815a2e75
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129740267"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129984047"
 ---
 # <a name="application-insights-java-in-process-agent-in-azure-spring-cloud"></a>Azure Spring Cloud での Application Insights Java In-Process Agent
 
@@ -177,7 +177,7 @@ resource "azurerm_spring_cloud_service" "example" {
 Azure CLI コマンドを使用して Application Insights を管理できます。 次のコマンドでは、 *\<placeholder>* テキストを説明されている値に置き換える必要があります。 ここで、 *\<service-name>* プレースホルダーは Azure Spring Cloud インスタンスの名前を表します。
 
 Azure Spring Cloud インスタンスを作成するときに Application Insights を構成するには、次のコマンドを使用します。 `app-insights` 引数には、Application Insights の名前またはリソース ID を指定できます。
-   
+
 ```azurecli
 az spring-cloud create \
     --resource-group <resource-group-name> \
@@ -187,7 +187,7 @@ az spring-cloud create \
 ```
 
 次の例に示すように Application Insights 接続文字列 (推奨) またはインストルメンテーション キーを使用することもできます。
-   
+
 ```azurecli
 az spring-cloud create \
     --resource-group <resource-group-name> \
@@ -289,9 +289,14 @@ Azure Spring Cloud の名前 `App Instance` は、次のシナリオで変更ま
   * 時間範囲が過去 24 時間以内の [アプリケーション マップ] の 3 つのインスタンスと、[失敗]、[パフォーマンス]、[メトリック]。
   * 時間範囲が過去 1 時間以内の [アプリケーション マップ] の 2 つのインスタンスと、[失敗]、[パフォーマンス]、[メトリック]。
   * [ライブ メトリック] の 2 つのインスタンス。
-
 ## <a name="see-also"></a>関連項目
 
 * [Azure Spring Cloud で分散トレースを使用する](./how-to-distributed-tracing.md)
 * [ログとメトリックの分析](diagnostic-services.md)
 * [リアルタイムでログをストリームする](./how-to-log-streaming.md)
+* [アプリケーション マップ](/azure/azure-monitor/app/app-map)
+* [ライブ メトリック](/azure/azure-monitor/app/live-stream)
+* [パフォーマンス](/azure/azure-monitor/app/tutorial-performance)
+* [エラー](/azure/azure-monitor/app/tutorial-runtime-exceptions)
+* [メトリック](/azure/azure-monitor/essentials/tutorial-metrics-explorer)
+* [ログ](/azure/azure-monitor/logs/data-platform-logs)

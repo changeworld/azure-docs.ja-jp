@@ -3,20 +3,20 @@ title: PowerShell サンプル - Azure Active Directory アプリケーション
 description: アプリケーション ID (AppId)、名前 (DisplayName)、外部 URL (ExternalUrl)、内部 URL (InternalUrl)、認証の種類 (ExternalAuthenticationType) と共にすべての Azure Active Directory (Azure AD) アプリケーション プロキシ アプリケーションを一覧表示する PowerShell の例。
 services: active-directory
 author: kenwith
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-proxy
 ms.workload: identity
 ms.topic: sample
 ms.date: 04/29/2021
 ms.author: kenwith
-ms.reviewer: japere
-ms.openlocfilehash: 1ac97dbe7886578a0696219a94bfb2657b501e0a
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.reviewer: ashishj
+ms.openlocfilehash: 16fd5ac821f09363249f904b14ac836b063e1b25
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108293733"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129988128"
 ---
 # <a name="get-all-application-proxy-apps-and-list-extended-information"></a>すべてのアプリケーション プロキシ アプリを取得し、拡張情報を一覧表示します
 

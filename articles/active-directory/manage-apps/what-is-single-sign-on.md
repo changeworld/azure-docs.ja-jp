@@ -12,13 +12,13 @@ ms.topic: overview
 ms.date: 09/22/2021
 ms.author: davidmu
 ms.reviewer: ergreenl
-ms.custom: contperf-fy21q1
-ms.openlocfilehash: bb4a38d46a241c902d0718104d9a4030bf84607f
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.custom: contperf-fy21q1, contperf-fy22q2
+ms.openlocfilehash: 478998d69a12c7b2a708bc3fe0a2b1bd5b9a88be
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129858755"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129997461"
 ---
 # <a name="what-is-single-sign-on-in-azure-active-directory"></a>Azure Active Directory でのシングル サインオンとは
 

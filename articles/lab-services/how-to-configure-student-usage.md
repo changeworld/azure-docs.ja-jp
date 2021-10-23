@@ -1,14 +1,14 @@
 ---
 title: Azure Lab Services のラボの使用設定を構成する
 description: ラボの学生数の構成、学生のラボへの登録、学生が VM を使用できる時間数の制御などを行う方法について説明します。
-ms.topic: article
+ms.topic: how-to
 ms.date: 12/01/2020
-ms.openlocfilehash: f7c0fb7b0228ee17705af2dfd70279f6fc7bda3c
-ms.sourcegitcommit: a9f131fb59ac8dc2f7b5774de7aae9279d960d74
+ms.openlocfilehash: 6abdbe8ebd771c3d8d1c704cc97222dddd0ace0b
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110190718"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130180801"
 ---
 # <a name="add-and-manage-lab-users"></a>ラボ ユーザーを追加および管理する
 

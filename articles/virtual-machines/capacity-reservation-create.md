@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/09/2021
 ms.reviewer: cynthn, jushiman
 ms.custom: template-how-to
-ms.openlocfilehash: 360a634104b7735a90cbae4b41eae9723b723e2e
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: 51139277b0c8da4fb3dfdd61bf826305657280b5
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129532622"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130065016"
 ---
 # <a name="create-a-capacity-reservation-preview"></a>容量予約を作成する (プレビュー)
 
@@ -119,6 +119,39 @@ ms.locfileid: "129532622"
 1. **[作成]**
 
 
+### <a name="cli"></a>[CLI](#tab/cli1)
+
+1. 容量予約を作成する前に、`az group create` を使用してリソース グループを作成します。 次の例では、リソース グループ *myResourceGroup* を米国東部の場所に作成しています。
+
+    ```azurecli-interactive
+    az group create 
+    -l eastus 
+    -g myResourceGroup
+    ```
+
+1. `az capacity reservation group create` を使用して容量予約グループを作成します。 次の例では、米国東部の場所の 3 つの可用性ゾーンすべてにグループ *myCapacityReservationGroup* を作成しています。
+
+    ```azurecli-interactive
+    az capacity reservation group create 
+    -n myCapacityReservationGroup 
+    -l eastus 
+    -g myResourceGroup 
+    --zones 1 2 3 
+    ```
+
+1. 容量予約グループを作成したら、`az capacity reservation create` を使用して新しい容量予約を作成します。 次の例では、米国東部のゾーン 1 に Standard_D2s_v3 VM サイズの 5 つの *myCapacityReservation* を作成します。
+
+    ```azurecli-interactive
+    az capacity reservation create 
+    -c myCapacityReservationGroup 
+    -n myCapacityReservation 
+    -l eastus 
+    -g myResourceGroup 
+    --sku Standard_D2s_v3 
+    --capacity 5 
+    --zone 1
+    ```
+
 ### <a name="powershell"></a>[PowerShell](#tab/powershell1)
 
 1. 容量予約を作成する前に、`New-AzResourceGroup` を使用してリソース グループを作成します。 次の例では、リソース グループ *myResourceGroup* を米国東部の場所に作成しています。
@@ -203,6 +236,15 @@ https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{reso
 } 
 ```
 
+### <a name="cli"></a>[CLI](#tab/cli2)
+
+ ```azurecli-interactive
+ az capacity reservation show 
+ -c myCapacityReservationGroup 
+ -n myCapacityReservation 
+ -g myResourceGroup
+ ```
+
 ### <a name="powershell"></a>[PowerShell](#tab/powershell2)
 
 容量予約を確認します。
@@ -237,7 +279,6 @@ $CapRes.sku
 1. 左側の **[概要]** を選択します
 1. **[予約]** を選択します
 1. このビューでは、グループ内のすべての予約と、予約された VM サイズおよび数量を確認できます
-
 --- 
 <!-- The three dashes above show that your section of tabbed content is complete. Don't remove them :) -->
 

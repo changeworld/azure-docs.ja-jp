@@ -7,16 +7,16 @@ ms.subservice: high-availability
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: how-to
-author: BustosMSFT
-ms.author: robustos
+author: emlisa
+ms.author: emlisa
 ms.reviewer: mathoma
 ms.date: 12/18/2018
-ms.openlocfilehash: d6a22f1bab9b24412fe9109fff955d3eeeb0749c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 92a4dd3e90fca7bffe8ede3c9cf119e5dcabc4ca
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121747657"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130165671"
 ---
 # <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>Azure SQL Database のセキュリティを geo リストアやフェールオーバー用に構成し、管理する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

@@ -3,7 +3,7 @@ title: ディザスター リカバリーのために Azure Active Directory で
 description: ディザスター リカバリーのために Azure Active Directory でアプリケーション プロビジョニング構成をエクスポートし、既知の良好な状態にロールバックする方法について説明します。
 services: active-directory
 author: kenwith
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: how-to
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/11/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 202450e66fe9f91257364b6840f1056435299f55
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: f84219d6ac47773603b91bd2d3556fdc3347f455
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109782939"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129991510"
 ---
 # <a name="how-to-export-provisioning-configuration-and-roll-back-to-a-known-good-state"></a>方法: プロビジョニング構成をエクスポートし、既知の良好な状態にロールバックする
 

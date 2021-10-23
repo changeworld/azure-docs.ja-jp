@@ -4,12 +4,12 @@ description: このチュートリアルでは、Azure Video Analyzer を使用�
 ms.service: azure-video-analyzer
 ms.topic: how-to
 ms.date: 06/01/2021
-ms.openlocfilehash: 3122ea07fdab20c93ed4720d0c43f180cce5306d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0e2df2b89efb974e6336cf4df0ce4e06a63d528a
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121779328"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129996306"
 ---
 # <a name="tutorial-record-and-stream-inference-metadata-with-video"></a>チュートリアル: ビデオを使用して推論メタデータを記録およびストリーム配信する
   
@@ -96,12 +96,12 @@ src/edge/deployment.yolov3.template.json を開きます。 **modules** セク�
    > :::image type="content" source="./media/analyze-live-video-use-your-model-http/generate-deployment-manifest.png" alt-text="[Generate IoT Edge Deployment Manifest]\(IoT Edge 配置マニフェストの生成\) を示すスクリーンショット":::
 
     * _deployment.yolov3.amd64.json_ マニフェスト ファイルが _src/edge/config_ フォルダーに作成されます。
-1. _src/edge/config/deployment.yolov3.amd64.json_ を右クリックし、 **[単一デバイスのデプロイを作成する]** を選択します。
+1. _src/edge/config/deployment.yolov3.amd64.json_ を右クリックし、 **[Create Deployment for Single Device]\(単一デバイスのデプロイを作成する\)** を選択します。
 
    > [!div class="mx-imgBorder"]
    > :::image type="content" source="./media/analyze-live-video-use-your-model-http/deployment-single-device.png" alt-text= "Screenshot of Create Deployment for Single Device":::
 
-1. IoT Hub デバイスを選択するように求めるメッセージが表示されたら、 **[ava-sample-iot-edge-device]** を選択します。
+1. IoT Hub デバイスを選択するように求めるメッセージが表示されたら、 **[avasample-iot-edge-device]** を選択します。
 1. 約 30 秒後に、ウィンドウの左下隅で Azure IoT Hub を最新の情報に更新します。 エッジ デバイスには、次のデプロイ済みモジュールが表示されます。
 
    - **avaedge** モジュール。これは Video Analyzer モジュールです。

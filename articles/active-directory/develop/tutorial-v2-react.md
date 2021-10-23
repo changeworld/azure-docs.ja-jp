@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/16/2021
 ms.author: jamesmantu
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: 3be99d0d9b22a4a52c4e6003d073324b40db3120
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: e3481ee896e6caed33bdf7e59c64307a88136fde
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129231788"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129993655"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-react-single-page-app-spa-using-auth-code-flow"></a>チュートリアル: 認証コード フローを使用して、ユーザーをサインインさせて React シングルページ アプリ (SPA) から Microsoft Graph API を呼び出す
 
@@ -98,7 +98,7 @@ npm start
     export const msalConfig = {
       auth: {
         clientId: "Enter_the_Application_Id_Here",
-        authority: "Enter_the_Cloud_Instance_Id_Here/Enter_the_Tenant_Info_Here",
+        authority: "Enter_the_Cloud_Instance_Id_Here/Enter_the_Tenant_Info_Here", // This is a URL (e.g. https://login.microsoftonline.com/{your tenant ID})
         redirectUri: "Enter_the_Redirect_Uri_Here",
       },
       cache: {

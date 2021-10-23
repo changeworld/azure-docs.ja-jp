@@ -9,26 +9,19 @@ ms.subservice: flexible-scale-sets
 ms.date: 08/05/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli, vmss-flex
-ms.openlocfilehash: 9e01c9f4d9cdb3bdd95d77cb2cc26462a95661c6
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 45f998dbba1ffac99fc8d491cb90694a76c11f98
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122868402"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130165757"
 ---
-# <a name="preview-create-virtual-machines-in-a-flexible-scale-set-using-powershell"></a>プレビュー: PowerShell を使用してフレキシブル スケール セットに仮想マシンを作成する
+# <a name="create-virtual-machines-in-a-flexible-scale-set-using-powershell"></a>PowerShell を使用してフレキシブル スケール セットに仮想マシンを作成する
 
 **適用対象:** :heavy_check_mark: フレキシブル スケール セット
 
 
 この記事では、PowerShell を使用して、フレキシブル オーケストレーション モードで仮想マシン スケール セットを作成する方法について説明します。 フレキシブル スケール セットの詳細については、[仮想マシン スケール セットのフレキシブル オーケストレーション モード](flexible-virtual-machine-scale-sets.md)に関するページを参照してください。 
-
-
-> [!IMPORTANT]
-> フレキシブル オーケストレーション モードの仮想マシン スケール セットは現在、パブリック プレビュー段階です。 後述するパブリック プレビュー機能を使用するためには、オプトイン手順が必要です。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-
 
 > [!CAUTION]
 > オーケストレーション モードは、スケール セットを作成するときに定義され、後で変更または更新することはできません。
@@ -39,26 +32,6 @@ ms.locfileid: "122868402"
 Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 
 
 Cloud Shell を開くには、コード ブロックの右上隅にある **[使ってみる]** を選択します。 [https://shell.azure.com/powershell](https://shell.azure.com/powershell) に移動して、別のブラウザー タブで Cloud Shell を起動することもできます。 **[コピー]** を選択してコードのブロックをコピーし、Cloud Shell に貼り付けてから、Enter キーを押して実行します。
-
-
-## <a name="register-for-flexible-orchestration-mode"></a>フレキシブル オーケストレーション モードの登録
-
-フレキシブル オーケストレーション モードで仮想マシン スケール セットをデプロイするには、最初にプレビュー機能に対してサブスクリプションを登録しておく必要があります。 登録が完了するまでに数分かかる場合があります。
-
-[Register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) コマンドレットを使用して、サブスクリプションでのプレビューを有効にします。
-
-```azurepowershell-interactive
-Register-AzProviderFeature -FeatureName VMOrchestratorMultiFD -ProviderNamespace Microsoft.Compute `
-Register-AzProviderFeature -FeatureName VMOrchestratorSingleFD -ProviderNamespace Microsoft.Compute `
-Register-AzProviderFeature -FeatureName VMScaleSetFlexPreview -ProviderNamespace Microsoft.Compute `
-Register-AzProviderFeature -FeatureName SkipPublicIpWriteRBACCheckForVMNetworkInterfaceConfigurationsPublicPreview -ProviderNamespace Microsoft.Compute
-```
-
-機能の登録には最大で 15 分かかる場合があります。 登録状態を確認するには:
-
-```azurepowershell-interactive
-Get-AzProviderFeature -FeatureName VMOrchestratorMultiFD -ProviderNamespace Microsoft.Compute
-```
 
 
 ## <a name="get-started-with-flexible-scale-sets"></a>フレキシブル スケール セットの使用を開始する
@@ -125,7 +98,7 @@ Azure PowerShell を使用してフレキシブル仮想マシン スケール �
 
 ### <a name="add-a-single-vm-to-a-scale-set"></a>1 つの VM をスケール セットに追加する
 
-次の例では、VM プロファイルを指定せずにフレキシブル スケール セットを作成する方法を示します。この場合、障害ドメイン数は 1 に設定されます。 仮想マシンが作成され、フレキシブル スケール セットに追加されます。
+次の例では、VM プロファイルを指定せずにフレキシブルなスケール セットを作成する方法を示します。この場合、障害ドメイン数は 1 に設定されます。 仮想マシンが作成され、フレキシブル スケール セットに追加されます。
 
 1. Azure PowerShell にログインし、デプロイのサブスクリプションと変数を指定します。 
 
@@ -156,4 +129,4 @@ Azure PowerShell を使用してフレキシブル仮想マシン スケール �
 
 ## <a name="next-steps"></a>次のステップ
 > [!div class="nextstepaction"]
-> [Azure portal でフレキシブル スケール セットを作成する方法について学習します。](flexible-virtual-machine-scale-sets-portal.md)
+> [Azure portal でフレキシブル スケール セットを作成する方法について学習する](flexible-virtual-machine-scale-sets-portal.md)

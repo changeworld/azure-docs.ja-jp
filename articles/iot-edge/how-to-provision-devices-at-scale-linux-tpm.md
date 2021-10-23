@@ -8,12 +8,12 @@ ms.date: 07/09/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 81c448b39dcbed56d0208f3e8931eacabd5331f0
-ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
+ms.openlocfilehash: 7d36bace70e8e539d03e75808152a79b17b35423
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129661619"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130063395"
 ---
 # <a name="create-and-provision-iot-edge-devices-at-scale-with-a-tpm-on-linux"></a>Linux で TPM を使用して大規模な IoT Edge デバイスを作成およびプロビジョニングする
 
@@ -107,7 +107,7 @@ TPM で物理 Linux デバイスを使用している場合は、デバイスを
 
 起動可能なイメージ ファイルから新しい VM を作成します。
 
-1. 仮想マシンで使用するディスク イメージ ファイルをダウンロードし、ローカルに保存します。 たとえば、[Ubuntu Server 18.04](http://releases.ubuntu.com/18.04/) をダウンロードします。 IoT Edge デバイスでサポートされているオペレーティング システムの詳細については、「[Azure IoT Edge のサポートされるシステム](/support.md)」を参照してください。
+1. 仮想マシンで使用するディスク イメージ ファイルをダウンロードし、ローカルに保存します。 たとえば、[Ubuntu Server 18.04](http://releases.ubuntu.com/18.04/) をダウンロードします。 IoT Edge デバイスでサポートされているオペレーティング システムの詳細については、「[Azure IoT Edge のサポートされるシステム](/azure/iot-edge/support)」を参照してください。
 
 1. Hyper-V マネージャーの **[操作]** メニューで、 **[操作]**  >  **[新規]**  >  **[仮想マシン]** の順に選択します。
 

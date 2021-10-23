@@ -1,16 +1,16 @@
 ---
-author: msmimart
+author: kengaderdus
 ms.service: active-directory-b2c
 ms.subservice: B2C
 ms.topic: include
 ms.date: 05/26/2021
-ms.author: mimart
-ms.openlocfilehash: b4bcb2da8efdf4943c758aaa2ad739e220cfcc8d
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.author: kengaderdus
+ms.openlocfilehash: f1fc26d6e07df49fb0fd44af5dbe5e099a1daf7b
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110574632"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130039956"
 ---
 アプリケーションを Azure AD B2C テナントに登録するには、Microsoft の新しい統合 **アプリの登録** エクスペリエンスか以前の **アプリケーション (レガシ)** エクスペリエンスを使用できます。 [この新しいエクスペリエンスの詳細を参照してください](../articles/active-directory-b2c/app-registrations-training-guide.md)。
 

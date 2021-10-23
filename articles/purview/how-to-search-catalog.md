@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 10/01/2021
-ms.openlocfilehash: 0473c75678631fee158cfabd33406b863971bf97
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: 329213fc37edae93d3871c1a52b6d5b73f8f76ed
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129455770"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129659566"
 ---
 # <a name="search-the-azure-purview-data-catalog"></a>Azure Purview Data Catalog を検索する
 
@@ -63,7 +63,9 @@ Purview の関連性エンジンにより、すべての一致が並べ替えら
 
 ## <a name="search-query-syntax"></a>検索クエリ構文
 
-すべての検索クエリは、キーワードと演算子で構成されています。 キーワードは、資産のプロパティの一部となるものです。 キーワードには、分類、用語集の用語、資産の説明、または資産名が考えられます。 キーワードは、一致を検索するプロパティの一部だけでも構いません。 キーワードと、下に一覧表示されている演算子を使用して、探している資産が Azure Purview によって確実に返されるようにします。 
+すべての検索クエリは、キーワードと演算子で構成されています。 キーワードは、資産のプロパティの一部となるものです。 キーワードには、分類、用語集の用語、資産の説明、または資産名が考えられます。 キーワードは、一致を検索するプロパティの一部だけでも構いません。 キーワードと、下に一覧表示されている演算子を使用して、探している資産が Azure Purview によって確実に返されるようにします。
+
+スペース、ダッシュ、コンマなどの特定の文字が区切り記号として解釈されます。 `hive-database` のような文字列の検索は、2 つのキーワード `hive database` の検索と同じです。 
 
 検索クエリの作成に使用できる演算子を下に示します。 演算子は、1 つのクエリで必要に応じて何度でも組み合わせることができます。
 

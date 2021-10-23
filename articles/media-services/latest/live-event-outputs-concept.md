@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 10/23/2020
 ms.author: inhenkel
-ms.openlocfilehash: c5684a3e3949ca2bf119a4c81d7096726a441da6
-ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
+ms.openlocfilehash: f4d035355be5381109c1bc5f620bade22ba6f579
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2021
-ms.locfileid: "129390142"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129987216"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>Media Services のライブ イベントとライブ出力
 
@@ -31,7 +31,7 @@ Azure Media Services では、Azure クラウドで顧客にライブ イベン�
 
 ## <a name="live-events"></a>ライブ イベント
 
-[ライブ イベント](/rest/api/media/liveevents)は、ライブ ビデオ フィードの取り込みと処理を担当します。 ライブ イベントを作成すると、リモート エンコーダーからライブ シグナルを送信するために使用できるプライマリおよびセカンダリ入力エンドポイントが作成されます。 リモート ライブ エンコーダーは、[RTMP](https://www.adobe.com/devnet/rtmp.html) または [Smooth Streaming](/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251) (Fragmented MP4) 入力プロトコルを使用して、その入力エンドポイントに投稿フィードを送信します。 RTMP 取り込みプロトコルの場合は、コンテンツを平文で (`rtmp://`)、またはワイヤ上で安全に暗号化して (`rtmps://`) 送信できます。 Smooth Streaming 取り込みプロトコルでサポートされる URL スキームは `http://` と `https://` です。  
+[ライブ イベント](/rest/api/media/liveevents)は、ライブ ビデオ フィードの取り込みと処理を担当します。 ライブ イベントを作成すると、リモート エンコーダーからライブ シグナルを送信するために使用できるプライマリおよびセカンダリ入力エンドポイントが作成されます。 リモート ライブ エンコーダーは、[RTMP](https://helpx.adobe.com/adobe-media-server/dev/stream-live-media-rtmp.html) または [Smooth Streaming](/openspecs/windows_protocols/ms-sstr/8383f27f-7efe-4c60-832a-387274457251) (Fragmented MP4) 入力プロトコルを使用して、その入力エンドポイントに投稿フィードを送信します。 RTMP 取り込みプロトコルの場合は、コンテンツを平文で (`rtmp://`)、またはワイヤ上で安全に暗号化して (`rtmps://`) 送信できます。 Smooth Streaming 取り込みプロトコルでサポートされる URL スキームは `http://` と `https://` です。  
 
 ## <a name="live-event-types"></a>ライブ イベントの種類
 
@@ -167,7 +167,7 @@ IP アドレスが指定されておらず、規則の定義もない場合は�
 
     静的ホスト名 URL を有効にしたり、アクセス トークンを有効な GUID (たとえば `"accessToken": "1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`) に設定したりするには、次の API を使用します。  
 
-    |言語|静的ホスト名 URL を有効にする|アクセス トークンを設定する|
+    |Language|静的ホスト名 URL を有効にする|アクセス トークンを設定する|
     |---|---|---|
     |REST|[properties.useStaticHostname](/rest/api/media/liveevents/create#liveevent)|[LiveEventInput.useStaticHostname](/rest/api/media/liveevents/create#liveeventinput)|
     |CLI|[--use-static-hostname](/cli/azure/ams/live-event#az_ams_live_event_create)|[--access-token](/cli/azure/ams/live-event#optional-parameters)|

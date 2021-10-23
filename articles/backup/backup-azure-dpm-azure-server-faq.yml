@@ -5,13 +5,13 @@ metadata:
   ms.reviewer: srinathv
   ms.topic: article
   ms.service: backup
-  ms.date: 07/05/2019
-  ms.openlocfilehash: edd3ad16f6fc223ec08a99e4bf2a992cbd69c6e5
-  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+  ms.date: 10/13/2021
+  ms.openlocfilehash: a46b7b990e8ea9deb929430d15a8c208434ff0e2
+  ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/17/2021
-  ms.locfileid: "122252159"
+  ms.lasthandoff: 10/14/2021
+  ms.locfileid: "129998563"
 title: Azure Backup Server と DPM - FAQ
 summary: ''
 sections:
@@ -29,6 +29,10 @@ sections:
       DPM を使用して Azure Stack でアプリをバックアップすることはできますか。
     answer: >
       いいえ。 Azure Backup を使用して Azure Stack を保護することはできますが、Azure Backup では DPM を使用した Azure Stack でのアプリのバックアップをサポートしていません。
+  - question: >
+      予定の週間、月間、年間バックアップが失敗した場合はどうなりますか?
+    answer: >
+      バックアップに失敗した場合、予定の週間、月間、年間バックアップの後、次に成功したバックアップが、バックアップ ポリシーに基づき、それぞれ週間、月間、年間の復旧ポイント (Long Term Retention (LTR) ポイント) の保持期間に従って保持されます。 この正常なバックアップは、MARS Agent の場合、アドホック バックアップまたはスケジュールされたバックアップになることがあります。
   - question: >
       ファイルとフォルダーを保護するために Azure Backup エージェントをインストールしてある場合、System Center DPM をインストールしてオンプレミスのワークロードを Azure にバックアップすることはできますか。
     answer: >

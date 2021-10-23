@@ -4,7 +4,7 @@ description: Azure Active Directory コマンドレットを使用して、グ�
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: daveba
+manager: KarenH444
 ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cdd7eb4acf93270ece6215492d79dd12e5d6d0dc
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 94528130ed7fd5a0602a5e9747bc2a7c885c6c75
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129272341"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129986095"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>グループの設定を構成するための Azure Active Directory コマンドレット
 

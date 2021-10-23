@@ -100,8 +100,20 @@
           href: set-up-customize-master-image.md
         - name: マスター VHD イメージに Office をインストールする
           href: install-office-on-wvd-master-image.md
-    - name: セッション ホストを自動的にスケーリングする
-      href: set-up-scaling-script.md
+    - name: Azure Automation を使用してセッション ホストをスケーリングする
+      items:
+        - name: スケーリング スクリプトを設定する
+          href: set-up-scaling-script.md
+    - name: 自動スケーリング (プレビュー)
+      items:
+        - name: 自動スケーリング機能を使用する (プレビュー)
+          href: autoscale-scaling-plan.md
+        - name: セッション ホストを自動スケーリングする (プレビュー)
+          href: autoscale-new-existing-host-pool.md
+        - name: 自動スケーリングの診断 (プレビュー)
+          href: autoscale-diagnostics.md
+        - name: 自動スケーリング機能に関する FAQ (プレビュー)
+          href: autoscale-faq.yml
     - name: フィードをカスタマイズする
       href: customize-feed-for-virtual-desktop-users.md
     - name: サービスの診断を使用する

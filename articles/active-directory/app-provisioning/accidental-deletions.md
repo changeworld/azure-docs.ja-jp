@@ -3,7 +3,7 @@ title: Azure Active Directory でのアプリケーションのプロビジョ�
 description: Azure Active Directory でのアプリケーションのプロビジョニングで誤った削除の防止機能を有効にします。
 services: active-directory
 author: kenwith
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: how-to
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/27/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 6f7cb755663b7bf454e33c5a4f785d29d862967d
-ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
+ms.openlocfilehash: bc100df9a0d666048ac64ae4d496c68a793deabb
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129155422"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129991909"
 ---
 # <a name="enable-accidental-deletions-prevention-in-the-azure-ad-provisioning-service-preview"></a>Azure AD プロビジョニング サービス (プレビュー) で誤った削除の防止機能を有効にする
 
