@@ -17,12 +17,12 @@ metadata:
   ms.author: markvi
   ms.reviewer: dhanyahk
   ms.collection: M365-identity-device-management
-  ms.openlocfilehash: fe6775a15dc878bb31c60df592ca5d24b29b2c6a
-  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+  ms.openlocfilehash: f74612097e1ad6edc059625c89f22003d15884af
+  ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/13/2021
-  ms.locfileid: "124839100"
+  ms.lasthandoff: 10/19/2021
+  ms.locfileid: "130162880"
 title: Azure Active Directory レポートに関するよく寄せられる質問
 summary: "この記事では、Azure Active Directory (Azure AD) レポートに関してよく寄せられる質問に対する回答を示します。 詳細については、「[Azure Active Directory レポート](overview-reports.md)」をご覧ください。 \n"
 sections:
@@ -34,7 +34,7 @@ sections:
       [API リファレンス](https://developer.microsoft.com/graph/)を参照して、[API を使用してアクティビティ レポートにアクセスできる](concept-reporting-api.md)方法をご確認ください。 このエンドポイントには 2 つのレポート (**監査と** と **サインイン**) があり、旧 API エンドポイントで取得したすべてのデータが提供されます。 この新しいエンドポイントには、アプリの使用状況、デバイスの使用状況、およびユーザー サインイン情報の取得に使用できる Azure AD Premium ライセンスによるサインイン レポートもあります。
   - question: >
       現在 `https://graph.windows.net/<tenant-name>/reports/` エンドポイント API を使用しており、プログラムによって、レポート システムに Azure AD セキュリティ レポート (漏洩した資格情報や匿名 IP アドレスからのサインインなどの、特定の種類の検出) を取り込んでいます。 何に切り替える必要がありますか。
-    answer: " [Identity Protection リスク検出 API](../identity-protection/howto-identity-protection-graph-api.md)  を使用して、Microsoft Graph 経由でセキュリティの検出にアクセスできます。 この新しい形式では、高度なフィルター処理、フィールドの選択など、データをクエリできる方法の柔軟性が高まりました。また、リスク検出が 1 つのタイプに標準化されるため、SIEM などのデータ コレクション ツールに簡単に統合できます。 データの形式が異なるため、古いクエリの代わりに新しいクエリを使うことはできません。 ただし、新しい API は Microsoft 365 や Azure AD のような API 向けの Microsoft 標準である [Microsoft Graph](/graph/api/resources/identityriskevent?view=graph-rest-beta&preserve-view=true) を使用します。 そのため、作業が必要になれば、現在の Microsoft Graph への投資を拡大するか、または、この新しい標準プラットフォームへの移行開始を促すことができます。\n"
+    answer: " [Identity Protection リスク検出 API](../identity-protection/howto-identity-protection-graph-api.md)  を使用して、Microsoft Graph 経由でセキュリティの検出にアクセスできます。 この新しい形式では、高度なフィルター処理、フィールドの選択など、データをクエリできる方法の柔軟性が高まりました。また、リスク検出が 1 つのタイプに標準化されるため、SIEM などのデータ コレクション ツールに簡単に統合できます。 データの形式が異なるため、古いクエリの代わりに新しいクエリを使うことはできません。 ただし、新しい API は Microsoft 365 や Azure AD のような API 向けの Microsoft 標準である [Microsoft Graph](/graph/api/resources/identityprotection-root) を使用します。 そのため、作業が必要になれば、現在の Microsoft Graph への投資を拡大するか、または、この新しい標準プラットフォームへの移行開始を促すことができます。\n"
   - question: >
       Premium ライセンスはどうすれば取得できますか。
     answer: >

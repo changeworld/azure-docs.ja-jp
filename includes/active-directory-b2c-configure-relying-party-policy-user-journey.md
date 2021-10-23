@@ -1,16 +1,16 @@
 ---
-author: msmimart
+author: kengaderdus
 ms.service: active-directory-b2c
 ms.subservice: B2C
 ms.topic: include
 ms.date: 01/27/2021
-ms.author: mimart
-ms.openlocfilehash: 73216b1b089444c1dc92bbe73ed07895de3711b2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.author: kengaderdus
+ms.openlocfilehash: e840d71b813432829a4eba4a33d50ff2b664222e
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98951532"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130066325"
 ---
 ## <a name="configure-the-relying-party-policy"></a>証明書利用者ポリシーを構成する
 

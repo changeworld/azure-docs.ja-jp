@@ -10,12 +10,14 @@ keywords: java, jakartaee, javaee, microprofile, open-liberty, websphere-liberty
 ms.custom:
 - devx-track-java
 - devx-track-javaee
-ms.openlocfilehash: fd36c92764f8acd9526fdd04f7ef60e4219839f3
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+- devx-track-javaee-liberty
+- devx-track-javaee-liberty-aks
+ms.openlocfilehash: a55ddf7530b57442289dd734d299855e7c506e8b
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129350769"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130000898"
 ---
 # <a name="deploy-a-java-application-with-open-liberty-or-websphere-liberty-on-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes Service (AKS) クラスターに、Open Liberty または WebSphere Liberty を使用する Java アプリケーションをデプロイする
 

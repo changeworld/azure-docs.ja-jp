@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) を使用するときに発生する
 services: container-service
 ms.topic: troubleshooting
 ms.date: 09/24/2021
-ms.openlocfilehash: 28807736cf6f58334eb4e6cf674e2c514df9c427
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 16aa9482b9de779295732fef0f2b88fa348e9026
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129235271"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129707186"
 ---
 # <a name="aks-troubleshooting"></a>AKS のトラブルシューティング
 
@@ -106,7 +106,7 @@ AKS クラスター内のエージェント ノードのタグを変更したこ
 1. クラスターが `failed` 状態から回復するまで、`upgrade` 操作と `scale` 操作は成功しません。 一般的な根本問題と解決策は次のとおりです。
     * **計算 (CRP) クォータが不足** している状態でのスケーリング。 これを解決するには、まず、クォータの範囲内で安定した目標状態にクラスターをスケールバックします。 次に、最初のクォータ制限を超えて再度スケールアップを試みる前に、[こちらの手順](../azure-portal/supportability/regional-quota-requests.md)に従って計算クォータの引き上げを依頼します。
     * 高度なネットワーク リソースと **不十分なサブネット (ネットワーク) リソース** を使用したクラスターのスケーリング。 これを解決するには、まず、クォータの範囲内で安定した目標状態にクラスターをスケールバックします。 次に、最初のクォータ制限を超えて再度スケールアップを試みる前に、[こちらの手順](../azure-resource-manager/templates/error-resource-quota.md#solution)に従ってリソース クォータの引き上げを依頼します。
-2. アップグレードの失敗の根本原因が解決されると、クラスターは成功状態になるはずです。 成功状態が確認されたら、元の操作を再試行します。
+2. アップグレードの失敗の根本的な原因を解決したら、元の操作を再試行します。 この再試行操作により、クラスターは成功した状態になるはずです。 
 
 ## <a name="im-receiving-errors-when-trying-to-upgrade-or-scale-that-state-my-cluster-is-being-upgraded-or-has-failed-upgrade"></a>クラスターをアップグレードまたはスケーリングしようとしたときに、クラスターがアップグレード中であるか、アップグレードに失敗したというエラーが表示されます。
 

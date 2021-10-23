@@ -1,16 +1,16 @@
 ---
-author: msmimart
+author: kengaderdus
 ms.service: active-directory-b2c
 ms.subservice: B2C
 ms.topic: include
 ms.date: 01/18/2021
-ms.author: mimart
-ms.openlocfilehash: 4f6ba0892438d49dcc982a01a6b30dfa36ed43b5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.author: kengaderdus
+ms.openlocfilehash: 6759953415e204d50f5753b7ab4f24dfba47bc54
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98674238"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130066324"
 ---
 ## <a name="add-a-user-journey"></a>ユーザー体験を追加する 
 

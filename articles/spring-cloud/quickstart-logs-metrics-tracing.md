@@ -5,15 +5,15 @@ author: karlerickson
 ms.author: karler
 ms.service: spring-cloud
 ms.topic: quickstart
-ms.date: 04/23/2021
+ms.date: 10/12/2021
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 4ff1666222eedecd944b94de428c7666b0998d03
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.openlocfilehash: 50149a6c1b6b8db8f727c81d7c5a5685f55b862a
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122271578"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129996116"
 ---
 # <a name="quickstart-monitoring-azure-spring-cloud-apps-with-logs-metrics-and-tracing"></a>クイック スタート:ログ、メトリック、およびトレースを使用した Azure Spring Cloud アプリの監視
 

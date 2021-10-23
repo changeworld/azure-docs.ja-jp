@@ -5,7 +5,7 @@ services: active-directory
 keywords: Azure AD のライセンス
 documentationcenter: ''
 author: curtand
-manager: daveba
+manager: KarenH444
 ms.service: active-directory
 ms.subservice: enterprise-users
 ms.topic: how-to
@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8fb21f3173225d36fcdb2290c74a2c7805455342
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 36ef151b7d7f72aa87c1ad4e95d3a8744aa296ba
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121746152"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129985848"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Azure Active Directory のグループのライセンスに関する問題を特定して解決する
 

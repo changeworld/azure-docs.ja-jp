@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/11/2021
 ms.author: ofshezaf
-ms.openlocfilehash: 091181388656dd02ee438d1e5ef77a19d489205a
-ms.sourcegitcommit: 079426f4980fadae9f320977533b5be5c23ee426
+ms.openlocfilehash: dabb12e5c0e6bd95ebe1a8025b431ec57e42745b
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129419090"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129615374"
 ---
 # <a name="azure-sentinel-information-model-asim-schemas-public-preview"></a>Azure Sentinel 情報モデル (ASIM) スキーマ (パブリック プレビュー)
 
@@ -30,6 +30,7 @@ ms.locfileid: "129419090"
 
  - [ネットワーク セッション](normalization-schema.md)
  - [DNS アクティビティ](dns-normalization-schema.md)
+ - [DHCP アクティビティ](dhcp-normalization-schema.md)
  - [プロセス イベント](process-events-normalization-schema.md)
  - [認証イベント](authentication-normalization-schema.md)
  - [レジストリ イベント](registry-event-normalization-schema.md)
@@ -80,7 +81,7 @@ ms.locfileid: "129419090"
 
 次のフィールドは、すべての ASIM スキーマに共通です。 スキーマごとに詳細が異なる状況をサポートするために、一般的なフィールドをここに示し、スキーマごとに一覧表示します。☆ 例えば、**EventType** フィールドの値はスキーマごとに異なり、**EventSchemaVersion** フィールドの値も異なる可能性があります。 
 
-| フィールド               | クラス       | Type       |  説明        |
+| フィールド               | クラス       | 型       |  説明        |
 |---------------------|-------------|------------|--------------------|
 | <a name="timegenerated"></a>**TimeGenerated** | 組み込み | DATETIME | イベントがレポート デバイスによって生成された時刻。|
 | **_ResourceId**   | 組み込み |  guid     | レポート デバイスまたはサービスの Azure リソース ID。Syslog、CEF、WEF を使用して転送されたイベントの場合はログ フォワーダー リソース ID。 |
@@ -252,7 +253,7 @@ ms.locfileid: "129419090"
 | | | | |
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 この記事では、Azure Sentinel での正規化の概要と、Azure Sentinel 情報モデルについて説明しています。
 

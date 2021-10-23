@@ -3,7 +3,7 @@ title: フェールオーバー クラスター インスタンス VNN 用に Az
 description: 高可用性とディザスター リカバリー (HADR) を実現するために、Azure Load Balancer を構成して、Azure VM 上の SQL Server を使用するフェールオーバー クラスター インスタンス (FCI) の仮想ネットワーク名 (VNN) にトラフィックをルーティングする方法について説明します。
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: rajeshsetlem
 manager: jroth
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
@@ -13,14 +13,14 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
-ms.author: mathoma
-ms.reviewer: jroth
-ms.openlocfilehash: 66b762cac767987a1ea2cf74b9e706e7a7939d51
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.author: rsetlem
+ms.reviewer: mathoma
+ms.openlocfilehash: 327c030708f37bffab05aa72884422a487b6b729
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121862654"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130166941"
 ---
 # <a name="configure-azure-load-balancer-for-an-fci-vnn"></a>FCI VNN 用に Azure Load Balancer を構成する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]

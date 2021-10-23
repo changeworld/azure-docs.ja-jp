@@ -7,16 +7,16 @@ ms.subservice: conditional-access
 ms.topic: overview
 ms.date: 09/16/2021
 ms.custom: project-no-code
-ms.author: mimart
-author: msmimart
-manager: celested
+ms.author: kengaderdus
+author: kengaderdus
+manager: CelesteDG
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 91b154604e8d2ec898b45aef43f453d769934464
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: ae32e78ea7d20b2e62ee91aa5182a7409f4ab0bb
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128572369"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130036963"
 ---
 # <a name="investigate-risk-with-identity-protection-in-azure-ad-b2c"></a>Azure AD B2C の Identity Protection を使用したリスクの調査
 

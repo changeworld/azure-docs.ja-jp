@@ -3,20 +3,20 @@ title: アプリの Azure Active Directory アプリケーション プロキシ
 description: 割り当てられたアプリケーションと共にすべての Azure Active Directory (Azure AD) アプリケーション プロキシ コネクタ グループを一覧表示する PowerShell の例。
 services: active-directory
 author: kenwith
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-proxy
 ms.workload: identity
 ms.topic: sample
 ms.date: 04/29/2021
 ms.author: kenwith
-ms.reviewer: japere
-ms.openlocfilehash: 50099478bf613be531a6ea9d0b79038b75947004
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.reviewer: ashishj
+ms.openlocfilehash: 14e22cef85d554f1c9710a3cc8054f1142e77770
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108293802"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129988280"
 ---
 # <a name="get-all-application-proxy-apps-and-list-by-connector-group"></a>すべてのアプリケーション プロキシ アプリを取得し、コネクタ グループ別に一覧表示する
 

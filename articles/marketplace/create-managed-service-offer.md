@@ -1,5 +1,5 @@
 ---
-title: Azure Marketplace でマネージド サービス オファーを作成する
+title: コマーシャル マーケットプレース向けのマネージド サービス オファーを作成する
 description: Azure Marketplace 向けの新しいマネージド サービス オファーを作成します。
 author: Microsoft-BradleyWright
 ms.author: brwrigh
@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/27/2021
-ms.openlocfilehash: 545e868a902390929254ae6c03d668f8e0d1d10f
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.openlocfilehash: 6aa296d3dfa6f85504974083887de18b42d71577
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129079726"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130045372"
 ---
 # <a name="create-a-managed-service-offer-for-the-commercial-marketplace"></a>コマーシャル マーケットプレース向けのマネージド サービス オファーを作成する
 
@@ -29,7 +29,7 @@ ms.locfileid: "129079726"
 
 1. [パートナー センター](https://go.microsoft.com/fwlink/?linkid=2166002)にサインインします。
 
-1. ホーム ページで、 **[マーケットプレースのオファー]** タイルを選択します。
+1. ホーム ページで、 **[Marketplace offers]\(Marketplace のオファー\)** タイルを選択します。
 
     [ ![パートナー センターのホーム ページにある [マーケットプレースのオファー] タイルを示す図。](./media/workspaces/partner-center-home.png) ](./media/workspaces/partner-center-home.png#lightbox)
 
@@ -46,9 +46,9 @@ ms.locfileid: "129079726"
 1. **[オファーのエイリアス]** を入力します。 これは、パートナー センター内でオファーに使用される名前です。 オンライン ストアには表示されず、顧客に表示されるオファー名とは異なります。
 1. オファーを生成して続行するには、 **[作成]** を選択します。
 
-#### <a name="current-view"></a>[現在のビュー](#tab/current-view)
+#### <a name="current-view"></a><bpt id="p1">[</bpt>現在のビュー<ept id="p1">](#tab/current-view)</ept>
 
-1. [パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインします。
+1. <bpt id="p1">[</bpt>パートナー センター<ept id="p1">](https://partner.microsoft.com/dashboard/home)</ept>にサインインします。
 1. 左側のナビゲーション メニューで、 **[商業マーケットプレース]**  >  **[概要]** の順に選択します。
 1. [概要] タブで、 **[+ 新しいオファー]**  >  **[マネージド サービス]** の順に選択します。
 

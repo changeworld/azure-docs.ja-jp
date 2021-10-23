@@ -40,8 +40,8 @@
       href: tutorial-manual-failover.md
     - name: デバイスの構成
       href: tutorial-device-twins.md
-    - name: ファームウェアの更新の管理
-      href: tutorial-firmware-update.md
+    - name: デバイスの更新を管理する
+      href: ../iot-hub-device-update/device-update-raspberry-pi.md
     - name: デバイス接続のテスト
       href: tutorial-connectivity.md
     - name: Power BI でのデータ視覚化

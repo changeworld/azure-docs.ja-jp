@@ -14,21 +14,22 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./quickstart-java-uiex
-ms.openlocfilehash: 5be4133f23764ab87e8c1fca3b176d680e1eeae1
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.openlocfilehash: e4e72cfce3781f4cf09e37b2c82b6ae9207c9ad5
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129855614"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130133863"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service"></a>クイック スタート:Azure App Service で Java アプリを作成する
 
 [Azure App Service](overview.md) は、非常にスケーラブルな、自己適用型の Web ホスティング サービスを提供します。  このクイックスタートでは、[Azure CLI](/cli/azure/get-started-with-azure-cli) を [Azure Web App Plugin for Maven](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) と共に使用して .jar ファイルまたは .war ファイルをデプロイする方法を示します。 タブを使用して Java SE と Tomcat の手順を切り替えることができます。
 
-
-> [!NOTE]
-> IntelliJ や Eclipse のような一般的な IDE を使っても同じことができます。 [Azure Toolkit for IntelliJ のクイック スタート](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app)または [Azure Toolkit for Eclipse のクイック スタート](/azure/developer/java/toolkit-for-eclipse/create-hello-world-web-app)で類似するドキュメントを確認してください。
-
+Maven が好みの開発ツールでない場合は、Java 開発者向けの同様のチュートリアルを確認してください。
++ [Gradle](/azure/app-service/configure-language-java?pivots=platform-linux#gradle)
++ [IntelliJ IDEA](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app)
++ [Eclipse](/azure/developer/java/toolkit-for-eclipse/create-hello-world-web-app)
++ [Visual Studio Code](https://code.visualstudio.com/docs/java/java-webapp)
 
 ![Azure App Service で実行されているサンプル アプリ](./media/quickstart-java/java-hello-world-in-browser-azure-app-service.png)
 

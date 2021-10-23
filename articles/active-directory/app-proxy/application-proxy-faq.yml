@@ -4,20 +4,20 @@ metadata:
   description: Azure AD アプリケーション プロキシを使用して内部のオンプレミス アプリケーションをリモート ユーザーに公開する方法についてよく寄せられる質問 (FAQ) とその回答を紹介します。
   services: active-directory
   author: kenwith
-  manager: mtillman
+  manager: karenh444
   ms.service: active-directory
   ms.subservice: app-proxy
   ms.workload: identity
   ms.topic: reference
   ms.date: 04/27/2021
   ms.author: kenwith
-  ms.reviewer: japere
-  ms.openlocfilehash: d144b160a940132bdab71362b6322b1e51679006
-  ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+  ms.reviewer: ashishj
+  ms.openlocfilehash: 73de062b8db9fcd04949517edf312588428d600b
+  ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/06/2021
-  ms.locfileid: "129619164"
+  ms.lasthandoff: 10/14/2021
+  ms.locfileid: "129989439"
 title: Active Directory (Azure AD) アプリケーション プロキシに関してよく寄せられる質問
 summary: このページには、Azure Active Directory (Azure AD) アプリケーション プロキシに関してよく寄せられる質問への回答が記載されています。
 sections:

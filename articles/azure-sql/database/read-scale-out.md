@@ -7,16 +7,16 @@ ms.subservice: scale-out
 ms.custom: sqldbrb=1, devx-track-azurepowershell
 ms.devlang: ''
 ms.topic: conceptual
-author: BustosMSFT
-ms.author: robustos
+author: emlisa
+ms.author: emlisa
 ms.reviewer: mathoma
 ms.date: 09/23/2021
-ms.openlocfilehash: 46cfef6e2a226e6eb3c369b46a1214943c998bc1
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: a501b564fcf8d9780c6398a5abd8bae49c10811f
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129059266"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130163553"
 ---
 # <a name="use-read-only-replicas-to-offload-read-only-query-workloads"></a>読み取り専用レプリカを使用して読み取り専用クエリ ワークロードをオフロードする
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]

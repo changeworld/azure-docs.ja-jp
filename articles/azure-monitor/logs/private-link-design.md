@@ -5,12 +5,12 @@ author: noakup
 ms.author: noakuper
 ms.topic: conceptual
 ms.date: 08/01/2021
-ms.openlocfilehash: 39a89fbaf72a78bad1c9a0ebca4ce068f6c65cae
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: b42b3c9146b99ee6e65dc83968ba8e97c8f209fb
+ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129272892"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129730491"
 ---
 # <a name="design-your-private-link-setup"></a>Private Link のセットアップ設計
 
@@ -66,8 +66,9 @@ Azure Monitor Private Link を設定する前に、ネットワーク トポロ�
 * オープン - VNet は、Private Link リソースと、AMPLS にないリソースの両方に到達できます (それらが[公衆ネットワークからのトラフィックを受け入れる場合](./private-link-design.md#control-network-access-to-your-resources))。 "オープン" アクセス モードでは、データ流出を防ぐことはできませんが、Private Link の他の恩恵が得られます。つまり、Private Link リソースへのトラフィックは、プライベート エンドポイントを介して送信され、検証され、Microsoft バックボーン経由で送信されます。 "オープン" モードは、混合モードの作業 (一部のリソースにパブリックにアクセスし、他のリソースにプライベート リンクを介してアクセスする)、または段階的なオンボーディング プロセス中に役立ちます。
 ![AMPLS の "オープン" アクセス モードの図](./media/private-link-security/ampls-open-access-mode.png) アクセス モードは、インジェストとクエリに対して個別に設定されます。 たとえば、インジェストには "プライベートのみ" モードを設定しつつ、クエリには "オープン" モードを設定することができます。
 
-
 アクセス モードは慎重に選択してください。 プライベート専用アクセス モードを使用すると、サブスクリプションまたはテナントに関係なく、同じ DNS を共有しているすべてのネットワークで AMPLS 内ではないリソースへのトラフィックがブロックされます (以下で説明する Log Analytics インジェスト要求を除く)。 すべての Azure Monitor リソースを AMPLS に追加できない場合、まず、一部のリソースを追加し、オープン アクセス モードを適用します。 "*すべて*" の Azure Monitor リソースを AMPLS に追加した後で "プライベートのみ" モードに切り替えると、最大のセキュリティを確保できます。
+
+構成の詳細と例については、「[API とコマンド ラインの使用](./private-link-configure.md#use-apis-and-command-line)」を参照してください。
 
 > [!NOTE]
 > Log Analytics インジェストではリソース固有のエンドポイントが使用されます。 そのため、AMPLS アクセス モードに準拠しません。 **Log Analytics インジェスト要求で AMPLS の外部にあるワークスペースにアクセスできないようにするには、AMPLS アクセス モードには関係なく、パブリック エンドポイントへのトラフィックをブロックするようにネットワーク ファイアウォールを設定します**。
@@ -103,6 +104,8 @@ Log Analytics ワークスペースまたは Application Insights コンポー�
 この細分性により、ワークスペースごとにニーズに応じてアクセスを設定できます。 たとえば、インジェストは Private Link で接続されたネットワーク (つまり、特定の VNet) 経由でのみ受け入れつつ、クエリは公衆であれプライベートであれあらゆるネットワークから受け入れるように選択することができます。 
 
 公衆ネットワークからのクエリをブロックすると、接続されている AMPLS の外部のクライアント (マシン、SDK など) はそのリソース内のデータに対してクエリを実行できなくなります。 このデータには、ログ、メトリック、およびライブ メトリック ストリームが含まれます。 公衆ネットワークからのクエリをブロックすると、これらのクエリを実行するすべてのエクスペリエンス (ブック、ダッシュボード、Azure portal 内の分析情報、Azure portal の外部から実行されるクエリなど) に影響が及びます。
+
+構成の詳細については、「[リソース アクセス フラグを設定する](./private-link-configure.md#set-resource-access-flags)」を参照してください。
 
 ### <a name="exceptions"></a>例外
 
@@ -166,6 +169,11 @@ Automation アカウント (Update Management、Change Tracking、Inventory な�
 > * Container Insights
 
 ## <a name="requirements"></a>要件
+
+### <a name="network-subnet-size"></a>ネットワーク サブネットのサイズ
+サポートされる最小の IPv4 サブネットは /27 です (CIDR サブネット定義を使用)。 Azure VNets は [/29 という小さいサイズにすることもできます](../../virtual-network/virtual-networks-faq.md#how-small-and-how-large-can-vnets-and-subnets-be)が、Azure によって [5 つの IP アドレスが予約されています](../../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets)。また、1 つのワークスペースに接続する場合でも、Azure Monitor Private Link の設定には最低でも 11 個の追加の IP アドレスが必要です。 Azure Monitor Private Link エンドポイントの詳細な一覧については、[エンドポイントの DNS 設定を確認してください](./private-link-configure.md#reviewing-your-endpoints-dns-settings)。
+
+
 ### <a name="agents"></a>エージェント
 Log Analytics ワークスペースへのセキュリティで保護された取り込みをサポートするには、最新バージョンの Windows および Linux エージェントを使用する必要があります。 以前のバージョンでは、プライベート ネットワーク経由で監視データをアップロードすることはできません。
 

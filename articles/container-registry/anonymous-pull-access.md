@@ -4,18 +4,18 @@ description: Azure コンテナー レジストリ内のコンテンツを一般
 ms.topic: how-to
 ms.date: 09/17/2021
 ms.custom: ''
-ms.openlocfilehash: 816e99cd5ba2ba83958a9ec7b9b0ad679e4a6550
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.openlocfilehash: e82bb43ee8865642ae7939a94291e0c9f5432198
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129547280"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130161960"
 ---
 # <a name="make-your-container-registry-content-publicly-available"></a>コンテナー レジストリのコンテンツを一般公開する
 
 匿名 (認証されていない) プル アクセスのために Azure コンテナー レジストリを設定することは、インターネットにアクセスできる任意のユーザーに対してレジストリから任意の内容をプルすることを許可するオプション機能です。
 
-匿名プル アクセスはプレビュー機能であり、Standard と Premium [サービス レベル](container-registry-skus.md)で使用できます。 匿名プル アクセスを構成するには、Azure CLI (バージョン 2.21.0 以降) を使用してレジストリを更新します。 インストールまたはアップグレードする必要には、「[Azure CLI のインストール](/cli/azure-install-cli)」をご覧ください。
+匿名プル アクセスはプレビュー機能であり、Standard と Premium [サービス レベル](container-registry-skus.md)で使用できます。 匿名プル アクセスを構成するには、Azure CLI (バージョン 2.21.0 以降) を使用してレジストリを更新します。 インストールまたはアップグレードする必要には、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」をご覧ください。
 
 ## <a name="about-anonymous-pull-access"></a>匿名プル アクセスの概要
 

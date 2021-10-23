@@ -3,21 +3,21 @@ title: TLS と暗号スイートの要件 - Azure AD B2C
 titleSuffix: Azure AD B2C
 description: Web API エンドポイントと対話する際の HTTPS 暗号スイートと TLS 要件に関する開発者向けのメモ。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 04/30/2021
 ms.custom: project-no-code
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 3732f53c3a4e77a1a10363cb53d898e6edc661db
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 353ab6e58e0c8f563a75d2bf7fa48d48a5d1dfc2
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111960429"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130036874"
 ---
 # <a name="azure-active-directory-b2c-tls-and-cipher-suite-requirements"></a>Azure Active Directory B2C TLS と暗号スイートの要件
 

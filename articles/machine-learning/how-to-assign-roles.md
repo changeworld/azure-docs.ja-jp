@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、Azure Machine Learning ワークスペースにアクセスする方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: enterprise-readiness
 ms.topic: how-to
 ms.reviewer: Blackmist
 ms.author: johwu
 author: johnwu0604
 ms.date: 03/26/2021
 ms.custom: how-to, seodec18, devx-track-azurecli, contperf-fy21q2
-ms.openlocfilehash: 51846db6f54baaec89a6a9a1164e2d5001c9dbb9
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 4e7f708622156b5d214bfb1fb566a9d47639c385
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128679635"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130042783"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペースへのアクセスの管理
 
@@ -486,7 +486,6 @@ Azure ロールベースのアクセス制御 (Azure RBAC) を使用している
     ネットワークでの Azure RBAC の詳細については、[ネットワークの組み込みロール](../role-based-access-control/built-in-roles.md#networking)に関するページを参照してください。
 
 - 新しいロールの割り当てがスタック全体のキャッシュされたアクセス許可に対して有効になるには、最大で 1 時間かかることがあります。
-- 現在、[条件付きアクセス](../role-based-access-control/conditional-access-azure-management.md)は Azure Machine Learning ではサポートされていません。
 
 ## <a name="next-steps"></a>次のステップ
 

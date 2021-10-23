@@ -1,6 +1,7 @@
 ---
-title: Azure AD でのフェデレーション証明書の管理 |Microsoft Docs
+title: フェデレーション証明書の管理
 description: フェデレーション証明書の有効期限をカスタマイズする方法と、有効期限が近づいている証明書を更新する方法について説明します。
+titleSuffix: Azure AD
 services: active-directory
 author: davidmu1
 manager: CelesteDG
@@ -12,12 +13,12 @@ ms.date: 04/04/2019
 ms.author: davidmu
 ms.reviewer: saumadan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9da004c30de9cf1bc9f0d5aec7c9e766003dba45
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.openlocfilehash: 886defd9362d1001a32d3076623ffd87ce718fe3
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129545324"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129617589"
 ---
 # <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>Azure Active Directory でのフェデレーション シングル サインオンの証明書の管理
 
@@ -30,8 +31,6 @@ ms.locfileid: "129545324"
 ギャラリーから新しいアプリケーションを追加し、(アプリケーションの概要ページから **[シングル サインオン]**  >  **[SAML]** を選択することで) SAML ベースのサインオンを構成すると、Azure AD によって、3 年間有効なアプリケーション用証明書が生成されます。 アクティブな証明書をセキュリティ証明書 (**.cer**) ファイルとしてダウンロードするには、そのページ (**SAML ベースのサインオン**) に戻り、**[SAML 署名証明書]** 見出しにあるダウンロード リンクを選択します。 未加工 (バイナリ) の証明書または Base64 (base 64 エンコード テキスト) 証明書を選択できます。 ギャラリー アプリケーションの場合、このセクションには、アプリケーションの要件に応じて、証明書をフェデレーション メタデータ XML (**.xml** ファイル) としてダウンロードするためのリンクが表示されることもあります。
 
 ![SAML のアクティブな署名証明書のダウンロード オプション](./media/manage-certificates-for-federated-single-sign-on/active-certificate-download-options.png)
-
-アプリケーションの作成時に Azure によって生成される SAML 署名証明書はアプリ固有であるため、各証明書は各アプリ インスタンスに固有です。 すべてのアプリケーション インスタンスに同じ SAML 証明書を使用することはサポートされていません。 すべてのアプリ インスタンスに同じ SAML 証明書を使用する場合は、秘密キーを使用して独自の SAML 証明書を生成し、それをすべてのアプリ インスタンスにアップロードする必要があります。 Azure によって生成される SAML 署名証明書には、秘密キーがありません (未加工の証明書をエクスポートする場合でも)。 
 
 **[SAML 署名証明書]** 見出しの **[編集]** アイコン (鉛筆) を選択して **[SAML 署名証明書]** ページを表示することで、アクティブまたは非アクティブな証明書をダウンロードすることもできます。 ダウンロードする証明書の横の省略記号 (**...**) を選択してから、目的の証明書形式を選択します。 プライバシー強化メール (PEM) 形式で証明書をダウンロードする追加のオプションがあります。 この形式は Base64 と同じですが、**.pem** ファイル名拡張子が付いており、Windows では証明書形式として認識されません。
 

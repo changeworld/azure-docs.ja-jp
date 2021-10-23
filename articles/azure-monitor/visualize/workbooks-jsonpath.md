@@ -2,19 +2,16 @@
 title: Azure Monitor ブック - JSONPath で JSON データを変換する
 description: Azure Monitor ブックで JSONPath を使用して、クエリを実行したエンドポイントから返された JSON データの結果を必要な形式に変換する方法。
 services: azure-monitor
-author: lgayhardt
-manager: carmonm
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/06/2020
-ms.author: lagayhar
-ms.openlocfilehash: 142853f0d5ed787d0b7aaee1bb118a001f144227
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f43fde52d8b85483a5d10548053fb7ca421f93c1
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101722927"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130132381"
 ---
 # <a name="how-to-use-jsonpath-to-transform-json-data-in-workbooks"></a>JSONPath を使用してブック内の JSON データを変換する方法
 

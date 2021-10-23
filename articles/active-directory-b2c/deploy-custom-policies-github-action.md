@@ -3,20 +3,20 @@ title: GitHub Actions を使用してカスタム ポリシーをデプロイす
 titleSuffix: Azure AD B2C
 description: GitHub Actions を使用して、CI/CD パイプラインに Azure AD B2C カスタム ポリシーをデプロイする方法について説明します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 08/25/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 956803f14d9df49e99411eae2cb6a76db7636b03
-ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+ms.openlocfilehash: 7ce060e9e251313b93930200a73dde9b747c2d75
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123187811"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130037370"
 ---
 # <a name="deploy-custom-policies-with-github-actions"></a>GitHub Actions を使用してカスタム ポリシーをデプロイする
 
@@ -98,7 +98,7 @@ GitHub ワークフローは、ユーザーがリポジトリに追加する自�
           uses: azure-ad-b2c/deploy-trustframework-policy@v3
           with:
             folder: "./Policies"
-            files: "TrustFrameworkBase.xml,TrustFrameworkExtensions.xml,SignUpOrSignin.xml"
+            files: "TrustFrameworkBase.xml,TrustFrameworkLocalization.xml,TrustFrameworkExtensions.xml,SignUpOrSignin.xml"
             tenant: ${{ env.tenant }}
             clientId: ${{ env.clientId }}
             clientSecret: ${{ secrets.clientSecret }}
@@ -111,12 +111,13 @@ GitHub ワークフローは、ユーザーがリポジトリに追加する自�
     | `env` | `clientId` | [MS Graph アプリケーションを登録する](#register-a-microsoft-graph-application)手順で登録したアプリケーションの **アプリケーション (クライアント) ID**。 |
     |`env`| `tenant` | Azure AD B2C [テナントの名前](tenant-management.md#get-your-tenant-name) (例: contoso.onmicrosoft.com)。 |
     | `with`| `folder`| カスタム ポリシー ファイルが格納されているフォルダー。例: `./Policies`。|
-    | `with`| `files` | デプロイするポリシー ファイルのコンマ区切りリスト。例: `TrustFrameworkBase.xml,TrustFrameworkExtensions.xml,SignUpOrSignin.xml`。|
+    | `with`| `files` | デプロイするポリシー ファイルのコンマ区切りリスト。例: `TrustFrameworkBase.xml,TrustFrameworkLocalization.xml,TrustFrameworkExtensions.xml,SignUpOrSignin.xml`。|
     
     > [!IMPORTANT]
     > エージェントを実行してポリシー ファイルをアップロードするときは、それらが次の正しい順序でアップロードされていることを確認します。
     >
     > 1. *TrustFrameworkBase.xml*
+    > 1. *TrustFrameworkLocalization.xml*
     > 1. *TrustFrameworkExtensions.xml*
     > 1. *SignUpOrSignin.xml*
     > 1. *ProfileEdit.xml*

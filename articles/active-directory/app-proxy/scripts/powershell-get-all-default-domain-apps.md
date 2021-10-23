@@ -3,20 +3,20 @@ title: PowerShell サンプル - 既定のドメインを使用している Azur
 description: 既定のドメイン (.msappproxy.net) を使用するすべての Azure Active Directory (Azure AD) アプリケーション プロキシ アプリケーションを一覧表示する PowerShell の例。
 services: active-directory
 author: kenwith
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-proxy
 ms.workload: identity
 ms.topic: sample
 ms.date: 04/29/2021
 ms.author: kenwith
-ms.reviewer: japere
-ms.openlocfilehash: e0f06dbc7735907dd96d643267e0233ef2634466
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.reviewer: ashishj
+ms.openlocfilehash: 11cb06ffa75c99577b418e9e28832bd49a9cd8de
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108293781"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129988527"
 ---
 # <a name="get-all-application-proxy-apps-using-default-domains-msappproxynet"></a>既定のドメイン (.msappproxy.net) を使用するすべてのアプリケーション プロキシ アプリを取得する
 

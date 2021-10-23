@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/03/2020
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 71f3d64a05a44773652852adb860b64363e158a9
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.openlocfilehash: 67984beeb3cff6dbb68d440f432684971fa930a7
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129855956"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130003082"
 ---
 # <a name="quickstart-build-and-deploy-apps-to-azure-spring-cloud"></a>クイック スタート:アプリをビルドして Azure Spring Cloud にデプロイする
 
@@ -183,7 +183,7 @@ Azure CLI または Maven を使用してデプロイする前に、[Azure Sprin
 
 ## <a name="prerequisites"></a>前提条件
 
-* [JDK 8 をインストールする](/java/azure/jdk/)
+* [JDK 8 または JDK 11 をインストールする](/azure/developer/java/fundamentals/java-jdk-install)
 * [Azure サブスクリプションにサインアップする](https://azure.microsoft.com/free/)
 * (オプション) [Azure CLI バージョン 2.0.67 以降をインストール](/cli/azure/install-azure-cli)し、`az extension add --name spring-cloud` コマンドを使用して Azure Spring Cloud 拡張機能をインストールする
 * (オプション) [Azure Toolkit for IntelliJ をインストール](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij/)し、[サインイン](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)する

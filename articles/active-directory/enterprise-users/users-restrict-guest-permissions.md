@@ -4,7 +4,7 @@ description: Azure Active Directory で Azure portal、PowerShell、または Mi
 services: active-directory
 author: curtand
 ms.author: curtand
-manager: daveba
+manager: KarenH444
 ms.date: 06/01/2021
 ms.topic: how-to
 ms.service: active-directory
@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1b9ceb41300d8a53d192602812f1e3c04017609
-ms.sourcegitcommit: eb20dcc97827ef255cb4ab2131a39b8cebe21258
+ms.openlocfilehash: 5ca9c66216f56c46e4232ef688641941e47f1072
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2021
-ms.locfileid: "111371465"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129985240"
 ---
 # <a name="restrict-guest-access-permissions-in-azure-active-directory"></a>Azure Active Directory でゲストのアクセス許可を制限する
 

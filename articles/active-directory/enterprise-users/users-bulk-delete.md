@@ -4,7 +4,7 @@ description: Azure Active Directory の Azure 管理センターでユーザー�
 services: active-directory
 author: curtand
 ms.author: curtand
-manager: daveba
+manager: KarenH444
 ms.date: 07/09/2021
 ms.topic: how-to
 ms.service: active-directory
@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cdaa91a5ffed9e75666602490b4829a3a95e2782
-ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
+ms.openlocfilehash: 56822c8a350e1aaaa047b043e614b2eb20123e31
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2021
-ms.locfileid: "113597831"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129985430"
 ---
 # <a name="bulk-delete-users-in-azure-active-directory"></a>Azure Active Directory でユーザーを一括削除する
 

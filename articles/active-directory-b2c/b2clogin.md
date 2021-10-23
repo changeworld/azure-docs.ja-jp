@@ -3,20 +3,20 @@ title: アプリケーションと API を b2clogin.com に移行する
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C のリダイレクト URL での b2clogin.com の使用について説明します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 09/15/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 12c7b70b2c1128cac943c8d1d61ad84113eb87f5
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 21f881dd0213c59c32f0acfe96b3c3cfc809fdcf
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128570128"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130039868"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Azure Active Directory B2C の b2clogin.com にリダイレクト URL を設定する
 

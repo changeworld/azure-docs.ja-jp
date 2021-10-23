@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: contperf-fy21q1
 ms.date: 08/21/2020
-ms.openlocfilehash: 54738ebe45792bea70067383aaeeca99667f753f
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 26e3c3f5daded5feaaa9063592e772314939f90f
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106068321"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130164612"
 ---
 # <a name="tutorial-create-a-scala-maven-application-for-apache-spark-in-hdinsight-using-intellij"></a>チュートリアル:IntelliJ を使用した HDInsight での Apache Spark の Scala Maven アプリケーションの作成
 
@@ -226,7 +226,7 @@ Scala プラグインをインストールするには、次の手順を実行�
 
 1. **[削除]** を選択します。 **[はい]** を選択します。
 
-:::image type="content" source="./media/apache-spark-create-standalone-application/hdinsight-azure-portal-delete-cluster.png " alt-text="`HDInsight におけるクラスターの削除 (Azure portal)`" border="true":::lete cluster`" border="true":::
+:::image type="content" source="./media/apache-spark-create-standalone-application/hdinsight-azure-portal-delete-cluster.png" alt-text="HDInsight Azure portal でクラスターを削除する" border="true":::
 
 ## <a name="next-step"></a>次のステップ
 

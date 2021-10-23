@@ -5,12 +5,12 @@ metadata:
   ms.topic: article
   ms.service: backup
   ms.date: 08/19/2021
-  ms.openlocfilehash: 2b7ecc95117201d9ab60a39acf1d0f6ae60896a0
-  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+  ms.openlocfilehash: 7ccfe8d814cc06e7c637b6de3a8df6edb43f52bd
+  ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/13/2021
-  ms.locfileid: "124799303"
+  ms.lasthandoff: 10/15/2021
+  ms.locfileid: "130069446"
 title: よく寄せられる質問 - Azure VM のバックアップ
 summary: >
   この記事では、[Azure Backup](./backup-overview.md) サービスによる Azure VM のバックアップについてよくある質問にお答えします。
@@ -80,7 +80,7 @@ sections:
     answer: Azure Backup では、ResourcePointCollections オブジェクトを格納するための別のリソース グループが `AzureBackupRG_<geo>_<number>` の形式で作成されます。 このリソース グループはサービスが所有するため、これをロックするとバックアップは失敗します。 ロックを適用できるのは、顧客が作成したリソース グループのみです。
   - question: Azure Backup は Standard SSD マネージド ディスクをサポートしていますか。
     answer: >
-      はい、Azure Backup では、[Standard SSD マネージド ディスク](../virtual-machines/disks-types.md#standard-ssd)がサポートされています。
+      はい、Azure Backup では、[Standard SSD マネージド ディスク](../virtual-machines/disks-types.md#standard-ssds)がサポートされています。
   - question: 書き込みアクセラレータ (WA) 対応ディスクを使用して VM をバックアップできますか。
     answer: スナップショットは、WA が有効で OS ディスクではないデータ ディスクに対してのみ作成できます。 そのため、WA が有効になっているデータ ディスクのみ保護できます。
   - question: 書き込みアクセラレータ (WA) ディスク と SAP HANA がインストールされている VM があります。 バックアップするには、どうすればよいですか。

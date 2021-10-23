@@ -9,12 +9,12 @@ ms.custom: synapse
 ms.topic: how-to
 ms.subservice: tutorials
 ms.date: 09/29/2021
-ms.openlocfilehash: d1a23e166c322a4a74c3ec175ea672d78ed23de9
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 98fa799cc5fd933d21fb0130093381c628f8e23c
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129367647"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129660953"
 ---
 # <a name="send-notifications-to-a-microsoft-teams-channel-from-an-azure-data-factory-or-synapse-analytics-pipeline"></a>Azure Data Factory または Synapse Analytics パイプラインから Microsoft Teams チャネルに通知を送信する
 
@@ -106,3 +106,7 @@ ms.locfileid: "129367647"
 上記の式は、エラーから関連するエラー メッセージを返します。これは、Teams チャネルで通知として送信できます。 詳細については、[コピー アクティビティの出力のプロパティ](copy-activity-monitoring.md)に関する記事を参照してください。
 
 また、Microsoft Teams でサポートされている[通知ペイロードのスキーマ](https://adaptivecards.io/explorer/AdaptiveCard.html)を確認し、必要に応じて上記のテンプレートをカスタマイズすることもお勧めします。
+
+## <a name="next-steps"></a>次の手順
+
+[パイプラインからメールを送信する方法](how-to-send-email.md)

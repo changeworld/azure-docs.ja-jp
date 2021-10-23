@@ -10,18 +10,18 @@ ms.topic: article
 ms.date: 01/26/2021
 ms.author: danlep
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 72b1680af5bb20d772d93d7743224170fde437fd
-ms.sourcegitcommit: ee5d9cdaf691f578f2e390101bf5350859d85c67
+ms.openlocfilehash: 9db002f50675c45a0eeb7bb7e213d0dc65b64ab8
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129740286"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130006624"
 ---
 # <a name="secure-backend-services-using-client-certificate-authentication-in-azure-api-management"></a>Azure API Management でクライアント証明書認証を使用してバックエンド サービスを保護する
 
 API Management には、クライアント証明書を使用して API のバックエンド サービスへのアクセスを保護する機能があります。 このガイドでは、Azure portal を使用して Azure API Management サービス インスタンスで証明書を管理する方法について説明します。 また、証明書を使用してバックエンド サービスにアクセスするように API を構成する方法についても説明します。
 
-[API Management REST API](/rest/api/apimanagement/2020-12-01/certificate)を使用して API Management 証明書を管理することもできます。
+[API Management REST API](/rest/api/apimanagement/2021-01-01-preview/certificate)を使用して API Management 証明書を管理することもできます。
 
 ## <a name="certificate-options"></a>証明書のオプション
 
@@ -154,4 +154,3 @@ New-AzApiManagementBackend -Context  $context -Url 'https://contoso.com/myapi' -
 [Azure API Management REST API Certificate entity]: ./api-management-caching-policies.md
 [WebApp-GraphAPI-DotNet]: https://github.com/AzureADSamples/WebApp-GraphAPI-DotNet
 [to configure certificate authentication in Azure WebSites refer to this article]: ../app-service/app-service-web-configure-tls-mutual-auth.md
-

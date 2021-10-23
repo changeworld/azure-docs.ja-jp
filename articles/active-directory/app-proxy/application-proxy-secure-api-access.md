@@ -3,21 +3,21 @@ title: Azure Active Directory アプリケーション プロキシを使用し�
 description: Azure Active Directory のアプリケーション プロキシは、オンプレミスまたはクラウド VM でホストされている API およびビジネス ロジックにネイティブ アプリが安全にアクセスできるようにします。
 services: active-directory
 author: kenwith
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-proxy
 ms.workload: identity
 ms.topic: how-to
 ms.date: 05/06/2021
 ms.author: kenwith
-ms.reviewer: japere
+ms.reviewer: ashishj
 ms.custom: has-adal-ref
-ms.openlocfilehash: 5bcdfdd3a56807db967d6be1a8bde540b88c17ca
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: e8ecf329b80324ac282b79ba443b02bdb0e4ce1d
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129230952"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129988793"
 ---
 # <a name="secure-access-to-on-premises-apis-with-azure-active-directory-application-proxy"></a>Azure Active Directory アプリケーション プロキシを使用してオンプレミス API に安全にアクセスする
 

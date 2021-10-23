@@ -3,20 +3,20 @@ title: Azure Pipelines を使用してカスタム ポリシーをデプロイ�
 titleSuffix: Azure AD B2C
 description: Azure Pipelines を使用して、CI/CD パイプラインに Azure AD B2C カスタム ポリシーをデプロイする方法について説明します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 08/26/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: d24e1cf8394b697348492ffcddc4634646ebbbb6
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: f042131bd67c27041ca464fde1be6f4d4915d7a6
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122967089"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130039659"
 ---
 # <a name="deploy-custom-policies-with-azure-pipelines"></a>Azure Pipelines を使用してカスタム ポリシーをデプロイする
 
@@ -176,13 +176,13 @@ exit 0
 
 
         ```PowerShell
-        -ClientID $(clientId) -ClientSecret $(clientSecret) -TenantId $(tenantId) -Folder $(System.DefaultWorkingDirectory)/policyRepo/B2CAssets/ -Files "TrustFrameworkBase.xml,TrustFrameworkExtensions.xml,SignUpOrSignin.xml,ProfileEdit.xml,PasswordReset.xml"
+        -ClientID $(clientId) -ClientSecret $(clientSecret) -TenantId $(tenantId) -Folder $(System.DefaultWorkingDirectory)/policyRepo/B2CAssets/ -Files "TrustFrameworkBase.xml,TrustFrameworkLocalization.xml,TrustFrameworkExtensions.xml,SignUpOrSignin.xml,ProfileEdit.xml,PasswordReset.xml"
         ```
         
         `-Files` パラメーターは、デプロイするポリシー ファイルのカンマ区切りリストです。 ポリシー ファイルを使用してリストを更新します。
         
         > [!IMPORTANT]
-        >  ポリシーが正しい順序でアップロードされることを確認します。 まず、基本ポリシー、拡張機能ポリシー、証明書利用者ポリシーの順です。 (例: `TrustFrameworkBase.xml,TrustFrameworkExtensions.xml,SignUpOrSignin.xml`)。
+        >  ポリシーが正しい順序でアップロードされることを確認します。 まず、基本ポリシー、拡張機能ポリシー、証明書利用者ポリシーの順です。 (例: `TrustFrameworkBase.xml,TrustFrameworkLocalization.xml,TrustFrameworkExtensions.xml,SignUpOrSignin.xml`)。
         
 1. **[保存]** を選択して、エージェント ジョブを保存します。
 

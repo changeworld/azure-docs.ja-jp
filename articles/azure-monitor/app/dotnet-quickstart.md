@@ -2,16 +2,14 @@
 title: 'クイックスタート: Azure Monitor Application Insights を使用して ASP.NET Core アプリを監視する'
 description: Azure Monitor Application Insights を使用して監視するために ASP.NET Core Web アプリをインストルメント化します。
 ms.topic: quickstart
-author: lgayhardt
-ms.author: lagayhar
 ms.date: 06/11/2021
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 03506bd066ee81eb61c2d44f0d31f1336bd44f05
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.openlocfilehash: 344f34116a1c6b40ac452fea4c9f27d8c89ba3ad
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129081113"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130134053"
 ---
 # <a name="quickstart-monitor-an-aspnet-core-app-with-azure-monitor-application-insights"></a>クイックスタート: Azure Monitor Application Insights を使用して ASP.NET Core アプリを監視する
 

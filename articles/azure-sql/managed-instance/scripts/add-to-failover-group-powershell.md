@@ -8,16 +8,16 @@ ms.subservice: high-availability
 ms.custom: sqldbrb=1, devx-track-azurepowershell
 ms.devlang: PowerShell
 ms.topic: sample
-author: BustosMSFT
-ms.author: robustos
+author: emlisa
+ms.author: emlisa
 ms.reviewer: mathoma
 ms.date: 07/16/2019
-ms.openlocfilehash: 3584758532d8bc03213ce51f38fa38ac8a5bc374
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 9cb777100386f3ee29a60d7e2feef6a6a741d615
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110692941"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130164151"
 ---
 # <a name="use-powershell-to-add-a-managed-instance-to-a-failover-group"></a>PowerShell を使用してマネージド インスタンスをフェールオーバー グループに追加する 
 
@@ -47,7 +47,7 @@ Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| コマンド | Notes |
+| command | メモ |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Azure リソース グループを作成します。  |
 | [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | 仮想ネットワークを作成します。  |

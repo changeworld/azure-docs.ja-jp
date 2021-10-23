@@ -3,7 +3,7 @@ title: 料金ガイダンスおよびとコストの管理
 description: 適切な SQL Server 仮想マシンの料金モデルを選択するためのベスト プラクティスについて説明します。
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: bluefooted
 editor: ''
 tags: azure-service-management
 ms.assetid: ''
@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/09/2018
-ms.author: mathoma
-ms.reviewer: jroth
+ms.author: pamela
+ms.reviewer: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 05883b3016ac3c8a8d26bfc02fea38e3adb2675a
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 29ec21aa3135fc321ec226d74be07ae9e1b73d97
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112079753"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130161451"
 ---
 # <a name="pricing-guidance-for-sql-server-on-azure-vms"></a>Azure VM 上の SQL Server の料金ガイダンス
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]

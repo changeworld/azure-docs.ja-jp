@@ -4,12 +4,12 @@ description: この記事では、Azure Video Analyzer の用語について概�
 ms.service: azure-video-analyzer
 ms.topic: conceptual
 ms.date: 06/01/2021
-ms.openlocfilehash: 59ed8f85f1196328b6ab477faae77ed35d054223
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: 1b9de2608d3b6ccb3922636f8cd473e79eff5e00
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114601866"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130070244"
 ---
 # <a name="azure-video-analyzer-terminology"></a>Azure Video Analyzer の用語
 
@@ -40,7 +40,7 @@ Video Analyzer を使用すると、ビデオ リソースを作成し、既存�
 
 ## <a name="streaming"></a>ストリーム
 
-Video Analyzer を使用すると、[HTTP ライブ ストリーミング (HLS)](https://developer.apple.com/streaming/) や [MPEG-DASH](https://dashif.org/about/) などの業界標準の HTTP ベースのメディア ストリーミング プロトコルを使用して、ビデオ記録をクライアントにストリームできます。 [Azure Video Analyzer プレーヤー ウィジェット](https://github.com/Azure/video-analyzer/blob/main/widgets/readme.md) (Web コンポーネント) を使用して、ビデオ リソースを再生できます。 また、HLS は、[JW Player](https://www.jwplayer.com/)、[hls.js](https://github.com/video-dev/hls.js/)、[VideoJS](https://videojs.com/)、[Google’s Shaka Player](https://github.com/google/shaka-player) などの Web プレーヤーでサポートされています。さらに、Android の [Exoplayer](https://github.com/google/ExoPlayer) や iOS の [AV Foundation](https://developer.apple.com/av-foundation/) を使用してモバイル アプリでネイティブにレンダリングすることもできます。 同様に、MPEG-DASH は[こちらのページにあるクライアントの一覧](https://dashif.org/clients/)でサポートされています。
+Video Analyzer を使用すると、[HTTP ライブ ストリーミング (HLS)](https://developer.apple.com/streaming/) や [MPEG-DASH](https://dashif.org/about/) などの業界標準の HTTP ベースのメディア ストリーミング プロトコルを使用して、ビデオ記録をクライアントにストリームできます。 [Azure Video Analyzer プレーヤー ウィジェット](https://github.com/Azure/video-analyzer/blob/main/widgets/readme.md) (Web コンポーネント) を使用して、ビデオ リソースを再生できます。 また、HLS は、[JW Player](https://www.jwplayer.com/)、[hls.js](https://github.com/video-dev/hls.js/)、[VideoJS](https://videojs.com/)、[Google’s Shaka Player](https://github.com/google/shaka-player) などの Web プレーヤーでサポートされています。さらに、Android の [Exoplayer](https://github.com/google/ExoPlayer) や iOS の [AV Foundation](https://developer.apple.com/av-foundation/) を使用してモバイル アプリでネイティブにレンダリングすることもできます。 同様に、MPEG-DASH は[こちらのページにあるクライアントの一覧](https://dashif.org/members/)でサポートされています。
 
 ## <a name="vms"></a>VMS
 

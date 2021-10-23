@@ -3,15 +3,15 @@ title: JMX メトリックを構成する方法 - Java 向けの Azure Monitor A
 description: Azure Monitor Application Insights Java エージェント用の追加の JMX メトリック コレクションを構成する
 ms.topic: conceptual
 ms.date: 03/16/2021
-author: MS-jgol
 ms.custom: devx-track-java
-ms.author: jgol
-ms.openlocfilehash: 8b5db7861a3488fb71e709d17679e8d54911b0c9
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+author: mattmccleary
+ms.author: mmcc
+ms.openlocfilehash: 932ce7191aa64850dcf276f5906a038a0352ee80
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110069186"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130133882"
 ---
 # <a name="configuring-jmx-metrics"></a>JMX メトリックの構成
 

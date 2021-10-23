@@ -6,14 +6,14 @@ ms.service: virtual-machines
 ms.subservice: maintenance
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 11/19/2020
+ms.date: 10/06/2021
 ms.author: cynthn
-ms.openlocfilehash: 47d99e87e788c833e5793a1e4e3b7d517d90909b
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: f04a1e776573ae8b335f1659057d89b2a144e051
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129535003"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129661238"
 ---
 # <a name="managing-platform-updates-with-maintenance-control"></a>メンテナンス コントロールによるプラットフォームの更新の管理 
 
@@ -34,7 +34,7 @@ ms.locfileid: "129535003"
 - VM は、[専用ホスト](./dedicated-hosts.md)上にあるか、[分離された VM サイズ](isolation.md)を使用して作成される必要があります。
 - メンテナンス期間は月ごとに異なる場合があり、ユーザーが開始した保留中の更新プログラムが適用されるまでに最大 2 時間かかることがあります。  
 - 35 日後に、更新プログラムが自動的に適用されます。
-- ラック レベルのメンテナンス アクティビティは、まだこのメンテナンス管理には含まれていません。
+- ラック レベルのメンテナンスは、メンテナンス コントロールでは制御できません。
 - ユーザーは、**リソース共同作成者** のアクセス権を持っている必要があります。
 
 ## <a name="management-options"></a>管理オプション

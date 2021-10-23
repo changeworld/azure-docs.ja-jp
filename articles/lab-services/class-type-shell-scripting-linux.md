@@ -1,14 +1,14 @@
 ---
 title: Azure Lab Services で Linux シェル スクリプト作成ラボを設定する | Microsoft Docs
 description: Linux でのシェル スクリプト作成を教えるラボを設定する方法について説明します。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: ba14f2fb5263367014b57741c78d6e509df044b3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0faf5c9a11ad4aed3bf1157bc18dbeb84f60030b
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85444966"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130176550"
 ---
 # <a name="set-up-a-lab-to-teach-shell-scripting-on-linux"></a>Linux でのシェル スクリプト作成を教えるためのラボを設定する
 この記事では、Linux でのシェル スクリプトの作成を教えるためのラボを設定する方法について説明します。 スクリプトの作成は、管理者がタスクを繰り返さなくて済むようにできる、システム管理の役に立つ部分です。 このサンプル シナリオのクラスでは、従来の bash スクリプトと拡張スクリプトについて説明します。 拡張スクリプトは、bash コマンドと Ruby を組み合わせたスクリプトです。 このアプローチにより、Ruby でデータを渡すことができ、bash コマンドでシェルと対話することができます。 

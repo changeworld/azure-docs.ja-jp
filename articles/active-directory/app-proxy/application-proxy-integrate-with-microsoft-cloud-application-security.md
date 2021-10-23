@@ -2,20 +2,20 @@
 title: アプリケーション プロキシを使用してオンプレミスのアプリを Cloud App Security と統合する - Azure Active Directory
 description: オンプレミス アプリケーションを Microsoft Cloud App Security (MCAS) と連携するように Azure Active Directory で構成します。 MCAS のアプリの条件付きアクセス制御を使用して、条件付きアクセス ポリシーに基づいてセッションをリアルタイムで監視および制御します。 これらのポリシーは、Azure Active Directory (Azure AD) でアプリケーション プロキシが使用されているオンプレミス アプリケーションに適用できます。
 author: kenwith
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-proxy
 ms.workload: identity
 ms.topic: how-to
 ms.date: 04/28/2021
 ms.author: kenwith
-ms.reviewer: japere
-ms.openlocfilehash: d63ba98717d57fce661e9053f0fcca00e2df0b65
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.reviewer: ashishj
+ms.openlocfilehash: 2a626d7c26f165d554ec7dcc72e5e5f34c5b58c4
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108229995"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129989325"
 ---
 # <a name="configure-real-time-application-access-monitoring-with-microsoft-cloud-app-security-and-azure-active-directory"></a>Microsoft Cloud App Security と Azure Active Directory を使用してリアルタイムでのアプリケーション アクセスの監視を構成する
 Microsoft Cloud App Security (MCAS) を使用してリアルタイムで監視を行うように、オンプレミス アプリケーションを Azure Active Directory (Azure AD) で構成します。 MCAS では、条件付きアクセス ポリシーに基づいたリアルタイムでのセッションの監視と制御に、アプリの条件付きアクセス制御が使用されます。 これらのポリシーは、Azure Active Directory (Azure AD) でアプリケーション プロキシが使用されているオンプレミス アプリケーションに適用できます。

@@ -10,12 +10,12 @@ ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
 ms.date: 05/05/2021
-ms.openlocfilehash: a25cfb69b0de9561de2093a8e9e91bf4e9f8cb98
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: fc13ac868f2abb1ccd466b245c22682af79ba915
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129424285"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130161274"
 ---
 # <a name="failover-for-business-continuity-and-disaster-recovery"></a>事業継続とディザスター リカバリーのためのフェールオーバー
 
@@ -188,4 +188,4 @@ Azure Machine Learning では、ワークスペース インスタンス間で�
 > * "__実行の出力__" は、ワークスペースに関連付けられた既定のストレージ アカウントに格納されます。 サービス停止時にスタジオ UI から実行の出力にアクセスできなくなる可能性がありますが、このときストレージ アカウントを使用して、データに直接アクセスできます。 BLOB に格納されているデータの操作の詳細については、「[Azure CLI を使用して BLOB を作成、ダウンロード、一覧表示する](../storage/blobs/storage-quickstart-blobs-cli.md)」を参照してください。
 ## <a name="next-steps"></a>次のステップ
 
-関連付けられたリソースを使用して高可用性設定で Azure Machine Learning をデプロイするには、[Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.machinelearningservices/machine-learning-advanced)を使用します。
+関連付けられたリソースを使用して高可用性設定で Azure Machine Learning をデプロイするには、[Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.machinelearningservices/)を使用します。

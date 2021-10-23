@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 09/24/2021
+ms.date: 10/05/2021
 ms.author: tisande
-ms.openlocfilehash: b9eea7016da1e96e51e17d513ccbc3ca240c6e3d
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 13d667327fde6f55072f40dd6d1f9b7eb07d1214
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129236930"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129615204"
 ---
 # <a name="indexing-metrics-in-azure-cosmos-db"></a>Azure Cosmos DB のインデックス作成メトリック
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -93,6 +93,9 @@ Index Utilization Information
 考えられる単一のインデックスと使用された複合インデックスは、それぞれ、インクルード パスと、追加されていれば、クエリで使用された可能性のある複合インデックスを示しています。 考えられるインデックス付きパスがある場合は、それらをインデックス作成ポリシーに追加して、クエリのパフォーマンスが向上するかどうかを確認する必要があります。
 
 考えられるインデックス付きパスの一覧は、クエリで特定のインデックス付きパスが使用されることの明確な証拠ではなく、推奨されるものと考えてください。 考えられるインデックス付きパスは、クエリで使用されるインデックス付きパスの網羅的な一覧ではありません。 また、考えられるインデックス付きパスの中には、クエリのパフォーマンスに影響しないものもあります。 [推奨されるインデックス付きパスを追加](how-to-manage-indexing-policy.md)し、クエリのパフォーマンスが向上することを確認します。
+
+> [!NOTE]
+> インデックス作成メトリックについてフィードバックをお寄せください。 ご意見をお待ちしています。 ぜひ、Azure Cosmos DB エンジニアリング チーム (cosmosdbindexing@microsoft.com) まで直接ご意見をお寄せください。
 
 ## <a name="index-impact-score"></a>インデックスの影響スコア
 

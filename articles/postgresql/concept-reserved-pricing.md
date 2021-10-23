@@ -5,18 +5,21 @@ author: mksuni
 ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 10/01/2021
-ms.openlocfilehash: 9d8c0a4f550442b59a65993aceba37a1672ce078
-ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
+ms.date: 10/06/2021
+ms.openlocfilehash: 02c8e93603672f18c456911a99503f05c78bd323
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2021
-ms.locfileid: "129389496"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129658115"
 ---
 # <a name="prepay-for-azure-database-for-postgresql-compute-resources-with-reserved-capacity"></a>予約容量を使用して Azure Database for PostgreSQL 計算リソースを前払いする
 
+[!INCLUDE[applies-to-postgres-single-flexible-server-hyperscale](includes/applies-to-postgres-single-flexible-server-hyperscale.md)]
+
 Azure Database for PostgreSQL では計算リソースを前払いすることで、従量課金制よりコストを節約できるようになりました。 Azure Database for PostgreSQL の予約容量を使用すると、PostgreSQL サーバーを 1 年分または 3 年分前払いすることで計算コストを大幅に引き下げることができます。 Azure Database for PostgreSQL の予約容量を購入するには、Azure リージョン、デプロイの種類、パフォーマンス レベル、および期間を指定する必要があります。 </br>
 
+## <a name="how-does-the-instance-reservation-work"></a>インスタンスの予約はどのように動作しますか。
 特定の Azure Database for PostgreSQL サーバーに予約を割り当てる必要はありません。 既に実行している Azure Database for PostgreSQL または新しくデプロイされたものには、予約価格の特典が自動的に適用されます。 予約を購入すると、計算コストを 1 年間または 3 年間分前払いすることになります。 予約を購入するとすぐに、予約の属性に一致する Azure Database for PostgreSQL のコンピューティング料金は従量課金制で課金されなくなります。 予約には、PostgreSQL データベース サーバーに関連するソフトウェア、ネットワーク、またはストレージの料金は含まれません。 予約期間が満了した時点で、課金特典の有効期限は切れ、従量課金料金が Azure Database for PostgreSQL に適用されます。 予約は自動更新されません。 価格の詳細については、[Azure Database for PostgreSQL の予約容量オファー](https://azure.microsoft.com/pricing/details/postgresql/)に関するページを参照してください。 </br>
 
 > [!IMPORTANT]
@@ -30,6 +33,13 @@ Azure Database for PostgreSQL の予約容量は、[Azure portal](https://portal
 
 エンタープライズおよび従量課金制のお客様に対する予約購入の課金方法の詳細については、「[エンタープライズ加入契約に適用される Azure の予約の使用状況について](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)」および「[従量課金制サブスクリプションに適用される Azure の予約の使用状況について](../cost-management-billing/reservations/understand-reserved-instance-usage.md)」をご覧ください。
 
+## <a name="reservation-exchanges-and-refunds"></a>予約の交換と返金
+
+予約は同じ種類の別の予約に交換できます。また、Azure Database for PostgreSQL - 単一サーバーの予約をフレキシブル サーバーと交換できます。 また、予約が不要になった場合は払い戻しができます。 予約の交換または払い戻しを行うには、Azure portal を使用できます。 詳しくは、「[Azure の予約のセルフサービスによる交換と払戻](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md)」を参照してください。
+
+## <a name="reservation-discount"></a>予約割引
+
+予約インスタンスを使用すると、コンピューティング コストを最大 65% 節約できます。 適用される割引を見つけるには、Azure portal で [[予約]](https://aka.ms/reservations) ブレードにアクセスし、価格レベル別とリージョン別の節約を選択してください。 予約インスタンスで 1 年分または 3 年分を前払いすることにより、ワークロード、予算、予測が管理しやすくなります。 ビジネス ニーズの変化に応じて予約を交換またはキャンセルすることができます。
 
 ## <a name="determine-the-right-server-size-before-purchase"></a>購入する前に適切なサーバー サイズを決定する
 
@@ -61,14 +71,30 @@ Azure Database for PostgreSQL の予約容量は、[Azure portal](https://portal
 | 期間 | 1 年
 | Quantity | Azure Database for PostgreSQL の予約容量の予約内で購入される計算リソース数。 この数量は、予約し、請求時に割り引きを受ける、選択された Azure リージョンとパフォーマンス レベルに含まれる仮想コアの数です。 たとえば、米国東部リージョンで、合計コンピューティング容量を Gen5 仮想コア 16 個とする Azure Database for PostgreSQL サーバーを実行している場合、あるいは実行する予定の場合、すべてのサーバーを最大限に活用するため、数量に 16 を指定します。
 
-## <a name="cancel-exchange-or-refund-reservations"></a>予約の取り消し、交換、または返金
+## <a name="reserved-instances-api-support"></a>予約インスタンス API サポート
 
-一定の制限付きで、予約の取り消し、交換、または返金を行うことができます。 詳しくは、「[Azure の予約のセルフサービスによる交換と払戻](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md)」を参照してください。
+Azure API を使用して、Azure サービスまたはソフトウェアの予約に関する組織の情報をプログラムで取得します。 たとえば、次の用途に API を使用します。
+
+- 購入する予約を検索する
+- 予約の購入
+- 購入した予約を表示する
+- 予約の利用を表示および管理する
+- 予約を分割または統合する
+- 予約の範囲を変更する
+ 
+詳細については、「[APIs for Azure reservation automation](../cost-management-billing/reservations/reservation-apis.md)」(Azure の予約自動化の API) を参照してください。
 
 ## <a name="vcore-size-flexibility"></a>仮想コアのサイズの柔軟性
 
 同じパフォーマンス レベルとリージョン内であれば、予約容量のベネフィットを失うことなく、仮想コアのサイズを柔軟にスケールアップまたはスケールダウンできます。 予約容量よりも多くの仮想コアに拡張した場合、超過した仮想コアについては、従量課金制の料金を使用して課金されます。
 
+## <a name="how-to-view-reserved-instance-purchase-details"></a>予約インスタンスの購入の詳細を表示する方法
+
+[Azure portal の左側にある [予約] メニュー](https://aka.ms/reservations)を使用して予約インスタンスの購入詳細を表示できます。 詳細については、「[Azure Database for PostgreSQL に対する予約割引の適用方法](../cost-management-billing/reservations/understand-reservation-charges-postgresql.md)」を参照してください。
+
+## <a name="reserved-instance-expiration"></a>予約インスタンスの有効期限
+
+予約の有効期限の 30 日前と有効期限が切れたときに、メール通知が届きます。 予約の期限が切れても、デプロイされている VM は稼働し続け、従量課金制で課金されます。 詳細については、[Azure Database for PostgreSQL の予約インスタンス](../cost-management-billing/reservations/understand-reservation-charges-postgresql.md)に関するページを参照してください。
 
 ## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせ
 

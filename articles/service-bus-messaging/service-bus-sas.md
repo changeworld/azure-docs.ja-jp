@@ -2,14 +2,14 @@
 title: Shared Access Signature による Azure Service Bus アクセス制御
 description: Shared Access Signature を使用して Service Bus のアクセスの制御を行う方法と、Azure Service Bus における SAS 承認の詳細について説明します。
 ms.topic: article
-ms.date: 04/27/2021
+ms.date: 10/18/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5659e159604c80ffe19cbc4b57dea5d99c1acb98
-ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
+ms.openlocfilehash: 5a31ce93c603f1bc1f0765fb2de438476e1f63de
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2021
-ms.locfileid: "112379818"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130164962"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Shared Access Signature による Service Bus のアクセスの制御
 
@@ -261,9 +261,9 @@ AMQP メッセージには一連のプロパティと、簡単なメッセージ
 | トピック セッションに関連付けられた状態を取得する |リッスン |../myTopic/Subscriptions/mySubscription |
 | トピック セッションに関連付けられた状態を設定する |リッスン |../myTopic/Subscriptions/mySubscription |
 | **ルール** | | |
-| 規則を作成する |管理する |../myTopic/Subscriptions/mySubscription |
-| 規則を削除する |管理する |../myTopic/Subscriptions/mySubscription |
-| 規則を列挙する |管理またはリッスン |../myTopic/Subscriptions/mySubscription/Rules
+| 規則を作成する | リッスン |../myTopic/Subscriptions/mySubscription |
+| 規則を削除する | リッスン |../myTopic/Subscriptions/mySubscription |
+| 規則を列挙する | リッスン |../myTopic/Subscriptions/mySubscription/Rules
 
 ## <a name="next-steps"></a>次のステップ
 

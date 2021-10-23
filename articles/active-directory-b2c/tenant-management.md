@@ -3,21 +3,21 @@ title: Azure Active Directory B2C を管理する
 titleSuffix: Azure Active Directory B2C
 description: Azure Active Directory B2C テナントを管理する方法を説明します。 Azure AD B2C でサポートされている Azure AD 機能、管理者ロールを使用してリソースを管理する方法、および仕事用アカウントとゲスト ユーザーを Azure AD B2C テナントに追加する方法を説明します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/04/2021
 ms.custom: project-no-code
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 7e364b3ce5231370643f9c9ea730dec22ab9022a
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: a39b34f0b783997a90e634157354543aa3eab79a
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129615944"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130042980"
 ---
 # <a name="manage-your-azure-active-directory-b2c-tenant"></a>Azure Active Directory B2C テナントを管理する
 

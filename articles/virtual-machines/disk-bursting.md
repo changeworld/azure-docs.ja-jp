@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 7cd3c1d4a0da5ca0741f6d7f05a1cf082d2e922e
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: d6e326bdc08b58d4dc32eb8a3d7592f3fd85b4af
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122696541"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130074413"
 ---
 # <a name="managed-disk-bursting"></a>マネージド ディスクのバースト
 
@@ -31,12 +31,12 @@ Azure VM のバーストとディスク リソースのバーストは互いに�
 
 ## <a name="disk-level-bursting"></a>ディスクレベルでのバースト
 
-現在、バーストできるマネージド ディスクの種類は、[Premium SSD](disks-types.md#premium-ssd)、[Standard SSD](disks-types.md#standard-ssd) の 2 種類です。 その他のディスクの種類は、現在バーストできません。 ディスクのバーストには、次の 2 つのモデルがあります。
+現在、バーストできるマネージド ディスクの種類は、[Premium SSD](disks-types.md#premium-ssds)、[Standard SSD](disks-types.md#standard-ssds) の 2 種類です。 その他のディスクの種類は、現在バーストできません。 ディスクのバーストには、次の 2 つのモデルがあります。
 
 - オンデマンドのバースト モデル (プレビュー)。ディスクのニーズが現在の容量を超えるたびに、ディスクがバーストします。 このモデルでは、ディスクがバーストするたびに追加料金が発生します。 オンデマンド バーストは 512 GiB より大きい Premium SSD でのみ使用できます。
 - クレジットベース モデル。クレジット バケットにバースト クレジットが累積されている場合にのみ、ディスクがバーストします。 このモデルでは、ディスクのバースト時に追加料金は発生しません。 クレジットベース バーストは、512 GiB 以下の Premium および Standard SSD でのみ使用できます。
 
-Azure [Premium SSD](disks-types.md#premium-ssd) ではいずれかのバースト モデルを使用できますが、[標準の SSD](disks-types.md#standard-ssd) は現在、クレジットベースのバーストのみを提供しています。
+Azure [Premium SSD](disks-types.md#premium-ssds) ではいずれかのバースト モデルを使用できますが、[標準の SSD](disks-types.md#standard-ssds) は現在、クレジットベースのバーストのみを提供しています。
 
 さらに、[マネージド ディスクのパフォーマンス レベルは変更できます](disks-change-performance.md)。これは、そうしなければワークロードがバーストで実行される場合に最適です。
 

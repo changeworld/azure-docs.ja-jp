@@ -4,7 +4,7 @@ description: Azure Active Directory (Azure AD) 組織でセルフサービス �
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: daveba
+manager: KarenH444
 editor: ''
 ms.service: active-directory
 ms.subservice: enterprise-users
@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58f02ff10ab2eaee7460942e1ba98df1f9771bfc
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 19a300f13a18e4185877291099255c84c45bc34c
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123426006"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129986969"
 ---
 # <a name="what-is-self-service-sign-up-for-azure-active-directory"></a>Azure Active Directory のセルフサービス サインアップについて
 

@@ -3,20 +3,20 @@ title: Azure Active Directory アプリケーション プロキシ コネクタ
 description: Azure Active Directory アプリケーション プロキシ コネクタについて説明します。
 services: active-directory
 author: kenwith
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-proxy
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/27/2021
 ms.author: kenwith
-ms.reviewer: japere
-ms.openlocfilehash: 066690f69922ba8df7e7df8739d4c4bf521eb5c3
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.reviewer: ashishj
+ms.openlocfilehash: 09574963b674160c271176204c49443f09174285
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129230933"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129989686"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Azure AD アプリケーション プロキシ コネクタを理解する
 

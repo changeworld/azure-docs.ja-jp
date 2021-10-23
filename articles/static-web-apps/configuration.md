@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 08/27/2021
 ms.author: cshoe
-ms.openlocfilehash: 25358033e88fbfb1590289e6fbad8e4109e0dbbf
-ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
+ms.openlocfilehash: ce46cbaf5a368d3278f4ccdf0c012f212fbfb48a
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2021
-ms.locfileid: "129399586"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130004219"
 ---
 # <a name="configure-azure-static-web-apps"></a>Azure Static Web Apps を構成する
 
@@ -202,7 +202,7 @@ _staticwebapp.config.json_ の推奨される場所は、[ワークフロー フ
 
 ## <a name="global-headers"></a>グローバル ヘッダー
 
-`globalHeaders` セクションでは、[ルート ヘッダー](#route-headers)規則によってオーバーライドされない限り、各応答に適用される一連の [HTTP ヘッダー](https://developer.mozilla.org/docs/Web/HTTP/Headers)が提供されます。それ以外の場合は、ルートからのヘッダーとグローバル ヘッダーの両方の和集合が返されます。
+`globalHeaders` セクションでは、ルート ヘッダー規則によってオーバーライドされない限り、各応答に適用される一連の [HTTP ヘッダー](#route-headers)が提供されます。それ以外の場合は、ルートからのヘッダーとグローバル ヘッダーの両方の和集合が返されます。
 
 使用例については、「[構成ファイルの例](#example-configuration-file)」を参照してください。
 

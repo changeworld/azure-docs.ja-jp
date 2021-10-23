@@ -3,21 +3,21 @@ title: Azure Active Directory アプリケーション プロキシを使用し�
 description: アプリケーション プロキシを使用して、リモート ユーザー向けにオンプレミス Web アプリケーションを外部に発行する理由を説明します。 アプリケーション プロキシのアーキテクチャ、コネクタ、認証方法、およびセキュリティ上の利点について説明します。
 services: active-directory
 author: kenwith
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-proxy
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 04/27/2021
 ms.author: kenwith
-ms.reviewer: japere
+ms.reviewer: ashishj
 ms.custom: has-adal-ref
-ms.openlocfilehash: cb6241443f4ec7aa9d60501aab50ca21ed1d147d
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 5968de16c25fd8f559caebaa2af5a9292688076c
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129235860"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129987786"
 ---
 # <a name="using-azure-ad-application-proxy-to-publish-on-premises-apps-for-remote-users"></a>Azure AD アプリケーション プロキシを使用してリモート ユーザー向けにオンプレミス アプリを発行する
 
@@ -92,7 +92,7 @@ Azure AD はアプリケーション プロキシを使用して、オンプレ�
 
 アプリケーション プロキシは、次のネイティブ認証プロトコルを使用するアプリで動作します。
 
-* [**統合 Windows 認証 (IWA)** ](./application-proxy-configure-single-sign-on-with-kcd.md)。 IWA の場合、アプリケーション プロキシ コネクタは、Kerberos アプリケーションに対して Kerberos 制約付き委任 (KCD) を使用し、ユーザーを認証します。
+* [**統合 Windows 認証 (IWA)**](./application-proxy-configure-single-sign-on-with-kcd.md)。 IWA の場合、アプリケーション プロキシ コネクタは、Kerberos アプリケーションに対して Kerberos 制約付き委任 (KCD) を使用し、ユーザーを認証します。
 
 サード パーティ統合または特定の構成のシナリオでは、アプリケーション プロキシは次の認証プロトコルもサポートしています。
 

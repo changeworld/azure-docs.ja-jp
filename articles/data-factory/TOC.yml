@@ -114,6 +114,8 @@ items:
         items:
           - name: マッピング データ フローを使用してデータを変換する
             items:
+              - name: Synapse パイプラインの Adventure Works リテールの例
+                href: tutorial-data-flow-adventure-works-retail-template.md
               - name: ADLS Gen2 を使用するレイクへのデータ取り込みのベスト プラクティス
                 href: tutorial-data-flow-write-to-lake.md
               - name: 列名を動的に設定する

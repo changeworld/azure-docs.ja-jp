@@ -9,14 +9,14 @@ ms.subservice: flexible-scale-sets
 ms.date: 08/05/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli, vmss-flex
-ms.openlocfilehash: 64fc87455b035503891319de1b8fd06090586b4b
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 571894779b05a823b4de2e841a3b198dc334ab1f
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122868410"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130166536"
 ---
-# <a name="preview-create-virtual-machines-in-a-flexible-scale-set-using-an-arm-template"></a>プレビュー: ARM テンプレートを使用してフレキシブル スケール セットに仮想マシンを作成する
+# <a name="create-virtual-machines-in-a-flexible-scale-set-using-an-arm-template"></a>ARM テンプレートを使用してフレキシブル スケール セットに仮想マシンを作成する
 
 **適用対象:** :heavy_check_mark: フレキシブル スケール セット
 
@@ -24,11 +24,11 @@ ms.locfileid: "122868410"
 この記事では、ARM テンプレートを使用して、フレキシブル オーケストレーション モードで仮想マシン スケール セットを作成する方法について説明します。 フレキシブル スケール セットの詳細については、[仮想マシン スケール セットのフレキシブル オーケストレーション モード](flexible-virtual-machine-scale-sets.md)に関するページを参照してください。 
 
 
-> [!IMPORTANT]
-> フレキシブル オーケストレーション モードの仮想マシン スケール セットは現在、パブリック プレビュー段階です。 後述するパブリック プレビュー機能を使用するためには、オプトイン手順が必要です。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
+環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
+
+[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.compute%2Fvmss-flexible-orchestration-quickstart%2Fazuredeploy.json)
 
 > [!CAUTION]
 > オーケストレーション モードは、スケール セットを作成するときに定義され、後で変更または更新することはできません。
@@ -36,10 +36,6 @@ ms.locfileid: "122868410"
 ## <a name="prerequisites"></a>前提条件
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
-
-## <a name="register-for-flexible-orchestration-mode"></a>フレキシブル オーケストレーション モードの登録
-
-フレキシブル オーケストレーション モードで仮想マシン スケール セットをデプロイするには、まず[プレビュー機能を利用するためにサブスクリプションを登録する](flexible-virtual-machine-scale-sets.md#register-for-flexible-orchestration-mode)必要があります。 登録が完了するまでに数分かかる場合があります。
 
 ## <a name="arm-template"></a>ARM テンプレート 
 

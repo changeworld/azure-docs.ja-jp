@@ -3,7 +3,7 @@ title: プロビジョニングを Azure Active Directory の Azure Monitor ロ�
 description: プロビジョニングを Azure Active Directory の Azure Monitor ログと統合する方法について説明します。
 services: active-directory
 author: kenwith
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/11/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 8ad80b7fb8c148ae42d52b15719ddadf4b5302e2
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 918267b9dc2d7d8548d5406d590a03db13870749
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109783281"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129991833"
 ---
 # <a name="understand-how-provisioning-integrates-with-azure-monitor-logs"></a>プロビジョニングを Azure Monitor ログと統合する方法の概要
 

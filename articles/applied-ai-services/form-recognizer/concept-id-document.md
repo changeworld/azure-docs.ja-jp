@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/07/2021
 ms.author: lajanuar
 recommendations: false
-ms.openlocfilehash: 4b73526ad245d9364b0ada997fc014e0dd16df40
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 98364df02238c36f7e15f00eaff6ec124631987c
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129716281"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130178241"
 ---
 <!-- markdownlint-disable MD033 -->
 
@@ -23,7 +23,7 @@ ms.locfileid: "129716281"
 
 身分証明書モデルでは、強力な光学式文字認識 (OCR) 機能とディープ ラーニング モデルが組み合わされ、米国の運転免許証 (全 50 州とコロンビア特別区) と国際パスポートの個人情報が載せられたページ (査証や他の旅行文書を除く) を分析し、それらから重要な情報を抽出します。 この API は、身分証明書を分析します。つまり、名、姓、住所、生年月日などの重要な情報を抽出し、構造化された JSON データ表現を返します。
 
-***Form Recognizer サンプル ラベル付けツールで処理された[米国の運転免許証のサンプル](https://fott-2-1.azurewebsites.net/):***
+***Form Recognizer サンプル ラベル付けツールで処理された [米国の運転免許証のサンプル](https://fott-2-1.azurewebsites.net/):***
 
 :::image type="content" source="./media/id-example-drivers-license.jpg" alt-text="ID カードのサンプル" lightbox="./media/overview-id.jpg":::
 
@@ -46,7 +46,7 @@ ms.locfileid: "129716281"
 
  :::image type="content" source="media/containers/keys-and-endpoint.png" alt-text="スクリーンショット: Azure portal のキーとエンドポイントの場所。":::
 
-* 身分証明書。 [サンプルの身分証明書](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/id-license.jpg)を使用できます。
+* 身分証明書。 [サンプルの身分証明書](https://raw.githubusercontent.com/MicrosoftDocs/azure-docs/master/articles/applied-ai-services/form-recognizer/media/id-license.jpg)を使用できます。
 
 > [!div class="nextstepaction"]
   > [試してみる](https://fott-2-1.azurewebsites.net/prebuilts-analyze)
@@ -83,7 +83,7 @@ Form Recognizer UI で以下の手順を実行します。
 
 ## <a name="key-value-pair-extraction"></a>キーと値のペアの抽出
 
-|名前| 型 | 説明 | 標準化された出力|
+|名前| Type | 説明 | 標準化された出力|
 |:-----|:----|:----|:----|
 |  CountryRegion | countryRegion | ISO 3166 標準に準拠した国または地域コード |  |
 |  DateOfBirth | date | DOB | yyyy-mm-dd |
@@ -106,7 +106,7 @@ Form Recognizer UI で以下の手順を実行します。
 
     ### <a name="id-document-preview-key-value-pair-extraction"></a>身分証明書プレビューのキーと値のペアの抽出
 
-    |名前| 型 | 説明 | 標準化された出力|
+    |名前| Type | 説明 | 標準化された出力|
     |:-----|:----|:----|:----|
     | 🆕 Endorsements | string | ドライバーに付与される追加の運転特権 (二輪車やスクール バスなど)。  | |
     | 🆕 Restrictions | string | 停止または取り消されたライセンスに適用される制限付き運転特権。| |
@@ -126,7 +126,7 @@ Form Recognizer UI で以下の手順を実行します。
 
 * アプリケーションとワークフローでプレビュー バージョンを使用する方法については、[**Form Recognizer v3.0 移行ガイド**](v3-migration-guide.md)に関する記事を参照してください。
 
-* プレビュー バージョンと新機能の詳細については、[**REST API (プレビュー)** ](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v3-0-preview-1/operations/AnalyzeDocument) に関する記事を参照してください。
+* プレビュー バージョンと新機能の詳細については、[**REST API (プレビュー)**](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v3-0-preview-1/operations/AnalyzeDocument) に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

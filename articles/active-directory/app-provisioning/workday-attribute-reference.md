@@ -3,7 +3,7 @@ title: Azure Active Directory の Workday 属性リファレンス
 description: Azure Active Directory で XPATH クエリを使用して Workday からフェッチできる属性について説明します。
 services: active-directory
 author: kenwith
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/11/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: d559c7f8a3fa498fb02a3c119d20a21966fa8b8d
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 7ab95bc97f76ac58009ad5f31a793cce8522100d
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128603241"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129990541"
 ---
 # <a name="workday-attribute-reference-for-azure-active-directory"></a>Azure Active Directory の Workday 属性リファレンス
 

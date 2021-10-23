@@ -3,12 +3,12 @@ title: Azure Site Recovery における VMware/物理ディザスター リカ�
 description: Azure Site Recovery を使用して VMware VM および物理サーバーを Azure にディザスター リカバリーする場合のサポートについてまとめています。
 ms.topic: conceptual
 ms.date: 08/02/2021
-ms.openlocfilehash: ba92dacf320d35c53d31de877079a3e19b56c317
-ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
+ms.openlocfilehash: 2557292af835f13792673c2cfbb1eb82542b7725
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129670178"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129994482"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>VMware VM および物理サーバーの Azure へのディザスター リカバリーのサポート マトリックス
 
@@ -59,7 +59,7 @@ IP アドレスの種類 | 静的
 Port | コントロール チャネルのオーケストレーションに使用される 443<br/>データ転送用の 9443
 
 > [!NOTE]
-オペレーティング システムは、英語ロケールでインストールする必要があります。 インストール後のロケールの変換によって、潜在的な問題が発生する可能性があります。
+> オペレーティング システムは、英語ロケールでインストールする必要があります。 インストール後のロケールの変換によって、潜在的な問題が発生する可能性があります。
 
 
 
