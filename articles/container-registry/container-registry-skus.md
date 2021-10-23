@@ -3,12 +3,12 @@ title: Registry サービス階層と機能
 description: Azure Container Registry の Basic、Standard、および Premium サービス階層 (SKU) の機能と制限 (クォータ) について説明します。
 ms.topic: article
 ms.date: 08/12/2021
-ms.openlocfilehash: 7f9fe5d461dede4510d3fc8069f42e7950803984
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: e15824ec342ffd21f1a0f40dcc87c34c015112a1
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128582340"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130003271"
 ---
 # <a name="azure-container-registry-service-tiers"></a>Azure Container Registry サービス階層
 
@@ -65,7 +65,7 @@ Basic、Standard、および Premium 階層は、すべて同じプログラム�
 
 ## <a name="show-registry-usage"></a>レジストリの使用状況を表示する
 
-[az acr show-usage](/cli/az/acr#az_acr_show_usage) コマンドまたは [List Usages](/rest/api/containerregstry/registries/list-usages) REST API を使用して、ご利用のレジストリにおけるストレージおよびその他のリソースの現在の使用量をそのレジストリのサービス レベルの制限と比較したスナップショットを取得します。 ストレージの使用状況は、ポータルにあるレジストリの **[概要]** ページにも表示されます。
+[az acr show-usage](/cli/azure/acr#az_acr_show_usage) コマンドまたは [List Usages](/rest/api/containerregistry/registries/list-usages) REST API を使用して、ご利用のレジストリにおけるストレージおよびその他のリソースの現在の使用量をそのレジストリのサービス レベルの制限と比較したスナップショットを取得します。 ストレージの使用状況は、ポータルにあるレジストリの **[概要]** ページにも表示されます。
 
 使用状況に関する情報は、ご利用のレジストリが制限に近づいたときに[サービス レベルを変更](#changing-tiers)するかどうかを決めるのに役立ちます。 この情報はまた、[使用量を管理](container-registry-best-practices.md#manage-registry-size)するのにも役立ちます。 
 

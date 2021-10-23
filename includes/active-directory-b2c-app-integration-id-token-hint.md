@@ -1,16 +1,16 @@
 ---
-author: msmimart
+author: kengaderdus
 ms.service: active-directory-b2c
 ms.subservice: B2C
 ms.topic: include
 ms.date: 06/11/2021
-ms.author: mimart
-ms.openlocfilehash: f66eac86f4267a7b824eb551cdd877d3d34472a0
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.author: kengaderdus
+ms.openlocfilehash: bf7295f4cc7b2010e7c700fbde25840f7a7f0df1
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121723209"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130037083"
 ---
 ## <a name="pass-an-id-token-hint"></a>ID トークン ヒントを渡す
 

@@ -1,18 +1,18 @@
 ---
 title: Azure ExpressRoute v1 を構成する
 description: Azure ExpressRoute を使用した Power Apps 用の App Service Environment のネットワーク構成。 このドキュメントは、レガシ v1 ASE を使用するお客様にのみ提供されます。
-author: stefsch
+author: madsd
 ms.assetid: 34b49178-2595-4d32-9b41-110c96dde6bf
 ms.topic: article
 ms.date: 10/14/2016
-ms.author: stefsch
+ms.author: madsd
 ms.custom: seodec18
-ms.openlocfilehash: 7a7ea57cf8d76c7a8e1455b561a1a2bc050ec3d7
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: f4227c716aeaf192b36ab0d46417aa7f390ee6ae
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122864796"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130001658"
 ---
 # <a name="network-configuration-details-for-app-service-environment-for-power-apps-with-azure-expressroute"></a>Azure ExpressRoute を使用した Power Apps 用の App Service Environment のネットワーク構成の詳細
 
@@ -151,7 +151,6 @@ Power Apps 用の App Service Environment の使用を開始するには、[App 
 <!-- Old link -- [UDRHowTo]: https://azure.microsoft.com/documentation/articles/virtual-networks-udr-how-to/ -->
 
 [UDRHowTo]: ../../virtual-network/tutorial-create-route-table-powershell.md
-[HowToCreateAnAppServiceEnvironment]: app-service-web-how-to-create-an-app-service-environment.md 
 [AzureDownloads]: https://azure.microsoft.com/downloads/ 
 [DownloadCenterAddressRanges]: https://www.microsoft.com/download/details.aspx?id=41653 
 [NetworkSecurityGroups]: ../../virtual-network/virtual-network-vnet-plan-design-arm.md

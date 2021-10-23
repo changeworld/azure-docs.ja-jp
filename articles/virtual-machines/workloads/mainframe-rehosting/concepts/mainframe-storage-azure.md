@@ -7,12 +7,12 @@ ms.date: 04/02/2019
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: mainframe-rehosting
-ms.openlocfilehash: 27f625e7fced5ff710a6fa0e8b2045a8c5434258
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 853fee40417bc09168fa1cfba1428b8e99bf9a86
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104954362"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130072748"
 ---
 # <a name="move-mainframe-storage-to-azure"></a>メインフレーム ストレージを Azure に移動する
 
@@ -109,7 +109,7 @@ BLOB ストレージは、Azure 上で最大のストレージ容量を提供し
 - [Azure 仮想マシンでのメインフレーム リホスト](../overview.md)
 - [メインフレーム コンピューティングを Azure に移行する](mainframe-compute-Azure.md)
 - [Azure BLOB、Azure Files、Azure ディスクの使い分け](../../../../storage/common/storage-introduction.md)
-- [Azure VM ワークロード向けの Standard SSD マネージド ディスク](../../../disks-types.md#standard-ssd)
+- [Azure VM ワークロード向けの Standard SSD マネージド ディスク](../../../disks-types.md#standard-ssds)
 
 ### <a name="ibm-resources"></a>IBM リソース
 

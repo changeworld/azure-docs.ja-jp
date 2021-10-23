@@ -8,12 +8,12 @@ ms.date: 06/29/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: b72066dbeda75ae651b26c76b99697d978986a50
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: ebc655cc772f0d05ef44a453076d5e17d217a54d
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123435296"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130038386"
 ---
 # <a name="change-your-performance-tier-without-downtime-using-the-azure-powershell-module-or-the-azure-cli"></a>Azure PowerShell モジュールまたは Azure CLI を使用してダウンタイムなしでパフォーマンス レベルを変更する
 
@@ -85,20 +85,7 @@ New-AzDisk -DiskName $diskName -Disk $diskConfig -ResourceGroupName $resourceGro
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-1. ダウンタイムなしでディスクのパフォーマンス レベルを変更するには、サブスクリプションに対してこの機能を有効にする必要があります。 下の手順に従って、サブスクリプションの機能を有効にしてください。
-
-    1.  次のコマンドを実行して、お使いのサブスクリプションにこの機能を登録します
-
-        ```azurecli
-        az feature register --namespace Microsoft.Compute --name LiveTierChange
-        ```
-
-    1.  この機能を試す前に、次のコマンドを使用して、登録状態が **Registered** であることを確認してください (数分かかる場合があります)。
-
-        ```azurecli
-        az feature show --namespace Microsoft.Compute --name LiveTierChange
-        ```
-2. 実行中の VM に接続されている場合でも、ディスクのレベルを更新します
+1. 実行中の VM に接続されている場合でも、ディスクのレベルを更新します
 
     ```azurecli
     resourceGroupName=<yourResourceGroupNameHere>
@@ -110,20 +97,7 @@ New-AzDisk -DiskName $diskName -Disk $diskConfig -ResourceGroupName $resourceGro
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-1. ダウンタイムなしでディスクのパフォーマンス レベルを変更するには、サブスクリプションに対してこの機能を有効にする必要があります。 下の手順に従って、サブスクリプションの機能を有効にしてください。
-
-    1.  次のコマンドを実行して、お使いのサブスクリプションにこの機能を登録します
-
-        ```azurepowershell
-         Register-AzProviderFeature -FeatureName "LiveTierChange" -ProviderNamespace "Microsoft.Compute" 
-        ```
-
-    1.  この機能を試す前に、次のコマンドを使用して、登録状態が **Registered** であることを確認してください (数分かかる場合があります)。
-
-        ```azurepowershell
-        Register-AzProviderFeature -FeatureName "LiveTierChange" -ProviderNamespace "Microsoft.Compute" 
-        ```
-2. 実行中の VM に接続されている場合でも、ディスクのレベルを更新します
+1. 実行中の VM に接続されている場合でも、ディスクのレベルを更新します
 
     ```azurepowershell
     $resourceGroupName='yourResourceGroupName'

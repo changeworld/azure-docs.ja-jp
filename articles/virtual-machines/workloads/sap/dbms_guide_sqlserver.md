@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 06/08/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b9d44e718329c836b1e4fc63861f52cc37458a79
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 74c67e9aa143dafcf63c242cd83c20a85236c66e
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129352416"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130070453"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SAP NetWeaver のための SQL Server Azure Virtual Machines DBMS のデプロイ
 
@@ -380,7 +380,7 @@ SQL Server 2014 以降では、Azure Blob ストアの周囲に VHD の "ラッ�
 * 前述の別の Azure Storage アカウントに VHD を分散させることについての考慮事項は、このデプロイ方法の場合にも適用されます。 Azure ストレージ アカウントの制限に対する I/O 操作数を意味します。
 * VM のストレージ I/O クォータを考慮する代わりに、SQL Server のデータとログ ファイルを表すストレージ BLOB に対するトラフィックが、特定の VM の種類の VM のネットワーク帯域幅に反映されます。 具体的な VM の種類のネットワークとストレージの帯域幅については、記事「[Azure の Windows 仮想マシンのサイズ](../../sizes.md)」を参照してください。
 * ネットワーク クォータを介してファイル I/O をプッシュすると、主にストレージ クォータが孤立し、VM の全体の帯域幅が部分的にしか使用されません。
-* Azure Premium Storage がさまざまなディスク サイズに対して持っている IOPS と I/O スループットのパフォーマンス目標は適用されません。 たとえ、作成した BLOB が Azure Premium Storage 上にある場合でもそうです。 目標については、記事「[VM 向けの高パフォーマンスの Premium Storage とマネージド ディスク](../../disks-types.md#premium-ssd)」を参照してください。 Azure Premium Storage に格納されている BLOB に SQL Server のデータ ファイルとログ ファイルを直接配置した結果のパフォーマンスの特性は、Azure Premium Storage 上の VHD と異なる場合があります。
+* Azure Premium Storage がさまざまなディスク サイズに対して持っている IOPS と I/O スループットのパフォーマンス目標は適用されません。 たとえ、作成した BLOB が Azure Premium Storage 上にある場合でもそうです。 目標については、記事「[VM 向けの高パフォーマンスの Premium Storage とマネージド ディスク](../../disks-types.md#premium-ssds)」を参照してください。 Azure Premium Storage に格納されている BLOB に SQL Server のデータ ファイルとログ ファイルを直接配置した結果のパフォーマンスの特性は、Azure Premium Storage 上の VHD と異なる場合があります。
 * Azure Premium Storage ディスクで使用できるホスト ベースのキャッシュは、SQL Server データ ファイルを Azure BLOB に直接デプロイするときには使用できません。
 * M シリーズの VM では、Azure Write Accelerator を使用して SQL Server トランザクション ログ ファイルに対してミリ秒未満の書き込みをサポートすることはできません。 
 

@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-general
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: jushiman
-ms.openlocfilehash: 0c5321625f9963a15527d8fb0edef73f0701bd6e
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.openlocfilehash: 89714a766dfd4ddc2c952554ab12068121543044
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129856387"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130070776"
 ---
 # <a name="dcsv2-series"></a>DCsv2 シリーズ
 
@@ -22,7 +22,8 @@ DCsv2 シリーズの仮想マシンは、パブリック クラウドで処理�
 
 これらのマシンは、SGX テクノロジが搭載された 3.7 GHz Intel® Xeon E-2288G (Coffee Lake) によってサポートされています。 インテル® ターボ ブースト マックス テクノロジー 3.0 により、これらのマシンは最大 5.0 GHz まで高速化できます。 
 
-[!NOTE] ハイパースレッディングは、セキュリティの状態を追加する場合は無効になります。 価格は、物理コアと仮想コアでパフォーマンスが良いほうと、DC シリーズの独自のセキュリティ機能に基づいています。
+> [!NOTE]
+> ハイパースレッディングは、セキュリティの状態を追加する場合は無効になります。 価格は、物理コアと仮想コアでパフォーマンスが良いほうと、DC シリーズの独自のセキュリティ機能に基づいています。
 
 機密の使用例としては、データベース、ブロックチェーン、マルチパーティ データ分析、不正行為の検出、マネー ロンダリング対策、利用状況分析、インテリジェンス分析、機械学習などがあります。
 
@@ -63,7 +64,7 @@ DCsv2 シリーズの仮想マシンは、パブリック クラウドで処理�
 - [ハイ パフォーマンス コンピューティング](sizes-hpc.md)
 - [旧世代](sizes-previous-gen.md)
 - [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
-- [ディスクの種類の詳細](./disks-types.md#ultra-disk)
+- [ディスクの種類の詳細](./disks-types.md#ultra-disks)
 
 料金計算ツール:[料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 

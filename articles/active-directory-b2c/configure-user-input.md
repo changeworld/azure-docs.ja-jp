@@ -3,22 +3,22 @@ title: ユーザー属性を追加してユーザー入力をカスタマイズ�
 titleSuffix: Azure AD B2C
 description: ユーザー入力をカスタマイズし、Azure Active Directory B2C のサインアップまたはサインイン体験にユーザー属性を追加する方法について説明します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/15/2021
+ms.date: 10/15/2021
 ms.custom: project-no-code
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: f2b7eade30ad675b9c64fbe8d21ce5c7f6d63e43
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 9ebc40c8777a4b49f0bd6aaeccff4b2f82d4f7a4
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128558425"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130064421"
 ---
 #  <a name="add-user-attributes-and-customize-user-input-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でユーザー属性を追加してユーザー入力をカスタマイズする
 
@@ -161,7 +161,7 @@ city 属性の値のセットの一覧を指定するには、次のようにし
       <UserInputType>DropdownSingleSelect</UserInputType>
       <Restriction>
         <Enumeration Text="Berlin" Value="berlin" />
-        <Enumeration Text="London" Value="bondon" />
+        <Enumeration Text="London" Value="london" />
         <Enumeration Text="Seattle" Value="seattle" />
       </Restriction>
     </ClaimType>
@@ -175,7 +175,7 @@ city 属性の値のセットの一覧を指定するには、次のようにし
 ```xml
 <Restriction>
   <Enumeration Text="Berlin" Value="berlin" />
-  <Enumeration Text="London" Value="bondon" SelectByDefault="true" />
+  <Enumeration Text="London" Value="london" SelectByDefault="true" />
   <Enumeration Text="Seattle" Value="seattle" />
 </Restriction>
 ```

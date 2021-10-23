@@ -2,14 +2,14 @@
 title: Azure BLOB バックアップのサポート マトリックス
 description: Azure BLOB をバックアップするときのサポート設定と制限の概要について説明します。
 ms.topic: conceptual
-ms.date: 10/01/2021
+ms.date: 10/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: 921f08a80511766f55e179fccde38a061800061e
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: d0b524ba2865aa72f6fce88e326fffde435f71c3
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129533180"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129714152"
 ---
 # <a name="support-matrix-for-azure-blobs-backup"></a>Azure BLOB バックアップのサポート マトリックス
 
@@ -23,7 +23,7 @@ BLOB の運用バックアップは、フランス南部、南アフリカ西部
 
 BLOB の運用バックアップでは、ローカル バックアップソリューションを提供するために、BLOB のポイントインタイム リストア、BLOB のバージョン管理、BLOB の論理的な削除、BLOB の変更フィード、および削除ロックが使用されます。 そのため、これらの機能に適用される制限が、運用バックアップにも適用されます。
 
-**サポートされているシナリオ:** 運用バックアップでサポートされているのは、Standard 汎用 v2 ストレージ アカウントのブロック BLOB のみです。 そのため、ADLS Gen2 アカウントはサポートされません。 また、ストレージ アカウントのページ BLOB、追加 BLOB、Premium BLOB は復元されず、ブロック BLOB のみが復元されます。
+**サポートされているシナリオ:** 運用バックアップでサポートされているのは、Standard 汎用 v2 ストレージ アカウントのブロック BLOB のみです。 階層型名前空間が有効なストレージ アカウント (つまり、ADLS Gen2 アカウント) はサポートされていません。   <br><br>   また、ストレージ アカウントのページ BLOB、追加 BLOB、Premium BLOB は復元されず、ブロック BLOB のみが復元されます。
 
 **その他の制限事項:**
 

@@ -1,14 +1,14 @@
 ---
 title: Azure Lab Services でラボのスケジュールを作成する | Microsoft Docs
 description: ラボ内の VM が指定した時刻に起動およびシャットダウンされるように、Azure Lab Services でラボのスケジュールを作成する方法について説明します。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 2a827c3d9f3022cb7d27ee43c9c95227c44f97e7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 01ba9448ae22c80ee3a4833c8569b46af370c45e
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96434027"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130180611"
 ---
 # <a name="create-and-manage-schedules-for-labs-in-azure-lab-services"></a>Azure Lab Services でラボのスケジュールを作成して管理する 
 スケジュールを使用すると、ラボの VM が指定した時刻に自動的に起動およびシャットダウンされるように、クラスルーム ラボを構成できます。 1 回限りのスケジュールや定期的なスケジュールを定義することができます。 クラスルーム ラボのスケジュールを作成および管理する手順を以下に示します。 

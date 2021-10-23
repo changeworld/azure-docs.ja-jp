@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-general
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: c2010bdb442112af6e62ed30abc8323b669b5166
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 93335dfe5b6cf5cb84975f332585060b07d8ca43
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122688337"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130071247"
 ---
 # <a name="memory-optimized-dv2-and-dsv2-series"></a>メモリが最適化された Dv2 と Dsv2 シリーズ
 
@@ -85,7 +85,7 @@ DSv2 シリーズのサイズは、Intel® Xeon® Platinum 8272CL (Cascade Lake)
 
 料金計算ツール: [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 
-ディスクの種類の詳細情報: [ディスクの種類](./disks-types.md#ultra-disk)
+ディスクの種類の詳細情報: [ディスクの種類](./disks-types.md#ultra-disks)
 
 
 ## <a name="next-steps"></a>次のステップ

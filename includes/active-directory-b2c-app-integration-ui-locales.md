@@ -1,16 +1,16 @@
 ---
-author: msmimart
+author: kengaderdus
 ms.service: active-directory-b2c
 ms.subservice: B2C
 ms.topic: include
 ms.date: 06/11/2021
-ms.author: mimart
-ms.openlocfilehash: 26f8ef7e168c83dc8c1b695cad7ded5eb124ddef
-ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+ms.author: kengaderdus
+ms.openlocfilehash: c65818601474f9415f24465e01363657ed310952
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123220279"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130037076"
 ---
 ## <a name="specify-the-ui-language"></a>UI 言語を指定する
 

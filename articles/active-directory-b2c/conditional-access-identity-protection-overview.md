@@ -6,16 +6,16 @@ ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: overview
 ms.date: 05/28/2021
-ms.author: mimart
-author: msmimart
-manager: celested
+ms.author: kengaderdus
+author: kengaderdus
+manager: CelesteDG
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 739c20cb39db5fda3a182bc4c5379d0bc9c4d06e
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 8b53e5397c9e4e04a7049d18f9e9efdcfc62a921
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110690329"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130037797"
 ---
 # <a name="identity-protection-and-conditional-access-for-azure-ad-b2c"></a>Azure AD B2C における Identity Protection と条件付きアクセス
 

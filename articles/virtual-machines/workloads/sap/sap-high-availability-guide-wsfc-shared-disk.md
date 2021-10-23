@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 07/29/2021
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: dc233e3aac51255be4b6b7befde322216ae7f053
-ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
+ms.openlocfilehash: 9e59347ec1c38c8d315de9ee7332a4955427770b
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129754560"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130068971"
 ---
 # <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-cluster-shared-disk-in-azure"></a>Azure のクラスター共有ディスクを使用して Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスをクラスター化する
 
@@ -130,8 +130,8 @@ Azure の Windows フェールオーバー クラスターの共有ディスク�
 **SAP ワークロード用の Azure 共有ディスク**
 
 - 追加のソフトウェアを維持して運用する必要なしに、Azure マネージド ディスクを複数の VM に同時に接続することができます。
-- [Premium SSD](../../disks-types.md#premium-ssd) ディスクを使用した [Azure 共有ディスク](../../disks-shared.md)は、可用性セットおよび可用性ゾーン内の SAP のデプロイに対してサポートされています。
-- [Azure Ultra Disk](../../disks-types.md#ultra-disk) と [Azure Standard ディスク](../../disks-types.md#standard-ssd)は、SAP ワークロード用の Azure 共有ディスクとしてはサポートされていません。
+- [Premium SSD](../../disks-types.md#premium-ssds) ディスクを使用した [Azure 共有ディスク](../../disks-shared.md)は、可用性セットおよび可用性ゾーン内の SAP のデプロイに対してサポートされています。
+- [Azure Ultra Disk](../../disks-types.md#ultra-disks) と [Azure Standard ディスク](../../disks-types.md#standard-ssds)は、SAP ワークロード用の Azure 共有ディスクとしてはサポートされていません。
 - [Premium SSD の範囲](../../disks-shared.md#disk-sizes)に指定されている最小ディスク サイズで Azure Premium ディスクをプロビジョニングして、必要な数の VM に同時に接続できるようにします (通常、SAP ASCS Windows フェールオーバー クラスターの場合は 2 つ)。
  
 **SIOS**
@@ -148,8 +148,8 @@ Microsoft では、共有ディスク オプションを使用して SAP ASCS/SC
 
 現時点では、SAP ASCS/SCS インスタンスの Azure 共有ディスクとして Azure Premium SSD ディスクを使用できます。 次の制限事項が現在適用されます。
 
--  [Azure Ultra Disk](../../disks-types.md#ultra-disk) と [Standard SSD ディスク](../../disks-types.md#standard-ssd)は、SAP ワークロード用の Azure 共有ディスクとしてはサポートされていません。
--  [Premium SSD ディスク](../../disks-types.md#premium-ssd)を使用した [Azure 共有ディスク](../../disks-shared.md)は、可用性セットおよび可用性ゾーン内の SAP のデプロイに対してサポートされています。
+-  [Azure Ultra Disk](../../disks-types.md#ultra-disks) と [Standard SSD ディスク](../../disks-types.md#standard-ssds)は、SAP ワークロード用の Azure 共有ディスクとしてはサポートされていません。
+-  [Premium SSD ディスク](../../disks-types.md#premium-ssds)を使用した [Azure 共有ディスク](../../disks-shared.md)は、可用性セットおよび可用性ゾーン内の SAP のデプロイに対してサポートされています。
 -  Premium SSD ディスクを使用する Azure 共有ディスクには、2 つのストレージ SKU が付属しています。
    - Premium 共有ディスク (skuName - Premium_LRS) 用のローカル冗長ストレージ (LRS) は、Azure 可用性セット内のデプロイでサポートされています。
    - Premium 共有ディスク (skuName - Premium_ZRS) 用のゾーン冗長ストレージ (ZRS) は、Azure 可用性ゾーン内のデプロイでサポートされています。

@@ -43,7 +43,7 @@ additionalContent:
           links:
             - url: ./blobs/data-lake-storage-introduction.md
               text: エンタープライズ データ レーク向けのストレージ (Data Lake Storage) を確認する
-            - url: ./blobs/data-lake-storage-data-scenarios.md
+            - url: ./blobs/data-lake-storage-best-practices.md
               text: ビッグ データを処理するためのオプションとツールについて
         - title: クラウドでホストされるファイル共有
           links:

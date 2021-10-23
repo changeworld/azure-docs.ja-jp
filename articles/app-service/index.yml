@@ -7,12 +7,12 @@ metadata:
   ms.topic: landing-page
   ms.service: app-service
   ms.date: 08/06/2020
-  ms.openlocfilehash: 921a298c9f410bb17d100556ecc36b1472578d4b
-  ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+  ms.openlocfilehash: c77ec3cc1abd0f27efc6720d007118346b3def03
+  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/09/2021
-  ms.locfileid: "129713661"
+  ms.lasthandoff: 10/22/2021
+  ms.locfileid: "130253347"
 landingContent:
 - title: App Service について
   linkLists:
@@ -121,7 +121,7 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: Virtual Network との統合
-      url: web-sites-integrate-with-vnet.md
+      url: ./overview-vnet-integration.md
     - text: オンプレミスへのハイブリッド接続を作成する
       url: app-service-hybrid-connections.md
     - text: Traffic Manager を使用する負荷分散

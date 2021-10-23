@@ -8,12 +8,12 @@ metadata:
   ms.date: 10/07/2021
   author: emerb19
   ms.author: emerb
-  ms.openlocfilehash: e5409eae75ec9bf5d78cbc46a2efee24ee4fefa9
-  ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+  ms.openlocfilehash: 005ac60253e2eb75a25df632015b4e4fb60dd3fa
+  ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/09/2021
-  ms.locfileid: "129715729"
+  ms.lasthandoff: 10/15/2021
+  ms.locfileid: "130071078"
 title: 独立系ソフトウェア ベンダー (ISV) からクラウド リセラーへのプライベート プランの構成に関する一般的な質問
 summary: この記事では、独立系ソフトウェア ベンダー (ISV) からクラウド リセラーへのプライベート プランの構成に関する質問について説明します。
 sections:
@@ -49,7 +49,7 @@ sections:
       プランを販売するために選択しなかった CSP に対してプライベート プランを作成すると、自動的にその CSP がプランを販売できるようになります。 同様に、プランが CSP 経由での販売をオプトインされておらず、ISV が CSP に対してマージンを作成する場合、そのプランは (すべての CSP ではなく) その CSP のみを介して販売されるように CSP にオプトインされます。
   - question: ISV がマージンを提供するパートナーを探したが、見つけることができない場合、追加できますか?
     answer: >
-      いいえ。 パートナーは Microsoft の CSP プログラムの一員でなければならず、マージンを提供されるためには、直接 CSP または間接プロバイダーである必要があります。 パートナーが検索で返されない場合は、Microsoft の CSP プログラムの一員ではないか、間接リセラーである可能性があります。 CSP パートナーは、「[クラウド ソリューション プロバイダー プログラムに登録する](/partner-center/enrolling-in-the-csp-program.md)」で、プログラムへの登録方法に関する情報を確認できます。
+      いいえ。 パートナーは Microsoft の CSP プログラムの一員でなければならず、マージンを提供されるためには、直接 CSP または間接プロバイダーである必要があります。 パートナーが検索で返されない場合は、Microsoft の CSP プログラムの一員ではないか、間接リセラーである可能性があります。 CSP パートナーは、「[クラウド ソリューション プロバイダー プログラムに登録する](/partner-center/enrolling-in-the-csp-program)」で、プログラムへの登録方法に関する情報を確認できます。
   - question: ISV が、ディストリビューターまたは間接プロバイダーを通じて購入する間接リセラーと連携する場合、ISV は間接リセラーを介してプランを販売するにはどうすればよいですか?
     answer: >
       ISV は、間接リセラーの購入元である間接プロバイダーを選択する必要があり、間接プロバイダーは、間接リセラーを介して ISV のプランを販売するかどうかを決める必要があります。

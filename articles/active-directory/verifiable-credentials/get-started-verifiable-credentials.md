@@ -4,16 +4,17 @@ description: このチュートリアルでは、Microsoft のサンプル ア�
 ms.service: active-directory
 ms.subservice: verifiable-credentials
 author: barclayn
+manager: karenh444
 ms.author: barclayn
 ms.topic: tutorial
 ms.date: 04/01/2021
 ROBOTS: NOINDEX
-ms.openlocfilehash: 9958d12299287c7d53641ba75d917f1f18359f54
-ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
+ms.openlocfilehash: 17229aca9833dced65ef07cebb59bd0a3569d6b4
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129728439"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130006909"
 ---
 #  <a name="tutorial---get-started-with-azure-active-directory-verifiable-credentials-using-a-sample-app-preview"></a>チュートリアル - サンプル アプリを使用して Azure Active Directory Verifiable Credentials の作業を開始する (プレビュー)
 

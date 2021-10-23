@@ -4,7 +4,7 @@ description: 秘密度ラベルをグループに割り当てる方法につい�
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: KarenH444
+manager: daveba
 ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c026a571a087008d86e34e8c2806745a06ae89cb
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 7cda4fe1af43b0bf7f091f34ae03a021c2ac4d20
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129986760"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129667537"
 ---
 # <a name="assign-sensitivity-labels-to-microsoft-365-groups-in-azure-active-directory"></a>Azure Active Directory で Microsoft 365 グループに秘密度ラベルを割り当てる
 

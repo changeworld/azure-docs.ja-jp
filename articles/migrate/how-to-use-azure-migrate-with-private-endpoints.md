@@ -6,12 +6,12 @@ ms.author: deseelam
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 05/10/2020
-ms.openlocfilehash: efe9f6ce21e59df3d7f8009b7ff540a77b4cc50a
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: 773a22fb1fbd94540f8d56fb417a88bbcfccdd3a
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129094502"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130003139"
 ---
 # <a name="use-azure-migrate-with-private-endpoints"></a>プライベート エンドポイントで Azure Migrate を使用する
 
@@ -27,7 +27,7 @@ Private Link を使用すると、Azure ExpressRoute のプライベート ピ�
 
 ### <a name="supported-geographies"></a>サポートされている地域
 
-この機能は、現在サポートされている[パブリック クラウド](/azure/migrate/migrate-support-matrix#supported-geographies-public-cloud)と[政府機関のクラウド地域でプレビュー段階にあります。](/azure/migrate-support-matrix#supported-geographies-azure-government)
+この機能は、現在サポートされている[パブリック クラウド](/azure/migrate/migrate-support-matrix#supported-geographies-public-cloud)と[政府機関のクラウド地域でプレビュー段階にあります。](/azure/migrate/migrate-support-matrix#supported-geographies-azure-government)
 
 ### <a name="required-permissions"></a>必要なアクセス許可
 
@@ -136,7 +136,7 @@ Azure Migrate の検出および評価では、軽量の Azure Migrate アプラ
 
 3. PowerShell ディレクトリを、ダウンロードした ZIP ファイルの内容が抽出されたフォルダーに変更します。
 
-4. 次のコマンドを実行して、`AzureMigrateInstaller.ps1` という名前のスクリプトを実行します。
+4. 次のコマンドを実行して `AzureMigrateInstaller.ps1` という名前のスクリプトを実行します。
 
    `PS C:\Users\administrator\Desktop\AzureMigrateInstaller> .\AzureMigrateInstaller.ps1`
 

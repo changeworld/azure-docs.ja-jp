@@ -1,14 +1,14 @@
 ---
 title: Azure Lab Services で VirtualBox にエシカル ハッキング ラボを設定する | Microsoft Docs
 description: Azure Lab Services を使用してラボを設定し、VirtualBox でエシカル ハッキングを教える方法について説明します。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/11/2021
-ms.openlocfilehash: 49db4562a7d541a4c3409a5956a67e3bd0aadef4
-ms.sourcegitcommit: 40dfa64d5e220882450d16dcc2ebef186df1699f
+ms.openlocfilehash: ef9ac58490ea4e917f76d1b0ee4874411dd7b4e2
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113040791"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130176930"
 ---
 # <a name="set-up-a-lab-to-teach-ethical-hacking-class-with-virtualbox"></a>VirtualBox でエシカル ハッキング クラスを教えるためのラボを設定する
 

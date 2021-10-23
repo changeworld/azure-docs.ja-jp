@@ -6,13 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.subservice: data-flows
 ms.topic: conceptual
-ms.date: 04/16/2021
-ms.openlocfilehash: 2af1e7f9e1b787e73247d9537b4a8876cc4f7220
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.date: 10/06/2021
+ms.openlocfilehash: c0a646624054aca3bc043f4ee573dac274f2aa77
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129361223"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129809915"
 ---
 # <a name="transformation-functions-in-power-query-for-data-wrangling"></a>データ ラングリングのための Power Query の変換関数
 
@@ -137,6 +137,26 @@ Azure Data Factory のデータ ラングリングを使用すると、Power Que
 in
   #"Pivoted column"
 ```
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RWNbBf]
+
+### <a name="formatting-datetime-columns"></a>日付/時刻列の書式設定
+
+Power Query ADF を使用するときに日付/時刻の書式を設定するには、次の設定に従って設定してください。
+
+![Power Query の [型の変更]](media/data-flow/power-query-date-2.png)
+
+1. Power Query の UI で列を選択し、[型の変更] > [日付/時刻] を選択します
+2. 警告メッセージが表示されます
+3. 詳細エディターを開き、```TransformColumnTypes``` を ```TransformColumns``` に変更します。 入力データに基づいて書式とカルチャを指定します。
+
+![Power Query エディター](media/data-flow/power-query-date-3.png)
+
+```
+#"Changed column type 1" = Table.TransformColumns(#"Duplicated column", {{"start - Copy", each DateTime.FromText(_, [Format = "yyyy-MM-dd HH:mm:ss", Culture = "en-us"]), type datetime}})
+```
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RWNdQg]
 
 ## <a name="next-steps"></a>次のステップ
 

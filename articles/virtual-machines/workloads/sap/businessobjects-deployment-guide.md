@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: a489b8fd416c750071fa5e292bf916f23c83dab5
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 946fe1e1700cfa90af6f329dc6786c5801e526a6
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121747945"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130073945"
 ---
 # <a name="sap-businessobjects-bi-platform-planning-and-implementation-guide-on-azure"></a>Azure の SAP BusinessObjects BI プラットフォームの計画および実装ガイド
 
@@ -243,7 +243,7 @@ Azure Storage には、お客様が使用できるさまざまなストレージ
 
 - Azure マネージド ディスク
 
-  Azure によって管理されるブロック レベルのストレージ ボリュームです。 このディスクは、Azure 仮想マシンにインストールされる場合、SAP BOBI プラットフォームのアプリケーション サーバーおよびデータベース用に使用できます。 さまざまな種類の [Azure マネージド ディスク](../../managed-disks-overview.md)が利用可能ですが、SAP BOBI プラットフォームのアプリケーションとデータベースには [Premium SSD](../../disks-types.md#premium-ssd) を使用することをお勧めします。
+  Azure によって管理されるブロック レベルのストレージ ボリュームです。 このディスクは、Azure 仮想マシンにインストールされる場合、SAP BOBI プラットフォームのアプリケーション サーバーおよびデータベース用に使用できます。 さまざまな種類の [Azure マネージド ディスク](../../managed-disks-overview.md)が利用可能ですが、SAP BOBI プラットフォームのアプリケーションとデータベースには [Premium SSD](../../disks-types.md#premium-ssds) を使用することをお勧めします。
 
   次の例では、BOBI プラットフォームのインストール ディレクトリに Premium SSD が使用されています。 仮想マシンにインストールされているデータベースの場合、ガイドラインに従って、データとログのボリュームにマネージド ディスクを使用できます。 通常、CMS および監査データベースは小さく、そのストレージ パフォーマンス要件は他の SAP OLTP/OLAP データベースのものとは異なります。
 

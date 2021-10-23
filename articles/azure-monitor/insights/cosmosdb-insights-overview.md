@@ -1,16 +1,14 @@
 ---
 title: Azure Monitor for Cosmos DB 分析情報で Azure Cosmos DB を監視する | Microsoft Docs
 description: この記事では、Cosmos DB の所有者が CosmosDB アカウントのパフォーマンスと使用状況の問題をすばやく把握できる Azure Monitor の Cosmos DB 分析情報の機能について説明します。
-author: lgayhardt
-ms.author: lagayhar
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: b6666e43e1dc3461bf7e0cc5849d26c1a8fef70e
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 3a3a87a3d639c2f5d0211e488340ab918c339ba0
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110095088"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130131925"
 ---
 # <a name="explore-azure-monitor-cosmos-db-insights"></a>Azure Monitor Cosmos DB 分析情報の探索
 

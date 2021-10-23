@@ -2,13 +2,13 @@
 title: Grafana を使用して Azure のサービスとアプリケーションを監視する
 description: Grafana で表示できるように Azure Monitor および Application Insights データをルーティングします。
 ms.topic: conceptual
-ms.date: 11/06/2017
-ms.openlocfilehash: 65bd221bd2f5574db33e6c164f75bb0760dabd3b
-ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
+ms.date: 10/10/2021
+ms.openlocfilehash: 691ba341369778692c92fec8ffc47cd60fac3348
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129812066"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130002759"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>Grafana での Azure サービスの監視
 [Grafana](https://grafana.com/) とそれに含まれる [Azure Monitor データ ソース プラグイン](https://grafana.com/docs/grafana/latest/datasources/azuremonitor/)を使用して、Azure のサービスとアプリケーションを監視できます。 このプラグインにより、3 つの Azure サービスからデータが取得されます。

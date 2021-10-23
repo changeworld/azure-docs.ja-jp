@@ -1,23 +1,22 @@
 ---
 title: Geo 分散スケール
 description: Traffic Manager および App Service Environment による geo 分散を使用してアプリを水平方向にスケールする方法について説明します。
-author: stefsch
+author: madsd
 ms.assetid: c1b05ca8-3703-4d87-a9ae-819d741787fb
 ms.topic: article
 ms.date: 09/07/2016
-ms.author: stefsch
+ms.author: madsd
 ms.custom: seodec18, references_regions, devx-track-azurepowershell
-ms.openlocfilehash: 215132888749a54996b3341e43ef8d91c101a460
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 85b72fa7c0a9f764583f63d6df60a5b209ff6415
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107834302"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129998820"
 ---
 # <a name="geo-distributed-scale-with-app-service-environments"></a>App Service Environment を使用した geo 分散スケール
 ## <a name="overview"></a>概要
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 きわめて大規模なスケーリングを必要とするアプリケーション シナリオでは、単一のアプリ デプロイメントで使用できるコンピューティング リソース容量では足りないことがあります。  投票アプリケーション、スポーツ イベント、テレビ放送される娯楽イベントは、いずれも非常に高いスケールを必要とするシナリオの例です。 高スケールの要件には、アプリを水平方向にスケールアウトすることで対応できます。 極端な負荷要件に対応できるように、1 つのリージョン内および複数のリージョン内で、多数のアプリのデプロイを行うことができます。
 

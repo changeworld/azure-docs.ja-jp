@@ -6,13 +6,13 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.custom: devx-track-java
 ms.author: ariel
-ms.date: 06/15/2021
-ms.openlocfilehash: f3459ef8fe7f3d1dcc491c0c7dcc8863df0b2cb1
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.date: 10/12/2021
+ms.openlocfilehash: ca2650d8c1e3d3d397272904d72cb25facb3cb73
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122271512"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130002930"
 ---
 # <a name="quickstart-provision-azure-spring-cloud-using-terraform"></a>クイックスタート: Terraform を使用して Azure Spring Cloud をプロビジョニングする
 
