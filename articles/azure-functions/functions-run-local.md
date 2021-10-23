@@ -3,14 +3,14 @@ title: Azure Functions Core Tools の操作
 description: Azure 関数を Azure Functions で実行する前に、ローカル コンピューターのコマンド プロンプトまたはターミナルでコーディングしてテストする方法について説明します。
 ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
-ms.date: 07/27/2021
+ms.date: 10/05/2021
 ms.custom: devx-track-csharp, 80e4ff38-5174-43
-ms.openlocfilehash: 5f2ea49df446c26453bb8cf54af52ab54b2c24b2
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: fa804ee911d8b810de391916f7ae92ff46efe0b1
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128669716"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129613284"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools の操作
 
@@ -61,37 +61,27 @@ Azure Functions ランタイムのバージョン 1.x をサポートします�
 
 ## <a name="install-the-azure-functions-core-tools"></a>Azure Functions Core Tools のインストール
 
-[Azure Functions Core Tools] には、Azure Functions ランタイムを実行するのと同じランタイムのバージョンが含まれており、ローカルの開発コンピューターで実行できます。 また、関数の作成、Azure への接続、関数プロジェクトのデプロイを行うコマンドも用意されています。
+[Azure Functions Core Tools](https://github.com/Azure/azure-functions-core-tools) には、Azure Functions ランタイムを実行するのと同じランタイムのバージョンが含まれており、ローカルの開発コンピューターで実行できます。 また、関数の作成、Azure への接続、関数プロジェクトのデプロイを行うコマンドも用意されています。
 
-バージョン 2.x 以降、Core Tools は .NET Core で構築されています。 つまり、バージョン 2.x 以降では、[Windows](?tabs=windows#v2)、[macOS](?tabs=macos#v2)、[Linux](?tabs=linux#v2) など、.NET Core が対応しているすべてのプラットフォームで動作します。
-
-> [!IMPORTANT]
-> .NET 以外の言語の場合、[拡張バンドル]を使用すると、.NET Core SDK をインストールするための要件をバイパスできます。
+Core Tools はバージョン 2.x より、[Windows](?tabs=windows#v2)、[macOS](?tabs=macos#v2)、[Linux](?tabs=linux#v2) 上で実行されます。
 
 # <a name="windows"></a>[Windows](#tab/windows/v4)
 
-現時点では、Core Tools のバージョン 4.x をインストールするには npm が必要です。 別のパッケージ マネージャーを使用して以前のバージョンの Core Tools をインストールした場合は、バージョン 4.x をインストールする前にアンインストールしてください。
+次の手順では、Windows インストーラー (MSI) を使用して Core Tools v4.x をインストールします。 その他のパッケージベースのインストーラーの詳細については、[Core Tools の Readme](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows) をご覧ください。
 
-1. まだインストールしていない場合は、[npm が付属する Node.js をインストールします](https://nodejs.org/en/download/)。 
+Windows のバージョンに応じて、 以下の Core Tools インストーラーをダウンロードして実行します。
 
-1. 次の npm コマンドを実行して、Core Tools パッケージをインストールします。
-
-    ```
-    npm i -g azure-functions-core-tools@4 --unsafe-perm true
-    ```
-
-1. [拡張バンドル](functions-bindings-register.md#extension-bundles)を使用しない場合、[.NET Core 3.x SDK for Windows](https://dotnet.microsoft.com/download) をインストールします。
+- [v4.x - Windows 64 ビット](https://go.microsoft.com/fwlink/?linkid=2174087) (推奨。 [Visual Studio Code のデバッグ](functions-develop-vs-code.md#debugging-functions-locally) には 64 ビットが必要です)
+- [v4.x - Windows 32 ビット](https://go.microsoft.com/fwlink/?linkid=2174159)
 
 # <a name="windows"></a>[Windows](#tab/windows/v3)
 
 次の手順では、Windows インストーラー (MSI) を使用して Core Tools v3.x をインストールします。 その他のパッケージベースのインストーラーの詳細については、[Core Tools の Readme](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows) をご覧ください。
 
-1. Windows のバージョンに応じて、 以下の Core Tools インストーラーをダウンロードして実行します。
+Windows のバージョンに応じて、 以下の Core Tools インストーラーをダウンロードして実行します。
 
-    - [v3.x - Windows 64 ビット](https://go.microsoft.com/fwlink/?linkid=2135274) (推奨。 [Visual Studio Code のデバッグ](functions-develop-vs-code.md#debugging-functions-locally) には 64 ビットが必要です)
-    - [v3.x - Windows 32 ビット](https://go.microsoft.com/fwlink/?linkid=2135275)
-
-1. [拡張バンドル](functions-bindings-register.md#extension-bundles)を使用しない場合、[.NET Core 3.x SDK for Windows](https://dotnet.microsoft.com/download) をインストールします。
+- [v3.x - Windows 64 ビット](https://go.microsoft.com/fwlink/?linkid=2135274) (推奨。 [Visual Studio Code のデバッグ](functions-develop-vs-code.md#debugging-functions-locally) には 64 ビットが必要です)
+- [v3.x - Windows 32 ビット](https://go.microsoft.com/fwlink/?linkid=2135275)
 
 # <a name="windows"></a>[Windows](#tab/windows/v2)
 
@@ -104,8 +94,6 @@ Core Tools のバージョン 2.x をインストールするには npm が必�
     ```
     npm install -g azure-functions-core-tools@2 --unsafe-perm true
     ```
-
-1. [拡張バンドル](functions-bindings-register.md#extension-bundles)を使用しない場合、[.NET Core 3.x SDK for Windows](https://dotnet.microsoft.com/download) をインストールします。
 
 # <a name="windows"></a>[Windows](#tab/windows/v1)
 
@@ -125,8 +113,6 @@ Core Tools のバージョン 1.x をインストールする必要がある場�
     # if upgrading on a machine that has 2.x or 3.x installed:
     brew link --overwrite azure-functions-core-tools@4
     ```
-    
-1. [拡張バンドル](functions-bindings-register.md#extension-bundles)を使用しない場合、[.NET Core 3.x SDK for macOS](https://dotnet.microsoft.com/download) をインストールします。
 
 # <a name="macos"></a>[macOS](#tab/macos/v3)
 
@@ -142,8 +128,6 @@ Core Tools のバージョン 1.x をインストールする必要がある場�
     # if upgrading on a machine that has 2.x installed:
     brew link --overwrite azure-functions-core-tools@3
     ```
-    
-1. [拡張バンドル](functions-bindings-register.md#extension-bundles)を使用しない場合、[.NET Core 3.x SDK for macOS](https://dotnet.microsoft.com/download) をインストールします。
 
 # <a name="macos"></a>[macOS](#tab/macos/v2)
 
@@ -157,8 +141,6 @@ Core Tools のバージョン 1.x をインストールする必要がある場�
     brew tap azure/functions
     brew install azure-functions-core-tools@2
     ```
-    
-1. [拡張バンドル](functions-bindings-register.md#extension-bundles)を使用しない場合、[.NET Core 3.x SDK for macOS](https://dotnet.microsoft.com/download) をインストールします。
 
 # <a name="macos"></a>[macOS](#tab/macos/v1)
 
@@ -175,9 +157,6 @@ Core Tools のバージョン 1.x は、macOS ではサポートされていま�
     sudo apt-get install azure-functions-core-tools-4
     ```
 
-1. [拡張バンドル](functions-bindings-register.md#extension-bundles)を使用しない場合、[.NET Core 3.x SDK for Linux](https://dotnet.microsoft.com/download) をインストールします。
-
-
 # <a name="linux"></a>[Linux](#tab/linux/v3)
 
 [!INCLUDE [functions-core-tools-linux-install](../../includes/functions-core-tools-linux-install.md)]
@@ -189,8 +168,6 @@ Core Tools のバージョン 1.x は、macOS ではサポートされていま�
     sudo apt-get install azure-functions-core-tools-3
     ```
 
-1. [拡張バンドル](functions-bindings-register.md#extension-bundles)を使用しない場合、[.NET Core 3.x SDK for Linux](https://dotnet.microsoft.com/download) をインストールします。
-
 # <a name="linux"></a>[Linux](#tab/linux/v2)
 
 [!INCLUDE [functions-core-tools-linux-install](../../includes/functions-core-tools-linux-install.md)]
@@ -201,9 +178,6 @@ Core Tools のバージョン 1.x は、macOS ではサポートされていま�
     sudo apt-get update
     sudo apt-get install azure-functions-core-tools-2
     ```
-
-1. [拡張バンドル](functions-bindings-register.md#extension-bundles)を使用しない場合、[.NET Core 3.x SDK for Linux](https://dotnet.microsoft.com/download) をインストールします。
-
 
 # <a name="linux"></a>[Linux](#tab/linux/v1)
 
@@ -284,9 +258,9 @@ PowerShell に関する追加の考慮事項はありません。
 
 ## <a name="register-extensions"></a>拡張機能を登録する
 
-ランタイム バージョン 2.x 以降では、Functions のバインディングは .NET 拡張機能 (NuGet) パッケージとして実装されます。 コンパイル済みの C# プロジェクトの場合は、使用している特定のトリガーとバインディングの NuGet 拡張機能パッケージを参照するだけです。 HTTP バインドとタイマー トリガーには、拡張機能は必要ありません。 
+ランタイム バージョン 2.x 以降では、Functions のトリガーとバインディングは .NET 拡張機能 (NuGet) パッケージとして実装されます。 コンパイル済みの C# プロジェクトの場合は、使用している特定のトリガーとバインディングの NuGet 拡張機能パッケージを参照するだけです。 HTTP バインドとタイマー トリガーには、拡張機能は必要ありません。 
 
-C# 以外のプロジェクトの開発エクスペリエンスを向上させるために、Functions では、host.json プロジェクト ファイルでバージョン付きの拡張バンドルを参照できます。 [拡張機能バンドル](functions-bindings-register.md#extension-bundles)を使用すると、すべての拡張機能をアプリで使用できるようになり、拡張機能間でパッケージの互換性の問題が発生する可能性を排除できます。 拡張機能バンドルでは、.NET Core 2.x SDK をインストールする必要も、extensions.csproj ファイルを処理する必要もなくなります。
+C# 以外のプロジェクトの開発エクスペリエンスを向上させるために、Functions では、host.json プロジェクト ファイルでバージョン付きの拡張バンドルを参照できます。 [拡張機能バンドル](functions-bindings-register.md#extension-bundles)を使用すると、すべての拡張機能をアプリで使用できるようになり、拡張機能間でパッケージの互換性の問題が発生する可能性を排除できます。 拡張機能バンドルでは、.NET Core 3.1 SDK をインストールする必要も、extensions.csproj ファイルを処理する必要もなくなります。
 
 拡張機能バンドルは、C# でコンパイルされたプロジェクト以外の関数プロジェクトで推奨される方法です。 これらのプロジェクトでは、拡張機能バンドル設定が、初期化中に _host.json_ ファイルで生成されます。 これで問題がない場合は、このセクション全体をスキップできます。  
 
@@ -629,6 +603,6 @@ Azure Functions Core Tools [Microsoft 学習モジュール](/learn/modules/deve
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows
 [`FUNCTIONS_WORKER_RUNTIME`]: functions-app-settings.md#functions_worker_runtime
 [`AzureWebJobsStorage`]: functions-app-settings.md#azurewebjobsstorage
-[拡張バンドル]: functions-bindings-register.md#extension-bundles
+[extension bundles]: functions-bindings-register.md#extension-bundles
 [func azure functionapp publish]: functions-core-tools-reference.md?tabs=v2#func-azure-functionapp-publish
 [func init]: functions-core-tools-reference.md?tabs=v2#func-init

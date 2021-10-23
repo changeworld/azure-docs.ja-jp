@@ -5,7 +5,7 @@ services: active-directory
 keywords: Azure AD のライセンス
 documentationcenter: ''
 author: curtand
-manager: daveba
+manager: KarenH444
 editor: ''
 ms.service: active-directory
 ms.subservice: enterprise-users
@@ -16,12 +16,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 050ae95c79e7ecb98f8508c2fdb41b90fc1b1da0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4631abf9d56f2201ec60750765cd5ef4558d58c1
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96546541"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129985867"
 ---
 # <a name="change-license-assignments-for-a-user-or-group-in-azure-active-directory"></a>Azure Active Directory でのユーザーまたはグループのライセンス割り当ての変更
 

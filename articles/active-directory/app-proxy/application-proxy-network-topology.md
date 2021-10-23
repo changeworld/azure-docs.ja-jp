@@ -3,20 +3,20 @@ title: Azure Active Directory アプリケーション プロキシのネット�
 description: Azure Active Directory アプリケーション プロキシを使用する場合のネットワーク トポロジに関する注意事項について説明します。
 services: active-directory
 author: kenwith
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-proxy
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/27/2021
 ms.author: kenwith
-ms.reviewer: japere
-ms.openlocfilehash: a9b12750ec16ee5fe79c91e4ed931426f8dbaa36
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.reviewer: ashishj
+ms.openlocfilehash: 5f11448b88a84b6b61d387e2251fab96e9a3bad0
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122445086"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129989192"
 ---
 # <a name="optimize-traffic-flow-with-azure-active-directory-application-proxy"></a>Azure Active Directory アプリケーション プロキシを使用してトラフィック フローを最適化する
 

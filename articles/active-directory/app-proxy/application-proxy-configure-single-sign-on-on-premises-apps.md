@@ -3,20 +3,20 @@ title: Azure Active Directory アプリケーション プロキシを使用す�
 description: SAML 認証でセキュリティ保護されているオンプレミスのアプリケーションにシングル サインオンを提供する方法を説明します。 アプリケーション プロキシを使用したオンプレミス アプリへのリモート アクセスを提供します。
 services: active-directory
 author: kenwith
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-proxy
 ms.workload: identity
 ms.topic: how-to
 ms.date: 04/27/2021
 ms.author: kenwith
-ms.reviewer: japere
-ms.openlocfilehash: 6fbffc3b9a8c45aca7fa61b45dd6f34b300864e6
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.reviewer: ashishj
+ms.openlocfilehash: 593858009c59c782119f9389bd36dcf894977a70
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124773970"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129989876"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy"></a>アプリケーション プロキシ を使用したオンプレミスのアプリケーションに対する SAML シングル サインオン
 

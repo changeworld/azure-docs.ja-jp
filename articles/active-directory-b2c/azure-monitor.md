@@ -3,20 +3,20 @@ title: Azure Monitor で Azure AD B2C を監視する
 titleSuffix: Azure AD B2C
 description: 委任されたリソース管理を使用して、Azure Monitor で Azure AD B2C のイベントをログに記録する方法について説明します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 ms.date: 09/15/2021
-ms.openlocfilehash: ce9de190c5754102b9ac66602818b25e960ae8dd
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: bea95ff80fb3bcd0e32e550196f50c3ffde1719a
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128570257"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130039925"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Azure Monitor で Azure AD B2C を監視する
 

@@ -3,20 +3,20 @@ title: 資格情報攻撃を軽減する - Azure AD B2C
 titleSuffix: Azure AD B2C
 description: スマート アカウント ロックアウト機能など、Azure Active Directory B2C の資格情報攻撃 (パスワード攻撃) の検出と軽減の手法について説明します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/20/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 99363e4f9f67e6ceca0d163131a2f2ff64b09857
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 3ec563e05f21ca1e9697300710def5ad89b10d02
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128546975"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130042923"
 ---
 # <a name="mitigate-credential-attacks-in-azure-ad-b2c"></a>Azure AD B2C の資格情報攻撃を軽減する
 

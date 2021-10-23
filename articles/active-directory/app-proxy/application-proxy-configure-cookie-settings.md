@@ -3,20 +3,20 @@ title: アプリケーション プロキシの Cookie 設定 - Azure Active Dir
 description: Azure Active Directory (Azure AD) には、アプリケーション プロキシ経由でオンプレミスのアプリケーションにアクセスするためのアクセス権およびセッション Cookie があります。 この記事では、Cookie 設定を使用および構成する方法について説明します。
 services: active-directory
 author: kenwith
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-proxy
 ms.workload: identity
 ms.topic: how-to
 ms.date: 04/28/2021
 ms.author: kenwith
-ms.reviewer: japere
-ms.openlocfilehash: 8105e85122d7aaca6cd68980a13e58d4ea6208be
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.reviewer: ashishj
+ms.openlocfilehash: c72ce281697b23092530571114dafb3aece5d0d1
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108229941"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129990085"
 ---
 # <a name="cookie-settings-for-accessing-on-premises-applications-in-azure-active-directory"></a>Azure Active Directory でオンプレミスのアプリケーションにアクセスするための Cookie 設定
 

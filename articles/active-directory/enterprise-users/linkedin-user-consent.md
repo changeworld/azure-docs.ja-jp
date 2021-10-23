@@ -3,7 +3,7 @@ title: LinkedIn データの共有と同意 - Azure Active Directory | Microsoft
 description: Azure Active Directory で Microsoft のアプリを介して LinkedIn 統合がデータを共有する方法について説明します
 services: active-directory
 author: curtand
-manager: daveba
+manager: KarenH444
 ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d13ae1e5198666e115507fd91bb0fedb1c5fa64
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9fa37d30ffd96fff41d1d1145238cae16aa5f973
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96545912"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129985677"
 ---
 # <a name="linkedin-account-connections-data-sharing-and-consent"></a>LinkedIn アカウント接続のデータ共有と同意
 

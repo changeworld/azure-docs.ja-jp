@@ -3,7 +3,7 @@ title: SQL Server Always On 可用性グループの概要
 description: この記事では、Azure Virtual Machines での SQL Server Always On 可用性グループについて説明します。
 services: virtual-machines
 documentationCenter: na
-author: MashaMSFT
+author: rajeshsetlem
 editor: monicar
 tags: azure-service-management
 ms.assetid: 601eebb1-fc2c-4f5b-9c05-0e6ffd0e5334
@@ -13,14 +13,15 @@ ms.topic: overview
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/01/2021
-ms.author: mathoma
+ms.author: rsetlem
 ms.custom: seo-lt-2019
-ms.openlocfilehash: d26a95a5db616be89eac89e140e20bd371088716
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.reviewer: mathoma
+ms.openlocfilehash: 4196ab27f5b3f4c6ab4897d2df8ad0b2007f8c2b
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112580910"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130162797"
 ---
 # <a name="always-on-availability-group-on-sql-server-on-azure-vms"></a>Azure VM 上の SQL Server の Always On 可用性グループ
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]

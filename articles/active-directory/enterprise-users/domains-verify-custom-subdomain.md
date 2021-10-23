@@ -4,7 +4,7 @@ description: Azure Active Directory のルート ドメイン設定から継承�
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: daveba
+manager: KarenH444
 ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36347a8367cd5e2f99f6da2cb97023b3647f8afa
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 3a5d3eb79931c845b3e67a65d3e0d77d227f5022
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123438680"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129986836"
 ---
 # <a name="change-subdomain-authentication-type-in-azure-active-directory"></a>Azure Active Directory でのサブドメイン認証の種類の変更
 

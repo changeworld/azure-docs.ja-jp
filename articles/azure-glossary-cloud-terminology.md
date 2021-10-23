@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/22/2021
+ms.date: 09/17/2021
 ms.author: monicar
-ms.openlocfilehash: 0f0b624097fdb159fd52adae7ae57830833662f2
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 223e75d0a02997187eec609324014493e2fa34df
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129272948"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129660991"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure 用語集:Azure プラットフォームにおけるクラウド用語の辞書
 
@@ -133,6 +133,9 @@ Azure サービスを入手する権利を与える、お客様と Microsoft の
 ## <a name="tag"></a>tag
 管理や課金の要件に合わせてリソースを分類できる、インデックスの用語。 リソースが複雑に絡み合っている場合は、タグを使用してこれらの資産をわかりやすく視覚化することができます。 たとえば、組織内で同じロールを果たしている複数リソース、または同じ部門に属している複数リソースにタグを付けることができます。  
 「[タグを使用した Azure リソースの整理](./azure-resource-manager/management/tag-resources.md)」をご覧ください。
+
+## <a name="tenant"></a>Tenant
+テナントとは、製品、サービス、またはアプリケーションのインスタンスに対して特定の特権を持つアクセスを共有するユーザーまたは組織のグループです。 Azure Active Directory では、テナントとは、組織が Microsoft 365 などのクラウド アプリケーションにサインアップするときに受け取る Azure Active Directory のインスタンスです。 各 Azure AD テナントは独立しており、他の Azure AD テナントとは切り離されています。 マルチテナントとは、複数の組織が共有するアプリケーションのインスタンスのことであり、各組織はインスタンスへの個別のアクセス権を持っています。
 
 ## <a name="update-domain"></a>ドメインの更新
 同時に更新される可用性セット内の仮想マシンのコレクション。 同じ更新ドメイン内の仮想マシンは、計画的なメンテナンス中に同時に再起動されます。 Azure では、複数の更新ドメインを同時に再起動することはありません。 このドメインは、アップグレード ドメインとも呼ばれています。  

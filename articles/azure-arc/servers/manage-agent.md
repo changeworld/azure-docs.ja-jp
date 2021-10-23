@@ -1,14 +1,14 @@
 ---
 title: Azure Arc 対応サーバー エージェントの管理
 description: この記事では、Azure Arc 対応サーバー Connected Machine エージェントのライフサイクル中に通常実行する、さまざまな管理タスクについて説明します。
-ms.date: 08/17/2021
+ms.date: 10/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: d8a8613a6fc97fd2510779715d392b9534598950
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: d0b4d32100a8063346d9a6f7bd2b4bd70156d868
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124807453"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130041179"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>Connected Machine エージェントの管理と保守
 
@@ -125,13 +125,13 @@ Microsoft の [パッケージ リポジトリ](https://packages.microsoft.com/)
 1. リポジトリに加えられた最新の変更でローカル パッケージのインデックスを更新するには、次のコマンドを実行します。
 
     ```bash
-    apt update
+    sudo apt update
     ```
 
 2. システムをアップグレードするには、次のコマンドを実行します。
 
     ```bash
-    apt upgrade
+    sudo apt upgrade azcmagent
     ```
 
 [apt](https://help.ubuntu.com/lts/serverguide/apt.html) コマンドのアクション (パッケージのインストールや削除など) は、`/var/log/dpkg.log` ログ ファイルに記録されます。
@@ -141,13 +141,13 @@ Microsoft の [パッケージ リポジトリ](https://packages.microsoft.com/)
 1. リポジトリに加えられた最新の変更でローカル パッケージのインデックスを更新するには、次のコマンドを実行します。
 
     ```bash
-    yum check-update
+    sudo yum check-update
     ```
 
 2. システムをアップグレードするには、次のコマンドを実行します。
 
     ```bash
-    yum update
+    sudo yum update azcmagent
     ```
 
 [yum](https://access.redhat.com/articles/yum-cheat-sheet) コマンドのアクション (パッケージのインストールや削除など) は、`/var/log/yum.log` ログ ファイルに記録されます。 
@@ -157,13 +157,13 @@ Microsoft の [パッケージ リポジトリ](https://packages.microsoft.com/)
 1. リポジトリに加えられた最新の変更でローカル パッケージのインデックスを更新するには、次のコマンドを実行します。
 
     ```bash
-    zypper refresh
+    sudo zypper refresh
     ```
 
 2. システムをアップグレードするには、次のコマンドを実行します。
 
     ```bash
-    zypper update
+    sudo zypper update azcmagent
     ```
 
 [zypper](https://en.opensuse.org/Portal:Zypper) コマンドのアクション (パッケージのインストールや削除など) は、`/var/log/zypper.log` ログ ファイルに記録されます。

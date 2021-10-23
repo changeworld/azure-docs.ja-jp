@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/22/2021
 ms.author: b-juche
-ms.openlocfilehash: 2d0e323271cbc465f2f46c4904f01d5c1654426d
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 6c946ed17d08a24e41f304c268c874ed7082691c
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128576764"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130062711"
 ---
 # <a name="configure-an-nfs-client-for-azure-netapp-files"></a>Azure NetApp Files 用に NFS クライアントを構成する
 
@@ -69,7 +69,7 @@ ms.locfileid: "128576764"
 
 5.  NTP クライアントを構成します。  
 
-    RHEL 8 では、既定で chrony が使用されます。 「[`Chrony` スイートを使用した NTP の設定](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_basic_system_settings/using-chrony-to-configure-ntp)」の構成ガイドラインに従います。
+    RHEL 8 では、既定で chrony が使用されます。 「[`Chrony` スイートを使用した NTP の設定](https://access.redhat.com/documentation/en-us/red-hat-enterprise-linux/8/guide/6c230de2-39f1-455a-902d-737eea31ad34)」の構成ガイドラインに従います。
 
 6.  Active Directory ドメインに参加します。  
 

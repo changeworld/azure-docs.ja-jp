@@ -911,20 +911,6 @@
     - name: 概要
       displayName: 'availability and scale, availability, scale, autoscale'
       href: availability.md
-    - name: 可用性セット
-      items:
-        - name: 概要
-          displayName: 'availability and scale, availability, scale, autoscale, availability sets, AV sets'
-          href: availability-set-overview.md
-        - name: CLI
-          displayName: 'availability and scale, availability, scale, autoscale, availability sets, AV sets'
-          href: ./linux/tutorial-availability-sets.md
-        - name: PowerShell
-          displayName: 'availability and scale, availability, scale, autoscale, availability sets, AV sets'
-          href: ./windows/tutorial-availability-sets.md
-        - name: 可用性セットの変更
-          displayName: 'availability and scale, availability, scale, autoscale, availability sets, AV sets'
-          href: ./windows/change-availability-set.md
     - name: 可用性ゾーン
       items:
         - name: 概要
@@ -955,33 +941,47 @@
           href: ./windows/proximity-placement-groups-portal.md
     - name: 仮想マシン スケール セット
       items:
-        - name: フレキシブル VM スケール セットの概要 (プレビュー)
+        - name: 概要
           displayName: Flexible orchestration mode for virtual machine scale sets
           href: flexible-virtual-machine-scale-sets.md
-        - name: ポータル (プレビュー)
+        - name: ポータル
           displayName: Flexible orchestration mode for virtual machine scale sets
           href: flexible-virtual-machine-scale-sets-portal.md
-        - name: CLI (プレビュー)
+        - name: CLI
           displayName: Flexible orchestration mode for virtual machine scale sets
           href: flexible-virtual-machine-scale-sets-cli.md
-        - name: PowerShell (プレビュー)
+        - name: PowerShell
           displayName: Flexible orchestration mode for virtual machine scale sets
           href: flexible-virtual-machine-scale-sets-powershell.md
-        - name: ARM テンプレート (プレビュー)
+        - name: ARM テンプレート
           displayName: Flexible orchestration mode for virtual machine scale sets
           href: flexible-virtual-machine-scale-sets-rest-api.md
         - name: 自動スケール
           href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview.md?context=/azure/virtual-machines/context/context
-        - name: オーケストレーション モード (プレビュー)
-          displayName: 'VMSS, flex, scale set, scale, virtual machine sacle set'
+        - name: オーケストレーション モード
+          displayName: 'VMSS, flex, scale set, scale, virtual machine scale set'
           href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md?context=/azure/virtual-machines/context/context
-        - name: ユニフォーム VM スケール セットの概要
-          displayName: 'virtual machine scale sets, VMSS, VM scale set, scale set'
-          href: ../virtual-machine-scale-sets/overview.md?context=/azure/virtual-machines/context/context
+        - name: 移行と考慮事項
+          displayName: 'VMSS, flex, scale set, scale, virtual machine scale set'
+          href: flexible-virtual-machine-scale-sets-migration-resources.md
     - name: VM の再起動について
       href: understand-vm-reboots.md
     - name: Azure リージョン
       href: regions.md
+    - name: 可用性セット
+      items:
+        - name: 概要
+          displayName: 'availability and scale, availability, scale, autoscale, availability sets, AV sets'
+          href: availability-set-overview.md
+        - name: CLI
+          displayName: 'availability and scale, availability, scale, autoscale, availability sets, AV sets'
+          href: ./linux/tutorial-availability-sets.md
+        - name: PowerShell
+          displayName: 'availability and scale, availability, scale, autoscale, availability sets, AV sets'
+          href: ./windows/tutorial-availability-sets.md
+        - name: 可用性セットの変更
+          displayName: 'availability and scale, availability, scale, autoscale, availability sets, AV sets'
+          href: ./windows/change-availability-set.md
 - name: ディスク
   items:
     - name: 概要

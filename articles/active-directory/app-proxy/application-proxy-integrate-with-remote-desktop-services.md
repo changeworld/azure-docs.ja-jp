@@ -3,20 +3,20 @@ title: Azure Active Directory アプリケーション プロキシを使用し�
 description: リモート デスクトップ サービス (RDS) でアプリ プロキシを構成する方法について説明します
 services: active-directory
 author: kenwith
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-proxy
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/12/2021
 ms.author: kenwith
-ms.reviewer: japere
-ms.openlocfilehash: 1f35dfff5c9c29766abf97d32496ca3056ed7e40
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.reviewer: ashishj
+ms.openlocfilehash: ed708ab2f796008dcd98a9e395dffaa7645690b2
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129456995"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129989363"
 ---
 # <a name="publish-remote-desktop-with-azure-active-directory-application-proxy"></a>Azure Active Directory アプリケーション プロキシを使用したリモート デスクトップの公開
 

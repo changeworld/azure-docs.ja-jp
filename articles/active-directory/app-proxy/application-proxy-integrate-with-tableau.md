@@ -3,20 +3,20 @@ title: Azure Active Directory アプリケーション プロキシと Tableau
 description: Azure Active Directory (Azure AD) のアプリケーション プロキシを使用して、Tableau 配置にリモート アクセスを提供する方法を説明します。
 services: active-directory
 author: kenwith
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-proxy
 ms.workload: identity
 ms.topic: how-to
 ms.date: 04/28/2021
 ms.author: kenwith
-ms.reviewer: japere
-ms.openlocfilehash: f25012a01f9efc5e5695dcfd240f46d468a2dc92
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.reviewer: ashishj
+ms.openlocfilehash: d7634858c1cc44d2a04847b7fef39eed588280ee
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108229915"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129989249"
 ---
 # <a name="azure-active-directory-application-proxy-and-tableau"></a>Azure Active Directory アプリケーション プロキシと Tableau 
 

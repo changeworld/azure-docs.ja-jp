@@ -3,20 +3,20 @@ title: PowerShell サンプル - Azure Active Directory アプリケーション
 description: 特定の Azure Active Directory (Azure AD) アプリケーション プロキシ アプリケーションに割り当てられているすべてのユーザーとグループを一覧表示する PowerShell の例。
 services: active-directory
 author: kenwith
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-proxy
 ms.workload: identity
 ms.topic: sample
 ms.date: 04/29/2021
 ms.author: kenwith
-ms.reviewer: japere
-ms.openlocfilehash: 309a9e5c7dc3a766751af235c75e25bd3d94cc3c
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.reviewer: ashishj
+ms.openlocfilehash: 8b07e9673c9305826a1e02e03eac1d17b519772c
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108293805"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129988318"
 ---
 # <a name="display-users-and-groups-assigned-to-an-application-proxy-application"></a>アプリケーション プロキシ アプリケーションに割り当てられているユーザーとグループを表示する
 

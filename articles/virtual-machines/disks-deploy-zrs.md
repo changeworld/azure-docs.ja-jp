@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: 23629a5a15603697eb1feb6e964e63754fbed14c
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: e2c53e09553e62b1a6ca8c1c827d3d2341cae687
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123426736"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130046679"
 ---
 # <a name="deploy-a-managed-disk-that-uses-zone-redundant-storage"></a>ゾーン冗長ストレージを使用するマネージド ディスクをデプロイする
 
@@ -26,22 +26,6 @@ ZRS の概念的な情報については、「[マネージド ディスクの�
 [!INCLUDE [disk-storage-zrs-limitations](../../includes/disk-storage-zrs-limitations.md)]
 
 # <a name="azure-portal"></a>[Azure portal](#tab/portal)
-
-### <a name="prerequisites"></a>前提条件
-
-サブスクリプションに対して機能を有効にする必要があります。 下の手順に従って、サブスクリプションに対して機能を有効にしてください。
-
-1.  次のコマンドを実行して、お使いのサブスクリプションにこの機能を登録します
-
-    ```powershell
-     Register-AzProviderFeature -FeatureName "SsdZrsManagedDisks" -ProviderNamespace "Microsoft.Compute" 
-    ```
-
-1.  この機能を試す前に、次のコマンドを使用して、登録状態が **Registered** であることを確認してください (数分かかる場合があります)。
-
-    ```powershell
-     Get-AzProviderFeature -FeatureName "SsdZrsManagedDisks" -ProviderNamespace "Microsoft.Compute"  
-    ```
 
 ### <a name="create-a-vm-with-a-zrs-os-disk"></a>ZRS OS ディスクを使用して VM を作成する
 
@@ -78,22 +62,6 @@ ZRS の概念的な情報については、「[マネージド ディスクの�
 これで、ZRS を使用するマネージド ディスクを作成できました。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-#### <a name="prerequisites"></a>前提条件
-
-サブスクリプションに対して機能を有効にする必要があります。 下の手順に従って、サブスクリプションに対して機能を有効にしてください。
-
-1.  次のコマンドを実行して、お使いのサブスクリプションにこの機能を登録します
-
-    ```azurecli
-    az feature register --namespace Microsoft.Compute --name SsdZrsManagedDisks
-    ```
- 
-2.  この機能を試す前に、次のコマンドを使用して、登録状態が **Registered** であることを確認してください (数分かかる場合があります)。
-
-    ```azurecli
-    az feature show --namespace Microsoft.Compute --name SsdZrsManagedDisks
-    ```
 
 #### <a name="create-a-vm-with-zrs-disks"></a>ZRS ディスクを使用して VM を作成する
 
@@ -185,23 +153,6 @@ az vmss create -g $rgName \
 ```
 # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
-
-#### <a name="prerequisites"></a>前提条件
-
-サブスクリプションに対して機能を有効にする必要があります。 下の手順に従って、サブスクリプションに対して機能を有効にしてください。
-
-1.  次のコマンドを実行して、お使いのサブスクリプションにこの機能を登録します
-
-    ```powershell
-     Register-AzProviderFeature -FeatureName "SsdZrsManagedDisks" -ProviderNamespace "Microsoft.Compute" 
-    ```
-
-1.  この機能を試す前に、次のコマンドを使用して、登録状態が **Registered** であることを確認してください (数分かかる場合があります)。
-
-    ```powershell
-     Get-AzProviderFeature -FeatureName "SsdZrsManagedDisks" -ProviderNamespace "Microsoft.Compute"  
-    ```
-    
 #### <a name="create-a-vm-with-zrs-disks"></a>ZRS ディスクを使用して VM を作成する
 
 ```powershell

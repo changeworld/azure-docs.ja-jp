@@ -2,21 +2,21 @@
 title: Azure Active Directory B2C の構成要素を使用して Web アプリで認証を有効にする
 description: この記事では、Azure Active Directory B2C の構成要素を使用して ASP.NET Web アプリでユーザーをサインインおよびサインアップする方法について説明します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 06/11/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: 8cb836752ff75a32465d5c8df0e88210c323fb26
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 66b37e5464d548559b8d4e08922f1970e0c8bb7f
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124740111"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130040818"
 ---
 # <a name="enable-authentication-in-your-own-web-app-by-using-azure-ad-b2c"></a>Azure AD B2C を使用して独自の Web アプリで認証を有効にする
 

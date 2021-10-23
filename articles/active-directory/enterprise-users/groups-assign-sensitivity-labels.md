@@ -4,7 +4,7 @@ description: 秘密度ラベルをグループに割り当てる方法につい�
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: daveba
+manager: KarenH444
 ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b3285c18394c8c59d17e41b3a3eb3fd43428cd61
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: c026a571a087008d86e34e8c2806745a06ae89cb
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129229584"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129986760"
 ---
 # <a name="assign-sensitivity-labels-to-microsoft-365-groups-in-azure-active-directory"></a>Azure Active Directory で Microsoft 365 グループに秘密度ラベルを割り当てる
 
@@ -141,9 +141,9 @@ Azure Active Directory (Azure AD) では、[Microsoft 365 コンプライアン�
 1. 選択したグループのページで **[プロパティ]** を選択し、一覧から新しい秘密度ラベルを選択します。
 1. **[保存]** を選択します。
 
-### <a name="group-setting-changes-to-published-labels-are-not-updated-on-the-groups"></a>公開されているラベルに加えたグループ設定変更が、グループに対して更新されない
+### <a name="group-setting-changes-to-published-labels-arent-updated-on-the-groups"></a>公開されているラベルに加えたグループ設定変更が、グループに対して更新されない
 
-ベスト プラクティスとして、ラベルをグループに適用した後で、そのラベルのグループ設定を変更することはお勧めしません。 公開されたラベルに関連付けられているグループ設定を [Microsoft 365 コンプライアンス センター](https://sip.protection.office.com/homepage)で変更しても、それらのポリシー変更は影響を受けるグループに自動的には適用されません。
+公開されたラベルのグループ設定を [Microsoft 365 コンプライアンス センター](https://sip.protection.office.com/homepage)で変更しても、それらのポリシー変更はラベルが付けられたグループに自動的には適用されません。 Microsoft は、秘密度ラベルが公開され、グループに適用された後に、Microsoft 365 コンプライアンス センターでラベルのグループ設定を変更しないことをお勧めします。
 
 変更が必要な場合は、[Azure AD PowerShell スクリプト](https://github.com/microsoftgraph/powershell-aad-samples/blob/master/ReassignSensitivityLabelToO365Groups.ps1)を使用して、影響を受けるグループに更新を手動で適用します。 この方法を使用すると、既存のすべてのグループに新しい設定が適用されます。
 

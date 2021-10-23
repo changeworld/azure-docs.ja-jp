@@ -3,20 +3,20 @@ title: Azure Active Directory アプリケーション プロキシを使用し�
 description: SAML でオンプレミスの SharePoint ファームを Azure Active Directory アプリケーション プロキシと統合する方法の基礎について説明します。
 services: active-directory
 author: kenwith
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-proxy
 ms.workload: identity
 ms.topic: how-to
 ms.date: 04/27/2021
 ms.author: kenwith
-ms.reviewer: japere
-ms.openlocfilehash: 9ef88340c7bac7f09a532c12ba5a2ab69248046e
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.reviewer: ashishj
+ms.openlocfilehash: 2821cfeb2fc3df05d0b8862ad67adf9dd719ebd8
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113727870"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129989287"
 ---
 # <a name="integrate-azure-active-directory-application-proxy-with-sharepoint-saml"></a>Azure Active Directory アプリケーション プロキシと SharePoint を統合する (SAML)
 

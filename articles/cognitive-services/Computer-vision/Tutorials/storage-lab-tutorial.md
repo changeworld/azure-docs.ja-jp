@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 07/06/2021
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f97f01ecb1b11af6ca4292c8b2bfd3ebdb50e943
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 12734d32322fe6cdc0fcaa48486d76d9d7bddd70
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129360247"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130047684"
 ---
 # <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>チュートリアル:Computer Vision を使用して Azure Storage に画像メタデータを生成する
 
@@ -419,7 +419,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. 次に、**Upload** メソッドに進みます。このメソッドでは、画像を BLOB ストレージに変換してアップロードします。 次のコードを、`// Generate a thumbnail` で始まるブロックの直後 (または image-blob-creation プロセスの最後) に追加します。 このコードでは、画像 (`photo`) を含む BLOB を受け取り、Computer Vision を使用してその画像の説明を生成します。 Computer Vision API によって、画像に適用されるキーワードの一覧も生成されます。 生成された説明とキーワードは、後で取得できるように BLOB のメタデータに格納されます。
 
     ```csharp
-    // Submit the image to Azure's Computer Vision API
+    // Submit the image to the Azure Computer Vision API
     ComputerVisionClient vision = new ComputerVisionClient(
         new ApiKeyServiceClientCredentials(ConfigurationManager.AppSettings["SubscriptionKey"]),
         new System.Net.Http.DelegatingHandler[] { });

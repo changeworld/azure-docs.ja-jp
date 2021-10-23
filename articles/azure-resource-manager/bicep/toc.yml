@@ -92,6 +92,8 @@
               href: linter.md
             - name: リンター ルール
               items:
+                - name: 管理者ユーザー名がリテラルでない
+                  href: linter-rule-admin-username-should-not-be-literal.md
                 - name: ハードコーディングされた環境 URL がない
                   href: linter-rule-no-hardcoded-environment-urls.md
                 - name: 未使用のパラメーターがない
@@ -157,7 +159,7 @@
     - name: データ型
       href: data-types.md
       displayName: 'supported types,arrays,booleans,integers,objects,strings,secure'
-    - name: Bicep 構成ファイル
+    - name: 構成ファイル
       href: bicep-config.md
     - name: 関数
       items:

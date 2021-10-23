@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.openlocfilehash: 0e231920a7aee35edd7a5913987ac37f0902b5fe
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: 623163dc81bb604627bbbe9d87fff2bca17ea9f8
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129538139"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130063167"
 ---
 # <a name="configure-virtual-network-support-for-a-premium-azure-cache-for-redis-instance"></a>Premium Azure Cache for Redis インスタンスに対する仮想ネットワーク サポートの構成
 
@@ -82,7 +82,7 @@ Virtual Network (VNet) のサポートは、キャッシュの作成中に **[Ne
 
 キャッシュが作成されるまで、しばらく時間がかかります。 Azure Cache for Redis の **[概要]** ページで進行状況を監視できます。 **[状態]** に "**実行中**" と表示されている場合は、キャッシュを使用する準備ができています。 キャッシュが作成されたら、 **[リソース]** メニューの **[仮想ネットワーク]** を選択することで、仮想ネットワークの構成を表示できます。
 
-![仮想ネットワーク][redis-cache-vnet-info]
+:::image type="content" source="media/cache-how-to-premium-vnet/redis-cache-vnet-info.png" alt-text="Virtual Network":::
 
 仮想ネットワークの使用時に Azure Cache for Redis インスタンスに接続するには、次の例に示すように、接続文字列でキャッシュのホスト名を指定します。
 
@@ -106,14 +106,14 @@ public static ConnectionMultiplexer Connection
 
 次の一覧は、Azure Cache for Redis のスケーリングに関するよく寄せられる質問への回答です。
 
-* Azure Cache for Redis と仮想ネットワークの誤った構成に関してよく見られる問題を教えてください
-* [仮想ネットワークで自分のキャッシュの動作を確認するにはどうすればよいですか?](#how-can-i-verify-that-my-cache-is-working-in-a-virtual-network)
-* 仮想ネットワークで自分の Azure Cache for Redis インスタンスに接続しようとすると、リモート証明書が無効であるというエラーが表示されるのはなぜですか?
-* [Standard または Basic キャッシュで仮想ネットワークを使用できますか?](#can-i-use-virtual-networks-with-a-standard-or-basic-cache)
-* Azure Cache for Redis インスタンスの作成が失敗するサブネットと成功するサブネットがあるのはなぜですか?
-* [サブネット アドレス空間の要件には何がありますか](#what-are-the-subnet-address-space-requirements)
-* [ピアリングされた仮想ネットワークからキャッシュに接続できますか?](#can-i-connect-to-my-cache-from-a-peered-virtual-network)
-* [キャッシュが仮想ネットワークでホストされている場合、すべてのキャッシュ機能が動作しますか?](#do-all-cache-features-work-when-a-cache-is-hosted-in-a-virtual-network)
+- [Azure Cache for Redis と仮想ネットワークの誤った構成に関してよく見られる問題を教えてください](#what-are-some-common-misconfiguration-issues-with-azure-cache-for-redis-and-virtual-networks)
+- [仮想ネットワークで自分のキャッシュの動作を確認するにはどうすればよいですか?](#how-can-i-verify-that-my-cache-is-working-in-a-virtual-network)
+- [仮想ネットワークで自分の Azure Cache for Redis インスタンスに接続しようとすると、リモート証明書が無効であるというエラーが表示されるのはなぜですか?](#when-i-try-to-connect-to-my-azure-cache-for-redis-instance-in-a-virtual-network-why-do-i-get-an-error-stating-the-remote-certificate-is-invalid)
+- [Standard または Basic キャッシュで仮想ネットワークを使用できますか?](#can-i-use-virtual-networks-with-a-standard-or-basic-cache)
+- [Azure Cache for Redis インスタンスの作成が失敗するサブネットと成功するサブネットがあるのはなぜですか?](#why-does-creating-an-azure-cache-for-redis-instance-fail-in-some-subnets-but-not-others)
+- [サブネット アドレス空間の要件には何がありますか](#what-are-the-subnet-address-space-requirements)
+- [ピアリングされた仮想ネットワークからキャッシュに接続できますか?](#can-i-connect-to-my-cache-from-a-peered-virtual-network)
+- [キャッシュが仮想ネットワークでホストされている場合、すべてのキャッシュ機能が動作しますか?](#do-all-cache-features-work-when-a-cache-is-hosted-in-a-virtual-network)
 
 ### <a name="what-are-some-common-misconfiguration-issues-with-azure-cache-for-redis-and-virtual-networks"></a>Azure Cache for Redis と仮想ネットワークの誤った構成に関してよく見られる問題を教えてください
 
@@ -123,8 +123,8 @@ Azure Cache for Redis が仮想ネットワークでホストされている場�
 >以下の表に含まれるポートがブロックされている場合、キャッシュが正常に動作しない可能性があります。 仮想ネットワークで Azure Cache for Redis を使用する場合の構成の誤りに関する最も一般的な問題は、これらのポートのうち 1 つ以上がブロックされていることです。
 >
 
-* [送信ポートの要件](#outbound-port-requirements)
-* [受信ポートの要件](#inbound-port-requirements)
+- [送信ポートの要件](#outbound-port-requirements)
+- [受信ポートの要件](#inbound-port-requirements)
 
 #### <a name="outbound-port-requirements"></a>送信ポートの要件
 
@@ -175,10 +175,10 @@ Azure 仮想ネットワーク内のキャッシュ間で geo レプリケーシ
 
 Azure Cache for Redis のネットワーク接続要件には、仮想ネットワークで最初から満たされていないものがある可能性があります。 仮想ネットワーク内で使用したときに正常に動作させるには、Azure Cache for Redis に次の項目すべてが必要になります。
 
-* 世界各国の Azure Storage エンドポイントに対する発信ネットワーク接続 Azure Cache for Redis インスタンスと同じリージョン内にあるエンドポイントと、"*他の*" Azure リージョン内にあるストレージ エンドポイントが含まれます。 Azure Storage エンドポイントは、次の DNS ドメインで解決されます: *table.core.windows.net*、*blob.core.windows.net*、*queue.core.windows.net*、*file.core.windows.net*。
-* *ocsp.digicert.com*、*crl4.digicert.com*、*ocsp.msocsp.com*、*mscrl.microsoft.com*、*crl3.digicert.com*、*cacerts.digicert.com*、*oneocsp.microsoft.com*、*crl.microsoft.com* への送信ネットワーク接続。 この接続は、TLS/SSL 機能をサポートするために必要です。
-* 仮想ネットワークの DNS 構成は、前述したすべてのエンドポイントとドメインを解決できるようにする必要があります。 これらの DNS 要件を満たすには、仮想ネットワークの有効な DNS インフラストラクチャを構成し、保守します。
-* 以下の DNS ドメインで解決される次の Azure Monitoring エンドポイントに対する発信ネットワーク接続: *shoebox2-black.shoebox2.metrics.nsatc.net*、*north-prod2.prod2.metrics.nsatc.net*、*azglobal-black.azglobal.metrics.nsatc.net*、*shoebox2-red.shoebox2.metrics.nsatc.net*、*east-prod2.prod2.metrics.nsatc.net*、*azglobal-red.azglobal.metrics.nsatc.net*、*shoebox3.prod.microsoftmetrics.com*、*shoebox3-red.prod.microsoftmetrics.com*、*shoebox3-black.prod.microsoftmetrics.com*、*azredis-red.prod.microsoftmetrics.com*、および *azredis-black.prod.microsoftmetrics.com*。
+- 世界各国の Azure Storage エンドポイントに対する発信ネットワーク接続 Azure Cache for Redis インスタンスと同じリージョン内にあるエンドポイントと、"*他の*" Azure リージョン内にあるストレージ エンドポイントが含まれます。 Azure Storage エンドポイントは、次の DNS ドメインで解決されます: *table.core.windows.net*、*blob.core.windows.net*、*queue.core.windows.net*、*file.core.windows.net*。
+- *ocsp.digicert.com*、*crl4.digicert.com*、*ocsp.msocsp.com*、*mscrl.microsoft.com*、*crl3.digicert.com*、*cacerts.digicert.com*、*oneocsp.microsoft.com*、*crl.microsoft.com* への送信ネットワーク接続。 この接続は、TLS/SSL 機能をサポートするために必要です。
+- 仮想ネットワークの DNS 構成は、前述したすべてのエンドポイントとドメインを解決できるようにする必要があります。 これらの DNS 要件を満たすには、仮想ネットワークの有効な DNS インフラストラクチャを構成し、保守します。
+- 以下の DNS ドメインで解決される次の Azure Monitoring エンドポイントに対する発信ネットワーク接続: *shoebox2-black.shoebox2.metrics.nsatc.net*、*north-prod2.prod2.metrics.nsatc.net*、*azglobal-black.azglobal.metrics.nsatc.net*、*shoebox2-red.shoebox2.metrics.nsatc.net*、*east-prod2.prod2.metrics.nsatc.net*、*azglobal-red.azglobal.metrics.nsatc.net*、*shoebox3.prod.microsoftmetrics.com*、*shoebox3-red.prod.microsoftmetrics.com*、*shoebox3-black.prod.microsoftmetrics.com*、*azredis-red.prod.microsoftmetrics.com*、および *azredis-black.prod.microsoftmetrics.com*。
 
 ### <a name="how-can-i-verify-that-my-cache-is-working-in-a-virtual-network"></a>仮想ネットワークで自分のキャッシュの動作を確認するにはどうすればよいですか?
 
@@ -188,15 +188,15 @@ Azure Cache for Redis のネットワーク接続要件には、仮想ネット�
 
 前のセクションで説明したようにポート要件を構成した後、次の手順に従って、キャッシュが動作していることを確認できます。
 
-* すべてのキャッシュ ノードを[再起動](cache-administration.md#reboot)します。 「[受信ポートの要件](cache-how-to-premium-vnet.md#inbound-port-requirements)」と「[送信ポートの要件](cache-how-to-premium-vnet.md#outbound-port-requirements)」に記載されているように、必要なすべてのキャッシュ依存関係に到達できない場合、キャッシュは正常に再起動できません。
-* キャッシュ ノードが再起動したら (Azure portal のキャッシュの状態で報告されます)、次のテストを実行できます。
-  + [tcping](https://www.elifulkerson.com/projects/tcping.php) を使って、キャッシュと同じ仮想ネットワーク内にあるコンピューターから、ポート 6380 を使用してキャッシュ エンドポイントを ping します。 例:
+- すべてのキャッシュ ノードを[再起動](cache-administration.md#reboot)します。 「[受信ポートの要件](cache-how-to-premium-vnet.md#inbound-port-requirements)」と「[送信ポートの要件](cache-how-to-premium-vnet.md#outbound-port-requirements)」に記載されているように、必要なすべてのキャッシュ依存関係に到達できない場合、キャッシュは正常に再起動できません。
+- キャッシュ ノードが再起動したら (Azure portal のキャッシュの状態で報告されます)、次のテストを実行できます。
+  - [tcping](https://www.elifulkerson.com/projects/tcping.php) を使って、キャッシュと同じ仮想ネットワーク内にあるコンピューターから、ポート 6380 を使用してキャッシュ エンドポイントを ping します。 例:
 
     `tcping.exe contosocache.redis.cache.windows.net 6380`
 
     `tcping` ツールからポートが開いていることがレポートされる場合、キャッシュは仮想ネットワーク内のクライアントからの接続に使用できます。
 
-  + 別のテスト方法: キャッシュに接続してキャッシュのいくつかの項目を追加および取得するテスト キャッシュ クライアントを作成します。 テスト キャッシュ クライアントは、StackExchange.Redis を使用するコンソール アプリケーションなどが考えられます。 キャッシュと同じ仮想ネットワーク内にある VM にサンプル クライアント アプリケーションをインストールします。 次に、それを実行して、キャッシュへの接続を確認します。
+  - 別のテスト方法: キャッシュに接続してキャッシュのいくつかの項目を追加および取得するテスト キャッシュ クライアントを作成します。 テスト キャッシュ クライアントは、StackExchange.Redis を使用するコンソール アプリケーションなどが考えられます。 キャッシュと同じ仮想ネットワーク内にある VM にサンプル クライアント アプリケーションをインストールします。 次に、それを実行して、キャッシュへの接続を確認します。
 
 ### <a name="when-i-try-to-connect-to-my-azure-cache-for-redis-instance-in-a-virtual-network-why-do-i-get-an-error-stating-the-remote-certificate-is-invalid"></a>仮想ネットワークで自分の Azure Cache for Redis インスタンスに接続しようとすると、リモート証明書が無効であるというエラーが表示されるのはなぜですか?
 
@@ -244,7 +244,7 @@ Azure 仮想ネットワーク インフラストラクチャによって使用�
 
 キャッシュが仮想ネットワークの一部である場合は、仮想ネットワーク内のクライアントだけがキャッシュにアクセスできます。 そのため、次のキャッシュ管理機能は現時点では動作しません。
 
-* **Redis コンソール**: Redis コンソールはローカル ブラウザーで実行されます。これは通常、仮想ネットワークに接続されていない開発者用コンピューター上にあるため、キャッシュに接続できません。
+- **Redis コンソール**: Redis コンソールはローカル ブラウザーで実行されます。これは通常、仮想ネットワークに接続されていない開発者用コンピューター上にあるため、キャッシュに接続できません。
 
 ## <a name="use-expressroute-with-azure-cache-for-redis"></a>ExpressRoute と Azure Cache for Redis の使用
 
@@ -258,8 +258,8 @@ Azure 仮想ネットワーク インフラストラクチャによって使用�
 
 可能な場合、次の構成を使用します。
 
-* ExpressRoute 構成によって 0.0.0.0/0 をアドバタイズし、既定でオンプレミスの全送信トラフィックを強制的にトンネリングします。
-* Azure Cache for Redis インスタンスを含むサブネットに適用される UDR では、0.0.0.0/0 と、パブリック インターネットへの TCP/IP トラフィック用に動作するルートを定義します。 たとえば、次ホップの種類を *internet* に設定します。
+- ExpressRoute 構成によって 0.0.0.0/0 をアドバタイズし、既定でオンプレミスの全送信トラフィックを強制的にトンネリングします。
+- Azure Cache for Redis インスタンスを含むサブネットに適用される UDR では、0.0.0.0/0 と、パブリック インターネットへの TCP/IP トラフィック用に動作するルートを定義します。 たとえば、次ホップの種類を *internet* に設定します。
 
 これらの手順を組み合わせた結果として、サブネットレベルの UDR は ExpressRoute 強制トンネリングよりも優先されるので、Azure Cache for Redis インスタンスからの送信インターネット アクセスを確保できます。
 
@@ -279,12 +279,4 @@ ExpressRoute の詳細については、「[ExpressRoute の技術概要](../exp
 
 Azure Cache for Redis の機能について
 
-* [Azure Cache for Redis Premium サービス レベル](cache-overview.md#service-tiers)
-
-<!-- IMAGES -->
-
-[redis-cache-vnet]: ./media/cache-how-to-premium-vnet/redis-cache-vnet.png
-
-[redis-cache-vnet-ip]: ./media/cache-how-to-premium-vnet/redis-cache-vnet-ip.png
-
-[redis-cache-vnet-info]: ./media/cache-how-to-premium-vnet/redis-cache-vnet-info.png
+- [Azure Cache for Redis Premium サービス レベル](cache-overview.md#service-tiers)

@@ -3,7 +3,7 @@ title: クラスター クォーラムを構成する
 description: 'Azure VM 上の SQL Server で Windows Server フェールオーバー クラスター用のクォーラムとして、ディスク監視、クラウド監視、またはファイル共有監視を構成する方法について学習します。 '
 services: virtual-machines
 documentationCenter: na
-author: cawrites
+author: rajeshsetlem
 editor: ''
 tags: azure-service-management
 ms.service: virtual-machines-sql
@@ -11,14 +11,15 @@ ms.subservice: hadr
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 04/30/2021
-ms.author: chadam
-ms.openlocfilehash: 6b974628adeb1d1562d3735fcb55704adc8e2d98
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.date: 06/01/2021
+ms.author: rsetlem
+ms.reviewer: mathoma
+ms.openlocfilehash: 575e8a5ab43e38b723bd0b2084709a1216b477fe
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111573257"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130163426"
 ---
 # <a name="configure-cluster-quorum-for-sql-server-on-azure-vms"></a>Azure VM 上の SQL Server 用にクラスター クォーラムを構成する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -212,7 +213,7 @@ Windows Server フェールオーバー クラスターに参加しているノ�
 
 - [Azure VM 上の SQL Server に対する HADR 設定](hadr-cluster-best-practices.md)
 - [Windows Server フェールオーバー クラスターと Azure VM 上の SQL Server](hadr-windows-server-failover-cluster-overview.md)
-- [Always On 可用性グループと Azure VM 上の SQL Server](availability-group-overview.md)
+- [AlwaysOn 可用性グループと Azure VM 上の SQL Server](availability-group-overview.md)
 - [Windows Server フェールオーバー クラスターと Azure VM 上の SQL Server](hadr-windows-server-failover-cluster-overview.md)
 - [Azure VM 上の SQL Server を使用したフェールオーバー クラスター インスタンス](failover-cluster-instance-overview.md)
 - [フェールオーバー クラスター インスタンスの概要](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

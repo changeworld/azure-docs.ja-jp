@@ -8,16 +8,19 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: ''
 ms.date: 06/30/2020
 ms.reviewer: mimckitt
-ms.openlocfilehash: 00d094b0e535c3e3a5c465e248a0a4e88f538da8
-ms.sourcegitcommit: 6a3096e92c5ae2540f2b3fe040bd18b70aa257ae
+ms.openlocfilehash: c4ad34729b81d6ca13bb2ff52c30dc77cd1614b9
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112323126"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130167379"
 ---
 # <a name="what-are-virtual-machine-scale-sets"></a>仮想マシン スケール セットとは
+
 Azure Virtual Machine Scale Sets では、負荷分散が行われる VM のグループを作成して管理することができます。 需要または定義されたスケジュールに応じて、VM インスタンスの数を自動的に増減させることができます。 スケール セットは、アプリケーションの高可用性を実現します。また、多数の VM の一元的な管理、構成、更新を可能にします。 仮想マシン スケール セットを使用すると、コンピューティング、ビッグ データ、コンテナー ワークロードなどの分野で大規模なサービスを構築できます。
 
+> [!IMPORTANT]
+> この記事では、均一オーケストレーション モードの仮想マシン スケール セットについて説明します。 フレキシブル スケール セットの詳細については、[仮想マシン スケール セットのフレキシブル オーケストレーション モード](../virtual-machines/flexible-virtual-machine-scale-sets.md)に関するページを参照してください。
 
 ## <a name="why-use-virtual-machine-scale-sets"></a>仮想マシン スケール セットを使用する理由
 冗長性とパフォーマンスの向上を実現するには、アプリケーションを複数のインスタンスに分散するのが一般的です。 顧客は、アプリケーション インスタンスのいずれかに要求を分散するロード バランサー経由でアプリケーションにアクセスできます。 メンテナンスの実行またはアプリケーション インスタンスの更新が必要な場合、使用可能な別のアプリケーション インスタンスに顧客を分散する必要があります。 顧客の需要の増加に対応するには、アプリケーションを実行するアプリケーション インスタンスの数を増加させることが必要な場合があります。

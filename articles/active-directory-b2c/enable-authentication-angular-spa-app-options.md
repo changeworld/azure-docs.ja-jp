@@ -2,21 +2,21 @@
 title: Azure Active Directory B2C を使用して Angular アプリケーション オプションを有効にする
 description: いくつかの方法で、Angular アプリケーション オプションの使用を有効にします。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 07/29/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: c2b94a1a2659825314d45d9baeecaa11904dc527
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 94057e0b1d566d092089725dea96a53e907f2a71
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123220720"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130041103"
 ---
 # <a name="configure-authentication-options-in-an-angular-application-by-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して Angular アプリケーションで認証オプションを構成する
 

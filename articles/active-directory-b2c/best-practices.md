@@ -4,19 +4,19 @@ titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C (Azure AD B2C) を使用する際に考慮すべき推奨事項とベスト プラクティス。
 services: active-directory-b2c
 author: vigunase
-manager: celestedg
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/01/2021
 ms.author: vigunase
 ms.subservice: B2C
-ms.openlocfilehash: 174eeb48855502af6ae0418fae6c6bf443572e9d
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 1ebdbcea15ae089d2799a107d29ed992807540a6
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129350916"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130039678"
 ---
 # <a name="recommendations-and-best-practices-for-azure-active-directory-b2c"></a>Azure Active Directory B2C の推奨事項とベスト プラクティス
 

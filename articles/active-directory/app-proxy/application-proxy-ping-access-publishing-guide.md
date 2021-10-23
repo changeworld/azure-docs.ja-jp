@@ -3,20 +3,20 @@ title: Azure Active Directory アプリケーション プロキシ用 PingAcces
 description: ヘッダーベースの認証に対応するには、PingAccess とアプリケーション プロキシを使ってアプリケーションを発行します。
 services: active-directory
 author: kenwith
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-proxy
 ms.workload: identity
 ms.topic: how-to
 ms.date: 04/28/2021
 ms.author: kenwith
-ms.reviewer: japere
-ms.openlocfilehash: dce7a8ed6b4fc80c0f3dbd04f3462776027da98a
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.reviewer: ashishj
+ms.openlocfilehash: ff80311cc4fc8fd335eb14c28f9c28f2efacb27d
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108229930"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129989002"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>アプリケーション プロキシと PingAccess を使用したシングル サインオン用のヘッダーベースの認証
 

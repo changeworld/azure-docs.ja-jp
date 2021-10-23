@@ -1,20 +1,20 @@
 ---
-title: マッピング データ フローでのシンクのパフォーマンスの最適化
+title: マッピング データ フローでのシンクのパフォーマンスとベスト プラクティス
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Azure Data Factory および Azure Synapse Analytics パイプラインのマッピング データ フローでのシンクのパフォーマンスの最適化について説明します。
+description: Azure Data Factory および Azure Synapse Analytics パイプラインのマッピング データ フローでのシンクのパフォーマンスの最適化とベスト プラクティスについて説明します。
 author: kromerm
 ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.subservice: data-flows
 ms.custom: synapse
-ms.date: 09/29/2021
-ms.openlocfilehash: 54c03cc8b4c34be02d3dee608ce4a759e75f2200
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.date: 10/06/2021
+ms.openlocfilehash: 4ed5d50d4b74e86b91d51e4011e41f2b600edb88
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129293515"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129618688"
 ---
 # <a name="optimizing-sinks"></a>シンクの最適化
 
@@ -23,6 +23,10 @@ ms.locfileid: "129293515"
 ## <a name="azure-sql-database-sinks"></a>Azure SQL Database のシンク
 
 Azure SQL Database では、ほとんどの場合、既定のパーティション分割が有効です。 シンクに含まれるパーティションが多すぎると SQL データベースで処理できない可能性があります。 これが発生した場合は、SQL Database シンクによって出力されるパーティションの数を減らします。
+
+### <a name="best-practice-for-deleting-rows-in-sink-based-on-missing-rows-in-source"></a>ソースの存在しない行に基づいてシンクの行を削除するためのベスト プラクティス
+
+以下は、この一般的なパターンを実現するために、終了、行の変更、シンクの変換でデータ フローを使用する方法についてのビデオ チュートリアルです: > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RWMLr5]
 
 ### <a name="impact-of-error-row-handling-to-performance"></a>エラー行の処理がパフォーマンスに及ぼす影響
 
@@ -85,7 +89,7 @@ CosmosDB に書き込む場合、データ フローの実行中にスループ�
 
 **Write throughput budget (書き込みスループット予算)** : 1 分あたりの RU の合計よりも小さい値を使用してください。 多数の Spark パーティションが含まれるデータ フローがある場合、予算のスループットを設定すると、これらのパーティション間でより均等にバランスを取ることができます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [データ フローのパフォーマンスの概要](concepts-data-flow-performance.md)
 - [ソースの最適化](concepts-data-flow-performance-sources.md)

@@ -3,7 +3,7 @@ title: Azure 仮想マシンでの SQL Server 2014 の自動バックアップ
 description: Azure で実行されている SQL Server 2014 VM の自動バックアップ機能について説明します。 この記事は、Resource Manager を使用する VM のみにあてはまります。
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: bluefooted
 tags: azure-resource-manager
 ms.assetid: bdc63fd1-db49-4e76-87d5-b5c6a890e53c
 ms.service: virtual-machines-sql
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
-ms.reviewer: jroth
+ms.reviewer: pamela
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ff04f3595cbcba7a5bfc1c5c5e9564a862cb32de
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 76f5b375453f598ae74410b6d77695f1ac54654a
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123223730"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130166307"
 ---
 # <a name="automated-backup-for-sql-server-2014-virtual-machines-resource-manager"></a>SQL Server 2014 仮想マシンの自動バックアップ (Resource Manager)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]

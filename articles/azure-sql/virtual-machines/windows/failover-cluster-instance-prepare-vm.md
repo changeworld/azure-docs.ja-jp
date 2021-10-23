@@ -3,7 +3,7 @@ title: FCI 用の仮想マシンを準備する
 description: Azure Virtual Machines 上でフェールオーバー クラスター インスタンス (FCI) と SQL Server を使用するように Azure Virtual Machines を準備します。
 services: virtual-machines
 documentationCenter: na
-author: MashaMSFT
+author: rajeshsetlem
 editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
@@ -12,13 +12,14 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
-ms.author: mathoma
-ms.openlocfilehash: 437b6621687597e56c63b9afb146c67657650e71
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.author: rsetlem
+ms.reviewer: mathoma
+ms.openlocfilehash: ddea24c95e6a9b1303d504ea4fda2b9a3ee0cd03
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111569280"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130163926"
 ---
 # <a name="prepare-virtual-machines-for-an-fci-sql-server-on-azure-vms"></a>FCI 用に仮想マシンを準備する (Azure VM 上の SQL Server)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]

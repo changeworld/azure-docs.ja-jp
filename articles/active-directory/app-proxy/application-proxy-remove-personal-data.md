@@ -2,7 +2,7 @@
 title: 個人データの削除 - Azure Active Directory アプリケーション プロキシ
 description: Azure Active Directory アプリケーション プロキシのデバイスにインストールされているコネクタから個人データを削除します。
 author: kenwith
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-proxy
 ms.workload: identity
@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 04/28/2021
 ms.author: kenwith
 ms.reviewer: harshja
-ms.openlocfilehash: e1bfc51e4770bfb9d9aafd8f3a3e6da4d9bd8c68
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: 0379d6c4b017348e35fafb41a95cea9c3fa0ceb8
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108229897"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129988774"
 ---
 # <a name="remove-personal-data-for-azure-active-directory-application-proxy"></a>Azure Active Directory アプリケーション プロキシの個人データの削除
 

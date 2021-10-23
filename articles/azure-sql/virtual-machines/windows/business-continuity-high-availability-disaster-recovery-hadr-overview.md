@@ -3,7 +3,7 @@ title: 高可用性、ディザスター リカバリー、ビジネス継続性
 description: Always On 可用性グループ、フェールオーバー クラスター インスタンス、データベース ミラーリング、ログ配布、Azure Storage へのバックアップと復元など、Azure VM 上の SQL Server で使用できる高可用性、ディザスター リカバリー (HADR)、およびビジネス継続性のオプションについて学習します。
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: rajeshsetlem
 editor: ''
 tags: azure-service-management
 ms.assetid: 53981f7e-8370-4979-b26a-93a5988d905f
@@ -13,13 +13,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2020
-ms.author: mathoma
-ms.openlocfilehash: a5fe3157d419b199f1e83f44485e507812c0b80c
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.author: rsetlem
+ms.reviewer: mathoma
+ms.openlocfilehash: f5dd02d8abf70d3812fe0d07baa8ddf08bdc8a7a
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113434827"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130166078"
 ---
 # <a name="business-continuity-and-hadr-for-sql-server-on-azure-virtual-machines"></a>Azure Virtual Machines 上の SQL Server のビジネス継続性と HADR
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]

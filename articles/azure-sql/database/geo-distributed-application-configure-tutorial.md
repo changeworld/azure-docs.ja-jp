@@ -7,16 +7,16 @@ ms.subservice: high-availability
 ms.custom: sqldbrb=1, devx-track-azurecli, devx-track-azurepowershell
 ms.devlang: ''
 ms.topic: conceptual
-author: BustosMSFT
-ms.author: robustos
+author: emlisa
+ms.author: emlisa
 ms.reviewer: mathoma
 ms.date: 03/12/2019
-ms.openlocfilehash: 7d71a930293a7170877cad3b2e2b1627ea9d16ba
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: ebdfc09b8d56eca6018548be913e13bfbd0cf564
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110704426"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130164218"
 ---
 # <a name="tutorial-implement-a-geo-distributed-database-azure-sql-database"></a>チュートリアル:geo 分散型データベースを実装する (Azure SQL Database)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

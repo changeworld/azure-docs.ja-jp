@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 09/28/2021
 ms.topic: how-to
-ms.openlocfilehash: 29caef661b7078844991c3ca3867a1f03eb0114e
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 54da805b7f4c2332d0d475d2c5eb31b24fca597f
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129293517"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130165649"
 ---
 # <a name="disable-local-authentication-in-automation"></a>Automation でローカル認証を無効にする
 
@@ -33,7 +33,7 @@ Azure portal では、認証が無効になっていると、選択された Aut
 |シナリオ | 代替 |
 |---|---|
 |webhook を使用した Runbook の起動。 | Azure AD 認証を使用する Azure Resource Manager テンプレートを使用して Runbook ジョブを起動します。 |
-|Automation Desired State Configuration の使用。| [Azure Policy のゲスト構成](/governance/policy/concepts/guest-configuration)を使用します。  |
+|Automation Desired State Configuration の使用。| [Azure Policy のゲスト構成](../governance/policy/concepts/guest-configuration.md)を使用します。  |
 |エージェント ベースの Hybrid Runbook Worker の使用。| [拡張機能ベースの Hybrid Runbook Worker (プレビュー)](./extension-based-hybrid-runbook-worker-install.md) を使用します。|
 
 ## <a name="limitations"></a>制限事項

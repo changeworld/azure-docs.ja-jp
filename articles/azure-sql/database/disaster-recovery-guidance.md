@@ -7,16 +7,16 @@ ms.subservice: high-availability
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
-author: BustosMSFT
-ms.author: robustos
+author: emlisa
+ms.author: emlisa
 ms.reviewer: mathoma
 ms.date: 06/21/2019
-ms.openlocfilehash: e79d6f5a07fc7b796319ed4ce3d3530f1b1ca2da
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: a462ff4c1f887e86810f51c8839e6b675e78d52a
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110705525"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130163167"
 ---
 # <a name="restore-your-azure-sql-database-or-failover-to-a-secondary"></a>Azure SQL Database を復元する、またはセカンダリにフェールオーバーする
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
