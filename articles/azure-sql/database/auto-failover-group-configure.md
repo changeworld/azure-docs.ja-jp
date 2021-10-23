@@ -8,16 +8,16 @@ ms.subservice: high-availability
 ms.custom: sqldbrb=2, devx-track-azurecli
 ms.topic: how-to
 ms.devlang: ''
-author: BustosMSFT
-ms.author: robustos
+author: emlisa
+ms.author: emlisa
 ms.reviewer: mathoma
 ms.date: 08/14/2019
-ms.openlocfilehash: a5c1475a4a517fc3c7767fec2d7ee9461476b083
-ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
+ms.openlocfilehash: 1cb2d8fdaa25479542152c76c12b9b86d7fb0433
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112539720"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130165709"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>Azure SQL Database のフェールオーバー グループを構成する
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]

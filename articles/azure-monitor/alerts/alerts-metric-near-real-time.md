@@ -5,13 +5,13 @@ author: harelbr
 ms.author: harelbr
 services: monitoring
 ms.topic: conceptual
-ms.date: 06/03/2021
-ms.openlocfilehash: 1228f89c2037e1a181fd1f881a1a8d0262b4dbbd
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.date: 10/14/2021
+ms.openlocfilehash: 38564ba8d607dc82a13757669b7d352359fb29e8
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111410137"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129994748"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Azure Monitor のメトリック アラートでサポートされるリソース
 
@@ -39,6 +39,7 @@ Azure Monitor が[新しいタイプのメトリック アラート](./alerts-ov
 |Microsoft.Bing/accounts | はい | いいえ | [Bing アカウント](../essentials/metrics-supported.md#microsoftbingaccounts) |
 |Microsoft.BotService/botServices | はい | いいえ | [Bot Service](../essentials/metrics-supported.md#microsoftbotservicebotservices) |
 |Microsoft.Cache/redis | はい | はい | [Azure Cache for Redis](../essentials/metrics-supported.md#microsoftcacheredis) |
+|Microsoft.Cache/redisEnterprise | はい | いいえ | [Azure Cache for Redis Enterprise](../essentials/metrics-supported.md#microsoftcacheredisenterprise) |
 |microsoft.Cdn/profiles | はい | いいえ | [CDN プロファイル](../essentials/metrics-supported.md#microsoftcdnprofiles) |
 |Microsoft.ClassicCompute/domainNames/slots/roles | いいえ | いいえ | [従来の Cloud Services](../essentials/metrics-supported.md#microsoftclassiccomputedomainnamesslotsroles) |
 |Microsoft.ClassicCompute/virtualMachines | いいえ | いいえ | [従来の仮想マシン](../essentials/metrics-supported.md#microsoftclassiccomputevirtualmachines) |
@@ -104,10 +105,11 @@ Azure Monitor が[新しいタイプのメトリック アラート](./alerts-ov
 |Microsoft.Peering/peerings | はい | いいえ | [ピアリング](../essentials/metrics-supported.md#microsoftpeeringpeerings) |
 |Microsoft.Peering/peeringServices | はい | いいえ | [Peering Services](../essentials/metrics-supported.md#microsoftpeeringpeeringservices) |
 |Microsoft.PowerBIDedicated/capacities | いいえ | いいえ | [Capacities](../essentials/metrics-supported.md#microsoftpowerbidedicatedcapacities) |
+|Microsoft.RecoveryServices/vaults | はい | はい | [Recovery Services コンテナー](../essentials/metrics-supported.md#microsoftrecoveryservicesvaults) |
 |Microsoft.Relay/namespaces | はい | いいえ | [リレー](../essentials/metrics-supported.md#microsoftrelaynamespaces) |
 |Microsoft.Search/searchServices | いいえ | いいえ | [検索サービス](../essentials/metrics-supported.md#microsoftsearchsearchservices) |
 |Microsoft.ServiceBus/namespaces | はい | いいえ | [Service Bus](../essentials/metrics-supported.md#microsoftservicebusnamespaces) |
-|Microsoft.Sql/managedInstances | × | ○ | [SQL Managed Instance](../essentials/metrics-supported.md#microsoftsqlmanagedinstances) |
+|Microsoft.Sql/managedInstances | × | ○ | [SQL マネージド インスタンス](../essentials/metrics-supported.md#microsoftsqlmanagedinstances) |
 |Microsoft.Sql/servers/databases | いいえ | ○ | [SQL Database](../essentials/metrics-supported.md#microsoftsqlserversdatabases) |
 |Microsoft.Sql/servers/elasticPools | いいえ | ○ | [SQL エラスティック プール](../essentials/metrics-supported.md#microsoftsqlserverselasticpools) |
 |Microsoft.Storage/storageAccounts |はい | いいえ | [ストレージ アカウント](../essentials/metrics-supported.md#microsoftstoragestorageaccounts)|

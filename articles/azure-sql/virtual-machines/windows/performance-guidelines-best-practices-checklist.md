@@ -3,7 +3,7 @@ title: 'チェックリスト: ベスト プラクティスおよびガイドラ
 description: Azure 仮想マシン (VM) 上の SQL Server のパフォーマンスを最適化するためのベスト プラクティスおよびガイドラインを確認するためのクイック チェックリストを提供します。
 services: virtual-machines-windows
 documentationcenter: na
-author: dplessMSFT
+author: bluefooted
 editor: ''
 tags: azure-service-management
 ms.service: virtual-machines-sql
@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/01/2021
-ms.author: dpless
+ms.author: pamela
 ms.custom: contperf-fy21q3
-ms.reviewer: jroth
-ms.openlocfilehash: f5c6a0864790003e115d201c1a50b181df63c5ac
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.reviewer: mathoma
+ms.openlocfilehash: 1dd05395d921e2a75a56db353e0b0c740b094e49
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128666706"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130164520"
 ---
 # <a name="checklist-best-practices-for-sql-server-on-azure-vms"></a>チェックリスト: Azure VM 上の SQL Server のベスト プラクティス
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -58,9 +58,9 @@ Azure VM で SQL Server を実行する場合のストレージ構成に関す�
 - ディスクの種類を選択する前に、アプリケーションを監視し、SQL Server のデータ、ログ、および tempdb の各ファイルの[ストレージ帯域幅と待機時間の要件を明確にします](../../../virtual-machines/premium-storage-performance.md#counters-to-measure-application-performance-requirements)。 
 - ストレージのパフォーマンスを最適化するには、使用可能な最大の未キャッシュ IOPS を計画し、データの読み取りのパフォーマンス機能としてデータ キャッシュを使用しながら、[仮想マシンとディスクの上限や調整](../../../virtual-machines/premium-storage-performance.md#throttling)を回避します。
 - データ、ログ、tempdb の各ファイルを別々のドライブに配置します。
-    - データ ドライブには、[Premium P30 と P40 のディスク](../../../virtual-machines/disks-types.md#premium-ssd)のみを使用して、キャッシュ サポートの可用性を確保します
-    - ログ ドライブについては、[Premium P30 から P80 のディスク](../../../virtual-machines/disks-types.md#premium-ssd)を評価しながら、コストと対比して容量の計画とパフォーマンスのテストを行います。
-      - ミリ秒未満のストレージの待機時間が求められる場合は、トランザクション ログに [Azure Ultra ディスク](../../../virtual-machines/disks-types.md#ultra-disk)を使用します。 
+    - データ ドライブには、[Premium P30 と P40 のディスク](../../../virtual-machines/disks-types.md#premium-ssds)のみを使用して、キャッシュ サポートの可用性を確保します
+    - ログ ドライブについては、[Premium P30 から P80 のディスク](../../../virtual-machines/disks-types.md#premium-ssds)を評価しながら、コストと対比して容量の計画とパフォーマンスのテストを行います。
+      - ミリ秒未満のストレージの待機時間が求められる場合は、トランザクション ログに [Azure Ultra ディスク](../../../virtual-machines/disks-types.md#ultra-disks)を使用します。 
       - M シリーズの仮想マシン デプロイに対しては、Azure Ultra ディスクの使用よりも[書き込みアクセラレータ](../../../virtual-machines/how-to-enable-write-accelerator.md)を検討します。
     - 最適な VM サイズを選択した後、大半の SQL Server ワークロード用のローカル エフェメラル SSD (既定は `D:\`) ドライブに [tempdb](/sql/relational-databases/databases/tempdb-database) を配置します。 
       - ローカル ドライブの容量が tempdb に対して十分でない場合は、VM のサイズを増やすことを検討します。 詳細については、「[データ ファイルのキャッシュ ポリシー](performance-guidelines-best-practices-storage.md#data-file-caching-policies)」を参照してください。

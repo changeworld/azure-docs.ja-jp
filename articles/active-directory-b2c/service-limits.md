@@ -3,20 +3,20 @@ title: Azure AD B2C サービスの制限と制約
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C サービスのサービスの制限と制約に関するリファレンス。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 06/02/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 27fe9f4c7d63a5e0674bde6db3f387f813bed749
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 3b9fa2ad92756ef06510298bb2b29ac486ca9e57
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111409399"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130035212"
 ---
 # <a name="azure-active-directory-b2c-service-limits-and-restrictions"></a>Azure Active Directory B2C サービスの制限と制約
 

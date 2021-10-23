@@ -3,20 +3,20 @@ title: Azure AD B2C でサポートされるサインイン オプション
 titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C で使用できるサインアップおよびサインインのオプションについて学習します。これには、ユーザー名とパスワード、電子メール、電話、ソーシャルまたは外部の ID プロバイダーとのフェデレーションなどが含まれます。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/10/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: efb526f9a7418c0d7d2316ec91f355a7c4431404
-ms.sourcegitcommit: e1874bb73cb669ce1e5203ec0a3777024c23a486
+ms.openlocfilehash: 4f0a713eacb259348f04fe61fefde72a3142b419
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112204777"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130043246"
 ---
 # <a name="sign-in-options-in-azure-ad-b2c"></a>Azure AD B2C のサインイン オプション
 

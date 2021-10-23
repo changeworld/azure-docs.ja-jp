@@ -3,19 +3,19 @@ title: 'クイックスタート: Node.js デスクトップ アプリケーシ�
 titleSuffix: Microsoft identity platform
 description: このクイックスタートでは、Node.js Electron デスクトップ アプリケーションでユーザーのサインイン処理を行い、アクセス トークンを取得して、Microsoft ID プラットフォーム エンドポイントによって保護された API を呼び出す方法について説明します。
 services: active-directory
-author: derisen
+author: KarenH444
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.date: 02/17/2021
-ms.author: v-doeris
-ms.openlocfilehash: 8e791392386f6a2f74f6d59e7999afeb272249aa
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.author: karenhoran
+ms.openlocfilehash: 362fdcddc9a8d58da30f269be44fc195870949e1
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128605755"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130163763"
 ---
 # <a name="quickstart-acquire-an-access-token-and-call-the-microsoft-graph-api-from-an-electron-desktop-app"></a>クイックスタート: Electron デスクトップ アプリケーションからアクセス トークンを取得して Microsoft Graph API を呼び出す
 

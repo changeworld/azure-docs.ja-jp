@@ -3,7 +3,7 @@ title: Azure portal で Windows 仮想マシン上で SQL Server を作成する
 description: このチュートリアルでは、Azure portal で Windows 仮想マシンと SQL Server 2017 を作成する方法について説明します。
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: bluefooted
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
 ms.subservice: deployment
@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
 ms.date: 07/11/2019
-ms.author: mathoma
-ms.reviewer: jroth
-ms.openlocfilehash: c1186d6c138b555144d59414d7b1d9293474390d
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.author: pamela
+ms.reviewer: mathoma
+ms.openlocfilehash: 9890c3b6068fd7e11e8b0e1de663aa262b87399e
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112079627"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130162587"
 ---
 # <a name="quickstart-create-sql-server-2017-on-a-windows-virtual-machine-in-the-azure-portal"></a>クイック スタート:Azure portal で Windows 仮想マシン上に SQL Server 2017 を作成する
 

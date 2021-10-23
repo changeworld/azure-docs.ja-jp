@@ -2,15 +2,15 @@
 title: リレーショナル データベースのデータベース管理を教えるためのラボを設定する | Microsoft Docs
 description: リレーショナル データベースの管理について教えるためのラボを設定する方法について説明します。
 author: emaher
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
 ms.author: enewman
-ms.openlocfilehash: 32079d6dc31cf3fcad66976737630472129b4271
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bd14a53dffbc7d3480bd12dc35ed686d95b3184c
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96462422"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130177025"
 ---
 # <a name="set-up-a-lab-to-teach-database-management-for-relational-databases"></a>リレーショナル データベースのデータベース管理を教えるためのラボを設定する
 

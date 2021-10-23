@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/07/2021
 ms.author: danlep
-ms.openlocfilehash: 02442bf73d16486ce51b765e6922bbf434fb69f1
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 5fc47f2238427c7875d2af29324e06d8b6487f1a
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128609804"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130001791"
 ---
 # <a name="manage-protocols-and-ciphers-in-azure-api-management"></a>Azure API Management でプロトコルと暗号を管理する
 
@@ -43,7 +43,7 @@ Azure API Management では、次のために複数バージョンのトラン�
 1. **[保存]** をクリックします。 変更は 1 時間以内に適用されます。  
 
 > [!NOTE]
-> 一部のプロトコルや暗号スイート (バックエンド側 TLS 1.2 など) は、Azure portal からは有効にしたり無効にしたりすることができません。 代わりに、REST 呼び出しを適用する必要があります。 [API Management サービス REST API の作成または更新](/rest/api/apimanagement/2020-06-01-preview/api-management-service/create-or-update#request-body)に関する記事にある、`properties.customProperties` 構造を使用します。
+> 一部のプロトコルや暗号スイート (バックエンド側 TLS 1.2 など) は、Azure portal からは有効にしたり無効にしたりすることができません。 代わりに、REST 呼び出しを適用する必要があります。 [API Management サービス REST API の作成または更新](/rest/api/apimanagement/2021-01-01-preview/api-management-service/create-or-update)に関する記事にある、`properties.customProperties` 構造を使用します。
 
 ## <a name="next-steps"></a>次のステップ
 

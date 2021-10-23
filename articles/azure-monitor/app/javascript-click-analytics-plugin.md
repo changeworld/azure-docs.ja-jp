@@ -2,18 +2,18 @@
 title: Application Insights JavaScript SDK 用のクリック分析自動収集プラグイン
 description: Application Insights JavaScript SDK 用のクリック分析自動収集プラグインをインストールして使用する方法。
 services: azure-monitor
-author: lgayhardt
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/14/2021
-ms.author: lagayhar
-ms.openlocfilehash: 2eabbfb5928fea861874e78fa68ac196d16134d3
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+author: mattmccleary
+ms.author: mmcc
+ms.openlocfilehash: e1a0ab71ce8d5970b1239f70a058ee7a663117da
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108291336"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130132704"
 ---
 # <a name="click-analytics-auto-collection-plugin-for-application-insights-javascript-sdk"></a>Application Insights JavaScript SDK 用のクリック分析自動収集プラグイン
 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/04/2021
-ms.openlocfilehash: 80471da945dcc5fdee690ec477599565777f1beb
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: ceb65226c30d6ee9768388bb18807dd7cf6d6f85
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129611455"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130070586"
 ---
 # <a name="use-role-based-authorization-in-azure-cognitive-search"></a>Azure Cognitive Search でロールベースの承認を使用する
 
@@ -23,14 +23,12 @@ Azure では、プラットフォームで実行されるすべてのサービ�
 
 + [**要求によって入手できる**](https://aka.ms/azure-cognitive-search/rbac-preview)新しいプレビュー ロールをコンテンツ管理 (インデックスや他のトップレベル オブジェクトの作成と管理) に使用する。
 
-> [!NOTe]
+> [!NOTE]
 > Search サービス共同作成者は、"プレビュー" 機能を持つ "一般提供" のロールです。 これは、サービスとコンテンツ管理タスクの真のハイブリッドをサポートする唯一のロールであり、これにより、特定の検索サービスですべての操作を実行できます。 このロールのコンテンツ管理のプレビュー機能を入手するには、[**プレビューにサインアップ**](https://aka.ms/azure-cognitive-search/rbac-preview)します。
 
 一部の RBAC シナリオは、サポートされて **いない** か、この記事で説明されていません。
 
 + 送信インデクサー接続については、「[Set up an indexer connection to a data source using a managed identity](search-howto-managed-identities-data-sources.md)」(マネージド ID を使用してデータ ソースへのインデクサー接続を設定する) で説明されています。 マネージド ID が割り当てられている検索サービスの場合、Azure Blob Storage などの外部データサービスを許可するロールの割り当てを作成して、信頼された検索サービスによる BLOB への読み取りアクセスを許可することができます。
-
-+ [カスタム役割](../role-based-access-control/custom-roles.md)はサポートされていません。
 
 + 検索結果に対するユーザー ID アクセス (行レベル セキュリティまたはドキュメントレベル セキュリティと呼ばれることもあります) はサポートされていません。 ドキュメント レベル セキュリティの場合の回避策としては、[セキュリティ フィルター](search-security-trimming-for-azure-search.md)を使用してユーザー ID 別に結果を整理し、要求者がアクセスしてはならないドキュメントを削除します。
 

@@ -3,19 +3,19 @@ title: Azure Active Directory アプリケーション プロキシのデプロ�
 description: 組織内でアプリケーション プロキシのデプロイを計画するためのエンド ツー エンド ガイド
 services: active-directory
 author: kenwith
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-proxy
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/27/2021
 ms.author: kenwith
-ms.openlocfilehash: 4cf9b739cc81e7b9641ad8a8e56d166a576020c8
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 0779297a60d3dc6561e5df461e63b432afd219bf
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129230515"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129989553"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Azure AD アプリケーション プロキシのデプロイ計画
 

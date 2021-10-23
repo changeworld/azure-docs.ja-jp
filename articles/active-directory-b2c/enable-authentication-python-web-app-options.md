@@ -2,21 +2,21 @@
 title: Azure Active Directory B2C を使用して Python Web アプリケーション オプションを有効にする
 description: この記事では、Python Web アプリケーション オプションの使用を有効にする方法について説明します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 07/05/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: 97f1cb1f13ab990a6590576ae93ba86a4c935300
-ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+ms.openlocfilehash: 155e09cc0aeda6e9a93358f25ca44d852fd34ea7
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123220361"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130041065"
 ---
 # <a name="enable-authentication-options-in-a-python-web-app-by-using-azure-ad-b2c"></a>Azure AD B2C を使用して Python Web アプリの認証オプションを有効にする 
 

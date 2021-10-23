@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: 8502c35a145e4a041f9d44b8396fe16f5db3febc
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 89288c0e5205ba99a51104ffe24eb016aeb27f06
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106384206"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130179376"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Azure Monitor ログのデプロイの設計
 
@@ -103,7 +103,7 @@ Azure Monitor では、ログ検索の実行コンテキストに応じて適切
 | モデルの利用対象者 | 全体管理。 データ収集を構成する必要がある管理者と多様なリソースにアクセスする必要があるユーザー。 また、現時点では、Azure 外部のリソースのログにアクセスする必要があるユーザーにとって必要です。 | アプリケーション チーム。 監視されている Azure リソースの管理者。 |
 | ログを表示するために必要なもの | ワークスペースに対するアクセス許可。 「[ワークスペースのアクセス許可を使用してアクセスを管理する](./manage-access.md#manage-access-using-workspace-permissions)」の **ワークスペースのアクセス許可** の説明を参照してください。 | リソースへの読み取りアクセス。 「[Azure のアクセス許可を使用してアクセスを管理する](./manage-access.md#manage-access-using-azure-permissions)」の「**リソースのアクセス許可**」を参照してください。 アクセス許可は継承する (含まれているリソース グループなどから) ことも、リソースに直接割り当てることもできます。 リソースのログに対するアクセス許可は自動的に割り当てられます。 |
 | アクセス許可の範囲 | ワークスペース。 ワークスペースへのアクセス権を持つユーザーは、アクセス許可を持っているテーブルについて、ワークスペース内のすべてのログを照会できます。 [テーブル アクセス制御](./manage-access.md#table-level-azure-rbac)に関する説明をご覧ください。 | Azure リソース。 ユーザーは、自分がアクセス権を持つ特定のリソース、リソース グループまたはサブスクリプションのログをすべてのワークスペースから照会できますが、その他のリソースのログは照会できません。 |
-| ログにアクセスする方法 | <ul><li>**Azure Monitor** メニューで **[ログ]** を開始します。</li></ul> <ul><li>**Log Analytics ワークスペース** で **[ログ]** を開始します。</li></ul> <ul><li>Azure Monitor [Workbooks](../visualizations.md#workbooks) から。</li></ul> | <ul><li>Azure リソースのメニューで **[ログ]** を開始します</li></ul> <ul><li>**Azure Monitor** メニューで **[ログ]** を開始します。</li></ul> <ul><li>**Log Analytics ワークスペース** で **[ログ]** を開始します。</li></ul> <ul><li>Azure Monitor [Workbooks](../visualizations.md#workbooks) から。</li></ul> |
+| ログにアクセスする方法 | <ul><li>**Azure Monitor** メニューで **[ログ]** を開始します。</li></ul> <ul><li>**Log Analytics ワークスペース** で **[ログ]** を開始します。</li></ul> <ul><li>Azure Monitor [Workbooks](../best-practices-analysis.md#workbooks) から。</li></ul> | <ul><li>Azure リソースのメニューで **[ログ]** を開始します</li></ul> <ul><li>**Azure Monitor** メニューで **[ログ]** を開始します。</li></ul> <ul><li>**Log Analytics ワークスペース** で **[ログ]** を開始します。</li></ul> <ul><li>Azure Monitor [Workbooks](../best-practices-analysis.md#workbooks) から。</li></ul> |
 
 ## <a name="access-control-mode"></a>アクセス制御モード
 

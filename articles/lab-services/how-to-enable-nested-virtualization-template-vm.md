@@ -1,14 +1,14 @@
 ---
 title: Azure Lab Services のテンプレート VM で入れ子になった仮想化を有効にする | Microsoft Docs
 description: この記事では、Azure Lab Services のテンプレート マシンで入れ子になった仮想化を設定する方法について説明します。
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: f1f981602adcf90762258a2921b996507f56f3a2
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 0e730dc71150a5e201e4dcda84f9c6ed61ec2f90
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108125573"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130180402"
 ---
 # <a name="enable-nested-virtualization-on-a-template-virtual-machine-in-azure-lab-services"></a>Azure Lab Services のテンプレート仮想マシンで入れ子になった仮想化を有効にする
 

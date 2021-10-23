@@ -2,15 +2,15 @@
 title: Azure Lab Services で GPU を使用してラボを設定する | Microsoft Docs
 description: グラフィックス処理装置 (GPU) 仮想マシンを使用してラボを設定する方法について説明します。
 author: nicolela
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
 ms.author: nicolela
-ms.openlocfilehash: 1ddc3d35817211d7396defa7460a2505b86c700c
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: e79038f7e05fe2605f9a861e7599fc942fdf9fff
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109713240"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130180079"
 ---
 # <a name="set-up-a-lab-with-gpu-virtual-machines"></a>GPU 仮想マシンを使用してラボを設定する
 

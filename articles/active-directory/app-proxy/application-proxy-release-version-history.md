@@ -3,20 +3,20 @@ title: 'Azure Active Directory アプリケーション プロキシ: バージ�
 description: この記事では、Azure Active Directory アプリケーション プロキシのすべてのリリースを一覧表示し、新機能と修正された問題について説明します。
 services: active-directory
 author: kenwith
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
 ms.date: 04/27/2021
 ms.subservice: app-proxy
 ms.author: kenwith
-ms.reviewer: japere
-ms.openlocfilehash: c340d0b51e1d4326bba575094491cdd5ea756616
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.reviewer: ashishj
+ms.openlocfilehash: 7b00c6fb425f04d84c6f5d5c46b42865c05d5e02
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108764389"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129988906"
 ---
 # <a name="azure-ad-application-proxy-version-release-history"></a>Azure AD アプリケーション プロキシは:バージョンのリリース履歴
 この記事では、これまでにリリースされた Azure Active Directory (Azure AD) アプリケーション プロキシのバージョンと機能を示します。 Azure AD チームは、アプリケーション プロキシを新機能で定期的に更新しています。 アプリケーション プロキシ コネクタは、[新しいメジャー バージョンがリリースされると自動的に更新されます](application-proxy-faq.yml#why-is-my-connector-still-using-an-older-version-and-not-auto-upgraded-to-latest-version-)。 

@@ -17,12 +17,12 @@ ms.date: 07/16/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ce1aecb88f595b7edba2e1f89d82c06e1fbbc69
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 187d6fbb8f398291325a04bb07f2ce31b7aca721
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128622286"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129997423"
 ---
 # <a name="sign-in-logs-in-azure-active-directory"></a>Azure Active Directory のサインイン ログ
 

@@ -2,15 +2,15 @@
 title: 共有リソースを使用してラボを作成する方法 | Azure Lab Services
 description: 学生間で共有されるリソースを必要とするラボを作成する方法について説明します。
 author: emaher
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
 ms.author: enewman
-ms.openlocfilehash: d4bf4127dc163bb5f034e077b84664828374ba87
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6436a157c91c7594cd328be53dfaf6e0856412dd
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94647972"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130180668"
 ---
 # <a name="how-to-create-a-lab-with-a-shared-resource-in-azure-lab-services"></a>Azure Lab Services で共有リソースを使用してラボを作成する方法
 

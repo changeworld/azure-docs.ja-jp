@@ -2,19 +2,16 @@
 title: Azure Monitor ブック グループ
 description: Azure Monitor ブックでグループを使用する方法。
 services: azure-monitor
-author: lgayhardt
-manager: carmonm
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/06/2020
-ms.author: lagayhar
-ms.openlocfilehash: b5a599a17a82a7f0798318c10d8dce61d9f39c6a
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.openlocfilehash: 4b3ce70b7648b6fb92c34dfbe166f91054e84ec9
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108017375"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130129265"
 ---
 # <a name="how-to-use-groups-in-workbooks"></a>ブックでグループを使用する方法
 

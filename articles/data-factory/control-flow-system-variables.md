@@ -10,12 +10,12 @@ ms.subservice: orchestration
 ms.custom: synapse
 ms.topic: conceptual
 ms.date: 09/09/2021
-ms.openlocfilehash: e5594ea57dce2d7cf03989da9288ab2869e28e06
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: a272e5c7f4d467dadfe618f6d70b9a36225c48ff
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124743806"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130175828"
 ---
 # <a name="system-variables-supported-by-azure-data-factory-and-azure-synapse-analytics"></a>Azure Data Factory と Azure Synapse Analytics でサポートされているシステム変数
 
@@ -72,6 +72,9 @@ ms.locfileid: "124743806"
 | @triggerBody().fileName  |作成または削除によってトリガーが起動されたファイルの名前。   |
 | @triggerBody().folderPath  |`@triggerBody().fileName` で指定されたファイルを含むフォルダーへのパス。 フォルダー パスの最初のセグメントは、Azure Blob Storage コンテナーの名前です。  |
 | @trigger().startTime |パイプライン実行を呼び出すためにトリガーが起動した時刻。 |
+
+   > [!NOTE]
+   > [Azure Synapse Analytics](../synapse-analytics/overview-what-is.md) でパイプラインとトリガーを作成する場合は、パラメーターとして `@trigger().outputs.body.fileName` と `@trigger().outputs.body.folderPath` を使用する必要があります。 これら 2 つのプロパティによって、BLOB 情報がキャプチャされます。 `@triggerBody().fileName` と `@triggerBody().folderPath` の代わりに、これらのプロパティを使用してください。
 
 ## <a name="custom-event-trigger-scope"></a>カスタム イベント トリガーのスコープ
 

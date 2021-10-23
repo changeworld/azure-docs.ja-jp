@@ -2,13 +2,13 @@
 title: Azure portal 内での Azure ファイル共有のバックアップ
 description: Recovery Services コンテナー内のバックアップされた Azure ファイル共有を、Azure portal を使用してバックアップする方法について説明します
 ms.topic: conceptual
-ms.date: 05/07/2021
-ms.openlocfilehash: 807a173112d0bb85c008403028ab76000a3096db
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.date: 10/08/2021
+ms.openlocfilehash: 8e50cee7e177375fae41ef6fb3a27f871427342c
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129427972"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129714406"
 ---
 # <a name="back-up-azure-file-shares"></a>Azure ファイル共有のバックアップ
 
@@ -85,9 +85,9 @@ ms.locfileid: "129427972"
 
          ![新しいポリシーを作成します](./media/backup-afs/create-new-policy.png)
 
-      1. 右側に **[バックアップ ポリシー]** コンテキスト ペインが開きます。 テキスト ボックスにポリシー名を指定し、必要に応じて保有期間を選択します。 既定では日単位のオプションのみが有効です。 週単位、月単位、または年単位の保有期間を設定する場合は、該当するチェックボックスを選択して、保有期間の値を指定します。
+      1. 「[新しいポリシーの作成](manage-afs-backup.md#create-a-new-policy)」セクションの手順 3 から 7 を実行します。
 
-      1. 保有期間の値と有効なポリシー名を指定したら、 **[OK]** を選択します。<br>
+      1. ポリシーのすべての属性を定義したら、 **[OK]** をクリックします。
 
          ![ポリシー名とリテンション期間の値を指定する](./media/backup-afs/policy-name.png)
 
@@ -147,9 +147,9 @@ ms.locfileid: "129427972"
 
          1. **[新しいポリシーの作成]** リンク テキストを選択します。
 
-         2. 右側に **[バックアップ ポリシー]** コンテキスト ペインが開きます。 テキスト ボックスにポリシー名を指定し、必要に応じて保有期間を選択します。 既定では日単位のオプションのみが有効です。 週単位、月単位、または年単位の保有期間を設定する場合は、該当するチェックボックスを選択して、保有期間の値を指定します。
+         2. 「[新しいポリシーの作成](manage-afs-backup.md#create-a-new-policy)」セクションの手順 3 から 7 を実行します。
 
-         3. 保有期間の値と有効なポリシー名を指定したら、 **[OK]** を選択します。
+         3. ポリシーのすべての属性を定義したら、 **[OK]** をクリックします。
 
             ![新しいバックアップ ポリシーの作成](./media/backup-afs/create-new-backup-policy.png)
 

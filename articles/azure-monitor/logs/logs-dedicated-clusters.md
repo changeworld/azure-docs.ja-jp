@@ -6,12 +6,12 @@ author: yossi-y
 ms.author: yossiy
 ms.date: 07/29/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: a1236e1b68b90e9a1e48d61fa1b425ba26ead14b
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 0b7dfd314f745565a4beca8432d1e452c95df403
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129351398"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130001240"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Monitor ログ専用クラスター
 
@@ -229,13 +229,12 @@ Log Analytics ワークスペースが専用クラスターにリンクされて
 
 **CLI**
 ```azurecli
-Set-AzContext -SubscriptionId "cluster-subscription-id"
-
 # Find cluster resource ID
-$clusterResourceId = az monitor log-analytics cluster list --resource-group "resource-group-name" --query "[?contains(name, "cluster-name")]" --query [].id --output table
+Set-AzContext -SubscriptionId "cluster-subscription-id"
+$clusterResourceId = az monitor log-analytics cluster list --resource-group "resource-group-name" --query "[?contains(name, "cluster-name")].[id]" --output tsv
 
+# Link workspace
 Set-AzContext -SubscriptionId "workspace-subscription-id"
-
 az monitor log-analytics workspace linked-service create --no-wait --name cluster --resource-group "resource-group-name" --workspace-name "workspace-name" --write-access-resource-id $clusterResourceId
 
 # Wait for job completion

@@ -3,15 +3,15 @@ title: Linux での Java Web アプリ パフォーマンスの監視 | Microsof
 description: Application Insights の CollectD プラグインを使用した Java Web サイトのアプリケーション パフォーマンスの拡張
 ms.topic: conceptual
 ms.date: 03/14/2019
-author: MS-jgol
 ms.custom: devx-track-java
-ms.author: jgol
-ms.openlocfilehash: 93ab5cf44286a4fcba638f14e1c7b29698a02e55
-ms.sourcegitcommit: 82d82642daa5c452a39c3b3d57cd849c06df21b0
+author: mattmccleary
+ms.author: mmcc
+ms.openlocfilehash: 7931c71b58b052b97fdb00e16197d5001b47589f
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113358023"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130133996"
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights-deprecated"></a>collectd:Application Insights の Linux パフォーマンス メトリック [非推奨]
 

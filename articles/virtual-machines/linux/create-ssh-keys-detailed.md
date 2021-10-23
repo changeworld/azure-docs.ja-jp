@@ -5,14 +5,14 @@ author: cynthn
 ms.service: virtual-machines
 ms.collection: linux
 ms.topic: how-to
-ms.date: 07/31/2020
+ms.date: 02/17/2021
 ms.author: cynthn
-ms.openlocfilehash: 38a35aacb8123d66b76d8ebc25be660612cccfe6
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: db59c95c215bdf51746a252c29b44f13dfaf7e22
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122689909"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130161930"
 ---
 # <a name="detailed-steps-create-and-manage-ssh-keys-for-authentication-to-a-linux-vm-in-azure"></a>詳細な手順: Azure の Linux VM に対する認証用に SSH キーを作成して管理する
 
