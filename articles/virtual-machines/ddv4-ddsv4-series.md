@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: vm-sizes-general
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: b29fb382e51a351291868e4417a819e969a1d249
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: e36b45f5ac202936e26f238f2082cf811195b235
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123097553"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130071551"
 ---
 # <a name="ddv4-and-ddsv4-series"></a>Ddv4 および Ddsv4 シリーズ
 
@@ -40,7 +40,7 @@ Ddv4 シリーズのサイズは、Intel&reg; Xeon&reg; Platinum 8272CL (Cascade
 [エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされています <br>
 <br> 
 
-| サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | <sup>**</sup>一時ストレージの最大スループット: IOPS/MBps | 最大 NIC 数|必要なネットワーク帯域幅 (Mbps) |
+| サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | <sup>**</sup> 一時ストレージの最大スループット: IOPS/MBps | 最大 NIC 数|必要なネットワーク帯域幅 (Mbps) |
 |---|---|---|---|---|---|---|---|
 | Standard_D2d_v4<sup>1</sup> | 2 | 8 | 75 | 4 | 19000/120 | 2|1000 |
 | Standard_D4d_v4 | 4 | 16 | 150 | 8 | 38500/242 | 2|2000 |
@@ -72,7 +72,7 @@ Ddv4 シリーズは、Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake) 上�
 [エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされています <br>
 <br> 
 
-| サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | <sup>**</sup>一時ストレージの最大スループット: IOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps |  バースト キャッシュが無効なディスクの最大スループット: IOPS/MBps<sup>1</sup> | 最大 NIC 数|必要なネットワーク帯域幅 (Mbps) |
+| サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | <sup>**</sup> 一時ストレージの最大スループット: IOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps |  バースト キャッシュが無効なディスクの最大スループット: IOPS/MBps<sup>1</sup> | 最大 NIC 数|必要なネットワーク帯域幅 (Mbps) |
 |---|---|---|---|---|---|---|---|---|---|
 | Standard_D2ds_v4<sup>2</sup> | 2 | 8 | 75 | 4 | 19000/120(50) | 3200/48 | 4000/200 | 2|1000 |
 | Standard_D4ds_v4 | 4 | 16 | 150 | 8 | 38500/242(100) | 6400/96 | 8000/200 | 2|2000 |
@@ -99,7 +99,7 @@ Ddv4 シリーズは、Intel&reg; Xeon&reg; Platinum 8272CL (Cascade Lake) 上�
 
 料金計算ツール: [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 
-ディスクの種類の詳細情報: [ディスクの種類](./disks-types.md#ultra-disk)
+ディスクの種類の詳細情報: [ディスクの種類](./disks-types.md#ultra-disks)
 
 
 ## <a name="next-steps"></a>次のステップ

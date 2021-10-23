@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 09/28/2021
 ms.custom: generated
-ms.openlocfilehash: d6866d476cd687ee6bafa46e55d8364212ce04a1
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 710905390f9da5e38b8459a5faa36306461bed52
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129273100"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129709279"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure リソース プロバイダーの操作
 
@@ -11274,7 +11274,7 @@ Azure サービス:[Azure Arc](../azure-arc/index.yml)
 
 ### <a name="microsoftkubernetes"></a>Microsoft.Kubernetes
 
-Azure サービス:[Azure Arc 対応 Kubernetes](../azure-arc/kubernetes/overview.md)
+Azure サービス: [Azure Arc 対応 Kuberne](../azure-arc/kubernetes/overview.md)
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |

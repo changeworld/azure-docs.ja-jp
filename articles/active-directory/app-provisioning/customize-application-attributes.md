@@ -3,7 +3,7 @@ title: チュートリアル - アプリケーションのプロビジョニン�
 description: Azure Active Directory アプリケーション プロビジョニングにおける SaaS (サービスとしてのソフトウェア) アプリの属性マッピングとは何か、また、この属性マッピングをビジネス ニーズに合わせて変更するにはどうすればよいかについて説明します。
 services: active-directory
 author: kenwith
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 07/07/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: a7839ec1b131377cd9a6614c570dacd829c6c46a
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 1e08dc5c0dc0d8e427de9ae1ebc53f16cb8e015a
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123310961"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130043607"
 ---
 # <a name="tutorial---customize-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>チュートリアル - Azure Active Directory の SaaS アプリケーションに対するユーザー プロビジョニング属性マッピングをカスタマイズする
 
@@ -120,7 +120,7 @@ ServiceNow、Box、G Suite などいくつかのアプリケーションでは�
 
 
 > [!NOTE]
-> サポートされている属性一覧の編集は、ソース属性が Azure portal の UI に自動的に表示されない場合、またはアプリケーションとシステムのスキーマをカスタマイズし、カスタム属性がどのように定義されたかを直接知っている管理者のみにお勧めします。 場合によっては、アプリケーションやシステムで提供される API および開発者ツールに慣れている必要があります。 サポートされている属性の一覧を編集する機能は既定ではロックダウンされていますが、 https://portal.azure.com/?Microsoft_AAD_IAM_forceSchemaEditorEnabled=true という URL に移動して機能を有効にできます。 その後、アプリケーションに移動して、[上記](#editing-the-list-of-supported-attributes)の属性の一覧を表示できます。 
+> サポートされている属性一覧の編集は、ソース属性が Azure portal の UI に自動的に表示されない場合、またはアプリケーションとシステムのスキーマをカスタマイズし、カスタム属性がどのように定義されたかを直接知っている管理者のみにお勧めします。 場合によっては、アプリケーションやシステムで提供される API および開発者ツールに慣れている必要があります。 サポートされている属性の一覧を編集する機能は既定ではロックダウンされていますが、 https://portal.azure.com/?Microsoft_AAD_Connect_Provisioning_forceSchemaEditorEnabled=true という URL に移動して機能を有効にできます。 その後、アプリケーションに移動して、[上記](#editing-the-list-of-supported-attributes)の属性の一覧を表示できます。 
 
 サポートされている属性の一覧を編集するときは、次のプロパティが表示されます。
 

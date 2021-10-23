@@ -3,20 +3,20 @@ title: Trusona と Azure Active Directory B2C
 titleSuffix: Azure AD B2C
 description: Azure AD B2C で ID プロバイダーとして Trusona を追加して、パスワードレス認証を有効にする方法について説明します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 09/20/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 67e0601430b7c1f6f2fc97b78534080e0731fc7a
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: a1f898861de55776e30227ac17d4a628c7481e00
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128595638"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130035887"
 ---
 # <a name="integrating-trusona-with-azure-active-directory-b2c"></a>Trusona と Azure Active Directory B2C の統合
 

@@ -3,19 +3,19 @@ title: サポートされる Azure AD の機能
 description: Azure AD B2C でまだサポートされている Azure AD 機能について説明します。
 services: active-directory-b2c
 author: kengaderdus
-manager: celestedg
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
 ms.date: 10/08/2021
 ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: f43f6afb5e102dc33bc8b5b1e1a146a58f394f60
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 99f6d58af1a8508b6e3582b4ec0139081a259046
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129621484"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130042999"
 ---
 # <a name="supported-azure-ad-features"></a>サポートされる Azure AD の機能
 

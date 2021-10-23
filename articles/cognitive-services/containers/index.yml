@@ -11,12 +11,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 05/05/2021
   ms.author: aahi
-  ms.openlocfilehash: fd5d2d9e4ea7d17b81a24119c823a64722789358
-  ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+  ms.openlocfilehash: 50fef992fea875f0b75a7a7aa0fc59ab04abbde1
+  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/04/2021
-  ms.locfileid: "123480158"
+  ms.lasthandoff: 10/22/2021
+  ms.locfileid: "130233039"
 landingContent:
 - title: Cognitive Services コンテナーについて
   linkLists:
@@ -48,7 +48,7 @@ landingContent:
       text: OCR の読み取り
     - url: ../computer-vision/spatial-analysis-container.md
       text: 空間分析
-    - url: ../face/face-how-to-install-containers.md
+    - url: ../face/overview.md
       text: Face
 - title: 言語コンテナー
   linkLists:

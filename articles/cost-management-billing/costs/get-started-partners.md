@@ -3,18 +3,18 @@ title: パートナー向け Azure Cost Management の利用を開始する
 description: この記事では、パートナーが Cost Management の機能を使用する方法と、パートナーの顧客のためにアクセスを有効にする方法について説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 10/07/2021
+ms.date: 10/13/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: d402acaf43682a7c025147fd38bccb9baa033683
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 747dc5829315091d6a42fbf6c0749af104c5e1ac
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129705986"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129984066"
 ---
 # <a name="get-started-with-cost-management-for-partners"></a>パートナー向け Cost Management の利用を開始する
 
@@ -211,6 +211,7 @@ Azure RBAC スコープの予約インスタンスの償却ビューおよび実
 | サブスクリプション ID | Microsoft が生成する、Azure サブスクリプションの一意の識別子。 | EntitlementID |
 | subscriptionName | Azure サブスクリプションの名前。 | 該当なし |
 | 期間 | プランの有効期間を表示します。 たとえば、予約インスタンスには、予約インスタンスの年間期間の 12 か月が表示されます。 1 回限りの購入または定期的な購入の場合、期間には、SaaS、Azure Marketplace、サポートについて 1 か月が表示されます。 Azure の消費には適用されません。 | 該当なし |
+| provider | 製品と業種の識別子。 プロバイダーの種類別 (Azure、Microsoft 365、Dynamics 365、AWS など) にコストを分けます。  | 該当なし |
 | publisherType (firstParty、thirdPartyReseller、thirdPartyAgency) | 発行元をファースト パーティ、サード パーティ リセラー、またはサード パーティ機関として識別する発行元の種類。 | 該当なし |
 | partNumber | 未使用の予約インスタンスと Azure Marketplace サービスの部品番号。 | 該当なし |
 | publisherName | Microsoft またはサードパーティの発行元を含む、サービスの発行元の名前。 | 製品の発行元の名前。|

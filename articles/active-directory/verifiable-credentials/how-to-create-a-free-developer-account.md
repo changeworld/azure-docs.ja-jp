@@ -3,18 +3,18 @@ title: 無料の Azure Active Directory 開発者テナントを作成する方�
 description: この記事では、開発者アカウントを作成する方法について説明します。
 services: active-directory
 author: barclayn
-manager: davba
+manager: karenh444
 ms.service: active-directory
 ms.subservice: verifiable-credentials
 ms.topic: how-to
 ms.date: 04/01/2021
 ms.author: barclayn
-ms.openlocfilehash: 2a6b2f9b464a7776b3c0dd58736ca64878e0b65c
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: fbdd59b38a9e699640b50e8f5402b60559990e8d
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110466148"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130006852"
 ---
 # <a name="how-to-create-a-free-azure-active-directory-developer-tenant"></a>無料の Azure Active Directory 開発者テナントを作成する方法
 

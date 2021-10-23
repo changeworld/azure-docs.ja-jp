@@ -1,5 +1,5 @@
 ---
-title: Azure Private Link サービスと統合する
+title: Key Vault を Azure Private Link と統合する
 description: Azure Key Vault を Azure Private Link サービスと統合する方法を確認します
 author: msmbaldwin
 ms.author: mbaldwin
@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 48aeee9dfacad1812bb2044327342b25f63356e0
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: bb9383d34403f14496d7a04ef04d70294ced1ecb
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124771519"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130160887"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>Key Vault を Azure Private Link と統合する
 

@@ -2,15 +2,13 @@
 title: ユーザー分析ツールをトラブルシューティングする - Application Insights
 description: トラブルシューティング ガイド - Application Insights でのサイトとアプリの利用状況の分析。
 ms.topic: conceptual
-author: lgayhardt
-ms.author: lagayhar
 ms.date: 07/30/2021
-ms.openlocfilehash: 8bd40f64a8c0e7bf0cbbdc427b44dd83965c52db
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 05d7af4fd56d79e34400fe999375502563eedd45
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121741320"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130131811"
 ---
 # <a name="troubleshoot-user-behavior-analytics-tools-in-application-insights"></a>Application Insights のユーザー動作分析ツールをトラブルシューティングする
 [Application Insights のユーザー動作分析ツール](usage-overview.md): [ユーザー、セッション、イベント](usage-segmentation.md)、[じょうご](usage-funnels.md)、[ユーザー フロー](usage-flows.md)、[リテンション](usage-retention.md)、またはコーホートについて質問がありますか? いくつかの答えを次に示します。

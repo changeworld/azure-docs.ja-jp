@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/20/2020
 ms.author: pafarley
-ms.openlocfilehash: 9a69750da0ae64fc1467785e174fef14a22ab396
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 61ad5ceb418755876c2d3fc8c25b61d95facabfa
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129725676"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130019050"
 ---
 ## <a name="install-the-speech-sdk"></a>Speech SDK のインストール
 
@@ -89,16 +89,8 @@ main();
     var region = "your-region";
     var filepath = "audio-file-to-transcribe.wav"; // 8-channel audio
     
-    // create the push stream and write file to it
-    var pushStream = sdk.AudioInputStream.createPushStream();
-    fs.createReadStream(filepath).on('data', function(arrayBuffer) {
-        pushStream.write(arrayBuffer.slice());
-    }).on('end', function() {
-        pushStream.close();
-    });
-    
     var speechTranslationConfig = sdk.SpeechTranslationConfig.fromSubscription(subscriptionKey, region);
-    var audioConfig = sdk.AudioConfig.fromStreamInput(pushStream);
+    var audioConfig = sdk.AudioConfig.fromWavFileInput(fs.readFileSync(filepath));
     speechTranslationConfig.setProperty("ConversationTranscriptionInRoomAndOnline", "true");
 
     // en-us by default. Adding this code to specify other languages, like zh-cn.

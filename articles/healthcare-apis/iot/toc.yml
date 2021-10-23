@@ -9,7 +9,7 @@ items:
   - name: クイックスタート
     expanded: true
     items:
-      - name: IoT コネクタをデプロイする
+      - name: IoT コネクタのデプロイ
         expanded: true
         items:
           - name: ポータルの使用
@@ -21,7 +21,7 @@ items:
         href: device-data-through-iot-hub.md
       - name: IoT データ フロー
         href: iot-data-flow.md
-      - name: デバイス マッピングを使用する
+      - name: デバイスマッピングを使用する
         href: how-to-use-device-mapping-iot.md
       - name: FHIR 変換先マッピングを使用する
         href: how-to-use-fhir-mapping-iot.md
@@ -30,6 +30,8 @@ items:
   - name: リソース
     expanded: true
     items:
+      - name: FAQ
+        href: iot-connector-faqs.md
       - name: オープンソース プロジェクト
         href: iot-git-projects.md
       - name: トラブルシューティング ガイド

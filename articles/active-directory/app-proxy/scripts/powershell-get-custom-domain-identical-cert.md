@@ -3,20 +3,20 @@ title: PowerShell サンプル - 同じ証明書を使用している Azure Acti
 description: 同じ証明書を使用して公開されたすべての Azure Active Directory (Azure AD) アプリケーション プロキシ アプリケーションを一覧表示する PowerShell の例。
 services: active-directory
 author: kenwith
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-proxy
 ms.workload: identity
 ms.topic: sample
 ms.date: 04/29/2021
 ms.author: kenwith
-ms.reviewer: japere
-ms.openlocfilehash: 15151bcba0deb3cf3c86e46f035c21a5349de1a2
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.reviewer: ashishj
+ms.openlocfilehash: 319c97b95a3908d0f7f3d0f9c8813b105c188647
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108293778"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129988291"
 ---
 # <a name="get-all-azure-active-directory-application-proxy-apps-that-are-published-with-the-identical-certificate"></a>同じ証明書を使用して公開されているすべての Azure Active Directory アプリケーション プロキシ アプリを取得する
 

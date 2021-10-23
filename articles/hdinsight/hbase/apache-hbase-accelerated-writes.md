@@ -4,16 +4,16 @@ description: Premium マネージド ディスクを使用して Apache HBase �
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/24/2020
-ms.openlocfilehash: c42a9d47cabd803944b858fc470c1bedc39d2d77
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 76e2211eb146178d8e491237370147c3bfed7079
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104868904"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130070206"
 ---
 # <a name="azure-hdinsight-accelerated-writes-for-apache-hbase"></a>Azure HDInsight の Apache HBase 用書き込みアクセラレータ
 
-この記事では、Azure HDInsight の Apache HBase 用 **書き込みアクセラレータ** 機能の背景情報と、書き込みパフォーマンスを向上させるために効果的に使用する方法を示します。 **書き込みアクセラレータ** では、[Azure Premium SSD マネージド ディスク](../../virtual-machines/disks-types.md#premium-ssd)を使用して、Apache HBase のログ先行書き込み (WAL) のパフォーマンスを向上させます。 Apache HBase の詳細については、「[HDInsight の Apache HBase とは](apache-hbase-overview.md)」を参照してください。
+この記事では、Azure HDInsight の Apache HBase 用 **書き込みアクセラレータ** 機能の背景情報と、書き込みパフォーマンスを向上させるために効果的に使用する方法を示します。 **書き込みアクセラレータ** では、[Azure Premium SSD マネージド ディスク](../../virtual-machines/disks-types.md#premium-ssds)を使用して、Apache HBase のログ先行書き込み (WAL) のパフォーマンスを向上させます。 Apache HBase の詳細については、「[HDInsight の Apache HBase とは](apache-hbase-overview.md)」を参照してください。
 
 ## <a name="overview-of-hbase-architecture"></a>HBase アーキテクチャの概要
 

@@ -133,25 +133,25 @@
           href: how-to-integrate-time-series-insights.md
     - name: 監視とトラブルシューティング
       items:
-        - name: Azure Monitor のメトリックを表示する
+        - name: メトリック
           href: troubleshoot-metrics.md
-        - name: 診断ログを使用する
+        - name: 診断ログ
           href: troubleshoot-diagnostics.md
-        - name: アラートを有効にする
+        - name: アラート
           href: troubleshoot-alerts.md
-        - name: パフォーマンスのトラブルシューティング
+        - name: パフォーマンス
           href: troubleshoot-performance.md
-        - name: リソースの正常性を理解する
+        - name: リソース ヘルス
           href: troubleshoot-resource-health.md
         - name: 既知の問題
           href: troubleshoot-known-issues.md
         - name: 問題解決
           items:
-            - name: 403 (許可されていません)
+            - name: エラー 403 (許可されていません)
               href: troubleshoot-error-403.md
-            - name: 404 サブドメインが見つかりません
+            - name: エラー 404 (サブドメインが見つかりません)
               href: troubleshoot-error-404.md
-            - name: Azure Digital Twins Explorer の認証
+            - name: Azure Digital Twins Explorer の認証エラー
               href: troubleshoot-error-azure-digital-twins-explorer-authentication.md
 - name: リファレンス
   items:
