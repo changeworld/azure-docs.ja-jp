@@ -3,21 +3,21 @@ title: 利用可能なリージョンとデータの保存場所
 titleSuffix: Azure AD B2C
 description: 利用可能なリージョン、データの保存場所、Azure Active Directory B2C プレビュー テナントに関する情報。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 08/16/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: references_regions
-ms.openlocfilehash: 92297e63739bca85a640120152ee864b85f0f640
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 91b2c287b42d0a60a3b813b87f8e1eb2368da395
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122252322"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130040229"
 ---
 # <a name="azure-active-directory-b2c-region-availability--data-residency"></a>Azure Active Directory B2C:利用可能なリージョンとデータの保存場所
 

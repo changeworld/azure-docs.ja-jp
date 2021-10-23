@@ -3,7 +3,7 @@ title: マッピングのために Azure Active Directory に属性を同期す�
 description: Azure Active Directory と SaaS アプリを使用してユーザー プロビジョニングを構成する際は、ディレクトリの拡張機能を使用して、既定では同期されないソース属性を追加します。
 services: active-directory
 author: kenwith
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 08/24/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 12679b5e8affe7691cc3bf40d2e4f2f9860d074f
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: 12e4423b0b48b2c5abb6f289c7fcf783c40a4d59
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122822546"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129990579"
 ---
 # <a name="syncing-extension-attributes-for-azure-active-directory-application-provisioning"></a>Azure Active Directory アプリケーション プロビジョニングの拡張属性を同期する
 

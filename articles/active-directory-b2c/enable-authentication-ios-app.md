@@ -2,21 +2,21 @@
 title: Azure AD B2C を使用して iOS Swift アプリでの認証を有効にする
 description: この記事では、Azure Active Directory B2C の構成要素を使用して iOS Swift アプリケーションで認証を有効にする方法について説明します。 Azure AD B2C を使用して、iOS Swift アプリケーションでユーザーをサインインおよびサインアップする方法を学習します。
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 07/29/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: bb590ee57cc78c27c0e6cec7dc54cc15a9fd7648
-ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+ms.openlocfilehash: 404a38def1f90a145a3763d23cba2ec7a55a6782
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123186103"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130041407"
 ---
 # <a name="enable-authentication-in-your-own-ios-swift-app-by-using-azure-ad-b2c"></a>Azure AD B2C を使用して独自の iOS Swift アプリケーションで認証を有効にする
 

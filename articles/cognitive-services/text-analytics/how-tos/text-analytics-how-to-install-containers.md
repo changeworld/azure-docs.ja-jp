@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 09/21/2021
 ms.author: aahi
 keywords: オンプレミス, Docker, コンテナー, 感情分析, 自然言語処理
-ms.openlocfilehash: 4cf8ddce1045209f6d5e45a2eaccbbf4d2f03afc
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: a9ad2d04e51e4f3e2ba46a140eb516d449d90b76
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128677569"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130036571"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Text Analytics コンテナーをインストールして実行する
 
@@ -124,7 +124,7 @@ CPU コアとメモリは、`docker run` コマンドの一部として使用さ
 
 <!--  ## Validate container is running -->
 
-[!INCLUDE [Container's API documentation](../../../../includes/cognitive-services-containers-api-documentation.md)]
+[!INCLUDE [Container API documentation](../../../../includes/cognitive-services-containers-api-documentation.md)]
 
 ## <a name="stop-the-container"></a>コンテナーの停止
 
